@@ -3,13 +3,35 @@ task:
   id: T-MIG-000
   title: "Workspace unification — hub becomes a first-class bun workspace package"
   owner: "agent-da4ab8 (R7a flex lane, zai session web-da4ab8b1) — self-selected per briefing §5: highest-priority OPEN task, zero collisions (no open PRs, branches=[main], all six yamls unassigned at claim time)"
-  status: CLAIMED
+  status: IN_REVIEW
   claimed_at: "2026-10-04T23:59:00+06:00 (Asia/Dhaka)"
   priority: P0
   wave: 0
   deps: []
   execution_record: >
     (seed commit scaffolded the monorepo; this task finishes the integration)
+
+    2026-10-05 agent-da4ab8/R7a — DONE pending review (status set IN_REVIEW on
+    PR open; R0 flips DONE). What: hub renamed to @syllabai/hub (scripts
+    byte-identical); apps/hub/bun.lock deleted per scope; single root
+    bun.lock generated with all four workspaces as members; root bunfig.toml
+    pins [install] linker="hoisted" (bun >=1.3 isolated-by-default linker
+    breaks two Turbopack resolutions in the hub: @tiptap/core,
+    unist-util-visit-parents — hoisted matches the hub's legacy standalone
+    layout, versions unchanged); apps/hub/package.json declares the phantom
+    import @tiptap/core ^3.31.3 (tiptap v3 peer-only, undeclared, previously
+    satisfied by the standalone lockfile); root devDependency bun-types
+    ^1.3.14 (apps/api tsconfig types:['bun-types'] was a per-dir-install side
+    effect); CI: verify job installs from root lockfile (--frozen-lockfile),
+    new hub job runs install + build:hub (corpus-verify prebuild + next
+    build) in its own lane. Evidence: .syllabai/receipts/T-MIG-000/run-01.json
+    (all gates PASS: 4x typecheck clean, 4/4 tests, golden selftest OK, hub
+    production build full route table; corpus content/ + content-maps/
+    byte-unchanged per git status). Deviations D1-D4 in the receipt, flagged
+    for R0 review (notably D4: root-lockfile install replaces the four
+    per-directory CI installs — the substance of this task). Findings: first
+    install hit a stale sandbox bun cache (typescript resolution) — not a
+    repo defect; documented so peers don't chase it.
 base:
   repo: "syllabai-v2 @ seed; syllabai-hub frozen @ 93226a43"
 basis: >
