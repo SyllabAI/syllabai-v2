@@ -98,3 +98,19 @@ Work Log:
 
 Stage Summary:
 - PR #2 merged (merge commit preserves cited SHAs 17796af/5ce7689); T-MIG-001 DONE constraint-for-constraint; T-MIG-010 contract dependency formally unblocked. r7/r7a heads require rebase after merge (worklog tail + bun.lock overlap). Critical path now: T-MIG-010 (identity api port, R3/R4) parallel to Wave-1 capture (R6).
+
+---
+
+Task ID: T-MIG-010
+Agent: R3-lane-A (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Port identity/auth module (Wave 1) — register/login/JWT/RBAC/bootstrap-admin, golden-gated.
+
+Work Log:
+- Claimed 2026-10-04T18:39:30Z (branch t-mig-010/r3 from main 2cfaf41) after full frozen-spec read: AuthController, AuthService, JwtService (HS256-family, alg by key length, claims sub/jti/uid/ver/roles, TTL PT2H), JwtAuthenticationFilter (fail-closed ver revocation), SecurityConfig (BCrypt cost 12, route rules, sendError(401) shape), GlobalExceptionHandler/ApiError, LoginAttemptBudget (per-TARGET-account fixed windows), BootstrapAdminService/StateStore (V19 window), V1+V46+V19 DDL
+- Deps decision: T-MIG-001 DONE (PR #2 merged); T-MIG-002/003 CLAIMED by peers with no artifacts pushed — proceeding per AGENT_COORDINATION §3 (serialised points are contracts→implementation→golden gate; capture runs a wave ahead). Store implements raw parameterized SQL via the @syllabai/db client (drizzle sql``) — ZERO packages/db edits, schema.ts stays R2's deliverable. Golden replay gate executes when T-MIG-003 lands auth cases; merge ordering for R0: after T-MIG-002.
+- Scope disclosure 1: apps/api/src/index.ts mount re-point /api/auth → /api/v1/auth is required for path parity — assigned to T-MIG-010 by R0 ruling (PR #2 review, note 3) and R6's orientation Q4 flag; index.ts claimed by no other lane. Legacy /api/auth mount KEPT as deprecated alias serving the seed's validation+501 stub so apps/api/test/api.test.ts (outside my fence) stays green unmodified; parity surface is /api/v1/auth/** only.
+- Scope disclosure 2: global IP-tier RateLimitFilter (core http/ package, M1) is NOT ported here — out of this yaml's scope; the per-TARGET-ACCOUNT LoginAttemptBudget IS ported (AuthService calls it — 429 + Retry-After parity). Flagging the M1 filter for task-filing by R0.
+- Scope disclosure 3: RBAC route rules (/api/v1/admin|teacher|research/**) ported as middleware in my fence; method-level @PreAuthorize equivalents belong to future module ports.
+
+Stage Summary:
+- T-MIG-010 → CLAIMED (IN_PROGRESS at first push). Identity spec fully read; port begins: jwt/password(Bun bcrypt cost 12)/budget/store/service/bootstrap/middleware/routes + identity test suite.
