@@ -14,6 +14,9 @@
     "build:hub": "bun run --cwd apps/hub build",
     "golden": "bun golden/runner.ts"
   },
+  "devDependencies": {
+    "bun-types": "^1.4.2"
+  },
   "engines": {
     "bun": ">=1.1"
   }

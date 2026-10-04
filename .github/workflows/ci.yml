@@ -16,16 +16,10 @@ jobs:
         with:
           bun-version: latest
 
-      # NOTE: hub is intentionally NOT installed/built in this workflow yet.
-      # Its 153MB tree (content corpus + corpus-verify prebuild) is brought
-      # under CI by T-MIG-000/T-MIG-003, not before — keep the first CI lane
-      # fast and green.
-      - name: Install workspace deps (packages + api)
-        run: |
-          bun install --cwd packages/contracts
-          bun install --cwd packages/shared
-          bun install --cwd packages/db
-          bun install --cwd apps/api
+      # T-MIG-000: single root install from the committed root bun.lock
+      # (hub is now a first-class workspace package — @syllabai/hub).
+      - name: Install workspace deps (root lockfile, all workspaces)
+        run: bun install --frozen-lockfile
 
       - name: Typecheck
         run: bun run typecheck
@@ -35,3 +29,21 @@ jobs:
 
       - name: Golden-master self-check (harness sanity, no live target)
         run: bun golden/runner.ts --selftest
+
+  hub:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install workspace deps (root lockfile, all workspaces)
+        run: bun install --frozen-lockfile
+
+      # Corpus prebuild verify (verify_corpus_23a + flashcard-sync checks)
+      # then the full Next.js production build incl. standalone assembly.
+      - name: Build hub (prebuild corpus verify + next build)
+        run: bun run --cwd apps/hub build

@@ -1,0 +1,68 @@
+{
+  "task": "T-MIG-000",
+  "agent": "r7-flex (Super Z, z.ai session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "run": "run-001-local-verify",
+  "captured_utc": "2026-10-04T18:07:30Z",
+  "environment": {
+    "bun": "1.3.14",
+    "node": "v24.21.0",
+    "os": "linux (sandbox), git 2.47.3",
+    "base_commit": "a945c20c02430ba97158d9e5a458f3b199f0147e",
+    "branch": "t-mig-000/r7"
+  },
+  "steps": [
+    {
+      "step": "hub package rename",
+      "change": "apps/hub/package.json name: syllabai-hub -> @syllabai/hub; all scripts byte-unchanged",
+      "result": "PASS (workspace recognized; bun.lock references @syllabai/hub)"
+    },
+    {
+      "step": "lockfile unification",
+      "change": "deleted apps/hub/bun.lock (288,515 bytes); root bun install created root bun.lock (307,825 bytes)",
+      "result": "PASS (1826 packages installed in 8.27s; subsequent installs no-change)",
+      "note": "bun 1.3 isolated workspace installs: transitive deps no longer leak into app-level resolution — this EXPOSED undeclared direct imports (see dep-audit step)"
+    },
+    {
+      "step": "dependency audit + in-fence declaration fix",
+      "change": "audited every static import under apps/hub/src vs declared deps. Undeclared RUNTIME imports found: @tiptap/core (answer-editor.tsx; peer-dep of the declared @tiptap/* family, previously auto-installed by the hub-local lockfile), unist-util-visit-parents (rehypeKatexMhchem.ts, previously transitive-only). Undeclared TYPE-CHECK deps surfaced by next build's TS pass: @types/node, @types/hast, vfile. All declared in apps/hub/package.json at the versions the frozen hub bun.lock resolved: @tiptap/core ^3.31.3 (resolved 3.31.4, family-consistent with the six declared ^3.31.3 @tiptap/* packages), unist-util-visit-parents ^6.0.2, @types/node ^26.6.4, @types/hast ^3.0.5, vfile ^6.0.3. ZERO source changes (apps/hub/src/** untouched — fence honored). server-only and node:* imports verified non-issues (Next built-in alias / builtins).",
+      "result": "PASS (hub build green after declaration; no version bumps beyond frozen-tree parity)"
+    },
+    {
+      "step": "typecheck (all four packages)",
+      "command": "bun run typecheck",
+      "result": "PASS (exit 0)"
+    },
+    {
+      "step": "unit tests",
+      "command": "bun test apps/api packages",
+      "result": "PASS (4 pass / 0 fail / 6 expect() calls)"
+    },
+    {
+      "step": "golden-master harness selftest",
+      "command": "bun golden/runner.ts --selftest",
+      "result": "PASS (selftest OK: tolerance engine behaves)"
+    },
+    {
+      "step": "api boot + health parity smoke",
+      "command": "bun run --cwd apps/api dev, then GET /actuator/health",
+      "result": "PASS ({\"status\":\"UP\"} exact parity)"
+    },
+    {
+      "step": "hub production build in monorepo",
+      "command": "bun run --cwd apps/hub build",
+      "result": "PASS (prebuild corpus verify green incl. deck-bearing inventory; Next.js 16.3.8 Turbopack compiled successfully; TypeScript pass clean; standalone assembly done)"
+    },
+    {
+      "step": "CI workflow update",
+      "change": ".github/workflows/ci.yml: verify job install switched from 4x per-package bun install --cwd to single root 'bun install --frozen-lockfile'; new hub job (frozen-lockfile install + bun run --cwd apps/hub build, timeout 30m)",
+      "result": "COMMITTED (CI execution evidence = the pull_request workflow run; run id recorded in run-002-ci.json after the PR opens)",
+      "note": "CORRECTION of an interim observation: the committed branches: [main] line was suspected corrupted ('ain]' seen in a terminal capture) and disproven by byte-level od -c inspection of working tree AND HEAD — identical, no stray bytes; the artifact was ANSI rendering in the capture, not a repo defect. Recorded here for honesty; no fix was needed or made on that line."
+    }
+  ],
+  "scope_reconciliation": [
+    "T-MIG-000 scope.allowed does not list .syllabai/receipts/** or .syllabai/worklog.md, but AGENT_COORDINATION.md §2.5 (receipts or it didn't happen) and §5 (worklog protocol) are binding for every PR. Recorded as the reconciliation of a doctrine gap: process artifacts are treated as always-in-fence. Flagged for R0 in the PR body.",
+    "Dependency additions to apps/hub/package.json exceed the yaml parenthetical '(rename to @syllabai/hub; scripts intact)' narrowly: they are required to satisfy the task's own exit criterion (hub build passes in monorepo) under bun 1.3 isolated installs, use frozen-tree versions only, and touch zero source files. Flagged for R0."
+  ],
+  "pii_scrub": "No golden fixtures captured in this task; no PII, tokens, or secrets present in this receipt or any commit. Credentials used as session env vars only; push URL token supplied via env expansion at runtime and never persisted.",
+  "upstream_findings": "None requiring upstream writes (C1). Findings live in this repo's task record only."
+}

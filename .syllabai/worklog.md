@@ -51,3 +51,22 @@ Stage Summary:
 - Correctness mechanism 3 — pre-registration + honest verdicts: decisions are argued and rejected-alternatives recorded BEFORE implementation, and results report what is NOT known. Concrete examples: ADR-031 documents that its regression test REPLACED a test that had asserted the buggy write-through, and honestly records that pre-existing rows carry unrecoverable decayed anchors (conservative error direction) rather than claiming a clean fix; ADR-036 stays Status: Proposed until the operator's ACCEPT flip; ADR-034 marks real-device receipt semantics UNVERIFIED-until-live-probe in T-C61.
 - Unclear / questions for the operator: (1) the briefing points at syllabai-resources/bench/review/ but at HEAD the bench receipts live in the master pack (SyllabAI/syllabai bench/review/) — syllabai-resources has no bench/ dir; confirm master pack is the receipt heritage. (2) hub docs/ARCHITECTURE.md is titled "syllabai-demo — Architecture" and REPOSITORY_MAP.md still names syllabai-web as the production frontend — is syllabai-hub the renamed syllabai-web lineage, and is there a hub-specific architecture doc I missed? (3) T-MIG-000's scope.allowed omits .syllabai/receipts/** and .syllabai/worklog.md, while AGENT_COORDINATION §2.5/§5 mandate receipts + worklog appends for every PR — I read the coordination doc as the binding general law (process artifacts always in-fence) and will note this reconciliation in the task's execution_record; confirm. (4) decay double-schedule guard: v2 Cron must stay env-gated OFF until Wave 7 cutover (BASELINE_DB §4.3) — confirm no Wave-0 work depends on it. (5) sandbox egress: api.neon.tech is unreachable (HTTP 000) and Groq returns 403 from this session's IP — Neon read/introspection tasks (T-MIG-002/003) may need a different egress or operator-side capture; noting early.
 - Self-selection: briefing role slot was blank → claimed T-MIG-000 (lowest-id P0, no deps, unblocks T-MIG-003; zero overlap with any other claim — none existed at claim time) as R7-flex (workspace/CI lane). Claim recorded in the same commit as this entry per AGENT_COORDINATION §2.1.
+
+---
+
+Task ID: T-MIG-000
+Agent: R7-flex (Super Z, z.ai session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Workspace unification — hub as first-class bun workspace package + CI hub lane.
+
+Work Log:
+- Claimed per protocol (branch t-mig-000/r7, CLAIMED + claimed_at in commit f8455f4 alongside my ORIENTATION entry; no competing claims or open PRs at claim time — verified against origin + PR list)
+- Renamed apps/hub package syllabai-hub → @syllabai/hub (scripts byte-unchanged); deleted apps/hub/bun.lock; root bun install → root bun.lock committed (1826 pkgs, 8.27s)
+- Full import-vs-manifest audit of apps/hub/src (script kept at my session's scripts/hub_dep_audit.py): bun 1.3 isolated workspace installs exposed undeclared direct imports that the old hub-local lockfile had masked via transitive hoisting — @tiptap/core (peer-dep trap), unist-util-visit-parents, @types/node, @types/hast, vfile. All declared at frozen-tree versions; ZERO source changes
+- ci.yml: verify job now installs once from the root lockfile (--frozen-lockfile); added hub job (frozen install + bun run --cwd apps/hub build, 30m timeout)
+- Verified locally: typecheck exit 0 · bun test apps/api packages 4/4 · golden/runner.ts --selftest OK · api boots with {"status":"UP"} · hub full production build green (corpus prebuild verify + Next 16.3.8 Turbopack + standalone)
+- Receipts: .syllabai/receipts/T-MIG-000/run-001-local-verify.json (CI run id to follow in run-002-ci.json)
+
+Stage Summary:
+- T-MIG-000 exit criteria met locally; PR opened for R0 (status IN_REVIEW; DONE is R0's write)
+- Two doctrine gaps flagged for R0 in the PR body: (a) scope.allowed omits the receipts/worklog process artifacts that §2.5/§5 mandate; (b) dep-declaration additions beyond the yaml parenthetical, forced by the task's own exit criterion — both narrowly scoped and recorded in execution_record
+- For the next lane (T-MIG-002/003): this sandbox cannot reach api.neon.tech (egress HTTP 000) and Groq returns 403 from here — Neon-backed tasks need different egress or operator-side capture; noted in my Orientation entry

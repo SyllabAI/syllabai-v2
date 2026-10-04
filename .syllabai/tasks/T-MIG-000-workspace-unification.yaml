@@ -3,13 +3,36 @@ task:
   id: T-MIG-000
   title: "Workspace unification — hub becomes a first-class bun workspace package"
   owner: "r7-flex (Super Z, z.ai session web-752465e5-2985-476b-86a3-0bf785493dc5)"
-  status: CLAIMED
+  status: IN_REVIEW
   claimed_at: "2026-10-04T17:58:20Z"
   priority: P0
   wave: 0
   deps: []
   execution_record: >
-    (seed commit scaffolded the monorepo; this task finishes the integration)
+    2026-10-04 (r7-flex, session web-752465e5). DONE locally, IN_REVIEW via PR.
+    (1) Renamed apps/hub package to @syllabai/hub (scripts byte-unchanged);
+    deleted apps/hub/bun.lock; root bun install produced root bun.lock
+    (1826 pkgs). (2) bun 1.3 isolated workspace installs exposed UNDECLARED
+    direct imports in hub src that the old hub-local lockfile had papered over
+    via transitive hoisting: @tiptap/core (peer-dep trap — the six declared
+    @tiptap/* ^3.31.3 packages peer-depend on it), unist-util-visit-parents,
+    plus type-check deps @types/node, @types/hast, vfile. Declared all five in
+    apps/hub/package.json at frozen-tree versions (old lock: 3.31.4 /
+    6.0.2 / 26.6.4 / 3.0.5 / 6.0.3). ZERO apps/hub/src/** changes — fence
+    honored; deviation from the yaml's '(rename; scripts intact)' parenthetical
+    is narrowly required by the task's own exit criterion (hub build passes in
+    monorepo) and is flagged for R0. (3) ci.yml: verify install switched to a
+    single root 'bun install --frozen-lockfile'; hub job added (frozen install
+    + full build, 30m). Interim suspicion of a corrupted 'branches:' line
+    DISPROVEN by byte-level inspection (ANSI capture artifact) — recorded for
+    honesty, nothing changed there. (4) Local verification: typecheck exit 0;
+    tests 4/4; golden selftest OK; api /actuator/health {"status":"UP"} exact
+    parity; hub build green (corpus prebuild verify + Next 16.3.8 Turbopack +
+    standalone). Evidence: .syllabai/receipts/T-MIG-000/run-001-local-verify.json
+    (+ run-002-ci.json after the PR's workflow run). Scope reconciliation note:
+    receipts/ + worklog.md written per AGENT_COORDINATION §2.5/§5 although not
+    listed in scope.allowed — process artifacts treated as always-in-fence;
+    flagged for R0.
 base:
   repo: "syllabai-v2 @ seed; syllabai-hub frozen @ 93226a43"
 basis: >
