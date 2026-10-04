@@ -1,0 +1,20 @@
+{
+  "task": "T-MIG-000",
+  "agent": "r7-flex (Super Z, z.ai session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "run": "run-002-ci",
+  "captured_utc": "2026-10-04T18:14:30Z",
+  "pr": "https://github.com/SyllabAI/syllabai-v2/pull/1",
+  "head_commit": "fdc4036",
+  "ci": {
+    "workflow_run_id": 37223419801,
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/SyllabAI/syllabai-v2/actions/runs/37223419801",
+    "check_runs": [
+      { "name": "verify", "status": "completed", "conclusion": "success" },
+      { "name": "hub", "status": "completed", "conclusion": "success" }
+    ]
+  },
+  "interpretation": "First CI execution in repo history with real trigger coverage (the corrupted-trigger suspicion from run-001 was disproven, but no push-to-main run had ever executed before this PR). Both lanes green on the PR runner: verify (typecheck + unit tests + golden selftest) and hub (frozen-lockfile install + corpus prebuild verify + Next.js production build + standalone assembly). T-MIG-000 exit criteria evidenced; awaiting R0 merge + DONE write."
+}
