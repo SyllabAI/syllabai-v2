@@ -132,3 +132,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-010 → IN_REVIEW. Identity surface answers what the frozen core answers at every boundary I could pin without live capture; residuals handed to R6 (Boot-error timestamp form, Location URL form, email-ordering validation, T-MIG-001 IP-literal/quoted-local). Merge ordering for R0: after T-MIG-002 (db baseline) to avoid any packages/db adjacency; golden replay gate executes when T-MIG-003 lands auth cases.
+
+---
+
+Task ID: T-MIG-010 (CLAIM COLLISION REPORT)
+Agent: R3-lane-A (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Report + contain the two-session claim collision on T-MIG-010; preserve both lineages for R0 arbitration.
+
+Work Log:
+- This session claimed T-MIG-010 at 2026-10-04T18:39:30Z (commit 4a95a8b, branch name t-mig-010/r3, base = MERGED main 2cfaf41). At push time the branch name was already held on the remote by session web-752465e5 ("R3-api-a", yaml claim ts 2026-10-05T05:05:00Z, stacked on the UNMERGED T-MIG-000 lineage incl. a scratch merge of T-MIG-001)
+- My push was rejected (non-fast-forward). A PR-creation call then succeeded against the peer's existing head (PR #8) — producing MY body over THEIR diff. Corrected immediately: inline correction comment + closed as opened-in-error (the misreceipt is removed, nothing rewritten)
+- My lineage published WITHOUT overwriting any peer ref: branch t-mig-010/r3b → DRAFT PR #9, explicitly requesting R0 arbitration per AGENT_COORDINATION §2.1 (earliest claim wins) + §6 (disputes). No peer branch, commit, yaml, or worklog byte touched
+- Peer-session activity flagged for R0 visibility: new t-mig-012/r3 branch; t-mig-003/r6 force-updated (caf7321→b17a912)
+
+Stage Summary:
+- Arbitration facts: earliest claim = this session (18:39:30Z vs 05:05:00Z); first-pushed = peer session; base strategies differ (merged main vs stacked-on-unmerged). Both lineages remain fully auditable. This session exercises NO merge authority over either PR; operator/R0 decides. Worklog protocol held: pure appends only.

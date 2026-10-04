@@ -16,7 +16,11 @@ task:
     Deviations D1-D7 disclosed in receipt (bootstrap tx emulation, legacy /api/auth stub
     kept for seed tests, IP-tier filter out of scope, index.ts mount per R0 ruling).
     Packaging note for T-MIG-000/R0: drizzle-orm must be resolvable from apps/api at
-    deploy time. Residuals for R6 recorded in receipt.
+    deploy time. CLAIM COLLISION 2026-10-04T19:0xZ: branch name t-mig-010/r3 held on
+    remote by session web-752465e5 (claim ts 2026-10-05T05:05:00Z, stacked on unmerged
+    T-MIG-000); this session claim 18:39:30Z, lineage moved to t-mig-010/r3b (draft
+    PR #9) for R0 arbitration per §2.1/§6 — nothing forced, PR #8 closed as
+    opened-in-error. Residuals for R6 recorded in receipt.
 base:
   repo: "syllabai-v2 @ post-W0; frozen refs: core identity services + docs/DEPLOYMENT.md"
 basis: >
