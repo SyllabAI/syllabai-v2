@@ -2,12 +2,37 @@ version: 1
 task:
   id: T-MIG-001
   title: "Contracts wave-1 — port ALL identity-domain DTOs to zod (from frozen core src/main/java/com/syllabai/identity/dto/)"
-  owner: "unassigned"
-  status: OPEN
+  owner: "R1-contracts (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)"
+  status: IN_REVIEW # claimed 2026-10-04T18:00:34Z (commit 17796af); branch t-mig-001/r1; no fence conflicts (only peer branch t-mig-000/r7, disjoint globs)
   priority: P0
   wave: 1
   deps: []
-  execution_record: "—"
+  execution_record: >
+    2026-10-04 (R1, session web-df0238cc). ALL five identity DTOs ported +
+    verified against the frozen core (shallow clone, read-only):
+    RegisterRequest, LoginRequest, PasswordChangeRequest (NEW), AuthResponse,
+    UserView + Role.java enum (roleSchema, NEW) with roleSchema typing
+    UserView.roles. 28 unit pins co-located in src/auth.test.ts (fence-safe),
+    all green; contracts typecheck clean; apps/api seed tests unaffected
+    (32/32 repo-wide). Receipt: .syllabai/receipts/T-MIG-001/
+    run-001-contracts-identity.json. FIDELITY FIXES to the seed exemplar
+    (Java wins, index.ts rule 1): F1 removed .strict() — core has no
+    FAIL_ON_UNKNOWN_PROPERTIES override, unknown keys are accepted+stripped
+    like Jackson; F2 added @NotBlank-mirroring refine (blank '  ' now
+    rejected; padded ' Ann ' still valid); F3 replaced zod .email() with
+    isJakartaEmail (Hibernate semantics: 'a@b' VALID, last-@ split, local
+    <=64, label <=63, domain <=255) — seed's TLD-requiring regex wrongly
+    rejected 'a@b'; F4 roles narrowed to the three Role names (Set<Role> +
+    Enum::name evidence); F5 role-STRING policy boundary documented for
+    T-MIG-010 (ADMIN refused at SERVICE — AuthService.java:102 — not at the
+    DTO). Known residuals flagged for R6 golden capture: bracketed IP-literal
+    domains + quoted local parts (Hibernate-accepted, schema-rejected) —
+    never widened silently. Pre-existing seed issue observed + reproduced on
+    clean seed: apps/api typecheck TS2688 (bun-types) — belongs to the
+    T-MIG-000 workspace lane. Fence disclosure: receipts dir not in this
+    task's scope.allowed list (seed predates T-MIG-010's receipts line) but
+    §2 rule 5 binds every PR; task-namespaced path, disclosed, included.
+    Root bun.lock deliberately NOT committed (T-MIG-000 scope).
 base:
   repo: "syllabai-v2 @ seed; syllabai-core @ main (frozen) — DTO dir is the spec"
 basis: >
