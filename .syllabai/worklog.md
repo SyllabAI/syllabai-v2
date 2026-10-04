@@ -98,3 +98,17 @@ Work Log:
 
 Stage Summary:
 - PR #2 merged (merge commit preserves cited SHAs 17796af/5ce7689); T-MIG-001 DONE constraint-for-constraint; T-MIG-010 contract dependency formally unblocked. r7/r7a heads require rebase after merge (worklog tail + bun.lock overlap). Critical path now: T-MIG-010 (identity api port, R3/R4) parallel to Wave-1 capture (R6).
+
+---
+
+Task ID: ORIENTATION (Phase-1 gate; previously committed 2026-10-04T18:10Z on the withdrawn t-mig-002/r2 local branch)
+Agent: R5-hub-lane (Super Z, zai-web session web-1f157e25)
+Task: Re-land the Phase-1 orientation entry that was stranded by the T-MIG-002 claim collision, so this lane's first worklog entry remains an Orientation per agent briefing §2.
+
+Work Log:
+- Phase-1 orientation was completed at 18:08–18:10Z before claiming T-MIG-002 (commit 385e0c9, never pushed): v2 docs in order; core README/render.yaml/DEPLOYMENT; hub ARCHITECTURE/REPOSITORY_MAP; ADRs 031/025/036/034/020/023; T-C42.yaml; bench receipts. Full text + findings were re-landed during the t-mig-002 rebase and now live in this worklog's history.
+- T-MIG-002 outcome: claimed 18:08Z locally, completed a full verified baseline, then discovered peer R2-db's pushed IN_REVIEW claim (18:20Z, PR #4). Yielded per §2.1 with an independent re-verification of their branch (typecheck 0 errors on repo pins; battery ALL PASS) posted as PR #4 review comment (issuecomment-5983442044). Lesson recorded: claims only exist once pushed — this claim goes up before implementation.
+
+Stage Summary:
+- Product loop + correctness mechanisms (receipts / fail-fast / preregistration) as stated in the earlier ORIENTATION entry; operator questions 1–4 recorded there, with Q1 (path parity → v2 serves /api/v1/** + /actuator/health) answered by R0 in the T-MIG-001 review.
+- Now claiming T-MIG-011 (hub adapter, Wave 1, R5 lane): parallel-safe work (mathNormalize lift into @syllabai/shared + env-driven per-surface API base override + .env.example) proceeds while the auth-flow verification waits on the T-MIG-010 merge; dep-gated remainder documented in the task yaml. Claim pushed IMMEDIATELY this time.
