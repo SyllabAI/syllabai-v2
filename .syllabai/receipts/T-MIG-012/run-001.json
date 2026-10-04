@@ -1,0 +1,32 @@
+{
+  "task": "T-MIG-012",
+  "agent": "superz-agent-b (session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)",
+  "lane": "R3 (apps/api config; self-selected per briefing §5 blank-role protocol)",
+  "branch": "t-mig-012/r3 (base: main @ 2cfaf41)",
+  "date": "2026-10-05",
+  "change": {
+    "file": "apps/api/tsconfig.json",
+    "diff": "\"types\": [\"bun-types\"] → \"types\": [\"bun\"]",
+    "root_cause": "tsconfig referenced the legacy 'bun-types' type-library name while the installed devDep is @types/bun ^1.2.0 (which itself depends on and re-exports bun-types). tsc type-library resolution therefore failed with TS2688 on every compile.",
+    "alternative_rejected": "adding 'bun-types' as an explicit devDep — would have duplicated @types/bun's own dependency, changed package.json + lockfile (T-MIG-000 PR territory), and frozen a legacy name. One-line tsconfig change touches no dependency graph."
+  },
+  "why_this_task_existed": "apps/api/tsconfig.json is in NO seeded task's scope.allowed (T-MIG-010's fence lists routes/middleware/services/test globs only). Filed+claimed as T-MIG-012 per AGENT_COORDINATION §6.1/§3.3. Impact if unfixed: root package.json 'typecheck' chains apps/api typecheck, and CI runs 'bun run typecheck' on every pull_request → EVERY fleet PR (open PRs #1/#3 included) inherits RED CI. First documented in the superseded T-MIG-001 receipt run-001.json (verified pre-existing via git stash -u round-trip on pristine main); re-verified on main @ 2cfaf41 before claiming.",
+  "commands": [
+    { "cmd": "cd apps/api && bunx tsc --noEmit", "before": "error TS2688: Cannot find type definition file for 'bun-types'.", "after": "exit 0" },
+    { "cmd": "bun run typecheck (root)", "result": "exit 0, FOUR tsc invocations (packages/contracts, packages/shared, packages/db, apps/api) — root gate green for the first time in repo history" },
+    { "cmd": "bun test apps/api packages", "result": "32 pass / 0 fail / 75 expect() calls across 2 files (28 contracts from merged T-MIG-001 + 4 api seed tests — matches the merged T-MIG-001 receipt exactly)" },
+    { "cmd": "bun golden/runner.ts --selftest", "result": "PASS — 'selftest OK: tolerance engine behaves'" }
+  ],
+  "fence": "Files touched in this PR: apps/api/tsconfig.json (one line), .syllabai/tasks/T-MIG-012-api-tsc-resolution.yaml, .syllabai/receipts/T-MIG-012/run-001.json, .syllabai/worklog.md (append-only). All inside scope.allowed. ci.yml typo (branches: ain]) DISCLOSED in task yaml + PR body, NOT touched — both T-MIG-000 PRs edit it.",
+  "findings_forwarded": [
+    "FOR T-MIG-000 WINNER / R0: .github/workflows/ci.yml line 6 reads 'branches: ain]' (YAML-parses as a scalar filter, so push-CI triggers for no real branch; pull_request CI unaffected). One-character-class fix belongs to whoever lands T-MIG-000 — both open PRs already edit ci.yml.",
+    "FOR R6 (golden capture lane): UserView.roles is a Java Set → Jackson serializes with UNDEFINED array order → auth golden cases must tolerate roles ordering (recorded in worklog; superseded-duplicate cross-validation entry has details).",
+    "FOR R3/R4 (future T-MIG-010 owner): @types/bun now provides ambient bun globals to tsc; on any future bun runtime major upgrade, re-verify 'types' resolution still matches @types/bun's re-export of bun-types."
+  ],
+  "environment": {
+    "github_pat": "operator-issued fresh PAT verified (api.github.com /user → 200, login SyllabAI); push/PR executed with it",
+    "neon": "api.neon.tech DNS-dead (no public A/AAAA — consistent with r2's DoH census); irrelevant to this task (zero DB surface)",
+    "residual": "none introduced; TS2688 eliminated at the root gate"
+  },
+  "verdict": "T-MIG-012 COMPLETE: one-line tsconfig fix; root typecheck green across all four workspaces for the first time; all gates green; every fleet PR unblocked from inheriting red CI. Ready for R0 review."
+}
