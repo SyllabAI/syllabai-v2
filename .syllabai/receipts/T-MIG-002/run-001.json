@@ -1,0 +1,60 @@
+{
+  "task": "T-MIG-002",
+  "run": "run-001",
+  "agent": "R2-db (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "date": "2026-10-04T18:40:00Z",
+  "base": {
+    "repo": "syllabai-v2 @ main a945c20 (claim commit ab9928d on branch t-mig-002/r2)",
+    "neon_project": "billowing-cherry-15418366 (SyllabAI, pg18, org org-withered-mud-59985156)",
+    "neon_branch": "t-mig-002/r2 = br-dry-sun-a5wsx9n1 (pre-existing name-conformant branch, reused — parented on production br-muddy-bar-a5huwldd; production compute never contacted)",
+    "neon_endpoint_created": "ep-small-sun-a5ufn5s6 (read_write, on br-dry-sun-a5wsx9n1)"
+  },
+  "what": [
+    "drizzle-kit pull of the live Neon end-state on the task branch (introspection only; zero DDL anywhere; flyway_schema_history read via SELECT count only)",
+    "generated artifacts committed byte-identical after relocation into fenced paths: packages/db/src/schema/{schema.ts,relations.ts,custom_types.ts}, packages/db/drizzle/{0000_organic_mauler.sql,meta/0000_snapshot.json,meta/_journal.json}",
+    "schema README (inventory + flyway exclusion + core-owned list + re-baseline procedure)",
+    "BASELINE_DB §3 verification checklist executed live against the branch (9/9 PASS)"
+  ],
+  "toolchain_facts": [
+    "sandbox: bun 1.3.14, node v24.21.0 — no JDK (per charter)",
+    "FINDING F1: api.neon.tech does not resolve in public DNS (DoH via dns.google + cloudflare-dns.com both return NOERROR, zero A records). Working control-plane base: https://console.neon.tech/api/v2. This also explains R7-flex's ORIENTATION egress observation — not a sandbox egress block.",
+    "FINDING F2 (declared-pair defect): packages/db/package.json declares drizzle-kit ^0.30.0 + drizzle-orm ^0.38.0; drizzle-kit 0.30.6 hard-imports drizzle-orm/gel-core which orm 0.38.4 does not export → 'db:pull' fails at startup as declared. Additionally, kit 0.30.6 (even with a gel-capable orm) crashes mid-pull on this database: ZodError 'Expected string, received null' at squashIdx path …columns.2.expression (a real index in this schema carries a null expression entry).",
+    "FINDING F3 (renderer defects in kit 0.31.11, fixed deterministically): (a) SQL empty-string defaults rendered as .default(') — 5 sites, fixed to .default(''); (b) unknown(\"col\") emitted for bytea/tsvector columns with no import — 3 sites, replaced by customType shims in src/schema/custom_types.ts. Fix script: scripts/fix_kit_empty_default.py (agent-side, idempotent, logged site-by-site). Post-fix verification proves 579/579 columns match the snapshot (columns.parity PASS).",
+    "DEVIATION D1 (recorded per AGENT_COORDINATION §2.5): the pull ran in an isolated toolchain OUTSIDE the repo (drizzle-kit 0.31.11 + drizzle-orm 0.45.3 + @neondatabase/serverless 1.2.0) because the declared in-repo pair cannot execute pull (F2) and packages/db/package.json is outside this task's scope.allowed. Only generated ARTIFACTS entered the repo; dependency realignment is flagged as a follow-up for the package.json owner.",
+    "DEVIATION D2: Neon branch t-mig-002/r2 (br-dry-sun-a5wsx9n1) pre-existed the git claim with no compute endpoint and no repo trace (likely a predecessor session lost before claiming). Reused instead of duplicating; own endpoint ep-small-sun-a5ufn5s6 added. If a competing claim surfaces, earliest-claim-wins applies (AGENT_COORDINATION §2.1).",
+    "verification ran against the REPO's drizzle-orm 0.38.4 at runtime (not the isolated toolchain) to prove the committed schema loads on the declared version; ephemeral verifier deleted post-run (its output is committed here), since no script file is inside scope.allowed"
+  ],
+  "verification_summary": {
+    "checks_passed": "9/9",
+    "detail_file": "run-001-verification.json",
+    "inventory": "live 62 == snapshot 62 == runtime 62 (no missing/extra)",
+    "columns": "579 checked, 0 mismatches (name/notNull/literal-default parity runtime vs snapshot)",
+    "flyway": "63 rows present, read-only; modelled in generated schema, documented as never-managed",
+    "rowcounts": "users 322, exam_papers 108, questions 1526, question_versions 1526, attempts 217, flashcard_ratings 28, skill_states 187; documents 877 VALIDATED + 146 REJECTED + 0 SUGGESTED; document_chunks 4740 total / 4740 embedded / 4740 at embed_rev=2 (T-C42 recorded 2935 at embed_rev=2 on 2026-10-02 — growth is the recorded wave-2 validation expansion, not a discrepancy)",
+    "pgvector": "extension vector 0.8.6; document_chunks.embedding vector(768) — the only vector column",
+    "envmapping": "client.ts guards proven live: blank DATABASE_URL throws; jdbc: prefix throws; clean URL passes"
+  },
+  "fences": {
+    "touched": [
+      "packages/db/src/schema/schema.ts (generated + logged renderer fixes)",
+      "packages/db/src/schema/relations.ts (generated, byte-identical)",
+      "packages/db/src/schema/custom_types.ts (generated-companion shims)",
+      "packages/db/src/schema/README.md (allowed by task scope)",
+      "packages/db/drizzle/0000_organic_mauler.sql + meta/* (generated)",
+      ".syllabai/receipts/T-MIG-002/**",
+      ".syllabai/tasks/T-MIG-002.yaml (status/execution_record only)",
+      ".syllabai/worklog.md (append-only; process artifact per AGENT_COORDINATION §5)"
+    ],
+    "untouched_on_purpose": [
+      "packages/db/package.json (outside scope.allowed — F2 follow-up flagged)",
+      "packages/db/src/index.ts (outside scope.allowed — 'export * from ./schema' wiring flagged as the lane's one-line follow-up)",
+      "bun.lock at repo root (untracked artifact of bun install; T-MIG-000's fence)",
+      "production Neon branch (never contacted)"
+    ]
+  },
+  "next_safe_actions": [
+    "lane owner: align packages/db/package.json drizzle versions (F2) and wire 'export * from ./schema' into packages/db/src/index.ts — both one-liners inside packages/db but outside this task's fence",
+    "R0/R6: capture lane can now boot golden replay against a v2 api using this baseline schema on a task branch (T-MIG-003 dependency chain)",
+    "ops: one-line docs note that the Neon control-plane base is console.neon.tech/api/v2 (F1) — R7 docs lane"
+  ]
+}
