@@ -1,0 +1,33 @@
+{
+  "task": "R7-housekeeping (R0-directed; no task id)",
+  "run": "ruling1-receipts-backfill",
+  "agent": "R7a (agent-da4ab8, zai session web-da4ab8b1)",
+  "recorded_at": "2026-10-05T12:25:00+06:00",
+  "directive": "R0 review 5407522112 ruling 1: 'receipts-dir fence gap ACCEPTED — §2 rule 5 binds every PR; R7 to backfill standard receipts line into remaining seed yamls'",
+  "branch": "r7/yaml-receipts-backfill (off origin/main 2cfaf41)",
+  "survey": {
+    "method": "for each .syllabai/tasks/T-MIG-*.yaml: grep 'receipts/<task-id>' (exact id match, not substring)",
+    "results": {
+      "T-MIG-000": "MISSING — patched (run receipts existed at .syllabai/receipts/T-MIG-000/ since run-01 without the scope line)",
+      "T-MIG-001": "leave as-is — scope line genuinely absent, but task is DONE/merged; gap was explicitly disclosed in its execution_record and accepted by R0 in the same review that issued this directive; amending a DONE yaml post-merge adds audit noise for zero procedural gain",
+      "T-MIG-002": "has the line from seed (line 21)",
+      "T-MIG-003": "MISSING — patched (had only .syllabai/receipts/capture/** for golden fixtures; run receipts had no home)",
+      "T-MIG-010": "has the line from seed",
+      "T-MIG-011": "has the line from seed"
+    }
+  },
+  "diff": [
+    "+    - \".syllabai/receipts/T-MIG-000/**\"  (inserted before the task-yaml scope entry, mirroring T-MIG-002's ordering)",
+    "+    - \".syllabai/receipts/T-MIG-003/**\"  (inserted after .syllabai/receipts/capture/** — capture fixtures vs run receipts stay separated)"
+  ],
+  "invariants": [
+    "two added lines, zero removed lines, no other file touched",
+    "no yaml status/owner/execution_record fields modified (this PR only widens scope fences per integrator directive)",
+    "no overlap with any open lane's substance: T-MIG-002/003 owners' '(status/execution_record only)' edit rights are unaffected; their branches will take a trivial one-line merge at next rebase"
+  ],
+  "disclosures": [
+    "this receipt lives at .syllabai/receipts/R7-housekeeping/ — a directory whose scope no yaml grants; it exists precisely because the directive is to close the receipts-scope gap itself (chicken-and-egg acknowledged by R0's ruling)",
+    "merge-order note: if this PR lands AFTER PR #3, PR #3 needs a one-line rebase on T-MIG-000-workspace-unification.yaml (both add adjacent lines); if BEFORE, PR #3 rebases clean"
+  ],
+  "verdict": "ruling 1 executed for the two remaining seed yamls; diff minimal and additive-only"
+}
