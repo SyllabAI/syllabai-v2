@@ -279,3 +279,23 @@ Work Log:
 
 Stage Summary:
 - T-MIG-003 claimed at 2026-10-04T18:17Z by R6. Execution begins: capture health+auth cases from the frozen core (Render for read-only surfaces; Neon branch + local boot for write surfaces if feasible), scrub deterministically, prove the live replay gate against a booted v2 api, receipts to .syllabai/receipts/T-MIG-003/.
+
+---
+
+Task ID: T-MIG-003
+Agent: R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
+Task: Golden-master bring-up — capture health+auth golden cases from the frozen core, scrub, prove the live replay gate against a booted v2 api.
+
+Work Log:
+- Claimed T-MIG-003 at 2026-10-04T18:17Z (same commit as branch t-mig-003/r6) after collision checks: PR #1=T-MIG-000 (R7, in review), branches t-mig-000/r7 + t-mig-001/r1 exist, Neon branch t-mig-002/r2 created 18:12Z (= R2 active on T-MIG-002 — hands off packages/db/**).
+- Session A (READ-ONLY, Render core): woke syllabai-core.onrender.com (~105s), captured 11 cases — health + every DTO validation boundary + unknown-email 401 + both role gates. Zero production writes; probe write-safety proven from frozen source ordering (@Valid → dup-email → role gates → save) BEFORE probing.
+- Session B (WRITE surfaces, branch only): built the frozen core locally (Temurin JDK 25.0.4.1, Maven 3.9.16, mvn -DskipTests package exit 0), created Neon branch t-mig-003/r6 (COW of production; pre-boot verification: 62 tables, 63 flyway rows, pgvector 0.8.6 + vector(768) columns, questions 1526 / attempts 217 / users 322), booted it (prod profile, 512MB heap, port 8090) — Flyway validated 63 migrations and ran NONE. Captured 5 write cases: register 201, duplicate 409, login 200, wrong-password 401, /me 200. Exactly one synthetic STUDENT account created on the branch.
+- Scrubbed deterministically; committed 16 golden cases (each with source line + tolerate list).
+- Proved the LIVE gate: v2 api booted locally; --selftest OK (run twice — before/after a one-line runner hardening: null request body now means absent, construction only, diff engine untouched); full --target replay 0/16 PASS with every failure classified expected-pending + owned. The 0/16 IS the deliverable: it is T-MIG-010's acceptance worklist, expressed as recorded evidence.
+- Findings F-1..F-5 recorded in .syllabai/receipts/T-MIG-003/run-001.json: F-1 seed health case stricter than the real core (case corrected, justified:true, R0 approval requested); F-2 mount gap /api/auth vs /api/v1/auth; F-3 501-pending + ApiError shape; F-4 fail-fast env gate exported but NEVER wired (blank-secret boot proven live); F-5 runner GET-body crash (fixed in-lane).
+- Receipts: .syllabai/receipts/capture/2026-10-04/run-001-render-core.json, run-002-neon-branch-boot.json, .syllabai/receipts/T-MIG-003/run-001.json. Raw captures kept outside the repo (nothing to scrub — synthetic from creation). Branch credentials in a 0600 env file outside all repos; branch deletable after review.
+
+Stage Summary:
+- The capture→scrub→replay→diff loop is LIVE and proven end-to-end with 16 real cases covering the whole auth surface (happy paths, every validation boundary, both fail-closed role gates — teacher join-code is a 403, captured not assumed — and the no-factor-echo 401s).
+- Wave-1 replay blockers are now precisely known and owned: remount /api/v1/auth (T-MIG-010), port handlers to ApiError shapes (T-MIG-010), add actuator groups field (one-liner for R0 to route), wire requireEnv (R0 to route).
+- Zero writes to production anywhere in the run; Neon branch t-mig-003/r6 (br-divine-mode-a5xur4zv) can be dropped once this PR merges.

@@ -3,11 +3,34 @@ task:
   id: T-MIG-003
   title: "Golden-master bring-up — boot Java core locally (Neon branch), capture health+auth cases, prove live replay gate"
   owner: "R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)"
-  status: CLAIMED # 2026-10-04T18:17Z — claim protocol §2.1; branch t-mig-003/r6
+  status: IN_REVIEW # claimed 2026-10-04T18:17Z; PR opened with receipts; DONE is R0's call
   priority: P0
   wave: 0
   deps: [T-MIG-000]
-  execution_record: "—"
+  execution_record: >
+    2026-10-04T18:17Z CLAIMED by R6 (superz-golden, zai-web session
+    web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0) after peer-collision checks
+    (PR #1=T-MIG-000 in review; t-mig-000/r7 + t-mig-001/r1 pushed; Neon
+    t-mig-002/r2 hours old = R2 active on T-MIG-002). 2026-10-04T18:19-18:40Z
+    EXECUTED run-001+run-002: captured 11 read-only cases from the deployed
+    frozen Render core (zero production writes; role-gate probes proven
+    pre-save via frozen source ordering) and 5 write-surface cases from a
+    LOCAL frozen-core boot (JDK 25 build exit 0) against Neon branch
+    t-mig-003/r6 (COW of production; Flyway validated all 63 migrations and
+    ran none — baseline doctrine confirmed live). Scrubbed deterministically
+    (GOLDEN_MASTER §2.3), committed 16 golden cases + source lines.
+    PROVED the live replay gate: v2 api booted locally, --selftest OK,
+    full --target replay 0/16 with every failure classified as
+    expected-pending and owned (15 auth -> T-MIG-010 via F-2 mount gap
+    /api/auth vs core+hub /api/v1/auth + F-3 501-pending/shape; 1 health
+    -> F-1 case corrected to the core's real {groups,status} shape with
+    justified:true, integrator approval requested). Findings F-1..F-5 in
+    .syllabai/receipts/T-MIG-003/run-001.json — notably F-4: v2's fail-fast
+    boot gate (requireEnv) is exported but never wired; blank-secret boot
+    PROVEN to succeed live. F-5: runner one-line hardening (null body ==
+    absent, construction only; selftest re-run green). Dep note: executed
+    while dep T-MIG-000 is IN_REVIEW (PR #1) — golden/** + apps/api
+    unaffected by the hub workspace unification; operator Q5 in worklog.
 base:
   repo: "syllabai-v2 @ seed; Java core runnable per its docs/DEPLOYMENT.md (frozen)"
 basis: >

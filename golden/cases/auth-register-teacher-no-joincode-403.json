@@ -1,0 +1,27 @@
+{
+  "name": "auth-register-teacher-no-joincode-403",
+  "description": "Teacher join-code gate FAILS CLOSED as 403 forbidden (ForbiddenException, not 400) \u2014 captured, not assumed",
+  "source": "captured from Render core https://syllabai-core.onrender.com 2026-10-04T18:19-18:26Z by T-MIG-003 run-001 (R6); payloads synthetic/masked at capture; no PII present",
+  "method": "POST",
+  "path": "/api/v1/auth/register",
+  "request": {
+    "body": {
+      "email": "user_4@example.invalid",
+      "password": "goodpass1234",
+      "displayName": "User 4",
+      "role": "TEACHER"
+    }
+  },
+  "expect": {
+    "status": 403,
+    "body": {
+      "status": 403,
+      "error": "forbidden",
+      "message": "teacher registration requires a valid join code",
+      "timestamp": "2026-10-04T18:25:25.710035156Z"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

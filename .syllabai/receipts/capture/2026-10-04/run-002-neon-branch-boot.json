@@ -1,0 +1,28 @@
+{
+  "receipt": "T-MIG-003 run-002 — capture session B (write surfaces, local frozen-core boot on Neon branch)",
+  "schema": "syllabai.v2.t-mig-003.capture/1.0",
+  "agent": "R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)",
+  "captured_utc": "2026-10-04T18:36Z",
+  "source_of_truth": {
+    "kind": "local boot of the frozen Java core (built from frozen main tree with Temurin JDK 25.0.4.1 + Maven 3.9.16; mvn -DskipTests package exit 0)",
+    "jar": "syllabai-core-0.1.0-SNAPSHOT.jar (Spring Boot 4.1.1)",
+    "boot_profile": "prod, server.port=8090, -Xmx512m (render.yaml 512MB recipe honoured)",
+    "database": "Neon BRANCH t-mig-003/r6 (br-divine-mode-a5xur4zv, copy-on-write of production br-muddy-bar-a5huwldd; endpoint ep-young-tooth-a5pmlrjx.us-east-2.aws.neon.tech, PostgreSQL 18.6)",
+    "boot_evidence": "boot log: 'Successfully validated 63 migrations (execution time 00:00.891s)' — Flyway validated the COW end-state and ran NOTHING (baseline doctrine, BASELINE_DB.md §1); T-C11 concept graph loaded (272 validated semantic edges / 217 nodes); Tomcat on 8090; /actuator/health UP after 33s"
+  },
+  "safety": {
+    "production_writes": 0,
+    "branch_writes": "exactly one STUDENT account (user_10@example.invalid) + its 2 login events; branch-scoped, deletable with the branch after review",
+    "decay_note": "prod profile decay scheduler no-ops against the COW (today's decay_job_runs window row already exists in the copied end-state; 18:36Z is outside the 03:00 UTC window and its catch-up horizon)",
+    "pii": "none — account created synthetic (masked identity from creation); password synthetic, never captured anywhere"
+  },
+  "captures": [
+    {"case": "auth-register-success", "status": 201, "body": "AuthResponse{accessToken(JWT HS384, scrubbed), tokenType:'Bearer', user{id,email,displayName,roles:['STUDENT']}}", "jwt_claim_shape": "sub/jti/uid=<uuid>, ver=1, broles=[STUDENT], iat/exp — preserved in the case description for R-JWT compat"},
+    {"case": "auth-register-duplicate-email", "status": 409, "body": "conflict / email already registered"},
+    {"case": "auth-login-success", "status": 200, "body": "AuthResponse (same shape; fresh token)"},
+    {"case": "auth-login-wrong-password", "status": 401, "body": "invalid_credentials / invalid credentials — identical shape to unknown-email (no factor echo)"},
+    {"case": "auth-me-with-token", "status": 200, "body": "UserView{id,email,displayName,roles:['STUDENT']}"}
+  ],
+  "branch_verification_preboot": "62 public tables; flyway_schema_history 63 rows; pgvector 0.8.6 with two vector(768) embedding columns (matches EmbeddingConfig's 768 boot guard); counts: questions 1526, attempts 217, users 322, skill_states 187, review_schedules 184",
+  "credentials_handling": "branch connection string held in a 0600 env file OUTSIDE all repos; password never echoed, never committed; branch deletable after review"
+}

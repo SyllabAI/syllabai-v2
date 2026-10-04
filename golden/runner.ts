@@ -57,7 +57,10 @@ async function replayAgainst(target: string, kase: GoldenCase): Promise<string |
   const res = await fetch(new URL(kase.path, target), {
     method: kase.method,
     headers: { "content-type": "application/json", ...(kase.request?.headers ?? {}) },
-    body: kase.request?.body !== undefined ? JSON.stringify(kase.request.body) : undefined,
+    // T-MIG-003 run-002 hardening: a null body must mean ABSENT (GET cases
+    // encode headers-only); JSON.stringify(null) would crash fetch on GET.
+    // Construction only — the diff engine is untouched.
+    body: kase.request?.body != null ? JSON.stringify(kase.request.body) : undefined,
   });
   let body: unknown = null;
   try {

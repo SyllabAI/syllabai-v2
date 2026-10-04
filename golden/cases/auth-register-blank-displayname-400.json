@@ -1,0 +1,27 @@
+{
+  "name": "auth-register-blank-displayname-400",
+  "description": "Blank displayName: 'displayName: must not be blank'",
+  "source": "captured from Render core https://syllabai-core.onrender.com 2026-10-04T18:19-18:26Z by T-MIG-003 run-001 (R6); payloads synthetic/masked at capture; no PII present",
+  "method": "POST",
+  "path": "/api/v1/auth/register",
+  "request": {
+    "body": {
+      "email": "user_7@example.invalid",
+      "password": "goodpass1234",
+      "displayName": "",
+      "role": "STUDENT"
+    }
+  },
+  "expect": {
+    "status": 400,
+    "body": {
+      "status": 400,
+      "error": "validation_failed",
+      "message": "displayName: must not be blank",
+      "timestamp": "2026-10-04T18:25:35.997835695Z"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}
