@@ -483,3 +483,5 @@ Work Log:
 
 Stage Summary:
 - Harness/capture items for R6/R0 (golden/** fence): runner tolerate wiring, scrub substitution, write-case ordering, bearer-token injection.
+
+Stage Summary addendum (T-MIG-013): CI first ran red on a test-harness timing artifact (epoch-aligned 60s window boundary crossed mid-loop reset the per-account counter → Expected 9 / Received 7); assertions made boundary-robust; CI verify+hub both success on the hardened head. PR #12 awaiting R0 (task-id ratification + merge).

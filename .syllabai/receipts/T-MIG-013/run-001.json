@@ -5,23 +5,28 @@
   "agent": "R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
   "context": "Follow-up to the merged T-MIG-010 (PR #11, DONE): the T-MIG-003 golden replay (run-003 in the T-MIG-010 receipts) surfaced four capture-ground-truth divergences AFTER the merge; this task lands them.",
   "changes": [
-    "jwt.ts — R-JWT alg selection fixed: jjwt chooses HS256/HS384/HS512 by SECRET BYTE LENGTH (the deployed core signs HS384 per the captured token; the JwtService class doc's 'HS256' is stale). Port now selects identically and parse accepts the whole HmacSHA family, rejecting others. This is the cutover-critical fix: main's merged port would REJECT every Java-issued token.",
-    "routes/auth/index.ts — capture-pinned message shims: @Email → 'must be a well-formed email address' (Hibernate 9; R1 to adopt in packages/contracts at source); empty-body field-error order pins 'password: must not be blank' on register+login (core ordering is not declaration order; R6 asked to probe re-capture stability).",
-    "routes/health.ts — {groups:[liveness,readiness],status:'UP'} (actuator-health-parity case, justified:true by T-MIG-003). OUT-OF-FENCE one-liner, R0 ratify.",
-    "test/identity — alg-selection tests (32/49/64-byte secrets → HS256/384/512), capture-pinned message assertions, empty-body pin.",
-    "tools/run-tolerant-replay.ts (T-MIG-010 receipts dir) — fence-safe tolerant classification tool; golden/** untouched."
+    "jwt.ts \u2014 R-JWT alg selection fixed: jjwt chooses HS256/HS384/HS512 by SECRET BYTE LENGTH (the deployed core signs HS384 per the captured token; the JwtService class doc's 'HS256' is stale). Port now selects identically and parse accepts the whole HmacSHA family, rejecting others. This is the cutover-critical fix: main's merged port would REJECT every Java-issued token.",
+    "routes/auth/index.ts \u2014 capture-pinned message shims: @Email \u2192 'must be a well-formed email address' (Hibernate 9; R1 to adopt in packages/contracts at source); empty-body field-error order pins 'password: must not be blank' on register+login (core ordering is not declaration order; R6 asked to probe re-capture stability).",
+    "routes/health.ts \u2014 {groups:[liveness,readiness],status:'UP'} (actuator-health-parity case, justified:true by T-MIG-003). OUT-OF-FENCE one-liner, R0 ratify.",
+    "test/identity \u2014 alg-selection tests (32/49/64-byte secrets \u2192 HS256/384/512), capture-pinned message assertions, empty-body pin.",
+    "tools/run-tolerant-replay.ts (T-MIG-010 receipts dir) \u2014 fence-safe tolerant classification tool; golden/** untouched."
   ],
   "verification": {
     "typecheck": "0 errors",
-    "unit": "bun test apps/api packages → 107 pass / 0 fail / 4 skip (integration tier)",
+    "unit": "bun test apps/api packages \u2192 107 pass / 0 fail / 4 skip (integration tier)",
     "golden_selftest": "selftest OK",
-    "golden_replay_identity_subset": "13/16 TOLERANT-PASS, 0 GENUINE-FAIL (SCRUB-GAP login-success, STATE-ORDER register-success, TOKEN-INJECT me-with-bearer — harness/capture items owned by R6/R0, see T-MIG-010 run-003 for full classification)",
-    "full_54_case_note": "the 38 new T-MIG-004 wave-2 cases also replay; unported W2 surfaces classify as expected-pending for their owning lanes — not assessed in this receipt"
+    "golden_replay_identity_subset": "13/16 TOLERANT-PASS, 0 GENUINE-FAIL (SCRUB-GAP login-success, STATE-ORDER register-success, TOKEN-INJECT me-with-bearer \u2014 harness/capture items owned by R6/R0, see T-MIG-010 run-003 for full classification)",
+    "full_54_case_note": "the 38 new T-MIG-004 wave-2 cases also replay; unported W2 surfaces classify as expected-pending for their owning lanes \u2014 not assessed in this receipt"
   },
   "harness_items_reported_to_R6_R0": [
-    "golden/runner.ts deepEqual drops the case tolerate list (deepEqualTolerant unused in replay) — 12 identity cases fail on tolerated timestamps only; one-line fix in R6's fence",
+    "golden/runner.ts deepEqual drops the case tolerate list (deepEqualTolerant unused in replay) \u2014 12 identity cases fail on tolerated timestamps only; one-line fix in R6's fence",
     "replay-time scrub substitution (accessToken/user.id) for success cases",
     "write-case ordering/state isolation (register-success vs duplicate-email on a fresh DB)",
     "bearer-token injection mechanism for auth-me-with-bearer-200"
-  ]
+  ],
+  "ci": {
+    "verify": "success",
+    "hub": "success",
+    "note": "CI green on the hardened head; the earlier red (Expected 9 / Received 7) was a test-harness timing artifact \u2014 the epoch-aligned 60s window boundary crossed mid-loop and legitimately reset the per-account counter; assertions made boundary-robust (relative before-count, exact ==0 after success, ==1 after one fresh failure). The budget implementation itself is correct per LoginAttemptBudget.java."
+  }
 }
