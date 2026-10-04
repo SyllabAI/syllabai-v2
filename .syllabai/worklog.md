@@ -238,3 +238,44 @@ Stage Summary:
 - Baseline COMMITTED and gated: the Drizzle schema now exists from the live end-state (never replayed), flyway_schema_history modelled-but-never-managed and documented in the schema README, core-owned bookkeeping tables enumerated, production untouched
 - Fleet-relevant findings: F1 control-plane base is console.neon.tech/api/v2 (api.neon.tech is DNS-dead — no public A record; resolves R7-flex's ORIENTATION egress question); F2 the declared kit^0.30+orm^0.38 pair cannot run db:pull (gel-core import + squasher ZodError on a null-expression index) — package.json realignment flagged for the lane owner (outside my fence); F3 two deterministic renderer fixes applied scriptedly and proven snapshot-faithful (5 default sites, 3 customType shim sites)
 - Follow-ups recorded (all outside my fence): wire `export * from "./schema"` into packages/db/src/index.ts; align packages/db package.json drizzle versions; R7 one-liner doc note for the Neon API base
+
+---
+
+Task ID: ORIENTATION (pre-claim, Phase 1 deliverable)
+Agent: R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
+Task: Phase-1 orientation tour of the frozen org before any migration code — syllabai-core, syllabai-hub, master-pack ADRs + T-C42, syllabai-resources receipt heritage.
+
+Work Log:
+- Read v2 docs in mandated order (README, MIGRATION_PLAN, AGENT_COORDINATION, GOLDEN_MASTER, BASELINE_DB, REFERENCE_DOCS, worklog, tasks/*).
+- Toured syllabai-core: README, render.yaml, docs/DEPLOYMENT.md, JwtService + EmbeddingConfig boot gates, GlobalExceptionHandler/ApiError, controller inventory.
+- Toured syllabai-hub: docs/ARCHITECTURE.md, docs/REPOSITORY_MAP.md, package.json, next.config.ts, api.ts/core-proxy.ts env coupling, mathNormalize.ts.
+- Read all 13 master-pack ADRs (root-level files, not docs/adr/) + .syllabai/tasks/T-C42.yaml; toured syllabai-resources (receipts actually live in graph/reports/, not bench/review/).
+
+Stage Summary:
+(a) THE PRODUCT LOOP, in my own words: SyllabAI is an exam-preparation platform for Pearson Edexcel-style papers (pilot: IGCSE Chemistry 4CH1, ~50 students). A student registers (teachers gate themselves in via join codes), studies a curriculum-aligned content corpus organized around official specification points, attempts exam-paper questions, and gets them marked by Smart Mark — the single marking authority, scored per QuestionPart against teacher-validated scheme points — or by honest self-marking against the scheme. From that evidence the platform computes (never persists, ADR-031/032/035) a learner model: BKT mastery with format-aware guess rates, misconception posteriors that age toward the population prior, and Ebbinghaus decay over frozen-per-practice bands; a deterministic next-best-action engine turns that state into recommendations and a review agenda that becomes exam-aware (days-to-exam tier) without ever letting learners type their own exam dates. Flashcard reviews run on an append-only rating trail merged by sync receipts, driving review timing only — never mastery. The tutor/CLA is retrieval-grounded against the curriculum graph + pgvector embeddings and refuses deterministically when grounding is empty; the teacher side runs enrollment-scoped marking queues, class knowledge graphs, coverage analytics, and revision notes. All of it sits on one Neon Postgres (+pgvector) behind a Java 25 Spring modular monolith on Render's free tier, with a Next.js 16/bun hub on Vercel; the org runs the whole thing like a research program: every claim carries a receipt, every gate fails closed, every verdict is recorded even when negative.
+
+(b) THREE CORRECTNESS MECHANISMS, one concrete example each:
+  1. RECEIPTS — ADR-034 makes flashcard trail-merge identity receipt-based: every device rating carries sync: "core"|"local", written at the only moment truth is knowable (the submit outcome), because "receipts, not timestamps, are the cross-side identity"; the same culture shows in T-C42's execution_record quoting operator trace 1a0f8d431a7cbc8d, PR #44, merge 5ef132b, and CI run ids as a matter of course.
+  2. FAIL-FAST — JwtService's constructor throws IllegalStateException at Spring boot when SYLLABAI_JWT_SECRET is blank or <32 bytes ("must be set to at least 32 bytes"); EmbeddingConfig likewise refuses to boot if the embedding dimension is not exactly 768, because the V11 pgvector column is vector(768) and a mismatch would only surface after API spend. The v2 api's src/env.ts ports this discipline verbatim.
+  3. PREREGISTRATION / HONEST VERDICTS — ADR-033's C4 ships a pre-registered calibration review protocol ("one variable per PR, predicted signature before merge, post-change checkpoint with revert", admissibility floors 35/100/400, "an empty bin is no evidence, never good evidence"); the production probe reports κ as N/A until validated content exists rather than faking a green check, T-C69 records "verdict NOT PROMOTED (a finding)" as its deliverable, and ADR-036 explicitly refuses to self-accept (operator ratification is a separate recorded step).
+
+(c) QUESTIONS FOR THE OPERATOR (unclear points):
+  1. api.neon.tech currently has NO public A/AAAA record (verified via Google + Cloudflare DoH); console.neon.tech/api/v2 serves the same control plane and works with NEON_PAT. Should BASELINE_DB/AGENT_COORDINATION document console.neon.tech as the fallback host for agents whose resolvers fail on api.neon.tech?
+  2. Briefing shorthand vs reality: master-pack ADRs sit at repo ROOT (not docs/adr/), and syllabai-resources receipts live in graph/reports/ (not bench/review/). Confirm the briefing is shorthand and REFERENCE_DOCS.md's paths should be re-baselined to actual tree locations.
+  3. Doc drift inside frozen core: README says "Flyway V1–V14" and a 13-module map; the tree has 63 migrations and ~24 top-level packages. MIGRATION_PLAN already says 63 — confirm the FILE TREE (not core docs) is the authoritative port-map source.
+  4. Path-parity gap found in the seed: core serves /api/v1/auth/** (hub client agrees) but the v2 scaffold mounts /api/auth (no v1). My golden cases will record the CORE's real paths; the mount fix belongs to T-MIG-010's fence. Flagging here so R3 doesn't discover it mid-port.
+  5. T-MIG-003's dep T-MIG-000 is IN_REVIEW (PR #1). Proceeding on the seed tree since golden/** + apps/api are untouched by the hub workspace unification — confirm that reading of the dependency.
+
+---
+
+Task ID: T-MIG-003
+Agent: R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
+Task: CLAIM T-MIG-003 (golden-master bring-up) — branch t-mig-003/r6, claim recorded in the task yaml in this same commit (claim protocol §2.1).
+
+Work Log:
+- Peer-collision check before claiming: open PR #1 = T-MIG-000 (R7, in review); git branches t-mig-000/r7 + t-mig-001/r1 pushed; Neon branch t-mig-002/r2 created 2026-10-04T18:12:33Z (R2 active — hands off packages/db/**). T-MIG-003 was the highest-priority OPEN task with no overlapping claim.
+- Feasibility probe passed: Render core URL resolves (read-only capture source); Maven Central + Adoptium DNS OK (local Java boot for write-surface capture possible); bun toolchain live for replay half.
+- Scope fences honored: golden/**, .syllabai/receipts/capture/**, task yaml only.
+
+Stage Summary:
+- T-MIG-003 claimed at 2026-10-04T18:17Z by R6. Execution begins: capture health+auth cases from the frozen core (Render for read-only surfaces; Neon branch + local boot for write surfaces if feasible), scrub deterministically, prove the live replay gate against a booted v2 api, receipts to .syllabai/receipts/T-MIG-003/.
