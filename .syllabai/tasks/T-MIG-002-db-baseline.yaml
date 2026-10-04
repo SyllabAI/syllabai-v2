@@ -2,8 +2,8 @@ version: 1
 task:
   id: T-MIG-002
   title: "DB baseline — drizzle-kit pull of the Neon end-state onto a branch, verify, commit schema"
-  owner: "unassigned"
-  status: OPEN
+  owner: "R2-db (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)"
+  status: CLAIMED # claimed_at 2026-10-04T18:20:00Z; branch t-mig-002/r2; fences disjoint from T-MIG-000 (PRs #1/#3), T-MIG-001 (PR #2) — no overlap with packages/db/**
   priority: P0
   wave: 0
   deps: []
