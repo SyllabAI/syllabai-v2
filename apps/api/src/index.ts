@@ -109,10 +109,8 @@ app.onError((err, c) => {
 
 export default app;
 
-// Local dev server (bun). On Vercel, the default export above is the entry.
-// import.meta.main: importing this module from tests must not bind a port.
-if (typeof Bun !== "undefined" && import.meta.main) {
-  const port = Number(process.env.PORT ?? 8080);
-  Bun.serve({ port, fetch: app.fetch });
-  console.log(`[syllabai-v2 api] listening on :${port}`);
-}
+// Local dev: `bun apps/api/src/index.ts` — Bun auto-serves the default fetch
+// handler (honours $PORT, default 3000); do NOT also call Bun.serve here, the
+// double-bind crashes boot (found in T-MIG-010 replay bring-up). On Vercel the
+// default export above is the entry; under `bun test` nothing serves (module
+// is imported, import.meta.main false).

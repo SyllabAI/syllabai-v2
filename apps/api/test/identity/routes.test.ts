@@ -243,14 +243,14 @@ describe("POST /api/v1/auth/register — AuthController.java:34-41 parity", () =
     expect(((await res.json()) as { user: { displayName: string } }).user.displayName).toBe("42");
   });
 
-  test("coerced email that then fails @Email → 400 'must be a valid email' (Jakarta after binding)", async () => {
+  test("coerced email that then fails @Email → 400 capture-pinned well-formed message (Jakarta after binding)", async () => {
     const res = await post(app, "/api/v1/auth/register", {
       email: 123,
       password: STRONG,
       displayName: "Coerced",
     });
     expect(res.status).toBe(400);
-    expect((await res.json() as ApiErrorBody).message).toBe("email: must be a valid email");
+    expect((await res.json() as ApiErrorBody).message).toBe("email: must be a well-formed email address");
   });
 
   test("array for a string field → 400 malformed_body (HttpMessageNotReadable parity)", async () => {

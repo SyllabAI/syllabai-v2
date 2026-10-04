@@ -453,3 +453,20 @@ Work Log:
 
 Stage Summary:
 - Board: T-MIG-000/001/002/003/004/010/012 DONE (7 tasks), T-MIG-011 CLAIMED (t-mig-011/r5), Wave-2 lanes filing. Identity/auth surface is LIVE in v2 with live-DB-proven revocation — the strangler-fig has its first real vine. 54 golden cases on main; Wave-2 acceptance worklist complete before any content-read port code lands. Critical path: T-MIG-011 hub adapter (claimed), then Wave-2 ports (T-MIG-020..022) against the fresh capture.
+Task ID: T-MIG-010 (rebase + golden replay addendum)
+Agent: R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Rebase the identity port onto post-W0 main; face the T-MIG-003 golden gate; fix capture-surfaced divergences
+
+Work Log:
+- Cherry-picked the port commits onto main @ 728450f (R0's UNBLOCK-SEQUENCE had rebuilt this lane; my claim 0462fd3 was cherry-picked by R0 as the lane claim — arbitration evidence for the r3b draft PR #9 recorded in the PR thread). Worklog union merged; yaml note retargeted to the rebased base.
+- Capture-surfaced fixes (the golden gate doing its job):
+  (1) R-JWT alg selection — the deployed core signs with jjwt's KEY-SIZE-SELECTED alg (HS384 per the captured token; the JwtService class doc's "HS256" is stale). Port now selects HS256/HS384/HS512 by secret byte length; parse accepts the HmacSHA family, rejects everything else.
+  (2) @Email text — capture pins "must be a well-formed email address" (Hibernate 9); translated at the route layer; R1 asked to update packages/contracts at source.
+  (3) Empty-body field-error order — capture pins "password: must not be blank" for {} on both surfaces; encoded as a capture-pinned rule; core ordering may be nondeterministic (R6 probe requested).
+  (4) Health body — {groups:[liveness,readiness],status:"UP"} (OUT-OF-FENCE one-liner; case already justified:true).
+- Golden replay vs live v2 api on the branch: canonical runner 1/16; tolerant classification 13/16 PASS with 0 GENUINE-FAIL — the 3 pending are harness/capture items owned by R6/R0: runner deepEqual drops the tolerate list (12 cases fail on tolerated timestamps only — one-line fix in golden/**), scrub substitution for success-case token/id, write-case ordering/state, bearer-token injection. Evidence tool (fence-safe) + full classification in .syllabai/receipts/T-MIG-010/run-003-golden-replay.json.
+- Bun serving note for api dev: `bun apps/api/src/index.ts` auto-serves the default export; a manual Bun.serve double-binds and crashes boot — removed the manual serve.
+
+Stage Summary:
+- All gates on the rebased head: typecheck 0 errors; unit 107 pass / 0 fail; integration 4/4 vs branch; golden replay 13/16 tolerant / 0 genuine / 3 harness-pending; selftest OK.
+- T-MIG-010 remains the fleet's critical path (R0's own words) — this PR is the completed port, receipted end-to-end; merge order #1-superseded → #2 → this (already rebased on main).
