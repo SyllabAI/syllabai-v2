@@ -219,3 +219,22 @@ Stage Summary:
 - Correctness mechanism 3 — pre-registration + honest verdicts: ADR-031 discloses that the regression test REPLACED one asserting the buggy write-through, and that pre-existing rows keep unrecoverable anchors (conservative error direction); ADR-036 stays PROPOSED until the operator's ACCEPT; ADR-023 records its benchmark BLOCKED-in-authoring-environment rather than claiming a pass.
 - Unclear / questions for the operator: (1) BASELINE_DB §3 row-count spot checks say "read through the Java core (or its seeded receipts)" — no JDK exists in this toolchain by charter; I intend to take the counts via SELECT-only SQL against the task branch (copy of production end-state). Confirm that is an acceptable read instrument for the checklist. (2) docs never state the Neon API base; api.neon.tech is DNS-dead and console.neon.tech/api/v2 works — worth one line in BASELINE_DB.md (R2 lane can add it with R0's word; staying out of docs/ this run per fence). (3) The Neon branch t-mig-002/r2 (br-dry-sun-a5wsx9n1) pre-exists my claim with no endpoint and no git trace — likely a predecessor session that died before claiming. I reuse it (adding my own endpoint) rather than duplicating; if a live claim surfaces, earliest-claim-wins applies and R0 arbitrates. (4) T-MIG-000 has two competing PRs (#1 r7, #3 r7a) — R0 merge-authority call, noted for the fleet.
 - Self-selection: briefing role slot was blank → claimed T-MIG-002 (P0, wave 0, zero deps, unclaimed; fence packages/db/** + own receipts/yaml is disjoint from every active lane) as R2-db. Claim recorded in the same commit as this entry per AGENT_COORDINATION §2.1.
+
+---
+
+Task ID: T-MIG-002
+Agent: R2-db (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: DB baseline — drizzle-kit pull of the Neon end-state onto a branch, verify, commit schema.
+
+Work Log:
+- Claimed T-MIG-002 (claim commit ab9928d, includes my Phase-1 ORIENTATION entry above); branch t-mig-002/r2
+- Neon: reused the pre-existing name-conformant branch t-mig-002/r2 (br-dry-sun-a5wsx9n1, copy-on-write of production; no git trace of a prior claim — D2 in receipt), added read_write endpoint ep-small-sun-a5ufn5s6; production compute never contacted; all reads SELECT-only
+- Baseline: drizzle-kit pull against the branch URL → 62 tables / 579 columns / 87 indexes / 54 FKs / 98 check constraints / 0 views / 0 enums; artifacts relocated byte-identical into packages/db/src/schema/** + packages/db/drizzle/**
+- Typecheck + runtime proof on the REPO's drizzle-orm 0.38.4: tsc --noEmit clean; all 62 tables importable via getTableConfig
+- BASELINE_DB §3 checklist executed live: 9/9 PASS (inventory triple-match, 579/579 column parity, flyway 63 rows read-only + never-managed note, row-count spot checks, pgvector 0.8.6 + vector(768), client.ts env guards proven)
+- Receipts: .syllabai/receipts/T-MIG-002/run-001.json + run-001-verification.json (findings F1–F3, deviations D1–D2, next_safe_actions)
+
+Stage Summary:
+- Baseline COMMITTED and gated: the Drizzle schema now exists from the live end-state (never replayed), flyway_schema_history modelled-but-never-managed and documented in the schema README, core-owned bookkeeping tables enumerated, production untouched
+- Fleet-relevant findings: F1 control-plane base is console.neon.tech/api/v2 (api.neon.tech is DNS-dead — no public A record; resolves R7-flex's ORIENTATION egress question); F2 the declared kit^0.30+orm^0.38 pair cannot run db:pull (gel-core import + squasher ZodError on a null-expression index) — package.json realignment flagged for the lane owner (outside my fence); F3 two deterministic renderer fixes applied scriptedly and proven snapshot-faithful (5 default sites, 3 customType shim sites)
+- Follow-ups recorded (all outside my fence): wire `export * from "./schema"` into packages/db/src/index.ts; align packages/db package.json drizzle versions; R7 one-liner doc note for the Neon API base
