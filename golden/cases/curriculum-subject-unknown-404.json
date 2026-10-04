@@ -1,0 +1,19 @@
+{
+  "name": "curriculum-subject-unknown-404",
+  "description": "GET /api/v1/curriculum/subjects/{unknown-uuid}: 404 not_found with fixed client message echoing the id (shared NotFoundException advice shape)",
+  "source": "captured from the deployed frozen Java core (Render, https://syllabai-core.onrender.com) on 2026-10-05T19:02Z by T-MIG-004 run-001 (w0a); read-only GET, zero production writes; no PII present",
+  "method": "GET",
+  "path": "/api/v1/curriculum/subjects/00000000-0000-4000-8000-0000000000a1",
+  "expect": {
+    "status": 404,
+    "body": {
+      "status": 404,
+      "error": "not_found",
+      "message": "subject 00000000-0000-4000-8000-0000000000a1 not found",
+      "timestamp": "2026-10-04T19:02:11.418749281Z"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

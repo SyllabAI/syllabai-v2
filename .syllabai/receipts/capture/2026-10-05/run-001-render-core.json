@@ -1,0 +1,28 @@
+{
+  "receipt": "T-MIG-004 run-001 — capture session A (unauthenticated authz/404/400 shapes, deployed frozen Render core)",
+  "schema": "syllabai.v2.t-mig-004.capture/1.0",
+  "agent": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "captured_utc": "2026-10-05T19:02Z",
+  "source_of_truth": {
+    "kind": "deployed frozen core (READ-ONLY surfaces only)",
+    "base_url": "https://syllabai-core.onrender.com",
+    "cold_start": "two failed probes 18:53-18:55Z during parallel local work; UP on the 19:02Z pre-matrix gate probe (~5-9 min spin-down window consistent with Render free tier; wake loop discipline confirmed necessary)"
+  },
+  "safety": {
+    "production_writes": 0,
+    "read_only_justification": "unauthenticated GETs only: the Spring security filter chain answers 401/403 BEFORE any controller/validation path runs, and the two captured non-401s are a pure read (subjects/{unknown-uuid} -> 404) and a type-mismatch rejection (not-a-uuid -> 400). No request in this matrix reaches any persistence path. No credentials of any kind were used.",
+    "pii": "none — no bodies contain user data; the only echoed identifiers are fixed synthetic unknown-id constants"
+  },
+  "captures": [
+    {"case": "curriculum-versions-unauthed-401", "status": 401, "body": "Boot default error shape {timestamp,status,error:'Unauthorized',path}"},
+    {"case": "content-reader-unauthed-401", "status": 401, "note": "401 fires BEFORE the existsCitable corpus gate"},
+    {"case": "question-assets-unauthed-401", "status": 401},
+    {"case": "content-docs-unauthed-401", "status": 401, "note": "/api/v1/teacher/** route matcher, pre-controller"},
+    {"case": "content-docs-search-unauthed-401", "status": 401},
+    {"case": "teacher-content-review-queue-unauthed-401", "status": 401},
+    {"case": "teacher-curriculum-versions-unauthed-401", "status": 401},
+    {"case": "curriculum-subject-unknown-404", "status": 404, "body": "not_found, fixed message echoes the (synthetic constant) id"},
+    {"case": "curriculum-subject-bad-uuid-400", "status": 400, "body": "Boot default MethodArgumentTypeMismatch shape"}
+  ],
+  "cross_boot_consistency": "the same 6 unauthenticated families were additionally captured against the run-002 LOCAL boot; 401 bodies byte-identical modulo timestamp/date headers — wire contract confirmed stable across environments"
+}
