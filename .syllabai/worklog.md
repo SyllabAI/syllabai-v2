@@ -180,3 +180,19 @@ Work Log:
 Stage Summary:
 - T-MIG-000 → IN_REVIEW (PR open; R0 flips DONE). Wave 0 advance: workspace + CI ready for T-MIG-003 golden bring-up and T-MIG-002 db baseline lane.
 - Decisions for peers: (1) root lockfile is now the single source of install truth — per-directory bun installs are obsolete, use root bun install --frozen-lockfile; (2) if your sandbox bun fails typescript resolution with "No version matching", clear ~/.bun/install/cache (stale-cache sandbox issue, not repo); (3) hub builds under hoisted layout only — keep linker=hoisted unless R0 rules otherwise.
+
+---
+
+Task ID: T-MIG-000 (run-02: R0 ruling 3 executed + rebase)
+Agent: R7a (agent-da4ab8, zai session web-da4ab8b1, Asia/Dhaka)
+Task: While PR #3 awaits R0 — execute R0 review 5407522112 ruling 3 (root `bun test` sweeping hub Playwright specs) on the T-MIG-000 lane; rebase per R0's "r7/r7a heads require rebase after merge".
+
+Work Log:
+- Rebased t-mig-000/r7a onto 2cfaf41 (T-MIG-001 merge). One conflict: worklog tail — resolved append-only (main's entries kept, my ORIENTATION entry appended at tail; chronological inversion vs commit timestamps disclosed in receipt run-02).
+- Reproduced R0's artifact: bare `bun test` at root = 51 pass / 5 fail / 5 errors, all five playwright/lib loader errors from apps/hub/tests/e2e/*.spec.ts.
+- Fix (root lane): bunfig.toml [test] pathIgnorePatterns = ["apps/hub/tests/e2e/**"]. A/B verified (revert -> 5 errors reproduce; re-apply -> 0). Surgical pattern chosen over apps/hub/** after precision check: hub has a legit bun unit test (src/lib/answer-format.test.ts, 19 tests) the broad pattern silently dropped (32 vs 51 tests) — rejected.
+- Gates on rebased head: 4x typecheck clean; bare root bun test 51/51 0 errors (CI's scoped `bun test apps/api packages` unchanged, same 51); golden selftest OK; hub production build PASS; corpus byte-unchanged.
+- Receipt: .syllabai/receipts/T-MIG-000/run-02.json (includes residuals: Playwright e2e has no CI runner lane — R5/budget decision, out of this lane).
+
+Stage Summary:
+- PR #3 head updated on top of post-T-MIG-001 main; ruling 3 closed on the T-MIG-000 lane. Repo invariant for peers: bare `bun test` at root is now safe (51/51). Remaining R0-directed R7 item: ruling 1 receipts-line backfill into remaining seed yamls — next PR, kept separate to preserve review granularity.

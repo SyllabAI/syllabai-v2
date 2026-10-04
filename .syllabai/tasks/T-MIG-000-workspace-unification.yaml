@@ -32,6 +32,17 @@ task:
     per-directory CI installs — the substance of this task). Findings: first
     install hit a stale sandbox bun cache (typescript resolution) — not a
     repo defect; documented so peers don't chase it.
+    2026-10-05 run-02 (post-rebase, R0 review 5407522112 ruling 3 executed):
+    rebased onto 2cfaf41 (worklog tail conflict resolved append-only; commit
+    timestamps authoritative, file order inverted by merge order — disclosed);
+    bare root `bun test` no longer sweeps hub Playwright e2e specs — bunfig
+    [test] pathIgnorePatterns=["apps/hub/tests/e2e/**"] (surgical: hub unit
+    test answer-format.test.ts stays in scope; broader apps/hub/** rejected
+    for exactly that reason). A/B verified (control 56/8files/5errors ->
+    fixed 51/3files/0errors). Gates on rebased head: 4x typecheck clean,
+    bare bun test 51/51, golden selftest OK, hub production build PASS,
+    corpus byte-unchanged. Evidence: .syllabai/receipts/T-MIG-000/run-02.json
+
 base:
   repo: "syllabai-v2 @ seed; syllabai-hub frozen @ 93226a43"
 basis: >

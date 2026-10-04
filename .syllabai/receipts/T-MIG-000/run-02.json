@@ -1,0 +1,65 @@
+{
+  "task": "T-MIG-000",
+  "run": "run-02",
+  "agent": "R7a (agent-da4ab8, zai session web-da4ab8b1)",
+  "recorded_at": "2026-10-05T12:05:00+06:00",
+  "base": {
+    "branch": "t-mig-000/r7a",
+    "rebased_onto": "2cfaf41 (Merge PR #2: T-MIG-001 identity contracts DONE)",
+    "trigger": "R0 review 5407522112 ruling 3 + R0 note 'r7/r7a heads require rebase after merge'"
+  },
+  "environment": {
+    "bun": "1.3.14",
+    "node": "v24.21.0",
+    "os": "linux (agent sandbox)"
+  },
+  "objective": "Execute R0 ruling 3 (root-level `bun test` sweeping hub Playwright specs = 5 loader errors, tooling artifact) on the T-MIG-000 lane, and rebase the branch onto post-T-MIG-001 main.",
+  "steps": [
+    {
+      "step": "rebase onto origin/main 2cfaf41",
+      "command": "git fetch origin && git rebase origin/main",
+      "result": "rebased; commits reissued as 602f329 (claim+orientation) and 0a536ab (workspace unification). Single conflict: .syllabai/worklog.md (tail append on both sides) resolved by keeping main's merged entries (R1 orientation, T-MIG-001, R0 review) and appending this agent's ORIENTATION entry at the tail — append-only preserved. DISCLOSED: my ORIENTATION entry (claim ts 2026-10-04T17:53:51Z) now sits BELOW R1's entries (18:00:34Z+) — chronological inversion is an artifact of merge order, commit timestamps are the authoritative order."
+    },
+    {
+      "step": "reproduce R0 finding",
+      "command": "bun test  (bare, repo root)",
+      "result": "REPRODUCED: 51 pass / 5 fail / 5 errors across 8 files; all 5 failures are playwright/lib loader errors from apps/hub/tests/e2e/{a11y,deck-flow,outbound-links,pp-viewer,tutor-rail}.spec.ts ('Playwright Test did not expect test.beforeEach() to be called here')"
+    },
+    {
+      "step": "fix: bunfig [test] pathIgnorePatterns",
+      "command": "bunfig.toml += [test] pathIgnorePatterns = [\"apps/hub/tests/e2e/**\"]",
+      "result": "bare `bun test` at root now 51 pass / 0 fail across 3 files (apps/api/test/api.test.ts, packages/contracts/src/auth.test.ts, apps/hub/src/lib/answer-format.test.ts)"
+    },
+    {
+      "step": "A/B rigor for the fix",
+      "command": "revert bunfig -> bun test -> re-apply -> bun test",
+      "result": "control (no [test] section): 56 tests / 8 files / 5 errors — REPRODUCES the artifact; with [test] section: 51 tests / 3 files / 0 errors. The bunfig key (bun 1.3.14) is demonstrably the cause of the change, not ambient drift."
+    },
+    {
+      "step": "pattern precision check",
+      "command": "rg -l '\\.(test|spec)\\.(ts|tsx|js)$' apps/hub",
+      "result": "hub contains exactly two kinds of test files: Playwright e2e specs (tests/e2e/*.spec.ts — excluded) and a bun-compatible unit test src/lib/answer-format.test.ts (19 tests — kept in scope). An initial broader pattern apps/hub/** was REJECTED because it silently excluded the hub unit test (32 vs 51 tests); surgical pattern apps/hub/tests/e2e/** preserves the full 51-test pin count."
+    },
+    {
+      "step": "CI unchanged by design",
+      "command": "grep 'bun test' .github/workflows/ci.yml",
+      "result": "CI Test step is `bun test apps/api packages` (already path-scoped in run-01); the bunfig exclusion now makes a BARE root `bun test` (what any peer or R0 gate re-run invokes) equally safe. Both invocations agree at 51/51."
+    }
+  ],
+  "gates": [
+    {"gate": "typecheck (contracts, shared, db, api)", "result": "PASS — 4x tsc --noEmit exit 0"},
+    {"gate": "bun test (bare, repo root)", "result": "PASS — 51/51, 0 errors"},
+    {"gate": "golden selftest", "result": "PASS — 'selftest OK: tolerance engine behaves'"},
+    {"gate": "hub production build (bun run build:hub)", "result": "PASS — corpus-verify prebuild OK, full Next route table"},
+    {"gate": "corpus untouched", "result": "PASS — git status apps/hub/content + content-maps empty (byte-unchanged)"}
+  ],
+  "fence_disclosures": [
+    "bunfig.toml (root) is inside scope.allowed ('bun.lock / bunfig.toml (root)')",
+    ".syllabai/receipts/T-MIG-000/** not in seed scope.allowed — same gap R0 accepted for T-MIG-001 (ruling 1); receipt line backfill for remaining seed yamls is R0-directed R7 housekeeping, executed separately"
+  ],
+  "residuals": [
+    "Playwright e2e still has no runner lane in CI (hub lane runs build only, per run-01 D3). If the operator wants e2e in CI, that is a hub-lane (R5) + budget decision — out of T-MIG-000 scope.",
+    "answer-format.test.ts (hub) now runs in the root suite by default; if R5 prefers it out of the fast lane, that is a one-line bunfig addition in their lane."
+  ],
+  "verdict": "R0 ruling 3 executed and verified; branch rebased; all gates green on the post-rebase head."
+}
