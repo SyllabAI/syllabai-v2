@@ -41,6 +41,7 @@ scope:
   allowed:
     - "golden/**"
     - ".syllabai/receipts/capture/**"
+    - ".syllabai/receipts/T-MIG-003/**"
     - ".syllabai/tasks/T-MIG-003.yaml (status/execution_record only)"
   forbidden:
     - "writing into production Neon (capture writes go to a Neon branch)"

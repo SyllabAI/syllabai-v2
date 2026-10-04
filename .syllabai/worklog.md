@@ -299,3 +299,17 @@ Stage Summary:
 - The capture→scrub→replay→diff loop is LIVE and proven end-to-end with 16 real cases covering the whole auth surface (happy paths, every validation boundary, both fail-closed role gates — teacher join-code is a 403, captured not assumed — and the no-factor-echo 401s).
 - Wave-1 replay blockers are now precisely known and owned: remount /api/v1/auth (T-MIG-010), port handlers to ApiError shapes (T-MIG-010), add actuator groups field (one-liner for R0 to route), wire requireEnv (R0 to route).
 - Zero writes to production anywhere in the run; Neon branch t-mig-003/r6 (br-divine-mode-a5xur4zv) can be dropped once this PR merges.
+
+---
+
+Task ID: R7-housekeeping (R0 review 5407522112 ruling 1)
+Agent: R7a (agent-da4ab8, zai session web-da4ab8b1, Asia/Dhaka)
+Task: Backfill the standard receipts scope line into remaining seed yamls, per R0 directive.
+
+Work Log:
+- Surveyed all six T-MIG yamls with exact-id grep: 002/010/011 have the line from seed; 001's gap is DONE/merged + disclosed (left untouched — post-merge amendment would be audit noise); exactly two MISSING: T-MIG-000, T-MIG-003.
+- Patched both: added `- ".syllabai/receipts/T-MIG-000/**"` and `- ".syllabai/receipts/T-MIG-003/**"` to scope.allowed (2 added lines total, 0 removed, no other field touched). For 003 the capture/** fixtures dir is kept separate from run receipts.
+- Receipt: .syllabai/receipts/R7-housekeeping/ruling1-receipts-backfill.json (discloses the self-referential receipts-dir gap this directive inherently creates, and the merge-order interaction with PR #3).
+
+Stage Summary:
+- Ruling 1 closed. Every OPEN task yaml now grants its own receipts dir; §2 rule 5 (receipt in every PR) is enforceable by fence-check, not goodwill. Branch r7/yaml-receipts-backfill off 2cfaf41 → PR.
