@@ -114,3 +114,21 @@ Work Log:
 
 Stage Summary:
 - T-MIG-010 → CLAIMED (IN_PROGRESS at first push). Identity spec fully read; port begins: jwt/password(Bun bcrypt cost 12)/budget/store/service/bootstrap/middleware/routes + identity test suite.
+
+---
+
+Task ID: T-MIG-010
+Agent: R3-lane-A (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Port identity/auth module (Wave 1) — register/login/JWT/RBAC/bootstrap-admin, golden-gated.
+
+Work Log:
+- Ported the full identity module against the frozen spec (every Java file read line-by-line; DDL taken from Flyway V1/V19/V46): services/identity/{env,jwt,budget,password,store,service,bootstrap,validation}.ts + middleware/{auth,cors}.ts + routes/auth/{index,stub}.ts
+- R-JWT: jjwt alg-by-key-length mirrored (HS256/384/512), alg-mismatch rejected, claims sub/jti/uid/ver/roles pinned, exp==now valid, constant-time compare; R-BCRYPT: Bun bcrypt cost 12, $2a↔$2b bidirectional; R5: per-TARGET-account budget before bcrypt, 429+Retry-After; R1: token_version revocation end-to-end pinned (rotation kills old token); V19: armed-at wall-clock window, fail-closed 403 join gate, ADMIN never self-serviceable
+- Validation boundary: Jackson coercion + jakarta texts + declaration-order first-violation + Hibernate @Email ''/null short-circuit; Boot /error (401/403) vs ApiError shapes kept DISTINCT — both mirrored
+- Store: MemoryIdentityStore (hermetic tests) + PgIdentityStore (raw parameterized SQL through the @syllabai/db client — ZERO packages/db edits, schema.ts stays R2's; column names from Flyway DDL)
+- 86 identity pins; repo suite 118/118 (contracts 28 + seed 4 + identity 86); apps/api tsc exit 0 (seed TS2688 resolved sandbox-only via untracked symlink — T-MIG-000's lane)
+- Receipt: .syllabai/receipts/T-MIG-010/run-001-identity-port.json (deviations D1-D7 disclosed: bootstrap tx emulation with compensating delete, legacy /api/auth stub kept for un-editable seed tests, IP-tier filter out of scope, index.ts mount per R0 ruling, drizzle-orm packaging note for T-MIG-000)
+- Status → IN_REVIEW (PR open)
+
+Stage Summary:
+- T-MIG-010 → IN_REVIEW. Identity surface answers what the frozen core answers at every boundary I could pin without live capture; residuals handed to R6 (Boot-error timestamp form, Location URL form, email-ordering validation, T-MIG-001 IP-literal/quoted-local). Merge ordering for R0: after T-MIG-002 (db baseline) to avoid any packages/db adjacency; golden replay gate executes when T-MIG-003 lands auth cases.

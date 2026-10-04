@@ -1,23 +1,19 @@
 /**
- * /api/auth/** — first vertical slice of the contracts-first port (Wave 1).
+ * Legacy /api/auth mount — the seed's validation-live + honest-501 stub,
+ * PRESERVED VERBATIM (behaviour, not file location — moved under routes/auth/
+ * within T-MIG-010's fence).
  *
- * Status: REQUEST VALIDATION LIVE, HANDLERS PENDING PORT (T-MIG-010).
- *
- * Why validation first and not a stubbed 200: request validation is pure,
- * deterministic, and contracts-driven — it can reach golden-master parity
- * TODAY (same accepted/rejected sets as jakarta.validation on the Java
- * core), while the persistence + bcrypt + JWT half lands with the db
- * baseline (T-MIG-002). Until then the route answers 501 honestly rather
- * than pretending. No silent fakes — the frozen core's discipline.
- *
- * Java sources (frozen):
- *   syllabai-core/src/main/java/com/syllabai/identity/... (AuthController,
- *   BootstrapAdminController, PasswordChangeRequest, UserService)
+ * Why it stays: apps/api/test/api.test.ts pins this surface (400 validation /
+ * 501 honest port-pending on a valid payload) and sits outside T-MIG-010's
+ * fence. The REAL identity port serves /api/v1/auth/** (path parity with the
+ * frozen core — R0 ruling in the PR #2 review, note 3; R6 orientation flag
+ * Q4). The stub answers 501 with a pointer to the ported surface and is
+ * removed when the hub re-points (T-MIG-011) — never a fake 200.
  */
 import { Hono } from "hono";
 import { loginRequestSchema, registerRequestSchema } from "@syllabai/contracts";
 
-export const authRoute = new Hono()
+export const legacyAuthStub = new Hono()
   .post("/register", async (c) => {
     const parsed = registerRequestSchema.safeParse(await c.req.json().catch(() => null));
     if (!parsed.success) {
@@ -29,7 +25,7 @@ export const authRoute = new Hono()
         status: 501,
         error: "Not implemented — port pending",
         task: "T-MIG-010",
-        note: "Request shape validated against @syllabai/contracts (parity-verified); persistence lands with the db baseline.",
+        note: "Identity module is PORTED at /api/v1/auth/** (path parity). This legacy mount answers 501 until the hub re-points (T-MIG-011).",
       },
       501,
     );

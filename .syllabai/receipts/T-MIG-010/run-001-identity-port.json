@@ -1,0 +1,73 @@
+{
+  "task": "T-MIG-010",
+  "title": "Port identity/auth module (Wave 1) — register/login/JWT/RBAC/bootstrap-admin",
+  "agent": "R3-lane-A (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "claimed_at": "2026-10-04T18:39:30Z",
+  "claim_commit": "4a95a8b (branch t-mig-010/r3 from main 2cfaf41 = post-T-MIG-001 merge)",
+  "spec_sources_verified_frozen": {
+    "repo": "SyllabAI/syllabai-core @ main (shallow clone, read-only, never modified — C1)",
+    "files": [
+      "identity/AuthController.java (201+Location register, 200 login, me, 204 password)",
+      "identity/AuthService.java (role policy, fail-closed join gate, budget-before-bcrypt, ver bump)",
+      "identity/JwtService.java (HS256-family by key length, claims sub/jti/uid/ver/roles, PT2H)",
+      "identity/JwtAuthenticationFilter.java (fail-closed revocation: unknown/disabled/ver-mismatch)",
+      "identity/SecurityConfig.java (BCrypt 12, route rules, sendError(401) entry point, CORS)",
+      "identity/BootstrapAdminController.java + BootstrapAdminService.java + BootstrapStateStore.java (V19 window, R3 armed-at anchoring)",
+      "identity/User.java + UserRepository.java (token_version V46, rotation semantics)",
+      "shared/ApiError.java + shared/GlobalExceptionHandler.java (exact error bodies)",
+      "ratelimit/LoginAttemptBudget.java + RateLimitException.java + RateLimitProperties.java (R5 per-account budget)",
+      "db/migration/V1__identity.sql + V19__bootstrap_admin_state.sql + V46__user_token_version.sql (column names for raw SQL)"
+    ]
+  },
+  "delivered": {
+    "services_identity": [
+      "env.ts — IdentityConfig; JwtService boot gate (≥32 bytes, message verbatim); ttl parser (ISO-8601 + Spring simple); join-code trim; bootstrap switch; CORS origins (SYLLABAI_CORS_ORIGINS default verbatim)",
+      "jwt.ts — JwtPort: issue/verify, algForKey = jjwt hmacShaKeyFor selection (≥64→HS512, ≥48→HS384, else HS256), alg-mismatch rejection, constant-time sig compare, claims sub/jti/uid/ver/roles/iat/exp, exp==now still valid (jjwt exp.before(now)), UUID/role validation on parse, ver absent → null (fail-closed upstream)",
+      "budget.ts — LoginAttemptBudget port: per-TARGET-account fixed windows, MAX_KEYS 100k sweep, success clears, key = trim+lower, retryAfter = max(1, min(remaining, aligned)/1000 + 1), enabled switch, injectable clock",
+      "password.ts — Bun-native bcrypt, cost 12 (BCRYPT_COST), $2a↔$2b bidirectional cutover safety, malformed hash → false (matches() parity)",
+      "store.ts — IdentityStore port: MemoryIdentityStore (hermetic) + PgIdentityStore (raw parameterized SQL via @syllabai/db client; column names from Flyway DDL; NO packages/db edits — schema.ts stays R2's)",
+      "service.ts — AuthService port: register (409 dup case-insensitive; role matrix STUDENT/TEACHER+code/ADMIN-403/unknown-400; lowercase storage; displayName UNTRIMMED), login (budget first, one 401 shape, disabled account), me (404 'user <email> not found'), changePassword (current-password authorization, ver bump), provisionUser",
+      "bootstrap.ts — V19 window port: claimable (enabled && PENDING && zero ADMINs), claim matrix (disabled/missing/closed/EXPIRED/admin-exists 409s), 15-min wall-clock on armed-at (R3), ADMIN+TEACHER claimant, displayName TRIMMED (verified asymmetry), validatePasswordStrength defense-in-depth",
+      "validation.ts — Jackson coercion + jakarta message emulation: declaration-order first-violation, Hibernate @Email null/'' short-circuit, exact texts (must not be blank / must be a valid email / size must be between X and Y / must contain a letter|digit), malformed_body on non-scalar/non-object; contracts schemas as defense-in-depth gate"
+    ],
+    "middleware": [
+      "auth.ts — JwtAuthenticationFilter port (context-empty on any failure) + requireAuth (sendError(401) → Boot /error body) + requireRoles (AccessDeniedHandler → Boot /error 403) + ROUTE_ROLE_MAP (admin/teacher/research prefixes)",
+      "cors.ts — SecurityConfig#corsConfigurationSource port: origins/methods/headers/exposed Location/maxAge 3600, preflight 200 / 403 'Invalid CORS request'"
+    ],
+    "routes": [
+      "routes/auth/index.ts — createAuthApp composition root: /actuator/health byte-exact; /api/v1/auth/{register,login,me,password,bootstrap-status,bootstrap-admin}; 404 not_found; 500 internal_error opaque; identity onError (ApiError + Retry-After); createEnvRuntime (pg) + deferred runtime (loud named failure on first use when env absent)",
+      "routes/auth/stub.ts — seed's 501 stub preserved verbatim as the deprecated /api/auth alias (note updated to point at the ported surface)"
+    ],
+    "tests": "apps/api/test/identity/ — 86 pins across 7 files (jwt 13, budget 7, validation 21, service 16, bootstrap 8, routes 17, bcrypt 4)"
+  },
+  "compat_guarantees": {
+    "R-JWT": "same SYLLABAI_JWT_SECRET; alg selection mirrors jjwt by key length; Java-issued tokens verify (claims/alg/exp semantics pinned by tests); TS-issued tokens verify in jjwt",
+    "R-BCRYPT": "cost 12 encode; $2a (Java) and $2b (Bun) verify both directions",
+    "path-parity": "/api/v1/auth/** exact core paths; /actuator/health unchanged",
+    "validation": "jakarta texts + first-field ordering + Jackson coercion; 257-char email login-accepts/register-rejects pin carried from T-MIG-001",
+    "revocation": "ver claim vs users.token_version per request; rotation kills old tokens (pinned end-to-end)"
+  },
+  "verification": {
+    "identity_suite": "86 pass, 0 fail, 190 expect() (bun test test/identity/)",
+    "repo_suite": "118 pass, 0 fail (packages/contracts 28 + apps/api seed 4 + identity 86) — root-level sweep still excluded per seed CI design (hub Playwright specs)",
+    "contracts_typecheck": "bunx tsc --noEmit exit 0 in apps/api (see workspace note below)",
+    "workspace_typecheck_note": "seed TS2688 (bun-types) pre-exists and belongs to T-MIG-000; resolved in THIS SANDBOX ONLY via node_modules symlink (untracked, no repo edit). NEW packaging fact for T-MIG-000/R0: PgIdentityStore imports drizzle-orm from apps/api — drizzle-orm must be visible in apps/api's dependency graph at deploy time (either add to apps/api/package.json — needs R0 approval, package.json is outside my fence — or via T-MIG-000's workspace unification). Recorded as a named follow-up, not improvised."
+  },
+  "deviations_and_disclosures": [
+    "D1 bootstrap atomicity: core = single tx (saveAndFlush + conditional UPDATE, FOR UPDATE row lock); v2 neon-http has no interactive tx → validate → insert → conditional consume → verify claimed_by → compensating delete on lost race (rollback-equivalent state). Concurrent bootstrap claims are not a golden surface; disclosed for R0.",
+    "D2 deferred runtime: bare test boots without env keep the seed suite green; identity routes then fail loudly per-request naming the missing setting (the core's R2-tier doctrine). With env set, composition is boot-time fail-fast (JwtService ctor gate runs in createEnvRuntime AND createJwtService).",
+    "D3 legacy /api/auth mount KEPT as deprecated 501 alias — apps/api/test/api.test.ts pins it and is outside my fence; removed by T-MIG-011 (hub re-point). Parity surface is /api/v1/auth/** only.",
+    "D4 global IP-tier RateLimitFilter (core http/, M1) NOT ported — outside this yaml's scope (service-tier per-account budget IS ported — AuthService parity). Flagged for R0 task-filing.",
+    "D5 HSTS/referrer-policy security headers (R4) NOT ported — global header filter, platform lane. CORS header set ported per SecurityConfig.",
+    "D6 index.ts edited (mount re-point /api/auth → /api/v1/auth + delegation to createAuthApp) — assigned to T-MIG-010 by R0 ruling (PR #2 review note 3) + R6 orientation Q4 flag; index.ts claimed by no other lane; disclosed.",
+    "D7 routes/auth.ts MOVED to routes/auth/stub.ts (content preserved; 501 note updated) — same auth surface, within the spirit of scope 'apps/api/src/routes/auth/**'; disclosed."
+  ],
+  "residuals_for_golden_capture": [
+    "Boot /error timestamp format: core emits Jackson Date form (…+00:00); v2 emits ISO Z — inside tolerate:[timestamp], pinned here for R6",
+    "register Location header: absolute URL built from request (Spring UriComponentsBuilder parity) — capture pins the exact form behind Render's proxy",
+    "email boundary ordering: '' → 'must not be blank' vs ' ' → 'must be a valid email' (declaration-order emulation) — capture validates the emulation",
+    "T-MIG-001 residuals unchanged: bracketed IP-literal domains + quoted local parts (Hibernate-accepted, schema-rejected) — justified-divergence material, never silent widening",
+    "CORS response-header exact set on real (non-preflight) responses — capture validates"
+  ],
+  "secrets_scan": "staged diff scanned for ghp_/vcp_/napi_/gsk_/sk-or-/AQ.Ab8/AIza/x-access-token/PRIVATE-KEY patterns: zero hits (credentials live in sandbox env only)"
+}

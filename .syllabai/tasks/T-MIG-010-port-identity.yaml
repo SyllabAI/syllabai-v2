@@ -3,11 +3,20 @@ task:
   id: T-MIG-010
   title: "Port identity/auth module (Wave 1) — register/login/JWT/RBAC/bootstrap-admin, golden-gated"
   owner: "R3-lane-A (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)"
-  status: CLAIMED # 2026-10-04T18:39:30Z — branch t-mig-010/r3; fences disjoint from t-mig-000/r7(a) (workspace), t-mig-002/r2 (db), t-mig-003/r6 (golden); deps: T-MIG-001 DONE, T-MIG-002/003 CLAIMED-no-artifacts → proceeding per AGENT_COORDINATION §3 (store via @syllabai/db raw sql, no packages/db edits)
+  status: IN_REVIEW # PR open; claimed 2026-10-04T18:39:30Z — branch t-mig-010/r3; fences disjoint from t-mig-000/r7(a) (workspace), t-mig-002/r2 (db), t-mig-003/r6 (golden); deps: T-MIG-001 DONE, T-MIG-002/003 CLAIMED-no-artifacts → proceeding per AGENT_COORDINATION §3 (store via @syllabai/db raw sql, no packages/db edits)
   priority: P1
   wave: 1
   deps: [T-MIG-001, T-MIG-002, T-MIG-003]
-  execution_record: "—"
+  execution_record: >
+    2026-10-04 (R3, session web-df0238cc). Identity module PORTED end-to-end:
+    routes (/api/v1/auth/** path parity), JWT (jjwt alg-by-key-length, ver revocation),
+    bcrypt cost 12, per-account login budget (R5), V19 bootstrap window (R3 anchoring),
+    RBAC middleware, CORS port, Jackson/jakarta validation emulation. 86 new pins
+    (118/118 repo), tsc exit 0. Receipt: .syllabai/receipts/T-MIG-010/run-001-identity-port.json.
+    Deviations D1-D7 disclosed in receipt (bootstrap tx emulation, legacy /api/auth stub
+    kept for seed tests, IP-tier filter out of scope, index.ts mount per R0 ruling).
+    Packaging note for T-MIG-000/R0: drizzle-orm must be resolvable from apps/api at
+    deploy time. Residuals for R6 recorded in receipt.
 base:
   repo: "syllabai-v2 @ post-W0; frozen refs: core identity services + docs/DEPLOYMENT.md"
 basis: >

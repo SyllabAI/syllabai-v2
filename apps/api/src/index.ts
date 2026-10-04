@@ -2,33 +2,27 @@
  * syllabai-v2 api — the TypeScript port target of the frozen Java core.
  *
  * Entry contract with the frozen world (docs/GOLDEN_MASTER.md):
- *   - Path parity: routes mirror the Java core's paths (e.g. /actuator/health,
- *     /api/auth/**) so recorded golden cases replay unchanged and the hub
- *     import can switch API base URL with zero path rewrites.
- *   - Fail fast: missing secrets abort boot (see src/env.ts) — inherited
- *     verbatim from the Java core's boot discipline.
+ *   - Path parity: routes mirror the Java core's paths so recorded golden
+ *     cases replay unchanged and the hub import can switch API base URL with
+ *     zero path rewrites. T-MIG-010 re-points the identity mount to the
+ *     core's real surface /api/v1/auth/** (previously /api/auth) per the R0
+ *     ruling recorded in the PR #2 review (note 3) and R6's orientation
+ *     finding Q4. The legacy /api/auth mount is kept as a deprecated 501
+ *     alias so the seed tests stay green unmodified; it is removed by the
+ *     hub re-point task (T-MIG-011).
+ *   - Fail fast: missing secrets abort boot (see src/env.ts and the identity
+ *     runtime's JwtService boot gate) — inherited verbatim from the Java
+ *     core's boot discipline.
+ *
+ * Composition lives in src/routes/auth/index.ts (createAuthApp) — T-MIG-010's
+ * fence; this entry stays a thin delegating shell.
  *
  * Deployment: Vercel (this module's default export is the fetch handler);
  * locally run `bun run dev:api` at the repo root.
  */
-import { Hono } from "hono";
-import { healthRoute } from "./routes/health";
-import { authRoute } from "./routes/auth";
+import { createAuthApp } from "./routes/auth";
 
-const app = new Hono();
-
-app.route("/", healthRoute);
-app.route("/api/auth", authRoute);
-
-/**
- * Global error shape — keep it boring and stable; golden-master diffs will
- * compare it. Java core returns RFC-ish problem JSON on failures; port the
- * exact shapes per-module WITH the module (T-MIG-0xx tasks), not speculatively.
- */
-app.onError((err, c) => {
-  console.error("[api] unhandled error:", err);
-  return c.json({ status: 500, error: "Internal Server Error" }, 500);
-});
+const app = createAuthApp();
 
 export default app;
 
