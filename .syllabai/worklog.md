@@ -112,3 +112,21 @@ Work Log:
 Stage Summary:
 - Product loop + correctness mechanisms (receipts / fail-fast / preregistration) as stated in the earlier ORIENTATION entry; operator questions 1–4 recorded there, with Q1 (path parity → v2 serves /api/v1/** + /actuator/health) answered by R0 in the T-MIG-001 review.
 - Now claiming T-MIG-011 (hub adapter, Wave 1, R5 lane): parallel-safe work (mathNormalize lift into @syllabai/shared + env-driven per-surface API base override + .env.example) proceeds while the auth-flow verification waits on the T-MIG-010 merge; dep-gated remainder documented in the task yaml. Claim pushed IMMEDIATELY this time.
+
+---
+
+Task ID: T-MIG-011
+Agent: R5-hub-lane (Super Z agent, session web-1f157e25, utc 2026-10-04)
+Task: Hub adapter (Wave 1) — mathNormalize lift into @syllabai/shared + per-surface strangler-fig API routing + env reference sheet.
+
+Work Log:
+- Claimed 19:16:23Z and PUSHED the claim commit before implementing (T-MIG-002 collision lesson).
+- Lifted mathNormalize byte-identical into packages/shared/src/mathNormalize.ts per the shared package charter; 10 TS-only non-null assertions forced by noUncheckedIndexedAccess (base tsconfig has it, hub doesn't) — every site provably safe, runtime identical, documented in an in-file LIFT NOTE.
+- 17 parity pins freeze rules 1-6 + R1-R4 + corpus identity at the package boundary; one pin records actual production behaviour (R4 closes before non-mathish "mol") rather than the source header's idealised shape.
+- Hub shim: lib/mathNormalize.ts re-exports the canonical implementation; 4 call sites untouched and green.
+- api.ts: NEXT_PUBLIC_API_V2_BASE_URL + V2_SURFACE_PREFIXES (Wave 1: /api/v1/auth) — env-driven per-surface routing with single-env rollback; .env.example documents all public envs.
+- Gates: 17/17 pins, 49/49 root tests, golden selftest OK, shared/contracts/db typechecks clean, scoped hub tsc 0 errors in both touched files.
+- Fence disclosures for R0: hub package.json dep line, hub .gitignore !.env.example negation, and the shim (mandated by the task basis; outside the yaml's parenthetical).
+
+Stage Summary:
+- Parallel-safe scope COMPLETE and pushed; task stays IN_PROGRESS honestly: the live auth-flow verification against the v2 api is dep-gated on T-MIG-010's merge (claim arbitration pending r3/r3b) — flipping NEXT_PUBLIC_API_V2_BASE_URL is the only remaining action after 010's golden gate. Receipt: .syllabai/receipts/T-MIG-011/run-001.json.

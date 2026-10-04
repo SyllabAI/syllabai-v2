@@ -111,15 +111,38 @@ import type {
 } from "./types";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") ?? "";
+/**
+ * Strangler-fig surface routing (T-MIG-011, MIGRATION_PLAN §4.4).
+ *
+ * NEXT_PUBLIC_API_V2_BASE_URL is the bare origin of the syllabai-v2 api.
+ * While the Java core keeps serving production, only the surface prefixes
+ * listed in V2_SURFACE_PREFIXES route there — everything else keeps using
+ * the legacy core base. Flipping a surface to v2 is therefore an env change
+ * plus one prefix line, never a code rewrite; removing the env reverts the
+ * whole app to the core in one redeploy (the rollback plan, §7).
+ * Wave 1 enables the identity surface once T-MIG-010's /api/v1/auth/** port
+ * passes its golden gate on a branch deployment.
+ */
+const API_V2_BASE = process.env.NEXT_PUBLIC_API_V2_BASE_URL?.replace(/\/$/, "") ?? "";
+const V2_SURFACE_PREFIXES: readonly string[] = ["/api/v1/auth"];
+
+function resolveBase(path: string): string {
+  const core = API_BASE.replace(/\/api\/v1$/, "");
+  const v2 = API_V2_BASE.replace(/\/api\/v1$/, "");
+  if (v2 && V2_SURFACE_PREFIXES.some((p) => path.startsWith(p))) return v2;
+  return core;
+}
+
 const TOKEN_KEY = "syllabai.token";
 const USER_KEY = "syllabai.user";
 
 export function apiPath(path: string): string {
   // path arrives like "/api/v1/auth/login" or ".../tree?includeMisconceptions=true".
-  // API_BASE is documented as the bare API origin (e.g. https://syllabai-core.onrender.com),
-  // but a trailing /api/v1 (as older deployment notes described) must not double the
-  // prefix — normalize it away so both operator conventions produce identical URLs.
-  const base = API_BASE.replace(/\/api\/v1$/, "");
+  // The resolved base is documented as the bare API origin (e.g.
+  // https://syllabai-core.onrender.com), but a trailing /api/v1 (as older
+  // deployment notes described) must not double the prefix — normalize it
+  // away so both operator conventions produce identical URLs.
+  const base = resolveBase(path);
   return base
     ? `${base}${path}`
     : `${path}${path.includes("?") ? "&" : "?"}XTransformPort=8080`;

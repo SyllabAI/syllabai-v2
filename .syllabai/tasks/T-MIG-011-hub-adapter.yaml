@@ -3,12 +3,45 @@ task:
   id: T-MIG-011
   title: "Hub adapter (Wave 1) — auth flow against v2 api on branch + lift mathNormalize into @syllabai/shared"
   owner: "r5 (Super Z agent, session web-1f157e25)"
-  status: CLAIMED
-  claimed_at: "2026-10-04T19:16:23Z"
+  status: IN_PROGRESS # claimed_at 2026-10-04T19:16:23Z; branch t-mig-011/r5 pushed at claim time (collision lesson from T-MIG-002 applied)
   priority: P1
   wave: 1
   deps: [T-MIG-010]
-  execution_record: "—"
+  execution_record: >
+    2026-10-04 (r5, Super Z agent session web-1f157e25; branch t-mig-011/r5,
+    claim pushed BEFORE implementation — lesson from the T-MIG-002 collision
+    where my earlier local claim lost to a pushed one). PARALLEL-SAFE SCOPE
+    COMPLETE: (1) mathNormalize lifted BYTE-IDENTICAL from
+    apps/hub/src/lib/mathNormalize.ts into packages/shared/src/mathNormalize.ts
+    per the @syllabai/shared charter ("parity becomes an import statement");
+    textual deltas are TS-ONLY non-null assertions forced by
+    noUncheckedIndexedAccess in tsconfig.base.json (hub's tsconfig lacks it) —
+    every site provably safe, runtime identical, documented in the file's
+    LIFT NOTE header. (2) 17 parity pins added
+    (packages/shared/src/mathNormalize.test.ts) freezing rules 1-6 + R1-R4 +
+    corpus identity cases at the package boundary; one pin records ACTUAL
+    production behaviour (R4 one-sided bold closes before non-mathish "mol"),
+    not the header's idealised shape. (3) hub's
+    apps/hub/src/lib/mathNormalize.ts converted to a re-export shim — 4 call
+    sites (tutor/assistant/CLA) unchanged and green. (4) Strangler-fig
+    per-surface routing in apps/hub/src/lib/api.ts: NEXT_PUBLIC_API_V2_BASE_URL
+    + V2_SURFACE_PREFIXES (Wave 1: /api/v1/auth per R0's path-parity ruling);
+    unsetting the env reverts to the core in one redeploy (rollback §7).
+    (5) apps/hub/.env.example documents all public envs. GATES: 17/17 shared
+    pins; 49/49 root tests; golden selftest OK; packages/shared+contracts+db
+    typecheck clean; scoped apps/hub tsc shows 0 errors in both touched files
+    (remaining hub errors are pre-existing filtered-install resolution noise
+    in unrelated files; hub is not in the CI typecheck lane until T-MIG-000).
+    FENCE DISCLOSURES (for R0, receipts-gap precedent): apps/hub/package.json
+    (+1 line "@syllabai/shared": "workspace:*" — mechanically required for
+    the re-export this task's basis mandates), apps/hub/.gitignore (+1 line
+    "!.env.example" — root ignore already negates it; hub ignore shadowed
+    the negation). DEP-GATED REMAINDER (why IN_PROGRESS, not IN_REVIEW):
+    live auth-flow verification of hub login against the v2 api requires
+    T-MIG-010 merged (claim arbitration pending between r3/r3b) — the env
+    switch is built and inert until then; flipping NEXT_PUBLIC_API_V2_BASE_URL
+    is the only remaining action after 010's golden gate. Receipt:
+    .syllabai/receipts/T-MIG-011/run-001.json.
 base:
   repo: "apps/hub @ 93226a43 import; PROVENANCE.md rules bind this lane"
 basis: >
