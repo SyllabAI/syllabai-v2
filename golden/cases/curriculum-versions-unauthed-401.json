@@ -1,0 +1,19 @@
+{
+  "name": "curriculum-versions-unauthed-401",
+  "description": "GET /api/v1/curriculum/versions with no token: security filter chain answers first — 401 Boot error shape {timestamp,status,error:'Unauthorized',path}; CurriculumController itself has no @PreAuthorize (falls to anyRequest().authenticated())",
+  "source": "captured from the deployed frozen Java core (Render, https://syllabai-core.onrender.com) on 2026-10-05T19:02Z by T-MIG-004 run-001 (w0a); read-only GET, zero production writes; no PII present",
+  "method": "GET",
+  "path": "/api/v1/curriculum/versions",
+  "expect": {
+    "status": 401,
+    "body": {
+      "timestamp": "2026-10-04T19:02:09.434Z",
+      "status": 401,
+      "error": "Unauthorized",
+      "path": "/api/v1/curriculum/versions"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

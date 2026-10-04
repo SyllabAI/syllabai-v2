@@ -3,7 +3,7 @@ task:
   id: T-MIG-004
   title: "Capture content-read golden cases for Wave 2 — content documents/reader, teacher content/curriculum, curriculum metadata, question assets"
   owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)"
-  status: CLAIMED # claimed 2026-10-05 by operator lane assignment (IM directive "T-MIG-004 content-read golden cases"); IN_PROGRESS at first push
+  status: IN_REVIEW # claimed 2026-10-05 by operator lane assignment; capture sessions executed same day; PR opened with receipts; DONE is R0's call
   priority: P1
   wave: 2
   deps: []
@@ -19,6 +19,27 @@ task:
     migrated by the core's own Flyway V1..V63 (NOT Neon — no production Neon
     connection is used at all this session; NEON_PAT absent from this agent's
     session, escalated for the remaining real-data happy paths).
+    2026-10-05T19:02Z EXECUTED run-001 + run-002 + replay classification:
+    38 golden cases committed (9 from the deployed Render core — unauthenticated
+    authz/404/400 shell, zero production writes, no credentials used; 29 from a
+    LOCAL frozen-core boot — JDK 25.0.4.1 + Maven 3.9.16 build exit 0 on a
+    scratch COPY of the frozen tree, default profile, LLM mode test, against a
+    LOCAL scratch PostgreSQL 17.11 + pgvector 0.8.0 to which the core's own
+    Flyway applied V1..V63; two synthetic accounts created via the honest
+    register path). Zero production Neon connections this session; zero
+    upstream repo writes; zero PII committed (fixed-seed uuids + synthetic
+    identities only). Replay proof: runner --selftest PASS; --target replay
+    against the seed v2 api 1/39 (health) with all 38 cases expected-pending
+    and owned (T-MIG-020 read surfaces / T-MIG-021 curriculum). Findings
+    F-1..F-8 in .syllabai/receipts/T-MIG-004/run-001.json — headline: F-1
+    unknown curriculum version yields 200 [] not 404 (captured, not assumed);
+    F-2 blank search query= yields 500 internal_error (@NotBlank gap, captured
+    as-is); F-3 runner lacks response-header comparison (X-Search-Empty-Cause
+    not golden-gatable); F-5 HIGH ESCALATION: NEON_PAT absent from this
+    session — real-data happy paths for document-bearing surfaces (reader page
+    text, canonical, review queues, asset bytes, embedded search) remain
+    uncaptured; operator unblock requested (COW branch per T-MIG-003 run-002
+    recipe).
 base:
   repo: "syllabai-v2 @ 2cfaf41 (origin/main at claim); frozen refs: syllabai-core @ main, syllabai-hub @ 93226a43"
 basis: >

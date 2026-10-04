@@ -1,0 +1,19 @@
+{
+  "name": "curriculum-subject-bad-uuid-400",
+  "description": "GET /api/v1/curriculum/subjects/not-a-uuid: MethodArgumentTypeMismatch -> Boot default 400 {timestamp,status,error:'Bad Request',path}",
+  "source": "captured from the deployed frozen Java core (Render, https://syllabai-core.onrender.com) on 2026-10-05T19:02Z by T-MIG-004 run-001 (w0a); read-only GET, zero production writes; no PII present",
+  "method": "GET",
+  "path": "/api/v1/curriculum/subjects/not-a-uuid",
+  "expect": {
+    "status": 400,
+    "body": {
+      "status": 400,
+      "error": "bad_request",
+      "message": "malformed request",
+      "timestamp": "2026-10-04T19:02:11.644341116Z"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

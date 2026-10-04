@@ -1,0 +1,40 @@
+{
+  "receipt": "T-MIG-004 run-001 — session summary: content-read golden case capture for Wave 2",
+  "schema": "syllabai.v2.t-mig-004.session/1.0",
+  "agent": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "task": ".syllabai/tasks/T-MIG-004-content-read-golden-cases.yaml",
+  "basis": "Operator lane assignment 2026-10-05; MIGRATION_PLAN §10 Day 2-4 (capture lane = the migration's metronome) + §2.1 W2 controller port map; GOLDEN_MASTER §1-§2; T-MIG-003 conventions (PR #7)",
+  "case_inventory": {
+    "committed_cases": 38,
+    "files": "golden/cases/{curriculum,content,question-assets,teacher}-*.json (flat, T-MIG-003 convention; runner loadCases() is non-recursive)",
+    "by_source": {"render-core run-001": 9, "local-boot run-002": 29},
+    "by_kind": {
+      "authz_401": 7, "authz_403": 3, "not_found_404": 10, "validation_400": 2,
+      "server_error_500": 1, "happy_or_empty_200": 15
+    },
+    "by_controller": {
+      "CurriculumController": 10, "ContentReaderController": 4, "QuestionAssetController": 2,
+      "ContentDocumentController": 10, "ContentController": 8, "TeacherCurriculumController": 4
+    }
+  },
+  "replay_classification": {
+    "selftest": "PASS (engine sanity, CI lane green by construction)",
+    "live_replay": "bun golden/runner.ts --target <local seed v2 api> -> 1/39 PASS (health.json seed case); all 38 T-MIG-004 cases FAIL as EXPECTED-PENDING: the seed api serves no /api/v1/content|curriculum|teacher routes yet (404). Every failure is owned: Curriculum+TeacherCurriculum -> T-MIG-021, ContentDocument+ContentReader+QuestionAsset+ContentController read surfaces -> T-MIG-020 (port map per MIGRATION_PLAN §2.1). Same posture as T-MIG-003's replay (auth cases pending T-MIG-010)."
+  },
+  "findings": [
+    {"id": "F-1", "severity": "medium", "finding": "GET /api/v1/teacher/curriculum/versions/{unknown-uuid}/nodes returns 200 [] for an unknown version id — the service lists nodes by version without an existence check (unlike versions()/validateNode() which throw NotFoundException). Captured as golden case teacher-curriculum-nodes-unknown-version-200-empty. If the T-MIG-021 port treats unknown-version as 404, that is a justified-divergence decision for R0, never a silent choice."},
+    {"id": "F-2", "severity": "medium", "finding": "GET /api/v1/teacher/content/documents/search?query= (present-but-BLANK) returns 500 internal_error (fixed client message) — @NotBlank on @RequestParam does not trigger method validation for a present-but-blank value on this core build; the blank string then fails inside the service. Captured as-is (content-docs-search-blank-query-500). T-MIG-020 must replicate the 500 or R0 approves a justified divergence; widening validation to 'fix' it silently is an anti-pattern per AGENT_COORDINATION §7."},
+    {"id": "F-3", "severity": "medium (harness gap)", "finding": "golden/runner.ts compares status+body only. X-Search-Empty-Cause (T-C31 empty-cause observability, two distinct causes captured here) and any future contract headers cannot be golden-gated. Harness follow-up for R6/R0: extend the runner with an optional expect.headers comparison (construction-only change; selftest must grow a case for it)."},
+    {"id": "F-4", "severity": "low (harness note)", "finding": "Authed cases commit the T-MIG-003-convention dummy bearer token; role used at capture is recorded in each case description. The replay harness must re-mint tokens per target environment (login against the booted v2 with the synthetic account) before authed cases can pass. Same limitation as T-MIG-003's auth-me case; not blocking capture."},
+    {"id": "F-5", "severity": "HIGH (escalation per AGENT_COORDINATION §6.3)", "finding": "NEON_PAT is absent from this agent's session (only GITHUB_PAT persisted to .secrets/gh.env from the T-MIG-000 era; the briefing §0 plaintext is no longer available in-context and per credential law was never written to files). Without a Neon COW branch the run-002 pattern cannot touch production-shaped data, so the REAL-DATA happy paths remain UNCAPTURED: documents list/canonical with ingested rows, content-reader citable document + page text (DocumentPageText assembly), review queues with real SUGGESTED papers, question-assets binary happy path, search with embedded chunks. UNBLOCK: operator supplies NEON_PAT to this lane; extension session boots the frozen core against a COW branch (T-MIG-003 run-002 recipe, incl. synthetic accounts) and appends the missing cases. No substitute credential was improvised; no production Neon connection of any kind was attempted."},
+    {"id": "F-6", "severity": "low (ops note)", "finding": "Render free-tier cold start observed ~5-9 min from this network position (2 probes 18:53-18:55Z failed, 19:02Z gate probe UP). Future capture sessions should lead with the wake loop and treat it as a gate, per R6's run-001 precedent."},
+    {"id": "F-7", "severity": "low (cross-lane note)", "finding": "During replay classification the seed v2 api answered POST /api/v1/teacher/content/documents/{id}/embed with 500 (not the honest-404/501 pattern) — the un-ported POST path falls through oddly in the scaffold. Not this lane's fence; noted for T-MIG-020's route-audit."},
+    {"id": "F-8", "severity": "info", "finding": "question-assets 404 has an EMPTY body (ResponseEntity.notFound().build()); the golden case uses the runner's <non-json> sentinel for the empty byte stream — status check carries the assertion."}
+  ],
+  "wave_exit_semantics_note": "GOLDEN_MASTER §4: 'every deterministic endpoint of that wave has >=1 happy-path case + every DTO-enforced validation-failure case'. Status for W2 after this session: every W2 endpoint family has >=1 case (authz shell complete via run-001; empty-state + error shapes via run-002; curriculum family has real-data happy paths from fixed Flyway seeds). The real-data happy-path tranche for the document-bearing surfaces is the F-5 escalation and is REQUIRED before the W2 exit gate can be declared met by T-MIG-020..022.",
+  "safety_summary": {
+    "production_writes": 0, "neon_connections": 0, "upstream_repo_writes": 0,
+    "pii_committed": 0, "secrets_committed": 0,
+    "tokens_in_committed_artifacts": "fixed dummy only (scrubbed-fixed-dummy-jwt-token)"
+  }
+}

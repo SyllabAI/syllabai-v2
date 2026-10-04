@@ -1,0 +1,19 @@
+{
+  "name": "content-reader-unauthed-401",
+  "description": "GET /api/v1/content/documents/{id} with no token: 401 before the existsCitable corpus gate runs",
+  "source": "captured from the deployed frozen Java core (Render, https://syllabai-core.onrender.com) on 2026-10-05T19:02Z by T-MIG-004 run-001 (w0a); read-only GET, zero production writes; no PII present",
+  "method": "GET",
+  "path": "/api/v1/content/documents/00000000-0000-4000-8000-0000000000d1",
+  "expect": {
+    "status": 401,
+    "body": {
+      "timestamp": "2026-10-04T19:02:11.829Z",
+      "status": 401,
+      "error": "Unauthorized",
+      "path": "/api/v1/content/documents/00000000-0000-4000-8000-0000000000d1"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}
