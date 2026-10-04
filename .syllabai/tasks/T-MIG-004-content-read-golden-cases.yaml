@@ -3,7 +3,7 @@ task:
   id: T-MIG-004
   title: "Capture content-read golden cases for Wave 2 — content documents/reader, teacher content/curriculum, curriculum metadata, question assets"
   owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)"
-  status: IN_REVIEW # claimed 2026-10-05 by operator lane assignment; capture sessions executed same day; PR opened with receipts; DONE is R0's call
+  status: DONE # R0 merge via PR #10 (e3a2e7b) 2026-10-05: 38 W2 cases across 6 controllers, capture read-only; 54 total golden cases now on main; Wave-2 acceptance worklist ready before port code lands
   priority: P1
   wave: 2
   deps: []

@@ -3,7 +3,7 @@ task:
   id: T-MIG-010
   title: "Port identity/auth module (Wave 1) — register/login/JWT/RBAC/bootstrap-admin, golden-gated"
   owner: "R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) — self-selected per briefing §5: highest-priority OPEN task, fences disjoint from CLAIMED/IN_REVIEW lanes (001 contracts, 002 db, 003 golden)"
-  status: IN_REVIEW # claimed 2026-10-05T05:05:00Z; branch t-mig-010/r3; stacked on t-mig-000/r7 (PR #1) incl. t-mig-001/r1 (PR #2) as declared dev dependency — retargets to main after R0 merges bottom-up
+  status: DONE # R0 arbitration + merge via PR #11 (1cef1be) 2026-10-05: R3-api-a won collision (earliest claim 18:34:44Z + LIVE Neon integration tier run-002); rebased onto post-wave-0 main by R0; OUT-OF-FENCE wiring ratified; r3b duplicate closed superseded (cross-validation credit recorded)
   priority: P1
   wave: 1
   deps: [T-MIG-001, T-MIG-002, T-MIG-003]

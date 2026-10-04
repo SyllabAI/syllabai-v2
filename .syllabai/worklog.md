@@ -436,3 +436,20 @@ Work Log:
 
 Stage Summary:
 - T-MIG-004 status IN_REVIEW: 38 cases committed under golden/cases/ (flat, T-MIG-003 convention), receipts at .syllabai/receipts/capture/2026-10-05/{run-001-render-core,run-002-local-boot}.json + .syllabai/receipts/T-MIG-004/run-001.json. W2 authz shell + empty states + error shapes + curriculum real-data happy paths are DONE; the document-bearing real-data tranche is gated on the F-5 unblock. Zero production writes, zero Neon connections, zero upstream writes, zero PII/secrets committed.
+
+
+---
+
+Task ID: UNBLOCK-SEQUENCE-PHASE2 (R0)
+Agent: R0-integrator (Super Z, operator session trace 1a10848acd9adae9)
+Task: Continue R0 execution after wave-0 completion — arbitrate the T-MIG-010 claim collision, merge the identity port, land T-MIG-004 capture.
+
+Work Log:
+- T-MIG-010 collision arbitrated: R3-api-a (PR #11, claim 0462fd3 @ 18:34:44Z) over r3b (PR #9, claim @ 18:39:30Z) — earliest-claim per §2.1 plus gate differential (run-002 LIVE Neon-branch integration: token_version revocation proven via old-token 401, register row-level SQL verification, honest 409 consumed-V19 bootstrap; run-001: 100/0/4skip, 248 expectations).
+- INCIDENT + RECOVERY (honest disclosure): R0's earlier claim-only force-push to t-mig-010/r3 clobbered head d510090 (R3-api-a's completed port push that landed after R0's fetch). Recovered via server-side ref creation at the dangling SHA (t-mig-010/r3-api-a-archive); zero work lost. Process rule adopted: R0 force-pushes require fresh ls-remote + PR-head check.
+- Port lineage rebuilt onto post-wave-0 main (superseded T-MIG-000 base commits dropped; claim + port b14c1e4 + OUT-OF-FENCE wiring eddfe85 + receipts replayed = 4442540); OUT-OF-FENCE wiring (path-parity mounts /api/v1/auth/**, ApiError boundary, CORS, bcryptjs/@neondatabase/serverless deps) R0-ratified per §6.1. Gates re-executed: typecheck x4 exit 0, 104 tests / 0 fail / 4 integration-skips / 248 expectations — matches receipt. PR #11 merged 1cef1be. PR #9 closed superseded with cross-validation credit (store/validation/password decomposition preserved at t-mig-010/r3b).
+- PR #10 (T-MIG-004, 38 Wave-2 content-read golden cases) rebased onto 1cef1be (worklog union), gates re-executed (typecheck x4, 100/0/4skip, selftest OK, 54 total case files on disk), merged e3a2e7b.
+- Housekeeping: T-MIG-010/004 yamls -> DONE with evidence; this entry appended.
+
+Stage Summary:
+- Board: T-MIG-000/001/002/003/004/010/012 DONE (7 tasks), T-MIG-011 CLAIMED (t-mig-011/r5), Wave-2 lanes filing. Identity/auth surface is LIVE in v2 with live-DB-proven revocation — the strangler-fig has its first real vine. 54 golden cases on main; Wave-2 acceptance worklist complete before any content-read port code lands. Critical path: T-MIG-011 hub adapter (claimed), then Wave-2 ports (T-MIG-020..022) against the fresh capture.
