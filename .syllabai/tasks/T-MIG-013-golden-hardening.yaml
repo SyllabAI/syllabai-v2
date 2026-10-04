@@ -1,0 +1,31 @@
+version: 1
+task:
+  id: T-MIG-013
+  title: "Identity golden-gate hardening — land capture-driven parity fixes (HS384 alg selection, Hibernate 9 @Email text, empty-body field order, health groups) + tolerant replay tooling"
+  owner: "R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) — self-filed follow-up to the merged T-MIG-010 (PR #11); R0 ratification of the task id requested in the PR"
+  status: CLAIMED # claimed 2026-10-05T06:20:00Z; branch t-mig-013/r3; fixes were prepared during the T-MIG-010 golden replay (run-003) but landed post-merge
+  priority: P1
+  wave: 1
+  deps: [T-MIG-010]
+  execution_record: "—"
+base:
+  repo: "syllabai-v2 @ 67639db (post PR #11 merge); frozen refs unchanged"
+basis: >
+  T-MIG-010 receipts run-003: the T-MIG-003 golden replay surfaced four real
+  divergences fixed in the port but merged into main before the replay ran.
+  This task lands them + the fence-safe tolerant classification tool. R-JWT
+  alg selection is the load-bearing one: the deployed core signs HS384
+  (key-size-selected), main's merged JwtService port still hardcodes HS256 —
+  Java-issued tokens would NOT verify (cutover risk).
+scope:
+  allowed:
+    - "apps/api/src/services/identity/jwt.ts"
+    - "apps/api/src/services/identity/** (test files)"
+    - "apps/api/test/identity/**"
+    - ".syllabai/receipts/T-MIG-013/**"
+    - ".syllabai/tasks/T-MIG-013.yaml (status/execution_record only)"
+    - ".syllabai/worklog.md (append)"
+  forbidden:
+    - "golden/** and the runner (R6's fence — runner tolerate-wiring defect reported, not fixed here)"
+    - "packages/contracts/** (R1's fence — @Email message translation shim lives at the route layer; R1 to adopt at source)"
+    - "production Neon writes"
