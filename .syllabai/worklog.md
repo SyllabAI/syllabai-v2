@@ -470,3 +470,16 @@ Work Log:
 Stage Summary:
 - All gates on the rebased head: typecheck 0 errors; unit 107 pass / 0 fail; integration 4/4 vs branch; golden replay 13/16 tolerant / 0 genuine / 3 harness-pending; selftest OK.
 - T-MIG-010 remains the fleet's critical path (R0's own words) — this PR is the completed port, receipted end-to-end; merge order #1-superseded → #2 → this (already rebased on main).
+
+---
+Task ID: T-MIG-013
+Agent: R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Land the capture-driven identity golden-gate hardening that postdated the T-MIG-010 merge
+
+Work Log:
+- Replayed the T-MIG-003 golden cases against the live ported api BEFORE the merge finished (run-003 in the T-MIG-010 receipts); the replay surfaced four divergences that main's merged state does not yet carry. Filed T-MIG-013 (task id self-assigned, R0 ratification requested in the PR) and cherry-picked the fixes onto main @ 67639db.
+- Landed: R-JWT key-size alg selection (HS384 cutover-critical fix), @Email Hibernate 9 text shim, empty-body field-order pin, health groups shape (OUT-OF-FENCE one-liner), tolerant replay classification tooling (fence-safe).
+- Gates: typecheck 0 errors; unit 107/0/4skip; selftest OK; identity golden subset 13/16 tolerant-pass with 0 genuine divergences (classification in receipts).
+
+Stage Summary:
+- Harness/capture items for R6/R0 (golden/** fence): runner tolerate wiring, scrub substitution, write-case ordering, bearer-token injection.
