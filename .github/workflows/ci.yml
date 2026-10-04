@@ -1,0 +1,37 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      # NOTE: hub is intentionally NOT installed/built in this workflow yet.
+      # Its 153MB tree (content corpus + corpus-verify prebuild) is brought
+      # under CI by T-MIG-000/T-MIG-003, not before — keep the first CI lane
+      # fast and green.
+      - name: Install workspace deps (packages + api)
+        run: |
+          bun install --cwd packages/contracts
+          bun install --cwd packages/shared
+          bun install --cwd packages/db
+          bun install --cwd apps/api
+
+      - name: Typecheck
+        run: bun run typecheck
+
+      - name: Test
+        run: bun test apps/api packages
+
+      - name: Golden-master self-check (harness sanity, no live target)
+        run: bun golden/runner.ts --selftest

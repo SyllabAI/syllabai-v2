@@ -1,0 +1,24 @@
+version: 1
+task:
+  id: T-MIG-001
+  title: "Contracts wave-1 — port ALL identity-domain DTOs to zod (from frozen core src/main/java/com/syllabai/identity/dto/)"
+  owner: "unassigned"
+  status: OPEN
+  priority: P0
+  wave: 1
+  deps: []
+  execution_record: "—"
+base:
+  repo: "syllabai-v2 @ seed; syllabai-core @ main (frozen) — DTO dir is the spec"
+basis: >
+  MIGRATION_PLAN.md §4.1 contracts-first. src/auth.ts already ports
+  RegisterRequest/LoginRequest/AuthResponse/UserView constraint-for-constraint
+  (exemplar); extend with PasswordChangeRequest and every remaining identity
+  DTO + the RBAC role enum values as observed in the Java core.
+scope:
+  allowed:
+    - "packages/contracts/src/**"
+    - ".syllabai/tasks/T-MIG-001.yaml (status/execution_record only)"
+  forbidden:
+    - "apps/** (consume contracts, never redefine them)"
+    - "widening any constraint (AGENT_COORDINATION §7)"

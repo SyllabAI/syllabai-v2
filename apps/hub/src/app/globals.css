@@ -1,0 +1,1419 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  /* fonts resolve through runtime vars so themes can re-point them (see
+     --app-font-* below) — @theme inline copies these values into utilities,
+     and since the copied value is itself a var() reference it still
+     re-resolves per theme at runtime */
+  --font-sans: var(--app-font-sans);
+  --font-mono: var(--app-font-mono);
+  --font-display: var(--app-font-display);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  /* semantic status hues — theme-aware (SME: emerald/amber/sky/... family;
+     Quiet Green: fern/clay/teal/violet/plum). Alpha modifiers work: bg-success/10 */
+  --color-success: var(--success);
+  --color-success-ink: var(--success-ink);
+  --color-warn: var(--warn);
+  --color-warn-ink: var(--warn-ink);
+  --color-info: var(--info);
+  --color-cat: var(--cat);
+  --color-sim: var(--sim);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  /* font chains (runtime vars — themes re-point these) */
+  --app-font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --app-font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  --app-font-display: var(--font-kodchasan), var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  /* semantic status raws — SME light (kept identical to the pre-theme
+     hardcoded Tailwind shades so the SME theme renders exactly as before) */
+  --success: #047857;   /* emerald-700 */
+  --success-ink: #ffffff; /* copy-on-success: white on emerald-700 = 5.5:1 */
+  --warn: #b45309;      /* amber-700 */
+  --warn-ink: #78350f;  /* amber-900 — body copy on warn washes */
+  --info: #0369a1;      /* sky-700 */
+  --cat: #6d28d9;       /* violet-700 */
+  --sim: #a21caf;       /* fuchsia-700 */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.541 0.238 264.7); /* SME brand blue #265bf6 */
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.541 0.238 264.7);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.678 0.152 150.1); /* SME green #42b163 */
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  /* semantic status raws — SME dark (lightened family shades, as before) */
+  --success: #34d399;   /* emerald-400 */
+  --success-ink: #064e3b; /* copy-on-success: emerald-900 on emerald-400 = 5.7:1 (white failed dark mode at 1.9:1) */
+  --warn: #fbbf24;      /* amber-400 */
+  --warn-ink: #fcd34d;  /* amber-300 */
+  --info: #38bdf8;      /* sky-400 */
+  --cat: #a78bfa;       /* violet-400 */
+  --sim: #e879f9;       /* fuchsia-400 */
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.72 0.145 264.4); /* lighter SME blue for dark surfaces */
+  --primary-foreground: oklch(0.145 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* ====================================================================
+   QUIET GREEN THEME (Open Notebook, v1.14) — data-theme="quiet-green"
+   Block order matters: these come AFTER .dark so that on
+   html[data-theme=quiet-green].dark the alias group (same specificity,
+   later) beats SME-dark aliases, and the dark raw block (0,2,0) beats
+   both. Architecture: light block sets raw values; the shared alias
+   group maps them onto the shadcn slots; the dark block overrides RAW
+   VALUES ONLY — aliases re-resolve automatically.
+   ==================================================================== */
+[data-theme="quiet-green"] {
+  /* the 9 owned hues */
+  --fern: #2e6b4f;   --fern-deep: #245740;   --fern-tint: #dfeae2;
+  --sage: #5e7a54;   --sage-deep: #47603f;   --sage-tint: #e5ebdc;
+  --gold: #a97b12;   --gold-deep: #7c5a05;   --gold-tint: #f3ead3;
+  --teal: #0e7268;   --teal-deep: #095a51;   --teal-tint: #ddece8;
+  --plum: #5d4991;   --plum-tint: #eae6f3;
+  --mauve: #8d5b80;  --mauve-deep: #714566;  --mauve-tint: #f1e5ee;
+  --slate: #4e6b84;  --slate-deep: #3a5468;  --slate-tint: #e1e8ee;
+  --violet: #6e51a6; --violet-deep: #57408a; --violet-tint: #ebe5f5;
+  --clay: #b0451f;   --clay-deep: #93330f;   --clay-tint: #f5e4db;
+
+  /* surfaces / ink / lines */
+  --bg: #f5f5f2;                --bg-deep: #eeeee9;
+  --surface: #fefefc;           --surface-raised: #ffffff;
+  --surface-recessed: #f4f4f0;  --surface-sunken: #ecece7;
+  --ink: #23252a;  --ink-soft: #565a61;  --ink-faint: #878b92;  --ink-faintest: #a8abb1;
+  --line: #e0e0da;  --line-soft: #e8e8e2;  --line-strong: #23252a;
+
+  /* action / danger / status raws */
+  --primary-qg: #2e6b4f;  --primary-qg-hover: #245740;  --on-primary-qg: #f1f8f3;
+  --danger-qg: #b0432d;
+  --success: var(--fern);
+  --success-ink: var(--on-primary-qg); /* copy-on-success on fern ≈ 6:1 */
+  --warn: var(--clay);
+  --warn-ink: var(--clay-deep);
+  --info: var(--teal);
+  --cat: var(--violet);
+  --sim: var(--plum);
+
+  /* geometry — squared: floor is 4px */
+  --radius: 5px;
+
+  /* fonts — Instrument Sans body / Bricolage display / Spline Sans Mono */
+  --app-font-sans: var(--font-instrument-sans), "Helvetica Neue", Arial, sans-serif;
+  --app-font-mono: var(--font-spline-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  --app-font-display: var(--font-bricolage), var(--font-jakarta), "Trebuchet MS", sans-serif;
+
+  color-scheme: light;
+}
+
+/* shadcn alias contract — defined once, re-resolves in dark */
+[data-theme="quiet-green"],
+[data-theme="quiet-green"].dark {
+  --background: var(--bg);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface-raised);
+  --popover-foreground: var(--ink);
+  --primary: var(--primary-qg);
+  --primary-foreground: var(--on-primary-qg);
+  --secondary: var(--surface-recessed);
+  --secondary-foreground: var(--ink);
+  --muted: var(--surface-recessed);
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--surface-sunken);
+  --accent-foreground: var(--ink);
+  --destructive: var(--danger-qg);
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--teal);
+  --chart-1: var(--fern);
+  --chart-2: var(--teal);
+  --chart-3: var(--gold);
+  --chart-4: var(--plum);
+  --chart-5: var(--slate);
+  --sidebar: var(--bg-deep);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--primary-qg);
+  --sidebar-primary-foreground: var(--on-primary-qg);
+  --sidebar-accent: var(--surface);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--line);
+  --sidebar-ring: var(--teal);
+}
+
+/* dark — raw values only */
+[data-theme="quiet-green"].dark {
+  --fern: #55b285;   --fern-deep: #6cc298;   --fern-tint: #1b2f25;
+  /* copy-on-success override: dark ink on the lightened fern = 6.3:1
+     (the light block's var(--on-primary-qg) resolves LIGHT here and failed at 2.4:1) */
+  --success-ink: #0f241a;
+  --sage: #93b084;   --sage-deep: #a8c299;   --sage-tint: #232b1d;
+  --gold: #cfa13e;   --gold-deep: #ddb55f;   --gold-tint: #322b1b;
+  --teal: #3fb3a5;   --teal-deep: #64c5b9;   --teal-tint: #16302c;
+  --plum: #a290d3;   --plum-tint: #29253a;
+  --mauve: #c892ba;  --mauve-deep: #d6a8cb;  --mauve-tint: #322230;
+  --slate: #8fafc8;  --slate-deep: #a5c1d6;  --slate-tint: #212b34;
+  --violet: #a995db; --violet-deep: #bcaae6; --violet-tint: #2b2540;
+  --clay: #f08a5c;   --clay-deep: #f5a07a;   --clay-tint: #35211a;
+
+  --bg: #17181b;                --bg-deep: #121316;
+  --surface: #1e2024;           --surface-raised: #24262b;
+  --surface-recessed: #24262b;  --surface-sunken: #2b2d33;
+  --ink: #ecedea;  --ink-soft: #a9acb1;  --ink-faint: #74777d;  --ink-faintest: #63666c;
+  --line: #2e3036;  --line-soft: #26282d;  --line-strong: #ecedea;
+
+  --primary-qg: #3d8e67;  --primary-qg-hover: #479e74;  --on-primary-qg: #ecf7f0;
+  --danger-qg: #df7c63;
+
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+  h1 {
+    /* resolve through the theme-level chain — @theme inline does not emit
+       tokens as runtime vars, so reference the --app-font-* raw var */
+    font-family: var(--app-font-display);
+  }
+}
+
+/* ---- SME-style framework tag chips (Study / Practice / Diagnose) ----
+   Palette from the SaveMyExams reference pages (Task 21-b dissection):
+   Study = green #42b163, Practice = brand blue #265bf6, Diagnose = amber. */
+.chip-study {
+  background: oklch(0.678 0.152 150.1 / 0.12);
+  color: oklch(0.51 0.115 150.1);
+}
+.chip-practice {
+  background: oklch(0.541 0.238 264.7 / 0.1);
+  color: oklch(0.47 0.19 264.7);
+}
+.chip-diagnose {
+  background: oklch(0.75 0.14 70 / 0.16);
+  color: oklch(0.5 0.115 60);
+}
+
+.dark .chip-study {
+  background: oklch(0.678 0.152 150.1 / 0.2);
+  color: oklch(0.82 0.13 150.1);
+}
+.dark .chip-practice {
+  background: oklch(0.541 0.238 264.7 / 0.25);
+  color: oklch(0.78 0.13 264.7);
+}
+.dark .chip-diagnose {
+  background: oklch(0.75 0.14 70 / 0.22);
+  color: oklch(0.83 0.12 75);
+}
+
+/* ====================================================================
+   QUIET GREEN — authored layer (theme-scoped component signatures)
+   Everything here targets [data-theme="quiet-green"] only; the SME
+   theme is untouched. Component files are NOT modified for QG.
+   ==================================================================== */
+
+/* --- geometry: exact 4/5/5/6 spec (the --radius calc chain gives 1/3/5/9,
+       so the squared utilities are pinned directly under the theme) --- */
+[data-theme="quiet-green"] .rounded-sm { border-radius: 4px; }
+[data-theme="quiet-green"] .rounded-md,
+[data-theme="quiet-green"] .rounded-lg { border-radius: 5px; }
+[data-theme="quiet-green"] .rounded-xl { border-radius: 6px; }
+
+/* --- depth: hairlines, not shadows. Kill static shadow utilities while
+       keeping the ring var chain intact (focus rings still render) --- */
+[data-theme="quiet-green"] :is(.shadow-2xs, .shadow-xs, .shadow-sm, .shadow, .shadow-md, .shadow-lg, .shadow-xl) {
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+}
+
+/* --- tabs: the signature underline style (fern spine) --- */
+[data-theme="quiet-green"] [data-slot="tabs-list"] {
+  background: transparent;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  padding: 0;
+  gap: 1rem;
+  height: auto;
+}
+[data-theme="quiet-green"] [data-slot="tabs-trigger"] {
+  height: 2.25rem;
+  margin-bottom: -1px;
+  border-radius: 0;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  padding-inline: 0.25rem;
+}
+[data-theme="quiet-green"] [data-slot="tabs-trigger"]:hover {
+  background: transparent;
+  color: var(--ink);
+}
+[data-theme="quiet-green"] [data-slot="tabs-trigger"][data-state="active"],
+[data-theme="quiet-green"].dark [data-slot="tabs-trigger"][data-state="active"] {
+  background: transparent;
+  border-bottom-color: var(--primary);
+  color: var(--foreground);
+  box-shadow: none;
+}
+
+/* --- course sidebar active item: fern spine + raised surface --- */
+[data-theme="quiet-green"] a.course-nav-item[aria-current="page"] {
+  background: var(--surface-raised);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--border);
+  position: relative;
+}
+[data-theme="quiet-green"] a.course-nav-item[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 7px;
+  bottom: 7px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--fern);
+}
+
+/* --- framework chips: squared, owned-hue tints (Study=fern, Practice=sage,
+       Diagnose=gold). Light uses deep ink on tint; dark flips raws. --- */
+[data-theme="quiet-green"] .chip-study {
+  background: var(--fern-tint);
+  color: var(--fern-deep);
+  border-radius: 4px;
+}
+[data-theme="quiet-green"] .chip-practice {
+  background: var(--sage-tint);
+  color: var(--sage-deep);
+  border-radius: 4px;
+}
+[data-theme="quiet-green"] .chip-diagnose {
+  background: var(--gold-tint);
+  color: var(--gold-deep);
+  border-radius: 4px;
+}
+[data-theme="quiet-green"].dark .chip-study {
+  background: var(--fern-tint);
+  color: var(--fern);
+}
+[data-theme="quiet-green"].dark .chip-practice {
+  background: var(--sage-tint);
+  color: var(--sage);
+}
+[data-theme="quiet-green"].dark .chip-diagnose {
+  background: var(--gold-tint);
+  color: var(--gold);
+}
+
+/* ====================================================================
+   CANDY SHOP THEME (candy-shop-design-system, alpha) —
+   data-theme="candy-shop"
+   Port of https://github.com/nawaf-al-hussain/FileUpload/blob/main/
+   candy-shop-design-system.md onto the hub's QG architecture: light raw
+   block → one shared shadcn alias group → dark raw overrides ONLY →
+   theme-scoped authored layer (no component files touched).
+
+   The spec's laws, honored here:
+   - cherry #FF2D6E is byte-identical in light AND dark (the brand);
+     hover darkens in light (#E61F5F), lightens in dark (#FF5C8D)
+   - ink & paper swap in dark: bubblegum↔plum-black #1E0A16 (never #000)
+   - no green exists: success = mulberry (the spec's success voice),
+     warn = deepened cherry (cherry doubles as danger), info/cat/sim =
+     mulberry/plum family — status never rides hue alone (labels always
+     accompany color in the hub UI)
+   - destructive uses the spec §13 mitigation 3 (deepened cherry
+     #D11450 light / #E61F5F dark) — shadcn destructive buttons render
+     small white labels the raw cherry fill can't carry
+   - flat on purpose: static shadow utilities are zeroed; floating
+     layers re-receive the only sanctioned shadows (--shadow-pop /
+     --shadow-overlay); dark adds the soft --glow-accent on cherry
+   - round everything: --radius 40 + pinned utility ladder 14/24/40
+     (inputs/badges keep their spec radii via slot overrides; controls
+     under ~32px are exempt and untouched — checkbox/switch/radio ship
+     arbitrary or pill radii)
+   - known spec exception (§13 option 1, documented): white-on-cherry
+     fills ≈3.6:1 — carried by the 800-weight uppercase label style
+   ==================================================================== */
+[data-theme="candy-shop"] {
+  /* brand constants — identical in both themes */
+  --cherry: #ff2d6e;
+  --bubblegum: #ffe9f2;
+  --plum: #3c0d28;
+  --mulberry: #b2578c;
+
+  /* surfaces / ink / lines (light raws) */
+  --bg: #ffe9f2;  --bg-deep: #ffdce9;
+  --surface: #ffffff;           --surface-raised: #ffffff;
+  --surface-recessed: #ffdce9;  --surface-sunken: #ffd0e2;
+  --ink: #3c0d28;  --ink-soft: #8a3a63;  --ink-faint: #b2578c;  --ink-faintest: #c77ba8;
+  --line: rgba(178, 87, 140, 0.3);  --line-soft: rgba(178, 87, 140, 0.16);
+  --line-strong: #b2578c;
+
+  /* action / danger / status raws */
+  --primary-cs: #ff2d6e;  --primary-cs-hover: #e61f5f;  --on-primary-cs: #ffffff;
+  --accent-ink: #d11450;
+  --danger-cs: #d11450;
+  --focus-cs: #b2578c;
+  --success: var(--mulberry);
+  --success-ink: #ffffff; /* copy-on-success: white on mulberry = 4.5:1 */
+  --warn: #d11450;  --warn-ink: #3c0d28;
+  --info: #8a3a63;
+  --cat: #3c0d28;  --sim: #b2578c;
+
+  /* the only sanctioned shadows (floating layers) */
+  --shadow-pop: 0 12px 32px -8px rgba(60, 13, 40, 0.18);
+  --shadow-overlay: 0 24px 56px -12px rgba(60, 13, 40, 0.28);
+
+  /* geometry — round everything (pins below give the exact 14/24/40) */
+  --radius: 40px;
+
+  /* fonts — Fraunces display / Nunito body (mono keeps the app default;
+     the spec defines no mono voice) */
+  --app-font-sans: var(--font-nunito), "Segoe UI", "Helvetica Neue", sans-serif;
+  --app-font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+
+  color-scheme: light;
+}
+
+/* shadcn alias contract — defined once, re-resolves in dark */
+[data-theme="candy-shop"],
+[data-theme="candy-shop"].dark {
+  --background: var(--bg);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface-raised);
+  --popover-foreground: var(--ink);
+  --primary: var(--primary-cs);
+  --primary-foreground: var(--on-primary-cs);
+  --secondary: var(--surface-recessed);
+  --secondary-foreground: var(--ink);
+  --muted: var(--surface-recessed);
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--surface-sunken);
+  --accent-foreground: var(--ink);
+  --destructive: var(--danger-cs);
+  --destructive-foreground: var(--on-primary-cs); /* audit F5: the toast
+    destructive variant labels with this token; leaving it undefined let
+    page ink bleed onto the danger fill (3.07:1). Paper voice both modes */
+  --border: var(--line);
+  --input: var(--line-strong);
+  --ring: var(--focus-cs);
+  --chart-1: var(--cherry);
+  --chart-2: var(--mulberry); /* progress/metric fill voice (§10.12) */
+  --chart-3: var(--accent-ink);
+  --chart-4: var(--info);
+  --chart-5: var(--plum);
+  --sidebar: var(--bg-deep);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--primary-cs);
+  --sidebar-primary-foreground: var(--on-primary-cs);
+  --sidebar-accent: var(--surface);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--line);
+  --sidebar-ring: var(--focus-cs);
+}
+
+/* dark — ink & paper swap, cherry stays; raw values only */
+[data-theme="candy-shop"].dark {
+  --bg: #1e0a16;  --bg-deep: #170911;
+  --surface: #2e1224;           --surface-raised: #3a1830;
+  --surface-recessed: #241020;  --surface-sunken: #38172e;
+  --ink: #ffe9f2;  --ink-soft: #e3a8cd;  --ink-faint: #b2578c;  --ink-faintest: #8f4e74;
+  --line: rgba(178, 87, 140, 0.38);  --line-soft: rgba(178, 87, 140, 0.22);
+  --line-strong: #b2578c;
+
+  --primary-cs: #ff2d6e;        /* byte-identical — the brand never moves */
+  --primary-cs-hover: #ff5c8d;  /* hover moves toward the viewer in dark */
+  --accent-ink: #ff5c8d;
+  --danger-cs: #e61f5f;
+  --focus-cs: #ff5c8d;
+  --success: #e3a8cd;
+  --success-ink: #3c0d28; /* copy-on-success: CS ink on pink = 8.4:1 */
+  --warn: #ff5c8d;  --warn-ink: #ffe9f2;
+  --info: #e3a8cd;
+  --cat: #ffe9f2;  --sim: #e3a8cd;
+
+  --chart-1: #ff2d6e;
+  --chart-2: #e3a8cd;
+  --chart-3: #ff5c8d;
+  --chart-4: #c77ba8;
+  --chart-5: #ffe9f2;
+
+  --shadow-pop: 0 12px 32px -8px rgba(0, 0, 0, 0.55);
+  --shadow-overlay: 0 24px 56px -12px rgba(0, 0, 0, 0.65);
+  --glow-accent: 0 0 24px rgba(255, 45, 110, 0.18);
+
+  color-scheme: dark;
+}
+
+/* ====================================================================
+   CANDY SHOP — authored layer (theme-scoped component signatures)
+   Everything targets [data-theme="candy-shop"] only; SME and QG are
+   untouched. Component files are NOT modified for candy.
+   ==================================================================== */
+
+/* --- geometry: the 14/24/40 ladder. --radius is 40 under this theme, so
+       the calc chain (36/38/40/44) is pinned to the spec ladder instead.
+       Small controls (<~32px) are exempt per spec — they ship arbitrary
+       or pill radii and are deliberately not touched. --- */
+[data-theme="candy-shop"] .rounded-sm { border-radius: 14px; }
+[data-theme="candy-shop"] .rounded-md { border-radius: 24px; }
+[data-theme="candy-shop"] .rounded-lg { border-radius: 40px; }
+[data-theme="candy-shop"] .rounded-xl { border-radius: 40px; }
+
+/* --- slot radii: inputs/selects = 14 (radius-sm rung), badges = pill --- */
+[data-theme="candy-shop"] :is([data-slot="input"], [data-slot="textarea"], [data-slot="select-trigger"]) {
+  border-radius: 14px;
+}
+[data-theme="candy-shop"] [data-slot="badge"] { border-radius: 999px; }
+
+/* --- audit F4: floating slots ride the exact rungs. Menus/tooltips/
+       alerts = radius-sm (14); sheets = radius-lg (40). The shipped
+       rounded-md/lg classes land one rung off (24/40) and read blobby.
+       Placed after the utility pins so the slot pins win the tie. --- */
+[data-theme="candy-shop"] :is(
+  [data-slot="popover-content"],
+  [data-slot="dropdown-menu-content"],
+  [data-slot="select-content"],
+  [data-slot="tooltip-content"],
+  [data-slot="alert"]
+) {
+  border-radius: 14px;
+}
+[data-theme="candy-shop"] [data-slot="sheet-content"] { border-radius: 40px; }
+
+/* --- depth: flat on purpose. Zero static shadows; floating layers get
+       the only sanctioned ones back. --- */
+[data-theme="candy-shop"] :is(.shadow-2xs, .shadow-xs, .shadow-sm, .shadow, .shadow-md, .shadow-lg, .shadow-xl) {
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+}
+[data-theme="candy-shop"] :is(
+  [data-slot="popover-content"],
+  [data-slot="dropdown-menu-content"],
+  [data-slot="select-content"],
+  [data-slot="tooltip-content"],
+  [data-slot="toast"],
+  [data-sonner-toast]
+) {
+  box-shadow: var(--shadow-pop);
+}
+[data-theme="candy-shop"] :is([data-slot="dialog-content"], [data-slot="alert-dialog-content"], [data-slot="sheet-content"]) {
+  box-shadow: var(--shadow-overlay);
+}
+
+/* --- buttons: the candy signature. Label voice (Nunito 800 uppercase
+       0.04em — component font-size kept so dense headers don't wrap),
+       squash on press with spring release, hover toward the sanctioned
+       variant, soft cherry glow in dark. --- */
+[data-theme="candy-shop"] [data-slot="button"] {
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-theme="candy-shop"] [data-slot="button"]:active {
+  transform: scale(0.97);
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+[data-theme="candy-shop"] [data-slot="button"].bg-primary:hover {
+  background: var(--primary-cs-hover);
+}
+/* --- audit F6: destructive hover DEEPENS, never brightens toward the
+       raw cherry (#FF5C8D + white = 2.93:1). Light deepens #D11450,
+       dark deepens the /60-composited fill; white labels hold the floor
+       (6.16 / 5.08). Primary hover keeps the spec's own #FF5C8D tension,
+       documented in the audit. --- */
+[data-theme="candy-shop"] [data-slot="button"].bg-destructive:hover {
+  background: #c01047;
+}
+[data-theme="candy-shop"].dark [data-slot="button"].bg-destructive:hover {
+  background: #d41e59;
+}
+[data-theme="candy-shop"].dark [data-slot="button"].bg-primary {
+  box-shadow: var(--glow-accent);
+}
+
+/* --- tabs: the underline signature — cherry spine, accent-ink active --- */
+[data-theme="candy-shop"] [data-slot="tabs-list"] {
+  background: transparent;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 0;
+  gap: 1rem;
+  height: auto;
+}
+[data-theme="candy-shop"] [data-slot="tabs-trigger"] {
+  height: 2.25rem;
+  margin-bottom: -1px;
+  border-radius: 0;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  padding-inline: 0.25rem;
+}
+[data-theme="candy-shop"] [data-slot="tabs-trigger"]:hover {
+  background: transparent;
+  color: var(--ink);
+}
+[data-theme="candy-shop"] [data-slot="tabs-trigger"][data-state="active"] {
+  background: transparent;
+  border-bottom-color: var(--cherry);
+  color: var(--accent-ink);
+  box-shadow: none;
+}
+
+/* --- framework chips: pill, owned-hue voices (Study=mulberry,
+       Practice=cherry-ink, Diagnose=plum). Light: deep ink on tint;
+       dark: light voice on deeper tint. --- */
+[data-theme="candy-shop"] .chip-study {
+  background: rgba(178, 87, 140, 0.14);
+  color: #8a3a63;
+  border-radius: 999px;
+}
+[data-theme="candy-shop"] .chip-practice {
+  background: rgba(255, 45, 110, 0.1);
+  color: #d11450;
+  border-radius: 999px;
+}
+[data-theme="candy-shop"] .chip-diagnose {
+  background: rgba(60, 13, 40, 0.08);
+  color: #3c0d28;
+  border-radius: 999px;
+}
+[data-theme="candy-shop"].dark .chip-study {
+  background: rgba(178, 87, 140, 0.24);
+  color: #e3a8cd;
+}
+[data-theme="candy-shop"].dark .chip-practice {
+  background: rgba(255, 45, 110, 0.18);
+  color: #ff5c8d;
+}
+[data-theme="candy-shop"].dark .chip-diagnose {
+  background: rgba(255, 233, 242, 0.1);
+  color: #ffe9f2;
+}
+
+/* --- audit F1: cherry-as-text demotion. SME-inherited markup uses
+       .text-primary for small text (breadcrumbs, icon chips, filter
+       links); raw cherry there measures 2.73–3.11:1. The spec owns an
+       accent INK for exactly this duty (§3.2/§3.4) — route the class
+       through it (#D11450 light 4.63+ / #FF5C8D dark 6.46). --- */
+[data-theme="candy-shop"] .text-primary { color: var(--accent-ink); }
+
+/* --- audit F1: course-nav active — the sanctioned sibling recipe
+       (surface + hairline + 3px cherry spine), same as QG/plum ship.
+       The inherited wash+text-primary recipe fails AA even demoted
+       (accent-ink on the cherry wash = 4.07). --- */
+[data-theme="candy-shop"] a.course-nav-item[aria-current="page"] {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--line);
+  position: relative;
+}
+[data-theme="candy-shop"] a.course-nav-item[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 7px;
+  bottom: 7px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--cherry);
+}
+
+/* --- audit F10: selected menu items carry the accent-ink voice
+       (§10.9: accent-ink text + trailing check) instead of ink-on-ink. --- */
+[data-theme="candy-shop"] :is(
+  [data-slot="select-item"][data-state="checked"],
+  [data-slot="dropdown-menu-checkbox-item"][data-state="checked"],
+  [data-slot="dropdown-menu-radio-item"][data-state="checked"]
+) {
+  color: var(--accent-ink);
+}
+
+/* --- audit m1: tooltips are INVERSE by spec (ink fill / paper text),
+   not accent-on-accent — the inherited bg-primary fill put 12px white
+   labels on raw cherry (3.59:1). The arrow svg rides along. --- */
+[data-theme="candy-shop"] [data-slot="tooltip-content"] {
+  background: var(--ink);
+  color: var(--bg);
+}
+[data-theme="candy-shop"] [data-slot="tooltip-content"] > svg {
+  background: var(--ink);
+  fill: var(--ink);
+}
+
+/* --- audit F5: destructive-toast neutralization. The radix component
+   hardcodes a Tailwind red family (text-red-300 / hover red-50 / focus
+   rings red-400/600) neither spec owns a member of; the title/body now
+   ride --destructive-foreground (above), and the close rides the
+   on-primary paper voice. Dark fill deepens off raw #E61F5F — solid
+   white-on-#E61F5F is 4.44; the deepened cherry holds 7.9. --- */
+[data-theme="candy-shop"].dark [data-slot="toast"].destructive {
+  background: #9c1a47;
+}
+[data-theme="candy-shop"] [data-slot="toast"].destructive [toast-close] {
+  color: var(--on-primary-cs);
+  --tw-ring-color: rgba(255, 255, 255, 0.55);
+  --tw-ring-offset-color: var(--danger-cs);
+}
+
+/* --- audit F3: one-accent budget (§12.1 — "exactly one may be a call
+       to action"). The header CTA owns the landing's cherry; the hero
+       CTA demotes to the spec's own inverse voice (ink fill / paper
+       text, §10.1's demotion path). Marker class only fires under the
+   two audited themes — SME/QG landing is untouched. --- */
+[data-theme="candy-shop"] [data-slot="button"].hero-cta-inverse {
+  background: var(--ink);
+  color: var(--bg);
+}
+[data-theme="candy-shop"] [data-slot="button"].hero-cta-inverse:hover {
+  background: var(--ink);
+  opacity: 0.92;
+}
+[data-theme="candy-shop"].dark [data-slot="button"].hero-cta-inverse {
+  box-shadow: none; /* the dark bg-primary glow belongs to accent fills */
+}
+
+/* --- second-pass audit (deferred items) ---
+   F8: the Fraunces voice reached h1 only (via the base rule) and explicit
+   font-display spans; content h2/h3 rendered Nunito. The spec assigns
+   Fraunces to the h1–h3 band — extend the display chain to both. --- */
+[data-theme="candy-shop"] :is(h2, h3) {
+  font-family: var(--app-font-display);
+}
+/* F9: Lucide icons ride the spec's chunky candy hand (stroke-width 2.25
+   vs the lucide default 2). CSS beats the svg presentation attribute,
+   so one rule covers every icon. --- */
+[data-theme="candy-shop"] svg.lucide {
+  stroke-width: 2.25;
+}
+/* Second-pass m2: candy dark danger TEXT voice. --destructive keeps the
+   spec's dark cherry #E61F5F for FILLS (white labels ride the /60
+   composite, 7.9), but the same value as 10-11px text on cards lands
+   3.85:1. The spec's hover-toward-viewer #FF5C8D is the dark cherry
+   text voice (5.84 on card / 6.46 on paper) — the candy mirror of
+   plum's §3.2 fill/text split. --- */
+[data-theme="candy-shop"].dark .text-destructive {
+  color: var(--accent-ink);
+}
+
+/* ====================================================================
+   CHAT APP PLUM THEME (chat-app-plum-design-system, alpha) —
+   data-theme="chat-app-plum"
+   Port of https://github.com/nawaf-al-hussain/FileUpload/blob/main/
+   chat-app-plum-design-system.md onto the hub's QG architecture: light
+   raw block → one shared shadcn alias group → dark raw overrides ONLY →
+   theme-scoped authored layer (no component files touched).
+
+   The spec's laws, honored here:
+   - violet #7B44C7 is the ONLY interaction color and stays byte-identical
+     in light AND dark (the brand fill); hover darkens in light (#6838AD),
+     lightens in dark (#8A55DB); violet-AS-TEXT splits off (--accent-ink:
+     #7B44C7 light / #A678EE dark — spec §3.2 derivation)
+   - white-on-violet is 6.0:1 AA in both themes — this port needs NO
+     button contrast caveat (the spec's headline accessibility win)
+   - plum ink & mist paper swap in dark: #23132E↔#F4EFFA over plum-black
+     #161021 (never #000, never pure-white text)
+   - lavender whispers: raw #8672A0 does borders/fills only; TEXT duty
+     uses the spec's deepened lavender #5F4B7A light / #B3A3CC dark
+   - no green exists: success = violet (the spec's presence/read voice);
+     no amber either — warn rides a deepened lavender-violet with
+     warn-ink carrying body copy on washes (status never rides hue alone
+     in the hub; labels always accompany color). info = the spec's AA
+     muted, cat = plum ink, sim = raw lavender — the family ladder.
+   - destructive follows the spec's error semantics (§10.8: violet means
+     action, NOT error; errors are plum-ink): light destructive = plum
+     ink #23132E (white label 17:1). Dark splits the duty: --destructive
+     is the light plum-lavender #C9B7E4 for text/washes/borders (~9:1),
+     while FILLED destructive slots (button/badge/toast) get a solid deep
+     plum #3B2A52 in the authored layer so their hardcoded white labels
+     carry (~10:1)
+   - flat on purpose: static shadow utilities are zeroed; floating layers
+     re-receive the only sanctioned shadows (--shadow-pop /
+     --shadow-overlay, plum-tinted per §6); dark adds --glow-accent
+   - soft contained geometry: --radius 28 + pinned utility ladder
+     10/18/28 (inputs/selects = 10, badges/buttons = pill/18 per §10;
+     controls under ~32px exempt and untouched)
+   - one family: Inter everywhere (Law 8 — display chain is also Inter);
+     no mono override (spec defines none)
+   ==================================================================== */
+[data-theme="chat-app-plum"] {
+  /* brand constants — identical in both themes */
+  --plum: #23132e;
+  --lavender: #8672a0;
+  --violet: #7b44c7;
+  --mist: #f4effa;
+
+  /* surfaces / ink / lines (light raws) */
+  --bg: #f4effa;  --bg-deep: #ece5f6;
+  --surface: #ffffff;           --surface-raised: #ffffff;
+  --surface-recessed: #ece5f6;  --surface-sunken: #e4dbf3;
+  --ink: #23132e;  --ink-soft: #5f4b7a;  --ink-faint: #8672a0;  --ink-faintest: #a99bc2;
+  --line: rgba(134, 114, 160, 0.32);  --line-soft: rgba(134, 114, 160, 0.18);
+  --line-strong: #8672a0;
+
+  /* action / danger / status raws */
+  --primary-pm: #7b44c7;  --primary-pm-hover: #6838ad;  --on-primary-pm: #ffffff;
+  --accent-ink: #7b44c7;
+  --danger-pm: #23132e;
+  --focus-pm: #8672a0;
+  --success: var(--violet);
+  --success-ink: #ffffff; /* copy-on-success: white on violet = 6:1 */
+  --warn: #6e5a96;  --warn-ink: #3d2e58;
+  --info: #5f4b7a;
+  --cat: #23132e;  --sim: #8672a0;
+
+  /* the only sanctioned shadows (floating layers, §6) */
+  --shadow-pop: 0 10px 30px -8px rgba(35, 19, 46, 0.16);
+  --shadow-overlay: 0 20px 50px -12px rgba(35, 19, 46, 0.24);
+
+  /* geometry — soft, contained (pins below give the exact 10/18/28) */
+  --radius: 28px;
+
+  /* fonts — Inter does everything (Law 8: one family, weight-driven) */
+  --app-font-sans: var(--font-inter), "Segoe UI", "Helvetica Neue", sans-serif;
+  --app-font-display: var(--font-inter), "Segoe UI", "Helvetica Neue", sans-serif;
+
+  color-scheme: light;
+}
+
+/* shadcn alias contract — defined once, re-resolves in dark */
+[data-theme="chat-app-plum"],
+[data-theme="chat-app-plum"].dark {
+  --background: var(--bg);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface-raised);
+  --popover-foreground: var(--ink);
+  --primary: var(--primary-pm);
+  --primary-foreground: var(--on-primary-pm);
+  --secondary: var(--surface-recessed);
+  --secondary-foreground: var(--ink);
+  --muted: var(--surface-recessed);
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--surface-sunken);
+  --accent-foreground: var(--ink);
+  --destructive: var(--danger-pm);
+  --destructive-foreground: #ffffff; /* audit F5: the toast landmine —
+    light fill is plum ink #23132E, so its labels need the paper voice
+    (17.4:1); dark re-resolves below onto the text-voice fills */
+  --border: var(--line);
+  --input: var(--line-strong);
+  --ring: var(--focus-pm);
+  --chart-1: var(--violet);
+  --chart-2: var(--lavender);
+  --chart-3: var(--primary-pm-hover);
+  --chart-4: var(--ink-soft);
+  --chart-5: var(--ink-faintest);
+  --sidebar: var(--bg-deep);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--primary-pm);
+  --sidebar-primary-foreground: var(--on-primary-pm);
+  --sidebar-accent: var(--surface);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--line);
+  --sidebar-ring: var(--focus-pm);
+}
+
+/* dark — lights off, plum on; violet fill keeps its color; raw values only */
+[data-theme="chat-app-plum"].dark {
+  --bg: #161021;  --bg-deep: #120d1b;
+  --surface: #221834;           --surface-raised: #2c2044;
+  --surface-recessed: #1b1329;  --surface-sunken: #332550;
+  --ink: #f4effa;  --ink-soft: #b3a3cc;  --ink-faint: #8672a0;  --ink-faintest: #6e5f8a;
+  --line: rgba(134, 114, 160, 0.4);  --line-soft: rgba(134, 114, 160, 0.24);
+  --line-strong: #8672a0;
+
+  --primary-pm: #7b44c7;        /* byte-identical — the brand never moves */
+  --primary-pm-hover: #8a55db;  /* hover moves toward the viewer in dark */
+  --accent-ink: #a678ee;
+  --danger-pm: #c9b7e4;         /* text/wash voice; FILLED slots override below */
+  --destructive-foreground: #23132e; /* audit F5: ink on the light voice ≈ 9.6 */
+  --focus-pm: #a678ee;
+  --success: #a678ee;
+  --success-ink: #23132e; /* copy-on-success: PM ink on lavender = 5.4:1 */
+  --warn: #c4b0e8;  --warn-ink: #e8e0f6;
+  --info: #b3a3cc;
+  --cat: #f4effa;  --sim: #8a76ad;
+
+  --chart-1: #7b44c7;
+  --chart-2: #b3a3cc;
+  --chart-3: #a678ee;
+  --chart-4: #8a76ad;
+  --chart-5: #e2d6f6;
+
+  --shadow-pop: 0 10px 30px -8px rgba(0, 0, 0, 0.5);
+  --shadow-overlay: 0 20px 50px -12px rgba(0, 0, 0, 0.6);
+  --glow-accent: 0 0 20px rgba(123, 68, 199, 0.25);
+
+  color-scheme: dark;
+}
+
+/* ====================================================================
+   CHAT APP PLUM — authored layer (theme-scoped component signatures)
+   Everything targets [data-theme="chat-app-plum"] only; SME, QG and
+   candy are untouched. Component files are NOT modified for plum.
+   ==================================================================== */
+
+/* --- geometry: the 10/18/28 ladder. --radius is 28 under this theme, so
+       the calc chain (24/26/28/32) is pinned to the spec ladder instead.
+       The spec top rung is 28 (cards/dialogs/composer); rounded-xl pins
+       there too — nearest rung, never in between (§5). Small controls
+       (<~32px) are exempt per spec — checkbox/switch/radio ship arbitrary
+       or pill radii and are deliberately not touched. Buttons get 18
+       (radius-md) — the spec's own button radius. --- */
+[data-theme="chat-app-plum"] .rounded-sm { border-radius: 10px; }
+[data-theme="chat-app-plum"] .rounded-md { border-radius: 18px; }
+[data-theme="chat-app-plum"] .rounded-lg,
+[data-theme="chat-app-plum"] .rounded-xl { border-radius: 28px; }
+
+/* --- slot radii: inputs/selects = 10 (radius-sm rung, §10.8), badges =
+       pill (§10.12) --- */
+[data-theme="chat-app-plum"] :is([data-slot="input"], [data-slot="textarea"], [data-slot="select-trigger"]) {
+  border-radius: 10px;
+}
+[data-theme="chat-app-plum"] [data-slot="badge"] { border-radius: 999px; }
+
+/* --- audit F4: floating slots ride the exact rungs. Menus/tooltips/
+       alerts = radius-sm (10); sheets = radius-lg (28). The shipped
+       rounded-md/lg classes land one rung off (18/28). Placed after the
+       utility pins so the slot pins win the tie. --- */
+[data-theme="chat-app-plum"] :is(
+  [data-slot="popover-content"],
+  [data-slot="dropdown-menu-content"],
+  [data-slot="select-content"],
+  [data-slot="tooltip-content"],
+  [data-slot="alert"]
+) {
+  border-radius: 10px;
+}
+[data-theme="chat-app-plum"] [data-slot="sheet-content"] { border-radius: 28px; }
+
+/* --- depth: flat on purpose. Zero static shadows (anchored things
+       separate with 1px lavender hairlines); floating layers get the
+       only sanctioned ones back. --- */
+[data-theme="chat-app-plum"] :is(.shadow-2xs, .shadow-xs, .shadow-sm, .shadow, .shadow-md, .shadow-lg, .shadow-xl) {
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+}
+[data-theme="chat-app-plum"] :is(
+  [data-slot="popover-content"],
+  [data-slot="dropdown-menu-content"],
+  [data-slot="select-content"],
+  [data-slot="tooltip-content"],
+  [data-slot="toast"],
+  [data-sonner-toast]
+) {
+  box-shadow: var(--shadow-pop);
+}
+[data-theme="chat-app-plum"] :is([data-slot="dialog-content"], [data-slot="alert-dialog-content"], [data-slot="sheet-content"]) {
+  box-shadow: var(--shadow-overlay);
+}
+
+/* --- buttons: the plum signature. Label voice (Inter 600 uppercase
+       0.04em — §10.1's exact label style; component font-size kept so
+       dense headers don't wrap), squash on press with the spec's spring
+       release, hover toward the sanctioned variant, faint violet glow in
+       dark (the send/unread glow, §6). --- */
+[data-theme="chat-app-plum"] [data-slot="button"] {
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-theme="chat-app-plum"] [data-slot="button"]:active {
+  transform: scale(0.97);
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+[data-theme="chat-app-plum"] [data-slot="button"].bg-primary:hover {
+  background: var(--primary-pm-hover);
+}
+[data-theme="chat-app-plum"].dark [data-slot="button"].bg-primary {
+  box-shadow: var(--glow-accent);
+}
+
+/* --- dark filled destructive: --destructive is the light text voice in
+       dark, so the slots that render hardcoded white labels go solid
+       deep plum instead (spec §10.8 error language — never violet). --- */
+[data-theme="chat-app-plum"].dark :is(
+  [data-slot="button"].bg-destructive,
+  [data-slot="badge"].bg-destructive,
+  [data-slot="toast"].destructive
+) {
+  background: #3b2a52;
+}
+[data-theme="chat-app-plum"].dark [data-slot="toast"].destructive {
+  color: #f4effa;
+  border-color: var(--line-strong);
+}
+[data-theme="chat-app-plum"] [data-slot="button"].bg-destructive:hover {
+  background: var(--plum);
+}
+[data-theme="chat-app-plum"].dark [data-slot="button"].bg-destructive:hover {
+  background: #4a3766;
+}
+
+/* --- tabs: the underline signature — violet spine (the active voice,
+       §10.9 selected = accent-ink), active text = accent-ink --- */
+[data-theme="chat-app-plum"] [data-slot="tabs-list"] {
+  background: transparent;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 0;
+  gap: 1rem;
+  height: auto;
+}
+[data-theme="chat-app-plum"] [data-slot="tabs-trigger"] {
+  height: 2.25rem;
+  margin-bottom: -1px;
+  border-radius: 0;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  padding-inline: 0.25rem;
+}
+[data-theme="chat-app-plum"] [data-slot="tabs-trigger"]:hover {
+  background: transparent;
+  color: var(--ink);
+}
+[data-theme="chat-app-plum"] [data-slot="tabs-trigger"][data-state="active"] {
+  background: transparent;
+  border-bottom-color: var(--violet);
+  color: var(--accent-ink);
+  box-shadow: none;
+}
+
+/* --- framework chips: pill (§10.12), owned-hue voices (Study=violet,
+       Practice=lavender, Diagnose=plum). Light: deep ink on wash;
+       dark: light voice on deeper wash. --- */
+[data-theme="chat-app-plum"] .chip-study {
+  background: rgba(123, 68, 199, 0.12);
+  color: #6838ad;
+  border-radius: 999px;
+}
+[data-theme="chat-app-plum"] .chip-practice {
+  background: rgba(134, 114, 160, 0.16);
+  color: #5f4b7a;
+  border-radius: 999px;
+}
+[data-theme="chat-app-plum"] .chip-diagnose {
+  background: rgba(35, 19, 46, 0.08);
+  color: #23132e;
+  border-radius: 999px;
+}
+[data-theme="chat-app-plum"].dark .chip-study {
+  background: rgba(123, 68, 199, 0.22);
+  color: #b48bea; /* audit F7: #A678EE sat 0.18 shy of AA on the violet
+    wash (4.32); a lighter violet tint clears it (5.17). Deepening the
+    wash instead LOWERS contrast — violet is lighter than the card */
+}
+[data-theme="chat-app-plum"].dark .chip-practice {
+  background: rgba(134, 114, 160, 0.24);
+  color: #c4b6de;
+}
+[data-theme="chat-app-plum"].dark .chip-diagnose {
+  background: rgba(244, 239, 250, 0.1);
+  color: #f4effa;
+}
+
+/* --- course sidebar active item: the conversation-list active recipe
+       (§10.11) — surface + hairline + 3px violet left spine --- */
+[data-theme="chat-app-plum"] a.course-nav-item[aria-current="page"] {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--line);
+  position: relative;
+}
+[data-theme="chat-app-plum"] a.course-nav-item[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 7px;
+  bottom: 7px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--violet);
+}
+
+/* --- audit F2: violet-as-text demotion, DARK only. --primary stays
+       raw #7B44C7 for fills (byte-identical law), but SME-inherited
+       .text-primary usages render it as 12–14px text on #161021 =
+       3.09:1. The spec's §3.2 split exists for exactly this: text duty
+       shifts to --accent-ink #A678EE (5.79). Light passes at 5.32 and
+       keeps the raw voice. --- */
+[data-theme="chat-app-plum"].dark .text-primary { color: var(--accent-ink); }
+
+/* --- audit F10: selected menu items carry the accent-ink voice
+       (§10.9: accent-ink text + trailing check) instead of ink-on-ink. --- */
+[data-theme="chat-app-plum"] :is(
+  [data-slot="select-item"][data-state="checked"],
+  [data-slot="dropdown-menu-checkbox-item"][data-state="checked"],
+  [data-slot="dropdown-menu-radio-item"][data-state="checked"]
+) {
+  color: var(--accent-ink);
+}
+
+/* --- audit m1: tooltips are INVERSE by spec (ink fill / paper text),
+   not the inherited accent fill. In dark the ink/paper swap makes this
+   mist-fill/plum-ink automatically. Arrow svg rides along. --- */
+[data-theme="chat-app-plum"] [data-slot="tooltip-content"] {
+  background: var(--ink);
+  color: var(--bg);
+}
+[data-theme="chat-app-plum"] [data-slot="tooltip-content"] > svg {
+  background: var(--ink);
+  fill: var(--ink);
+}
+
+/* --- audit F5: destructive-toast close neutralization. The radix
+   component hardcodes text-red-300/hover red-50/focus rings red-400/600
+   — a red family neither spec owns. Title/body now ride
+   --destructive-foreground (white on plum ink 17.4 light; ink on the
+   filled #3B2A52 12.81 dark); the close rides the on-primary voice. --- */
+[data-theme="chat-app-plum"] [data-slot="toast"].destructive [toast-close] {
+  color: var(--on-primary-pm);
+  --tw-ring-color: rgba(255, 255, 255, 0.55);
+  --tw-ring-offset-color: var(--danger-pm);
+}
+[data-theme="chat-app-plum"].dark [data-slot="toast"].destructive [toast-close] {
+  --tw-ring-offset-color: #3b2a52;
+}
+
+/* --- audit F3: one-accent budget (§12.1 — "exactly one may be a call
+       to action"). The header CTA owns the landing's violet; the hero
+       CTA demotes to the spec's own inverse voice (ink fill / paper
+       text). Marker class only fires under the two audited themes —
+       SME/QG landing is untouched. --- */
+[data-theme="chat-app-plum"] [data-slot="button"].hero-cta-inverse {
+  background: var(--ink);
+  color: var(--bg);
+}
+[data-theme="chat-app-plum"] [data-slot="button"].hero-cta-inverse:hover {
+  background: var(--ink);
+  opacity: 0.92;
+}
+[data-theme="chat-app-plum"].dark [data-slot="button"].hero-cta-inverse {
+  box-shadow: none; /* the dark bg-primary glow belongs to accent fills */
+}
+
+/* --- second-pass audit (deferred items) ---
+   F9: tabular numerals. Inter is the one family (Law 8); the chat-app's
+   tick-voice — timestamps, counters, per-point score figures — aligns
+   digits with tnum. Set once on the theme root; everything inherits. --- */
+[data-theme="chat-app-plum"] {
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Past Papers viewer (pdf-pane v3): pdf.js text layer + find highlights ---
+   The text layer hosts transparent absolutely-positioned spans produced by
+   pdf.js TextLayer; spans position themselves with
+   calc(var(--scale-factor) * Npx) inline styles, so the holder must carry
+   --scale-factor (PdfPane sets it on every paint). Highlights live below the
+   text layer so selection still works over marked ranges. */
+.pp-textLayer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 1;
+  line-height: 1;
+  text-size-adjust: none;
+  forced-color-adjust: none;
+  transform-origin: 0 0;
+  z-index: 2;
+}
+.pp-textLayer :is(span, br) {
+  color: transparent;
+  position: absolute;
+  white-space: pre;
+  cursor: text;
+  transform-origin: 0% 0%;
+}
+.pp-textLayer span.markedContent {
+  top: 0;
+  height: 0;
+}
+.pp-textLayer ::selection {
+  background: rgba(59, 130, 246, 0.35);
+}
+.pp-hl-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+.pp-hl {
+  position: absolute;
+  border-radius: 2px;
+  background: rgba(250, 204, 21, 0.45);
+  box-shadow: 0 0 0 1px rgba(202, 138, 4, 0.35);
+}
+.pp-hl-current {
+  background: rgba(251, 146, 60, 0.5);
+  box-shadow: 0 0 0 2px rgba(234, 88, 12, 0.6);
+}
+
+/* Page-holder ghosts (s140): a holder with NO children is a page pdf.js
+   hasn't painted yet — show an honest centered "Page N" instead of a blank
+   box. Any child (canvas / aux layers) means the page is live, so :empty
+   flips off automatically on paint. */
+.pp-holder:empty::after {
+  content: "Page " attr(data-page);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: color-mix(in oklab, var(--muted-foreground) 55%, transparent);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  user-select: none;
+}
+
+/* pdf-pane fullscreen (toolbar Maximize button): the pane IS the screen.
+   In the fullscreen top layer the element keeps its layout classes
+   (h-full/flex-1 of a parent that no longer bounds it), so pin it to the
+   viewport explicitly; strip the card rounding/border and let the internal
+   toolbar + scroll area flex to the full height. */
+.pp-pane:fullscreen {
+  width: 100vw;
+  /* dvh cascade fallback: browsers without dvh keep 100vh above */
+  height: 100vh;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  border: 0;
+  border-radius: 0;
+}
+.pp-pane:fullscreen::-webkit-backdrop {
+  background: var(--background);
+}
+.pp-pane:fullscreen::backdrop {
+  background: var(--background);
+}
+
+/* Mobile UX audit (2026-09-28) P1: KaTeX display math and fenced code blocks
+   render with KaTeX's `white-space: nowrap` / the browser's `white-space: pre`
+   — with no scroll container a wide equation or code line overflows the 375px
+   article column and drags the ENTIRE page into sideways scrolling. Scroll in
+   place instead; the 2px vertical padding keeps fraction bars clear of the
+   scroll edge. */
+.katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2px 0;
+  scrollbar-width: thin;
+}
+.prose-sm pre {
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+/* Polish (2026-09-28, s133): exam-paper answer-line conventions survive into
+   the corpus as literal dot-leader runs ("1..............2.............."),
+   12–135 dots long, 153 questions affected. A dot run has no break
+   opportunity, so the paragraph's min-content width balloons to 1200px+ and
+   drags the whole page sideways at 375px (worst measured po=884).
+   `overflow-wrap: anywhere` (not `break-word`) also shrinks intrinsic
+   min-content, so flex/grid ancestors can't be blown out either. Applies to
+   every <Markdown> consumer (question bodies, mark schemes, notes). */
+.prose-sm p,
+.prose-sm li {
+  overflow-wrap: anywhere;
+}
+
+/* ── CLA docked sidebar (HUB-CLA-SIDEBAR, 2026-09-29) ────────────────────
+   SME's expanded chat is a real layout member, not an overlay: their
+   wrapper goes `flex: 0 0 400px; position: static` inside the page's flex
+   row, so the page content physically cedes 400px and keeps scrolling.
+   The hub's course-shell row gets the same 400px right inset while the
+   CLA dock is open (<html data-cla-sidebar="open">, set by cla-panel-mode
+   .ts) — the docked panel is a fixed right column under the 56px navbar
+   occupying exactly that freed space, so panel and page never overlap.
+   Gated ≥1400px like SME's expanded form (below it the panels render the
+   floating popup / mobile fullscreen wash instead). The transition
+   mirrors SME's nav-width timing (.2s ease-in-out), silenced under
+   reduced motion. */
+.course-shell-row {
+  transition: padding-right 0.2s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .course-shell-row {
+    transition: none;
+  }
+  /* UX audit 2026-10-02 #15: blanket-guard the decorative Tailwind motion —
+     pulse skeletons, bounce typing dots, spinners — engine-level loops are
+     gated in kg-explorer/engine.ts (reducedMotion). */
+  .animate-pulse,
+  .animate-bounce,
+  .animate-spin {
+    animation: none;
+  }
+}
+@media (min-width: 1400px) {
+  html[data-cla-sidebar="open"] .course-shell-row {
+    padding-right: 400px;
+  }
+}
+/* ── HUB-ANSWER-BOX wave 4 — the rich answer editor (TipTap + MathLive) ──
+   Placeholder = SME's exact mechanism (TipTap p[data-placeholder] ::before,
+   classes is-empty is-editor-empty — verified against their editor DOM).
+   The equation atom renders KaTeX inline with a selection ring. */
+.answer-editor-area .tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: var(--muted-foreground);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+.answer-equation {
+  display: inline-block;
+  padding: 0 2px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.answer-equation .katex {
+  font-size: 1em;
+}
+.answer-equation--selected {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+/* ── wave 5 — the mathfield lives IN the text (operator trace
+   1a0eb5e936962765): while an equation session is open the atom's node
+   view hosts the MathLive mathfield INLINE in the ProseMirror flow —
+   chip-like at text size, no popover. Static KaTeX renders at rest. */
+.answer-equation--editing {
+  cursor: text;
+}
+math-field.answer-mathfield {
+  display: inline-block;
+  vertical-align: middle;
+  /* wave 6 (operator trace 1a0ebc1b93638915): the stock toggles are two
+     34×34 buttons inside the field's flex row (MathLive .ML__toggles,
+     flex-shrink:0). At the wave-5 min-width of 4ch the chip measured
+     94×44 px — the toggles left ~10 px for the formula, so SME's own
+     Menu / Toggle Virtual Keyboard buttons were effectively unusable.
+     12rem hosts the formula AND both toggles with room to type; the chip
+     still flows inline, grows with its content, and caps at 100%. */
+  min-width: 12rem;
+  max-width: 100%;
+  min-height: 0;
+  padding: 0 2px;
+  margin: 0 1px;
+  font-size: 1em;
+  line-height: normal;
+  border: 1px solid var(--input);
+  border-radius: 4px;
+  background: var(--background);
+  color: var(--foreground);
+}
+math-field.answer-mathfield:focus-within,
+math-field.answer-mathfield:focus {
+  border-color: var(--primary);
+  outline: none;
+}

@@ -1,0 +1,24 @@
+version: 1
+task:
+  id: T-MIG-003
+  title: "Golden-master bring-up — boot Java core locally (Neon branch), capture health+auth cases, prove live replay gate"
+  owner: "unassigned"
+  status: OPEN
+  priority: P0
+  wave: 0
+  deps: [T-MIG-000]
+  execution_record: "—"
+base:
+  repo: "syllabai-v2 @ seed; Java core runnable per its docs/DEPLOYMENT.md (frozen)"
+basis: >
+  GOLDEN_MASTER.md §1–§2. The harness engine is committed (golden/runner.ts,
+  selftest green in CI); this task proves the LIVE loop: capture from the
+  frozen core → scrub → replay against v2 api → PASS.
+scope:
+  allowed:
+    - "golden/**"
+    - ".syllabai/receipts/capture/**"
+    - ".syllabai/tasks/T-MIG-003.yaml (status/execution_record only)"
+  forbidden:
+    - "writing into production Neon (capture writes go to a Neon branch)"
+    - "committing unscrubbed fixtures (GOLDEN_MASTER §3, R-PII)"

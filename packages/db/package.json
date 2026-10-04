@@ -1,0 +1,24 @@
+{
+  "name": "@syllabai/db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "db:pull": "drizzle-kit pull",
+    "db:generate": "drizzle-kit generate",
+    "db:check": "drizzle-kit check"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.0",
+    "drizzle-orm": "^0.38.0"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.30.0",
+    "typescript": "^5.7.0",
+    "@types/bun": "^1.2.0"
+  }
+}

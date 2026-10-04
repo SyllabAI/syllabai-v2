@@ -1,0 +1,20 @@
+{
+  "name": "syllabai-v2",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "typecheck": "bun run --cwd packages/contracts typecheck && bun run --cwd packages/shared typecheck && bun run --cwd packages/db typecheck && bun run --cwd apps/api typecheck",
+    "test": "bun test apps/api packages",
+    "build:api": "bun run --cwd apps/api build",
+    "dev:api": "bun run --cwd apps/api dev",
+    "dev:hub": "bun run --cwd apps/hub dev",
+    "build:hub": "bun run --cwd apps/hub build",
+    "golden": "bun golden/runner.ts"
+  },
+  "engines": {
+    "bun": ">=1.1"
+  }
+}

@@ -1,0 +1,27 @@
+version: 1
+task:
+  id: T-MIG-011
+  title: "Hub adapter (Wave 1) — auth flow against v2 api on branch + lift mathNormalize into @syllabai/shared"
+  owner: "unassigned"
+  status: OPEN
+  priority: P1
+  wave: 1
+  deps: [T-MIG-010]
+  execution_record: "—"
+base:
+  repo: "apps/hub @ 93226a43 import; PROVENANCE.md rules bind this lane"
+basis: >
+  MIGRATION_PLAN.md §4.4 strangler-fig; packages/shared/src/index.ts plan.
+  Env-driven API base override so hub can target v2-per-module while the
+  Java core keeps serving the rest.
+scope:
+  allowed:
+    - "apps/hub/src/** (auth surfaces + api client layer ONLY)"
+    - "apps/hub/.env.example"
+    - "packages/shared/src/** (mathNormalize lift)"
+    - ".syllabai/receipts/T-MIG-011/**"
+    - ".syllabai/tasks/T-MIG-011.yaml (status/execution_record only)"
+  forbidden:
+    - "apps/hub/content/** content-maps/** spines/** (R-CORPUS: re-import only)"
+    - "apps/api/** (R3/R4's lane)"
+    - "upstream syllabai-hub writes (C1)"

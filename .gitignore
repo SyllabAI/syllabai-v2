@@ -1,0 +1,29 @@
+# dependencies
+node_modules/
+
+# builds
+.next/
+out/
+dist/
+*.tsbuildinfo
+
+# env & secrets — NEVER commit (same discipline as the Java core)
+.env
+.env.*
+!.env.example
+
+# logs
+*.log
+dev.log
+server.log
+
+# os / editor
+.DS_Store
+.idea/
+.vscode/
+
+# golden-master local artifacts (fixtures are committed; run outputs are not)
+golden/out/
+
+# vercel
+.vercel/

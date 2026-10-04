@@ -1,0 +1,30 @@
+version: 1
+task:
+  id: T-MIG-010
+  title: "Port identity/auth module (Wave 1) — register/login/JWT/RBAC/bootstrap-admin, golden-gated"
+  owner: "unassigned"
+  status: OPEN
+  priority: P1
+  wave: 1
+  deps: [T-MIG-001, T-MIG-002, T-MIG-003]
+  execution_record: "—"
+base:
+  repo: "syllabai-v2 @ post-W0; frozen refs: core identity services + docs/DEPLOYMENT.md"
+basis: >
+  MIGRATION_PLAN.md §5 Wave 1. Compat requirements are binding: same
+  SYLLABAI_JWT_SECRET (Java-issued tokens must verify — R-JWT), same BCrypt
+  cost (R-BCRYPT), same password floor (12 chars, letter+digit), teacher
+  join-code gate fails closed, ADMIN never self-serviceable, /actuator/health
+  untouched. Current routes answer honest 501 (see apps/api/src/routes/auth.ts).
+scope:
+  allowed:
+    - "apps/api/src/routes/auth/**"
+    - "apps/api/src/middleware/**"
+    - "apps/api/src/services/identity/**"
+    - "apps/api/test/identity/**"
+    - ".syllabai/receipts/T-MIG-010/**"
+    - ".syllabai/tasks/T-MIG-010.yaml (status/execution_record only)"
+  forbidden:
+    - "packages/contracts/** (R1's lane — request changes as a task)"
+    - "apps/hub/** (R5's lane)"
+    - "production Neon writes (use a branch)"

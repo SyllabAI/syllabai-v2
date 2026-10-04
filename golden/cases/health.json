@@ -1,0 +1,10 @@
+{
+  "name": "actuator-health-parity",
+  "description": "Captured from frozen Java core (Spring Boot actuator, same path/shape the hub import and operator probes rely on). Static case — valid against both the committed api and any live v2 target.",
+  "method": "GET",
+  "path": "/actuator/health",
+  "expect": {
+    "status": 200,
+    "body": { "status": "UP" }
+  }
+}

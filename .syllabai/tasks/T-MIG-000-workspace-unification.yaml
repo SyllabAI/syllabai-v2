@@ -1,0 +1,28 @@
+version: 1
+task:
+  id: T-MIG-000
+  title: "Workspace unification — hub becomes a first-class bun workspace package"
+  owner: "unassigned"
+  status: OPEN
+  priority: P0
+  wave: 0
+  deps: []
+  execution_record: >
+    (seed commit scaffolded the monorepo; this task finishes the integration)
+base:
+  repo: "syllabai-v2 @ seed; syllabai-hub frozen @ 93226a43"
+basis: >
+  Operator directive 2026-10-04 trace 347fbb29… ("Set up the new repo …
+  quickly make the new repo catch up"). MIGRATION_PLAN.md §5 Wave 0.
+scope:
+  allowed:
+    - "package.json (root)"
+    - "apps/hub/package.json (rename to @syllabai/hub; scripts intact)"
+    - "apps/hub/bun.lock (DELETE — replaced by root lockfile)"
+    - "bun.lock / bunfig.toml (root)"
+    - ".github/workflows/ci.yml (add hub lane once install succeeds)"
+    - ".syllabai/tasks/T-MIG-000.yaml (status/execution_record only)"
+  forbidden:
+    - "apps/hub/src/** (R5's lane — no behaviour changes)"
+    - "packages/** (other roles' lanes)"
+    - "syllabai-core / syllabai-hub upstream (frozen, C1)"
