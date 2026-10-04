@@ -1,0 +1,113 @@
+{
+  "task": "T-MIG-000",
+  "run": "run-01",
+  "agent": "R7a (agent-da4ab8, zai session web-da4ab8b1)",
+  "recorded_at": "2026-10-05T00:30:00+06:00",
+  "base": {
+    "branch": "t-mig-000/r7a",
+    "parent_commit": "a945c20",
+    "claim_commit": "9516045"
+  },
+  "environment": {
+    "bun": "1.3.14",
+    "node": "v24.21.0",
+    "os": "linux (agent sandbox)",
+    "registry": "registry.npmjs.org (live)"
+  },
+  "objective": "Workspace unification: hub becomes a first-class bun workspace package (@syllabai/hub) with a single root lockfile; hub lane added to CI once install succeeded (per scope).",
+  "steps": [
+    {
+      "step": "claim + orientation",
+      "command": "git commit 9516045 (task yaml CLAIMED + ORIENTATION worklog entry)",
+      "result": "done — zero collisions verified pre-claim (API: no open PRs, branches=[main]; worklog tail = T-MIG-SEED only)"
+    },
+    {
+      "step": "hub package rename",
+      "command": "edit apps/hub/package.json name syllabai-hub -> @syllabai/hub",
+      "result": "done; scripts byte-identical; also declares @tiptap/core ^3.31.3 (see deviations D2)"
+    },
+    {
+      "step": "legacy lockfile removal",
+      "command": "git rm apps/hub/bun.lock",
+      "result": "done (per scope; PROVENANCE.md rule 3 anticipated this)"
+    },
+    {
+      "step": "first unified install",
+      "command": "bun install (root)",
+      "result": "FAIL -> typescript ^5.7.0 'No version matching' — stale bun resolver cache in sandbox; fixed by clearing ~/.bun/install/cache; not a repo defect; registry verified to carry 5.7.3"
+    },
+    {
+      "step": "root lockfile",
+      "command": "bun install (root) -> bun.lock",
+      "result": "root bun.lock written; workspace membership verified: @syllabai/api, @syllabai/contracts, @syllabai/db, @syllabai/hub"
+    },
+    {
+      "step": "isolated-linker failure investigation",
+      "command": "bun run build:hub (attempt 1)",
+      "result": "FAIL — Turbopack: Can't resolve '@tiptap/core' (answer-editor.tsx:53) and 'unist-util-visit-parents' (rehypeKatexMhchem.ts:24 via hast-util-from-html-isomorphic); root cause: bun 1.3 isolated (pnpm-style) linker in workspaces — symlink layout into node_modules/.bun breaks these two Turbopack resolutions, and isolated installs do not auto-add undeclared peer deps (@tiptap/core is peer-only in tiptap v3)"
+    },
+    {
+      "step": "hoisted linker fix",
+      "command": "write bunfig.toml [install] linker=hoisted; rm -rf all workspace node_modules + bun.lock; bun install",
+      "result": "PASS — 917 packages installed, flat layout; @tiptap/core, unist-util-visit-parents, hast-util-from-html-isomorphic all resolvable; versions unchanged, placement only (see deviation D1)"
+    },
+    {
+      "step": "gates: typecheck",
+      "command": "bun run typecheck (contracts, shared, db, api)",
+      "result": "PASS — 4x tsc --noEmit clean; required root devDependency bun-types (see deviation D3): apps/api tsconfig types:['bun-types'] was previously satisfied by per-directory install side effects"
+    },
+    {
+      "step": "gates: tests",
+      "command": "bun test apps/api packages",
+      "result": "PASS — 4 pass / 0 fail (honest-501 contract tests incl. never-fake-200)"
+    },
+    {
+      "step": "gates: golden selftest",
+      "command": "bun golden/runner.ts --selftest",
+      "result": "PASS — 'selftest OK: tolerance engine behaves'"
+    },
+    {
+      "step": "gates: hub production build",
+      "command": "bun run build:hub",
+      "result": "PASS — prebuild corpus verify (verify_corpus_23a.ts + verify_flashcard_sync_courses.ts) + next build (Turbopack) full route table rendered; standalone output assembled"
+    },
+    {
+      "step": "CI hub lane",
+      "command": "edit .github/workflows/ci.yml",
+      "result": "verify job switched to root 'bun install --frozen-lockfile' (single lockfile doctrine); new hub job: install + bun run build:hub, 30min cap, isolated from fast lane (see deviation D4)"
+    }
+  ],
+  "deviations": [
+    {
+      "id": "D1",
+      "what": "root bunfig.toml sets [install] linker='hoisted'",
+      "why": "bun >=1.3 defaults to the isolated linker in workspaces; the imported hub's Turbopack build fails on two modules under the symlink layout. Hoisted matches the hub's legacy standalone layout; dependency VERSIONS unchanged (bun.lock is the same resolved set). bunfig.toml is explicitly in scope.allowed.",
+      "risk": "low — placement-only change; flagged for R0 review"
+    },
+    {
+      "id": "D2",
+      "what": "apps/hub/package.json declares @tiptap/core ^3.31.3 (was an undeclared phantom import)",
+      "why": "hub source imports it directly (apps/hub/src/components/answer-editor.tsx); tiptap v3 made core peer-only so no dependency pulls it in; legacy standalone lockfile carried it, unified install does not auto-install undeclared peers. Behaviour unchanged — same code, dependency made explicit. Scope.allowed covers apps/hub/package.json; scripts untouched.",
+      "risk": "low — flagged for R0 review"
+    },
+    {
+      "id": "D3",
+      "what": "root package.json gains devDependencies bun-types ^1.3.14",
+      "why": "apps/api tsconfig references types:['bun-types'] but no workspace declared it; per-directory installs satisfied it as a side effect; unified hoisting exposed the gap. Root package.json is in scope.allowed. Resolution walks up from apps/api to root node_modules.",
+      "risk": "low — flagged for R0 review"
+    },
+    {
+      "id": "D4",
+      "what": "verify job now installs from the root lockfile (bun install --frozen-lockfile) instead of four per-directory installs",
+      "why": "with a root lockfile the per-directory installs are the drift this task exists to remove; a mixed install model would let CI pass on dependency states the lockfile does not describe. Letter-of-scope said 'add hub lane'; root-install switch is the substance of workspace unification.",
+      "risk": "medium-low — explicit R0 review requested in PR body"
+    }
+  ],
+  "secrets": "none handled — no credentials used or present in this task's files or commands",
+  "pii": "none — no fixtures captured; corpus untouched (R-CORPUS respected: content/ and content-maps/ byte-unchanged, verified via git status at commit time)",
+  "next_safe_actions": [
+    "R0: review D1-D4; merge advances Wave 0 (T-MIG-003 golden bring-up unblocks: workspace + CI ready)",
+    "consider 'bun pm trust' decisions for @swc/core + @parcel/watcher postinstalls in CI if the hub lane surfaces a need (local build passed with them blocked — Next uses its bundled swc)",
+    "watch first CI run of the hub lane for time budget; raise timeout-minutes if needed"
+  ]
+}
