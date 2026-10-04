@@ -1,0 +1,22 @@
+{
+  "name": "auth-login-missing-fields-400",
+  "description": "Login with empty object: 'password: must not be blank'",
+  "source": "captured from Render core https://syllabai-core.onrender.com 2026-10-04T18:19-18:26Z by T-MIG-003 run-001 (R6); payloads synthetic/masked at capture; no PII present",
+  "method": "POST",
+  "path": "/api/v1/auth/login",
+  "request": {
+    "body": {}
+  },
+  "expect": {
+    "status": 400,
+    "body": {
+      "status": 400,
+      "error": "validation_failed",
+      "message": "password: must not be blank",
+      "timestamp": "2026-10-04T18:23:41.305800944Z"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

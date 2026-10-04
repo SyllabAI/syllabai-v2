@@ -1,0 +1,84 @@
+{
+  "receipt": "T-MIG-003 run-001 — golden-master bring-up: capture → scrub → live replay gate PROVEN",
+  "schema": "syllabai.v2.t-mig-003.task-receipt/1.0",
+  "agent": "R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)",
+  "branch": "t-mig-003/r6",
+  "task_yaml": ".syllabai/tasks/T-MIG-003-golden-bringup.yaml (status CLAIMED at 2026-10-04T18:17Z, same commit as branch; claim protocol §2.1)",
+  "what_was_done": [
+    "Read all eight mandated v2 docs in order; completed Phase-1 orientation (see worklog ORIENTATION entry) BEFORE claiming",
+    "Peer-collision checks (open PR #1 = T-MIG-000; branches t-mig-000/r7, t-mig-001/r1; Neon t-mig-002/r2 hours old = R2 active) then claimed T-MIG-003",
+    "Capture session A: read-only surfaces from the deployed frozen Render core (11 raw captures)",
+    "Capture session B: built frozen core locally (JDK 25 + Maven, exit 0), booted it on Neon branch t-mig-003/r6 (Flyway validated 63 migrations, ran none), captured the 5 write-surface auth cases (branch writes only)",
+    "Deterministic scrub of all 16 cases (GOLDEN_MASTER §2.3): synthetic identities from creation; accessToken -> fixed dummy; user id -> stable fake UUID; timestamps -> tolerate",
+    "Committed 16 golden cases (15 auth + health) each with source line + tolerate list",
+    "Proved the LIVE loop end-to-end: booted v2 api locally -> golden/runner.ts --selftest OK -> full --target replay with per-case verdicts",
+    "One-line hardening of golden/runner.ts request construction (null body == absent; diff engine untouched); selftest re-run green after the change"
+  ],
+  "live_replay_evidence": {
+    "selftest": "selftest OK: tolerance engine behaves (exit 0) — run twice: before and after the runner hardening",
+    "replay_target": "http://localhost:8080 (v2 api booted with local-only dummy secret + placeholder DATABASE_URL; env fail-fast gate NOT wired — see findings)",
+    "replay_result": "0/16 PASS — every failure is an EXPECTED-PENDING divergence, classified below; runner exit 1 is the honest gate output, not a harness fault",
+    "classification": {
+      "auth (15 cases)": "404 vs expected — v2 mounts /api/auth while the frozen core + hub client speak /api/v1/auth (F-2); after remount, handlers still answer honest 501 pending port (F-3). Owner: T-MIG-010 (R3). These 16 cases are T-MIG-010's acceptance worklist; cases must NOT be weakened to pass.",
+      "health (1 case)": "200/200 but body {status:UP} vs frozen core's {groups:[liveness,readiness],status:UP} (F-1). Owner: api scaffold one-liner (R3/R0 routing)."
+    }
+  },
+  "findings": [
+    {
+      "id": "F-1",
+      "severity": "parity",
+      "title": "Seed health golden case was stricter than the frozen core; v2 health route serves the seed shape, not the core's",
+      "detail": "Frozen core serves {\"groups\":[\"liveness\",\"readiness\"],\"status\":\"UP\"} (captured twice: Render 18:19Z + branch boot 18:36Z). Seed case expected bare {\"status\":\"UP\"} — a shape the core never produced; v2's health.ts serves THAT shape. Case UPDATED (not deleted) to the real core shape with justified:true — integrator approval requested per GOLDEN_MASTER §4. v2 apps/api/src/routes/health.ts needs the groups field added (one line, outside T-MIG-003's fence).",
+      "owner": "R0 to route (one-liner in apps/api fence)"
+    },
+    {
+      "id": "F-2",
+      "severity": "parity (blocks Wave-1 replay)",
+      "title": "v2 api mounts auth at /api/auth; frozen core + hub use /api/v1/auth/**",
+      "detail": "AuthController @RequestMapping(\"/api/v1/auth\"); hub api.ts calls /api/v1/auth/login. v2 apps/api/src/index.ts mounts authRoute at \"/api/auth\". MIGRATION_PLAN §3 mandates path parity. Capture cases pin the CORE paths; T-MIG-010 should remount.",
+      "owner": "T-MIG-010"
+    },
+    {
+      "id": "F-3",
+      "severity": "expected-pending",
+      "title": "Auth handlers are honest 501s pending T-MIG-010; 400 shape differs from core's ApiError",
+      "detail": "Seed auth.ts validates via contracts then returns 501 with task id (correct honest posture). Its validation-failure body {status,error,details:flatten()} also differs from the core's ApiError{status,error,message,timestamp} — the 16 cases pin the real shapes for the port.",
+      "owner": "T-MIG-010"
+    },
+    {
+      "id": "F-4",
+      "severity": "fail-fast gap",
+      "title": "v2 fail-fast boot gate is exported but NEVER CALLED — api boots with blank SYLLABAI_JWT_SECRET",
+      "detail": "apps/api/src/env.ts defines requireEnv() but no code path invokes it. Live probe (T-MIG-003 run-001 probe 1): boot with unset SYLLABAI_JWT_SECRET succeeded ('listening on :8080'). The seed's index.ts comment claims the discipline; the core's JwtService constructor throws IllegalStateException on blank/<32B secret. Wiring requireEnv into index.ts is a small fix in the apps/api fence.",
+      "owner": "R0 to route (api scaffold follow-up or T-MIG-010's middleware lane)"
+    },
+    {
+      "id": "F-5",
+      "severity": "hardening (fixed in this PR)",
+      "title": "golden/runner.ts crashed on GET cases with null-encoded body",
+      "detail": "request.body null passed the '!== undefined' check and JSON.stringify(null) produced a GET-with-body fetch TypeError. Fixed by treating null as absent during REQUEST CONSTRUCTION ONLY (one line); diff/tolerance engine untouched; selftest re-run green. Full 16-case replay ran cleanly after the fix.",
+      "owner": "fixed by T-MIG-003 (in-lane: golden/**)"
+    }
+  ],
+  "case_manifest": {
+    "from_render_core_read_only": [
+      "auth-register-missing-fields-400", "auth-register-short-password-400",
+      "auth-register-password-no-digit-400", "auth-register-bad-email-400",
+      "auth-register-blank-displayname-400", "auth-register-unknown-role-400",
+      "auth-register-teacher-no-joincode-403", "auth-register-admin-refused-403",
+      "auth-login-unknown-email-401", "auth-login-missing-fields-400"
+    ],
+    "from_branch_boot_write_surfaces": [
+      "auth-register-success-201", "auth-register-duplicate-email-409",
+      "auth-login-success-200", "auth-login-wrong-password-401", "auth-me-with-bearer-200"
+    ],
+    "updated": ["health.json (actuator-health-parity) — real core shape, justified:true, integrator approval requested"],
+    "scrub_review": "emails user_N@example.invalid; display names 'User N'; tokens fixed dummy; ids stable fake UUID 00000000-0000-4000-8000-000000000010; timestamps tolerated; no secret material in any case file"
+  },
+  "deps_note": "T-MIG-003's declared dep T-MIG-000 is IN_REVIEW (PR #1). Capture/replay was executable on the seed tree because golden/** + apps/api are untouched by the hub workspace unification; recorded as an interpretation question for the operator in the worklog Orientation entry (Q5).",
+  "receipts_chain": [
+    ".syllabai/receipts/capture/2026-10-04/run-001-render-core.json",
+    ".syllabai/receipts/capture/2026-10-04/run-002-neon-branch-boot.json",
+    ".syllabai/receipts/T-MIG-003/run-001.json (this file)"
+  ]
+}

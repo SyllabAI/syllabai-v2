@@ -1,10 +1,19 @@
 {
   "name": "actuator-health-parity",
-  "description": "Captured from frozen Java core (Spring Boot actuator, same path/shape the hub import and operator probes rely on). Static case — valid against both the committed api and any live v2 target.",
+  "description": "Spring Boot actuator health as the frozen core ACTUALLY serves it ({\"groups\": [\"liveness\", \"readiness\"], \"status\": \"UP\"}). Supersedes the seed's bare {\"status\":\"UP\"} shape, which is stricter than the real core and would gate v2 to a shape the frozen source never produced. justified:true \u2014 integrator approval requested in the T-MIG-003 PR (GOLDEN_MASTER \u00a74).",
+  "source": "captured from Render core https://syllabai-core.onrender.com 2026-10-04T18:19-18:26Z by T-MIG-003 run-001 (R6); payloads synthetic/masked at capture; no PII present",
   "method": "GET",
   "path": "/actuator/health",
   "expect": {
     "status": 200,
-    "body": { "status": "UP" }
-  }
+    "body": {
+      "groups": [
+        "liveness",
+        "readiness"
+      ],
+      "status": "UP"
+    }
+  },
+  "tolerate": [],
+  "justified": true
 }

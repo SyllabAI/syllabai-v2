@@ -1,0 +1,31 @@
+{
+  "name": "auth-register-success-201",
+  "description": "Register happy path: 201 CREATED with AuthResponse{accessToken, tokenType:'Bearer', user{id,email,displayName,roles:['STUDENT']}}. Token scrubbed to fixed dummy; id scrubbed to stable fake. JWT claim shape (R-JWT compat): sub/jti/uid=<uuid>, ver=1, broles=[role], HS384 \u2014 preserved here because token-issued-by-Java must verify in v2.",
+  "source": "captured from a LOCAL boot of the frozen Java core (built from the frozen main tree, JDK 25) against Neon BRANCH t-mig-003/r6 (br-divine-mode-a5xur4zv, copy-on-write of production) on 2026-10-04T18:36Z by T-MIG-003 run-002 (R6); no production writes; scrubbed: accessToken->fixed dummy, user id->stable fake UUID, account identity synthetic from creation",
+  "method": "POST",
+  "path": "/api/v1/auth/register",
+  "request": {
+    "body": {
+      "email": "user_10@example.invalid",
+      "password": "golden-run-2026x",
+      "displayName": "User 10",
+      "role": "STUDENT"
+    }
+  },
+  "expect": {
+    "status": 201,
+    "body": {
+      "accessToken": "scrubbed-fixed-dummy-jwt-token",
+      "tokenType": "Bearer",
+      "user": {
+        "id": "00000000-0000-4000-8000-000000000010",
+        "email": "user_10@example.invalid",
+        "displayName": "User 10",
+        "roles": [
+          "STUDENT"
+        ]
+      }
+    }
+  },
+  "tolerate": []
+}

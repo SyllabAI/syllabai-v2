@@ -1,0 +1,29 @@
+{
+  "name": "auth-login-success-200",
+  "description": "Login happy path: 200 with AuthResponse (same shape as register; BCrypt verify against the stored hash; fresh token each login \u2014 token scrubbed)",
+  "source": "captured from a LOCAL boot of the frozen Java core (built from the frozen main tree, JDK 25) against Neon BRANCH t-mig-003/r6 (br-divine-mode-a5xur4zv, copy-on-write of production) on 2026-10-04T18:36Z by T-MIG-003 run-002 (R6); no production writes; scrubbed: accessToken->fixed dummy, user id->stable fake UUID, account identity synthetic from creation",
+  "method": "POST",
+  "path": "/api/v1/auth/login",
+  "request": {
+    "body": {
+      "email": "user_10@example.invalid",
+      "password": "golden-run-2026x"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "accessToken": "scrubbed-fixed-dummy-jwt-token",
+      "tokenType": "Bearer",
+      "user": {
+        "id": "00000000-0000-4000-8000-000000000010",
+        "email": "user_10@example.invalid",
+        "displayName": "User 10",
+        "roles": [
+          "STUDENT"
+        ]
+      }
+    }
+  },
+  "tolerate": []
+}
