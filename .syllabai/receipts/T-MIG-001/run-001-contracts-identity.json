@@ -1,0 +1,57 @@
+{
+  "task": "T-MIG-001",
+  "title": "Contracts wave-1 — all identity-domain DTOs ported to zod, constraint-for-constraint",
+  "agent": "R1-contracts (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "claimed_at": "2026-10-04T18:00:34Z",
+  "claim_commit": "17796af00b9c78c8a2d1a40aa44a9541c18f357c",
+  "base_commit": "a945c20c02430ba97158d9e5a458f3b199f0147e (origin/main at claim; a945c20 short)",
+  "generated_at": "2026-10-04T18:10:51Z",
+  "spec_sources_verified_frozen": {
+    "repo": "SyllabAI/syllabai-core @ main (shallow clone, read-only, never modified — C1)",
+    "files": [
+      "src/main/java/com/syllabai/identity/dto/RegisterRequest.java",
+      "src/main/java/com/syllabai/identity/dto/LoginRequest.java",
+      "src/main/java/com/syllabai/identity/dto/PasswordChangeRequest.java",
+      "src/main/java/com/syllabai/identity/dto/AuthResponse.java",
+      "src/main/java/com/syllabai/identity/dto/UserView.java",
+      "src/main/java/com/syllabai/identity/Role.java",
+      "src/main/java/com/syllabai/identity/AuthController.java (path + mapping evidence)",
+      "src/main/java/com/syllabai/identity/BootstrapAdminController.java (path evidence)",
+      "src/main/java/com/syllabai/identity/AuthService.java (service-policy boundary evidence)"
+    ]
+  },
+  "delivered": {
+    "schemas": [
+      "registerRequestSchema (re-verified; fidelity fixes below)",
+      "loginRequestSchema (re-verified; fidelity fixes below)",
+      "passwordChangeRequestSchema (NEW — @NotBlank currentPassword; newPassword carries the R6 register floor)",
+      "roleSchema (NEW — z.enum STUDENT|TEACHER|ADMIN from Role.java, case-sensitive like valueOf)",
+      "userViewSchema (roles now z.array(roleSchema) — User.roles is Set<Role>, UserView.from maps Enum::name; all 3 construction sites verified)",
+      "authResponseSchema (tokenType z.literal('Bearer') — compact constructor AuthResponse.java:5-7)"
+    ],
+    "helpers": ["isJakartaEmail (Hibernate AbstractEmailValidator semantics, exported for reuse)", "notBlank refine factory"],
+    "tests": "packages/contracts/src/auth.test.ts — 28 pins, co-located INSIDE scope.allowed (src/**)"
+  },
+  "fidelity_findings": [
+    "F1 (FIXED): seed used .strict() on request schemas — the frozen core has NO Jackson FAIL_ON_UNKNOWN_PROPERTIES override (grep of src/main/resources + configs: no hits; Spring Boot default = ignore unknown), so the core ACCEPTS unknown keys. .strict() narrowed the accept set = port bug per index.ts rule 3. Removed; unknown keys now stripped like Jackson.",
+    "F2 (FIXED): seed missed jakarta @NotBlank semantics — ' ' passes z.string().min(2)/min(1) but @NotBlank rejects blank. Added notBlank refine (padding still VALID — ' Ann ' accepted). Load-bearing on displayName, login password, currentPassword.",
+    "F3 (FIXED): seed used zod's built-in .email() — zod requires a TLD-ish domain, Hibernate's @Email does NOT ('a@b' is VALID per AbstractEmailValidator; also: split at LAST '@', dot-atom local <=64, label <=63, domain <=255). Ported as isJakartaEmail(). Divergence direction of the bug: Java accepts a@b, seed schema rejected it — golden-replay poison.",
+    "F4 (FIXED): userView.roles was z.array(z.string()) — observed value domain is exactly Role names (Set<Role> + Enum::name). Narrowed to roleSchema; also applied isJakartaEmail to userView.email so v2 response self-validation matches core-produced values.",
+    "F5 (RECORDED, not encoded): DTO takes role:String unconstrained — 'role':'ADMIN' must pass the schema and be refused by the SERVICE (AuthService.java:102); TEACHER join-code gate + constant-time compare are service logic for T-MIG-010. Header comment in auth.ts documents this boundary for the api lane."
+  ],
+  "known_residuals_for_golden_capture": [
+    "Bracketed IP-literal domains (a@[127.0.0.1]) and RFC-5322 quoted local parts ('\"a b\"@x.co'): accepted by Hibernate's validator paths, rejected by isJakartaEmail. Flagged for R6: if a golden capture exercises these, the case needs a justified divergence note (or an isJakartaEmail extension) — NOT a silent schema widening."
+  ],
+  "verification": {
+    "contracts_tests": "28 pass, 0 fail, 69 expect() (bun test packages/contracts)",
+    "full_suite": "32 pass, 0 fail (apps/api seed tests unaffected by schema fixes — verified)",
+    "contracts_typecheck": "tsc --noEmit exit 0",
+    "workspace_typecheck_note": "bun run typecheck fails at the apps/api step with TS2688 'Cannot find type definition file for bun-types' — REPRODUCED ON CLEAN SEED (git stash + rerun): pre-existing, NOT introduced by this branch. Contracts/shared/db typecheck pass. Routes to the T-MIG-000 workspace lane (root bun.lock/tooling), noted for R0."
+  },
+  "fence_disclosure": [
+    "Touched: packages/contracts/src/{auth.ts,auth.test.ts} (scope.allowed: packages/contracts/src/**) + this task's yaml + this receipt + worklog append.",
+    "Decision disclosed for R0: .syllabai/receipts/T-MIG-001/ is not listed in this task's scope.allowed (seed predates the receipts habit that T-MIG-010's yaml already carries), but AGENT_COORDINATION §2 rule 5 ('Receipts or it didn't happen') is binding on every PR. Task-namespaced path = zero collision risk. Included, disclosed, not silently improvised.",
+    "Root bun.lock created by bun install in the sandbox was LEFT UNCOMMITTED — that file is T-MIG-000's scope (peer branch t-mig-000/r7 owns it)."
+  ],
+  "secrets_scan": "diff scanned for ghp_/vcp_/napi_/gsk_/sk-or-/AQ.Ab8 prefixes: zero hits (credentials live in sandbox env only, never in repo files)"
+}
