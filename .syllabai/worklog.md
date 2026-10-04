@@ -364,3 +364,59 @@ Work Log:
 
 Stage Summary:
 - Honest gaps (for R0/R6, none silently hidden): (1) golden live-replay gate PENDING on T-MIG-003 capture — no case weakened; (2) true R-JWT cross-verify needs a Java-issued token at capture (unit fixtures are jjwt-semantics-by-construction); (3) per-IP RateLimitFilter (M1) NOT ported — outside task title, recommend micro-task; (4) UserView.roles is a Java HashSet → JSON array order nondeterministic for multi-role users (ADMIN+TEACHER) — golden tolerance should be order-insensitive on roles; (5) freshness: seed's /api/auth 501-honesty stub replaced by the real port — the honest-501 discipline moves to the next unported surface.
+
+---
+
+---
+Task ID: ORIENTATION (pre-task entry, briefed per AGENT_BRIEFING §2)
+Task ID: ORIENTATION (pre-task entry, briefed per AGENT_BRIEFING §2)
+Agent: w0a (self-selected agent — Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Phase-1 orientation — tour the org, read the law, adopt the culture. No code in this entry.
+
+Work Log:
+- Read the eight required v2 items in order (README → MIGRATION_PLAN → AGENT_COORDINATION → GOLDEN_MASTER → BASELINE_DB → REFERENCE_DOCS → worklog → task queue), then toured upstream: shallow-cloned syllabai, syllabai-core, syllabai-resources (sparse: bench/review + manifests), syllabai-ops, syllabai-parser, syllabai-teacher-workbench, syllabai-demo. Read core README + render.yaml + docs/DEPLOYMENT.md; hub docs/ARCHITECTURE.md + REPOSITORY_MAP.md (in apps/hub import); all 13 master-pack ADRs (031, 025, 036, 034, 020, 023 mandated; 017, 021, 027, 030, 032, 033, 035 wave-relevant); .syllabai/tasks/T-C42.yaml; bench/review receipt samples (tc75 doc-validation postverify JSON).
+
+Stage Summary:
+- (a) PRODUCT LOOP IN MY OWN WORDS: A student registers on the hub (always STUDENT role; teachers are provisioned behind a join-code gate, ADMIN is never self-serviceable), browses a curriculum that is anchored to an official spec (Edexcel IGCSE/IAL), and practises real exam-paper questions. On submission, the attempt is marked — MCQs deterministically, structured answers by Smart Mark, which normalises the answer, aligns evidence to validated mark-scheme points, applies bounds/mark-sum/coverage validators, and produces append-only results that never let the LLM be the final truth; self-mark against the revealed scheme remains a first-class alternative. Every marked attempt emits an evidence event that updates the learner model — BKT mastery with format-aware guess pricing, BDT misconception posteriors — and those stored values are ANCHORS: forgetting decay (Ebbinghaus) and misconception relaxation are computed at read time and never persisted (ADR-031/032), so review scheduling is exact under late/catch-up runs. From that state the platform derives, also computed-at-read, an explainable next-best-action agenda, spaced-repetition flashcards whose raw rating trail merges across devices by sync receipts rather than timestamps (ADR-034), and smart lessons — while the tutor/CLA answers questions through a KA-RAG chain that retrieves from VALIDATED curriculum-graph nodes and embedded content chunks only, refuses deterministically when evidence is insufficient or the course scope does not resolve (ADR-030), and cites with deep links that must resolve to real chunks. Teachers see classroom-scoped surfaces — marking queues that show only their enrolled learners' answers (ADR-027), coverage/analytics over the knowledge graph, test building — and research surfaces expose calibration statistics under k-anonymity on the wire (k=5 distinct learners, ADR-036). The whole loop is strangler-figged into v2: the frozen Java core keeps serving production while this repo re-platforms each domain behind golden-master parity gates onto the same Neon database.
+- (b) THREE CORRECTNESS MECHANISMS OBSERVED: 1) RECEIPTS — every claim carries machine-checkable evidence; concrete example: T-C42.yaml's execution_record records the production probe (PRB-01 pct_above_050 = 59.5%, 1,745/2,935, VALIDATED pool n=2,935) with CI run ids and merge SHAs, and bench/review/tc75 postverify receipts assert row-count invariants ("audit total 2829 -> 2835 (+6 exactly)") with SHA256SUMS alongside. 2) FAIL-FAST — services refuse to boot in a misconfigured state instead of degrading silently; concrete example: render.yaml + core README — blank SYLLABAI_JWT_SECRET refuses startup, R2 storage missing secrets is a boot-time WARN and then loud failures naming the missing setting on first use (no silent local-disk fallback), and v2's packages/db client refuses jdbc:-prefixed or blank DATABASE_URLs. 3) PREREGISTRATION + HONEST VERDICTS — research decisions are written before the evidence and reported with their negative space intact; concrete example: ADR-036 stays Status: Proposed and explicitly says the operator's ACCEPT flip is the ratification step ("this ADR does not self-accept"), and ADR-033's design-challenge record keeps the provisional shortAnswerGuess=0.05 labelled provisional with the empty-bin caveat ("an empty bin is no evidence, never good evidence").
+- (c) UNCLEAR / QUESTIONS FOR THE OPERATOR: 1) REFERENCE_DOCS.md cites master-pack ADRs under docs/adr/…, but in the syllabai repo they sit at the repo root — path drift only, or should v2's doc index be corrected? 2) The briefing's "syllabai-resources/bench/review/" receipts directory does not exist in that repo; the receipt heritage actually lives at syllabai (master pack) bench/review/ + evidence/ — confirm the v2 docs may name the true location (doc-fix task candidate for the docs shepherd). 3) apps/api pins zod ^3.24 while the imported hub pins zod ^4.0.2 — will packages/contracts standardise one major (affects every Wave-1+ port), and if so which? 4) For T-MIG-000's CI hub lane: is a full `next build` (with corpus-verify prebuild) required per-PR, or is install+typecheck for hub acceptable until T-MIG-003 lands (build minutes + flakiness trade-off)? I implement build+verify locally and install+build in CI if the runner budget allows, else I record the divergence. 5) Shared zod peer: hub is ESM "type": "module"? — unchecked in this lane; contracts consumers should confirm before Wave-2 (not blocking Wave 0).
+Task ID: T-MIG-000
+Agent: w0a (self-selected agent — Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Workspace unification — hub becomes a first-class bun workspace package (Wave 0, P0)
+
+Work Log:
+- Claimed per AGENT_BRIEFING §5 (branch-start commit 7a6415c, status CLAIMED; remote had no peer claims/branches); Orientation entry above posted first per briefing §2.
+- Renamed apps/hub package syllabai-hub → @syllabai/hub (scripts byte-identical, PROVENANCE rule 4 respected); deleted apps/hub/bun.lock (-2152 lines) per scope.
+- Generated unified root bun.lock (2355 lines, sha256 head 72239b9f82eb7cc8) via root `bun install` — 1085 packages across the workspace.
+- F1: apps/api typecheck broke (TS2688 bun-types unresolvable — bun hoists it only under apps/hub/node_modules while apps/api/tsconfig.json requests types:["bun-types"]). Fixed IN-FENCE via root devDependency bun-types@^1.4.2 (apps/api/tsconfig.json is outside this task's fence — follow-up filed for R3 in the receipt).
+- F2: first `bun run build:hub` FAILED (exit 1, module-not-found): bun 1.3's default workspace linker "isolated" (node_modules/.bun store) hides transitive deps from app source, and apps/hub/src imports transitives directly (unist-util-visit-parents in src/lib/rehypeKatexMhchem.ts). Fixed IN-FENCE via root bunfig.toml [install] linker="hoisted" (upstream-parity layout); rebuild exit 0.
+- Rewrote .github/workflows/ci.yml: verify job = one root install + typecheck + test + golden selftest; NEW hub job = root install + `bun run build:hub` (corpus-verify prebuild included, 30-min budget).
+- Gates, final pass, all pipefail-captured exit 0 (receipt run-2026-10-04T1826Z.json): typecheck (contracts/shared/db/api) · bun test 4 pass/0 fail · golden --selftest OK · api smoke GET /actuator/health {"status":"UP"} + POST /api/auth/login honest 501 naming T-MIG-010 · build:hub compiled 6.5s, 630 static pages, standalone copied.
+- F4 honesty note: first local typecheck pass was falsely green (pipe exit-masking); every receipted gate re-run with explicit exit capture. Upstream/Neon untouched; no credentials logged.
+
+Stage Summary:
+- T-MIG-000 gates GREEN; status → IN_REVIEW; PR "T-MIG-000: workspace unification — hub as first-class bun workspace" with receipt .syllabai/receipts/T-MIG-000/run-2026-10-04T1826Z.json (findings F1–F4 + follow-ups for R0/R3/R5). Root install is now `bun install` once, everywhere (local + CI). T-MIG-003 unblocked (its dep on this task is satisfied on this branch pending merge).
+Task ID: T-MIG-000 (addendum — push blocker)
+Agent: w0a (self-selected agent — Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Escalation record — branch push rejected; task status → BLOCKED per AGENT_COORDINATION §2/§6
+
+Work Log:
+- `git push -u …t-mig-000/w0a` → "remote: Invalid username or token … Authentication failed".
+- Non-echoing diagnosis: `GET /user` with `Authorization: Bearer $GITHUB_PAT` → 401 (dead token); unauthenticated `GET /repos/SyllabAI/syllabai-v2` → 200 (public repo — the briefing-time clone succeeded anonymously, which is why the failure only surfaced at the first authenticated write). Zero peer branches on the remote is consistent with every briefed agent holding the same dead token.
+- No substitute credential improvised (briefing credential law: "do not create new tokens"). No upstream writes attempted (C1). No secrets echoed or committed (all references are to the env-var NAME only).
+- Committed protocol artifacts locally on the branch: receipt addendum (push_attempt) + task yaml status BLOCKED + this entry.
+
+Stage Summary:
+- T-MIG-000 implementation is COMPLETE with all gates green; only the push/PR step is blocked by an invalid GITHUB_PAT. Local branch t-mig-000/w0a (7a6415c → f9e7ebc → da114d9) is push-ready verbatim. UNBLOCK for the operator/R0: provide a valid GITHUB_PAT (then w0a pushes, opens PR "T-MIG-000: workspace unification — hub as first-class bun workspace", flips status to IN_REVIEW), or push the branch from an authenticated session and review the receipt at .syllabai/receipts/T-MIG-000/run-2026-10-04T1826Z.json.
+---
+Task ID: T-MIG-004
+Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Capture content-read golden cases for Wave 2 (operator lane assignment; claim + capture sessions)
+
+Work Log:
+- NOTE: the ORIENTATION entry above is the briefing-§2 obligation first committed on branch t-mig-000/w0a (f9e7ebc) during the T-MIG-000 stand-down; per that stand-down's addendum it rides this PR so the orientation gate is satisfied on main. Content unchanged; re-appended at tail per §5 append-only discipline.
+- Operator lane assignment received ("T-MIG-004 content-read golden cases"). Peer-collision survey: PRs #1/#3/#4/#5/#6/#7 open, #2 merged; no t-mig-004 branch existed; task yaml was absent from the seeded queue -> authored .syllabai/tasks/T-MIG-004-content-read-golden-cases.yaml per §4 and claimed in the branch-start commit (§2.1).
+- Branch t-mig-004/w0a cut from origin/main @ 2cfaf41.
+
+Stage Summary:
+- T-MIG-004 CLAIMED; capture sessions executing per GOLDEN_MASTER §2 (run-001 Render read-only; run-002 local frozen-core boot on a LOCAL scratch Postgres migrated by the core's own Flyway seeds — zero production Neon connections this session). Orientation gate ride-along included. Findings and case inventory to follow in this entry's capture addendum.

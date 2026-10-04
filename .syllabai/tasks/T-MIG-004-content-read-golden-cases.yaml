@@ -1,0 +1,42 @@
+version: 1
+task:
+  id: T-MIG-004
+  title: "Capture content-read golden cases for Wave 2 — content documents/reader, teacher content/curriculum, curriculum metadata, question assets"
+  owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)"
+  status: CLAIMED # claimed 2026-10-05 by operator lane assignment (IM directive "T-MIG-004 content-read golden cases"); IN_PROGRESS at first push
+  priority: P1
+  wave: 2
+  deps: []
+  execution_record: >
+    2026-10-05 CLAIMED by w0a per operator lane assignment. Peer-collision
+    check at claim time: open PRs #1/#3 (T-MIG-000 hub workspace), #4
+    (T-MIG-002 db baseline), #5 (R7 yaml backfill), #6 (T-MIG-012 typecheck),
+    #7 (T-MIG-003 golden bring-up) — zero file-glob overlap with this task's
+    fence (new case files only; runner untouched). Capture doctrine per
+    GOLDEN_MASTER §2: (a) run-001 = frozen Render core, read-only surfaces
+    only, zero production writes; (b) run-002 = LOCAL boot of the frozen core
+    (T-MIG-003 run-002 pattern) against a LOCAL scratch Postgres 17 + pgvector
+    migrated by the core's own Flyway V1..V63 (NOT Neon — no production Neon
+    connection is used at all this session; NEON_PAT absent from this agent's
+    session, escalated for the remaining real-data happy paths).
+base:
+  repo: "syllabai-v2 @ 2cfaf41 (origin/main at claim); frozen refs: syllabai-core @ main, syllabai-hub @ 93226a43"
+basis: >
+  Operator lane assignment 2026-10-05 ("T-MIG-004 content-read golden cases");
+  MIGRATION_PLAN.md §10 Day 2–4 (capture lane one wave ahead — the
+  migration's metronome) + §2.1 Wave-2 controller port map (ContentController,
+  ContentDocumentController, ContentReaderController, QuestionAssetController,
+  CurriculumController, TeacherCurriculumController); GOLDEN_MASTER.md §1–§2;
+  AGENT_COORDINATION.md §2 (claim protocol) §6 (escalation).
+scope:
+  allowed:
+    - "golden/** (new case files only; runner/engine untouched)"
+    - ".syllabai/receipts/capture/**"
+    - ".syllabai/receipts/T-MIG-004/**"
+    - ".syllabai/tasks/T-MIG-004-content-read-golden-cases.yaml (status/execution_record only)"
+    - ".syllabai/worklog.md (append-only, §5)"
+  forbidden:
+    - "writing into production Neon (no production Neon connection this session at all)"
+    - "writing to syllabai-core / syllabai-hub / any upstream repo (C1; frozen core is COPIED to a scratch dir for the local build)"
+    - "committing unscrubbed fixtures (GOLDEN_MASTER §2.3, risk R-PII)"
+    - "apps/api/**, apps/hub/**, packages/** (port lanes; content read port is T-MIG-020..022)"
