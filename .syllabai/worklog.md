@@ -333,3 +333,34 @@ Work Log:
 
 Stage Summary:
 - ALL 7 fleet PRs resolved (2,3,4,5,6,7 merged; 1 closed superseded). Wave 0 COMPLETE: T-MIG-000/001/002/003/012 all DONE, CI green on main @ 60a0bad incl. hub lane. T-MIG-010 lane rebuilt and unblocked (deps satisfied: 001/002/003 merged) — Wave 1 identity port is now the fleet's critical path. T-MIG-011 (hub adapter) OPEN and next-claimable. Board state: 5 DONE, 1 CLAIMED (010), 1 OPEN (011).
+
+---
+
+Task ID: T-MIG-010
+Agent: R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Claim T-MIG-010 (Wave 1 identity port) + broadcast Neon base-URL and CI triage intel
+
+Work Log:
+- Claimed T-MIG-010 (P1, Wave 1) — was OPEN, no fence collision with CLAIMED/IN_REVIEW lanes (001=contracts, 002=db, 003=golden). Branch t-mig-010/r3 stacked on t-mig-000/r7 (PR #1) + merge of t-mig-001/r1 (PR #2) as declared dev dependency; retargets to main after R0 merges bottom-up.
+- Neon intel (unblocks R2/T-MIG-002): api.neon.tech has NO public A record (DoH via 1.1.1.1 AND dns.google: NOERROR, empty answer) — the prior "sandbox egress blocked" verdict was a misdiagnosis. Live API base: https://console.neon.tech/api/v2. Operator-issued org-scoped API key verified working: GET /projects → 200 (project billowing-cherry-15418366 "SyllabAI", org org-withered-mud-59985156). /users/me returns 404 for org keys (expected, not a failure).
+- CI triage for PR #2 (T-MIG-001): verify job TS2688 (bun-types unresolvable in apps/api) traces to main having NO committed root bun.lock — fresh un-locked installs break type resolution; main's own CI has been red since seed (runs 37219877411, 37220335246). Local CI-equivalent run of r7+r1 merge: typecheck clean, bun test apps/api packages → 32 pass / 0 fail, golden selftest OK. Receipt-style comment posted on PR #2 requesting R0 merge-order arbitration.
+
+Stage Summary:
+- T-MIG-010 in progress. Port surface: register/login/me/password/bootstrap-status/bootstrap-admin per frozen AuthController/AuthService/BootstrapAdminService; JWT HS256 claims parity (sub/jti/uid/ver/roles, TTL PT2H, ≥32-byte secret fail-fast), ver-revocation fail-closed filter, BCrypt cost 12, join-code fail-closed constant-time gate, per-TARGET-account login budget (R5) with 429+Retry-After, ApiError body parity ({status,error,message,timestamp}).
+- Scope boundary notes for R0 (goes in PR body): (a) per-IP RateLimitFilter (com.syllabai.ratelimit M1 filter) is NOT in T-MIG-010's title/scope — flagged for routing as its own micro-task; (b) mount-path parity /api/auth → /api/v1/auth plus app-level require-auth for unknown /api/v1/** both need apps/api/src/index.ts (outside this task's fence) — shipped as a separate OUT-OF-FENCE commit in the PR for R0 ratification per §6.1.
+
+---
+Task ID: T-MIG-010
+Agent: R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Port identity/auth module (Wave 1) — register/login/JWT/RBAC/bootstrap-admin, golden-gated
+
+Work Log:
+- Read the frozen identity module constraint-for-constraint (AuthController, AuthService, JwtService, JwtAuthenticationFilter, SecurityConfig, User/UserRepository, BootstrapAdmin{Controller,Service,StateStore}, LoginAttemptBudget, GlobalExceptionHandler, ApiError, shared exceptions, application.yml) and ported all 6 endpoints under /api/v1/auth with exact status/message parity (201+Location register, 409 conflict, 403 fail-closed join-code + ADMIN refusal, 401 invalid_credentials no-echo, 429+Retry-After per-TARGET budget, 204 rotation, 409 bootstrap window states, 400 validation_failed with Hibernate-default first-field messages, malformed_body for unreadable bodies).
+- JWT R-JWT parity: HS256 with raw-secret key, {alg:HS256} header (no typ), sub/jti/uid/ver/roles + seconds NumericDates, PT2H default, 32-byte fail-fast with verbatim message; parse: absent ver → null → fail-closed mismatch (pre-V46); revocation filter (unknown/disabled/stale-ver → context empty → 401) with one PK lookup per request.
+- Jackson binding shims for accept/reject parity: unknown properties ignored, scalar→String coercion, arrays/objects for string fields → malformed_body; null on required fields → "must not be blank" (jakarta order restored where zod chain order differs).
+- Built the port inside the T-MIG-010 fence (services/identity/**, routes/auth/**, middleware/**, test/identity/**). OUT-OF-FENCE changes isolated in their own commit for R0 ratification: apps/api/src/index.ts (mount /api/v1/auth parity — fixes the seed's /api/auth path bug; routers-then-401-fallback gives anyRequest().authenticated parity; ApiError error boundary; CORS parity), seed test relocation, declared deps (bcryptjs@3.0.2, @neondatabase/serverless@1.2.0 — registry-verified, lockfile updated).
+- Neon branch t-mig-010/r3 created via console.neon.tech/api/v2 (org key); integration tier 4/4 PASS against it: row-level truth (token_version=1, role rows), LIVE ver-revocation after password rotation, teacher join-code path, CONSUMED-window 409 honesty. Driver: WebSocket Client with interactive transactions + FOR UPDATE (HTTP neon() can't do conditional tx) — adapter lives inside the fence; single serialized session, pooling deferred to T-MIG-002.
+- Verification: typecheck 0 errors; bun test apps/api packages → 100 pass / 0 fail / 4 skip (integration tier); golden selftest OK. Receipts: .syllabai/receipts/T-MIG-010/run-001-local-verify.json, run-002-integration-neon.json. Task yaml → IN_REVIEW.
+
+Stage Summary:
+- Honest gaps (for R0/R6, none silently hidden): (1) golden live-replay gate PENDING on T-MIG-003 capture — no case weakened; (2) true R-JWT cross-verify needs a Java-issued token at capture (unit fixtures are jjwt-semantics-by-construction); (3) per-IP RateLimitFilter (M1) NOT ported — outside task title, recommend micro-task; (4) UserView.roles is a Java HashSet → JSON array order nondeterministic for multi-role users (ADMIN+TEACHER) — golden tolerance should be order-insensitive on roles; (5) freshness: seed's /api/auth 501-honesty stub replaced by the real port — the honest-501 discipline moves to the next unported surface.

@@ -2,12 +2,38 @@ version: 1
 task:
   id: T-MIG-010
   title: "Port identity/auth module (Wave 1) — register/login/JWT/RBAC/bootstrap-admin, golden-gated"
-  owner: "unassigned"
-  status: OPEN
+  owner: "R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) — self-selected per briefing §5: highest-priority OPEN task, fences disjoint from CLAIMED/IN_REVIEW lanes (001 contracts, 002 db, 003 golden)"
+  status: IN_REVIEW # claimed 2026-10-05T05:05:00Z; branch t-mig-010/r3; stacked on t-mig-000/r7 (PR #1) incl. t-mig-001/r1 (PR #2) as declared dev dependency — retargets to main after R0 merges bottom-up
   priority: P1
   wave: 1
   deps: [T-MIG-001, T-MIG-002, T-MIG-003]
-  execution_record: "—"
+  execution_record: >-
+    Ported the full identity surface from the frozen core: 6 endpoints under
+    /api/v1/auth (register 201+Location, login, me, password 204,
+    bootstrap-status, bootstrap-admin 200), JWT HS256 wire parity with jjwt
+    0.13 ({alg:HS256}, sub/jti/uid/ver/roles, seconds NumericDates, PT2H,
+    32-byte fail-fast), ver-revocation fail-closed filter (R1), BCrypt cost
+    12 (R-BCRYPT), fail-closed constant-time teacher join-code gate,
+    ADMIN-refusal at service, per-TARGET-account login budget with
+    429+Retry-After (R5), ApiError body parity incl. Hibernate-default
+    validation messages and Jackson binding shims (unknown keys ignored,
+    scalar→String coercion, malformed_body).
+    Evidence: receipts run-001 (CI-equivalent: typecheck 0 errors, unit
+    100 pass/0 fail/4 skip, golden selftest OK) and run-002 (Neon branch
+    t-mig-010/r3: 4/4 integration — row-level truth, LIVE ver-revocation,
+    join-code path, CONSUMED-window 409 honesty). Scope boundary notes for
+    R0: (a) OUT-OF-FENCE commit in the PR — apps/api/src/index.ts wiring
+    (mount parity /api/v1/auth, routers-then-401-fallback for
+    anyRequest.authenticated parity, ApiError error boundary, CORS parity),
+    seed test file relocation, declared deps bcryptjs@3.0.2 +
+    @neondatabase/serverless@1.2.0 in apps/api; (b) per-IP RateLimitFilter
+    (M1, com.syllabai.ratelimit) NOT ported — outside this task's title;
+    recommend its own micro-task; (c) golden live-replay gate PENDING on
+    T-MIG-003 capture (no case weakened); (d) R-JWT true cross-verify with a
+    Java-issued token must happen at capture (unit fixtures are
+    jjwt-semantics-by-construction); (e) driver note: WebSocket Client
+    (interactive tx + FOR UPDATE) inside the fence, HTTP neon() function
+    can't do conditional transactions.
 base:
   repo: "syllabai-v2 @ post-W0; frozen refs: core identity services + docs/DEPLOYMENT.md"
 basis: >
