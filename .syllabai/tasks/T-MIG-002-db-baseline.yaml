@@ -3,7 +3,7 @@ task:
   id: T-MIG-002
   title: "DB baseline — drizzle-kit pull of the Neon end-state onto a branch, verify, commit schema"
   owner: "R2-db (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)"
-  status: IN_REVIEW # claimed_at 2026-10-04T18:20:00Z; in_review_at 2026-10-04T18:42:00Z; branch t-mig-002/r2; fences disjoint from T-MIG-000 (PRs #1/#3), T-MIG-001 (PR #2) — no overlap with packages/db/**
+  status: DONE # R0 merge via PR #4 (01c41d4) 2026-10-05; rebased onto post-000 main by R0; 62 tables / 579 cols / 87 indexes baseline verified; production compute never contacted, SELECT-only doctrine held
   priority: P0
   wave: 0
   deps: []

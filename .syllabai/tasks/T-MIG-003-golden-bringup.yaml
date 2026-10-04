@@ -3,7 +3,7 @@ task:
   id: T-MIG-003
   title: "Golden-master bring-up — boot Java core locally (Neon branch), capture health+auth cases, prove live replay gate"
   owner: "R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)"
-  status: IN_REVIEW # claimed 2026-10-04T18:17Z; PR opened with receipts; DONE is R0's call
+  status: DONE # R0 merge via PR #7 (06cf362) 2026-10-05; 16 auth+health cases captured read-only from deployed Render core; live replay gate proven (0/16 expected-pending = T-MIG-010 acceptance worklist); F-5 runner hardening verified
   priority: P0
   wave: 0
   deps: [T-MIG-000]

@@ -313,3 +313,23 @@ Work Log:
 
 Stage Summary:
 - Ruling 1 closed. Every OPEN task yaml now grants its own receipts dir; §2 rule 5 (receipt in every PR) is enforceable by fence-check, not goodwill. Branch r7/yaml-receipts-backfill off 2cfaf41 → PR.
+
+---
+
+Task ID: UNBLOCK-SEQUENCE (R0)
+Agent: R0-integrator (Super Z, operator session trace 1a10848acd9adae9; operator directive "act as R0 and execute")
+Task: Execute the unblock sequence from the 2026-10-05 status audit — merge the ready set, arbitrate the T-MIG-000 duplicate, restore green CI, rebuild the mis-stacked T-MIG-010 lane.
+
+Work Log:
+- PR #6 (T-MIG-012) merged FIRST after R0 stripped an accidental root bun.lock from its head (ruling commit b7ef4a5: the artifact contradicted the run-001 receipt's own "zero lockfile changes" fence claim and carried the pre-rename workspace name; canonical lock is T-MIG-000 territory). Gates re-executed on the stripped head: typecheck exit 0 across all four workspaces (first green root typecheck in repo history), 32/32 tests, golden selftest OK. Merge 0f03d9d.
+- T-MIG-000 duplicate arbitrated: PR #3 (r7a) selected over PR #1 (r7) — conflict-free, canonical @syllabai/hub rename + root lockfile + CI hub lane + bunfig test-scoping. PR #1 closed with full ruling comment (r7's receipts preserved at ad95235 for archaeology). Rebased r7a onto 0f03d9d (worklog union), force-pushed 2da8a54, gates re-executed (frozen-lockfile install 917 pkgs, typecheck x4, 32/32, selftest). Merge 9d1f1f3.
+- CI ON MAIN GREEN for the first time: push runs 37226776868 (0f03d9d) and 37227133159 (9d1f1f3) both success — verify lane AND the new 153MB hub build lane. The push-trigger was verified character-by-character to target [main] (sandbox display corruption initially made it read as a typo; ords 91/93 confirmed brackets intact — see sandbox note below).
+- T-MIG-010 lane rebuilt: original t-mig-010/r3 was stacked on the now-closed PR #1 head. R0 cherry-picked the claim commit 0462fd3 onto 9d1f1f3, retargeted the yaml claim note (dev-dep T-MIG-002/003 serialize only the live replay gate; port work proceeds), resolved worklog union, force-pushed f6d11b4. Lane is now cleanly claimable-in-progress against current main.
+- PR #4 (T-MIG-002 db baseline) rebased onto 9d1f1f3 (worklog union), force-pushed 4ede01b, gates re-executed incl. 1319-line schema.ts / 1032-line baseline SQL sanity. Merge 01c41d4.
+- PR #7 (T-MIG-003 golden bring-up) rebased onto 01c41d4 (worklog union), force-pushed 9d0e5b1, gates re-executed: 16 case files verified on disk, hardened-runner selftest OK. Merge 06cf362.
+- PR #5 (R7 housekeeping, ruling 1 backfill) rebased onto 06cf362, verified purely additive (one receipts-dir scope line per yaml + receipt + worklog), pushed 4d4c430, merge 60a0bad.
+- R0 housekeeping commit: T-MIG-000/002/003/012 yamls IN_REVIEW -> DONE with merge evidence; this worklog entry appended.
+- SANDBOX NOTE for future agents: this session's tool transport corrupted typed string literals AND display output (invisible chars injected into heredocs/scripts; bracket sequences silently dropped from displayed output — [main] displayed as ain]). Countermeasures used: structural detection instead of literal matching (startswith/contains probes built from chr() codes), character-code verification for critical strings, git object-store as source of truth over worktree/file views, persisted scripts over heredocs (scripts/ dir in the operator workspace).
+
+Stage Summary:
+- ALL 7 fleet PRs resolved (2,3,4,5,6,7 merged; 1 closed superseded). Wave 0 COMPLETE: T-MIG-000/001/002/003/012 all DONE, CI green on main @ 60a0bad incl. hub lane. T-MIG-010 lane rebuilt and unblocked (deps satisfied: 001/002/003 merged) — Wave 1 identity port is now the fleet's critical path. T-MIG-011 (hub adapter) OPEN and next-claimable. Board state: 5 DONE, 1 CLAIMED (010), 1 OPEN (011).

@@ -3,7 +3,7 @@ task:
   id: T-MIG-012
   title: "Fix apps/api tsc type resolution (TS2688 'bun-types') — restore fleet-wide green typecheck/CI"
   owner: "superz-agent-b (session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9, self-selected per briefing §5 blank-role protocol; R3-lane, apps/api config)"
-  status: IN_REVIEW # PR open on t-mig-012/r3, receipts attached (run-001.json) — awaiting R0
+  status: DONE # R0 merge via PR #6 (0f03d9d) 2026-10-05; one-line tsconfig fix, accidental root bun.lock stripped per receipt fence (ruling b7ef4a5)
   claimed_at: "2026-10-05T00:37:40+06:00"
   priority: P1
   wave: 0
