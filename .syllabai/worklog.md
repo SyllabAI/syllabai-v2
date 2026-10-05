@@ -453,3 +453,18 @@ Work Log:
 
 Stage Summary:
 - Board: T-MIG-000/001/002/003/004/010/012 DONE (7 tasks), T-MIG-011 CLAIMED (t-mig-011/r5), Wave-2 lanes filing. Identity/auth surface is LIVE in v2 with live-DB-proven revocation — the strangler-fig has its first real vine. 54 golden cases on main; Wave-2 acceptance worklist complete before any content-read port code lands. Critical path: T-MIG-011 hub adapter (claimed), then Wave-2 ports (T-MIG-020..022) against the fresh capture.
+
+
+---
+
+Task ID: T-MIG-020
+Agent: R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Claim the Wave-2 content-read port (self-filed task yaml; R0 ratification of the id requested in the eventual PR — T-MIG-013 precedent)
+
+Work Log:
+- Pre-claim board check at main 67639db: PR #12 (T-MIG-013, this lane) IN_REVIEW — nudge comment posted 2026-10-05T05:12:37Z, no R0 response yet; PR #13 (T-MIG-014, r3a) open against packages/db+identity/users; T-MIG-011 (r5) and T-MIG-005 content contracts (r1, claimed 05:06:59Z) in flight. T-MIG-020 unclaimed, fences disjoint from every open lane — claimed per §2.1.
+- Read the four Java controllers behind the captured surfaces (syllabai-core @ 6cad6ef, raw reads only): ContentDocumentController (list/get/canonical/search + X-Search-Empty-Cause), ContentReaderController (citation read, existsCitable corpus-law gate, PaperRef), teacher/ContentController (review-queue v1/v2/v3, paper review/audit/provenance, question topics read — writes are NOT in wave-2 scope), sme/QuestionAssetController (binary by filename).
+- Tranche plan (contract-independent first): repositories + services over the Flyway-owned tables (raw SQL, users.ts createSql precedent), unit tests against a stubbed sql adapter, route factories staged; route mounting + zod wiring gate on T-MIG-005; golden replay flip (content cases expected-pending → passing) completes the tranche. Search vector-retrieval parity cases remain F-5-gated (real-data tranche, NEON_PAT unblock still open).
+
+Stage Summary:
+- T-MIG-020 CLAIMED at 2026-10-05T05:41:57Z on branch t-mig-020/r3. Wave-2 port lane open; contracts dependency declared (T-MIG-005); zero upstream writes; frozen tree touched read-only.

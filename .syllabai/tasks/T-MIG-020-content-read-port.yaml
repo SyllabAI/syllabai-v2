@@ -1,0 +1,56 @@
+version: 1
+task:
+  id: T-MIG-020
+  title: "Wave-2 content-read port — documents (list/get/canonical/search), citation reader, teacher review queues (v1/v2/v3 reads), exam-paper review/audit/provenance, question topics read, question assets"
+  owner: "R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) — self-filed Wave-2 port task per the T-MIG-004 replay note (\"owned by T-MIG-020 (content read surfaces)\"); R0 ratification of the task id requested in the PR (T-MIG-013 precedent)"
+  status: CLAIMED # claimed_at 2026-10-05T05:41:57Z; branch t-mig-020/r3 cut from main 67639db; claim recorded in this branch-start commit per AGENT_COORDINATION §2.1
+  priority: P1
+  wave: 2
+  deps: [T-MIG-005, T-MIG-014] # contracts (route wiring gate — §4.1 contracts-first) + db driver dispatch (PR #13)
+  execution_record: >
+    (claim entry 2026-10-05T05:41:57Z) Pre-claim verification at main 67639db:
+    54 golden cases on disk; content-read captured surfaces = ContentDocumentController
+    (reads), ContentReaderController, teacher/ContentController (review-queue v1/v2/v3,
+    paper review/audit/provenance, question topics read), sme/QuestionAssetController.
+    Curriculum controllers (CurriculumController, TeacherCurriculumController) are
+    T-MIG-021's surface — NOT this task's fence. Plan: contract-independent service/
+    repository layer FIRST (R-M-LAZY observed query surface over the Flyway-owned
+    tables, raw SQL per users.ts precedent), unit-tested against a stubbed sql
+    adapter; route factories staged in the same fence; route MOUNTING + zod wiring
+    gate on T-MIG-005 (packages/contracts/src/content.ts) and lands with the
+    golden replay flip (content cases expected-pending → passing). index.ts wiring
+    ships as a flagged OUT-OF-FENCE commit (T-MIG-010/013 precedent), R0 ratification
+    requested. Search: deterministic empty-cause skeleton (SCOPE_UNRESOLVED /
+    COURSE_REF_UNRESOLVED / diagnostics funnel) is in-tranche; vector retrieval
+    parity cases need the F-5 real-data tranche (NEON_PAT unblock still open).
+base:
+  repo: "syllabai-v2 @ 67639db (main at claim); frozen refs: syllabai-core @ 6cad6ef"
+basis: >
+  MIGRATION_PLAN §5 Wave 2 (content read surfaces — highest read volume, exit
+  gate = golden cases + hub reader pages); §4.1 contracts-first (no endpoint
+  before its zod schema — hence the T-MIG-005 dependency); AGENT_COORDINATION
+  §2 claim protocol, §4 yaml format, §6.1 escalation (dependency tasks);
+  T-MIG-004 receipts F-1..F-8 (captured shapes + harness findings); R0
+  UNBLOCK-SEQUENCE-PHASE2 Stage Summary ("Wave-2 ports (T-MIG-020..022)
+  against the fresh capture"); ADR-030 (course-aware search, courseRef
+  fail-closed), ADR-031 (decay never touches this surface), T-C20 corpus law
+  (existsCitable gate — validated-only serving), T-C31 (X-Search-Empty-Cause
+  header on empty path only), R10 (fixed client messages — parse errors never
+  echo request content).
+scope:
+  allowed:
+    - "apps/api/src/services/content/**"
+    - "apps/api/src/routes/content/**"
+    - "apps/api/test/content/**"
+    - ".syllabai/receipts/T-MIG-020/**"
+    - ".syllabai/tasks/T-MIG-020-content-read-port.yaml (status/execution_record only)"
+    - ".syllabai/worklog.md (append)"
+  forbidden:
+    - "packages/contracts/** (R1's fence — T-MIG-005 in flight; content schemas land there)"
+    - "packages/db/** (T-MIG-014's fence, PR #13)"
+    - "golden/** (R6's fence — replay runs are read-only usage)"
+    - "apps/api/src/index.ts + apps/api/src/middleware/** (any wiring ships flagged OUT-OF-FENCE, R0 ratification requested — T-MIG-010/013 precedent)"
+    - "apps/api/src/services/identity/** (T-MIG-014 touches users.ts; shared error classes are IMPORTED, never edited)"
+    - "syllabai-core / syllabai-hub writes of any kind (C1 — raw reads only)"
+    - "production Neon writes (read paths + local scratch verification only)"
+    - "widening any schema or weakening any golden case to make a replay pass (§7 anti-pattern)"
