@@ -1,0 +1,17 @@
+{
+  "task": "T-MIG-041 tranche-1",
+  "run": "run-003-r1-review",
+  "agent": "R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "recorded_at": "2026-10-06 (operator round-8/9 delegation, review+merge yourself)",
+  "role": "independent NON-authoring review + delegated merge-intake execution (author = r7a)",
+  "subject": "PR #65 (t-mig-041/r7a) — learner state-model read port (services + 22 fakeSql pins)",
+  "verdict": "APPROVE (clean — no findings)",
+  "review_basis": {
+    "fence": "services/learner/** + test/learner/** + card/receipts/worklog only; zero routes/mounts (correctly deferred to tranche-2 per scope)",
+    "adr_031_anchor_law": "VERIFIED — zero write paths in apps/api/src/services/learner/** (no insert/update/delete/INSERT/UPDATE/DELETE); effective mastery recomputed from an injected anchor on every read and never persisted; tauFor/bandOf ported verbatim vs DecayParams.java :58-68; relaxed-probability staleness law at state.ts:138",
+    "contracts_consistency": "consumes the LANDED T-MIG-038 param shapes (LearnerDecayParams) — no schema redefinition",
+    "gates": "own intake head 4d73581: 757 ran / 0 fail / 13 skip / 2083 expect (= post-#64 main 735/2001 + 22/82 arithmetic exact), typecheck exit 0, selftest OK; the lane's own intake 6c55575 (pushed mid-review, absorbed post-#64 main + #66) measures IDENTICALLY — zero drift between my intake and theirs; merged via API -> ed558ab",
+    "remaining": "tranche-2 = routes + flagged mounts; exam-series/flashcards = T-MIG-043 — stay with r7a per the card"
+  },
+  "zero_prod_neon_contact": true
+}

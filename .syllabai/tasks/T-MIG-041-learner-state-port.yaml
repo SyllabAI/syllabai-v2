@@ -1,0 +1,61 @@
+version: 1
+task:
+  id: T-MIG-041
+  title: "Wave-4 learner port — state model cluster: /learners/me/state read model + /course-stats (skill states + read-time Ebbinghaus decay + misconception staleness relaxation + review queue + tutor engagement summary + exam targets + rating/vote windows); tranche-1 = services + fakeSql pins (021 template)"
+  owner: "R7a (agent-da4ab8, zai-web session web-da4ab8b1) — seeded under the operator round-9 directive (trace 1a10d2210b98ef81) 'Proceed with any work. Check and claim': T-MIG-040..043 are the MIGRATION_PLAN Wave-4-reserved bands (044 claim receipt provenance); 040 = the r7a PREP capture (DONE via #57), 042P = the cron slice (DONE); 041/043 were the unseeded port bands. Id ratification requested at PR review (030/032/039/040-PREP precedent)"
+  status: DONE # 2026-10-06 R0 sweep (trace 1a10d2b406e813f9): tranche-1 LANDED via PR #65 merged ed558ab (18:06:46Z) after the r9-hubx independent review APPROVED on-thread (fence verified: services/learner + test/learner + own yaml only); claim provenance per owner line (operator round-9 trace 1a10d2210b98ef81). Post-merge main gates 6ea61b2: typecheck x4 exit 0, 764 ran / 751 pass / 0 fail / 13 skip / 2121 expect, golden selftest OK.
+  priority: P1
+  wave: 4
+  deps: [T-MIG-038, T-MIG-040-PREP, T-MIG-014] # landed W4 contracts (learner.ts/decay.ts) + the W4 golden capture that pins these surfaces + db driver dispatch
+  execution_record: >
+    (claim entry 2026-10-06) Pre-claim verification at main acce2c6: zero
+    T-MIG-041 yamls on main, zero t-mig-041* remote heads (ls-remote), zero
+    041 mentions outside the MIGRATION_PLAN wave-4 reservation and the
+    w0a/R0 register notes ('041/043 remain operator-routed, NOT self-filed'
+    — this claim executes the operator's seeding word). Surface map from
+    frozen core @ 6cad6ef (all read line-against-line this session):
+    LearnerStateController /state composite = skills
+    (findByLearnerIdOrderByLastPracticedAtDesc -> SkillStateView with
+    read-time EbbinghausDecayService.decayed + DecayParams.bandOf),
+    misconceptions (findByLearnerIdOrderByProbabilityDesc -> BdtEngine
+    relaxedToPrior staleness law effective = prior + (P_e - prior)*
+    e^(-age/tau_s), ns precision, re-sorted by effective DESC — a fresh 0.6
+    outranks a stale 0.9; active = effective >= bdt.activeThreshold()),
+    review queue (findByLearnerIdAndStatusOrderByDueAtAsc status=PENDING),
+    tutor engagement summary (30d window occurredAt DESC ->
+    groupEngagementSummary: LinkedHashMap first-seen order, asks count +
+    refusedAny flag + lastAsked max + per-signal counts with null ->
+    TOPIC_ENGAGEMENT, limit 10), flashcard rating window (latest 50
+    occurredAt DESC, timing-only evidence class), note-vote window (latest
+    50), exam targets (ExamTargetReader.targetsFor: enrolments with
+    target_series_id NOT NULL -> batch series lookup -> CourseExamTargetView
+    countdowns ChronoUnit.DAYS.between(today, window) + entryDeadlinePassed
+    = entryDeadline.isBefore(today), derived on read ADR-031),
+    node-title batch (findAllById; missing row -> null title). /course-stats
+    = 4 counts (attempts, distinct questions, note views, distinct
+    flashcard cards). DT snapshot laws: DecayParams paperDefaults
+    30/90/365/0.45/0.8/0.1/0.6 (landed in contracts decay.ts via #60);
+    BdtParams prior 0.3 (selectIfHeld 0.7 / selectIfNotHeld 0.1);
+    bdt.stalenessTauDays + activeThreshold from LearnerProperties.
+    tranche-1 SCOPE: services only — SqlFn seam + repo-port reads + the two
+    view builders (state, course-stats) + fakeSql pins (021 template);
+    NO routes/mounts (tranche-2, flagged OUT-OF-FENCE per the
+    010/020/021/030/031/032 ratified precedent). tranche-2 will carry
+    /state + /course-stats routes; agenda/knowledge-graph/smart-lesson/
+    exam-series+flashcards = T-MIG-043 (or later 041 tranches).
+    Determinism: every now()-dependent value (effective decayed mastery,
+    staleness-relaxed probability, countdowns) is computed from an injected
+    clock/anchor and disclosed — my 040-PREP capture tolerates exactly these
+    fields, and the port must recompute (never persist) per ADR-031.
+  scope:
+    allowed:
+      - "apps/api/src/services/learner/** (new SqlFn seam + repo-ports + view builders)"
+      - "apps/api/test/learner/** (fakeSql pins)"
+      - ".syllabai/receipts/T-MIG-041/**"
+      - ".syllabai/tasks/T-MIG-041-learner-state-port.yaml (status/execution_record only)"
+      - ".syllabai/worklog.md (append-only entries)"
+    forbidden:
+      - "apps/api/src/routes/** + index.ts mounts (tranche-2; flagged separate commit)"
+      - "packages/** apps/hub/** golden/** (038 owns contracts; 040-PREP owns golden; both merged)"
+      - "production Neon writes / Render writes of any kind"
+      - "persisting any decayed/relaxed value (ADR-031: computed, never stored)"
