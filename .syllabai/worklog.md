@@ -1546,3 +1546,29 @@ Work Log:
 
 Stage Summary:
 - Board state: 002-R and 042-PREP both DONE; my two Round-7 PRs resolved (#51 superseded-closed, #54 merged); w0a's #53 merged after independent review. Zero production Neon contact, zero force-pushes, worklog append-only throughout. Open items elsewhere: #50/#49/#48 (other lanes), T-MIG-040-prep (r7a) in flight.
+Task ID: T-MIG-036 (claim)
+Agent: r3-fix (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: ROUND-6 directive (trace 1a10bdd99bec32a9) — register-item claim: root-cause the flaky identity budget test (R0-SWEEP-4/5 register, 2 occurrences) and make it deterministic.
+
+Work Log:
+- SYNC FIRST: fresh clone (sandbox was recycled — prior local state incl. the crash-insurance bundle copy lost; nothing of mission value: W2 closed, the archived T-MIG-024/F-1+F-2 work had landed via #38/#42), main @ 79bdc23 = operator snapshot; worklog tail read (sweep-4, COLLISION-1, E-2, 002-R claim, 032 tranches, 024 run-003, SWEEP-5) + card status scan (002R IN_PROGRESS w0a, 031 IN_PROGRESS R3-api-a, 032 CLAIMED r7a; zero free OPEN wave cards, zero open PRs).
+- Lane identity note: this session's only prior card on main is T-MIG-018 (owner R1-contracts-c, DONE via PR #26) — no pending claim; the register flake item is the sole unowned actionable register entry, claimed per the R3-api-a zero-collision precedent.
+- ROOT CAUSE CONFIRMED FROM FLEET CI EVIDENCE BEFORE ANY CODE CHANGE (receipts/T-MIG-036/run-001-root-cause.json): CI run 37294749131 (main @ 3a0cf41, job 111713216542, step Test) — routes.test.ts:329 toBe(9) FAILED at 10:10:02.126Z while the sibling budget test PASSED at 10:09:59.039Z: the 9-failure real-bcrypt sequence crossed the 10:10:00 wall-minute boundary; the minute-ALIGNED fixed window (Java-faithful, budget.ts:72) rolled mid-test and currentCount read the fresh window. The port is NOT the defect; the wall-clock-dependent test is. Third sighting of the register item captured as the evidence anchor.
+- Zero-collision scan AT claim time: open PRs 0 (authed API); no t-mig-036*/identity* remote heads; T-MIG-036 id free per R0-COLLISION-1; card filed under it (register-item maintenance, NOT wave work — R0 may re-id at intake).
+- Fix design (test-only, zero production changes): SteppingClock seeded at an aligned minute + buildTestApp(env, clock?) swapping identity.budget pre-construction (AuthService reads it lazily, service.ts:154); both budget routes tests pinned; window-roll law unit pin added to budget.test.ts so no future lane 'fixes' the roll.
+
+Stage Summary:
+- T-MIG-036 CLAIMED on branch t-mig-036/r3fix (claim commit follows); implementation next, then gates → PR → independent review (authors never self-merge) → R0 merge-intake.
+
+---
+Task ID: T-MIG-036 (execution complete)
+Agent: r3-fix (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Execute the flake fix — test-only determinism, gates, PR handoff.
+
+Work Log:
+- FIX (test-only, zero production files): routes.test.ts gains SteppingClock (BudgetClock impl) seeded at an ALIGNED minute (1_800_000_000_000 % 60_000 === 0); buildTestApp(env, clock?) swaps identity.budget for a clock-pinned budget BEFORE AuthService construction (lazy read at service.ts:154 today — pre-construction swap order-safe against a future eager capture). The 11-failures→429 test now pins the exact Retry-After ("61", the :110 formula at the pinned instant) and registers its untouched-account user on its own instance; the clear test keeps REAL bcrypt + 60s timeout (bcrypt parity is worth wall time — the BUDGET clock is what was wall-dependent). budget.test.ts gains the window-roll LAW pin ("a failure in a NEW aligned window starts a FRESH count") with an explicit do-not-fix marker so the roll can never be silently 'fixed' into a parity break.
+- GATES: typecheck x4 exit 0; bun test 486/0/13skip 1261 expect (= main 485/0/13, 1259 +1 test/+2 expect exactly — the law pin; Retry-After pin swapped 1-for-1; zero loss); golden --selftest OK; identity suite 15/15 smoke-green loops (determinism by construction, disclosed as smoke not proof). Receipt: receipts/T-MIG-036/run-002-gates.json.
+- yaml → IN_REVIEW; PR to follow with root-cause + evidence + fence + ratification requests; independent review requested (authors never self-merge).
+
+Stage Summary:
+- T-MIG-036 IN_REVIEW: the register flake is root-caused (CI-evidenced), the mechanism enshrined as law, and the wall-clock dependence eliminated test-side with zero production drift. Wave-2/3 ports untouched; register item closable on merge.

@@ -1,0 +1,48 @@
+{
+  "task": "T-MIG-036",
+  "run": "run-001-root-cause",
+  "recorded_at": "2026-10-05T11:49:17Z",
+  "agent": "r3-fix (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "objective": "Root-cause the register flake ('flaky identity budget test', 2 fleet occurrences) before any code change; confirm the mechanism from retained fleet CI evidence, not theory.",
+  "evidence": {
+    "ci_run": {
+      "id": 37294749131,
+      "repo": "SyllabAI/syllabai-v2",
+      "workflow": "ci",
+      "branch": "main",
+      "head_sha": "3a0cf41",
+      "created_at": "2026-10-05T10:09:30Z",
+      "conclusion": "failure",
+      "failed_job": { "id": 111713216542, "name": "verify", "failed_step": "Test" },
+      "hub_job": "success (same run)",
+      "log_retrieved_at": "2026-10-05T11:4xZ via GET /actions/jobs/111713216542/logs (authed, read-only)"
+    },
+    "log_facts": [
+      "10:09:59.039Z log line: '(pass) POST /api/v1/auth/login — AuthService.login (:123-140) parity > per-TARGET-account budget: 11 failures → 429 + Retry-After (R5) [309.08ms]'",
+      "10:10:02.126Z log lines: 'apps/api/test/identity/routes.test.ts:329 | expect(fresh.identity.budget.currentCount(\"clear@example.invalid\")).toBe(9);' followed by 'error: expect(received).toBe(expected)'",
+      "The failing assertion ran ~3s after the passing sibling test — the 9-failure real-bcrypt sequence started ~10:09:59 and crossed the 10:10:00.000 wall-minute boundary before the assertion fired."
+    ],
+    "register_corroboration": [
+      "Occurrence 1 (R0-SWEEP-4/COLLISION-1 record): main during the T-MIG-017-era pass, 1 fail / re-run green.",
+      "Occurrence 2 (R0-SWEEP-4 record): PR #37 gates recorded the flake as 1 fail / re-run green.",
+      "Run 37294749131 is a third sighting on main @ 3a0cf41 (merged PR #46 E-2 head) — same class, captured here as the evidence anchor."
+    ]
+  },
+  "root_cause": {
+    "mechanism": "LoginAttemptBudget implements Java-faithful FIXED windows ALIGNED to wall-clock epoch minutes: windowStart = floor(now/windowMs)*windowMs (budget.ts:72; windowMs 60_000 hardwired at config.ts:71). The routes test 'successful login clears the account budget (:138)' performs 9 failed logins through REAL bcrypt (~3s wall time, timeout note at routes.test.ts:337) against the REAL systemClock (buildIdentityServices constructs the budget without a clock — config.ts:91-95 — so budget.ts:28 systemClock is used). When the ~3s sequence straddles a wall-minute boundary, recordFailure's insideWindow(existing) check fails for the existing window and a FRESH aligned window opens with count=1 (budget.ts:74-79). currentCount() then reads the NEW window's count (<9) via insideWindow (budget.ts:103-106) and the toBe(9) assertion at routes.test.ts:329 fails. Re-runs that start mid-minute land all 9 failures inside one aligned window and pass — the textbook rare flake (~3-4s exposure per 60s minute ≈ 5-7% per run, matching 2-3 sightings across dozens of suite runs).",
+    "the_port_is_NOT_the_defect": "The window roll is the ported Java law (LoginAttemptBudget.java:61-111 fixed-window semantics; the port doc at budget.ts:15 pins 'window alignment: windowStart = floor(now/window)*window'). The budget clock is injectable BY DESIGN (BudgetClock, budget.ts:24-28 — 'test-visible'). The defect is the test's assumption that wall time cannot cross an aligned boundary mid-test.",
+    "secondary_exposure": "The sibling test 'per-TARGET-account budget: 11 failures → 429 + Retry-After' (routes.test.ts:306) shares the class: its attempts run against the same real systemClock, so a boundary straddle could yield 401 on attempt 11 (fresh window) instead of 429. It passed in run 37294749131 (its 11 unregistered-user attempts take ~309ms — no bcrypt, since budget@example.invalid is never registered — so its exposure is ~0.5%/run) but is fixed by the same clock pin."
+  },
+  "fix_design": {
+    "principle": "TEST-ONLY determinism; zero production changes. The port keeps its Java-faithful aligned-window law; the tests stop depending on wall time.",
+    "changes": [
+      "routes.test.ts: add a SteppingClock (BudgetClock impl) seeded at an ALIGNED minute (1_800_000_000_000 % 60_000 === 0) that only advances when advanced.",
+      "routes.test.ts: buildTestApp(env, clock?) — when a clock is passed, swap identity.budget for a LoginAttemptBudget constructed WITH that clock BEFORE AuthService construction (AuthService reads identity.budget lazily today — service.ts:154 — but swapping pre-construction is order-safe even against a future eager capture).",
+      "routes.test.ts: both budget tests build clock-pinned apps; the 429 test gains an exact deterministic Retry-After pin (value derived from the :110 formula at the pinned instant); the clear test keeps its real-bcrypt cost and 60s timeout (bcrypt parity is worth wall time — the BUDGET clock is what must not be wall-time).",
+      "budget.test.ts: one new unit pin — 'a failure in a NEW aligned window starts a fresh count (window roll :66-71)' — enshrines the flake mechanism as Java-faithful law so no future lane 'fixes' the roll and silently breaks parity."
+    ],
+    "expected_gate_delta": "main 485/0/13skip, 1259 expect() → +1 test (budget.test.ts roll pin) / +2 expect() (the roll pin) with the Retry-After toBe pin replacing the not.toBeNull() pin 1-for-1 → 486/0/13skip, 1261 expect(). Actuals re-measured at run-002."
+  },
+  "collision_statement": "Zero-collision scan AT claim time (11:4x-11:49Z, main @ 79bdc23): open PRs = 0 (authed API query); no remote heads matching t-mig-036*/identity*/flake* (ls-remote); T-MIG-036 id free per R0-COLLISION-1 (ruling 5991610725) with no card on main (the two T-MIG-036 mentions inside T-MIG-023's yaml are historical arbitration narrative). Active claims 002R (w0a), 031 (R3-api-a), 032 (r7a) touch exam-papers/questions/selfmark/smartmark/assessment/baseline-SQL fences — zero overlap with apps/api/test/identity/**.",
+  "id_governance_note": "Card filed under the freed id T-MIG-036 to satisfy one-task-one-id; disclosed as register-item maintenance, NOT wave work. R0 may re-id or re-frame at intake; the PR does not merge without independent review + R0 intake regardless."
+}
