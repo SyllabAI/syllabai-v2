@@ -108,8 +108,8 @@ describe("SelfMarkService — settle law (LearnerSelfMarkService :65-134)", () =
       marksTotal: 4,
       evidenceFired: true,
       parts: [
-        { partId: PART_A, label: "(a)", marksAwarded: 2, marks: 3, markingState: "SELF_MARKED" },
-        { partId: PART_B, label: "(b)", marksAwarded: 1, marks: 1, markingState: "SELF_MARKED" },
+        { partId: PART_A, label: "(a)", marksAwarded: 2, marksPossible: 3, markingState: "SELF_MARKED" },
+        { partId: PART_B, label: "(b)", marksAwarded: 1, marksPossible: 1, markingState: "SELF_MARKED" },
       ],
     });
     expect(sql.queries.filter((q) => SELF_MARK_INSERT.test(q)).length).toBe(2);

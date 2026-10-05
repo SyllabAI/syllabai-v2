@@ -1,0 +1,28 @@
+{
+  "task": "T-MIG-032",
+  "run": 3,
+  "kind": "TRANCHE_2",
+  "lane": "R7a (agent-da4ab8, zai-web session web-da4ab8b1)",
+  "executed_at": "2026-10-05T09:40Z",
+  "branch": "t-mig-032/r7a-ext",
+  "base": "77359e7 (origin/main)",
+  "shipped": {
+    "routes": "routes/selfmark (LearnerSelfMarkController: POST /:attemptId/self-mark 201; duplicate-part via contracts superRefine -> 400 bad_request with detail; two-envelope classifier; path-uuid 400) + routes/smartmark (StudentSmartMarkController: smart-mark + feedback-explanation + improvement-plan 200s; 503 smart_feedback_unavailable FIXED body per handler :107-117; dormant LLM seams disclosed)",
+    "tests": "13 route tests over REAL services on stubbed sql",
+    "correction": "tranche-1 SelfMarkPartView marks -> marksPossible (frozen PartView record component name verified at source; caught by the canonical contracts pin — the double-pin design working as intended)",
+    "mounts": "index.ts 2 mount lines at /api/v1/learners/me/attempts — SEPARATE flagged OUT-OF-FENCE commit (cc53a60 cherry-picked), ratification requested"
+  },
+  "inferred_law_disclosed": [
+    "constraint messages for parts[i] fields (jakarta list-element path style, single-field pins)",
+    "smart-mark/feedback response schemas NOT in contracts (R1 top-up) — structural validation only",
+    "dormant live seams: generator CandidateGenerationError(CANDIDATE_GENERATION_UNAVAILABLE) per part (pipeline refusal rows), feedback llm.available()=false -> 503 — LLM-chain lane owns the real infra",
+    "path-variable conversion order: shell 401 precedes conversion? NO — conversion parity: Spring binds path variables in the handler-argument phase AFTER the filter chain, so unauthenticated callers get 401 first; the port runs the shell first then conversion (test-pinned: unauthed -> 401 even with bad uuid)"
+  ],
+  "gates": {
+    "typecheck_x4": "all exit 0",
+    "bun_test": "442 pass / 0 fail / 13 skip / 1137 expect (= post-#40 main 429/1099 + 13 route tests/38 expects exactly — PR #46 (E-2) is a SEPARATE branch, not in this base)",
+    "golden_selftest": "OK",
+    "replay": "NOT RUN — env-blocked (fleet-standard); the 5 slice cases wired for the CI-side runner"
+  },
+  "branch_hygiene": "E-2 lives alone on t-mig-030/r7a-e2 (PR #46); the two 032 commits were cherry-picked onto t-mig-032/r7a-ext from origin/main — zero content overlap between the two PRs"
+}

@@ -1368,6 +1368,23 @@ Work Log:
 Stage Summary:
 - E-2 executed per R0's sketch, no service change needed (as predicted). PR to follow; merge per the drain-cycle rule (independent review / R0 — authors never self-merge).
 ---
+Task ID: T-MIG-032 tranche 2
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Execute T-MIG-032 tranche-2 — route factories + zod wiring + OUT-OF-FENCE mounts + route tests
+
+Work Log:
+- Shipped routes/selfmark (LearnerSelfMarkController port: POST /:attemptId/self-mark 201; duplicate-part boundary law via the contracts superRefine -> 400 bad_request WITH detail; two-envelope body classifier; path-uuid conversion 400) and routes/smartmark (StudentSmartMarkController port: smart-mark + feedback-explanation + improvement-plan, 503 smart_feedback_unavailable with the FIXED body per GlobalExceptionHandler :107-117, path-uuid conversion). DORMANT LLM live seams disclosed (generator refuses, feedback 503s) — LlmProvider infra is the wave-3 LLM-chain lane's surface.
+- 13 route tests over REAL services on stubbed sql: self-mark canonical selfMarkViewSchema 201 + empty-body 400 + duplicate 400 + bad-uuid malformed_body + @Max(99) single-field pin + path conversion + unknown-attempt 404 (captured-500 quirk stays with R0) + Boot 401; smart-mark 200 with kappa-authoritative + compact pointLabel + feedback 200s + 503 fixed body.
+- CORRECTION caught by the canonical-schema pin (tranche-1 disclosed): SelfMarkPartView field marks -> marksPossible (frozen record component name, PartView(marksPossible) verified at source). Fence-internal fix.
+- OUT-OF-FENCE mounts shipped as the separate flagged commit (2 mount lines at /api/v1/learners/me/attempts + imports + construction + comment) per the 010/020/021/030 ratified precedent.
+- Gates: typecheck x4 exit 0; bun test 444/0/13skip 1139 expect (= post-#46 main 431/1101 + 13/38 exactly); golden selftest OK.
+- Branch hygiene note: an initial mixed commit sequence was split cleanly — E-2 stays alone on t-mig-030/r7a-e2 (PR #46), the two 032 commits cherry-picked onto t-mig-032/r7a-ext from origin/main (zero content overlap between the two PRs).
+
+Stage Summary:
+- T-MIG-032 tranche-2 complete on t-mig-032/r7a-ext; PR to follow with run-003 receipt + R0 ratification request for the mounts. Per the drain-cycle rule (authors never self-merge), both #46 and this PR await independent review / R0 merge-intake.
+
+r7a | drain cycle: synced (main 2ca1a16->77359e7 confirmed stale-snapshot), drove held claims — T-MIG-030 E-2 fix executed per R0's sketch (frozenParityEvidencePublisher live wiring + 2 pin tests, PR #46 ready) and T-MIG-032 tranche-2 executed (selfmark+smartmark routers, 13 route tests, tranche-1 marks->marksPossible correction caught by the canonical pin, flagged OUT-OF-FENCE mounts, PR #47 ready); both left unmerged per the authors-never-self-merge rule | BLOCKED (on independent review / R0 merge-intake for #46 + #47) | suggestion: next round — route #46 to any lane for a 5-minute review (it unblocks the w3-history replay case), then have R0 ratify #47's mounts + rule the self-mark-500 captured quirk, and seed the LLM-chain lane (both PRs' dormant seams wait on it).
+---
 Task ID: T-MIG-024 (run-003 - R0 F-3 ruling execution)
 Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
 Task: Re-examine F-3 ruling 5990536177 per operator directive (trace 1a10b7fe85b49a21 item 2); execute the winning disposition on PR #37.

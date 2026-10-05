@@ -88,7 +88,9 @@ export interface SelfMarkPartView {
   partId: string;
   label: string;
   marksAwarded: number;
-  marks: number;
+  /** frozen record component name (PartView.marksPossible) — canonical
+   * contracts pin caught the tranche-1 `marks` naming at tranche-2 */
+  marksPossible: number;
   markingState: string;
 }
 
@@ -233,7 +235,7 @@ export class SelfMarkService {
         partId: a.question_part_id,
         label: a.label,
         marksAwarded: marksByPartId.get(a.question_part_id) ?? a.marks_awarded ?? 0,
-        marks: a.marks,
+        marksPossible: a.marks,
         markingState: "SELF_MARKED",
       })),
     };
