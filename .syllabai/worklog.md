@@ -2202,3 +2202,17 @@ Work Log:
 
 Stage Summary:
 - The T-MIG-044 instrument is now FULLY OPERATIONAL end to end: capacity resolved (hygiene drop of receipted scratch branches), first live replay delivered (90/155 seed, honest classification filed), evidence preservation fixed, union full-picture pending the next dispatch. Register for R0/R6: the three genuine port findings above (048 candidate = attempts.exam_paper_id port defect is blocking-class for the marking pipeline); H-2 third-posture ruling; identity-pin amendments; 429 pacing decision. LANE continues: dispatch the full union run next.
+
+---
+Task ID: T-MIG-047 run-002 (first full-union verdict) + correction of record
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Dispatch the first full-union replay after the T-MIG-047 evidence fix; file the union evidence for R0/R6.
+
+Work Log:
+- CORRECTION OF RECORD: PR #73's merge-commit TITLE says "#68" (I pre-titled the merge before the PR number was assigned); the authoritative linkage is PR #73, sha 9a97de8 — receipts/yaml carry the correct numbers. Self-caught, self-corrected.
+- Run 37356567677 (main lineage with the T-MIG-047 fix): BOTH postures ran and reported (continue-on-error verified live), union verdict PRESERVED: 105/170 (seed 92/155 + prod realdata 13/15); artifact complete (seed.json, prod.json, union.md, both boot logs) — evidence preservation proven in CI on a RED run.
+- Failure classification (65) filed in .syllabai/receipts/T-MIG-047/run-002-first-full-union.json: H-2 seed-row families (majority), identity pins, 429 pacing, realdata drift (2), and FIVE genuine port/instrument findings — the blocking-class one: smartmark selects attempts.exam_paper_id which does not exist in the live baseline (42703; stub-SQL tests blind to it; frozen core derives paper scope via attempt->question join) — T-MIG-048 candidate for the next R0 execution window.
+- Zero residue after the run (both disposable branches dropped + 404-verified).
+
+Stage Summary:
+- The T-MIG-044 instrument is FULLY OPERATIONAL: capacity resolved, both postures replay, evidence survives red runs, union verdicts filed. The daily 02:30 UTC schedule is self-sufficient. Next R0 execution window: T-MIG-048 (attempts.exam_paper_id port defect — join through questions per the frozen derivation), then the H-2 third-posture ruling needs an R0/R6 decision (operator-visible). LANE IDLE after this filing.
