@@ -1990,3 +1990,50 @@ Work Log:
 
 Stage Summary:
 - T-MIG-033 tranche-2 CLAIMED on t-mig-033/r4b. Board zero-open preserved (claim is the only in-flight item). Actions variable NEON_PARENT_BRANCH_ID set repo-side (br-muddy-bar-a5huwldd); operator-side remainder for the maiden Neon run: NEON_API_KEY + NEON_PROJECT_ID (recorded nowhere in-repo, by design) then dispatch.
+
+Task ID: R0-ROUND-6C-DRIFT-FIX (w0a housekeeping: T-MIG-038 card flip + T-MIG-044 independent review verification)
+Agent: w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Operator directive trace 1a10d0c303d3852d ("Check if R0 has merged or not. If not, review+merge yourself and continue working") — executed as: state check → R0/delegates had merged EVERYTHING (board zero-open) → independent non-authoring review verification of the last-merged instrument PR #62 (T-MIG-044) → one-card drift fix (T-MIG-038 flip missed by the ROUND-6C pass).
+
+Work Log:
+- Third workspace reset this session (clone/scripts/local worklog/.env lost again; rebuilt anonymously + operator PAT). SYNC FIRST: repo worklog tail + yaml board scan + live PR/CI API reads.
+- T-MIG-002-R collision RESOLVED: r1 (delegated authority trace 1a10cbee26611c61) reviewed #53 line-against-line (APPROVED), merged as 95b8bf3 (CI verify+hub green), closed #51 superseded with r1's own disclosures, flipped the card DONE. w0a's disposition (A) ratified by the merge; authors-never-self-merge honored (r1 non-authoring).
+- INDEPENDENT REVIEW of merged PR #62 (T-MIG-044; non-authoring post-merge verification): corpus integrity PROVEN (golden/runner.ts + golden/cases/** byte-identical head-vs-main, locally + via files API); comparator zero-drift (deepEqualTolerant + loadCases imported from the gated runner.ts); provenance sha256 claims verified BYTE-EXACT (apply-reset.ts body == receipt copy 32fee89dac...; boot wrapper = single path-only import delta as disclosed); gates re-run on head 8f6f2fa (typecheck x4 exit 0, 596/0/13skip/1598 expect, selftest OK); Neon discipline verified in code (COW-only create from the parent VARIABLE, prod never URL-referenced, ::add-mask:: on URIs, drop+404 under if:always() with RESIDUE escalation); read-only proof correctly scoped to tracked files. VERDICT APPROVE — receipt review-verify-w0a.json + on-thread record. r4b's adversarial self-review and this pass AGREE.
+- DRIFT FOUND + FIXED (this commit): T-MIG-038 yaml still IN_REVIEW although PR #60 merged as 2d4a884 (ROUND-6C flip caught 044, missed 038) — flipped DONE with merge provenance. No other drift: T-MIG-033 IN_PROGRESS accurate (r4 owns tranche-2; its gate — the contracts merge #58 — is now satisfied); 041/043 remain operator-routed, NOT self-filed.
+- Process discipline: authored on verified branch main @ f39557d (symbolic-ref checked, not detached); origin/main re-fetched immediately before push; fast-forward only; no force-push.
+
+Stage Summary:
+- Board after this pass: every merged card reflects merged reality; zero open PRs; active work = r4's T-MIG-033 tranche-2 (gate satisfied) + operator-routed register items (PAT rotation, AGENT_BRIEFING env-rehydration note, Wave-4 ports 041/043). w0a STOPS — no self-filed wave work; next word awaited.
+
+---
+Task ID: R7a-ROUND-8 (review+merge sweep: #60 + #62 merged, #50 held; operator-authorized)
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Operator round-8 directive (trace 1a10d0b6f0bf404d): "Check if R0 has merged or not. If not, review+merge yourself and continue working."
+
+Work Log:
+- SYNC on a wiped sandbox (reset #3; re-clone + PAT re-seed): my two open PRs were ALREADY merged by R0/lane intake before this round — #49 (H-2, via 9bb8c60) and #57 (T-MIG-040-PREP, via 5ff760d). The "if not" self-merge branch never triggered for MY authorship; the sweep turned to the open queue.
+- Open queue found: #50 (T-MIG-033/r4), #60 (T-MIG-038/r1c), #62 (T-MIG-044/r4b) — none authored by this lane, so the authors-never-self-merge rule is preserved under the operator's delegation.
+- #50 DISPOSITION: HELD — head unchanged at 1f4043c since R0's blocking review (F-33-1 five-states law, comment 5997573821); the author fix has not landed and merging a known-divergent port would override R0's standing HOLD FOR AUTHOR. Sweep note posted on-thread for r4. NOT merged by design.
+- #60 REVIEWED (comment 5999614250) + MERGED (2d4a884): fence clean (contracts-only); DecayParams constants + constructor guard messages verbatim vs frozen 6cad6ef; BKT paper defaults consistent with LearnerProperties normalization; CardSchedule shapes cross-checked against my own W4 capture (contract and capture agree); gates re-executed receipt-exact on head 76d2efb (516/503/13/1327 = base 472 + 31 pins/+68 expect). The lane landed its own intake (c071c42) mid-review — adopted it after re-verifying gates (712/0/13/1924 on that head); my parallel intake merge was abandoned as redundant (no force-push anywhere).
+- #62 REVIEWED (comment 5999657703) + MERGED (d9a48a6): read-only replay doctrine verified (never captures/edits/re-pins; divergences reported, never auto-fixed); neon-branch COW create/drop + 404-verify + masked secrets; vendored apply-reset.ts byte-identical to as-run v1 (sha 32fee89d) with the H-2 divergence preserved-intact — disposition CONFIRMED CORRECT by the H-2 owner lane (my apply-reset-v2.ts stays canonical for future curriculum postures); fence verified (zero golden/cases + runner.ts touches); gates re-executed on the merged head (640/0/1705) and w4-readiness READY (57/0) after the README/worklog unions.
+- POST-MERGE MAIN GATES (main 78a2512 incl. w0a's card-flip housekeeping): typecheck x4 exit 0; bun test 712 ran / 0 fail / 13 skip / 1924 expect; golden selftest OK; w4-readiness READY (57 cases, 0 findings).
+- Board after sweep: zero r7a-actionable cards — 033 pending r4's F-33-1 fix, 036/037/039/040-PREP card flips are R0's, T-MIG-045 claimed by r4b (head t-mig-045/r4b active), t-mig-037/r8-hub is r8's hub-surface branch. No self-filed wave work (standing round-6 rule). LANE IDLE.
+
+Stage Summary:
+- Round 8 closed: 2 independent reviews filed on-thread, 2 merges executed under the explicit operator delegation (#60 2d4a884, #62 d9a48a6), 1 PR correctly left held (#50 — R0's blocking finding stands), post-merge main green. Lane STOPs; awaiting operator/R0 direction.
+
+---
+Task ID: R3a-ROUND-9 (post-merge verification + queue sweep receipt)
+Agent: superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Operator directive (trace 1a10d1ee8c42e0b9): "Check if R0 has merged or not. If not, review+merge yourself and continue working."
+
+Work Log:
+- SANDBOX WIPED a third time (reset #3 — same class R7a recorded this cycle): re-clone + PAT re-seed from the operator channel; local scripts lost (intake-union resolver preserved in receipts/history where it matters). main re-verified at acce2c6.
+- PR #56 (T-MIG-034) verified MERGED by R0: merge 1e82a34 @ 17:01:05Z with intake 09ba069 = CONTRACTS ARBITRATION — canonical #58 test-builder/transcription kept, PR-side duplicates dropped, imports re-pointed; R0 rulings vs frozen 6cad6ef: partLabel NULLABLE (fixed a false-reject defect in the canonical file), reasons = 3-literal enum (strengthened), topicCode/coverage code-title NON-NULL (NOT NULL columns); selectByMarks ruled line-against-line faithful; the OUT-OF-FENCE mounts RATIFIED (:18/:42/:59 + :27/:51); R0 review 5999190842. Card T-MIG-034 flipped DONE. The directive's self-merge branch never triggered — R0 acted first; author-recusal discipline was never strained.
+- QUEUE SWEEP: 0 open PRs. #50 (T-MIG-033 tranche-1) was merged 4be24e6 @ 17:17:28Z after the F-33-1 fix landed (4605926, R0-executed per the review 5997573821) — R7a-ROUND-8's interim "held" note is superseded by the R0-ROUND-6C drain (9/9). Board: every card DONE except T-MIG-033 IN_PROGRESS (t2/t3).
+- T-MIG-033 tranche-2/3 DISPOSITION: CLAIMED by r4b at 9c62374 (17:26:26Z, operator trace 1a10d02b6c32a29d, receipt run-004-claim-tranche2, zero-collision re-verified) — HANDS OFF per earliest-claim-wins + zero-collision discipline. No competing claim filed by this lane.
+- NEON COW drop-after-use re-verification for this lane (T-MIG-022/023 replay branches): BLOCKED — sandbox DNS cannot resolve api.neon.tech (egress restriction; GitHub API unaffected). Recorded as unverifiable-from-sandbox; the drops were receipted at run time (seed br-wild-rice-a58063jp + prod br-red-wildflower-a5vyd81c, AS-COWED posture, dropped post-run per run-001 receipts).
+- Gates on this receipt head (acce2c6 + worklog append only): typecheck x4 exit 0; bun test 712 ran / 699 pass / 0 fail / 13 skip, 1924 expect (= R7a-ROUND-8 post-merge main baseline exact); golden --selftest OK (tolerance engine incl. declared-unordered multiset). Zero code files touched by this PR.
+
+Stage Summary:
+- Round-9 closed for this lane: merge verified, arbitration rulings acknowledged (all favorable; canonical contracts absorbed the port with two strengthenings), queue swept empty, the only remaining work (033 t2/t3) left to its earliest claimant r4b, Neon hygiene disclosed as egress-blocked. LANE IDLE — awaiting operator/R0 direction. No self-filed wave work.
