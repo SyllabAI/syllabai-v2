@@ -114,6 +114,7 @@ interface AttemptAnswerStateRow {
 interface SmartRunRow {
   id: string;
   answer_id: string;
+  pipeline_version: string;
   model_id: string | null;
   marks_awarded: number;
   confidence: number | null;
@@ -361,7 +362,10 @@ function smartMarkView(run: SmartRunRow | null): SmartMarkView | null {
   if (run === null) return null;
   return {
     id: run.id,
-    pipelineVersion: PIPELINE_VERSION,
+    // N-2 executed: the STORED run version renders — never the current-code
+    // constant (a run made under an older pipeline displays its own version;
+    // the constant is write-side only, on the INSERT paths)
+    pipelineVersion: run.pipeline_version,
     modelId: run.model_id,
     marksAwarded: run.marks_awarded,
     confidence: run.confidence,
@@ -901,6 +905,54 @@ export class TeacherMarkingService {
       computedAt,
     };
   }
+
+  /**
+   * T-MIG-033 tranche-2 — kappa/latest read (:282-293): the newest evaluation
+   * for the scope (ALL when paperId null, else PAPER + paper). findFirst…OrderBy
+   * ComputedAtDesc parity; id-desc tie-break added for determinism (disclosed
+   * read-model choice, the compareWithinPaper string-lexicographic class).
+   */
+  async latestEvaluation(paperId: string | null): Promise<KappaEvaluationView | null> {
+    const rows =
+      paperId === null
+        ? ((await this.sql`
+            select id, scope, exam_paper_id, sample_size, kappa, observed_agreement,
+                   threshold, passed, computed_at
+            from smart_mark_agreement_evaluations
+            where scope = ${SCOPE_ALL}
+            order by computed_at desc, id desc
+            limit 1
+          `) as unknown as Array<{
+            id: string; scope: string; exam_paper_id: string | null; sample_size: number;
+            kappa: number; observed_agreement: number; threshold: number; passed: boolean;
+            computed_at: string;
+          }>)
+        : ((await this.sql`
+            select id, scope, exam_paper_id, sample_size, kappa, observed_agreement,
+                   threshold, passed, computed_at
+            from smart_mark_agreement_evaluations
+            where scope = ${SCOPE_PAPER} and exam_paper_id = ${paperId}
+            order by computed_at desc, id desc
+            limit 1
+          `) as unknown as Array<{
+            id: string; scope: string; exam_paper_id: string | null; sample_size: number;
+            kappa: number; observed_agreement: number; threshold: number; passed: boolean;
+            computed_at: string;
+          }>);
+    const e = rows[0];
+    if (!e) return null;
+    return {
+      id: e.id,
+      scope: e.scope,
+      paperId: e.exam_paper_id,
+      sampleSize: e.sample_size,
+      kappa: e.kappa,
+      observedAgreement: e.observed_agreement,
+      threshold: e.threshold,
+      passed: e.passed,
+      computedAt: e.computed_at,
+    };
+  }
 }
 
 // ── TeacherMarkingQueueService port (:51-494) ────────────────────────────────
@@ -998,8 +1050,8 @@ export class TeacherMarkingQueueService {
     const answerIds = queue.map((a) => a.id);
     const latestSmart = new Map<string, SmartRunRow>();
     const smartRuns = (await this.sql`
-      select id, answer_id, model_id, marks_awarded, confidence, validation_passed,
-             breakdown, failure_reason, created_at
+      select id, answer_id, pipeline_version, model_id, marks_awarded, confidence,
+             validation_passed, breakdown, failure_reason, created_at
       from smart_mark_results where answer_id = any(${answerIds}::uuid[])
       order by created_at asc
     `) as unknown as SmartRunRow[];
@@ -1070,6 +1122,161 @@ export class TeacherMarkingQueueService {
       );
     }
     return { groupViews, itemsByGroup };
+  }
+
+  /**
+   * T-MIG-033 tranche-2 — the UNPAGED /answers list (controller queueList,
+   * :102-113): the shape the web marking UI reads. One state query + one
+   * batched identity lookup + one batched paper lookup; smart/human runs are
+   * NOT loaded (TeacherViews.answer receives null, null — only the single
+   * answer view :243-252 includes them). Java's findByMarkingState is a
+   * derived query with NO OrderBy (database order); the port pins the
+   * paged surface's TOTAL order (createdAt asc, id asc) for determinism —
+   * disclosed read-model choice, same class as compareWithinPaper.
+   */
+  async answersList(state: string): Promise<AnswerMarkingView[]> {
+    const rows = (await this.sql`
+      select ans.id, ans.attempt_id, ans.answer_text, ans.marks_awarded, ans.marking_state,
+             ans.question_part_id, qp.label, qp.prompt, qp.marks as part_marks,
+             at.learner_id, at.created_at as attempt_created_at, at.evidence_emitted,
+             at.question_id, q.external_ref, q.exam_paper_id, q.marks as question_marks
+      from answers ans
+      join question_parts qp on qp.id = ans.question_part_id
+      join attempts at on at.id = ans.attempt_id
+      join questions q on q.id = at.question_id
+      where ans.marking_state = ${state}
+      order by ans.created_at asc, ans.id asc
+    `) as unknown as MarkingAnswerRow[];
+    if (rows.length === 0) return [];
+    return this.viewsFor(rows);
+  }
+
+  /**
+   * T-MIG-033 tranche-2 — the OPT-IN paged /answers (:148-176, G-5): the same
+   * read model under the TOTAL order (createdAt asc, then id asc — stable
+   * page boundaries), sliced by the DATABASE's own count, never an estimate
+   * (Spring Data Page.getTotalElements/getTotalPages parity). Bounds live in
+   * the ROUTE (Java validates in the controller :156-163) — page >= 0,
+   * size 1..200 default 50.
+   */
+  async answersPaged(
+    state: string,
+    page: number,
+    size: number,
+  ): Promise<AnswerMarkingPageView> {
+    const rows = (await this.sql`
+      select ans.id, ans.attempt_id, ans.answer_text, ans.marks_awarded, ans.marking_state,
+             ans.question_part_id, qp.label, qp.prompt, qp.marks as part_marks,
+             at.learner_id, at.created_at as attempt_created_at, at.evidence_emitted,
+             at.question_id, q.external_ref, q.exam_paper_id, q.marks as question_marks
+      from answers ans
+      join question_parts qp on qp.id = ans.question_part_id
+      join attempts at on at.id = ans.attempt_id
+      join questions q on q.id = at.question_id
+      where ans.marking_state = ${state}
+      order by ans.created_at asc, ans.id asc
+      limit ${size} offset ${page * size}
+    `) as unknown as MarkingAnswerRow[];
+    const countRows = (await this.sql`
+      select count(*)::int as total from answers where marking_state = ${state}
+    `) as unknown as Array<{ total: number }>;
+    const totalElements = countRows[0]?.total ?? 0;
+    const totalPages = totalElements === 0 ? 0 : Math.floor((totalElements + size - 1) / size);
+    return {
+      items: rows.length === 0 ? [] : await this.viewsFor(rows),
+      page,
+      size,
+      totalElements,
+      totalPages,
+    };
+  }
+
+  /**
+   * Shared read-model composition (controller :102-113 / :164-175): one
+   * batched identity lookup (first-wins) + one batched paper lookup;
+   * smart/human runs stay null on the list surfaces.
+   */
+  private async viewsFor(rows: MarkingAnswerRow[]): Promise<AnswerMarkingView[]> {
+    const learnerIds = [...new Set(rows.map((a) => a.learner_id))];
+    const names = new Map<string, string>();
+    if (learnerIds.length > 0) {
+      const userRows = (await this.sql`
+        select id, display_name from users where id = any(${learnerIds}::uuid[])
+      `) as unknown as UserNameRow[];
+      for (const u of userRows) if (!names.has(u.id)) names.set(u.id, u.display_name);
+    }
+    // batched paper titles for the queue rows (:115-136); question-bank
+    // answers carry NO paper by design — null key renders null title
+    const paperIds = [...new Set(rows.map((a) => a.exam_paper_id).filter((v): v is string => v !== null))];
+    const papers = new Map<string, PaperRow>();
+    if (paperIds.length > 0) {
+      const paperRows = (await this.sql`
+        select id, title, session_label, paper_code from exam_papers
+        where id = any(${paperIds}::uuid[])
+      `) as unknown as PaperRow[];
+      for (const p of paperRows) papers.set(p.id, p);
+    }
+    return rows.map((a) => {
+      const paper = a.exam_paper_id === null ? null : papers.get(a.exam_paper_id) ?? null;
+      return answerMarkingView(a, names.get(a.learner_id) ?? null, null, null, paper?.title ?? null);
+    });
+  }
+
+  /**
+   * T-MIG-033 tranche-2 — the rich single-answer view (:243-252): answer with
+   * part + attempt, NEWEST smart run (findLatest), NEWEST human mark
+   * (findLatest), one identity lookup. Null when the answer does not exist —
+   * the route maps it to NotFound("answer", id) (404 is for real lookups).
+   * findLatest parity: order created_at desc with the id-desc tie-break
+   * (disclosed determinism, as above).
+   */
+  async answerById(id: string): Promise<AnswerMarkingView | null> {
+    const rows = (await this.sql`
+      select ans.id, ans.attempt_id, ans.answer_text, ans.marks_awarded, ans.marking_state,
+             ans.question_part_id, qp.label, qp.prompt, qp.marks as part_marks,
+             at.learner_id, at.created_at as attempt_created_at, at.evidence_emitted,
+             at.question_id, q.external_ref, q.exam_paper_id, q.marks as question_marks
+      from answers ans
+      join question_parts qp on qp.id = ans.question_part_id
+      join attempts at on at.id = ans.attempt_id
+      join questions q on q.id = at.question_id
+      where ans.id = ${id}
+    `) as unknown as MarkingAnswerRow[];
+    const a = rows[0];
+    if (!a) return null;
+
+    const smartRuns = (await this.sql`
+      select id, answer_id, pipeline_version, model_id, marks_awarded, confidence,
+             validation_passed, breakdown, failure_reason, created_at
+      from smart_mark_results where answer_id = ${id}
+      order by created_at desc, id desc limit 1
+    `) as unknown as SmartRunRow[];
+    const humanRuns = (await this.sql`
+      select id, answer_id, marker_id, marks_awarded, per_point_decisions,
+             comments, created_at
+      from human_marks where answer_id = ${id}
+      order by created_at desc, id desc limit 1
+    `) as unknown as HumanMarkRow[];
+
+    const userRows = (await this.sql`
+      select id, display_name from users where id = ${a.learner_id}
+    `) as unknown as UserNameRow[];
+
+    let paper: PaperRow | null = null;
+    if (a.exam_paper_id !== null) {
+      const paperRows = (await this.sql`
+        select id, title, session_label, paper_code from exam_papers where id = ${a.exam_paper_id}
+      `) as unknown as PaperRow[];
+      paper = paperRows[0] ?? null;
+    }
+
+    return answerMarkingView(
+      a,
+      userRows[0]?.display_name ?? null,
+      smartRuns[0] ?? null,
+      humanRuns[0] ?? null,
+      paper?.title ?? null,
+    );
   }
 
   /** throughput (:270-331): workload by state, human windows, leaders, oldest age. */

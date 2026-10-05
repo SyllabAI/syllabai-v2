@@ -1,0 +1,28 @@
+{
+  "task": "T-MIG-033",
+  "agent": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "date": "2026-10-05",
+  "run": "run-005-tranche2",
+  "title": "tranche-2 implementation: teacher marking routes + zod wiring + flagged mounts (N-2 executed)",
+  "deliverables": [
+    { "path": "apps/api/src/routes/teachermarking.ts", "role": "9-endpoint router over /api/v1/teacher/marking (line-against-line vs TeacherMarkingController.java :46-328 @ 6cad6ef): GET /answers dual-shape + G-5 bounds verbatim (:156-163, 50/200), GET /queue-v2 dual-shape (bounds in the service per the controller javadoc), GET /throughput, POST /smart-mark-batch (#58 contract 1..50), GET /answers/:id (404 NotFound(answer,id)), POST /answers/:id/smart-mark, POST /answers/:id/human-mark (201, marker from JWT identity, contract bounds 0..99 / 50 entries / 4000 chars), POST /kappa/evaluate (201, body-optional per @RequestBody(required=false)), GET /kappa/latest (404 naming ALL|paper). TEACHER/ADMIN shell FIRST (Boot 401/403 bodies); domain-error map r.onError (the 032 pattern); C-9 message verbatim via the tranche-1 parseMarkingState." },
+    { "path": "apps/api/src/services/teachermarking/index.ts", "role": "read-model additions in 033's own fence: queue.answersList + answersPaged (TOTAL order createdAt asc + id asc, database count, Spring Page parity) + the shared viewsFor composition (batched identity + paper lookups; smart/human nulls on list surfaces per TeacherViews.answer 5-arg calls) + queue.answerById (rich single view, findLatest desc + disclosed id-desc tie-break) + marking.latestEvaluation (kappa/:282-293 read). N-2 EXECUTED: smart_mark_results SELECTs now fetch the STORED pipeline_version and the view renders it — the current-code constant is write-side only (a run made under an older pipeline displays its own version)." },
+    { "path": "apps/api/src/index.ts", "role": "7th mount line app.route('/api/v1/teacher/marking', ...) + the standard OUT-OF-FENCE disclosure comment (T-MIG-010/020/021/030/032/034 precedent)" },
+    { "path": "apps/api/test/teachermarking/routes.test.ts", "role": "23 route-layer tests over a fake module: authz shell matrix (9 surfaces x anonymous 401 + LEARNER 403), dual-shape pinning, G-5 bounds verbatim, C-9 hint verbatim, state upper-casing, contract validation (empty/51-id batches, marksAwarded 99/100, @NotNull), kappa body-optional matrix, 404 message shapes" }
+  ],
+  "conditions": {
+    "N-2": "EXECUTED (pipeline_version stored-version rendering; SELECT + view fixed)",
+    "N-4": "ordering law implemented (created_at asc + id asc TOTAL order; id-desc tie-breaks on findLatest/latestEvaluation, disclosed string-lexicographic class); the capture-condition half (a golden case pinning a uuid-tie-break 200) stays with the golden-capture lane's register — disclosed, non-blocking"
+  },
+  "gates": [
+    { "cmd": "bun run typecheck (x4)", "result": "exit 0" },
+    { "cmd": "bun test apps/api packages", "result": "735 ran / 722 pass / 0 fail / 13 skip / 2001 expect (= main 712/1924 + 23 tests + 77 expects, arithmetic EXACT)" },
+    { "cmd": "bun golden/runner.ts --selftest", "result": "OK" }
+  ],
+  "disclosures": [
+    "unpaged /answers list pins createdAt asc + id asc (Java findByMarkingState is an unordered derived query) — deterministic superset of the paged TOTAL order, disclosed read-model choice",
+    "findLatest / latestEvaluation id-desc tie-breaks added for determinism (the compareWithinPaper disclosed class)",
+    "mount line in index.ts is out-of-fence per the standing precedent, separate ratification point for R0",
+    "LLM seams DORMANT (032 posture): smart-mark POST surfaces answer the honest 503/refusal until the LLM-chain lane lands"
+  ]
+}

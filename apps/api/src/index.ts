@@ -50,6 +50,7 @@ import { buildQuestionsRouters } from "./routes/questions";
 import { buildExamPapersRouters } from "./routes/exam-papers";
 import { buildTestBuilderRouters } from "./routes/testbuilder";
 import { buildAnswerInputRouters } from "./routes/answer-input";
+import { buildTeacherMarkingRouters } from "./routes/teachermarking";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
@@ -64,6 +65,7 @@ const questions = buildQuestionsRouters();
 const examPapers = buildExamPapersRouters();
 const testbuilder = buildTestBuilderRouters();
 const answerInput = buildAnswerInputRouters();
+const teachermarking = buildTeacherMarkingRouters();
 
 const app = new Hono();
 
@@ -238,6 +240,22 @@ app.route("/api/v1/questions", questions.questionsRoute);
 // so R0 can ratify or lift them out at review.
 app.route("/api/v1/teacher/tests", testbuilder.testBuilderRoute);
 app.route("/api/v1/learners/me/answer-input", answerInput.transcribeRoute);
+
+// Teacher marking router (T-MIG-033 tranche-2 — Wave 3). Path parity with
+// the frozen core: TeacherMarkingController under /api/v1/teacher/marking
+// (TEACHER/ADMIN via SecurityConfig + @PreAuthorize defense-in-depth; the
+// router owns its authz internally — the /api/v1/* fallback below stays the
+// 404-after-auth path for NO router claimed).
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-033, R0 ratification requested):
+// T-MIG-033's scope.allowed covers routes/teachermarking.ts,
+// services/teachermarking/**, test/teachermarking/** — NOT this file. The
+// import + construction + mount line + this comment are the minimal
+// app-level wiring, shipped as a separate commit per the
+// T-MIG-010/020/021/030/032/034 precedent so R0 can ratify or lift them out
+// at review. LLM seams stay DORMANT (the 032 posture): smart-mark routes
+// answer 503 until the LLM-chain lane lands; read surfaces are live.
+app.route("/api/v1/teacher/marking", teachermarking.teacherRoute);
 
 // anyRequest().authenticated() parity for paths NO router claimed
 // (SecurityConfig.java:91): anonymous callers get the 401 Boot-shaped body;
