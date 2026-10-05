@@ -270,6 +270,17 @@ export class ContentReviewRepository {
     return reasons;
   }
 
+  /** paperReview (ContentReviewService.java:866-905) — the unknown-paper
+   *  404 path is golden-pinned (teacher-content-paper-review-unknown-404);
+   *  the full header+versions projection for EXISTING papers (deep
+   *  multi-table answer-key view) is NOT yet ported — the router answers a
+   *  named 501 for existing papers (honest-response rule; never a
+   *  possibly-wrong 200). Ported fully with the write-surfaces follow-up. */
+  async paperExists(paperId: string): Promise<boolean> {
+    const rows = await this.sql`select id from exam_papers where id = ${paperId}::uuid`;
+    return rows.length > 0;
+  }
+
   /** paperAudit (V22) — the paper's own rows + every row of its question
    *  versions, mark schemes and questions, occurredAt desc. */
   async paperAudit(paperId: string) {

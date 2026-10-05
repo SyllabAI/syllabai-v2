@@ -3,7 +3,7 @@ task:
   id: T-MIG-020
   title: "Port content read surfaces (Wave 2) — documents list/get/canonical/search, citation reader, question assets, teacher review queues/audit/provenance/topics; golden-gated against the 26 T-MIG-004 cases"
   owner: "superz-agent-b (session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9, self-selected per briefing §5 blank-role protocol)"
-  status: CLAIMED # 2026-10-05T11:23:50+06:00 (commit = branch start, protocol §2.1)
+  status: IN_REVIEW # PR open on t-mig-020/r3a, receipts attached (run-001.json) — awaiting R0
   claimed_at: "2026-10-05T11:23:50+06:00"
   priority: P1
   wave: 2
@@ -38,6 +38,54 @@ task:
     content router mounts (/api/v1/teacher/content + /api/v1/content) BEFORE
     the authenticated() fallback. CONFLICT NOTE: PR #12 (T-MIG-013) also edits
     index.ts — whoever merges second rebases; the mounts are 2 lines.
+    COMPLETION (2026-10-05, same session/branch — appended per append-only rule):
+    ALL FOUR read surfaces ported and LIVE-REPLAYED: 25/25 golden cases PASS
+    (worklist correction: the T-MIG-004 content inventory is 25 cases —
+    content-docs 11 + content-reader 3 + question-assets 2 + teacher-content
+    9 — plus 13 curriculum/health cases outside this task's scope; my claim
+    note said 26, the replay inventory is authoritative).
+    Environment doctrine (NEW — recorded for every future replay lane): the
+    replay target is the t-mig-014/r3a Neon scratch branch reset to the
+    captured posture by .syllabai/receipts/T-MIG-020/tools/apply-reset.ts
+    (rows-only topological wipe: FK-children-first DELETE across all public
+    tables — TRUNCATE is unavailable to API-created branch roles, and SET
+    ROLE neon_superuser is Neon-restricted; owning-surface neutralization:
+    VALIDATED structure nodes → UNVALIDATED so resolveActive yields
+    SCOPE_UNRESOLVED; roles table re-seeded VERBATIM from the core's
+    Flyway V1__identity.sql). Posture verified: content tables 0 rows,
+    zero VALIDATED structure nodes, roles present. The reset wipes the
+    FULL pilot dataset on the branch — branch rows are sandbox-only (C2
+    honored: production main never contacted for writes; posture is
+    read-probed only).
+    Token re-minting: synthetic teacher (user_20@example.invalid, via
+    SYLLABAI_TEACHER_JOIN_CODE) + student (user_21) registered through the
+    HONEST /api/v1/auth path at replay time; committed fixtures keep their
+    scrubbed-fixed-dummy bearers untouched (T-MIG-003 convention).
+    Replay driver: .syllabai/receipts/T-MIG-020/tools/replay-content-cases.ts
+    (role selection by ROUTE RULE not case name; Bun fetch quirk recorded:
+    res.json() returns null for 0-byte bodies — flagged to R6 because
+    golden/runner.ts shares the pattern).
+    Parity findings pinned by the replay: (1) content-docs-embed-unknown
+    expects 500 NOT 404 — the frozen core's requireProvider() runs BEFORE
+    the document lookup, so provider-less boots 500 regardless of existence
+    (order-faithful port); (2) blank search query → 500 internal_error:
+    Spring Boot 4 built-in method validation fires @NotBlank BEFORE the
+    handler and HandlerMethodValidationException is unmapped (F-2's
+    "@NotBlank does not fire" reading is superseded by the capture evidence;
+    the port reproduces the observable with an explicit pre-body throw);
+    (3) question-assets 404 body is 0 bytes — c.body(null) serializes
+    "null" under Hono, so the route returns a raw Response.
+    HONEST 501s (not yet ported, named, tracked for the write-surfaces
+    follow-up task): POST /past-papers, exam-papers validate/validate-all/
+    place/reject/flag/unflag, question-versions validate/reject/flag/unflag,
+    mark-schemes validate/reject/flag/unflag, questions/:id/topics (write),
+    and GET /exam-papers/:id/review FOR EXISTING papers (the unknown-paper
+    404 path IS ported + golden-pinned; the deep answer-key projection for
+    existing papers is follow-up work — a named 501 beats a possibly-wrong
+    200).
+    Gates: root typecheck exit 0 (4 workspaces); bun test apps/api packages
+    104/104; golden selftest OK; live replay 25/25 (receipt tool output
+    committed alongside).
 base:
   repo: "syllabai-v2 @ main 67639db at claim time; frozen refs: syllabai-core @ 6cad6ef (content/teacher/curriculum/sme controllers + CurriculumScopeResolver), syllabai-hub @ 93226a43"
 basis: >

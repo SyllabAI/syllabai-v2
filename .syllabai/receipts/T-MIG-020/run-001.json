@@ -1,0 +1,47 @@
+{
+  "task": "T-MIG-020",
+  "agent": "superz-agent-b (session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)",
+  "lane": "R3 (self-selected; Wave-2 content read surfaces)",
+  "branch": "t-mig-020/r3a (base: main @ 67639db)",
+  "date": "2026-10-05",
+  "what_was_ported": {
+    "contracts": "packages/contracts/src/content.ts — 12 response-view schemas + search param schema, each with frozen-core source headers (ContentDocumentController views :199/:214/:218, ContentReaderController :117/:135, ContentController :162/:167/:303/:307, ContentReviewService :686/:801/:823/:845, Document.Kind :28, SearchEmptyCause :18)",
+    "services": [
+      "services/content/documents.ts — findAllByOrderByCreatedAtDesc / findById / findTopByDocumentIdOrderByDocVersionDesc / existsCitable (DocumentRepository.java:40-54 native SQL ported VERBATIM — corpus law)",
+      "services/content/assets.ts — findByFilename (question_asset, bytea bytes)",
+      "services/content/review.ts — reviewQueue v1 (global SUGGESTED counts), enrichedReviewQueue v2 (per-paper state counts, OCR-bridge reconciliation + findingCount split-count port, mean extraction confidence, deterministic reconciled-first sort), enrichedReviewQueueV3 (scheme linkage, question census, mapped topics, practicable set over VALIDATED papers, novel set, rank reasons, documented sort), paperAudit (content_review_audit, own+versions+schemes+questions rows, occurredAt desc), questionTopicRows (anchor synthesis per the V20 finding), provenance (fail-closed QP/MS identity), paperExists (for the pinned 404 path)",
+      "services/content/scope.ts — CurriculumScopeResolver port (ACTIVE candidates, ownsSurface = VALIDATED structure node in any subject's recursive PART_OF subtree OR owned exam paper, exactly-one-owner else refuse; resolveForCourse = exact ACTIVE code match)",
+      "services/content/index.ts — composition root over identity's createSql (driver-dispatching after T-MIG-014)"
+    ],
+    "routes": "routes/content/index.ts — /api/v1/content (citation reader with corpus-law gate + page text via DocumentPageText port; question assets with 0-byte 404) + /api/v1/teacher/content (documents list/get/canonical-as-ingested/search with T-C31 empty-cause headers/embed order-faithful provider-first 500; review queues v1/v2/v3; audit/provenance/topics; honest named 501s for all write surfaces + existing-paper review projection)",
+    "wiring": "apps/api/src/index.ts mounts (separate commit, R0 ratification requested — T-MIG-010 precedent)"
+  },
+  "golden_replay": {
+    "result": "25/25 PASS (worklist: content-docs 11 + content-reader 3 + question-assets 2 + teacher-content 9; the 13 remaining T-MIG-004 cases are curriculum (12, T-MIG-021) + health (T-MIG-003))",
+    "target": "v2 api booted locally (bun, PORT=8080, SYLLABAI_JWT_SECRET synthetic, SYLLABAI_TEACHER_JOIN_CODE synthetic) against the t-mig-014/r3a Neon scratch branch reset to the captured seed posture",
+    "environment_tool": ".syllabai/receipts/T-MIG-020/tools/apply-reset.ts (rows-only topological wipe + owning-surface neutralization + roles re-seed verbatim from Flyway V1__identity.sql; posture probes committed)",
+    "replay_tool": ".syllabai/receipts/T-MIG-020/tools/replay-content-cases.ts (route-rule-based token re-minting via the honest /api/v1/auth path; tolerate-wired diff engine — T-MIG-010 precedent)",
+    "output": ".syllabai/receipts/T-MIG-020/replay-output.txt",
+    "production_safety": "C2 honored — production main never written; branch rows only (sandbox); no PII entered any fixture (synthetic accounts, masked emails user_20/user_21@example.invalid)"
+  },
+  "parity_findings": [
+    "embed-unknown expects 500 not 404: the core's requireProvider() precedes the document lookup — provider-less boots 500 regardless of existence; port is order-faithful",
+    "blank search query → 500 internal_error: Spring Boot 4 built-in method validation fires @NotBlank pre-handler and HandlerMethodValidationException is unmapped; F-2's '@NotBlank does not fire' reading superseded; port reproduces the observable with an explicit pre-body throw (same status/body as capture)",
+    "question-assets 404 is a 0-byte body: Hono c.body(null) serializes 'null'; route returns a raw Response (curl-verified 0 bytes)",
+    "Bun fetch quirk for R6: res.json() returns null (not throw) for 0-byte bodies — golden/runner.ts shares the pattern and will need the same normalization for '<non-json:0 bytes>' cases on Bun runners",
+    "operations notes for future lanes: Neon API-created branch roles carry neon_superuser via pg_write_all_data (DELETE yes, TRUNCATE no; SET ROLE restricted); role-creation API ignores caller-supplied passwords and returns its own; /connection_uri route absent"
+  ],
+  "honest_gaps": {
+    "not_ported_named_501s": "ContentController write surfaces (past-paper ingest, validate/reject/flag/unflag for papers/versions/schemes, place, topic mapping writes) + paperReview projection for EXISTING papers — each 501 body names the owning follow-up task; the unknown-paper 404 path IS ported and golden-pinned",
+    "search_happy_path": "LLM-dependent (embedding provider) — never golden-gated (GOLDEN_MASTER §3); provider-less retrieval fails to the same 500 observable as the frozen core's provider outage; the deterministic shells (missing 400 / blank 500 / scope-refusals 200 []) are fully ported and pinned",
+    "real_data_tranche": "document-bearing real-data cases remain gated on w0a's F-5 unblock (operator-supplied capture environment) — not this task's lane"
+  },
+  "fence": "Files touched: packages/contracts/src/{content.ts,index.ts}, apps/api/src/services/content/**, apps/api/src/routes/content/**, apps/api/src/index.ts (mounts only, disclosed), .syllabai/receipts/T-MIG-020/**, task yaml + T-MIG-021 yaml (filed OPEN). packages/db/**, golden/**, apps/hub/**, identity files: untouched.",
+  "gates": [
+    { "cmd": "bun run typecheck (root, 4 workspaces)", "result": "exit 0" },
+    { "cmd": "bun test apps/api packages", "result": "104 pass / 0 fail" },
+    { "cmd": "bun golden/runner.ts --selftest", "result": "PASS" },
+    { "cmd": "bun .syllabai/receipts/T-MIG-020/tools/replay-content-cases.ts (api live on reset branch)", "result": "25/25 PASS (exit 0)" }
+  ],
+  "verdict": "T-MIG-020 COMPLETE: Wave-2 content read surfaces ported constraint-for-constraint, live-replayed 25/25 against the frozen core's captured behavior on a seed-posture sandbox branch, honest 501s on everything not yet ported. Ready for R0 review."
+}
