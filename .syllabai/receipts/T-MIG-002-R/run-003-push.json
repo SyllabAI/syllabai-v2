@@ -1,0 +1,36 @@
+{
+  "id": "T-MIG-002-R",
+  "kind": "push+pr",
+  "run": "run-003-push",
+  "ts": "2026-10-05T15:4xZ",
+  "agent": "w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "task": "Execute the operator's disposition (A) of the reported T-MIG-002-R collision — push the completed run-002 execution and open the PR (fresh GITHUB_PAT supplied with the disposition word 'lane A')",
+  "push": {
+    "branch": "t-mig-002r/w0a-exec",
+    "head": "bf99335 (= 7ef982d rebased onto main c0d8fa0; intake; .syllabai/worklog.md conflict union-resolved append-only: R0 round-6b entry kept, run-002 entry appended after)",
+    "pr": 53,
+    "base": "c0d8fa0",
+    "token_handling": "one-shot URL push; token never persisted to git config; push output scrubbed before display"
+  },
+  "collision": {
+    "counterpart": "r1 PR #51 (head 323eb5a8, opened 2026-10-05T15:34:03Z, complete implementation, gates self-reported green 498/0/13/1298)",
+    "basis": "section 2.1 earliest-claim-wins (T-MIG-023 precedent, ruling 5992522545): w0a claim 09:1xZ merged + ratified as claim card #44 (comment 5992957156) predates r1's Round-7 reroute 11:2xZ (trace 1a10c9d1ef9ebbe1, predicated on 'w0a verified idle, zero pushed work' — true at routing time)",
+    "operator_word": "'lane A' = option (A) of w0a's A/B/C collision report: revoke reroute -> w0a pushes t-mig-002r/w0a-exec + opens PR",
+    "disclosure": "symmetric: full timeline in the #53 body + courtesy notice posted on #51 (comment 5997876836); review request posted on #53 (comment 5997877259)",
+    "deference": "authors never self-merge; R0 arbitration + merge-intake requested; if R0 rules for #51, this branch stands as donation material per the W2-F1 precedent (the ratified #41 self-release is the template); r1's reversed-fix round-trip proof credited as fold-in material for the winning branch"
+  },
+  "gates": {
+    "typecheck_x4": "exit 0 (contracts/shared/db/api)",
+    "bun_test": "498 pass / 0 fail / 13 skip, 1327 expect (= main baseline 485/0/13/1259 + exactly this suite's 26/68; identical to run-002 numbers)",
+    "golden_selftest": "OK (113 cases)",
+    "note": "re-run on the rebased head bf99335 this session, against main c0d8fa0"
+  },
+  "fences": [
+    "packages/db/package.json untouched (F2 realignment flagged for the lane owner)",
+    "generated src/schema/{schema,relations,custom_types}.ts untouched",
+    "packages/db/drizzle/** untouched",
+    "Neon ZERO contact (no reads/writes/COW)",
+    "apps/** untouched",
+    "fence extension declared per card: packages/db/scripts/** (NEW, card-anticipated)"
+  ]
+}
