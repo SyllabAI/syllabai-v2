@@ -1,0 +1,23 @@
+{
+  "receipt": "T-MIG-007 run-004 - PR #29 CI green (verify + hub success) after three merge-intakes; root-cause of the initial CI silence diagnosed",
+  "schema": "syllabai.v2.t-mig-007.ci-receipt/1.0",
+  "agent": "R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)",
+  "pr": { "number": 29, "head_at_ci": "84c195f", "mergeable_state": "clean" },
+  "ci": {
+    "run": 37278060847,
+    "jobs": [
+      { "name": "verify", "conclusion": "success" },
+      { "name": "hub", "conclusion": "success" }
+    ],
+    "note": "first Actions run ever to fire for this PR; head SHAs 9081b59/b2a91e1/ce86940/21f54fe all have zero check-runs (verified via check-runs + check-suites + actions/runs?head_sha APIs)"
+  },
+  "root_cause_ci_silence": "pull_request workflows execute on the PR MERGE REF; when the merge ref cannot be built (head vs main conflict), the run is silently skipped. Main was advancing rapidly (R0-SWEEP-1 -> #25 -> #21 -> #28 within ~30 min) and outran this lane's base on every push; mergeable_state was dirty/unknown at each push. After the third merge-intake (84c195f), the merge ref built and CI queued within seconds. Corroborating: open PR #26 (t-mig-006/r1c, created 06:33, likely dirty vs moving main for the same reason) has zero runs to date. No repo config change is needed; the tripwire is documentation-only (this receipt + PR comment).",
+  "merge_intakes_this_session": [
+    "85a0d32 (PR #25 T-MIG-016): conflict in golden/runner.ts only - #25 had independently fixed the same replay-path tolerate defect; resolved by subsumption, #25 provenance comment preserved in-file",
+    "008d64c (R0-REPAIR-1 + R0-MERGE-#21): runner.ts comment-attribution edit (T-MIG-016 -> T-MIG-017 per the renumber); resolved keeping both attributions; worklog chronological union",
+    "5ee240e (PR #28, T-MIG-021 DONE): worklog-only union (r7a addendum bullet)"
+  ],
+  "gates_local_post_final_merge": "selftest OK; bun test 280/0/13skip (727 expect()); 113/113 golden cases valid; typecheck x4 exit 0",
+  "law_compliance": "zero force-pushes; no existing worklog line edited or reordered; no golden case weakened or capture altered; token used env-var-only via -c credential.helper (never in .git/config or any file); no production Neon contact; no frozen-repo writes",
+  "handoff_to_r0": "PR #29 is mergeable=clean, CI green on head, disclosures complete in PR body + comments (T-MIG-006 id disposition, receipt path retention, bun-install tripwire, R0-REPAIR-1/#21 cross-references). Board deltas R0 may want: T-MIG-011 r5 silent ~13h (pre-existing); PR #26 refile-to-T-MIG-018 pending; this lane's next beat per MIGRATION_PLAN section 10 is Wave-4 capture or the F-5-style Neon extension of the w3 stateful cases."
+}
