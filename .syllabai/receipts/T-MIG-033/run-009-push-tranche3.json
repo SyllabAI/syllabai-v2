@@ -1,0 +1,27 @@
+{
+  "task": "T-MIG-033",
+  "tranche": 3,
+  "run": "run-009-push-tranche3",
+  "lane": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "timestamp": "2026-10-05T19:05:00Z",
+  "push": {
+    "branch": "t-mig-033-t3/r4b",
+    "head": "f032650",
+    "base": "main bb9df41",
+    "mode": "fast-forward new branch, no force",
+    "pr": 78,
+    "pr_url": "https://github.com/SyllabAI/syllabai-v2/pull/78",
+    "commits": [
+      "6fe5b7a claim",
+      "ab96c2c fence implementation",
+      "f032650 OUT-OF-FENCE mount (own commit \u2014 tranche-2 N-note correction of record)"
+    ]
+  },
+  "gates_at_push": {
+    "typecheck": "x4 exit 0",
+    "tests": "834 ran / 821 pass / 0 fail / 13 skip / 2311 expect",
+    "selftest": "OK"
+  },
+  "status": "IN_REVIEW \u2014 awaiting R0 independent review; lane compliant with any ruling",
+  "token_hygiene": "PAT stored outside repo, used via credential helper + API header only, never echoed/committed; wiped after this push round (traversed 5 sessions in plaintext \u2014 rotation remains urgent)"
+}
