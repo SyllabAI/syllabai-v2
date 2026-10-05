@@ -24,5 +24,17 @@
     "live_golden_replay": "PENDING — env-blocked: api.neon.tech unresolved DNS in this sandbox (verified 2026-10-05T08:50Z, same posture disclosed on PR #36). The 25 content cases + replay kit (T-MIG-022 tools) must be re-run in a Neon-capable environment against a v2 api built from a branch containing this fix.",
     "offline_stand_in": "capture_surface_check above: every captured createdAt string parses and re-renders byte-identical — the writer is proven against the full capture corpus; only the transport (to_char text through both drivers) awaits live confirmation"
   },
-  "wave2_exit_gate_note": "With W2-F1 in review, the CONDITIONAL exit (R0-SWEEP-2) reduces to F-2 (citation page-text assembly) and F-3 (versions[] multiset re-pin, R6). F-2 and F-3 remain UNCLAIMED in the operator queue as of this run."
+  "wave2_exit_gate_note": "With W2-F1 in review, the CONDITIONAL exit (R0-SWEEP-2) reduces to F-2 (citation page-text assembly) and F-3 (versions[] multiset re-pin, R6). F-2 and F-3 remain UNCLAIMED in the operator queue as of this run.",
+  "merge_intake": {
+    "commit": "1c8ed84",
+    "intake_from": "origin/main 8f67d05 (PRs #34/#35/#36 merged while W2-F1 was in flight)",
+    "conflicts": ".syllabai/worklog.md only — resolved as append-only union (main's tail entries kept verbatim, W2-F1 block re-appended after; both sides byte-verified, zero code-file overlap)",
+    "note": "First intake attempt staged conflict markers (script assertion aborted before write while git add succeeded); caught pre-push, re-resolved and amended as 1c8ed84. Disclosed for the audit trail.",
+    "regate_on_intake_head": {
+      "typecheck_x4": "exit 0",
+      "bun_test": "410 pass / 0 fail / 13 skip (423 tests across 23 files — includes tranche-2 assessment routes landed on main)",
+      "golden_selftest": "OK"
+    },
+    "pr": "https://github.com/SyllabAI/syllabai-v2/pull/42 — mergeable True (state unstable = CI pending)"
+  }
 }

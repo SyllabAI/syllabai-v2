@@ -49,6 +49,12 @@ task:
     byte-identical (offline stand-in for live replay). Live replay PENDING
     (api.neon.tech DNS-blocked, same posture as PR #36). Receipt:
     receipts/W2-F1/run-001-local-verify.json.
+    receipts/W2-F1/run-001-local-verify.json.
+
+    2026-10-05 r3-c MERGE-INTAKE (1c8ed84): post-#34/#35/#36 main (8f67d05)
+    unioned mid-review — worklog append-only (only conflict), zero code-file
+    overlap; re-gated on the intake head: typecheck x4 exit 0, bun test
+    410/0/13skip, selftest OK. PR #42 mergeable clean.
 base:
   repo: "syllabai-v2 @ daad88e (main); frozen refs: syllabai-core @ main,
     syllabai-hub @ 93226a43"
