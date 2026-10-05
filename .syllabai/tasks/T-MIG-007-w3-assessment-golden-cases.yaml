@@ -1,0 +1,87 @@
+version: 1
+task:
+  id: T-MIG-007
+  title: "Wave-3 assessment-loop golden capture - 10 controllers (attempt/history/exam-paper/question/self-mark/smart-mark/sme-admin/teacher-marking/test-builder/transcription), deterministic surfaces only"
+  owner: "R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0) - self-selected per briefing section 5; capture-lane metronome beat (MIGRATION_PLAN section 10: capture runs one wave ahead; W2 ports are landing via PRs #18/#19/#20)"
+  status: DONE # merged via PR #29 (4fd3bbe); R0 verdict 5990355943 + addendum 5990405525; gates independently re-executed (typecheck x4, 311/0/13skip, 113/113 valid, CI success on e3f283f)
+  priority: P1
+  wave: 3
+  deps: [T-MIG-004, T-MIG-006]
+  execution_record: >
+    2026-10-05T07:05Z CLAIMED by R6 on branch t-mig-007/r6 (branch-start
+    commit per section 2.1). Collision survey: yaml ids in flight across
+    open PRs + main = 000..006/010..015/020/021 - no 007 anywhere (re-verified
+    against PR diffs #12/#16/#20 + og:title sweep). Route surface extracted
+    from frozen core @ 6cad6ef: AttemptController POST /api/v1/attempts +
+    /structured; AttemptHistoryController GET /api/v1/learners/me/attempts;
+    ExamPaperController GET /api/v1/exam-papers[/{id}]; QuestionController
+    GET /api/v1/questions[/families|/topics|/{id}|/{id}/mark-scheme];
+    LearnerSelfMarkController POST .../attempts/{attemptId}/self-mark;
+    StudentSmartMarkController POST .../smart-mark + parts/{partId}/
+    feedback-explanation + improvement-plan (LLM-output surfaces excluded
+    from golden gating per GOLDEN_MASTER section 3 - authz + lifecycle
+    captured, outputs behaviourally gated); SmeQuestionAdminController
+    /api/v1/admin/question-bank/ingest (multipart) + /status;
+    TeacherMarkingController GET/POST /api/v1/teacher/marking/** (7 routes);
+    TestBuilderController GET /api/v1/teacher/tests/preview +
+    /weakness-options; TranscriptionController POST
+    /api/v1/learners/me/answer-input/transcribe (LLM/ASR - lifecycle gates
+    only). Capture sessions: run-001 Render read-only (authz shell:
+    filter-chain 401s + unknown-subject 404s + bad-uuid 400s - pre-auth, no
+    persistence path, T-MIG-003/004 precedent); run-002 local frozen-core
+    boot on LOCAL PostgreSQL 17 + pgvector (w0a T-MIG-004 run-002 recipe;
+    this session has no Neon credentials - F-5/F-11 posture) for
+    validation boundaries + deterministic write paths + empty states.
+    2026-10-05T07:15Z EXECUTED: run-001 vs Render = 24/24 authz-shell cases
+    (filter chain 401s, zero persistence); run-002 vs LOCAL boot (JDK
+    25.0.4.1 + Maven 3.9.16 exit 0; LOCAL PostgreSQL 17.9 + pgvector 0.8.7
+    via pgdg13 no-root deb unpack; Flyway V1..V63 applied by the core; zero
+    Neon) = 20 cases: validation boundaries, empty states, role gates
+    (student/teacher vs admin), authed 404s, MCQ happy path 201 with
+    deterministic marks + history-after-submit. Captured-as-is quirks
+    disclosed (F-a self-mark unknown=500, F-b weakness-options param gate
+    400, F-c human-mark unknown=400-before-404, F-d exam-papers
+    student-accessible) - divergence calls belong to R0. Scrub: identities
+    synthetic from creation, {{TOKEN}} placeholders (live tokens never on
+    disk), generated ids tolerated, seed uuids replay-stable constants.
+    98 total golden cases on branch, 0 invalid, selftest PASS. Receipts:
+    .syllabai/receipts/T-MIG-007/run-001.json + run-002.json. ESCALATION:
+    push-ready branch t-mig-007/r6 (stacked on t-mig-006/r6); no PAT in
+    session (none improvised per credential law).
+    2026-10-05T07:1xZ UNBLOCKED + REBUILT + PUSHED (receipt run-003):
+    operator supplied GITHUB_PAT (chat transit; PAT-rotation follow-up
+    stands). Branch rebuilt onto main @ 01d0e9d (R0-SWEEP-1 state): the
+    stacked superseded T-MIG-006/r6 commits dropped from lineage; the
+    runner replay-readiness kit they carried re-landed inside this task's
+    golden/** fence (work commit 2b38a58, full disclosure in PR #29) as a
+    prerequisite for w3 replay; this lane's competing T-MIG-006 yaml NOT
+    re-filed (id ratified for r1's write-flow contracts, PR #23). Case
+    totals now 113 (main's 69 incl. the F-5 extension + 44 w3). Gates
+    re-run on the rebuilt branch: selftest exit 0, 113/113 valid, bun
+    test 253/0/13skip, typecheck x4 exit 0, secret scan clean. Pushed
+    t-mig-007/r6 (no remote 007 existed at push, ls-remote verified);
+    PR #29 opened; status -> IN_REVIEW.
+    2026-10-05T07:4xZ CI GREEN (receipt run-004-ci.json): after three
+    merge-intakes (85a0d32 / 008d64c / 5ee240e - main outran this lane's
+    base on every push; dirty merge-refs silently skip pull_request
+    workflows), PR #29 verify + hub SUCCESS on 84c195f, mergeable_state
+    clean. Awaiting R0.
+base:
+  repo: "syllabai-v2 @ 67639db; frozen core @ 6cad6ef"
+basis: >
+  MIGRATION_PLAN section 5 Wave 3 (T-MIG-030..034; marks-accounting heart;
+  "no shortcuts") + section 10 metronome + GOLDEN_MASTER section 2 capture
+  procedure. Wave-2 port PRs are landing NOW (PR #20: 25/25 replayed) so
+  Wave-3 cases are needed before port code lands.
+scope:
+  allowed:
+    - "golden/**"
+    - ".syllabai/receipts/capture/**"
+    - ".syllabai/receipts/T-MIG-007/**"
+    - ".syllabai/tasks/T-MIG-007-w3-assessment-golden-cases.yaml (status/execution_record only)"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "apps/api/** apps/hub/** packages/** (R3/R5/R1/R2 fences)"
+    - "production Neon writes of any kind (no Neon credentials in this session; unauthed Render probes are pre-auth filter-chain, zero persistence)"
+    - "committing unscrubbed fixtures (GOLDEN_MASTER section 2.3, R-PII)"
+    - "LLM-output bodies into golden cases (section 3 - behaviourally gated instead)"

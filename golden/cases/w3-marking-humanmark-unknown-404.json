@@ -1,0 +1,25 @@
+{
+  "name": "w3-marking-humanmark-unknown-404",
+  "description": "Human-mark unknown answer id: 404. captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "source": "captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "POST",
+  "path": "/api/v1/teacher/marking/answers/00000000-0000-4000-8000-00000000dead/human-mark",
+  "request": {
+    "body": {},
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 400,
+    "body": {
+      "status": 400,
+      "error": "validation_failed",
+      "message": "marksAwarded: must not be null",
+      "timestamp": "2026-10-05T06:47:12.275235471Z"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

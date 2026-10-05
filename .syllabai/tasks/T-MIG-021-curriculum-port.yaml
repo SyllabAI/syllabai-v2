@@ -3,7 +3,7 @@ task:
   id: T-MIG-021
   title: "Wave-2 curriculum port — CurriculumController (subjects list/by-id, versions incl. archived) + TeacherCurriculumController (teacher versions, version nodes); 13 golden cases"
   owner: "R7a (agent-da4ab8, zai-web session web-da4ab8b1) — self-filed Wave-2 port task per the wave-2 claim-prep dossier (PR #17, '021 curriculum first' readiness line); R0 ratification of the task id requested in the PR (T-MIG-013/020 precedent)"
-  status: IN_PROGRESS # claimed_at 2026-10-05T05:54:23Z; branch t-mig-021/r7a pushed (claim @ 2b56ba0); tranche 1 (curriculum services, contract-independent) committed with receipt run-001-tranche1.json — 17 stubbed-sql tests green, gates exit 0; route layer + mounting gate on T-MIG-005 (contracts-first §4.1) + golden replay flip gates on PR #13
+  status: DONE # 2026-10-05: tranche 2 MERGED as 9732a1e (PR #28) — R0 verified vs frozen sources raw (CurriculumController :20/:32/:42/:51; TeacherCurriculumController :33/:66/:72; SecurityConfig :87/:91); F-1 ruled as-captured (capture is the law, R6 re-pins if ever re-probed); OUT-OF-FENCE mounts ratified (minimal wiring, separately committed); gates on test-merge 89bfb7c: typecheck x4 exit 0, bun test 286/0/13skip (789 expect), golden selftest OK, CI verify+hub success; golden replay of the 13 cases recorded as the env-blocked follow-up
   priority: P1
   wave: 2
   deps: [T-MIG-005, T-MIG-014] # contracts (route wiring gate — §4.1 contracts-first) + db driver dispatch (PR #13) — same dep shape as T-MIG-020's claim

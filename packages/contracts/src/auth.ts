@@ -71,12 +71,15 @@ export const isJakartaEmail = (value: string): boolean => {
   return domain.split(".").every((label) => labelRe.test(label));
 };
 
-/** @Email @NotBlank (register email adds @Size(max=254) — login does not). */
+/** @Email @NotBlank (register email adds @Size(max=254) — login does not).
+ *  R0 (T-MIG-017): message text pinned to Hibernate's @Email default as
+ *  captured live from the frozen core (golden auth-register-bad-email-400):
+ *  "must be a well-formed email address". */
 const jakartaEmailSchema = (max: number | undefined) =>
   z
     .string()
     .max(max ?? Number.MAX_SAFE_INTEGER)
-    .refine(isJakartaEmail, "must be a valid email")
+    .refine(isJakartaEmail, "must be a well-formed email address")
     .refine(notBlank("must not be blank"), "must not be blank");
 
 /**
@@ -162,7 +165,7 @@ export type Role = z.infer<typeof roleSchema>;
 /** UserView — the user projection at the API boundary (Master Spec §22: never expose entities). */
 export const userViewSchema = z.object({
   id: z.string().uuid(),
-  email: z.string().refine(isJakartaEmail, "must be a valid email"),
+  email: z.string().refine(isJakartaEmail, "must be a well-formed email address"),
   displayName: z.string(),
   roles: z.array(roleSchema),
 });

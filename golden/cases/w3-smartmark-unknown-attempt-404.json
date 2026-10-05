@@ -1,0 +1,25 @@
+{
+  "name": "w3-smartmark-unknown-attempt-404",
+  "description": "Smart-mark on unknown attempt id: 404 lifecycle gate (LLM output itself is NOT golden-gated). captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "source": "captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "POST",
+  "path": "/api/v1/learners/me/attempts/00000000-0000-4000-8000-00000000dead/smart-mark",
+  "request": {
+    "body": {},
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 404,
+    "body": {
+      "status": 404,
+      "error": "not_found",
+      "message": "attempt 00000000-0000-4000-8000-00000000dead not found",
+      "timestamp": "2026-10-05T06:47:11.988627828Z"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

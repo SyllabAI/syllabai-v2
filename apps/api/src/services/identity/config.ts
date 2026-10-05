@@ -9,6 +9,12 @@
  *                                    (application.yml:110)
  *   SYLLABAI_RATELIMIT_ENABLED    — default true (application.yml:131)
  *   rate limit window             — 60s, login-per-account 10 (:132,:141)
+ *   SYLLABAI_RATELIMIT_LOGIN_PER_IP     — default 10  (RateLimitProperties:54,
+ *                                          application.yml:126)
+ *   SYLLABAI_RATELIMIT_REGISTER_PER_IP  — default 5   (:55, yml:127)
+ *   SYLLABAI_RATELIMIT_BOOTSTRAP_PER_IP — default 3   (:56, yml:128)
+ *   SYLLABAI_RATELIMIT_PASSWORD_PER_IP  — default 10  (:57, yml:129)
+ *   SYLLABAI_RATELIMIT_LLM_PER_LEARNER  — default 20  (:58, yml:130)
  *   SYLLABAI_BOOTSTRAP_ENABLED    — default true (BootstrapAdminService.java:62
  *                                    via relaxed binding of syllabai.bootstrap.enabled)
  *
@@ -24,7 +30,16 @@ export interface IdentityConfig {
   teacherJoinCode: string;
   corsOrigins: string[];
   bootstrapEnabled: boolean;
-  ratelimit: { enabled: boolean; windowMs: number; loginPerAccount: number };
+  ratelimit: {
+    enabled: boolean;
+    windowMs: number;
+    loginPerIp: number;
+    registerPerIp: number;
+    bootstrapPerIp: number;
+    passwordPerIp: number;
+    llmPerLearner: number;
+    loginPerAccount: number;
+  };
 }
 
 export const DEFAULT_CORS_ORIGINS = ["http://localhost:3000", "https://syllabai.vercel.app"];
@@ -36,6 +51,14 @@ export function readIdentityConfig(env: Record<string, string | undefined> = pro
   const corsRaw = (env.SYLLABAI_CORS_ORIGINS ?? "").trim();
   const corsOrigins = corsRaw === "" ? [...DEFAULT_CORS_ORIGINS] : corsRaw.split(",").map((s) => s.trim()).filter(Boolean);
   const ratelimitEnabled = (env.SYLLABAI_RATELIMIT_ENABLED ?? "true").trim().toLowerCase() !== "false";
+  // budget defaults are the audited M1 values (RateLimitProperties compact
+  // constructor :53-59) — never invented; env overrides relaxed-bind the
+  // syllabai.ratelimit.* keys exactly like the enabled switch above
+  const ratelimitInt = (raw: string | undefined, fallback: number): number => {
+    if (raw === undefined || raw.trim() === "") return fallback;
+    const parsed = Number.parseInt(raw.trim(), 10);
+    return Number.isNaN(parsed) ? fallback : parsed;
+  };
   const bootstrapEnabled = (env.SYLLABAI_BOOTSTRAP_ENABLED ?? "true").trim().toLowerCase() !== "false";
   return {
     jwtSecret,
@@ -43,7 +66,16 @@ export function readIdentityConfig(env: Record<string, string | undefined> = pro
     teacherJoinCode,
     corsOrigins,
     bootstrapEnabled,
-    ratelimit: { enabled: ratelimitEnabled, windowMs: 60_000, loginPerAccount: 10 },
+    ratelimit: {
+      enabled: ratelimitEnabled,
+      windowMs: 60_000,
+      loginPerIp: ratelimitInt(env.SYLLABAI_RATELIMIT_LOGIN_PER_IP, 10),
+      registerPerIp: ratelimitInt(env.SYLLABAI_RATELIMIT_REGISTER_PER_IP, 5),
+      bootstrapPerIp: ratelimitInt(env.SYLLABAI_RATELIMIT_BOOTSTRAP_PER_IP, 3),
+      passwordPerIp: ratelimitInt(env.SYLLABAI_RATELIMIT_PASSWORD_PER_IP, 10),
+      llmPerLearner: ratelimitInt(env.SYLLABAI_RATELIMIT_LLM_PER_LEARNER, 20),
+      loginPerAccount: 10,
+    },
   };
 }
 

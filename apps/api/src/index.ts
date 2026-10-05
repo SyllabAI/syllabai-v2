@@ -8,6 +8,17 @@
  *   - Fail fast: missing secrets abort boot (src/env.ts + identity wiring) —
  *     inherited verbatim from the Java core's boot discipline.
  *
+ * ⚠️ OUT-OF-FENCE COMMIT (T-MIG-016, R0 ratification requested; task
+ * renumbered from T-MIG-014 at push time — ID yielded to PR #13):
+ * T-MIG-016's scope.allowed covers middleware/ratelimit.ts,
+ * services/identity/config.ts (ratelimit block), test/ratelimit/** — NOT this
+ * file. The single change here is the minimal mount wiring the ported filter
+ * needs, disclosed for R0 ratification at review (T-MIG-010 convention):
+ *   6. mount the per-IP RateLimitFilter (deep-audit M1) app-wide AFTER the
+ *      Bearer middleware (SecurityConfig.java:96-99 addFilterAfter
+ *      JwtAuthenticationFilter — the LLM tier keys on the learner identity
+ *      the auth pass resolved) and BEFORE the routers.
+ *
  * ⚠️ OUT-OF-FENCE COMMIT (T-MIG-010, R0 ratification requested):
  * T-MIG-010's scope.allowed covers routes/auth/**, middleware/**,
  * services/identity/**, test/identity/** — NOT this file. The changes here
@@ -29,13 +40,16 @@
 import { Hono } from "hono";
 import { healthRoute } from "./routes/health";
 import { buildIdentityApp } from "./services/identity";
+import { RateLimitFilter } from "./middleware/ratelimit";
 import { buildContentApp } from "./services/content";
+import { buildCurriculumRouters } from "./routes/curriculum";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
 
 const identity = buildIdentityApp();
 const content = buildContentApp();
+const curriculum = buildCurriculumRouters();
 
 const app = new Hono();
 
@@ -74,6 +88,24 @@ app.use("*", async (c, next) => {
 // tokens never abort here; protected paths reject via requireAuth/requireRole.
 app.use("*", identity.authMiddleware);
 
+// Per-IP rate limiting (deep-audit 09-28 M1, T-MIG-016) — inside the security
+// chain AFTER the JWT filter (SecurityConfig.java:96-99): the LLM tier keys
+// on the learner identity the auth pass above resolved; auth-tier budgets
+// gate the public identity routes below before any controller work.
+const rl = identity.config.config.ratelimit;
+const rateLimitFilter = new RateLimitFilter({
+  enabled: rl.enabled,
+  windowMs: rl.windowMs,
+  budgets: {
+    loginPerIp: rl.loginPerIp,
+    registerPerIp: rl.registerPerIp,
+    bootstrapPerIp: rl.bootstrapPerIp,
+    passwordPerIp: rl.passwordPerIp,
+    llmPerLearner: rl.llmPerLearner,
+  },
+});
+app.use("*", rateLimitFilter.handle);
+
 // Identity routers (AuthController + BootstrapAdminController). Registration
 // ORDER matters: the routers own their paths first; the fallback below only
 // sees paths NO router claimed. The public auth surfaces (register, login,
@@ -99,6 +131,21 @@ app.route("/api/v1/auth", identity.bootstrapRoute);
 app.route("/api/v1/teacher/content", content.teacherRoute);
 app.route("/api/v1/content/documents", content.readerRoute);
 app.route("/api/v1/content/question-assets", content.assetRoute);
+
+// Curriculum routers (T-MIG-021 — Wave 2). Path parity with the frozen
+// core: CurriculumController under /api/v1/curriculum (authenticated),
+// TeacherCurriculumController under /api/v1/teacher/curriculum
+// (TEACHER/ADMIN). Each router owns its authz internally — the /api/v1/*
+// fallback below stays the 404-after-auth path for NO router claimed.
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-021, R0 ratification requested):
+// T-MIG-021's scope.allowed covers routes/curriculum/**,
+// services/curriculum/**, test/curriculum/** — NOT this file. The two
+// mount lines + this comment are the minimal app-level wiring the ported
+// module needs, shipped as a separate commit per the T-MIG-010/020
+// precedent so R0 can ratify or lift them out at review.
+app.route("/api/v1/curriculum", curriculum.learnerRoute);
+app.route("/api/v1/teacher/curriculum", curriculum.teacherRoute);
 
 // anyRequest().authenticated() parity for paths NO router claimed
 // (SecurityConfig.java:91): anonymous callers get the 401 Boot-shaped body;

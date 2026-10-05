@@ -1,0 +1,22 @@
+{
+  "name": "w3-attempts-structured-post-unauthed-401",
+  "description": "POST /api/v1/attempts/structured unauthenticated: frozen core answers 401 from the filter chain before any persistence path (T-MIG-003/004 precedent).",
+  "source": "captured from https://syllabai-core.onrender.com (deployed frozen core, read-only) 2026-10-05T06:40Z by T-MIG-007 run-001 (R6); probes synthetic, no PII, no credentials",
+  "method": "POST",
+  "path": "/api/v1/attempts/structured",
+  "request": {
+    "body": {}
+  },
+  "expect": {
+    "status": 401,
+    "body": {
+      "timestamp": "2026-10-05T06:40:57.181Z",
+      "status": 401,
+      "error": "Unauthorized",
+      "path": "/api/v1/attempts/structured"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

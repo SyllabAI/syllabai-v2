@@ -1,0 +1,67 @@
+{
+  "receipt": "T-MIG-006 run-001 - golden runner hardening: tolerate wiring, header comparison, replay-readiness kit; partial live replay with full per-case classification",
+  "schema": "syllabai.v2.t-mig-006.task-receipt/1.0",
+  "agent": "R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)",
+  "branch": "t-mig-006/r6 (local; push expected to fail auth - see credentials_note)",
+  "base": "syllabai-v2 @ 67639db (origin/main at claim time)",
+  "what_changed": [
+    "golden/runner.ts: (1) tolerate list WIRED into replay comparison (deepEqualTolerant now used; fixes the defect reported by T-MIG-013 - previously only selftest used it, 12 identity cases failed on tolerated timestamps alone); (2) expect.headers response-header subset comparison, case-insensitive names, exact values, missing-header fails by name (closes T-MIG-004 F-3); (3) optional case.seq replay ordinal with stable sort (stateful cases run first: register-success 1 -> duplicate 2 -> login 3 -> wrong-password 4 -> me 5); (4) {{TOKEN}} request-header placeholder substituted from --token, case-local hard failure when absent (never a silent unauthenticated replay); (5) transport failures (target unreachable) are case-local harness errors - the run completes and classifies every case instead of crashing; (6) selftest extended: header-subset pass/missing/value-mismatch/absent-expectation",
+    "golden/cases/: 5 state-dependent identity cases annotated (seq + tolerate accessToken/id + {{TOKEN}} on auth-me-with-bearer-200); scrubbed capture values kept in-file for archaeology; 12 error cases untouched (their tolerate:['timestamp'] works now that the runner wires it)",
+    "golden/README.md: case schema post T-MIG-006 (tolerate/expect.headers/seq/{{TOKEN}} semantics) + canonical identity replay procedure (fresh/reset db requirement documented)"
+  ],
+  "gates": {
+    "selftest": "PASS (exit 0) - tolerance + header engine verified, includes 4 new header-subset assertions",
+    "unit": "bun test apps/api packages = 104 pass / 0 fail / 4 skip (integration tier), 248 expectations - matches T-MIG-010 receipt exactly; no collateral",
+    "case_files": "54/54 parse as valid JSON",
+    "live_replay_partial": "bun golden/runner.ts --target http://localhost:8090 (v2 booted from apps/api default export via workspace-external harness script; SYNTHETIC env: dummy 32B JWT secret, placeholder DATABASE_URL - no Neon, no production contact; honest exit 1)"
+  },
+  "live_replay_classification_10_pass_44_fail": {
+    "PASS_evidence_tolerate_fix": [
+      "auth-register-blank-displayname-400",
+      "auth-register-password-no-digit-400",
+      "auth-register-short-password-400"
+    ],
+    "PASS_evidence_dossier_expectation": [
+      "content-docs-unauthed-401", "content-docs-search-unauthed-401",
+      "content-reader-unauthed-401", "curriculum-versions-unauthed-401",
+      "question-assets-unauthed-401", "teacher-content-review-queue-unauthed-401",
+      "teacher-curriculum-versions-unauthed-401"
+    ],
+    "FAIL_db_dependent_500_on_placeholder_db": [
+      "auth-register-success-201 (500 vs 201)", "auth-register-duplicate-email-409 (500 vs 409)",
+      "auth-login-success-200 (500 vs 200)", "auth-login-wrong-password-401 (500 vs 401)",
+      "auth-login-unknown-email-401 (500 vs 401)", "auth-register-admin-refused-403 (500 vs 403)",
+      "auth-register-teacher-no-joincode-403 (500 vs 403)", "auth-register-unknown-role-400 (500 vs 400)"
+    ],
+    "FAIL_pending_PR12_capture_pinned_messages": [
+      "auth-login-missing-fields-400 (400/400 but first-failing-field order: v2 'email' vs core 'password')",
+      "auth-register-missing-fields-400 (same field-order residue)",
+      "auth-register-bad-email-400 (v2 'must be a valid email' vs core well-formed-address wording)"
+    ],
+    "FAIL_by_design_harness": [
+      "auth-me-with-bearer-200 (case-local harness error: {{TOKEN}} without --token - the fail-fast works as specified)",
+      "actuator-health-parity (200/200 body: v2 seed shape vs core shape - F-1 fix rides PR #12/T-MIG-013)"
+    ],
+    "FAIL_content_authed_cases_33x": "401 vs expected - real JWT middleware rejects the captured fixed-dummy bearers; owned by T-MIG-020's replay tooling today (their receipt: 25/25 via tools/replay-content-cases.ts); migration of content cases to {{TOKEN}} noted in golden/README.md as follow-up for the owning lanes"
+  },
+  "findings": [
+    {
+      "id": "T-MIG-006-F-1",
+      "severity": "ops (apps/api fence - R3/R0 note, no change made by this lane)",
+      "finding": "v2 api cannot boot under bun 1.3.14 via 'bun run src/index.ts': the entry file's own Bun.serve AND bun's entry auto-serve both bind PORT -> EADDRINUSE crash after the first bind logs 'listening'. Workaround used for this receipt: workspace-external harness imports the module (import.meta.main false) and serves the exported Hono app. Boot-path owner should either drop the manual serve or guard the auto-serve (one-liner class, apps/api fence)."
+    },
+    {
+      "id": "T-MIG-006-F-2",
+      "severity": "residue (R3/T-MIG-013 - already in flight)",
+      "finding": "3 validation cases still fail at body level on first-failing-field ORDER and email wording; PR #12's 'capture-pinned messages' is exactly this closure. Canonical 16/16 identity replay = db unblock + PR #12 merge + --token run."
+    }
+  ],
+  "canonical_16_16_runbook": [
+    "1. Unblock db: merge PR #13 (T-MIG-014 URL-dispatched drivers -> seed-shaped local Postgres works) or supply Neon branch creds",
+    "2. Merge PR #12 (T-MIG-013 capture-pinned messages + health shape)",
+    "3. Fresh/reset db; boot v2; register+login to mint a live token",
+    "4. bun golden/runner.ts --target <url> --token <jwt> -> expect 16/16 identity PASS + 7 W2 unauthed 401s + health (post-#12)"
+  ],
+  "credentials_note": "This session resumed on a fresh container: no GITHUB_PAT, no NEON_PAT (workspace .env holds only an unrelated sqlite file URL). No credential improvised (briefing credential law). Branch t-mig-006/r6 is push-ready; push/PR escalates to operator/R0 (same dead-PAT posture w0a documented in the T-MIG-000 addendum). Zero production Neon contact; zero secrets echoed; all env references are to NAMES only.",
+  "sandbox_note": "R0's SANDBOX-NOTE countermeasures observed: persisted scripts (scripts/gh_api.py, gh_html.py, tmig006_cases.py, serve_v2_harness.ts), JSON-parse validation after every case write, structural git verification; ci.yml 'branches: [main]' displays corrupted as 'ain]' in this transport - remote file verified functional (main pushes trigger CI)."
+}

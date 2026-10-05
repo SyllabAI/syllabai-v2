@@ -55,19 +55,6 @@ const SIZE_BOUNDS: Record<string, [number, number]> = {
   newPassword: [12, 100], // PasswordChangeRequest — the same register floor (R6)
 };
 
-/**
- * Capture-pinned message corrections (T-MIG-003 golden cases are the ground
- * truth for the DEPLOYED core's Hibernate version, which differs from what
- * the contracts encoded from source reading):
- *   @Email default text is "must be a well-formed email address"
- *   (Hibernate Validator 9; case auth-register-bad-email-400), not the
- *   "must be a valid email" the contracts refine carries — translated here
- *   until R1 updates the contracts fence at source (flagged in the PR).
- */
-const CAPTURE_PINNED_MESSAGES: Record<string, string> = {
-  "must be a valid email": "must be a well-formed email address",
-};
-
 /** Fields whose null binding jakarta serves as "must not be blank" (@NotBlank skips null but fails it; @Email/@Size pass). */
 const REQUIRED_STRING_FIELDS = new Set(["email", "password", "displayName", "currentPassword", "newPassword"]);
 
@@ -77,17 +64,24 @@ const REQUIRED_STRING_FIELDS = new Set(["email", "password", "displayName", "cur
  * annotation order (email → password → displayName), and refinement order
  * matches jakarta's per-field constraint order — so issues[0] is the port of
  * the first violation, with the message normalised to Hibernate's defaults.
+ *
+ * R0 correction (T-MIG-017): live capture proves Hibernate's property
+ * traversal does NOT follow the DTO annotation order — both missing-fields
+ * captures (auth-login-missing-fields-400, auth-register-missing-fields-400)
+ * report the PASSWORD field first. The port therefore ranks issues by the
+ * core's OBSERVED traversal order (password → email → rest in schema order)
+ * instead of trusting zod's schema order. Update this list only with new
+ * capture evidence — never by assumption.
  */
-export function validationMessage(error: z.ZodError, body?: unknown): string {
-  // Capture-pinned (both missing-fields cases): an EMPTY body serves
-  // "password: must not be blank" — the deployed core's field-error order
-  // for all-fields-failing is NOT declaration order, and the capture is the
-  // only ground truth we have. The core's ordering here may be
-  // nondeterministic internally; R6 should probe re-capture stability (flagged).
-  if (body !== undefined && typeof body === "object" && body !== null && Object.keys(body as object).length === 0) {
-    return "password: must not be blank";
-  }
-  const issue = error.issues[0];
+const HIBERNATE_TRAVERSAL_ORDER = ["password", "email", "displayName", "currentPassword", "newPassword"];
+
+export function validationMessage(error: z.ZodError): string {
+  const issues = [...error.issues].sort((a, b) => {
+    const pa = HIBERNATE_TRAVERSAL_ORDER.indexOf(String(a.path[0] ?? ""));
+    const pb = HIBERNATE_TRAVERSAL_ORDER.indexOf(String(b.path[0] ?? ""));
+    return (pa === -1 ? Number.MAX_SAFE_INTEGER : pa) - (pb === -1 ? Number.MAX_SAFE_INTEGER : pb);
+  });
+  const issue = issues[0];
   if (!issue) return "request invalid";
   const field = issue.path.join(".");
   // null bound to a required string field: @NotBlank is the violation jakarta
@@ -100,13 +94,16 @@ export function validationMessage(error: z.ZodError, body?: unknown): string {
   }
   const raw = issue.message;
   let message = raw;
+  // jakarta evaluates @NotBlank BEFORE @Size (declaration order in the frozen
+  // DTOs) — zod's chain orders min/max first, so when a notBlank violation
+  // co-exists with a size violation the served message must be notBlank's.
   if (issue.code === "too_big" || issue.code === "too_small") {
     const blankAlso = error.issues.some((i) => i.message === "must not be blank");
     if (blankAlso) return `${field}: must not be blank`;
     const bounds = SIZE_BOUNDS[field];
     if (bounds) message = `size must be between ${bounds[0]} and ${bounds[1]}`;
   }
-  return `${field}: ${CAPTURE_PINNED_MESSAGES[message] ?? message}`;
+  return `${field}: ${message}`;
 }
 
 /**
@@ -160,7 +157,7 @@ export function createAuthRoute(authService: AuthService) {
       if (coerced === null) return c.json(malformedBody(), 400);
       const parsed = registerRequestSchema.safeParse(coerced);
       if (!parsed.success) {
-        return c.json(apiError(400, "validation_failed", validationMessage(parsed.error, coerced)), 400);
+        return c.json(apiError(400, "validation_failed", validationMessage(parsed.error)), 400);
       }
       const response = await authService.register(parsed.data);
       return c.json(response, 201, { Location: "/api/v1/auth/me" });
@@ -173,7 +170,7 @@ export function createAuthRoute(authService: AuthService) {
       if (coerced === null) return c.json(malformedBody(), 400);
       const parsed = loginRequestSchema.safeParse(coerced);
       if (!parsed.success) {
-        return c.json(apiError(400, "validation_failed", validationMessage(parsed.error, coerced)), 400);
+        return c.json(apiError(400, "validation_failed", validationMessage(parsed.error)), 400);
       }
       const response = await authService.login(parsed.data);
       return c.json(response, 200);
@@ -195,7 +192,7 @@ export function createAuthRoute(authService: AuthService) {
       if (coerced === null) return c.json(malformedBody(), 400);
       const parsed = passwordChangeRequestSchema.safeParse(coerced);
       if (!parsed.success) {
-        return c.json(apiError(400, "validation_failed", validationMessage(parsed.error, coerced)), 400);
+        return c.json(apiError(400, "validation_failed", validationMessage(parsed.error)), 400);
       }
       await authService.changePassword(auth.email, parsed.data);
       return c.body(null, 204);
@@ -228,7 +225,7 @@ export function createBootstrapRoutes(
       if (coerced === null) return c.json(malformedBody(), 400);
       const parsed = registerRequestSchema.safeParse(coerced);
       if (!parsed.success) {
-        return c.json(apiError(400, "validation_failed", validationMessage(parsed.error, coerced)), 400);
+        return c.json(apiError(400, "validation_failed", validationMessage(parsed.error)), 400);
       }
       const response = await bootstrap.claim(parsed.data);
       return c.json(response, 200);
