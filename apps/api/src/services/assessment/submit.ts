@@ -77,6 +77,16 @@ const BLOCKING_PAPER_STATES = ["REJECTED", "FLAGGED"] as const;
  * the default publisher is a no-op. Structured submits emit NOTHING here
  * (V8: evidence fires at first authoritative marking — the marking lanes'
  * concern, T-MIG-032/033 territory).
+ *
+ * E-1 BINDING (R0, T-MIG-030 tranche-1 ratification, daad88e): the seam
+ * maintains attempts.evidence_emitted per EvidencePublisher.java:37/53 +
+ * Attempt.java:159-161 — publishMcq is a CLAIM: resolves true when the
+ * event fired (Attempt.markEvidenceEmitted parity), false when suppressed;
+ * the service flips the persisted flag AFTER a successful publish with the
+ * once-only guarded update (where evidence_emitted = false — idempotent,
+ * second publish is a no-op). The T-MIG-032/033 marking lanes' publishGraded
+ * sites bind to the SAME claim + guarded-flip contract (publishGraded
+ * returns false when evidence already fired — EvidencePublisher.java:53).
  */
 export interface EvidencePublisher {
   publishMcq(event: {
@@ -90,11 +100,11 @@ export interface EvidencePublisher {
     expressedMisconceptionIds: string[];
     observedMisconceptionIds: string[];
     occurredAt: string;
-  }): Promise<void>;
+  }): Promise<boolean>;
 }
 
 export const noopEvidencePublisher: EvidencePublisher = {
-  publishMcq: async () => {},
+  publishMcq: async () => false,
 };
 
 interface QuestionRow {
@@ -203,7 +213,7 @@ export class AssessmentSubmitter {
           .filter((id): id is string => id !== null),
       ),
     ];
-    await this.publisher.publishMcq({
+    const fired = await this.publisher.publishMcq({
       attemptId,
       learnerId,
       questionId: question.id,
@@ -215,6 +225,17 @@ export class AssessmentSubmitter {
       observedMisconceptionIds,
       occurredAt: createdAt.toISOString(),
     });
+    if (fired) {
+      // E-1: the persisted flag tracks the claim (Attempt.java:159-161 —
+      // markEvidenceEmitted parity; the frozen core lands true via the
+      // managed-entity dirty check). The `and evidence_emitted = false`
+      // guard makes the flip once-only: a second publish is a no-op, and
+      // the T-MIG-032/033 marking lanes bind to this same guarded flip.
+      await this.sql`
+        update attempts set evidence_emitted = true
+        where id = ${attemptId} and evidence_emitted = false
+      `;
+    }
 
     // 8-9. correct label + the wire view.
     const correctOptionLabel = optionRows.find((o) => o.is_correct)?.label ?? null;
