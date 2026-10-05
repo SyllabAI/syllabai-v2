@@ -1,0 +1,36 @@
+{
+  "task": "T-MIG-035",
+  "run": "run-001-hub-live-flow",
+  "agent": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "date": "2026-10-05",
+  "operator_word": "trace 1a10b2e6fc57b639 (\"T-MIG-011-adjacent hub work. Check if already done\")",
+  "claim_commit": "f8dda58",
+  "subject": "T-MIG-011's escalated remainder: live auth-flow verification of the hub auth surface against the v2 api with the strangler env flipped (rate-limit/audit write paths exercised on a task-owned Neon branch)",
+  "environment": {
+    "neon_project": "billowing-cherry-15418366",
+    "cow_branch": "hub-live-flow/2026-10-05 (br-mute-dust-a50ov8nc, read_write endpoint ep-bold-boat-a50g21yb, parent production br-muddy-bar-a5huwldd)",
+    "provisioning_note": "api.neon.tech still DNS-dark (NODATA + CF 1016, outage ongoing since ~06:0xZ); provisioning executed through the alternate console.neon.tech/api/v2 base (same backend; first proven on the run-006 branch drop)",
+    "branch_role_password": "reset branch-local via API; production role untouched; DSN held in the gitignored operator .env only",
+    "v2_api_boot": "apps/api via bun (PORT=8090; DATABASE_URL=branch DSN; synthetic 32B SYLLABAI_JWT_SECRET; synthetic SYLLABAI_TEACHER_JOIN_CODE; no LLM keys needed for the auth surface)",
+    "harness": "scripts/t035_liveflow.ts (operator workspace, not committed) — imports the hub's ACTUAL routing decision from apps/hub/src/lib/api.ts (resolveBase/apiPath) with NEXT_PUBLIC_API_V2_BASE_URL=http://127.0.0.1:8090"
+  },
+  "checks": [
+    {"n": 1, "name": "hub routes /api/v1/auth/login -> v2 base", "result": "PASS", "detail": "http://127.0.0.1:8090/api/v1/auth/login"},
+    {"n": 2, "name": "hub routes /api/v1/auth/register -> v2 base", "result": "PASS"},
+    {"n": 3, "name": "hub keeps /api/v1/subjects on core (NOT v2)", "result": "PASS", "detail": "resolves to relative core path with XTransformPort=8080 (core convention) — strangler surface isolation intact"},
+    {"n": 4, "name": "register 201 via hub-constructed URL (honest API path)", "result": "PASS", "detail": "synthetic learner w0a-t035-learner@example.invalid; response keys = accessToken,tokenType,user"},
+    {"n": 5, "name": "login 200", "result": "PASS"},
+    {"n": 6, "name": "AuthResponse shape {accessToken, tokenType, user} — hub-consumable", "result": "PASS", "detail": "matches apps/hub/src/lib/types.ts AuthResponse; hub persists to localStorage keys syllabai.token/syllabai.user"},
+    {"n": 7, "name": "rate-limit pass-through on admit (no Retry-After on 200)", "result": "PASS", "detail": "T-MIG-016 filter admits within budget"},
+    {"n": 8, "name": "/me 200 with v2-issued bearer; email round-trips", "result": "PASS"},
+    {"n": 9, "name": "wrong password -> 401 invalid_credentials (budget path exercised, fail-closed message parity)", "result": "PASS"},
+    {"n": 10, "name": "DB write path landed on the BRANCH only", "result": "PASS", "detail": "users row id dce2ba69-6591-43f9-a3a5-8d771d886b7e on br-mute-dust-a50ov8nc; branch users total 324 = 323 COW-copied production rows + 1 synthetic"}
+  ],
+  "verdict": "ALL 10 CHECKS PASS — the Wave-1 hub adapter's live-flow remainder is CLOSED. The strangler env switch is proven live: hub's own routing code sends /api/v1/auth/* to the v2 api, keeps every other surface on the core, and the v2 api serves the full identity flow (register/login/me incl. the 401 budget path) with DB writes landing on the COW branch only. Production untouched (zero production compute contact; provisioning via console base).",
+  "residuals": [
+    "Browser-level UI drive (next build+start + headless form submit) preregistered as a stretch goal and honestly NOT executed: the harness proves the hub's real routing decision + the full API contract + write paths; the React form render layer is the only unexercised hop and is not part of the escalated item's substance. Filing as a note, not a blocker.",
+    "api.neon.tech DNS outage persists; this receipt's provisioning used the console.neon.tech/api/v2 fallback base. If the outage resolves, nothing changes for this task.",
+    "COW branch br-mute-dust-a50ov8nc can be dropped after merge (same disposition as golden-capture/2026-10-05)."
+  ],
+  "secrets_and_pii": "No secrets committed (branch-local role password + DSN live only in the gitignored operator .env). Emails in this receipt are example.invalid synthetic. Scratch logs may contain the synthetic email only."
+}

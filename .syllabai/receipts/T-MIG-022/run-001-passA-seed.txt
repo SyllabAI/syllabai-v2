@@ -1,0 +1,28 @@
+tokens minted (teacher+student) via /api/v1/auth
+PASS content-docs-canonical-unknown-404
+PASS content-docs-embed-unknown-404
+PASS content-docs-search-blank-query-500
+PASS content-docs-search-course-unresolved-teacher-200
+PASS content-docs-search-empty-teacher-200
+PASS content-docs-search-missing-query-400
+PASS content-docs-search-unauthed-401
+PASS content-docs-student-403
+PASS content-docs-teacher-empty-200
+PASS content-docs-unauthed-401
+PASS content-docs-unknown-404
+PASS content-reader-unauthed-401
+PASS content-reader-unknown-doc-404
+PASS content-reader-unknown-doc-page-404
+PASS question-assets-unauthed-401
+PASS question-assets-unknown-404
+PASS teacher-content-paper-audit-unknown-404
+PASS teacher-content-paper-review-unknown-404
+PASS teacher-content-provenance-unknown-404
+PASS teacher-content-question-topics-unknown-404
+PASS teacher-content-review-queue-student-403
+PASS teacher-content-review-queue-teacher-200
+PASS teacher-content-review-queue-unauthed-401
+PASS teacher-content-review-queue-v2-teacher-200
+PASS teacher-content-review-queue-v3-teacher-200
+
+25/25 golden cases pass against http://localhost:3000 (CASE_MODE=seed)

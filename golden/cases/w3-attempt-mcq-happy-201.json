@@ -1,0 +1,42 @@
+{
+  "name": "w3-attempt-mcq-happy-201",
+  "description": "MCQ attempt submit against V7-seeded question: deterministic marking result (marks-sum invariants live in W3 port). captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "source": "captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "POST",
+  "path": "/api/v1/attempts",
+  "request": {
+    "body": {
+      "questionId": "40000000-0000-0000-0000-000000000001",
+      "chosenOptionId": "41000000-0000-0000-0000-000000000001",
+      "responseTimeMs": 25000,
+      "confidence": 4,
+      "selfDoubtFlag": false,
+      "timedCondition": false
+    },
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 201,
+    "body": {
+      "attemptId": "519421f0-385f-484d-93ee-f3c426ed86c5",
+      "questionId": "40000000-0000-0000-0000-000000000001",
+      "correct": false,
+      "marksAwarded": 0,
+      "marksTotal": 1,
+      "correctOptionLabel": "C",
+      "implicatedMisconceptionIds": [
+        "30000000-0000-0000-0000-000000000001"
+      ],
+      "submittedAt": "2026-10-05T06:47:12.304191697Z"
+    }
+  },
+  "tolerate": [
+    "timestamp",
+    "id",
+    "attemptId",
+    "submittedAt",
+    "createdAt"
+  ]
+}

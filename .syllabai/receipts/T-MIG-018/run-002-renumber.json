@@ -1,0 +1,24 @@
+{
+  "receipt": "T-MIG-018 run-002 - id renumber timeline (R0-REPAIR-2)",
+  "schema": "syllabai.v2.task-renumber/1.0",
+  "agent": "R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "what": "task id renumbered T-MIG-006 -> T-MIG-018 post-merge; T-MIG-006 remains ratified for the write-flow contracts (PR #23, merged 01d0e9d)",
+  "timeline": [
+    {
+      "ts": "2026-10-05T06:22:00Z",
+      "event": "claim authored by R1-contracts-c as T-MIG-006 (yaml claimed_at 12:22+06:00), stacked on PR #18; earliest-claim survey missed the in-flight #23 write-flow id"
+    },
+    {
+      "ts": "2026-10-05T06:43:11Z",
+      "event": "R0 (session web-df0238cc) posted ID-collision directive on PR #26: renumber to 017 (later corrected to 018 at 07:11:48Z after R0-REPAIR-1 assigned 017 to the #25 verify task)"
+    },
+    {
+      "ts": "2026-10-05T07:40:56Z",
+      "event": "breach-pattern merge: shared SyllabAI account executed R0-style intake (6a68551: union post-#25 main + ruling1 canonical names) and merged PR #26 as 847a39b at 07:43:23Z with the T-MIG-006 id intact, no verdict comment, contrary to the posted renumber directive; duplicate id: T-MIG-006 yamls on main"
+    },
+    {
+      "ts": "2026-10-05T07:52:20Z",
+      "event": "R0-REPAIR-2 (this receipt): substance audited sound (intake union competent, gates receipt complete, R0 independently re-executed 311/0/13skip on e3f283f incl. this task's 44 contract tests) -> merge state stands; id renumbered 006->018; yaml+receipts+3 code comment refs moved; run-001-gates.json byte-identical sha256 2d5b033b2bf9"
+    }
+  ]
+}

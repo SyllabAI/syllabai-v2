@@ -1,0 +1,396 @@
+{
+  "name": "w3-questions-families-student-200",
+  "description": "Question families from V7 seed (deterministic fixed-uuid seed). captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "source": "captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "GET",
+  "path": "/api/v1/questions/families",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": [
+      {
+        "key": "40000000-0000-0000-0000-000000000001",
+        "ref": "SEED-WCH11-001",
+        "marks": 1,
+        "difficulty": 2,
+        "type": "MCQ",
+        "multi": false,
+        "parts": [
+          {
+            "id": "40000000-0000-0000-0000-000000000001",
+            "externalRef": "SEED-WCH11-001",
+            "type": "MCQ_SINGLE",
+            "stem": "What is the mass of 0.25 mol of calcium carbonate, CaCO3 (Mr = 100.1)?",
+            "marks": 1,
+            "difficulty": 2,
+            "expectedTimeSeconds": 60,
+            "commandWord": "Calculate",
+            "primaryTopicNodeId": "20000000-0000-0000-0000-000000000012",
+            "examPaperId": null,
+            "options": [
+              {
+                "id": "41000000-0000-0000-0000-000000000001",
+                "label": "A",
+                "text": "0.25 g"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000002",
+                "label": "B",
+                "text": "4.0 g"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000003",
+                "label": "C",
+                "text": "25.0 g"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000004",
+                "label": "D",
+                "text": "400.4 g"
+              }
+            ],
+            "parts": [],
+            "specPointCodes": [],
+            "specPoints": []
+          }
+        ]
+      },
+      {
+        "key": "40000000-0000-0000-0000-000000000004",
+        "ref": "SEED-WCH11-004",
+        "marks": 1,
+        "difficulty": 2,
+        "type": "MCQ",
+        "multi": false,
+        "parts": [
+          {
+            "id": "40000000-0000-0000-0000-000000000004",
+            "externalRef": "SEED-WCH11-004",
+            "type": "MCQ_SINGLE",
+            "stem": "Which statement about isotopes of the same element is correct?",
+            "marks": 1,
+            "difficulty": 2,
+            "expectedTimeSeconds": 60,
+            "commandWord": "Select",
+            "primaryTopicNodeId": "20000000-0000-0000-0000-000000000022",
+            "examPaperId": null,
+            "options": [
+              {
+                "id": "41000000-0000-0000-0000-000000000031",
+                "label": "A",
+                "text": "They have different chemical properties because their masses differ"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000032",
+                "label": "B",
+                "text": "They have the same number of protons but different numbers of neutrons"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000033",
+                "label": "C",
+                "text": "They have different numbers of protons but the same number of neutrons"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000034",
+                "label": "D",
+                "text": "They are atoms of different elements with similar chemistry"
+              }
+            ],
+            "parts": [],
+            "specPointCodes": [],
+            "specPoints": []
+          }
+        ]
+      },
+      {
+        "key": "40000000-0000-0000-0000-000000000002",
+        "ref": "SEED-WCH11-002",
+        "marks": 1,
+        "difficulty": 2,
+        "type": "MCQ",
+        "multi": false,
+        "parts": [
+          {
+            "id": "40000000-0000-0000-0000-000000000002",
+            "externalRef": "SEED-WCH11-002",
+            "type": "MCQ_SINGLE",
+            "stem": "How many moles of sodium hydroxide, NaOH (Mr = 40.0), are present in 8.0 g?",
+            "marks": 1,
+            "difficulty": 2,
+            "expectedTimeSeconds": 60,
+            "commandWord": "Calculate",
+            "primaryTopicNodeId": "20000000-0000-0000-0000-000000000012",
+            "examPaperId": null,
+            "options": [
+              {
+                "id": "41000000-0000-0000-0000-000000000011",
+                "label": "A",
+                "text": "0.20 mol"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000012",
+                "label": "B",
+                "text": "0.32 mol"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000013",
+                "label": "C",
+                "text": "5.0 mol"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000014",
+                "label": "D",
+                "text": "8.0 mol"
+              }
+            ],
+            "parts": [],
+            "specPointCodes": [],
+            "specPoints": []
+          }
+        ]
+      },
+      {
+        "key": "40000000-0000-0000-0000-000000000005",
+        "ref": "SEED-WCH11-005",
+        "marks": 1,
+        "difficulty": 3,
+        "type": "MCQ",
+        "multi": false,
+        "parts": [
+          {
+            "id": "40000000-0000-0000-0000-000000000005",
+            "externalRef": "SEED-WCH11-005",
+            "type": "MCQ_SINGLE",
+            "stem": "An atom of chlorine is represented as 37Cl(-). How many protons, neutrons and electrons are present in this ion?",
+            "marks": 1,
+            "difficulty": 3,
+            "expectedTimeSeconds": 90,
+            "commandWord": "Deduce",
+            "primaryTopicNodeId": "20000000-0000-0000-0000-000000000022",
+            "examPaperId": null,
+            "options": [
+              {
+                "id": "41000000-0000-0000-0000-000000000041",
+                "label": "A",
+                "text": "17 protons, 20 neutrons, 18 electrons"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000042",
+                "label": "B",
+                "text": "17 protons, 20 neutrons, 16 electrons"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000043",
+                "label": "C",
+                "text": "20 protons, 17 neutrons, 18 electrons"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000044",
+                "label": "D",
+                "text": "17 protons, 37 neutrons, 17 electrons"
+              }
+            ],
+            "parts": [],
+            "specPointCodes": [],
+            "specPoints": []
+          }
+        ]
+      },
+      {
+        "key": "40000000-0000-0000-0000-000000000003",
+        "ref": "SEED-WCH11-003",
+        "marks": 1,
+        "difficulty": 3,
+        "type": "MCQ",
+        "multi": false,
+        "parts": [
+          {
+            "id": "40000000-0000-0000-0000-000000000003",
+            "externalRef": "SEED-WCH11-003",
+            "type": "MCQ_SINGLE",
+            "stem": "A compound contains 40.0% carbon, 6.7% hydrogen and 53.3% oxygen by mass. What is its empirical formula?",
+            "marks": 1,
+            "difficulty": 3,
+            "expectedTimeSeconds": 120,
+            "commandWord": "Deduce",
+            "primaryTopicNodeId": "20000000-0000-0000-0000-000000000013",
+            "examPaperId": null,
+            "options": [
+              {
+                "id": "41000000-0000-0000-0000-000000000021",
+                "label": "A",
+                "text": "CH2O"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000022",
+                "label": "B",
+                "text": "C2H4O"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000023",
+                "label": "C",
+                "text": "CHO"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000024",
+                "label": "D",
+                "text": "C6H12O6"
+              }
+            ],
+            "parts": [],
+            "specPointCodes": [],
+            "specPoints": []
+          }
+        ]
+      },
+      {
+        "key": "40000000-0000-0000-0000-000000000006",
+        "ref": "SEED-WCH11-006",
+        "marks": 1,
+        "difficulty": 3,
+        "type": "MCQ",
+        "multi": false,
+        "parts": [
+          {
+            "id": "40000000-0000-0000-0000-000000000006",
+            "externalRef": "SEED-WCH11-006",
+            "type": "MCQ_SINGLE",
+            "stem": "Which of the following best describes the structure of solid sodium chloride?",
+            "marks": 1,
+            "difficulty": 3,
+            "expectedTimeSeconds": 60,
+            "commandWord": "Describe",
+            "primaryTopicNodeId": "20000000-0000-0000-0000-000000000032",
+            "examPaperId": null,
+            "options": [
+              {
+                "id": "41000000-0000-0000-0000-000000000051",
+                "label": "A",
+                "text": "A lattice of alternating Na+ and Cl- ions held by electrostatic attraction"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000052",
+                "label": "B",
+                "text": "Discrete molecules each containing one Na+ ion bonded to one Cl- ion"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000053",
+                "label": "C",
+                "text": "A covalent network of shared electron pairs"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000054",
+                "label": "D",
+                "text": "Separate atoms held together by weak intermolecular forces"
+              }
+            ],
+            "parts": [],
+            "specPointCodes": [],
+            "specPoints": []
+          }
+        ]
+      },
+      {
+        "key": "40000000-0000-0000-0000-000000000007",
+        "ref": "SEED-WCH11-007",
+        "marks": 1,
+        "difficulty": 4,
+        "type": "MCQ",
+        "multi": false,
+        "parts": [
+          {
+            "id": "40000000-0000-0000-0000-000000000007",
+            "externalRef": "SEED-WCH11-007",
+            "type": "MCQ_SINGLE",
+            "stem": "Why does the formation of a covalent bond in a molecule generally lower the potential energy of the system?",
+            "marks": 1,
+            "difficulty": 4,
+            "expectedTimeSeconds": 90,
+            "commandWord": "Explain",
+            "primaryTopicNodeId": "20000000-0000-0000-0000-000000000033",
+            "examPaperId": null,
+            "options": [
+              {
+                "id": "41000000-0000-0000-0000-000000000061",
+                "label": "A",
+                "text": "Because each atom completes its outer electron shell"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000062",
+                "label": "B",
+                "text": "Because nuclei attract the shared bonding electrons, stabilising the arrangement"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000063",
+                "label": "C",
+                "text": "Because the octet rule requires atoms to bond"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000064",
+                "label": "D",
+                "text": "Because bond formation always releases energy absorbed by the surroundings"
+              }
+            ],
+            "parts": [],
+            "specPointCodes": [],
+            "specPoints": []
+          }
+        ]
+      },
+      {
+        "key": "40000000-0000-0000-0000-000000000008",
+        "ref": "SEED-WCH11-008",
+        "marks": 1,
+        "difficulty": 4,
+        "type": "MCQ",
+        "multi": false,
+        "parts": [
+          {
+            "id": "40000000-0000-0000-0000-000000000008",
+            "externalRef": "SEED-WCH11-008",
+            "type": "MCQ_SINGLE",
+            "stem": "Ammonia, NH3, has a bond angle of approximately 107\u00b0. Why is it not 109.5\u00b0, as in methane?",
+            "marks": 1,
+            "difficulty": 4,
+            "expectedTimeSeconds": 90,
+            "commandWord": "Explain",
+            "primaryTopicNodeId": "20000000-0000-0000-0000-000000000033",
+            "examPaperId": null,
+            "options": [
+              {
+                "id": "41000000-0000-0000-0000-000000000071",
+                "label": "A",
+                "text": "The lone pair on nitrogen repels bonding pairs more strongly, compressing the angle"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000072",
+                "label": "B",
+                "text": "Hydrogen atoms are smaller than carbon atoms"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000073",
+                "label": "C",
+                "text": "Nitrogen is more electronegative than carbon"
+              },
+              {
+                "id": "41000000-0000-0000-0000-000000000074",
+                "label": "D",
+                "text": "Ammonia is a planar molecule with 107\u00b0 angles by convention"
+              }
+            ],
+            "parts": [],
+            "specPointCodes": [],
+            "specPoints": []
+          }
+        ]
+      }
+    ]
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

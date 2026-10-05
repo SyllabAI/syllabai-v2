@@ -1,0 +1,56 @@
+{
+  "task": "T-MIG-030",
+  "run": 1,
+  "kind": "CLAIM",
+  "lane": "R7a (agent-da4ab8, zai-web session web-da4ab8b1)",
+  "claimed_at": "2026-10-05T07:39:18Z",
+  "branch": "t-mig-030/r7a",
+  "branch_base": "5ee240e (origin/main; R0 housekeeping T-MIG-021 -> DONE)",
+  "protocol": "self-filed per T-MIG-013/020/021 precedent; R0 ratification of id + 030..034 split proposal requested in PR",
+  "collision_scan": {
+    "scanned_at": "2026-10-05T07:39:18Z (immediately before branch cut)",
+    "main_task_dir": "zero T-MIG-03x yamls (ls-tree origin/main)",
+    "capture_branch": "origin/t-mig-007/r6 task dir — zero T-MIG-03x yamls",
+    "remote_branches": "zero t-mig-030* heads (ls-remote --heads)",
+    "open_prs": "#26 (R1, T-MIG-018 refile), #29 (R6, T-MIG-007 capture), #30 (r3a, T-MIG-022 replay) — none reference T-MIG-030 in title or fence",
+    "result": "0 collisions / 0 overlaps"
+  },
+  "surface": {
+    "frozen_sources": [
+      "AttemptController.java (POST /api/v1/attempts 201 MCQ auto-grade; POST /api/v1/attempts/structured 201 PENDING)",
+      "AssessmentService.java (217 lines: V20 paper-level blocking gate; STRUCTURED version-VALIDATED fail-closed 404; duplicate/missing part IllegalArgumentException; provenance web-quiz-v0[-timed] / web-structured-v1[-timed])",
+      "AttemptHistoryController.java (limit advisory: default 50, max 100, <1 -> default)",
+      "AttemptHistoryService.java (read model law: question join, option labels, parts settle rule, knowledge-graph topic, 220-char excerpt)",
+      "AttemptRepository.java (history leg: findByLearnerIdOrderByCreatedAtDesc + countByLearnerId; findByIdForUpdate is marking-flow law, NOT this slice)",
+      "AnswerRepository.java (findByAttemptIdOrderByQuestionPartId)"
+    ],
+    "golden_cases": [
+      "w3-attempts-post-unauthed-401",
+      "w3-attempts-structured-post-unauthed-401",
+      "w3-attempt-mcq-happy-201",
+      "w3-attempt-missing-fields-400",
+      "w3-attempt-structured-missing-fields-400",
+      "w3-attempt-bad-uuid-400",
+      "w3-history-after-submit-200",
+      "w3-history-empty-student-200",
+      "w3-attempt-history-unauthed-401 (shell-shared)"
+    ],
+    "evidence_seam": "EvidencePublisher ports as injected interface (Observer contract, not golden-gated — capture pins HTTP only); default no-op in unit tests; no mastery writes in this service (Master Spec §12/§23)"
+  },
+  "tranche_plan": {
+    "tranche_1": "contract-independent services/assessment/** + stubbed-sql tests (fakeSql rowsFor pattern from T-MIG-021 helpers); tagged-template bind-slot discipline",
+    "tranche_2": "route factories + zod wiring GATE on T-MIG-018 (#26) merge; index.ts mounts as separate flagged OUT-OF-FENCE commit (010/020/021 ratified precedent); golden replay of the cases GATE on T-MIG-007 (#29) merge + replay env"
+  },
+  "split_proposal_030_034": {
+    "note": "recommendation only — R0 arbitrates the mapping when seeding",
+    "T-MIG-030": "attempt + history (THIS filing)",
+    "T-MIG-031": "exam-papers + questions",
+    "T-MIG-032": "self-mark + smart-mark",
+    "T-MIG-033": "teacher-marking + sme-admin",
+    "T-MIG-034": "test-builder + transcription"
+  },
+  "gates": {
+    "docs_only_claim": "typecheck/test/replay not applicable to a yaml+receipt commit; tranche-1 gates follow in run-002"
+  },
+  "upstream_writes": "zero (no Neon, no frozen core, no golden edits)"
+}

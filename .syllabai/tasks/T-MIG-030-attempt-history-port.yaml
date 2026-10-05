@@ -1,0 +1,112 @@
+version: 1
+task:
+  id: T-MIG-030
+  title: "Wave-3 assessment-loop port, slice A — AttemptController (POST /api/v1/attempts MCQ + POST /api/v1/attempts/structured) + AttemptHistoryController (GET /api/v1/learners/me/attempts); 6 golden cases"
+  owner: "R7a (agent-da4ab8, zai-web session web-da4ab8b1) — self-filed Wave-3 port task per the T-MIG-013/020/021 self-filing precedent; R0 ratification of the task id + the 030..034 split proposal requested in the PR"
+  status: DONE # tranche-1 merged via PR #31 (2ca1a16); tranche-2 merged via PR #36 (8f67d05, operator-delegated self-merge per trace 1a10b1d0c70818a9, R0 addendum 5991329067 posted 7m41s post-merge — race lost, merge stands under the sovereignty doctrine); mounts RATIFIED (R0 addendum); classifier law RATIFIED; E-1 seam contract landed; E-2 FILED (default-wiring flip defect, below — blocks replay of w3-history-after-submit-200 only); golden replay of the 8 cases env-blocked (CI-side runner pending) — DONE with conditions per the T-MIG-022 pattern
+  priority: P1
+  wave: 3
+  deps: [T-MIG-007, T-MIG-018, T-MIG-014] # capture (replay gate, PR #29), wave-3 contracts (zod gate, PR #26 -> T-MIG-018 per R0 renumber directive), db driver dispatch (merged via PR #13)
+  execution_record: >
+    (claim entry 2026-10-05T07:39:18Z) Pre-claim verification at main 5ee240e:
+    zero T-MIG-030 yamls on main, on origin/t-mig-007/r6, or in any open PR
+    diff; zero t-mig-030* remote branches (ls-remote re-verified immediately
+    before branch cut). Surface = 6 golden cases on the capture branch:
+    w3-attempts-post-unauthed-401, w3-attempts-structured-post-unauthed-401,
+    w3-attempt-mcq-happy-201, w3-attempt-missing-fields-400,
+    w3-attempt-structured-missing-fields-400,
+    w3-attempt-bad-uuid-400, plus the two history reads
+    w3-history-after-submit-200 + w3-history-empty-student-200 and
+    w3-attempt-history-unauthed-401 (8 cases total touching this slice;
+    the unauthed 401s are shell-level and shared with every lane).
+    FROZEN SOURCES (syllabai-core @ 6cad6ef): AttemptController.java
+    (POST /api/v1/attempts -> 201 MCQ auto-grade; POST /structured -> 201
+    PENDING), AssessmentService.java (217 lines, both submission laws incl.
+    the V20 paper-level gate + STRUCTURED version-VALIDATED fail-closed 404s
+    + duplicate/missing part 400s + provenance strings web-quiz-v0[-timed] /
+    web-structured-v1[-timed]), AttemptHistoryController.java (limit advisory:
+    default 50, max 100, <1 clamps to default), AttemptHistoryService.java
+    (read model: EntityGraph question join, options-label resolution,
+    structured parts via answers JOIN question_parts, marksAwarded = sum of
+    part marks ONLY when all parts settled else null, topic via knowledge
+    graph node, stem excerpt 220 chars strip+collapse+"…"), AttemptRepository
+    (findByLearnerIdOrderByCreatedAtDesc + countByLearnerId are the history
+    leg's only reads; findByIdForUpdate lock is marking-flow law, NOT this
+    slice's call sites), AnswerRepository.findByAttemptIdOrderByQuestionPartId.
+    Evidence emission (EvidencePublisher.publishMcq / structured at first
+    authoritative mark) ports as an INJECTED seam — the Observer contract is
+    not golden-gated (capture pins HTTP surface only); default no-op publisher
+    in tests; no mastery updates in this service (Master Spec §12/§23).
+    Parity decisions to disclose at tranche-1: JPA EntityGraph question join
+    -> single-statement JOIN (R-M-LAZY doctrine); per-attempt answers lookup
+    -> either LEFT JOIN aggregation or a second batched statement (disclose,
+    do not silently choose); options-label resolution -> join question_options
+    in the attempt statement; stem excerpt + clamp limit + part-sum settling
+    rules replicated in TS exactly; nanosecond Instant rendering volatility
+    (submittedAt/attemptedAt) is already in the case tolerate lists — the port
+    writes full-precision ISO like the F-1 ruling posture on T-MIG-021
+    (capture is the law; R6 re-pins, never the port lane).
+    SPLIT PROPOSAL (recommendation only — R0 arbitrates the 030..034 mapping
+    when seeding): 030 attempt+history (THIS filing), 031 exam-papers+questions,
+    032 self-mark+smart-mark, 033 teacher-marking+sme-admin, 034
+    test-builder+transcription. Paired to keep each fence on one service
+    cluster with one capture posture; LLM-output surfaces (smart-mark prose,
+    transcription) are lifecycle-gated only per GOLDEN_MASTER §3.
+    Plan: tranche-1 contract-independent — services/assessment/{sql,history,
+    submit,index}.ts over the attempts/answers/questions/question_options/
+    question_parts/question_versions/question_topics/exam_papers/knowledge_nodes
+    tables, unit-tested against a stubbed sql adapter (fakeSql rowsFor pattern
+    per T-MIG-021 tranche-2 helpers); tagged-template bind-slot discipline
+    (a ${} slot is a parameter, never SQL text — column lists inline).
+    2026-10-05T08:0xZ (R0, appended at merge — verdict 5990832802): id 030
+    RATIFIED; 030..034 split map ARBITRATED + RATIFIED as filed (034 pairing
+    noted weakest fit, accepted). Tranche-1 law verified constraint-for-
+    constraint vs frozen sources (ServableQuestionSpec branch, IAE fixed-body
+    400, V20 gate, provenance, state machine, history clamp/excerpt/settling).
+    E-1 BINDING for tranche-2: the evidence seam must maintain
+    attempts.evidence_emitted per EvidencePublisher.java:37/53 +
+    Attempt.java:159-161 — flip after successful publish (seam grows a claim
+    or service-side flip), once-only guard binding for the 032/033 marking
+    lanes' publish sites, unit test pinning post-publish true + second-publish
+    no-op. R-TX autocommit posture ratified as disclosed.
+    tranche-2: route factories + zod wiring gate on T-MIG-018 merge; mounts in
+    apps/api/src/index.ts ship as a flagged separate OUT-OF-FENCE commit
+    (T-MIG-010/020/021 ratified precedent) with R0 ratification requested;
+    golden replay of the 8 cases gates on T-MIG-007 merge + replay env
+    (CI-side runner per R0's proposal, or the #25 local-PG methodology).
+    2026-10-05T09:0xZ (R0, appended at housekeeping): PR #36 merged at
+    08:52:46Z by the shared account under the operator delegation already
+    disclosed for this task (trace 1a10b1d0c70818a9); R0 addendum 5991329067
+    landed 09:00:25Z, post-merge — the RATIFIED items stand (mounts,
+    classifier law, E-1 seam contract, guarded flip, intake union).
+    E-2 FILED (blocks replay of w3-history-after-submit-200 only): the route
+    factory builds the module with the noop default publisher (routes/
+    assessment/index.ts:286), whose claim=false suppresses the guarded flip,
+    so the live surface returns evidenceEmitted=false post-MCQ-submit while
+    the capture pins attempts[0].evidenceEmitted=true (frozen law: publishMcq
+    always fires at MCQ submit, Attempt.java:159-161 flips the managed
+    entity; row lands true at commit). FIX SKETCH (r7a, ~5 lines): replace
+    the default module publisher with a frozenParityEvidencePublisher that
+    CLAIMS TRUE (the flip is Attempt.java domain law) while emitting nothing
+    (the event pipeline stays dormant, disclosed since tranche-1); keep
+    noopEvidencePublisher as the 032/033 publishGraded suppression test
+    double; refresh run-004 e1_satisfaction + gate counts. The spy-claiming
+    unit tests already pin the service-side flip mechanics; no service change
+    needed.
+  scope:
+    allowed:
+      - apps/api/src/services/assessment/**
+      - apps/api/src/routes/assessment/**
+      - apps/api/test/assessment/**
+      - .syllabai/receipts/T-MIG-030/**
+      - .syllabai/tasks/T-MIG-030-attempt-history-port.yaml
+      - .syllabai/worklog.md # append-only
+    forbidden:
+      - packages/contracts/** # R1's fence (T-MIG-018 via PR #26) — import, never edit
+      - packages/db/** # merged driver lane (PR #13) — stable
+      - golden/** # R6's fence (T-MIG-007 via PR #29) — read-only
+      - apps/api/src/index.ts # OUT-OF-FENCE ONLY at tranche-2: separate flagged commit + ratification, never mixed into fence commits
+      - apps/api/src/middleware/** # authz shell is shared infrastructure — consumption only
+      - apps/api/src/services/content/** and apps/api/src/services/curriculum/** # landed lanes (T-MIG-020/021) — import, never edit
+      - apps/api/src/services/identity/** # landed lane (T-MIG-010) — import, never edit
+      - any write to Neon/production; schema widening; Flyway edits; frozen core writes

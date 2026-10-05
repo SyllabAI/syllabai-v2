@@ -1,6 +1,6 @@
 {
   "name": "auth-login-success-200",
-  "description": "Login happy path: 200 with AuthResponse (same shape as register; BCrypt verify against the stored hash; fresh token each login \u2014 token scrubbed)",
+  "description": "Login happy path: 200 with AuthResponse (same shape as register; BCrypt verify against the stored hash; fresh token each login \u2014 token scrubbed) [T-MIG-006: replay-readiness annotation - generated fields (fresh token/id per boot) tolerated by field name; scrubbed capture values kept for archaeology.]",
   "source": "captured from a LOCAL boot of the frozen Java core (built from the frozen main tree, JDK 25) against Neon BRANCH t-mig-003/r6 (br-divine-mode-a5xur4zv, copy-on-write of production) on 2026-10-04T18:36Z by T-MIG-003 run-002 (R6); no production writes; scrubbed: accessToken->fixed dummy, user id->stable fake UUID, account identity synthetic from creation",
   "method": "POST",
   "path": "/api/v1/auth/login",
@@ -25,5 +25,9 @@
       }
     }
   },
-  "tolerate": []
+  "tolerate": [
+    "accessToken",
+    "id"
+  ],
+  "seq": 3
 }

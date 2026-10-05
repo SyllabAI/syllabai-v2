@@ -1,0 +1,18 @@
+tokens minted (teacher+student) via /api/v1/auth
+PASS content-docs-canonical-realdata-200
+PASS content-docs-student-realdata-403
+FAIL content-docs-teacher-detail-realdata-200: status 200 vs 200; body {"id":"853ae02d-0090-4c40-89ef-b69681c8bb40","documentId":"33ba399c-4640-5b04-b1bb-b520fa2ba94c","docVersion":1,"kind":"QUESTION_PAPER","title":"qp.pdf","pageCount":16,"elementCount":187,"textElementCount":187,"chunkCoun vs {"id":"853ae02d-0090-4c40-89ef-b69681c8bb40","documentId":"33ba399c-4640-5b04-b1bb-b520fa2ba94c","docVersion":1,"kind":"QUESTION_PAPER","title":"qp.pdf","pageCount":16,"elementCount":187,"textElementCount":187,"chunkCoun
+FAIL content-docs-teacher-realdata-200: status 200 vs 200; body [{"id":"2f28a136-8f85-4897-a995-19d0678f165b","documentId":"e3252e22-9c18-5af2-890d-32275430eecd","docVersion":1,"kind":"MARK_SCHEME","title":"ms.pdf","pageCount":12,"elementCount":42,"textElementCount":42,"chunkCount":1 vs [{"id":"2f28a136-8f85-4897-a995-19d0678f165b","documentId":"e3252e22-9c18-5af2-890d-32275430eecd","docVersion":1,"kind":"MARK_SCHEME","title":"ms.pdf","pageCount":12,"elementCount":42,"textElementCount":42,"chunkCount":1
+PASS content-reader-real-citation-paperref-200
+PASS content-reader-real-doc-unauthed-401
+PASS content-reader-real-page-beyond-404
+PASS content-reader-real-page-cover-empty-200
+FAIL content-reader-real-page-text-200: status 200 vs 200; body {"id":"853ae02d-0090-4c40-89ef-b69681c8bb40","documentId":"33ba399c-4640-5b04-b1bb-b520fa2ba94c","docVersion":1,"kind":"QUESTION_PAPER","title":"qp.pdf","pageCount":16,"page":4,"text":"","paper":{"paperId":"cb2c0cf8-f60a vs {"id":"853ae02d-0090-4c40-89ef-b69681c8bb40","documentId":"33ba399c-4640-5b04-b1bb-b520fa2ba94c","docVersion":1,"kind":"QUESTION_PAPER","title":"qp.pdf","pageCount":16,"page":4,"text":"The list shows some techniques used
+PASS content-reader-real-paper-null-200
+PASS question-assets-real-binary-200
+FAIL teacher-content-paper-review-realdata-200: status 200 vs 200; body {"paper":{"id":"cb2c0cf8-f60a-4a15-a244-d356cbb3899b","subjectId":"e56dc9ee-aa74-426f-94a6-4b72d3dc346b","title":"4CH0/2CR June 2013","paperCode":"4CH0/2CR","sessionLabel":"June 2013","board":"unknown-board","qualificati vs {"paper":{"id":"cb2c0cf8-f60a-4a15-a244-d356cbb3899b","subjectId":"e56dc9ee-aa74-426f-94a6-4b72d3dc346b","title":"4CH0/2CR June 2013","paperCode":"4CH0/2CR","sessionLabel":"June 2013","board":"unknown-board","qualificati
+PASS teacher-content-review-queue-realdata-200
+PASS teacher-content-review-queue-v2-realdata-200
+PASS teacher-content-review-queue-v3-realdata-200
+
+11/15 golden cases pass against http://localhost:3000 (CASE_MODE=prod)

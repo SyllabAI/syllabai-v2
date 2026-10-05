@@ -1,0 +1,29 @@
+{
+  "name": "w3-attempt-bad-uuid-400",
+  "description": "MCQ attempt submit with malformed uuids: 400. captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "source": "captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "POST",
+  "path": "/api/v1/attempts",
+  "request": {
+    "body": {
+      "questionId": "not-a-uuid",
+      "chosenOptionId": "not-a-uuid",
+      "responseTimeMs": 1000
+    },
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 400,
+    "body": {
+      "status": 400,
+      "error": "malformed_body",
+      "message": "request body is not readable (check field types and enum values)",
+      "timestamp": "2026-10-05T06:47:11.912701885Z"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

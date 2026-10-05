@@ -1,0 +1,20 @@
+{
+  "name": "w3-exam-paper-unknown-uuid-unauthed-401",
+  "description": "GET /api/v1/exam-papers/00000000-0000-4000-8000-00000000dead unauthenticated: frozen core answers 401 from the filter chain before any persistence path (T-MIG-003/004 precedent).",
+  "source": "captured from https://syllabai-core.onrender.com (deployed frozen core, read-only) 2026-10-05T06:40Z by T-MIG-007 run-001 (R6); probes synthetic, no PII, no credentials",
+  "method": "GET",
+  "path": "/api/v1/exam-papers/00000000-0000-4000-8000-00000000dead",
+  "request": {},
+  "expect": {
+    "status": 401,
+    "body": {
+      "timestamp": "2026-10-05T06:40:58.762Z",
+      "status": 401,
+      "error": "Unauthorized",
+      "path": "/api/v1/exam-papers/00000000-0000-4000-8000-00000000dead"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

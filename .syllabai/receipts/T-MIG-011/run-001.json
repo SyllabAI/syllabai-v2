@@ -1,0 +1,47 @@
+{
+  "task": "T-MIG-011",
+  "role": "R5",
+  "agent": "r5 (Super Z agent, session web-1f157e25)",
+  "generated_utc": "2026-10-04T19:24:20Z",
+  "claim": {
+    "claimed_at": "2026-10-04T19:16:23Z",
+    "pushed_immediately": true,
+    "commit": "c599a90 (claim + orientation re-land)"
+  },
+  "what": "Hub adapter, parallel-safe scope: mathNormalize byte-identical lift into @syllabai/shared + 17 parity pins; hub re-export shim; per-surface strangler-fig routing (NEXT_PUBLIC_API_V2_BASE_URL + V2_SURFACE_PREFIXES=[/api/v1/auth]); apps/hub/.env.example reference sheet.",
+  "gates": {
+    "shared_parity_pins": "17/17 PASS (bun test packages/shared)",
+    "root_tests": "49/49 PASS across 3 files (shared 17 + contracts 28 + api 4)",
+    "golden_selftest": "OK",
+    "typechecks": "packages/shared clean after TS-only noUncheckedIndexedAccess fixes; packages/contracts, packages/db clean; apps/api TS2688 bun-types PRE-EXISTING on main (CI runs 1/2/8) \u2014 untouched; scoped apps/hub tsc: 0 errors in src/lib/mathNormalize.ts + src/lib/api.ts (other errors = pre-existing filtered-install resolution noise in unrelated files; hub not in CI typecheck lane until T-MIG-000)",
+    "db_check": "Everything's fine (regression sanity)"
+  },
+  "fidelity": {
+    "lift": "cp-verbatim from apps/hub/src/lib/mathNormalize.ts, then TS-ONLY `!` assertions at 10 indexed accesses (regex match groups, array indices derived from the same array) forced by noUncheckedIndexedAccess in tsconfig.base.json (hub tsconfig lacks the flag); runtime identical; LIFT NOTE header in-file",
+    "pin_note": "R4 pin records actual production behaviour (run closes before non-mathish 'mol'), not the source header's idealised shape"
+  },
+  "fence_deviations_declared": [
+    "apps/hub/package.json +1 line (@syllabai/shared workspace dep) \u2014 required by this task's basis ('re-exports it from the hub import path')",
+    "apps/hub/.gitignore +1 line (!.env.example) \u2014 hub ignore shadowed the root negation of the in-scope .env.example",
+    "apps/hub/src/lib/mathNormalize.ts shim \u2014 outside the yaml's 'auth surfaces + api client layer ONLY' parenthetical but mandated by the task basis; disclosed for R0"
+  ],
+  "dep_gated_remainder": "live auth-flow verification of hub login against the v2 api requires T-MIG-010 merged (claim arbitration pending r3/r3b); routing switch is built and inert until then",
+  "status": "IN_PROGRESS \u2014 dep-gated remainder documented; branch t-mig-011/r5 pushed",
+  "files": {
+    "added": [
+      "packages/shared/src/mathNormalize.ts",
+      "packages/shared/src/mathNormalize.test.ts",
+      "apps/hub/.env.example",
+      ".syllabai/receipts/T-MIG-011/run-001.json"
+    ],
+    "modified": [
+      "packages/shared/src/index.ts",
+      "apps/hub/src/lib/mathNormalize.ts",
+      "apps/hub/src/lib/api.ts",
+      "apps/hub/package.json",
+      "apps/hub/.gitignore",
+      ".syllabai/tasks/T-MIG-011-hub-adapter.yaml",
+      ".syllabai/worklog.md"
+    ]
+  }
+}

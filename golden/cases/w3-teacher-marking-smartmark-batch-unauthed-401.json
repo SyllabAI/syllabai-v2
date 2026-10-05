@@ -1,0 +1,22 @@
+{
+  "name": "w3-teacher-marking-smartmark-batch-unauthed-401",
+  "description": "POST /api/v1/teacher/marking/smart-mark-batch unauthenticated: frozen core answers 401 from the filter chain before any persistence path (T-MIG-003/004 precedent).",
+  "source": "captured from https://syllabai-core.onrender.com (deployed frozen core, read-only) 2026-10-05T06:41Z by T-MIG-007 run-001 (R6); probes synthetic, no PII, no credentials",
+  "method": "POST",
+  "path": "/api/v1/teacher/marking/smart-mark-batch",
+  "request": {
+    "body": {}
+  },
+  "expect": {
+    "status": 401,
+    "body": {
+      "timestamp": "2026-10-05T06:41:02.934Z",
+      "status": 401,
+      "error": "Unauthorized",
+      "path": "/api/v1/teacher/marking/smart-mark-batch"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}
