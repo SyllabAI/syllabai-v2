@@ -1,0 +1,53 @@
+{
+  "task": "T-MIG-043",
+  "run": "run-002-tranche-1",
+  "date": "2026-10-06",
+  "lane": "w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "claim_provenance": {
+    "claim_receipt": ".syllabai/receipts/T-MIG-043/run-001-claim.json",
+    "claim_commit": "db87a9a on t-mig-043/w0a (pushed before implementation, r7a-041 precedent)"
+  },
+  "surface": {
+    "services": "apps/api/src/services/learner-me/index.ts (NEW — single-module, the 033 teachermarking shape)",
+    "tests": "apps/api/test/learner-me/learner-me.test.ts (NEW — 51 tests / 177 expects, shared fakeSql helper)",
+    "contracts": [
+      "packages/contracts/src/learner-me.ts (NEW — ExamSeriesView + params + SetTargetRequest + AssignmentSubmissionRequest; the wire the #60 bundle does not carry)",
+      "packages/contracts/src/learner-me.test.ts (NEW — 12 tests / 18 expects)",
+      "packages/contracts/src/index.ts (ONE re-export line — out-of-fence-flagged, 010/034 ratified precedent)"
+    ],
+    "golden": "ZERO files touched — never weakened, never re-pinned"
+  },
+  "laws_pinned_line_against_line_frozen_6cad6ef": [
+    "FlashcardRating.Rating.parse tolerant set (trim/lowercase/_→-; still-learning|stilllearning|know) + ratingWire",
+    "recordFlashcardRating: 400 verbatim → 404 unknown-anchor verbatim → structure gate (UNIT/TOPIC/SUBTOPIC; CONCEPT/MISCONCEPTION/SUBJECT 404) → APPEND-ONLY insert (re-rate = second row, pinned no-UPDATE)",
+    "TrailCursor: base64url-unpadded {t,i}; round-trip preserves the RAW db text (sub-ms precision survives — the load-bearing rule); FAIL-CLOSED with the frozen error texts (blank / not decodable / not a trail position / not parseable); URL-alphabet enforced ('+' rejected)",
+    "flashcardTrailPage: 200 default / <1 400 verbatim / 500 clamp; +1 hasMore probe; (occurred_at DESC, id DESC) total order; page 2 = row-value keyset (occurred_at, id) < (ts, id) — the frozen doc's exclusive-tuple predicate, expressed in one pg row-value comparison (2 binds, matching the frozen @Query's param count); batched first-wins code resolution; honest null code; nextCursor = the LAST served row's raw position",
+    "FlashcardReviewParams: DEFAULT ladder [1,2,4,8,16,32]; lenient normalization (null/empty/non-positive → default); intervalDaysFor(streak) = streak<=0 → 0 else ladder[min(streak-1,size-1)] (streak 2 → 2 days pinned; trail length cannot overstate)",
+    "scheduleCard: trailing-KNOW streak; dueAt = latest.occurred_at + interval*86400s (exact UTC arithmetic); due = !now.isBefore(dueAt) — the boundary instant is DUE (pinned); empty trail = programming error",
+    "flashcardReviewSchedule: full trail ORDER BY card_id ASC, occurred_at ASC, id ASC; insertion-ordered grouping; feed dueAt-asc then cardId; summary {due, scheduled, nextDueAt = earliest unduer}; COMPUTED AT READ NEVER PERSISTED; TIMING ONLY",
+    "NoteVote.Vote.parse: helpful|up / not-helpful|nothelpful|down with NO underscore normalization (the Rating.parse asymmetry, pinned) — the 'down' case is in the accepted set; noteVoteWire; recordNoteVote 400/404 verbatim + append-only",
+    "LearnerExamSeriesController: published-only calendar window_start ASC; blank qualification = absent; board-scoped filter (PEARSON_EDEXCEL bind); kebab-case slug 400 verbatim (uppercase/underscore/dotted/leading/trailing-dash/empty all rejected); 404 'exam series {id} does not exist'; 400 'only published exam series can be targeted: {code}'; idempotent upsert (UPDATE when enrolment exists, INSERT when not — the row remains on clear); clear = target_series_id null + row remains",
+    "CourseExamTargetView.of: whole-calendar-day countdowns (ChronoUnit.DAYS.between on UTC date strings); entryDeadlinePassed = entryDeadline < today STRICTLY (the deadline day itself still allows entry — boundary pinned both sides)",
+    "ExamTargetReader.targetsFor: empty declared → [] with NO second query (pinned); batched series lookup first-wins; vanished-series rows filtered honestly",
+    "LearnerAssignmentController: V51 visibility (NULL class = everyone; class = members only — membership rows are the authorization); LIST order createdAt DESC preserved; latest hand-in per assignment from the 2000-row occurrence-desc window (putIfAbsent); submit gates in frozen order 404 → 403 class gate → 409 CLOSED → 400 questionsCompleted → 400 score, ALL VERBATIM; append-only hand-in; score null = unmarked",
+    "buildAgenda: dueReviews PENDING due-soonest-first (status 'PENDING' inlined per bind-slot discipline), ONE batched title lookup, reason = .name(); the agenda RE-ORDERS assignments dueAt asc then createdAt DESC — distinct from the list order (pinned against the list order); actions null without rootId; asOf from the injected clock",
+    "constants: AGENDA_ASSIGNMENT_LIMIT 50, LEARNER_ASSIGNMENT_LIST_LIMIT 50, SUBMISSION_LOOKUP_WINDOW 2000, TRAIL_DEFAULT_LIMIT 200, TRAIL_MAX_LIMIT 500 (contracts TRAIL_* verified equal)"
+  ],
+  "gates": {
+    "typecheck": "x4 exit 0 (contracts, shared, db, api)",
+    "bun_test": "775 ran / 762 pass / 0 fail / 13 skip / 2119 expect = main baseline (712 ran / 699 pass / 0 / 13 / 1924) + 63 tests / 195 expects EXACT (apps/api +51/+177; packages +12/+18)",
+    "golden_selftest": "OK (tolerance engine behaves, incl. declared-unordered multiset)",
+    "golden_files_touched": 0,
+    "neon_contact": "zero (fakeSql only; no cloud/prod writes anywhere)"
+  },
+  "disclosures_for_review": [
+    "NBA DEFERRED (tranche-2): NextBestActionService :79-554 fully read this session; the agenda carries the composition SEAM (injected nextBestActions provider, pre-wired and pinned) and returns the honest 501 (owning task id in the message) for rootId calls until the engine lands — the 042P posture; never a fake 200",
+    "ExamTargetReader DUPLICATION: r7a's 041 tranche-1 (#65) also ports targetsFor inside services/learner/**; this lane carries its own copy in services/learner-me/** under the per-module structural-seam doctrine (assessment/sql.ts header); consolidation ruling requested at R0 intake after 041/043 land (#56 precedent); zero file overlap",
+    "CONTRACTS FIDELITY FLAG (R0): courseExamTargetViewSchema (learner.ts, canonical #60) types entryDeadline/resultsDate as z.string() but the frozen CourseExamTargetView record renders the raw nullable LocalDate columns — null when absent. The W4 capture never exercised a null-deadline series, so the gates never caught it. This port passes the columns through HONESTLY (null at runtime) with a source-level note; the .nullable() correction is requested at review (never widened silently, never faked)",
+    "INSTANT RENDERING: the fleet convention new Date(x).toISOString() (ms precision) — sub-ms pg text truncates on the WIRE, but the trail CURSOR round-trips the RAW db text so keyset semantics keep full precision (the TrailCursor javadoc's load-bearing rule, pinned)",
+    "DECODE NORMALIZES the uuid to lowercase (Java UUID.fromString is case-insensitive; pg uuid compares case-insensitively) — disclosed",
+    "501 ERROR CLASS: LearnerMeNotImplementedError joins the module's message-carrying LearnerMeNotFoundError/ForbiddenError; tranche-2's routes map all four + BadRequestError/ConflictError (selfmark classes, composed not forked)",
+    "registry wiring (V59 learner.flashcard-review ladder) = the module opts.flashcardReviewIntervalDays seam, pinned with a non-default ladder; the production composition root reads the registry at tranche-2"
+  ],
+  "tranche_2_scope": "NBA engine (T1 due-retrieval → T2/T2b prerequisite+validated-chain → T3 problem questions → T4/T4b misconceptions+corrective → T5 fluency → T6 weak mastery → T7a tutor engagement → T7 uncovered topics, rank renumber 1..n) + /recommendations + agenda actions flip + routes/mounts (out-of-fence flagged) + golden replay of the w4-* capture"
+}

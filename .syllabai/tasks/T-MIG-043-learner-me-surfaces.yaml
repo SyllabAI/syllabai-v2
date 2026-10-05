@@ -3,7 +3,7 @@ task:
   id: T-MIG-043
   title: "Wave-4 learner port — the learner-me surface band: agenda (T-C76) + flashcard ratings/rating-trail/review-schedule (V47/T-C61/T-C53) + note-votes (V48) + exam-series picker & target-series (T-C79) + learner assignments (V49/V51); tranche-1 = services + fakeSql pins (021/033/041 template); NBA engine + routes = tranche-2"
   owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — operator directive trace 1a10d2c88b6f13c5 'Check and claim whichever lane other agents are not working': executes the seeding word for the last unclaimed MIGRATION_PLAN Wave-4-reserved band (040 PREP DONE #57, 042P DONE #54, 041 claimed+in-review r7a #65; 043 was the named remainder per r7a's 041 yaml 'agenda/…/exam-series+flashcards = T-MIG-043'). Id ratification requested at PR review (030/032/039/040-PREP/041 precedent)"
-  status: IN_PROGRESS # claim 2026-10-06
+  status: IN_REVIEW # tranche-1 PR filed 2026-10-06 (claim 2026-10-06)
   priority: P1
   wave: 4
   deps: [T-MIG-038, T-MIG-040-PREP, T-MIG-014] # landed W4 contracts (learner.ts) + the W4 golden capture that pins these surfaces + db driver dispatch
@@ -125,6 +125,20 @@ task:
     schedule due/dueAt/nextDueAt, countdowns) is computed from an injected
     clock/anchor and disclosed — the 040-PREP capture tolerates exactly these
     fields; the port recomputes, never persists (ADR-031).
+    (tranche-1 completion, 2026-10-06) services/learner-me/index.ts (agenda,
+    flashcard ratings/trail/schedule, note-votes, exam-series/target-series,
+    learner assignments) + 51 fakeSql pins + contracts learner-me.ts (12 pins)
+    + the one index.ts re-export line. Gates: typecheck x4 exit 0; 775 ran /
+    762 pass / 0 fail / 13 skip / 2119 expect = main baseline + 63/195 EXACT;
+    golden selftest OK; ZERO golden files touched; zero Neon contact. Real
+    port bug caught by the pins before any review: the missing 'down' case
+    in Vote.parse (the accepted set is not-helpful|nothelpful|down — the
+    doc comment alone had drifted). Fidelity flag filed: the landed
+    courseExamTargetViewSchema over-constrains entryDeadline/resultsDate
+    vs the frozen record's nullable LocalDate (capture never exercised a
+    null-deadline series) — .nullable() correction requested at review,
+    the port renders honestly meanwhile. NBA engine + routes = tranche-2
+    (the agenda 501 posture + provider seam are pinned).
   scope:
     allowed:
       - "apps/api/src/services/learner-me/** (NEW module: agenda, flashcard ratings/trail/schedule, note-votes, exam-series, assignments)"
