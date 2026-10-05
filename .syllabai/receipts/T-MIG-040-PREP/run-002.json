@@ -1,0 +1,26 @@
+{
+  "receipt": "T-MIG-040-PREP run-002 - Wave-4 deterministic surfaces captured from a LOCAL frozen-core boot on LOCAL PostgreSQL 17.9 + pgvector 0.8.7",
+  "schema": "syllabai.v2.t-mig-040-prep.capture-receipt/1.0",
+  "agent": "R7a (agent-da4ab8, zai-web session web-da4ab8b1)",
+  "recipe": "T-MIG-007 run-002 adaptation (NEON_PAT absent this session — zero Neon connections of any kind): frozen tree built LOCALLY (Temurin JDK 25.0.4.1 + Maven 3.9.16 tarballs, no-root; mvn -DskipTests package exit 0), booted (-Dsyllabai.llm.mode=test, synthetic jwt-secret + teacher-join-code) against LOCAL PostgreSQL 17.9 (pgdg13 debs, no-root dpkg-deb -x, TCP 127.0.0.1:5432, jit=off) + pgvector 0.8.7 (pgdg deb, compiled extension used as-shipped) into which the core's own Flyway applied V1..V63. One process note: this sandbox does NOT kill background processes at tool-call boundaries (unlike the T-MIG-007 session note) — a stale core+db pair from an aborted attempt caused one polluted intermediate run; it was killed, wiped, and the committed tranche is from the verified-clean boot (strict port-listen + health checks before capture).",
+  "cases_captured": 35,
+  "case_files": "golden/cases/w4-*.json (run-002 tranche; authed cases carry {{TOKEN}} per T-MIG-006 schema; live tokens never left process memory)",
+  "highlights": [
+    "empty states: agenda/state/knowledge-graph/course-stats/flashcard-schedule/trail for a fresh learner (honest emptiness pinned)",
+    "exam-series: V63 Pearson 2026/2027 seed calendar (published, soonest-window-first — seed uuids are replay-stable constants), IAL qualification filter, unknown-qualification empty list",
+    "smart-lesson: missing-params 400, outside-subtree hard-isolation 404, practiced next-action 200 (deterministic read model; LLM chain in TEST mode degrades to deterministic refusal — no LLM prose golden-gated, GOLDEN_MASTER s3)",
+    "flashcard lifecycle: KNOW/KNOW/STILL_LEARNING ratings 201 on the TOPIC anchor WCH11-T1 -> derived schedule (streak 0 vs 1, intervalDays 0 vs 1, due true/false — the FlashcardReviewScheduler law visible) + append-only trail read",
+    "practice: MCQ 201 vs the V7 seed question -> state/knowledge-graph (effective mastery = decayService.decayed at read, ADR-031)/course-stats/agenda/smart-lesson composed reads",
+    "exam-series targeting: PUT unknown-series 404, PUT seeded series 200 (enrolment auto-created, countdown derived on read), DELETE 204 x2 (idempotent honesty)",
+    "validation: rating value/cardId-pattern 400s, unknown-anchor 404, intervention missing-rootId 400",
+    "posture pair: same unknown path answers 401 pre-auth (run-001) and 404 authed (run-002) — the port must keep the filter-chain ordering"
+  ],
+  "findings_captured_as_is_do_not_silently_fix": [
+    "F-e: the FlashcardRatingRequest @Pattern ^[A-Za-z0-9-]+$ forbids dots, but the seeded SUBTOPIC anchor code WCH11-T1.1 CONTAINS a dot -> a rating against the dotted seed anchor answers 400 validation_failed BEFORE the controller lookup (pinned as w4-flashcard-rating-dotted-anchor-400). UNIT/TOPIC codes without dots pass (the 201 lifecycle was captured on WCH11-T1). Whether the hub's real deck-anchor codes ever carry dots (vs the DTO intent) is an R0 divergence call.",
+    "F-c-family: GET /api/v1/learners/me/intervention-runs/{unknown-id} answers 400 (validation fires BEFORE the existence/ownership check), not 404 — same shape as T-MIG-007 F-c human-mark (pinned as w4-intervention-unknown-run-400; divergence call belongs to R0)."
+  ],
+  "scrub": "identities synthetic from creation (learner_40@example.invalid via the honest register path); tokens -> {{TOKEN}} placeholder (live JWTs never written to disk; the login response's token field scrubbed + tolerated); per-boot uuids/instants tolerated (learnerId, generatedAt, occurredAt, dueAt, lastRatedAt, lastPracticedAt, lastEvidenceAt, asOf, retrievedAt, id); seed uuids replay-stable constants",
+  "determinism_note": "decay math is deterministic GIVEN its inputs and the law is pinned in-tool: EbbinghausDecayService P(t)=P0*e^(-t/tau) with tau 30/90/365d bands (0.45/0.8), floor 0.1, reviewBelow 0.6, nanosecond precision, recomputed from the anchor on every call and never persisted (ADR-031); FlashcardReviewScheduler derived-never-stored (streak = trailing KNOW run, dueAt = latest occurred_at + intervalDays(streak), due = !now.isBefore(dueAt), T-C53, hub parity lib/flashcard-review.ts). The tranche pins the deterministic core (streak/intervalDays/nodeId/codes/structure) strictly and tolerates the anchor-clock-dependent numerics — the wave-4 port lane recomputes rather than guesses (golden/tools/w4-readiness.ts restates the law).",
+  "production_safety": "zero Neon connections of any kind (local scratch db only); zero upstream writes (C1); zero PII; live JWTs never written to disk; the local boot stack was torn down after capture",
+  "raw_log": ".syllabai/receipts/T-MIG-040-PREP/run-002-local-boot-probes.log"
+}

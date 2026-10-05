@@ -1,0 +1,29 @@
+{
+  "name": "w4-flashcard-rating-unknown-anchor-404",
+  "description": "flashcard rating against an unknown subtopic anchor: 404 (V2 unique-code backstop)",
+  "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "POST",
+  "path": "/api/v1/learners/me/flashcard-ratings",
+  "request": {
+    "body": {
+      "cardId": "fl_w4_cap_009",
+      "rating": "know",
+      "subtopicCode": "NOPE-UNKNOWN-ANCHOR"
+    },
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 404,
+    "body": {
+      "status": 404,
+      "error": "not_found",
+      "message": "unknown subtopic anchor: NOPE-UNKNOWN-ANCHOR",
+      "timestamp": "2026-10-05T15:48:32.352694519Z"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

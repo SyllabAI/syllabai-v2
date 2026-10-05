@@ -1,0 +1,50 @@
+{
+  "name": "w4-flashcard-trail-200",
+  "description": "append-only rating trail: one row per rating, chronological read (ORDER BY card_id, occurred_at, id)",
+  "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "GET",
+  "path": "/api/v1/learners/me/flashcard-rating-trail",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "events": [
+        {
+          "cardId": "fl_w4_cap_003",
+          "rating": "still-learning",
+          "subtopicCode": "WCH11-T1",
+          "nodeId": "20000000-0000-0000-0000-000000000011",
+          "occurredAt": "2026-10-05T15:48:32.456233Z"
+        },
+        {
+          "cardId": "fl_w4_cap_002",
+          "rating": "know",
+          "subtopicCode": "WCH11-T1",
+          "nodeId": "20000000-0000-0000-0000-000000000011",
+          "occurredAt": "2026-10-05T15:48:32.414027Z"
+        },
+        {
+          "cardId": "fl_w4_cap_001",
+          "rating": "know",
+          "subtopicCode": "WCH11-T1",
+          "nodeId": "20000000-0000-0000-0000-000000000011",
+          "occurredAt": "2026-10-05T15:48:32.385867Z"
+        }
+      ],
+      "nextCursor": null,
+      "hasMore": false,
+      "generatedAt": "2026-10-05T15:48:32.488791032Z"
+    }
+  },
+  "tolerate": [
+    "generatedAt",
+    "id",
+    "occurredAt",
+    "ratedAt",
+    "timestamp"
+  ]
+}

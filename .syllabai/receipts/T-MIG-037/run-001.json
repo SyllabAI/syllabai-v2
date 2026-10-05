@@ -1,0 +1,50 @@
+{
+  "task": "T-MIG-037",
+  "run": "run-001",
+  "agent": "Contracts-lane (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)",
+  "recorded_at": "2026-10-05T22:03:53+06:00 (Asia/Dhaka)",
+  "directive": "Operator CONTRACTS-LANE directive trace 1a10cb48dc7edd15, Step 1 (W3-remainder zod contracts: teacher-marking, test-builder, transcription DTOs; frozen sources @ 6cad6ef; unblocks r7a + r1)",
+  "base": "origin/main c0d8fa0 (verified fresh at claim; re-verified unchanged at PR open)",
+  "branch": "t-mig-037/r1c",
+  "head": "this commit (run-001 + IN_REVIEW flip on 5929c4b)",
+  "frozen_ref": "syllabai-core @ 6cad6ef9463e8d21f1555456561a4caaf7e89395 (local shallow clone HEAD verified byte-equal)",
+  "claim": {
+    "claim_commit": "5929c4b (t-mig-037/r1c, pushed 2026-10-05T21:48Z-ish)",
+    "id_note": "T-MIG-036 was the first-planned id but is TAKEN by r3fix PR #48 (identity-budget flake root-cause) per the board scan at claim time; next free id T-MIG-037 taken instead; ls-remote showed no 037/038 heads; main's 27-yaml id set has no 037/038. Id ratification requested at PR review per T-MIG-030/002-R precedent."
+  },
+  "delivered": {
+    "files": [
+      "packages/contracts/src/teacher-marking.ts",
+      "packages/contracts/src/teacher-marking.test.ts",
+      "packages/contracts/src/test-builder.ts",
+      "packages/contracts/src/test-builder.test.ts",
+      "packages/contracts/src/transcription.ts",
+      "packages/contracts/src/transcription.test.ts",
+      "packages/contracts/src/index.ts (+3 export lines only)"
+    ],
+    "schemas": {
+      "teacher-marking": "markingStateParamSchema (uppercase+5-state pipe, F-33-1(b)), answerQueuePageParamsSchema + paperGroupsPageParamsSchema (G-5 bounds, verbatim messages documented), humanMarkRequestSchema (@NotNull @Min(0) @Max(99) + coercion mirror, perPointDecisions @Size(50) map, comments @Size(4000)), smartMarkBatchRequestSchema (@NotNull @NotEmpty @Size(50) uuid list), kappaScopeRequestSchema (whole-body-optional), kappaLatestParamsSchema, answerIdPathSchema, smartMarkViewSchema (refusal-row nullability: modelId/confidence nullable, breakdown never-null, pipelineVersion column-defaulted '1.3.0'), humanMarkViewSchema, answerMarkingViewSchema (16 components exact), answerMarkingPageViewSchema, answerQueueResponseSchema (two-shape union), markingGroupViewSchema (paperId nullable unfiled bucket), markingQueueItemSchema (nextAnswerId null-on-last), markingQueueViewSchema + markingQueuePageViewSchema + markingQueueResponseSchema, pendingPaperViewSchema (nullable paperId leader), throughputViewSchema (FIVE-key strict answersByState = F-33-1(a) zero-fill law), smartMarkBatchViewSchema/ItemSchema (outcome MARKED|SKIPPED_ALREADY_MARKED|FAILED), kappaEvaluationViewSchema (scope ALL|PAPER)",
+      "test-builder": "testPreviewParamsSchema (rootId uuid, topicNodeIds uuid list, maxQuestions/targetMarks Integer params — clamp law documented, includeAnswers javaJsonBool default false), weaknessOptionsParamsSchema, topicCoverageSchema, testAnswerViewSchema, testQuestionViewSchema (reuses studentPartViewSchema/studentOptionViewSchema/questionTypeSchema/validationStateSchema; answers [] never null), testPreviewViewSchema, weakTopicOptionSchema (meanMastery/masteryBand nullable nulls-last law), coverageGapViewSchema, weaknessOptionsViewSchema (policy z.literal 'test-builder-weakness/v1'); constants TEST_BUILDER_DEFAULT_MAX=20 / HARD_MAX=50 / HARD_MAX_MARKS=200 / WEAKNESS_POLICY",
+      "transcription": "transcriptionRequestSchema (binding truth only — both fields nullable, service ladder NOT pre-baked per index.ts rule 3), transcriptionViewSchema (text/provider/model/latencyMs), constants TRANSCRIPTION_ALLOWED_MIME_TYPES {png,jpeg,webp}, TRANSCRIPTION_MAX_DECODED_BYTES 4MiB, and the seven frozen verbatim service-ladder messages (400x4 / 413 / 503 / 422) pinned as exported constants"
+    },
+    "reuse": "answerMarkingStateSchema + javaInstantSchema + uuidPathSchema + studentPartViewSchema + studentOptionViewSchema + questionTypeSchema (assessment.ts), validationStateSchema (content.ts), javaJsonInt/javaJsonBool coercion mirrors (content-writes.ts imports, no file edits outside fence)"
+  },
+  "gates": {
+    "contracts_package_tests": "192 pass / 0 fail / 466 expect (main package suite 141 + 51 new pins)",
+    "typecheck_x4": "exit 0 (packages/contracts, packages/shared, packages/db, apps/api — bun run typecheck chains all four)",
+    "bun_test_apps_api_packages": "536 pass / 13 skip / 0 fail / 1396 expect (= main 485/0/13 @ 1259 + 51 new pins / +137 expect exactly; delta arithmetic exact, zero regressions)",
+    "golden_selftest": "OK (tolerance engine incl. declared-unordered multiset, T-MIG-024)"
+  },
+  "ground_truth_alignment": {
+    "F_33_1": "R0 review 5997573821 on PR #50 treated as binding: five-value MarkingState (Answer.java:34) reused from contracts answerMarkingStateSchema; throughput answersByState pinned as five-key STRICT object (missing or extra key fails); parseMarkingState accepted-set = five states with the frozen 4-state enumeration quirk of the C-9 message documented verbatim for the port lane",
+    "N_2": "SmartMarkView.pipelineVersion pinned non-null (entity column defaults to PIPELINE_VERSION '1.3.0', SmartMarkResult :53) — the row column is the truth the port should select (R0 N-2 suggestion), the schema stays column-shaped",
+    "N_4": "uuid tie-break disclosure does not touch this fence (read-model ordering only); no comparator ported here"
+  },
+  "disclosed_residuals": [
+    "sme package DTOs (SmeQuestionPackageDtos) NOT claimed — named in T-MIG-018's list but outside this directive's three surfaces; R0's call",
+    "smartmark LEARNER-side views already ported by T-MIG-032 in apps/api — canonicalization into packages/contracts (if wanted) is a separate card",
+    "LearnerRosterView (TeacherViews.java) belongs to the Wave-5 roster surface — deliberately excluded"
+  ],
+  "no_golden_captures_note": "T-MIG-004 captured read surfaces; T-MIG-003 write captures are the 5 auth cases — acceptance baseline is the Java declaration per the T-MIG-006/018 precedent",
+  "next": "PR open; independent review requested (authors never self-merge); R0 merge-intake; T-MIG-038 (Step 2, W4 learner+decay contracts) already claimed on t-mig-038/r1c @ 421c478"
+}

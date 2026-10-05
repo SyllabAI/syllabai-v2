@@ -1,0 +1,73 @@
+{
+  "task": "T-MIG-034",
+  "lane": "r3a (superz-agent-b)",
+  "run": "001",
+  "at": "2026-10-05T16:35Z",
+  "branch": "t-mig-034/r3a",
+  "commits": ["0697c0c claim", "e38352e fence implementation", "fd854c5 OUT-OF-FENCE mounts"],
+  "base": "c920eea",
+  "surfaces": {
+    "testbuilder": {
+      "frozen_sources": ["teacher/TestBuilderController.java", "teacher/TestBuilderService.java"],
+      "port_files": [
+        "packages/contracts/src/testbuilder.ts (+.test.ts)",
+        "apps/api/src/services/testbuilder/{builder,sql,index}.ts",
+        "apps/api/src/routes/testbuilder.ts",
+        "apps/api/test/testbuilder/{select,routes}.test.ts"
+      ],
+      "laws_ported": [
+        "GET /api/v1/teacher/tests/preview + /weakness-options; hasAnyRole(TEACHER,ADMIN) router-internal (SecurityConfig.java:87)",
+        "subject isolation: node 404 contract (KnowledgeGraphService.node :160-166) + PART_OF subtree filter (findSubtreeIds CTE, curriculum-port shape)",
+        "first-wins topic attribution (LinkedHashMap putIfAbsent)",
+        "difficulty-then-id deterministic ordering",
+        "selectByMarks: greedy fit -> smallest-overshoot gap close -> honest-undershoot stop; cap ALWAYS applies (:313-361)",
+        "clamps: maxQuestions 1..50 default 20; targetMarks 1..200",
+        "per-topic availability BEFORE the cap (countServableByTopic = activeByTopic().size(), ServableQuestionService.java:171-173)",
+        "answer key: includeAnswers && STRUCTURED only; current version (version desc @Query law); current scheme (created_at desc); points @OrderBy ordering; partLabel/ref nullable; acceptanceCriteria jsonb -> array; schemeState reported",
+        "weakness options: reasons {LOW_MEAN_MASTERY, ACTIVE_MISCONCEPTION_PRESENT, BLOCKED_BY_WEAK_PREREQUISITE}; policy literal test-builder-weakness/v1; unmeasured topics NEVER weak (coverage gaps, servable>0 only); targeting counts primary+secondary batched; meanMastery asc nulls-last -> misconception desc -> code asc",
+        "binding law: missing rootId -> 400 validation_failed 'missing required parameter: rootId' (CAPTURED w3-tests-weakness-options-teacher-200); type mismatches -> 400 bad_request 'malformed request' (:167-170); '' -> absent for non-String params (inferred, disclosed)"
+      ],
+      "dependency_disposition": "ClassAnalyticsService.overview UNPORTED + unclaimed (033 = teachermarking/sme per ratified split map): selection law ported behind ClassAnalyticsPort seam; route 501 not_implemented with task reference while dormant — NOT self-filed per round-6 STOP rule"
+    },
+    "transcription": {
+      "frozen_sources": ["answerinput/TranscriptionController.java", "answerinput/AnswerInputTranscriptionService.java"],
+      "port_files": [
+        "packages/contracts/src/answer-input.ts (+.test.ts)",
+        "apps/api/src/services/answer-input/{service,index}.ts",
+        "apps/api/src/routes/answer-input.ts",
+        "apps/api/test/answer-input/{service,routes}.test.ts"
+      ],
+      "doctrine": "LLM-OUTPUT surface — NOT golden-gated (GOLDEN_MASTER §3, MIGRATION_PLAN §Risks); deterministic shell + behavioural gates; provider seam DORMANT (T-MIG-032 precedent)",
+      "laws_ported": [
+        "POST /api/v1/learners/me/answer-input/transcribe; anyRequest().authenticated() router-internal (:91); null-learner invariant -> 400 transcription_bad_request",
+        "mime whitelist {image/png,image/jpeg,image/webp} BEFORE provider call; 'IMAGE/PNG' rejected (case-sensitive Set)",
+        "STRICT standard-alphabet base64 (Java Base64.getDecoder law — Node Buffer leniency explicitly countered)",
+        "4 MiB decoded cap -> 413 transcription_image_too_large with frozen message shape",
+        "blank/[empty] (case-insensitive) -> 422 transcription_nothing_readable",
+        "provider failure -> 503 transcription_unavailable, provider error message NOT leaked; dormant seam -> same 503 (chain-exhausted parity)",
+        "success: {text, provider, model, latencyMs} contract-validated; v2 system prompt carried VERBATIM (temperature 0, 700 tokens)",
+        "NOT a persistence surface: no sql dependency in the service; media reaches the provider verbatim",
+        "binding law: non-object body -> malformed_body; scalars coerce to String; absent keys -> null -> service 400"
+      ]
+    }
+  },
+  "golden_gate": {
+    "standing_cases": ["w3-teacher-tests-preview-unauthed-401", "w3-teacher-tests-weakness-options-unauthed-401", "w3-tests-weakness-options-teacher-200 (missing-rootId envelope)", "w3-transcribe-unauthed-401"],
+    "golden_changes": "ZERO (113 cases untouched, selftest OK)",
+    "capture_status": "capture-ready for full-body captures via the CI-side replay runner (operator register); no Neon credentials held this cycle (workspace wipe)"
+  },
+  "gates": {
+    "typecheck": "exit 0 x4",
+    "bun_test": "514 pass / 0 fail / 13 skip, 1407 expect (main 485/0/13, 1259 expect + this task's 29 tests / 148 expects)",
+    "selftest": "OK",
+    "flaky_note": "the register's identity budget flake did NOT fire this run"
+  },
+  "blockers": [
+    {"id": "B-1", "detail": "workspace wipe destroyed .secrets (GITHUB_PAT/NEON_PAT) — push/PR/independent-review pending operator PAT reissue; claim + implementation LOCAL ONLY on t-mig-034/r3a @ fd854c5 (r1 B-1 precedent; earliest-claim-wins timestamp = claim commit 0697c0c)"}
+  ],
+  "disclosures": [
+    "directive fragment '(dependency below; start the shell now)' arrived truncated — no dependency list received; proceeded on the deterministic-shell + behavioural-gate reading; R0 to correct",
+    "OUT-OF-FENCE: apps/api/src/index.ts mount lines in a separate flagged commit (fd854c5) per T-MIG-010/020/021/030/032 precedent",
+    "scope-fence verified clean before every commit: zero bun.lock/package.json/db drift (b7ef4a5 standing gate)"
+  ]
+}

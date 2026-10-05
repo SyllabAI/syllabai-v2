@@ -48,6 +48,8 @@ import { buildSelfMarkRouters } from "./routes/selfmark";
 import { buildSmartMarkRouters } from "./routes/smartmark";
 import { buildQuestionsRouters } from "./routes/questions";
 import { buildExamPapersRouters } from "./routes/exam-papers";
+import { buildTestBuilderRouters } from "./routes/testbuilder";
+import { buildAnswerInputRouters } from "./routes/answer-input";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
@@ -60,6 +62,8 @@ const selfmark = buildSelfMarkRouters();
 const smartmark = buildSmartMarkRouters();
 const questions = buildQuestionsRouters();
 const examPapers = buildExamPapersRouters();
+const testbuilder = buildTestBuilderRouters();
+const answerInput = buildAnswerInputRouters();
 
 const app = new Hono();
 
@@ -212,6 +216,28 @@ app.route("/api/v1/learners/me/attempts", smartmark.studentRoute);
 // review.
 app.route("/api/v1/exam-papers", examPapers.examPapersRoute);
 app.route("/api/v1/questions", questions.questionsRoute);
+
+// Test-builder + answer-input routers (T-MIG-034 — Wave 3). Path parity with
+// the frozen core: TestBuilderController under /api/v1/teacher/tests (the
+// SecurityConfig.java:87 hasAnyRole('TEACHER','ADMIN') rule — the router owns
+// its authz internally) and TranscriptionController under
+// /api/v1/learners/me/answer-input (SecurityConfig.java:91
+// anyRequest().authenticated() — the router owns its authz internally). The
+// transcription provider seam is DORMANT (null → 503
+// transcription_unavailable parity, T-MIG-032 precedent); the weakness-options
+// analytics port is DORMANT (null → 501 with the task reference — the
+// class-analytics read service is unclaimed work). The /api/v1/* fallback
+// below stays the 404-after-auth path for NO router claimed.
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-034, R0 ratification requested):
+// T-MIG-034's scope.allowed covers routes/{testbuilder}.ts,
+// routes/answer-input.ts, services/{testbuilder,answer-input}/**,
+// test/{testbuilder,answer-input}/** — NOT this file. The two mount lines +
+// import + construction + this comment are the minimal app-level wiring,
+// shipped as a separate commit per the T-MIG-010/020/021/030/032 precedent
+// so R0 can ratify or lift them out at review.
+app.route("/api/v1/teacher/tests", testbuilder.testBuilderRoute);
+app.route("/api/v1/learners/me/answer-input", answerInput.transcribeRoute);
 
 // anyRequest().authenticated() parity for paths NO router claimed
 // (SecurityConfig.java:91): anonymous callers get the 401 Boot-shaped body;

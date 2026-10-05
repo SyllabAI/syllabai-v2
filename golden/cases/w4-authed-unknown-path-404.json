@@ -1,0 +1,24 @@
+{
+  "name": "w4-authed-unknown-path-404",
+  "description": "AUTHENTICATED probe of an unknown path: 404 \u2014 the posture pair with the run-001 pre-auth case of the same path (401): the port must keep the security chain ordering (JWT filter -> 401 before routing -> 404 authed)",
+  "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "GET",
+  "path": "/api/v1/learners/me/unknown-capture-surface",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 404,
+    "body": {
+      "status": 404,
+      "error": "not_found",
+      "message": "resource not found",
+      "timestamp": "2026-10-05T15:48:33.094385355Z"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}
