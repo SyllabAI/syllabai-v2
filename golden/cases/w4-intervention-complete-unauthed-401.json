@@ -1,0 +1,20 @@
+{
+  "name": "w4-intervention-complete-unauthed-401",
+  "description": "POST /api/v1/learners/me/intervention-runs/00000000-0000-0000-0000-0000000000c1/complete unauthenticated: frozen core answers 401 from the filter chain before any persistence path (T-MIG-003/004/007 precedent).",
+  "source": "captured from https://syllabai-core.onrender.com (deployed frozen core, read-only pre-auth authz shell) 2026-10-05 (round-7 session, Asia/Dhaka operator window) by T-MIG-040-PREP run-001 (R7a, agent-da4ab8, zai-web web-da4ab8b1); probes synthetic, no PII, no credentials, zero persistence path (SecurityConfig source-ordering proof in the claim receipt)",
+  "method": "POST",
+  "path": "/api/v1/learners/me/intervention-runs/00000000-0000-0000-0000-0000000000c1/complete",
+  "request": {},
+  "expect": {
+    "status": 401,
+    "body": {
+      "timestamp": "2026-10-05T15:25:50.373Z",
+      "status": 401,
+      "error": "Unauthorized",
+      "path": "/api/v1/learners/me/intervention-runs/00000000-0000-0000-0000-0000000000c1/complete"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

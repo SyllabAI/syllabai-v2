@@ -1,0 +1,43 @@
+{
+  "name": "w4-attempt-mcq-practice-201",
+  "description": "MCQ practice against the V7 seed question: 201 with deterministic marks (BKT posterior update; the W4 decay anchor P0/lastPracticed this capture pins for the state reads)",
+  "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "POST",
+  "path": "/api/v1/attempts",
+  "request": {
+    "body": {
+      "questionId": "40000000-0000-0000-0000-000000000001",
+      "chosenOptionId": "41000000-0000-0000-0000-000000000001",
+      "responseTimeMs": 25000,
+      "confidence": 4,
+      "selfDoubtFlag": false,
+      "timedCondition": false
+    },
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 201,
+    "body": {
+      "attemptId": "35f91760-15c7-4be2-9e92-527547d1ce32",
+      "questionId": "40000000-0000-0000-0000-000000000001",
+      "correct": false,
+      "marksAwarded": 0,
+      "marksTotal": 1,
+      "correctOptionLabel": "C",
+      "implicatedMisconceptionIds": [
+        "30000000-0000-0000-0000-000000000001"
+      ],
+      "submittedAt": "2026-10-05T15:48:32.540861792Z"
+    }
+  },
+  "tolerate": [
+    "attemptId",
+    "createdAt",
+    "id",
+    "submittedAt",
+    "timestamp"
+  ],
+  "seq": 20
+}
