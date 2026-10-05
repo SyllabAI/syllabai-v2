@@ -1,0 +1,52 @@
+version: 1
+task:
+  id: T-MIG-036
+  title: "Identity budget test flake — root cause + determinism fix (register item:
+    the flaky identity-budget routes test, 2 fleet occurrences, CI-evidenced
+    on main @ 3a0cf41 via run 37294749131)"
+  owner: "r3-fix (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)"
+  status: CLAIMED
+  claimed_at: "2026-10-05T11:49:17Z"
+  priority: P2
+  wave: "register-item (maintenance — R0-SWEEP-4/SWEEP-5 standing register entry
+    'flaky identity budget test root-cause (2 occurrences)'); NOT self-filed
+    wave work. The id was returned to the free pool by R0-COLLISION-1 (ruling
+    5991610725: '#45 closed, yaml never merged, zero namespace damage'); card
+    filed to satisfy one-task-one-id (R0-REPAIR-1/2 lesson). R0 may re-id or
+    re-frame at intake."
+  deps: [T-MIG-010, T-MIG-016]
+  execution_record: >
+    (claim entry 2026-10-05T11:49Z) Root cause CONFIRMED from fleet CI evidence
+    BEFORE the branch cut — receipts/T-MIG-036/run-001-root-cause.json: CI run
+    37294749131 (main @ 3a0cf41, job 111713216542, step Test) shows
+    identity/routes.test.ts:329 expect(currentCount(...)).toBe(9) FAILING at
+    10:10:02.126Z while the sibling budget test PASSED at 10:09:59.039Z — the
+    real-bcrypt failure sequence straddled the 10:10:00 wall-minute boundary
+    and the minute-ALIGNED fixed window rolled mid-test (Java-faithful
+    semantics; the wall-clock-dependent test assertion is the defect). Fix is
+    test-only: pin an injectable stepping clock into the two budget routes
+    tests via the harness (AuthService reads identity.budget lazily —
+    service.ts:154 — so the harness swaps the budget on the services bag
+    BEFORE construction; zero production-file changes). Window-roll semantics
+    gain a dedicated law pin in budget.test.ts.
+base:
+  repo: "syllabai-v2 @ 79bdc23 (R0-SWEEP-5 main, W1+W2 CLOSED, zero open PRs at claim); frozen ref: syllabai-core @ 6cad6ef (LoginAttemptBudget.java law, read-only)"
+basis: >
+  R0-SWEEP-5 register ('flaky identity budget test root-cause (2 occurrences)',
+  occurrence 1: T-MIG-017-era main pass; occurrence 2: PR #37 gates recorded
+  1 fail / re-run green) + R0-COLLISION-1 flake escalation note. Root cause
+  independently derived and CONFIRMED against the retained CI log of run
+  37294749131 (failure on main @ 3a0cf41, 10:09:30Z) before claiming.
+scope:
+  allowed:
+    - "apps/api/test/identity/routes.test.ts"
+    - "apps/api/test/identity/budget.test.ts"
+    - ".syllabai/tasks/T-MIG-036-identity-budget-test-flake.yaml (status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-036/**"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "apps/api/src/** (ZERO production changes — LoginAttemptBudget is Java-faithful; the injectable clock already exists at budget.ts:24-28,41; AuthService reads identity.budget lazily at service.ts:154 so the harness can pin the clock test-side)"
+    - "golden/cases/** (never weakened — this fix touches no golden case)"
+    - "packages/** (contracts/db untouched)"
+    - "apps/hub/**, other lanes' active files (002R w0a, 031 R3-api-a, 032 r7a)"
+    - "syllabai-core / syllabai-hub (frozen, C1)"
