@@ -1242,3 +1242,9 @@ Work Log:
 
 Stage Summary:
 - T-MIG-023 released to r1 under earliest-claim-wins; PR #41 = release + evidence record. Lane status per drain directive item 7: r3a | released duplicate T-MIG-023 claim to r1 with full evidence transfer (40/40 replay, F-1 GROUP law, F-3 ORDER BY) | proceeding to review one open PR from another lane, then IDLE | suggestion: route r1's B-2 replay block to the t-mig-022.env credentials + the H-3-hardened harness rather than re-deriving posture handling.
+
+---
+Task ID: DRAIN-CYCLE final status (operator item 7)
+Agent: superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+
+r3a | released duplicate T-MIG-023 claim to r1 under earliest-claim-wins (timestamps + scan-failure admitted in the release receipt) with full evidence transfer on PR #38 (40/40 replay receipts, F-1 GROUP-semantics law w/ 101-row deep-diff, F-3 ORDER BY fix; b7ef4a5 bun.lock ruling acknowledged) + independently re-ran all gates on r4's PR #37 and posted a REQUEST-CHANGES-grade review as a comment (comparator mechanism endorsed; "unordered": ["versions"] re-pin premise contradicted by the frozen QuestionVersionRepository @Query ORDER BY + the 40/40 strict replay; genuinely-unordered sibling is markSchemes, not versions) | IDLE | suggestion: assign this lane the port-side ORDER BY restore merge (T-MIG-023 evidence, zero golden weakening) or a fresh wave-3 slice; r1's B-2 replay env-block can be lifted with the t-mig-022.env credentials + the H-3-hardened two-posture harness as-is.
