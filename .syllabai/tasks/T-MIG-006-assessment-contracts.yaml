@@ -1,0 +1,116 @@
+version: 1
+task:
+  id: T-MIG-006
+  title: "Wave-3 assessment-loop zod contracts — port the assessment module's DTO
+    surface constraint-for-constraint into packages/contracts (contracts-first
+    prerequisite for the T-MIG-030..034 Wave-3 ports)"
+  owner: "R1-contracts-c (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+    — self-selected per briefing §5 blank-role protocol: read the worklog tail
+    (board: 7 DONE, T-MIG-011 claimed, Wave-2 fully fenced by open PRs
+    #16/#18/#19/#20/#22), then claimed the highest-priority OPEN serialised
+    point with zero fence overlap. This lane's session ALSO holds the
+    orientation obligation — the Phase-1 orientation entry rides this branch
+    (w0a precedent)."
+  status: IN_REVIEW # implementation + gates complete; PR opened 2026-10-05 (stacked on PR #18 — merge-order note in the PR body for R0)
+  claimed_at: "2026-10-05T12:22:00+06:00 (Asia/Dhaka)"
+  priority: P1
+  wave: 3
+  deps: [T-MIG-001, T-MIG-005]
+  execution_record: >
+    (claim state — filled by the doing agent; append, never rewrite)
+    Claimed per AGENT_COORDINATION §2.1 in this branch-start commit. Base
+    decision disclosed: branch is STACKED on t-mig-005/r1 @ 9a99790 (PR #18,
+    IN_REVIEW) because the assessment DTO surface genuinely reuses that
+    lane's exports (questionTypeSchema, contentValidationStateSchema,
+    uuidPathSchema, notBlank) — Question.Type and the ValidationState enums
+    were first ported there from the same frozen sources (T-MIG-010
+    stack-on-in-flight-PR precedent; rebase duty acknowledged if #18 moves).
+
+    2026-10-05T06:45Z (COMPLETION, run-001): port complete —
+    packages/contracts/src/assessment.ts (33 exported schemas/types: 4
+    request DTOs incl. controller-nested SelfMarkRequest with the
+    boundary-level duplicate-part superRefine, 13 response views incl. the
+    ExamPaperController-nested PaperView/PaperDetailView/PaperQuestionView
+    and SelfMarkView, both MarkingState domains, Provenance, family-type,
+    SpecPointRef, param/path bundles) + assessment.test.ts (53
+    accept/reject pins). All 11 dto/ records + all 5 controller-nested
+    record families ported with header-named frozen sources; null-vs-empty
+    wire facts verified at the AssessmentService/AttemptHistoryService
+    construction sites; capture-unproven tags on externalRef/topicNodeId/
+    examPaperId/subjectId/paper-identity fields. GATES: typecheck x4 exit
+    0; bun test 185 pass / 0 fail / 4 skip (integration tier unchanged);
+    golden --selftest OK; bun.lock byte-identical. Honest note H-1 in the
+    receipt: one test expectation corrected (zod strip semantics), no
+    schema constraint widened. Receipt:
+    .syllabai/receipts/T-MIG-006/run-001-gates.json.
+    Frozen sources read for this port: syllabai-core
+    src/main/java/com/syllabai/assessment/dto/*.java (all 11 records) +
+    AttemptController, AttemptHistoryController, ExamPaperController (incl.
+    nested PaperView/PaperDetailView/PaperQuestionView), QuestionController,
+    LearnerSelfMarkController (incl. nested PartSelfMark/SelfMarkRequest/
+    SelfMarkView/PartView), AssessmentService + AttemptHistoryService
+    construction sites (null-vs-empty wire facts), Answer.java:34 +
+    Attempt.java:82 (the two MarkingState domains), Question.java:26-27
+    (Type/Provenance), QuestionPart.java (prompt/commandWord nullability),
+    ServableQuestionService.specPointRefs (SpecPointRef role domain).
+base:
+  repo: "syllabai-v2 @ 67639db (main) STACKED on t-mig-005/r1 @ 9a99790
+    (PR #18, IN_REVIEW); frozen refs: syllabai-core @ main, syllabai-hub @
+    93226a43"
+basis: >
+  Operator directive 2026-10-04 trace 347fbb29ca71934f658854f7261bdb83
+  ("quickly make the new repo catch up"); MIGRATION_PLAN.md §4.1 (contracts
+  first) + §5 Wave 3 + §10 ("capture lane runs one wave ahead"; contracts →
+  implementation → golden are the three serialised points — the assessment
+  contracts are the serialised prerequisite no Wave-3 port lane can start
+  without); AGENT_COORDINATION.md §2.1/§4/§5.
+scope:
+  allowed:
+    - "packages/contracts/src/assessment.ts (NEW — the Wave-3 DTO port)"
+    - "packages/contracts/src/assessment.test.ts (NEW — accept/reject parity
+      tests)"
+    - "packages/contracts/src/index.ts (ONE re-export line — the ratified
+      one-line append pattern every contracts lane uses)"
+    - ".syllabai/tasks/T-MIG-006-assessment-contracts.yaml (this file —
+      status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-006/**"
+    - ".syllabai/worklog.md (append-only entries)"
+  forbidden:
+    - "packages/contracts/src/content.ts / curriculum.ts / errors.ts /
+      auth.ts (T-MIG-005's open fence — imported read-only on the stacked
+      branch; auth.ts is only read, never edited)"
+    - "apps/api/** (R3/R4 port lanes — they consume these contracts)"
+    - "apps/hub/** (R5, T-MIG-011 claimed)"
+    - "packages/db/** (R2) · golden/** (R6)"
+    - "production Neon writes (C2); syllabai-core / syllabai-hub writes (C1)"
+acceptance:
+  - "every assessment-module DTO (the 11 records in assessment/dto/ plus the
+    controller-nested request/response records of the five Wave-3 learner
+    surfaces) has a zod schema with a header naming its frozen Java source;
+    jakarta constraints copied exactly (@NotNull/@Min/@Max/@Size/@NotEmpty)"
+  - "response-view nullability follows the construction-site wire facts
+    (null-vs-empty verified in AssessmentService/AttemptHistoryService),
+    Jackson Boot default facts documented (records: absent never happens,
+    null does; Instant = ISO-8601; primitive boolean null → false)"
+  - "accept/reject parity tests in assessment.test.ts green; root typecheck
+    x4 + bun test + golden --selftest all exit 0; receipt recorded under
+    .syllabai/receipts/T-MIG-006/"
+  - "no widening of any constraint to make a test pass (index.ts rule 3);
+    Jackson scalar-coercion facts are DOCUMENTED for the port lanes, not
+    silently dropped"
+next_safe_actions:
+  - "T-MIG-030 port lane (R3/R4) consumes these schemas for
+    /api/v1/attempts + /api/v1/attempts/structured + /api/v1/questions/**
+    + /api/v1/exam-papers** + /api/v1/learners/me/attempts**; Jackson
+    coercion shims (scalar→String, string-boolean) are port-layer duties —
+    see the coercion note in assessment.ts"
+  - "Wave-3 capture lane (R6): the real-data tranche for attempt/question
+    surfaces is gated on the T-MIG-004 F-5 NEON_PAT unblock; unauthed 401
+    shells for the five routes are capturable from Render without JDK"
+  - "follow-up contracts task (R1): smartmark/teacher-marking/test-builder/
+    transcription DTO surfaces (teacher/dto, smartmark, sme, answerinput
+    packages) — deliberately OUT of this task; they belong to the W3
+    remainder / W5 lanes"
+  - "R1 consolidation (post-#18): content.ts javaIntParamSchema is private;
+    assessment.ts carries a documented local mirror — consolidate into one
+    exported param-binding helper when both lanes are merged"
