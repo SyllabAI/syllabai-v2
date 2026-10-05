@@ -101,6 +101,38 @@ Stage Summary:
 
 ---
 
+Task ID: ORIENTATION (Phase-1 gate; previously committed 2026-10-04T18:10Z on the withdrawn t-mig-002/r2 local branch)
+Agent: R5-hub-lane (Super Z, zai-web session web-1f157e25)
+Task: Re-land the Phase-1 orientation entry that was stranded by the T-MIG-002 claim collision, so this lane's first worklog entry remains an Orientation per agent briefing §2.
+
+Work Log:
+- Phase-1 orientation was completed at 18:08–18:10Z before claiming T-MIG-002 (commit 385e0c9, never pushed): v2 docs in order; core README/render.yaml/DEPLOYMENT; hub ARCHITECTURE/REPOSITORY_MAP; ADRs 031/025/036/034/020/023; T-C42.yaml; bench receipts. Full text + findings were re-landed during the t-mig-002 rebase and now live in this worklog's history.
+- T-MIG-002 outcome: claimed 18:08Z locally, completed a full verified baseline, then discovered peer R2-db's pushed IN_REVIEW claim (18:20Z, PR #4). Yielded per §2.1 with an independent re-verification of their branch (typecheck 0 errors on repo pins; battery ALL PASS) posted as PR #4 review comment (issuecomment-5983442044). Lesson recorded: claims only exist once pushed — this claim goes up before implementation.
+
+Stage Summary:
+- Product loop + correctness mechanisms (receipts / fail-fast / preregistration) as stated in the earlier ORIENTATION entry; operator questions 1–4 recorded there, with Q1 (path parity → v2 serves /api/v1/** + /actuator/health) answered by R0 in the T-MIG-001 review.
+- Now claiming T-MIG-011 (hub adapter, Wave 1, R5 lane): parallel-safe work (mathNormalize lift into @syllabai/shared + env-driven per-surface API base override + .env.example) proceeds while the auth-flow verification waits on the T-MIG-010 merge; dep-gated remainder documented in the task yaml. Claim pushed IMMEDIATELY this time.
+
+---
+
+Task ID: T-MIG-011
+Agent: R5-hub-lane (Super Z agent, session web-1f157e25, utc 2026-10-04)
+Task: Hub adapter (Wave 1) — mathNormalize lift into @syllabai/shared + per-surface strangler-fig API routing + env reference sheet.
+
+Work Log:
+- Claimed 19:16:23Z and PUSHED the claim commit before implementing (T-MIG-002 collision lesson).
+- Lifted mathNormalize byte-identical into packages/shared/src/mathNormalize.ts per the shared package charter; 10 TS-only non-null assertions forced by noUncheckedIndexedAccess (base tsconfig has it, hub doesn't) — every site provably safe, runtime identical, documented in an in-file LIFT NOTE.
+- 17 parity pins freeze rules 1-6 + R1-R4 + corpus identity at the package boundary; one pin records actual production behaviour (R4 closes before non-mathish "mol") rather than the source header's idealised shape.
+- Hub shim: lib/mathNormalize.ts re-exports the canonical implementation; 4 call sites untouched and green.
+- api.ts: NEXT_PUBLIC_API_V2_BASE_URL + V2_SURFACE_PREFIXES (Wave 1: /api/v1/auth) — env-driven per-surface routing with single-env rollback; .env.example documents all public envs.
+- Gates: 17/17 pins, 49/49 root tests, golden selftest OK, shared/contracts/db typechecks clean, scoped hub tsc 0 errors in both touched files.
+- Fence disclosures for R0: hub package.json dep line, hub .gitignore !.env.example negation, and the shim (mandated by the task basis; outside the yaml's parenthetical).
+
+Stage Summary:
+- Parallel-safe scope COMPLETE and pushed; task stays IN_PROGRESS honestly: the live auth-flow verification against the v2 api is dep-gated on T-MIG-010's merge (claim arbitration pending r3/r3b) — flipping NEXT_PUBLIC_API_V2_BASE_URL is the only remaining action after 010's golden gate. Receipt: .syllabai/receipts/T-MIG-011/run-001.json.
+
+---
+
 Task ID: T-MIG-ORIENTATION (Phase-1 gate per agent briefing §2 — this agent's own entry; no PR from this agent merges before it exists)
 Agent: R3-lane self-selected (superz-agent-b, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9 — a DIFFERENT session from the R1 session whose orientation appears above; both are agents under the same operator briefing)
 Task: Full orientation tour of the frozen platform before touching any migration code — product loop, correctness mechanisms, open questions. (Entry authored 2026-10-04 during a first work session whose local commits could not be pushed — dead GITHUB_PAT; landed 2026-10-05 with fresh operator-issued credentials, question statuses updated.)
@@ -969,3 +1001,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-021 -> DONE (merged 9732a1e). Wave-2 curriculum READ surface live behind the golden gate. Queue after this merge: #26 (R1-contracts-c, renumber-to-018 refile pending — directive corrected after R0-REPAIR-1 took 017 for the golden-verify task). Branch sightings: t-mig-007/r6 (R6 lane, no PR yet). Board: T-MIG-011 CLAIMED (r5 silent ~13h — reassignment candidate). Standing operator items: reaffirm single-R0 authority after the #25 breach; CI-side Neon integration runner; T-MIG-002 baseline-SQL repair (F-5); PAT rotation (chat-transit).
+
+---
+
+Task ID: T-MIG-011
+Agent: R5-hub-lane (Super Z, zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b — REASSIGNED owner; prior claimant r5/session web-1f157e25)
+Task: Reassignment execution — adopt r5's parallel-safe scope, merge-intake 92 main commits, full re-gate, flip card to IN_REVIEW with PR.
+
+Work Log:
+- Operator word trace 1a10afea000f7635 (2026-10-05) reassigned T-MIG-011 to this lane after two fleet rows flagged "r5 silent ~12-13h — reassignment candidate". Provenance recorded in the card: earliest-claim-wins was honored until the operator's explicit supersession; r5's pushed work was ADOPTED VERBATIM, not redone (verified first-hand: commits c599a90d1 + fd0700ff8, receipt run-001, gates re-recorded).
+- MERGE-INTAKE UNION: origin/main 5ee240e (92 commits / 194 files since fork 2cfaf41) merged into t-mig-011/r5 as bfa26a3. Conflicts confined to .syllabai/worklog.md — resolved as append-only union with r5's re-landed entries spliced verbatim before the main chain (deterministic splice, pre-write asserts, both sides byte-preserved); apps/hub/package.json auto-unioned (@syllabai/hub rename + @tiptap/core + this lane's @syllabai/shared coexist). ZERO collisions on every core scope file; open PRs #26/#29/#30 checked zero-overlap.
+- FULL RE-GATE on bfa26a3: bun install clean (930 pkgs); shared parity pins 17/17; root tests 303/0/13skip (13 = Neon-branch identity-integration set, matching R0's 286/0/13skip record — growth from T-MIG-021 tranche-2); golden selftest OK; contracts/shared/db typechecks clean; apps/api now clean too (r5's pre-existing TS2688 fixed on main by T-MIG-012); hub `tsc -p apps/hub` 0 errors == main baseline 0 errors (delta-zero, measured both sides).
+- DEP STATUS: T-MIG-010 DONE (PR #11 after R0 arbitration) — the gate that held r5 at IN_PROGRESS is open. Card flipped to IN_REVIEW with the PR; run-002.json receipt filed.
+- REMAINDER ESCALATED (§6.1, honest — not silently dropped): the live auth-flow check (hub login vs v2 api, env flipped) exercises DB write paths via the ported rate-limit/audit surface → needs a task-owned Neon BRANCH (NEON_PAT not held by this session). Operator to issue a branch DSN to this lane or route the check to R6's capture lane. The env switch is inert by default: merging this PR changes no runtime behaviour anywhere until NEXT_PUBLIC_API_V2_BASE_URL is explicitly set (single-env rollback intact).
+
+Stage Summary:
+- T-MIG-011 IN_REVIEW: r5's parallel-safe scope (mathNormalize byte-identical lift + 17 parity pins + hub shim + per-surface strangler routing + .env.example) re-gated green on the union head bfa26a3 with zero scope collisions across 92 main commits. Only open item is the Neon-credential-gated live flow check, escalated. Receipts: run-001.json (r5, adopted) + run-002.json (reassignment + merge-intake + re-gate).

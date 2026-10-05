@@ -2,12 +2,82 @@ version: 1
 task:
   id: T-MIG-011
   title: "Hub adapter (Wave 1) — auth flow against v2 api on branch + lift mathNormalize into @syllabai/shared"
-  owner: "unassigned"
-  status: OPEN
+  owner: "R5-hub-lane (Super Z, zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b) — reassigned by OPERATOR WORD trace 1a10afea000f7635 2026-10-05; prior claimant r5 (session web-1f157e25) silent since 2026-10-04T19:24Z, two fleet worklog rows had flagged reassignment candidacy"
+  status: IN_REVIEW # reassignment + merge-intake + full re-gate pushed 2026-10-05; PR opened same day. Original claim 2026-10-04T19:16:23Z (r5, pushed at claim time — collision lesson from T-MIG-002 applied)
   priority: P1
   wave: 1
   deps: [T-MIG-010]
-  execution_record: "—"
+  execution_record: >
+    2026-10-04 (r5, Super Z agent session web-1f157e25; branch t-mig-011/r5,
+    claim pushed BEFORE implementation — lesson from the T-MIG-002 collision
+    where my earlier local claim lost to a pushed one). PARALLEL-SAFE SCOPE
+    COMPLETE: (1) mathNormalize lifted BYTE-IDENTICAL from
+    apps/hub/src/lib/mathNormalize.ts into packages/shared/src/mathNormalize.ts
+    per the @syllabai/shared charter ("parity becomes an import statement");
+    textual deltas are TS-ONLY non-null assertions forced by
+    noUncheckedIndexedAccess in tsconfig.base.json (hub's tsconfig lacks it) —
+    every site provably safe, runtime identical, documented in the file's
+    LIFT NOTE header. (2) 17 parity pins added
+    (packages/shared/src/mathNormalize.test.ts) freezing rules 1-6 + R1-R4 +
+    corpus identity cases at the package boundary; one pin records ACTUAL
+    production behaviour (R4 one-sided bold closes before non-mathish "mol"),
+    not the header's idealised shape. (3) hub's
+    apps/hub/src/lib/mathNormalize.ts converted to a re-export shim — 4 call
+    sites (tutor/assistant/CLA) unchanged and green. (4) Strangler-fig
+    per-surface routing in apps/hub/src/lib/api.ts: NEXT_PUBLIC_API_V2_BASE_URL
+    + V2_SURFACE_PREFIXES (Wave 1: /api/v1/auth per R0's path-parity ruling);
+    unsetting the env reverts to the core in one redeploy (rollback §7).
+    (5) apps/hub/.env.example documents all public envs. GATES: 17/17 shared
+    pins; 49/49 root tests; golden selftest OK; packages/shared+contracts+db
+    typecheck clean; scoped apps/hub tsc shows 0 errors in both touched files
+    (remaining hub errors are pre-existing filtered-install resolution noise
+    in unrelated files; hub is not in the CI typecheck lane until T-MIG-000).
+    FENCE DISCLOSURES (for R0, receipts-gap precedent): apps/hub/package.json
+    (+1 line "@syllabai/shared": "workspace:*" — mechanically required for
+    the re-export this task's basis mandates), apps/hub/.gitignore (+1 line
+    "!.env.example" — root ignore already negates it; hub ignore shadowed
+    the negation). DEP-GATED REMAINDER (why IN_PROGRESS, not IN_REVIEW):
+    live auth-flow verification of hub login against the v2 api requires
+    T-MIG-010 merged (claim arbitration pending between r3/r3b) — the env
+    switch is built and inert until then; flipping NEXT_PUBLIC_API_V2_BASE_URL
+    is the only remaining action after 010's golden gate. Receipt:
+    .syllabai/receipts/T-MIG-011/run-001.json.
+
+    2026-10-05 (R5-hub-lane, Super Z session web-23eb7684, REASSIGNED by
+    operator word trace 1a10afea000f7635 — provenance: r5's claim was
+    earliest-wins and not contestable, but two fresh fleet worklog rows
+    marked "r5 silent ~12-13h, reassignment candidate"; the operator
+    chose reassignment, which supersedes earliest-claim-wins). ACTIONS:
+    (1) r5's pushed work adopted as-is, not redone — verified first-hand
+    from the branch (2 commits, receipt run-001, gates recorded green).
+    (2) MERGE-INTAKE UNION: origin/main (5ee240e, 92 commits / 194 files
+    since fork 2cfaf41) merged into t-mig-011/r5 as bfa26a3; conflicts
+    confined to .syllabai/worklog.md (append-only union resolved: r5's
+    re-landed entries spliced before the main chain, both verbatim);
+    apps/hub/package.json auto-unioned (pkg rename @syllabai/hub +
+    @tiptap/core line + this lane's @syllabai/shared line coexist);
+    ZERO collisions on every core scope file (packages/shared/**,
+    apps/hub/src/lib/mathNormalize.ts, api.ts untouched by all 92 main
+    commits; open PRs #26/#29/#30 also zero-overlap, checked).
+    (3) FULL RE-GATE on bfa26a3: bun install clean (930 pkgs); shared
+    parity pins 17/17; root tests 303 pass / 0 fail / 13 skip (13 skips
+    = the Neon-branch identity-integration set, matching R0's own
+    housekeeping record of 286/0/13skip on 89bfb7c — count grew with
+    T-MIG-021 tranche-2); golden selftest OK; typechecks: contracts /
+    shared / db clean, apps/api NOW CLEAN TOO (r5's recorded pre-existing
+    TS2688 was fixed on main by T-MIG-012), hub `tsc -p apps/hub` 0
+    errors == main baseline 0 errors (delta-zero). (4) DEP STATUS:
+    T-MIG-010 DONE (PR #11, R0 arbitration won by R3-api-a) — the dep
+    gate that held r5 at IN_PROGRESS is OPEN. REMAINDER (honest, not
+    silently dropped): the live auth-flow verification (hub login page
+    against the v2 api with NEXT_PUBLIC_API_V2_BASE_URL flipped) touches
+    DB write paths through the ported rate-limit/audit surface, so per
+    briefing §0 it requires a task-owned Neon BRANCH credential
+    (NEON_PAT) which this session does not hold — escalated per
+    AGENT_COORDINATION §6.1 for the operator to either provide the
+    Neon-branch DSN to this lane or route the live-flow check to R6's
+    capture lane. Everything else in scope is complete and re-gated.
+    Receipt: .syllabai/receipts/T-MIG-011/run-002.json.
 base:
   repo: "apps/hub @ 93226a43 import; PROVENANCE.md rules bind this lane"
 basis: >
