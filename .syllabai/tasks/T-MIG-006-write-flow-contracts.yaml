@@ -1,0 +1,91 @@
+version: 1
+task:
+  id: T-MIG-006
+  title: "Write-flow zod contracts — port the content/curriculum controllers' WRITE-surface DTOs (past-paper ingest/embed, validate/reject/flag/unflag for papers/versions/schemes, place, topic-mapping writes, scheme criteria) constraint-for-constraint into packages/contracts — the contracts-first prerequisite for the write-surfaces follow-up named by PR #20's 501s and for the Wave-3 assessment loop (T-MIG-030..034)"
+  owner: "R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e) — self-filed per briefing §5 role-vacancy: R7 dossier dependency_gates names 'packages/contracts is R1's fence — zod schemas need R1 coordination at source (T-MIG-010 precedent: request, don't reach into the fence)'; PR #20 ships honest 501s for every write surface calling for a follow-up; no yaml on any in-flight branch claims the write-contracts prerequisite. SECOND-LANE DISCLOSURE: claimed on explicit operator directive (IM trace 1a10aa5d3ca4eb61, 2026-10-05) while T-MIG-005 (same agent) sits IN_REVIEW awaiting R0 — disjoint fences, no impact on 005 review turnaround; R0 may sequence or decline."
+  status: IN_REVIEW # work complete, all gates green (see execution_record); pushed on t-mig-006/r1 — PR #23 (stacked on #18, base t-mig-005/r1). Awaiting R0: id ratification, stacking acceptance, merge of #18 first.
+  priority: P2
+  wave: 2 # bridge lane: contracts for the write surfaces deferred out of the W2 read ports; unblocks the W3 assessment loop (030..034)
+  deps: [T-MIG-005] # imports Document.Kind / ValidationState / Question.Type enums, Spring-exact binding mirrors, error envelopes from PR #18 (CI verify+hub SUCCESS, mergeable clean)
+  execution_record: >
+    (claim entry 2026-10-05T06:08:30Z) Board survey at claim: main 67639db, 9
+    open PRs. PR #18 (this lane's T-MIG-005) IN_REVIEW — CI verify+hub SUCCESS
+    @ 9a99790, mergeable_state clean, no review yet. T-MIG-020 collision:
+    r3a claimed 2026-10-05T05:23:50Z (PR #20, IN_REVIEW, 25/25 live replay)
+    vs r3 claimed 05:41:57Z (IN_PROGRESS, tranche-1) — earliest-claim favors
+    r3a; R0 arbitrates. T-MIG-021 claimed 05:54:23Z (PR #19, claim-only).
+    T-MIG-014 three-way id collision (PR #13 db-driver vs PR #15 ratelimit;
+    015/r7a yielded and renumbered). R7 dossier (PR #17) proposed 022 =
+    teacher content + question assets — that scope is fully absorbed by
+    r3a's 020 (26 content cases incl. review queues + question assets) and
+    021 (12 curriculum cases); 022 needs an R0 call, not a new claim.
+    GAP FILED HERE: ContentController + ContentDocumentController WRITE
+    surfaces (past-paper ingest/embed, validate/reject/flag/unflag for
+    papers/versions/schemes, place, topic-mapping writes, scheme criteria)
+    ship as honest 501s in PR #20, each naming "the T-MIG-020 write-surfaces
+    follow-up"; MIGRATION_PLAN §5 Wave 3 = assessment loop (T-MIG-030..034);
+    §4.1 contracts-first forbids porting any endpoint before its zod schema
+    exists and is diffed against the Java DTO; packages/contracts is R1's
+    fence per the dossier. PLAN: raw-read (C1) the write endpoints +
+    request/response DTOs + jakarta.validation annotations from frozen core
+    6cad6ef (teacher/ContentController, content/ContentDocumentController;
+    TeacherCurriculumController checked for writes) → packages/contracts/src/
+    content-writes.ts (scheme criteria + topic mapping included), reusing 005
+    enums/binding mirrors/error envelopes, source-file headers per constraint.
+    ACCEPTANCE = constraint-for-constraint diff vs the Java DTOs + pin tests
+    derived from Java-declared shapes (NO golden write captures exist —
+    T-MIG-003 captured only the 5 auth write cases, already covered by
+    T-MIG-001's auth.ts; negative pins added for Java-rejected inputs);
+    contracts typecheck/tests + repo typecheck x4 + bun test + golden
+    selftest.
+    WORK COMPLETE 2026-10-05 (same session): packages/contracts/src/
+    content-writes.ts + content-writes.test.ts + index.ts export line.
+    Ported: PastPaperDraftDto (5 nested records), CurriculumDraftDto
+    (recursive TopicDraft via z.lazy — first recursive schema in the
+    package), CanonicalDocumentDto (13 top-level fields, 4 element
+    families, §8 snake_case wire names preserved), CanonicalDocumentValidator
+    ported constraint-for-constraint as canonicalDocumentViolations (violation
+    strings + order byte-matched) incl. the P-6 derivedDocumentId SHA-256
+    mirror (independently computed test vectors), 3 review-action request
+    bodies (PlaceRequest @NotNull uuid, TopicMappingRequest, SchemeValidateRequest
+    whole-body-optional), validate-all `force` param (boxed Boolean binding),
+    and 8 write-response views (IngestionResultView ×2 with z.literal
+    "SUGGESTED", IngestionView, EmbeddingView, VersionSummary, SchemeSummary,
+    BatchResult, TopicMappingResult). FINDINGS: F1 request-side binding ≠
+    response-side serialization — `.nullable().default(null)` is the Jackson
+    mirror for references (absent ≡ null), `.default(<jvm>)` + null-reject
+    for primitives; .nullish() (response convention) is WRONG on request
+    bodies. F2 Jackson default scalar coercions mirrored (javaJsonInt/
+    Double/Bool: "3"→3, "1e3"→1000 integral-only, "true"/"false" text).
+    F3 TeacherCurriculumController has 5 write endpoints (drafts, nodes
+    validate/reject, versions validate/archive) that PR #20's 501 inventory
+    did NOT list — write follow-up scoping must include them. F4 verified
+    read-only: CurriculumController, ContentReaderController,
+    QuestionAssetController (no write mappings). GATES exit-captured:
+    contracts typecheck 0; contracts tests 109 pass / 0 fail (was 69 —
+    +40 pins); repo typecheck x4 exit 0; bun test 181 pass / 4 skip /
+    0 fail (was 141 — 0 regressions); golden --selftest OK.
+scope:
+  allowed:
+    - "packages/contracts/src/**"
+    - ".syllabai/tasks/T-MIG-006-write-flow-contracts.yaml (this file — status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-006/**"
+    - ".syllabai/worklog.md (append-only; process artifact per AGENT_COORDINATION §5)"
+  forbidden:
+    - "apps/** (020/r3a IN_REVIEW owns the content routes; 021/r7a, 011/r5, 013/r3 in flight)"
+    - "packages/db/** (R2 lane; 014/r3a driver dispatch IN_REVIEW)"
+    - "golden/** (T-MIG-013 touches replay tooling; read-only usage only)"
+    - "syllabai-core / syllabai-hub writes of any kind (C1 — raw reads only)"
+    - "any Neon connection (contracts need none)"
+    - "widening any zod schema to make a case pass (§7 anti-pattern)"
+base:
+  repo: "syllabai-v2 (branch t-mig-006/r1 stacked on t-mig-005/r1 @ 9a99790; main at 67639db); frozen ref: syllabai-core @ 6cad6ef"
+basis: >
+  Operator directive 2026-10-05 trace 1a10aa5d3ca4eb61 ("check, claim and
+  continue to work"); MIGRATION_PLAN §4.1 (contracts-first — no endpoint
+  implemented before its zod schema exists and is diffed against the Java
+  DTO) and §5 Wave 3 (assessment loop, T-MIG-030..034); R7 dossier
+  wave2-claim-prep dependency_gates (contracts fence; 501 follow-up naming);
+  AGENT_COORDINATION §2 (claim protocol), §4 (yaml format), §7 (no schema
+  widening); T-MIG-013/005 id-ratification precedent; honest-response rule
+  (PR #20's named 501s).

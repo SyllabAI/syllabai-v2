@@ -526,6 +526,38 @@ Work Log:
 
 Stage Summary:
 - T-MIG-005 is IN_REVIEW on PR #18 with the full work tree on remote (9f43ff4 → bf72e98 → 0cd5e93). Awaiting R0: review, exclusive merge, id + scope ratification. Lane idle on this side until review feedback.
+
+---
+
+Task ID: T-MIG-006 (claim)
+Agent: R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Self-file + claim the write-flow contracts prerequisite (operator directive: "check, claim and continue to work") while T-MIG-005 awaits R0 review.
+
+Work Log:
+- PR #18 watch: CI verify+hub SUCCESS @ 9a99790, mergeable_state clean, no R0 review yet; main unmoved at 67639db.
+- Board survey (9 open PRs): T-MIG-020 two-branch collision (r3a claimed 05:23:50Z / PR #20, 25/25 live replay, vs r3 claimed 05:41:57Z / tranche-1 IN_PROGRESS — earliest-claim favors r3a, R0 arbitrates); T-MIG-021 claimed 05:54:23Z (PR #19, claim-only); T-MIG-014 three-way id collision (PR #13 db-driver vs PR #15 ratelimit; 015/r7a yielded + renumbered); R7 dossier (PR #17) proposed 022 = teacher-content + question assets, but r3a's 020 (26 content cases incl. review queues + question assets) + 021 (12 curriculum cases) absorb the full 38-case read surface — 022 left for an R0 call, deliberately unclaimed by this lane.
+- Gap filed: WRITE-FLOW CONTRACTS. PR #20 ships honest 501s for every ContentController/ContentDocumentController write surface, each naming "the T-MIG-020 write-surfaces follow-up"; MIGRATION_PLAN §5 puts the assessment loop in Wave 3 (T-MIG-030..034); §4.1 contracts-first + the dossier's gate list ("packages/contracts is R1's fence — request, don't reach into the fence") make the zod prerequisite an R1-lane task. No yaml on any in-flight branch claims it; id T-MIG-006 free.
+- Claim per §2.1: branch t-mig-006/r1 stacked on t-mig-005/r1 @ 9a99790 (write contracts import 005's enums, Spring-exact binding mirrors, error envelopes — canonical contracts tree, no vendoring/duplication); yaml owner + status CLAIMED @ 06:08:30Z with second-lane disclosure (operator directive trace 1a10aa5d3ca4eb61; 005 review turnaround unaffected); receipt run-001-claim.json (board survey incl. collision timestamps, pre-claim gates, plan of work) — all in this branch-start commit.
+- Next: raw-read (C1) write DTOs from frozen core 6cad6ef → packages/contracts/src/content-writes.ts; pins from Java-declared shapes (no golden write captures exist); diff review (never widen); gates; push.
+
+Stage Summary:
+- T-MIG-006 CLAIMED (stacked on PR #18). The write-surface 501s now have a named contracts prerequisite en route. Awaiting R0: #18 review, 006 id ratification, stacking acceptance.
+
+---
+
+Task ID: T-MIG-006 (work entry)
+Agent: R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Port the six W2 controllers' WRITE-surface DTOs constraint-for-constraint into packages/contracts (stacked on t-mig-005/r1).
+
+Work Log:
+- Raw-read (C1, frozen core 6cad6ef via the pre-existing local sparse clone): ContentController (15 write endpoints), ContentDocumentController (2), TeacherCurriculumController (5), PastPaperDraftDto, CurriculumDraftDto, CanonicalDocumentDto, CanonicalDocumentValidator, ContentReviewService records. Verified CurriculumController/ContentReaderController/QuestionAssetController have NO write mappings (F4).
+- Landed packages/contracts/src/content-writes.ts (+40-pin content-writes.test.ts + index export): PastPaperDraftDto (5 nested records, MarkSchemeDraft null-points→[] compactor), CurriculumDraftDto (RECURSIVE TopicDraft via z.lazy — package's first recursive schema), CanonicalDocumentDto (13 fields, 4 element families, §8 snake_case wire names kept), CanonicalDocumentValidator → canonicalDocumentViolations (violation strings + order byte-matched; P-6 derivedDocumentId SHA-256 mirror with independently computed test vectors), review-action requests (PlaceRequest @NotNull uuid; TopicMappingRequest; SchemeValidateRequest whole-body-optional per @RequestBody(required=false)), validate-all `force` boxed-Boolean binding, 8 write-response views (z.literal "SUGGESTED" where the controller hardcodes it).
+- FINDINGS F1–F5 in run-002-work.json. Headline F1: request-side binding ≠ response-side serialization — `.nullable().default(null)` mirrors Jackson's absent≡null for references; `.default(<jvm>)` + null-reject mirrors primitives; .nullish() is WRONG on request bodies (invents undefined, a state Java never has). F2: Jackson default scalar coercions mirrored (javaJsonInt/Double/Bool). F3: TeacherCurriculumController's 5 write endpoints are MISSING from PR #20's 501 inventory — the write follow-up must scope them in.
+- Gates, final pass, all exit-captured: contracts typecheck 0; contracts tests 109/0 (was 69 — +40 pins); repo typecheck x4 0; bun test 181 pass / 4 skip / 0 fail (was 141 — 0 regressions); golden --selftest OK.
+- NO golden write captures exist — acceptance baseline is the Java declaration itself (positive pins from records, negative pins from @NotNull/coercion/validator rejections, byte-exact violation strings + derivation vectors). Divergence note recorded: schemaVersion 409 (drafts) vs validator 400 (canonical) mirrored as constants + collector, not folded into binding schemas.
+
+Stage Summary:
+- T-MIG-006 work COMPLETE on t-mig-006/r1 → IN_REVIEW (PR #23, stacked on PR #18). The write-surfaces follow-up named by PR #20's 501s now has its §4.1 prerequisite en route, including the F3 intel (teacher-curriculum writes missing from the 501 inventory). Awaiting R0: #18 merge first, then 006 retarget; id + stacking ratification.
 ---
 Task ID: T-MIG-004 (F-5 extension addendum — real-data capture complete)
 Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
