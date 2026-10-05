@@ -1,0 +1,69 @@
+version: 1
+task:
+  id: T-MIG-024
+  title: "W2-F3 re-pin — teacher-content-paper-review-realdata-200 versions[] ordering compared under multiset semantics (declared unordered-path comparator + case re-pin); closes the last standalone condition of the CONDITIONAL Wave-2 exit gate (GOLDEN_MASTER §4)"
+  owner: "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a) — claimed from the operator drain-cycle queue (trace 1a10b3643c2cc971, item W2-F3); zero-collision scan done (t-mig-023/r1 = W2-F1+F-2, t-mig-030/r7a = tranche-2, t-mig-031/r3a = PR #34, t-mig-035/w0a = hub live-flow; no F-3 claim sighted); R0 ratification of the task id requested in the PR (T-MIG-021/023 precedent)"
+  status: IN_REVIEW # 2026-10-05T09:1xZ: implementation on t-mig-024/r4 @ HEAD — declared-unordered multiset comparator + case re-pin + 7 selftest pins + reorder-check tool; gates: typecheck x4 exit 0, bun test 361/1/13 (1 = pre-existing register flake, file re-run x2 green), golden selftest OK, reorder-check 7 PASS + 1 SKIP; receipt run-002-work.json
+  priority: P1 # W2 exit gate is CONDITIONAL on F-1 (r1, in flight) + F-2 (r1) + this F-3 re-pin
+  wave: 2
+  deps: [T-MIG-022] # the F-3 ruling + 6/6 multiset evidence live in T-MIG-022 receipts (merged)
+  base:
+    repo: "syllabai-v2 @ daad88e (main at claim); frozen refs: syllabai-core @ 6cad6ef"
+  basis: >
+    R0-SWEEP-2 F-3 RULING (verdict 5990536177): paper-review versions[] ordering case
+    STABILITY-EXEMPT pending re-pin with multiset semantics — frozen
+    ContentReviewService.java:869 questionVersions.findByPaperId(paperId) is a Spring
+    Data derived query with NO ORDER BY (heap order); the port (review-repos.ts:125
+    findByPaperId) is equally unordered (ruled faithful); setcheck.ts proved SAME
+    multiset 6/6 versionIds + 6/6 questionIds + identical paper header in a DIFFERENT
+    sequence. The capture over-pins unspecified DB ordering — no faithful port can pass
+    it deterministically. T-MIG-022 run-001 diagnosis (first-position divergence sample:
+    externalRef q01- vs q03-cdfcbae1). GOLDEN_MASTER §5 comparator doctrine (tolerance
+    is declared, never silent; R0 ratified the §5 implementation class on PR #25).
+    Operator drain-cycle directive queue item W2-F3 (trace 1a10b3643c2cc971).
+  execution_record: >
+    (claim entry) PLAN: (1) golden/runner.ts — extend the comparator with a DECLARED
+    unordered-path rule: cases may carry "unordered": [<body-root dotted paths>]; at
+    each declared path the array is compared as a MULTISET — elements are redacted
+    (tolerate law unchanged) then sorted by their canonical JSON before the existing
+    stringify-compare; undeclared paths keep strict order (no silent widening — §7).
+    Backward-compatible optional 4th arg; zero behaviour change for the other 112
+    cases. (2) teacher-content-paper-review-realdata-200.json re-pins with
+    "unordered": ["versions"] — the ONLY over-pinned structure per the ruling;
+    paper header untouched. (3) selftest extends with multiset pins: same-multiset
+    different-order PASSES, order-diff at a NON-declared path FAILS, different
+    multiset FAILS, tolerate x unordered composition pinned. (4) golden/tools/
+    reorder-check.ts (setcheck.ts precedent): offline proof against the REAL case —
+    deterministic shuffle of expect.versions must PASS the new comparator; single
+    marks mutation and paper.id mutation must FAIL. (5) golden/README.md comparator
+    section documents the declared-unordered rule. VERIFICATION: bun run typecheck;
+    bun test apps/api packages; bun golden/runner.ts --selftest; reorder-check run
+    captured to receipts. Live Neon replay of the single case stays with R6/R0
+    posture (sandbox DNS-blocked from api.neon.tech — standing finding); the 6/6
+    multiset evidence is T-MIG-022's live capture. FENCE: golden/** + receipts/yaml/
+    worklog ONLY — zero apps/** or packages/** changes (the port is ruled faithful;
+    this is a capture-semantics fix, not a port change); docs/GOLDEN_MASTER.md NOT
+    edited (doctrine amendment belongs to R0 — flagged in the PR instead).
+  ruling_execution: >
+    (R0 ruling-execution intake, 2026-10-05, operator directive trace
+    1a10b7fe85b49a21 item 2) The F-3 premise of ruling 5990536177 is DISPROVEN at
+    frozen source 6cad6ef: QuestionVersionRepository.findByPaperId (:46-51) carries
+    `order by v.question.externalRef nulls last, v.version desc` — versions[] is
+    Java-DETERMINISTIC. The premise held only for MarkSchemeRepository.findByPaperId
+    (:49-53, genuinely unordered). RULING: port-side ORDER BY restore wins (r3a's
+    recommendation; zero golden weakening); multiset re-pin is SCOPED to
+    genuinely-unordered legs. EXECUTED on this branch: (1) review-repos.ts
+    findFullByPaperId + QuestionVersionReadRepository.findByPaperId gain
+    `order by q.external_ref asc nulls last, v.version desc`; MarkScheme walks
+    untouched (frozen law). (2) teacher-content-paper-review-realdata-200.json
+    "unordered": ["versions"] REMOVED — the case is strictly order-pinned again;
+    the captured q01..q06 sequence IS the Java order. (3) golden/README.md
+    comparator section re-scoped (declaration permitted ONLY where the frozen
+    source leaves order unspecified). (4) reorder-check.ts re-framed as a
+    two-posture comparator-law proof (inline spec: machinery sound; no spec: live
+    strict posture). Comparator machinery (canonicalizeUnordered +
+    deepEqualTolerant 4th arg + selftest pins) RETAINED dormant. Fence extension
+    to apps/api/src/services/content/review-repos.ts authorized by the ruling +
+    operator merge-queue directive ("#37 (post-rework)"); r4 lane idle since
+    08:53:24Z; R0 recusal from #37 substance superseded by the operator's explicit
+    re-examination + merge directive; fully disclosed.

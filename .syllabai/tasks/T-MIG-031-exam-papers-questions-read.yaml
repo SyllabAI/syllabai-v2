@@ -10,7 +10,7 @@ task:
     self-filed per the T-MIG-013/020/021/030 precedent; R0 ratification of
     the task id + the 031 mapping (r7a's 030..034 split proposal, PR #31)
     requested in the PR"
-  status: CLAIMED # claimed 2026-10-05T08:20Z; authoritative instant = this commit's author time
+  status: IN_PROGRESS # claimed 2026-10-05T08:20Z (e57a393, push-authoritative after PAT provisioning); branch pushed; tranche-1 landed run-002
   claimed_at: "2026-10-05T08:20:00Z"
   priority: P1
   wave: 3
@@ -114,6 +114,23 @@ task:
     unblock pattern the moment credentials are provisioned. Earliest-claim
     evidence = this commit's author+committer timestamp (single local
     commit chain, no force-push, no history rewrite).
+        (tranche-1 entry 2026-10-05T10:xxZ) Landed contract-independent services +
+    tests in-fence: services/questions/** (ServableQuestions one-owner boundary +
+    V20 paper gate, QuestionFamilyAssembler with the 23 pinned orders verbatim,
+    QuestionTaxonomy with PART_OF grouping + deduped census, MarkSchemeReveal
+    with fail-fast policy) + services/exam-papers/** (ExamPaperViews list/detail
+    with batched version heads + T-C28 shared specPointRefs). 38 stubbed-sql
+    tests (fakeSql structural duplicate — no cross-fence imports). Gates:
+    typecheck x4 exit 0; bun test 413/0/13skip (1062 expect = main 931 + this
+    tranche's 131 exactly); golden --selftest OK; replay NOT RUN (env-blocked
+    follow-up posture, no case weakened). Disclosed deviations in
+    receipts/T-MIG-031/run-002-tranche1.json: direct @syllabai/contracts type
+    binding at tranche-1 (#26 already merged — staging constraint gone);
+    null-ref family ref fallback to the family key (wire-contract conformance,
+    test-pinned); ExamPaperController N+1 ported batched (R-M-LAZY); read-only
+    subtree CTE declared in-fence (content lane's copy is private). Merge-intake
+    of post-#31 main (daad88e) taken between claim and tranche-1 (worklog
+    append-union, sole conflict class).
   base:
     repo: "syllabai-v2 @ ffc2876 (origin/main at claim; R0 housekeeping
       T-MIG-022 -> DONE, Wave-2 exit gate conditional); frozen refs:

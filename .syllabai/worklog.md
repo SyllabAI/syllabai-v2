@@ -1117,6 +1117,22 @@ Work Log:
 Stage Summary:
 - Board after sweep-2: T-MIG-007/018/022 DONE this session; Wave-1 fully closed (T-MIG-011 via operator-reassigned PR #32/#33); open PRs: none known at commit time; t-mig-030/r7a branched (Wave-3 ports starting). Escalations standing: single-R0 authority reaffirmation (two breach-pattern merges: #25, #26 — operator merge-authority trace now disclosed on #33, pattern reframed as likely operator action; bookkeeping stands either way); PAT rotation (chat-transit); flaky unit test on main (one occurrence, identity uncaptured); CI-side Neon integration runner; T-MIG-002 baseline-SQL repair.
 
+
+---
+Task ID: T-MIG-023
+Agent: R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Claim the next open lane per operator directive (IM trace 1a10b1a65519883d) — board survey + R0 follow-up F-1/F-2 adoption.
+
+Work Log:
+- Survey @ main ffc2876 (R0-SWEEP-2): ALL 20 task yamls DONE, zero open; R0 recorded "open PRs: none known at commit time"; t-mig-030/r7a observed IN FLIGHT (R7a: claim e3b53d9 with 030..034 split proposal awaiting R0 ratification + tranche-1 work 0e87be5, 34 stubbed-sql tests) — left untouched, no fence overlap.
+- Lane selection: Wave-2 exit gate is CONDITIONAL (GOLDEN_MASTER §4) on F-1+F-2 fixes + F-3 re-pin; F-3 ruled to R6 (stability-exempt ordering re-pin), H-2 registered to r7a; F-1/F-2 (filed by R0 against the merged T-MIG-020 port, owner field "T-MIG-020 port lane (r3-c) / R0 routing") are the only unowned actionable critical-path items → claimed as T-MIG-023 (id verified free — zero references repo-wide; 030..034 reserved by r7a's pending split proposal).
+- Filing: yaml T-MIG-023-w2-exit-port-fixes.yaml (CLAIMED @ 2026-10-05T08:14:41Z, P1, wave 2, deps T-MIG-020/022/004) + receipt run-001-claim.json (board snapshot, adopted findings with verbatim pin vectors, scope/fence, planned verification incl. R0's Pass-B expectation 13/15 after F-1 → 15/15 after F-2, credential blocker B-1). CROSS-FENCE ADOPTION disclosed in owner field: port lane closed (r3-c DONE), adopting at R0's routing point; fence = apps/api content services only, packages/db source untouched (verbatim timestamp fraction via repo-layer SQL shaping).
+- Workspace incident recorded in receipt: harness reset wiped the session workspace between turns (clone, scripts, session worklog); rebuilt from remote + context; no repo content affected.
+- BLOCKER B-1: no live GitHub credential (first PAT revoked ~2 min; second lost to harness reset) → claim commit LOCAL ONLY on t-mig-023/r1 @ ffc2876. UNBLOCK: operator PAT → push → PR "T-MIG-023: wave-2 exit port fixes (F-1 instant rendering + F-2 page-text assembly)" (receipts + fence disclosure in body) → IN_PROGRESS on work start.
+
+Stage Summary:
+- T-MIG-023 CLAIMED (local): the two R0-filed port divergences that block the conditional Wave-2 exit gate. Acceptance pins pre-registered (Java Instant.toString() fraction law with 0/3/6/9-digit vectors; 716-char page-text capture). Work not started (claim-only round per operator directive); execution plan in yaml + receipt. Claim priority attaches at remote push time per AGENT_COORDINATION (T-MIG-005 run-001 precedent).
+
 ---
 Task ID: T-MIG-030 tranche 2
 Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
@@ -1148,6 +1164,15 @@ Stage Summary:
 - Board: T-MIG-030 tranche-1 landed; wave-3 port train rolling (030 in flight, 031..034 seeds available per the ratified map). Next review targets: T-MIG-030 tranche-2 when pushed; 031..034 filings if seeded. Standing: F-1/F-2 content fixes, F-3 re-pin (R6), H-2 (r7a), E-1 (r7a tranche-2), CI-side Neon runner, T-MIG-002 baseline-SQL, PAT rotation, flaky-test watch.
 
 ---
+Task ID: T-MIG-023 (work start)
+Agent: R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Unblock executed — third operator PAT validated (login SyllabAI), claim branch pushed, work started.
+
+Work Log:
+- 2026-10-05T08:31:04Z: token 200 on GET /user → push -u origin t-mig-023/r1 → remote @ 46f4f19 (ls-remote verified). Claim priority attached at push time per AGENT_COORDINATION. Credential law held (env var + per-invocation helper only, outputs redacted by pattern).
+- yaml → IN_PROGRESS; receipts updated. Proceeding: F-1 (repositories.ts:64-65/169-170/314 — Java-exact Instant writer + verbatim DB fraction, repo-layer SQL shaping) and F-2 (reader.ts documentPageText — mirror frozen ContentReaderService page assembly; pin = 716-char capture).
+
+---
 Task ID: T-MIG-031
 Agent: R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
 Task: Claim the Wave-3 route-layer slice "exam-papers + questions READ port" per the R0-ratified 030..034 seeding map (verdict 5990832802) — 11 golden cases over the ServableQuestionService one-owner boundary
@@ -1166,6 +1191,17 @@ Stage Summary:
 - T-MIG-031 CLAIMED (branch t-mig-031/r3a pushed; commit e57a393 + this intake). Deps T-MIG-018/007/014 all merged — slice immediately portable. Tranche-1 (services/questions + services/exam-papers, stubbed-sql tests) next; tranche-2 (zod-wired route factories + flagged OUT-OF-FENCE mounts) follows. Golden replay posture: env-blocked follow-up per T-MIG-020/021 precedent, no case weakened.
 
 
+
+---
+Task ID: T-MIG-024 (claim — operator drain-cycle queue item W2-F3)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Claim exactly one drain-cycle item after zero-collision scan; implement the F-3 multiset re-pin.
+
+Work Log:
+- Synced on origin/main @ daad88e (worklog tail through R0-SWEEP-3; directive state 2ca1a16 already superseded — nothing held, no open PR from this lane; T-MIG-021 yield stands DONE).
+- Zero-collision scan: W2-F1+F-2 TAKEN (t-mig-023/r1, IN_PROGRESS); 030-tranche-2 r7a; 031 PR #34; 035 hub live-flow; F-3 UNCLAIMED → claimed W2-F3 as T-MIG-024 (id ratification requested in PR; T-MIG-021/023 precedent). One task per agent held; T-MIG-002-R left unclaimed.
+- Branch-start claim per §2.1: t-mig-024/r4 @ daad88e; yaml CLAIMED + receipt run-001-claim.json; implementation follows (runner declared-unordered multiset rule + case re-pin + selftest pins + reorder-check tool; fence = golden/** + bookkeeping only).
+
 ---
 Task ID: T-MIG-035 (claim — T-MIG-011's escalated remainder, routed by operator word)
 Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
@@ -1181,6 +1217,21 @@ Stage Summary:
 - T-MIG-035 CLAIMED. Next: provision COW branch hub-live-flow/2026-10-05, boot v2 api against it, verify hub strangler routing via the hub's own api.ts decision, run register/login/me live through the constructed URL, assert branch DB write paths (users + audit rows), receipts + PR.
 
 ---
+Task ID: T-MIG-024 (work complete — IN_REVIEW)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Implement the W2-F3 multiset re-pin and drive to PR.
+
+Work Log:
+- golden/runner.ts: GoldenCase.unordered?[] (declared body-root dotted paths); canonicalizeUnordered sorts declared-path arrays by post-redaction canonical JSON (multiset semantics; undeclared + nested arrays stay strict); deepEqualTolerant gains an optional 4th arg — zero behaviour change for the other 112 cases; 7 selftest pins added; deepEqualTolerant exported; CLI main wrapped in import.meta.main so golden/tools can import the comparator (direct invocation unchanged; ci.yml:32 verified).
+- teacher-content-paper-review-realdata-200.json re-pinned with "unordered": ["versions"] — the only over-pinned structure per the F-3 ruling; golden/README.md documents the rule.
+- golden/tools/reorder-check.ts (setcheck precedent): runs the REAL committed case offline — identity/rotate/reverse pass; marks mutation, paper.id mutation, and un-declared reorder all fail. 7 PASS + 1 SKIP.
+- Gates: typecheck x4 exit 0; bun test 361/1/13 (1 = the pre-existing follow-up-register flake, identity routes.test.ts:329 — file re-run x2 green; this diff touches zero apps/packages files); golden selftest OK; reorder-check green. Receipt run-002-work.json.
+- Fence held: golden/** + bookkeeping only; docs/GOLDEN_MASTER.md untouched (doctrine amendment flagged in PR for R0). Live single-case replay stays with R6/R0 posture (sandbox DNS-blocked from Neon — standing finding).
+
+Stage Summary:
+- T-MIG-024 IN_REVIEW: the F-3 comparator condition of the CONDITIONAL Wave-2 exit gate is ready for independent review; PR opened (R0 actions: id ratification + optional §5 codification). One task per agent held; lane goes IDLE after PR per drain-cycle step 7.
+
+---
 Task ID: T-MIG-035 (run-001 — live auth-flow check executed; ALL 10 CHECKS PASS)
 Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
 Task: Execute the escalated T-MIG-011 remainder — live auth-flow verification of the hub auth surface against the v2 api, strangler env flipped, on a task-owned Neon COW branch.
@@ -1194,6 +1245,33 @@ Work Log:
 
 Stage Summary:
 - T-MIG-035 evidence complete: the last open item of the Wave-1 hub adapter is CLOSED with live proof. After merge, COW branch br-mute-dust-a50ov8nc can be dropped. PR follows with receipts; status stays R0's field.
+
+---
+Task ID: T-MIG-023 (work complete — IN_REVIEW)
+Agent: R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Execute F-1 + F-2 (the two R0-filed Wave-2 exit gate blockers) per T-MIG-022 run-001 diagnosis + ratified fix sketches.
+
+Work Log:
+- F-1 (1021 Instant divergences): content repositories now shape every consumed timestamptz verbatim — to_char(col at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US') at 10 select sites (documents x3 + col-ref, exam_papers x4 + col-ref, audit x1) — and javaInstantText() renders the Jackson Instant law (fraction groups-of-3, trailing zero-groups trimmed: .578011Z / .578Z / none). Date round-trip sites removed; audit ORDER BY qualified to the true column. packages/db untouched (repo-layer SQL shaping only).
+- F-2 (reader page text "" vs 716-char capture): documentPageText now binds the §8 snake_case element keys (page_number/reading_order) with Jackson int-coercion parity (NUMERIC_TEXT exact-int strings); bind violation throws → error boundary fixed-500 (R10, route calls pageText unguarded = IllegalStateException parity); [null] elements skipped; camelCase keys intentionally dead (they bound nothing in Java either — the drift itself). Root cause cross-checked against frozen ContentReaderController.java (:97-105 full-DTO binding) + contracts canonicalElementBase (:349-366).
+- Pins: fidelity-fixes.test.ts NEW (9 tests / 25 expects — T-MIG-022 capture vectors verbatim, fraction law incl. 000500/578010 edge groups, §8 binding negative, coercion, fail-loud, verbatim 716-char vector with order-restoration); routes.test.ts 020-era pin corrected to §8 (assertions unchanged — the old pin pinned the drift).
+- Gates exit-captured: bun install --frozen-lockfile 930 pkgs clean; typecheck x4 exit 0; bun test 356/0/13skip; golden selftest OK.
+- B-2 ESCALATION (§6.1, honest): live replay NOT RUN — golden COW-branch DSN lost to the workspace wipe (.env gone); ambient DATABASE_URL probed = dead local placeholder (AggregateError). UNBLOCK: operator COW DSN → T-MIG-022 tools both postures, or R0 merge-intake re-execution (T-MIG-007 precedent). R0 expectation: Pass B 15/15 after F-1+F-2, Pass A 25/25.
+
+Stage Summary:
+- T-MIG-023 IN_REVIEW: both conditional-exit port divergences fixed with pinned laws; all local gates green; live replay escalated B-2 with probe evidence. PR opened same session. Wave-2 exit gate becomes fully actionable on replay (F-3 stability ruling stands pending R6 re-pin).
+
+---
+Task ID: T-MIG-023 drain-cycle status receipt (trace 1a10b512c7656ab9)
+Agent: R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Status line: T-MIG-023 (t-mig-023/r1, PR #38) | drain: synced ffc2876->0cd360b, merge-intake 422066e (worklog append-union byte-verified, zero code overlap; gates typecheck x4 / 392 pass 0 fail 13 skip / selftest OK), 3-way F-1/F-2 collision disclosed (earliest pushed claim: 46f4f19 @ 08:31:04Z) | BLOCKED (no PAT: intake-head push + PR body update pending) | suggestion: R0 three-way arbitration across t-mig-023/r1 (earliest claim + pins) vs t-mig-023/r3a (live 40/40 + F-3 contradicting the 5990536177 ruling) vs w2-f1/r3c (F-1-only capture proof); queue a COW DSN to clear B-2.
+---
+Task ID: DRAIN-CYCLE-STATUS (operator step 7 one-liner)
+Agent: R4-api-b
+Task: Status receipt per the operator drain-cycle directive (trace 1a10b3643c2cc971).
+
+Work Log:
+- R4-api-b | synced @ daad88e, claimed queue item W2-F3 as T-MIG-024 (zero-collision scan; W2-F1/F-2 were r1's), implemented declared-unordered multiset comparator + case re-pin + 7 selftest pins + reorder-check tool, all gates green (typecheck x4, bun test 361/1/13 with the 1 = pre-existing register flake re-run x2 green, selftest OK, reorder-check 7P/1S), receipt run-002-work, yaml IN_REVIEW, PR #37 opened (R0: id ratification + comparator verdict) | IDLE (PR #37 awaiting independent review; also posted independent APPROVE review on PR #34 per step 5) | suggestion: next round assign a lane to the flaky identity budget test (routes.test.ts:329, register item "identity uncaptured" — second occurrence observed this cycle, passes on re-run; a time-window freeze or budget-reset pin would de-flake it) and, after F-1/F-2/F-3 land, have R0 re-run the Wave-2 exit-gate check to flip W2 CLOSED.
 
 ---
 Task ID: T-MIG-032 claim
@@ -1243,7 +1321,23 @@ Work Log:
 Stage Summary:
 - Sweep-4 merged two PRs (#34, #35), audited the third (#36) post-merge under a disclosed operator delegation, and filed E-2 with a fix sketch instead of re-litigating the merge. Wave-1 fully closed incl. the live-flow escalation (T-MIG-035 DONE). Wave-3 train: 030 DONE (conditions), 031 claimed, 032..034 seeds open. Standing register: E-2 (r7a, blocks 1 replay case), F-1/F-2 content fixes (sketches in receipts/T-MIG-022/), F-3 re-pin -> THIS lane now executing as T-MIG-036, H-2 apply-reset divergence (r7a), CI-side Neon replay runner (operator), T-MIG-002 baseline-SQL repair, PAT rotation, flaky unit test watch (one occurrence, identity uncaptured).
 
+
+
 ---
+Task ID: T-MIG-031
+Agent: R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Drain-cycle intake — merge current main (0cd360b, R0 sweep-4) into the tranche-1 branch; PR #43 to mergeable-clean
+
+Work Log:
+- SYNC per the drain directive (trace 1a10b52e36b4dc25): worklog re-read (sweep-4 entries: #34/#35 merged, #36 audited post-merge, E-2 filed on r7a's desk, W2-F3 -> R0's T-MIG-036); PR #43 found mergeable=dirty against 0cd360b.
+- Intake commit (this one): sole conflict = worklog append tail (append-only union, both sides byte-preserved; my tranche-1 + drain entries re-landed on top of main's sweep-4 chain). Zero code-file conflicts — the fence (services|test /questions|exam-papers /**) is disjoint from everything merged in sweep-4.
+- Gates re-run on the intake head before push (see run-003 receipt addendum); no force-push; history linear.
+
+Stage Summary:
+- PR #43 back to mergeable-clean; independent review requested (authors never self-merge — §5 recusal rule); R0 merge-intake ready. Queue items all claimed by other lanes (W2-F1 #42+r3c, W2-F3 T-MIG-036 R0, T-MIG-002-R #44 w0a, W2-F2 via T-MIG-023 #38/#41) — zero-collision scan says NO new claim for this lane; next: one independent review of another lane's PR, then status receipt + stop.
+
+---
+Drain-cycle status receipt: R3-api-a | synced at 0cd360b, drove T-MIG-031 tranche-1 (PR #43) through drain intake (0cd360b union, zero code conflicts, gates re-stamped 421/0/13skip + selftest OK, mergeable-clean, independent review requested) + posted independent APPROVE review on PR #42 (W2-F1, test-merge gates 410/0/13skip) | IDLE (tranche-1 awaiting R0 merge-intake; tranche-2 queued behind it) | suggestion: T-MIG-032/033 (marking ports) are the W3 critical path and E-2 (r7a) blocks one replay case — consider pairing a reviewer for #40 now so the marking train does not queue behind the W2 exit fixes.---
 Task ID: R0-COLLISION-1 (section 2.1 arbitration: W2-F3 double-claim - T-MIG-024 wins, T-MIG-036 released)
 Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
 Task: Arbitrate the W2-F3 collision between PR #37 (T-MIG-024, R4-api-b) and PR #45 (T-MIG-036, R0's own claim).
@@ -1261,6 +1355,19 @@ Stage Summary:
 R0-integrator | drain cycle: synced (main daad88e->0cd360b), merged #34 (T-MIG-031 claim) + #35 (T-MIG-035 live-flow, after R0 intake 4442cfb), audited #36 post-merge under disclosed operator delegation (trace 1a10b1d0c70818a9) and FILED E-2 w/ fix sketch (r7a: noop-default evidence wiring vs captured evidenceEmitted pin; ~5 lines), housekeeping 0cd360b (030 DONE w/ conditions, 035 DONE), claimed W2-F3 as T-MIG-036 then RELEASED it on the section 2.1 collision (T-MIG-024/PR #37 earliest by ~26 min; ruling + 6 review criteria on #37; own process miss recorded) | IDLE | suggestion: next round - assign E-2 to r7a (unblocks the 030 replay case), mechanically arbitrate the T-MIG-023 double-claim (#38 vs #41) and the F-1 scope overlap (#42 vs #38/#41) by claim-commit timestamps, and root-cause the register flake on its third occurrence.
 
 ---
+Task ID: T-MIG-030 E-2
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Execute R0's E-2 fix sketch (noop-default evidence wiring vs the captured evidenceEmitted pin)
+
+Work Log:
+- frozenParityEvidencePublisher added in routes/assessment/index.ts and wired as the buildAssessmentRouters default (claims TRUE per Attempt.java:159-161 domain law, emits nothing — event pipeline stays dormant as disclosed since tranche-1); noopEvidencePublisher stays the 032/033 publishGraded suppression TEST double (never live wiring).
+- 2 pin tests added (live claim true; noop false). run-004 e1_satisfaction refreshed with the E-2 addendum + gate re-stamp.
+- Gates: typecheck x4 exit 0; bun test 431/0/13skip 1101 expect (= post-#40 main 429/1099 + 2/2 exactly); golden selftest OK.
+- Replay note: the E-2 fix unblocks w3-history-after-submit-200 for the CI-side runner (the one case E-2 blocked).
+
+Stage Summary:
+- E-2 executed per R0's sketch, no service change needed (as predicted). PR to follow; merge per the drain-cycle rule (independent review / R0 — authors never self-merge).
+---
 Task ID: T-MIG-032 tranche 2
 Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
 Task: Execute T-MIG-032 tranche-2 — route factories + zod wiring + OUT-OF-FENCE mounts + route tests
@@ -1277,3 +1384,16 @@ Stage Summary:
 - T-MIG-032 tranche-2 complete on t-mig-032/r7a-ext; PR to follow with run-003 receipt + R0 ratification request for the mounts. Per the drain-cycle rule (authors never self-merge), both #46 and this PR await independent review / R0 merge-intake.
 
 r7a | drain cycle: synced (main 2ca1a16->77359e7 confirmed stale-snapshot), drove held claims — T-MIG-030 E-2 fix executed per R0's sketch (frozenParityEvidencePublisher live wiring + 2 pin tests, PR #46 ready) and T-MIG-032 tranche-2 executed (selfmark+smartmark routers, 13 route tests, tranche-1 marks->marksPossible correction caught by the canonical pin, flagged OUT-OF-FENCE mounts, PR #47 ready); both left unmerged per the authors-never-self-merge rule | BLOCKED (on independent review / R0 merge-intake for #46 + #47) | suggestion: next round — route #46 to any lane for a 5-minute review (it unblocks the w3-history replay case), then have R0 ratify #47's mounts + rule the self-mark-500 captured quirk, and seed the LLM-chain lane (both PRs' dormant seams wait on it).
+---
+Task ID: T-MIG-024 (run-003 - R0 F-3 ruling execution)
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Re-examine F-3 ruling 5990536177 per operator directive (trace 1a10b7fe85b49a21 item 2); execute the winning disposition on PR #37.
+
+Work Log:
+- FROZEN-SOURCE RE-READ @ 6cad6ef: QuestionVersionRepository.findByPaperId (:46-51) CARRIES `order by v.question.externalRef nulls last, v.version desc` — my 08:05:47Z ruling premise ("findByPaperId carries NO ORDER BY (heap order)") was WRONG for this finder; it held only for MarkSchemeRepository.findByPaperId (:49-53). ContentReviewService.paperReview (:866-879) preserves the finder order into PaperReviewView.versions[] — versions[] is Java-deterministic, the capture (q01..q06 ascending) IS the Java order, and the port (review-repos.ts, both walks unordered) was NEVER faithful here.
+- RULING (posted on #37 + correction addendum on #30): port-side ORDER BY restore WINS over markSchemes-only re-pin — r3a's recommendation adopted; zero golden weakening; multiset semantics SCOPED to genuinely-unordered legs (markSchemes walks, un-@OrderBy'd JPA collections).
+- EXECUTED on t-mig-024/r4 (r4 idle since 08:53:24Z; fence extension authorized by the ruling + the operator's "#37 (post-rework)" queue item): review-repos.ts findFullByPaperId + audit-walk findByPaperId gain the exact JPQL-mirroring ORDER BY; case "unordered" declaration REMOVED; README comparator doctrine re-scoped; reorder-check.ts re-framed as two-posture law proof; comparator machinery retained dormant; receipt run-003-ruling-execution.json + yaml ruling_execution.
+- CORRECTION CULTURE: this is R0's own ruling corrected on R0's own motion at the operator's direction — premise disproof recorded verbatim, not papered over.
+
+Stage Summary:
+- F-3 resolved the faithful way: the port now implements the frozen ORDER BY, the golden case stays strict, the Wave-2 exit gate's F-3 condition is satisfied on merge. CI + local gates on the intake head; merge per the operator queue.

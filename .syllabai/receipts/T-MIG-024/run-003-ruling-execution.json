@@ -1,0 +1,23 @@
+{
+  "task": "T-MIG-024",
+  "run": "003-ruling-execution",
+  "date": "2026-10-05",
+  "agent": "R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "trigger": "operator directive trace 1a10b7fe85b49a21 item 2: re-examine F-3 ruling 5990536177 - premise (findByPaperId has no ORDER BY) disproven at frozen source",
+  "frozen_evidence": {
+    "commit": "6cad6ef",
+    "QuestionVersionRepository.java": ":46-51 findByPaperId = `order by v.question.externalRef nulls last, v.version desc` (DETERMINISTIC)",
+    "MarkSchemeRepository.java": ":49-53 findByPaperId = no ORDER BY (genuinely unordered)",
+    "ContentReviewService.java": ":866-879 paperReview() preserves findByPaperId order into PaperReviewView.versions[]"
+  },
+  "ruling": "port-side ORDER BY restore WINS (r3a recommendation, zero golden weakening); markSchemes-only multiset scoping adopted for genuinely-unordered legs; ruling 5990536177's F-3 disposition CORRECTED on record",
+  "executed": [
+    "apps/api/src/services/content/review-repos.ts: findFullByPaperId + findByPaperId(audit walk) gain `order by q.external_ref asc nulls last, v.version desc` (mirrors the JPQL exactly; Postgres nulls-last semantics = the frozen system's own)",
+    "golden/cases/teacher-content-paper-review-realdata-200.json: \"unordered\": [\"versions\"] REMOVED - strict order pinning restored (captured q01..q06 IS the Java order)",
+    "golden/README.md: unordered-declaration doctrine re-scoped to frozen-source-unspecified ordering only",
+    "golden/tools/reorder-check.ts: two-posture comparator-law proof (inline spec: rotate/reverse pass - machinery sound; no spec: live strict posture enforced)"
+  ],
+  "retained": "canonicalizeUnordered + deepEqualTolerant 4th arg + 7 selftest pins retained (dormant, no active declarations) - disposition-neutral comparator infrastructure for genuinely-unordered legs",
+  "gates": "recorded post-commit (typecheck x4 / bun test apps+packages / golden selftest / reorder-check) - see run-003 gate addendum and the PR merge verdict",
+  "disclosure": "r4 lane idle since 087cf7d 08:53:24Z; fence extension authorized by ruling + operator merge queue; R0 authored this intake - authors-never-self-merge satisfied via independent CI + operator-directed queue"
+}

@@ -1,0 +1,32 @@
+{
+  "task": "T-MIG-023",
+  "lane": "R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "run": "run-006-push",
+  "timestamp": "2026-10-05T10:21:04Z",
+  "trigger": "Completion of the staged credential chain (run-005-intake3.json 'push_plan'): single-invocation export+cd+action per Task-2 harness diagnosis",
+  "push_1": {
+    "range": "53f4ee1..bae5df1",
+    "fast_forward": true,
+    "force_used": false,
+    "commits_delivered": ["97f9bd2 (drain receipts)", "ec6cda8 (merge-intake-2)", "cc5f626 (intake-2 receipts)", "3b6ff7a (merge-intake-3)", "bae5df1 (intake-3 receipts)"],
+    "remote_branch_after": "origin/t-mig-023/r1 @ bae5df1"
+  },
+  "pr_38_mutations": {
+    "body_patch": "HTTP 200 — 'Update 3 — intake receipts + arbitration request' appended (body 4928 -> 8138 chars): 3-intake table with union verification + gates, exact test-count arithmetic (392 -> 419 -> 421), zero-overlap statement, 3-way collision table, R0-COLLISION-1 arbitration request (earliest by 20m26s), B-2 checklist",
+    "review_request_comment": {
+      "http": 201,
+      "comment_id": 5992530815,
+      "url": "https://github.com/SyllabAI/syllabai-v2/pull/38#issuecomment-5992530815"
+    },
+    "state_at_get": "open; mergeable fields still recomputing right after push (head displayed 53f4ee1 pre-refresh) — mergeability itself proven locally by 3 clean intakes + gates on 3b6ff7a",
+    "token_validation": "GET /user -> 200 (masked, env-transient per credential law)"
+  },
+  "push_2": "this commit is the push-2 payload (fast-forward bae5df1 -> this commit; no force). Expected remote head after push-2 = this commit's sha (visible in git log). No further receipts planned — trail complete unless R0 requests changes.",
+  "posture": "HOLD FOR R0 — arbitration + review. Earliest claim: d92cd10 author-date 2026-10-05T08:14:41Z (20m26s ahead of r3a's 375ff3e) under R0-COLLISION-1 precedent d658647. No self-merge, no force-push, no new claims filed.",
+  "blockers": [
+    {
+      "id": "B-2",
+      "detail": "unchanged: live golden replay needs COW-branch DSN; expectation Pass B 15/15 after F-1+F-2, Pass A 25/25 (or R0 merge-intake re-execution, T-MIG-007 precedent)"
+    }
+  ]
+}

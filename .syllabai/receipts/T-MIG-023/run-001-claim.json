@@ -1,0 +1,84 @@
+{
+  "task": "T-MIG-023",
+  "run": "run-001-claim",
+  "ts": "2026-10-05T08:14:41Z",
+  "operator_directive": {
+    "trace": "1a10b1a65519883d",
+    "channel": "zai-web",
+    "session": "web-ab7a0483-4415-4f31-ad16-b00a0e10053e",
+    "instruction": "survey the board and claim the next open lane"
+  },
+  "base": {
+    "main_head": "ffc2876",
+    "main_head_msg": "R0 housekeeping: T-MIG-022 -> DONE (PR #30 merged; union 36/40; F-3 ruled stability-exempt pending R6 re-pin; F-1/F-2 filed against T-MIG-020; Wave-2 exit gate conditional) + worklog",
+    "branch": "t-mig-023/r1"
+  },
+  "board_snapshot": {
+    "yamls_total": 20,
+    "yamls_done": 20,
+    "yamls_open": 0,
+    "in_flight_elsewhere": [
+      {
+        "branch": "t-mig-030/r7a",
+        "agent": "R7a",
+        "evidence": "claim e3b53d9 (self-filed yaml + 030..034 split proposal, R0 ratification requested) + tranche-1 work 0e87be5 (assessment services, 34 stubbed-sql tests)",
+        "respected": true,
+        "note": "slice A of wave-3 assessment port; disjoint from this lane's apps/api content-services fence"
+      }
+    ],
+    "r0_register_context": "R0-SWEEP-2 @ ffc2876: F-3 -> R6 (ordering re-pin, stability-exempt ruling), H-2 -> r7a (apply-reset divergence), F-1/F-2 unowned (owner field: 'T-MIG-020 port lane (r3-c) / R0 routing'), Wave-2 exit gate CONDITIONAL on F-1+F-2+F-3"
+  },
+  "claim": {
+    "yaml": ".syllabai/tasks/T-MIG-023-w2-exit-port-fixes.yaml",
+    "status_set": "CLAIMED",
+    "ts": "2026-10-05T08:14:41Z",
+    "priority_rationale": "P1 — the only actionable unowned blockers of the conditional Wave-2 exit gate"
+  },
+  "findings_adopted": {
+    "source": ".syllabai/receipts/T-MIG-022/run-001.json (R0 verdict 5990536177) + run-001-diagnosis.txt",
+    "F-1": {
+      "class": "GENUINE-FAIL port divergence",
+      "instances": 1021,
+      "rule": "expected Java Instant.toString() shortest-round-trip fraction (groups of 3, trailing zero-groups trimmed); port emits Date.toISOString() millis",
+      "pins": [
+        "content-docs-teacher-detail-realdata-200 @ .createdAt: expected 2026-09-21T12:59:21.578011Z, actual ...578Z",
+        "content-docs-teacher-realdata-200: 1021 divergences all @ .N.createdAt, same rule"
+      ],
+      "fix_sketch_accepted": "port-side ISO writer change (format the DB timestamp fraction verbatim, trailing-zero-trimmed) — R0 run-001.json"
+    },
+    "F-2": {
+      "class": "GENUINE-FAIL port divergence",
+      "case": "content-reader-real-page-text-200 @ .text",
+      "expected": "716-char page text (F-5 receipt)",
+      "actual": "empty string",
+      "fix_site": "apps/api/src/services/content/reader.ts documentPageText()"
+    }
+  },
+  "scope_fence": {
+    "allowed": [
+      "apps/api/src/services/content/repositories.ts",
+      "apps/api/src/services/content/reader.ts",
+      "apps/api/src/services/content/index.ts (wiring only if needed)",
+      "apps/api tests (new pins)",
+      ".syllabai/{tasks,receipts,worklog}"
+    ],
+    "forbidden": ["packages/db source", "golden captures", "packages/contracts", "apps/hub", "t-mig-030/r7a files"],
+    "note": "verbatim timestamp fraction obtained repo-layer-side (SQL shaping / per-posture raw read); T-MIG-014 driver dispatch unmodified"
+  },
+  "planned_verification": [
+    "unit pins: fraction renderer 0/3/6/9-digit groups incl. trailing-zero trims (578011000ns -> .578011Z; 578000000ns -> .578Z; 0 -> no fraction)",
+    "replay Pass B (prod): expected 13/15 after F-1, 15/15 after F-2 (R0 sketch)",
+    "replay Pass A (seed): no regression",
+    "repo gates: typecheck x4 exit 0; bun test 0 fail; golden selftest OK"
+  ],
+  "blockers": [
+    {
+      "id": "B-1",
+      "kind": "credential",
+      "detail": "no live GitHub credential in session (env GITHUB_PAT/GH_TOKEN/GITHUB_TOKEN all len=0; no file stores; no helper). First operator PAT revoked ~2 min after issue; second PAT lost to harness reset (workspace wiped between turns: clone, scripts, worklog rebuilt from context).",
+      "consequence": "claim commit is LOCAL ONLY until push; per AGENT_COORDINATION earliest-claim-wins, claim priority attaches at remote push time (T-MIG-005 run-001 precedent)",
+      "unblock": "operator supplies live GITHUB_PAT -> git push -u origin t-mig-023/r1 -> open PR 'T-MIG-023: wave-2 exit port fixes (F-1 instant rendering + F-2 page-text assembly)' with receipts + fence disclosure -> flip status IN_PROGRESS (work start) or IN_REVIEW (if work already complete)"
+    }
+  ],
+  "workspace_incident": "harness workspace reset between turns wiped /home/z/my-project (clone, scripts/, worklog.md); reconstructed: fresh anonymous clone @ ffc2876 + worklog.md rebuilt verbatim from session context; no repo content affected (remote is source of truth)"
+}
