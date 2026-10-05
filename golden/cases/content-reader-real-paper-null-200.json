@@ -1,0 +1,27 @@
+{
+  "name": "content-reader-real-paper-null-200",
+  "description": "GET /api/v1/content/documents/41419eac-e6cf-481d-98a3-aff1cc32f111 as STUDENT: 200 CitationDocumentView with paper=null — the knowledge-layer branch of paperRefOf (own-state VALIDATED document, not linked to any exam paper). Pins the null branch of the PaperRef resolution.",
+  "source": "captured from a LOCAL boot of the frozen Java core (Temurin JDK 25.0.4.1, mvn -DskipTests package exit 0) against a Neon COW branch golden-capture/2026-10-05 (br-fancy-surf-a52owvza, copy-on-write child of production br-muddy-bar-a5huwldd) on 2026-10-05T05:17Z by the T-MIG-004 extension session (w0a, F-5 unblock: operator supplied NEON_PAT); production compute never contacted — the branch's own endpoint served everything; synthetic student/teacher accounts registered via the honest API path (real corpus data: 1023 documents / 108 exam papers / 4740 embedded chunks); automated email scan: 0 non-synthetic addresses in any captured body",
+  "method": "GET",
+  "path": "/api/v1/content/documents/41419eac-e6cf-481d-98a3-aff1cc32f111",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer scrubbed-fixed-dummy-jwt-token"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "id": "41419eac-e6cf-481d-98a3-aff1cc32f111",
+      "documentId": "1962301e-7af1-5b2b-85be-2ace5f9cd1d5",
+      "docVersion": 1,
+      "kind": "EXTERNAL_QUESTIONS",
+      "title": "qcard-4ch1-2c-202311-qq3.txt",
+      "pageCount": 1,
+      "page": null,
+      "text": null,
+      "paper": null
+    }
+  },
+  "tolerate": []
+}

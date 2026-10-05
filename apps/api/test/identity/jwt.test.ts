@@ -14,7 +14,9 @@ import { JwtService, JwtException, parseIsoDuration } from "../../src/services/i
  * live cross-verify is the true R-JWT gate and is explicitly listed as
  * pending in the T-MIG-010 execution_record.
  */
-const SECRET = "unit-test-secret-0123456789abcdef0123456789abcdef"; // 48 bytes
+const SECRET = "unit-test-secret-0123456789abcdef0123456789abcdef"; // 49 bytes → HS384 (jjwt key-size selection)
+const SECRET32 = "a".repeat(32); // exactly 32 bytes → HS256
+const SECRET64 = "b".repeat(64); // 64 bytes → HS512
 const USER = {
   email: "alice@example.invalid",
   id: "11111111-2222-4333-8444-555555555555",
@@ -55,12 +57,23 @@ describe("JwtService — TTL (application.yml: syllabai.security.jwt-ttl PT2H)",
 });
 
 describe("JwtService — issued token wire shape (jjwt 0.13 parity)", () => {
-  test("header is exactly {alg:HS256} (no typ), claims carry sub/jti/uid/ver/roles/iat/exp in SECONDS", () => {
+  test("alg is selected BY KEY SIZE like jjwt's hmacShaKeyFor (capture-proven: real core signs HS384)", () => {
+    const algOf = (s: string) => JSON.parse(Buffer.from(new JwtService(s).issueAccessToken(USER).split(".")[0]!, "base64url").toString()).alg;
+    expect(algOf(SECRET)).toBe("HS384"); // 49 bytes
+    expect(algOf(SECRET32)).toBe("HS256"); // 32 bytes
+    expect(algOf(SECRET64)).toBe("HS512"); // 64 bytes
+  });
+
+  test("header carries the selected alg only (no typ)", () => {
+    const [h] = new JwtService(SECRET).issueAccessToken(USER).split(".");
+    expect(JSON.parse(Buffer.from(h!, "base64url").toString())).toEqual({ alg: "HS384" });
+  });
+
+  test("claims carry sub/jti/uid/ver/roles/iat/exp in SECONDS", () => {
     const before = Math.floor(Date.now() / 1000);
     const token = new JwtService(SECRET).issueAccessToken(USER);
-    const [h, p] = token.split(".") as [string, string];
-    if (!h || !p) throw new Error("malformed token under test");
-    expect(JSON.parse(Buffer.from(h, "base64url").toString())).toEqual({ alg: "HS256" });
+    const [, p] = token.split(".");
+    if (!p) throw new Error("malformed token under test");
     const claims = JSON.parse(Buffer.from(p, "base64url").toString());
     const after = Math.floor(Date.now() / 1000);
     expect(claims.sub).toBe(USER.email);
@@ -73,10 +86,10 @@ describe("JwtService — issued token wire shape (jjwt 0.13 parity)", () => {
     expect(claims.exp - claims.iat).toBe(7200);
   });
 
-  test("signature is HMAC-SHA256 over header.payload with RAW secret bytes", () => {
+  test("signature is HMAC with the alg-matched digest over header.payload, RAW secret bytes", () => {
     const token = new JwtService(SECRET).issueAccessToken(USER);
-    const [h, p, s] = token.split(".");
-    const expected = createHmac("sha256", Buffer.from(SECRET, "utf8"))
+    const [h, p, s] = token.split(".") as [string, string, string];
+    const expected = createHmac("sha384", Buffer.from(SECRET, "utf8"))
       .update(`${h}.${p}`)
       .digest("base64url");
     expect(s).toBe(expected);

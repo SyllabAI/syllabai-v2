@@ -1,0 +1,51 @@
+{
+  "task": "T-MIG-021 (tranche 1 — curriculum services, contract-independent)",
+  "agent": "R7a (Super Z, zai-web session web-da4ab8b1)",
+  "lane": "R7a (self-filed Wave-2 curriculum port, claim 05:54:23Z; R0 ratification of the task id requested in PR #19 — T-MIG-013/020 precedent)",
+  "branch": "t-mig-021/r7a (base: main @ 67639db; claim commit 2b56ba0)",
+  "date": "2026-10-05",
+  "change": {
+    "summary": "Tranche 1 lands the contract-independent query surface + view mappings + service law for the Wave-2 curriculum port: curriculum versions (ACTIVE gate / includeArchived-all, created_at desc), subjects (code-ordered list, versionId filter, by-id with the EntityGraph join in-statement), and the teacher review READ surface (per-version overview counts over the PART_OF subtree CTE; the version review queue with the F-1 empty posture on unknown versions). Route layer + mounting + zod wiring + golden replay flip are tranche 2, gated on T-MIG-005 (R1's contracts — curriculum.ts already staged on their branch 0cd5e93) per MIGRATION_PLAN §4.1 contracts-first. Write flows (ingest/validate/reject/activate/archive) are OUT of T-MIG-021's fence per the dossier + R1's contracts scope note.",
+    "files": [
+      "apps/api/src/services/curriculum/sql.ts (structural SqlFn — per-module seam, driver-agnostic through T-MIG-014's dispatch rework)",
+      "apps/api/src/services/curriculum/versions.ts (CurriculumVersionsRepository — ACTIVE gate + created_at-desc orderings pinned; CurriculumVersionView port)",
+      "apps/api/src/services/curriculum/subjects.ts (SubjectsRepository — code-ordered listings + by-id, EntityGraph join in-statement so SubjectView.from never touches a lazy proxy; by-id miss -> null, route layer renders the captured 404 'subject <uuid> not found' envelope)",
+      "apps/api/src/services/curriculum/review.ts (CurriculumReviewReader — versions() :48-72 + nodes() :75-90 read ports; findSubtreeIds recursive PART_OF CTE carried VERBATIM, KnowledgeNodeRepository.java:436-444)",
+      "apps/api/src/services/curriculum/index.ts (buildCurriculumModule composition root)",
+      "apps/api/test/curriculum/{versions,subjects,review}.test.ts + helpers.ts (17 tests, stubbed-sql; query text pinned — status gates, order-by clauses, the recursive CTE structure and the exact-match status predicate are asserted, not just behavior)"
+    ],
+    "parity_decisions": [
+      "treeCounts' per-node findById N+1 -> one aggregation over the SAME verbatim CTE (the Java null-node skip is unobservable in SQL; counts identical — receipt-disclosed)",
+      "parentIdOf's per-node PART_OF edge lookup -> LEFT JOIN in the same statement (findBySourceIdAndRelationType returns Optional — at most one PART_OF parent per node is a frozen-system invariant)",
+      "Java's post-fetch status skip -> exact-match WHERE (observable parity; the enum domain is the DB CHECK's)",
+      "the FINAL in-memory sort by node code is PRESERVED in TypeScript (:89) — ordering is load-bearing parity (captured nodes body is code-sorted; codes unique per uq_knowledge_node_code so stability is moot)",
+      "subjects with a null KG root contribute zero counts and issue NO subtree query (:183-185 guard parity, test-pinned)",
+      "nodeType/validationStatus/version status are the stored strings — DB CHECKs constrain the domains, not this layer (V2:20-22/28-37; V15's CONCEPT is migration-owned; T-MIG-020 kind doctrine)",
+      "view shapes mirror packages/contracts/src/curriculum.ts (R1's T-MIG-005 branch 0cd5e93, constraint-for-constraint) as LOCAL types; the contract import swap is tranche 2, keeping tranche 1 contract-independent",
+      "tagged-template bind-slot discipline: column lists are inlined in each template's static text (a ${} slot is a bind parameter, never SQL text — noted in-source so tranche 2 route factories keep the property)"
+    ],
+    "deviation_from_claim_note": "The claim execution_record said 'route factories staged in the same fence'; tranche 1 ships services-only instead — identical disclosure to T-MIG-020 tranche 1: writing route factories before T-MIG-005's curriculum schemas MERGE would produce dead validation code that contracts-first §4.1 then forces a rewrite of. Declared honestly; fence scope unchanged (services/curriculum + test/curriculum are inside scope.allowed)."
+  },
+  "gates": {
+    "typecheck": "bun run typecheck (contracts/shared/db/api ×4) exit 0",
+    "unit": "bun test (repo root) — 136 pass / 4 skip / 0 fail across 11 files, INCLUDING 17 new curriculum-module tests (119 base on this branch + 17; T-MIG-020's 17 content tests live on R3's branch, not yet main)",
+    "golden_selftest": "bun run golden/runner.ts --selftest -> 'selftest OK: tolerance engine behaves' (read-only usage of R6's fence)",
+    "golden_replay": "NOT RUN this tranche — curriculum routes are not mounted yet; the 13 curriculum cases keep their captured/expected-pending posture (2 of the 7 unauthed-401 cases already replay via the fallback). The replay flip is tranche 2's acceptance gate, gated on T-MIG-005 + PR #13.",
+    "upstream_writes": "ZERO — no Neon connection of any kind; syllabai-core touched read-only (raw git reads @ 6cad6ef); Flyway-owned tables referenced in SQL only, no DDL."
+  },
+  "frozen_sources": [
+    "syllabai-core @ 6cad6ef src/main/java/com/syllabai/curriculum/CurriculumController.java (versions/subjects/subject read methods)",
+    "syllabai-core @ 6cad6ef src/main/java/com/syllabai/teacher/TeacherCurriculumController.java (versions/nodes reads; writes excluded)",
+    "syllabai-core @ 6cad6ef src/main/java/com/syllabai/teacher/CurriculumReviewService.java (:48-90 reads, :164-194 parentIdOf/treeCounts, :214-235 views)",
+    "syllabai-core @ 6cad6ef src/main/java/com/syllabai/curriculum/{CurriculumVersionRepository,SubjectRepository,Subject}.java + dto/{CurriculumVersionView,SubjectView}.java",
+    "syllabai-core @ 6cad6ef src/main/java/com/syllabai/knowledge/KnowledgeNodeRepository.java (:436-444 findSubtreeIds CTE)",
+    "syllabai-core @ 6cad6ef src/main/resources/db/migration/V2__curriculum_knowledge.sql (table shapes)",
+    "syllabai-core @ 6cad6ef src/main/java/com/syllabai/shared/NotFoundException.java (404 message format)"
+  ],
+  "pending": [
+    "tranche 2: route factories + zod wiring (on T-MIG-005 merge — R1's branch 0cd5e93 already carries curriculum.ts), index.ts mounting (flagged OUT-OF-FENCE commit, R0 ratification), golden replay flip for the 13 curriculum cases, CI receipt",
+    "tranche 2 carries the F-1 divergence call for R0: teacher-curriculum-nodes-unknown-version-200-empty — v2 replicates 200 [] unless R0 rules otherwise (already the implemented posture, test-pinned)",
+    "no F-5 dependency on this surface — V6 fixed-constant seed uuids make curriculum the most replay-stable W2 family (dossier readiness line)"
+  ],
+  "verdict": "tranche 1 complete — the curriculum query surface + service law are unit-pinned and green; replay flip awaits T-MIG-005 + PR #13 per contracts-first"
+}

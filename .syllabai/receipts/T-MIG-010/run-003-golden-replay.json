@@ -1,0 +1,30 @@
+{
+  "task": "T-MIG-010",
+  "receipt": "run-003-golden-replay",
+  "date": "2026-10-05",
+  "agent": "R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "environment": {
+    "target": "v2 api booted locally (bun auto-serve, :8099) against Neon branch t-mig-010/r3 (same sandbox as run-002)",
+    "cases": "16 committed by T-MIG-003 (15 auth + health)",
+    "runner": "golden/runner.ts --target (canonical) + tolerant classification tool in this receipts dir (fence-safe: golden/** untouched)"
+  },
+  "canonical_runner_verdict": "1/16 PASS — every FAIL diff is a harness/capture item, zero port divergences (see classification)",
+  "tolerant_classification": {
+    "tool": ".syllabai/receipts/T-MIG-010/tools/run-tolerant-replay.ts (same diff engine, tolerate rules actually wired; golden/** and runner untouched — R6's fence)",
+    "result": "13/16 TOLERANT-PASS; 3 classified pending; 0 GENUINE-FAIL",
+    "detail": [
+      "TOLERANT-PASS x13: all validation-failure shapes (400 messages byte-exact incl. capture-pinned texts), 403 gates, 401 shapes, 409 conflict, health",
+      "SCRUB-GAP auth-login-success-200: expected accessToken/user.id/user.displayName are scrub-fixed dummies; a live api cannot echo them — needs replay-time substitution (R6/R0)",
+      "STATE-ORDER auth-register-success-201: write-case ordering/state — the alphabetically-earlier duplicate-email case consumed the identity on the fresh DB (and prior replay runs persisted rows); capture needs order pinning or per-case state prep (GOLDEN_MASTER §3)",
+      "TOKEN-INJECT auth-me-with-bearer-200: request carries the scrubbed dummy token; replay needs a mechanism to inject a live token issued against the replay DB (R6/R0)"
+    ]
+  },
+  "port_fixes_driven_by_capture (the gate working as designed)": [
+    "R-JWT alg selection: the deployed core signs with jjwt's KEY-SIZE-SELECTED alg (capture decoded HS384; the JwtService class doc's 'HS256' is stale) — port now selects HS256/384/512 by secret byte length and accepts the whole HmacSHA family on parse",
+    "@Email message: capture pins 'must be a well-formed email address' (Hibernate 9 default), not the contracts' 'must be a valid email' — translated at the route layer pending R1 updating packages/contracts at source",
+    "Empty-body field-error order: capture pins 'password: must not be blank' for {} on BOTH register and login (core's field-error order is not declaration order) — encoded as a capture-pinned rule; R6 asked to probe re-capture stability",
+    "Health shape: {groups:[liveness,readiness],status:'UP'} (OUT-OF-FENCE one-liner, case was already justified:true by T-MIG-003)"
+  ],
+  "harness_defect_reported_to_R6": "golden/runner.ts line ~72: deepEqual(expect.body, body) drops the case's tolerate list (deepEqualTolerant exists but is only used by selftest) — 12 cases fail on tolerated timestamps only. One-line fix in R6's fence: pass kase.tolerate ?? [] through.",
+  "verdict": "Port is golden-gate-ready: 0 genuine divergences. Full canonical 16/16 requires 4 harness/capture items owned by R6/R0 (tolerate wiring, scrub substitution, write-case ordering, token injection)."
+}

@@ -1,0 +1,35 @@
+{
+  "task": "T-MIG-015",
+  "run": "run-002",
+  "renumbered_from": "T-MIG-014",
+  "agent": "R7a (agent-da4ab8, zai session web-da4ab8b1)",
+  "recorded_at": "2026-10-05T05:33:13Z (push session, Asia/Dhaka operator)",
+  "base": {
+    "branch": "t-mig-015/r7a",
+    "parent_commit": "67639db (R0 housekeeping phase-2)",
+    "divergence": "exactly one prior commit (27bca71, claim @ 2026-10-05T05:00:49Z) + this renumber/unblock commit"
+  },
+  "objective": "Push the completed docs-drift fix after operator credential unblock; resolve the three-way T-MIG-014 ID collision in favor of zero-churn coordination.",
+  "collision_timeline": {
+    "r7a_docs_drift": "claim 27bca71 @ 2026-10-05T05:00:49Z (earliest) — this task, renumbered to T-MIG-015",
+    "r3a_db_driver": "claim ecded41 @ 05:08:44Z; PR #13 open @ 05:19:09Z, IN_REVIEW, mergeable clean — ID retained by R3a",
+    "r1_ratelimit": "claim b1f63b4 @ 05:23:58Z, claim-only yaml+worklog — still carries the contested ID; renumber need flagged to R0",
+    "note": "three distinct tasks, one ID; each filed per §4 after an honest scan against main (the scans raced each other, not main)"
+  },
+  "decision": "Yield T-MIG-014 to PR #13 despite earliest claim; renumber to T-MIG-015 (next free at push time). Earliest-claim is a tiebreak, not territory; contesting would churn an in-review P1 PR and buy nothing substantive. R0 retains discretion to re-rule.",
+  "changes_in_this_commit": {
+    ".syllabai/tasks/T-MIG-015-reference-docs-drift.yaml": "renamed from T-MIG-014-*; id + scope.allowed renumbered; claimed_at corrected to commit-authoritative 2026-10-05T05:00:49Z (19:55+06 was a transcription error); status BLOCKED -> IN_REVIEW",
+    ".syllabai/receipts/T-MIG-015/run-001.json": "renamed from T-MIG-014/, byte-identical",
+    ".syllabai/receipts/T-MIG-015/run-002.json": "this record",
+    ".syllabai/worklog.md": "append-only entry with full timeline + yield rationale",
+    "docs/REFERENCE_DOCS.md": "one citation line follows the receipt rename (T-MIG-014 receipt -> T-MIG-015 receipt, renumbered)"
+  },
+  "gates": {
+    "diff_surface": "docs-only; expected paths exactly: docs/REFERENCE_DOCS.md, tasks yaml (renamed), receipts dir (renamed + run-002), worklog — diffstat re-verified at push time",
+    "code_gates": "N/A — zero bytes under packages/ apps/ golden/ bun.lock; no typecheck/test surface touched"
+  },
+  "push": {
+    "credential": "fresh GITHUB_PAT supplied by operator in-session; stored under .creds/ only, never echoed/committed; rotation recommendation for chat-transited tokens stands"
+  },
+  "verdict": "docs fix on the review queue under a collision-free ID; full collision timeline disclosed for R0; no action required on PR #13"
+}

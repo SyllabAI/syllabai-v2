@@ -39,12 +39,13 @@
  * in OTHER packages (smartmark, teacher/dto, sme, answerinput) and belong to
  * their owning waves' contracts tasks — deliberately NOT ported here.
  *
- * Shared enums are imported from ./content (T-MIG-005), which first ported
- * them from the same frozen sources: Question.Type (content.ts
- * questionTypeSchema) and the ValidationState enum family
- * (contentValidationStateSchema). This branch is stacked on t-mig-005/r1
- * (PR #18) for exactly that reason; duplicating the byte-identical value
- * lists here was rejected as a drift risk (T-MIG-006 yaml, base note).
+ * R0 merge-intake deviation (PR #26, ruling1 precedent): main's content.ts
+ * is T-MIG-020's canonical rewrite — T-MIG-005's contentValidationStateSchema
+ * was renamed to validationStateSchema, and Question.Type / the uuid path leaf
+ * were not carried over. The ValidationState enum is imported under its
+ * canonical name; Question.Type + uuidPathSchema are defined here (they are
+ * assessment-loop domain). Drift guard: golden capture (T-MIG-007) pins the
+ * wire values, so any divergence from the frozen core fails the replay gate.
  *
  * Jackson wire facts (Boot defaults, no override in the frozen repo):
  *   - Responses are record serialization: every component is present;
@@ -109,9 +110,21 @@
  *     core's ApiError 400 shape with the same message pattern.
  */
 import { z } from "zod";
-import { contentValidationStateSchema, questionTypeSchema, uuidPathSchema } from "./content";
+import { validationStateSchema } from "./content";
 
-// ── shared enum / leaf domains ──────────────────────────────────────────────
+// ── shared enum / leaf domains ──────────────────────────────────────────
+
+/**
+ * Question.java — Question.Type. Values byte-identical to T-MIG-005's
+ * original content.ts port (verified before intake; main's rewritten
+ * content.ts no longer carries it). ExamPaper.java's local enum is
+ * byte-identical too.
+ */
+export const questionTypeSchema = z.enum(["MCQ_SINGLE", "SHORT_ANSWER", "STRUCTURED"]);
+export type QuestionType = z.infer<typeof questionTypeSchema>;
+
+/** Spring @PathVariable uuid binding — T-MIG-005's original leaf, same value. */
+export const uuidPathSchema = z.string().uuid();
 
 /**
  * Question.java:27 — Provenance, valueOf is case-sensitive on the wire.
@@ -433,7 +446,7 @@ export const markSchemeRevealViewSchema = z.object({
   questionId: z.string().uuid(),
   questionExternalRef: z.string().nullable(), // nullability: capture-unproven (external_ref has no nullable=false)
   schemeId: z.string().uuid(),
-  validationState: contentValidationStateSchema,
+  validationState: validationStateSchema,
   schemeMarks: z.number().int(),
   questionMarks: z.number().int(),
   parts: z.array(markSchemePartSchemeSchema),
@@ -589,7 +602,7 @@ export const examPaperViewSchema = z.object({
   unit: z.string().nullable(),
   sessionLabel: z.string().nullable(),
   paperCode: z.string().nullable(),
-  validationState: contentValidationStateSchema,
+  validationState: validationStateSchema,
   provenance: questionProvenanceSchema,
   questionPaperDocumentId: z.string().uuid().nullable(),
   markSchemeDocumentId: z.string().uuid().nullable(),
@@ -612,7 +625,7 @@ export const paperQuestionViewSchema = z.object({
   externalRef: z.string().nullable(), // nullability: capture-unproven (external_ref has no nullable=false)
   marks: z.number().int(),
   provenance: questionProvenanceSchema,
-  versionValidationState: contentValidationStateSchema.nullable(),
+  versionValidationState: validationStateSchema.nullable(),
   partCount: z.number().int(),
   currentVersionId: z.string().uuid().nullable(),
   specPoints: z.array(specPointRefSchema),

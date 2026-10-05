@@ -388,7 +388,7 @@ describe("StudentQuestionView / QuestionFamilyView — stripped projection", () 
       ...OK_STUDENT,
       options: [{ id: UUID, label: "A", text: "…", correct: true, misconceptionNodeId: UUID2 }],
     });
-    expect(Object.keys(parsed.options[0]).sort()).toEqual(["id", "label", "text"]);
+    expect(Object.keys(parsed.options[0] ?? {}).sort()).toEqual(["id", "label", "text"]);
   });
 
   test("family type is the two-value domain, not Question.Type", () => {

@@ -122,9 +122,9 @@ describe("validation_message mapping (GlobalExceptionHandler:158-165 + Hibernate
     );
   });
 
-  test("@Email default: 'must be a valid email'", () => {
+  test("@Email default: 'must be a well-formed email address' (golden-pinned, R0 T-MIG-016)", () => {
     expect(first(registerRequestSchema, { email: "not-an-email", password: "long-enough-1x", displayName: "Ann" })).toBe(
-      "email: must be a valid email",
+      "email: must be a well-formed email address",
     );
   });
 
