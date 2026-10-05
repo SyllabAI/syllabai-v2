@@ -453,3 +453,19 @@ Work Log:
 
 Stage Summary:
 - Board: T-MIG-000/001/002/003/004/010/012 DONE (7 tasks), T-MIG-011 CLAIMED (t-mig-011/r5), Wave-2 lanes filing. Identity/auth surface is LIVE in v2 with live-DB-proven revocation — the strangler-fig has its first real vine. 54 golden cases on main; Wave-2 acceptance worklist complete before any content-read port code lands. Critical path: T-MIG-011 hub adapter (claimed), then Wave-2 ports (T-MIG-020..022) against the fresh capture.
+
+---
+
+Task ID: T-MIG-014
+Agent: R7a (agent-da4ab8, zai session web-da4ab8b1, Asia/Dhaka)
+Task: Reference docs drift fix — REFERENCE_DOCS.md ADR paths + receipts-heritage attribution (self-selected per §5; closes R7a orientation Q1, corroborated by R1 orientation Q2).
+
+Work Log:
+- Sandbox reset detected on session resume (clone/.creds/local worklog wiped) — re-cloned syllabai-v2 anonymously (public repo) and reconstructed state from the repo per receipts culture. PR #3 (T-MIG-000) and PR #5 (R7 housekeeping) confirmed MERGED via git history; my lane items DONE.
+- Board survey: 7 DONE, T-MIG-011 claimed (r5), T-MIG-013 filed by R3 (branch yaml) — not claimable. Self-selected the open docs-drift fix as R7a flex work; authored .syllabai/tasks/T-MIG-014-reference-docs-drift.yaml per §4 (w0a/T-MIG-004 precedent) after a no-collision scan (no yaml claims v2 docs/**).
+- Verified EVERY path REFERENCE_DOCS.md cites, via anonymous shallow clones of master pack / syllabai-core / syllabai-hub / syllabai-resources: 13/13 ADRs at pack ROOT (0 under docs/adr/), 12/12 core rows OK, 8/8 hub rows OK, no bench/ at resources root. Only the two drift items were wrong.
+- Fixed: 13 ADR row paths (docs/adr/ADR-* -> ADR-*), receipts-heritage line (resources-repo -> master-pack bench/review/), + 2-line verification note. Nothing else. Evidence: .syllabai/receipts/T-MIG-014/run-001.json.
+- PUSH BLOCKED: no GITHUB_PAT this session (sandbox reset wiped .creds; per credential law no token improvised/created — same wall w0a hit and disclosed). Branch t-mig-014/r7a is push-ready verbatim; yaml status -> BLOCKED per w0a precedent.
+
+Stage Summary:
+- UNBLOCK for operator/R0: supply a valid GITHUB_PAT in-session -> push t-mig-014/r7a -> PR "T-MIG-014: reference docs drift fix" -> IN_REVIEW. Docs-drift findings F-class: REFERENCE_DOCS.md now 33/33 verified paths; future agents get correct raw.githubusercontent URLs. Rotation recommendation for briefing tokens stands (they transited chat plaintext; several peers report dead tokens in-worklog).

@@ -1,0 +1,38 @@
+version: 1
+task:
+  id: T-MIG-014
+  title: "Reference docs drift fix — REFERENCE_DOCS.md cites master-pack ADRs at a nonexistent docs/adr/ path"
+  owner: "agent-da4ab8 (R7a flex lane, zai session web-da4ab8b1) — self-selected per briefing §5: docs-only, zero fence overlap (no yaml claims v2 docs/**; T-MIG-011/013 lanes touch apps/hub + golden only); closes R7a orientation Q1, corroborated by R1 orientation Q2"
+  status: BLOCKED (work complete; push/PR step blocked on credentials — w0a precedent)
+  claimed_at: "2026-10-05T19:55:00+06:00 (Asia/Dhaka)"
+  priority: P2
+  wave: 0
+  deps: []
+  execution_record: >
+    2026-10-05 agent-da4ab8/R7a — work COMPLETE, push BLOCKED. Verified all 33
+    cited paths across 4 upstream repos (13/13 ADR rows exist at master-pack
+    ROOT, 0 under docs/adr/; 12/12 core rows; 8/8 hub rows; resources repo has
+    no bench/ at root). Fixed the 13 ADR row paths + receipts-heritage line +
+    added a 2-line verification note. No other section touched. Evidence:
+    .syllabai/receipts/T-MIG-014/run-001.json (incl. push_attempt + unblock).
+base:
+  repo: "syllabai-v2 @ 67639db (R0 housekeeping phase-2)"
+  basis: >
+    R7a orientation Q1 (worklog) and R1 orientation Q2 independently flagged
+    docs/REFERENCE_DOCS.md citing master-pack ADRs under docs/adr/ — the files
+    actually live at the master-pack repo ROOT (flat). Receipts-heritage line
+    cites "resources-repo postflight receipts"; the heritage lanes live in the
+    master pack's bench/review/ (dated lanes; the resources repo has no bench/
+    at its root). Fresh evidence re-verified 2026-10-05 via anonymous shallow
+    clones of SyllabAI/syllabai (master pack), syllabai-core, syllabai-hub,
+    syllabai-resources.
+scope:
+  allowed:
+    - "docs/REFERENCE_DOCS.md (path corrections only — no semantic changes to binding content)"
+    - ".syllabai/tasks/T-MIG-014-reference-docs-drift.yaml (authored by this claim per §4; later status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-014/**"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "every other file in docs/** (migration law docs are R0 territory)"
+    - "packages/** apps/** golden/** (code lanes)"
+    - "upstream writes of any kind (C1)"
