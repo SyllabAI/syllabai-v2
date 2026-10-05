@@ -1,0 +1,47 @@
+{
+    "task": "T-MIG-002-R",
+    "run": "run-002",
+    "agent": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+    "date": "2026-10-05",
+    "base": {
+        "repo": "syllabai-v2 @ main c920eea (R0 housekeeping round-6 sweep-5; authored on top of the merged PR #44 claim 1c117ca2)",
+        "operator_word": "the operator's \"Continue, why did you stop?\" — the execution word R0 requested in the round-6 tail receipt (T-MIG-002-R execution unblocked on w0a's desk)"
+    },
+    "what": [
+        "SURFACE READ: packages/db (package.json pins, drizzle.config.ts, generated artifacts, schema README renderer-fix record), T-MIG-002 yaml execution_record + receipts run-001.json / run-001-verification.json, custom_types.ts companion comment (which referenced scripts/fix_kit_empty_default.py — an out-of-repo script, the repair-friendliness gap this task closes)",
+        "DEFECT LOCALIZATION (static, in-sandbox): F2a proven by direct artifact inspection — node_modules/drizzle-kit@0.30.6 bin.cjs contains the literal import `from \"drizzle-orm/gel-core\"` while drizzle-orm@0.38.4 declares 373 exports none of which is ./gel-core (bun.lock resolves exactly the broken pair 0.30.6+0.38.4). F2b (squasher ZodError on the null-expression index) and the kit 0.31.11 renderer defects (F3) rest on run-001's live findings; kit 0.31.11's own bin.cjs was inspected in an isolated probe: the `unknown(\"${name}\")` emission template is verbatim present (x4), and the mapColumnDefault pass-through path confirmed for quoted defaults",
+        "REPAIR DELIVERED: packages/db/scripts/rebaseline.ts — the repo-resident re-baseline path (five subcommands): doctor (static toolchain audit, READ-ONLY on package.json, proves F2a), fix (deterministic idempotent renderer fixes F3a .default(')->.default('') + F3b unknown(\"col\")->bytea/tsvector keyed by the introspection snapshot's column types, with custom_types import management; site-by-site logging; --check mode), verify (runtime==snapshot parity: imports src/schema via bun and compares against drizzle/meta/0000_snapshot.json across tables/columns/name/notNull/types/literal-default rules/indexes(+uniqueness)/FKs(name+routing)/checks/composite-PKs/unique-constraints — re-proves run-001's 579/579 claim on demand), diff (structural snapshot-vs-snapshot drift detector: added/removed/changed across all five kinds, exit 1 on drift), pull (LIVE re-baseline via the pinned isolated toolchain — exact D1 recipe kit 0.31.11 + orm 0.45.3 + @neondatabase/serverless 1.2.0 — built in a temp dir, DATABASE_URL env-passed never written to disk, relocates artifacts, applies fixes, verifies, diffs; guardrails: --on-cow-branch required, empty/jdbc URLs refused, production branch id br-muddy-bar-a5huwldd on a static denylist)",
+        "TESTS: packages/db/scripts/rebaseline.test.ts — 26 checks / 68 expects, fully offline (no network, no Neon contact): fixer shapes incl. idempotency + byte-identity on re-run + unmapped-unknown abort semantics; defaultParity calibrated literal rules (empty-string, quoted literals, jsonb casts, Python-cased booleans, numerics, now(), serial sequence-side defaults, one-sided drift); specialTypeMap from the real snapshot (3 live sites collapse onto 2 distinct names); verifyBaseline against the REAL checked-in files (62/579/87/54/98, 0 drifts) — a standing regression gate executed on every `bun test packages` run; diffSnapshots mutation detection; pull guardrails; doctor F2a evidence",
+        "README: packages/db/src/schema/README.md — re-baseline procedure section rewritten to the in-repo tool (D1's out-of-repo script superseded); renderer-fixes section now points at rebaseline.ts fix + its test gate"
+    ],
+    "verification_summary": {
+        "gates": "typecheck x4 exit 0 (contracts/shared/db/api); bun test apps/api packages = 498 pass / 0 fail / 13 skip, 1327 expect (main baseline c920eea stated 485/0/13, 1259 expect — the +26 tests / +68 expects are EXACTLY this task's new suite; zero collateral delta); golden selftest OK (113 cases, tolerance engine incl. T-MIG-024 multiset)",
+        "verify_on_checked_in_baseline": "PASS — tables 62/62, columns 579, indexes 87, fks 54, checks 98, 0 drifts (includes strict type-spelling parity: snapshot type strings equal runtime getSQLType() across all 579 columns)",
+        "fix_on_checked_in_baseline": "--check reports 0 F3a + 0 F3b sites (the checked-in schema is exactly the fixed state; fresh pull + fix converges to it byte-identically per the fixture test)",
+        "doctor": "F2a CONFIRMED (kit imports gel-core: true; orm exports ./gel-core: false) on resolved pair 0.30.6 + 0.38.4",
+        "pull_live": "NOT EXECUTED HERE — the sandbox has no postgres/pgvector and no Neon credentials survived the workspace reset (the sandbox DATABASE_URL is a file: SQLite leftover); the pull path is recipe-complete and guard-railed, awaiting a COW branch URL; every other subcommand was executed against the real repo state"
+    },
+    "fences": {
+        "touched": [
+            "packages/db/scripts/rebaseline.ts (NEW — scope.allowed declares packages/db/scripts/** as NEW; fence extension declared at PR time per the yaml)",
+            "packages/db/scripts/rebaseline.test.ts (NEW — same)",
+            "packages/db/src/schema/README.md (procedure section rewrite — explicitly allowed)",
+            ".syllabai/receipts/T-MIG-002-R/run-002.json (this receipt)",
+            ".syllabai/tasks/T-MIG-002R-baseline-sql-repair.yaml (status/execution_record only)",
+            ".syllabai/worklog.md (append-only entry)"
+        ],
+        "untouched_on_purpose": [
+            "packages/db/package.json (forbidden: F2 realignment is the lane owner's call; doctor re-states the flag)",
+            "packages/db/src/schema/{schema.ts,relations.ts,custom_types.ts} (GENERATED, forbidden: verify proves the checked-in state needs no edit; custom_types.ts keeps its stale out-of-repo script reference — README records the in-repo successor)",
+            "packages/db/drizzle/** (no re-baseline was run; the checked-in snapshot is the diff baseline)",
+            "Neon entirely (zero contact this run — no reads, no writes, no COW creation; NEON_PAT lost in the workspace reset anyway)",
+            "apps/** and all other lanes' files"
+        ]
+    },
+    "next_safe_actions": [
+        "operator: PR open + independent review + R0 merge-intake for branch t-mig-002r/w0a-exec (push requires a fresh GITHUB_PAT — the previous one did not survive the workspace reset)",
+        "operator/lane with Neon access: demonstrate the pull path end-to-end against a fresh COW branch (guardrails expect --on-cow-branch <name>); the tool prints fix site lines, verify inventory, and the baseline diff, all receipt-ready",
+        "lane owner of packages/db/package.json: F2 realignment (kit 0.31.x + orm 0.45.x pin or equivalent) — doctor and this receipt re-state the standing flag; after realignment the pinned isolated toolchain becomes unnecessary for pull",
+        "reviewers: the 26-test suite under packages/db/scripts/ is the standing regression gate for the baseline — any future drift of the checked-in schema vs its snapshot fails `bun test packages` immediately"
+    ]
+}
