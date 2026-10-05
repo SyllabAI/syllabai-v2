@@ -1194,3 +1194,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-035 evidence complete: the last open item of the Wave-1 hub adapter is CLOSED with live proof. After merge, COW branch br-mute-dust-a50ov8nc can be dropped. PR follows with receipts; status stays R0's field.
+
+---
+Task ID: T-MIG-032 claim
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Self-file + claim Wave-3 marking port, learner half (LearnerSelfMark + StudentSmartMark over the shared pipeline)
+
+Work Log:
+- T-MIG-030 closed through tranche-2 this session (PR #31 tranche-1 R0-ratified; PR #36 tranche-2 + E-1 self-merged under operator delegation). 031 taken by r3a (R0-seeded yaml + branch); 023/024/035 filed by r1/r4/w0a. 032/033/034 remain from the ratified split map.
+- Read the full frozen 032 surface first: LearnerSelfMarkController/Service (row-lock-first settle law, exact-part-set rule, bounds as Conflict 409, learner_self_marks never HumanMark, evidenceFired via publishGraded), StudentSmartMarkController/Service (one-engine doctrine — the SAME SmartMarkService pipeline as the teacher queue, batched per attempt; reveal policy VALIDATED_ONLY 409; kappaGatePassed authority flag; ephemeral feedback prose; telemetry events), KappaAgreementService (Cohen's kappa, perfect-agreement convention), validators trio, append-only SmartMarkResult.
+- E-1 contract (bound at T-MIG-030 tranche-2) applies directly: publishGraded claim true -> guarded flip; already-fired -> false no-op. The 032/033 binding recorded in the seam's in-source contract.
+- CAPTURED QUIRK filed for R0 ruling: self-mark unknown attempt = 500 internal_error as-captured (vs smart-mark 404) — port yields 404 naturally; disclosed, never silently fixed (F-1 posture).
+- Claimed T-MIG-032 @ 2026-10-05T09:00:00Z: zero-collision scan 0/0 (no 032 yaml on main, no t-mig-032* heads, no overlapping open PRs); branch t-mig-032/r7a from 8f67d05; yaml self-filed with R0 ratification request; claim receipt run-001.json.
+- Split-boundary disclosure: the shared SmartMarkService pipeline lands in THIS fence (services/smartmark); T-MIG-033's teacher queue imports it — cross-slice contract recorded in both the yaml and the receipt.
+
+Stage Summary:
+- T-MIG-032 CLAIMED (claim + receipt on branch t-mig-032/r7a; PR to follow with R0 ratification request). Tranche-1 = services/selfmark + services/smartmark + stubbed-sql tests; tranche-2 = routes + zod (self-mark schemas live; smart-mark views local, R1 top-up) + flagged mounts + replay (CI-side runner pending).
