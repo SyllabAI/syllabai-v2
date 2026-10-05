@@ -1,0 +1,123 @@
+version: 1
+task:
+  id: T-MIG-037
+  title: "W3-remainder zod contracts — port the teacher-marking, test-builder and
+    transcription DTO surfaces constraint-for-constraint into
+    packages/contracts (teacher-marking: TeacherMarkingController +
+    TeacherViews + TeacherMarkingQueueService views; test-builder:
+    TestBuilderController + TestBuilderService views; transcription:
+    TranscriptionController + AnswerInputTranscriptionService policy) —
+    the T-MIG-018 next_safe_actions follow-up, contracts-first
+    prerequisite for the remaining Wave-3 port lanes (unblocks r7a + r1)"
+  owner: "Contracts-lane (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
+    — operator-assigned CONTRACTS LANE this round (IM trace 1a10cb48dc7edd15,
+    2026-10-05): 'you inherit the fence this round'; R1-contracts fence per
+    the R7 dossier dependency_gates and the T-MIG-006/018 precedent."
+  status: CLAIMED
+  claimed_at: "2026-10-05T21:47:41+06:00 (Asia/Dhaka)"
+  priority: P1
+  wave: 3
+  deps: [T-MIG-006, T-MIG-018]
+  execution_record: >
+    (claim entry 2026-10-05T21:47:41+06:00) Claimed per AGENT_COORDINATION §2.1
+    in this branch-start commit, base = origin/main c0d8fa0 (verified fresh
+    immediately before branching). ID NOTE: the directive-scoped work was
+    first planned against T-MIG-036, but the board scan at claim time shows
+    PR #48 (t-mig-036/r3fix) already claiming that id for the identity-budget
+    flake root-cause — earliest-claim-wins; this task takes the next free id
+    T-MIG-037 (ls-remote: no 037/038 heads; main's 27-yaml id set: no 037/038).
+    Id ratification requested at PR review per the T-MIG-030/002-R precedent.
+    SURFACE INVENTORY (frozen syllabai-core @ 6cad6ef, raw reads 2026-10-05,
+    local shallow clone verified HEAD = 6cad6ef9463e8d21f1555456561a4caaf7e89395):
+    (1) teacher-marking — TeacherMarkingController (/api/v1/teacher/marking:
+    GET /answers two-shape opt-in pagination page>=0 size 1..200 default 50,
+    GET /queue-v2 page>=0 size 1..100 default 5 whole-paper-group pages with
+    honest-past-end law, GET /throughput, POST /smart-mark-batch
+    SmartMarkBatchRequest @NotNull @NotEmpty @Size(max=50) List<UUID>,
+    GET /answers/{id}, POST /answers/{id}/smart-mark, POST
+    /answers/{id}/human-mark 201 HumanMarkRequest @NotNull @Min(0) @Max(99)
+    Integer marksAwarded + @Size(max=50) Map<String,Integer>
+    perPointDecisions + @Size(max=4000) String comments, POST
+    /kappa/evaluate 201 @RequestBody(required=false) KappaScopeRequest,
+    GET /kappa/latest) + TeacherViews (AnswerMarkingView 16 components,
+    AnswerMarkingPageView, SmartMarkView, HumanMarkView — LearnerRosterView
+    EXCLUDED: Wave-5 roster surface) + TeacherMarkingQueueService views
+    (MarkingQueueView, MarkingQueuePageView, MarkingGroupView paperId
+    nullable unfiled-bucket-by-design + oldestWaitingHours nullable,
+    MarkingQueueItem nextAnswerId null-on-last, ThroughputView
+    answersByState ZERO-FILLED over all FIVE MarkingState keys,
+    PendingPaperView, SmartMarkBatchView, SmartMarkBatchItem outcome
+    MARKED|SKIPPED_ALREADY_MARKED|FAILED) + KappaEvaluationView (scope
+    ALL|PAPER). MarkingState enum REUSED from contracts assessment.ts
+    answerMarkingStateSchema (Answer.java:34 five states incl. SELF_MARKED —
+    F-33-1 law, R0 review 5997573821 on PR #50 is binding ground truth for
+    this lane: zero-fill shape + parseMarkingState accepted-set with the
+    frozen verbatim 4-state enumeration quirk in the C-9 message preserved).
+    (2) test-builder — TestBuilderController (/api/v1/teacher/tests:
+    GET /preview rootId UUID required + topicNodeIds List<UUID> optional +
+    maxQuestions Integer optional CLAMPED 1..50 default 20 + targetMarks
+    Integer optional CLAMPED 1..200 + includeAnswers boolean default false —
+    clamp-not-reject law TestBuilderService:114-117 HARD_MAX=50
+    HARD_MAX_MARKS=200 DEFAULT_MAX=20; GET /weakness-options rootId) +
+    TestBuilderService views (TestPreviewView, TopicCoverage, TestQuestionView
+    reusing StudentQuestionView.PartView/OptionView — contracts
+    studentPartViewSchema/studentOptionViewSchema, TestAnswerView,
+    WeaknessOptionsView policy z.literal "test-builder-weakness/v1",
+    WeakTopicOption meanMastery/masteryBand nullable nulls-last law,
+    CoverageGapView). (3) transcription — TranscriptionController
+    (/api/v1/learners/me/answer-input POST /transcribe:
+    TranscriptionRequestView imageBase64/mimeType NO bean validation —
+    all constraints service-side, → TranscriptionView
+    text/provider/model/latencyMs) + AnswerInputTranscriptionService policy
+    (mime allowlist {image/png, image/jpeg, image/webp}, MAX_DECODED_BYTES
+    4 MiB, error ladder 400 bad-mime/bad-base64/empty + 413 over-cap +
+    422 nothing-readable + 503 unavailable, verbatim messages pinned).
+    NO golden captures exist for these surfaces (T-MIG-004 read captures;
+    T-MIG-003 write captures are the 5 auth cases) — acceptance baseline =
+    Java declarations, pin tests per the T-MIG-006/018 precedent. PLAN:
+    packages/contracts/src/teacher-marking.ts + test-builder.ts +
+    transcription.ts + index.ts export lines + per-file pin tests; reuse
+    answerMarkingStateSchema, javaInstantSchema, uuidPathSchema,
+    studentPartViewSchema, studentOptionViewSchema, questionTypeSchema,
+    validationStateSchema, adviceErrorSchema; content-writes.ts
+    javaJsonInt/Double/Bool coercion mirrors for param/field binding where
+    Jackson coerces. ACCEPTANCE = constraint-for-constraint diff vs the Java
+    DTOs + pin tests (positive from Java-declared shapes, negative for
+    Java-rejected inputs, verbatim-message pins where the frozen string is
+    contract); gates: contracts typecheck + tests, repo typecheck x4,
+    bun test apps/api packages, golden --selftest.
+    OUT-OF-DIRECTIVE RESIDUALS disclosed (NOT claimed, R0's call): sme
+    package DTOs (SmeQuestionPackageDtos) and the smartmark LEARNER-side
+    views already ported by T-MIG-032 in apps/api (canonicalization into
+    packages/contracts, if wanted, is a separate card).
+scope:
+  allowed:
+    - "packages/contracts/src/teacher-marking.ts"
+    - "packages/contracts/src/teacher-marking.test.ts"
+    - "packages/contracts/src/test-builder.ts"
+    - "packages/contracts/src/test-builder.test.ts"
+    - "packages/contracts/src/transcription.ts"
+    - "packages/contracts/src/transcription.test.ts"
+    - "packages/contracts/src/index.ts (export lines only)"
+    - ".syllabai/tasks/T-MIG-037-w3-remainder-contracts.yaml (this file — status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-037/**"
+    - ".syllabai/worklog.md (append-only; process artifact per AGENT_COORDINATION §5)"
+  forbidden:
+    - "apps/** (033/r4 PR #50 owns the marking port; 031 tranche PR #52 in flight)"
+    - "packages/db/** (R2 lane)"
+    - "golden/** (read-only usage only; no new captures in this fence)"
+    - "syllabai-core / syllabai-hub writes of any kind (C1 — raw reads only)"
+    - "any Neon connection (contracts need none)"
+    - "widening any zod schema to make a case pass (§7 anti-pattern; index.ts rule 3)"
+base:
+  repo: "syllabai-v2 (branch t-mig-037/r1c off origin/main c0d8fa0); frozen ref: syllabai-core @ 6cad6ef"
+basis: >
+  Operator directive 2026-10-05 trace 1a10cb48dc7edd15 ("CONTRACTS LANE —
+  Step 1: W3-remainder zod contracts in packages/contracts: teacher-marking,
+  test-builder, transcription DTOs (T-MIG-006 next_safe_actions list; frozen
+  sources @ 6cad6ef). Unblocks r7a + r1"); T-MIG-018 next_safe_actions
+  item 3 (the listed follow-up; the T-MIG-006 id pointer resolves to this
+  card via the R0-REPAIR-2 renumber 006 -> 018); MIGRATION_PLAN §4.1
+  (contracts-first) + §5 Wave 3 remainder; AGENT_COORDINATION §2/§4/§7;
+  T-MIG-006/018 execution precedent; R0 review 5997573821 (F-33-1) as
+  binding ground truth for the marking-state domain.
