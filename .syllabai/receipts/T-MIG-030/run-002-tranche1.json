@@ -1,0 +1,62 @@
+{
+  "task": "T-MIG-030",
+  "run": 2,
+  "kind": "TRANCHE_1",
+  "lane": "R7a (agent-da4ab8, zai-web session web-da4ab8b1)",
+  "executed_at": "2026-10-05T07:52Z",
+  "branch": "t-mig-030/r7a",
+  "base": "5ee240e (origin/main)",
+  "claim_pr": 31,
+  "scope_held": {
+    "added": [
+      "apps/api/src/services/assessment/sql.ts",
+      "apps/api/src/services/assessment/types.ts",
+      "apps/api/src/services/assessment/history.ts",
+      "apps/api/src/services/assessment/submit.ts",
+      "apps/api/src/services/assessment/index.ts",
+      "apps/api/test/assessment/helpers.ts",
+      "apps/api/test/assessment/history.test.ts",
+      "apps/api/test/assessment/submit.test.ts"
+    ],
+    "out_of_fence_touches": "ZERO — no index.ts, no middleware, no landed modules, no contracts, no golden",
+    "upstream_writes": "zero (no Neon, no frozen core, no golden edits)"
+  },
+  "frozen_sources_ported": [
+    "AttemptController.java (POST /api/v1/attempts 201; POST /api/v1/attempts/structured 201)",
+    "AssessmentService.java:33-217 (both submission laws, verbatim gate order)",
+    "AttemptHistoryController.java (GET /api/v1/learners/me/attempts)",
+    "AttemptHistoryService.java (read model: clamp, excerpt, options labels, parts settle rule, KG topic)",
+    "AttemptRepository.java (history leg only; findByIdForUpdate explicitly NOT a call site — marking lanes)",
+    "AnswerRepository.java (findByAttemptIdOrderByQuestionPartId)",
+    "ServableQuestionSpec.java (active + STRUCTURED->VALIDATED gate)",
+    "ExamPaperRepository.findIdsBlockingServing (REJECTED/FLAGGED verbatim)",
+    "GlobalExceptionHandler.java:167-170 (IllegalArgumentException -> 400 FIXED 'malformed request' body)",
+    "DTO records: AttemptResultView / StructuredAttemptResultView / AttemptHistoryView(+Item,+PartItem) / SubmitAnswerRequest / StructuredSubmitRequest / PartAnswerRequest"
+  ],
+  "parity_decisions": [
+    "EntityGraph 'question' on the history page -> single-statement JOIN attempts->questions (R-M-LAZY doctrine; T-MIG-021 precedent)",
+    "Java lazy question.options() per question inside the read-only tx -> ONE batched question_options query for the page's distinct question ids (fetch-strategy precedent: QuestionVersionRepository's own 'batched counterpart' note — boundary unchanged, only fetch strategy)",
+    "graph.node() per-question N+1 -> batched knowledge_nodes lookup by distinct ids; the MISSING-node 404 contract enforced at assembly time (same observable outcome); graph.node(null) is a Java dead-branch (findById(null) would throw before the null check) — the port keeps the null-guard shape, unreachable under captured data (every seeded question has primary_topic_node_id)",
+    "answers.findByAttemptIdOrderByQuestionPartId per structured attempt -> per-attempt statement with the question_parts JOIN in-statement, ORDER BY question_part_id verbatim (kept per-attempt, NOT batched — the Java call shape is per-attempt and the page is capped at 100)",
+    "ILLEGAL ARGUMENT -> 400: duplicate/missing part answers throw BadRequestException('malformed request') — the fixed client body of GlobalExceptionHandler:167-170; the detailed Java log messages ('duplicate answer for part X' / 'missing answer for part Y') are comment-documented at the throw sites",
+    "evidence emission -> EvidencePublisher injected seam (Master Spec §12/§23 Observer contract; not golden-gated — capture pins HTTP only); default no-op; MCQ submit publishes (attempt/question/chosen/correct/marks/secondary/expressed/observed); structured submit emits NOTHING (V8: fires at first authoritative marking — T-MIG-032/033 territory)",
+    "ID/clock generation -> injected SubmitClock (newId/now), default crypto.randomUUID()/new Date() — @PrePersist parity with deterministic tests",
+    "provenance strings verbatim: web-quiz-v0[-timed], web-structured-v1[-timed]; marking AUTO_GRADED vs PENDING (beginMarking) verbatim"
+  ],
+  "deviations": [
+    "Route factories + zod wiring + index.ts mounts DEFERRED to tranche 2 — same disclosure as T-MIG-020/021 tranche 1; gated on T-MIG-018 (PR #26) merge; mounts ship as a separate flagged OUT-OF-FENCE commit (010/020/021 ratified precedent)",
+    "Golden replay of the 9 slice cases NOT RUN — gates on T-MIG-007 (PR #29) merge + replay env (CI-side runner per R0's proposal, or the #25 local-PG methodology)",
+    "@Transactional single-transaction semantic maps to per-statement autocommit in the adapter seam — no multi-statement atomicity observable through the golden surface (R-TX note in sql.ts); disclosed, not silently chosen"
+  ],
+  "gates": {
+    "typecheck": "exit 0 x4 workspaces (root script)",
+    "bun_test": "320 pass / 0 fail / 13 skip, 853 expect() — main 286/789 + this tranche's 34/64 exactly, zero test loss",
+    "golden_selftest": "OK (read-only)",
+    "replay": "NOT RUN (env-blocked + route-mount gate, see deviations)"
+  },
+  "test_inventory": {
+    "history.test.ts": "clampLimit unit x4; excerpt unit x3 (strip/collapse/220-cap/ellipsis); MCQ captured-item assembly (full toEqual on w3-history-after-submit-200 law); page-shape pin (join, created_at desc, limit bound); clamp-to-100 bound pin; empty-history batch guards; missing-node 404; structured pending (marksAwarded null, correct null, parts rendered); settle rule (part sum + attempt.correct)",
+    "submit.test.ts": "MCQ captured-201 view; insert-shape pin; correct-MCQ marks law; timed variant; evidence event payload pin (expressed/observed/secondary); unknown question 404; inactive question fail-closed 404; unknown option 404; STRUCTURED-unvalidated write-path 404; V20 paper gate 404; paper-less skips exam_papers query; structured happy (PENDING view, per-part marksPossible, answers trimmed/null-to-empty, zero evidence); unvalidated version 404; missing version 404; wrong-type 404; empty-parts 404; duplicate part 400 fixed body; missing part 400 fixed body; structured paper gate 404"
+  },
+  "bind_slot_discipline": "maintained — IN-lists use = any(${ids}::uuid[]) (content-lane convention); every ${} slot is a bind parameter; status/state literals inlined into template static text; caught and fixed one self-inflicted join(',') interpolation during development before commit"
+}

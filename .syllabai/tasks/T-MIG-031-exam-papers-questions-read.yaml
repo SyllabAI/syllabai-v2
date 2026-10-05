@@ -1,0 +1,168 @@
+version: 1
+task:
+  id: T-MIG-031
+  title: "Wave-3 exam-papers + questions READ port — ExamPaperController
+    (GET /api/v1/exam-papers list + /{id} detail) + QuestionController
+    (GET /api/v1/questions list, /families, /topics, /{id},
+    /{id}/mark-scheme) over the ServableQuestionService one-owner
+    servability boundary; 11 golden cases"
+  owner: "R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) —
+    self-filed per the T-MIG-013/020/021/030 precedent; R0 ratification of
+    the task id + the 031 mapping (r7a's 030..034 split proposal, PR #31)
+    requested in the PR"
+  status: CLAIMED # claimed 2026-10-05T08:20Z; authoritative instant = this commit's author time
+  claimed_at: "2026-10-05T08:20:00Z"
+  priority: P1
+  wave: 3
+  deps: [T-MIG-018, T-MIG-007, T-MIG-014] # all merged: contracts zod gate (PR #26), capture (PR #29), db driver dispatch (PR #13) — no blocking deps at claim time
+  execution_record: >
+    (claim entry 2026-10-05T08:20Z) Pre-claim verification at main ffc2876,
+    re-scanned immediately before branch cut: zero T-MIG-031 yamls on main
+    (ls-tree), zero t-mig-031* remote heads (ls-remote), sole open PR = #31
+    (r7a T-MIG-030 tranche-1, fence services|routes|test /assessment/** —
+    zero overlap with this filing's files). Surface = 11 golden cases:
+    exam-papers (w3-exam-papers-list-unauthed-401,
+    w3-exam-papers-student-403-or-state,
+    w3-exam-paper-unknown-uuid-unauthed-401) + questions
+    (w3-questions-list-unauthed-401, w3-questions-families-student-200,
+    w3-questions-families-unauthed-401, w3-questions-topics-student-200,
+    w3-questions-topics-unauthed-401, w3-question-markscheme-unauthed-401,
+    w3-question-unknown-authed-404, w3-question-unknown-uuid-unauthed-401).
+    FROZEN SOURCES (syllabai-core @ 6cad6ef, raw reads only):
+    ExamPaperController.java (:24 base, :42 list w/ optional subjectId
+    orderByCreatedAtDesc, :50 detail 404 via shared NotFoundException;
+    PaperView/PaperDetailView/PaperQuestionView records; detail reuses
+    ServableQuestionService.specPointRefs — the SAME projection the learner
+    question views use, T-C28 shared dialect; honest-absent = empty
+    specPoints list); QuestionController.java (:24 base, :39 list w/
+    topicNodeId|rootId scoping, :60 families whole-question reassembly,
+    :79 topics taxonomy w/ unknown-root 404 semantics inside the service,
+    :84 get 404 unknown, :97 mark-scheme 200-scheme/204-withhold);
+    ServableQuestionService.java (424 lines, the ONE owner of "active +
+    (MCQ) or (STRUCTURED with VALIDATED current version)" — ingested/
+    unvalidated never serves; V20 paper-level gate: questions under
+    REJECTED/FLAGGED papers never serve even with VALIDATED versions,
+    paper-less SEED_DEMO orphans unaffected; batched current-version fetch
+    (max version per structured question, single query — N+1 forensics
+    note); specPointRefs PRIMARY-first then SECONDARY, code-ordered, empty
+    list for unmapped; taxonomy: topic reachability = primary mapping +
+    secondary question_topics deduped per question, PART_OF grouping with
+    deterministically-lowest parent id on duplicate structural edges,
+    browsability guards (node in graph + PART_OF parent in graph), deduped
+    per-section + per-view census — badge == list length on click, family
+    census rides the same loop with the SAME family key /families groups
+    by); ServableQuestionSpec.java (spec pattern: !active -> false,
+    non-STRUCTURED -> true, STRUCTURED -> currentVersion != null &&
+    VALIDATED); MarkSchemeRevealService.java (policy enum
+    VALIDATED_ONLY|INCLUDE_SUGGESTED from
+    syllabai.assessment.markscheme-reveal-policy, default VALIDATED_ONLY,
+    fail-fast at boot on bad value; REJECTED/FLAGGED never reveal under
+    either policy; SUGGESTED reveals only under INCLUDE_SUGGESTED carrying
+    validationState; reveal rides the servability gate incl. paper gate —
+    unservable question 404s before any scheme lookup; projection: part-
+    scoped points grouped under version-ordered parts, general points
+    ordering-sorted); QuestionFamilyAssembler.java (ONE owner of the
+    family rule: SME ref convention sme-eq-<unit>-<n>-<slug>-q<N> +
+    optional -p<M>/-s suffix, SME_REF regex; families sort by source then
+    qNum = SME page order; 23 pinned interleaved-family member orders
+    ported VERBATIM (production forensics, byte-identical keys);
+    non-corpus rows (seed MCQs, past-paper refs, null refs) are single-
+    member families keyed by row id served after the corpus via NON_SME
+    source sentinel); SecurityConfig.java (:91 anyRequest().authenticated()
+    — NO role-specific rules for /api/v1/exam-papers or /api/v1/questions:
+    any authenticated user lists/views, matching the captured
+    unauthed-401/student-200 pairs; ExamPaperController javadoc: "Any
+    authenticated user may list/view"). CONTRACTS: T-MIG-018 (PR #26,
+    merged) already ships every schema this surface needs —
+    studentQuestionViewSchema, questionFamilyViewSchema,
+    questionTopicTaxonomyViewSchema (+taxonomyTopic/Section),
+    markSchemeRevealViewSchema (+point/partScheme),
+    examPaperViewSchema, paperQuestionViewSchema,
+    examPaperDetailResponseSchema, questionsListParamsSchema,
+    examPapersListParamsSchema, questionIdPathSchema,
+    examPaperIdPathSchema — contracts-first gate PRE-satisfied; import,
+    never edit. Plan: tranche-1 contract-independent services under
+    services/questions/** (servable read model + family assembler + reveal)
+    + services/exam-papers/** (paper views), raw SQL per the users.ts/
+    T-MIG-020/021 precedent over questions/question_versions/question_
+    options/question_parts/exam_papers/mark_schemes/mark_points/sme_
+    question_spec_points/question_topics/knowledge_nodes/knowledge_edges,
+    unit-tested against a stubbed sql adapter (fakeSql rowsFor pattern per
+    T-MIG-021 tranche-2 helpers); tagged-template bind-slot discipline (a
+    ${} slot is a parameter, never SQL text). tranche-2: route factories
+    (zod wiring against the merged T-MIG-018 schemas) + mounts in
+    apps/api/src/index.ts as a flagged separate OUT-OF-FENCE commit
+    (T-MIG-010/020/021 ratified precedent), R0 ratification requested.
+    FENCE-BOUNDARY DISCLOSURE for R0 + r7a: the Java package is
+    com.syllabai.assessment, but to keep this claim collision-free against
+    T-MIG-030's pushed fence (apps/api/src/services/assessment/** etc.)
+    this task's TS services/routes/tests live in DISJOINT dirs
+    (services|routes|test /questions|exam-papers /**) — zero file overlap
+    with r7a's glob; shared laws (error classes, sql adapter) are IMPORTED,
+    never edited. Subtree scoping (KnowledgeGraphService.subtreeIds, the
+    recursive PART_OF CTE): T-MIG-020 ported a subtree CTE inside
+    services/content (its fence) — this lane imports/reuses it if the
+    exported shape fits, else ports its own read-only CTE inside
+    services/questions (knowledge tables are read-only for every lane);
+    decision + rationale recorded at tranche-1. Golden replay of the 11
+    cases: capture (T-MIG-007) merged; live replay gates on the replay env
+    (CI-side Neon runner per R0's standing proposal) — recorded as the
+    env-blocked follow-up per the T-MIG-020/021 posture; no case weakened.
+    CREDENTIAL NOTE (disclosed): no GITHUB_PAT in this session's env at
+    claim time (session reset between operator contacts) — branch prepared
+    push-ready; push follows the w0a T-MIG-000 addendum / T-MIG-020
+    unblock pattern the moment credentials are provisioned. Earliest-claim
+    evidence = this commit's author+committer timestamp (single local
+    commit chain, no force-push, no history rewrite).
+  base:
+    repo: "syllabai-v2 @ ffc2876 (origin/main at claim; R0 housekeeping
+      T-MIG-022 -> DONE, Wave-2 exit gate conditional); frozen refs:
+      syllabai-core @ 6cad6ef (capture ref), syllabai-hub @ 93226a43"
+  basis: >
+    Operator directive 2026-10-04 trace 347fbb29… + this session's operator
+    instruction "check and claim the route layer" (trace 1a10b1c3730f517d);
+    MIGRATION_PLAN.md §5 Wave 3 (assessment loop — the marks-accounting
+    heart; read surfaces first per the r7a split); r7a's 030..034 split
+    proposal (T-MIG-030 yaml + PR #31, "031 exam-papers+questions");
+    AGENT_COORDINATION §2 claim protocol + §5 self-filing precedent chain
+    (T-MIG-013/020/021/030); T-MIG-018 merged contracts (PR #26) make the
+    slice immediately portable; T-MIG-007 merged capture (44 w3 cases incl.
+    this slice's 11); GOLDEN_MASTER captured-as-is law (divergence calls
+    belong to R0, never silently fixed).
+  scope:
+    allowed:
+      - "apps/api/src/services/questions/**"
+      - "apps/api/src/services/exam-papers/**"
+      - "apps/api/src/routes/questions/**"
+      - "apps/api/src/routes/exam-papers/**"
+      - "apps/api/test/questions/**"
+      - "apps/api/test/exam-papers/**"
+      - ".syllabai/receipts/T-MIG-031/**"
+      - ".syllabai/tasks/T-MIG-031-exam-papers-questions-read.yaml (status/execution_record only)"
+      - ".syllabai/worklog.md (append-only)"
+    forbidden:
+      - "apps/api/src/services/assessment/**, apps/api/src/routes/assessment/**,
+        apps/api/test/assessment/** (T-MIG-030's pushed fence, r7a — disjoint-dirs
+        disclosure in the PR; import, never edit)"
+      - "packages/contracts/** (R1's fence — T-MIG-018 schemas merged; import, never edit)"
+      - "packages/db/** (R2's lane — baselined schema read-only)"
+      - "golden/** (R6's fence — replay runs are read-only usage; no case weakened)"
+      - "apps/api/src/index.ts + apps/api/src/middleware/** (wiring ships as a
+        flagged separate OUT-OF-FENCE commit for R0 ratification — T-MIG-010/020/021
+        precedent; middleware is shared infrastructure, consumption only)"
+      - "apps/api/src/services/content/**, services/curriculum/**,
+        services/identity/** (landed lanes T-MIG-020/021/010 — import, never edit)"
+      - "syllabai-core / syllabai-hub writes of any kind (C1 — raw reads only)"
+      - "production Neon writes of any kind (read paths + local scratch verification only)"
+      - "widening any schema or weakening any golden case to make a replay pass (§7 anti-pattern)"
+  notes: >
+    Both controllers are pure READ (all @GetMapping) — this filing ports the
+    read surfaces only; any future write surfaces on these controllers file
+    their own tasks (honest-501 discipline keeps answering until then). The
+    mark-scheme capture pins only the unauthed-401 shell; the 200/204/404
+    reveal law is ported faithfully from MarkSchemeRevealService (policy
+    env wired as SYLLABAI_MARKSCHEME_REVEAL_POLICY equivalent, fail-fast at
+    boot) — capture-is-the-law if a future re-probe diverges (R6 re-pins,
+    never the port lane). Taxonomy unknown-root 404 semantics live inside
+    the Java service (javadoc: "unknown roots 404 exactly like the question
+    list") — ported under the same honest-404 law, disclosed at tranche-1.
