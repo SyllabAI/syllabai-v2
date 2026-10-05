@@ -1,0 +1,78 @@
+version: 1
+task:
+  id: T-MIG-046
+  title: "neon-branch control-plane reachability + live-shape fix — unblocks the T-MIG-044 maiden dispatch (CI run 37351081991 ENOTFOUND api.neon.tech)"
+  owner: "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646) — maiden-dispatch finding filed by the R0 lane operating the one-time Neon setup under operator directive (IM trace 1a10d2bbd4dae0c5 'do the setup' / 'make sure you dont lose the PAT')"
+  status: IN_PROGRESS
+  claimed_at: "2026-10-05T17:58:00Z"
+  priority: P1
+  wave: 3 # instrument repair for the standing re-proof instrument (T-MIG-044, merged main)
+  deps: [T-MIG-044]
+  execution_record: >
+    (claim entry 2026-10-05T17:58Z) FOUNDING EVIDENCE — maiden neon-replay run
+    37351081991 (workflow_dispatch, main @ acce2c6) failed at "Provision
+    disposable Neon COW branches" with `getaddrinfo ENOTFOUND api.neon.tech`
+    from the GitHub-hosted runner: the workflow header's "agent sandboxes are
+    DNS-blocked; CI is not" assumption does not hold for the Neon control
+    plane. Three findings, all live-probed from the sandbox through the
+    console.neon.tech/api/v2 mirror (same REST surface; every probe branch
+    dropped + 404-verified, zero residue, production never touched):
+    R-046-A (reachability): api.neon.tech DNS-dead in both environments; the
+    console mirror answers (live precedent: T-MIG-014/022-era worklog entries).
+    R-046-B (credential shape): branch-create responses no longer carry
+    connection_uris and GET .../connection_uri returns 404; the recorded
+    T-MIG-014 path still works — create a branch-local role via
+    POST .../roles {"role":{name,password}}; the API assigns the working
+    password and returns it ONCE in the creation response ("role passwords
+    taken from creation responses"); a request-supplied password is IGNORED
+    (live-proven: 28P01 with the request password, connect OK with the
+    response password). API-created roles carry pg_write_all_data — exactly
+    the apply-reset DELETE-not-TRUNCATE doctrine.
+    R-046-C (readiness/423): GET /branches/{id} returns {annotation, branch}
+    with NO nested endpoints (the old endpoint-host readiness poll can never
+    fire) — poll branch.current_state == 'ready' instead; AND project-level
+    operations must settle before role creation (HTTP 423
+    'conflicting operations' otherwise) — ops-settle poll + 423 backoff.
+    E2E PROOF: probe round-4 (branch br-delicate-leaf-a5akv22h, dropped +
+    404-verified): created role ci_replay_probe from the creation-response
+    password, connected via postgres.js over TCP (sslmode=require), verified
+    COW carries the full Flyway schema (62 public tables, 63
+    flyway_schema_history rows), executed the REAL golden/tools/apply-reset.ts
+    to 'reset complete (topological wipe + posture verified)' with seed
+    posture verified (users=0 documents=0 roles=3 re-seeded), then dropped +
+    404-verified. Production roles/dbs untouched (branch-local only).
+    FIX (this task): golden/tools/neon-branch.ts only — (1) control-plane
+    base resolution: NEON_API_BASE override > documented primary >
+    console mirror, DNS-failure fallback disclosed in the log, HTTP-level
+    errors never trigger fallback, working base cached; (2) createOne rebuilt
+    on the proven recipe (create → current_state ready poll → ops-settle →
+    branch-local role create with creation-response password → URI
+    postgresql://{role}:{pw}@{host}/{db}?sslmode=require); (3) dead
+    connectionUri helper removed (superseded); (4) drop UNCHANGED (proven
+    working as-is via the mirror). Interface to the workflow unchanged
+    (GITHUB_ENV keys, ::add-mask:: discipline, branch naming). NO
+    golden/cases/** or comparator contact — the corpus is untouched
+    (diff proves it); no workflow file change needed.
+    GATES: golden selftest; ci-replay --plan deterministic split; tool-level
+    sandbox E2E (real `bun golden/tools/neon-branch.ts create` via the mirror
+    fallback creating BOTH seed+prod branches, then drop + 404-verify, zero
+    residue); repo typecheck; suite arithmetic vs main baseline EXACT.
+  base:
+    repo: "syllabai-v2 @ acce2c6 at claim; frozen refs: syllabai-core @ main, syllabai-hub @ 93226a43"
+  basis: >
+    Maiden-dispatch failure evidence (CI run 37351081991, step
+    'Provision disposable Neon COW branches'); operator directive
+    1a10d2bbd4dae0c5 completing the T-MIG-044 register item; BASELINE_DB §2
+    COW doctrine; GOLDEN_MASTER §4 (cases are forever-gates — this fix
+    touches only the control-plane tooling, never the corpus).
+scope:
+  allowed:
+    - "golden/tools/neon-branch.ts"
+    - ".syllabai/tasks/T-MIG-046.yaml (status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-046/**"
+  forbidden:
+    - "golden/cases/** (R6 corpus — forever-gates)"
+    - "golden/runner.ts (comparator — zero drift)"
+    - ".github/workflows/** (interface unchanged by this fix)"
+    - "apps/** packages/** (port lanes)"
+    - "syllabai-core / syllabai-hub (frozen, C1)"
