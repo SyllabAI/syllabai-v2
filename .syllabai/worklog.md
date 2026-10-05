@@ -1503,3 +1503,29 @@ Work Log:
 
 Stage Summary:
 - T-MIG-002-R now has BOTH complete executions on the board (#51 r1, #53 w0a) with the collision fully disclosed on both threads; disposition belongs to R0 (authors never self-merge). Fences held through the push: packages/db/package.json untouched (F2 flagged), generated schema files + drizzle/** untouched, Neon ZERO contact, apps/** untouched. Receipts: run-002.json (execution) + run-003-push.json (push/PR); yaml execution_record extended. Lane w0a STOPS here — no wave self-filing, awaiting R0 disposition.
+---
+Task ID: T-MIG-042-PREP (claim — operator trace 1a10c9d1ef9ebbe1, second sequential lane)
+Agent: R1-contracts session (Super Z, session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Vercel Cron scaffold for NightlyDecayJob — schedule + invoke shape + wiring seam, NO decay port. Card authored by lane (no pre-existing card; operator filed verbally).
+
+Work Log:
+- Branch t-mig-042p/r1 from main c0d8fa08 (re-fetched: main moved for R0 round-6b housekeeping; no conflict). Zero-collision: open PRs #50/#49/#48/#51 all disjoint; t-mig-040-prep/r7a = W4 golden-capture claim (receipt+card only, diff shows zero hub/cron/vercel overlap).
+- Parallel-lane disclosure: same session holds T-MIG-002-R IN_REVIEW (PR #51) — operator sequenced both; zero surface overlap.
+- Doctrine anchors: BASELINE_DB §4.3 (no double-schedule until Wave-7 cutover — scaffold env-gated OFF, zero-DB every path); MIGRATION_PLAN Wave 4 (NightlyDecayJob -> Vercel Cron, deterministic golden-gated math); cutover runbook (Cron takes over at cutover; Render scheduler disabled after 48h watch).
+
+Stage Summary:
+- Plan: vercel.json crons entry (02:00 UTC placeholder disclosed) + /api/cron/nightly-decay route (CRON_SECRET fail-closed; DECAY_CRON_ENABLED skip-gate; 501 not-implemented when enabled) + src/lib/decay seam stub with Wave-4 port contract (decay_job_runs.window_start PK idempotency) + pure-logic bun tests + .env.example docs. Implementation next; receipt run-002; PR; hold.
+---
+Task ID: T-MIG-042-PREP (execution complete — operator trace 1a10c9d1ef9ebbe1, cont.)
+Agent: R1-contracts session (Super Z, session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Implement the Vercel Cron scaffold (schedule + invoke shape + wiring seam, NO decay port).
+
+Work Log:
+- apps/hub/vercel.json (NEW): crons entry GET /api/cron/nightly-decay @ '0 2 * * *' (02:00 UTC placeholder disclosed — exact hour confirmed from V38/@Scheduled at port time; inert while env-gated OFF, so a placeholder cannot double-decay).
+- apps/hub/src/app/api/cron/nightly-decay/route.ts (NEW): invoke shape — runtime nodejs + force-dynamic; CRON_SECRET bearer fail-closed (401 on unset/empty/mismatch); DECAY_CRON_ENABLED != '1' => 200 {status:skipped} (BASELINE_DB §4.3 default until Wave-7 cutover); enabled => seam => 501 {status:not-implemented}; ZERO DB contact on every path.
+- apps/hub/src/lib/decay/nightly-decay.ts (NEW): pure decision law + UTC window key + runNightlyDecay seam stub documenting the Wave-4 port contract (decay_job_runs.window_start PK idempotency for retry-safety; deterministic golden-gated math; no flyway_schema_history contact; single cron entry).
+- apps/hub/src/lib/decay/nightly-decay.test.ts (NEW): 8 tests (auth fail-closed matrix, skip-gate matrix, run path, UTC midnight roll, seam zero-effect). .env.example cron section + package.json 'test:decay' script.
+- GATES: hub decay tests 8 pass / 0 fail; typecheck x4 clean; bun test apps/api packages = 485 pass / 0 fail / 13 skip / 1259 expects (EXACTLY the main c0d8fa08 base — this branch touches no packages/apps-api code); golden selftest OK.
+
+Stage Summary:
+- T-MIG-042-PREP IN_REVIEW on t-mig-042p/r1; card flipped; receipts run-001-claim + run-002-execution; PR opened with review request; HOLD for R0. Two lanes of this session now awaiting R0 merge-intake: PR #51 (T-MIG-002-R) + this PR (T-MIG-042-PREP).
