@@ -468,3 +468,22 @@ Work Log:
 
 Stage Summary:
 - T-MIG-020 CLAIMED at 2026-10-05T05:41:57Z on branch t-mig-020/r3. Wave-2 port lane open; contracts dependency declared (T-MIG-005); zero upstream writes; frozen tree touched read-only.
+
+
+---
+
+Task ID: T-MIG-020
+Agent: R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Wave-2 content-read port — tranche 1 (contract-independent services)
+
+Work Log:
+- Read the four Java controllers + supporting classes behind the captured surfaces (syllabai-core @ 6cad6ef, raw reads): ContentDocumentController, ContentReaderController, DocumentRepository (incl. the existsCitable native corpus-law query), DocumentPageText (verbatim page-text law), QuestionAssetController, and the canonical DTO's JSON property names (top-level camelCase, element-level snake_case — both alias families are wire format).
+- Landed tranche 1 (commit a5a08de): DocumentsRepository (list unpaged newest-first / findById / top-by-document-id / existsCitable VERBATIM with the VALIDATED-paper linkage predicate), DocumentSummaryView port (title fallback fileName→sourceUri), ContentReaderService (unknown/non-citable → the SAME 'Document <id> not found' 404 — T-C20 no-state-leak law; page bounds 404s; corrupted canonical → 500 fallthrough, R10 no-echo; header shape still carries PaperRef per controller :69-72), DocumentPageText port (3 families, reading_order asc nulls LAST stable-joined by \n, text-free page = ""), QuestionAssetsRepository (bytea; zero-byte 404 is the route layer's shape, F-8), ExamPapersRepository.findAllByLinkedDocumentId (business-id join, newest wins), buildContentModule composition root over a STRUCTURAL SqlFn (driver-agnostic through T-MIG-014).
+- 17 stubbed-sql unit tests (apps/api/test/content/) pin the captured shapes AND the SQL shapes (order-by clauses, gate predicates asserted on the rendered query text).
+- Gates: typecheck ×4 exit 0; bun test root 136 pass / 4 skip / 0 fail (incl. the 17 new); golden selftest OK; golden replay NOT run (content routes unmounted — captured posture unchanged; replay flip is tranche 2's gate). Zero Neon connections; zero upstream writes.
+- Declared deviation: claim note said route factories staged this tranche; shipped services-only (dead validation code before contracts would force a §4.1 rewrite). Fence scope unchanged.
+- Tranche 2 (next): review queues v1/v2/v3 + paperReview/audit/provenance/questionTopicRows (needs assessment-side DDL read), then route factories + zod wiring on T-MIG-005 merge, index.ts mounting as flagged OUT-OF-FENCE commit, golden replay flip + CI receipt → PR.
+- Tranche 3 (F-5-gated, NEON_PAT still escalated): real-data parity tranche.
+
+Stage Summary:
+- T-MIG-020 IN_PROGRESS on t-mig-020/r3 (base 67639db): the content-read port's law layer is in with full receipts. Board unchanged otherwise: PR #12 (this lane, T-MIG-013) still awaiting R0 ~10h after ready; PR #13 (T-MIG-014) open; T-MIG-005 contracts in flight by R1.
