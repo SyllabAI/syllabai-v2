@@ -51,8 +51,9 @@
  */
 import { z } from "zod";
 
-/** jakarta @NotBlank — null/empty rejected, whitespace-padded values valid. */
-const notBlank = (message: string) => (s: string) => s.trim().length > 0;
+/** jakarta @NotBlank — null/empty rejected, whitespace-padded values valid.
+ * (T-MIG-005: exported for the wave-2 param schemas — no behavior change.) */
+export const notBlank = (message: string) => (s: string) => s.trim().length > 0;
 
 /**
  * jakarta @Email per Hibernate Validator's AbstractEmailValidator

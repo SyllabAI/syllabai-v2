@@ -1,0 +1,50 @@
+{
+  "task": "T-MIG-005",
+  "run": "run-002-work",
+  "agent": "R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "date": "2026-10-05T05:40:00Z",
+  "what": [
+    "Wave-2 content-read zod contracts COMPLETE on branch t-mig-005/r1 (packages/contracts/src/** only, per scope.allowed).",
+    "Sources extracted from frozen syllabai-core via blob-filtered sparse checkout (C1-compliant raw reads, zero upstream writes): ContentDocumentController, ContentReaderController, QuestionAssetController, ContentController (+ inner records), TeacherCurriculumController, ContentReviewService, CurriculumReviewService, Document, KnowledgeNode, NodeType, CurriculumVersion, ExamPaper, QuestionVersion, MarkScheme, Question.",
+    "New files: content.ts (documents/citation/search/review-queues/paper-review/audit/provenance/topic-rows + Document.Kind + ValidationState + Question.Type + Spring-exact param binding), curriculum.ts (versions/subjects/overviews/nodes + Status/ValidationStatus/NodeType + boolean/enum param binding), errors.ts (the two OBSERVED error envelopes — no Java record exists; provenance-marked), content.test.ts + curriculum.test.ts (69 pins, captured bodies embedded verbatim). index.ts: +3 exports. auth.ts: one-word diff — export the existing notBlank helper (no behavior change; disclosed).",
+    "Scope decision (ratification requested in PR): READ surfaces only per MIGRATION_PLAN §5 W2; write-flow request DTOs of the same controllers excluded (owning waves). Task id 005 self-assigned; T-MIG-020..022 reserved for the port tasks."
+  ],
+  "gates": [
+    "packages/contracts typecheck: exit 0",
+    "bun test packages/contracts: 69 pass / 0 fail",
+    "bun run typecheck (contracts/shared/db/api): exit 0 x4",
+    "bun test apps/api packages: 141 pass / 4 skip / 0 fail (100 before this task — +41 pins, 0 regressions)",
+    "bun run golden -- --selftest: OK"
+  ],
+  "findings": [
+    "F1 (fixed pre-merge): z.coerce.number() WIDENS the accept set vs Java int binding — it accepts '1e3'/'0x10' which Spring's NumberUtils.parseNumber rejects with 400. Caught by pin tests before commit; replaced by an Integer.parseInt-exact mirror (trim ALL whitespace per NumberUtils, ^[+-]?\\d+$, int32 range). Schema-widening was caught BEFORE it could ship — the §7 anti-pattern gate works.",
+    "F2 (encoded, flagged for R6): Spring's StringToBooleanConverter accepts ONLY case-insensitive true/false — NOT yes/1/on/off/0. The captures never exercised non-canonical forms; if a future golden capture hits one, record it (binding-derived, not capture-proven).",
+    "F3 (encoded): TWO error envelopes exist on the wire — Boot-default {timestamp,status,error,path} from the security filter chain (401s) vs advice {status,error,message,timestamp} (400/404). The hub must parse both; errors.ts pins each with capture citations.",
+    "F4 (encoded): StringToEnumConverterFactory TRIMS before valueOf — padded enum query params bind in the core (' QUESTION_PAPER '); response enums are exact (name() is never padded). Param schemas trim-then-parse; response schemas exact.",
+    "F5 (nullability debt, tracked): several view fields' nullability is capture-unproven (T-MIG-004 F-5 real-data tranche gated on NEON_PAT): DocumentSummaryView title/sourceEngine/sourceEngineVersion/checksum; PaperSummary/EnrichedPaperSummary subjectId (null when unplaced) + metadata strings; ChunkHitView elementIds/embeddingModel; VersionReviewView commandWord/points/options/parts; AuditRowView fromState/toState/detail; SubjectView.knowledgeNodeId; NodeView provenance/parentId. All tagged inline 'nullability: capture-unproven' — tighten ONLY with R0-approved evidence, never by widening blind.",
+    "F6 (divergence preserved): T-MIG-004 F-2 — present-but-blank search query returns 500 in the deployed core while the DTO declares @NotBlank. The contract keeps the DECLARED constraint; the accept/reject-set call belongs to R0 + T-MIG-020. Recorded, not silently fixed in either direction."
+  ],
+  "fences": {
+    "touched": [
+      "packages/contracts/src/content.ts (new)",
+      "packages/contracts/src/curriculum.ts (new)",
+      "packages/contracts/src/errors.ts (new)",
+      "packages/contracts/src/content.test.ts (new)",
+      "packages/contracts/src/curriculum.test.ts (new)",
+      "packages/contracts/src/index.ts (+3 exports)",
+      "packages/contracts/src/auth.ts (one word: export keyword on existing notBlank)",
+      ".syllabai/tasks/T-MIG-005-content-read-contracts.yaml (status/execution_record)",
+      ".syllabai/receipts/T-MIG-005/**",
+      ".syllabai/worklog.md (append-only)"
+    ],
+    "untouched_on_purpose": [
+      "apps/** (t-mig-011 r5 + t-mig-013 r3 lanes in flight)",
+      "packages/db/**, golden/** (no replay-tooling changes; cases read-only)",
+      "upstream repos (sparse raw reads only, zero writes)",
+      "Neon (no connection needed for contracts)"
+    ]
+  },
+  "blockers": [
+    "PR cannot be opened: the GITHUB_PAT supplied at ~05:14Z returned 200 on /user, authenticated the claim-branch push, then returned 401 'Bad credentials' on every subsequent call (revoked within ~2 minutes). No substitute credential improvised (credential law). Branch t-mig-005/r1 is push-ready with the work commit; UNBLOCK = a live GITHUB_PAT, then: push, open PR 'T-MIG-005: wave-2 content-read contracts' (body: task yaml link, receipts list, id-ratification request, scope note), flip status IN_REVIEW."
+  ]
+}

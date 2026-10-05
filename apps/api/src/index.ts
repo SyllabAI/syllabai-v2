@@ -29,11 +29,13 @@
 import { Hono } from "hono";
 import { healthRoute } from "./routes/health";
 import { buildIdentityApp } from "./services/identity";
+import { buildContentApp } from "./services/content";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
 
 const identity = buildIdentityApp();
+const content = buildContentApp();
 
 const app = new Hono();
 
@@ -80,6 +82,24 @@ app.use("*", identity.authMiddleware);
 app.route("/api/v1/auth", identity.authRoute);
 app.route("/api/v1/auth", identity.bootstrapRoute);
 
+// Content READ routers (T-MIG-020 — Wave 2). Path parity with the frozen
+// core: ContentController/ContentDocumentController under /api/v1/teacher
+// /content, ContentReaderController under /api/v1/content/documents,
+// QuestionAssetController under /api/v1/content/question-assets. Each
+// router owns its authz internally (teacher: TEACHER/ADMIN;
+// reader/assets: authenticated) — the /api/v1/* fallback below stays the
+// 404-after-auth path for NO router claimed.
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-020, R0 ratification requested):
+// T-MIG-020's scope.allowed covers routes/content/**, services/content/**,
+// test/content/**, packages/contracts/src/content.ts — NOT this file. The
+// three mount lines + this comment are the minimal app-level wiring the
+// ported module needs, shipped as a separate commit per the T-MIG-010
+// precedent so R0 can ratify or lift them out at review.
+app.route("/api/v1/teacher/content", content.teacherRoute);
+app.route("/api/v1/content/documents", content.readerRoute);
+app.route("/api/v1/content/question-assets", content.assetRoute);
+
 // anyRequest().authenticated() parity for paths NO router claimed
 // (SecurityConfig.java:91): anonymous callers get the 401 Boot-shaped body;
 // authenticated callers get 404 not_found (NoResourceFoundException parity,
@@ -109,10 +129,8 @@ app.onError((err, c) => {
 
 export default app;
 
-// Local dev server (bun). On Vercel, the default export above is the entry.
-// import.meta.main: importing this module from tests must not bind a port.
-if (typeof Bun !== "undefined" && import.meta.main) {
-  const port = Number(process.env.PORT ?? 8080);
-  Bun.serve({ port, fetch: app.fetch });
-  console.log(`[syllabai-v2 api] listening on :${port}`);
-}
+// Local dev: `bun apps/api/src/index.ts` — Bun auto-serves the default fetch
+// handler (honours $PORT, default 3000); do NOT also call Bun.serve here, the
+// double-bind crashes boot (found in T-MIG-010 replay bring-up). On Vercel the
+// default export above is the entry; under `bun test` nothing serves (module
+// is imported, import.meta.main false).

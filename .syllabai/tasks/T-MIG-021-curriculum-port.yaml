@@ -1,0 +1,73 @@
+version: 1
+task:
+  id: T-MIG-021
+  title: "Wave-2 curriculum port — CurriculumController (subjects list/by-id, versions incl. archived) + TeacherCurriculumController (teacher versions, version nodes); 13 golden cases"
+  owner: "R7a (agent-da4ab8, zai-web session web-da4ab8b1) — self-filed Wave-2 port task per the wave-2 claim-prep dossier (PR #17, '021 curriculum first' readiness line); R0 ratification of the task id requested in the PR (T-MIG-013/020 precedent)"
+  status: IN_PROGRESS # claimed_at 2026-10-05T05:54:23Z; branch t-mig-021/r7a pushed (claim @ 2b56ba0); tranche 1 (curriculum services, contract-independent) committed with receipt run-001-tranche1.json — 17 stubbed-sql tests green, gates exit 0; route layer + mounting gate on T-MIG-005 (contracts-first §4.1) + golden replay flip gates on PR #13
+  priority: P1
+  wave: 2
+  deps: [T-MIG-005, T-MIG-014] # contracts (route wiring gate — §4.1 contracts-first) + db driver dispatch (PR #13) — same dep shape as T-MIG-020's claim
+  execution_record: >
+    (claim entry 2026-10-05T05:54:23Z) Pre-claim verification at main 67639db:
+    zero T-MIG-021 yamls on main, zero t-mig-021* remote branches (re-checked
+    via fetch --prune immediately before branch cut); T-MIG-020's yaml
+    (R3-api-a, claimed 05:41:57Z, branch e50a63f) explicitly carves the
+    curriculum controllers OUT of the 020 fence ("Curriculum controllers
+    (CurriculumController, TeacherCurriculumController) are T-MIG-021's
+    surface — NOT this task's fence"), so this claim collides with no lane.
+    Surface = 13 golden cases: CurriculumController
+    (curriculum-subjects-student-200, curriculum-subject-by-id-student-200,
+    curriculum-subject-unknown-404, curriculum-subject-bad-uuid-400,
+    curriculum-versions-student-200, curriculum-versions-archived-student-200,
+    curriculum-versions-unauthed-401) + TeacherCurriculumController
+    (teacher-curriculum-versions-{unauthed-401, student-403, teacher-200},
+    teacher-curriculum-nodes-{teacher-200, unknown-version-200-empty,
+    suggested-200}). Plan: contract-independent service/repository layer FIRST
+    over the curriculum tables (raw SQL per users.ts precedent), unit-tested
+    against a stubbed sql adapter; route factories staged in the same fence;
+    route MOUNTING + zod wiring gate on T-MIG-005 (packages/contracts) and
+    lands with the golden replay flip. index.ts wiring ships as a flagged
+    OUT-OF-FENCE commit (T-MIG-010/013 precedent), R0 ratification requested.
+    F-1 divergence call needed from R0:
+    teacher-curriculum-nodes-unknown-version-200-empty captured 200 [] on an
+    unknown version — GOLDEN_MASTER captured-as-is; v2 replicates unless R0
+    rules otherwise (do not silently fix). 2 of the 7 unauthed-401 cases are
+    here (curriculum-versions-unauthed-401,
+    teacher-curriculum-versions-unauthed-401) — replay-stable via the
+    routers-then-401-fallback today; the port must preserve exact shape/status
+    while replacing fallback 401s with real handler authz (regression risk,
+    not feature work). Seed state is fixed-constant uuids (V6) — the most
+    replay-stable W2 family; the F-5 real-data tranche does not gate this
+    surface.
+base:
+  repo: "syllabai-v2 @ 67639db (main at claim); frozen refs: syllabai-core @ 6cad6ef"
+basis: >
+  MIGRATION_PLAN §5 Wave 2 (content/curriculum read surfaces — exit gate =
+  golden cases + hub reader pages); §4.1 contracts-first (no endpoint before
+  its zod schema — hence the T-MIG-005 dependency); AGENT_COORDINATION §2
+  claim protocol (earliest-claim is a tiebreak, not territory — T-MIG-014/015
+  arbitration precedent), §4 yaml format, §6.1 escalation (dependency tasks);
+  wave-2 claim-prep dossier (PR #17, R7-housekeeping/wave2-claim-prep.json —
+  per-case route surface + readiness map); T-MIG-004 receipts F-1..F-8
+  (captured shapes + harness findings); R0 UNBLOCK-SEQUENCE-PHASE2 Stage
+  Summary ("Wave-2 ports (T-MIG-020..022) against the fresh capture");
+  GOLDEN_MASTER captured-as-is rule (F-1/F-2 divergence calls belong to R0,
+  never silently fixed); R10 (fixed client messages — parse errors never echo
+  request content).
+scope:
+  allowed:
+    - "apps/api/src/services/curriculum/**"
+    - "apps/api/src/routes/curriculum/**"
+    - "apps/api/test/curriculum/**"
+    - ".syllabai/receipts/T-MIG-021/**"
+    - ".syllabai/tasks/T-MIG-021-curriculum-port.yaml (status/execution_record only)"
+    - ".syllabai/worklog.md (append)"
+  forbidden:
+    - "packages/contracts/** (R1's fence — T-MIG-005 in flight; curriculum zod schemas land there)"
+    - "packages/db/** (T-MIG-014's fence, PR #13)"
+    - "golden/** (R6's fence — replay runs are read-only usage)"
+    - "apps/api/src/index.ts + apps/api/src/middleware/** (any wiring ships flagged OUT-OF-FENCE, R0 ratification requested — T-MIG-010/013 precedent)"
+    - "apps/api/src/services/content/** (T-MIG-020's fence) + apps/api/src/services/identity/** (T-MIG-014 touches users.ts) — shared error classes are IMPORTED, never edited"
+    - "syllabai-core / syllabai-hub writes of any kind (C1 — raw reads only)"
+    - "production Neon writes (read paths + local scratch verification only)"
+    - "widening any schema or weakening any golden case to make a replay pass (§7 anti-pattern)"

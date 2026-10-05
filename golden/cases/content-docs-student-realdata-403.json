@@ -1,0 +1,24 @@
+{
+  "name": "content-docs-student-realdata-403",
+  "description": "GET /api/v1/teacher/content/documents as STUDENT on the REAL corpus: 403 forbidden — teacher-surface RBAC denial re-proven with real data behind the gate.",
+  "source": "captured from a LOCAL boot of the frozen Java core (Temurin JDK 25.0.4.1, mvn -DskipTests package exit 0) against a Neon COW branch golden-capture/2026-10-05 (br-fancy-surf-a52owvza, copy-on-write child of production br-muddy-bar-a5huwldd) on 2026-10-05T05:17Z by the T-MIG-004 extension session (w0a, F-5 unblock: operator supplied NEON_PAT); production compute never contacted — the branch's own endpoint served everything; synthetic student/teacher accounts registered via the honest API path (real corpus data: 1023 documents / 108 exam papers / 4740 embedded chunks); automated email scan: 0 non-synthetic addresses in any captured body",
+  "method": "GET",
+  "path": "/api/v1/teacher/content/documents",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer scrubbed-fixed-dummy-jwt-token"
+    }
+  },
+  "expect": {
+    "status": 403,
+    "body": {
+      "timestamp": "2026-10-05T05:19:24.411Z",
+      "status": 403,
+      "error": "Forbidden",
+      "path": "/api/v1/teacher/content/documents"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}
