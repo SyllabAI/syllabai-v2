@@ -1,0 +1,91 @@
+{
+  "name": "w4-exam-series-seeded-calendar-200",
+  "description": "exam-series calendar from the V63 Pearson 2026/2027 seed: published sittings only, soonest window first (seed rows are replay-stable constants)",
+  "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "GET",
+  "path": "/api/v1/learners/me/exam-series",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": [
+      {
+        "id": "0a000000-0000-0000-0000-000000000001",
+        "board": "PEARSON_EDEXCEL",
+        "qualification": "IAL",
+        "seriesCode": "2026-october-november",
+        "label": "October/November 2026",
+        "windowStart": "2026-10-08",
+        "windowEnd": "2026-10-30",
+        "entryDeadline": "2026-08-28",
+        "resultsDate": "2027-01-21",
+        "estimated": false,
+        "sourceUrl": "https://qualifications.pearson.com/content/dam/pdf/Support/Examination-timetables-for-International-Advanced-Levels/ial-october2026-final.pdf",
+        "retrievedAt": "2026-10-04T00:00:00Z"
+      },
+      {
+        "id": "0a000000-0000-0000-0000-000000000002",
+        "board": "PEARSON_EDEXCEL",
+        "qualification": "INTERNATIONAL_GCSE",
+        "seriesCode": "2026-november",
+        "label": "November 2026",
+        "windowStart": "2026-10-27",
+        "windowEnd": "2026-11-19",
+        "entryDeadline": "2026-09-12",
+        "resultsDate": "2027-01-21",
+        "estimated": false,
+        "sourceUrl": "https://qualifications.pearson.com/content/dam/pdf/Support/Examination-timetables-for-Edexcel-International-GCSE/intgcse-nov-2026-final.pdf",
+        "retrievedAt": "2026-10-04T00:00:00Z"
+      },
+      {
+        "id": "0a000000-0000-0000-0000-000000000003",
+        "board": "PEARSON_EDEXCEL",
+        "qualification": "IAL",
+        "seriesCode": "2027-january",
+        "label": "January 2027",
+        "windowStart": "2027-01-08",
+        "windowEnd": "2027-01-25",
+        "entryDeadline": "2026-10-16",
+        "resultsDate": "2027-03-04",
+        "estimated": false,
+        "sourceUrl": "https://qualifications.pearson.com/content/dam/pdf/Support/Examination-timetables-for-International-Advanced-Levels/ial-january-2027-final.pdf",
+        "retrievedAt": "2026-10-04T00:00:00Z"
+      },
+      {
+        "id": "0a000000-0000-0000-0000-000000000004",
+        "board": "PEARSON_EDEXCEL",
+        "qualification": "IAL",
+        "seriesCode": "2027-may-june",
+        "label": "May/June 2027",
+        "windowStart": "2027-05-04",
+        "windowEnd": "2027-06-10",
+        "entryDeadline": "2027-03-21",
+        "resultsDate": "2027-08-12",
+        "estimated": false,
+        "sourceUrl": "https://qualifications.pearson.com/content/dam/pdf/Support/Examination-timetables-for-International-Advanced-Levels/ial-summer-2027-final.pdf",
+        "retrievedAt": "2026-10-04T00:00:00Z"
+      },
+      {
+        "id": "0a000000-0000-0000-0000-000000000005",
+        "board": "PEARSON_EDEXCEL",
+        "qualification": "INTERNATIONAL_GCSE",
+        "seriesCode": "2027-may-june",
+        "label": "May/June 2027",
+        "windowStart": "2027-05-10",
+        "windowEnd": "2027-06-18",
+        "entryDeadline": "2027-03-21",
+        "resultsDate": "2027-08-19",
+        "estimated": false,
+        "sourceUrl": "https://qualifications.pearson.com/content/dam/pdf/Support/Examination-timetables-for-Edexcel-International-GCSE/int-gcse-summer-2027-final.pdf",
+        "retrievedAt": "2026-10-04T00:00:00Z"
+      }
+    ]
+  },
+  "tolerate": [
+    "retrievedAt",
+    "timestamp"
+  ]
+}

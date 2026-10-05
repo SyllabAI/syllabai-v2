@@ -1,0 +1,34 @@
+{
+  "name": "w4-flashcard-rating-still-learning-201",
+  "description": "STILL_LEARNING rating: streak-0 tail on its own card, due immediately",
+  "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "POST",
+  "path": "/api/v1/learners/me/flashcard-ratings",
+  "request": {
+    "body": {
+      "cardId": "fl_w4_cap_003",
+      "rating": "still-learning",
+      "subtopicCode": "WCH11-T1"
+    },
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 201,
+    "body": {
+      "cardId": "fl_w4_cap_003",
+      "rating": "still-learning",
+      "subtopicCode": "WCH11-T1",
+      "nodeId": "20000000-0000-0000-0000-000000000011",
+      "occurredAt": "2026-10-05T15:48:32.456233465Z"
+    }
+  },
+  "tolerate": [
+    "id",
+    "occurredAt",
+    "ratedAt",
+    "timestamp"
+  ],
+  "seq": 12
+}

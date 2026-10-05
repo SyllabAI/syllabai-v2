@@ -1,0 +1,399 @@
+{
+  "name": "w4-knowledge-graph-empty-200",
+  "description": "knowledge graph over the CHM root, fresh learner: structure present, mastery at floor; effective-mastery numerics are now-dependent (EbbinghausDecayService recomputes P0*e^(-t/tau) at read, ADR-031) \u2014 tolerated",
+  "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "GET",
+  "path": "/api/v1/learners/me/knowledge-graph?rootId=20000000-0000-0000-0000-000000000001",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "learnerId": "da30cee5-cb41-4565-9e8c-713894319ca8",
+      "rootId": "20000000-0000-0000-0000-000000000001",
+      "rootCode": "CHM",
+      "rootTitle": "Chemistry",
+      "asOf": "2026-10-05T15:48:31.912010576Z",
+      "nodes": [
+        {
+          "id": "20000000-0000-0000-0000-000000000001",
+          "code": "CHM",
+          "type": "SUBJECT",
+          "title": "Chemistry",
+          "description": "Edexcel IAL Chemistry",
+          "childIds": [
+            "20000000-0000-0000-0000-000000000010"
+          ],
+          "mastery": null,
+          "effectiveMastery": null,
+          "band": null,
+          "attempts": null,
+          "correctCount": null,
+          "lastPracticedAt": null,
+          "proceduralFluencyGap": null,
+          "reviewDueAt": null,
+          "reviewReason": null,
+          "misconceptionProbability": null,
+          "misconceptionActive": null,
+          "applicability": null
+        },
+        {
+          "id": "20000000-0000-0000-0000-000000000010",
+          "code": "WCH11",
+          "type": "UNIT",
+          "title": "Unit 1: Structure, Bonding and Introduction to Organic Chemistry",
+          "description": "WCH11 \u2014 IAL Chemistry Unit 1",
+          "childIds": [
+            "20000000-0000-0000-0000-000000000011",
+            "20000000-0000-0000-0000-000000000021",
+            "20000000-0000-0000-0000-000000000031"
+          ],
+          "mastery": null,
+          "effectiveMastery": null,
+          "band": null,
+          "attempts": null,
+          "correctCount": null,
+          "lastPracticedAt": null,
+          "proceduralFluencyGap": null,
+          "reviewDueAt": null,
+          "reviewReason": null,
+          "misconceptionProbability": null,
+          "misconceptionActive": null,
+          "applicability": null
+        },
+        {
+          "id": "20000000-0000-0000-0000-000000000011",
+          "code": "WCH11-T1",
+          "type": "TOPIC",
+          "title": "Formulae, Equations and Amount of Substance",
+          "description": "Chemical formulae, equations, the mole, reacting masses and volumes, empirical/molecular formulae.",
+          "childIds": [
+            "20000000-0000-0000-0000-000000000012",
+            "20000000-0000-0000-0000-000000000013"
+          ],
+          "mastery": null,
+          "effectiveMastery": null,
+          "band": null,
+          "attempts": null,
+          "correctCount": null,
+          "lastPracticedAt": null,
+          "proceduralFluencyGap": null,
+          "reviewDueAt": null,
+          "reviewReason": null,
+          "misconceptionProbability": null,
+          "misconceptionActive": null,
+          "applicability": null
+        },
+        {
+          "id": "20000000-0000-0000-0000-000000000012",
+          "code": "WCH11-T1.1",
+          "type": "SUBTOPIC",
+          "title": "Mole calculations and reacting masses",
+          "description": "The mole as the SI unit of amount; molar mass; reacting mass calculations; percentage yield.",
+          "childIds": [
+            "30000000-0000-0000-0000-000000000001"
+          ],
+          "mastery": null,
+          "effectiveMastery": null,
+          "band": null,
+          "attempts": null,
+          "correctCount": null,
+          "lastPracticedAt": null,
+          "proceduralFluencyGap": null,
+          "reviewDueAt": null,
+          "reviewReason": null,
+          "misconceptionProbability": null,
+          "misconceptionActive": null,
+          "applicability": null
+        },
+        {
+          "id": "30000000-0000-0000-0000-000000000001",
+          "code": "MIS-T1.1-01",
+          "type": "MISCONCEPTION",
+          "title": "Moles and grams are interchangeable",
+          "description": "Treating a mass in grams as a number of moles, or assuming one mole of any substance weighs 1 g.",
+          "childIds": [],
+          "mastery": null,
+          "effectiveMastery": null,
+          "band": null,
+          "attempts": null,
+          "correctCount": null,
+          "lastPracticedAt": null,
+          "proceduralFluencyGap": null,
+          "reviewDueAt": null,
+          "reviewReason": null,
+          "misconceptionProbability": null,
+          "misconceptionActive": null,
+          "applicability": null
+        },
+        {
+          "id": "20000000-0000-0000-0000-000000000013",
+          "code": "WCH11-T1.2",
+          "type": "SUBTOPIC",
+          "title": "Empirical and molecular formulae",
+          "description": "Determination of empirical formulae from composition data; scaling to molecular formulae.",
+          "childIds": [],
+          "mastery": null,
+          "effectiveMastery": null,
+          "band": null,
+          "attempts": null,
+          "correctCount": null,
+          "lastPracticedAt": null,
+          "proceduralFluencyGap": null,
+          "reviewDueAt": null,
+          "reviewReason": null,
+          "misconceptionProbability": null,
+          "misconceptionActive": null,
+          "applicability": null
+        },
+        {
+          "id": "20000000-0000-0000-0000-000000000021",
+          "code": "WCH11-T2",
+          "type": "TOPIC",
+          "title": "Atomic Structure and the Periodic Table",
+          "description": "Subatomic particles, isotopes, electronic configuration, ionisation energies and periodic trends.",
+          "childIds": [
+            "20000000-0000-0000-0000-000000000022",
+            "20000000-0000-0000-0000-000000000023"
+          ],
+          "mastery": null,
+          "effectiveMastery": null,
+          "band": null,
+          "attempts": null,
+          "correctCount": null,
+          "lastPracticedAt": null,
+          "proceduralFluencyGap": null,
+          "reviewDueAt": null,
+          "reviewReason": null,
+          "misconceptionProbability": null,
+          "misconceptionActive": null,
+          "applicability": null
+        },
+        {
+          "id": "20000000-0000-0000-0000-000000000022",
+          "code": "WCH11-T2.1",
+          "type": "SUBTOPIC",
+          "title": "Atomic structure, isotopes and ions",
+          "description": "Protons, neutrons, electrons; mass number and isotopes; formation of ions; relative atomic mass.",
+          "childIds": [
+            "30000000-0000-0000-0000-000000000004"
+          ],
+          "mastery": null,
+          "effectiveMastery": null,
+          "band": null,
+          "attempts": null,
+          "correctCount": null,
+          "lastPracticedAt": null,
+          "proceduralFluencyGap": null,
+          "reviewDueAt": null,
+          "reviewReason": null,
+          "misconceptionProbability": null,
+          "misconceptionActive": null,
+          "applicability": null
+        },
+        {
+          "id": "30000000-0000-0000-0000-000000000004",
+          "code": "MIS-T2.1-01",
+          "type": "MISCONCEPTION",
+          "title": "Isotopes of the same element differ chemically",
+          "description": "Confusing mass differences of isotopes with chemical behaviour differences; isotopes react identically.",
+          "childIds": [],
+          "mastery": null,
+          "effectiveMastery": null,
+          "band": null,
+          "attempts": null,
+          "correctCount": null,
+          "lastPracticedAt": null,
+          "proceduralFluencyGap": null,
+          "reviewDueAt": null,
+          "reviewReason": null,
+          "misconceptionProbability": null,
+          "misconceptionActive": null,
+          "applicability": null
+        },
+        {
+          "id": "20000000-0000-0000-0000-000000000023",
+          "code": "WCH11-T2.2",
+          "type": "SUBTOPIC",
+          "title": "Electron configuration and periodic trends",
+          "description": "Electron shells, sub-shells and orbitals; successive ionisation energies; periodicity.",
+          "childIds": [],
+          "mastery": null,
+          "effectiveMastery": null,
+          "band": null,
+          "attempts": null,
+          "correctCount": null,
+          "lastPracticedAt": null,
+          "proceduralFluencyGap": null,
+          "reviewDueAt": null,
+          "reviewReason": null,
+          "misconceptionProbability": null,
+          "misconceptionActive": null,
+          "applicability": null
+        },
+        {
+          "id": "20000000-0000-0000-0000-000000000031",
+          "code": "WCH11-T3",
+          "type": "TOPIC",
+          "title": "Bonding and Structure",
+          "description": "Ionic, covalent and metallic bonding; molecular shape; intermolecular forces and structure.",
+          "childIds": [
+            "20000000-0000-0000-0000-000000000032",
+            "20000000-0000-0000-0000-000000000033"
+          ],
+          "mastery": null,
+          "effectiveMastery": null,
+          "band": null,
+          "attempts": null,
+          "correctCount": null,
+          "lastPracticedAt": null,
+          "proceduralFluencyGap": null,
+          "reviewDueAt": null,
+          "reviewReason": null,
+          "misconceptionProbability": null,
+          "misconceptionActive": null,
+          "applicability": null
+        },
+        {
+          "id": "20000000-0000-0000-0000-000000000032",
+          "code": "WCH11-T3.1",
+          "type": "SUBTOPIC",
+          "title": "Ionic bonding and lattice structure",
+          "description": "Formation of ions; ionic lattice structure; physical properties of ionic compounds.",
+          "childIds": [
+            "30000000-0000-0000-0000-000000000002"
+          ],
+          "mastery": null,
+          "effectiveMastery": null,
+          "band": null,
+          "attempts": null,
+          "correctCount": null,
+          "lastPracticedAt": null,
+          "proceduralFluencyGap": null,
+          "reviewDueAt": null,
+          "reviewReason": null,
+          "misconceptionProbability": null,
+          "misconceptionActive": null,
+          "applicability": null
+        },
+        {
+          "id": "30000000-0000-0000-0000-000000000002",
+          "code": "MIS-T3.1-01",
+          "type": "MISCONCEPTION",
+          "title": "Ionic compounds form discrete molecule pairs",
+          "description": "Believing solid NaCl consists of NaCl \"molecules\" (one Na+ per one Cl-) rather than a giant lattice.",
+          "childIds": [],
+          "mastery": null,
+          "effectiveMastery": null,
+          "band": null,
+          "attempts": null,
+          "correctCount": null,
+          "lastPracticedAt": null,
+          "proceduralFluencyGap": null,
+          "reviewDueAt": null,
+          "reviewReason": null,
+          "misconceptionProbability": null,
+          "misconceptionActive": null,
+          "applicability": null
+        },
+        {
+          "id": "20000000-0000-0000-0000-000000000033",
+          "code": "WCH11-T3.2",
+          "type": "SUBTOPIC",
+          "title": "Covalent bonding, shapes and intermolecular forces",
+          "description": "Single/double covalent bonds, dative bonds; VSEPR shapes; polarity; van der Waals and hydrogen bonding.",
+          "childIds": [
+            "30000000-0000-0000-0000-000000000003"
+          ],
+          "mastery": null,
+          "effectiveMastery": null,
+          "band": null,
+          "attempts": null,
+          "correctCount": null,
+          "lastPracticedAt": null,
+          "proceduralFluencyGap": null,
+          "reviewDueAt": null,
+          "reviewReason": null,
+          "misconceptionProbability": null,
+          "misconceptionActive": null,
+          "applicability": null
+        },
+        {
+          "id": "30000000-0000-0000-0000-000000000003",
+          "code": "MIS-T3.2-01",
+          "type": "MISCONCEPTION",
+          "title": "The octet rule is an absolute law",
+          "description": "Assuming atoms always react to complete their outer electron shells, with no exceptions (e.g. BF3, NO).",
+          "childIds": [],
+          "mastery": null,
+          "effectiveMastery": null,
+          "band": null,
+          "attempts": null,
+          "correctCount": null,
+          "lastPracticedAt": null,
+          "proceduralFluencyGap": null,
+          "reviewDueAt": null,
+          "reviewReason": null,
+          "misconceptionProbability": null,
+          "misconceptionActive": null,
+          "applicability": null
+        }
+      ],
+      "prerequisiteEdges": [
+        {
+          "prerequisiteId": "20000000-0000-0000-0000-000000000021",
+          "prerequisiteCode": "WCH11-T2",
+          "nodeId": "20000000-0000-0000-0000-000000000011",
+          "nodeCode": "WCH11-T1"
+        },
+        {
+          "prerequisiteId": "20000000-0000-0000-0000-000000000031",
+          "prerequisiteCode": "WCH11-T3",
+          "nodeId": "20000000-0000-0000-0000-000000000021",
+          "nodeCode": "WCH11-T2"
+        },
+        {
+          "prerequisiteId": "20000000-0000-0000-0000-000000000013",
+          "prerequisiteCode": "WCH11-T1.2",
+          "nodeId": "20000000-0000-0000-0000-000000000012",
+          "nodeCode": "WCH11-T1.1"
+        },
+        {
+          "prerequisiteId": "20000000-0000-0000-0000-000000000022",
+          "prerequisiteCode": "WCH11-T2.1",
+          "nodeId": "20000000-0000-0000-0000-000000000012",
+          "nodeCode": "WCH11-T1.1"
+        },
+        {
+          "prerequisiteId": "20000000-0000-0000-0000-000000000023",
+          "prerequisiteCode": "WCH11-T2.2",
+          "nodeId": "20000000-0000-0000-0000-000000000022",
+          "nodeCode": "WCH11-T2.1"
+        },
+        {
+          "prerequisiteId": "20000000-0000-0000-0000-000000000032",
+          "prerequisiteCode": "WCH11-T3.1",
+          "nodeId": "20000000-0000-0000-0000-000000000022",
+          "nodeCode": "WCH11-T2.1"
+        },
+        {
+          "prerequisiteId": "20000000-0000-0000-0000-000000000033",
+          "prerequisiteCode": "WCH11-T3.2",
+          "nodeId": "20000000-0000-0000-0000-000000000023",
+          "nodeCode": "WCH11-T2.2"
+        }
+      ]
+    }
+  },
+  "tolerate": [
+    "asOf",
+    "effectiveMastery",
+    "id",
+    "learnerId",
+    "mastery",
+    "timestamp"
+  ]
+}
