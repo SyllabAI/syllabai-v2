@@ -1,0 +1,19 @@
+{
+  "task": "T-MIG-033 tranche-2",
+  "run": "run-006-r1-review",
+  "agent": "R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "recorded_at": "2026-10-06 (operator round-8/9 delegation, review+merge yourself)",
+  "role": "independent NON-authoring review + delegated merge-intake execution (author = r4b, session web-77b6eb1d)",
+  "subject": "PR #64 (t-mig-033/r4b) — teacher marking routes + zod wiring + flagged mounts",
+  "verdict": "APPROVE (surface topology / authz / gates layer) — with honest scope disclosure: R0's post-merge intake pass (a1e4c5c) found R-1+R-2 at the body-binding envelope-law layer, which this review did not deep-audit; R0's fixes are the binding content and are acknowledged here",
+  "review_basis": {
+    "fence": "routes/teachermarking.ts + services/teachermarking/** + test/teachermarking/** per scope; index.ts delta = the ratified OUT-OF-FENCE flagged-commit pattern (import + construction + mount + self-declaring warning comment)",
+    "route_topology": "9/9 paths exact vs TeacherMarkingController.java :51-282 (answers, queue-v2, throughput, smart-mark-batch, answers/{id}, answers/{id}/smart-mark, answers/{id}/human-mark, kappa/evaluate, kappa/latest)",
+    "authz": "requireRole(c, TEACHER, ADMIN) gate before every handler = hasAnyRole defense-in-depth parity",
+    "gates_on_head_e9d345f": "735 ran / 0 fail / 13 skip / 2001 expect = main 712/1924 + 23/77 arithmetic EXACT; typecheck x3 exit 0; selftest OK",
+    "merge": "executed via API -> 0f646ce (head e9d345f incl. lane's own f67de41 intake); a parallel delegated actor simultaneously merged the older head cde3fa8 -> d975ed9 (double-merge race, content-clean, no force-push); R0 intake fixes R-1+R-2 -> a1e4c5c (7 pins/+38, two-envelope law restored incl. kappa unreadable-body NO-WRITE, paperTitle-null 4-arg overload; 742/2039 exact)"
+  },
+  "calibration": "R-1 (kappa scope-ALL write on PRESENT-but-unreadable body; malformed_body vs validation_failed jakarta-default split) and R-2 (paperTitle NULL via 4-arg TeacherViews.answer overload) were NOT caught by this review — recorded as a reviewer-quality data point; the reviewer/R0 two-layer intake process caught the divergence as designed",
+  "remaining": "tranche-3 = SME admin (SmeQuestionAdminController/IngestService/PackageDtos/SpecPointRepository) — stays with r4b per the card",
+  "zero_prod_neon_contact": true
+}

@@ -2094,3 +2094,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-044's one-time setup register item is DISCHARGED: secret+vars live, maiden dispatch executed, the ENOTFOUND blocker fixed (T-MIG-046, PR #66), instrument re-dispatch pending the branch-cap register decision. REGISTER FOR OPERATOR: (1) NEON_BRANCH_CAPACITY — the project is at its branch cap (10); the CI runner needs 2 disposable slots per run; free >=1 standing slot (candidates: t-mig-022/r3a + r3a-prod whose postures are receipted, t-mig-003/r6 capture branch) or raise the plan limit — R0 will NOT delete standing branches; until then the instrument fails honestly at provisioning with zero residue. (2) Fresh PAT staged (fingerprint 46b5d309715c1b1c) — rotation item DISCHARGED this session; revoke at migration end per briefing §0. (3) The daily 02:30 UTC schedule now runs with the fixed tool and will succeed automatically once capacity exists.
+
+---
+Task ID: round-9 review+merge execution (#64, #65) + round-8 disposition note
+Agent: R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Operator round-8/9 delegation ("review+merge yourself", PAT reissued trace 1a10d35f931693fd, persisted at the sandbox .secrets per board convention) — sweep the queue, review, execute merge-intake.
+
+Work Log:
+- ROUND-8 disposition (superseded, recorded for the union): my independent sweep reached #60 APPROVE / #62 APPROVE / #61 superseded with exact-delta gates + frozen-core fidelity checks — R7a's parallel delegation (traces 1a10c9fd933dd505 -> 1a10d0b6f0bf404d) executed the same verdicts first; my staged intake chain (r1/round8-staged) was never pushed and is retired as confirming-only. Verdict agreement across the two independent reviews: 3/3.
+- #64 (033 t2) INDEPENDENT REVIEW -> APPROVE at the surface/authz/gates layer: 9/9 route paths exact vs TeacherMarkingController :51-282, TEACHER/ADMIN gate parity, OUT-OF-FENCE mounts in the ratified flagged pattern, gates 735/0/13skip/2001 = +23/+77 exact. MERGED -> 0f646ce. A parallel delegated actor concurrently merged the older head cde3fa8 -> d975ed9 (double-merge race; content-clean union, zero force-push) and R0's intake pass then landed R-1+R-2 fixes -> a1e4c5c (two-envelope law incl. kappa unreadable-body NO-WRITE; paperTitle-null 4-arg overload; 7 pins/+38, 742/2039 exact). RECEIPT: T-MIG-033/run-006-r1-review.json — carries the honest calibration note that R-1/R-2's envelope-law layer was NOT covered by my review; the two-layer reviewer/R0 process caught it as designed.
+- #65 (041 t1) INDEPENDENT REVIEW -> APPROVE clean: ADR-031 anchor law verified (ZERO write paths in services/learner/**, decay recomputed-on-read never persisted, tauFor/bandOf verbatim vs DecayParams.java :58-68), consumes landed 038 contracts, 22 fakeSql pins, gates 757/0/13skip/2083 = +22/+82 exact on my intake AND byte-equivalent on the lane's own intake 6c55575 (pushed mid-review; zero drift). MERGED -> ed558ab. RECEIPT: T-MIG-041/run-003-r1-review.json.
+- Post-merge main union 6ea61b2 ties both lines with R0's fixes; gates re-stamped below. Board velocity note: main moved 5+ times during this round (PRs #63/#66 + intake unions + housekeeping) — merge-before-PUT mergeable_state checks are now mandatory for every delegated merge (data point for the next sweep).
+- REMAINING per the cards: 033 tranche-3 = SME admin (r4b); 041 tranche-2 = routes + flagged mounts (r7a); 043 = exam-series/flashcards. No card flips by this lane (partial tranches).
+- PAT persistence: operator PAT stored 0600 at sandbox .secrets/ (outside every repo tree; referenced by trace, never by value) per the operator's standing instruction.
+
+Stage Summary:
+- #64 + #65 merged under delegated authority with receipts; round-8's superseded staging retired as an independent 3/3-verdict confirmation; R0's R-1/R-2 envelope-law pass acknowledged as the binding layer for 033-t2. Lane returns to IDLE/HOLD.
