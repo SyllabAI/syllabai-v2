@@ -24,7 +24,8 @@ describe("GET /actuator/health (path parity with Java core)", () => {
   test("returns 200 {status:UP} — same shape as Spring Boot actuator", async () => {
     const res = await app.request("/actuator/health");
     expect(res.status).toBe(200);
-    expect(await res.json()).toEqual({ status: "UP" });
+    // real core shape incl. boot-probe groups (actuator-health-parity case, justified:true)
+    expect(await res.json()).toEqual({ groups: ["liveness", "readiness"], status: "UP" });
   });
 });
 

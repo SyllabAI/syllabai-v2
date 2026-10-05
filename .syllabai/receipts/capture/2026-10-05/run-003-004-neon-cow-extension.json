@@ -1,0 +1,120 @@
+{
+ "capture_session": "T-MIG-004 extension run-003 + run-004 \u2014 F-5 real-data tranche via Neon COW branch",
+ "schema": "syllabai.v2.capture.session/1.0",
+ "date": "2026-10-05",
+ "agent": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+ "source": "LOCAL boot of the frozen Java core (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) against Neon COW branch golden-capture/2026-10-05 (br-fancy-surf-a52owvza, parent production br-muddy-bar-a5huwldd); production compute never contacted",
+ "boot_env": "SYLLABAI_DATABASE_URL(jdbc, branch endpoint) + synthetic SYLLABAI_JWT_SECRET(32+ bytes) + synthetic SYLLABAI_TEACHER_JOIN_CODE + SYLLABAI_LLM_MODE=test + decay-job disabled(default config)",
+ "accounts": "2 synthetic accounts via honest /api/v1/auth/register (student 201; teacher 201 after a first-attempt 403 proved the fail-closed join-code gate when the env name was mis-exported)",
+ "raw_captures": "scratch only (not committed): 15 case records with status/headers/body(+binary digest)",
+ "cases": [
+  {
+   "name": "content-docs-canonical-realdata-200",
+   "got": 401,
+   "expected": 200,
+   "verdict": "EXPECTED-PENDING"
+  },
+  {
+   "name": "content-docs-student-realdata-403",
+   "got": 401,
+   "expected": 403,
+   "verdict": "EXPECTED-PENDING"
+  },
+  {
+   "name": "content-docs-teacher-detail-realdata-200",
+   "got": 401,
+   "expected": 200,
+   "verdict": "EXPECTED-PENDING"
+  },
+  {
+   "name": "content-docs-teacher-realdata-200",
+   "got": 401,
+   "expected": 200,
+   "verdict": "EXPECTED-PENDING"
+  },
+  {
+   "name": "content-reader-real-citation-paperref-200",
+   "got": 401,
+   "expected": 200,
+   "verdict": "EXPECTED-PENDING"
+  },
+  {
+   "name": "content-reader-real-doc-unauthed-401",
+   "got": 401,
+   "expected": 401,
+   "verdict": "PASS"
+  },
+  {
+   "name": "content-reader-real-page-beyond-404",
+   "got": 401,
+   "expected": 404,
+   "verdict": "EXPECTED-PENDING"
+  },
+  {
+   "name": "content-reader-real-page-cover-empty-200",
+   "got": 401,
+   "expected": 200,
+   "verdict": "EXPECTED-PENDING"
+  },
+  {
+   "name": "content-reader-real-page-text-200",
+   "got": 401,
+   "expected": 200,
+   "verdict": "EXPECTED-PENDING"
+  },
+  {
+   "name": "content-reader-real-paper-null-200",
+   "got": 401,
+   "expected": 200,
+   "verdict": "EXPECTED-PENDING"
+  },
+  {
+   "name": "question-assets-real-binary-200",
+   "got": 401,
+   "expected": 200,
+   "verdict": "EXPECTED-PENDING"
+  },
+  {
+   "name": "teacher-content-paper-review-realdata-200",
+   "got": 401,
+   "expected": 200,
+   "verdict": "EXPECTED-PENDING"
+  },
+  {
+   "name": "teacher-content-review-queue-realdata-200",
+   "got": 401,
+   "expected": 200,
+   "verdict": "EXPECTED-PENDING"
+  },
+  {
+   "name": "teacher-content-review-queue-v2-realdata-200",
+   "got": 401,
+   "expected": 200,
+   "verdict": "EXPECTED-PENDING"
+  },
+  {
+   "name": "teacher-content-review-queue-v3-realdata-200",
+   "got": 401,
+   "expected": 200,
+   "verdict": "EXPECTED-PENDING"
+  }
+ ],
+ "pii_scan": "0 non-synthetic email-like strings across all raw bodies",
+ "sha256_of_committed_case_files": {
+  "content-docs-canonical-realdata-200.json": "ea5f8a26aa692b40cc9f13f309dafcde0d61d45828ec4e7c694ba9c0930e383d",
+  "content-docs-student-realdata-403.json": "aac4cac72d9c4e1aec4da03c4cbc91c54b6ac21939ae659e54a48bfe41fbe22c",
+  "content-docs-teacher-detail-realdata-200.json": "99609fa11e8d87575a58c2c165653eb9a1f2db95abfc610f13f52af87129ec8a",
+  "content-docs-teacher-realdata-200.json": "deb13f5d42c484f52c221b1b2268bf810255059e051750016e9089d7308c680a",
+  "content-reader-real-citation-paperref-200.json": "66380587cabea94e2a82494900b6b2616f71b8f0778ea3ea03e2711884c9ff70",
+  "content-reader-real-doc-unauthed-401.json": "19fd536310e4db3edf10016fd0ef488e7d0d4c89e8106b42c652e8c7153d94c3",
+  "content-reader-real-page-beyond-404.json": "814e3d55158802736440da897786f41c7091cd3938081038cb44f5199267e623",
+  "content-reader-real-page-cover-empty-200.json": "83a36d2fa661f79593015c153ddd00de656df628f0da6c1539be44811d9cf2e9",
+  "content-reader-real-page-text-200.json": "6b70bdc86d78a239eeca21853ca4f9bacf36954d8c3c88621ff181e4c80e5534",
+  "content-reader-real-paper-null-200.json": "be05b31a0811acb92d029c794fa02aa01ff6431e3e39075a992ae0730540e0c1",
+  "question-assets-real-binary-200.json": "6239be133953d8bbf4fb894ba5c5c648b35de7523ad493031eef7b23a1b0fdb9",
+  "teacher-content-paper-review-realdata-200.json": "211ae089e70d05e9524efe5a838ca9d62b14b250f71af59bd18867eaec22bb08",
+  "teacher-content-review-queue-realdata-200.json": "cbd8762aa8e57dd9281c670d216d0f65091f4b7894e57f5d9ac40cbf0e52c561",
+  "teacher-content-review-queue-v2-realdata-200.json": "c57e30084e8604293714f723c2c21d68d63da33c82e2d8f0dd571e41edd141a6",
+  "teacher-content-review-queue-v3-realdata-200.json": "48a641ae99ed02e4d4940f084f63a59ca4d0cc8ce47a6030cbda144cfcd9d35a"
+ }
+}

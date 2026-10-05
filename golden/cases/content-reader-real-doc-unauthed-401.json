@@ -1,0 +1,20 @@
+{
+  "name": "content-reader-real-doc-unauthed-401",
+  "description": "GET /api/v1/content/documents/853ae02d-... with NO Authorization on the REAL corpus: 401 — the authz shell for the reader surface re-proven on a real citable document id.",
+  "source": "captured from a LOCAL boot of the frozen Java core (Temurin JDK 25.0.4.1, mvn -DskipTests package exit 0) against a Neon COW branch golden-capture/2026-10-05 (br-fancy-surf-a52owvza, copy-on-write child of production br-muddy-bar-a5huwldd) on 2026-10-05T05:17Z by the T-MIG-004 extension session (w0a, F-5 unblock: operator supplied NEON_PAT); production compute never contacted — the branch's own endpoint served everything; synthetic student/teacher accounts registered via the honest API path (real corpus data: 1023 documents / 108 exam papers / 4740 embedded chunks); automated email scan: 0 non-synthetic addresses in any captured body",
+  "method": "GET",
+  "path": "/api/v1/content/documents/853ae02d-0090-4c40-89ef-b69681c8bb40",
+  "request": {},
+  "expect": {
+    "status": 401,
+    "body": {
+      "timestamp": "2026-10-05T05:19:23.950Z",
+      "status": 401,
+      "error": "Unauthorized",
+      "path": "/api/v1/content/documents/853ae02d-0090-4c40-89ef-b69681c8bb40"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}
