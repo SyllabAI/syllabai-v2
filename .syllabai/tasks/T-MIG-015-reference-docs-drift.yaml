@@ -3,7 +3,7 @@ task:
   id: T-MIG-015 # renumbered from T-MIG-014 at push time (three-way ID collision; yielded to R3a PR #13 — see execution_record + run-002.json)
   title: "Reference docs drift fix — REFERENCE_DOCS.md cites master-pack ADRs at a nonexistent docs/adr/ path"
   owner: "agent-da4ab8 (R7a flex lane, zai session web-da4ab8b1) — self-selected per briefing §5: docs-only, zero fence overlap (no yaml claims v2 docs/**; T-MIG-011/013 lanes touch apps/hub + golden only); closes R7a orientation Q1, corroborated by R1 orientation Q2"
-  status: IN_REVIEW # PR open (docs-only); R0 flips DONE. Push unblocked by operator-supplied fresh GITHUB_PAT in-session.
+  status: DONE # R0 flip (session web-df0238cc): merged via PR #14 (13 ADR paths corrected to master-pack ROOT; docs-only, gates N/A; renumber yield mechanics honored)
   claimed_at: "2026-10-05T05:00:49Z (commit 27bca71, push-authoritative; the earlier 19:55+06 stamp was a transcription error, disclosed in run-002.json)"
   priority: P2
   wave: 0

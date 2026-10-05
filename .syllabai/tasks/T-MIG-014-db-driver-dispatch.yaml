@@ -3,7 +3,7 @@ task:
   id: T-MIG-014
   title: "URL-dispatched db driver — postgres.js for non-Neon Postgres so golden replay can target seed-shaped local/branch state (packages/db + identity createSql)"
   owner: "superz-agent-b (session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9, self-selected per briefing §5 blank-role protocol)"
-  status: IN_REVIEW # PR open on t-mig-014/r3a, receipts attached (run-001.json) — awaiting R0
+  status: DONE # R0 flip (session web-df0238cc): merged via PR #13 (URL-dispatched db drivers + latent neon-http 1.x incompatibility pinned 0.10.2 — substrate bug independently verified against drizzle 0.38.4 call form; users.ts OUT-OF-FENCE dispatch ratified); Wave-2 replay unblocked
   claimed_at: "2026-10-05T11:08:05+06:00"
   priority: P1
   wave: 0

@@ -3,7 +3,7 @@ task:
   id: T-MIG-013
   title: "Identity golden-gate hardening — land capture-driven parity fixes (HS384 alg selection, Hibernate 9 @Email text, empty-body field order, health groups) + tolerant replay tooling"
   owner: "R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) — self-filed follow-up to the merged T-MIG-010 (PR #11); R0 ratification of the task id requested in the PR"
-  status: IN_REVIEW # claimed 2026-10-05T06:20:00Z; branch t-mig-013/r3; PR #12; CI verify+hub success on the hardened head
+  status: DONE # R0 flip (session web-df0238cc): merged via PR #12 (HS384 key-size alg selection — cutover-critical, capture-proven; broles R-JWT compat; OUT-OF-FENCE route-layer fixes ratified); R0 gates re-executed on union: typecheck x4 exit 0, 174/0, selftest OK; task id ratified
   priority: P1
   wave: 1
   deps: [T-MIG-010]

@@ -757,3 +757,18 @@ Work Log:
 
 Stage Summary:
 - Standing R0 = session web-df0238cc as of 2026-10-05T06:3xZ. Main @ e20f3bf audited green (merge a3c65d8 + housekeeping ratified). Queue: 10 open PRs, dependency-correct order, one recusal. Escalation to operator (non-blocking): sandbox DNS blocks Neon — CI-side runner proposal stands.
+
+---
+Task ID: R0-SWEEP-1 (queue cleared)
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Process the full R0 review queue — first sweep under the standing role accepted this session
+
+Work Log:
+- Merged (each with fresh ls-remote head-check, merge-intake union on the branch — fast-forward pushes only, NO force — full gate re-execution on the merged state, verdict comment, then merge): #13 T-MIG-014 db drivers (P1; substrate bug independently verified: drizzle 0.38.4 neon-http calls client(sql, params, opts) — positional form removed in serverless 1.x, pin 0.10.2 correct; users.ts OUT-OF-FENCE ratified) -> #12 T-MIG-013 golden hardening (cutover-critical HS384 key-size alg + broles capture-pinned claim shim + OUT-OF-FENCE route-layer ratified; task id ratified) -> #14 T-MIG-015 docs (docs-only) -> #17 R7 dossier (read-only) -> #16 T-MIG-004 F-5 (capture-only, additions verified 16457/0) -> #18 T-MIG-005 contracts (ruling1 reduction executed: canonical content.ts retained, superseded removed, curriculum/errors/auth-export kept; id ratified; canonical-pins debt recorded) -> #19 T-MIG-021 claim+tranche-1 (id ratified; dual-claim arbitration: r7a 05:56:51Z < r4 06:06:54Z, r4 yields with credit, branch preserved) -> #23 T-MIG-006 write contracts (base retargeted, ruling1 name-adaptation applied, second-lane disclosure accepted, id ratified).
+- Closed: #20 (superseded by #22 per the inherited arbitration; r3a's live-replay evidence credited as the follow-up input; branch preserved).
+- Recused: #21 (this session's own former r1-lane port) — UNREVIEWED by design; needs an independent reviewer (original R0 session, another lane, or the operator).
+- Housekeeping: T-MIG-013/014/015/005/006 -> DONE with evidence; T-MIG-004 execution_record notes the F-5 extension (#16). Board after sweep: T-MIG-000/001/002/003/004/005/006/010/012/013/014/015/016(pending review)/020 DONE-or-in-review, T-MIG-011 CLAIMED (r5, silent), T-MIG-021 IN_PROGRESS (tranche-1 landed, route layer unblocked), Wave-3 prereqs (006) landed.
+- Follow-ups recorded: (1) contracts-level pins for canonical content.ts (extend-never-replace); (2) live Neon golden replay + api integration tier — CI-side runner proposal with the operator (both sandboxes DNS-blocked from api.neon.tech); (3) R6 items: golden runner tolerate-wiring defect, re-capture stability probe (empty-body field order), X-Search-Empty-Cause header parity, embed case filename/expect mismatch; (4) PAT rotation (chat-transit).
+
+Stage Summary:
+- Queue CLEARED except #21 (recused). Nine PRs dispositioned in one sweep with zero force-pushes and full gate evidence per merge. Main @ this commit: typecheck x4 exit 0, bun test 247/0/13skip (pre-#21), golden 69 cases + selftest OK. The strangler-fig now covers identity + content-read + curriculum services + rate-limit mounting (pending #21 review) + write-contract prerequisites for Wave 3.
