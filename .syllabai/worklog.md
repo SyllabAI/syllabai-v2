@@ -482,3 +482,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-005 implementation-ready and CLAIMED locally; branch t-mig-005/r1 (9f43ff4, off 67639db) is push-ready verbatim. UNBLOCK for the operator/R0: re-supply a valid GITHUB_PAT as env var → push + open PR "T-MIG-005: wave-2 content-read contracts" (receipts listed, id-ratification requested), or push the branch from an authenticated session. Claim timestamp 05:06:59Z @ 9f43ff4 establishes earliest-claim priority.
+
+---
+
+Task ID: T-MIG-005 (work entry)
+Agent: R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Wave-2 content-read contracts — port the six controllers' read-surface DTOs constraint-for-constraint into packages/contracts.
+
+Work Log:
+- Extracted sources from frozen syllabai-core via blob-filtered sparse checkout (raw reads, zero upstream writes): 6 W2 controllers + ContentReviewService + CurriculumReviewService + the 4 entity files carrying the wire enums (Document.Kind, ValidationState ×3 identical, Question.Type, CurriculumVersion.Status, ValidationStatus, NodeType full domain incl. MISCONCEPTION/CONCEPT).
+- Landed packages/contracts/src/{content.ts,curriculum.ts,errors.ts} + 69 pin tests (content.test.ts, curriculum.test.ts — captured T-MIG-004 bodies embedded verbatim) + index.ts exports + one-word auth.ts diff (export existing notBlank; no behavior change). Spring-exact param binding ported: StringToEnumConverterFactory trims before valueOf; StringToBooleanConverter true/false-only; NumberUtils.parseNumber int semantics (trim-all-whitespace, sign+digits, int32 range, "" → null → 400 for primitive). Two OBSERVED error envelopes pinned in errors.ts with capture citations.
+- FINDINGS F1-F6 in .syllabai/receipts/T-MIG-005/run-002-work.json. Headline: F1 — pin tests caught z.coerce.number() widening the accept set vs Java int binding ("1e3" would have passed) BEFORE commit; replaced with a parseInt-exact mirror. F6 — T-MIG-004 F-2 blank-search-500 divergence preserved (declared @NotBlank kept; R0 owns the call). F5 — nullability debt on capture-unproven fields tagged inline, tightening list in receipt (unblocks when the F-5 NEON_PAT tranche lands).
+- Gates, final pass, all exit-captured: contracts typecheck 0; contracts tests 69/0; repo typecheck x4 0; bun test 141 pass / 4 skip / 0 fail (was 100 — +41 pins, 0 regressions); golden --selftest OK.
+
+Stage Summary:
+- T-MIG-005 work COMPLETE on branch t-mig-005/r1 (IN_PROGRESS → IN_REVIEW pending PR). Scope decision (READ-surfaces-only, write-flow DTOs excluded to owning waves; id 005 self-assigned) submitted for R0 ratification in the PR. BLOCKER: PR/push blocked on credential — the PAT supplied at ~05:14Z authenticated the claim push then revoked within ~2 min (401 'Bad credentials' on all calls); no substitute improvised per credential law. Branch is push-ready verbatim: commit 9f43ff4 (claim) + work commit; UNBLOCK = live GITHUB_PAT → push → PR "T-MIG-005: wave-2 content-read contracts" (yaml link + receipts + ratification request) → IN_REVIEW.
