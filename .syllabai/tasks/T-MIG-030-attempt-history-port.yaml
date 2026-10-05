@@ -3,7 +3,7 @@ task:
   id: T-MIG-030
   title: "Wave-3 assessment-loop port, slice A — AttemptController (POST /api/v1/attempts MCQ + POST /api/v1/attempts/structured) + AttemptHistoryController (GET /api/v1/learners/me/attempts); 6 golden cases"
   owner: "R7a (agent-da4ab8, zai-web session web-da4ab8b1) — self-filed Wave-3 port task per the T-MIG-013/020/021 self-filing precedent; R0 ratification of the task id + the 030..034 split proposal requested in the PR"
-  status: IN_PROGRESS # claimed 07:39Z; tranche-1 (services + 34 stubbed-sql tests) RATIFIED + merged via PR #31 (R0 verdict 5990832802); tranche-2 (routes + zod + OUT-OF-FENCE mounts + golden replay of the 8 cases) remains; E-1 binding condition recorded below
+  status: IN_REVIEW # claimed 07:39Z; tranche-1 (services + 34 stubbed-sql tests) RATIFIED + merged via PR #31 (R0 verdict 5990832802); tranche-2 (routes + zod + 19 route tests + E-1 seam fix) executed 2026-10-05T08:55Z on t-mig-030/r7a-ext incl. the E-1 binding condition (satisfied — run-004 e1_satisfaction record); mounts flagged OUT-OF-FENCE; replay env-blocked (CI-side runner pending)
   priority: P1
   wave: 3
   deps: [T-MIG-007, T-MIG-018, T-MIG-014] # capture (replay gate, PR #29), wave-3 contracts (zod gate, PR #26 -> T-MIG-018 per R0 renumber directive), db driver dispatch (merged via PR #13)

@@ -5,7 +5,7 @@
  * + structured lifecycle laws).
  */
 import { describe, expect, test } from "bun:test";
-import { AssessmentSubmitter } from "../../src/services/assessment/submit";
+import { AssessmentSubmitter, noopEvidencePublisher } from "../../src/services/assessment/submit";
 import { NotFoundException, BadRequestException } from "../../src/services/identity/errors";
 import {
   fakeSql,
@@ -34,6 +34,7 @@ const INSERT_ATTEMPT = /insert into attempts/;
 const TOPICS_MATCH = /select node_id from question_topics where question_id = \?/;
 const PARTS_MATCH = /select id, label, marks from question_parts where question_version_id = \? order by ordering/;
 const INSERT_ANSWER = /insert into answers/;
+const EVIDENCE_FLIP = /update attempts set evidence_emitted = true where id = \? and evidence_emitted = false/;
 
 const MCQ_REQUEST = {
   questionId: QUESTION_ID,
@@ -51,6 +52,7 @@ function mcqRoutes(overrides: Route[] = []): Route[] {
     { match: OPTIONS_MATCH, rows: OPTION_ROWS },
     { match: INSERT_ATTEMPT, rows: [] },
     { match: TOPICS_MATCH, rows: SECONDARY_TOPIC_ROWS },
+    { match: EVIDENCE_FLIP, rows: [] }, // E-1: fired by the claiming spy publisher
     ...overrides,
   ];
 }
@@ -100,6 +102,24 @@ describe("submit — MCQ auto-grade law", () => {
     expect(insert).toBeDefined();
     expect(insert).toContain("insert into attempts");
     expect(sql.queries.some((q) => TOPICS_MATCH.test(q))).toBe(true);
+  });
+
+  test("E-1 (R0, daad88e): claiming publisher → guarded flip fires after publish (post-publish true)", async () => {
+    const sql = fakeSql(mcqRoutes());
+    await new AssessmentSubmitter(sql, spyPublisher(), FIXED_CLOCK).submit(LEARNER_ID, MCQ_REQUEST);
+    const flip = sql.queries.find((q) => EVIDENCE_FLIP.test(q));
+    expect(flip).toBeDefined();
+    expect(flip).toContain("and evidence_emitted = false"); // once-only guard (Attempt.java:159-161)
+    const insertIdx = sql.queries.findIndex((q) => INSERT_ATTEMPT.test(q));
+    const flipIdx = sql.queries.findIndex((q) => EVIDENCE_FLIP.test(q));
+    expect(insertIdx).toBeGreaterThanOrEqual(0);
+    expect(flipIdx).toBeGreaterThan(insertIdx); // insert precedes flip (save → publish order parity)
+  });
+
+  test("E-1: no-op publisher → no flip issued (nothing claimed, nothing persisted)", async () => {
+    const sql = fakeSql(mcqRoutes().filter((r) => r.match !== EVIDENCE_FLIP));
+    await new AssessmentSubmitter(sql, noopEvidencePublisher, FIXED_CLOCK).submit(LEARNER_ID, MCQ_REQUEST);
+    expect(sql.queries.some((q) => EVIDENCE_FLIP.test(q))).toBe(false);
   });
 
   test("correct MCQ: marksAwarded = question.marks", async () => {

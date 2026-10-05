@@ -43,6 +43,7 @@ import { buildIdentityApp } from "./services/identity";
 import { RateLimitFilter } from "./middleware/ratelimit";
 import { buildContentApp } from "./services/content";
 import { buildCurriculumRouters } from "./routes/curriculum";
+import { buildAssessmentRouters } from "./routes/assessment";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
@@ -50,6 +51,7 @@ import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
 const identity = buildIdentityApp();
 const content = buildContentApp();
 const curriculum = buildCurriculumRouters();
+const assessment = buildAssessmentRouters();
 
 const app = new Hono();
 
@@ -146,6 +148,23 @@ app.route("/api/v1/content/question-assets", content.assetRoute);
 // precedent so R0 can ratify or lift them out at review.
 app.route("/api/v1/curriculum", curriculum.learnerRoute);
 app.route("/api/v1/teacher/curriculum", curriculum.teacherRoute);
+
+// Assessment routers (T-MIG-030 — Wave 3). Path parity with the frozen
+// core: AttemptController under /api/v1/attempts, AttemptHistoryController
+// under /api/v1/learners/me (GET /attempts). Both fall under the frozen
+// anyRequest().authenticated() rule (SecurityConfig.java:87-91 has no
+// specific matchers for these prefixes) and each router owns its authz
+// internally — the /api/v1/* fallback below stays the 404-after-auth path
+// for NO router claimed.
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-030, R0 ratification requested):
+// T-MIG-030's scope.allowed covers routes/assessment/**,
+// services/assessment/**, test/assessment/** — NOT this file. The two
+// mount lines + this comment are the minimal app-level wiring the ported
+// module needs, shipped as a separate commit per the T-MIG-010/020/021
+// precedent so R0 can ratify or lift them out at review.
+app.route("/api/v1/attempts", assessment.attemptRoute);
+app.route("/api/v1/learners/me", assessment.historyRoute);
 
 // anyRequest().authenticated() parity for paths NO router claimed
 // (SecurityConfig.java:91): anonymous callers get the 401 Boot-shaped body;
