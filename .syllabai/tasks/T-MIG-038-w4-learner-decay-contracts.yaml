@@ -1,0 +1,106 @@
+version: 1
+task:
+  id: T-MIG-038
+  title: "W4 zod contracts — port the learner-surface + decay-math + NightlyDecayJob
+    I/O DTO surfaces constraint-for-constraint into packages/contracts
+    (learner/dto views: LearnerStateView, SkillStateView,
+    MisconceptionStateView, LearnerKnowledgeGraphView, AgendaView,
+    CourseStatsView, FlashcardRatingView, FlashcardRatingTrailView,
+    FlashcardReviewScheduleView, NoteVoteView, SmartLessonView; request
+    records FlashcardRatingRequest + NoteVoteRequest; decay math DTOs:
+    BktParams, BdtParams, MisconceptionReading; NightlyDecayJob I/O:
+    DecayJobRun + the decay-event/state shapes) — contracts-first
+    prerequisite for the Wave-4 port lanes (T-MIG-040..043)"
+  owner: "Contracts-lane (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
+    — operator-assigned CONTRACTS LANE this round (IM trace 1a10cb48dc7edd15,
+    2026-10-05), Step 2 of the same directive."
+  status: IN_REVIEW # PR open; independent review requested; R0 merge-intake pending (authors never self-merge)
+  claimed_at: "2026-10-05T21:52:09+06:00 (Asia/Dhaka)"
+  priority: P2
+  wave: 4
+  deps: [T-MIG-018, T-MIG-037]
+  execution_record: >
+    (claim entry 2026-10-05T21:52:09+06:00) Claimed per AGENT_COORDINATION
+    §2.1 in this branch-start commit, base = origin/main c0d8fa0. Id 038
+    free at claim (ls-remote + main 27-yaml id set). Step 2 of the
+    operator's two-step contracts directive; executes AFTER T-MIG-037's PR
+    (this lane's Step 1, branch t-mig-037/r1c) so the shared-helper set
+    lands first. SURFACE INVENTORY (frozen syllabai-core @ 6cad6ef, raw
+    reads 2026-10-05, local clone verified HEAD = 6cad6ef9463e8d21f1555456561a4caaf7e89395):
+    learner controllers mount GET /api/v1/learners/me/state,
+    /knowledge-graph, /agenda, /course-stats, /smart-lesson,
+    flashcard-rating POST + trail GET + review-schedule GET, note-votes
+    POST (routes verified per controller @RequestMapping/@GetMapping/
+    @PostMapping lines; exact mounts re-verified during implementation);
+    response views in learner/dto (11 files listed in title); request
+    records FlashcardRatingRequest + NoteVoteRequest in their controllers;
+    TrailCursor.Position(Instant occurredAt, UUID id) pagination cursor;
+    decay math DTOs bkt/BktParams(l0, slip, guess, learnRate) +
+    bdt/BdtParams(prior, selectIfHeld, selectIfNotHeld) +
+    MisconceptionReading(state, effectiveProbability); NightlyDecayJob
+    @Scheduled applyForgettingDecay I/O = DecayJobRun rows + the skill/
+    misconception state it mutates (exposed wire-shapes pinned via
+    SkillStateView/MisconceptionStateView); decay config surface
+    LearnerProperties.Bkt/Decay/Bdt/DecayJob/FlashcardReview is
+    @ConfigurationProperties (NOT wire) — excluded unless a view embeds it,
+    decision disclosed at implementation. DEEP READ of every dto file +
+    service-side validation + nullability happens in the implementation
+    entry (append) — this claim pins scope and fence only. Acceptance =
+    constraint-for-constraint diff vs Java declarations + pin tests per
+    T-MIG-006/018/037 precedent; gates: contracts typecheck + tests, repo
+    typecheck x4, bun test apps/api packages, golden --selftest.
+    SCOPE DECISION disclosed: recommendation/NextBestActionsView is NOT in
+    this task (the directive names learner surfaces + decay math +
+    NightlyDecayJob I/O; the recommendations surface has no learner-route
+    exposure verified at claim time — R0 may file it separately).
+    (COMPLETION 2026-10-05T22:29:02+06:00, run-001): port complete —
+    packages/contracts/src/learner.ts (22 wire schemas + 4 vocabularies +
+    param mirrors) + decay.ts (DecayParams/BktParams/BdtParams engine-boundary
+    with exact compact-constructor invariants; DecayJobRun ledger row;
+    DecayAppliedEvent + ReviewScheduledEvent job events; ADR-031 anchor law
+    documented) + 2 test files (31 pins) + index.ts export lines. DEEP-READ
+    FINDINGS: (1) NodeType is SIX values incl. CONCEPT — reused
+    curriculum.ts knowledgeNodeTypeSchema (star-export collision caught by
+    tsc TS2308; the enum was already canonical there); (2) mastery band is
+    the derived closed domain LOW|DEVELOPING|SECURE (DecayParams.bandOf
+    :58-68); (3) trail limit default 200 / cap 500 CLAMPED not rejected,
+    cursor base64url({t,i}) FAIL-CLOSED → 400; (4) rating/vote tolerant
+    parse maps are POST-side only — the served wire forms are the strict
+    enums; (5) cardId/noteId @Size(min=3) caught by my own pin (first
+    draft used min(1)); (6) unpractised-node null-proficiency honesty law
+    is source-level (schema accepts numbers; golden pins the nulls).
+    Embedded views (NBA/assignment/exam-target) ported inside learner.ts
+    for the agenda wire per T-MIG-018 precedent — disclosed for R0 split
+    if wanted. GATES: typecheck x4 exit 0; bun test apps/api packages =
+    503 pass / 13 skip / 0 fail, 1327 expect, 516 total (= main 472 pass
+    + 31 pins / +68 expect exactly; the round-6 '485' convention is TOTAL
+    incl. skip — verified by scratch-worktree measurement, receipt
+    measurement_note); golden --selftest OK. Receipt:
+    .syllabai/receipts/T-MIG-038/run-001.json.
+scope:
+  allowed:
+    - "packages/contracts/src/learner.ts"
+    - "packages/contracts/src/learner.test.ts"
+    - "packages/contracts/src/decay.ts"
+    - "packages/contracts/src/decay.test.ts"
+    - "packages/contracts/src/index.ts (export lines only)"
+    - ".syllabai/tasks/T-MIG-038-w4-learner-decay-contracts.yaml (this file — status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-038/**"
+    - ".syllabai/worklog.md (append-only; process artifact per AGENT_COORDINATION §5)"
+  forbidden:
+    - "apps/** (Wave-4 port lanes unassigned; Wave-3 PRs #50/#52 in flight)"
+    - "packages/db/** (R2 lane)"
+    - "golden/** (read-only usage only)"
+    - "syllabai-core / syllabai-hub writes of any kind (C1 — raw reads only)"
+    - "any Neon connection (contracts need none)"
+    - "widening any zod schema to make a case pass (§7 anti-pattern; index.ts rule 3)"
+base:
+  repo: "syllabai-v2 (branch t-mig-038/r1c off origin/main c0d8fa0); frozen ref: syllabai-core @ 6cad6ef"
+basis: >
+  Operator directive 2026-10-05 trace 1a10cb48dc7edd15 ("Step 2 — W4
+  contracts: learner surfaces + decay math DTOs + NightlyDecayJob I/O");
+  MIGRATION_PLAN §4.1 + §5 Wave 4 ("agenda, state, recommendations, exam
+  series, flashcards + the Ebbinghaus decay subsystem (NightlyDecayJob ->
+  Vercel Cron; decay math is deterministic -> golden-gated)"); the
+  NightlyDecayJob -> Vercel Cron port makes its I/O shapes wire contracts
+  by construction; AGENT_COORDINATION §2/§4/§7; T-MIG-006/018/037 precedent.
