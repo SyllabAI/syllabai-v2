@@ -504,3 +504,16 @@ Work Log:
 
 Stage Summary:
 - T-MIG-020 tranche 2 receipted on t-mig-020/r3: the Wave-2 content-read port now covers documents + citation reader + assets (tranche 1) and the full teacher content-review read model (tranche 2), contract-independent and replay-ready for the tranche-3 flip. Three-way race on this task disclosed with commit-time evidence; R0 owns the arbitration. PR #12 (T-MIG-013) still awaiting R0 ~10.5h after ready.
+
+---
+Task ID: T-MIG-020
+Agent: R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: run-003 — Neon live-verification tier landed; F-5 execution blocked by sandbox DNS (environment, not credential)
+
+Work Log:
+- Operator supplied the Neon PAT (env-transient per credential doctrine; never written to disk/logs). Neon API probe: api.github.com resolves, api.neon.tech does NOT (getent rc=2 — sandbox DNS allowlist blocks *.neon.tech). Same blocker r3-c recorded in e5f19de ("Neon replay stays PENDING (sandbox DNS)"). F-5 live verification therefore PENDING-ENVIRONMENT, not PENDING-credential.
+- Landed the live-verification tier instead (T-MIG-010 integration precedent, same INTEGRATION_DATABASE_URL env contract): apps/api/test/content/review.neon.integration.test.ts — 6 read-only tests over the tranche-1/2 SQL (PK/gate lookups on nil uuids, v1/v2/v3 queues over the real store, aggregate censuses well-formed, uuid-array batch loaders + the four-way audit union over the wire, the captured 404 law). READ-ONLY law: SELECTs only; PII law: counts/booleans only in logs and assertions. Self-skips loudly without the env; executes as-is in any DNS-unlocked environment (CI with the secret, or operator side).
+- Gates re-run: typecheck ×4 exit 0; content tier 42 pass / 6 skip / 0 fail.
+
+Stage Summary:
+- T-MIG-020 branch carries tranches 1-2 (receipted) + the ready-to-fire Neon tier (run-003 receipt: environment-blocked, execution runbook inside). PR #27 open with the full three-way race disclosure. Nothing upstream written; golden untouched; no credentials persisted.

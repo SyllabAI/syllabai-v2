@@ -1,0 +1,33 @@
+{
+ "task": "T-MIG-020 (run-003 — Neon live-verification tier; F-5)",
+ "agent": "R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "branch": "t-mig-020/r3",
+ "date": "2026-10-05",
+ "status": "PENDING-ENVIRONMENT (tier landed; execution blocked by sandbox DNS, not by credential)",
+ "unblock_events": [
+  "operator supplied the Neon PAT to this lane 2026-10-05 (credential doctrine: env-transient injection only; token never written to any file, log, receipt or artifact; used exclusively as an Authorization header for the Neon API probe)",
+  "probe result: api.github.com resolves (20.205.243.168), api.neon.tech does NOT resolve (getent rc=2) — the sandbox DNS allowlist blocks *.neon.tech; identical blocker recorded by r3-c in commit e5f19de ('Neon replay stays PENDING (sandbox DNS)')"
+ ],
+ "what_landed": {
+  "file": "apps/api/test/content/review.neon.integration.test.ts",
+  "precedent": "T-MIG-010 identity integration tier (same INTEGRATION_DATABASE_URL env contract; skipIf-absent with a loud note; receipt attached to the PR per §2.5)",
+  "tests": [
+   "documents: PK lookup + existsCitable corpus-law gate on a nil uuid",
+   "exam papers: PK miss + suggested/validated counts",
+   "review queues v1/v2/v3 run over the real store (shape + count parity between the three)",
+   "aggregate censuses well-formed (mapped <= total asserted)",
+   "uuid-array batch loaders + the four-way audit union over the wire (proves array params + ::uuid[] casts against the real driver)",
+   "unknown question → the captured 404 law"
+  ],
+  "laws": [
+   "READ-ONLY: every statement is a SELECT — no INSERT/UPDATE/DELETE/DDL anywhere in the tier (BASELINE_DB.md §4 production integrity)",
+   "PII: logs and assertions carry COUNTS and BOOLEANS only, never row payloads"
+  ],
+  "local_gates": "typecheck ×4 exit 0; content tier 42 pass / 6 skip / 0 fail (the 6 integration tests self-skip in this sandbox)"
+ },
+ "execution_runbook": [
+  "1. In any DNS-unlocked environment (CI with secrets, or operator side): export INTEGRATION_DATABASE_URL='postgresql://<role>@<ep-...>.neon.tech/<branch-db>?sslmode=require'",
+  "2. bun test apps/api/test/content/review.neon.integration.test.ts",
+  "3. Attach the console output (counts only) as run-003-addendum to PR #27; the F-5 real-data tranche then ports the results into golden expectations with R6 coordination"
+ ]
+}
