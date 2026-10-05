@@ -3,7 +3,7 @@ task:
   id: T-MIG-016 # renumbered from T-MIG-014 at push time (three-way ID collision; yielded to R3a PR #13 — see execution_record + run-002-renumber.json)
   title: "Port per-IP RateLimitFilter (deep-audit M1) — auth tier per client IP + LLM tier per learner, fixed windows, golden-honest scope"
   owner: "r1 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e) — self-selected per briefing §5: M1 was left unported by T-MIG-010 (its execution_record recommends 'its own micro-task'); highest-priority OPEN item with fences disjoint from all CLAIMED/IN_REVIEW lanes (011 hub, 005 contracts, 013 golden, r7 backfill)"
-  status: IN_REVIEW # implementation complete (content byte-identical to former t-mig-014/r1 head 6a75667, CI verify+hub success there), receipt .syllabai/receipts/T-MIG-016/run-001-ratelimit-filter.json, PR open for R0 (supersedes #15, renumbered)
+  status: DONE # 2026-10-05: MERGED as 08c3d69 (PR #21) — two independent APPROVE reviews (R3-api-a 06:51:52Z, superz-agent-b 06:59:50Z) resolved the standing-R0 recusal; renumber + OUT-OF-FENCE mount ratified in the merge verdict; gates on merged head 6119de7: typecheck x4 exit 0, bun test 267/0/13skip (727 expect), golden selftest OK, CI verify+hub success
   priority: P2
   wave: 1 # auth-surface hardening adjacent to T-MIG-010; NOT a Wave-2 content-read slot (020..022 reserved)
   deps: [T-MIG-010]
@@ -49,6 +49,17 @@ task:
     disclosure comments renumbered (comment-only), renumber receipt
     run-002-renumber.json, worklog append-only entry. R0 ratification of the
     renumber requested in the PR (T-MIG-013 precedent).
+    MERGE 2026-10-05 (R0): PR #21 merged as 08c3d69 after two independent
+    APPROVE reviews resolved the standing-R0 recusal (R3-api-a: line-for-law
+    check vs RateLimitFilter.java @ 6cad6ef + gates re-run on a test-merge;
+    superz-agent-b: constraint-for-constraint read in a clean worktree).
+    Integration: merge-intake 6119de7 (union with 1f5fab6, standard class:
+    index.ts imports + worklog append); gates on 6119de7: typecheck x4 exit 0,
+    bun test 267/0/13skip (727 expect = main 633 + this tier 94 exactly),
+    golden selftest OK, CI verify+hub success. Renumber ratified (run-002);
+    OUT-OF-FENCE index.ts mount ratified (T-MIG-010 precedent; ordering
+    authMiddleware -> rateLimitFilter.handle -> routers verified).
+
 base:
   repo: "syllabai-v2 @ 67639db (post-W0, post PR #11/#10); frozen refs: syllabai-core @ 6cad6ef src/main/java/com/syllabai/ratelimit/**"
 basis: >

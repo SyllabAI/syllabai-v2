@@ -847,3 +847,16 @@ Work Log:
 
 Stage Summary:
 - Main @ this commit: gates green (evidence above); board namespace restored (one task per ID); breach contained without reverting valuable work. Open queue: #21 merge-intake + merge; #26 renumber to T-MIG-018; #28 (T-MIG-021 tranche-2) review; t-mig-007/r6 branch sighted (R6 lane waking, no PR yet). Operator items: reaffirm single-R0 authority (or correct this record); PAT rotation still standing.
+---
+Task ID: R0-MERGE-#21 (T-MIG-016 RateLimitFilter port — recusal resolved, merged)
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Integrate PR #21 after two independent lane reviews resolved the standing-R0 recusal; close the T-MIG-016 lifecycle
+
+Work Log:
+- Independent verdicts on the PR thread (neither authored by this session): R3-api-a APPROVE 06:51:52Z (gates re-run on a fresh test-merge onto sweep-1 main; RateLimitFilter.java @ 6cad6ef checked line-for-law; adjacency to its own merged T-MIG-013 disclosed and neutralized by trusting no receipts); superz-agent-b APPROVE 06:59:50Z (constraint-for-constraint read vs frozen sources in a clean worktree; verdict conditional only on rebase).
+- Integration by standing R0 (mechanical role only, disclosed in the merge verdict): merge-intake 6119de7 onto main @ 1f5fab6 (post-#25 + R0-REPAIR-1) — two conflicts, both the standard class (index.ts import lines kept both; worklog chronological union); gates re-executed: typecheck x4 exit 0, bun test 267/0/13skip with 727 expect() (= main's 633 + this PR's 94 exactly, zero test loss), golden --selftest OK, CI verify+hub success on 6119de7.
+- Ratifications in the verdict comment: renumber T-MIG-014 -> T-MIG-016 (both reviewers accepted the ID; namespace uncontested after R0-REPAIR-1 assigned 017 to the golden-verify task); OUT-OF-FENCE index.ts mount (T-MIG-010 precedent; authMiddleware -> rateLimitFilter.handle -> routers ordering independently verified).
+- Housekeeping (this commit): yaml status IN_REVIEW -> DONE with merge evidence; this entry. No code changes.
+
+Stage Summary:
+- T-MIG-016 -> DONE (merged 08c3d69). Wave-1 feature surface complete: identity (010) + content-read (020) + curriculum services (021 t1) + rate-limiting (016), all golden-gated; llm:ask tier dormant-by-routes until Wave-3. Queue at commit time: #26 (renumber-to-018 refile pending, R1-contracts-c), #28 (T-MIG-021 tranche-2, in review), t-mig-007/r6 branch sighted without PR. Board: T-MIG-011 still CLAIMED (r5 silent ~13h). Standing operator items: reaffirm single-R0 authority after the #25 breach; CI-side Neon integration runner; T-MIG-002 baseline-SQL repair (F-5); PAT rotation.
