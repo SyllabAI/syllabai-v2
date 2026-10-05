@@ -875,3 +875,21 @@ Work Log:
 
 Stage Summary:
 - T-MIG-021 -> DONE (merged 9732a1e). Wave-2 curriculum READ surface live behind the golden gate. Queue after this merge: #26 (R1-contracts-c, renumber-to-018 refile pending — directive corrected after R0-REPAIR-1 took 017 for the golden-verify task). Branch sightings: t-mig-007/r6 (R6 lane, no PR yet). Board: T-MIG-011 CLAIMED (r5 silent ~13h — reassignment candidate). Standing operator items: reaffirm single-R0 authority after the #25 breach; CI-side Neon integration runner; T-MIG-002 baseline-SQL repair (F-5); PAT rotation (chat-transit).
+
+---
+Task ID: T-MIG-023 (cycle complete)
+Agent: superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Content-read fidelity fixes (T-MIG-022 findings F-1/F-2/F-3) + 40/40 live replay re-run on the kept prod branches — operator directive "re-run Pass B on the kept prod branch for 40/40"
+
+Work Log:
+- Filed+claimed T-MIG-023 at branch start (375ff3e, 08:34:27Z, off main 5ee240e); no overlap: T-MIG-020/022 are DONE/IN_REVIEW, queue was #26/#29/#30 only.
+- GROUND-TRUTH RE-VERIFICATION AGAINST THE FROZEN SOURCES found run-001's F-3 diagnosis WRONG: QuestionVersionRepository.findByPaperId is an explicit @Query CARRYING "order by v.question.externalRef nulls last, v.version desc" — the run-001 diagnosis read the call site (ContentReviewService.java:869) and assumed a derived query. The capture pins a DETERMINISTIC order; the port dropped the ORDER BY. The R6/R0 capture-stability ruling request is WITHDRAWN — R6's golden/** needs nothing.
+- Fixes (9a836ab + f26ba67): F-1 instant rendering — queries transport the timestamp(6) fraction as Postgres text (to_char AT TIME ZONE 'UTC' + US), new instantToStringUtc() applies Instant.toString() semantics; JS Date's ms cap had destroyed DB micros at the driver boundary. F-2 page-text — §8 contract is top-level camelCase / PER-ELEMENT snake_case (CanonicalDocumentDto.java:13-14); port read camelCase keys that don't exist in the jsonb → empty text. F-3 — frozen ORDER BY restored on findFullByPaperId + findByPaperId.
+- Writer v1 correction: first prod pass hit 14/15; deep-diff localized 101 divergences (capture .395230Z vs port .39523Z) — Instant.toString omits trailing zero GROUPS, not individual zeros; corrected with capture literals as regression pins (f26ba67).
+- Harness incident H-3 (disclosed in receipt): a stale prod-booted server survived its stop, held :3000, and a seed boot hit EADDRINUSE invisibly — caught by posture-invariant inspection BEFORE any verdict was recorded (seed DB verified empty while responses carried prod rows); orchestrator now uses isolated ports per pass + pre-boot stale-listener kill + boot-log error gate. Interim logs archived.
+- Gates: root typecheck exit 0 x4; bun test 295/0/13skip (807 expect = main 789 + this task's pins); golden --selftest OK.
+- Live replay re-run (T-MIG-022 protocol, credited tooling lineage): Pass A seed COW br-wild-rice-a58063jp (apply-reset, port 3101) 25/25 PASS; Pass B prod COW br-red-wildflower-a5vyd81c AS-COWED (port 3102) 15/15 PASS. UNION 40/40 — zero golden/** changes, zero tolerances, capture is the law.
+- OUT-OF-FENCE: the three fixed files are the canonical T-MIG-020 port surface (r3-c via #22); ratification requested at merge-intake per T-MIG-010/014/016/020/021 precedent.
+
+Stage Summary:
+- PR open against main; T-MIG-022's 36/40 residual (PR #30) is superseded by this 40/40 closure — #30 remains as the verification record + F-3 evidence trail. The Wave-2 content-read exit gate is fully green. Board unchanged otherwise: #26 (r1c refile pending), #29 (r6 golden kit), T-MIG-011 CLAIMED (r5 silent — reassignment candidate). Neon replay doctrine hardened: isolated-port two-posture runs are now the standing envelope.

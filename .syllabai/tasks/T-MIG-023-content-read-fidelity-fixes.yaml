@@ -3,25 +3,33 @@ task:
   id: T-MIG-023
   title: "Content-read fidelity fixes (T-MIG-022 findings F-1/F-2/F-3) + 40/40 live replay re-run on the kept prod branch"
   owner: "superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9) — self-filed per §6.1, executed on operator directive 're-run Pass B on the kept prod branch for 40/40'"
-  status: IN_PROGRESS # claimed at branch-start commit per §2.1
+  status: IN_REVIEW # run-001: union 40/40 (seed 25/25 + prod 15/15) on the kept branches; PR open, R0 to ratify OUT-OF-FENCE + merge
   priority: P0 # Wave-2 exit gate completion — the union verdict is the gate
   wave: 2 # completes the T-MIG-020/T-MIG-022 content-read wave exit
   deps: [T-MIG-020, T-MIG-022, T-MIG-004, T-MIG-014]
   execution_record: >-
-    Claimed 2026-10-05T08:34:27Z at branch start (this commit) off main
-    5ee240e. All three T-MIG-022 findings are port-fixable; F-3 is
-    RECLASSIFIED (see receipt): the frozen QuestionVersionRepository.
-    findByPaperId @Query CARRIES 'order by v.question.externalRef nulls
-    last, v.version desc' — run-001's 'derived query, NO ORDER BY' call was
-    a misdiagnosis (call site read, repository not). The R6/R0
-    capture-stability ruling request is WITHDRAWN by this lane.
-    Out-of-fence disclosure: the fixed files are the canonical T-MIG-020
-    port surface (r3-c, merged via #22); per the T-MIG-010/014/016/020/021
-    OUT-OF-FENCE precedent, R0 ratification is requested at merge-intake.
-    Findings ownership note: run-001 filed F-1/F-2 as 'T-MIG-020 lane / R0
-    routing' because the verification fence (T-MIG-022) forbade in-pass
-    fixes; this task is the fix vehicle, filed by the same lane that holds
-    the full root-cause evidence, per the operator's 40/40 directive.
+    Claimed 2026-10-05T08:34:27Z at branch start (375ff3e) off main
+    5ee240e. Fixes landed 9a836ab (F-1 to_char text transport +
+    instantToStringUtc; F-2 §8 snake_case element keys; F-3 frozen ORDER BY
+    restored on both port query shapes) and f26ba67 (F-1 writer corrected
+    to Instant.toString() GROUP semantics after the live deep-diff caught
+    capture-pinned .395230Z vs v1's .39523Z on 101 listing rows — trailing
+    zero GROUPS are omitted, never individual zeros). Gates: root typecheck
+    exit 0 x4; bun test 295/0/13skip (807 expect); golden --selftest OK.
+    Live replay re-run on the KEPT branches with the credited tooling
+    lineage: Pass A (apply-reset on seed COW br-wild-rice-a58063jp, port
+    3101) 25/25 PASS; Pass B (prod COW br-red-wildflower-a5vyd81c AS-COWED,
+    port 3102) 15/15 PASS. UNION 40/40 — the T-MIG-022 Wave-2 exit-gate
+    residual is CLOSED with zero golden/** changes. F-3 RECLASSIFIED: the
+    frozen QuestionVersionRepository.findByPaperId @Query CARRIES 'order by
+    v.question.externalRef nulls last, v.version desc' — run-001's 'derived
+    query, NO ORDER BY' misread the call site; the R6/R0 ruling request is
+    WITHDRAWN (no case was over-pinned; R6 needs nothing). Harness
+    incidents disclosed in the receipt (H-3 stale-server cross-posture,
+    caught before any verdict; H-4 writer v1 iteration). OUT-OF-FENCE
+    ratification requested per T-MIG-010/014/016/020/021 precedent.
+    Full evidence: .syllabai/receipts/T-MIG-023/run-001.json + pass logs +
+    interim archives.
 base:
   repo: "syllabai-v2 @ 5ee240e (post R0-MERGE-#28); golden set = main's 69 cases + the two-posture replay protocol of T-MIG-022"
 basis: >

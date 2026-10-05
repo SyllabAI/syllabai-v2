@@ -1,0 +1,78 @@
+{
+  "task": "T-MIG-023",
+  "agent": "superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)",
+  "date": "2026-10-05",
+  "title": "Content-read fidelity fixes (T-MIG-022 F-1/F-2/F-3) + 40/40 live replay re-run on the kept prod branches",
+  "operator_directive": "\"re-run Pass B on the kept prod branch for 40/40\" (chat trace 1a10b2d8ab902bc1 lineage) — executed as: implement the three filed port fixes, then re-run the T-MIG-022 two-posture protocol to a full union verdict",
+  "port_under_test": "t-mig-023/r3a head f26ba67 = main 5ee240e + claim 375ff3e + fixes (9a836ab, f26ba67)",
+  "f3_reclassification": {
+    "what_changed": "run-001 (T-MIG-022) filed F-3 as CAPTURE-STABILITY ('capture over-pins heap order; no faithful port can pass') and requested an R6/R0 ruling. THAT DIAGNOSIS WAS WRONG.",
+    "root_cause_of_the_misdiagnosis": "the run-001 diagnosis read the CALL SITE (ContentReviewService.java:869 questionVersions.findByPaperId(paperId)) and assumed a Spring Data DERIVED query (no ORDER BY = heap order). It never opened QuestionVersionRepository.java, where findByPaperId is an explicit @Query: 'select v from QuestionVersion v where v.question.examPaperId = :paperId order by v.question.externalRef nulls last, v.version desc'.",
+    "correction": "the capture pins a DETERMINISTIC order; the PORT dropped the ORDER BY (both port query shapes: findFullByPaperId walk + findByPaperId id list). F-3 is an ordinary faithful port fix. The R6/R0 capture-stability ruling request is WITHDRAWN by this lane; R6's golden/** needs NOTHING (no case was over-pinned).",
+    "integrity_note": "this correction is itself evidence for the run-001 harness doctrine: setcheck (multiset compare) was the right Triage tool only AFTER the ordering assumption was wrong; the repository-declaration read should have preceded the filing."
+  },
+  "fixes": [
+    {
+      "id": "F-1",
+      "cases": ["content-docs-teacher-detail-realdata-200", "content-docs-teacher-realdata-200"],
+      "mechanism": "createdAt serialization. Java Jackson JSR-310 renders Instant.toString(): the timestamp(6) fraction in 3-digit groups with TRAILING ZERO GROUPS OMITTED (.578011Z / .129Z / no fraction). The port mapped driver Date objects (JS Date = ms precision — DB micros destroyed at the boundary) through toISOString().",
+      "fix": "queries now transport the fraction as Postgres TEXT: to_char(<col> at time zone 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS.US\"Z\"') as *_instant; new instantToStringUtc() applies the group rule (g1/g2 of the 6-digit fraction; g2=='000' -> 3 digits or none). Applied to documents (3 queries), exam_papers (4 queries), content_review_audit (1 query) — one shared writer, one law (audit occurredAt uses Instant.toString() explicitly in AuditRowView.from).",
+      "correction_within_the_fix": "writer v1 trimmed INDIVIDUAL trailing zeros (produced .39523Z); the live run-002 deep-diff caught the capture pinning .395230Z on 101 listing rows — Instant.toString omits trailing zero GROUPS, not individual zeros. Corrected to group semantics in f26ba67 with the capture literals pinned as regression tests."
+    },
+    {
+      "id": "F-2",
+      "cases": ["content-reader-real-page-text-200"],
+      "mechanism": "CanonicalDocumentDto.java:13-14 (§8 ingestion contract): 'top-level camelCase, per-element snake_case' — element fields are page_number / reading_order (@JsonProperty at :105/:108/:121/:124/:138/:141/:155/:158; text is plain). The port read element.pageNumber/readingOrder — keys that do not exist in the stored jsonb — so the page filter matched nothing and every page rendered the honest-empty string.",
+      "fix": "documentPageText reads the §8 keys (text/page_number/reading_order); the routes.test.ts unit pin re-pinned from the buggy camelCase shape to the contract shape."
+    },
+    {
+      "id": "F-3",
+      "cases": ["teacher-content-paper-review-realdata-200"],
+      "mechanism": "see f3_reclassification above — port dropped the frozen @Query's deterministic ORDER BY (external_ref nulls last, version desc).",
+      "fix": "order by q.external_ref nulls last, v.version desc restored on BOTH port query shapes (findFullByPaperId, findByPaperId) — same clause the Java finder renders for every call site (:128 :369 :813 :869)."
+    }
+  ],
+  "replay_protocol": {
+    "inheritance": "the T-MIG-022 two-posture union protocol, executed with the credited tooling lineage (#20 disposition credit -> T-MIG-022 run-001 -> T-MIG-023; tools copied byte-identical with provenance headers)",
+    "posture_A_seed": {
+      "branch": "Neon COW t-mig-022/r3a (br-wild-rice-a58063jp, endpoint ep-polished-dew-a5z3v4bs)",
+      "reset": "apply-reset.ts (topological wipe + posture probes: documents 0, users 0)",
+      "result": "25/25 PASS exit 0 — run-001-passA-seed.txt"
+    },
+    "posture_B_prod": {
+      "branch": "Neon COW t-mig-022/r3a-prod (br-red-wildflower-a5vyd81c, endpoint ep-nameless-cell-a5tr0kah; AS-COWED, NO reset — the capture's own posture; 1023 documents / 326 users probed pre-run)",
+      "result": "15/15 PASS exit 0 — run-001-passB-prod.txt"
+    },
+    "union": "40/40 — the T-MIG-022 Wave-2 exit-gate residual is CLOSED with zero golden/** changes (no case edit, no tolerate, no re-capture, capture is the law)"
+  },
+  "harness_incidents_disclosed": [
+    {
+      "id": "H-3",
+      "finding": "STALE-SERVER CROSS-POSTURE: the first re-run's prod-booted server survived its stop and still held :3000; the next run's seed boot hit EADDRINUSE invisibly and wait_healthy blessed the OLD server — the seed replay then saw PROD rows (59/144/34 counters) while the seed DB verified empty. Caught by posture-invariant inspection BEFORE any verdict was recorded (no failing case was counted as evidence); the run's logs were archived as run-001-interim-*.",
+      "classification": "replay-environment (this lane)",
+      "fix": "orchestrator now boots each pass on an ISOLATED PORT (3101/3102), kills stale listeners pre-boot, and fails loud on boot-log errors (EADDRINUSE)."
+    },
+    {
+      "id": "H-4",
+      "finding": "writer v1 over-trimmed the instant fraction (individual zeros instead of zero GROUPS) — 14/15 on the first prod pass; deep-diff localized 101 divergences all @ .N.createdAt with the .395230Z-vs-.39523Z signature; corrected in f26ba67 with capture literals as pins. Archived as run-001-interim-passB-14of15-writer-v1.txt.",
+      "classification": "port-fix iteration (this lane, caught and corrected before the verdict run)"
+    }
+  ],
+  "gates": [
+    {"cmd": "root typecheck (4 workspaces)", "result": "exit 0"},
+    {"cmd": "bun test", "result": "295 pass / 0 fail / 13 skip, 807 expect() (= main 286+13skip + 9 new/updated pins)"},
+    {"cmd": "bun golden/runner.ts --selftest", "result": "OK"},
+    {"cmd": "replay Pass A (seed, CASE_MODE=seed, port 3101)", "result": "25/25 PASS exit 0"},
+    {"cmd": "replay Pass B (prod, CASE_MODE=prod, port 3102)", "result": "15/15 PASS exit 0"},
+    {"cmd": "union verdict", "result": "40/40 — Wave-2 exit gate GREEN"}
+  ],
+  "credentials": "branch DATABASE_URLs held only in workspace .secrets (never echoed/committed); join code + JWT secret are replay-only synthetic values passed via env at boot; production compute never contacted; production role untouched; prod COW rows-only contact (synthetic account rows, disclosed protocol)",
+  "out_of_fence_disclosure": "the three fixed files are the canonical T-MIG-020 port surface (r3-c, merged via #22; also touched by the merged T-MIG-022-adjacent waves). This lane filed the findings in T-MIG-022 and executes the fixes on the operator's 40/40 directive; per the T-MIG-010/014/016/020/021 OUT-OF-FENCE precedent, R0 ratification is requested at merge-intake. Zero golden/**, packages/**, frozen-core touches.",
+  "verdict": {
+    "seed_tranche": "25/25 PASS",
+    "prod_tranche": "15/15 PASS",
+    "union": "40/40",
+    "wave2_exit_gate": "GREEN — GOLDEN_MASTER §4 100% PASS met for BOTH postures with zero case weakening; T-MIG-022's filed residual is closed by port fidelity, not by capture edits",
+    "rulings_now_unneeded": "F-3 capture-stability ruling (run-001): WITHDRAWN — the repository @Query always had the ORDER BY"
+  }
+}
