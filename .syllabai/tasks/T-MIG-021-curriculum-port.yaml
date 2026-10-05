@@ -1,0 +1,59 @@
+version: 1
+task:
+  id: T-MIG-021
+  title: "Wave-2 curriculum read port — learner curriculum metadata (versions/subjects/subject-by-id) + teacher curriculum review overview & node queue reads (CurriculumController + TeacherCurriculumController GET surfaces)"
+  owner: "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a) — self-filed Wave-2 port task per briefing §5 blank-role protocol (highest-priority unclaimed work, zero overlap with CLAIMED/IN_PROGRESS lanes); R0 ratification of the task id requested in the PR (T-MIG-013/T-MIG-020 precedent)"
+  status: CLAIMED # claimed_at 2026-10-05T06:05:49Z; branch t-mig-021/r4 pushed (claim commit)
+  priority: P1
+  wave: 2
+  deps: [T-MIG-005, T-MIG-014] # contracts (route wiring gate — §4.1 contracts-first) + db driver dispatch (PR #13); tranche 1 is contract-independent
+  execution_record: >
+    (claim entry 2026-10-05T06:05:49Z) Pre-claim verification at main 67639db:
+    board state re-read after the operator's peer-collision signal — 7 tasks DONE,
+    T-MIG-011 CLAIMED (t-mig-011/r5), T-MIG-020 self-filed by R3-api-a
+    (t-mig-020/r3, tranche-1 committed), T-MIG-005 claimed by R1 (contracts),
+    PRs #12–#17 in R0's queue. T-MIG-021's surface is the 13 curriculum golden
+    cases (7 × CurriculumController, 6 × TeacherCurriculumController GETs) —
+    the PR #17 dossier's proposed split ("curriculum (13)", "ready-first,
+    fixed-uuid seed = fully replay-stable") with ZERO file overlap against
+    every active lane. Plan (R3 tranche precedent): contract-independent
+    service/repository layer FIRST (R-LAZY observed query surface over the
+    Flyway-owned tables curriculum_versions / subjects / knowledge_nodes /
+    knowledge_edges, raw SQL per users.ts precedent; findSubtreeIds recursive
+    CTE ported VERBATIM — the CTE is the single source of truth for the
+    subtree definition), unit-tested against a stubbed sql adapter with
+    captured shapes pinned from the 13 golden cases; route factories +
+    mounting + zod wiring + golden replay flip gate on T-MIG-005 and land as
+    tranche 2 (index.ts wiring as a flagged OUT-OF-FENCE commit per
+    T-MIG-010/013 precedent). Teacher-curriculum POST surfaces (drafts/
+    validate/reject/archive) are write paths outside the Wave-2 read gate —
+    deferred to a later tranche/wave with honest routing.
+base:
+  repo: "syllabai-v2 @ 67639db (main at claim); frozen refs: syllabai-core @ main (raw reads only)"
+basis: >
+  MIGRATION_PLAN §5 Wave 2 + §2.1 domain table (Content read wave lists both
+  curriculum controllers); PR #17 wave-2 claim-prep dossier (proposed 020/021/022
+  split, R0 owns final call); AGENT_COORDINATION §2 claim protocol (self-filed
+  task per §2.3), §4 yaml format, §6.3 doctrine; T-MIG-004 run-002 capture
+  receipts (13 curriculum cases captured from the local frozen-core boot at
+  fixed-uuid seed — fully replay-stable); R-M-LAZY (port observed query
+  behaviour); Master Spec §6.2/§7 + T-010 heritage (curriculum metadata vs KG
+  canonical structure); ADR-031/036 untouched by this read surface.
+scope:
+  allowed:
+    - "apps/api/src/services/curriculum/**"
+    - "apps/api/src/routes/curriculum/**"
+    - "apps/api/test/curriculum/**"
+    - ".syllabai/receipts/T-MIG-021/**"
+    - ".syllabai/tasks/T-MIG-021-curriculum-port.yaml (status/execution_record only)"
+    - ".syllabai/worklog.md (append)"
+  forbidden:
+    - "packages/contracts/** (R1's fence — T-MIG-005 in flight; curriculum schemas land there)"
+    - "packages/db/** (T-MIG-014's fence, PR #13)"
+    - "golden/** (R6's fence — replay runs are read-only usage)"
+    - "apps/api/src/index.ts + apps/api/src/middleware/** (any wiring ships flagged OUT-OF-FENCE, R0 ratification requested — T-MIG-010/013 precedent)"
+    - "apps/api/src/services/identity/** (shared error classes are IMPORTED, never edited)"
+    - "apps/api/src/services/content/** (R3's fence — T-MIG-020; cross-imports happen in tranche 2 against main, never edits)"
+    - "syllabai-core / syllabai-hub writes of any kind (C1 — raw reads only)"
+    - "production Neon writes (read paths + local verification only)"
+    - "widening any schema or weakening any golden case to make a replay pass (§7 anti-pattern)"

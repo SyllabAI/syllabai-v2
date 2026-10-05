@@ -453,3 +453,37 @@ Work Log:
 
 Stage Summary:
 - Board: T-MIG-000/001/002/003/004/010/012 DONE (7 tasks), T-MIG-011 CLAIMED (t-mig-011/r5), Wave-2 lanes filing. Identity/auth surface is LIVE in v2 with live-DB-proven revocation — the strangler-fig has its first real vine. 54 golden cases on main; Wave-2 acceptance worklist complete before any content-read port code lands. Critical path: T-MIG-011 hub adapter (claimed), then Wave-2 ports (T-MIG-020..022) against the fresh capture.
+
+---
+
+Task ID: ORIENTATION (Phase 1 deliverable — late-landing agent, post peer-collision re-orientation)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Phase-1 orientation tour of the frozen org + v2 doctrine, re-anchored after the operator's peer-collision signal; no code before this entry (briefing §2).
+
+Work Log:
+- Read the v2 doctrine set in the mandated order (README, MIGRATION_PLAN, AGENT_COORDINATION, GOLDEN_MASTER, BASELINE_DB, REFERENCE_DOCS, worklog tail, tasks/*, in-repo AGENT_BRIEFING).
+- Toured syllabai-core (frozen): README stack/module map, render.yaml env surface, CurriculumController + TeacherCurriculumController + their repositories/DTOs, CurriculumReviewService read paths, KnowledgeNode/Edge repositories incl. the findSubtreeIds recursive CTE.
+- Read the six binding ADRs from the master pack: 031 (decay computed, never persisted), 025 (smart-mark product contract), 036 (k-anonymity on the wire), 034 (trail merge is receipt-based), 020 (educational retrieval engine), 023 (LLM provider pool hardening).
+- Re-verified the live board before claiming anything: worklog tail + tasks/*.yaml + remote branches + open PRs (#12–#17). Collision check: every seeded task DONE or claimed; T-MIG-020 (R3), T-MIG-005 (R1), T-MIG-011 (r5) in flight → self-filed T-MIG-021 (curriculum read port) as the highest-priority zero-overlap open work (see claim entry below).
+
+Stage Summary:
+- The product loop in my own words: SyllabAI is an exam-preparation platform for Cambridge/Edexcel-style curricula. A curriculum (board/qualification/code, e.g. Edexcel IAL Chemistry 2018) is pinned as a version whose knowledge graph carries the authoritative topic tree — ingested from the parser as SUGGESTED and promoted node-by-node by teacher validation until the whole tree is VALIDATED and the version activates. Learners register, browse subjects and question banks drawn from that frozen spec, submit attempts against exam-paper questions, and get Smart-Marked per part against validated mark schemes (deterministic validators first, LLM as bounded evidence aligner, per-point κ agreement gate before student-facing expansion). Every attempt feeds the learner model: BKT mastery anchored at last practice, misconception states updated by tagged distractors, Ebbinghaus review scheduling computed from the P₀ anchor at read time (never persisted — ADR-031), and recommendations/flashcards derived from that state. A retrieval-grounded tutor/CLA answers with citations that must resolve to real content chunks (empty evidence → deterministic refusal, no LLM call), while teachers run classes, marking queues, coverage analytics and knowledge-graph views over the same substrate. The whole loop is fenced by an honesty culture: ingestion never implicitly embeds, unvalidated content never serves, and every claim ships a receipt.
+- Correctness mechanism 1 — receipts: ADR-034's trail-merge landed through two PRs whose merge is evidenced by check-run ids, a zero-conflict local merge simulation with tsc + pin-suite receipts, and an explicitly recorded UNVERIFIED-until-live-probe item; this repo inherits the culture directly (.syllabai/receipts/, "receipts or it didn't happen" §2.5), and R0's UNBLOCK-SEQUENCE-PHASE2 entry re-executed every gate itself before merging PRs #10/#11.
+- Correctness mechanism 2 — fail-fast: the Java core refuses to boot on a blank SYLLABAI_JWT_SECRET (README boot discipline), and v2 inherits it verbatim — packages/db/src/client.ts refuses blank or jdbc:-prefixed DATABASE_URLs, env.ts aborts on missing secrets; ADR-023 extends the same posture to the LLM chain (TEST mode never constructs real adapters even when keys leak into the environment; pinned experiments fail closed rather than fail over).
+- Correctness mechanism 3 — preregistration + honest verdicts: ADR-031 discloses a live production bug (nightly decay write-back compounding) with the exact numerics, then pins a regression that FAILS on pre-fix code; ADR-036 stays Status: Proposed with an explicit operator-ACCEPT ratification step and a verification gate before its own implementation merges. Verdicts are earned by evidence, never self-granted.
+- Questions for the operator: (1) the PR #17 dossier flags the "zod-major ruling" as outstanding for wave-2 contracts — is T-MIG-005 expected to land one file per domain (auth.ts precedent) or one major version of the contracts package? (2) the 7 unauthed-401 curriculum/content cases replay green today via the routers-then-401-fallback; when real routes mount in tranche 2 they must keep passing via requireAuth — is an "expected-pending → passing" flip note per case in the receipt sufficient evidence, or does R6 want a re-capture? (3) R0 ratification of the self-filed id T-MIG-021 (curriculum read port per the PR #17 proposed split) is requested in the eventual PR.
+
+---
+
+Task ID: T-MIG-021 (claim)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Claim the Wave-2 curriculum read port (self-filed T-MIG-021) — learner curriculum metadata + teacher curriculum review overview/node-queue GET surfaces.
+
+Work Log:
+- Pre-claim board re-verification (post peer-collision protocol): git fetch + remote branch census + open-PR census (#12 T-MIG-013, #13/#15 T-MIG-014, #14 T-MIG-015, #16 T-MIG-004 ext, #17 wave-2 prep) + worklog tail + all 8 task yamls.
+- Collision analysis: R3-api-a owns documents/reader/question-assets (T-MIG-020 tranche-1 committed); R1 owns content contracts (T-MIG-005, claim held local, push-blocker noted); r5 owns the hub adapter; r7a is explicitly claim-free prep. The 13 curriculum golden cases (7 learner + 6 teacher GETs) have NO owner — PR #17's dossier itself scores curriculum "ready-first (fixed-uuid seed = fully replay-stable)".
+- Claimed per briefing §5 + AGENT_COORDINATION §2.1: self-filed .syllabai/tasks/T-MIG-021-curriculum-port.yaml (status CLAIMED, owner recorded, fences disjoint from every active lane), branch t-mig-021/r4 from main @ 67639db, claim commit precedes all work.
+- Port plan (tranche precedent from T-MIG-020): tranche 1 = contract-independent service/repository layer + stubbed-sql unit tests pinning the 13 captured response shapes; tranche 2 (gated on T-MIG-005) = route factories + zod wiring + index.ts mounting (flagged OUT-OF-FENCE) + golden replay flip.
+
+Stage Summary:
+- T-MIG-021 CLAIMED at 2026-10-05T06:05:49Z on branch t-mig-021/r4 (base 67639db). Fence: services/curriculum/**, routes/curriculum/**, test/curriculum/**, receipts, own yaml, worklog appends. Zero overlap with T-MIG-005/011/020 or any open PR. R0 id-ratification requested in the PR.
