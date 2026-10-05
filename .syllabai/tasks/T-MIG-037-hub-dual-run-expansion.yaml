@@ -1,0 +1,92 @@
+version: 1
+task:
+  id: T-MIG-037
+  title: "Hub dual-run expansion — extend apps/hub V2_SURFACE_PREFIXES with the now-verified W2 content/curriculum reads + W3 attempts surfaces; branch-verified both postures live per the T-MIG-035 pattern; rollback stays the §7 one-env-var unset"
+  owner: "r8-hub (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5) — OPERATOR WORD trace 1a10c9dd8c2c1c01: 'RE-REGISTER under a new unique lane id (e.g. r8-hub) — two sessions may never share one lane identity. Then: HUB DUAL-RUN EXPANSION — extend apps/hub V2_SURFACE_PREFIXES with the now-verified W2 surfaces (content, curriculum, attempts), branch deploy, verify both postures live (T-MIG-035 pattern), file evidence. Rollback = unset one env var (MIGRATION_PLAN §7).'"
+  status: IN_PROGRESS # claim-first commit per the T-MIG-002 collision lesson; implementation follows on this branch
+  priority: P1
+  wave: 2 # executes the W2 exit gate's flip condition ('hub reader pages verified against v2 on branch') on the now-UNCONDITIONAL gate (sweep-5)
+  deps: [T-MIG-011, T-MIG-020, T-MIG-021, T-MIG-022, T-MIG-023, T-MIG-024, T-MIG-030, T-MIG-032, T-MIG-035]
+  execution_record: >
+    (claim entry 2026-10-05, session web-64d10b73) Workspace was fully
+    recycled between sessions (prior clone + local archive gone); fresh
+    clone of SyllabAI/syllabai-v2 at origin/main c920eea (past the
+    directive's stated 79bdc23; sweep-5 drained the board 6/6 and the W2
+    exit gate is UNCONDITIONAL). ID PROVENANCE: operator suggested lane id
+    r8-hub; no prior r8 identity exists in the worklog (two sessions never
+    share a lane id — re-registered here). TASK ID: T-MIG-036 was
+    transiently used in sweep-4-era prose for R0's W2-F3 multiset re-pin
+    (later legitimized as T-MIG-024) and is NOW CLAIMED by r3fix (PR #48,
+    identity-budget flake root cause) — 037 verified FREE (zero worklog
+    mentions, zero yaml, zero branch, zero PR); this filing takes it.
+    Zero-collision scan @ c920eea: open PRs #48 (t-mig-036/r3fix, 6 files),
+    #49 (t-mig-022/r7a-h2, 5 files), #50 (t-mig-033/r4, 8 files) — ZERO
+    hub overlap on all three; ls-remote 50 heads contain no t-mig-037.
+    SAFETY ANALYSIS (the core of this task): prefix flips are
+    startsWith-based (apps/hub/src/lib/api.ts resolveBase), so every prefix
+    must capture ONLY hub-emitted paths that V2 serves with REAL
+    implementations. Full cross-map executed at c920eea: (a) hub emits
+    /api/v1/content/documents[/:id] -> readerRoute REAL (T-MIG-005/020/022
+    + F-1/F-2 via #38); (b) /api/v1/content/question-assets/:id ->
+    assetRoute REAL; (c) /api/v1/curriculum/subjects -> learnerRoute
+    /subjects + /subjects/:id + /versions REAL (T-MIG-021); (d)
+    /api/v1/attempts + /attempts/structured -> attemptRoute REAL
+    (T-MIG-030 + E-2 via #46); (e) /api/v1/learners/me/attempts[?limit],
+    /:attemptId/self-mark, /:attemptId/smart-mark,
+    /:attemptId/parts/:partId/feedback-explanation,
+    /:attemptId/parts/:partId/improvement-plan -> historyRoute get /attempts
+    + selfmark/smartmark routers REAL (T-MIG-030/032).
+    DELIBERATELY NOT FLIPPED (each would regress hub flows against 501
+    stubs or 404s): /api/v1/teacher/content — hub emits 15 write-action
+    sites (exam-papers validate/validate-all/place/reject/flag/unflag,
+    question-versions validate/reject/flag/unflag, mark-schemes
+    validate/reject/flag/unflag, questions/:id/topics POST) that V2 serves
+    as honest 501 CONTENT_WRITE_TASK stubs, plus
+    /api/v1/teacher/content/glm-ocr/papers/:id/findings which V2 does NOT
+    serve at all (W6 GlmOcrIngestionController — verified zero glm-ocr
+    presence in apps/api); /api/v1/questions + /api/v1/exam-papers learner
+    browse — NOT mounted in apps/api/src/index.ts (T-MIG-031 tranche-2
+    pending); /api/v1/learners/me/BROADER-than-attempts — 20+ non-ported
+    learner surfaces (agenda/assignments/flashcards/classroom/cla/
+    knowledge-graph/recommendations/revision-notes/smart-lesson/state/
+    courses/exam-series/note-votes/answer-input) would 404 against the v2
+    /api/v1/learners/me mount, so the attempts prefix stays narrowed to
+    /api/v1/learners/me/attempts; /api/v1/knowledge, /api/v1/tutor,
+    /api/v1/teacher/{classes,marking,assignments,tests,concept-graph,class,
+    learners} — W4/W5/W6 unported. PLAN: (1) export the prefix table +
+    a pure v2SurfaceBase(path, v2Base) decision fn that resolveBase itself
+    delegates to (no parallel logic); (2) collocated bun test pins: exact
+    prefix list, per-posture decisions for every hub-emitted path family,
+    and the negative isolation set (glm-ocr, teacher writes, questions,
+    exam-papers, non-attempts learner surfaces STAY CORE); (3) live
+    dual-run verification per the T-MIG-035 pattern: apps/api booted from
+    THIS BRANCH against an ephemeral local postgres (scratch pglite-socket
+    wire server seeded from packages/db/drizzle — NEON_PAT not present in
+    this session's workspace after the recycle, so the COW-branch data
+    plane stands down; zero cloud contact, zero production contact) with
+    the hub's ACTUAL apiPath consulted for both postures: DUAL-RUN
+    (NEXT_PUBLIC_API_V2_BASE_URL set) — auth + curriculum subjects +
+    content documents constructed to the v2 base and executed live against
+    the branch-booted api, negative probes resolve core/relative; ROLLBACK
+    (env unset) — every constructed URL reverts to the core/relative form,
+    the §7 one-env-var property; (4) receipts + worklog + PR; reviewer/R0
+    executes the merge per authors-never-self-merge.
+    BROWSER-LEVEL UI drive remains out of scope for this lane's sandbox
+    (T-MIG-035 recorded the same honestly); the routing decision surface
+    (apiPath) is the code the hub actually calls on every request and is
+    fully covered by the committed pins + the live harness.
+scope:
+  allowed:
+    - ".syllabai/tasks/T-MIG-037-hub-dual-run-expansion.yaml (this file — status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-037/**"
+    - ".syllabai/worklog.md (append)"
+    - "apps/hub/src/lib/api.ts (V2_SURFACE_PREFIXES extension + export of the decision fn; resolveBase semantics byte-preserving otherwise)"
+    - "apps/hub/src/lib/api.v2-surface.test.ts (new collocated bun test)"
+  forbidden:
+    - "apps/api/** (DONE surfaces T-MIG-010/016/020/021/030/032 — read-only; mounts already ratified)"
+    - "packages/**, golden/**, docs/**"
+    - "apps/hub beyond the two allowed files (next.config.ts, middleware, core-proxy.ts untouched)"
+    - "upstream syllabai-core / syllabai-hub writes (C1 — read-only)"
+    - "production Neon writes; any cloud provision (no NEON_PAT in session — local ephemeral store only)"
+    - "widening any schema, weakening any golden case, or flipping prefixes beyond the verified set to make a check pass (§7 anti-pattern)"
+    - "self-merge (authors never self-merge; review + R0 merge-intake own the merge)"
