@@ -1,5 +1,5 @@
 /**
- * Test-builder contract pins (T-MIG-047) — acceptance baseline is the
+ * Test-builder contract pins (T-MIG-049) — acceptance baseline is the
  * Java declaration (frozen syllabai-core @ 6cad6ef; TestBuilderController,
  * TestBuilderService :359-414). Positive pins from Java-declared shapes,
  * negative pins for Java-rejected inputs, clamp law + policy literal

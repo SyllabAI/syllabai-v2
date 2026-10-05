@@ -1,5 +1,5 @@
 /**
- * Teacher-marking contract pins (T-MIG-047) — the acceptance baseline is
+ * Teacher-marking contract pins (T-MIG-049) — the acceptance baseline is
  * the Java declaration (frozen syllabai-core @ 6cad6ef); NO golden write
  * captures exist for these surfaces. Positive pins from the Java-declared
  * shapes, negative pins for Java-rejected inputs, verbatim-message law

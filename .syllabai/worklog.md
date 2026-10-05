@@ -2216,3 +2216,17 @@ Work Log:
 
 Stage Summary:
 - Board namespace restored (one task per ID: 37 = hub, 47 = W3-remainder contracts); the Neon instrument's failure mode is now log-safe ahead of the daily 02:30 UTC schedule. Remaining claimable: T-MIG-033 tranche-3 = SME admin port (the last ratified-but-unclaimed code lane — contracts-first prerequisite: SME DTO contracts are NOT in packages/contracts yet), T-MIG-043 (operator-routed), hub scoped-test-runner hygiene (unfiled). Operator register unchanged: NEON_BRANCH_CAPACITY decision (cap 10; R0 will NOT delete standing branches) gates the maiden successful replay dispatch. LANE r0s continues to the next claim in-session.
+
+---
+Task ID: R0s-ROUND-10a (renumber retarget 047 -> 049 — concurrent-claim resolution)
+Agent: r0s (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Amendment of record for the R0s-ROUND-10 entry above — the contracts-card renumber target raced a concurrent claim.
+
+Work Log:
+- PR #70 (branch t-mig-048/r0s, commit 8df666e) initially retargeted the duplicate-id repair "contracts 037 -> 047". During intake of origin/main 3824c5d (merge commit 886a9a6) the collision surfaced: R0-integrator (session web-1f157e25) had concurrently claimed T-MIG-047 for the replay-evidence-preservation instrument fix — claimed_at 2026-10-05T18:35:00Z, merged 9a97de8 (PR #73), DONE, operator trace 1a10d465caf49f99.
+- AGENT_COORDINATION §2.1 earliest-claim-wins applied: their 18:35Z Oct-5 claim precedes this lane's renumber record (Oct-6) — T-MIG-047 = replay-evidence-preservation stands; this lane's renumber retargets the W3-remainder contracts card to T-MIG-049 (next free id: 048 is this lane's T-MIG-048 neon-branch redaction card, claimed in 8df666e, zero counter-claim on main; 047/049 id-freedom re-verified against main's task tree).
+- Mechanics re-run for 049: yaml renamed 047->049 (id flip + scope.allowed self-paths + amendment paragraph appended to execution_record); receipts run-001.json + run-002-renumber.json moved to T-MIG-049/ byte-identical (sha256 316dad3fde4c5a31... re-verified at the hop; copy+delete fallback where git mv hit the flaky FS); T-MIG-038 deps -> [T-MIG-018, T-MIG-049]; 6 contracts header comments 047->049 (comment-only); T-MIG-047/ retains ONLY the R0-integrator artifacts (their yaml + run-001-first-live-replay.json); run-002-renumber.json rewritten as the timeline of record (initial target, collision, resolution).
+- The R0s-ROUND-10 entry above (header "contracts->047") stands as history per the append-only discipline; this amendment + the rewritten run-002-renumber.json are the corrections of record.
+
+Stage Summary:
+- Final namespace: 37 = hub dual-run expansion, 47 = replay-evidence-preservation (R0-integrator), 48 = neon-branch fail-path redaction (r0s), 49 = W3-remainder contracts (renumbered, DONE). One task per ID restored WITH the concurrent-claim resolution disclosed. PR #70 title/body updated; no force-push anywhere.

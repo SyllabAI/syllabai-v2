@@ -1,5 +1,5 @@
 /**
- * Test-builder contracts — ported from the frozen Java core (T-MIG-047,
+ * Test-builder contracts — ported from the frozen Java core (T-MIG-049,
  * the T-MIG-018 next_safe_actions follow-up; operator trace 1a10cb48dc7edd15).
  *
  * Sources (syllabai-core @ 6cad6ef, frozen, raw reads 2026-10-05):
