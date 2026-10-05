@@ -2054,3 +2054,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-044's one-time setup register item is DISCHARGED: secret+vars live, maiden dispatch executed, the ENOTFOUND blocker fixed (T-MIG-046, PR #66), instrument re-dispatch pending the branch-cap register decision. REGISTER FOR OPERATOR: (1) NEON_BRANCH_CAPACITY — the project is at its branch cap (10); the CI runner needs 2 disposable slots per run; free >=1 standing slot (candidates: t-mig-022/r3a + r3a-prod whose postures are receipted, t-mig-003/r6 capture branch) or raise the plan limit — R0 will NOT delete standing branches; until then the instrument fails honestly at provisioning with zero residue. (2) Fresh PAT staged (fingerprint 46b5d309715c1b1c) — rotation item DISCHARGED this session; revoke at migration end per briefing §0. (3) The daily 02:30 UTC schedule now runs with the fixed tool and will succeed automatically once capacity exists.
+
+---
+Task ID: R3a-ROUND-10 (sweep: self-merge executed, F-33-2 filed post-merge)
+Agent: superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Operator directive (trace 1a10d36d9b0e8ef5): "Check if R0 has merged or not. If not, review+merge yourself and continue working."
+
+Work Log:
+- PR #63 (my round-9 receipt, open/clean at sweep start) NOT merged -> self-reviewed (single worklog append verified via the files API, zero code) and MERGED f67de41 under the explicit operator delegation — the directive self-merge branch DID trigger this time; author-recusal strain disclosed and bounded to a receipt-only PR.
+- Queue sweep found #64 (T-MIG-033 tranche-2, r4b) and #65 (T-MIG-041 tranche-1, r7a) open; full line-against-line review of #64 was IN FLIGHT when parallel lanes (executing the same operator broadcast) merged it (0f646ce @ 18:03:59Z, after r4b e9d345f intake) and #65 (after r9-hubx independent review, comment 6000217364, APPROVED). #66 (T-MIG-046) also merged; main now 8fa5d34.
+- F-33-2 FILED POST-MERGE on #64 (comment 6000275125, blocking-class fidelity): the teachermarking router body-validation envelopes diverge from the frozen GlobalExceptionHandler three-mapping law (@Valid -> validation_failed + first field-error detail; HttpMessageNotReadable -> malformed_body verbatim; type-mismatch -> bad_request) AND from the merged T-MIG-030 selfmark precedent — incl. one STATUS divergence (kappa/evaluate malformed-JSON body treated as absent -> 201 scope-ALL, frozen 400). Four sites specified; exact fix = the 030 readJsonBody/classifyBodyError helper class (route-local duplication per fence discipline) + envelope pins (current tests pin status-only). Verified NOT divergent: query-param kappa/latest 400 path, UUID path vars, intParam, G-5/C-9, authz shell, N-2/N-4 service laws (all faithful).
+- N-note filed on the same thread: OUT-OF-FENCE mounts committed INSIDE fence commit cde3fa8 while the in-code comment claims a separate commit — correction of record requested; mount content matches the R0-ratified 034 pattern.
+- Routing: fix is inside 033 own fence (~40 lines + pins); suggested r4b (active) or R0-executed per the F-33-1 precedent. NOT self-claimed (r4b is the active author lane; zero-collision discipline).
+- Gates on main 8fa5d34 (post #64/#65/#66): typecheck x4 exit 0; bun test 735 ran / 722 pass / 0 fail / 13 skip, 2001 expect (= r4b run-005 arithmetic exact incl. #64/#65 additions); golden --selftest OK.
+
+Stage Summary:
+- Round-10 closed: the one merge the directive asked for (#63) executed under delegation with self-review; the sweep found the queue already drained by parallel lanes; one blocking-class post-merge finding (F-33-2) filed with exact fix spec + one process N-note; zero self-claimed work; zero direct main pushes (every write via reviewed PR). LANE IDLE — awaiting R0 routing of F-33-2 or operator direction.
