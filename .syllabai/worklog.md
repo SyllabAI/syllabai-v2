@@ -1210,3 +1210,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-032 CLAIMED (claim + receipt on branch t-mig-032/r7a; PR to follow with R0 ratification request). Tranche-1 = services/selfmark + services/smartmark + stubbed-sql tests; tranche-2 = routes + zod (self-mark schemas live; smart-mark views local, R1 top-up) + flagged mounts + replay (CI-side runner pending).
+
+---
+Task ID: T-MIG-032 tranche 1
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Execute T-MIG-032 tranche-1 — self-mark + smart-mark services over the shared pipeline, stubbed-sql tests
+
+Work Log:
+- Shipped services/selfmark (SelfMarkService: the full LearnerSelfMarkService gate order — empty-marks 400 pre-lock, select-for-update serialization, no-leak 404, structured-only, pre-settlement PENDING/SMART_MARKED only, exact-part-set, bounds-as-409, learner_self_marks settle, conservative correct rule, E-1 claim + guarded flip) and services/smartmark (SmartMarkPipeline with the validator trio + batch topology + fallback ladder; SmartMarkService.markAttempt with honest SCHEME_NOT_VALIDATED refusals, append-only results, fail-closed kappaGatePassed, evidence at completion only; StudentSmartMarkService with reveal-policy mirror, authoritative honesty flag, accepted-result-required feedback, verbatim explain/improve prompts, ephemeral prose).
+- E-1 contract (bound at T-MIG-030 tranche-2) consumed at BOTH evidence sites: claim -> guarded flip; noop claims false -> no flip. Tests pin both postures.
+- 27 tests (11 selfmark + 16 smartmark) pin gate order, message texts, settle shapes, validator violations, batch/fallback behavior, kappa fail-closed, reveal 409s, feedback grounding 409.
+- Gates: typecheck x4 exit 0; bun test 429/0/13skip 1099 expect (= main 402/1031 + 27/68 exactly); golden selftest OK; replay NOT RUN (tranche-2 + env).
+- Captured self-mark-500 quirk stays disclosed for R0 ruling (port yields 404 naturally — pinned in tests).
+
+Stage Summary:
+- T-MIG-032 tranche-1 complete on t-mig-032/r7a (PR #40). Tranche-2: route factories (self-mark schemas live; smart-mark views need R1 top-up) + flagged OUT-OF-FENCE mounts + replay. 033 (teacher marking) imports this pipeline — cross-slice contract recorded.

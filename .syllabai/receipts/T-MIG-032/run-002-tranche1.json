@@ -1,0 +1,40 @@
+{
+  "task": "T-MIG-032",
+  "run": 2,
+  "kind": "TRANCHE_1",
+  "lane": "R7a (agent-da4ab8, zai-web session web-da4ab8b1)",
+  "executed_at": "2026-10-05T09:25Z",
+  "branch": "t-mig-032/r7a",
+  "claim_pr": 40,
+  "scope_held": "services/selfmark/**, services/smartmark/**, test/selfmark/**, test/smartmark/**, .syllabai/T-MIG-032 receipts + yaml + worklog — fence-exact, zero out-of-fence touches",
+  "frozen_sources_ported": [
+    "LearnerSelfMarkController.java (:27-63) — route law staged for tranche-2",
+    "LearnerSelfMarkService.java (:65-134) — gate order verbatim: empty-marks 400 BEFORE the lock; row lock select-for-update BEFORE state; no-leak 404; structured-only 400; no-answers 400; settled 409 (PENDING/SMART_MARKED settable only); exact-part-set 400; bounds 0..max(part.marks,0) as 409 Conflict; settle order answers -> learner_self_marks -> attempt SELF_MARKED + recordTotalMarks(sum, marks) conservative full-marks-equals-correct",
+    "StudentSmartMarkController.java (:31-58) — route law staged for tranche-2 (feedback actions take NO body)",
+    "StudentSmartMarkService.java — one-engine doctrine (student runs the SAME SmartMarkService.markAttempt), ownership re-verify, pre-settlement only, reveal-policy mirror (REJECTED/FLAGGED never pass; SUGGESTED 409 under VALIDATED_ONLY default), kappaGatePassed authority flag, accepted-result-required 409 feedback grounding, ephemeral prose (never persisted), verbatim explain/improve prompts (structure + full text)",
+    "SmartMarkPipeline.java — run/runBatch: NO_SCHEME_POINTS + blank-answer deterministic zero short-circuits (generator never called), proposeAll batch topology with per-part fallback ladder, decide(): validator chain, VALIDATION_FAILED reason (joined violations truncated at 190), per-point clamp, breakdown entries (markPointId/ref/marks/marksAwarded/awarded/evidence/rationale), CandidateGenerationError self-forensic rawOutput retention",
+    "Validators trio — bounds (unknown/duplicate point ids), coverage (every point decided), mark-sum (per-point clamp then part ceiling), pointMarkCeiling helper",
+    "SmartMarkService.java — markAttempt (row lock first, newest VALIDATED scheme backs marking, honest per-part SCHEME_NOT_VALIDATED refusals stamped with the newest scheme (V34 G-2), append-only smart_mark_results, SMART_MARKED settle, one total recompute after the pass, evidence ONLY when authoritative && no PENDING remains), kappaGatePassed (ALL || PAPER scope, fail-closed absent evaluations), recomputeAttemptTotal",
+    "Evidence — publishGraded claim (E-1 contract from T-MIG-030 tranche-2): claim true -> once-only guarded flip; false -> no flip"
+  ],
+  "parity_decisions": [
+    "findByIdForUpdate -> select ... for update through the structural SqlFn (same statement shape the frozen JPA lock emits)",
+    "JPA managed-entity settle cascade -> explicit per-row updates in one logical pass (answers, learner_self_marks, attempt state/total/correct)",
+    "telemetry ApplicationEventPublisher -> injected Observer seam (GradedEvidencePublisher claim contract; SmartMarkCompleted/feedback events are non-golden Observers — event emission points preserved in code order)",
+    "kappa sample read (smart_mark_agreement_evaluations ALL || PAPER scope) — cross-slice READ-ONLY contract: T-MIG-033's teacher queue writes human_marks the sample derives from",
+    "mark_scheme_points rows mapped snake->camel at the seam boundary (toMarkingPoint); breakdown jsonb bound via JSON.stringify",
+    "pointLabel compact first-line rule ported (no scheme-text leak through the breakdown — operator scenario 2026-09-21)"
+  ],
+  "disclosed_deviations": [
+    "transactional boundary: frozen @Transactional per pass -> per-statement autocommit with the row lock serializing settle (same disclosure accepted at T-MIG-030 tranche-1, R-TX posture)",
+    "LlmProvider infra not ported (wave-3 LLM-chain lane's surface) — the generator + feedback prose ride injected seams (GOLDEN_MASTER s3 lifecycle-gated); no provider client in this fence",
+    "smart-mark response schemas absent from packages/contracts (R1's fence) — local view types at tranche-1; R1 top-up requested at tranche-2"
+  ],
+  "gates": {
+    "typecheck_x4": "contracts/shared/db/api all exit 0",
+    "bun_test": "429 pass / 0 fail / 13 skip / 1099 expect (= post-#36 main 402/1031 + 27 tests/68 expects exactly)",
+    "suite_split": "selfmark 11/0 + smartmark 16/0 (incl. pipeline pure-law tests)",
+    "golden_selftest": "OK (read-only)",
+    "replay": "NOT RUN — route layer is tranche-2; env-blocked as fleet-standard (CI-side runner pending)"
+  }
+}
