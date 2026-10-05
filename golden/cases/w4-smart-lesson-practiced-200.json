@@ -1,0 +1,76 @@
+{
+  "name": "w4-smart-lesson-practiced-200",
+  "description": "smart-lesson next-action for WCH11-T1 after practice: deterministic read-model decision (LLM chain in TEST mode degrades to deterministic refusal; no LLM prose is ever golden-gated, GOLDEN_MASTER s3)",
+  "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "GET",
+  "path": "/api/v1/learners/me/smart-lesson?rootId=20000000-0000-0000-0000-000000000001&topicNodeId=20000000-0000-0000-0000-000000000011",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "learnerId": "da30cee5-cb41-4565-9e8c-713894319ca8",
+      "rootId": "20000000-0000-0000-0000-000000000001",
+      "topicNodeId": "20000000-0000-0000-0000-000000000011",
+      "topicCode": "WCH11-T1",
+      "topicTitle": "Formulae, Equations and Amount of Substance",
+      "asOf": "2026-10-05T15:48:32.797011845Z",
+      "policy": "smart-lesson/v2",
+      "action": {
+        "actionType": "PRACTISE_QUESTIONS",
+        "reasonCode": "INSUFFICIENT_COVERAGE",
+        "targetNodeId": "20000000-0000-0000-0000-000000000011",
+        "targetCode": "WCH11-T1",
+        "targetTitle": "Formulae, Equations and Amount of Substance",
+        "questionId": null,
+        "servableQuestionCount": 0,
+        "reasonDetail": "No attempt evidence on WCH11-T1 yet \u2014 start with the first validated question to find your level (diagnostic practice)"
+      },
+      "topicStatus": {
+        "coverage": "UNMEASURED",
+        "attempts": 0,
+        "mastery": null,
+        "effectiveMastery": null,
+        "reviewDue": false,
+        "strongestMisconceptionProbability": null,
+        "fluencyGap": null,
+        "tutorAsks": 0,
+        "servableQuestions": 0
+      },
+      "prerequisites": [
+        {
+          "nodeId": "20000000-0000-0000-0000-000000000021",
+          "code": "WCH11-T2",
+          "title": "Atomic Structure and the Periodic Table",
+          "effectiveMastery": null,
+          "attempts": null,
+          "measuredWeak": false
+        }
+      ],
+      "misconceptions": [],
+      "evidence": [
+        {
+          "key": "topic",
+          "value": "WCH11-T1 \u2014 Formulae, Equations and Amount of Substance"
+        },
+        {
+          "key": "attempts",
+          "value": "0 (no attempt evidence on this topic)"
+        },
+        {
+          "key": "prerequisite WCH11-T2",
+          "value": "not yet measured \u2014 not a blocker"
+        }
+      ]
+    }
+  },
+  "tolerate": [
+    "asOf",
+    "id",
+    "learnerId",
+    "timestamp"
+  ]
+}

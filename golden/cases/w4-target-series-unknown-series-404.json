@@ -1,0 +1,27 @@
+{
+  "name": "w4-target-series-unknown-series-404",
+  "description": "declare a target for an exam series id that does not exist: 404 (V63 seed ids are the replay-stable valid set)",
+  "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "PUT",
+  "path": "/api/v1/learners/me/courses/chm/target-series",
+  "request": {
+    "body": {
+      "seriesId": "0a000000-0000-0000-0000-00000000beef"
+    },
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 404,
+    "body": {
+      "status": 404,
+      "error": "not_found",
+      "message": "exam series 0a000000-0000-0000-0000-00000000beef does not exist",
+      "timestamp": "2026-10-05T15:48:32.998397320Z"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

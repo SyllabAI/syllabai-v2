@@ -24,5 +24,6 @@ export * from "./curriculum";
 export * from "./errors";
 
 export * from "./assessment";
-export * from "./testbuilder";
-export * from "./answer-input";
+export * from "./teacher-marking";
+export * from "./test-builder";
+export * from "./transcription";

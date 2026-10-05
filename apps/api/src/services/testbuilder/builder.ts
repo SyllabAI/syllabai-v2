@@ -51,7 +51,7 @@ import type {
   TestAnswerView,
   TestPreviewView,
   TestQuestionView,
-  TestTopicCoverage,
+  TopicCoverage,
   WeaknessOptionsView,
 } from "@syllabai/contracts";
 
@@ -250,7 +250,14 @@ export class TestBuilder {
         marks: q.marks,
         commandWord: q.commandWord,
         difficulty: q.difficulty,
-        topicCode: topic !== undefined ? (codeByTopic.get(topic) ?? null) : null,
+        // topicCode is never null on the frozen wire (R0 T-MIG-034 intake
+        // ruling): every selected question is attributed in the same pass
+        // that fills byQuestion, and codeByTopic holds every attributed
+        // topic with NOT NULL code values (frozen TestBuilderService.java
+        // :95-99 and :153-156; KnowledgeNode.java:35). The assertion encodes
+        // that structural invariant; a violation reaches the route's
+        // response validation and fails loudly (the frozen hard-errors).
+        topicCode: (topic !== undefined ? codeByTopic.get(topic) : undefined)!,
         parts: q.parts,
         options: q.options,
         answers,
@@ -258,10 +265,16 @@ export class TestBuilder {
       });
     }
 
-    const coverage: TestTopicCoverage[] = distinct.map((t) => ({
+    // coverage code/title are never null on the frozen wire (R0 T-MIG-034
+    // intake ruling): distinct topics are exactly the codeByTopic/titleByTopic
+    // population set (frozen TestBuilderService.java :95-99 vs :159-162) and
+    // knowledge_nodes.code/title are NOT NULL columns (KnowledgeNode.java
+    // :35,:42). Assertions encode the invariant; violations fail loudly at
+    // the route's response validation.
+    const coverage: TopicCoverage[] = distinct.map((t) => ({
       topicNodeId: t,
-      code: codeByTopic.get(t) ?? null,
-      title: titleByTopic.get(t) ?? null,
+      code: codeByTopic.get(t)!,
+      title: titleByTopic.get(t)!,
       servableQuestions: availableByTopic.get(t) ?? 0,
     }));
 
