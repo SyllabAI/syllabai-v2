@@ -3,11 +3,37 @@ task:
   id: T-MIG-014
   title: "Port per-IP RateLimitFilter (deep-audit M1) — auth tier per client IP + LLM tier per learner, fixed windows, golden-honest scope"
   owner: "r1 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e) — self-selected per briefing §5: M1 was left unported by T-MIG-010 (its execution_record recommends 'its own micro-task'); highest-priority OPEN item with fences disjoint from all CLAIMED/IN_REVIEW lanes (011 hub, 005 contracts, 013 golden, r7 backfill)"
-  status: CLAIMED # claimed_at 2026-10-05T05:5xZ (push timestamp authoritative); branch t-mig-014/r1 cut from origin/main @ 67639db and pushed at claim time (collision lesson T-MIG-002/010 applied)
+  status: IN_REVIEW # implementation complete on t-mig-014/r1, receipt .syllabai/receipts/T-MIG-014/run-001-ratelimit-filter.json, PR open for R0
   priority: P2
   wave: 1 # auth-surface hardening adjacent to T-MIG-010; NOT a Wave-2 content-read slot (020..022 reserved)
   deps: [T-MIG-010]
-  execution_record: "—"
+  execution_record: >-
+    Ported the per-IP RateLimitFilter (deep-audit 09-28 M1) from the frozen
+    core @ 6cad6ef — the other half of the M1 pair (LoginAttemptBudget/R5 was
+    already in v2 via T-MIG-010). apps/api/src/middleware/ratelimit.ts: two
+    tiers (auth per-IP on the 4 identity POSTs; llm:ask per-learner on
+    tutor/cla/transcribe/smart-mark), in-memory fixed windows with
+    alignment-compare reset, strict count>limit reject, retryAfter
+    max(1,floor((windowEnd-now+999)/1000)) pre-computed, MAX_KEYS=100k sweep
+    at 2x-window cutoff, OPTIONS+enabled bypass, fail-open on internal
+    errors, XFF rightmost-first first-public-hop walk (hop.strip() BEFORE
+    checks — regression caught by the mirrored suite; CGNAT 100.64/10 +
+    literal 172.2x predicate verbatim). Filter-path 429 body pinned
+    separately from the exception path ("requests"+retryAfterSeconds field
+    vs "attempts" without — both load-bearing). config.ts ratelimit block
+    extended with the audited budgets (10/5/3/10/20, window 60s) + env
+    overrides. Test mirror: all 11 RateLimitFilterTest cases + 4 extras
+    (predicate unit, clientIp e2e, env overrides, body-shape pin) — 15
+    tests, 97 expect(). Gates: typecheck x4 exit 0; api 87/0/4skip (skips =
+    Neon integration tier, NEON_PAT absent — F-5 posture); contracts 28/0.
+    Disclosures for R0: (a) OUT-OF-FENCE commit — index.ts mount wiring
+    (addFilterAfter parity, between Bearer middleware and routers) shipped
+    separately; (b) fail-open divergence: next() outside the try — the
+    Java catch's re-dispatch is unreachable-in-practice (checked exception
+    types downstream); (c) golden 429 capture deferred to the F-3 runner
+    follow-up (per-case header injection/response-header comparison); (d)
+    llm:ask tier dormant-by-routes (Wave 3+ surfaces) — classification
+    ported + unit-pinned now, activates automatically when routes land.
 base:
   repo: "syllabai-v2 @ 67639db (post-W0, post PR #11/#10); frozen refs: syllabai-core @ 6cad6ef src/main/java/com/syllabai/ratelimit/**"
 basis: >
