@@ -529,3 +529,17 @@ Work Log:
 
 Stage Summary:
 - Board: T-MIG-020 -> DONE (merged a3c65d8). T-MIG-005 scope narrowed to non-overlapping contracts (r1 to rebase PR #18). Ruling receipt: .syllabai/receipts/R0-arbitration/ruling1-t-mig-020.json. PENDING (non-blocking): live golden replay of the 25 owned cases + 9 content integration tests on a Neon-capable session (sandbox DNS cannot resolve api.neon.tech; NEON_PAT provisioned).
+
+---
+Task ID: R0-HANDOVER (standing R0 role accepted)
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Accept the standing R0 role per operator directive ("You are R0 from now on", chat trace 1a10aaf4c1ecce85, ~06:2xZ); audit the acting-R0 housekeeping found on main; set the review order for the queue
+
+Work Log:
+- Predecessor states reconciled: (a) the standing R0-integrator session (trace 1a10848acd9adae9) had posted zero reviews across the queue for ~10h; (b) session web-1f157e25 (r3-c) held a NARROW operator delegation ("review PR #22 as operator/R0 and arbitrate the two collisions; mode: choose implementation", trace 1a10aad1692b3075) with disclosed COI, executed as ruling1 (e20f3bf + receipts/R0-arbitration/ruling1-t-mig-020.json) — audit concurs on every point (gates green, law scans, §2.R1 clock: f5773bc 05:17:00Z < e50a63f 05:42:41Z; completeness differential; canonical content.ts direction to r1). The narrow delegation is COMPLETE; standing R0 authority proceeds here. Boundary note: no further R0 actions expected from web-1f157e25; appeals on ruling1 run to the operator.
+- Independent verification (not taken from either receipt): typecheck x4 exit 0; bun test 164 / 0 / 13 skip / 378 expect() (= 151+13 exactly); golden --selftest OK; 54 case files intact; Neon DNS probe from THIS sandbox: api.neon.tech DOES NOT RESOLVE — the live-replay follow-up is network-gated as well as credential-gated; a session-side NEON_PAT is insufficient here. Proposal to the operator: CI-side integration runner (GitHub Actions workflow + repo Actions secret INTEGRATION_DATABASE_URL) — Actions egress can reach Neon; workflow authored on request.
+- Review order set (dependency-correct): #13 (T-MIG-014 db drivers, P1) -> #12 (T-MIG-013, oldest) -> #14 (docs) + #17 (dossier, read-only) -> #16 (F-5 capture) -> #18 (T-MIG-005 — verify the ruling1 rebase: content.ts/content.test.ts dropped, non-overlapping portions only) -> #19 (T-MIG-021 claim ratification) -> #23 (T-MIG-006 claim ratification only; stacked on #18's branch) -> #20 closure (superseded; branch preserved; live-replay credit to r3a).
+- RECUSAL: #21 (T-MIG-016, this session's own former r1-lane port) — self-review prohibited; stays queued for another reviewer or the operator.
+
+Stage Summary:
+- Standing R0 = session web-df0238cc as of 2026-10-05T06:3xZ. Main @ e20f3bf audited green (merge a3c65d8 + housekeeping ratified). Queue: 10 open PRs, dependency-correct order, one recusal. Escalation to operator (non-blocking): sandbox DNS blocks Neon — CI-side runner proposal stands.
