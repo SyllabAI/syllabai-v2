@@ -1,0 +1,34 @@
+{
+  "name": "w4-register-learner-201",
+  "description": "register the W4 capture learner (synthetic identity; honest register path)",
+  "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "POST",
+  "path": "/api/v1/auth/register",
+  "request": {
+    "body": {
+      "email": "learner_40@example.invalid",
+      "password": "capture-w4-runner",
+      "displayName": "Capture Learner 40"
+    }
+  },
+  "expect": {
+    "status": 201,
+    "body": {
+      "accessToken": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJsZWFybmVyXzQwQGV4YW1wbGUuaW52YWxpZCIsImp0aSI6ImRhMzBjZWU1LWNiNDEtNDU2NS05ZThjLTcxMzg5NDMxOWNhOCIsInVpZCI6ImRhMzBjZWU1LWNiNDEtNDU2NS05ZThjLTcxMzg5NDMxOWNhOCIsInZlciI6MSwicm9sZXMiOlsiU1RVREVOVCJdLCJpYXQiOjE3OTEyMTUzMTAsImV4cCI6MTc5MTIyMjUxMH0.y5UgIiG50FzvsC-t_B_SHhWbORcNBa3KPBrB8HbXBJ7MDrQIDd4Ym-AJMSp1Bn9I",
+      "tokenType": "Bearer",
+      "user": {
+        "id": "da30cee5-cb41-4565-9e8c-713894319ca8",
+        "email": "learner_40@example.invalid",
+        "displayName": "Capture Learner 40",
+        "roles": [
+          "STUDENT"
+        ]
+      }
+    }
+  },
+  "tolerate": [
+    "id",
+    "timestamp"
+  ],
+  "seq": 1
+}

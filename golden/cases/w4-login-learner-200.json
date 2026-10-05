@@ -1,0 +1,34 @@
+{
+  "name": "w4-login-learner-200",
+  "description": "login the W4 capture learner; token field scrubbed to {{TOKEN}} + tolerated",
+  "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "POST",
+  "path": "/api/v1/auth/login",
+  "request": {
+    "body": {
+      "email": "learner_40@example.invalid",
+      "password": "capture-w4-runner"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "accessToken": "{{TOKEN}}",
+      "tokenType": "Bearer",
+      "user": {
+        "id": "da30cee5-cb41-4565-9e8c-713894319ca8",
+        "email": "learner_40@example.invalid",
+        "displayName": "Capture Learner 40",
+        "roles": [
+          "STUDENT"
+        ]
+      }
+    }
+  },
+  "tolerate": [
+    "accessToken",
+    "id",
+    "timestamp"
+  ],
+  "seq": 2
+}

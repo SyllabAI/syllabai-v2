@@ -1,0 +1,80 @@
+{
+  "name": "w4-state-practiced-200",
+  "description": "learner state after practice: skill-state structure deterministic; mastery numerics embed the ADR-031 read-time decay (P0*e^(-t/tau), tau bands 30/90/365d, floor 0.1) and are tolerated",
+  "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "GET",
+  "path": "/api/v1/learners/me/state",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "learnerId": "da30cee5-cb41-4565-9e8c-713894319ca8",
+      "skillStates": [
+        {
+          "nodeId": "20000000-0000-0000-0000-000000000012",
+          "mastery": 0.11313868613138686,
+          "effectiveMastery": 0.11313868112534642,
+          "band": "LOW",
+          "attempts": 1,
+          "correctCount": 0,
+          "lastPracticedAt": "2026-10-05T15:48:32.549788Z",
+          "proceduralFluencyGap": null,
+          "nodeName": "Mole calculations and reacting masses"
+        }
+      ],
+      "misconceptionStates": [
+        {
+          "misconceptionNodeId": "30000000-0000-0000-0000-000000000001",
+          "probability": 0.7499999966070805,
+          "active": true,
+          "evidenceCount": 1,
+          "lastEvidenceAt": "2026-10-05T15:48:32.549788Z",
+          "misconceptionName": "Moles and grams are interchangeable"
+        }
+      ],
+      "pendingReviews": [],
+      "tutorEngagements": [],
+      "flashcardRatings": [
+        {
+          "cardId": "fl_w4_cap_003",
+          "rating": "still-learning",
+          "subtopicCode": null,
+          "nodeId": "20000000-0000-0000-0000-000000000011",
+          "occurredAt": "2026-10-05T15:48:32.456233Z"
+        },
+        {
+          "cardId": "fl_w4_cap_002",
+          "rating": "know",
+          "subtopicCode": null,
+          "nodeId": "20000000-0000-0000-0000-000000000011",
+          "occurredAt": "2026-10-05T15:48:32.414027Z"
+        },
+        {
+          "cardId": "fl_w4_cap_001",
+          "rating": "know",
+          "subtopicCode": null,
+          "nodeId": "20000000-0000-0000-0000-000000000011",
+          "occurredAt": "2026-10-05T15:48:32.385867Z"
+        }
+      ],
+      "noteVotes": [],
+      "examTargets": []
+    }
+  },
+  "tolerate": [
+    "effectiveMastery",
+    "id",
+    "lastEvidenceAt",
+    "lastPracticedAt",
+    "learnerId",
+    "mastery",
+    "occurredAt",
+    "p0",
+    "timestamp",
+    "updatedAt"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+ "task": "T-MIG-039",
+ "run": 1,
+ "kind": "CLAIM",
+ "lane": "R6-llm (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "claimed_at": "2026-10-05T15:55:02Z",
+ "branch": "t-mig-039/r6-llm",
+ "base": "c0d8fa0 (origin/main, re-fetched at branch cut — main advanced past the directive's stated 79bdc23 via yaml/worklog/receipt-only R0 housekeeping commits c920eea + c0d8fa0; intake discipline satisfied by cutting from current origin/main)",
+ "claim_pr": "to be opened with this commit",
+ "collision_scan": {
+  "yaml_on_main": "zero T-MIG-039 yamls (ls .syllabai/tasks/ — max existing id 035)",
+  "remote_heads": "zero t-mig-039* branches (full ls-remote head inventory)",
+  "open_prs": "#48 T-MIG-036 (r3fix), #49 t-mig-022 H-2 (r7a), #50 T-MIG-033 (r4), #51/#53 T-MIG-002-R (r1/w0a), #52 T-MIG-031 tranche-2 (r3c), #54 T-MIG-042-PREP (r1) — zero scope overlap with this filing's files",
+  "collision_avoided": "t-mig-037/r1c + t-mig-038/r1c heads are ESTABLISHED (r1c claimed 037/038 pre-filing) — this lane took 039; T-MIG-034 remains r1's reserved unfiled card per the ratified split map (this card FEEDS 034, does not claim it)",
+  "verdict": "0/0 — clean claim on 039"
+ },
+ "basis": "operator directive to this lane: (1) LLM-OUTPUT behavioural-gate doctrine feeding r1's T-MIG-034 (recorded-shadow comparison design + harness stubs for smart-mark prose and transcription per GOLDEN_MASTER §3, one doc + harness skeleton, LLM seam-strategy section as an ADR draft); (2) W3 EXIT verification two-posture live replay 40/40 — CONDITIONALLY DEFERRED, see deferred_item below. Self-filing precedent T-MIG-013/020/021/030/031/032/035; R0 ratification requested.",
+ "surface": "three disjoint fences, all NEW files: docs/gates/LLM-OUTPUT-BEHAVIOURAL-GATE.md (doctrine), docs/adr/ADR-MIG-0001-llm-seam-strategy.md (ADR draft), golden/llm-shadow/** (self-contained harness: comparator + ShadowFeedbackLlm capture/replay proxy + two gate stubs + fixtures + selftest). Zero edits to golden/runner.ts, golden/cases/**, golden/tools/**, apps/**, packages/**.",
+ "real_seam_grounding": [
+  "FeedbackLlm seam: apps/api/src/services/smartmark/index.ts :414-419 (available() + generate(systemPrompt, userPrompt, temperature); prose EPHEMERAL never persisted)",
+  "refusal law: generate() :883-893 — available()=false -> SmartFeedbackGenerationError; empty/whitespace response -> SmartFeedbackGenerationError; route maps to 503 smart_feedback_unavailable with the FIXED body (routes/smartmark :70-76, GlobalExceptionHandler :107-117 parity, already pinned by 032 tranche-2 route tests — out of this fence, cited not re-pinned)",
+  "injection point: buildSmartMarkRouters(env, seams) :136-166 already accepts seams.{generator,llm,publisher,clock} — the ADR's proxy rides this EXISTING seam; zero core edits",
+  "dormant pair today: dormantCandidateGenerator + dormantFeedbackLlm (routes/smartmark :53-62) — the proxy is their capture/replay-capable successor, still dormant by default",
+  "citation plumbing law: explainFeedback/improvementPlan (:726-746) ground on loadFeedbackSource per-point decisions; LLM explains decisions never makes them; coach law — never answer-writing, never scheme dumps; pointLabel :897-904 — full scheme text never leaks through the breakdown",
+  "transcription: NOT LANDED — transcription DTOs deliberately not ported (packages/contracts/src/assessment.ts :38-40, answerinput package belongs to owning waves); gate stub documents the seam contract + fixture anatomy for the owning wave"
+ ],
+ "deferred_item": "W3 EXIT verification (deliverable 2 of the directive) is NOT executable and NOT claimed as done: preconditions unmet (T-MIG-031 tranche-2 = PR #52 open; T-MIG-033 = PR #50 HOLD FOR AUTHOR on F-33-1; T-MIG-034 unfiled/unclaimed; CI-side Neon replay runner still an operator-routed register item — the only live-replay instrument). The exit-gate PROCEDURE (two-posture, 40/40, evidence-bundle format for R0's checklist) stays staged in the lane workspace and will be executed and filed under R0's checklist format once 031-t2 + 033 + 034 merge — recorded as this lane's standing assignment. Filing it in this PR was considered and rejected: docs/gates/ is this card's fence, but the exit runbook is R0-checklist procedure, not gate doctrine — R0 owns the checklist format.",
+ "gates_baseline": {
+  "at": "c0d8fa0 pre-branch (stamped before any edit)",
+  "typecheck": "bun run typecheck (contracts/shared/db/api) exit 0",
+  "bun_test": "bun test apps/api packages = 485 pass / 0 fail / 13 skip / 1259 expect()",
+  "golden_selftest": "bun golden/runner.ts --selftest = selftest OK (tolerance engine incl. declared-unordered multiset)"
+ },
+ "disclosed_quirks": [
+  "harness is DUCK-TYPED to the FeedbackLlm contract shape — no apps/api import (golden/** must not couple to apps/api; the real 503 fixed-body law stays with 032's route tests; verbatim strings are pinned in golden/llm-shadow/lib/seam-config.ts WITH source line citations for drift-watching)",
+  "fixture content is synthetic scrubbed mark-scheme-domain data (stable fake ids, no PII — GOLDEN_MASTER §2 scrub discipline); recorded shadows from a LIVE capture session replace them when the LLM-chain lane lands the provider (T-MIG-034)",
+  "T2 thresholds (0.90 coverage / 1.5 expansion) are STARTING values per the doctrine — relaxing requires a reviewed commit citing a LIVE-posture drift report (doctrine §5.2)",
+  "workspace-wipe pattern hit this lane a THIRD time fleet-wide (staging workspace lost between sessions; rebuilt from remote + chat context) — strengthens the standing PAT-rotation + env-rehydration register item"
+ ]
+}

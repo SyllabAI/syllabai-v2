@@ -1,0 +1,34 @@
+{
+  "receipt": "R0 independent review of T-MIG-033 tranche-1 (PR #50, head 1f4043c) + collision disposition of the operator's T-MIG-033 directive",
+  "reviewed_at": "2026-10-05T15:26:28Z (verdict comment 5997573821 on PR #50)",
+  "reviewed_by": "R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "collision_disposition": {
+    "operator_directive": "trace 1a10c9ee078c70c5 assigned this session the T-MIG-033 port (teacher-marking + sme-admin, services-first, tranche-2 gated on the r3-fix contracts merge, OUT-OF-FENCE mounts flagged)",
+    "board_reality": "PR #50 (t-mig-033/r4, lane R4-api-b) already open — r4 claimed under its OWN round-6 directive (trace 1a10bdcc5d89e599) with a clean 0/0 zero-collision scan at branch cut (main 79bdc23), PR created 12:23:08Z, BEFORE this session's directive receipt",
+    "ruling": "section 2.1 earliest-claim-wins (R0-COLLISION-1 precedent, applied against R0's own directive this time): r4 owns T-MIG-033; NO competing claim filed by R0; the operator's methodology (services on frozen source meanwhile, tranche-2 gated on contracts, OUT-OF-FENCE flag) adopted as the REVIEW RUBRIC for #50; R0 executes the directive's intent as ratification + independent review + merge-intake authority"
+  },
+  "id_ratification": "T-MIG-033 APPROVED — unique across main's 27-yaml id set; provenance = R0-arbitrated split map (verdict 5990832802, PR #31) + T-MIG-032's cross-slice contract (composition, never fork — honored: zero services/smartmark edits)",
+  "verification_method": "full read of services/teachermarking/index.ts (1278 lines) + test file structure (9 describe blocks) cross-checked line-against-line against frozen syllabai-core @ 6cad6ef (SmartMarkService.java:87-171, TeacherMarkingService.java:84-216, TeacherMarkingQueueService.java:50-494, Attempt.java:133-163, Answer.java:34/100-123, KappaAgreementService.java, TeacherViews.java:38-111, TeacherMarkingController.java:98-187, HumanMarkRepository countSince, SmartMarkAgreementEvaluation.DEFAULT_THRESHOLD); all gates independently re-executed on 1f4043c",
+  "gates_independent": {
+    "typecheck_x4": "exit 0",
+    "bun_test": "525 TOTAL = 512 pass + 13 skip / 0 fail / 1408 expects (= main 485 total/1259 + 40/149 EXACT; r4's '525 pass' label misstates total-as-pass — N-1)",
+    "golden_selftest": "OK"
+  },
+  "blocking_finding": {
+    "id": "F-33-1",
+    "root_cause": "MARKING_STATES constant missing SELF_MARKED — frozen Answer.MarkingState (Answer.java:34) has FIVE values",
+    "manifestation_a": "throughput.answersByState: frozen zeroes all five states (zero-count SELF_MARKED key present); port omits the key when zero self-marked rows exist — LIVE divergence (v2 selfmark writes SELF_MARKED rows since T-MIG-018/032); golden throughput captures with zero self-marked answers would fail against the port",
+    "manifestation_b": "parseMarkingState accepted-set: frozen valueOf accepts all five (SELF_MARKED is a legal queue filter); port 400s it — error MESSAGE verbatim-faithful (incl. frozen's own 4-state enumeration quirk; keep string as-is)",
+    "requested_fix": "add 'SELF_MARKED' to MARKING_STATES (drives both sites) + 2 pins (throughput zero-state shape; parseMarkingState('SELF_MARKED') passes)",
+    "formal_review_note": "GitHub API refuses REQUEST_CHANGES from the shared account on its own PR ('Review Can not request changes on your own pull request') — the detailed comment 5997573821 is the review record per fleet precedent (w0a/#36 pattern); structural same-account constraint, not a process deviation"
+  },
+  "non_blocking_notes": [
+    "N-1: gate-split label (525 total = 512 pass + 13 skip; delta exact)",
+    "N-2: smartMarkView renders pipelineVersion from the PIPELINE_VERSION constant, not the row's pipeline_version column — diverges only for rows written by a different pipeline version (frozen-written rows share this DB); select the column at tranche-2",
+    "N-3: PR-body prose misstates kappa degenerate convention as total-disagreement -> -1; CODE is correct (-> 0, frozen :54-56); fix prose in receipt",
+    "N-4 ratified-with-disclosure: string-lex uuid tie-breaks vs frozen UUID.compareTo bit-order — read-model-only, timestamp-tie-only; CONDITION for tranche-2: if a w3-teacher-marking capture exhibits tied rows, port the bit-order comparator or pin with disclosure",
+    "N-5 cross-lane (r7a/R0 disposition): 032 markAttempt recompute writes marks_awarded but not correct; evidence payload hardcodes marksTotal:0/correct:false — frozen markAttempt calls recordTotalMarks and publishGraded reads the attempt row; registered, not this PR's fence"
+  ],
+  "merge_state": "PR dirty vs main c920eea: two bookkeeping conflicts (T-MIG-024 yaml double-flip — main already DONE with R0 ruling-execution provenance, r4's closeout adds run-004 receipt + author-disclosure line; worklog tail) — resolve by append-only union at intake; zero code conflicts (trial-merge verified, fence disjoint)",
+  "disposition": "HOLD FOR AUTHOR (r4 active): land F-33-1 fix + N-1/N-3 label corrections -> then R0 merge-intake"
+}

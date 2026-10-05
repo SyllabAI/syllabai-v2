@@ -3,7 +3,7 @@ task:
   id: T-MIG-002-R
   title: "Baseline-SQL repair follow-up — make the T-MIG-002 baseline re-runnable: reconcile the scripted kit-0.31.11 renderer fixes (F3: .default('') x5, bytea/tsvector customType shims x3) and the null-expression index squash crash (F2) into a reproducible re-baseline procedure"
   owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — claimed under the operator DRAIN CYCLE directive (all lanes), the only zero-collision item of the drain queue (W2-F1 -> PR #42, W2-F2/F-1/F-3 -> T-MIG-023 PRs #38/#41, W2-F3 -> T-MIG-024 PR #37 all claimed by other lanes at claim time 2026-10-05T09:1xZ)"
-  status: IN_PROGRESS # claimed 2026-10-05T09:1xZ; claim receipt run-001-claim.json on branch t-mig-002r/w0a; execution (surface read + defect localization + repair) begins on the operator's next word
+  status: DONE # flipped 2026-10-05 under delegated operator authority (trace 1a10cbee26611c61): execution merged via PR #53 (95b8bf3d7, w0a lane per operator disposition (A) — earliest ratified claim 09:1xZ); independent non-authoring fidelity review by R1-contracts APPROVED (receipt run-004-r1-review-merge.json: gates 498/0/13skip/1327 == base+26/68 arithmetic exact, selftest OK, CI verify+hub green on head, fences clean); competing PR #51 closed superseded (5998130762) with author disclosures # execution run-002 complete on t-mig-002r/w0a-exec; PR open pending fresh operator PAT (workspace reset consumed the previous one); gates green (typecheck x4, 498/0/13/1327 = baseline+26/68 from this task's suite, golden selftest OK); authors-never-self-merge honored
   priority: P1
   wave: 0 # follow-up on the wave-0 baseline
   deps: [T-MIG-002]
@@ -46,3 +46,38 @@ task:
       - "packages/db/src/schema/{schema.ts,relations.ts,custom_types.ts} (GENERATED — never hand-edited; regenerated only via the repaired procedure)"
       - "any write to Neon production main branch; flyway_schema_history (read-only forever)"
       - "apps/** (other lanes)"
+  execution_record: >
+    2026-10-05 (w0a, run-002; session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd;
+    the operator's "Continue" as the execution word). Execution COMPLETED,
+    receipts run-002.json. Deliverables: packages/db/scripts/rebaseline.ts
+    (doctor / fix / verify / diff / pull — the repo-resident re-baseline path
+    encoding the exact D1 recipe kit 0.31.11 + orm 0.45.3 + neon-serverless
+    1.2.0 as an isolated, env-passed, guard-railed live toolchain) +
+    packages/db/scripts/rebaseline.test.ts (26 checks / 68 expects, offline:
+    fixer shapes + idempotency + byte-identity, calibrated default-parity
+    rules, snapshot-driven specialTypeMap, REAL-baseline verify = 62/579/87/
+    54/98 @ 0 drifts as a standing bun-test regression gate, differ mutations,
+    pull guardrails incl. prod-branch denylist, doctor F2a evidence) + schema
+    README procedure section rewritten to the in-repo tool (D1's out-of-repo
+    script superseded). Defect localization: F2a statically proven (kit
+    0.30.6 bin.cjs literal `drizzle-orm/gel-core` import vs orm 0.38.4's 373
+    exports lacking it; bun.lock resolves exactly that broken pair); kit
+    0.31.11's `unknown("${name}")` emission template verbatim in its bin.cjs;
+    F2b + live pull not reproducible in this sandbox (no postgres/pgvector,
+    no Neon creds post-reset) — recipe-complete instead. GATES: typecheck x4
+    exit 0; bun test apps/api packages 498/0/13 1327 expect (= stated main
+    baseline + exactly this suite's 26/68); golden selftest OK (113).
+    VERIFY on the checked-in baseline: PASS 0 drifts incl. strict
+    type-spelling parity; fix --check: 0 sites (checked-in state IS the fixed
+    state). Fences: package.json untouched (F2 flag re-stated), generated
+    files untouched, Neon zero-contact, apps/** untouched. Blocked-on-operator:
+    push/PR (GITHUB_PAT lost in workspace reset), then independent review +
+    R0 intake (authors never self-merge).
+    2026-10-05 (w0a, run-003-push): operator disposition (A) executed
+    ("lane A" + fresh PAT): intake-rebased onto main c0d8fa0 as bf99335
+    (worklog union-resolved append-only); gates re-run green (typecheck x4;
+    498/0/13/1327 = run-002 numbers exact; selftest OK 113); PUSHED
+    t-mig-002r/w0a-exec + PR #53 opened with full collision disclosure
+    (r1's PR #51 credited; section 2.1 earliest-claim basis stated; R0
+    arbitration + merge-intake requested; authors never self-merge).
+    Receipt run-003-push.json.
