@@ -3,7 +3,7 @@ task:
   id: T-MIG-041
   title: "Wave-4 learner port — state model cluster: /learners/me/state read model + /course-stats (skill states + read-time Ebbinghaus decay + misconception staleness relaxation + review queue + tutor engagement summary + exam targets + rating/vote windows); tranche-1 = services + fakeSql pins (021 template)"
   owner: "R7a (agent-da4ab8, zai-web session web-da4ab8b1) — seeded under the operator round-9 directive (trace 1a10d2210b98ef81) 'Proceed with any work. Check and claim': T-MIG-040..043 are the MIGRATION_PLAN Wave-4-reserved bands (044 claim receipt provenance); 040 = the r7a PREP capture (DONE via #57), 042P = the cron slice (DONE); 041/043 were the unseeded port bands. Id ratification requested at PR review (030/032/039/040-PREP precedent)"
-  status: IN_PROGRESS # claim 2026-10-06
+  status: DONE # 2026-10-06 R0 sweep (trace 1a10d2b406e813f9): tranche-1 LANDED via PR #65 merged ed558ab (18:06:46Z) after the r9-hubx independent review APPROVED on-thread (fence verified: services/learner + test/learner + own yaml only); claim provenance per owner line (operator round-9 trace 1a10d2210b98ef81). Post-merge main gates 6ea61b2: typecheck x4 exit 0, 764 ran / 751 pass / 0 fail / 13 skip / 2121 expect, golden selftest OK.
   priority: P1
   wave: 4
   deps: [T-MIG-038, T-MIG-040-PREP, T-MIG-014] # landed W4 contracts (learner.ts/decay.ts) + the W4 golden capture that pins these surfaces + db driver dispatch
