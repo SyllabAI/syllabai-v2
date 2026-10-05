@@ -1,0 +1,54 @@
+version: 1
+task:
+  id: T-MIG-023
+  title: "Content-read fidelity fixes (T-MIG-022 findings F-1/F-2/F-3) + 40/40 live replay re-run on the kept prod branch"
+  owner: "superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9) — self-filed per §6.1, executed on operator directive 're-run Pass B on the kept prod branch for 40/40'"
+  status: IN_PROGRESS # claimed at branch-start commit per §2.1
+  priority: P0 # Wave-2 exit gate completion — the union verdict is the gate
+  wave: 2 # completes the T-MIG-020/T-MIG-022 content-read wave exit
+  deps: [T-MIG-020, T-MIG-022, T-MIG-004, T-MIG-014]
+  execution_record: >-
+    Claimed 2026-10-05T08:34:27Z at branch start (this commit) off main
+    5ee240e. All three T-MIG-022 findings are port-fixable; F-3 is
+    RECLASSIFIED (see receipt): the frozen QuestionVersionRepository.
+    findByPaperId @Query CARRIES 'order by v.question.externalRef nulls
+    last, v.version desc' — run-001's 'derived query, NO ORDER BY' call was
+    a misdiagnosis (call site read, repository not). The R6/R0
+    capture-stability ruling request is WITHDRAWN by this lane.
+    Out-of-fence disclosure: the fixed files are the canonical T-MIG-020
+    port surface (r3-c, merged via #22); per the T-MIG-010/014/016/020/021
+    OUT-OF-FENCE precedent, R0 ratification is requested at merge-intake.
+    Findings ownership note: run-001 filed F-1/F-2 as 'T-MIG-020 lane / R0
+    routing' because the verification fence (T-MIG-022) forbade in-pass
+    fixes; this task is the fix vehicle, filed by the same lane that holds
+    the full root-cause evidence, per the operator's 40/40 directive.
+base:
+  repo: "syllabai-v2 @ 5ee240e (post R0-MERGE-#28); golden set = main's 69 cases + the two-posture replay protocol of T-MIG-022"
+basis: >
+  T-MIG-022 (PR #30) delivered the two-posture live golden replay: seed
+  25/25, prod 11/15 (union 36/40) with three root-caused findings. The
+  operator directed the 40/40 re-run on the kept prod branch
+  (br-red-wildflower-a5vyd81c, as-cowed). Ground-truth re-verification
+  against the frozen sources found ALL FOUR prod failures are faithful
+  port divergences: F-1 createdAt rendering (JS Date caps at ms; Java
+  Jackson JSR-310 renders Instant.toString() shortest-round-trip micros
+  from the DB timestamp(6)); F-2 page-text assembly (CanonicalDocumentDto
+  §8 JSON contract: top-level camelCase, PER-ELEMENT snake_case — the port
+  read element.pageNumber/readingOrder, keys that do not exist in the
+  stored jsonb); F-3 findByPaperId ordering (port dropped the frozen
+  @Query's deterministic ORDER BY). No capture change, no case weakening,
+  no tolerance — three precise port fixes and a replay re-run.
+scope:
+  allowed:
+    - "apps/api/src/services/content/repositories.ts (F-1: instant writer + to_char text columns for the created_at/occurred_at mappers)"
+    - "apps/api/src/services/content/reader.ts (F-2: §8 snake_case element keys)"
+    - "apps/api/src/services/content/review-repos.ts (F-3: restore the frozen ORDER BY in findFullByPaperId + findByPaperId)"
+    - "apps/api/test/** (unit pins updated/addition: documentPageText §8 re-pin, instantToStringUtc pins, ORDER BY clause pins)"
+    - ".syllabai/receipts/T-MIG-023/** (incl. replay tools copied with provenance from T-MIG-022 per the R0 #20/#30 tooling-credit lineage)"
+    - ".syllabai/tasks/T-MIG-023*.yaml, .syllabai/worklog.md (append-only)"
+  forbidden:
+    - "golden/** changes of any kind (no case edit, no tolerate, no re-capture — capture is the law)"
+    - "packages/** changes (contracts untouched; the content.ts header note stays — receipt prose only)"
+    - "production Neon writes (COW branches rows-only; prod posture AS-COWED, no reset)"
+    - "frozen core-readonly touches (read-only law source)"
+    - "direct pushes to main (R0 merges)"
