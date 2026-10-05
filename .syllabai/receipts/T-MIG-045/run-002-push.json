@@ -1,0 +1,14 @@
+{
+  "task": "T-MIG-045",
+  "agent": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "date": "2026-10-05",
+  "run": "run-002-push",
+  "title": "branch pushed + PR opened after operator PAT handover",
+  "pushed_head": "4289e8e (aba6e46 implementation + worklog push-addendum)",
+  "branch": "t-mig-045/r4b",
+  "pr": { "number": 61, "url": "https://github.com/SyllabAI/syllabai-v2/pull/61", "base": "main @ 260f452" },
+  "operator_context": "IM trace 1a10cced0cde9341 'Proceed' + trace 1a10ce4dd8305c31 (PAT handover). Earlier push attempt from the restarted sandbox failed (no write credentials); operator supplied the fleet PAT; push executed fast-forward, no force.",
+  "collision_check_at_push": "ls-remote confirmed neither t-mig-045/r4b nor t-mig-044/r4b existed on origin; T-MIG-045 absent from main 260f452 worklog/index (git grep).",
+  "base_disclosure": "authored against claim-time main c920eea; main moved to 260f452 (PRs #53/#54) with ZERO file overlap; R0 merge-intake owns the post-#54 worklog union.",
+  "gates_on_pushed_head": "worklog-only delta vs aba6e46; gates stamped on aba6e46 (typecheck x4 exit 0, 485/0/13skip/1259 exact, selftest OK, identity x5 consecutive) and re-verified post-restart (identity x3 deterministic)."
+}

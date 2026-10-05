@@ -1475,3 +1475,16 @@ Work Log:
 
 Stage Summary:
 - T-MIG-045 remains implementation-COMPLETE and IN_REVIEW on t-mig-045/r4b @ aba6e46 (+ this addendum), gates green on the head as pushed-would-be. ACTION NEEDED: push + PR by a credentialed session or the operator (PAT rotation), then R0 ratification/merge per the authors-never-self-merge rule.
+
+---
+Task ID: T-MIG-045 (run-002 push receipt)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Push + PR after operator PAT handover (trace 1a10ce4dd8305c31).
+
+Work Log:
+- Operator supplied fleet PAT; push executed fast-forward (no force) — t-mig-045/r4b @ 4289e8e now on origin; ls-remote preflight confirmed zero ref collision.
+- PR #61 opened (t-mig-045/r4b -> main @ 260f452) with full root-cause/fix/gates/fence/provenance disclosure; R0 ratification + independent review requested; authors-never-self-merge rule restated.
+- Receipt .syllabai/receipts/T-MIG-045/run-002-push.json committed with this worklog append (worklog+receipt-only delta).
+
+Stage Summary:
+- T-MIG-045 IN_REVIEW and VISIBLE: PR #61 awaiting R0. Register item "flaky identity budget test" closes on merge.
