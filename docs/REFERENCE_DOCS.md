@@ -5,21 +5,24 @@ Raw URLs use `https://raw.githubusercontent.com/SyllabAI/<repo>/main/<path>`.
 
 ## Process law — master pack (`SyllabAI/syllabai`)
 
+ADRs live at the master-pack repo ROOT (flat), not under `docs/adr/` — path
+verified 2026-10-05 (T-MIG-015 receipt, renumbered from T-MIG-014).
+
 | Doc | Why it binds the v2 port |
 |-----|--------------------------|
-| `docs/adr/ADR-020-EDUCATIONAL_RETRIEVAL_ENGINE.md` | Retrieval engine semantics — port exactly (R-PGVECTOR) |
-| `docs/adr/ADR-023-LLM_PROVIDER_POOL_HARDENING.md` | Groq→Gemini→OpenRouter chain failover rules — Wave 6 |
-| `docs/adr/ADR-025-SMART_MARK_PRODUCT_CONTRACT.md` | Smart-mark contract — Wave 3 |
-| `docs/adr/ADR-027-TEACHER_MARKING_QUEUE_SCOPING.md` | Teacher marking scoping — Wave 5 |
-| `docs/adr/ADR-030-PER_COURSE_TUTOR_SCOPING.md` | Tutor scoping — Wave 6 |
-| `docs/adr/ADR-031-DECAY_IS_COMPUTED_NEVER_PERSISTED.md` | Decay is COMPUTED — governs the Vercel Cron port (Wave 4) |
-| `docs/adr/ADR-032-MISCONCEPTION_EVIDENCE_AGES_TOWARD_THE_PRIOR.md` | Evidence aging — Wave 4 |
-| `docs/adr/ADR-033-BKT_EMISSION_IS_FORMAT_AWARE.md` | BKT emission — Wave 3/4 |
-| `docs/adr/ADR-034-TRAIL_MERGE_IS_RECEIPT_BASED.md` | Receipt-based trail merge — the receipts culture of this repo |
-| `docs/adr/ADR-035-EXECUTIVE_LAYER_EXAM_AWARE_NBA.md` | Exam-aware executive layer — Wave 4 |
-| `docs/adr/ADR-036-RESEARCH_ENDPOINT_K_ANONYMITY.md` | k-anonymity BINDS the v2 research surface port (Wave 6) |
-| `docs/adr/ADR_017_LEARNING_FIRST_RECOMMENDATION_SYSTEM.md` | Recommendation system — Wave 4 |
-| `docs/adr/ADR_021_CONTENT_COMPILER_AND_PORTABLE_CONTENT_PACKAGE.md` | Content compiler — Wave 2 |
+| `ADR-020-EDUCATIONAL_RETRIEVAL_ENGINE.md` | Retrieval engine semantics — port exactly (R-PGVECTOR) |
+| `ADR-023-LLM_PROVIDER_POOL_HARDENING.md` | Groq→Gemini→OpenRouter chain failover rules — Wave 6 |
+| `ADR-025-SMART_MARK_PRODUCT_CONTRACT.md` | Smart-mark contract — Wave 3 |
+| `ADR-027-TEACHER_MARKING_QUEUE_SCOPING.md` | Teacher marking scoping — Wave 5 |
+| `ADR-030-PER_COURSE_TUTOR_SCOPING.md` | Tutor scoping — Wave 6 |
+| `ADR-031-DECAY_IS_COMPUTED_NEVER_PERSISTED.md` | Decay is COMPUTED — governs the Vercel Cron port (Wave 4) |
+| `ADR-032-MISCONCEPTION_EVIDENCE_AGES_TOWARD_THE_PRIOR.md` | Evidence aging — Wave 4 |
+| `ADR-033-BKT_EMISSION_IS_FORMAT_AWARE.md` | BKT emission — Wave 3/4 |
+| `ADR-034-TRAIL_MERGE_IS_RECEIPT_BASED.md` | Receipt-based trail merge — the receipts culture of this repo |
+| `ADR-035-EXECUTIVE_LAYER_EXAM_AWARE_NBA.md` | Exam-aware executive layer — Wave 4 |
+| `ADR-036-RESEARCH_ENDPOINT_K_ANONYMITY.md` | k-anonymity BINDS the v2 research surface port (Wave 6) |
+| `ADR_017_LEARNING_FIRST_RECOMMENDATION_SYSTEM.md` | Recommendation system — Wave 4 |
+| `ADR_021_CONTENT_COMPILER_AND_PORTABLE_CONTENT_PACKAGE.md` | Content compiler — Wave 2 |
 | `.syllabai/tasks/T-C42.yaml` | The task-yaml FORMAT this repo mirrors (AGENT_COORDINATION §4) |
 
 ## Backend behaviour reference (`SyllabAI/syllabai-core`)
@@ -50,7 +53,7 @@ Raw URLs use `https://raw.githubusercontent.com/SyllabAI/<repo>/main/<path>`.
 
 - Task yaml: master-pack format (see `.syllabai/tasks/` here).
 - Receipts: JSON evidence per task under `.syllabai/receipts/` (heritage:
-  resources-repo postflight receipts, ADR-034).
+  master-pack `bench/review/` dated receipt lanes, ADR-034).
 - Worklog: append-only sections with Task ID / Agent / Work Log / Stage
   Summary (`.syllabai/worklog.md`).
 - Secrets: never committed; `sync:false`-style dashboards only (heritage:

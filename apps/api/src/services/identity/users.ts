@@ -25,6 +25,8 @@
  * writes, row-locked claim serialization.
  */
 import { Client } from "@neondatabase/serverless";
+import postgres from "postgres";
+import { isNeonUrl } from "@syllabai/db";
 
 export interface UserRow {
   id: string;
@@ -43,7 +45,7 @@ export type SqlFn = (
 ) => Promise<Array<Record<string, unknown>>>;
 
 /**
- * Builds the repository over a Neon DATABASE_URL.
+ * Builds the repository over a DATABASE_URL.
  *
  * Driver choice (deliberate): the HTTP `neon()` function only supports
  * BATCHED transactions (an array of queries — no conditional flow between
@@ -53,33 +55,87 @@ export type SqlFn = (
  * through a tagged-template adapter that keeps the repository code
  * driver-agnostic. A single serialized session per repository instance —
  * pooling/uniformity lands with the db-baseline integration (T-MIG-002).
+ *
+ * Driver dispatch (T-MIG-014): Neon hosts keep the WebSocket Client
+ * (behaviour byte-identical to the T-MIG-010 port); any OTHER Postgres host
+ * (local scratch / CI replay db — the seed-shaped golden-replay target,
+ * GOLDEN_MASTER §2/§4) gets postgres.js over TCP through the same adapter,
+ * so the repository code below stays driver-agnostic. Fail-fast URL guards
+ * run before dispatch (requireDatabaseUrl consumers).
  */
 export function createSql(databaseUrl: string): NeonSql {
-  const client = new Client({ connectionString: databaseUrl });
-  let connecting: Promise<void> | null = null;
-  const ensure = () => {
-    connecting ??= client.connect().then(() => undefined);
-    return connecting;
-  };
+  const client: RawSqlClient = isNeonUrl(databaseUrl)
+    ? new NeonWsClient(databaseUrl)
+    : new PostgresJsClient(databaseUrl);
   const fn = (async (strings: TemplateStringsArray, ...params: unknown[]) => {
-    await ensure();
+    await client.ensure();
     const { text, values } = toQuery(strings, params);
-    const res = await client.query({ text, values });
-    return res.rows as Array<Record<string, unknown>>;
+    return client.query(text, values);
   }) as NeonSql;
   fn.transaction = async <T>(body: (tx: SqlFn) => Promise<T>): Promise<T> => {
-    await ensure();
-    await client.query({ text: "begin" });
+    await client.ensure();
+    await client.exec("begin");
     try {
       const result = await body(fn as SqlFn);
-      await client.query({ text: "commit" });
+      await client.exec("commit");
       return result;
     } catch (e) {
-      await client.query({ text: "rollback" });
+      await client.exec("rollback");
       throw e;
     }
   };
   return fn;
+}
+
+/** Transport-level session shared by both driver adapters (T-MIG-014). */
+interface RawSqlClient {
+  /** idempotent lazy connect — postgres.js connects on first use */
+  ensure(): Promise<void>;
+  query(text: string, values: unknown[]): Promise<Array<Record<string, unknown>>>;
+  /** session control statements (begin/commit/rollback) */
+  exec(text: string): Promise<void>;
+}
+
+/** Neon WebSocket session — the production path (behaviour unchanged). */
+class NeonWsClient implements RawSqlClient {
+  private client: Client;
+  private connecting: Promise<void> | null = null;
+  constructor(url: string) {
+    this.client = new Client({ connectionString: url });
+  }
+  ensure() {
+    this.connecting ??= this.client.connect().then(() => undefined);
+    return this.connecting;
+  }
+  async query(text: string, values: unknown[]) {
+    const res = await this.client.query({ text, values });
+    return res.rows as Array<Record<string, unknown>>;
+  }
+  async exec(text: string) {
+    await this.client.query({ text, values: [] });
+  }
+}
+
+/** postgres.js TCP session — local scratch / CI replay path (T-MIG-014). */
+class PostgresJsClient implements RawSqlClient {
+  private sql: ReturnType<typeof postgres>;
+  constructor(url: string) {
+    // max 1 mirrors the serialized-session doctrine; prepare:false suits
+    // pooled/serverless-style short sessions and keeps replay stateless
+    this.sql = postgres(url, { max: 1, prepare: false });
+  }
+  async ensure() {
+    /* postgres.js connects lazily on the first query */
+  }
+  query(text: string, values: unknown[]) {
+    // postgres.js unsafe(): exact $n positional substitution, rows as objects.
+    // The unknown[] widening is the adapter boundary — the tagged-template
+    // layer (toQuery) is the only value producer, mirroring the Neon path.
+    return this.sql.unsafe(text, values as never[]) as Promise<Array<Record<string, unknown>>>;
+  }
+  async exec(text: string) {
+    await this.sql.unsafe(text);
+  }
 }
 
 /** Tagged template → {text with $n placeholders, values}. */
