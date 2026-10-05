@@ -4,6 +4,7 @@ import { AuthService } from "../../src/services/identity/service";
 import { UsersRepository, type UserRow } from "../../src/services/identity/users";
 import { BootstrapStateStore, BootstrapAdminService } from "../../src/services/identity/bootstrap";
 import { readIdentityConfig, buildIdentityServices } from "../../src/services/identity/config";
+import { LoginAttemptBudget, type BudgetClock } from "../../src/services/identity/budget";
 import { createAuthRoute, createBootstrapRoutes } from "../../src/routes/auth";
 import { createAuthMiddleware, createJwtAuthenticator } from "../../src/middleware/auth";
 import { apiError, toErrorResponse, type ApiErrorBody } from "../../src/services/identity/errors";
@@ -83,9 +84,42 @@ class FakeStateStore extends BootstrapStateStore {
   }
 }
 
-function buildTestApp(env: Record<string, string>) {
+/**
+ * T-MIG-036 — deterministic budget clock. The LoginAttemptBudget windows are
+ * minute-ALIGNED fixed windows (Java-faithful law: windowStart =
+ * floor(now/window)*window, budget.ts:72), so a test that records failures in
+ * real time can straddle a wall-minute boundary mid-sequence and silently
+ * reset the window (fleet flake: CI run 37294749131, routes.test.ts:329
+ * toBe(9) failing at 10:10:02.126Z after the sibling passed at 10:09:59.039Z).
+ * The roll is LAW — the defect was the tests' wall-clock dependence — so the
+ * budget tests pin this clock instead. Seeded exactly ON an aligned boundary:
+ * 1_800_000_000_000 % 60_000 === 0.
+ */
+class SteppingClock implements BudgetClock {
+  constructor(private nowMs = 1_800_000_000_000) {}
+  instant(): Date {
+    return new Date(this.nowMs);
+  }
+  advance(ms: number): void {
+    this.nowMs += ms;
+  }
+}
+
+function buildTestApp(env: Record<string, string>, budgetClock?: BudgetClock) {
   const config = readIdentityConfig(env);
   const identity = buildIdentityServices(config);
+  if (budgetClock) {
+    // T-MIG-036: pin the budget clock for tests that hammer the budget.
+    // Swapped BEFORE AuthService construction — AuthService reads
+    // identity.budget lazily today (service.ts:154), but pre-construction
+    // swapping stays correct even against a future eager capture.
+    identity.budget = new LoginAttemptBudget({
+      windowMs: config.ratelimit.windowMs,
+      loginPerAccount: config.ratelimit.loginPerAccount,
+      enabled: config.ratelimit.enabled,
+      clock: budgetClock,
+    });
+  }
   const users = new FakeUsersRepo();
   const authService = new AuthService(users, identity);
   const bootstrap = new BootstrapAdminService(
@@ -304,24 +338,38 @@ describe("POST /api/v1/auth/login — AuthService.login (:123-140) parity", () =
   });
 
   test("per-TARGET-account budget: 11 failures → 429 + Retry-After (R5)", async () => {
+    // T-MIG-036: clock-pinned app — all 11 attempts land in ONE aligned
+    // window by construction (previously real systemClock; a wall-minute
+    // straddle opened a fresh window and turned attempt 11 into a 401).
+    // budget@example.invalid is intentionally never registered: the failures
+    // stay pre-bcrypt (AuthService.java:129 budget check comes first).
+    const { app: budgeted } = buildTestApp(baseEnv, new SteppingClock());
     for (let i = 0; i < 10; i++) {
-      const r = await post(app, "/api/v1/auth/login", { email: "budget@example.invalid", password: "nope-nope-nope-1" });
+      const r = await post(budgeted, "/api/v1/auth/login", { email: "budget@example.invalid", password: "nope-nope-nope-1" });
       expect(r.status).toBe(401);
     }
-    const res = await post(app, "/api/v1/auth/login", { email: "budget@example.invalid", password: "nope-nope-nope-1" });
+    const res = await post(budgeted, "/api/v1/auth/login", { email: "budget@example.invalid", password: "nope-nope-nope-1" });
     expect(res.status).toBe(429);
-    expect(res.headers.get("Retry-After")).not.toBeNull();
+    // :110 formula at the pinned instant — all 10 failures at windowStart T0,
+    // attempt 11 still at T0: remaining = aligned = 60_000ms → 60/1000 + 1 = 61.
+    expect(res.headers.get("Retry-After")).toBe("61");
     expect(await res.json()).toMatchObject({
       error: "Too Many Requests",
       message: "Too many attempts. Wait a moment and try again.",
     });
-    // a DIFFERENT account is untouched (per-target, not global)
-    const other = await post(app, "/api/v1/auth/login", { email: "login@example.invalid", password: STRONG });
+    // a DIFFERENT account is untouched (per-target, not global) — registered
+    // on THIS app instance so the good-credentials login is real
+    await post(budgeted, "/api/v1/auth/register", { email: "login@example.invalid", password: STRONG, displayName: "Login" });
+    const other = await post(budgeted, "/api/v1/auth/login", { email: "login@example.invalid", password: STRONG });
     expect(other.status).toBe(200);
   });
 
   test("successful login clears the account budget (:138)", async () => {
-    const fresh = buildTestApp(baseEnv);
+    // T-MIG-036: clock-pinned budget — the 9 real-bcrypt failures used to run
+    // on the wall clock; straddling a minute boundary reset the aligned window
+    // and currentCount read < 9 (the register flake). Bcrypt parity stays real;
+    // only the budget clock is pinned.
+    const fresh = buildTestApp(baseEnv, new SteppingClock());
     await post(fresh.app, "/api/v1/auth/register", { email: "clear@example.invalid", password: STRONG, displayName: "Clr" });
     for (let i = 0; i < 9; i++) {
       await post(fresh.app, "/api/v1/auth/login", { email: "clear@example.invalid", password: "wrong-password-1" });
@@ -334,7 +382,7 @@ describe("POST /api/v1/auth/login — AuthService.login (:123-140) parity", () =
     // one fresh failure lands on a clean slate (no 429 window re-arm)
     await post(fresh.app, "/api/v1/auth/login", { email: "clear@example.invalid", password: "wrong-password-1" });
     expect(fresh.identity.budget.currentCount("clear@example.invalid")).toBe(1);
-  }, 60_000); // ~11 BCrypt cost-12 compares ≈ 3s — parity is worth the wall clock
+  }, 60_000); // ~11 BCrypt cost-12 compares ≈ 3s — bcrypt parity is worth the wall clock; the BUDGET clock is pinned (T-MIG-036)
 });
 
 describe("GET /api/v1/auth/me + POST /api/v1/auth/password — token lifecycle", () => {
