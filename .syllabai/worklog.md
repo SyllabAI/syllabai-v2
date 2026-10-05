@@ -887,6 +887,7 @@ Work Log:
 
 Stage Summary:
 - T-MIG-007 is IN_REVIEW as PR #29: 44 Wave-3 golden cases (98 -> 113 total suite) across 10 controllers' deterministic surfaces + the runner replay-readiness kit that closes the T-MIG-013-reported tolerate defect, T-MIG-004 F-3 header comparison, and R0-SWEEP-1 follow-up (3) R6 items. The metronome is now one full wave ahead of the W3 port lane (T-MIG-030..034). Next for this lane: await R0 on #29; then either the F-5-style Neon extension for w3 stateful cases (needs NEON access) or the next capture beat (Wave 4) per MIGRATION_PLAN section 10.
+- (T-MIG-021 addendum 2, same session) Sweep-1 landed: #12/#13/#14(T-MIG-015 docs)/#16/#17(dossier)/#19(claim+tranche-1) MERGED, T-MIG-021 id RATIFIED (§2.R1 vs R4-api-b), T-MIG-020 arbitrated to r3-c #22 (ruling1), T-MIG-005 via #18 with canonical curriculum.ts. Tranche 2 EXECUTED on t-mig-021/r7a-ext @ 01d0e9d: learner + teacher READ routers (contract-schema binding, captured envelopes, F-1 pinned, honest 501 write discipline), 19 route tests over real-services-on-stubbed-sql incl. canonical zod validation; OUT-OF-FENCE mounts (2 lines, flagged commit, ratification requested). Gates: typecheck x4 exit 0; bun test 272/13skip/0 fail; golden selftest OK. Replay flip env-blocked (Neon DNS finding, CI-side runner proposed) — receipt run-002-tranche2.json. yaml -> IN_REVIEW.
 ---
 Task ID: R0-REPAIR-1 (T-MIG-017 renumber of the #25 artifacts + breach record)
 Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
@@ -914,3 +915,17 @@ Work Log:
 
 Stage Summary:
 - T-MIG-016 -> DONE (merged 08c3d69). Wave-1 feature surface complete: identity (010) + content-read (020) + curriculum services (021 t1) + rate-limiting (016), all golden-gated; llm:ask tier dormant-by-routes until Wave-3. Queue at commit time: #26 (renumber-to-018 refile pending, R1-contracts-c), #28 (T-MIG-021 tranche-2, in review), t-mig-007/r6 branch sighted without PR. Board: T-MIG-011 still CLAIMED (r5 silent ~13h). Standing operator items: reaffirm single-R0 authority after the #25 breach; CI-side Neon integration runner; T-MIG-002 baseline-SQL repair (F-5); PAT rotation.
+---
+Task ID: R0-MERGE-#28 (T-MIG-021 tranche-2 curriculum READ routers — merged)
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Review and integrate PR #28 (r7a lane, clean COI); rule the flagged F-1 divergence; close the T-MIG-021 lifecycle
+
+Work Log:
+- Law verification vs frozen sources (raw reads, not the receipt): learner CurriculumController /api/v1/curriculum (:20) GET versions/subjects/subjects-{id} ported with anyRequest().authenticated() shell (SecurityConfig.java:91); teacher TeacherCurriculumController /api/v1/teacher/curriculum (:33) GET versions + versions-{id}-nodes ported with hasAnyRole(TEACHER,ADMIN) shell (:87); four-to-five POST write surfaces honestly 501'd per the T-MIG-020 convention; diff surface = fence exactly + the declared OUT-OF-FENCE wiring.
+- F-1 RULING (requested in the PR): unknown version -> 200 [] stands AS CAPTURED — capture is the law (GOLDEN_MASTER doctrine, T-MIG-004 F-2 posture); R6 re-pins on any future re-probe, port lanes never.
+- OUT-OF-FENCE ratified: import + construction + 2 mount lines + disclosure comment (T-MIG-010/020 precedent), minimal, path parity exact, mounted before the anyRequest fallback preserving 404-after-auth semantics.
+- Gates re-executed on test-merge 89bfb7c (branch + main 008d64c): typecheck x4 exit 0; bun test 286/0/13skip, 789 expect() (= main 727 + PR 62 exactly); golden --selftest OK; CI verify+hub success. Merge-intake conflict class: worklog append union only. fakeSql rowsFor follow-up commit (67f62fd) verified as a test-helper necessity.
+- Housekeeping (this commit): yaml IN_REVIEW -> DONE with evidence; this entry. No code changes.
+
+Stage Summary:
+- T-MIG-021 -> DONE (merged 9732a1e). Wave-2 curriculum READ surface live behind the golden gate. Queue after this merge: #26 (R1-contracts-c, renumber-to-018 refile pending — directive corrected after R0-REPAIR-1 took 017 for the golden-verify task). Branch sightings: t-mig-007/r6 (R6 lane, no PR yet). Board: T-MIG-011 CLAIMED (r5 silent ~13h — reassignment candidate). Standing operator items: reaffirm single-R0 authority after the #25 breach; CI-side Neon integration runner; T-MIG-002 baseline-SQL repair (F-5); PAT rotation (chat-transit).
