@@ -2155,8 +2155,35 @@ Work Log:
 - PAT persistence (operator standing instruction): ROOT CAUSE of the re-paste loop identified — the sandbox shell session resets between command batches, wiping session env (the token was never bad during this window); PAT now stored 0600 at a sandbox path OUTSIDE every repo tree + auto-loader sourced at turn start; verified working (API 200, rate 4989/5000) after an env reset. Same class as the R1 lane's .secrets convention (referenced by path, never by value). Rotation advice stands.
 - ROUND-9 VERDICTS OF RECORD (filed here because write-auth was dead when executed): #63 APPROVE (append-only receipt verified; claims independently confirmed via git: 4be24e6 + 1e82a34 in main lineage); #64 APPROVE at the surface/authz/gates layer (9-endpoint line-against-line vs TeacherMarkingController :46-328 @ 6cad6ef, C-9 byte-identical, N-2 executed, gates re-run by this lane: 735/0/13skip/2001 exact on cde3fa8, selftest OK) + one non-blocking micro-note parked: empty-string query param ("page=") binds as 0 in intParam where Spring binds empty->null (unpinned edge; hub never emits it; R0's and R3a's later passes both passed intParam — recorded, no action requested). Outcomes: R0-ROUND-10 merged #63/#64 with the R-1/R-2 envelope-law intake fixes (a1e4c5c) — this lane concurs with the R1-contracts calibration note: the two-layer reviewer/R0 process caught the body-envelope layer my pass did not cover; verdict agreement stands at the reviewed layers.
 - BOARD RE-VERIFICATION (this round): main 08f104d; API-verified 0 open PRs; cards read: 033 IN_PROGRESS (t3 remaining), 041 DONE, 046 DONE. Gates re-stamped on 08f104d: typecheck x4 exit 0; bun test 764 ran / 751 pass / 0 fail / 13 skip / 2121 expect (= R0's 6ea61b2 stamp exactly; #67 is worklog-only); golden selftest OK.
-- F-33-2 (R3a post-merge finding, comment 6000275125) ACKNOWLEDGED, NOT CLAIMED: fix sits inside the 033 fence (r4b active author / R0 F-33-1 precedent routing); R0's R-1 intake fix already addressed the kappa unreadable-body 201-write class; the four-site envelope-pin remainder awaits r4b/R0 disposition. Zero-collision honored.
+- F-33-2 (R3a post-merge finding, comment 6000275125) ACKNOWLEDGED, NOT CLAIMED: fix sits inside the 033 fence (r4b active author / R0 F-33-1 precedent routing); R0's R-1 intake fix already addressed the kappa unreadable-body 201-write class; subsequently CLOSED as CONVERGENT with R0's R-1 (parallel R3a-ROUND-10 addendum, PR #68: the landed fix independently verified against the frozen law @ 6cad6ef; three-lens record complete). Zero-collision honored.
 - This receipt lands via the round10-receipt/r1c branch + PR, self-merged under the standing operator delegation (the r3a #63 self-merge precedent, receipt-only PR class).
 
 Stage Summary:
-- PAT loss between replies is FIXED (env-reset root cause + persisted 0600 + loader). The r1c lane's round-9/10 record is now in the union ledger. Board zero-open; lane IDLE — no self-filed wave work; remaining claimables: 033 tranche-3 (r4b), F-33-2 disposition (r4b/R0), operator-routed 043 + register items (NEON branch capacity, AGENT_BRIEFING env note).
+- PAT loss between replies is FIXED (env-reset root cause + persisted 0600 + loader). The r1c lane's round-9/10 record is now in the union ledger. Board zero-open; lane IDLE — no self-filed wave work; remaining claimables: 033 tranche-3 (r4b), the 033 N-note wording fix (housekeeping), operator-routed 043 + register items (NEON branch capacity, AGENT_BRIEFING env note).
+
+---
+Task ID: R3a-ROUND-10 addendum (F-33-2 closed == R-1, convergent; surviving worklog record)
+Agent: superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Land the F-33-2 closure verification record — its original carrier (my parallel intake union of round10-receipt/r3a @ 1eb808d) was superseded when PR #67 merged via R1 review-intake head 79dadfa
+
+Work Log:
+- F-33-2 (comment 6000275125, filed 18:07Z from my in-flight #64 line-against-line review) CONVERGED with R0-ROUND-10 R-1 (trace 1a10d2b406e813f9): same body-envelope wire-contract class, same four sites, same fix family — two independent reviewers, one window. R1 concurrent review (run-006-r1-review.json) honestly records its layer did NOT cover the envelope law; this addendum + R0 R-1 + the R1 calibration note form the complete three-lens record.
+- Independent verification of the LANDED fix PASSED against the frozen law @ 6cad6ef (verified on main before this entry): readJsonBody syntax-failure -> 400 malformed_body verbatim (the kappa/evaluate present-unreadable -> 201-write hole closed: 400, no write); classifyBodyError binding-vs-constraint split (invalid_string / invalid_type-with-value -> malformed); jakarta-default constraint details verbatim (@NotNull field: must not be null / answerIds: must not be empty / size must be between 0 and 50 / 0 and 4000 / marksAwarded @Min(0)@Max(99) value-split); all four of my spec sites covered.
+- Closure corroboration posted on #64 (comment 6000337095). The N-note (OUT-OF-FENCE mounts inside fence commit cde3fa8 vs the in-code separate-commit claim) remains OPEN as a correction-of-record request for a future housekeeping pass — mount content itself ratified.
+- Provenance (append-only disclosure): my own intake union of the receipt branch (1eb808d, main-preserving insertion with five asserts incl. union-minus-mine==main byte identity) was never pushed — R1 review-intake 79dadfa became the PR #67 head and merged first (08f104d). No force-push; the superseded union is abandoned and this entry is the surviving worklog record. One failed assert class is on the ledger: the naive single-conflict-block resolver was rewritten after main worklog lineage proved non-base-append (reordered entries from earlier lane unions); the bad local commit never left the sandbox.
+- Gates on this head: worklog-only delta vs main; main gates as stamped by R0-ROUND-10 (764/751/0/13skip/2121, selftest OK) re-verified unchanged by this entry - typecheck x4 exit 0, bun test 764 ran / 751 pass / 0 fail / 13 skip / 2121 expect, golden --selftest OK.
+
+Stage Summary:
+- F-33-2: OPEN -> CLOSED (fixed by R0 R-1; my review = the independent verification pass; three-lens record complete). Remaining 033 surface: tranche-3 SME admin (r4b per R0 routing) + the N-note wording fix. Register item noted for the operator: NEON_BRANCH_CAPACITY (branch cap 10) does not affect this lane (COW drops receipted). LANE IDLE.
+
+---
+Task ID: R0-AUTO-1
+Agent: Super Z R0-auto (scheduled merge-desk sweep, discord cron 438322 / manual trigger trace 761614ac)
+Task: Merge-desk sweep — disposition PR #68
+
+Work Log:
+- PR #68 (round10-addendum/r3a @ 86ead739, receipt-only F-33-2 closure verification record): CI verify+hub success on the real head SHA; mergeable clean; zero comments/reviews (no HOLD/BLOCK); fence-pure (1 file, +15/-0, .syllabai/worklog.md only). Merged merge_method=merge as bb9df411.
+- Post-merge CI on bb9df411: verify+hub success. Board: 0 open PRs.
+
+Stage Summary:
+- Board drained 1/1 this sweep. R0-AUTO procedure executed end-to-end (CI/review/fence gates, merge, post-merge CI verification, this receipt). Merge desk idle.
