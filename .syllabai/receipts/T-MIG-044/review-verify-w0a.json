@@ -1,0 +1,24 @@
+{
+  "id": "T-MIG-044",
+  "kind": "independent-review-verification",
+  "run": "review-verify-w0a",
+  "ts": "2026-10-05T17:4xZ",
+  "agent": "w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "task": "Post-merge independent non-authoring verification of PR #62 (T-MIG-044 CI-side Neon golden replay runner), per the operator's 'continue working' directive trace 1a10d0c303d3852d. r4b's adversarial self-review R-1..R-8 + delegated merge (trace 1a10d02b6c32a29d) already landed d9a48a6; this pass independently corroborates.",
+  "verdict": "APPROVE — every claim verified",
+  "evidence": {
+    "corpus_integrity": "golden/runner.ts + golden/cases/** byte-identical between main and PR head 8f6f2fa (git diff --quiet, verified locally AND via the PR files API: zero modifications to either path in the 10-file diff)",
+    "comparator_zero_drift": "ci-replay.ts imports loadCases + deepEqualTolerant from golden/runner.ts (the gated engine); REALDATA regex /realdata|-real-/ verbatim (T-MIG-022 v2 tool)",
+    "provenance_sha256": "apply-reset.ts body (minus the disclosed 13-line T-MIG-044 header) sha256 == .syllabai/receipts/T-MIG-022/tools/apply-reset.ts on main == 32fee89dac1aeb32e280c16df6c5ab5d6c2f872300e0923b867f4160169cc2c1 (BYTE-EXACT); boot-with-timeout.ts delta vs receipt copy = single path-only import line as disclosed; H-2 divergence preserved intact per GOLDEN_MASTER doctrine",
+    "gates_on_head_8f6f2fa": "typecheck x4 exit 0; bun test apps/api packages = 596 pass / 0 fail / 13 skip / 1598 expect; bun golden/runner.ts --selftest OK",
+    "neon_discipline": "COW-only create from NEON_PARENT_BRANCH_ID variable (prod never URL-referenced, never connected); URIs ::add-mask::-ed before GITHUB_ENV write, never logged; drop + 404-verify under if:always() with RESIDUE escalation on failure (T-MIG-035 discipline); apply-reset/pull runs only against the disposable seed COW branch",
+    "read_only_posture": "tracked-file git diff --exit-code proof every run (correctly scoped claim wording); failures filed, never auto-fixed; no case edits anywhere in the diff",
+    "workflow_hygiene": "permissions contents:read (least privilege); concurrency serialized; timeout 45m; synthetic JWT/join-code (never the core secret); one-time operator setup documented in the workflow header"
+  },
+  "non_blocking_notes": [
+    "N-1: createOne endpoint-readiness poll does not fail hard if the host never appears within 30 polls (absorbed by the workflow health-wait loop; disclosed in a comment) — could tighten to an explicit throw",
+    "N-2: PR head 8f6f2fa carries no CI check-runs (verify/hub not PR-triggered); compensated by the local gate re-execution recorded here + CI green on the merged main head d9a48a6 lineage",
+    "N-3: the union verdict intentionally reds the job on any case FAIL (findings filed for R0/R6 disposition) — the honest-first-run-failures design means the daily cron will be red until the disclosed posture-note cases are dispositioned; expected behavior per the PR body"
+  ],
+  "disclosure": "reviewer is non-authoring (PR author = r4b); no self-merge occurred — the merge was executed by r4b under its own delegated authority before this verification began"
+}

@@ -1975,3 +1975,19 @@ Work Log:
 Stage Summary:
 - T-MIG-044 DONE: the CI-side Neon replay runner is merged main infrastructure. Remaining for maiden run (operator-side, one-time): NEON_API_KEY secret + NEON_PROJECT_ID / NEON_PARENT_BRANCH_ID variables (parent = br-muddy-bar-a5huwldd per T-MIG-022 run-001), then dispatch; honest first-run divergences feed R0/R6. Unblocks the standing re-proof conditions on 022/023/024/030/032 and the "replay NOT RUN - env-blocked" register.
 - Lane R4-api-b IDLE after this commit; no other lane-owned register items outstanding.
+
+---
+
+Task ID: R0-ROUND-6C-DRIFT-FIX (w0a housekeeping: T-MIG-038 card flip + T-MIG-044 independent review verification)
+Agent: w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Operator directive trace 1a10d0c303d3852d ("Check if R0 has merged or not. If not, review+merge yourself and continue working") — executed as: state check → R0/delegates had merged EVERYTHING (board zero-open) → independent non-authoring review verification of the last-merged instrument PR #62 (T-MIG-044) → one-card drift fix (T-MIG-038 flip missed by the ROUND-6C pass).
+
+Work Log:
+- Third workspace reset this session (clone/scripts/local worklog/.env lost again; rebuilt anonymously + operator PAT). SYNC FIRST: repo worklog tail + yaml board scan + live PR/CI API reads.
+- T-MIG-002-R collision RESOLVED: r1 (delegated authority trace 1a10cbee26611c61) reviewed #53 line-against-line (APPROVED), merged as 95b8bf3 (CI verify+hub green), closed #51 superseded with r1's own disclosures, flipped the card DONE. w0a's disposition (A) ratified by the merge; authors-never-self-merge honored (r1 non-authoring).
+- INDEPENDENT REVIEW of merged PR #62 (T-MIG-044; non-authoring post-merge verification): corpus integrity PROVEN (golden/runner.ts + golden/cases/** byte-identical head-vs-main, locally + via files API); comparator zero-drift (deepEqualTolerant + loadCases imported from the gated runner.ts); provenance sha256 claims verified BYTE-EXACT (apply-reset.ts body == receipt copy 32fee89dac...; boot wrapper = single path-only import delta as disclosed); gates re-run on head 8f6f2fa (typecheck x4 exit 0, 596/0/13skip/1598 expect, selftest OK); Neon discipline verified in code (COW-only create from the parent VARIABLE, prod never URL-referenced, ::add-mask:: on URIs, drop+404 under if:always() with RESIDUE escalation); read-only proof correctly scoped to tracked files. VERDICT APPROVE — receipt review-verify-w0a.json + on-thread record. r4b's adversarial self-review and this pass AGREE.
+- DRIFT FOUND + FIXED (this commit): T-MIG-038 yaml still IN_REVIEW although PR #60 merged as 2d4a884 (ROUND-6C flip caught 044, missed 038) — flipped DONE with merge provenance. No other drift: T-MIG-033 IN_PROGRESS accurate (r4 owns tranche-2; its gate — the contracts merge #58 — is now satisfied); 041/043 remain operator-routed, NOT self-filed.
+- Process discipline: authored on verified branch main @ f39557d (symbolic-ref checked, not detached); origin/main re-fetched immediately before push; fast-forward only; no force-push.
+
+Stage Summary:
+- Board after this pass: every merged card reflects merged reality; zero open PRs; active work = r4's T-MIG-033 tranche-2 (gate satisfied) + operator-routed register items (PAT rotation, AGENT_BRIEFING env-rehydration note, Wave-4 ports 041/043). w0a STOPS — no self-filed wave work; next word awaited.
