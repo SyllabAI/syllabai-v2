@@ -65,7 +65,7 @@ const REQUIRED_STRING_FIELDS = new Set(["email", "password", "displayName", "cur
  * matches jakarta's per-field constraint order — so issues[0] is the port of
  * the first violation, with the message normalised to Hibernate's defaults.
  *
- * R0 correction (T-MIG-016): live capture proves Hibernate's property
+ * R0 correction (T-MIG-017): live capture proves Hibernate's property
  * traversal does NOT follow the DTO annotation order — both missing-fields
  * captures (auth-login-missing-fields-400, auth-register-missing-fields-400)
  * report the PASSWORD field first. The port therefore ranks issues by the

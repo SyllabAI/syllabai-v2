@@ -8,6 +8,17 @@
  *   - Fail fast: missing secrets abort boot (src/env.ts + identity wiring) —
  *     inherited verbatim from the Java core's boot discipline.
  *
+ * ⚠️ OUT-OF-FENCE COMMIT (T-MIG-016, R0 ratification requested; task
+ * renumbered from T-MIG-014 at push time — ID yielded to PR #13):
+ * T-MIG-016's scope.allowed covers middleware/ratelimit.ts,
+ * services/identity/config.ts (ratelimit block), test/ratelimit/** — NOT this
+ * file. The single change here is the minimal mount wiring the ported filter
+ * needs, disclosed for R0 ratification at review (T-MIG-010 convention):
+ *   6. mount the per-IP RateLimitFilter (deep-audit M1) app-wide AFTER the
+ *      Bearer middleware (SecurityConfig.java:96-99 addFilterAfter
+ *      JwtAuthenticationFilter — the LLM tier keys on the learner identity
+ *      the auth pass resolved) and BEFORE the routers.
+ *
  * ⚠️ OUT-OF-FENCE COMMIT (T-MIG-010, R0 ratification requested):
  * T-MIG-010's scope.allowed covers routes/auth/**, middleware/**,
  * services/identity/**, test/identity/** — NOT this file. The changes here
@@ -29,6 +40,7 @@
 import { Hono } from "hono";
 import { healthRoute } from "./routes/health";
 import { buildIdentityApp } from "./services/identity";
+import { RateLimitFilter } from "./middleware/ratelimit";
 import { buildContentApp } from "./services/content";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
@@ -73,6 +85,24 @@ app.use("*", async (c, next) => {
 // Bearer authentication — parse once, attach context (filter port). Invalid
 // tokens never abort here; protected paths reject via requireAuth/requireRole.
 app.use("*", identity.authMiddleware);
+
+// Per-IP rate limiting (deep-audit 09-28 M1, T-MIG-016) — inside the security
+// chain AFTER the JWT filter (SecurityConfig.java:96-99): the LLM tier keys
+// on the learner identity the auth pass above resolved; auth-tier budgets
+// gate the public identity routes below before any controller work.
+const rl = identity.config.config.ratelimit;
+const rateLimitFilter = new RateLimitFilter({
+  enabled: rl.enabled,
+  windowMs: rl.windowMs,
+  budgets: {
+    loginPerIp: rl.loginPerIp,
+    registerPerIp: rl.registerPerIp,
+    bootstrapPerIp: rl.bootstrapPerIp,
+    passwordPerIp: rl.passwordPerIp,
+    llmPerLearner: rl.llmPerLearner,
+  },
+});
+app.use("*", rateLimitFilter.handle);
 
 // Identity routers (AuthController + BootstrapAdminController). Registration
 // ORDER matters: the routers own their paths first; the fallback below only

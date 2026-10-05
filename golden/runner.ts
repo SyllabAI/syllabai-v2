@@ -218,11 +218,11 @@ if (args.includes("--target")) {
   const cases = loadCases();
   let failures = 0;
   for (const kase of cases) {
-    // R0 fix (T-MIG-016, PR #25 merge-intake): the live-replay path must
-    // apply each case's `tolerate` rules exactly like the selftest does.
-    // This lane's kit delivers the same fix (see provenance note inside
-    // replayAgainst) plus seq/token support - the 3-arg call below is the
-    // subsuming form.
+    // R0 fix (merged via PR #25 as T-MIG-016, re-attributed to T-MIG-017 by
+    // R0 intake 008d64c): the live-replay path must apply each case's
+    // `tolerate` rules exactly like the selftest does. This lane's kit
+    // delivers the same fix (see provenance note inside replayAgainst) plus
+    // seq/token support - the 3-arg call below is the subsuming form.
     const diff = await replayAgainst(target, kase, token);
     if (diff) {
       failures++;

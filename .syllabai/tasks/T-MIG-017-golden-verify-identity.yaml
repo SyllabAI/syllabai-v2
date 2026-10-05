@@ -1,6 +1,6 @@
 version: 1
 task:
-  id: T-MIG-016
+  id: T-MIG-017
   title: "Golden-gate live-replay verification of T-MIG-010 + gate hardening (R0, operator check-in)"
   owner: "R0-integrator (operator-delegated: 'verify T-MIG-010 replays green against all 16 identity golden cases')"
   status: DONE # 2026-10-05: 16/16 identity golden cases verified (13/16 verbatim + 4/4 state-aware, union complete); 4 genuine defects found by the gate and fixed in-pass (F-1..F-4); baseline defect F-5 filed for T-MIG-002
@@ -36,6 +36,14 @@ task:
     user_roles FK — NOT fixed here, filed for T-MIG-002/R2 (workarounds used
     locally: wrapper stripped, broken indexes skipped, roles seeded).
     All fixes carry updated unit pins; suite green post-fix.
+    RENUMBER 2026-10-05 (R0-REPAIR-1): task renumbered T-MIG-016 ->
+    T-MIG-017 by R0 housekeeping per §2.1 earliest-claim — the
+    RateLimitFilter port (PR #21) claimed T-MIG-016 at 05:23:58Z
+    (branch-start b1f63b4); this task's claim is 1f6186f @ 06:31:36Z.
+    Receipts dir moved byte-identical (sha256 re-verified at commit
+    time); code refs renumbered; full timeline in
+    .syllabai/receipts/T-MIG-017/run-002-renumber.json. Status DONE
+    unchanged; no gate re-runs needed (bookkeeping only).
 base:
   repo: "syllabai-v2 @ 67639db; golden set = T-MIG-003 identity cases; docs/GOLDEN_MASTER.md §4/§5"
 basis: >
@@ -52,7 +60,7 @@ scope:
     - "packages/contracts/src/auth.ts (email message, F-3) — out-of-fence micro-fix, R0-ratified with receipt"
     - "apps/api/src/routes/auth/index.ts (F-4 traversal order)"
     - "apps/api/test/**, unit pins updated to captured expectations"
-    - ".syllabai/receipts/T-MIG-016/**, .syllabai/tasks/T-MIG-016*.yaml"
+    - ".syllabai/receipts/T-MIG-017/**, .syllabai/tasks/T-MIG-017*.yaml"
   forbidden:
     - "production Neon writes (none — fully local verification)"
     - "deleting or weakening any golden case (none touched)"

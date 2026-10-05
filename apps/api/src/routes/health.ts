@@ -1,7 +1,7 @@
 /**
  * GET /actuator/health — path AND payload parity with the Java core.
  *
- * R0 fix (T-MIG-016): the seed served the bare {"status":"UP"} shape, but
+ * R0 fix (T-MIG-017): the seed served the bare {"status":"UP"} shape, but
  * the frozen core actually serves {"groups":["liveness","readiness"],"status":"UP"}
  * — captured verbatim from the Render core by T-MIG-003 run-001 and pinned as
  * golden case `actuator-health-parity` (justified:true). The golden gate is

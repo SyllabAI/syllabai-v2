@@ -72,7 +72,7 @@ export const isJakartaEmail = (value: string): boolean => {
 };
 
 /** @Email @NotBlank (register email adds @Size(max=254) — login does not).
- *  R0 (T-MIG-016): message text pinned to Hibernate's @Email default as
+ *  R0 (T-MIG-017): message text pinned to Hibernate's @Email default as
  *  captured live from the frozen core (golden auth-register-bad-email-400):
  *  "must be a well-formed email address". */
 const jakartaEmailSchema = (max: number | undefined) =>
