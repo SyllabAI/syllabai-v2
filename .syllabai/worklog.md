@@ -1459,3 +1459,16 @@ Work Log:
 
 Stage Summary:
 - Plan: in-repo codemod (render_fixes.ts) + F2 preflight + repo-resident 579/579 parity checker + pinned-toolchain recipe (kit 0.31.11 + orm 0.45.3 + @neondatabase/serverless 1.2.0; Neon COW-branch-only, drop after) + bun tests; package.json NEVER touched (flag only). Live pull deferred — zero production Neon contact, no COW DSN in sandbox.
+---
+Task ID: T-MIG-002-R (execution complete — reroute trace 1a10c9d1ef9ebbe1, cont.)
+Agent: R1-contracts session (Super Z, session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Implement F2/F3 repair and deliver the repo-resident re-baseline path.
+
+Work Log:
+- packages/db/scripts/rebaseline/ (FENCE EXTENSION declared): render_fixes.ts (F3 codemod: empty-default law x5 + unknown->shim law x3 + import synthesis; idempotent; refuses-to-guess), preflight_f2.ts (declared-pair verdict KNOWN_BAD both modes + expression:null crash-shape detector; report-only), verify_parity.ts (living columns.parity gate), 13 colocated bun tests, README recipe (pinned trio kit 0.31.11 + orm 0.45.x + @neondatabase/serverless 1.2.0).
+- Proofs: raw-kit fixture -> canonical bytes; idempotence; checked-in baseline fixed point (0 pending sites); REVERSED-FIX ROUND-TRIP byte-identity (codemod reproduces the baseline from raw-kit shape) — D1 "repair-friendliness unproven" closed deterministically. CLI parity: 62/62 tables, 579/579 columns, 62 literal-default comparisons, 0 mismatches, PASS. Snapshot scan: 87 indexes, 11 partial, 0 crash-shape columns.
+- src/schema/README.md procedure + renderer-fix sections now reference the in-repo tools. packages/db/package.json UNTOUCHED (F2 realignment flagged for owner). No live pull: zero production Neon contact, no COW DSN in sandbox (live re-pull documented as operator/R2-db step, drop-after).
+- GATES: typecheck x4 clean; bun test apps/api packages = 498 pass / 0 fail / 13 skip / 1298 expects (base 485/1259 + 13/39, arithmetic exact); golden selftest OK. Receipts run-002-claim-r1.json + run-003-execution.json; card status -> IN_REVIEW with execution_record added.
+
+Stage Summary:
+- T-MIG-002-R IN_REVIEW on branch t-mig-002r/r1, PR opened with fence-extension declaration; independent review requested; HOLD for R0 merge-intake. Next lane per same directive: T-MIG-042-PREP (Vercel Cron scaffold, NightlyDecayJob, NO decay port).

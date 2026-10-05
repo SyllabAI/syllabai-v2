@@ -1,0 +1,18 @@
+import { pgTable, uuid, varchar, timestamp, text } from "drizzle-orm/pg-core"
+import { sql } from "drizzle-orm"
+import { bytea, tsvector } from "./custom_types"
+
+export const widgetNotes = pgTable("widget_notes", {
+	id: uuid().primaryKey().notNull(),
+	remark: varchar("remark", { length: 80 }).default('').notNull(),
+	// TODO: failed to parse database type 'bytea'
+	bytes: bytea("bytes").notNull(),
+	note: text("note"),
+	createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
+})
+
+export const chunkShadows = pgTable("chunk_shadows", {
+	id: uuid().primaryKey().notNull(),
+	// TODO: failed to parse database type 'tsvector'
+	contentTsv: tsvector("content_tsv").generatedAlwaysAs(sql`to_tsvector('english'::regconfig, content)`),
+})

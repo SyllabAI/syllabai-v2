@@ -1,0 +1,39 @@
+{
+  "id": "T-MIG-002-R",
+  "kind": "execution",
+  "run": "run-003-execution",
+  "ts": "2026-10-05T12:0xZ",
+  "agent": "R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "branch": "t-mig-002r/r1",
+  "routing": "operator reroute trace 1a10c9d1ef9ebbe1 (claim ratified 5992957156; PR #44 = claim card)",
+  "deliverables": [
+    "packages/db/scripts/rebaseline/render_fixes.ts — F3 codemod, in-repo port of the D1 script (empty-default law x5 baseline sites; unknown->shim law x3 + import synthesis; idempotent; refuses-to-guess errors on unannotated unknown( and dangling TODOs)",
+    "packages/db/scripts/rebaseline/preflight_f2.ts — F2 preflight: declared-pair verdict (KNOWN_BAD, both failure modes: gel-core hard-import; null-expression squasher ZodError) + expression:null crash-shape detector; REPORT-ONLY, package.json never edited",
+    "packages/db/scripts/rebaseline/verify_parity.ts — living 579/579 columns.parity gate (runtime schema module vs snapshot: table set, column names, notNull, literal defaults)",
+    "packages/db/scripts/rebaseline/{render_fixes,preflight_f2,verify_parity}.test.ts — 13 tests",
+    "packages/db/scripts/rebaseline/README.md — pinned-toolchain recipe + full re-baseline procedure",
+    "packages/db/src/schema/README.md — renderer-fixes + procedure sections now reference the in-repo tools"
+  ],
+  "proofs": {
+    "fixture_roundtrip": "raw kit-0.31.11 fragment -> canonical bytes (byte-equal to expected fixture)",
+    "idempotence": "second codemod pass = 0 sites",
+    "fixed_point": "checked-in schema.ts = 0 pending sites (repair-friendliness proven)",
+    "reversed_fix_roundtrip": "reintroducing all 8 defect shapes into the checked-in baseline then applying the codemod restores BYTE-IDENTICAL text — the codemod reproduces the baseline exactly",
+    "columns_parity": "62/62 tables, 579/579 columns, 62 literal-default comparisons, 0 mismatches — CLI prints columns.parity: PASS",
+    "crash_shape_scan": "checked-in snapshot: 87 indexes, 11 partial (8 null-flavored + 3 value-predicate), 0 crash-shape columns"
+  },
+  "gates": {
+    "typecheck": "x4 clean (packages/contracts, packages/shared, packages/db, apps/api)",
+    "bun_test": "498 pass / 0 fail / 13 skip across 34 files; 1298 expect() calls",
+    "arithmetic": "main base 485 pass / 1259 expects + 13 new tests / 39 new expects = 498 / 1298 (exact)",
+    "golden_selftest": "OK (tolerance engine behaves, incl. declared-unordered multiset — T-MIG-024)"
+  },
+  "fence_extension_declared": "packages/db/scripts/** (NEW) — per card scope.allowed '(NEW: re-baseline tool recipe, if needed — fence extension to be declared at PR time)'",
+  "boundaries_respected": {
+    "packages_db_package_json": "UNTOUCHED (F2 realignment flagged for package owner in preflight output + README)",
+    "generated_schema_files": "UNTOUCHED this run (no live pull executed; the codemod's ability to reproduce them is proven by fixed-point + round-trip tests instead)",
+    "neon": "zero production contact; no COW-branch DSN in sandbox; live re-pull documented as operator/R2-db step (drop-after)",
+    "apps": "untouched"
+  },
+  "next": "PR t-mig-002r/r1 -> main with fence-extension declaration; independent review requested; hold for R0 merge-intake. Then T-MIG-042-PREP per the same operator directive."
+}

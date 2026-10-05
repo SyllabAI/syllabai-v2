@@ -3,10 +3,40 @@ task:
   id: T-MIG-002-R
   title: "Baseline-SQL repair follow-up — make the T-MIG-002 baseline re-runnable: reconcile the scripted kit-0.31.11 renderer fixes (F3: .default('') x5, bytea/tsvector customType shims x3) and the null-expression index squash crash (F2) into a reproducible re-baseline procedure"
   owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — claimed under the operator DRAIN CYCLE directive (all lanes), the only zero-collision item of the drain queue (W2-F1 -> PR #42, W2-F2/F-1/F-3 -> T-MIG-023 PRs #38/#41, W2-F3 -> T-MIG-024 PR #37 all claimed by other lanes at claim time 2026-10-05T09:1xZ)"
-  status: IN_PROGRESS # claimed 2026-10-05T09:1xZ (w0a; claim receipt run-001-claim.json on branch t-mig-002r/w0a; execution begins on the operator's next word) — OPERATOR REROUTE 2026-10-05 trace 1a10c9d1ef9ebbe1: execution moved to R1-contracts session web-ab7a0483-4415-4f31-ad16-b00a0e10053e; w0a verified idle at merged-claim ef898b648 (== #44 intake, ancestor of main; zero pushed implementation; ls-remote this round); execution branch t-mig-002r/r1, claim receipt run-002-claim-r1.json (owner field intentionally untouched — card edit scope is status/execution_record only)
+  status: IN_REVIEW # work complete 2026-10-05 (branch t-mig-002r/r1; execution receipt run-003-execution.json; PR t-mig-002r/r1 -> main; FENCE EXTENSION packages/db/scripts/** declared at PR time; repair goal delivered in-repo: F3 codemod + F2 preflight + living 579/579 parity gate; no live pull — zero production Neon contact; package.json untouched, F2 realignment flagged) — claimed 2026-10-05T09:1xZ (w0a; claim receipt run-001-claim.json on branch t-mig-002r/w0a) — OPERATOR REROUTE 2026-10-05 trace 1a10c9d1ef9ebbe1: execution moved to R1-contracts session web-ab7a0483-4415-4f31-ad16-b00a0e10053e; w0a verified idle at merged-claim ef898b648 (== #44 intake, ancestor of main; zero pushed implementation; ls-remote this round); claim receipt run-002-claim-r1.json (owner field intentionally untouched — card edit scope is status/execution_record only)
   priority: P1
   wave: 0 # follow-up on the wave-0 baseline
   deps: [T-MIG-002]
+  execution_record: >
+    R1-EXECUTION 2026-10-05 (operator reroute trace 1a10c9d1ef9ebbe1; branch
+    t-mig-002r/r1; claim run-002-claim-r1.json; execution receipt
+    run-003-execution.json). REPAIR GOAL DELIVERED IN-REPO.
+    packages/db/scripts/rebaseline/ now carries: (1) render_fixes.ts — the F3
+    codemod ported in-repo (empty-string default law — 5 baseline sites;
+    unknown->bytea/tsvector shim law — 3 sites + import synthesis; idempotent;
+    refuses to guess on unannotated unknown( sites); (2) preflight_f2.ts — the
+    F2 preflight (declared-pair verdict kit ^0.30.0 + orm ^0.38.0 = KNOWN_BAD
+    with both failure modes; expression:null crash-shape detector over meta
+    snapshots; REPORT-ONLY — package.json never touched); (3) verify_parity.ts
+    — the 579/579 columns.parity check as a LIVING gate (runtime generated
+    schema imported and compared against the snapshot: 62/62 tables, 579/579
+    columns, 62 literal-default comparisons, 0 mismatches); (4) 13 colocated
+    bun tests proving raw-kit fixture -> canonical bytes, idempotence,
+    checked-in-baseline fixed point (0 pending sites), and REVERSED-FIX
+    ROUND-TRIP byte-identity — the codemod reproduces the checked-in baseline
+    exactly from raw-kit shape, closing the D1 "repair-friendliness unproven"
+    gap deterministically; (5) README.md with the pinned-toolchain recipe
+    (D1-proven trio: kit 0.31.11 + orm 0.45.x + @neondatabase/serverless
+    1.2.0) and the full procedure. src/schema/README.md procedure section now
+    references the in-repo tools. GATES on head: typecheck x4 clean; bun test
+    apps/api packages = 498 pass / 0 fail / 13 skip / 1298 expects (base
+    485/1259 + 13 tests/39 expects — arithmetic exact); golden selftest OK.
+    FENCE EXTENSION DECLARED at PR time: packages/db/scripts/** (NEW, per
+    scope.allowed). NO live pull executed — zero production Neon contact; no
+    COW-branch DSN in this sandbox; the live re-pull is documented as the
+    operator/R2-db step with drop-after discipline. packages/db/package.json
+    UNTOUCHED (F2 realignment flagged for the package owner in preflight
+    output + README).
   provenance: >
     Standing R0 register item ("T-MIG-002 baseline-SQL repair" — R0-SWEEP-2
     follow-up register; recurring in R0-SWEEP-2/3 board lines) + explicit
