@@ -89,3 +89,32 @@ task:
     BLOCKER B-1 recurrence: no PAT in env at drain time — push of intake
     head + PR #38 body update pending operator PAT (single-invocation
     chain ready).
+
+    INTAKE-2 2026-10-05T09:59:37Z (operator unblock directive, trace
+    1a10b7c3d90bc161; receipt run-004-intake2.json): main moved
+    0cd360b -> 77359e7 (PR #40: T-MIG-032 tranche-1 selfmark/smartmark;
+    R0-COLLISION-1 d658647). MERGE-INTAKE-2 ec6cda8 (parents 97f9bd2 +
+    77359e7): trial-merge again EXACTLY ONE conflict (.syllabai/worklog.md);
+    union = main's 1261 lines verbatim (insertions-only, 0 deletions) + my
+    44-line T-MIG-023 tail re-appended; both sides byte-verified; ZERO code
+    overlap. GATES on ec6cda8: typecheck x4 exit 0; bun test 419 pass / 0
+    fail / 13 skip (432 total = 392 + main's +27 T-MIG-032 tranche-1 —
+    arithmetic exact); golden selftest OK.
+    ARBITRATION INTEL (d658647 R0-COLLISION-1): R0 mechanically ruled the
+    W2-F3 double-claim by claim-commit timestamp (T-MIG-024/PR #37 beat
+    R0's own T-MIG-036; #45 closed, branch deleted) and FORMALLY QUEUED the
+    T-MIG-023 double-claim (#38 vs #41) + the F-1 three-PR scope overlap
+    (#42 vs #38/#41) for the next pass "by claim-commit timestamps". This
+    lane's claim commit d92cd10 author-date 2026-10-05T08:14:41Z (pushed
+    08:31:04Z) vs r3a's 375ff3e author-date 08:35:07Z — earliest by 20m26s
+    under the exact precedent R0 just applied. R7a's T-MIG-032 claim entry
+    on main already attributes 023 to r1 ("023/024/035 filed by r1/r4/w0a").
+    HOLD FOR R0 per operator directive — no self-merge.
+    BLOCKER B-1 (still open at 09:59:37Z): NO credential in this session's
+    env or files (GITHUB_PAT/GITHUB_TOKEN/GH_TOKEN all unset; no
+    ~/.git-credentials, ~/.netrc, gh hosts; no credential.helper). The
+    prior PAT's value is not recoverable here (env-injected transient per
+    credential law; lost to context compaction, never persisted). Push +
+    PR #38 body update + review-request comment are FULLY STAGED in the
+    single-invocation script scripts/tmig023_push_and_update_pr.sh —
+    executes the moment a live token appears in GITHUB_PAT (or equivalent).
