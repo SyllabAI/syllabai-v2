@@ -514,3 +514,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-020 now has TWO independent implementations in flight: R3-api-a's services-first tranche-1 on t-mig-020/r3 (remote-first, binds to unmerged T-MIG-005 / PR #18) and r3-c's complete contracts-first port on t-mig-020/r3c (all executable gates green locally; 151 tests; 25-case parity map). Arbitration and any reconciliation belong to R0. NEON_PAT note: provisioned to the lane, but this sandbox cannot resolve api.neon.tech (DNS) — live golden replay stays PENDING.
+
+---
+Task ID: R0-ARBITRATION-1 (T-MIG-020 dual-implementation collision + T-MIG-005 contracts overlap; PR #22 merge)
+Agent: R0-acting (Super Z, session web-1f157e25-0ed7-4f18-8956-3b2a993bc646; operator-delegated, mode: choose implementation)
+Task: Arbitrate the two collisions disclosed in PR #22; merge the chosen implementation; record all dispositions.
+
+Work Log:
+- Operator delegation received 2026-10-05 (IM session, trace 1a10aad1692b3075): "Review PR #22 as operator/R0 and arbitrate the two collisions (choose implementation or guideline reconciliation); implementation". COI disclosed: acting-R0 is the author lane of PR #22 (r3-c); the ruling is reversible by the operator alone.
+- Arbiter-side verification (not taken from the author's receipt): gates re-run green — typecheck x4 exit 0; bun test 151 pass / 0 fail / 13 skip (Neon tiers self-skip); golden --selftest OK. Law scans clean: 16 files in-fence except the declared OUT-OF-FENCE mounts; zero golden/ or packages/db/ touches; zero secret patterns; zero unscrubbed PII.
+- Collision 1 (duplicate claim of T-MIG-020): AGENT_COORDINATION section 2 rule 1 applied — earliest claim wins. r3-c f5773bc @ 05:17:00Z precedes R3-api-a e50a63f @ 05:42:41Z. Completeness concurs: PR #22 ships the full read-surface port (contracts + services + routes + tests + 25-case parity map, +3610) vs tranche-1 services-only (+1062, deps on unmerged T-MIG-005). VERDICT: PR #22 implementation proceeds; MERGED as a3c65d8; OUT-OF-FENCE mounts (3 route lines + comment, T-MIG-010 precedent) RATIFIED.
+- Collision 2 (contracts): packages/contracts/src/content.ts from PR #22 is CANONICAL. Direction to r1 (also recorded as a PR #18 comment): T-MIG-005 proceeds with the non-overlapping portions only (curriculum.ts, errors.ts, auth.ts tweak, curriculum tests); content.ts + content.test.ts superseded; a follow-up contracts task may ADD missing envelope schemas (uuidPathSchema, response envelopes) to the canonical file when a write-surface wave needs them (extend, never replace).
+- R3-api-a disposition: branch t-mig-020/r3 preserved unmerged as the reference alternative (no force-push, no deletion); their yaml (T-MIG-020-content-read-port.yaml) and worklog entries never landed on main, so the claim is honored in this record and in the ruling receipt; appeal path = operator.
+
+Stage Summary:
+- Board: T-MIG-020 -> DONE (merged a3c65d8). T-MIG-005 scope narrowed to non-overlapping contracts (r1 to rebase PR #18). Ruling receipt: .syllabai/receipts/R0-arbitration/ruling1-t-mig-020.json. PENDING (non-blocking): live golden replay of the 25 owned cases + 9 content integration tests on a Neon-capable session (sandbox DNS cannot resolve api.neon.tech; NEON_PAT provisioned).

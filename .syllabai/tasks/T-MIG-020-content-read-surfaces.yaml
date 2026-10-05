@@ -6,7 +6,7 @@ task:
     review/audit/provenance + question topics read + learner citation reader
     + question assets"
   owner: "r3-c (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
-  status: IN_REVIEW  # PR open ("T-MIG-020: port content read surfaces (Wave 2)"); receipts attached; see execution_record 2026-10-05 unblock addendum
+  status: DONE  # merged via PR #22 (a3c65d8) — acting-R0 arbitration 2026-10-05; evidence: receipts/T-MIG-020/run-001-local-verify.json + receipts/R0-arbitration/ruling1-t-mig-020.json
   claimed_at: "2026-10-05T21:35Z"
   priority: P1
   wave: 2
@@ -52,6 +52,14 @@ task:
     above). No force-push; this lane's push moves to t-mig-020/r3c; full
     disclosure in the PR; arbitration requested from R0. (claimed_at above
     is a TZ authoring error; authoritative instant = f5773bc 05:17:00Z.)
+    2026-10-05 (R0 RULING) acting-R0: collision 1 — earliest claim wins
+    (AGENT_COORDINATION §2 R1): this lane (f5773bc 05:17:00Z) over
+    R3-api-a (e50a63f 05:42:41Z); completeness concurs; PR #22 MERGED as
+    a3c65d8, OUT-OF-FENCE mounts RATIFIED (T-MIG-010 precedent).
+    Collision 2 — this lane's content.ts is CANONICAL; T-MIG-005 (PR #18)
+    proceeds with non-overlapping files only. R3-api-a's t-mig-020/r3
+    preserved unmerged as reference alternative; appeal path = operator.
+    Full ruling: .syllabai/receipts/R0-arbitration/ruling1-t-mig-020.json.
   base:
     repo: "syllabai-v2 @ 67639db at claim time; frozen refs: syllabai-core @
       main (content/ContentDocumentController.java, content/
