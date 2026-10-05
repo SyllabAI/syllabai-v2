@@ -4,10 +4,17 @@
  *
  * Wire parity contract (R-JWT — Java-issued tokens MUST verify here and
  * vice versa, through cutover and the catch-up window):
- *   - alg HS256, signing key = RAW secret bytes (HMAC-SHA-256 over
- *     `${b64url(header)}.${b64url(claims)}`), exactly jjwt's
+ *   - HMAC signing, key = RAW secret bytes — exactly jjwt's
  *     `Keys.hmacShaKeyFor(secret.getBytes())` + `signWith(key)`.
- *   - jjwt 0.13 emits header {"alg":"HS256"} (no typ) — we emit the same.
+ *     jjwt selects the alg BY KEY SIZE (HmacSHA alg family):
+ *       ≥64 bytes → HS512, ≥48 bytes → HS384, ≥32 bytes → HS256.
+ *     The class doc on the frozen file says "HS256" but the DEPLOYED core
+ *     signs with the key-size-selected alg — golden capture (T-MIG-003,
+ *     case auth-register-success-201 description) decoded the real token
+ *     as HS384, proving the deployed secret is 48–63 bytes. The port
+ *     mirrors the selection; parse accepts the whole HmacSHA family and
+ *     rejects everything else (jjwt's verifyWith(key) semantics).
+ *   - jjwt emits the chosen alg in the header (no typ) — same here.
  *   - Claims (jjwt builder order irrelevant; names binding):
  *       sub   = user email
  *       jti   = user UUID (also duplicated as uid — the filter reads uid)
@@ -29,6 +36,17 @@
  *     service anyway; treated as invalid here for symmetry.
  */
 import { createHmac, timingSafeEqual } from "node:crypto";
+
+type HmacAlg = "HS256" | "HS384" | "HS512";
+
+const ALG_BY_KEY_BYTES = (bytes: number): HmacAlg =>
+  bytes >= 64 ? "HS512" : bytes >= 48 ? "HS384" : "HS256";
+
+const DIGEST_BY_ALG: Record<HmacAlg, string> = {
+  HS256: "sha256",
+  HS384: "sha384",
+  HS512: "sha512",
+};
 
 export type Role = "STUDENT" | "TEACHER" | "ADMIN";
 
@@ -63,6 +81,7 @@ export function parseIsoDuration(value: string): number {
 
 export class JwtService {
   private readonly key: Buffer;
+  private readonly alg: HmacAlg;
   private readonly ttlSeconds: number;
 
   constructor(secret: string, ttl = "PT2H") {
@@ -73,6 +92,8 @@ export class JwtService {
       );
     }
     this.key = Buffer.from(secret, "utf8");
+    // jjwt Keys.hmacShaKeyFor: alg is chosen by key size, not fixed.
+    this.alg = ALG_BY_KEY_BYTES(Buffer.byteLength(secret));
     this.ttlSeconds = parseIsoDuration(ttl);
   }
 
@@ -88,7 +109,7 @@ export class JwtService {
   }): string {
     const now = Math.floor(Date.now() / 1000);
     const exp = now + this.ttlSeconds;
-    const header = Buffer.from(JSON.stringify({ alg: "HS256" })).toString("base64url");
+    const header = Buffer.from(JSON.stringify({ alg: this.alg })).toString("base64url");
     const payload = Buffer.from(
       JSON.stringify({
         sub: user.email,
@@ -101,7 +122,7 @@ export class JwtService {
       }),
     ).toString("base64url");
     const sig = Buffer.from(
-      createHmac("sha256", this.key).update(`${header}.${payload}`).digest(),
+      createHmac(DIGEST_BY_ALG[this.alg], this.key).update(`${header}.${payload}`).digest(),
     ).toString("base64url");
     return `${header}.${payload}.${sig}`;
   }
@@ -113,7 +134,20 @@ export class JwtService {
     const [header, payload, sig] = parts as [string, string, string];
     if (!header || !payload || !sig) throw new JwtException("malformed token");
 
-    const expected = createHmac("sha256", this.key)
+    let headerJson: { alg?: string };
+    try {
+      headerJson = JSON.parse(Buffer.from(header, "base64url").toString("utf8"));
+    } catch {
+      throw new JwtException("malformed header");
+    }
+    const alg = headerJson.alg;
+    if (alg !== "HS256" && alg !== "HS384" && alg !== "HS512") {
+      // jjwt verifyWith(key) accepts only the HmacSHA family matching the
+      // key; anything else ("none", RS*, unknown) is invalid.
+      throw new JwtException("unsupported alg");
+    }
+
+    const expected = createHmac(DIGEST_BY_ALG[alg], this.key)
       .update(`${header}.${payload}`)
       .digest();
     let provided: Buffer;
@@ -160,7 +194,7 @@ export class JwtService {
       }
     }
 
-    const rawRoles = claims.roles ?? [];
+    const rawRoles = claims.broles ?? claims.roles ?? [];
     if (!Array.isArray(rawRoles)) throw new JwtException("invalid roles claim");
     const roles: Role[] = [];
     for (const r of rawRoles) {

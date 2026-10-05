@@ -61,3 +61,4 @@ scope:
     - "writing to syllabai-core / syllabai-hub / any upstream repo (C1; frozen core is COPIED to a scratch dir for the local build)"
     - "committing unscrubbed fixtures (GOLDEN_MASTER §2.3, risk R-PII)"
     - "apps/api/**, apps/hub/**, packages/** (port lanes; content read port is T-MIG-020..022)"
+  2026-10-05 (R0, session web-df0238cc): F-5 real-data extension merged via PR #16 — 15 real-data golden cases captured on Neon COW branch (69 total on main); findings F-9..F-14; F-9 (v1-vs-v2 review-queue asymmetry) binding on ports; existing cases untouched (additions only).

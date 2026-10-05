@@ -1,0 +1,47 @@
+{
+  "task": "T-MIG-006",
+  "run": "run-001-claim",
+  "timestamp": "2026-10-05T06:08:30Z",
+  "agent": "R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "action": "self-filed + claimed the write-flow contracts prerequisite (role-vacancy, §2.1 branch-start claim commit; id-ratification requested per T-MIG-013/005 precedent)",
+  "operator_directive": "IM trace 1a10aa5d3ca4eb61 2026-10-05: 'watch PR #18 for R0's review/merge. Check, claim and continue to work.' Second-lane disclosure: T-MIG-005 (same agent) IN_REVIEW — fences disjoint, disclosed in yaml owner field; R0 may sequence or decline.",
+  "board_survey": {
+    "main": "67639db (unmoved)",
+    "open_prs": {
+      "20": "t-mig-020/r3a — T-MIG-020 content read surfaces, IN_REVIEW, 25/25 live replay",
+      "19": "t-mig-021/r7a — T-MIG-021 curriculum port, claim-only",
+      "18": "t-mig-005/r1 — T-MIG-005 wave-2 content-read contracts (this lane), CI verify+hub SUCCESS @ 9a99790, mergeable clean, no review yet",
+      "17": "r7/wave2-prep — R7 read-only claim-prep dossier (T-MIG-020..022)",
+      "16": "t-mig-004/w0a-ext — F-5 real-data golden extension, 15 cases",
+      "15": "t-mig-014/r1 — per-IP RateLimitFilter (M1), IN_REVIEW",
+      "14": "t-mig-015/r7a — reference docs drift fix (renumbered from T-MIG-014), IN_REVIEW",
+      "13": "t-mig-014/r3a — URL-dispatched db driver dispatch, IN_REVIEW",
+      "12": "t-mig-013/r3 — identity golden-gate hardening, IN_REVIEW"
+    },
+    "collisions_and_rulings_needed": {
+      "T-MIG-020": "r3a claimed_at 2026-10-05T05:23:50Z (PR #20) vs r3 claimed_at 2026-10-05T05:41:57Z (IN_PROGRESS tranche-1) — earliest-claim-wins favors r3a; R0 arbitrates",
+      "T-MIG-014": "three-way id collision — PR #13 (db-driver, claimed 11:08:05+06:00) vs PR #15 (ratelimit) vs 015/r7a (yielded, renumbered to T-MIG-015)",
+      "T-MIG-022": "R7 dossier proposed teacher-content+question-assets split, but r3a's 020 (26 content cases incl. review queues + question assets) + 021 (12 curriculum cases) absorb the full 38-case read surface — 022 needs an R0 call, not a new claim; this lane deliberately does NOT touch 020..022"
+    },
+    "write_surface_state": "PR #20 route layer ships honest 501s for every ContentController/ContentDocumentController write surface, each 501 body naming 'the T-MIG-020 write-surfaces follow-up; tracked in the task execution_record' — no yaml anywhere claims the contracts prerequisite for that follow-up"
+  },
+  "pre_claim_gate_verification": {
+    "note": "re-executed at branch point t-mig-005/r1 @ 9a99790 (005's own gates already exit-captured in run-002-work.json); contracts tree green before stacking",
+    "contracts_typecheck": "exit 0",
+    "contracts_tests": "69 pass / 0 fail",
+    "repo_typecheck_x4": "exit 0",
+    "bun_test": "141 pass / 4 skip / 0 fail",
+    "golden_selftest": "OK"
+  },
+  "plan_of_work": [
+    "raw-read (C1) write endpoints + request/response DTOs + jakarta.validation annotations from frozen syllabai-core @ 6cad6ef: teacher/ContentController.java, content/ContentDocumentController.java (+ verify TeacherCurriculumController has no writes; + assessment entities ExamPaper/MarkScheme/Question/QuestionVersion for enum + nested shapes)",
+    "port to packages/contracts/src/content-writes.ts (ingest/embed, validate/reject/flag/unflag, place, topic-mapping writes, scheme criteria), constraint-for-constraint with source-file headers, reusing 005 enums + binding mirrors + error envelopes",
+    "pin tests from Java-declared shapes (no golden write captures exist): positive pins for declared valid shapes + negative pins for Java-rejected inputs (blank @NotBlank, bad enum values, malformed uuids, oversized fields)",
+    "diff review vs Java DTOs — never widen (§7)",
+    "gates: contracts typecheck/tests + repo typecheck x4 + bun test + golden selftest; receipts + worklog; push; PR (stacked, base t-mig-005/r1)"
+  ],
+  "fences": {
+    "allowed": ["packages/contracts/src/**", "this yaml", ".syllabai/receipts/T-MIG-006/**", ".syllabai/worklog.md appends"],
+    "forbidden": ["apps/**", "packages/db/**", "golden/**", "syllabai-core/syllabai-hub writes (C1)", "any Neon connection", "zod schema widening", "T-MIG-020/021/022 ids and scopes"]
+  }
+}

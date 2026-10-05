@@ -69,7 +69,7 @@ async function replayAgainst(target: string, kase: GoldenCase): Promise<string |
     body = "<non-json>";
   }
   const statusOk = res.status === kase.expect.status;
-  const bodyOk = deepEqual(kase.expect.body, body);
+  const bodyOk = deepEqualTolerant(kase.expect.body, body, kase.tolerate ?? []);
   if (statusOk && bodyOk) return null;
   return `status ${res.status} vs ${kase.expect.status}; body ${JSON.stringify(body)} vs ${JSON.stringify(kase.expect.body)}`;
 }
@@ -106,6 +106,11 @@ if (args.includes("--target")) {
   const cases = loadCases();
   let failures = 0;
   for (const kase of cases) {
+    // R0 fix (T-MIG-017): the live-replay path must apply each case's
+    // `tolerate` rules exactly like the selftest does. The previous code
+    // used the byte-strict deepEqual here, making every case with a
+    // volatile field (e.g. ApiError.timestamp) permanently unpassable —
+    // the false-failure mirror of the false-confidence trap §5 warns about.
     const diff = await replayAgainst(target, kase);
     if (diff) {
       failures++;

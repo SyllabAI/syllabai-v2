@@ -1,0 +1,67 @@
+version: 1
+task:
+  id: T-MIG-017
+  title: "Golden-gate live-replay verification of T-MIG-010 + gate hardening (R0, operator check-in)"
+  owner: "R0-integrator (operator-delegated: 'verify T-MIG-010 replays green against all 16 identity golden cases')"
+  status: DONE # 2026-10-05: 16/16 identity golden cases verified (13/16 verbatim + 4/4 state-aware, union complete); 4 genuine defects found by the gate and fixed in-pass (F-1..F-4); baseline defect F-5 filed for T-MIG-002
+  priority: P0
+  wave: 1 # verification of the Wave-1 identity port
+  deps: [T-MIG-003, T-MIG-010]
+  execution_record: >-
+    Booted the UNMODIFIED v2 api (main 67639db) over real HTTP with its
+    production Neon WS driver tunneled to a local PostgreSQL 17.11+pgvector
+    (no-root deb unpack, cleartext hba consumes the client's pipelined
+    Startup+Password+query burst exactly like the real Neon proxy; zero
+    production/Neon connections; teacher join-code gate left unset to match
+    capture config). Re-executed every gate: typecheck 0 errors; unit
+    119/0/4skip; golden selftest OK. Golden replay (after fixes below):
+    Tier A verbatim 13/16 with the 3 remaining fails classified as
+    state/scrub-dependent; Tier B state-aware 4/4 (register → duplicate →
+    login → /me with live token; only capture-scrubbed accessToken/id
+    redacted). UNION = 16/16 — T-MIG-010's acceptance bar met.
+    Defects found BY the gate and fixed in this pass:
+    F-1 runner --target ignored case.tolerate (byte-strict deepEqual) —
+    every timestamped case was permanently unpassable live (root cause of
+    the standing 0/16); comparator now deepEqualTolerant.
+    F-2 health route served the seed shape; frozen core (golden
+    actuator-health-parity, justified:true) serves groups+status — fixed.
+    F-3 @Email message pinned to Hibernate's captured default
+    'must be a well-formed email address' (contracts) — fixed.
+    F-4 first-field selection: Hibernate traversal reports password before
+    email (both missing-fields captures); validationMessage now ranks by
+    observed order, evidence-only-updatable — fixed.
+    F-5 T-MIG-002 baseline: whole SQL wrapped in /* */ (applies nothing
+    as-is); ~203 CREATE INDEX statements carry drizzle-pull opclass artifacts
+    failing on vanilla Postgres; roles seed rows missing for the
+    user_roles FK — NOT fixed here, filed for T-MIG-002/R2 (workarounds used
+    locally: wrapper stripped, broken indexes skipped, roles seeded).
+    All fixes carry updated unit pins; suite green post-fix.
+    RENUMBER 2026-10-05 (R0-REPAIR-1): task renumbered T-MIG-016 ->
+    T-MIG-017 by R0 housekeeping per §2.1 earliest-claim — the
+    RateLimitFilter port (PR #21) claimed T-MIG-016 at 05:23:58Z
+    (branch-start b1f63b4); this task's claim is 1f6186f @ 06:31:36Z.
+    Receipts dir moved byte-identical (sha256 re-verified at commit
+    time); code refs renumbered; full timeline in
+    .syllabai/receipts/T-MIG-017/run-002-renumber.json. Status DONE
+    unchanged; no gate re-runs needed (bookkeeping only).
+base:
+  repo: "syllabai-v2 @ 67639db; golden set = T-MIG-003 identity cases; docs/GOLDEN_MASTER.md §4/§5"
+basis: >
+  Operator check-in requested proof that the merged identity port replays
+  green (0/16 → 16/16). GOLDEN_MASTER §4 makes live replay 100% PASS the
+  wave-exit criterion; §5 demands the comparator itself be proven. The
+  verification surfaced that the gate could never go green for any
+  timestamped case regardless of port fidelity — fixing the gate was a
+  precondition for honest verification.
+scope:
+  allowed:
+    - "golden/runner.ts (comparator fix, F-1)"
+    - "apps/api/src/routes/health.ts (F-2)"
+    - "packages/contracts/src/auth.ts (email message, F-3) — out-of-fence micro-fix, R0-ratified with receipt"
+    - "apps/api/src/routes/auth/index.ts (F-4 traversal order)"
+    - "apps/api/test/**, unit pins updated to captured expectations"
+    - ".syllabai/receipts/T-MIG-017/**, .syllabai/tasks/T-MIG-017*.yaml"
+  forbidden:
+    - "production Neon writes (none — fully local verification)"
+    - "deleting or weakening any golden case (none touched)"
+    - "golden cases content changes (none needed)"

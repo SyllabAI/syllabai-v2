@@ -1,0 +1,43 @@
+{
+  "receipt": "R0-arbitration/ruling1-t-mig-020",
+  "decided_at": "2026-10-05",
+  "authority": {
+    "role": "acting-R0 (integrator/merge authority) under explicit operator delegation",
+    "operator_instruction": "Review PR #22 as operator/R0 and arbitrate the two collisions (choose implementation or guideline reconciliation); implementation",
+    "session": "web-1f157e25-0ed7-4f18-8956-3b2a993bc646 (zai-web, trace 1a10aad1692b3075)",
+    "coi_disclosure": "acting-R0 is the same agent (Super Z, lane r3-c) that authored PR #22. The operator delegated with knowledge of this authorship. The losing lane may appeal; only the operator can overturn this ruling."
+  },
+  "collision_1_duplicate_claim_t_mig_020": {
+    "rule_applied": "AGENT_COORDINATION section 2 rule 1: two agents claiming one task — earliest claim wins, R0 arbitrates disputes",
+    "parties": {
+      "r3c_pr22": {
+        "claim": "f5773bc @ 2026-10-05T05:17:00Z (earliest)",
+        "implementation": "complete read-surface port: contracts + services + routes + tests + 25-case static parity map (+3610, 16 files); all executable gates green; push-delayed by credential blocker"
+      },
+      "r3_api_a": {
+        "claim": "e50a63f @ 2026-10-05T05:42:41Z",
+        "implementation": "tranche-1 services-first (+1062, 13 files): documents/assets/reader/page-text/sql + 17 stubbed-sql tests; deps on unmerged T-MIG-005 contracts + T-MIG-014 driver dispatch; no routes, no contracts, no mounts"
+      }
+    },
+    "criteria": [
+      "earliest claim (binding rule): r3-c by 25 minutes",
+      "completeness: full port vs partial tranche",
+      "C3 contracts-first satisfied in-branch vs serial dependency on unmerged colliding contracts PR",
+      "golden-gate readiness: 25-case parity map attached vs none"
+    ],
+    "verdict": "r3-c implementation (PR #22) proceeds for T-MIG-020; MERGED as a3c65d8; OUT-OF-FENCE mount commit 47c91f6 (3 route lines + comment) RATIFIED per T-MIG-010 precedent",
+    "losing_lane_disposition": "branch t-mig-020/r3 preserved unmerged as reference alternative (no force-push, no deletion); yaml T-MIG-020-content-read-port.yaml and worklog entries never landed on main, so the claim is honored in this record and the main worklog; tranche-1 services remain citable if parity gaps surface in the merged implementation"
+  },
+  "collision_2_contracts_overlap_t_mig_005": {
+    "parties": "PR #22 (r3-c content.ts, claim precedes PR #18 creation) vs PR #18 (r1 T-MIG-005, content.ts +480 + content.test.ts +363 + curriculum.ts/errors.ts/auth.ts)",
+    "verdict": "packages/contracts/src/content.ts from PR #22 is CANONICAL (load-bearing for the merged services/routes/tests)",
+    "direction_to_r1": "PR #18 proceeds with the NON-overlapping portions only (curriculum.ts, errors.ts, auth.ts tweak, curriculum tests). The content.ts + content.test.ts portions are superseded — r1 to rebase them out. If a write-surface wave needs r1's envelope schemas (uuidPathSchema, response envelopes), file a follow-up contracts task that ADDS them to the canonical file (extend, never replace)."
+  },
+  "arbiter_side_verification": {
+    "note": "re-run by acting-R0 on the PR head; not taken from the author receipt",
+    "gates": "typecheck x4 workspaces exit 0; bun test 151 pass / 0 fail / 13 skip (Neon tiers self-skip without INTEGRATION_DATABASE_URL); golden --selftest OK",
+    "law_scans": "16 changed files all in-fence except declared OUT-OF-FENCE mounts; zero golden/ or packages/db/ touches; zero flyway touch; no secret patterns in diff; no unscrubbed emails",
+    "merge": { "pr": 22, "sha": "a3c65d89ce3d8ae3be688018e21e87148698fb35", "method": "merge_commit" }
+  },
+  "pending_non_blocking": "live golden replay of the 25 owned cases + 9 content integration tests on a task-owned Neon branch — blocked by sandbox DNS to api.neon.tech (NEON_PAT provisioned, host unreachable from this session); to be attached as run-002 when a Neon-capable session runs them; deterministic gates all green, so not a condition of this ruling"
+}
