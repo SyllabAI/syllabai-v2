@@ -1447,3 +1447,36 @@ Stage Summary:
 - Round-6 board state after this pass: every merged card now reflects merged reality (zero card/PR drift); the donation hazard is verified and answered on-thread; the only remaining register items are operator-routed (CI-side Neon replay runner, T-MIG-002-R execution word, PAT rotation) or lane-owned (T-MIG-031 tranche-2 = R3-api-a, H-2 = r7a, identity-budget flake root-cause on 3rd occurrence). NO new claim was available to this lane without self-filing wave work (033/034 remain reserved, unfiled per the ratified split map) — per the directive, R0 stops here.
 
 R0-integrator | round-6: synced (main 79bdc23, board zero-open, CI green), verified the ARBITRATION-DONATION ${}-binding hazard ABSENT on merged main (8/8 to_char literal, receipt + on-thread answer), flipped the 3 stale cards (023/024/032 -> DONE w/ provenance + standing conditions) | IDLE | suggestion: route the CI-side Neon replay runner to a lane (it is the standing re-proof instrument for 022/023/024/030/032 and the only live-replay path), give w0a the T-MIG-002-R execution word, and treat DOCUMENT_COLUMNS/PAPER_COLUMNS dead constants as sweep-cleanup in a future housekeeping pass (harmless, flagged only).
+
+---
+Task ID: T-MIG-040-PREP (claim)
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Operator round-7 directive (trace 1a10c9fd933dd505) — W4 golden capture, capture-first W3 pattern: learner agenda/state/recommendations/exam-series/flashcards + deterministic decay math, off the Render core READ-ONLY (T-MIG-007 authz-shell posture), target 35+ cases + replay-readiness kit.
+
+Work Log:
+- Sandbox reset #2 discovered; workspace rebuilt from scratch (clone @ c920eea; creds re-seeded from the round-6 drop; core-ro re-cloned @ 6cad6ef).
+- SYNC: main c920eea (R0 round-6 housekeeping; 023/024/032 flipped DONE; ARBITRATION-DONATION hazard verify); PR #49 (H-2) still open unmerged — untouched per authors-never-self-merge.
+- Zero-collision: zero T-MIG-040* yamls on main, zero *040* remote heads. Claimed branch t-mig-040-prep/r7a; claim receipt run-001-claim.json.
+- Surface map from frozen core @ 6cad6ef: 10 learner/intervention controllers, 17 routes under /api/v1/learners/me/** (+ intervention-runs); decay law read (EbbinghausDecayService P(t)=P0*e^(-t/tau), tau bands 30/90/365d, floor 0.1, reviewBelow 0.6, ns precision, anchor-recomputed-never-persisted; FlashcardReviewScheduler derived-never-stored, streak/interval/dueAt law; hub parity lib/flashcard-review.ts).
+- Write-safety proof BEFORE probing (T-MIG-003/004/007 precedent): SecurityConfig s63-99 — JWT filter -> anyRequest().authenticated() -> 401 entry point BEFORE any controller; Render pre-auth probes have no persistence path.
+- Plan: run-001 Render authz-shell (17-route matrix, ~20-24 cases) + run-002 LOCAL frozen-core boot (JDK25+Maven tarballs, LOCAL PG17+pgvector pgdg debs no-root, zero Neon) for authed deterministic surfaces incl. decay math (~15-20 cases) -> 35+ total; scrub per s2.3; LLM outputs excluded from gating (s3).
+
+Stage Summary:
+- T-MIG-040-PREP IN_PROGRESS (claim landed). Next: run-001 Render probes; run-002 boot+capture; kit + gates + PR (independent review / R0 merge-intake; authors never self-merge).
+
+---
+Task ID: T-MIG-040-PREP (work complete — IN_REVIEW)
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Execute the W4 golden capture (capture-first, W3 pattern) per the operator round-7 directive.
+
+Work Log:
+- run-001 (Render authz-shell, READ-ONLY): 22/22 pre-auth 401 cases across the full W4 learner route matrix (17 routes + posture variants); write-safety proven from SecurityConfig source ordering BEFORE probing (JWT filter -> anyRequest().authenticated() -> 401 entry point BEFORE controllers) and confirmed live — every probe answered 401, zero persistence path, zero credentials.
+- run-002 (LOCAL frozen-core boot): 35/35 authed deterministic cases on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (pgdg debs no-root; Flyway V1..V63 by the core; ZERO Neon): empty states, V63 exam-series calendar + PUT/DELETE targeting lifecycle (seed uuids replay-stable), smart-lesson 400/404/200 (TEST llm mode, no LLM prose gated), flashcard rating lifecycle (KNOW/KNOW/STILL_LEARNING 201s on TOPIC anchor WCH11-T1 -> derived schedule showing the scheduler law: streak 0 vs 1, intervalDays 0 vs 1, due) + trail, MCQ practice 201 -> state/knowledge-graph (read-time Ebbinghaus decay)/course-stats/agenda composed reads, intervention lifecycle shell, authed-vs-unauthed posture pair (same unknown path: 401 pre-auth vs 404 authed).
+- CAPTURED-AS-IS QUIRKS (R0 divergence calls, never fixed in-pass): F-e — FlashcardRatingRequest @Pattern ^[A-Za-z0-9-]+$ forbids the seeded SUBTOPIC code's dot (WCH11-T1.1 -> 400 validation_failed before the controller; UNIT/TOPIC codes pass — the 201 lifecycle was captured on WCH11-T1); F-c family — intervention unknown-run 400-before-404.
+- Scrub: identities synthetic from creation (learner_40@example.invalid); live JWTs never on disk ({{TOKEN}} placeholder; login token field scrubbed + tolerated); per-boot values tolerated after a deterministic audit patched 16 cases (learnerId/generatedAt/occurredAt/dueAt/lastRatedAt/lastPracticedAt/lastEvidenceAt/asOf/retrievedAt/mastery numerics); seed uuids pinned as replay-stable constants.
+- Replay-readiness kit: golden/tools/w4-readiness.ts (mirrors the reorder-check.ts precedent) — inventory/auth-posture/seq/tolerance-hygiene checks + the ADR-031 decay law restated for the port lane; READY (57 cases, 0 findings). golden/README.md gained the W4 tranche section.
+- Environment process-note (disclosed): this sandbox does NOT kill background processes at tool-call boundaries (unlike the T-MIG-007 session note) — a stale core+db pair from an aborted first attempt caused one polluted intermediate run; killed + wiped + re-captured from the verified-clean boot (strict port-listen + health checks). Committed tranche is from the clean boot only.
+- Gates: 170/170 committed cases schema-valid (loadCases); typecheck x4 exit 0; bun test CI-scope 485 ran / 0 fail / 13 skip / 1259 expect (= main exactly); golden --selftest OK; fence audit: golden/** + .syllabai/** only.
+
+Stage Summary:
+- T-MIG-040-PREP IN_REVIEW: 57 w4 cases (22 Render authz-shell + 35 local-boot authed; target 35+ exceeded) + replay-readiness kit; PR opened requesting independent review + R0 merge-intake (authors never self-merge). The wave-4 port lane can replay the moment its ports land.
