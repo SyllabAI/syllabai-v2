@@ -32,17 +32,26 @@ describe("T-MIG-023 F-1: instantToStringUtc (Java Instant.toString() parity)", (
     expect(instantToStringUtc("2026-09-21T12:59:21.578011Z")).toBe("2026-09-21T12:59:21.578011Z");
     expect(instantToStringUtc("2026-10-04T09:37:00.129532Z")).toBe("2026-10-04T09:37:00.129532Z");
   });
-  test("millis: trailing zeros trimmed to the 3-digit group", () => {
-    expect(instantToStringUtc("2026-10-04T09:37:00.129000Z")).toBe("2026-10-04T09:37:00.129Z");
-    expect(instantToStringUtc("2026-10-04T09:37:00.578010Z")).toBe("2026-10-04T09:37:00.57801Z");
-    expect(instantToStringUtc("2026-10-04T09:37:00.500000Z")).toBe("2026-10-04T09:37:00.5Z");
+  test("trailing zero INSIDE a kept 3-digit group survives — run-002 live evidence", () => {
+    // exact divergent values from the T-MIG-023 run-002 deep-diff (101 rows):
+    // Instant.toString omits trailing zero GROUPS, never individual zeros
+    expect(instantToStringUtc("2026-09-28T20:19:25.395230Z")).toBe("2026-09-28T20:19:25.395230Z");
+    expect(instantToStringUtc("2026-09-26T12:46:07.092920Z")).toBe("2026-09-26T12:46:07.092920Z");
+    expect(instantToStringUtc("2026-09-26T12:45:55.382500Z")).toBe("2026-09-26T12:45:55.382500Z");
+    expect(instantToStringUtc("2026-10-04T09:37:00.578010Z")).toBe("2026-10-04T09:37:00.578010Z");
+    expect(instantToStringUtc("2026-10-04T09:37:00.000010Z")).toBe("2026-10-04T09:37:00.000010Z");
+    expect(instantToStringUtc("2026-10-04T09:37:00.000100Z")).toBe("2026-10-04T09:37:00.000100Z");
   });
-  test("zero fraction: dot dropped entirely", () => {
+  test("one zero group dropped → 3-digit fraction", () => {
+    expect(instantToStringUtc("2026-10-04T09:37:00.129000Z")).toBe("2026-10-04T09:37:00.129Z");
+    expect(instantToStringUtc("2026-10-04T09:37:00.578000Z")).toBe("2026-10-04T09:37:00.578Z");
+    expect(instantToStringUtc("2026-10-04T09:37:00.500000Z")).toBe("2026-10-04T09:37:00.500Z");
+  });
+  test("both groups zero → dot dropped entirely", () => {
     expect(instantToStringUtc("2026-10-04T09:37:00.000000Z")).toBe("2026-10-04T09:37:00Z");
   });
-  test("leading zeros kept, trailing trimmed (Instant group semantics)", () => {
+  test("leading zeros kept (group semantics)", () => {
     expect(instantToStringUtc("2026-10-04T09:37:00.000001Z")).toBe("2026-10-04T09:37:00.000001Z");
-    expect(instantToStringUtc("2026-10-04T09:37:00.000010Z")).toBe("2026-10-04T09:37:00.00001Z");
   });
   test("non-6-digit shapes pass through untouched (defensive)", () => {
     expect(instantToStringUtc("2026-10-04T09:37:00Z")).toBe("2026-10-04T09:37:00Z");

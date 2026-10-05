@@ -23,23 +23,32 @@ type Row = Record<string, unknown>;
  * Java Instant.toString() parity writer (F-1, T-MIG-023).
  *
  * The frozen core renders every Instant field through Jackson JSR-310 /
- * Instant.toString(): the DB timestamp(6) fraction as shortest-round-trip
- * 3-digit groups with trailing zeros trimmed — .578011Z (micros), .578Z
- * (millis), no fraction when zero. The JS Date object caps at milliseconds
- * (run-001: 1021 listing divergences, ALL @ .N.createdAt, same rule), so
- * the fraction must travel from Postgres as TEXT: the queries below select
+ * Instant.toString(): the DB timestamp(6) fraction rendered in 3-digit
+ * groups with TRAILING ZERO GROUPS OMITTED (Javadoc: "trailing zeroes in
+ * groups of three are omitted") — a micros-precision value therefore
+ * renders 6 digits (.578011Z, .395230Z — a trailing zero INSIDE the kept
+ * group survives), 3 digits (.129Z, .500Z) or no fraction (.000000Z).
+ * The JS Date object caps at milliseconds (run-001: 1021 listing
+ * divergences, ALL @ .N.createdAt, same rule), so the fraction must travel
+ * from Postgres as TEXT: the queries below select
  *   to_char(<col> at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US"Z"')
  * (always 6 fractional digits + literal Z) and this helper applies the
- * Instant.toString() trimming — byte-identical to the frozen core for
- * micros-precision values:
- *   2026-10-04T09:37:00.129532Z → unchanged (micros group)
- *   2026-10-04T09:37:00.129000Z → 2026-10-04T09:37:00.129Z
- *   2026-10-04T09:37:00.000000Z → 2026-10-04T09:37:00Z
+ * group rule — byte-identical to the frozen core for micros values:
+ *   2026-10-04T09:37:00.129532Z → unchanged (6-digit group pair)
+ *   2026-09-28T20:19:25.395230Z → unchanged (run-002 live evidence: the
+ *                                 trailing zero is INSIDE a kept group)
+ *   2026-10-04T09:37:00.129000Z → 2026-10-04T09:37:00.129Z (one group)
+ *   2026-10-04T09:37:00.000000Z → 2026-10-04T09:37:00Z (both groups)
+ * (run-002 first boot learned the group rule the hard way: an individual-
+ * zero trim produced .39523Z vs the capture's .395230Z on 101 listing
+ * rows — corrected to the group semantics before any verdict was taken.)
  */
 export function instantToStringUtc(pgInstant: string): string {
   const m = /^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})\.(\d{6})Z$/.exec(pgInstant);
   if (!m || m[1] == null || m[2] == null) return pgInstant; // already Instant-shaped (defensive passthrough)
-  const frac = m[2].replace(/0+$/, "");
+  const g1 = m[2].slice(0, 3);
+  const g2 = m[2].slice(3);
+  const frac = g2 === "000" ? (g1 === "000" ? "" : g1) : m[2];
   return frac === "" ? `${m[1]}Z` : `${m[1]}.${frac}Z`;
 }
 
