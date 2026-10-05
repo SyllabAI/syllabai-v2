@@ -455,6 +455,51 @@ Stage Summary:
 - Board: T-MIG-000/001/002/003/004/010/012 DONE (7 tasks), T-MIG-011 CLAIMED (t-mig-011/r5), Wave-2 lanes filing. Identity/auth surface is LIVE in v2 with live-DB-proven revocation — the strangler-fig has its first real vine. 54 golden cases on main; Wave-2 acceptance worklist complete before any content-read port code lands. Critical path: T-MIG-011 hub adapter (claimed), then Wave-2 ports (T-MIG-020..022) against the fresh capture.
 
 ---
+Task ID: T-MIG-014 (claim)
+Agent: r1 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Claim the per-IP RateLimitFilter (deep-audit M1) port — the micro-task T-MIG-010's execution_record recommends
+
+Work Log:
+- Operator directive "claiming T-MIG-010 next" arrived before a sandbox reset wiped this session's workspace; on re-provision (operator-supplied GITHUB_PAT, env-var channel only) and re-clone, main had moved to 67639db: T-MIG-010 was DONE via PR #11 (R0 arbitration: R3-api-a earliest-claim). The stale instruction was retired — no claim was attempted on a DONE task.
+- Pre-claim survey (per §2.1): open PRs = #12 only (T-MIG-013 IN_REVIEW); live branches = t-mig-011/r5 (hub, CLAIMED), t-mig-005/r1 (content-read contracts, CLAIMED), t-mig-013/r3 (golden hardening), r7/yaml-receipts-backfill. Wave-2 slots (020..022) have no yamls yet and the phase-2 R0 entry sequences them behind T-MIG-011 + the T-MIG-004 acceptance worklist.
+- Selected the one genuinely OPEN item with an in-repo recommendation: T-MIG-010 boundary note (b) — per-IP RateLimitFilter (M1, com.syllabai.ratelimit) explicitly left for "its own micro-task". Authored .syllabai/tasks/T-MIG-014-port-ratelimit.yaml per §4 (T-MIG-004 yaml-authorship precedent), wave 1, deps [T-MIG-010], P2 (parallel-safe: fences disjoint from every active lane).
+- Spec re-read from frozen core @ 6cad6ef: RateLimitFilter.java (two tiers, fixed windows, XFF trusted-chain walk, fail-open), RateLimitProperties.java (audited budgets 10/5/3/10/20, window 60s), RateLimitFilterTest.java (11 cases to mirror), SecurityConfig.java:96-99 (addFilterAfter JwtAuthenticationFilter — LLM tier keys on the identity the JWT filter resolved), application.yml:123-134 (ops-tunable budgets, defaults restated). v2 conventions read: budget.ts port style (injectable clock, line-anchored header), errors.ts (two distinct 429 bodies: exception path "Too many attempts" w/o body field vs filter path "Too many requests" WITH retryAfterSeconds field), index.ts wiring, config.ts ratelimit block.
+- Fidelity pre-commitments (to be evidenced in the receipt): alignment-compare window reset (!start.equals(windowStart), NOT insideWindow), count > limit strict, retryAfter = floor((windowEnd-now+999)/1000) min 1 computed before admit, MAX_KEYS=100_000 sweep at 2-window cutoff, OPTIONS+enabled bypass, fail-open on internal error, XFF rightmost-first first-public-hop walk incl. CGNAT 100.64/10 and the literal 172.2x predicate, learnerKey userId→subject→IP.
+- Branch t-mig-014/r1 cut from origin/main @ 67639db; claim + yaml + this entry pushed at claim time (collision lesson T-MIG-002/010 applied).
+
+Stage Summary:
+- T-MIG-014 CLAIMED at 2026-10-05T05:23:35Z; implementation follows in this branch (middleware port → mirrored test suite → mount wiring as a separate disclosed commit → receipt → IN_REVIEW). Golden-capture posture disclosed in advance: unit-tier mirror suite is the gate for this task; live 429 golden cases against the frozen core are deferred to the runner-capability follow-up (T-MIG-004 F-3: no per-case request-header injection / response-header comparison yet) — disclosed to R0 in the receipt, no case weakened.
+
+---
+Task ID: T-MIG-014 (implementation)
+Agent: r1 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Port the per-IP RateLimitFilter (deep-audit 09-28 M1) — the micro-task recommended by T-MIG-010's execution_record
+
+Work Log:
+- Implemented apps/api/src/middleware/ratelimit.ts against the frozen source @ 6cad6ef (RateLimitFilter.java + RateLimitProperties.java, line-anchored header). Two tiers: auth per-IP (login/register/bootstrap-admin/password POSTs) + llm:ask per-learner (tutor/cla/transcribe/smart-mark, keyed userId → subject → IP). In-memory fixed windows: alignment-compare reset (NOT LoginAttemptBudget's insideWindow — the Java pair differs deliberately), strict count>limit reject, retryAfter=max(1,floor((windowEnd-now+999)/1000)) computed pre-bump, MAX_KEYS=100_000 sweep at 2×window cutoff, OPTIONS+enabled=false bypass, fail-open on internal errors.
+- XFF trusted-chain walk ported verbatim (rightmost-first, skip private, first public = key, socket-peer fallback). CAUGHT BY THE MIRROR SUITE: my first noUncheckedIndexedAccess fix dropped hop.strip() before the private check, so " 10.44.0.7" stopped matching startsWith("10.") and the walk keyed on the varying internal hop — exactly the bug the Java comment says the walk exists to prevent. Restored strip-before-checks; the 4 XFF topology tests + clientIp e2e now pin it.
+- 429 body duality preserved and pinned: filter path = "Too many requests…" WITH retryAfterSeconds as a body field (+ Retry-After header); exception path (RateLimitException via errors.ts, pre-existing) = "Too many attempts…" WITHOUT the field. Both load-bearing per the frozen source; do-not-unify noted in both files.
+- config.ts ratelimit block extended inside the fence: audited budgets (login 10 / register 5 / bootstrap 3 / password 10 / llm 20, window 60s — RateLimitProperties:53-59, application.yml:123-134) + SYLLABAI_RATELIMIT_* env overrides. loginPerAccount/windowMs semantics untouched (T-MIG-010 surface).
+- Test mirror at test/ratelimit/ratelimit-filter.test.ts: all 11 Java RateLimitFilterTest cases + 4 extras (predicate unit incl. CGNAT/172.2x/malformed-100.x, clientIp e2e, env overrides, filter-body-shape pin). Hono-app harness plays the chain (auth-stub → limiter → dummy routes) matching the real mount order.
+- Gates re-executed: typecheck x4 exit 0 (api/contracts/shared/db; hub gate is next build, untouched); apps/api 87 pass / 0 fail / 4 skip (skips = Neon integration tier, NEON_PAT absent this session — T-MIG-004 F-5 posture, integration tier untouched by this fence); packages/contracts 28/0. bun install at root was required on the fresh clone (T-MIG-000 unified workspace).
+- Commits on t-mig-014/r1: (1) claim (already pushed), (2) implementation + tests + config + receipt + yaml flip + worklog, (3) OUT-OF-FENCE index.ts mount wiring (import + one app.use between the Bearer middleware and the routers — SecurityConfig.java:96-99 addFilterAfter parity) with header disclosure, per the T-MIG-010 convention.
+
+Stage Summary:
+- T-MIG-014 → IN_REVIEW; receipt at .syllabai/receipts/T-MIG-014/run-001-ratelimit-filter.json (fidelity map Java-line → TS-symbol, 5 disclosures: fail-open single-dispatch divergence, out-of-fence commit, golden-429 capture deferred to the F-3 runner follow-up, llm tier dormant-by-routes until Wave 3 surfaces land, defensive remoteAddr fallback). PR open for R0. The v2 api now enforces the M1 cost/brute-force tier the frozen core enforces — the last piece of the com.syllabai.ratelimit package.
+
+---
+Task ID: T-MIG-016 (renumber from T-MIG-014 — ID yielded to PR #13)
+Agent: r1 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Resolve the three-way T-MIG-014 ID collision at push time; keep the RateLimitFilter M1 port in R0's queue under a collision-free ID
+
+Work Log:
+- Push-time survey surfaced the collision resolution recorded on PR #13: three tasks raced the T-MIG-014 ID — r7a docs-drift (claim 05:00:49Z, unpushed) already yielded as T-MIG-015 (PR #14); R3a db-drivers (claim ecded41 @ 05:08:44Z) holds PR #13 IN_REVIEW; this lane's claim b1f63b4 @ 05:23:58Z is the latest of the three.
+- Yielded the ID per §2.1 earliest-claim + the r7a/#14 precedent ("earliest-claim is a tiebreak, not territory") — in this lane's case the yield is clock-correct, not merely courteous. Renumbered to T-MIG-016 (next free at push time; 016..019 verified unclaimed on main and remotes).
+- Mechanics mirrored r7a/#14 exactly: branch t-mig-016/r1 (content byte-identical to 6a75667 — claim, implementation, OUT-OF-FENCE mount untouched); yaml renamed + id/status/scope.allowed renumbered + renumber paragraph appended to execution_record; receipts dir renamed with run-001-ratelimit-filter.json byte-identical; index.ts disclosure comments renumbered (comment-only, 3 lines); renumber receipt run-002-renumber.json (full timeline, decision, gates); this append-only entry. No past worklog entries touched.
+- PR #15 closes with cross-reference to the replacement PR; remote branch t-mig-014/r1 deleted after the replacement opens (namespace hygiene for PR #13's receipts dir); CI evidence from content-identical head 6a75667 cited in the receipt (verify + hub success).
+
+Stage Summary:
+- T-MIG-016 → IN_REVIEW on t-mig-016/r1; replacement PR open for R0 with the same 5 disclosures + the renumber disclosure. Zero substantive change to the port; the M1 cost/brute-force tier remains fully represented. Operator's "(2)" directive (NEON_PAT-gated follow-ups) evaluated in-session: real-data tranche already delivered by w0a (PR #16, Neon COW branch); api integration tier remains operator-gated (INTEGRATION_DATABASE_URL / NEON_PAT absent — §6.3 posture, F-5 precedent; runbook ready: T-MIG-010 run-002 recipe + db.integration.test.ts header).
 
 ## T-MIG-016 — R0: identity golden live-replay verification + gate hardening (DONE)
 

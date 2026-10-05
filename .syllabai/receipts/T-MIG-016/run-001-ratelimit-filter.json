@@ -1,0 +1,36 @@
+{
+  "task": "T-MIG-014",
+  "run": "run-001",
+  "type": "CI-equivalent unit tier",
+  "date": "2026-10-05T05:35Z",
+  "agent": "r1 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "base": "origin/main @ 67639db",
+  "branch": "t-mig-014/r1",
+  "frozen_source": "syllabai-core @ 6cad6ef: src/main/java/com/syllabai/ratelimit/{RateLimitFilter,RateLimitProperties,LoginAttemptBudget,RateLimitException}.java, src/test/java/com/syllabai/ratelimit/RateLimitFilterTest.java, SecurityConfig.java:96-99, application.yml:123-134",
+  "gates": {
+    "typecheck": "x4 exit 0 (apps/api, packages/contracts, packages/shared, packages/db — the four workspaces with a typecheck script; hub's gate is next build, unaffected by this fence)",
+    "unit_apps_api": "87 pass / 0 fail / 4 skip (4 skip = Neon integration tier, env-gated NEON_PAT absent this session — T-MIG-004 F-5 posture; includes 15 new T-MIG-014 tests, 97 expect() calls over the ratelimit file)",
+    "unit_packages_contracts": "28 pass / 0 fail",
+    "golden_selftest": "not run this lane — golden tooling untouched by this fence; runner capability notes unchanged (T-MIG-004 F-3)"
+  },
+  "fidelity_map": [
+    {"java": "RateLimitFilter.doFilterInternal :102-122", "ts": "RateLimitFilter.handle", "note": "OPTIONS + enabled bypass; fail-open catch; single downstream dispatch (see divergences)"},
+    {"java": "budgetOf :126-161", "ts": "classifyRequest", "note": "exact route table: 4 auth-tier POSTs per IP; llm:ask tier = tutor/ask + ask/stream + cla/ask + answer-input/transcribe + attempts/*/smart-mark|feedback-explanation|improvement-plan (prefix+endsWith), keyed learnerKey"},
+    {"java": "learnerKey :163-175", "ts": "learnerKey", "note": "userId attr → authenticated subject (non-blank) → clientIp; v2 reads the auth context the Bearer middleware attached (addFilterAfter parity)"},
+    {"java": "clientIp :191-205", "ts": "clientIp", "note": "XFF rightmost-first walk; hop.strip() BEFORE checks (regression caught by the mirrored suite: dropped trim mis-keyed private hops); first public = key; fallback remoteAddr → \"unknown\""},
+    {"java": "isPrivateAddress :213-231", "ts": "isPrivateAddress", "note": "verbatim predicate incl. CGNAT 100.64-127 second-octet check and the literal '172.2' prefix quirk; malformed 100.x (not 4 octets / non-numeric) → PUBLIC (NumberFormatException parity)"},
+    {"java": "admit :233-256", "ts": "admit", "note": "windowStart=floor(now/window)*window; retryAfter=max(1,floor((windowEnd-now+999)/1000)) computed pre-bump; alignment-compare reset (NOT insideWindow — deliberately different from LoginAttemptBudget); count>limit strict reject; MAX_KEYS=100_000 sweep at 2×window cutoff"},
+    {"java": "reject :258-267", "ts": "handle reject branch", "note": "Retry-After header + hand-written body {status,error:'Too Many Requests',message:'Too many requests...',retryAfterSeconds,timestamp} — retryAfterSeconds is a BODY FIELD here; exception path (RateLimitException via errors.ts) says 'attempts' with NO body field. Both pinned; do not unify"},
+    {"java": "sweepExpired :269-278", "ts": "sweepExpired", "note": "remove windows starting before now-2*window; MAX_KEYS guard first (:246)"},
+    {"java": "RateLimitProperties defaults :53-59", "ts": "readIdentityConfig ratelimit block", "note": "enabled true, window 60s, loginPerIp 10, registerPerIp 5, bootstrapPerIp 3, passwordPerIp 10, llmPerLearner 20, loginPerAccount 10; env overrides SYLLABAI_RATELIMIT_{LOGIN_PER_IP,REGISTER_PER_IP,BOOTSTRAP_PER_IP,PASSWORD_PER_IP,LLM_PER_LEARNER} (relaxed-binding equivalents of syllabai.ratelimit.*)"},
+    {"java": "RateLimitFilterTest 11 cases", "ts": "test/ratelimit/ratelimit-filter.test.ts 15 tests", "note": "all 11 mirrored (login burst, per-route/per-IP independence, window reset, 3 XFF-walk topologies, all-private fallback, LLM learner keying, subject→IP fallback, R8 smart-mark sharing, non-matching pass-through incl. GET/OPTIONS/disabled, fail-open, defaults) + 4 harness extras (predicate unit, clientIp e2e, env overrides, body-shape pin)"}
+  ],
+  "divulgences": [
+    "DIVERGENCE (disclosed, behavior-preserving): Java's fail-open catch lexically contains chain.doFilter, but downstream failures surface as ServletException/IOException (checked) there — the catch's re-dispatch is unreachable in practice. Port invokes next() outside the try; catch fails open with a single next(). Fail-open behavior identical; double-dispatch wart not reproduced.",
+    "OUT-OF-FENCE COMMIT in this PR: apps/api/src/index.ts mount wiring (import + one app.use between the Bearer middleware and the routers, SecurityConfig.java:96-99 addFilterAfter parity) + header disclosure, shipped as its own commit per the T-MIG-010 convention for R0 ratification.",
+    "GOLDEN CAPTURE DEFERRAL: live 429 golden cases against the frozen core are deferred to the runner-capability follow-up (T-MIG-004 F-3: no per-case request-header injection / response-header comparison yet). The auth-tier 429 shape is pinned by the unit mirror suite; the per-IP tier is best-effort by design (R5: XFF bypassable on Render — the account budget is the surviving bound). No case weakened.",
+    "LLM TIER DORMANT-BY-ROUTES: the llm:ask classification is ported wholesale and unit-tested, but no v2 route serves those paths yet (tutor/learner surfaces are Wave 3+). Mounting now is safe and matches the Java chain; the tier activates automatically when those routes land.",
+    "remoteAddr fallback: bun's request() in tests exposes no socket peer — c.info.remote?.address is read defensively; undefined → \"unknown\" (Java's remote==null parity). On deployment runtimes that provide a peer, the socket fallback engages."
+  ],
+  "scope_boundary": "LoginAttemptBudget (R5, per-TARGET-account) was already ported by T-MIG-010 — untouched here. Only the filter-level per-IP + LLM budgets are this task's surface."
+}
