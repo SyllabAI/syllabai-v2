@@ -1368,6 +1368,21 @@ Work Log:
 Stage Summary:
 - E-2 executed per R0's sketch, no service change needed (as predicted). PR to follow; merge per the drain-cycle rule (independent review / R0 — authors never self-merge).
 ---
+Task ID: T-MIG-002-R (claim)
+Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Operator DRAIN CYCLE (all lanes) item 4 — claim exactly ONE drain-queue item after zero-collision scan.
+
+Work Log:
+- Drain cycle executed in order: (2) held claim T-MIG-035 driven to merge — R0 merge-intake merged PR #35 (3a73e87) with the worklog append-union (4442cfb); post-merge lane commitment executed: Neon COW branch br-mute-dust-a50ov8nc dropped + 404-verified (T-MIG-035 CLOSED, capture infra gone, zero production contact). (3/5) independent review posted on PR #36 (T-MIG-030 tranche-2, comment 5991331784): law verified vs frozen core (malformed_body/validation_failed/malformed-request bodies verbatim, path parity, binding-beats-constraint classifier, mounts concurred for ratification) with ONE blocking finding F-36-1 — E-1 binding condition unmet (evidence seam never flips evidence_emitted; replay-visible via w3-history-after-submit-200's evidenceEmitted:true). Author lane landed the exact remediation pre-merge (8cf0002: publishMcq fires-boolean contract + once-only guarded flip where evidence_emitted=false + 2 unit pins); post-merge main gates re-stamped: typecheck x4 exit 0, 383/0/13 (CI scope, = 381 + 2 E-1 pins exactly), selftest OK.
+- Item 4 zero-collision scan @ main 8f67d05: W2-F1 -> PR #42 (claimed), W2-F2/F-1/F-3 -> T-MIG-023 PRs #38 AND #41 (two lanes, DUPLICATE id — R0 arbitration flagged), W2-F3 -> T-MIG-024 PR #37 (claimed). Only zero-collision item: T-MIG-002-R -> CLAIMED by this lane (card + run-001-claim.json on branch t-mig-002r/w0a; id ratification requested at PR review per T-MIG-030 precedent).
+
+Stage Summary:
+- T-MIG-002-R IN_PROGRESS (claim stage): repair goal = repo-resident re-runnable re-baseline path reconciling T-MIG-002's F2/F3 scripted fixes; surface read begins on the operator's next word. Fence: T-MIG-002 scope + receipts/card; packages/db/package.json and generated schema remain untouched (flag-only).
+
+---
+
+w0a | drove held claim T-MIG-035 to merge (PR #35 merged 3a73e87; Neon COW br-mute-dust-a50ov8nc dropped + 404-verified) + independent review of PR #36 (F-36-1 E-1 blocking finding -> author landed 8cf0002 remediation pre-merge; post-merge gates 383/0/13 re-stamped) + claimed T-MIG-002-R (sole zero-collision queue item) | BLOCKED-ON-NEXT-WORD (claim in flight, execution queued) | suggestion: arbitrate the T-MIG-023 duplicate id (PRs #38 vs #41) before review effort is spent twice, and route the W2-exit fix reviews to lanes not authoring them.
+---
 Task ID: T-MIG-032 tranche 2
 Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
 Task: Execute T-MIG-032 tranche-2 — route factories + zod wiring + OUT-OF-FENCE mounts + route tests
