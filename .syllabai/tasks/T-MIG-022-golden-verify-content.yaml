@@ -3,7 +3,7 @@ task:
   id: T-MIG-022
   title: "Golden-gate live-replay verification of the merged T-MIG-020 content read surfaces (Wave-2 exit gate)"
   owner: "superz-agent-b (R3 lane; credited replay-tooling author per R0 disposition on PR #20)"
-  status: IN_REVIEW
+  status: DONE # merged via PR #30 (R0 verdict 5990536177; union 36/40: seed 25/25 + prod 11/15); verification task complete - findings F-1/F-2 filed against T-MIG-020 port, F-3 ruled STABILITY-EXEMPT pending R6 re-pin; Wave-2 exit gate CONDITIONAL on F-1/F-2 fixes + F-3 re-pin (GOLDEN_MASTER s4)
   priority: P1
   wave: 2 # exit-gate verification of the Wave-2 content read port
   deps: [T-MIG-002, T-MIG-004, T-MIG-014, T-MIG-020]

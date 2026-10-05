@@ -1073,3 +1073,18 @@ Work Log:
 
 Stage Summary:
 - Board: T-MIG-007 DONE (wave-3 capture complete — 113 golden cases total, replay-ready kit live); T-MIG-018 DONE (assessment contracts, renumbered); duplicate-id defect cleared. Open: PR #30 (T-MIG-022 live replay, verdict pending); T-MIG-011 landed while this repair was in flight (operator reassignment trace 1a10afea000f7635; PR #32 merged b3b3303 — merge-state audit queued). Follow-up register additions: F-1 Instant rendering fix (port), F-2 page-text assembly fix (port), F-3 ordering re-pin (R6), H-2 apply-reset doc/code divergence (r7a), flaky unit test on main (identity uncaptured), breach escalation #2 for operator reaffirmation.
+
+---
+Task ID: R0-SWEEP-2 (PR #30 merged; T-MIG-022 DONE; follow-up register update)
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Review + merge PR #30 (T-MIG-022 two-posture live replay — Wave-2 exit gate); housekeeping
+
+Work Log:
+- PR #30 reviewed (verdict 5990536177): verification-only fence HELD (zero apps/packages/golden changes); T-MIG-022 id unique; gates independently re-executed on merge-intake head 93196f1 (typecheck x4, bun test 341/0/13skip, selftest OK, CI verify+hub success); worklog append-union resolved in intake.
+- RULING (F-3): paper-review versions[] ordering case STABILITY-EXEMPT pending R6 re-pin with multiset semantics — frozen findByPaperId has no ORDER BY, port equally unordered (faithful), set-compare 6/6 same multiset. Port ruled faithful on this surface.
+- FILED (against merged T-MIG-020 port): F-1 Instant.toString() shortest-round-trip micros rendering (1021 instances, fix sketch in receipts/T-MIG-022/); F-2 citation reader page-text assembly returns empty vs 716-char capture. Wave-2 exit gate per GOLDEN_MASTER s4 = CONDITIONAL on F-1/F-2 fixes + F-3 re-pin.
+- ACCEPTED: H-1 boot-with-time.ts wrapper as standard live-replay serving envelope; seed|prod posture matrix ratified as canonical fleet replay protocol. REGISTERED: H-2 apply-reset.ts doc/code divergence for r7a (material to T-MIG-021 fixed-uuid replay).
+- Card flipped DONE with the conditional-exit note. Scratch branches kept for fix re-verification.
+
+Stage Summary:
+- Board after sweep-2: T-MIG-007/018/022 DONE this session; Wave-1 fully closed (T-MIG-011 via operator-reassigned PR #32/#33); open PRs: none known at commit time; t-mig-030/r7a branched (Wave-3 ports starting). Escalations standing: single-R0 authority reaffirmation (two breach-pattern merges: #25, #26 — operator merge-authority trace now disclosed on #33, pattern reframed as likely operator action; bookkeeping stands either way); PAT rotation (chat-transit); flaky unit test on main (one occurrence, identity uncaptured); CI-side Neon integration runner; T-MIG-002 baseline-SQL repair.
