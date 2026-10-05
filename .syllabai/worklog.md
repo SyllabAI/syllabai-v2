@@ -1259,3 +1259,19 @@ Stage Summary:
 - W2-F3 resolved: T-MIG-024 (PR #37) owns it; R0 released cleanly with the ruling + review criteria on record. Drain-cycle queue fully claimed across the fleet: W2-F1 (#42 + T-MIG-023 overlap TBD), W2-F2 (t-mig-023/r1 sighted), W2-F3 (#37), T-MIG-002-R (#44 w0a).
 
 R0-integrator | drain cycle: synced (main daad88e->0cd360b), merged #34 (T-MIG-031 claim) + #35 (T-MIG-035 live-flow, after R0 intake 4442cfb), audited #36 post-merge under disclosed operator delegation (trace 1a10b1d0c70818a9) and FILED E-2 w/ fix sketch (r7a: noop-default evidence wiring vs captured evidenceEmitted pin; ~5 lines), housekeeping 0cd360b (030 DONE w/ conditions, 035 DONE), claimed W2-F3 as T-MIG-036 then RELEASED it on the section 2.1 collision (T-MIG-024/PR #37 earliest by ~26 min; ruling + 6 review criteria on #37; own process miss recorded) | IDLE | suggestion: next round - assign E-2 to r7a (unblocks the 030 replay case), mechanically arbitrate the T-MIG-023 double-claim (#38 vs #41) and the F-1 scope overlap (#42 vs #38/#41) by claim-commit timestamps, and root-cause the register flake on its third occurrence.
+
+---
+Task ID: T-MIG-032 tranche 2
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Execute T-MIG-032 tranche-2 — route factories + zod wiring + OUT-OF-FENCE mounts + route tests
+
+Work Log:
+- Shipped routes/selfmark (LearnerSelfMarkController port: POST /:attemptId/self-mark 201; duplicate-part boundary law via the contracts superRefine -> 400 bad_request WITH detail; two-envelope body classifier; path-uuid conversion 400) and routes/smartmark (StudentSmartMarkController port: smart-mark + feedback-explanation + improvement-plan, 503 smart_feedback_unavailable with the FIXED body per GlobalExceptionHandler :107-117, path-uuid conversion). DORMANT LLM live seams disclosed (generator refuses, feedback 503s) — LlmProvider infra is the wave-3 LLM-chain lane's surface.
+- 13 route tests over REAL services on stubbed sql: self-mark canonical selfMarkViewSchema 201 + empty-body 400 + duplicate 400 + bad-uuid malformed_body + @Max(99) single-field pin + path conversion + unknown-attempt 404 (captured-500 quirk stays with R0) + Boot 401; smart-mark 200 with kappa-authoritative + compact pointLabel + feedback 200s + 503 fixed body.
+- CORRECTION caught by the canonical-schema pin (tranche-1 disclosed): SelfMarkPartView field marks -> marksPossible (frozen record component name, PartView(marksPossible) verified at source). Fence-internal fix.
+- OUT-OF-FENCE mounts shipped as the separate flagged commit (2 mount lines at /api/v1/learners/me/attempts + imports + construction + comment) per the 010/020/021/030 ratified precedent.
+- Gates: typecheck x4 exit 0; bun test 444/0/13skip 1139 expect (= post-#46 main 431/1101 + 13/38 exactly); golden selftest OK.
+- Branch hygiene note: an initial mixed commit sequence was split cleanly — E-2 stays alone on t-mig-030/r7a-e2 (PR #46), the two 032 commits cherry-picked onto t-mig-032/r7a-ext from origin/main (zero content overlap between the two PRs).
+
+Stage Summary:
+- T-MIG-032 tranche-2 complete on t-mig-032/r7a-ext; PR to follow with run-003 receipt + R0 ratification request for the mounts. Per the drain-cycle rule (authors never self-merge), both #46 and this PR await independent review / R0 merge-intake.
