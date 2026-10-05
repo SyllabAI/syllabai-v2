@@ -1,0 +1,59 @@
+version: 1
+task:
+  id: T-MIG-040-PREP
+  title: "Wave-4 golden capture (capture-first, W3 pattern) — learner agenda/state/recommendations(smart-lesson)/exam-series/flashcards + deterministic decay math, off the Render core READ-ONLY (T-MIG-007 authz-shell posture); target 35+ cases + replay-readiness kit"
+  owner: "R7a (agent-da4ab8, zai-web session web-da4ab8b1) — operator-assigned round-7 directive (trace 1a10c9fd933dd505): 'T-MIG-040-PREP (capture-first, W3 pattern) ... One wave ahead of the port lane, same as you did for content-read'"
+  status: IN_PROGRESS # claim 2026-10-05
+  priority: P1
+  wave: 4
+  deps: [T-MIG-007] # W3 capture precedent: two-prong posture (Render authz-shell + local frozen-core boot), case format, runner kit
+  execution_record: >
+    (claim entry 2026-10-05) Pre-claim verification at main c920eea: zero
+    T-MIG-040* yamls on main, zero *040* remote branches (ls-remote),
+    PR #49 (H-2) still open unmerged (authors never self-merge — untouched
+    by this task). Surface map extracted from frozen core @ 6cad6ef:
+    LearnerAgendaController GET /api/v1/learners/me/agenda;
+    LearnerStateController GET .../me/state + .../me/knowledge-graph;
+    CourseStatsController GET .../me/course-stats;
+    SmartLessonController GET .../me/smart-lesson (the recommendations
+    surface; LLM-output bodies excluded from gating per GOLDEN_MASTER s3 —
+    lifecycle/authz shell only);
+    LearnerExamSeriesController GET .../me/exam-series +
+    PUT/DELETE .../me/courses/{courseSlug}/target-series;
+    FlashcardReviewScheduleController GET .../me/flashcard-review-schedule;
+    FlashcardRatingController POST .../me/flashcard-ratings;
+    FlashcardRatingTrailController GET .../me/flashcard-rating-trail;
+    NoteVoteController POST .../me/note-votes;
+    InterventionRunController /api/v1/learners/me/intervention-runs (9
+    routes). Deterministic decay math (ADR-031): EbbinghausDecayService
+    P(t)=P0*e^(-t/tau), tau 30/90/365d bands (0.45/0.8), floor 0.1,
+    reviewBelow 0.6, nanosecond precision, recomputed from the anchor on
+    every call and NEVER persisted; FlashcardReviewScheduler derived-never-
+    stored (streak = trailing KNOW run, interval ladder, dueAt = last
+    occurred_at + intervalDays, due = !now.isBefore(dueAt)).
+    SecurityConfig s63-99 read BEFORE probing (write-safety proof): JWT
+    filter -> anyRequest().authenticated() -> 401 entry point BEFORE any
+    controller reaches persistence — Render pre-auth probes are
+    zero-persistence (T-MIG-003/004/007 precedent).
+    Capture plan (W3 two-prong pattern): run-001 Render authz-shell
+    (https://syllabai-core.onrender.com, wake-gated free tier, READ-ONLY
+    pre-auth filter-chain probes); run-002 LOCAL frozen-core boot (Temurin
+    JDK 25 + Maven tarballs no-root, LOCAL PostgreSQL 17 + pgvector via
+    pgdg debs no-root dpkg -x, unix socket, jit=off; core's own Flyway
+    applies V1..V63; zero Neon) for authed deterministic surfaces incl.
+    decay math on pinned anchors; scrub per GOLDEN_MASTER s2.3 ({{TOKEN}}
+    placeholders, synthetic identities, tolerate on wall-clock/now-derived
+    fields); LLM-output bodies never golden-gated.
+  scope:
+    allowed:
+      - "golden/** (w4-* case files + replay-readiness kit addenda)"
+      - ".syllabai/receipts/T-MIG-040-PREP/**"
+      - ".syllabai/receipts/capture/** (capture-session tooling/records)"
+      - ".syllabai/tasks/T-MIG-040-PREP-w4-golden-capture.yaml (status/execution_record only)"
+      - ".syllabai/worklog.md (append-only entry)"
+    forbidden:
+      - "apps/api/** apps/hub/** packages/** (port-lane fences — capture runs one wave ahead, never touches port code)"
+      - "ANY write against the Render core (pre-auth authz-shell probes only; zero persistence path proven from SecurityConfig source ordering)"
+      - "production Neon writes of any kind (run-002 boots LOCAL PostgreSQL only; zero Neon credentials in this session)"
+      - "committing unscrubbed fixtures (GOLDEN_MASTER s2.3, R-PII)"
+      - "LLM-output bodies into golden cases (s3 — behavioural gates instead)"
