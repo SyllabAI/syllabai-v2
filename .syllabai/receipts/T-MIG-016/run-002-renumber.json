@@ -1,0 +1,36 @@
+{
+  "task": "T-MIG-016",
+  "run": "run-002",
+  "renumbered_from": "T-MIG-014",
+  "agent": "r1 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "recorded_at": "2026-10-05T06:03:36Z (push session, Asia/Dhaka operator)",
+  "base": {
+    "branch": "t-mig-016/r1",
+    "parent_commit": "67639db (R0 housekeeping phase-2)",
+    "divergence": "three prior commits (b1f63b4 claim @ 05:23:58Z; 92bdb40 implementation; 6a75667 OUT-OF-FENCE mount) + this renumber commit — content of all three is untouched"
+  },
+  "objective": "Resolve the three-way T-MIG-014 ID collision at push time with zero churn to the in-review P1 lane; bring the RateLimitFilter M1 port onto a collision-free ID for R0 review.",
+  "collision_timeline": {
+    "r7a_docs_drift": "claim @ 2026-10-05T05:00:49Z (earliest, unpushed at the time) — yielded the ID, now T-MIG-015 (PR #14)",
+    "r3a_db_drivers": "claim ecded41 @ 05:08:44Z; PR #13 IN_REVIEW (P1, unblocks Wave-2 replay) — ID retained per §2.1 earliest-claim (05:08:44Z < 05:23:58Z)",
+    "r1_ratelimit": "claim b1f63b4 @ 05:23:58Z; implementation 92bdb40 + OUT-OF-FENCE 6a75667; PR #15 opened 05:36:39Z — this lane, renumbered to T-MIG-016 (next free at push time; 016..019 verified unclaimed: no yaml on main, no remote branch)",
+    "note": "three distinct tasks raced one self-assigned ID (each filed per §4 after an honest scan against main — the scans raced each other, not main)"
+  },
+  "decision": "Yield T-MIG-014 to PR #13. Earliest-claim is a tiebreak, not territory (r7a/#14 precedent, quoted verbatim); contesting would churn an in-review P1 for zero substantive gain — and unlike r7a this lane is also the LATER claim (05:23:58Z), so the yield is both the courteous and the clock-correct move. R0 retains discretion to re-rule.",
+  "changes_in_this_commit": {
+    ".syllabai/tasks/T-MIG-016-port-ratelimit.yaml": "renamed from T-MIG-014-port-ratelimit.yaml; id + status + scope.allowed renumbered; renumber paragraph appended to execution_record (claim timestamp preserved: 05:23:35Z survey / 05:23:58Z commit)",
+    ".syllabai/receipts/T-MIG-016/run-001-ratelimit-filter.json": "renamed from T-MIG-014/, BYTE-IDENTICAL (sha256 re-verified at commit time)",
+    ".syllabai/receipts/T-MIG-016/run-002-renumber.json": "this record",
+    ".syllabai/worklog.md": "append-only entry with full timeline + yield rationale",
+    "apps/api/src/index.ts": "comment-only renumber (3 disclosure lines T-MIG-014 -> T-MIG-016); zero semantic diff — the OUT-OF-FENCE disclosure itself is unchanged and still requests R0 ratification"
+  },
+  "gates": {
+    "diff_surface": "expected paths exactly: tasks yaml (renamed+edited), receipts dir (renamed + this record), worklog (append), apps/api/src/index.ts (comments only) — diffstat re-verified at push time",
+    "code_gates": "no code surface touched by the renumber commit; CI on content-identical head 6a75667 (PR #15): verify success, hub success; unit gates from run-001 remain authoritative (typecheck x4 exit 0, api 87/0/4skip, contracts 28/0)"
+  },
+  "push": {
+    "credential": "operator-supplied GITHUB_PAT persisted to .env.agent (0600, env-var channel only; never echoed/committed); chat-transit rotation recommendation stands from the prior session"
+  },
+  "superseded": "PR #15 (t-mig-014/r1) closes with cross-reference to this lane's replacement PR; remote branch t-mig-014/r1 deleted after the replacement PR opens (namespace hygiene for PR #13's receipts dir); local copy retained",
+  "verdict": "RateLimitFilter M1 port on the review queue under a collision-free ID; full collision timeline disclosed for R0; no action required on PR #13"
+}
