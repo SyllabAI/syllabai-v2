@@ -94,9 +94,13 @@ export type TopicCoverage = z.infer<typeof topicCoverageSchema>;
  * key. ref is a MarkPoint column without nullable=false (capture-unproven
  * → nullable per the T-MIG-018 precedent); acceptanceCriteria serialized
  * from the scheme points — an array, never null.
+ * partLabel is NULLABLE by frozen law (R0 ruling on T-MIG-034 intake,
+ * frozen TestBuilderService.java:147):
+ * `p.questionPart() == null ? null : p.questionPart().label()` —
+ * question-level mark points serialize partLabel: null.
  */
 export const testAnswerViewSchema = z.object({
-  partLabel: z.string(),
+  partLabel: z.string().nullable(),
   ref: z.string().nullable(),
   text: z.string(),
   marks: z.number().int(),
@@ -146,12 +150,18 @@ export type TestPreviewView = z.infer<typeof testPreviewViewSchema>;
  * and raw aggregates, no composite score. Ordering key: meanMastery asc
  * (nulls last) → active-misconception learners desc → code (:395-396).
  * meanMastery/masteryBand nullable — unmeasured mastery is honest.
+ * reasons: the frozen builder only ever adds the three named literals
+ * (R0 ruling on T-MIG-034 intake, frozen TestBuilderService.java:212-218 —
+ * LOW_MEAN_MASTERY / ACTIVE_MISCONCEPTION_PRESENT /
+ * BLOCKED_BY_WEAK_PREREQUISITE); the enum enforces that law.
  */
 export const weakTopicOptionSchema = z.object({
   topicNodeId: z.string().uuid(),
   code: z.string(),
   title: z.string(),
-  reasons: z.array(z.string()),
+  reasons: z.array(
+    z.enum(["LOW_MEAN_MASTERY", "ACTIVE_MISCONCEPTION_PRESENT", "BLOCKED_BY_WEAK_PREREQUISITE"]),
+  ),
   learnersMeasured: z.number().int(),
   meanMastery: z.number().nullable(),
   masteryBand: z.string().nullable(),

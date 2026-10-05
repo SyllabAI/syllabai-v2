@@ -104,6 +104,15 @@ describe("testAnswerViewSchema (:376-378)", () => {
         acceptanceCriteria: [],
       }).success,
     ).toBe(true); // ref column without nullable=false
+    expect(
+      testAnswerViewSchema.safeParse({
+        partLabel: null,
+        ref: null,
+        text: "x",
+        marks: 1,
+        acceptanceCriteria: [],
+      }).success,
+    ).toBe(true); // partLabel null = question-level mark point (frozen :147, R0 T-MIG-034 intake ruling)
   });
 });
 
@@ -195,7 +204,7 @@ describe("weaknessOptionsViewSchema (:383-413)", () => {
     topicNodeId: UUID,
     code: "BIO.3.1",
     title: "Cells",
-    reasons: ["mean mastery 0.41 below band"],
+    reasons: ["LOW_MEAN_MASTERY"], // frozen :212-218 — only the three named literals are ever added (R0 T-MIG-034 intake ruling)
     learnersMeasured: 18,
     meanMastery: 0.41,
     masteryBand: "WEAK",
