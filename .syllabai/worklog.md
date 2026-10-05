@@ -890,3 +890,17 @@ Work Log:
 
 Stage Summary:
 - T-MIG-030 CLAIMED (yaml + claim receipt on branch t-mig-030/r7a; PR to follow with R0 ratification request). Tranche-1 = services/assessment + stubbed-sql tests (021 pattern); tranche-2 gates on T-MIG-018 (#26) + T-MIG-007 (#29) merges; mounts OUT-OF-FENCE flagged. No upstream writes.
+
+---
+Task ID: T-MIG-030 tranche 1
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Execute T-MIG-030 tranche-1 — assessment services (history read model + both submission paths) + stubbed-sql tests
+
+Work Log:
+- Shipped services/assessment {sql,types,history,submit,index} + test/assessment {helpers,history,submit} on branch t-mig-030/r7a (claim PR #31). Zero out-of-fence touches; zero upstream writes.
+- Frozen law ported verbatim: both submission paths (MCQ auto-grade with marksAwarded = correct ? marks : 0; structured PENDING with per-part answers, null->"" trim), gate ORDER preserved (active filter -> STRUCTURED version-VALIDATED -> V20 paper gate -> option existence), fail-closed "question"/"structured question"/"option"/"question version"/"parts for question version" 404s, IllegalArgumentException -> 400 with the FIXED "malformed request" body (GlobalExceptionHandler:167-170 — detail is log-only, comment-documented at throw sites), clampLimit (null/<1 -> 50, cap 100), excerpt (strip/collapse/219+"…"), parts settle rule (marksAwarded = part sum only when all parts settled), AttemptHistoryView/Item/PartItem + both submit views verbatim from the DTO records.
+- Parity decisions disclosed in the receipt: batched option/node fetches (fetch-strategy precedent, boundary unchanged), per-attempt parts statement kept verbatim, EvidencePublisher injected Observer seam (default no-op; structured emits nothing at submit — V8), injected SubmitClock (@PrePersist parity), @Transactional -> per-statement autocommit disclosure.
+- Gates: typecheck x4 exit 0; bun test 320/0/13skip 853 expect (main 286/789 + 34/64 exactly); golden selftest OK; replay NOT RUN (tranche-2 + env gates).
+
+Stage Summary:
+- T-MIG-030 tranche-1 complete on t-mig-030/r7a; PR #31 extended. Pending: tranche-2 (route factories + zod on T-MIG-018 merge; mounts flagged OUT-OF-FENCE; replay on T-MIG-007 merge + env). One bind-slot discipline catch fixed in-development (join(',') -> any(${}::uuid[])).
