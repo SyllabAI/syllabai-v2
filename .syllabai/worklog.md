@@ -1149,3 +1149,33 @@ Work Log:
 
 Stage Summary:
 - T-MIG-031 CLAIMED (branch t-mig-031/r3a pushed; commit e57a393 + this intake). Deps T-MIG-018/007/014 all merged — slice immediately portable. Tranche-1 (services/questions + services/exam-papers, stubbed-sql tests) next; tranche-2 (zod-wired route factories + flagged OUT-OF-FENCE mounts) follows. Golden replay posture: env-blocked follow-up per T-MIG-020/021 precedent, no case weakened.
+
+
+---
+Task ID: T-MIG-035 (claim — T-MIG-011's escalated remainder, routed by operator word)
+Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Operator "T-MIG-011-adjacent hub work. Check if already done" (trace 1a10b2e6fc57b639) → verified the parallel-safe T-MIG-011 scope DONE (PR #32, b3b33031) while the escalated live auth-flow check remains open and unowned → claimed it as self-filed T-MIG-035 (next free id; 031..034 reserved by the ratified 030..034 split map).
+
+Work Log:
+- Board check: T-MIG-011 DONE; its yaml + worklog rows record exactly one surviving item — "the Neon-branch-gated live auth-flow check (rate-limit/audit write paths) — R6 capture route or branch DSN, operator's call". No yaml owns it.
+- Operator word routes it to this lane, which holds the verified NEON_PAT and the proven branch/boot/synthetic-account mechanics (T-MIG-004 run-002).
+- Self-filed .syllabai/tasks/T-MIG-035-hub-live-flow.yaml (fence: task yaml + receipts/T-MIG-035/** + worklog append + local scratch only; apps/hub + apps/api read-only — defects FILED, never silently fixed).
+- Claim commit = branch start per §2.1 (this commit).
+
+Stage Summary:
+- T-MIG-035 CLAIMED. Next: provision COW branch hub-live-flow/2026-10-05, boot v2 api against it, verify hub strangler routing via the hub's own api.ts decision, run register/login/me live through the constructed URL, assert branch DB write paths (users + audit rows), receipts + PR.
+
+---
+Task ID: T-MIG-035 (run-001 — live auth-flow check executed; ALL 10 CHECKS PASS)
+Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Execute the escalated T-MIG-011 remainder — live auth-flow verification of the hub auth surface against the v2 api, strangler env flipped, on a task-owned Neon COW branch.
+
+Work Log:
+- Provisioned Neon COW branch hub-live-flow/2026-10-05 (br-mute-dust-a50ov8nc, endpoint ep-bold-boat-a50g21yb, parent production) via the console.neon.tech/api/v2 base — api.neon.tech still DNS-dark; fallback first proven on the run-006 drop. Branch-local role password reset; production role untouched; DSN in gitignored operator .env only.
+- Booted apps/api against the branch (PORT=8090; branch DSN; synthetic 32B JWT secret; synthetic teacher join code). Boot clean; no LLM keys needed for the auth surface.
+- Harness imports the hub's ACTUAL routing decision (apps/hub/src/lib/api.ts resolveBase/apiPath) with NEXT_PUBLIC_API_V2_BASE_URL set — not a reimplementation: 10/10 PASS. Highlights: auth surfaces resolve to the v2 base while /api/v1/subjects stays core (strangler isolation intact); register 201 + login 200 + /me 200 via the hub-constructed URLs; AuthResponse {accessToken,tokenType,user} matches the hub's types.ts contract exactly; wrong-password 401 exercises the budget path; no Retry-After on admitted logins.
+- Write-path proof: users row dce2ba69… exists on the branch only; branch users total 324 = 323 COW-copied production rows + 1 synthetic. Zero production writes, zero production compute contact.
+- Residual honestly recorded: browser-level UI drive NOT executed (stretch goal; the React form render layer is the only unexercised hop). Receipts: .syllabai/receipts/T-MIG-035/run-001-hub-live-flow.json.
+
+Stage Summary:
+- T-MIG-035 evidence complete: the last open item of the Wave-1 hub adapter is CLOSED with live proof. After merge, COW branch br-mute-dust-a50ov8nc can be dropped. PR follows with receipts; status stays R0's field.
