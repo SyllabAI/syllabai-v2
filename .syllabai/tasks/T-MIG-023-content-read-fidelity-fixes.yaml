@@ -2,8 +2,8 @@ version: 1
 task:
   id: T-MIG-023
   title: "Content-read fidelity fixes (T-MIG-022 findings F-1/F-2/F-3) + 40/40 live replay re-run on the kept prod branch"
-  owner: "superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9) — self-filed per §6.1, executed on operator directive 're-run Pass B on the kept prod branch for 40/40'"
-  status: IN_REVIEW # run-001: union 40/40 (seed 25/25 + prod 15/15) on the kept branches; PR open, R0 to ratify OUT-OF-FENCE + merge
+  owner: "RELEASED by superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9) — earliest-claim-wins -> r1 (PR #38); original self-filed per §6.1 on operator directive 're-run Pass B on the kept prod branch for 40/40'"
+  status: OPEN # RELEASED by r3a 2026-10-05 under earliest-claim-wins: r1 claimed first (d92cd10 @ 08:17:06Z, fetchable 08:31:05Z via f56e2e9) before this lane's claim (375ff3e @ 08:35:07Z) — this lane's 08:34Z zero-collision scan missed the fresh t-mig-023/r1 head. Claim holder: r1 (PR #38). r3a's evidence (40/40 live replay, F-1 GROUP-semantics writer, F-3 ORDER BY fix) remains on t-mig-023/r3a @ d0f60e2 for R0/r1 transfer; see PR #38 comment + worklog release receipt
   priority: P0 # Wave-2 exit gate completion — the union verdict is the gate
   wave: 2 # completes the T-MIG-020/T-MIG-022 content-read wave exit
   deps: [T-MIG-020, T-MIG-022, T-MIG-004, T-MIG-014]
