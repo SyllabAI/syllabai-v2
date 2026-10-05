@@ -6,11 +6,12 @@ task:
     (GET /api/v1/questions list, /families, /topics, /{id},
     /{id}/mark-scheme) over the ServableQuestionService one-owner
     servability boundary; 11 golden cases"
-  owner: "R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) —
-    self-filed per the T-MIG-013/020/021/030 precedent; R0 ratification of
-    the task id + the 031 mapping (r7a's 030..034 split proposal, PR #31)
-    requested in the PR"
-  status: IN_PROGRESS # claimed 2026-10-05T08:20Z (e57a393, push-authoritative after PAT provisioning); branch pushed; tranche-1 landed run-002
+  owner: "R3-api-a / r3-c continuation (Super Z, zai-web session
+    web-1f157e25-0ed7-4f18-8956-3b2a993bc646) — same lane, operator-directed
+    tranche-2; self-filed per the T-MIG-013/020/021/030 precedent; R0
+    ratification of the task id + the 031 mapping (r7a's 030..034 split
+    proposal, PR #31) requested in the PR"
+  status: IN_REVIEW # claimed 2026-10-05T08:20Z (e57a393); tranche-1 landed run-002 (PR #43, c3795276); tranche-2 landed run-004 on t-mig-031/r3c — PR open, independent review requested
   claimed_at: "2026-10-05T08:20:00Z"
   priority: P1
   wave: 3
@@ -131,6 +132,36 @@ task:
     subtree CTE declared in-fence (content lane's copy is private). Merge-intake
     of post-#31 main (daad88e) taken between claim and tranche-1 (worklog
     append-union, sole conflict class).
+        (tranche-2 entry 2026-10-05, session web-1f157e25) Operator directive
+    executed on a fresh sandbox (repo re-cloned; PAT rotated to the round-6
+    value): route factories + zod wiring + mounts. routes/questions
+    (QuestionController :39-102 — list/families/topics/{id}/{id}/mark-scheme;
+    list precedence topicNodeId->rootId->all-active with the rootId path
+    resolving the PART_OF subtree 404-first through the now-public
+    taxonomy.subtreeIds; /topics binds rootId ONLY — questionsListParamsSchema
+    .pick — so undeclared stray params stay Spring-ignored, test-pinned;
+    mark-scheme 200|204 with the unservable-404 riding the servability gate
+    BEFORE any scheme lookup, pinned by a zero-scheme-queries test) and
+    routes/exam-papers (ExamPaperController :42-74 — list with subjectId
+    filter, detail 404 via the shared NotFoundException). Zod wiring against
+    the merged T-MIG-018 schemas only (questionsListParamsSchema,
+    examPapersListParamsSchema, questionIdPathSchema, examPaperIdPathSchema;
+    200s pinned to the canonical view schemas) — import, never edit. Binding
+    law: unparseable UUID = 400 bad_request "malformed request"
+    (MethodArgumentTypeMismatch :167-170 parity), distinct from the 404
+    unknown-id envelope pinned verbatim (w3-question-unknown-authed-404).
+    Fence-internal service edits (disclosed): QuestionsModule gains
+    allFamilies/familiesByTopic/familiesWithin (ServableQuestionService
+    :95-107 verbatim composition) + subtreeIds public (the frozen controller
+    calls knowledgeGraph.subtreeIds directly for list/families rootId paths —
+    :48/:67). OUT-OF-FENCE mounts (separate flagged commit: two mount lines +
+    imports + construction + comment in apps/api/src/index.ts) — the
+    T-MIG-010/020/021/030/032 ratified precedent, R0 ratification requested.
+    31 route tests over REAL services on stubbed sql (032 pattern). Gates on
+    the final head: typecheck x4 exit 0; bun test 503/0/13skip 1366 expect
+    (= main 485/1259 + 31/107 exactly); golden --selftest OK; replay NOT RUN
+    (env-blocked follow-up posture, no case weakened). Receipt:
+    run-004-tranche2.json.
   base:
     repo: "syllabai-v2 @ ffc2876 (origin/main at claim; R0 housekeeping
       T-MIG-022 -> DONE, Wave-2 exit gate conditional); frozen refs:

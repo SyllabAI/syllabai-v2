@@ -1447,3 +1447,21 @@ Stage Summary:
 - Round-6 board state after this pass: every merged card now reflects merged reality (zero card/PR drift); the donation hazard is verified and answered on-thread; the only remaining register items are operator-routed (CI-side Neon replay runner, T-MIG-002-R execution word, PAT rotation) or lane-owned (T-MIG-031 tranche-2 = R3-api-a, H-2 = r7a, identity-budget flake root-cause on 3rd occurrence). NO new claim was available to this lane without self-filing wave work (033/034 remain reserved, unfiled per the ratified split map) — per the directive, R0 stops here.
 
 R0-integrator | round-6: synced (main 79bdc23, board zero-open, CI green), verified the ARBITRATION-DONATION ${}-binding hazard ABSENT on merged main (8/8 to_char literal, receipt + on-thread answer), flipped the 3 stale cards (023/024/032 -> DONE w/ provenance + standing conditions) | IDLE | suggestion: route the CI-side Neon replay runner to a lane (it is the standing re-proof instrument for 022/023/024/030/032 and the only live-replay path), give w0a the T-MIG-002-R execution word, and treat DOCUMENT_COLUMNS/PAPER_COLUMNS dead constants as sweep-cleanup in a future housekeeping pass (harmless, flagged only).
+---
+Task ID: T-MIG-031 tranche 2
+Agent: R3-api-a / r3-c continuation (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Operator directive — exam-papers + questions routers + zod wiring + mounts (flagged OUT-OF-FENCE) + full gates + PR + independent review request
+
+Work Log:
+- SYNC on a fresh sandbox (repo re-cloned; .secrets rebuilt with the round-6 PAT value; worklog tail + yaml re-read). Zero-collision scan: ls-remote shows no t-mig-031 tranche-2 branch; open PRs #48/#49/#50 file-listed — zero overlap with this fence; branch t-mig-031/r3c cut from re-verified origin/main c920eea.
+- routes/questions (QuestionController port, :39-102): list/families/topics/{id}/{id}/mark-scheme with the list precedence topicNodeId->rootId->all-active; rootId resolves the PART_OF subtree 404-first via the now-public taxonomy.subtreeIds; /topics binds rootId ONLY (questionsListParamsSchema.pick — undeclared stray params stay Spring-ignored, test-pinned); mark-scheme 200|204 with the unservable-404 riding the servability gate BEFORE any scheme lookup (zero-scheme-queries pin).
+- routes/exam-papers (ExamPaperController port, :42-74): list with optional subjectId + detail 404 via the shared NotFoundException("exam paper", id) envelope.
+- Zod wiring against the merged T-MIG-018 schemas only (list/path params; 200 bodies pinned to the canonical view schemas); binding law: unparseable UUID -> 400 bad_request "malformed request" (MethodArgumentTypeMismatch :167-170 parity), distinct from the 404 unknown-id envelope pinned verbatim (w3-question-unknown-authed-404).
+- Fence-internal service edits (disclosed): QuestionsModule gains allFamilies/familiesByTopic/familiesWithin (ServableQuestionService :95-107 verbatim composition) + subtreeIds private->public (the frozen controller calls knowledgeGraph.subtreeIds directly for list/families rootId paths, :48/:67 — one implementation, three call sites, frozen topology).
+- OUT-OF-FENCE mounts shipped as the separate flagged commit (two mount lines at /api/v1/exam-papers + /api/v1/questions + imports + construction + comment in apps/api/src/index.ts) per the T-MIG-010/020/021/030/032 ratified precedent — R0 ratification requested.
+- 31 route tests over REAL services on stubbed sql (032 pattern; fakeSql seam from tranche-1 helpers). Caught in-flight: the new allFamilies composition initially passed the promise un-awaited (caught by the route test, fixed pre-push).
+- Gates on the final head: typecheck x4 exit 0; bun test apps/api packages = 503 pass / 0 fail / 13 skip, 1366 expect (= main 485/1259 + 31/107 exactly); golden --selftest OK. Replay NOT RUN (env-blocked follow-up posture, no case weakened).
+
+Stage Summary:
+- T-MIG-031 tranche-2 complete on t-mig-031/r3c; yaml IN_REVIEW; receipt run-004-tranche2.json; PR to follow with the independent review request (authors never self-merge — §5 recusal rule) and the OUT-OF-FENCE mounts ratification flag for R0. Route surfaces: 7 endpoints across the two controllers, all READ-only, capture-is-the-law.
+

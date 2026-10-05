@@ -1,0 +1,52 @@
+{
+  "task": "T-MIG-031",
+  "run": 4,
+  "kind": "TRANCHE_2",
+  "lane": "R3-api-a / r3-c continuation (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "branch": "t-mig-031/r3c",
+  "base": "origin/main c920eea (R0 round-6 housekeeping; re-verified unchanged immediately before branch cut)",
+  "operator_directive": "T-MIG-031 tranche-2 (your lane, t1 merged c3795276): exam-papers + questions routers + zod wiring + mounts in apps/api/src/index.ts. Flag mounts OUT-OF-FENCE for R0 ratification (030/032 precedent). Full gates + PR + independent review request.",
+  "scope_landed": {
+    "routes/questions": [
+      "index.ts (QuestionController port: GET / list with topicNodeId->rootId->all-active precedence (:39-51), GET /families (:60-70), GET /topics with rootId-only binding (:79-82), GET /:id with 404 NotFoundException('question', id) (:84-88), GET /:id/mark-scheme 200|204 (:97-102))"
+    ],
+    "routes/exam-papers": [
+      "index.ts (ExamPaperController port: GET / list with optional subjectId (:42-48), GET /:id detail (:50-74))"
+    ],
+    "services/questions (fence-internal edits, disclosed)": [
+      "index.ts (QuestionsModule gains the frozen service's composition surface: allFamilies/familiesByTopic/familiesWithin = ServableQuestionService :95-107 verbatim wrappers; subtreeIds re-exported from taxonomy)",
+      "taxonomy.ts (subtreeIds private -> public: the frozen controller calls knowledgeGraph.subtreeIds DIRECTLY for list/families rootId paths (:48, :67) — one implementation, three call sites, exactly the frozen topology)"
+    ],
+    "tests": [
+      "test/questions/routes.test.ts (21 tests: authz 401 shells x2 groups, list precedence + canonical schema pin, malformed-request 400 parity, unknown-root 404-first + zero-question-work pin, families canonical pin incl. SME-first serving order + null-ref key fallback, taxonomy view pin + stray-undeclared-param IGNORED parity, /:id captured 404 envelope (w3-question-unknown-authed-404 verbatim), mark-scheme 200 canonical + 204 empty-body + 404-before-scheme-lookup + bad-uuid 400)",
+      "test/exam-papers/routes.test.ts (10 tests: 401 shells, empty-state 200 [] (w3-exam-papers-student-403-or-state captured truth), canonical ExamPaperView list + subjectId WHERE pin, detail canonical pin (T-C28 specPoints, batched version heads), no-version honest-absence nulls, 404 'exam paper' envelope, bad-uuid 400)"
+    ]
+  },
+  "gates": {
+    "typecheck_x4": "exit 0 (contracts/shared/db/api) on the final head e876fe0",
+    "bun_test": "503 pass / 0 fail / 13 skip, 1366 expect() across 33 files = post-c920eea main baseline 485/1259 + this tranche's 31/107 exactly — zero test loss, additive only",
+    "golden_selftest": "OK",
+    "golden_replay": "NOT RUN — the 11 slice cases gate on the replay env (CI-side Neon runner per R0's standing proposal); env-blocked follow-up posture per T-MIG-020/021, no case weakened",
+    "upstream_writes": "zero (no Neon, no frozen core, no golden edits; read-only SELECT-only surface)"
+  },
+  "law_highlights": [
+    "Route security: /api/v1/exam-papers + /api/v1/questions fall under anyRequest().authenticated() (SecurityConfig.java:91 — NO role-specific matchers; class javadoc 'Any authenticated user may list/view'); requireAuth shell answers the captured Boot 401 before any handler body",
+    "List precedence is controller law (QuestionController :42-50): topicNodeId, else rootId (knowledgeGraph.subtreeIds — 404-first), else allActive; families mirrors it 1:1 via the module's composition methods",
+    "Spring binding parity: unparseable @RequestParam/@PathVariable UUID -> 400 bad_request 'malformed request' (MethodArgumentTypeMismatchException :167-170); conversion precedes validation; UNDECLARED query params are IGNORED (Spring behavior) — /topics parses rootId only (questionsListParamsSchema.pick) so a stray topicNodeId=garbage is not a 400 (test-pinned)",
+    "Mark-scheme law (MarkSchemeRevealService, ported tranche-1): 200 with the scheme when the policy serves it, 204 EMPTY body when withheld (pending validation / REJECTED / FLAGGED / policy), 404 when the question is unservable — unservable 404s BEFORE any scheme lookup (test pins zero scheme queries on that path); policy env SYLLABAI_MARKSCHEME_REVEAL_POLICY default VALIDATED_ONLY, fail-fast at construction",
+    "Mounts (OUT-OF-FENCE commit e876fe0): two mount lines at /api/v1/exam-papers + /api/v1/questions + imports + construction + comment — minimal app-level wiring per the T-MIG-010/020/021/030/032 ratified precedent, R0 ratification requested",
+    "Route registration: /families and /topics before /:id (readability; Hono resolves the static segment first — curriculum precedent comment)"
+  ],
+  "disclosed_deviations": [
+    "services/questions fence-internal edits at tranche-2 (scope.allowed covers services/questions/**): taxonomy.subtreeIds private -> public + QuestionsModule gains allFamilies/familiesByTopic/familiesWithin — mirrors the frozen QuestionController->ServableQuestionService call topology (the controller calls the service's composition methods directly); route layer stays a binding shell",
+    "buildQuestionsRouters + buildExamPapersRouters each build their own sql adapter from env (two postgres instances at the app root) — the buildSelfMarkRouters/buildSmartMarkRouters ratified precedent (032, PR #47)",
+    "SYLLABAI_MARKSCHEME_REVEAL_POLICY is the yaml's named equivalent of syllabai.assessment.markscheme-reveal-policy; every capture ran under the default VALIDATED_ONLY, so the env spelling is composition-root naming, disclosed (R0 may standardize later)",
+    "golden replay of the 11 slice cases: NOT RUN (env-blocked follow-up posture per T-MIG-020/021/030/032; the CI-side Neon runner is R0's standing proposal) — no case weakened, capture-is-the-law"
+  ],
+  "fence_audit": "in-fence commit 905d385 touches services/questions/{index,taxonomy}.ts, routes/{questions,exam-papers}/index.ts, test/{questions,exam-papers}/routes.test.ts — all inside scope.allowed; OUT-OF-FENCE commit e876fe0 touches apps/api/src/index.ts ONLY (flagged, ratification requested); receipts/T-MIG-031/** + yaml status/execution_record + worklog append are the remaining tranche files; zero touches on T-MIG-030's assessment globs, packages/**, golden/**, or any frozen repo",
+  "claim_provenance": {
+    "yaml_status_at_work_start": "IN_PROGRESS (tranche-1 landed run-002; tranche-2 on this lane's desk per the operator directive)",
+    "zero_collision_scan": "fresh ls-remote: only merged-lane residue t-mig-031/r3a (no tranche-2 branch); open PRs #48 (identity tests), #49 (T-MIG-022 H-2), #50 (teachermarking/033) — zero file overlap with this fence (verified via the PRs' file listings); worklog.md is the only shared file (append-only union at intake)",
+    "session_continuity": "the yaml owner is R3-api-a (the tranche-1 session); this is the same lane continuing under the operator's 'your lane' directive (r3-c identity per the round-6 register); owner line updated with the session id, no ownership change"
+  }
+}
