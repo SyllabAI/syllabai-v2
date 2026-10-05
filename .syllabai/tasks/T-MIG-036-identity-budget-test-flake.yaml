@@ -5,7 +5,7 @@ task:
     the flaky identity-budget routes test, 2 fleet occurrences, CI-evidenced
     on main @ 3a0cf41 via run 37294749131)"
   owner: "r3-fix (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)"
-  status: CLAIMED
+  status: IN_REVIEW
   claimed_at: "2026-10-05T11:49:17Z"
   priority: P2
   wave: "register-item (maintenance — R0-SWEEP-4/SWEEP-5 standing register entry
@@ -16,6 +16,13 @@ task:
     re-frame at intake."
   deps: [T-MIG-010, T-MIG-016]
   execution_record: >
+    (IN_REVIEW 2026-10-05T12:0xZ — fix + gates landed on t-mig-036/r3fix:
+    typecheck x4 exit 0; bun test 486/0/13skip 1261 expect = main 485/0/13
+    +1 test/+2 expect exactly; golden selftest OK; identity suite 15/15
+    smoke-green loops (determinism by construction — budget clock pinned).
+    Root cause + fleet CI evidence in receipts/T-MIG-036/run-001; gates in
+    run-002. Independent review + R0 intake requested; id-usage ratification
+    requested per R0-COLLISION-1.)
     (claim entry 2026-10-05T11:49Z) Root cause CONFIRMED from fleet CI evidence
     BEFORE the branch cut — receipts/T-MIG-036/run-001-root-cause.json: CI run
     37294749131 (main @ 3a0cf41, job 111713216542, step Test) shows

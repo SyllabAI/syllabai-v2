@@ -1444,3 +1444,16 @@ Work Log:
 
 Stage Summary:
 - T-MIG-036 CLAIMED on branch t-mig-036/r3fix (claim commit follows); implementation next, then gates → PR → independent review (authors never self-merge) → R0 merge-intake.
+
+---
+Task ID: T-MIG-036 (execution complete)
+Agent: r3-fix (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Execute the flake fix — test-only determinism, gates, PR handoff.
+
+Work Log:
+- FIX (test-only, zero production files): routes.test.ts gains SteppingClock (BudgetClock impl) seeded at an ALIGNED minute (1_800_000_000_000 % 60_000 === 0); buildTestApp(env, clock?) swaps identity.budget for a clock-pinned budget BEFORE AuthService construction (lazy read at service.ts:154 today — pre-construction swap order-safe against a future eager capture). The 11-failures→429 test now pins the exact Retry-After ("61", the :110 formula at the pinned instant) and registers its untouched-account user on its own instance; the clear test keeps REAL bcrypt + 60s timeout (bcrypt parity is worth wall time — the BUDGET clock is what was wall-dependent). budget.test.ts gains the window-roll LAW pin ("a failure in a NEW aligned window starts a FRESH count") with an explicit do-not-fix marker so the roll can never be silently 'fixed' into a parity break.
+- GATES: typecheck x4 exit 0; bun test 486/0/13skip 1261 expect (= main 485/0/13, 1259 +1 test/+2 expect exactly — the law pin; Retry-After pin swapped 1-for-1; zero loss); golden --selftest OK; identity suite 15/15 smoke-green loops (determinism by construction, disclosed as smoke not proof). Receipt: receipts/T-MIG-036/run-002-gates.json.
+- yaml → IN_REVIEW; PR to follow with root-cause + evidence + fence + ratification requests; independent review requested (authors never self-merge).
+
+Stage Summary:
+- T-MIG-036 IN_REVIEW: the register flake is root-caused (CI-evidenced), the mechanism enshrined as law, and the wall-clock dependence eliminated test-side with zero production drift. Wave-2/3 ports untouched; register item closable on merge.
