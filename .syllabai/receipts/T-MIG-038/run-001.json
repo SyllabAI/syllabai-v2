@@ -1,0 +1,30 @@
+{
+  "task": "T-MIG-038",
+  "run": "run-001",
+  "agent": "Contracts-lane (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)",
+  "recorded_at": "2026-10-05T22:29:02+06:00 (Asia/Dhaka)",
+  "directive": "Operator CONTRACTS-LANE directive trace 1a10cb48dc7edd15, Step 2 (W4 contracts: learner surfaces + decay math DTOs + NightlyDecayJob I/O)",
+  "base": "origin/main c0d8fa0 (claim branch independent of t-mig-037/r1c by no-force-push discipline; index.ts carries a 2-line overlay for intake)",
+  "branch": "t-mig-038/r1c",
+  "frozen_ref": "syllabai-core @ 6cad6ef9463e8d21f1555456561a4caaf7e89395 (local clone HEAD verified)",
+  "delivered": {
+    "files": [
+      "packages/contracts/src/learner.ts",
+      "packages/contracts/src/learner.test.ts",
+      "packages/contracts/src/decay.ts",
+      "packages/contracts/src/decay.test.ts",
+      "packages/contracts/src/index.ts (+2 export lines)"
+    ],
+    "learner": "wire vocabularies (ratings still-learning|know, votes helpful|not-helpful, assignment status open|closed, review reasons, mastery bands LOW|DEVELOPING|SECURE, NodeType reused from curriculum.ts six values); request bodies (flashcardRatingRequest @Size(3,64)+@Pattern, noteVoteRequest same law); views (FlashcardRatingView, NoteVoteView, TutorEngagementView, SkillStateView anchor+re-decayed+band, MisconceptionStateView relaxed probability, ReviewView, CourseExamTargetView read-derived countdown, AssignmentView/SubmissionView, LearnerAssignmentView, NextBestActionsView policy z.literal nba-rules/v1.3 + 7 actionTypes + 10 reasonCodes, AgendaView actions-nullable, CourseStatsView distinct-coverage, LearnerKnowledgeGraphView NodeWithStateView 18 components + prerequisite edges, FlashcardReviewScheduleView timing-only, FlashcardRatingTrailView keyset true-merge, SmartLessonView policy smart-lesson/v2 + v2 action ladder + honest topic status); trail params (default 200, cap 500 clamp, fail-closed cursor law documented)",
+    "decay": "ENGINE-BOUNDARY + job I/O (not HTTP wire): DecayParams (invariants taus positive, 0<low<high<=1, 0<=floor<reviewBelow<=1; paper defaults 30/90/365/0.45/0.8/0.1/0.6), BktParams (probs in (0,1) exclusive + degenerate guard; paper defaults 0.1/0.1/0.25/0.1), BdtParams (strictly informative likelihoods selectIfHeld>selectIfNotHeld; defaults 0.3/0.7/0.1), DecayJobRun ledger row (windowStart PK at-most-once, trigger SCHEDULED|CATCH_UP, 5-min grace), DecayAppliedEvent (8 fields), ReviewScheduledEvent (6 fields); ADR-031 anchor law documented (read anchor, re-decay on read, never persist decayed values)"
+  },
+  "embedded_view_disclosure": "AgendaView embeds NextBestActionsView (recommendation) + LearnerAssignmentView (assignment) + CourseExamTargetView (learner.exam) — ported here for the agenda's wire completeness per the T-MIG-018 embedded-view precedent; movable verbatim if R0 prefers domain-owned files. MasteryUpdatedEvent is attempt-flow (T-MIG-030 lineage), NOT job I/O — out of this card. MisconceptionReading is engine-internal (wraps the entity); its wire form is misconceptionStateViewSchema.",
+  "gates": {
+    "typecheck_x4": "exit 0",
+    "bun_test_apps_api_packages": "503 pass / 13 skip / 0 fail, 1327 expect, 516 total ran (= main 472 pass + 31 new pins / +68 expect exactly; 13 skip unchanged)",
+    "contracts_package": "159 pass / 0 fail across 6 files (148 base + 31 new)",
+    "golden_selftest": "OK"
+  },
+  "measurement_note": "The round-6 '485/0/13' convention is TOTAL=485 (472 pass + 13 skip), verified by identical-command measurement on a scratch worktree of c0d8fa0. T-MIG-037's run-001 receipt wrote '536/0/13skip 1396' where 536 is TOTAL (523 pass + 13 skip) and the delta claim (51 pins / +137 expect) is exact — same label-semantics class as R0's N-1 on PR #50; non-blocking, disclosed here.",
+  "next": "PR open; independent review requested; R0 merge-intake; merge order recommendation: #58 (T-MIG-037) before this PR (index.ts adjacency is then additive; if reversed, intake resolves 2 adjacent export lines)"
+}

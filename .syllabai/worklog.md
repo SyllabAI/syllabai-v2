@@ -1449,6 +1449,52 @@ Stage Summary:
 R0-integrator | round-6: synced (main 79bdc23, board zero-open, CI green), verified the ARBITRATION-DONATION ${}-binding hazard ABSENT on merged main (8/8 to_char literal, receipt + on-thread answer), flipped the 3 stale cards (023/024/032 -> DONE w/ provenance + standing conditions) | IDLE | suggestion: route the CI-side Neon replay runner to a lane (it is the standing re-proof instrument for 022/023/024/030/032 and the only live-replay path), give w0a the T-MIG-002-R execution word, and treat DOCUMENT_COLUMNS/PAPER_COLUMNS dead constants as sweep-cleanup in a future housekeeping pass (harmless, flagged only).
 
 ---
+
+Task ID: T-MIG-044 (run-001 — claim + implementation)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator directive (IM trace 1a10ca697e382335 item 2) — CI-SIDE Neon replay runner: GitHub Actions workflow running the golden replay against Neon (sandboxes are DNS-blocked; CI is not); STRICT read-only posture, replay only, cases stay forever-gates.
+
+Work Log:
+- Claimed T-MIG-044 (id verified free — 040..043 are Wave-4-reserved in MIGRATION_PLAN.md, 044/045 band unreserved; zero-collision scan: 0 open PRs, both non-DONE cards 002R/031 are other lanes', fences disjoint).
+- Mechanized the RECORDED T-MIG-022 two-posture protocol corpus-wide (nothing invented): Pass A seed posture (disposable COW branch reset by apply-reset.ts -> all 98 non-realdata cases) + Pass B prod posture (second disposable COW branch AS-COWED -> the 15 realdata/real- cases); split regex VERBATIM from the proven v2 tool; union verdict = the job gate.
+- New: .github/workflows/neon-replay.yml (dispatch + daily schedule; selftest FIRST; concurrency-serialized; READ-ONLY PROOF step — git diff --exit-code over the corpus every run; evidence artifact; branch drop + 404-verify under if:always()); golden/tools/ci-replay.ts (comparator IMPORTED from the gated runner.ts — zero drift; seq-aware ordering via the gated loader; route-rule auth with honest-surface token minting; --plan/--union modes); golden/tools/neon-branch.ts (Neon API v2 create/drop+404-verify ONLY, URIs add-mask-ed, production referenced only as the COW parent VARIABLE); golden/README.md runner section (posture table, guarantees, known-posture disclosures, one-time operator setup).
+- apply-reset.ts + boot-with-timeout.ts repo-resident copies with sha256 provenance headers; boot wrapper's single path-only import delta disclosed; H-2 divergence preserved INTACT (no unratified tool change); golden/runner.ts + golden/cases/** byte-identical (diff-verified).
+- KNOWN POSTURE NOTES disclosed (not pre-weakened): Flyway-seed-pinned w3/curriculum/teacher cases (V6/V7 fixed-uuid rows wiped by apply-reset per H-2) and non-tolerated capture-time identity pins (e.g. w3-history-after-submit-200 learnerId) will FAIL honestly on first runs — full per-case evidence for R0/R6 to rule the third posture / amend cases; content seed 25 + identity 16 + realdata 15 are the tool-proven postures expected green from run one. The first reports ARE the filing evidence; the instrument weakens nothing.
+- Gates on this head: typecheck x4 exit 0; bun test 485 ran / 0 fail / 13 skip / 1259 expect (baseline exact); golden selftest OK; --plan deterministic (98/15 disjoint, seq order verified); neon-branch fail-fast clean (exit 2 + setup guidance); boot wrapper SMOKE-BOOTED the real api (health 200, unknown /api/v1 path 401 parity, H-1 envelope live); workflow YAML parse-validated (18 steps).
+
+Stage Summary:
+- T-MIG-044 IN_REVIEW on t-mig-044/r4b (receipt run-001-claim-implementation.json). UNBLOCKS the fleet-standard "replay NOT RUN — env-blocked" register (030 run-004 / 031 / 032) and the standing re-proof conditions on cards 022/023/024/030/032; live Neon execution is deliberately NOT attempted from the sandbox — the instrument is CI-side by design. One-time operator setup: NEON_API_KEY secret + NEON_PROJECT_ID / NEON_PARENT_BRANCH_ID variables, then dispatch. PR follows; merge per the authors-never-self-merge rule.
+
+---
+Task ID: T-MIG-044 (push addendum — directive trace 1a10cced0cde9341 "Proceed")
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Record post-restart re-verification + push-blocked state for the T-MIG-044 head.
+
+Work Log:
+- Session restarted after context exhaustion; state recovered from repo (no re-claim needed: branch + commit + receipt already in place, zero remote collision — T-MIG-044 absent from origin/main 260f452 and from every fetched branch; PR numbering on main reaches #54, mine follow).
+- FULL GATE RE-VERIFICATION on head 6979aff in this restarted environment: typecheck x4 exit 0; bun test apps/api packages = 485 ran / 472 pass / 0 fail / 13 skip / 1259 expect (c920eea baseline EXACT); golden selftest OK; ci-replay --plan = 113 -> seed 98 + prod 15 disjoint, seq'd first-5 order verified; neon-branch fail-fast re-proven (real exit 2 + operator setup guidance); workflow YAML re-parsed = 18 step entries, workflow_dispatch + schedule, permissions contents:read, concurrency serialized, READ-ONLY PROOF (git diff --exit-code) present.
+- PUSH BLOCKED: `git push origin t-mig-044/r4b` fails — "could not read Username for 'https://github.com'" — restarted sandbox holds NO GitHub write credentials (consistent with the fleet's pending PAT-rotation register item). Anonymous READ works.
+- origin/main moved c920eea -> 260f452 during the outage (#53/#54 merged). Branch deliberately NOT rebased (authored against claim-time main c920eea; R0 merge-intake owns the post-#54 worklog union). Zero file overlap with #53/#54 diffs (.github/workflows + golden/tools + golden/README only).
+- This addendum is a worklog-only append (zero code delta vs 6979aff).
+- LIVE NEON RUN deliberately NOT attempted from the sandbox (DNS-blocked by design) — first corpus-wide replay happens via the workflow after the one-time operator setup (NEON_API_KEY secret + NEON_PROJECT_ID / NEON_PARENT_BRANCH_ID variables), then dispatch.
+
+Stage Summary:
+- T-MIG-044 remains implementation-COMPLETE and IN_REVIEW on t-mig-044/r4b @ 6979aff (+ this addendum), all gates green on the head. ACTION NEEDED: push + PR by a credentialed session or the operator (PAT rotation), then merge per the authors-never-self-merge rule; after merge, operator secrets/vars setup + maiden dispatch; divergences from the first runs are the expected filing evidence for R0/R6 disposition — the runner weakens nothing.
+
+---
+Task ID: T-MIG-044 (run-002 push receipt)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Push + PR after operator PAT handover (trace 1a10ce4dd8305c31).
+
+Work Log:
+- Operator supplied fleet PAT; push executed fast-forward (no force) — t-mig-044/r4b @ ffc9303 now on origin; ls-remote preflight confirmed zero ref collision.
+- PR #62 opened (t-mig-044/r4b -> main @ 260f452) with full deliverables/posture-proofs/gates/first-run-expectations/operator-setup disclosure; R0 ratification + independent review requested; authors-never-self-merge rule restated.
+- Receipt .syllabai/receipts/T-MIG-044/run-002-push.json committed with this worklog append (worklog+receipt-only delta).
+
+Stage Summary:
+- T-MIG-044 IN_REVIEW and VISIBLE: PR #62 awaiting R0. On merge: one-time operator setup (NEON_API_KEY secret + NEON_PROJECT_ID / NEON_PARENT_BRANCH_ID variables) then maiden dispatch; the runner unblocks the "replay NOT RUN — env-blocked" register (030/031/032) and the standing re-proof conditions on 022/023/024/030/032 while keeping cases forever-gates.
+
+---
 Task ID: R0-ROUND-6b (T-MIG-033 collision disposition + independent review of PR #50)
 Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
 Task: Operator directive (trace 1a10c9ee078c70c5) assigned this session the T-MIG-033 port (teacher-marking + sme-admin; services-first per the frozen source, tranche-2 gated on the r3-fix contracts merge, OUT-OF-FENCE mounts flagged). Workspace was wiped between directives (fresh clone taken; noted — the B-1-class env fragility pattern).
@@ -1467,7 +1513,23 @@ Stage Summary:
 - The T-MIG-033 directive executed WITHOUT a competing claim: earliest-claim-wins held against R0's own assignment, the operator's rubric was enforced through review instead, and one blocking fidelity finding (F-33-1) was caught pre-merge with the exact fix specified. Tranche-2 of #50 (routes/zod/mounts) stays gated on the r3-fix contracts merge per the directive; tranche-3 = SME admin.
 
 R0-integrator | round-6b: T-MIG-033 directive collision-dispositioned (r4 earliest, no competing claim), id ratified, PR #50 independently reviewed line-against-line at 6cad6ef (gates re-run green: 525 total/1408 expects), 1 blocking finding F-33-1 posted (SELF_MARKED state law) + 5 non-blocking notes, HOLD FOR AUTHOR | BLOCKED (on r4's F-33-1 fix; then merge-intake; #48/#49 pending review routing) | suggestion: when r4 lands the fix, re-review can be a diff-only pass (the finding is constant-driven); route #48/#49 reviews so the flake root-cause and H-2 do not queue behind the marking train; the workspace-wipe pattern (second occurrence fleet-wide) strengthens the case for the PAT rotation + env-rehydration note in AGENT_BRIEFING.
+
 ---
+Task ID: T-MIG-038 (run-001)
+Agent: Contracts-lane (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
+Task: Operator CONTRACTS-LANE directive (trace 1a10cb48dc7edd15) Step 2 — W4 contracts: learner surfaces + decay math DTOs + NightlyDecayJob I/O.
+
+Work Log:
+- Deep read @ 6cad6ef: learner/dto (11 view files), FlashcardRating/NoteVote controllers + tolerant-parse enums, trail controller (limit 200/500 clamp + fail-closed base64url {t,i} cursor), knowledge-graph/state/agenda/course-stats/smart-lesson params, learner.exam CourseExamTargetView, recommendation NextBestActionsView (+ policy nba-rules/v1.3 :79), assignment AssignmentViews (LearnerAssignmentView tree, Status wire open|closed), learner/decay DecayParams (invariants + bandOf LOW|DEVELOPING|SECURE), bkt/BktParams + bdt/BdtParams (compact-constructor invariants + paper defaults), NightlyDecayJob (ledger + events + ADR-031 anchor law), DecayJobRun, DecayAppliedEvent/ReviewScheduledEvent, knowledge/NodeType (six values incl. CONCEPT).
+- Implemented: packages/contracts/src/learner.ts (22 wire schemas + vocabularies; agenda embedded views ported per T-MIG-018 precedent, disclosed for R0 split) + decay.ts (engine-boundary params + ledger + job events; anchor law documented) + 2 test files (31 pins) + index.ts (+2 lines). TS2308 star-export collision caught: NodeType enum already canonical in curriculum.ts — reused, not redefined.
+- Branch discipline: t-mig-038/r1c stays independent off c0d8fa0 (no force-push; claim 421c478 immovable) — index.ts carries a 2-line overlay; merge-order recommendation #58 then #59 disclosed.
+- Gates on t-mig-038/r1c: typecheck x4 exit 0; bun test apps/api packages = 503 pass / 13 skip / 0 fail, 1327 expect, 516 total (= main 472 pass + 31 pins / +68 expect exactly); golden --selftest OK. MEASUREMENT NOTE: the round-6 "485/0/13" convention is TOTAL incl. skip (472 pass + 13 skip), verified by scratch-worktree measurement of c0d8fa0; 037's receipt label shares the ambiguity class of R0's N-1 — delta arithmetic exact, non-blocking, disclosed.
+- Receipt .syllabai/receipts/T-MIG-038/run-001.json; card CLAIMED -> IN_REVIEW; PR opened; independent review requested; id ratification (038) requested at review.
+
+Stage Summary:
+- Step 2 of the operator's contracts directive DELIVERED and IN_REVIEW: the W4 learner+decay wire and engine-boundary contracts now exist ahead of the T-MIG-040..043 port lanes; the Vercel Cron port of NightlyDecayJob has its I/O pinned (ledger at-most-once law, event shapes, versioned params). Both directive steps are now on the board awaiting independent review + R0 merge-intake.
+
+Contracts-lane | round-6 Step 2: claimed T-MIG-038 (421c478), ported learner-surface + decay-math + NightlyDecayJob I/O contracts @ frozen 6cad6ef (24 schemas, 31 pins, 6 vocabularies, 3 engine-param invariants, ledger + 2 event shapes, anchor law), gates typecheck x4 + 503 pass/13 skip/1327 expect (+31/+68 exact) + selftest OK | IN_REVIEW (PR open, independent review requested) | suggestion: review #58 and #59 together (same lane, disjoint files, shared conventions); merge #58 first then #59 for additive index.ts; after both merge, the W3-remainder port lanes (r7a/r1) and the W4 seeds (T-MIG-040..043) can file against landed contracts.
 Task ID: T-MIG-002-R (execution run-002; lane w0a)
 Agent: w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
 Task: Execute T-MIG-002-R — make the T-MIG-002 baseline re-runnable (reconcile F2 declared-pair pull failure + F3 scripted kit-0.31.11 renderer fixes into a repo-resident, reproducible re-baseline path; zero production Neon contact).
@@ -1488,7 +1550,6 @@ Stage Summary:
 - T-MIG-002-R execution complete: the re-baseline path is now repo-resident and self-proving — doctor/fix/verify/diff run fully offline against the checked-in state; pull encodes the proven D1 recipe behind COW-only guardrails. The 579/579 snapshot-faithful claim is re-executed on every test run instead of living in a deleted ephemeral verifier. Receipt run-002.json; yaml IN_REVIEW with execution_record; branch t-mig-002r/w0a-exec staged locally, push pending operator PAT.
 
 ---
-
 Task ID: T-MIG-002-R (run-003 push; lane w0a)
 Agent: w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
 Task: Execute the operator's disposition (A) of the reported T-MIG-002-R collision — push the completed run-002 execution and open the PR.
@@ -1503,6 +1564,7 @@ Work Log:
 
 Stage Summary:
 - T-MIG-002-R now has BOTH complete executions on the board (#51 r1, #53 w0a) with the collision fully disclosed on both threads; disposition belongs to R0 (authors never self-merge). Fences held through the push: packages/db/package.json untouched (F2 flagged), generated schema files + drizzle/** untouched, Neon ZERO contact, apps/** untouched. Receipts: run-002.json (execution) + run-003-push.json (push/PR); yaml execution_record extended. Lane w0a STOPS here — no wave self-filing, awaiting R0 disposition.
+
 ---
 Task ID: T-MIG-042-PREP (claim — operator trace 1a10c9d1ef9ebbe1, second sequential lane)
 Agent: R1-contracts session (Super Z, session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
@@ -1515,6 +1577,7 @@ Work Log:
 
 Stage Summary:
 - Plan: vercel.json crons entry (02:00 UTC placeholder disclosed) + /api/cron/nightly-decay route (CRON_SECRET fail-closed; DECAY_CRON_ENABLED skip-gate; 501 not-implemented when enabled) + src/lib/decay seam stub with Wave-4 port contract (decay_job_runs.window_start PK idempotency) + pure-logic bun tests + .env.example docs. Implementation next; receipt run-002; PR; hold.
+
 ---
 Task ID: T-MIG-042-PREP (execution complete — operator trace 1a10c9d1ef9ebbe1, cont.)
 Agent: R1-contracts session (Super Z, session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
@@ -1546,6 +1609,8 @@ Work Log:
 
 Stage Summary:
 - Board state: 002-R and 042-PREP both DONE; my two Round-7 PRs resolved (#51 superseded-closed, #54 merged); w0a's #53 merged after independent review. Zero production Neon contact, zero force-pushes, worklog append-only throughout. Open items elsewhere: #50/#49/#48 (other lanes), T-MIG-040-prep (r7a) in flight.
+
+---
 Task ID: T-MIG-036 (claim)
 Agent: r3-fix (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
 Task: ROUND-6 directive (trace 1a10bdd99bec32a9) — register-item claim: root-cause the flaky identity budget test (R0-SWEEP-4/5 register, 2 occurrences) and make it deterministic.
@@ -1572,6 +1637,8 @@ Work Log:
 
 Stage Summary:
 - T-MIG-036 IN_REVIEW: the register flake is root-caused (CI-evidenced), the mechanism enshrined as law, and the wall-clock dependence eliminated test-side with zero production drift. Wave-2/3 ports untouched; register item closable on merge.
+
+---
 Task ID: T-MIG-022 H-2 (claim)
 Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
 Task: Round-6 directive — execute the register item H-2 (apply-reset.ts doc/code divergence, r7a-owned since R0-SWEEP-2, reaffirmed in the R0-SWEEP-5 remaining register) per the per-task protocol.
@@ -1610,6 +1677,8 @@ Work Log:
 
 Stage Summary:
 - Round-6 lane work COMPLETE per directive: claim -> implementation -> gates -> PR #49 -> STOP. Awaiting independent review + R0 merge-intake (authors never self-merge). No self-filed wave work; T-MIG-033/034 left for R0 to seed.
+
+---
 Task ID: T-MIG-040-PREP (claim)
 Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
 Task: Operator round-7 directive (trace 1a10c9fd933dd505) — W4 golden capture, capture-first W3 pattern: learner agenda/state/recommendations/exam-series/flashcards + deterministic decay math, off the Render core READ-ONLY (T-MIG-007 authz-shell posture), target 35+ cases + replay-readiness kit.
@@ -1652,6 +1721,8 @@ Work Log:
 
 Stage Summary:
 - Round-7 lane work COMPLETE: claim -> two-prong capture (Render authz-shell 22 + LOCAL boot 35) -> kit -> gates -> PR #57 -> STOP. Awaiting independent review + R0 merge-intake (authors never self-merge). Two R0 rulings requested: F-e (dotted anchor 400) + intervention 400-before-404 (F-c family).
+
+---
 Task ID: T-MIG-039
 Agent: R6-llm (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
 Task: LLM-OUTPUT behavioural-gate doctrine + harness skeleton (feeds T-MIG-034); W3 EXIT verification deferred on unmet preconditions.
@@ -1670,6 +1741,7 @@ Stage Summary:
 - T-MIG-039 filed on t-mig-039/r6-llm (branch start @ c0d8fa0): the doctrine + ADR + harness are drop-in ready for T-MIG-034 — integration checklist in golden/llm-shadow/README.md (proxy wiring via seams.llm, first LIVE capture, CI-lane decision, candidate-structure extension, threshold ratification).
 - Standing conditions handed to 034: real recorded shadows replace synthetic fixtures; runner-registration decision; T2 threshold ratification against first LIVE drift report.
 - R0 ratification requested for the self-filed id (032 precedent) and for the deferred W3-EXIT disposition (blocked on the 031-t2/033/034 merge train + replay runner).
+
 ---
 Task ID: T-MIG-039 (status addendum)
 Agent: R6-llm (Super Z, session web-752465e5-2985-476b-86a3-0bf785493dc5)
@@ -1683,6 +1755,8 @@ Work Log:
 Stage Summary:
 - T-MIG-039 awaits independent review + R0 merge-intake/ratification. Deliverable 1 (doctrine + ADR + harness) FILED; deliverable 2 (W3 EXIT replay) BLOCKED on the 031-t2/033/034 merge train — procedure staged, zero evidence fabricated.
 - CI addendum (16:20Z): CI registered on f13a73e but queued/pending ~5min post-push (concurrency backlog across 8 open PRs); dispositioned per the R0-SWEEP-5 CI-silence precedent — local gates stamped exact-baseline in run-001, R0 merge-intake independently re-executes. Lane remains STOPPED; review + merge authority rest elsewhere.
+
+---
 Task ID: T-MIG-037 (run-001)
 Agent: Contracts-lane (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
 Task: Operator CONTRACTS-LANE directive (trace 1a10cb48dc7edd15) Step 1 — W3-remainder zod contracts in packages/contracts: teacher-marking, test-builder, transcription DTOs (T-MIG-018 next_safe_actions item 3; frozen sources @ 6cad6ef).
@@ -1699,6 +1773,8 @@ Stage Summary:
 - Step 1 of the operator's contracts directive DELIVERED and IN_REVIEW: W3-remainder contracts unblock the T-MIG-033/r4 marking port (F-33-1 consumes these schemas) and the remaining W3 lanes (r7a + r1 per the directive). Disclosed residuals (NOT claimed): sme DTOs, smartmark learner-side canonicalization, LearnerRosterView (W5). Step 2 (T-MIG-038, W4 learner+decay contracts) already claimed on t-mig-038/r1c @ 421c478 and queued behind this PR.
 
 Contracts-lane | round-6 Step 1: claimed T-MIG-037 (5929c4b, dodging the 036 collision with r3fix PR #48), ported teacher-marking + test-builder + transcription zod contracts constraint-for-constraint @ frozen 6cad6ef (34 schemas, 51 pins, F-33-1 zero-fill + five-state law pinned, 7 verbatim transcription messages exported), gates 536/0/13skip + 1396 expect + typecheck x4 + selftest OK | IN_REVIEW (PR open, independent review requested) | suggestion: route the review to a non-authoring lane soonest — it unblocks r4's F-33-1 fix shape (the strict five-key answersByState is the review's requested law) and r1/r7a's W3 remainder; T-MIG-038 (Step 2) is claimed and queued.
+
+---
 Task ID: T-MIG-034 claim
 Agent: superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
 Task: ROUND-6 operator assignment — test-builder + transcription port (deterministic shell for the LLM surface, behavioural gates; test-builder on the normal golden path)
@@ -1734,7 +1810,6 @@ Stage Summary:
 - The T-MIG-033 directive executed WITHOUT a competing claim: earliest-claim-wins held against R0's own assignment, the operator's rubric was enforced through review instead, and one blocking fidelity finding (F-33-1) was caught pre-merge with the exact fix specified. Tranche-2 of #50 (routes/zod/mounts) stays gated on the r3-fix contracts merge per the directive; tranche-3 = SME admin.
 
 R0-integrator | round-6b: T-MIG-033 directive collision-dispositioned (r4 earliest, no competing claim), id ratified, PR #50 independently reviewed line-against-line at 6cad6ef (gates re-run green: 525 total/1408 expects), 1 blocking finding F-33-1 posted (SELF_MARKED state law) + 5 non-blocking notes, HOLD FOR AUTHOR | BLOCKED (on r4's F-33-1 fix; then merge-intake; #48/#49 pending review routing) | suggestion: when r4 lands the fix, re-review can be a diff-only pass (the finding is constant-driven); route #48/#49 reviews so the flake root-cause and H-2 do not queue behind the marking train; the workspace-wipe pattern (second occurrence fleet-wide) strengthens the case for the PAT rotation + env-rehydration note in AGENT_BRIEFING.
-
 
 ---
 Task ID: T-MIG-034 run-001 (cycle complete, pending PR)

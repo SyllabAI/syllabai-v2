@@ -91,3 +91,55 @@ Replay prerequisites and the deterministic decay law the wave-4 port must
 implement are restated in `golden/tools/w4-readiness.ts` (run it: exit 0 =
 ready). Captured-as-is quirks (R0 divergence calls, never fixed in-pass):
 F-e dotted-anchor 400; intervention unknown-run 400-before-404.
+
+## CI-side Neon replay runner (T-MIG-044 — the standing re-proof instrument)
+
+`.github/workflows/neon-replay.yml` mechanizes the recorded T-MIG-022
+two-posture protocol corpus-wide (agent sandboxes are DNS-blocked; CI is
+not). **STRICT READ-ONLY POSTURE — replay only; cases stay forever-gates:**
+
+- The runner NEVER captures, scrubs, edits, retires, or re-pins a case. It
+  replays the committed corpus at the checked-out sha verbatim; a post-run
+  `git diff --exit-code` step proves the corpus untouched (read-only
+  evidence in every run log).
+- It NEVER contacts the production Neon branch with reads or writes. Each
+  run provisions two disposable copy-on-write branches from the production
+  parent (docs/BASELINE_DB.md §2 doctrine) via `tools/neon-branch.ts` and
+  drops them afterwards + 404-verifies (T-MIG-035 discipline), `if: always()`
+  — even on failure. Connection URIs are add-mask-ed, never logged.
+- Divergences are REPORTED (red job + per-case JSON report artifact + step
+  summary) for R0/R6 disposition per AGENT_COORDINATION §6 — never
+  auto-fixed, never silently tolerated (§7: no silent widening).
+
+Two passes, union verdict (T-MIG-022 run-001 doctrine; the posture regex
+`/realdata|-real-/` is the v2 tool's, verbatim):
+
+| pass | CASE_MODE | branch posture | tranche |
+|------|-----------|----------------|---------|
+| A | `seed` | COW branch reset by `tools/apply-reset.ts` (Flyway-SEED state: content tables empty, zero users, roles re-seeded) | all non-realdata cases |
+| B | `prod` | COW branch AS-COWED (production pilot rows intact, NO reset) | the 15 `*realdata*`/`*real-*` cases |
+
+Tools (all under `tools/`): `ci-replay.ts` (corpus-wide driver — seq-aware
+case ordering via the gated loader, comparator IMPORTED from `runner.ts`
+(zero comparator drift), tokens minted through the honest register/login
+surface with role selection by ROUTE RULE per SecurityConfig.java:66-91;
+`--plan` prints the deterministic posture split without a target, `--union`
+merges the two posture reports), `apply-reset.ts` + `boot-with-timeout.ts`
+(repo-resident copies of the T-MIG-022 receipt tools — provenance + sha in
+each header; the H-2 docstring/code divergence is preserved INTACT on
+purpose), `neon-branch.ts` (Neon API v2 create/drop/404-verify only).
+
+KNOWN POSTURE NOTES (disclosures, not defects of the runner): cases
+captured from LOCAL Flyway-seeded boots (w3/curriculum/teacher families)
+pin V6/V7 fixed-uuid seed rows that `apply-reset.ts`'s full wipe removes
+(H-2) — such cases FAIL honestly with full evidence until R0/R6 rule a
+third posture (e.g. a Flyway-seed fixture from the frozen core) or re-pin;
+cases pinning capture-time identity values in non-tolerated fields (e.g.
+`w3-history-after-submit-200`'s learnerId) fail until the case is amended.
+First-run findings ARE the re-proof instrument working.
+
+Repo setup (one-time, operator): secret `NEON_API_KEY`; variables
+`NEON_PROJECT_ID`, `NEON_PARENT_BRANCH_ID` (the production branch id).
+Triggers: `workflow_dispatch` + daily schedule; `concurrency` serializes
+runs.
+
