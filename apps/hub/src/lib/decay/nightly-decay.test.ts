@@ -36,6 +36,20 @@ describe("decideDecayCron (T-MIG-042-PREP invoke-shape decision law)", () => {
     expect(d.httpStatus).toBe(401);
   });
 
+  it("rejects a SAME-LENGTH wrong bearer (401 — timing-safe compare path)", () => {
+    // 't3st-cron-secret' has exactly the same length as 'test-cron-secret',
+    // so the comparison exercises the timingSafeEqual branch, not the
+    // length gate.
+    const d = decideDecayCron({
+      authHeader: "Bearer t3st-cron-secret",
+      cronSecret: SECRET,
+      decayEnabled: "1",
+      now: NOW,
+    });
+    expect(d.action).toBe("unauthorized");
+    expect(d.httpStatus).toBe(401);
+  });
+
   it("rejects a missing Authorization header even with a configured secret (401)", () => {
     const d = decideDecayCron({
       authHeader: null,
