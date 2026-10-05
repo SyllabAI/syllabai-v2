@@ -27,8 +27,61 @@ interface GoldenCase {
   method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
   path: string;
   request?: { headers?: Record<string, string>; body?: unknown };
-  expect: { status: number; body: unknown };
+  expect: { status: number; body: unknown; headers?: Record<string, string> };
   tolerate?: string[];
+  // T-MIG-006: optional replay ordinal. Stateful (write-path) cases declare
+  // a seq and run FIRST in seq order (register-success before duplicate /
+  // login / me); all other cases follow in filename order. Absent seq = no
+  // state claim. Replay still requires a fresh/reset db for write cases.
+  seq?: number;
+}
+
+// T-MIG-006 bearer injection: a case may carry the {{TOKEN}} placeholder in
+// a request header (e.g. "Authorization": "Bearer {{TOKEN}}"); --token
+// substitutes it at replay time. Fail-fast: a placeholder without --token
+// is a harness error, never a silent unauthenticated replay.
+const TOKEN_PLACEHOLDER = "{{TOKEN}}";
+
+function substituteToken(
+  kase: GoldenCase,
+  token: string | undefined,
+): GoldenCase["request"] {
+  const req = kase.request;
+  if (!req?.headers) return req;
+  const needsToken = Object.values(req.headers).some((v) =>
+    v.includes(TOKEN_PLACEHOLDER),
+  );
+  if (!needsToken) return req;
+  if (!token) {
+    throw new Error(
+      `${kase.name}: request carries ${TOKEN_PLACEHOLDER} but --token was not provided`,
+    );
+  }
+  const headers = Object.fromEntries(
+    Object.entries(req.headers).map(([k, v]) => [
+      k,
+      v.replaceAll(TOKEN_PLACEHOLDER, token),
+    ]),
+  );
+  return { ...req, headers };
+}
+
+// T-MIG-006 (T-MIG-004 F-3): response-header comparison - subset match,
+// case-insensitive header NAMES, exact VALUES (HTTP semantics). A missing
+// actual header is a failure reported by name.
+function checkHeaders(
+  actual: Headers,
+  expected: Record<string, string> | undefined,
+): string | null {
+  if (!expected) return null;
+  const lower = new Map<string, string>();
+  actual.forEach((value, key) => lower.set(key.toLowerCase(), value));
+  for (const [name, want] of Object.entries(expected)) {
+    const got = lower.get(name.toLowerCase());
+    if (got === undefined) return `header ${name} missing (expected "${want}")`;
+    if (got !== want) return `header ${name}: "${got}" vs expected "${want}"`;
+  }
+  return null;
 }
 
 const CASES_DIR = join(import.meta.dir, "cases");
@@ -36,7 +89,17 @@ const CASES_DIR = join(import.meta.dir, "cases");
 export function loadCases(): GoldenCase[] {
   return readdirSync(CASES_DIR)
     .filter((f) => f.endsWith(".json"))
-    .map((f) => JSON.parse(readFileSync(join(CASES_DIR, f), "utf8")) as GoldenCase);
+    .map((f) => JSON.parse(readFileSync(join(CASES_DIR, f), "utf8")) as GoldenCase)
+    // T-MIG-006 replay-readiness: seq'd (stateful) cases run first in seq
+    // order; the rest keep filename order after them. Stable sort.
+    .sort((a, b) => {
+      const sa = a.seq ?? Number.MAX_SAFE_INTEGER;
+      const sb = b.seq ?? Number.MAX_SAFE_INTEGER;
+      if (sa !== sb) return sa - sb;
+      if (a.name < b.name) return -1;
+      if (a.name > b.name) return 1;
+      return 0;
+    });
 }
 
 function redact(body: unknown, tolerate: string[] = []): unknown {
@@ -49,19 +112,39 @@ function redact(body: unknown, tolerate: string[] = []): unknown {
   return out;
 }
 
-function deepEqual(a: unknown, b: unknown): boolean {
-  return JSON.stringify(redact(a)) === JSON.stringify(redact(b));
-}
-
-async function replayAgainst(target: string, kase: GoldenCase): Promise<string | null> {
-  const res = await fetch(new URL(kase.path, target), {
-    method: kase.method,
-    headers: { "content-type": "application/json", ...(kase.request?.headers ?? {}) },
-    // T-MIG-003 run-002 hardening: a null body must mean ABSENT (GET cases
-    // encode headers-only); JSON.stringify(null) would crash fetch on GET.
-    // Construction only — the diff engine is untouched.
-    body: kase.request?.body != null ? JSON.stringify(kase.request.body) : undefined,
-  });
+async function replayAgainst(
+  target: string,
+  kase: GoldenCase,
+  token: string | undefined,
+): Promise<string | null> {
+  let req: GoldenCase["request"];
+  try {
+    req = substituteToken(kase, token);
+  } catch (e) {
+    // Fail-fast stays CASE-LOCAL: a {{TOKEN}} placeholder without --token
+    // fails this case loudly and honestly, but must not abort the whole run.
+    return `harness error: ${e instanceof Error ? e.message : String(e)}`;
+  }
+  const headers = {
+    "content-type": "application/json",
+    ...req?.headers,
+  };
+  let res: Response;
+  try {
+    res = await fetch(new URL(kase.path, target), {
+      method: kase.method,
+      headers,
+      // T-MIG-003 run-002 hardening: a null body must mean ABSENT (GET cases
+      // encode headers-only); JSON.stringify(null) would crash fetch on GET.
+      // Construction only — the diff engine is untouched.
+      body: kase.request?.body != null ? JSON.stringify(kase.request.body) : undefined,
+    });
+  } catch (e) {
+    // Transport failures (target down, connection refused) are CASE-LOCAL
+    // harness errors too: the run completes and classifies every case
+    // instead of crashing on the first unreachable one.
+    return `harness error: target unreachable (${e instanceof Error ? e.message : String(e)})`;
+  }
   let body: unknown = null;
   try {
     body = await res.json();
@@ -69,9 +152,17 @@ async function replayAgainst(target: string, kase: GoldenCase): Promise<string |
     body = "<non-json>";
   }
   const statusOk = res.status === kase.expect.status;
-  const bodyOk = deepEqual(kase.expect.body, body);
-  if (statusOk && bodyOk) return null;
-  return `status ${res.status} vs ${kase.expect.status}; body ${JSON.stringify(body)} vs ${JSON.stringify(kase.expect.body)}`;
+  // T-MIG-006 (fixes the defect reported by T-MIG-013): the case's tolerate
+  // list is WIRED into the replay comparison now. Previously deepEqual
+  // dropped kase.tolerate (deepEqualTolerant was only used by selftest), so
+  // 12 identity cases failed on tolerated timestamps alone.
+  const bodyOk = deepEqualTolerant(kase.expect.body, body, kase.tolerate ?? []);
+  const headerDiff = checkHeaders(res.headers, kase.expect.headers);
+  if (statusOk && bodyOk && headerDiff === null) return null;
+  const parts = [`status ${res.status} vs ${kase.expect.status}`];
+  if (!bodyOk) parts.push(`body ${JSON.stringify(body)} vs ${JSON.stringify(kase.expect.body)}`);
+  if (headerDiff !== null) parts.push(headerDiff);
+  return parts.join("; ");
 }
 
 // ---- engine self-test: the engine must prove ITSELF before gating anything ----
@@ -84,6 +175,24 @@ function selftest(): number {
   }
   if (deepEqualTolerant({ x: 1 }, { x: 2 }, [])) {
     console.error("selftest FAILED: real diff should fail");
+    return 1;
+  }
+  // T-MIG-006: header-subset engine coverage (closes T-MIG-004 F-3)
+  const h = new Headers({ "x-search-empty-cause": "SCOPE_UNRESOLVED" });
+  if (checkHeaders(h, { "X-Search-Empty-Cause": "SCOPE_UNRESOLVED" }) !== null) {
+    console.error("selftest FAILED: header subset should pass (case-insensitive)");
+    return 1;
+  }
+  if (checkHeaders(h, { "X-Missing": "v" }) === null) {
+    console.error("selftest FAILED: missing expected header should fail");
+    return 1;
+  }
+  if (checkHeaders(h, { "X-Search-Empty-Cause": "OTHER" }) === null) {
+    console.error("selftest FAILED: header value mismatch should fail");
+    return 1;
+  }
+  if (checkHeaders(h, undefined) !== null) {
+    console.error("selftest FAILED: absent expectation must not constrain");
     return 1;
   }
   console.log("selftest OK: tolerance engine behaves");
@@ -103,10 +212,11 @@ if (args.includes("--selftest")) {
 
 if (args.includes("--target")) {
   const target = args[args.indexOf("--target") + 1];
+  const token = args.includes("--token") ? args[args.indexOf("--token") + 1] : undefined;
   const cases = loadCases();
   let failures = 0;
   for (const kase of cases) {
-    const diff = await replayAgainst(target, kase);
+    const diff = await replayAgainst(target, kase, token);
     if (diff) {
       failures++;
       console.error(`FAIL ${kase.name}: ${diff}`);
@@ -118,5 +228,5 @@ if (args.includes("--target")) {
   process.exit(failures === 0 ? 0 : 1);
 }
 
-console.log("usage: bun golden/runner.ts (--selftest | --target <url>)");
+console.log("usage: bun golden/runner.ts (--selftest | --target <url> [--token <jwt>])");
 process.exit(1);

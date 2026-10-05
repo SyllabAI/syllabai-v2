@@ -772,3 +772,21 @@ Work Log:
 
 Stage Summary:
 - Queue CLEARED except #21 (recused). Nine PRs dispositioned in one sweep with zero force-pushes and full gate evidence per merge. Main @ this commit: typecheck x4 exit 0, bun test 247/0/13skip (pre-#21), golden 69 cases + selftest OK. The strangler-fig now covers identity + content-read + curriculum services + rate-limit mounting (pending #21 review) + write-contract prerequisites for Wave 3.
+- T-MIG-006 CLAIMED on branch t-mig-006/r6 (branch-start commit per section 2.1). PR #7 CI verdict: GREEN (head + main). F-1 case correction: APPROVED and closed. Implementation + receipts follow in-flight on this branch.
+
+---
+
+Task ID: T-MIG-006 (execution addendum - implementation complete, escalation)
+Agent: R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
+Task: Golden runner hardening - tolerate wiring, response-header comparison, replay-readiness kit; gates + partial live replay; escalation.
+
+Work Log:
+- IMPLEMENTED (golden/** fence only): (1) tolerate list wired into replay comparison - closes the T-MIG-013-reported defect (deepEqual dropped kase.tolerate; 12 identity cases failed on tolerated timestamps only); (2) expect.headers response-header subset comparison (case-insensitive names, exact values, missing fails by name) - closes T-MIG-004 F-3; (3) case.seq optional replay ordinal, stable sort, stateful cases run first; (4) {{TOKEN}} placeholder + --token injection, case-local hard failure without a token (never a silent unauthed replay); (5) transport errors are case-local harness errors (run completes, classifies all); (6) selftest extended (4 header assertions).
+- CASES: 5 state-dependent identity cases annotated (seq 1..5; tolerate accessToken/id; {{TOKEN}} on auth-me-with-bearer-200); scrubbed values kept in-file; 12 error cases untouched - their tolerate:["timestamp"] now works. README documents the post-T-MIG-006 schema + canonical replay procedure.
+- GATES: selftest PASS (exit 0, twice during dev); bun test apps/api packages = 104/0/4skip, 248 expectations - EXACT T-MIG-010 receipt parity, no collateral; 54/54 case files valid JSON.
+- PARTIAL LIVE REPLAY (honest): booted v2 locally (synthetic 32B secret, placeholder DATABASE_URL - no Neon, no production contact) via a workspace-external serve harness; full 54-case replay classified 10/54 PASS with ZERO unclassified failures: 3 PASS are the tolerate-fix evidence cases (previously failed on timestamps alone), 7 PASS are the W2 unauthed-401 fallback cases exactly as the R7 dossier predicted; 44 FAILs all owned: 8 db-dependent (placeholder db), 3 PR-12 capture-pinned-message residue, 2 by-design (me-200 token injection fail-fast + health F-1 fix riding PR #12), 33 content-authed dummy-bearer rejections (T-MIG-020 tooling's domain). Receipt: .syllabai/receipts/T-MIG-006/run-001.json (includes the canonical 16/16 runbook: db unblock + PR #12 merge + --token).
+- FINDING T-MIG-006-F-1 (apps/api fence, no change made): bun 1.3.14 entry auto-serve + the app's own Bun.serve double-bind PORT -> EADDRINUSE boot crash via 'bun run src/index.ts'; workspace-external import harness used as workaround; one-liner-class fix for R3/R0.
+- ESCALATION (section 6, w0a T-MIG-000 precedent): branch t-mig-006/r6 is push-ready; this session holds NO GITHUB_PAT/NEON_PAT (fresh container; none improvised per credential law) -> push/PR for T-MIG-006 + the db unblock for the canonical identity replay are operator/R0 actions.
+
+Stage Summary:
+- T-MIG-006 implementation COMPLETE with all gates green and a fully classified partial live replay; status BLOCKED on push credentials only. The parity gate can now: compare headers (T-C31 empty-cause, 429 Retry-After verifiable), tolerate generated fields by name, sequence write-state cases, and inject live bearers - the harness items T-MIG-013 handed to R6 are closed. Next in this lane: T-MIG-007 (Wave-3 assessment-loop capture) claim + execution per the metronome.
