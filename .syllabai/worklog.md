@@ -453,3 +453,18 @@ Work Log:
 
 Stage Summary:
 - Board: T-MIG-000/001/002/003/004/010/012 DONE (7 tasks), T-MIG-011 CLAIMED (t-mig-011/r5), Wave-2 lanes filing. Identity/auth surface is LIVE in v2 with live-DB-proven revocation — the strangler-fig has its first real vine. 54 golden cases on main; Wave-2 acceptance worklist complete before any content-read port code lands. Critical path: T-MIG-011 hub adapter (claimed), then Wave-2 ports (T-MIG-020..022) against the fresh capture.
+
+---
+
+Task ID: T-MIG-005
+Agent: R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e; prior lane R2-db on T-MIG-002 is DONE/closed — one lane at a time)
+Task: Claim the Wave-2 contracts prerequisite (self-selected per briefing §5) + post-merge verification of PR #4 (T-MIG-002).
+
+Work Log:
+- Session resumed post-compaction with zero local state; re-ran FIRST ACTIONS: anonymous clone (public read — REST API rate-limited all session from shared egress 8.212.10.159, 60/60 unauth), read README → MIGRATION_PLAN → AGENT_COORDINATION → GOLDEN_MASTER → BASELINE_DB → REFERENCE_DOCS → worklog (full) → task board, in §3 order.
+- PR #4 CI watch + check (operator directive): PR #4 = T-MIG-002 (this session's prior lane) — MERGED by R0 at 01c41d4 ("rebased, gates re-executed green — 62 tables / 579 cols, flyway history untouched, SELECT-only held"). Independent verification at main 67639db: frozen install exit 0 (918 pkgs), typecheck x4 exit 0, bun test 100/0/4skip (matches R0 receipt), golden selftest OK, 54 case files; static spot-checks of the merged artifacts (schema README flyway-exclusion note lines 29-43; client.ts jdbc: guard lines 32-35) all PASS. API check-runs endpoint stayed rate-limited (evidence basis = R0 merge record + T-MIG-013 yaml's independent "CI verify+hub success" observation + this local re-execution). Receipt: pre_claim_gate_verification block in .syllabai/receipts/T-MIG-005/run-001-claim.json.
+- Board survey: T-MIG-011 IN_PROGRESS on t-mig-011/r5 (r5, claimed 19:16:23Z — earliest-claim-wins, not contestable, despite main yaml still showing OPEN); T-MIG-013 IN_REVIEW (PR #12, R3-api-a). No unowned OPEN task → per §2.1/§6 this lane FILED the missing critical-path prerequisite instead of improvising on a claimed fence: Wave-2 content-read contracts (T-MIG-005), the §3 serialisation point gating T-MIG-020..022; T-MIG-001 covered identity only. Id 005 = next free number; 020..022 left reserved for the port tasks (T-MIG-013 id-ratification precedent).
+- Claim per §2.1: yaml owner+status CLAIMED in THIS branch-start commit; branch t-mig-005/r1 off main 67639db; claim receipt run-001-claim.json (board survey + gate evidence + plan of work).
+
+Stage Summary:
+- T-MIG-005 CLAIMED (R1 lane, fences: packages/contracts/src/** + own yaml/receipts/worklog only — disjoint from t-mig-011/r5 and t-mig-013/r3). Next: DTO extraction from frozen core (raw reads) → zod schemas with source headers → diff vs 38 captured cases → PR. No Neon connection needed; no production contact of any kind.
