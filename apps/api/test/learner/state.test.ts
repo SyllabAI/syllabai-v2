@@ -273,7 +273,7 @@ describe("learner state-model: /state composite over stubbed sql", () => {
     expect(topic!.refusedAny).toBeTrue(); // sticky: one refusal marks the node
     expect(topic!.lastAskedAt).toEqual(t3); // max across the group
     expect(topic!.signalCounts).toEqual({ ASK: 1, TOPIC_ENGAGEMENT: 1 }); // per-signal counts
-    expect(topic!.nodeName).toBe("Formulae, Equations and Amount of Substance");
+    expect(topic!.nodeTitle).toBe("Formulae, Equations and Amount of Substance");
     expect(other!.nodeId).toBe(NODE_SUBTOPIC);
     expect(other!.signalCounts).toEqual({ TOPIC_ENGAGEMENT: 1 }); // null signal -> TOPIC_ENGAGEMENT
     expect(other!.refusedAny).toBeFalse();

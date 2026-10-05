@@ -2094,3 +2094,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-044's one-time setup register item is DISCHARGED: secret+vars live, maiden dispatch executed, the ENOTFOUND blocker fixed (T-MIG-046, PR #66), instrument re-dispatch pending the branch-cap register decision. REGISTER FOR OPERATOR: (1) NEON_BRANCH_CAPACITY — the project is at its branch cap (10); the CI runner needs 2 disposable slots per run; free >=1 standing slot (candidates: t-mig-022/r3a + r3a-prod whose postures are receipted, t-mig-003/r6 capture branch) or raise the plan limit — R0 will NOT delete standing branches; until then the instrument fails honestly at provisioning with zero residue. (2) Fresh PAT staged (fingerprint 46b5d309715c1b1c) — rotation item DISCHARGED this session; revoke at migration end per briefing §0. (3) The daily 02:30 UTC schedule now runs with the fixed tool and will succeed automatically once capacity exists.
+
+---
+Task ID: 13
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Operator round-10 directive (trace 1a10d400d30ac185) — "#65 review. After merging, proceed to tranche-2 (routes/zod/mounts); T-MIG-043 (agenda/KG/smart-lesson/exam-series+flashcards)"
+
+Work Log:
+- SYNC: #65 found ALREADY MERGED by R0 (ed558ab 2026-10-05T18:06:46Z, merge-commit style; R0 merge-forward 6c55575 resolved main into the branch first) — review step became post-merge verification: main FF to 6ea61b2, tranche-1 content verified intact, gates re-run green (764/0/13skip/2121, typecheck x4, selftest, w4-readiness READY).
+- T-MIG-043 found ALREADY CLAIMED by w0a (db87a9a, operator trace 1a10d2c88b6f13c5) — §2.1 zero-collision honored: NOT touched; flagged back to the operator (this directive's 043 leg is therefore DISCHARGED-AS-CLAIMED-ELSEWHERE unless the operator re-routes).
+- tranche-2 EXECUTED on t-mig-041/r7a (merged main first, clean): routes/learner/index.ts (createLearnerStateRouter — GET /state + GET /course-stats under /api/v1/learners/me, Boot-401 shell first per the captured w4-*-unauthed-401 envelopes; wire serializers 1:1 with the frozen DTO records; buildLearnerRouters env composition 021-shape; injected now() factory — ADR-031 determinism threaded from the route layer, default fresh clock); 8 route tests (canonical #60 schema parse pins, nodeTitle key-parity incl. negative assertion, query budgets 9/4, 401-before-404 fall-through, empty-learner posture); index.ts mount+construction as the OUT-OF-FENCE separate commit (010/020/021/030/032 precedent).
+- R-FIX (disclosed): tranche-1 TutorEngagementView drifted to nodeName — frozen LearnerStateView.java:77-79 + #60 contracts pin nodeTitle (hub types.ts corroborates); service interface + builder + tranche-1 pin corrected; no wire consumer ever shipped on the wrong key (tranche-1 mounted no routes).
+- Card: scope extended for tranche-2, forbidden re-pointed at the 043 band, status IN_PROGRESS -> IN_REVIEW; execution_record tranche-2 addendum; receipt run-003-tranche2.json.
+- Gates: typecheck x4 exit 0; CI-scope 772/0/13skip/2183 = main 764/2121 +8/+62 EXACT; golden selftest OK; w4-readiness READY 57/0.
+
+Stage Summary:
+- T-MIG-041 is FEATURE-COMPLETE (tranche-1 services + tranche-2 routes/zod/mounts) pending R0 review of the tranche-2 PR; 041 then flips DONE. T-MIG-043 = w0a's lane (claim db87a9a) — operator awareness requested. Register: none new.

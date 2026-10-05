@@ -1,9 +1,9 @@
 version: 1
 task:
   id: T-MIG-041
-  title: "Wave-4 learner port — state model cluster: /learners/me/state read model + /course-stats (skill states + read-time Ebbinghaus decay + misconception staleness relaxation + review queue + tutor engagement summary + exam targets + rating/vote windows); tranche-1 = services + fakeSql pins (021 template)"
+  title: "Wave-4 learner port — state model cluster: /learners/me/state read model + /course-stats (skill states + read-time Ebbinghaus decay + misconception staleness relaxation + review queue + tutor engagement summary + exam targets + rating/vote windows); tranche-1 = services + fakeSql pins (021 template); tranche-2 = routes + zod pins + mount"
   owner: "R7a (agent-da4ab8, zai-web session web-da4ab8b1) — seeded under the operator round-9 directive (trace 1a10d2210b98ef81) 'Proceed with any work. Check and claim': T-MIG-040..043 are the MIGRATION_PLAN Wave-4-reserved bands (044 claim receipt provenance); 040 = the r7a PREP capture (DONE via #57), 042P = the cron slice (DONE); 041/043 were the unseeded port bands. Id ratification requested at PR review (030/032/039/040-PREP precedent)"
-  status: IN_PROGRESS # claim 2026-10-06
+  status: IN_REVIEW # tranche-2 routes/mounts PR; tranche-1 merged via #65 (ed558ab, R0 intake + merge-forward 6c55575)
   priority: P1
   wave: 4
   deps: [T-MIG-038, T-MIG-040-PREP, T-MIG-014] # landed W4 contracts (learner.ts/decay.ts) + the W4 golden capture that pins these surfaces + db driver dispatch
@@ -47,15 +47,39 @@ task:
     staleness-relaxed probability, countdowns) is computed from an injected
     clock/anchor and disclosed — my 040-PREP capture tolerates exactly these
     fields, and the port must recompute (never persist) per ADR-031.
+    tranche-2 EXECUTED (2026-10-06, same session; operator round-10
+    directive trace 1a10d400d30ac185 "#65 review. After merging, proceed to
+    tranche-2 (routes/zod/mounts)"): routes/learner/index.ts —
+    createLearnerStateRouter mounted at /api/v1/learners/me (GET /state +
+    GET /course-stats, authz shell first: Boot 401 per the captured
+    w4-*-unauthed-401 envelopes), wire serializers 1:1 with the frozen DTO
+    records (Instant -> toISOString ms precision carried over; LocalDate
+    strings pass-through; the injected now() factory threads ADR-031
+    determinism from the route layer, default fresh clock), buildLearnerRouters
+    env composition (021 build shape). R-FIX disclosed: tranche-1's
+    TutorEngagementView drifted to nodeName — frozen LearnerStateView.java:77-79
+    and the #60 contracts schema pin nodeTitle; service interface + builder +
+    tranche-1 test pin corrected in this tranche (hub types.ts already used
+    nodeTitle, corroborating the drift direction). Route tests (8): Boot 401
+    shells (incl. anonymous-unknown-path 401-before-404 fall-through),
+    canonical learnerStateViewSchema/courseStatsViewSchema parse pins,
+    populated-leg wire keys (nodeTitle key-parity asserted negatively too),
+    query-budget pins (7 legs + 1 batched titles + 1 batched series; 4 counts),
+    empty-learner posture. index.ts mount + construction = OUT-OF-FENCE commit
+    per the 010/020/021/030/032 precedent (R0 ratification requested).
+    Gates: typecheck x4 exit 0; CI-scope 772/0/13skip/2183 = main 764/2121
+    +8 tests/+62 expects EXACT; golden selftest OK; w4-readiness READY 57/0.
+
   scope:
     allowed:
       - "apps/api/src/services/learner/** (new SqlFn seam + repo-ports + view builders)"
       - "apps/api/test/learner/** (fakeSql pins)"
+      - "apps/api/src/routes/learner/** (tranche-2: createLearnerStateRouter + serializers + buildLearnerRouters)"
       - ".syllabai/receipts/T-MIG-041/**"
-      - ".syllabai/tasks/T-MIG-041-learner-state-port.yaml (status/execution_record only)"
+      - ".syllabai/tasks/T-MIG-041-learner-state-port.yaml (status/execution_record/scope only)"
       - ".syllabai/worklog.md (append-only entries)"
     forbidden:
-      - "apps/api/src/routes/** + index.ts mounts (tranche-2; flagged separate commit)"
+      - "other /api/v1/learners/me/* surfaces — knowledge-graph, agenda, smart-lesson, exam-series, flashcards, note-votes, flashcard-ratings, assignments, flashcard-review-schedule = T-MIG-043 (claimed by w0a, db87a9a); /attempts = T-MIG-030 (landed)"
       - "packages/** apps/hub/** golden/** (038 owns contracts; 040-PREP owns golden; both merged)"
       - "production Neon writes / Render writes of any kind"
       - "persisting any decayed/relaxed value (ADR-031: computed, never stored)"
