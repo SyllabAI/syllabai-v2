@@ -55,7 +55,7 @@
  */
 import { z } from "zod";
 import {
-  contentValidationStateSchema,
+  validationStateSchema,
   documentKindSchema,
   paperSummarySchema,
 } from "./content";
@@ -725,7 +725,7 @@ export const versionSummarySchema = z.object({
   id: z.string().uuid(),
   questionId: z.string().uuid(),
   version: z.number().int(),
-  validationState: contentValidationStateSchema,
+  validationState: validationStateSchema,
 });
 export type VersionSummary = z.infer<typeof versionSummarySchema>;
 
@@ -734,14 +734,14 @@ export const schemeSummarySchema = z.object({
   id: z.string().uuid(),
   questionVersionId: z.string().uuid(),
   pointCount: z.number().int(),
-  validationState: contentValidationStateSchema,
+  validationState: validationStateSchema,
 });
 export type SchemeSummary = z.infer<typeof schemeSummarySchema>;
 
 /** BatchResult (ContentReviewService.java:692-695) — POST /exam-papers/{id}/validate-all. */
 export const batchResultSchema = z.object({
   paperId: z.string().uuid(),
-  paperState: contentValidationStateSchema,
+  paperState: validationStateSchema,
   totalVersions: z.number().int(),
   versionsValidated: z.number().int(),
   schemesValidated: z.number().int(),
