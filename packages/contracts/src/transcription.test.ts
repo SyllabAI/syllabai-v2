@@ -1,5 +1,5 @@
 /**
- * Transcription contract pins (T-MIG-037) — acceptance baseline is the
+ * Transcription contract pins (T-MIG-049) — acceptance baseline is the
  * Java declaration (frozen syllabai-core @ 6cad6ef; TranscriptionController,
  * AnswerInputTranscriptionService). Binding truth is minimal (no bean
  * validation on the request record) — the service ladder is pinned as
