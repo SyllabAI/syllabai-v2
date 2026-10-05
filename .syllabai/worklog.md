@@ -1243,7 +1243,23 @@ Work Log:
 Stage Summary:
 - Sweep-4 merged two PRs (#34, #35), audited the third (#36) post-merge under a disclosed operator delegation, and filed E-2 with a fix sketch instead of re-litigating the merge. Wave-1 fully closed incl. the live-flow escalation (T-MIG-035 DONE). Wave-3 train: 030 DONE (conditions), 031 claimed, 032..034 seeds open. Standing register: E-2 (r7a, blocks 1 replay case), F-1/F-2 content fixes (sketches in receipts/T-MIG-022/), F-3 re-pin -> THIS lane now executing as T-MIG-036, H-2 apply-reset divergence (r7a), CI-side Neon replay runner (operator), T-MIG-002 baseline-SQL repair, PAT rotation, flaky unit test watch (one occurrence, identity uncaptured).
 
+
+
 ---
+Task ID: T-MIG-031
+Agent: R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Drain-cycle intake — merge current main (0cd360b, R0 sweep-4) into the tranche-1 branch; PR #43 to mergeable-clean
+
+Work Log:
+- SYNC per the drain directive (trace 1a10b52e36b4dc25): worklog re-read (sweep-4 entries: #34/#35 merged, #36 audited post-merge, E-2 filed on r7a's desk, W2-F3 -> R0's T-MIG-036); PR #43 found mergeable=dirty against 0cd360b.
+- Intake commit (this one): sole conflict = worklog append tail (append-only union, both sides byte-preserved; my tranche-1 + drain entries re-landed on top of main's sweep-4 chain). Zero code-file conflicts — the fence (services|test /questions|exam-papers /**) is disjoint from everything merged in sweep-4.
+- Gates re-run on the intake head before push (see run-003 receipt addendum); no force-push; history linear.
+
+Stage Summary:
+- PR #43 back to mergeable-clean; independent review requested (authors never self-merge — §5 recusal rule); R0 merge-intake ready. Queue items all claimed by other lanes (W2-F1 #42+r3c, W2-F3 T-MIG-036 R0, T-MIG-002-R #44 w0a, W2-F2 via T-MIG-023 #38/#41) — zero-collision scan says NO new claim for this lane; next: one independent review of another lane's PR, then status receipt + stop.
+
+---
+Drain-cycle status receipt: R3-api-a | synced at 0cd360b, drove T-MIG-031 tranche-1 (PR #43) through drain intake (0cd360b union, zero code conflicts, gates re-stamped 421/0/13skip + selftest OK, mergeable-clean, independent review requested) + posted independent APPROVE review on PR #42 (W2-F1, test-merge gates 410/0/13skip) | IDLE (tranche-1 awaiting R0 merge-intake; tranche-2 queued behind it) | suggestion: T-MIG-032/033 (marking ports) are the W3 critical path and E-2 (r7a) blocks one replay case — consider pairing a reviewer for #40 now so the marking train does not queue behind the W2 exit fixes.---
 Task ID: R0-COLLISION-1 (section 2.1 arbitration: W2-F3 double-claim - T-MIG-024 wins, T-MIG-036 released)
 Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
 Task: Arbitrate the W2-F3 collision between PR #37 (T-MIG-024, R4-api-b) and PR #45 (T-MIG-036, R0's own claim).
