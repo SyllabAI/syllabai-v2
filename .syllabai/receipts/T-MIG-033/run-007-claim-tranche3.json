@@ -1,0 +1,49 @@
+{
+  "task": "T-MIG-033",
+  "tranche": 3,
+  "run": "run-007-claim-tranche3",
+  "lane": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "timestamp": "2026-10-05T18:35:46Z",
+  "trigger": "operator directive trace 1a10d4af92da4359: 'Check if R0 has merged or not. If not, review+merge yourself and continue working' — R0 check first (see below), then continue-working",
+  "r0_merge_check": {
+    "open_prs": 0,
+    "pr_64_t_mig_033_tranche2": "MERGED by R0 2026-10-05T18:03:59Z (0f646ce) with R0 independent review + R-1/R-2 intake fixes (a1e4c5c); r9-hubx independent APPROVE also posted; F-33-2 (r3a) closed convergent == R-1, verified on main",
+    "pr_62_t_mig_044": "MERGED d9a48a6 (delegated authority, prior round); card DONE",
+    "pr_61_t_mig_045": "closed superseded per R0's #48 merge",
+    "main_at_claim": "bb9df41 (R0-ROUND-10 close-out 39ee5d5: cards flipped, 033 -> IN_PROGRESS t3 remaining, 041 -> DONE; post-merge gates green 764/751/0/13skip/2121 @ 6ea61b2)",
+    "delegated_review_merge_applied": false,
+    "reason": "R0 had already swept the queue; nothing unmerged remained — 'review+merge yourself' N/A, 'continue working' executed"
+  },
+  "claim": {
+    "branch": "t-mig-033-t3/r4b cut from main bb9df41 (fresh, zero-collision)",
+    "scope": "T-MIG-033 tranche-3 = SME admin port per the card's REMAINING note (R0-ROUND-10 flip): SmeQuestionAdminController (:1-62) + SmeQuestionIngestService (:1-628) + SmeQuestionPackageDtos (:1-94) + SmeQuestionSpecPointRepository (:1-42) @ frozen 6cad6ef, line-against-line",
+    "surface": "POST /api/v1/admin/question-bank/ingest (multipart 'file' part) + GET /api/v1/admin/question-bank/status; SecurityConfig /api/v1/admin/** hasRole(ADMIN) :86 + @PreAuthorize defense-in-depth (:25) — captured postures w3-sme-{status-unauthed-401,status-student-403,status-teacher-403,ingest-unauthed-401} stay forever-gates",
+    "zero_collision": {
+      "ls_remote_scan": "origin heads matching 033|sme: t-mig-033/r4 + t-mig-033/r4b only — both MERGED tranches of this same card, no t3 head anywhere",
+      "open_prs": 0,
+      "worklog_scan": "no other lane mentions SME tranche-3 claim; N-4 capture half explicitly stays with the golden-capture lane's register (card note)"
+    }
+  },
+  "fence": [
+    "packages/contracts/src/sme-question-package.ts",
+    "packages/contracts/src/sme-question-package.test.ts",
+    "packages/contracts/src/index.ts (one export line, #58 contracts precedent)",
+    "apps/api/src/services/sme/**",
+    "apps/api/src/routes/sme.ts",
+    "apps/api/test/sme/**",
+    "apps/api/src/index.ts (import + construction + ONE mount line + disclosure comment — OUT-OF-FENCE commit per the T-MIG-010/020/021/030/032/034/tranche-2 precedent)",
+    ".syllabai bookkeeping (yaml status note, receipts, worklog)"
+  ],
+  "plan": [
+    "contracts: SmeQuestionPackageDtos port (Jackson semantics: ignoreUnknown -> passthrough, absent primitives bind as Java defaults 0/false, object components nullish; schema failure == Jackson binding-failure class)",
+    "services/sme/zip-safety.ts: ZipSafety port (:32-153) on node:zlib inflateRawSync maxOutputLength — budgets enforced without allocating past a cap (the deep-audit 09-28 M3 law), traversal guard verbatim, CRC32 verify (ZipInputStream parity), fail-closed on data-descriptor layouts (disclosed deviation: JVM accepts streamed entries; production packages are seekable-output zips with header sizes)",
+    "services/sme/index.ts: ingest over sql.transaction (ADR-026 one-transaction replace, evidence-safe) — slice-scoped deactivateByRefs, MCQ/structured/mixed -pN/-s family emission, KG code resolution (unknown KG code: X), fail-closed validate() with verbatim messages, asset store wholesale-replace-when-present (SVG demoted), BankStatusView counts",
+    "routes/sme.ts: ADMIN shell (Boot 401/403 bodies), multipart error-parity pins (non-multipart/oversize/missing-part -> frozen catch-all 500 internal_error; empty part -> 400 verbatim)",
+    "tests: zip-safety pins + ingest law pins over fake sql + route shell/multipart pins"
+  ],
+  "gates": "planned: bun run typecheck x4; bun test apps/api packages; bun golden/runner.ts --selftest",
+  "provenance": {
+    "frozen_ref": "syllabai-core @ 6cad6ef (local clone HEAD verified 6cad6ef before line-against-line)",
+    "read_method": "direct file reads of src/main/java/com/syllabai/sme/* + shared/ZipSafety.java + shared/GlobalExceptionHandler.java + identity/SecurityConfig.java + assessment/{Question,QuestionTopic}.java"
+  }
+}
