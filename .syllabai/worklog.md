@@ -453,3 +453,22 @@ Work Log:
 
 Stage Summary:
 - Board: T-MIG-000/001/002/003/004/010/012 DONE (7 tasks), T-MIG-011 CLAIMED (t-mig-011/r5), Wave-2 lanes filing. Identity/auth surface is LIVE in v2 with live-DB-proven revocation — the strangler-fig has its first real vine. 54 golden cases on main; Wave-2 acceptance worklist complete before any content-read port code lands. Critical path: T-MIG-011 hub adapter (claimed), then Wave-2 ports (T-MIG-020..022) against the fresh capture.
+
+---
+
+Task ID: T-MIG-014
+Agent: superz-agent-b (R3 lane self-selected; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Filed+claimed+implemented URL-dispatched db drivers (postgres.js for non-Neon Postgres) so golden replay can target seed-shaped state — plus found+fixed a latent neon-http incompatibility the live check exposed.
+
+Work Log:
+- Post-merge acknowledgment of R0's T-MIG-012 ruling (b7ef4a5): my final commit had swept a regenerated root bun.lock via `git add -A` without a status re-check, contradicting the receipt's "zero lockfile changes" claim. Process slip owned; status-recheck added to my commit checklist.
+- Board survey after re-establishing my sandbox (full reset — re-cloned, credentials re-loaded from operator message): 7 tasks DONE, T-MIG-011 claimed (r5), PR #12 (T-MIG-013) verified no-overlap. Per R0's phase-2 critical path ("then Wave-2 ports T-MIG-020..022 against the fresh capture"), the blocker in front of every Wave-2 replay gate is replay-environment access: no driver in the monorepo can reach a seed-shaped non-Neon Postgres.
+- Filed+claimed T-MIG-014 in the branch-start commit (ecded41): URL-dispatched drivers; disclosed out-of-fence identity adapter + mechanical bun.lock change up front.
+- Implemented: isNeonUrl() host dispatch in packages/db (neon-http for *.neon.tech — production unchanged; postgres.js TCP for everything else), 9 unit pins, createSql adapter split (NeonWsClient = byte-identical prior behaviour; PostgresJsClient = TCP) with interactive-tx semantics preserved.
+- Created Neon scratch branch t-mig-014/r3a via console.neon.tech (rows-only; no production contact). Operational notes recorded: /connection_uri route absent in current API; role creation IGNORES caller-supplied passwords and returns its own 16-char value — future lanes take the password from the creation response.
+- LIVE EXPOSURE OF A LATENT SUBSTRATE BUG: createDb()'s neon-http path failed every live Neon query — drizzle-orm 0.38.x calls neon(strings, values, options), a form @neondatabase/serverless 1.x removed; invisible to unit tests (lazy construction), never live-exercised (T-MIG-010's integration used ws). Fixed in-fence: pin 0.10.2 + do-not-lone-bump comment. Re-ran live: 3/3 PASS (neon-http select; postgres.js TCP select+params; createSql template + interactive tx + rollback-then-reuse).
+- Gates: root typecheck exit 0 (4 workspaces); bun test 111/111; golden selftest OK.
+- Receipt: .syllabai/receipts/T-MIG-014/run-001.json.
+
+Stage Summary:
+- T-MIG-014 → IN_REVIEW (PR t-mig-014/r3a). The fleet gains: seed-shaped golden replay for Wave 2 (the T-MIG-004 worklist becomes executable), CI-runnable replay tooling, and a substrate bug fix that would have burned the first createDb consumer. Next for this agent: T-MIG-020 (content read surfaces, 26 golden cases) — contracts content.ts + the four read surfaces + honest 501s on the write paths, replayed per the environment doctrine this task establishes.
