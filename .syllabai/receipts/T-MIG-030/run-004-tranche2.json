@@ -1,0 +1,47 @@
+{
+  "task": "T-MIG-030",
+  "run": 4,
+  "kind": "TRANCHE_2",
+  "lane": "R7a (agent-da4ab8, zai-web session web-da4ab8b1)",
+  "executed_at": "2026-10-05T08:40Z",
+  "branch": "t-mig-030/r7a-ext",
+  "base": "2ca1a16 (origin/main — post-#31 tranche-1 merge)",
+  "gate_satisfaction": "T-MIG-018 merged (PR #26, R0-REPAIR-2 renumber) — zod contracts live; T-MIG-007 merged (PR #29) — replay kit live; both tranche-2 deps open",
+  "shipped": {
+    "routes": "apps/api/src/routes/assessment/index.ts — createAttemptRouter (POST /api/v1/attempts, POST /api/v1/attempts/structured), createAttemptHistoryRouter (GET /api/v1/learners/me/attempts), buildAssessmentRouters composition root mirroring buildCurriculumRouters",
+    "tests": "apps/api/test/assessment/routes.test.ts — 19 route tests over REAL services on stubbed sql; 200/201 bodies validated against canonical @syllabai/contracts schemas AND captured bodies",
+    "mounts": "apps/api/src/index.ts — 2 mount lines + import + construction, SEPARATE flagged OUT-OF-FENCE commit (T-MIG-010/020/021 ratified precedent), ratification requested"
+  },
+  "captured_law_pinned": [
+    "w3-attempt-mcq-happy-201: captured request body → 201, canonical-schema-valid, captured view (attemptId/submittedAt tolerated, fixed via injected clock)",
+    "w3-attempt-missing-fields-400 + w3-attempt-structured-missing-fields-400: EMPTY body → 400 malformed_body 'request body is not readable (check field types and enum values)' — HttpMessageNotReadableException :172-179 (the capture's 'empty body' is Jackson's required-body-missing, NOT a {} validation)",
+    "w3-attempt-bad-uuid-400: non-uuid body identifiers → 400 malformed_body (Jackson UUID parse binding failure)",
+    "w3-attempts-post-unauthed-401 + w3-attempts-structured-post-unauthed-401 + w3-attempt-history-unauthed-401: Boot 401 with path BEFORE body parsing (filter-chain parity — shell before handlers)",
+    "w3-history-after-submit-200: full captured item assembly (labels, misconception, topic, excerpt, marks)",
+    "w3-history-empty-student-200: {learnerId, total: 0, returned: 0, attempts: []}"
+  ],
+  "inferred_law_disclosed": [
+    "{} JSON body → 400 validation_failed 'questionId: must not be null' (MethodArgumentNotValidException :158-165; {} BINDS in Jackson with nulls then @NotNull fails — distinct from the captured empty-body malformed_body). UNCAPTURED for this surface; rendered from the frozen handler.",
+    "@Min/@Max/@NotEmpty/@Size constraint messages rendered jakarta-default ('must be greater than or equal to 0', 'must be less than or equal to 5', 'must not be empty', 'size must be between 0 and 4000') — UNCAPTURED; every pin is single-field so the multi-field Hibernate traversal order (observed-not-assumed, T-MIG-017 precedent) can never flip a pin",
+    "jakarta list-element field path rendering 'partAnswers[0].answerText' — UNCAPTURED, style inference",
+    "Jackson lenient-scalar parity shims: numeric strings for Long fields, 'true'/'false' for booleans, numbers/booleans→String for answerText — UNCAPTURED, from Jackson's default coercions",
+    "?limit= (empty value) binds null → service default 50 (Spring treats '' as absent for non-String types) — UNCAPTURED"
+  ],
+  "parity_decisions": [
+    "zod contract schemas ARE the binding boundary (T-MIG-018 ratified; curriculum 'a failed safeParse IS the conversion failure' precedent extended to bodies with a two-envelope classifier: binding-failure → malformed_body, constraint → validation_failed)",
+    "Jackson binds the ENTIRE document before @Valid: any binding issue anywhere beats every constraint issue (classifyBodyError)",
+    "service request types stay structural (tranche-1 local interfaces); the contract swap happens at the route boundary via schema.parse + explicit null normalization (confidence ?? null, answerText ?? null)",
+    "?limit=abc/1.5/overflow → 400 bad_request 'malformed request' (MethodArgumentTypeMismatch :167-170, curriculum query precedent); -5/1000 BIND then clamp service-side (advisory-limit javadoc law)"
+  ],
+  "known_divergences_inherited": [
+    "attemptedAt renders ms precision (JS Date) vs captured micros — the fleet-wide F-1 finding (filed against T-MIG-020 at R0-SWEEP-2, fix sketch in receipts/T-MIG-022/); tranche-1 pin carries the same rendering; NOT re-decided here"
+  ],
+  "bind_slot_discipline": "maintained — routes carry no SQL; services unchanged from tranche-1",
+  "gates": {
+    "typecheck_x4": "contracts/shared/db/api all exit 0",
+    "bun_test": "400 pass / 0 fail / 13 skip / 1026 expect (= main 381/967 + 19 route tests/59 expects exactly)",
+    "assessment_suite": "53/0 (34 tranche-1 + 19 route)",
+    "golden_selftest": "OK (read-only)",
+    "replay": "NOT RUN — env-blocked (no local postgres; Neon network-gated), unchanged since rounds 4-5 and consistent with every lane's record; the 8 slice cases are wired for the CI-side replay runner per R0's proposal"
+  }
+}
