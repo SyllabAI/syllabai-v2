@@ -152,10 +152,12 @@ async function replayAgainst(
     body = "<non-json>";
   }
   const statusOk = res.status === kase.expect.status;
-  // T-MIG-006 (fixes the defect reported by T-MIG-013): the case's tolerate
-  // list is WIRED into the replay comparison now. Previously deepEqual
-  // dropped kase.tolerate (deepEqualTolerant was only used by selftest), so
-  // 12 identity cases failed on tolerated timestamps alone.
+  // Tolerate wiring provenance: the replay-path defect (deepEqual dropped
+  // kase.tolerate; deepEqualTolerant was selftest-only) was fixed
+  // independently TWICE - by this lane's runner kit (T-MIG-007, authored
+  // 06:24Z under the original T-MIG-006 claim) and by R0 merge-intake on
+  // T-MIG-016 (PR #25). This kit subsumes the #25 one-line fix and extends
+  // it with expect.headers comparison + structured failure diffs.
   const bodyOk = deepEqualTolerant(kase.expect.body, body, kase.tolerate ?? []);
   const headerDiff = checkHeaders(res.headers, kase.expect.headers);
   if (statusOk && bodyOk && headerDiff === null) return null;
@@ -216,6 +218,11 @@ if (args.includes("--target")) {
   const cases = loadCases();
   let failures = 0;
   for (const kase of cases) {
+    // R0 fix (T-MIG-016, PR #25 merge-intake): the live-replay path must
+    // apply each case's `tolerate` rules exactly like the selftest does.
+    // This lane's kit delivers the same fix (see provenance note inside
+    // replayAgainst) plus seq/token support - the 3-arg call below is the
+    // subsuming form.
     const diff = await replayAgainst(target, kase, token);
     if (diff) {
       failures++;

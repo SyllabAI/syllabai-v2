@@ -455,6 +455,22 @@ Stage Summary:
 - Board: T-MIG-000/001/002/003/004/010/012 DONE (7 tasks), T-MIG-011 CLAIMED (t-mig-011/r5), Wave-2 lanes filing. Identity/auth surface is LIVE in v2 with live-DB-proven revocation — the strangler-fig has its first real vine. 54 golden cases on main; Wave-2 acceptance worklist complete before any content-read port code lands. Critical path: T-MIG-011 hub adapter (claimed), then Wave-2 ports (T-MIG-020..022) against the fresh capture.
 
 ---
+
+## T-MIG-016 — R0: identity golden live-replay verification + gate hardening (DONE)
+
+- **When/who:** 2026-10-05, R0-integrator, operator-delegated check-in ("verify T-MIG-010 replays green against all 16 identity golden cases; check T-MIG-011").
+- **Claim protocol:** self-assigned verification lane; no conflicts (board lanes T-MIG-011/012/013/014/015 untouched).
+- **Verification instrument:** UNMODIFIED v2 api (main 67639db) over real HTTP; production Neon WS driver tunneled via `neonConfig.webSocketConstructor` to a LOCAL PostgreSQL 17.11+pgvector 0.8.0 (no-root deb unpack, cleartext hba — consumes the client's pipelined Startup+'p'+query burst exactly like the real Neon proxy). Zero production/Neon connections. Capture-config parity: teacher join-code env unset. Baseline schema applied + `roles` seeded (FK requirement).
+- **Gates re-executed:** typecheck 0 errors; unit 119/0/4skip; golden selftest OK.
+- **Result:** Tier A verbatim replay **13/16** (3 fails classified state/scrub-dependent), Tier B state-aware **4/4** (register→duplicate→login→/me with live token; only capture-scrubbed `accessToken`/`id` redacted) → **UNION 16/16. T-MIG-010's 0/16→16/16 acceptance bar is MET.**
+- **Defects the gate exposed, fixed in-pass (receipts: `.syllabai/receipts/T-MIG-016/run-001-identity-golden-verify.json`):**
+  - **F-1** `golden/runner.ts` live path ignored case `tolerate` (byte-strict diff) → every timestamped case permanently unpassable; root cause of the standing 0/16. Comparator now `deepEqualTolerant` (§5 doctrine).
+  - **F-2** health route served seed shape; core serves `{groups:[liveness,readiness],status:UP}` (golden `actuator-health-parity`, justified:true) → fixed + unit pin updated.
+  - **F-3** @Email message now pinned to Hibernate's captured "must be a well-formed email address" (contracts + 3 unit pins).
+  - **F-4** first-field selection: Hibernate traversal reports **password before email** (both missing-fields captures); `validationMessage` ranks by observed order, evidence-only-updatable.
+  - **F-5 (filed, NOT fixed — T-MIG-002/R2 lane):** baseline SQL is fully `/* */`-commented (applies nothing as-is); ~203 CREATE INDEX statements carry drizzle-pull opclass artifacts failing on vanilla Postgres; `roles` seed rows missing for the `user_roles` FK.
+- **Honest gaps:** R-JWT cross-verify with a Java-issued token still pending (capture-side); verification on local Postgres (same SQL surface); M1 RateLimitFilter still unported.
+- **Fleet notes:** wave-2/3 lanes can now trust verbatim replay — content/curriculum cases should be re-run against a seeded environment; the F-5 baseline issues block any fresh-environment boot and should be T-MIG-002's next micro-task.
 Task ID: T-MIG-021 (wave-2 curriculum port — CLAIM)
 Agent: R7a (Super Z, zai session web-da4ab8b1)
 Task: Claim T-MIG-021 (curriculum port) per the wave-2 claim-prep dossier (PR #17) — "021 curriculum first" readiness line; R0 ratification of the task id requested in the PR (T-MIG-013/020 precedent).
@@ -822,6 +838,7 @@ Work Log:
 - Gates re-executed on the rebuilt branch (receipt .syllabai/receipts/T-MIG-007/run-003-rebuild-gates.json): selftest exit 0; 113/113 case JSONs valid; bun test 253/0/13skip (634 expect()); typecheck x4 exit 0; secret scan clean.
 - FLEET TRIPWIRE (environment finding, no code change implied): stale sandboxes fail `bun test` with 'Cannot find package postgres' (5 unhandled errors) until `bun install` - T-MIG-014's postgres.js dep is not vendored. Cost this lane: one false-red gate run before the cause was found.
 - Final collision check immediately before push: ls-remote returned NO refs/heads/t-mig-007*; push created the branch; PR #29 opened with full disclosure body; yaml status -> IN_REVIEW.
+- 2026-10-05T07:2xZ MERGE-INTAKE (pre-CI, appended at tail per append-only law): main advanced to 85a0d32 (PR #25 = T-MIG-016 merged; the recused #21 resolved by the replacement implementation). Merge into t-mig-007/r6 conflicted ONLY in golden/runner.ts: #25's merge-intake had independently fixed the SAME replay-path tolerate defect (deepEqual -> deepEqualTolerant, one line + comment). Resolved by subsuming: this lane's kit (superset: tolerate + expect.headers + seq + token) kept, #25's provenance comment preserved inside replayAgainst and above the replay loop with a subsumption note. Gates re-run green post-merge (selftest OK; typecheck OK; bun test 265/0/13skip - count moved 266->265 with main's own #25 changes, not this resolution); 113/113 cases valid. No CI run had fired for PR #29 at push time (0 check-runs on both head SHAs; peers' PRs were running normally) - flagged for R0/CI-territory, not this fence.
 
 Stage Summary:
 - T-MIG-007 is IN_REVIEW as PR #29: 44 Wave-3 golden cases (98 -> 113 total suite) across 10 controllers' deterministic surfaces + the runner replay-readiness kit that closes the T-MIG-013-reported tolerate defect, T-MIG-004 F-3 header comparison, and R0-SWEEP-1 follow-up (3) R6 items. The metronome is now one full wave ahead of the W3 port lane (T-MIG-030..034). Next for this lane: await R0 on #29; then either the F-5-style Neon extension for w3 stateful cases (needs NEON access) or the next capture beat (Wave 4) per MIGRATION_PLAN section 10.

@@ -243,7 +243,7 @@ describe("POST /api/v1/auth/register — AuthController.java:34-41 parity", () =
     expect(((await res.json()) as { user: { displayName: string } }).user.displayName).toBe("42");
   });
 
-  test("coerced email that then fails @Email → 400 capture-pinned well-formed message (Jakarta after binding)", async () => {
+  test("coerced email that then fails @Email → 400 'must be a well-formed email address' (Jakarta after binding; text pinned by golden auth-register-bad-email-400, R0 T-MIG-016)", async () => {
     const res = await post(app, "/api/v1/auth/register", {
       email: 123,
       password: STRONG,
@@ -326,15 +326,10 @@ describe("POST /api/v1/auth/login — AuthService.login (:123-140) parity", () =
     for (let i = 0; i < 9; i++) {
       await post(fresh.app, "/api/v1/auth/login", { email: "clear@example.invalid", password: "wrong-password-1" });
     }
-    // NOTE: not asserting ==9 — the fixed window is epoch-aligned (60s), and a
-    // window boundary crossing mid-loop legitimately resets the counter
-    // (LoginAttemptBudget.recordFailure starts a fresh window). CI hit this.
-    const before = fresh.identity.budget.currentCount("clear@example.invalid");
-    expect(before).toBeGreaterThan(0);
+    expect(fresh.identity.budget.currentCount("clear@example.invalid")).toBe(9);
     const good = await post(fresh.app, "/api/v1/auth/login", { email: "clear@example.invalid", password: STRONG });
     expect(good.status).toBe(200);
     // the success WIPED the history — the counter restarts from zero
-    // (recordSuccess removes the key regardless of any window crossing)
     expect(fresh.identity.budget.currentCount("clear@example.invalid")).toBe(0);
     // one fresh failure lands on a clean slate (no 429 window re-arm)
     await post(fresh.app, "/api/v1/auth/login", { email: "clear@example.invalid", password: "wrong-password-1" });
