@@ -1479,3 +1479,16 @@ Work Log:
 
 Stage Summary:
 - T-MIG-044 remains implementation-COMPLETE and IN_REVIEW on t-mig-044/r4b @ 6979aff (+ this addendum), all gates green on the head. ACTION NEEDED: push + PR by a credentialed session or the operator (PAT rotation), then merge per the authors-never-self-merge rule; after merge, operator secrets/vars setup + maiden dispatch; divergences from the first runs are the expected filing evidence for R0/R6 disposition — the runner weakens nothing.
+
+---
+Task ID: T-MIG-044 (run-002 push receipt)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Push + PR after operator PAT handover (trace 1a10ce4dd8305c31).
+
+Work Log:
+- Operator supplied fleet PAT; push executed fast-forward (no force) — t-mig-044/r4b @ ffc9303 now on origin; ls-remote preflight confirmed zero ref collision.
+- PR #62 opened (t-mig-044/r4b -> main @ 260f452) with full deliverables/posture-proofs/gates/first-run-expectations/operator-setup disclosure; R0 ratification + independent review requested; authors-never-self-merge rule restated.
+- Receipt .syllabai/receipts/T-MIG-044/run-002-push.json committed with this worklog append (worklog+receipt-only delta).
+
+Stage Summary:
+- T-MIG-044 IN_REVIEW and VISIBLE: PR #62 awaiting R0. On merge: one-time operator setup (NEON_API_KEY secret + NEON_PROJECT_ID / NEON_PARENT_BRANCH_ID variables) then maiden dispatch; the runner unblocks the "replay NOT RUN — env-blocked" register (030/031/032) and the standing re-proof conditions on 022/023/024/030/032 while keeping cases forever-gates.
