@@ -1,0 +1,32 @@
+{
+  "name": "content-reader-real-page-cover-empty-200",
+  "description": "GET /api/v1/content/documents/853ae02d-...?page=1 as STUDENT: 200 with text=\"\" — page 1 of this real paper is the front cover with NO text elements, and the DocumentPageText assembly honestly returns an empty string (not 404). Pins the empty-page behaviour of the page drill-in.",
+  "source": "captured from a LOCAL boot of the frozen Java core (Temurin JDK 25.0.4.1, mvn -DskipTests package exit 0) against a Neon COW branch golden-capture/2026-10-05 (br-fancy-surf-a52owvza, copy-on-write child of production br-muddy-bar-a5huwldd) on 2026-10-05T05:17Z by the T-MIG-004 extension session (w0a, F-5 unblock: operator supplied NEON_PAT); production compute never contacted — the branch's own endpoint served everything; synthetic student/teacher accounts registered via the honest API path (real corpus data: 1023 documents / 108 exam papers / 4740 embedded chunks); automated email scan: 0 non-synthetic addresses in any captured body",
+  "method": "GET",
+  "path": "/api/v1/content/documents/853ae02d-0090-4c40-89ef-b69681c8bb40?page=1",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer scrubbed-fixed-dummy-jwt-token"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "id": "853ae02d-0090-4c40-89ef-b69681c8bb40",
+      "documentId": "33ba399c-4640-5b04-b1bb-b520fa2ba94c",
+      "docVersion": 1,
+      "kind": "QUESTION_PAPER",
+      "title": "qp.pdf",
+      "pageCount": 16,
+      "page": 1,
+      "text": "",
+      "paper": {
+        "paperId": "cb2c0cf8-f60a-4a15-a244-d356cbb3899b",
+        "paperCode": "4CH0/2CR",
+        "sessionLabel": "June 2013",
+        "role": "QP"
+      }
+    }
+  },
+  "tolerate": []
+}
