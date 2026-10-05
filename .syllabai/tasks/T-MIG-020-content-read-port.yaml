@@ -3,7 +3,7 @@ task:
   id: T-MIG-020
   title: "Wave-2 content-read port — documents (list/get/canonical/search), citation reader, teacher review queues (v1/v2/v3 reads), exam-paper review/audit/provenance, question topics read, question assets"
   owner: "R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) — self-filed Wave-2 port task per the T-MIG-004 replay note (\"owned by T-MIG-020 (content read surfaces)\"); R0 ratification of the task id requested in the PR (T-MIG-013 precedent)"
-  status: CLAIMED # claimed_at 2026-10-05T05:41:57Z; branch t-mig-020/r3 cut from main 67639db; claim recorded in this branch-start commit per AGENT_COORDINATION §2.1
+  status: IN_PROGRESS # claimed_at 2026-10-05T05:41:57Z; branch t-mig-020/r3 pushed (claim @ e50a63f); tranche 1 (content-read services, contract-independent) committed with receipt run-001-tranche1.json; route layer + mounting gate on T-MIG-005 (contracts-first §4.1)
   priority: P1
   wave: 2
   deps: [T-MIG-005, T-MIG-014] # contracts (route wiring gate — §4.1 contracts-first) + db driver dispatch (PR #13)

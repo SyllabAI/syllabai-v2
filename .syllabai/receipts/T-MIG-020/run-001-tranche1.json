@@ -1,0 +1,39 @@
+{
+ "task": "T-MIG-020 (tranche 1 — content-read services, contract-independent)",
+ "agent": "R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "lane": "R3 (apps/api content-read port; self-filed Wave-2 task, R0 ratification of the id requested in the eventual PR — T-MIG-013 precedent)",
+ "branch": "t-mig-020/r3 (base: main @ 67639db)",
+ "date": "2026-10-05",
+ "change": {
+  "summary": "Tranche 1 lands the contract-independent query surface + view mappings + service law for the Wave-2 content-read port: documents (list/get/top-by-document-id/existsCitable), the citation reader (corpus-law gate, page bounds, DocumentPageText verbatim assembly, PaperRef join), and question assets (findByFilename). Route layer + mounting + zod wiring + golden replay flip are tranche 2, gated on T-MIG-005 (R1's content contracts) per MIGRATION_PLAN §4.1 contracts-first.",
+  "files": [
+   "apps/api/src/services/content/sql.ts (structural SqlFn — driver-agnostic through T-MIG-014's dispatch rework)",
+   "apps/api/src/services/content/documents.ts (DocumentsRepository + DocumentSummaryView port; existsCitable = the T-C20 native corpus-law query VERBATIM)",
+   "apps/api/src/services/content/page-text.ts (DocumentPageText port — families textBlocks/tables/equations, reading_order asc nulls LAST stable-joined, text-free page = empty string)",
+   "apps/api/src/services/content/reader.ts (ContentReaderService — unknown/non-citable → the SAME 404 'Document <id> not found' (no state leak), page<1|>pageCount → 'Document page N <id> not found', corrupted canonical → plain Error → 500 fallthrough (R10: message never echoes row content), header shape still carries PaperRef per controller :69-72)",
+   "apps/api/src/services/content/assets.ts (QuestionAssetsRepository — bytea row mapping; 404 is the route layer's zero-byte body, F-8)",
+   "apps/api/src/services/content/index.ts (buildContentModule composition root + ExamPapersRepository.findAllByLinkedDocumentId — business-document-id join, newest row wins)",
+   "apps/api/test/content/{documents,reader,assets}.test.ts + helpers.ts (17 tests, stubbed-sql; query-text pinned — order-by clauses and the VALIDATED gate predicates are asserted, not just behaviour)"
+  ],
+  "parity_decisions": [
+   "title fallback fileName == null → sourceUri (controller :207)",
+   "canonical_json kept VERBATIM (string as stored; the canonical endpoint re-serves the sealed bytes and the reader parses the same text)",
+   "createdAt rendered Date.toISOString() — matches Jackson JSR-310 to millisecond precision (identity/errors.ts isoNow precedent); microsecond digits are a documented limitation that surfaces only on real-data rows (F-5 tranche)",
+   "Kind treated as the stored string (7-value Java enum incl. V29 corpus roles; the DB CHECK constrains, not this layer)"
+  ],
+  "deviation_from_claim_note": "The claim execution_record said 'route factories staged in the same fence'; tranche 1 ships services-only instead — writing route factories without their zod schemas would have produced dead validation code that contracts-first §4.1 then forces a rewrite of. Declared honestly here; fence scope unchanged."
+ },
+ "gates": {
+  "typecheck": "bun run typecheck (contracts/shared/db/api ×4) exit 0",
+  "unit": "bun test (repo root) — 136 pass / 4 skip / 0 fail across 11 files, INCLUDING 17 new content-module tests",
+  "golden_selftest": "bun run golden/runner.ts --selftest → 'selftest OK: tolerance engine behaves' (read-only usage of R6's fence)",
+  "golden_replay": "NOT RUN this tranche — content routes are not mounted yet; all 54 cases keep their captured/expected-pending posture. The replay flip (content cases → passing) is tranche 2's acceptance gate.",
+  "upstream_writes": "ZERO — no Neon connection of any kind; syllabai-core touched read-only (raw git reads @ 6cad6ef); Flyway-owned tables referenced in SQL only, no DDL."
+ },
+ "why_this_task_existed": "R0's UNBLOCK-SEQUENCE-PHASE2 Stage Summary names Wave-2 ports (T-MIG-020..022) as the critical path after T-MIG-011; the T-MIG-004 replay note assigns the content read surfaces to T-MIG-020. Contracts-first (§4.1) makes T-MIG-005 (R1, claimed 05:06:59Z) the endpoint gate — this tranche is the parallel-safe service-layer work that does not depend on it.",
+ "pending": [
+  "tranche 2: route factories + zod wiring (on T-MIG-005 merge), index.ts mounting (flagged OUT-OF-FENCE commit, R0 ratification), golden replay flip, CI receipt",
+  "tranche 2: teacher review queues v1/v2/v3 + paperReview/paperAudit/provenance/questionTopicRows (assessment-side DDL read required — exam_papers/question_versions/mark_schemes/questions/question_topics/knowledge_nodes/glm_ocr_bridge/content_review_audit)",
+  "tranche 3 (F-5-gated): real-data parity tranche — documents with ingested rows, citable page text, review queues with real SUGGESTED papers, question-assets binary happy path, search over embedded chunks; UNBLOCK: operator supplies NEON_PAT to this lane (escalated since T-MIG-004 run-002)"
+ ]
+}
