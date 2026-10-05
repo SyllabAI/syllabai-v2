@@ -62,8 +62,16 @@ export const SMART_MARK_BATCH_LIMIT = 50;
 export const KAPPA_DEFAULT_THRESHOLD = 0.6;
 export const SCOPE_ALL = "ALL";
 export const SCOPE_PAPER = "PAPER";
-/** Answer.MarkingState.values() — the throughput overview zeroes every state. */
-export const MARKING_STATES = ["PENDING", "SMART_MARKED", "HUMAN_MARKED", "OVERRIDDEN"] as const;
+/**
+ * Answer.MarkingState.values() — the throughput overview zeroes every state.
+ * FIVE values per frozen Answer.java:34 = { PENDING, SMART_MARKED,
+ * HUMAN_MARKED, OVERRIDDEN, SELF_MARKED } (F-33-1 fix, R0-executed on
+ * R0-ROUND-6C merge authority — the missing SELF_MARKED zero-filled the
+ * throughput shape wrong and 400'd a legal queue filter). The C-9 error
+ * MESSAGE at parseMarkingState keeps the frozen 4-state enumeration quirk
+ * verbatim — the accepted-set is what changes, not the message.
+ */
+export const MARKING_STATES = ["PENDING", "SMART_MARKED", "HUMAN_MARKED", "OVERRIDDEN", "SELF_MARKED"] as const;
 
 // ── row shapes (snake_case, as the sql adapter returns them) ────────────────
 

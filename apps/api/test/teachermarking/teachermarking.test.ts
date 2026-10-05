@@ -216,6 +216,11 @@ describe("parseMarkingState", () => {
     expect(parseMarkingState("Overridden")).toBe("OVERRIDDEN");
   });
 
+  test("SELF_MARKED is a legal queue filter (F-33-1(b) pin — frozen valueOf accepts the five-value enum)", () => {
+    expect(parseMarkingState("SELF_MARKED")).toBe("SELF_MARKED");
+    expect(parseMarkingState("self_marked")).toBe("SELF_MARKED");
+  });
+
   test("unknown filter is a 400 bad_request with the verbatim body, never a 404", () => {
     expect(() => parseMarkingState("BOGUS")).toThrow(
       "unknown marking state: BOGUS (expected PENDING, SMART_MARKED, HUMAN_MARKED or OVERRIDDEN)");
@@ -750,6 +755,7 @@ describe("throughput", () => {
       SMART_MARKED: 1,
       HUMAN_MARKED: 0,
       OVERRIDDEN: 0,
+      SELF_MARKED: 0, // F-33-1(a) pin — the frozen zero-fill renders all FIVE states (Answer.java:34)
     });
     expect(view.humanMarks24h).toBe(3);
     expect(view.humanMarks7d).toBe(3);
@@ -779,7 +785,7 @@ describe("throughput", () => {
     expect(view.pendingByPaper).toEqual([]);
     expect(view.oldestPendingAt).toBeNull();
     expect(view.oldestPendingHours).toBeNull();
-    expect(view.answersByState).toEqual({ PENDING: 0, SMART_MARKED: 0, HUMAN_MARKED: 0, OVERRIDDEN: 0 });
+    expect(view.answersByState).toEqual({ PENDING: 0, SMART_MARKED: 0, HUMAN_MARKED: 0, OVERRIDDEN: 0, SELF_MARKED: 0 }); // F-33-1(a): five-key zero-fill even on an empty corpus
   });
 });
 

@@ -1,0 +1,20 @@
+{
+  "task": "T-MIG-033",
+  "run": "run-003-r0-f33-1-fix",
+  "recorded_at": "2026-10-06T00:1xZ",
+  "agent": "R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "authority": "Operator directive 'You are R0. Review and merge all the PRs' (trace 1a10ce1127279f91) + the F-3 rework precedent (R0 executes a ruled fix). The author lane (r4) did not push the F-33-1 fix within the round (head 1f4043c unchanged since 12:23Z; round-6b review comment 5997573821 specified the fix exactly).",
+  "fix": {
+    "finding": "F-33-1 (BLOCKING, round-6b): MARKING_STATES had FOUR states; frozen Answer.java:34 has FIVE (PENDING, SMART_MARKED, HUMAN_MARKED, OVERRIDDEN, SELF_MARKED). (a) throughput.answersByState omitted the zero-filled SELF_MARKED key the frozen law always renders; (b) parseMarkingState 400'd SELF_MARKED where the frozen valueOf accepts it.",
+    "changes": [
+      "apps/api/src/services/teachermarking/index.ts - MARKING_STATES extended to the five-state enum (single root cause; both manifestations were constant-driven). The C-9 error MESSAGE keeps the frozen 4-state enumeration quirk verbatim (the accepted-set changes, not the message).",
+      "apps/api/test/teachermarking/teachermarking.test.ts - pin F-33-1(b): parseMarkingState('SELF_MARKED') and 'self_marked' return without throwing; pin F-33-1(a): the throughput zero-state shape asserts SELF_MARKED: 0 (existing toEqual extended to the five-key law)."
+    ]
+  },
+  "non_blocking_corrections_of_record": [
+    "N-1: run-002-tranche1.json's gate label reads '485 pass / 13 skip'; the actual split is 512 pass + 13 skip = 525 total (delta arithmetic exact - the label, not the numbers, was wrong). THIS receipt is the correction of record; run-002-tranche1.json is left untouched as the author's historical artifact.",
+    "N-3: the PR-body prose 'total disagreement -> -1' is wrong - the code implements the degenerate convention perfect -> 1 / disagreement -> 0 (the -1 value is the NON-degenerate complete-disagreement case with mixed marginals, observed 0 / expected 0.5). The code and the test at teachermarking.test.ts cohenKappa are correct; the prose correction of record lives here."
+  ],
+  "contracts_alignment": "The merged T-MIG-037 contracts (teacher-marking.ts, #58) already encode the five-key STRICT throughput shape and the five-state param pipe - the contracts layer would have rejected this service's old output. This fix makes the service agree with the canonical contracts.",
+  "gates": "see run-004-merge receipt (re-measured on the intake head)"
+}
