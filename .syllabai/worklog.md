@@ -1977,6 +1977,19 @@ Stage Summary:
 - Lane R4-api-b IDLE after this commit; no other lane-owned register items outstanding.
 
 ---
+Task ID: T-MIG-033 (run-004 claim — tranche-2)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator directive (trace 1a10d02b6c32a29d) "continue working" + R0-ROUND-6C suggestion 2 — claim T-MIG-033 tranche-2 (routes + zod wiring + flagged mounts).
+
+Work Log:
+- Post-merge continuation of the delegated review+merge round: #62 merged (d9a48a6), T-MIG-044 DONE, #61 closed superseded, then per R0-ROUND-6C's "give T-MIG-033 tranche-2 a lane" this lane (tranche-1 author) claimed tranche-2.
+- Zero-collision re-verified: only t-mig-033/r4 (merged tranche-1) exists on origin; board zero-open; branch t-mig-033/r4b cut from main f39557d.
+- Frozen surface re-read @ 6cad6ef (fresh anonymous clone, HEAD verified = 6cad6ef): TeacherMarkingController.java :46-328 mapped endpoint-for-endpoint (9 routes, G-5 bounds, C-9 verbatim hint, dual-shape 200s, SmartMarkBatchRequest/HumanMarkRequest/KappaScopeRequest validation annotations, KappaEvaluationView shape, @PreAuthorize defense-in-depth note).
+- Plan grounded in merged reality: T-MIG-037 contracts (teacher-marking.ts — all request schemas + G-5 constants 50/200/5/100/50) + tranche-1 services (services/teachermarking/index.ts incl. the five-state MARKING_STATES) + the 6th mount precedent (content/curriculum pattern). N-4 + N-2 conditions attached per card.
+- Claim receipt run-004-claim-tranche2.json + yaml status note (this commit). Implementation next; PR after gates.
+
+Stage Summary:
+- T-MIG-033 tranche-2 CLAIMED on t-mig-033/r4b. Board zero-open preserved (claim is the only in-flight item). Actions variable NEON_PARENT_BRANCH_ID set repo-side (br-muddy-bar-a5huwldd); operator-side remainder for the maiden Neon run: NEON_API_KEY + NEON_PROJECT_ID (recorded nowhere in-repo, by design) then dispatch.
 
 Task ID: R0-ROUND-6C-DRIFT-FIX (w0a housekeeping: T-MIG-038 card flip + T-MIG-044 independent review verification)
 Agent: w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
@@ -2048,3 +2061,17 @@ Work Log:
 
 Stage Summary:
 - Round-9 lane work COMPLETE: check -> claim (041 seeding word) -> deep read -> tranche-1 (services + 22 pins) -> gates -> PR #65 -> STOP. Awaiting independent review + R0 merge-intake (authors never self-merge). T-MIG-043 (agenda/KG/smart-lesson/exam-series+flashcards) is the next reserved band for whoever the operator routes.
+Task ID: R3a-ROUND-9 (post-merge verification + queue sweep receipt)
+Agent: superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Operator directive (trace 1a10d1ee8c42e0b9): "Check if R0 has merged or not. If not, review+merge yourself and continue working."
+
+Work Log:
+- SANDBOX WIPED a third time (reset #3 — same class R7a recorded this cycle): re-clone + PAT re-seed from the operator channel; local scripts lost (intake-union resolver preserved in receipts/history where it matters). main re-verified at acce2c6.
+- PR #56 (T-MIG-034) verified MERGED by R0: merge 1e82a34 @ 17:01:05Z with intake 09ba069 = CONTRACTS ARBITRATION — canonical #58 test-builder/transcription kept, PR-side duplicates dropped, imports re-pointed; R0 rulings vs frozen 6cad6ef: partLabel NULLABLE (fixed a false-reject defect in the canonical file), reasons = 3-literal enum (strengthened), topicCode/coverage code-title NON-NULL (NOT NULL columns); selectByMarks ruled line-against-line faithful; the OUT-OF-FENCE mounts RATIFIED (:18/:42/:59 + :27/:51); R0 review 5999190842. Card T-MIG-034 flipped DONE. The directive's self-merge branch never triggered — R0 acted first; author-recusal discipline was never strained.
+- QUEUE SWEEP: 0 open PRs. #50 (T-MIG-033 tranche-1) was merged 4be24e6 @ 17:17:28Z after the F-33-1 fix landed (4605926, R0-executed per the review 5997573821) — R7a-ROUND-8's interim "held" note is superseded by the R0-ROUND-6C drain (9/9). Board: every card DONE except T-MIG-033 IN_PROGRESS (t2/t3).
+- T-MIG-033 tranche-2/3 DISPOSITION: CLAIMED by r4b at 9c62374 (17:26:26Z, operator trace 1a10d02b6c32a29d, receipt run-004-claim-tranche2, zero-collision re-verified) — HANDS OFF per earliest-claim-wins + zero-collision discipline. No competing claim filed by this lane.
+- NEON COW drop-after-use re-verification for this lane (T-MIG-022/023 replay branches): BLOCKED — sandbox DNS cannot resolve api.neon.tech (egress restriction; GitHub API unaffected). Recorded as unverifiable-from-sandbox; the drops were receipted at run time (seed br-wild-rice-a58063jp + prod br-red-wildflower-a5vyd81c, AS-COWED posture, dropped post-run per run-001 receipts).
+- Gates on this receipt head (acce2c6 + worklog append only): typecheck x4 exit 0; bun test 712 ran / 699 pass / 0 fail / 13 skip, 1924 expect (= R7a-ROUND-8 post-merge main baseline exact); golden --selftest OK (tolerance engine incl. declared-unordered multiset). Zero code files touched by this PR.
+
+Stage Summary:
+- Round-9 closed for this lane: merge verified, arbitration rulings acknowledged (all favorable; canonical contracts absorbed the port with two strengthenings), queue swept empty, the only remaining work (033 t2/t3) left to its earliest claimant r4b, Neon hygiene disclosed as egress-blocked. LANE IDLE — awaiting operator/R0 direction. No self-filed wave work.
