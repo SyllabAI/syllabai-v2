@@ -29,11 +29,13 @@
 import { Hono } from "hono";
 import { healthRoute } from "./routes/health";
 import { buildIdentityApp } from "./services/identity";
+import { buildContentApp } from "./services/content";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
 
 const identity = buildIdentityApp();
+const content = buildContentApp();
 
 const app = new Hono();
 
@@ -79,6 +81,15 @@ app.use("*", identity.authMiddleware);
 // must never see the authenticated() gate.
 app.route("/api/v1/auth", identity.authRoute);
 app.route("/api/v1/auth", identity.bootstrapRoute);
+
+// Content routers (T-MIG-020 — Wave 2 read surfaces; mounted BEFORE the
+// authenticated() fallback, which then only sees paths no router claimed):
+//   /api/v1/content             — learner citation reader + question assets
+//                                 (isAuthenticated parity)
+//   /api/v1/teacher/content     — document store + review queues + §7 read
+//                                 views (TEACHER/ADMIN parity)
+app.route("/api/v1/content", content.contentRoute);
+app.route("/api/v1/teacher/content", content.teacherContentRoute);
 
 // anyRequest().authenticated() parity for paths NO router claimed
 // (SecurityConfig.java:91): anonymous callers get the 401 Boot-shaped body;
