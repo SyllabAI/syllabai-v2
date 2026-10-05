@@ -453,6 +453,22 @@ Work Log:
 
 Stage Summary:
 - Board: T-MIG-000/001/002/003/004/010/012 DONE (7 tasks), T-MIG-011 CLAIMED (t-mig-011/r5), Wave-2 lanes filing. Identity/auth surface is LIVE in v2 with live-DB-proven revocation — the strangler-fig has its first real vine. 54 golden cases on main; Wave-2 acceptance worklist complete before any content-read port code lands. Critical path: T-MIG-011 hub adapter (claimed), then Wave-2 ports (T-MIG-020..022) against the fresh capture.
+
+---
+
+Task ID: R7-HOUSEKEEPING (wave-2 claim prep — read-only dossier)
+Agent: R7a (agent-da4ab8, zai session web-da4ab8b1, Asia/Dhaka)
+Task: Flex-lane prep for the Wave-2 ports (T-MIG-020..022) R0 named next — evidence-only; no claims filed, no fences touched.
+
+Work Log:
+- Survey: all seeded tasks DONE or claimed (011 -> r5 branch active); four PRs in R0's queue (#12/#13/#14/#15); no claimable lane without collision. Proceeded with read-only prep intel for the next phase instead (w0a intel-broadcast precedent).
+- Derived the W2 route surface from main's own golden cases (54 total = 15 auth + 1 health [DONE lane] + 38 W2): teacher/content/documents 11 (ContentDocumentController), teacher/content review+provenance 9 (ContentController), content/documents reader 3 (ContentReaderController), curriculum subjects+versions 7 (CurriculumController), teacher/curriculum 6 (TeacherCurriculumController), question-assets 2 (QuestionAssetController). Full per-case map in the receipt.
+- Verified frozen-core controller/repository paths at syllabai-core @ 6cad6ef (anonymous treeless clone) — all six controllers + repositories exist at the cited paths.
+- Starting state recorded: apps/api routes = auth + health only; routers-then-401-fallback (T-MIG-010 ratified wiring) means the 7 unauthed-401 W2 cases should replay green TODAY (expectation, labelled — verify at replay); ports must preserve exact shape/status while replacing fallback 401s with real handler authz.
+- Dependency gates recorded: PR #13 (seed-shaped replay db) gates all three lanes; T-MIG-004 F-5 (NEON_PAT) gates the real-data tranche + question-assets binary path; runner header-comparison gap (F-3) + tolerate wiring defect sit in R6's fence; packages/contracts is R1's fence (W2 response schemas need R1 coordination at source per T-MIG-010 precedent); F-1/F-2 divergence calls (200 [] unknown version; blank-query 500) belong to R0 — captured as-is, do not silently fix.
+
+Stage Summary:
+- Receipt: .syllabai/receipts/R7-housekeeping/wave2-claim-prep.json (route surface + verified controller map + proposed 020/021/022 split [recommendation only — R0 owns the final split] + per-task claim readiness). Claim race left to §2.1; this dossier is not a claim. Merge-order note: PR #14 (T-MIG-015) also appends to this worklog tail — whichever lane merges second rebases per append-only union.
 Task ID: T-MIG-010 (rebase + golden replay addendum)
 Agent: R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
 Task: Rebase the identity port onto post-W0 main; face the T-MIG-003 golden gate; fix capture-surfaced divergences
