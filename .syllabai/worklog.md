@@ -489,6 +489,33 @@ Stage Summary addendum (T-MIG-013): CI first ran red on a test-harness timing ar
 ---
 
 Task ID: T-MIG-014
+Agent: R7a (agent-da4ab8, zai session web-da4ab8b1, Asia/Dhaka)
+Task: Reference docs drift fix — REFERENCE_DOCS.md ADR paths + receipts-heritage attribution (self-selected per §5; closes R7a orientation Q1, corroborated by R1 orientation Q2).
+
+Work Log:
+- Sandbox reset detected on session resume (clone/.creds/local worklog wiped) — re-cloned syllabai-v2 anonymously (public repo) and reconstructed state from the repo per receipts culture. PR #3 (T-MIG-000) and PR #5 (R7 housekeeping) confirmed MERGED via git history; my lane items DONE.
+- Board survey: 7 DONE, T-MIG-011 claimed (r5), T-MIG-013 filed by R3 (branch yaml) — not claimable. Self-selected the open docs-drift fix as R7a flex work; authored .syllabai/tasks/T-MIG-014-reference-docs-drift.yaml per §4 (w0a/T-MIG-004 precedent) after a no-collision scan (no yaml claims v2 docs/**).
+- Verified EVERY path REFERENCE_DOCS.md cites, via anonymous shallow clones of master pack / syllabai-core / syllabai-hub / syllabai-resources: 13/13 ADRs at pack ROOT (0 under docs/adr/), 12/12 core rows OK, 8/8 hub rows OK, no bench/ at resources root. Only the two drift items were wrong.
+- Fixed: 13 ADR row paths (docs/adr/ADR-* -> ADR-*), receipts-heritage line (resources-repo -> master-pack bench/review/), + 2-line verification note. Nothing else. Evidence: .syllabai/receipts/T-MIG-014/run-001.json.
+- PUSH BLOCKED: no GITHUB_PAT this session (sandbox reset wiped .creds; per credential law no token improvised/created — same wall w0a hit and disclosed). Branch t-mig-014/r7a is push-ready verbatim; yaml status -> BLOCKED per w0a precedent.
+
+Stage Summary:
+- UNBLOCK for operator/R0: supply a valid GITHUB_PAT in-session -> push t-mig-014/r7a -> PR "T-MIG-014: reference docs drift fix" -> IN_REVIEW. Docs-drift findings F-class: REFERENCE_DOCS.md now 33/33 verified paths; future agents get correct raw.githubusercontent URLs. Rotation recommendation for briefing tokens stands (they transited chat plaintext; several peers report dead tokens in-worklog).
+
+---
+
+Task ID: T-MIG-015 (renumbered from T-MIG-014 — push + collision yield)
+Agent: R7a (agent-da4ab8, zai session web-da4ab8b1, Asia/Dhaka)
+Task: Push the completed docs-drift fix after operator credential unblock; resolve the three-way T-MIG-014 ID collision surfaced at push-time recheck.
+
+Work Log:
+- Operator unblock received (fresh GITHUB_PAT supplied in-session; stored under .creds/ only, never echoed/committed — the rotation recommendation for chat-transited tokens stands). Push executed per the pre-blocked plan.
+- Collision discovered at push-time recheck: three DIFFERENT tasks filed as T-MIG-014 within 23 minutes, each after an honest no-collision scan against main (the scans raced each other, not main): this lane (docs drift, claim 27bca71 @ 2026-10-05T05:00:49Z — earliest); R3a/superz-agent-b (URL-dispatched db driver, claim ecded41 @ 05:08:44Z, PR #13 open IN_REVIEW @ 05:19:09Z, P1, unblocks Wave-2 replay); R1 (per-IP RateLimitFilter M1, claim b1f63b4 @ 05:23:58Z, claim-only).
+- Decision: YIELD the T-MIG-014 ID despite earliest claim; renumbered this task to T-MIG-015 (next free — nothing on main/remote used it at push time). Rationale: earliest-claim is a tiebreak, not territory; PR #13 is already in R0's review queue with .syllabai/receipts/T-MIG-014/** populated and mergeable-clean, so contesting would churn an in-review P1 and buy nothing substantive. R0 retains full discretion to re-rule the ID; nothing substantive changes either way.
+- Mechanics: branch t-mig-014/r7a -> t-mig-015/r7a; yaml + receipts dir moved to T-MIG-015 (run-001.json byte-identical); claimed_at corrected to the commit-authoritative stamp (the 19:55+06 value was a transcription error — commit 27bca71 says 05:00:49Z = 11:00:49+06); status BLOCKED -> IN_REVIEW; the docs citation line follows the receipt to T-MIG-015; run-002.json records this run incl. gates (docs-only: diff-surface check, code gates N/A).
+
+Stage Summary:
+- PR "T-MIG-015: reference docs drift fix" open, IN_REVIEW, awaiting R0; 33/33 cited paths verified. Residual for R0: R1's claim-only t-mig-014/r1 still carries the contested ID — after PR #13, T-MIG-014 on main means the db-driver task, so R1's lane is the one needing renumber per this timeline.
 Agent: superz-agent-b (R3 lane self-selected; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
 Task: Filed+claimed+implemented URL-dispatched db drivers (postgres.js for non-Neon Postgres) so golden replay can target seed-shaped state — plus found+fixed a latent neon-http incompatibility the live check exposed.
 
