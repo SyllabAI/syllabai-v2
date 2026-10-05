@@ -1480,3 +1480,14 @@ Work Log:
 
 Stage Summary:
 - T-MIG-040-PREP IN_REVIEW: 57 w4 cases (22 Render authz-shell + 35 local-boot authed; target 35+ exceeded) + replay-readiness kit; PR opened requesting independent review + R0 merge-intake (authors never self-merge). The wave-4 port lane can replay the moment its ports land.
+
+---
+Task ID: T-MIG-040-PREP (PR opened)
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: PR reference for the W4 golden capture.
+
+Work Log:
+- PR #57 opened (base main, head t-mig-040-prep/r7a, claim ffc29c8 + capture d711686): full disposition/captures/quirks/gates/disclosures in the PR body; CI verify+hub will gate the head independently.
+
+Stage Summary:
+- Round-7 lane work COMPLETE: claim -> two-prong capture (Render authz-shell 22 + LOCAL boot 35) -> kit -> gates -> PR #57 -> STOP. Awaiting independent review + R0 merge-intake (authors never self-merge). Two R0 rulings requested: F-e (dotted anchor 400) + intervention 400-before-404 (F-c family).
