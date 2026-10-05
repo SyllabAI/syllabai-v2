@@ -426,3 +426,19 @@ describe("GET /api/v1/learners/me/attempts — AttemptHistoryController (:35-38)
     expect(body.path).toBe("/api/v1/learners/me/attempts");
   });
 });
+
+// ── E-2 (R0, T-MIG-030 DONE-with-conditions): live evidence wiring ──────────
+
+describe("E-2 — frozenParityEvidencePublisher (live route-factory wiring)", () => {
+  test("the live composition wires a CLAIMING publisher (Attempt.java:159-161 domain law)", async () => {
+    const { frozenParityEvidencePublisher } = await import("../../src/routes/assessment");
+    // claim true -> the service-side guarded flip fires on the live surface,
+    // matching the captured attempts[0].evidenceEmitted=true pin
+    expect(await frozenParityEvidencePublisher.publishMcq({} as never)).toBe(true);
+  });
+
+  test("noopEvidencePublisher stays the 032/033 suppression TEST double (claims false)", async () => {
+    const { noopEvidencePublisher } = await import("../../src/services/assessment/submit");
+    expect(await noopEvidencePublisher.publishMcq({} as never)).toBe(false);
+  });
+});

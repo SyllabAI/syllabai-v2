@@ -1,0 +1,124 @@
+version: 1
+task:
+  id: T-MIG-032
+  title: "Wave-3 marking port, learner half — LearnerSelfMarkController (POST
+    /api/v1/learners/me/attempts/{attemptId}/self-mark, 201) +
+    StudentSmartMarkController (POST .../{attemptId}/smart-mark,
+    .../parts/{partId}/feedback-explanation, .../parts/{partId}/improvement-plan)
+    over the shared SmartMarkService pipeline (validators, κ release gate,
+    reveal policy) with the E-1 evidence claim contract; 5 golden cases"
+  owner: "R7a (agent-da4ab8, zai-web session web-da4ab8b1) — self-filed per the
+    T-MIG-013/020/021/030/031 precedent; the 032 mapping follows R0's ratified
+    split map (030 PR #31 verdict 5990832802: 032 self-mark+smart-mark)"
+  status: CLAIMED # claimed 2026-10-05T09:00Z; authoritative instant = this commit's author time
+  claimed_at: "2026-10-05T09:00:00Z"
+  priority: P1
+  wave: 3
+  deps: [T-MIG-018, T-MIG-007, T-MIG-030] # contracts zod gate (PR #26, selfMarkRequestSchema + selfMarkViewSchema live); capture (PR #29); T-MIG-030 (PR #31/#36) — the E-1 evidence claim + guarded-flip contract and the attempt/answer query shapes this slice consumes
+  execution_record: >
+    (claim entry 2026-10-05T09:00Z) Pre-claim verification at main 8f67d05,
+    re-scanned immediately before branch cut: zero T-MIG-032 yamls on main
+    (ls-tree), zero t-mig-032* remote heads (ls-remote), open PRs #37 (r4,
+    T-MIG-024 W2-F3 re-pin) + #38 (r1, T-MIG-023 wave-2 exit fixes) — zero
+    scope overlap with this filing's files. Surface = 5 golden cases:
+    w3-selfmark-unauthed-401, w3-selfmark-unknown-attempt-500,
+    w3-smartmark-unauthed-401, w3-smartmark-unknown-attempt-404,
+    w3-smartmark-feedback-unauthed-401 (unauthed 401s are shell-level,
+    shared with every lane). CAPTURED QUIRK (F-1-class, as-captured, R0
+    rules): POST self-mark on an UNKNOWN attempt captures a 500
+    internal_error while smart-mark on the same unknown id captures 404
+    not_found "attempt {uuid} not found" — the port reproduces the 404
+    naturally (NotFound in the service) and CANNOT reproduce the self-mark
+    500 without manufacturing a lock-failure emulation; disclosed for an
+    R0 as-captured ruling, never silently "fixed".
+    FROZEN SOURCES (syllabai-core @ 6cad6ef, raw reads only):
+    LearnerSelfMarkController.java (:27 base /api/v1/learners/me/attempts,
+    :34 self-mark 201 SelfMarkView, duplicate part -> shared
+    BadRequestException "duplicate part in self-mark: {id}" ->
+    400 bad_request WITH the detail message — GlobalExceptionHandler :37-42,
+    NOT the fixed "malformed request" body; DTO PartSelfMark @NotNull UUID
+    partId, @Min(0) @Max(99) Integer marksAwarded, SelfMarkRequest(parts,
+    comment)); LearnerSelfMarkService.java (ADR-026: marksByPartId empty ->
+    BadRequest "self-mark carries no part marks"; findByIdForUpdate row lock
+    BEFORE any state load — the evidence-state concurrency fix pattern;
+    other learner's attempt -> NotFound "attempt" no existence leak;
+    non-STRUCTURED -> BadRequest "self-marking applies to structured
+    attempts only"; no part answers -> BadRequest "attempt carries no part
+    answers"; any answer not PENDING/SMART_MARKED -> Conflict "attempt
+    already settled ({state}) — self-marking is single-shot"; request part
+    set must EQUAL the attempt's parts exactly -> BadRequest "self-mark
+    must cover exactly the attempt's parts"; per-part bound 0..max(part.marks,0)
+    violation -> Conflict "marks {n} outside part bound 0-{bound}";
+    settle order: answers selfMarked + saved, LearnerSelfMark rows saved
+    (learner_self_marks, NEVER HumanMark — the kappa sample stays
+    teacher-only), attempt.selfMarked() + recordTotalMarks(sum,
+    question.marks) conservative full-marks-equals-correct;
+    evidencePublisher.publishGraded(attempt, question, secondary) -> boolean
+    evidenceFired — the E-1 claim contract bound at T-MIG-030 tranche-2
+    applies here: claim true -> guarded flip, false = already fired no-op);
+    StudentSmartMarkController.java (:31 base, :39 smart-mark ->
+    AttemptSmartMarkView, :46 feedback-explanation, :52 improvement-plan —
+    the two feedback actions take NO request body, grounding resolved
+    server-side from opaque ids); StudentSmartMarkService.java (ONE engine:
+    student runs the SAME SmartMarkService pipeline as the teacher queue,
+    batched one candidate-generation call per attempt with per-part
+    fallback; ownership re-verify -> 404 no leak; non-structured -> 400
+    "smart marking applies to structured attempts only"; no answers -> 400;
+    settled answers -> Conflict "attempt already settled ({state}) — Smart
+    Mark runs before a self-mark or teacher mark settles it";
+    resolveScheme + requireRevealableScheme: withheld scheme -> Conflict 409
+    the honest pending-validation state (reveal policy
+    syllabai.assessment.markscheme-reveal-policy default VALIDATED_ONLY);
+    authoritative = smartMarkService.kappaGatePassed(question.examPaperId())
+    — kappa-gated honesty flag, never a silent either; result row missing
+    after the pass -> IllegalStateException; the two feedback actions:
+    accepted-result-required 409 otherwise, LLM explains decisions never
+    makes them, prose EPHEMERAL (regenerated per request, NOT persisted —
+    consumption lands as research telemetry events SmartFeedbackExplainedEvent
+    / SmartImprovementPlanViewedEvent)); KappaAgreementService.java (Cohen's
+    kappa on mark-point decisions, perfect-agreement convention kappa=1 /
+    any-disagreement=0 when expected=1); validators trio BoundsMarkingValidator
+    / CoverageMarkingValidator / MarkSumMarkingValidator (deterministic
+    pre-acceptance gates); SmartMarkResult append-only persistence.
+    LLM boundary: LlmMarkingCandidateGenerator + the feedback prose ride an
+    INJECTED seam (like T-MIG-030's EvidencePublisher) — GOLDEN_MASTER s3
+    keeps LLM output lifecycle-gated, not golden-gated; the pipeline law
+    (validators, kappa gate, append-only results, reveal policy, settlement
+    semantics) ports deterministically and is unit-test-pinned.
+    Parity decisions to disclose at tranche-1: findByIdForUpdate row-lock
+    -> serializing statement (select ... for update) through the structural
+    SqlFn; JPA managed-entity settle cascade -> explicit per-row updates in
+    one logical pass; telemetry ApplicationEventPublisher -> injected
+    Observer seam (same doctrine as T-MIG-030's EvidencePublisher); kappa
+    sample queries port per the teacher-only boundary (033's queue feeds
+    it — the gate READS human marks; cross-slice contract disclosed).
+    Plan: tranche-1 contract-independent — services/selfmark +
+    services/smartmark over attempts/answers/question_parts/
+    question_versions/mark_schemes/mark_scheme_points/learner_self_marks/
+    smart_mark_results/human_marks tables, unit-tested against a stubbed
+    sql adapter (fakeSql rowsFor pattern); tagged-template bind-slot
+    discipline (a ${} slot is a parameter, never SQL text). tranche-2:
+    route factories + zod wiring (selfMarkRequestSchema/selfMarkViewSchema
+    live from T-MIG-018; smart-mark response schemas are NOT in contracts —
+    local view types disclosed, R1 top-up requested) + mounts as the
+    flagged OUT-OF-FENCE commit + golden replay of the 5 cases (CI-side
+    runner pending).
+  scope:
+    allowed:
+      - apps/api/src/services/selfmark/**
+      - apps/api/src/services/smartmark/**
+      - apps/api/src/routes/selfmark/**
+      - apps/api/src/routes/smartmark/**
+      - apps/api/test/selfmark/**
+      - apps/api/test/smartmark/**
+      - .syllabai/receipts/T-MIG-032/**
+      - .syllabai/tasks/T-MIG-032-self-smart-mark-port.yaml
+      - .syllabai/worklog.md # append-only
+    forbidden:
+      - packages/contracts/** # R1's fence (T-MIG-018) — import, never edit
+      - golden/** # R6's fence (T-MIG-007) — read-only
+      - apps/api/src/services/assessment/** # T-MIG-030 (r7a, merged) — import, never edit
+      - apps/api/src/services/identity/** and apps/api/src/middleware/** # landed shared infra — consumption only
+      - apps/api/src/index.ts # OUT-OF-FENCE ONLY at tranche-2: separate flagged commit + ratification
+      - apps/api/src/services/teachermarking/** and apps/api/src/services/sme/** # T-MIG-033's surface — the shared pipeline lands here and 033 imports it; cross-slice contract disclosed in the execution record
+      - any write to Neon/production; schema widening; Flyway edits; frozen core writes
