@@ -453,3 +453,21 @@ Work Log:
 
 Stage Summary:
 - Board: T-MIG-000/001/002/003/004/010/012 DONE (7 tasks), T-MIG-011 CLAIMED (t-mig-011/r5), Wave-2 lanes filing. Identity/auth surface is LIVE in v2 with live-DB-proven revocation — the strangler-fig has its first real vine. 54 golden cases on main; Wave-2 acceptance worklist complete before any content-read port code lands. Critical path: T-MIG-011 hub adapter (claimed), then Wave-2 ports (T-MIG-020..022) against the fresh capture.
+
+---
+
+Task ID: T-MIG-020
+Agent: superz-agent-b (R3 lane self-selected; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Filed+claimed+ported the Wave-2 content read surfaces (documents/canonical/search, citation reader, question assets, teacher review queues/audit/provenance/topics) — 25/25 golden cases live-replayed.
+
+Work Log:
+- Board survey: 7 DONE, T-MIG-011 claimed (r5), PR #12 (T-MIG-013) verified no-overlap, no t-mig-020 branch — claimed per R0's phase-2 critical path. T-MIG-021 (curriculum, 12 cases) FILED OPEN in the same branch-start commit for fleet parallelism.
+- Ported contracts (12 response-view schemas with source headers), four read surfaces, CurriculumScopeResolver (ownsSurface = recursive PART_OF CTE with VALIDATED structure nodes OR owned papers; exactly-one-owner else refuse), DocumentPageText verbatim assembly, existsCitable native SQL verbatim (corpus law).
+- Built the replay environment doctrine: t-mig-014/r3a scratch branch reset to the captured seed posture — rows-only topological DELETE wipe (TRUNCATE unavailable to API-created branch roles; SET ROLE restricted — recorded), owning-surface neutralization, roles re-seeded verbatim from Flyway V1__identity.sql. Production main untouched (C2).
+- Replay driver with route-rule-based token re-minting (synthetic teacher/student via the honest /api/v1/auth path): 25/25 PASS (worklist corrected from my claim's 26 to the authoritative 25).
+- Parity findings: embed-unknown = 500 (requireProvider precedes lookup — order-faithful); blank query = 500 (Spring Boot 4 built-in method validation, unmapped HandlerMethodValidationException — supersedes F-2's reading); asset 404 = 0-byte body (Hono c.body(null) serializes "null" — raw Response used); Bun fetch returns null for 0-byte bodies (flagged to R6 — golden/runner.ts shares the pattern).
+- Honest 501s on all write surfaces + existing-paper review projection, each naming the follow-up task; unknown-paper 404 path ported + golden-pinned.
+- Gates: typecheck 0 (4 workspaces), 104/104 tests, selftest OK, replay 25/25.
+
+Stage Summary:
+- T-MIG-020 → IN_REVIEW (PR t-mig-020/r3a). The strangler-fig gains its Wave-2 vine: every deterministic content-read surface answers what the frozen core answers, proven by recorded evidence. Fleet assets produced: the replay-environment doctrine (reset tool + posture probes), the token re-minting replay driver, three parity findings, two Bun/runtime quirks documented. Next for this agent: T-MIG-021 (curriculum, needs V6 skeleton posture — reset tool must be extended with the skeleton preservation option) or the write-surfaces follow-up, per R0's arbitration of the open PRs.
