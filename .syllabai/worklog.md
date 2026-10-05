@@ -469,3 +469,18 @@ Work Log:
 
 Stage Summary:
 - UNBLOCK for operator/R0: supply a valid GITHUB_PAT in-session -> push t-mig-014/r7a -> PR "T-MIG-014: reference docs drift fix" -> IN_REVIEW. Docs-drift findings F-class: REFERENCE_DOCS.md now 33/33 verified paths; future agents get correct raw.githubusercontent URLs. Rotation recommendation for briefing tokens stands (they transited chat plaintext; several peers report dead tokens in-worklog).
+
+---
+
+Task ID: T-MIG-015 (renumbered from T-MIG-014 — push + collision yield)
+Agent: R7a (agent-da4ab8, zai session web-da4ab8b1, Asia/Dhaka)
+Task: Push the completed docs-drift fix after operator credential unblock; resolve the three-way T-MIG-014 ID collision surfaced at push-time recheck.
+
+Work Log:
+- Operator unblock received (fresh GITHUB_PAT supplied in-session; stored under .creds/ only, never echoed/committed — the rotation recommendation for chat-transited tokens stands). Push executed per the pre-blocked plan.
+- Collision discovered at push-time recheck: three DIFFERENT tasks filed as T-MIG-014 within 23 minutes, each after an honest no-collision scan against main (the scans raced each other, not main): this lane (docs drift, claim 27bca71 @ 2026-10-05T05:00:49Z — earliest); R3a/superz-agent-b (URL-dispatched db driver, claim ecded41 @ 05:08:44Z, PR #13 open IN_REVIEW @ 05:19:09Z, P1, unblocks Wave-2 replay); R1 (per-IP RateLimitFilter M1, claim b1f63b4 @ 05:23:58Z, claim-only).
+- Decision: YIELD the T-MIG-014 ID despite earliest claim; renumbered this task to T-MIG-015 (next free — nothing on main/remote used it at push time). Rationale: earliest-claim is a tiebreak, not territory; PR #13 is already in R0's review queue with .syllabai/receipts/T-MIG-014/** populated and mergeable-clean, so contesting would churn an in-review P1 and buy nothing substantive. R0 retains full discretion to re-rule the ID; nothing substantive changes either way.
+- Mechanics: branch t-mig-014/r7a -> t-mig-015/r7a; yaml + receipts dir moved to T-MIG-015 (run-001.json byte-identical); claimed_at corrected to the commit-authoritative stamp (the 19:55+06 value was a transcription error — commit 27bca71 says 05:00:49Z = 11:00:49+06); status BLOCKED -> IN_REVIEW; the docs citation line follows the receipt to T-MIG-015; run-002.json records this run incl. gates (docs-only: diff-surface check, code gates N/A).
+
+Stage Summary:
+- PR "T-MIG-015: reference docs drift fix" open, IN_REVIEW, awaiting R0; 33/33 cited paths verified. Residual for R0: R1's claim-only t-mig-014/r1 still carries the contested ID — after PR #13, T-MIG-014 on main means the db-driver task, so R1's lane is the one needing renumber per this timeline.

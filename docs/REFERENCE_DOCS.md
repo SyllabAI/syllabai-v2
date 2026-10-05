@@ -6,7 +6,7 @@ Raw URLs use `https://raw.githubusercontent.com/SyllabAI/<repo>/main/<path>`.
 ## Process law — master pack (`SyllabAI/syllabai`)
 
 ADRs live at the master-pack repo ROOT (flat), not under `docs/adr/` — path
-verified 2026-10-05 (T-MIG-014 receipt).
+verified 2026-10-05 (T-MIG-015 receipt, renumbered from T-MIG-014).
 
 | Doc | Why it binds the v2 port |
 |-----|--------------------------|

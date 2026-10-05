@@ -1,10 +1,10 @@
 version: 1
 task:
-  id: T-MIG-014
+  id: T-MIG-015 # renumbered from T-MIG-014 at push time (three-way ID collision; yielded to R3a PR #13 — see execution_record + run-002.json)
   title: "Reference docs drift fix — REFERENCE_DOCS.md cites master-pack ADRs at a nonexistent docs/adr/ path"
   owner: "agent-da4ab8 (R7a flex lane, zai session web-da4ab8b1) — self-selected per briefing §5: docs-only, zero fence overlap (no yaml claims v2 docs/**; T-MIG-011/013 lanes touch apps/hub + golden only); closes R7a orientation Q1, corroborated by R1 orientation Q2"
-  status: BLOCKED (work complete; push/PR step blocked on credentials — w0a precedent)
-  claimed_at: "2026-10-05T19:55:00+06:00 (Asia/Dhaka)"
+  status: IN_REVIEW # PR open (docs-only); R0 flips DONE. Push unblocked by operator-supplied fresh GITHUB_PAT in-session.
+  claimed_at: "2026-10-05T05:00:49Z (commit 27bca71, push-authoritative; the earlier 19:55+06 stamp was a transcription error, disclosed in run-002.json)"
   priority: P2
   wave: 0
   deps: []
@@ -14,7 +14,20 @@ task:
     ROOT, 0 under docs/adr/; 12/12 core rows; 8/8 hub rows; resources repo has
     no bench/ at root). Fixed the 13 ADR row paths + receipts-heritage line +
     added a 2-line verification note. No other section touched. Evidence:
-    .syllabai/receipts/T-MIG-014/run-001.json (incl. push_attempt + unblock).
+    .syllabai/receipts/T-MIG-015/run-001.json (incl. push_attempt + unblock).
+
+    2026-10-05 (push session) agent-da4ab8/R7a — UNBLOCK + RENUMBER. Operator
+    supplied a fresh GITHUB_PAT in-session (stored under .creds/ only; never
+    echoed/committed). At push-time recheck a three-way T-MIG-014 ID collision
+    surfaced: r7a docs drift 05:00:49Z (earliest, this task); r3a db driver
+    05:08:44Z -> PR #13 open IN_REVIEW 05:19:09Z (P1, unblocks Wave-2 replay);
+    r1 ratelimit M1 05:23:58Z (claim-only). Yielded the ID to PR #13 despite
+    earliest claim — earliest-claim is a tiebreak, not territory; contesting
+    would churn an in-review P1 for zero substantive gain. Renumbered to
+    T-MIG-015 (next free at push time). Mechanics: branch/yaml/receipts dir
+    renamed (run-001.json byte-identical); docs citation line follows the
+    receipt; worklog append-only entry added. Full timeline + gates:
+    .syllabai/receipts/T-MIG-015/run-002.json.
 base:
   repo: "syllabai-v2 @ 67639db (R0 housekeeping phase-2)"
   basis: >
@@ -29,8 +42,8 @@ base:
 scope:
   allowed:
     - "docs/REFERENCE_DOCS.md (path corrections only — no semantic changes to binding content)"
-    - ".syllabai/tasks/T-MIG-014-reference-docs-drift.yaml (authored by this claim per §4; later status/execution_record only)"
-    - ".syllabai/receipts/T-MIG-014/**"
+    - ".syllabai/tasks/T-MIG-015-reference-docs-drift.yaml (authored by this claim per §4; later status/execution_record only; renamed from T-MIG-014 at push time)"
+    - ".syllabai/receipts/T-MIG-015/** (renamed from T-MIG-014 at push time)"
     - ".syllabai/worklog.md (append-only)"
   forbidden:
     - "every other file in docs/** (migration law docs are R0 territory)"
