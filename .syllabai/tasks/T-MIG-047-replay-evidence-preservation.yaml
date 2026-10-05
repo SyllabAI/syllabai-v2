@@ -1,0 +1,56 @@
+version: 1
+task:
+  id: T-MIG-047
+  title: "Replay evidence preservation + full-picture union — first live run's report was lost on RED (run 37355029779 ENOENT); both postures must always report"
+  owner: "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646) — finding surfaced by the first capacity-clear replay run; R0-executed instrument repair per the T-MIG-046 precedent (operator trace 1a10d465caf49f99 'check current status. And proceed')"
+  status: IN_PROGRESS
+  claimed_at: "2026-10-05T18:35:00Z"
+  priority: P1
+  wave: 3 # standing re-proof instrument repair (T-MIG-044 lineage)
+  deps: [T-MIG-044, T-MIG-046]
+  execution_record: >
+    (claim entry 2026-10-05T18:35Z) FOUNDING EVIDENCE — first capacity-clear
+    replay run 37355029779 (after the T-MIG-046 fallback fix + the 022-pair
+    hygiene drop freed branch slots): the FULL pipeline worked live in CI
+    (Provision SUCCESS via console-mirror fallback; Pass A apply-reset
+    SUCCESS; Pass A boot SUCCESS — the data plane IS reachable from runners;
+    155 seed cases replayed with per-case verdicts: 90 PASS / 65 FAIL) but
+    the run's EVIDENCE WAS LOST: golden/tools/ci-replay.ts's report write
+    used `fs.mkdirSync(new URL(".", "file://reports/seed.json").pathname)`
+    which parses "reports" as a URL HOST -> mkdir landed on "/" -> the
+    writeFileSync ENOENT'd -> ci-replay crashed AFTER printing all 155
+    verdicts and BEFORE writing reports/seed.json. The artifact carried only
+    boot-seed.log. Losing the per-case report exactly when the run is RED
+    defeats the instrument's core duty (divergences are FILED for R0/R6).
+    FIX A (golden/tools/ci-replay.ts): plain path.dirname(path.resolve(...))
+    mkdir for the report write + same-pattern hardening of the union summary
+    write (which had NO mkdir and depended on step ordering). One-line-class
+    fix, no comparator/corpus contact.
+    FIX B (.github/workflows/neon-replay.yml): the two replay steps are
+    EVIDENCE producers, not gates — continue-on-error: true on Pass A and
+    Pass B so a red Pass A no longer masks Pass B; the UNION verdict step
+    remains the single job gate (exits nonzero on any fail — the recorded
+    "any FAIL reds the job" doctrine is unchanged; nothing is silently
+    tolerated). Read-only proof + drop steps already run under if:always().
+    SCOPE: golden/tools/ci-replay.ts + .github/workflows/neon-replay.yml +
+    this yaml + receipts. Zero golden/cases/** or runner.ts contact.
+    GATES: golden selftest; --plan deterministic; typecheck x4; suite
+    arithmetic vs the 08f104d baseline; LOCAL live test of the write path
+    (connection-refused target -> all cases fail -> report WRITTEN + exit 1).
+  base:
+    repo: "syllabai-v2 @ 08f104d at claim; frozen refs: syllabai-core @ main, syllabai-hub @ 93226a43"
+  basis: >
+    Live evidence from CI run 37355029779 (first full-pipeline replay);
+    GOLDEN_MASTER §4/§6 (divergences filed, never auto-fixed) requires the
+    evidence to survive; AGENT_COORDINATION §6.2.
+scope:
+  allowed:
+    - "golden/tools/ci-replay.ts"
+    - ".github/workflows/neon-replay.yml"
+    - ".syllabai/tasks/T-MIG-047.yaml (status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-047/**"
+  forbidden:
+    - "golden/cases/** (R6 corpus — forever-gates)"
+    - "golden/runner.ts (comparator — zero drift)"
+    - "apps/** packages/** (port lanes)"
+    - "syllabai-core / syllabai-hub (frozen, C1)"

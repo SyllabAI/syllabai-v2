@@ -111,6 +111,12 @@ jobs:
           echo "::error::seed api failed to become healthy"; cat boot-seed.log; exit 1
 
       - name: Pass A — replay non-realdata tranche (seed posture)
+        # T-MIG-047: the replay steps are EVIDENCE producers, not gates — the
+        # union verdict below is the single job gate (any FAIL reds it). A red
+        # Pass A must not mask Pass B: both postures always report so the
+        # union carries the full picture for R0/R6 (divergences are filed,
+        # never auto-fixed, never silently tolerated).
+        continue-on-error: true
         env:
           TARGET: "http://localhost:8080"
           CASE_MODE: "seed"
@@ -137,6 +143,7 @@ jobs:
           echo "::error::prod api failed to become healthy"; cat boot-prod.log; exit 1
 
       - name: Pass B — replay realdata tranche (prod posture)
+        continue-on-error: true # T-MIG-047: evidence producer, union is the gate
         env:
           TARGET: "http://localhost:8081"
           CASE_MODE: "prod"
