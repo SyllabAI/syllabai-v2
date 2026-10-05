@@ -120,17 +120,49 @@ const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") ?? "";
  * the legacy core base. Flipping a surface to v2 is therefore an env change
  * plus one prefix line, never a code rewrite; removing the env reverts the
  * whole app to the core in one redeploy (the rollback plan, §7).
- * Wave 1 enables the identity surface once T-MIG-010's /api/v1/auth/** port
- * passes its golden gate on a branch deployment.
+ * Wave 1 enabled the identity surface once T-MIG-010's /api/v1/auth/** port
+ * passed its golden gate on a branch deployment. T-MIG-037 (r8-hub) extends
+ * the table with the now-verified W2 content/curriculum reads and the W3
+ * attempts surfaces. The flip law is startsWith-safety: every prefix below
+ * must capture ONLY hub-emitted paths the v2 api serves with REAL
+ * implementations — anything stubbed (teacher write actions are honest 501s),
+ * unmounted (learner /questions + /exam-papers await T-MIG-031 tranche-2)
+ * or unported (every other /api/v1/learners/me/* surface, knowledge, tutor,
+ * teacher classes/marking, W6 glm-ocr) stays on the legacy core so the hub
+ * cannot route a live page into a 404/501. /api/v1/learners/me/attempts is
+ * deliberately narrow: the v2 api mounts attempt history and self/smart-mark
+ * under exactly that base, while 20+ sibling /api/v1/learners/me/* surfaces
+ * are not ported yet. Each further surface flips as its own verified line.
  */
 const API_V2_BASE = process.env.NEXT_PUBLIC_API_V2_BASE_URL?.replace(/\/$/, "") ?? "";
-const V2_SURFACE_PREFIXES: readonly string[] = ["/api/v1/auth"];
+export const V2_SURFACE_PREFIXES: readonly string[] = [
+  // Wave 1 (T-MIG-010/011) — identity
+  "/api/v1/auth",
+  // T-MIG-037 (r8-hub) — now-verified W2 reads + W3 attempts
+  "/api/v1/content/documents", // T-MIG-005/020/022 reader (incl. F-1/F-2 repairs)
+  "/api/v1/content/question-assets", // T-MIG-020 QuestionAssetController port
+  "/api/v1/curriculum", // T-MIG-021 CurriculumController (learner) port
+  "/api/v1/attempts", // T-MIG-030 AttemptController submit (+/structured)
+  "/api/v1/learners/me/attempts", // T-MIG-030 history + T-MIG-032 self/smart-mark (NARROW — see above)
+];
+
+/**
+ * The pure strangler decision: which base serves `path` when the v2 api is
+ * available at `v2Base`? Returns the v2 base (normalized: trailing slash and
+ * a trailing /api/v1 are stripped, matching the operator-convention
+ * tolerance below), or null when the path must stay on the legacy core
+ * (env unset, or path outside the verified prefix table).
+ * resolveBase delegates here — this is the single decision surface the
+ * committed routing pins and the T-MIG-035-pattern live harness exercise.
+ */
+export function v2SurfaceBase(path: string, v2Base: string | undefined): string | null {
+  const v2 = (v2Base ?? "").replace(/\/+$/, "").replace(/\/api\/v1$/, "");
+  if (v2 && V2_SURFACE_PREFIXES.some((p) => path.startsWith(p))) return v2;
+  return null;
+}
 
 function resolveBase(path: string): string {
-  const core = API_BASE.replace(/\/api\/v1$/, "");
-  const v2 = API_V2_BASE.replace(/\/api\/v1$/, "");
-  if (v2 && V2_SURFACE_PREFIXES.some((p) => path.startsWith(p))) return v2;
-  return core;
+  return v2SurfaceBase(path, API_V2_BASE) ?? API_BASE.replace(/\/api\/v1$/, "");
 }
 
 const TOKEN_KEY = "syllabai.token";

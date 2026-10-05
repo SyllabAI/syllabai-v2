@@ -26,6 +26,26 @@ task:
     promised, wipe implemented) flagged to r7a/R0. Zero production Neon
     contact; roles/passwords held in workspace secrets only; fence held
     (zero apps/**/packages/**/golden/** changes).
+
+    2026-10-05 (round-6, r7a, branch t-mig-022/r7a-h2): H-2 RESOLVED via
+    tools/apply-reset-v2.ts — v1 left untouched as the as-run artifact
+    (sha256 32fee89d... verifiable; no history rewriting); v2's DEFAULT
+    posture stays byte-faithful to v1's executed behavior (full topological
+    wipe + owning-surface neutralization + roles re-seed — the pinned seed
+    posture is untouched, zero golden impact) and a new OPT-IN
+    --preserve-skeleton posture actually implements the promised skeleton
+    preservation for T-MIG-021's fixed-uuid replays (subjects /
+    curriculum_versions / knowledge_nodes preserved, PART_OF edges kept,
+    non-PART_OF edges wiped, neutralization skipped so the skeleton stays
+    exactly as-captured); docstring now describes both postures truthfully.
+    Gates: isolated strict tsc exit 0; usage smoke 3/3 (unknown-flag /
+    no-URL guards before any DB contact); typecheck x4 exit 0; bun test
+    CI-scope 485 ran / 0 fail / 13 skip / 1259 expect (= main exactly);
+    golden selftest OK; fence audit clean outside .syllabai/**. Live COW
+    proof of both postures disclosed env-blocked (NEON_PAT absent from the
+    round-6 credential drop; zero Neon contact) — reviewer option or
+    CI-side replay runner follow-up. Receipts: run-002-h2-claim.json +
+    run-002-h2.json.
 base:
   repo: "syllabai-v2 @ 01d0e9d (post R0-SWEEP-1); golden set = the 25 T-MIG-020 content cases; docs/GOLDEN_MASTER.md §4"
 basis: >

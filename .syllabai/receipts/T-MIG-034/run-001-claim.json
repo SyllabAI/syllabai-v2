@@ -1,0 +1,23 @@
+{
+  "task": "T-MIG-034",
+  "lane": "r3a (superz-agent-b)",
+  "claimed_at": "2026-10-05T15:40:00Z",
+  "branch": "t-mig-034/r3a",
+  "base": "c920eea",
+  "assignment": "operator round-6 directive trace 1a10c9f8c30284ed",
+  "zero_collision_scan": {
+    "t_mig_034_branches": 0,
+    "t_mig_034_yaml_on_main": false,
+    "open_prs": 0,
+    "head_census": "known merged-lane residue only"
+  },
+  "surfaces_scoped": {
+    "testbuilder": ["TestBuilderController.java", "TestBuilderService.java"],
+    "transcription": ["TranscriptionController.java", "AnswerInputTranscriptionService.java"],
+    "frozen_core": "syllabai-core @ 6cad6ef (public anonymous clone)",
+    "golden_cases_existing": ["w3-teacher-tests-preview-unauthed-401", "w3-teacher-tests-weakness-options-unauthed-401", "w3-tests-weakness-options-teacher-200 (missing-rootId 400 envelope)", "w3-transcribe-unauthed-401"]
+  },
+  "blockers": [
+    {"id": "B-1", "detail": "workspace wipe destroyed local clone + .secrets (GITHUB_PAT/NEON_PAT); repo re-cloned anonymously (public); claim + implementation LOCAL ONLY until operator PAT reissue — push/PR/review blocked", "class": "same-as-r1-B-1"}
+  ]
+}

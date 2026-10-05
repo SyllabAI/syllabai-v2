@@ -249,8 +249,15 @@ export class QuestionTaxonomy {
    * lane's CurriculumScopeResolver keeps its copy private (fence law: import
    * the EXPORTED shape or declare your own — the exported shape does not fit
    * this contract; disclosed in the task yaml).
+   *
+   * PUBLIC since tranche-2 (fence-internal, disclosed): the route layer
+   * composes it for QuestionController.list/families' rootId paths — the
+   * frozen controller calls knowledgeGraph.subtreeIds(rootId) DIRECTLY for
+   * those two endpoints (:48, :67), the same 404-first resolver /topics gets
+   * inside the service. One implementation, three call sites, exactly like
+   * the frozen topology.
    */
-  private async subtreeIds(rootId: string): Promise<string[]> {
+  async subtreeIds(rootId: string): Promise<string[]> {
     const node = await this.sql`
       select id from knowledge_nodes where id = ${rootId}`;
     if (node.length === 0) {

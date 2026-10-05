@@ -1,0 +1,63 @@
+version: 1
+task:
+  id: T-MIG-034
+  title: "Test-builder + transcription port (ROUND-6 operator assignment)"
+  owner: "superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9) — operator-assigned per round-6 directive trace 1a10c9f8c30284ed"
+  status: IN_REVIEW # run-001 complete: both surfaces ported, 33 pins, gates green (514/0/13skip 1407 expect, typecheck x4, selftest OK 113); PR + independent review pending B-1 credential reissue — work LOCAL on t-mig-034/r3a @ fd854c5
+  priority: P1
+  wave: 3
+  deps: [T-MIG-018, T-MIG-031, T-MIG-020]
+  execution_record: >-
+    Zero-collision scan CLEAN (no t-mig-034* heads, no 033/034 yaml on main;
+    ls-remote head census known-merged residue only). Surfaces scoped against
+    the frozen core syllabai-core @ 6cad6ef (anonymous public clone):
+    TestBuilderController/TestBuilderService (teacher/tests preview +
+    weakness-options) and TranscriptionController/AnswerInputTranscriptionService
+    (learners/me/answer-input/transcribe). Doctrine per directive: transcription
+    is an LLM-OUTPUT surface — NOT golden-gated (GOLDEN_MASTER §3); the
+    deterministic shell (authz, validation, error mapping, provider seam) is
+    ported and gated behaviourally; LLM provider seam DORMANT by default per
+    the T-MIG-032 precedent (null provider -> 503 transcription_unavailable
+    parity). Test-builder is deterministic -> normal golden path: the four
+    existing R6 captures (2x unauthed 401, weakness-options missing-rootId 400
+    validation_failed envelope) are the standing golden gate; the port is
+    capture-ready for future full-body captures via the CI-side replay runner.
+    Weakness-options' ClassAnalyticsService.overview dependency is UNPORTED
+    and UNCLAIMED by any card (033 = teachermarking/sme per the ratified split
+    map): the deterministic selection law is ported and unit-pinned behind an
+    injected ClassAnalyticsPort; the route honest-501s with the task id until
+    R0 routes the analytics port — NOT self-filed per the round-6 STOP rule.
+    BLOCKER B-1 (disclosed at claim): workspace wipe destroyed the local
+    clone + .secrets (GITHUB_PAT/NEON_PAT) — same class as r1's B-2; the
+    repo re-cloned ANONYMOUSLY (public); claim + implementation proceed
+    LOCALLY; push/PR/independent-review pending operator PAT reissue.
+    Directive fragment '(dependency below; start the shell now)' arrived
+    truncated — proceeding on the deterministic-shell + behavioural-gate
+    reading; R0 to correct if a dependency list was lost.
+base:
+  repo: "syllabai-v2 @ c920eea (R0 round-6 housekeeping; gates stated 485/0/13skip 1259 expect, 113 goldens, selftest OK)"
+basis: >
+  Round-6 operator directive assigns T-MIG-034. Deterministic surfaces ported
+  contracts-first (zod), path-parity with the frozen controllers, error
+  envelopes per the frozen GlobalExceptionHandler (transcription_bad_request
+  400 / transcription_image_too_large 413 / transcription_nothing_readable 422
+  / transcription_unavailable 503; missing-param validation_failed envelope is
+  CAPTURED by w3-tests-weakness-options-teacher-200; type-mismatch bad_request
+  "malformed request" per GlobalExceptionHandler.java:167-170).
+scope:
+  allowed:
+    - "packages/contracts/src/testbuilder.ts + answer-input.ts (+ .test.ts, index re-exports)"
+    - "apps/api/src/services/testbuilder/** (builder + sql + barrel)"
+    - "apps/api/src/services/answer-input/** (validation shell + provider seam)"
+    - "apps/api/src/routes/testbuilder.ts + answer-input.ts (route factories, authz internal)"
+    - "apps/api/test/testbuilder/** + apps/api/test/answer-input/** (stubbed-sql route tests + behavioural pins)"
+    - "apps/api/src/index.ts — 2 mount lines + imports + construction + disclosure comment (OUT-OF-FENCE, separate commit, R0 ratification per T-MIG-010/020/021/030/032 precedent)"
+    - ".syllabai/tasks/T-MIG-034*.yaml, .syllabai/receipts/T-MIG-034/**, .syllabai/worklog.md (append-only)"
+  forbidden:
+    - "golden/** changes of any kind (the four w3-* captures are the law; no re-capture, no tolerance edits)"
+    - "packages/db/** (schema untouched)"
+    - "services/questions/** modifications (ServableQuestions is T-MIG-031's surface — consumed, not edited)"
+    - "services/teachermarking/** and services/sme/** (T-MIG-033's surface)"
+    - "core-readonly / hub repos (read-only)"
+    - "production Neon (no credentials held; COW-only doctrine moot this cycle)"
+    - "direct pushes to main (R0 merges)"

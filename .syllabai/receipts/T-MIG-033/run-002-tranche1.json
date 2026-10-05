@@ -1,0 +1,34 @@
+{
+  "task": "T-MIG-033",
+  "run": "run-002-tranche1",
+  "lane": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "date": "2026-10-05",
+  "kind": "tranche-1-implementation",
+  "frozen_refs": "syllabai-core @ 6cad6ef",
+  "delivered": {
+    "module": "apps/api/src/services/teachermarking/index.ts",
+    "tests": "apps/api/test/teachermarking/teachermarking.test.ts (40 tests, 149 expects, stubbed sql)",
+    "surfaces": [
+      "TeacherSmartMarkService.markAnswer — the per-answer topology 032 did NOT port (SmartMarkService.java:87-171): lock-first (attempt row lock before any state load), newest-version resolve, newest-VALIDATED scheme, in-scope point filter, pipeline.run single, append-only result row, provisional state application, recomputeAttemptTotal (marks_awarded AND correct per Attempt.recordTotalMarks:153-156), kappaGatePassed via composition with the 032 shared engine, evidence only on accepted+authoritative+no-PENDING-parts (E-1 claim + guarded flip)",
+      "TeacherMarkingService.recordHumanMark — lock-first evidence law (:85-150), part-bound 409 with the verbatim en-dash body, revising=attempt.evidenceEmitted → OVERRIDDEN vs HUMAN_MARKED, total recompute on the post-write re-read, settle rule (evidence only when !revising AND no PENDING part remains), human_marks insert",
+      "TeacherMarkingService.evaluateAgreement + cohenKappa port — scope ALL/PAPER samples (createdAt asc), newest-run-THEN-validationPassed pairing law, breakdown key law (markPointId/awarded boolean), clampBinary, empty-pairs 409 with the verbatim κ message, degenerate convention (perfect → 1; mixed-marginal total disagreement → -1), passed = kappa >= 0.60, evaluation insert",
+      "TeacherMarkingQueueService — markingQueue full (deterministic section-7 ordering: groups oldest-waiting-then-size-then-paperId-nulls-LAST, within-paper attempt/attemptId/label/answerId; string-lexicographic uuid tie-breaks disclosed as a read-model-only deviation from Java bit-order), opt-in paged (whole paper groups, bounds page>=0 / 1..100 default 5, past-end honest empty page, real totals, chain scoped to page), batched lookups (1 queue + 1 papers + 1 smart + 1 human + 1 identity), oldest-first-overwrite latest maps, first-wins names, null-paper unfiled bucket (immutable-map NPE fix preserved), throughput (all four states zeroed-then-counted, countSince 24h/7d exact since bounds, pending-by-paper leaders count desc/key asc/nulls-last limit 5, oldest age floor hours, future-timestamp null), smartMarkBatch (empty 400, order-preserving dedup, >50 unique 400 verbatim, per-item FAILED/SKIPPED_ALREADY_MARKED/MARKED, stable UNEXPECTED_ERROR never raw exception text)"
+    ]
+  },
+  "gates": {
+    "typecheck": "bun run typecheck x4 — exit 0",
+    "bun_test": "bun test apps/api packages — 525 pass / 0 fail / 13 skip, 1408 expects (= post-#44 main 485/0/13 + 40/149 exactly)",
+    "golden_selftest": "bun golden/runner.ts --selftest — OK (declared-unordered multiset pins incl. T-MIG-024 machinery, dormant)"
+  },
+  "fence": "apps/api/src/services/teachermarking/** + apps/api/test/teachermarking/** + .syllabai bookkeeping (T-MIG-024 closeout). ZERO edits to services/smartmark (imports only: SmartMarkPipeline, toMarkingPoint, PIPELINE_VERSION, SmartMarkService.kappaGatePassed, Decision/MarkingContext types, error classes). Test-local spySql extends the shared fakeSql helper without touching it.",
+  "disclosures": [
+    "Spring application events (HumanMarkRecordedEvent, SmartMarkCompletedEvent) stay DORMANT — no event bus in the port; evidence is live through the GradedEvidencePublisher seam (E-1 claim + guarded flip)",
+    "uuid tie-break comparisons in the queue ordering use string-lexicographic order (Postgres convention) instead of Java UUID.compareTo bit order — only observable on timestamp-tied rows; read-model-only per section 7",
+    "evidence payload carries the faithful marksTotal/correct values from the attempt row (032's markAttempt hardcodes marksTotal:0/correct:false — flagged to r7a as a possible fidelity gap: frozen markAttempt also calls recordTotalMarks, which sets correct)",
+    "live Neon replay NOT run (sandbox DNS-blocked from api.neon.tech — standing finding); this tranche is services-only, no routes mounted, so no golden case exercises it yet; the w3-teacher-marking-* / w3-sme-* 401/403 cases gate the tranche-2 routes"
+  ],
+  "tranches": {
+    "tranche_2": "routes/teachermarking + zod + flagged mounts (030/032 pattern)",
+    "tranche_3": "SME admin (SmeQuestionAdminController/IngestService/PackageDtos/SpecPointRepository)"
+  }
+}

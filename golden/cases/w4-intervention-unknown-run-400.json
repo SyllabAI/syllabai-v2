@@ -1,0 +1,24 @@
+{
+  "name": "w4-intervention-unknown-run-400",
+  "description": "CAPTURED-AS-IS (F-c family, divergence call belongs to R0): unknown intervention run id answers 400 (validation fires BEFORE the existence check), not 404 \u2014 same shape as T-MIG-007 F-c human-mark",
+  "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "GET",
+  "path": "/api/v1/learners/me/intervention-runs/00000000-0000-0000-0000-0000000000beef",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 400,
+    "body": {
+      "status": 400,
+      "error": "bad_request",
+      "message": "malformed request",
+      "timestamp": "2026-10-05T15:48:33.084047391Z"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}
