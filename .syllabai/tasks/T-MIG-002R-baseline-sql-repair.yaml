@@ -3,7 +3,7 @@ task:
   id: T-MIG-002-R
   title: "Baseline-SQL repair follow-up — make the T-MIG-002 baseline re-runnable: reconcile the scripted kit-0.31.11 renderer fixes (F3: .default('') x5, bytea/tsvector customType shims x3) and the null-expression index squash crash (F2) into a reproducible re-baseline procedure"
   owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — claimed under the operator DRAIN CYCLE directive (all lanes), the only zero-collision item of the drain queue (W2-F1 -> PR #42, W2-F2/F-1/F-3 -> T-MIG-023 PRs #38/#41, W2-F3 -> T-MIG-024 PR #37 all claimed by other lanes at claim time 2026-10-05T09:1xZ)"
-  status: IN_PROGRESS # claimed 2026-10-05T09:1xZ; claim receipt run-001-claim.json on branch t-mig-002r/w0a; execution (surface read + defect localization + repair) begins on the operator's next word
+  status: IN_PROGRESS # claimed 2026-10-05T09:1xZ (w0a; claim receipt run-001-claim.json on branch t-mig-002r/w0a; execution begins on the operator's next word) — OPERATOR REROUTE 2026-10-05 trace 1a10c9d1ef9ebbe1: execution moved to R1-contracts session web-ab7a0483-4415-4f31-ad16-b00a0e10053e; w0a verified idle at merged-claim ef898b648 (== #44 intake, ancestor of main; zero pushed implementation; ls-remote this round); execution branch t-mig-002r/r1, claim receipt run-002-claim-r1.json (owner field intentionally untouched — card edit scope is status/execution_record only)
   priority: P1
   wave: 0 # follow-up on the wave-0 baseline
   deps: [T-MIG-002]

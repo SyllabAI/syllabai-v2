@@ -1,0 +1,34 @@
+{
+  "id": "T-MIG-002-R",
+  "kind": "claim",
+  "run": "run-002-claim-r1",
+  "ts": "2026-10-05T11:2xZ",
+  "agent": "R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "task": "Finish T-MIG-002-R execution — F2 drizzle-kit re-run crash + F3 scripted renderer fixes, per operator Round-7 directive (IM trace 1a10c9d1ef9ebbe1)",
+  "routing": {
+    "authority": "Operator directive trace 1a10c9d1ef9ebbe1: 'Finish T-MIG-002-R execution (F2 drizzle-kit re-run crash + F3 scripted renderer fixes; claim ratified 5992957156, PR #44 merged as claim card). Then T-MIG-042-PREP ...'",
+    "prior_owner": "w0a (session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — claim receipt run-001-claim.json, PR #44 merged as claim card (id ratified 5992957156)",
+    "zero_collision_evidence": "refs/heads/t-mig-002r/w0a @ ef898b648 == R0's #44 merge-intake commit, already an ancestor of main (c920eeaf): w0a never moved past the merged claim card; zero pushed implementation work (ls-remote this round). No open PR touches T-MIG-002-R surfaces (open set: #50 t-mig-033/r4, #49 t-mig-022/r7a-h2, #48 t-mig-036/r3fix).",
+    "card_edit_discipline": "Card owner field intentionally UNTOUCHED (scope.allow lists status/execution_record only); reroute recorded here + in status-line comment + execution_record at completion."
+  },
+  "branch": "t-mig-002r/r1 (cut from main c920eeaf; earliest-claim = this push timestamp)",
+  "surface_read": {
+    "checked_in_fix_state": "schema.ts already carries all 8 F3 sites: 5x .default('') , 0x broken .default(') , 0x unknown( , bytea/tsvector via src/schema/custom_types.ts shims (import line 3; sites :704 bytea, :851 tsvector, :892 bytea each preceded by kit's 'TODO: failed to parse database type' comment)",
+    "snapshot_targets": "drizzle/meta/0000_snapshot.json = 62 tables / 579 columns / 87 indexes",
+    "f2_trigger": "kit 0.30.6 squasher ZodError 'Expected string, received null' at squashIdx ...columns.expression — this schema holds 8 partial indexes (WHERE clauses incl. ix_document_chunks_pending '(embedding IS NULL)'); snapshot index columns carry expression:null entries that 0.30.x Zod-schemas reject; plus kit 0.30.6 hard-imports drizzle-orm/gel-core absent from declared orm ^0.38.0",
+    "proven_toolchain_D1": "drizzle-kit 0.31.11 + drizzle-orm 0.45.3 + @neondatabase/serverless 1.2.0 (isolated toolchain, outside repo)"
+  },
+  "plan": [
+    "F3: port the out-of-repo fix script in-repo as packages/db/scripts/rebaseline/render_fixes.ts (deterministic, idempotent, logged site-by-site: empty-string default law + unknown->shim law incl. import synthesis); golden fixtures of raw kit-0.31.11 output -> canonical forms byte-equal to checked-in fragments; fixed-point proof on checked-in schema.ts (zero diff)",
+    "F2: packages/db/scripts/rebaseline/preflight_f2.ts — declared-pair verdict (flag only, NEVER edits packages/db/package.json) + null-expression index detector over meta/*.snapshot.json",
+    "verify_parity.ts — repo-resident 62/579 columns.parity checker (name/notNull/literal-default), successor of the D1 one-shot",
+    "README recipe (packages/db/scripts/rebaseline/README.md + procedure section in src/schema/README.md): pinned trio, isolated-toolchain steps, Neon COW-branch-only discipline + drop-after, diff-against-baseline loop",
+    "bun tests colocated in scripts/rebaseline (picked up by the packages gate); full gate battery; receipt run-003; PR with fence-extension declaration"
+  ],
+  "fences": {
+    "never_touch": ["packages/db/package.json (F2 realignment FLAGGED for owner, per card)", "packages/db/src/schema/{schema.ts,relations.ts,custom_types.ts} hand edits (touched only as outputs of the repaired procedure; this run performs NO regeneration — no live pull executed)", "apps/**", "flyway_schema_history"],
+    "neon": "zero production Neon contact; no live pull this run (no COW-branch DSN in sandbox; DATABASE_URL present but production discipline forbids pointing kit at it) — live re-pull documented as the operator/R2-db step",
+    "package_registry": "no repo dependency changes; any toolchain install happens OUTSIDE the repo (D1 precedent)"
+  },
+  "next": "implement render_fixes + preflight + parity + fixtures + tests; gates; run-003-execution receipt; PR t-mig-002r/r1 -> main; review request; hold for R0. Then T-MIG-042-PREP per the same directive."
+}

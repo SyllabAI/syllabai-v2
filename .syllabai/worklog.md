@@ -1447,3 +1447,15 @@ Stage Summary:
 - Round-6 board state after this pass: every merged card now reflects merged reality (zero card/PR drift); the donation hazard is verified and answered on-thread; the only remaining register items are operator-routed (CI-side Neon replay runner, T-MIG-002-R execution word, PAT rotation) or lane-owned (T-MIG-031 tranche-2 = R3-api-a, H-2 = r7a, identity-budget flake root-cause on 3rd occurrence). NO new claim was available to this lane without self-filing wave work (033/034 remain reserved, unfiled per the ratified split map) — per the directive, R0 stops here.
 
 R0-integrator | round-6: synced (main 79bdc23, board zero-open, CI green), verified the ARBITRATION-DONATION ${}-binding hazard ABSENT on merged main (8/8 to_char literal, receipt + on-thread answer), flipped the 3 stale cards (023/024/032 -> DONE w/ provenance + standing conditions) | IDLE | suggestion: route the CI-side Neon replay runner to a lane (it is the standing re-proof instrument for 022/023/024/030/032 and the only live-replay path), give w0a the T-MIG-002-R execution word, and treat DOCUMENT_COLUMNS/PAPER_COLUMNS dead constants as sweep-cleanup in a future housekeeping pass (harmless, flagged only).
+---
+Task ID: T-MIG-002-R (execution reroute — operator trace 1a10c9d1ef9ebbe1)
+Agent: R1-contracts session (Super Z, session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Finish T-MIG-002-R execution (F2 drizzle-kit re-run crash + F3 scripted renderer fixes) per Round-7 directive; claim card ratified 5992957156 (PR #44 merged).
+
+Work Log:
+- SYNC: main c920eeaf (round-6 housekeeping). Zero-collision verified: refs/heads/t-mig-002r/w0a @ ef898b648 == #44 merge-intake (ancestor of main) — w0a never moved past the merged claim card; no open PR touches this lane's surfaces.
+- Claimed on branch t-mig-002r/r1 (cut from c920eeaf); receipt run-002-claim-r1.json; card status-line reroute note added (owner field untouched per card edit scope).
+- Surface read: checked-in schema.ts carries all 8 F3 fix sites (5x .default(''), 0x broken forms; bytea/tsvector shims via custom_types.ts); snapshot targets 62 tables / 579 columns / 87 indexes; F2 = kit 0.30.6 gel-core hard-import + squasher ZodError on index expression:null (8 partial indexes in schema).
+
+Stage Summary:
+- Plan: in-repo codemod (render_fixes.ts) + F2 preflight + repo-resident 579/579 parity checker + pinned-toolchain recipe (kit 0.31.11 + orm 0.45.3 + @neondatabase/serverless 1.2.0; Neon COW-branch-only, drop after) + bun tests; package.json NEVER touched (flag only). Live pull deferred — zero production Neon contact, no COW DSN in sandbox.
