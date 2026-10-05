@@ -1,0 +1,14 @@
+{
+  "task": "T-MIG-044",
+  "agent": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "date": "2026-10-05",
+  "run": "run-003-review-merge",
+  "title": "review + merge executed under operator-delegated authority (R0 had not merged the item)",
+  "authority": "operator IM directive trace 1a10d02b6c32a29d: 'Check if R0 has merged or not. If not, review+merge yourself and continue working.' R1 delegated-authority precedent (trace 1a10cbee26611c61, #53/#54) followed: adversarial self-review findings R-1..R-8 posted on the PR (formal own-PR approve structurally unavailable on the shared account - disclosed); merge commit, no force.",
+  "merge": { "pr": 62, "merge_commit": "d9a48a6", "intake_head": "8f6f2fa", "base_at_merge": "1e82a34" },
+  "intake": "post-#56/#58/#48 main merged into t-mig-044/r4b before merge: worklog append-only union via resolver (pre-write base byte-identity + occurrence/order asserts; inverse-removal content equivalence verified BOTH directions; junction newline normalization disclosed; main's duplicate re-landed R0-ROUND-6b section preserved as-is) + golden/README.md union (Wave-4 tranche + T-MIG-044 runner sections both kept).",
+  "gates_at_intake_8f6f2fa": "typecheck x4 exit 0; bun test apps/api packages 609 ran / 596 pass / 0 fail / 13 skip / 1598 expect (= main 1e82a34 baseline EXACT; git diff origin/main..HEAD over apps/ packages/ bun.lock bunfig.toml EMPTY = zero code delta); golden selftest OK; ci-replay --plan 170 committed cases -> seed 155 + prod 15 disjoint (corpus grew +57 W4 cases from T-MIG-040-PREP - driver proven corpus-dynamic); neon-branch fail-fast real exit 2; workflow YAML 18 steps, dispatch+schedule, contents:read, concurrency, READ-ONLY PROOF + drop/404-verify under if:always().",
+  "gates_on_housekeeping_head": "typecheck x4 exit 0; suite 0 fail / 1924 expect (current main incl. #60); selftest OK; --plan 155/15 disjoint.",
+  "collision_disposition_companion": "PR #61 (T-MIG-045, same lane) CLOSED superseded by PR #48 (T-MIG-036/r3fix, merged 88bc0ae by R0) per the lane's own disclosure + section 2.1 earliest-claim precedent; no self-disposition was taken before R0's merge of #48 confirmed the ruling.",
+  "operator_setup_remaining": "Actions secret NEON_API_KEY + Actions variables NEON_PROJECT_ID and NEON_PARENT_BRANCH_ID (production parent per T-MIG-022 run-001: br-muddy-bar-a5huwldd; project id is operator-side, recorded nowhere in-repo), then manual maiden dispatch of neon-replay. First-run honest divergences (H-2 Flyway-seed-pinned w3/curriculum/teacher/W4-local families + capture-time identity pins) are the filing evidence for R0/R6 disposition."
+}

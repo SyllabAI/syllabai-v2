@@ -1960,3 +1960,18 @@ Stage Summary:
 - The board is ZERO-OPEN: every filed wave-3 card is DONE except T-MIG-033 (tranches 2-3 explicitly open and un-gated) and operator-routed register items. The W3 marking/train surfaces (030/031/032/033-t1/034/037/038) plus the W4 capture (040-prep) and the LLM doctrine (039) are all on main with receipts. The only remaining register: CI-side Neon replay runner (operator), T-MIG-002-R live pull demo (operator/COW), PAT rotation (operator), hub test-runner hygiene (housekeeping), identity-budget flake CLOSED this pass, H-2 CLOSED this pass, T-MIG-006 teacher-marking DTO gap CLOSED this pass.
 
 R0-integrator | round-6c: reviewed + merged the full open queue 9/9 (#48/#49/#57/#59/#58/#56/#52/#55/#50), 3 fidelity rulings vs frozen 6cad6ef (partLabel nullable, reasons enum, five-state law executed), 1 contracts duplication arbitrated (canonical #58 kept), 2 mount sets ratified, H-2 + flake register + DTO gap closed, 1 stale-ref intake miss caught and corrected | IDLE | suggestion: route the CI-side Neon replay runner (now blocks the 022/023/024/030/032 replay re-proofs AND the #49/#57 live-posture demos), give T-MIG-033 tranche-2 a lane (it is fully un-gated: contracts #58 merged + five-state law consistent + 6 mount precedents; N-4/N-2 conditions attach), file the hub scoped-runner hygiene as a housekeeping card, and rotate the PAT (it has now traversed 3 sessions in plaintext).
+
+Task ID: T-MIG-044 (run-003 review-merge receipt — DONE) + T-MIG-045 terminal disposition
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator directive (trace 1a10d02b6c32a29d): "Check if R0 has merged or not. If not, review+merge yourself and continue working."
+
+Work Log:
+- Checked: R0 had merged #48/#56/#58/#60 but NOT #61/#62. #48's merge (88bc0ae, 16:36:57Z) confirmed my #61 supersession offer.
+- T-MIG-045 TERMINAL DISPOSITION: PR #61 closed superseded (comment + close under the delegated authority; the ruling was already R0's own #48 merge). Card note: T-MIG-045's yaml exists only on the retained t-mig-045/r4b branch (evidence record: frozen-epoch root-cause note + prod-side buildIdentityServices budgetClock seam — available to any future test-seam need). Register item "flaky identity budget test" CLOSED by #48's merged fix.
+- T-MIG-044 review+merge executed: intake 8f6f2fa (worklog union via asserting resolver + golden/README union, both disclosed), adversarial self-review R-1..R-8 posted on PR #62, merged as d9a48a6 (merge commit, no force). Gates at intake: typecheck x4, 609/0/13skip/1598 = main baseline EXACT (zero code delta vs main proven by empty diff over apps/ packages/ lockfiles), selftest OK, --plan 170->155+15 disjoint (corpus proven dynamic: +57 W4 cases), neon-branch exit-2 fail-fast, YAML 18 steps.
+- CARD FLIP: T-MIG-044 IN_REVIEW -> DONE (provenance in status line). This housekeeping commit follows the R1 delegated-authority precedent (260f452).
+- Post-merge gates on this head: typecheck x4 exit 0; suite 0 fail / 1924 expect (main incl. #60's contracts); selftest OK; --plan 155/15 disjoint.
+
+Stage Summary:
+- T-MIG-044 DONE: the CI-side Neon replay runner is merged main infrastructure. Remaining for maiden run (operator-side, one-time): NEON_API_KEY secret + NEON_PROJECT_ID / NEON_PARENT_BRANCH_ID variables (parent = br-muddy-bar-a5huwldd per T-MIG-022 run-001), then dispatch; honest first-run divergences feed R0/R6. Unblocks the standing re-proof conditions on 022/023/024/030/032 and the "replay NOT RUN - env-blocked" register.
+- Lane R4-api-b IDLE after this commit; no other lane-owned register items outstanding.
