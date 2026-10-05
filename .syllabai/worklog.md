@@ -2010,6 +2010,44 @@ Stage Summary:
 - Round 8 closed: 2 independent reviews filed on-thread, 2 merges executed under the explicit operator delegation (#60 2d4a884, #62 d9a48a6), 1 PR correctly left held (#50 — R0's blocking finding stands), post-merge main green. Lane STOPs; awaiting operator/R0 direction.
 
 ---
+Task ID: T-MIG-041 (claim)
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Operator round-9 (trace 1a10d2210b98ef81) "Proceed with any work. Check and claim" — seed + claim the Wave-4 learner state-model port (band 041 of the MIGRATION_PLAN-reserved 040..043).
+
+Work Log:
+- SYNC: board ZERO-OPEN (R0-ROUND-6C drained 9/9 incl. #50 F-33-1 executed; 045 terminated; my #49/#57/#60/#62 all DONE-flipped or ratified); only non-DONE card = T-MIG-033 (r4's, tranche-2 un-gated but CLAIMED — not touched per §2.1).
+- Claim surface: Wave-4 port bands 041/043 (operator-routed register per w0a/R0). Claimed 041 = learner state-model cluster (/state composite + /course-stats); 043 left for agenda/KG/exam-series/flashcards/smart-lesson. Zero-collision: zero 041 yamls, zero t-mig-041* heads.
+- Deep read @ 6cad6ef this session: LearnerStateController (187 lines, 9 repo legs), CourseStatsController (4 counts), LearnerModelService read methods, TutorEngagementReader.groupEngagementSummary, ExamTargetReader.targetsFor + CourseExamTargetView.of, BdtEngine.relaxedToPrior, DecayParams/BdtParams defaults, all repo derived-query semantics, v2 drizzle column shapes.
+- tranche-1 scope: services + fakeSql pins (021 template), NO routes (tranche-2 flagged mounts).
+
+Stage Summary:
+- T-MIG-041 IN_PROGRESS (claim landed). Implementation next: services/learner/** + pins -> gates -> tranche receipt -> PR.
+
+---
+Task ID: T-MIG-041 (tranche 1 — IN_REVIEW)
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Wave-4 learner state-model port — tranche-1 services + fakeSql pins (021 template).
+
+Work Log:
+- services/learner/** shipped: sql.ts (per-module SqlFn seam), state.ts (9-leg /state composite + /course-stats: repo-port reads with load-bearing orderings, decay/bandOf/relaxedToPrior/groupEngagementSummary/exam-target laws, wire mappings), index.ts (buildLearnerModule with paper-default engine params + injected clock).
+- Determinism: injected now everywhere; nothing persisted (ADR-031). ns->ms precision disclosed (~1e-15 relative, below double epsilon).
+- 22 fakeSql tests: pure law pins (decay math incl. floor + boundaries, relaxation, band boundaries at exactly 0.45/0.8), SQL shape pins (every leg's ordering/filter/load-bearing clauses), composite pins (empty-learner 7-queries posture, effective re-sort fresh-0.6-outranks-stale-0.9, sticky refusedAny grouping, LIMIT-50 windows, vanished-series filter, whole-day countdowns, single batched title lookup).
+- Cross-checks: wire shapes verified against my own W4 capture (w4-state-practiced-200 — the relaxed 0.7499999966 posture agrees); engine constants match the landed 038 contracts; v2 drizzle column names verified for all 10 tables touched.
+- Gates: typecheck x4 exit 0; bun test CI-scope 734 ran / 0 fail / 13 skip / 2006 expect (= main 712/1924 + 22 pins/+82 exactly); golden selftest OK; fence = services/learner + test/learner + .syllabai only (zero routes/mounts — tranche-2).
+
+Stage Summary:
+- T-MIG-041 tranche-1 IN_REVIEW: the state-model cluster ported law-for-law with 22 pins; PR opened requesting independent review + R0 merge-intake. tranche-2 = routes/zod/mounts; agenda/KG/smart-lesson/exam-series+flashcards = T-MIG-043.
+
+---
+Task ID: T-MIG-041 (PR opened)
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: PR reference for the Wave-4 learner state-model tranche-1.
+
+Work Log:
+- PR #65 opened (base main, head t-mig-041/r7a, claim fdb6879 + tranche-1 1120a83): id-ratification request + full laws/cross-checks/gates/tranche-boundary in the body; CI verify+hub gates the head independently.
+
+Stage Summary:
+- Round-9 lane work COMPLETE: check -> claim (041 seeding word) -> deep read -> tranche-1 (services + 22 pins) -> gates -> PR #65 -> STOP. Awaiting independent review + R0 merge-intake (authors never self-merge). T-MIG-043 (agenda/KG/smart-lesson/exam-series+flashcards) is the next reserved band for whoever the operator routes.
 Task ID: R3a-ROUND-9 (post-merge verification + queue sweep receipt)
 Agent: superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
 Task: Operator directive (trace 1a10d1ee8c42e0b9): "Check if R0 has merged or not. If not, review+merge yourself and continue working."
