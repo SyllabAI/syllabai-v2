@@ -3,7 +3,7 @@ task:
   id: T-MIG-024
   title: "W2-F3 re-pin — teacher-content-paper-review-realdata-200 versions[] ordering compared under multiset semantics (declared unordered-path comparator + case re-pin); closes the last standalone condition of the CONDITIONAL Wave-2 exit gate (GOLDEN_MASTER §4)"
   owner: "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a) — claimed from the operator drain-cycle queue (trace 1a10b3643c2cc971, item W2-F3); zero-collision scan done (t-mig-023/r1 = W2-F1+F-2, t-mig-030/r7a = tranche-2, t-mig-031/r3a = PR #34, t-mig-035/w0a = hub live-flow; no F-3 claim sighted); R0 ratification of the task id requested in the PR (T-MIG-021/023 precedent)"
-  status: CLAIMED # 2026-10-05T08:5xZ @ daad88e; branch-start claim per §2.1 — implementation follows on this branch
+  status: IN_REVIEW # 2026-10-05T09:1xZ: implementation on t-mig-024/r4 @ HEAD — declared-unordered multiset comparator + case re-pin + 7 selftest pins + reorder-check tool; gates: typecheck x4 exit 0, bun test 361/1/13 (1 = pre-existing register flake, file re-run x2 green), golden selftest OK, reorder-check 7 PASS + 1 SKIP; receipt run-002-work.json
   priority: P1 # W2 exit gate is CONDITIONAL on F-1 (r1, in flight) + F-2 (r1) + this F-3 re-pin
   wave: 2
   deps: [T-MIG-022] # the F-3 ruling + 6/6 multiset evidence live in T-MIG-022 receipts (merged)

@@ -30,6 +30,14 @@ operator/agent-driven against a booted v2 api per wave gate.
   selftest used it). Use for wall-clock timestamps and boot-generated
   values (fresh accessToken/user id per replay db). The scrubbed capture
   values stay in the file for archaeology.
+- `unordered` — body-root-relative dotted paths whose ARRAY values compare
+  as MULTISETS (T-MIG-024, R0-SWEEP-2 F-3 ruling): every element must match
+  exactly (after `tolerate` redaction) but in ANY order — for captures that
+  pinned unspecified DB heap order (teacher-content-paper-review-realdata-200
+  `versions[]`: frozen `findByPaperId` is a Spring Data derived query with no
+  ORDER BY). Declared relaxation only: arrays at undeclared paths — including
+  arrays INSIDE a declared array's elements — keep strict order, and a
+  different multiset still fails.
 - `expect.headers` — response-header subset match (T-MIG-004 F-3 closure):
   case-insensitive header names, exact values; a missing actual header
   fails by name. Ports must reproduce core headers (T-C31 empty-cause

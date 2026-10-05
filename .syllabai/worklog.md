@@ -1141,3 +1141,18 @@ Work Log:
 - Synced on origin/main @ daad88e (worklog tail through R0-SWEEP-3; directive state 2ca1a16 already superseded — nothing held, no open PR from this lane; T-MIG-021 yield stands DONE).
 - Zero-collision scan: W2-F1+F-2 TAKEN (t-mig-023/r1, IN_PROGRESS); 030-tranche-2 r7a; 031 PR #34; 035 hub live-flow; F-3 UNCLAIMED → claimed W2-F3 as T-MIG-024 (id ratification requested in PR; T-MIG-021/023 precedent). One task per agent held; T-MIG-002-R left unclaimed.
 - Branch-start claim per §2.1: t-mig-024/r4 @ daad88e; yaml CLAIMED + receipt run-001-claim.json; implementation follows (runner declared-unordered multiset rule + case re-pin + selftest pins + reorder-check tool; fence = golden/** + bookkeeping only).
+
+---
+Task ID: T-MIG-024 (work complete — IN_REVIEW)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Implement the W2-F3 multiset re-pin and drive to PR.
+
+Work Log:
+- golden/runner.ts: GoldenCase.unordered?[] (declared body-root dotted paths); canonicalizeUnordered sorts declared-path arrays by post-redaction canonical JSON (multiset semantics; undeclared + nested arrays stay strict); deepEqualTolerant gains an optional 4th arg — zero behaviour change for the other 112 cases; 7 selftest pins added; deepEqualTolerant exported; CLI main wrapped in import.meta.main so golden/tools can import the comparator (direct invocation unchanged; ci.yml:32 verified).
+- teacher-content-paper-review-realdata-200.json re-pinned with "unordered": ["versions"] — the only over-pinned structure per the F-3 ruling; golden/README.md documents the rule.
+- golden/tools/reorder-check.ts (setcheck precedent): runs the REAL committed case offline — identity/rotate/reverse pass; marks mutation, paper.id mutation, and un-declared reorder all fail. 7 PASS + 1 SKIP.
+- Gates: typecheck x4 exit 0; bun test 361/1/13 (1 = the pre-existing follow-up-register flake, identity routes.test.ts:329 — file re-run x2 green; this diff touches zero apps/packages files); golden selftest OK; reorder-check green. Receipt run-002-work.json.
+- Fence held: golden/** + bookkeeping only; docs/GOLDEN_MASTER.md untouched (doctrine amendment flagged in PR for R0). Live single-case replay stays with R6/R0 posture (sandbox DNS-blocked from Neon — standing finding).
+
+Stage Summary:
+- T-MIG-024 IN_REVIEW: the F-3 comparator condition of the CONDITIONAL Wave-2 exit gate is ready for independent review; PR opened (R0 actions: id ratification + optional §5 codification). One task per agent held; lane goes IDLE after PR per drain-cycle step 7.
