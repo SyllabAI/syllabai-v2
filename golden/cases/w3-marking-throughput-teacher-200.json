@@ -1,0 +1,32 @@
+{
+  "name": "w3-marking-throughput-teacher-200",
+  "description": "Teacher marking throughput stats (empty class state). captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "source": "captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "GET",
+  "path": "/api/v1/teacher/marking/throughput",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "answersByState": {
+        "HUMAN_MARKED": 0,
+        "SMART_MARKED": 0,
+        "PENDING": 0,
+        "SELF_MARKED": 0,
+        "OVERRIDDEN": 0
+      },
+      "humanMarks24h": 0,
+      "humanMarks7d": 0,
+      "pendingByPaper": [],
+      "oldestPendingAt": null,
+      "oldestPendingHours": null
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

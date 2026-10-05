@@ -1,0 +1,24 @@
+{
+  "receipt": "T-MIG-007 run-002 - Wave-3 deterministic surfaces captured from a LOCAL frozen-core boot on LOCAL PostgreSQL 17.9 + pgvector 0.8.7",
+  "schema": "syllabai.v2.t-mig-007.capture-receipt/1.0",
+  "agent": "R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)",
+  "recipe": "T-MIG-004 run-002 adaptation (NEON_PAT absent this session - F-5/F-11 posture): frozen tree built LOCALLY (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0 in 42s), booted (LLM mode test, decay disabled by config, synthetic 32B JWT secret + synthetic teacher join code) against LOCAL PostgreSQL 17.9 (pgdg13 debs, no-root dpkg-deb -x, unix socket + jit=off) + pgvector 0.8.7 into which the core's own Flyway applied V1..V63",
+  "cases_captured": 20,
+  "case_files": "golden/cases/w3-*.json (run-002 tranche; authed cases carry {{TOKEN}} placeholder per T-MIG-006 schema; live tokens never left process memory)",
+  "highlights": [
+    "validation boundaries: MCQ/structured submit empty-body 400s + malformed-uuid 400 (jakarta first-failing-field order pinned for the contracts port)",
+    "empty states: learner attempts [], exam papers list, marking answers/queue-v2/throughput (teacher, empty class)",
+    "role gates: teacher marking with STUDENT token 403; admin question-bank status with STUDENT 403 and with TEACHER 403 (admin-only - captured truth)",
+    "404s authed: unknown question, unknown attempt smart-mark lifecycle gate",
+    "MCQ happy path: POST /api/v1/attempts against V7-seeded question 40000000-0000-0000-0000-000000000001 -> 201 deterministic marks; history-after-submit 200 (seed uuids are fixed constants - replay-stable, T-MIG-004 V6 precedent)"
+  ],
+  "findings_captured_as_is_do_not_silently_fix": [
+    "F-a: self-mark on UNKNOWN attempt id returns 500 (not 404) - core quirk, pinned as w3-selfmark-unknown-attempt-404-renamed-to-500 (case name retained, expect.status=500, description discloses); divergence call belongs to R0 per T-MIG-004 F-1 convention",
+    "F-b: test-builder weakness-options returns 400 without params (param-gated, not a bare 200)",
+    "F-c: human-mark on unknown answer id returns 400 (validation fires BEFORE existence check)",
+    "F-d: exam-papers list is student-accessible (200) - role model captured as-is"
+  ],
+  "scrub": "identities synthetic from creation (user_21/user_22@example.invalid via the honest register path); tokens -> fixed dummy convention via {{TOKEN}} placeholder; generated attempt ids tolerated by field name; seed uuids replay-stable constants",
+  "production_safety": "zero Neon connections of any kind (local scratch db only); zero upstream writes (C1); zero PII; live JWTs never written to disk",
+  "environment_note": "background processes die at tool-call boundaries in this sandbox - boot+capture executed as single foreground calls; core binds 8080 (Spring default), NOT 8090"
+}

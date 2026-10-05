@@ -790,3 +790,20 @@ Work Log:
 
 Stage Summary:
 - T-MIG-006 implementation COMPLETE with all gates green and a fully classified partial live replay; status BLOCKED on push credentials only. The parity gate can now: compare headers (T-C31 empty-cause, 429 Retry-After verifiable), tolerate generated fields by name, sequence write-state cases, and inject live bearers - the harness items T-MIG-013 handed to R6 are closed. Next in this lane: T-MIG-007 (Wave-3 assessment-loop capture) claim + execution per the metronome.
+
+---
+
+Task ID: T-MIG-007 (claim + execution - capture complete, escalation)
+Agent: R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
+Task: Wave-3 assessment-loop golden capture - 10 controllers, deterministic surfaces only (the metronome's next beat: W2 ports are landing via PRs #18/#19/#20).
+
+Work Log:
+- CLAIMED T-MIG-007 on branch t-mig-007/r6 (stacked on t-mig-006/r6; branch-start commit per section 2.1) after collision re-check (no 007 in flight anywhere). Route surface extracted from frozen core @ 6cad6ef for all 10 W3 controllers (attempt/structured submit, history, exam-papers, questions+mark-scheme, self-mark, smart-mark lifecycle, sme admin, teacher marking x7, test builder, transcription).
+- run-001 (Render, read-only): 24/24 authz-shell cases captured - every W3 surface answers 401 from the Spring Security filter chain BEFORE any persistence path (write-safety proven from frozen source ordering BEFORE probing, T-MIG-003/004 precedent). Zero production writes, zero credentials.
+- run-002 (LOCAL boot, NEON_PAT absent - F-5/F-11 posture, w0a recipe): frozen core built locally (Temurin JDK 25.0.4.1 + Maven 3.9.16, package exit 0 in 42s) and booted against LOCAL PostgreSQL 17.9 (pgdg13 debs via no-root dpkg-deb -x, writable socket dir, jit=off) + pgvector 0.8.7; core's own Flyway applied V1..V63. Captured 20 cases: submit validation boundaries (jakarta field order pinned), empty states, role gates (student 403 on teacher surfaces; teacher 403 on admin surfaces), authed 404s, and the MCQ HAPPY PATH - POST /api/v1/attempts against the V7-seeded question returns 201 with deterministic marks, then history-after-submit 200. Zero Neon connections; zero upstream writes; live tokens never written to disk ({{TOKEN}} placeholders per the T-MIG-006 schema).
+- CAPTURED-AS-IS QUIRKS (divergence calls belong to R0, per T-MIG-004 F-1/F-2 convention): self-mark unknown attempt = 500 (not 404; case named w3-selfmark-unknown-attempt-500 with disclosure); weakness-options = 400 param gate; human-mark unknown = 400 before existence check; exam-papers list student-accessible.
+- GATES: 98 total golden cases on branch (54 + 44 W3), 0 invalid JSON, secret scan clean (no JWT-shaped strings, no live tokens), runner selftest PASS. Receipts: .syllabai/receipts/T-MIG-007/run-001.json + run-002.json.
+- ESCALATION (section 6, w0a precedent): push/PR blocked - no GITHUB_PAT in this session (fresh container; none improvised per credential law). Branch t-mig-007/r6 is push-ready verbatim.
+
+Stage Summary:
+- Wave-3 capture tranche COMPLETE ahead of the W3 port lane (T-MIG-030..034): 44 new cases covering 10 controllers' deterministic surfaces; 98 cases total now gate the migration. LLM-output surfaces (smart-mark prose, transcription) deliberately NOT golden-gated per GOLDEN_MASTER section 3 - they need behavioural gates at port time. Operator/R0 unblock list: (1) valid GITHUB_PAT for this lane (push t-mig-006/r6 then t-mig-007/r6), (2) optionally NEON creds for the canonical 16/16 identity replay per the T-MIG-006 receipt runbook.
