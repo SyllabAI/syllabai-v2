@@ -1800,3 +1800,31 @@ Work Log:
 
 Stage Summary:
 - T-MIG-031 tranche-2 awaiting independent review + R0 ratification of the flagged OUT-OF-FENCE mounts (e876fe0). 
+Task ID: T-MIG-037 (claim)
+Agent: r8-hub (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: OPERATOR WORD trace 1a10c9dd8c2c1c01 — re-register under unique lane id r8-hub; HUB DUAL-RUN EXPANSION: extend apps/hub V2_SURFACE_PREFIXES with the now-verified W2 surfaces (content, curriculum, attempts), branch deploy, verify both postures live (T-MIG-035 pattern), file evidence; rollback = unset one env var (MIGRATION_PLAN §7).
+
+Work Log:
+- Re-registered as lane r8-hub (no prior r8 identity in the worklog; two sessions never share a lane id). Workspace was fully recycled since the prior session — fresh clone at origin/main c920eea (past the directive's stated 79bdc23; sweep-5 drained 6/6, W2 exit gate UNCONDITIONAL, all cards flipped per R0-ROUND-6).
+- Zero-collision scan @ c920eea: open PRs #48 t-mig-036/r3fix (identity-budget flake — T-MIG-036 TAKEN; the sweep-4-era "T-MIG-036" prose was the abandoned pre-renumber W2-F3 id), #49 t-mig-022/r7a-h2, #50 t-mig-033/r4 — ZERO apps/hub overlap on all three; ls-remote 50 heads, no t-mig-037. T-MIG-037 verified free (0 worklog mentions, 0 yaml, 0 branch, 0 PR) and claimed (card + this entry committed BEFORE implementation per the T-MIG-002 lesson).
+- Full startsWith safety cross-map at c920eea (hub-emitted paths from apps/hub/src greps vs V2-served routers from apps/api/src/routes + index.ts mounts): flip set = /api/v1/content/documents, /api/v1/content/question-assets, /api/v1/curriculum, /api/v1/attempts, /api/v1/learners/me/attempts (narrowed — NOT /api/v1/learners/me, which would 404 20+ unported learner surfaces) alongside the existing /api/v1/auth. NOT flipped with reasons: /api/v1/teacher/content (15 hub write sites hit honest 501 CONTENT_WRITE_TASK stubs; glm-ocr findings not served by V2 at all), /api/v1/questions + /api/v1/exam-papers (not mounted in V2; T-MIG-031 tranche-2 pending), teacher/curriculum + all W4/W5/W6 families.
+
+Stage Summary:
+- T-MIG-037 claimed on branch t-mig-037/r8-hub (claim yaml + fence committed first). Next: implementation (prefix table + pure decision fn + collocated routing pins), gates, live dual-run verification per the T-MIG-035 pattern (local ephemeral postgres via scratch pglite-socket — no NEON_PAT in this recycled session; zero cloud/prod contact), receipts, PR. Authors never self-merge.
+
+---
+Task ID: T-MIG-037 (run-001 — IN_REVIEW)
+Agent: r8-hub (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Execute the claimed HUB DUAL-RUN EXPANSION — extend apps/hub V2_SURFACE_PREFIXES with the now-verified W2 content/curriculum reads + W3 attempts surfaces; verify both postures live per the T-MIG-035 pattern; §7 rollback = unset one env var.
+
+Work Log:
+- Implementation: apps/hub/src/lib/api.ts — prefix table 1->6 (auth + content/documents + content/question-assets + curriculum + attempts + learners/me/attempts [deliberately narrow]) and a new exported pure v2SurfaceBase(path, v2Base) that resolveBase itself delegates to (no parallel decision logic; resolveBase behavior byte-preserving). Collocated bun pins apps/hub/src/lib/api.v2-surface.test.ts: 8/8, 212 expect — exact table pin, dual-run decisions for every hub-emitted path family, negative isolation set (teacher writes/glm-ocr/questions/exam-papers/non-attempts learner surfaces STAY CORE), the /learners/me ans-vs-att boundary pin, §7 rollback decision-layer pin, base-normalization pins.
+- startsWith-safety cross-map at c920eea (the load-bearing law): every flipped prefix captures ONLY hub-emitted paths V2 serves with REAL implementations. NOT flipped with reasons recorded: /api/v1/teacher/content (15 hub write sites = honest 501 CONTENT_WRITE_TASK stubs + glm-ocr findings unmounted, W6), /api/v1/questions + /api/v1/exam-papers (not mounted; T-MIG-031 tranche-2 pending), broader /api/v1/learners/me (20+ unported siblings), teacher/curriculum + all W4/W5/W6 families.
+- Live dual-run per the T-MIG-035 pattern: pglite-socket wire server over PGlite seeded from the repo's own drizzle baseline (203 stmts + 3 roles rows; disclosed rig accommodations: baseline index-opclass strip pending T-MIG-002-R, pgvector extension); apps/api booted from THIS BRANCH (postgres.js driver path). POSTURE A 17/17 (register 201 -> login 200 -> /me 200 -> subjects 200 -> attempts-history 200 through the hub's ACTUAL apiPath; reader 400 parseUuid + 404 reader-message implementation-literal probes; write read-back rows=1). POSTURE B 13/13 (env unset -> every probe incl. all five new families reverts to core; §7 property). Honest limits: no Neon COW (NEON_PAT absent in this recycled session — zero cloud/prod contact), no Vercel preview, no browser drive (T-MIG-035 precedent).
+- Gates: typecheck x4 exit 0; bun test 472 pass/13 skip/0 fail/1259 expect = origin/main measured in the SAME sandbox (scratch worktree) EXACT, delta zero; golden selftest OK (goldens untouched); scoped hub tsc 0 errors total.
+- Receipts: .syllabai/receipts/T-MIG-037/run-001-dual-run-expansion.json + rig/ (serve.ts + both posture harnesses preserved). Card flipped IN_PROGRESS -> IN_REVIEW.
+
+Stage Summary:
+- T-MIG-037 IN_REVIEW on t-mig-037/r8-hub (claim b12b5b3 + run-001 evidence commit). The W2 exit gate's hub-flip condition is now executable on merge. Authors never self-merge — independent review + R0 merge-intake own the merge.
+
+r8-hub | claimed + executed T-MIG-037 (hub dual-run expansion: prefix table 1->6 with startsWith-safety cross-map, 8/8 routing pins, 17/17 dual-run + 13/13 rollback live through the branch's actual routing code, gates green, delta-zero vs same-sandbox main) | BLOCKED-ON-REVIEW (PR filed; authors never self-merge) | suggestion: reviewer spot-checks the three deliberate exclusions (teacher/content 501s + glm-ocr, questions/exam-papers unmounted, learners/me narrowing) and treats the baseline opclass strip finding as input to T-MIG-002-R.

@@ -1,0 +1,91 @@
+{
+  "task": "T-MIG-037",
+  "run": "run-001-dual-run-expansion",
+  "agent": "r8-hub (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "date": "2026-10-05",
+  "operator_word": "trace 1a10c9dd8c2c1c01 ('RE-REGISTER under a new unique lane id (e.g. r8-hub) ... HUB DUAL-RUN EXPANSION — extend apps/hub V2_SURFACE_PREFIXES with the now-verified W2 surfaces (content, curriculum, attempts), branch deploy, verify both postures live (T-MIG-035 pattern), file evidence. Rollback = unset one env var (MIGRATION_PLAN §7).')",
+  "claim_commit": "b12b5b3 (t-mig-037/r8-hub; claim-first per the T-MIG-002 lesson)",
+  "subject": "Extend the hub strangler table with the now-verified W2 content/curriculum reads + W3 attempts surfaces; verify both postures live through the hub's ACTUAL routing code; §7 rollback property proven",
+  "implementation": {
+    "files": [
+      "apps/hub/src/lib/api.ts — V2_SURFACE_PREFIXES 1->6 prefixes (exported) + new exported pure v2SurfaceBase(path, v2Base) that resolveBase itself delegates to (no parallel decision logic; resolveBase semantics byte-preserving)",
+      "apps/hub/src/lib/api.v2-surface.test.ts — new collocated bun test, 8 tests / 212 expect() pins"
+    ],
+    "prefix_table_after": [
+      "/api/v1/auth (W1, T-MIG-010/011, unchanged)",
+      "/api/v1/content/documents (T-MIG-005/020/022 reader incl. F-1/F-2 repairs via #38)",
+      "/api/v1/content/question-assets (T-MIG-020)",
+      "/api/v1/curriculum (T-MIG-021 learner port)",
+      "/api/v1/attempts (T-MIG-030 submit + /structured)",
+      "/api/v1/learners/me/attempts (T-MIG-030 history + T-MIG-032 self/smart-mark; deliberately NARROW)"
+    ]
+  },
+  "starts_with_safety_crossmap": {
+    "method": "hub-emitted paths enumerated by grep over apps/hub/src (all /api/v1 literals incl. template heads) vs V2-served paths enumerated from apps/api/src/routes + index.ts mounts at c920eea",
+    "flipped_because_every_hub_emitted_path_is_real_v2": [
+      "/api/v1/content/documents/{row}?page=N -> readerRoute /:id (citation detail; hub emits exactly this form via citation-map.ts)",
+      "/api/v1/content/question-assets/{filename} -> assetRoute /:filename",
+      "/api/v1/curriculum/subjects[/:id] -> learnerRoute /subjects,/subjects/:id,/versions",
+      "/api/v1/attempts[+/structured] -> attemptRoute post /,/structured",
+      "/api/v1/learners/me/attempts[?limit]|/{attemptId}/self-mark|/{attemptId}/smart-mark|/{attemptId}/parts/{partId}/feedback-explanation|/{attemptId}/parts/{partId}/improvement-plan -> historyRoute get /attempts + selfmark/smartmark routers"
+    ],
+    "deliberately_not_flipped": [
+      "/api/v1/teacher/content — hub emits 15 write-action sites that V2 serves as honest 501 CONTENT_WRITE_TASK stubs (exam-papers validate/validate-all/place/reject/flag/unflag, question-versions validate/reject/flag/unflag, mark-schemes validate/reject/flag/unflag, questions/:id/topics POST) AND /api/v1/teacher/content/glm-ocr/papers/:id/findings which V2 does not serve at all (W6; zero glm-ocr presence verified in apps/api)",
+      "/api/v1/questions + /api/v1/exam-papers (learner browse) — NOT mounted in apps/api/src/index.ts (T-MIG-031 tranche-2 pending); would 404",
+      "/api/v1/learners/me BROADER than /attempts — 20+ non-ported learner surfaces (agenda, assignments, flashcards x3, classroom x2, cla, courses, course-stats, exam-series, knowledge-graph, note-votes, recommendations, revision-notes x3, smart-lesson, state, answer-input/transcribe) would 404 against the v2 /api/v1/learners/me mount",
+      "/api/v1/teacher/curriculum, /api/v1/knowledge, /api/v1/tutor, /api/v1/teacher/{classes,marking,assignments,tests,concept-graph,class,learners} — W4/W5/W6 unported"
+    ]
+  },
+  "environment": {
+    "note": "NEON_PAT not present in this session (workspace fully recycled between sessions; operator supplied the GitHub PAT only) — the T-MIG-035 Neon COW data plane stands down; live boot executed against a local ephemeral postgres instead. Zero cloud contact, zero production contact.",
+    "rig": "scratch pglite-socket wire server (PGLiteSocketServer on 127.0.0.1:15432) serving PGlite (real postgres, WASM, pgdata dir wiped per run) seeded from the repo's own packages/db/drizzle/0000_organic_mauler.sql (203 statements applied after the two disclosed accommodations below) + 3 roles reference rows (STUDENT/TEACHER/ADMIN — register's user_roles FK target; production carries this reference data, the empty baseline does not)",
+    "rig_accommodations_disclosed": [
+      "explicit btree operator classes stripped from CREATE INDEX statements in the RIG SEED ONLY — the introspected baseline carries mangled opclasses (text_ops on uuid columns, uuid_ops on varchar) which PostgreSQL rejects; the real repair belongs to T-MIG-002-R (card IN_PROGRESS, w0a); zero repo files touched by this accommodation",
+      "pgvector extension enabled (CREATE EXTENSION vector) for document_chunks.embedding vector(768)",
+      "rig scripts preserved at .syllabai/receipts/T-MIG-037/rig/ (serve.ts + both posture harnesses) for reproducibility"
+    ],
+    "api_boot": "apps/api from THIS BRANCH via bun (PORT=8090; DATABASE_URL=postgres://pg:pg@127.0.0.1:15432/main -> postgres.js driver, isNeonUrl=false path; synthetic 32B SYLLABAI_JWT_SECRET; synthetic SYLLABAI_TEACHER_JOIN_CODE)",
+    "harness": "two separate bun processes import the hub's ACTUAL apiPath/v2SurfaceBase from apps/hub/src/lib/api.ts (fresh module env per posture): posture A with NEXT_PUBLIC_API_V2_BASE_URL=http://127.0.0.1:8090 + NEXT_PUBLIC_API_BASE_URL=https://syllabai-core.example (dual-run, both bases live); posture B with the env UNSET (rollback)"
+  },
+  "checks_posture_a_dual_run": [
+    {"n": 1, "name": "hub routes /api/v1/auth/login -> v2 base", "result": "PASS", "detail": "http://127.0.0.1:8090/api/v1/auth/login"},
+    {"n": 2, "name": "hub routes /api/v1/auth/register -> v2 base", "result": "PASS"},
+    {"n": 3, "name": "hub keeps /api/v1/subjects on the legacy core (T-MIG-035 check-3 law)", "result": "PASS", "detail": "https://syllabai-core.example/api/v1/subjects"},
+    {"n": 4, "name": "hub keeps teacher glm-ocr findings on the core (v2 does not serve it)", "result": "PASS"},
+    {"n": 5, "name": "hub keeps non-attempts /learners/me surfaces on the core", "result": "PASS"},
+    {"n": 6, "name": "hub routes /api/v1/curriculum/subjects -> v2 base", "result": "PASS"},
+    {"n": 7, "name": "hub routes /api/v1/content/documents -> v2 base", "result": "PASS"},
+    {"n": 8, "name": "hub routes /api/v1/learners/me/attempts -> v2 base (narrow prefix)", "result": "PASS"},
+    {"n": 9, "name": "register 201 via hub-constructed URL (honest API path)", "result": "PASS", "detail": "synthetic learner r8-hub-t037-learner@example.invalid; response keys = accessToken,tokenType,user"},
+    {"n": 10, "name": "AuthResponse shape {accessToken, tokenType: Bearer, user} — hub-consumable", "result": "PASS"},
+    {"n": 11, "name": "login 200 via hub-constructed URL", "result": "PASS"},
+    {"n": 12, "name": "/me 200 with v2-issued bearer; email round-trips", "result": "PASS"},
+    {"n": 13, "name": "GET /api/v1/curriculum/subjects 200 array (W2 curriculum read through the hub's v2 base)", "result": "PASS"},
+    {"n": 14, "name": "GET /api/v1/content/documents/{bad-id} 400 malformed_body — reader implementation-literal (parseUuid parity; the /api/v1/* fallback emits only 401-anon/404, so 400 proves the request reached the REAL reader)", "result": "PASS", "detail": "status=400 error=bad_request"},
+    {"n": 15, "name": "GET /api/v1/learners/me/attempts?limit=5 200 (W3 history read through the hub's v2 base)", "result": "PASS", "detail": "bodyKind=object (AttemptHistoryView envelope)"},
+    {"n": 16, "name": "register write landed in the ephemeral store (independent postgres.js read-back)", "result": "PASS", "detail": "users rows for the synthetic email = 1"},
+    {"n": 17, "name": "GET /api/v1/content/documents/{absent-uuid} 404 with the reader's own message 'Document <uuid> not found' (served by the real router, not the fallback)", "result": "PASS"}
+  ],
+  "checks_posture_b_rollback": {
+    "probes": 13,
+    "passed": 13,
+    "detail": "fresh process with NEXT_PUBLIC_API_V2_BASE_URL UNSET: every probe — INCLUDING all five newly flipped surface families — reverts to the legacy core form (relative path + XTransformPort=8080, the sandbox core convention; v2SurfaceBase decision layer returns null for every probe). This is the §7 one-env-var rollback property, executed through the branch's real code. The absolute-core variant (env set -> core absolute base, no XTransformPort) is additionally pinned by posture A's negative probes + the committed pins."
+  },
+  "gates": {
+    "typecheck_x4": "exit 0 (packages/contracts, packages/shared, packages/db, apps/api)",
+    "bun_test_apps_api_packages": "472 pass / 13 skip / 0 fail, 1259 expect, 485 tests across 31 files — IDENTICAL to origin/main measured in the SAME sandbox via a scratch worktree (delta exactly zero; hub-only diff; the count split display differs from older receipts' bun-version formatting, totals match)",
+    "golden_selftest": "OK (exit 0; tolerance engine incl. declared-unordered multiset per T-MIG-024; goldens untouched by this diff — git diff origin/main -- golden/ empty)",
+    "scoped_hub_tsc": "0 errors total (better than the T-MIG-011-era filtered-install noise disclosure)",
+    "hub_routing_pins": "8 pass / 0 fail / 212 expect (bun test apps/hub/src/lib/api.v2-surface.test.ts)"
+  },
+  "verdict": "ALL CHECKS PASS — 17/17 dual-run + 13/13 rollback + full gate battery. The hub's strangler table now carries the now-verified W2 content/curriculum reads and W3 attempts surfaces; every flipped prefix captures only hub-emitted paths with REAL v2 implementations (startsWith-safety cross-map at c920eea); the §7 rollback remains a single env unset. Posture A executed the real register->login->/me->subjects->attempts-history flow through the hub's ACTUAL routing code against the branch-booted v2 api with the write landing in the ephemeral store only.",
+  "honest_limits": [
+    "Browser-level UI drive not executed (lane sandbox; T-MIG-035 recorded the same honestly) — the routing decision surface (apiPath) is what the hub calls on every request and is fully covered by committed pins + live harness",
+    "Neon COW branch not provisioned (no NEON_PAT in this recycled session) — data-plane evidence taken on a local ephemeral postgres with the repo's own baseline; the api's postgres.js driver path is the same code path a COW DSN takes (isNeonUrl=false), the neon-serverless branch of the dispatch is untouched by this diff and remains covered by goldens",
+    "Vercel branch deploy of the hub app not executed (no Vercel creds in session) — 'branch' verification performed per the T-MIG-035 sense: the hub routing code of THIS BRANCH verified live against the branch-booted v2 api"
+  ],
+  "provenance_notes": [
+    "T-MIG-036 taken in parallel by r3fix (PR #48, identity-budget flake root cause); the sweep-4-era prose 'T-MIG-036' for the W2-F3 multiset re-pin was an abandoned pre-renumber id (that work is T-MIG-024)",
+    "zero-collision scan @ c920eea: PRs #48/#49/#50 have zero apps/hub overlap; ls-remote 50 heads contain no t-mig-037"
+  ]
+}
