@@ -1463,3 +1463,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-044 IN_REVIEW on t-mig-044/r4b (receipt run-001-claim-implementation.json). UNBLOCKS the fleet-standard "replay NOT RUN — env-blocked" register (030 run-004 / 031 / 032) and the standing re-proof conditions on cards 022/023/024/030/032; live Neon execution is deliberately NOT attempted from the sandbox — the instrument is CI-side by design. One-time operator setup: NEON_API_KEY secret + NEON_PROJECT_ID / NEON_PARENT_BRANCH_ID variables, then dispatch. PR follows; merge per the authors-never-self-merge rule.
+
+---
+Task ID: T-MIG-044 (push addendum — directive trace 1a10cced0cde9341 "Proceed")
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Record post-restart re-verification + push-blocked state for the T-MIG-044 head.
+
+Work Log:
+- Session restarted after context exhaustion; state recovered from repo (no re-claim needed: branch + commit + receipt already in place, zero remote collision — T-MIG-044 absent from origin/main 260f452 and from every fetched branch; PR numbering on main reaches #54, mine follow).
+- FULL GATE RE-VERIFICATION on head 6979aff in this restarted environment: typecheck x4 exit 0; bun test apps/api packages = 485 ran / 472 pass / 0 fail / 13 skip / 1259 expect (c920eea baseline EXACT); golden selftest OK; ci-replay --plan = 113 -> seed 98 + prod 15 disjoint, seq'd first-5 order verified; neon-branch fail-fast re-proven (real exit 2 + operator setup guidance); workflow YAML re-parsed = 18 step entries, workflow_dispatch + schedule, permissions contents:read, concurrency serialized, READ-ONLY PROOF (git diff --exit-code) present.
+- PUSH BLOCKED: `git push origin t-mig-044/r4b` fails — "could not read Username for 'https://github.com'" — restarted sandbox holds NO GitHub write credentials (consistent with the fleet's pending PAT-rotation register item). Anonymous READ works.
+- origin/main moved c920eea -> 260f452 during the outage (#53/#54 merged). Branch deliberately NOT rebased (authored against claim-time main c920eea; R0 merge-intake owns the post-#54 worklog union). Zero file overlap with #53/#54 diffs (.github/workflows + golden/tools + golden/README only).
+- This addendum is a worklog-only append (zero code delta vs 6979aff).
+- LIVE NEON RUN deliberately NOT attempted from the sandbox (DNS-blocked by design) — first corpus-wide replay happens via the workflow after the one-time operator setup (NEON_API_KEY secret + NEON_PROJECT_ID / NEON_PARENT_BRANCH_ID variables), then dispatch.
+
+Stage Summary:
+- T-MIG-044 remains implementation-COMPLETE and IN_REVIEW on t-mig-044/r4b @ 6979aff (+ this addendum), all gates green on the head. ACTION NEEDED: push + PR by a credentialed session or the operator (PAT rotation), then merge per the authors-never-self-merge rule; after merge, operator secrets/vars setup + maiden dispatch; divergences from the first runs are the expected filing evidence for R0/R6 disposition — the runner weakens nothing.
