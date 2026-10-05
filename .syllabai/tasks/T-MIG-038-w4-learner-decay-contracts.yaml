@@ -14,7 +14,7 @@ task:
   owner: "Contracts-lane (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
     — operator-assigned CONTRACTS LANE this round (IM trace 1a10cb48dc7edd15,
     2026-10-05), Step 2 of the same directive."
-  status: CLAIMED
+  status: IN_REVIEW # PR open; independent review requested; R0 merge-intake pending (authors never self-merge)
   claimed_at: "2026-10-05T21:52:09+06:00 (Asia/Dhaka)"
   priority: P2
   wave: 4
@@ -53,6 +53,30 @@ task:
     this task (the directive names learner surfaces + decay math +
     NightlyDecayJob I/O; the recommendations surface has no learner-route
     exposure verified at claim time — R0 may file it separately).
+    (COMPLETION 2026-10-05T22:29:02+06:00, run-001): port complete —
+    packages/contracts/src/learner.ts (22 wire schemas + 4 vocabularies +
+    param mirrors) + decay.ts (DecayParams/BktParams/BdtParams engine-boundary
+    with exact compact-constructor invariants; DecayJobRun ledger row;
+    DecayAppliedEvent + ReviewScheduledEvent job events; ADR-031 anchor law
+    documented) + 2 test files (31 pins) + index.ts export lines. DEEP-READ
+    FINDINGS: (1) NodeType is SIX values incl. CONCEPT — reused
+    curriculum.ts knowledgeNodeTypeSchema (star-export collision caught by
+    tsc TS2308; the enum was already canonical there); (2) mastery band is
+    the derived closed domain LOW|DEVELOPING|SECURE (DecayParams.bandOf
+    :58-68); (3) trail limit default 200 / cap 500 CLAMPED not rejected,
+    cursor base64url({t,i}) FAIL-CLOSED → 400; (4) rating/vote tolerant
+    parse maps are POST-side only — the served wire forms are the strict
+    enums; (5) cardId/noteId @Size(min=3) caught by my own pin (first
+    draft used min(1)); (6) unpractised-node null-proficiency honesty law
+    is source-level (schema accepts numbers; golden pins the nulls).
+    Embedded views (NBA/assignment/exam-target) ported inside learner.ts
+    for the agenda wire per T-MIG-018 precedent — disclosed for R0 split
+    if wanted. GATES: typecheck x4 exit 0; bun test apps/api packages =
+    503 pass / 13 skip / 0 fail, 1327 expect, 516 total (= main 472 pass
+    + 31 pins / +68 expect exactly; the round-6 '485' convention is TOTAL
+    incl. skip — verified by scratch-worktree measurement, receipt
+    measurement_note); golden --selftest OK. Receipt:
+    .syllabai/receipts/T-MIG-038/run-001.json.
 scope:
   allowed:
     - "packages/contracts/src/learner.ts"
