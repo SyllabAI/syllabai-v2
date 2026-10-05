@@ -1,0 +1,19 @@
+{
+  "task": "T-MIG-024",
+  "run": "run-001-claim",
+  "at": "2026-10-05T08:5xZ",
+  "lane": "R4-api-b (session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "action": "branch-start claim from operator drain-cycle queue item W2-F3",
+  "base_main": "daad88e",
+  "zero_collision_scan": {
+    "w2_f1_f2": "TAKEN — t-mig-023/r1 (R1-contracts session), claimed 08:14:41Z, IN_PROGRESS, pushed 08:31:04Z",
+    "t_mig_030_tranche2": "TAKEN — r7a per operator directive; T-MIG-030 card IN_PROGRESS",
+    "t_mig_031": "TAKEN — t-mig-031/r3a, open PR #34 (wave-3 exam-papers+questions READ port)",
+    "t_mig_035": "TAKEN — t-mig-035/w0a (T-MIG-011 escalated live-flow remainder, operator routing)",
+    "w2_f3": "UNCLAIMED at scan — no branch, no yaml, no worklog entry on origin/main @ daad88e",
+    "t_mig_002_r": "NOT CLAIMED by this lane (one task per agent)"
+  },
+  "branch": "t-mig-024/r4",
+  "claim_priority": "attaches at remote push time per AGENT_COORDINATION §2.1 (T-MIG-005/023 precedent)",
+  "credential_law": "PAT env-only, never echoed/committed"
+}

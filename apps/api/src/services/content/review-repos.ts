@@ -53,7 +53,8 @@ export class QuestionVersionReadRepository {
              q.external_ref, q.question_type, q.stem as question_stem, q.marks as question_marks
       from question_versions v
       join questions q on q.id = v.question_id
-      where q.exam_paper_id = ${paperId}::uuid`;
+      where q.exam_paper_id = ${paperId}::uuid
+      order by q.external_ref asc nulls last, v.version desc`;
     return rows.map((v) => ({
       versionId: String(v.version_id),
       questionId: String(v.question_id),
@@ -122,13 +123,17 @@ export class QuestionVersionReadRepository {
     return rows.map((r) => ({ paperId: String(r.paper_id), avg: Number(r.avg) }));
   }
 
-  /** Port of findByPaperId (audit + review walk). */
+  /** Port of findByPaperId (audit + review walk). Frozen law (F-3 re-ruling,
+   * R0 2026-10-05): Java QuestionVersionRepository.findByPaperId (:46-51 @
+   * 6cad6ef) carries `order by v.question.externalRef nulls last, v.version
+   * desc` — this walk is ORDERED, not heap-ordered. */
   async findByPaperId(paperId: string): Promise<Array<{ id: string }>> {
     const rows: Row[] = await this.sql`
       select v.id
       from question_versions v
       join questions q on q.id = v.question_id
-      where q.exam_paper_id = ${paperId}::uuid`;
+      where q.exam_paper_id = ${paperId}::uuid
+      order by q.external_ref asc nulls last, v.version desc`;
     return rows.map((r) => ({ id: String(r.id) }));
   }
 }

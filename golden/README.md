@@ -30,6 +30,21 @@ operator/agent-driven against a booted v2 api per wave gate.
   selftest used it). Use for wall-clock timestamps and boot-generated
   values (fresh accessToken/user id per replay db). The scrubbed capture
   values stay in the file for archaeology.
+- `unordered` — body-root-relative dotted paths whose ARRAY values compare
+  as MULTISETS (T-MIG-024; scope re-ruled by R0 after the F-3 re-examination
+  of ruling 5990536177): every element must match exactly (after `tolerate`
+  redaction) but in ANY order — PERMITTED ONLY for arrays whose order the
+  FROZEN SOURCE leaves unspecified (e.g. `MarkSchemeRepository.findByPaperId`,
+  which carries no ORDER BY; JPA collections without `@OrderBy`).
+  SCOPE RULE: where the frozen source DOES specify an order, the port must
+  implement it and the golden case stays strictly order-pinned —
+  `teacher-content-paper-review-realdata-200` `versions[]` is the precedent:
+  frozen `QuestionVersionRepository.findByPaperId` (:46-51 @ 6cad6ef) carries
+  `order by v.question.externalRef nulls last, v.version desc`, so the port
+  implements exactly that and NO declaration is used for it. Declared
+  relaxation only: arrays at undeclared paths — including arrays INSIDE a
+  declared array's elements — keep strict order, and a different multiset
+  still fails.
 - `expect.headers` — response-header subset match (T-MIG-004 F-3 closure):
   case-insensitive header names, exact values; a missing actual header
   fails by name. Ports must reproduce core headers (T-C31 empty-cause

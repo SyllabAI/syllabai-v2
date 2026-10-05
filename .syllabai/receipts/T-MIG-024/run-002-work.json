@@ -1,0 +1,22 @@
+{
+  "task": "T-MIG-024",
+  "run": "run-002-work",
+  "at": "2026-10-05T09:1xZ",
+  "lane": "R4-api-b (session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "change": "W2-F3 re-pin per R0-SWEEP-2 F-3 ruling: declared-unordered multiset comparator + case re-pin",
+  "files": [
+    "golden/runner.ts — GoldenCase.unordered?[] + canonicalizeUnordered (declared dotted paths, post-redaction canonical-JSON sort) + deepEqualTolerant optional 4th arg (zero behaviour change when absent) + 7 selftest multiset pins + deepEqualTolerant exported + CLI main wrapped in import.meta.main (golden/tools import; direct invocation byte-identical, CI ci.yml:32 verified)",
+    "golden/cases/teacher-content-paper-review-realdata-200.json — +\"unordered\": [\"versions\"] (the ONLY over-pinned structure per the ruling; paper header untouched)",
+    "golden/README.md — comparator section documents the declared-unordered rule",
+    "golden/tools/reorder-check.ts — new offline proof tool (setcheck.ts precedent) running the REAL committed case"
+  ],
+  "gates": {
+    "typecheck_x4": "exit 0",
+    "bun_test_apps_api_packages": "361 pass / 1 fail / 13 skip — the 1 fail is the pre-existing follow-up-register flake (identity routes.test.ts:329 login-clears-budget, timing-sensitive, 'identity uncaptured' per R0-SWEEP-2 register); file re-run x2 immediately after: 29/29 pass both times. This diff touches zero apps/** or packages/** files (claim diff = bookkeeping only; work diff = golden/** + bookkeeping only).",
+    "golden_selftest": "OK — incl. 7 new multiset pins (same-multiset-different-order passes; no-declaration order-diff fails; multiset-difference fails; tolerate x unordered composes; non-declared sibling path strict; dotted path applies)",
+    "reorder_check": "7 PASS + 1 SKIP (no multi-item options[] on rotated element 0; nested-array strictness covered by selftest pins) — real-case proof: rotate/reverse pass; marks mutation, paper.id mutation, and un-declared reorder all fail"
+  },
+  "verification_posture": "Live Neon replay of the single case stays with R6/R0 replay posture (this sandbox is DNS-blocked from api.neon.tech — standing finding); capture-side multiset evidence is T-MIG-022's live setcheck 6/6. Comparator side is proven offline by reorder-check against the committed capture.",
+  "fence": "golden/** + .syllabai bookkeeping ONLY. Zero apps/** or packages/** changes (port ruled faithful by R0 — this is a capture-semantics fix). docs/GOLDEN_MASTER.md NOT edited — §5 doctrine amendment (if R0 wants the declared-unordered rule codified) is flagged in the PR for R0.",
+  "credential_law": "PAT env-only, never echoed/committed"
+}

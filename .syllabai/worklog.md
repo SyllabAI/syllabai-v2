@@ -1191,6 +1191,17 @@ Stage Summary:
 - T-MIG-031 CLAIMED (branch t-mig-031/r3a pushed; commit e57a393 + this intake). Deps T-MIG-018/007/014 all merged — slice immediately portable. Tranche-1 (services/questions + services/exam-papers, stubbed-sql tests) next; tranche-2 (zod-wired route factories + flagged OUT-OF-FENCE mounts) follows. Golden replay posture: env-blocked follow-up per T-MIG-020/021 precedent, no case weakened.
 
 
+
+---
+Task ID: T-MIG-024 (claim — operator drain-cycle queue item W2-F3)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Claim exactly one drain-cycle item after zero-collision scan; implement the F-3 multiset re-pin.
+
+Work Log:
+- Synced on origin/main @ daad88e (worklog tail through R0-SWEEP-3; directive state 2ca1a16 already superseded — nothing held, no open PR from this lane; T-MIG-021 yield stands DONE).
+- Zero-collision scan: W2-F1+F-2 TAKEN (t-mig-023/r1, IN_PROGRESS); 030-tranche-2 r7a; 031 PR #34; 035 hub live-flow; F-3 UNCLAIMED → claimed W2-F3 as T-MIG-024 (id ratification requested in PR; T-MIG-021/023 precedent). One task per agent held; T-MIG-002-R left unclaimed.
+- Branch-start claim per §2.1: t-mig-024/r4 @ daad88e; yaml CLAIMED + receipt run-001-claim.json; implementation follows (runner declared-unordered multiset rule + case re-pin + selftest pins + reorder-check tool; fence = golden/** + bookkeeping only).
+
 ---
 Task ID: T-MIG-035 (claim — T-MIG-011's escalated remainder, routed by operator word)
 Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
@@ -1204,6 +1215,21 @@ Work Log:
 
 Stage Summary:
 - T-MIG-035 CLAIMED. Next: provision COW branch hub-live-flow/2026-10-05, boot v2 api against it, verify hub strangler routing via the hub's own api.ts decision, run register/login/me live through the constructed URL, assert branch DB write paths (users + audit rows), receipts + PR.
+
+---
+Task ID: T-MIG-024 (work complete — IN_REVIEW)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Implement the W2-F3 multiset re-pin and drive to PR.
+
+Work Log:
+- golden/runner.ts: GoldenCase.unordered?[] (declared body-root dotted paths); canonicalizeUnordered sorts declared-path arrays by post-redaction canonical JSON (multiset semantics; undeclared + nested arrays stay strict); deepEqualTolerant gains an optional 4th arg — zero behaviour change for the other 112 cases; 7 selftest pins added; deepEqualTolerant exported; CLI main wrapped in import.meta.main so golden/tools can import the comparator (direct invocation unchanged; ci.yml:32 verified).
+- teacher-content-paper-review-realdata-200.json re-pinned with "unordered": ["versions"] — the only over-pinned structure per the F-3 ruling; golden/README.md documents the rule.
+- golden/tools/reorder-check.ts (setcheck precedent): runs the REAL committed case offline — identity/rotate/reverse pass; marks mutation, paper.id mutation, and un-declared reorder all fail. 7 PASS + 1 SKIP.
+- Gates: typecheck x4 exit 0; bun test 361/1/13 (1 = the pre-existing follow-up-register flake, identity routes.test.ts:329 — file re-run x2 green; this diff touches zero apps/packages files); golden selftest OK; reorder-check green. Receipt run-002-work.json.
+- Fence held: golden/** + bookkeeping only; docs/GOLDEN_MASTER.md untouched (doctrine amendment flagged in PR for R0). Live single-case replay stays with R6/R0 posture (sandbox DNS-blocked from Neon — standing finding).
+
+Stage Summary:
+- T-MIG-024 IN_REVIEW: the F-3 comparator condition of the CONDITIONAL Wave-2 exit gate is ready for independent review; PR opened (R0 actions: id ratification + optional §5 codification). One task per agent held; lane goes IDLE after PR per drain-cycle step 7.
 
 ---
 Task ID: T-MIG-035 (run-001 — live auth-flow check executed; ALL 10 CHECKS PASS)
@@ -1239,6 +1265,14 @@ Stage Summary:
 Task ID: T-MIG-023 drain-cycle status receipt (trace 1a10b512c7656ab9)
 Agent: R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
 Status line: T-MIG-023 (t-mig-023/r1, PR #38) | drain: synced ffc2876->0cd360b, merge-intake 422066e (worklog append-union byte-verified, zero code overlap; gates typecheck x4 / 392 pass 0 fail 13 skip / selftest OK), 3-way F-1/F-2 collision disclosed (earliest pushed claim: 46f4f19 @ 08:31:04Z) | BLOCKED (no PAT: intake-head push + PR body update pending) | suggestion: R0 three-way arbitration across t-mig-023/r1 (earliest claim + pins) vs t-mig-023/r3a (live 40/40 + F-3 contradicting the 5990536177 ruling) vs w2-f1/r3c (F-1-only capture proof); queue a COW DSN to clear B-2.
+---
+Task ID: DRAIN-CYCLE-STATUS (operator step 7 one-liner)
+Agent: R4-api-b
+Task: Status receipt per the operator drain-cycle directive (trace 1a10b3643c2cc971).
+
+Work Log:
+- R4-api-b | synced @ daad88e, claimed queue item W2-F3 as T-MIG-024 (zero-collision scan; W2-F1/F-2 were r1's), implemented declared-unordered multiset comparator + case re-pin + 7 selftest pins + reorder-check tool, all gates green (typecheck x4, bun test 361/1/13 with the 1 = pre-existing register flake re-run x2 green, selftest OK, reorder-check 7P/1S), receipt run-002-work, yaml IN_REVIEW, PR #37 opened (R0: id ratification + comparator verdict) | IDLE (PR #37 awaiting independent review; also posted independent APPROVE review on PR #34 per step 5) | suggestion: next round assign a lane to the flaky identity budget test (routes.test.ts:329, register item "identity uncaptured" — second occurrence observed this cycle, passes on re-run; a time-window freeze or budget-reset pin would de-flake it) and, after F-1/F-2/F-3 land, have R0 re-run the Wave-2 exit-gate check to flip W2 CLOSED.
+
 ---
 Task ID: T-MIG-032 claim
 Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
@@ -1333,3 +1367,16 @@ Work Log:
 
 Stage Summary:
 - E-2 executed per R0's sketch, no service change needed (as predicted). PR to follow; merge per the drain-cycle rule (independent review / R0 — authors never self-merge).
+---
+Task ID: T-MIG-024 (run-003 - R0 F-3 ruling execution)
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Re-examine F-3 ruling 5990536177 per operator directive (trace 1a10b7fe85b49a21 item 2); execute the winning disposition on PR #37.
+
+Work Log:
+- FROZEN-SOURCE RE-READ @ 6cad6ef: QuestionVersionRepository.findByPaperId (:46-51) CARRIES `order by v.question.externalRef nulls last, v.version desc` — my 08:05:47Z ruling premise ("findByPaperId carries NO ORDER BY (heap order)") was WRONG for this finder; it held only for MarkSchemeRepository.findByPaperId (:49-53). ContentReviewService.paperReview (:866-879) preserves the finder order into PaperReviewView.versions[] — versions[] is Java-deterministic, the capture (q01..q06 ascending) IS the Java order, and the port (review-repos.ts, both walks unordered) was NEVER faithful here.
+- RULING (posted on #37 + correction addendum on #30): port-side ORDER BY restore WINS over markSchemes-only re-pin — r3a's recommendation adopted; zero golden weakening; multiset semantics SCOPED to genuinely-unordered legs (markSchemes walks, un-@OrderBy'd JPA collections).
+- EXECUTED on t-mig-024/r4 (r4 idle since 08:53:24Z; fence extension authorized by the ruling + the operator's "#37 (post-rework)" queue item): review-repos.ts findFullByPaperId + audit-walk findByPaperId gain the exact JPQL-mirroring ORDER BY; case "unordered" declaration REMOVED; README comparator doctrine re-scoped; reorder-check.ts re-framed as two-posture law proof; comparator machinery retained dormant; receipt run-003-ruling-execution.json + yaml ruling_execution.
+- CORRECTION CULTURE: this is R0's own ruling corrected on R0's own motion at the operator's direction — premise disproof recorded verbatim, not papered over.
+
+Stage Summary:
+- F-3 resolved the faithful way: the port now implements the frozen ORDER BY, the golden case stays strict, the Wave-2 exit gate's F-3 condition is satisfied on merge. CI + local gates on the intake head; merge per the operator queue.
