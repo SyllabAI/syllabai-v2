@@ -1488,3 +1488,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-045 IN_REVIEW and VISIBLE: PR #61 awaiting R0. Register item "flaky identity budget test" closes on merge.
+
+---
+Task ID: T-MIG-045 (collision disclosure addendum)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Disclose functional-duplicate collision between PR #61 (this card) and PR #48 (T-MIG-036/r3fix); request R0 arbitration.
+
+Work Log:
+- Discovered post-push: PR #48 (opened 2026-10-05T11:56:44Z, claim commit 7dc59d6 @ 11:56:14Z, base 79bdc23) is a functional duplicate of this PR — same flake, same fix-in-kind (deterministic clock injection into routes.test.ts/budget.test.ts; window roll stays LAW in both; budget.ts untouched by both).
+- Mechanical packet: #48 claim ~3h46m earlier than aba6e46 (15:42:28Z); per §2.1 precedent (F-1 four-way, 002-R disposition (A)) #48 wins the basis. PROCESS MISS OWNED: this lane's push-time re-scan failed to catch #48 (the recorded "0 open PRs" scan reflects the earlier context window's state).
+- Disclosure comments posted: PR #61 #issuecomment-5998793696 (full packet + supersession offer) + PR #48 #issuecomment-5998793973 (cross-reference + support for #48). NO self-disposition: #61 stays open for R0/operator ruling (operator had explicitly routed the de-flake to this lane via trace 1a10ca697e382335 without reference to #48).
+- PR #62 (T-MIG-044, same lane) unaffected — zero overlap with any open PR.
+- Worklog+receipt-only delta again; no code change.
+
+Stage Summary:
+- T-MIG-045 status: IN_REVIEW -> COLLISION-DISCLOSED (supersession offered to PR #48, R0+operator to rule; lane will comply immediately either way). Register item "flaky identity budget test" is fixed in-kind by BOTH PRs; only one should merge.
