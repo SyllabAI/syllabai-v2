@@ -61,6 +61,11 @@ task:
     test 253/0/13skip, typecheck x4 exit 0, secret scan clean. Pushed
     t-mig-007/r6 (no remote 007 existed at push, ls-remote verified);
     PR #29 opened; status -> IN_REVIEW.
+    2026-10-05T07:4xZ CI GREEN (receipt run-004-ci.json): after three
+    merge-intakes (85a0d32 / 008d64c / 5ee240e - main outran this lane's
+    base on every push; dirty merge-refs silently skip pull_request
+    workflows), PR #29 verify + hub SUCCESS on 84c195f, mergeable_state
+    clean. Awaiting R0.
 base:
   repo: "syllabai-v2 @ 67639db; frozen core @ 6cad6ef"
 basis: >
