@@ -3,7 +3,7 @@ task:
   id: T-MIG-020
   title: "Wave-2 content-read port — documents (list/get/canonical/search), citation reader, teacher review queues (v1/v2/v3 reads), exam-paper review/audit/provenance, question topics read, question assets"
   owner: "R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) — self-filed Wave-2 port task per the T-MIG-004 replay note (\"owned by T-MIG-020 (content read surfaces)\"); R0 ratification of the task id requested in the PR (T-MIG-013 precedent)"
-  status: IN_PROGRESS # claimed_at 2026-10-05T05:41:57Z; branch t-mig-020/r3 pushed (claim @ e50a63f); tranche 1 (content-read services, contract-independent) committed with receipt run-001-tranche1.json; route layer + mounting gate on T-MIG-005 (contracts-first §4.1)
+  status: IN_PROGRESS # claimed_at 2026-10-05T05:41:57Z; branch t-mig-020/r3 pushed (claim @ e50a63f); tranche 1 (content-read services) @ a5a08de + tranche 2 (teacher review read model) receipted run-002-tranche2; route layer + mounting gate on T-MIG-005 (contracts-first §4.1); THREE-WAY RACE disclosed (r3-c 05:17Z / r3a 05:24Z / this lane 05:41:57Z) — R0 arbitrates per §2.1
   priority: P1
   wave: 2
   deps: [T-MIG-005, T-MIG-014] # contracts (route wiring gate — §4.1 contracts-first) + db driver dispatch (PR #13)
@@ -23,6 +23,15 @@ task:
     requested. Search: deterministic empty-cause skeleton (SCOPE_UNRESOLVED /
     COURSE_REF_UNRESOLVED / diagnostics funnel) is in-tranche; vector retrieval
     parity cases need the F-5 real-data tranche (NEON_PAT unblock still open).
+    (tranche 2, 2026-10-05T06:xxZ) Teacher content-review read model landed:
+    review-queue v1/v2/v3, paperReview, paperAudit, paperProvenance,
+    questionTopicRows + assessment-side repositories (V3/V8/V13/V20/V22
+    DDL). 25 stubbed-sql unit tests; gates green (typecheck x4, 142/0/4skip,
+    selftest OK). Fetch-strategy batching documented in the receipt. THREE-WAY
+    RACE on this task id disclosed in the receipt + PR (r3-c 05:17Z push-blocked
+    until 06:02Z; r3a 05:24Z; this lane 05:41:57Z, first remote-visible) — R0
+    arbitrates per §2.1. F-5 gate UNBLOCKED: operator supplied the Neon PAT
+    (env-transient per credential doctrine); run-003 live verification next.
 base:
   repo: "syllabai-v2 @ 67639db (main at claim); frozen refs: syllabai-core @ 6cad6ef"
 basis: >

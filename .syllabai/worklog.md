@@ -487,3 +487,20 @@ Work Log:
 
 Stage Summary:
 - T-MIG-020 IN_PROGRESS on t-mig-020/r3 (base 67639db): the content-read port's law layer is in with full receipts. Board unchanged otherwise: PR #12 (this lane, T-MIG-013) still awaiting R0 ~10h after ready; PR #13 (T-MIG-014) open; T-MIG-005 contracts in flight by R1.
+
+---
+Task ID: T-MIG-020
+Agent: R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Wave-2 content-read port — tranche 2 (teacher content-review read model) + three-way race disclosure
+
+Work Log:
+- Context rolled after tranche 1 was pushed (05:55Z); this session resumed, re-verified the remote, and continued the lane. Poll of PR #12 (this lane's T-MIG-013): R0 silent ~10h20m after ready, 0 reviews; nudge follow-up owed per the same-session promise.
+- RACE DISCLOSURE (R0 arbitration requested per §2.1; commit-time ground truth, all refs on the remote): three lanes claimed T-MIG-020 within 25 minutes — r3-c claim f5773bc @ 05:17Z (pushed ~06:02Z after a PAT-unblock; PR #22, whose addendum 352a9b8 names this lane's branch "R3-api-a remote-first — no force-push"), r3a claim 98fac6d @ 05:24Z (pushed ~05:57Z; PR #20, IN_REVIEW with 25/25 live-replayed cases), this lane claim e50a63f @ 05:41:57Z (pushed 05:42-05:55Z — the FIRST T-MIG-020 ref visible on the remote). The three lines share zero ancestry below main 67639db (a5a08de is ancestor of neither fa278fe nor 352a9b8) — three independent ports; this lane continued its pushed claim with full disclosure instead of abandoning mid-flight, and closes cleanly if R0 rules otherwise.
+- Read the frozen read surface end-to-end (syllabai-core @ 6cad6ef, raw reads): ContentController read routes, ContentReviewService.java (946 lines — baseEnrichment, v3 signals + rankReasons, paperReview, paperAudit, questionTopicRows incl. the anchor-synthesis law), five repositories' queries, three entities' @OrderBy clauses, and the V3/V8/V13/V20/V22 DDL behind them.
+- Landed tranche 2: assessment.ts (seven repositories + three batch loaders over the Flyway-owned tables), review.ts (the read-model port + 14 wire views), index.ts (ExamPapersRepository widened with findById/findSuggested/findValidated, fulfilling its tranche-1 note; buildContentModule wires the review module). Fetch-strategy deviation documented (batched lazy-load families per the core's own findWithPartsByQuestionIdsIn precedent; application-issued per-paper bridge call kept verbatim).
+- 25 stubbed-sql unit tests pin SQL shapes, ordering legs (reconciled-first → confidence → findings → newest; v3 ratios → novel → uuid tie-break via SIGNED msb/lsb BigInt compare), the anchor-synthesis law, the audit actor rename, fail-closed provenance, and the corrupted-criteria 500 path.
+- Gates: typecheck ×4 exit 0; bun test root 142 pass / 4 skip / 0 fail (364 expectations); golden selftest OK; replay NOT run (routes unmounted — posture unchanged). Zero Neon connections; zero upstream writes; no golden edits.
+- Operator supplied the Neon PAT to this lane (env-transient per credential doctrine) — the F-5 gate is unblocked; run-003 live SQL verification against Neon follows as its own receipt.
+
+Stage Summary:
+- T-MIG-020 tranche 2 receipted on t-mig-020/r3: the Wave-2 content-read port now covers documents + citation reader + assets (tranche 1) and the full teacher content-review read model (tranche 2), contract-independent and replay-ready for the tranche-3 flip. Three-way race on this task disclosed with commit-time evidence; R0 owns the arbitration. PR #12 (T-MIG-013) still awaiting R0 ~10.5h after ready.

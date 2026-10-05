@@ -1,0 +1,47 @@
+{
+ "task": "T-MIG-020 (tranche 2 — teacher content-review read model)",
+ "agent": "R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "lane": "R3 (apps/api content-read port; self-filed Wave-2 task, R0 ratification of the id requested in the eventual PR — T-MIG-013 precedent)",
+ "branch": "t-mig-020/r3 (base: main @ 67639db; tranche-1 tip a5a08de)",
+ "date": "2026-10-05",
+ "change": {
+  "summary": "Tranche 2 completes the READ half of the frozen ContentReviewService (946 lines) + the controller-inline views of teacher ContentController: review-queue v1 (the controller's exact three findSuggested calls), v2 quality enrichment (per-paper version/scheme censuses, mean extraction confidence, per-paper glm-ocr bridge lookup with substring findingCount, reconciled-first ordering), v3 reviewability signals (scheme-linkage and mapping ratios, novel-topic coverage against the VALIDATED practicable set, human-legible rank reasons, Java-UUID final tie-break), paperReview (full answer key with stem/marks fallbacks and @OrderBy-faithful options/parts/points), paperAudit (the V22 four-way type-scoped union), paperProvenance (fail-closed source identities over the tranche-1 findTopByDocumentIdOrderByDocVersionDesc), and questionTopicRows (including the V20-founding anchor-synthesis law). Write paths stay honest-501 material for tranche 3 — wave 2 is read-only.",
+  "files": [
+   "apps/api/src/services/content/assessment.ts (assessment-side repositories: QuestionVersions/MarkSchemes/Questions/QuestionTopics/KnowledgeNodes/GlmOcrBridgeRecords/ContentReviewAudit + mark_points/question_options/question_parts batch loaders — verbatim queries over the Flyway DDL V3/V8/V13/V20/V22)",
+   "apps/api/src/services/content/review.ts (ContentReviewService read-model port + all 14 wire views: ReviewQueueView, EnrichedPaperSummary/V3, PaperReviewView/VersionReviewView, AuditRowView, TopicRowView, PaperProvenanceView/DocumentIdentity)",
+   "apps/api/src/services/content/index.ts (ExamPapersRepository widened with findById/findSuggested/findValidated — fulfilling its own tranche-1 note; buildContentModule wires the review module)",
+   "apps/api/test/content/{review-queue,review-detail}.test.ts + helpers.ts matchParams extension (25 new tests, stubbed-sql; SQL shapes, orderings, comparator legs and call sequences pinned)"
+  ],
+  "parity_decisions": [
+   "AuditRowView wire name is `actor` (not actor_label) per the Java record component (ContentReviewService.java:823-832)",
+   "v3 final tie-break ports java.util.UUID.compareTo exactly (SIGNED msb/lsb halves via BigInt) — string order would invert 7fff… vs 8000…",
+   "String.format('%.2f') rendered via toFixed(2) — matches HALF_UP for the 0..1 confidence doubles the data carries; boundary ties avoided by construction",
+   "reviewFindings findingCount ports the Java substring law verbatim: split('\"source\"').length − 1 over the stored jsonb TEXT",
+   "acceptance_criteria jsonb → List<String>: null → [] (the Java List.of() law at :898-899); non-array or unparseable stored value → loud Error → 500 (corrupted-store fallthrough, R10 no-echo)"
+  ],
+  "fetch_strategy_note": "The frozen service reaches question/option/part/scheme/point data through LAZY entity graphs (N+1 round-trips in Java). This port batches each family into ONE query with identical rows and identical per-family @OrderBy — the same 'serving boundaries unchanged, fetch strategy changed' trade the core itself made (QuestionVersionRepository.findWithPartsByQuestionIdsIn). Application-issued repository calls stay VERBATIM: baseEnrichment's per-paper glm_ocr_bridge lookup is a call-sequence port, not a lazy-load artifact. Documented in assessment.ts header.",
+  "no_order_by_note": "questionTopics.findByQuestionId ports the derived finder's ABSENCE of an ORDER BY — row order follows the engine, exactly as the frozen read does; the service's anchor synthesis makes the primary row's position deterministic where it matters (:774-793)."
+ },
+ "race_disclosure": {
+  "what": "THREE lanes claimed T-MIG-020 within 25 minutes on 2026-10-05 and all three hold receipts. This lane does NOT resolve the race — R0 arbitrates per AGENT_COORDINATION §2.1 ('earliest claim wins, R0 arbitrates disputes'); every timestamp below is commit-time ground truth, verifiable on the remote refs.",
+  "claims": [
+   {"lane": "r3-c", "claim_commit": "f5773bc @ 2026-10-05T05:17Z (earliest claimed_at)", "pushed_visible": "~06:02Z (lane was push-blocked without a PAT until then; its own commit e5f19de says so)", "pr": "#22, head t-mig-020/r3c; its addendum 352a9b8 explicitly acknowledges this lane's branch as 'R3-api-a remote-first — no force-push'"},
+   {"lane": "r3a", "claim_commit": "98fac6d @ 2026-10-05T05:24Z", "pushed_visible": "~05:57Z", "pr": "#20, head t-mig-020/r3a, IN_REVIEW, 25/25 golden cases live-replayed; overlaps declared there against PR #18 (r1's T-MIG-005 contracts fence)"},
+   {"lane": "R3-api-a (this lane)", "claim_commit": "e50a63f @ 2026-10-05T05:41:57Z", "pushed_visible": "05:42-05:55Z (first T-MIG-020 ref visible on the remote)", "pr": "this PR (opened after tranche 2 completed the reviewable unit)"}
+  ],
+  "evidence_integrity": "The three lines share ZERO ancestry below main 67639db (verified: a5a08de is ancestor of neither fa278fe nor 352a9b8) — no lane built on another's bytes; R0 is choosing between three independently-produced ports.",
+  "this_lane_posture": "This lane continued its pushed IN_PROGRESS claim instead of abandoning mid-flight: tranche 1 (law layer) + tranche 2 (review read model) are receipted, gates green, zero fence violations. If R0 awards the task to r3a or r3-c, this lane closes cleanly and its receipts remain as comparison material; nothing here weakens any gate or touches another lane's fences."
+ },
+ "gates": {
+  "typecheck": "bun run typecheck (contracts/shared/db/api ×4) exit 0",
+  "unit": "bun test (repo root) — 142 pass / 4 skip / 0 fail across 12 files (364 expect calls), INCLUDING 25 new review-module tests; the 4 skips are the T-MIG-010 identity Neon integration tier (environment-gated, unchanged)",
+  "golden_selftest": "bun golden/runner.ts --selftest → 'selftest OK: tolerance engine behaves' (read-only usage of R6's fence)",
+  "golden_replay": "NOT RUN — content routes remain unmounted (route factories + mounting are tranche 3, gated on T-MIG-005 merge + flagged OUT-OF-FENCE ratification); all 54 cases keep their captured/expected-pending posture, unchanged from tranche 1",
+  "upstream_writes": "ZERO — no Neon connection of any kind this tranche; syllabai-core touched read-only (raw git reads @ 6cad6ef: ContentController, ContentReviewService, five repositories, four entities' @OrderBy, V3/V8/V13/V20/V22 DDL); no DDL, no golden edits"
+ },
+ "pending": [
+  "tranche 3: route factories + zod wiring (on T-MIG-005 merge), index.ts mounting as a flagged OUT-OF-FENCE commit (R0 ratification requested per T-MIG-010/013 precedent), golden replay flip (content cases expected-pending → passing), CI receipt",
+  "tranche 3 / F-5: real-data parity — the operator supplied the Neon PAT to this lane on 2026-10-05 (credential doctrine: env-transient only); run-003 live verification of the tranche-1/2 SQL against real rows follows as a separate receipt",
+  "R0: task-id ratification + three-way race arbitration + F-1/F-2 divergence calls (200 [] on unknown version; 500 on blank query) remain requested in the PR body"
+ ]
+}
