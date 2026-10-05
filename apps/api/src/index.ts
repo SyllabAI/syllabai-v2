@@ -51,6 +51,7 @@ import { buildExamPapersRouters } from "./routes/exam-papers";
 import { buildTestBuilderRouters } from "./routes/testbuilder";
 import { buildAnswerInputRouters } from "./routes/answer-input";
 import { buildTeacherMarkingRouters } from "./routes/teachermarking";
+import { buildSmeRouters } from "./routes/sme";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
@@ -66,6 +67,7 @@ const examPapers = buildExamPapersRouters();
 const testbuilder = buildTestBuilderRouters();
 const answerInput = buildAnswerInputRouters();
 const teachermarking = buildTeacherMarkingRouters();
+const sme = buildSmeRouters();
 
 const app = new Hono();
 
@@ -256,6 +258,25 @@ app.route("/api/v1/learners/me/answer-input", answerInput.transcribeRoute);
 // at review. LLM seams stay DORMANT (the 032 posture): smart-mark routes
 // answer 503 until the LLM-chain lane lands; read surfaces are live.
 app.route("/api/v1/teacher/marking", teachermarking.teacherRoute);
+
+// SME admin router (T-MIG-033 tranche-3 — Wave 3). Path parity with the
+// frozen core: SmeQuestionAdminController under /api/v1/admin/question-bank
+// (POST /ingest multipart + GET /status; SecurityConfig.java:86
+// hasRole('ADMIN') + the controller's @PreAuthorize defense-in-depth :22-25;
+// the router owns its authz internally — the /api/v1/* fallback below stays
+// the 404-after-auth path for NO router claimed). The ingest is the ADR-026
+// one-transaction replace over the REAL sql client (the fleet's first
+// write-path transaction use); ZipSafety budgets are enforced without
+// allocating past a cap (deep-audit 09-28 M3 law).
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-033 tranche-3, R0 ratification requested):
+// T-MIG-033's scope.allowed covers the tranche-3 files (contracts
+// sme-question-package, services/sme/**, routes/sme.ts, test/sme/**) — NOT
+// this file. The import + construction + mount line + this comment are the
+// minimal app-level wiring, shipped as a separate commit per the
+// T-MIG-010/020/021/030/032/034/tranche-2 precedent so R0 can ratify or
+// lift them out at review.
+app.route("/api/v1/admin/question-bank", sme.smeRoute);
 
 // anyRequest().authenticated() parity for paths NO router claimed
 // (SecurityConfig.java:91): anonymous callers get the 401 Boot-shaped body;
