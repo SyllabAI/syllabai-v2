@@ -1,0 +1,61 @@
+version: 1
+task:
+  id: T-MIG-036
+  title: "W2-F3 re-pin — golden runner multiset comparator (`unordered` case annotation) + re-pin the paper-review versions[] ordering case per the F-3 STABILITY-EXEMPT ruling; closes the F-3 leg of the Wave-2 exit gate"
+  owner: "R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e) — claimed from the operator drain-cycle queue (trace 1a10b366256d41c1: \"W2-F3: re-pin versions[] ordering case with multiset semantics\"); the claim supersedes the SWEEP-2 'pending R6' assignment because the operator moved the item to the open queue and R6's capture lane was DONE/idle"
+  status: IN_REVIEW # claimed 2026-10-05T09:1xZ off main 0cd360b; executed in the same pass (engine + case + docs); PR filed with independent-review request (author==R0, no self-merge — recusal rule)
+  claimed_at: "2026-10-05T09:10:00Z"
+  priority: P2
+  wave: 2 # Wave-2 exit gate leg (GOLDEN_MASTER s4: gate CONDITIONAL on F-1/F-2 fixes + F-3 re-pin — this closes the F-3 leg; F-1/F-2 remain open with sketches in receipts/T-MIG-022/)
+  deps: [T-MIG-004, T-MIG-007, T-MIG-022] # the case (T-MIG-004 capture), the runner kit (T-MIG-007), the F-3 finding (T-MIG-022 run-001)
+  execution_record: >
+    (claim entry 2026-10-05T09:10Z) Zero-collision scan at main 0cd360b:
+    zero T-MIG-036 yamls on main, zero t-mig-036* remote heads, no open PR
+    touching golden/** (the drain-cycle scan found #34/#35/#36 all merged by
+    then; w2-f1/r3c branch sighted = W2-F1 claimant, disjoint from golden/).
+    The item was filed by R0-SWEEP-2 as F-3: the paper-review versions[]
+    ordering case over-pins an ordering the frozen law does not specify —
+    QuestionVersionRepository.findByPaperId (QuestionVersionRepository.java:51,
+    re-verified raw this pass) is a plain Spring Data derived query with NO
+    OrderBy/ORDER BY, so captured row order is heap-order, not law; the port
+    reads equally unordered (SWEEP-2 ruled the port FAITHFUL on this surface,
+    verdict 5990536177, with a 6/6 same-multiset set-compare). The re-pin
+    therefore changes COMPARATOR SENSITIVITY only — never the captured data.
+    IMPLEMENTATION: golden/runner.ts grows `unordered?: string[]` (key-name
+    scoped PER CASE, same convention as tolerate — annotating one case can
+    never relax another case's ordering pin); normalize() (successor of
+    redact()) multiset-canonicalizes arrays under unordered keys by sorting
+    each element's NORMALIZED serialization — deterministic, nesting-safe,
+    duplicates PRESERVED (multiset, not set; tolerate composes: children are
+    canonicalized before the sort key is computed, so tolerated fields cannot
+    destabilize the sort). Selftest grew 5 checks: reorder-with-tolerate pass,
+    duplicates-must-fail (set-vs-multiset guard), order-still-matters-without-
+    annotation, nested-object reorder pass, real-content-diff-still-fails.
+    CASE RE-PIN: teacher-content-paper-review-realdata-200.json + "unordered":
+    ["versions"] + F-3 provenance in the description; expect.body verified
+    BYTE-IDENTICAL to the pre-edit capture (machine-checked via git show
+    comparison), method/path/request untouched. DOCTRINE: docs/GOLDEN_MASTER.md
+    s1 (schema + usage rule) and s3 (ordering exception: frozen-reader-
+    unspecified order is not law; multiset re-pin instead of weaken/exclude).
+    Replay of the re-pinned case is env-blocked like every w2/w3 case (CI-side
+    Neon runner pending) — but the case is now REPLAY-READY for the runner
+    that exists, and the selftest proves the engine law.
+  acceptance:
+    - "runner selftest green including the 5 new multiset checks"
+    - "113/113 case JSONs still valid; NO other case's comparator semantics changed"
+    - "expect.body of the re-pinned case byte-identical (verified)"
+    - "root gates green: typecheck x4, bun test, golden --selftest"
+scope:
+  allowed:
+    - "golden/runner.ts (comparator engine + selftest only — replay/CLI surface untouched)"
+    - "golden/cases/teacher-content-paper-review-realdata-200.json (annotation + description ONLY; expect.body byte-frozen)"
+    - "docs/GOLDEN_MASTER.md (s1 schema + s3 ordering exception ONLY)"
+    - ".syllabai/tasks/T-MIG-036-w2f3-multiset-repin.yaml (this file)"
+    - ".syllabai/receipts/T-MIG-036/**"
+    - ".syllabai/worklog.md (append)"
+  forbidden:
+    - "apps/**, packages/** (landed lanes — read-only)"
+    - "any OTHER golden/cases/** file (zero comparator changes beyond the one re-pinned case)"
+    - "upstream syllabai-core / syllabai-hub writes (C1 — read-only)"
+    - "production Neon writes / prod surfaces (zero-write)"
+    - "editing the captured expect.body of ANY case (capture-is-the-law — the data IS the law; only comparator sensitivity may change, and only per the F-3 ruling)"

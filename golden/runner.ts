@@ -13,6 +13,10 @@
  *
  * Tolerance rules (what is NOT compared byte-for-byte):
  *   - fields listed in a case's `tolerate` array (timestamps, uuids, tokens)
+ *   - arrays under keys listed in a case's `unordered` array compare as
+ *     MULTISETS (element order ignored, duplicates preserved) — for surfaces
+ *     whose frozen source reads rows with no ORDER BY (heap order is not
+ *     law; T-MIG-036 implements the F-3 ruling, R0 verdict 5990536177)
  *   - LLM-dependent surfaces are NEVER golden-gated (nondeterministic);
  *     they get behavioural/eval gates instead (see docs/MIGRATION_PLAN.md §Risks)
  *
@@ -29,6 +33,12 @@ interface GoldenCase {
   request?: { headers?: Record<string, string>; body?: unknown };
   expect: { status: number; body: unknown; headers?: Record<string, string> };
   tolerate?: string[];
+  // T-MIG-036 (F-3 re-pin): keys whose ARRAY values compare as multisets
+  // (order-insensitive, duplicates preserved). Key-name scoped PER CASE —
+  // same convention as `tolerate` — so annotating one case can never relax
+  // another case's ordering pin. Data is never edited: the captured array
+  // stays verbatim; only the comparator's sensitivity changes.
+  unordered?: string[];
   // T-MIG-006: optional replay ordinal. Stateful (write-path) cases declare
   // a seq and run FIRST in seq order (register-success before duplicate /
   // login / me); all other cases follow in filename order. Absent seq = no
@@ -102,12 +112,37 @@ export function loadCases(): GoldenCase[] {
     });
 }
 
-function redact(body: unknown, tolerate: string[] = []): unknown {
+/**
+ * Canonicalizer: drops `tolerate` keys (T-MIG-003) and multiset-canonicalizes
+ * arrays under `unordered` keys (T-MIG-036). Both are key-name scoped per
+ * case. Unordered arrays are sorted by each element's NORMALIZED serialization
+ * — deterministic, nesting-safe, duplicates preserved (multiset, not set):
+ * sorting happens AFTER children are themselves canonicalized, so tolerated
+ * fields inside elements cannot destabilize the sort key.
+ */
+function normalize(
+  body: unknown,
+  tolerate: string[] = [],
+  unordered: string[] = [],
+): unknown {
   if (body === null || typeof body !== "object") return body;
-  const out: Record<string, unknown> = Array.isArray(body) ? ([] as never) : {};
+  if (Array.isArray(body)) {
+    return body.map((v) => normalize(v, tolerate, unordered));
+  }
+  const out: Record<string, unknown> = {};
   for (const [k, v] of Object.entries(body as Record<string, unknown>)) {
     if (tolerate.includes(k)) continue;
-    out[k] = redact(v, tolerate);
+    const nv = normalize(v, tolerate, unordered);
+    if (unordered.includes(k) && Array.isArray(nv)) {
+      // multiset canonical form: sort by the canonical serialization of each
+      // (already normalized) element — order information deliberately discarded
+      out[k] = nv
+        .map((e) => JSON.stringify(e))
+        .sort()
+        .map((s) => JSON.parse(s) as unknown);
+    } else {
+      out[k] = nv;
+    }
   }
   return out;
 }
@@ -158,7 +193,12 @@ async function replayAgainst(
   // 06:24Z under the original T-MIG-006 claim) and by R0 merge-intake on
   // T-MIG-016 (PR #25). This kit subsumes the #25 one-line fix and extends
   // it with expect.headers comparison + structured failure diffs.
-  const bodyOk = deepEqualTolerant(kase.expect.body, body, kase.tolerate ?? []);
+  const bodyOk = deepEqualTolerant(
+    kase.expect.body,
+    body,
+    kase.tolerate ?? [],
+    kase.unordered ?? [],
+  );
   const headerDiff = checkHeaders(res.headers, kase.expect.headers);
   if (statusOk && bodyOk && headerDiff === null) return null;
   const parts = [`status ${res.status} vs ${kase.expect.status}`];
@@ -197,12 +237,70 @@ function selftest(): number {
     console.error("selftest FAILED: absent expectation must not constrain");
     return 1;
   }
+  // T-MIG-036: multiset comparator coverage (F-3 re-pin engine law)
+  const va = {
+    paper: { id: "p1" },
+    versions: [
+      { versionId: "v2", marks: 3, ts: "x" },
+      { versionId: "v1", marks: 5, ts: "y" },
+    ],
+  };
+  const vb = {
+    paper: { id: "p1" },
+    versions: [
+      { versionId: "v1", marks: 5, ts: "z" },
+      { versionId: "v2", marks: 3, ts: "w" },
+    ],
+  };
+  if (!deepEqualTolerant(va, vb, ["ts"], ["versions"])) {
+    console.error("selftest FAILED: multiset reorder should pass (with tolerate composing)");
+    return 1;
+  }
+  if (deepEqualTolerant(
+    { versions: [1, 1, 2] },
+    { versions: [1, 2, 2] },
+    [],
+    ["versions"],
+  )) {
+    console.error("selftest FAILED: multiset must preserve duplicates (not a set)");
+    return 1;
+  }
+  if (deepEqualTolerant({ versions: [1, 2] }, { versions: [2, 1] }, [], [])) {
+    console.error("selftest FAILED: order must still matter without the annotation");
+    return 1;
+  }
+  if (!deepEqualTolerant(
+    { versions: [{ a: 1, b: 2 }, { a: 3, b: 4 }] },
+    { versions: [{ a: 3, b: 4 }, { a: 1, b: 2 }] },
+    [],
+    ["versions"],
+  )) {
+    console.error("selftest FAILED: nested-object multiset reorder should pass");
+    return 1;
+  }
+  if (deepEqualTolerant(
+    { versions: [{ a: 1 }, { a: 2 }] },
+    { versions: [{ a: 1 }, { a: 3 }] },
+    [],
+    ["versions"],
+  )) {
+    console.error("selftest FAILED: multiset must still fail on real content diffs");
+    return 1;
+  }
   console.log("selftest OK: tolerance engine behaves");
   return 0;
 }
 
-function deepEqualTolerant(a: unknown, b: unknown, tolerate: string[]): boolean {
-  return JSON.stringify(redact(a, tolerate)) === JSON.stringify(redact(b, tolerate));
+function deepEqualTolerant(
+  a: unknown,
+  b: unknown,
+  tolerate: string[],
+  unordered: string[] = [],
+): boolean {
+  return (
+    JSON.stringify(normalize(a, tolerate, unordered)) ===
+    JSON.stringify(normalize(b, tolerate, unordered))
+  );
 }
 
 // ---- main ----

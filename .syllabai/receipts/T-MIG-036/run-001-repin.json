@@ -1,0 +1,47 @@
+{
+  "task": "T-MIG-036",
+  "run": 1,
+  "kind": "EXECUTE_W2F3_REPIN",
+  "lane": "R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "executed_at": "2026-10-05T09:1xZ",
+  "branch": "t-mig-036/r0",
+  "branch_base": "0cd360b (origin/main; R0 sweep-4 housekeeping)",
+  "operator_queue": "drain-cycle trace 1a10b366256d41c1, item 'W2-F3: re-pin versions[] ordering case with multiset semantics'",
+  "frozen_law": {
+    "repository": "QuestionVersionRepository.java:51 — List<QuestionVersion> findByPaperId(@Param(\"paperId\") UUID paperId): plain Spring Data derived query, NO OrderBy derivative, NO @Query ORDER BY -> row order is database heap-order, unspecified by the law",
+    "re_verified_this_pass": true,
+    "ruling": "R0-SWEEP-2 F-3 (verdict 5990536177): paper-review versions[] ordering case STABILITY-EXEMPT pending multiset re-pin; port ruled FAITHFUL on this surface (equally unordered); 6/6 same-multiset set-compare recorded"
+  },
+  "changes": [
+    {
+      "file": "golden/runner.ts",
+      "what": "GoldenCase.unordered?: string[] (per-case key-name scope, tolerate convention); redact() -> normalize() canonicalizer (tolerate drop + multiset sort of arrays under unordered keys by normalized element serialization); deepEqualTolerant 4th param; replayAgainst passes kase.unordered; CLI/replay flow otherwise untouched",
+      "semantics": "MULTISET: order ignored, duplicates PRESERVED; tolerate composes (children canonicalized before sort-key computation); nesting-safe (element serialization as sort key)"
+    },
+    {
+      "file": "golden/runner.ts (selftest)",
+      "what": "+5 engine checks: (1) multiset reorder passes with tolerate composing, (2) duplicates must FAIL ([1,1,2] vs [1,2,2] — set-vs-multiset guard), (3) order still matters without the annotation, (4) nested-object reorder passes, (5) real content diffs still FAIL under unordered"
+    },
+    {
+      "file": "golden/cases/teacher-content-paper-review-realdata-200.json",
+      "what": "+ \"unordered\": [\"versions\"] + F-3 provenance paragraph in description",
+      "data_integrity": "expect.body BYTE-IDENTICAL to pre-edit capture (machine-verified: normalized deep-equal vs git HEAD blob); method/path/request untouched; expect.body.versions remains the 6-element captured array verbatim"
+    },
+    {
+      "file": "docs/GOLDEN_MASTER.md",
+      "what": "s1: schema example + usage rule for unordered (ONLY for frozen readers with unspecified order); s3: ordering exception documented — multiset re-pin instead of weaken/exclude when the frozen reader leaves order unspecified"
+    }
+  ],
+  "blasts_radius_guards": [
+    "unordered is key-name scoped PER CASE: no other case's comparator semantics changed (no other case file touched at all)",
+    "annotation without array value = no-op (unordered.includes(k) && Array.isArray(nv) guard)",
+    "the 113-case suite remains valid; zero case data edits anywhere"
+  ],
+  "gates": {
+    "golden_selftest": "OK (9 checks total: 4 legacy + 5 new multiset)",
+    "typecheck": "root bun run typecheck x4 workspaces — re-stamped at PR time",
+    "unit_tests": "bun test apps/api packages — re-stamped at PR time",
+    "replay": "NOT RUN — env-blocked (CI-side Neon runner pending, fleet-wide posture); the re-pinned case is replay-ready for the runner that exists"
+  },
+  "wave2_gate_effect": "F-3 leg of the Wave-2 exit gate CLOSED by this task; gate remains CONDITIONAL on F-1 (Instant micros rendering, w2-f1/r3c in flight) + F-2 (citation reader page-text assembly) fixes"
+}

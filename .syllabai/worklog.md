@@ -1211,3 +1211,20 @@ Work Log:
 
 Stage Summary:
 - Sweep-4 merged two PRs (#34, #35), audited the third (#36) post-merge under a disclosed operator delegation, and filed E-2 with a fix sketch instead of re-litigating the merge. Wave-1 fully closed incl. the live-flow escalation (T-MIG-035 DONE). Wave-3 train: 030 DONE (conditions), 031 claimed, 032..034 seeds open. Standing register: E-2 (r7a, blocks 1 replay case), F-1/F-2 content fixes (sketches in receipts/T-MIG-022/), F-3 re-pin -> THIS lane now executing as T-MIG-036, H-2 apply-reset divergence (r7a), CI-side Neon replay runner (operator), T-MIG-002 baseline-SQL repair, PAT rotation, flaky unit test watch (one occurrence, identity uncaptured).
+
+---
+Task ID: T-MIG-036 (W2-F3 re-pin — golden multiset comparator + versions[] case re-pin)
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Operator drain-cycle queue item "W2-F3: re-pin versions[] ordering case with multiset semantics" (trace 1a10b366256d41c1) — claimed as T-MIG-036 (next free id, zero-collision scan at main 0cd360b), executed in the same pass.
+
+Work Log:
+- FROZEN LAW re-verified raw: QuestionVersionRepository.java:51 findByPaperId is a plain derived query — NO OrderBy/ORDER BY — so captured row order is heap-order, not law; SWEEP-2 F-3 ruling (verdict 5990536177) stands, port faithful on this surface.
+- ENGINE: golden/runner.ts grows `unordered` (per-case key-name annotation, tolerate convention) with a multiset comparator — order ignored, duplicates PRESERVED, tolerate composes, nesting-safe; replayAgainst wired; CLI/replay surface otherwise untouched.
+- SELFTEST: +5 checks (reorder-with-tolerate pass; duplicates-must-fail set-vs-multiset guard; order-still-matters-without-annotation; nested-object reorder pass; real-content-diff-still-fails). selftest OK (9 checks).
+- CASE RE-PIN: teacher-content-paper-review-realdata-200.json + "unordered": ["versions"] + provenance in description; expect.body machine-verified BYTE-IDENTICAL to the pre-edit capture; zero other case files touched (no other case's comparator semantics changed).
+- DOCTRINE: docs/GOLDEN_MASTER.md s1 schema + usage rule, s3 ordering exception (frozen-reader-unspecified order is not law; re-pin, never weaken/exclude).
+- Receipt: .syllabai/receipts/T-MIG-036/run-001-repin.json (incl. blast-radius guards + Wave-2 gate effect: F-3 leg CLOSED; gate stays CONDITIONAL on F-1/F-2).
+- AUTHOR==R0 disclosure: per the recusal rule this PR needs INDEPENDENT review by a lane other than R0; merge-intake after an independent verdict (or operator direction, per the delegation pattern the operator has used for #31/#32/#36).
+
+Stage Summary:
+- T-MIG-036 IN_REVIEW: the F-3 leg of the Wave-2 exit gate is executed pending review; W2 exit gate now CONDITIONAL on F-1 (w2-f1/r3c in flight) + F-2 (unclaimed) only. Engine law: order pins relax ONLY via a recorded ruling + a per-case annotation, never by editing captured data.

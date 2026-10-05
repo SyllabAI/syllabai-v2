@@ -17,12 +17,19 @@ accept/reject sets — verified by recorded evidence, not by hope.
   "path": "/api/auth/login",
   "request": { "body": { "email": "user_1 masked@example.invalid", "password": "wrongpass" } },
   "expect": { "status": 401, "body": { "status": 401, "error": "…" } },
-  "tolerate": ["timestamp", "requestId"]
+  "tolerate": ["timestamp", "requestId"],
+  "unordered": ["versions"]
 }
 ```
 
 Runner: `bun golden/runner.ts --selftest` (engine sanity, CI lane) |
 `--target <url>` (live replay gate).
+
+`unordered` (T-MIG-036, F-3 re-pin) is optional and key-name scoped per case:
+arrays under those keys compare as MULTISETS (element order ignored,
+duplicates preserved). Use it ONLY when the frozen source's read leaves row
+order unspecified (no `OrderBy`/`ORDER BY`) — heap order is not law. The
+captured data is never edited; only the comparator's sensitivity changes.
 
 ## 2. Capture procedure (R6 / golden-master role)
 
@@ -47,6 +54,10 @@ Runner: `bun golden/runner.ts --selftest` (engine sanity, CI lane) |
   plumbing resolving to the same grounding chunks, zod format contracts.
 - Wall-clock timestamps, generated ids, secret material — use `tolerate`.
 - Anything behind random ordering — pin ordering in the capture, or exclude.
+  EXCEPTION (T-MIG-036, F-3 ruling): when the FROZEN reader itself leaves order
+  unspecified (derived query with no `OrderBy`), order is not part of the law —
+  pin the captured array and compare it multiset-wise via the case's `unordered`
+  annotation instead of weakening or excluding the case.
 
 ## 4. Gate semantics per wave
 
