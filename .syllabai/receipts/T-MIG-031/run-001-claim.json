@@ -1,0 +1,51 @@
+{
+  "task": "T-MIG-031",
+  "run": 1,
+  "kind": "CLAIM",
+  "lane": "R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "claimed_at": "2026-10-05T08:20:00Z",
+  "branch": "t-mig-031/r3a",
+  "branch_base": "ffc2876 (origin/main; R0-SWEEP-2 housekeeping T-MIG-022 -> DONE)",
+  "protocol": "self-filed per T-MIG-013/020/021/030 precedent; R0 ratification of task id + the 031 mapping (r7a's 030..034 split proposal) requested in the PR; fence-boundary disclosure vs T-MIG-030's assessment globs included",
+  "collision_scan": {
+    "scanned_at": "2026-10-05T08:19:33Z (immediately before branch cut)",
+    "main_task_dir": "zero T-MIG-031 yamls (git ls-tree origin/main .syllabai/tasks/)",
+    "remote_branches": "zero t-mig-031* heads (git ls-remote --heads origin, re-verified)",
+    "open_prs": "sole open PR = #31 (r7a T-MIG-030 tranche-1; fence services|routes|test /assessment/**) — zero file overlap with this filing's questions|exam-papers dirs; PR-head ground truth via refs/pull/*/head merge-base scan (unauthenticated API rate-limited; git-protocol evidence recorded in worklog)",
+    "result": "0 collisions / 0 overlaps"
+  },
+  "surface": {
+    "frozen_sources": [
+      "ExamPaperController.java (:24 base /api/v1/exam-papers; :42 list optional subjectId createdAtDesc; :50 detail 404 shared NotFoundException; specPointRefs reuse = T-C28 shared dialect; honest-absent empty specPoints)",
+      "QuestionController.java (:24 base /api/v1/questions; :39 list topicNodeId|rootId; :60 families; :79 topics taxonomy; :84 get 404; :97 mark-scheme 200/204)",
+      "ServableQuestionService.java (424 lines: one-owner servability boundary; V20 paper-level gate; batched current-versions; specPointRefs PRIMARY-first code-ordered; taxonomy PART_OF grouping deterministically-lowest parent, browsability guards, deduped census)",
+      "ServableQuestionSpec.java (spec pattern: active && (MCQ || STRUCTURED-with-VALIDATED-current))",
+      "MarkSchemeRevealService.java (policy VALIDATED_ONLY|INCLUDE_SUGGESTED via syllabai.assessment.markscheme-reveal-policy, fail-fast boot; REJECTED/FLAGGED never reveal; 204 withhold; part-scoped + general point grouping by ordering)",
+      "QuestionFamilyAssembler.java (SME_REF convention; source-then-qNum SME page order; 23 pinned interleaved family orders VERBATIM; non-corpus rows single-member families after the corpus)",
+      "SecurityConfig.java (:91 anyRequest().authenticated() — no role rules for either base path)"
+    ],
+    "golden_cases": [
+      "w3-exam-papers-list-unauthed-401",
+      "w3-exam-papers-student-403-or-state",
+      "w3-exam-paper-unknown-uuid-unauthed-401",
+      "w3-questions-list-unauthed-401",
+      "w3-questions-families-student-200",
+      "w3-questions-families-unauthed-401",
+      "w3-questions-topics-student-200",
+      "w3-questions-topics-unauthed-401",
+      "w3-question-markscheme-unauthed-401",
+      "w3-question-unknown-authed-404",
+      "w3-question-unknown-uuid-unauthed-401"
+    ],
+    "contracts": "T-MIG-018 (PR #26, merged) pre-satisfies the contracts-first gate: studentQuestionView / questionFamilyView / questionTopicTaxonomyView / markSchemeRevealView / examPaperView / paperQuestionView / examPaperDetailResponse / list-params / id-path schemas all present — import, never edit"
+  },
+  "tranche_plan": {
+    "tranche_1": "contract-independent services/questions/** (servable read model + family assembler + mark-scheme reveal) + services/exam-papers/** (paper views); raw SQL per users.ts/T-MIG-020/021 precedent over the 11 tables listed in the yaml; fakeSql rowsFor stubbed-adapter tests; tagged-template bind-slot discipline; subtree-CTE reuse-vs-port decision recorded",
+    "tranche_2": "route factories with zod wiring (merged T-MIG-018 schemas) + index.ts mounts as a flagged separate OUT-OF-FENCE commit (T-MIG-010/020/021 ratified precedent); golden replay of the 11 cases gates on the replay env (CI-side Neon runner) — env-blocked follow-up posture per T-MIG-020/021, no case weakened"
+  },
+  "gates": {
+    "docs_only_claim": "typecheck/test/replay not applicable to a yaml+receipt+worklog commit; tranche-1 gates follow in run-002"
+  },
+  "credential_disclosure": "no GITHUB_PAT in this session's env at claim time (session reset between operator contacts); branch prepared push-ready — push follows the w0a addendum / T-MIG-020 unblock pattern on provisioning; earliest-claim evidence = commit author+committer timestamps, no force-push",
+  "upstream_writes": "zero (no Neon, no frozen core, no golden edits)"
+}

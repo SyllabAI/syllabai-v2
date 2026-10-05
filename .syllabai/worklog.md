@@ -1088,3 +1088,20 @@ Work Log:
 
 Stage Summary:
 - Board after sweep-2: T-MIG-007/018/022 DONE this session; Wave-1 fully closed (T-MIG-011 via operator-reassigned PR #32/#33); open PRs: none known at commit time; t-mig-030/r7a branched (Wave-3 ports starting). Escalations standing: single-R0 authority reaffirmation (two breach-pattern merges: #25, #26 — operator merge-authority trace now disclosed on #33, pattern reframed as likely operator action; bookkeeping stands either way); PAT rotation (chat-transit); flaky unit test on main (one occurrence, identity uncaptured); CI-side Neon integration runner; T-MIG-002 baseline-SQL repair.
+
+---
+Task ID: T-MIG-031
+Agent: R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Claim the Wave-3 route-layer slice "exam-papers + questions READ port" (self-filed per the 030..034 split proposal) — 11 golden cases over the ServableQuestionService one-owner boundary
+
+Work Log:
+- Pre-claim board sweep at main ffc2876: T-MIG-000..022 all DONE (Wave-1 closed, Wave-2 merged, exit gate conditional on T-MIG-020 F-1/F-2 fixes + F-3 re-pin); sole open PR = #31 (r7a T-MIG-030 tranche-1, assessment services). PR-head ground truth via fetched refs/pull/*/head merge-base scan (unauthenticated GitHub API rate-limited from this IP; git protocol used throughout).
+- Collision scan re-verified immediately before branch cut (08:19:33Z): zero T-MIG-031 yamls on main, zero t-mig-031* remote heads, zero file overlap with T-MIG-030's pushed fence (services|routes|test /assessment/**).
+- Surface grounded against frozen syllabai-core @ 6cad6ef (raw reads only): ExamPaperController (:24/:42/:50), QuestionController (:24/:39/:60/:79/:84/:97), ServableQuestionService (424 lines — one-owner servability boundary + V20 paper-level gate + batched current-versions + specPointRefs ordering + taxonomy PART_OF grouping/deduped census), ServableQuestionSpec, MarkSchemeRevealService (policy env + fail-fast boot + REJECTED/FLAGGED never reveal + 204 withhold), QuestionFamilyAssembler (23 pinned interleaved family orders, verbatim), SecurityConfig :91 anyRequest().authenticated() (no role rules on either base path — matches captured 401/student-200 pairs).
+- Contracts gate pre-satisfied: T-MIG-018 (PR #26 merged) already ships every schema the surface needs (studentQuestionView / questionFamilyView / questionTopicTaxonomyView / markSchemeRevealView / examPaperView / paperQuestionView / examPaperDetailResponse / params / paths) — import, never edit.
+- Fence design: this lane's TS files live in DISJOINT dirs (services|routes|test /questions|exam-papers /**) against r7a's services/assessment/** glob; boundary disclosure for R0 + r7a written into the yaml and the claim receipt; shared laws imported, never edited.
+- Claim artifacts: .syllabai/tasks/T-MIG-031-exam-papers-questions-read.yaml (CLAIMED, full execution_record with line cites + tranche plan) + .syllabai/receipts/T-MIG-031/run-001-claim.json + this entry, committed as the branch-start commit per §2 rule 1.
+- CREDENTIAL DISCLOSURE: session environment was reset between operator contacts — no GITHUB_PAT in env at claim time. Branch is prepared push-ready; push executes on the w0a T-MIG-000 addendum / T-MIG-020 unblock pattern the moment the operator provisions a token. Earliest-claim evidence = this commit's author+committer timestamps; no force-push, no history rewrite.
+
+Stage Summary:
+- T-MIG-031 CLAIMED (Wave-3 route layer, exam-papers + questions READ port, 11 golden cases). Deps T-MIG-018/007/014 all merged — slice immediately portable. Tranche-1 (services/questions + services/exam-papers, stubbed-sql tests) next; tranche-2 (zod-wired route factories + flagged OUT-OF-FENCE mounts) follows. R0 ratification of the task id + 031 mapping requested; fence-boundary disclosure against T-MIG-030's assessment globs included. Golden replay posture: env-blocked follow-up per T-MIG-020/021 precedent, no case weakened.
