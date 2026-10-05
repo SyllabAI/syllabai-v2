@@ -24,7 +24,11 @@ function authFor(roles: string[] | null) {
 /** The route harness: auth injector + the router; the router owns its error map. */
 function boot(opts: {
   roles: string[] | null;
-  module?: Partial<TeacherMarkingModule>;
+  module?: {
+    queue?: Partial<TeacherMarkingModule["queue"]>;
+    marking?: Partial<TeacherMarkingModule["marking"]>;
+    teacherSmartMark?: Partial<TeacherMarkingModule["teacherSmartMark"]>;
+  };
   latestKappa?: (paperId: string | null) => Promise<KappaEvaluationView | null>;
 }) {
   const calls: Record<string, unknown[]> = {};
@@ -309,6 +313,154 @@ test("paper-scoped latest passes the uuid through; malformed uuid → 400", asyn
   expect(seen).toEqual([PAPER_ID]);
   const bad = await app.request("/kappa/latest?paperId=nope");
   expect(bad.status).toBe(400);
+});
+
+// ── R0 intake pins (review R-1/R-2, merge intake d975ed9+) ──────────────────
+// R-1: the two-envelope body law — unreadable/binding → malformed_body
+// (verbatim :175-179), constraint → validation_failed "field: message"
+// (:158-165); a present-but-unreadable kappa body NEVER silently writes.
+
+test("unreadable JSON body → 400 malformed_body verbatim (HttpMessageNotReadable parity)", async () => {
+  const { app } = boot({ roles: TEACHER });
+  for (const path of ["/smart-mark-batch", `/answers/${ANSWER_ID}/human-mark`]) {
+    const res = await app.request(path, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: '{"answerIds": ',
+    });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("malformed_body");
+    expect(body.message).toBe("request body is not readable (check field types and enum values)");
+  }
+});
+
+test("constraint failures render validation_failed with the jakarta default messages", async () => {
+  const { app } = boot({ roles: TEACHER });
+  const over = await app.request(`/answers/${ANSWER_ID}/human-mark`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ marksAwarded: 100 }),
+  });
+  expect(over.status).toBe(400);
+  const overBody = await over.json();
+  expect(overBody.error).toBe("validation_failed");
+  expect(overBody.message).toBe("marksAwarded: must be less than or equal to 99");
+
+  const under = await app.request(`/answers/${ANSWER_ID}/human-mark`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ marksAwarded: -1 }),
+  });
+  expect(under.status).toBe(400);
+  const underBody = await under.json();
+  expect(underBody.error).toBe("validation_failed");
+  expect(underBody.message).toBe("marksAwarded: must be greater than or equal to 0");
+
+  const batchEmpty = await app.request("/smart-mark-batch", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ answerIds: [] }),
+  });
+  expect(batchEmpty.status).toBe(400);
+  const emptyBody = await batchEmpty.json();
+  expect(emptyBody.error).toBe("validation_failed");
+  expect(emptyBody.message).toBe("answerIds: must not be empty");
+
+  const batchOver = await app.request("/smart-mark-batch", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ answerIds: Array.from({ length: 51 }, (_, i) => `a0000000-0000-4000-8000-${String(i).padStart(12, "0")}`) }),
+  });
+  expect(batchOver.status).toBe(400);
+  const overBatchBody = await batchOver.json();
+  expect(overBatchBody.error).toBe("validation_failed");
+  expect(overBatchBody.message).toBe("answerIds: size must be between 0 and 50");
+});
+
+test("binding failures render malformed_body, not validation_failed (bind beats constraints)", async () => {
+  const { app } = boot({ roles: TEACHER });
+  const badUuid = await app.request("/smart-mark-batch", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ answerIds: ["nope"] }),
+  });
+  expect(badUuid.status).toBe(400);
+  expect((await badUuid.json()).error).toBe("malformed_body");
+
+  const humanMark = await app.request(`/answers/${ANSWER_ID}/human-mark`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ marksAwarded: "high" }),
+  });
+  expect(humanMark.status).toBe(400);
+  expect((await humanMark.json()).error).toBe("malformed_body");
+});
+
+test("kappa/evaluate with an unreadable body is a 400 and NO evaluation write (R-1 core)", async () => {
+  const { app, calls } = boot({ roles: TEACHER });
+  const res = await app.request("/kappa/evaluate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: '{"paperId": ',
+  });
+  expect(res.status).toBe(400);
+  const body = await res.json();
+  expect(body.error).toBe("malformed_body");
+  expect(body.message).toBe("request body is not readable (check field types and enum values)");
+  expect(calls.evaluateAgreement).toBeUndefined(); // the write never fires
+});
+
+test("kappa/evaluate binding failures (bad uuid / wrong type) → malformed_body", async () => {
+  const { app, calls } = boot({ roles: TEACHER });
+  const badUuid = await app.request("/kappa/evaluate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ paperId: "nope" }),
+  });
+  expect(badUuid.status).toBe(400);
+  expect((await badUuid.json()).error).toBe("malformed_body");
+  const wrongType = await app.request("/kappa/evaluate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ paperId: 42 }),
+  });
+  expect(wrongType.status).toBe(400);
+  expect((await wrongType.json()).error).toBe("malformed_body");
+  expect(calls.evaluateAgreement).toBeUndefined();
+});
+
+test("kappa/evaluate: JSON null body and explicit null paperId both scope ALL (binds null)", async () => {
+  for (const body of ["null", JSON.stringify({ paperId: null })]) {
+    const { app, calls } = boot({ roles: TEACHER });
+    const res = await app.request("/kappa/evaluate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body,
+    });
+    expect(res.status).toBe(201);
+    expect(calls.evaluateAgreement?.[0]).toEqual([null, "60000000-0000-4000-8000-000000000001"]);
+  }
+});
+
+// R-2: the single-answer view calls the FOUR-ARG TeacherViews.answer overload
+// (:87-90) — examPaperId renders, but paperTitle stays NULL even with a paper.
+
+test("single answer view renders examPaperId but paperTitle null (4-arg overload parity)", async () => {
+  const richView = {
+    answerId: ANSWER_ID, attemptId: "c0000000-0000-4000-8000-000000000001",
+    learnerId: "60000000-0000-4000-8000-000000000001", learnerDisplayName: "L",
+    questionId: "d0000000-0000-4000-8000-000000000001", questionExternalRef: "Q1",
+    partLabel: "1a", partPrompt: "p", partMarks: 2, answerText: "ans",
+    markingState: "PENDING", marksAwarded: null, latestSmartMark: null,
+    latestHumanMark: null, examPaperId: PAPER_ID, paperTitle: null,
+  };
+  const { app } = boot({ roles: TEACHER, module: { queue: { answerById: async () => richView } } });
+  const res = await app.request(`/answers/${ANSWER_ID}`);
+  expect(res.status).toBe(200);
+  const body = await res.json();
+  expect(body.examPaperId).toBe(PAPER_ID);
+  expect(body.paperTitle).toBeNull();
 });
 
 // silence unused import guard for the boot helper's bootErrorBody assertions

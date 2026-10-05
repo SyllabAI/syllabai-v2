@@ -1229,6 +1229,15 @@ export class TeacherMarkingQueueService {
    * the route maps it to NotFound("answer", id) (404 is for real lookups).
    * findLatest parity: order created_at desc with the id-desc tie-break
    * (disclosed determinism, as above).
+   *
+   * R0 intake fix R-2 (fidelity vs TeacherViews.java :87-90): the controller
+   * calls the FOUR-ARG TeacherViews.answer(answer, name, smart, human) here —
+   * that overload delegates with paperTitle = null (:88 `answer(a,
+   * learnerDisplayName, smart, human, null)`). examPaperId still renders
+   * (it comes from the question row regardless), but the TITLE stays null on
+   * this surface even when a paper row exists — Java does no paper lookup
+   * here. The queued 5-arg list surfaces (:110-111/:171-172) keep their
+   * batched titles.
    */
   async answerById(id: string): Promise<AnswerMarkingView | null> {
     const rows = (await this.sql`
@@ -1262,20 +1271,14 @@ export class TeacherMarkingQueueService {
       select id, display_name from users where id = ${a.learner_id}
     `) as unknown as UserNameRow[];
 
-    let paper: PaperRow | null = null;
-    if (a.exam_paper_id !== null) {
-      const paperRows = (await this.sql`
-        select id, title, session_label, paper_code from exam_papers where id = ${a.exam_paper_id}
-      `) as unknown as PaperRow[];
-      paper = paperRows[0] ?? null;
-    }
-
+    // the 4-arg overload (:87-90): NO paper lookup, title renders null —
+    // examPaperId (from the question row) still renders via the view builder
     return answerMarkingView(
       a,
       userRows[0]?.display_name ?? null,
       smartRuns[0] ?? null,
       humanRuns[0] ?? null,
-      paper?.title ?? null,
+      null,
     );
   }
 

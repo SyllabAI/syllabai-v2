@@ -33,9 +33,12 @@
  * message quirk verbatim).
  *
  * Error envelopes (GlobalExceptionHandler parity): NotFound/BadRequest →
- * 404/400 with the detail message (shared exception parity); request-body
- * validation via @syllabai/contracts teacher-marking schemas (the #58
- * contracts: G-5 constants 50/200/5/100/50, HumanMarkRequest
+ * 404/400 with the detail message (shared exception parity); request bodies
+ * follow the TWO-ENVELOPE law (R0 intake fix R-1, the selfmark/assessment
+ * convention): unreadable/binding failure → 400 malformed_body (verbatim
+ * :175-179), constraint failure → 400 validation_failed "field: message"
+ * (:158-165 jakarta defaults) — schemas from @syllabai/contracts teacher-marking
+ * (the #58 contracts: G-5 constants 50/200/5/100/50, HumanMarkRequest
  * marksAwarded 0..99 + perPointDecisions ≤50 + comments ≤4000,
  * SmartMarkBatchRequest 1..50 answer ids deduplicated order-preserving).
  *
@@ -44,6 +47,7 @@
  * 032 router posture; the κ gate and evidence contract are untouched.
  */
 import { Hono, type Context } from "hono";
+import type { ZodError } from "zod";
 import {
   buildTeacherMarkingModule,
   parseMarkingState,
@@ -90,6 +94,91 @@ function intParam(c: Context, name: string): number | null {
   const n = Number(raw);
   if (!Number.isInteger(n)) throw new BadRequestError("malformed request");
   return n;
+}
+
+// ── two-envelope body law (R0 intake fix R-1) ───────────────────────────────
+/*
+ * GlobalExceptionHandler parity, the ratified selfmark/assessment convention:
+ * Jackson binds the WHOLE document BEFORE @Valid runs, so a binding failure
+ * anywhere beats every constraint violation, and the two classes answer with
+ * DIFFERENT 400 envelopes (:158-179):
+ *   - unreadable body / binding-type failure → 400 malformed_body
+ *     "request body is not readable (check field types and enum values)"
+ *     (HttpMessageNotReadableException :175-179 — verbatim)
+ *   - well-formed body failing a constraint → 400 validation_failed
+ *     "field: message" (jakarta default messages, :158-165)
+ *
+ * Fidelity note (disclosed): a JSON literal `null` body on the two
+ * required-body surfaces binds null in Java and NPEs into a 500; the port
+ * answers the honest @NotNull 400 instead — the same "400, not 500" class
+ * the frozen core itself adopted (session-56 finding).
+ */
+const malformedBody = () =>
+  apiError(400, "malformed_body", "request body is not readable (check field types and enum values)");
+
+async function readJsonBody(c: Context): Promise<{ ok: true; value: unknown } | { ok: false }> {
+  try {
+    return { ok: true, value: await c.req.json() };
+  } catch {
+    return { ok: false }; // syntax error / empty body → HttpMessageNotReadable
+  }
+}
+
+type BodyError = { kind: "malformed" } | { kind: "validation"; message: string };
+
+function classifyBodyError(error: ZodError, body: unknown): BodyError {
+  const isBinding = (i: ZodError["issues"][number]): boolean => {
+    if (i.code === "invalid_string") return true; // uuid parse (Jackson InvalidFormat)
+    if (i.code === "invalid_type") {
+      const received = (i as { received?: string }).received;
+      // null/undefined BIND fine (nulls handed to the record) — their
+      // rejection is @NotNull/@NotEmpty, a constraint
+      return received !== "undefined" && received !== "null";
+    }
+    return false;
+  };
+  if (error.issues.some(isBinding)) return { kind: "malformed" };
+  const first = error.issues[0];
+  if (!first) return { kind: "malformed" };
+  const field = first.path.reduce<string>(
+    (acc, seg) => (typeof seg === "number" ? `${acc}[${seg}]` : acc ? `${acc}.${seg}` : String(seg)),
+    "",
+  );
+  if (first.code === "invalid_type") {
+    return { kind: "validation", message: `${field}: must not be null` }; // @NotNull (both DTOs)
+  }
+  if (first.code === "too_small") {
+    if (field === "answerIds") {
+      return { kind: "validation", message: "answerIds: must not be empty" }; // @NotEmpty
+    }
+    const minimum = (first as { minimum?: number }).minimum;
+    return { kind: "validation", message: `${field}: must be greater than or equal to ${minimum ?? 0}` };
+  }
+  if (first.code === "too_big") {
+    if (field === "comments") {
+      return { kind: "validation", message: "comments: size must be between 0 and 4000" }; // @Size(max=4000)
+    }
+    if (field === "answerIds" || field === "perPointDecisions") {
+      return { kind: "validation", message: `${field}: size must be between 0 and 50` }; // @Size(max=50)
+    }
+    const maximum = (first as { maximum?: number }).maximum;
+    return { kind: "validation", message: `${field}: must be less than or equal to ${maximum ?? 99}` };
+  }
+  // the marksAwarded range refine (contracts #58): split to the jakarta
+  // @Min/@Max default messages by reading the offending value
+  if (first.code === "custom" && field === "marksAwarded") {
+    const v = (body as { marksAwarded?: unknown })?.marksAwarded;
+    return typeof v === "number" && v < 0
+      ? { kind: "validation", message: "marksAwarded: must be greater than or equal to 0" }
+      : { kind: "validation", message: "marksAwarded: must be less than or equal to 99" };
+  }
+  return { kind: "validation", message: `${field}: request invalid` };
+}
+
+function bodyErrorResponse(c: Context, error: ZodError, body: unknown): Response {
+  const verdict = classifyBodyError(error, body);
+  if (verdict.kind === "malformed") return c.json(malformedBody(), 400);
+  return c.json(apiError(400, "validation_failed", verdict.message), 400);
 }
 
 /** KappaEvaluationView record (:318-327) — built from the service's evaluation. */
@@ -162,18 +251,12 @@ export function createTeacherMarkingRouter(
 
   // POST /smart-mark-batch (:231-235) — 1..50 ids, deduplicated
   // order-preserving; idempotent; each item its own transaction (partial
-  // success preserved)
+  // success preserved). Body errors follow the two-envelope law (R-1).
   r.post("/smart-mark-batch", async (c) => {
-    let body: unknown;
-    try {
-      body = await c.req.json();
-    } catch {
-      body = undefined; // HttpMessageNotReadable parity → validation 400 below
-    }
-    const parsed = smartMarkBatchRequestSchema.safeParse(body);
-    if (!parsed.success) {
-      throw new BadRequestError("validation failed");
-    }
+    const raw = await readJsonBody(c);
+    if (!raw.ok) return c.json(malformedBody(), 400);
+    const parsed = smartMarkBatchRequestSchema.safeParse(raw.value);
+    if (!parsed.success) return bodyErrorResponse(c, parsed.error, raw.value);
     return c.json(await module.queue.smartMarkBatch(parsed.data.answerIds));
   });
 
@@ -195,20 +278,14 @@ export function createTeacherMarkingRouter(
   });
 
   // POST /answers/{id}/human-mark (:261-270) — 201, @CurrentUserId from the
-  // JWT filter identity
+  // JWT identity. Body errors follow the two-envelope law (R-1).
   r.post("/answers/:id/human-mark", async (c) => {
     const auth = getAuth(c)!; // shell invariant
     const id = parseUuid(c.req.param("id"));
-    let body: unknown;
-    try {
-      body = await c.req.json();
-    } catch {
-      body = undefined;
-    }
-    const parsed = humanMarkRequestSchema.safeParse(body);
-    if (!parsed.success) {
-      throw new BadRequestError("validation failed");
-    }
+    const raw = await readJsonBody(c);
+    if (!raw.ok) return c.json(malformedBody(), 400);
+    const parsed = humanMarkRequestSchema.safeParse(raw.value);
+    if (!parsed.success) return bodyErrorResponse(c, parsed.error, raw.value);
     const view = await module.marking.recordHumanMark(
       id,
       auth.userId,
@@ -220,26 +297,32 @@ export function createTeacherMarkingRouter(
   });
 
   // POST /kappa/evaluate (:273-280) — 201; @RequestBody(required=false): an
-  // absent body means scope ALL; null paperId in a present body means ALL too
+  // absent body means scope ALL; null paperId in a present body means ALL too.
+  // A PRESENT-but-unreadable body is HttpMessageNotReadable → 400, NEVER a
+  // silent scope-ALL write (R-1: the required=false flag excuses an ABSENT
+  // body only — Spring still parses a present body and 400s on failure).
   r.post("/kappa/evaluate", async (c) => {
     const auth = getAuth(c)!; // shell invariant
-    let body: unknown = undefined;
-    const raw = await c.req.text();
-    if (raw.trim() !== "") {
+    const rawText = await c.req.text();
+    if (rawText.trim() !== "") {
+      let raw: unknown;
       try {
-        body = JSON.parse(raw);
+        raw = JSON.parse(rawText);
       } catch {
-        body = undefined;
+        return c.json(malformedBody(), 400); // present body, unreadable — no write
       }
-    }
-    let paperId: string | null = null;
-    if (body !== undefined) {
-      const parsed = kappaScopeRequestSchema.safeParse(body);
-      if (!parsed.success) throw new BadRequestError("malformed request");
+      const parsed = kappaScopeRequestSchema.safeParse(raw);
+      if (!parsed.success) {
+        // KappaScopeRequest carries NO constraints — every schema failure is
+        // a binding failure (uuid/type) → malformed_body (R-1)
+        return c.json(malformedBody(), 400);
+      }
       // the WHOLE BODY is nullable in the contract (absent binds null → ALL)
-      paperId = (parsed.data && parsed.data.paperId) || null;
+      const paperId = (parsed.data && parsed.data.paperId) || null;
+      const evaluation = await module.marking.evaluateAgreement(paperId, auth.userId);
+      return c.json(evaluation satisfies KappaEvaluationView, 201);
     }
-    const evaluation = await module.marking.evaluateAgreement(paperId, auth.userId);
+    const evaluation = await module.marking.evaluateAgreement(null, auth.userId);
     return c.json(evaluation satisfies KappaEvaluationView, 201);
   });
 
