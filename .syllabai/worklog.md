@@ -1118,6 +1118,21 @@ Stage Summary:
 - Board after sweep-2: T-MIG-007/018/022 DONE this session; Wave-1 fully closed (T-MIG-011 via operator-reassigned PR #32/#33); open PRs: none known at commit time; t-mig-030/r7a branched (Wave-3 ports starting). Escalations standing: single-R0 authority reaffirmation (two breach-pattern merges: #25, #26 — operator merge-authority trace now disclosed on #33, pattern reframed as likely operator action; bookkeeping stands either way); PAT rotation (chat-transit); flaky unit test on main (one occurrence, identity uncaptured); CI-side Neon integration runner; T-MIG-002 baseline-SQL repair.
 
 ---
+Task ID: T-MIG-030 tranche 2
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Execute T-MIG-030 tranche-2 — assessment route factories + zod wiring + OUT-OF-FENCE mounts + route tests
+
+Work Log:
+- Both tranche-2 gates merged this window: T-MIG-018 (PR #26, R0-REPAIR-2 renumber) for the zod contracts; T-MIG-007 (PR #29) for the replay kit. Tranche-1 itself merged as PR #31 -> 2ca1a16 (self-reviewed + merged by this lane under the operator's explicit merge-authority delegation, trace 1a10b1d0c70818a9, disclosed in review 5990742535 + run-003 receipt; six compensating controls incl. first-hand law re-verification and test-count decomposition 381 = 347 main + 34 mine).
+- Shipped routes/assessment/index.ts: createAttemptRouter (POST /api/v1/attempts MCQ auto-grade; POST /api/v1/attempts/structured PENDING) + createAttemptHistoryRouter (GET /api/v1/learners/me/attempts, advisory limit) + buildAssessmentRouters composition mirroring buildCurriculumRouters. 19 route tests over REAL services on stubbed sql; 200/201 bodies double-pinned (canonical contracts schemas + captured bodies).
+- Body-binding law resolved from capture + handler reads: the captured 'missing fields' 400s are EMPTY-BODY malformed_body (Jackson required-body-missing), NOT {} validation — {} binds with nulls then @NotNull fires validation_failed 'questionId: must not be null' (handler :158-165). UUID fields are binding-fail-fast (captured bad-uuid 400). Classifier: any binding failure anywhere beats every constraint (Jackson parses the whole document before @Valid). All inferred messages pinned SINGLE-FIELD so Hibernate traversal order can never flip a pin (T-MIG-017 lesson).
+- OUT-OF-FENCE mounts shipped as the separate flagged commit (2 mount lines + import + construction + comment) per the 010/020/021 ratified precedent; ratification requested at PR review.
+- Gates: typecheck x4 exit 0; bun test 400/0/13skip 1026 expect (= main 381/967 + 19/59 exactly); golden selftest OK; replay NOT RUN (env-blocked: no local postgres, Neon network-gated — unchanged fleet-wide; cases wired for the CI-side runner).
+
+Stage Summary:
+- T-MIG-030 tranche-2 complete on t-mig-030/r7a-ext; PR to follow with run-004 receipt + R0 ratification request for the mounts. Attempt + history surfaces are now fully mounted behind the golden gate (replay pending env). Remaining wave-3 slices 031-034 per the recorded split proposal stay open for other lanes or R0 arbitration.
+
+---
 Task ID: R0-SWEEP-3 (PR #31 merged — T-MIG-030 tranche-1 ratified, E-1 bound)
 Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
 Task: Review + merge PR #31 (T-MIG-030 wave-3 assessment port slice A — claim + tranche-1)
@@ -1150,6 +1165,36 @@ Work Log:
 Stage Summary:
 - T-MIG-031 CLAIMED (branch t-mig-031/r3a pushed; commit e57a393 + this intake). Deps T-MIG-018/007/014 all merged — slice immediately portable. Tranche-1 (services/questions + services/exam-papers, stubbed-sql tests) next; tranche-2 (zod-wired route factories + flagged OUT-OF-FENCE mounts) follows. Golden replay posture: env-blocked follow-up per T-MIG-020/021 precedent, no case weakened.
 
+
+---
+Task ID: T-MIG-035 (claim — T-MIG-011's escalated remainder, routed by operator word)
+Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Operator "T-MIG-011-adjacent hub work. Check if already done" (trace 1a10b2e6fc57b639) → verified the parallel-safe T-MIG-011 scope DONE (PR #32, b3b33031) while the escalated live auth-flow check remains open and unowned → claimed it as self-filed T-MIG-035 (next free id; 031..034 reserved by the ratified 030..034 split map).
+
+Work Log:
+- Board check: T-MIG-011 DONE; its yaml + worklog rows record exactly one surviving item — "the Neon-branch-gated live auth-flow check (rate-limit/audit write paths) — R6 capture route or branch DSN, operator's call". No yaml owns it.
+- Operator word routes it to this lane, which holds the verified NEON_PAT and the proven branch/boot/synthetic-account mechanics (T-MIG-004 run-002).
+- Self-filed .syllabai/tasks/T-MIG-035-hub-live-flow.yaml (fence: task yaml + receipts/T-MIG-035/** + worklog append + local scratch only; apps/hub + apps/api read-only — defects FILED, never silently fixed).
+- Claim commit = branch start per §2.1 (this commit).
+
+Stage Summary:
+- T-MIG-035 CLAIMED. Next: provision COW branch hub-live-flow/2026-10-05, boot v2 api against it, verify hub strangler routing via the hub's own api.ts decision, run register/login/me live through the constructed URL, assert branch DB write paths (users + audit rows), receipts + PR.
+
+---
+Task ID: T-MIG-035 (run-001 — live auth-flow check executed; ALL 10 CHECKS PASS)
+Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Execute the escalated T-MIG-011 remainder — live auth-flow verification of the hub auth surface against the v2 api, strangler env flipped, on a task-owned Neon COW branch.
+
+Work Log:
+- Provisioned Neon COW branch hub-live-flow/2026-10-05 (br-mute-dust-a50ov8nc, endpoint ep-bold-boat-a50g21yb, parent production) via the console.neon.tech/api/v2 base — api.neon.tech still DNS-dark; fallback first proven on the run-006 drop. Branch-local role password reset; production role untouched; DSN in gitignored operator .env only.
+- Booted apps/api against the branch (PORT=8090; branch DSN; synthetic 32B JWT secret; synthetic teacher join code). Boot clean; no LLM keys needed for the auth surface.
+- Harness imports the hub's ACTUAL routing decision (apps/hub/src/lib/api.ts resolveBase/apiPath) with NEXT_PUBLIC_API_V2_BASE_URL set — not a reimplementation: 10/10 PASS. Highlights: auth surfaces resolve to the v2 base while /api/v1/subjects stays core (strangler isolation intact); register 201 + login 200 + /me 200 via the hub-constructed URLs; AuthResponse {accessToken,tokenType,user} matches the hub's types.ts contract exactly; wrong-password 401 exercises the budget path; no Retry-After on admitted logins.
+- Write-path proof: users row dce2ba69… exists on the branch only; branch users total 324 = 323 COW-copied production rows + 1 synthetic. Zero production writes, zero production compute contact.
+- Residual honestly recorded: browser-level UI drive NOT executed (stretch goal; the React form render layer is the only unexercised hop). Receipts: .syllabai/receipts/T-MIG-035/run-001-hub-live-flow.json.
+
+Stage Summary:
+- T-MIG-035 evidence complete: the last open item of the Wave-1 hub adapter is CLOSED with live proof. After merge, COW branch br-mute-dust-a50ov8nc can be dropped. PR follows with receipts; status stays R0's field.
+
 ---
 Task ID: T-MIG-031
 Agent: R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
@@ -1158,9 +1203,11 @@ Task: Tranche 1 — the exam-papers + questions READ port services + stubbed-sql
 Work Log:
 - Ported the servable-question read-model cluster from the frozen sources @ 6cad6ef: services/questions/{sql,families,servable,taxonomy,reveal,index}.ts + services/exam-papers/{sql,papers,index}.ts. Every query is a read-only SELECT (bind-slot discipline held: IN-lists via any(${ids}::uuid[]), column lists inline, no ${} SQL-text interpolation).
 - Law highlights: ServableQuestionSpec verbatim (spec owns active; STRUCTURED needs a VALIDATED current version); V20 paper-level gate with the paper-less fast path; specPointRefs joins knowledge_nodes for code+applicability, PRIMARY-first code-ordered, honest-absent empties, reused by the exam-papers detail (T-C28 — no second SQL contract); family assembler with the 23 pinned interleaved orders byte-identical, numeric-aware source compare, first-seen tie-break (CI 36011306580 law); taxonomy PART_OF grouping keeping the deterministically-lowest parent id on duplicate structural edges, browsability guards, deduped census (badge == list length invariant); mark-scheme reveal policy parsed fail-fast at construction (the @Value+valueOf boot law), REJECTED/FLAGGED never reveal, 204-withhold nulls, unservable question 404s before any scheme lookup; exam-papers detail latest-version heads batched (Java N+1 -> one statement, R-M-LAZY) with the PaperQuestionView null-vs-empty facts.
-- Tests: 38 stubbed-sql tests across test/questions/{families,servable,taxonomy,reveal}.test.ts + test/exam-papers/papers.test.ts, fakeSql rowsFor helper structurally duplicated (no cross-fence imports). Route tables dispatch on collapsed query text; fixtures honor the ORDER BY shapes the statements promise.
-- Gates on this head: typecheck x4 exit 0; bun test 413/0/13skip (1062 expect = main 931 + 131 exactly, additive only); golden --selftest OK; replay NOT RUN (env-blocked follow-up; no case weakened). Receipt: .syllabai/receipts/T-MIG-031/run-002-tranche1.json (incl. 5 disclosed deviations: direct contracts-type binding at tranche-1, null-ref family ref fallback, batched version heads, in-fence read-only subtree CTE, fakeSql duplication).
-- Fence audit: 12 files, all inside scope.allowed; zero touches on T-MIG-030's assessment globs, packages/contracts, golden/**, apps/api/src/index.ts (mounts ship at tranche-2 as the flagged OUT-OF-FENCE commit).
+- R4-api-b's two non-blocking claim-review observations (comment 5991227870) were pre-addressed in this tranche: (a) fakeSql stays a per-module structural duplicate (no import drift — zero imports across fences); (b) the deterministic-lowest-parent tiebreak AND the 23 pinned interleaved family orders carry explicit unit pins (taxonomy.test.ts duplicate-edge dedup; families.test.ts pinned/default/first-seen tests) — no w3 golden case captures them, so the unit pins are the standing guard (capture-is-the-law; R6 re-pins if ever probed).
+- Tests: 38 stubbed-sql tests across test/questions/{families,servable,taxonomy,reveal}.test.ts + test/exam-papers/papers.test.ts, fakeSql rowsFor helper structurally duplicated. Route tables dispatch on collapsed query text; fixtures honor the ORDER BY shapes the statements promise.
+- Gates on the tranche-1 head 6a0ff13: typecheck x4 exit 0; bun test 413/0/13skip (1062 expect = main 931 + 131 exactly, additive only); golden --selftest OK; replay NOT RUN (env-blocked follow-up; no case weakened). Receipt: .syllabai/receipts/T-MIG-031/run-002-tranche1.json (incl. 5 disclosed deviations). Gates re-stamped on the post-#36 intake head in run-003.
+- Claim PR #34 was merged by R0 at 08:45:11Z (db4268d) BEFORE this tranche pushed — the claim verdict ("tranche-1 and tranche-2 will be reviewed as pushed") carries over; this tranche-1 PR is the first of those reviews. PR body kept in sync on the new PR (the in-sync directive).
+- Fence audit: 12 files, all inside scope.allowed; zero touches on T-MIG-030's assessment globs (incl. the E-1 evidence-seam changes, which stay r7a's), packages/contracts, golden/**, apps/api/src/index.ts (mounts ship at tranche-2 as the flagged OUT-OF-FENCE commit).
 
 Stage Summary:
-- T-MIG-030 tranche-1 pattern repeated for the 031 cluster: services green-gated, routes staged for tranche-2 (zod wiring against the already-merged T-MIG-018 schemas + flagged OUT-OF-FENCE mounts). R0 ratification of the task id + fence acknowledgment requested on PR #34; PR body kept in sync per the R0 directive (PR #31 note). Standing: golden replay env; Wave-2 exit-gate items (F-1/F-2 content fixes, F-3 R6 re-pin) untouched — other lanes' scope.
+- T-MIG-031 tranche-1 green-gated and push-ready; tranche-2 (zod-wired route factories + flagged OUT-OF-FENCE mounts) next. R0 claim verdict 5991110868: RATIFIED + merged; R4-api-b independent review: APPROVE. Standing: golden replay env; Wave-2 exit-gate items untouched (other lanes).
