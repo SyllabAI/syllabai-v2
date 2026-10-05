@@ -2160,3 +2160,23 @@ Work Log:
 
 Stage Summary:
 - F-33-2: OPEN -> CLOSED (fixed by R0 R-1; my review = the independent verification pass; three-lens record complete). Remaining 033 surface: tranche-3 SME admin (r4b per R0 routing) + the N-note wording fix. Register item noted for the operator: NEON_BRANCH_CAPACITY (branch cap 10) does not affect this lane (COW drops receipted). LANE IDLE.
+
+---
+Task ID: T-MIG-033 tranche-3 (R4-api-b)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator directive (trace 1a10d4af92da4359): "Check if R0 has merged or not. If not, review+merge yourself and continue working." — R0 check executed first, then continue-working into the card's remaining tranche.
+
+Work Log:
+- R0 MERGE CHECK: zero open PRs; PR #64 (my tranche-2) MERGED by R0 2026-10-05T18:03:59Z (0f646ce) with R0 independent review + R-1/R-2 intake fixes (a1e4c5c), r9-hubx APPROVE, F-33-2 closed convergent == R-1 and verified on main; R0-ROUND-10 close-out flipped cards (033 IN_PROGRESS t3 remaining, 041 DONE), main bb9df41. Delegated review+merge N/A — nothing unmerged; the directive's "continue working" executed.
+- T-MIG-033 tranche-3 (SME admin) CLAIMED: branch t-mig-033-t3/r4b from bb9df41; zero-collision re-verified (ls-remote 033|sme heads = only my merged r4/r4b; open PRs 0; no other lane claims SME). Receipt run-007-claim-tranche3.json.
+- IMPLEMENTED line-against-line vs frozen 6cad6ef (receipt run-008-tranche3.json):
+  - contracts sme-question-package.ts: the SmeQuestionPackageDtos tree with Jackson binding semantics (passthrough == ignoreUnknown; absent primitives optional == Java 0/false; schema failure == the :620-624 binding-failure class).
+  - services/sme/zip-safety.ts: the ZipSafety port (:32-153) + the ZipInputStream walker — absolute per-entry/total/count budgets enforced WITHOUT allocating past a cap (inflateRawSync maxOutputLength = the M3 law), traversal guard verbatim (incl. 100-char ellipsis rendering), CRC32 verification, ZipFormatError == the IOException→400-not-a-ZIP class. DISCLOSED deviation: data-descriptor (streamed) entries refused fail-closed.
+  - services/sme/index.ts: ingest over sql.transaction (the fleet's first write-path transaction use) — slice-scoped deactivateByRefs, MCQ/structured/MIXED -pN/-s family emission with per-row topic tags, KG resolution with the verbatim unknown-code 400, validate() with every :437-559 message verbatim (Java Set.add boolean semantics via an explicit addTo helper — the JS Set.add trap caught in self-review BEFORE first run), asset store wholesale-replace-when-present/untouched-when-absent, SVG demotion R14, sourceDocIdOf fallback, status() with the activeStructured derivation.
+  - routes/sme.ts: ADMIN shell (Boot 401/403; w3-sme-* postures stay forever-gates) + multipart error parity — non-multipart/oversize-declared/missing-part/unreadable all land in the frozen catch-all 500 internal_error (GlobalExceptionHandler has NO specific handler for any of them); present-but-empty part → 400 verbatim :38-39; part-bytes read failure → 400 verbatim :44-46.
+  - Mount /api/v1/admin/question-bank in src/index.ts as its OWN commit matching the in-code separate-commit claim (the tranche-2 N-note mismatch deliberately not repeated).
+- Self-review catches worth the ledger: JS Set.add returns the set (Java returns boolean) — duplicate-ref laws would have silently passed; mark-point value indices in tests initially ignored that inline SQL literals are not bind params; the -s body mark points cover ONLY the plain parts (an option-bearing part becomes the -p1 row itself).
+- GATES at this head: typecheck x4 exit 0; bun test apps/api packages = 834 ran / 821 pass / 0 fail / 13 skip / 2311 expect (R0-ROUND-10 stamp 764/751/0/13skip/2121 + this tranche's 70 tests / 190 expects — arithmetic exact); golden --selftest OK.
+
+Stage Summary:
+- T-MIG-033 tranche-3 (SME admin) implemented + gated + receipted; PR to follow. N-4 capture half stays with the golden-capture lane per the card. Card REMAINING after this: none in-fence (033 complete pending review); the R3a N-note (tranche-2 mount-commit wording) remains a housekeeping item outside this lane's fence.

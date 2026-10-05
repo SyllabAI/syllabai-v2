@@ -1,0 +1,42 @@
+{
+  "task": "T-MIG-033",
+  "tranche": 3,
+  "run": "run-008-tranche3",
+  "lane": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "timestamp": "2026-10-05T18:55:00Z",
+  "branch": "t-mig-033-t3/r4b (from main bb9df41)",
+  "deliverable": "SME admin port — SmeQuestionAdminController/SmeQuestionIngestService/SmeQuestionPackageDtos/SmeQuestionSpecPointRepository @ 6cad6ef, line-against-line",
+  "files": {
+    "contracts": [
+      "packages/contracts/src/sme-question-package.ts (DTO tree port with Jackson binding semantics: passthrough == ignoreUnknown, absent primitives left optional == Java 0/false defaults, object components nullish; schema failure == the JsonMappingException class)",
+      "packages/contracts/src/sme-question-package.test.ts (binding-parity pins)",
+      "packages/contracts/src/index.ts (one export line, #58 precedent)"
+    ],
+    "services": [
+      "apps/api/src/services/sme/zip-safety.ts (ZipSafety port :32-153 + the ZipInputStream walker: absolute per-entry/total/count budgets enforced WITHOUT allocating past a cap via node:zlib inflateRawSync maxOutputLength — the deep-audit 09-28 M3 law; traversal guard verbatim incl. 100-char ellipsis rendering; CRC32 verification; fail-closed on data-descriptor layouts and encryption — DISCLOSED deviation)",
+      "apps/api/src/services/sme/index.ts (ingest over sql.transaction — the fleet's first write-path transaction use: slice-scoped deactivateByRefs, MCQ/structured/MIXED -pN/-s family emission with per-row topic tags, KG code resolution with the verbatim unknown-code 400, fail-closed validate() with all :437-559 messages verbatim, Java Set.add boolean semantics via explicit addTo helper, asset store wholesale-replace-when-present / untouched-when-absent, SVG demotion R14, sourceDocIdOf fallback, BankStatusView counts with the activeStructured derivation)"
+    ],
+    "routes": [
+      "apps/api/src/routes/sme.ts (ADMIN shell — Boot 401/403 bodies; multipart error parity: non-multipart/oversize-declared/missing-part/unreadable-body all land in the frozen catch-all 500 internal_error because GlobalExceptionHandler has NO specific handler for any of them; present-but-empty part → 400 verbatim :38-39; read failure → 400 verbatim :44-46)"
+    ],
+    "mount": ["apps/api/src/index.ts (import + construction + ONE mount line /api/v1/admin/question-bank + disclosure comment — SEPARATE commit per the in-code claim; the tranche-2 N-note mismatch is not repeated)"]
+  },
+  "disclosed_deviations": [
+    "ZIP data-descriptor (streamed) entries: JVM ZipInputStream accepts, port refuses with a named 400 — fail-closed direction, production packages are seekable-output zips with header sizes",
+    "multipart 64MB cap: declared Content-Length fast path only (Request semantics); real decompression protection is the ZipSafety budget law — the compressed cap is only the outer gate",
+    "Jackson numeric-string coercion (marks:\"5\") rejected by zod → binding-failure 400 envelope (same class, hand-crafted packages only); production builder emits real numbers",
+    "unzip+validate run before sql.transaction opens (pure memory, zero DB statements — net behavior identical to the @Transactional method)",
+    "missing multipart part answers the frozen 500 (catch-all class), NOT the controller's 400 — the controller's null check is unreachable for absence; present-but-empty is the 400 path"
+  ],
+  "gates": {
+    "typecheck": "x4 exit 0 (contracts, db, shared, api)",
+    "tests": "bun test apps/api packages: 834 ran / 821 pass / 0 fail / 13 skip / 2311 expect (R0-ROUND-10 stamp 764 ran / 751 pass / 13 skip / 2121 expect + this tranche's 70 tests / 190 expects — arithmetic exact)",
+    "selftest": "bun golden/runner.ts --selftest OK",
+    "new_tests": "70 (zip-safety 22, ingest laws 25, routes 14, contracts 9 — see the suites)"
+  },
+  "capture_note": "N-4 capture half (rich SME 200 postures) stays with the golden-capture lane's register per the card; the four w3-sme-* auth-boundary postures were already forever-gates and stay green (shell parity).",
+  "provenance": {
+    "frozen_ref": "syllabai-core @ 6cad6ef (local clone HEAD verified)",
+    "read_method": "direct line-against-line reads of src/main/java/com/syllabai/sme/* + shared/{ZipSafety,GlobalExceptionHandler}.java + identity/SecurityConfig.java + assessment/{Question,QuestionTopic}.java + resources/application.yml"
+  }
+}
