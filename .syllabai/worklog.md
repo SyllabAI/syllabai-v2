@@ -2187,3 +2187,18 @@ Work Log:
 
 Stage Summary:
 - Board drained 1/1 this sweep. R0-AUTO procedure executed end-to-end (CI/review/fence gates, merge, post-merge CI verification, this receipt). Merge desk idle.
+
+---
+Task ID: T-MIG-047 (evidence preservation) + first live replay evidence + Neon hygiene drop
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Operator directive (trace 1a10d465caf49f99): "check current status. And proceed" — status sweep found ROUND-10 closed by parallel lanes (#63/#64/#65 + F-33-2 already closed by convergence with R0's R-1/R-2 intake), zero open PRs; proceeding meant discharging the two live register items: the Neon branch-capacity blocker and the instrument's first full replay.
+
+Work Log:
+- Status sweep: main 8fa5d34 -> 08f104d (17 commits, concurrent fleet); F-33-2 verified CLOSED (r3a finding 6000275125 == R0's R-1/R-2 intake a1e4c5c, convergence receipt on-thread 6000337095); gates re-run on 08f104d: typecheck x4 exit 0, suite 764/0/13skip/2121 = ROUND-10 arithmetic exact, selftest OK.
+- NEON HYGIENE DROP (capacity resolution): dropped the standing T-MIG-022 pair (t-mig-022/r3a br-wild-rice-a58063jp + t-mig-022/r3a-prod br-red-wildflower-a5vyd81c) — receipted scratch branches ("kept_for F-1/F-2 re-verification", a purpose discharged by the CI runner that recreates both postures per run; the drop-after-use intent was already recorded by the round-9 lane as egress-blocked). Both drops 200 + 404-verified. Standing branches 9 -> 7; production untouched; NO other standing branch touched (t-mig-002/r2, t-mig-003/r6, t-mig-010/r3, t-mig-014/r3a, vercel-integration pair remain).
+- FIRST FULL-PIPELINE REPLAY (run 37355029779): Provision SUCCESS via the disclosed console-mirror fallback IN CI; Pass A apply-reset SUCCESS; boot SUCCESS (data plane reachable from runners); 155 seed cases: 90 PASS / 65 FAIL; READ-ONLY PROOF SUCCESS; zero residue. Failure classes: H-2 seed-row families (majority), identity pins, 429 pacing, PLUS genuine port findings — (1) smartmark queries attempts.exam_paper_id which does not exist in the live baseline (42703 in boot log; stub-SQL tests blind; frozen core derives paper scope via the attempt->question join) — T-MIG-048 candidate, fix required; (2) selfmark validation-order divergence (400 vs frozen 500 on unknown attempt); (3) throughput key-order tolerance gap. All FILED for R0/R6.
+- EVIDENCE-LOSS BUG found live and fixed (T-MIG-047, PR #73 merged 9a97de8): the report write's URL-host mkdir bug lost the 155-case report on RED; runMode exit contract restored; replay steps made evidence producers (continue-on-error) with the union verdict as the single gate. Local red-run + union proofs, all gates exact.
+- Post-merge main re-verified via fetch-first; receipts: T-MIG-047/run-001-first-live-replay.json; card DONE.
+
+Stage Summary:
+- The T-MIG-044 instrument is now FULLY OPERATIONAL end to end: capacity resolved (hygiene drop of receipted scratch branches), first live replay delivered (90/155 seed, honest classification filed), evidence preservation fixed, union full-picture pending the next dispatch. Register for R0/R6: the three genuine port findings above (048 candidate = attempts.exam_paper_id port defect is blocking-class for the marking pipeline); H-2 third-posture ruling; identity-pin amendments; 429 pacing decision. LANE continues: dispatch the full union run next.
