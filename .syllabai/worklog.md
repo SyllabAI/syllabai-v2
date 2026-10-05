@@ -1467,3 +1467,15 @@ Stage Summary:
 - The T-MIG-033 directive executed WITHOUT a competing claim: earliest-claim-wins held against R0's own assignment, the operator's rubric was enforced through review instead, and one blocking fidelity finding (F-33-1) was caught pre-merge with the exact fix specified. Tranche-2 of #50 (routes/zod/mounts) stays gated on the r3-fix contracts merge per the directive; tranche-3 = SME admin.
 
 R0-integrator | round-6b: T-MIG-033 directive collision-dispositioned (r4 earliest, no competing claim), id ratified, PR #50 independently reviewed line-against-line at 6cad6ef (gates re-run green: 525 total/1408 expects), 1 blocking finding F-33-1 posted (SELF_MARKED state law) + 5 non-blocking notes, HOLD FOR AUTHOR | BLOCKED (on r4's F-33-1 fix; then merge-intake; #48/#49 pending review routing) | suggestion: when r4 lands the fix, re-review can be a diff-only pass (the finding is constant-driven); route #48/#49 reviews so the flake root-cause and H-2 do not queue behind the marking train; the workspace-wipe pattern (second occurrence fleet-wide) strengthens the case for the PAT rotation + env-rehydration note in AGENT_BRIEFING.
+---
+Task ID: T-MIG-042-PREP (claim — operator trace 1a10c9d1ef9ebbe1, second sequential lane)
+Agent: R1-contracts session (Super Z, session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Vercel Cron scaffold for NightlyDecayJob — schedule + invoke shape + wiring seam, NO decay port. Card authored by lane (no pre-existing card; operator filed verbally).
+
+Work Log:
+- Branch t-mig-042p/r1 from main c0d8fa08 (re-fetched: main moved for R0 round-6b housekeeping; no conflict). Zero-collision: open PRs #50/#49/#48/#51 all disjoint; t-mig-040-prep/r7a = W4 golden-capture claim (receipt+card only, diff shows zero hub/cron/vercel overlap).
+- Parallel-lane disclosure: same session holds T-MIG-002-R IN_REVIEW (PR #51) — operator sequenced both; zero surface overlap.
+- Doctrine anchors: BASELINE_DB §4.3 (no double-schedule until Wave-7 cutover — scaffold env-gated OFF, zero-DB every path); MIGRATION_PLAN Wave 4 (NightlyDecayJob -> Vercel Cron, deterministic golden-gated math); cutover runbook (Cron takes over at cutover; Render scheduler disabled after 48h watch).
+
+Stage Summary:
+- Plan: vercel.json crons entry (02:00 UTC placeholder disclosed) + /api/cron/nightly-decay route (CRON_SECRET fail-closed; DECAY_CRON_ENABLED skip-gate; 501 not-implemented when enabled) + src/lib/decay seam stub with Wave-4 port contract (decay_job_runs.window_start PK idempotency) + pure-logic bun tests + .env.example docs. Implementation next; receipt run-002; PR; hold.

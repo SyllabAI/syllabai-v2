@@ -1,0 +1,41 @@
+version: 1
+task:
+  id: T-MIG-042-PREP
+  title: "Vercel Cron scaffold for the NightlyDecayJob — schedule entry + invoke shape + wiring seam ONLY (NO decay port, NO decay math, NO DB writes); pre-stages the Wave-4 decay port (MIGRATION_PLAN: NightlyDecayJob -> Vercel Cron; decay math deterministic -> golden-gated)"
+  owner: "R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e) — operator Round-7 directive trace 1a10c9d1ef9ebbe1 ('your hub/infra live-flow experience owns this'; prior hub lanes T-MIG-002/005/006 + T-MIG-035 live-flow, all DONE). PARALLEL-LANE DISCLOSURE: the same session holds T-MIG-002-R IN_REVIEW (PR #51, packages/db/scripts fences) per the same operator directive — zero surface overlap with this lane (this lane touches apps/hub/** + vercel.json only); operator sequenced both in one directive."
+  status: CLAIMED # 2026-10-05, branch t-mig-042p/r1 cut from main c0d8fa08; claim receipt run-001-claim.json; zero-collision verified vs open PRs (#50 t-mig-033/r4, #49 t-mig-022/r7a-h2, #48 t-mig-036/r3fix, #51 t-mig-002r/r1) and vs t-mig-040-prep/r7a (W4 golden-capture lane — receipt+card only, no hub/cron/vercel files)
+  priority: P2
+  wave: 4 # PREP for the Wave-4 decay port (T-MIG-040..043)
+  deps: [T-MIG-002] # baseline: decay_job_runs ledger (V38), window_start PK
+  provenance: >
+    Operator Round-7 directive (trace 1a10c9d1ef9ebbe1) filed this task
+    verbally — no pre-existing card existed; authored by the executing lane
+    with this provenance (T-MIG-030 claim precedent for lane-authored cards
+    under explicit operator assignment). Anchors: BASELINE_DB §4.3 — the
+    nightly decay job moves to Vercel Cron AT CUTOVER; until then the Java
+    core's scheduler keeps running; v2 must NOT double-schedule decay
+    against the same branch (double-decay is a correctness bug, not a perf
+    bug). MIGRATION_PLAN Wave 4 — the Ebbinghaus decay subsystem
+    (NightlyDecayJob -> Vercel Cron; decay math is deterministic ->
+    golden-gated). MIGRATION_PLAN cutover runbook — Vercel Cron takes over
+    the nightly decay job; the Java core's Render scheduler is left
+    running-but-idle and disabled after the 48h watch.
+  scope:
+    allowed:
+      - "apps/hub/vercel.json (NEW — cron schedule entry; inert while env-gated)"
+      - "apps/hub/src/app/api/cron/nightly-decay/route.ts (NEW — invoke shape)"
+      - "apps/hub/src/lib/decay/** (NEW — wiring seam + pure decision logic + bun tests)"
+      - "apps/hub/.env.example (cron env documentation, OFF-by-default)"
+      - "apps/hub/package.json (decay test script entry only)"
+      - ".syllabai/receipts/T-MIG-042-PREP/**"
+      - ".syllabai/tasks/T-MIG-042P-vercel-cron-scaffold.yaml"
+    forbidden:
+      - "any decay math / decay port logic (Wave-4 owner's lane; deterministic + golden-gated per MIGRATION_PLAN)"
+      - "any DB call from the scaffold (route + seam stay zero-DB; decay_job_runs writes belong to the Wave-4 port)"
+      - "packages/db/**, apps/api/**, other lanes' files"
+      - "the Java core's scheduler; core/hub frozen upstream repos"
+  acceptance:
+    - "vercel.json crons entry present with a nightly schedule (02:00 UTC placeholder DISCLOSED — exact hour to be confirmed from the V38/@Scheduled definition at port time; inert while env-gated OFF, so a placeholder cannot double-decay)"
+    - "route invoke shape: fail-closed auth (401 when CRON_SECRET unset or bearer mismatch), env-gate skip (200 {status:skipped} while DECAY_CRON_ENABLED!=1 — the §4.3 default), 501 {status:not-implemented} when enabled (port absent) — ZERO DB contact on every path"
+    - "wiring seam: runNightlyDecay(windowStart) + DecayRunResult contract documented for the Wave-4 port (decay_job_runs ledger idempotency via window_start PK, deterministic math, golden-gated, retry-safe)"
+    - "decision logic is pure + unit-tested under apps/hub/src/lib/decay (bun test); standard gate battery stays green on main's base counts"
