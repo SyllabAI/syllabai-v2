@@ -807,3 +807,21 @@ Work Log:
 
 Stage Summary:
 - Wave-3 capture tranche COMPLETE ahead of the W3 port lane (T-MIG-030..034): 44 new cases covering 10 controllers' deterministic surfaces; 98 cases total now gate the migration. LLM-output surfaces (smart-mark prose, transcription) deliberately NOT golden-gated per GOLDEN_MASTER section 3 - they need behavioural gates at port time. Operator/R0 unblock list: (1) valid GITHUB_PAT for this lane (push t-mig-006/r6 then t-mig-007/r6), (2) optionally NEON creds for the canonical 16/16 identity replay per the T-MIG-006 receipt runbook.
+
+---
+
+Task ID: T-MIG-007 (push addendum - credential unblock, branch rebuild, PR open)
+Agent: R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
+Task: Land the credential-blocked Wave-3 capture: rebuild onto post-sweep main, push, open PR #29, status -> IN_REVIEW.
+
+Work Log:
+- Operator supplied GITHUB_PAT in-session (chat transit; the PAT-rotation follow-up from R0-SWEEP-1 stands - the token has now transited chat twice). Env-var-only usage maintained: no token written to any file, receipt, or log; git push used a -c credential.helper (token never landed in .git/config - the stale empty-token push URL found in the restored sandbox was re-pointed to the clean https URL first).
+- PR #7 CI CHECK (operator's standing request, completed this session): PR #7 (T-MIG-003, head 9d0e5b1) is MERGED; final check runs on head = verify SUCCESS + hub SUCCESS. Recorded here since the earlier check was badge-based.
+- Rebuilt branch t-mig-007/r6 onto main @ 01d0e9d via cherry-pick: eada441 (claim, yaml CLAIMED) -> 2b38a58 (runner replay-readiness kit + full re-scope disclosure; competing T-MIG-006 yaml DELETED, not re-filed - id ratified for r1's PR #23) -> 9081b59 (44 w3 captures + receipts, message amended with rebuild disclosure). Originals preserved in local-only t-mig-007/r6-orig-backup; append-only worklog entries of the blocked state retained verbatim above (chronology disclosed here).
+- worklog conflict resolution during cherry-pick: kept main's entries (through R0-SWEEP-1) and appended this lane's two T-MIG-006 entries + the T-MIG-007 entry at the tail verbatim - no existing entry edited or reordered (section 5 law).
+- Gates re-executed on the rebuilt branch (receipt .syllabai/receipts/T-MIG-007/run-003-rebuild-gates.json): selftest exit 0; 113/113 case JSONs valid; bun test 253/0/13skip (634 expect()); typecheck x4 exit 0; secret scan clean.
+- FLEET TRIPWIRE (environment finding, no code change implied): stale sandboxes fail `bun test` with 'Cannot find package postgres' (5 unhandled errors) until `bun install` - T-MIG-014's postgres.js dep is not vendored. Cost this lane: one false-red gate run before the cause was found.
+- Final collision check immediately before push: ls-remote returned NO refs/heads/t-mig-007*; push created the branch; PR #29 opened with full disclosure body; yaml status -> IN_REVIEW.
+
+Stage Summary:
+- T-MIG-007 is IN_REVIEW as PR #29: 44 Wave-3 golden cases (98 -> 113 total suite) across 10 controllers' deterministic surfaces + the runner replay-readiness kit that closes the T-MIG-013-reported tolerate defect, T-MIG-004 F-3 header comparison, and R0-SWEEP-1 follow-up (3) R6 items. The metronome is now one full wave ahead of the W3 port lane (T-MIG-030..034). Next for this lane: await R0 on #29; then either the F-5-style Neon extension for w3 stateful cases (needs NEON access) or the next capture beat (Wave 4) per MIGRATION_PLAN section 10.
