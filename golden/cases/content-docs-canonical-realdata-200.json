@@ -1,0 +1,62 @@
+{
+  "name": "content-docs-canonical-realdata-200",
+  "description": "GET /api/v1/teacher/content/documents/41419eac-e6cf-481d-98a3-aff1cc32f111/canonical as TEACHER: 200 returning the sealed canonical JSON EXACTLY as ingested (string body of a small 1-page EXTERNAL_QUESTIONS knowledge-layer document, own-state VALIDATED). Canonical body is a JSON-encoded string, not an object — the runner compares it as a JSON string value.",
+  "source": "captured from a LOCAL boot of the frozen Java core (Temurin JDK 25.0.4.1, mvn -DskipTests package exit 0) against a Neon COW branch golden-capture/2026-10-05 (br-fancy-surf-a52owvza, copy-on-write child of production br-muddy-bar-a5huwldd) on 2026-10-05T05:17Z by the T-MIG-004 extension session (w0a, F-5 unblock: operator supplied NEON_PAT); production compute never contacted — the branch's own endpoint served everything; synthetic student/teacher accounts registered via the honest API path (real corpus data: 1023 documents / 108 exam papers / 4740 embedded chunks); automated email scan: 0 non-synthetic addresses in any captured body",
+  "method": "GET",
+  "path": "/api/v1/teacher/content/documents/41419eac-e6cf-481d-98a3-aff1cc32f111/canonical",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer scrubbed-fixed-dummy-jwt-token"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "source": {
+        "uri": "syllabai-bank/igcse-chemistry-4ch1/cards/4ch1-2c-202311-qq3",
+        "checksum": "26229e95e914a6aeb55124b1be433c21e3d600ca7a7f955b0a750781ec2427fc",
+        "fileName": "qcard-4ch1-2c-202311-qq3.txt",
+        "mimeType": "text/plain",
+        "checksumAlgorithm": "SHA-256"
+      },
+      "tables": [],
+      "figures": [],
+      "version": 1,
+      "equations": [],
+      "pageCount": 1,
+      "retrieval": {
+        "unit": null,
+        "year": 2023,
+        "label": "Q-Card",
+        "series": "NOV",
+        "paperCode": "4CH1/2C",
+        "specCodes": [
+          "4CH1-2.25C"
+        ],
+        "subjectCode": "4CH1",
+        "subjectTitle": "IGCSE Chemistry"
+      },
+      "documentId": "1962301e-7af1-5b2b-85be-2ace5f9cd1d5",
+      "provenance": {
+        "engine": "tc27-card-bridge",
+        "extractedAt": "2026-09-26T00:00:00Z",
+        "engineVersion": "1.0.0"
+      },
+      "textBlocks": [
+        {
+          "role": "q_card",
+          "text": "Q-Card | 4CH1/2C | Nov 2023 | Q3 | marks: 8 | type: STRUCTURED | spec: 4CH1-2.25C | stem: This question is about aluminium.",
+          "group_key": "q3",
+          "element_id": "card-000",
+          "page_number": 1,
+          "element_type": "question_card",
+          "reading_order": 0,
+          "source_engine": "tc27-card-bridge",
+          "source_engine_version": "1.0.0"
+        }
+      ],
+      "schemaVersion": "1.0"
+    }
+  },
+  "tolerate": []
+}

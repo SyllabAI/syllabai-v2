@@ -1,0 +1,31 @@
+{
+  "name": "content-docs-teacher-detail-realdata-200",
+  "description": "GET /api/v1/teacher/content/documents/853ae02d-0090-4c40-89ef-b69681c8bb40 as TEACHER: 200 DocumentSummaryView of a real citable QUESTION_PAPER (16 pages, 187 elements, 11 chunks, pdflane-atoms 1.2.0) linked to VALIDATED exam paper cb2c0cf8 (4CH0/2CR June 2013). Real-data happy path for the detail surface.",
+  "source": "captured from a LOCAL boot of the frozen Java core (Temurin JDK 25.0.4.1, mvn -DskipTests package exit 0) against a Neon COW branch golden-capture/2026-10-05 (br-fancy-surf-a52owvza, copy-on-write child of production br-muddy-bar-a5huwldd) on 2026-10-05T05:17Z by the T-MIG-004 extension session (w0a, F-5 unblock: operator supplied NEON_PAT); production compute never contacted — the branch's own endpoint served everything; synthetic student/teacher accounts registered via the honest API path (real corpus data: 1023 documents / 108 exam papers / 4740 embedded chunks); automated email scan: 0 non-synthetic addresses in any captured body",
+  "method": "GET",
+  "path": "/api/v1/teacher/content/documents/853ae02d-0090-4c40-89ef-b69681c8bb40",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer scrubbed-fixed-dummy-jwt-token"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "id": "853ae02d-0090-4c40-89ef-b69681c8bb40",
+      "documentId": "33ba399c-4640-5b04-b1bb-b520fa2ba94c",
+      "docVersion": 1,
+      "kind": "QUESTION_PAPER",
+      "title": "qp.pdf",
+      "pageCount": 16,
+      "elementCount": 187,
+      "textElementCount": 187,
+      "chunkCount": 11,
+      "sourceEngine": "pdflane-atoms",
+      "sourceEngineVersion": "1.2.0",
+      "checksum": "9394357770611a6a9d6653ea2f9715bfa7a0198fec8a59ec254ac2235bc1f774",
+      "createdAt": "2026-09-21T12:59:21.578011Z"
+    }
+  },
+  "tolerate": []
+}
