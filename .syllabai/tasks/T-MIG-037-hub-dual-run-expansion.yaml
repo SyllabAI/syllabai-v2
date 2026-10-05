@@ -3,7 +3,7 @@ task:
   id: T-MIG-037
   title: "Hub dual-run expansion — extend apps/hub V2_SURFACE_PREFIXES with the now-verified W2 content/curriculum reads + W3 attempts surfaces; branch-verified both postures live per the T-MIG-035 pattern; rollback stays the §7 one-env-var unset"
   owner: "r8-hub (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5) — OPERATOR WORD trace 1a10c9dd8c2c1c01: 'RE-REGISTER under a new unique lane id (e.g. r8-hub) — two sessions may never share one lane identity. Then: HUB DUAL-RUN EXPANSION — extend apps/hub V2_SURFACE_PREFIXES with the now-verified W2 surfaces (content, curriculum, attempts), branch deploy, verify both postures live (T-MIG-035 pattern), file evidence. Rollback = unset one env var (MIGRATION_PLAN §7).'"
-  status: IN_PROGRESS # claim-first commit per the T-MIG-002 collision lesson; implementation follows on this branch
+  status: IN_REVIEW # run-001 executed: 17/17 dual-run + 13/13 rollback checks PASS (receipt run-001-dual-run-expansion.json); full gate battery green (typecheck x4, bun test delta-zero vs same-sandbox main, golden selftest OK, hub tsc 0, 8/8 routing pins); PR opened — authors never self-merge, merge is reviewer/R0's
   priority: P1
   wave: 2 # executes the W2 exit gate's flip condition ('hub reader pages verified against v2 on branch') on the now-UNCONDITIONAL gate (sweep-5)
   deps: [T-MIG-011, T-MIG-020, T-MIG-021, T-MIG-022, T-MIG-023, T-MIG-024, T-MIG-030, T-MIG-032, T-MIG-035]
@@ -75,6 +75,24 @@ task:
     (T-MIG-035 recorded the same honestly); the routing decision surface
     (apiPath) is the code the hub actually calls on every request and is
     fully covered by the committed pins + the live harness.
+    (run-001 2026-10-05) EXECUTED in full: implementation = exported prefix
+    table (1->6) + pure v2SurfaceBase that resolveBase delegates to;
+    collocated pins 8/8 (212 expect); live rig = pglite-socket wire server
+    over PGlite seeded from the repo's own drizzle baseline (203 stmts;
+    disclosed accommodations: index opclass strip pending T-MIG-002-R,
+    pgvector CREATE EXTENSION, 3 roles reference rows) with apps/api booted
+    from THIS BRANCH (postgres.js path, isNeonUrl=false) — NEON_PAT absent
+    in this recycled session so the COW data plane stood down, zero
+    cloud/prod contact. POSTURE A (dual-run): 17/17 — real
+    register->login->/me->subjects->attempts-history flow through the
+    hub's ACTUAL apiPath, reader implementation-literal probes (400
+    parseUuid parity + 404 reader-message parity), write landed in the
+    ephemeral store (read-back rows=1). POSTURE B (rollback, env unset):
+    13/13 — every probe incl. all five new families reverts to the core
+    form; the §7 one-env-var property holds. GATES: typecheck x4 exit 0;
+    bun test 472/13/0 1259 expect = same-sandbox main worktree EXACT
+    (delta zero); golden selftest OK; scoped hub tsc 0 errors total.
+    Harnesses + rig preserved at .syllabai/receipts/T-MIG-037/rig/.
 scope:
   allowed:
     - ".syllabai/tasks/T-MIG-037-hub-dual-run-expansion.yaml (this file — status/execution_record only)"
