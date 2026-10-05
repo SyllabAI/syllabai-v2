@@ -106,7 +106,7 @@ if (args.includes("--target")) {
   const cases = loadCases();
   let failures = 0;
   for (const kase of cases) {
-    // R0 fix (T-MIG-016): the live-replay path must apply each case's
+    // R0 fix (T-MIG-017): the live-replay path must apply each case's
     // `tolerate` rules exactly like the selftest does. The previous code
     // used the byte-strict deepEqual here, making every case with a
     // volatile field (e.g. ApiError.timestamp) permanently unpassable —
