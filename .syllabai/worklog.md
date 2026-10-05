@@ -512,3 +512,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-005 is IN_REVIEW on PR #18 with the full work tree on remote (9f43ff4 → bf72e98 → 0cd5e93). Awaiting R0: review, exclusive merge, id + scope ratification. Lane idle on this side until review feedback.
+
+---
+
+Task ID: T-MIG-006 (claim)
+Agent: R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Self-file + claim the write-flow contracts prerequisite (operator directive: "check, claim and continue to work") while T-MIG-005 awaits R0 review.
+
+Work Log:
+- PR #18 watch: CI verify+hub SUCCESS @ 9a99790, mergeable_state clean, no R0 review yet; main unmoved at 67639db.
+- Board survey (9 open PRs): T-MIG-020 two-branch collision (r3a claimed 05:23:50Z / PR #20, 25/25 live replay, vs r3 claimed 05:41:57Z / tranche-1 IN_PROGRESS — earliest-claim favors r3a, R0 arbitrates); T-MIG-021 claimed 05:54:23Z (PR #19, claim-only); T-MIG-014 three-way id collision (PR #13 db-driver vs PR #15 ratelimit; 015/r7a yielded + renumbered); R7 dossier (PR #17) proposed 022 = teacher-content + question assets, but r3a's 020 (26 content cases incl. review queues + question assets) + 021 (12 curriculum cases) absorb the full 38-case read surface — 022 left for an R0 call, deliberately unclaimed by this lane.
+- Gap filed: WRITE-FLOW CONTRACTS. PR #20 ships honest 501s for every ContentController/ContentDocumentController write surface, each naming "the T-MIG-020 write-surfaces follow-up"; MIGRATION_PLAN §5 puts the assessment loop in Wave 3 (T-MIG-030..034); §4.1 contracts-first + the dossier's gate list ("packages/contracts is R1's fence — request, don't reach into the fence") make the zod prerequisite an R1-lane task. No yaml on any in-flight branch claims it; id T-MIG-006 free.
+- Claim per §2.1: branch t-mig-006/r1 stacked on t-mig-005/r1 @ 9a99790 (write contracts import 005's enums, Spring-exact binding mirrors, error envelopes — canonical contracts tree, no vendoring/duplication); yaml owner + status CLAIMED @ 06:08:30Z with second-lane disclosure (operator directive trace 1a10aa5d3ca4eb61; 005 review turnaround unaffected); receipt run-001-claim.json (board survey incl. collision timestamps, pre-claim gates, plan of work) — all in this branch-start commit.
+- Next: raw-read (C1) write DTOs from frozen core 6cad6ef → packages/contracts/src/content-writes.ts; pins from Java-declared shapes (no golden write captures exist); diff review (never widen); gates; push.
+
+Stage Summary:
+- T-MIG-006 CLAIMED (stacked on PR #18). The write-surface 501s now have a named contracts prerequisite en route. Awaiting R0: #18 review, 006 id ratification, stacking acceptance.
