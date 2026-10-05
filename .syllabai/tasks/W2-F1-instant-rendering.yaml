@@ -7,7 +7,7 @@ task:
     expected '…T12:59:21.578011Z' vs actual '…T12:59:21.578Z') + golden replay
     posture"
   owner: "r3-c (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
-  status: CLAIMED
+  status: IN_REVIEW  # PR open; run-001-local-verify.json receipt attached
   claimed_at: "2026-10-05T08:51:38Z"
   priority: P1
   wave: 2
@@ -35,6 +35,20 @@ task:
     the writer is pinned instead against the captured expected strings
     (diagnosis samples .578011/.129532/.349879/.552213/.997255/.761725/
     .526822/.592864) plus the Java fraction-rule vector classes.
+
+    2026-10-05 r3-c IMPLEMENTED (36ecbd4 + fix commit): instant.ts writer
+    landed (ISO_INSTANT 0/3/6/9 fraction rule, exact offset normalization,
+    fail-fast on Date/null — a Date renders millis only, the exact F-1
+    class); repositories.ts 8 selects cast via to_char(... at time zone
+    'UTC' ... .US) as LITERAL template text (SqlFn ${} interpolation is
+    parameter-binding per identity/users.ts toQuery — cast must never move
+    into ${}, recorded as adoption hazard); 3 mappers through javaInstant;
+    29 pins in test/content/instant.test.ts (capture vectors verbatim from
+    the diagnosis). Gates: typecheck x4 exit 0; bun test 389/0/13skip;
+    golden selftest OK; 1024 captured createdAt values re-render
+    byte-identical (offline stand-in for live replay). Live replay PENDING
+    (api.neon.tech DNS-blocked, same posture as PR #36). Receipt:
+    receipts/W2-F1/run-001-local-verify.json.
 base:
   repo: "syllabai-v2 @ daad88e (main); frozen refs: syllabai-core @ main,
     syllabai-hub @ 93226a43"

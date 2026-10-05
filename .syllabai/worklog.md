@@ -1131,3 +1131,20 @@ Work Log:
 
 Stage Summary:
 - Board: T-MIG-030 tranche-1 landed; wave-3 port train rolling (030 in flight, 031..034 seeds available per the ratified map). Next review targets: T-MIG-030 tranche-2 when pushed; 031..034 filings if seeded. Standing: F-1/F-2 content fixes, F-3 re-pin (R6), H-2 (r7a), E-1 (r7a tranche-2), CI-side Neon runner, T-MIG-002 baseline-SQL, PAT rotation, flaky-test watch.
+
+---
+Task ID: W2-F1
+Agent: r3-c (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Instant.toString() micros rendering parity for content read surfaces (1021 golden divergences) — operator drain-cycle queue item 1
+
+Work Log:
+- Drained per operator directive: synced main @ daad88e (8 merges re-read; T-MIG-020 confirmed DONE via ratified PR #22 ruling — no open claim, no open PR of mine), zero-collision scan (no W2-F1/F2/F3/T-MIG-002-R cards existed; open PRs #34/#35/#36 touch none of this scope), claimed W2-F1 (claim commit 36ecbd4).
+- Fix: apps/api/src/services/content/instant.ts — Jackson JSR-310 ISO_INSTANT writer (0/3/6/9-digit fraction groups from nanos, 'Z' suffix; from Postgres micros the reachable outputs are 0/3/6 digits), exact offset normalization at second grain, fail-fast on Date/null/garbage (a silent millis render would re-introduce F-1). Root cause: BOTH transports lost micros — postgres.js parses timestamptz into a millis JS Date (a JS Date cannot carry micros), and the old mappers coerced via toISOString()/String().
+- repositories.ts: 8 timestamp select-lists now select to_char(<col> at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US') — UTC pinned in SQL, session-timezone-proof, string end-to-end; ORDER BY clauses untouched (raw column, Java finder ordering preserved). 3 mapper sites (documents.createdAt, exam_papers.createdAt, audit.occurredAt + its null branch) route through javaInstant.
+- DISCIPLINE CATCH: SqlFn ${} interpolation is parameter-binding (identity/users.ts toQuery -> $N placeholders) — the cast is LITERAL template text in every select; moving it into ${} would bind the whole expression as a value and silently return a constant string per row (uncatchable by stubs/typechecks). Recorded in receipt + yaml as the adoption hazard for other lanes.
+- 29 pins in test/content/instant.test.ts: the 8 diagnosis capture vectors verbatim, fraction-rule classes, dialects/offsets, pre-1970 exactness, idempotence, fail-fast, repo wiring incl. verbatim-cast SQL pins.
+- Gates: typecheck x4 exit 0; bun test apps/api packages = 389 pass / 0 fail / 13 skip (13 = Neon-branch identity-integration set, unchanged); golden --selftest OK. Offline replay stand-in: ALL 1024 captured createdAt values in golden/cases re-render byte-identical through the writer.
+
+Stage Summary:
+- W2-F1 IN_REVIEW: 1021-site F-1 divergence class fixed at the writer boundary (one helper + 8 casts + 3 mappers), zero golden-case edits (cases keep gating), zero out-of-fence touches, Neon untouched. Live golden replay PENDING on api.neon.tech DNS block (same posture as PR #36) — disclosed in receipts/W2-F1/run-001-local-verify.json with the offline capture-corpus proof. Wave-2 CONDITIONAL exit now reduces to F-2 + F-3 (both unclaimed as of this run).
+- Status receipt: r3-c | drained queue item W2-F1 (claimed, fixed, gated, PR open) | BLOCKED (only on live Neon replay: api.neon.tech DNS) | suggestion: assign W2-F2 (citation page-text assembly) to a lane with T-MIG-020 context, and bundle the F-1 replay with the next Neon-capable run.

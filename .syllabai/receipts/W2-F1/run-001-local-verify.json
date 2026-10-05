@@ -1,0 +1,28 @@
+{
+  "task": "W2-F1",
+  "lane": "r3-c (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "run": "run-001-local-verify",
+  "date": "2026-10-05",
+  "base": "syllabai-v2 @ daad88e (main); claim commit 36ecbd4 on w2-f1/r3c",
+  "scope_of_run": [
+    "apps/api/src/services/content/instant.ts (NEW): Java-parity Instant writer — Jackson JSR-310 ISO_INSTANT fraction rule (0/3/6/9 digits, trailing group zeros dropped, no fraction when zero, 'Z' suffix), tolerant dialect parser (SQL-cast canonical, pg raw text, ISO-Z, explicit offsets normalized exactly at second grain), fail-fast on Date/null/garbage (silent millis render would re-introduce F-1)",
+    "apps/api/src/services/content/repositories.ts: 8 timestamp select-lists now cast through to_char(<col> at time zone 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS.US') (documents x3, exam_papers x4, content_review_audit x1); ORDER BY clauses untouched (raw column) — Java finder ordering preserved; 3 mapper sites route through javaInstant (old instanceof-Date/toISOString/String dance removed)",
+    "apps/api/test/content/instant.test.ts (NEW): 29 pins — 8 capture-parity vectors verbatim from T-MIG-022 run-001-diagnosis.txt, ISO_INSTANT fraction-rule classes, dialect/offset normalization, pre-1970 exactness, idempotence, fail-fast contract, repo wiring incl. verbatim-cast SQL pins and Date-throws pin"
+  ],
+  "gates": {
+    "typecheck_x4": "exit 0 (contracts, shared, db, api — bun run typecheck)",
+    "bun_test": "389 pass / 0 fail / 13 skip (402 tests, 22 files; 13 skip = Neon-branch identity-integration set, unchanged from main baseline)",
+    "golden_selftest": "OK (bun golden/runner.ts --selftest)",
+    "capture_surface_check": "1024 captured createdAt values across golden/cases re-render byte-identical through javaInstant (offline stand-in for the live replay — the 1021 F-1 divergence sites plus the 3 detail-case sites)"
+  },
+  "discipline_notes": [
+    "SqlFn interpolation is PARAMETER-BINDING (identity/users.ts toQuery): any ${} in a repository template becomes a numbered $N placeholder. The to_char cast is therefore literal template text in every select — moving it into ${} would bind the expression as a value and silently return a constant string per row (stub tests and typechecks cannot catch it; only live data would). Recorded as an adoption hazard for any lane reusing this pattern.",
+    "Zero out-of-fence touches: golden/** untouched (F-1 is fix-the-port, never re-pin; cases keep gating regressions), no schema/contract changes (contracts already pin createdAt as z.string()), assessment/identity Instant sites untouched (their lanes' law — writer is importable for adoption through their own tasks)",
+    "Neon strict read-only; no DATABASE_URL in this sandbox; no upstream repo writes"
+  ],
+  "replay_posture": {
+    "live_golden_replay": "PENDING — env-blocked: api.neon.tech unresolved DNS in this sandbox (verified 2026-10-05T08:50Z, same posture disclosed on PR #36). The 25 content cases + replay kit (T-MIG-022 tools) must be re-run in a Neon-capable environment against a v2 api built from a branch containing this fix.",
+    "offline_stand_in": "capture_surface_check above: every captured createdAt string parses and re-renders byte-identical — the writer is proven against the full capture corpus; only the transport (to_char text through both drivers) awaits live confirmation"
+  },
+  "wave2_exit_gate_note": "With W2-F1 in review, the CONDITIONAL exit (R0-SWEEP-2) reduces to F-2 (citation page-text assembly) and F-3 (versions[] multiset re-pin, R6). F-2 and F-3 remain UNCLAIMED in the operator queue as of this run."
+}
