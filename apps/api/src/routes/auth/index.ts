@@ -64,9 +64,24 @@ const REQUIRED_STRING_FIELDS = new Set(["email", "password", "displayName", "cur
  * annotation order (email → password → displayName), and refinement order
  * matches jakarta's per-field constraint order — so issues[0] is the port of
  * the first violation, with the message normalised to Hibernate's defaults.
+ *
+ * R0 correction (T-MIG-016): live capture proves Hibernate's property
+ * traversal does NOT follow the DTO annotation order — both missing-fields
+ * captures (auth-login-missing-fields-400, auth-register-missing-fields-400)
+ * report the PASSWORD field first. The port therefore ranks issues by the
+ * core's OBSERVED traversal order (password → email → rest in schema order)
+ * instead of trusting zod's schema order. Update this list only with new
+ * capture evidence — never by assumption.
  */
+const HIBERNATE_TRAVERSAL_ORDER = ["password", "email", "displayName", "currentPassword", "newPassword"];
+
 export function validationMessage(error: z.ZodError): string {
-  const issue = error.issues[0];
+  const issues = [...error.issues].sort((a, b) => {
+    const pa = HIBERNATE_TRAVERSAL_ORDER.indexOf(String(a.path[0] ?? ""));
+    const pb = HIBERNATE_TRAVERSAL_ORDER.indexOf(String(b.path[0] ?? ""));
+    return (pa === -1 ? Number.MAX_SAFE_INTEGER : pa) - (pb === -1 ? Number.MAX_SAFE_INTEGER : pb);
+  });
+  const issue = issues[0];
   if (!issue) return "request invalid";
   const field = issue.path.join(".");
   // null bound to a required string field: @NotBlank is the violation jakarta
