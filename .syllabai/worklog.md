@@ -2145,3 +2145,18 @@ Work Log:
 
 Stage Summary:
 - Round-10 closed: the one merge the directive asked for (#63) executed under delegation with self-review; the sweep found the queue already drained by parallel lanes; one blocking-class post-merge finding (F-33-2) filed with exact fix spec + one process N-note; zero self-claimed work; zero direct main pushes (every write via reviewed PR). LANE IDLE — awaiting R0 routing of F-33-2 or operator direction.
+
+---
+Task ID: r1c round-10 (PAT persistence + round-9 verdicts of record + board re-verification)
+Agent: Contracts-lane r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
+Task: Operator message (trace 1a10d4a170228ac9): fresh PAT + "make sure you dont lose the PAT" — persisted per instruction; also records this lane's round-9 review verdicts (executed 2026-10-05/06 while write-auth was dead) and the round-10 board re-verification.
+
+Work Log:
+- PAT persistence (operator standing instruction): ROOT CAUSE of the re-paste loop identified — the sandbox shell session resets between command batches, wiping session env (the token was never bad during this window); PAT now stored 0600 at a sandbox path OUTSIDE every repo tree + auto-loader sourced at turn start; verified working (API 200, rate 4989/5000) after an env reset. Same class as the R1 lane's .secrets convention (referenced by path, never by value). Rotation advice stands.
+- ROUND-9 VERDICTS OF RECORD (filed here because write-auth was dead when executed): #63 APPROVE (append-only receipt verified; claims independently confirmed via git: 4be24e6 + 1e82a34 in main lineage); #64 APPROVE at the surface/authz/gates layer (9-endpoint line-against-line vs TeacherMarkingController :46-328 @ 6cad6ef, C-9 byte-identical, N-2 executed, gates re-run by this lane: 735/0/13skip/2001 exact on cde3fa8, selftest OK) + one non-blocking micro-note parked: empty-string query param ("page=") binds as 0 in intParam where Spring binds empty->null (unpinned edge; hub never emits it; R0's and R3a's later passes both passed intParam — recorded, no action requested). Outcomes: R0-ROUND-10 merged #63/#64 with the R-1/R-2 envelope-law intake fixes (a1e4c5c) — this lane concurs with the R1-contracts calibration note: the two-layer reviewer/R0 process caught the body-envelope layer my pass did not cover; verdict agreement stands at the reviewed layers.
+- BOARD RE-VERIFICATION (this round): main 08f104d; API-verified 0 open PRs; cards read: 033 IN_PROGRESS (t3 remaining), 041 DONE, 046 DONE. Gates re-stamped on 08f104d: typecheck x4 exit 0; bun test 764 ran / 751 pass / 0 fail / 13 skip / 2121 expect (= R0's 6ea61b2 stamp exactly; #67 is worklog-only); golden selftest OK.
+- F-33-2 (R3a post-merge finding, comment 6000275125) ACKNOWLEDGED, NOT CLAIMED: fix sits inside the 033 fence (r4b active author / R0 F-33-1 precedent routing); R0's R-1 intake fix already addressed the kappa unreadable-body 201-write class; the four-site envelope-pin remainder awaits r4b/R0 disposition. Zero-collision honored.
+- This receipt lands via the round10-receipt/r1c branch + PR, self-merged under the standing operator delegation (the r3a #63 self-merge precedent, receipt-only PR class).
+
+Stage Summary:
+- PAT loss between replies is FIXED (env-reset root cause + persisted 0600 + loader). The r1c lane's round-9/10 record is now in the union ledger. Board zero-open; lane IDLE — no self-filed wave work; remaining claimables: 033 tranche-3 (r4b), F-33-2 disposition (r4b/R0), operator-routed 043 + register items (NEON branch capacity, AGENT_BRIEFING env note).
