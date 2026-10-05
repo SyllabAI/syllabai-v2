@@ -1,0 +1,30 @@
+{
+  "task": "T-MIG-047 — replay evidence preservation + full-picture union; FIRST LIVE REPLAY EVIDENCE (the instrument's maiden full-pipeline run)",
+  "agent": "R0-integrator (Super Z, session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operator_trace": "1a10d465caf49f99",
+  "date": "2026-10-05",
+  "run_37355029779_first_capacity_clear": {
+    "context": "after T-MIG-046 fallback fix + 022-pair hygiene drop (scratch branches receipted 'kept_for F-1/F-2 re-verification', purpose discharged by this standing instrument; production parent holds all base data; drops 200 + 404-verified)",
+    "pipeline_live_proofs": [
+      "Provision SUCCESS in CI via the disclosed console-mirror fallback (T-MIG-046 fix live)",
+      "Pass A apply-reset SUCCESS (Flyway-SEED posture in CI)",
+      "Pass A boot SUCCESS — the Neon data plane IS reachable from GitHub runners (neon-http driver)",
+      "155 seed cases replayed with per-case verdicts: 90 PASS / 65 FAIL",
+      "READ-ONLY PROOF SUCCESS — zero tracked-file mutation, corpus untouched",
+      "disposable branches dropped + 404-verified — zero residue"
+    ],
+    "evidence_loss_finding": "reports/seed.json ENOENT (URL-host mkdir bug) — fixed by this task; the 65-fail classification below was reconstructed from the job log before the fix",
+    "failure_classification_65": {
+      "H2_seed_row_families": "w4 flashcards/agenda/target-series/smart-lesson/course-stats/knowledge-graph/exam-series, curriculum [] vs seeded rows, w3-history total=0 — captured from LOCAL Flyway-seeded boots pinning V6/V7 fixed-uuid rows that apply-reset's wipe removes (the recorded H-2 pre-disclosure; R0/R6 to rule a third Flyway-seed posture or re-pin)",
+      "identity_pins": "w4-register-learner-201 (fresh minted id vs captured), w3-history learnerId in non-tolerated fields (recorded capture-stability debt)",
+      "rate_limit_pacing": "auth-register-* answered 429 Too Many Requests under replay pacing (identity-budget limiter) — harness pacing or budget seeding decision for R0/R6",
+      "genuine_port_findings": [
+        "w3-selfmark-unknown-attempt: v2 400 'self-mark carries no part marks' vs frozen 500 — validation-order divergence in the selfmark port (existence vs part-marks guard order)",
+        "w3-marking-throughput-teacher: object KEY-ORDER divergence in answersByState (PENDING-first vs HUMAN_MARKED-first) — the comparator's declared-unordered multiset tolerance does not cover this case's shape; R6 to rule case-side or comparator-side",
+        "smartmark service queries attempts.exam_paper_id which DOES NOT EXIST in the live baseline (packages/db/src/schema/schema.ts:205 attempts table) — 42703 recorded in boot-seed.log; stub-SQL unit tests cannot see it; the frozen core derives paper scope via questions.exam_paper_id (attempt->question join). PORT DEFECT, fix required (T-MIG-048 candidate); surfaced only by live replay — exactly the 'replay NOT RUN - env-blocked' register debt the instrument was built to expose"
+      ]
+    },
+    "gates_on_merged_fix": "selftest OK; --plan deterministic; typecheck x4 exit 0; suite 764/0/13skip/2121 = baseline EXACT; local red-run proof: report WRITTEN + exit 1; union summary WRITTEN + exit 1",
+    "merge": {"pr": 73, "sha": "9a97de8aab59fa6ab86736d5bc56ffbc65c64fc4", "disclosure_comment": 6000619438, "authority": "operator-delegated trace 1a10d465caf49f99"}
+  }
+}

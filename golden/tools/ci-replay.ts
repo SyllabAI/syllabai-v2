@@ -219,7 +219,13 @@ async function runMode(reportOut?: string): Promise<CaseResult[]> {
   console.log(`\n${pass}/${cases.length} golden cases pass against ${TARGET} (CASE_MODE=${CASE_MODE})`);
   if (reportOut) {
     const fs = await import("node:fs");
-    fs.mkdirSync(new URL(".", `file://${reportOut}`).pathname, { recursive: true });
+    const path = await import("node:path");
+    // T-MIG-047 (live finding, run 37355029779): the previous
+    // new URL(".", "file://reports/seed.json") form parses "reports" as a
+    // URL HOST, so the mkdir landed on "/" and the report write ENOENT'd —
+    // the per-case evidence was lost exactly when the run was RED. Plain
+    // path.dirname is the honest fix; the report must survive every verdict.
+    fs.mkdirSync(path.dirname(path.resolve(reportOut)), { recursive: true });
     fs.writeFileSync(reportOut, JSON.stringify({ mode: CASE_MODE, target: TARGET, total: cases.length, pass, fail: cases.length - pass, results }, null, 2));
     console.log(`[ci-replay] report written: ${reportOut}`);
   }
@@ -272,6 +278,7 @@ async function union(aPath: string, bPath: string, summaryOut?: string): Promise
         : ["All cases green."]),
     ];
     fs.writeFileSync(summaryOut, lines.join("\n") + "\n");
+    console.log(`[ci-replay] union summary written: ${summaryOut}`);
   }
   process.exit(fails.length === 0 ? 0 : 1);
 }
@@ -288,5 +295,12 @@ if (args.includes("--plan")) {
   await union(a, b, si >= 0 ? args[si + 1] : undefined);
 } else {
   const ri = args.indexOf("--report-out");
-  await runMode(ri >= 0 ? args[ri + 1] : undefined);
+  const results = await runMode(ri >= 0 ? args[ri + 1] : undefined);
+  // T-MIG-047: the recorded contract is "exits nonzero on ANY fail" — the
+  // runMode path never propagated it (the contract was accidentally enforced
+  // by the report-write crash this task fixes). Restore it explicitly; the
+  // workflow's union step remains the single job gate.
+  const failCount = results.filter((r) => !r.pass).length;
+  console.log(`[ci-replay] exit ${failCount === 0 ? 0 : 1} (${failCount} fail(s))`);
+  process.exit(failCount === 0 ? 0 : 1);
 }

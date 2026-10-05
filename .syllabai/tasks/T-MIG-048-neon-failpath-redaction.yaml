@@ -1,0 +1,55 @@
+version: 1
+task:
+  id: T-MIG-048
+  title: "Neon-branch fail-path artifact redaction — N-A closure: error text reaching PUBLIC CI logs must never embed raw control-plane bodies or credential-shaped material"
+  owner: "r0s (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) — filed+self-executed as the R0 housekeeping lane under the operator's standing 'review+merge yourself / continue working' delegation (trace 1a10d35bead06d61); single-tool-file scope per the T-MIG-046 precedent"
+  status: DONE # 2026-10-06 R0s-ROUND-10b: PR #70 merged 190706e under the operator's standing delegated authority (trace 1a10d35bead06d61; self-merge disclosure comment 6000558010; collision-resolution comment 6000759132); gates on the merged head 663bc78: typecheck x4 exit 0, 764/751/0/13skip/2121 EXACT, selftest OK, redaction proof 8/8 (receipt run-001-redaction.json). The 047->049 retarget rider resolved per §2.1 (receipt T-MIG-049/run-002-renumber.json).
+  priority: P1 # pre-first-dispatch fix required — the daily 02:30 UTC schedule runs this tool; every fail-path emission is public
+  wave: 4 # register/CI-adjacent; blocks nothing in the port lanes
+  deps: [T-MIG-044, T-MIG-046]
+  execution_record: >
+    (claim entry 2026-10-06) Found during the round-8 stand-in review
+    (pre-compaction, finding N-A) and re-verified @ 08f104d this session:
+    three fail-path sites embedded up to 400 chars of raw control-plane
+    response body into Error messages — create (seed+prod) and role-create —
+    and the create() catch re-emitted whatever the message carried into
+    console.error, i.e. PUBLIC Actions logs; on a prod-posture failure this
+    can include project/org identifiers and, for the catch path, anything a
+    non-Error throw stringified. The console-mirror fallback makes
+    non-Neon-shaped bodies more likely, and the 422 BRANCHES_LIMIT_EXCEEDED
+    posture (register item 1) makes a prod create-failure the EXPECTED path
+    until capacity is freed — the redaction must land before the next
+    dispatch. FIX (R-048-A): redactBody() reduces bodies to the honest
+    actionable parts (Neon JSON message field or byte size; '<empty body>'
+    for empties) and scrub() strips credential-shaped patterns
+    (postgres:// URIs with embedded passwords, JWTs, token/secret/key
+    assignments, emails) with a 400-cap; applied at all three body sites +
+    the catch re-emission + the unreachable-base log (defense-in-depth).
+    Status codes stay verbatim; NO behavior change on success paths; drop
+    mode and the 404-verify law untouched; workflow interface keys
+    unchanged. GATES: typecheck x4; bun test baseline-exact; golden
+    --selftest OK; usage-path smoke + a redaction unit proof executed live
+    in the receipt.
+  cross_slice_contract: >
+    CONSUMES: T-MIG-046's base-fallback + role-create surface (unchanged).
+    PROVIDES: an honest-failure posture — operators reading a failed run see
+    status + Neon's message field, never raw bodies; no secret-shaped text
+    can traverse the fail path.
+scope:
+  allowed:
+    - "golden/tools/neon-branch.ts (this fix)"
+    - ".syllabai/tasks/T-MIG-048-neon-failpath-redaction.yaml (this file)"
+    - ".syllabai/receipts/T-MIG-048/**"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "golden/cases/**, golden/runner.ts, golden/workflows (zero corpus/comparator/workflow contact — T-MIG-046 fence discipline)"
+    - "apps/**, packages/** (port lanes)"
+    - "any standing Neon branch (read-only doctrine; this fix never calls the API)"
+base:
+  repo: "syllabai-v2 (branch t-mig-048/r0s off origin/main 08f104d); frozen ref: syllabai-core @ 6cad6ef"
+basis: >
+  Operator standing directive 'continue working' (trace 1a10d35bead06d61);
+  round-8 stand-in finding N-A (pre-compaction) re-verified this session;
+  briefing §0 credential law; golden scrub doctrine (secrets never enter
+  public artifacts); T-MIG-046 single-tool-fix precedent;
+  AGENT_COORDINATION §2/§4/§7.
