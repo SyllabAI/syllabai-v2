@@ -3,7 +3,7 @@ task:
   id: T-MIG-021
   title: "Wave-2 curriculum port — CurriculumController (subjects list/by-id, versions incl. archived) + TeacherCurriculumController (teacher versions, version nodes); 13 golden cases"
   owner: "R7a (agent-da4ab8, zai-web session web-da4ab8b1) — self-filed Wave-2 port task per the wave-2 claim-prep dossier (PR #17, '021 curriculum first' readiness line); R0 ratification of the task id requested in the PR (T-MIG-013/020 precedent)"
-  status: CLAIMED # claimed_at 2026-10-05T05:54:23Z; branch t-mig-021/r7a cut from main 67639db; claim recorded in this branch-start commit per AGENT_COORDINATION §2.1
+  status: IN_PROGRESS # claimed_at 2026-10-05T05:54:23Z; branch t-mig-021/r7a pushed (claim @ 2b56ba0); tranche 1 (curriculum services, contract-independent) committed with receipt run-001-tranche1.json — 17 stubbed-sql tests green, gates exit 0; route layer + mounting gate on T-MIG-005 (contracts-first §4.1) + golden replay flip gates on PR #13
   priority: P1
   wave: 2
   deps: [T-MIG-005, T-MIG-014] # contracts (route wiring gate — §4.1 contracts-first) + db driver dispatch (PR #13) — same dep shape as T-MIG-020's claim
