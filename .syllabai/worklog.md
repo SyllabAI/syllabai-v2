@@ -1857,3 +1857,31 @@ Work Log:
 
 Stage Summary:
 - T-MIG-033 tranche-1 complete on t-mig-033/r4; tranche-2 = routes/zod/mounts, tranche-3 = SME admin. Awaiting independent review + R0 merge-intake.
+
+---
+Task ID: R0-ROUND-6C (review + merge sweep: the full open queue, 9/9)
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Operator directive (trace 1a10ce1127279f91): "You are R0. Review and merge all the PRs." Workspace had been wiped again (third fleet-wide occurrence; fresh clone + bun install 930 pkgs).
+
+Work Log:
+- SYNC: worklog tail re-read (round-6/6b + w0a/R1 housekeeping); 9 open PRs found (#48-#59 minus closed #51); frozen core re-cloned @ 6cad6ef (HEAD verified); every PR body + file inventory read before any verdict.
+- MERGE QUEUE DRAINED 9/9 (merge method: merge commit, no force, every merge preceded by R0 intake when dirty):
+  #48 t-mig-036 flake root-cause -> 88bc0ae (root cause CI-evidenced run 37294749131; test-only SteppingClock; Retry-After "61" pin verified against retryAfterSeconds at the pinned instant; 512/0/13/1329 exact).
+  #49 H-2 apply-reset-v2 -> 9bb8c60 (v1 sha 32fee89d verified byte-equal on main; two-posture tool audited line-against-line; H-2 register item CLOSED).
+  #57 t-mig-040-prep W4 goldens -> 5ff760d (zero engine edits; readiness kit READY 57/0; tolerance-hygiene + seed-uuid spot-checks clean; 170 total cases).
+  #59 t-mig-039 LLM-OUTPUT doctrine + harness -> 008e2cd (card RATIFIED; seam-injection point verified live routes/smartmark :146-166; FeedbackLlm :414-419 + refusal law :883-893 exact; selftest 15/15 anti-tautology, gate specs 25/0).
+  #58 t-mig-037 contracts -> 4c5e10d (EVERY frozen citation independently re-read: five-state enum Answer.java:34, throughput zero-fill :271-277, G-5 50/200/5/100/50, clamps 20/50/200 :43-45/:114-115, mime :44 + 4MiB :47 + verbatim messages :93/:97/:103/:106/:157; F-33-1 alignment binding; 192/0 contracts, intake 576/1466 exact). The T-MIG-006 teacher-marking DTO GAP IS CLOSED.
+  #56 t-mig-034 test-builder + transcription port -> 1e82a34 (intake 09ba069 = CONTRACTS ARBITRATION: both PRs had delivered test-builder DTOs — canonical #58 files kept, PR-side testbuilder.ts/answer-input.ts dropped, imports re-pointed; R0 rulings vs frozen: partLabel NULLABLE :147 — the canonical file had a false-reject defect, FIXED; reasons = 3-literal enum :212-218 — canonical strengthened; topicCode/coverage code-title NON-NULL per NOT NULL columns KnowledgeNode.java:35/:42 — port aligned with invariant assertions; selectByMarks line-against-line incl. the strict-closer break; mounts RATIFIED :18/:42/:59 + :27/:51; 609/1598 exact).
+  #52 t-mig-031 tranche-2 -> 0c6bc9a (index.ts mount-union with #56 — all six routers; mounts RATIFIED; path parity verified QuestionController :24/:39/:60/:79/:84/:97 + ExamPaperController :24/:42/:50; composition wrappers :95-107 verbatim; /topics binds rootId only structurally; 640/1705 exact).
+  #55 t-mig-037 hub dual-run -> 202c202 (v2SurfaceBase pure extraction; startsWith-safety cross-map honored; 8/0/212 exact; build:hub CI-parity PASS).
+  #50 t-mig-033 tranche-1 -> 4be24e6 (round-6b review stood; F-33-1 R0-EXECUTED per the F-3 precedent: five-state MARKING_STATES Answer.java:34, C-9 message quirk kept verbatim, 2 new pins incl. both throughput five-key shapes; receipt run-003 with N-1/N-3 corrections of record; contracts alignment vs #58 verified; author lane r4 credited; 681/1856 exact).
+- FIDELITY FINDINGS THIS PASS: (1) canonical test-builder.ts partLabel false-reject defect (fixed on #56 intake with pin); (2) canonical reasons law strengthened to the frozen enum; (3) F-33-1 executed on #50; (4) zero golden/** weakening anywhere; zero Java leakage; prod zero-write; Neon zero-contact.
+- PROCESS MISS (recorded, corrected before damage): the #55 intake first merged a STALE local origin/main ref (1e82a34, pre-#52) because I skipped the fetch-after-API-merge refresh; GitHub's persistent dirty state caught it; re-merged real 0c6bc9a, re-unioned, re-pushed fast-forward. Discipline: git fetch origin main IMMEDIATELY before EVERY intake merge — same class as the sweep-5 origin-reverify and round-6b detached-head misses.
+- ENV NOTES: hub `bun test` scans Playwright specs on main equally (5 errors) — CI correctly gates hub via build:hub only; flagged as future housekeeping (scoped runner hygiene). Workspace-wipe pattern: third occurrence.
+- CARDS FLIPPED (this commit): 036/040-PREP/039/037-x2/034/031 -> DONE; 033 -> IN_PROGRESS (tranche-1 landed; tranche-2 UN-GATED — contracts merged, five-state law consistent, N-4 capture condition + N-2 column selection apply; tranche-3 SME admin); 022 stays DONE with the H-2 body note.
+- CI on final main 4be24e6: verify + hub workflows triggered by the merge commits; local gates on the intake heads re-run for every PR (all green, arithmetic exact vs each PR's stated delta).
+
+Stage Summary:
+- The board is ZERO-OPEN: every filed wave-3 card is DONE except T-MIG-033 (tranches 2-3 explicitly open and un-gated) and operator-routed register items. The W3 marking/train surfaces (030/031/032/033-t1/034/037/038) plus the W4 capture (040-prep) and the LLM doctrine (039) are all on main with receipts. The only remaining register: CI-side Neon replay runner (operator), T-MIG-002-R live pull demo (operator/COW), PAT rotation (operator), hub test-runner hygiene (housekeeping), identity-budget flake CLOSED this pass, H-2 CLOSED this pass, T-MIG-006 teacher-marking DTO gap CLOSED this pass.
+
+R0-integrator | round-6c: reviewed + merged the full open queue 9/9 (#48/#49/#57/#59/#58/#56/#52/#55/#50), 3 fidelity rulings vs frozen 6cad6ef (partLabel nullable, reasons enum, five-state law executed), 1 contracts duplication arbitrated (canonical #58 kept), 2 mount sets ratified, H-2 + flake register + DTO gap closed, 1 stale-ref intake miss caught and corrected | IDLE | suggestion: route the CI-side Neon replay runner (now blocks the 022/023/024/030/032 replay re-proofs AND the #49/#57 live-posture demos), give T-MIG-033 tranche-2 a lane (it is fully un-gated: contracts #58 merged + five-state law consistent + 6 mount precedents; N-4/N-2 conditions attach), file the hub scoped-runner hygiene as a housekeeping card, and rotate the PAT (it has now traversed 3 sessions in plaintext).

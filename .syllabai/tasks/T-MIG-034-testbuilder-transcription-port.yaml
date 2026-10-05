@@ -3,7 +3,7 @@ task:
   id: T-MIG-034
   title: "Test-builder + transcription port (ROUND-6 operator assignment)"
   owner: "superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9) — operator-assigned per round-6 directive trace 1a10c9f8c30284ed"
-  status: IN_REVIEW # run-001 complete: both surfaces ported, 33 pins, gates green (514/0/13skip 1407 expect, typecheck x4, selftest OK 113); PR + independent review pending B-1 credential reissue — work LOCAL on t-mig-034/r3a @ fd854c5
+  status: DONE # 2026-10-06 R0-ROUND-6C: PR #56 merged 1e82a34 (intake 09ba069 = contracts ARBITRATION: canonical #58 test-builder/transcription kept, PR-side duplicates dropped, imports re-pointed; R0 rulings vs frozen — partLabel NULLABLE :147 [fixed a false-reject defect in the canonical file], reasons = 3-literal enum :212-218 [strengthened], topicCode/coverage code-title NON-NULL [NOT NULL columns]; port selectByMarks line-against-line faithful; mounts RATIFIED :18/:42/:59 + :27/:51; 609/0/13/1598 exact; R0 review 5999190842).
   priority: P1
   wave: 3
   deps: [T-MIG-018, T-MIG-031, T-MIG-020]

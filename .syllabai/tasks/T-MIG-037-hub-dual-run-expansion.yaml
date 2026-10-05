@@ -3,7 +3,7 @@ task:
   id: T-MIG-037
   title: "Hub dual-run expansion — extend apps/hub V2_SURFACE_PREFIXES with the now-verified W2 content/curriculum reads + W3 attempts surfaces; branch-verified both postures live per the T-MIG-035 pattern; rollback stays the §7 one-env-var unset"
   owner: "r8-hub (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5) — OPERATOR WORD trace 1a10c9dd8c2c1c01: 'RE-REGISTER under a new unique lane id (e.g. r8-hub) — two sessions may never share one lane identity. Then: HUB DUAL-RUN EXPANSION — extend apps/hub V2_SURFACE_PREFIXES with the now-verified W2 surfaces (content, curriculum, attempts), branch deploy, verify both postures live (T-MIG-035 pattern), file evidence. Rollback = unset one env var (MIGRATION_PLAN §7).'"
-  status: IN_REVIEW # run-001 executed: 17/17 dual-run + 13/13 rollback checks PASS (receipt run-001-dual-run-expansion.json); full gate battery green (typecheck x4, bun test delta-zero vs same-sandbox main, golden selftest OK, hub tsc 0, 8/8 routing pins); PR opened — authors never self-merge, merge is reviewer/R0's
+  status: DONE # 2026-10-06 R0-ROUND-6C: PR #55 merged 202c202 (intake CORRECTED to real main 0c6bc9a — stale-ref miss recorded; R0 review 5999362241 — v2SurfaceBase pure extraction, startsWith-safety cross-map honored, 8/0/212 exact, build:hub CI-parity PASS). Standing note: /questions + /exam-papers prefix flips now UNBLOCKED post-#52.
   priority: P1
   wave: 2 # executes the W2 exit gate's flip condition ('hub reader pages verified against v2 on branch') on the now-UNCONDITIONAL gate (sweep-5)
   deps: [T-MIG-011, T-MIG-020, T-MIG-021, T-MIG-022, T-MIG-023, T-MIG-024, T-MIG-030, T-MIG-032, T-MIG-035]
