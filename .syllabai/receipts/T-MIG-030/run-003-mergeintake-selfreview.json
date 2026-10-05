@@ -1,0 +1,42 @@
+{
+  "task": "T-MIG-030",
+  "run": 3,
+  "kind": "MERGE_INTAKE_SELF_REVIEW",
+  "lane": "R7a (agent-da4ab8, zai-web session web-da4ab8b1)",
+  "executed_at": "2026-10-05T08:20Z",
+  "branch": "t-mig-030/r7a",
+  "merge_authority": {
+    "basis": "operator delegation",
+    "operator_word_trace": "1a10b1d0c70818a9 (2026-10-05, zai-web chat, session web-da4ab8b1): 'check. If R0 did not merge, then review and merge yourself. Continue working.'",
+    "r0_state_at_review": "no verdict on PR #31; last R0 activity ffc2876 housekeeping 08:06:32Z",
+    "precedent": "PR #32/#33 self-merge under trace 1a10b0e4cd907d01 (review 5411529120, merge b3b3303; post-hoc ratified by R0-SWEEP-2 without objection)",
+    "coi": "author == merger, disclosed; six compensating controls listed in the PR review comment"
+  },
+  "merge_intake": {
+    "head": "2c07ffb",
+    "intake_of": "origin/main ffc2876 (post-#26/#29/#30/#32/#33)",
+    "conflicts": ".syllabai/worklog.md ONLY — append-union, both sides byte-preserved, r7a entries re-landed before the main chain (bfa26a3 splice convention)",
+    "scope_file_overlap": "zero — all five scope files (services/assessment/*) auto-merged clean"
+  },
+  "fence_audit": {
+    "diff_surface": "origin/main..HEAD = 12 files",
+    "breakdown": "services/assessment: 5; test/assessment: 3; .syllabai: 4 (yaml, run-001, run-002, worklog)",
+    "forbidden_paths": "zero",
+    "out_of_fence": "zero"
+  },
+  "gates": {
+    "typecheck_x4": "contracts/shared/db/api all exit 0",
+    "bun_test": "381 pass / 0 fail / 13 skip / 967 expect",
+    "test_count_decomposition": "381 = 347 (main) + 34/64 (this PR suite, matches run-002-tranche1 exactly); 347 matches #32's independent run-002 re-stamp; R0 receipts 341 (93196f1) / 311 (aa4a9e3) noted as stale-checkout measurement noise, no code delta",
+    "golden_selftest": "OK (read-only)",
+    "replay": "NOT RUN — tranche-2 surface; T-MIG-018 + T-MIG-007 gates now merged, replay executes with tranche-2"
+  },
+  "law_spot_check_first_hand": {
+    "iae_400": "GlobalExceptionHandler.java:167-170 -> BadRequestException('malformed request') fixed body at both port throw sites (submit.ts:282,288); detail-not-echoed parity comment-documented",
+    "v20_paper_gate": "AssessmentService.java:62-69 -> BLOCKING_PAPER_STATES [REJECTED, FLAGGED]; paper-less SEED_DEMO orphans pass (submit.ts:71,351-362)",
+    "mcq_grade": "AssessmentService.java:102 -> marksAwarded = correct ? question.marks : 0 (submit.ts:174)",
+    "clamp_excerpt": "clampLimit null/<1 -> 50 cap 100; excerpt collapse 219 + U+2026 (history.ts:42-43,68-74)"
+  },
+  "bind_slot_discipline": "re-audited on final head — no ${} slot carries a column list or CTE; IN-clause state literals are bind parameters (values-as-params form is correct); no regressions since run-002",
+  "push_discipline": "no force-push in lineage (0e87be5 -> 2c07ffb fast-forward); remote head verified 0e87be5 immediately pre-push (fresh-ls-remote rule)"
+}

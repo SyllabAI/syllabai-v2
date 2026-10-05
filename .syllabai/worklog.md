@@ -1032,6 +1032,34 @@ Stage Summary:
 - T-MIG-021 -> DONE (merged 9732a1e). Wave-2 curriculum READ surface live behind the golden gate. Queue after this merge: #26 (R1-contracts-c, renumber-to-018 refile pending — directive corrected after R0-REPAIR-1 took 017 for the golden-verify task). Branch sightings: t-mig-007/r6 (R6 lane, no PR yet). Board: T-MIG-011 CLAIMED (r5 silent ~13h — reassignment candidate). Standing operator items: reaffirm single-R0 authority after the #25 breach; CI-side Neon integration runner; T-MIG-002 baseline-SQL repair (F-5); PAT rotation (chat-transit).
 
 ---
+Task ID: T-MIG-030 claim
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Self-file Wave-3 assessment-loop port slice A (AttemptController + AttemptHistoryController) and claim T-MIG-030
+
+Work Log:
+- Wave-2 closure verified first: T-MIG-021 DONE (my lane, merged 9732a1e via PR #28, F-1 ruled as-captured); #21 (T-MIG-016) and #22 (T-MIG-020) merged; board shows zero T-MIG-03x seeds. Claim surface for wave-3 ports is empty and #29's body pre-assigns ids T-MIG-030..034, so per the T-MIG-013/020/021 self-filing precedent this lane seeds slice A.
+- Claimed T-MIG-030 @ 2026-10-05T07:39:18Z on branch t-mig-030/r7a (base 5ee240e) after zero-collision scan (no 03x yaml on main or the capture branch; no t-mig-030* heads; open PRs #26/#29/#30 clean). Claim receipt: receipts/T-MIG-030/run-001.json.
+- Surface read from frozen core @ 6cad6ef: AttemptController (MCQ 201 auto-grade + structured 201 PENDING), AssessmentService (V20 paper gate, version-VALIDATED fail-closed 404s, duplicate/missing-part 400s, provenance strings), AttemptHistoryController/Service (limit clamp 50/100, options-label resolution, parts settle rule, KG topic, 220-char excerpt), AttemptRepository/AnswerRepository history legs. Evidence emission ports as an injected no-op-able seam (Observer contract, not golden-gated).
+- 8 golden cases pinned to the slice (2 unauthed 401s shell-shared); submittedAt/attemptedAt nanosecond volatility already in case tolerate lists — port writes full-precision ISO per the T-MIG-021 F-1 ruling posture.
+- Split proposal recorded in the yaml (recommendation only, R0 arbitrates): 030 attempt+history (this), 031 exam-papers+questions, 032 self-mark+smart-mark, 033 teacher-marking+sme-admin, 034 test-builder+transcription.
+
+Stage Summary:
+- T-MIG-030 CLAIMED (yaml + claim receipt on branch t-mig-030/r7a; PR to follow with R0 ratification request). Tranche-1 = services/assessment + stubbed-sql tests (021 pattern); tranche-2 gates on T-MIG-018 (#26) + T-MIG-007 (#29) merges; mounts OUT-OF-FENCE flagged. No upstream writes.
+
+---
+Task ID: T-MIG-030 tranche 1
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Execute T-MIG-030 tranche-1 — assessment services (history read model + both submission paths) + stubbed-sql tests
+
+Work Log:
+- Shipped services/assessment {sql,types,history,submit,index} + test/assessment {helpers,history,submit} on branch t-mig-030/r7a (claim PR #31). Zero out-of-fence touches; zero upstream writes.
+- Frozen law ported verbatim: both submission paths (MCQ auto-grade with marksAwarded = correct ? marks : 0; structured PENDING with per-part answers, null->"" trim), gate ORDER preserved (active filter -> STRUCTURED version-VALIDATED -> V20 paper gate -> option existence), fail-closed "question"/"structured question"/"option"/"question version"/"parts for question version" 404s, IllegalArgumentException -> 400 with the FIXED "malformed request" body (GlobalExceptionHandler:167-170 — detail is log-only, comment-documented at throw sites), clampLimit (null/<1 -> 50, cap 100), excerpt (strip/collapse/219+"…"), parts settle rule (marksAwarded = part sum only when all parts settled), AttemptHistoryView/Item/PartItem + both submit views verbatim from the DTO records.
+- Parity decisions disclosed in the receipt: batched option/node fetches (fetch-strategy precedent, boundary unchanged), per-attempt parts statement kept verbatim, EvidencePublisher injected Observer seam (default no-op; structured emits nothing at submit — V8), injected SubmitClock (@PrePersist parity), @Transactional -> per-statement autocommit disclosure.
+- Gates: typecheck x4 exit 0; bun test 320/0/13skip 853 expect (main 286/789 + 34/64 exactly); golden selftest OK; replay NOT RUN (tranche-2 + env gates).
+
+Stage Summary:
+- T-MIG-030 tranche-1 complete on t-mig-030/r7a; PR #31 extended. Pending: tranche-2 (route factories + zod on T-MIG-018 merge; mounts flagged OUT-OF-FENCE; replay on T-MIG-007 merge + env). One bind-slot discipline catch fixed in-development (join(',') -> any(${}::uuid[])).
+---
 
 Task ID: T-MIG-011
 Agent: R5-hub-lane (Super Z, zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b — REASSIGNED owner; prior claimant r5/session web-1f157e25)
