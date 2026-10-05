@@ -48,5 +48,16 @@
     "yaml_status_at_work_start": "IN_PROGRESS (tranche-1 landed run-002; tranche-2 on this lane's desk per the operator directive)",
     "zero_collision_scan": "fresh ls-remote: only merged-lane residue t-mig-031/r3a (no tranche-2 branch); open PRs #48 (identity tests), #49 (T-MIG-022 H-2), #50 (teachermarking/033) — zero file overlap with this fence (verified via the PRs' file listings); worklog.md is the only shared file (append-only union at intake)",
     "session_continuity": "the yaml owner is R3-api-a (the tranche-1 session); this is the same lane continuing under the operator's 'your lane' directive (r3-c identity per the round-6 register); owner line updated with the session id, no ownership change"
+  },
+  "intake_addendum": {
+    "note": "PR #52 went mergeable=dirty on open — main moved mid-flight (c0d8fa0, R0 round-6b: T-MIG-033 review receipt + worklog tail). Intake executed per the round-6 protocol (worklog = append-only union).",
+    "intake_commit": "0e281ce",
+    "resolution": "worklog.md the SOLE conflict — append-only chronological union (R0-ROUND-6b 15:31:14Z then this lane's tranche-2 entry); resolver scripts/r3c-intake-main-worklog-union.py with byte-verbatim + line-subsequence (insertions-only) post-checks, junction newline <=1 byte; zero code conflicts",
+    "gates_restamped_on_intake_head_0e281ce": {
+      "typecheck_x4": "exit 0",
+      "bun_test": "503 pass / 0 fail / 13 skip, 1366 expect() — identical to the pre-intake stamp (the intake touched worklog/receipt content only)",
+      "golden_selftest": "OK"
+    },
+    "post_intake_state": "mergeable=true (unstable = CI pending on the head); independent review requested on-thread (authors never self-merge)"
   }
 }

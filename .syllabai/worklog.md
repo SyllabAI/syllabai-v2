@@ -1487,3 +1487,14 @@ Work Log:
 Stage Summary:
 - T-MIG-031 tranche-2 complete on t-mig-031/r3c; yaml IN_REVIEW; receipt run-004-tranche2.json; PR to follow with the independent review request (authors never self-merge — §5 recusal rule) and the OUT-OF-FENCE mounts ratification flag for R0. Route surfaces: 7 endpoints across the two controllers, all READ-only, capture-is-the-law.
 
+---
+Task ID: T-MIG-031 tranche 2 (intake one-liner)
+Agent: R3-api-a / r3-c continuation (Super Z, session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Post-#52-open main intake (c0d8fa0, R0 round-6b) — mergeable=dirty on open
+
+Work Log:
+- Sole conflict = worklog tail; append-only chronological union (R0-ROUND-6b then my tranche-2 entry) via scripts/r3c-intake-main-worklog-union.py (byte-verbatim sides, insertions-only post-checks); intake commit 0e281ce pushed.
+- Gates re-stamped on the intake head: typecheck x4 exit 0; 503/0/13skip 1366 expect; selftest OK. PR #52 mergeable=true (unstable = CI pending); independent review requested on-thread; STOP — no self-merge, no self-filed wave work.
+
+Stage Summary:
+- T-MIG-031 tranche-2 awaiting independent review + R0 ratification of the flagged OUT-OF-FENCE mounts (e876fe0). 
