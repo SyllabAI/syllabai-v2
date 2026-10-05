@@ -786,3 +786,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-022 claim landed (this commit). Next: Neon branch create → apply-reset to Flyway-SEED posture → boot main HEAD api over HTTP → replay the 25 content cases → receipt + verdict. Any genuine divergence is FILED, never weakened or fixed in-pass.
+
+---
+Task ID: T-MIG-022 (execution complete)
+Agent: superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Execute the Wave-2 exit gate — two-posture live golden replay of the merged T-MIG-020 content read surfaces on the UNMODIFIED main HEAD
+
+Work Log:
+- Network posture re-verified: api.neon.tech still DNS-dead, but console.neon.tech/api/v2 + ep-*.neon.tech reachable (the same posture T-MIG-014 live-proved 3/3 with). Created two rows-only COW branches off production br-muddy-bar-a5huwldd via the console control plane: t-mig-022/r3a (br-wild-rice-a58063jp) for the seed posture and t-mig-022/r3a-prod (br-red-wildflower-a5vyd81c) kept AS-COWED for the production posture. Role passwords taken from creation responses per the T-MIG-014 operational note; held in workspace secrets only; production compute never contacted.
+- Replay tooling copied VERBATIM (sha-verified) from my preserved t-mig-020/r3a branch exactly as the R0 #20 disposition credited, plus a posture-aware v2 driver (CASE_MODE=seed|prod) and diagnostics (deep-diff-case.ts path-aware walker, setcheck.ts multiset comparator, boot-with-timeout.ts harness envelope).
+- Pass A (seed posture, apply-reset topological wipe + probes): 25/25 PASS — the merged port is byte-faithful on the seed-state tranche over real HTTP + real Neon.
+- Pass B (production posture, no reset): 11/15 — first run hit Bun.serve's 10s default idleTimeout on the 581KB listing (harness envelope fixed via wrapper, zero api changes). 4 fails root-caused with field-level evidence: F-1 createdAt Instant precision (expected ...578011Z vs actual ...578Z; 1021 row-instances on the listing — the canonical contract header's "until a real-data capture says otherwise" deferral has now matured); F-2 page-text assembly returns "" where the capture pins 716 chars (citation reader functional gap); F-3 paper-review versions[] ordering — setcheck proves same 6/6 multiset, core findByPaperId has NO ORDER BY (heap order) and the port is equally unordered, so the CASE over-pins unspecified ordering — R6/R0 capture-stability ruling required, not a port fix.
+- Fence held throughout: verification-only task; every divergence FILED (receipt run-001.json + run-001-diagnosis.txt), none weakened, none tolerated silently, none fixed in-pass. Scratch branches kept for fix re-verification.
+
+Stage Summary:
+- T-MIG-022 → IN_REVIEW (union 36/40; seed tranche fully green; 3 filed findings with owner-ready fix sketches). The Wave-2 exit gate is one port-side ISO-writer fix (F-1), one page-text assembly fix (F-2), and one R6/R0 ordering ruling (F-3) away from 40/40. The posture-matrix protocol (seed|prod) and the wrapper envelope are reusable fleet doctrine for every remaining live-replay wave.

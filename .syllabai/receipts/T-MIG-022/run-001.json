@@ -1,0 +1,78 @@
+{
+  "task": "T-MIG-022",
+  "agent": "superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)",
+  "date": "2026-10-05",
+  "title": "Golden-gate live-replay verification of the merged T-MIG-020 content read surfaces — Wave-2 exit gate",
+  "port_under_test": "main HEAD 01d0e9d (r3-c's merged T-MIG-020 port via #22, UNMODIFIED — verification-only fence held: zero apps/**/packages/**/golden/** changes)",
+  "replay_protocol": {
+    "why_two_postures": "The 40 content-family golden cases pin two MUTUALLY EXCLUSIVE database postures: the T-MIG-020 tranche (25 cases) pins the Flyway-SEED state (content tables empty, zero users, no active curriculum versions), while the T-MIG-004 F-5 extension tranche (15 *realdata*/*real-* cases, merged via #16 in R0-SWEEP-1) pins REAL production rows (1023-document listing, fixed-UUID papers, real page text, v1 counters 59/144, v3 practicableTopicCount 34). The Wave-2 exit verdict is the UNION of two posture-specific passes (GOLDEN_MASTER §4 per tranche).",
+    "posture_A_seed": {
+      "branch": "Neon COW t-mig-022/r3a (br-wild-rice-a58063jp, parent production br-muddy-bar-a5huwldd; rows-only)",
+      "reset": "apply-reset.ts (copied verbatim from t-mig-020/r3a per R0 #20 disposition; topological wipe + roles re-seed + posture probes: documents 0, exam_papers 0, questions 0, users 0, validated structure nodes 0, active versions 0)",
+      "boot": "api booted via harness wrapper boot-with-timeout.ts (import.meta.main=false path, Bun.serve idleTimeout=255) — zero api code touched",
+      "join_code": "SYLLABAI_TEACHER_JOIN_CODE configured with a replay-only synthetic value — IDENTICAL to the F-5 capture's own posture ('SYLLABAI_TEACHER_JOIN_CODE synthetic' per run-002-extension-neon.json); teacher principal minted through the honest register surface",
+      "result": "25/25 PASS (exit 0) — full output: run-001-passA-seed.txt"
+    },
+    "posture_B_prod": {
+      "branch": "Neon COW t-mig-022/r3a-prod (br-red-wildflower-a5vyd81c, same parent; AS-COWED, NO reset — the capture's own posture)",
+      "result": "11/15 PASS — full output: run-001-passB-prod.txt; 4 fails root-caused below (F-1 x2 cases, F-2, F-3)"
+    }
+  },
+  "findings": [
+    {
+      "id": "F-1",
+      "class": "GENUINE-FAIL (port divergence — FILED, not fixed in-pass; verification-only fence)",
+      "owner": "T-MIG-020 port lane (r3-c) / R0 routing",
+      "cases": ["content-docs-teacher-detail-realdata-200", "content-docs-teacher-realdata-200"],
+      "mechanism": "createdAt serialization precision. Java Jackson JSR-310 renders Instant with the DB timestamp(6) micros via shortest-round-trip fraction (e.g. '2026-10-04T09:37:00.129532Z'); the port renders fixed milliseconds via JS Date ISO ('2026-10-04T09:37:00.129Z'). Deep-diff evidence: teacher-detail has EXACTLY ONE divergence (@ .createdAt); teacher-listing has 1021 divergences, ALL @ .N.createdAt with identical semantics.",
+      "port_author_preview": "The canonical contract's own header (packages/contracts/src/content.ts:25-28) anticipated exactly this: 'Instant fields ... JS Date.toISOString() caps at milliseconds ... Golden tolerance treats these as volatile fields UNTIL A REAL-DATA CAPTURE SAYS OTHERWISE.' The F-5 real-data capture (merged via #16) now exists and pins full precision — the deferral has matured; the port's ISO writer needs Instant.toString() shortest-round-trip semantics (render the DB fractional digits trimmed of trailing zeros).",
+      "fix_sketch": "port-side ISO writer change (format the DB timestamp fraction verbatim, trailing-zero-trimmed, instead of Date round-trip); affects content view assembly only; unit pins updated; re-run of Pass B expected 13/15 after fix (F-2 remains)"
+    },
+    {
+      "id": "F-2",
+      "class": "GENUINE-FAIL (port divergence — FILED, not fixed in-pass)",
+      "owner": "T-MIG-020 port lane (r3-c) / R0 routing",
+      "cases": ["content-reader-real-page-text-200"],
+      "mechanism": "Page-text assembly returns EMPTY for a real text page: expected 716 chars of page-4 text ('The list shows some techniques used to separate mixtures...') for doc 853ae02d-0090-4c40-89ef-b69681c8bb40, actual ''. The sibling cases PASS: page=1 cover-empty (honestly empty on the capture side too) and page=99 bounds-404 — so range checks and the corpus-law gate are correct; the TEXT YIELD of the assembly (reader.ts collect() over doc.textBlocks/tables/equations filtered by pageNumber===page, verbatim DocumentPageText.of port) produces nothing for a page the capture proves has text. The doc query feeding the assembly (repositories.ts) is the prime suspect (shape/column mismatch), to be traced by the owner lane; the capture COW and this run's COW share the same production parent, so the DATA side is identical.",
+      "impact": "learner citation reader serves no page text for real documents — a functional gap, not a formatting one"
+    },
+    {
+      "id": "F-3",
+      "class": "CAPTURE-STABILITY (R6/R0 ruling required — NOT a port defect)",
+      "owner": "R6 golden-master steward / R0 (same family as T-MIG-013's re-capture stability probe follow-up)",
+      "cases": ["teacher-content-paper-review-realdata-200"],
+      "mechanism": "versions[] ORDERING: set-compare diagnostic (setcheck.ts) proves SAME multiset — 6/6 versionIds, 6/6 questionIds, paper header identical — in a DIFFERENT sequence. The frozen core's queryVersions path is questionVersions.findByPaperId(paperId), a Spring Data derived query with NO ORDER BY (ContentReviewService.java:869) — unspecified heap order pinned by the capture. The port's findByPaperId (review-repos.ts:125) is equally unordered (faithful). No faithful port can pass this case deterministically; the case over-pins unspecified DB ordering.",
+      "options": "(a) R6 amends the case to ordering-insensitive comparison for versions[] (tolerate-style rule), or (b) re-capture with a pinned deterministic order — an upstream contract change is FORBIDDEN (C1). Evidence arrays attached in run-001-diagnosis.txt"
+    }
+  ],
+  "harness_findings": [
+    {
+      "id": "H-1",
+      "finding": "Bun.serve auto-serve (bun apps/api/src/index.ts) defaults to a 10s request idleTimeout; the 581KB / 1023-row listing over neon-http on cold free-tier compute exceeds it ('[Bun.serve]: request timed out after 10 seconds' + client ECONNRESET). Fixed HARNESS-SIDE via boot-with-timeout.ts (imports the app, serves with idleTimeout=255) — zero api code touched. Recorded for every future live-replay lane.",
+      "classification": "replay-environment (this lane)"
+    },
+    {
+      "id": "H-2",
+      "finding": "apply-reset.ts docstring/code divergence: the header claims 'The curriculum skeleton rows (versions, subjects, knowledge_nodes, PART_OF edges) are preserved' but step 3 unconditionally DELETEs every public table (post-reset probes: knowledge_nodes 0, PART_OF 0, active versions 0). Harmless for the seed-pinned tranche (they pin emptiness) but the promised behavior does not exist for future curriculum fixed-uuid replays (T-MIG-021's needs). Flagged to r7a/R0; NOT fixed in-pass (tool is a sha-verified verbatim copy per the R0 #20 disposition).",
+      "classification": "tooling doc/code divergence (t-mig-020/r3a preserved branch)"
+    }
+  ],
+  "verdict": {
+    "seed_tranche": "25/25 PASS — the merged T-MIG-020 port reproduces the captured seed-state behaviour byte-faithfully over real HTTP + real Neon, matching the superseded lane's own live evidence and validating the merged port's parity",
+    "prod_tranche": "11/15 PASS — 3 findings filed (F-1 port fix, F-2 port fix, F-3 capture-stability ruling)",
+    "union": "36/40",
+    "wave2_exit_gate": "NOT fully green: GOLDEN_MASTER §4 100% PASS is met for the seed tranche only. F-1/F-2 are precise, fixable port divergences; F-3 needs an R6/R0 ruling. No case was weakened, no tolerance was silently added, no capture was altered — every fail is FILED with root-cause evidence per AGENT_COORDINATION §6."
+  },
+  "gates": [
+    {"cmd": "replay Pass A (seed posture, CASE_MODE=seed)", "result": "25/25 PASS exit 0"},
+    {"cmd": "replay Pass B (prod posture, CASE_MODE=prod)", "result": "11/15 exit 1 (4 fails filed)"},
+    {"cmd": "deep-diff diagnostics (deep-diff-case.ts x3, setcheck.ts x1)", "result": "root causes isolated: 1 field (F-1 detail), 1021 fields all same rule (F-1 listing), 1 field (F-2 text), ordering-only (F-3)"},
+    {"cmd": "fence audit of this branch", "result": "changes confined to .syllabai/receipts/T-MIG-022/**, .syllabai/tasks/T-MIG-022*.yaml, .syllabai/worklog.md — zero apps/**/packages/**/golden/** touches"}
+  ],
+  "credentials": "Neon branch roles t_mig_022_agent (both branches) created via console.neon.tech/api/v2; passwords taken from creation responses and held ONLY in the operator-workspace .secrets file (chmod 600, gitignored, never echoed/committed); production compute never contacted; production role untouched",
+  "scratch_branches": [
+    {"name": "t-mig-022/r3a", "id": "br-wild-rice-a58063jp", "endpoint": "ep-polished-dew-a5z3v4bs", "kept_for": "F-1/F-2 fix re-verification (reset to seed posture before re-run)"},
+    {"name": "t-mig-022/r3a-prod", "id": "br-red-wildflower-a5vyd81c", "endpoint": "ep-nameless-cell-a5tr0kah", "kept_for": "F-1/F-2 fix re-verification in prod posture (as-cowed, no reset)"}
+  ],
+  "unblocks": "F-1 fix gives the port Instant-parity rendering (content-wide); F-2 fix restores the citation reader's core function on real corpus; F-3 ruling establishes the ordering-insensitivity doctrine for all future heap-order-pinned captures; H-1 wrapper is the canonical boot envelope for every future live-replay lane"
+}

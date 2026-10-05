@@ -3,11 +3,29 @@ task:
   id: T-MIG-022
   title: "Golden-gate live-replay verification of the merged T-MIG-020 content read surfaces (Wave-2 exit gate)"
   owner: "superz-agent-b (R3 lane; credited replay-tooling author per R0 disposition on PR #20)"
-  status: IN_PROGRESS
+  status: IN_REVIEW
   priority: P1
   wave: 2 # exit-gate verification of the Wave-2 content read port
   deps: [T-MIG-002, T-MIG-004, T-MIG-014, T-MIG-020]
-  execution_record: "—"
+  execution_record: >-
+    2026-10-05: Two-posture union replay executed on the UNMODIFIED merged
+    port (main 01d0e9d). Pass A (Flyway-SEED posture, reset COW branch
+    br-wild-rice-a58063jp): 25/25 PASS. Pass B (production posture, as-cowed
+    branch br-red-wildflower-a5vyd81c, no reset — the F-5 capture's own
+    posture): 11/15. Union 36/40. Three findings FILED with root-cause
+    evidence (receipt run-001.json + run-001-diagnosis.txt): F-1 createdAt
+    Instant-precision rendering (2 cases; the contract header's "until a
+    real-data capture says otherwise" deferral has matured — port ISO writer
+    needs Instant.toString() semantics); F-2 page-text assembly returns ""
+    for a real 716-char text page (citation reader functional gap); F-3
+    paper-review versions[] ordering — capture pins unspecified heap order
+    (core findByPaperId has NO ORDER BY; port equally unordered = faithful),
+    same 6/6 multiset — R6/R0 capture-stability ruling required. Harness:
+    H-1 Bun.serve 10s default idleTimeout wrapper (boot-with-timeout.ts);
+    H-2 apply-reset.ts docstring/code divergence (skeleton preservation
+    promised, wipe implemented) flagged to r7a/R0. Zero production Neon
+    contact; roles/passwords held in workspace secrets only; fence held
+    (zero apps/**/packages/**/golden/** changes).
 base:
   repo: "syllabai-v2 @ 01d0e9d (post R0-SWEEP-1); golden set = the 25 T-MIG-020 content cases; docs/GOLDEN_MASTER.md §4"
 basis: >
