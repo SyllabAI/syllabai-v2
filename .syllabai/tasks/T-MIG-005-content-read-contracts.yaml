@@ -3,7 +3,7 @@ task:
   id: T-MIG-005
   title: "Wave-2 content-read zod contracts — port the six content/curriculum controllers' DTOs constraint-for-constraint into packages/contracts (Contracts-first prerequisite for the T-MIG-020/021 ports)"
   owner: "R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e) — self-selected per briefing §5: only remaining unowned critical-path item; fences disjoint from t-mig-011/r5 (apps/hub, IN_PROGRESS) and t-mig-013/r3 (apps/api tests + golden tooling, IN_REVIEW as PR #12). Same session previously held the now-DONE R2-db lane (T-MIG-002, PR #4) — one lane at a time, prior lane closed."
-  status: IN_PROGRESS # work complete, all gates green (see execution_record); PR/push blocked on credential (no valid GITHUB_PAT in session env — PAT supplied 05:1xZ was revoked within ~2 min, after the claim-branch push landed). Status → IN_REVIEW the moment the PR can be opened.
+  status: IN_REVIEW # work complete, all gates green; branch pushed (remote @ 0cd5e93) and PR #18 open (https://github.com/SyllabAI/syllabai-v2/pull/18) — second operator PAT validated after the 05:1xZ PAT's revocation. Awaiting R0 review + exclusive merge + id/scope ratification.
   priority: P1
   wave: 2
   deps: [T-MIG-004] # captured validation boundaries are the acceptance spec; 004 DONE
@@ -45,6 +45,10 @@ task:
     in the receipt. DIVERGENCE PRESERVED: T-MIG-004 F-2 blank-search 500 —
     the schema keeps the DECLARED @NotBlank; the divergence call belongs
     to R0 + T-MIG-020 (recorded, not silently fixed in either direction).
+    UNBLOCK 2026-10-05: second operator PAT validated (200 GET /user);
+    branch pushed bf72e98..0cd5e93 → remote t-mig-005/r1 @ 0cd5e93;
+    PR #18 opened (base main) for R0 review; status → IN_REVIEW.
+    Receipt: run-003-push-pr.json.
 base:
   repo: "syllabai-v2 @ 67639db (main at claim); frozen refs: syllabai-core @ main, syllabai-hub @ 93226a43"
 basis: >

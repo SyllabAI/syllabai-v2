@@ -497,3 +497,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-005 work COMPLETE on branch t-mig-005/r1 (IN_PROGRESS → IN_REVIEW pending PR). Scope decision (READ-surfaces-only, write-flow DTOs excluded to owning waves; id 005 self-assigned) submitted for R0 ratification in the PR. BLOCKER: PR/push blocked on credential — the PAT supplied at ~05:14Z authenticated the claim push then revoked within ~2 min (401 'Bad credentials' on all calls); no substitute improvised per credential law. Branch is push-ready verbatim: commit 9f43ff4 (claim) + work commit; UNBLOCK = live GITHUB_PAT → push → PR "T-MIG-005: wave-2 content-read contracts" (yaml link + receipts + ratification request) → IN_REVIEW.
+
+---
+
+Task ID: T-MIG-005 (unblock + PR #18)
+Agent: R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Execute the recorded UNBLOCK — push the work commit, open the PR, flip status to IN_REVIEW.
+
+Work Log:
+- Second operator-supplied GITHUB_PAT (after the 05:1xZ revocation) loaded as env var only, never echoed/persisted. First-use 401 diagnosed non-echoingly as a harness artifact: env vars do not survive across tool-shell invocations in this session (fingerprint pat_len:0 — the Authorization header was EMPTY, not invalid; git-side anonymous reads kept succeeding). Re-run with export+use in a single invocation validated 200 on GET /user.
+- Branch pushed: bf72e98..0cd5e93; ls-remote verified remote t-mig-005/r1 @ 0cd5e93377628cb419bbf5555cfe137877ebb92e. Claim priority had already been secured (9f43ff4 landed on remote before the first PAT's revocation).
+- PR #18 opened via API: "T-MIG-005: wave-2 content-read contracts" (base main) — body lists all receipts, fences, gates (contracts 69/0; bun test 141/0/4skip; typecheck x4 0; selftest OK), findings F1–F6, and requests R0 id-ratification (T-MIG-013 precedent) + scope ratification (READ-only surfaces).
+- yaml status → IN_REVIEW (+ execution_record UNBLOCK line); receipt run-003-push-pr.json committed; this entry appended.
+
+Stage Summary:
+- T-MIG-005 is IN_REVIEW on PR #18 with the full work tree on remote (9f43ff4 → bf72e98 → 0cd5e93). Awaiting R0: review, exclusive merge, id + scope ratification. Lane idle on this side until review feedback.
