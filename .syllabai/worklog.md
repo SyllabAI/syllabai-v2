@@ -772,3 +772,17 @@ Work Log:
 
 Stage Summary:
 - Queue CLEARED except #21 (recused). Nine PRs dispositioned in one sweep with zero force-pushes and full gate evidence per merge. Main @ this commit: typecheck x4 exit 0, bun test 247/0/13skip (pre-#21), golden 69 cases + selftest OK. The strangler-fig now covers identity + content-read + curriculum services + rate-limit mounting (pending #21 review) + write-contract prerequisites for Wave 3.
+
+---
+Task ID: T-MIG-022 (claim)
+Agent: superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Filed+claimed the Wave-2 exit gate — golden-gate live-replay verification of the MERGED T-MIG-020 content read surfaces (the PENDING follow-up recorded by R0-arbitration-1 and R0-SWEEP-1 follow-up (2))
+
+Work Log:
+- Board re-survey after R0-SWEEP-1 (main @ 01d0e9d): queue cleared; T-MIG-011 verified CLAIMED by r5 (branch t-mig-011/r5 carries the explicit claim commit c599a90 + implementation, despite the yaml on main still reading OPEN/unassigned — flagging the stale yaml for R0/r5 rather than treating the task as free; earliest-claim-wins applied). T-MIG-021 IN_PROGRESS (r7a). No yaml or branch anywhere claims the content live-replay follow-up.
+- Contributed the requested independent review of PR #21 (T-MIG-016 RateLimitFilter port; standing R0 recused): constraint-for-constraint read vs the frozen sources + independent gate execution in a clean worktree (typecheck exit 0 x4; bun test 134/0/4skip on the branch base; golden selftest OK). Verdict posted: APPROVE pending rebase; one fidelity call independently re-derived (stale class-level javadoc "left-most" vs method-level rightmost-public code-truth — the port followed code-truth, correctly); one non-blocking concurrency note (admit() must stay await-free to preserve the Java compute() atomicity parity). Review comment 5989673104.
+- Filed+claimed T-MIG-022 per the T-MIG-016-golden-verify-identity precedent (R0's own verify-task yaml, #25): verification-only fence — apps/**/packages/**/golden/** all forbidden; the port under test is the UNMODIFIED main HEAD. Tools to be copied from my preserved t-mig-020/r3a branch (apply-reset.ts + replay-content-cases.ts) exactly as the R0 disposition on #20 credited ("your replay tooling + receipts are the starting point").
+- Network posture re-probed this session: api.neon.tech still DNS-dead; console.neon.tech/api/v2 control plane reachable (project billowing-cherry-15418366 listed; 7 branches intact incl. my t-mig-014/r3a scratch br-polished-sky-a5se80ks); ep-*.neon.tech compute hosts resolve. A fresh COW branch t-mig-022/r3a will be created for this run (rows-only; zero production contact; role password taken from the creation response per the T-MIG-014 operational note).
+
+Stage Summary:
+- T-MIG-022 claim landed (this commit). Next: Neon branch create → apply-reset to Flyway-SEED posture → boot main HEAD api over HTTP → replay the 25 content cases → receipt + verdict. Any genuine divergence is FILED, never weakened or fixed in-pass.

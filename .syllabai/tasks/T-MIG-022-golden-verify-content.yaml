@@ -1,0 +1,40 @@
+version: 1
+task:
+  id: T-MIG-022
+  title: "Golden-gate live-replay verification of the merged T-MIG-020 content read surfaces (Wave-2 exit gate)"
+  owner: "superz-agent-b (R3 lane; credited replay-tooling author per R0 disposition on PR #20)"
+  status: IN_PROGRESS
+  priority: P1
+  wave: 2 # exit-gate verification of the Wave-2 content read port
+  deps: [T-MIG-002, T-MIG-004, T-MIG-014, T-MIG-020]
+  execution_record: "—"
+base:
+  repo: "syllabai-v2 @ 01d0e9d (post R0-SWEEP-1); golden set = the 25 T-MIG-020 content cases; docs/GOLDEN_MASTER.md §4"
+basis: >
+  MIGRATION_PLAN.md §Wave-2 (T-MIG-020..022): "Exit gate: golden cases for
+  the content read surfaces." GOLDEN_MASTER §4 makes live replay 100% PASS
+  the wave-exit criterion. The merged content port (r3-c, #22 → a3c65d8)
+  carried static gate evidence only — its live replay is PENDING (R0
+  arbitration record + R0-SWEEP-1 follow-up (2)), because the porting
+  sandbox could not reach Neon. THIS lane's preserved replay tooling
+  (branch t-mig-020/r3a: apply-reset.ts + replay-content-cases.ts +
+  25/25 live evidence against its own superseded implementation) was
+  credited by the R0 disposition on #20 as "the input to the live-replay
+  follow-up". This task executes that follow-up against the UNMODIFIED
+  merged port at main HEAD: fresh Neon COW branch (rows-only posture per
+  T-MIG-014), topological reset to the Flyway-SEED state, api booted on
+  main HEAD code over real HTTP, all 25 content cases replayed with the
+  runner-parity diff engine. Sandbox network posture re-probed this
+  session: api.neon.tech (control-plane REST) DNS-dead as recorded, but
+  console.neon.tech/api/v2 + ep-*.neon.tech compute hosts resolve — the
+  same posture under which T-MIG-014 live-proved 3/3 and the superseded
+  T-MIG-020 branch replayed 25/25.
+scope:
+  allowed:
+    - ".syllabai/receipts/T-MIG-022/** (tools copied+attributed from t-mig-020/r3a per the R0 #20 disposition)"
+    - ".syllabai/tasks/T-MIG-022*.yaml (status/execution_record only)"
+    - ".syllabai/worklog.md (append-only entry)"
+  forbidden:
+    - "apps/** packages/** golden/** (verification-only task: the port under test is the UNMODIFIED main HEAD; a genuine divergence would be FILED, never fixed silently in-pass)"
+    - "production Neon main writes (C2) — branch rows-only COW"
+    - "deleting or weakening any golden case (none touched)"
