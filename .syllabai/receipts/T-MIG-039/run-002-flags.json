@@ -1,0 +1,15 @@
+{
+ "task": "T-MIG-039",
+ "run": 2,
+ "kind": "IN_REVIEW-FLAGS",
+ "lane": "R6-llm (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "at": "2026-10-05T16:10:00Z",
+ "pr": 59,
+ "pr_url": "https://github.com/SyllabAI/syllabai-v2/pull/59",
+ "head": "baad720 (t-mig-039/r6-llm)",
+ "base": "main c0d8fa0",
+ "commits": 1,
+ "review_request": "independent review required (authors never self-merge, AGENT_COORDINATION 5); diff is NEW FILES ONLY in three disjoint fences (docs/gates, docs/adr, golden/llm-shadow) + yaml/receipt/worklog bookkeeping \u2014 a diff-only doctrine read suffices; the harness tests are self-contained and runnable in isolation (bun test golden/llm-shadow)",
+ "deferred_item_status": "W3 EXIT verification stays BLOCKED on preconditions (031-t2 PR #52 open; 033 PR #50 HOLD FOR AUTHOR on F-33-1; 034 unfiled; CI-side Neon replay runner operator-routed) \u2014 this lane's standing assignment, executable on R0's word after the 031-t2/033/034 merge train; NO evidence filed, nothing claimed as verified",
+ "ci_note": "CI registered on f13a73e but still QUEUED/pending ~5min post-push (concurrency backlog across 8 open PRs; recent PR-triggered runs on other heads completed success 15:56-16:01Z). Disposition per R0-SWEEP-5 precedent: local gates stamped exact-baseline in run-001 (typecheck x4, 485/0/13skip 1259 expect, selftest OK, runner/cases byte-identical via empty git diff) + R0 merge-intake independently re-executes gates; CI conclusion to be confirmed by the CI lane / at intake."
+}

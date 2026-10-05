@@ -1652,3 +1652,34 @@ Work Log:
 
 Stage Summary:
 - Round-7 lane work COMPLETE: claim -> two-prong capture (Render authz-shell 22 + LOCAL boot 35) -> kit -> gates -> PR #57 -> STOP. Awaiting independent review + R0 merge-intake (authors never self-merge). Two R0 rulings requested: F-e (dotted anchor 400) + intervention 400-before-404 (F-c family).
+Task ID: T-MIG-039
+Agent: R6-llm (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: LLM-OUTPUT behavioural-gate doctrine + harness skeleton (feeds T-MIG-034); W3 EXIT verification deferred on unmet preconditions.
+
+Work Log:
+- SYNC FIRST executed: worklog tail re-read (~8 receipts incl. R0-SWEEP-5 + R0-ROUND-6/6b); AGENT_COORDINATION.md + GOLDEN_MASTER.md (§3 verbatim) + MIGRATION_PLAN (R-LLM, R-SSE, W6 §5) read; real seam read line-against-line (services/smartmark :414-419 FeedbackLlm, :883-893 generate() refusal law, :726-746 feedback views + ephemeral law, :897-904 pointLabel leak law; routes/smartmark :53-62 dormant pair, :70-76 503 fixed body, :136-166 buildSmartMarkRouters seams injection point).
+- Zero-collision scan CLEAN for T-MIG-039: zero 039 yamls on main, zero t-mig-039* heads, zero 039 mentions in the 7 open PRs. COLLISION AVOIDED: t-mig-037/r1c + t-mig-038/r1c heads already established (r1c claimed 037/038 pre-filing) — this lane took 039 instead. T-MIG-034 stays r1's reserved card (this card FEEDS it, does not claim it).
+- ENV FRAGILITY (third fleet-wide occurrence, recorded): the prior session's staging workspace was wiped between sessions — the doctrine + harness were drafted offline there, then re-verified and adapted line-against-line to the real seam once the repo was re-cloned. Standing register item (PAT rotation + env-rehydration note in AGENT_BRIEFING) re-confirmed.
+- Deliverable 1 FILED: docs/gates/LLM-OUTPUT-BEHAVIOURAL-GATE.md — maps GOLDEN_MASTER §3's three named dimensions (honesty of refusals / citation plumbing / zod format contracts) onto a T0-T3 tolerance taxonomy + RECORDED/LIVE two-posture gate model + fixture lifecycle (llm-shadow/v1, scrub discipline §2 referenced) + CI semantics (no model in CI, ever; --selftest anti-tautology per §5). docs/adr/ADR-MIG-0001-llm-seam-strategy.md — seam-injection proxy (rides the EXISTING buildSmartMarkRouters seams.{llm,generator} injection point; ZERO core edits; replay=CI default, capture=rig-only) vs port-vs-W6-defer; B1 rejected on wave discipline; early-revisit triggers recorded.
+- Harness FILED: golden/llm-shadow/** — self-contained (no apps/api import, golden/runner.ts + cases/** byte-identical): comparator (canonicalize -> anchor-resolve -> classify -> aggregate), ShadowFeedbackLlm capture/replay proxy implementing the FeedbackLlm contract shape (byte-stable replay, honest refusals, empty-output refusal law), gate stubs for smart-mark prose (T1 envelope law incl. undefined=missing, T0 partId/modelId, T2 coverage+expansion bounds, T3 numeric drift + grounding-anchor loss + scheme-leak vectors) + transcription (UNLANDED seam — stub contract documented for the answerinput wave), 6 fixtures (synthetic scrubbed mark-scheme-domain data), selftest.
+- HARNESS GATES: bun test golden/llm-shadow = 25 pass / 0 fail / 50 expect; selftest 15/15; tsc --strict (subtree, dev-only @types/bun) exit 0.
+- REPO GATES on the branch head (baseline stamped on main c0d8fa0 pre-branch, numbers IDENTICAL): typecheck x4 exit 0; bun test apps/api packages = 485 pass / 0 fail / 13 skip / 1259 expect (= stated main baseline EXACT — this diff adds zero app/package code); golden selftest OK (113); git diff origin/main -- golden/runner.ts golden/cases golden/tools EMPTY.
+- Deliverable 2 (W3 EXIT two-posture live replay, 40/40) NOT EXECUTED — preconditions unmet: T-MIG-031 tranche-2 = PR #52 open; T-MIG-033 = PR #50 HOLD FOR AUTHOR on F-33-1; T-MIG-034 unfiled; CI-side Neon replay runner still operator-routed (the only live-replay instrument). The procedure (runbook: preconditions, two-posture execution, 40/40 pass criteria, evidence-bundle format) is staged in the lane workspace and re- executable on R0's word once 031-t2 + 033 + 034 merge. No exit evidence filed; nothing claimed as verified.
+
+Stage Summary:
+- T-MIG-039 filed on t-mig-039/r6-llm (branch start @ c0d8fa0): the doctrine + ADR + harness are drop-in ready for T-MIG-034 — integration checklist in golden/llm-shadow/README.md (proxy wiring via seams.llm, first LIVE capture, CI-lane decision, candidate-structure extension, threshold ratification).
+- Standing conditions handed to 034: real recorded shadows replace synthetic fixtures; runner-registration decision; T2 threshold ratification against first LIVE drift report.
+- R0 ratification requested for the self-filed id (032 precedent) and for the deferred W3-EXIT disposition (blocked on the 031-t2/033/034 merge train + replay runner).
+---
+Task ID: T-MIG-039 (status addendum)
+Agent: R6-llm (Super Z, session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Lifecycle bookkeeping — PR open + card flip.
+
+Work Log:
+- PR #59 opened (t-mig-039/r6-llm @ baad720 -> main c0d8fa0): title "T-MIG-039: LLM-OUTPUT behavioural-gate doctrine — recorded-shadow design + harness skeleton (feeds T-MIG-034)"; body links yaml + run-001 receipt, stamps the gate table, discloses the 037/038 collision avoidance, and records the W3-EXIT deferral disposition for R0's ruling.
+- yaml CLAIMED -> IN_REVIEW (PR-open flip per lifecycle; DONE is R0's only). Receipt run-002-flags.json filed (PR url, head, review request, deferred-item status).
+- Lane STOPs here per the directive: no self-merge (independent review pending), no wave-work self-claim, no fabricated exit evidence. PAT rotation reminder re-issued to the operator (token transited chat twice now).
+
+Stage Summary:
+- T-MIG-039 awaits independent review + R0 merge-intake/ratification. Deliverable 1 (doctrine + ADR + harness) FILED; deliverable 2 (W3 EXIT replay) BLOCKED on the 031-t2/033/034 merge train — procedure staged, zero evidence fabricated.
+- CI addendum (16:20Z): CI registered on f13a73e but queued/pending ~5min post-push (concurrency backlog across 8 open PRs); dispositioned per the R0-SWEEP-5 CI-silence precedent — local gates stamped exact-baseline in run-001, R0 merge-intake independently re-executes. Lane remains STOPPED; review + merge authority rest elsewhere.
