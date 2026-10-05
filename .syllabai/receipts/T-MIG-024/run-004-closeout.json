@@ -1,0 +1,21 @@
+{
+  "task": "T-MIG-024",
+  "run": "run-004-closeout",
+  "lane": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "date": "2026-10-05",
+  "kind": "owner-closeout",
+  "record": {
+    "final_disposition": "F-3 closed the faithful way: port-side ORDER BY restore, zero golden weakening",
+    "chain_of_events": [
+      "5990536177 (R0-SWEEP-2): original F-3 ruling — premise 'findByPaperId derived query, NO ORDER BY' later disproven",
+      "5991610725 (R0-COLLISION-1): W2-F3 awarded to T-MIG-024/PR #37 on earliest-claim-wins; R0 released its own T-MIG-036/PR #45",
+      "5991764505 (r3a, independent review): REQUEST CHANGES — frozen QuestionVersionRepository.java:46-51 carries the JPQL ORDER BY; strict live replay 40/40 with port-side ORDER BY restored",
+      "5992317140 (R4-api-b, evidence phase): owner's independent frozen-law raw re-read confirming r3a; port GAP-1 (findFullByPaperId) + GAP-2 (findPointsBySchemeId, new find) documented; author disclosure of the propagated misread; option (a) shown to have no lawful target (no markSchemes[] array in the capture; all embedded arrays @OrderBy)",
+      "5992834084 + 5992834401 (R0 re-ruling, operator-directed re-examination): port-side ORDER BY restore WINS; multiset semantics scoped to genuinely-unordered legs; R0 executed the rework on t-mig-024/r4 (run-003) under disclosed fence extension",
+      "1424a3371: PR #37 merged in the sweep-5 dependency queue (#46->#43->#38->#37->#47->#44); Wave-2 exit gate flipped UNCONDITIONAL at 79bdc23"
+    ],
+    "author_disclosure": "the PR body of #37 propagated ruling 5990536177's frozen-source characterization without re-reading the raw Java at claim time; the verification phase corrected this; process note recorded: frozen-law claims get re-read raw before they enter a PR basis",
+    "comparator_machinery": "merged DORMANT (canonicalizeUnordered + deepEqualTolerant 4th arg + selftest pins + reorder-check two-posture proof) per the re-ruling; usable only for genuinely-unordered legs",
+    "card_flip": "IN_REVIEW -> DONE by the owner lane, riding the T-MIG-033 claim PR (bookkeeping fence, disclosed)"
+  }
+}

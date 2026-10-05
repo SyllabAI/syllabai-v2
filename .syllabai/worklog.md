@@ -1828,3 +1828,32 @@ Stage Summary:
 - T-MIG-037 IN_REVIEW on t-mig-037/r8-hub (claim b12b5b3 + run-001 evidence commit). The W2 exit gate's hub-flip condition is now executable on merge. Authors never self-merge — independent review + R0 merge-intake own the merge.
 
 r8-hub | claimed + executed T-MIG-037 (hub dual-run expansion: prefix table 1->6 with startsWith-safety cross-map, 8/8 routing pins, 17/17 dual-run + 13/13 rollback live through the branch's actual routing code, gates green, delta-zero vs same-sandbox main) | BLOCKED-ON-REVIEW (PR filed; authors never self-merge) | suggestion: reviewer spot-checks the three deliberate exclusions (teacher/content 501s + glm-ocr, questions/exam-papers unmounted, learners/me narrowing) and treats the baseline opclass strip finding as input to T-MIG-002-R.
+Task ID: T-MIG-024 (run-004 owner closeout) + T-MIG-033 (claim)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Round-6 directive (trace 1a10bdcc5d89e599): sync first, protocol per task, stop. Owner tail of T-MIG-024 (card flip + final receipt after the sweep-5 merge) + claim of the ratified T-MIG-033 seed.
+
+Work Log:
+- SYNC at main 79bdc23 (fresh clone after a full sandbox reset — env rebuilt with the round-6 PAT, masked ghp_…oy9Q): worklog tail read (T-MIG-032 tranche-2, T-MIG-024 run-003, R0-SWEEP-5); own yaml read.
+- T-MIG-024 CLOSEOUT: PR #37 merged 1424a3371 (sweep-5 queue, post-rework by R0 per re-ruling 5992834084 + operator directive trace 1a10b7fe85b49a21). Owner receipt run-004-closeout.json records the full chain (5990536177 -> 5991610725 -> 5991764505 -> 5992317140 -> 5992834084/5992834401 -> merge) + the author disclosure (the original PR basis propagated the ruling's frozen-source misread; verification phase corrected it). Card flipped IN_REVIEW -> DONE on main-adjacent bookkeeping in THIS claim PR (fence: .syllabai only; zero overlap with 033 code).
+- T-MIG-033 CLAIMED @ 79bdc23, branch t-mig-033/r4: zero-collision scan RE-RUN immediately before branch cut — ls-remote zero 033/teacher/marking/sme heads, open PRs 0, no 033 yaml on main, worklog mentions = 2 non-claims. T-MIG-033 is a RATIFIED seed (030..034 split map, verdict 5990832802): teacher-marking + sme-admin. Claim mechanism = the ratified self-filing precedent (013/020/021/030/032); R0 id ratification requested in the PR.
+- Frozen law re-read raw @ 6cad6ef before implementation: TeacherMarkingController (:46-328 G-5 pagination bounds + route map), TeacherMarkingService (:84-216 lock-first human-mark law + kappa pairing), TeacherMarkingQueueService (:50-494 deterministic ordering + honest counts + bounded batch), TeacherViews (DTO boundaries), SmartMarkService.markAnswer (:87-171 — the per-answer topology 032 did NOT port), KappaAgreementService.cohenKappa (pure law), AnswerRepository/HumanMarkRepository/SmartMarkResultRepository/SmartMarkAgreementEvaluationRepository finder semantics (findByMarkingState createdAt asc, findPageByMarkingState caller-sorted, findLatest = newest-then-filter for kappa pairing, countSince, countGroupedByMarkingState), entity transition law (Answer smartMarked/humanMarked/overridden; Attempt.smartMarked/humanMarked(revising)/recordTotalMarks marks_awarded+correct), SmartMarkAgreementEvaluation (DEFAULT_THRESHOLD 0.60, passed = kappa >= threshold).
+- Tranche-1 implementation on the fence (services/teachermarking + test/teachermarking): markAnswer per-answer topology (composition into 032's SmartMarkService.kappaGatePassed — no fork), recordHumanMark, evaluateAgreement + cohenKappa port, queue v2 full/paged, throughput, smartMarkBatch, TeacherViews envelopes; stubbed-sql tests pin gate orders, exact bodies, bounds, dedup, ordering, null-paper laws, settle rules, refusal rows, kappa laws, batch outcomes. Spring events dormant-disclosed (032 posture). Tranche-2 = routes/zod/mounts; tranche-3 = SME admin.
+- Gates run before the PR (results in the PR body + run-002 receipt).
+
+Stage Summary:
+- T-MIG-024 DONE (owner tail closed; W2 exit gate UNCONDITIONAL on merged main 79bdc23). T-MIG-033 claimed + tranche-1 implemented; PR awaits independent review + R0 id ratification; per the round-6 directive this lane STOPS after the PR (authors never self-merge; no self-filed wave work — 033 is a ratified seed claimed per protocol).
+
+---
+Task ID: T-MIG-033 (tranche 1)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Implement tranche-1 of the claimed teacher-marking port (services + stubbed-sql tests), gates, PR, stop.
+
+Work Log:
+- services/teachermarking/index.ts: markAnswer per-answer topology (the SmartMarkService.java:87-171 half 032 did NOT port — lock-first, V34 refusal, kappa-gated authoritative, evidence settle rule; kappaGatePassed composed from the 032 shared engine, zero fork), recordHumanMark (lock-first, bound 409 en-dash verbatim, OVERRIDDEN vs HUMAN_MARKED, recompute marks_awarded+correct, settle rule), evaluateAgreement + cohenKappa port (newest-run-then-filter pairing, clampBinary, degenerate convention, threshold 0.60), queue v2 full/paged (section-7 ordering, G-5 bounds, whole-paper-group pages, honest totals, chain scoped), throughput (zeroed-then-counted states, exact since bounds, nulls-last leaders), smartMarkBatch (dedup, >50 verbatim 400, per-item outcomes, stable UNEXPECTED_ERROR), TeacherViews envelopes. Spring events dormant-disclosed.
+- 40 stubbed-sql tests / 149 expects pin gate orders, exact bodies, bounds, dedup, ordering law, null-paper laws, settle rules, refusal rows, kappa laws (incl. the -1 mixed-marginal disagreement case), batch outcomes. Test-local spySql wrapper records bind params; shared helpers untouched.
+- Gates: typecheck x4 exit 0; bun test apps/api packages 525/0/13skip 1408 expects (= main 485 + 40 exact); golden selftest OK.
+- Cross-lane observation flagged to r7a (not my fence): 032's markAttempt recompute writes marks_awarded but NOT the correct flag, and its evidence payload hardcodes marksTotal:0/correct:false — frozen markAttempt calls recordTotalMarks (sets correct) and publishGraded reads the attempt row. Recorded in run-002 disclosures.
+- PR opened for independent review + R0 id ratification; per the round-6 directive this lane STOPS after the PR.
+
+Stage Summary:
+- T-MIG-033 tranche-1 complete on t-mig-033/r4; tranche-2 = routes/zod/mounts, tranche-3 = SME admin. Awaiting independent review + R0 merge-intake.
