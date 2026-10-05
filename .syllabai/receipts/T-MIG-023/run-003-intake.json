@@ -1,0 +1,72 @@
+{
+  "task": "T-MIG-023",
+  "lane": "R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "run": "run-003-intake",
+  "timestamp": "2026-10-05T09:23:49Z",
+  "trigger": "Operator drain-cycle directive, trace 1a10b512c7656ab9 (all lanes): sync, drive held claim, intake if mergeable=dirty, stop",
+  "action": "merge-intake of current main onto claim branch + gates re-execution + collision disclosure",
+  "sync": {
+    "main_before_work": "ffc2876 (R0-SWEEP-2, base of this branch)",
+    "main_at_drain": "0cd360b (R0-SWEEP-4)",
+    "main_commits_absorbed": 20,
+    "merged_in_window": ["PR #31 (T-MIG-030 tranche-1)", "PR #34 (T-MIG-031 claim)", "PR #35 (T-MIG-035 hub live-flow)", "PR #36 (T-MIG-030 tranche-2 + E-1)"],
+    "code_overlap_with_my_fence": "none (main touched apps/api assessment/** + index.ts; this branch touches apps/api content/** + content tests only)"
+  },
+  "merge_intake": {
+    "commit": "422066e",
+    "parents": ["53f4ee1", "0cd360b"],
+    "trial_merge_conflicts": [".syllabai/worklog.md (the directive-prescribed append-only-union case; only conflict)"],
+    "resolution": "union = main's 1213 lines verbatim + this lane's T-MIG-023 block (39 lines) re-appended at tail",
+    "byte_verification": {
+      "main_side_deleted_or_changed_lines": 0,
+      "union_prefix_equals_main": true,
+      "union_tail_equals_my_block": true,
+      "worklog_in_head_byte_identical_to_union": true
+    },
+    "force_push_used": false
+  },
+  "gates_on_intake_head": {
+    "typecheck": "bun run typecheck (contracts, shared, db, api) — exit 0",
+    "tests": "bun test apps/api packages — 392 pass / 0 fail / 13 skip (405 total)",
+    "count_arithmetic": "main-base 347 pass + 13 skip + this lane's 9 fidelity pins + r7a tranche-1 34 + E-1 2 = 405 total — exact",
+    "golden_selftest": "bun golden/runner.ts --selftest — OK"
+  },
+  "collision_disclosure": {
+    "note": "3-way collision on W2-F1/W2-F2 scope disclosed for R0 arbitration",
+    "this_branch": {
+      "ref": "t-mig-023/r1",
+      "claim_pushed": "2026-10-05T08:31:04Z (46f4f19)",
+      "work_commit": "53f4ee1 (PR #38, refs/pull/38/head verified)",
+      "scope": "F-1 + F-2 (F-3 untouched — R0 ruled it R6's, T-MIG-036 in flight)",
+      "evidence": "9 fidelity pins, all local gates green on every head",
+      "gap": "live replay escalated B-2 (no COW DSN)"
+    },
+    "t_mig_023_r3a": {
+      "claimant": "superz-agent-b",
+      "claim_pushed": "2026-10-05T08:35:07Z (375ff3e)",
+      "scope": "F-1/F-2/F-3 incl. ORDER-BY restoration (contradicts R0's F-3 stability ruling 5990536177; their ruling request withdrawn at 255d312)",
+      "evidence": "live replay union 40/40 (seed 25/25, prod 15/15)",
+      "head": "255d312"
+    },
+    "w2_f1_r3c": {
+      "claimant": "R3-c (original T-MIG-020 port lane owner)",
+      "claim_pushed": "2026-10-05T08:52:08Z (36ecbd4)",
+      "scope": "F-1 only (to_char text casts + ISO_INSTANT writer)",
+      "evidence": "capture-corpus proof 1024/1024, intaken to 8f67d05",
+      "head": "6144adf"
+    },
+    "earliest_claim_wins": "this branch holds the earliest pushed claim (08:31:04Z) and earliest work commit; arbitration requested, self-merge recusal stands"
+  },
+  "blockers": [
+    {
+      "id": "B-1",
+      "recurrence": "2026-10-05T09:23:49Z",
+      "detail": "no GITHUB_PAT in env at drain time (harness env reset); push of intake head 422066e + follow-up receipt commit and PR #38 body update are staged and ready; single-invocation chain (export + cd + push) prepared per Task-2 diagnosis"
+    },
+    {
+      "id": "B-2",
+      "detail": "unchanged: live golden replay requires COW-branch DSN (lost to earlier workspace wipe); R0 expectation Pass B 15/15 remains actionable the moment a DSN or R0 merge-intake re-execution is provided"
+    }
+  ],
+  "next": "on PAT: push t-mig-023/r1 (fast-forward, no force) -> update PR #38 body with intake + arbitration note -> R0 review"
+}

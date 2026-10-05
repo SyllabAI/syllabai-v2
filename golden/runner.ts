@@ -13,6 +13,10 @@
  *
  * Tolerance rules (what is NOT compared byte-for-byte):
  *   - fields listed in a case's `tolerate` array (timestamps, uuids, tokens)
+ *   - arrays at body paths listed in a case's `unordered` array are compared
+ *     as MULTISETS — same elements after tolerate redaction, any order
+ *     (T-MIG-024 / R0-SWEEP-2 F-3 ruling: captures that pinned unspecified
+ *     DB heap order; declared relaxation only, never silent — GOLDEN_MASTER §5)
  *   - LLM-dependent surfaces are NEVER golden-gated (nondeterministic);
  *     they get behavioural/eval gates instead (see docs/MIGRATION_PLAN.md §Risks)
  *
@@ -29,6 +33,12 @@ interface GoldenCase {
   request?: { headers?: Record<string, string>; body?: unknown };
   expect: { status: number; body: unknown; headers?: Record<string, string> };
   tolerate?: string[];
+  // T-MIG-024 (operator queue W2-F3, R0-SWEEP-2 F-3 ruling): body-root-
+  // relative dotted paths whose ARRAY values are compared as MULTISETS
+  // (same elements, any order). Declared relaxation only — every undeclared
+  // array, including arrays INSIDE a declared array's elements, keeps
+  // strict order (§7: no silent widening).
+  unordered?: string[];
   // T-MIG-006: optional replay ordinal. Stateful (write-path) cases declare
   // a seq and run FIRST in seq order (register-success before duplicate /
   // login / me); all other cases follow in filename order. Absent seq = no
@@ -158,7 +168,12 @@ async function replayAgainst(
   // 06:24Z under the original T-MIG-006 claim) and by R0 merge-intake on
   // T-MIG-016 (PR #25). This kit subsumes the #25 one-line fix and extends
   // it with expect.headers comparison + structured failure diffs.
-  const bodyOk = deepEqualTolerant(kase.expect.body, body, kase.tolerate ?? []);
+  const bodyOk = deepEqualTolerant(
+    kase.expect.body,
+    body,
+    kase.tolerate ?? [],
+    kase.unordered ?? [],
+  );
   const headerDiff = checkHeaders(res.headers, kase.expect.headers);
   if (statusOk && bodyOk && headerDiff === null) return null;
   const parts = [`status ${res.status} vs ${kase.expect.status}`];
@@ -197,43 +212,145 @@ function selftest(): number {
     console.error("selftest FAILED: absent expectation must not constrain");
     return 1;
   }
-  console.log("selftest OK: tolerance engine behaves");
+  // T-MIG-024 (W2-F3): declared-unordered multiset engine coverage.
+  const mvA = {
+    paper: { id: "p1" },
+    versions: [
+      { ref: "q1", marks: 5 },
+      { ref: "q2", marks: 8 },
+    ],
+  };
+  const mvB = {
+    paper: { id: "p1" },
+    versions: [
+      { ref: "q2", marks: 8 },
+      { ref: "q1", marks: 5 },
+    ],
+  };
+  if (!deepEqualTolerant(mvA, mvB, [], ["versions"])) {
+    console.error("selftest FAILED: same multiset, different order should pass under declared unordered");
+    return 1;
+  }
+  if (deepEqualTolerant(mvA, mvB, [])) {
+    console.error("selftest FAILED: order diff must fail when NO unordered is declared");
+    return 1;
+  }
+  const mvC = { ...mvB, versions: [...mvB.versions, { ref: "q3", marks: 2 }] };
+  if (deepEqualTolerant(mvA, mvC, [], ["versions"])) {
+    console.error("selftest FAILED: different multiset must fail even under declared unordered");
+    return 1;
+  }
+  if (
+    !deepEqualTolerant(
+      { versions: [{ ref: "q1", ts: "t1" }] },
+      { versions: [{ ref: "q1", ts: "t2" }] },
+      ["ts"],
+      ["versions"],
+    )
+  ) {
+    console.error("selftest FAILED: tolerate and unordered must compose");
+    return 1;
+  }
+  const ordA = { versions: [{ ref: "q1" }], options: ["a", "b"] };
+  const ordB = { versions: [{ ref: "q1" }], options: ["b", "a"] };
+  if (deepEqualTolerant(ordA, ordB, [], ["versions"])) {
+    console.error("selftest FAILED: order diff at a NON-declared sibling path must still fail");
+    return 1;
+  }
+  if (
+    !deepEqualTolerant(
+      { paper: { questions: [1, 2, 3] } },
+      { paper: { questions: [3, 2, 1] } },
+      [],
+      ["paper.questions"],
+    )
+  ) {
+    console.error("selftest FAILED: dotted unordered path should apply");
+    return 1;
+  }
+  console.log("selftest OK: tolerance engine behaves (incl. declared-unordered multiset — T-MIG-024)");
   return 0;
 }
 
-function deepEqualTolerant(a: unknown, b: unknown, tolerate: string[]): boolean {
-  return JSON.stringify(redact(a, tolerate)) === JSON.stringify(redact(b, tolerate));
+export function deepEqualTolerant(
+  a: unknown,
+  b: unknown,
+  tolerate: string[],
+  unordered: string[] = [],
+): boolean {
+  const ra = redact(a, tolerate);
+  const rb = redact(b, tolerate);
+  if (unordered.length === 0) {
+    return JSON.stringify(ra) === JSON.stringify(rb);
+  }
+  return (
+    JSON.stringify(canonicalizeUnordered(ra, unordered, "")) ===
+    JSON.stringify(canonicalizeUnordered(rb, unordered, ""))
+  );
+}
+
+// T-MIG-024 (W2-F3 / R0-SWEEP-2 F-3 ruling): canonicalize declared-unordered
+// arrays into multiset form — each element is serialized (post-redaction)
+// and the array sorted, so "same elements, any order" compares equal while
+// element identity stays exact. Only the DECLARED dotted paths relax
+// ordering; arrays nested inside a declared array's elements keep strict
+// order. An undeclared path has no effect. Exported for golden/tools.
+function canonicalizeUnordered(value: unknown, unordered: string[], path: string): unknown {
+  if (Array.isArray(value)) {
+    const arr = value.map((e) => canonicalizeUnordered(e, unordered, `${path}[]`));
+    if (unordered.includes(path)) {
+      return arr
+        .map((e) => JSON.stringify(e))
+        .sort()
+        .map((s) => JSON.parse(s) as unknown);
+    }
+    return arr;
+  }
+  if (value !== null && typeof value === "object") {
+    const out: Record<string, unknown> = {};
+    for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
+      out[k] = canonicalizeUnordered(v, unordered, path ? `${path}.${k}` : k);
+    }
+    return out;
+  }
+  return value;
 }
 
 // ---- main ----
-const args = process.argv.slice(2);
+// import.meta.main guard (T-MIG-024): golden/tools/* import the comparator
+// from this file; the CLI main must stay inert on import, byte-identical
+// when run directly.
+if (import.meta.main) {
+  const args = process.argv.slice(2);
 
-if (args.includes("--selftest")) {
-  process.exit(selftest());
-}
-
-if (args.includes("--target")) {
-  const target = args[args.indexOf("--target") + 1];
-  const token = args.includes("--token") ? args[args.indexOf("--token") + 1] : undefined;
-  const cases = loadCases();
-  let failures = 0;
-  for (const kase of cases) {
-    // R0 fix (merged via PR #25 as T-MIG-016, re-attributed to T-MIG-017 by
-    // R0 intake 008d64c): the live-replay path must apply each case's
-    // `tolerate` rules exactly like the selftest does. This lane's kit
-    // delivers the same fix (see provenance note inside replayAgainst) plus
-    // seq/token support - the 3-arg call below is the subsuming form.
-    const diff = await replayAgainst(target, kase, token);
-    if (diff) {
-      failures++;
-      console.error(`FAIL ${kase.name}: ${diff}`);
-    } else {
-      console.log(`PASS ${kase.name}`);
-    }
+  if (args.includes("--selftest")) {
+    process.exit(selftest());
   }
-  console.log(`\n${cases.length - failures}/${cases.length} golden cases pass against ${target}`);
-  process.exit(failures === 0 ? 0 : 1);
-}
 
-console.log("usage: bun golden/runner.ts (--selftest | --target <url> [--token <jwt>])");
-process.exit(1);
+  if (args.includes("--target")) {
+    const target = args[args.indexOf("--target") + 1];
+    const token = args.includes("--token") ? args[args.indexOf("--token") + 1] : undefined;
+    const cases = loadCases();
+    let failures = 0;
+    for (const kase of cases) {
+      // R0 fix (merged via PR #25 as T-MIG-016, re-attributed to T-MIG-017 by
+      // R0 intake 008d64c): the live-replay path must apply each case's
+      // `tolerate` rules exactly like the selftest does. This lane's kit
+      // delivers the same fix (see provenance note inside replayAgainst) plus
+      // seq/token support - the call below is the subsuming form (now incl.
+      // the T-MIG-024 declared-unordered arg).
+      const diff = await replayAgainst(target, kase, token);
+      if (diff) {
+        failures++;
+        console.error(`FAIL ${kase.name}: ${diff}`);
+      } else {
+        console.log(`PASS ${kase.name}`);
+      }
+    }
+    console.log(`\n${cases.length - failures}/${cases.length} golden cases pass against ${target}`);
+    process.exit(failures === 0 ? 0 : 1);
+  }
+
+  console.log("usage: bun golden/runner.ts (--selftest | --target <url> [--token <jwt>])");
+  process.exit(1);
+}

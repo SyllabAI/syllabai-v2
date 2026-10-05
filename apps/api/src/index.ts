@@ -44,6 +44,8 @@ import { RateLimitFilter } from "./middleware/ratelimit";
 import { buildContentApp } from "./services/content";
 import { buildCurriculumRouters } from "./routes/curriculum";
 import { buildAssessmentRouters } from "./routes/assessment";
+import { buildSelfMarkRouters } from "./routes/selfmark";
+import { buildSmartMarkRouters } from "./routes/smartmark";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
@@ -52,6 +54,8 @@ const identity = buildIdentityApp();
 const content = buildContentApp();
 const curriculum = buildCurriculumRouters();
 const assessment = buildAssessmentRouters();
+const selfmark = buildSelfMarkRouters();
+const smartmark = buildSmartMarkRouters();
 
 const app = new Hono();
 
@@ -165,6 +169,24 @@ app.route("/api/v1/teacher/curriculum", curriculum.teacherRoute);
 // precedent so R0 can ratify or lift them out at review.
 app.route("/api/v1/attempts", assessment.attemptRoute);
 app.route("/api/v1/learners/me", assessment.historyRoute);
+
+// Marking routers (T-MIG-032 — Wave 3). Path parity with the frozen core:
+// LearnerSelfMarkController + StudentSmartMarkController share the
+// /api/v1/learners/me/attempts base (POST self-mark / smart-mark / the two
+// feedback actions). Both fall under the frozen anyRequest().authenticated()
+// rule and each router owns its authz internally — the /api/v1/* fallback
+// below stays the 404-after-auth path for NO router claimed. The smartmark
+// module's LLM seams are DORMANT by default (generator refuses, feedback
+// 503s) — the LlmProvider infra is the wave-3 LLM-chain lane's surface.
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-032, R0 ratification requested):
+// T-MIG-032's scope.allowed covers routes/{selfmark,smartmark}/**,
+// services/{selfmark,smartmark}/**, test/{selfmark,smartmark}/** — NOT this
+// file. The two mount lines + import + construction + this comment are the
+// minimal app-level wiring, shipped as a separate commit per the
+// T-MIG-010/020/021/030 precedent so R0 can ratify or lift them out at review.
+app.route("/api/v1/learners/me/attempts", selfmark.selfMarkRoute);
+app.route("/api/v1/learners/me/attempts", smartmark.studentRoute);
 
 // anyRequest().authenticated() parity for paths NO router claimed
 // (SecurityConfig.java:91): anonymous callers get the 401 Boot-shaped body;
