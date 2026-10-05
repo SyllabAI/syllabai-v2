@@ -1,0 +1,47 @@
+{
+  "task_id": "T-MIG-022",
+  "register_item": "H-2",
+  "kind": "CLAIM",
+  "run": "002-h2",
+  "timestamp": "2026-10-05T12:10:00Z",
+  "agent": "R7a (agent-da4ab8, zai-web session web-da4ab8b1)",
+  "directive": "SYLLABAI ROUND-6 DIRECTIVE (operator, 2026-10-05): protocol per task = zero-collision claim -> implementation -> local gates -> PR -> INDEPENDENT review (authors never self-merge) -> R0 merge-intake -> receipt -> card flip; then STOP, no self-filed wave work",
+  "provenance": {
+    "registered_by": "R0-SWEEP-2 @ ffc2876 (worklog REGISTERED line + T-MIG-022 run-001.json harness_findings H-2 + T-MIG-022 yaml execution_record)",
+    "reaffirmed_by": "R0-SWEEP-4 standing register; R0-SWEEP-5 remaining register ('H-2 apply-reset reconciliation (r7a)')",
+    "owner": "r7a (exclusive since registration; no competing claim in worklog history)",
+    "material_to": "T-MIG-021 fixed-uuid curriculum replay (the promised skeleton-preserving posture does not exist)"
+  },
+  "base": {
+    "main_head": "79bdc23",
+    "main_state": "R0-SWEEP-5 housekeeping; W1+W2 CLOSED; board 6/6 drained, zero open PRs; CI verify+hub green 485/0/13 1259 expects; 113 goldens"
+  },
+  "collision_scan": {
+    "remote_branches_t-mig-022*": ["t-mig-022/r3a (historical preserved branch from the T-MIG-022 run itself; inactive, not an H-2 claim)"],
+    "remote_branches_*h2*": [],
+    "worklog_competing_claims": 0,
+    "verdict": "ZERO-COLLISION — claim proceeds"
+  },
+  "branch": "t-mig-022/r7a-h2",
+  "finding_being_reconciled": {
+    "id": "H-2",
+    "summary": "apply-reset.ts docstring/code divergence: the header claims 'The curriculum skeleton rows (versions, subjects, knowledge_nodes, PART_OF edges) are preserved' but step 3 unconditionally DELETEs every public table (post-reset probes: knowledge_nodes 0, PART_OF 0, active versions 0)",
+    "v1_artifact": ".syllabai/receipts/T-MIG-022/tools/apply-reset.ts",
+    "v1_sha256_at_reconciliation": "32fee89dac1aeb32e280c16df6c5ab5d6c2f872300e0923b867f4160169cc2c1",
+    "v1_disposition": "PRESERVED UNTOUCHED as the as-run historical artifact (its sha stays verifiable against run-001.json's executed copy; no history rewriting)"
+  },
+  "planned_disposition": {
+    "approach": "apply-reset-v2.ts alongside v1: (a) default posture byte-faithful to v1's executed behavior (full topological wipe + roles re-seed + owning-surface neutralization) so the T-MIG-022 seed posture and every case pinned on it are untouched; (b) new explicit OPT-IN posture --preserve-skeleton that actually implements the promised behavior (preserves subjects, curriculum_versions, knowledge_nodes wholesale + PART_OF edges only; wipes everything else; skips the VALIDATED->UNVALIDATED neutralization so the skeleton stays exactly as-captured); (c) docstring rewritten to describe BOTH postures truthfully — the false promise becomes a real, flagged capability",
+    "fence": {
+      "allowed": [".syllabai/receipts/T-MIG-022/** (run-002-h2-* receipts + tools/apply-reset-v2.ts)", ".syllabai/tasks/T-MIG-022-golden-verify-content.yaml (H-2 resolution addendum only)", ".syllabai/worklog.md (append-only entries)"],
+      "forbidden": ["apps/** packages/** golden/**", "modifying v1 apply-reset.ts or any historical receipt content", "production Neon writes (C2)", "deleting or weakening any golden case"]
+    }
+  },
+  "verification_plan": {
+    "static": "isolated tsc --noEmit on the v2 tool; bun parse/usage smoke (no DATABASE_URL -> clean exit 2; unknown flag -> usage exit 2 before any DB contact)",
+    "gates": "typecheck x4 (root chain: contracts/shared/db/api); bun test apps/api + packages (counts must equal main's 485/0/13skip, 1259 expects — zero collateral); bun golden/runner.ts --selftest",
+    "live_cow": "NOT EXECUTABLE THIS ROUND — NEON_PAT was not provided in the round-6 credential drop (post-reset workspace); live proof of both postures on a fresh COW branch is disclosed as env-blocked and left to reviewer option or a follow-up round. Zero Neon contact of any kind this round."
+  },
+  "merge_protocol": "authors never self-merge — PR will request independent review + R0 merge-intake",
+  "card_flip": "T-MIG-022 yaml gains an H-2-resolution addendum on the final commit (status stays DONE — the register item resolves under the completed verification task's surface, per the E-2/T-MIG-030 precedent)"
+}

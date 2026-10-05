@@ -1429,3 +1429,17 @@ Stage Summary:
 - Sweep-5 drained the board 6/6 with two arbitrations on record, two ratifications, one R0 self-correction (F-3), and the Wave-2 exit gate CLOSED. Wave-3 train: 030/031/032 landed or conditioned; T-MIG-002-R execution unblocked on w0a's desk. Remaining register: CI-side Neon replay runner (operator), flaky identity budget test root-cause (2 occurrences), PAT rotation, H-2 apply-reset reconciliation (r7a), T-MIG-033/034 seeds.
 
 R0-integrator | arbitration + merge sweep: F-1/F-2 four-way ruled (r1 earliest 08:17:06Z; #41 self-release ratified, #42 closed superseded, local-only contenders never established), F-3 re-ruled on disproven premise (ORDER BY restore, zero golden weakening, executed), #44 id + #47 mounts ratified, merge queue #46->#43->#38->#37->#47->#44 drained (6/6 merged, zero open PRs), W2 exit gate flipped UNCONDITIONAL | IDLE | suggestion: next round - assign the CI-side Neon replay runner (it is now the only live-replay instrument and unblocks T-MIG-030's replay condition + the 40/40 re-proof), give T-MIG-002-R execution its operator word (w0a is unblocked), and root-cause the identity budget flake on its next occurrence.
+
+---
+Task ID: T-MIG-022 H-2 (claim)
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Round-6 directive — execute the register item H-2 (apply-reset.ts doc/code divergence, r7a-owned since R0-SWEEP-2, reaffirmed in the R0-SWEEP-5 remaining register) per the per-task protocol.
+
+Work Log:
+- SYNC FIRST: worklog tail (last ~8 receipts incl. R0-SWEEP-5) read; my yaml T-MIG-021 status DONE (merged #28); my prior in-flight work #46 (030 E-2) + #47 (032 tranche-2) confirmed merged by SWEEP-5; board zero open PRs (live API check); local workspace rebuilt post-reset (fresh clone at 79bdc23; prior local mirror/scripts lost — this entry also re-opens the local mirror).
+- Zero-collision scan: remote heads t-mig-022* = [t-mig-022/r3a (historical preserved branch, inactive)], *h2* = none; worklog competing claims = 0. Claimed branch t-mig-022/r7a-h2 off origin/main 79bdc23; claim receipt run-002-h2-claim.json (incl. v1 as-run sha256 32fee89d...).
+- Disposition (planned): apply-reset-v2.ts alongside the untouched v1 — default posture byte-faithful to v1's executed behavior (T-MIG-022 seed posture and every case pinned on it untouched); new OPT-IN --preserve-skeleton posture actually implementing the promised behavior for T-MIG-021's fixed-uuid replays (subjects/curriculum_versions/knowledge_nodes preserved wholesale, PART_OF edges kept, non-PART_OF edges wiped, VALIDATED->UNVALIDATED neutralization skipped so the skeleton stays exactly as-captured); docstring rewritten to describe both postures truthfully. v1 stays as the as-run historical artifact (no history rewriting).
+- Fence: .syllabai/receipts/T-MIG-022/** + T-MIG-022 yaml addendum + worklog only; apps/** packages/** golden/** untouched; zero Neon contact (NEON_PAT not in the round-6 credential drop — live COW proof disclosed env-blocked, reviewer option or follow-up).
+
+Stage Summary:
+- H-2 IN_PROGRESS (claim landed). Implementation next: v2 tool + gates (typecheck x4; bun test equal to main's 485/0/13skip 1259 expects; golden runner --selftest) + run-002-h2 reconciliation receipt + yaml addendum + PR (authors never self-merge — independent review / R0 merge-intake requested). Then STOP per directive.
