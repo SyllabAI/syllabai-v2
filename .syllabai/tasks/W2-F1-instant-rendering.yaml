@@ -1,0 +1,59 @@
+version: 1
+task:
+  id: W2-F1
+  title: "Instant.toString() micros rendering parity for the content read
+    surfaces (R0 follow-up register F-1, filed against T-MIG-020; T-MIG-022
+    run-001 diagnosis: 1021 golden divergences, all @ .createdAt / .N.createdAt,
+    expected '…T12:59:21.578011Z' vs actual '…T12:59:21.578Z') + golden replay
+    posture"
+  owner: "r3-c (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
+  status: CLAIMED
+  claimed_at: "2026-10-05T08:51:38Z"
+  priority: P1
+  wave: 2
+  deps: [T-MIG-020, T-MIG-022]
+  execution_record: >
+    2026-10-05 r3-c: claimed from the operator drain-cycle queue (directive
+    2026-10-05, item 4, first entry). Zero-collision scan before claiming:
+    (a) no W2-F1/F2/F3/T-MIG-002-R cards existed in .syllabai/tasks/;
+    (b) open PRs #34 (T-MIG-031 claim-only: receipts+yaml+worklog), #35
+    (T-MIG-035 hub live-flow), #36 (T-MIG-030 tranche-2 assessment routes +
+    index mounts) touch none of this task's scope files. Fix shape (from the
+    T-MIG-022 sketch + capture): both transports lose micros (postgres.js
+    parses timestamptz into a millis-precision Date; a JS Date cannot carry
+    micros at all), so the repositories select timestamps through
+    to_char(<col> at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US') — UTC
+    pinned in SQL, session-timezone-proof, string end to end — and a new
+    writer applies the exact Jackson JSR-310 Instant.toString() fraction
+    rule (ISO_INSTANT: 0/3/6 digits from micros — trailing group zeros
+    dropped, no fraction when zero; 'Z' suffix). Sites: documents.createdAt,
+    exam_papers.createdAt, content_review_audit.occurredAt (the only
+    wire-facing Instant outputs of the content domain; review-repos.ts:149
+    and scope.ts:142 order by created_at but never select it). Live golden
+    replay is env-blocked in this sandbox (api.neon.tech unresolved DNS,
+    verified 2026-10-05T08:50Z) — replay posture disclosed in the receipt;
+    the writer is pinned instead against the captured expected strings
+    (diagnosis samples .578011/.129532/.349879/.552213/.997255/.761725/
+    .526822/.592864) plus the Java fraction-rule vector classes.
+base:
+  repo: "syllabai-v2 @ daad88e (main); frozen refs: syllabai-core @ main,
+    syllabai-hub @ 93226a43"
+basis: >
+  Operator drain-cycle directive 2026-10-05 (queue item W2-F1); R0-SWEEP-2
+  follow-up register F-1 (worklog, PR #30 ruling); Wave-2 exit gate
+  CONDITIONAL on F-1/F-2 fixes + F-3 re-pin (GOLDEN_MASTER.md §4).
+scope:
+  allowed:
+    - "apps/api/src/services/content/instant.ts (new)"
+    - "apps/api/src/services/content/repositories.ts (timestamp selects + mappers only)"
+    - "apps/api/test/content/instant.test.ts (new)"
+    - ".syllabai/tasks/W2-F1-instant-rendering.yaml (status/execution_record only)"
+    - ".syllabai/receipts/W2-F1/**"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "golden/** (R6's lane — cases stay untouched; F-1 is a fix-the-port task, not a re-pin)"
+    - "apps/api/src/services/assessment/** + identity/** (their Instant sites are their lanes' law; writer available for adoption via their own tasks)"
+    - "packages/db/** + packages/contracts/** (no schema/contract change — contracts already pin createdAt as z.string())"
+    - "apps/hub/** (R5's lane)"
+    - "syllabai-core / syllabai-hub (frozen, C1)"
+    - "Neon writes (strict read-only) + flyway_schema_history (sacred)"
