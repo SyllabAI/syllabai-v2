@@ -1479,3 +1479,17 @@ Work Log:
 
 Stage Summary:
 - Plan: vercel.json crons entry (02:00 UTC placeholder disclosed) + /api/cron/nightly-decay route (CRON_SECRET fail-closed; DECAY_CRON_ENABLED skip-gate; 501 not-implemented when enabled) + src/lib/decay seam stub with Wave-4 port contract (decay_job_runs.window_start PK idempotency) + pure-logic bun tests + .env.example docs. Implementation next; receipt run-002; PR; hold.
+---
+Task ID: T-MIG-042-PREP (execution complete — operator trace 1a10c9d1ef9ebbe1, cont.)
+Agent: R1-contracts session (Super Z, session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Implement the Vercel Cron scaffold (schedule + invoke shape + wiring seam, NO decay port).
+
+Work Log:
+- apps/hub/vercel.json (NEW): crons entry GET /api/cron/nightly-decay @ '0 2 * * *' (02:00 UTC placeholder disclosed — exact hour confirmed from V38/@Scheduled at port time; inert while env-gated OFF, so a placeholder cannot double-decay).
+- apps/hub/src/app/api/cron/nightly-decay/route.ts (NEW): invoke shape — runtime nodejs + force-dynamic; CRON_SECRET bearer fail-closed (401 on unset/empty/mismatch); DECAY_CRON_ENABLED != '1' => 200 {status:skipped} (BASELINE_DB §4.3 default until Wave-7 cutover); enabled => seam => 501 {status:not-implemented}; ZERO DB contact on every path.
+- apps/hub/src/lib/decay/nightly-decay.ts (NEW): pure decision law + UTC window key + runNightlyDecay seam stub documenting the Wave-4 port contract (decay_job_runs.window_start PK idempotency for retry-safety; deterministic golden-gated math; no flyway_schema_history contact; single cron entry).
+- apps/hub/src/lib/decay/nightly-decay.test.ts (NEW): 8 tests (auth fail-closed matrix, skip-gate matrix, run path, UTC midnight roll, seam zero-effect). .env.example cron section + package.json 'test:decay' script.
+- GATES: hub decay tests 8 pass / 0 fail; typecheck x4 clean; bun test apps/api packages = 485 pass / 0 fail / 13 skip / 1259 expects (EXACTLY the main c0d8fa08 base — this branch touches no packages/apps-api code); golden selftest OK.
+
+Stage Summary:
+- T-MIG-042-PREP IN_REVIEW on t-mig-042p/r1; card flipped; receipts run-001-claim + run-002-execution; PR opened with review request; HOLD for R0. Two lanes of this session now awaiting R0 merge-intake: PR #51 (T-MIG-002-R) + this PR (T-MIG-042-PREP).
