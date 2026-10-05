@@ -1,0 +1,34 @@
+{
+  "task": "T-MIG-041",
+  "run": "run-005-tranche2",
+  "timestamp": "2026-10-06T00:00:00Z",
+  "lane": "r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "branch": "t-mig-041/r9-hubx @ push time (base 08f104d)",
+  "deliverable": {
+    "routes": "apps/api/src/routes/learner.ts — createLearnerRouter(module) with GET /state + GET /course-stats; buildLearnerRouters(env) live factory (requireDatabaseUrl -> createSql -> buildLearnerModule paper defaults)",
+    "mount": "index.ts OUT-OF-FENCE wiring as separate commit: import + construction + app.route(\"/api/v1/learners/me\", learnerRoute) + disclosure comment (R0 ratification requested)",
+    "tests": "apps/api/test/learner/routes.test.ts — 5 tests / 25 expects over a fake module: Boot-401 shell matrix on both surfaces, role-agnostic pass (LEARNER/TEACHER/ADMIN), delegation + bearer-identity scoping, ADR-031 monotonic per-request clock, verbatim view rendering"
+  },
+  "frozen_law": {
+    "source": "syllabai-core @ 6cad6ef",
+    "controllers": "LearnerStateController (187 lines, 9 repo legs) + CourseStatsController (4 counts) — both parameter-less bearer-identity reads; tranche-1 builder signatures (learnerId, now) / (learnerId) are the surface law",
+    "auth": "SecurityConfig.java:91 anyRequest().authenticated() — no role gate on learner /me reads (captured w4-*-unauthed-401 Boot envelope pins the shell)",
+    "determinism": "ADR-031: now injected PER REQUEST by the route layer (new Date() per handler call), recomputed never persisted; w4-state-* goldens tolerate exactly those fields",
+    "errors": "no 4xx service class on these surfaces (empty learner = captured w4-state-empty-200 posture); repo failures fall to the app error boundary opaque 500 (GlobalExceptionHandler :224-230 parity); two-envelope write law (R-1) N/A — no body/query binding"
+  },
+  "conflict_discipline": {
+    "mount_union": "pre-existing assessment.historyRoute at the SAME /api/v1/learners/me prefix (T-MIG-030: POST / + POST /structured + GET /attempts) — path sets disjoint, zero capture overlap (the 87a7225 both-routers-kept pattern); answer-input + selfmark/smartmark mounts unaffected",
+    "hub_flip_law": "/learners/me/state + /course-stats deliberately NOT added to apps/hub V2_SURFACE_PREFIXES (the #55 narrow /learners/me/attempts line stays the only flipped learner family until its own verified flip)"
+  },
+  "gates": {
+    "typecheck": "x4 exit 0 (contracts/shared/db/api)",
+    "bun_test": "apps/api packages 756 pass / 0 fail / 13 skip / 2146 expects = main 751/2121 + 5 tests/+25 exact; apps/hub 36/0/291",
+    "golden_selftest": "OK (tolerance engine incl. declared-unordered multiset)",
+    "golden_files_touched": 0
+  },
+  "disclosures": [
+    "model_versions registry override path (LearnerProperties normalization) is tranche-3 — the route factory uses paper-default engine params via buildLearnerModule(sql)",
+    "no response-body runtime validation at the route layer (type-level #60 contracts; 033/034 precedent)",
+    "authors never self-merge — independent review + R0 merge-intake requested on the PR; id-ratification precedent cited"
+  ]
+}

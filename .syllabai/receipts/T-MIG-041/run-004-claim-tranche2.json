@@ -1,0 +1,24 @@
+{
+  "task": "T-MIG-041",
+  "run": "run-004-claim-tranche2",
+  "timestamp": "2026-10-06T00:00:00Z",
+  "lane": "r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "directive": "Operator trace 1a10d47e78845ba1: 'T-MIG-041 tranche-2. But resync and check for conflicts.'",
+  "claim": {
+    "surface": "tranche-2 = routes + zod wiring + flagged OUT-OF-FENCE mounts for the learner state-model cluster (GET /api/v1/learners/me/state + GET /api/v1/learners/me/course-stats)",
+    "zero_collision": {
+      "open_prs_at_claim": 0,
+      "branch_scan": "only pre-merged t-mig-041/r7a (tranche-1) — no competing t2 head",
+      "worklog_scan": "041 owner lane r7a silent post-tranche-1; R0-ROUND-10 flipped 041 DONE for the tranche-1 scope with the card itself deferring routes/mounts to a tranche-2 (flagged OUT-OF-FENCE per precedent)"
+    }
+  },
+  "conflict_check": {
+    "resync": "main 08f104d (R0-ROUND-10 close-out + R-1/R-2 intake fixes a1e4c5c on the teachermarking router + #67 receipt merge) fetched and rebased onto before branch cut",
+    "mount_union": {
+      "pre_existing": "assessment.historyRoute at /api/v1/learners/me (T-MIG-030) defines POST / + POST /structured + GET /attempts",
+      "mine": "GET /state + GET /course-stats — path sets disjoint, zero capture overlap (the 87a7225 both-routers-kept pattern)",
+      "hub_flip_law": "state/course-stats intentionally stay OUT of apps/hub V2_SURFACE_PREFIXES (the #55 narrow /learners/me/attempts line remains the only flipped learner family)"
+    },
+    "route_layer_conventions_absorbed": "R0 R-1 envelope-law intake fixes (a1e4c5c) read and applied where applicable: no body/query binding on these GET surfaces, so the two-envelope write law is N/A; shell = anyRequest().authenticated() per SecurityConfig.java:91 with the captured w4-*-unauthed-401 Boot envelope"
+  }
+}

@@ -51,6 +51,7 @@ import { buildExamPapersRouters } from "./routes/exam-papers";
 import { buildTestBuilderRouters } from "./routes/testbuilder";
 import { buildAnswerInputRouters } from "./routes/answer-input";
 import { buildTeacherMarkingRouters } from "./routes/teachermarking";
+import { buildLearnerRouters } from "./routes/learner";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
@@ -66,6 +67,7 @@ const examPapers = buildExamPapersRouters();
 const testbuilder = buildTestBuilderRouters();
 const answerInput = buildAnswerInputRouters();
 const teachermarking = buildTeacherMarkingRouters();
+const learnerState = buildLearnerRouters();
 
 const app = new Hono();
 
@@ -256,6 +258,22 @@ app.route("/api/v1/learners/me/answer-input", answerInput.transcribeRoute);
 // at review. LLM seams stay DORMANT (the 032 posture): smart-mark routes
 // answer 503 until the LLM-chain lane lands; read surfaces are live.
 app.route("/api/v1/teacher/marking", teachermarking.teacherRoute);
+
+// Learner state-model router (T-MIG-041 tranche-2 — Wave 4). Path parity with
+// the frozen core: LearnerStateController + CourseStatsController under
+// /api/v1/learners/me (anyRequest().authenticated(); the router owns its
+// auth shell internally — bearer-identity scoped /me reads, no role gate).
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-041 tranche-2, R0 ratification requested):
+// T-MIG-041's scope.allowed covers services/learner/**, test/learner/** and
+// .syllabai bookkeeping — routes/learner.ts + the import/construction/mount
+// here are the tranche-2 expansion, shipped as a separate commit per the
+// 010/020/021/030/031/032/033/034 ratified precedent so R0 can ratify or
+// lift them out at review. HUB FLIP LAW: /learners/me/state + /course-stats
+// intentionally stay OUT of apps/hub V2_SURFACE_PREFIXES — the #55 narrow
+// /learners/me/attempts line remains the only flipped learner family until
+// its own verified flip line lands.
+app.route("/api/v1/learners/me", learnerState.learnerRoute);
 
 // anyRequest().authenticated() parity for paths NO router claimed
 // (SecurityConfig.java:91): anonymous callers get the 401 Boot-shaped body;

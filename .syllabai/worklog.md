@@ -2145,3 +2145,18 @@ Work Log:
 
 Stage Summary:
 - Round-10 closed: the one merge the directive asked for (#63) executed under delegation with self-review; the sweep found the queue already drained by parallel lanes; one blocking-class post-merge finding (F-33-2) filed with exact fix spec + one process N-note; zero self-claimed work; zero direct main pushes (every write via reviewed PR). LANE IDLE — awaiting R0 routing of F-33-2 or operator direction.
+
+---
+Task ID: T-MIG-041 (tranche-2 claim + implementation)
+Agent: r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Operator directive (trace 1a10d47e78845ba1): "T-MIG-041 tranche-2. But resync and check for conflicts" — claim + implement the learner state-model route layer (routes + zod wiring + flagged OUT-OF-FENCE mounts), gates, PR, stop.
+
+Work Log:
+- RESYNC FIRST (as ordered): main re-fetched to 08f104d (R0-ROUND-10 close-out + R1 round-9 receipts + the R-1/R-2 envelope-law intake fixes a1e4c5c on the teachermarking router). Collision scan: 0 open PRs, only the pre-merged t-mig-041/r7a head, 041 owner lane (r7a) silent post-tranche-1; the card itself defers routes/mounts to a tranche-2 (flagged OUT-OF-FENCE per the 010..034 precedent) — claim is clean per earliest-claim-wins.
+- CONFLICT CHECK (the load-bearing one the operator ordered): index.ts already mounts assessment.historyRoute at the SAME /api/v1/learners/me prefix (T-MIG-030: POST / + POST /structured + GET /attempts). Resolution = MOUNT UNION: my router defines exactly GET /state + GET /course-stats — path sets disjoint, zero capture overlap in both directions (the 87a7225 both-routers-kept pattern); answer-input (/answer-input) + selfmark/smartmark (/attempts) mounts untouched. R-1/R-2 conventions absorbed: GET surfaces have no body/query binding, so the two-envelope write law is N/A here; shell = anyRequest().authenticated() with the captured w4-*-unauthed-401 Boot envelope.
+- Implementation (branch t-mig-041/r9-hubx, base 08f104d): commit 1 = routes/learner.ts + test/learner/routes.test.ts (5 tests/25 expects: shell matrix incl. role-agnostic LEARNER/TEACHER/ADMIN pass, delegation with bearer-identity scoping — learnerId = auth.userId, no client-controllable param —, ADR-031 monotonic per-request clock pin, verbatim views); commit 2 (OUT-OF-FENCE, separate per precedent) = index.ts import+construction+mount line + disclosure comment (hub flip law documented: state/course-stats stay OUT of the hub prefix table per the #55 narrow-flip law) + card DONE->IN_REVIEW (tranche-2 note preserving the tranche-1 DONE history) + run-004-claim-tranche2.json.
+- Gates on the branch head: typecheck x4 exit 0; bun test apps/api packages 756/0/13skip/2146 expect (= main 751/2121 + 5/+25 exact); apps/hub 36/0/291; golden selftest OK; zero golden/** edits.
+- PR opened for independent review + R0 id ratification + merge-intake (authors never self-merge). Per the directive this lane STOPS after the PR.
+
+Stage Summary:
+- T-MIG-041 tranche-2 IN_REVIEW on t-mig-041/r9-hubx (claim receipt run-004 + implementation receipt run-005). The mount-union conflict the operator flagged was found, measured (disjoint path sets), and documented rather than papered over. Tranche-3 (model_versions override normalization) remains unclaimed.
