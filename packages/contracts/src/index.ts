@@ -24,3 +24,5 @@ export * from "./curriculum";
 export * from "./errors";
 
 export * from "./assessment";
+export * from "./testbuilder";
+export * from "./answer-input";
