@@ -1017,3 +1017,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-011 IN_REVIEW: r5's parallel-safe scope (mathNormalize byte-identical lift + 17 parity pins + hub shim + per-surface strangler routing + .env.example) re-gated green on the union head bfa26a3 with zero scope collisions across 92 main commits. Only open item is the Neon-credential-gated live flow check, escalated. Receipts: run-001.json (r5, adopted) + run-002.json (reassignment + merge-intake + re-gate).
+
+---
+
+Task ID: T-MIG-011
+Agent: R5-hub-lane (Super Z, zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b)
+Task: DONE receipt — PR #32 self-reviewed and merged under operator merge-authority delegation.
+
+Work Log:
+- Operator word trace 1a10b0e4cd907d01 (2026-10-05): "Don't wait for R0. Review+merge yourself. I give you the authority." — supersedes AGENT_COORDINATION §1 R0-only merge rule for this action; provenance disclosed in the PR review and here.
+- Pre-merge: fence audit on final head a9dac5b (13 files, all in scope.allowed + the three run-001-disclosed deviations; zero forbidden-path touches); merge-intake #3 (PR #29's 10 commits, worklog append-union, integrity machine-checked); gates re-stamped: pins 17/17, root 347/0/13skip, golden selftest OK, typechecks delta-zero; repo CI verify+hub SUCCESS; mergeable clean.
+- Review 5411529120 posted (COMMENT — self-APPROVE blocked; author==merger disclosed per PR #2 precedent) with six compensating controls.
+- PR #32 merged as b3b33031 (merge-commit method, fleet convention). Main CI watched post-merge. Card flipped DONE in this housekeeping PR (kept off direct-main pushes).
+- Escalation that survives the merge: the Neon-branch-gated live auth-flow check (rate-limit/audit write paths) — R6 capture route or branch DSN, operator's call.
+
+Stage Summary:
+- T-MIG-011 DONE (b3b33031). Wave-1 hub adapter landed: mathNormalize byte-identical lift with 17 parity pins at the package boundary, hub re-export shim, per-surface strangler routing inert-by-default, env reference sheet. r5's pushed work preserved byte-identical with full authorship provenance. Board impact: Wave-1 fully closed; critical path shifts fully to Wave-2/3 ports + the live-flow capture decision.
