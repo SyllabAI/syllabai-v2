@@ -2202,3 +2202,24 @@ Work Log:
 
 Stage Summary:
 - The T-MIG-044 instrument is now FULLY OPERATIONAL end to end: capacity resolved (hygiene drop of receipted scratch branches), first live replay delivered (90/155 seed, honest classification filed), evidence preservation fixed, union full-picture pending the next dispatch. Register for R0/R6: the three genuine port findings above (048 candidate = attempts.exam_paper_id port defect is blocking-class for the marking pipeline); H-2 third-posture ruling; identity-pin amendments; 429 pacing decision. LANE continues: dispatch the full union run next.
+
+---
+Task ID: R3a-ROUND-11 (operator directive trace 1a10d5650fd87dd5: "claim 043, resync first and check for conflics")
+Agent: superz-agent-b (R3a lane, Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Resync the lane with origin/main, then claim T-MIG-043 after a conflict/collision check.
+
+Work Log:
+- RESYNC: workspace survived this round (4th-wipe check negative — repo + 0600 secrets file intact). Local main fast-forwarded to origin/main 3824c5d (T-MIG-047 DONE housekeeping); secret env re-sourced.
+- CONFLICT CHECK on the 043 band — CLAIM BLOCKED BY DOCTRINE, hands-off executed:
+  - Zero 043 yamls on origin/main (band unseeded there), BUT branch t-mig-043/w0a exists with claim commit db87a9a (author date == commit date 2026-10-05T18:01:06Z): card T-MIG-043-learner-me-surfaces.yaml status IN_PROGRESS (owner w0a, session web-e79a3bd8…), receipts/T-MIG-043/run-001-claim.json, 16-line worklog entry; w0a's operator basis trace 1a10d2c88b6f13c5 ("Check and claim whichever lane other agents are not working").
+  - Visibility double-read: t-mig-043/w0a was already present in this lane's clone BEFORE this directive (no "[new branch]" line in this round's fetch output — the branch came down with the previous round's re-clone). The claim therefore PRE-DATES this routing word.
+  - Earliest-claim-wins (the same doctrine that awarded T-MIG-023 to R1-contracts against this lane): w0a's claim is earliest + established + ACTIVE (claimed <1 day ago, tranche-1 mapped line-against-line in the card, no PR yet — nothing stale, no abandonment precedent applies). This lane does NOT touch services/learner-me/**, packages/contracts/src/exam-series.ts, or any 043 fence file. Zero 043 claim footprint was ever committed by this lane (nothing to release).
+- BOARD SWEEP (non-party observations, for R0's attention):
+  - 041 tranche-2 DOUBLE-PR collision observed: #69 (t-mig-041/r7a; tranche-2 commits a07fb01/cce507b @ 18:23:46Z, receipt 40b1548 @ 18:26:11Z) vs #72 (t-mig-041/r9-hubx; commits 9972868/300e3e6 @ 18:27:14Z); both cut from merge-base 6ea61b2 (independent work); file overlap: the 041 card, worklog, apps/api/src/index.ts, apps/api/test/learner/routes.test.ts. Earliest-commit read = r7a by ~3m28s; PR numbering consistent (#69 < #72). NOT ruled here — R0 arbitration material (T-MIG-010 precedent: earliest claim wins, superseded side gets cross-validation credit).
+  - #70 (t-mig-048/r0s — neon-branch fail-path redaction, N-A closure) open, fence disjoint.
+  - T-MIG-033 tranche-3 (SME admin port) remains the last ratified-but-unclaimed code lane; card owner r4b; no t3 branch sighted; hands-off absent routing.
+  - Census: open PRs = #69/#70/#72; main 3824c5d; cards all DONE except 033 IN_PROGRESS (r4b) and 043 IN_PROGRESS (w0a, claim on-branch).
+- GATES on this receipt's branch head (= main 3824c5d, zero code delta): typecheck x4 exit 0; bun test apps/api packages = 764 ran / 0 fail / 13 skip / 2121 expect (main baseline EXACT); golden selftest OK (tolerance engine incl. T-MIG-024 declared-unordered multiset). Neon untouched (no COW needed for a worklog-only receipt).
+
+Stage Summary:
+- Directive executed faithfully: resync DONE; conflict check DONE; the 043 claim is DOCTRINE-BLOCKED (w0a earliest, operator trace 1a10d2c88b6f13c5) — hands-off with zero footprint, disclosed. The one live arbitration item receipted for R0: 041 tranche-2 double-PR #69 (r7a) vs #72 (r9-hubx). LANE IDLE — claimable remainders for whoever the operator routes: T-MIG-033 tranche-3 (r4b's card), the 041-t2 arbitration outcome, hub scoped-test-runner hygiene housekeeping (unfiled R0-ROUND-6C suggestion), operator register (H-2 ruling, identity-pin amendments, 429 pacing, NEON_BRANCH_CAPACITY).
