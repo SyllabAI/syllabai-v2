@@ -1977,6 +1977,19 @@ Stage Summary:
 - Lane R4-api-b IDLE after this commit; no other lane-owned register items outstanding.
 
 ---
+Task ID: T-MIG-033 (run-004 claim — tranche-2)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator directive (trace 1a10d02b6c32a29d) "continue working" + R0-ROUND-6C suggestion 2 — claim T-MIG-033 tranche-2 (routes + zod wiring + flagged mounts).
+
+Work Log:
+- Post-merge continuation of the delegated review+merge round: #62 merged (d9a48a6), T-MIG-044 DONE, #61 closed superseded, then per R0-ROUND-6C's "give T-MIG-033 tranche-2 a lane" this lane (tranche-1 author) claimed tranche-2.
+- Zero-collision re-verified: only t-mig-033/r4 (merged tranche-1) exists on origin; board zero-open; branch t-mig-033/r4b cut from main f39557d.
+- Frozen surface re-read @ 6cad6ef (fresh anonymous clone, HEAD verified = 6cad6ef): TeacherMarkingController.java :46-328 mapped endpoint-for-endpoint (9 routes, G-5 bounds, C-9 verbatim hint, dual-shape 200s, SmartMarkBatchRequest/HumanMarkRequest/KappaScopeRequest validation annotations, KappaEvaluationView shape, @PreAuthorize defense-in-depth note).
+- Plan grounded in merged reality: T-MIG-037 contracts (teacher-marking.ts — all request schemas + G-5 constants 50/200/5/100/50) + tranche-1 services (services/teachermarking/index.ts incl. the five-state MARKING_STATES) + the 6th mount precedent (content/curriculum pattern). N-4 + N-2 conditions attached per card.
+- Claim receipt run-004-claim-tranche2.json + yaml status note (this commit). Implementation next; PR after gates.
+
+Stage Summary:
+- T-MIG-033 tranche-2 CLAIMED on t-mig-033/r4b. Board zero-open preserved (claim is the only in-flight item). Actions variable NEON_PARENT_BRANCH_ID set repo-side (br-muddy-bar-a5huwldd); operator-side remainder for the maiden Neon run: NEON_API_KEY + NEON_PROJECT_ID (recorded nowhere in-repo, by design) then dispatch.
 
 Task ID: R0-ROUND-6C-DRIFT-FIX (w0a housekeeping: T-MIG-038 card flip + T-MIG-044 independent review verification)
 Agent: w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
