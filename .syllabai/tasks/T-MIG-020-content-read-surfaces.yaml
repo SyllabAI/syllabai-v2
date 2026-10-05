@@ -6,7 +6,7 @@ task:
     review/audit/provenance + question topics read + learner citation reader
     + question assets"
   owner: "r3-c (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
-  status: BLOCKED  # push-only blocker (no GITHUB_PAT in session); implementation complete, all executable gates green — see worklog addendum
+  status: IN_REVIEW  # PR open ("T-MIG-020: port content read surfaces (Wave 2)"); receipts attached; see execution_record 2026-10-05 unblock addendum
   claimed_at: "2026-10-05T21:35Z"
   priority: P1
   wave: 2
@@ -29,6 +29,23 @@ task:
     follows the expect). Branch t-mig-020/r3 push BLOCKED: no GITHUB_PAT in
     this session (w0a T-MIG-000 addendum pattern); branch is push-ready
     verbatim (f5773bc → a7d5b85 → 47c91f6 → receipts/worklog commit).
+    2026-10-05 (unblock) r3-c: operator supplied GITHUB_PAT + NEON_PAT.
+    Branch pushed; PR "T-MIG-020: port content read surfaces (Wave 2)"
+    opened; status -> IN_REVIEW. NEON_PAT provisioned but this sandbox
+    cannot resolve api.neon.tech (DNS) — live golden replay + the 9 content
+    integration tests stay PENDING for a Neon-capable session; no case
+    weakened (F-1 stands). OVERLAP DISCLOSURE for R0: PR #18 (T-MIG-005,
+    r1) also ports wave-2 content-read contracts incl.
+    packages/contracts/src/content.ts (+480). Claim order: this lane's
+    claim+Orientation commit f5773bc precedes PR #18 creation; T-MIG-005
+    was not CLAIMED at self-select time (active lanes then: T-MIG-011,
+    T-MIG-013). Export-name comparison: ~30 shared view/schema names;
+    divergences = envelope/enum naming (this lane SearchRequest /
+    ValidationState / SearchEmptyCause / paperReviewHeaderSchema vs r1
+    ContentSearchQuery/Response / ContentValidationState / uuidPathSchema
+    / response-envelope schemas). This lane's services, routes and
+    151-green tests bind to its names — reconciliation is R0's call; no
+    unilateral rework (fence law).
   base:
     repo: "syllabai-v2 @ 67639db at claim time; frozen refs: syllabai-core @
       main (content/ContentDocumentController.java, content/
