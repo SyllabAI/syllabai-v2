@@ -1,0 +1,60 @@
+version: 1
+task:
+  id: T-MIG-020
+  title: "Port content READ surfaces to apps/api (Wave 2): teacher content
+    documents list/get/canonical/search + review queues v1/v2/v3 + paper
+    review/audit/provenance + question topics read + learner citation reader
+    + question assets"
+  owner: "r3-c (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
+  status: CLAIMED
+  claimed_at: "2026-10-05T21:35Z"
+  priority: P1
+  wave: 2
+  deps: [T-MIG-002, T-MIG-004]
+  execution_record: >
+    (in progress — claim commit; filled by the doing agent; append, never
+    rewrite)
+  base:
+    repo: "syllabai-v2 @ 67639db at claim time; frozen refs: syllabai-core @
+      main (content/ContentDocumentController.java, content/
+      ContentReaderController.java, content/ContentRetrievalService.java,
+      content/ChunkVectorRepository.java, content/DocumentRepository.java,
+      content/SearchEmptyCause.java, content/DocumentPageText.java,
+      sme/QuestionAssetController.java, teacher/ContentController.java (read
+      surfaces only), teacher/ContentReviewService.java (read-only
+      projections), curriculum/CurriculumScopeResolver.java,
+      knowledge/KnowledgeNodeRepository.java (subtree CTE),
+      identity/SecurityConfig.java route rules), syllabai-hub @ 93226a43"
+  basis: >
+    Operator directive 2026-10-04 trace 347fbb29…; MIGRATION_PLAN.md §5 Wave 2
+    (content/curriculum/question-asset READ surfaces — highest read volume,
+    lowest write complexity); R0 UNBLOCK-SEQUENCE-PHASE2 stage summary names
+    Wave-2 ports the next critical path; T-MIG-004 capture (38 cases) is the
+    gate input. Self-selected per AGENT_BRIEFING §5 (no OPEN task overlapped;
+    T-MIG-011 CLAIMED by r5, T-MIG-013 IN_REVIEW by r3a).
+  scope:
+    allowed:
+      - "apps/api/src/routes/content/**"
+      - "apps/api/src/services/content/**"
+      - "apps/api/test/content/**"
+      - "packages/contracts/src/content.ts"
+      - ".syllabai/tasks/T-MIG-020-content-read-surfaces.yaml (status/execution_record only)"
+      - ".syllabai/receipts/T-MIG-020/**"
+      - ".syllabai/worklog.md (append-only entries)"
+    forbidden:
+      - "apps/hub/** (T-MIG-011/r5's lane)"
+      - "packages/db/** (R2's lane — baselined schema read-only)"
+      - "golden/** (R6's lane — replay classification only, no case edits)"
+      - "apps/api/src/index.ts (mount wiring ships as a separate OUT-OF-FENCE
+        commit in this PR for R0 ratification, T-MIG-010 precedent)"
+      - "syllabai-core / syllabai-hub (frozen, C1)"
+      - "flyway_schema_history / any Neon main write (BASELINE_DB.md)"
+  notes: >
+    Write surfaces of the same controllers (ingest, past-papers, validate-*,
+    place, reject, flag/unflag, topics mapping POST) are NOT in this task's
+    title per MIGRATION_PLAN §5 Wave-2 READ-surface scope; they answer the
+    honest 501 + owning-task body until their own task files them (per the
+    honest-501 discipline — never a fabricated 200). Search embed-write path
+    (POST /documents/{id}/embed) is special: its captured deterministic
+    surface (no-provider 500) is ported; the embedding write itself stays
+    behind the provider seam (unkeyed = the core's own no-provider 500).
