@@ -1,0 +1,75 @@
+version: 1
+task:
+  id: T-MIG-005
+  title: "Wave-2 content-read zod contracts — port the six content/curriculum controllers' DTOs constraint-for-constraint into packages/contracts (Contracts-first prerequisite for the T-MIG-020/021 ports)"
+  owner: "R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e) — self-selected per briefing §5: only remaining unowned critical-path item; fences disjoint from t-mig-011/r5 (apps/hub, IN_PROGRESS) and t-mig-013/r3 (apps/api tests + golden tooling, IN_REVIEW as PR #12). Same session previously held the now-DONE R2-db lane (T-MIG-002, PR #4) — one lane at a time, prior lane closed."
+  status: IN_REVIEW # work complete, all gates green; branch pushed (remote @ 0cd5e93) and PR #18 open (https://github.com/SyllabAI/syllabai-v2/pull/18) — second operator PAT validated after the 05:1xZ PAT's revocation. Awaiting R0 review + exclusive merge + id/scope ratification.
+  priority: P1
+  wave: 2
+  deps: [T-MIG-004] # captured validation boundaries are the acceptance spec; 004 DONE
+  execution_record: >
+    2026-10-05 (R1-contracts, session web-ab7a0483). CLAIMED at 05:06:59Z
+    (commit 9f43ff4) after full board survey; pre-claim gates re-executed
+    green at main 67639db. WORK COMPLETE on branch t-mig-005/r1: packages/
+    contracts/src/{content.ts,curriculum.ts,errors.ts} + content.test.ts +
+    curriculum.test.ts + index.ts exports (+ one-word auth.ts diff: export
+    the existing notBlank helper — no behavior change). Ported
+    constraint-for-constraint with source-file headers: 6 controllers' READ
+    surfaces (MIGRATION_PLAN §5 W2), 5 enums (Document.Kind,
+    ExamPaper/QuestionVersion/MarkScheme.ValidationState, Question.Type,
+    CurriculumVersion.Status, KnowledgeNode.ValidationStatus, NodeType),
+    13 response views (DocumentSummary, ChunkHit, CitationDocument+PaperRef,
+    ReviewQueue, EnrichedReviewQueue v2/v3 + summaries, PaperReview +
+    nested, AuditRow, DocumentIdentity, PaperProvenance, TopicRow,
+    CurriculumOverview, NodeView, CurriculumVersionView, SubjectView),
+    Spring-exact param binding (StringToEnumConverterFactory trim-before-
+    valueOf; StringToBooleanConverter true/false-only; NumberUtils
+    parseNumber int semantics incl. whitespace-trim + int32 range), and the
+    two OBSERVED error envelopes (Boot-default 401 vs advice 400/404 — no
+    Java record exists; provenance-marked). Write-flow DTOs of the same
+    controllers (ingest/validate/reject/place/flag/topics-mapping/scheme
+    criteria) deliberately NOT ported — owning waves' contracts tasks;
+    scope ratification requested in the PR. EVIDENCE: contracts typecheck
+    exit 0; contracts tests 69 pass / 0 fail; full repo typecheck x4 exit
+    0; bun test 141 pass / 4 skip / 0 fail (was 100 — +41 pins);
+    golden --selftest OK. Captured bodies from T-MIG-004 fixtures embedded
+    verbatim in pins. FINDINGS: F1 z.coerce.number() would have WIDENED
+    the accept set vs Java int binding ("1e3" etc.) — caught by pin tests
+    pre-merge, fixed via parseInt-exact mirror. F2 Spring's
+    StringToBooleanConverter accepts ONLY case-insensitive true/false
+    (NOT yes/1/on) — captures never exercised alternates; flagged for R6.
+    F3 two error envelopes exist on the wire (filter-chain vs advice);
+    hub typed clients must distinguish — encoded in errors.ts. F4
+    nullability of several view fields is capture-unproven (F-5 real-data
+    tranche gated on NEON_PAT) — tagged inline, tightening list recorded
+    in the receipt. DIVERGENCE PRESERVED: T-MIG-004 F-2 blank-search 500 —
+    the schema keeps the DECLARED @NotBlank; the divergence call belongs
+    to R0 + T-MIG-020 (recorded, not silently fixed in either direction).
+    UNBLOCK 2026-10-05: second operator PAT validated (200 GET /user);
+    branch pushed bf72e98..0cd5e93 → remote t-mig-005/r1 @ 0cd5e93;
+    PR #18 opened (base main) for R0 review; status → IN_REVIEW.
+    Receipt: run-003-push-pr.json.
+base:
+  repo: "syllabai-v2 @ 67639db (main at claim); frozen refs: syllabai-core @ main, syllabai-hub @ 93226a43"
+basis: >
+  Operator directive 2026-10-04 trace 347fbb29…; MIGRATION_PLAN §4.1
+  (Contracts first — no endpoint implemented before its zod schema exists and
+  is diffed against the Java DTO) and §5 Wave 2; MIGRATION_PLAN §10 (Day 4+:
+  Wave-2 lane opens); AGENT_COORDINATION §2 (claim protocol), §4 (yaml
+  format), §7 (anti-patterns — no schema widening); R0 UNBLOCK-SEQUENCE-PHASE2
+  Stage Summary: "Critical path: T-MIG-011 hub adapter (claimed), then
+  Wave-2 ports (T-MIG-020..022) against the fresh capture." Contracts are the
+  serialisation point gating those ports; T-MIG-001 covered identity only.
+scope:
+  allowed:
+    - "packages/contracts/src/**"
+    - ".syllabai/tasks/T-MIG-005-content-read-contracts.yaml (this file — status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-005/**"
+    - ".syllabai/worklog.md (append-only; process artifact per AGENT_COORDINATION §5)"
+  forbidden:
+    - "apps/** (R3/R4/R5 lanes — t-mig-013 and t-mig-011 in flight)"
+    - "packages/db/** (R2 lane)"
+    - "golden/** (T-MIG-013 touches replay tooling; replay runs are read-only usage)"
+    - "syllabai-core / syllabai-hub writes of any kind (C1 — raw reads only)"
+    - "any Neon connection (contracts need none)"
+    - "widening any zod schema to make a case pass (§7 anti-pattern)"

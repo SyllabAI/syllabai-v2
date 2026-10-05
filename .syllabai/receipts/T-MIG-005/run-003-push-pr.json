@@ -1,0 +1,39 @@
+{
+  "task": "T-MIG-005",
+  "run": "run-003-push-pr",
+  "timestamp": "2026-10-05T05:58:16Z",
+  "agent": "R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "action": "credential unblock -> push work commit -> open PR -> status IN_REVIEW",
+  "credential_lifecycle": {
+    "note": "Second operator-supplied GITHUB_PAT (after the 05:1xZ PAT was revoked). Used only as env var + per-invocation credential helper; never echoed, logged, or file-persisted.",
+    "first_use_401_diagnosis": "Initial 401 was a harness artifact, NOT a bad credential: env vars do not survive across tool-shell invocations in this session (fingerprint pat_len:0), so the Authorization header was empty. Git-side anonymous public reads succeeded throughout. Re-run with export+use in a single shell invocation validated 200 on GET /user.",
+    "validated": "200 GET /user (single-invocation chain)"
+  },
+  "push": {
+    "branch": "t-mig-005/r1",
+    "range": "bf72e98..0cd5e93",
+    "remote_head_verified": "0cd5e93377628cb419bbf5555cfe137877ebb92e",
+    "claim_priority_note": "claim commit 9f43ff4 already on remote (pushed at ~05:1xZ before first PAT revocation); this push adds only the work commit 0cd5e93"
+  },
+  "pull_request": {
+    "number": 18,
+    "url": "https://github.com/SyllabAI/syllabai-v2/pull/18",
+    "title": "T-MIG-005: wave-2 content-read contracts",
+    "base": "main",
+    "created_via": "POST /repos/SyllabAI/syllabai-v2/pulls -> 201",
+    "body_includes": [
+      "all three receipts",
+      "fences",
+      "gates 141/0/4skip",
+      "findings F1-F6",
+      "id-ratification request (T-MIG-013 precedent)",
+      "scope ratification request (READ-only surfaces)"
+    ]
+  },
+  "status_change": "IN_PROGRESS -> IN_REVIEW (yaml status + execution_record UNBLOCK line)",
+  "awaiting": [
+    "R0 review + exclusive merge",
+    "id ratification (T-MIG-013 precedent)",
+    "scope ratification (READ-only surfaces; write DTOs deferred to owning waves)"
+  ]
+}

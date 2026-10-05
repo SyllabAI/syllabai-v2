@@ -1,0 +1,39 @@
+{
+  "task": "T-MIG-014",
+  "agent": "superz-agent-b (session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)",
+  "lane": "R3 (self-selected; packages/db substrate + disclosed identity createSql adapter)",
+  "branch": "t-mig-014/r3a (base: main @ 67639db)",
+  "date": "2026-10-05",
+  "problem": "Golden-master replay (GOLDEN_MASTER §2/§4) needs a target api whose db state matches the capture state. The T-MIG-004 content cases are pinned to the Flyway V1..V63 SEED state — a production-copy Neon branch carries real pilot data (91 papers, 2,333 chunks, real documents) and would produce GENUINE-FAIL-class diffs on every state-dependent case, drowning the parity signal in environment noise. The monorepo had ONLY Neon-specific drivers (@neondatabase/serverless ws Client in identity createSql; neon-http drizzle in packages/db) — no lane could reach a seed-shaped local/CI Postgres.",
+  "change": [
+    "packages/db/src/client.ts: isNeonUrl() host dispatch — *.neon.tech → neon-http drizzle (production path unchanged); any other host → postgres.js over TCP (max 1, prepare:false). Blank/jdbc: guards run before dispatch for both paths. Compat warning comment for the version pin finding below.",
+    "packages/db/src/client.test.ts (NEW): 9 dispatch unit pins (decision matrix, lookalike TLDs, unparseable URLs, guards on both paths, lazy construction).",
+    "packages/db/src/index.ts: export isNeonUrl + schema re-export path fix (./schema/schema).",
+    "apps/api/src/services/identity/users.ts (DISCLOSED OUT-OF-FENCE, T-MIG-010's DONE fence — shipped as separate commit for R0 ratification): createSql gains the same host dispatch via RawSqlClient adapters (NeonWsClient = prior behaviour byte-identical; PostgresJsClient = TCP path). Repository code above the adapter untouched; interactive-tx semantics preserved and live-proven.",
+    "packages/db/package.json + apps/api/package.json: postgres ^3.4.9 added; @neondatabase/serverless pinned 0.10.2 (see finding). bun.lock updated mechanically."
+  ],
+  "live_evidence": {
+    "target": "Neon scratch branch t-mig-014/r3a (br-polished-sky-a5se80ks, parented on production br-muddy-bar-a5huwldd; role t_mig_014_agent created ON the branch; credentials held in /tmp only, never echoed/committed)",
+    "tool": ".syllabai/receipts/T-MIG-014/tools/live-verify.ts (committed; reads DATABASE_URL from env)",
+    "results": [
+      "PASS — createDb neon-http: select 1 (driver=neon-http)",
+      "PASS — postgres.js: select 2 + positional param (transport=tcp max=1 prepare=false)",
+      "PASS — createSql(neon-ws): template + interactive tx + rollback-then-reuse"
+    ],
+    "control_plane": "console.neon.tech/api/v2 (api.neon.tech remains DNS-dead per r2's DoH census); /connection_uri route absent in current API — role created via POST /branches/{id}/roles, URI assembled from endpoint host + response-returned password (Neon ignores caller-supplied passwords and returns its own 16-char value in the creation response — operational note for future lanes)"
+  },
+  "latent_substrate_bug_found_and_fixed": {
+    "what": "createDb()'s neon-http path failed on EVERY live Neon query: drizzle-orm 0.38.x calls neon(strings, values, options) — a form @neondatabase/serverless 1.x removed (tagged-template only). Invisible to unit tests because construction is lazy; the path was never live-exercised (T-MIG-010's integration tier used createSql/ws).",
+    "fix": "@neondatabase/serverless pinned to 0.10.2 (drizzle-0.38 call-form compatible; ws Client API unchanged — re-proven live by check 3 post-pin) + a do-not-lone-bump warning comment in client.ts.",
+    "impact_if_unfixed": "the first T-MIG-020/021 consumer of createDb would have hit 500s on every Neon-touching query while CI stayed green."
+  },
+  "gates": [
+    { "cmd": "bun run typecheck (root, 4 workspaces)", "result": "exit 0" },
+    { "cmd": "bun test apps/api packages", "result": "111 pass / 0 fail (9 new dispatch pins included)" },
+    { "cmd": "bun golden/runner.ts --selftest", "result": "PASS — tolerance engine behaves" },
+    { "cmd": "bun .syllabai/receipts/T-MIG-014/tools/live-verify.ts (DATABASE_URL=t-mig-014/r3a branch)", "result": "3/3 PASS (exit 0)" }
+  ],
+  "fence": "Files touched: packages/db/src/{client.ts,client.test.ts,index.ts}, packages/db/package.json, apps/api/package.json (dep pins), apps/api/src/services/identity/users.ts (DISCLOSED out-of-fence adapter only), bun.lock (mechanical), .syllabai/receipts/T-MIG-014/**, task yaml. packages/db/src/schema/** untouched; golden/** untouched; no production Neon contact (branch rows-only).",
+  "unblocks": "T-MIG-020/021 golden replay against a seed-shaped Postgres (local or branch-with-reset); every future wave's local replay; R6 replay tooling on CI runners.",
+  "verdict": "T-MIG-014 COMPLETE: URL-dispatched drivers live-proven on a real Neon branch (3/3), latent neon-http 1.x incompatibility found+fixed with evidence, all gates green. Ready for R0 review."
+}

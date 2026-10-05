@@ -1,0 +1,73 @@
+{
+  "receipt": "T-MIG-004 run-002-extension — session summary: F-5 real-data tranche capture via Neon COW branch",
+  "schema": "syllabai.v2.t-mig-004.session/1.0",
+  "agent": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "task": ".syllabai/tasks/T-MIG-004-content-read-golden-cases.yaml (status stays DONE per R0; this is the preregistered F-5 extension, recorded via receipts + worklog addendum)",
+  "basis": "F-5 HIGH escalation in run-001.json: 'UNBLOCK: operator supplies NEON_PAT to this lane; the extension session follows the T-MIG-003 run-002 recipe (COW branch + synthetic accounts) and appends the missing cases.' Operator supplied NEON_PAT in-session (2026-10-05); BASELINE_DB §2 branch doctrine; GOLDEN_MASTER §2 capture procedure.",
+  "environment_recovery_note": "This session resumed after a workspace reset: the run-002 scratch tooling (JDK 25, Maven, local scratch Postgres) was gone. Re-provisioned: Temurin JDK 25.0.4.1 (Adoptium API) + Maven 3.9.16 + shallow anonymous clone of syllabai-core into scratch (C1: read-only, never written). Build: mvn -B -DskipTests package -> BUILD SUCCESS in 39.8s, target/syllabai-core-0.1.0-SNAPSHOT.jar (180MB boot jar).",
+  "neon_branch": {
+    "name": "golden-capture/2026-10-05",
+    "id": "br-fancy-surf-a52owvza",
+    "parent": "br-muddy-bar-a5huwldd (production)",
+    "endpoint": "ep-lingering-breeze-a5y8b1sw.us-east-2.aws.neon.tech",
+    "role_password": "reset branch-locally via Neon API (POST /branches/{id}/roles/neondb_owner/reset_password); production role untouched; credential persisted only to the operator-workspace .env (gitignored), never echoed or committed",
+    "production_contact": "production compute (ep-ancient-cake-a52e4kfd) was NEVER connected to; all SQL + boot traffic went to the branch endpoint only"
+  },
+  "sessions": [
+    {
+      "run": "run-003-neon-cow-capture (main tranche)",
+      "boot": "frozen core against the COW branch (SYLLABAI_DATABASE_URL jdbc + branch creds, SYLLABAI_JWT_SECRET synthetic 32+ bytes, SYLLABAI_TEACHER_JOIN_CODE synthetic, SYLLABAI_LLM_MODE=test, decay-job disabled by default config); health UP after ~34s; Flyway validated against the copied history (no-op), Hibernate ddl-auto=validate passed on the production end-state",
+      "accounts": "capture-ext-student@example.invalid (201) + capture-ext-teacher@example.invalid (201 via honest join-code path) — synthetic, .invalid domain, tokens discarded, never committed",
+      "cases_captured": 13,
+      "note": "first boot attempt failed teacher registration 403 because the session script exported only an internal alias and NOT SYLLABAI_TEACHER_JOIN_CODE — the core's fail-closed join-code gate refused exactly as designed; fixed the env name and re-ran (student 409-on-re-register handled honestly)"
+    },
+    {
+      "run": "run-004-neon-cow-capture (extension: page text + paper-null variant)",
+      "cases_captured": 2
+    }
+  ],
+  "case_inventory": {
+    "committed_cases": 15,
+    "files": "golden/cases/*realdata*.json + *real-*.json (flat convention; runner loadCases() non-recursive)",
+    "largest": "content-docs-teacher-realdata-200.json (581KB — the FULL 1023-document listing; committed as exact body because ordering is deterministic: created_at verified unique across all 1023 rows on the branch)",
+    "by_kind": {
+      "realdata_200": 10,
+      "boundary_404": 1,
+      "authz_401": 1,
+      "authz_403": 1,
+      "binary_sentinel_200": 1,
+      "paper_null_200": 1
+    },
+    "f5_tranche_coverage": {
+      "documents list/canonical with ingested rows": "DONE (1023-doc listing + detail + canonical)",
+      "citable-document page text (DocumentPageText assembly)": "DONE (page=4 real text 716 chars; page=1 cover-empty honest behaviour; page=99 bounds 404)",
+      "review queues with real SUGGESTED papers": "ADJUSTED (see F-12): queues captured on real data — papers [] is the TRUE production state (0 SUGGESTED), counters are real (v1 59/144, v3 practicableTopicCount 34)",
+      "question-assets binary happy path": "DONE (130627-byte image/png via <non-json> sentinel, F-8 convention)",
+      "search over embedded chunks": "STILL BLOCKED (see F-11): hard-requires SYLLABAI_EMBEDDING_GEMINI_API_KEY"
+    }
+  },
+  "replay_classification": {
+    "selftest": "PASS (engine sanity)",
+    "local_gates": "typecheck x4 exit 0; bun test 119 pass / 0 fail / 4 skip (284 expectations) on post-#13 main",
+    "classification_of_extension_cases": "15 cases replayed status-level against a locally booted v2 api (current main, branch-backed DATABASE_URL): 1/15 PASS (content-reader-real-doc-unauthed-401 — the routers-then-401 fallback already answers it), 14 EXPECTED-PENDING (v2 serves no W2 routes yet; every failure owned by T-MIG-020 (content/reader/assets/teacher content) and T-MIG-021 (curriculum)). Full body-compare replay remains the port lanes' gate per the T-MIG-004 posture.",
+    "full_replay_note": "a full 70-case replay including the auth family against a branch-backed v2 api was attempted and is impractical in this sandbox (bcrypt cost-12 + per-request Neon queries on cold free-tier compute) — see F-13"
+  },
+  "findings": [
+    {"id": "F-9", "severity": "medium (parity requirement)", "finding": "v1-vs-v2 review-queue counter ASYMMETRY on real data: v1 review-queue reports suggestedVersions:59 / suggestedSchemes:144 (global counts) while v2 reports 0/0 (its enrichment scopes counters to SUGGESTED papers, of which production has ZERO) and v3 adds practicableTopicCount:34. All three states pinned as golden cases; T-MIG-020 must reproduce the asymmetry EXACTLY — normalising v2's counters to match v1 would be an anti-pattern (§7) without an R0-approved justified divergence."},
+    {"id": "F-10", "severity": "low (behaviour pin)", "finding": "page=1 of a real 16-page QUESTION_PAPER returns text:\"\" (front cover, no text elements) with 200 — DocumentPageText assembly is honestly empty rather than 404. Pinned as content-reader-real-page-cover-empty-200."},
+    {"id": "F-11", "severity": "medium (residual F-5 item)", "finding": "the search-with-real-hits happy path REMAINS uncaptured: ContentRetrievalService.search throws IllegalStateException before retrieval when no embedding provider is configured (SYLLABAI_EMBEDDING_GEMINI_API_KEY), and the lexical arm (ChunkLexicalRepository) is benchmark/audit-only, not the serving path. The operator supplied NEON_PAT only this session; no substitute key was improvised per credential law. UNBLOCK options for R0/operator: (a) supply an embedding key for a capture boot, or (b) decide the search-hits surface is NOT golden-gateable (results depend on the embedding model + provider state) and specify a behavioural gate instead — recommend (b) plus a deterministic empty-cause header test already captured (F-3 harness follow-up)."},
+    {"id": "F-12", "severity": "info (data reality)", "finding": "production has ZERO SUGGESTED exam papers (95 VALIDATED / 13 REJECTED) — the F-5 item 'review queues with real SUGGESTED papers' is unrealizable against real data as-is. The real-data queue cases pin the honest state instead. Ingesting synthetic SUGGESTED papers on the branch via the honest ingestion API was considered and deferred as out of proportion for this session; R0 may direct a follow-up capture if the SUGGESTED-path shapes are wanted."},
+    {"id": "F-13", "severity": "low (ops note)", "finding": "branch-backed full golden replays are compute-bound: the v2 api's per-request Neon HTTP queries + bcrypt-12 register cases make a 70-case replay exceed sandbox call budgets on cold free-tier compute. Recommendation for the port lanes: run full body-compare replays against a LOCAL v2+LOCAL db boot (T-MIG-003 pattern) or keep Neon replay to scoped subsets."},
+    {"id": "F-14", "severity": "info (harness)", "finding": "largest golden case is now 581KB (full 1023-doc listing). Runner handles it; note for repo hygiene that future captures of unbounded listings should verify determinism (ordering key uniqueness) before committing the exact body — done here via a count(distinct created_at) check."}
+  ],
+  "safety_summary": {
+    "production_writes": 0,
+    "production_compute_contacted": 0,
+    "neon_branch_writes": "synthetic account rows only (honest register path, branch-local)",
+    "upstream_repo_writes": 0,
+    "pii_committed": 0,
+    "secrets_committed": 0,
+    "credentials_handling": "NEON_PAT + branch role password + boot secrets kept in the gitignored operator-workspace .env / scratch only; committed artifacts reference env-var NAMES only; tokens in case files are the fixed dummy per T-MIG-003 convention",
+    "fence_compliance": "golden/** case files + .syllabai/receipts/T-MIG-004/** + .syllabai/receipts/capture/2026-10-05/** + worklog append only; task yaml status untouched (DONE is R0's field)"
+  }
+}

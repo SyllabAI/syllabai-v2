@@ -1,0 +1,40 @@
+{
+  "task": "T-MIG-005",
+  "run": "run-001-claim",
+  "agent": "R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "date": "2026-10-05T05:06:59Z",
+  "what": [
+    "Board survey before claim: main 67639db — T-MIG-000/001/002/003/004/010/012 DONE; T-MIG-011 IN_PROGRESS on t-mig-011/r5 (owner r5, session web-1f157e25, claimed 2026-10-04T19:16:23Z — earliest-claim-wins, NOT contestable); T-MIG-013 IN_REVIEW (PR #12, R3-api-a). No OPEN yaml unowned; no branch holds packages/contracts/**.",
+    "Claimed the critical-path prerequisite per R0 stage summary ('Wave-2 ports (T-MIG-020..022) against the fresh capture'): W2 content-read contracts, the AGENT_COORDINATION §3 serialisation point gating every W2 port. T-MIG-001 covered identity only.",
+    "Branch t-mig-005/r1 cut from main 67639db; claim recorded in this branch-start commit per §2.1 (yaml owner+status+worklog append+this receipt, one commit)."
+  ],
+  "pre_claim_gate_verification": {
+    "purpose": "Independent post-merge check of PR #4 (T-MIG-002, this session's prior lane) and base health — CI watch substitute: REST API rate-limited all session from shared egress 8.212.10.159 (60/60 unauth; evidence basis = R0 merge record 01c41d4 'gates re-executed green' + T-MIG-013 yaml's independent 'CI verify+hub success' observation + the local re-execution below).",
+    "base": "main 67639db (contains PR #4 merge 01c41d4)",
+    "gates": [
+      "bun install --frozen-lockfile: exit 0 (918 packages)",
+      "bun run typecheck (contracts/shared/db/api): exit 0 x4",
+      "bun test apps/api packages: 100 pass / 4 skip / 0 fail (104 total — matches R0's T-MIG-010 re-execution receipt)",
+      "golden --selftest: OK ('tolerance engine behaves'); 54 case files on main (matches R0 T-MIG-004 record)"
+    ],
+    "static_checks_pr4_artifacts": [
+      "packages/db/src/schema/README.md documents flyway_schema_history as core-owned NEVER-managed (lines 29-43)",
+      "packages/db/src/client.ts refuses jdbc:-prefixed and blank URLs (line 32-35)"
+    ]
+  },
+  "plan_of_work": [
+    "Read the six W2 controllers' DTOs + jakarta.validation annotations from frozen syllabai-core (raw.githubusercontent, C1-compliant read-only): ContentController, ContentDocumentController, ContentReaderController, QuestionAssetController, CurriculumController, TeacherCurriculumController",
+    "Cross-reference the 38 captured T-MIG-004 cases (validation boundaries = acceptance spec)",
+    "Land packages/contracts/src/content.ts + curriculum.ts (+ shared pieces) with source-file headers naming the Java DTO per constraint",
+    "Diff review against DTOs before any implementation; no schema widening ever (§7)",
+    "Receipts + execution_record + worklog; PR titled 'T-MIG-005: wave-2 content-read contracts' (R0 id-ratification request in PR body)"
+  ],
+  "fences": {
+    "touched": [
+      ".syllabai/tasks/T-MIG-005-content-read-contracts.yaml (new file — claim)",
+      ".syllabai/receipts/T-MIG-005/** (this receipt)",
+      ".syllabai/worklog.md (append-only claim entry)"
+    ],
+    "untouched_on_purpose": ["apps/**", "packages/db/**", "golden/**", "upstream repos (raw reads only)", "Neon (no connection needed)"]
+  }
+}

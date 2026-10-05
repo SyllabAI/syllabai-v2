@@ -9,11 +9,12 @@
     "build": "tsc --noEmit"
   },
   "dependencies": {
-    "@neondatabase/serverless": "^1.0.0",
+    "@neondatabase/serverless": "0.10.2",
     "@syllabai/contracts": "workspace:*",
     "@syllabai/db": "workspace:*",
     "bcryptjs": "3.0.2",
     "hono": "^4.6.0",
+    "postgres": "^3.4.9",
     "zod": "^3.24.0"
   },
   "devDependencies": {

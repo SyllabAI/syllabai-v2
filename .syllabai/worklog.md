@@ -469,3 +469,259 @@ Work Log:
 Stage Summary:
 - T-MIG-021 CLAIMED by r7a (earliest-claim timestamp on record per §2.1); yaml self-filed, R0 ratification requested via PR. Execution next on this branch, gated: service/repo layer can start immediately; replay flip gates on PR #13 (T-MIG-014 db dispatch) + T-MIG-005 (contracts). Residual for R0: contested T-MIG-014 ID still has r1's claim-only branch out (PR #15) — unchanged from the T-MIG-015 coordination note.
 - (T-MIG-021 addendum, same session) Tranche 1 LANDED: contract-independent curriculum services (versions/subjects/review-read) + buildCurriculumModule + 17 stubbed-sql unit tests pinning query shapes and captured seed behavior (overview 1/0/10, F-1 empty queue on unknown version, code-sorted nodes, SUGGESTED empty queue, null-root guard). findSubtreeIds' recursive PART_OF CTE carried VERBATIM; parity decisions (CTE aggregation vs the Java N+1, LEFT-JOIN parent, WHERE status filter, TS-side final sort) disclosed in receipt run-001-tranche1.json. Gates: typecheck x4 exit 0; bun test 136/4skip/0 fail (119 base + 17 new; T-MIG-020's content tests live on R3's branch); golden selftest OK read-only; replay NOT RUN (routes unmounted — tranche 2, gated on T-MIG-005 + PR #13). Deviation disclosed: route factories deferred to tranche 2 (same rationale as T-MIG-020 tranche 1 — no dead validation code pre-merge). yaml -> IN_PROGRESS.
+
+Task ID: T-MIG-005
+Agent: R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e; prior lane R2-db on T-MIG-002 is DONE/closed — one lane at a time)
+Task: Claim the Wave-2 contracts prerequisite (self-selected per briefing §5) + post-merge verification of PR #4 (T-MIG-002).
+
+Work Log:
+- Session resumed post-compaction with zero local state; re-ran FIRST ACTIONS: anonymous clone (public read — REST API rate-limited all session from shared egress 8.212.10.159, 60/60 unauth), read README → MIGRATION_PLAN → AGENT_COORDINATION → GOLDEN_MASTER → BASELINE_DB → REFERENCE_DOCS → worklog (full) → task board, in §3 order.
+- PR #4 CI watch + check (operator directive): PR #4 = T-MIG-002 (this session's prior lane) — MERGED by R0 at 01c41d4 ("rebased, gates re-executed green — 62 tables / 579 cols, flyway history untouched, SELECT-only held"). Independent verification at main 67639db: frozen install exit 0 (918 pkgs), typecheck x4 exit 0, bun test 100/0/4skip (matches R0 receipt), golden selftest OK, 54 case files; static spot-checks of the merged artifacts (schema README flyway-exclusion note lines 29-43; client.ts jdbc: guard lines 32-35) all PASS. API check-runs endpoint stayed rate-limited (evidence basis = R0 merge record + T-MIG-013 yaml's independent "CI verify+hub success" observation + this local re-execution). Receipt: pre_claim_gate_verification block in .syllabai/receipts/T-MIG-005/run-001-claim.json.
+- Board survey: T-MIG-011 IN_PROGRESS on t-mig-011/r5 (r5, claimed 19:16:23Z — earliest-claim-wins, not contestable, despite main yaml still showing OPEN); T-MIG-013 IN_REVIEW (PR #12, R3-api-a). No unowned OPEN task → per §2.1/§6 this lane FILED the missing critical-path prerequisite instead of improvising on a claimed fence: Wave-2 content-read contracts (T-MIG-005), the §3 serialisation point gating T-MIG-020..022; T-MIG-001 covered identity only. Id 005 = next free number; 020..022 left reserved for the port tasks (T-MIG-013 id-ratification precedent).
+- Claim per §2.1: yaml owner+status CLAIMED in THIS branch-start commit; branch t-mig-005/r1 off main 67639db; claim receipt run-001-claim.json (board survey + gate evidence + plan of work).
+
+Stage Summary:
+- T-MIG-005 CLAIMED (R1 lane, fences: packages/contracts/src/** + own yaml/receipts/worklog only — disjoint from t-mig-011/r5 and t-mig-013/r3). Next: DTO extraction from frozen core (raw reads) → zod schemas with source headers → diff vs 38 captured cases → PR. No Neon connection needed; no production contact of any kind.
+
+---
+
+Task ID: T-MIG-005 (addendum — push blocker)
+Agent: R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Escalation record — branch push rejected for lack of credentials; task status held CLAIMED (local).
+
+Work Log:
+- `git push -u origin t-mig-005/r1` → "could not read Username for 'https://github.com'" (no credentials available non-interactively). Non-echoing diagnosis: no PAT/TOKEN/KEY env names, no ~/.git-credentials, no ~/.netrc, no gh, no credential.helper; briefing §0 plaintext lost in session compaction, never file-persisted per credential law (same pattern as T-MIG-004 F-5 and the T-MIG-000 w0a stand-down).
+- No substitute credential improvised (credential law). No production/Neon/upstream contact of any kind.
+- Addendum receipt committed locally: .syllabai/receipts/T-MIG-005/run-001-claim-push-attempt.json.
+
+Stage Summary:
+- T-MIG-005 implementation-ready and CLAIMED locally; branch t-mig-005/r1 (9f43ff4, off 67639db) is push-ready verbatim. UNBLOCK for the operator/R0: re-supply a valid GITHUB_PAT as env var → push + open PR "T-MIG-005: wave-2 content-read contracts" (receipts listed, id-ratification requested), or push the branch from an authenticated session. Claim timestamp 05:06:59Z @ 9f43ff4 establishes earliest-claim priority.
+
+---
+
+Task ID: T-MIG-005 (work entry)
+Agent: R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Wave-2 content-read contracts — port the six controllers' read-surface DTOs constraint-for-constraint into packages/contracts.
+
+Work Log:
+- Extracted sources from frozen syllabai-core via blob-filtered sparse checkout (raw reads, zero upstream writes): 6 W2 controllers + ContentReviewService + CurriculumReviewService + the 4 entity files carrying the wire enums (Document.Kind, ValidationState ×3 identical, Question.Type, CurriculumVersion.Status, ValidationStatus, NodeType full domain incl. MISCONCEPTION/CONCEPT).
+- Landed packages/contracts/src/{content.ts,curriculum.ts,errors.ts} + 69 pin tests (content.test.ts, curriculum.test.ts — captured T-MIG-004 bodies embedded verbatim) + index.ts exports + one-word auth.ts diff (export existing notBlank; no behavior change). Spring-exact param binding ported: StringToEnumConverterFactory trims before valueOf; StringToBooleanConverter true/false-only; NumberUtils.parseNumber int semantics (trim-all-whitespace, sign+digits, int32 range, "" → null → 400 for primitive). Two OBSERVED error envelopes pinned in errors.ts with capture citations.
+- FINDINGS F1-F6 in .syllabai/receipts/T-MIG-005/run-002-work.json. Headline: F1 — pin tests caught z.coerce.number() widening the accept set vs Java int binding ("1e3" would have passed) BEFORE commit; replaced with a parseInt-exact mirror. F6 — T-MIG-004 F-2 blank-search-500 divergence preserved (declared @NotBlank kept; R0 owns the call). F5 — nullability debt on capture-unproven fields tagged inline, tightening list in receipt (unblocks when the F-5 NEON_PAT tranche lands).
+- Gates, final pass, all exit-captured: contracts typecheck 0; contracts tests 69/0; repo typecheck x4 0; bun test 141 pass / 4 skip / 0 fail (was 100 — +41 pins, 0 regressions); golden --selftest OK.
+
+Stage Summary:
+- T-MIG-005 work COMPLETE on branch t-mig-005/r1 (IN_PROGRESS → IN_REVIEW pending PR). Scope decision (READ-surfaces-only, write-flow DTOs excluded to owning waves; id 005 self-assigned) submitted for R0 ratification in the PR. BLOCKER: PR/push blocked on credential — the PAT supplied at ~05:14Z authenticated the claim push then revoked within ~2 min (401 'Bad credentials' on all calls); no substitute improvised per credential law. Branch is push-ready verbatim: commit 9f43ff4 (claim) + work commit; UNBLOCK = live GITHUB_PAT → push → PR "T-MIG-005: wave-2 content-read contracts" (yaml link + receipts + ratification request) → IN_REVIEW.
+
+---
+
+Task ID: T-MIG-005 (unblock + PR #18)
+Agent: R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Execute the recorded UNBLOCK — push the work commit, open the PR, flip status to IN_REVIEW.
+
+Work Log:
+- Second operator-supplied GITHUB_PAT (after the 05:1xZ revocation) loaded as env var only, never echoed/persisted. First-use 401 diagnosed non-echoingly as a harness artifact: env vars do not survive across tool-shell invocations in this session (fingerprint pat_len:0 — the Authorization header was EMPTY, not invalid; git-side anonymous reads kept succeeding). Re-run with export+use in a single invocation validated 200 on GET /user.
+- Branch pushed: bf72e98..0cd5e93; ls-remote verified remote t-mig-005/r1 @ 0cd5e93377628cb419bbf5555cfe137877ebb92e. Claim priority had already been secured (9f43ff4 landed on remote before the first PAT's revocation).
+- PR #18 opened via API: "T-MIG-005: wave-2 content-read contracts" (base main) — body lists all receipts, fences, gates (contracts 69/0; bun test 141/0/4skip; typecheck x4 0; selftest OK), findings F1–F6, and requests R0 id-ratification (T-MIG-013 precedent) + scope ratification (READ-only surfaces).
+- yaml status → IN_REVIEW (+ execution_record UNBLOCK line); receipt run-003-push-pr.json committed; this entry appended.
+
+Stage Summary:
+- T-MIG-005 is IN_REVIEW on PR #18 with the full work tree on remote (9f43ff4 → bf72e98 → 0cd5e93). Awaiting R0: review, exclusive merge, id + scope ratification. Lane idle on this side until review feedback.
+---
+Task ID: T-MIG-004 (F-5 extension addendum — real-data capture complete)
+Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Execute the preregistered F-5 unblock (operator supplied NEON_PAT): capture the real-data happy-path tranche for the W2 content-read surfaces from a Neon COW branch; append missing cases + receipts. No port code, no runner changes.
+
+Work Log:
+- Operator unblock received in-session (NEON_PAT). Verified against Neon API v2 (GET /projects 200; project billowing-cherry-15418366 "SyllabAI"). NOTE: the sandbox does not persist exported env vars across tool calls — the first verification round actually ran with an EMPTY bearer (400 "not authenticated"; a fake-token control returns 401, a distinguishing signature). Token persisted to the gitignored operator-workspace .env and sourced per call thereafter; value never echoed.
+- Workspace had been reset between segments (run-002 scratch tooling gone): re-provisioned Temurin JDK 25.0.4.1 + Maven 3.9.16, shallow-cloned syllabai-core to scratch (C1 read-only), mvn -DskipTests package BUILD SUCCESS 39.8s (boot jar 180MB). Background processes do not survive between tool calls here — the build/boot/capture pattern runs foreground within single calls (T-MIG-010-era sandbox note amended).
+- Created Neon COW branch golden-capture/2026-10-05 (br-fancy-surf-a52owvza, parent production br-muddy-bar-a5huwldd) with its own read_write endpoint; reset the branch-local neondb_owner password via the API (production role untouched). Read-only inventory of the branch: 1023 documents / 4740 document_chunks / 108 exam_papers (95 VALIDATED, 13 REJECTED, 0 SUGGESTED) / 585 question_asset / 1526 questions / 323 users; created_at unique across all documents (ordering determinism verified before committing the full-listing case).
+- Booted the frozen core against the branch (synthetic JWT secret, synthetic teacher join code, LLM test mode, decay-job off by config; Flyway validated the copied history no-op; Hibernate validate passed on the production end-state). First teacher registration got 403 — my script had exported only an internal alias, not SYLLABAI_TEACHER_JOIN_CODE; the core's fail-closed gate refused exactly as designed. Fixed env name; both synthetic accounts registered via the honest API path.
+- Captured 15 golden cases (13 + 2 extension): teacher documents list/detail/canonical on real rows (full 1023-doc listing committed as exact body); review-queue v1/v2/v3 on real state (papers [] is TRUE production reality — 0 SUGGESTED — with real counters v1 59/144, v3 practicableTopicCount 34; v1-vs-v2 asymmetry pinned, see F-9); exam-papers/{real VALIDATED 4CH0/2CR June 2013}/review (first real PaperReviewView); reader CitationDocumentView with PaperRef (role QP) AND the paper=null branch; page drill-ins (page=1 cover-empty honest text:"", page=4 real 716-char text, page=99 bounds 404); question-assets real binary 200 (130627B image/png via <non-json> sentinel, F-8 convention); unauthed 401 + student-403 on the real surface.
+- Gates: typecheck x4 exit 0; bun test 119/0/4skip; golden --selftest OK. Replay classification of the 15 (status-level, locally booted current-main v2 api): 1/15 PASS (unauthed 401 — fallback already answers), 14 EXPECTED-PENDING owned by T-MIG-020/021. Full 70-case replay against the branch-backed api is compute-impractical in this sandbox (F-13).
+- Findings F-9..F-14 recorded in .syllabai/receipts/T-MIG-004/run-002-extension-neon.json. Headlines: F-9 v1-vs-v2 review-queue counter asymmetry is a PARITY REQUIREMENT (do not normalise); F-11 search-with-real-hits REMAINS uncaptured — the serving path hard-requires SYLLABAI_EMBEDDING_GEMINI_API_KEY (lexical arm is benchmark-only); recommendation (b) for R0: behavioural gate for search-hits instead of a golden case; F-12 zero SUGGESTED papers in production — the F-5 queue item was adjusted to pin the real state.
+
+Stage Summary:
+- F-5 tranche: 4 of 5 surfaces captured and committed (15 new cases; 69 total on this branch); search-hits is the single residual item and is blocked on a provider-key DECISION, not on capture mechanics (F-11). Zero production writes, zero production compute contact (branch endpoint only), zero upstream writes, zero PII/secrets committed (automated email scan: 0 non-synthetic). Receipts: .syllabai/receipts/T-MIG-004/run-002-extension-neon.json + .syllabai/receipts/capture/2026-10-05/run-003-004-neon-cow-extension.json (per-case sha256). Task yaml status intentionally untouched (DONE is R0's field); this addendum + receipts carry the extension. Branch t-mig-004/w0a-ext is push-ready; push/PR blocked on a valid GITHUB_PAT in this session (same credential class as the T-MIG-000 stand-down addendum) — escalation per AGENT_COORDINATION §6.
+
+---
+
+Task ID: R7-HOUSEKEEPING (wave-2 claim prep — read-only dossier)
+Agent: R7a (agent-da4ab8, zai session web-da4ab8b1, Asia/Dhaka)
+Task: Flex-lane prep for the Wave-2 ports (T-MIG-020..022) R0 named next — evidence-only; no claims filed, no fences touched.
+
+Work Log:
+- Survey: all seeded tasks DONE or claimed (011 -> r5 branch active); four PRs in R0's queue (#12/#13/#14/#15); no claimable lane without collision. Proceeded with read-only prep intel for the next phase instead (w0a intel-broadcast precedent).
+- Derived the W2 route surface from main's own golden cases (54 total = 15 auth + 1 health [DONE lane] + 38 W2): teacher/content/documents 11 (ContentDocumentController), teacher/content review+provenance 9 (ContentController), content/documents reader 3 (ContentReaderController), curriculum subjects+versions 7 (CurriculumController), teacher/curriculum 6 (TeacherCurriculumController), question-assets 2 (QuestionAssetController). Full per-case map in the receipt.
+- Verified frozen-core controller/repository paths at syllabai-core @ 6cad6ef (anonymous treeless clone) — all six controllers + repositories exist at the cited paths.
+- Starting state recorded: apps/api routes = auth + health only; routers-then-401-fallback (T-MIG-010 ratified wiring) means the 7 unauthed-401 W2 cases should replay green TODAY (expectation, labelled — verify at replay); ports must preserve exact shape/status while replacing fallback 401s with real handler authz.
+- Dependency gates recorded: PR #13 (seed-shaped replay db) gates all three lanes; T-MIG-004 F-5 (NEON_PAT) gates the real-data tranche + question-assets binary path; runner header-comparison gap (F-3) + tolerate wiring defect sit in R6's fence; packages/contracts is R1's fence (W2 response schemas need R1 coordination at source per T-MIG-010 precedent); F-1/F-2 divergence calls (200 [] unknown version; blank-query 500) belong to R0 — captured as-is, do not silently fix.
+
+Stage Summary:
+- Receipt: .syllabai/receipts/R7-housekeeping/wave2-claim-prep.json (route surface + verified controller map + proposed 020/021/022 split [recommendation only — R0 owns the final split] + per-task claim readiness). Claim race left to §2.1; this dossier is not a claim. Merge-order note: PR #14 (T-MIG-015) also appends to this worklog tail — whichever lane merges second rebases per append-only union.
+Task ID: T-MIG-010 (rebase + golden replay addendum)
+Agent: R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Rebase the identity port onto post-W0 main; face the T-MIG-003 golden gate; fix capture-surfaced divergences
+
+Work Log:
+- Cherry-picked the port commits onto main @ 728450f (R0's UNBLOCK-SEQUENCE had rebuilt this lane; my claim 0462fd3 was cherry-picked by R0 as the lane claim — arbitration evidence for the r3b draft PR #9 recorded in the PR thread). Worklog union merged; yaml note retargeted to the rebased base.
+- Capture-surfaced fixes (the golden gate doing its job):
+  (1) R-JWT alg selection — the deployed core signs with jjwt's KEY-SIZE-SELECTED alg (HS384 per the captured token; the JwtService class doc's "HS256" is stale). Port now selects HS256/HS384/HS512 by secret byte length; parse accepts the HmacSHA family, rejects everything else.
+  (2) @Email text — capture pins "must be a well-formed email address" (Hibernate 9); translated at the route layer; R1 asked to update packages/contracts at source.
+  (3) Empty-body field-error order — capture pins "password: must not be blank" for {} on both surfaces; encoded as a capture-pinned rule; core ordering may be nondeterministic (R6 probe requested).
+  (4) Health body — {groups:[liveness,readiness],status:"UP"} (OUT-OF-FENCE one-liner; case already justified:true).
+- Golden replay vs live v2 api on the branch: canonical runner 1/16; tolerant classification 13/16 PASS with 0 GENUINE-FAIL — the 3 pending are harness/capture items owned by R6/R0: runner deepEqual drops the tolerate list (12 cases fail on tolerated timestamps only — one-line fix in golden/**), scrub substitution for success-case token/id, write-case ordering/state, bearer-token injection. Evidence tool (fence-safe) + full classification in .syllabai/receipts/T-MIG-010/run-003-golden-replay.json.
+- Bun serving note for api dev: `bun apps/api/src/index.ts` auto-serves the default export; a manual Bun.serve double-binds and crashes boot — removed the manual serve.
+
+Stage Summary:
+- All gates on the rebased head: typecheck 0 errors; unit 107 pass / 0 fail; integration 4/4 vs branch; golden replay 13/16 tolerant / 0 genuine / 3 harness-pending; selftest OK.
+- T-MIG-010 remains the fleet's critical path (R0's own words) — this PR is the completed port, receipted end-to-end; merge order #1-superseded → #2 → this (already rebased on main).
+
+---
+Task ID: T-MIG-013
+Agent: R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Land the capture-driven identity golden-gate hardening that postdated the T-MIG-010 merge
+
+Work Log:
+- Replayed the T-MIG-003 golden cases against the live ported api BEFORE the merge finished (run-003 in the T-MIG-010 receipts); the replay surfaced four divergences that main's merged state does not yet carry. Filed T-MIG-013 (task id self-assigned, R0 ratification requested in the PR) and cherry-picked the fixes onto main @ 67639db.
+- Landed: R-JWT key-size alg selection (HS384 cutover-critical fix), @Email Hibernate 9 text shim, empty-body field-order pin, health groups shape (OUT-OF-FENCE one-liner), tolerant replay classification tooling (fence-safe).
+- Gates: typecheck 0 errors; unit 107/0/4skip; selftest OK; identity golden subset 13/16 tolerant-pass with 0 genuine divergences (classification in receipts).
+
+Stage Summary:
+- Harness/capture items for R6/R0 (golden/** fence): runner tolerate wiring, scrub substitution, write-case ordering, bearer-token injection.
+
+Stage Summary addendum (T-MIG-013): CI first ran red on a test-harness timing artifact (epoch-aligned 60s window boundary crossed mid-loop reset the per-account counter → Expected 9 / Received 7); assertions made boundary-robust; CI verify+hub both success on the hardened head. PR #12 awaiting R0 (task-id ratification + merge).
+
+---
+
+Task ID: T-MIG-014
+Agent: R7a (agent-da4ab8, zai session web-da4ab8b1, Asia/Dhaka)
+Task: Reference docs drift fix — REFERENCE_DOCS.md ADR paths + receipts-heritage attribution (self-selected per §5; closes R7a orientation Q1, corroborated by R1 orientation Q2).
+
+Work Log:
+- Sandbox reset detected on session resume (clone/.creds/local worklog wiped) — re-cloned syllabai-v2 anonymously (public repo) and reconstructed state from the repo per receipts culture. PR #3 (T-MIG-000) and PR #5 (R7 housekeeping) confirmed MERGED via git history; my lane items DONE.
+- Board survey: 7 DONE, T-MIG-011 claimed (r5), T-MIG-013 filed by R3 (branch yaml) — not claimable. Self-selected the open docs-drift fix as R7a flex work; authored .syllabai/tasks/T-MIG-014-reference-docs-drift.yaml per §4 (w0a/T-MIG-004 precedent) after a no-collision scan (no yaml claims v2 docs/**).
+- Verified EVERY path REFERENCE_DOCS.md cites, via anonymous shallow clones of master pack / syllabai-core / syllabai-hub / syllabai-resources: 13/13 ADRs at pack ROOT (0 under docs/adr/), 12/12 core rows OK, 8/8 hub rows OK, no bench/ at resources root. Only the two drift items were wrong.
+- Fixed: 13 ADR row paths (docs/adr/ADR-* -> ADR-*), receipts-heritage line (resources-repo -> master-pack bench/review/), + 2-line verification note. Nothing else. Evidence: .syllabai/receipts/T-MIG-014/run-001.json.
+- PUSH BLOCKED: no GITHUB_PAT this session (sandbox reset wiped .creds; per credential law no token improvised/created — same wall w0a hit and disclosed). Branch t-mig-014/r7a is push-ready verbatim; yaml status -> BLOCKED per w0a precedent.
+
+Stage Summary:
+- UNBLOCK for operator/R0: supply a valid GITHUB_PAT in-session -> push t-mig-014/r7a -> PR "T-MIG-014: reference docs drift fix" -> IN_REVIEW. Docs-drift findings F-class: REFERENCE_DOCS.md now 33/33 verified paths; future agents get correct raw.githubusercontent URLs. Rotation recommendation for briefing tokens stands (they transited chat plaintext; several peers report dead tokens in-worklog).
+
+---
+
+Task ID: T-MIG-015 (renumbered from T-MIG-014 — push + collision yield)
+Agent: R7a (agent-da4ab8, zai session web-da4ab8b1, Asia/Dhaka)
+Task: Push the completed docs-drift fix after operator credential unblock; resolve the three-way T-MIG-014 ID collision surfaced at push-time recheck.
+
+Work Log:
+- Operator unblock received (fresh GITHUB_PAT supplied in-session; stored under .creds/ only, never echoed/committed — the rotation recommendation for chat-transited tokens stands). Push executed per the pre-blocked plan.
+- Collision discovered at push-time recheck: three DIFFERENT tasks filed as T-MIG-014 within 23 minutes, each after an honest no-collision scan against main (the scans raced each other, not main): this lane (docs drift, claim 27bca71 @ 2026-10-05T05:00:49Z — earliest); R3a/superz-agent-b (URL-dispatched db driver, claim ecded41 @ 05:08:44Z, PR #13 open IN_REVIEW @ 05:19:09Z, P1, unblocks Wave-2 replay); R1 (per-IP RateLimitFilter M1, claim b1f63b4 @ 05:23:58Z, claim-only).
+- Decision: YIELD the T-MIG-014 ID despite earliest claim; renumbered this task to T-MIG-015 (next free — nothing on main/remote used it at push time). Rationale: earliest-claim is a tiebreak, not territory; PR #13 is already in R0's review queue with .syllabai/receipts/T-MIG-014/** populated and mergeable-clean, so contesting would churn an in-review P1 and buy nothing substantive. R0 retains full discretion to re-rule the ID; nothing substantive changes either way.
+- Mechanics: branch t-mig-014/r7a -> t-mig-015/r7a; yaml + receipts dir moved to T-MIG-015 (run-001.json byte-identical); claimed_at corrected to the commit-authoritative stamp (the 19:55+06 value was a transcription error — commit 27bca71 says 05:00:49Z = 11:00:49+06); status BLOCKED -> IN_REVIEW; the docs citation line follows the receipt to T-MIG-015; run-002.json records this run incl. gates (docs-only: diff-surface check, code gates N/A).
+
+Stage Summary:
+- PR "T-MIG-015: reference docs drift fix" open, IN_REVIEW, awaiting R0; 33/33 cited paths verified. Residual for R0: R1's claim-only t-mig-014/r1 still carries the contested ID — after PR #13, T-MIG-014 on main means the db-driver task, so R1's lane is the one needing renumber per this timeline.
+Agent: superz-agent-b (R3 lane self-selected; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Filed+claimed+implemented URL-dispatched db drivers (postgres.js for non-Neon Postgres) so golden replay can target seed-shaped state — plus found+fixed a latent neon-http incompatibility the live check exposed.
+
+Work Log:
+- Post-merge acknowledgment of R0's T-MIG-012 ruling (b7ef4a5): my final commit had swept a regenerated root bun.lock via `git add -A` without a status re-check, contradicting the receipt's "zero lockfile changes" claim. Process slip owned; status-recheck added to my commit checklist.
+- Board survey after re-establishing my sandbox (full reset — re-cloned, credentials re-loaded from operator message): 7 tasks DONE, T-MIG-011 claimed (r5), PR #12 (T-MIG-013) verified no-overlap. Per R0's phase-2 critical path ("then Wave-2 ports T-MIG-020..022 against the fresh capture"), the blocker in front of every Wave-2 replay gate is replay-environment access: no driver in the monorepo can reach a seed-shaped non-Neon Postgres.
+- Filed+claimed T-MIG-014 in the branch-start commit (ecded41): URL-dispatched drivers; disclosed out-of-fence identity adapter + mechanical bun.lock change up front.
+- Implemented: isNeonUrl() host dispatch in packages/db (neon-http for *.neon.tech — production unchanged; postgres.js TCP for everything else), 9 unit pins, createSql adapter split (NeonWsClient = byte-identical prior behaviour; PostgresJsClient = TCP) with interactive-tx semantics preserved.
+- Created Neon scratch branch t-mig-014/r3a via console.neon.tech (rows-only; no production contact). Operational notes recorded: /connection_uri route absent in current API; role creation IGNORES caller-supplied passwords and returns its own 16-char value — future lanes take the password from the creation response.
+- LIVE EXPOSURE OF A LATENT SUBSTRATE BUG: createDb()'s neon-http path failed every live Neon query — drizzle-orm 0.38.x calls neon(strings, values, options), a form @neondatabase/serverless 1.x removed; invisible to unit tests (lazy construction), never live-exercised (T-MIG-010's integration used ws). Fixed in-fence: pin 0.10.2 + do-not-lone-bump comment. Re-ran live: 3/3 PASS (neon-http select; postgres.js TCP select+params; createSql template + interactive tx + rollback-then-reuse).
+- Gates: root typecheck exit 0 (4 workspaces); bun test 111/111; golden selftest OK.
+- Receipt: .syllabai/receipts/T-MIG-014/run-001.json.
+
+Stage Summary:
+- T-MIG-014 → IN_REVIEW (PR t-mig-014/r3a). The fleet gains: seed-shaped golden replay for Wave 2 (the T-MIG-004 worklist becomes executable), CI-runnable replay tooling, and a substrate bug fix that would have burned the first createDb consumer. Next for this agent: T-MIG-020 (content read surfaces, 26 golden cases) — contracts content.ts + the four read surfaces + honest 501s on the write paths, replayed per the environment doctrine this task establishes.
+
+---
+
+Task ID: ORIENTATION (Phase-1 gate per AGENT_BRIEFING §2 — this agent's own entry; no PR from this agent merges before it exists)
+Agent: r3-c (self-selected agent — Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Phase-1 orientation — tour the org, read the law, adopt the culture. No code in this entry.
+
+Work Log:
+- Read the eight required v2 items in order (README → MIGRATION_PLAN → AGENT_COORDINATION → GOLDEN_MASTER → BASELINE_DB → REFERENCE_DOCS → worklog (all 455 lines, tail thrice) → task queue), then toured upstream: shallow-cloned syllabai (master pack), syllabai-core, syllabai-hub (clone landed exactly at import SHA 93226a4), syllabai-resources (blobless sparse — repo times out a plain shallow clone; bench/review ABSENT there, confirming prior agents' finding that the receipt heritage lives in the master pack). Read core README + render.yaml (env surface, fail-fast JWT doctrine, R2 boot-time-WARN/loud-fail notes) + docs/DEPLOYMENT.md; hub docs/ARCHITECTURE.md + REPOSITORY_MAP.md; all 13 master-pack ADRs (031, 025, 036, 034, 020, 023 mandated; 017, 021, 027, 030, 032, 033, 035 wave-relevant); .syllabai/tasks/T-C42.yaml (format model); bench/review/doc-validation-20261004/tc75 postverify receipt (row-count invariant + SHA256SUMS style).
+
+Stage Summary:
+- (a) PRODUCT LOOP IN MY OWN WORDS: A learner registers on the hub (always STUDENT; teachers arrive only through a join-code gate, ADMIN is never self-serviceable) and studies a curriculum anchored to an official Edexcel spec. They practise real exam-paper questions; every answer is marked by exactly one authority — MCQs deterministically, structured parts by Smart Mark, which normalises the answer, aligns evidence to VALIDATED mark-scheme points, and runs bounds/mark-sum/coverage validators so the LLM proposes but never decides; self-mark against the revealed scheme stays a first-class alternative. Each marked attempt emits an evidence event that updates the learner model — BKT mastery with format-aware guess pricing and BDT misconception posteriors — and those stored values are ANCHORS: forgetting decay (ADR-031) and misconception relaxation toward the base rate (ADR-032) are computed at read from (anchor, timestamp) pairs and never persisted, so late or catch-up runs compose exactly instead of compounding. From that state the platform derives an explainable next-best-action agenda (recommendations are learning-first, never engagement-optimised, ADR-017), spaced-repetition flashcards whose cross-device rating trail merges by sync receipts rather than timestamps (ADR-034), and smart lessons. The tutor/CLA answers through a retrieval chain grounded ONLY in validated curriculum-graph nodes and embedded content chunks — it refuses deterministically when evidence is insufficient or the course reference does not resolve to exactly one serving curriculum (ADR-030), and every citation deep-links to a learner-readable endpoint that serves only content on the serving side of the corpus law. Teachers see classroom-scoped surfaces — marking queues showing only their enrolled learners' answers (ADR-027), coverage/analytics over the knowledge graph, test building — and research surfaces expose calibration statistics under learner-unit k-anonymity (k=5, ADR-036) that never self-accepts its own ratification. The whole loop is being strangler-figged into this repo behind golden-master parity gates on the same Neon database while the frozen Java core keeps serving production.
+- (b) THREE CORRECTNESS MECHANISMS OBSERVED: 1) RECEIPTS — every claim carries machine-checkable evidence; concrete example: T-C42.yaml's execution_record pins the production probe (PRB-01 pct_above_050 = 59.5%, 1,745/2,935, VALIDATED pool n=2,935) with CI run ids and merge SHAs, and the tc75 postverify receipt asserts "audit total 2829 -> 2835 (+6 exactly)" with SHA256SUMS alongside — the same discipline this repo's .syllabai/receipts/ continues. 2) FAIL-FAST — services refuse to boot or serve in a misconfigured state; concrete example: render.yaml + core README — blank SYLLABAI_JWT_SECRET refuses startup, R2 secrets missing is a boot WARN whose operations then fail loudly naming the missing setting (no silent local-disk fallback), and v2's packages/db client refuses blank or jdbc:-prefixed DATABASE_URLs; the extension I just ported: ContentRetrievalService throws a loud IllegalStateException when no embedding provider is keyed rather than silently returning empty hits. 3) PREREGISTRATION + HONEST VERDICTS — decisions and their gates are written before evidence, and negative results stay recorded; concrete example: ADR-036 stays Status: Proposed with the operator's ACCEPT flip named as the ratification step ("this ADR does not self-accept"), ADR-033 keeps shortAnswerGuess=0.05 labelled provisional with "an empty bin is no evidence, never good evidence", and the T-MIG-004 capture committed the blank-query 500 and the nodes-by-version 200-[] oddities as-is instead of smoothing them.
+- (c) UNCLEAR / QUESTIONS FOR THE OPERATOR: 1) golden/cases/content-docs-embed-unknown-404.json captures a 500 internal_error (Java checks the embedding provider BEFORE the document row, so unknown-id cannot 404 unkeyed) — the FILENAME says 404 but the EXPECT says 500; I port to the expect and flag the name/expect mismatch for R6 (rename is R6's call, never mine). 2) T-MIG-004 F-2's mechanism hypothesis ("@NotBlank does not trigger method validation") does not fully explain the 500 on the same boot that also captured SCOPE_UNRESOLVED empties — my port reproduces the captured 500 verbatim without committing to a mechanism; if R6 ever re-probes the core and pins a different mechanism the case stays the law. 3) The search empty-cause header (X-Search-Empty-Cause) is captured in case descriptions only because the runner compares status+body — T-MIG-013 named "runner header comparison" a harness gap in R6's fence; until it lands, my receipt classifies header parity separately. 4) REFERENCE_DOCS.md still cites master-pack ADRs under docs/adr/ though they sit at the repo root (doc-fix candidate, docs shepherd).
+
+
+---
+
+Task ID: T-MIG-020
+Agent: r3-c (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Port content READ surfaces (Wave 2) — teacher content documents + review queues v1/v2/v3 + paper review/audit/provenance + question topics read + citation reader + question assets; golden-gated
+
+Work Log:
+- Self-selected per AGENT_BRIEFING §5 after re-reading the worklog tail and surveying the remote (git ls-remote + anonymous API): T-MIG-011 CLAIMED (r5), T-MIG-013 IN_REVIEW (r3a, PR #12), no Wave-2 port branch existed; R0's UNBLOCK-SEQUENCE-PHASE2 names Wave-2 ports the next critical path. Authored .syllabai/tasks/T-MIG-020-content-read-surfaces.yaml per §4 (T-MIG-004 precedent for authoring a missing yaml) and claimed in the branch-start commit f5773bc together with this agent's Orientation entry.
+- Read the frozen sources constraint-for-constraint before any code (contracts-first): ContentDocumentController, ContentReaderController, QuestionAssetController, ContentController (read endpoints), ContentReviewService (read-only projections incl. baseEnrichment + v3 census + rankReasons + anchor synthesis), CurriculumScopeResolver (incl. M3 memo + V53 resolveForCourse), ChunkVectorRepository (searchServingEligible + diagnoseEmpty SQL verbatim), DocumentRepository (existsCitable corpus law), DocumentPageText, SearchEmptyCause/Diagnostics, DocumentEmbeddingService (embed order), SecurityConfig route rules, GlobalExceptionHandler shapes, KnowledgeNodeRepository subtree CTE.
+- Wrote packages/contracts/src/content.ts (zod, source-line headers, nulls-not-optional Jackson law, Document.Kind/ValidationState enums from the ck constraints, captured binding behaviours documented) + export line in contracts/src/index.ts.
+- Ported apps/api/src/services/content/: scope.ts (resolver + recursive CTE), repositories.ts + review-repos.ts (observed query surfaces, R-LAZY), retrieval.ts (searchServingEligible/diagnoseEmpty SQL verbatim, CURRENT_EMBED_REV=2, MAX_LIMIT=50 clamp, SearchEmptyDiagnostics.cause() classification, Gemini provider seam), reader.ts (corpus law + verbatim page text), review.ts (v1/v2/v3 queues + paperReview/audit/provenance/topics with pure helpers exported), index.ts (composition root, fail-fast DATABASE_URL).
+- Ported apps/api/src/routes/content/index.ts: three routers with the authz shell FIRST (teacher: TEACHER/ADMIN Boot 401/403 bodies; reader/assets: authenticated), search binding parity (missing query → 400 validation_failed custom shape; PRESENT-BLANK → 500 captured as-is per T-MIG-004 F-2; conversion-before-validation order), uuid path params → 400 "malformed request", honest 501s (16 write surfaces) naming the owning task, question-assets empty-body 404, embed provider-before-lookup order.
+- OUT-OF-FENCE commit 47c91f6: 3 mount lines in apps/api/src/index.ts (path parity) — R0 ratification requested per T-MIG-010 precedent.
+- Gates (persisted gate script, exit-captured; receipt .syllabai/receipts/T-MIG-020/run-001-local-verify.json): typecheck x4 exit 0; bun test 151 pass / 0 fail / 13 skip (unit tier over in-memory fakes pins captured bodies incl. messages and empty shapes; content integration tier committed, self-skips without INTEGRATION_DATABASE_URL); golden --selftest OK. Golden live replay of the 25 owned cases PENDING on a Neon branch — NEON_PAT absent this session (same posture as T-MIG-004 F-5); NO case weakened, NO capture altered.
+
+Stage Summary:
+- T-MIG-020 implementation COMPLETE with all executable gates green; 25 golden cases statically classified to handlers + test pins (see receipt). Honest gaps disclosed: live replay pending Neon unblock; X-Search-Empty-Cause header parity not runner-verifiable (R6 harness item); embed write path behind the provider seam (unkeyed = the core's own 500); case filename/expect mismatch (embed-unknown-404 pins 500) flagged for R6. Zero upstream writes, zero Neon connections, zero PII/secrets committed.
+
+---
+Task ID: T-MIG-020 (addendum — push blocker)
+Agent: r3-c (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Escalation record — branch push rejected; task status → BLOCKED per AGENT_COORDINATION §2/§6
+
+Work Log:
+- `git push -u origin t-mig-020/r3` → "fatal: could not read Username for 'https://github.com'": no GITHUB_PAT in this session's environment at all (briefing §0 plaintext unavailable in-context after the summarisation boundary and never file-persisted per credential law; anonymous reads work — the repo is public — which is why this surfaced only at the first authenticated write, the same pattern as w0a's T-MIG-000 addendum).
+- No substitute credential improvised (credential law: do not create new tokens). No upstream writes attempted (C1). No secrets echoed or committed (env-var NAME references only).
+- Committed protocol artifacts locally on branch t-mig-020/r3: receipt (.syllabai/receipts/T-MIG-020/run-001-local-verify.json), task yaml status BLOCKED (push-only; implementation complete), this entry.
+
+Stage Summary:
+- T-MIG-020 is push-ready verbatim: local branch t-mig-020/r3 = f5773bc (claim + Orientation) → a7d5b85 (in-fence port) → 47c91f6 (OUT-OF-FENCE mounts) → this commit (receipts + worklog + BLOCKED). UNBLOCK for the operator/R0: provide a valid GITHUB_PAT to this lane (then push, open PR "T-MIG-020: port content read surfaces (Wave 2)", flip status IN_REVIEW), or push the branch from an authenticated session and review the receipt at .syllabai/receipts/T-MIG-020/run-001-local-verify.json.
+
+---
+Task ID: T-MIG-020 (addendum 2 — lane collision on the shared branch name; escalation per AGENT_COORDINATION §6)
+Agent: r3-c (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Record the duplicate-claim collision on t-mig-020/r3 and move this lane's push to a disambiguated branch; R0 arbitration requested.
+
+Work Log:
+- Operator supplied GITHUB_PAT (+NEON_PAT). PAT verified (api.github.com /user → 200, account SyllabAI). Push of t-mig-020/r3 REJECTED non-fast-forward: the remote branch already exists with peer R3-api-a's commits (e50a63f claim @ 2026-10-05T05:42:41Z → a5a08de tranche-1 services → 3eff6bb worklog append @ 05:55:59Z; deps: T-MIG-005 contracts + T-MIG-014 driver dispatch; task IN_PROGRESS).
+- Precedence facts (git author dates; both branches from 67639db): THIS lane's claim f5773bc @ 2026-10-05T05:17:00Z precedes R3-api-a's e50a63f @ 05:42:41Z by ~25 min; this lane could not push earlier (credential blocker, addendum above) while the peer could.
+- Doctrine applied: NO force-push over the peer's branch; NO unilateral merge/rebase of the two implementations; NO cross-fence rework of either side. Escalation recorded instead (this entry + yaml execution_record + PR disclosure).
+- Action: this lane's push moves to disambiguated branch t-mig-020/r3c (same task-id prefix, role suffix r3c); PR "T-MIG-020: port content read surfaces (Wave 2)" opened from it with full collision disclosure for R0 (also disclosing the T-MIG-005 / PR #18 contracts overlap). NOTE: yaml claimed_at "2026-10-05T21:35Z" was a TZ authoring error in this lane's previous session; the authoritative claim instant is f5773bc's author date 05:17:00Z.
+
+Stage Summary:
+- T-MIG-020 now has TWO independent implementations in flight: R3-api-a's services-first tranche-1 on t-mig-020/r3 (remote-first, binds to unmerged T-MIG-005 / PR #18) and r3-c's complete contracts-first port on t-mig-020/r3c (all executable gates green locally; 151 tests; 25-case parity map). Arbitration and any reconciliation belong to R0. NEON_PAT note: provisioned to the lane, but this sandbox cannot resolve api.neon.tech (DNS) — live golden replay stays PENDING.
+
+---
+Task ID: R0-ARBITRATION-1 (T-MIG-020 dual-implementation collision + T-MIG-005 contracts overlap; PR #22 merge)
+Agent: R0-acting (Super Z, session web-1f157e25-0ed7-4f18-8956-3b2a993bc646; operator-delegated, mode: choose implementation)
+Task: Arbitrate the two collisions disclosed in PR #22; merge the chosen implementation; record all dispositions.
+
+Work Log:
+- Operator delegation received 2026-10-05 (IM session, trace 1a10aad1692b3075): "Review PR #22 as operator/R0 and arbitrate the two collisions (choose implementation or guideline reconciliation); implementation". COI disclosed: acting-R0 is the author lane of PR #22 (r3-c); the ruling is reversible by the operator alone.
+- Arbiter-side verification (not taken from the author's receipt): gates re-run green — typecheck x4 exit 0; bun test 151 pass / 0 fail / 13 skip (Neon tiers self-skip); golden --selftest OK. Law scans clean: 16 files in-fence except the declared OUT-OF-FENCE mounts; zero golden/ or packages/db/ touches; zero secret patterns; zero unscrubbed PII.
+- Collision 1 (duplicate claim of T-MIG-020): AGENT_COORDINATION section 2 rule 1 applied — earliest claim wins. r3-c f5773bc @ 05:17:00Z precedes R3-api-a e50a63f @ 05:42:41Z. Completeness concurs: PR #22 ships the full read-surface port (contracts + services + routes + tests + 25-case parity map, +3610) vs tranche-1 services-only (+1062, deps on unmerged T-MIG-005). VERDICT: PR #22 implementation proceeds; MERGED as a3c65d8; OUT-OF-FENCE mounts (3 route lines + comment, T-MIG-010 precedent) RATIFIED.
+- Collision 2 (contracts): packages/contracts/src/content.ts from PR #22 is CANONICAL. Direction to r1 (also recorded as a PR #18 comment): T-MIG-005 proceeds with the non-overlapping portions only (curriculum.ts, errors.ts, auth.ts tweak, curriculum tests); content.ts + content.test.ts superseded; a follow-up contracts task may ADD missing envelope schemas (uuidPathSchema, response envelopes) to the canonical file when a write-surface wave needs them (extend, never replace).
+- R3-api-a disposition: branch t-mig-020/r3 preserved unmerged as the reference alternative (no force-push, no deletion); their yaml (T-MIG-020-content-read-port.yaml) and worklog entries never landed on main, so the claim is honored in this record and in the ruling receipt; appeal path = operator.
+
+Stage Summary:
+- Board: T-MIG-020 -> DONE (merged a3c65d8). T-MIG-005 scope narrowed to non-overlapping contracts (r1 to rebase PR #18). Ruling receipt: .syllabai/receipts/R0-arbitration/ruling1-t-mig-020.json. PENDING (non-blocking): live golden replay of the 25 owned cases + 9 content integration tests on a Neon-capable session (sandbox DNS cannot resolve api.neon.tech; NEON_PAT provisioned).
+
+---
+Task ID: R0-HANDOVER (standing R0 role accepted)
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Accept the standing R0 role per operator directive ("You are R0 from now on", chat trace 1a10aaf4c1ecce85, ~06:2xZ); audit the acting-R0 housekeeping found on main; set the review order for the queue
+
+Work Log:
+- Predecessor states reconciled: (a) the standing R0-integrator session (trace 1a10848acd9adae9) had posted zero reviews across the queue for ~10h; (b) session web-1f157e25 (r3-c) held a NARROW operator delegation ("review PR #22 as operator/R0 and arbitrate the two collisions; mode: choose implementation", trace 1a10aad1692b3075) with disclosed COI, executed as ruling1 (e20f3bf + receipts/R0-arbitration/ruling1-t-mig-020.json) — audit concurs on every point (gates green, law scans, §2.R1 clock: f5773bc 05:17:00Z < e50a63f 05:42:41Z; completeness differential; canonical content.ts direction to r1). The narrow delegation is COMPLETE; standing R0 authority proceeds here. Boundary note: no further R0 actions expected from web-1f157e25; appeals on ruling1 run to the operator.
+- Independent verification (not taken from either receipt): typecheck x4 exit 0; bun test 164 / 0 / 13 skip / 378 expect() (= 151+13 exactly); golden --selftest OK; 54 case files intact; Neon DNS probe from THIS sandbox: api.neon.tech DOES NOT RESOLVE — the live-replay follow-up is network-gated as well as credential-gated; a session-side NEON_PAT is insufficient here. Proposal to the operator: CI-side integration runner (GitHub Actions workflow + repo Actions secret INTEGRATION_DATABASE_URL) — Actions egress can reach Neon; workflow authored on request.
+- Review order set (dependency-correct): #13 (T-MIG-014 db drivers, P1) -> #12 (T-MIG-013, oldest) -> #14 (docs) + #17 (dossier, read-only) -> #16 (F-5 capture) -> #18 (T-MIG-005 — verify the ruling1 rebase: content.ts/content.test.ts dropped, non-overlapping portions only) -> #19 (T-MIG-021 claim ratification) -> #23 (T-MIG-006 claim ratification only; stacked on #18's branch) -> #20 closure (superseded; branch preserved; live-replay credit to r3a).
+- RECUSAL: #21 (T-MIG-016, this session's own former r1-lane port) — self-review prohibited; stays queued for another reviewer or the operator.
+
+Stage Summary:
+- Standing R0 = session web-df0238cc as of 2026-10-05T06:3xZ. Main @ e20f3bf audited green (merge a3c65d8 + housekeeping ratified). Queue: 10 open PRs, dependency-correct order, one recusal. Escalation to operator (non-blocking): sandbox DNS blocks Neon — CI-side runner proposal stands.

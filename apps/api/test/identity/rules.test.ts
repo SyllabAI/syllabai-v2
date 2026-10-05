@@ -100,7 +100,7 @@ describe("BCrypt cost 12 (SecurityConfig.java:126-128) — R-BCRYPT", () => {
 
 describe("validation_message mapping (GlobalExceptionHandler:158-165 + Hibernate defaults)", () => {
   const first = (schema: typeof registerRequestSchema | typeof loginRequestSchema | typeof passwordChangeRequestSchema, body: unknown) =>
-    validationMessage(schema.safeParse(body).error!);
+    validationMessage(schema.safeParse(body).error!, body);
 
   test("@Size default: 'size must be between min and max' — password", () => {
     expect(first(registerRequestSchema, { email: "a@b.co", password: "short1", displayName: "Ann" })).toBe(
@@ -122,9 +122,9 @@ describe("validation_message mapping (GlobalExceptionHandler:158-165 + Hibernate
     );
   });
 
-  test("@Email default: 'must be a valid email'", () => {
+  test("@Email default: capture-pinned well-formed text", () => {
     expect(first(registerRequestSchema, { email: "not-an-email", password: "long-enough-1x", displayName: "Ann" })).toBe(
-      "email: must be a valid email",
+      "email: must be a well-formed email address",
     );
   });
 
@@ -135,6 +135,13 @@ describe("validation_message mapping (GlobalExceptionHandler:158-165 + Hibernate
     expect(first(registerRequestSchema, { email: "a@b.co", password: "!!!!!!!!!!!!!!!!!1", displayName: "Ann" })).toBe(
       "password: must contain a letter", // 18 chars, no letter → letter constraint fires first
     );
+  });
+
+  test("capture pin: EMPTY body → 'password: must not be blank' (both surfaces)", () => {
+    // T-MIG-003 cases auth-register-missing-fields-400 / auth-login-missing-fields-400:
+    // the deployed core's field-error order for all-fields-failing is NOT
+    // declaration order — the capture is the ground truth.
+    expect(first(registerRequestSchema, {})).toBe("password: must not be blank");
   });
 
   test("login password blank → @NotBlank (no size floor on login)", () => {

@@ -1,0 +1,43 @@
+{
+  "task": "T-MIG-014",
+  "run": "run-001",
+  "agent": "R7a (agent-da4ab8, zai session web-da4ab8b1)",
+  "recorded_at": "2026-10-05T20:05:00+06:00",
+  "base": {
+    "branch": "t-mig-014/r7a",
+    "parent_commit": "67639db (R0 housekeeping phase-2)"
+  },
+  "objective": "Fix documented path drift in docs/REFERENCE_DOCS.md: master-pack ADRs cited under docs/adr/ (nonexistent) and receipts heritage attributed to the resources repo. Closes R7a orientation Q1; corroborated by R1 orientation Q2 (worklog).",
+  "verification": {
+    "method": "anonymous shallow clones (repos are public): SyllabAI/syllabai full depth-1 checkout (masterpack/), syllabai-core + syllabai-hub --depth 1 --filter=blob:none --no-checkout with git ls-tree per cited path",
+    "master_pack": {
+      "adr_rows_cited": 13,
+      "adr_files_found_at_pack_root": 13,
+      "adr_files_found_under_docs_adr": 0,
+      "t_c42_yaml": "OK at .syllabai/tasks/T-C42.yaml",
+      "bench_review_heritage": "OK at master-pack bench/review/ (dated lanes incl. doc-validation-20261004 — the same lane sampled in the R7a orientation entry)"
+    },
+    "syllabai_core_rows": "12/12 cited paths verified OK (incl. render.yaml, Dockerfile)",
+    "syllabai_hub_rows": "8/8 cited paths verified OK",
+    "syllabai_resources": "root tree contains no bench/ (top-level listing inspected; independently recorded by R1 orientation: 'no bench/ at its root') — heritage attribution to the resources repo is drift"
+  },
+  "diff": {
+    "docs/REFERENCE_DOCS.md": [
+      "13 table rows: docs/adr/ADR-* -> ADR-* (pack-root paths); ADR_017/ADR_021 underscore forms unchanged (already correct at root)",
+      "+2-line note under the section header documenting the flat root layout and the 2026-10-05 verification",
+      "conventions section: 'resources-repo postflight receipts' -> 'master-pack bench/review/ dated receipt lanes' (ADR-034 reference kept)"
+    ],
+    "unchanged": "all 12 core rows, all 8 hub rows, every 'why it binds' column, all other sections — semantic content untouched"
+  },
+  "fence_disclosures": [
+    "task yaml T-MIG-014 authored by this claim (queue lacked the task — precedent: w0a authored T-MIG-004 yaml per §4)",
+    "no other task's fence claims v2 docs/** (collision scan over all 8 yamls: only prose mentions of the frozen core's docs/DEPLOYMENT.md)"
+  ],
+  "push_attempt": {
+    "status": "BLOCKED",
+    "detail": "git push rejected before auth handshake: no GITHUB_PAT in this session. Sandbox was reset between sessions (clone, .creds/, local worklog all wiped; re-cloned anonymously — repo is public). Per briefing credential law no substitute token was improvised or created. Task yaml status set BLOCKED per the w0a precedent (T-MIG-000 stand-down addendum).",
+    "unblock": "operator supplies a valid GITHUB_PAT in-session; branch t-mig-014/r7a is push-ready verbatim (commit + receipt + worklog on board); then PR 'T-MIG-014: reference docs drift fix' -> IN_REVIEW.",
+    "note": "peer evidence of the same wall: w0a push-blocker entry (dead token 401, unauthenticated 200) and T-MIG-004 F-5 escalation (NEON_PAT absent). Rotation recommendation for all briefing tokens stands (they transited chat plaintext)."
+  },
+  "verdict": "drift corrected with per-path verification; every other cited path proven correct; push-ready, blocked solely on credentials"
+}

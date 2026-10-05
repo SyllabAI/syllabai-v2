@@ -1,0 +1,105 @@
+{
+  "artifact": "wave2-claim-prep",
+  "task_ids_covered": ["T-MIG-020", "T-MIG-021", "T-MIG-022"],
+  "agent": "R7a (agent-da4ab8, zai session web-da4ab8b1)",
+  "recorded_at": "2026-10-05T05:55:00Z (Asia/Dhaka operator)",
+  "nature": "READ-ONLY prep dossier — no claims filed, no task yamls authored, no owner flips; claims left to the AGENT_COORDINATION §2.1 race + R0 sequencing. Precedent: R7 flex lane intel receipts (w0a broadcast precedent; R7-housekeeping dir landed via PR #5).",
+  "sources": {
+    "plan": "docs/MIGRATION_PLAN.md §5 Wave 2: 'Port: content/curriculum/question-asset read surfaces. Highest read volume, lowest write complexity — the fastest visible parity win. Exit gate: golden cases for the content read surfaces; hub reader pages verified against v2 on branch.'",
+    "golden_cases": "golden/cases/ on main @ 67639db — 54 total = 15 auth + 1 health (T-MIG-003/T-MIG-010 lane, DONE) + 38 Wave-2 (T-MIG-004)",
+    "frozen_core": "syllabai-core @ 6cad6ef (anonymous treeless clone; same frozen ref cited by T-MIG-014/r1)",
+    "v2_starting_state": "apps/api/src/routes = auth/ + health.ts only; routers-then-401-fallback wiring per T-MIG-010 OUT-OF-FENCE (R0-ratified)"
+  },
+  "route_surface_from_cases": {
+    "ContentDocumentController [teacher/content/documents]": {
+      "frozen": "src/main/java/com/syllabai/content/ContentDocumentController.java (+ DocumentRepository, DocumentChunkRepository, ChunkLexicalRepository, ChunkVectorRepository)",
+      "cases_n": 11,
+      "sub_routes": [
+        "GET /api/v1/teacher/content/documents -> 401 unauthed / 403 student / 200 [] teacher (seed state)",
+        "GET /api/v1/teacher/content/documents/{uuid} -> 404 unknown (canonical read)",
+        "POST /api/v1/teacher/content/documents/{uuid} -> 404 unknown (embed)",
+        "GET /api/v1/teacher/content/documents/search?query=.. -> 400 missing query / 500 blank query (F-2: captured as-is, do not silently fix) / 200 [] teacher + X-Search-Empty-Cause SCOPE_UNRESOLVED (header in description; runner compares status+body only — F-3) / 200 [] course-unresolved COURSE_REF_UNRESOLVED / 401 unauthed"
+      ]
+    },
+    "ContentController [teacher/content review surfaces]": {
+      "frozen": "src/main/java/com/syllabai/teacher/ContentController.java (+ ContentReviewAuditRepository)",
+      "cases_n": 9,
+      "sub_routes": [
+        "GET /api/v1/teacher/content/review-queue -> 401 unauthed / 403 student / 200 teacher (seed state; v2 + v3 variants also captured, both 200 teacher)",
+        "GET /api/v1/teacher/content/exam-papers/{uuid} -> 404 unknown (paper-review / paper-audit / provenance variants)",
+        "GET /api/v1/teacher/content/questions/{uuid} -> 404 unknown (question-topics)"
+      ]
+    },
+    "ContentReaderController [content/documents/{uuid}]": {
+      "frozen": "src/main/java/com/syllabai/content/ContentReaderController.java",
+      "cases_n": 3,
+      "sub_routes": [
+        "GET /api/v1/content/documents/{uuid}[?page=n] -> 401 unauthed / 404 unknown doc / 404 unknown page (student-facing canonical + page text)"
+      ]
+    },
+    "CurriculumController [curriculum]": {
+      "frozen": "src/main/java/com/syllabai/curriculum/CurriculumController.java (+ CurriculumVersionRepository, SubjectRepository)",
+      "cases_n": 7,
+      "sub_routes": [
+        "GET /api/v1/curriculum/subjects -> 200 student (V6 fixed-uuid seed)",
+        "GET /api/v1/curriculum/subjects/not-a-uuid -> 400",
+        "GET /api/v1/curriculum/subjects/{unknown-uuid} -> 404",
+        "GET /api/v1/curriculum/versions[?includeArchived=true] -> 200 student / 401 unauthed"
+      ]
+    },
+    "TeacherCurriculumController [teacher/curriculum]": {
+      "frozen": "src/main/java/com/syllabai/teacher/TeacherCurriculumController.java",
+      "cases_n": 6,
+      "sub_routes": [
+        "GET /api/v1/teacher/curriculum/versions -> 401 unauthed / 403 student / 200 teacher",
+        "GET /api/v1/teacher/curriculum/versions/{uuid}/nodes -> 200 teacher / 200 [] unknown version (F-1: captured as-is; divergence call = R0) / 200 suggested"
+      ]
+    },
+    "QuestionAssetController [content/question-assets]": {
+      "frozen": "src/main/java/com/syllabai/sme/QuestionAssetController.java (+ QuestionAssetRepository)",
+      "cases_n": 2,
+      "sub_routes": [
+        "GET /api/v1/content/question-assets/{file} -> 401 unauthed / 404 unknown (binary happy path gated on F-5 NEON_PAT tranche)"
+      ]
+    }
+  },
+  "unauthed_401_cases": {
+    "count": 7,
+    "names": ["content-docs-unauthed-401", "content-docs-search-unauthed-401", "content-reader-unauthed-401", "teacher-content-review-queue-unauthed-401", "teacher-curriculum-versions-unauthed-401", "question-assets-unauthed-401", "curriculum-versions-unauthed-401"],
+    "expectation_labelled": "EXPECTATION (verify at replay, not asserted): routers-then-401-fallback answers these 401 + ApiError body TODAY, so they may already replay green against main; ports must preserve exact shape/status while replacing fallback 401s with real handler authz (regression risk, not feature work)."
+  },
+  "proposed_task_split": {
+    "label": "RECOMMENDATION ONLY — R0 owns the final split; claimants author yamls per §4",
+    "T-MIG-020_content_documents_and_reader": {
+      "controllers": ["ContentDocumentController", "ContentReaderController"],
+      "cases": 14,
+      "note": "student reader + teacher documents/search; the search empty-cause header semantics (T-C31) ride here"
+    },
+    "T-MIG-021_curriculum": {
+      "controllers": ["CurriculumController", "TeacherCurriculumController"],
+      "cases": 13,
+      "note": "fully replay-stable TODAY: V6 seed uses fixed-constant uuids; F-1 divergence call needed from R0"
+    },
+    "T-MIG-022_teacher_content_and_question_assets": {
+      "controllers": ["ContentController", "QuestionAssetController"],
+      "cases": 11,
+      "note": "review queues + provenance/audit/topics + asset binary; real-data tranche (F-5) hits this one hardest"
+    }
+  },
+  "dependency_gates": [
+    {"gate": "PR #13 (T-MIG-014 db-driver dispatch, R3a, IN_REVIEW)", "blocks": "all three — seed-shaped local/CI Postgres replay environment; without it only the fallback-401 expectation is testable"},
+    {"gate": "T-MIG-004 F-5 (NEON_PAT escalation)", "blocks": "real-data tranche: documents with ingested rows, citable page text, review queues with real SUGGESTED papers, question-assets binary happy path, search over embedded chunks; seed-state cases unaffected"},
+    {"gate": "runner gaps (T-MIG-004 F-3 + T-MIG-013 report)", "blocks": "response-header comparison (X-Search-Empty-Cause) not compared by runner; tolerate/classification wiring defect reported into R6's fence — ports must reproduce headers regardless (T-C31)"},
+    {"gate": "packages/contracts is R1's fence", "blocks": "W2 response schemas: T-MIG-001 ported identity DTOs only; content/curriculum zod schemas need R1 coordination at source (T-MIG-010 precedent: request, don't reach into the fence)"},
+    {"gate": "divergence calls F-1/F-2", "blocks": "R0 must rule whether v2 replicates captured oddities (200 [] on unknown version; 500 on blank query) — captured as-is per GOLDEN_MASTER, do not silently fix"},
+    {"gate": "zod major question (orientation Q3)", "blocks": "apps/api zod ^3.24 vs hub ^4.0.2 — R0 ruling requested; affects every W2 schema decision"},
+    {"gate": "T-MIG-011 hub adapter (R5, claimed)", "blocks": "nothing api-side — parallel lane; hub reader-page verification is the W2 EXIT gate's second half"}
+  ],
+  "claim_readiness": {
+    "T-MIG-021_curriculum": "READY after PR #13 — most replay-stable family (fixed-uuid seed); recommended first claim",
+    "T-MIG-020_documents_reader": "READY after PR #13 — authz shell + empty states + error shapes complete; real-data tranche improves coverage later",
+    "T-MIG-022_teacher_content_assets": "READY after PR #13 EXCEPT binary happy path (F-5); heaviest R0 divergence-call load"
+  },
+  "fence_of_this_artifact": ".syllabai/receipts/R7-housekeeping/** + .syllabai/worklog.md (append) only; zero bytes under code fences",
+  "verdict": "wave-2 claim-prep evidence complete; three ready-after-#13 lanes mapped with per-case route surface, frozen refs verified, and coordination gates named"
+}

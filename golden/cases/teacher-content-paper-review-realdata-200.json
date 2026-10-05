@@ -1,0 +1,520 @@
+{
+  "name": "teacher-content-paper-review-realdata-200",
+  "description": "GET /api/v1/teacher/content/exam-papers/cb2c0cf8-f60a-4a15-a244-d356cbb3899b/review as TEACHER: 200 PaperReviewView of a real VALIDATED paper (4CH0/2CR June 2013) — {paper, versions[]} with every question version's content, answer key and mark-scheme state. The reviewer-sees-what-they-validate surface with REAL question data (first real-data case for this endpoint; only the unknown-404 existed).",
+  "source": "captured from a LOCAL boot of the frozen Java core (Temurin JDK 25.0.4.1, mvn -DskipTests package exit 0) against a Neon COW branch golden-capture/2026-10-05 (br-fancy-surf-a52owvza, copy-on-write child of production br-muddy-bar-a5huwldd) on 2026-10-05T05:17Z by the T-MIG-004 extension session (w0a, F-5 unblock: operator supplied NEON_PAT); production compute never contacted — the branch's own endpoint served everything; synthetic student/teacher accounts registered via the honest API path (real corpus data: 1023 documents / 108 exam papers / 4740 embedded chunks); automated email scan: 0 non-synthetic addresses in any captured body",
+  "method": "GET",
+  "path": "/api/v1/teacher/content/exam-papers/cb2c0cf8-f60a-4a15-a244-d356cbb3899b/review",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer scrubbed-fixed-dummy-jwt-token"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "paper": {
+        "id": "cb2c0cf8-f60a-4a15-a244-d356cbb3899b",
+        "subjectId": "e56dc9ee-aa74-426f-94a6-4b72d3dc346b",
+        "title": "4CH0/2CR June 2013",
+        "paperCode": "4CH0/2CR",
+        "sessionLabel": "June 2013",
+        "board": "unknown-board",
+        "qualification": "unknown",
+        "validationState": "VALIDATED"
+      },
+      "versions": [
+        {
+          "versionId": "4226ed6d-4e5e-4e96-bdf2-83ceb9032a2d",
+          "questionId": "8ceadb87-d3b1-4afb-aafb-f3974e0829d1",
+          "externalRef": "q01-cdfcbae1",
+          "type": "STRUCTURED",
+          "stem": "Use the Periodic Table on page 2 to help you answer this question. Give the name or symbol of",
+          "marks": 5,
+          "version": 1,
+          "validationState": "VALIDATED",
+          "commandWord": null,
+          "schemeId": "55c47c42-5b5a-4a18-986f-1c2061a5ab9c",
+          "schemeState": "VALIDATED",
+          "points": [
+            {
+              "id": "d72769ce-c437-497c-afbc-90c6b6cbe916",
+              "ref": "1-a",
+              "text": "gallium/Ga",
+              "marks": 1,
+              "acceptanceCriteria": []
+            },
+            {
+              "id": "7004628b-7e15-4893-a476-424e6a1d6e65",
+              "ref": "1-b",
+              "text": "sodium/magnesium/aluminium/Na/Mg/Al",
+              "marks": 1,
+              "acceptanceCriteria": []
+            },
+            {
+              "id": "e39c55cb-109e-4d4f-9a2f-d16d05144923",
+              "ref": "1-c",
+              "text": "fluorine/F/F2",
+              "marks": 1,
+              "acceptanceCriteria": []
+            },
+            {
+              "id": "535118f2-df3d-414b-909b-9dff93060ef8",
+              "ref": "1-d",
+              "text": "nitrogen/N/N2",
+              "marks": 1,
+              "acceptanceCriteria": []
+            },
+            {
+              "id": "51838b6d-0a8b-4919-95e0-5d314fc11505",
+              "ref": "1-e",
+              "text": "neon/argon/krypton/xenon/radon/Ne/Ar/Kr/Xe/Rn",
+              "marks": 1,
+              "acceptanceCriteria": []
+            }
+          ],
+          "options": [],
+          "parts": [
+            {
+              "id": "6509eb6a-8aba-4c8f-96c5-6ebc2c25669a",
+              "label": "a",
+              "prompt": "the element in group 3 and period 4.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "f6e7d46a-6106-4edc-af44-fdf85b188a98",
+              "label": "b",
+              "prompt": "an element in period 3 that is a good conductor of electricity.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "6b1e5e70-252b-4a7b-85fe-02f7f3984889",
+              "label": "c",
+              "prompt": "the element in group 7 that is the most reactive.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "3c0e6c8c-bdab-462f-9f79-85311192d683",
+              "label": "d",
+              "prompt": "the element in group 5 that is present in a molecule of ammonia.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "a87ff86c-6482-4e0a-a7a4-c60287d0e463",
+              "label": "e",
+              "prompt": "an element with an atom containing 8 electrons in its outer shell.",
+              "commandWord": null,
+              "marks": 0
+            }
+          ],
+          "extractionConfidence": 0.6,
+          "extractionMethod": "glm-ocr-qp-v1+glm-ocr-ms-v1",
+          "sourceDocumentId": "33ba399c-4640-5b04-b1bb-b520fa2ba94c"
+        },
+        {
+          "versionId": "d058361d-5d08-44e4-b20f-eeec3091cef2",
+          "questionId": "959658fa-214f-45fc-a114-2b7f487b7bd7",
+          "externalRef": "q02-cdfcbae1",
+          "type": "STRUCTURED",
+          "stem": "(a) The list shows some techniques used to separate mixtures. E simple distillation Complete the table to show the best method of obtaining each substance from the mixture. In each case, choose one of the letters A, B, C, D or E. Each letter may be used once more than once or not at all. A crystallisation B filtration C fractional distillation D paper chromatography",
+          "marks": 7,
+          "version": 1,
+          "validationState": "VALIDATED",
+          "commandWord": null,
+          "schemeId": "55fb19ec-8bd3-4afb-b638-8de71a79b949",
+          "schemeState": "VALIDATED",
+          "points": [
+            {
+              "id": "702465a6-5df9-4e8b-8434-6b2ec5168acc",
+              "ref": "2-a",
+              "text": "B",
+              "marks": 1,
+              "acceptanceCriteria": []
+            },
+            {
+              "id": "820be1d5-b423-45d4-9073-232b0c540814",
+              "ref": "2-b",
+              "text": "",
+              "marks": 1,
+              "acceptanceCriteria": []
+            }
+          ],
+          "options": [],
+          "parts": [
+            {
+              "id": "bb08fc24-ca38-4511-91d5-967b12118609",
+              "label": "b",
+              "prompt": "Gold occurs in ores, which are mixtures of gold and other substances. Several elements and compounds are used in the extraction of gold from its ores. Each box below represents the substances present in one part of the extraction process. Classify the contents of each box as a compound, an element or a mixture by writing your choice below each box.",
+              "commandWord": null,
+              "marks": 0
+            }
+          ],
+          "extractionConfidence": 0.6,
+          "extractionMethod": "glm-ocr-qp-v1+glm-ocr-ms-v1",
+          "sourceDocumentId": "33ba399c-4640-5b04-b1bb-b520fa2ba94c"
+        },
+        {
+          "versionId": "3da1312b-86ac-4836-8ea0-033af3d73f22",
+          "questionId": "7924e2bc-a3b3-43ac-a048-6211263ab7be",
+          "externalRef": "q03-cdfcbae1",
+          "type": "STRUCTURED",
+          "stem": "A student added some pieces of iron to a boiling tube containing dilute hydrochloric acid. She observed fizzing and the formation of a solution, X.",
+          "marks": 8,
+          "version": 1,
+          "validationState": "VALIDATED",
+          "commandWord": null,
+          "schemeId": "1a61e22c-a347-43aa-9427-da353c653270",
+          "schemeState": "VALIDATED",
+          "points": [
+            {
+              "id": "a3fdfdc8-1527-458d-b187-1259391cac23",
+              "ref": "3-a",
+              "text": "hydrogen/H2burns with a pop/squeakORuse burning/lit splint/flame to see ifpop/squeak",
+              "marks": 11,
+              "acceptanceCriteria": []
+            },
+            {
+              "id": "be12f953-fb8f-4cc8-9025-1e98f922e970",
+              "ref": "3-c",
+              "text": "(add) sodium hydroxide(solution)/NaOH",
+              "marks": 1,
+              "acceptanceCriteria": []
+            }
+          ],
+          "options": [],
+          "parts": [
+            {
+              "id": "01469030-dc01-4394-8fb7-032bd4677a24",
+              "label": "a",
+              "prompt": "Identify the gas that causes the fizzing and describe a test for it.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "e838ca94-9d9b-4158-8dbe-35a447702a60",
+              "label": "b",
+              "prompt": "Solution X contains chloride ions.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "880dca15-df0e-4856-9ac1-2856d7aa0a1b",
+              "label": "b-i",
+              "prompt": "The student confirmed this by adding some silver nitrate solution. She observed a white precipitate of silver chloride. Give the formula of the white precipitate, and name the other solution she should have added before the silver nitrate solution. Formula of white precipitate. Other solution.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "cd43d1f6-c048-4a78-8793-bd950655476d",
+              "label": "b-ii",
+              "prompt": "Complete the word equation for the reaction in this test. iron chloride + silver nitrate $ \\rightarrow $ silver chloride +",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "7acd6519-2849-4233-9c59-6597d9ce8250",
+              "label": "c",
+              "prompt": "Solution X also contains ions of iron. The student thought that these ions had the formula $ \\mathrm{F e}^{2+} $ or $ \\mathrm{F e}^{3+} $ What reagent should she add to decide whether solution X contains $ \\mathrm{F e}^{2+} $ or $ \\mathrm{F e}^{3+} $ ions? State the result of the test in each case. Reagent... Result with $ \\mathrm{F e}^{2+} $ ions... Result with $ \\mathrm{F e}^{3+} $ ions...",
+              "commandWord": null,
+              "marks": 0
+            }
+          ],
+          "extractionConfidence": 0.6,
+          "extractionMethod": "glm-ocr-qp-v1+glm-ocr-ms-v1",
+          "sourceDocumentId": "33ba399c-4640-5b04-b1bb-b520fa2ba94c"
+        },
+        {
+          "versionId": "bcd18a75-ddd8-4bd2-aa76-bf7174b71f13",
+          "questionId": "afbb570f-71eb-42fd-bdbe-67a01c56d76a",
+          "externalRef": "q04-cdfcbae1",
+          "type": "STRUCTURED",
+          "stem": "A teacher added some of the Group 1 elements to separate samples of water.",
+          "marks": 9,
+          "version": 1,
+          "validationState": "VALIDATED",
+          "commandWord": null,
+          "schemeId": "432eb96e-a96f-49cd-8b14-623fcfa4261c",
+          "schemeState": "VALIDATED",
+          "points": [
+            {
+              "id": "d72fc717-bc10-4479-abc1-e58bf1ebdac9",
+              "ref": "4-a",
+              "text": "bubbles/fizzing/effervescence",
+              "marks": 2,
+              "acceptanceCriteria": []
+            },
+            {
+              "id": "14e1415a-a77a-4b5a-b63e-d4776b9b25fd",
+              "ref": "4-d",
+              "text": "Na is 2.8.1\nK is 2.8.8.1",
+              "marks": 2,
+              "acceptanceCriteria": []
+            }
+          ],
+          "options": [],
+          "parts": [
+            {
+              "id": "7d8b373c-cb72-4178-b797-cbe0f4854636",
+              "label": "a",
+              "prompt": "State two observations that could be made when a small piece of sodium is added to a large trough containing water.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "8788542a-fb84-4024-b6ac-54d907a3ba68",
+              "label": "b",
+              "prompt": "In another experiment she added a small piece of a different Group 1 element and noticed that the reaction was less vigorous. Which element did she add in this experiment?",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "d6faa379-7267-4f8e-9025-aedbf89ea3c0",
+              "label": "c",
+              "prompt": "In another experiment she added a small piece of potassium to a large trough containing water. This time she observed a lilac flame.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "167d7ba2-82a0-4181-ac30-fff3a6e982f0",
+              "label": "c-i",
+              "prompt": "Identify the gas that burned.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "08b0569c-4861-46f1-a5cb-1fde05d90e99",
+              "label": "c-ii",
+              "prompt": "Give the formula of the ion that caused the flame to be lilac.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "48264558-27fe-4f7d-8b6d-ab069d87ae11",
+              "label": "d",
+              "prompt": "When the Group 1 elements react with water, each of their atoms loses an electron from its outer shell. For sodium and potassium, these processes can be represented by the equations $\\begin{array}{l} \\cdot \\mathrm {N a} \\rightarrow \\mathrm {N a} ^ {+} + \\mathrm {e} ^ {-} \\\\ \\cdot \\mathrm {K} \\rightarrow \\mathrm {K} ^ {+} + \\mathrm {e} ^ {-} \\\\ \\end{array}$ Explain, by referring to the electronic configurations of sodium and potassium, why potassium is more reactive than sodium.",
+              "commandWord": null,
+              "marks": 0
+            }
+          ],
+          "extractionConfidence": 0.6,
+          "extractionMethod": "glm-ocr-qp-v1+glm-ocr-ms-v1",
+          "sourceDocumentId": "33ba399c-4640-5b04-b1bb-b520fa2ba94c"
+        },
+        {
+          "versionId": "82a893b0-4566-40b3-bec1-199dc9fc8cb0",
+          "questionId": "bdecbf85-249e-49c0-9ed5-b648597fb47f",
+          "externalRef": "q05-cdfcbae1",
+          "type": "STRUCTURED",
+          "stem": "Fractional distillation and cracking are important steps in processing crude oil.",
+          "marks": 1,
+          "version": 1,
+          "validationState": "VALIDATED",
+          "commandWord": null,
+          "schemeId": "e950b171-1d1e-4da3-8e8d-a976bd3f9477",
+          "schemeState": "VALIDATED",
+          "points": [
+            {
+              "id": "cd3c1d58-c56d-4fb0-8523-19371a819b9c",
+              "ref": "5-a",
+              "text": "Statement",
+              "marks": 5,
+              "acceptanceCriteria": []
+            },
+            {
+              "id": "8da8418f-207b-4804-bd98-e641e1490fc6",
+              "ref": "5",
+              "text": "(c)i",
+              "marks": 1,
+              "acceptanceCriteria": []
+            }
+          ],
+          "options": [],
+          "parts": [
+            {
+              "id": "9b073ecb-c0e9-489d-94a1-b548b6c59f15",
+              "label": "a",
+              "prompt": "Place ticks ( $ \\surd $ ) in the columns to show which statements apply to each step. You may place a tick in one column, in both columns or in neither column. The first one has been done for you.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "7ceb00e8-f700-4408-a792-327f663983d2",
+              "label": "b",
+              "prompt": "The formula $ \\mathrm{C H_{3} C H_{2} C H_{2} C H_{2} C H_{3}} $ represents one of the compounds in crude oil.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "7206717d-4726-4370-bed2-161e704a51fb",
+              "label": "b-i",
+              "prompt": "Give the molecular formula of this compound.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "011e2e64-da1d-44a9-a42e-1229fb3fe1a4",
+              "label": "b-ii",
+              "prompt": "Give the displayed formula of this compound.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "1e0f87d7-5f0c-4a8c-a6d9-370a5bcc06e9",
+              "label": "b-iii",
+              "prompt": "Give the empirical formula of this compound.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "bf02092b-4788-4b0d-aff9-1c3b276fad7a",
+              "label": "b-iv",
+              "prompt": "Give the name of this compound.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "becc88a2-6d61-4afc-b6d1-a444ab1e09e0",
+              "label": "b-v",
+              "prompt": "Give the general formula of the homologous series that contains this compound.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "a606910e-5502-4c58-8723-d81c102f7bcb",
+              "label": "c",
+              "prompt": "The products of the complete combustion of hydrocarbons are carbon dioxide and water.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "536cd076-079c-4565-8427-bcccc6e36f0a",
+              "label": "c-i",
+              "prompt": "Balance the equation to show the complete combustion of ethene $ \\left( \\mathrm{C}_{2} \\mathrm{H}_{4} \\right) $ $\\mathrm {C} _ {2} \\mathrm {H} _ {4} + \\dots \\dots \\dots \\mathrm {O} _ {2} \\rightarrow \\dots \\dots \\dots \\mathrm {C O} _ {2} + \\dots \\dots \\dots \\mathrm {H} _ {2} \\mathrm {O}$",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "14920c2f-17fd-45c0-b48e-76a160a24e73",
+              "label": "c-ii",
+              "prompt": "Draw a dot and cross diagram to show the bonding in an ethene molecule. Show only the outer electrons in each atom.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "fb02aac9-db95-4b22-ac55-9ef8e9d4a3b8",
+              "label": "d",
+              "prompt": "Ethanol can be manufactured by the hydration of ethene. The equation for this reaction is",
+              "commandWord": null,
+              "marks": 0
+            }
+          ],
+          "extractionConfidence": 0.45,
+          "extractionMethod": "glm-ocr-qp-v1+glm-ocr-ms-v1",
+          "sourceDocumentId": "33ba399c-4640-5b04-b1bb-b520fa2ba94c"
+        },
+        {
+          "versionId": "0a0f7b1d-bda2-4492-955e-36e261ee94c9",
+          "questionId": "cfe0f700-257d-48c1-9616-639d67657727",
+          "externalRef": "q06-cdfcbae1",
+          "type": "STRUCTURED",
+          "stem": "Most experiments involving electrolysis use inert electrodes, which do not take part in the reactions. However, in some experiments the electrodes do take part in the reactions. She uses this method. weigh two clean strips of copper use one strip as the positive electrode and the other as the negative electrode after electrolysis wash the strips of copper with ethanol (a liquid that boils at $ 7 8^{\\circ} \\mathrm{C} $) dry the strips of copper and reweigh them The ionic half-equations for the reactions at the electrodes are Positive electrode $\\mathrm {C u} (\\mathrm {s}) - 2 \\mathrm {e} ^ {-} \\rightarrow \\mathrm {C u} ^ {2 +} (\\mathrm {a q})$ Negative electrode $\\mathrm {C u} ^ {2 +} (\\mathrm {a q}) + 2 \\mathrm {e} ^ {-} \\rightarrow \\mathrm {C u} (\\mathrm {s})$ A student investigates the electrolysis of copper(II) sulfate solution using copper electrodes which do take part in the reaction. She uses this apparatus.",
+          "marks": 12,
+          "version": 1,
+          "validationState": "VALIDATED",
+          "commandWord": null,
+          "schemeId": "70c05101-bf81-4fe8-b3d6-6b1081ca7c04",
+          "schemeState": "VALIDATED",
+          "points": [
+            {
+              "id": "078f4f90-898c-4b83-9b7b-948b666bfa9b",
+              "ref": "6-a",
+              "text": "ethanol/it is more volatile/evaporates more quickly/more easily/evaporates in a shorter time",
+              "marks": 1,
+              "acceptanceCriteria": []
+            }
+          ],
+          "options": [],
+          "parts": [
+            {
+              "id": "724c7ebf-9a64-40de-89fd-00ef4db9a394",
+              "label": "a",
+              "prompt": "Suggest why the copper strips would dry more quickly when washed with ethanol rather than with water.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "71229d95-d01e-40f8-8327-666f89491402",
+              "label": "b",
+              "prompt": "The student's results are shown in the table. The table shows that the decrease in mass of the positive electrode was 0.32 g.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "e152d76a-99da-489f-b8d3-6b0531bb0d7f",
+              "label": "b-i",
+              "prompt": "Calculate the increase in mass, in grams, of the negative electrode.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "a4dbdc89-18c8-4707-b917-0da3863801e9",
+              "label": "b-ii",
+              "prompt": "The ionic half-equations show that the increase in mass of the negative electrode should be the same as the decrease in mass of the positive electrode. Suggest two reasons why the increase in mass of the negative electrode in the student's experiment was less than expected.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "39792829-43cc-4d68-9a92-2826fb4312f5",
+              "label": "c",
+              "prompt": "Another student investigated the effect of changing the electrical charge, in faradays, passed during the electrolysis. He wanted to find how this affected the increase in mass of the negative electrode. One faraday is the electrical charge of one mole of electrons. His results are shown in the table.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "35f4a2e6-715b-4163-b003-650f32f8d479",
+              "label": "c-i",
+              "prompt": "On the grid, plot a graph of increase in mass against electrical charge Draw a straight line of best fit. Start your line at the origin (0,0). Increase in mass in g",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "597e0ee2-e536-451a-98a7-80ea7e870566",
+              "label": "c-ii",
+              "prompt": "Draw a circle around the anomalous result.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "5e799c19-ae1d-4420-98b1-4cc5d078602f",
+              "label": "c-iii",
+              "prompt": "Suggest why the straight line should go through the origin.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "94900e8d-0cd9-44e8-847d-3ee709d7bd1b",
+              "label": "c-iv",
+              "prompt": "Explain why the graph shows that the increase in mass is directly proportional to the electrical charge passed.",
+              "commandWord": null,
+              "marks": 0
+            },
+            {
+              "id": "df8054b2-c782-4a2e-9e43-91b72c6f9574",
+              "label": "c-v",
+              "prompt": "Use your graph to estimate the increase in mass, in grams, of the copper electrode that would be produced by passing an electrical charge of 0.55 faradays.",
+              "commandWord": null,
+              "marks": 0
+            }
+          ],
+          "extractionConfidence": 0.6,
+          "extractionMethod": "glm-ocr-qp-v1+glm-ocr-ms-v1",
+          "sourceDocumentId": "33ba399c-4640-5b04-b1bb-b520fa2ba94c"
+        }
+      ]
+    }
+  },
+  "tolerate": []
+}
