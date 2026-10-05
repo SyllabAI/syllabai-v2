@@ -1,0 +1,27 @@
+{
+  "id": "T-MIG-042-PREP",
+  "kind": "claim",
+  "run": "run-001-claim",
+  "ts": "2026-10-05T12:4xZ",
+  "agent": "R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "task": "Vercel Cron scaffold for NightlyDecayJob (schedule + invoke shape + wiring seam, NO decay port) — operator Round-7 directive trace 1a10c9d1ef9ebbe1, second sequential lane",
+  "card_authored_by_lane": "No pre-existing card; authored with operator-directive provenance (T-MIG-030 precedent). File: .syllabai/tasks/T-MIG-042P-vercel-cron-scaffold.yaml",
+  "branch": "t-mig-042p/r1 (cut from main c0d8fa08; earliest-claim = this push timestamp)",
+  "zero_collision_evidence": {
+    "open_prs": "#50 t-mig-033/r4 (teacher marking port), #49 t-mig-022/r7a-h2 (apply-reset tool), #48 t-mig-036/r3fix (identity budget flake), #51 t-mig-002r/r1 (this session's 002-R, different surfaces)",
+    "new_prep_lane": "t-mig-040-prep/r7a @ ffc29c8 = W4 golden-capture claim (receipt + card yaml only); diff vs main contains zero hub/cron/vercel/env/package files — NO OVERLAP",
+    "main_movement": "c920eeaf -> c0d8fa08 = R0 round-6b housekeeping (T-MIG-033 collision disposition) — no lane conflict"
+  },
+  "parallel_lane_disclosure": "Same session holds T-MIG-002-R IN_REVIEW (PR #51) — operator sequenced both lanes in one directive; zero surface overlap (002-R: packages/db/scripts/**; 042-PREP: apps/hub/** + vercel.json).",
+  "key_doctrine": "BASELINE_DB §4.3: no double-schedule of decay until Wave-7 cutover — scaffold is env-gated OFF by default and zero-DB on every path; a scheduled hit while OFF returns 200 {status:skipped} and touches nothing.",
+  "plan": [
+    "apps/hub/vercel.json — crons entry GET /api/cron/nightly-decay, nightly 02:00 UTC placeholder (disclosed; confirmed from V38/@Scheduled at port time)",
+    "apps/hub/src/app/api/cron/nightly-decay/route.ts — invoke shape: CRON_SECRET bearer fail-closed; DECAY_CRON_ENABLED skip-gate (OFF default); 501 not-implemented when enabled; runtime nodejs; force-dynamic",
+    "apps/hub/src/lib/decay/nightly-decay.ts — pure decision function + runNightlyDecay() seam stub with the Wave-4 port contract (ledger idempotency via decay_job_runs.window_start PK; deterministic golden-gated math; retry-safe)",
+    "apps/hub/src/lib/decay/*.test.ts — bun unit tests for the decision matrix + seam stub",
+    "apps/hub/.env.example — cron env docs (CRON_SECRET, DECAY_CRON_ENABLED, OFF-by-default + §4.3 warning)",
+    "apps/hub/package.json — decay test script entry only",
+    "gates: typecheck x4 + bun test apps/api packages (base counts unchanged) + golden selftest + hub decay tests; receipts; PR; hold for R0"
+  ],
+  "next": "implementation commit -> run-002-execution.json -> PR t-mig-042p/r1 -> main -> review request -> hold"
+}

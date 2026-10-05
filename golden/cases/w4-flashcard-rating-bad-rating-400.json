@@ -1,0 +1,29 @@
+{
+  "name": "w4-flashcard-rating-bad-rating-400",
+  "description": "flashcard rating with an invalid rating value: 400 (rating must be still-learning or know)",
+  "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "POST",
+  "path": "/api/v1/learners/me/flashcard-ratings",
+  "request": {
+    "body": {
+      "cardId": "fl_w4_cap_001",
+      "rating": "maybe",
+      "subtopicCode": "WCH11-T1"
+    },
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 400,
+    "body": {
+      "status": 400,
+      "error": "bad_request",
+      "message": "rating must be \"still-learning\" or \"know\": maybe",
+      "timestamp": "2026-10-05T15:48:32.305782757Z"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

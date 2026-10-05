@@ -53,6 +53,20 @@ describe("LoginAttemptBudget — window semantics (LoginAttemptBudget.java:61-11
     expect(() => budget.checkAllowed("victim@example.invalid")).not.toThrow();
   });
 
+  test("a failure in a NEW aligned window starts a FRESH count (window roll, :66-71) — T-MIG-036 law pin", () => {
+    // This pin enshrines the flake mechanism observed on main (CI run
+    // 37294749131) as Java-faithful law: when a real-time failure sequence
+    // crosses the aligned boundary, the window rolls and the count restarts.
+    // Do NOT 'fix' this behaviour — the routes tests pin the clock instead.
+    const clock = new FakeClock();
+    const budget = new LoginAttemptBudget(OPTS(clock));
+    for (let i = 0; i < 3; i++) budget.recordFailure("roll@example.invalid");
+    expect(budget.currentCount("roll@example.invalid")).toBe(3);
+    clock.advance(60_001); // past the aligned window — insideWindow(existing) false
+    budget.recordFailure("roll@example.invalid");
+    expect(budget.currentCount("roll@example.invalid")).toBe(1); // fresh window, NOT 4
+  });
+
   test("success clears the account's history (:89-95)", () => {
     const clock = new FakeClock();
     const budget = new LoginAttemptBudget(OPTS(clock));
