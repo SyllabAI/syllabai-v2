@@ -500,3 +500,17 @@ Work Log:
 
 Stage Summary:
 - T-MIG-020 is push-ready verbatim: local branch t-mig-020/r3 = f5773bc (claim + Orientation) → a7d5b85 (in-fence port) → 47c91f6 (OUT-OF-FENCE mounts) → this commit (receipts + worklog + BLOCKED). UNBLOCK for the operator/R0: provide a valid GITHUB_PAT to this lane (then push, open PR "T-MIG-020: port content read surfaces (Wave 2)", flip status IN_REVIEW), or push the branch from an authenticated session and review the receipt at .syllabai/receipts/T-MIG-020/run-001-local-verify.json.
+
+---
+Task ID: T-MIG-020 (addendum 2 — lane collision on the shared branch name; escalation per AGENT_COORDINATION §6)
+Agent: r3-c (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Record the duplicate-claim collision on t-mig-020/r3 and move this lane's push to a disambiguated branch; R0 arbitration requested.
+
+Work Log:
+- Operator supplied GITHUB_PAT (+NEON_PAT). PAT verified (api.github.com /user → 200, account SyllabAI). Push of t-mig-020/r3 REJECTED non-fast-forward: the remote branch already exists with peer R3-api-a's commits (e50a63f claim @ 2026-10-05T05:42:41Z → a5a08de tranche-1 services → 3eff6bb worklog append @ 05:55:59Z; deps: T-MIG-005 contracts + T-MIG-014 driver dispatch; task IN_PROGRESS).
+- Precedence facts (git author dates; both branches from 67639db): THIS lane's claim f5773bc @ 2026-10-05T05:17:00Z precedes R3-api-a's e50a63f @ 05:42:41Z by ~25 min; this lane could not push earlier (credential blocker, addendum above) while the peer could.
+- Doctrine applied: NO force-push over the peer's branch; NO unilateral merge/rebase of the two implementations; NO cross-fence rework of either side. Escalation recorded instead (this entry + yaml execution_record + PR disclosure).
+- Action: this lane's push moves to disambiguated branch t-mig-020/r3c (same task-id prefix, role suffix r3c); PR "T-MIG-020: port content read surfaces (Wave 2)" opened from it with full collision disclosure for R0 (also disclosing the T-MIG-005 / PR #18 contracts overlap). NOTE: yaml claimed_at "2026-10-05T21:35Z" was a TZ authoring error in this lane's previous session; the authoritative claim instant is f5773bc's author date 05:17:00Z.
+
+Stage Summary:
+- T-MIG-020 now has TWO independent implementations in flight: R3-api-a's services-first tranche-1 on t-mig-020/r3 (remote-first, binds to unmerged T-MIG-005 / PR #18) and r3-c's complete contracts-first port on t-mig-020/r3c (all executable gates green locally; 151 tests; 25-case parity map). Arbitration and any reconciliation belong to R0. NEON_PAT note: provisioned to the lane, but this sandbox cannot resolve api.neon.tech (DNS) — live golden replay stays PENDING.

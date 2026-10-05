@@ -46,6 +46,12 @@ task:
     / response-envelope schemas). This lane's services, routes and
     151-green tests bind to its names — reconciliation is R0's call; no
     unilateral rework (fence law).
+    2026-10-05 (collision) r3-c: remote t-mig-020/r3 carries peer R3-api-a's
+    claim (e50a63f, 05:42:41Z) + tranche-1 — this lane's earlier claim
+    (f5773bc, 05:17:00Z) could not push then (credential blocker, addendum
+    above). No force-push; this lane's push moves to t-mig-020/r3c; full
+    disclosure in the PR; arbitration requested from R0. (claimed_at above
+    is a TZ authoring error; authoritative instant = f5773bc 05:17:00Z.)
   base:
     repo: "syllabai-v2 @ 67639db at claim time; frozen refs: syllabai-core @
       main (content/ContentDocumentController.java, content/
