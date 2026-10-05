@@ -72,7 +72,10 @@ export; (b) even with a newer orm, its internal squasher crashes on a null
 received null" at path `…columns.2.expression`). kit 0.31.11 completes the
 pull but renders two constructs wrong; both fixes are applied by a script
 (idempotent, logged site-by-site in the task receipt) and verified
-programmatically — 579/579 columns match the snapshot after fixing:
+programmatically — 579/579 columns match the snapshot after fixing. As of
+T-MIG-002-R that script is IN-REPO: `packages/db/scripts/rebaseline.ts`
+(subcommand `fix`; its `rebaseline.test.ts` re-proves the shapes offline on
+every test run):
 
 1. `.default(')` → `.default('')` — 5 sites where the DB default is the
    empty string (kit dropped the closing quote).
@@ -90,11 +93,36 @@ task that owns `packages/db/package.json`.
 
 ## Re-baseline procedure (never regenerate by hand)
 
-1. Create/refresh a task-named Neon branch (copy-on-write of production —
-   never pull against production itself).
-2. Run `drizzle-kit pull` with `DATABASE_URL` pointing at that branch (an
-   isolated toolchain is acceptable while the package.json pair is broken —
-   see above; record tool versions in the receipt).
-3. Re-apply the renderer-fix script; typecheck `packages/db`; re-run the
-   §3 verification checklist; append a receipt; update this header with the
-   new capture date and counts.
+The re-baseline path is IN-REPO as of T-MIG-002-R:
+`packages/db/scripts/rebaseline.ts` (bun-runnable, five subcommands). The
+out-of-repo fix script used at T-MIG-002 (deviation D1:
+`scripts/fix_kit_empty_default.py` in the isolated toolchain) is SUPERSEDED
+by it — no private tooling is needed to regenerate or audit this baseline.
+
+0. `bun packages/db/scripts/rebaseline.ts doctor` — static toolchain audit:
+   prints the declared vs resolved drizzle pair and proves F2a (kit 0.30.6
+   hard-imports `drizzle-orm/gel-core`; orm 0.38.4 does not export it).
+   READ-ONLY on `package.json` — realignment stays the lane owner's call
+   (flagged above).
+1. `bun packages/db/scripts/rebaseline.ts pull --on-cow-branch <name>` —
+   the live path. Builds the pinned isolated toolchain (drizzle-kit 0.31.11 +
+   drizzle-orm 0.45.3 + @neondatabase/serverless 1.2.0 — exactly the D1
+   recipe proven at run-001) in a temp dir, runs the introspection-only
+   `drizzle-kit pull` with `DATABASE_URL` passed via env (never written to
+   disk), relocates the generated artifacts, applies the renderer fixes, then
+   verifies runtime==snapshot parity AND diffs the new snapshot against the
+   previous baseline — all in one pass. GUARDRAILS: the target must be a
+   copy-on-write branch of production (never production itself); empty and
+   `jdbc:` URLs are refused; the production branch id is on a static
+   denylist.
+2. The pieces can be run standalone: `fix [--check]` (idempotent renderer
+   fixes, logged site-by-site), `verify` (runtime==snapshot parity proof —
+   re-proves the run-001 "579/579 snapshot-faithful" claim on demand),
+   `diff --against <snapshot.json>` (structural drift report; exit 1 on any
+   table/column/index/FK/check change).
+3. Offline regression gate: `bun test packages/db/scripts/` (26 checks) pins
+   the fixer shapes, the parity rules, the differ, the pull guardrails, and
+   the F2a doctor evidence — no network, no Neon contact.
+4. After a live re-baseline: typecheck `packages/db`; append a receipt under
+   `.syllabai/receipts/T-MIG-002-R/`; update this header with the new capture
+   date and counts.

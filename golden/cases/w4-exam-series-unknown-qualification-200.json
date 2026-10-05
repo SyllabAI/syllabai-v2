@@ -1,0 +1,19 @@
+{
+  "name": "w4-exam-series-unknown-qualification-200",
+  "description": "exam-series calendar with an unknown qualification: honest empty list",
+  "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "GET",
+  "path": "/api/v1/learners/me/exam-series?qualification=NOT_A_QUALIFICATION",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": []
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

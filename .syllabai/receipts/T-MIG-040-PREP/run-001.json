@@ -1,0 +1,26 @@
+{
+  "receipt": "T-MIG-040-PREP run-001 - Wave-4 authz shell captured from the deployed frozen Render core (read-only)",
+  "schema": "syllabai.v2.t-mig-040-prep.capture-receipt/1.0",
+  "agent": "R7a (agent-da4ab8, zai-web session web-da4ab8b1)",
+  "target": "https://syllabai-core.onrender.com (deployed frozen core; wake-gated free tier — woke on the 2nd health probe)",
+  "when": "2026-10-05 (round-7 session, Asia/Dhaka operator window)",
+  "cases_captured": 22,
+  "case_files": "golden/cases/w4-*.json (run-001 tranche)",
+  "expectation_match": "22/22 probed surfaces answered 401 from the Spring Security filter chain BEFORE any persistence path. Write-safety was proven from frozen source BEFORE probing (T-MIG-003/004/007 precedent): SecurityConfig s63-99 — jwtAuthenticationFilter -> authorizeHttpRequests(anyRequest().authenticated()) -> authenticationEntryPoint sendError(401); no controller, therefore no persistence path, is reachable unauthenticated.",
+  "surface_map": [
+    "GET /api/v1/learners/me/agenda (LearnerAgendaController)",
+    "GET /api/v1/learners/me/state + /knowledge-graph (LearnerStateController)",
+    "GET /api/v1/learners/me/course-stats (CourseStatsController)",
+    "GET /api/v1/learners/me/smart-lesson (SmartLessonController — the recommendations surface)",
+    "GET /api/v1/learners/me/exam-series + PUT/DELETE /courses/{slug}/target-series (LearnerExamSeriesController)",
+    "GET /api/v1/learners/me/flashcard-review-schedule (FlashcardReviewScheduleController)",
+    "POST /api/v1/learners/me/flashcard-ratings (FlashcardRatingController)",
+    "GET /api/v1/learners/me/flashcard-rating-trail (FlashcardRatingTrailController)",
+    "POST /api/v1/learners/me/note-votes (NoteVoteController)",
+    "POST /api/v1/learners/me/intervention-runs[?rootId] + GET/POST /{runId}[/activate|/steps|/complete|/cancel] (InterventionRunController, 9 routes)",
+    "posture variants: malformed bearer, empty bearer, unknown learner path, wrong method (DELETE on a GET surface)"
+  ],
+  "scrub": "no PII entered any capture (synthetic payloads, unauthenticated probes); bodies are the Spring default error shape {timestamp,status,error:'Unauthorized',path}; timestamps tolerated; no credentials used",
+  "production_safety": "zero writes to the Render core, zero production Neon contact, zero credentials; read-only HTTP probes only (GET/POST/PUT/DELETE all stopped at the filter chain — confirmed 401 across the matrix)",
+  "raw_log": ".syllabai/receipts/T-MIG-040-PREP/run-001-render-probes.log"
+}

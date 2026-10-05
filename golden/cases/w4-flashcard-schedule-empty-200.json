@@ -1,0 +1,30 @@
+{
+  "name": "w4-flashcard-schedule-empty-200",
+  "description": "flashcard review schedule, no ratings yet: derived-never-stored, empty queue",
+  "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "GET",
+  "path": "/api/v1/learners/me/flashcard-review-schedule",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "learnerId": "da30cee5-cb41-4565-9e8c-713894319ca8",
+      "generatedAt": "2026-10-05T15:48:32.147154400Z",
+      "summary": {
+        "due": 0,
+        "scheduled": 0,
+        "nextDueAt": null
+      },
+      "cards": []
+    }
+  },
+  "tolerate": [
+    "generatedAt",
+    "learnerId",
+    "timestamp"
+  ]
+}

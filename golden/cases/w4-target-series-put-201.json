@@ -1,0 +1,41 @@
+{
+  "name": "w4-target-series-put-201",
+  "description": "declare the V63-seeded IAL 2026-oct-nov series as the target for course slug chm: enrolment auto-created, countdown derived on read (never stored) \u2014 now-derived date fields tolerated",
+  "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "PUT",
+  "path": "/api/v1/learners/me/courses/chm/target-series",
+  "request": {
+    "body": {
+      "seriesId": "0a000000-0000-0000-0000-000000000001"
+    },
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "courseSlug": "chm",
+      "seriesId": "0a000000-0000-0000-0000-000000000001",
+      "seriesCode": "2026-october-november",
+      "label": "October/November 2026",
+      "windowStart": "2026-10-08",
+      "windowEnd": "2026-10-30",
+      "entryDeadline": "2026-08-28",
+      "resultsDate": "2027-01-21",
+      "estimated": false,
+      "daysToWindowStart": 3,
+      "daysToWindowEnd": 25,
+      "entryDeadlinePassed": true
+    }
+  },
+  "tolerate": [
+    "daysRemaining",
+    "declaredAt",
+    "id",
+    "targetDate",
+    "timestamp",
+    "updatedAt"
+  ],
+  "seq": 30
+}

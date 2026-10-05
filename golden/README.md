@@ -68,3 +68,26 @@ operator/agent-driven against a booted v2 api per wave gate.
    Content cases keep their captured dummy bearers until their owning port
    migrates them to `{{TOKEN}}` (T-MIG-020's replay tool covers that lane
    today).
+
+## Wave-4 tranche (T-MIG-040-PREP) — replay-readiness
+
+`w4-*.json` (57 cases): the learner wave captured one wave ahead of its port
+lane (T-MIG-007 pattern). Two capture postures, disclosed per-case in
+`source:`:
+
+- **22 pre-auth authz-shell cases** from the deployed Render core
+  (read-only; write-safety proven from `SecurityConfig` source ordering —
+  JWT filter → `anyRequest().authenticated()` → 401 entry point BEFORE any
+  controller — and confirmed live: every probe answered 401).
+- **35 authed deterministic cases** from a LOCAL frozen-core boot
+  (JDK 25 + Maven, LOCAL PostgreSQL 17.9 + pgvector 0.8.7, Flyway V1..V63
+  applied by the core; zero Neon). Empty states, validation boundaries,
+  the flashcard rating → derived-schedule lifecycle, practice → state /
+  knowledge-graph / course-stats / agenda / smart-lesson, exam-series
+  targeting against the V63 seed, intervention lifecycle shell, and the
+  authed-vs-unauthed posture pair on an unknown path.
+
+Replay prerequisites and the deterministic decay law the wave-4 port must
+implement are restated in `golden/tools/w4-readiness.ts` (run it: exit 0 =
+ready). Captured-as-is quirks (R0 divergence calls, never fixed in-pass):
+F-e dotted-anchor 400; intervention unknown-run 400-before-404.

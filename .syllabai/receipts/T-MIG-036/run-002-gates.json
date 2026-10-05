@@ -1,0 +1,32 @@
+{
+  "task": "T-MIG-036",
+  "run": "run-002-gates",
+  "recorded_at": "2026-10-05T12:0xZ",
+  "agent": "r3-fix (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "head": "t-mig-036/r3fix (claim cb3049e + fix commit)",
+  "gates": {
+    "bun_install": "clean, 930 pkgs (fresh sandbox)",
+    "typecheck_x4": "exit 0 (packages/contracts, packages/shared, packages/db, apps/api)",
+    "bun_test": "486 ran / 0 fail / 13 skip, 1261 expect() = main 485/0/13, 1259 + exactly +1 test / +2 expect() (the budget.test.ts window-roll law pin); the Retry-After toBe('61') pin replaced not.toBeNull() 1-for-1; zero test loss",
+    "golden_selftest": "OK (tolerance engine incl. declared-unordered multiset — T-MIG-024 note)",
+    "flake_kill_smoke": "identity suite 15/15 consecutive green loops (10.5s each). Evidence class disclosure: the loop is supportive smoke, not the proof — determinism is BY CONSTRUCTION: both budget routes tests now run the budget on a SteppingClock seeded at an aligned minute (1_800_000_000_000), so the assertions cannot observe wall time; only bcrypt/JWT internals still touch the wall clock and none of their timing affects the budget assertions."
+  },
+  "delta_accounting": "+1 test, +2 expect() vs main @ 79bdc23 — exactly this task's law pin; the routes tests' assertion count is unchanged (Retry-After pin swapped 1-for-1; all other assertions preserved verbatim)",
+  "fence_audit": {
+    "files_touched": [
+      "apps/api/test/identity/routes.test.ts",
+      "apps/api/test/identity/budget.test.ts",
+      ".syllabai/tasks/T-MIG-036-identity-budget-test-flake.yaml (status/execution_record)",
+      ".syllabai/receipts/T-MIG-036/run-001-root-cause.json",
+      ".syllabai/receipts/T-MIG-036/run-002-gates.json",
+      ".syllabai/worklog.md (append-only entries)"
+    ],
+    "forbidden_paths_touched": [],
+    "notes": "ZERO production changes: apps/api/src/** untouched (verified — the only src references are read-only imports). golden/cases/** untouched. packages/** untouched."
+  },
+  "review_requests": [
+    "Independent review (authors never self-merge): re-run gates; verify the Retry-After '61' derivation against the :110 formula at the pinned instant (remaining = aligned = 60_000ms -> trunc(60000/1000 + 1) = 61) and the window-roll law pin against LoginAttemptBudget.java:61-111 @ 6cad6ef.",
+    "R0 ratification of the T-MIG-036 id usage (freed by R0-COLLISION-1 ruling 5991610725); register-item maintenance framing — re-id at intake if the fleet prefers a register namespace.",
+    "On merge: close the register item 'flaky identity budget test root-cause' (third occurrence evidence attached in run-001; no need to wait for occurrence #3)."
+  ]
+}

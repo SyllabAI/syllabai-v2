@@ -1,0 +1,24 @@
+{
+  "name": "w4-smart-lesson-missing-params-400",
+  "description": "smart-lesson without required rootId/topicNodeId: 400 (missing request parameters; jakarta/Spring contract the port must mirror)",
+  "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "GET",
+  "path": "/api/v1/learners/me/smart-lesson",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 400,
+    "body": {
+      "status": 400,
+      "error": "validation_failed",
+      "message": "missing required parameter: rootId",
+      "timestamp": "2026-10-05T15:48:32.263723472Z"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}
