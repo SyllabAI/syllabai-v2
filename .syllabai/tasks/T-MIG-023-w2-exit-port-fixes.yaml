@@ -3,7 +3,7 @@ task:
   id: T-MIG-023
   title: "Wave-2 exit port fixes — F-1: Java-exact Instant rendering (format the DB timestamp fraction verbatim, trailing-zero-trimmed groups-of-3, replacing the Date round-trip; 1021 divergences all @ createdAt) + F-2: reader page-text assembly (documentPageText returns empty vs 716-char capture) — per R0-SWEEP-2 filing against the merged T-MIG-020 port; unblocks the CONDITIONAL Wave-2 exit gate (GOLDEN_MASTER §4)"
   owner: "R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e) — claimed per operator directive (IM trace 1a10b1a65519883d, 2026-10-05). CROSS-FENCE DISCLOSURE: findings were filed by R0 against the T-MIG-020 port lane (r3-c, DONE) with owner 'T-MIG-020 port lane (r3-c) / R0 routing' — this session held the R1-contracts fence (T-MIG-005/006, both DONE) and adopts the port-fix lane at R0's routing point since the port lane is closed and the finding is unowned; fences touched are apps/api content services only (no packages/db source changes). Same session's prior lanes T-MIG-002/005/006 all DONE — one lane at a time."
-  status: IN_REVIEW # work complete 2026-10-05 (PR: T-MIG-023 wave-2 exit port fixes); gates typecheck x4 / 356 pass 13 skip 0 fail / selftest OK; 9 fidelity pins + 020-era pin corrected; live replay escalated B-2 (golden COW DSN lost to workspace wipe) — R0 expectation: Pass B 15/15
+  status: IN_REVIEW # work complete 2026-10-05 (PR: T-MIG-023 wave-2 exit port fixes); merge-intake 422066e from main 0cd360b, gates typecheck x4 / 392 pass 0 fail 13 skip / selftest OK; COLLISION DISCLOSED (t-mig-023/r3a, w2-f1/r3c — this branch holds the earliest pushed claim, R0 arbitration requested); live replay escalated B-2 — R0 expectation: Pass B 15/15
   priority: P1 # Wave-2 exit gate is CONDITIONAL on exactly F-1 + F-2 + F-3 (R0-SWEEP-2); F-3 is R6's (stability re-pin), so F-1/F-2 are the only actionable gate blockers
   wave: 2 # closure lane for the conditional Wave-2 exit; not a new W3 port
   deps: [T-MIG-020, T-MIG-022, T-MIG-004] # fixes land on the merged T-MIG-020 port; acceptance spec = T-MIG-022 run-001 diagnosis + T-MIG-004 captured bodies
@@ -61,3 +61,31 @@ task:
     local placeholder (probed, AggregateError). UNBLOCK: COW DSN -> both
     postures via T-MIG-022 tools, or R0 merge-intake re-execution
     (T-MIG-007 precedent). R0 expectation: Pass B 15/15 after F-1+F-2.
+
+    DRAIN-CYCLE INTAKE 2026-10-05T09:23:49Z (operator directive trace
+    1a10b512c7656ab9; receipt run-003-intake.json): SYNC executed — main
+    moved ffc2876 -> 0cd360b (R0-SWEEP-4; PRs #31/#34/#35/#36 merged).
+    MERGE-INTAKE 422066e onto this branch: trial-merge showed exactly ONE
+    conflict, .syllabai/worklog.md (the directive-prescribed case); union =
+    main's 1213 lines verbatim + this lane's T-MIG-023 block re-appended at
+    tail; both sides byte-verified (0 deleted/changed lines on main side;
+    prefix-identity checks OK); ZERO code-file overlap (main touched
+    assessment/** + index.ts only; my fence content/** + content tests).
+    GATES on intake head: typecheck x4 exit 0; bun test 392 pass / 0 fail /
+    13 skip (405 total = main-base 347+13skip + my 9 + r7a tranche-1 34 +
+    E-1 2 — arithmetic exact); golden selftest OK.
+    COLLISION DISCLOSURE (3-way, F-1/F-2): during this card's IN_REVIEW
+    window two later branches entered the same scope — t-mig-023/r3a
+    (superz-agent-b, claim 375ff3e pushed 08:35:07Z: F-1/F-2/F-3 incl. live
+    replay 40/40) and w2-f1/r3c (R3-c, claim 36ecbd4 pushed 08:52:08Z:
+    F-1 only, 1024/1024 capture-corpus proof, intaken to 8f67d05). This
+    branch's claim was pushed 08:31:04Z (46f4f19) and work completed
+    53f4ee1 (PR #38) — EARLIEST pushed claim AND earliest work commit in
+    the lane per earliest-claim-wins. F-3 intentionally NOT touched here
+    (R0 ruled it R6's at 5990536177; R0's own T-MIG-036 multiset re-pin is
+    in flight; r3a's ORDER-BY restoration contradicts that ruling and is
+    theirs to defend). ARBITRATION REQUESTED from R0 across the three
+    branches; no force-pushes used or needed; self-merge recusal stands.
+    BLOCKER B-1 recurrence: no PAT in env at drain time — push of intake
+    head + PR #38 body update pending operator PAT (single-invocation
+    chain ready).

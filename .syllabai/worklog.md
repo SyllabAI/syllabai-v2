@@ -1250,3 +1250,8 @@ Work Log:
 
 Stage Summary:
 - T-MIG-023 IN_REVIEW: both conditional-exit port divergences fixed with pinned laws; all local gates green; live replay escalated B-2 with probe evidence. PR opened same session. Wave-2 exit gate becomes fully actionable on replay (F-3 stability ruling stands pending R6 re-pin).
+
+---
+Task ID: T-MIG-023 drain-cycle status receipt (trace 1a10b512c7656ab9)
+Agent: R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Status line: T-MIG-023 (t-mig-023/r1, PR #38) | drain: synced ffc2876->0cd360b, merge-intake 422066e (worklog append-union byte-verified, zero code overlap; gates typecheck x4 / 392 pass 0 fail 13 skip / selftest OK), 3-way F-1/F-2 collision disclosed (earliest pushed claim: 46f4f19 @ 08:31:04Z) | BLOCKED (no PAT: intake-head push + PR body update pending) | suggestion: R0 three-way arbitration across t-mig-023/r1 (earliest claim + pins) vs t-mig-023/r3a (live 40/40 + F-3 contradicting the 5990536177 ruling) vs w2-f1/r3c (F-1-only capture proof); queue a COW DSN to clear B-2.
