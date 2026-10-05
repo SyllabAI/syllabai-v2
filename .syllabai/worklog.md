@@ -2008,3 +2008,19 @@ Work Log:
 
 Stage Summary:
 - Round 8 closed: 2 independent reviews filed on-thread, 2 merges executed under the explicit operator delegation (#60 2d4a884, #62 d9a48a6), 1 PR correctly left held (#50 — R0's blocking finding stands), post-merge main green. Lane STOPs; awaiting operator/R0 direction.
+
+---
+Task ID: T-MIG-043 (run-001 claim)
+Agent: w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Operator directive trace 1a10d2c88b6f13c5 — "Check and claim whichever lane other agents are not working."
+
+Work Log:
+- SYNC @ origin/main acce2c6 (ff from 78a2512; R7a-ROUND-8 receipt read). Lane survey: r4b = T-MIG-033 tranche-2 (PR #64) + 044/045 branches; r7a = T-MIG-041 tranche-1 (claim fdb6879, PR #65); r3a = receipt lane (PR #63, worklog-only, then IDLE); r8-hub idle (037 merged). The ONLY unclaimed MIGRATION_PLAN-reserved Wave-4 band = T-MIG-043 (named remainder in r7a's 041 yaml).
+- Zero-collision scan RE-RUN immediately before branch cut: ls-remote zero t-mig-043* heads, zero 043 yamls on main, zero 043 claims in this worklog, all three open PR fences disjoint from services/learner-me/**. Claim = the 041/033/030 ratified self-filing precedent under the operator's seeding word (same class as round-9 → r7a's 041).
+- FROZEN READ @ 6cad6ef, line-against-line (full list in run-001-claim.json): agenda composition (:97-154 incl. the assignment re-order dueAt-asc/createdAt-DESC distinct from the list endpoint), flashcard rating POST law (tolerant parse verbatim 400s, fail-closed anchor structure gate UNIT/TOPIC/SUBTOPIC), trail keyset law (200/500 clamp, +1 probe, exclusive-tuple page 2+, TrailCursor base64url-unpadded {t,i} FAIL-CLOSED), review-schedule derivation (trailing-KNOW streak, ladder [1,2,4,8,16,32] lenient normalization, due = !now.isBefore, feed dueAt-then-cardId, summary nextDueAt = min unduer), note-vote POST law (helpful|up / not-helpful|nothelpful|down), exam-series picker + target-series idempotent upsert (kebab slug 400, published gate 400, vanished-series filter, UTC-today countdowns + entryDeadlinePassed), learner assignments (V51 visibility filter, 50/2000 bounds, CLOSED 409, class-gate 403, score/count 400s), Assignment.Status wire open/closed.
+- WIRE VERIFIED against landed #60 learner.ts schemas + golden bodies (w4-flashcard-rating-bad-rating-400 / unknown-anchor-404 verbatim). CONTRACTS GAP found + filed: the standalone ExamSeriesView picker wire is NOT landed (#60 covers the agenda-embedded views only) — tranche-1 adds packages/contracts/src/exam-series.ts (NEW file) + one index.ts re-export line (out-of-fence-flagged, 010/034 precedent).
+- PARALLEL-LANE DISCLOSURE: ExamTargetReader is inside r7a's 041 tranche-1 (#65) too; this lane ports its own copy in services/learner-me/** under the per-module structural-seam doctrine; consolidation ruling requested at R0 intake after 041/043 land (#56 arbitration precedent). Zero file overlap.
+- TRANCHES: t1 = services + fakeSql pins + the new contracts file; t2 = NBA engine (nba-rules/v1.3, T1..T7 tiers — NextBestActionService :79-554 fully read this session) + /recommendations + agenda actions flip + routes/mounts (out-of-fence flagged). Until t2, agenda-with-rootId returns 501 not-implemented owning-task-id — the honest-response law, never a fake 200. knowledge-graph/smart-lesson OUT (041's controller / Wave-5 band); intervention-runs OUT (Wave-6); NightlyDecayJob port OUT (042P names a separate decay lane).
+
+Stage Summary:
+- T-MIG-043 claimed @ acce2c6 on t-mig-043/w0a (yaml + receipt + this entry). w0a's long-standing "041/043 operator-routed, NOT self-filed" register note is now discharged for 043 by the operator's seeding word; 041 remains r7a's. Tranche-1 implementation follows on this branch; PR will request independent review + R0 id ratification; authors never self-merge.
