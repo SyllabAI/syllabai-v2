@@ -3,7 +3,7 @@ task:
   id: T-MIG-021
   title: "Wave-2 curriculum read port — learner curriculum metadata (versions/subjects/subject-by-id) + teacher curriculum review overview & node queue reads (CurriculumController + TeacherCurriculumController GET surfaces)"
   owner: "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a) — self-filed Wave-2 port task per briefing §5 blank-role protocol (highest-priority unclaimed work, zero overlap with CLAIMED/IN_PROGRESS lanes); R0 ratification of the task id requested in the PR (T-MIG-013/T-MIG-020 precedent)"
-  status: CLAIMED # claimed_at 2026-10-05T06:05:49Z; branch t-mig-021/r4 pushed (claim commit)
+  status: IN_PROGRESS # claimed_at 2026-10-05T06:05:49Z; branch t-mig-021/r4 pushed (claim @ 3abf02f); tranche 1 (curriculum read services, contract-independent) committed with receipt run-001-tranche1.json; route layer + mounting gate on T-MIG-005 (contracts-first §4.1)
   priority: P1
   wave: 2
   deps: [T-MIG-005, T-MIG-014] # contracts (route wiring gate — §4.1 contracts-first) + db driver dispatch (PR #13); tranche 1 is contract-independent

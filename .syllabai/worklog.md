@@ -487,3 +487,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-021 CLAIMED at 2026-10-05T06:05:49Z on branch t-mig-021/r4 (base 67639db). Fence: services/curriculum/**, routes/curriculum/**, test/curriculum/**, receipts, own yaml, worklog appends. Zero overlap with T-MIG-005/011/020 or any open PR. R0 id-ratification requested in the PR.
+
+---
+
+Task ID: T-MIG-021 (tranche 1)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Curriculum read port, tranche 1 — contract-independent service/repository layer for the learner curriculum metadata surface + the teacher review overview/node-queue GET surface.
+
+Work Log:
+- Ported the observed query surface (R-M-LAZY) of CurriculumVersionRepository, SubjectRepository (EntityGraph-parity JOIN) and the knowledge read slice CurriculumReviewService exercises — findSubtreeIds recursive CTE ported VERBATIM (the Java comment pins it as the single source of truth for the subtree definition; never duplicated).
+- Built the module under apps/api/src/services/curriculum/ (sql.ts structural SqlFn, views.ts Jackson-parity mappings, repository.ts, service.ts, index.ts composition root) + stubbed-sql unit tests under apps/api/test/curriculum/ pinning the SQL shape (ACTIVE gate, order-by clauses, CTE text, any($1::uuid[]) forms) and all 13 golden response shapes key-for-key — including unknown-version→200 [] and bad-uuid→400 "malformed request".
+- Declared two response-identical N+1 collapses (batched node fetch, batched PART_OF parent map) in the receipt; parsePathUuid sets identity's message-less BadRequestException message at the call site — shared errors file untouched.
+- Gates: bun run typecheck ×4 exit 0; bun test 138 pass / 0 fail / 4 skip (18 new curriculum tests); golden runner --selftest OK. Zero upstream writes, zero Neon contact.
+
+Stage Summary:
+- T-MIG-021 tranche 1 committed on t-mig-021/r4 with receipt run-001-tranche1.json; yaml → IN_PROGRESS. Route factories + zod wiring + index.ts mounting (flagged OUT-OF-FENCE) + the 13-case golden replay flip gate on T-MIG-005 (R1's contracts) per §4.1; teacher curriculum POST surfaces deferred as write paths outside the Wave-2 read gate. Fences held: packages/contracts, packages/db, golden/**, index.ts, middleware, services/content, services/identity all untouched (identity errors.ts IMPORTED only).

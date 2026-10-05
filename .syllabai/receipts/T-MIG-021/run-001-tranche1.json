@@ -1,0 +1,41 @@
+{
+ "task": "T-MIG-021 (tranche 1 — curriculum read services, contract-independent)",
+ "agent": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+ "lane": "R4 (apps/api curriculum read port; self-filed Wave-2 task, R0 ratification of the id requested in the PR — T-MIG-013/T-MIG-020 precedent)",
+ "branch": "t-mig-021/r4 (base: main @ 67639db)",
+ "date": "2026-10-05",
+ "change": {
+  "summary": "Tranche 1 lands the contract-independent read surface + view mappings + service law for the Wave-2 curriculum port: the learner metadata surface (CurriculumController: versions active-or-archived, subjects all-or-by-version, subject-by-id with NotFoundException parity) and the teacher review READ surface (CurriculumReviewService.versions()/nodes() — subtree validation-status counts merged across subjects, PART_OF parents, code-order sort). Route layer + mounting + zod wiring + golden replay flip are tranche 2, gated on T-MIG-005 (R1's content contracts) per MIGRATION_PLAN §4.1 contracts-first.",
+  "files": [
+   "apps/api/src/services/curriculum/sql.ts (structural SqlFn — driver-agnostic through T-MIG-014's dispatch rework; self-contained twin of content's, dedupe follow-up declared)",
+   "apps/api/src/services/curriculum/views.ts (CurriculumVersionView 6-key / SubjectView nested / CurriculumOverview 9-key / NodeView 7-key ports — camelCase with nulls included, Jackson parity; enum-ish columns kept as stored strings)",
+   "apps/api/src/services/curriculum/repository.ts (CurriculumVersionsRepository, SubjectsRepository with the EntityGraph-parity join, KnowledgeStructureRepository: findSubtreeIds recursive CTE ported VERBATIM as the single source of truth for the subtree definition; batched node + PART_OF-parent fetches)",
+   "apps/api/src/services/curriculum/service.ts (CurriculumService + CurriculumReviewReadService + parsePathUuid route guard + byCode Java-String.compareTo-parity sort)",
+   "apps/api/src/services/curriculum/index.ts (buildCurriculumModule composition root)",
+   "apps/api/test/curriculum/{service.test.ts,helpers.ts} (18 tests + 1 comparator suite, stubbed-sql; query-text pinned — the ACTIVE gate, order-by clauses, the VERBATIM CTE and the any($1::uuid[]) shapes are asserted, not just behaviour; the 13 golden response shapes are pinned key-for-key incl. the two non-obvious cases)"
+  ],
+  "parity_decisions": [
+   "unknown teacher-curriculum version → 200 [] via empty subject list, NOT 404 (golden teacher-curriculum-nodes-unknown-version-200-empty; Java subjects.findByCurriculumVersionIdOrderByCode returns empty → zero subtree walks)",
+   "malformed path uuid → 400 bad_request 'malformed request' BEFORE any controller logic (golden curriculum-subject-bad-uuid-400) — parsePathUuid ships in this tranche for the tranche-2 route layer; identity's BadRequestException is message-less so the golden-pinned message is set at the call site (shared errors file NOT edited — R3/T-MIG-014 fence)",
+   "subject view nests curriculumVersion via an explicit JOIN — response-identical to SubjectRepository's @EntityGraph fetch because subjects.curriculum_version_id is NOT NULL (T-MIG-002 baseline)",
+   "node validation_status/node_type/version status columns kept as stored strings (DB CHECKs constrain — T-MIG-020 'Kind' precedent)",
+   "nodes() sort = Java Comparator.comparing(NodeView::code) — UTF-16 code-unit order pinned by the byCode suite",
+   "teacher POST surfaces (drafts/validate/reject/archive) are write paths OUTSIDE the Wave-2 read gate — deferred; tranche 2 mounts GET routes only, POSTs stay honestly unrouted until their tranche (never fake 200s)"
+  ],
+  "deviation_from_claim_note": "Claim execution_record said 'service/repository layer FIRST' — delivered as planned; two RESPONSE-IDENTICAL N+1 collapses declared per R-M-LAZY honest-port doctrine: (1) the Java service's per-subtree-id findById loop is one batched select (CurriculumReviewService.java:83-84/:175-177), (2) the per-node PART_OF parent lookup is one batched edge select (:154-158, Optional first-row-wins; schema keeps one PART_OF parent per node structurally). Neither affects any response byte; both pinned by test."
+ },
+ "gates": {
+  "typecheck": "bun run typecheck (contracts/shared/db/api ×4) exit 0",
+  "unit": "bun test (repo root) — 138 pass / 0 fail / 4 integration-skips across 9 files, INCLUDING 18 new curriculum tests + 1 comparator suite",
+  "golden_selftest": "bun run golden/runner.ts --selftest → 'selftest OK: tolerance engine behaves' (read-only usage of R6's fence)",
+  "golden_replay": "NOT RUN this tranche — curriculum routes are not mounted yet; all 54 cases keep their captured/expected-pending posture. The replay flip (13 curriculum cases → passing) is tranche 2's acceptance gate.",
+  "upstream_writes": "ZERO — no Neon connection of any kind; syllabai-core touched read-only (raw.githubusercontent + api tree reads @ main); Flyway-owned tables referenced in SQL only, no DDL."
+ },
+ "why_this_task_existed": "R0's UNBLOCK-SEQUENCE-PHASE2 Stage Summary names Wave-2 ports (T-MIG-020..022) as the critical path after T-MIG-011; the PR #17 wave-2 claim-prep dossier proposes the 020/021/022 split (R0 owns final call) and scores curriculum 'ready-first (fixed-uuid seed = fully replay-stable)'. Post peer-collision board re-verification showed every seeded task DONE/claimed and all four filing lanes occupied — the 13 curriculum cases had NO owner. Contracts-first (§4.1) makes T-MIG-005 (R1, claimed 05:06:59Z local-hold) the endpoint gate — this tranche is the parallel-safe service-layer work that does not depend on it.",
+ "pending": [
+  "tranche 2: route factories + zod wiring (on T-MIG-005 merge), index.ts mounting (flagged OUT-OF-FENCE commit, R0 ratification), golden replay flip of the 13 curriculum cases, CI receipt",
+  "tranche 2 (coordination): requireAuth/requireRole wiring for the teacher GETs (401/403 Boot-shape bodies already pinned by middleware/auth.ts on main — no middleware edits needed, import-only)",
+  "later tranche/wave: teacher curriculum write surfaces (drafts/validate/reject/archive — CurriculumIngestionService/CurriculumReviewService writes, §7 workflow); F-5-gated real-data parity pass (NEON_PAT unblock still open, escalated at T-MIG-004 run-002)",
+  "dedupe: SqlFn + fakeSql twins with services/content once T-MIG-014's dispatch rework lands (declared in both modules' receipts)"
+ ]
+}
