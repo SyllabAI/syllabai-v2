@@ -21,10 +21,9 @@ process.env.DATABASE_URL ??= "postgresql://placeholder.local/syllabai?sslmode=re
 const { default: app } = await import("../src/index");
 
 describe("GET /actuator/health (path parity with Java core)", () => {
-  test("returns 200 {status:UP} — same shape as Spring Boot actuator", async () => {
+  test("returns 200 {groups:[liveness,readiness],status:UP} — the shape the core actually serves (golden actuator-health-parity; R0 T-MIG-016)", async () => {
     const res = await app.request("/actuator/health");
     expect(res.status).toBe(200);
-    // real core shape incl. boot-probe groups (actuator-health-parity case, justified:true)
     expect(await res.json()).toEqual({ groups: ["liveness", "readiness"], status: "UP" });
   });
 });
