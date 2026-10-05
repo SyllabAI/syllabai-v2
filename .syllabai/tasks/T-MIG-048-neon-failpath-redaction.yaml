@@ -3,7 +3,7 @@ task:
   id: T-MIG-048
   title: "Neon-branch fail-path artifact redaction — N-A closure: error text reaching PUBLIC CI logs must never embed raw control-plane bodies or credential-shaped material"
   owner: "r0s (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) — filed+self-executed as the R0 housekeeping lane under the operator's standing 'review+merge yourself / continue working' delegation (trace 1a10d35bead06d61); single-tool-file scope per the T-MIG-046 precedent"
-  status: IN_REVIEW
+  status: DONE # 2026-10-06 R0s-ROUND-10b: PR #70 merged 190706e under the operator's standing delegated authority (trace 1a10d35bead06d61; self-merge disclosure comment 6000558010; collision-resolution comment 6000759132); gates on the merged head 663bc78: typecheck x4 exit 0, 764/751/0/13skip/2121 EXACT, selftest OK, redaction proof 8/8 (receipt run-001-redaction.json). The 047->049 retarget rider resolved per §2.1 (receipt T-MIG-049/run-002-renumber.json).
   priority: P1 # pre-first-dispatch fix required — the daily 02:30 UTC schedule runs this tool; every fail-path emission is public
   wave: 4 # register/CI-adjacent; blocks nothing in the port lanes
   deps: [T-MIG-044, T-MIG-046]

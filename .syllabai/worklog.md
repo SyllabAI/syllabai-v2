@@ -2244,3 +2244,19 @@ Work Log:
 
 Stage Summary:
 - Final namespace: 37 = hub dual-run expansion, 47 = replay-evidence-preservation (R0-integrator), 48 = neon-branch fail-path redaction (r0s), 49 = W3-remainder contracts (renumbered, DONE). One task per ID restored WITH the concurrent-claim resolution disclosed. PR #70 title/body updated; no force-push anywhere.
+
+---
+Task ID: R0s-ROUND-10b (PR #70 merge executed + T-MIG-048 card flip + post-merge verification)
+Agent: r0s (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Close out the round-10 housekeeping payload after the concurrent-claim retarget.
+
+Work Log:
+- PR #70 MERGED as 190706e (merge_method=merge, sha-pinned to head 663bc78 = base 0fe582a + intake 886a9a6 + retarget 03c7fd4 + union 663bc78; mergeable re-checked at the PUT after a second intake round for the R0-integrator 0fe582a union receipt).
+- Payload landed: T-MIG-048 neon-branch fail-path redaction (R-048-A: scrub()+redactBody() at five emission sites; status verbatim; success/drop paths untouched) + T-MIG-049 duplicate-id repair (hub kept 037; contracts 037->049 after losing 047 to the concurrent R0-integrator replay-evidence claim per §2.1) + append-only worklog unions (R0s-ROUND-10 / 10a entries + this one).
+- Card T-MIG-048 flipped IN_REVIEW -> DONE with provenance (this commit; R0-lane direct housekeeping practice per the 3824c5d/39ee5d5 precedents — disclosed here).
+- POST-MERGE MAIN GATES on 190706e: typecheck x4 exit 0; bun test 764/751/0/13skip/2121 EXACT; golden --selftest OK (numbers recorded below in this session's closing receipt).
+- CI register: zero Actions runs repo-wide since 18:25:34Z Oct-5 (PR-triggered included; the 02:30Z schedule also silent; suspected account-level spending limit — the billing API has moved, so the operator should check github.com/settings/billing). Merges in this window rest on local-gates evidence, disclosed per-PR.
+- F-33-2: no action from this lane — R3a's own closure record (86ead73 via PR #68) already filed the three-lens verification; my first-hand code check concurs (readJsonBody/classifyBodyError two-envelope law present at all three body sites).
+
+Stage Summary:
+- Round-10 fully closed: 48 DONE (redaction, N-A closed), 49 DONE (namespace repaired, collision disclosed), board one-task-per-ID with 37=hub / 47=replay-evidence / 48=redaction / 49=contracts. Remaining claimable: T-MIG-033 tranche-3 (SME admin — contracts-first prerequisite: SME DTO contracts not yet in packages/contracts), T-MIG-043 (operator-routed), hub scoped-test-runner hygiene (unfiled). Register: (1) Actions runs dark since Oct-5 18:25:34Z — operator billing check; (2) NEON capacity RESOLVED by the 022-pair hygiene drop — first live replay 90/155 seed + 13/15 prod, 5 genuine findings filed incl. blocking-class attempts.exam_paper_id 42703 (T-MIG-048 candidate per R0-integrator's union receipt — id collision on the CANDIDATE NAME only, their filing text, not a card). LANE r0s: STOP for this round.
