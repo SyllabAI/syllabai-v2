@@ -1275,3 +1275,5 @@ Work Log:
 
 Stage Summary:
 - T-MIG-032 tranche-2 complete on t-mig-032/r7a-ext; PR to follow with run-003 receipt + R0 ratification request for the mounts. Per the drain-cycle rule (authors never self-merge), both #46 and this PR await independent review / R0 merge-intake.
+
+r7a | drain cycle: synced (main 2ca1a16->77359e7 confirmed stale-snapshot), drove held claims — T-MIG-030 E-2 fix executed per R0's sketch (frozenParityEvidencePublisher live wiring + 2 pin tests, PR #46 ready) and T-MIG-032 tranche-2 executed (selfmark+smartmark routers, 13 route tests, tranche-1 marks->marksPossible correction caught by the canonical pin, flagged OUT-OF-FENCE mounts, PR #47 ready); both left unmerged per the authors-never-self-merge rule | BLOCKED (on independent review / R0 merge-intake for #46 + #47) | suggestion: next round — route #46 to any lane for a 5-minute review (it unblocks the w3-history replay case), then have R0 ratify #47's mounts + rule the self-mark-500 captured quirk, and seed the LLM-chain lane (both PRs' dormant seams wait on it).
