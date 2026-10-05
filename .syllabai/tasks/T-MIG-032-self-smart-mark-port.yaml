@@ -10,7 +10,7 @@ task:
   owner: "R7a (agent-da4ab8, zai-web session web-da4ab8b1) — self-filed per the
     T-MIG-013/020/021/030/031 precedent; the 032 mapping follows R0's ratified
     split map (030 PR #31 verdict 5990832802: 032 self-mark+smart-mark)"
-  status: CLAIMED # claimed 2026-10-05T09:00Z; authoritative instant = this commit's author time
+  status: DONE # both tranches merged — tranche-1 services via PR #40 = 77359e7 (selfmark+smartmark services, 27 stubbed-sql tests, run-002 receipt), tranche-2 routes via PR #47 = 24d7ef8 (R0-SWEEP-5; selfmark+smartmark route factories, 13 route tests, SelfMarkPartView marks->marksPossible correction caught by the canonical pin, run-003 receipt); OUT-OF-FENCE mounts RATIFIED (R0 comment 5992850136: path parity vs LearnerSelfMarkController :28/:37 + StudentSmartMarkController :35/:44/:51/:59, 503 fixed-body vs GlobalExceptionHandler :107-117); R0 merge-intakes 91163b1/ef898b6 (worklog append-only unions). Standing conditions (non-blocking, 030/022 doctrine): golden replay of the 5 cases awaits the CI-side Neon replay runner (operator-routed register item); R1 top-up for the smart-mark response schemas disclosed at tranche-2.
   claimed_at: "2026-10-05T09:00:00Z"
   priority: P1
   wave: 3
