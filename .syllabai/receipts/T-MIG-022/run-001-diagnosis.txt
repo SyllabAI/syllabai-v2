@@ -1,0 +1,44 @@
+T-MIG-022 run-001 diagnosis evidence (deep-diff-case.ts + setcheck.ts outputs)
+
+=== content-docs-teacher-detail-realdata-200 (F-1) ===
+case: content-docs-teacher-detail-realdata-200 | status 200 vs expected 200
+tolerate fields: (none)
+divergence count: 1
+  @ .createdAt
+    expected: "2026-09-21T12:59:21.578011Z"
+    actual:   "2026-09-21T12:59:21.578Z"
+
+=== content-docs-teacher-realdata-200 (F-1, sample of 1021) ===
+divergence count: 1021 — ALL @ .N.createdAt, identical rule:
+  @ .0.createdAt  expected "2026-10-04T09:37:00.129532Z"  actual "2026-10-04T09:37:00.129Z"
+  @ .1.createdAt  expected "2026-10-04T09:36:50.349879Z"  actual "2026-10-04T09:36:50.349Z"
+  @ .2.createdAt  expected "2026-10-04T09:36:40.552213Z"  actual "2026-10-04T09:36:40.552Z"
+  @ .3.createdAt  expected "2026-10-04T09:36:30.997255Z"  actual "2026-10-04T09:36:30.997Z"
+  @ .4.createdAt  expected "2026-10-04T09:36:14.761725Z"  actual "2026-10-04T09:36:14.761Z"
+  @ .5.createdAt  expected "2026-10-04T09:36:00.526822Z"  actual "2026-10-04T09:36:00.526Z"
+  @ .6.createdAt  expected "2026-09-28T21:14:15.592864Z"  ...
+
+=== content-reader-real-page-text-200 (F-2) ===
+case: content-reader-real-page-text-200 | status 200 vs expected 200
+tolerate fields: (none)
+divergence count: 1
+  @ .text
+    expected: "The list shows some techniques used to separate mixtures.\nA\ncrystallisation\nB\nfiltration\nC\nfractional distillation\nD\npaper chromatography\nE\nsimple di..." (716 chars, F-5 receipt)
+    actual:   ""
+
+=== teacher-content-paper-review-realdata-200 (F-3, setcheck.ts) ===
+versions len: expected 6 actual 6
+versionId set: expected 6 actual 6 intersection 6
+only-in-expected (first 3): []
+only-in-actual   (first 3): []
+same order? false
+paper.id equal? true
+questionId set: expected 6 actual 6 intersection 6
+
+First-position sample of the ordering divergence:
+  versions[0].externalRef: expected "q01-cdfcbae1" actual "q03-cdfcbae1"
+  versions[0].stem: expected "Use the Periodic Table on page 2..." actual "A student added some pieces of iron..."
+  versions[0].marks: expected 5 actual 8
+Core reference: ContentReviewService.java:869 questionVersions.findByPaperId(paperId) — Spring Data
+derived query, NO ORDER BY (heap order). Port review-repos.ts:125 findByPaperId — equally unordered
+(faithful). The capture over-pins unspecified DB ordering.

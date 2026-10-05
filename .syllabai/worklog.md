@@ -903,6 +903,35 @@ Work Log:
 
 Stage Summary:
 - Queue CLEARED except #21 (recused). Nine PRs dispositioned in one sweep with zero force-pushes and full gate evidence per merge. Main @ this commit: typecheck x4 exit 0, bun test 247/0/13skip (pre-#21), golden 69 cases + selftest OK. The strangler-fig now covers identity + content-read + curriculum services + rate-limit mounting (pending #21 review) + write-contract prerequisites for Wave 3.
+
+---
+Task ID: T-MIG-022 (claim)
+Agent: superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Filed+claimed the Wave-2 exit gate — golden-gate live-replay verification of the MERGED T-MIG-020 content read surfaces (the PENDING follow-up recorded by R0-arbitration-1 and R0-SWEEP-1 follow-up (2))
+
+Work Log:
+- Board re-survey after R0-SWEEP-1 (main @ 01d0e9d): queue cleared; T-MIG-011 verified CLAIMED by r5 (branch t-mig-011/r5 carries the explicit claim commit c599a90 + implementation, despite the yaml on main still reading OPEN/unassigned — flagging the stale yaml for R0/r5 rather than treating the task as free; earliest-claim-wins applied). T-MIG-021 IN_PROGRESS (r7a). No yaml or branch anywhere claims the content live-replay follow-up.
+- Contributed the requested independent review of PR #21 (T-MIG-016 RateLimitFilter port; standing R0 recused): constraint-for-constraint read vs the frozen sources + independent gate execution in a clean worktree (typecheck exit 0 x4; bun test 134/0/4skip on the branch base; golden selftest OK). Verdict posted: APPROVE pending rebase; one fidelity call independently re-derived (stale class-level javadoc "left-most" vs method-level rightmost-public code-truth — the port followed code-truth, correctly); one non-blocking concurrency note (admit() must stay await-free to preserve the Java compute() atomicity parity). Review comment 5989673104.
+- Filed+claimed T-MIG-022 per the T-MIG-016-golden-verify-identity precedent (R0's own verify-task yaml, #25): verification-only fence — apps/**/packages/**/golden/** all forbidden; the port under test is the UNMODIFIED main HEAD. Tools to be copied from my preserved t-mig-020/r3a branch (apply-reset.ts + replay-content-cases.ts) exactly as the R0 disposition on #20 credited ("your replay tooling + receipts are the starting point").
+- Network posture re-probed this session: api.neon.tech still DNS-dead; console.neon.tech/api/v2 control plane reachable (project billowing-cherry-15418366 listed; 7 branches intact incl. my t-mig-014/r3a scratch br-polished-sky-a5se80ks); ep-*.neon.tech compute hosts resolve. A fresh COW branch t-mig-022/r3a will be created for this run (rows-only; zero production contact; role password taken from the creation response per the T-MIG-014 operational note).
+
+Stage Summary:
+- T-MIG-022 claim landed (this commit). Next: Neon branch create → apply-reset to Flyway-SEED posture → boot main HEAD api over HTTP → replay the 25 content cases → receipt + verdict. Any genuine divergence is FILED, never weakened or fixed in-pass.
+
+---
+Task ID: T-MIG-022 (execution complete)
+Agent: superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Execute the Wave-2 exit gate — two-posture live golden replay of the merged T-MIG-020 content read surfaces on the UNMODIFIED main HEAD
+
+Work Log:
+- Network posture re-verified: api.neon.tech still DNS-dead, but console.neon.tech/api/v2 + ep-*.neon.tech reachable (the same posture T-MIG-014 live-proved 3/3 with). Created two rows-only COW branches off production br-muddy-bar-a5huwldd via the console control plane: t-mig-022/r3a (br-wild-rice-a58063jp) for the seed posture and t-mig-022/r3a-prod (br-red-wildflower-a5vyd81c) kept AS-COWED for the production posture. Role passwords taken from creation responses per the T-MIG-014 operational note; held in workspace secrets only; production compute never contacted.
+- Replay tooling copied VERBATIM (sha-verified) from my preserved t-mig-020/r3a branch exactly as the R0 #20 disposition credited, plus a posture-aware v2 driver (CASE_MODE=seed|prod) and diagnostics (deep-diff-case.ts path-aware walker, setcheck.ts multiset comparator, boot-with-timeout.ts harness envelope).
+- Pass A (seed posture, apply-reset topological wipe + probes): 25/25 PASS — the merged port is byte-faithful on the seed-state tranche over real HTTP + real Neon.
+- Pass B (production posture, no reset): 11/15 — first run hit Bun.serve's 10s default idleTimeout on the 581KB listing (harness envelope fixed via wrapper, zero api changes). 4 fails root-caused with field-level evidence: F-1 createdAt Instant precision (expected ...578011Z vs actual ...578Z; 1021 row-instances on the listing — the canonical contract header's "until a real-data capture says otherwise" deferral has now matured); F-2 page-text assembly returns "" where the capture pins 716 chars (citation reader functional gap); F-3 paper-review versions[] ordering — setcheck proves same 6/6 multiset, core findByPaperId has NO ORDER BY (heap order) and the port is equally unordered, so the CASE over-pins unspecified ordering — R6/R0 capture-stability ruling required, not a port fix.
+- Fence held throughout: verification-only task; every divergence FILED (receipt run-001.json + run-001-diagnosis.txt), none weakened, none tolerated silently, none fixed in-pass. Scratch branches kept for fix re-verification.
+
+Stage Summary:
+- T-MIG-022 → IN_REVIEW (union 36/40; seed tranche fully green; 3 filed findings with owner-ready fix sketches). The Wave-2 exit gate is one port-side ISO-writer fix (F-1), one page-text assembly fix (F-2), and one R6/R0 ordering ruling (F-3) away from 40/40. The posture-matrix protocol (seed|prod) and the wrapper envelope are reusable fleet doctrine for every remaining live-replay wave.
 - T-MIG-006 CLAIMED on branch t-mig-006/r6 (branch-start commit per section 2.1). PR #7 CI verdict: GREEN (head + main). F-1 case correction: APPROVED and closed. Implementation + receipts follow in-flight on this branch.
 
 ---
