@@ -1,0 +1,106 @@
+version: 1
+task:
+  id: T-MIG-020
+  title: "Port content READ surfaces to apps/api (Wave 2): teacher content
+    documents list/get/canonical/search + review queues v1/v2/v3 + paper
+    review/audit/provenance + question topics read + learner citation reader
+    + question assets"
+  owner: "r3-c (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
+  status: DONE  # merged via PR #22 (a3c65d8) — acting-R0 arbitration 2026-10-05; evidence: receipts/T-MIG-020/run-001-local-verify.json + receipts/R0-arbitration/ruling1-t-mig-020.json
+  claimed_at: "2026-10-05T21:35Z"
+  priority: P1
+  wave: 2
+  deps: [T-MIG-002, T-MIG-004]
+  execution_record: >
+    2026-10-05 r3-c: ported the Wave-2 content READ surfaces contracts-first
+    (packages/contracts/src/content.ts from the frozen DTO records;
+    services/content: scope resolver + recursive-CTE, observed query
+    repositories, searchServingEligible/diagnoseEmpty SQL verbatim with
+    CURRENT_EMBED_REV=2, corpus-law reader + DocumentPageText, review
+    projections v1/v2/v3 + paperReview/audit/provenance/topics; routes with
+    the teacher authz shell, captured search binding behaviours (missing →
+    400 validation_failed, blank → 500 per T-MIG-004 F-2), honest 501s on
+    16 write surfaces). OUT-OF-FENCE mount commit 47c91f6 (3 route lines in
+    apps/api/src/index.ts) R0-ratification-requested. Gates: typecheck x4
+    exit 0; bun test 151/0/13skip; golden --selftest OK; live replay of the
+    25 owned cases PENDING on a Neon branch (NEON_PAT absent — no case
+    weakened). Receipt: .syllabai/receipts/T-MIG-020/run-001-local-verify.json
+    (incl. F-1: embed case filename says 404, captured expect says 500 — port
+    follows the expect). Branch t-mig-020/r3 push BLOCKED: no GITHUB_PAT in
+    this session (w0a T-MIG-000 addendum pattern); branch is push-ready
+    verbatim (f5773bc → a7d5b85 → 47c91f6 → receipts/worklog commit).
+    2026-10-05 (unblock) r3-c: operator supplied GITHUB_PAT + NEON_PAT.
+    Branch pushed; PR "T-MIG-020: port content read surfaces (Wave 2)"
+    opened; status -> IN_REVIEW. NEON_PAT provisioned but this sandbox
+    cannot resolve api.neon.tech (DNS) — live golden replay + the 9 content
+    integration tests stay PENDING for a Neon-capable session; no case
+    weakened (F-1 stands). OVERLAP DISCLOSURE for R0: PR #18 (T-MIG-005,
+    r1) also ports wave-2 content-read contracts incl.
+    packages/contracts/src/content.ts (+480). Claim order: this lane's
+    claim+Orientation commit f5773bc precedes PR #18 creation; T-MIG-005
+    was not CLAIMED at self-select time (active lanes then: T-MIG-011,
+    T-MIG-013). Export-name comparison: ~30 shared view/schema names;
+    divergences = envelope/enum naming (this lane SearchRequest /
+    ValidationState / SearchEmptyCause / paperReviewHeaderSchema vs r1
+    ContentSearchQuery/Response / ContentValidationState / uuidPathSchema
+    / response-envelope schemas). This lane's services, routes and
+    151-green tests bind to its names — reconciliation is R0's call; no
+    unilateral rework (fence law).
+    2026-10-05 (collision) r3-c: remote t-mig-020/r3 carries peer R3-api-a's
+    claim (e50a63f, 05:42:41Z) + tranche-1 — this lane's earlier claim
+    (f5773bc, 05:17:00Z) could not push then (credential blocker, addendum
+    above). No force-push; this lane's push moves to t-mig-020/r3c; full
+    disclosure in the PR; arbitration requested from R0. (claimed_at above
+    is a TZ authoring error; authoritative instant = f5773bc 05:17:00Z.)
+    2026-10-05 (R0 RULING) acting-R0: collision 1 — earliest claim wins
+    (AGENT_COORDINATION §2 R1): this lane (f5773bc 05:17:00Z) over
+    R3-api-a (e50a63f 05:42:41Z); completeness concurs; PR #22 MERGED as
+    a3c65d8, OUT-OF-FENCE mounts RATIFIED (T-MIG-010 precedent).
+    Collision 2 — this lane's content.ts is CANONICAL; T-MIG-005 (PR #18)
+    proceeds with non-overlapping files only. R3-api-a's t-mig-020/r3
+    preserved unmerged as reference alternative; appeal path = operator.
+    Full ruling: .syllabai/receipts/R0-arbitration/ruling1-t-mig-020.json.
+  base:
+    repo: "syllabai-v2 @ 67639db at claim time; frozen refs: syllabai-core @
+      main (content/ContentDocumentController.java, content/
+      ContentReaderController.java, content/ContentRetrievalService.java,
+      content/ChunkVectorRepository.java, content/DocumentRepository.java,
+      content/SearchEmptyCause.java, content/DocumentPageText.java,
+      sme/QuestionAssetController.java, teacher/ContentController.java (read
+      surfaces only), teacher/ContentReviewService.java (read-only
+      projections), curriculum/CurriculumScopeResolver.java,
+      knowledge/KnowledgeNodeRepository.java (subtree CTE),
+      identity/SecurityConfig.java route rules), syllabai-hub @ 93226a43"
+  basis: >
+    Operator directive 2026-10-04 trace 347fbb29…; MIGRATION_PLAN.md §5 Wave 2
+    (content/curriculum/question-asset READ surfaces — highest read volume,
+    lowest write complexity); R0 UNBLOCK-SEQUENCE-PHASE2 stage summary names
+    Wave-2 ports the next critical path; T-MIG-004 capture (38 cases) is the
+    gate input. Self-selected per AGENT_BRIEFING §5 (no OPEN task overlapped;
+    T-MIG-011 CLAIMED by r5, T-MIG-013 IN_REVIEW by r3a).
+  scope:
+    allowed:
+      - "apps/api/src/routes/content/**"
+      - "apps/api/src/services/content/**"
+      - "apps/api/test/content/**"
+      - "packages/contracts/src/content.ts"
+      - ".syllabai/tasks/T-MIG-020-content-read-surfaces.yaml (status/execution_record only)"
+      - ".syllabai/receipts/T-MIG-020/**"
+      - ".syllabai/worklog.md (append-only entries)"
+    forbidden:
+      - "apps/hub/** (T-MIG-011/r5's lane)"
+      - "packages/db/** (R2's lane — baselined schema read-only)"
+      - "golden/** (R6's lane — replay classification only, no case edits)"
+      - "apps/api/src/index.ts (mount wiring ships as a separate OUT-OF-FENCE
+        commit in this PR for R0 ratification, T-MIG-010 precedent)"
+      - "syllabai-core / syllabai-hub (frozen, C1)"
+      - "flyway_schema_history / any Neon main write (BASELINE_DB.md)"
+  notes: >
+    Write surfaces of the same controllers (ingest, past-papers, validate-*,
+    place, reject, flag/unflag, topics mapping POST) are NOT in this task's
+    title per MIGRATION_PLAN §5 Wave-2 READ-surface scope; they answer the
+    honest 501 + owning-task body until their own task files them (per the
+    honest-501 discipline — never a fabricated 200). Search embed-write path
+    (POST /documents/{id}/embed) is special: its captured deterministic
+    surface (no-provider 500) is ported; the embedding write itself stays
+    behind the provider seam (unkeyed = the core's own no-provider 500).

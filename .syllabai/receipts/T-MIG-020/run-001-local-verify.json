@@ -1,0 +1,56 @@
+{
+  "task": "T-MIG-020",
+  "run": "run-001-local-verify",
+  "agent": "r3-c (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "utc": "2026-10-05T22:10Z",
+  "what": "Content READ surfaces port (Wave 2): teacher content documents (list/get/canonical/search + embed deterministic surface), review queues v1/v2/v3, paper review/audit/provenance, question topics read, learner citation reader (corpus-law gate + DocumentPageText), question assets (binary + empty-body 404). Contracts-first: packages/contracts/src/content.ts ported from the frozen DTO records with source-line headers. Write surfaces answer honest 501s naming the owning task.",
+  "gates": [
+    { "gate": "typecheck (contracts/shared/db/api)", "result": "PASS", "evidence": "tsc --noEmit exit 0 x4 workspaces" },
+    { "gate": "bun test apps/api packages", "result": "PASS", "evidence": "151 pass / 0 fail / 13 skip (4 identity integration + 9 content integration, skipped without INTEGRATION_DATABASE_URL by design); 378 expect calls across 9 files" },
+    { "gate": "golden --selftest", "result": "PASS", "evidence": "selftest OK: tolerance engine behaves" },
+    { "gate": "golden live replay", "result": "PENDING", "evidence": "no Neon credentials in this session (NEON_PAT absent — same posture as T-MIG-004 F-5); live replay of the 25 T-MIG-020-owned cases requires a booted v2 api on a Neon branch (t-mig-020/r3-c); integration tier (apps/api/test/content/db.integration.test.ts) is committed and ready to execute against INTEGRATION_DATABASE_URL the moment a branch URL exists; NO case weakened, NO capture altered" }
+  ],
+  "golden_case_classification": {
+    "note": "static parity map: each T-MIG-004-captured case -> the ported handler path -> the unit-tier pin. Live replay pending per gates[].",
+    "cases": [
+      { "case": "content-docs-unauthed-401", "handler": "teacher router authz shell (SecurityConfig /api/v1/teacher/** hasAnyRole TEACHER,ADMIN)", "pin": "routes.test.ts authz shell 401" },
+      { "case": "content-docs-student-403", "handler": "same shell", "pin": "routes.test.ts student 403" },
+      { "case": "content-docs-teacher-empty-200", "handler": "GET /documents -> DocumentRepository.findAllByOrderByCreatedAtDesc", "pin": "routes.test.ts + integration tier" },
+      { "case": "content-docs-unknown-404", "handler": "GET /documents/:id -> NotFoundException('Document', id)", "pin": "routes.test.ts captured message" },
+      { "case": "content-docs-canonical-unknown-404", "handler": "GET /documents/:id/canonical -> canonicalJsonText (::text) or NotFound", "pin": "routes.test.ts" },
+      { "case": "content-docs-embed-unknown-404", "handler": "POST /documents/:id/embed — FINDING: case NAME says 404, captured EXPECT says 500; Java order is requireProvider() BEFORE the row lookup (DocumentEmbeddingService.java:50-54) so unkeyed = 500 for any id; port follows the EXPECT", "pin": "routes.test.ts embed 500 + malformed-uuid 400-before-provider" },
+      { "case": "content-docs-search-unauthed-401", "handler": "authz shell", "pin": "routes.test.ts" },
+      { "case": "content-docs-search-missing-query-400", "handler": "400 validation_failed 'missing required parameter: query' (custom advice shape)", "pin": "routes.test.ts exact body" },
+      { "case": "content-docs-search-blank-query-500", "handler": "PRESENT-BUT-BLANK -> 500 internal_error fixed body (T-MIG-004 F-2 replicated verbatim; mechanism question recorded in worklog Orientation (c)2)", "pin": "routes.test.ts exact body" },
+      { "case": "content-docs-search-empty-teacher-200", "handler": "scope unresolved -> 200 [] + X-Search-Empty-Cause: SCOPE_UNRESOLVED (header compared manually until the runner gains header comparison — R6 harness item)", "pin": "routes.test.ts header assertion" },
+      { "case": "content-docs-search-course-unresolved-teacher-200", "handler": "resolveForCourse exact-match fail-closed, NO resolveActive fallback (ADR-030)", "pin": "routes.test.ts asserts globalCalls==0" },
+      { "case": "content-reader-unauthed-401", "handler": "reader requireAuth before the corpus gate", "pin": "routes.test.ts" },
+      { "case": "content-reader-unknown-doc-404", "handler": "findById first; then existsCitable corpus gate — both -> identical 'Document {id} not found' (no state leak, T-C20)", "pin": "routes.test.ts byte-identical message" },
+      { "case": "content-reader-unknown-doc-page-404", "handler": "unknown row with page=2 -> the unknown-ID 404 (page range check runs after the gate, Java order)", "pin": "integration tier + routes.test.ts page-range" },
+      { "case": "question-assets-unauthed-401", "handler": "asset router requireAuth", "pin": "routes.test.ts" },
+      { "case": "question-assets-unknown-404", "handler": "ResponseEntity.notFound().build() parity -> 404 EMPTY body", "pin": "routes.test.ts empty text" },
+      { "case": "teacher-content-review-queue-unauthed-401", "handler": "authz shell", "pin": "integration tier" },
+      { "case": "teacher-content-review-queue-student-403", "handler": "authz shell", "pin": "integration tier" },
+      { "case": "teacher-content-review-queue-teacher-200", "handler": "reviewQueue() -> {papers:[], suggestedVersions:0, suggestedSchemes:0}", "pin": "routes.test.ts + integration tier" },
+      { "case": "teacher-content-review-queue-v2-teacher-200", "handler": "enrichedReviewQueue() — same empty shape", "pin": "routes.test.ts + integration tier" },
+      { "case": "teacher-content-review-queue-v3-teacher-200", "handler": "enrichedReviewQueueV3() — adds practicableTopicCount:0", "pin": "routes.test.ts + integration tier" },
+      { "case": "teacher-content-paper-review-unknown-404", "handler": "paperReview -> NotFoundException('exam paper', id)", "pin": "routes.test.ts captured message" },
+      { "case": "teacher-content-paper-audit-unknown-404", "handler": "paperAudit — same", "pin": "integration tier" },
+      { "case": "teacher-content-provenance-unknown-404", "handler": "paperProvenance — fail-closed on every missing piece", "pin": "integration tier" },
+      { "case": "teacher-content-question-topics-unknown-404", "handler": "questionTopicRows -> NotFoundException('question', id)", "pin": "routes.test.ts captured message" }
+    ]
+  },
+  "findings": [
+    { "id": "F-1", "severity": "low", "finding": "golden/cases/content-docs-embed-unknown-404.json: filename says 404, captured expect says 500. Port follows the expect (Java checks the embedding provider before the document row). Rename belongs to R6; flagged in worklog Orientation (c)1." },
+    { "id": "F-2", "severity": "medium", "finding": "X-Search-Empty-Cause header parity is not runner-verifiable (runner compares status+body only; T-MIG-013 listed header comparison as an R6 harness item). Port sets the header on both empty paths; unit tier asserts it directly." },
+    { "id": "F-3", "severity": "medium", "finding": "Embedding provider is a seam (GeminiEmbeddingProvider port, text-embedding-004/768-dim, no failover by design) gated on SYLLABAI_EMBEDDING_GEMINI_API_KEY. Unkeyed -> the core's verbatim IllegalStateException message -> 500. The full embed write path is implemented behind the seam but has NO captured golden case (write surface, real-data tranche uncaptured per T-MIG-004 F-5) — live verification pending the same unblock." },
+    { "id": "F-4", "severity": "info", "finding": "createdAt/occurredAt instants render via toISOString (millisecond precision); Jackson JSR-310 can emit nanoseconds. No captured case compares a non-error-body instant (all document-bearing cases are uncaptured per T-MIG-004 F-5); flagged for the real-data capture tranche." },
+    { "id": "F-5", "severity": "info", "finding": "Sandbox transport note: typed shell-command prefixes were silently dropped this session (same class as R0's UNBLOCK-SEQUENCE sandbox note). Countermeasure adopted: persisted gate script at scripts/gate.sh (operator workspace) driving every gate invocation; gate outputs captured with exit codes above." }
+  ],
+  "fence": {
+    "in_fence": ["packages/contracts/src/content.ts", "packages/contracts/src/index.ts (export line)", "apps/api/src/services/content/**", "apps/api/src/routes/content/**", "apps/api/test/content/**"],
+    "out_of_fence": [{ "file": "apps/api/src/index.ts", "why": "3 mount lines + comment (path parity wiring)", "commit": "47c91f6", "ratification": "requested from R0 per T-MIG-010 precedent" }],
+    "untouched": ["apps/hub/**", "packages/db/**", "golden/**", "flyway_schema_history", "upstream repos (C1)", "Neon production (no connection attempted)"]
+  },
+  "secrets": "none committed, none echoed; no AI keys used (Wave-6 surfaces out of scope)"
+}
