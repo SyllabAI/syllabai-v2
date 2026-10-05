@@ -1,0 +1,65 @@
+version: 1
+task:
+  id: T-MIG-020
+  title: "Port content read surfaces (Wave 2) — documents list/get/canonical/search, citation reader, question assets, teacher review queues/audit/provenance/topics; golden-gated against the 26 T-MIG-004 cases"
+  owner: "superz-agent-b (session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9, self-selected per briefing §5 blank-role protocol)"
+  status: CLAIMED # 2026-10-05T11:23:50+06:00 (commit = branch start, protocol §2.1)
+  claimed_at: "2026-10-05T11:23:50+06:00"
+  priority: P1
+  wave: 2
+  deps: [T-MIG-002, T-MIG-004]
+  execution_record: |
+    CLAIM NOTE (2026-10-05, pre-work): self-selected per R0's phase-2 critical
+    path ("then Wave-2 ports T-MIG-020..022 against the fresh capture"). Scope
+    per the T-MIG-004 capture addendum's own ownership note ("owned by
+    T-MIG-020 (content read surfaces) / T-MIG-021 (curriculum)"): T-MIG-020 =
+    ContentDocumentController (list/get/canonical/embed/search),
+    ContentReaderController (citation header/page text), QuestionAssetController
+    (asset by filename), ContentController READ surfaces (review-queue
+    v1/v2/v3, paper audit, provenance, question topics) — 26 of the 38 W2
+    golden cases. T-MIG-021 (curriculum + teacher-curriculum, 12 cases) is
+    FILED OPEN alongside this claim (branch-start commit) so the fleet can run
+    the two lanes in parallel (R3/R4 precedent, disjoint fences).
+    ContentController WRITE surfaces (ingest, validate/reject/flag/place,
+    topic mapping writes, scheme criteria) are NOT in this task: they get
+    honest 501s naming T-MIG-020/follow-up per the honest-response rule, and
+    are recorded in the execution_record + PR for R0 to sequence.
+    DEPS NOTE: deps are satisfied on main @ 67639db (T-MIG-002 baseline DONE;
+    T-MIG-004 capture DONE, 54 case files). T-MIG-014 (db driver dispatch,
+    PR #13) is IN REVIEW but NOT a dependency of this task's evidence path:
+    the replay environment is the t-mig-014/r3a Neon scratch branch, which is
+    a neon.tech host reachable by the EXISTING identity createSql (ws) — the
+    postgres.js leg of T-MIG-014 matters for local/CI replay, not for this
+    task's branch replay. Branch row-reset (content tables to seed-shape +
+    owning-surface neutralization) is ROWS-ONLY on the branch per
+    BASELINE_DB §4.1; reset SQL committed under the task's receipts tools.
+    OUT-OF-FENCE WIRING (disclosed up front, shipped as separate commits for
+    R0 ratification, T-MIG-010 precedent): apps/api/src/index.ts gains the
+    content router mounts (/api/v1/teacher/content + /api/v1/content) BEFORE
+    the authenticated() fallback. CONFLICT NOTE: PR #12 (T-MIG-013) also edits
+    index.ts — whoever merges second rebases; the mounts are 2 lines.
+base:
+  repo: "syllabai-v2 @ main 67639db at claim time; frozen refs: syllabai-core @ 6cad6ef (content/teacher/curriculum/sme controllers + CurriculumScopeResolver), syllabai-hub @ 93226a43"
+basis: >
+  MIGRATION_PLAN §5 Wave 2 (content read: highest read volume, lowest write
+  complexity — fastest visible parity win) + §2.1 port map; GOLDEN_MASTER §4
+  (wave exit = every deterministic endpoint happy path + validation failures
+  replay 100%); AGENT_COORDINATION §2 claim protocol. Cases: golden/cases/
+  content-docs-* content-reader-* question-assets-* teacher-content-* (26).
+scope:
+  allowed:
+    - "packages/contracts/src/content.ts (response-view + param schemas, from frozen core records)"
+    - "packages/contracts/src/index.ts (re-export)"
+    - "apps/api/src/services/content/** (repositories, views, scope resolution)"
+    - "apps/api/src/routes/content/** (routers)"
+    - "apps/api/test/content/** (unit + replay-classification tests)"
+    - "apps/api/src/index.ts (mount wiring ONLY — disclosed out-of-fence)"
+    - ".syllabai/receipts/T-MIG-020/**"
+    - ".syllabai/tasks/T-MIG-020-content-read-surfaces.yaml (status/execution_record only)"
+    - ".syllabai/tasks/T-MIG-021-curriculum-read-surfaces.yaml (FILED OPEN for the fleet — no claim)"
+  forbidden:
+    - "packages/db/** (r2's lane; T-MIG-014's fence — no schema edits)"
+    - "golden/** (r6's lane — cases consumed read-only)"
+    - "apps/api/src/services/identity/** apps/api/src/middleware/** (T-MIG-013 PR #12 in flight)"
+    - "apps/hub/** (r5 lane, T-MIG-011)"
+    - "production Neon main writes (C2); upstream repo writes (C1)"

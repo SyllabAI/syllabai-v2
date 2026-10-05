@@ -1,0 +1,72 @@
+version: 1
+task:
+  id: T-MIG-021
+  title: "Port curriculum read surfaces (Wave 2) — CurriculumController (versions/subjects) + TeacherCurriculumController read surfaces (versions overview, nodes by status); golden-gated against the 12 T-MIG-004 curriculum cases"
+  owner: "unassigned"
+  status: OPEN # filed by the T-MIG-020 claiming agent so the fleet can run W2 lanes in parallel (R3/R4 precedent) — claim per §2.1 in your branch-start commit
+  claimed_at: null
+  priority: P1
+  wave: 2
+  deps: [T-MIG-002, T-MIG-004]
+  execution_record: |
+    FILING NOTE (2026-10-05, by superz-agent-b at T-MIG-020 branch start):
+    authored per the T-MIG-004 capture addendum's ownership note ("owned by
+    T-MIG-020 (content read surfaces) / T-MIG-021 (curriculum)"). Scope: the
+    12 curriculum golden cases — curriculum-subjects-student-200,
+    curriculum-versions-student-200, curriculum-versions-archived-student-200,
+    curriculum-subject-by-id-student-200, curriculum-subject-bad-uuid-400,
+    curriculum-subject-unknown-404, teacher-curriculum-versions-teacher-200,
+    teacher-curriculum-nodes-teacher-200, teacher-curriculum-nodes-suggested-200,
+    teacher-curriculum-nodes-unknown-version-200-empty,
+    teacher-curriculum-versions-student-403,
+    teacher-curriculum-versions-unauthed-401.
+    SPEC POINTS for the claiming agent (from syllabai-core @ 6cad6ef):
+    - CurriculumController (@RequestMapping /api/v1/curriculum, NO method-level
+      role check — anyRequest().authenticated() parity; unauthed → 401 Boot
+      body, student → 200): GET /versions (includeArchived=false → ACTIVE
+      only, true → all, order createdAtDesc), GET /subjects
+      (optional versionId filter, order by code), GET /subjects/{id}
+      (NotFound("subject", id)).
+    - SubjectView {id, code, name, knowledgeNodeId, curriculumVersion{
+      id, board, qualification, code, title, status}}; status is the enum
+      NAME ("ACTIVE"). CurriculumVersionView from curriculum/dto/.
+    - TeacherCurriculumController (/api/v1/teacher/curriculum,
+      @PreAuthorize TEACHER/ADMIN): GET /versions →
+      CurriculumReviewService.versions() = per-version overview
+      {id, board, qualification, code, title, status, validatedNodes,
+      suggestedNodes, unvalidatedNodes} — counts over each subject's
+      PART_OF subtree INCLUDING the subject root (V6 seed: validated=1
+      subject root, unvalidated=10). GET /versions/{id}/nodes?status= →
+      NodeView {id, code, nodeType(SUBJECT/UNIT/TOPIC/SUBTOPIC name),
+      title, validationStatus(UNVALIDATED/SUGGESTED/VALIDATED), provenance,
+      parentId=PART_OF target or null} — subjects by code, subtree walk,
+      then SORT BY CODE (string); status filter compares the node's
+      validationStatus; UNKNOWN version id → 200 [] (no existence check —
+      capture F-1, do not "fix"); write endpoints (drafts ingest, node
+      validate/reject, version validate/archive) are NOT in the 12 cases —
+      honest 501s naming T-MIG-021 until filed+porteded as a follow-up.
+    - Bad uuid → 400 {status,error:"bad_request",message:"malformed
+      request",timestamp} (MethodArgumentTypeMismatch parity — shared
+      handler; coordinate the helper with T-MIG-020's content work if it
+      lands first).
+    - Replay env: seed-shaped state REQUIRED (V6 fixed uuids: version
+      10000000-…-0001 ACTIVE, subject …0010 CHM, 11 nodes 20000000-…). The
+      T-MIG-020 replay reset truncates content tables but PRESERVES the
+      curriculum skeleton — do NOT re-run the owning-surface neutralization
+      for these cases' db; verify against the V6 seed rows.
+base:
+  repo: "syllabai-v2 @ main 67639db; frozen refs: syllabai-core @ 6cad6ef (curriculum/, teacher/CurriculumReviewService.java)"
+basis: >
+  MIGRATION_PLAN §5 Wave 2 + §2.1 port map; the T-MIG-004 capture addendum's
+  ownership note; GOLDEN_MASTER §4 wave-exit semantics.
+scope:
+  allowed:
+    - "packages/contracts/src/curriculum.ts"
+    - "apps/api/src/services/curriculum/**"
+    - "apps/api/src/routes/curriculum/**"
+    - "apps/api/test/curriculum/**"
+    - "apps/api/src/index.ts (mount wiring ONLY — coordinate with T-MIG-020/T-MIG-013)"
+    - ".syllabai/receipts/T-MIG-021/**"
+    - ".syllabai/tasks/T-MIG-021-curriculum-read-surfaces.yaml (status/execution_record only)"
+  forbidden:
+    - "packages/db/**, golden/**, apps/hub/**, production Neon main writes"
