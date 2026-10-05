@@ -1088,3 +1088,18 @@ Work Log:
 
 Stage Summary:
 - Board after sweep-2: T-MIG-007/018/022 DONE this session; Wave-1 fully closed (T-MIG-011 via operator-reassigned PR #32/#33); open PRs: none known at commit time; t-mig-030/r7a branched (Wave-3 ports starting). Escalations standing: single-R0 authority reaffirmation (two breach-pattern merges: #25, #26 — operator merge-authority trace now disclosed on #33, pattern reframed as likely operator action; bookkeeping stands either way); PAT rotation (chat-transit); flaky unit test on main (one occurrence, identity uncaptured); CI-side Neon integration runner; T-MIG-002 baseline-SQL repair.
+
+---
+Task ID: T-MIG-023
+Agent: R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Claim the next open lane per operator directive (IM trace 1a10b1a65519883d) — board survey + R0 follow-up F-1/F-2 adoption.
+
+Work Log:
+- Survey @ main ffc2876 (R0-SWEEP-2): ALL 20 task yamls DONE, zero open; R0 recorded "open PRs: none known at commit time"; t-mig-030/r7a observed IN FLIGHT (R7a: claim e3b53d9 with 030..034 split proposal awaiting R0 ratification + tranche-1 work 0e87be5, 34 stubbed-sql tests) — left untouched, no fence overlap.
+- Lane selection: Wave-2 exit gate is CONDITIONAL (GOLDEN_MASTER §4) on F-1+F-2 fixes + F-3 re-pin; F-3 ruled to R6 (stability-exempt ordering re-pin), H-2 registered to r7a; F-1/F-2 (filed by R0 against the merged T-MIG-020 port, owner field "T-MIG-020 port lane (r3-c) / R0 routing") are the only unowned actionable critical-path items → claimed as T-MIG-023 (id verified free — zero references repo-wide; 030..034 reserved by r7a's pending split proposal).
+- Filing: yaml T-MIG-023-w2-exit-port-fixes.yaml (CLAIMED @ 2026-10-05T08:14:41Z, P1, wave 2, deps T-MIG-020/022/004) + receipt run-001-claim.json (board snapshot, adopted findings with verbatim pin vectors, scope/fence, planned verification incl. R0's Pass-B expectation 13/15 after F-1 → 15/15 after F-2, credential blocker B-1). CROSS-FENCE ADOPTION disclosed in owner field: port lane closed (r3-c DONE), adopting at R0's routing point; fence = apps/api content services only, packages/db source untouched (verbatim timestamp fraction via repo-layer SQL shaping).
+- Workspace incident recorded in receipt: harness reset wiped the session workspace between turns (clone, scripts, session worklog); rebuilt from remote + context; no repo content affected.
+- BLOCKER B-1: no live GitHub credential (first PAT revoked ~2 min; second lost to harness reset) → claim commit LOCAL ONLY on t-mig-023/r1 @ ffc2876. UNBLOCK: operator PAT → push → PR "T-MIG-023: wave-2 exit port fixes (F-1 instant rendering + F-2 page-text assembly)" (receipts + fence disclosure in body) → IN_PROGRESS on work start.
+
+Stage Summary:
+- T-MIG-023 CLAIMED (local): the two R0-filed port divergences that block the conditional Wave-2 exit gate. Acceptance pins pre-registered (Java Instant.toString() fraction law with 0/3/6/9-digit vectors; 716-char page-text capture). Work not started (claim-only round per operator directive); execution plan in yaml + receipt. Claim priority attaches at remote push time per AGENT_COORDINATION (T-MIG-005 run-001 precedent).

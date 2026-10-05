@@ -1,0 +1,41 @@
+version: 1
+task:
+  id: T-MIG-023
+  title: "Wave-2 exit port fixes — F-1: Java-exact Instant rendering (format the DB timestamp fraction verbatim, trailing-zero-trimmed groups-of-3, replacing the Date round-trip; 1021 divergences all @ createdAt) + F-2: reader page-text assembly (documentPageText returns empty vs 716-char capture) — per R0-SWEEP-2 filing against the merged T-MIG-020 port; unblocks the CONDITIONAL Wave-2 exit gate (GOLDEN_MASTER §4)"
+  owner: "R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e) — claimed per operator directive (IM trace 1a10b1a65519883d, 2026-10-05). CROSS-FENCE DISCLOSURE: findings were filed by R0 against the T-MIG-020 port lane (r3-c, DONE) with owner 'T-MIG-020 port lane (r3-c) / R0 routing' — this session held the R1-contracts fence (T-MIG-005/006, both DONE) and adopts the port-fix lane at R0's routing point since the port lane is closed and the finding is unowned; fences touched are apps/api content services only (no packages/db source changes). Same session's prior lanes T-MIG-002/005/006 all DONE — one lane at a time."
+  status: CLAIMED # 2026-10-05T08:14:41Z @ main ffc2876, branch t-mig-023/r1. Claim is LOCAL — push blocked (no live GitHub credential in this session; first PAT revoked ~2 min after issue, second PAT lost to harness reset). Push + PR follow immediately on operator PAT supply (T-MIG-005 run-001 precedent: claim priority = remote push time).
+  priority: P1 # Wave-2 exit gate is CONDITIONAL on exactly F-1 + F-2 + F-3 (R0-SWEEP-2); F-3 is R6's (stability re-pin), so F-1/F-2 are the only actionable gate blockers
+  wave: 2 # closure lane for the conditional Wave-2 exit; not a new W3 port
+  deps: [T-MIG-020, T-MIG-022, T-MIG-004] # fixes land on the merged T-MIG-020 port; acceptance spec = T-MIG-022 run-001 diagnosis + T-MIG-004 captured bodies
+  execution_record: >
+    (claim entry 2026-10-05T08:14:41Z) BOARD SURVEY at claim: main ffc2876
+    (R0-SWEEP-2), all 20 task yamls DONE; remote heads include t-mig-030/r7a
+    (R7a claim e3b53d9 + tranche-1 work 0e87be5 — wave-3 assessment slice A
+    in flight, NOT touched here); no open yamls; R0 recorded "open PRs: none
+    known at commit time". LANE SELECTION: R0-SWEEP-2 (verdict 5990536177)
+    filed F-1 (Instant rendering, 1021 instances) and F-2 (page-text
+    assembly) as GENUINE-FAIL port divergences with fix sketches; the
+    Wave-2 exit gate is CONDITIONAL on F-1/F-2 fixes + F-3 re-pin; F-3 was
+    ruled R6's and H-2 (apply-reset divergence) was registered to r7a —
+    F-1/F-2 are the only unowned actionable items on the critical path.
+    SCOPE / FENCE: apps/api/src/services/content/repositories.ts (F-1 Date
+    round-trip sites at lines 64-65, 169-170, 314 — `instanceof Date ?
+    toISOString() : String(...)` truncates micros at parse AND render),
+    apps/api/src/services/content/reader.ts (F-2: documentPageText, line 21),
+    content/index.ts wiring only if needed; + unit pins under apps/api tests
+    + receipts/worklog/yaml. NO packages/db source changes — the verbatim
+    timestamp fraction is obtained repo-layer-side (SQL shaping / raw text
+    read chosen per driver posture; T-MIG-014's dispatch is not modified).
+    F-1 LAW (from T-MIG-022 run-001 diagnosis + R0 fix sketch): Java
+    Instant.toString() renders the fraction in groups of three digits with
+    trailing zero-groups trimmed (nano=0 → no fraction; 578011 micros →
+    ".578011Z"; 578 millis → ".578Z"); expected captures are verbatim pin
+    vectors ("2026-09-21T12:59:21.578011Z" detail case; 1021 listing cases
+    share the one rule). F-2 LAW: mirror the frozen ContentReaderService
+    page assembly; acceptance pin = content-reader-real-page-text-200
+    (716-char capture per F-5 receipt). VERIFICATION PLAN: unit pins for the
+    renderer (0 / 3 / 6 / 9-digit fractions incl. trailing-zero trims) +
+    assembly; replay Pass B (prod posture) expected 13/15 after F-1 and
+    15/15 after F-2 per R0's sketch; Pass A (seed) re-run to prove no
+    regression; full repo gates (typecheck x4, bun test, golden selftest)
+    re-executed and exit-captured in run-002-work.json before IN_REVIEW.
