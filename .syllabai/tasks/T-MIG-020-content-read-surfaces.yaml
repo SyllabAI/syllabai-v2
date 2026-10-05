@@ -6,14 +6,29 @@ task:
     review/audit/provenance + question topics read + learner citation reader
     + question assets"
   owner: "r3-c (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
-  status: CLAIMED
+  status: BLOCKED  # push-only blocker (no GITHUB_PAT in session); implementation complete, all executable gates green — see worklog addendum
   claimed_at: "2026-10-05T21:35Z"
   priority: P1
   wave: 2
   deps: [T-MIG-002, T-MIG-004]
   execution_record: >
-    (in progress — claim commit; filled by the doing agent; append, never
-    rewrite)
+    2026-10-05 r3-c: ported the Wave-2 content READ surfaces contracts-first
+    (packages/contracts/src/content.ts from the frozen DTO records;
+    services/content: scope resolver + recursive-CTE, observed query
+    repositories, searchServingEligible/diagnoseEmpty SQL verbatim with
+    CURRENT_EMBED_REV=2, corpus-law reader + DocumentPageText, review
+    projections v1/v2/v3 + paperReview/audit/provenance/topics; routes with
+    the teacher authz shell, captured search binding behaviours (missing →
+    400 validation_failed, blank → 500 per T-MIG-004 F-2), honest 501s on
+    16 write surfaces). OUT-OF-FENCE mount commit 47c91f6 (3 route lines in
+    apps/api/src/index.ts) R0-ratification-requested. Gates: typecheck x4
+    exit 0; bun test 151/0/13skip; golden --selftest OK; live replay of the
+    25 owned cases PENDING on a Neon branch (NEON_PAT absent — no case
+    weakened). Receipt: .syllabai/receipts/T-MIG-020/run-001-local-verify.json
+    (incl. F-1: embed case filename says 404, captured expect says 500 — port
+    follows the expect). Branch t-mig-020/r3 push BLOCKED: no GITHUB_PAT in
+    this session (w0a T-MIG-000 addendum pattern); branch is push-ready
+    verbatim (f5773bc → a7d5b85 → 47c91f6 → receipts/worklog commit).
   base:
     repo: "syllabai-v2 @ 67639db at claim time; frozen refs: syllabai-core @
       main (content/ContentDocumentController.java, content/
