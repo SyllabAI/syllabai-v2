@@ -1498,3 +1498,4 @@ Work Log:
 
 Stage Summary:
 - T-MIG-039 awaits independent review + R0 merge-intake/ratification. Deliverable 1 (doctrine + ADR + harness) FILED; deliverable 2 (W3 EXIT replay) BLOCKED on the 031-t2/033/034 merge train — procedure staged, zero evidence fabricated.
+- CI addendum (16:20Z): CI registered on f13a73e but queued/pending ~5min post-push (concurrency backlog across 8 open PRs); dispositioned per the R0-SWEEP-5 CI-silence precedent — local gates stamped exact-baseline in run-001, R0 merge-intake independently re-executes. Lane remains STOPPED; review + merge authority rest elsewhere.
