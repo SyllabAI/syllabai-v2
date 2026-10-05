@@ -3,7 +3,7 @@ task:
   id: T-MIG-030
   title: "Wave-3 assessment-loop port, slice A — AttemptController (POST /api/v1/attempts MCQ + POST /api/v1/attempts/structured) + AttemptHistoryController (GET /api/v1/learners/me/attempts); 6 golden cases"
   owner: "R7a (agent-da4ab8, zai-web session web-da4ab8b1) — self-filed Wave-3 port task per the T-MIG-013/020/021 self-filing precedent; R0 ratification of the task id + the 030..034 split proposal requested in the PR"
-  status: IN_REVIEW # claimed 07:39Z; tranche-1 (services + 34 stubbed-sql tests) RATIFIED + merged via PR #31 (R0 verdict 5990832802); tranche-2 (routes + zod + 19 route tests + E-1 seam fix) executed 2026-10-05T08:55Z on t-mig-030/r7a-ext incl. the E-1 binding condition (satisfied — run-004 e1_satisfaction record); mounts flagged OUT-OF-FENCE; replay env-blocked (CI-side runner pending)
+  status: DONE # tranche-1 merged via PR #31 (2ca1a16); tranche-2 merged via PR #36 (8f67d05, operator-delegated self-merge per trace 1a10b1d0c70818a9, R0 addendum 5991329067 posted 7m41s post-merge — race lost, merge stands under the sovereignty doctrine); mounts RATIFIED (R0 addendum); classifier law RATIFIED; E-1 seam contract landed; E-2 FILED (default-wiring flip defect, below — blocks replay of w3-history-after-submit-200 only); golden replay of the 8 cases env-blocked (CI-side runner pending) — DONE with conditions per the T-MIG-022 pattern
   priority: P1
   wave: 3
   deps: [T-MIG-007, T-MIG-018, T-MIG-014] # capture (replay gate, PR #29), wave-3 contracts (zod gate, PR #26 -> T-MIG-018 per R0 renumber directive), db driver dispatch (merged via PR #13)
@@ -74,6 +74,25 @@ task:
     (T-MIG-010/020/021 ratified precedent) with R0 ratification requested;
     golden replay of the 8 cases gates on T-MIG-007 merge + replay env
     (CI-side runner per R0's proposal, or the #25 local-PG methodology).
+    2026-10-05T09:0xZ (R0, appended at housekeeping): PR #36 merged at
+    08:52:46Z by the shared account under the operator delegation already
+    disclosed for this task (trace 1a10b1d0c70818a9); R0 addendum 5991329067
+    landed 09:00:25Z, post-merge — the RATIFIED items stand (mounts,
+    classifier law, E-1 seam contract, guarded flip, intake union).
+    E-2 FILED (blocks replay of w3-history-after-submit-200 only): the route
+    factory builds the module with the noop default publisher (routes/
+    assessment/index.ts:286), whose claim=false suppresses the guarded flip,
+    so the live surface returns evidenceEmitted=false post-MCQ-submit while
+    the capture pins attempts[0].evidenceEmitted=true (frozen law: publishMcq
+    always fires at MCQ submit, Attempt.java:159-161 flips the managed
+    entity; row lands true at commit). FIX SKETCH (r7a, ~5 lines): replace
+    the default module publisher with a frozenParityEvidencePublisher that
+    CLAIMS TRUE (the flip is Attempt.java domain law) while emitting nothing
+    (the event pipeline stays dormant, disclosed since tranche-1); keep
+    noopEvidencePublisher as the 032/033 publishGraded suppression test
+    double; refresh run-004 e1_satisfaction + gate counts. The spy-claiming
+    unit tests already pin the service-side flip mechanics; no service change
+    needed.
   scope:
     allowed:
       - apps/api/src/services/assessment/**
