@@ -1769,3 +1769,34 @@ Work Log:
 
 Stage Summary:
 - Round-6 cycle CLOSED from this lane: T-MIG-034 implemented (test-builder deterministic golden path + transcription LLM-OUTPUT shell, behavioural gates), intake-merged, pushed, PR #56 open and clean, independent review requested. Author recusal: no self-merge, no self-review. STOPPING per the round-6 directive (no self-reported wave work); next action belongs to the reviewer/R0 merge-intake.
+
+
+---
+Task ID: T-MIG-031 tranche 2
+Agent: R3-api-a / r3-c continuation (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Operator directive — exam-papers + questions routers + zod wiring + mounts (flagged OUT-OF-FENCE) + full gates + PR + independent review request
+
+Work Log:
+- SYNC on a fresh sandbox (repo re-cloned; .secrets rebuilt with the round-6 PAT value; worklog tail + yaml re-read). Zero-collision scan: ls-remote shows no t-mig-031 tranche-2 branch; open PRs #48/#49/#50 file-listed — zero overlap with this fence; branch t-mig-031/r3c cut from re-verified origin/main c920eea.
+- routes/questions (QuestionController port, :39-102): list/families/topics/{id}/{id}/mark-scheme with the list precedence topicNodeId->rootId->all-active; rootId resolves the PART_OF subtree 404-first via the now-public taxonomy.subtreeIds; /topics binds rootId ONLY (questionsListParamsSchema.pick — undeclared stray params stay Spring-ignored, test-pinned); mark-scheme 200|204 with the unservable-404 riding the servability gate BEFORE any scheme lookup (zero-scheme-queries pin).
+- routes/exam-papers (ExamPaperController port, :42-74): list with optional subjectId + detail 404 via the shared NotFoundException("exam paper", id) envelope.
+- Zod wiring against the merged T-MIG-018 schemas only (list/path params; 200 bodies pinned to the canonical view schemas); binding law: unparseable UUID -> 400 bad_request "malformed request" (MethodArgumentTypeMismatch :167-170 parity), distinct from the 404 unknown-id envelope pinned verbatim (w3-question-unknown-authed-404).
+- Fence-internal service edits (disclosed): QuestionsModule gains allFamilies/familiesByTopic/familiesWithin (ServableQuestionService :95-107 verbatim composition) + subtreeIds private->public (the frozen controller calls knowledgeGraph.subtreeIds directly for list/families rootId paths, :48/:67 — one implementation, three call sites, frozen topology).
+- OUT-OF-FENCE mounts shipped as the separate flagged commit (two mount lines at /api/v1/exam-papers + /api/v1/questions + imports + construction + comment in apps/api/src/index.ts) per the T-MIG-010/020/021/030/032 ratified precedent — R0 ratification requested.
+- 31 route tests over REAL services on stubbed sql (032 pattern; fakeSql seam from tranche-1 helpers). Caught in-flight: the new allFamilies composition initially passed the promise un-awaited (caught by the route test, fixed pre-push).
+- Gates on the final head: typecheck x4 exit 0; bun test apps/api packages = 503 pass / 0 fail / 13 skip, 1366 expect (= main 485/1259 + 31/107 exactly); golden --selftest OK. Replay NOT RUN (env-blocked follow-up posture, no case weakened).
+
+Stage Summary:
+- T-MIG-031 tranche-2 complete on t-mig-031/r3c; yaml IN_REVIEW; receipt run-004-tranche2.json; PR to follow with the independent review request (authors never self-merge — §5 recusal rule) and the OUT-OF-FENCE mounts ratification flag for R0. Route surfaces: 7 endpoints across the two controllers, all READ-only, capture-is-the-law.
+
+---
+Task ID: T-MIG-031 tranche 2 (intake one-liner)
+Agent: R3-api-a / r3-c continuation (Super Z, session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Post-#52-open main intake (c0d8fa0, R0 round-6b) — mergeable=dirty on open
+
+Work Log:
+- Sole conflict = worklog tail; append-only chronological union (R0-ROUND-6b then my tranche-2 entry) via scripts/r3c-intake-main-worklog-union.py (byte-verbatim sides, insertions-only post-checks); intake commit 0e281ce pushed.
+- Gates re-stamped on the intake head: typecheck x4 exit 0; 503/0/13skip 1366 expect; selftest OK. PR #52 mergeable=true (unstable = CI pending); independent review requested on-thread; STOP — no self-merge, no self-filed wave work.
+
+Stage Summary:
+- T-MIG-031 tranche-2 awaiting independent review + R0 ratification of the flagged OUT-OF-FENCE mounts (e876fe0). 

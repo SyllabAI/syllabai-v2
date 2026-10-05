@@ -46,6 +46,8 @@ import { buildCurriculumRouters } from "./routes/curriculum";
 import { buildAssessmentRouters } from "./routes/assessment";
 import { buildSelfMarkRouters } from "./routes/selfmark";
 import { buildSmartMarkRouters } from "./routes/smartmark";
+import { buildQuestionsRouters } from "./routes/questions";
+import { buildExamPapersRouters } from "./routes/exam-papers";
 import { buildTestBuilderRouters } from "./routes/testbuilder";
 import { buildAnswerInputRouters } from "./routes/answer-input";
 import { toErrorResponse, apiError } from "./services/identity/errors";
@@ -58,6 +60,8 @@ const curriculum = buildCurriculumRouters();
 const assessment = buildAssessmentRouters();
 const selfmark = buildSelfMarkRouters();
 const smartmark = buildSmartMarkRouters();
+const questions = buildQuestionsRouters();
+const examPapers = buildExamPapersRouters();
 const testbuilder = buildTestBuilderRouters();
 const answerInput = buildAnswerInputRouters();
 
@@ -191,6 +195,27 @@ app.route("/api/v1/learners/me", assessment.historyRoute);
 // T-MIG-010/020/021/030 precedent so R0 can ratify or lift them out at review.
 app.route("/api/v1/learners/me/attempts", selfmark.selfMarkRoute);
 app.route("/api/v1/learners/me/attempts", smartmark.studentRoute);
+
+// Exam-papers + questions routers (T-MIG-031 — Wave 3). Path parity with the
+// frozen core: ExamPaperController under /api/v1/exam-papers (list + detail),
+// QuestionController under /api/v1/questions (list, /families, /topics, /{id},
+// /{id}/mark-scheme). Both fall under the frozen anyRequest().authenticated()
+// rule (SecurityConfig.java:91 — NO role-specific matchers for these prefixes;
+// any authenticated user lists/views) and each router owns its authz
+// internally — the /api/v1/* fallback below stays the 404-after-auth path for
+// NO router claimed. The questions router's reveal policy rides
+// SYLLABAI_MARKSCHEME_REVEAL_POLICY (default VALIDATED_ONLY, fail-fast at
+// construction).
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-031, R0 ratification requested):
+// T-MIG-031's scope.allowed covers routes/{questions,exam-papers}/**,
+// services/{questions,exam-papers}/**, test/{questions,exam-papers}/** — NOT
+// this file. The two mount lines + imports + construction + this comment are
+// the minimal app-level wiring, shipped as a separate commit per the
+// T-MIG-010/020/021/030/032 precedent so R0 can ratify or lift them out at
+// review.
+app.route("/api/v1/exam-papers", examPapers.examPapersRoute);
+app.route("/api/v1/questions", questions.questionsRoute);
 
 // Test-builder + answer-input routers (T-MIG-034 — Wave 3). Path parity with
 // the frozen core: TestBuilderController under /api/v1/teacher/tests (the
