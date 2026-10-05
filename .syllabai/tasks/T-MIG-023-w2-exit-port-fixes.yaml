@@ -118,3 +118,29 @@ task:
     PR #38 body update + review-request comment are FULLY STAGED in the
     single-invocation script scripts/tmig023_push_and_update_pr.sh —
     executes the moment a live token appears in GITHUB_PAT (or equivalent).
+
+    INTAKE-3 + UNBLOCK 2026-10-05T10:17:26Z (operator supplied live PAT
+    in-channel, trace 1a10b8668e13c349; receipt run-005-intake3.json):
+    B-1 CLEARED — token validated via API in single-invocation chain
+    (env-transient per credential law). CORRECTION ON RECORD: the Task-8
+    "staged" artifacts (scripts/tmig023_push_and_update_pr.sh, pr38 body,
+    review comment) were never persisted to the tree — that staging claim
+    was aspirational; the chain is re-staged THIS round as receipts.
+    SYNC: main moved 77359e7 -> 3a0cf41 (PR #46: T-MIG-030 E-2
+    frozenParityEvidencePublisher as live route-factory default).
+    MERGE-INTAKE-3 3b6ff7a (parents cc5f626 + 3a0cf41): trial-merge again
+    EXACTLY ONE conflict (.syllabai/worklog.md); union = main's 1275 lines
+    verbatim (insertions-only, 0 deletions) + my 44-line T-MIG-023 tail
+    re-appended; both sides byte-verified; ZERO code overlap (main touched
+    assessment routes+tests+030 receipts; my fence content/** —
+    reader.ts / repositories.ts / fidelity-fixes.test.ts byte-identical
+    pre/post merge). GATES on 3b6ff7a: typecheck x4 exit 0; bun test 421
+    pass / 0 fail / 13 skip (434 total = 419 + main's +2 "2 pin tests"
+    per 356ecb7 — arithmetic exact); golden selftest OK.
+    PUSH-1 (fast-forward origin/t-mig-023/r1 53f4ee1 -> receipts head; no
+    force) + PR #38 body PATCH (intake receipts + arbitration request) +
+    review-request comment execute immediately after this commit as one
+    credential chain — results recorded in run-006-push.json. THEN HOLD
+    FOR R0 (arbitration by claim-commit timestamps per R0-COLLISION-1
+    precedent d658647: this claim d92cd10 author-date 08:14:41Z, earliest
+    by 20m26s vs r3a's 375ff3e 08:35:07Z). No self-merge.
