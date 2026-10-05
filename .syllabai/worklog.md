@@ -1486,3 +1486,15 @@ Stage Summary:
 - T-MIG-039 filed on t-mig-039/r6-llm (branch start @ c0d8fa0): the doctrine + ADR + harness are drop-in ready for T-MIG-034 — integration checklist in golden/llm-shadow/README.md (proxy wiring via seams.llm, first LIVE capture, CI-lane decision, candidate-structure extension, threshold ratification).
 - Standing conditions handed to 034: real recorded shadows replace synthetic fixtures; runner-registration decision; T2 threshold ratification against first LIVE drift report.
 - R0 ratification requested for the self-filed id (032 precedent) and for the deferred W3-EXIT disposition (blocked on the 031-t2/033/034 merge train + replay runner).
+---
+Task ID: T-MIG-039 (status addendum)
+Agent: R6-llm (Super Z, session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Lifecycle bookkeeping — PR open + card flip.
+
+Work Log:
+- PR #59 opened (t-mig-039/r6-llm @ baad720 -> main c0d8fa0): title "T-MIG-039: LLM-OUTPUT behavioural-gate doctrine — recorded-shadow design + harness skeleton (feeds T-MIG-034)"; body links yaml + run-001 receipt, stamps the gate table, discloses the 037/038 collision avoidance, and records the W3-EXIT deferral disposition for R0's ruling.
+- yaml CLAIMED -> IN_REVIEW (PR-open flip per lifecycle; DONE is R0's only). Receipt run-002-flags.json filed (PR url, head, review request, deferred-item status).
+- Lane STOPs here per the directive: no self-merge (independent review pending), no wave-work self-claim, no fabricated exit evidence. PAT rotation reminder re-issued to the operator (token transited chat twice now).
+
+Stage Summary:
+- T-MIG-039 awaits independent review + R0 merge-intake/ratification. Deliverable 1 (doctrine + ADR + harness) FILED; deliverable 2 (W3 EXIT replay) BLOCKED on the 031-t2/033/034 merge train — procedure staged, zero evidence fabricated.
