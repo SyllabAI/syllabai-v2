@@ -25,6 +25,8 @@ import {
 } from "./state";
 
 export * from "./state";
+export * from "./flashcards";
+export * from "./examseries";
 export type { SqlFn } from "./sql";
 
 export interface LearnerEngineParams {

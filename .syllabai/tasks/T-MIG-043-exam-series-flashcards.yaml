@@ -1,0 +1,42 @@
+version: 1
+task:
+  id: T-MIG-043
+  title: "Wave-4 learner port — exam-series catalog + target-series lifecycle (T-C79/V63) + flashcard ratings/rating-trail/review-schedule (V47/T-C61/T-C53): tranche-1 = services + fakeSql pins (021/033/041 template); routes + flagged mounts = tranche-2"
+  owner: "R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e) — operator directive trace 1a10d4804ab58805 ('043 exam-series/flashcards', 2026-10-06). SUPERSESSION DISCLOSURE: w0a seeded+claimed a BROADER 043 band (agenda+flashcards+note-votes+exam-series+assignments, card T-MIG-043-learner-me-surfaces on branch t-mig-043/w0a @ db87a9a, 2026-10-05T18:01:06Z, operator trace 1a10d2c88b6f13c5) but executed NOTHING in the following ~14h (no card on main, no receipts, no PR). The fresh operator routing narrows execution to exam-series + flashcards and assigns THIS lane; w0a's line-precise surface map is credited as prior art throughout; per the T-MIG-002-R disposition-(A) arbitration pattern, R0/operator may restore w0a at review if the supersession is disputed — no collision contact was made with their branch (read-only)."
+  status: IN_REVIEW # 2026-10-06 tranche-1 COMPLETE (receipt run-002-tranche1.json): services + 40 fakeSql pins, gates 804/0/13skip/2245 = main +40/+124 exact, typecheck x3, selftest OK; disclosures: ExamSeriesView contract gap (local structural type), entryDeadline/resultsDate nullability flag (partLabel-class, R0 ruling requested), two-statement PUT shape; w0a supersession disclosure stands (dispute window at review) # claim 2026-10-06
+  priority: P1
+  wave: 4
+  deps: [T-MIG-038, T-MIG-040-PREP, T-MIG-041, T-MIG-014] # landed W4 contracts + W4 goldens + the 041 services/learner template this tranche extends + db driver dispatch
+  provenance: >
+    MIGRATION_PLAN Wave 4 (T-MIG-040..043, docs/MIGRATION_PLAN.md :144-146).
+    r7a's 041 card reserved 'exam-series+flashcards = T-MIG-043'. The W4
+    golden capture (T-MIG-040-PREP, merged #57) pins these surfaces:
+    w4-flashcard-rating-* lifecycle (KNOW/KNOW/STILL_LEARNING 201s -> derived
+    schedule streak/interval/due law) + w4-target-series-* PUT/DELETE
+    lifecycle (seed uuids replay-stable). Contracts for the flashcard views
+    + CourseExamTargetView landed via T-MIG-038 (#60); NOTE: ExamSeriesView
+    (the catalog wire) has NO landed contract — defined structurally in the
+    service module this tranche, gap disclosed for a verbatim contracts move.
+    ADR-031 applies to every derived value (schedule, countdowns,
+    entryDeadlinePassed: computed on read, NEVER persisted).
+  scope:
+    allowed:
+      - "apps/api/src/services/learner/flashcards.ts (NEW — rating append law + trail keyset + review-schedule scheduler)"
+      - "apps/api/src/services/learner/examseries.ts (NEW — catalog read + target/untarget + targetsFor reader)"
+      - "apps/api/src/services/learner/index.ts (export lines only)"
+      - "apps/api/test/learner/flashcards.test.ts + examseries.test.ts (fakeSql pins)"
+      - ".syllabai/receipts/T-MIG-043/**"
+      - ".syllabai/tasks/T-MIG-043-exam-series-flashcards.yaml (status/execution_record only)"
+      - ".syllabai/worklog.md (append-only entries)"
+    forbidden:
+      - "apps/api/src/routes/** + apps/api/src/index.ts mounts (tranche-2, flagged OUT-OF-FENCE per the 010/020/021/030/031/032/033 ratified pattern)"
+      - "packages/** (contracts — the ExamSeriesView gap is FLAGGED, never edited here)"
+      - "golden/** (capture-is-the-law; zero case edits)"
+      - "decay math / NightlyDecayJob (T-MIG-042-PREP seam owner's lane; ADR-031: never persist decayed/scheduled values)"
+      - "packages/db/**, apps/hub/**, other lanes' files; production Neon writes of any kind"
+  acceptance:
+    - "flashcard rating append law: tolerant Rating.parse (400 verbatim 'rating must be \"still-learning\" or \"know\": {raw}'), node-by-code 404 'unknown subtopic anchor: {code}', structure gate UNIT|TOPIC|SUBTOPIC 404 'not a deck anchor (needs a curriculum-structure node below the subject root): {code}', append-only INSERT occurredAt=now (injected clock), request law per landed contracts"
+    - "rating trail: limit null->200 / <1 400 'limit must be >= 1: {n}' / clamp 500; (occurred_at DESC, id DESC); FAIL-CLOSED cursor (base64url-unpadded JSON {t,i}, object size 2, unparseable 400 'malformed cursor: ...'); exclusive-tuple keyset page 2+; page+1 hasMore probe; nextCursor iff hasMore; batch node-code first-wins honest-null"
+    - "review schedule: pure scheduler, streak = trailing KNOW run (STILL_LEARNING tail -> 0 = due now), interval ladder [1,2,4,8,16,32] lenient-normalized, dueAt = latest.occurredAt + intervalDays, feed dueAt-then-cardId asc, summary(due/scheduled/nextDueAt), COMPUTED AT READ NEVER PERSISTED, TIMING ONLY"
+    - "exam-series: GET catalog (published filter, board PEARSON_EDEXCEL when qualification present, windowStart asc); PUT target-series (kebab slug 400, 404 unknown series, 400 unpublished, idempotent enrolment upsert retarget(series.id, today=UTC)); DELETE 204-always retarget(null) row remains; targetsFor reader (vanished-series filter, derived daysToWindowStart/End + entryDeadlinePassed)"
+    - "standard gate battery green with exact-baseline arithmetic (main 764/0/13skip/2121 + this suite's pins); zero golden drift; zero production Neon contact"

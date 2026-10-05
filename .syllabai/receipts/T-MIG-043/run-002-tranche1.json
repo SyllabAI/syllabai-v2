@@ -1,0 +1,29 @@
+{
+  "task": "T-MIG-043 tranche-1",
+  "run": "run-002-tranche1",
+  "agent": "R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "recorded_at": "2026-10-06",
+  "branch": "t-mig-043/r1 @ (see PR)",
+  "delivered": {
+    "files": [
+      "apps/api/src/services/learner/flashcards.ts (NEW — rating append law + keyset trail + derived schedule + fail-closed cursor codec + jakarta-default constraint layer)",
+      "apps/api/src/services/learner/examseries.ts (NEW — picker + target/untarget lifecycle + targetsFor reader; local ExamSeriesCatalogRow structural view, CONTRACT GAP DISCLOSED)",
+      "apps/api/src/services/learner/index.ts (+2 export lines only — route wiring is tranche-2)",
+      "apps/api/test/learner/flashcards.test.ts + examseries.test.ts (40 pins / +124 expects, fakeSql template)"
+    ],
+    "flashcards": "rating: constraint layer first (jakarta defaults, declaration order per the R-1 two-envelope classifier), tolerant Rating.parse 400 verbatim, anchor 404 + structure gate 404 verbatim, ONE append-only INSERT (rating stored as enum NAME per FlashcardRating:90, id/created_at per @PrePersist law); trail: 200/500/limit-1 laws, exclusive-tuple keyset, page+1 probe, nextCursor iff hasMore, 'malformed cursor: ...' wrap (:146), node-code first-wins honest-null; schedule: trailing-KNOW streak, ladder [1,2,4,8,16,32] lenient-normalized, dueAt=latest+interval, Summary(due, total-due, nextDueAt) per :122-123, feed dueAt-then-cardId asc, COMPUTED-NEVER-PERSISTED (zero-write pin), TIMING ONLY (V47)",
+    "examseries": "picker: published-only both paths, PEARSON_EDEXCEL board slice when qualification present, windowStart asc; lifecycle: kebab-slug 400 verbatim, 404 'exam series {id} does not exist', 400 'only published...: {seriesCode}', find-or-create enrolment + retarget (updated_at) idempotent, DELETE 204-always row-remains; targetsFor: vanished-series filter, countdowns + entryDeadlinePassed derived on read (ADR-031)"
+  },
+  "disclosures": [
+    "CONTRACT GAP: ExamSeriesView has no landed zod contract (038 scoped the state cluster) — defined structurally in the service (ExamSeriesCatalogRow); verbatim contracts move belongs to a contracts-fenced tranche",
+    "NULLABILITY FLAG (partLabel-class, R0 ruling requested): exam_series.entry_deadline/results_date are NULLABLE columns and CourseExamTargetView.java carries plain LocalDate — the wire CAN be null; the landed 038 contract types both z.string() (non-null), a latent false-reject for deadline-less series. This tranche passes null through and flags; contract widening is R0's call (fence: packages/** untouched here)",
+    "WRITE SHAPE: PUT = find-or-create + retarget as TWO single-statement steps (the Java's findByLearnerIdAndCourseSlug + save is itself non-atomic) — R-TX doctrine note disclosed on the module seam",
+    "w0a supersession: their claim card/receipt live on t-mig-043/w0a (read-only prior art, credited); dispute window per the 002-R pattern stated in the card"
+  ],
+  "gates": {
+    "typecheck_x3": "root + apps/api + packages/contracts all exit 0",
+    "bun_test_apps_api_packages": "804 ran / 0 fail / 13 skip / 2245 expect / 49 files = main 764/2121 + EXACTLY 40 tests / +124 expects (this tranche's two suites); zero collateral",
+    "golden_selftest": "OK (113 untouched; zero golden/** edits)"
+  },
+  "next": "tranche-2 = routes + zod wiring + flagged OUT-OF-FENCE mounts (010/020/021/030/031/032/033 ratified pattern)"
+}

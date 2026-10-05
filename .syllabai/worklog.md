@@ -2145,3 +2145,19 @@ Work Log:
 
 Stage Summary:
 - Round-10 closed: the one merge the directive asked for (#63) executed under delegation with self-review; the sweep found the queue already drained by parallel lanes; one blocking-class post-merge finding (F-33-2) filed with exact fix spec + one process N-note; zero self-claimed work; zero direct main pushes (every write via reviewed PR). LANE IDLE — awaiting R0 routing of F-33-2 or operator direction.
+
+---
+Task ID: T-MIG-043 tranche-1 (claim + execution)
+Agent: R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Operator directive trace 1a10d4804ab58805 ("043 exam-series/flashcards") — the Wave-4 exam-series + flashcards port, tranche-1 = services + fakeSql pins.
+
+Work Log:
+- SUPERSESSION DISCLOSED: w0a seeded a broader 043 band (db87a9a @ 2026-10-05T18:01:06Z, operator trace 1a10d2c88b6f13c5) but executed nothing in ~14h; the fresh operator routing assigns exam-series + flashcards to this lane; w0a's line-precise surface map used as credited prior art (their branch read read-only); 002-R-pattern dispute window declared in the card.
+- Deep-verified the frozen law @ 6cad6ef line-against-line before implementing: FlashcardRatingController :84-115 (constraint-then-parse-then-404-then-gate order), FlashcardRating entity :85-96 (rating stored as enum NAME; @PrePersist), FlashcardRatingView.from (:17-20), FlashcardRatingTrailController :90-146 ('malformed cursor: ' wrap :146), TrailCursor (fail-closed codec), FlashcardReviewScheduleController :79-125 (Summary(due, size-due, nextDueAt) :122-123), FlashcardReviewScheduler :38-87 + FlashcardReviewParams (:11-24 ladder + lenient normalization), LearnerExamSeriesController :59-118 (slug/404/unpublished laws; find-or-create + retarget; DELETE 204-always), ExamTargetReader :31-52 (vanished filter), CourseExamTargetView.of (:34-49 derived countdowns).
+- IMPLEMENTED (services/learner/** per the 021/033/041 template, house row-coercion style, no casts): flashcards.ts (constraint layer with jakarta defaults -> tolerant parse -> anchor 404 -> structure gate -> ONE append-only INSERT storing the enum NAME; keyset trail with fail-closed cursor + page+1 probe + first-wins honest-null node codes; pure scheduler + ladder + feed/summary; zero-write pin) + examseries.ts (picker both postures; target/untarget lifecycle with all three verbatim error laws; targetsFor reader with vanished filter + derived countdowns) + index.ts (+2 export lines; wiring = tranche-2).
+- CONTRACT GAP DISCLOSED (not edited — fence): ExamSeriesView absent from landed contracts -> local ExamSeriesCatalogRow structural type. NULLABILITY FLAG (partLabel-class, R0 ruling requested): entry_deadline/results_date nullable columns + plain LocalDate in the Java record vs the 038 contract's z.string() — null passthrough shipped with the flag.
+- GATES: typecheck x3 exit 0; bun test apps/api packages = 804 ran / 0 fail / 13 skip / 2245 expect / 49 files = main 764/2121 + EXACTLY 40 tests / +124 expects (this tranche's two suites); golden --selftest OK; zero golden/** edits; zero production Neon contact.
+- Card -> IN_REVIEW (tranche-2 = routes + flagged mounts remains). Receipts: run-001-claim.json (supersession disclosure) + run-002-tranche1.json. PR opened; independent review requested (authors never self-merge).
+
+Stage Summary:
+- The operator's 043 scope is ported at the service layer: flashcard rating append (with the frozen envelope laws), keyset trail, derived review schedule (ADR-031 held: computed never persisted), exam-series picker + target lifecycle + reader — 40 pins arithmetic-exact on top of main, all verbatim messages pinned. R0 items: the contract-gap + nullability flags; w0a supersession confirmation.
