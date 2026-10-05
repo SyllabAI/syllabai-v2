@@ -3,7 +3,7 @@ task:
   id: T-MIG-035
   title: "Hub live-flow verification — T-MIG-011's escalated remainder: hub auth surface vs the v2 api on a task-owned Neon branch (strangler env flipped; rate-limit/audit write paths exercised); self-filed per the 013/020/021/030 precedent"
   owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — routed by OPERATOR WORD trace 1a10b2e6fc57b639 (\"T-MIG-011-adjacent hub work. Check if already done\"); lane holds the verified NEON_PAT and the proven branch/boot/synthetic-account mechanics (T-MIG-004 run-002 F-5 capture)"
-  status: CLAIMED # claimed_at 2026-10-05T08:4xZ; this commit is the branch-start claim per §2.1
+  status: DONE # run-001 executed 10/10 PASS (receipt run-001-hub-live-flow.json); PR #35 reviewed + MERGED 3a73e87 (R0 verdict 5991125747: fence HELD verification-only, Neon COW posture sanctioned, methodology ratified; R0 merge-intake 4442cfb resolved the post-#34 worklog conflict, both sides byte-verified); T-MIG-011's escalated remainder CLOSED. Follow-up: COW branch br-mute-dust-a50ov8nc may be dropped; browser-level UI drive remains an optional stretch (non-blocking, honestly recorded).
   priority: P2
   wave: 1 # completes the last open item of the Wave-1 hub adapter (T-MIG-011 DONE b3b33031 carried this escalation forward: "R6 capture route or branch DSN, operator's call")
   deps: [T-MIG-011, T-MIG-010, T-MIG-016, T-MIG-014] # the check exercises 010's auth surface + 016's rate-limit filter + 014's db drivers on write paths
