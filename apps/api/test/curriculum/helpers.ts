@@ -5,12 +5,19 @@
  */
 import type { SqlFn } from "../../src/services/curriculum/sql";
 
-export type Route = { match: RegExp; rows: Array<Record<string, unknown>> };
+export type Route = {
+  match: RegExp;
+  rows: Array<Record<string, unknown>>;
+  /** Optional param-aware override — wins over `rows` when present. */
+  rowsFor?: (params: unknown[]) => Array<Record<string, unknown>>;
+};
 
 /**
  * Builds a SqlFn stub that dispatches on the rendered query text. Whitespace
  * is collapsed to single spaces (template literals carry indentation noise);
- * every issued query is recorded so tests can pin the SQL shape.
+ * every issued query is recorded so tests can pin the SQL shape. Use
+ * `rowsFor` when the result depends on a bound parameter (e.g. id lookups
+ * that must distinguish known from unknown ids).
  */
 export function fakeSql(routes: Route[]): SqlFn & { queries: string[] } {
   const queries: string[] = [];
@@ -22,7 +29,7 @@ export function fakeSql(routes: Route[]): SqlFn & { queries: string[] } {
     queries.push(text);
     const hit = routes.find((r) => r.match.test(text));
     if (!hit) throw new Error("unexpected query: " + text);
-    return hit.rows;
+    return hit.rowsFor ? hit.rowsFor(params) : hit.rows;
   }) as unknown as SqlFn & { queries: string[] };
   fn.queries = queries;
   return fn;
