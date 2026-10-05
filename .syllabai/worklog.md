@@ -1116,3 +1116,18 @@ Work Log:
 
 Stage Summary:
 - Board after sweep-2: T-MIG-007/018/022 DONE this session; Wave-1 fully closed (T-MIG-011 via operator-reassigned PR #32/#33); open PRs: none known at commit time; t-mig-030/r7a branched (Wave-3 ports starting). Escalations standing: single-R0 authority reaffirmation (two breach-pattern merges: #25, #26 — operator merge-authority trace now disclosed on #33, pattern reframed as likely operator action; bookkeeping stands either way); PAT rotation (chat-transit); flaky unit test on main (one occurrence, identity uncaptured); CI-side Neon integration runner; T-MIG-002 baseline-SQL repair.
+
+---
+Task ID: R0-SWEEP-3 (PR #31 merged — T-MIG-030 tranche-1 ratified, E-1 bound)
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Review + merge PR #31 (T-MIG-030 wave-3 assessment port slice A — claim + tranche-1)
+
+Work Log:
+- Id 030 ratified (19 yaml ids, zero duplicates); 030..034 split map arbitrated + ratified as filed. PR body stale ("docs-only" vs tranche-1 landed) noted non-blocking.
+- Tranche-1 law review vs frozen sources @ 6cad6ef: MCQ submit 9 steps, structured submit 9 steps, history read model (clamp/excerpt/settling) — all constraint-for-constraint; IAE fixed-body 400 verified verbatim vs GlobalExceptionHandler.java:167-170; V20 paper gate + ServableQuestionSpec branch exact.
+- ONE finding: E-1 — evidence seam cannot express Attempt.markEvidenceEmitted() (EvidencePublisher.java:37/53); evidence_emitted never flips; latent (no re-fire site yet); bound as tranche-2 condition with required unit pins. Recorded on the yaml.
+- Gates on intake content (head 20da5ab): typecheck x4, bun test 362/0/13skip (375 = 341 + 34 exact), selftest OK, CI verify+hub success; tolerate-claim on w3 cases verified factual; R-TX posture ratified as disclosed; lane's own intake (2c07ffb, operator trace 1a10b1d0c70818a9 disclosed in run-003) accepted — my parallel intake discarded.
+- MERGED. Housekeeping: yaml status comment + E-1 paragraph + this entry. Card stays IN_PROGRESS (tranche-2 pending: routes, zod wiring, OUT-OF-FENCE mounts, golden replay of the 8 cases).
+
+Stage Summary:
+- Board: T-MIG-030 tranche-1 landed; wave-3 port train rolling (030 in flight, 031..034 seeds available per the ratified map). Next review targets: T-MIG-030 tranche-2 when pushed; 031..034 filings if seeded. Standing: F-1/F-2 content fixes, F-3 re-pin (R6), H-2 (r7a), E-1 (r7a tranche-2), CI-side Neon runner, T-MIG-002 baseline-SQL, PAT rotation, flaky-test watch.

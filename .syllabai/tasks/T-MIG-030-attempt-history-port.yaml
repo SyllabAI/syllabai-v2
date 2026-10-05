@@ -3,7 +3,7 @@ task:
   id: T-MIG-030
   title: "Wave-3 assessment-loop port, slice A — AttemptController (POST /api/v1/attempts MCQ + POST /api/v1/attempts/structured) + AttemptHistoryController (GET /api/v1/learners/me/attempts); 6 golden cases"
   owner: "R7a (agent-da4ab8, zai-web session web-da4ab8b1) — self-filed Wave-3 port task per the T-MIG-013/020/021 self-filing precedent; R0 ratification of the task id + the 030..034 split proposal requested in the PR"
-  status: IN_PROGRESS # claimed 2026-10-05T07:39Z; tranche-1 (services + stubbed-sql tests) this session where feasible; tranche-2 (routers + zod + mounts) gates on T-MIG-018 (#26) + T-MIG-007 (#29) merges
+  status: IN_PROGRESS # claimed 07:39Z; tranche-1 (services + 34 stubbed-sql tests) RATIFIED + merged via PR #31 (R0 verdict 5990832802); tranche-2 (routes + zod + OUT-OF-FENCE mounts + golden replay of the 8 cases) remains; E-1 binding condition recorded below
   priority: P1
   wave: 3
   deps: [T-MIG-007, T-MIG-018, T-MIG-014] # capture (replay gate, PR #29), wave-3 contracts (zod gate, PR #26 -> T-MIG-018 per R0 renumber directive), db driver dispatch (merged via PR #13)
@@ -58,6 +58,17 @@ task:
     tables, unit-tested against a stubbed sql adapter (fakeSql rowsFor pattern
     per T-MIG-021 tranche-2 helpers); tagged-template bind-slot discipline
     (a ${} slot is a parameter, never SQL text — column lists inline).
+    2026-10-05T08:0xZ (R0, appended at merge — verdict 5990832802): id 030
+    RATIFIED; 030..034 split map ARBITRATED + RATIFIED as filed (034 pairing
+    noted weakest fit, accepted). Tranche-1 law verified constraint-for-
+    constraint vs frozen sources (ServableQuestionSpec branch, IAE fixed-body
+    400, V20 gate, provenance, state machine, history clamp/excerpt/settling).
+    E-1 BINDING for tranche-2: the evidence seam must maintain
+    attempts.evidence_emitted per EvidencePublisher.java:37/53 +
+    Attempt.java:159-161 — flip after successful publish (seam grows a claim
+    or service-side flip), once-only guard binding for the 032/033 marking
+    lanes' publish sites, unit test pinning post-publish true + second-publish
+    no-op. R-TX autocommit posture ratified as disclosed.
     tranche-2: route factories + zod wiring gate on T-MIG-018 merge; mounts in
     apps/api/src/index.ts ship as a flagged separate OUT-OF-FENCE commit
     (T-MIG-010/020/021 ratified precedent) with R0 ratification requested;
