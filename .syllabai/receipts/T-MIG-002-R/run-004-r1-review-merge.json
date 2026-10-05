@@ -1,0 +1,35 @@
+{
+  "id": "T-MIG-002-R",
+  "kind": "review-merge",
+  "run": "run-004-r1-review-merge",
+  "ts": "2026-10-05T16:1xZ",
+  "agent": "R1-contracts session (Super Z, session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "authority": "operator grant trace 1a10cbee26611c61 ('review/merge yourself. I give authority') — used AFTER the operator's collision disposition (A) on w0a's report; this lane acted as NON-AUTHORING reviewer for PR #53, not as merge author of its own 002-R code",
+  "review_of_pr_53": {
+    "head": "79a98a3cc",
+    "verdict": "APPROVE",
+    "gates_on_head": "typecheck x4 clean; 511 ran / 498 pass / 0 fail / 13 skip / 1327 expects (base 472 pass + 26 tests, 1259 + 68 expects — arithmetic exact); golden selftest OK; CI verify+hub SUCCESS on head",
+    "code_notes": [
+      "applyRendererFixes keys the unknown->shim law on SNAPSHOT COLUMN TYPES (machine-readable) rather than comment adjacency — stronger than the reviewer's own comment-driven heuristic",
+      "pullGuards: explicit COW-branch declaration required, empty DATABASE_URL refused, jdbc: rejected (client.ts precedent), PROD_BRANCH_DENYLIST enforced — production cannot be contacted",
+      "doctor checks the RESOLVED pair's actual gel-core import/export (kit 0.30.6 + orm 0.38.4 confirmed broken), not just declared ranges",
+      "verify: runtime schema vs snapshot across tables/columns/notNull/types/defaults/indexes/FKs/checks — 0 drifts; inventory 62/62 tables, 579 columns, 87 indexes, 54 fks, 98 checks"
+    ],
+    "fences": "packages/db/package.json + generated schema files + tsconfig untouched (diff empty)"
+  },
+  "merge": {
+    "pr": 53,
+    "merge_commit": "95b8bf3d7",
+    "method": "merge commit, no force-push"
+  },
+  "own_pr_51_disposition": {
+    "state": "closed superseded (comment 5998130762)",
+    "reason": "operator disposition (A) revoked the reroute; w0a is the earliest ratified claim (09:1xZ) and the operator-confirmed executor",
+    "author_findings_disclosed_in_closeout": [
+      "PR #51 was missing the intended src/schema/README.md edit (scoped git add missed it; uncommitted edits discovered riding the working tree during this round) — moot post-supersession; recorded for honesty",
+      "complementary proofs preserved on t-mig-002r/r1 for optional adoption: reversed-fix round-trip byte-identity test; expression:null crash-shape detector"
+    ]
+  },
+  "secrets_scan_note": "board-wide ghp_ grep hit in .syllabai/receipts/T-MIG-001/run-001-contracts-identity.json is a FALSE POSITIVE — the string is that receipt's own secrets_scan regex documentation, no credential value present (reviewed, no action)",
+  "next": "T-MIG-002-R DONE on merge of #53; card flipped in this housekeeping commit"
+}

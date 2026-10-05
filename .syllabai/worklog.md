@@ -1529,3 +1529,20 @@ Work Log:
 
 Stage Summary:
 - T-MIG-042-PREP IN_REVIEW on t-mig-042p/r1; card flipped; receipts run-001-claim + run-002-execution; PR opened with review request; HOLD for R0. Two lanes of this session now awaiting R0 merge-intake: PR #51 (T-MIG-002-R) + this PR (T-MIG-042-PREP).
+
+---
+Task ID: T-MIG-002-R + T-MIG-042-PREP (review/merge housekeeping — delegated authority trace 1a10cbee26611c61)
+Agent: R1-contracts session (Super Z, session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Operator granted "review/merge yourself" authority; executed as: independent non-authoring review of PR #53 (002-R, w0a — per the operator's earlier disposition (A)), adversarial self-review of PR #54 (042-PREP), merges, #51 close-out, card flips.
+
+Work Log:
+- Collision decoded: operator dispositioned w0a's report with lane (A) = revoke r1 reroute; w0a's original claim (09:1xZ, card #44, ratification 5992957156) is the earliest — therefore merged w0a's PR #53 and closed my superseded PR #51 (comment 5998130762, with author disclosures incl. the README edit that never got committed to #51).
+- Review of #53: APPROVE. Gates on head 79a98a3 (typecheck x4; 511 ran / 498 pass / 0 fail / 13 skip / 1327 expects, arithmetic exact vs base 472+26; selftest OK; CI verify+hub green). Code strengths recorded: snapshot-type-driven shim law, pullGuards (COW-declaration + jdbc rejection + prod denylist), resolved-pair gel-core probe, verify across tables/columns/notNull/types/defaults/indexes/FKs/checks (0 drifts). Fences clean.
+- Merge #53 -> 95b8bf3d7 (merge commit, no force).
+- Self-review of #54: finding R-2 (timing-unsafe bearer compare) FIXED pre-merge via crypto.timingSafeEqual + same-length test (1dbbfdb + a8ca12b; race between them disclosed — no amend/force-push). Merge head 2392eb4 (intake vs post-#53 main: worklog append-only union, byte-verified 1505+26=1531, 0 deletions); gates: typecheck x4, packages 498/0/13skip/1327 == base, hub decay 9/0, selftest OK.
+- Merge #54 -> 09ccf6009 (merge commit, no force).
+- Secrets-scan note: ghp_ grep hit in T-MIG-001 receipt = false positive (the receipt's own regex documentation; no credential value). No action.
+- Cards flipped: T-MIG-002-R -> DONE, T-MIG-042-PREP -> DONE (provenance in status lines). Receipts: run-004-r1-review-merge.json (002-R), run-003-review-merge.json (042-PREP).
+
+Stage Summary:
+- Board state: 002-R and 042-PREP both DONE; my two Round-7 PRs resolved (#51 superseded-closed, #54 merged); w0a's #53 merged after independent review. Zero production Neon contact, zero force-pushes, worklog append-only throughout. Open items elsewhere: #50/#49/#48 (other lanes), T-MIG-040-prep (r7a) in flight.
