@@ -1,0 +1,76 @@
+version: 1
+task:
+  id: T-MIG-045
+  title: "De-flake the identity LoginAttemptBudget route test (routes.test.ts:329 toBe(9)) — make the budget window math epoch-window-independent via an injected BudgetClock"
+  owner: "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a) — operator-routed register item (trace 1a10ca697e382335 item 1)"
+  status: IN_REVIEW
+  claimed_at: "2026-10-05T15:35:00Z"
+  priority: P1
+  wave: 3 # operator-routed stability register item; not a new port lane
+  deps: [T-MIG-010, T-MIG-016, T-MIG-024]
+  execution_record: >
+    (claim entry 2026-10-05T15:35Z) OPERATOR ROUTING: "DE-FLAKE the identity
+    LoginAttemptBudget test (2nd occurrence logged; time-window-sensitive
+    ==9 assertion pattern) — make it epoch-window-independent, all gates
+    green." This is the register item R0-SWEEP-5 recorded as "flaky identity
+    budget test root-cause (2 occurrences)" and R0-COLLISION-1 escalated as
+    "on a third occurrence: root-cause with the test identity captured" — the
+    operator ordered the de-flake NOW at two occurrences (supersedes the
+    third-occurrence wait; disclosed).
+    FLAKE IDENTITY CAPTURED (from the worklog record, R4-api-b run-002 gates +
+    R0-COLLISION-1 escalation): apps/api/test/identity/routes.test.ts:329 —
+    expect(fresh.identity.budget.currentCount("clear@example.invalid")).toBe(9).
+    ROOT CAUSE (this lane's analysis, no source changes to the budget itself):
+    LoginAttemptBudget.recordFailure aligns fixed windows to the REAL epoch
+    (windowStart = floor(now/60_000)*60_000 via systemClock) — the budget's
+    injectable Clock seam (BudgetClock, T-MIG-010) exists but
+    buildIdentityServices never exposed it, so the ROUTE tests ran the budget
+    on wall-clock time. The test's 9 sequential wrong-password logins each pay
+    a bcrypt cost-12 compare (~2.5-3.5s total); when those logins straddle a
+    real 60s window boundary, recordFailure sees existing.start outside the
+    window and starts a FRESH window with count=1 — the counter silently
+    resets and toBe(9) fails. Expected flake rate ~= loop-duration/60s (a few
+    percent per full-suite run depending on machine load) — consistent with
+    two occurrences across the fleet's runs, and with the sibling
+    "11 failures -> 429" test (routes.test.ts:306-321) having the same
+    exposure (10 logins straddling a boundary would 401 instead of 429).
+    FIX (deterministic by construction, zero production behaviour change):
+    (1) buildIdentityServices gains an OPTIONAL second parameter
+    options?: { budgetClock?: BudgetClock } — forwarded to the existing
+    LoginAttemptBudget clock seam; undefined keeps systemClock verbatim (all
+    production call sites unchanged); (2) routes.test.ts anchors BOTH
+    budget-sensitive paths to a frozen-epoch AnchoredClock (the login
+    describe's app and the clears test's fresh app) — with a non-advancing
+    clock the window-boundary crossing is impossible for ANY epoch, so the
+    tests are epoch-window-independent while still exercising the full HTTP +
+    bcrypt parity path; (3) budget.test.ts FakeClock default seed switches
+    from Date.now() to a fixed epoch (its assertions were already
+    seed-independent; this makes the whole identity-budget test family
+    literally epoch-independent). No golden case, no production service, and
+    no test count change (485 pass / 0 fail / 13 skip / 1259 expect baseline
+    preserved exactly). The worklog suggestion "a time-window freeze or
+    budget-reset pin would de-flake it" — the time-window freeze is
+    implemented (budget-reset pin rejected: it would mask a genuine
+    fixed-window semantics regression).
+    Gates on this head: typecheck x4 exit 0; bun test apps/api packages =
+    485/0/13skip 1259 expect (= main baseline EXACT, zero test delta); golden
+    selftest OK. Receipt: .syllabai/receipts/T-MIG-045/run-001-deflake.json.
+  scope:
+    allowed:
+      - "apps/api/src/services/identity/config.ts (optional test-seam parameter only)"
+      - "apps/api/test/identity/routes.test.ts (clock anchoring of the two budget tests)"
+      - "apps/api/test/identity/budget.test.ts (fixed FakeClock seed)"
+      - ".syllabai/tasks/T-MIG-045-identity-budget-deflake.yaml (status/execution_record only)"
+      - ".syllabai/receipts/T-MIG-045/**"
+      - ".syllabai/worklog.md (append-only, this task's section)"
+    forbidden:
+      - "apps/api/src/services/identity/budget.ts (the port itself is CORRECT — frozen-parity, untouched)"
+      - "apps/hub/**, packages/**, golden/**, docs/** (other lanes)"
+      - "syllabai-core / syllabai-hub (frozen, C1)"
+base:
+  repo: "syllabai-v2 @ origin/main 79bdc23 + R0-ROUND-6 c920eea; frozen refs: syllabai-core @ main 6cad6ef, syllabai-hub @ 93226a43"
+basis: >
+  Operator directive (IM trace 1a10ca697e382335, item 1); R0-SWEEP-5 register
+  ("flaky identity budget test root-cause (2 occurrences)"); R0-COLLISION-1
+  flake escalation; R4-api-b worklog suggestion (time-window freeze);
+  AGENT_COORDINATION §2 claim protocol.

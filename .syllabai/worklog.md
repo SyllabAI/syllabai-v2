@@ -1447,3 +1447,16 @@ Stage Summary:
 - Round-6 board state after this pass: every merged card now reflects merged reality (zero card/PR drift); the donation hazard is verified and answered on-thread; the only remaining register items are operator-routed (CI-side Neon replay runner, T-MIG-002-R execution word, PAT rotation) or lane-owned (T-MIG-031 tranche-2 = R3-api-a, H-2 = r7a, identity-budget flake root-cause on 3rd occurrence). NO new claim was available to this lane without self-filing wave work (033/034 remain reserved, unfiled per the ratified split map) — per the directive, R0 stops here.
 
 R0-integrator | round-6: synced (main 79bdc23, board zero-open, CI green), verified the ARBITRATION-DONATION ${}-binding hazard ABSENT on merged main (8/8 to_char literal, receipt + on-thread answer), flipped the 3 stale cards (023/024/032 -> DONE w/ provenance + standing conditions) | IDLE | suggestion: route the CI-side Neon replay runner to a lane (it is the standing re-proof instrument for 022/023/024/030/032 and the only live-replay path), give w0a the T-MIG-002-R execution word, and treat DOCUMENT_COLUMNS/PAPER_COLUMNS dead constants as sweep-cleanup in a future housekeeping pass (harmless, flagged only).
+
+---
+Task ID: T-MIG-045 (run-001 — de-flake executed)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator directive (IM trace 1a10ca697e382335 item 1) — DE-FLAKE the identity LoginAttemptBudget test (2nd occurrence logged; time-window-sensitive ==9 assertion pattern); make it epoch-window-independent, all gates green.
+
+Work Log:
+- Flake identity captured from the register record: apps/api/test/identity/routes.test.ts:329 toBe(9) (T-MIG-024 run-002 gates + R0-COLLISION-1 SECOND fleet occurrence escalation). ROOT CAUSE: the budget's fixed windows align to the REAL epoch (windowStart=floor(now/60_000)*60_000 via systemClock); the T-MIG-010 BudgetClock seam existed but buildIdentityServices never exposed it, so the route tests ran on wall-clock time — the 9 bcrypt cost-12 logins (~3s) straddle a real 60s window boundary with ~loop/60s probability, recordFailure then starts a fresh window (count=1) and the counter assertion fails. Sibling 11-failures->429 test (:306) has the same exposure.
+- FIX (time-window freeze per the worklog suggestion; budget-reset pin rejected as regression-masking): buildIdentityServices gains an OPTIONAL options.budgetClock forwarding to the existing budget clock seam (production wiring unchanged — services/identity/index.ts call site verified); routes.test.ts anchors the login describe + the clears test to frozen-epoch AnchoredClocks (boundary crossing impossible for ANY epoch); budget.test.ts FakeClock seed pinned to a fixed epoch. budget.ts (the port) UNTOUCHED — it was never the defect.
+- Gates: typecheck x4 exit 0; bun test apps/api packages = 485 ran / 472 pass / 13 skip / 0 fail / 1259 expect (expect+test counts = stated main baseline EXACT, zero test delta); golden selftest OK; stability proof: identity files x5 consecutive = 38 pass / 0 fail each.
+
+Stage Summary:
+- T-MIG-045 IN_REVIEW on t-mig-045/r4b (receipt run-001-deflake.json); register item "flaky identity budget test" CLOSED per operator routing (supersedes the third-occurrence wait — disclosed in card). PR follows; merge per the authors-never-self-merge rule.

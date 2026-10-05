@@ -7,6 +7,34 @@ import { readIdentityConfig, buildIdentityServices } from "../../src/services/id
 import { createAuthRoute, createBootstrapRoutes } from "../../src/routes/auth";
 import { createAuthMiddleware, createJwtAuthenticator } from "../../src/middleware/auth";
 import { apiError, toErrorResponse, type ApiErrorBody } from "../../src/services/identity/errors";
+import type { BudgetClock } from "../../src/services/identity/budget";
+
+/**
+ * T-MIG-045 — frozen-epoch test clock for the budget-sensitive suites.
+ *
+ * FLAKE ROOT CAUSE (2 fleet occurrences: worklog T-MIG-024 run-002 gates,
+ * R0-COLLISION-1 escalation; test identity routes.test.ts:329 toBe(9)):
+ * LoginAttemptBudget aligns fixed windows to the REAL epoch via systemClock
+ * (windowStart = floor(now/60_000)*60_000). The 9 sequential wrong-password
+ * logins each pay a bcrypt cost-12 compare (~3s total); when they straddle a
+ * real 60s window boundary, recordFailure starts a FRESH window (count=1)
+ * and the toBe(9) counter assertion fails — epoch-dependent, load-dependent.
+ * FIX: anchor the budget to a non-advancing clock — with now frozen, the
+ * boundary crossing is impossible for ANY epoch value, so the window math
+ * is epoch-window-independent while the full HTTP + bcrypt parity path is
+ * preserved (window-expiry semantics stay covered in budget.test.ts with an
+ * explicitly ADVANCING fake clock).
+ */
+class AnchoredClock implements BudgetClock {
+  constructor(private readonly epochMs: number) {}
+  instant(): Date {
+    return new Date(this.epochMs);
+  }
+}
+
+/** Arbitrary fixed epoch — ANY constant works; chosen away from 0. */
+const FROZEN_EPOCH_A = 1_700_000_000_000;
+const FROZEN_EPOCH_B = 1_700_000_123_000;
 
 /**
  * Route-level parity tests over an IN-MEMORY repository — the observable
@@ -83,9 +111,9 @@ class FakeStateStore extends BootstrapStateStore {
   }
 }
 
-function buildTestApp(env: Record<string, string>) {
+function buildTestApp(env: Record<string, string>, options?: { budgetClock?: BudgetClock }) {
   const config = readIdentityConfig(env);
-  const identity = buildIdentityServices(config);
+  const identity = buildIdentityServices(config, options);
   const users = new FakeUsersRepo();
   const authService = new AuthService(users, identity);
   const bootstrap = new BootstrapAdminService(
@@ -278,7 +306,10 @@ describe("POST /api/v1/auth/register — AuthController.java:34-41 parity", () =
 });
 
 describe("POST /api/v1/auth/login — AuthService.login (:123-140) parity", () => {
-  const { app } = buildTestApp(baseEnv);
+  // T-MIG-045: the budget-sensitive tests below run on a frozen-epoch clock
+  // (AnchoredClock above) — epoch-window-independent, deterministic at any
+  // wall-clock time and under any machine load.
+  const { app } = buildTestApp(baseEnv, { budgetClock: new AnchoredClock(FROZEN_EPOCH_A) });
   beforeAll(async () => {
     await post(app, "/api/v1/auth/register", { email: "login@example.invalid", password: STRONG, displayName: "Login" });
   });
@@ -321,7 +352,11 @@ describe("POST /api/v1/auth/login — AuthService.login (:123-140) parity", () =
   });
 
   test("successful login clears the account budget (:138)", async () => {
-    const fresh = buildTestApp(baseEnv);
+    // T-MIG-045: frozen epoch (distinct constant) — the 9 bcrypt-paced
+    // failures can no longer straddle a real 60s window boundary, so
+    // currentCount === 9 is deterministic (was routes.test.ts:329, 2 fleet
+    // occurrences; see AnchoredClock root-cause note).
+    const fresh = buildTestApp(baseEnv, { budgetClock: new AnchoredClock(FROZEN_EPOCH_B) });
     await post(fresh.app, "/api/v1/auth/register", { email: "clear@example.invalid", password: STRONG, displayName: "Clr" });
     for (let i = 0; i < 9; i++) {
       await post(fresh.app, "/api/v1/auth/login", { email: "clear@example.invalid", password: "wrong-password-1" });

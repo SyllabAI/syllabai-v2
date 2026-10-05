@@ -22,7 +22,7 @@
  * the T-MIG-010 file fence (apps/api/src/env.ts is outside it).
  */
 import { JwtService, type Role } from "./jwt";
-import { LoginAttemptBudget } from "./budget";
+import { LoginAttemptBudget, type BudgetClock } from "./budget";
 
 export interface IdentityConfig {
   jwtSecret: string;
@@ -85,13 +85,26 @@ export interface IdentityServices {
   config: IdentityConfig;
 }
 
-/** Builds the pure (no-DB) identity services; throws at boot on bad secrets. */
-export function buildIdentityServices(config: IdentityConfig): IdentityServices {
+/**
+ * Builds the pure (no-DB) identity services; throws at boot on bad secrets.
+ *
+ * T-MIG-045 test seam: `options.budgetClock` forwards to the budget's own
+ * injectable Clock (BudgetClock — the T-MIG-010 seam). Undefined keeps
+ * systemClock verbatim, so every production call site is unchanged; route
+ * tests anchor a frozen-epoch clock to make the fixed-window math
+ * epoch-window-independent (the :329 toBe(9) flake was real-epoch window
+ * alignment + wall-clock bcrypt latency straddling a 60s boundary).
+ */
+export function buildIdentityServices(
+  config: IdentityConfig,
+  options?: { budgetClock?: BudgetClock },
+): IdentityServices {
   const jwt = new JwtService(config.jwtSecret, config.jwtTtl);
   const budget = new LoginAttemptBudget({
     windowMs: config.ratelimit.windowMs,
     loginPerAccount: config.ratelimit.loginPerAccount,
     enabled: config.ratelimit.enabled,
+    clock: options?.budgetClock,
   });
   return { jwt, budget, config };
 }

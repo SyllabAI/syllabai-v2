@@ -6,7 +6,11 @@ import { LoginAttemptBudget, type BudgetClock } from "../../src/services/identit
  * fixed window per TARGET account, checked before bcrypt, success clears.
  */
 class FakeClock implements BudgetClock {
-  constructor(public now = Date.now()) {}
+  // T-MIG-045: fixed seed instead of Date.now() — every assertion here holds
+  // for any seed (expiry uses explicit advance()), so pinning the epoch makes
+  // the whole family literally epoch-independent rather than
+  // seed-independent-by-argument.
+  constructor(public now = 1_700_000_000_000) {}
   instant(): Date {
     return new Date(this.now);
   }

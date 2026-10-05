@@ -1,0 +1,44 @@
+{
+  "task": "T-MIG-045",
+  "agent": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "date": "2026-10-05",
+  "run": "run-001-deflake",
+  "title": "De-flake the identity LoginAttemptBudget route test — frozen-epoch clock anchoring, epoch-window-independent by construction",
+  "operator_directive": "IM trace 1a10ca697e382335 item 1: 'DE-FLAKE the identity LoginAttemptBudget test (2nd occurrence logged; time-window-sensitive ==9 assertion pattern) — make it epoch-window-independent, all gates green.'",
+  "flake_identity": {
+    "test": "apps/api/test/identity/routes.test.ts:329 — expect(fresh.identity.budget.currentCount(\"clear@example.invalid\")).toBe(9)",
+    "occurrences": 2,
+    "recorded_at": [
+      "worklog T-MIG-024 run-002 gates (R4-api-b): 'bun test 361/1/13 (1 = the pre-existing follow-up-register flake, identity routes.test.ts:329 — file re-run x2 green)'",
+      "worklog R0-COLLISION-1 FLAKE ESCALATION: '#37's gates record the register flake as 1 fail (re-run green) - SECOND fleet occurrence ... On a third occurrence: root-cause with the test identity captured.'"
+    ],
+    "root_cause": "LoginAttemptBudget.recordFailure aligns fixed windows to the REAL epoch (windowStart = floor(now/60_000)*60_000 via systemClock). The budget's injectable Clock seam (BudgetClock, T-MIG-010) existed but buildIdentityServices never exposed it, so route tests ran the budget on wall-clock time. The test's 9 sequential wrong-password logins each pay a bcrypt cost-12 compare (~2.5-3.5s total); when they straddle a real 60s window boundary, insideWindow(existing) goes false and recordFailure starts a FRESH window with count=1 — the counter silently resets and toBe(9) fails. Expected flake rate ~= loop-duration/60s (load-dependent), consistent with 2 occurrences across the fleet's full-suite runs.",
+    "sibling_exposure": "routes.test.ts:306-321 'per-TARGET-account budget: 11 failures -> 429 + Retry-After' has the same exposure (10 bcrypt-paced logins straddling a boundary would 401 instead of 429) — anchored by the same fix."
+  },
+  "fix": {
+    "principle": "deterministic by construction; zero production behaviour change; zero test-count change; time-window freeze per the worklog suggestion ('a time-window freeze or budget-reset pin would de-flake it' — freeze implemented; budget-reset pin rejected: it would mask a genuine fixed-window semantics regression)",
+    "changes": [
+      {
+        "file": "apps/api/src/services/identity/config.ts",
+        "change": "buildIdentityServices gains OPTIONAL second parameter options?: { budgetClock?: BudgetClock }, forwarded to the existing LoginAttemptBudget clock seam; undefined keeps systemClock verbatim (all production call sites — services/identity/index.ts buildIdentityApp — unchanged, verified by call-site read)"
+      },
+      {
+        "file": "apps/api/test/identity/routes.test.ts",
+        "change": "AnchoredClock (frozen-epoch BudgetClock) added with full root-cause provenance comment; the login describe's app anchored at FROZEN_EPOCH_A=1_700_000_000_000 and the clears test's fresh app at FROZEN_EPOCH_B=1_700_000_123_000; with a non-advancing clock the window-boundary crossing is impossible for ANY epoch value. Window-expiry semantics remain covered in budget.test.ts with an explicitly ADVANCING fake clock."
+      },
+      {
+        "file": "apps/api/test/identity/budget.test.ts",
+        "change": "FakeClock default seed switched from Date.now() to fixed 1_700_000_000_000 (assertions were already seed-independent; the family is now literally epoch-independent)"
+      }
+    ],
+    "untouched": "apps/api/src/services/identity/budget.ts (the port itself is correct — frozen-parity, zero changes); golden/**; packages/**; apps/hub/**"
+  },
+  "gates": [
+    { "cmd": "bun run typecheck (root script = contracts + shared + db + api)", "result": "exit 0 (x4)" },
+    { "cmd": "bun test apps/api packages", "result": "485 ran / 472 pass / 13 skip (Neon-branch-tier integration) / 0 fail / 1259 expect() — expect count and test count match the stated main baseline EXACTLY (zero test delta); bun's pass counter excludes skips in this version" },
+    { "cmd": "bun golden/runner.ts --selftest", "result": "OK (tolerance engine incl. declared-unordered multiset)" },
+    { "cmd": "stability proof: bun test routes.test.ts budget.test.ts x5 consecutive", "result": "38 pass / 0 fail / 95 expect on every run (8.5s each) — deterministic" }
+  ],
+  "fence_audit": "changes confined to apps/api/src/services/identity/config.ts (+seam), apps/api/test/identity/{routes,budget}.test.ts, .syllabai/tasks/T-MIG-045*.yaml, .syllabai/receipts/T-MIG-045/**, .syllabai/worklog.md (append-only section)",
+  "register_closure": "R0-SWEEP-5 register item 'flaky identity budget test root-cause (2 occurrences)' CLOSED (de-flaked at 2 occurrences per operator directive, superseding the third-occurrence wait — operator routing disclosed in the card)"
+}
