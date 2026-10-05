@@ -1,0 +1,25 @@
+{
+  "name": "w3-selfmark-unknown-attempt-500",
+  "description": "Self-mark on unknown attempt id: 404. captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy [T-MIG-007 finding F-a: core returns 500 (not 404) on unknown attempt self-mark; captured as-is per GOLDEN_MASTER - divergence call belongs to R0.]",
+  "source": "captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "POST",
+  "path": "/api/v1/learners/me/attempts/00000000-0000-4000-8000-00000000dead/self-mark",
+  "request": {
+    "body": {},
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 500,
+    "body": {
+      "status": 500,
+      "error": "internal_error",
+      "message": "an internal error occurred",
+      "timestamp": "2026-10-05T06:47:11.943683173Z"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

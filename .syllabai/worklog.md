@@ -903,6 +903,62 @@ Work Log:
 
 Stage Summary:
 - Queue CLEARED except #21 (recused). Nine PRs dispositioned in one sweep with zero force-pushes and full gate evidence per merge. Main @ this commit: typecheck x4 exit 0, bun test 247/0/13skip (pre-#21), golden 69 cases + selftest OK. The strangler-fig now covers identity + content-read + curriculum services + rate-limit mounting (pending #21 review) + write-contract prerequisites for Wave 3.
+- T-MIG-006 CLAIMED on branch t-mig-006/r6 (branch-start commit per section 2.1). PR #7 CI verdict: GREEN (head + main). F-1 case correction: APPROVED and closed. Implementation + receipts follow in-flight on this branch.
+
+---
+
+Task ID: T-MIG-006 (execution addendum - implementation complete, escalation)
+Agent: R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
+Task: Golden runner hardening - tolerate wiring, response-header comparison, replay-readiness kit; gates + partial live replay; escalation.
+
+Work Log:
+- IMPLEMENTED (golden/** fence only): (1) tolerate list wired into replay comparison - closes the T-MIG-013-reported defect (deepEqual dropped kase.tolerate; 12 identity cases failed on tolerated timestamps only); (2) expect.headers response-header subset comparison (case-insensitive names, exact values, missing fails by name) - closes T-MIG-004 F-3; (3) case.seq optional replay ordinal, stable sort, stateful cases run first; (4) {{TOKEN}} placeholder + --token injection, case-local hard failure without a token (never a silent unauthed replay); (5) transport errors are case-local harness errors (run completes, classifies all); (6) selftest extended (4 header assertions).
+- CASES: 5 state-dependent identity cases annotated (seq 1..5; tolerate accessToken/id; {{TOKEN}} on auth-me-with-bearer-200); scrubbed values kept in-file; 12 error cases untouched - their tolerate:["timestamp"] now works. README documents the post-T-MIG-006 schema + canonical replay procedure.
+- GATES: selftest PASS (exit 0, twice during dev); bun test apps/api packages = 104/0/4skip, 248 expectations - EXACT T-MIG-010 receipt parity, no collateral; 54/54 case files valid JSON.
+- PARTIAL LIVE REPLAY (honest): booted v2 locally (synthetic 32B secret, placeholder DATABASE_URL - no Neon, no production contact) via a workspace-external serve harness; full 54-case replay classified 10/54 PASS with ZERO unclassified failures: 3 PASS are the tolerate-fix evidence cases (previously failed on timestamps alone), 7 PASS are the W2 unauthed-401 fallback cases exactly as the R7 dossier predicted; 44 FAILs all owned: 8 db-dependent (placeholder db), 3 PR-12 capture-pinned-message residue, 2 by-design (me-200 token injection fail-fast + health F-1 fix riding PR #12), 33 content-authed dummy-bearer rejections (T-MIG-020 tooling's domain). Receipt: .syllabai/receipts/T-MIG-006/run-001.json (includes the canonical 16/16 runbook: db unblock + PR #12 merge + --token).
+- FINDING T-MIG-006-F-1 (apps/api fence, no change made): bun 1.3.14 entry auto-serve + the app's own Bun.serve double-bind PORT -> EADDRINUSE boot crash via 'bun run src/index.ts'; workspace-external import harness used as workaround; one-liner-class fix for R3/R0.
+- ESCALATION (section 6, w0a T-MIG-000 precedent): branch t-mig-006/r6 is push-ready; this session holds NO GITHUB_PAT/NEON_PAT (fresh container; none improvised per credential law) -> push/PR for T-MIG-006 + the db unblock for the canonical identity replay are operator/R0 actions.
+
+Stage Summary:
+- T-MIG-006 implementation COMPLETE with all gates green and a fully classified partial live replay; status BLOCKED on push credentials only. The parity gate can now: compare headers (T-C31 empty-cause, 429 Retry-After verifiable), tolerate generated fields by name, sequence write-state cases, and inject live bearers - the harness items T-MIG-013 handed to R6 are closed. Next in this lane: T-MIG-007 (Wave-3 assessment-loop capture) claim + execution per the metronome.
+
+---
+
+Task ID: T-MIG-007 (claim + execution - capture complete, escalation)
+Agent: R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
+Task: Wave-3 assessment-loop golden capture - 10 controllers, deterministic surfaces only (the metronome's next beat: W2 ports are landing via PRs #18/#19/#20).
+
+Work Log:
+- CLAIMED T-MIG-007 on branch t-mig-007/r6 (stacked on t-mig-006/r6; branch-start commit per section 2.1) after collision re-check (no 007 in flight anywhere). Route surface extracted from frozen core @ 6cad6ef for all 10 W3 controllers (attempt/structured submit, history, exam-papers, questions+mark-scheme, self-mark, smart-mark lifecycle, sme admin, teacher marking x7, test builder, transcription).
+- run-001 (Render, read-only): 24/24 authz-shell cases captured - every W3 surface answers 401 from the Spring Security filter chain BEFORE any persistence path (write-safety proven from frozen source ordering BEFORE probing, T-MIG-003/004 precedent). Zero production writes, zero credentials.
+- run-002 (LOCAL boot, NEON_PAT absent - F-5/F-11 posture, w0a recipe): frozen core built locally (Temurin JDK 25.0.4.1 + Maven 3.9.16, package exit 0 in 42s) and booted against LOCAL PostgreSQL 17.9 (pgdg13 debs via no-root dpkg-deb -x, writable socket dir, jit=off) + pgvector 0.8.7; core's own Flyway applied V1..V63. Captured 20 cases: submit validation boundaries (jakarta field order pinned), empty states, role gates (student 403 on teacher surfaces; teacher 403 on admin surfaces), authed 404s, and the MCQ HAPPY PATH - POST /api/v1/attempts against the V7-seeded question returns 201 with deterministic marks, then history-after-submit 200. Zero Neon connections; zero upstream writes; live tokens never written to disk ({{TOKEN}} placeholders per the T-MIG-006 schema).
+- CAPTURED-AS-IS QUIRKS (divergence calls belong to R0, per T-MIG-004 F-1/F-2 convention): self-mark unknown attempt = 500 (not 404; case named w3-selfmark-unknown-attempt-500 with disclosure); weakness-options = 400 param gate; human-mark unknown = 400 before existence check; exam-papers list student-accessible.
+- GATES: 98 total golden cases on branch (54 + 44 W3), 0 invalid JSON, secret scan clean (no JWT-shaped strings, no live tokens), runner selftest PASS. Receipts: .syllabai/receipts/T-MIG-007/run-001.json + run-002.json.
+- ESCALATION (section 6, w0a precedent): push/PR blocked - no GITHUB_PAT in this session (fresh container; none improvised per credential law). Branch t-mig-007/r6 is push-ready verbatim.
+
+Stage Summary:
+- Wave-3 capture tranche COMPLETE ahead of the W3 port lane (T-MIG-030..034): 44 new cases covering 10 controllers' deterministic surfaces; 98 cases total now gate the migration. LLM-output surfaces (smart-mark prose, transcription) deliberately NOT golden-gated per GOLDEN_MASTER section 3 - they need behavioural gates at port time. Operator/R0 unblock list: (1) valid GITHUB_PAT for this lane (push t-mig-006/r6 then t-mig-007/r6), (2) optionally NEON creds for the canonical 16/16 identity replay per the T-MIG-006 receipt runbook.
+
+---
+
+Task ID: T-MIG-007 (push addendum - credential unblock, branch rebuild, PR open)
+Agent: R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
+Task: Land the credential-blocked Wave-3 capture: rebuild onto post-sweep main, push, open PR #29, status -> IN_REVIEW.
+
+Work Log:
+- Operator supplied GITHUB_PAT in-session (chat transit; the PAT-rotation follow-up from R0-SWEEP-1 stands - the token has now transited chat twice). Env-var-only usage maintained: no token written to any file, receipt, or log; git push used a -c credential.helper (token never landed in .git/config - the stale empty-token push URL found in the restored sandbox was re-pointed to the clean https URL first).
+- PR #7 CI CHECK (operator's standing request, completed this session): PR #7 (T-MIG-003, head 9d0e5b1) is MERGED; final check runs on head = verify SUCCESS + hub SUCCESS. Recorded here since the earlier check was badge-based.
+- Rebuilt branch t-mig-007/r6 onto main @ 01d0e9d via cherry-pick: eada441 (claim, yaml CLAIMED) -> 2b38a58 (runner replay-readiness kit + full re-scope disclosure; competing T-MIG-006 yaml DELETED, not re-filed - id ratified for r1's PR #23) -> 9081b59 (44 w3 captures + receipts, message amended with rebuild disclosure). Originals preserved in local-only t-mig-007/r6-orig-backup; append-only worklog entries of the blocked state retained verbatim above (chronology disclosed here).
+- worklog conflict resolution during cherry-pick: kept main's entries (through R0-SWEEP-1) and appended this lane's two T-MIG-006 entries + the T-MIG-007 entry at the tail verbatim - no existing entry edited or reordered (section 5 law).
+- Gates re-executed on the rebuilt branch (receipt .syllabai/receipts/T-MIG-007/run-003-rebuild-gates.json): selftest exit 0; 113/113 case JSONs valid; bun test 253/0/13skip (634 expect()); typecheck x4 exit 0; secret scan clean.
+- FLEET TRIPWIRE (environment finding, no code change implied): stale sandboxes fail `bun test` with 'Cannot find package postgres' (5 unhandled errors) until `bun install` - T-MIG-014's postgres.js dep is not vendored. Cost this lane: one false-red gate run before the cause was found.
+- Final collision check immediately before push: ls-remote returned NO refs/heads/t-mig-007*; push created the branch; PR #29 opened with full disclosure body; yaml status -> IN_REVIEW.
+- 2026-10-05T07:2xZ MERGE-INTAKE (pre-CI, appended at tail per append-only law): main advanced to 85a0d32 (PR #25 = T-MIG-016 merged; the recused #21 resolved by the replacement implementation). Merge into t-mig-007/r6 conflicted ONLY in golden/runner.ts: #25's merge-intake had independently fixed the SAME replay-path tolerate defect (deepEqual -> deepEqualTolerant, one line + comment). Resolved by subsuming: this lane's kit (superset: tolerate + expect.headers + seq + token) kept, #25's provenance comment preserved inside replayAgainst and above the replay loop with a subsumption note. Gates re-run green post-merge (selftest OK; typecheck OK; bun test 265/0/13skip - count moved 266->265 with main's own #25 changes, not this resolution); 113/113 cases valid. No CI run had fired for PR #29 at push time (0 check-runs on both head SHAs; peers' PRs were running normally) - flagged for R0/CI-territory, not this fence.
+
+- 2026-10-05T07:4xZ CI-GREEN (receipt run-004): PR #29 verify SUCCESS + hub SUCCESS (run 37278060847) on head 84c195f, mergeable_state=clean. ROOT CAUSE of the earlier silence diagnosed: pull_request workflows run on the MERGE REF; main outran this lane's base on every push (sweep-1 -> #25 -> #21 -> #28 in ~30 min), the merge ref was unbuildable (dirty), and Actions silently skipped. After the third merge-intake CI queued within seconds. Corroborating data point: open PR #26 has zero runs to date (same dirty-base pattern suspected). Third intake (5ee240e, PR #28/T-MIG-021 DONE) was worklog-only union. Handoff to R0 complete in PR body + comments; this lane awaits review, then Wave-4 capture beat or the Neon extension of w3 stateful cases.
+
+Stage Summary:
+- T-MIG-007 is IN_REVIEW as PR #29: 44 Wave-3 golden cases (98 -> 113 total suite) across 10 controllers' deterministic surfaces + the runner replay-readiness kit that closes the T-MIG-013-reported tolerate defect, T-MIG-004 F-3 header comparison, and R0-SWEEP-1 follow-up (3) R6 items. The metronome is now one full wave ahead of the W3 port lane (T-MIG-030..034). Next for this lane: await R0 on #29; then either the F-5-style Neon extension for w3 stateful cases (needs NEON access) or the next capture beat (Wave 4) per MIGRATION_PLAN section 10.
 - (T-MIG-021 addendum 2, same session) Sweep-1 landed: #12/#13/#14(T-MIG-015 docs)/#16/#17(dossier)/#19(claim+tranche-1) MERGED, T-MIG-021 id RATIFIED (§2.R1 vs R4-api-b), T-MIG-020 arbitrated to r3-c #22 (ruling1), T-MIG-005 via #18 with canonical curriculum.ts. Tranche 2 EXECUTED on t-mig-021/r7a-ext @ 01d0e9d: learner + teacher READ routers (contract-schema binding, captured envelopes, F-1 pinned, honest 501 write discipline), 19 route tests over real-services-on-stubbed-sql incl. canonical zod validation; OUT-OF-FENCE mounts (2 lines, flagged commit, ratification requested). Gates: typecheck x4 exit 0; bun test 272/13skip/0 fail; golden selftest OK. Replay flip env-blocked (Neon DNS finding, CI-side runner proposed) — receipt run-002-tranche2.json. yaml -> IN_REVIEW.
 ---
 Task ID: R0-REPAIR-1 (T-MIG-017 renumber of the #25 artifacts + breach record)

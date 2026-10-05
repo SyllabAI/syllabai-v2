@@ -1,0 +1,56 @@
+{
+  "name": "w3-history-after-submit-200",
+  "description": "Attempt history after one MCQ submit: one recorded attempt (generated ids tolerated). captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "source": "captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "GET",
+  "path": "/api/v1/learners/me/attempts",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "learnerId": "aa645313-5930-4381-91ed-caff67a2f836",
+      "total": 1,
+      "returned": 1,
+      "attempts": [
+        {
+          "attemptId": "519421f0-385f-484d-93ee-f3c426ed86c5",
+          "questionId": "40000000-0000-0000-0000-000000000001",
+          "questionType": "MCQ_SINGLE",
+          "externalRef": "SEED-WCH11-001",
+          "commandWord": "Calculate",
+          "stemExcerpt": "What is the mass of 0.25 mol of calcium carbonate, CaCO3 (Mr = 100.1)?",
+          "marksTotal": 1,
+          "topicNodeId": "20000000-0000-0000-0000-000000000012",
+          "topicCode": "WCH11-T1.1",
+          "topicTitle": "Mole calculations and reacting masses",
+          "correct": false,
+          "marksAwarded": 0,
+          "markingState": "AUTO_GRADED",
+          "evidenceEmitted": true,
+          "chosenOptionLabel": "A",
+          "correctOptionLabel": "C",
+          "implicatedMisconceptionIds": [
+            "30000000-0000-0000-0000-000000000001"
+          ],
+          "selfDoubtFlag": false,
+          "timedCondition": false,
+          "confidenceLevel": 4,
+          "responseTimeMs": 25000,
+          "attemptedAt": "2026-10-05T06:47:12.304192Z",
+          "parts": []
+        }
+      ]
+    }
+  },
+  "tolerate": [
+    "timestamp",
+    "id",
+    "attemptId",
+    "submittedAt",
+    "createdAt"
+  ]
+}

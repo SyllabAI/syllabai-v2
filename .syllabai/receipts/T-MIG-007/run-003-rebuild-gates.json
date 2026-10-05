@@ -1,0 +1,26 @@
+{
+  "receipt": "T-MIG-007 run-003 - rebuilt-branch gate re-execution + push + PR open (credential unblock)",
+  "schema": "syllabai.v2.t-mig-007.gates-receipt/1.0",
+  "agent": "R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)",
+  "context": "Original branch commits (9d1057d -> 3574488 -> 5a74c03 -> 64da0b2, stacked on the superseded t-mig-006/r6) were credential-blocked from push at author time. Operator supplied GITHUB_PAT (chat transit) on 2026-10-05; lane unblocked. Branch rebuilt onto main @ 01d0e9d (R0-SWEEP-1 state) via cherry-pick as eada441 -> 2b38a58 -> 9081b59; originals preserved in local-only backup branch t-mig-007/r6-orig-backup (never pushed, never force-pushed anything).",
+  "push": {
+    "branch": "t-mig-007/r6",
+    "remote_head_before_push": "no refs/heads/t-mig-007* existed (ls-remote checked immediately before push)",
+    "pushed_at": "2026-10-05T07:0xZ",
+    "pr": 29
+  },
+  "gates": [
+    { "gate": "golden runner selftest", "command": "bun golden/runner.ts --selftest", "result": "exit 0 - 'selftest OK: tolerance engine behaves'" },
+    { "gate": "golden case JSON structural validity", "command": "jq -e '.name and .method and .path and .expect.status' over golden/cases/*.json", "result": "113/113 valid, 0 invalid (main's 69 incl. T-MIG-004 F-5 extension + 44 new w3 cases)" },
+    { "gate": "bun test (root)", "command": "bun test", "result": "253 pass / 0 fail / 13 skip, 634 expect(), 266 tests across 16 files" },
+    { "gate": "root typecheck", "command": "bun run typecheck (tsc --noEmit x4 workspaces)", "result": "exit 0" },
+    { "gate": "secret scan on branch diff", "command": "JWT-shape grep (eyJ) + credential-pattern grep over git diff main..HEAD", "result": "0 JWT-shaped strings; single prose mention is the run-002 recipe describing the SYNTHETIC secret (no value); {{TOKEN}} placeholders in 20 cases; live tokens never on disk" }
+  ],
+  "environment_finding_for_reviewers": "a fresh/stale sandbox MUST run `bun install` before `bun test`: T-MIG-014's postgres.js dependency is not vendored and a stale workspace fails with 'Cannot find package postgres' (5 unhandled errors, 215/5/0 observed before install; 253/0/13 after). No code change implied - tripwire documented for the fleet.",
+  "t-mig-006_disposition": "competing T-MIG-006 yaml NOT re-filed (id ratified for r1's write-flow contracts, PR #23, R0-SWEEP-1); runner kit re-landed inside T-MIG-007's golden/** fence (work commit 2b38a58 carries the full disclosure); receipt receipts/T-MIG-006/run-001.json retained at authored path for worklog reference integrity",
+  "production_safety": "this session made zero Neon connections and zero upstream writes of any kind; the only network writes were git push + GitHub PR API to syllabai-v2",
+  "honest_gaps": [
+    "w3 cases are capture-only: no v2 port code exists for the 10 W3 controllers yet (that is T-MIG-030..034's lane) - replay-vs-v2 for these cases is expected to classify as 501/404 unimplemented until the W3 ports land",
+    "live Neon replay of the full suite remains CI-runner-gated (R0-SWEEP-1 follow-up 2: sandbox DNS cannot resolve api.neon.tech)"
+  ]
+}
