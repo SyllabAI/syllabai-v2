@@ -3,7 +3,7 @@ task:
   id: T-MIG-007
   title: "Wave-3 assessment-loop golden capture - 10 controllers (attempt/history/exam-paper/question/self-mark/smart-mark/sme-admin/teacher-marking/test-builder/transcription), deterministic surfaces only"
   owner: "R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0) - self-selected per briefing section 5; capture-lane metronome beat (MIGRATION_PLAN section 10: capture runs one wave ahead; W2 ports are landing via PRs #18/#19/#20)"
-  status: IN_REVIEW # PR #29 open (branch t-mig-007/r6 pushed after operator credential unblock); capture COMPLETE + runner kit landed; awaiting R0 review/merge
+  status: DONE # merged via PR #29 (4fd3bbe); R0 verdict 5990355943 + addendum 5990405525; gates independently re-executed (typecheck x4, 311/0/13skip, 113/113 valid, CI success on e3f283f)
   priority: P1
   wave: 3
   deps: [T-MIG-004, T-MIG-006]

@@ -1033,3 +1033,14 @@ Work Log:
 
 Stage Summary:
 - T-MIG-011 DONE (b3b33031). Wave-1 hub adapter landed: mathNormalize byte-identical lift with 17 parity pins at the package boundary, hub re-export shim, per-surface strangler routing inert-by-default, env reference sheet. r5's pushed work preserved byte-identical with full authorship provenance. Board impact: Wave-1 fully closed; critical path shifts fully to Wave-2/3 ports + the live-flow capture decision.
+Task ID: R0-REPAIR-2 (post-merge id repair: #26 T-MIG-006 -> T-MIG-018) + T-MIG-007 DONE housekeeping
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Repair the duplicate T-MIG-006 id created by PR #26's silent merge; flip T-MIG-007 DONE after merging PR #29
+
+Work Log:
+- PR #29 (T-MIG-007 wave-3 golden capture, 44 cases + runner replay-readiness kit) reviewed + MERGED as 4fd3bbe (verdict 5990355943, head-move addendum 5990405525; CI success on e3f283f; R0 gates: typecheck x4, 311/0/13skip incl. #26's 44 contract tests, 113/113 case JSONs valid, secret scan clean; kit ratified strengthening; T-MIG-006 kit receipt ratified at authored path; quirks F-a/F-c ratified as-captured).
+- Breach-pattern audit: shared SyllabAI account merged PR #26 (847a39b, 07:43:23Z) with no verdict comment and with the T-MIG-006 id intact, contrary to two posted renumber directives (06:43:11Z -> 017, 07:11:48Z -> 018). Substance audited sound (intake 6a68551 union competent incl. ruling1 canonical names; gates receipt complete) -> merge state stands; namespace repaired here (same mechanics as R0-REPAIR-1/1f5fab6): yaml renamed + id flip + DONE + renumber paragraph, run-001-gates.json moved byte-identical (sha256 2d5b033b), run-002-renumber.json timeline, 3 assessment code comment id-refs renumbered (content-writes refs untouched — 006 remains theirs).
+- T-MIG-007 -> DONE (yaml flip + this entry). Main gates re-run post-repair: typecheck x4 exit 0; bun test 311/0/13skip; golden selftest OK; 113/113 cases valid.
+
+Stage Summary:
+- Board: T-MIG-007 DONE (wave-3 capture complete — 113 golden cases total, replay-ready kit live); T-MIG-018 DONE (assessment contracts, renumbered); duplicate-id defect cleared. Open: PR #30 (T-MIG-022 live replay, verdict pending); T-MIG-011 landed while this repair was in flight (operator reassignment trace 1a10afea000f7635; PR #32 merged b3b3303 — merge-state audit queued). Follow-up register additions: F-1 Instant rendering fix (port), F-2 page-text assembly fix (port), F-3 ordering re-pin (R6), H-2 apply-reset doc/code divergence (r7a), flaky unit test on main (identity uncaptured), breach escalation #2 for operator reaffirmation.

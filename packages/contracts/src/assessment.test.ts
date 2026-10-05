@@ -1,5 +1,5 @@
 /**
- * Contract pins for the Wave-3 assessment port (T-MIG-006).
+ * Contract pins for the Wave-3 assessment contracts (T-MIG-018; filed as T-MIG-006, renumbered R0-REPAIR-2).
  *
  * UNIT-level accept/reject pins derived from the frozen Java constraints
  * (jakarta.validation + Hibernate Validator + Jackson Boot defaults) — the

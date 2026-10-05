@@ -1,6 +1,6 @@
 version: 1
 task:
-  id: T-MIG-006
+  id: T-MIG-018
   title: "Wave-3 assessment-loop zod contracts — port the assessment module's DTO
     surface constraint-for-constraint into packages/contracts (contracts-first
     prerequisite for the T-MIG-030..034 Wave-3 ports)"
@@ -11,7 +11,7 @@ task:
     point with zero fence overlap. This lane's session ALSO holds the
     orientation obligation — the Phase-1 orientation entry rides this branch
     (w0a precedent)."
-  status: IN_REVIEW # implementation + gates complete; PR opened 2026-10-05 (stacked on PR #18 — merge-order note in the PR body for R0)
+  status: DONE # merged via PR #26 (847a39b); id renumbered T-MIG-006 -> T-MIG-018 by R0-REPAIR-2 (duplicate-id repair; 006 stays with the write-flow contracts PR #23); evidence: receipts/T-MIG-018/run-001-gates.json
   claimed_at: "2026-10-05T12:22:00+06:00 (Asia/Dhaka)"
   priority: P1
   wave: 3
@@ -43,6 +43,14 @@ task:
     receipt: one test expectation corrected (zod strip semantics), no
     schema constraint widened. Receipt:
     .syllabai/receipts/T-MIG-006/run-001-gates.json.
+
+    2026-10-05T07:52Z (R0-REPAIR-2, appended by R0): id renumbered
+    T-MIG-006 -> T-MIG-018 post-merge — the merge had landed with a
+    duplicate id (006 ratified for the write-flow contracts, PR #23)
+    contrary to R0's posted renumber directives on PR #26; substance
+    audited sound, merge state stands, namespace repaired. Original
+    claim timestamps preserved; receipt moved byte-identical (sha256
+    2d5b033b2bf9); timeline in receipts/T-MIG-018/run-002-renumber.json.
     Frozen sources read for this port: syllabai-core
     src/main/java/com/syllabai/assessment/dto/*.java (all 11 records) +
     AttemptController, AttemptHistoryController, ExamPaperController (incl.
@@ -71,9 +79,9 @@ scope:
       tests)"
     - "packages/contracts/src/index.ts (ONE re-export line — the ratified
       one-line append pattern every contracts lane uses)"
-    - ".syllabai/tasks/T-MIG-006-assessment-contracts.yaml (this file —
-      status/execution_record only)"
-    - ".syllabai/receipts/T-MIG-006/**"
+    - ".syllabai/tasks/T-MIG-018-assessment-contracts.yaml (this file —
+      status/execution_record only; renumbered from 006 by R0-REPAIR-2)"
+    - ".syllabai/receipts/T-MIG-018/** (renumbered from 006 by R0-REPAIR-2)"
     - ".syllabai/worklog.md (append-only entries)"
   forbidden:
     - "packages/contracts/src/content.ts / curriculum.ts / errors.ts /
@@ -94,7 +102,7 @@ acceptance:
     null does; Instant = ISO-8601; primitive boolean null → false)"
   - "accept/reject parity tests in assessment.test.ts green; root typecheck
     x4 + bun test + golden --selftest all exit 0; receipt recorded under
-    .syllabai/receipts/T-MIG-006/"
+    .syllabai/receipts/T-MIG-018/ (run-001-gates.json byte-identical)"
   - "no widening of any constraint to make a test pass (index.ts rule 3);
     Jackson scalar-coercion facts are DOCUMENTED for the port lanes, not
     silently dropped"

@@ -1,7 +1,7 @@
 /**
  * Wave-3 assessment-loop contracts — ported from the frozen Java core.
  *
- * Sources (syllabai-core @ main, frozen, verified 2026-10-05 by T-MIG-006):
+ * Sources (syllabai-core @ main, frozen, verified 2026-10-05 by T-MIG-018 [filed as T-MIG-006, renumbered R0-REPAIR-2]):
  *   src/main/java/com/syllabai/assessment/dto/SubmitAnswerRequest.java
  *   src/main/java/com/syllabai/assessment/dto/PartAnswerRequest.java
  *   src/main/java/com/syllabai/assessment/dto/StructuredSubmitRequest.java
@@ -32,7 +32,7 @@
  *   src/main/java/com/syllabai/assessment/ServableQuestionService.java:110-140 (the
  *       SpecPointRef role domain and PRIMARY-first ordering)
  *
- * SCOPE (T-MIG-006): the assessment module's learner-loop DTO surface — the
+ * SCOPE (T-MIG-018): the assessment module's learner-loop DTO surface — the
  * five Wave-3 surfaces MIGRATION_PLAN §2.1 assigns to the assessment domain
  * (attempts, attempt history, exam papers, questions, learner self-mark).
  * The smartmark / teacher-marking / test-builder / transcription DTOs live
