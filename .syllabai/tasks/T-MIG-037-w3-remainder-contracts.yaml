@@ -13,7 +13,7 @@ task:
     — operator-assigned CONTRACTS LANE this round (IM trace 1a10cb48dc7edd15,
     2026-10-05): 'you inherit the fence this round'; R1-contracts fence per
     the R7 dossier dependency_gates and the T-MIG-006/018 precedent."
-  status: CLAIMED
+  status: IN_REVIEW # PR open; independent review requested; R0 merge-intake pending (authors never self-merge)
   claimed_at: "2026-10-05T21:47:41+06:00 (Asia/Dhaka)"
   priority: P1
   wave: 3
@@ -90,6 +90,34 @@ task:
     package DTOs (SmeQuestionPackageDtos) and the smartmark LEARNER-side
     views already ported by T-MIG-032 in apps/api (canonicalization into
     packages/contracts, if wanted, is a separate card).
+    (COMPLETION 2026-10-05T22:03:53+06:00, run-001): port complete —
+    packages/contracts/src/teacher-marking.ts + test-builder.ts +
+    transcription.ts + 3 test files + index.ts export lines. Teacher-marking:
+    20 request/response schemas + 2 param-bound mirrors + 5 G-5 constants,
+    F-33-1 aligned both ways (five-key STRICT throughput answersByState
+    object; five-state param accepted-set with the frozen C-9 message quirk
+    documented); refusal-row nullability from SmartMarkResult ctor
+    (:313-316 modelId/confidence null, breakdown null-coalesced :120,
+    pipelineVersion column-default "1.3.0"); two-shape opt-in pagination
+    unions for /answers and /queue-v2. Test-builder: 8 view schemas + 2
+    param schemas, clamp-not-reject law pinned as constants (20/50/200),
+    policy z.literal, PartView/OptionView/Question.Type/ValidationState
+    reused from assessment.ts/content.ts. Transcription: binding-truth
+    request (both fields nullable — service ladder NOT pre-baked per rule 3),
+    7 verbatim service-ladder messages pinned as constants, mime allowlist
+    {png,jpeg,webp} + 4MiB cap constants. 51 new pin tests (positive from
+    Java-declared shapes, negative for Java-rejected inputs, verbatim
+    message pins, F-33-1 zero-fill law). GATES: contracts package 192/0
+    (466 expect); typecheck x4 exit 0; bun test apps/api packages = 536/0/13
+    skip 1396 expect (= main 485/1259 + 51/137 exactly); golden --selftest
+    OK. Receipt: .syllabai/receipts/T-MIG-037/run-001.json. FINDINGS for the
+    port lanes: F1 zod v3 record-with-enum-keys does NOT enforce
+    exhaustiveness — the F-33-1(a) zero-fill law needs the strict five-key
+    object (pinned); F2 HumanMarkRequest.marksAwarded service adds the
+    part-bound law (TeacherMarkingService :104-106 "outside part bound
+    0–<n>") on top of the 0..99 binding cap — port must keep both; F3
+    SmartMarkBatchRequest duplicates are binding-legal (service dedups
+    order-preservingly, requested=deduped count).
 scope:
   allowed:
     - "packages/contracts/src/teacher-marking.ts"
