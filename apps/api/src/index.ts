@@ -8,8 +8,9 @@
  *   - Fail fast: missing secrets abort boot (src/env.ts + identity wiring) —
  *     inherited verbatim from the Java core's boot discipline.
  *
- * ⚠️ OUT-OF-FENCE COMMIT (T-MIG-014, R0 ratification requested):
- * T-MIG-014's scope.allowed covers middleware/ratelimit.ts,
+ * ⚠️ OUT-OF-FENCE COMMIT (T-MIG-016, R0 ratification requested; task
+ * renumbered from T-MIG-014 at push time — ID yielded to PR #13):
+ * T-MIG-016's scope.allowed covers middleware/ratelimit.ts,
  * services/identity/config.ts (ratelimit block), test/ratelimit/** — NOT this
  * file. The single change here is the minimal mount wiring the ported filter
  * needs, disclosed for R0 ratification at review (T-MIG-010 convention):
@@ -83,7 +84,7 @@ app.use("*", async (c, next) => {
 // tokens never abort here; protected paths reject via requireAuth/requireRole.
 app.use("*", identity.authMiddleware);
 
-// Per-IP rate limiting (deep-audit 09-28 M1, T-MIG-014) — inside the security
+// Per-IP rate limiting (deep-audit 09-28 M1, T-MIG-016) — inside the security
 // chain AFTER the JWT filter (SecurityConfig.java:96-99): the LLM tier keys
 // on the learner identity the auth pass above resolved; auth-tier budgets
 // gate the public identity routes below before any controller work.

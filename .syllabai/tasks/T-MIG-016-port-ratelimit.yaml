@@ -1,9 +1,9 @@
 version: 1
 task:
-  id: T-MIG-014
+  id: T-MIG-016 # renumbered from T-MIG-014 at push time (three-way ID collision; yielded to R3a PR #13 — see execution_record + run-002-renumber.json)
   title: "Port per-IP RateLimitFilter (deep-audit M1) — auth tier per client IP + LLM tier per learner, fixed windows, golden-honest scope"
   owner: "r1 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e) — self-selected per briefing §5: M1 was left unported by T-MIG-010 (its execution_record recommends 'its own micro-task'); highest-priority OPEN item with fences disjoint from all CLAIMED/IN_REVIEW lanes (011 hub, 005 contracts, 013 golden, r7 backfill)"
-  status: IN_REVIEW # implementation complete on t-mig-014/r1, receipt .syllabai/receipts/T-MIG-014/run-001-ratelimit-filter.json, PR open for R0
+  status: IN_REVIEW # implementation complete (content byte-identical to former t-mig-014/r1 head 6a75667, CI verify+hub success there), receipt .syllabai/receipts/T-MIG-016/run-001-ratelimit-filter.json, PR open for R0 (supersedes #15, renumbered)
   priority: P2
   wave: 1 # auth-surface hardening adjacent to T-MIG-010; NOT a Wave-2 content-read slot (020..022 reserved)
   deps: [T-MIG-010]
@@ -34,6 +34,21 @@ task:
     follow-up (per-case header injection/response-header comparison); (d)
     llm:ask tier dormant-by-routes (Wave 3+ surfaces) — classification
     ported + unit-pinned now, activates automatically when routes land.
+
+    2026-10-05 (push session) — RENUMBER T-MIG-014 -> T-MIG-016. Three tasks
+    raced onto the T-MIG-014 ID this hour (each self-assigned per §4 after an
+    honest scan against main — the scans raced each other, not main):
+    r7a docs-drift claim 05:00:49Z (unpushed at the time) -> yielded as
+    T-MIG-015 (PR #14); R3a db-drivers claim ecded41 @ 05:08:44Z -> PR #13
+    IN_REVIEW (P1, unblocks Wave-2 replay) — retains the ID per §2.1
+    earliest-claim (05:08:44Z precedes this lane's b1f63b4 @ 05:23:58Z);
+    this lane renumbers. Yield rationale per the r7a/#14 precedent:
+    earliest-claim is a tiebreak, not territory; contesting would churn an
+    in-review P1 for zero substantive gain. Mechanics: branch t-mig-016/r1,
+    yaml + receipts dir renamed, receipt run-001 BYTE-IDENTICAL, index.ts
+    disclosure comments renumbered (comment-only), renumber receipt
+    run-002-renumber.json, worklog append-only entry. R0 ratification of the
+    renumber requested in the PR (T-MIG-013 precedent).
 base:
   repo: "syllabai-v2 @ 67639db (post-W0, post PR #11/#10); frozen refs: syllabai-core @ 6cad6ef src/main/java/com/syllabai/ratelimit/**"
 basis: >
@@ -49,8 +64,8 @@ scope:
     - "apps/api/src/middleware/ratelimit.ts (new — filter port)"
     - "apps/api/src/services/identity/config.ts (ratelimit block ONLY: add per-IP + llm budgets, env-tunable, audited defaults)"
     - "apps/api/test/ratelimit/** (new — mirrored Java suite)"
-    - ".syllabai/receipts/T-MIG-014/**"
-    - ".syllabai/tasks/T-MIG-014-port-ratelimit.yaml (this file — status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-016/**"
+    - ".syllabai/tasks/T-MIG-016-port-ratelimit.yaml (this file — status/execution_record only)"
     - ".syllabai/worklog.md (append-only entries)"
   forbidden:
     - "apps/api/src/index.ts (mount wiring ships as a separate disclosed commit per the T-MIG-010 OUT-OF-FENCE convention — R0 ratifies at review)"

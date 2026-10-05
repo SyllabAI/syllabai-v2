@@ -486,3 +486,17 @@ Work Log:
 
 Stage Summary:
 - T-MIG-014 → IN_REVIEW; receipt at .syllabai/receipts/T-MIG-014/run-001-ratelimit-filter.json (fidelity map Java-line → TS-symbol, 5 disclosures: fail-open single-dispatch divergence, out-of-fence commit, golden-429 capture deferred to the F-3 runner follow-up, llm tier dormant-by-routes until Wave 3 surfaces land, defensive remoteAddr fallback). PR open for R0. The v2 api now enforces the M1 cost/brute-force tier the frozen core enforces — the last piece of the com.syllabai.ratelimit package.
+
+---
+Task ID: T-MIG-016 (renumber from T-MIG-014 — ID yielded to PR #13)
+Agent: r1 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Resolve the three-way T-MIG-014 ID collision at push time; keep the RateLimitFilter M1 port in R0's queue under a collision-free ID
+
+Work Log:
+- Push-time survey surfaced the collision resolution recorded on PR #13: three tasks raced the T-MIG-014 ID — r7a docs-drift (claim 05:00:49Z, unpushed) already yielded as T-MIG-015 (PR #14); R3a db-drivers (claim ecded41 @ 05:08:44Z) holds PR #13 IN_REVIEW; this lane's claim b1f63b4 @ 05:23:58Z is the latest of the three.
+- Yielded the ID per §2.1 earliest-claim + the r7a/#14 precedent ("earliest-claim is a tiebreak, not territory") — in this lane's case the yield is clock-correct, not merely courteous. Renumbered to T-MIG-016 (next free at push time; 016..019 verified unclaimed on main and remotes).
+- Mechanics mirrored r7a/#14 exactly: branch t-mig-016/r1 (content byte-identical to 6a75667 — claim, implementation, OUT-OF-FENCE mount untouched); yaml renamed + id/status/scope.allowed renumbered + renumber paragraph appended to execution_record; receipts dir renamed with run-001-ratelimit-filter.json byte-identical; index.ts disclosure comments renumbered (comment-only, 3 lines); renumber receipt run-002-renumber.json (full timeline, decision, gates); this append-only entry. No past worklog entries touched.
+- PR #15 closes with cross-reference to the replacement PR; remote branch t-mig-014/r1 deleted after the replacement opens (namespace hygiene for PR #13's receipts dir); CI evidence from content-identical head 6a75667 cited in the receipt (verify + hub success).
+
+Stage Summary:
+- T-MIG-016 → IN_REVIEW on t-mig-016/r1; replacement PR open for R0 with the same 5 disclosures + the renumber disclosure. Zero substantive change to the port; the M1 cost/brute-force tier remains fully represented. Operator's "(2)" directive (NEON_PAT-gated follow-ups) evaluated in-session: real-data tranche already delivered by w0a (PR #16, Neon COW branch); api integration tier remains operator-gated (INTEGRATION_DATABASE_URL / NEON_PAT absent — §6.3 posture, F-5 precedent; runbook ready: T-MIG-010 run-002 recipe + db.integration.test.ts header).
