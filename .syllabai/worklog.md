@@ -453,3 +453,19 @@ Work Log:
 
 Stage Summary:
 - Board: T-MIG-000/001/002/003/004/010/012 DONE (7 tasks), T-MIG-011 CLAIMED (t-mig-011/r5), Wave-2 lanes filing. Identity/auth surface is LIVE in v2 with live-DB-proven revocation — the strangler-fig has its first real vine. 54 golden cases on main; Wave-2 acceptance worklist complete before any content-read port code lands. Critical path: T-MIG-011 hub adapter (claimed), then Wave-2 ports (T-MIG-020..022) against the fresh capture.
+
+---
+Task ID: T-MIG-014 (claim)
+Agent: r1 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Claim the per-IP RateLimitFilter (deep-audit M1) port — the micro-task T-MIG-010's execution_record recommends
+
+Work Log:
+- Operator directive "claiming T-MIG-010 next" arrived before a sandbox reset wiped this session's workspace; on re-provision (operator-supplied GITHUB_PAT, env-var channel only) and re-clone, main had moved to 67639db: T-MIG-010 was DONE via PR #11 (R0 arbitration: R3-api-a earliest-claim). The stale instruction was retired — no claim was attempted on a DONE task.
+- Pre-claim survey (per §2.1): open PRs = #12 only (T-MIG-013 IN_REVIEW); live branches = t-mig-011/r5 (hub, CLAIMED), t-mig-005/r1 (content-read contracts, CLAIMED), t-mig-013/r3 (golden hardening), r7/yaml-receipts-backfill. Wave-2 slots (020..022) have no yamls yet and the phase-2 R0 entry sequences them behind T-MIG-011 + the T-MIG-004 acceptance worklist.
+- Selected the one genuinely OPEN item with an in-repo recommendation: T-MIG-010 boundary note (b) — per-IP RateLimitFilter (M1, com.syllabai.ratelimit) explicitly left for "its own micro-task". Authored .syllabai/tasks/T-MIG-014-port-ratelimit.yaml per §4 (T-MIG-004 yaml-authorship precedent), wave 1, deps [T-MIG-010], P2 (parallel-safe: fences disjoint from every active lane).
+- Spec re-read from frozen core @ 6cad6ef: RateLimitFilter.java (two tiers, fixed windows, XFF trusted-chain walk, fail-open), RateLimitProperties.java (audited budgets 10/5/3/10/20, window 60s), RateLimitFilterTest.java (11 cases to mirror), SecurityConfig.java:96-99 (addFilterAfter JwtAuthenticationFilter — LLM tier keys on the identity the JWT filter resolved), application.yml:123-134 (ops-tunable budgets, defaults restated). v2 conventions read: budget.ts port style (injectable clock, line-anchored header), errors.ts (two distinct 429 bodies: exception path "Too many attempts" w/o body field vs filter path "Too many requests" WITH retryAfterSeconds field), index.ts wiring, config.ts ratelimit block.
+- Fidelity pre-commitments (to be evidenced in the receipt): alignment-compare window reset (!start.equals(windowStart), NOT insideWindow), count > limit strict, retryAfter = floor((windowEnd-now+999)/1000) min 1 computed before admit, MAX_KEYS=100_000 sweep at 2-window cutoff, OPTIONS+enabled bypass, fail-open on internal error, XFF rightmost-first first-public-hop walk incl. CGNAT 100.64/10 and the literal 172.2x predicate, learnerKey userId→subject→IP.
+- Branch t-mig-014/r1 cut from origin/main @ 67639db; claim + yaml + this entry pushed at claim time (collision lesson T-MIG-002/010 applied).
+
+Stage Summary:
+- T-MIG-014 CLAIMED at 2026-10-05T05:23:35Z; implementation follows in this branch (middleware port → mirrored test suite → mount wiring as a separate disclosed commit → receipt → IN_REVIEW). Golden-capture posture disclosed in advance: unit-tier mirror suite is the gate for this task; live 429 golden cases against the frozen core are deferred to the runner-capability follow-up (T-MIG-004 F-3: no per-case request-header injection / response-header comparison yet) — disclosed to R0 in the receipt, no case weakened.

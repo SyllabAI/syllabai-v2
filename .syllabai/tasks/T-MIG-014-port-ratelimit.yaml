@@ -1,0 +1,34 @@
+version: 1
+task:
+  id: T-MIG-014
+  title: "Port per-IP RateLimitFilter (deep-audit M1) — auth tier per client IP + LLM tier per learner, fixed windows, golden-honest scope"
+  owner: "r1 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e) — self-selected per briefing §5: M1 was left unported by T-MIG-010 (its execution_record recommends 'its own micro-task'); highest-priority OPEN item with fences disjoint from all CLAIMED/IN_REVIEW lanes (011 hub, 005 contracts, 013 golden, r7 backfill)"
+  status: CLAIMED # claimed_at 2026-10-05T05:5xZ (push timestamp authoritative); branch t-mig-014/r1 cut from origin/main @ 67639db and pushed at claim time (collision lesson T-MIG-002/010 applied)
+  priority: P2
+  wave: 1 # auth-surface hardening adjacent to T-MIG-010; NOT a Wave-2 content-read slot (020..022 reserved)
+  deps: [T-MIG-010]
+  execution_record: "—"
+base:
+  repo: "syllabai-v2 @ 67639db (post-W0, post PR #11/#10); frozen refs: syllabai-core @ 6cad6ef src/main/java/com/syllabai/ratelimit/**"
+basis: >
+  T-MIG-010 execution_record boundary note (b): "per-IP RateLimitFilter (M1,
+  com.syllabai.ratelimit) NOT ported — outside this task's title; recommend
+  its own micro-task". MIGRATION_PLAN.md §5 Wave 1 exit intent (identity
+  surface hardened); the per-TARGET-account half (LoginAttemptBudget, R5)
+  already lives in v2 (apps/api/src/services/identity/budget.ts) — this task
+  ports the OTHER half: the filter-level budgets the account budget cannot
+  cover (register/bootstrap-admin/password per-IP, LLM cost tier).
+scope:
+  allowed:
+    - "apps/api/src/middleware/ratelimit.ts (new — filter port)"
+    - "apps/api/src/services/identity/config.ts (ratelimit block ONLY: add per-IP + llm budgets, env-tunable, audited defaults)"
+    - "apps/api/test/ratelimit/** (new — mirrored Java suite)"
+    - ".syllabai/receipts/T-MIG-014/**"
+    - ".syllabai/tasks/T-MIG-014-port-ratelimit.yaml (this file — status/execution_record only)"
+    - ".syllabai/worklog.md (append-only entries)"
+  forbidden:
+    - "apps/api/src/index.ts (mount wiring ships as a separate disclosed commit per the T-MIG-010 OUT-OF-FENCE convention — R0 ratifies at review)"
+    - "apps/api/src/services/identity/** beyond the ratelimit block (budget.ts/service.ts are T-MIG-010 DONE surface)"
+    - "apps/hub/** (t-mig-011/r5's lane)"
+    - "packages/contracts/** (t-mig-005/r1's lane)"
+    - "upstream syllabai-core writes (C1, frozen)"
