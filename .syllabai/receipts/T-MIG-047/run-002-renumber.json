@@ -1,0 +1,53 @@
+{
+ "task": "T-MIG-047",
+ "run": "run-002-renumber",
+ "agent": "r0s (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "date": "2026-10-06",
+ "directive": "Operator standing 'review+merge yourself / continue working' (trace 1a10d35bead06d61); duplicate-id defect C-1 from the round-8 stand-in review, re-verified live @ 08f104d",
+ "defect": {
+  "id": "C-1 (round-8 stand-in review)",
+  "statement": "two task yamls on main share id T-MIG-037 (hub-dual-run-expansion + w3-remainder-contracts) — one task per ID violated (AGENT_COORDINATION §4; 'board namespace restored (one task per ID)' is the R0-REPAIR-1 standard)",
+  "cards": {
+   "hub": "T-MIG-037-hub-dual-run-expansion.yaml — claim commit b12b5b3 @ 2026-10-05 15:34 (operator word trace 1a10c9dd8c2c1c01)",
+   "contracts": "T-MIG-037-w3-remainder-contracts.yaml — claim commit 5929c4b @ 2026-10-05 15:48 (operator trace 1a10cb48dc7edd15)"
+  }
+ },
+ "ruling": {
+  "basis": "AGENT_COORDINATION §2.1: 'Two agents claiming one task: earliest claim wins' — 15:34 precedes 15:48 by 14 minutes; the HUB card retains T-MIG-037 and the CONTRACTS card yields to the next free id",
+  "id_choice": "T-MIG-047 — 045 is burned (yaml exists only on the retained t-mig-045/r4b evidence branch per the R4-api-b PR #61 terminal disposition; reusing it would collide with that record), 046 taken (neon-branch fix), 043 is the operator-routed wave-4 reserved band, 044/046 DONE",
+  "note": "this supersedes the pre-compaction round-8 note's direction (hub card renumbered to 045) — that plan predates the 045 terminal-disposition record and the recovered claim timestamps"
+ },
+ "mechanics": "R0-REPAIR-1/2 + T-MIG-016 precedent: yaml renamed (id flip + scope.allowed self-paths re-pointed + renumber paragraph appended to execution_record; historical prose left as history); receipts moved byte-identical; hub artifacts untouched; live pointer repaired; comment-only code refs renumbered; worklog NEVER touched",
+ "moves": [
+  {
+   "path": ".syllabai/tasks/T-MIG-037-w3-remainder-contracts.yaml -> .syllabai/tasks/T-MIG-047-w3-remainder-contracts.yaml",
+   "method": "git mv"
+  },
+  {
+   "path": ".syllabai/receipts/T-MIG-037/run-001.json -> .syllabai/receipts/T-MIG-047/run-001.json",
+   "method": "git mv, BYTE-IDENTICAL (sha256 316dad3fde4c5a31d7e910b5997ca3f4cf6a930e625a1afaef68ce170e156096 verified before/after)"
+  }
+ ],
+ "retained_in_037": [
+  ".syllabai/receipts/T-MIG-037/run-001-dual-run-expansion.json (hub card receipt)",
+  ".syllabai/receipts/T-MIG-037/rig/ (hub posture rigs: serve.ts + scratch-t037-posture-a/b.ts)"
+ ],
+ "live_pointer_repairs": [
+  ".syllabai/tasks/T-MIG-038-w4-learner-decay-contracts.yaml: deps [T-MIG-018, T-MIG-037] -> [T-MIG-018, T-MIG-047] (+ comment of record)"
+ ],
+ "comment_only_ref_renumbers": [
+  "packages/contracts/src/teacher-marking.ts:2",
+  "packages/contracts/src/teacher-marking.test.ts:2",
+  "packages/contracts/src/test-builder.ts:2",
+  "packages/contracts/src/test-builder.test.ts:2",
+  "packages/contracts/src/transcription.ts:2",
+  "packages/contracts/src/transcription.test.ts:2"
+ ],
+ "intentionally_untouched": [
+  ".syllabai/worklog.md (append-only history; 12 historical refs stay)",
+  "historical receipts (T-MIG-033 run-003/run-004, T-MIG-038 run-001 — evidence records are byte-frozen; the renumber paragraph + this receipt are the mapping of record)",
+  "apps/hub/src/lib/api.ts + api.v2-surface.test.ts (hub card keeps 037)",
+  "historical prose inside the renumbered yaml's execution_record"
+ ],
+ "post_state": "one task per ID restored: 37 = hub dual-run expansion, 47 = W3-remainder contracts; residual-scan clean"
+}
