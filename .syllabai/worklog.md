@@ -1149,3 +1149,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-031 CLAIMED (branch t-mig-031/r3a pushed; commit e57a393 + this intake). Deps T-MIG-018/007/014 all merged — slice immediately portable. Tranche-1 (services/questions + services/exam-papers, stubbed-sql tests) next; tranche-2 (zod-wired route factories + flagged OUT-OF-FENCE mounts) follows. Golden replay posture: env-blocked follow-up per T-MIG-020/021 precedent, no case weakened.
+
+---
+Task ID: T-MIG-031
+Agent: R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Tranche 1 — the exam-papers + questions READ port services + stubbed-sql test suite (contract-independent, in-fence)
+
+Work Log:
+- Ported the servable-question read-model cluster from the frozen sources @ 6cad6ef: services/questions/{sql,families,servable,taxonomy,reveal,index}.ts + services/exam-papers/{sql,papers,index}.ts. Every query is a read-only SELECT (bind-slot discipline held: IN-lists via any(${ids}::uuid[]), column lists inline, no ${} SQL-text interpolation).
+- Law highlights: ServableQuestionSpec verbatim (spec owns active; STRUCTURED needs a VALIDATED current version); V20 paper-level gate with the paper-less fast path; specPointRefs joins knowledge_nodes for code+applicability, PRIMARY-first code-ordered, honest-absent empties, reused by the exam-papers detail (T-C28 — no second SQL contract); family assembler with the 23 pinned interleaved orders byte-identical, numeric-aware source compare, first-seen tie-break (CI 36011306580 law); taxonomy PART_OF grouping keeping the deterministically-lowest parent id on duplicate structural edges, browsability guards, deduped census (badge == list length invariant); mark-scheme reveal policy parsed fail-fast at construction (the @Value+valueOf boot law), REJECTED/FLAGGED never reveal, 204-withhold nulls, unservable question 404s before any scheme lookup; exam-papers detail latest-version heads batched (Java N+1 -> one statement, R-M-LAZY) with the PaperQuestionView null-vs-empty facts.
+- Tests: 38 stubbed-sql tests across test/questions/{families,servable,taxonomy,reveal}.test.ts + test/exam-papers/papers.test.ts, fakeSql rowsFor helper structurally duplicated (no cross-fence imports). Route tables dispatch on collapsed query text; fixtures honor the ORDER BY shapes the statements promise.
+- Gates on this head: typecheck x4 exit 0; bun test 413/0/13skip (1062 expect = main 931 + 131 exactly, additive only); golden --selftest OK; replay NOT RUN (env-blocked follow-up; no case weakened). Receipt: .syllabai/receipts/T-MIG-031/run-002-tranche1.json (incl. 5 disclosed deviations: direct contracts-type binding at tranche-1, null-ref family ref fallback, batched version heads, in-fence read-only subtree CTE, fakeSql duplication).
+- Fence audit: 12 files, all inside scope.allowed; zero touches on T-MIG-030's assessment globs, packages/contracts, golden/**, apps/api/src/index.ts (mounts ship at tranche-2 as the flagged OUT-OF-FENCE commit).
+
+Stage Summary:
+- T-MIG-030 tranche-1 pattern repeated for the 031 cluster: services green-gated, routes staged for tranche-2 (zod wiring against the already-merged T-MIG-018 schemas + flagged OUT-OF-FENCE mounts). R0 ratification of the task id + fence acknowledgment requested on PR #34; PR body kept in sync per the R0 directive (PR #31 note). Standing: golden replay env; Wave-2 exit-gate items (F-1/F-2 content fixes, F-3 R6 re-pin) untouched — other lanes' scope.
