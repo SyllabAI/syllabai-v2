@@ -1112,3 +1112,18 @@ Task: Unblock executed — third operator PAT validated (login SyllabAI), claim 
 Work Log:
 - 2026-10-05T08:31:04Z: token 200 on GET /user → push -u origin t-mig-023/r1 → remote @ 46f4f19 (ls-remote verified). Claim priority attached at push time per AGENT_COORDINATION. Credential law held (env var + per-invocation helper only, outputs redacted by pattern).
 - yaml → IN_PROGRESS; receipts updated. Proceeding: F-1 (repositories.ts:64-65/169-170/314 — Java-exact Instant writer + verbatim DB fraction, repo-layer SQL shaping) and F-2 (reader.ts documentPageText — mirror frozen ContentReaderService page assembly; pin = 716-char capture).
+
+---
+Task ID: T-MIG-023 (work complete — IN_REVIEW)
+Agent: R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Execute F-1 + F-2 (the two R0-filed Wave-2 exit gate blockers) per T-MIG-022 run-001 diagnosis + ratified fix sketches.
+
+Work Log:
+- F-1 (1021 Instant divergences): content repositories now shape every consumed timestamptz verbatim — to_char(col at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US') at 10 select sites (documents x3 + col-ref, exam_papers x4 + col-ref, audit x1) — and javaInstantText() renders the Jackson Instant law (fraction groups-of-3, trailing zero-groups trimmed: .578011Z / .578Z / none). Date round-trip sites removed; audit ORDER BY qualified to the true column. packages/db untouched (repo-layer SQL shaping only).
+- F-2 (reader page text "" vs 716-char capture): documentPageText now binds the §8 snake_case element keys (page_number/reading_order) with Jackson int-coercion parity (NUMERIC_TEXT exact-int strings); bind violation throws → error boundary fixed-500 (R10, route calls pageText unguarded = IllegalStateException parity); [null] elements skipped; camelCase keys intentionally dead (they bound nothing in Java either — the drift itself). Root cause cross-checked against frozen ContentReaderController.java (:97-105 full-DTO binding) + contracts canonicalElementBase (:349-366).
+- Pins: fidelity-fixes.test.ts NEW (9 tests / 25 expects — T-MIG-022 capture vectors verbatim, fraction law incl. 000500/578010 edge groups, §8 binding negative, coercion, fail-loud, verbatim 716-char vector with order-restoration); routes.test.ts 020-era pin corrected to §8 (assertions unchanged — the old pin pinned the drift).
+- Gates exit-captured: bun install --frozen-lockfile 930 pkgs clean; typecheck x4 exit 0; bun test 356/0/13skip; golden selftest OK.
+- B-2 ESCALATION (§6.1, honest): live replay NOT RUN — golden COW-branch DSN lost to the workspace wipe (.env gone); ambient DATABASE_URL probed = dead local placeholder (AggregateError). UNBLOCK: operator COW DSN → T-MIG-022 tools both postures, or R0 merge-intake re-execution (T-MIG-007 precedent). R0 expectation: Pass B 15/15 after F-1+F-2, Pass A 25/25.
+
+Stage Summary:
+- T-MIG-023 IN_REVIEW: both conditional-exit port divergences fixed with pinned laws; all local gates green; live replay escalated B-2 with probe evidence. PR opened same session. Wave-2 exit gate becomes fully actionable on replay (F-3 stability ruling stands pending R6 re-pin).
