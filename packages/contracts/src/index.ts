@@ -21,3 +21,5 @@ export * from "./auth";
 export * from "./content";
 export * from "./curriculum";
 export * from "./errors";
+
+export * from "./assessment";

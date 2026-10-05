@@ -537,3 +537,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-006 CLAIMED; implementation (the assessment.ts port + parity tests) follows in this branch's next commits; orientation entry above rides this PR per the w0a precedent so the Phase-1 gate is satisfied for this lane in the same merge.
+
+---
+Task ID: T-MIG-006 (completion entry)
+Agent: R1-contracts-c (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Wave-3 assessment-loop zod contracts — ported, gated, IN_REVIEW
+
+Work Log:
+- Read the frozen assessment surface constraint-for-constraint: all 11 records in assessment/dto/ + the five controller files incl. their nested records (PaperView/PaperDetailView/PaperQuestionView; PartSelfMark/SelfMarkRequest/SelfMarkView/PartView) + the construction sites that decide null-vs-empty on the wire (AssessmentService.submit :96-135; AttemptHistoryService.historyFor :60-130) + Answer.java:34 / Attempt.java:82 (the two MarkingState domains) + Question.java:26-27 / QuestionPart.java:31-39 / ServableQuestionService.specPointRefs :110-140.
+- Ported packages/contracts/src/assessment.ts: 4 request schemas (jakarta constraints verbatim: @NotNull UUIDs, @NotNull @Min(0) Long, @Min(1)@Max(5) Integer WITHOUT @NotNull → nullish, @Size(max=4000) with UTF-16 parity, @NotEmpty @Valid cascade, primitive-boolean null→false preprocess per Boot's disabled FAIL_ON_NULL_FOR_PRIMITIVES) + 13 response view schemas (present-or-null, never absent; capture-unproven tags where no construction path proves nullability) + both MarkingState enums / Provenance / family-type / SpecPointRef / param + path bundles. Shared enums imported from ./content — no duplicated value lists (stack disclosure in the yaml).
+- Encoded the boundary's true accept/reject sets, including two captured-behaviour flags for the port lane: SelfMarkRequest null parts → core NPE → 500 (schema faithfully accepts; divergence call = R0), and the duplicate-part 400 with the controller's exact message encoded as superRefine. Jackson scalar→boolean coercion documented as the port layer's binding-shim duty (T-MIG-010 precedent) — not silently dropped.
+- Gates: bun install frozen (bun.lock byte-identical); typecheck x4 exit 0; bun test apps/api packages → 185 pass / 0 fail / 4 skip (assessment.test.ts contributes 53 pins); golden --selftest OK.
+- H-1 (honest disclosure): one initial test failure was the TEST's misreading of zod strictness (expected rejection of unknown option keys; zod strips them by house convention) — test corrected to pin the strip semantics; no schema constraint was widened anywhere.
+
+Stage Summary:
+- T-MIG-006 IN_REVIEW: branch t-mig-006/r1c (claim commit 7d33d04), receipt .syllabai/receipts/T-MIG-006/run-001-gates.json, PR titled "T-MIG-006: wave-3 assessment-loop zod contracts" — STACKED on PR #18, merge-order note (18 → 6) in the PR body for R0. Wave-3 port lanes (T-MIG-030..034) are contracts-unblocked on merge. Follow-ups filed in the yaml's next_safe_actions: smartmark/teacher-marking/test-builder/transcription DTO surfaces (other packages — W3 remainder/W5), R1 consolidation of the duplicated javaIntParamSchema mirror post-#18, R6 flags for the first attempt-surface capture (primitive-boolean null binding; partial self-mark behavior).
