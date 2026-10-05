@@ -1,0 +1,29 @@
+{
+  "schema": "llm-shadow/v1",
+  "seam": "smart-mark-prose",
+  "view": "feedback-explanation",
+  "surface": "w3-smartmark",
+  "case": "explain-001",
+  "recordedAt": "2026-10-05T15:55:02Z",
+  "provenance": {
+    "modelId": "shadow-synthetic-v0",
+    "promptHash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "sampling": { "temperature": 0.2 },
+    "posture": "LIVE"
+  },
+  "artifact": {
+    "view": "feedback-explanation",
+    "partId": "00000000-0000-4000-8000-0000000000a1",
+    "text": "Your two awarded marks rest on solid reasoning: you stated that light energy is absorbed by the pigment in the leaf, and you identified the conversion into chemical energy. The remaining 1 mark sits on the storage step, which your answer did not name.",
+    "modelId": "shadow-synthetic-v0",
+    "generatedAt": "2026-10-05T15:55:02Z"
+  },
+  "anchors": [
+    "light energy is absorbed by the pigment",
+    "conversion into chemical energy",
+    "storage step"
+  ],
+  "forbidden": [
+    "each response is compared against every scheme requirement and the candidate earns the point only where the wording matches the scheme exactly"
+  ]
+}
