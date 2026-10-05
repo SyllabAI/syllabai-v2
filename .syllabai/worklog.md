@@ -1211,3 +1211,20 @@ Work Log:
 
 Stage Summary:
 - Sweep-4 merged two PRs (#34, #35), audited the third (#36) post-merge under a disclosed operator delegation, and filed E-2 with a fix sketch instead of re-litigating the merge. Wave-1 fully closed incl. the live-flow escalation (T-MIG-035 DONE). Wave-3 train: 030 DONE (conditions), 031 claimed, 032..034 seeds open. Standing register: E-2 (r7a, blocks 1 replay case), F-1/F-2 content fixes (sketches in receipts/T-MIG-022/), F-3 re-pin -> THIS lane now executing as T-MIG-036, H-2 apply-reset divergence (r7a), CI-side Neon replay runner (operator), T-MIG-002 baseline-SQL repair, PAT rotation, flaky unit test watch (one occurrence, identity uncaptured).
+
+---
+Task ID: R0-COLLISION-1 (section 2.1 arbitration: W2-F3 double-claim - T-MIG-024 wins, T-MIG-036 released)
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Arbitrate the W2-F3 collision between PR #37 (T-MIG-024, R4-api-b) and PR #45 (T-MIG-036, R0's own claim).
+
+Work Log:
+- MECHANICAL RULING (timestamps verifiable on refs, ruling posted on #37 as comment 5991610725): earliest claim = T-MIG-024, claim commit a24c970 author-date 08:44:32Z (PR #37 created 08:51:28Z); R0's T-MIG-036 claim ~09:1xZ - late by ~26-30 min. R4-api-b's zero-collision scan was sound AT claim time (F-3 unclaimed sighted); R0's scan ran at cycle START and was not re-verified immediately before claiming - the five-PR burst (#37/#38/#40/#41/#42) opened in between and #37 was missed. PROCESS MISS recorded on the R0 side: the scan discipline (fresh ls-remote + open-PR query AT claim time, not before the cycle) is reaffirmed for ALL lanes including R0.
+- DISPOSITION: PR #45 CLOSED unmerged (close receipt 5991617793); branch t-mig-036/r0 deleted; id T-MIG-036 returns to the free pool (its yaml never merged - zero namespace damage). T-MIG-024 id CONFIRMED (024 free on main, zero duplicates).
+- CONFLICT DISCLOSURE: R0 was a party and ruled AGAINST its own claim; the implementation review of #37 goes to an independent lane (R4-api-b authored; R0 recused from this item's substance review). Six technical review criteria posted on #37 from the released parallel implementation (multiset-vs-set duplicates guard; tolerate-composition order; per-case scoping; byte-identity of captured data; frozen-law re-read; flake escalation).
+- FLAKE ESCALATION: #37's gates record the register flake as 1 fail (re-run green) - SECOND fleet occurrence (first: main during the T-MIG-017-era pass). On a third occurrence: root-cause with the test identity captured.
+- OTHER COLLISIONS SIGHTED, NOT ARBITRATED THIS CYCLE (directive step 7 - R0 stopped after its own item): T-MIG-023 appears in BOTH #38 and #41 (double-claim or refile - needs the same mechanical timestamp check); #42 (W2-F1 via w2-f1/r3c) vs #38/#41 (both citing F-1 content fixes) - possible F-1 scope overlap across three PRs. Arbitration queue for the next R0 pass or operator direction.
+
+Stage Summary:
+- W2-F3 resolved: T-MIG-024 (PR #37) owns it; R0 released cleanly with the ruling + review criteria on record. Drain-cycle queue fully claimed across the fleet: W2-F1 (#42 + T-MIG-023 overlap TBD), W2-F2 (t-mig-023/r1 sighted), W2-F3 (#37), T-MIG-002-R (#44 w0a).
+
+R0-integrator | drain cycle: synced (main daad88e->0cd360b), merged #34 (T-MIG-031 claim) + #35 (T-MIG-035 live-flow, after R0 intake 4442cfb), audited #36 post-merge under disclosed operator delegation (trace 1a10b1d0c70818a9) and FILED E-2 w/ fix sketch (r7a: noop-default evidence wiring vs captured evidenceEmitted pin; ~5 lines), housekeeping 0cd360b (030 DONE w/ conditions, 035 DONE), claimed W2-F3 as T-MIG-036 then RELEASED it on the section 2.1 collision (T-MIG-024/PR #37 earliest by ~26 min; ruling + 6 review criteria on #37; own process miss recorded) | IDLE | suggestion: next round - assign E-2 to r7a (unblocks the 030 replay case), mechanically arbitrate the T-MIG-023 double-claim (#38 vs #41) and the F-1 scope overlap (#42 vs #38/#41) by claim-commit timestamps, and root-cause the register flake on its third occurrence.
