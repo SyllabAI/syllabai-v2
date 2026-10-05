@@ -1991,3 +1991,20 @@ Work Log:
 
 Stage Summary:
 - Board after this pass: every merged card reflects merged reality; zero open PRs; active work = r4's T-MIG-033 tranche-2 (gate satisfied) + operator-routed register items (PAT rotation, AGENT_BRIEFING env-rehydration note, Wave-4 ports 041/043). w0a STOPS — no self-filed wave work; next word awaited.
+
+---
+Task ID: R7a-ROUND-8 (review+merge sweep: #60 + #62 merged, #50 held; operator-authorized)
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Operator round-8 directive (trace 1a10d0b6f0bf404d): "Check if R0 has merged or not. If not, review+merge yourself and continue working."
+
+Work Log:
+- SYNC on a wiped sandbox (reset #3; re-clone + PAT re-seed): my two open PRs were ALREADY merged by R0/lane intake before this round — #49 (H-2, via 9bb8c60) and #57 (T-MIG-040-PREP, via 5ff760d). The "if not" self-merge branch never triggered for MY authorship; the sweep turned to the open queue.
+- Open queue found: #50 (T-MIG-033/r4), #60 (T-MIG-038/r1c), #62 (T-MIG-044/r4b) — none authored by this lane, so the authors-never-self-merge rule is preserved under the operator's delegation.
+- #50 DISPOSITION: HELD — head unchanged at 1f4043c since R0's blocking review (F-33-1 five-states law, comment 5997573821); the author fix has not landed and merging a known-divergent port would override R0's standing HOLD FOR AUTHOR. Sweep note posted on-thread for r4. NOT merged by design.
+- #60 REVIEWED (comment 5999614250) + MERGED (2d4a884): fence clean (contracts-only); DecayParams constants + constructor guard messages verbatim vs frozen 6cad6ef; BKT paper defaults consistent with LearnerProperties normalization; CardSchedule shapes cross-checked against my own W4 capture (contract and capture agree); gates re-executed receipt-exact on head 76d2efb (516/503/13/1327 = base 472 + 31 pins/+68 expect). The lane landed its own intake (c071c42) mid-review — adopted it after re-verifying gates (712/0/13/1924 on that head); my parallel intake merge was abandoned as redundant (no force-push anywhere).
+- #62 REVIEWED (comment 5999657703) + MERGED (d9a48a6): read-only replay doctrine verified (never captures/edits/re-pins; divergences reported, never auto-fixed); neon-branch COW create/drop + 404-verify + masked secrets; vendored apply-reset.ts byte-identical to as-run v1 (sha 32fee89d) with the H-2 divergence preserved-intact — disposition CONFIRMED CORRECT by the H-2 owner lane (my apply-reset-v2.ts stays canonical for future curriculum postures); fence verified (zero golden/cases + runner.ts touches); gates re-executed on the merged head (640/0/1705) and w4-readiness READY (57/0) after the README/worklog unions.
+- POST-MERGE MAIN GATES (main 78a2512 incl. w0a's card-flip housekeeping): typecheck x4 exit 0; bun test 712 ran / 0 fail / 13 skip / 1924 expect; golden selftest OK; w4-readiness READY (57 cases, 0 findings).
+- Board after sweep: zero r7a-actionable cards — 033 pending r4's F-33-1 fix, 036/037/039/040-PREP card flips are R0's, T-MIG-045 claimed by r4b (head t-mig-045/r4b active), t-mig-037/r8-hub is r8's hub-surface branch. No self-filed wave work (standing round-6 rule). LANE IDLE.
+
+Stage Summary:
+- Round 8 closed: 2 independent reviews filed on-thread, 2 merges executed under the explicit operator delegation (#60 2d4a884, #62 d9a48a6), 1 PR correctly left held (#50 — R0's blocking finding stands), post-merge main green. Lane STOPs; awaiting operator/R0 direction.
