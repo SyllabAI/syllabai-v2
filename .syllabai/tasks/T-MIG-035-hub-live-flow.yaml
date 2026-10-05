@@ -1,0 +1,53 @@
+version: 1
+task:
+  id: T-MIG-035
+  title: "Hub live-flow verification — T-MIG-011's escalated remainder: hub auth surface vs the v2 api on a task-owned Neon branch (strangler env flipped; rate-limit/audit write paths exercised); self-filed per the 013/020/021/030 precedent"
+  owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — routed by OPERATOR WORD trace 1a10b2e6fc57b639 (\"T-MIG-011-adjacent hub work. Check if already done\"); lane holds the verified NEON_PAT and the proven branch/boot/synthetic-account mechanics (T-MIG-004 run-002 F-5 capture)"
+  status: CLAIMED # claimed_at 2026-10-05T08:4xZ; this commit is the branch-start claim per §2.1
+  priority: P2
+  wave: 1 # completes the last open item of the Wave-1 hub adapter (T-MIG-011 DONE b3b33031 carried this escalation forward: "R6 capture route or branch DSN, operator's call")
+  deps: [T-MIG-011, T-MIG-010, T-MIG-016, T-MIG-014] # the check exercises 010's auth surface + 016's rate-limit filter + 014's db drivers on write paths
+  execution_record: >
+    (claim entry 2026-10-05T08:4xZ) Pre-claim verification at main daad88e:
+    the live auth-flow check is the ONE surviving open item of T-MIG-011
+    (worklog rows: "REMAINDER ESCALATED (§6.1, honest — not silently
+    dropped)" and "Escalation that survives the merge: the Neon-branch-gated
+    live auth-flow check (rate-limit/audit write paths) — R6 capture route
+    or branch DSN, operator's call"). Zero task yamls own it; T-MIG-031..034
+    are RESERVED by the ratified 030..034 wave-3 split map (R0 arbitration,
+    PR #31 verdict) — this filing takes the next free id (035; 036 checked
+    free, untouched). Operator routing arrived with the NEON_PAT already
+    verified in-session (T-MIG-004 run-002: Neon API v2, project
+    billowing-cherry-15418366; COW branch creation + branch-local role
+    password reset mechanics proven; production untouched).
+    PLAN: (1) provision COW branch hub-live-flow/2026-10-05 off production;
+    (2) boot apps/api against the branch (DATABASE_URL=branch DSN,
+    synthetic 32B JWT secret, synthetic teacher join code, LLM test mode —
+    env.ts fail-fasts on the first two); (3) verify the hub's ACTUAL
+    strangler decision by importing apps/hub/src/lib/api.ts routing
+    (resolveBase/apiPath) in a bun harness with NEXT_PUBLIC_API_V2_BASE_URL
+    set: /api/v1/auth/* MUST resolve to the v2 base, non-auth surfaces MUST
+    stay on the core base; (4) run the live flow through that constructed
+    URL: synthetic learner register -> login -> /me, asserting the
+    AuthResponse shape the hub consumes (token + user fields -> localStorage
+    keys syllabai.token/syllabai.user); (5) verify the DB write paths on the
+    BRANCH: users row + rate-limit counters (016 filter in-memory) + audit
+    rows where the surface writes them; (6) receipts + worklog + PR.
+    Browser-level UI drive (next build+start + headless) is a stretch goal
+    recorded honestly if the sandbox declines. Zero production contact; all
+    writes land on the COW branch only. No code changes expected in this
+    task (verification + receipts); if a defect is found it is FILED, not
+    silently fixed (§7).
+scope:
+  allowed:
+    - ".syllabai/tasks/T-MIG-035-hub-live-flow.yaml (this file — status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-035/**"
+    - ".syllabai/worklog.md (append)"
+    - "scratch/** (local verification harness, never committed)"
+  forbidden:
+    - "apps/hub/** (T-MIG-011 DONE surface — read-only; defects are FILED)"
+    - "apps/api/** (T-MIG-010/016 DONE surfaces — read-only)"
+    - "packages/**, golden/**, docs/**"
+    - "upstream syllabai-core / syllabai-hub writes (C1 — read-only)"
+    - "production Neon writes (COW branch only; production endpoint never contacted for writes)"
+    - "widening any schema or weakening any golden case to make a check pass (§7 anti-pattern)"
