@@ -1503,3 +1503,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-034 implementation COMPLETE locally (both surfaces, 33 pins, gates green, zero golden drift); card IN_REVIEW-pending-PR under B-1. The route exposes the two dormant seams explicitly (transcription 503 parity; analytics 501 with task reference) so the LLM-chain lane and the future analytics lane can wire in without touching this surface. Board unchanged otherwise.
+
+---
+Task ID: T-MIG-034 PR opened (B-1 resolved)
+Agent: superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Close out the round-6 cycle — push, PR, independent-review request after operator PAT reissue
+
+Work Log:
+- B-1 RESOLVED: operator reissued GITHUB_PAT/NEON_PAT (chat, session web-06433aa8); secrets rehydrated at .secrets/env.sh (0600). The wipe->local-only window 15:19Z-15:54Z stands as disclosed in the claim/run-001 receipts.
+- ROUND-6 sync discipline: fresh fetch before push — origin/main had moved c920eea -> c0d8fa0 (R0-ROUND-6b, T-MIG-033 disposition). Collision re-check CLEAN (no t-mig-034* remote heads; none of the 7 open PRs references 034). Intake merge per the directive dirty-main rule.
+- Merge-intake 9817c02: worklog append-only union, CHRONOLOGICAL (claim 15:19:59Z -> R0-ROUND-6b 15:31:14Z -> run-001 15:37:43Z); resolver scripts/r0-intake-034-worklog-union.py with asserts A1 conflict structure, A2 inverse-removal byte-identity for BOTH parents, A3 entry split, A4 containment+ordering, A5 prefix preservation — all green, zero residual markers.
+- Gates RE-RUN on merge head 9817c02: typecheck x4 exit 0; bun test 514 pass / 0 fail / 13 skip, 1407 expect (receipt-exact); golden --selftest OK (113 untouched); scope fence 21 files, zero bun.lock/db/env drift (b7ef4a5 standing gate).
+- Pushed t-mig-034/r3a @ 9817c02 (first push 15:54:20Z via one-shot credential helper; nothing force-pushed, branch is new). PR #56 opened with full disclosures (doctrine split, OUT-OF-FENCE fd854c5 mounts for R0 ratification, B-1 provenance, truncated-directive flag, merge-intake method). Review request comment 5998094675 posted; formal reviewer assignment skipped per the shared-account precedent (#36/#50) — comment is the review record.
+- PR state: mergeable=true, mergeable_state=clean, 5 commits, 21 files. Card T-MIG-034 IN_REVIEW (yaml @ c626e30 unchanged).
+
+Stage Summary:
+- Round-6 cycle CLOSED from this lane: T-MIG-034 implemented (test-builder deterministic golden path + transcription LLM-OUTPUT shell, behavioural gates), intake-merged, pushed, PR #56 open and clean, independent review requested. Author recusal: no self-merge, no self-review. STOPPING per the round-6 directive (no self-reported wave work); next action belongs to the reviewer/R0 merge-intake.
