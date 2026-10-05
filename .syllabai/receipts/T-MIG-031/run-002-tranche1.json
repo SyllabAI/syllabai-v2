@@ -1,0 +1,67 @@
+{
+  "task": "T-MIG-031",
+  "run": 2,
+  "kind": "TRANCHE_1",
+  "lane": "R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "branch": "t-mig-031/r3a",
+  "base": "merge-intake 0b8422a (post-#31 main daad88e + claim e57a393)",
+  "scope_landed": {
+    "services/questions": [
+      "sql.ts (structural SqlFn)",
+      "families.ts (QuestionFamilyAssembler port: SME ref convention, 23 pinned interleaved orders VERBATIM, numeric-aware source compare, first-seen tie-break)",
+      "servable.ts (ServableQuestions: one-owner servability spec, V20 paper-level gate incl. single-question fast path, batched current-versions, specPointRefs PRIMARY-first code-ordered through knowledge_nodes join, projectAll projection laws)",
+      "taxonomy.ts (QuestionTaxonomy: PART_OF grouping with deterministically-lowest parent on duplicate structural edges, browsability guards, deduped per-section + per-view census, read-only subtree CTE with the graph.node 404-first contract)",
+      "reveal.ts (MarkSchemeReveal: parseRevealPolicy fail-fast, VALIDATED_ONLY default, REJECTED/FLAGGED never reveal, 204-withhold nulls, part-scoped + general point grouping, derived schemeMarks)",
+      "index.ts (buildQuestionsModule factory)"
+    ],
+    "services/exam-papers": [
+      "sql.ts",
+      "papers.ts (ExamPaperViews: list newest-first w/ subjectId filter, detail 404 NotFoundException('exam paper', id), batched latest-version heads, PaperQuestionView null-vs-empty facts, T-C28 shared specPointRefs)",
+      "index.ts"
+    ],
+    "tests": [
+      "test/questions/helpers.ts (fakeSql rowsFor structural duplicate \u2014 no cross-fence imports)",
+      "test/questions/{families,servable,taxonomy,reveal}.test.ts (34 tests)",
+      "test/exam-papers/papers.test.ts (4 tests + 9 more across files: 38 total new)"
+    ]
+  },
+  "gates": {
+    "typecheck_x4": "exit 0 (contracts/shared/db/api)",
+    "bun_test": "413 pass / 0 fail / 13 skip, 1062 expect() = main baseline 375/931 (post-#31 main) + this tranche's 38/131 exactly \u2014 zero test loss, additive only",
+    "golden_selftest": "OK",
+    "golden_replay": "NOT RUN \u2014 11 slice cases gate on the replay env (CI-side Neon runner per R0's standing proposal); env-blocked follow-up posture per T-MIG-020/021, no case weakened",
+    "upstream_writes": "zero (no Neon, no frozen core, no golden edits; read-only SELECT-only service layer)"
+  },
+  "law_highlights": [
+    "ServableQuestionSpec verbatim: !active -> reject; non-STRUCTURED -> serve; STRUCTURED -> currentVersion != null && VALIDATED (findWithOptions has NO SQL active filter \u2014 the spec owns it; findById paper gate runs BEFORE projection, matching Java call order)",
+    "V20 paper-level gate: blockingPaperIds = exam_papers where validation_state in (REJECTED, FLAGGED); paper-less SEED_DEMO orphans skip the consult entirely (paperBlocksServing fast path)",
+    "specPointRefs: question_spec_points JOIN knowledge_nodes for code+applicability (SmeQuestionSpecPointRepository.findCodesByQuestionIdsIn projection); PRIMARY-first then code-ordered; honest-absent empty lists (T-C28); the exam-papers detail reuses the SAME method \u2014 no second SQL contract",
+    "Family assembler: SME_REF ^(sme-eq-.*)-q(\\d+)(-p(\\d+)|-s)?$; member order = pinned (23 byte-identical keys) else plain/-pN/-s; serving order = numeric-aware source, then qNum, then first-seen input order (CI 36011306580 tie-break law), key last-resort only",
+    "Taxonomy: topic reachability = primary + secondary question_topics deduped; PART_OF parent merge keeps the deterministically-LOWEST parent id (duplicate structural seed edges); browsability = node in graph AND parent in graph; badge==list-length invariant; sections sorted by parent code, topics by topic code",
+    "MarkSchemeReveal: policy from env (parse fail-fast at construction = the @Value+valueOf boot law); REJECTED/FLAGGED never reveal under either policy; SUGGESTED only under INCLUDE_SUGGESTED carrying its state; unservable question 404s before any scheme lookup; schemeMarks derived (points sum), never a column",
+    "ExamPaperController detail: PaperView.from verbatim mapping; latest version head per question with versionValidationState/currentVersionId null + partCount 0 in the no-version branch; difficulty-ordered questions"
+  ],
+  "disclosed_deviations": [
+    "Tranche-1 binds @syllabai/contracts wire types directly (z.infer) instead of the local-types-first staging T-MIG-021/030 used \u2014 T-MIG-018 (PR #26) is already merged, so the constraint that forced the staging does not exist; services never call zod (documented in servable.ts header)",
+    "Family view `ref` for a non-corpus row with null externalRef falls back to the family key (row id): the T-MIG-018 questionFamilyViewSchema.ref is non-nullable (ratified wire law); Java would emit null here \u2014 pinned by test with a comment; surfaced to R0 in case R6's re-probe ever captures a null-ref family (contracts rule: Java record wins, schema gets fixed THEN)",
+    "ExamPaperController.get's per-question versions lookup (N+1) ported as ONE batched statement with the ORDER BY v.question_id, v.version desc shape; first row per question = latest (R-M-LAZY doctrine, the frozen repo's own batched-counterpart precedent)",
+    "Subtree CTE declared read-only inside services/questions (KnowledgeNodeRepository.findSubtreeIds verbatim + graph.node 404-first): the content lane's CurriculumScopeResolver keeps its copy private, exported shape does not fit this contract (disclosed at claim)",
+    "fakeSql test helper structurally duplicated in test/questions/helpers.ts (per-module seam convention; no cross-fence test imports)"
+  ],
+  "fence_audit": "12 files, all inside scope.allowed (services/questions/**, services/exam-papers/**, test/questions/**, test/exam-papers/**, receipts/T-MIG-031/**, task yaml status/execution_record only, worklog append) \u2014 zero forbidden paths, zero touches on T-MIG-030's services|routes|test /assessment/** globs, zero packages/contracts edits, zero index.ts touches (mounts ship at tranche-2 as the flagged OUT-OF-FENCE commit)",
+  "run_003_addendum": {
+    "note": "gates re-stamped on the post-#36 merge-intake head cd35708 (origin/main 8f67d05 = PR #34 claim merge db4268d + PR #36 r7a-ext E-1)",
+    "typecheck_x4": "exit 0",
+    "bun_test": "421 pass / 0 fail / 13 skip, 1126 expect() (main grew by PR #36's E-1 unit tests + #34's own claim bookkeeping between the two stamps; this tranche's 38/131 additive either way \u2014 zero test loss)",
+    "golden_selftest": "OK",
+    "test_count_decomposition_note": "413 (tranche-1 head) -> 421 (intake head): +8 from main-side lanes landed via #36/#34 windows (r7a E-1 +2 and T-MIG-035 hub-live-flow suite); R0 can decompose against its own post-#36 main stamp"
+  },
+  "drain_cycle_addendum": {
+    "directive": "operator drain cycle trace 1a10b52e36b4dc25",
+    "intake": "origin/main 0cd360b (R0 sweep-4) merged into t-mig-031/r3a; sole conflict = worklog append tail, append-only union, zero code conflicts",
+    "gates_re_stamped": "typecheck x4 exit 0; bun test 421/0/13skip (1126 expect); golden selftest OK",
+    "pr43": "back to mergeable-clean; independent review requested per the recusal rule; R0 merge-intake ready",
+    "queue_scan": "W2-F1 -> PR #42 (r3c) + T-MIG-023 overlap; W2-F3 -> T-MIG-036 (R0's own claim per sweep-4); T-MIG-002-R -> PR #44 (w0a); W2-F2 -> T-MIG-023 (PRs #38/#41). Zero unclaimed queue items -> no new claim for this lane (one task per agent)",
+    "next": "one independent review of another lane's PR (step 5), then status receipt + stop (step 7)"
+  }
+}

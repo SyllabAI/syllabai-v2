@@ -1,0 +1,24 @@
+{
+  "task": "T-MIG-032",
+  "run": 1,
+  "kind": "CLAIM",
+  "lane": "R7a (agent-da4ab8, zai-web session web-da4ab8b1)",
+  "claimed_at": "2026-10-05T09:00:00Z",
+  "branch": "t-mig-032/r7a",
+  "base": "8f67d05 (origin/main)",
+  "claim_pr": "to be opened with this commit",
+  "collision_scan": {
+    "yaml_on_main": "zero T-MIG-032 yamls (ls-tree .syllabai/tasks/)",
+    "remote_heads": "zero t-mig-032* branches (ls-remote)",
+    "open_prs": "#37 (T-MIG-024 r4) + #38 (T-MIG-023 r1) — zero scope overlap",
+    "verdict": "0/0 — clean claim"
+  },
+  "basis": "self-filing precedent T-MIG-013/020/021/030/031; the 032 mapping = R0's ratified split map (PR #31 verdict 5990832802)",
+  "surface": "5 golden cases (2 self-mark + 3 smart-mark incl. shell-shared unauthed); LearnerSelfMarkController/Service + StudentSmartMarkController/Service + the shared SmartMarkService pipeline law (validators trio, kappa release gate, reveal policy, append-only results) + the E-1 evidence claim contract bound at T-MIG-030 tranche-2",
+  "disclosed_quirks": [
+    "captured self-mark unknown-attempt = 500 internal_error while smart-mark same-id = 404 — F-1-class as-captured divergence, R0 rules; port yields 404 naturally and cannot manufacture the 500 without lock-failure emulation",
+    "smart-mark response schemas absent from contracts (R1's T-MIG-018) — local view types at tranche-1, R1 top-up requested",
+    "kappa gate reads teacher human marks — 033's queue feeds the sample; cross-slice read-only contract"
+  ],
+  "tranche_plan": "tranche-1 = services/selfmark + services/smartmark + stubbed-sql tests (contract-independent); tranche-2 = route factories + zod wiring + flagged OUT-OF-FENCE mounts + replay (CI-side runner pending)"
+}

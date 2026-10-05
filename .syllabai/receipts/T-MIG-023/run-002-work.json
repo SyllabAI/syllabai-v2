@@ -1,0 +1,58 @@
+{
+  "task": "T-MIG-023",
+  "run": "run-002-work",
+  "ts": "2026-10-05T09:05:00Z",
+  "session": "web-ab7a0483-4415-4f31-ad16-b00a0e10053e",
+  "base": "t-mig-023/r1 @ f56e2e9 (main ffc2876)",
+  "work": {
+    "F-1": {
+      "finding_ref": ".syllabai/receipts/T-MIG-022/run-001.json findings[F-1] (1021 instances, all @ createdAt) + run-001-diagnosis.txt",
+      "law": "Jackson Instant serializer shortest-round-trip: fraction groups of three, trailing zero-GROUPS trimmed (578011us -> .578011Z; 578ms -> .578Z; zero -> no fraction)",
+      "fix": [
+        "all consumed timestamptz columns in content repositories now selected verbatim: to_char(col at time zone 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS.US') — naive-UTC text, TZ-proof, micros survive; 10 sites (3 documents selects + DOCUMENT_COLUMNS, 3 exam_papers selects + PAPER_COLUMNS, 1 audit select)",
+        "javaInstantText() renderer (repositories.ts, exported) implements the Jackson law; replaces the instanceof-Date/toISOString round-trip at toDocumentRow, toPaperRow, findPaperAudit mapper",
+        "audit ORDER BY qualified to content_review_audit.occurred_at (true column, no alias-order dependence)",
+        "NO packages/db source changes — repo-layer SQL shaping only; T-MIG-014 dispatch untouched"
+      ]
+    },
+    "F-2": {
+      "finding_ref": ".syllabai/receipts/T-MIG-022/run-001.json findings[F-2] (content-reader-real-page-text-200: expected 716 chars, actual \"\")",
+      "law": "frozen controller binds the FULL CanonicalDocumentDto via Jackson (:97-105) then DocumentPageText.of; §8 wire names: camelCase families, SNAKE_CASE element keys (page_number/reading_order — CanonicalDocumentDto.java:102-114, contracts canonicalElementBase)",
+      "fix": [
+        "documentPageText (reader.ts) now binds §8 snake_case element keys; camelCase keys intentionally no longer match (they bind nothing in Java either — the old port's camelCase read WAS the drift)",
+        "Jackson Integer-coercion parity: exact-int numeric strings bind (_parse_int_primitive / contracts javaJsonInt law, NUMERIC_TEXT regex replicated with source header); bind violation THROWS (corrupted-row R10 law — error boundary renders fixed 500, never row content; route calls pageText unguarded, throw = 500 parity with the frozen IllegalStateException path)",
+        "[null] elements skipped (Java element != null guard parity); text scalar->String coercion parity; figures family not collected (Java law: text-bearing families only)",
+        "stable nullsLast reading_order sort preserved byte-for-byte from the prior port"
+      ]
+    },
+    "pins": [
+      "NEW apps/api/test/content/fidelity-fixes.test.ts — 9 tests / 25 expects: T-MIG-022 capture vectors verbatim; fraction law incl. 000500 (leading zeros), 578010 (trailing zero inside group), 000000/absent (no fraction); §8 binding + camelCase-negative; coercion \"4\" and \" 4 \"; violation fail-loud x2; family/null-element/page-gap laws; verbatim 716-char vector from golden/cases/content-reader-real-page-text-200.json incl. order-restoration after shuffle",
+      "CORRECTED apps/api/test/content/routes.test.ts documentPageText pin (T-MIG-020-era) to the §8 wire law — assertions unchanged, wire names fixed; the old pin pinned the drift"
+    ]
+  },
+  "gates": [
+    {"cmd": "bun install --frozen-lockfile (fresh clone, 930 pkgs)", "result": "clean"},
+    {"cmd": "bun run typecheck (x4 workspaces)", "result": "exit 0"},
+    {"cmd": "bun test", "result": "356 pass / 13 skip / 0 fail (928 expects, 21 files)"},
+    {"cmd": "bun run golden -- --selftest", "result": "OK"}
+  ],
+  "blockers": [
+    {
+      "id": "B-2",
+      "kind": "credential-infrastructure",
+      "detail": "live replay (Pass A seed + Pass B prod) NOT RUN: the golden COW-branch DSN died with the harness workspace wipe (.env lost between turns — see run-001-claim.json workspace_incident); ambient DATABASE_URL (len 36) is a dead local placeholder — probed via postgres.js: URL host empty, connect AggregateError (probe evidence: scripts/tmig023_db_probe.ts logic, run in-repo as .tmp-tmig023-probe.ts, file removed post-run)",
+      "consequence": "R0's replay expectation stands as review-time verification: Pass B 15/15 after F-1+F-2 (13/15 after F-1 alone per R0 sketch); Pass A 25/25 no-regression",
+      "unblock": "operator supplies live COW-branch DSN (golden-capture/2026-10-05 posture or fresh COW) -> boot-with-timeout.ts + replay-content-cases-v2.ts both postures (tools under .syllabai/receipts/T-MIG-022/tools/); R0 merge-intake re-execution with its own DSN equally suffices (T-MIG-007 intake precedent)"
+    }
+  ],
+  "fence_audit": {
+    "touched": [
+      "apps/api/src/services/content/repositories.ts",
+      "apps/api/src/services/content/reader.ts",
+      "apps/api/test/content/fidelity-fixes.test.ts (new)",
+      "apps/api/test/content/routes.test.ts (one pin corrected)",
+      ".syllabai/{tasks,receipts,worklog}"
+    ],
+    "untouched_forbidden": ["packages/db", "packages/contracts", "packages/shared", "apps/hub", "golden/cases", "t-mig-030/r7a files"]
+  }
+}

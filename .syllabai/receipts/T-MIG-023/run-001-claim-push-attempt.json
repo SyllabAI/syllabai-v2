@@ -1,0 +1,12 @@
+{
+  "task": "T-MIG-023",
+  "run": "run-001-claim-push-attempt",
+  "ts": "2026-10-05T08:17:31Z",
+  "attempt": "git push -u origin t-mig-023/r1 (claim commit d92cd10 over base ffc2876)",
+  "result": "BLOCKED",
+  "error_class": "no-credential",
+  "stderr_snippet": "fatal: could not read Username for 'https://github.com': No such device or address",
+  "diagnosis": "env GITHUB_PAT/GH_TOKEN/GITHUB_TOKEN len=0; no ~/.git-credentials, no ~/.netrc, no credential.helper; harness workspace reset also cleared any persisted state (see run-001-claim.json workspace_incident)",
+  "blocker_ref": "B-1",
+  "next": "operator supplies live GITHUB_PAT -> single-invocation chain (export + push + PR open via API) per T-MIG-005 run-003 precedent; then flip status IN_PROGRESS"
+}

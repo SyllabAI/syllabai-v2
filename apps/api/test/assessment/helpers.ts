@@ -142,13 +142,18 @@ export const FIXED_CLOCK = {
   now: () => new Date("2026-10-05T07:45:00Z"),
 };
 
-/** Spy publisher capturing publishMcq events (Observer seam pin). */
+/**
+ * Spy publisher capturing publishMcq events (Observer seam pin).
+ * Claims true (E-1: a real publisher fired the event) — the service must
+ * then issue the guarded evidence flip; tests pin both postures.
+ */
 export function spyPublisher() {
   const events: Array<Record<string, unknown>> = [];
   return {
     events,
     publishMcq: async (e: Record<string, unknown>) => {
       events.push(e);
+      return true;
     },
   };
 }
