@@ -1259,3 +1259,17 @@ Stage Summary:
 - W2-F3 resolved: T-MIG-024 (PR #37) owns it; R0 released cleanly with the ruling + review criteria on record. Drain-cycle queue fully claimed across the fleet: W2-F1 (#42 + T-MIG-023 overlap TBD), W2-F2 (t-mig-023/r1 sighted), W2-F3 (#37), T-MIG-002-R (#44 w0a).
 
 R0-integrator | drain cycle: synced (main daad88e->0cd360b), merged #34 (T-MIG-031 claim) + #35 (T-MIG-035 live-flow, after R0 intake 4442cfb), audited #36 post-merge under disclosed operator delegation (trace 1a10b1d0c70818a9) and FILED E-2 w/ fix sketch (r7a: noop-default evidence wiring vs captured evidenceEmitted pin; ~5 lines), housekeeping 0cd360b (030 DONE w/ conditions, 035 DONE), claimed W2-F3 as T-MIG-036 then RELEASED it on the section 2.1 collision (T-MIG-024/PR #37 earliest by ~26 min; ruling + 6 review criteria on #37; own process miss recorded) | IDLE | suggestion: next round - assign E-2 to r7a (unblocks the 030 replay case), mechanically arbitrate the T-MIG-023 double-claim (#38 vs #41) and the F-1 scope overlap (#42 vs #38/#41) by claim-commit timestamps, and root-cause the register flake on its third occurrence.
+
+---
+Task ID: T-MIG-030 E-2
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Execute R0's E-2 fix sketch (noop-default evidence wiring vs the captured evidenceEmitted pin)
+
+Work Log:
+- frozenParityEvidencePublisher added in routes/assessment/index.ts and wired as the buildAssessmentRouters default (claims TRUE per Attempt.java:159-161 domain law, emits nothing — event pipeline stays dormant as disclosed since tranche-1); noopEvidencePublisher stays the 032/033 publishGraded suppression TEST double (never live wiring).
+- 2 pin tests added (live claim true; noop false). run-004 e1_satisfaction refreshed with the E-2 addendum + gate re-stamp.
+- Gates: typecheck x4 exit 0; bun test 431/0/13skip 1101 expect (= post-#40 main 429/1099 + 2/2 exactly); golden selftest OK.
+- Replay note: the E-2 fix unblocks w3-history-after-submit-200 for the CI-side runner (the one case E-2 blocked).
+
+Stage Summary:
+- E-2 executed per R0's sketch, no service change needed (as predicted). PR to follow; merge per the drain-cycle rule (independent review / R0 — authors never self-merge).

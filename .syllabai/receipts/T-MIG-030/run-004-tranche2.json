@@ -42,12 +42,14 @@
     "bun_test": "400 pass / 0 fail / 13 skip / 1026 expect (= main 381/967 + 19 route tests/59 expects exactly)",
     "assessment_suite": "53/0 (34 tranche-1 + 19 route)",
     "golden_selftest": "OK (read-only)",
-    "replay": "NOT RUN — env-blocked (no local postgres; Neon network-gated), unchanged since rounds 4-5 and consistent with every lane's record; the 8 slice cases are wired for the CI-side replay runner per R0's proposal"
+    "replay": "NOT RUN — env-blocked (no local postgres; Neon network-gated), unchanged since rounds 4-5 and consistent with every lane's record; the 8 slice cases are wired for the CI-side replay runner per R0's proposal",
+    "e2_restamp": "typecheck x4 exit 0; bun test 431 pass / 0 fail / 13 skip / 1101 expect (= post-#40 main 429/1099 + 2 E-2 pin tests/2 expects exactly); golden selftest OK"
   },
   "e1_satisfaction": {
     "r0_condition": "E-1 BINDING for tranche-2 (R0 housekeeping daad88e): the evidence seam must maintain attempts.evidence_emitted per EvidencePublisher.java:37/53 + Attempt.java:159-161 — flip after successful publish, once-only guard binding for the 032/033 marking lanes' publish sites, unit test pinning post-publish true + second-publish no-op",
     "implementation": "publishMcq is a CLAIM (Promise<boolean> — markEvidenceEmitted parity: true = fired); the service issues the guarded flip 'update attempts set evidence_emitted = true where id = ? and evidence_emitted = false' ONLY after a successful claim; the `and evidence_emitted = false` predicate IS the once-only guard and the contract the T-MIG-032/033 publishGraded sites bind to; noop publisher claims false and issues nothing",
     "frozen_order_parity": "frozen AssessmentService.submit: attempts.save THEN publishMcq (managed-entity dirty check lands evidence_emitted=true); port: insert(false) -> publish -> guarded flip — same observable row state per write",
-    "tests": "+2 (claiming publisher flip fires after insert with the guard text; noop publisher issues no flip)"
+    "tests": "+2 (claiming publisher flip fires after insert with the guard text; noop publisher issues no flip)",
+    "e2_addendum": "E-2 (R0 fix sketch executed on t-mig-030/r7a-e2): buildAssessmentRouters now wires frozenParityEvidencePublisher (claims TRUE — Attempt.java:159-161 domain law — emits nothing; event pipeline stays dormant as disclosed since tranche-1). noopEvidencePublisher remains the 032/033 publishGraded suppression TEST double. 2 pin tests added (live claim true; noop false). run-004 gate counts superseded by the E-2 commit's re-stamp."
   }
 }

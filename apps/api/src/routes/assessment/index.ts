@@ -49,6 +49,7 @@ import {
   buildAssessmentModule,
   type AssessmentModule,
 } from "../../services/assessment";
+import type { EvidencePublisher } from "../../services/assessment/submit";
 import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "../../services/identity/users";
 import { apiError, BadRequestException } from "../../services/identity/errors";
@@ -274,6 +275,22 @@ export function createAttemptHistoryRouter(module: AssessmentModule): Hono {
 }
 
 /**
+ * E-2 (R0, T-MIG-030 DONE-with-conditions, fix sketch on the yaml): the LIVE
+ * route factory must wire a publisher whose claim is TRUE — the MCQ evidence
+ * flip is Attempt.java:159-161 domain law (publishMcq always fires at MCQ
+ * submit; the managed entity lands evidence_emitted=true at commit), so the
+ * captured w3-history-after-submit-200 pins attempts[0].evidenceEmitted=true.
+ * The noop default claimed false, suppressing the guarded flip on the live
+ * surface. This publisher claims true while emitting NOTHING — the event
+ * pipeline stays dormant (disclosed since tranche-1; the Observer contract is
+ * not golden-gated). noopEvidencePublisher remains the 032/033 publishGraded
+ * suppression TEST double — never the live wiring.
+ */
+export const frozenParityEvidencePublisher: EvidencePublisher = {
+  publishMcq: async () => true,
+};
+
+/**
  * Module + routers composition for the app root — mirrors
  * buildCurriculumRouters' shape exactly (env → requireDatabaseUrl →
  * createSql adapter from the identity module's tagged-template seam; the
@@ -283,7 +300,9 @@ export function createAttemptHistoryRouter(module: AssessmentModule): Hono {
 export function buildAssessmentRouters(env: Record<string, string | undefined> = process.env) {
   const databaseUrl = requireDatabaseUrl(env as { DATABASE_URL?: string });
   const sql = createSql(databaseUrl);
-  const module = buildAssessmentModule(sql);
+  // E-2: the live wiring claims evidence (Attempt.java domain law); unit
+  // tests inject their own doubles (spy claims / noop suppression).
+  const module = buildAssessmentModule(sql, frozenParityEvidencePublisher);
   return {
     module,
     attemptRoute: createAttemptRouter(module),
