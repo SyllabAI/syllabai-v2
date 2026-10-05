@@ -14,6 +14,7 @@
  * default (DECAY_CRON_ENABLED != "1" => 200 {status:"skipped"}) and touches
  * zero data on every path.
  */
+import { timingSafeEqual } from "node:crypto";
 
 /** UTC calendar-day window key (YYYY-MM-DD). The Wave-4 port owns the exact
  * V38 window semantics; the scaffold uses the UTC day so scheduled hits while
@@ -35,12 +36,24 @@ export type DecayCronDecision =
     }
   | { action: "run"; httpStatus: null; windowStart: string };
 
+/** Timing-safe bearer comparison (review finding R-2, self-review under
+ * delegated authority trace 1a10cbee26611c61): constant-time equality on the
+ * full "Bearer <secret>" payload, length-gated before timingSafeEqual. */
+function bearerMatches(authHeader: string | null, secret: string): boolean {
+  const expected = `Bearer ${secret}`;
+  const a = Buffer.from(authHeader ?? "", "utf8");
+  const b = Buffer.from(expected, "utf8");
+  if (a.length !== b.length) return false;
+  return timingSafeEqual(a, b);
+}
+
 /** Pure cron-invocation decision law (unit-tested; the route is a thin adapter).
  *
  * 1. Fail-closed auth: if CRON_SECRET is unset/empty, or the request's
- *    Authorization header is not exactly `Bearer <CRON_SECRET>`, refuse (401).
- *    Vercel Cron sends that header automatically when CRON_SECRET is set on
- *    the project; manual/local callers must present it explicitly.
+ *    Authorization header is not exactly `Bearer <CRON_SECRET>` (timing-safe
+ *    compare), refuse (401). Vercel Cron sends that header automatically when
+ *    CRON_SECRET is set on the project; manual/local callers must present it
+ *    explicitly.
  * 2. Env gate: DECAY_CRON_ENABLED != "1" => 200 {status:"skipped"} — the
  *    scheduled hit is a harmless no-op (§4.3 default until Wave-7 cutover).
  * 3. Otherwise the seam is invoked (which currently reports not-implemented).
@@ -65,8 +78,7 @@ export function decideDecayCron(input: {
     };
   }
 
-  const expected = `Bearer ${cronSecret}`;
-  if (authHeader !== expected) {
+  if (!bearerMatches(authHeader, cronSecret)) {
     return {
       action: "unauthorized",
       httpStatus: 401,
