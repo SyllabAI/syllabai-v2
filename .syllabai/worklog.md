@@ -875,3 +875,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-021 -> DONE (merged 9732a1e). Wave-2 curriculum READ surface live behind the golden gate. Queue after this merge: #26 (R1-contracts-c, renumber-to-018 refile pending — directive corrected after R0-REPAIR-1 took 017 for the golden-verify task). Branch sightings: t-mig-007/r6 (R6 lane, no PR yet). Board: T-MIG-011 CLAIMED (r5 silent ~13h — reassignment candidate). Standing operator items: reaffirm single-R0 authority after the #25 breach; CI-side Neon integration runner; T-MIG-002 baseline-SQL repair (F-5); PAT rotation (chat-transit).
+
+---
+Task ID: T-MIG-030 claim
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Self-file Wave-3 assessment-loop port slice A (AttemptController + AttemptHistoryController) and claim T-MIG-030
+
+Work Log:
+- Wave-2 closure verified first: T-MIG-021 DONE (my lane, merged 9732a1e via PR #28, F-1 ruled as-captured); #21 (T-MIG-016) and #22 (T-MIG-020) merged; board shows zero T-MIG-03x seeds. Claim surface for wave-3 ports is empty and #29's body pre-assigns ids T-MIG-030..034, so per the T-MIG-013/020/021 self-filing precedent this lane seeds slice A.
+- Claimed T-MIG-030 @ 2026-10-05T07:39:18Z on branch t-mig-030/r7a (base 5ee240e) after zero-collision scan (no 03x yaml on main or the capture branch; no t-mig-030* heads; open PRs #26/#29/#30 clean). Claim receipt: receipts/T-MIG-030/run-001.json.
+- Surface read from frozen core @ 6cad6ef: AttemptController (MCQ 201 auto-grade + structured 201 PENDING), AssessmentService (V20 paper gate, version-VALIDATED fail-closed 404s, duplicate/missing-part 400s, provenance strings), AttemptHistoryController/Service (limit clamp 50/100, options-label resolution, parts settle rule, KG topic, 220-char excerpt), AttemptRepository/AnswerRepository history legs. Evidence emission ports as an injected no-op-able seam (Observer contract, not golden-gated).
+- 8 golden cases pinned to the slice (2 unauthed 401s shell-shared); submittedAt/attemptedAt nanosecond volatility already in case tolerate lists — port writes full-precision ISO per the T-MIG-021 F-1 ruling posture.
+- Split proposal recorded in the yaml (recommendation only, R0 arbitrates): 030 attempt+history (this), 031 exam-papers+questions, 032 self-mark+smart-mark, 033 teacher-marking+sme-admin, 034 test-builder+transcription.
+
+Stage Summary:
+- T-MIG-030 CLAIMED (yaml + claim receipt on branch t-mig-030/r7a; PR to follow with R0 ratification request). Tranche-1 = services/assessment + stubbed-sql tests (021 pattern); tranche-2 gates on T-MIG-018 (#26) + T-MIG-007 (#29) merges; mounts OUT-OF-FENCE flagged. No upstream writes.
