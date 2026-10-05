@@ -1,0 +1,29 @@
+{
+  "task": "T-MIG-033",
+  "run": "run-001-claim",
+  "lane": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "date": "2026-10-05",
+  "kind": "claim",
+  "directive": "SYLLABAI ROUND-6 DIRECTIVE (trace 1a10bdcc5d89e599): SYNC FIRST, protocol per task (zero-collision claim -> implementation -> local gates -> PR -> independent review -> R0 merge-intake -> receipt -> card flip), then STOP - no self-filed wave work",
+  "sync": {
+    "main_at_claim": "79bdc23",
+    "worklog_tail_read": ["T-MIG-032 tranche 2", "T-MIG-024 run-003 (R0 F-3 ruling execution)", "R0-SWEEP-5 (board drained 6/6; W2 gate flipped UNCONDITIONAL)"],
+    "own_yaml_read": "T-MIG-024 (IN_REVIEW at sync; owner closeout rides this claim PR)"
+  },
+  "zero_collision_scan": {
+    "timing": "re-run immediately before branch cut (the R0-COLLISION-1 process discipline)",
+    "ls_remote": "zero heads matching 033|teacher|marking|sme (origin)",
+    "open_prs": 0,
+    "yaml_on_main": "no T-MIG-033 yaml",
+    "worklog_mentions": 2,
+    "worklog_mention_nature": "both non-claims: T-MIG-032 cross-slice contract ('033 imports this pipeline') + R0-SWEEP-5 remaining-register seed listing"
+  },
+  "branch": "t-mig-033/r4 @ 79bdc23",
+  "provenance": "T-MIG-033 is a RATIFIED seed (030..034 split map, verdict 5990832802 + housekeeping daad88e), not operator-new work; claim mechanism = the ratified self-filing precedent (013/020/021/030/032); R0 id ratification requested in the PR",
+  "tranche_plan": {
+    "tranche_1_this_pr": "services/teachermarking (markAnswer per-answer topology, recordHumanMark law, evaluateAgreement + cohenKappa, queue v2 full/paged, throughput, bounded smart-mark batch, TeacherViews envelopes) + stubbed-sql tests",
+    "tranche_2": "routes/teachermarking + zod + flagged mounts (030/032 pattern)",
+    "tranche_3": "SME admin (SmeQuestionAdminController/IngestService/PackageDtos/SpecPointRepository)"
+  },
+  "fence": "apps/api/src/services/teachermarking/** + apps/api/test/teachermarking/** + .syllabai bookkeeping (T-MIG-024 closeout disclosed); zero edits to services/smartmark (imports only)"
+}

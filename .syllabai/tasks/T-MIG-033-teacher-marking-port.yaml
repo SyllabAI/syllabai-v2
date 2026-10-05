@@ -1,0 +1,91 @@
+version: 1
+task:
+  id: T-MIG-033
+  title: "Wave-3 teacher marking + SME admin port (ratified split-map slot) — tranche 1: teacher marking services (per-answer Smart Mark topology, human-mark law, κ evaluation, queue v2 + throughput + bounded batch read models) over stubbed sql"
+  owner: "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a) — self-filed per the T-MIG-013/020/021/030/032 self-filing precedent (round-6 directive trace 1a10bdcc5d89e599, 'Protocol per task'); R0 ratification of the task id requested in the PR"
+  status: IN_REVIEW # 2026-10-05: claim 0/0 scan -> tranche-1 implemented on t-mig-033/r4 (services/teachermarking + stubbed-sql tests); gates in the PR body; routes + zod + flagged mounts = tranche-2; SME admin (SmeQuestionAdminController/IngestService/PackageDtos/SpecPointRepository) = tranche-3 under this card
+  priority: P1 # wave-3 marking train: 032 landed the shared pipeline; 033 is the teacher half the flagged learner mounts presuppose
+  wave: 3
+  deps: [T-MIG-007, T-MIG-018, T-MIG-032, T-MIG-031] # capture (marking queue surfaces), assessment contracts, shared SmartMark pipeline + E-1 seam, paper/question reads tranche-1
+  base:
+    repo: "syllabai-v2 @ 79bdc23 (main at claim); frozen refs: syllabai-core @ 6cad6ef"
+  basis: >
+    R0-ARBITRATED + RATIFIED 030..034 split map (verdict 5990832802 on PR #31,
+    housekeeping daad88e): 033 = teacher-marking + sme-admin. Cross-slice
+    contract recorded in T-MIG-032's yaml: "033 (teacher marking) imports this
+    pipeline" — services/smartmark is the ONE engine; this card imports it,
+    never forks it. Frozen surface @ 6cad6ef: TeacherMarkingController.java
+    (:46-328 — /api/v1/teacher/marking/** routes, G-5 opt-in pagination
+    bounds), TeacherMarkingService.java (:84-216 — recordHumanMark lock-first
+    evidence law + evaluateAgreement κ pairing), TeacherMarkingQueueService
+    .java (:50-494 — deterministic §7 ordering, batched read models, honest
+    counts, bounded smart-mark batch), TeacherViews.java (DTO boundaries),
+    SmartMarkService.markAnswer (:87-171 — the per-answer topology 032 did
+    NOT port; 033's), KappaAgreementService.cohenKappa (pure law, not yet
+    ported). Capture surfaces (T-MIG-007): w3-teacher-marking-{queue-v2,
+    throughput,answers,answer-unknown,humanmark,smartmark-batch}-unauthed-401
+    + w3-sme-{status-*,ingest} — deterministic auth-boundary postures; rich
+    200s are lifecycle/stateful and stay with the route tranches' replay.
+  execution_record: >
+    (claim entry 2026-10-05, round-6) Pre-claim zero-collision scan RE-RUN
+    immediately before branch cut at main 79bdc23: (1) git ls-remote origin —
+    ZERO heads matching 033/teacher/marking/sme/w2f; (2) open PRs = 0 (API);
+    (3) zero T-MIG-033 yaml on main; (4) worklog mentions of T-MIG-033 = 2,
+    both non-claims (032's cross-slice contract + sweep-5 seed register).
+    Branch t-mig-033/r4 cut from 79bdc23. Claim receipt
+    .syllabai/receipts/T-MIG-033/run-001-claim.json.
+    PLAN tranche-1 (this PR): services/teachermarking/index.ts over the
+    stubbed-sql pattern (fakeSql rowsFor, fixed-constant uuids, tagged-template
+    bind-slot discipline) — (a) TeacherSmartMarkService.markAnswer: the
+    per-answer topology with the SAME serialization point (attempt row lock
+    BEFORE any state load), V34 honest refusal stamped with the newest scheme,
+    kappaGatePassed reused from services/smartmark (composition, no fork),
+    evidence only on accepted+authoritative+no-PENDING-parts (E-1 guarded
+    flip); (b) TeacherMarkingService.recordHumanMark: same lock-first law,
+    part-bound 409 (marks X outside part bound 0–Y, en dash verbatim),
+    revising=attempt.evidenceEmitted -> OVERRIDDEN vs HUMAN_MARKED, total
+    recompute via re-read + recordTotalMarks law (marks_awarded AND correct),
+    settle rule: evidence fires only when !revising AND no PENDING part
+    remains; (c) evaluateAgreement: scope ALL/PAPER human sample (createdAt
+    asc), newest-smart-only pairing law (findLatest THEN filter
+    validationPassed — never newest-validated), breakdown key law
+    (markPointId/awarded boolean), clampBinary, empty-pairs 409, cohenKappa
+    port (degenerate convention: perfect agreement => 1, disagreement => 0),
+    passed = kappa >= threshold (DEFAULT_THRESHOLD 0.60), insert evaluation;
+    (d) TeacherMarkingQueueService: markingQueue full + opt-in paged (whole
+    paper groups, bounds 1..100 default 5, page >= 0, past-end honest empty
+    page, real totals, mark->next chain scoped to the page), deterministic
+    ordering (groups: oldest-waiting attempt, then size desc, then paperId
+    nulls-LAST; within paper: attempt createdAt, attempt id, part label,
+    answer id), batched lookups (queue + papers + newest smart per answer
+    oldest-first-overwrite + newest human per answer + learner names
+    first-wins), null-paper unfiled bucket law (immutable-map NPE fix
+    preserved: paper context null, no lookup), throughput (byState all four
+    states zeroed-then-counted, countSince 24h/7d, pending-by-paper leaders
+    count desc then key asc nulls-last limit 5, oldest pending age floor
+    hours), smartMarkBatch (empty 400, dedup order-preserving, >50 unique
+    400 with the verbatim message, per-item FAILED/SKIPPED_ALREADY_MARKED/
+    MARKED law, stable UNEXPECTED_ERROR code never raw exception text);
+    (e) TeacherViews port (AnswerMarkingView/AnswerMarkingPageView/
+    SmartMarkView/HumanMarkView + queue/throughput/batch/kappa envelopes);
+    (f) kappa evaluate/latest view (KappaEvaluationView). Tests:
+    apps/api/test/teachermarking/teachermarking.test.ts pins gate orders,
+    exact error bodies/codes, bounds, dedup, ordering law, null-paper laws,
+    settle rules, refusal rows, kappa pairing/degenerate/clamp, batch
+    outcomes — stubbed sql only, NO live Neon in this tranche. SPRING EVENTS
+    (HumanMarkRecordedEvent/SmartMarkCompletedEvent) stay DORMANT-disclosed
+    per the 032 posture. VERIFICATION: bun run typecheck x4; bun test
+    apps/api packages; bun golden/runner.ts --selftest. FENCE:
+    apps/api/src/services/teachermarking/** + apps/api/test/teachermarking/**
+    + .syllabai bookkeeping (T-MIG-024 owner closeout rides this PR:
+    card flip + run-004 receipt — disclosed, zero overlap with 033 code).
+    ZERO edits to services/smartmark/** (imports only). Routes/zod/mounts =
+    tranche-2; SME = tranche-3.
+  cross_slice_contract: >
+    CONSUMES from services/smartmark (032's fence, read-only imports):
+    SmartMarkPipeline (run single + validators trio), toMarkingPoint,
+    PIPELINE_VERSION, type Decision/MarkingContext/MarkingCandidateGenerator,
+    SmartMarkService.kappaGatePassed (composition — the kappa gate law lives
+    once). PROVIDES to future tranches: the services this card ships are the
+    construction base for routes/teachermarking (tranche-2) exactly as 032
+    tranche-1 fed tranche-2.
