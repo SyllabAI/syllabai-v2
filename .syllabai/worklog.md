@@ -1464,3 +1464,21 @@ Work Log:
 
 Stage Summary:
 - T-MIG-034 CLAIMED (r3a) with a disclosed B-1 (no PAT — local-only until credential reissue). Implementation follows: contracts-first zod, then services (testbuilder builder/sql + answer-input shell/provider seam), route factories with internal authz + captured binding envelopes, stubbed-sql route tests + behavioural pins, separate OUT-OF-FENCE mount commit. Gates before any push; R0 review at PR time.
+
+---
+Task ID: T-MIG-034 run-001 (cycle complete, pending PR)
+Agent: superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Test-builder + transcription port — deterministic shell for the LLM surface (behavioural gates), test-builder on the normal golden path
+
+Work Log:
+- Ported contracts-first: packages/contracts testbuilder.ts + answer-input.ts (Java-record nullability law — nullable components .nullable()/nullish, keys never omitted on views; reason + policy literals; transcription envelope codes transcription_bad_request 400 / transcription_image_too_large 413 / transcription_nothing_readable 422 / transcription_unavailable 503 per GlobalExceptionHandler.java:104-137).
+- Test-builder (deterministic → normal golden path): TestBuilder port with subject isolation (node 404 contract + PART_OF subtree CTE), first-wins topic attribution, difficulty-then-id ordering, selectByMarks (greedy → smallest-overshoot gap close → honest-undershoot stop, cap always applies), clamps 20/50/200, coverage BEFORE the cap, STRUCTURED-only answer key (version-desc + created_at-desc + @OrderBy points, partLabel/ref nullable, schemeState reported), weakness options (explicit reasons, never-claimed-weak gaps, primary+secondary targeting counts, nulls-last mastery sort). Standing golden gate = the four R6 captures (401 shells + the captured missing-rootId validation_failed envelope — pinned in route tests); ZERO golden/** changes, capture-ready for full-body captures.
+- Transcription (LLM-OUTPUT → NOT golden-gated, behavioural per GOLDEN_MASTER §3): validation shell (mime whitelist → STRICT standard-alphabet base64 countering Node Buffer leniency → 4 MiB cap → [empty] 422), provider seam DORMANT (null → 503 chain-exhausted parity, T-MIG-032 precedent), v2 system prompt carried VERBATIM (temp 0 / 700 tokens), NOT a persistence surface (no sql dependency; media passes verbatim), error messages verbatim, provider error text never leaked.
+- Dependency disposition: weakness-options' ClassAnalyticsService.overview is UNPORTED and unclaimed (032 yaml fixes 033 = teachermarking/sme) — the deterministic selection law is ported + pinned behind a ClassAnalyticsPort seam; the route honest-501s with the task reference while dormant. NOT self-filed per the round-6 STOP rule.
+- Binding law: missing rootId → the CAPTURED validation_failed envelope; type mismatches → bad_request "malformed request"; "" → absent for non-String params (inferred, disclosed); transcription body binding per the T-MIG-030 conventions (malformed_body, scalar coercion, absent→null).
+- Gates: typecheck exit 0 ×4; bun test 514/0/13skip (1407 expect = main 1259 + this task's pins; the register's identity-budget flake did NOT fire); golden --selftest OK (113 untouched). Scope-fence verified clean before every commit (zero bun.lock/db drift — b7ef4a5 standing gate).
+- BLOCKER B-1 (standing): workspace wipe destroyed .secrets — no PAT, so PR + independent review + R0 intake are pending credential reissue. Work is LOCAL on t-mig-034/r3a @ fd854c5: claim 0697c0c, fence implementation e38352e, OUT-OF-FENCE mounts fd854c5 (separate flagged commit). The moment a PAT lands: push → PR → independent review (recusal respected) → R0 intake.
+- Directive fragment '(dependency below; start the shell now)' arrived truncated — flagged in the yaml; R0 to correct if a dependency list was lost.
+
+Stage Summary:
+- T-MIG-034 implementation COMPLETE locally (both surfaces, 33 pins, gates green, zero golden drift); card IN_REVIEW-pending-PR under B-1. The route exposes the two dormant seams explicitly (transcription 503 parity; analytics 501 with task reference) so the LLM-chain lane and the future analytics lane can wire in without touching this surface. Board unchanged otherwise.
