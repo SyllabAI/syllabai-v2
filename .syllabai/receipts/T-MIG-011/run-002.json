@@ -1,0 +1,56 @@
+{
+  "task": "T-MIG-011",
+  "role": "R5",
+  "agent": "R5-hub-lane (Super Z, zai-web session web-23eb7684-9eb6-4100-a2b3-22cfb322258b)",
+  "generated_utc": "2026-10-05T08:05:00Z",
+  "updated_utc": "2026-10-05T08:25:00Z (merge-intake #2 appended — see merge_intake_2 + gates_rerun_2)",
+  "reassignment": {
+    "authority": "OPERATOR WORD trace 1a10afea000f7635 (2026-10-05, zai-web chat 54c94863): 'Reassign to this lane'",
+    "prior_claimant": "r5 (Super Z agent, session web-1f157e25), claimed 2026-10-04T19:16:23Z, last branch activity 19:24Z (work commit fd0700ff8)",
+    "provenance": "Earliest-claim-wins was honored (lane did not contest while claim live); two fresh fleet worklog rows (2026-10-05) marked 'r5 silent ~12-13h — reassignment candidate'; operator chose reassignment, which supersedes earliest-claim-wins per AGENT_COORDINATION §2.1 (R0/operator arbitrates disputes)"
+  },
+  "what": "Adopted r5's pushed parallel-safe scope verbatim (not redone; verified first-hand: 2 commits c599a90d1 claim + fd0700ff8 work, run-001 receipt). Executed merge-intake union of origin/main 5ee240e (92 commits / 194 files since fork 2cfaf41) into t-mig-011/r5 as merge commit bfa26a3; ran the full gate battery fresh on the merge head; appended card execution_record + worklog; opened this PR (IN_REVIEW).",
+  "merge_intake": {
+    "merge_commit": "bfa26a3 (t-mig-011/r5 head after union)",
+    "base_merged": "origin/main 5ee240e (R0 housekeeping: T-MIG-021 DONE)",
+    "conflicts": {
+      ".syllabai/worklog.md": "content conflict — resolved as append-only union: r5's re-landed ORIENTATION + T-MIG-011 entries (authored Oct-04 18-19Z, never on main) spliced verbatim BEFORE main's newer chain (774 lines); both sides byte-preserved; union verified by count asserts (each entry exactly once)",
+      "apps/hub/package.json": "auto-merged — three-way coexistence verified: pkg rename '@syllabai/hub' (main, T-MIG-000 workspace unification) + '@tiptap/core' dep line (main) + '@syllabai/shared': 'workspace:*' (this lane's declared fence deviation) all present"
+    },
+    "collision_table": "ZERO overlap on all core scope files across the 92 main commits: packages/shared/src/** (index.ts, mathNormalize.ts, mathNormalize.test.ts), apps/hub/src/lib/mathNormalize.ts, apps/hub/src/lib/api.ts, apps/hub/.env.example, apps/hub/.gitignore — none touched by main since fork. Open PRs #26 (t-mig-006/r1c, 17 files), #29 (t-mig-007/r6, 58 files), #30 (t-mig-022/r3a, 12 files) checked: zero overlap with this lane's scope.",
+    "worklog_union_script": "deterministic splice with pre-write asserts (scripts/resolve_worklog_union.py in lane workspace); 0 conflict markers post-merge"
+  },
+  "merge_intake_2": {
+    "trigger": "main moved 4 commits (7d33d04a, cf199652b, 6a68551c9, 847a39b60 = PR #26 T-MIG-006 assessment contracts merged 07:43Z) while PR #32 was open",
+    "merge_commit": "0ffb2cf",
+    "conflicts": "NONE — git auto-unioned .syllabai/worklog.md (both sides append-at-tail, non-overlapping regions); integrity verified: 0 conflict markers, 58 entries, lane's reassignment entry exactly once at the tail in chronological order after the 'reassignment candidate' flag row, main-side T-MIG-006 entries preserved (4 refs)",
+    "scope_overlap": "worklog.md only; packages/contracts/** (main's new assessment schemas) is R1's lane — untouched by this branch"
+  },
+  "gates_rerun_2_final_head": {
+    "head": "0ffb2cf",
+    "shared_parity_pins": "17/17 PASS",
+    "root_tests": "347 pass / 0 fail / 13 skip across 20 files, 903 expect() calls (303→347: main's T-MIG-006 contract tests joined via the union)",
+    "golden_selftest": "OK",
+    "typechecks": "contracts / shared / db / api clean; hub tsc -p = 0 errors",
+    "verdict": "ALL GATES GREEN on the final PR head"
+  },
+  "gates_rerun_on_bfa26a3": {
+    "bun_install": "clean — 930 packages",
+    "shared_parity_pins": "17/17 PASS (bun test packages/shared; 21 expect calls)",
+    "root_tests": "303 pass / 0 fail / 13 skip across 19 files (810 expect calls) — the 13 skips are the Neon-branch identity-integration set (T-MIG-010), matching R0's own housekeeping record 'gates 286/0/13skip on 89bfb7c'; absolute count grew 286→303 with T-MIG-021 tranche-2 landing on main",
+    "golden_selftest": "OK — 'selftest OK: tolerance engine behaves' (bun golden/runner.ts --selftest, exit 0)",
+    "typechecks": "packages/contracts clean; packages/shared clean; packages/db clean; apps/api CLEAN (r5's recorded pre-existing TS2688 bun-types error was fixed on main by the T-MIG-012 lane); apps/hub `tsc -p apps/hub --noEmit` = 0 errors on merge head == 0 errors on main 5ee240e baseline (delta-zero, measured both sides)",
+    "verdict": "ALL GATES GREEN, delta-zero vs main on every typecheck surface (superseded by gates_rerun_2_final_head after merge-intake #2)"
+  },
+  "dep_status": {
+    "T-MIG-010": "DONE — merged via PR #11 (1cef1be) after R0 collision arbitration (earliest claim won by R3-api-a); receipt run-003-golden-replay + live-DB-proven revocation recorded; the dep gate that held r5's card at IN_PROGRESS is OPEN"
+  },
+  "remainder_escalated": {
+    "item": "live auth-flow verification: hub login surface against the v2 api with NEXT_PUBLIC_API_V2_BASE_URL flipped (the card's stated dep-gated remainder)",
+    "why_not_done_here": "the login flow exercises DB write paths through the ported rate-limit/audit surface (T-MIG-016), so per AGENT_BRIEFING §0 it must run against a task-owned Neon BRANCH, not production; this session holds no NEON_PAT (only GH_PAT + RENDER_KEY, operator-issued for other lanes)",
+    "escalation": "AGENT_COORDINATION §6.1 — filed in card execution_record: operator to either issue a Neon-branch DSN to this lane, or route the live-flow check to R6's capture lane (it is a golden-capture-shaped activity)",
+    "rollback_note": "the env switch stays inert by default (unset NEXT_PUBLIC_API_V2_BASE_URL → all traffic to core); merging this PR changes no runtime behaviour in any deployment until the env is explicitly set"
+  },
+  "fence_disclosures": "unchanged from run-001 (r5's two declared deviations: hub package.json dep line, hub .gitignore !.env.example negation; both restated for R0) + this run adds zero new files outside scope.allowed (card status/execution_record, receipts dir, worklog append only)",
+  "secrets_note": "no credentials in this receipt, the diff, or any commit; GH PAT used env-only via ephemeral push URL, remote URL scrubbed post-clone"
+}

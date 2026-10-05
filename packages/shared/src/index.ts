@@ -22,3 +22,11 @@
  * local copy remains the behaviour reference and this package stays minimal.
  */
 export const SHARED_PACKAGE_VERSION = "0.1.0";
+
+/**
+ * T-MIG-011 (Wave 1): mathNormalize lifted BYTE-IDENTICAL from
+ * apps/hub/src/lib/mathNormalize.ts (syllabai-hub @ 93226a43 lineage).
+ * Hub now re-exports this implementation from its own import path, so
+ * parity is an import statement instead of a gated cross-repo port.
+ */
+export * from "./mathNormalize";

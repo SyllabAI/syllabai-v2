@@ -1,0 +1,70 @@
+{
+  "artifact": "T-MIG-006 run-001 — wave-3 assessment-loop zod contracts: gates + parity evidence",
+  "task_id": "T-MIG-006",
+  "agent": "R1-contracts-c (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "recorded_at": "2026-10-05T06:40:00Z (12:40 Asia/Dhaka)",
+  "base": {
+    "branch": "t-mig-006/r1c",
+    "stacked_on": "t-mig-005/r1 @ 9a99790 (PR #18, IN_REVIEW) — real dependency: questionTypeSchema / contentValidationStateSchema / uuidPathSchema imported from ./content, notBl(ank-free: no notBlank import needed — verified unused before import), frozen refs syllabai-core @ main, syllabai-hub @ 93226a43",
+    "claim_commit": "7d33d04 (yaml CLAIMED + Phase-1 orientation ride-along per w0a precedent)"
+  },
+  "files": {
+    "new": [
+      "packages/contracts/src/assessment.ts (sha256 head 1b8d10e7a228a466 — 33 exported schemas/types: 4 request DTOs incl. controller-nested SelfMarkRequest, 13 response views incl. controller-nested PaperView/PaperDetail/PaperQuestionView + SelfMarkView, 2 MarkingState domains, Provenance, family-type, SpecPointRef, param/path bundles)",
+      "packages/contracts/src/assessment.test.ts (sha256 head 441c4dbf8d655918 — accept/reject parity pins)"
+    ],
+    "modified": [
+      "packages/contracts/src/index.ts (ONE re-export line — the ratified one-line append pattern)"
+    ],
+    "untouched_by_fence": "content.ts / curriculum.ts / errors.ts / auth.ts read-only; apps/api, apps/hub, packages/db, golden untouched; bun.lock byte-identical after install (git status verified)"
+  },
+  "gates": [
+    {
+      "gate": "bun install (frozen root install)",
+      "result": "918 packages, lockfile unchanged",
+      "exit": 0
+    },
+    {
+      "gate": "bun run typecheck (contracts + shared + db + api — the fleet x4)",
+      "result": "all four tsc --noEmit clean",
+      "exit": 0
+    },
+    {
+      "gate": "bun test apps/api packages (full suite)",
+      "result": "185 pass / 0 fail / 4 skip (integration tier unchanged: T-MIG-010 Neon skips), 443 expect() across 189 tests / 10 files; contracts package: 113 tests across 4 files (assessment.test.ts contributes 53)",
+      "exit": 0,
+      "log": "local capture only (see honest note H-3); CI re-executes on the PR"
+    },
+    {
+      "gate": "bun golden/runner.ts --selftest",
+      "result": "selftest OK: tolerance engine behaves",
+      "exit": 0
+    }
+  ],
+  "parity_evidence": {
+    "constraints_copied_verbatim": [
+      "SubmitAnswerRequest: @NotNull UUIDs, @NotNull @Min(0) Long responseTimeMs, @Min(1)@Max(5) Integer confidence WITHOUT @NotNull (null/absent valid — jakarta @Min/@Max ignore null), primitive booleans with Jackson null→false (FAIL_ON_NULL_FOR_PRIMITIVES disabled by Boot)",
+      "StructuredSubmitRequest: @NotEmpty @Valid List<PartAnswerRequest> (null AND [] rejected, element constraints cascade)",
+      "PartAnswerRequest: @Size(max=4000) with UTF-16 unit parity (Java String.length == zod .max), null/absent = skipped part",
+      "SelfMarkRequest: NO declared constraints (null parts accepted at schema; core NPEs → 500 — captured flag for R0), boundary duplicate-part 400 encoded as superRefine with the controller's exact message 'duplicate part in self-mark: {partId}'",
+      "PartSelfMark: @NotNull @Min(0) @Max(99) Integer marksAwarded"
+    ],
+    "null_vs_empty_wire_facts": [
+      "AttemptResultView.correctOptionLabel nullable (.orElse(null)); implicatedMisconceptionIds never null (List.of())",
+      "AttemptHistoryView.Item: correct/marksAwarded/confidenceLevel nullable; parts + implicatedMisconceptionIds List.of() defaults (never null); topicCode/topicTitle nullable on graph.node miss; attempt-level MarkingState domain (AUTO_GRADED present)",
+      "StructuredAttemptResultView.PartResult.marksAwarded null while pending; answer-level MarkingState domain",
+      "PaperQuestionView: versionValidationState/currentVersionId null on no-version branch, partCount 0, specPoints getOrDefault List.of() (never null)"
+    ],
+    "enums": {
+      "reused_from_content_lane": ["questionTypeSchema (Question.java:26)", "contentValidationStateSchema (ExamPaper/QuestionVersion/MarkScheme byte-identical local enums)"],
+      "new_here": ["questionProvenanceSchema (Question.java:27 + ExamPaper byte-twin)", "attemptMarkingStateSchema (Attempt.java:82, 6 values)", "answerMarkingStateSchema (Answer.java:34, 5 values)", "questionFamilyTypeSchema (MCQ|STRUCTURED — NOT Question.Type)"]
+    }
+  },
+  "honest_notes": [
+    "H-1: first contracts test run 112 pass / 1 fail — the failing pin was the TEST's expectation, not the schema: it assumed zod would reject an over-served option carrying `correct`/`misconceptionNodeId`, but zod objects are non-strict (unknown keys stripped) by house convention, matching Jackson's binding facts; the no-leak guarantee for responses lives in the construction sites + golden capture, not schema strictness. Test corrected to pin the strip semantics. NO schema constraint was widened to make a test pass (index.ts rule 3 intact).",
+    "H-2: nullability capture-unproven tags carried on: externalRef (Question.external_ref has no nullable=false — verified at Question.java:33-35), primaryTopicNodeId, examPaperId, subjectId, board/qualification/unit/sessionLabel/paperCode — first tightening targets when the F-5 real-data tranche lands.",
+    "H-3: gates executed locally in the lane environment; the receipt pins commands + counts, CI re-executes on the PR (fleet convention — receipts are evidence, CI is the independent re-execution).",
+    "H-4: zero production Neon connections, zero upstream writes (C1/C2), no credentials in any file; imports limited to the stacked branch's public exports (no collision — full export inventory diffed before naming, content/curriculum/errors export lists enumerated in the lane survey)."
+  ],
+  "next": "PR 'T-MIG-006: wave-3 assessment-loop zod contracts' with merge-order note (18 → 6) for R0; T-MIG-030..034 port lanes unblocked on merge"
+}

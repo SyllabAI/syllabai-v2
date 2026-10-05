@@ -1,0 +1,24 @@
+{
+  "receipt": "T-MIG-007 run-001 - Wave-3 authz shell captured from the deployed frozen Render core (read-only)",
+  "schema": "syllabai.v2.t-mig-007.capture-receipt/1.0",
+  "agent": "R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)",
+  "target": "https://syllabai-core.onrender.com (deployed frozen core; wake-gated free tier)",
+  "when": "2026-10-05T06:40Z window (Asia/Dhaka operator session)",
+  "cases_captured": 24,
+  "case_files": "golden/cases/w3-*.json (run-001 tranche)",
+  "expectation_match": "24/24 probed surfaces answered 401 from the Spring Security filter chain BEFORE any persistence path (T-MIG-003/004 precedent: probe write-safety proven from frozen source ordering BEFORE probing; unauthenticated requests cannot reach controllers)",
+  "surface_map": [
+    "POST /api/v1/attempts + /structured (AttemptController)",
+    "GET /api/v1/learners/me/attempts (AttemptHistoryController)",
+    "GET /api/v1/exam-papers[/{uuid}] (ExamPaperController)",
+    "GET /api/v1/questions[/families|/topics|/{uuid}|/{uuid}/mark-scheme] (QuestionController)",
+    "POST .../attempts/{attemptId}/self-mark (LearnerSelfMarkController)",
+    "POST .../attempts/{attemptId}/smart-mark + parts/{partId}/feedback-explanation (StudentSmartMarkController; LLM-output surfaces excluded from gating per GOLDEN_MASTER section 3 - only the lifecycle/authz shell captured)",
+    "GET/POST /api/v1/admin/question-bank/status|ingest (SmeQuestionAdminController)",
+    "GET/POST /api/v1/teacher/marking/** (TeacherMarkingController, 7 routes)",
+    "GET /api/v1/teacher/tests/preview|weakness-options (TestBuilderController)",
+    "POST /api/v1/learners/me/answer-input/transcribe (TranscriptionController; ASR/LLM lifecycle gate only)"
+  ],
+  "scrub": "no PII entered any capture (synthetic payloads, unauthenticated probes); bodies are ApiError{status,error,message,timestamp} shapes; timestamps tolerated; no credentials used",
+  "production_safety": "zero production writes, zero production Neon contact, zero credentials; read-only HTTP probes only"
+}

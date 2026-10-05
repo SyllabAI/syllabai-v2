@@ -1,0 +1,105 @@
+{
+  "name": "w3-questions-topics-student-200",
+  "description": "Question topics from V7 seed. captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "source": "captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "GET",
+  "path": "/api/v1/questions/topics",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "sections": [
+        {
+          "nodeId": "20000000-0000-0000-0000-000000000011",
+          "code": "WCH11-T1",
+          "title": "Formulae, Equations and Amount of Substance",
+          "distinctQuestionCount": 4,
+          "distinctFamilyCount": 4,
+          "topics": [
+            {
+              "nodeId": "20000000-0000-0000-0000-000000000012",
+              "code": "WCH11-T1.1",
+              "title": "Mole calculations and reacting masses",
+              "questionCount": 4,
+              "mcqCount": 4,
+              "structuredCount": 0,
+              "familyCount": 4
+            },
+            {
+              "nodeId": "20000000-0000-0000-0000-000000000013",
+              "code": "WCH11-T1.2",
+              "title": "Empirical and molecular formulae",
+              "questionCount": 1,
+              "mcqCount": 1,
+              "structuredCount": 0,
+              "familyCount": 1
+            }
+          ]
+        },
+        {
+          "nodeId": "20000000-0000-0000-0000-000000000021",
+          "code": "WCH11-T2",
+          "title": "Atomic Structure and the Periodic Table",
+          "distinctQuestionCount": 3,
+          "distinctFamilyCount": 3,
+          "topics": [
+            {
+              "nodeId": "20000000-0000-0000-0000-000000000022",
+              "code": "WCH11-T2.1",
+              "title": "Atomic structure, isotopes and ions",
+              "questionCount": 2,
+              "mcqCount": 2,
+              "structuredCount": 0,
+              "familyCount": 2
+            },
+            {
+              "nodeId": "20000000-0000-0000-0000-000000000023",
+              "code": "WCH11-T2.2",
+              "title": "Electron configuration and periodic trends",
+              "questionCount": 1,
+              "mcqCount": 1,
+              "structuredCount": 0,
+              "familyCount": 1
+            }
+          ]
+        },
+        {
+          "nodeId": "20000000-0000-0000-0000-000000000031",
+          "code": "WCH11-T3",
+          "title": "Bonding and Structure",
+          "distinctQuestionCount": 3,
+          "distinctFamilyCount": 3,
+          "topics": [
+            {
+              "nodeId": "20000000-0000-0000-0000-000000000032",
+              "code": "WCH11-T3.1",
+              "title": "Ionic bonding and lattice structure",
+              "questionCount": 2,
+              "mcqCount": 2,
+              "structuredCount": 0,
+              "familyCount": 2
+            },
+            {
+              "nodeId": "20000000-0000-0000-0000-000000000033",
+              "code": "WCH11-T3.2",
+              "title": "Covalent bonding, shapes and intermolecular forces",
+              "questionCount": 2,
+              "mcqCount": 2,
+              "structuredCount": 0,
+              "familyCount": 2
+            }
+          ]
+        }
+      ],
+      "totalDistinctQuestions": 8,
+      "totalDistinctFamilies": 8
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}
