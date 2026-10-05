@@ -584,14 +584,18 @@ describe("pure helpers", () => {
   });
 
   test("documentPageText — reading order, null sorts last, verbatim join", () => {
+    // §8 ingestion contract (CanonicalDocumentDto.java:13-14): top-level
+    // camelCase, PER-ELEMENT snake_case — page_number / reading_order.
+    // Re-pinned by T-MIG-023 (F-2): the pre-fix pin used camelCase keys
+    // that do not exist in the stored jsonb and encoded the empty-text bug.
     const canonical = {
       textBlocks: [
-        { text: "second", pageNumber: 2, readingOrder: 2 },
-        { text: "first", pageNumber: 2, readingOrder: 1 },
-        { text: "other page", pageNumber: 1, readingOrder: 0 },
-        { text: "no order", pageNumber: 2, readingOrder: null },
+        { text: "second", page_number: 2, reading_order: 2 },
+        { text: "first", page_number: 2, reading_order: 1 },
+        { text: "other page", page_number: 1, reading_order: 0 },
+        { text: "no order", page_number: 2, reading_order: null },
       ],
-      tables: [{ text: "table row", pageNumber: 2, readingOrder: 3 }],
+      tables: [{ text: "table row", page_number: 2, reading_order: 3 }],
       equations: null,
     };
     expect(documentPageText(canonical, 2)).toBe("first\nsecond\ntable row\nno order");

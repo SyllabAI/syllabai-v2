@@ -19,6 +19,30 @@ import type { SqlFn } from "../identity/users";
 
 type Row = Record<string, unknown>;
 
+/**
+ * Java Instant.toString() parity writer (F-1, T-MIG-023).
+ *
+ * The frozen core renders every Instant field through Jackson JSR-310 /
+ * Instant.toString(): the DB timestamp(6) fraction as shortest-round-trip
+ * 3-digit groups with trailing zeros trimmed — .578011Z (micros), .578Z
+ * (millis), no fraction when zero. The JS Date object caps at milliseconds
+ * (run-001: 1021 listing divergences, ALL @ .N.createdAt, same rule), so
+ * the fraction must travel from Postgres as TEXT: the queries below select
+ *   to_char(<col> at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US"Z"')
+ * (always 6 fractional digits + literal Z) and this helper applies the
+ * Instant.toString() trimming — byte-identical to the frozen core for
+ * micros-precision values:
+ *   2026-10-04T09:37:00.129532Z → unchanged (micros group)
+ *   2026-10-04T09:37:00.129000Z → 2026-10-04T09:37:00.129Z
+ *   2026-10-04T09:37:00.000000Z → 2026-10-04T09:37:00Z
+ */
+export function instantToStringUtc(pgInstant: string): string {
+  const m = /^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})\.(\d{6})Z$/.exec(pgInstant);
+  if (!m || m[1] == null || m[2] == null) return pgInstant; // already Instant-shaped (defensive passthrough)
+  const frac = m[2].replace(/0+$/, "");
+  return frac === "" ? `${m[1]}Z` : `${m[1]}.${frac}Z`;
+}
+
 /** documents row → the columns the read surfaces consume. */
 export interface DocumentRow {
   id: string;
@@ -42,7 +66,8 @@ export interface DocumentRow {
 const DOCUMENT_COLUMNS = `
   id, document_id, doc_version, kind, file_name, source_uri, page_count,
   element_count, text_element_count, chunk_count, source_engine,
-  source_engine_version, checksum, checksum_algorithm, canonical_json, created_at`;
+  source_engine_version, checksum, checksum_algorithm, canonical_json, created_at,
+  to_char(created_at at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US"Z"') as created_at_instant`; // F-1 (T-MIG-023)
 
 function toDocumentRow(r: Row): DocumentRow {
   return {
@@ -61,8 +86,7 @@ function toDocumentRow(r: Row): DocumentRow {
     checksum: String(r.checksum),
     checksumAlgorithm: String(r.checksum_algorithm),
     canonicalJson: r.canonical_json,
-    createdAt:
-      r.created_at instanceof Date ? r.created_at.toISOString() : String(r.created_at),
+    createdAt: instantToStringUtc(String(r.created_at_instant)),
   };
 }
 
@@ -74,7 +98,8 @@ export class DocumentRepository {
     const rows: Row[] = await this.sql`
       select id, document_id, doc_version, kind, file_name, source_uri, page_count,
              element_count, text_element_count, chunk_count, source_engine,
-             source_engine_version, checksum, checksum_algorithm, canonical_json, created_at
+             source_engine_version, checksum, checksum_algorithm, canonical_json, created_at,
+             to_char(created_at at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US"Z"') as created_at_instant
       from documents
       order by created_at desc`;
     return rows.map(toDocumentRow);
@@ -85,7 +110,8 @@ export class DocumentRepository {
     const rows: Row[] = await this.sql`
       select id, document_id, doc_version, kind, file_name, source_uri, page_count,
              element_count, text_element_count, chunk_count, source_engine,
-             source_engine_version, checksum, checksum_algorithm, canonical_json, created_at
+             source_engine_version, checksum, checksum_algorithm, canonical_json, created_at,
+             to_char(created_at at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US"Z"') as created_at_instant
       from documents where id = ${id}::uuid limit 1`;
     return rows.length === 0 || !rows[0] ? null : toDocumentRow(rows[0]);
   }
@@ -107,7 +133,8 @@ export class DocumentRepository {
     const rows: Row[] = await this.sql`
       select id, document_id, doc_version, kind, file_name, source_uri, page_count,
              element_count, text_element_count, chunk_count, source_engine,
-             source_engine_version, checksum, checksum_algorithm, canonical_json, created_at
+             source_engine_version, checksum, checksum_algorithm, canonical_json, created_at,
+             to_char(created_at at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US"Z"') as created_at_instant
       from documents where document_id = ${documentId}
       order by doc_version desc limit 1`;
     return rows.length === 0 || !rows[0] ? null : toDocumentRow(rows[0]);
@@ -150,7 +177,8 @@ export interface ExamPaperRow {
 
 const PAPER_COLUMNS = `
   id, subject_id, title, paper_code, session_label, board, qualification,
-  validation_state, question_paper_document_id, mark_scheme_document_id, created_at`;
+  validation_state, question_paper_document_id, mark_scheme_document_id, created_at,
+  to_char(created_at at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US"Z"') as created_at_instant`; // F-1 (T-MIG-023)
 
 function toPaperRow(r: Row): ExamPaperRow {
   return {
@@ -166,8 +194,7 @@ function toPaperRow(r: Row): ExamPaperRow {
       r.question_paper_document_id == null ? null : String(r.question_paper_document_id),
     markSchemeDocumentId:
       r.mark_scheme_document_id == null ? null : String(r.mark_scheme_document_id),
-    createdAt:
-      r.created_at instanceof Date ? r.created_at.toISOString() : String(r.created_at),
+    createdAt: instantToStringUtc(String(r.created_at_instant)),
   };
 }
 
@@ -178,7 +205,8 @@ export class ExamPaperRepository {
   async findById(id: string): Promise<ExamPaperRow | null> {
     const rows: Row[] = await this.sql`
       select id, subject_id, title, paper_code, session_label, board, qualification,
-             validation_state, question_paper_document_id, mark_scheme_document_id, created_at
+             validation_state, question_paper_document_id, mark_scheme_document_id, created_at,
+             to_char(created_at at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US"Z"') as created_at_instant
       from exam_papers where id = ${id}::uuid limit 1`;
     return rows.length === 0 || !rows[0] ? null : toPaperRow(rows[0]);
   }
@@ -187,7 +215,8 @@ export class ExamPaperRepository {
   async findSuggested(): Promise<ExamPaperRow[]> {
     const rows: Row[] = await this.sql`
       select id, subject_id, title, paper_code, session_label, board, qualification,
-             validation_state, question_paper_document_id, mark_scheme_document_id, created_at
+             validation_state, question_paper_document_id, mark_scheme_document_id, created_at,
+             to_char(created_at at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US"Z"') as created_at_instant
       from exam_papers where validation_state = 'SUGGESTED'`;
     return rows.map(toPaperRow);
   }
@@ -196,7 +225,8 @@ export class ExamPaperRepository {
   async findValidated(): Promise<ExamPaperRow[]> {
     const rows: Row[] = await this.sql`
       select id, subject_id, title, paper_code, session_label, board, qualification,
-             validation_state, question_paper_document_id, mark_scheme_document_id, created_at
+             validation_state, question_paper_document_id, mark_scheme_document_id, created_at,
+             to_char(created_at at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US"Z"') as created_at_instant
       from exam_papers where validation_state = 'VALIDATED'`;
     return rows.map(toPaperRow);
   }
@@ -217,7 +247,8 @@ export class ExamPaperRepository {
   async findAllByLinkedDocumentId(documentId: string): Promise<ExamPaperRow[]> {
     const rows: Row[] = await this.sql`
       select id, subject_id, title, paper_code, session_label, board, qualification,
-             validation_state, question_paper_document_id, mark_scheme_document_id, created_at
+             validation_state, question_paper_document_id, mark_scheme_document_id, created_at,
+             to_char(created_at at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US"Z"') as created_at_instant
       from exam_papers
       where question_paper_document_id = ${documentId}
          or mark_scheme_document_id = ${documentId}
@@ -299,7 +330,8 @@ export class ContentReviewAuditRepository {
     questionIds: string[],
   ): Promise<AuditRowRecord[]> {
     const rows: Row[] = await this.sql`
-      select occurred_at, actor_label, action, target_type, target_id, from_state, to_state, detail
+      select occurred_at, actor_label, action, target_type, target_id, from_state, to_state, detail,
+             to_char(occurred_at at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US"Z"') as occurred_at_instant
       from content_review_audit
       where (target_type = 'exam_paper' and target_id = ${paperId}::uuid)
          or (target_type = 'question_version' and target_id = any(${versionIds}::uuid[]))
@@ -310,9 +342,7 @@ export class ContentReviewAuditRepository {
       occurredAt:
         r.occurred_at == null
           ? null
-          : r.occurred_at instanceof Date
-            ? r.occurred_at.toISOString()
-            : String(r.occurred_at),
+          : instantToStringUtc(String(r.occurred_at_instant)),
       actorLabel: String(r.actor_label),
       action: String(r.action),
       targetType: String(r.target_type),

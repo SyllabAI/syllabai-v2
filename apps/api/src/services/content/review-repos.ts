@@ -24,7 +24,13 @@ export class QuestionVersionReadRepository {
    * Full version rows for the paperReview walk (ContentReviewService
    * toVersionReviewView :881-910): the version fields plus its question's
    * fallback fields (question stem/marks back the version when null —
-   * Java:903-904).
+   * Java:903-904). The walk feeds paperReview's versions[] in this query's
+   * row order, so the frozen finder's deterministic ORDER BY is law here
+   * (F-3, T-MIG-023): ContentReviewService.paperReview :869 calls
+   * QuestionVersionRepository.findByPaperId, whose @Query is
+   * "where v.question.examPaperId = :paperId order by v.question.externalRef
+   * nulls last, v.version desc" — run-001's "derived query, NO ORDER BY"
+   * misread the call site; the golden capture pins a DETERMINISTIC order.
    */
   async findFullByPaperId(
     paperId: string,
@@ -53,7 +59,8 @@ export class QuestionVersionReadRepository {
              q.external_ref, q.question_type, q.stem as question_stem, q.marks as question_marks
       from question_versions v
       join questions q on q.id = v.question_id
-      where q.exam_paper_id = ${paperId}::uuid`;
+      where q.exam_paper_id = ${paperId}::uuid
+      order by q.external_ref nulls last, v.version desc`;
     return rows.map((v) => ({
       versionId: String(v.version_id),
       questionId: String(v.question_id),
@@ -122,13 +129,20 @@ export class QuestionVersionReadRepository {
     return rows.map((r) => ({ paperId: String(r.paper_id), avg: Number(r.avg) }));
   }
 
-  /** Port of findByPaperId (audit + review walk). */
+  /**
+   * Port of findByPaperId (audit + review walk) — the SAME @Query as the
+   * walk above (F-3, T-MIG-023): the frozen finder's deterministic ORDER BY
+   * "v.question.externalRef nulls last, v.version desc" is part of the law;
+   * every Java call site (:128 :369 :813 :869) consumes this one ordered
+   * list, so the port's split query shapes must carry the identical clause.
+   */
   async findByPaperId(paperId: string): Promise<Array<{ id: string }>> {
     const rows: Row[] = await this.sql`
       select v.id
       from question_versions v
       join questions q on q.id = v.question_id
-      where q.exam_paper_id = ${paperId}::uuid`;
+      where q.exam_paper_id = ${paperId}::uuid
+      order by q.external_ref nulls last, v.version desc`;
     return rows.map((r) => ({ id: String(r.id) }));
   }
 }

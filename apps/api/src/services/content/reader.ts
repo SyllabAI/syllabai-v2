@@ -17,22 +17,33 @@
 import type { DocumentRow } from "./repositories";
 import type { CitationDocumentView, PaperRef } from "@syllabai/contracts";
 
-/** Verbatim port of DocumentPageText.of — verbatim law, no rewrap/reorder. */
+/**
+ * Verbatim port of DocumentPageText.of — verbatim law, no rewrap/reorder.
+ *
+ * F-2 (T-MIG-023): the canonical jsonb follows the §8 ingestion contract
+ * exactly as CanonicalDocumentDto.java:13-14 states — "top-level camelCase,
+ * per-element snake_case" — so the element fields are `page_number` and
+ * `reading_order` (@JsonProperty mappings at CanonicalDocumentDto.java
+ * :105/:108, :121/:124, :138/:141, :155/:158; `text` is plain in both
+ * conventions). run-001 read camelCase keys that do not exist in the
+ * stored jsonb → the page filter matched nothing → honest-looking empty
+ * text on pages the capture proves carry text.
+ */
 export function documentPageText(canonical: unknown, page: number): string {
   const doc = canonical as {
-    textBlocks?: Array<{ text?: string | null; pageNumber?: number | null; readingOrder?: number | null } | null>;
-    tables?: Array<{ text?: string | null; pageNumber?: number | null; readingOrder?: number | null } | null>;
-    equations?: Array<{ text?: string | null; pageNumber?: number | null; readingOrder?: number | null } | null>;
+    textBlocks?: Array<{ text?: string | null; page_number?: number | null; reading_order?: number | null } | null>;
+    tables?: Array<{ text?: string | null; page_number?: number | null; reading_order?: number | null } | null>;
+    equations?: Array<{ text?: string | null; page_number?: number | null; reading_order?: number | null } | null>;
   } | null;
   const pieces: Array<{ readingOrder: number | null; text: string }> = [];
   const collect = (
-    elements: Array<{ text?: string | null; pageNumber?: number | null; readingOrder?: number | null } | null> | undefined,
+    elements: Array<{ text?: string | null; page_number?: number | null; reading_order?: number | null } | null> | undefined,
   ) => {
     if (elements == null) return;
     for (const element of elements) {
-      if (element != null && element.text != null && element.pageNumber === page) {
+      if (element != null && element.text != null && element.page_number === page) {
         pieces.push({
-          readingOrder: element.readingOrder == null ? null : Number(element.readingOrder),
+          readingOrder: element.reading_order == null ? null : Number(element.reading_order),
           text: element.text,
         });
       }
