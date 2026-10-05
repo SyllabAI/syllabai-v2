@@ -1103,3 +1103,12 @@ Work Log:
 
 Stage Summary:
 - T-MIG-023 CLAIMED (local): the two R0-filed port divergences that block the conditional Wave-2 exit gate. Acceptance pins pre-registered (Java Instant.toString() fraction law with 0/3/6/9-digit vectors; 716-char page-text capture). Work not started (claim-only round per operator directive); execution plan in yaml + receipt. Claim priority attaches at remote push time per AGENT_COORDINATION (T-MIG-005 run-001 precedent).
+
+---
+Task ID: T-MIG-023 (work start)
+Agent: R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Unblock executed — third operator PAT validated (login SyllabAI), claim branch pushed, work started.
+
+Work Log:
+- 2026-10-05T08:31:04Z: token 200 on GET /user → push -u origin t-mig-023/r1 → remote @ 46f4f19 (ls-remote verified). Claim priority attached at push time per AGENT_COORDINATION. Credential law held (env var + per-invocation helper only, outputs redacted by pattern).
+- yaml → IN_PROGRESS; receipts updated. Proceeding: F-1 (repositories.ts:64-65/169-170/314 — Java-exact Instant writer + verbatim DB fraction, repo-layer SQL shaping) and F-2 (reader.ts documentPageText — mirror frozen ContentReaderService page assembly; pin = 716-char capture).
