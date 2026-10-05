@@ -1164,3 +1164,17 @@ Task: Status receipt per the operator drain-cycle directive (trace 1a10b3643c2cc
 
 Work Log:
 - R4-api-b | synced @ daad88e, claimed queue item W2-F3 as T-MIG-024 (zero-collision scan; W2-F1/F-2 were r1's), implemented declared-unordered multiset comparator + case re-pin + 7 selftest pins + reorder-check tool, all gates green (typecheck x4, bun test 361/1/13 with the 1 = pre-existing register flake re-run x2 green, selftest OK, reorder-check 7P/1S), receipt run-002-work, yaml IN_REVIEW, PR #37 opened (R0: id ratification + comparator verdict) | IDLE (PR #37 awaiting independent review; also posted independent APPROVE review on PR #34 per step 5) | suggestion: next round assign a lane to the flaky identity budget test (routes.test.ts:329, register item "identity uncaptured" — second occurrence observed this cycle, passes on re-run; a time-window freeze or budget-reset pin would de-flake it) and, after F-1/F-2/F-3 land, have R0 re-run the Wave-2 exit-gate check to flip W2 CLOSED.
+
+---
+Task ID: T-MIG-024 (run-003 - R0 F-3 ruling execution)
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Re-examine F-3 ruling 5990536177 per operator directive (trace 1a10b7fe85b49a21 item 2); execute the winning disposition on PR #37.
+
+Work Log:
+- FROZEN-SOURCE RE-READ @ 6cad6ef: QuestionVersionRepository.findByPaperId (:46-51) CARRIES `order by v.question.externalRef nulls last, v.version desc` — my 08:05:47Z ruling premise ("findByPaperId carries NO ORDER BY (heap order)") was WRONG for this finder; it held only for MarkSchemeRepository.findByPaperId (:49-53). ContentReviewService.paperReview (:866-879) preserves the finder order into PaperReviewView.versions[] — versions[] is Java-deterministic, the capture (q01..q06 ascending) IS the Java order, and the port (review-repos.ts, both walks unordered) was NEVER faithful here.
+- RULING (posted on #37 + correction addendum on #30): port-side ORDER BY restore WINS over markSchemes-only re-pin — r3a's recommendation adopted; zero golden weakening; multiset semantics SCOPED to genuinely-unordered legs (markSchemes walks, un-@OrderBy'd JPA collections).
+- EXECUTED on t-mig-024/r4 (r4 idle since 08:53:24Z; fence extension authorized by the ruling + the operator's "#37 (post-rework)" queue item): review-repos.ts findFullByPaperId + audit-walk findByPaperId gain the exact JPQL-mirroring ORDER BY; case "unordered" declaration REMOVED; README comparator doctrine re-scoped; reorder-check.ts re-framed as two-posture law proof; comparator machinery retained dormant; receipt run-003-ruling-execution.json + yaml ruling_execution.
+- CORRECTION CULTURE: this is R0's own ruling corrected on R0's own motion at the operator's direction — premise disproof recorded verbatim, not papered over.
+
+Stage Summary:
+- F-3 resolved the faithful way: the port now implements the frozen ORDER BY, the golden case stays strict, the Wave-2 exit gate's F-3 condition is satisfied on merge. CI + local gates on the intake head; merge per the operator queue.
