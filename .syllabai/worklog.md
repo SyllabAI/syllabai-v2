@@ -1117,6 +1117,22 @@ Work Log:
 Stage Summary:
 - Board after sweep-2: T-MIG-007/018/022 DONE this session; Wave-1 fully closed (T-MIG-011 via operator-reassigned PR #32/#33); open PRs: none known at commit time; t-mig-030/r7a branched (Wave-3 ports starting). Escalations standing: single-R0 authority reaffirmation (two breach-pattern merges: #25, #26 — operator merge-authority trace now disclosed on #33, pattern reframed as likely operator action; bookkeeping stands either way); PAT rotation (chat-transit); flaky unit test on main (one occurrence, identity uncaptured); CI-side Neon integration runner; T-MIG-002 baseline-SQL repair.
 
+
+---
+Task ID: T-MIG-023
+Agent: R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Claim the next open lane per operator directive (IM trace 1a10b1a65519883d) — board survey + R0 follow-up F-1/F-2 adoption.
+
+Work Log:
+- Survey @ main ffc2876 (R0-SWEEP-2): ALL 20 task yamls DONE, zero open; R0 recorded "open PRs: none known at commit time"; t-mig-030/r7a observed IN FLIGHT (R7a: claim e3b53d9 with 030..034 split proposal awaiting R0 ratification + tranche-1 work 0e87be5, 34 stubbed-sql tests) — left untouched, no fence overlap.
+- Lane selection: Wave-2 exit gate is CONDITIONAL (GOLDEN_MASTER §4) on F-1+F-2 fixes + F-3 re-pin; F-3 ruled to R6 (stability-exempt ordering re-pin), H-2 registered to r7a; F-1/F-2 (filed by R0 against the merged T-MIG-020 port, owner field "T-MIG-020 port lane (r3-c) / R0 routing") are the only unowned actionable critical-path items → claimed as T-MIG-023 (id verified free — zero references repo-wide; 030..034 reserved by r7a's pending split proposal).
+- Filing: yaml T-MIG-023-w2-exit-port-fixes.yaml (CLAIMED @ 2026-10-05T08:14:41Z, P1, wave 2, deps T-MIG-020/022/004) + receipt run-001-claim.json (board snapshot, adopted findings with verbatim pin vectors, scope/fence, planned verification incl. R0's Pass-B expectation 13/15 after F-1 → 15/15 after F-2, credential blocker B-1). CROSS-FENCE ADOPTION disclosed in owner field: port lane closed (r3-c DONE), adopting at R0's routing point; fence = apps/api content services only, packages/db source untouched (verbatim timestamp fraction via repo-layer SQL shaping).
+- Workspace incident recorded in receipt: harness reset wiped the session workspace between turns (clone, scripts, session worklog); rebuilt from remote + context; no repo content affected.
+- BLOCKER B-1: no live GitHub credential (first PAT revoked ~2 min; second lost to harness reset) → claim commit LOCAL ONLY on t-mig-023/r1 @ ffc2876. UNBLOCK: operator PAT → push → PR "T-MIG-023: wave-2 exit port fixes (F-1 instant rendering + F-2 page-text assembly)" (receipts + fence disclosure in body) → IN_PROGRESS on work start.
+
+Stage Summary:
+- T-MIG-023 CLAIMED (local): the two R0-filed port divergences that block the conditional Wave-2 exit gate. Acceptance pins pre-registered (Java Instant.toString() fraction law with 0/3/6/9-digit vectors; 716-char page-text capture). Work not started (claim-only round per operator directive); execution plan in yaml + receipt. Claim priority attaches at remote push time per AGENT_COORDINATION (T-MIG-005 run-001 precedent).
+
 ---
 Task ID: T-MIG-030 tranche 2
 Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
@@ -1146,6 +1162,15 @@ Work Log:
 
 Stage Summary:
 - Board: T-MIG-030 tranche-1 landed; wave-3 port train rolling (030 in flight, 031..034 seeds available per the ratified map). Next review targets: T-MIG-030 tranche-2 when pushed; 031..034 filings if seeded. Standing: F-1/F-2 content fixes, F-3 re-pin (R6), H-2 (r7a), E-1 (r7a tranche-2), CI-side Neon runner, T-MIG-002 baseline-SQL, PAT rotation, flaky-test watch.
+
+---
+Task ID: T-MIG-023 (work start)
+Agent: R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Unblock executed — third operator PAT validated (login SyllabAI), claim branch pushed, work started.
+
+Work Log:
+- 2026-10-05T08:31:04Z: token 200 on GET /user → push -u origin t-mig-023/r1 → remote @ 46f4f19 (ls-remote verified). Claim priority attached at push time per AGENT_COORDINATION. Credential law held (env var + per-invocation helper only, outputs redacted by pattern).
+- yaml → IN_PROGRESS; receipts updated. Proceeding: F-1 (repositories.ts:64-65/169-170/314 — Java-exact Instant writer + verbatim DB fraction, repo-layer SQL shaping) and F-2 (reader.ts documentPageText — mirror frozen ContentReaderService page assembly; pin = 716-char capture).
 
 ---
 Task ID: T-MIG-031
@@ -1196,6 +1221,25 @@ Stage Summary:
 - T-MIG-035 evidence complete: the last open item of the Wave-1 hub adapter is CLOSED with live proof. After merge, COW branch br-mute-dust-a50ov8nc can be dropped. PR follows with receipts; status stays R0's field.
 
 ---
+Task ID: T-MIG-023 (work complete — IN_REVIEW)
+Agent: R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Execute F-1 + F-2 (the two R0-filed Wave-2 exit gate blockers) per T-MIG-022 run-001 diagnosis + ratified fix sketches.
+
+Work Log:
+- F-1 (1021 Instant divergences): content repositories now shape every consumed timestamptz verbatim — to_char(col at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US') at 10 select sites (documents x3 + col-ref, exam_papers x4 + col-ref, audit x1) — and javaInstantText() renders the Jackson Instant law (fraction groups-of-3, trailing zero-groups trimmed: .578011Z / .578Z / none). Date round-trip sites removed; audit ORDER BY qualified to the true column. packages/db untouched (repo-layer SQL shaping only).
+- F-2 (reader page text "" vs 716-char capture): documentPageText now binds the §8 snake_case element keys (page_number/reading_order) with Jackson int-coercion parity (NUMERIC_TEXT exact-int strings); bind violation throws → error boundary fixed-500 (R10, route calls pageText unguarded = IllegalStateException parity); [null] elements skipped; camelCase keys intentionally dead (they bound nothing in Java either — the drift itself). Root cause cross-checked against frozen ContentReaderController.java (:97-105 full-DTO binding) + contracts canonicalElementBase (:349-366).
+- Pins: fidelity-fixes.test.ts NEW (9 tests / 25 expects — T-MIG-022 capture vectors verbatim, fraction law incl. 000500/578010 edge groups, §8 binding negative, coercion, fail-loud, verbatim 716-char vector with order-restoration); routes.test.ts 020-era pin corrected to §8 (assertions unchanged — the old pin pinned the drift).
+- Gates exit-captured: bun install --frozen-lockfile 930 pkgs clean; typecheck x4 exit 0; bun test 356/0/13skip; golden selftest OK.
+- B-2 ESCALATION (§6.1, honest): live replay NOT RUN — golden COW-branch DSN lost to the workspace wipe (.env gone); ambient DATABASE_URL probed = dead local placeholder (AggregateError). UNBLOCK: operator COW DSN → T-MIG-022 tools both postures, or R0 merge-intake re-execution (T-MIG-007 precedent). R0 expectation: Pass B 15/15 after F-1+F-2, Pass A 25/25.
+
+Stage Summary:
+- T-MIG-023 IN_REVIEW: both conditional-exit port divergences fixed with pinned laws; all local gates green; live replay escalated B-2 with probe evidence. PR opened same session. Wave-2 exit gate becomes fully actionable on replay (F-3 stability ruling stands pending R6 re-pin).
+
+---
+Task ID: T-MIG-023 drain-cycle status receipt (trace 1a10b512c7656ab9)
+Agent: R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Status line: T-MIG-023 (t-mig-023/r1, PR #38) | drain: synced ffc2876->0cd360b, merge-intake 422066e (worklog append-union byte-verified, zero code overlap; gates typecheck x4 / 392 pass 0 fail 13 skip / selftest OK), 3-way F-1/F-2 collision disclosed (earliest pushed claim: 46f4f19 @ 08:31:04Z) | BLOCKED (no PAT: intake-head push + PR body update pending) | suggestion: R0 three-way arbitration across t-mig-023/r1 (earliest claim + pins) vs t-mig-023/r3a (live 40/40 + F-3 contradicting the 5990536177 ruling) vs w2-f1/r3c (F-1-only capture proof); queue a COW DSN to clear B-2.
+---
 Task ID: T-MIG-032 claim
 Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
 Task: Self-file + claim Wave-3 marking port, learner half (LearnerSelfMark + StudentSmartMark over the shared pipeline)
@@ -1243,7 +1287,23 @@ Work Log:
 Stage Summary:
 - Sweep-4 merged two PRs (#34, #35), audited the third (#36) post-merge under a disclosed operator delegation, and filed E-2 with a fix sketch instead of re-litigating the merge. Wave-1 fully closed incl. the live-flow escalation (T-MIG-035 DONE). Wave-3 train: 030 DONE (conditions), 031 claimed, 032..034 seeds open. Standing register: E-2 (r7a, blocks 1 replay case), F-1/F-2 content fixes (sketches in receipts/T-MIG-022/), F-3 re-pin -> THIS lane now executing as T-MIG-036, H-2 apply-reset divergence (r7a), CI-side Neon replay runner (operator), T-MIG-002 baseline-SQL repair, PAT rotation, flaky unit test watch (one occurrence, identity uncaptured).
 
+
+
 ---
+Task ID: T-MIG-031
+Agent: R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Drain-cycle intake — merge current main (0cd360b, R0 sweep-4) into the tranche-1 branch; PR #43 to mergeable-clean
+
+Work Log:
+- SYNC per the drain directive (trace 1a10b52e36b4dc25): worklog re-read (sweep-4 entries: #34/#35 merged, #36 audited post-merge, E-2 filed on r7a's desk, W2-F3 -> R0's T-MIG-036); PR #43 found mergeable=dirty against 0cd360b.
+- Intake commit (this one): sole conflict = worklog append tail (append-only union, both sides byte-preserved; my tranche-1 + drain entries re-landed on top of main's sweep-4 chain). Zero code-file conflicts — the fence (services|test /questions|exam-papers /**) is disjoint from everything merged in sweep-4.
+- Gates re-run on the intake head before push (see run-003 receipt addendum); no force-push; history linear.
+
+Stage Summary:
+- PR #43 back to mergeable-clean; independent review requested (authors never self-merge — §5 recusal rule); R0 merge-intake ready. Queue items all claimed by other lanes (W2-F1 #42+r3c, W2-F3 T-MIG-036 R0, T-MIG-002-R #44 w0a, W2-F2 via T-MIG-023 #38/#41) — zero-collision scan says NO new claim for this lane; next: one independent review of another lane's PR, then status receipt + stop.
+
+---
+Drain-cycle status receipt: R3-api-a | synced at 0cd360b, drove T-MIG-031 tranche-1 (PR #43) through drain intake (0cd360b union, zero code conflicts, gates re-stamped 421/0/13skip + selftest OK, mergeable-clean, independent review requested) + posted independent APPROVE review on PR #42 (W2-F1, test-merge gates 410/0/13skip) | IDLE (tranche-1 awaiting R0 merge-intake; tranche-2 queued behind it) | suggestion: T-MIG-032/033 (marking ports) are the W3 critical path and E-2 (r7a) blocks one replay case — consider pairing a reviewer for #40 now so the marking train does not queue behind the W2 exit fixes.---
 Task ID: R0-COLLISION-1 (section 2.1 arbitration: W2-F3 double-claim - T-MIG-024 wins, T-MIG-036 released)
 Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
 Task: Arbitrate the W2-F3 collision between PR #37 (T-MIG-024, R4-api-b) and PR #45 (T-MIG-036, R0's own claim).
@@ -1273,47 +1333,3 @@ Work Log:
 
 Stage Summary:
 - E-2 executed per R0's sketch, no service change needed (as predicted). PR to follow; merge per the drain-cycle rule (independent review / R0 — authors never self-merge).
-
----
-Task ID: T-MIG-023
-Agent: R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
-Task: Claim the next open lane per operator directive (IM trace 1a10b1a65519883d) — board survey + R0 follow-up F-1/F-2 adoption.
-
-Work Log:
-- Survey @ main ffc2876 (R0-SWEEP-2): ALL 20 task yamls DONE, zero open; R0 recorded "open PRs: none known at commit time"; t-mig-030/r7a observed IN FLIGHT (R7a: claim e3b53d9 with 030..034 split proposal awaiting R0 ratification + tranche-1 work 0e87be5, 34 stubbed-sql tests) — left untouched, no fence overlap.
-- Lane selection: Wave-2 exit gate is CONDITIONAL (GOLDEN_MASTER §4) on F-1+F-2 fixes + F-3 re-pin; F-3 ruled to R6 (stability-exempt ordering re-pin), H-2 registered to r7a; F-1/F-2 (filed by R0 against the merged T-MIG-020 port, owner field "T-MIG-020 port lane (r3-c) / R0 routing") are the only unowned actionable critical-path items → claimed as T-MIG-023 (id verified free — zero references repo-wide; 030..034 reserved by r7a's pending split proposal).
-- Filing: yaml T-MIG-023-w2-exit-port-fixes.yaml (CLAIMED @ 2026-10-05T08:14:41Z, P1, wave 2, deps T-MIG-020/022/004) + receipt run-001-claim.json (board snapshot, adopted findings with verbatim pin vectors, scope/fence, planned verification incl. R0's Pass-B expectation 13/15 after F-1 → 15/15 after F-2, credential blocker B-1). CROSS-FENCE ADOPTION disclosed in owner field: port lane closed (r3-c DONE), adopting at R0's routing point; fence = apps/api content services only, packages/db source untouched (verbatim timestamp fraction via repo-layer SQL shaping).
-- Workspace incident recorded in receipt: harness reset wiped the session workspace between turns (clone, scripts, session worklog); rebuilt from remote + context; no repo content affected.
-- BLOCKER B-1: no live GitHub credential (first PAT revoked ~2 min; second lost to harness reset) → claim commit LOCAL ONLY on t-mig-023/r1 @ ffc2876. UNBLOCK: operator PAT → push → PR "T-MIG-023: wave-2 exit port fixes (F-1 instant rendering + F-2 page-text assembly)" (receipts + fence disclosure in body) → IN_PROGRESS on work start.
-
-Stage Summary:
-- T-MIG-023 CLAIMED (local): the two R0-filed port divergences that block the conditional Wave-2 exit gate. Acceptance pins pre-registered (Java Instant.toString() fraction law with 0/3/6/9-digit vectors; 716-char page-text capture). Work not started (claim-only round per operator directive); execution plan in yaml + receipt. Claim priority attaches at remote push time per AGENT_COORDINATION (T-MIG-005 run-001 precedent).
-
----
-Task ID: T-MIG-023 (work start)
-Agent: R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
-Task: Unblock executed — third operator PAT validated (login SyllabAI), claim branch pushed, work started.
-
-Work Log:
-- 2026-10-05T08:31:04Z: token 200 on GET /user → push -u origin t-mig-023/r1 → remote @ 46f4f19 (ls-remote verified). Claim priority attached at push time per AGENT_COORDINATION. Credential law held (env var + per-invocation helper only, outputs redacted by pattern).
-- yaml → IN_PROGRESS; receipts updated. Proceeding: F-1 (repositories.ts:64-65/169-170/314 — Java-exact Instant writer + verbatim DB fraction, repo-layer SQL shaping) and F-2 (reader.ts documentPageText — mirror frozen ContentReaderService page assembly; pin = 716-char capture).
-
----
-Task ID: T-MIG-023 (work complete — IN_REVIEW)
-Agent: R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
-Task: Execute F-1 + F-2 (the two R0-filed Wave-2 exit gate blockers) per T-MIG-022 run-001 diagnosis + ratified fix sketches.
-
-Work Log:
-- F-1 (1021 Instant divergences): content repositories now shape every consumed timestamptz verbatim — to_char(col at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US') at 10 select sites (documents x3 + col-ref, exam_papers x4 + col-ref, audit x1) — and javaInstantText() renders the Jackson Instant law (fraction groups-of-3, trailing zero-groups trimmed: .578011Z / .578Z / none). Date round-trip sites removed; audit ORDER BY qualified to the true column. packages/db untouched (repo-layer SQL shaping only).
-- F-2 (reader page text "" vs 716-char capture): documentPageText now binds the §8 snake_case element keys (page_number/reading_order) with Jackson int-coercion parity (NUMERIC_TEXT exact-int strings); bind violation throws → error boundary fixed-500 (R10, route calls pageText unguarded = IllegalStateException parity); [null] elements skipped; camelCase keys intentionally dead (they bound nothing in Java either — the drift itself). Root cause cross-checked against frozen ContentReaderController.java (:97-105 full-DTO binding) + contracts canonicalElementBase (:349-366).
-- Pins: fidelity-fixes.test.ts NEW (9 tests / 25 expects — T-MIG-022 capture vectors verbatim, fraction law incl. 000500/578010 edge groups, §8 binding negative, coercion, fail-loud, verbatim 716-char vector with order-restoration); routes.test.ts 020-era pin corrected to §8 (assertions unchanged — the old pin pinned the drift).
-- Gates exit-captured: bun install --frozen-lockfile 930 pkgs clean; typecheck x4 exit 0; bun test 356/0/13skip; golden selftest OK.
-- B-2 ESCALATION (§6.1, honest): live replay NOT RUN — golden COW-branch DSN lost to the workspace wipe (.env gone); ambient DATABASE_URL probed = dead local placeholder (AggregateError). UNBLOCK: operator COW DSN → T-MIG-022 tools both postures, or R0 merge-intake re-execution (T-MIG-007 precedent). R0 expectation: Pass B 15/15 after F-1+F-2, Pass A 25/25.
-
-Stage Summary:
-- T-MIG-023 IN_REVIEW: both conditional-exit port divergences fixed with pinned laws; all local gates green; live replay escalated B-2 with probe evidence. PR opened same session. Wave-2 exit gate becomes fully actionable on replay (F-3 stability ruling stands pending R6 re-pin).
-
----
-Task ID: T-MIG-023 drain-cycle status receipt (trace 1a10b512c7656ab9)
-Agent: R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
-Status line: T-MIG-023 (t-mig-023/r1, PR #38) | drain: synced ffc2876->0cd360b, merge-intake 422066e (worklog append-union byte-verified, zero code overlap; gates typecheck x4 / 392 pass 0 fail 13 skip / selftest OK), 3-way F-1/F-2 collision disclosed (earliest pushed claim: 46f4f19 @ 08:31:04Z) | BLOCKED (no PAT: intake-head push + PR body update pending) | suggestion: R0 three-way arbitration across t-mig-023/r1 (earliest claim + pins) vs t-mig-023/r3a (live 40/40 + F-3 contradicting the 5990536177 ruling) vs w2-f1/r3c (F-1-only capture proof); queue a COW DSN to clear B-2.
