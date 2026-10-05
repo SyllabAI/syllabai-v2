@@ -1,0 +1,21 @@
+{
+  "task_id": "T-MIG-040-PREP",
+  "kind": "CLAIM",
+  "timestamp": "2026-10-05T13:30:00Z",
+  "agent": "R7a (agent-da4ab8, zai-web session web-da4ab8b1)",
+  "directive": "operator round-7 directive (trace 1a10c9fd933dd505): T-MIG-040-PREP capture-first W4 golden capture, learner surfaces + deterministic decay math, Render core READ-ONLY authz-shell posture (T-MIG-007 pattern), target 35+ cases + replay-readiness kit, one wave ahead of the port lane",
+  "base": {"main_head": "c920eea", "note": "R0 round-6 housekeeping; 485/0/13skip 1259 expect; selftest OK (113 goldens)"},
+  "collision_scan": {
+    "yaml_ids_on_main_matching_040": 0,
+    "remote_branches_*040*": [],
+    "pr_diffs_in_flight": "PR #49 (t-mig-022/r7a-h2, own H-2, still open) — no 040 anywhere",
+    "verdict": "ZERO-COLLISION — claim proceeds"
+  },
+  "branch": "t-mig-040-prep/r7a",
+  "posture": {
+    "prong_1": "run-001 Render authz-shell: pre-auth filter-chain probes over the full W4 route matrix (17 routes) — write-safety proven from SecurityConfig source ordering (JWT filter -> anyRequest().authenticated() -> 401 entry point BEFORE controllers); zero persistence path",
+    "prong_2": "run-002 LOCAL frozen-core boot (JDK 25 + Maven no-root tarballs; LOCAL PostgreSQL 17 + pgvector no-root pgdg debs; zero Neon): authed deterministic surfaces — empty states, validation 400s, role gates, flashcard rating -> derived schedule (FlashcardReviewScheduler), decay math on pinned anchors (EbbinghausDecayService), agenda/state/exam-series happy paths; now()-derived fields tolerated + formula disclosed",
+    "scrub": "GOLDEN_MASTER s2.3 — synthetic identities from creation (example.invalid), {{TOKEN}} placeholders, tolerate on wall-clock fields, seed uuids replay-stable constants"
+  },
+  "merge_protocol": "authors never self-merge — PR will request independent review + R0 merge-intake"
+}

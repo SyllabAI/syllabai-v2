@@ -1,0 +1,52 @@
+{
+  "task_id": "T-MIG-022",
+  "register_item": "H-2",
+  "kind": "RECONCILIATION COMPLETE (IN_REVIEW)",
+  "run": "002-h2",
+  "timestamp": "2026-10-05T12:40:00Z",
+  "agent": "R7a (agent-da4ab8, zai-web session web-da4ab8b1)",
+  "branch": "t-mig-022/r7a-h2",
+  "claim_commit": "ba569e5",
+  "deliverable": {
+    "tool": ".syllabai/receipts/T-MIG-022/tools/apply-reset-v2.ts",
+    "sha256": "98877ed81bd6e47db15ac3ce9d3c045e354887285c34f608df7b975c5fa6750d",
+    "v1_untouched": {
+      "path": ".syllabai/receipts/T-MIG-022/tools/apply-reset.ts",
+      "sha256_as_on_main_79bdc23": "32fee89dac1aeb32e280c16df6c5ab5d6c2f872300e0923b867f4160169cc2c1",
+      "rationale": "as-run historical artifact — its sha stays verifiable against the executed T-MIG-022 run; no history rewriting (v1's false docstring remains as the RECORD of the divergence H-2 documented)"
+    }
+  },
+  "reconciliation_decision": {
+    "what": "v2 keeps the DEFAULT posture byte-faithful to v1's executed behavior (full topological wipe + VALIDATED->UNVALIDATED owning-surface neutralization + V1__identity.sql roles re-seed) and adds an explicit OPT-IN --preserve-skeleton posture that actually implements the behavior v1's docstring promised: subjects, curriculum_versions and knowledge_nodes preserved wholesale; of knowledge_edges only PART_OF rows kept (non-PART_OF edges wiped at the table's own topological position); owning-surface neutralization SKIPPED so the captured validation status IS the posture under test. Roles re-seed runs in both postures (identity, not curriculum).",
+    "why_this_shape": [
+      "The T-MIG-022 seed tranche pinned the EXECUTED v1 reality (content tables empty AND curriculum tables empty — the run probes recorded those zeros); changing the default would invalidate the pinned posture and weaken cases. Default stays byte-faithful: zero golden impact.",
+      "The register marked H-2 'material to T-MIG-021 fixed-uuid replay' — the promised skeleton-preserving posture must EXIST, not just be documented; --preserve-skeleton delivers it behind an explicit flag.",
+      "v1 untouched preserves the sha-verified-verbatim-copy property the R0 #20 disposition established; the divergence itself stays on record exactly as H-2 documented it."
+    ],
+    "docstring": "rewritten to describe BOTH postures truthfully, including the explicit note that v1's 'curriculum skeleton present' seed-state claim was the divergence, not the executed reality",
+    "fingerprint_note": "this disposition mirrors the ratified two-posture doctrine of the F-3 rework (reorder-check.ts two-posture law proof) — posture selection explicit, no silent semantics change"
+  },
+  "gates": [
+    {"cmd": "isolated strict tsc on v2 (tsc --noEmit --strict --target es2022 --module preserve --moduleResolution bundler --skipLibCheck --types node)", "result": "exit 0"},
+    {"cmd": "usage smoke: unknown flag before DB contact", "result": "exit 2 + usage line (no DB contact)"},
+    {"cmd": "usage smoke: DATABASE_URL missing, default posture", "result": "exit 2 'DATABASE_URL missing'"},
+    {"cmd": "usage smoke: DATABASE_URL missing, --preserve-skeleton", "result": "exit 2 'DATABASE_URL missing' (flag accepted)"},
+    {"cmd": "typecheck x4 (root chain: contracts/shared/db/api)", "result": "exit 0"},
+    {"cmd": "bun test apps/api packages (CI scope per .github/workflows/ci.yml)", "result": "485 ran / 472 pass / 0 fail / 13 skip / 1259 expect() — EQUALS main's directive-reported CI numbers exactly; zero collateral"},
+    {"cmd": "bun test (root, informational)", "result": "504 ran / 491 pass / 0 fail / 13 skip / 1295 expect() — the +6 tests vs CI scope are apps/hub's (not in CI verify job); unchanged by this work"},
+    {"cmd": "bun golden/runner.ts --selftest", "result": "OK exit 0 (tolerance engine behaves, incl. declared-unordered multiset — T-MIG-024)"},
+    {"cmd": "fence audit: git diff --stat origin/main -- . ':!.syllabai'", "result": "empty — zero touches outside .syllabai/**"}
+  ],
+  "fence": {
+    "touched": [".syllabai/receipts/T-MIG-022/tools/apply-reset-v2.ts (new)", ".syllabai/receipts/T-MIG-022/run-002-h2-claim.json (new, claim)", ".syllabai/receipts/T-MIG-022/run-002-h2.json (this receipt)", ".syllabai/tasks/T-MIG-022-golden-verify-content.yaml (H-2 RESOLVED addendum appended to execution_record; no existing line altered)", ".syllabai/worklog.md (append-only entries)"],
+    "untouched": ["apps/** packages/** golden/** (verified by fence audit)", "v1 apply-reset.ts (sha re-verifiable)", "all historical receipt content", "production Neon (C2) — ZERO Neon contact of any kind this round"]
+  },
+  "env_blocked_disclosure": {
+    "what": "live proof of both postures on a fresh Neon COW branch (run default -> probes zero; run --preserve-skeleton on a curriculum-bearing COW -> skeleton counts preserved, everything else zero)",
+    "why": "NEON_PAT was not part of the round-6 credential drop (workspace reset lost prior secrets; only GITHUB_PAT provided)",
+    "standing": "reviewer option at PR review, or a follow-up round with NEON_PAT; the future CI-side replay runner (operator register item) is the natural permanent home for this proof",
+    "compensation": "static verification is complete (strict tsc + parse/usage smoke against all three guard paths + full gate parity with main); the wipe/preserve logic diffs against v1's proven machinery only in the documented, flagged branches"
+  },
+  "merge_protocol": "authors never self-merge — PR requests independent review + R0 merge-intake",
+  "card_flip": "T-MIG-022 yaml execution_record gains the appended H-2 RESOLVED addendum (status stays DONE; register item discharges under the completed verification task's surface per the E-2/T-MIG-030 precedent)"
+}

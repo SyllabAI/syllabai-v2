@@ -1,0 +1,76 @@
+version: 1
+task:
+  id: T-MIG-039
+  title: "LLM-OUTPUT behavioural-gate doctrine — recorded-shadow comparison
+    design + harness skeleton for the two LLM prose seams (smart-mark
+    feedback prose, transcription) per GOLDEN_MASTER §3; ADR draft for the
+    LLM seam strategy (seam-injection proxy vs port-vs-W6-defer). Feeds
+    T-MIG-034 (LLM-chain lane) — this card files the doctrine + harness
+    ONLY; no seam code, no runner edits, no route changes."
+  owner: "R6-llm (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+    — self-filed per the T-MIG-013/020/021/030/031/032/035 precedent, on the
+    operator's explicit directive assigning this lane the doctrine + harness
+    deliverable feeding r1's T-MIG-034; R0 ratification requested as for 032"
+  status: IN_REVIEW # PR #59 open (head baad720); flips DONE by R0 only — merge-intake + independent review per 5 (authors never self-merge)
+  claimed_at: "2026-10-05T15:55:02Z"
+  priority: P1
+  wave: 3
+  deps: [T-MIG-032] # the seam this doctrine gates exists at apps/api/src/services/smartmark (FeedbackLlm, dormantFeedbackLlm, MarkingCandidateGenerator) and the buildSmartMarkRouters seams injection point
+  execution_record: >
+    (claim entry 2026-10-05T15:55Z) Pre-claim verification at main c0d8fa0
+    (origin/main re-fetched immediately before branch cut — main advanced
+    past the directive's stated 79bdc23 via R0 housekeeping c920eea + round-6b
+    c0d8fa0, both yaml/worklog/receipt-only): zero T-MIG-039 yamls on main
+    (ls), zero t-mig-039* remote heads (ls-remote full head list), zero
+    T-MIG-039 mentions in open PRs (#48 036, #49 022-H2, #50 033, #51/#53
+    002-R, #52 031, #54 042-PREP). COLLISION AVOIDED: t-mig-037/r1c and
+    t-mig-038/r1c heads are ESTABLISHED (r1c claimed 037/038 before this
+    filing) — this lane took 039 instead; zero scope overlap with any open
+    PR or head. SURFACE (all NEW files, three disjoint fences in one
+    doctrine card): (a) docs/gates/LLM-OUTPUT-BEHAVIOURAL-GATE.md — the
+    recorded-shadow comparison doctrine mapping GOLDEN_MASTER §3's three
+    named behavioural dimensions (honesty of refusals; citation plumbing
+    resolving to the same grounding chunks; zod format contracts) onto a
+    T0-T3 tolerance taxonomy + two-posture (RECORDED/LIVE) gate model;
+    (b) docs/adr/ADR-MIG-0001-llm-seam-strategy.md — ADR draft: seam-
+    injection proxy (capture/replay FeedbackLlm riding the EXISTING
+    buildSmartMarkRouters seams.{llm,generator} injection point — ZERO core
+    edits, the composition root already accepts it) vs port-vs-W6-defer,
+    with MIGRATION_PLAN R-LLM/R-SSE + W6 §5 cross-refs; (c)
+    golden/llm-shadow/** — self-contained harness skeleton: comparator
+    (canonicalize -> anchor-resolve -> classify -> aggregate), the
+    ShadowFeedbackLlm capture/replay proxy implementing the FeedbackLlm
+    CONTRACT SHAPE (duck-typed — no apps/api import; the real 503
+    smart_feedback_unavailable law stays pinned by 032's route tests, out
+    of this fence), gate stubs for smart-mark prose + transcription, selftest.
+    Fence discipline: golden/llm-shadow/** is a NEW self-contained subtree —
+    golden/runner.ts, golden/cases/**, golden/tools/** are NOT touched (the
+    forever-gate stays byte-identical; harness registration into runner.ts
+    is T-MIG-034's integration decision, recorded as a standing condition).
+    Transcription gate stub is explicitly a STUB: the transcription DTOs
+    live in the answerinput contracts package (packages/contracts/src/
+    assessment.ts :38-40 — deliberately NOT ported here); the stub pins the
+    machinery + fixture anatomy so the owning wave inherits a working gate.
+    PROVENANCE: doctrine + harness drafted offline in a staging workspace
+    against the described seam contract, then adapted line-against-line to
+    the real code (FeedbackLlm :414-419, generate() availability + empty-
+    response guards :883-893, dormant pair routes/smartmark :53-62, 503
+    fixed body :70-76, feedback views :728-732/:742-746, ephemeral-never-
+    persisted law, pointLabel scheme-leak law :897-904) once the workspace
+    was rehydrated (workspace-wipe pattern, third occurrence fleet-wide —
+    PAT rotation note re-recorded in the worklog entry).
+  scope:
+    allowed:
+      - docs/gates/LLM-OUTPUT-BEHAVIOURAL-GATE.md # new file
+      - docs/adr/ADR-MIG-0001-llm-seam-strategy.md # new file
+      - golden/llm-shadow/** # new self-contained subtree (comparator, proxy, gate stubs, fixtures, selftest)
+      - .syllabai/receipts/T-MIG-039/**
+      - .syllabai/tasks/T-MIG-039-llm-output-behavioural-gate.yaml
+      - .syllabai/worklog.md # append-only
+    forbidden:
+      - golden/runner.ts # T-MIG-007's forever-gate engine — registration is 034's integration decision, not this card's
+      - golden/cases/** and golden/tools/** # the captured corpus — byte-identical on this card
+      - apps/api/** and packages/** # seam code is T-MIG-034's surface (r1); contracts are R1's fence; this card consumes, never edits
+      - apps/hub/** # R5's lane
+      - syllabai-core / syllabai-hub repos (frozen, C1 — read-only raw reads only)
+      - any write to Neon/production; schema changes; Flyway edits

@@ -1,0 +1,30 @@
+{
+  "id": "T-MIG-042-PREP",
+  "kind": "execution",
+  "run": "run-002-execution",
+  "ts": "2026-10-05T13:0xZ",
+  "agent": "R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "branch": "t-mig-042p/r1 (base: main c0d8fa08)",
+  "deliverables": [
+    "apps/hub/vercel.json — crons entry: GET /api/cron/nightly-decay @ '0 2 * * *' (02:00 UTC placeholder, DISCLOSED — exact hour confirmed from V38/@Scheduled at port time; inert while env-gated OFF so a placeholder cannot double-decay)",
+    "apps/hub/src/app/api/cron/nightly-decay/route.ts — invoke shape: runtime nodejs + force-dynamic; CRON_SECRET bearer fail-closed (401 on unset/mismatch); DECAY_CRON_ENABLED != '1' => 200 {status:skipped} (§4.3 OFF-by-default); enabled => seam => 501 {status:not-implemented} until the Wave-4 port lands; ZERO DB contact on every path",
+    "apps/hub/src/lib/decay/nightly-decay.ts — pure decision law (decideDecayCron) + UTC window key (computeWindowStart) + wiring seam (runNightlyDecay) with the documented Wave-4 port contract: decay_job_runs ledger idempotency via window_start PK (V38), deterministic golden-gated math, retry-safe, no flyway_schema_history contact, single cron entry",
+    "apps/hub/src/lib/decay/nightly-decay.test.ts — 8 bun tests: fail-closed auth matrix (unset/empty secret, wrong bearer, missing header), skip-gate matrix (undefined/''/0/'true'/'yes' all skip), run path (correct bearer + enabled=1), UTC midnight roll, seam stub zero-effect",
+    "apps/hub/.env.example — cron section documenting CRON_SECRET + DECAY_CRON_ENABLED with the §4.3 double-decay warning and the Wave-4/501 semantics",
+    "apps/hub/package.json — 'test:decay': 'bun test src/lib/decay' script entry only"
+  ],
+  "gates": {
+    "hub_decay_tests": "8 pass / 0 fail / 41 expect() calls (bun test apps/hub/src/lib/decay)",
+    "typecheck": "x4 clean (packages/contracts, packages/shared, packages/db, apps/api)",
+    "bun_test": "485 pass / 0 fail / 13 skip, 1259 expects — EXACTLY the main c0d8fa08 base (this branch carries no packages/apps changes; hub tests run under test:decay, outside the packages gate by design)",
+    "golden_selftest": "OK"
+  },
+  "doctrine_compliance": {
+    "baseline_db_4_3": "scaffold is env-gated OFF by default; a scheduled hit while OFF returns 200 {status:skipped} and touches nothing — zero double-schedule risk before the Wave-7 cutover",
+    "no_decay_port": "no decay math anywhere; the seam stub returns {implemented:false}; NO decay port delivered (Wave-4 owner's lane, per operator directive)",
+    "zero_db": "no DB imports in route or seam; no decay_job_runs writes; flyway_schema_history untouched",
+    "neon": "zero Neon contact of any kind",
+    "scope": "only apps/hub/vercel.json (NEW), apps/hub/src/app/api/cron/nightly-decay/** (NEW), apps/hub/src/lib/decay/** (NEW), apps/hub/.env.example, apps/hub/package.json (one script line), card + receipts + worklog"
+  },
+  "next": "PR t-mig-042p/r1 -> main; review request; hold for R0. Wave-4 port (T-MIG-042) implements the seam with golden-gated decay math."
+}

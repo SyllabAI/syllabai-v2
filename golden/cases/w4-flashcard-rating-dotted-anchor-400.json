@@ -1,0 +1,29 @@
+{
+  "name": "w4-flashcard-rating-dotted-anchor-400",
+  "description": "CAPTURED-AS-IS QUIRK (F-e, divergence call belongs to R0): the seed subtopic code WCH11-T1.1 contains a dot, but the rating DTO @Pattern ^[A-Za-z0-9-]+$ forbids dots -> 400 validation_failed BEFORE the controller lookup; UNIT/TOPIC codes without dots pass. Not fixed in-pass (GOLDEN_MASTER captured-as-is)",
+  "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "method": "POST",
+  "path": "/api/v1/learners/me/flashcard-ratings",
+  "request": {
+    "body": {
+      "cardId": "fl_w4_cap_00d",
+      "rating": "know",
+      "subtopicCode": "WCH11-T1.1"
+    },
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 400,
+    "body": {
+      "status": 400,
+      "error": "validation_failed",
+      "message": "subtopicCode: must match \"^[A-Za-z0-9-]+$\"",
+      "timestamp": "2026-10-05T15:48:32.376862852Z"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

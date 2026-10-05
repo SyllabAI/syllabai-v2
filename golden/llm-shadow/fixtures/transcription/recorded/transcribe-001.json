@@ -1,0 +1,24 @@
+{
+  "schema": "llm-shadow/v1",
+  "seam": "transcription",
+  "surface": "w3-stub",
+  "case": "transcribe-001",
+  "recordedAt": "2026-10-05T15:55:02Z",
+  "provenance": {
+    "modelId": "shadow-synthetic-v0",
+    "promptHash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "sampling": { "temperature": null },
+    "posture": "LIVE"
+  },
+  "artifact": {
+    "segments": [
+      { "index": 0, "startMs": 0, "endMs": 3200, "speaker": "host", "text": "Photosynthesis begins when chlorophyll absorbs light." },
+      { "index": 1, "startMs": 3200, "endMs": 6400, "speaker": "guest", "text": "That energy powers the cell, producing glucose." }
+    ]
+  },
+  "anchors": [
+    "chlorophyll absorbs light",
+    "energy powers cell"
+  ],
+  "forbidden": []
+}
