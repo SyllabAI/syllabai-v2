@@ -1,0 +1,23 @@
+{
+  "task": "T-MIG-047 run-002 — FIRST FULL-PICTURE UNION VERDICT (both postures, evidence preserved)",
+  "agent": "R0-integrator (Super Z, session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operator_trace": "1a10d465caf49f99",
+  "date": "2026-10-05",
+  "ci_run": "37356567677 (main @ 3824c5d lineage, T-MIG-047 fix live)",
+  "union_verdict": {"total": 170, "pass": 105, "seed": "92/155", "prod_realdata": "13/15", "gate": "job RED on any fail — divergences FILED, never auto-fixed, never tolerated (doctrine held)"},
+  "evidence_preserved": ["reports/seed.json", "reports/prod.json", "reports/union.md", "boot-seed.log", "boot-prod.log — the T-MIG-047 fix verified live: evidence survives a RED run"],
+  "failure_classification_65": {
+    "H2_flyway_seed_row_families": "majority — w4 flashcards/agenda/target-series/smart-lesson/course-stats/knowledge-graph/exam-series, curriculum+teacher-curriculum [] vs V6/V7 fixed-uuid seed rows, w3-attempt/questions seed-dependent 404s (captured from LOCAL Flyway-seeded boots; apply-reset wipes; R0/R6 to rule a third Flyway-seed fixture posture or re-pin)",
+    "identity_pins_non_tolerated": "w4-register-learner (fresh minted uid), auth-me/w3-history learnerId+email mismatch (user_21 vs captured user_10 id) — owning golden lane to amend or declare tolerance",
+    "rate_limit_pacing": "auth-register-* 429 (identity-budget limiter, retryAfterSeconds=57) under replay pacing — harness pacing/budget seeding decision",
+    "genuine_port_findings": [
+      "attempts.exam_paper_id DOES NOT EXIST in the live baseline (schema.ts:205) — smartmark service selects it (42703 in boot-seed.log; stub-SQL tests blind; frozen core derives paper scope via attempt->question join). BLOCKING-CLASS PORT DEFECT for the marking pipeline — T-MIG-048 candidate",
+      "w3-selfmark-unknown-attempt: v2 400 'self-mark carries no part marks' vs frozen 500 — validation-order divergence (existence check vs part-marks guard)",
+      "w3-marking-throughput: answersByState object KEY-ORDER divergence — comparator declared-unordered tolerance gap or case amendment (R6)",
+      "w3-sme-status-*: v2 404 (route not mounted — SME admin is 033 tranche-3, pending) vs frozen 403 Spring-Security envelope; honest until tranche-3 lands, but the 404-vs-501 posture of un-ported routes may warrant the briefing §4.5 honest-501 shape",
+      "w3-attempt-missing-fields: v2 validation_failed 'questionId: must not be null' vs captured malformed_body — envelope-class case/port question (missing-field binding vs the captured non-readable shape)"
+    ],
+    "realdata_drift": "content-docs-teacher{-detail}-realdata-200: live pilot data drifted since capture (production serves real traffic) — as-cowed posture replays CURRENT production; R6 to re-capture or declare drift tolerance for live-data surfaces"
+  },
+  "next": "T-MIG-048 (attempts.exam_paper_id port defect) is the blocking-class item; the daily 02:30 UTC schedule now runs the full instrument automatically"
+}

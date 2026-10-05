@@ -1,0 +1,43 @@
+{
+  "task_id": "T-MIG-041",
+  "kind": "TRANCHE-1 COMPLETE (services + pins; IN_REVIEW)",
+  "run": "002",
+  "timestamp": "2026-10-06T01:20:00Z",
+  "agent": "R7a (agent-da4ab8, zai-web session web-da4ab8b1)",
+  "branch": "t-mig-041/r7a",
+  "deliverable": {
+    "files": [
+      "apps/api/src/services/learner/sql.ts (per-module SqlFn seam, T-MIG-021 pattern)",
+      "apps/api/src/services/learner/state.ts (the state-model read port: 9-leg /state composite + /course-stats)",
+      "apps/api/src/services/learner/index.ts (buildLearnerModule composition root; paper-default engine params)",
+      "apps/api/test/learner/helpers.ts (fakeSql dispatch helper, 021 pattern)",
+      "apps/api/test/learner/state.test.ts (19 tests)",
+      "apps/api/test/learner/course-stats.test.ts (3 tests)"
+    ],
+    "laws_pinned": [
+      "EbbinghausDecayService.decayed — P(t)=P0*e^(-t/tau), tau frozen on the STORED P0, floor=L0, fresh/skewed returns clamped stored",
+      "DecayParams.bandOf — <0.45 LOW / <0.8 DEVELOPING / else SECURE (boundary-inclusive pins at exactly 0.45/0.8)",
+      "BdtEngine.relaxedToPrior — effective = prior + (P_e - prior)*e^(-age/tau_s); fresh evidence returns full posterior; misconceptions RE-SORTED by effective DESC (the fresh-0.6-outranks-stale-0.9 pin)",
+      "groupEngagementSummary — first-seen order over the occurredAt DESC window, asks + sticky refusedAny + lastAsked max + per-signal counts (null -> TOPIC_ENGAGEMENT), limit 10 first-seen truncation",
+      "ExamTargetReader.targetsFor — declared enrolments, vanished-series filter, whole-day ChronoUnit.DAYS countdowns, entryDeadlinePassed = deadline < today",
+      "windows — tutor 30d / flashcard ratings 50 / note votes 50; skills lastPracticedAt DESC; misconceptions raw-probability DESC then effective re-sort; reviews PENDING dueAt ASC",
+      "wire mappings — KNOW->know, STILL_LEARNING->still-learning, HELPFUL->helpful, NOT_HELPFUL->not-helpful, subtopicCode null on the state read (no content bridge)",
+      "titles — ONE batched knowledge_nodes lookup covering skills+misconceptions+reviews+engaged topics (V21: engaged topics resolved before the map); missing row -> null name"
+    ]
+  },
+  "determinism": "every now()-dependent value (decayed mastery, relaxed probability, exam countdowns, tutor window) computed from an INJECTED clock passed by the caller — never Date.now inside the module, never persisted (ADR-031). PRECISION DISCLOSURE: the frozen laws compute in ns; the port computes in ms (JS Date) — relative exponent error ~1e-15 for sub-second ages, below double epsilon, disclosed in state.ts",
+  "gates": [
+    {"cmd": "bun test apps/api/test/learner/", "result": "22 pass / 0 fail / 82 expect"},
+    {"cmd": "typecheck x4 (root chain)", "result": "exit 0"},
+    {"cmd": "bun test apps/api packages (CI scope)", "result": "734 ran / 0 fail / 13 skip / 2006 expect — arithmetic exact vs main 712/0/13/1924 + 22 pins / +82 expect; zero collateral"},
+    {"cmd": "bun golden/runner.ts --selftest", "result": "OK exit 0 (golden/** untouched by this tranche)"},
+    {"cmd": "fence audit", "result": "staged = apps/api/src/services/learner/** + apps/api/test/learner/** + .syllabai/** ONLY; zero routes/index.ts touches (tranche-2); zero packages/golden/hub touches"}
+  ],
+  "cross_checks": [
+    "wire shapes verified against MY OWN W4 live capture (golden/cases/w4-state-practiced-200.json + w4-course-stats-practiced-200.json, T-MIG-040-PREP): field names, rating/vote wire values, the relaxed 0.7499999966 posture (stored posterior + staleness law at capture age) all agree",
+    "engine constants match the landed T-MIG-038 contracts (decay.ts paperDefaults 30/90/365/0.45/0.8/0.1/0.6) — contract and port agree",
+    "v2 drizzle baseline column names verified for every table touched (skill_states, misconception_states, review_schedules, tutor_topic_engagements, flashcard_ratings, note_votes, revision_note_viewed, learner_course_enrolments, exam_series, knowledge_nodes)"
+  ],
+  "tranche_boundary": "NO routes/mounts in this tranche (apps/api/src/routes/** + index.ts untouched) — tranche-2 ships /state + /course-stats route factories + zod wiring + flagged OUT-OF-FENCE mounts per the 010/020/021/030/031/032 ratified precedent; agenda/knowledge-graph/smart-lesson/exam-series+flashcards = T-MIG-043",
+  "merge_protocol": "authors never self-merge — PR requests independent review + R0 merge-intake"
+}

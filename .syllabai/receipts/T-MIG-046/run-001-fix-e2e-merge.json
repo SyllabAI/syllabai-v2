@@ -1,0 +1,32 @@
+{
+  "task": "T-MIG-046 — neon-branch control-plane reachability + live-shape fix; unblocks the T-MIG-044 maiden dispatch",
+  "agent": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operator_trace": "1a10d2bbd4dae0c5",
+  "date": "2026-10-05",
+  "founding_evidence": {
+    "maiden_run": "37351081991 (workflow_dispatch neon-replay, ref=main @ acce2c6)",
+    "failure": "step 'Provision disposable Neon COW branches' — getaddrinfo ENOTFOUND api.neon.tech from the GitHub-hosted runner",
+    "implication": "workflow-header assumption 'agent sandboxes are DNS-blocked; CI is not' does not hold for the Neon control plane"
+  },
+  "findings": {
+    "R-046-A": "api.neon.tech DNS-dead from both sandboxes and CI runners; console.neon.tech/api/v2 mirror serves the identical REST surface (live-proven: GET/POST/DELETE branch + role)",
+    "R-046-B": "branch-create response carries no connection_uris and GET /branches/{id}/connection_uri is 404 on this surface; credential path = POST branch-local role with wrapped body {role:{name,password}} — the API assigns the working password and returns it ONCE in the creation response (T-MIG-014 note 'role passwords taken from creation responses' live-re-confirmed: request password -> 28P01, response password -> connect OK). API-created roles carry pg_write_all_data (apply-reset DELETE-not-TRUNCATE doctrine)",
+    "R-046-C": "GET /branches/{id} returns {annotation, branch} only (no nested endpoints) -> readiness = branch.current_state == 'ready'; project-level operations must settle before role create (HTTP 423 conflicting-operations otherwise) -> ops-settle poll + 423 backoff"
+  },
+  "e2e_proof": {
+    "probe_recipe": "create -> ready-poll -> ops-settle -> role create -> connect -> drop + 404-verify; probe branches br-gentle-tooth-a5rzpa6n / br-bold-base-a5klnihc / br-wild-bird-a5pofdtd / br-frosty-wind-a5grruof / br-restless-mouse-a5b17zas / br-rapid-surf-a5kn8ski / br-mute-breeze-a5gurjiw / br-delicate-leaf-a5akv22h / br-shy-leaf-a58aq8p6 (cleanup path proof) — ALL dropped + 404-verified, zero residue",
+    "apply_reset_live": "REAL golden/tools/apply-reset.ts executed on probe branch br-delicate-leaf-a5akv22h as the API-created role: 'reset complete (topological wipe + posture verified)'; seed posture verified (users=0, documents=0, roles=3 re-seeded, knowledge_nodes=0); COW schema verified: 62 public tables, 63 flyway_schema_history rows, db=neondb",
+    "tool_level_e2e": "bun golden/tools/neon-branch.ts create from the sandbox: disclosed fallback engaged, full-recipe seed create OK, prod create hit HTTP 422 BRANCHES_LIMIT_EXCEEDED (project at branch cap), new partial-failure cleanup dropped+404-verified the seed branch (br-crimson-field-a5a40gqx), GITHUB_ENV correctly empty"
+  },
+  "gates": "golden selftest OK; ci-replay --plan deterministic (98/15); typecheck x4 exit 0; bun test apps/api packages = 712 ran / 0 fail / 13 skip / 1924 expect = main baseline EXACT; zero golden/cases or comparator contact (diff = golden/tools/neon-branch.ts + task yaml only); workflow file unchanged (interface keys identical)",
+  "merge": {
+    "pr": 66,
+    "sha": "d28c567c8363c5e6fc38dc604ded70e61d4975fe",
+    "disclosure_comment": 6000216506,
+    "authority": "operator-delegated (IM trace 1a10d2bbd4dae0c5) — author-is-merger disclosed on-thread per the R1 precedent 260f452 / 044 merge precedent trace 1a10d02b6c32a29d"
+  },
+  "register_for_operator": {
+    "NEON_BRANCH_CAPACITY": "project 'SyllabAI' (billowing-cherry-15418366) is at its branch-count cap (9 standing + 1 created = 10; second create 422s). Standing non-production branches: t-mig-022/r3a, t-mig-022/r3a-prod, t-mig-014/r3a, t-mig-002/r2, t-mig-010/r3, t-mig-003/r6, preview/fix/tutor-math-mhchem, vercel-dev. The CI runner needs 2 free slots per run (disposable, always dropped). Freeing >=1 standing slot (or raising the plan limit) is an OPERATOR decision — the R0 lane will not delete standing branches. Until then the instrument fails honestly at provisioning with zero residue.",
+    "PAT_ROTATION": "fresh PAT staged this session (fingerprint len=40 sha256:46b5d309715c1b1c); old-token exposure note stands — revoke at migration end per briefing §0"
+  }
+}

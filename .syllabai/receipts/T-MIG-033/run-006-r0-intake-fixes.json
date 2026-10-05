@@ -1,0 +1,56 @@
+{
+  "task_id": "T-MIG-033",
+  "run": "run-006-r0-intake-fixes",
+  "agent": "R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "date": "2026-10-06",
+  "operator_trace": "1a10d2b406e813f9",
+  "kind": "R0 non-authoring review + merge intake + intake fixes (PR #64, author lane r4b)",
+  "merge": {
+    "pr": 64,
+    "branch": "t-mig-033/r4b",
+    "head": "cde3fa8e3b3c8e80e1fad686aa951f3adea843e8",
+    "merge_commit": "d975ed9 (worklog union d975ed9 -> a1e4c5c intake fixes -> pushed to main as 6ea61b2 after concurrent-lane integrations)",
+    "method": "merge commit, no force-push; GitHub auto-marked #64 merged at 18:03:59Z when head became reachable"
+  },
+  "review": {
+    "mode": "line-against-line vs frozen 6cad6ef (TeacherMarkingController.java :46-328, TeacherViews.java :36-129, GlobalExceptionHandler :158-179)",
+    "verified_clean": [
+      "9-endpoint route map + paths under /api/v1/teacher/marking (mount line parity)",
+      "G-5 /answers bounds verbatim: page >= 0, size 1..200 default 50; /queue-v2 bounds in the service (1..100 default 5) per the controller javadoc",
+      "C-9 400 with the verbatim four-state hint; five-state parse consistent with F-33-1 (SELF_MARKED parses)",
+      "dual-shape opt-in pagination; db's own count; TOTAL order createdAt asc + id asc; unpaged deterministic-superset order disclosed",
+      "viewsFor batching: first-wins identity map, null-safe paper titles, smart/human nulls on list surfaces (5-arg parity)",
+      "N-2 EXECUTED across every SmartRunRow SELECT (list + single): stored pipeline_version rendered, constant demoted to write-side",
+      "latestEvaluation scope law (ALL vs PAPER+paperId, computed_at desc + disclosed id-desc tie-break)",
+      "kappa/latest 404 NotFound(kappa evaluation, ALL|paperId) verbatim; parseUuid/intParam MethodArgumentTypeMismatch 400 bodies verbatim",
+      "TEACHER/ADMIN shell first with Boot 401/403 bodies on all 9 surfaces (pinned)",
+      "contracts via #58 schemas (G-5 constants, HumanMarkRequest 0..99/50/4000, SmartMarkBatchRequest 1..50, kappa body-nullable)",
+      "fence clean: no golden/**, no packages/ edits, no hub, no Java leakage; OUT-OF-FENCE mount line disclosed per precedent — RATIFIED by R0 at merge"
+    ],
+    "findings_fixed_on_intake": [
+      {
+        "id": "R-1",
+        "severity": "write-safety",
+        "finding": "kappa/evaluate treated a PRESENT-but-unreadable JSON body as absent -> silently executed the scope-ALL evaluation WRITE (201); frozen HttpMessageNotReadableException -> 400 malformed_body, no write (required=false excuses an ABSENT body only). smart-mark-batch/human-mark answered unreadable + constraint failures with a single bad_request 'validation failed' envelope instead of the frozen two-envelope split.",
+        "fix": "two-envelope law implemented per GlobalExceptionHandler :158-179 verbatim + the ratified assessment/selfmark classifier convention (bind beats constraints; null/undefined bind -> constraint class; kappa DTO unconstrained so every schema failure is binding); kappa unreadable body -> 400, NO write; jakarta default messages rendered (@NotNull/@NotEmpty/@Size/@Min/@Max)"
+      },
+      {
+        "id": "R-2",
+        "severity": "read-model fidelity",
+        "finding": "GET /answers/{id} fetched and rendered the paper title; frozen controller :251 calls the FOUR-ARG TeacherViews.answer overload (TeacherViews.java :87-90) which renders paperTitle null (examPaperId still renders) — the port would diverge on any golden replay of the single-answer surface",
+        "fix": "paper fetch dropped from answerById; title pinned null; 5-arg list surfaces untouched"
+      }
+    ],
+    "disclosed_superset": "JSON literal null body on the two required-body surfaces answers the honest @NotNull 400 (frozen NPEs to 500 — the core's own '400, not 500' class)"
+  },
+  "pins_added": "7 route tests / +38 expects (unreadable-body verbatim envelope on both write surfaces, jakarta-default validation messages incl. @Min/@Max split, bind-beats-constraints, kappa unreadable -> NO write, kappa binding matrix, JSON-null-scope-ALL, single-view paperTitle-null)",
+  "gates": {
+    "on_intake_head": "typecheck x4 exit 0; bun test apps/api packages 742 ran / 729 pass / 0 fail / 13 skip / 2039 expect (= main 712/1924 + PR 23/77 + intake 7/38, arithmetic exact); golden selftest OK; zero golden/** edits",
+    "on_final_main_6ea61b2": "typecheck x4 exit 0; 764 ran / 751 pass / 0 fail / 13 skip / 2121 expect (= 712 + 23 PR + 7 intake + 22 from concurrent PR #65); golden selftest OK"
+  },
+  "concurrency_notes": [
+    "pre-push fetch discipline caught TWO concurrent main advances mid-intake: d28c567 (PR #66 T-MIG-046 Neon fix, parallel R0 session web-1f157e25) and 8fa5d34 (its DONE housekeeping) and ed558ab (PR #65 T-MIG-041, reviewed+merged by lane r9-hubx under operator round-9 trace 1a10d37514f0ce41)",
+    "worklog unions performed three times (append-only, both sides preserved, no entry duplicated)",
+    "#63 (r3a receipt) merged first at 2a-merge, auto-marked merged 17:58:55Z"
+  ]
+}

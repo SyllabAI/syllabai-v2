@@ -1,0 +1,25 @@
+{
+  "task_id": "T-MIG-041",
+  "kind": "CLAIM",
+  "timestamp": "2026-10-06T00:30:00Z",
+  "agent": "R7a (agent-da4ab8, zai-web session web-da4ab8b1)",
+  "directive": "operator round-9 (trace 1a10d2210b98ef81): 'Proceed with any work. Check and claim' — executes the seeding word for the Wave-4-reserved band 041 (w0a/R0 register: 'Wave-4 ports 041/043' operator-routed)",
+  "base": {"main_head": "acce2c6", "board": "zero open PRs; every wave-3 card DONE except 033-t2/t3 (r4's claim, gates satisfied); 040-PREP/038/039/044 all DONE on main"},
+  "collision_scan": {
+    "yaml_ids_on_main_matching_041": 0,
+    "remote_branches_t-mig-041*": [],
+    "register_mentions": ["MIGRATION_PLAN.md wave-4 reservation (040..043)", "w0a drift-fix: '041/043 remain operator-routed, NOT self-filed'"],
+    "verdict": "ZERO-COLLISION — claim proceeds"
+  },
+  "branch": "t-mig-041/r7a",
+  "surface": "learner state-model cluster: /state read model (9 legs) + /course-stats (4 counts); tranche-1 services + fakeSql pins, no routes",
+  "laws_pinned_from_frozen_6cad6ef": [
+    "EbbinghausDecayService.decayed (P0*e^(-t/tau), tau bands 30/90/365d, floor 0.1, ns precision)",
+    "DecayParams.bandOf: <0.45 LOW, <0.8 DEVELOPING, else SECURE",
+    "BdtEngine.relaxedToPrior: effective = prior + (P_e - prior)*e^(-age/tau_s), ns precision, fresh/skewed evidence returns full posterior; re-sort by effective DESC",
+    "groupEngagementSummary: first-seen grouping over the occurredAt DESC window, asks + refusedAny, lastAsked max, signal counts (null -> TOPIC_ENGAGEMENT), limit 10",
+    "ExamTargetReader.targetsFor: declared enrolments -> batch series -> ChronoUnit.DAYS countdowns + entryDeadlinePassed",
+    "windows: tutor 30d, flashcard ratings 50, note votes 50; skills by lastPracticedAt DESC; misconceptions raw-probability DESC then effective-resort; reviews PENDING dueAt ASC"
+  ],
+  "merge_protocol": "authors never self-merge — PR requests independent review + R0 merge-intake (or operator-delegated sweep)"
+}

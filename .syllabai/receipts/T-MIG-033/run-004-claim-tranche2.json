@@ -1,0 +1,17 @@
+{
+  "task": "T-MIG-033",
+  "agent": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "date": "2026-10-05",
+  "run": "run-004-claim-tranche2",
+  "title": "tranche-2 claim: teacher marking routes + zod wiring + flagged mounts",
+  "authority": "Operator directive trace 1a10d02b6c32a29d: 'review+merge yourself and continue working.' R0-ROUND-6C worklog suggestion 2: 'give T-MIG-033 tranche-2 a lane (it is fully un-gated: contracts #58 merged + five-state law consistent + 6 mount precedents; N-4/N-2 conditions attach)'. Tranche-1 authored by this lane (PR #50 merged 4be24e6).",
+  "zero_collision": "git ls-remote: only t-mig-033/r4 (tranche-1, merged) exists; t-mig-033/r4b free; board zero-open per R0-ROUND-6C; branch cut from main f39557d.",
+  "frozen_surface_read": "TeacherMarkingController.java @ 6cad6ef (:46-328) read line-against-line: 9 endpoints under /api/v1/teacher/marking — GET /answers (dual-shape: plain list | AnswerMarkingPageView envelope; G-5 page>=0 / size 1..200 default 50; TOTAL order createdAt asc + id asc; C-9 unknown-state 400 with the verbatim four-state hint text), GET /queue-v2 (dual-shape; papers-per-page 1..100 default 5 validated in service), GET /throughput, POST /smart-mark-batch (answerIds 1..50 @NotNull @NotEmpty dedup order-preserving), GET /answers/{id} (404 NotFound(answer,id)), POST /answers/{id}/smart-mark, POST /answers/{id}/human-mark (201; marksAwarded @NotNull @Min(0) @Max(99); perPointDecisions @Size(max=50) Map<String,Integer>; comments @Size(max=4000)), POST /kappa/evaluate (201; optional body), GET /kappa/latest?paperId (404 when none). SecurityConfig route rule /api/v1/teacher/** requires TEACHER or ADMIN; method-level @PreAuthorize mirrors it (defense in depth, :52-55).",
+  "plan": {
+    "routes": "apps/api/src/routes/teachermarking.ts — 9 handlers, zod validation via the T-MIG-037 contracts (packages/contracts/src/teacher-marking.ts: markingStateParamSchema, answerQueuePageParamsSchema, paperGroupsPageParamsSchema, humanMarkRequestSchema, smartMarkBatchRequestSchema, kappaScopeRequestSchema, kappaLatestParamsSchema, answerIdPathSchema + view schemas) wired to tranche-1 services (apps/api/src/services/teachermarking/index.ts); route-rule auth parity (TEACHER/ADMIN) per the content/curriculum route precedents",
+    "mounts": "apps/api/src/index.ts — single mount line app.route('/api/v1/teacher/marking', teachermarking.teacherRoute) + the standard minimal-wiring comment (6th mount precedent per R0-ROUND-6C)",
+    "conditions": "N-4 uuid tie-break capture condition + N-2 pipeline_version column selection applied per the card",
+    "tests": "stubbed-sql route tests (dual-shape 200s, G-5 bounds 400s, C-9 400 verbatim message, 404s, 201s, auth-boundary 401/403 parity vs the w3-teacher-marking golden cases) + kappa-evaluate optional-body matrix"
+  },
+  "gates_target": "typecheck x4; bun test apps/api packages = main baseline + tranche-2 delta exact; golden selftest OK; no golden/** edits (forever-gates untouched)"
+}
