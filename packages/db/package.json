@@ -13,8 +13,9 @@
     "db:check": "drizzle-kit check"
   },
   "dependencies": {
-    "@neondatabase/serverless": "^1.0.0",
-    "drizzle-orm": "^0.38.0"
+    "@neondatabase/serverless": "0.10.2",
+    "drizzle-orm": "^0.38.0",
+    "postgres": "^3.4.9"
   },
   "devDependencies": {
     "drizzle-kit": "^0.30.0",
