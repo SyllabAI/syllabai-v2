@@ -1,0 +1,35 @@
+{
+  "task": "T-MIG-002-R",
+  "run": 1,
+  "kind": "CLAIM",
+  "lane": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "claimed_at": "2026-10-05T09:15Z",
+  "directive": "operator DRAIN CYCLE (all lanes), trace 1a10b3ac95e936fd — item 4: 'IDLE? Claim exactly ONE item from this queue (zero-collision scan before claiming, one task per agent)'",
+  "zero_collision_scan": {
+    "performed_at": "2026-10-05T09:10-09:15Z against main 8f67d05",
+    "open_prs_observed": {
+      "PR #42": "W2-F1 Instant.toString() micros rendering — CLAIMED by another lane",
+      "PR #38 + PR #41": "T-MIG-023 wave-2 exit port fixes F-1/F-2 (and F-1/F-2/F-3) — CLAIMED by two lanes (DUPLICATE ID — R0 arbitration needed, flagged in the claim worklog entry)",
+      "PR #37": "T-MIG-024 W2-F3 multiset re-pin — CLAIMED by another lane",
+      "PR #40": "T-MIG-032 wave-3 marking port — R7a tranche (E-1 binding consumer)"
+    },
+    "queue_item_resolution": "W2-F1/F2/F3 all claimed -> the only zero-collision drain-queue item is T-MIG-002-R (no PR, no yaml card, no worklog claim, no branch)",
+    "branch_scan": "no t-mig-002r*/baseline-sql* heads on origin at claim time",
+    "worklog_scan": "latest receipts on main 8f67d05 (T-MIG-031, T-MIG-035) carry no T-MIG-002-R claim; T-MIG-002 yaml DONE with the defect pointers in execution_record"
+  },
+  "defect_pointers": [
+    "T-MIG-002 yaml execution_record F2: declared kit ^0.30.0 + orm ^0.38.0 cannot run pull (orm/gel-core import absent; squasher crashes on null-expression index)",
+    "T-MIG-002 yaml execution_record F3: kit 0.31.11 renderer fixes applied by out-of-repo script (.default('') x5, bytea/tsvector customType shims x3) — repo-resident reproducibility unproven (D1)",
+    "R0 standing register: 'T-MIG-002 baseline-SQL repair' (R0-SWEEP-2/3 lines)"
+  ],
+  "claim_surface": {
+    "branch": "t-mig-002r/w0a (off main 8f67d05)",
+    "files": [
+      ".syllabai/tasks/T-MIG-002R-baseline-sql-repair.yaml (new card)",
+      ".syllabai/receipts/T-MIG-002-R/run-001-claim.json (this receipt)",
+      ".syllabai/worklog.md (claim entry + drain-cycle status receipt)"
+    ]
+  },
+  "execution_posture": "surface read + defect localization + repair begins on the operator's next word; repair goal = repo-resident re-runnable re-baseline path; zero production Neon contact (strict read-only)",
+  "gates": "to re-stamp on the claim head before push (docs-only diff; hard boundary applies to every push)"
+}

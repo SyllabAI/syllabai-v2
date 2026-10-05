@@ -1,0 +1,48 @@
+version: 1
+task:
+  id: T-MIG-002-R
+  title: "Baseline-SQL repair follow-up — make the T-MIG-002 baseline re-runnable: reconcile the scripted kit-0.31.11 renderer fixes (F3: .default('') x5, bytea/tsvector customType shims x3) and the null-expression index squash crash (F2) into a reproducible re-baseline procedure"
+  owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — claimed under the operator DRAIN CYCLE directive (all lanes), the only zero-collision item of the drain queue (W2-F1 -> PR #42, W2-F2/F-1/F-3 -> T-MIG-023 PRs #38/#41, W2-F3 -> T-MIG-024 PR #37 all claimed by other lanes at claim time 2026-10-05T09:1xZ)"
+  status: IN_PROGRESS # claimed 2026-10-05T09:1xZ; claim receipt run-001-claim.json on branch t-mig-002r/w0a; execution (surface read + defect localization + repair) begins on the operator's next word
+  priority: P1
+  wave: 0 # follow-up on the wave-0 baseline
+  deps: [T-MIG-002]
+  provenance: >
+    Standing R0 register item ("T-MIG-002 baseline-SQL repair" — R0-SWEEP-2
+    follow-up register; recurring in R0-SWEEP-2/3 board lines) + explicit
+    operator drain-queue listing ("T-MIG-002-R: baseline-SQL repair
+    follow-up", directive trace 1a10b3ac95e936fd). Register carries NO lane
+    fence (unlike F-3's original R6 marking, superseded by the same
+    directive). T-MIG-002 itself is DONE (PR #4, 01c41d4); this card covers
+    only the repair follow-up. Id suffix "-R" mirrors the T-MIG-002-R
+    register name; R0 ratification of the id requested at PR review
+    (T-MIG-030 claim precedent).
+  defect_definition: >
+    From T-MIG-002's execution_record findings (verbatim pointers):
+    (F2) the DECLARED pair drizzle-kit ^0.30.0 + drizzle-orm ^0.38.0 cannot
+    run pull — kit 0.30.6 imports orm/gel-core absent from orm 0.38.4, and
+    its squasher crashes on a null-expression index in this schema;
+    (F3) kit 0.31.11 renderer fixes were applied by SCRIPT (idempotent,
+    logged, proven 579/579 columns snapshot-faithful): .default(') ->
+    .default('') x5, unknown("col") -> bytea/tsvector customType shims x3 —
+    the script lives outside the repo (D1 isolated toolchain), so the
+    repair-friendliness of the checked-in baseline is unproven;
+    (D1/D2) pull ran out-of-repo and reused branch br-dry-sun-a5wsx9n1.
+    REPAIR GOAL (to be confirmed by surface read): a repo-resident,
+    re-runnable re-baseline path (pinned toolchain recipe or patched
+    renderer) so the 62-table / 579-col baseline can be regenerated and
+    diffed without R2-db's private script; zero production Neon contact
+    (Neon strict read-only per the standing hard boundary; COW-branch-only
+    if live verification is needed).
+  scope:
+    allowed:
+      - "packages/db/drizzle/** (generated migrations metadata)"
+      - "packages/db/src/schema/README.md (re-baseline procedure section)"
+      - "packages/db/scripts/** (NEW: re-baseline tool recipe, if needed — fence extension to be declared at PR time)"
+      - ".syllabai/receipts/T-MIG-002-R/**"
+      - ".syllabai/tasks/T-MIG-002R-baseline-sql-repair.yaml (status/execution_record only)"
+    forbidden:
+      - "packages/db/package.json (F2 realignment is the lane owner's call — flag, never touch)"
+      - "packages/db/src/schema/{schema.ts,relations.ts,custom_types.ts} (GENERATED — never hand-edited; regenerated only via the repaired procedure)"
+      - "any write to Neon production main branch; flyway_schema_history (read-only forever)"
+      - "apps/** (other lanes)"
