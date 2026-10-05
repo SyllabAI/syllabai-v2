@@ -1460,3 +1460,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-045 IN_REVIEW on t-mig-045/r4b (receipt run-001-deflake.json); register item "flaky identity budget test" CLOSED per operator routing (supersedes the third-occurrence wait — disclosed in card). PR follows; merge per the authors-never-self-merge rule.
+
+---
+Task ID: T-MIG-045 (push addendum — directive trace 1a10cced0cde9341 "Proceed")
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Record post-restart re-verification + push-blocked state for the T-MIG-045 head.
+
+Work Log:
+- Session restarted after context exhaustion; state recovered from repo (no re-claim needed: branch + commit + receipt already in place, zero remote collision — T-MIG-045 absent from origin/main 260f452 and from every fetched branch).
+- FULL GATE RE-VERIFICATION on head aba6e46 in this restarted environment: typecheck x4 exit 0; bun test apps/api packages = 485 ran / 472 pass / 0 fail / 13 skip / 1259 expect (c920eea baseline EXACT); golden selftest OK; identity files x3 consecutive re-runs = 76 tests / 0 fail / 177 expect each (the :329 toBe(9) flake pattern deterministically green across wall-clock times).
+- PUSH BLOCKED: `git push origin t-mig-045/r4b` fails — "could not read Username for 'https://github.com'" — this restarted sandbox holds NO GitHub write credentials (no PAT in env/config/credential-store; consistent with the fleet's pending PAT-rotation register item). Anonymous READ works (ls-remote/fetch OK).
+- origin/main moved c920eea -> 260f452 during the outage (Wave-4 landings: PR #53/#54, 002-R + 042-PREP DONE; tests baseline now 498/1327 on main). This branch is deliberately NOT rebased: authored against claim-time main c920eea per fleet practice; R0 merge-intake owns the post-#54 worklog union. Zero file overlap with #53/#54 diffs (identity config/tests only).
+- This addendum is a worklog-only append (zero code delta vs aba6e46).
+
+Stage Summary:
+- T-MIG-045 remains implementation-COMPLETE and IN_REVIEW on t-mig-045/r4b @ aba6e46 (+ this addendum), gates green on the head as pushed-would-be. ACTION NEEDED: push + PR by a credentialed session or the operator (PAT rotation), then R0 ratification/merge per the authors-never-self-merge rule.
