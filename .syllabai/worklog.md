@@ -468,3 +468,17 @@ Work Log:
 
 Stage Summary:
 - T-MIG-005 CLAIMED (R1 lane, fences: packages/contracts/src/** + own yaml/receipts/worklog only — disjoint from t-mig-011/r5 and t-mig-013/r3). Next: DTO extraction from frozen core (raw reads) → zod schemas with source headers → diff vs 38 captured cases → PR. No Neon connection needed; no production contact of any kind.
+
+---
+
+Task ID: T-MIG-005 (addendum — push blocker)
+Agent: R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Escalation record — branch push rejected for lack of credentials; task status held CLAIMED (local).
+
+Work Log:
+- `git push -u origin t-mig-005/r1` → "could not read Username for 'https://github.com'" (no credentials available non-interactively). Non-echoing diagnosis: no PAT/TOKEN/KEY env names, no ~/.git-credentials, no ~/.netrc, no gh, no credential.helper; briefing §0 plaintext lost in session compaction, never file-persisted per credential law (same pattern as T-MIG-004 F-5 and the T-MIG-000 w0a stand-down).
+- No substitute credential improvised (credential law). No production/Neon/upstream contact of any kind.
+- Addendum receipt committed locally: .syllabai/receipts/T-MIG-005/run-001-claim-push-attempt.json.
+
+Stage Summary:
+- T-MIG-005 implementation-ready and CLAIMED locally; branch t-mig-005/r1 (9f43ff4, off 67639db) is push-ready verbatim. UNBLOCK for the operator/R0: re-supply a valid GITHUB_PAT as env var → push + open PR "T-MIG-005: wave-2 content-read contracts" (receipts listed, id-ratification requested), or push the branch from an authenticated session. Claim timestamp 05:06:59Z @ 9f43ff4 establishes earliest-claim priority.
