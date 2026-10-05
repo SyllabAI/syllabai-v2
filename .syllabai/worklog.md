@@ -2145,3 +2145,18 @@ Work Log:
 
 Stage Summary:
 - Round-10 closed: the one merge the directive asked for (#63) executed under delegation with self-review; the sweep found the queue already drained by parallel lanes; one blocking-class post-merge finding (F-33-2) filed with exact fix spec + one process N-note; zero self-claimed work; zero direct main pushes (every write via reviewed PR). LANE IDLE — awaiting R0 routing of F-33-2 or operator direction.
+
+---
+Task ID: R3a-ROUND-10 addendum (F-33-2 closed == R-1, convergent; surviving worklog record)
+Agent: superz-agent-b (R3 lane; zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Land the F-33-2 closure verification record — its original carrier (my parallel intake union of round10-receipt/r3a @ 1eb808d) was superseded when PR #67 merged via R1 review-intake head 79dadfa
+
+Work Log:
+- F-33-2 (comment 6000275125, filed 18:07Z from my in-flight #64 line-against-line review) CONVERGED with R0-ROUND-10 R-1 (trace 1a10d2b406e813f9): same body-envelope wire-contract class, same four sites, same fix family — two independent reviewers, one window. R1 concurrent review (run-006-r1-review.json) honestly records its layer did NOT cover the envelope law; this addendum + R0 R-1 + the R1 calibration note form the complete three-lens record.
+- Independent verification of the LANDED fix PASSED against the frozen law @ 6cad6ef (verified on main before this entry): readJsonBody syntax-failure -> 400 malformed_body verbatim (the kappa/evaluate present-unreadable -> 201-write hole closed: 400, no write); classifyBodyError binding-vs-constraint split (invalid_string / invalid_type-with-value -> malformed); jakarta-default constraint details verbatim (@NotNull field: must not be null / answerIds: must not be empty / size must be between 0 and 50 / 0 and 4000 / marksAwarded @Min(0)@Max(99) value-split); all four of my spec sites covered.
+- Closure corroboration posted on #64 (comment 6000337095). The N-note (OUT-OF-FENCE mounts inside fence commit cde3fa8 vs the in-code separate-commit claim) remains OPEN as a correction-of-record request for a future housekeeping pass — mount content itself ratified.
+- Provenance (append-only disclosure): my own intake union of the receipt branch (1eb808d, main-preserving insertion with five asserts incl. union-minus-mine==main byte identity) was never pushed — R1 review-intake 79dadfa became the PR #67 head and merged first (08f104d). No force-push; the superseded union is abandoned and this entry is the surviving worklog record. One failed assert class is on the ledger: the naive single-conflict-block resolver was rewritten after main worklog lineage proved non-base-append (reordered entries from earlier lane unions); the bad local commit never left the sandbox.
+- Gates on this head: worklog-only delta vs main; main gates as stamped by R0-ROUND-10 (764/751/0/13skip/2121, selftest OK) re-verified unchanged by this entry - typecheck x4 exit 0, bun test 764 ran / 751 pass / 0 fail / 13 skip / 2121 expect, golden --selftest OK.
+
+Stage Summary:
+- F-33-2: OPEN -> CLOSED (fixed by R0 R-1; my review = the independent verification pass; three-lens record complete). Remaining 033 surface: tranche-3 SME admin (r4b per R0 routing) + the N-note wording fix. Register item noted for the operator: NEON_BRANCH_CAPACITY (branch cap 10) does not affect this lane (COW drops receipted). LANE IDLE.
