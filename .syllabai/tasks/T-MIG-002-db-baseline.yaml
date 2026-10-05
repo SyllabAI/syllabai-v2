@@ -2,12 +2,41 @@ version: 1
 task:
   id: T-MIG-002
   title: "DB baseline — drizzle-kit pull of the Neon end-state onto a branch, verify, commit schema"
-  owner: "unassigned"
-  status: OPEN
+  owner: "R2-db (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)"
+  status: DONE # R0 merge via PR #4 (01c41d4) 2026-10-05; rebased onto post-000 main by R0; 62 tables / 579 cols / 87 indexes baseline verified; production compute never contacted, SELECT-only doctrine held
   priority: P0
   wave: 0
   deps: []
-  execution_record: "—"
+  execution_record: >
+    2026-10-04 (R2-db, session web-ab7a0483; claim commit ab9928d incl. Phase-1
+    ORIENTATION worklog entry). Baseline COMPLETED, 9/9 §3 checks PASS.
+    Artifacts: packages/db/src/schema/{schema.ts,relations.ts,custom_types.ts}
+    + drizzle/{0000_organic_mauler.sql,meta/*} (generated) + schema README
+    (inventory + flyway_schema_history exclusion note, core-owned list,
+    re-baseline procedure) + receipts run-001.json / run-001-verification.json.
+    Introspection: 62 tables / 579 columns / 87 indexes / 54 FKs / 98 checks /
+    0 views / 0 enums; live==snapshot==runtime triple-match; flyway 63 rows
+    read-only; pgvector 0.8.6 + document_chunks.embedding vector(768);
+    row-count spot checks on the branch (users 322, papers 108, questions
+    1526, attempts 217, chunks 4740 all embedded at embed_rev=2 — T-C42's
+    2935 grew via the recorded wave-2 validation expansion).
+    FINDINGS: F1 api.neon.tech is DNS-dead (no public A record); control plane
+    = console.neon.tech/api/v2 (resolves R7-flex's egress question). F2 the
+    DECLARED pair drizzle-kit ^0.30.0 + drizzle-orm ^0.38.0 cannot run pull
+    (kit 0.30.6 imports orm/gel-core absent from orm 0.38.4; and its squasher
+    crashes on a null-expression index in this schema) — package.json is
+    outside my fence, realignment flagged for the lane owner. F3 kit 0.31.11
+    renderer fixes needed: .default(')→.default('') ×5, unknown("col")→
+    bytea/tsvector customType shims ×3 — scripted (idempotent, logged), then
+    proven 579/579 columns snapshot-faithful; typecheck GREEN on repo orm
+    0.38.4 at runtime. DEVIATIONS: D1 pull ran in an isolated out-of-repo
+    toolchain (kit 0.31.11 + orm 0.45.3) — only generated artifacts entered
+    the repo; D2 reused the pre-existing name-conformant Neon branch
+    br-dry-sun-a5wsx9n1 (no git trace of a prior claim; added my endpoint
+    ep-small-sun-a5ufn5s6; earliest-claim-wins if a competitor surfaces).
+    Production Neon never contacted. Fences respected: packages/db/package.json
+    and src/index.ts untouched (two one-line follow-ups recorded in receipt
+    next_safe_actions).
 base:
   repo: "syllabai-v2 @ seed; Neon billowing-cherry-15418366/neondb (branch, NOT production main)"
 basis: >

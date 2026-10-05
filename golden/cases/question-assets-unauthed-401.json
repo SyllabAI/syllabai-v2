@@ -1,0 +1,19 @@
+{
+  "name": "question-assets-unauthed-401",
+  "description": "GET /api/v1/content/question-assets/{filename} with no token: 401",
+  "source": "captured from the deployed frozen Java core (Render, https://syllabai-core.onrender.com) on 2026-10-05T19:02Z by T-MIG-004 run-001 (w0a); read-only GET, zero production writes; no PII present",
+  "method": "GET",
+  "path": "/api/v1/content/question-assets/unknown-figure.png",
+  "expect": {
+    "status": 401,
+    "body": {
+      "timestamp": "2026-10-04T19:02:12.519Z",
+      "status": 401,
+      "error": "Unauthorized",
+      "path": "/api/v1/content/question-assets/unknown-figure.png"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

@@ -57,7 +57,10 @@ async function replayAgainst(target: string, kase: GoldenCase): Promise<string |
   const res = await fetch(new URL(kase.path, target), {
     method: kase.method,
     headers: { "content-type": "application/json", ...(kase.request?.headers ?? {}) },
-    body: kase.request?.body !== undefined ? JSON.stringify(kase.request.body) : undefined,
+    // T-MIG-003 run-002 hardening: a null body must mean ABSENT (GET cases
+    // encode headers-only); JSON.stringify(null) would crash fetch on GET.
+    // Construction only — the diff engine is untouched.
+    body: kase.request?.body != null ? JSON.stringify(kase.request.body) : undefined,
   });
   let body: unknown = null;
   try {
@@ -66,7 +69,7 @@ async function replayAgainst(target: string, kase: GoldenCase): Promise<string |
     body = "<non-json>";
   }
   const statusOk = res.status === kase.expect.status;
-  const bodyOk = deepEqual(kase.expect.body, body);
+  const bodyOk = deepEqualTolerant(kase.expect.body, body, kase.tolerate ?? []);
   if (statusOk && bodyOk) return null;
   return `status ${res.status} vs ${kase.expect.status}; body ${JSON.stringify(body)} vs ${JSON.stringify(kase.expect.body)}`;
 }
@@ -103,6 +106,11 @@ if (args.includes("--target")) {
   const cases = loadCases();
   let failures = 0;
   for (const kase of cases) {
+    // R0 fix (T-MIG-017): the live-replay path must apply each case's
+    // `tolerate` rules exactly like the selftest does. The previous code
+    // used the byte-strict deepEqual here, making every case with a
+    // volatile field (e.g. ApiError.timestamp) permanently unpassable —
+    // the false-failure mirror of the false-confidence trap §5 warns about.
     const diff = await replayAgainst(target, kase);
     if (diff) {
       failures++;

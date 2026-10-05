@@ -1,0 +1,30 @@
+{
+  "name": "curriculum-subject-by-id-student-200",
+  "description": "GET /api/v1/curriculum/subjects/10000000-0000-0000-0000-000000000010 as STUDENT: 200 SubjectView; the seed uuid is a fixed Flyway constant so the path is replay-stable across boots. Authorization header committed per T-MIG-003 convention as a fixed dummy (scrubbed-fixed-dummy-jwt-token); the token used at capture was minted by the local boot (synthetic secret) and is discarded; role recorded in the description — the replay harness must re-mint per-target.",
+  "source": "captured from a LOCAL boot of the frozen Java core (scratch-copy build, Temurin JDK 25.0.4.1, mvn -DskipTests package exit 0) against a LOCAL scratch PostgreSQL 17.11 + pgvector 0.8.0 migrated by the core's own Flyway V1..V63 (63 applied) on 2026-10-05T19:02Z by T-MIG-004 run-002 (w0a); NO Neon connection of any kind this session (NEON_PAT absent, escalated); seeded rows are fixed-constant uuids from V6; no PII present",
+  "method": "GET",
+  "path": "/api/v1/curriculum/subjects/10000000-0000-0000-0000-000000000010",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer scrubbed-fixed-dummy-jwt-token"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "id": "10000000-0000-0000-0000-000000000010",
+      "code": "CHM",
+      "name": "Chemistry",
+      "knowledgeNodeId": "20000000-0000-0000-0000-000000000001",
+      "curriculumVersion": {
+        "id": "10000000-0000-0000-0000-000000000001",
+        "board": "Edexcel",
+        "qualification": "IAL",
+        "code": "IAL-CHEM-2018",
+        "title": "Edexcel International A Level Chemistry (2018 specification)",
+        "status": "ACTIVE"
+      }
+    }
+  },
+  "tolerate": []
+}

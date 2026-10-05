@@ -1,0 +1,117 @@
+{
+  "name": "teacher-curriculum-nodes-teacher-200",
+  "description": "GET /api/v1/teacher/curriculum/versions/10000000-0000-0000-0000-000000000001/nodes as TEACHER: 200 [15 NodeViews] — the full V6 seed tree; all node uuids are fixed seed constants (20000000-0000-...); titles are curriculum content, not PII. Authorization header committed per T-MIG-003 convention as a fixed dummy (scrubbed-fixed-dummy-jwt-token); the token used at capture was minted by the local boot (synthetic secret) and is discarded; role recorded in the description — the replay harness must re-mint per-target.",
+  "source": "captured from a LOCAL boot of the frozen Java core (scratch-copy build, Temurin JDK 25.0.4.1, mvn -DskipTests package exit 0) against a LOCAL scratch PostgreSQL 17.11 + pgvector 0.8.0 migrated by the core's own Flyway V1..V63 (63 applied) on 2026-10-05T19:02Z by T-MIG-004 run-002 (w0a); NO Neon connection of any kind this session (NEON_PAT absent, escalated); seeded rows are fixed-constant uuids from V6; no PII present",
+  "method": "GET",
+  "path": "/api/v1/teacher/curriculum/versions/10000000-0000-0000-0000-000000000001/nodes",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer scrubbed-fixed-dummy-jwt-token"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": [
+      {
+        "id": "20000000-0000-0000-0000-000000000001",
+        "code": "CHM",
+        "nodeType": "SUBJECT",
+        "title": "Chemistry",
+        "validationStatus": "VALIDATED",
+        "provenance": "Edexcel IAL specification 2018",
+        "parentId": null
+      },
+      {
+        "id": "20000000-0000-0000-0000-000000000010",
+        "code": "WCH11",
+        "nodeType": "UNIT",
+        "title": "Unit 1: Structure, Bonding and Introduction to Organic Chemistry",
+        "validationStatus": "UNVALIDATED",
+        "provenance": "Edexcel IAL specification topic list",
+        "parentId": "20000000-0000-0000-0000-000000000001"
+      },
+      {
+        "id": "20000000-0000-0000-0000-000000000011",
+        "code": "WCH11-T1",
+        "nodeType": "TOPIC",
+        "title": "Formulae, Equations and Amount of Substance",
+        "validationStatus": "UNVALIDATED",
+        "provenance": "Edexcel IAL specification topic list",
+        "parentId": "20000000-0000-0000-0000-000000000010"
+      },
+      {
+        "id": "20000000-0000-0000-0000-000000000012",
+        "code": "WCH11-T1.1",
+        "nodeType": "SUBTOPIC",
+        "title": "Mole calculations and reacting masses",
+        "validationStatus": "UNVALIDATED",
+        "provenance": "Edexcel IAL specification topic list",
+        "parentId": "20000000-0000-0000-0000-000000000011"
+      },
+      {
+        "id": "20000000-0000-0000-0000-000000000013",
+        "code": "WCH11-T1.2",
+        "nodeType": "SUBTOPIC",
+        "title": "Empirical and molecular formulae",
+        "validationStatus": "UNVALIDATED",
+        "provenance": "Edexcel IAL specification topic list",
+        "parentId": "20000000-0000-0000-0000-000000000011"
+      },
+      {
+        "id": "20000000-0000-0000-0000-000000000021",
+        "code": "WCH11-T2",
+        "nodeType": "TOPIC",
+        "title": "Atomic Structure and the Periodic Table",
+        "validationStatus": "UNVALIDATED",
+        "provenance": "Edexcel IAL specification topic list",
+        "parentId": "20000000-0000-0000-0000-000000000010"
+      },
+      {
+        "id": "20000000-0000-0000-0000-000000000022",
+        "code": "WCH11-T2.1",
+        "nodeType": "SUBTOPIC",
+        "title": "Atomic structure, isotopes and ions",
+        "validationStatus": "UNVALIDATED",
+        "provenance": "Edexcel IAL specification topic list",
+        "parentId": "20000000-0000-0000-0000-000000000021"
+      },
+      {
+        "id": "20000000-0000-0000-0000-000000000023",
+        "code": "WCH11-T2.2",
+        "nodeType": "SUBTOPIC",
+        "title": "Electron configuration and periodic trends",
+        "validationStatus": "UNVALIDATED",
+        "provenance": "Edexcel IAL specification topic list",
+        "parentId": "20000000-0000-0000-0000-000000000021"
+      },
+      {
+        "id": "20000000-0000-0000-0000-000000000031",
+        "code": "WCH11-T3",
+        "nodeType": "TOPIC",
+        "title": "Bonding and Structure",
+        "validationStatus": "UNVALIDATED",
+        "provenance": "Edexcel IAL specification topic list",
+        "parentId": "20000000-0000-0000-0000-000000000010"
+      },
+      {
+        "id": "20000000-0000-0000-0000-000000000032",
+        "code": "WCH11-T3.1",
+        "nodeType": "SUBTOPIC",
+        "title": "Ionic bonding and lattice structure",
+        "validationStatus": "UNVALIDATED",
+        "provenance": "Edexcel IAL specification topic list",
+        "parentId": "20000000-0000-0000-0000-000000000031"
+      },
+      {
+        "id": "20000000-0000-0000-0000-000000000033",
+        "code": "WCH11-T3.2",
+        "nodeType": "SUBTOPIC",
+        "title": "Covalent bonding, shapes and intermolecular forces",
+        "validationStatus": "UNVALIDATED",
+        "provenance": "Edexcel IAL specification topic list",
+        "parentId": "20000000-0000-0000-0000-000000000031"
+      }
+    ]
+  },
+  "tolerate": []
+}

@@ -1,0 +1,37 @@
+{
+  "task": "T-MIG-021 (tranche 2 — curriculum READ routers + app wiring)",
+  "agent": "R7a (Super Z, zai-web session web-da4ab8b1)",
+  "lane": "R7a (T-MIG-021 id RATIFIED by R0 on PR #19 — claim 2b56ba0 @ 05:56:51Z precedes R4-api-b's 3abf02f @ 06:06:54Z per §2.R1; dual-claim arbitration on record)",
+  "branch": "t-mig-021/r7a-ext (base: main @ 01d0e9d — post sweep-1, post T-MIG-005 #18 + T-MIG-014 #13 + T-MIG-020 #22 merges)",
+  "date": "2026-10-05",
+  "change": {
+    "summary": "Tranche 2 lands the route layer for the Wave-2 curriculum port, unblocked by the sweep: T-MIG-005 merged (canonical packages/contracts/src/curriculum.ts on main via #18) and T-MIG-014 merged (db driver dispatch via #13). Two routers with path parity to the frozen core: learner /api/v1/curriculum (versions incl. includeArchived binding, subjects list/filter, subject by-id) and teacher /api/v1/teacher/curriculum (overview versions, version nodes queue with optional status). Query binding rides R1's contract schemas verbatim (StringToBooleanConverter / UUID / valueOf conversion parity — failed safeParse IS the Spring conversion failure → 400 'malformed request'). 200 bodies validated against the CANONICAL zod schemas in tests (the contract-alignment pin tranche 1 deferred) AND compared to the T-MIG-004 captured bodies. Honest 501s for the five teacher write surfaces (drafts, node validate/reject, version gate/archive) per the ratified T-MIG-020 convention.",
+    "files": [
+      "apps/api/src/routes/curriculum/index.ts (createLearnerCurriculumRouter + createTeacherCurriculumRouter + buildCurriculumRouters — env → requireDatabaseUrl → createSql composition mirroring buildContentApp)",
+      "apps/api/test/curriculum/routes.test.ts (19 route tests over an in-memory Hono app wiring the REAL services over stubbed sql; auth-injection + toErrorResponse boundary mirroring index.ts)",
+      "apps/api/test/curriculum/helpers.ts (fakeSql gained optional param-aware rowsFor — id lookups must distinguish known from unknown ids; plain text-matching cannot)",
+      "apps/api/src/index.ts (⚠️ OUT-OF-FENCE, separate commit: import + builder + 2 mount lines + comment, T-MIG-010/020 precedent, R0 ratification requested)"
+    ],
+    "parity_decisions": [
+      "mount block mirrors the R0-ratified T-MIG-020 block verbatim in structure (router-owned authz, fallback stays 404-after-auth for no router claimed)",
+      "F-1 kept at the route layer too: unknown version → 200 [] (no existence check) — test-pinned; R0's divergence call from tranche 1 still stands open",
+      "write surfaces 501 not_implemented with owning-lane message — never fabricated 200 (T-MIG-020 convention; T-MIG-010 precedent)",
+      "parseUuid duplicated module-locally (content's is not exported) — identical regex, noted in-source",
+      "routes return service-mapped views (tranche-1 local types) and the TESTS enforce canonical-schema equality — zero service churn, contract drift would fail CI"
+    ],
+    "gates_note": "bun test on this branch: 272 pass / 13 skip / 0 fail across 17 files (main suite + 19 new route tests; 13 skips are the Neon integration tiers self-skipping without INTEGRATION_DATABASE_URL — R0's CI-side runner proposal applies here too)"
+  },
+  "gates": {
+    "typecheck": "bun run typecheck (contracts/shared/db/api ×4) exit 0 — re-run after each commit incl. the OUT-OF-FENCE one",
+    "unit": "bun test (repo root) — 272 pass / 13 skip / 0 fail across 17 files, INCLUDING 19 new curriculum route tests (17 tranche-1 service tests + all pre-existing suites unchanged)",
+    "golden_selftest": "bun run golden/runner.ts --selftest → 'selftest OK: tolerance engine behaves' (read-only usage of R6's fence)",
+    "golden_replay": "NOT RUN this tranche — the 13 curriculum cases need the seed-shaped replay env: no local postgres in this sandbox and api.neon.tech DNS was network-gated for peers this session (R0 finding on #22; CI-side integration runner proposed). The replay flip (curriculum cases expected-pending → passing) is the acceptance gate once a Neon-capable runner exists — routes are mounted and shapes are pinned, so the flip should be mechanical.",
+    "upstream_writes": "ZERO — no Neon connection of any kind; syllabai-core touched read-only (@ 6cad6ef frozen refs cited in tranche 1); Flyway-owned tables referenced in SQL only, no DDL."
+  },
+  "pending": [
+    "golden replay flip for the 13 curriculum cases on a Neon-capable runner (CI-side proposal per R0 on #22 / #16 merge note)",
+    "R0 divergence call on F-1 (nodes-unknown-version-200-empty) — implemented as captured, test-pinned both layers",
+    "curriculum write surfaces: wave-3 lane to be filed by R0 (501s name it)"
+  ],
+  "verdict": "tranche 2 complete — the curriculum READ surface is route-wired, contract-pinned and gate-green; only the live replay flip remains, env-blocked like the peers' lanes"
+}

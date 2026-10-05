@@ -1,0 +1,64 @@
+version: 1
+task:
+  id: T-MIG-004
+  title: "Capture content-read golden cases for Wave 2 — content documents/reader, teacher content/curriculum, curriculum metadata, question assets"
+  owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)"
+  status: DONE # R0 merge via PR #10 (e3a2e7b) 2026-10-05: 38 W2 cases across 6 controllers, capture read-only; 54 total golden cases now on main; Wave-2 acceptance worklist ready before port code lands
+  priority: P1
+  wave: 2
+  deps: []
+  execution_record: >
+    2026-10-05 CLAIMED by w0a per operator lane assignment. Peer-collision
+    check at claim time: open PRs #1/#3 (T-MIG-000 hub workspace), #4
+    (T-MIG-002 db baseline), #5 (R7 yaml backfill), #6 (T-MIG-012 typecheck),
+    #7 (T-MIG-003 golden bring-up) — zero file-glob overlap with this task's
+    fence (new case files only; runner untouched). Capture doctrine per
+    GOLDEN_MASTER §2: (a) run-001 = frozen Render core, read-only surfaces
+    only, zero production writes; (b) run-002 = LOCAL boot of the frozen core
+    (T-MIG-003 run-002 pattern) against a LOCAL scratch Postgres 17 + pgvector
+    migrated by the core's own Flyway V1..V63 (NOT Neon — no production Neon
+    connection is used at all this session; NEON_PAT absent from this agent's
+    session, escalated for the remaining real-data happy paths).
+    2026-10-05T19:02Z EXECUTED run-001 + run-002 + replay classification:
+    38 golden cases committed (9 from the deployed Render core — unauthenticated
+    authz/404/400 shell, zero production writes, no credentials used; 29 from a
+    LOCAL frozen-core boot — JDK 25.0.4.1 + Maven 3.9.16 build exit 0 on a
+    scratch COPY of the frozen tree, default profile, LLM mode test, against a
+    LOCAL scratch PostgreSQL 17.11 + pgvector 0.8.0 to which the core's own
+    Flyway applied V1..V63; two synthetic accounts created via the honest
+    register path). Zero production Neon connections this session; zero
+    upstream repo writes; zero PII committed (fixed-seed uuids + synthetic
+    identities only). Replay proof: runner --selftest PASS; --target replay
+    against the seed v2 api 1/39 (health) with all 38 cases expected-pending
+    and owned (T-MIG-020 read surfaces / T-MIG-021 curriculum). Findings
+    F-1..F-8 in .syllabai/receipts/T-MIG-004/run-001.json — headline: F-1
+    unknown curriculum version yields 200 [] not 404 (captured, not assumed);
+    F-2 blank search query= yields 500 internal_error (@NotBlank gap, captured
+    as-is); F-3 runner lacks response-header comparison (X-Search-Empty-Cause
+    not golden-gatable); F-5 HIGH ESCALATION: NEON_PAT absent from this
+    session — real-data happy paths for document-bearing surfaces (reader page
+    text, canonical, review queues, asset bytes, embedded search) remain
+    uncaptured; operator unblock requested (COW branch per T-MIG-003 run-002
+    recipe).
+base:
+  repo: "syllabai-v2 @ 2cfaf41 (origin/main at claim); frozen refs: syllabai-core @ main, syllabai-hub @ 93226a43"
+basis: >
+  Operator lane assignment 2026-10-05 ("T-MIG-004 content-read golden cases");
+  MIGRATION_PLAN.md §10 Day 2–4 (capture lane one wave ahead — the
+  migration's metronome) + §2.1 Wave-2 controller port map (ContentController,
+  ContentDocumentController, ContentReaderController, QuestionAssetController,
+  CurriculumController, TeacherCurriculumController); GOLDEN_MASTER.md §1–§2;
+  AGENT_COORDINATION.md §2 (claim protocol) §6 (escalation).
+scope:
+  allowed:
+    - "golden/** (new case files only; runner/engine untouched)"
+    - ".syllabai/receipts/capture/**"
+    - ".syllabai/receipts/T-MIG-004/**"
+    - ".syllabai/tasks/T-MIG-004-content-read-golden-cases.yaml (status/execution_record only)"
+    - ".syllabai/worklog.md (append-only, §5)"
+  forbidden:
+    - "writing into production Neon (no production Neon connection this session at all)"
+    - "writing to syllabai-core / syllabai-hub / any upstream repo (C1; frozen core is COPIED to a scratch dir for the local build)"
+    - "committing unscrubbed fixtures (GOLDEN_MASTER §2.3, risk R-PII)"
+    - "apps/api/**, apps/hub/**, packages/** (port lanes; content read port is T-MIG-020..022)"
+  2026-10-05 (R0, session web-df0238cc): F-5 real-data extension merged via PR #16 — 15 real-data golden cases captured on Neon COW branch (69 total on main); findings F-9..F-14; F-9 (v1-vs-v2 review-queue asymmetry) binding on ports; existing cases untouched (additions only).

@@ -1,0 +1,19 @@
+{
+  "name": "content-docs-unauthed-401",
+  "description": "GET /api/v1/teacher/content/documents with no token: /api/v1/teacher/** route matcher answers 401 before @PreAuthorize",
+  "source": "captured from the deployed frozen Java core (Render, https://syllabai-core.onrender.com) on 2026-10-05T19:02Z by T-MIG-004 run-001 (w0a); read-only GET, zero production writes; no PII present",
+  "method": "GET",
+  "path": "/api/v1/teacher/content/documents",
+  "expect": {
+    "status": 401,
+    "body": {
+      "timestamp": "2026-10-04T19:02:55.752Z",
+      "status": 401,
+      "error": "Unauthorized",
+      "path": "/api/v1/teacher/content/documents"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

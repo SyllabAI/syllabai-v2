@@ -1,0 +1,30 @@
+{
+  "receipt": "T-MIG-003 run-001 — capture session A (read-only surfaces, frozen Render core)",
+  "schema": "syllabai.v2.t-mig-003.capture/1.0",
+  "agent": "R6 (superz-golden, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)",
+  "captured_utc": "2026-10-04T18:19Z..18:26Z",
+  "source_of_truth": {
+    "kind": "deployed frozen core (READ-ONLY surfaces only)",
+    "base_url": "https://syllabai-core.onrender.com",
+    "cold_start": "wake loop: 6 failed probes then UP on probe 7 (~90-105s), consistent with DEPLOYMENT.md 105-184s AppCDS-era figures"
+  },
+  "safety": {
+    "production_writes": 0,
+    "read_only_justification": "health GET + auth validation-failure/unknown-user POSTs only; register probes use payloads that FAIL validation or role gates BEFORE persistence (ordering verified in frozen source: @Valid -> dup-email -> selfServiceRole -> requireJoinCode -> userRepository.save)",
+    "pii": "none — payloads synthetic/masked at capture (user_N@example.invalid, 'User N'); no real account emails touched (no enumeration)"
+  },
+  "captures": [
+    {"case": "java-actuator-health", "status": 200, "note": "REAL shape: {groups:[liveness,readiness],status:UP} — differs from the seed health case's bare {status:UP}"},
+    {"case": "java-register-missing-fields-400", "status": 400, "body": "validation_failed / password: must not be blank"},
+    {"case": "java-register-short-password-400", "status": 400, "body": "validation_failed / password: size must be between 12 and 100"},
+    {"case": "java-register-password-no-digit-400", "status": 400, "body": "validation_failed / password: must contain a digit"},
+    {"case": "java-register-bad-email-400", "status": 400, "body": "validation_failed / email: must be a well-formed email address"},
+    {"case": "java-register-blank-displayname-400", "status": 400, "body": "validation_failed / displayName: must not be blank"},
+    {"case": "java-register-unknown-role-400", "status": 400, "body": "bad_request / unknown role: WIZARD (honest 400, not silent STUDENT downgrade)"},
+    {"case": "java-register-teacher-no-joincode", "status": 403, "body": "forbidden / teacher registration requires a valid join code — FAILS CLOSED as 403, NOT 400 (captured, not assumed)"},
+    {"case": "java-register-admin-refused", "status": 403, "body": "forbidden / admin accounts are provisioned by an administrator"},
+    {"case": "java-login-unknown-email-401", "status": 401, "body": "invalid_credentials / invalid credentials (no factor echo)"},
+    {"case": "java-login-missing-fields-400", "status": 400, "body": "validation_failed / password: must not be blank"}
+  ],
+  "phase_a_note": "phase A payloads used an 11-char password so three probes hit the password-size boundary before the intended email/role boundaries; phase A2 re-captured those with a 12-char compliant password (scripts/capture_readonly2.py). Raw sets retained outside the repo at capture/raw (nothing to scrub — synthetic from creation)."
+}

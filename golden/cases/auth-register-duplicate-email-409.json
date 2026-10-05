@@ -1,0 +1,27 @@
+{
+  "name": "auth-register-duplicate-email-409",
+  "description": "Duplicate email registration: 409 conflict 'email already registered' (ConflictException, append-only identity)",
+  "source": "captured from a LOCAL boot of the frozen Java core (built from the frozen main tree, JDK 25) against Neon BRANCH t-mig-003/r6 (br-divine-mode-a5xur4zv, copy-on-write of production) on 2026-10-04T18:36Z by T-MIG-003 run-002 (R6); no production writes; scrubbed: accessToken->fixed dummy, user id->stable fake UUID, account identity synthetic from creation",
+  "method": "POST",
+  "path": "/api/v1/auth/register",
+  "request": {
+    "body": {
+      "email": "user_10@example.invalid",
+      "password": "golden-run-2026x",
+      "displayName": "User 10b",
+      "role": "STUDENT"
+    }
+  },
+  "expect": {
+    "status": 409,
+    "body": {
+      "status": 409,
+      "error": "conflict",
+      "message": "email already registered",
+      "timestamp": "2026-10-04T18:36:41.469581463Z"
+    }
+  },
+  "tolerate": [
+    "timestamp"
+  ]
+}

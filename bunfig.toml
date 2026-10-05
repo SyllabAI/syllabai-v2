@@ -1,0 +1,15 @@
+# T-MIG-000: use the classic hoisted (flat) linker for the unified workspace.
+# bun >=1.3 defaults to the isolated (pnpm-style) linker in workspaces; the
+# imported hub's Next.js/Turbopack build fails to resolve peer/nested deps
+# through the symlink layout (@tiptap/core, unist-util-visit-parents).
+# The hoisted layout matches the hub's legacy standalone install layout —
+# dependency VERSIONS are unchanged, only placement.
+[install]
+linker = "hoisted"
+
+[test]
+# T-MIG-000 (R0 review 5407522112, ruling 3): bare `bun test` at the repo root
+# swept apps/hub Playwright e2e specs -> 5 playwright/lib loader errors ("5 tests
+# failed" tooling artifact). Hub e2e runs under the Playwright runner in the hub
+# lane, never under bun test; hub UNIT tests (src/lib/*.test.ts) stay in scope.
+pathIgnorePatterns = ["apps/hub/tests/e2e/**"]

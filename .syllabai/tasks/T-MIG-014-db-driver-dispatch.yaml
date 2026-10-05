@@ -1,0 +1,87 @@
+version: 1
+task:
+  id: T-MIG-014
+  title: "URL-dispatched db driver — postgres.js for non-Neon Postgres so golden replay can target seed-shaped local/branch state (packages/db + identity createSql)"
+  owner: "superz-agent-b (session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9, self-selected per briefing §5 blank-role protocol)"
+  status: DONE # R0 flip (session web-df0238cc): merged via PR #13 (URL-dispatched db drivers + latent neon-http 1.x incompatibility pinned 0.10.2 — substrate bug independently verified against drizzle 0.38.4 call form; users.ts OUT-OF-FENCE dispatch ratified); Wave-2 replay unblocked
+  claimed_at: "2026-10-05T11:08:05+06:00"
+  priority: P1
+  wave: 0
+  deps: []
+  execution_record: |
+    CLAIM NOTE + FILING RATIONALE (2026-10-05, pre-work): task filed by the
+    claiming agent — no yaml existed for it. Problem: golden-master replay
+    (GOLDEN_MASTER §4 gate semantics) needs a target api whose db state MATCHES
+    the capture state. The T-MIG-004 content cases are pinned to the Flyway
+    V1..V63 SEED state (empty documents/exam_papers/questions/question_assets;
+    fixed-uuid curriculum skeleton) — a production-copy Neon branch carries REAL
+    pilot data (91 papers, 2,333 chunks, real documents) and would produce
+    GENUINE-FAIL class diffs on every state-dependent case (teacher-empty-200 [],
+    documents list, review queues), drowning the parity signal in environment
+    noise. Today the ONLY db driver in the monorepo is Neon-specific
+    (@neondatabase/serverless ws Client in identity createSql; neon-http drizzle
+    in packages/db) — neither can reach a local/CI Postgres, so no seed-shaped
+    replay environment is reachable by any lane. Fix: URL-dispatched driver —
+    DATABASE_URL host *.neon.tech keeps the existing Neon drivers (behaviour
+    byte-identical), ANY other Postgres host gets postgres.js (TCP, drizzle's
+    standard local driver, also Neon-capable). Fail-fast guards preserved
+    verbatim (blank URL, jdbc: prefix). Neon branch row-writes for replay env
+    reset remain rows-only per BASELINE_DB §4.1 — never structure, never main.
+    FENCE DISCLOSURE (for R0 arbitration, §3.3/§6.1 precedent T-MIG-010
+    OUT-OF-FENCE wiring): (1) apps/api/src/services/identity/users.ts
+    createSql() gains the same host-based driver dispatch — the file sits in
+    T-MIG-010's DONE fence; the change is a contained driver adapter, zero
+    behaviour change on Neon, shipped as a separate commit for ratification;
+    PR #12 (T-MIG-013) does not touch users.ts (verified via PR files API —
+    no collision). (2) root bun.lock updates are the mechanical consequence of
+    adding the postgres dependency to packages/db; T-MIG-000 (lock owner) is
+    DONE and merged, so the lockfile is live infrastructure now. (3) Neon
+    scratch branch t-mig-014/r3a created via console.neon.tech (rows-only
+    verification of both driver paths; no production contact).
+    COMPLETION (2026-10-05, same session/branch — appended per append-only rule):
+    Implemented host-based dispatch: isNeonUrl() (packages/db, exported) —
+    *.neon.tech hosts keep the production drivers (neon-http drizzle / ws
+    Client in createSql), every other Postgres host gets postgres.js over TCP
+    (max 1, prepare:false — mirrors the serialized-session doctrine). Guards
+    (blank / jdbc:) run before dispatch for both paths. Unit pins:
+    packages/db/src/client.test.ts (dispatch decision + lazy construction,
+    no live socket in CI). LIVE two-driver evidence on the t-mig-014/r3a
+    Neon scratch branch (tool committed at
+    .syllabai/receipts/T-MIG-014/tools/live-verify.ts):
+    (1) createDb neon-http select ✓, (2) postgres.js TCP select + positional
+    params ✓, (3) createSql neon-ws template + interactive tx +
+    rollback-then-reuse ✓.
+    LATENT SUBSTRATE BUG FOUND+FIXED (in-fence, live-exposed): createDb()'s
+    neon-http path had never been exercised against a live Neon (T-MIG-010's
+    integration used createSql/ws) — drizzle-orm 0.38.x calls
+    neon(strings, values, options), a form @neondatabase/serverless 1.x
+    removed. Any future createDb consumer would have failed on EVERY live
+    Neon query while all unit tests stayed green. Fix: pin
+    @neondatabase/serverless to 0.10.2 (drizzle-0.38 call-form compatible;
+    ws Client API unchanged — check 3 proves it) + compat warning comment in
+    client.ts. Do not bump that dep without bumping drizzle-orm as a whole.
+    Gates: typecheck exit 0 (4 workspaces), bun test 111/111 (0 fail,
+    includes 9 new dispatch pins), golden selftest OK. bun.lock change is the
+    mechanical consequence of the dependency adds/pin (disclosed above).
+base:
+  repo: "syllabai-v2 @ main 67639db at claim time; frozen refs: syllabai-core @ 6cad6ef, syllabai-hub @ 93226a43"
+basis: >
+  GOLDEN_MASTER §2/§4 (capture/replay environments must be state-matched;
+  write-surface capture "a Neon-branch-backed local boot"), BASELINE_DB §2
+  (branch table lists per-task sandboxes), MIGRATION_PLAN §5 Wave-0 exit gate
+  (golden harness usable) + §10 (capture lane = metronome). Unblocks
+  T-MIG-020/021 replay gates and every future wave's local replay.
+scope:
+  allowed:
+    - "packages/db/src/** (client driver dispatch + tests)"
+    - "packages/db/package.json (postgres dependency)"
+    - "apps/api/src/services/identity/users.ts (createSql driver dispatch ONLY — disclosed out-of-fence, see claim note)"
+    - ".syllabai/receipts/T-MIG-014/**"
+    - ".syllabai/tasks/T-MIG-014-db-driver-dispatch.yaml (status/execution_record only)"
+    - "bun.lock (mechanical dependency add — disclosed)"
+  forbidden:
+    - "packages/db/src/schema/** (R2/T-MIG-002 output — untouched)"
+    - "packages/db/drizzle/** (baseline migrations — untouched)"
+    - "golden/** (R6 lane), .github/** , apps/hub/**"
+    - "apps/api/src/services/identity/** EXCEPT users.ts createSql (T-MIG-013 PR #12 in flight)"
+    - "production Neon main-branch writes of any kind (C2)"

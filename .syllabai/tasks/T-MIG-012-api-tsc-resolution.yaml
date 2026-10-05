@@ -1,0 +1,63 @@
+version: 1
+task:
+  id: T-MIG-012
+  title: "Fix apps/api tsc type resolution (TS2688 'bun-types') — restore fleet-wide green typecheck/CI"
+  owner: "superz-agent-b (session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9, self-selected per briefing §5 blank-role protocol; R3-lane, apps/api config)"
+  status: DONE # R0 merge via PR #6 (0f03d9d) 2026-10-05; one-line tsconfig fix, accidental root bun.lock stripped per receipt fence (ruling b7ef4a5)
+  claimed_at: "2026-10-05T00:37:40+06:00"
+  priority: P1
+  wave: 0
+  deps: []
+  execution_record: |
+    CLAIM NOTE + FILING RATIONALE (2026-10-05, pre-work): task filed by the
+    claiming agent (no pre-seeded yaml existed for it). Basis: root package.json
+    "typecheck" chains bun run --cwd apps/api typecheck, and CI runs
+    `bun run typecheck` on every pull_request — therefore the pre-existing
+    TS2688 failure in apps/api makes CI RED for EVERY fleet PR (both open
+    T-MIG-000 PRs #1/#3 included) and blocks trustworthy CI signal for all
+    lanes. First found during T-MIG-001 work (receipt run-001.json, verified
+    pre-existing on pristine main via git stash -u round-trip); re-verified on
+    main @ 2cfaf41 immediately before this claim (bunx tsc --noEmit → TS2688:
+    Cannot find type definition file for 'bun-types'). Root cause:
+    apps/api/tsconfig.json references the legacy "bun-types" type-library name
+    while the installed devDep is @types/bun ^1.2.0 (which itself depends on
+    bun-types and re-exports it). Fix is a one-line tsconfig change — zero
+    dependency/lockfile changes, so no overlap with the T-MIG-000 PRs (both
+    verified via PR files API to touch ci.yml/bun.lock/package.json/apps/hub
+    only) or any active lane (r2: packages/db/**, r6: golden/**).
+    CI typo NOT mine to fix (disclosed, not touched): .github/workflows/ci.yml
+    has `branches: ain]` (likely meant [main]) — push-CI on main never
+    triggers; pull_request CI unaffected. Both T-MIG-000 PRs already edit
+    ci.yml, so the fix belongs to the T-MIG-000 winner; flagged in PR + worklog.
+    COMPLETION (2026-10-05, same session/branch — appended per append-only rule):
+    Fix applied: apps/api/tsconfig.json "types": ["bun-types"] → ["bun"] —
+    @types/bun (already the installed devDep, and bun-types' own re-export
+    umbrella) resolves, legacy name dropped. ZERO other files touched: no
+    package.json, no lockfile, no source — fence held to the single line.
+    Gates, freshly executed on t-mig-012/r3: apps/api tsc --noEmit exit 0
+    (was TS2688); root `bun run typecheck` exit 0 with FOUR tsc invocations
+    (contracts, shared, db, api) — the root gate is green for the first time
+    in repo history (previously every PR inherited the apps/api red);
+    `bun test apps/api packages` 32 pass / 0 fail (28 contracts from merged
+    T-MIG-001 + 4 api seed tests — matches the merged receipt exactly);
+    `bun golden/runner.ts --selftest` OK. Evidence:
+    .syllabai/receipts/T-MIG-012/run-001.json. Residual note for R3/R4:
+    @types/bun pins ambient bun globals for tsc; if a future bun runtime
+    upgrade changes type shapes, revisit "types" — documented in receipt.
+base:
+  repo: "syllabai-v2 @ main 2cfaf41 at claim time; frozen refs: syllabai-core @ main, syllabai-hub @ 93226a43"
+basis: >
+  AGENT_COORDINATION §6.1 (file a dependency task) + §3 rule 3 (file a new
+  task for the owning role when a needed file is outside every open fence —
+  apps/api/tsconfig.json is in NO task's scope.allowed, not even T-MIG-010's).
+  MIGRATION_PLAN §5 Wave-0 exit gate requires CI green; C4 speed matters.
+scope:
+  allowed:
+    - "apps/api/tsconfig.json (types resolution line only)"
+    - ".syllabai/receipts/T-MIG-012/**"
+    - ".syllabai/tasks/T-MIG-012.yaml (status/execution_record only)"
+  forbidden:
+    - ".github/workflows/ci.yml (T-MIG-000 PR territory; typo disclosed, not touched)"
+    - "package.json / bun.lock / apps/hub/** (T-MIG-000 PR territory)"
+    - "packages/** (r2/r6-adjacent lanes), golden/** (r6 lane)"
+    - "apps/api/src/** apps/api/test/** (T-MIG-010's future fence — unclaimed, keep it that way)"

@@ -1,0 +1,35 @@
+{
+  "task": "T-MIG-017",
+  "run": "run-002",
+  "renumbered_from": "T-MIG-016",
+  "agent": "R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "recorded_at": "2026-10-05 (R0-REPAIR-1 housekeeping commit, post-merge repair)",
+  "base": {
+    "branch": "main @ 85a0d32 (PR #25 merge) + this housekeeping commit",
+    "context": "PR #25 was merged at 2026-10-05T06:57:20Z against an explicit R0 HOLD (comment 06:43:12Z) that directed a refile under T-MIG-017; the repair applies the renumber post-merge without reverting the merged substance"
+  },
+  "objective": "Restore the one-task-per-ID board namespace: T-MIG-016 belongs to the RateLimitFilter port (PR #21, two independent approvals on record) so its pending merge brings a collision-free yaml; the golden-verify task moves to the next free ID.",
+  "collision_timeline": {
+    "r1_ratelimit_pr21": "claim b1f63b4 @ 2026-10-05T05:23:58Z (renumber of the former T-MIG-014 lane; PR #15 then #21) — earliest claim, ID retained per §2.1",
+    "r0_golden_verify_pr25": "claim 1f6186f @ 2026-10-05T06:31:36Z; PR #25 opened 06:32:06Z — later claim, renumbered to T-MIG-017 (next free: no yaml on main, no remote branch t-mig-017* at repair time)",
+    "r0_hold": "PR comment 06:43:12Z — refile directive (not actioned before the merge)",
+    "merge": "85a0d32 @ 06:57:20Z — merged under the shared account by an actor executing R0-style procedure; breach recorded in the worklog entry",
+    "precedents": "r7a/#14 yield; #15->#21 self-renumber; #19 r4 yield — later claim renumbers, earliest-claim is a tiebreak not territory"
+  },
+  "changes_in_this_commit": {
+    ".syllabai/tasks/T-MIG-017-golden-verify-identity.yaml": "renamed from T-MIG-016-golden-verify-identity.yaml; id + scope.allowed renumbered; renumber paragraph appended to execution_record (claim commit 1f6186f @ 06:31:36Z preserved in the timeline)",
+    ".syllabai/receipts/T-MIG-017/run-001-identity-golden-verify.json": "renamed from T-MIG-016/, BYTE-IDENTICAL (sha256 re-verified at commit time)",
+    ".syllabai/receipts/T-MIG-017/run-002-renumber.json": "this record",
+    "apps/api/src/routes/health.ts": "comment-only renumber (1 line)",
+    "apps/api/src/routes/auth/index.ts": "comment-only renumber (1 line)",
+    "apps/api/test/identity/rules.test.ts": "test-name renumber (1 line)",
+    "packages/contracts/src/auth.ts": "comment-only renumber (1 line)",
+    "golden/runner.ts": "comment-only renumber (1 line)",
+    ".syllabai/worklog.md": "append-only R0-REPAIR-1 entry (breach record + repair + gates)"
+  },
+  "gates": {
+    "diff_surface": "expected paths exactly: tasks yaml (renamed+edited), receipts dir (renamed + this record), 5 code/comment/test-name lines, worklog (append) — diffstat re-verified at push time",
+    "code_gates": "bookkeeping-only commit; main @ 85a0d32 independently verified this session: typecheck x4 exit 0, bun test 252/0/13skip (633 expect), golden --selftest OK, CI verify+hub success"
+  },
+  "verdict": "Board namespace restored; T-MIG-016 free for PR #21's merge; T-MIG-017 now taken by the golden-verify task; PR #26's renumber target corrected 017 -> 018 by PR comment."
+}

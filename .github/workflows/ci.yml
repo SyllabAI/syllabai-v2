@@ -16,16 +16,11 @@ jobs:
         with:
           bun-version: latest
 
-      # NOTE: hub is intentionally NOT installed/built in this workflow yet.
-      # Its 153MB tree (content corpus + corpus-verify prebuild) is brought
-      # under CI by T-MIG-000/T-MIG-003, not before — keep the first CI lane
-      # fast and green.
-      - name: Install workspace deps (packages + api)
-        run: |
-          bun install --cwd packages/contracts
-          bun install --cwd packages/shared
-          bun install --cwd packages/db
-          bun install --cwd apps/api
+      # T-MIG-000: one unified workspace install from the root lockfile.
+      # Per-directory installs were superseded when the hub became a
+      # first-class bun workspace package (root bun.lock + bunfig.toml).
+      - name: Install workspace deps (root lockfile, all workspaces)
+        run: bun install --frozen-lockfile
 
       - name: Typecheck
         run: bun run typecheck
@@ -35,3 +30,23 @@ jobs:
 
       - name: Golden-master self-check (harness sanity, no live target)
         run: bun golden/runner.ts --selftest
+
+  # T-MIG-000: hub lane — the 153MB corpus + Next build live in their own
+  # job so the fast verify lane stays fast. The prebuild corpus-verify
+  # scripts (verify_corpus_23a.ts, verify_flashcard_sync_courses.ts) run as
+  # part of `bun run build:hub`, so a corrupted corpus fails this lane.
+  hub:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install workspace deps (root lockfile, all workspaces)
+        run: bun install --frozen-lockfile
+
+      - name: Build hub (corpus-verify prebuild + next build)
+        run: bun run build:hub

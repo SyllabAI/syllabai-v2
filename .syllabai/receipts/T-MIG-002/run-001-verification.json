@@ -1,0 +1,104 @@
+{
+  "checks": [
+    {
+      "id": "inventory.live==snapshot",
+      "pass": true,
+      "detail": {
+        "live": 62,
+        "snapshot": 62,
+        "missingInSnap": [],
+        "extraInSnap": []
+      }
+    },
+    {
+      "id": "inventory.runtime==snapshot",
+      "pass": true,
+      "detail": {
+        "runtime": 62,
+        "missingInRuntime": []
+      }
+    },
+    {
+      "id": "columns.parity",
+      "pass": true,
+      "detail": {
+        "columnsChecked": 579,
+        "mismatches": []
+      }
+    },
+    {
+      "id": "flyway.present",
+      "pass": true,
+      "detail": {
+        "n": 63,
+        "maxv": "9"
+      }
+    },
+    {
+      "id": "flyway.modelled-not-managed",
+      "pass": true,
+      "detail": {
+        "inGeneratedSchema": true,
+        "note": "README marks it core-owned; Drizzle never alters it"
+      }
+    },
+    {
+      "id": "rowcounts.spot",
+      "pass": true,
+      "detail": {
+        "exam_papers": 108,
+        "questions": 1526,
+        "question_versions": 1526,
+        "attempts": 217,
+        "users": 322,
+        "flashcard_ratings": 28,
+        "skill_states": 187,
+        "documents_by_state": [
+          {
+            "validation_state": "REJECTED",
+            "n": 146
+          },
+          {
+            "validation_state": "VALIDATED",
+            "n": 877
+          }
+        ],
+        "document_chunks": {
+          "total": 4740,
+          "embedded": 4740
+        },
+        "validated_pool_embed_rev_2": 4740
+      }
+    },
+    {
+      "id": "pgvector.present",
+      "pass": true,
+      "detail": {
+        "extname": "vector",
+        "extversion": "0.8.6"
+      }
+    },
+    {
+      "id": "pgvector.dim768",
+      "pass": true,
+      "detail": [
+        {
+          "table": "public.document_chunks",
+          "col": "embedding",
+          "type": "vector(768)"
+        }
+      ]
+    },
+    {
+      "id": "envmapping.guards",
+      "pass": true,
+      "detail": {
+        "blankThrows": true,
+        "jdbcThrows": true,
+        "okPasses": true
+      }
+    }
+  ],
+  "ormVersion": "0.38.4",
+  "timestamp": "2026-10-04T18:33:49.921Z"
+}

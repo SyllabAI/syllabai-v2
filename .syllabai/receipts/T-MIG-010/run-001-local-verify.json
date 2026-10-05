@@ -1,0 +1,36 @@
+{
+  "task": "T-MIG-010",
+  "receipt": "run-001-local-verify",
+  "date": "2026-10-05",
+  "agent": "R3-api-a (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "environment": {
+    "bun": "1.3.14",
+    "node": ">=24 (sandbox)",
+    "commands": "CI-equivalent: bun run typecheck && bun test apps/api packages && bun golden/runner.ts --selftest (per .github/workflows/ci.yml on t-mig-000/r7 base)"
+  },
+  "results": {
+    "typecheck": {
+      "command": "bun run typecheck",
+      "outcome": "PASS — 0 errors across packages/contracts, packages/shared, packages/db, apps/api (tsc --noEmit x4)"
+    },
+    "unit_tests": {
+      "command": "bun test apps/api packages",
+      "outcome": "PASS — 100 pass / 0 fail / 4 skip (skip = integration tier, requires INTEGRATION_DATABASE_URL by design)",
+      "expectations": 248,
+      "files": 7,
+      "duration_ms": 10170,
+      "new_tier": {
+        "jwt.test.ts": "fail-fast ctor (32-byte floor, verbatim message), TTL PT2H + ISO overrides, wire shape {alg:HS256}+sub/jti/uid/ver/roles/iat/exp(seconds), cross-implementation HS256 fixture, absent-ver→null, expired/tampered/bad-uid/unknown-role rejection",
+        "budget.test.ts": "fixed window per target account, cap at loginPerAccount (10), Retry-After bounds, window expiry, success clears, key normalisation strip+lower, per-account isolation, enabled switch, MAX_KEYS=100000",
+        "rules.test.ts": "selfServiceRole table (default STUDENT, case-insensitive valueOf, unknown→400 'unknown role: X', ADMIN→403), join-code fail-closed gate (unset refuses EVERYTHING with the same 403), BCrypt cost 12 + $2a$ cross-verify acceptance, validation_message mapping with Hibernate-default texts and jakarta constraint order",
+        "routes.test.ts": "full route parity over in-memory repo: 201+Location, lowercase email storage, 409 duplicate, role gates, malformed_body, Jackson scalar→String coercion shim, 401 invalid_credentials no-echo, 429+Retry-After per-TARGET budget, budget-clears-on-success, ver-revocation (stale ver → 401), Boot-shaped 401 on anonymous protected paths, bootstrap-status anonymous"
+      }
+    },
+    "golden_selftest": {
+      "command": "bun golden/runner.ts --selftest",
+      "outcome": "PASS — selftest OK: tolerance engine behaves"
+    }
+  },
+  "golden_gate_status": "PENDING (honest) — live capture cases for identity endpoints are T-MIG-003's lane (claimed, no capture yet). This PR ships the port + unit/integration evidence; replay gating happens when R6's capture lands. No golden case was weakened or skipped.",
+  "notes": "Test fixtures corrected during development (1-char displayNames violated the ported min=2 floor — the port was right, the fixtures were wrong; kept as regression proof)."
+}
