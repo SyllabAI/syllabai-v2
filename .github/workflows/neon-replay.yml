@@ -1,0 +1,181 @@
+# T-MIG-044 — CI-side Neon golden replay runner (operator-routed register item).
+#
+# OPERATOR DIRECTIVE (IM trace 1a10ca697e382335 item 2): GitHub Actions runs
+# the golden replay against Neon — agent sandboxes are DNS-blocked; CI is
+# not. STRICT READ-ONLY POSTURE, replay only, cases stay forever-gates:
+#   - the workflow NEVER writes to the repo, the golden corpus, or the
+#     production Neon branch (a post-run `git diff --exit-code` proves the
+#     corpus/tree untouched — the read-only evidence);
+#   - it replays the committed corpus at the checked-out sha against TWO
+#     disposable copy-on-write Neon branches provisioned per run (seed posture
+#     via apply-reset + prod posture as-cowed — the recorded T-MIG-022
+#     doctrine) and DROPS them afterwards with 404 verification (T-MIG-035
+#     discipline), even on failure (`if: always()`);
+#   - any divergence is REPORTED (job red + per-case report artifact) for
+#     R0/R6 disposition — never auto-fixed, never silently tolerated
+#     (GOLDEN_MASTER §4: cases are forever; AGENT_COORDINATION §6).
+#
+# One-time repo setup (operator):
+#   ACTIONS_SECRET  NEON_API_KEY          — Neon API token
+#   ACTIONS_VARIABLE NEON_PROJECT_ID      — Neon project id
+#   ACTIONS_VARIABLE NEON_PARENT_BRANCH_ID — production branch id (the COW
+#                                            parent per docs/BASELINE_DB.md §2)
+#
+# Standing role (R0-SWEEP-5): this runner is the periodic live re-proof
+# instrument for cards T-MIG-022/023/024/030/032 and the only live-replay
+# path while agent sandboxes stay DNS-blocked.
+
+name: neon-replay
+
+on:
+  workflow_dispatch:
+    inputs:
+      note:
+        description: "Operator note for this manual re-proof run"
+        required: false
+        default: ""
+  schedule:
+    # Standing periodic re-proof (R0-SWEEP-5). Daily 02:30 UTC off-peak.
+    - cron: "30 2 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: neon-replay
+  cancel-in-progress: false
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      # Replay-realm constants — synthetic, throwaway, NEVER the Java core's
+      # JWT secret (token parity with the frozen core is a cutover concern,
+      # not a replay concern; the join code mirrors the recorded capture
+      # posture "SYLLABAI_TEACHER_JOIN_CODE synthetic", T-MIG-022 run-001).
+      SYLLABAI_JWT_SECRET: "ci-neon-replay-synthetic-jwt-secret-0123456789abcdef"
+      SYLLABAI_TEACHER_JOIN_CODE: "ci-replay-synthetic-join"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install workspace deps (root lockfile, all workspaces)
+        run: bun install --frozen-lockfile
+
+      - name: Harness sanity (selftest — the comparator must prove itself first)
+        run: bun golden/runner.ts --selftest
+
+      - name: Preconditions (Neon config present; working tree clean)
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PARENT_BRANCH_ID: ${{ vars.NEON_PARENT_BRANCH_ID }}
+        run: |
+          miss=0
+          for v in NEON_API_KEY NEON_PROJECT_ID NEON_PARENT_BRANCH_ID; do
+            if [ -z "${!v}" ]; then echo "::error::${v} is not configured (secret/variable setup documented at the top of this workflow)"; miss=1; fi
+          done
+          exit $miss
+
+      - name: Posture plan (deterministic corpus split, no live target)
+        run: bun golden/tools/ci-replay.ts --plan
+
+      - name: Provision disposable Neon COW branches (seed + prod)
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PARENT_BRANCH_ID: ${{ vars.NEON_PARENT_BRANCH_ID }}
+        run: bun golden/tools/neon-branch.ts create
+
+      # ── Pass A — seed posture (apply-reset on the disposable seed branch) ──
+      - name: Pass A — reset seed branch to Flyway-SEED posture
+        env:
+          DATABASE_URL: ${{ env.NEON_SEED_URL }}
+        run: bun golden/tools/apply-reset.ts
+
+      - name: Pass A — boot v2 api against the seed branch (idleTimeout=255 envelope)
+        env:
+          DATABASE_URL: ${{ env.NEON_SEED_URL }}
+          PORT: "8080"
+        run: |
+          bun golden/tools/boot-with-timeout.ts > boot-seed.log 2>&1 &
+          echo $! > boot-seed.pid
+          for i in $(seq 1 45); do
+            if curl -fsS http://localhost:8080/actuator/health >/dev/null 2>&1; then echo "api healthy (attempt $i)"; exit 0; fi
+            sleep 2
+          done
+          echo "::error::seed api failed to become healthy"; cat boot-seed.log; exit 1
+
+      - name: Pass A — replay non-realdata tranche (seed posture)
+        env:
+          TARGET: "http://localhost:8080"
+          CASE_MODE: "seed"
+        run: bun golden/tools/ci-replay.ts --report-out reports/seed.json
+
+      - name: Stop seed boot
+        if: always()
+        run: |
+          [ -f boot-seed.pid ] && kill "$(cat boot-seed.pid)" 2>/dev/null || true
+          mkdir -p reports && cp boot-seed.log reports/ 2>/dev/null || true
+
+      # ── Pass B — prod posture (as-cowed branch, NO reset) ──
+      - name: Pass B — boot v2 api against the prod-cowed branch
+        env:
+          DATABASE_URL: ${{ env.NEON_PROD_URL }}
+          PORT: "8081"
+        run: |
+          bun golden/tools/boot-with-timeout.ts > boot-prod.log 2>&1 &
+          echo $! > boot-prod.pid
+          for i in $(seq 1 45); do
+            if curl -fsS http://localhost:8081/actuator/health >/dev/null 2>&1; then echo "api healthy (attempt $i)"; exit 0; fi
+            sleep 2
+          done
+          echo "::error::prod api failed to become healthy"; cat boot-prod.log; exit 1
+
+      - name: Pass B — replay realdata tranche (prod posture)
+        env:
+          TARGET: "http://localhost:8081"
+          CASE_MODE: "prod"
+        run: bun golden/tools/ci-replay.ts --report-out reports/prod.json
+
+      - name: Stop prod boot
+        if: always()
+        run: |
+          [ -f boot-prod.pid ] && kill "$(cat boot-prod.pid)" 2>/dev/null || true
+          cp boot-prod.log reports/ 2>/dev/null || true
+
+      # ── Union verdict = the standing re-proof gate (T-MIG-022 doctrine) ──
+      - name: Union verdict (any FAIL reds the job — findings are filed, never auto-fixed)
+        run: |
+          bun golden/tools/ci-replay.ts --union reports/seed.json reports/prod.json --summary-out reports/union.md
+          cat reports/union.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: READ-ONLY PROOF — the runner wrote nothing to the repo or corpus
+        if: always()
+        run: |
+          git diff --exit-code -- golden/ docs/ apps/ packages/ .github/ .syllabai/tasks/ \
+            || { echo "::error::corpus/repo mutation detected — the read-only posture is VIOLATED"; exit 1; }
+          echo "read-only posture verified: zero tracked-file changes (golden corpus untouched, cases remain forever-gates)"
+
+      - name: Upload replay evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: neon-replay-${{ github.run_id }}-${{ github.run_attempt }}
+          path: reports/
+          retention-days: 30
+          if-no-files-found: warn
+
+      # ── ALWAYS drop the disposable branches — zero residue, zero production contact ──
+      - name: Drop disposable branches (+ 404-verify, T-MIG-035 discipline)
+        if: always()
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_SEED_BRANCH_ID: ${{ env.NEON_SEED_BRANCH_ID }}
+          NEON_PROD_BRANCH_ID: ${{ env.NEON_PROD_BRANCH_ID }}
+        run: bun golden/tools/neon-branch.ts drop

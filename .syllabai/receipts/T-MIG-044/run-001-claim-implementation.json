@@ -1,0 +1,45 @@
+{
+  "task": "T-MIG-044",
+  "agent": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "date": "2026-10-05",
+  "run": "run-001-claim-implementation",
+  "title": "CI-side Neon golden replay runner — workflow + corpus-wide two-posture driver + Neon COW lifecycle tools, strict read-only posture",
+  "operator_directive": "IM trace 1a10ca697e382335 item 2: 'CI-SIDE Neon replay runner: GitHub Actions workflow running the golden replay against Neon (sandboxes are DNS-blocked; CI is not) — STRICT read-only posture, replay only, cases stay forever-gates.'",
+  "deliverables": [
+    { "path": ".github/workflows/neon-replay.yml", "role": "the workflow — dispatch + daily schedule; selftest -> preconditions -> posture plan -> provision COW branches -> Pass A (seed) -> Pass B (prod) -> union verdict -> READ-ONLY PROOF -> artifact -> drop+404-verify (if:always())" },
+    { "path": "golden/tools/ci-replay.ts", "role": "corpus-wide replay driver — CASE_MODE=seed|prod, REALDATA regex verbatim from the T-MIG-022 v2 tool, seq-aware ordering via the gated loader, comparator imported from runner.ts (zero drift), route-rule auth with honest-surface token minting, per-case JSON report, --plan and --union modes" },
+    { "path": "golden/tools/neon-branch.ts", "role": "Neon API v2 lifecycle — create 2 disposable COW branches from the production parent (read_write endpoints, readiness poll, ::add-mask:: on URIs) / drop + 404-verify; nothing else" },
+    { "path": "golden/tools/apply-reset.ts", "role": "repo-resident verbatim copy of the T-MIG-022 receipt tool (sha256 32fee89d…; H-2 divergence preserved intact on purpose)" },
+    { "path": "golden/tools/boot-with-timeout.ts", "role": "repo-resident copy of the H-1 canonical boot envelope (sha256 cddbeff9…; single path-only import delta disclosed)" },
+    { "path": "golden/README.md", "role": "new 'CI-side Neon replay runner' section — posture table, read-only guarantees, known-posture disclosures, operator setup" }
+  ],
+  "posture_proofs": {
+    "corpus_read_only": "workflow step 'READ-ONLY PROOF' runs git diff --exit-code over golden/ docs/ apps/ packages/ .github/ .syllabai/tasks/ every run (if:always()) — the runner cannot mutate cases or the repo without reding itself",
+    "production_read_only": "production is referenced ONLY as the COW parent id (repo VARIABLE); every write goes to per-run disposable branches dropped + 404-verified under if:always() (T-MIG-035 discipline); connection URIs add-mask-ed, never logged",
+    "cases_forever_gates": "the driver never edits/retires/tolerates a case; divergences are reported per-case for R0/R6 disposition (AGENT_COORDINATION §6; GOLDEN_MASTER §4/§7)"
+  },
+  "gates": [
+    { "cmd": "bun run typecheck (root script, x4 workspaces)", "result": "exit 0" },
+    { "cmd": "bun test apps/api packages", "result": "485 ran / 472 pass / 13 skip / 0 fail / 1259 expect (baseline exact)" },
+    { "cmd": "bun golden/runner.ts --selftest", "result": "OK — engine untouched (byte-identical; consumed via import)" },
+    { "cmd": "bun golden/tools/ci-replay.ts --plan", "result": "113 committed cases -> seed 98 + prod 15, disjoint, zero overlap; seq order register(1)->duplicate(2)->login(3)->wrong-password(4)->me(5); 0 expect.headers cases (machinery kept)" },
+    { "cmd": "bun golden/tools/neon-branch.ts create (no env)", "result": "clean fail-fast exit 2 with operator setup guidance — no partial action" },
+    { "cmd": "boot wrapper smoke (PORT=8099, dummy DATABASE_URL)", "result": "serving verified: /actuator/health 200; unknown /api/v1 path 401 (auth-gate parity live); H-1 idleTimeout=255 envelope live" },
+    { "cmd": "workflow YAML parse", "result": "valid; 18 steps; triggers workflow_dispatch + schedule; permissions contents:read; concurrency serialized" }
+  ],
+  "first_run_expectations": {
+    "honest_findings_expected": [
+      "w3/curriculum/teacher cases captured from LOCAL Flyway-seeded boots pin V6/V7 fixed-uuid seed rows that apply-reset's full wipe removes (H-2) — expected FAILs with full evidence until R0/R6 rule the third (Flyway-seed) posture or re-pin",
+      "capture-time identity values in non-tolerated fields (e.g. w3-history-after-submit-200 learnerId) — expected FAILs until the owning golden lane amends the case",
+      "content seed tranche 25/25 + identity 16 + realdata 15 are the tool-proven postures expected green from run one"
+    ],
+    "disposition_path": "red job + reports/*.json artifact -> findings filed per AGENT_COORDINATION §6 -> R0/R6 rulings -> future runs converge green; the runner itself weakens nothing"
+  },
+  "operator_setup_one_time": [
+    "ACTIONS_SECRET NEON_API_KEY (Neon API token; independent of the GitHub PAT rotation register item)",
+    "ACTIONS_VARIABLE NEON_PROJECT_ID",
+    "ACTIONS_VARIABLE NEON_PARENT_BRANCH_ID (production branch id per docs/BASELINE_DB.md §2 — e.g. the br-muddy-bar-a5huwldd parent recorded in T-MIG-022 run-001)",
+    "then dispatch neon-replay manually for the maiden run"
+  ],
+  "fence_audit": "changes confined to .github/workflows/neon-replay.yml, golden/tools/{ci-replay,neon-branch,apply-reset,boot-with-timeout}.ts, golden/README.md (new section), .syllabai/tasks/T-MIG-044*.yaml, .syllabai/receipts/T-MIG-044/**, .syllabai/worklog.md (append-only); golden/runner.ts and golden/cases/** byte-identical (verified below)"
+}

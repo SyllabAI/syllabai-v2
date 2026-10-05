@@ -1,0 +1,111 @@
+version: 1
+task:
+  id: T-MIG-044
+  title: "CI-side Neon golden replay runner — GitHub Actions two-posture replay of the 113-case corpus against disposable COW branches; STRICT read-only posture, replay only, cases stay forever-gates"
+  owner: "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a) — operator-routed register item (trace 1a10ca697e382335 item 2); comparator/tooling expertise lane per the directive"
+  status: IN_REVIEW
+  claimed_at: "2026-10-05T15:50:00Z"
+  priority: P1
+  wave: 3 # standing re-proof instrument for W2/W3 merged cards (022/023/024/030/032)
+  deps: [T-MIG-022, T-MIG-024, T-MIG-014, T-MIG-035]
+  execution_record: >
+    (claim entry 2026-10-05T15:50Z) OPERATOR ROUTING: "CI-SIDE Neon replay
+    runner: GitHub Actions workflow running the golden replay against Neon
+    (sandboxes are DNS-blocked; CI is not) — STRICT read-only posture, replay
+    only, cases stay forever-gates." This mechanizes the standing condition
+    recorded on cards T-MIG-022/023/024/030/032 ("live replay re-proof via
+    the CI-side Neon replay runner — non-blocking") and R0-SWEEP-5's
+    "CI-side replay runner stays the standing periodic re-proof instrument".
+    UNBLOCKS: the fleet-standard "replay NOT RUN — env-blocked" register
+    (030 run-004, 031, 032 run-002/003) — CI is not DNS-blocked.
+    DESIGN (faithful to recorded doctrine, nothing invented):
+    - Workflow .github/workflows/neon-replay.yml: workflow_dispatch + daily
+      schedule; concurrency-serialized; selftest FIRST (comparator proves
+      itself before gating anything, GOLDEN_MASTER §5); deterministic
+      posture plan (--plan); two passes; union verdict = the job gate;
+      READ-ONLY PROOF step (git diff --exit-code over golden/ docs/ apps/
+      packages/ .github/ .syllabai/tasks/) proving the corpus and repo
+      untouched EVERY run; evidence artifact (reports/, 30d retention);
+      branch drop with 404-verify under if:always() (T-MIG-035 discipline).
+    - Pass A (seed posture): disposable COW branch reset by apply-reset.ts
+      (Flyway-SEED state: content tables empty, zero users, roles re-seeded)
+      -> replays all NON-realdata cases (98). Pass B (prod posture): second
+      disposable COW branch AS-COWED (pilot rows intact, NO reset) -> the 15
+      realdata/real- cases. Split by the v2 tool's REALDATA regex VERBATIM
+      (/realdata|-real-/); plan smoke proves 98+15 disjoint = 113.
+    - tools/ci-replay.ts: corpus-wide driver; seq-aware ordering via the
+      GATED loader (loadCases from golden/runner.ts — seq'd write-path cases
+      run first, register(1)->duplicate(2)->login(3)->wrong-password(4)->me(5));
+      comparator deepEqualTolerant IMPORTED from runner.ts (zero comparator
+      drift); response-header subset check mirrors runner.ts semantics;
+      Bun 0-byte-body sentinel handling per T-MIG-022's recorded quirk;
+      token minting through the HONEST register/login surface (v2 tool
+      verbatim: user_20 TEACHER / user_21 STUDENT, route-rule role selection
+      per SecurityConfig.java:66-91, unauthed probes keep the committed
+      scrubbed-dummy bearer); per-case JSON report; --union merges both
+      postures + writes the step summary; exits nonzero on ANY fail.
+    - tools/neon-branch.ts: Neon API v2 — create (2 COW branches from the
+      production parent, read_write endpoints, endpoint-readiness poll) and
+      drop (+404-verify) ONLY. Connection URIs ::add-mask::-ed, never
+      logged; production branch never referenced by URL (parent id via repo
+      VARIABLE); fail-fast with operator setup guidance when config absent.
+    - tools/apply-reset.ts + tools/boot-with-timeout.ts: repo-resident
+      copies of the T-MIG-022 receipt tools (sha256 provenance in headers;
+      boot wrapper's single path-only import delta disclosed; the H-2
+      docstring/code divergence preserved INTACT on purpose — no unratified
+      tool change). Boot wrapper = the H-1 canonical envelope
+      (idleTimeout=255) so the 581KB realdata listing survives cold compute.
+    - golden/README.md: new "CI-side Neon replay runner" section — posture
+      table, read-only guarantees, known-posture disclosures, operator setup
+      (NEON_API_KEY secret; NEON_PROJECT_ID + NEON_PARENT_BRANCH_ID vars).
+    READ-ONLY POSTURE, operationally: no capture, no scrub, no case edits,
+    no case retirement, no repo writes (proven per-run), no production
+    contact (disposable COW branches only, dropped+404-verified always);
+    divergences REPORTED for R0/R6 disposition (§6), never auto-fixed,
+    never silently tolerated (§7).
+    KNOWN POSTURE NOTES (disclosed, NOT pre-weakened): (1) w3/curriculum/
+    teacher cases captured from LOCAL Flyway-seeded boots pin V6/V7
+    fixed-uuid seed rows that apply-reset's full wipe removes (H-2) — such
+    cases FAIL honestly with full evidence until R0/R6 rule a third posture
+    (e.g. a Flyway-seed fixture from the frozen core) or re-pin; (2) cases
+    pinning capture-time identity values in NON-tolerated fields (e.g.
+    w3-history-after-submit-200's learnerId — capture student id vs fresh
+    minted id) fail until the case is amended by the owning golden lane.
+    These are the corpus's pre-existing capture-stability debts surfacing
+    through the instrument — the first runs' reports are the filing
+    evidence; the runner itself weakens nothing.
+    LOCAL GATES ON THIS HEAD: typecheck x4 exit 0; bun test apps/api
+    packages = 485 ran / 0 fail / 13 skip / 1259 expect (baseline exact);
+    golden selftest OK; ci-replay --plan deterministic (98/15 disjoint,
+    seq order verified, 0 expect.headers cases); neon-branch fail-fast
+    verified (clean exit 2 + setup guidance, no partial action); boot
+    wrapper SMOKE-BOOTED the real api (health 200; unknown /api/v1 path
+    401 — auth-gate parity live); workflow YAML parse-validated (18 steps).
+    LIVE Neon execution is intentionally NOT attempted from this sandbox —
+    the runner's whole purpose is CI-side execution; first live run is the
+    operator's one-time setup (secrets/vars documented) + dispatch.
+  scope:
+    allowed:
+      - ".github/workflows/neon-replay.yml (new workflow only)"
+      - "golden/tools/ci-replay.ts (new)"
+      - "golden/tools/neon-branch.ts (new)"
+      - "golden/tools/apply-reset.ts (repo-resident verbatim copy of the T-MIG-022 receipt tool)"
+      - "golden/tools/boot-with-timeout.ts (repo-resident copy, single path-only import delta, disclosed)"
+      - "golden/README.md (new runner section only)"
+      - ".syllabai/tasks/T-MIG-044-ci-neon-replay-runner.yaml (status/execution_record only)"
+      - ".syllabai/receipts/T-MIG-044/**"
+      - ".syllabai/worklog.md (append-only, this task's section)"
+    forbidden:
+      - "golden/runner.ts (the gated engine — byte-identical; comparator consumed via import only)"
+      - "golden/cases/** (cases stay forever-gates — zero weakening, zero amendment)"
+      - "packages/db/**, packages/contracts/**, apps/**, apps/hub/** (other lanes)"
+      - "production Neon (never referenced by URL; disposable COW branches only)"
+base:
+  repo: "syllabai-v2 @ origin/main 79bdc23 + R0-ROUND-6 c920eea; frozen refs: syllabai-core @ main 6cad6ef, syllabai-hub @ 93226a43"
+basis: >
+  Operator directive (IM trace 1a10ca697e382335 item 2); R0-SWEEP-5 standing
+  register; cards T-MIG-022/023/024/030/032 standing conditions; T-MIG-022
+  run-001 replay protocol (two postures, H-1 boot envelope, H-2 divergence);
+  T-MIG-035 branch-drop discipline; docs/BASELINE_DB.md §2 (Neon COW
+  isolation doctrine); docs/GOLDEN_MASTER.md §4/§5 (forever-gates; selftest
+  must stay green); AGENT_COORDINATION §2 (claim protocol).
