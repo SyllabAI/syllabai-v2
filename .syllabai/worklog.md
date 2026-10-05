@@ -1445,3 +1445,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-024 DONE (owner tail closed; W2 exit gate UNCONDITIONAL on merged main 79bdc23). T-MIG-033 claimed + tranche-1 implemented; PR awaits independent review + R0 id ratification; per the round-6 directive this lane STOPS after the PR (authors never self-merge; no self-filed wave work — 033 is a ratified seed claimed per protocol).
+
+---
+Task ID: T-MIG-033 (tranche 1)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Implement tranche-1 of the claimed teacher-marking port (services + stubbed-sql tests), gates, PR, stop.
+
+Work Log:
+- services/teachermarking/index.ts: markAnswer per-answer topology (the SmartMarkService.java:87-171 half 032 did NOT port — lock-first, V34 refusal, kappa-gated authoritative, evidence settle rule; kappaGatePassed composed from the 032 shared engine, zero fork), recordHumanMark (lock-first, bound 409 en-dash verbatim, OVERRIDDEN vs HUMAN_MARKED, recompute marks_awarded+correct, settle rule), evaluateAgreement + cohenKappa port (newest-run-then-filter pairing, clampBinary, degenerate convention, threshold 0.60), queue v2 full/paged (section-7 ordering, G-5 bounds, whole-paper-group pages, honest totals, chain scoped), throughput (zeroed-then-counted states, exact since bounds, nulls-last leaders), smartMarkBatch (dedup, >50 verbatim 400, per-item outcomes, stable UNEXPECTED_ERROR), TeacherViews envelopes. Spring events dormant-disclosed.
+- 40 stubbed-sql tests / 149 expects pin gate orders, exact bodies, bounds, dedup, ordering law, null-paper laws, settle rules, refusal rows, kappa laws (incl. the -1 mixed-marginal disagreement case), batch outcomes. Test-local spySql wrapper records bind params; shared helpers untouched.
+- Gates: typecheck x4 exit 0; bun test apps/api packages 525/0/13skip 1408 expects (= main 485 + 40 exact); golden selftest OK.
+- Cross-lane observation flagged to r7a (not my fence): 032's markAttempt recompute writes marks_awarded but NOT the correct flag, and its evidence payload hardcodes marksTotal:0/correct:false — frozen markAttempt calls recordTotalMarks (sets correct) and publishGraded reads the attempt row. Recorded in run-002 disclosures.
+- PR opened for independent review + R0 id ratification; per the round-6 directive this lane STOPS after the PR.
+
+Stage Summary:
+- T-MIG-033 tranche-1 complete on t-mig-033/r4; tranche-2 = routes/zod/mounts, tranche-3 = SME admin. Awaiting independent review + R0 merge-intake.
