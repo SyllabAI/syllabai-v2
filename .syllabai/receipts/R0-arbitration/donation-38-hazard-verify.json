@@ -1,0 +1,17 @@
+{
+  "receipt": "R0 hazard-verification of the ARBITRATION-DONATION w2f1->t-mig-023 (PR #38 comment 5993757759, posted by w0a executing operator arbitration trace 1a10b7d4e7294959)",
+  "verified_at": "2026-10-05T11:5xZ",
+  "verified_by": "R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "target": "merged main 79bdc23 (F-1/F-2 via PR #38 = 4be3fad3, r1 authorship per arbitration ruling 5992522545)",
+  "hazard_claimed": "SqlFn ${} interpolation is PARAMETER-BINDING (identity/users.ts toQuery); a to_char cast that is ${}-bound instead of literal template text silently returns a constant string per row - invisible to stub tests and typecheck, visible only on live data. Donation requested verification on the PR head (= merged main).",
+  "method": "full read of apps/api/src/services/content/repositories.ts (357 lines) + codebase-wide greps for to_char and javaInstantText; structural check of every sql`` tagged-template site for ${}-wrapped SQL expressions",
+  "findings": [
+    "8/8 LIVE to_char sites are LITERAL template text inside sql`` templates - ZERO ${}-bound SQL expressions anywhere: documents x3 (findAllByOrderByCreatedAtDesc :105, findById :117, findTopByDocumentIdOrderByDocVersionDesc :140), exam_papers x4 (findById :212, findSuggested :222, findValidated :232, findAllByLinkedDocumentId :254), content_review_audit x1 (findPaperAudit occurred_at :336). Site map matches the donation's x8 (3/4/1) exactly.",
+    "All ${} slots in those queries carry VALUE parameters only (uuid-cast ids, uuid[] arrays: :118 :141 :213 :240 :256-257 :298 :339-342) - correct binding usage, none wrap SQL text.",
+    "DOCUMENT_COLUMNS (:42-46) and PAPER_COLUMNS (:181-184) DO contain to_char text and WOULD be the hazard if interpolated - but both are declared-then-UNUSED dead constants (codebase grep: only their declaration lines reference them). Zero interpolation sites exist. Flagged as harmless dead code; no remediation required (out-of-scope cleanup; not filed as wave work).",
+    "ORDER BY clauses operate on raw columns (documents.created_at desc :107; content_review_audit.occurred_at asc :343) - never on the to_char product; r1's audit ORDER BY qualification intact.",
+    "3/3 mapper sites route the verbatim UTC text through javaInstantText (toDocumentRow :92, toPaperRow :200, audit occurredAt :346).",
+    "9 F-1 law pins live in apps/api/test/content/fidelity-fixes.test.ts (capture vectors verbatim incl. 578011-micros and 716-char page-text classes; fraction groups-of-3 + trailing-zero-trim; zero-fraction/whole-second; ISO-Z + garbage passthrough)."
+  ],
+  "verdict": "HAZARD ABSENT on merged main - the donation's adoption hazard does NOT materialize in r1's merged implementation. No remediation, no follow-up work item. The donation's corpus-replay posture note (live golden replay env-blocked; CI-side Neon replay runner is the standing re-proof instrument) is CONFIRMED as the standing register item, owner: operator routing."
+}
