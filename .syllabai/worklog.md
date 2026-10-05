@@ -455,6 +455,20 @@ Stage Summary:
 - Board: T-MIG-000/001/002/003/004/010/012 DONE (7 tasks), T-MIG-011 CLAIMED (t-mig-011/r5), Wave-2 lanes filing. Identity/auth surface is LIVE in v2 with live-DB-proven revocation — the strangler-fig has its first real vine. 54 golden cases on main; Wave-2 acceptance worklist complete before any content-read port code lands. Critical path: T-MIG-011 hub adapter (claimed), then Wave-2 ports (T-MIG-020..022) against the fresh capture.
 
 ---
+Task ID: T-MIG-021 (wave-2 curriculum port — CLAIM)
+Agent: R7a (Super Z, zai session web-da4ab8b1)
+Task: Claim T-MIG-021 (curriculum port) per the wave-2 claim-prep dossier (PR #17) — "021 curriculum first" readiness line; R0 ratification of the task id requested in the PR (T-MIG-013/020 precedent).
+
+Work Log:
+- Pre-claim verification at main 67639db: zero T-MIG-021 yamls, zero t-mig-021* remote branches (fetch --prune immediately before branch cut). R0 queue re-polled first: no verdicts yet on #12/#13/#14/#15/#16/#17; PR #13 (T-MIG-014 db drivers) still open.
+- Race context: R3-api-a claimed T-MIG-020 at 05:41:57Z (branch e50a63f) — wave-2 claim race is live; their yaml explicitly carves the curriculum controllers OUT of the 020 fence ("T-MIG-021's surface — NOT this task's fence"), so no overlap. Claim proceeds with deps declared pre-merge (same shape as 020's claim).
+- Claimed T-MIG-021 at 2026-10-05T05:54:23Z; branch t-mig-021/r7a cut from main 67639db. Surface: CurriculumController (7 cases) + TeacherCurriculumController (6 cases), 13 golden cases total — the most replay-stable W2 family (V6 fixed-constant seed uuids; F-5 real-data tranche does not gate this surface).
+- Plan (execution_record): contract-independent service/repository layer FIRST over curriculum tables (raw SQL per users.ts precedent), stubbed-sql unit tests; route factories staged in-fence; MOUNTING + zod wiring gate on T-MIG-005 and lands with the golden replay flip; index.ts wiring flagged OUT-OF-FENCE (T-MIG-010/013 precedent). F-1 divergence call flagged for R0: nodes on unknown version captured 200 [] — replicate as-is unless ruled otherwise.
+- Receipt .syllabai/receipts/T-MIG-021/run-001.json (collision scan + cross-lane coordination + surface map). This entry appended. Diff surface: docs-only claim commit — zero bytes under packages/, apps/, golden/.
+
+Stage Summary:
+- T-MIG-021 CLAIMED by r7a (earliest-claim timestamp on record per §2.1); yaml self-filed, R0 ratification requested via PR. Execution next on this branch, gated: service/repo layer can start immediately; replay flip gates on PR #13 (T-MIG-014 db dispatch) + T-MIG-005 (contracts). Residual for R0: contested T-MIG-014 ID still has r1's claim-only branch out (PR #15) — unchanged from the T-MIG-015 coordination note.
+- (T-MIG-021 addendum, same session) Tranche 1 LANDED: contract-independent curriculum services (versions/subjects/review-read) + buildCurriculumModule + 17 stubbed-sql unit tests pinning query shapes and captured seed behavior (overview 1/0/10, F-1 empty queue on unknown version, code-sorted nodes, SUGGESTED empty queue, null-root guard). findSubtreeIds' recursive PART_OF CTE carried VERBATIM; parity decisions (CTE aggregation vs the Java N+1, LEFT-JOIN parent, WHERE status filter, TS-side final sort) disclosed in receipt run-001-tranche1.json. Gates: typecheck x4 exit 0; bun test 136/4skip/0 fail (119 base + 17 new; T-MIG-020's content tests live on R3's branch); golden selftest OK read-only; replay NOT RUN (routes unmounted — tranche 2, gated on T-MIG-005 + PR #13). Deviation disclosed: route factories deferred to tranche 2 (same rationale as T-MIG-020 tranche 1 — no dead validation code pre-merge). yaml -> IN_PROGRESS.
 
 Task ID: T-MIG-005
 Agent: R1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e; prior lane R2-db on T-MIG-002 is DONE/closed — one lane at a time)

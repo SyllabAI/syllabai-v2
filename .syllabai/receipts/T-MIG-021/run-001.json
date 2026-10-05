@@ -1,0 +1,63 @@
+{
+  "artifact": "T-MIG-021-claim",
+  "task_id": "T-MIG-021",
+  "agent": "R7a (agent-da4ab8, zai session web-da4ab8b1)",
+  "claimed_at": "2026-10-05T05:54:23Z",
+  "nature": "CLAIM receipt — wave-2 curriculum port (CurriculumController + TeacherCurriculumController, 13 golden cases). Self-filed per AGENT_COORDINATION §4 with R0 ratification of the task id requested in the PR (T-MIG-013/020 precedent).",
+  "pre_claim_verification": {
+    "main_at_claim": "67639db",
+    "collision_scan": {
+      "task_yamls_on_main_matching_021": 0,
+      "remote_branches_matching_t_mig_021": 0,
+      "checked_at": "2026-10-05T05:54Z (fetch --prune immediately before branch cut)"
+    },
+    "cross_lane_coordination": [
+      "T-MIG-020 yaml (R3-api-a, claimed 05:41:57Z, branch e50a63f) carves curriculum OUT of its fence: 'Curriculum controllers (CurriculumController, TeacherCurriculumController) are T-MIG-021's surface — NOT this task's fence' — no overlap with this claim",
+      "wave-2 claim-prep dossier (PR #17, R7-housekeeping) named 021 curriculum as the recommended first claim: most replay-stable W2 family (V6 fixed-constant seed uuids), 13 cases fully mapped",
+      "PR #13 (T-MIG-014 db-driver dispatch) still open — claim proceeds with deps declared (same shape as T-MIG-020's claim); the golden replay flip gates on that merge"
+    ],
+    "deps_declared": [
+      "T-MIG-005 (contracts — route wiring gate, §4.1 contracts-first)",
+      "T-MIG-014 (db driver dispatch — PR #13, seed-shaped replay env)"
+    ]
+  },
+  "surface": {
+    "golden_cases": 13,
+    "controllers": {
+      "CurriculumController": {
+        "frozen": "syllabai-core @ 6cad6ef src/main/java/com/syllabai/curriculum/CurriculumController.java (+ CurriculumVersionRepository, SubjectRepository)",
+        "cases": [
+          "curriculum-subjects-student-200",
+          "curriculum-subject-by-id-student-200",
+          "curriculum-subject-unknown-404",
+          "curriculum-subject-bad-uuid-400",
+          "curriculum-versions-student-200",
+          "curriculum-versions-archived-student-200",
+          "curriculum-versions-unauthed-401"
+        ]
+      },
+      "TeacherCurriculumController": {
+        "frozen": "syllabai-core @ 6cad6ef src/main/java/com/syllabai/teacher/TeacherCurriculumController.java",
+        "cases": [
+          "teacher-curriculum-versions-unauthed-401",
+          "teacher-curriculum-versions-student-403",
+          "teacher-curriculum-versions-teacher-200",
+          "teacher-curriculum-nodes-teacher-200",
+          "teacher-curriculum-nodes-unknown-version-200-empty",
+          "teacher-curriculum-nodes-suggested-200"
+        ]
+      }
+    },
+    "divergence_calls_for_R0": [
+      "F-1: teacher-curriculum-nodes-unknown-version-200-empty — captured 200 [] on an unknown version; v2 replicates as-is unless R0 rules otherwise (GOLDEN_MASTER captured-as-is; do not silently fix)"
+    ]
+  },
+  "gates": {
+    "diff_surface": "docs-only claim commit: .syllabai/tasks/T-MIG-021-curriculum-port.yaml + .syllabai/receipts/T-MIG-021/run-001.json + .syllabai/worklog.md (append) — zero bytes under packages/, apps/, golden/",
+    "code_gates": "N/A for this receipt (claim-only commit); execution receipts follow per tranche"
+  },
+  "push": {
+    "credential": "operator-supplied PAT via .creds (chat-transited — rotation recommendation stands)"
+  },
+  "verdict": "T-MIG-021 claimed cleanly at 05:54:23Z — zero collision, explicit carve-out from T-MIG-020's fence, dossier-backed readiness; execution plan filed, replay flip gated on PR #13 + T-MIG-005"
+}
