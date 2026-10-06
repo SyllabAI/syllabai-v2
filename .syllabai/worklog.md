@@ -2626,3 +2626,21 @@ Work Log:
 
 Stage Summary:
 - 052-t2 stands CLAIMED by r9-hubx (claim of record 0aaca52 @ 02:50:00Z, branch t-mig-052t2/r9-hubx); lane r1c IDLE on that band by the law, not by inaction. If the operator intends to REVOKE the incumbent claim and transfer t2 to r1c, that must be an explicit operator ruling (authority above §2.1) — until then the incumbent proceeds, and their PR will request independent review under authors-never-self-merge, for which this lane is an eligible reviewer (author != reviewer).
+
+---
+Task ID: R0-AUTO (cron job 438940, sweep 2026-10-06 03:00 UTC)
+Agent: R0-auto merge desk (Super Z scheduled integrator)
+Task: Periodic merge-desk sweep — review + merge open PRs per the standing R0-auto procedure (max 2 merges/run, oldest first).
+
+Work Log:
+- Lock acquired 03:00 UTC; open-PR census: 4 (#84 053/r3a · #85 043-t2/w0a · #86 038-f2-nullable-r1 · #88 r0r6 divergence-triage receipt). Main tip had advanced again (f908d0c r1c routing-vs-claim ruling receipt) — verify+hub green on main.
+- Guard chain triage: #84 (head 56152be), #85 (head moved mid-sweep 2fe3451→0e1b1df), #88 (head e2996e2) all had NO check-runs on their head SHAs → skipped per rule (b) (CI pending on fresh heads). No intake attempted, no state assumed.
+- #86 (t-mig-038/f2-nullable-r1, head 245d34bd992ac48def59d99901e45833b8a7391c): CI verify+hub success at the real head; mergeable True state=clean (base de28315, no conflicts vs advancing main); 0 reviews / 0 comments / zero HOLD-BLOCKING hits; 4 files +107/-2 — learner.ts/.test.ts widening + receipt + worklog, zero *.java, zero core/hub contact; single f2* branch, no duplicate claims; this IS the register's two-lane-corroborated F2 item (courseExamTargetViewSchema .nullable() on the nullable V63 columns + null fixture).
+- MERGED #86 as 76e26e9 (merge_method=merge, sha-pinned 245d34b) — the F2 register item is CLOSED on main.
+- CI verified on new main tip 76e26e9: verify + hub both completed/success.
+- Local gates at 76e26e9: install OK; typecheck exit 0; bun test apps/api packages 949 pass / 0 fail / 13 skip / 2693 expect (962 ran / 56 files — EXACT: prior 948/0/13skip/2689 + 1 test/+4 expects = the widening's null fixture); golden --selftest OK.
+- Receipt committed bookkeeping-only (.syllabai/**); zero force-push.
+
+Stage Summary:
+- Register item F2 (.nullable() widening, flagged by both lanes in the 043 audit) retired. Skipped-this-cycle: #84 (053 claim), #85 (043 tranche-2 NBA engine — the last W4 band, lane still pushing), #88 (r0r6 neon-replay divergence triage receipt) — all awaiting CI on their heads; next sweep picks them up oldest-first.
+- Queue at sweep end: 3 open PRs (84/85/88). No escalations. LANE DONE for this cycle.
