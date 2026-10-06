@@ -3592,3 +3592,24 @@ Work Log:
 
 Stage Summary:
 - Claim law satisfied honestly: no free filed bands existed; 066 yielded to r1 and is now landed+ratified. The round delivered the double-tip merged-gates receipt (independently corroborated by R0's desk receipt), the 057 DONE-flip, and the routed/unfiled census teeing up R0's next id allocation (CLA first — its hard dep just landed). LANE IDLE.
+
+---
+Task ID: R0R6-RUN9-TRIAGE
+Agent: R0+R6 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, operator trace 1a10f8b3bf4a8111)
+Task: Operator directive "triage run #9's 57 divergences" — R0/R6 delta triage, superseded-forward through run #11.
+
+Work Log:
+- Read back run-7 triage (R0R6_R7_DIVERGENCE_TRIAGE.md, 62 cases A-J) + T-MIG-063 run-004 closure (RICH-200-A/B closed, C/D filed) BEFORE filing; the run-9 task became a delta triage (fetch-first, no re-ruling of closed classes)
+- Evidence: run #9 (120/177, head 9bebf7e) + run #10 (137/177, ec40f1f) + run #11 (137/177, d6911f6) artifacts re-fetched; trajectory 62 -> 57 -> 40 divergences
+- R1 (NEW): run-7 ruling D OVERTURNED on first-hand frozen-source verification — SecurityConfig.java authorizeHttpRequests (untouched since 42ea7d0, pre-capture) has NO curriculum permit entry; anyRequest().authenticated() + sendError(401) => v2's 401s ARE the law; auth-lane guard alignment CANCELLED before implementation; the 2 cases re-pin to the 401 law (case-owner, justified notes)
+- R2: 500-class register EXPANDED beyond RICH-200-D — teacher-curriculum-versions + w4-target-series-put also 500 vs core 2xx on staged V63 seed (4 total, port P1)
+- R3: DATE wire-format defect (exam-series x2: LocalDate bare-date vs full ISO timestamp) — new class, port P2
+- R4: attempt error-taxonomy envelope (malformed_body vs validation_failed x2) proven posture-independent by the staging — port P2
+- R5: RICH-200-C corpus-sequencing ANSWERED — two ordered tranches on the same disposable branch (empty-pinned before staging, staged-pinned after); zero case re-pins/deletions
+- Filed T-MIG-067 (port lane, P1: 500-class x4 + DATE x2 + taxonomy x2; frozen citations owed at claim)
+- Receipt: .syllabai/receipts/R0R6-RUN9-TRIAGE/R0R6_RUN9_TRIAGE_DELTA.md (57-case disposition table + 11-action register + clearing profile)
+
+Stage Summary:
+- All 57 run-9 divergences dispositioned with named owners; 177/177 reachable with zero case deletions and zero comparator widenings
+- Critical prevent-harm call: the run-7 D action would have widened v2 auth beyond the frozen law — cancelled on evidence, documented
+- Standing: E-class bearer override still masks 2 authz postures (P1 tooling); C 429 parity ruling owed (auth lane + R0); prod createdAt passthrough (P3)
