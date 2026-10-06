@@ -59,6 +59,15 @@ task:
     edits, NO golden corpus or comparator contact, NO workflow interface
     key changes, NO drizzle schema changes (the baseline is correct; the
     PORT was wrong). Success-path SQL for every other statement untouched.
+    AMENDMENT (2026-10-06, pre-push): the fake-SQL test router routes by
+    exact normalized query text and throws 'unexpected query' on any
+    unmatched statement — the 15 smartmark-family tests fail on the NEW
+    join text until their route regexes are updated. Two fixture files
+    added to scope.allowed above (regex/comment lines only; ATTEMPT_ROW /
+    ATTEMPT row fixtures are byte-unchanged — exam_paper_id: PAPER_ID now
+    represents the question's paper reached through the join). Fence
+    amendment disclosed here BEFORE push; no other test file references
+    the old select text (verified by grep across apps/api/test).
   cross_slice_contract: >
     CONSUMES: baseline schema (attempts.question_id FK → questions.id,
     questions.exam_paper_id nullable — both guaranteed by drizzle pull).
@@ -69,6 +78,8 @@ scope:
   allowed:
     - "apps/api/src/services/smartmark/index.ts"
     - "apps/api/src/services/teachermarking/index.ts"
+    - "apps/api/test/smartmark/smartmark.test.ts (AMENDED 2026-10-06: fixture regexes only — the fake-SQL router mirrors shipped SQL text, so the routes must carry the corrected join shape; row fixtures unchanged)"
+    - "apps/api/test/smartmark/routes.test.ts (AMENDED 2026-10-06: same — LOCK_SM/ATTEMPT_READ_SM regexes only)"
     - ".syllabai/tasks/T-MIG-050-smartmark-paper-scope-port-fix.yaml (this file)"
     - ".syllabai/receipts/T-MIG-050/**"
     - ".syllabai/worklog.md (append-only)"

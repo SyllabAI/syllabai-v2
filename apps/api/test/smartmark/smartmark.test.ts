@@ -150,8 +150,12 @@ describe("SmartMarkPipeline — deterministic law", () => {
 
 // ── SmartMarkService.markAttempt (stubbed sql) ─────────────────────────────
 
-const LOCK_MATCH = /select id, learner_id, question_id, exam_paper_id, marking_state, evidence_emitted from attempts where id = \? for update/;
-const ATTEMPT_READ = /select id, learner_id, question_id, exam_paper_id, marking_state, evidence_emitted from attempts where id = \?$/;
+// T-MIG-050: paper scope is JOIN-DERIVED (attempts→questions) per the frozen
+// derivation (SmartMarkService.java :139/:236) — exam_paper_id on the attempt
+// row fixture now represents questions.exam_paper_id reached through that
+// join; the bare attempts column never existed on the live baseline (42703).
+const LOCK_MATCH = /select a\.id, a\.learner_id, a\.question_id, a\.marking_state, a\.evidence_emitted, q\.exam_paper_id from attempts a join questions q on q\.id = a\.question_id where a\.id = \? for update of a$/;
+const ATTEMPT_READ = /select a\.id, a\.learner_id, a\.question_id, a\.marking_state, a\.evidence_emitted, q\.exam_paper_id from attempts a join questions q on q\.id = a\.question_id where a\.id = \?$/;
 const QUESTIONS_MATCH = /select id, question_type, marks from questions where id = \?/;
 const ANSWERS_MATCH = /select ans\.id, ans\.question_part_id, ans\.answer_text, ans\.marks_awarded, ans\.marking_state, qp\.label, qp\.marks from answers ans join question_parts qp on qp\.id = ans\.question_part_id where ans\.attempt_id = \? order by ans\.question_part_id/;
 const VERSION_MATCH = /select id from question_versions where question_id = \? order by version desc/;

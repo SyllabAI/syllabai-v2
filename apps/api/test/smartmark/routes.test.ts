@@ -29,8 +29,10 @@ const SCHEME_ID = "70000000-0000-0000-0000-000000000009";
 const PAPER_ID = "80000000-0000-0000-0000-000000000001";
 
 const LOCK = /select id, learner_id, question_id, marking_state, evidence_emitted from attempts where id = \? for update/;
-const LOCK_SM = /select id, learner_id, question_id, exam_paper_id, marking_state, evidence_emitted from attempts where id = \? for update/;
-const ATTEMPT_READ_SM = /select id, learner_id, question_id, exam_paper_id, marking_state, evidence_emitted from attempts where id = \?$/;
+// T-MIG-050: LOCK_SM/ATTEMPT_READ_SM carry the join-derived paper scope (the
+// bare attempts.exam_paper_id never existed — 42703 on the live baseline).
+const LOCK_SM = /select a\.id, a\.learner_id, a\.question_id, a\.marking_state, a\.evidence_emitted, q\.exam_paper_id from attempts a join questions q on q\.id = a\.question_id where a\.id = \? for update of a$/;
+const ATTEMPT_READ_SM = /select a\.id, a\.learner_id, a\.question_id, a\.marking_state, a\.evidence_emitted, q\.exam_paper_id from attempts a join questions q on q\.id = a\.question_id where a\.id = \?$/;
 const QUESTIONS = /select id, question_type, marks from questions where id = \?/;
 const ANSWERS_SELF = /select ans\.id, ans\.question_part_id, ans\.marks_awarded, ans\.marking_state, qp\.label, qp\.marks from answers ans join question_parts qp on qp\.id = ans\.question_part_id where ans\.attempt_id = \? order by ans\.question_part_id/;
 const ANSWERS_SM = /select ans\.id, ans\.question_part_id, ans\.answer_text, ans\.marks_awarded, ans\.marking_state, qp\.label, qp\.marks from answers ans join question_parts qp on qp\.id = ans\.question_part_id where ans\.attempt_id = \? order by ans\.question_part_id/;
