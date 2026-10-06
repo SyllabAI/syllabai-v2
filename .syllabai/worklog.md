@@ -2308,3 +2308,20 @@ Work Log:
 Stage Summary:
 - T-MIG-033 tranche-3 IN_REVIEW: the SME admin surface is the last ratified 033 scope item; with its landing the card's code scope is COMPLETE (t1 services + t2 teacher routes/mounts + t3 SME admin), N-4 rich-200 capture still with the golden-capture lane's register. PR opened requesting INDEPENDENT review (authors never self-merge — this lane is also R0; the merge needs the reviewer verdict first). Fence: services/sme/** + test/sme/** + routes/sme.ts + .syllabai bookkeeping; index.ts mount is the only OUT-OF-FENCE commit. LANE IDLE after push — awaiting reviewer + R0 merge-intake (independent session per protocol).
 
+
+---
+Task ID: 15
+Agent: Super Z (operator-directed independent lane, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Operator round-11 directive (trace 1a10eb1905f69e25) — "Check if R0 has merged or not. If not, review+merge yourself and continue working" (target: #77 t-mig-033/r0, tranche-3 SME admin)
+
+Work Log:
+- #77 found OPEN (R0 had not merged): mergeable clean at first read, both CI checks green on head d3fbb4a (hub+verify, 19:06:07Z — Actions had RECOVERED from the Oct-5 18:25Z dark window, so the PR body's local-gates-only disclosure was moot).
+- INDEPENDENT REVIEW performed line-against-line (this session is not the author lane; GitHub self-APPROVE is blocked by the shared account identity, so the full verdict was filed on-thread as issuecomment 6006971567): routes/sme.ts authz shell FIRST + the four captured w3-sme-* postures + guard-verbatim 400 + 413 cap law + 200-not-201 — no findings; zip.ts bounds-checked CD parse, budgets DURING decompression (maxOutputLength + post-checks), traversal guard (absolute/../backslash/drive-letter, a..b.png legal), directory-skip-before-count, CRC32, encrypted/non-0-8 rejection — no findings; ingest fail-closed validate BEFORE any statement + one sql.transaction ADR-026 replace; OUT-OF-FENCE mount a9c8949 RATIFIED; contracts-first verdict ACCEPTED (service placement, TeacherViews t1 precedent) — mechanical follow-up if later re-slotted, not a blocker.
+- MERGE PUT #1 returned "Pull Request has merge conflicts": main had advanced MID-REVIEW (PR #69 t-mig-041/r7a merged 558ef03 + receipt c94e437). Local intake merge of main into t-mig-033/r0: conflicts = apps/api/src/index.ts (both imports/mounts kept — sme + learner coexist, both mount regions merged cleanly) + .syllabai/worklog.md (append-only union, main's order canonical, run-007 appended newest).
+- Gates at intake head 7203982: typecheck x4 exit 0; bun test apps/api packages 817 pass / 0 fail / 13 skip / 2317 expect (arithmetic EXACT: main-with-#69 759 pass + 58 sme = 817; 2255 + 62 learner = 2317); golden --selftest OK. Pushed 7203982; CI re-ran live: hub+verify SUCCESS; mergeable clean re-verified.
+- MERGE: #77 merged 5db0667 (merge-commit per repo style). Housekeeping (this commit, direct-main per the acce2c6/d077ffa sweep-receipt precedent): card T-MIG-033 IN_REVIEW -> DONE (combined provenance), receipt run-008-merge.json, this worklog entry.
+
+Stage Summary:
+- T-MIG-033 code scope COMPLETE (t1 #50 4be24e6 services + t2 #64 d975ed9 teacher routes/mounts + t3 #77 5db0667 SME admin); /api/v1/admin/question-bank {POST /ingest, GET /status} LIVE on main; N-4 rich-200 capture stays with the golden-capture lane's register.
+- CI register item CLOSED: Actions dark window (Oct-5 18:25Z, R0s-ROUND-10b) had self-recovered by 19:06Z — live runs attach again; operator billing check no longer urgent.
+- Remaining open PRs at merge time: #72 t-mig-041/r9-hubx (band hygiene), #74 t-mig-043/w0a + #76 t-mig-043/r1 (DUAL-PR collision on the 043 band — R7a's Task-14 flag stands, needs an R0 collision ruling), #75 round11-receipt/r3a (worklog-only receipt), #78 t-mig-033-t3/r4b (t3 competitor branch — SUPERSEDED by #77's merge unless it carries delta work; needs inspection before close/ruling).
