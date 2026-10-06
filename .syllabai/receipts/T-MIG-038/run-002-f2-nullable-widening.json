@@ -1,0 +1,39 @@
+{
+  "task": "T-MIG-038 follow-up — collision-audit carry-forward F2",
+  "lane": "r1-contracts (zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "branch": "t-mig-038/f2-nullable-r1",
+  "claim": {
+    "cut_at": "fe97f94 (origin/main, R0-AUTO sweeps #82/#83 landed)",
+    "operator_directive": "trace 1a10eb10b04682cd (round-10 standing: check R0 merge, continue working)",
+    "register_trail": ".syllabai/receipts/T-MIG-043/run-003-collision-audit.json finding F2 — two-lane corroboration (r1 collision audit + w0a 043 FIDELITY NOTE in services/learner-me/index.ts:813), left open by the sweep as ready-to-execute",
+    "zero_collision": "open PRs 0; no competing heads (t-mig-038/r1c = merged stale branch, ancestor-verified); no prior f2-nullable worklog claims; learner.ts fences closed (041 DONE, 043-t1 DONE, 038 DONE)"
+  },
+  "finding": {
+    "what": "courseExamTargetViewSchema (packages/contracts/src/learner.ts :241-242) typed entryDeadline/resultsDate z.string() although the wire carries JSON null",
+    "evidence": [
+      "frozen CourseExamTargetView.java :27-28 — plain LocalDate fields, Jackson renders null",
+      "V62__exam_series_calendar.sql :21-22 — entry_deadline/results_date DATE 'nullable: not always announced'; window_start/window_end DATE NOT NULL (stay z.string())",
+      "frozen ExamSeriesImportService null-checks both (:112/:116) — null is a modeled state",
+      "043-landed service passes the columns through honestly at runtime (as-string casts silence TS only)",
+      "043's examSeriesViewSchema (learner-me.ts) correctly marks both .nullable() — the canonical learner.ts copy was the lone over-constraint",
+      "the W4 capture never exercised a null-deadline series, so no golden case caught it"
+    ]
+  },
+  "fix": {
+    "change": "entryDeadline/resultsDate: z.string() -> z.string().nullable() + schema comment citing the evidence chain; null-fixture test pinning null parses, half-announced parses, NOT NULL window dates stay strict",
+    "scope": "packages/contracts/src/learner.ts + learner.test.ts ONLY; zero golden files; zero hub/core; zero service edits (the 043 service already honors the law)",
+    "purity": "pure WIDENING — accepts values the honest runtime already emits; no existing pin fed null, so nothing can break"
+  },
+  "gates": {
+    "install": "bun install --frozen-lockfile OK (940 installs, no changes)",
+    "typecheck": "root + packages/contracts + apps/api all exit 0 (hub has no typecheck script — the standing x3)",
+    "tests": {
+      "result": "962 ran / 949 pass / 0 fail / 13 skip / 2693 expect across 56 files",
+      "baseline_at_fe97f94": "961 ran / 948 pass / 0 fail / 13 skip / 2689 expect",
+      "delta": "+1 ran / +1 pass / +4 expect — arithmetic exact (1 new test, 4 expect() calls)"
+    },
+    "golden": "bun golden/runner.ts --selftest OK; zero golden files touched",
+    "neon": "zero Neon contact; zero prod writes of any kind"
+  },
+  "merge_posture": "authors-never-self-merge — independent review requested from R0/peers; the operator delegation covers only non-self-authored PRs"
+}
