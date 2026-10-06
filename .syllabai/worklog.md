@@ -3293,6 +3293,27 @@ Work Log:
 
 Stage Summary:
 - Round-14: R0 active (our #98 landed via R0-AUTO); this lane reviewed+merged the F-B band #99 with exact arithmetic at both intake and merged tips; lane continues per the standing directive.
+
+
+---
+---
+Task ID: R3a-ROUND-15 (operator directive trace 1a10f7345efcba35: "the F-072 class-KG heatmap trio")
+Agent: superz-agent-b (R3a lane, Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Close T-MIG-053 tranche-1 — the F-072 class-KG heatmap trio + the F-034 read model.
+
+Work Log:
+- SANDBOX RESET RECOVERY: the workspace was wiped mid-round (clone, .secrets, worklogs all gone) — reconstructed .secrets/env.sh from the session record, re-cloned SyllabAI/syllabai-v2 with the PAT, re-fetched the branch. PR #84 verified MERGED (ced0111 @ 03:38:56Z) with the claim APPROVE (r1-contracts) and both tranche-1 commits intact on origin; branch t-mig-053/r3a still live at b29b874. Zero-collision re-scan: 0 open PRs, no other lane touching the trio band.
+- INTAKE: fast-forwarded the branch to origin/main 37d8825 (post-#92/#93/#95 — #95's bee47d8 intake pattern) so the closing commit diffs against the true head and gates re-baseline at 1144/3485.
+- THE TRIO (directive resolution): F-072 = the class-KG heatmap finding — ClassKnowledgeGraphController :37-113 (graph :59 / nodes/{id}/students :78 / learners/{id}/knowledge-graph :95) over ClassKnowledgeGraphService :38-580; the third leg DELEGATES to LearnerKnowledgeGraphService.graphFor (F-034) which was UNPORTED (043 card line 119: knowledge-graph stayed OUT of 043; the /me route is the 041 band's controller, unported) — so the F-034 read model ports here as learnerGraphFor, header-disclosed: the /me route MUST consume this builder (one-graph-implementation law).
+- CODE commit: services/knowledge/graphs.ts (classGraph / classNodeStudents / classLearnerKnowledgeGraph / learnerGraphFor) + index.ts barrel line + dbStatusToEnum export (the trio shares the coverage overlay). Frozen laws pinned: the 404->403->root-404 gate chain with NO archived gate on reads; the INDEPENDENT-STUDENT rule (roster = enabled member rows, captured-param pinned); honest unmeasured cells (null mean / UNMEASURED band / zeros) vs 4-dp mean + the 13.3 distribution; the V39 spec-point predicate driving verbatim-vs-derived coverage with taught>recorded>unrecorded precedence; misconception prevalence keyed by MISCONCEPTION nodes, DISTINCT active learners, staleness-relaxed; prerequisiteRelations both-endpoints/target=prerequisite/unknown-skipped; the drill-down subject-isolation 404, weakest-first/unmeasured-last deterministic sort, the 3-per-student evidence slice off the 120-cap scan; structural-invariant skips; F-034 walk covers misconceptions (9 vs 7), all-null unpractised, earliest-PENDING review merge, applicability verbatim; the teacher lens deep-equals the student read model.
+- TEST commit: test/knowledge/class-graph.test.ts — 22 pins incl. the roster-param capture (the independent-student rule proven at the SQL bind, not just the output), the short-circuit privacy boundary (zero 'from users' queries on a non-member), and the teacher-lens deep-equal (one implementation).
+- GATES at the closing head: typecheck x4 exit 0; bun test 1166 pass / 0 fail / 13 skip / 3629 expect (EXACT = 37d8825 baseline 1144/3485 + 22 tests / +144 expects); golden --selftest OK.
+- Bookkeeping: receipts/T-MIG-053/run-003-tranche1-close.json + card status flip to TRANCHE-1 CLOSED (10/10) with NEXT t2/t3/t4 + this worklog entry.
+
+Stage Summary:
+- Tranche-1 is CLOSED: all 10 endpoints (coverage 3 + knowledge reads 4 + the F-072 trio 3) with contracts+services+fakeSql pins, gates EXACT at every commit.
+- DISCLOSED placements: F-034 builder in services/knowledge (fence), graphOwnedClass projection split, single-anchor clock (ADR-031), roster string-sort (wire-invisible).
+- LANE NEXT: tranche PR review (author never self-merges); on merge R0 can flip the t1 slice; t2 = class analytics (3) + teacher concept-graph (2, incl. the 471+479-line seed/snapshot pair); t3 = revision notes; t4 = smart lesson (LLM-path check owed at t4).
 ---
 Task ID: T-MIG-063 (run-003 live finding + run-004 fix)
 Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, operator trace 1a10f806acdec285)
