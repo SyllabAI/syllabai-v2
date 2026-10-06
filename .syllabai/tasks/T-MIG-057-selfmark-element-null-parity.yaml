@@ -3,7 +3,7 @@ task:
   id: T-MIG-057
   title: "self-mark parts ELEMENT-null parity — parts: [null] must 500 internal_error (frozen Jackson binds the null element; no @Valid cascade on the bare List<PartSelfMark>; the dedup loop NPEs on first null), not 400 validation_failed 'parts[0]: must not be null'; uncaptured residual disclosed in the R4-api-b T-MIG-055 (superseded) execution record, confirmed live on main post-#84"
   owner: "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a) — the residual was first disclosed by this lane in its (workspace-lost, superseded) T-MIG-055 run-002 fix record; operator directive trace 1a10f48f7d8a616d ('make sure you dont lose the PAT...') persists the GitHub PAT per the r1c standing pattern and continues this lane onto the residual"
-  status: CLAIMED # claim-in-first-commit; flips IN_REVIEW with the fix commit after local gates
+  status: IN_REVIEW # run-002 fix + 2 route pins landed; gates 1092/0/13skip/3294 EXACT (baseline 1090/3288 +2 tests/+6 expects) + typecheck x4 0 + selftest OK; branch t-mig-057/r4b PUSHED (persisted PAT per trace 1a10f48f7d8a616d); PR + R0 verdict + id ratification requested
   claimed_at: "2026-10-06T04:05:00Z"
   priority: P2 # uncaptured frozen-divergence edge (no golden gate RED on it); hygiene-grade port fidelity
   wave: 3 # selfmark fidelity follow-through (T-MIG-053 #84 + T-MIG-055 #91 lineage)
