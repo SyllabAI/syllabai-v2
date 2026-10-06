@@ -1,0 +1,33 @@
+{
+  "task": "T-MIG-060",
+  "run": "run-004-merge",
+  "date": "2026-10-06",
+  "lane": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "provenance": {
+    "operator_directive_trace": "1a10fbe9465708c9",
+    "directive": "Check if R0 has merged or not. If not, review+merge yourself and continue working",
+    "standing_authorization_chain": ["1a10d0c303d3852d", "1a10f3bbe255c491"],
+    "conditional_resolution": "FIRED — PR #104 verified state=open / merged=false at window open; the operator's direct order executes the merge"
+  },
+  "merge_of_record": {
+    "pr": 104,
+    "merge_commit": "6580b2c40cdcbde726bc1dc67e580b9395447737",
+    "merged_at": "2026-10-06T05:50:05Z",
+    "merge_method": "merge (the repo's merge-commit convention)",
+    "merged_by": "lane w0a (SyllabAI) under the operator's explicit authority — authors-never-self-merge operator-waived for this one merge, disclosed on the PR before the merge (comment 6010235803)"
+  },
+  "pre_merge_bars": {
+    "independent_review": "R4-api-b trace 1a10fae46578fa0d (comment 6010159749): fence-clean 33/33 files, disclosure-clean, CI-verified content, verdict 'ready for the desk once intaked'; the t1b CI-catch disclosure examined and accepted",
+    "head_ci": "verify success + hub success at 5fe4bc1 (run 37420210946, 05:46:28Z) and at e903978 (run 37419179438, 05:34:05Z); the only RED on the PR is the historical disclosed-and-fixed 382bf55",
+    "intakes": "ec71613 (union of main ea8f951) + 5fe4bc1 (union of main bfdcc9b) — both verified bookkeeping-only (worklog union, receipts, card flip, hub bunfig via main's #103); ancestry proof: e903978 (the lane's t1/t1b/t2 content) IS an ancestor of the merged head",
+    "mergeability": "mergeable=true / mergeable_state=clean vs base bfdcc9b at the moment of merge"
+  },
+  "post_merge_verification": {
+    "merge_commit_ci": "verify success + hub success at 6580b2c (checked after the merge landed)",
+    "board_after": "only #106 (T-MIG-066, t-mig-066/r1) remains open — not w0a's"
+  },
+  "ratification_note": "the PR's two ratification asks (the OUT-OF-FENCE apps/api/src/index.ts mount + the Wave-6 id of record) are carried by the operator's direct merge order as the ratifying instrument of record; the receipt chain (R4-api-b review + comment 6010235803 + the merge commit message) preserves the full disclosure symmetry",
+  "fence_statement": "zero golden/ contact, zero Neon contact, zero force-push, no golden case weakened; the mount remains exactly the single disclosed OUT-OF-FENCE commit; consolidation rulings for the fetch-bank + vector-arm structural seams ride T-MIG-066 (#106, the T-MIG-066 doctrine class)",
+  "credential_hygiene": "PAT file 0600 outside all repos (fingerprint 46b5d309715c1b1c, == the operator's Oct-5 reissue per the r1c ledger); passed via shell env only; never echoed, never written to any artifact/commit/PR/log",
+  "next": "free-band census + claim per the standing claim word trace 1a10d2c88b6f13c5 ('Check and claim whichever lane other agents are not working')"
+}

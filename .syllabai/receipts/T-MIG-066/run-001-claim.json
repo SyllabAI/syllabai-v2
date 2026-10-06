@@ -1,0 +1,27 @@
+{
+  "task": "T-MIG-066",
+  "run": "001-claim",
+  "agent": "r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "operator_trace": "1a10f954adaac0bd 'Check if merged or not. If not, review+merge yourself and continue working' — the continue-working clause, post-sweep (this cycle's delegated merges: #98 2d5a73d, #100 ec40f1f)",
+  "date": "2026-10-06T05:30:00Z",
+  "base": "ec40f1f (origin/main tip after the #100 merge)",
+  "branch": "t-mig-066/r1",
+  "why_this_lane": "The card's motivation story IS this lane's history: the F-2 .nullable() widening (T-MIG-038, #86, authored by this lane) had to be hand-propagated to the three sites the card enumerates — the drift cost is this lane's own empirical record. The lane of record for the propagation claims the consolidation that ends it.",
+  "zero_collision": {
+    "checked_at": "ec40f1f",
+    "open_prs_and_fences": {
+      "99_selfmark": "routes/selfmark + services/selfmark + contracts selfmark schemas — disjoint",
+      "101_053t1": "services/knowledge + class-KG trio — disjoint",
+      "102_062": "research calibration (new surface) — disjoint",
+      "103_065": "apps/hub — disjoint",
+      "104_060": "tutor + sessions (new surface) — disjoint"
+    },
+    "fence": "services/learner/** + services/learner-me/** + ONE new shared module home + import-only test touches; contracts/golden/routes/index.ts UNTOUCHED per the card's forbidden list"
+  },
+  "proposed_shared_home": "apps/api/src/services/learner-model/ — two files: exam-target-reader.ts (the canonical SEAM reader + the view type + the pure composition) and decay.ts (bandOf/decayedMastery/relaxedToPrior + the two paper-default objects, named after the frozen owner's law names). R0 ratifies at review (the 043-t2 mount precedent).",
+  "design_of_record": {
+    "reader": "canonical exam-target-reader.ts owns: the CourseExamTargetView TYPE (moved verbatim from 041's state.ts — camelCase wire shape), the row->view builder (moved verbatim from 043's learner-me/index.ts incl. the F-2 fidelity-note block), the SEAM reader examTargetsFor (deps + clock, owns the reads — moved verbatim), and the PURE composition courseExamTargets(declared, seriesById, today) re-derived on top for 041's preloaded-rows batching (041's version verbatim). 041 keeps its declaredEnrolments/examSeriesByIds leg reads (the batching the frozen controller's leg order needs) and calls the canonical pure function; 043 keeps the seam reader. Both re-point; the local duplicates die.",
+    "decay": "canonical decay.ts owns bandOf/decayedMastery/relaxedToPrior + LEARNER_DECAY_PAPER_DEFAULTS + LEARNER_BDT_PAPER_DEFAULTS, byte-matched from state.ts (the laws both copies already mirror line-against-line per the R0 ruling's zero-divergence verification). nba.ts's NBA_-prefixed duplicates die; nba.ts imports the canonical names; the internal nbaBandOf/nbaDecayedMastery/nbaRelaxedToPrior names become local aliases of the canonical imports INSIDE nba.ts if its call sites are many, else re-pointed — whichever keeps the diff import-only. Pins re-point imports; ZERO pin semantics change; arithmetic must come out +0 tests/+0 expects EXACT."
+  },
+  "handoff": "implementation in this cycle; PR with disclosure; authored by r1-contracts -> NOT self-merged"
+}

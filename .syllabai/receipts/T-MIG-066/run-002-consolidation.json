@@ -1,0 +1,40 @@
+{
+  "task": "T-MIG-066",
+  "run": "002-consolidation",
+  "agent": "r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "operator_trace": "1a10f954adaac0bd (continue-working clause)",
+  "date": "2026-10-06T05:55:00Z",
+  "base": "ec40f1f (origin/main tip)",
+  "branch": "t-mig-066/r1",
+  "shared_home_proposed": "apps/api/src/services/learner-model/ — decay.ts (the canonical decay/BDT pure math) + exam-target-reader.ts (the canonical ExamTargetReader seam + the pure composition). R0 ratifies at review (the 043-t2 mount precedent).",
+  "changes": {
+    "new_files": [
+      "apps/api/src/services/learner-model/decay.ts — LearnerDecayParams/LearnerBdtParams + LEARNER_DECAY_PAPER_DEFAULTS/LEARNER_BDT_PAPER_DEFAULTS + tauFor/clamp01/DAY_MS (private) + bandOf/decayedMastery/relaxedToPrior — moved VERBATIM from services/learner/state.ts (the T-MIG-041 copy); the ADR-031 anchor-law header (read-time, never persisted) carried over",
+      "apps/api/src/services/learner-model/exam-target-reader.ts — the canonical SEAM reader examTargetsFor + the row->view builder courseExamTargetView (incl. the F-2 fidelity-note block, updated: resolved by #86) + the 043 row types (ExamSeriesRow snake / EnrolmentRow) + utcToday/daysBetween — moved VERBATIM from services/learner-me/index.ts; PLUS the 041 PURE composition courseExamTargets moved verbatim with STRUCTURAL-MINIMUM param types (guidance (a) re-derivation: 041's leg batching keeps its own reads — the state surface's fakeSql pins pin 041's exact query texts — and calls the canonical pure function); the view TYPE is single-owned REUSE from @syllabai/contracts (courseExamTargetViewSchema, the F-2-widened canonical) — the former local interface in state.ts retired, NOT re-declared (the TS2308 single-owned-reuse precedent)"
+    ],
+    "retired_duplicates": [
+      "services/learner/state.ts: LearnerDecayParams/LearnerBdtParams interfaces, LEARNER_*_PAPER_DEFAULTS, clamp01, tauFor, bandOf, decayedMastery, relaxedToPrior, the local CourseExamTargetView interface, the local courseExamTargets body — all re-pointed to the canonical modules with re-exports so the barrel's `export * from \"./state\"` surface is byte-identical",
+      "services/learner-me/nba.ts: NBA_DECAY_PAPER_DEFAULTS, NBA_BDT_PAPER_DEFAULTS, nbaBandOf, nbaDecayedMastery, nbaRelaxedToPrior, the local clamp01/DAY_MS decay copies — the engine's internal call sites re-point to the canonical names; NbaDeps.decay and buildNbaEngine's opts.decay typed LearnerDecayParams (the former as-const narrow type is structurally subsumed)",
+      "services/learner-me/index.ts: the local ExamSeriesRow/EnrolmentRow/utcToday/daysBetween/courseExamTargetView/examTargetsFor — imported back from the canonical module for the remaining local users (setTargetSeries/examSeriesCalendar/toExamSeriesView/buildAgenda)"
+    ],
+    "barrel_surfaces": [
+      "services/learner/index.ts: `export * from \"./state\"` unchanged — state.ts re-exports the canonical names, so the public surface is byte-identical and NO test file changed",
+      "services/learner-me/index.ts: the retired NBA_-prefixed re-exports (zero external consumers verified at consolidation time) replaced by the canonical names — additive canonical surface + preserved courseExamTargetView/examTargetsFor",
+      "learner/index.ts's LEARNER_ENGINE_PAPER_DEFAULTS keeps composing the canonical defaults (imports re-pointed through state.ts's re-exports)"
+    ],
+    "untouched": "packages/contracts/** ZERO touch (the wire is canonical); golden/** zero touch; routes/** + apps/api/src/index.ts zero touch; zero test files touched (the barrels preserved every import path); zero Neon/production contact"
+  },
+  "gates": {
+    "install": "bun install --frozen-lockfile OK (no changes)",
+    "typecheck_x3": "exit 0 (root / packages/contracts / apps/api)",
+    "bun_test": "1181 pass / 0 fail / 13 skip / 3598 expect (1194 ran / 64 files) — +0 tests / +0 expects / +0 files EXACT vs the main baseline (the card's binding arithmetic law)",
+    "golden_selftest": "OK",
+    "note": "the +0/+0 law held because the barrels preserved every import path — the test dirs needed ZERO touches (stronger than the card's 'import-only touches' allowance)"
+  },
+  "disclosed_nits_non_gating": [
+    "the two countdown micro-implementations remain dual inside the canonical module (the pure composition keeps 041's ms-based Date.parse arithmetic verbatim; the seam reader keeps 043's UTC-string arithmetic) — behaviorally identical for ISO date-only strings, both byte-verbatim per the move-verbatim law; unifying is a follow-up nit if R0 wants it",
+    "NBA's as-const defaults (no selectIfHeld/selectIfNotHeld) are structurally subsumed by LearnerBdtParams — the NBA path never reads the write-path fields, verified",
+    "DAY_MS now exists as three private implementation consts (decay.ts, exam-target-reader.ts, state.ts's tutor-window read) — an implementation constant, not a law"
+  ],
+  "handoff": "PR authored by r1-contracts -> authors-never-self-merge -> NOT self-merged; handed to the R0-AUTO/review desk with the card's scope guidance (a)-(e) as the review checklist"
+}

@@ -102,17 +102,16 @@ import type {
 
 export { LearnerMeForbiddenError, LearnerMeNotImplementedError, LearnerMeNotFoundError } from "./errors";
 
-// tranche-2: the NBA engine + the T-C11 loader, re-exported from the barrel
+// tranche-2: the NBA engine + the T-C11 loader, re-exported from the barrel.
+// T-MIG-066: the decay/BDT laws and the exam-target reader are owned by the
+// canonical services/learner-model modules now — the former NBA_-prefixed
+// duplicates retired; the canonical names re-exported here (zero external
+// consumers of the retired names at consolidation time).
 export {
   NBA_POLICY,
-  NBA_BDT_PAPER_DEFAULTS,
-  NBA_DECAY_PAPER_DEFAULTS,
   RECOMMENDATION_PAPER_DEFAULTS,
   buildNbaEngine,
   nbaActionsFor,
-  nbaBandOf,
-  nbaDecayedMastery,
-  nbaRelaxedToPrior,
   kgTreeWithMisconceptions,
   prerequisiteRelations,
   skillStatesFor,
@@ -120,6 +119,22 @@ export {
   type NbaDeps,
   type RecommendationParams,
 } from "./nba";
+export {
+  bandOf,
+  decayedMastery,
+  relaxedToPrior,
+  LEARNER_BDT_PAPER_DEFAULTS,
+  LEARNER_DECAY_PAPER_DEFAULTS,
+  type LearnerBdtParams,
+  type LearnerDecayParams,
+} from "../learner-model/decay";
+export {
+  courseExamTargetView,
+  examTargetsFor,
+  type CourseExamTargetView,
+  type EnrolmentRow,
+  type ExamSeriesRow,
+} from "../learner-model/exam-target-reader";
 export {
   NBA_CONCEPT_GRAPH,
   buildConceptDependencyGraphFromSnapshot,
@@ -207,31 +222,16 @@ interface SubmissionRow {
   occurred_at: string;
 }
 
-/** exam_series row as the picker/target reads select them. */
-interface ExamSeriesRow {
-  id: string;
-  board: string;
-  qualification: string;
-  series_code: string;
-  label: string;
-  window_start: string;
-  window_end: string;
-  entry_deadline: string | null;
-  results_date: string | null;
-  estimated: boolean;
-  source_url: string;
-  retrieved_at: string;
-}
-
-/** learner_course_enrolments row (target reads). */
-interface EnrolmentRow {
-  id: string;
-  learner_id: string;
-  course_slug: string;
-  target_series_id: string | null;
-  created_at: string;
-  updated_at: string;
-}
+// T-MIG-066: ExamSeriesRow / EnrolmentRow / utcToday / daysBetween and the
+// exam-target reader live in the canonical services/learner-model/
+// exam-target-reader.ts (the 043 consolidation band) — imported below.
+import {
+  courseExamTargetView,
+  examTargetsFor,
+  utcToday,
+  type EnrolmentRow,
+  type ExamSeriesRow,
+} from "../learner-model/exam-target-reader";
 
 // ── shared helpers ───────────────────────────────────────────────────────────
 
@@ -239,28 +239,6 @@ interface EnrolmentRow {
 const toInstant = (value: string | Date): string => new Date(value).toISOString();
 
 /** LocalDate.now(ZoneOffset.UTC) — the UTC calendar date of the clock. */
-const utcToday = (now: Date): string => now.toISOString().slice(0, 10);
-
-/**
- * ChronoUnit.DAYS.between(today, window) — WHOLE calendar days between two
- * ISO local dates (UTC). Calendar-day arithmetic on date STRINGS (both
- * normalized YYYY-MM-DD), not on ms timestamps — a UTC-day boundary never
- * shifts under a timezone here, and a partial day does not round.
- */
-const daysBetween = (fromIso: string, toIso: string): number => {
-  const from = Date.UTC(
-    Number(fromIso.slice(0, 4)),
-    Number(fromIso.slice(5, 7)) - 1,
-    Number(fromIso.slice(8, 10)),
-  );
-  const to = Date.UTC(
-    Number(toIso.slice(0, 4)),
-    Number(toIso.slice(5, 7)) - 1,
-    Number(toIso.slice(8, 10)),
-  );
-  return Math.round((to - from) / 86_400_000);
-};
-
 // ── flashcard ratings (V47 evidence class) ───────────────────────────────────
 
 export type FlashcardRatingValue = "STILL_LEARNING" | "KNOW";
@@ -816,43 +794,6 @@ export async function examSeriesCalendar(
 }
 
 /**
- * CourseExamTargetView.of (CourseExamTargetView.java :40-55) — the
- * countdown derived on THIS read against the server clock (ADR-031:
- * derived is recomputed, never stored): whole calendar days
- * (ChronoUnit.DAYS.between) to windowStart/windowEnd; entryDeadlinePassed
- * = entryDeadline != null && entryDeadline.isBefore(today) — STRICTLY
- * before: the deadline day itself still allows entry.
- */
-export function courseExamTargetView(
-  enrolment: EnrolmentRow,
-  series: ExamSeriesRow,
-  today: string,
-): CourseExamTargetView {
-  return {
-    courseSlug: enrolment.course_slug,
-    seriesId: series.id,
-    seriesCode: series.series_code,
-    label: series.label,
-    windowStart: series.window_start,
-    windowEnd: series.window_end,
-    // FIDELITY NOTE (R0 flag, see the PR): the frozen CourseExamTargetView
-    // record renders entryDeadline/resultsDate as the raw LocalDate columns
-    // — NULL when the series row has no deadline/results date — but the
-    // landed courseExamTargetViewSchema (learner.ts, canonical #60) typed
-    // both z.string(). The W4 capture never exercised a null-deadline
-    // series, so the gates never caught it. This port passes the column
-    // through HONESTLY (null allowed at runtime) and the schema correction
-    // (.nullable()) is requested at review — never widened silently.
-    entryDeadline: series.entry_deadline as string,
-    resultsDate: series.results_date as string,
-    estimated: series.estimated,
-    daysToWindowStart: daysBetween(today, series.window_start),
-    daysToWindowEnd: daysBetween(today, series.window_end),
-    entryDeadlinePassed: series.entry_deadline != null && series.entry_deadline < today,
-  };
-}
-
-/**
  * PUT /api/v1/learners/me/courses/{courseSlug}/target-series
  * (LearnerExamSeriesController :71-91): slug kebab-case else 400 verbatim;
  * series must exist else 404 verbatim; only PUBLISHED series can be
@@ -935,47 +876,6 @@ export async function clearTargetSeries(
     update learner_course_enrolments
     set target_series_id = null, updated_at = ${deps.clock.now().toISOString()}
     where learner_id = ${learnerId} and course_slug = ${courseSlug}`;
-}
-
-/**
- * ExamTargetReader.targetsFor (exam/ExamTargetReader.java :28-52) — the
- * read-model block shared with /state and /agenda: every course this
- * learner declared a target series for, the series batched in ONE read
- * (first-wins), vanished-series rows filtered, countdowns derived on this
- * read against `today` (UTC). An empty list IS the honest "no series
- * declared" state — clients render "add your exam series", never an
- * invented date.
- *
- * PARALLEL-LANE NOTE (disclosed, see file header): r7a's 041 tranche-1
- * (PR #65) carries its own copy inside services/learner/**; consolidation
- * to ONE canonical reader is requested as an R0 intake ruling after both
- * lanes land (#56 arbitration precedent).
- */
-export async function examTargetsFor(
-  deps: FlashcardRatingRecordDeps,
-  learnerId: string,
-  today?: string,
-): Promise<CourseExamTargetView[]> {
-  const todayIso = today ?? utcToday(deps.clock.now());
-  const declared = (await deps.sql`
-    select id, learner_id, course_slug, target_series_id, created_at, updated_at
-    from learner_course_enrolments
-    where learner_id = ${learnerId} and target_series_id is not null`) as unknown as EnrolmentRow[];
-  if (declared.length === 0) return [];
-  const seriesIds = [...new Set(declared.map((e) => e.target_series_id as string))];
-  const seriesRows = (await deps.sql`
-    select id, board, qualification, series_code, label, window_start,
-           window_end, entry_deadline, results_date, estimated,
-           source_url, retrieved_at
-    from exam_series
-    where id = any(${seriesIds}::uuid[])`) as unknown as ExamSeriesRow[];
-  const seriesById = new Map<string, ExamSeriesRow>();
-  for (const s of seriesRows) {
-    if (!seriesById.has(s.id)) seriesById.set(s.id, s);
-  }
-  return declared
-    .filter((e) => seriesById.has(e.target_series_id as string))
-    .map((e) => courseExamTargetView(e, seriesById.get(e.target_series_id as string)!, todayIso));
 }
 
 // ── learner assignments (V49/V51) ───────────────────────────────────────────
