@@ -20,7 +20,7 @@
       {
         "sha": "4d8cb7f",
         "content": "+ c78ed9a (r0-arbitration 067 triple-claim ruling, bookkeeping) + d794dd5 (#108 T-MIG-053 t2 teacher band, merged of record post-ratification) + this ratification + the c78ed9a/d794dd5 intake union",
-        "gates": "1373 pass / 0 fail / 13 skip / 5558 expect / 73 files; typecheck x4 exit 0; golden selftest OK \u2014 delta vs cdce05e = +41 tests / +1000 expects / +3 files = the 053-t2 band pins EXACT",
+        "gates": "1386 ran / 1373 pass / 0 fail / 13 skip / 73 files; typecheck x4 exit 0; golden selftest OK \u2014 delta vs cdce05e = +41 tests / +3 files EXACT (the 053-t2 pins); expect() count is run-variable in the 053-t2 band (5552-5558 across two back-to-back runs, pass/fail identical \u2014 dynamic pins), so the EXACT law binds ran/pass/fail/skip/files",
         "verified_by": "R0-BASELINE-RATIFICATION first-hand run at 4d8cb7f; CI at d794dd5 checked at push time"
       }
     ]
@@ -34,5 +34,5 @@
       "non-gating nit: services/learner-me/nba.ts :42-46 stale header paragraph (T-MIG-066 card register note)"
     ]
   },
-  "law": "next-wave claims cite THIS chain (d902e9f -> cdce05e) as the verified baseline; gates arithmetic for any new band is computed against the ratified chain tip 4d8cb7f = 1373/0/13skip/5558/73f + selftest OK"
+  "law": "next-wave claims compute their gates arithmetic against the ratified chain tip 4d8cb7f = 1386 ran / 1373 pass / 0 fail / 13 skip / 73 files + selftest OK (expects run-variable 5552-5558 in the 053-t2 band); any drift from the stable quantities is a finding, not a footnote"
 }
