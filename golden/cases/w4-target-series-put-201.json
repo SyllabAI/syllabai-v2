@@ -1,6 +1,6 @@
 {
   "name": "w4-target-series-put-201",
-  "description": "declare the V63-seeded IAL 2026-oct-nov series as the target for course slug chm: enrolment auto-created, countdown derived on read (never stored) \u2014 now-derived date fields tolerated",
+  "description": "declare the V63-seeded IAL 2026-oct-nov series as the target for course slug chm: enrolment auto-created, countdown derived on read (never stored) \u2014 now-derived date fields tolerated — justified:true per R0 arbitration ruling3 R3-D3 (receipts/R0-arbitration/ruling3-operator-four-rulings.json, operator trace 1a1100c71ff48e05, TOLERATE option (a)): daysToWindowStart/daysToWindowEnd are wall-clock-derived by the frozen law ChronoUnit.DAYS.between(today, window) (the port's utcToday law verified faithful) — capture-time anchor 2026-10-05, drift grows +1 day per replay day; options (b) re-pin per replay and (c) conditional tolerance are REJECTED; ALL other fields stay byte-pinned (the DATE fields, series identity, estimated, entryDeadlinePassed). T-MIG-071.",
   "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
   "method": "PUT",
   "path": "/api/v1/learners/me/courses/chm/target-series",
@@ -31,11 +31,14 @@
   },
   "tolerate": [
     "daysRemaining",
+    "daysToWindowEnd",
+    "daysToWindowStart",
     "declaredAt",
     "id",
     "targetDate",
     "timestamp",
     "updatedAt"
   ],
-  "seq": 30
+  "seq": 30,
+  "justified": true
 }

@@ -1,6 +1,6 @@
 {
   "name": "auth-me-with-bearer-200",
-  "description": "GET /api/v1/auth/me with a bearer token: 200 UserView{id,email,displayName,roles} [T-MIG-006: replay-readiness annotation - generated fields (fresh token/id per boot) tolerated by field name; scrubbed capture values kept for archaeology.]",
+  "description": "GET /api/v1/auth/me with a bearer token: 200 UserView{id,email,displayName,roles} [T-MIG-006: replay-readiness annotation - generated fields (fresh token/id per boot) tolerated by field name; scrubbed capture values kept for archaeology.] — justified:true per R0 arbitration ruling3 R3-D4 (OPTION A): the {{TOKEN}} bearer resolves the replay-run identity, so the seeded-identity fields the live diff shows divergent — email, displayName per run-7 note H ('tolerate=[id] insufficient') — join tolerate[]; id was already tolerated; the field-by-field live verification is the standing CI leg; the staged-identity tranche is SHELVED of record. T-MIG-071.",
   "source": "captured from a LOCAL boot of the frozen Java core (built from the frozen main tree, JDK 25) against Neon BRANCH t-mig-003/r6 (br-divine-mode-a5xur4zv, copy-on-write of production) on 2026-10-04T18:36Z by T-MIG-003 run-002 (R6); no production writes; scrubbed: accessToken->fixed dummy, user id->stable fake UUID, account identity synthetic from creation",
   "method": "GET",
   "path": "/api/v1/auth/me",
@@ -21,7 +21,10 @@
     }
   },
   "tolerate": [
+    "displayName",
+    "email",
     "id"
   ],
-  "seq": 5
+  "seq": 5,
+  "justified": true
 }

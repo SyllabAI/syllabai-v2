@@ -82,7 +82,7 @@
  *      honest harness error, never a silent degraded replay. Zero case
  *      files touched (§7: no silent widening — the cases are forever).
  */
-import { loadCases, deepEqualTolerant, buildMultipartBody, partitionByTranche } from "../runner.ts";
+import { loadCases, deepEqualTolerant, buildMultipartBody, partitionByTranche, checkHeaders } from "../runner.ts"; // T-MIG-071 rider: checkHeaders joins the import-only zero-drift set (the deepEqualTolerant precedent) — ONE pattern-value implementation, selftest-covered at the runner
 import { join } from "node:path";
 
 const REALDATA = /realdata|-real-/; // verbatim posture regex (T-MIG-022 v2 tool)
@@ -248,19 +248,6 @@ async function ensureUser(
   if (login.status !== 200) fail(`login ${email} failed: ${login.status}`);
   const body = (await login.json()) as { accessToken: string };
   return body.accessToken;
-}
-
-// ── response-header subset match — same semantics as golden/runner.ts checkHeaders ──
-function checkHeaders(actual: Headers, expected: Record<string, string> | undefined): string | null {
-  if (!expected) return null;
-  const lower = new Map<string, string>();
-  actual.forEach((value, key) => lower.set(key.toLowerCase(), value));
-  for (const [name, want] of Object.entries(expected)) {
-    const got = lower.get(name.toLowerCase());
-    if (got === undefined) return `header ${name} missing (expected "${want}")`;
-    if (got !== want) return `header ${name}: "${got}" vs expected "${want}"`;
-  }
-  return null;
 }
 
 async function replayOne(kase: GoldenCase, teacher: string, student: string, admin: string): Promise<CaseResult> {
@@ -546,6 +533,17 @@ function selftest(): number {
     "corpus invariant: empty-tranche cases never resolve to /api/v1/admin/",
     corpusEmpty.length > 0 && corpusEmpty.every((k) => !k.path.includes("/api/v1/admin/")),
   );
+  // 2c. T-MIG-071 (R3-C effect 5 rider): pattern-value header expectations,
+  // consumed through the RUNNER IMPORT (zero-drift wiring proof): present+match
+  // passes, present+mismatch fails, ABSENT stays silent (presence-conditional —
+  // the pattern governs the RULED 429 divergence posture; the frozen captured
+  // posture carries no header, run-004 receipt), plain values keep missing-fails.
+  const rh = new Headers({ "Retry-After": "53" });
+  t("pattern header: present+match passes", checkHeaders(rh, { "Retry-After": "pattern:^\\d+$" }) === null);
+  t("pattern header: present+mismatch fails", checkHeaders(rh, { "Retry-After": "pattern:^[1-9]\\d{2,}$" }) !== null);
+  t("pattern header: absent stays silent (presence-conditional)", checkHeaders(new Headers({}), { "Retry-After": "pattern:^\\d+$" }) === null);
+  t("plain header: absent still fails (regression guard)", checkHeaders(new Headers({}), { "Retry-After": "60" }) !== null);
+  t("plain header: value mismatch still fails", checkHeaders(rh, { "Retry-After": "60" }) !== null);
   // 3. multipart import wiring (the gated runner builder, unchanged)
   const mf: GoldenCase = {
     name: "w3-sme-ingest-rich-200",

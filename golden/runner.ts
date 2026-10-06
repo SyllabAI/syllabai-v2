@@ -73,6 +73,11 @@ interface GoldenCase {
 // is a harness error, never a silent unauthenticated replay.
 const TOKEN_PLACEHOLDER = "{{TOKEN}}";
 
+// T-MIG-071 (R0 arbitration ruling3 R3-C effect 5 rider): the pattern-value
+// prefix for expect.headers. A value with this prefix is a REGEX the actual
+// header value must FULL-match when the header is present. See checkHeaders.
+const HEADER_PATTERN_PREFIX = "pattern:";
+
 function substituteToken(
   kase: GoldenCase,
   token: string | undefined,
@@ -100,7 +105,21 @@ function substituteToken(
 // T-MIG-006 (T-MIG-004 F-3): response-header comparison - subset match,
 // case-insensitive header NAMES, exact VALUES (HTTP semantics). A missing
 // actual header is a failure reported by name.
-function checkHeaders(
+//
+// T-MIG-071 (R0 arbitration ruling3 R3-C effect 5 rider): a value carrying
+// the "pattern:" prefix is a REGEX the actual value must FULL-match WHEN the
+// header is present. Presence-conditional BY DESIGN (disclosed in the
+// T-MIG-071 PR): the pattern governs the RULED divergence posture — the
+// v2-only register limiter's 429 carries a ROTATING Retry-After (46s in
+// run-7, retryAfterSeconds 53 in T-MIG-063 run-003; the port computes
+// max(1, floor((windowEnd-now+999)/1000)) — ratelimit.ts :214/:270 — so no
+// exact value is pinnable), while the frozen captured posture (400/403)
+// carries NO such header and must keep passing (run-004 receipt: the
+// untripped C-class cases answered their captured status with no header; a
+// hard always-present pin would flip untripped runs red against the
+// operator's own projected clearing). Plain values keep the exact,
+// missing-fails semantics UNCHANGED (regression-guarded in selftest).
+export function checkHeaders(
   actual: Headers,
   expected: Record<string, string> | undefined,
 ): string | null {
@@ -108,6 +127,15 @@ function checkHeaders(
   const lower = new Map<string, string>();
   actual.forEach((value, key) => lower.set(key.toLowerCase(), value));
   for (const [name, want] of Object.entries(expected)) {
+    if (want.startsWith(HEADER_PATTERN_PREFIX)) {
+      const source = want.slice(HEADER_PATTERN_PREFIX.length);
+      const got = lower.get(name.toLowerCase());
+      if (got === undefined) continue; // presence-conditional (disclosed)
+      if (!new RegExp(source).test(got)) {
+        return `header ${name}: "${got}" vs expected pattern "${source}"`;
+      }
+      continue;
+    }
     const got = lower.get(name.toLowerCase());
     if (got === undefined) return `header ${name} missing (expected "${want}")`;
     if (got !== want) return `header ${name}: "${got}" vs expected "${want}"`;
@@ -347,6 +375,37 @@ function selftest(): number {
     console.error("selftest FAILED: absent expectation must not constrain");
     return 1;
   }
+  // T-MIG-071 (R3-C effect 5 rider): pattern-value header expectations —
+  // present+match passes (incl. the live shape: rotating small integers),
+  // present+mismatch fails, ABSENT stays silent (presence-conditional by
+  // design: the pattern governs the RULED 429 divergence posture; the frozen
+  // captured posture carries no header — run-004 receipt), and plain values
+  // keep the missing-fails semantics (regression guard).
+  const rh = new Headers({ "Retry-After": "53" });
+  if (checkHeaders(rh, { "Retry-After": "pattern:^\\d+$" }) !== null) {
+    console.error("selftest FAILED: pattern header match should pass");
+    return 1;
+  }
+  if (checkHeaders(rh, { "Retry-After": "pattern:^\\d{2,3}$" }) !== null) {
+    console.error("selftest FAILED: pattern 53 vs 2-3 digit pattern should pass");
+    return 1;
+  }
+  if (checkHeaders(rh, { "Retry-After": "pattern:^[1-9]\\d{2,}$" }) === null) {
+    console.error("selftest FAILED: pattern 53 vs 3+-digit pattern should fail");
+    return 1;
+  }
+  if (checkHeaders(rh, { "Retry-After": "60" }) === null) {
+    console.error("selftest FAILED: plain header value mismatch should still fail");
+    return 1;
+  }
+  if (checkHeaders(new Headers({ "x-other": "1" }), { "Retry-After": "pattern:^\\d+$" }) !== null) {
+    console.error("selftest FAILED: absent header under pattern expectation must stay silent (presence-conditional, T-MIG-071)");
+    return 1;
+  }
+  if (checkHeaders(new Headers({ "x-other": "1" }), { "Retry-After": "60" }) === null) {
+    console.error("selftest FAILED: absent header under PLAIN expectation must still fail");
+    return 1;
+  }
   // T-MIG-024 (W2-F3): declared-unordered multiset engine coverage.
   const mvA = {
     paper: { id: "p1" },
@@ -451,7 +510,7 @@ function selftest(): number {
     console.error("selftest FAILED: staged tranche must not leak empties");
     return 1;
   }
-  console.log("selftest OK: tolerance engine behaves (incl. declared-unordered multiset — T-MIG-024; RFC 8259 key canonicalization + tranche partition — T-MIG-072)");
+  console.log("selftest OK: tolerance engine behaves (incl. declared-unordered multiset — T-MIG-024; RFC 8259 key canonicalization + tranche partition — T-MIG-072; pattern-value header pins — T-MIG-071 R3-C rider)");
   return 0;
 }
 
