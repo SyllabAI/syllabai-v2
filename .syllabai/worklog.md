@@ -3435,3 +3435,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-065 IN_REVIEW on t-mig-065/r0: the last unfiled housekeeping item from the ROUND-6C register line is now code-complete behind a PR. r0 | hub scoped-runner landed, PR handed to the desk | IDLE after filing | suggestion: merge via the desk; the 043 follow-up rulings ride this round's direct-main bookkeeping commit.
+
+---
+Task ID: R4b-ROUND-17 (trace 1a10fae46578fa0d)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator directive — "Check if R0 has merged or not. If not, review+merge yourself and continue working"
+
+Work Log:
+- MERGE CENSUS of record @ ~05:31-05:42Z: R0 ACTIVE and current — main advanced to 32626cb carrying #102 (T-MIG-062, THIS LANE: merged ea8f951 05:37:35Z by the desk sweep after intakes eeef7e4/a17a48c/1ee92e9, CI verify+hub GREEN at 1ee92e9) and #103 (T-MIG-065 hub hygiene: merged 32626cb 05:41:12Z). Open queue after the sweep: #104 only (T-MIG-060 w0a, dirty vs the moving main, CI green at e903978, R0 ratifications pending).
+- SWEEP DUTIES under the operator delegation: #103 (head 7c75d284) and #104 (head 58e28dcd) BOTH diagnosed with the R0-ROUND-16 registered CI event-drop (check-runs==0 at the real heads while Actions was demonstrably alive); the close->reopen retrigger of record applied to BOTH at ~05:34Z. #103 then ran verify+hub GREEN and the desk merged it within ~7 minutes — the registered remedy did its job end to end. No merges executed by this lane: #102 is authored here (authors never self-merge — the desk took it mid-round), #103 was taken by the desk before this lane's merge step, #104 carries R0-ratification asks that outrank the delegation.
+- #104 INDEPENDENT REVIEW FILED (the PR requested independent review; posted as issuecomment-6010159749): fence verified 33/33 files (services/tutor/** x18 + test/tutor x3 + contracts tutor.ts + index union + routes/tutor|tutorsessions + the single disclosed OUT-OF-FENCE index.ts mount + .syllabai bookkeeping — zero drift, zero golden/unrelated contact); the CI-caught t1b type-fix disclosure accepted as consistent; dirty-state note filed (needs the standard worklog-tail append-only intake union pre-merge, the desk's f098747 pattern on #103 as template); deep line-against-line fidelity verdict left to R0 per the PR's own ratification asks.
+- T-MIG-062 card flipped IN_REVIEW->DONE (bookkeeping-only .syllabai/** direct-main write per the 3c07bae/bb537fa precedents) + this receipt; merge-of-record chain recorded on the card.
+- PAT persistence law restored after the workspace wipe: /home/z/my-project/.secrets/ghpat (0600, wipe-proof my-project mount) + /home/z/.ghtoken (0600, script-conventional path) + repo credential store wired to /home/z/my-project/.secrets/git-credentials (0600); PAT verified live (user SyllabAI, HTTP 200).
+- NEXT: T-MIG-066 (043 consolidation band, R0-filed, "claim-ready for a quiet-board moment") — the quiet moment arrives when #104 lands; fence services/learner/** + services/learner-me/** + ONE new shared module home (claimant proposes, R0 ratifies), contracts FORBIDDEN, arithmetic +0 tests/+0 expects.
+
+Stage Summary:
+- T-MIG-062 LANDED (ea8f951) — the lane's Wave-6 research calibration is of record on main; #103 retriggered->green->landed (32626cb); #104 reviewed + CI-unblocked + intake path documented; card DONE of record; PAT persistence law restored on the wipe-proof mount. LANE IDLE at round end; T-MIG-066 is the next claim.
