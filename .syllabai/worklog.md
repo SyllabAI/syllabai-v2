@@ -2918,3 +2918,19 @@ Work Log:
 
 Stage Summary:
 - LANE w0a re-opened on T-MIG-060 (one lane at a time held: 002R and 043 both DONE). Claim is branch-stamped for §2.1 priority; tranches t1 = services+contracts+spike record, t2 = routes+mount+pins. Zero code delta in the claim commit; golden/Neon/force untouched; authors never self-merge. Implementation proceeds on this branch.
+
+---
+Task ID: T-MIG-060 (tranche-1)
+Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Implement tranche-1 of the Wave-6 opener (the tutor deterministic core) under the operator's "continue working" (trace 1a10f3bbe255c491) — claim d328f9d, code 4592444, intake 883131e.
+
+Work Log:
+- FROZEN READ (line-against-line, @ 6cad6ef): KaRagService :44-584, TutorController :60-260, TutorSessionController + TutorSessionService :35-288, ConversationTurn, EvidenceItem, ReciprocalRankFusion, GraphKnowledgeRetriever (+ KnowledgeNodeRepository CTEs verbatim), ContentVectorRetriever, ContextAssembler/LearnerContextAssembler, TutorPolicyService, TutorMemoryService, GroundedTutorGenerator :21-537, StreamSanitizer, SimpleCitationResolver, TutorGenerator, TutorStreamEvent, dto/TutorAnswerView.
+- LANDED (17 files, +4036): services/tutor/** (conversation/evidence/rrf/retrieval-query/sanitize/citations/prompt/context/kg-retriever/session-store/karag/index + sql seam) + packages/contracts/src/tutor.ts + 33 pins in apps/api/test/tutor/tutor-core.test.ts. The stream-parity property is TESTED across hostile delta splits (1..11-char chunks) against the blocking sanitizeAnswer; the RRF arithmetic, refusal bytes, 0.5 specificity floor, VALIDATED-only visibility, policy precedence (confirmed > 0.65 > relaxed-0.5 misconception > explanation) and the §22 store laws are pinned.
+- COMPOSITION LAW held: scopes/vector-search compose the landed content module (scope.ts + retrieval.ts); the learner-model reads + ADR-032 relaxation are per-module structural-seam copies with the consolidation ruling requested (nba.ts precedent).
+- SAFETY: paperQuestionResolver is a REQUIRED port (no silent notPaperAsk default — the fail-open guard must not be silently disabled); its full port (PaperQuestionResolver :92-649) is tranche-1b, disclosed in run-002. The R-VERCEL W6 spike is recorded as a design note + deploy-lane register item (no Vercel path from this sandbox).
+- INTAKE: origin/main ced0111 (#84 053 + #89 052-t2 + #88 + round-11 ledger) merged as 883131e — worklog append-only union (fleet entries precede the lane's tail), contracts index union (knowledge+tutor one-liners coexist).
+- GATES: typecheck x4 exit 0; bun test apps/api packages 1039/0/13skip/3165 @ 59 files pre-intake (= main 1006/13skip/3065 + 33/+100 EXACT) and 1123/0/13skip/3388 @ 62 files post-intake (zero regressions); golden selftest OK. Zero golden/Neon/force; ADR-031 zero-write audit: only tutor_sessions/tutor_session_turns.
+
+Stage Summary:
+- T-MIG-060 tranche-1 CODE-COMPLETE and gates-green, pushed (4592444..883131e on t-mig-060/w0a). Next: tranche-1b (the paper-question resolver) + tranche-2 (routes + OUT-OF-FENCE mount + pins) then the PR for independent review + R0 id ratification — authors never self-merge. Board note: 056 (r0) and 057 (r4b) heads appeared during this window — the Wave-5x extension bands are being seeded by their own lanes; no 06x collision (this lane is the sole 06x claimant of record).
