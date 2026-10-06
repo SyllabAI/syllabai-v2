@@ -350,12 +350,10 @@ async function replayAgainst(
     // instead of crashing on the first unreachable one.
     return { pass: false, diff: `harness error: target unreachable (${e instanceof Error ? e.message : String(e)})` };
   }
-  let body: unknown = null;
-  try {
-    body = await res.json();
-  } catch {
-    body = "<non-json>";
-  }
+  // T-MIG-077 (I-class sentinel law): length-aware rendering via the shared
+  // helper — 0-byte keeps its own sentinel; JSON parses exactly as res.json()
+  // did (text-first, byte-equal semantics for every JSON body).
+  const body = renderResponseBody(await res.text());
   // T-MIG-071 (R3-C): the declared limiter-429 disposition — evaluated
   // BEFORE the frozen-capture comparison. When the operator-endorsed
   // limiter trips (429 — v2-only by construction: the frozen core has no
@@ -675,8 +673,88 @@ function selftest(): number {
     console.error("selftest FAILED: bearer-bearing names without a posture keyword must NOT go verbatim");
     return 1;
   }
-  console.log("selftest OK: tolerance engine behaves (incl. declared-unordered multiset — T-MIG-024; RFC 8259 key canonicalization + tranche partition — T-MIG-072; pattern Retry-After pin + declared limiter-429 posture — T-MIG-071; auth-posture decision — T-MIG-075)");
+  // T-MIG-077 (I-class sentinel law): the empty-body equivalence — capture
+  // {"_raw":""} ↔ 0-byte sentinel, BOTH directions; <non-json> (non-empty)
+  // stays distinct; the law is ROOT-ONLY and exact-shape; the shared
+  // rendering is length-aware.
+  if (!deepEqualTolerant({ _raw: "" }, EMPTY_BODY_SENTINEL, [])) {
+    console.error("selftest FAILED: capture _raw-empty must equal the 0-byte sentinel (T-MIG-077)");
+    return 1;
+  }
+  if (!deepEqualTolerant(EMPTY_BODY_SENTINEL, { _raw: "" }, [])) {
+    console.error("selftest FAILED: the sentinel law must be symmetric (T-MIG-077)");
+    return 1;
+  }
+  if (deepEqualTolerant("<non-json>", EMPTY_BODY_SENTINEL, [])) {
+    console.error("selftest FAILED: non-empty non-JSON must stay distinct from the empty class (T-MIG-077)");
+    return 1;
+  }
+  if (deepEqualTolerant({ _raw: "x" }, EMPTY_BODY_SENTINEL, [])) {
+    console.error("selftest FAILED: a non-empty _raw is a real value, not the empty class (T-MIG-077)");
+    return 1;
+  }
+  if (deepEqualTolerant({ nested: { _raw: "" } }, { nested: EMPTY_BODY_SENTINEL }, [])) {
+    console.error("selftest FAILED: the empty-body law is ROOT-ONLY, never recursive (T-MIG-077)");
+    return 1;
+  }
+  if (renderResponseBody("") !== EMPTY_BODY_SENTINEL) {
+    console.error("selftest FAILED: 0-byte must render as the explicit sentinel (T-MIG-077)");
+    return 1;
+  }
+  if (renderResponseBody("not json at all") !== "<non-json>") {
+    console.error("selftest FAILED: non-empty non-JSON keeps the legacy marker (T-MIG-077)");
+    return 1;
+  }
+  const rendered = renderResponseBody('{"a":1}');
+  if (typeof rendered !== "object" || (rendered as Record<string, unknown>)["a"] !== 1) {
+    console.error("selftest FAILED: JSON bodies must still parse (T-MIG-077)");
+    return 1;
+  }
+  if (renderResponseBody("null") !== null) {
+    console.error("selftest FAILED: a JSON null body must stay null (T-MIG-077)");
+    return 1;
+  }
+  console.log("selftest OK: tolerance engine behaves (incl. declared-unordered multiset — T-MIG-024; RFC 8259 key canonicalization + tranche partition — T-MIG-072; pattern Retry-After pin + declared limiter-429 posture — T-MIG-071; auth-posture decision — T-MIG-075; symmetric empty-body sentinel law — T-MIG-077)");
   return 0;
+}
+
+// T-MIG-077 (I-class sentinel law — run-7 action 8, run-9 action 6; the
+// T-MIG-071 run-002 post-merge review F-5): the EMPTY wire body reaches the
+// comparator under three different markers — the capture harness stored
+// either the explicit `<non-json:0 bytes>` marker (w0a, length-aware) or the
+// legacy `{"_raw":""}` object (T-MIG-040-PREP era), while the replay side's
+// res.json() failure path collapsed 0-byte and non-empty non-JSON into one
+// `<non-json>` marker (the T-MIG-022 Bun-quirk patch even re-rendered 0-byte
+// nulls INTO that marker — the asymmetry this law retires). Same wire
+// reality, three markers: the divergence class was the MARKER, never the
+// behavior. THE LAW, symmetric across both sides of every compare:
+//   (a) both call sites render through renderResponseBody — length-aware,
+//       a 0-byte body keeps its own explicit sentinel;
+//   (b) deepEqualTolerant equates {"_raw":""} (EXACT shape: one key, empty
+//       string value) with the 0-byte sentinel — ROOT-ONLY, never recursive
+//       (a nested {"_raw":""} is a real value and stays compared);
+//   (c) `<non-json>` — a NON-empty non-JSON body (e.g. the real-binary
+//       capture) — stays DISTINCT from the empty class; the law never
+//       equates an empty body with a non-empty one.
+export const EMPTY_BODY_SENTINEL = "<non-json:0 bytes>";
+
+export function renderResponseBody(raw: string): unknown {
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return raw.length === 0 ? EMPTY_BODY_SENTINEL : "<non-json>";
+  }
+}
+
+function canonicalizeEmptyBodyRoot(value: unknown): unknown {
+  if (value === EMPTY_BODY_SENTINEL) return EMPTY_BODY_SENTINEL;
+  if (value !== null && typeof value === "object" && !Array.isArray(value)) {
+    const entries = Object.entries(value as Record<string, unknown>);
+    if (entries.length === 1 && entries[0][0] === "_raw" && entries[0][1] === "") {
+      return EMPTY_BODY_SENTINEL;
+    }
+  }
+  return value;
 }
 
 export function deepEqualTolerant(
@@ -685,12 +763,14 @@ export function deepEqualTolerant(
   tolerate: string[],
   unordered: string[] = [],
 ): boolean {
+  // T-MIG-077 (I-class): the root-only empty-body equivalence applies before
+  // redaction — the sentinel string passes redact/sortObjectKeys untouched.
   // T-MIG-072 (F-class): key canonicalization precedes the multiset
   // canonicalization — sorted keys make the element serializations (and the
   // whole compare) key-order-insensitive; array element order semantics are
   // unchanged (declared unordered[] paths only, T-MIG-024 scope intact).
-  const ra = sortObjectKeys(redact(a, tolerate));
-  const rb = sortObjectKeys(redact(b, tolerate));
+  const ra = sortObjectKeys(redact(canonicalizeEmptyBodyRoot(a), tolerate));
+  const rb = sortObjectKeys(redact(canonicalizeEmptyBodyRoot(b), tolerate));
   if (unordered.length === 0) {
     return JSON.stringify(ra) === JSON.stringify(rb);
   }
