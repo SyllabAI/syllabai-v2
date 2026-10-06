@@ -1,0 +1,27 @@
+{
+  "task": "T-MIG-052",
+  "run": "run-001-claim",
+  "lane": "r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "operator_trace": "1a10ec4d22b0e54d",
+  "directive": "claim the next unscoped task",
+  "claimed_at": "2026-10-06T01:24:44Z",
+  "branch": "t-mig-052/r9-hubx",
+  "base": "origin/main 6c58c15",
+  "frozen_ref": "6cad6ef",
+  "zero_collision_scan": {
+    "ls_remote": "zero t-mig-052* heads (single grep hit was SHA-substring artifact 79a98a3...052...)",
+    "cards": "zero 052/053 mentions in .syllabai/tasks/ or docs/",
+    "open_prs_at_scan": ["#79 t-mig-050/r0 (merged during scan, 56a8baa)", "#81 round12-receipt/r3a (worklog-only receipt)"],
+    "register_disposition": "050 = r0 smartmark fix (merged #79); 051 = r0 N-4 rich-200 capture (claim d29b8fc @ 2026-10-06T01:16:59Z); 054 = r1c SME contracts salvage (merged #80); 043-t2 = w0a's IN_REVIEW card; Wave-5 classes/rosters = the next MIGRATION_PLAN-reserved unclaimed band (§2.1)",
+    "fence": "packages/contracts/src/classroom.ts + apps/api/src/services/classroom/** + apps/api/test/classroom/** + this card/receipts/worklog; NO routes/mounts/hub-flip in tranche-1"
+  },
+  "scope": {
+    "teacher_class_endpoints": 8,
+    "learner_classroom_endpoints": 3,
+    "roster_endpoints": 1,
+    "tranche": "1 of 2 (services + contracts + pins; routes/mounts = tranche-2)"
+  },
+  "id_ratification": "requested at review (030/032/039/040-PREP/041/043 precedent)",
+  "self_merge": "never — independent review + R0 merge-intake requested",
+  "gates_at_claim": "n/a (no code yet); impl gates land with run-002"
+}

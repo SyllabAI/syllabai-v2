@@ -1,0 +1,23 @@
+{
+  "name": "w3-sme-status-admin-rich-200",
+  "description": "GET /status with a POPULATED bank: V7 seed (8 MCQ, zero spec-point mappings) + the T51 corpus after the replace pair (1 MCQ + 1 structured active; structured = active - mcq derivation; specPointMappings counts BOTH generations — the ADR-026 replace deactivates the gen-1 question rows but their mapping rows survive as evidence: 2+2=4). The auth-boundary w3-sme-status-* postures carry the empty-shell law; this carries the rich law.",
+  "method": "GET",
+  "path": "/api/v1/admin/question-bank/status",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "activeQuestions": 10,
+      "activeMcq": 9,
+      "activeStructured": 1,
+      "specPointMappings": 4,
+      "assets": 0
+    }
+  },
+  "seq": 12,
+  "source": "captured from LOCAL frozen-core boot (syllabai-core @ 6cad6ef, Temurin JDK 25.0.4.1, Maven 3.9.9, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.11 + pgvector 0.8.0 2026-10-06T01:3xZ by T-MIG-051 run-002 (operator-directed lane, trace 1a10ec4360ba292d); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic (local profile demo seeder, scrubbed to User 1); tokens scrubbed to {{TOKEN}}; N-4 tie-break exhibited via SQL-set identical attempt created_at"
+}

@@ -1,0 +1,31 @@
+{
+  "task": "T-MIG-052",
+  "run": "run-002-tranche-1",
+  "lane": "r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "operator_trace": "1a10ec4d22b0e54d",
+  "frozen_ref": "6cad6ef",
+  "base": "origin/main 6c58c15",
+  "branch": "t-mig-052/r9-hubx",
+  "deliverable": {
+    "contracts": "packages/contracts/src/classroom.ts (NEW) — 8 view schemas + 5 request/response schemas, constraints verbatim from ClassroomViews.java / TeacherViews.LearnerRosterView :28-35 / TeacherClassController :265-290 / LearnerClassroomController.ReadResult :150-151; packages/contracts/src/classroom.test.ts (NEW, 13 pins); index.ts +1 re-export line (OUT-OF-FENCE-flagged, 010/034/043-t1 precedent)",
+    "services": "apps/api/src/services/classroom/index.ts (NEW) — 12 service functions (8 teacher-class + 3 learner-overlay + 1 roster) over the injected SqlFn structural seam; parseClassStatus/classStatusWire + parseAnnouncementCategory/announcementCategoryWire law helpers; ClassroomNotFoundError (verbatim-message 404) + ClassroomForbiddenError (the §17 403); BadRequestError/ConflictError composed from services/selfmark (never forked); buildClassroomModule composition root (buildLearnerMeModule precedent); frozen constants TEACHER_CLASS_LIST_LIMIT=100 / ANNOUNCEMENT_LIMIT=100",
+    "tests": "apps/api/test/classroom/classroom.test.ts (NEW, 43 tests / 126 expects over the shared fakeSql helper) — every verbatim message pinned: 'class name must not be blank' / 'you already have a live class with this name on this course' (case-INSENSITIVE, ACTIVE+course-scoped) / 'class not found' / 'this class belongs to another teacher' / \"status must be 'active' or 'archived'\" / 'this class is archived — reopen it before enrolling' / 'email must not be blank' / 'no account with that email — the student registers first, then you enroll' / 'that account is disabled' / 'only student accounts can be enrolled in a class' / the idempotent no-INSERT re-enroll / 'this class is archived — reopen it before publishing' / 'category must be general, homework, notice, exam-reminder or resource' / 'title and body must not be blank' / readCount 0 on the fresh row / '(removed account)' + '(unavailable)' honesty rows / the independent-student EMPTY / archived-dropout overlay / '(unavailable)' teacher fallback / 'announcement not found' / 'this announcement is not in your classroom' / idempotent markRead / the roster cohort order+projection",
+    "scope_not_touched": "NO routes, NO mounts, NO hub-flip, NO golden/** edits, NO packages/db edits (raw SQL over the injected seam; the V51 tables are baseline-managed). knowledge-graph/coverage/analytics/notes/revision/smart-lesson stay OUT (their own W5 tranches); tranche-2 = routes + mounts (out-of-fence flagged at t2 per the 010/020/021/030/031/032/034/041/043 ratified precedent)"
+  },
+  "laws_carried": [
+    "course refs are opaque hub-owned strings (no course registry pretense)",
+    "classroom workflow writes NO learner-model state (the V47/V48/V49/V51 honesty pin)",
+    "announcements are teacher-to-class communication, NOT an AI channel (§9)",
+    "the announcement row is immutable once published; reads are append-only receipts",
+    "membership rows are the ONLY source of learner classroom visibility (the independent-student rule)",
+    "re-enrollment and re-read are the idempotent no-ops they honestly are"
+  ],
+  "gates": {
+    "typecheck": "bun run typecheck x4 workspaces exit 0",
+    "api_packages": "943 pass / 0 fail / 13 skip / 2681 expect — arithmetic EXACT vs the stash-verified main @ 6c58c15 baseline 887/0/13: +56 tests (43 service + 13 contracts pins), +0 fail",
+    "hub": "36 pass / 0 fail / 291 expect",
+    "golden": "bun golden/runner.ts --selftest OK"
+  },
+  "id_ratification": "requested at review (030/032/039/040-PREP/041/043 precedent)",
+  "self_merge": "never — independent review + R0 merge-intake requested"
+}

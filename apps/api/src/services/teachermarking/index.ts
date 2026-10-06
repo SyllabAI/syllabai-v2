@@ -73,6 +73,24 @@ export const SCOPE_PAPER = "PAPER";
  */
 export const MARKING_STATES = ["PENDING", "SMART_MARKED", "HUMAN_MARKED", "OVERRIDDEN", "SELF_MARKED"] as const;
 
+/**
+ * T-MIG-051: the throughput answersByState WIRE order — Java HashMap
+ * iteration order over the five enum-name String keys (QueueService :271
+ * `new HashMap<>()` seeded from MarkingState.values() in enum order; Jackson
+ * serializes map iteration order). Derived, not asserted: with default
+ * capacity 16 and five puts (no resize), bucket = (h ^ (h>>>16)) & 15 of the
+ * spec-fixed String.hashCode — computed order HUMAN_MARKED, SMART_MARKED,
+ * PENDING, SELF_MARKED, OVERRIDDEN, byte-matching the golden capture
+ * w3-teacher-marking-throughput-rich-200 on every boot.
+ */
+export const BY_STATE_WIRE_ORDER = [
+  "HUMAN_MARKED",
+  "SMART_MARKED",
+  "PENDING",
+  "SELF_MARKED",
+  "OVERRIDDEN",
+] as const;
+
 // ── row shapes (snake_case, as the sql adapter returns them) ────────────────
 
 /** findWithPartAndAttempt graph (EntityGraph questionPart, attempt, attempt.question). */
@@ -1284,7 +1302,16 @@ export class TeacherMarkingQueueService {
   /** throughput (:270-331): workload by state, human windows, leaders, oldest age. */
   async throughput(): Promise<ThroughputView> {
     const byState: Record<string, number> = {};
-    for (const s of MARKING_STATES) byState[s] = 0;
+    // T-MIG-051 (N-4 rich-200 capture): the frozen ThroughputView serializes
+    // a HashMap<String,Long> seeded in enum order (QueueService :271-276) —
+    // Jackson renders it in JAVA HASHMAP ITERATION ORDER, which for these
+    // five String keys is deterministic (String.hashCode is spec-fixed):
+    // capacity 16, five puts (no resize), bucket = (h ^ h>>>16) & 15. The
+    // derived order below reproduces the captured wire order exactly (and
+    // differs from enum/declaration order): HUMAN_MARKED, SMART_MARKED,
+    // PENDING, SELF_MARKED, OVERRIDDEN. Zeroed in THAT order so the wire
+    // bytes match the frozen core; the counts fill in from the group-by.
+    for (const s of BY_STATE_WIRE_ORDER) byState[s] = 0;
     const stateRows = (await this.sql`
       select marking_state, count(*) as count from answers group by marking_state
     `) as unknown as StateCountRow[];
@@ -1332,10 +1359,12 @@ export class TeacherMarkingQueueService {
       .sort((e1, e2) => {
         const byCount = e2[1] - e1[1];
         if (byCount !== 0) return byCount;
-        // null-safe key tie-break, unfiled bucket LAST (:302-307)
+        // null-safe key tie-break, unfiled bucket LAST (:302-307); the key
+        // comparison is the frozen in-memory UUID.compareTo — SIGNED
+        // (uuidCompare, the T-MIG-051 N-4 law), not hex-lex
         const k1 = e1[0];
         const k2 = e2[0];
-        if (k1 !== null && k2 !== null) return k1 < k2 ? -1 : k1 > k2 ? 1 : 0;
+        if (k1 !== null && k2 !== null) return uuidCompare(k1, k2);
         if (k1 === null && k2 === null) return 0;
         return k1 === null ? 1 : -1;
       })
@@ -1460,15 +1489,46 @@ export class TeacherMarkingQueueService {
  * only re-order timestamp-tied rows (section 7: ordering changes which
  * answer a reviewer SEES first, never a mark, gate, or evidence semantic).
  */
+// ── java.util.UUID.compareTo, byte-faithful (T-MIG-051 N-4 closure) ─────────
+//
+// The frozen core's IN-MEMORY orderings compare the two 64-bit halves of a
+// uuid as SIGNED longs (java.util.UUID.compareTo). The golden capture
+// w3-teacher-marking-queue-v2-rich-200 exhibits the law: with attempt
+// created_at tied, 0xf0ae6395-… sorts BEFORE 0x4e094481-… — the 0xf0… msb
+// is NEGATIVE as a signed long — exactly the reverse of unsigned/hex-lex
+// order. The former string-lex tie-breaks here were a disclosed divergence
+// (T-MIG-033 run-005 N-4); the N-4 capture condition fires and the
+// comparator is now ported bit-faithfully. BigInt keeps the 64-bit signed
+// math exact (no Number precision loss on the 64-bit halves).
+const I64_MSB = 1n << 63n;
+const I64_MOD = 1n << 64n;
+function signedI64(hex: string): bigint {
+  const v = BigInt("0x" + hex);
+  return v >= I64_MSB ? v - I64_MOD : v;
+}
+export function uuidCompare(a: string, b: string): number {
+  const ha = a.replaceAll("-", "");
+  const hb = b.replaceAll("-", "");
+  const am = signedI64(ha.slice(0, 16));
+  const bm = signedI64(hb.slice(0, 16));
+  if (am !== bm) return am < bm ? -1 : 1;
+  const al = signedI64(ha.slice(16));
+  const bl = signedI64(hb.slice(16));
+  if (al !== bl) return al < bl ? -1 : 1;
+  return 0;
+}
+
 function compareWithinPaper(a1: MarkingAnswerRow, a2: MarkingAnswerRow): number {
   const byAttempt =
     Date.parse(a1.attempt_created_at) - Date.parse(a2.attempt_created_at);
   if (byAttempt !== 0) return byAttempt;
-  const byAttemptId = a1.attempt_id < a2.attempt_id ? -1 : a1.attempt_id > a2.attempt_id ? 1 : 0;
+  // attempt.id / answer.id tie-breaks: java.util.UUID.compareTo SIGNED law
+  // (see uuidCompare) — TeacherMarkingQueueService.compareWithinPaper :395-403
+  const byAttemptId = uuidCompare(a1.attempt_id, a2.attempt_id);
   if (byAttemptId !== 0) return byAttemptId;
   const byPart = a1.label < a2.label ? -1 : a1.label > a2.label ? 1 : 0;
   if (byPart !== 0) return byPart;
-  return a1.id < a2.id ? -1 : a1.id > a2.id ? 1 : 0;
+  return uuidCompare(a1.id, a2.id);
 }
 
 // ── module composition ───────────────────────────────────────────────────────
