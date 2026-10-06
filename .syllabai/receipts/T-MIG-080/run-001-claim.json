@@ -1,0 +1,26 @@
+{
+  "task": "T-MIG-080",
+  "run": "run-001-claim",
+  "agent": "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)",
+  "recorded_at": "2026-10-06 (operator directive trace 1a110d934c7c8579: 'execute F3')",
+  "base": "origin/main d8916c7 (post-#121-open; gates stamped by this lane this session: bun test apps/api packages 1546 ran / 0 fail / 13 skip / 6036 expect / 82 files EXACT, typecheck x4 exit 0)",
+  "branch": "t-mig-080/r7a",
+  "provenance": {
+    "register_item": "T-MIG-043/run-003-collision-audit.json finding F3 — salvage inventory from closed #76: main's suites lack counterparts for r1's jakarta declaration-order constraint block (4 pins incl. 'constraint failure on cardId beats the unknown-rating parse (:87 @Valid first)'), insert-stores-enum-NAME (:90), ONE-insert/zero-writes query-budget pins, structure-gate POSITIVE pass (UNIT/SUBTOPIC anchors), bad-slug short-circuits-before-any-query. #72-takeaway precedent (hygiene follow-up card).",
+    "sibling_item_F2": "absorbed of record by r1-contracts via PR #86 (be47e32, merged 2026-10-06T03:02:05Z) — .nullable() widening + contract-level null fixture; verified first-hand this session (learner.ts :252-253, learner.test.ts null parses); the route-level constraint architecture was NOT part of F2.",
+    "source_pins": "closed #76 head 416c73d, apps/api/test/learner/flashcards.test.ts (:83 blank-first, :93 cardId size+pattern, :108 subtopicCode size+pattern, :123 beats-parse, :133 ONE-insert budget, :152 enum-NAME capture, :206 structure-gate POSITIVE) + apps/api/test/learner/examseries.test.ts (:205 bad-slug zero-query, :240 absent-row no-op zero-writes, :388 derived-queue COMPUTED-NEVER-PERSISTED zero-writes) — read first-hand from the fetched head."
+  },
+  "zero_collision": {
+    "cards_on_main": "no T-MIG-080 yaml (tasks run through 079; 074-079 owned: r9-hubx/r0 desks per round-20..22 filings)",
+    "remote_heads": "no t-mig-080* head on ls-remote at cut time (074/075 heads are the other desks' claims)",
+    "open_prs": "#121 only (t-mig-075/r0 — ci-replay bearer posture; fence disjoint from apps/api/test/learner-me/** + .syllabai bookkeeping)",
+    "worklog": "zero T-MIG-080 mentions; zero post-audit salvage claims (the F3 mentions in the worklog are this lane's own 043 audit entries at :2488/:2494)"
+  },
+  "rescope_disclosure": [
+    "Main's #74/#85 architecture carries the jakarta request-constraint layer at the ROUTE level (contracts flashcardRatingRequestSchema min/max/regex + routes/learnerme.ts RATING_DEFAULTS classifier -> 400 validation_failed 'field: message', binding-vs-constraint two-envelope law), NOT in the service — r1's four service-level constraint pins therefore port as ROUTE-level counterparts in routes.test.ts: the same frozen wire laws at the layer main implements them. The service docstring's law order (parse-first) is main's deliberate shape; the route's zod safeParse precedes it, so the :87 @Valid-first ORDER LAW holds end-to-end and is pinned there.",
+    "r1's absent-row clear pin ('zero writes') was written against r1's select-then-skip shape; main's clearTargetSeries is the deliberate blind single UPDATE (204-always, no read before the write). The counterpart pins main's shape: exactly the one UPDATE, never an insert, no prior read — the same frozen ifPresent posture at main's query shape.",
+    "Already-pinned expectations are NOT re-pinned: the two pattern laws live in routes.test.ts (:191 cardId pattern / :199 subtopicCode pattern) and the schema-level constraint laws in contracts learner.test.ts (:42) — the salvage adds the MISSING laws only."
+  ],
+  "plan": "10 additive pins, test-only fence: routes.test.ts +4 (blank cardId jakarta default; cardId size; subtopicCode size; constraint-beats-unknown-rating-parse) + learner-me.test.ts +6 (insert stores enum NAME via rowsFor param capture; exact two-query budget anchor-read-then-insert; structure-gate POSITIVE UNIT+SUBTOPIC loop; bad-slug short-circuits-before-ANY-query PUT+DELETE; absent-row clear single-blind-UPDATE law; schedule COMPUTED-NEVER-PERSISTED zero-writes). Zero service/contract/golden edits; authors-never-self-merge; PR to the desk.",
+  "gates_at_claim": "main d8916c7: bun test apps/api packages 1546 ran / 0 fail / 13 skip / 6036 expect / 82 files; typecheck x4 exit 0 (root script = contracts+shared+db+api); golden --selftest to be stamped at run-002"
+}

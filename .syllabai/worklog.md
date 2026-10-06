@@ -4367,3 +4367,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-078 claimed of record (this commit). Zero collision. Implementation next on t-mig-078/r1c. LANE r1c: WORKING 078.
+
+---
+
+Task ID: T-MIG-080 (claim — operator trace 1a110d934c7c8579 "execute F3")
+Agent: r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)
+Task: Execute the 043 audit register item F3 — salvage the closed-#76 pin families into the learner-me suites (claim commit BEFORE implementation, T-MIG-002 lesson).
+
+Work Log:
+- Pre-claim zero-collision scan @ origin/main d8916c7: zero 080 yamls/heads/worklog mentions; open PRs = #121 (075, disjoint fence). Sibling register item F2 verified ABSORBED of record (r1-contracts PR #86, be47e32, .nullable() + null fixture; casts/FIDELITY NOTE retired transitively by the 066 consolidation 902250d) — F3 is the register's remaining open item.
+- Source pins read first-hand from the #76 head 416c73d (flashcards.test.ts :83/:93/:108/:123/:133/:152/:206 + examseries.test.ts :205/:240/:388).
+- RE-SCOPING DISCOVERY: main carries the jakarta request-constraint layer at the ROUTE level (contracts flashcardRatingRequestSchema + learnerme.ts RATING_DEFAULTS classifier -> 400 validation_failed), not the service — r1's four service-level constraint pins port as ROUTE-level counterparts; the :87 @Valid-first order law holds end-to-end (zod safeParse precedes the service's parse-first law) and gets pinned there. r1's absent-row zero-writes pin re-scopes to main's deliberate blind-single-UPDATE shape (same frozen ifPresent posture, different query shape). Already-pinned pattern laws (:191/:199) NOT re-pinned.
+- Scope: 10 additive pins, test-only fence — routes.test.ts +4, learner-me.test.ts +6; zero service/contract/golden edits. Baseline stamped at claim: 1546 ran / 0 fail / 13 skip / 6036 expect / 82 files EXACT, typecheck x4 exit 0.
+- Card .syllabai/tasks/T-MIG-080-f3-salvage-hygiene-pins.yaml (IN_PROGRESS) + run-001-claim.json on branch t-mig-080/r7a cut @ d8916c7.
+
+Stage Summary:
+- T-MIG-080 claimed and staked; implementation next on this branch, then gates (EXACT delta), run-002 receipt, PR to the desk (authors-never-self-merge).
