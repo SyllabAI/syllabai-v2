@@ -213,6 +213,49 @@ describe("POST /api/v1/learners/me/flashcard-ratings — FlashcardRatingControll
     const body = await res.json();
     expect(body.message).toBe("unknown subtopic anchor: NOPE");
   });
+
+  // ── T-MIG-080 F3 salvage: the jakarta declaration-order constraint block ───
+  // r1's closed-#76 service-level pins (:83/:93/:108/:123), re-scoped to the
+  // layer main implements them at: the zod safeParse + RATING_DEFAULTS
+  // classifier here IS the @Valid layer (FlashcardRatingController :87) —
+  // binding before @Valid, constraints before the controller body's enum
+  // parse. The two pattern laws are already pinned above (:191/:199); these
+  // are the MISSING laws of the register item, 1:1.
+
+  test("blank cardId fails first with the jakarta default (:87 @NotBlank)", async () => {
+    const res = await post({ ...GOOD, cardId: "" });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("cardId: must not be blank");
+  });
+
+  test("cardId size law (declaration order)", async () => {
+    const res = await post({ ...GOOD, cardId: "ab" });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("cardId: size must be between 3 and 64");
+  });
+
+  test("subtopicCode size law (declaration order)", async () => {
+    const res = await post({ ...GOOD, subtopicCode: "W" });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("subtopicCode: size must be between 2 and 64");
+  });
+
+  test("constraint failure on cardId beats the unknown-rating parse (:87 @Valid first)", async () => {
+    // the SAME "maybe" rating that independently 400s bad_request when the
+    // cardId is good (pinned above) never reaches the service here — the
+    // route-level constraint fires first: the two-envelope law in one body.
+    const res = await post({ ...GOOD, cardId: "ab", rating: "maybe" });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("cardId: size must be between 3 and 64");
+  });
 });
 
 // ── GET /flashcard-rating-trail (the limit laws) ────────────────────────────

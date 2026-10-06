@@ -4383,3 +4383,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-080 claimed and staked; implementation next on this branch, then gates (EXACT delta), run-002 receipt, PR to the desk (authors-never-self-merge).
+
+---
+
+Task ID: T-MIG-080 (run-002: F3 salvage complete — operator trace 1a110d934c7c8579)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)
+Task: Land the F3 salvage — the closed-#76 pin families the learner-me suites lacked (claim 17c202c BEFORE implementation).
+
+Work Log:
+- 10 ADDITIVE PINS landed: routes.test.ts +4 (the jakarta declaration-order constraint block re-scoped 1:1 to the route layer main implements it at: blank-cardId jakarta default, cardId size, subtopicCode size, constraint-beats-unknown-rating-parse) + learner-me.test.ts +6 (enum-NAME storage capture params[4]; exact two-query budget; structure-gate POSITIVE UNIT+SUBTOPIC with a new NODE_UNIT fixture; bad-slug short-circuits-before-ANY-query PUT+DELETE; absent-row single-blind-UPDATE no-op; schedule COMPUTED-NEVER-PERSISTED zero-writes). Already-pinned pattern laws (:191/:199) not re-pinned.
+- THE SALVAGE EXPOSED A LIVE DIVERGENCE: the blank-cardId pin failed — the route classifier's @NotBlank-before-@Size branch was DEAD CODE (zod v3 issues carry no `input`), serving the @Size message for blank strings. FIXED per the auth router's in-repo pattern (T-MIG-017 heritage): contracts learner.ts min(1,'must not be blank') on cardId+subtopicCode + classifier same-field notBlank-message scan (first-field-error law kept; cross-field contamination excluded). Golden exposure verified ZERO (no golden exercises blank strings on these surfaces; captured 400 bodies byte-unchanged). Full disclosure in run-002 + card amendment.
+- Register observations filed (out of pin scope, R0 disposition): rating blank-string posture, whitespace-only-blank posture, note-vote notBlank dead-probe inheritance.
+- GATES: typecheck x4 exit 0; bun test apps/api packages 1556 ran / 1543 pass / 0 fail / 13 skip / 6066 expect = d8916c7 baseline +10 tests/+30 expects EXACT; bun test apps/hub 36/0/291 unchanged; golden --selftest OK; zero golden files; zero Neon.
+- Card T-MIG-080 -> IN_REVIEW (amendment key appended, folded block intact, parse-validated); run-002-f3-salvage.json receipt. PR to the desk (authors-never-self-merge).
+
+Stage Summary:
+- The 043 audit register is now FULLY dispositioned: F1 archived, F2 absorbed (#86), F3 landed here (T-MIG-080), F4 cosmetics no-gate. Awaiting R0 merge.

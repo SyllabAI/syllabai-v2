@@ -95,11 +95,21 @@ export const masteryBandSchema = z.enum(["LOW", "DEVELOPING", "SECURE"]);
 export const flashcardRatingRequestSchema = z.object({
   cardId: z
     .string()
+    // @NotBlank fires before @Size in jakarta's declaration order — the
+    // notBlank violation travels as its own min(1) issue so the route
+    // classifier can serve "cardId: must not be blank" verbatim (T-MIG-080
+    // F3 salvage: the auth router's validationMessage pattern, T-MIG-017).
+    .min(1, "must not be blank")
     .min(3)
     .max(64)
     .regex(/^[A-Za-z0-9_-]+$/, "card id must be the hub content id"),
   rating: z.string().min(1),
-  subtopicCode: z.string().min(2).max(64).regex(/^[A-Za-z0-9-]+$/),
+  subtopicCode: z
+    .string()
+    .min(1, "must not be blank")
+    .min(2)
+    .max(64)
+    .regex(/^[A-Za-z0-9-]+$/),
 });
 export type FlashcardRatingRequest = z.infer<typeof flashcardRatingRequestSchema>;
 
