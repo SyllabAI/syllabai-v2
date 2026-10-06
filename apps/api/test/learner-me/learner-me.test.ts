@@ -48,6 +48,7 @@ const NODE_ANCHOR = "20000000-0000-4000-8000-000000000001"; // SUBTOPIC
 const NODE_TOPIC = "20000000-0000-4000-8000-000000000002"; // TOPIC
 const NODE_CONCEPT = "20000000-0000-4000-8000-000000000003"; // CONCEPT (semantic layer)
 const NODE_SUBJECT = "20000000-0000-4000-8000-000000000004"; // the subject root
+const NODE_UNIT = "20000000-0000-4000-8000-000000000005"; // UNIT (T-MIG-080 F3 salvage: the POSITIVE-gate fixture)
 const NODE_MISSING = "20000000-0000-4000-8000-0000000000ff";
 const SERIES_A = "1a000000-0000-4000-8000-000000000001";
 const SERIES_B = "1a000000-0000-4000-8000-000000000002";
@@ -78,6 +79,7 @@ const anchorByCode: Record<string, { id: string; node_type: string }> = {
   "WCH11-T1": { id: NODE_TOPIC, node_type: "TOPIC" },
   "CONCEPT-x": { id: NODE_CONCEPT, node_type: "CONCEPT" },
   "WCH11": { id: NODE_SUBJECT, node_type: "SUBJECT" },
+  "WCH11-U1": { id: NODE_UNIT, node_type: "UNIT" }, // T-MIG-080 F3 salvage: the structure range's other end
 };
 
 const anchorRoute: Route = {
@@ -240,6 +242,49 @@ describe("recordFlashcardRating (FlashcardRatingController :84-107)", () => {
     });
     expect(sql.queries.filter((q) => q.startsWith("insert")).length).toBe(2);
     expect(sql.queries.some((q) => q.startsWith("update"))).toBe(false);
+  });
+
+  // ── T-MIG-080 F3 salvage: the closed-#76 pin families the suite lacked ────
+
+  test("insert stores the rating as the enum NAME (:90)", async () => {
+    let captured = "";
+    const sql = fakeSql([
+      anchorRoute,
+      {
+        match: /insert into flashcard_ratings/,
+        rows: [],
+        rowsFor: (params) => {
+          captured = String(params[4]); // (id, learner_id, node_id, card_id, rating, ...)
+          return [];
+        },
+      },
+    ]);
+    await recordFlashcardRating({ sql, clock }, LEARNER, {
+      cardId: "fl_card_9", rating: "still-learning", subtopicCode: "WCH11-S1-a",
+    });
+    expect(captured).toBe("STILL_LEARNING"); // the enum NAME binds to the column, never the wire form
+  });
+
+  test("budget: exactly the anchor read then the insert — ONE insert, nothing else", async () => {
+    const sql = fakeSql([anchorRoute, { match: /insert into flashcard_ratings/, rows: [] }]);
+    await recordFlashcardRating({ sql, clock }, LEARNER, {
+      cardId: "fl_card_9", rating: "know", subtopicCode: "WCH11-S1-a",
+    });
+    expect(sql.queries.length).toBe(2); // the anchor lookup + the append, no secret writes
+    expect(sql.queries[1]).toMatch(/^insert into flashcard_ratings/);
+    expect(sql.queries[1]).toContain("occurred_at");
+  });
+
+  test("UNIT and SUBTOPIC anchors pass the structure gate (the structure range, not one level)", async () => {
+    for (const [code, nodeId] of [["WCH11-U1", NODE_UNIT], ["WCH11-S1-a", NODE_ANCHOR]] as const) {
+      const sql = fakeSql([anchorRoute, { match: /insert into flashcard_ratings/, rows: [] }]);
+      const view = await recordFlashcardRating({ sql, clock }, LEARNER, {
+        cardId: "fl_card_9", rating: "know", subtopicCode: code,
+      });
+      expect(view.rating).toBe("know");
+      expect(view.nodeId).toBe(nodeId);
+      expect(sql.queries.filter((q) => q.startsWith("insert")).length).toBe(1);
+    }
   });
 });
 
@@ -485,6 +530,20 @@ describe("flashcard review schedule (FlashcardReviewScheduler + params)", () => 
     expect(view.summary.nextDueAt).toBe("2026-10-06T10:00:00.000Z"); // fl_b's dueAt
     expect(view.cards.every((c) => c.subtopicCode === "WCH11-S1-a")).toBe(true);
     expect(view.generatedAt).toBe(NOW_ISO);
+  });
+
+  test("the schedule is COMPUTED-NEVER-PERSISTED (ADR-031): the trail read + anchor codes only, zero writes", async () => {
+    const sql = fakeSql([
+      {
+        match: /order by card_id asc, occurred_at asc, id asc$/,
+        rows: [ratingRow({ id: RATING_1, card_id: "fl_a", occurred_at: T1 })],
+      },
+      codeRoute({ [NODE_ANCHOR]: "WCH11-S1-a" }),
+    ]);
+    const view = await flashcardReviewSchedule({ sql, clock }, LEARNER);
+    expect(view.cards).toHaveLength(1);
+    expect(sql.queries.length).toBe(2); // the trail read + the batched code lookup
+    expect(sql.queries.some((q) => /^(insert|update)/i.test(q))).toBe(false);
   });
 });
 
@@ -751,6 +810,28 @@ describe("setTargetSeries / clearTargetSeries / examTargetsFor (:71-117 + ExamTa
     const sql = fakeSql([{ match: /update learner_course_enrolments/, rows: [] }]);
     await clearTargetSeries({ sql, clock }, LEARNER, "igcse-chemistry-19");
     expect(sql.queries[0]).toContain("target_series_id = null");
+  });
+
+  test("bad slug short-circuits before ANY query (PUT and DELETE)", async () => {
+    // r1's closed-#76 examseries pin (:205), re-scoped to main's PUT + DELETE
+    const putSql = fakeSql([]);
+    await setTargetSeries({ sql: putSql, clock }, LEARNER, "Bad Slug", { seriesId: SERIES_A }).catch(
+      () => undefined,
+    );
+    expect(putSql.queries.length).toBe(0);
+    const deleteSql = fakeSql([]);
+    await clearTargetSeries({ sql: deleteSql, clock }, LEARNER, "Bad Slug").catch(() => undefined);
+    expect(deleteSql.queries.length).toBe(0);
+  });
+
+  test("absent-row clear stays the silent no-op: the single blind UPDATE, never an insert (the frozen ifPresent posture, 204-always)", async () => {
+    // main's shape of r1's :240 law: the WHERE clause matching nothing IS the
+    // no-op — no read before the write, exactly the one query, zero inserts
+    const sql = fakeSql([{ match: /update learner_course_enrolments/, rows: [] }]);
+    await clearTargetSeries({ sql, clock }, LEARNER, "igcse-chemistry-19");
+    expect(sql.queries.length).toBe(1);
+    expect(sql.queries[0]).toContain("target_series_id = null");
+    expect(sql.queries.some((q) => q.startsWith("insert"))).toBe(false);
   });
 
   test("targetsFor: empty declared → [] with NO second query; vanished series filtered", async () => {
