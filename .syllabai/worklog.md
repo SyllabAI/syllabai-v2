@@ -2902,3 +2902,20 @@ Work Log:
 Stage Summary:
 - Directive satisfied: R0 had merged (#86/#85/#87/#91); this lane reviewed+merged #89 (052-t2, the full Wave-5 classroom routes+mounts — the module is now wire-live) with the independent review it requested; #84/#88 left honestly guarded (CI pending on active heads). Final-state gates exact at 9032b9e: 1050/0/13skip/3211 + selftest OK + tip CI green. Register unchanged (NEON_BRANCH_CAPACITY blocks the replay instrument — run #7 failure class; H-2; identity pins; 429 pacing; 053 id-band ruling now MOOT for 053 itself — r3a filed #84 under 053 with the #91 renumber precedent applied to 055).
 - LANE r1c: STOP for this round.
+
+---
+Task ID: 20
+Agent: r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, operator trace 1a10f3ef205fa961)
+Task: Operator directive "Check if R0 has merged or not. If not, review+merge yourself and continue working" — round sweep + Wave-6 claim.
+
+Work Log:
+- R0-MERGE CHECK: R0 HAD merged six PRs since the last round (#82 052-t1 39fa554, #83 7dfdd16, #85 043-t2 NBA 66c6618, #86 F2 76e26e9, #87 414f4a6, #91 055 9bebf7e); #89 (this lane's 052-t2) was merged by r1c 9032b9e with independent review (6008773196) — the double-claim on 052-t2 resolved per §2.1 (our 0aaca52 @ 02:50:00Z incumbent; R0's #90 closed as the losing duplicate).
+- MERGED #88 (r0r6 neon-replay run-7 divergence triage, 62 cases / 10 classes) -> 4fed5ba: intake 3ec0e2f (worklog append-only union, 0 markers) with gates typecheck x4 / 1022-0-13skip-3072 / hub 36-0 / selftest OK; a parallel reviewer intake (043b497, incl. the #89 main) was stacked on ours mid-CI — re-gated at 043b497 (1063-0-13skip-3211 = main+89 EXACT, triage adds zero code) and sha-pinned API-merged.
+- MERGED #84 (T-MIG-053 t1 r3a — knowledge KG+coverage contracts+services+58 pins) -> ced0111: intake b29b874 (worklog union 0 markers; contracts index keep-both auto-resolved); gates @ b29b874: typecheck x4 exit 0 / 1103-0-13skip-3288 over 61 files = main 1063-3211-59f + claimed delta +40/+77/+2 EXACT / hub 36-0 / selftest OK / CI verify+hub success; arithmetic reconciled per-pin before merge.
+- QUEUE SWEPT: 0 open PRs at claim-scan time; main ced0111 (later d328f9d — w0a's 060 claim push observed post-scan, not an intake duty).
+- CONTINUE-WORKING = CLAIMED **T-MIG-061** = Wave-6 intervention runs (V26, 928 frozen lines / 11 files / 9 endpoints over InterventionRunService :178 + ScenarioService :116): the FIRST SELF-CONTAINED Wave-6 band — CLA (the plan's next listed item) is DEFERRED with disclosure: ClaService :130-148 hard-depends on TutorGenerator/VectorRetriever/RRF/Reranker/CitationResolver/LearnerModelService/TutorPolicyService, ALL inside w0a's in-flight t-mig-060/w0a fence (KaRAG chain, card CLAIMED at scan); building on unmerged files is the §2.1 collision class. 061's collaborators are all on main (NBA engine #85, SkillState #41, subjects #021); baseline schema already carries intervention_run/_step/_evidence (0000_organic_mauler.sql) — zero R2 work.
+- Zero-collision scan re-run immediately before branch cut @ ced0111: ls-remote exactly ONE t-mig-06* head (060/w0a); ZERO T-MIG-061 refs on main; 0 open PRs. Claim commit = card + run-001-claim receipt + this entry, one commit, claim-before-work law.
+- Id ratification requested at PR review (030/032/039/040-PREP/041/043/055/060 precedent): 061 = next free id; CLA ratifies a later free id when 060 lands.
+
+Stage Summary:
+- Queue swept (2 foreign PRs reviewed+merged, arithmetic-exact; own PR landed by the desk per the self-merge law); T-MIG-061 claimed on t-mig-061/r9-hubx. Implementation (contracts -> services -> pins) next; gates + PR to follow; NO self-merge.
