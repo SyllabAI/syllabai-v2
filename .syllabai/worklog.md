@@ -2810,3 +2810,23 @@ Work Log:
 
 Stage Summary:
 - T-MIG-055 DONE end-to-end (fix + collision-clean re-file + live union proof on main). Register: rich-200 first-run disposition sits with R6/R0; H-2 third posture / identity pins / 429 pacing unchanged. The daily 02:30 UTC schedule owns the census from here. LANE IDLE.
+
+---
+Task ID: R0-ROUND-15 (052-t2 double-claim arbitration + delegated intake + merge-intake)
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Operator directive (trace 1a10f13cbad64001): "Wave-5 classroom band" — executed as the 052 tranche-2 route+mount band, which became a double-claim arbitration and ended in this lane's charter role: independent review + merge-intake of the winner.
+
+Work Log:
+- SYNC FIRST at fe97f94: the t2 gate the t1 receipt named was OPEN (#82 39fa554 + goldens #83 7dfdd16 landed). Zero-collision scan at claim time: 0 open PRs, 052/051 branches contained — CLEAN at that instant.
+- CLAIMED t2 at 02:54:00Z (7f95454) and built the full tranche in parallel: routes/classroom/index.ts (3 routers, 12 endpoints), OUT-OF-FENCE index.ts mounts, 47 route pins, plus a disclosed contracts amendment (the auth.ts notBlank refine — the @NotBlank-exact port; whitespace bodies fail @Valid with validation_failed before the controller law; category .nullish() per Jackson explicit-null binding). Gates at 6e9bfcf: typecheck x4 exit 0; 995/0/13skip/2839 = 948+47 exact; selftest OK; zero golden contact.
+- COLLISION SURFACED on PR filing: r9-hubx (the card owner) had claimed t2 at 02:50:00Z (0aaca52 — four minutes earlier) and filed #89; my #90 became the losing duplicate. r1c's independent routing-vs-claim ruling (Task 18a, already on main) corroborated the incumbent. §2.1 earliest-claim-wins: #89 WINS.
+- STAND-DOWN executed cleanly: #90 closed with the on-thread ruling comment citing both commit timestamps (6008653965); my branch preserved as evidence of record, no force-push, no re-write of any worklog entry. The parallel builds independently converged on every disputed law (same 12-endpoint surface, §17 chain, SAME-201 re-enroll, two-envelope law, mount-region resolution, whitespace-envelope conclusion) — corroborating prior art credited.
+- DELEGATED REVIEWER INTAKE of the winner (the w0a #85 precedent): main had advanced to e6cc4d1 (#85 043-t2 NBA + bookkeeping) — worklog append-only union on the author's branch (main's entries verbatim at the tail; r9-hubx's Task-17 entries preserved above; ONE stray ' HEAD' residue line dropped from their side, same class as w0a's e6cc4d1 fix, disclosed); index.ts import union (classroom + learnerme mounts coexist; roster full-path per the author's design). Gates at intake head a237a83: typecheck x4 exit 0; 1047/0/13skip/3204 = main 1006/3065/58files + declared +41/+139/+1file EXACT (main's numbers verified live in a throwaway worktree); selftest OK. Fast-forward push bf220ff..a237a83, no force.
+- INDEPENDENT REVIEW of #89 (subagent-run, line-against-line vs frozen 6cad6ef; author r9-hubx ≠ reviewer): APPROVE-WITH-NITS zero blockers — all 12 endpoints verbatim-parity, mount topology verified, worklog union integrity verified, red-flag scan clean (no to_char interpolation, zero golden contact, services/classroom untouched, linear history). Posted to the PR (6008773196) with the R0 RATIFICATION of the OUT-OF-FENCE mount commit bb28592.
+- MERGE-INTAKE: CI verify+hub green on a237a83; sha-pinned API merge → 9032b9e (parents b4e2e56 + a237a83 verified). Card T-MIG-052 flipped IN_REVIEW → DONE.
+- RE-LAND DISCLOSED: the first housekeeping push (f954341) lost the FF race to #88's concurrent intake (043b497 was cut from a pre-housekeeping base) — the unpushed commit was DROPPED and this entry + the card DONE flip re-landed on the post-#88 tip per the append-only/no-force law (the r1c round-11 FF-race precedent; zero entry loss — the re-landed receipt is byte-identical plus this disclosure).
+
+Stage Summary:
+- The Wave-5 classroom band (T-MIG-052) is COMPLETE: t1+t2 both landed — /api/v1/teacher/classes (8), /api/v1/learners/me/classroom (3), /api/v1/teacher/learners (1) live at frozen parity with 41 route pins. The double-claim resolved with zero code duplication landed and zero entry loss (append-only held on both sides).
+- REGISTER: (1) whitespace-body @NotBlank envelope refinement for the classroom request schemas — the closed #90's notBlank-refine prior art is the ready-made fix (+2 pins, all t1 pins green); (2) routes/classroom.ts defensive maximum-fallback nit; (3) fleet R-1 null-body envelope edge (recurring nit, unchanged).
+- Board: 052 DONE; 053 claimed (r3a #84 + parallel r0 branch observed), 055 landed by parallel lanes, 043-t2 landed #85. LANE R0-integrator: STOP for this round.
