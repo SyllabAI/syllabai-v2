@@ -3931,6 +3931,20 @@ Stage Summary:
 
 ---
 
+Task ID: R1-ROUND-21 (trace 1a1100f03295c239)
+Agent: r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Operator directive "check and claim and continue" — census, claim the next free band, execute.
+
+Work Log:
+- CHECK: main 97295d1 (r4b-ROUND-20 receipt); queue zero, open PRs zero; #107/#108/#109/#110/#112 all merged of record; merged-tip gates 1385/0/13skip/5599/73f of record and not re-measured this round (two independent lanes already reconciled EXACT: R0-MERGE-DESK-19 + R4b-ROUND-20).
+- CLAIM CENSUS: no free filed bands (043/053/061/065 owner-property; RICH-200-C/E case-owner lanes). Claimed from the REGISTER instead per the F-B/064 precedent: the inferred-constraint class residual (disclosed T-MIG-057, restated 'unchanged' on the 064 F-B receipt) -> FILED as T-MIG-071 (the selfmark dead-constraint class). 069 skipped for w0a's CLA refile per ruling2; 070 taken; 071 next free. Zero-collision: no 071 in .syllabai/, no t-mig-071 heads, fence disjoint from r3a's live 053 t3/t4.
+- FROZEN LAW re-verified line-against-line @ 6cad6ef: SelfMarkRequest.java:59 bare List = no @Valid cascade -> the element @Min(0)/@Max(99) (:56) NEVER evaluate (dead letter, Jackson binds any int); LearnerSelfMarkService.java:113-121 bound loop -> ConflictException 'marks N outside part bound 0–X' 409 (U+2013 verbatim); :115 bound=Math.max(marks,0) + the 'bound > 0 &&' guard = the 0-mark-part sharp edge (any marks >= 0 accepted on a 0-bound part — pinned, not 'fixed'). The port service is ALREADY faithful (selfmark/index.ts:218-220) — the divergence is contracts-only: assessment.ts:284 .min(0).max(99) renders the dead constraints live and kills -1/100 at binding with the WRONG envelope (400 validation_failed where frozen answers 409).
+- Branch t-mig-071/r1 cut @ 97295d1; claim commit first (card + receipt + this entry), pushed before implementation (wipe-protection). Residual disclosed on the receipt: the Jackson-Integer coercion class (int32 overflow / fractional) — register-only, not fixed in this fence.
+
+Stage Summary:
+- T-MIG-071 claimed (IN_PROGRESS): contracts-only widening (.min(0).max(99) off the bind law) + the :184-186 pin flip to the bind law + the 0-mark-part edge pin. Implementation + A/B gates next (run-002). Authors never self-merge — the PR will be handed to the desk.
+- T-MIG-071 run-002 (implementation): contracts marksAwarded widened to the bind law (.min(0).max(99) removed — the dead constraints no longer rendered live); the assessment.test.ts rejection pin flipped; NEW contracts residual pin (int32 overflow class, disclosed); NEW selfmark service pins (negative-marks arm 409 + the 0-mark-part sharp edge); the self-mark route's wire pin (smartmark harness, SME flow) flipped from the 400 validation_failed divergence-of-record to the frozen 409 conflict 'marks 100 outside part bound 0–3'. SCOPE AMENDMENT disclosed on the card (the wire pin's home is test/smartmark/routes.test.ts — test-file-only, same band). Gates A/B exact: 97295d1 = 1398/1385/0/13/5599/73f vs branch = 1401/1388/0/13/5605/73f — +3/+3/+0/+6 EXACT; typecheck x3; selftest OK. Zero src contact (the service was already faithful). PR next, handed to the desk (authors never self-merge).
+
 Task ID: R0-OPERATOR-RULINGS (operator trace 1a1100c71ff48e05)
 Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
 Task: Operator answered the four-ruling menu verbatim — "1 - Option B / 2 - (a) / 3 - Tolerate / 4 - Option A" — file the rulings of record and route the executable work.
@@ -3944,6 +3958,7 @@ Work Log:
 
 Stage Summary:
 - The four open operator items are RULED and ROUTED of record: no decision is pending on the register anymore — the executable residue is T-MIG-071 + T-MIG-072 (both OPEN for the lanes) plus the standing case-owner/tooling items. Projected clearing unchanged: 177/177 reachable, zero deletions, zero comparator widenings. Desk IDLE; suggestion: the lanes claim 071/072 per earliest-claim-wins, or the operator routes them explicitly.
+- T-MIG-073 run-003 (REFILE of the T-MIG-071 claim): the id was lost to r0's ruling3 filing per earliest-claim-wins — r0 committed the 071 card (operator-ruling-case-amendments, a DIFFERENT band, zero scope overlap) on main @ 07:18:16Z, 3 minutes before this lane's claim commit 00f457f @ 07:21:06Z; the ruling2 scan-vs-push race disposition controls (the earlier claim takes the id). git-mv card + receipts 071->073 with provenance; ids updated in the schema header, the two contracts pins, the two selfmark service pins, and the smartmark wire pin; 073 verified free @ origin/main 6347b1a. The superseded t-mig-071/r1 branch name stays on origin (cosmetic per ruling2 — no force-push). Intake of 6347b1a landed first (worklog-tail add/add union, 1 hunk, 249 Task sections alive, asserts A1/A3/A4). Band content unchanged; gates re-verified below before push.
 Task ID: T-MIG-067 (claim)
 Agent: lane w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
 Task: The 'continue working' half of operator trace 1a10fbe9465708c9 (the merge half is worklog Task 5) — claim the next unfiled Wave-6 surface per the standing claim word trace 1a10d2c88b6f13c5.

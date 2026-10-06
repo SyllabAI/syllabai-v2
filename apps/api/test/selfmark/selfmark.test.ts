@@ -204,6 +204,28 @@ describe("SelfMarkService — settle law (LearnerSelfMarkService :65-134)", () =
     );
   });
 
+  test("negative marks arm → 409 'marks -1 outside part bound 0–3' (the marks < 0 disjunct, LearnerSelfMarkService :117 — T-MIG-073: the wire can now deliver -1, the dead @Min(0) removed from the bind law)", async () => {
+    const sql = fakeSql(routes());
+    await expectError(
+      new SelfMarkService(sql, claimingPublisher(), FIXED_CLOCK)
+        .selfMark(LEARNER_ID, ATTEMPT_ID, new Map([[PART_A, -1], [PART_B, 1]]), null),
+      ConflictError,
+      "marks -1 outside part bound 0\u20133",
+    );
+  });
+
+  test("0-mark-part sharp edge: bound = Math.max(0,0) = 0 + the 'bound > 0 &&' guard → ANY marks ≥ 0 settles (frozen :115-117 verbatim — pinned, not 'fixed'; T-MIG-073)", async () => {
+    const sql = fakeSql(routes({
+      answers: [answerRow({ marks: 0 }), answerRow({ id: ANSWER_B, question_part_id: PART_B, label: "(b)", marks: 1 })],
+    }));
+    // PART_A declares marks() = 0 → bound 0 → the marks > bound arm is
+    // structurally OFF: marksAwarded 50 is NOT a conflict — frozen settles.
+    const view = await new SelfMarkService(sql, claimingPublisher(), FIXED_CLOCK)
+      .selfMark(LEARNER_ID, ATTEMPT_ID, new Map([[PART_A, 50], [PART_B, 1]]), null);
+    expect(view.parts.length).toBe(2);
+    expect(sql.queries.some((q) => ATTEMPT_UPDATE.test(q))).toBe(true); // settlement completed
+  });
+
   test("SMART_MARKED answers are still settable (pre-settlement only excludes HUMAN/SELF/OVERRIDDEN)", async () => {
     const sql = fakeSql(routes({
       answers: [answerRow({ marking_state: "SMART_MARKED", marks_awarded: 1 }), answerRow({ id: ANSWER_B, question_part_id: PART_B, label: "(b)", marks: 1, marking_state: "SMART_MARKED", marks_awarded: 0 })],
