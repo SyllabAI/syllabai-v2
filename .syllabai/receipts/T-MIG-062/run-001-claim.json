@@ -1,0 +1,41 @@
+{
+  "task": "T-MIG-062",
+  "run": "001-claim",
+  "agent": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "operator_trace": "1a10f73d46ea053d ('Check if R0 has merged or not. If not, review+merge yourself and continue working' — R0 merge-of-record VERIFIED IN, open queue zero, so the standing continue-working claim directive executes; PAT persists at /home/z/.ghtoken 0600 outside every git repo per the standing 'make sure you dont lose the PAT' directive, referenced by path, never embedded)",
+  "date": "2026-10-06T04:42:02Z",
+  "base": "37d8825 (origin/main tip: R0-AUTO manual sweep receipt trace 1a10f776069349cd — #95 af33b6f 061-t1 landed; local gates re-run INDEPENDENTLY at this tip before the claim: bun install --frozen-lockfile OK, typecheck x4 exit 0, 1144 pass / 0 fail / 13 skip / 3485 expect over 63 files = EXACT vs the receipt, golden --selftest OK)",
+  "branch": "t-mig-062/r4b",
+  "r0_merge_check_of_record": {
+    "verified": [
+      "#92 (T-MIG-057, this lane's element-null parity) merged e82f5d5 @ 04:02:29Z by R0-AUTO job 438940",
+      "#93 (T-MIG-056 notBlank envelope) merged 9ba1c39 @ 04:06:19Z",
+      "#94 (T-MIG-058 depth pin — r1's post-merge rescue of the 057 nested-null over-fire) merged 1aea8bc by the manual sweep; this lane INDEPENDENTLY re-verified the finding line-against-line against frozen 6cad6ef before the sweep landed it (@NotNull :55 dead without cascade, HashMap.put(null,1) legal :44, exact-parts gate 400s; the i.path.length===2 predicate is exactly right; SelfMarkRequest is :59 not :58)",
+      "#95 (T-MIG-061 t1 intervention runs) merged af33b6f @ 04:27 UTC sweep, intake bee47d8"
+    ],
+    "open_queue_at_census": "0 open PRs (04:35Z); remaining non-DONE cards are landed-pending-R0-DONE-flip (043/057/058) or other lanes' active fences (053 r3a, 060 w0a, 061-t2 r9-hubx)"
+  },
+  "band_selection": {
+    "why_062": "the first SELF-CONTAINED Wave-6 band after r9-hubx's 061: CLA hard-depends on w0a's in-flight 060 KaRAG fence (r9's own disclosure), tutor sessions depend on KaRAG + the SSE spike, OCR is a 326KB monster band, LLM admin drags the provider-chain plumbing shared with 060's consumers; research calibration reads ONLY telemetry_events + frozen constants — zero overlap with any in-flight fence",
+    "scope": "ONE GET endpoint + a 515-line deterministic read service; contracts + service + route + pins; zero golden/service-file contact beyond the new module fence"
+  },
+  "frozen_evidence": {
+    "core": "syllabai-core @ 6cad6ef9463e8d21f1555456561a4caaf7e89395 (all files fetched first-hand at claim)",
+    "citations": [
+      "ResearchCalibrationController :1-40 — GET /api/v1/research/learner-model/calibration?nodeId=, @PreAuthorize('hasAnyRole(TEACHER, ADMIN)') method re-gate",
+      "SecurityConfig :88-90 — /api/v1/research/** hasAnyRole('TEACHER','ADMIN')",
+      "LearnerModelCalibrationService :120-181 — BIN_COUNT=10, MIN_REPORTABLE_LEARNERS=5 code-constant law, SEGMENT_ORDER/GAP_ORDER fixed taxonomies",
+      "LearnerModelCalibrationService report() :337-400 — single ordered fetch findByTypeOrderByOccurredAtAsc(BKT_UPDATED), skip-before-filter row walk, emission mapping, k-anonymity cell suppression",
+      "LearnerProperties.Bkt :52-97 — record + compact-ctor paper normalization + toParams(type, optionCount) per-format guess resolution with the 1-slip-1e-9 clamp",
+      "LearnerModelCalibrationService Accum :414-486 — per-bin learner sets, anchorN, ece() Σ (count/n)·|meanPredicted−observed|, bins() three-state rendering",
+      "LearnerModelCalibrationService :488-515 — longValue/doubleValue defensive parsers (Number or numeric-string)"
+    ]
+  },
+  "db_baseline": "telemetry_events present (schema.ts :133: payload jsonb, learner_id, ck_telemetry_type includes BKT_UPDATED, ix_telemetry_type) — the band's ONLY table; experiments/model_versions noted but out of fence (tranche-3 registry path)",
+  "zero_collision": {
+    "ls_remote": "zero t-mig-062* heads at claim (fetch 04:35Z window); ALL heads enumerated per the 055 lesson — only active fence = t-mig-060/w0a (w0a's KaRAG, no PR)",
+    "register": "next free Wave-6 id = 062 (060 w0a in flight, 061 r9-hubx t2 pending; 059 left free by convention — Wave-6 ids run 060..066)",
+    "surface": "new module fences: contracts/src/research.ts, services/research/, routes/research/, test/research/ + ONE OUT-OF-FENCE mount line in index.ts + ONE contracts index re-export line — disjoint from every open card"
+  },
+  "claim_law": "claim-in-first-commit: card yaml + run-001-claim receipt + worklog entry in the SAME commit; implementation lands as run-002 after gates; push IMMEDIATELY on the persisted PAT; PR authored by R4-api-b → NOT self-merged (authors-never-self-merge), handed to the R0-AUTO/review desk"
+}
