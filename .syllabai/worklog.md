@@ -4224,3 +4224,22 @@ Work Log:
 
 Stage Summary:
 - Queue ZERO, board truthful (3 stale cards flipped of record), and the standing re-proof instrument's first fully-provisioned scheduled verdict is FILED of record: 149/177 with a 4-class taxonomy (rate-limit collision / auth-envelope inversion / fixture volatility / route reachability). r0 | status census + replay filing complete | IDLE | suggestion: route CLASS B (auth inversion) to R6 first — it is the only class with a potential security posture implication; CLASS D needs a route-claim check against the tranche-4 service land.
+
+---
+Task ID: R0-AUTO cron 438940 @ 2026-10-06 09:30Z (17:30 +08) — round-21 desk sweep
+Agent: R0-auto (Super Z, zai-web session discord DM 482bf272)
+Task: Periodic merge-desk sweep (max 2 merges, oldest first) per the standing cron payload; plus operator DM trace 1a1107d8c03ba415 ("T-MIG-071 proceed if not assigned yet") adjudicated in-run.
+
+Work Log:
+- PRE-SWEEP: no wipe (PAT live as SyllabAI, 3rd consecutive round); lock protocol clean.
+- CENSUS: 1 open PR — #118 T-MIG-074 (r9-hubx: Wave-7 cutover prep — §7 preconditions audit + executable runbook + migration report of record), head 7b2f083, 4 min old; main advanced e9ef235 -> 30008b4 mid-round (851df19 register flips, 6227b6a R0-REPLAY-FILING-1 + card flips, ed0965a r1c receipt, db9b9cc/30008b4 intakes).
+- #118 ORIGINAL HEAD: 0 check-runs on 7b2f083 (event-drop-class or CI-not-started; PR 4 min old) AND mergeable=False/dirty vs 30008b4 -> desk intake initiated regardless (an intake push creates a new head with fresh CI either way).
+- DESK INTAKE executed: merge origin/main into t-mig-074/r9-hubx at 0f00fab — single worklog conflict, union resolver (merge orientation) 38/38 non-empty lines preserved, zero markers; gates first-hand at 0f00fab: bun install --frozen-lockfile OK; typecheck x3 exit 0; bun test apps/api packages 1546 ran / 0 fail / 13 skip / 6036 expect / 82 files = main-verified baseline EXACT (zero src contact: PR band is docs/ + .syllabai/ only); golden --selftest OK (incl. T-MIG-072 composition + T-MIG-024).
+- PUSH RACE (benign): my intake push rejected non-fast-forward — the r9-hubx lane had concurrently pushed their OWN intake b4ce867 (30008b4 union + report §1/§3/§4/§6 + run-001 P2 evidence refreshed to the 149/177 aggregate; content superset of my 0f00fab). Per the #102 precedent my duplicate intake was DISCARDED (worktree removed), zero-harm exit, no force-push.
+- #118 GATES at the REAL head b4ce867: CI verify completed/success + hub completed/success; mergeable=True/clean; reviews 0, comments 0; file set unchanged inside the fence (docs/CUTOVER_RUNBOOK.md, docs/MIGRATION_REPORT.md, .syllabai/** — zero .java, zero core/hub, zero Neon/prod).
+- MERGED OF RECORD: PR #118 -> 3c0bf08 via the sha-pinned PUT (sha=b4ce867eabdb83aa5f1def93017e3b9d11d54e68) at ~09:44Z, no mid-merge race. MAIN CI at 3c0bf08: verify completed/success + hub completed/success.
+- T-MIG-071 ADJUDICATION of record (operator DM trace 1a1107d8c03ba415 "proceed if not assigned yet"): 071 IS ASSIGNED — R4-api-b claim f0b7189 @ 09:16:36Z (on main, direct-main claim-in-first-commit, zero-collision-verified at claim time) vs r0desk claim e384d59 @ 09:30:18Z (branch-only, operator trace 1a1107dcfaa8d9a1) — EARLIEST-CLAIM-WINS -> R4-api-b owns 071 (impl head f6a4bb8 already on their branch; r1c receipt ed0965a acknowledged the hands-off). The r0desk claim is VOID (14 min late); its branch is claim-only (.syllabai receipt/card/worklog, zero code) — stand-down or refile expected, no code collision exists. This desk did NOT claim 071 (condition unmet; merge-desk-only bound).
+- QUEUE at sweep close: 0 open PRs.
+
+Stage Summary:
+- Round-21: desk merged #118 (3c0bf08) — the Wave-7 cutover prep artifacts (executable CUTOVER_RUNBOOK + MIGRATION_REPORT of record + preconditions receipt) are ON MAIN; one benign push race absorbed per precedent (duplicate intake discarded, no force); T-MIG-071 ownership adjudicated earliest-claim-wins (R4-api-b, f0b7189) with the r0desk claim void — recorded before either lane files a PR, so no merge-time surprise remains. Register: 66/66 cards resolved or in-flight (071 in flight with R4-api-b).
