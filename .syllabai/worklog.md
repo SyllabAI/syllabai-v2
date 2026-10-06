@@ -4694,3 +4694,22 @@ Work Log:
 
 Stage Summary:
 - The cutover path is clear of record: the round-27 escalation is closed (resolution f27c3c6 + adjudication merged via #130), the P2 replay evidence is of record at the candidate SHA (#129, zero new divergence classes, 081 flag triaged), the queue is empty, and P1 gates are +0 EXACT first-hand. Register 74/74 DONE; the repository-side migration remains complete and cutover execution is staged for the operator: freeze window -> §2 flip -> §3 decay -> P3 witness -> P4 sign-off. Lane r1c IDLE pending the operator's §2.4/§4 routing.
+
+---
+Task ID: 20 (r7a acting as desk — operator-directed merge sweep)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)
+Task: Operator directive trace 1a112273a5373105 — "Review and Merge every PR".
+
+Work Log:
+- QUEUE ENUMERATION (fetch-first, API oracle): exactly ONE open PR — #129 (w7-p2/replay-evidence/r7a, the W7-P2 fresh replay evidence; head f5659f5 after the desk intake that merged main in). #130 (adjudication/r3a-076-version-choice) had already merged of record at 4ceb6f3 before this sweep — not part of this queue.
+- REVIEW of #129 (first-hand): fence via API files endpoint = exactly 2 paths, both .syllabai/** (receipt W7-P2/run-001 +76, worklog +16); worklog union verified — the three-dot diff vs current main shows +16/-0 ONLY (zero lost lines from main; any dropped entry would surface as deletions) and 0 conflict markers; CI verify+hub SUCCESS at f5659f5; zero reviews/findings; zero unresolved do-not-merge items (the #127 gate-(d) lesson: this gate was checked, not assumed).
+- MERGE 1 of 1 — PR #129: sha-pinned PUT @ f5659f5167260b228cc111582e2a87e78d779023 -> MERGED of record 24791e8 @ 2026-10-06T17:01:31Z.
+- DISCLOSURE (standing-law override, operator-ordered): the author lane merged its own PR — authors-never-self-merge is overridden for this instance ONLY by the operator's explicit directive; disclosed in the merge commit message and here. The PR is .syllabai-only bookkeeping (evidence filing), not code.
+- POST-MERGE (first-hand): main tip 24791e8; CI verify+hub completed->success ON the merge commit (push trigger live, corroborating f27c3c6's reductio); open PRs = 0.
+- 081 WATCHLIST REOPEN-FLAG ANSWER (evidence for the owner, no disposition claimed): r3a's 898a5cc reopen-flagged the watchlist off run 37497521056's red CONCLUSION; the merged W7-P2 receipt shows the red is the DESIGNED union-gate posture — all passes succeeded, the union holds 167/177 IDENTICAL to the discharged baseline (37481318211 @ 7beb4ee), the 10 FAILs are exactly the pre-classified known-volatility cases (fresh-run learnerId pinning + createdAt precision tails), and the 4/4 flip cases are ABSENT from the fail list. The of-record evidence to close the flag is in the receipt the watchlist owner may cite.
+- 076 POSTSCRIPT (operator-facing correction): the ci.yml "corruption" this lane carried into the round is RESOLVED OF RECORD by f27c3c6 (hex oracle: L9 bytes 5b 6d 61 69 6e 5d = [main]; display-layer artifact of local read channels; no re-patch owed). My earlier operator-facing statements treating the literal as corrupted were made on the deceptive rendering and stand corrected by the adjudication of record.
+- Zero further contact: no card edits, no code/corpus/golden/.github contact; queue closed at 0.
+
+Stage Summary:
+- Operator sweep complete: 1/1 open PRs reviewed and merged (#129 -> 24791e8, CI green on the merge commit); queue 0. The W7-P2 P2-evidence receipt is now OF RECORD on main. Watchlist reopen-flag has its closing evidence filed; cutover preconditions P3/P4 remain operator-gated. Desk duty discharged; lane r7a IDLE.
+- ATTRIBUTION NOTE (union addendum, byte-level): r1c's Task-28 entry also claims the #129 PUT; this lane's merge response (merged:true, 24791e8, 17:01:31Z) is first-hand and the merge commit is singular of record (atomic PUT - no double-merge exists); both ledgers converge on the same sha; discrepancy noted without adjudicating the other lane's claim.
