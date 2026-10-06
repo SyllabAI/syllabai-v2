@@ -4730,3 +4730,20 @@ Work Log:
 
 Stage Summary:
 - The cutover sequence is HALTED at §1->§2 on a P0 lane finding: the pilot-facing hub is hard-down (MIDDLEWARE_INVOCATION_FAILED, persistent), so the flip is unobservable and the smoke is blocked; the rollback lever is verified GO (Render core warm, golden-coherent); decay takeover must NOT be enabled until the hub serves. Operator actions of record requested: Vercel dashboard triage (live deploy + logs + last-200 timestamp), then either fix-forward or §5 rollback redeploy; this lane re-runs the observable chain + §2.4 smoke immediately on the hub-200 signal and opens the §4 watch on the flip signal. Lane r1c STANDING BY on the P0.
+
+---
+Task ID: cron-0600-20261007 (r0-auto desk)
+Agent: R0-auto (merge-desk window, discord DM session, job 438940)
+Task: 06:00 +08 periodic sweep — FORMAL ESCALATION of record (P0, production hub hard-down)
+
+Work Log:
+- QUEUE: 0 open PRs (API first-hand, 22:01Z); main @ d0d9381; CI verify+hub green of record (19:35Z). No merges this run — the desk escalates instead.
+- ESCALATION (P0, standing ~2.5h, unaddressed): production hub https://syllabai.vercel.app hard-down on every middleware-routed route — HTTP 500, x-vercel-error MIDDLEWARE_INVOCATION_FAILED, region hkg1, fresh x-vercel-id per request. Timeline of record: r1c Task-29 first-hand 19:31-19:34Z; desk-grade corroborations 20:01Z, 20:30Z, 21:00Z, 21:30Z, 22:02Z (this window) — zero recovery across the full window. Path-differential stable: /favicon.ico 404s via edge while app routes 500.
+- ROLLBACK LEVER STATUS: r1c measured core /health 401 Boot-default in 0.23s at 19:34Z (GO); desk probes 20:00Z-22:01Z: FIVE consecutive silent 60s windows (status 000, zero bytes). Cold-start vs suspension indistinguishable in-boundary per the r3a adjudication epistemics — Render dashboard is the out-of-boundary oracle. The §5 escape hatch is NOT confirmable from lane channels; operator must verify before relying on it.
+- IMPACT: pilot-facing hub unservable; cutover halted at §1->§2; §2.4 smoke blocked; flip state unobservable. DECAY TAKEOVER MUST STAY DISABLED until the hub serves 200 (cron rides the hub project; the next 02:00 UTC decay window is ~12h from this entry — a middleware-crashing deploy would produce a silent decay gap with no observable success signal).
+- OPERATOR ASKS OF RECORD (per r1c Task-29 + desk addenda): (1) Vercel dashboard triage — which deploy is live, runtime logs, last-200 timestamp (WHEN did the hub last serve 200, and is the outage pre-flip, mid-flip, or post-flip?); (2) Render dashboard status of syllabai-core (rollback lever confirmation); (3) then either fix-forward (middleware fix redeploy) or §5 rollback redeploy with NEXT_PUBLIC_API_BASE_URL=https://syllabai-core.onrender.com (V2 var unset; shared-Neon-main doctrine — no data unwind); (4) decay enablement only after hub-200 + posture probe (401 unauth / 200 skipped) per §3 sequence.
+- DESK POSTURE: merge-only, zero prod writes; every probe a read-only GET; no Vercel/Render/Neon settings touched; this entry is .syllabai/worklog.md-only bookkeeping, gates green first, no force.
+- Housekeeping note: the shared workspace /home/z/my-project/syllabai-v2 holds an unrelated stale checkout (HEAD a945c20, dirty .github/.gitignore/.syllabai files) — left untouched; this entry was authored in an isolated worktree off origin/main d0d9381.
+
+Stage Summary:
+- Formal P0 escalation filed of record: hub hard-down ~2.5h with zero recovery and no operator response visible; rollback lever unverifiable from lane (was GO at 19:34Z); decay enablement must hold; operator triage requested per the four asks above. Desk returns to sweep posture; queue 0.
