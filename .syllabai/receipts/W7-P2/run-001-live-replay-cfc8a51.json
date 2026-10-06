@@ -1,0 +1,76 @@
+{
+  "task": "W7-P2",
+  "run": "run-001-live-replay-cfc8a51",
+  "agent": "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)",
+  "recorded_at": "2026-10-06 (operator directive trace 1a112150849d4991: 'dispatch a fresh live replay at the current tip so P2's evidence is as fresh as possible')",
+  "dispatch": {
+    "workflow": ".github/workflows/neon-replay.yml (the T-MIG-044 instrument; read-only re-proof posture)",
+    "run_id": 37497521056,
+    "run_number": 20,
+    "ref": "main",
+    "head_sha": "cfc8a51",
+    "head_of_record": "round-27 tip (r0-auto worklog receipt; #128 merged of record)",
+    "event": "workflow_dispatch",
+    "dispatched_at": "2026-10-06T16:40:14Z",
+    "dispatch_note": "W7-P2 fresh evidence @ cfc8a51 (round-27 tip) — operator directive trace 1a112150849d4991, dispatched by r7a (session web-da4ab8b1)",
+    "job_id": 112385785899,
+    "job_started": "2026-10-06T16:40:18Z",
+    "job_ended": "2026-10-06T16:41:19Z (61s wall)",
+    "job_conclusion": "failure — EXPECTED BY DESIGN: the union verdict is the single job gate and any FAIL reds it (workflow step 16); every replay pass itself succeeded (see step table below)"
+  },
+  "step_table_first_hand": {
+    "selftests": "golden/runner.ts --selftest OK + golden/tools/ci-replay.ts --selftest OK (comparators proved themselves first)",
+    "preconditions": "Neon config present; working tree clean — success",
+    "provisioning": "disposable seed + prod COW branches created — success",
+    "pass_a_seed": "apply-reset + boot healthy + replay non-realdata tranche — success",
+    "pass_b_prod": "boot healthy + replay realdata tranche — success",
+    "union_verdict": "FAILURE (the designed red: 10 classified FAILs in the union)",
+    "read_only_proof": "git diff --exit-code over golden/ docs/ apps/ packages/ .github/ .syllabai/tasks/ — success (zero corpus/repo mutation)",
+    "branch_drop": "disposable branches dropped with 404-verify — success (zero residue, zero production contact)"
+  },
+  "artifact": {
+    "name": "neon-replay-37497521056-1",
+    "id": 11427449887,
+    "files": ["seed.json", "prod.json", "union.md", "boot-seed.log", "boot-prod.log"],
+    "retention_days": 30
+  },
+  "union": {
+    "pass": 167,
+    "total": 177,
+    "seed": "154/162 (apply-reset posture, non-realdata tranche)",
+    "prod": "13/15 (as-cowed posture, realdata tranche)",
+    "limiter_disposition": "+5 via the T-MIG-071 (R3-C) declared limiter-429 disposition",
+    "comparison_to_baseline": "IDENTICAL aggregate to the run-007-register-reconciliation.json baseline (37481318211 @ 7beb4ee: 167/177, seed 154/162, prod 13/15, same disposition) — zero aggregate drift across the tip advance 7beb4ee -> cfc8a51 (which carried only .syllabai bookkeeping, consistent with the +0 EXACT gates of record)"
+  },
+  "divergence_classification": {
+    "zero_new_classes": true,
+    "zero_regressions": true,
+    "fail_list": "exactly the 10 pre-filed known-volatility cases; no additions, no removals vs the baseline classification",
+    "seed_reds_8": {
+      "cases": [
+        "w3-history-empty-student-200",
+        "w3-history-after-submit-200",
+        "w3-questions-families-student-200",
+        "w4-flashcard-schedule-derived-200",
+        "w4-flashcard-trail-200",
+        "w4-knowledge-graph-empty-200",
+        "w4-knowledge-graph-practiced-200",
+        "w4-state-practiced-200"
+      ],
+      "classes": "fresh-run learnerId UUID pinning + empty-vs-seeded postures + per-run generatedAt/asOf/occurredAt timestamps (per-run fixture identity, not port behavior)",
+      "per_run_evidence": "this run's generated identities c090e9b2/72272a6e vs the baseline run's fa22cecc/c69124ff vs captured aa645313/da30cee5 — fresh UUIDs on every fresh run at the same case list confirm the volatility class; a stable port-side divergence would show identical bodies"
+    },
+    "prod_reds_2": {
+      "cases": ["content-docs-teacher-detail-realdata-200", "content-docs-teacher-realdata-200"],
+      "class": "createdAt precision tail on the realdata capture (nanosecond-scale wire precision); every other byte of the compared bodies matches"
+    }
+  },
+  "watchlist_081_corroboration": "w4-agenda-malformed-bearer-401 + w4-state-empty-bearer-401 + curriculum-subject-bad-uuid-400 + curriculum-subject-unknown-404 are ALL ABSENT from the fail list at cfc8a51 — the empirical 4/4 flip holds at the round-27 tip, corroborating R0-REPLAY-FILING-2 @ dbe75ad at a newer head",
+  "p2_posture": {
+    "what_this_supplies": "the freshest of-record live replay evidence at the current main tip (cfc8a51): union 167/177 with a fully-classified, zero-new-class residue — replaceable as P2 evidence whenever the tip advances, by re-running this same one-line dispatch",
+    "what_still_gates_P2": "runbook §0 wording: P2 closes when a fresh live replay at the CUTOVER CANDIDATE SHA returns zero non-justified divergences (justified residuals carry justified:true per GOLDEN_MASTER §4). If the operator cuts over at cfc8a51 or any descendant whose fresh replay shows this same classified residue, this run stands as that evidence; the formal justified-flag adjudication on the 10 residuals is R0/operator's call (GOLDEN_MASTER §4 + ruling3 receipt conventions), not this lane's",
+    "P3_P4_untouched": "the supervised dual-run loops and the operator sign-off remain the human-witnessed steps; this run changes nothing about them"
+  },
+  "fence": ".syllabai/receipts/W7-P2/run-001-live-replay-cfc8a51.json (new dir) + .syllabai/worklog.md append-only entry — zero code, zero corpus, zero golden, zero .github contact",
+  "merge_posture": "authors-never-self-merge — PR to the desk; no card contact (W7-P2 is not a register card; this is cutover-precondition evidence)"
+}
