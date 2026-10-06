@@ -203,16 +203,44 @@ describe("POST /api/v1/attempts — AttemptController.submit (:31-35)", () => {
     expect(body.message).toBe("request body is not readable (check field types and enum values)");
   });
 
-  test("{} JSON body → 400 validation_failed 'questionId: must not be null' (frozen handler :158-165 — inferred)", async () => {
+  test("{} JSON body → 400 malformed_body (R-067-C CAPTURED law: absent required creator properties fail BINDING — golden w3-attempt-missing-fields-400, R6 frozen-core boot 2026-10-05T06:47Z; overrides the earlier \"(inferred)\" pin)", async () => {
     const res = await makeApp(asStudent).request("/api/v1/attempts", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: "{}", // binds with nulls, @NotNull fails — validation, not binding
+      body: "{}", // ABSENT required creator properties → Jackson cannot construct the record → HttpMessageNotReadableException (GlobalExceptionHandler :175-179)
+    });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("malformed_body");
+    expect(body.message).toBe("request body is not readable (check field types and enum values)");
+  });
+
+  test("explicit-null questionId (all other fields valid) → 400 validation_failed 'questionId: must not be null' (R-067-C retained posture: null BINDS — @NotNull is a constraint, :158-165; the absent/null distinction the capture proves)", async () => {
+    const res = await makeApp(asStudent).request("/api/v1/attempts", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        questionId: null,
+        chosenOptionId: CAPTURED_MCQ_BODY.chosenOptionId,
+        responseTimeMs: CAPTURED_MCQ_BODY.responseTimeMs,
+      }),
     });
     expect(res.status).toBe(400);
     const body = await res.json();
     expect(body.error).toBe("validation_failed");
     expect(body.message).toBe("questionId: must not be null");
+  });
+
+  test("{} structured body → 400 malformed_body (R-067-C CAPTURED law — golden w3-attempt-structured-missing-fields-400)", async () => {
+    const res = await makeApp(asStudent).request("/api/v1/attempts/structured", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: "{}",
+    });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("malformed_body");
+    expect(body.message).toBe("request body is not readable (check field types and enum values)");
   });
 
   test("responseTimeMs -5 → validation_failed (single-field pin, @Min(0) — inferred)", async () => {

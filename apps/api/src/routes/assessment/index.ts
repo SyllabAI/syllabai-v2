@@ -119,7 +119,8 @@ function coerceScalars(body: Record<string, unknown>): Record<string, unknown> {
  * envelopes. Jackson binds the ENTIRE document before @Valid runs, so any
  * binding failure anywhere beats every constraint violation:
  *   - binding failure (invalid uuid string; wrong scalar shape where no
- *     coercion applies) → malformed_body (HttpMessageNotReadableException)
+ *     coercion applies; an ABSENT required creator property — R-067-C) →
+ *     malformed_body (HttpMessageNotReadableException)
  *   - otherwise the FIRST constraint issue in DTO param order renders
  *     "field: message" (validation_failed, :158-165). zod's issue order
  *     follows the schema field order, which mirrors the record's parameter
@@ -136,9 +137,16 @@ function classifyBodyError(error: ZodError): BodyError {
     if (i.code === "invalid_string") return true; // uuid parse (Jackson UUID)
     if (i.code === "invalid_type") {
       const received = (i as { received?: string }).received;
-      // null/undefined BIND fine for object types in Jackson (nulls handed
-      // to the record); their rejection is @NotNull/@NotEmpty — a constraint
-      return received !== "undefined" && received !== "null";
+      // R-067-C (T-MIG-067), the CAPTURED law (golden
+      // w3-attempt-missing-fields-400 + w3-attempt-structured-missing-fields-400,
+      // R6 frozen-core boot 2026-10-05T06:47Z): an ABSENT required creator
+      // property fails BINDING — Jackson cannot construct the record
+      // (HttpMessageNotReadableException → malformed_body :175-179). This
+      // overrides the earlier "(inferred)" bind-then-constraint model
+      // (routes.test.ts used to pin {} → validation_failed). Explicit null
+      // still BINDS (nulls handed to the record); its rejection is
+      // @NotNull/@NotEmpty — a constraint (:158-165 → validation_failed).
+      return received !== "null";
     }
     return false;
   };

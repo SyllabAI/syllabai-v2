@@ -19,6 +19,7 @@ import {
   AGENDA_ASSIGNMENT_LIMIT,
   FLASHCARD_REVIEW_DEFAULT_INTERVAL_DAYS,
   buildLearnerMeModule,
+  courseExamTargetView,
   decodeTrailCursor,
   encodeTrailCursor,
   flashcardIntervalDaysFor,
@@ -32,6 +33,7 @@ import {
   recordFlashcardRating,
   recordNoteVote,
   scheduleCard,
+  type EnrolmentRow,
 } from "../../src/services/learner-me";
 import { BadRequestError, ConflictError, type SubmitClock } from "../../src/services/selfmark";
 import {
@@ -622,6 +624,74 @@ describe("examSeriesCalendar (LearnerExamSeriesController :59-69)", () => {
     expect(view.retrievedAt).toBe("2026-10-01T09:00:00.000Z");
     expect(view.estimated).toBe(true);
     expect(Object.keys(view)).not.toContain("published"); // unpublished never leaves the server
+  });
+
+  test("R-067-B live-driver posture: DATE(1082) columns arrive as JS Dates → bare wire dates (CourseExamTargetView.java:25-28 LocalDate passthrough; golden w4-exam-series-*.json), nulls stay null", async () => {
+    const sql = fakeSql([
+      {
+        match: /where published = true order by window_start asc$/,
+        rows: [
+          seriesRow({
+            window_start: new Date("2027-05-10T00:00:00.000Z") as unknown as string,
+            window_end: new Date("2027-06-24T00:00:00.000Z") as unknown as string,
+            entry_deadline: new Date("2027-03-20T00:00:00.000Z") as unknown as string | null,
+            results_date: null,
+          }),
+        ],
+      },
+    ]);
+    const view = (await examSeriesCalendar({ sql, clock }))[0]!;
+    expect(view.windowStart).toBe("2027-05-10");
+    expect(view.windowEnd).toBe("2027-06-24");
+    expect(view.entryDeadline).toBe("2027-03-20");
+    expect(view.resultsDate).toBeNull();
+  });
+});
+
+describe("courseExamTargetView — R-067-B Date-posture normalization (normalize BEFORE the day arithmetic)", () => {
+  const enrolment = {
+    id: "en-1",
+    learner_id: "lrn-1",
+    course_slug: "gcse-maths",
+    target_series_id: SERIES_A,
+    created_at: "2026-10-01T09:00:00.000Z",
+  } as unknown as EnrolmentRow;
+  const dateSeriesRow = {
+    id: SERIES_A,
+    board: "PEARSON_EDEXCEL",
+    qualification: "GCSE",
+    series_code: "Jun-2027-GCSE",
+    label: "June 2027 GCSE series",
+    window_start: new Date("2027-05-10T00:00:00.000Z"),
+    window_end: new Date("2027-06-24T00:00:00.000Z"),
+    entry_deadline: new Date("2027-03-20T00:00:00.000Z"),
+    results_date: null,
+    estimated: true,
+    source_url: "https://example.invalid/tt",
+    retrieved_at: "2026-10-01T09:00:00Z",
+  } as unknown as ExamSeriesRow;
+
+  test("Date-carrying series row → bare wire dates AND correct derived arithmetic (would be NaN/shifted without normalization)", () => {
+    const view = courseExamTargetView(enrolment, dateSeriesRow, "2026-10-06");
+    expect(view.windowStart).toBe("2027-05-10");
+    expect(view.windowEnd).toBe("2027-06-24");
+    expect(view.entryDeadline).toBe("2027-03-20");
+    expect(view.resultsDate).toBeNull();
+    expect(view.daysToWindowStart).toBe(216); // 2026-10-06 → 2027-05-10
+    expect(view.daysToWindowEnd).toBe(261); // 2026-10-06 → 2027-06-24
+    expect(view.entryDeadlinePassed).toBe(false); // 2027-03-20 is after today
+  });
+
+  test("string-carrying series row stays byte-identical (fakeSql posture — zero behavior change)", () => {
+    const view = courseExamTargetView(
+      enrolment,
+      seriesRow({}) as unknown as ExamSeriesRow,
+      "2027-03-20", // the deadline DAY itself still allows entry (strictly-before law)
+    );
+    expect(view.windowStart).toBe("2027-05-10");
+    expect(view.entryDeadline).toBe("2027-03-20");
+    expect(view.entryDeadlinePassed).toBe(false);
+    expect(view.resultsDate).toBeNull();
   });
 });
 

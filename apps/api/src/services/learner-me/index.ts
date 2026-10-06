@@ -232,6 +232,7 @@ import {
   type EnrolmentRow,
   type ExamSeriesRow,
 } from "../learner-model/exam-target-reader";
+import { toLocalDate } from "../../shared/dates";
 
 // ── shared helpers ───────────────────────────────────────────────────────────
 
@@ -744,16 +745,21 @@ export function isValidCourseSlug(courseSlug: string): boolean {
   return courseSlug != null && /^[a-z0-9]+(-[a-z0-9]+)*$/.test(courseSlug);
 }
 
+// R-067-B (T-MIG-067): the four DATE columns render through toLocalDate —
+// the frozen core passes LocalDate through as bare "2026-10-08"
+// (CourseExamTargetView.java:25-28); the live driver posture hands the view
+// JS Dates (postgres.js DATE(1082) → Date), which must NOT reach
+// JSON.stringify as timestamps. String rows (fakeSql pins) stay identical.
 const toExamSeriesView = (s: ExamSeriesRow) => ({
   id: s.id,
   board: s.board,
   qualification: s.qualification,
   seriesCode: s.series_code,
   label: s.label,
-  windowStart: s.window_start,
-  windowEnd: s.window_end,
-  entryDeadline: s.entry_deadline,
-  resultsDate: s.results_date,
+  windowStart: toLocalDate(s.window_start) as string, // NOT NULL column
+  windowEnd: toLocalDate(s.window_end) as string, // NOT NULL column
+  entryDeadline: toLocalDate(s.entry_deadline),
+  resultsDate: toLocalDate(s.results_date),
   estimated: s.estimated,
   sourceUrl: s.source_url,
   retrievedAt: toInstant(s.retrieved_at),

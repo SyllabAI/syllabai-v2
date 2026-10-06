@@ -34,6 +34,7 @@
  * — nullable, per the F-2 .nullable() correction (T-MIG-038 #86).
  */
 import type { CourseExamTargetView } from "@syllabai/contracts";
+import { toLocalDate } from "../../shared/dates";
 
 export type { CourseExamTargetView };
 import type { SqlFn } from "../assessment/sql";
@@ -106,25 +107,34 @@ export function courseExamTargetView(
   series: ExamSeriesRow,
   today: string,
 ): CourseExamTargetView {
+  // R-067-B (T-MIG-067): normalize the DATE columns FIRST — the live driver
+  // posture hands JS Dates (postgres.js DATE(1082) → Date), which would
+  // corrupt both the wire form AND the day-arithmetic below; the frozen
+  // core's LocalDate fields (CourseExamTargetView.java:25-28) compare and
+  // render as bare "2026-10-08" strings. String rows stay identical.
+  const windowStart = toLocalDate(series.window_start) as string; // NOT NULL column
+  const windowEnd = toLocalDate(series.window_end) as string; // NOT NULL column
+  const entryDeadline = toLocalDate(series.entry_deadline);
+  const resultsDate = toLocalDate(series.results_date);
   return {
     courseSlug: enrolment.course_slug,
     seriesId: series.id,
     seriesCode: series.series_code,
     label: series.label,
-    windowStart: series.window_start,
-    windowEnd: series.window_end,
+    windowStart,
+    windowEnd,
     // FIDELITY NOTE (R0 flag, resolved by T-MIG-038 #86): the frozen
     // CourseExamTargetView record renders entryDeadline/resultsDate as the
     // raw LocalDate columns — NULL when the series row has no deadline/
     // results date — and the canonical courseExamTargetViewSchema
     // (learner.ts) now carries the .nullable() law; the cast documents the
     // honest pass-through at the former call sites.
-    entryDeadline: series.entry_deadline as string,
-    resultsDate: series.results_date as string,
+    entryDeadline: entryDeadline as string,
+    resultsDate: resultsDate as string,
     estimated: series.estimated,
-    daysToWindowStart: daysBetween(today, series.window_start),
-    daysToWindowEnd: daysBetween(today, series.window_end),
-    entryDeadlinePassed: series.entry_deadline != null && series.entry_deadline < today,
+    daysToWindowStart: daysBetween(today, windowStart),
+    daysToWindowEnd: daysBetween(today, windowEnd),
+    entryDeadlinePassed: entryDeadline != null && entryDeadline < today,
   };
 }
 
