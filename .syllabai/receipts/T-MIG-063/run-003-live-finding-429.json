@@ -1,0 +1,33 @@
+{
+  "task_id": "T-MIG-063",
+  "kind": "LIVE-FINDING-RECEIPT (run-003: the C-class limiter bites the setup layer) + FENCE-AMENDMENT DISCLOSURE",
+  "run": "003",
+  "timestamp": "2026-10-06T05:25:00Z",
+  "agent": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "authority": "operator directive trace 1a10f806acdec285; live-finding fix-forward per the T-MIG-047 precedent (the instrument's own first-run findings are filed, then fixed with receipts)",
+  "evidence": {
+    "neon_replay_run": "37417629684 (workflow_dispatch on ec40f1f post-#100, completed failure)",
+    "artifact": "neon-replay-37417629684-1: boot-seed.log (258B), boot-prod.log, prod.json (13/15 unchanged) — seed.json/union.md ABSENT",
+    "failing_step": "Union verdict (reports/seed.json missing → union ENOENT → job red); Pass A replay step masked success by continue-on-error"
+  },
+  "what_worked": [
+    "workflow DATABASE_URL wiring (Pass A replay step)",
+    "ci-replay --selftest in the harness-sanity step (OK) + --plan staging disclosure (printed exactly)",
+    "boundary timing exact: staging accounts fired at seq 10 AFTER the auth band (seq 1-5) as planned",
+    "the spawn of the committed seed-t51-rich200.ts VERBATIM",
+    "t51-seed.sql applied cleanly on the Neon COW branch (it precedes the bootstrap claim in the tool's own order — the claim AUDIT line proves the seed step completed)",
+    "the bootstrap-admin claim itself (AUDIT: 'first-admin bootstrap claimed by t51-admin@example.invalid at 2026-10-06T05:16:07.436Z — window consumed terminally')"
+  ],
+  "the_finding": {
+    "id": "RICH-200-B",
+    "class": "SETUP-LAYER 429 (v2-only register rate limiter — the R0R6-R7 triage's C-class parity defect leaking into the staging's setup calls) — P1 tooling",
+    "mechanism": "the harness mints user_20 + user_21, the seq 1-5 register cases fire, then the staging's OWN registers (t51-student, t51-teacher) burst the v2-only register limiter → 429 {retryAfterSeconds:53} → the tool's api/register throw → exit 1 → the runRichStage fail-fast (by design) killed the replay before the report. Step log line of record: '[ci-replay] rich staging \"accounts\" failed (status 1): many requests. Wait a moment and try again.\",\"retryAfterSeconds\":53'.",
+    "not_masked": "the limiter itself remains an honest C-class red on the auth-register cases — this fix does NOT pace, weaken, or tolerate any CASE; it only lets the SETUP survive a v2-only artifact the census already flags for the auth lane"
+  },
+  "the_fix_run004": {
+    "fence_amendment": "golden/tools/seed-t51-rich200.ts joins the task fence (DISCLOSED PRE-PUSH per the scope-amendment law; the tool was previously reuse-verbatim). Change surface: ci-replay.ts (spawnSync timeout 240s → 900s — the honest throttle sequence can legally wait out retryAfterSeconds windows) + the tool's 429-aware retry.",
+    "tool_amendment": "a `throttled()` helper honoring retry-after header / retryAfterSeconds body (clamped 5..90s +2 jitter, max 4 attempts) wrapped around the tool's OWN setup calls ONLY: api() (logins, bootstrap-status, bootstrap-admin claim, legacy ingest, structured attempts) + the two register fetches (student, teacher). Zero case semantics, zero capture posture, zero comparator contact. The bootstrap claim remains one-shot-safe: a 429 on it means the handler never ran (window not consumed) → retry safe; a 201 consumed it and never retries.",
+    "no_masking_argument": "the runner-must-not-pace doctrine (triage C-class note) protects the MEASUREMENT layer: the auth-register cases still replay unpaced and still measure the limiter honestly. The staging is SETUP, not measurement — pacing setup around a v2-only artifact the census already files for the auth lane preserves the instrument without diluting any case."
+  },
+  "re_proof": "re-dispatch neon-replay post-push (run-004 = the family's live verdict attempt #2)"
+}

@@ -3231,3 +3231,15 @@ Work Log:
 
 Stage Summary:
 - T-MIG-063 run-002 IN_REVIEW on t-mig-063/r0. Expected at the next union: family 7/7 (port parity standing 17/17 local); B-class seed-posture reads may clear early via t51-seed.sql (named case-by-case at run-003; third-posture task remains the mechanism home). Re-proof = neon-replay dispatch post-merge.
+---
+Task ID: T-MIG-063 (run-003 live finding + run-004 fix)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, operator trace 1a10f806acdec285)
+Task: First re-dispatch decomposed — the C-class limiter bit the staging's setup layer; fix forward with a disclosed fence amendment.
+
+Work Log:
+- Dispatch 37417629684 on ec40f1f completed failure: seed.json/union.md ABSENT from the artifact; Pass A replay masked success (continue-on-error); union ENOENT red. Job log decomposed: the staging RAN (workflow DATABASE_URL wiring OK, spawn OK, t51-seed.sql applied on the Neon COW branch OK, bootstrap-admin claim OK — AUDIT 05:16:07.436Z "window consumed terminally") and THEN the tool's own registers (t51-student/t51-teacher) hit the v2-only register limiter: 429 retryAfterSeconds:53 → tool throw → runRichStage fail-fast (by design) → no report. Boundary timing verified exact (accounts fired at seq 10 after the auth band).
+- Finding RICH-200-B filed (receipt run-003-live-finding-429.json): setup-layer 429 = the triage's C-class parity defect leaking into the setup layer. NOT masked: the auth-register cases keep measuring the limiter honestly.
+- FIX (run-004): FENCE AMENDMENT DISCLOSED PRE-PUSH — golden/tools/seed-t51-rich200.ts joins the fence with throttled() (retry-after header / retryAfterSeconds body, clamped 5..90s +2, max 4 attempts) around the tool's OWN setup calls only (api() + the two register fetches); the bootstrap claim stays one-shot-safe (429 = handler never ran = window not consumed = retry safe). ci-replay.ts spawnSync timeout 240s→900s. Parse-validated (bun build), ci-replay selftest OK.
+
+Stage Summary:
+- T-MIG-063 run-004 pushed to t-mig-063/r0 (fence = ci-replay.ts + seed-t51-rich200.ts + workflow + card/receipts/worklog); re-dispatch = run-004 re-proof.
