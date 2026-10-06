@@ -1,0 +1,96 @@
+version: 1
+task:
+  id: T-MIG-060
+  title: "Wave-6 tutor/AI + admin opener — tutor + sessions: /api/v1/tutor/ask + /ask/stream (SSE streaming parity, the R-VERCEL W6 spike carrier) + /api/v1/tutor/sessions CRUD (create/list/latest/get/delete) + the KaRAG deterministic chain (retrievers, RRF, reranker, citation resolver, stream sanitizer, memory/policy services, session lifecycle)"
+  owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — operator directive trace 1a10f3bbe255c491 'Check if R0 has merged or not. If not, review+merge yourself and continue working': R0 merge-of-record verified IN (043 t2 #85 merged 66c6618 by the delegated reviewer; R0-AUTO desk sweep 03:00 UTC merged #86), so the self-merge conditional did not fire and 'continue working' executes the standing claim directive trace 1a10d2c88b6f13c5 'Check and claim whichever lane other agents are not working' — claims the Wave-6 opener (first unclaimed MIGRATION_PLAN-reserved band after the register drained: W5 050/051/054 DONE, 052 owned r9-hubx t2 in flight #89, 053 in flight r3a #84, 055 claimed R0 #91; 060..066 were the only bands with zero yamls/branches/PRs/worklog claims). Id ratification requested at PR review (030/032/039/040-PREP/041/043 precedent)"
+  status: CLAIMED # flips IN_PROGRESS at branch push
+  priority: P1
+  wave: 6
+  deps: [T-MIG-016, T-MIG-014] # ratelimit (the llm:ask per-learner tier already ported — /ask + /ask/stream are the tier's named members) + db driver dispatch; tutor tables already in the baseline schema (tutor_sessions/tutor_session_turns/tutor_topic_engagements) so zero R2 work
+  execution_record: >
+    (claim entry 2026-10-06T03:33Z) Pre-claim zero-collision scan immediately
+    before branch cut @ origin/main e6cc4d1: ls-remote ZERO t-mig-06* heads,
+    zero 060..066 yamls on main, zero 06x claims in the repo worklog (the only
+    Wave-6 mention on main is MIGRATION_PLAN.md :155), open PRs #84 (053/r3a)
+    #88 (r0r6 triage receipt) #89 (052t2/r9-hubx) #91 (055/r0) — all fences
+    disjoint from tutor/sessions. The 043 golden-replay classification already
+    routes the tutor-shaped w4 cases to Wave-6 (worklog :2510) — this band is
+    their owner.
+    SURFACE MAP from frozen core @ 6cad6ef (read line-against-line at claim
+    time; the deep read continues during implementation):
+    TutorController :65 (/api/v1/tutor) — POST /ask :151 and POST /ask/stream
+    :208 (produces text/event-stream, the SSE streaming-parity surface). Laws
+    already read: the §22 integrity probe runs BEFORE the pipeline (foreign/
+    unknown session id -> 404 JSON before any LLM spend, stream not yet
+    opened); V53/ADR-030 course-consistency probe -> 409 up front when the
+    session already serves a different courseRef; R8 LLM-tier budget (the
+    ratelimit filter admits these routes into the tier — v2's T-MIG-016 port
+    already keys llm:ask per-learner userId->subject->IP); ConversationTurn.of
+    history sanitization (null-clean filtering); append guard — a session
+    persistence failure after a delivered answer is logged, NEVER a 5xx (the
+    exchange is lost from the transcript, the answer is delivered); stream
+    delivery on a bounded daemon pool (2-8 threads, SynchronousQueue,
+    rejection -> honest fixed busy text, never unbounded queueing); servlet
+    async timeout disabled (0L) because the only meaningful stall is upstream
+    — idle timeout + client disconnect bound the stream; errors AFTER the
+    stream opens travel as the wire `error` event (vs JSON before open).
+    TutorSessionController :43 (/api/v1/tutor/sessions) — POST :55 -> 201
+    CreatedSessionView(sessionId, createdAt); GET :68 -> list summaries only
+    (s143: newest activity first, opening question as the DERIVED title, turn
+    count, recency stamps — transcript fetched on demand); GET /latest :74 ->
+    200 SessionView | 204 no-content (route order must not be captured by
+    /{sessionId}); GET /{sessionId} :81 -> full transcript view; DELETE
+    /{sessionId} :92 -> 204, foreign-or-unknown id 404s exactly like every
+    other session operation (never a signal about what exists).
+    TutorAnswerView dto — answer + evidence list + TopicMatch(code, title,
+    matchScore) + evidenceCount + refused + model + provider + latencyMs.
+    KaRagService chain components (package inventory at claim time):
+    KnowledgeRetriever <- GraphKnowledgeRetriever (curriculum graph) +
+    ContentVectorRetriever (pgvector) + VectorRetriever, ReciprocalRankFusion,
+    EvidenceReranker/NoReranker, ContextAssembler/LearnerContextAssembler,
+    PaperQuestionResolver, CitationResolver/SimpleCitationResolver,
+    GroundedTutorGenerator/TutorGenerator (the LLM seam),
+    StreamSanitizer, TutorMemoryService, TutorPolicyService,
+    TutorSessionService (+ TutorSession/TutorSessionTurn + repos), dto/.
+    ADR-030 refusal is DETERMINISTIC (empty grounding -> refuse; course ref
+    must resolve to exactly one serving curriculum) — golden-gateable per
+    R-LLM (LLM payloads excluded; authz, session lifecycle, citation
+    plumbing, refusal honesty ARE gated).
+    R-VERCEL SPIKE (the plan binds the W6 first task): verify Vercel
+    function duration limits for the SSE path BEFORE porting. Spike output =
+    config analysis + the maxDuration/streaming design recorded in the
+    tranche-1 receipt; a live-deployment verification is DISCLOSED as the
+    deploy lane's register item (this sandbox has no Vercel deployment path —
+    same honesty class as the 043 live-replay dispatch disclosure).
+    TRANCHE PLAN: t1 = services/tutor/** deterministic chain + session
+    lifecycle + fakeSql pins + NEW packages/contracts/src/tutor.ts (033/043/
+    049 same-lane contracts-first precedent, R1 coordination flagged at PR
+    review) + the R-VERCEL spike note; t2 = routes/tutor.ts + routes/
+    tutorsessions.ts + OUT-OF-FENCE index.ts mount (separate commit, 043
+    precedent) + route/engine pins.
+  base:
+    repo: "syllabai-v2 @ e6cc4d1 at claim time; frozen refs: syllabai-core @ 6cad6ef, syllabai-hub @ 93226a43"
+  basis: >
+    Operator directive 2026-10-06 trace 1a10f3bbe255c491 ('...continue working')
+    executing the standing claim word trace 1a10d2c88b6f13c5; MIGRATION_PLAN.md
+    §5 Wave 6 (:155) — 'tutor + sessions (SSE streaming parity!)' is the wave's
+    first surface; R-VERCEL mitigation binds the W6 spike to the wave's first
+    task.
+scope:
+  allowed:
+    - "apps/api/src/services/tutor/** (new)"
+    - "apps/api/src/routes/tutor.ts (new, tranche-2)"
+    - "apps/api/src/routes/tutorsessions.ts (new, tranche-2)"
+    - "apps/api/test/** (this band's pins only)"
+    - "packages/contracts/src/tutor.ts + tutor.test.ts (new; same-lane contracts-first precedent, R1 coordination flagged at PR review)"
+    - ".syllabai/tasks/T-MIG-060-tutor-sessions.yaml (status/execution_record only)"
+    - ".syllabai/worklog.md (append-only)"
+    - ".syllabai/receipts/T-MIG-060/**"
+  forbidden:
+    - "packages/db/** (R2's lane — tutor tables already in baseline schema)"
+    - "apps/hub/** (R5's lane)"
+    - "golden/** (R6's fence — zero golden file edits, ever)"
+    - "apps/api/src/index.ts (OUT-OF-FENCE: mount lands as a separate disclosed commit per the 043 precedent)"
+    - "cla/** intervention/** research/** retrieval-admin surfaces (T-MIG-061..066 bands — not this fence)"
+    - "vercel.json (deploy config — the W6 spike records findings only; any config change goes through R0/the deploy lane)"
+    - "syllabai-core / syllabai-hub (frozen, C1)"

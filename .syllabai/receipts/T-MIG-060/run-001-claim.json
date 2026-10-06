@@ -1,0 +1,55 @@
+{
+  "task": "T-MIG-060",
+  "run": "run-001-claim",
+  "date": "2026-10-06",
+  "lane": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "provenance": {
+    "operator_directive_trace": "1a10f3bbe255c491",
+    "directive": "Check if R0 has merged or not. If not, review+merge yourself and continue working",
+    "directive_resolution": "R0 merge-of-record verified IN: T-MIG-043 tranche-2 PR #85 merged as 66c6618 at 2026-10-06T03:08:28Z (delegated reviewer r1-contracts, trace 1a10eb10b04682cd; authors-never-self-merge held) and R0-AUTO desk sweep 03:00 UTC merged #86 (receipt b26edbe on main) — the self-merge conditional did NOT fire; 'continue working' executes the standing claim directive trace 1a10d2c88b6f13c5",
+    "standing_claim_directive_trace": "1a10d2c88b6f13c5",
+    "same_class_precedents": [
+      "trace 1a10d2c88b6f13c5 -> w0a claimed T-MIG-043 (db87a9a) — the directly analogous seeding word",
+      "trace 1a10ec4d22b0e54d -> r9-hubx claimed T-MIG-052 'claim the next unscoped task'",
+      "round-9 trace 1a10d2210b98ef81 -> r7a seeded T-MIG-041 (fdb6879)"
+    ]
+  },
+  "pre_claim_merge_state_check": {
+    "checked_at": "2026-10-06T03:24Z, origin/main e6cc4d1 (== local main, zero drift)",
+    "pr_85_merged": true,
+    "pr_85_merge_commit": "66c6618",
+    "r0_auto_last_sweep": "03:00 UTC receipt b26edbe — merged #86 (F2 .nullable() widening); skipped #84/#85/#88 pending CI on heads (per rule (b), no state assumed)",
+    "open_prs_at_check": {
+      "84": "t-mig-053/r3a — Wave-5 remainder claim (r3a), in flight",
+      "88": "r0r6/r7-divergence-triage — R0/R6 neon-replay run #7 triage receipt",
+      "89": "t-mig-052t2/r9-hubx — 052 tranche-2 (r9-hubx owns per §2.1; R0's own #90 duplicate head t-mig-052/r0-t2 was self-closed unmerged at 03:19:49Z — collision class stayed at zero)",
+      "91": "t-mig-055/r0 — R0's T-MIG-055 self-mark validation-order fix (opened 03:23Z)"
+    },
+    "conclusion": "no w0a PR pending anywhere; the R0 desk is alive and merging; nothing to self-merge"
+  },
+  "zero_collision_scan": {
+    "scanned_at": "immediately before branch cut, origin/main e6cc4d1",
+    "ls_remote_t_mig_06x_heads": 0,
+    "t_mig_06x_yamls_on_main": 0,
+    "worklog_06x_claims": 0,
+    "migration_plan_wave6_mention": "docs/MIGRATION_PLAN.md :155 is the ONLY Wave-6 reference on main",
+    "board_census": "W5 050/051/054 DONE; 052 owned r9-hubx (t2 #89 in flight); 053 r3a (#84); 055 R0 (#91); 060..066 = the only zero-claim bands in the register",
+    "wave7_note": "Wave-7 is cutover/freeze — operator-gated, not agent-claimable"
+  },
+  "claim": {
+    "branch": "t-mig-060/w0a",
+    "band": "Wave-6 tutor/AI + admin opener: tutor + sessions — /api/v1/tutor/ask + /ask/stream (SSE streaming parity, the R-VERCEL W6 spike carrier) + /api/v1/tutor/sessions CRUD + the KaRAG deterministic chain",
+    "tranche_1": "services/tutor/** deterministic chain + session lifecycle + fakeSql pins + NEW packages/contracts/src/tutor.ts (same-lane contracts-first precedent 033/043/049) + the R-VERCEL spike record",
+    "tranche_2": "routes/tutor.ts + routes/tutorsessions.ts + OUT-OF-FENCE index.ts mount (separate disclosed commit) + route/engine pins"
+  },
+  "frozen_sources_read_line_against_line_at_claim": [
+    "TutorController.java :60-260 (ask :151 + ask/stream :208; §22 integrity probe 404-before-pipeline; V53/ADR-030 course-consistency 409; append guard never-5xx-after-delivery; bounded daemon pool admission control; SSE open-stream error law)",
+    "TutorSessionController.java :40-100 (POST 201 / GET list summaries s143 / GET /latest 200|204 route-order law / GET /{id} / DELETE 204 with foreign-or-unknown 404 indistinguishability)",
+    "tutor/ package inventory (KaRagService, retrievers GraphKnowledge/ContentVector, ReciprocalRankFusion, EvidenceReranker/NoReranker, ContextAssembler/LearnerContextAssembler, PaperQuestionResolver, CitationResolver, GroundedTutorGenerator seam, StreamSanitizer, TutorMemoryService, TutorPolicyService, TutorSessionService + repos, dto/TutorAnswerView with TopicMatch)",
+    "cla/ package inventory skim (ClaController/ClaService/ClaToolRegistry — the 061 band, NOT this fence)"
+  ],
+  "dependency_state": "tutor_sessions/tutor_session_turns/tutor_topic_engagements already in packages/db baseline schema (schema.ts :929/:1048 + relations) — zero R2 work; the llm:ask ratelimit tier already ported (T-MIG-016) with tutor named as a tier member; no packages/contracts/src/tutor.ts exists yet (new in-fence file, R1 coordination flagged at PR review)",
+  "gates_at_claim": "branch cut from origin/main e6cc4d1 == merged-main tip (CI verify+hub green at the tip per the R0-AUTO 03:00 sweep receipt); zero code delta in the claim commit",
+  "r_vercel_spike_obligation": "MIGRATION_PLAN §6 R-VERCEL binds the W6 duration-limits spike to the wave's first task — recorded as tranche-1 deliverable; live-deployment verification disclosed as the deploy lane's register item (no Vercel path from this sandbox, same honesty class as the 043 live-replay disclosure)",
+  "next": "tranche-1 implementation on this branch; PR for independent review + R0 id ratification; authors never self-merge; golden/Neon/force untouched"
+}

@@ -2708,3 +2708,19 @@ Work Log:
 
 Stage Summary:
 - LANE w0a: T-MIG-043 DONE end-to-end (t1 #74, t2 #85/66c6618); the register items of record (mount ratification, consolidation ruling, replay classification) sit with R0/the replay lane. Authors-never-self-merge held — the merge was executed by the delegated reviewer, not the author. STOP.
+
+---
+Task ID: T-MIG-060 (claim)
+Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Operator trace 1a10f3bbe255c491 "Check if R0 has merged or not. If not, review+merge yourself and continue working" — R0 merge state verified IN (043-t2 #85 merged 66c6618 by the delegated reviewer; R0-AUTO sweep 03:00 merged #86), self-merge conditional did not fire; "continue working" executes the standing claim directive trace 1a10d2c88b6f13c5 — claimed the Wave-6 opener T-MIG-060 (tutor + sessions, SSE streaming parity).
+
+Work Log:
+- Pre-claim R0 state check @ origin/main e6cc4d1 (03:24Z): #85 merged (66c6618, 03:08:28Z, merged_by the delegated reviewer per trace 1a10eb10b04682cd); R0-AUTO desk ALIVE (03:00 UTC sweep receipt b26edbe merged #86; skipped 84/85/88 pending CI per rule (b)); 4 open PRs all owned (#84 r3a, #88 R0/R6, #89 r9-hubx 052t2, #91 R0 055); R0's own 052t2 duplicate head t-mig-052/r0-t2 self-closed unmerged as #90 at 03:19:49Z (§2.1 earliest-claim-wins honored by R0 itself — collision class stayed at zero). NOTHING of w0a's pending; no self-merge needed or performed.
+- Board census: register drained — W5 050/051/054 DONE, 052 owned (t2 in flight), 053 in flight (#84), 055 claimed by R0 (#91); Wave-7 is operator-gated cutover. T-MIG-060..066 = the ONLY zero-claim bands: ls-remote ZERO t-mig-06* heads, zero 06x yamls, zero 06x worklog claims (MIGRATION_PLAN :155 is the sole Wave-6 mention on main).
+- CLAIMED T-MIG-060 (Wave-6 opener: tutor + sessions — /ask + /ask/stream SSE parity + /sessions CRUD + the KaRAG deterministic chain) per the 030/032/039/040-PREP/041/043 self-filing precedent; id ratification requested at PR review. Branch t-mig-060/w0a cut from e6cc4d1; claim commit = yaml + this entry + receipt run-001-claim.json, zero code delta.
+- Frozen-core surface map read line-against-line at claim time (@ 6cad6ef): TutorController :60-260 (the §22 integrity probe 404-before-pipeline, V53/ADR-030 course-consistency 409, the append guard that never 5xxes a delivered answer, bounded daemon-pool admission control, the SSE open-stream wire-error law) + TutorSessionController :40-100 (201 create / s143 summaries list / latest 200|204 route-order law / foreign-or-unknown 404 indistinguishability) + the full tutor/ package inventory (KaRagService chain: GraphKnowledgeRetriever + ContentVectorRetriever + RRF + reranker + context assemblers + citation resolver + GroundedTutorGenerator seam + StreamSanitizer + memory/policy services + session store).
+- Dependencies verified: tutor tables already in the db baseline (schema.ts :929/:1048 — zero R2 work); the llm:ask ratelimit tier already ported (T-MIG-016, tutor named member); no contracts/src/tutor.ts yet (new in-fence file under the 033/043/049 same-lane contracts-first precedent, R1 coordination flagged at PR review). ADR-030 refusal is deterministic — golden-gateable per R-LLM (authz/session lifecycle/citation plumbing gated; LLM payloads excluded).
+- R-VERCEL spike obligation accepted: MIGRATION_PLAN §6 binds the W6 duration-limits spike to the wave's first task — tranche-1 deliverable; live-deploy verification disclosed as the deploy lane's register item (no Vercel path from this sandbox).
+
+Stage Summary:
+- LANE w0a re-opened on T-MIG-060 (one lane at a time held: 002R and 043 both DONE). Claim is branch-stamped for §2.1 priority; tranches t1 = services+contracts+spike record, t2 = routes+mount+pins. Zero code delta in the claim commit; golden/Neon/force untouched; authors never self-merge. Implementation proceeds on this branch.
