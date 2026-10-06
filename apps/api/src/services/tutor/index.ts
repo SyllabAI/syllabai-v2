@@ -9,9 +9,10 @@
  * SAFETY-CRITICAL PORT RULE: `paperQuestionResolver` has NO default. A
  * silent "notPaperAsk" fallback would disable the fail-open guard (the
  * confident-misattribution class it exists to kill) without anyone deciding
- * to — its full port (PaperQuestionResolver.java :92-649) is tranche-1b and
- * is disclosed in run-001-claim.json / the task yaml. Routes (tranche-2)
- * wire the real resolver.
+ * to. Tranche-1b lands the full port — services/tutor/paper-question.ts
+ * (PaperQuestionResolver.java :92-649 line-against-line) + the Fetch bank
+ * seam it rides (fetch-parser.ts + fetch-bank.ts); routes (tranche-2) wire
+ * buildPaperQuestionResolver(sql) explicitly.
  *
  * COMPOSITION LAW (the ServableQuestions posture): the curriculum scopes and
  * the vector search COMPOSE the landed content module's ports
@@ -157,6 +158,44 @@ export {
   type TelemetrySink,
   type KaragDeps,
 } from "./karag";
+export {
+  // the paper-question resolver (tranche-1b — the REQUIRED port)
+  buildPaperQuestionResolver,
+  completeIdentity,
+  identityLabel,
+  subjectCode,
+  unitCandidates,
+  unitFromPaperCode,
+  matchQuestion,
+  atomMatches,
+  contentMarks,
+  MAX_QP_ITEMS,
+  MAX_CARD_ITEMS,
+  MAX_STORE_QP_ITEMS,
+  MAX_STORE_MS_ITEMS,
+  MAX_MS_ITEMS_SEEKING,
+  MAX_STORE_QP_ITEMS_SEEKING,
+  MAX_STORE_MS_ITEMS_SEEKING,
+  type PaperResolutionResult,
+  type ResolverScope,
+} from "./paper-question";
+export {
+  // the Fetch query parser (tranche-1b — the resolver's shared parser)
+  parseFetchQuery,
+  hasExplicitPaper,
+  parsedIsEmpty,
+  partAtomOf,
+  type ParsedFetchQuery,
+} from "./fetch-parser";
+export {
+  // the Fetch bank seam (tranche-1b — identity/ambiguity law)
+  buildTutorFetchBank,
+  type BankFetchResult,
+  type BankPaperHit,
+  type BankQuestionRow,
+  type BankScope,
+  type TutorFetchPort,
+} from "./fetch-bank";
 export type { SqlFn } from "./sql";
 
 export interface TutorModule {

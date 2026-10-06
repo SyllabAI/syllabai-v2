@@ -98,7 +98,11 @@ export const MIN_COSINE = 0.5;
  * fail-open guard's identity parser. REQUIRED in the module factory — there
  * is deliberately NO silent "notPaperAsk" default, because defaulting would
  * disable the guard (the confident-misattribution class it exists to kill)
- * without anyone deciding to. Its full port is tranche-1b (disclosed).
+ * without anyone deciding to. Tranche-1b lands the full port
+ * (services/tutor/paper-question.ts — buildPaperQuestionResolver); routes
+ * (tranche-2) wire it. The scope gains the subject `code` the resolver's
+ * card/store tiers read (CurriculumScopePort satisfies it structurally;
+ * functions typed against the narrower pre-1b shape stay assignable).
  */
 export interface PaperResolution {
   items: EvidenceItem[];
@@ -108,7 +112,7 @@ export interface PaperResolution {
 
 export type PaperQuestionResolver = (
   retrievalQueryText: string,
-  scope: { surface: ReadonlySet<string>; curriculumVersionId: string },
+  scope: { surface: ReadonlySet<string>; curriculumVersionId: string; code: string },
 ) => Promise<PaperResolution>;
 
 /** The generation seam (R-LLM: LLM outputs never golden-gated). Blocking
