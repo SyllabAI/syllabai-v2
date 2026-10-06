@@ -3,7 +3,7 @@ task:
   id: T-MIG-043
   title: "Wave-4 learner port — the learner-me surface band: agenda (T-C76) + flashcard ratings/rating-trail/review-schedule (V47/T-C61/T-C53) + note-votes (V48) + exam-series picker & target-series (T-C79) + learner assignments (V49/V51); tranche-1 = services + fakeSql pins (021/033/041 template); NBA engine + routes = tranche-2"
   owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — operator directive trace 1a10d2c88b6f13c5 'Check and claim whichever lane other agents are not working': executes the seeding word for the last unclaimed MIGRATION_PLAN Wave-4-reserved band (040 PREP DONE #57, 042P DONE #54, 041 claimed+in-review r7a #65; 043 was the named remainder per r7a's 041 yaml 'agenda/…/exam-series+flashcards = T-MIG-043'). Id ratification requested at PR review (030/032/039/040-PREP/041 precedent)"
-  status: IN_PROGRESS # tranche-2 CLAIMED 2026-10-06 (operator trace 1a10eae6bc2044c1 "Proceed with Tranche-2 (NBA engine + routes + w4 golden replay)"); tranche-1 IN_REVIEW since 2026-10-06 (PR filed; claim 2026-10-06)
+  status: IN_REVIEW # tranche-2 LANDED on-branch 2026-10-06 (run-004 receipt; PR update requested); tranche-1 IN_REVIEW since 2026-10-06; tranche-2 CLAIMED 2026-10-06 (operator trace 1a10eae6bc2044c1)
   priority: P1
   wave: 4
   deps: [T-MIG-038, T-MIG-040-PREP, T-MIG-014] # landed W4 contracts (learner.ts) + the W4 golden capture that pins these surfaces + db driver dispatch
@@ -158,6 +158,25 @@ task:
     decay/BDT pure math under the per-module structural-seam doctrine
     (consolidation ruling requested with the ExamTargetReader one).
     Status -> IN_PROGRESS.
+    (tranche-2 completion, 2026-10-06, run-004): the NBA engine ported
+    line-against-line — T1..T7 incl. the T-C11 graph tiers T2b/T4b, policy
+    nba-rules/v1.3, one-action-per-topic + maxActions 8 + the per-request
+    servable-count cache; ServableQuestions composed (never mirrored); the
+    T-C11 loader fail-closed over the byte-verbatim snapshot (272 validated
+    edges == the frozen count); routes/learnerme.ts + the OUT-OF-FENCE
+    index.ts mount commit; 33 engine pins + 24 route pins (the captured w4
+    400 bodies reproduced verbatim). REAL PORT BUG caught by the pins
+    (R-043-A): JS Set.add returns the set, not Java's boolean — the
+    one-action-per-topic dedupe never deduped until claimTopic(). Gates:
+    typecheck x4 exit 0; 884/871/0/13skip/2688 = baseline +57/372 EXACT;
+    golden selftest OK; w4-readiness READY (57 cases, 0 findings); zero
+    golden files touched; zero Neon contact. GOLDEN REPLAY: replay-ready,
+    dispatch blocked (CI dark since Oct-5 18:25:34Z + no NEON_PAT in the
+    wiped sandbox) — disclosed in run-004 with the 57-case ownership map
+    (29 mine / 6 already green / 22 other lanes). Fidelity flags: ISO-millis
+    vs Instant.toString() inside reasonDetail; toFixed(2) vs %.2f; T7a tie
+    order (port MORE deterministic). Status -> IN_REVIEW (PR update
+    requested; authors never self-merge).
   scope:
     allowed:
       - "apps/api/src/services/learner-me/** (NEW module: agenda, flashcard ratings/trail/schedule, note-votes, exam-series, assignments)"

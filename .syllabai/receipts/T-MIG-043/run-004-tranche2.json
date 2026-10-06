@@ -1,0 +1,73 @@
+{
+  "schema": "syllabai.receipt/v1",
+  "task": "T-MIG-043",
+  "run": "run-004-tranche2",
+  "kind": "execution+gates",
+  "when": "2026-10-06T02:10:00Z",
+  "agent": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "directive": {
+    "trace_id": "1a10eae6bc2044c1",
+    "text": "Proceed with Tranche-2 (NBA engine + routes + w4 golden replay)"
+  },
+  "commits": [
+    { "sha": "e0726ac", "kind": "claim", "what": "tranche-2 claim (yaml fence expansion + run-003 receipt + the T-C11 snapshot byte-verbatim)" },
+    { "sha": "1d0128b", "kind": "port", "what": "the NBA engine + the T-C11 loader + the module-factory flip (33 engine pins)" },
+    { "sha": "9bede34", "kind": "port", "what": "routes/learnerme.ts + the index.ts OUT-OF-FENCE mount commit" },
+    { "sha": "4bf0638", "kind": "test", "what": "24 route pins + the shared nba-helpers fixture kit" }
+  ],
+  "implementation": {
+    "nba_engine": {
+      "source": "NextBestActionService.java :79-554 @ syllabai-core 6cad6ef — line-against-line",
+      "tiers": "T1 due retrieval (overdue-first, reason humanized) / T2 prerequisite remediation (both-measured-weak) / T2b validated REQUIRES_PREREQUISITE chain (learner-evidence-gated, unmeasured reported honestly, measured strength overrides the nomination) / T3 problem questions (cap 2, ratio <= 0.5, primary-topic isolation, servable gate) / T4 misconceptions (BDT activeThreshold 0.5 on the staleness-relaxed value, prob DESC then code) / T4b validated REMEDIATED_BY corrective leg / T5 signed fluency gaps (>= 0.2, |gap| DESC) / T6 weak measured mastery (eff ASC, bandOf) / T7a tutor engagement (14d window, ask-count DESC, TOPIC/SUBTOPIC only, servable > 0, v1.3 signal-mix note) / T7 uncovered topics (DFS curriculum order, cap 2)",
+      "portfolio_laws": "one action per topic (claimTopic — see the port-bug finding), maxActions 8 cap, rank renumber 1..n, per-request servable-count cache",
+      "policy": "nba-rules/v1.3 (verbatim)",
+      "composition": "ServableQuestions (the questions module's ONE serving-rule owner — the frozen javadoc forbids mirroring) composed for isServable/countServableByTopic; decay/BDT pure math ported per-module (state.ts parity, consolidation ruling requested)",
+      "determinism": "now() from the injected clock (disclosed deviation from the frozen internal Instant.now()); decay/relaxation computed at read, never persisted (ADR-031/032)"
+    },
+    "tc11_loader": {
+      "source": "ConceptDependencyGraphLoader.java + ConceptDependencyGraph.java @ 6cad6ef",
+      "snapshot": "concept-graph/{concept_edges,concepts,practicals}.yaml copied BYTE-VERBATIM from the frozen core's src/main/resources (sha256 8a651dd9… / 24fa91ac… / e53e5f87… — verified byte-identical at copy AND re-verified at load, fail-closed)",
+      "counts": "validatedEdgeCount 272 == the frozen loader's logged count; REQUIRES_PREREQUISITE 206; REMEDIATED_BY 25",
+      "fail_closed": "HUMAN_VALIDATED-only + known-relation + known-endpoint + no-duplicate with the verbatim frozen error texts; unknown-relation/endpoint/duplicate all throw"
+    },
+    "routes": {
+      "file": "routes/learnerme.ts (NEW)",
+      "mounted": "/api/v1/learners/me (index.ts mount = the OUT-OF-FENCE separate commit, R0 ratification requested per the 010/020/021/030/032/034 precedent)",
+      "surfaces": "GET /agenda (optional rootId), GET /recommendations (required rootId — engine ONLY, none of the agenda composition), POST /flashcard-ratings 201, GET /flashcard-rating-trail, GET /flashcard-review-schedule, POST /note-votes 201, GET /exam-series, PUT /courses/:slug/target-series 200, DELETE /courses/:slug/target-series 204, GET /assignments, POST /assignments/:id/submissions 201",
+      "exception_law": "LearnerMeNotFound → 404 not_found verbatim message; LearnerMeForbidden → 403; LearnerMeNotImplemented → 501 not_implemented (the tranche-1 safety net, retained); BadRequest/Conflict → 400/409 verbatim; uuid path/query mismatch → 400 bad_request 'malformed request'; missing required param → 400 validation_failed 'missing required parameter: {name}' (session-56); the two-envelope R-1 law with the learner-me nuance: @Pattern regex failures are CONSTRAINTS (validation_failed, custom or jakarta default 'must match \"…\"'), malformed uuids are BINDING failures (malformed_body)"
+    }
+  },
+  "real_finding": {
+    "id": "R-043-A",
+    "what": "JS Set.add returns the SET (truthy), not Java's boolean — the frozen `if (!topicsWithActions.add(id)) continue;` dedupe ported literally NEVER deduped; a topic claimed by an early tier could take a second action in a later tier (T5+T6 composed case caught it)",
+    "fix": "claimTopic(): explicit has-then-add — first tier wins, portfolio diversity §16 restored",
+    "caught_by": "the pins, before any review (the tranche-1 culture: Vote.parse 'down' case)"
+  },
+  "gates": {
+    "typecheck_x4": "exit 0 (packages/contracts, packages/shared, packages/db, apps/api)",
+    "bun_test": "884 ran / 871 pass / 0 fail / 13 skip / 2688 expect = pre-tranche-2 branch baseline (827/814/0/13/2316) + 57 tests / 372 expects (nba.test 33/305, routes.test 24/67) EXACT",
+    "golden_selftest": "OK (tolerance engine incl. declared-unordered multiset — T-MIG-024)",
+    "w4_readiness": "READY exit 0 (57 cases, 0 findings) — the 040-PREP instrument re-run on this head",
+    "zero_golden_files_touched": true,
+    "zero_neon_contact": true
+  },
+  "golden_replay": {
+    "status": "REPLAY-READY — dispatch blocked, disclosed",
+    "case_ownership": {
+      "mine_29": "5 agenda + 8 flashcard-ratings + 3 trail + 3 schedule + 1 note-vote + 4 exam-series + 5 target-series — every route mounted this tranche; the captured 400/404 bodies reproduced verbatim in the route pins",
+      "already_green_6": "w4-register-learner-201 / w4-login-learner-200 (identity), w4-attempt-mcq-practice-201 (w3 band), w4-authed-unknown-path-404 + w4-unknown-learner-path-401 (the /api/v1/* fallback), w4-agenda-wrong-method-401 (unauthed shell)",
+      "other_lanes_22": "14 for 041-t2 (state 4 / course-stats 3 / knowledge-graph 3 / smart-lesson 4 — r7a's double-PR #69/#72, unmerged) + 8 intervention (Wave-6; 7 unauthed 401s pass via the fallback, 1 authed unknown-run 400 stays red until the Wave-6 lane)"
+    },
+    "blockers": [
+      "CI Actions dark repo-wide since 2026-10-05T18:25:34Z (suspected account-level spending limit — the standing register item)",
+      "the T-MIG-044 instrument is the doctrine path for live replay (agent sandboxes are DNS-blocked for Neon; this sandbox additionally has no NEON_PAT after the wipe)",
+      "the captured seed-dependent cases (exam-series calendar, KG) need the Neon COW's V63 seed — a local empty-schema boot cannot produce an honest verdict"
+    ],
+    "when_ci_returns": "dispatch the corpus replay at this head; expected delta vs the 105/170 union baseline: the 29-case band flips green (subject to the 041-t2/seed posture above); classification receipt to follow"
+  },
+  "fidelity_flags": [
+    "reasonDetail timestamps render ISO-8601 millis where the frozen embeds Instant.toString() (variable precision) — no captured case pins any NBA detail (the composed-agenda capture has actions: null); unit pins fix both sides",
+    "fmt() renders %.2f as toFixed(2) — half-even vs HALF_UP differs only on exact .005 double boundaries (none reachable from stored ranges)",
+    "T7a ask-count ties keep insertion order where the frozen HashMap order is unspecified — the port is the MORE deterministic of the two"
+  ]
+}
