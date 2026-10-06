@@ -2545,3 +2545,21 @@ Work Log:
 Stage Summary:
 - N-4 register item (W3 marking + SME surfaces lacked populated-200 golden gates) is CLOSED by capture. Board: W5 band delivering (052 t1 landed 39fa554 last cycle; 051 landed this cycle), remaining claimable = 052 remaining tranches / 053 / 043 tranche-2 (NBA engine + routes) / hub scoped-test-runner hygiene.
 - Queue at sweep end: 0 open PRs. No escalations. LANE DONE for this cycle.
+
+---
+Task ID: 18
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, operator trace 1a10f154ce512e59)
+Task: Operator round-14 directive "run the next sweep" — queue sweep following this lane's round-13 receipt; credential re-persistence + independent board verification.
+
+Work Log:
+- Credential recovery FIRST (sixth-wipe class): the 0600 .secrets store was lost to the sandbox re-provision. Re-staged per the operator's standing instruction from the operator-issued PAT already carried in the origin push URL (value never echoed; file referenced by path only). Live-verified (GET /user -> 200, login SyllabAI, repo scope) and the NEW fingerprint registered: 8c1fcf2c4f0d5243 — a rotation vs the discharged Oct-5 record 46b5d309715c1b1c, consistent with the operator's round-12/13 reissues; not a new token (credential law respected: persisted, never recreated). Workspace hygiene: the auto-provisioned my-project git repo had TRACKED .env — untracked + gitignored (.env, .secrets/, tool-results/) so the no-secrets-in-repos law holds at the sandbox workspace layer too.
+- Board re-derived at main fe97f94 (fetch-before-every-action; main advanced three times since this lane's round-13 receipt 633bfff): #81 (R3a-ROUND-12 receipt) merged via intake 4fe308c; R0-AUTO cron job 438940 executed both its 02:00 UTC cycle (merged #82 — T-MIG-052 tranche-1, 39fa554) and 02:30 UTC cycle (merged #83 — T-MIG-051 N-4 rich-200 golden capture, 7dfdd16) with self-recorded receipts; the R0-ROUND-12 arbitration audit closed the #76 collision register entry with file-level evidence.
+- Queue census: 0 open PRs; all three residual branch heads (t-mig-050/r0, t-mig-051/r0, t-mig-052/r9-hubx) fully contained in main (0 ahead / behind-only). Card census: 45 DONE / 1 IN_REVIEW — T-MIG-052 held legitimately (multi-tranche claim: t1 classes+rosters core landed, t2 routes+mounts pending; not a stale card).
+- Gates re-run INDEPENDENTLY at fe97f94 (not rubber-stamped from the R0-AUTO receipt): bun install --frozen-lockfile exit 0; typecheck x4 exit 0; bun test apps/api packages 948 pass / 0 fail / 13 skip / 2689 expect (EXACT match to the recorded numbers at 7dfdd16); golden --selftest OK. CI at fe97f94: verify + hub both completed/success (check-run API read at the real tip SHA).
+- Hygiene: all 46 task yamls parse; worklog conflict-marker scan 0; no card flips filed by this lane.
+- NO CLAIM taken by the sweep lane: the remaining claimables (052-t2 routes+mounts / 053 / 043 tranche-2 NBA engine+routes / hub scoped-test-runner hygiene) sit in the Wave-5 band where another lane already received "claim the next unscoped task" routing (trace 1a10ec4d22b0e54d, per the R0-AUTO 02:00 receipt) — a parallel lane's in-flight claim is invisible until its first push, so earliest-claim-wins discipline keeps the sweep lane out of the band. This entry is the only direct-main write by this lane (sweep-receipt precedent acce2c6/c94e437/d9fc9b4/d1ff74e/633bfff).
+
+Stage Summary:
+- Round-14 net: zero merges needed (queue already drained by R0-AUTO + parallel lanes); board verified green end-to-end (CI + all four local gates at the tip, arithmetic exact); the PAT persistence law is RESTORED after the wipe (0600 file outside repo tracking + auto-loader + fingerprint register + workspace .env hygiene). Credentials referenced by path only, never by value.
+- Register (carried for R0/operator): NEON_BRANCH_CAPACITY (CI replay instrument still blocked on slots); H-2 third posture; identity pins; 429 pacing; unpaged /answers order-unspecified note (T-MIG-051); Wave-5 id-band discrepancy (plan-reserved 050 consumed by R-050-A) still awaits an operator ruling BEFORE 053 is claimed.
+- LANE r1c: STOP for this round.
