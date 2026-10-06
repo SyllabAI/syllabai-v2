@@ -1,0 +1,26 @@
+{
+  "task": "T-MIG-058",
+  "run": "002-fix",
+  "agent": "r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "operator_trace": "1a10f56a8798fb39 (round-12 delegated cycle; PAT persisted outside every git repo, referenced by path)",
+  "date": "2026-10-06T04:16:30Z",
+  "base": "afb4a63 (t-mig-058/r1 claim commit; parent aca7a5e origin/main)",
+  "branch": "t-mig-058/r1",
+  "fix_scope": {
+    "files": [
+      "apps/api/src/routes/selfmark/index.ts — elementNullIssue predicate gains `i.path.length === 2` (DEPTH PIN: element-level means EXACTLY parts[i]); T-MIG-058 DEPTH PIN comment block documents the frozen nested-null matrix (no cascade -> @NotNull :55 dead, HashMap.put(null,v) legal :44 -> null partId survives to the service exact-parts gate -> 400 bad_request; null marksAwarded data-dependent 400/500 via the bound-loop unboxing NPE); SelfMarkRequest citation corrected :58 -> :59 (057 off-by-one nit, touched in passing)",
+      "apps/api/test/smartmark/routes.test.ts — third route pin: {parts:[{partId:null, marksAwarded:1}]} -> 400 validation_failed 'parts[0].partId: must not be null' (the pre-057 T-MIG-053 classifier posture restored; frozen FULL answer bad_request via the exact-parts gate = register-open F-B, disclosed on the pin)"
+    ],
+    "zero_packages_golden_service": true
+  },
+  "gates": {
+    "install": "bun install --frozen-lockfile OK (940 packages, no changes)",
+    "typecheck_x3": "exit 0 (root / packages/contracts / apps/api)",
+    "baseline_aca7a5e": "1093 pass / 0 fail / 13 skip / 3299 expect (1106 ran / 61 files) — matches the R0-AUTO receipt exactly",
+    "branch": "1094 pass / 0 fail / 13 skip / 3302 expect (1107 ran / 61 files)",
+    "delta": "+1 test / +3 expect / 0 files — ARITHMETICALLY EXACT (the nested-null pin: status + error + message)",
+    "selftest": "bun golden/runner.ts --selftest OK (tolerance engine, declared-unordered multiset)"
+  },
+  "posture_note": "with the depth pin: {parts:[null]} -> 500 (057 law intact, both 057 pins still green), {parts:[null,{bad-uuid}]} -> 400 malformed_body (binding precedence intact), {parts:[{partId:null}]} -> 400 validation_failed (pre-057 classifier posture restored; frozen full answer = F-B register-open), nested marksAwarded null -> 400 validation_failed (pre-057 posture; frozen data-dependent = F-B)",
+  "handoff": "PR authored by r1-contracts -> authors-never-self-merge -> NOT self-merged; handed to the R0-AUTO/review desk with the #92 thread (6009074844 REQUEST_CHANGES + 6009163427 claim) as the evidence chain of record"
+}
