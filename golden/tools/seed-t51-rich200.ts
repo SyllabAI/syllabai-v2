@@ -90,9 +90,47 @@ async function api(
 ): Promise<Response> {
   const headers: Record<string, string> = { ...(init.headers as Record<string, string>) };
   if (init.token) headers.Authorization = `Bearer ${init.token}`;
-  const res = await fetch(new URL(path, target), { ...init, headers });
+  const res = await throttled(
+    () => fetch(new URL(path, target), { ...init, headers }),
+    path,
+  );
   if (!res.ok) {
     throw new Error(`${path} -> ${res.status}: ${(await res.text()).slice(0, 300)}`);
+  }
+  return res;
+}
+
+// T-MIG-063 run-004 (fence amendment, disclosed pre-push): the v2-ONLY
+// register rate limiter (the R0R6-R7 triage's C-class parity defect) 429s
+// setup bursts on the Neon instrument — the first live staging run
+// (37417629684) died on the t51 registers with retryAfterSeconds:53 AFTER
+// the bootstrap claim had consumed the one-time window, so a blind retry
+// cannot recover. Honor retryAfterSeconds on the tool's OWN setup calls:
+// setup robustness ONLY — zero case semantics, zero capture posture, and
+// the auth-register CASES still measure the limiter (they replay
+// untouched; the C-class reds stay honest). The bootstrap claim is a
+// one-shot: a 429 on it did NOT consume the window (the handler never
+// ran), so retrying it is safe; a 201 consumed it and never retries.
+async function throttled(fn: () => Promise<Response>, what: string): Promise<Response> {
+  let res = await fn();
+  for (let i = 0; i < 4 && res.status === 429; i++) {
+    const h = Number(res.headers.get("retry-after") ?? "");
+    let retryAfter = Number.isFinite(h) && h > 0 ? h : 0;
+    if (!retryAfter) {
+      try {
+        retryAfter = Number(
+          ((await res.clone().json()) as { retryAfterSeconds?: number }).retryAfterSeconds ?? 15,
+        );
+      } catch {
+        retryAfter = 15;
+      }
+    }
+    const wait = Math.min(Math.max(retryAfter, 5), 90) + 2;
+    console.log(
+      `[seed-t51] 429 on ${what}; waiting ${wait}s (v2-only limiter, triage C-class — the cases still measure it)`,
+    );
+    await new Promise((r) => setTimeout(r, wait * 1000));
+    res = await fn();
   }
   return res;
 }
@@ -157,7 +195,7 @@ if (stage === "accounts" || stage === "all") {
   }
 
   // ── 2. the student ────────────────────────────────────────────────────────
-  const reg = await fetch(new URL("/api/v1/auth/register", target), {
+  const reg = await throttled(() => fetch(new URL("/api/v1/auth/register", target), {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
@@ -166,7 +204,7 @@ if (stage === "accounts" || stage === "all") {
       displayName: STUDENT_NAME,
       role: "STUDENT",
     }),
-  });
+  }), "register student");
   if (!reg.ok && reg.status !== 409) {
     throw new Error(`register -> ${reg.status}: ${await reg.text()}`);
   }
@@ -174,7 +212,7 @@ if (stage === "accounts" || stage === "all") {
   console.log("student ready (User 1)");
 
   // the TEACHER-role account (403-posture replay token)
-  const treg = await fetch(new URL("/api/v1/auth/register", target), {
+  const treg = await throttled(() => fetch(new URL("/api/v1/auth/register", target), {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
@@ -184,7 +222,7 @@ if (stage === "accounts" || stage === "all") {
       role: "TEACHER",
       joinCode: TEACHER_JOIN_CODE,
     }),
-  });
+  }), "register teacher");
   if (!treg.ok && treg.status !== 409) {
     throw new Error(`teacher register -> ${treg.status}: ${await treg.text()}`);
   }
