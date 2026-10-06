@@ -345,7 +345,7 @@ describe("matchQuestion — atom first, part refinement, content fallback", () =
 
 // ── the resolver flow (:183-234) over fakeSql ───────────────────────────────
 
-function resolver(responses: Record<string, Row[]>) {
+function resolver(responses: Record<string, Responder>) {
   return buildPaperQuestionResolver(fakeSql(responses));
 }
 
@@ -355,7 +355,7 @@ describe("resolveWithVerdict — the verdict laws", () => {
   test("not a paper ask: blank query / no scope → identityParsed=false", async () => {
     const r = resolver({});
     expect(await r("   ", SCOPE)).toEqual({ items: [], identityParsed: false, identityLabel: null });
-    expect(await r("question 10 june 2019", null)).toEqual({
+    expect(await r("question 10 june 2019", null as never)).toEqual({
       items: [],
       identityParsed: false,
       identityLabel: null,
