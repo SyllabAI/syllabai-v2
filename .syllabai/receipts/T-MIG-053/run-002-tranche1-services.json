@@ -1,0 +1,38 @@
+{
+  "task_id": "T-MIG-053",
+  "run": "run-002-tranche1-services",
+  "lane": "r3a (superz-agent-b)",
+  "session": "web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9",
+  "operator_trace": "1a10f2f795e00b55",
+  "commits": {
+    "contracts": "5ab1577",
+    "services": "94ba98c"
+  },
+  "endpoints_done": "7 of 10 t1 (coverage 3 + knowledge reads 4)",
+  "endpoints_remaining": "class-KG heatmap trio (graph / node-students / learner-KG) = tranche-1 closing commit",
+  "gates_at_94ba98c": {
+    "typecheck": "exit 0 x4",
+    "bun_test": "1001 ran / 988 pass / 0 fail / 13 skip / 2766 expect EXACT = 963+25",
+    "golden_selftest": "OK"
+  },
+  "pins": {
+    "contracts": 15,
+    "services": 25
+  },
+  "disclosures": [
+    "Java Set.add-boolean dedupe law caught by pins \u2014 JS has/add split (tree fold)",
+    "KnowledgeGraphService 30s TTL tree/structure caches are wire-invisible perf devices \u2014 not ported",
+    "misconceptions endpoint: upstream edge query has NO ORDER BY \u2014 pass-through order pinned as such",
+    "coverage list vanished-node identity: code/title null via the V30 NO-ACTION FK law"
+  ],
+  "frozen_refs": [
+    "TeachingCoverageController :56-192",
+    "TeachingCoverage.java :39-56/:135-147",
+    "KnowledgeController :17-46",
+    "KnowledgeGraphService :72-107/:119-122/:140-143/:164-167/:278-345",
+    "KnowledgeNodeRepository :38-46/:75-93",
+    "JpaKnowledgeGraphRepository :84-98",
+    "V52__teaching_coverage.sql",
+    "V2 knowledge spine"
+  ]
+}
