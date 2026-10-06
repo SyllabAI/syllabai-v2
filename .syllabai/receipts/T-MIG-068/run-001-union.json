@@ -1,0 +1,34 @@
+{
+  "task_id": "T-MIG-068",
+  "kind": "RUN-001: post-merge union receipt of record — the seeded-posture band's 5/6 items CLEARED on the live instrument (union 142/177, trajectory 108-120-137-142); the sixth left the 500-class with a wall-clock-class residual dispositioned to the case-owner lane",
+  "run": "001",
+  "timestamp": "2026-10-06T07:05:30Z",
+  "agent": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "authority": "operator directive trace 1a10fe954b3d25a1 'Claim T-MIG-068' (claim of record 06:35:40Z, pushed on t-mig-068/r0); the dual claim of the sibling r0 session (8516d25 @ 06:38:41Z under trace 1a10fe65d9d64f3d) is ABSORBED of record — both lanes executed the identical coordination and the register converges on this closure",
+  "implementation_vehicle": "PR #109 (the r0r6 lane's band port, operator-fired 1a10fd303bbe4f49, opened under the denied 067 id per arbitration ruling2) — reviewed by this lane as the desk (APPROVE, comment 6010860776: the review.ts bind-slot 42601 root cause byte-exact vs the run-004 log position 8; the wireDate LocalDate passthrough law capture-matched; the {}-body malformed classification premise verified against the case files; scope disclosure ratified), desk-intake a0a3535 (origin/main 00831a6; ONE conflict — servable.ts resolved to main's merged T-MIG-067 fix, the options pin re-anchored to the of-record SQL text), merged as e760bdc alongside the lane's own re-claimed #110 (3e4e22c — the same fixes under the reconciled 068 id; git merged them with ZERO conflicts, the single-implementation state verified on main: one wireDate definition, one bind-slot law, one classifier). Note: the sibling r0 session's parallel yield/closure receipts (33e281f, r1's #111 yielded unmerged) corroborate the same root causes independently.",
+  "gates": {
+    "intake_head": "typecheck x4 exit 0; 1394 pass / 0 fail / 13 skip / 5583 expect (73 files); golden --selftest + ci-replay --selftest OK",
+    "merged_main_33e281f": "typecheck x4 exit 0; 1394 pass / 0 fail / 13 skip / 5583 expect — re-run by this lane after the #109/#110 convergence"
+  },
+  "union_verdict": {
+    "neon_replay_run": "37426037703 (workflow_dispatch on main @ 33e281f)",
+    "artifact": "neon-replay-37426037703-1",
+    "union": "142/177 PASS (seed 129/162 +5 vs run-004's 124, prod 13/15) — trajectory of record: 108/170 (run-7) -> 120/177 -> 137/177 (run-004) -> 142/177 (this run)",
+    "case_results": [
+      "teacher-curriculum-versions-teacher-200: PASS (the 42601 bind-slot fix)",
+      "w3-attempt-missing-fields-400: PASS (the {}-body malformed classification)",
+      "w3-attempt-structured-missing-fields-400: PASS",
+      "w4-exam-series-qualification-filter-200: PASS (the DATE wire law)",
+      "w4-exam-series-seeded-calendar-200: PASS",
+      "w4-target-series-put-201: 200 (was 500 — the wireDate fix retired the crash); residual body diff dispositioned below"
+    ]
+  },
+  "residual_disposition": {
+    "case": "w4-target-series-put-201",
+    "diff": "the DATE fields, series identity, estimated and entryDeadlinePassed are byte-identical to the capture; the ONLY divergence is daysToWindowStart 2 vs 3 and daysToWindowEnd 24 vs 25 — EXACTLY ONE DAY",
+    "classification": "CAPTURE-PINNED WALL CLOCK (case-owner lane, NOT a port defect): the countdown fields derive from utcToday() at serve time (the frozen law, ChronoUnit.DAYS.between(today, window) — the port computes identically); the capture pinned the capture-day values (2026-10-05) and every replay day drifts by one. Sibling of the timestamp tolerance class.",
+    "options_for_R0R6": "(a) tolerate[] the daysToWindowStart/daysToWindowEnd fields (wall-clock-derived by law); (b) re-pin the case on the standing instrument per replay; (c) tolerate only on the condition the drift is within capture age. Honest red until ruled; zero silent widening applied."
+  },
+  "register_after": "T-MIG-066/067/068 DONE of record; the remaining union reds are all corpus-class or standing-lane-owned: RICH-200-C (7 empty-state 200s, case-owner), RICH-200-E (families tie order, case-owner), the target-series wall-clock countdown (this receipt, case-owner), auth-me + the t51-seed B-class remainder (third posture, operator sign-off), C-class limiter parity (auth lane), D/E/F/G/I classes unchanged",
+  "next": "case-owner lane owns the wall-clock tolerance ruling; this lane IDLE"
+}
