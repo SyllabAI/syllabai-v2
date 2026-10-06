@@ -3,7 +3,7 @@ task:
   id: T-MIG-043
   title: "Wave-4 learner port — the learner-me surface band: agenda (T-C76) + flashcard ratings/rating-trail/review-schedule (V47/T-C61/T-C53) + note-votes (V48) + exam-series picker & target-series (T-C79) + learner assignments (V49/V51); tranche-1 = services + fakeSql pins (021/033/041 template); NBA engine + routes = tranche-2"
   owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — operator directive trace 1a10d2c88b6f13c5 'Check and claim whichever lane other agents are not working': executes the seeding word for the last unclaimed MIGRATION_PLAN Wave-4-reserved band (040 PREP DONE #57, 042P DONE #54, 041 claimed+in-review r7a #65; 043 was the named remainder per r7a's 041 yaml 'agenda/…/exam-series+flashcards = T-MIG-043'). Id ratification requested at PR review (030/032/039/040-PREP/041 precedent)"
-  status: IN_REVIEW # tranche-1 PR filed 2026-10-06 (claim 2026-10-06)
+  status: DONE # 2026-10-06 tranche-1 LANDED via PR #74 merged 23b23e3 (w0a earliest claim db87a9a @ 18:01:06Z per §2.1, independently verified by r3a receipt #75 + the R0-ROUND-12 review sweep; superseding #76 closed as losing duplicate with its TrailCursor sub-milli finding noted). Card flip: R0-ROUND-12 housekeeping (trace 1a10eae1f4ff0fdd).
   priority: P1
   wave: 4
   deps: [T-MIG-038, T-MIG-040-PREP, T-MIG-014] # landed W4 contracts (learner.ts) + the W4 golden capture that pins these surfaces + db driver dispatch
