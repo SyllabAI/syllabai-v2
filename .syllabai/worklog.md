@@ -2564,3 +2564,20 @@ Work Log:
 Stage Summary:
 - N-4 register item (W3 marking + SME surfaces lacked populated-200 golden gates) is CLOSED by capture. Board: W5 band delivering (052 t1 landed 39fa554 last cycle; 051 landed this cycle), remaining claimable = 052 remaining tranches / 053 / 043 tranche-2 (NBA engine + routes) / hub scoped-test-runner hygiene.
 - Queue at sweep end: 0 open PRs. No escalations. LANE DONE for this cycle.
+
+---
+
+Task ID: 2
+Agent: w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Operator directive trace 1a10eae6bc2044c1 (continuation) + the fresh-PAT push window — land the tranche-2 branch (push + PR + CI + R0 intake).
+
+Work Log:
+- Sandbox re-wiped between windows (credential law held — nothing persisted). Operator supplied a fresh PAT in-session with the standing "make sure you dont lose the PAT" word; the PAT was configured session-scoped and to a 0600 file OUTSIDE every repo/artifact path — never written to any receipt, worklog, commit, PR body, or log. gh CLI absent in the sandbox; raw git + the GitHub API used instead.
+- State re-derived read-only: remote t-mig-043/w0a still at 369d563 (the lost window's push), local clone held the full tranche-2 chain (e0726ac → db74d57, 37 commits ahead / 0 behind — a clean fast-forward). Board census: R0-AUTO alive and merging on its 30-min cadence (#82 merged 39fa554, receipt ee37657; #83 merged 7dfdd16, receipt fe97f94); open PRs = 0; the 052 claim (3c8a044) independently re-affirms "043-t2 w0a's" — zero counter-claims; #76 remains closed-unmerged per the Task-16/R7a rulings.
+- INTAKE: origin/main fe97f94 merged into the branch (22deff2) — zero 043/NBA/learner-me file overlap verified pre-merge; the worklog conflict resolved as a strict append-only union in chronological order (w0a run-003/004 @ 01:51:53Z → R0-AUTO 02:00 sweep → Task 17 (051) → R0-AUTO 02:30 sweep); zero entries dropped.
+- GATES at 22deff2 ALL GREEN: typecheck x4 exit 0; bun test 1018 ran / 1005 pass / 0 fail / 13 skip / 3061 expect across 58 files — EXACT arithmetic (branch 957/944/0/13skip/2895 + main delta +61 tests/+166 expects = 052 t1 +56/+158 + 051 +5/+8); golden --selftest OK; w4-readiness READY (57 cases, 0 findings).
+- PUSH: 369d563..22deff2 fast-forward (zero force). PR #85 opened with the full symmetric disclosure (mount OUT-OF-FENCE ratification request, consolidation ruling request, replay-after-merge plan, 041-t2 resolution note). CI on the PR head: verify + hub both completed/success @ 22deff2.
+- Receipt run-005-push-pr.json filed; this worklog entry + the receipt ride the bookkeeping push to the branch.
+
+Stage Summary:
+- Tranche-2 is PUSHED and PR'd (#85): CI green, and every R0-AUTO guard-chain precondition is satisfied at 22deff2 (base == main tip fe97f94 → mergeable-clean, 0 reviews/comments, syllabai-v2-only file boundary, CI success at the real head). LANE w0a: monitoring the desk; the operator's standing authorization (trace 1a10d0c303d3852d "review+merge yourself") remains the disclosed fallback ONLY if the desk does not act. Zero golden files touched; zero Neon contact; zero force-push. STOP.
