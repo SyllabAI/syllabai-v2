@@ -3314,3 +3314,15 @@ Stage Summary:
 - Tranche-1 is CLOSED: all 10 endpoints (coverage 3 + knowledge reads 4 + the F-072 trio 3) with contracts+services+fakeSql pins, gates EXACT at every commit.
 - DISCLOSED placements: F-034 builder in services/knowledge (fence), graphOwnedClass projection split, single-anchor clock (ADR-031), roster string-sort (wire-invisible).
 - LANE NEXT: tranche PR review (author never self-merges); on merge R0 can flip the t1 slice; t2 = class analytics (3) + teacher concept-graph (2, incl. the 471+479-line seed/snapshot pair); t3 = revision notes; t4 = smart lesson (LLM-path check owed at t4).
+---
+Task ID: T-MIG-063 (run-003 live finding + run-004 fix)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, operator trace 1a10f806acdec285)
+Task: First re-dispatch decomposed — the C-class limiter bit the staging's setup layer; fix forward with a disclosed fence amendment.
+
+Work Log:
+- Dispatch 37417629684 on ec40f1f completed failure: seed.json/union.md ABSENT from the artifact; Pass A replay masked success (continue-on-error); union ENOENT red. Job log decomposed: the staging RAN (workflow DATABASE_URL wiring OK, spawn OK, t51-seed.sql applied on the Neon COW branch OK, bootstrap-admin claim OK — AUDIT 05:16:07.436Z "window consumed terminally") and THEN the tool's own registers (t51-student/t51-teacher) hit the v2-only register limiter: 429 retryAfterSeconds:53 → tool throw → runRichStage fail-fast (by design) → no report. Boundary timing verified exact (accounts fired at seq 10 after the auth band).
+- Finding RICH-200-B filed (receipt run-003-live-finding-429.json): setup-layer 429 = the triage's C-class parity defect leaking into the setup layer. NOT masked: the auth-register cases keep measuring the limiter honestly.
+- FIX (run-004): FENCE AMENDMENT DISCLOSED PRE-PUSH — golden/tools/seed-t51-rich200.ts joins the fence with throttled() (retry-after header / retryAfterSeconds body, clamped 5..90s +2, max 4 attempts) around the tool's OWN setup calls only (api() + the two register fetches); the bootstrap claim stays one-shot-safe (429 = handler never ran = window not consumed = retry safe). ci-replay.ts spawnSync timeout 240s→900s. Parse-validated (bun build), ci-replay selftest OK.
+
+Stage Summary:
+- T-MIG-063 run-004 pushed to t-mig-063/r0 (fence = ci-replay.ts + seed-t51-rich200.ts + workflow + card/receipts/worklog); re-dispatch = run-004 re-proof.

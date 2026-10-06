@@ -25,6 +25,19 @@ task:
     the requirement themselves ("Replay requires golden/tools/seed-t51-rich200.ts
     state", w3-sme-ingest-rich-200 description).
   execution_record: >
+    (run-003/004 entry 2026-10-06T05:25Z) LIVE FINDING on dispatch
+    37417629684 (ec40f1f): the staging's setup registers were 429'd by the
+    v2-only register rate limiter (triage C-class, retryAfterSeconds:53)
+    AFTER the bootstrap claim consumed the one-time window — runRichStage's
+    fail-fast (by design) killed the replay pre-report. RICH-200-B,
+    setup-layer 429. FENCE AMENDMENT DISCLOSED PRE-PUSH:
+    golden/tools/seed-t51-rich200.ts joins the fence with a narrow 429-aware
+    retry (throttled(): retry-after header / retryAfterSeconds body, clamped
+    5..90s, max 4 attempts) around the tool's OWN setup calls only — zero
+    case semantics, zero capture posture; the auth-register cases still
+    measure the limiter honestly (no masking). ci-replay.ts spawnSync
+    timeout 240s -> 900s. Receipt run-003-live-finding-429.json; re-dispatch
+    = run-004 re-proof.
     (run-002 entry 2026-10-06T05:1xZ) IMPLEMENTED on t-mig-063/r0: ci-replay.ts
     gains buildMultipartBody import (engine untouched), the admin route rule
     AFTER name rules (+ the role-faithful -teacher-403 name rule), the
