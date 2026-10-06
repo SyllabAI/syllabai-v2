@@ -121,6 +121,9 @@ const ASK_DEFAULTS: Record<string, Record<string, string>> = {
  * BINDING failures (malformed_body); @NotBlank/@Size/@Pattern failures are
  * CONSTRAINT violations (validation_failed). zod's enum failure is the
  * @Pattern law (invalid_enum_value / invalid_value across zod majors).
+ * T-MIG-070: the @NotBlank discriminator on question/history.text is the
+ * notBlank REFINE (contracts/tutor.ts — the #93/#96 precedent), so blank
+ * binds report as `custom` issues carrying the verbatim jakarta message.
  */
 function classifyAskError(error: ZodError): { kind: "malformed" } | { kind: "validation"; message: string } {
   const first = error.issues[0];
@@ -157,9 +160,10 @@ function classifyAskError(error: ZodError): { kind: "malformed" } | { kind: "val
     return { kind: "validation", message: `${field}: ${defaults.pattern ?? "request invalid"}` };
   }
   if (first.code === "too_small" || first.code === "too_big") {
-    // @NotBlank fires before @Size: zod min(1) on a string IS the blank
-    // discriminator (the only string below length 1 is "") — zod v3 issues
-    // carry no input value, so the law keys on (type, minimum)
+    // T-MIG-070: the notBlank refine replaced min(1) on question/history.text,
+    // so blank binds no longer arrive as too_small — this branch is DEFENSIVE
+    // (any future min(1) chain would re-arm it; zod v3 issues carry no input
+    // value, so the law keys on (type, minimum))
     const minimum = (first as { minimum?: number }).minimum;
     const zodType = (first as { type?: string }).type;
     if (first.code === "too_small" && zodType === "string" && minimum === 1) {
@@ -173,6 +177,14 @@ function classifyAskError(error: ZodError): { kind: "malformed" } | { kind: "val
       kind: "validation",
       message: `${field}: size must be between ${minimum ?? 0} and ${max ?? 0}`,
     };
+  }
+  if (first.code === "custom") {
+    // the @NotBlank refine reports as a `custom` issue carrying its own
+    // jakarta default message — surface it verbatim (the #93 classroom
+    // precedent; without this branch the refine's message is swallowed by
+    // the "request invalid" fallback). zod skips refinements when an earlier
+    // check fails, so a custom issue on these fields IS the @NotBlank hit.
+    return { kind: "validation", message: `${field}: ${first.message ?? defaults.absent ?? "request invalid"}` };
   }
   return { kind: "validation", message: `${field}: request invalid` };
 }

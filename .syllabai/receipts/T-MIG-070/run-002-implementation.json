@@ -1,0 +1,19 @@
+{
+  "task": "T-MIG-070",
+  "run": "run-002-implementation",
+  "changes": {
+    "contracts": "packages/contracts/src/tutor.ts — question + HistoryTurn.text: z.string().min(1).max(2000) -> z.string().max(2000).refine(notBlank('must not be blank'), 'must not be blank') (max FIRST / refine LAST, the #93/#96 classroom precedent; header amendment block carries the provenance + the trimmed-length law)",
+    "routes": "apps/api/src/routes/tutor.ts — classifyAskError gains the custom-issue branch rendering the refine's verbatim jakarta message (the #93 precedent; without it the message is swallowed by the 'request invalid' fallback); the min(1) too_small branch demoted to DEFENSIVE with the law comment",
+    "services": "apps/api/src/services/tutor/karag.ts — noReranker = fused.map(i => withRerankScore(i, i.fusedScore)) (NoReranker.java:14-22; comment rewritten to state the law is REAL); conversation.ts — the trim-to-null drop documented as DEFENSIVE ONLY (unreachable from the wire; zero behavior change)",
+    "tests": "+2 route pins (whitespace-only question -> 400 validation_failed 'question: must not be blank'; whitespace-only history turn -> 400 validation_failed 'history[0].text: must not be blank' — the silent-200-drop closed); +1 noReranker unit pin (rerankScore copies fusedScore, never null, order preserved); the assert-nothing append test (nit 6) REPLACED by two law pins (bound user turn / stripped assistant turn via insert-param capture; the 4000-char ellipsis bound)"
+  },
+  "gates": {
+    "typecheck_x4": "exit 0",
+    "suite": "1390 ran / 1377 pass / 0 fail / 13 skip / 73 files",
+    "arithmetic": "EXACT vs the ratified baseline 1386/1373/0/13skip/73f: +4 ran / +4 pass / +0 fail / +0 skip / +0 files = the 4 new pins (the append-law replacement is 1-for-1)",
+    "selftest": "OK",
+    "expects": "5568 (within the run-variable band noted on the ratified baseline)"
+  },
+  "fence": "packages/contracts/src/tutor.ts + routes/tutor.ts + services/tutor/{karag,conversation}.ts + test/tutor/** + .syllabai — ZERO golden contact, zero contracts/index.ts touch, zero other-module contact, zero Neon/production contact",
+  "red_lines": "sql`` interpolations: none added; zero Java leakage (provenance comments only); no force-push; NOT self-merged — handed to the desk"
+}

@@ -1,0 +1,21 @@
+version: 1
+task:
+  id: T-MIG-070
+  title: "T-MIG-070 — the #104 blocker band: restore the two frozen tutor laws the superseded adversarial review (comment 6010396027) filed against the merged T-MIG-060 band — (1) the @NotBlank whitespace semantics on TutorAskRequest.question + HistoryTurn.text (TutorController.java:123-141): whitespace-only binds must serve 400 validation_failed 'field: must not be blank' at binding time; the silent blank-history-turn drop (conversation.ts:74-75, a 200-with-the-turn-gone) must be unreachable from the wire; (2) the NoReranker rerankScore-copy law (NoReranker.java:14-22): post-fusion items carry rerankScore = fusedScore, never null (the port's own karag.ts comment already states the law the code contradicts; withRerankScore has zero call sites) + nit-6 riders: the stripCitationMarkers/4000-char append-law pins (TutorSessionService.java:269,281-287)"
+  owner: "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)"
+  status: IN_REVIEW # implemented on t-mig-070/r0 (run-002): the notBlank refine swap + the classifier custom branch + the karag rerankScore copy + 4 law pins; gates 1390ran/1377-0-13skip-73f = baseline +4/+4 EXACT + typecheck x4 + selftest OK; PR next, NOT self-merged
+  priority: P1
+  wave: follow-up # the #104 blocker band; not wave work
+  deps: [T-MIG-060]
+  scope:
+    allowed:
+      - "packages/contracts/src/tutor.ts (the notBlank refine swap — the #93/#96 classroom envelope precedent; the wire was WRONG vs frozen, this band IS the correction)"
+      - "apps/api/src/routes/tutor.ts (the classifier custom-issue branch per the #93 precedent + the demoted min(1) branch)"
+      - "apps/api/src/services/tutor/karag.ts (the one-line rerankScore copy)"
+      - "apps/api/src/services/tutor/conversation.ts (defensive-layer comment only; zero behavior — binding now rejects blank first)"
+      - "apps/api/test/tutor/** (the new pins)"
+      - ".syllabai/receipts/T-MIG-070/**; this yaml; .syllabai/worklog.md (append-only)"
+    forbidden:
+      - "packages/contracts/** beyond tutor.ts (no index.ts touch — the schemas are already exported)"
+      - "golden/** (zero touch; the W6 capture never exercised whitespace-only binds or post-fusion rerankScore — verified on the register)"
+      - "other services/**, apps/hub/**, migrations, production Neon/Render writes of any kind"

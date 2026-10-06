@@ -71,6 +71,11 @@ export function conversationTurnOf(
   // Assistant turns systematically carry [n] markers whose numbers refer to
   // sources absent from the next prompt — strip them (:68-70).
   let cleaned = assistant ? (stripCitationMarkers(text) as string) : text;
+  // T-MIG-070: this trim-to-null is DEFENSIVE ONLY — the wire can no longer
+  // deliver a blank turn (the notBlank refine on HistoryTurn.text rejects it
+  // at binding time with 400 validation_failed, the frozen TutorController
+  // :123-141 @NotBlank law). The former reachable drop silently served a 200
+  // with the turn gone — the #104 blocker this band closes.
   cleaned = cleaned.trim();
   if (cleaned.length === 0) return null;
   return {
