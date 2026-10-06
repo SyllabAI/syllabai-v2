@@ -1,0 +1,67 @@
+{
+  "task_id": "T-MIG-079",
+  "run": "run-001-claim",
+  "lane": "r3a (superz-agent-b)",
+  "session": "web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9",
+  "operator_trace": "1a110d90b9510eb5",
+  "directive": "Check if R0 merged or not. If not, review+merge yourself and continue working",
+  "claimed_at": "2026-10-06T11:05:58Z",
+  "base_main": "d8916c741bed54b310379cfa1cf51b8bf98c31c9",
+  "frozen_core": "SyllabAI/syllabai-core @ 6cad6ef (fresh anonymous read-only clone, re-verified HEAD 6cad6ef9463e8d21f1555456561a4caaf7e89395 — the pinned ref)",
+  "directive_resolution": {
+    "question": "R0 merge state of this lane's PRs",
+    "answer": "R0 MERGED ALL FIVE — delegation moot, zero self-merge needed",
+    "evidence": {
+      "pr_84_claim": "merged 2026-10-06T03:38:56Z by SyllabAI",
+      "pr_101_t1_close": "merged 2026-10-06T05:24:56Z",
+      "pr_108_t2": "merged 2026-10-06T06:26:19Z",
+      "pr_115_t3": "merged 2026-10-06T07:55:54Z",
+      "pr_116_t4": "merged 2026-10-06T08:24:06Z",
+      "card_state": "T-MIG-053 status: DONE on main (23/23 endpoints ported across the four tranches)"
+    },
+    "sandbox_note": "seventh-class sandbox reset wiped .secrets/ + worklog + all clones mid-flight; credentials re-derived from the lane's own record, repo + frozen core re-cloned, nothing else lost (all landed work was merged of record before the wipe)"
+  },
+  "continue_working": {
+    "board_sweep": "4 OPEN cards at claim time: 076 (BLOCKED of record — 8cc28e8/d8916c7, operator-side ci.yml repair, guard-blocked receipt stands), 077 (pre-ruled corpus dispositions), 078 (options filed for R0/R6 — rulings owed, deferred), 079 (this claim)",
+    "selection": "T-MIG-079 — the direct continuation of this lane's T-MIG-053 band: the W4 learner KG + smart-lesson surfaces whose SERVICES this lane already ported (learnerGraphFor = F-034 t1; smartLessonFor = t4 with the LLM-path check resolved). Domain continuity is maximal; deps [043, 053] both DONE",
+    "hands_off_unchanged": "077 left for a lane with corpus-instrument context; 078 awaits R0/R6 option rulings; 076 is operator-side"
+  },
+  "preclaim_zero_collision_scan": {
+    "ls_remote": "refs/heads/t-mig-07[6-9]* + *claim* → ONLY t-mig-076/r0 (the BLOCKED card's head); ZERO t-mig-079 heads; ZERO t-mig-077 heads",
+    "open_prs": "1 open PR total: #121 (T-MIG-075, R0-integrator's own claim) — no 079/077 contact",
+    "worklog_grep": "T-MIG-079 appears ONLY in the R0 filing entry (worklog line ~4290, the F-9 disposition) — no claim recorded anywhere"
+  },
+  "baseline_gates_on_main": {
+    "commit": "d8916c7",
+    "typecheck": "bun run typecheck — packages/contracts + packages/shared + packages/db + apps/api, 4/4 exit 0",
+    "tests": "bun test apps/api packages → 1533 pass / 0 fail / 13 skip / 6036 expect() across 1546 tests / 82 files — EXACT match to the round-22 receipt's 1546/0/13skip/6036",
+    "selftest": "bun golden/runner.ts --selftest → OK (tolerance engine, T-MIG-024 multiset + T-MIG-072 tranche partition + T-MIG-071 limiter-429 posture)"
+  },
+  "recon_of_record": {
+    "frozen_endpoints": {
+      "knowledge_graph": "LearnerStateController.java :178 @GetMapping(\"/knowledge-graph\") under /api/v1/learners/me — @RequestParam UUID rootId → LearnerKnowledgeGraphService.graphFor(learnerId, rootId) (LearnerKnowledgeGraphService.java :46-147, F-034)",
+      "smart_lesson": "SmartLessonController.java :28-38 @GetMapping(\"/smart-lesson\") under /api/v1/learners/me — @RequestParam UUID rootId (declared FIRST), @RequestParam UUID topicNodeId → SmartLessonService.lessonFor (the 934-line deterministic ladder, t4-ported)"
+    },
+    "services_already_ported": {
+      "learnerGraphFor": "apps/api/src/services/knowledge/graphs.ts :872 (ClassGraphDeps = KnowledgeDeps & {engine?}; deps.clock.now() = the ONE anchor) — t1's F-034 port, fakeSql-pinned",
+      "smartLessonFor": "apps/api/src/services/learner/smart-lesson.ts :182 (SmartLessonDeps = {sql, clock, engine?}) — t4's port, 13 service pins"
+    },
+    "contracts_already_ratified": {
+      "learnerKnowledgeGraphViewSchema": "packages/contracts/src/learner.ts :440 (F-034 wire, single ownership learner.ts — the 041 ratification)",
+      "smartLessonViewSchema": "packages/contracts/src/learner.ts :583 (t4 reuse-not-redeclare)",
+      "smartLessonParamsSchema": "packages/contracts/src/learner.ts :133",
+      "new_contracts_needed": 0
+    },
+    "captures": "7 w4-* cases: knowledge-graph-{empty,practiced,unauthed} + smart-lesson-{missing-params-400,practiced,unknown-topic-404,unauthed}; the 5 non-401s are the card's live reds (app-level 404 today — routes confirmed ABSENT per classroom.ts:90 + index.ts:207 first-hand)",
+    "error_law": "missing-param → 400 validation_failed \"missing required parameter: rootId\" (GlobalExceptionHandler :185-190; learnerme.ts :202-208 recommendations precedent, capture-pinned verbatim); malformed UUID → 400 bad_request \"malformed request\" (:167-170 MethodArgumentTypeMismatchException); smart-lesson unknown topic → NotFoundError(\"curriculum topic in this subject\", id) → 404 not_found, message verbatim = capture (selfmark/index.ts :27 format verified); KG unknown root → KnowledgeNotFoundError → 404 verbatim (learnerme.ts doc \"knowledge node X not found\")",
+    "auth_shell": "requireAuth(c) → AuthContext | Response gate (middleware/auth.ts :100, bootErrorBody :34) — the routes/learner/index.ts :198 + learnerme.ts :179 pattern; anonymous → Boot 401 {timestamp,status,error:\"Unauthorized\",path} = the two unauthed captures (already green app-wide)",
+    "mount_law": "app.route(\"/api/v1/learners/me\", learnerKgRoute) BEFORE the app.all(\"/api/v1/*\") fallback (first-match-wins, Hono resolves per router — index.ts :200-204 documents three routers sharing this base); the mount line + import + construction + comment ship as the OUT-OF-FENCE COMMIT per the 010/020/021/030/032/041/062 precedent",
+    "test_pattern": "apps/api/test/learner/routes.test.ts (041-t2) — in-memory Hono + REAL router over fakeSql (helpers.ts :21), 200s validated against canonical contracts schemas + error envelopes pinned to captured shapes, injected clock pinned to NOW"
+  },
+  "planned_tranche": {
+    "new_file": "apps/api/src/routes/learnerkg.ts — the W4 learner KG + smart-lesson router (both paths, param-order law, verbatim error envelopes, requireAuth gate, buildLearnerKgRouters factory per the classroom.ts :424-437 shape)",
+    "mount": "apps/api/src/index.ts — one import + one app.route line + the OUT-OF-FENCE comment (minimal app-level wiring)",
+    "pins": "apps/api/test/learner/kg-routes.test.ts — authz shell (both paths, Boot 401), param-order laws (rootId-first capture + topicNodeId-second signature law + malformed-UUID law), 200 schema pins over fakeSql, unknown-topic 404 verbatim, fall-through intact (state/course-stats unaffected)",
+    "golden": "READ-ONLY — the 5 live reds flip in the CI replay of record post-merge; zero corpus edits per the forbidden list"
+  }
+}

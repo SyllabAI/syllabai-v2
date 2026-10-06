@@ -2,11 +2,57 @@ version: 1
 task:
   id: T-MIG-079
   title: "T-MIG-079 — mount the W4 learner KG/smart-lesson surfaces (T-MIG-071 run-002 post-merge review F-9; port band, 5 live reds): w4-knowledge-graph-empty/practiced-200 + w4-smart-lesson-{missing-params-400,practiced-200,unknown-topic-404} answer app-level 404 vs captures — the routes are confirmed ABSENT (classroom.ts:90 documents KG/coverage/smart-lesson OUT of that band's fence; index.ts:207 names the learner-me band). Scope: the frozen LearnerKnowledgeGraph + SmartLesson controller laws (the captures are the law; the run-9 A-row's 'T-MIG-066 043-consolidation' routing is SUPERSEDED by 066's verified consolidation-only scope), routes + zod pins + mounts + service ports as the captures dictate"
-  owner: "OPEN — unassigned; claim-in-first-commit per AGENT_COORDINATION §2"
-  status: OPEN # filed by the R0-integrator desk 2026-10-06 (review F-9)
+  owner: "r3a (superz-agent-b, Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9) — operator directive trace 1a110d90b9510eb5 'Check if R0 merged or not. If not, review+merge yourself and continue working': R0 merge state verified first (ALL FIVE of this lane's PRs merged of record — #84 03:38:56Z, #101 05:24:56Z, #108 06:26:19Z, #115 07:55:54Z, #116 08:24:06Z; T-MIG-053 DONE 23/23), then continue-working = claim this card (zero-collision scan: zero t-mig-079 heads, zero open 079 PRs; 076 BLOCKED of record, 078 awaits R0/R6 rulings, 077 left for a corpus-context lane) — the direct continuation of the 053 band whose SERVICES this lane already ported (learnerGraphFor = F-034 t1; smartLessonFor = t4)"
+  status: IN_REVIEW # impl landed 2026-10-06 on t-mig-079/r3a (claim d06eab8 @ d8916c7; receipt run-002-impl.json: gates 1546/0/13skip/6113 EXACT = baseline +13/+77, typecheck x4 0, selftest OK)
   priority: P2
   wave: 7
   deps: [T-MIG-043, T-MIG-053]
+  execution_record: >
+    (impl 2026-10-06, r3a) The two services were ALREADY in the tree — this
+    band is pure routes+mount+pins, zero new services, zero new contracts:
+    learnerGraphFor (services/knowledge/graphs.ts :872, the t1 F-034 port)
+    + smartLessonFor (services/learner/smart-lesson.ts :182, the t4 ladder).
+    routes/learnerkg.ts: LearnerStateController GET /knowledge-graph
+    (frozen :178-183) + SmartLessonController GET /smart-lesson (frozen
+    :28-38). LAWS PINNED: requireAuth gate per route (Boot 401 shell —
+    w4-knowledge-graph-unauthed-401 / w4-smart-lesson-unauthed-401 shape,
+    shell PRECEDES the param law, pinned); params checked in SIGNATURE
+    order (rootId declared first in the frozen controller — a both-missing
+    request reports rootId, never topicNodeId; captured
+    w4-smart-lesson-missing-params-400 verbatim) → 400 validation_failed
+    "missing required parameter: {name}" (:185-190); malformed UUID → 400
+    bad_request "malformed request" (:167-170); unknown topic → 404
+    not_found "curriculum topic in this subject {id} not found" (the
+    hard-isolation law, w4-smart-lesson-unknown-topic-404 verbatim);
+    unknown root → 404 "knowledge node {id} not found" (the 404-first tree
+    law). REUSE-not-redeclare: the wire schemas pre-ratified in
+    contracts/learner.ts (:440 learnerKnowledgeGraphViewSchema / :583
+    smartLessonViewSchema) — the service views are wire-ready, the route
+    serializes by returning them. MOUNT: ONE flagged index.ts block (import
+    + construction + app.route("/api/v1/learners/me", learnerKg.learnerKgRoute)
+    before the app.all("/api/v1/*") fallback — first-match-wins per-router
+    resolution alongside 041's state router + 043's learnerme router),
+    shipped per the 010/020/021/030/032/041/062 OUT-OF-FENCE precedent
+    (the card's mount mandate covers the file; R0 can ratify or lift).
+    PINS: 13 in apps/api/test/learner/kg-routes.test.ts (the 021/041
+    in-memory Hono + fakeSql pattern; fixtures reused from the t1
+    class-graph + t4 smart-lesson pin sets): authz shell x4 (incl.
+    shell-precedes-param-law + the exact-two-path ownership pin), param
+    laws x5 (each with a NO-sql-issued pin — the route owns the law, the
+    service never sees a malformed request), KG 200 (canonical-schema
+    parse + frozen key parity + the honest all-null root + asOf = the ONE
+    anchor + prerequisiteEdges key parity), KG unknown-root 404, rung-7
+    200 (PRACTISE_QUESTIONS/INSUFFICIENT_COVERAGE + policy marker
+    smart-lesson/v2 + servableQuestionCount + topicStatus keys),
+    ghost-topic 404 verbatim. GATES: typecheck x4 exit 0; bun test apps/api
+    packages = 1546 pass / 0 fail / 13 skip / 6113 expect() across 1559
+    tests / 83 files = d8916c7 baseline 1533/6036 +13/+77 EXACT;
+    selftest OK. golden/** untouched (READ-ONLY) — the 5 live reds
+    (w4-knowledge-graph-{empty,practiced}-200 +
+    w4-smart-lesson-{missing-params-400,practiced-200,unknown-topic-404})
+    flip in the CI replay of record post-merge; the two unauthed-401
+    captures were already green app-wide. HANDS-OFF unchanged: 077 (corpus
+    lane), 078 (awaits R0/R6 rulings), 076 (operator-side).
   scope:
     allowed:
       - "apps/api/src/routes/** (the two URL spaces), apps/api/src/services/** (the KG/smart-lesson port surfaces), packages/contracts/** (the request/response schemas the captures pin), apps/api/test/** (the pins)"
