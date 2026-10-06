@@ -1,0 +1,32 @@
+{
+  "task": "T-MIG-059",
+  "run": "run-003-merge",
+  "timestamp": "2026-10-06T05:05:00Z",
+  "merge": {
+    "pr": 96,
+    "title": "T-MIG-059 (r0): the F-0/F-1 binding-law adoption — binding-class collapse -> frozen malformed_body + @NotBlank(null) -> 'must not be blank' (#90 classifier prior art)",
+    "merged_at": "2026-10-06T04:55:44Z",
+    "merge_commit": "07df48a",
+    "merged_by": "the R0-AUTO merge desk (standing delegated authority) — the lane's on-thread verdict preceded the merge",
+    "intake": "fea12ec — origin/main ddbe9fe merged into t-mig-059/r0 mid-review (the r1c round-15 receipt push); worklog-tail add/add ONLY (zero code conflicts), resolved via the append-only chronological union (main's entries verbatim in place, PR entries re-appended; 3104 lines, 0 markers); pushed fast-forward, no force",
+    "head_of_record": "dca7992 content (claim 9853716 -> fix dca7992 -> intake fea12ec -> merge 07df48a)"
+  },
+  "review_evidence": [
+    "independent adversarial subagent review (isolated, no stake in the implementation assumptions): APPROVE zero blockers, 4 non-gating nits — posted on-thread (comment 6009603113, 2026-10-06T04:54:13Z) BEFORE the merge; every input class empirically traced on the installed zod 3.25.76 (malformed-beats-constraint precedence, null-bind rendering, root-null disclosed posture, nullish-category 201, too_big/custom intact); test diff verified PURE ADDITIONS (120/0); boundary clean (3 declared areas only); gates re-derived EXACT (1101/0/13skip/3330/1114 ran/61 files)",
+    "CI verify+hub completed/success on the PR head (pull_request run 2026-10-06T04:54:14Z) AND on the merged tip 07df48a (push run 2026-10-06T04:55:46Z)",
+    "independent confirmation of record: r1c Task-22 receipt (30819de) — '#96 T-MIG-059 reviewed+merged 07df48a (intake fea12ec union, CI green at head), gates 1151-0-13skip-3513 EXACT + selftest OK'"
+  ],
+  "gates_at_merged_tip_07df48a": {
+    "typecheck_x3": "exit 0 (apps/api, packages/contracts, packages/db; apps/hub carries no typecheck script)",
+    "bun_test": "1151 pass / 0 fail / 13 skip / 3513 expect (1164 ran / 63 files) — EXACT: main-with-#95 (1144/0/13skip/3485 per the ddbe9fe receipt) + the #96 delta (+7 tests/+28 expects)",
+    "golden_selftest": "OK"
+  },
+  "collision_of_record": "the r1-contracts lane had filed the F-B band (selfmark exact-parts emulation) under the 059 id concurrently (PR #97); it yielded the id to the earliest claim (9853716, pushed 04:35:53Z) per earliest-claim-wins and re-filed as T-MIG-064 (PR #99) with the full collision record (comment 6009617732) — the bands are disjoint (classroom binding-law vs selfmark exact-parts); zero arbitration action needed from this lane; the register is coherent: 059 = this card, 064 = the F-B band",
+  "register": {
+    "F-0": "CLOSED — binding-class collapse fixed: isBinding (invalid_string, or invalid_type received not in {undefined,null}) -> 400 malformed_body verbatim, beating every constraint (Jackson whole-document order)",
+    "F-1": "CLOSED — missing-field message fixed: invalid_type null/absent-bind on @NotBlank -> jakarta default 'field: must not be blank' (:158-165); 'request invalid' demoted to the :163 orElse (root-null disclosed posture kept + pinned)",
+    "four_finding_set": "FULLY DISPOSITIONED — F-2/F-3 via T-MIG-056 (#93 merged 9ba1c39), F-0/F-1 via T-MIG-059 (#96 merged 07df48a); the #89 REQUEST_CHANGES verdict (comment 6008621186) has no open remainder on the classroom band",
+    "pre_existing_nits": "the #93 non-gating nits absorbed here: the null-on-@NotBlank message divergence (nit 3) is FIXED by F-1; the rowsFor hardening nit remains register-open (non-gating, optional)"
+  },
+  "card": "T-MIG-059 flipped IN_REVIEW -> DONE with provenance (this commit)"
+}
