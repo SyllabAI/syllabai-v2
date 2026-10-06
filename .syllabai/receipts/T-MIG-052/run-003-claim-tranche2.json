@@ -1,0 +1,34 @@
+{
+  "task": "T-MIG-052",
+  "run": "run-003-claim-tranche2",
+  "agent": "R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "operator_directive": {
+    "trace": "1a10f13cbad64001",
+    "text": "Wave-5 classroom band",
+    "interpretation": "Continue the Wave-5 Classroom/teacher band (MIGRATION_PLAN §2.1, T-MIG-050..053): the card's own next step is tranche-2 (routes + mounts), explicitly gated on the tranche-1 verdict — which has arrived (t1 merged as PR #82 / 39fa554 with gates 943/0/13skip/2681 exact + selftest OK; T-MIG-051 N-4 rich-200 goldens merged as PR #83 / 7dfdd16)."
+  },
+  "zero_collision": {
+    "verified_at": "origin/main fe97f94 (post-#83 R0-AUTO receipt)",
+    "open_prs": 0,
+    "branch_scan": "origin/t-mig-052/r9-hubx and origin/t-mig-051/r0 both fully contained in main (git log origin/main..branch = empty); no t-mig-052* work in flight",
+    "card_owner": "r9-hubx (tranche-1 author) — this lane executes tranche-2 under the operator's band routing, credit to r9-hubx's ratified t1; disclosed in the PR"
+  },
+  "scope": {
+    "tranche_2": [
+      "apps/api/src/routes/classroom/index.ts (NEW — three routers: teacher classes 8 endpoints, learner classroom 3 endpoints, teacher roster 1 endpoint)",
+      "apps/api/src/index.ts (mount lines + import + construction ONLY — OUT-OF-FENCE COMMIT, R0 ratification requested per the 010/020/021/030/032/033/034/041 precedent)",
+      "apps/api/test/classroom/routes.test.ts (NEW — route pins)"
+    ],
+    "fence_amendment_disclosed": [
+      "packages/contracts/src/classroom.ts — @NotBlank-exact refine (the auth.ts notBlank house pattern) replacing bare .min(1) on the four request schemas: restores the frozen @Valid ordering (whitespace-only body → 400 validation_failed 'field: must not be blank' BEFORE the controller body, exactly jakarta; the t1 service verbatim 400s stay as the frozen dead-code defense, service pins untouched). Same-card band (T-MIG-052 owns classroom.ts); all 13 t1 contract pins unchanged and passing.",
+      "packages/contracts/src/classroom.test.ts — whitespace-rejection pins added (no t1 pin touched)"
+    ]
+  },
+  "paths_in_play": {
+    "teacher_classes": "POST/GET /api/v1/teacher/classes, GET/POST /{id}, POST /{id}/status, POST/DELETE /{id}/members(/{studentId}), POST/GET /{id}/announcements — TeacherClassController.java :57-292 @ 6cad6ef",
+    "learner_classroom": "GET /api/v1/learners/me/classroom, GET /announcements, POST /announcements/{id}/read — LearnerClassroomController.java :46-177",
+    "teacher_roster": "GET /api/v1/teacher/learners — TeacherRosterController.java :23-43 (NOT served by any router today: verified by grep + the 404-after-auth fallback census; no mount conflict)"
+  },
+  "gates_baseline": "main fe97f94: 948 passed / 0 failed / 13 skipped / 2689 expect (recorded at 7dfdd16, fe97f94 is worklog-only); re-run recorded in run-004",
+  "status": "CLAIMED"
+}

@@ -2545,3 +2545,18 @@ Work Log:
 Stage Summary:
 - N-4 register item (W3 marking + SME surfaces lacked populated-200 golden gates) is CLOSED by capture. Board: W5 band delivering (052 t1 landed 39fa554 last cycle; 051 landed this cycle), remaining claimable = 052 remaining tranches / 053 / 043 tranche-2 (NBA engine + routes) / hub scoped-test-runner hygiene.
 - Queue at sweep end: 0 open PRs. No escalations. LANE DONE for this cycle.
+
+---
+Task ID: T-MIG-052 tranche-2 (claim, run-003)
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Operator directive (trace 1a10f13cbad64001): "Wave-5 classroom band" — execute the card's next tranche: routes + mounts for the classes+rosters core.
+
+Work Log:
+- SYNC FIRST on a fresh fetch: main fe97f94 (post-#83 R0-AUTO receipt); t1 verdict ARRIVED (#82 merged 39fa554 — 943/0/13skip/2681 + selftest OK; T-MIG-051 N-4 goldens #83 7dfdd16 on top) — the tranche-2 gate the t1 receipt named is OPEN.
+- Zero-collision re-verified AT CLAIM TIME: 0 open PRs (API census); origin/t-mig-052/r9-hubx and origin/t-mig-051/r0 both fully contained in main (origin/main..branch empty); no classroom route/mount work anywhere in flight. Card owner r9-hubx credited; this lane executes t2 under the operator's band routing.
+- FROZEN READ @ 6cad6ef (core-ref.git): TeacherClassController :57-292 (8 endpoints, TEACHER/ADMIN shell + §17 ownership gate), LearnerClassroomController :46-177 (3 endpoints, isAuthenticated, membership-only visibility), TeacherRosterController :23-43 (GET /api/v1/teacher/learners). MOUNT-REGION QUESTION RESOLVED: /api/v1/teacher/learners is served by NO router today (grep census: only services/classroom docstrings mention it) — TeacherRoster mounts at the frozen /api/v1/teacher class mapping, registered last, disjoint from marking/content/curriculum/tests.
+- PARITY DECISIONS (disclosed pre-implementation): (1) request schemas gain the auth.ts notBlank refine — the t1 .min(1) lets whitespace-only bodies through to the service, but frozen @NotBlank answers validation_failed at @Valid BEFORE the controller body; the refine restores the exact ordering (service verbatim 400s stay as the frozen dead-code defense; all 13 t1 contract pins untouched). (2) Router-level onError maps ClassroomNotFoundError/ClassroomForbiddenError (t1's custom classes, unmapped by the shared toErrorResponse) to the 404/403 not_found/forbidden envelopes + BadRequest/Conflict to 400/409 — the teachermarking router pattern.
+- Receipt run-003-claim-tranche2.json + card execution_record appended. Branch cut: t-mig-052/r0-t2 @ fe97f94.
+
+Stage Summary:
+- T-MIG-052 tranche-2 CLAIMED (routes + mounts + route pins + disclosed contracts notBlank amendment). Implementation next; gates (typecheck x4, bun test apps/api packages vs 948/0/13/2689 baseline + delta exact, golden --selftest) before PR; authors-never-self-merge honored via independent subagent review; R0 merge-intake after approval.

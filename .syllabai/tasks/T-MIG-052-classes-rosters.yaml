@@ -91,3 +91,21 @@ task:
     STUDENT account; re-enrollment is the idempotent no-op it honestly is;
     the independent-student rule (no membership rows → empty reads, an
     honest zero); a class is workflow state, not evidence.
+
+    (tranche-2 claim 2026-10-06, R0-integrator lane under operator
+    directive trace 1a10f13cbad64001 "Wave-5 classroom band") t1 verdict
+    ARRIVED (#82 merged 39fa554, gates 943/0/13skip/2681 + selftest OK;
+    T-MIG-051 goldens #83 7dfdd16 on top) — t2 = routes + mounts now
+    claimed by the R0 lane (card owner r9-hubx credited for the ratified
+    t1; zero-collision re-verified @ fe97f94: 0 open PRs, r9-hubx/051
+    branches contained in main). Scope: routes/classroom/index.ts (3
+    routers, 12 endpoints), index.ts mounts (OUT-OF-FENCE per doctrine),
+    test/classroom/routes.test.ts. DISCLOSED fence amendment: contracts
+    classroom.ts request schemas gain the auth.ts notBlank refine (the
+    @NotBlank-exact port — whitespace-only bodies answer 400
+    validation_failed at @Valid, before the controller body, exactly the
+    frozen ordering; the t1 service verbatim 400s stay as the defense).
+    The t2 mount-region question is RESOLVED: /api/v1/teacher/learners is
+    served by NO router today (grep + fallback census) — TeacherRoster
+    mounts at the frozen /api/v1/teacher class mapping, registered last,
+    disjoint from marking/content/curriculum/tests.
