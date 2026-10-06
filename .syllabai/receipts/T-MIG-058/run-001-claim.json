@@ -1,0 +1,30 @@
+{
+  "task": "T-MIG-058",
+  "run": "001-claim",
+  "agent": "r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "operator_trace": "1a10f56a8798fb39 ('claim the round-12' — round-12 delegated cycle; PAT persisted at /home/z/my-project/.secrets/pat 0600 + env.sh outside every git repo per the standing 'make sure you dont lose the PAT' directive; referenced by path, never embedded)",
+  "date": "2026-10-06T04:12:13Z",
+  "base": "aca7a5e (origin/main; #92 e82f5d5 057 element-null + #93 9ba1c39 056 notBlank envelope + R0-AUTO receipt job 438940 all landed)",
+  "branch": "t-mig-058/r1",
+  "finding_provenance": {
+    "first_raised": "delegated review of PR #92 — REQUEST_CHANGES comment 6009074844 @ 2026-10-06T04:02:24Z (review claim 6008999171 @ 03:54:50Z), with frozen-core line citations AND empirical probes (scratch harness on e34d85b, removed after reading; PROBE A partId-null -> 500 vs frozen 400 bad_request; PROBE B marksAwarded-null -> 500-always vs frozen data-dependent)",
+    "merge_race": "R0-AUTO sweep (job 438940, started 04:00 UTC) merged #92 at e82f5d5 04:02:29Z — 5 seconds after the REQUEST_CHANGES; #93 followed via intake d28cd55 -> 9ba1c39 04:06:19Z (this lane's independent APPROVE of #93, comment 6009127022, stands as review of record); zero blame — the finding transfers to main verbatim",
+    "fix_claim": "T-MIG-058 claimed on the #92 thread of record (comment 6009163427) + this card + receipt in the claim commit (claim-in-first-commit)"
+  },
+  "frozen_evidence": {
+    "core": "syllabai-core @ 6cad6ef9463e8d21f1555456561a4caaf7e89395",
+    "citations": [
+      "LearnerSelfMarkController :41 @Valid @RequestBody (no cascade into the bare List; SelfMarkRequest record :59)",
+      "LearnerSelfMarkController :43-47 dedup loop; :44 HashMap.put(p.partId(), ...) — null keys LEGAL",
+      "LearnerSelfMarkController :55 @NotNull UUID partId — never fires without cascade",
+      "LearnerSelfMarkService exact-parts gate: requested.equals(byPartId.keySet()) -> BadRequestException 'self-mark must cover exactly the attempt's parts' (400 bad_request) for a {null}-keyed request",
+      "LearnerSelfMarkService bound loop `int marks = e.getValue()` — null marksAwarded unboxing NPE -> 500, ONLY when the exact-parts gate passes first (data-dependent)"
+    ]
+  },
+  "zero_collision": {
+    "ls_remote": "zero t-mig-058* heads at claim (fetch 04:10Z window)",
+    "register": "next free non-reserved id = 058 (056/057 DONE at aca7a5e; 050-053 plan-reserved Wave-5, 054/055 DONE)",
+    "surface": "route-only guard depth pin + 1 route pin in the SAME test file 057 touched — disjoint from all in-flight PRs (census 04:00Z: #92/#93 both merged, zero other open)"
+  },
+  "claim_law": "claim-in-first-commit: card yaml + run-001-claim receipt + worklog entry in the SAME commit; fix lands as run-002 after gates; push IMMEDIATELY on the persisted PAT; PR authored by r1 -> NOT self-merged (authors-never-self-merge), handed to the R0-AUTO/review desk with the #92 thread as evidence of record"
+}

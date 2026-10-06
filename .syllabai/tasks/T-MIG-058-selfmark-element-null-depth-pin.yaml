@@ -1,0 +1,49 @@
+version: 1
+task:
+  id: T-MIG-058
+  title: "selfmark element-null guard DEPTH PIN — the T-MIG-057 NPE-parity guard over-triggers on NESTED nulls (parts[i].partId / parts[i].marksAwarded route to 500; frozen answers 400 bad_request via the service exact-parts gate / data-dependent); one-line predicate fix + nested-null posture pin; post-merge rescue of the R0-AUTO/REQUEST_CHANGES race on PR #92"
+  owner: "r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e) — operator directive trace 1a10f56a8798fb39 ('claim the round-12' + standing review+merge delegation); finding first raised as the delegated REQUEST_CHANGES review of PR #92 (comment 6009074844 @ 04:02:24Z), merged 5s later by the R0-AUTO sweep (e82f5d5 @ 04:02:29Z, job 438940) before the verdict could gate it"
+  status: IN_REVIEW # claim commit pushed first (claim-in-first-commit); fix = run-002 on this branch; authored by r1 → NOT self-merged, handed to the merge desk
+  claimed_at: "2026-10-06T04:12:13Z"
+  priority: P1 # live frozen-divergence regression ON MAIN (nested null -> 500, frozen 400 bad_request) — introduced by the merged #92, evidence complete at claim time
+  wave: 3 # selfmark fidelity lineage: T-MIG-053 (#84) -> T-MIG-055 (#91) -> T-MIG-057 (#92) -> this
+  deps: [T-MIG-032, T-MIG-053, T-MIG-057]
+  execution_record: >
+    FINDING (verified against pinned core 6cad6ef line-against-line AND probed
+    empirically on PR #92 head e34d85b with a scratch harness, since removed):
+    the 057 elementNullIssue predicate matches ANY issue under parts[i]
+    (path[0]==="parts" && typeof path[1]==="number" — no depth check), so
+    nested nulls also fire the NPE-parity throw:
+      - {parts:[{partId:null, marksAwarded:1}]} -> port 500 internal_error;
+        frozen 400 bad_request — Jackson binds null partId (no @Valid
+        cascade; the @NotNull at LearnerSelfMarkController :55 never fires),
+        the dedup loop's HashMap.put(null, 1) is LEGAL (:44, null keys ok),
+        the null key survives to LearnerSelfMarkService's exact-parts gate
+        (requested {null} != attempt part ids -> BadRequestException
+        "self-mark must cover exactly the attempt's parts" -> 400)
+      - {parts:[{partId:"<valid>", marksAwarded:null}]} -> port 500 always;
+        frozen data-dependent — null Integer binds; if partId is in the
+        attempt's parts the bound loop's `int marks = e.getValue()` unboxes
+        null -> NPE -> 500, ELSE the exact-parts gate 400s first
+    TIMELINE OF RECORD: r1 posted REQUEST_CHANGES 04:02:24Z (6009074844);
+    R0-AUTO sweep merged #92 at e82f5d5 04:02:29Z (receipt aca7a5e);
+    pure race, zero blame — the finding transfers to main verbatim.
+    FIX SCOPE (route-only + 1 test, zero packages/golden/service files):
+    (1) the predicate gains `i.path.length === 2` — "element-level" means
+    EXACTLY parts[i]; (2) the guard comment gains the T-MIG-058 DEPTH PIN
+    block documenting the frozen nested-null matrix (HashMap null-key law
+    :44, exact-parts gate, marksAwarded unboxing NPE) and the restoration
+    of the pre-057 classifier posture for nested nulls; (3) a third route
+    pin: {parts:[{partId:null, marksAwarded:1}]} -> 400 validation_failed
+    "parts[0].partId: must not be null" (the pre-existing T-MIG-053
+    classifier law — "only serves element-level null constraint text" —
+    becomes accurate again). Citation hygiene: SelfMarkRequest record is
+    :59, not :58 (057 off-by-one nit, corrected in the touched comment).
+    REGISTER-OPEN (F-B, out of fence, needs own band): the FULL frozen
+    nested-null answer (400 bad_request via the exact-parts gate) requires
+    schema widening to ACCEPT nested nulls + service-side exact-parts
+    emulation — real scope; the marksAwarded data-dependence rides the
+    same band. F-A = this fix (depth pin restores pre-057 posture).
+    Baseline at claim (aca7a5e, post-#92/#93 main): 1093 pass / 0 fail /
+    13 skip / 3299 expect (1104 ran / 61 files) per the R0-AUTO receipt —
+    measured again on the branch pre-fix below.
