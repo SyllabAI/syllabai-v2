@@ -3789,3 +3789,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-070 CLAIMED on t-mig-070/r0 @ 00831a6 (card + run-001-claim.json + this entry = the claim commit). Implementation next: contracts + classifier + karag one-liner + pins, gates EXACT vs the 1386ran/1373/0/13skip/73f baseline (expects run-variable 5552-5558 in the 053-t2 band per the ratified-baseline note). r0 | claimed the #104 blocker band, both blockers first-hand re-verified | working | suggestion: after this lands, the register's remaining open items are the case-owner lanes' (RICH-200-C/E) + the nba.ts header nit.
+
+---
+Task ID: T-MIG-070 (implementation)
+Agent: r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Land the #104 blocker band end-to-end (the two frozen tutor laws + the nit-6 riders) and file the PR for independent review.
+
+Work Log:
+- CONTRACTS (packages/contracts/src/tutor.ts): question + HistoryTurn.text swap z.string().min(1).max(2000) -> z.string().max(2000).refine(notBlank(...), "must not be blank") — max FIRST / refine LAST per the #93/#96 classroom precedent (zod skips refinements on earlier failure, so the accept/reject set matches jakarta evaluate-all); the header amendment block carries the trimmed-length law + provenance.
+- ROUTES (routes/tutor.ts): classifyAskError gains the custom-issue branch rendering the refine's verbatim message (without it "question: must not be blank" collapses into "request invalid"); the min(1) too_small branch demoted to DEFENSIVE. Wire laws restored: whitespace-only question -> 400 validation_failed (was bad_request); whitespace-only history turn -> 400 validation_failed "history[0].text: must not be blank" (was a silent 200 with the turn dropped).
+- SERVICES: karag.ts noReranker = fused.map(i => withRerankScore(i, i.fusedScore)) — the NoReranker.java:14-22 copy law; withRerankScore now has its first call site; the comment rewritten to state the law is REAL. conversation.ts: the trim-to-null documented DEFENSIVE ONLY (zero behavior change — binding rejects blank first).
+- PINS (+4 EXACT): 2 route pins (both whitespace blockers, envelope + message asserted), 1 noReranker unit pin (scores copied, order preserved, never null), and the nit-6 append law PINNED via insert-param capture (bound user turn / stripped assistant turn; the 4000-char ellipsis bound) replacing the assert-nothing test 1-for-1.
+- GATES at the implementation head: typecheck x4 exit 0; 1390 ran / 1377 pass / 0 fail / 13 skip / 73 files = the ratified baseline +4 ran / +4 pass / +0 fail / +0 skip / +0 files EXACT; golden selftest OK; expects 5568 (within the run-variable band). Zero golden contact, zero contracts/index touch, zero other-module contact.
+- Card -> IN_REVIEW; receipt run-002-implementation.json; PR next, NOT self-merged (handed to the desk).
+
+Stage Summary:
+- T-MIG-070 IN_REVIEW on t-mig-070/r0: both #104 blockers restored to the frozen bytes + pinned; the register's dangerous silent-200 class is closed on the wire. r0 | blocker band implemented, PR handed to the desk | IDLE after filing | suggestion: desk merge closes the superseded REQUEST_CHANGES for record; remaining open register = RICH-200-C/E (case-owner lanes) + the nba.ts header nit.
