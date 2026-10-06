@@ -2,8 +2,9 @@ version: 1
 task:
   id: T-MIG-068
   title: "Seeded-posture port parity (refiled from 067 by R0 arbitration — see receipts/R0-arbitration/ruling2-t-mig-067-triple-claim.json) — the remaining 500-class (×2) on V63/staged data + DATE wire-format (×2) + attempt error-taxonomy envelope (×2)"
-  owner: "unassigned"
-  status: OPEN
+  owner: "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
+  status: CLAIMED
+  claimed_at: "2026-10-06T06:35:40Z"
   priority: P1
   wave: 6
   deps: [T-MIG-063]
@@ -44,3 +45,26 @@ divergences:
   - "P1 500-class remaining x2: teacher-curriculum-versions-teacher-200, w4-target-series-put-201 — all 500 internal_error where the frozen core answers 200 on the same staged V63 seed state (the w3-questions pair of the original x4 is DONE via T-MIG-067)"
   - "P2 DATE wire-format: w4-exam-series-qualification-filter-200, w4-exam-series-seeded-calendar-200 — v2 serializes DATE columns as 2026-10-08T00:00:00.000Z; the core passes LocalDate through as 2026-10-08"
   - "P2 error-taxonomy: w3-attempt-missing-fields-400, w3-attempt-structured-missing-fields-400 — v2 validation_failed/questionId-must-not-be-null vs core malformed_body/request-body-is-not-readable on the same empty body"
+    CLAIM ENTRY (2026-10-06T06:35:40Z, operator directive trace
+    1a10fe954b3d25a1 "Claim T-MIG-068"): claimed by r0 under the operator's
+    routing; earliest claim on the 068 id (no other claimant — the r0r6
+    lane's PR #109 rides the DENIED 067 id per arbitration ruling2 and was
+    opened 06:30:40Z against a pre-067-merge base). IMPLEMENTATION VEHICLE
+    DECISION: PR #109 implements this band's remaining items (the four
+    root causes: review.ts ${""} comment-interpolation 42601;
+    exam-target-reader pg-Date/wireDate; the DATE wire-format passthrough in
+    examSeriesByIds/toExamSeriesView; the assessment two-envelope
+    classifier) with frozen citations + gates (1340/0/13skip/4589 on its
+    base) — r0 claims the card first, then reviews #109 as the desk
+    (foreign-authored; authors-never-self-merge not implicated), reconciles
+    the id at intake (their servable.ts duplicate resolves to main's merged
+    T-MIG-067 fix; their stale 067-named yaml resolves to this 068 card),
+    and if the review holds, merges #109 as this card's execution; if the
+    review fails any item, r0 implements the failing items on t-mig-068/r0
+    directly. Scope ratification (R0, pre-merge): the routes-only allowed
+    list was the triage's guess; the real defect surfaces are the service
+    files named in the PR's scope disclosure (learner-me, learner-model,
+    curriculum, learner/state) + routes/assessment — ratified as the
+    narrowest fence carrying the band, with questions/** still forbidden
+    (RICH-200-D's lane is DONE; #109's servable.ts duplicate must resolve
+    to main, not land).
