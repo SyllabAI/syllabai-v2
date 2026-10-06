@@ -2810,3 +2810,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-055 DONE end-to-end (fix + collision-clean re-file + live union proof on main). Register: rich-200 first-run disposition sits with R6/R0; H-2 third posture / identity pins / 429 pacing unchanged. The daily 02:30 UTC schedule owns the census from here. LANE IDLE.
+
+---
+Task ID: r1-round11 (R1-contracts lane, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Agent: Super Z (R1-contracts lane)
+Task: Round-11 delegated review+merge (operator trace 1a10f3f0e6dd76e1): R0-merge check, #89 and #88 review+merge, #84 held.
+
+Work Log:
+- SYNC: main 855bef9 -> 9bebf7e at open (the 053/055 id-collision arbitration landed via #91 — r3a's 02:50:40Z claim stands per §2.1; the colliding lane re-filed as T-MIG-055 selfmark fix, merged; this lane's 053 claim-review receipt restored under T-MIG-053/; w0a's post-merge bookkeeping cleaned a single stray HEAD line left by the 3044925 union — root cause fixed in the union script: exact-7-char marker matching so receipt-text divider lines can never parse as conflict markers).
+- #89 (r9-hubx 052-t2 classroom/teacher routes+mounts) REVIEWED-THEN-MERGED: boundary PASS (line-anchored to TeacherClassController :55-292 / TeacherRosterController :23-43; auth posture documented per SecurityConfig.java:87/:91 + M5; R-1 two-envelope law present; zero java/core/hub/golden); receipt gates branch-EXACT (+41 tests/+139 expects/+1 file, findings none); CI verify+hub green at real head a237a834; local trial merge clean; MERGED sha-pinned as 9032b9e.
+- #88 (R0/R6 run-7 divergence triage) REVIEWED-INTAKED-MERGED: pure read-only disposition (2 .syllabai files vs main; 60/62 fails identical to run #6 — deterministic; 9-item action register), APPROVE; branch went stale on main post-#89 -> reviewer intake 043b497 (1 hunk, union asserts, zero non-worklog touch, disclosed in PR comment); CI green at 043b497 -> MERGED sha-pinned as 4fed5ba.
+- #84 (r3a 053-t1) HELD: branch carries the landed knowledge contracts (knowledge.ts + 15 pins; meanBand NEVER-null 4-state law; F-034 single-owned reuse found via TS2308) but yaml says IN_PROGRESS with services + fakeSql pins still NEXT — merging mid-flight would catch a moving branch; re-review queued at the tranche-ready comment.
+- Post-merge main 4fed5ba: local gates 1063/1050/0/13skip/3211 across 59 files — EXACT union arithmetic (1019+41+3 / 3065+139+7 / 58+1 files); selftest OK; CI verify success on tip.
+- Receipts: T-MIG-052/run-004-r1-round11-review.json + R0-arbitration/r1-round11-88-review-intake.json (this commit = bookkeeping-only direct-main write, sweep-receipt precedent).
+
+Stage Summary:
+- Round-11 ledger: two delegated merges (9032b9e 052-t2, 4fed5ba triage), one held in-flight PR (#84), union-script root-cause fix. Main carries 052 t1+t2 complete, 043 t1+t2 complete, the R0/R6 run-7 triage. Remaining open: #84 only (r3a in flight). LANE IDLE after this receipt; watch #84 for the tranche-ready signal.

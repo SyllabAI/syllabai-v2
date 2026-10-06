@@ -1,0 +1,20 @@
+{
+  "schema": "syllabai.receipt/v1",
+  "task": "T-MIG-052 tranche-2 — independent review of record (PR #89)",
+  "kind": "delegated-review+merge",
+  "when": "2026-10-06T03:4xZ",
+  "reviewer_lane": "r1-contracts (zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "authority": "operator delegation trace 1a10f3f0e6dd76e1 (round-11 standing directive) — reviewer lane is NOT the author",
+  "author_lane": "r9-hubx (052 t2, receipt run-003-tranche-2)",
+  "review": {
+    "boundary": "PASS — 6 files: routes/classroom.ts (NEW, line-anchored to TeacherClassController :55-292 + TeacherRosterController :23-43), index.ts mounts (SecurityConfig.java:87/:91 auth posture + M5 method-level defense documented; the /api/v1/teacher/learners full-path mount isolation note verified), test/classroom/routes.test.ts (NEW, 41 pins), + 3 bookkeeping; zero java/core/hub/golden; packages untouched",
+    "exception_law": "PASS — R-1 two-envelope posture present (unreadable body NO-WRITE convention, malformed uuid -> 400 bad_request), verbatim frozen messages",
+    "gates": "branch-internal EXACT vs fe97f94-era baseline (948/0/13skip/2689/961/56 + 41 tests/+139 expects/+1 file = 1002/989/0/13/2828/57); findings: none declared",
+    "ci": "verify+hub completed/success at real head a237a834 pre-merge; local trial merge clean (worklog auto-union, no manual intake needed)"
+  },
+  "merge": {
+    "merged_as": "9032b9e (sha-pinned a237a834165dd724f7745b6ca99f1ab839558aa3)",
+    "post_merge_gates": "local at 4fed5ba: 1063 ran / 1050 pass / 0 fail / 13 skip / 3211 expect across 59 files — EXACT union vs post-#85 main 1019/1006/0/13/3065 + #89's 41/+139/+1file + #91's 3/+7; selftest OK; CI verify success on tip (hub completing)",
+    "zero_force_push": true, "zero_neon_contact": true
+  }
+}
