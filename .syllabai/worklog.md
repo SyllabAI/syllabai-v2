@@ -4498,3 +4498,19 @@ Work Log:
 
 Stage Summary:
 - CLASS B fully dispositioned of record: 2 cases instrument-residue (fixed by #121, empirical flip pending next scheduled run) + 2 cases corpus re-pin (077, in flight). The register's P1 security-posture question is CLOSED with evidence, not assumption. Replay red residue: CLASS A (limiter collision, no owner yet) + CLASS C (fixture volatility, seed-owner disposition) + the owned 077/078 corpus bands. LANE R0-integrator: verdict filed, IDLE.
+
+---
+Task ID: T-MIG-077 (implementation)
+Agent: main (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)
+Task: Implement the post-#119 corpus disposition band (review F-3..F-6, pre-ruled) on t-mig-077/r0 per run-001-claim.
+
+Work Log:
+- F-4 (R1 re-pin x2): curriculum-subject-bad-uuid-400 + -unknown-404 -> expect 401 + Boot-default {timestamp,status:401,error:Unauthorized,path} (path echo pinned exact, values verified against the run #16 artifact live bodies), tolerate [timestamp], justified:true citing run-9 R1 + SecurityConfig.java:65-94 @ 6cad6ef; names/source preserved (zero deletions).
+- F-3 (RICH-200-E): w3-questions-families-student-200 gains "unordered": [""] (T-MIG-024 root-array convention) + justified:true + the R3-D2 effect-4 disclosure in the description; tolerate/element identity/nested parts strictness untouched.
+- F-5 (sentinel law x3): runner.ts EMPTY_BODY_SENTINEL + renderResponseBody (length-aware, text-first — sidesteps the Bun res.json()-null quirk) + canonicalizeEmptyBodyRoot (ROOT-ONLY exact-shape {"_raw":""} <-> <non-json:0 bytes>; non-empty <non-json> stays DISTINCT) wired into deepEqualTolerant; ci-replay.ts imports the shared helper (071 zero-drift law) and the T-MIG-022 Bun-quirk patch is RETIRED; selftest +9 assertions. The three case files need NO edit — the law is comparator-side, symmetric.
+- F-6 (G-class): VERIFIED-NO-OP of record — the full chain (routes :168/:185 -> DocumentRepository to_char(.US) selects -> toDocumentRow -> javaInstantText (T-MIG-023) -> toDocumentSummary verbatim pass) is already the stored-precision passthrough, and the run #16 artifact shows the LIVE side already microsecond-precise. The residual red is unobservable: the diff renderer slices at 400 chars and both sides cut mid-createdAt. Findings filed for R0/R6 (instrument tail-window + the data-drift/order hypothesis classes); zero edits; pins stay EXACT.
+- GATES: typecheck x4 exit 0; bun test 1607/0fail/13skip/6377/87f = +0 EXACT vs the pre-change baseline measured first-hand; golden --selftest OK (incl. the T-MIG-077 block); ci-replay --plan census unchanged; 6 case files program-validated.
+- Scope audit: 7 changed files, all inside the card's allowed list (.syllabai card+receipt, 3 case files, runner.ts, ci-replay.ts); forbidden list untouched (no apps/packages edits, no deletions, no tranche/limiter/pacing contact).
+
+Stage Summary:
+- T-MIG-077 implemented + gated; PR to the desk (authors-never-self-merge); the next CI replay is the live receipt — projection: +7 clearable (curriculum x2, clear x2, assets x1, families x1, plus the 5 already-green register cases stay green); F-6 residuals stay red with findings of record.

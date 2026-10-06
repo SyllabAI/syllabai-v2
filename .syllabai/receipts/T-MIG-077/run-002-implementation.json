@@ -1,0 +1,49 @@
+{
+  "task_id": "T-MIG-077",
+  "kind": "implementation",
+  "run": "run-002",
+  "timestamp": "2026-10-06T11:45:00Z",
+  "agent": "main (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)",
+  "authority": "operator trace 1a110e73e0ad1219 '077'; claim of record run-001-claim.json @ main 487e9ef",
+  "branch": "t-mig-077/r0 (off 487e9ef)",
+  "items": [
+    {
+      "id": "F-4 / run-9 R1 re-pin x2",
+      "files": ["golden/cases/curriculum-subject-bad-uuid-400.json", "golden/cases/curriculum-subject-unknown-404.json"],
+      "edit": "expect.status 400/404 -> 401; expect.body -> the Boot-default law shape {timestamp,status:401,error:'Unauthorized',path} with the request path echo pinned exact (values verified against run #16 live bodies, artifact neon-replay-37441112330-1: {\"timestamp\":\"2026-10-06T09:11:13.327Z\",\"status\":401,\"error\":\"Unauthorized\",\"path\":\"/api/v1/curriculum/subjects/not-a-uuid\"} and the 00000000-0000-4000-8000-0000000000a1 sibling); tolerate [timestamp] unchanged; justified:true citing run-9 R1 + SecurityConfig.java:65-94 @ 6cad6ef; name/source preserved (zero deletions, the name keeps the historical capture expectation — disclosed in the description)"
+    },
+    {
+      "id": "F-3 / RICH-200-E families multiset",
+      "files": ["golden/cases/w3-questions-families-student-200.json"],
+      "edit": "\"unordered\": [\"\"] (the T-MIG-024 root-array convention, same declaration shape as w3-teacher-marking-answers-rich-200) + justified:true + the RICH-200-E disclosure appended to the description (ruling3 R3-D2 effect 4; capture-host Postgres tie order, frozen (source,qNum,input-order) law has no deterministic tie key, three environments three orders — T-MIG-067 run-001 + replay runs #16/#17). tolerate untouched; element identity exact; nested parts arrays stay strict (canonicalizeUnordered: arrays inside a declared array's elements keep strict order)"
+    },
+    {
+      "id": "F-5 / I-class symmetric sentinel law x3",
+      "files": ["golden/runner.ts", "golden/tools/ci-replay.ts"],
+      "edit": "runner.ts: EMPTY_BODY_SENTINEL ('<non-json:0 bytes>') + renderResponseBody (length-aware, text-first — JSON.parse then 0-byte sentinel vs the legacy non-empty '<non-json>' marker; sidesteps the Bun res.json()-returns-null-on-0-byte quirk entirely) + canonicalizeEmptyBodyRoot (ROOT-ONLY, EXACT-shape: a single '_raw' key with empty-string value ↔ the 0-byte sentinel; '<non-json>' NON-empty stays DISTINCT — the law never equates an empty body with a non-empty one) wired into deepEqualTolerant before redaction; selftest grew 9 assertions (equivalence both directions, non-empty distinctness, non-empty _raw, root-only non-recursion, rendering: 0-byte / non-JSON / JSON / JSON-null). ci-replay.ts: imports renderResponseBody (the 071 zero-drift law: ONE rendering, both call sites); the T-MIG-022 Bun-quirk patch (0-byte null re-rendered INTO '<non-json>', gated on the expect string) is RETIRED — superseded by the symmetric law; the quirk observation stands of record. Zero comparator-semantics contact beyond the empty-body class: redact/sortObjectKeys/canonicalizeUnordered/checkHeaders/declaredLimiter429/authPosture untouched",
+      "effect": "w4-target-series-clear-204/-again-204 (live 0-byte vs capture {_raw:''}) and question-assets-unknown-404 (live 0-byte vs capture <non-json:0 bytes>) compare EQUAL under one law; the previous failure modes (marker mismatch AND the T-MIG-022 masking shape) are both retired"
+    },
+    {
+      "id": "F-6 / G-class prod createdAt passthrough x2",
+      "files": [],
+      "edit": "VERIFIED-NO-OP of record — zero edits. The serialization chain is ALREADY the stored-precision passthrough: routes/content/index.ts:168 (list -> DocumentRepository.findAllByOrderByCreatedAtDesc) and :185-190 (detail -> findById) -> to_char(created_at at time zone 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS.US') selects -> toDocumentRow -> javaInstantText (T-MIG-023; the Jackson Instant.toString law — its docstring's own example is this detail case's 578011 micros) -> toDocumentSummary passes createdAt through verbatim (review.ts:76). LIVE EVIDENCE: the run #16 artifact's diff window shows the LIVE side already microsecond-precise ('2026-10-04T09:37:00.129532' visible on the live half) — the run-7 'v2 reformats' defect is already repaired of record. The residual red root is NOT observable from the artifact: the ci-replay diff renderer slices bodies at 400 chars and both sides cut mid-createdAt (the detail body is ~404 chars; the list is ~28 elements) — the differing byte(s) live beyond the window.",
+      "findings_filed_for_r0_r6": [
+        "INSTRUMENT: the diff renderer should carry full bodies (or a tail window) for sub-500-char bodies — a tail divergence inside a ~400-char body is currently UNDIAGNOOSABLE from the union artifact (this exact blindness blocked F-6 first-hand)",
+        "HYPOTHESIS CLASSES for the residual red (either would be a NEW finding, not the run-7 defect): (a) LIST — the case pins strict root order over created_at desc; any prod data drift since capture (re-ingest, tie-order at equal keys) permanently diverges the element sequence vs the static capture; (b) DETAIL — the ~4-char tail beyond the window. Both stay RED of record; zero case edits (pins grow EXACT per the card); options return to R0/R6"
+      ]
+    }
+  ],
+  "gates": {
+    "typecheck": "x4 exit 0 (contracts/shared/db/api)",
+    "bun_test": "1607 ran / 0 fail / 13 skip / 6377 expects / 87 files — +0 EXACT vs the pre-change baseline measured first-hand (identical counts; golden/ is outside the bun-test glob, the golden gate is the selftest)",
+    "selftest": "bun golden/runner.ts --selftest OK (incl. the T-MIG-077 sentinel block; header line names the law)",
+    "plan_census": "bun golden/tools/ci-replay.ts --plan offline OK — tranche census unchanged (9 empty-tranche markers, admin-path 0)",
+    "case_validity": "all 6 touched/adjacent case files JSON-valid; expect/tolerate/unordered/justified shapes verified programmatically"
+  },
+  "disclosures": [
+    "live leg: agent sandbox is DNS-blocked from Neon — the live confirmation of items F-4/F-3/F-5 is the standing CI instrument on merge; projection: curriculum x2 -> PASS (401-law), clear-204 x2 + assets-404 -> PASS (sentinel), families -> PASS unless the ELEMENT MULTISET itself differs beyond tie order — if it does, that is NEW evidence vs the triple-confirmed R3-D2 premise and returns to R6",
+    "watch item: the families multiset sort is on JSON.stringify of whole elements (T-MIG-024 machinery) — deterministic, key-order-canonicalized via the 072 rider upstream",
+    "F-2 shared-learner residues (history-after-submit 2-vs-1; course-stats/state leakage) are T-MIG-078's — untouched here, as claimed"
+  ],
+  "next": "PR to the desk (authors never self-merge); post-merge the next replay run is the live receipt"
+}
