@@ -1,0 +1,34 @@
+{
+  "task": "T-MIG-073",
+  "refile_of": "T-MIG-071 (the id lost to r0's ruling3 filing — earliest-claim-wins: r0's operator-ruling-case-amendments card committed on main @ 2026-10-06T07:18:16Z vs this claim commit 00f457f @ 07:21:06Z; a DIFFERENT band, zero scope overlap; refile per the T-MIG-048->050 / 059->064 precedents)",
+  "run": "run-001-claim",
+  "lane": "r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "operator_trace": "1a1100f03295c239",
+  "directive": "check and claim and continue",
+  "claimed_at": "2026-10-06T07:20:00Z",
+  "branch": "t-mig-071/r1",
+  "cut_at": "97295d14c2dd72ec768677ab9b06e8026978736d",
+  "band": "the selfmark dead-constraint class: marksAwarded @Min(0)/@Max(99) are dead letter in frozen (SelfMarkRequest.java:59 bare List, no @Valid cascade) yet live in the port schema — the band removes them from the bind law so -1/100 reach the service bound loop (LearnerSelfMarkService.java:113-121) and answer the frozen 409 'marks N outside part bound 0–X' (U+2013 verbatim)",
+  "provenance": [
+    "the residual is disclosed on the T-MIG-057 receipt (the inferred-constraint class) and restated 'unchanged' on the T-MIG-064 F-B receipt run-002-fix.json residuals_disclosed.inferred_constraints",
+    "the 064 card itself deferred: 'the numeric checks stay encoded as the disclosed inferred-constraint divergence class (T-MIG-057 receipt) — NOT touched here' (assessment.ts :270-272 header, verified @ 97295d1)",
+    "this lane's continuity: F-B (T-MIG-059->064) landed the nullish widening + put-semantics + unboxing pass; this band completes the same matrix's range row"
+  ],
+  "zero_collision": {
+    "id_scan": "no T-MIG-071 anywhere in .syllabai/ @ 97295d1; no t-mig-071 heads on origin (ls-remote substring hits are 034/038/040-prep/052/054 + pull refs only)",
+    "id_choice": "originally filed as T-MIG-071 (069 skipped — reserved for w0a's CLA band refile per R0-arbitration ruling2; 070 taken); REFILED T-MIG-071 -> T-MIG-073: r0's ruling3 filing committed the 071 card (operator-ruling-case-amendments, a DIFFERENT band) on main 3 minutes before this lane's claim push — earliest-claim-wins gives r0 the id; 073 verified free (no references in .syllabai @ origin/main 6347b1a)",
+    "fence_scan": "r3a's T-MIG-053 t3/t4 (revision notes / smart lesson services) is the one live foreign band — fence disjoint (notes/lesson services vs contracts/assessment.ts + test/selfmark); no other open PRs (queue zero @ census)"
+  },
+  "frozen_citations": [
+    "LearnerSelfMarkController.java:54-56 (the dead @NotNull @Min(0) @Max(99))",
+    "LearnerSelfMarkController.java:59 (the bare List — no @Valid cascade)",
+    "LearnerSelfMarkService.java:113-121 (the bound loop -> ConflictException 409, verbatim message with U+2013)",
+    "LearnerSelfMarkService.java:115 (bound = Math.max(marks, 0) — the 0-mark sharp edge with the bound > 0 && guard)",
+    "LearnerSelfMarkService.java:68-69 (the @throws ConflictException javadoc)",
+    "services/selfmark/index.ts:218-220 (the port's ALREADY-faithful bound loop — verified first-hand @ 97295d1)"
+  ],
+  "residual_disclosed": {
+    "jackson_integer_coercion_class": "marksAwarded beyond int32 (2^31..2^53) parses in the port (JS number) but Jackson-Integer fails the bind (HttpMessageNotReadable -> 400 malformed_body class); fractional (1.5) shares the family. No codebase-wide int32 numeric law exists (assessment.ts:706 int32Text is a text-field specialist). Disclosed for the register, NOT fixed in this fence; unreachable by golden captures."
+  },
+  "planned_delta": "contracts schema: 1 line (drop .min(0).max(99)); contracts header: amendment block; tests: the assessment.test.ts :184-186 pin flips to the bind law + 1 int32-residual pin + the selfmark.test.ts 0-mark-part edge pin; zero src/routes/services contact; delta arithmetic to be measured A/B vs 97295d1 at run-002"
+}

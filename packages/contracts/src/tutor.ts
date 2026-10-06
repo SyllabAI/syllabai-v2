@@ -14,8 +14,21 @@
  *     TutorStreamEvent.java :21-24 + TutorController javadoc :60-64)
  *
  * Contracts-first rule 1: constraints copied EXACTLY; the Java record wins.
+ *
+ * T-MIG-070 AMENDMENT (the #104 blocker band — the #93/#96 classroom
+ * precedent): question + HistoryTurn.text carry the frozen @NotBlank
+ * (TutorController.java:123-141), which jakarta evaluates on the TRIMMED
+ * length — a whitespace-only bind is a constraint violation (400
+ * validation_failed "field: must not be blank"), not a pass. The former
+ * z.string().min(1) is @Size(min=1) semantics (raw length), NOT @NotBlank:
+ * it admitted " " and the ask path served the WRONG envelope (bad_request)
+ * while a blank history turn was silently dropped downstream (200 with the
+ * turn gone). The notBlank refine (auth.ts) is the @NotBlank-exact port;
+ * max FIRST / refine LAST — zod skips refinements when an earlier check
+ * fails, so the accept/reject set matches jakarta's evaluate-all.
  */
 import { z } from "zod";
+import { notBlank } from "./auth";
 
 // ── request (TutorAskRequest :123-141) ──────────────────────────────────────
 
@@ -23,13 +36,15 @@ export const tutorHistoryTurnSchema = z.object({
   // @NotBlank @Pattern("user"|"assistant") — ConversationTurn.ROLE_* constants
   role: z.enum(["user", "assistant"]),
   // @NotBlank @Size(max = ConversationTurn.MAX_TURN_CHARS = 2000)
-  text: z.string().min(1).max(2000),
+  // (T-MIG-070: the notBlank refine IS the @NotBlank — max FIRST / refine LAST)
+  text: z.string().max(2000).refine(notBlank("must not be blank"), "must not be blank"),
 });
 export type TutorHistoryTurn = z.infer<typeof tutorHistoryTurnSchema>;
 
 export const tutorAskRequestSchema = z.object({
   // @NotBlank @Size(max = 2000)
-  question: z.string().min(1).max(2000),
+  // (T-MIG-070: the notBlank refine IS the @NotBlank — max FIRST / refine LAST)
+  question: z.string().max(2000).refine(notBlank("must not be blank"), "must not be blank"),
   // @Size(max = ConversationTurn.MAX_HISTORY_TURNS = 12); optional pre-s139
   history: z.array(tutorHistoryTurnSchema).max(12).optional(),
   // §22 session anchor (s140); optional pre-s140

@@ -3778,6 +3778,33 @@ Stage Summary:
 - Baseline d902e9f RATIFIED; chain extended through cdce05e with identical gates, both first-hand. Next wave starts from the ratified chain tip 4d8cb7f (d902e9f -> cdce05e -> 4d8cb7f, all gates first-hand; any drift from 1386ran/1373/0/13skip/73f at claim time is a finding, not a footnote). LANE IDLE — desk returns to the operator's disposition; no self-filed wave work.
 
 ---
+Task ID: T-MIG-070 (claim)
+Agent: r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Operator directive trace 1a10fe9d928e60dd "Check current state. Claim and continue" — claim the unclaimed #104 blocker band (the two frozen tutor laws the superseded adversarial review filed, comment 6010396027).
+
+Work Log:
+- STATE CENSUS @ 00831a6: queue = #109 only (t-mig-067/r0r6, the questions 500-class/DATE band, in-flight — not this lane's); T-MIG-033 verified ALREADY COMPLETE on main (t1 #50 + t2 #64 + t3 #77 — the standing directive from trace 1a10c9ee078c70c5 is discharged of record; the R0-BASELINE register line naming it was stale and is corrected by this entry); 068 umbrella = the r0r6 lane's in-flight scope; 069 soft-reserved for w0a's CLA refile (c78ed9a) — id deliberately avoided.
+- CLAIMED T-MIG-070 (the next free id): the tutor notBlank + NoReranker fidelity band. Both blockers re-verified first-hand on merged main BEFORE the claim: (1) contracts/tutor.ts :26/:32 z.string().min(1) admits whitespace-only binds — question " " maps to 400 bad_request where frozen serves 400 validation_failed "question: must not be blank", and a history turn text " " is SILENTLY DROPPED by conversation.ts :74-75 (200 with the turn gone vs frozen 400 — the dangerous one); (2) karag.ts :81-82 noReranker contradicts its own comment (no rerankScore copy; withRerankScore zero call sites). Zero-collision: zero t-mig-070* heads, zero 070 worklog/card mentions pre-claim; disjoint from #109's questions surfaces. Claim-in-first-commit: this card + run-001-claim.json + this entry, cut @ 00831a6.
+- FIX DESIGN (the #93/#96 classroom envelope precedent carries): contracts text/question -> the auth.ts notBlank refine with max FIRST / refine LAST; the tutor classifier gains the custom-issue branch rendering the refine's verbatim message (min(1) too_small branch demoted defensive); karag.ts noReranker = fused.map(i => withRerankScore(i, i.fusedScore)) (frozen NoReranker.java:14-22); conversation.ts drop becomes defensive-only with the binding-law comment; pins: question " " / history " " route 400s (zero-sql), the rerankScore-copy pin, + the nit-6 append-law pins (stripCitationMarkers + 4000-char bound, TutorSessionService.java:269,281-287).
+
+Stage Summary:
+- T-MIG-070 CLAIMED on t-mig-070/r0 @ 00831a6 (card + run-001-claim.json + this entry = the claim commit). Implementation next: contracts + classifier + karag one-liner + pins, gates EXACT vs the 1386ran/1373/0/13skip/73f baseline (expects run-variable 5552-5558 in the 053-t2 band per the ratified-baseline note). r0 | claimed the #104 blocker band, both blockers first-hand re-verified | working | suggestion: after this lands, the register's remaining open items are the case-owner lanes' (RICH-200-C/E) + the nba.ts header nit.
+
+---
+Task ID: T-MIG-070 (implementation)
+Agent: r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Land the #104 blocker band end-to-end (the two frozen tutor laws + the nit-6 riders) and file the PR for independent review.
+
+Work Log:
+- CONTRACTS (packages/contracts/src/tutor.ts): question + HistoryTurn.text swap z.string().min(1).max(2000) -> z.string().max(2000).refine(notBlank(...), "must not be blank") — max FIRST / refine LAST per the #93/#96 classroom precedent (zod skips refinements on earlier failure, so the accept/reject set matches jakarta evaluate-all); the header amendment block carries the trimmed-length law + provenance.
+- ROUTES (routes/tutor.ts): classifyAskError gains the custom-issue branch rendering the refine's verbatim message (without it "question: must not be blank" collapses into "request invalid"); the min(1) too_small branch demoted to DEFENSIVE. Wire laws restored: whitespace-only question -> 400 validation_failed (was bad_request); whitespace-only history turn -> 400 validation_failed "history[0].text: must not be blank" (was a silent 200 with the turn dropped).
+- SERVICES: karag.ts noReranker = fused.map(i => withRerankScore(i, i.fusedScore)) — the NoReranker.java:14-22 copy law; withRerankScore now has its first call site; the comment rewritten to state the law is REAL. conversation.ts: the trim-to-null documented DEFENSIVE ONLY (zero behavior change — binding rejects blank first).
+- PINS (+4 EXACT): 2 route pins (both whitespace blockers, envelope + message asserted), 1 noReranker unit pin (scores copied, order preserved, never null), and the nit-6 append law PINNED via insert-param capture (bound user turn / stripped assistant turn; the 4000-char ellipsis bound) replacing the assert-nothing test 1-for-1.
+- GATES at the implementation head: typecheck x4 exit 0; 1390 ran / 1377 pass / 0 fail / 13 skip / 73 files = the ratified baseline +4 ran / +4 pass / +0 fail / +0 skip / +0 files EXACT; golden selftest OK; expects 5568 (within the run-variable band). Zero golden contact, zero contracts/index touch, zero other-module contact.
+- Card -> IN_REVIEW; receipt run-002-implementation.json; PR next, NOT self-merged (handed to the desk).
+
+Stage Summary:
+- T-MIG-070 IN_REVIEW on t-mig-070/r0: both #104 blockers restored to the frozen bytes + pinned; the register's dangerous silent-200 class is closed on the wire. r0 | blocker band implemented, PR handed to the desk | IDLE after filing | suggestion: desk merge closes the superseded REQUEST_CHANGES for record; remaining open register = RICH-200-C/E (case-owner lanes) + the nba.ts header nit.
 
 Task ID: 26
 Agent: r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
@@ -3806,10 +3833,11 @@ Work Log:
 - Receipt .syllabai/receipts/T-MIG-068/run-001-union.json; card → DONE (bookkeeping-only .syllabai/** direct-main write per the precedents, fetch-first).
 
 Stage Summary:
+
+- Directive discharged: R0 active-of-record (3 merges + arbitration this hour); #111 unblocked; merged-tip gates independently corroborate #110's arithmetic EXACTLY; census filed. LANE IDLE — next claim requires R0 to file (OCR/LLM-admin/routing) or operator redirection.
 - The seeded-posture band is CLOSED: 5/6 live PASS, the sixth out of the 500-class with a corpus-class residual filed. The remaining union reds are ALL corpus-class or standing-lane-owned (RICH-200-C/E, the wall-clock countdown, auth-me/third posture, C-class limiter). Lane IDLE; suggestion: the next movements are operator rulings (wall-clock tolerance, RICH-200-C/E amendments, the third posture) — no unowned port work remains on the register.
 
 ---
-
 R3a-ROUND-14 (T-MIG-053 tranche-3 + the #108 independent review) — trace 1a10fffc01c66c25 "independent review on #108, then t3 (revision notes) → t4 (smart lesson, LLM-path check)".
 
 Environment re-provisioned this session (workspace reset): fresh anonymous frozen clone syllabai-core @ 6cad6ef (the receipt base, verified) + monorepo bun install.
@@ -3819,3 +3847,201 @@ Environment re-provisioned this session (workspace reset): fresh anonymous froze
 - OUT-OF-FENCE-FLAGGED (the t2 prerequisiteRelations-export precedent): teacher/analytics.ts engineOf fallbacks + teacher.test.ts ENGINE → 0.45/2 (the #108 finding fix-forward, config-law constants) + the SeedSummary prose 15→14.
 - GATES at this head: typecheck ×4 exit 0; bun test = 1424 pass / 0 fail / 13 skip / 5684 expect EXACT = 3849448 baseline 1381/5583 + 43 tests/+101 expects (9 contracts + 34 service pins); golden --selftest OK.
 - Receipt .syllabai/receipts/T-MIG-053/run-005-tranche3.json; card amended. NEXT: t4 = smart lesson (SmartLessonController :17-38 + the 934-line service, the LLM-path check owed). HANDS-OFF unchanged.
+
+Task ID: 25
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
+Task: (operator directive trace 1a10ff6915b4f719) "Check if R0 has merged or not. If not, review+merge yourself and continue working" — the round-20 desk sweep over the open queue.
+
+Work Log:
+- CENSUS at sweep start: #110 (T-MIG-068, the r0r6 refiled band) already merged of record (3e4e22c @ 06:46:32Z); queue held #109/#111/#112 open, all zero reviews, all base 8516d25.
+- #109 ADJUDICATED + superseded-of-record: its code files = exactly the merged #110 set; the #110 body itself declares "#109's successor... re-issued"; the desk had posted close-without-merge (06:36:43Z) + APPROVE (06:40:13Z) but the close never stuck. Before my close landed, the fleet merged it as e760bdc (06:47:43Z) — verified coherent: its delta vs 3e4e22c = ONLY servable.test.ts +17 (overlapping hunks byte-identical, zero double-application), later corroborated by r0's 3849448 ("reviewed+merged as the vehicle, converging zero-conflict with #110") and by r4b-ROUND-19. Closed to match the record.
+- #111 (r1-contracts R-067-B/C) ADJUDICATED: the author's own YIELDED-of-record comment (06:49:12Z, T-MIG-043 precedent) governs — #110 landed all six bands; main @ 3e4e22c carries the DATE wire law (wireDate, exam-target-reader.ts :88, "run #9/#11 DATE-FORMAT class, R3 ruling") and the error-taxonomy classes; the branch t-mig-067/r1 @ 05e7455 is preserved as the independent-implementation record. Closed unmerged per the yield.
+- #112 (T-MIG-070, r0's own band — authors-never-self-merge bars r0) REVIEWED end-to-end, all guards: fence ZERO (10 files, every one inside the card's allowed list; contracts/tutor.ts only — no index.ts; golden/hub/migrations untouched); CI verify+hub 2/2 success on the real intake head; install --frozen-lockfile OK; typecheck x4 exit 0; tests at the final head 7c3d32b = 1385 pass / 0 fail / 13 skip / 1398 ran / 73 files — arithmetic reconciles EXACT: 1373 (4d8cb7f ratified baseline) + 7 (#110) + 1 (#109 servable pin) + 4 (the 070 band), zero regressions; expects run-variable (5599) per the R0-BASELINE non-binding law; golden selftest OK.
+- FROZEN LAWS verified first-hand against 6cad6ef: TutorController.java :124/:138 (@NotBlank @Size on question/history text) = the notBlank refine swap (max FIRST / refine LAST; whitespace-only now 400 validation_failed with the verbatim jakarta message via the new custom-issue classifier branch — the #93 precedent); NoReranker.java :14-22 (item.withRerankScore(item.fusedScore())) = karag.ts noReranker now copies fusedScore ("downstream never sees null") — BOTH #104 blockers of record (comment 6010396027) restored and pinned (+81/-14, +30 test lines); conversation.ts :74-75 drop demoted to comment-only defensive layer (zero behavior).
+- INTAKE: the branch raced ahead mid-review (3da84d4 -> 1d8c8dd self-intake to e760bdc); residual dirty vs 4fff2b1 was the worklog tail alone (merge-tree probe: single conflicted file) — executed the R0-procedure-(c) union on the author's branch (cfb47be: 3834 lines, 0 markers, 0 line-loss either side, 0 doubled separators); the author's convergent intake then reconciled to a ZERO-DIFF tree at 7c3d32b (my intake an ancestor); CI re-verified 2/2 at that exact head.
+- MERGED sha-pinned: 7c3d32b2b70da421e8fc597b26abdec43da41bba -> fdcfc53 (merge commit, CI green; merged diff = the reviewed band 10 files +245/-22; worklog 0 markers on merged main).
+- POST-MERGE REGISTER: 068 card -> DONE (3849448, 5/6 live PASS, target-series wall-clock residual filed case-owner-side); queue EMPTY again; remaining register: RICH-200-C/E corpus family (case-owner lanes), 053 t3-t4 (r3a, hands-off), 069 (w0a CLA refile when filed), the nba.ts :42-46 doc nit (rides next fence touch).
+
+Stage Summary:
+- Round-20 sweep: 2 adjudications completed to match their records (#109 closed-superseded after the fleet's vehicle-merge, #111 closed-yielded) + 1 full independent review+merge (#112 -> fdcfc53, the #104 blocker band, arithmetic EXACT). Desk returns to standby; no free filed bands remain for this lane. STOP.
+Task ID: T-MIG-068 (operator-fired trace 1a10fd303bbe4f49 "T-MIG-067")
+Agent: r0r6 (Super Z main agent, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)
+Task: Execute the fired band — the seeded-posture port-parity umbrella (T-MIG-067 as fired; refiled 068 by R0 arbitration ruling2)
+
+Work Log:
+- Claimed the fired band, found it 3-classes-wide (500 x4, DATE x2, error-taxonomy x2); diagnosed ALL of them first-hand from the run #11 seed boot log BEFORE touching code: o.text 42703 (column law QuestionOption.java:33 @ 6cad6ef), the ${""} template-comment bind-slot 42601 at position 8, pg Date objects breaking daysBetween (toIso.slice TypeError) + serializing DATE columns as UTC timestamps, and the attempt `{}`-body envelope (runs #9/#11 expected bodies vs GlobalExceptionHandler.java:175-180).
+- RACE of record: opened PR #109 (as 067) minutes before the arbitration ruling2 (c78ed9a) re-assigned 067 to the earliest-claim RICH-200-D fix (#107) and refiled the umbrella as 068; closed #109 concurrent-of-record with an overlap audit, dropped the questions lane per the 068 fence, re-branch t-mig-068/r0r6, rebased through r0's card claim (8516d25, dropping my own card edit — the card is r0's), opened #110; MERGED #110 of record -> 3e4e22c; the desk then reopened #109 and merged it -> e760bdc (content-identical on shared files — convergence); r1's independent implementation YIELDED with first-hand corroboration (33e281f), naming the state.ts examSeriesByIds DATE site as one this lane had missed — it was already fixed in the band.
+- GATES at 9ef8f6b: typecheck x4 exit 0; 1380/0/13skip/5580/73f (reconciles the ratified 1332/4558 law + #108's +41/+1000 + #110's +7/+28); golden selftest OK. Independently corroborated by R4b-ROUND-19 ("RECONCILIATION EXACT").
+- LIVE PROOF: dispatched neon-replay on merged main (run 37425696004 @ 3e4e22c): union 142/177 (seed 129/162) = +5 vs run #11 (40 -> 35 divergences). teacher-curriculum-versions, exam-series x2, attempts x2 = PASS outright; w4-target-series-put 200-vs-200 with CLOCK-DRIFT-ONLY residual (daysToWindowStart/End 2/24 vs frozen 3/25 — ADR-031 derived-on-read vs capture-day pin). Both w3-questions cases (067's) 200-vs-200 at this head (RICH-200-E tie-order + staged-census residuals, case-owner lane).
+- Bookkeeping: card -> DONE (owner stays r0's claim; CLOSURE entry appended to execution_record); receipt .syllabai/receipts/T-MIG-068/merge-and-proof-receipt.md (race chain, root causes with frozen citations, proof verdicts); this entry. .syllabai-only direct-main write per the 3c07bae/bb537fa/2a0b18d precedents (fetch-first).
+
+Stage Summary:
+- T-MIG-068 DONE of record: 6 of the umbrella's 8 original divergences live-proven cleared (5 outright + target-put status-retired), the questions pair was 067's (also live-proven at this head). Remaining residuals are ALL corpus-side, case-owner lane: (a) target-put tolerate[] += daysToWindowStart/daysToWindowEnd (or capture-anchored pin) — +1 to the union; (b) RICH-200-E families tie-order amendment; (c) topics staged-census re-pin (seq-position or tolerate); zero port-side findings remain in the band. Next: the operator's disposition (069 = w0a CLA refile reservation; E-class bearer override = action 1, still open; C-class 429 parity ruling = action 10).
+
+---
+Task ID: T-MIG-068 (sibling-session concurrent-of-record addendum, trace 1a10fe65d9d64f3d)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: operator directive "claim one of them" (trace 1a10fe65d9d64f3d) — executed the same T-MIG-068 claim + desk cycle CONCURRENTLY with the R0-integrator session (web-1f157e25, trace 1a10fe954b3d25a1). This entry records this lane's independent artifacts only; the closure of record (3849448) STANDS — zero dispute, zero further action.
+
+Work Log:
+- CLAIM 8516d25 pushed to MAIN @ 06:38:41Z (.syllabai-only, fetch-first, card IN_PROGRESS + zero-collision scan @ 00831a6: zero t-mig-068* heads, sole open PR #109, no rival claim in records). Main-landing-FIRST; commit-timestamp-second vs e756811 @ 06:35:56Z (branch-only until post-landing) — the T-MIG-052 commit-timestamp law accepted, dual-claim absorbed both ways.
+- Independent line-against-line review of PR #109 CONCURS with verdict 6010860776 on all six rows (bind-slot 42601 byte-exact; wireDate LocalDate law; the {}-body binding-failure flip with explicit-null retained on the @NotNull path). Intake a403fb8 built concurrently of record with a0a3535: identical servable.ts -> cdce05e resolution, pin wording variant ("o.option_text," with the comma) — superseded, never pushed, disclosed here.
+- Independent gates at BOTH the intake tree (a403fb8) and the tip (e760bdc): typecheck x4 exit 0; 1381 pass / 0 fail / 13 skip / 5583 expect = main 1373-5552 + the PR's declared +8/+31 EXACT. TRANSCRIPTION RECONCILIATION (a finding per the baseline law, not a drift): the "1394" figure in the run-001 receipt / card DONE line / worklog above is the runner's RAN total (1381 pass + 13 skip); the pass figure of record is 1381.
+- Independent post-merge replay dispatch 37426117865 @ 33e281f (50s after 37426037703, both workflow_dispatch): union 142/177 (seed 129/162, prod 13/15) — the same five-row verdict (curriculum-versions, exam-series DATE x2, attempt taxonomy x2 PASS; target-series-put 500 -> 200 with the one-capture-day wall-clock residual). DUAL REPLAY OF RECORD: two independent dispatches, identical aggregate and verdict.
+
+Stage Summary:
+- T-MIG-068 closed of record (e760bdc + 3849448); this lane's artifacts (8516d25, a403fb8, run 37426117865) stand as the concurrent-of-record corroboration. Register unchanged: 067/068 DONE, #111 yielded, no unowned port work. LANE IDLE.
+
+---
+
+Task ID: R0-MERGE-DESK-19
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Operator directive trace 1a10ff9c71958f71 "Check if R0 has merged or not. If not, review+merge yourself and continue working" — desk sweep of the post-baseline queue.
+
+Work Log:
+- STATE CENSUS @ 33e281f: main had advanced past the ratified chain (R0 lanes merged #109 e760bdc + #110 3e4e22c; r1 Task-26 yield addendum 33e281f; R4b-ROUND-19 receipt 4fff2b1). Queue = #112 (T-MIG-070, this session's r0 lane claim, CI green, filed NOT self-merged) + #111 (the yielded r1 duplicate, still open on GitHub despite the closure of record).
+- #112 REVIEWED under the operator direct order (the 1a10fbe9465708c9 #104 precedent): full 419-line diff read; supporting facts verified first-hand (notBlank = auth.ts:56 trimmed-length law; withRerankScore = evidence.ts:182; classifier field reducer yields history[0].text + the history.text defaults fallback; defaults.absent keys present; insert params [2]=role/[3]=content verified vs session-store.ts:323-333; bound() = MAX_CONTENT_CHARS 4000 + ellipsis, session-store.ts:363-368).
+- GATES first-hand: branch head 7c3d32b = 1398 ran / 1385 pass / 0 fail / 13 skip / 73 files / 5599 expects; pristine main tip 4fff2b1 measured in a separate worktree = 1394 / 1381 / 0 / 13 / 73 / 5583 — delta +4/+4/0/0/0 = EXACTLY the 4 pins; typecheck exit 0 across the script-bearing workspaces (root/api/contracts/db/shared — hub has no typecheck script, noted for the record); golden selftest OK; CI hub+verify success on 7c3d32b.
+- INTAKE: main raced twice during reconciliation (review-112 lane's 1d8c8dd dropped main's Task-26 entry from its union — 16 deletions zero insertions, flagged; reviewer cfb47be re-united 3834 lines zero markers; convergent union 7c3d32b pushed with each entry exactly once, verified: Task-26 + R4b-ROUND-19 + both 070 entries present singly, zero markers).
+- MERGED #112 -> fdcfc53 (commit message carries the full desk verdict + provenance); CLOSED #111 unmerged (the Task-26 yield of record formalized on GitHub). Post-merge gates re-run on fdcfc53 first-hand: 1398/1385/0/13skip/73f. r1c's independent round-20 receipt (c930fe0) corroborates both numbers EXACT.
+- REGISTER UPDATE: the #104 blocker band (register item 1 — conversation.ts blank-turn drop, @NotBlank whitespace, NoReranker rerankScore-copy) is CLOSED of record; the superseded adversarial REQUEST_CHANGES (comment 6010396027) fully discharged. Remaining open register: RICH-200-C two ordered tranches (bc521b3 ruling, case-owner lanes) + RICH-200-E + the nba.ts :42-46 stale-header nit (non-gating, belongs to the next lane touching the learner-me fence).
+
+Stage Summary:
+- Queue ZERO: #112 merged fdcfc53 (T-MIG-070 DONE), #111 closed-yielded, #109 closed-superseded by r1c round-20. Merged-tip gates of record 1398 ran / 1385 pass / 0 fail / 13 skip / 73 files, typecheck x4 exit 0, golden selftest OK. r0 | desk sweep complete, both frozen tutor laws on main, zero collisions | IDLE | suggestion: next free bands are the case-owner RICH-200-C/E tranches; the register carries no r0-actionable item.
+
+Task ID: 10 (round: trace 1a10fe89e845585d, agent r9-hubx, zai-web)
+Task: "Check, claim and continue"
+
+Work Log:
+- CHECK: queue had #109 (r0r6's seeded-posture P1 band) — REVIEWED+MERGED e760bdc: review.ts bind-slot law verified; REAL conflict servable.ts (the PR's alias form vs the landed #107 bare-select form) reconciled to the landed form per the fakeSql harness fidelity law (fixtures mirror DB rows, no alias projection — the alias form broke 6 landed projection pins, caught first-hand at intake); the PR's new pin re-pointed form-agnostic (disclosed in-test + in the merge record); gates 1381-0-13skip-5583 = main +21/+31 EXACT; r0's 068 card disposition ("intake resolves servable.ts to main's fix of record") matched the executed resolution.
+- DESK: #111 (r1's R-067-B/C claim) closed as LOSING DUPLICATE per earliest-claim-wins — the rows were claimed+landed by r0r6's #109 (card @ bc521b3, merged e760bdc) before r1's 9fd1737 @ 06:31:41Z; timestamp ruling comment 6011024675; stand-down, no rollback.
+- DESK: #112 (r0's T-MIG-070 blocker band) REVIEWED+MERGED fdcfc53: notBlank refine max-FIRST/refine-LAST (#93/#96 precedent) + the conversation.ts defensive-trim law + karag rerankScore-copy; intake 1d8c8dd converged by r0 (.syllabai-only +27); gates 1385-0-13skip-5599 = main +4/+16 EXACT; CI green @ 7c3d32b.
+- CLAIM+CONTINUE (the register's genuinely free items): (a) flipped OWN card T-MIG-061 -> DONE (both tranches merged of record #95/#98); (b) fixed the register-carried non-gating nit services/learner-me/nba.ts:42-46 — the stale "R0 asked to rule" paragraph now cites the T-MIG-066 ruling of record (#106). Zero code contact beyond the comment block.
+- Post-round: queue 0; register open items all owned (068 DONE by r0 citing #109; 070 landed via #112; RICH-200-C = case-owner lane; 043/053/065 flips owed by their owning lanes).
+
+Stage Summary:
+- Round: 1 foreign PR merged (#109) with a real semantic reconciliation; 1 duplicate ruled out (#111); 1 foreign PR merged (#112); own card 061 closed; the carried nit cleared. Lane idle, STOP.
+
+---
+
+Task ID: R4b-ROUND-20 (trace 1a110056d95b2265)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator standing directive "check whether R0 has done its work or not. If not, do it yourself" — census + independent verification + housekeeping.
+
+Work Log:
+- PAT MAINTENANCE (wipe check): /home/z/.ghtoken wiped again by workspace reset — restored from the 0600 mount /home/z/my-project/.secrets/ghpat (also re-chmod'd 600 after drift to 755); credential store /home/z/my-project/.secrets/git-credentials intact (0600). Validation: HTTP 200, login SyllabAI. Persistence layout of record holds.
+- CENSUS @ fetch 37ea7c2: R0 HAS DELIVERED since the R4b-ROUND-19 receipt (4fff2b1): #107 merged cdce05e (T-MIG-067 DONE, CI run 37423118901 green); #109 e760bdc + #110 3e4e22c merged (T-MIG-068 DONE, union 142/177, 5/6 PASS, dual replay 37426037703/37426117865); #112 merged fdcfc53 (T-MIG-070 DONE — the #104 blocker band closed of record, R0-MERGE-DESK-19); #111 closed-yielded per the author's own Task-26 record; #109 closed-superseded per r1c Task-25. Open PRs at census: ZERO. Desk queue: ZERO.
+- CLAIM CENSUS: no free filed bands. Non-DONE cards at census time are owner-property: 043 IN_REVIEW (w0a), 053 IN_PROGRESS (r3a tranches), 061 IN_REVIEW (r9-hubx), 065 IN_REVIEW (r0). RICH-200-C ordered tranches + RICH-200-E are case-owner lanes (web-752465e5) per the bc521b3 ruling. Register observes the 069 id skip (068 -> 070; no 069 card filed).
+- MERGED-TIP GATES first-hand at 37ea7c2 via the persisted harness: bun install --frozen-lockfile OK (940 installs, no changes); typecheck x4 exit 0; bun test apps/api packages = 1385 pass / 0 fail / 13 skip / 5599 expect; golden selftest OK. Reconciles EXACT vs the R0-MERGE-DESK-19 of-record (1398 ran = 1385+13, 73 files). Delta audit fdcfc53..37ea7c2: zero non-.syllabai files touched (bookkeeping-only advance), numbers carried over and re-verified anyway.
+- LOCAL SYNC: local main reset --hard 4fff2b1 -> 37ea7c2 (no unpushed local state; the R4b-ROUND-19 receipt 4fff2b1 already of record in origin history).
+- INTAKE RACE NOTE: main advanced 37ea7c2 -> e273b98 during this round's gates window (another lane's housekeeping: T-MIG-061 -> DONE owning-lane flip + the nba.ts:42-46 stale-header nit cleared, comment-only) — first push rejected non-fast-forward, atomic fetch-first re-apply executed per the hot-main loop; the concurrent 061 flip supersedes this receipt's census line for 061 (owner-property either way, conclusion unchanged); worklog tail union verified: their entries intact, this entry appended after, zero markers.
+
+Stage Summary:
+- R0 merge check IN of record (three merges + two closures since last round; queue zero, register clean of port work). Merged-tip gates 1385/0/13skip/5599 independently verified at the live tip. No r4b-actionable band exists; LANE IDLE — next actionable claim requires R0 to file new ids (069+ band free after the skip) or the case-owner lanes to open reviewable PRs.
+
+---
+
+Task ID: R1-ROUND-21 (trace 1a1100f03295c239)
+Agent: r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Operator directive "check and claim and continue" — census, claim the next free band, execute.
+
+Work Log:
+- CHECK: main 97295d1 (r4b-ROUND-20 receipt); queue zero, open PRs zero; #107/#108/#109/#110/#112 all merged of record; merged-tip gates 1385/0/13skip/5599/73f of record and not re-measured this round (two independent lanes already reconciled EXACT: R0-MERGE-DESK-19 + R4b-ROUND-20).
+- CLAIM CENSUS: no free filed bands (043/053/061/065 owner-property; RICH-200-C/E case-owner lanes). Claimed from the REGISTER instead per the F-B/064 precedent: the inferred-constraint class residual (disclosed T-MIG-057, restated 'unchanged' on the 064 F-B receipt) -> FILED as T-MIG-071 (the selfmark dead-constraint class). 069 skipped for w0a's CLA refile per ruling2; 070 taken; 071 next free. Zero-collision: no 071 in .syllabai/, no t-mig-071 heads, fence disjoint from r3a's live 053 t3/t4.
+- FROZEN LAW re-verified line-against-line @ 6cad6ef: SelfMarkRequest.java:59 bare List = no @Valid cascade -> the element @Min(0)/@Max(99) (:56) NEVER evaluate (dead letter, Jackson binds any int); LearnerSelfMarkService.java:113-121 bound loop -> ConflictException 'marks N outside part bound 0–X' 409 (U+2013 verbatim); :115 bound=Math.max(marks,0) + the 'bound > 0 &&' guard = the 0-mark-part sharp edge (any marks >= 0 accepted on a 0-bound part — pinned, not 'fixed'). The port service is ALREADY faithful (selfmark/index.ts:218-220) — the divergence is contracts-only: assessment.ts:284 .min(0).max(99) renders the dead constraints live and kills -1/100 at binding with the WRONG envelope (400 validation_failed where frozen answers 409).
+- Branch t-mig-071/r1 cut @ 97295d1; claim commit first (card + receipt + this entry), pushed before implementation (wipe-protection). Residual disclosed on the receipt: the Jackson-Integer coercion class (int32 overflow / fractional) — register-only, not fixed in this fence.
+
+Stage Summary:
+- T-MIG-071 claimed (IN_PROGRESS): contracts-only widening (.min(0).max(99) off the bind law) + the :184-186 pin flip to the bind law + the 0-mark-part edge pin. Implementation + A/B gates next (run-002). Authors never self-merge — the PR will be handed to the desk.
+- T-MIG-071 run-002 (implementation): contracts marksAwarded widened to the bind law (.min(0).max(99) removed — the dead constraints no longer rendered live); the assessment.test.ts rejection pin flipped; NEW contracts residual pin (int32 overflow class, disclosed); NEW selfmark service pins (negative-marks arm 409 + the 0-mark-part sharp edge); the self-mark route's wire pin (smartmark harness, SME flow) flipped from the 400 validation_failed divergence-of-record to the frozen 409 conflict 'marks 100 outside part bound 0–3'. SCOPE AMENDMENT disclosed on the card (the wire pin's home is test/smartmark/routes.test.ts — test-file-only, same band). Gates A/B exact: 97295d1 = 1398/1385/0/13/5599/73f vs branch = 1401/1388/0/13/5605/73f — +3/+3/+0/+6 EXACT; typecheck x3; selftest OK. Zero src contact (the service was already faithful). PR next, handed to the desk (authors never self-merge).
+
+Task ID: R0-OPERATOR-RULINGS (operator trace 1a1100c71ff48e05)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Operator answered the four-ruling menu verbatim — "1 - Option B / 2 - (a) / 3 - Tolerate / 4 - Option A" — file the rulings of record and route the executable work.
+
+Work Log:
+- Baseline re-synced fetch-first: local main 3849448 -> fdcfc53 (PR #112, T-MIG-070 intake); the nine unseen commits' worklog entries read in full BEFORE this append (append-only law); no rival ruling filing exists (R0-arbitration/ held ruling1/ruling2 only at write time).
+- RULING3 FILED: .syllabai/receipts/R0-arbitration/ruling3-operator-four-rulings.json — R3-C limiter STAYS (Option B: the run-7 auth-lane strip/align action CANCELLED; the 8 class-C cases get justified:true + expect.headers Retry-After pins per T-MIG-004 F-3; the no-pacing masking ban is standing law); R3-D2 composition = option (a) seq-position (empty-pinned tranche BEFORE the staging builders, staged-pinned after; re-pin/tolerate options REJECTED; resolves the 7 empty-state 200s + the topics census diff; F-class canonicalization becomes provable); R3-D3 wall-clock TOLERATE (daysToWindowStart/End -> tolerate[], justified:true, capture-time anchor, everything else stays byte-pinned); R3-D4 identity pins = Option A (register-learner += accessToken; history-after-submit += learnerId/attemptId; auth-me += the live-diff-verified seeded-identity fields; the staged-identity tranche is SHELVED).
+- Mechanics verified first-hand before filing: expect.headers exists in the runner Case schema (golden/runner.ts:34); checkHeaders (runner.ts:90-103) = case-insensitive names, EXACT values (so a rotating Retry-After needs the disclosed pattern-support rider); justified:true is the health.json GOLDEN_MASTER §4 convention; all 12 affected case files exist under golden/cases/.
+- CARDS FILED (both OPEN, unassigned, claim-in-first-commit): T-MIG-071 (the case-amendment band: R3-C pins + R3-D3 tolerate + R3-D4 amendments; rider scope for header pattern support ONLY if the live Retry-After rotates; forbidden: limiter changes, pacing, deletions, silent widening) and T-MIG-072 (the tooling half: two ordered tranches via the corpus seq machinery; deps [T-MIG-063]; forbidden: port-code contact, re-pinning, comparator widening; COW discipline per T-MIG-035/063). 069 deliberately left to w0a's soft-reserved CLA refile (c78ed9a).
+- Register delta of record (in the receipt): run-9 actions 5/7/10 DECIDED + the new wall-clock ruling routed; actions 1 (E-class P1), 3 (F, provable after 072), 6 (I), 8 (R1 re-pin), 11 (G) + the nba.ts nit STANDING unchanged.
+
+Stage Summary:
+- The four open operator items are RULED and ROUTED of record: no decision is pending on the register anymore — the executable residue is T-MIG-071 + T-MIG-072 (both OPEN for the lanes) plus the standing case-owner/tooling items. Projected clearing unchanged: 177/177 reachable, zero deletions, zero comparator widenings. Desk IDLE; suggestion: the lanes claim 071/072 per earliest-claim-wins, or the operator routes them explicitly.
+- T-MIG-073 run-003 (REFILE of the T-MIG-071 claim): the id was lost to r0's ruling3 filing per earliest-claim-wins — r0 committed the 071 card (operator-ruling-case-amendments, a DIFFERENT band, zero scope overlap) on main @ 07:18:16Z, 3 minutes before this lane's claim commit 00f457f @ 07:21:06Z; the ruling2 scan-vs-push race disposition controls (the earlier claim takes the id). git-mv card + receipts 071->073 with provenance; ids updated in the schema header, the two contracts pins, the two selfmark service pins, and the smartmark wire pin; 073 verified free @ origin/main 6347b1a. The superseded t-mig-071/r1 branch name stays on origin (cosmetic per ruling2 — no force-push). Intake of 6347b1a landed first (worklog-tail add/add union, 1 hunk, 249 Task sections alive, asserts A1/A3/A4). Band content unchanged; gates re-verified below before push.
+Task ID: T-MIG-067 (claim)
+Agent: lane w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: The 'continue working' half of operator trace 1a10fbe9465708c9 (the merge half is worklog Task 5) — claim the next unfiled Wave-6 surface per the standing claim word trace 1a10d2c88b6f13c5.
+
+Work Log:
+- Free-band census after the #104 merge: 050..066 ALL owned (DONE x10: 050/051/052/054/055/056/059/060/062/063; in-flight x6: 057 r4b, 058 r1, 061 r9-hubx, 064 r1, 065 r0, 053 r3a; 066 open on r1's #106). Zero 067+ ids anywhere. docs/MIGRATION_PLAN.md §5 Wave 6 re-read: the surface list is 'tutor + sessions, CLA, intervention runs, LLM admin, research calibration, OCR ingestion, routing' — CLA is the only unfiled member that is deterministic-heavy AND seam-adjacent to this lane's landed 060.
+- CLAIMED T-MIG-067 (POST /api/v1/learners/me/cla/ask): frozen surface mapped from syllabai-core @ 6cad6ef — ClaController :36-101 (one endpoint), ClaService :906 ln, ClaContextResolver :492, ClaToolRegistry :203, ClaLeakagePolicy :88, dto/ClaAnswerView :121, ClaInteractionEvent :67 (ApplicationEventPublisher :422 -> LIM surface=CONTEXTUAL_ASSISTANT; zero new tables, ADR-031 intact); frozen tests 1022/574/218/965 ln are the pin source.
+- Dependency audit: consumes services/tutor/** + knowledge + learner model + assessment repos + ServableQuestions — ALL already on main (060/041/053 families); NO edits to landed fences; the generator seam is the tutor's dormant 503 posture (R-LLM honoured).
+- Zero-collision scan immediately before branch cut @ origin/main 2a0b18d: 0 remote 067+ heads, 0 yamls, 0 worklog mentions, open PRs = #106 only. Branch t-mig-067/w0a cut; card T-MIG-067-cla-ask.yaml + run-001-claim.json + this entry = the claim commit (claim-in-first-commit).
+- Tranche plan filed: t1 = contracts + leakage policy + tool registry + context resolver; t2 = service orchestration + route + view + event posture + mount (OUT-OF-FENCE, separate commit) + PR.
+
+Stage Summary:
+- T-MIG-067 CLAIMED on t-mig-067/w0a @ 2a0b18d base. The band closes the Wave-6 CLA surface over this lane's own 060 seam. Remaining unfiled Wave-6 members for other claimants: LLM admin (LlmAdminController), OCR ingestion (GlmOcrIngestionController), routing (RoutingController) — all zero-claim at census time. Id ratification will be requested at PR (060 precedent). Zero golden/Neon/force.
+
+---
+Task ID: T-MIG-067 (tranche-1a)
+Agent: lane w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: T-MIG-067 tranche-1a — the deterministic CLA core (contracts + context port + leakage gate + tool registry) on the claimed branch.
+
+Work Log:
+- Read the full frozen surface line-against-line (6cad6ef): ClaLeakagePolicy (:1-88), ClaToolRegistry (:1-203), ResourceContext (:62-235), ResponseMode, AttemptRequiredException, ClaContextResolver (:1-492), ClaAnswerView, ClaController (:36-101) — the pin laws named per line in code headers.
+- Dependency audit of record: the tutor chain + ServableQuestions + knowledge reads + learner-state reads are ALL on main (060/041/053-t1 families); SMART_LESSON + NOTE_SECTION branches DEFER (gated on 053 t3 notes / t4 smart lesson — r3a's in-flight tranches); the deferral rides the frozen controller law "kinds not served by the current runtime step are a 400 (closed enum, §1)" — disclosed, never silent.
+- Tranche-1a implemented: contracts/cla.ts (+16 pins, index one-liner per precedent), services/cla/context.ts, services/cla/leakage-policy.ts, services/cla/tool-registry.ts (+23 api pins over the shared param-aware fakeSql). REUSE-not-redeclare: 053's KG reads + the tutor LearnerModelPort + the shared fakeSql helper; zero new KG/learner SQL.
+- Gates: typecheck x4 exit 0; bun test apps/api packages 1371/0/13skip/4687 across 72 files = claim base (1332/4558/70f @ 2a0b18d) +39/+129/+2 EXACT (git diff --stat proof: only the two new test files touch tests); golden --selftest OK. Two real port catches fixed en route (the noUncheckedIndexedAccess pins; the Route.rows required field) — no behavioral drift.
+- Card -> IN_PROGRESS + t1a execution_record entry + run-002-tranche1a.json + this entry.
+
+Stage Summary:
+- T-MIG-067 t1a LANDED on t-mig-067/w0a. Next: t1b (the context resolver for the four dependency-landed kinds — the 404-indistinguishability laws) then t2 (ClaService + route + mount + PR). Zero golden/Neon/force.
+
+---
+Task ID: T-MIG-069 (refile)
+Agent: lane w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Operator trace 1a10fea97de5d819 "Check if R0 has merged or not. If not, review+merge yourself and continue working" — R0-state verification + execution of the R0-arbitration ruling2 refile order (T-MIG-067 CLA band -> T-MIG-069).
+
+Work Log:
+- R0 state verified ACTIVE of record: the desk merged #107 -> cdce05e (the RICH-200-D fix) and #108 -> d794dd5 (053-t2) the same morning, plus the baseline-ratification chain; 060's own #104 had already merged 6580b2c. Nothing of w0a's has an open PR — the self-merge conditional did NOT fire and was not needed.
+- Board event absorbed: T-MIG-067 was TRIPLE-CLAIMED within minutes (r0 RICH-200-D f8e78f4 05:57:09Z; this lane's CLA claim e11e8ea 06:00:05Z; the triage umbrella bc521b3 06:00:42Z). R0-arbitration ruling2 (landed c78ed9a) ruled earliest-claim-wins: 067 = RICH-200-D; the umbrella mechanically refiled 068 by R0; THIS BAND ordered refiled under the next free id per the T-MIG-048->050 precedent, the CLA WORK ruled unaffected (denial is id-only — the scan-vs-push race: our @2a0b18d scan could not see r0's unpushed branch). Accepted without dispute; root cause acknowledged as a known pattern for AGENT_COORDINATION §7.
+- REFILE EXECUTED at the register level exactly as ruled: card git-mv'd T-MIG-067-cla-ask.yaml -> T-MIG-069-cla-ask.yaml (id flipped, status/scope updated, refile entry appended to execution_record); receipts dir T-MIG-067 -> T-MIG-069 (run-001/run-002 task fields updated + refile_provenance blocks, historical narratives verbatim); run-003-refile.json filed; branch name t-mig-067/w0a KEPT (ruling: rename optional, cosmetic — the yaml id is what the register reads).
+- 069 free-state re-verified at origin/main 00831a6 before the flip: 0 x 069 yamls/heads; the only 2 worklog mentions are the ruling's earmark + r9-hubx's routing suggestion. No competing claim.
+- PR #109 (t-mig-067/r0r6, the seeded-posture umbrella work) noted in flight — NOT this lane's band (068 umbrella); zero overlap with the CLA surface; untouched.
+
+Stage Summary:
+- T-MIG-069 is the register id of record for the Wave-6 CLA band. Tranche-1a remains landed (c30581b); the refile is register-level only, zero code touched. Next: intake origin/main -> gates -> push; then tranche-1b (ClaContextResolver, the four dependency-landed kinds) -> tranche-2 (ClaService + route + mount) -> PR as T-MIG-069 with id-ratification request. Zero golden/Neon/force.
+---
+Task ID: T-MIG-069 (tranche-1b)
+Agent: lane w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: T-MIG-069 tranche-1b — the context resolver port (frozen ClaContextResolver :1-492) for the four dependency-served kinds.
+
+Work Log:
+- Intake first (314da7f): origin/main 00831a6 merged — one conflict (.syllabai/worklog.md) resolved as the strict append-only union (main verbatim in place, the lane's 3 entries re-appended; entry arithmetic 220 common + 17 main-only + 3 lane = 240 EXACT, zero markers); contracts index auto-merge kept the cla one-liner.
+- Refile of record (2685b0d, run-003): card + receipts git-mv'd to T-MIG-069 per R0-arbitration ruling2; branch name kept (ruling: cosmetic).
+- TRANCHE-1B implemented: services/cla/context-resolver.ts (NEW) — buildClaContextResolver({sql, clock}) porting frozen ClaContextResolver.java :1-492 line-against-line: resolveKgTopic, resolveSpecificationPoint (the code-strip law verbatim), resolveCurriculumNode (the shared spine: subtree registry + §1.2 gate + curriculum identity from the owning subject), resolveQuestionAnchor (paper → subject or the paper-less SEED_DEMO subtree walk → primary topic VALIDATED → current version VALIDATED), contextFrom + QuestionAnchor, resolvePastPaperQuestion (active filter + isServable + the attempt-state read), resolveQuestionPart (canonical-FK hops + the CURRENT-version relationship gate + the foreign-subject root 404).
+- RUNTIME STEP of record: exactly four kinds served; SMART_LESSON/NOTE_SECTION branches defer behind the 053 t3/t4 gate — the deferral is a PIN (the two resolvers absent from the factory) + the route dispatch will 400 the kinds at t2 (the frozen closed-enum law).
+- REUSE-not-redeclare of record: knowledgeTree (053), taxonomy.subtreeIds (the questions module's exported port), ServableQuestions.findById as the isServable gate (the frozen gate IS findById(...).isPresent() — byte-identical chain), SubjectsRepository + mapper; the resolver's OWN repo reads (findByKnowledgeNodeId, question/version/part/paper/attempt) are the frozen topology's local reads, disclosed in the header.
+- Pins: apps/api/test/cla/context-resolver.test.ts — 18 pins, the frozen ClaContextResolverTest laws 1:1 for the landed kinds, over the shared param-aware fakeSql.
+- Gates at the head: typecheck x4 exit 0; bun test 1430/0/13skip/5745 across 76 files = intake base (1412/75f/5681) +18/+1/+64 EXACT; golden --selftest OK.
+- Card status + t1b execution_record entry + run-004-tranche1b.json + this entry, one commit.
+
+Stage Summary:
+- T-MIG-069 t1b LANDED on t-mig-067/w0a (branch name cosmetic per ruling2). Next: t2 (ClaService orchestration :1-906 + routes/cla.ts + the kind/mode dispatch with the fixed 400 for the deferred kinds + the event posture + the OUT-OF-FENCE mount, separate commit) -> PR with the id-ratification request. Zero golden/Neon/force.
+
+---
+Task ID: T-MIG-069 (tranche-2)
+Agent: lane w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: T-MIG-069 tranche-2 — the ClaService orchestration port + the ask route + the OUT-OF-FENCE mount + PR. The band completes on-branch.
+
+Work Log:
+- TRANCHE-2 implemented: services/cla/service.ts (NEW) — the frozen ClaService.java :1-906 line-against-line: the per-kind dispatch 400s verbatim + the closed-enum default (the deferred kinds' serving law), the registry-decides enablement + the §7.4 gate BEFORE retrieval, the deterministic single-anchor KnowledgeContext, the hybrid pool (anchor + spec-structure evidence capped 4 + the vector arm) -> fuseWithPlanWeights -> rerank -> cap -> attribution -> evidenceEligible, the question-context FIXED lead evidence (stem / whole-question parts with PART_PROMPT_BOUND 1200 / learner-work part-scoped / VALIDATED scheme points part-appropriate), the modePlan law verbatim (EXPLAIN decode-only on questions, HINT scaffolding, CHECK unlocked), the honest briefs, the REFUSAL law (the frozen text-block string, model null, provider deterministic-refusal, NO generator call) and the dormant seam (generation-reaching -> TutorGenerationError -> 503). routes/cla.ts (NEW): POST /api/v1/learners/me/cla/ask + the two-envelope law + the verbatim exception mappings + the composition root wiring the REAL module (the sql-backed learner-model reads with the MED-2/ADR-032 relaxation; activeStruggleInferences honestly empty — no landed read, disclosed).
+- CONTRACT AMENDMENTS (disclosed): claAnswerViewSchema.model -> nullable (the frozen refusal serializes model: null; t1a's non-nullable shape was a staging gap); the ContextView flattening honoured (curriculumVersion/Board/Qualification as three flat strings).
+- 24 pins (apps/api/test/cla/cla-service.test.ts): the dispatch 400s, the gate ordering (wasGenerated()=false), the pipeline + spec-structure attribution, the §4.4 audit trace, the refusal law + the wire shape, the dormant seam, the §7.3 unlock + part-scoped discipline, and the route laws over the injected-auth 060 pattern (401/malformed/validation/enum/verbatim-400/200-contract/409/503).
+- OUT-OF-FENCE mount (apps/api/index.ts) as its own commit: /api/v1/learners/me/cla + the ratification-request comment block (the 010/020/031/043/052/061/060 precedent).
+- Gates at the head: typecheck x4 exit 0; bun test 1454/0/13skip/5804 across 77 files = the t1b base (1430/76f/5745) +24/+1/+59 EXACT; golden --selftest OK.
+- Card -> IN_REVIEW + the t2 execution_record entry + run-005-tranche2.json + this entry.
+
+Stage Summary:
+- T-MIG-069 COMPLETE on t-mig-067/w0a: t1a (39 pins) + t1b (18 pins) + t2 (24 pins) = 81 pins, gates green end-to-end. PR next with the full symmetric disclosure (id provenance 067->069, the contract amendment, the deferral, the dormant seam, the mount ratification request). Authors never self-merge — the desk/review acts first, the operator's standing order is the disclosed fallback. Zero golden/Neon/force.

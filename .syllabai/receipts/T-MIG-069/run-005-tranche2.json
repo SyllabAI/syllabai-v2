@@ -1,0 +1,32 @@
+{
+  "task": "T-MIG-069",
+  "run": "run-005-tranche2",
+  "date": "2026-10-06",
+  "lane": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "provenance": {
+    "operator_directive_trace": "1a10fea97de5d819",
+    "directive": "Check if R0 has merged or not. If not, review+merge yourself and continue working",
+    "resolution": "R0 verified active (nothing of w0a's pending); the refile executed (run-003), t1b landed (run-004); this receipt covers tranche-2 — the band is COMPLETE on-branch, PR next."
+  },
+  "tranche_2_scope": [
+    "apps/api/src/services/cla/service.ts (NEW) — buildClaService: the frozen ClaService.java :1-906 orchestration line-against-line (dispatch, gates, tools, hybrid retrieval, lead evidence, mode plans, briefs, refusal honesty, dormant seam, citations, telemetry event)",
+    "apps/api/src/routes/cla.ts (NEW) — createClaRouter (POST /ask, the authz shell, the two-envelope law, the verbatim exception mappings) + buildClaRouters (the composition root)",
+    "packages/contracts/src/cla.ts — the model-nullable amendment (disclosed) + the ContextView flattening honoured",
+    "apps/api/test/cla/cla-service.test.ts (NEW) — 24 pins",
+    "apps/api/src/index.ts — the OUT-OF-FENCE mount (separate commit, R0 ratification requested)"
+  ],
+  "runtime_step_law_wired": "the four dependency-served kinds dispatch; SMART_LESSON + NOTE_SECTION refuse with the frozen closed-enum 400 ('context kind not supported by this runtime step: X') — the 053 t3/t4 gate mechanism, disclosed at the route, the service, and the mount comment",
+  "dormant_seam": "generation-reaching asks raise TutorGenerationError and the route serves 503 tutor_unavailable with the FIXED TUTOR_UNAVAILABLE_MESSAGE; deterministic refusals (zero evidence) serve 200 with the frozen REFUSAL text block, model null, provider 'deterministic-refusal', NO generator call — refusals never 503",
+  "contract_amendments": [
+    "claAnswerViewSchema.model: string -> string.nullable() — the frozen GeneratedAnswer(REFUSAL, null, 'deterministic-refusal') serializes model: null on every refusal (ClaService :417 @ 6cad6ef); t1a's non-nullable shape was a staging gap, amended with this disclosure",
+    "the ContextView flattening honoured: curriculumVersion/curriculumBoard/curriculumQualification ride as three flat strings (the frozen ContextView :31-58) — the service maps the resolved record onto the wire shape"
+  ],
+  "learner_model_composition": "the tool registry + the policy consume a sql-backed port: skillStatesByRecency (the exact SkillState shape) + misconceptionStatesByProbability run through relaxedToPrior per MED-2/ADR-032 (the SAME composition the learner-me state view uses); activeStruggleInferences has NO landed v2 read — the port returns the honest empty list (the tutor module itself runs with NO learner model at all), the policy's no-signal fall-through is the frozen law for zero inferences",
+  "adr_031_zero_write_audit": "zero writes: the only event-shaped output rides the injected no-op telemetry sink (the 061 posture); no tables touched, zero golden file edits, zero Neon contact, zero force-push",
+  "gates": {
+    "typecheck": "x4 exit 0",
+    "bun_test": "apps/api packages: 1454 pass / 0 fail / 13 skip / 5804 expect across 77 files = the t1b base (1430/76f/5745) +24 tests/+1 file/+59 expect EXACT",
+    "golden_selftest": "OK"
+  },
+  "pr_plan": "PR from t-mig-067/w0a (branch name cosmetic per ruling2) as T-MIG-069 with the full symmetric disclosure: the id provenance (067 denial -> 069 refile), the contract amendment, the runtime-step deferral, the dormant seam, the learner-model composition, the OUT-OF-FENCE mount ratification request; authors never self-merge — the desk/independent review acts, the operator's standing order is the disclosed fallback"
+}

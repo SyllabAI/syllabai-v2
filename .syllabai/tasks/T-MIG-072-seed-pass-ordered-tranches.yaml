@@ -1,0 +1,34 @@
+version: 1
+task:
+  id: T-MIG-072
+  title: "T-MIG-072 — the RICH-200-C/E composition ruling executed (R0 arbitration ruling3 R3-D2, receipts/R0-arbitration/ruling3-operator-four-rulings.json, operator trace 1a1100c71ff48e05, option (a) of three filed): the seed pass becomes TWO ORDERED TRANCHES on the same disposable branch — empty-pinned cases replay BEFORE the staging state-builders, staged-pinned cases replay AFTER — via the corpus's own seq machinery generalized to tranche order; zero case re-pinning, zero deletions, both postures stay covered"
+  owner: "OPEN — unassigned; the claiming lane claims in-first-commit per AGENT_COORDINATION §2"
+  status: OPEN # filed by the R0-integrator desk 2026-10-06 on operator ruling; tooling lane work
+  priority: P2
+  wave: ruling-execution # not wave work — the operator rulings' tooling-side half
+  deps: [T-MIG-063]
+  execution_record: >
+    (filed by R0-integrator, 2026-10-06 — ruling3 R3-D2. Resolves of record: the
+    RICH-200-C empty-state 200s (7: w3-marking-answers/queue-v2/throughput-teacher-200,
+    w4-course-stats-empty-200, w4-flashcard-schedule-empty-200, w4-flashcard-trail-empty-200,
+    w4-state-empty-200, w3-history-empty-student-200), the w3-questions-topics-student-200
+    staged-census diff (6/5 live vs 4/4 capture — the port law is BYTE-EXACT on the unstaged
+    posture per the T-MIG-067 run-001 accounts-only proof), and the corpus half of
+    RICH-200-E's exposure. PROVENANCE: run-9 triage §3-R5 (the corpus's seq machinery
+    generalizes to tranche order — the ruling's own design, now operator-ratified);
+    options (b) re-pin and (c) tolerate[] are REJECTED for this class. Standing note:
+    the F-class comparator canonicalization (run-7 action 3) becomes provable once this
+    lands — same file, one pass is allowed if the claimant takes both, disclosed.
+    RICH-200-E tie-order (families multiset nondeterminism) is NOT solved by tranches
+    alone — the T-MIG-071 case-owner band assesses the residual after this lands.)
+  scope:
+    allowed:
+      - "golden/runner.ts + golden/tools/** (tranche-order execution: partition the pass into the empty-pinned tranche replayed before the staging builders and the staged-pinned tranche after, on the same disposable branch; the corpus seq values remain the in-tranche order law)"
+      - "golden/cases/** ONLY IF a case needs an explicit tranche marker field to drive the partition (construction-only; every such edit disclosed case-by-case in the PR — NO expectation/tolerate semantic changes)"
+      - ".syllabai/receipts/T-MIG-072/**; this yaml; .syllabai/worklog.md (append-only)"
+    forbidden:
+      - "apps/**, packages/** (zero port-code contact — this is corpus orchestration only)"
+      - "re-pinning any case to the other posture; deleting or merging cases (zero-deletion doctrine)"
+      - "comparator widening (unordered[]/tolerate[] semantics are T-MIG-024/071 scope, not this band)"
+      - "pacing/sleep/backoff additions (standing masking ban)"
+      - "production Neon/Render writes of any kind; the disposable COW branch follows the T-MIG-035/T-MIG-063 discipline (drop + 404-verify, zero residue)"

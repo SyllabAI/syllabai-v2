@@ -1,0 +1,32 @@
+{
+  "task": "T-MIG-069",
+  "run": "run-003-refile",
+  "date": "2026-10-06",
+  "lane": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "provenance": {
+    "operator_directive_trace": "1a10fea97de5d819",
+    "directive": "Check if R0 has merged or not. If not, review+merge yourself and continue working",
+    "resolution": "R0 merge state verified ACTIVE of record (nothing of w0a's pending: #104 already merged 6580b2c; the desk merged #107 -> cdce05e and #108 -> d794dd5 the same morning) — the self-merge conditional did NOT fire and was not needed. The 'continue working' half = executing the R0-arbitration ruling2 refile order, then the band's tranches continue (t1b -> t2 -> PR)."
+  },
+  "refile": {
+    "from_id": "T-MIG-067",
+    "to_id": "T-MIG-069",
+    "authority": "R0-arbitration ruling2 (.syllabai/receipts/R0-arbitration/ruling2-t-mig-067-triple-claim.json @ c78ed9a): the 067 id went to the earliest claimant (r0's RICH-200-D fix, claim f8e78f4 05:57:09Z, merged cdce05e via #107); this lane's CLA claim e11e8ea (06:00:05Z) denied BY ID ONLY with the work ruled unaffected — 'refile under the next free id at PR time (T-MIG-069 unless taken), per the T-MIG-048->050 refile precedent (R0s-ROUND-10a)'; the branch-name suffix ruled 'cosmetic; rename optional, the yaml id is what the register reads'.",
+    "root_cause_of_collision": "the scan-vs-push race: this lane's zero-collision scan @ origin/main 2a0b18d could not see r0's RICH-200-D card because that card lived on r0's unpushed branch at scan time (both lanes filed within the same 4-minute window). Noted by the ruling as a known arbitration pattern for AGENT_COORDINATION §7 — no law change proposed.",
+    "executed": [
+      "git mv .syllabai/tasks/T-MIG-067-cla-ask.yaml -> .syllabai/tasks/T-MIG-069-cla-ask.yaml; id flipped; status + scope paths updated; refile entry appended to execution_record",
+      "git mv .syllabai/receipts/T-MIG-067 -> .syllabai/receipts/T-MIG-069; run-001/run-002 task fields updated to T-MIG-069 with refile_provenance blocks added (historical narratives inside kept verbatim)",
+      "branch name t-mig-067/w0a KEPT per the ruling (rename optional, cosmetic)",
+      "worklog entry appended (append-only)"
+    ],
+    "free_state_verification": {
+      "at": "origin/main 00831a6 (fetched 2026-10-06 pre-refile)",
+      "yamls_069": 0,
+      "remote_heads_069": 0,
+      "worklog_069_mentions": 2,
+      "worklog_mention_disposition": "both are the arbitration ruling's own earmark ('refiles under ... T-MIG-069') + the r9-hubx routing suggestion ('next claims = ... T-MIG-069 (w0a's CLA refile) per the operator's routing') — neither is a competing claim"
+    }
+  },
+  "adr_031_zero_write_audit": "zero writes: register renames + metadata edits only; no code, no tables, no golden files, zero Neon contact, zero force-push",
+  "next": "intake origin/main, gates, push; then tranche-1b (ClaContextResolver, the four dependency-landed kinds) -> tranche-2 (ClaService + routes/cla.ts + ClaAnswerView + event posture + OUT-OF-FENCE mount) -> PR as T-MIG-069 with id-ratification request"
+}

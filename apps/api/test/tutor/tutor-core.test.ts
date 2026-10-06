@@ -20,6 +20,7 @@ import {
 } from "../../src/services/tutor/sanitize";
 import { fuse, fuseWithPlanWeights, PLAN_V2_WEIGHTS } from "../../src/services/tutor/rrf";
 import { evidenceFromChunk, evidenceFromNode } from "../../src/services/tutor/evidence";
+import { noReranker } from "../../src/services/tutor/karag";
 import { retrievalQuery } from "../../src/services/tutor/retrieval-query";
 import { resolveCitations } from "../../src/services/tutor/citations";
 import {
@@ -210,6 +211,19 @@ describe("reciprocal rank fusion", () => {
     const fused = fuseWithPlanWeights([[b, a]]);
     // equal scores (same rank, same weight) → nodeCode ASC
     expect(fused[0]?.nodeCode).toBe("IALCHEM2018-U1-A");
+  });
+
+  test("NoReranker copies the fused score into rerankScore — never null (T-MIG-070 blocker 2)", () => {
+    // NoReranker.java:14-22 — item.withRerankScore(item.fusedScore()): the
+    // §19 deterministic-identity/reproducibility contract; the former
+    // pass-through left rerankScore: null on every post-fusion item while
+    // the karag.ts comment claimed the copy.
+    const a = { ...kg, fusedScore: 0.42 };
+    const b = { ...chunk, fusedScore: 0.17 };
+    const reranked = noReranker("why is that?", [a, b]);
+    expect(reranked.map((i) => i.chunkId ?? i.nodeId)).toEqual([a.nodeId, b.chunkId]); // order copied
+    expect(reranked.map((i) => i.rerankScore)).toEqual([0.42, 0.17]);
+    expect(reranked.every((i) => i.rerankScore !== null)).toBe(true);
   });
 });
 
@@ -500,22 +514,32 @@ describe("tutor session store (§22 laws)", () => {
     expect(first?.createdAt).toBe("2026-10-06T03:00:00Z");
   });
 
-  test("assistant transcript content renders citation-marker-stripped and bounded", async () => {
-    const store = buildTutorSessionStore(
-      fakeSql({ "select id, learner_id": [
-        {
-          id: "s1",
-          learner_id: "l1",
-          created_at: "2026-10-06T03:00:00Z",
-          last_active_at: "2026-10-06T03:30:00Z",
-          course_ref: "4CH1",
-        },
-      ] }),
-      fixedClock,
-    );
+  test("append persists the bound user turn + the stripped, bound assistant turn (:268-269, :281-287)", async () => {
+    // T-MIG-070 nit-6 rider: the append law is now PINNED, not just exercised
+    // — the user turn is bound-and-trimmed (NO citation strip on the user
+    // side), the assistant turn is bound(stripCitationMarkers(answer)) — a
+    // stored transcript renders as the learner-visible prose.
+    const inserts: Array<{ text: string; params: unknown[] }> = [];
+    const fn = (async (strings: TemplateStringsArray, ...params: unknown[]) => {
+      const text = strings.join("?");
+      if (text.includes("insert into tutor_session_turns")) inserts.push({ text, params });
+      if (text.includes("select id, learner_id")) {
+        return [
+          {
+            id: "s1",
+            learner_id: "l1",
+            created_at: "2026-10-06T03:00:00Z",
+            last_active_at: "2026-10-06T03:30:00Z",
+            course_ref: "4CH1",
+          },
+        ];
+      }
+      return [];
+    }) as unknown as SqlFn;
+    const store = buildTutorSessionStore(fn, fixedClock);
     await store.append("l1", {
       sessionId: "s1",
-      question: "what is a mole?",
+      question: "  what is a mole?  ",
       answer: "A mole [1] is a unit 【2】 of amount.",
       evidenceCount: 2,
       refused: false,
@@ -524,6 +548,49 @@ describe("tutor session store (§22 laws)", () => {
       latencyMs: 12.5,
       courseRef: "4CH1",
     });
+    expect(inserts.length).toBe(2); // the user turn and the assistant turn save together
+    const userTurn = inserts[0]?.params ?? [];
+    const assistantTurn = inserts[1]?.params ?? [];
+    expect(userTurn[2]).toBe("user");
+    expect(userTurn[3]).toBe("what is a mole?"); // bound() trims; user side stays verbatim
+    expect(assistantTurn[2]).toBe("assistant");
+    expect(assistantTurn[3]).toBe("A mole is a unit of amount."); // the :268-269 strip law
+  });
+
+  test("the stored assistant content binds at 4000 chars with the ellipsis (:281-287)", async () => {
+    const inserts: Array<{ text: string; params: unknown[] }> = [];
+    const fn = (async (strings: TemplateStringsArray, ...params: unknown[]) => {
+      const text = strings.join("?");
+      if (text.includes("insert into tutor_session_turns")) inserts.push({ text, params });
+      if (text.includes("select id, learner_id")) {
+        return [
+          {
+            id: "s1",
+            learner_id: "l1",
+            created_at: "2026-10-06T03:00:00Z",
+            last_active_at: "2026-10-06T03:30:00Z",
+            course_ref: "4CH1",
+          },
+        ];
+      }
+      return [];
+    }) as unknown as SqlFn;
+    const store = buildTutorSessionStore(fn, fixedClock);
+    await store.append("l1", {
+      sessionId: "s1",
+      question: "q",
+      answer: "x".repeat(4100),
+      evidenceCount: 0,
+      refused: false,
+      model: "m",
+      provider: "p",
+      latencyMs: 1,
+      courseRef: null,
+    });
+    const assistantTurn = inserts[1]?.params ?? [];
+    const stored = assistantTurn[3] as string;
+    expect(stored.length).toBe(4000 + 1); // 4000 chars + the ellipsis suffix
+    expect(stored.endsWith("…")).toBe(true);
   });
 });
 

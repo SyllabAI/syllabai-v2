@@ -41,9 +41,12 @@
  *     countServableByTopic (activeByTopic().size()).
  *   - The decay/BDT pure math (bandOf / decayedMastery / relaxedToPrior) is
  *     ported LOCALLY under the per-module structural-seam doctrine (the
- *     same posture as tranche-1's ExamTargetReader copy) — r7a's 041
- *     exports the identical math from services/learner/state.ts; R0 is
- *     asked to rule on ONE canonical home for both at intake.
+ *     same posture as tranche-1's ExamTargetReader copy) — RULED OF RECORD
+ *     (T-MIG-066, the 043 consolidation band, merged via PR #106): ONE
+ *     canonical owner now exists for the learner-model laws
+ *     (services/learner-model), and this module consumes the consolidated
+ *     exports; the local copies below remain the disclosed per-module
+ *     structural-seam posture pending the 066 consolidation follow-through.
  *   - The engine's now comes from the injected clock (the frozen service
  *     calls Instant.now() internally; the port's injected clock is the
  *     disclosed determinism deviation — same law the rest of this module
