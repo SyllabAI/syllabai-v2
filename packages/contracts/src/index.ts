@@ -35,5 +35,6 @@ export * from "./classroom"; // T-MIG-052 (r9-hubx) — Wave-5 classes+rosters w
 export * from "./knowledge"; // T-MIG-053 (r3a) — Wave-5 KG+coverage wire, tranche-1 (OUT-OF-FENCE-flagged one-liner, 010/034/043-t1/052 precedent)
 export * from "./tutor"; // T-MIG-060 (w0a) — Wave-6 tutor+sessions wire (same-lane contracts-first precedent 033/043/049)
 export * from "./intervention"; // T-MIG-061 (r9-hubx) — Wave-6 intervention-run wire (OUT-OF-FENCE-flagged one-liner, 010/034/043-t1/052/053 precedent)
+export * from "./teacher"; // T-MIG-053 (r3a) — Wave-5 teacher analytics+concept-graph wire, tranche-2 (OUT-OF-FENCE-flagged one-liner, 010/034/043-t1/052/053-t1 precedent)
 export * from "./research"; // T-MIG-062 (R4-api-b) — Wave-6 research calibration wire (OUT-OF-FENCE-flagged one-liner, 010/034/043-t1/052/053/061 precedent)
 export * from "./cla"; // T-MIG-067 (w0a) — Wave-6 CLA wire (OUT-OF-FENCE-flagged one-liner, 010/034/043-t1/052/053/061/062 precedent)

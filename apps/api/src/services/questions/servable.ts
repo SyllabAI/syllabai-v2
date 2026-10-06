@@ -50,12 +50,15 @@ interface QuestionRow {
   active: boolean;
 }
 
-/** Option row — student view strips correct/misconception (Master Spec §20). */
+/** Option row — student view strips correct/misconception (Master Spec §20).
+ * The row key is option_text (the real column, schema.ts:170) — the WIRE
+ * shape below keeps its text field (R-067-A: the port's phantom "o.text"
+ * 42703'd on every seeded read — RICH-200-D). */
 interface OptionRow {
   id: string;
   question_id: string;
   label: string;
-  text: string;
+  option_text: string;
   ordering: number;
 }
 
@@ -141,7 +144,7 @@ export class ServableQuestions {
     const byQuestion = new Map<string, OptionRow[]>();
     if (questionIds.length === 0) return byQuestion;
     const rows = (await this.sql`
-      select o.id, o.question_id, o.label, o.text, o.ordering
+      select o.id, o.question_id, o.label, o.option_text, o.ordering
       from question_options o
       where o.question_id = any(${questionIds}::uuid[])
       order by o.question_id, o.ordering`) as unknown as OptionRow[];
@@ -303,7 +306,7 @@ export class ServableQuestions {
     version: CurrentVersion | null,
     options: OptionRow[],
   ): StudentQuestionView | null {
-    const optionViews = options.map((o) => ({ id: o.id, label: o.label, text: o.text }));
+    const optionViews = options.map((o) => ({ id: o.id, label: o.label, text: o.option_text }));
     if (q.question_type !== "STRUCTURED") {
       if (!isServable(q, null)) return null;
       return {

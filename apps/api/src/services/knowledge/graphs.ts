@@ -385,7 +385,10 @@ function bandCounts(effective: number, decay: LearnerDecayParams): "LOW" | "DEVE
  * BOTH endpoints inside. Returns the DRAWABLE relations already mapped
  * target→prerequisite / source→dependent.
  */
-async function prerequisiteRelations(
+/** Exported for the t2 teacher band (weakPrerequisites reuses the SAME
+ *  drawable-relation derivation — reuse-not-redeclare, the 041/043
+ *  machinery-reuse precedent). */
+export async function prerequisiteRelations(
   deps: KnowledgeDeps,
   rootId: string,
   structure: ClassStructure | null,
