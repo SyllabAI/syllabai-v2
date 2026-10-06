@@ -1,5 +1,5 @@
 {
-  "task": "T-MIG-067",
+  "task": "T-MIG-069",
   "run": "run-002-tranche1a",
   "date": "2026-10-06",
   "lane": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
@@ -17,5 +17,11 @@
     "bun_test": "apps/api packages: 1371 pass / 0 fail / 13 skip / 4687 expect across 72 files = the claim base 2a0b18d (1332/0/13skip/4558 across 70) +39 tests/+129 expects/+2 files EXACT — both files new, zero existing-test touches (git diff --stat proof; the baseline worktree run was invalidated by the sandbox's node_modules layout and replaced by the diff-only delta proof)",
     "golden_selftest": "OK (--selftest: tolerance engine behaves incl. declared-unordered multiset)"
   },
-  "next": "t1b = ClaContextResolver line-against-line (the curriculum spine + spec-code resolution + the two assessment anchors over ServableQuestions + the 404-indistinguishability laws) for the four dependency-landed kinds; t2 = ClaService orchestration + routes/cla.ts + ClaAnswerView assembly + the event posture + the OUT-OF-FENCE mount + PR with id ratification request"
+  "next": "t1b = ClaContextResolver line-against-line (the curriculum spine + spec-code resolution + the two assessment anchors over ServableQuestions + the 404-indistinguishability laws) for the four dependency-landed kinds; t2 = ClaService orchestration + routes/cla.ts + ClaAnswerView assembly + the event posture + the OUT-OF-FENCE mount + PR with id ratification request",
+  "refile_provenance": {
+    "original_id": "T-MIG-067",
+    "refiled_to": "T-MIG-069",
+    "authority": "R0-arbitration ruling2 (.syllabai/receipts/R0-arbitration/ruling2-t-mig-067-triple-claim.json, landed c78ed9a): earliest-claim-wins — 067 to the RICH-200-D fix (f8e78f4 05:57:09Z, merged cdce05e via #107); the CLA band ordered refiled under the next free id per the T-MIG-048->050 precedent; branch name ruled cosmetic",
+    "refiled_at": "2026-10-06, operator trace 1a10fea97de5d819"
+  }
 }

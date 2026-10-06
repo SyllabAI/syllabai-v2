@@ -1,9 +1,9 @@
 version: 1
 task:
-  id: T-MIG-067
+  id: T-MIG-069
   title: "Wave-6 CLA (contextual assistant) — POST /api/v1/learners/me/cla/ask: the ClaService deterministic orchestration (context resolution, tool registry, leakage policy, grounded-evidence citation plumbing) over the ALREADY-PORTED tutor chain + the dormant generator seam (tutor posture)"
   owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — operator directive trace 1a10fbe9465708c9 'Check if R0 has merged or not. If not, review+merge yourself and continue working': the merge half executed of record (T-MIG-060 #104 merged 6580b2c) and 'continue working' executes the standing claim directive trace 1a10d2c88b6f13c5 — claims the CLA band, the next unfiled Wave-6 surface (docs/MIGRATION_PLAN.md §5 Wave 6 lists 'CLA' explicitly; 060=tutor+sessions, 061=intervention, 062=research calibration are filed; CLA is not). Id ratification requested at PR review (030/032/039/040-PREP/041/043/060 precedent)"
-  status: IN_PROGRESS # tranche-1a LANDED on t-mig-067/w0a (contracts + context port + leakage gate + tool registry, 39 pins); t1b = the context resolver; t2 = service + route + mount
+  status: IN_PROGRESS # REFILED T-MIG-067 -> T-MIG-069 per R0-arbitration ruling2 (c78ed9a) — the 067 id went to the earliest claimant (RICH-200-D, merged cdce05e via #107); tranche-1a LANDED on t-mig-067/w0a (branch name cosmetic per the ruling; contracts + context port + leakage gate + tool registry, 39 pins); t1b = the context resolver; t2 = service + route + mount
   priority: P1
   wave: 6
   deps: [T-MIG-060, T-MIG-041, T-MIG-053] # the tutor chain services + ServableQuestions (060, this lane); LearnerModelService misconceptions (041); the knowledge graph service (053 family) — all on main at claim time
@@ -72,6 +72,26 @@ task:
     t4 (smart lesson) landing (r3a's tranches); the frozen controller law
     "kinds not served by the current runtime step are a 400 (closed enum)"
     is the serving mechanism for the deferral, disclosed at PR.
+    (refile entry 2026-10-06T07:0xZ, operator trace 1a10fea97de5d819) ID
+    REFILE EXECUTED of record: T-MIG-067 was triple-claimed within minutes
+    (r0 RICH-200-D f8e78f4 05:57:09Z; this lane e11e8ea 06:00:05Z; the
+    triage umbrella bc521b3 06:00:42Z) and R0-arbitration ruling2
+    (.syllabai/receipts/R0-arbitration/ruling2-t-mig-067-triple-claim.json,
+    landed c78ed9a) ruled earliest-claim-wins: 067 = RICH-200-D (merged
+    cdce05e via #107), the umbrella mechanically refiled 068 by R0, and
+    THIS BAND ordered refiled under the next free id "T-MIG-069 unless
+    taken, per the T-MIG-048→050 refile precedent" — the CLA WORK itself
+    ruled unaffected (the denial is id-only, scan-vs-push race class: the
+    @2a0b18d zero-collision scan could not see r0's unpushed branch).
+    Refile executed at the register level exactly as ruled: card git-mv'd
+    to T-MIG-069-cla-ask.yaml (this file), receipts dir T-MIG-067 ->
+    T-MIG-069 with run task fields updated + refile provenance added, the
+    branch name t-mig-067/w0a kept ("rename optional, cosmetic; the yaml
+    id is what the register reads" — ruling verbatim), 069 free-state
+    re-verified at origin/main 00831a6 (0 x 069 yamls/heads; the two
+    worklog mentions are the ruling's own earmark + the r9-hubx routing
+    suggestion). Id ratification STILL requested at PR review per the
+    030/032/039/040-PREP/041/043/060 precedent.
   base:
     repo: "syllabai-v2 @ 2a0b18d at claim time (the 060 bookkeeping head); frozen refs: syllabai-core @ 6cad6ef"
   basis: >
@@ -87,9 +107,9 @@ scope:
     - "apps/api/src/routes/cla.ts (new, tranche-2)"
     - "apps/api/test/** (this band's pins only)"
     - "packages/contracts/src/cla.ts + cla.test.ts (new; same-lane contracts-first precedent, R1 coordination flagged at PR review)"
-    - ".syllabai/tasks/T-MIG-067-cla-ask.yaml (status/execution_record only)"
+    - ".syllabai/tasks/T-MIG-069-cla-ask.yaml (status/execution_record only)"
     - ".syllabai/worklog.md (append-only)"
-    - ".syllabai/receipts/T-MIG-067/**"
+    - ".syllabai/receipts/T-MIG-069/**"
   forbidden:
     - "packages/db/** (R2's lane — zero CLA tables needed; the event rides the 061 telemetry posture)"
     - "apps/hub/** (R5's lane)"

@@ -3544,3 +3544,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-067 t1a LANDED on t-mig-067/w0a. Next: t1b (the context resolver for the four dependency-landed kinds — the 404-indistinguishability laws) then t2 (ClaService + route + mount + PR). Zero golden/Neon/force.
+
+---
+Task ID: T-MIG-069 (refile)
+Agent: lane w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Operator trace 1a10fea97de5d819 "Check if R0 has merged or not. If not, review+merge yourself and continue working" — R0-state verification + execution of the R0-arbitration ruling2 refile order (T-MIG-067 CLA band -> T-MIG-069).
+
+Work Log:
+- R0 state verified ACTIVE of record: the desk merged #107 -> cdce05e (the RICH-200-D fix) and #108 -> d794dd5 (053-t2) the same morning, plus the baseline-ratification chain; 060's own #104 had already merged 6580b2c. Nothing of w0a's has an open PR — the self-merge conditional did NOT fire and was not needed.
+- Board event absorbed: T-MIG-067 was TRIPLE-CLAIMED within minutes (r0 RICH-200-D f8e78f4 05:57:09Z; this lane's CLA claim e11e8ea 06:00:05Z; the triage umbrella bc521b3 06:00:42Z). R0-arbitration ruling2 (landed c78ed9a) ruled earliest-claim-wins: 067 = RICH-200-D; the umbrella mechanically refiled 068 by R0; THIS BAND ordered refiled under the next free id per the T-MIG-048->050 precedent, the CLA WORK ruled unaffected (denial is id-only — the scan-vs-push race: our @2a0b18d scan could not see r0's unpushed branch). Accepted without dispute; root cause acknowledged as a known pattern for AGENT_COORDINATION §7.
+- REFILE EXECUTED at the register level exactly as ruled: card git-mv'd T-MIG-067-cla-ask.yaml -> T-MIG-069-cla-ask.yaml (id flipped, status/scope updated, refile entry appended to execution_record); receipts dir T-MIG-067 -> T-MIG-069 (run-001/run-002 task fields updated + refile_provenance blocks, historical narratives verbatim); run-003-refile.json filed; branch name t-mig-067/w0a KEPT (ruling: rename optional, cosmetic — the yaml id is what the register reads).
+- 069 free-state re-verified at origin/main 00831a6 before the flip: 0 x 069 yamls/heads; the only 2 worklog mentions are the ruling's earmark + r9-hubx's routing suggestion. No competing claim.
+- PR #109 (t-mig-067/r0r6, the seeded-posture umbrella work) noted in flight — NOT this lane's band (068 umbrella); zero overlap with the CLA surface; untouched.
+
+Stage Summary:
+- T-MIG-069 is the register id of record for the Wave-6 CLA band. Tranche-1a remains landed (c30581b); the refile is register-level only, zero code touched. Next: intake origin/main -> gates -> push; then tranche-1b (ClaContextResolver, the four dependency-landed kinds) -> tranche-2 (ClaService + route + mount) -> PR as T-MIG-069 with id-ratification request. Zero golden/Neon/force.
