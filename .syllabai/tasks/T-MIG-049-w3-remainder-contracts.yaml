@@ -1,6 +1,6 @@
 version: 1
 task:
-  id: T-MIG-037
+  id: T-MIG-049
   title: "W3-remainder zod contracts — port the teacher-marking, test-builder and
     transcription DTO surfaces constraint-for-constraint into
     packages/contracts (teacher-marking: TeacherMarkingController +
@@ -118,6 +118,35 @@ task:
     0–<n>") on top of the 0..99 binding cap — port must keep both; F3
     SmartMarkBatchRequest duplicates are binding-legal (service dedups
     order-preservingly, requested=deduped count).
+RENUMBER (2026-10-06, R0-REPAIR-3 / round-10 lane r0s, session
+    web-752465e5-2985-476b-86a3-0bf785493dc5): id T-MIG-037 -> T-MIG-047
+  — duplicate-id repair per AGENT_COORDINATION §2.1 earliest-claim-wins:
+    the hub dual-run expansion card claimed 037 FIRST (claim commit b12b5b3
+    @ 2026-10-05 15:34) and this contracts card claimed second (5929c4b @
+    15:48), so the hub card RETAINS 037 and this card yields to the next
+    free id (045 is burned by the retained t-mig-045/r4b evidence branch —
+    R4-api-b PR #61 terminal disposition; 046 taken by the neon-branch fix).
+    Mechanics per the R0-REPAIR-1/2 + T-MIG-016 precedents: yaml renamed
+    (id flip + scope.allowed self-paths re-pointed; this paragraph is the
+    only record edit — historical prose above reads T-MIG-047 under the
+    renumber); receipts moved byte-identical (run-001.json sha256
+    316dad3fde4c5a31d7e910b5997ca3f4cf6a930e625a1afaef68ce170e156096
+    verified before/after); hub artifacts (run-001-dual-run-expansion.json
+    + rig/) remain under T-MIG-037/; live pointer repaired in
+    T-MIG-038 deps (018,037 -> 018,047); 6 contracts header comments
+    renumbered (comment-only); worklog entries NEVER touched (append-only
+    history). Timeline receipt: .syllabai/receipts/T-MIG-047/run-002-renumber.json.
+RENUMBER AMENDMENT (2026-10-06, R0s-ROUND-10a): id target 047 -> 049.
+    The original renumber paragraph above assigned 047; the concurrent
+    R0-integrator lane (session web-1f157e25) had claimed T-MIG-047 for
+    the replay-evidence-preservation instrument fix at 2026-10-05T18:35:00Z
+    (merged 9a97de8 via PR #73, DONE, operator trace 1a10d465caf49f99)
+    while this repair was in PR flight. AGENT_COORDINATION §2.1
+    earliest-claim-wins: 047 = replay-evidence-preservation stands;
+    this card retargets to the next free id T-MIG-049 (048 is claimed by
+    this lane's T-MIG-048 neon-branch redaction card, commit 8df666e).
+    Mechanics re-run unchanged; receipts re-moved byte-identical; the
+    timeline of record is .syllabai/receipts/T-MIG-049/run-002-renumber.json.
 scope:
   allowed:
     - "packages/contracts/src/teacher-marking.ts"
@@ -127,8 +156,8 @@ scope:
     - "packages/contracts/src/transcription.ts"
     - "packages/contracts/src/transcription.test.ts"
     - "packages/contracts/src/index.ts (export lines only)"
-    - ".syllabai/tasks/T-MIG-037-w3-remainder-contracts.yaml (this file — status/execution_record only)"
-    - ".syllabai/receipts/T-MIG-037/**"
+    - ".syllabai/tasks/T-MIG-049-w3-remainder-contracts.yaml (this file — status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-049/**"
     - ".syllabai/worklog.md (append-only; process artifact per AGENT_COORDINATION §5)"
   forbidden:
     - "apps/** (033/r4 PR #50 owns the marking port; 031 tranche PR #52 in flight)"

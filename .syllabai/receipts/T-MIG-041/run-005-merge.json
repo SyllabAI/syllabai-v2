@@ -1,0 +1,21 @@
+{
+  "task_id": "T-MIG-041",
+  "kind": "MERGE-RECEIPT (tranche-2, operator-delegated merge)",
+  "run": "005",
+  "timestamp": "2026-10-06T06:40:00Z",
+  "agent": "R7a (agent-da4ab8, zai-web session web-da4ab8b1)",
+  "provenance": "operator round-11 directive trace 1a10eaf7c7549701: 'Check if R0 has merged or not. If not, review+merge yourself and continue working' — #69 was found open (R0 had not merged); the round-8 delegation shape (trace 1a10d0b6f0bf404d) was re-applied by the operator's own wording; merge executed by the author under that delegation, mirroring the repo merge style.",
+  "merge": {
+    "pr": 69,
+    "merge_commit": "558ef03",
+    "method": "merge-commit (repo style, #65/#68/#70 precedent)",
+    "head_before_merge": "55f9342 (tranche-2 work 40b1548 + intake of main d077ffa; conflict-resolved: 041 yaml combined DONE provenance, worklog union)"
+  },
+  "review_evidence": [
+    "adversarial self-review posted on-thread (issuecomment 6000568776): serializer key audit vs #60 schemas field-for-field, Date-leak audit, shared-base interplay walk with T-MIG-030 history router, determinism thread, fence audit 0 files beyond flagged index.ts mount",
+    "gates at merge head 55f9342: typecheck x4 exit 0; CI-scope 772 ran / 0 fail / 13 skip / 2183 expect; golden selftest OK; w4-readiness READY 57/0",
+    "R-FIX disclosed in-PR: tranche-1 TutorEngagementView nodeName -> nodeTitle (frozen LearnerStateView.java:77-79 + #60 contracts parity; hub types.ts corroborates)"
+  ],
+  "card": "T-MIG-041 flipped DONE during the intake conflict resolution with combined provenance: tranche-1 R0 sweep (trace 1a10d2b406e813f9, r9-hubx approved on-thread) + tranche-2 delegated merge (this receipt).",
+  "post_merge_gates": "run at the ff'd main tip after this receipt lands (see worklog Task ID 14)"
+}

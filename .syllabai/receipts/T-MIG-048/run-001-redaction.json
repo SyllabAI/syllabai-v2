@@ -1,0 +1,35 @@
+{
+ "task": "T-MIG-048",
+ "run": "run-001-redaction",
+ "agent": "r0s (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "date": "2026-10-06",
+ "directive": "Operator standing 'review+merge yourself / continue working' (trace 1a10d35bead06d61); PAT persistence directive honored (token staged 0600 outside every repo, referenced by path, never by value)",
+ "base": "origin/main 08f104d",
+ "branch": "t-mig-048/r0s",
+ "head": "see push",
+ "frozen_ref": "syllabai-core @ 6cad6ef (not read for this fix — CI tool, no port surface)",
+ "finding": {
+  "id": "N-A (round-8 stand-in review, pre-compaction) re-verified @ 08f104d",
+  "class": "public-artifact secret-hygiene (briefing §0 credential law / golden scrub doctrine)",
+  "sites": [
+   "createOne seed create fail-path: raw body .slice(0,400) into Error message",
+   "createOne prod create fail-path: same",
+   "createOne role-create fail-path: same (role-create bodies can carry role material)",
+   "create() catch: re-emitted any message into console.error = PUBLIC Actions log",
+   "neonFetch unreachable-base log: (e as Error).message unsanitized (defense-in-depth site)"
+  ],
+  "urgency": "the daily 02:30 UTC schedule runs this tool; with the project at the branch cap (register item 1) the 422 prod create-failure is the EXPECTED path — redaction must precede the next dispatch"
+ },
+ "fix": {
+  "id": "R-048-A",
+  "deliverable": "golden/tools/neon-branch.ts — scrub() (credential-shaped pattern stripping: postgres:// URIs, JWTs, token/secret/key assignments, emails; 400 cap) + redactBody() (JSON message field or byte size; '<empty body>'; never raw text) applied at all five sites; HTTP status codes verbatim; success paths/drop mode/404-verify/workflow keys byte-unchanged",
+  "harness": "helpers proven live via a stripped-dispatch copy of the shipped file (head -n -7, helpers re-exported; harness outside every repo tree under scripts/) — 8/8 assertions PASS: json-message, json-message-scrub (password/token redacted inside message), non-json (byte-size only, no raw text), empty, uri-scrub, jwt-scrub, email-scrub, plain-passthrough",
+  "usage_smoke": "bun golden/tools/neon-branch.ts (no args) -> usage line + exit 1, byte-unchanged behavior"
+ },
+ "gates": {
+  "typecheck_x4": "exit 0 (packages/contracts, packages/shared, packages/db, apps/api)",
+  "suite": "764 ran / 751 pass / 0 fail / 13 skip / 2121 expect (= R0-ROUND-10 post-merge main EXACT: 712 base + 23 #64 + 7 intake + 22 #65; zero test delta — golden/tools is outside every suite glob)",
+  "golden_selftest": "OK (tolerance engine incl. declared-unordered multiset)"
+ },
+ "register_note": "NEON_BRANCH_CAPACITY (R0-REGISTER-1 item 1) remains the operator decision blocking the maiden successful dispatch; this fix guarantees its failure mode is now log-safe."
+}
