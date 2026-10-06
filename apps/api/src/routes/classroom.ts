@@ -55,11 +55,14 @@
  *     400 bad_request "malformed request" (:169-172 — the teachermarking
  *     parseUuid parity).
  *   - Request bodies follow the TWO-ENVELOPE law (the selfmark/assessment/
- *     teachermarking convention, R0 intake fix R-1): unreadable body →
- *     400 malformed_body "request body is not readable (check field types
- *     and enum values)" (:175-179 verbatim); a well-formed body failing a
- *     jakarta constraint → 400 validation_failed "field: message" with the
- *     FIRST field error (:158-165) — @NotBlank renders "must not be blank",
+ *     teachermarking convention, R0 intake fix R-1): unreadable body OR a
+ *     binding-class failure (wrong JSON type / format parse) → 400
+ *     malformed_body "request body is not readable (check field types and
+ *     enum values)" (:175-179 verbatim — binding beats every constraint:
+ *     Jackson binds the whole document first, T-MIG-059); a well-formed
+ *     body failing a jakarta constraint → 400 validation_failed "field:
+ *     message" with the FIRST field error (:158-165) — @NotBlank renders
+ *     "must not be blank" (also on a null/absent bind, T-MIG-059 F-1),
  *     @Size(max=N) renders "size must be between 0 and N" (jakarta default
  *     messages). Schemas from @syllabai/contracts classroom (T-MIG-052
  *     tranche 1: constraints copied exactly; the service-level parse laws —
@@ -70,6 +73,14 @@
  *     jakarta message this classifier surfaces) and `category` is nullish
  *     (explicit JSON null binds like absent → the service parses GENERAL →
  *     the frozen 201).
+ *     T-MIG-059 amendment (F-0/F-1 of the #89 findings of record, comment
+ *     6008621186; the closed #90 classifier adopted with credit): a
+ *     BINDING-class failure (invalid_type with received ∉ {undefined,
+ *     null}; invalid_string) answers 400 malformed_body verbatim — Jackson
+ *     binds the whole document BEFORE @Valid, so binding beats every
+ *     constraint; a null/absent bind on a @NotBlank property renders the
+ *     jakarta default "field: must not be blank" (the JSON-null root keeps
+ *     the disclosed "request invalid" posture).
  *
  * Scope honesty: the learner router owns EXACTLY the three paths under
  * /api/v1/learners/me/classroom — the rest of the learner-me band stays
@@ -134,11 +145,40 @@ async function readJsonBody(c: Context): Promise<{ ok: true; value: unknown } | 
   }
 }
 
-/** First-field-error jakarta rendering (:158-165). Zod issues are ordered by
- *  schema field order — the same "first" Spring's BindingResult surfaces. */
-function validationMessage(error: ZodError): string {
+type BodyError = { kind: "malformed" } | { kind: "validation"; message: string };
+
+/**
+ * The full two-envelope classifier (T-MIG-059: F-0/F-1 of the #89 findings
+ * of record, comment 6008621186; prior art adopted from the closed #90
+ * branch t-mig-052/r0-t2 @ 6e9bfcf — classifyBodyError :121/:136-137 —
+ * reshaped onto the merged file layout; the fleet convention per
+ * teachermarking :129 and selfmark :59).
+ *
+ * F-0 binding-class law: Jackson binds the WHOLE document BEFORE @Valid,
+ * so a binding failure ANYWHERE beats every constraint on the body — any
+ * invalid_type with received ∉ {undefined, null} (wrong JSON type) and any
+ * invalid_string (format parse, Jackson InvalidFormat — defensive here:
+ * the classroom schemas carry no format checks) answers 400 malformed_body
+ * verbatim.
+ *
+ * F-1 constraint-rendering law: null/undefined BIND fine (nulls are handed
+ * to the record), so their rejection is @NotBlank — a CONSTRAINT — and the
+ * first-field rendering (:158-165, getDefaultMessage()) serves the jakarta
+ * default "field: must not be blank". The empty path is the JSON-null ROOT
+ * — the disclosed 400-not-500 posture ("request invalid", the :163 orElse).
+ */
+function classifyBodyError(error: ZodError): BodyError {
+  const isBinding = (i: ZodError["issues"][number]): boolean => {
+    if (i.code === "invalid_string") return true;
+    if (i.code === "invalid_type") {
+      const received = (i as { received?: string }).received;
+      return received !== "undefined" && received !== "null";
+    }
+    return false;
+  };
+  if (error.issues.some(isBinding)) return { kind: "malformed" };
   const first = error.issues[0];
-  if (!first) return "request invalid";
+  if (!first) return { kind: "validation", message: "request invalid" };
   const field = first.path.reduce<string>(
     (acc, seg) => (typeof seg === "number" ? `${acc}[${seg}]` : acc ? `${acc}.${seg}` : String(seg)),
     "",
@@ -146,23 +186,33 @@ function validationMessage(error: ZodError): string {
   if (first.code === "too_small") {
     // defensive — no bare min() remains on the classroom schemas (the
     // T-MIG-056 notBlank refine owns blank detection); kept for drift
-    return `${field}: must not be blank`;
+    return { kind: "validation", message: `${field}: must not be blank` };
   }
   if (first.code === "custom") {
     // the @NotBlank refine reports as a `custom` issue carrying its own
     // jakarta default message — surface it verbatim (first-field law,
     // :158-165 renders getDefaultMessage())
-    return `${field}: ${first.message ?? "request invalid"}`;
+    return { kind: "validation", message: `${field}: ${first.message ?? "request invalid"}` };
   }
   if (first.code === "too_big") {
     const maximum = (first as { maximum: number }).maximum;
-    return `${field}: size must be between 0 and ${maximum}`;
+    return { kind: "validation", message: `${field}: size must be between 0 and ${maximum}` };
   }
-  return `${field}: request invalid`;
+  if (first.code === "invalid_type") {
+    // F-1: @NotBlank(null/absent) — the jakarta default; the empty path is
+    // the JSON-null root (disclosed 400-not-500, "request invalid")
+    return {
+      kind: "validation",
+      message: field === "" ? "request invalid" : `${field}: must not be blank`,
+    };
+  }
+  return { kind: "validation", message: `${field}: request invalid` };
 }
 
 function bodyErrorResponse(c: Context, error: ZodError): Response {
-  return c.json(apiError(400, "validation_failed", validationMessage(error)), 400);
+  const verdict = classifyBodyError(error);
+  if (verdict.kind === "malformed") return c.json(malformedBody(), 400);
+  return c.json(apiError(400, "validation_failed", verdict.message), 400);
 }
 
 /** Shared domain-error mapping (the 032/033 router pattern): the tranche-1
