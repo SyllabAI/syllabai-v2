@@ -3959,3 +3959,79 @@ Work Log:
 Stage Summary:
 - The four open operator items are RULED and ROUTED of record: no decision is pending on the register anymore — the executable residue is T-MIG-071 + T-MIG-072 (both OPEN for the lanes) plus the standing case-owner/tooling items. Projected clearing unchanged: 177/177 reachable, zero deletions, zero comparator widenings. Desk IDLE; suggestion: the lanes claim 071/072 per earliest-claim-wins, or the operator routes them explicitly.
 - T-MIG-073 run-003 (REFILE of the T-MIG-071 claim): the id was lost to r0's ruling3 filing per earliest-claim-wins — r0 committed the 071 card (operator-ruling-case-amendments, a DIFFERENT band, zero scope overlap) on main @ 07:18:16Z, 3 minutes before this lane's claim commit 00f457f @ 07:21:06Z; the ruling2 scan-vs-push race disposition controls (the earlier claim takes the id). git-mv card + receipts 071->073 with provenance; ids updated in the schema header, the two contracts pins, the two selfmark service pins, and the smartmark wire pin; 073 verified free @ origin/main 6347b1a. The superseded t-mig-071/r1 branch name stays on origin (cosmetic per ruling2 — no force-push). Intake of 6347b1a landed first (worklog-tail add/add union, 1 hunk, 249 Task sections alive, asserts A1/A3/A4). Band content unchanged; gates re-verified below before push.
+Task ID: T-MIG-067 (claim)
+Agent: lane w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: The 'continue working' half of operator trace 1a10fbe9465708c9 (the merge half is worklog Task 5) — claim the next unfiled Wave-6 surface per the standing claim word trace 1a10d2c88b6f13c5.
+
+Work Log:
+- Free-band census after the #104 merge: 050..066 ALL owned (DONE x10: 050/051/052/054/055/056/059/060/062/063; in-flight x6: 057 r4b, 058 r1, 061 r9-hubx, 064 r1, 065 r0, 053 r3a; 066 open on r1's #106). Zero 067+ ids anywhere. docs/MIGRATION_PLAN.md §5 Wave 6 re-read: the surface list is 'tutor + sessions, CLA, intervention runs, LLM admin, research calibration, OCR ingestion, routing' — CLA is the only unfiled member that is deterministic-heavy AND seam-adjacent to this lane's landed 060.
+- CLAIMED T-MIG-067 (POST /api/v1/learners/me/cla/ask): frozen surface mapped from syllabai-core @ 6cad6ef — ClaController :36-101 (one endpoint), ClaService :906 ln, ClaContextResolver :492, ClaToolRegistry :203, ClaLeakagePolicy :88, dto/ClaAnswerView :121, ClaInteractionEvent :67 (ApplicationEventPublisher :422 -> LIM surface=CONTEXTUAL_ASSISTANT; zero new tables, ADR-031 intact); frozen tests 1022/574/218/965 ln are the pin source.
+- Dependency audit: consumes services/tutor/** + knowledge + learner model + assessment repos + ServableQuestions — ALL already on main (060/041/053 families); NO edits to landed fences; the generator seam is the tutor's dormant 503 posture (R-LLM honoured).
+- Zero-collision scan immediately before branch cut @ origin/main 2a0b18d: 0 remote 067+ heads, 0 yamls, 0 worklog mentions, open PRs = #106 only. Branch t-mig-067/w0a cut; card T-MIG-067-cla-ask.yaml + run-001-claim.json + this entry = the claim commit (claim-in-first-commit).
+- Tranche plan filed: t1 = contracts + leakage policy + tool registry + context resolver; t2 = service orchestration + route + view + event posture + mount (OUT-OF-FENCE, separate commit) + PR.
+
+Stage Summary:
+- T-MIG-067 CLAIMED on t-mig-067/w0a @ 2a0b18d base. The band closes the Wave-6 CLA surface over this lane's own 060 seam. Remaining unfiled Wave-6 members for other claimants: LLM admin (LlmAdminController), OCR ingestion (GlmOcrIngestionController), routing (RoutingController) — all zero-claim at census time. Id ratification will be requested at PR (060 precedent). Zero golden/Neon/force.
+
+---
+Task ID: T-MIG-067 (tranche-1a)
+Agent: lane w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: T-MIG-067 tranche-1a — the deterministic CLA core (contracts + context port + leakage gate + tool registry) on the claimed branch.
+
+Work Log:
+- Read the full frozen surface line-against-line (6cad6ef): ClaLeakagePolicy (:1-88), ClaToolRegistry (:1-203), ResourceContext (:62-235), ResponseMode, AttemptRequiredException, ClaContextResolver (:1-492), ClaAnswerView, ClaController (:36-101) — the pin laws named per line in code headers.
+- Dependency audit of record: the tutor chain + ServableQuestions + knowledge reads + learner-state reads are ALL on main (060/041/053-t1 families); SMART_LESSON + NOTE_SECTION branches DEFER (gated on 053 t3 notes / t4 smart lesson — r3a's in-flight tranches); the deferral rides the frozen controller law "kinds not served by the current runtime step are a 400 (closed enum, §1)" — disclosed, never silent.
+- Tranche-1a implemented: contracts/cla.ts (+16 pins, index one-liner per precedent), services/cla/context.ts, services/cla/leakage-policy.ts, services/cla/tool-registry.ts (+23 api pins over the shared param-aware fakeSql). REUSE-not-redeclare: 053's KG reads + the tutor LearnerModelPort + the shared fakeSql helper; zero new KG/learner SQL.
+- Gates: typecheck x4 exit 0; bun test apps/api packages 1371/0/13skip/4687 across 72 files = claim base (1332/4558/70f @ 2a0b18d) +39/+129/+2 EXACT (git diff --stat proof: only the two new test files touch tests); golden --selftest OK. Two real port catches fixed en route (the noUncheckedIndexedAccess pins; the Route.rows required field) — no behavioral drift.
+- Card -> IN_PROGRESS + t1a execution_record entry + run-002-tranche1a.json + this entry.
+
+Stage Summary:
+- T-MIG-067 t1a LANDED on t-mig-067/w0a. Next: t1b (the context resolver for the four dependency-landed kinds — the 404-indistinguishability laws) then t2 (ClaService + route + mount + PR). Zero golden/Neon/force.
+
+---
+Task ID: T-MIG-069 (refile)
+Agent: lane w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Operator trace 1a10fea97de5d819 "Check if R0 has merged or not. If not, review+merge yourself and continue working" — R0-state verification + execution of the R0-arbitration ruling2 refile order (T-MIG-067 CLA band -> T-MIG-069).
+
+Work Log:
+- R0 state verified ACTIVE of record: the desk merged #107 -> cdce05e (the RICH-200-D fix) and #108 -> d794dd5 (053-t2) the same morning, plus the baseline-ratification chain; 060's own #104 had already merged 6580b2c. Nothing of w0a's has an open PR — the self-merge conditional did NOT fire and was not needed.
+- Board event absorbed: T-MIG-067 was TRIPLE-CLAIMED within minutes (r0 RICH-200-D f8e78f4 05:57:09Z; this lane's CLA claim e11e8ea 06:00:05Z; the triage umbrella bc521b3 06:00:42Z). R0-arbitration ruling2 (landed c78ed9a) ruled earliest-claim-wins: 067 = RICH-200-D; the umbrella mechanically refiled 068 by R0; THIS BAND ordered refiled under the next free id per the T-MIG-048->050 precedent, the CLA WORK ruled unaffected (denial is id-only — the scan-vs-push race: our @2a0b18d scan could not see r0's unpushed branch). Accepted without dispute; root cause acknowledged as a known pattern for AGENT_COORDINATION §7.
+- REFILE EXECUTED at the register level exactly as ruled: card git-mv'd T-MIG-067-cla-ask.yaml -> T-MIG-069-cla-ask.yaml (id flipped, status/scope updated, refile entry appended to execution_record); receipts dir T-MIG-067 -> T-MIG-069 (run-001/run-002 task fields updated + refile_provenance blocks, historical narratives verbatim); run-003-refile.json filed; branch name t-mig-067/w0a KEPT (ruling: rename optional, cosmetic — the yaml id is what the register reads).
+- 069 free-state re-verified at origin/main 00831a6 before the flip: 0 x 069 yamls/heads; the only 2 worklog mentions are the ruling's earmark + r9-hubx's routing suggestion. No competing claim.
+- PR #109 (t-mig-067/r0r6, the seeded-posture umbrella work) noted in flight — NOT this lane's band (068 umbrella); zero overlap with the CLA surface; untouched.
+
+Stage Summary:
+- T-MIG-069 is the register id of record for the Wave-6 CLA band. Tranche-1a remains landed (c30581b); the refile is register-level only, zero code touched. Next: intake origin/main -> gates -> push; then tranche-1b (ClaContextResolver, the four dependency-landed kinds) -> tranche-2 (ClaService + route + mount) -> PR as T-MIG-069 with id-ratification request. Zero golden/Neon/force.
+---
+Task ID: T-MIG-069 (tranche-1b)
+Agent: lane w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: T-MIG-069 tranche-1b — the context resolver port (frozen ClaContextResolver :1-492) for the four dependency-served kinds.
+
+Work Log:
+- Intake first (314da7f): origin/main 00831a6 merged — one conflict (.syllabai/worklog.md) resolved as the strict append-only union (main verbatim in place, the lane's 3 entries re-appended; entry arithmetic 220 common + 17 main-only + 3 lane = 240 EXACT, zero markers); contracts index auto-merge kept the cla one-liner.
+- Refile of record (2685b0d, run-003): card + receipts git-mv'd to T-MIG-069 per R0-arbitration ruling2; branch name kept (ruling: cosmetic).
+- TRANCHE-1B implemented: services/cla/context-resolver.ts (NEW) — buildClaContextResolver({sql, clock}) porting frozen ClaContextResolver.java :1-492 line-against-line: resolveKgTopic, resolveSpecificationPoint (the code-strip law verbatim), resolveCurriculumNode (the shared spine: subtree registry + §1.2 gate + curriculum identity from the owning subject), resolveQuestionAnchor (paper → subject or the paper-less SEED_DEMO subtree walk → primary topic VALIDATED → current version VALIDATED), contextFrom + QuestionAnchor, resolvePastPaperQuestion (active filter + isServable + the attempt-state read), resolveQuestionPart (canonical-FK hops + the CURRENT-version relationship gate + the foreign-subject root 404).
+- RUNTIME STEP of record: exactly four kinds served; SMART_LESSON/NOTE_SECTION branches defer behind the 053 t3/t4 gate — the deferral is a PIN (the two resolvers absent from the factory) + the route dispatch will 400 the kinds at t2 (the frozen closed-enum law).
+- REUSE-not-redeclare of record: knowledgeTree (053), taxonomy.subtreeIds (the questions module's exported port), ServableQuestions.findById as the isServable gate (the frozen gate IS findById(...).isPresent() — byte-identical chain), SubjectsRepository + mapper; the resolver's OWN repo reads (findByKnowledgeNodeId, question/version/part/paper/attempt) are the frozen topology's local reads, disclosed in the header.
+- Pins: apps/api/test/cla/context-resolver.test.ts — 18 pins, the frozen ClaContextResolverTest laws 1:1 for the landed kinds, over the shared param-aware fakeSql.
+- Gates at the head: typecheck x4 exit 0; bun test 1430/0/13skip/5745 across 76 files = intake base (1412/75f/5681) +18/+1/+64 EXACT; golden --selftest OK.
+- Card status + t1b execution_record entry + run-004-tranche1b.json + this entry, one commit.
+
+Stage Summary:
+- T-MIG-069 t1b LANDED on t-mig-067/w0a (branch name cosmetic per ruling2). Next: t2 (ClaService orchestration :1-906 + routes/cla.ts + the kind/mode dispatch with the fixed 400 for the deferred kinds + the event posture + the OUT-OF-FENCE mount, separate commit) -> PR with the id-ratification request. Zero golden/Neon/force.
+
+---
+Task ID: T-MIG-069 (tranche-2)
+Agent: lane w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: T-MIG-069 tranche-2 — the ClaService orchestration port + the ask route + the OUT-OF-FENCE mount + PR. The band completes on-branch.
+
+Work Log:
+- TRANCHE-2 implemented: services/cla/service.ts (NEW) — the frozen ClaService.java :1-906 line-against-line: the per-kind dispatch 400s verbatim + the closed-enum default (the deferred kinds' serving law), the registry-decides enablement + the §7.4 gate BEFORE retrieval, the deterministic single-anchor KnowledgeContext, the hybrid pool (anchor + spec-structure evidence capped 4 + the vector arm) -> fuseWithPlanWeights -> rerank -> cap -> attribution -> evidenceEligible, the question-context FIXED lead evidence (stem / whole-question parts with PART_PROMPT_BOUND 1200 / learner-work part-scoped / VALIDATED scheme points part-appropriate), the modePlan law verbatim (EXPLAIN decode-only on questions, HINT scaffolding, CHECK unlocked), the honest briefs, the REFUSAL law (the frozen text-block string, model null, provider deterministic-refusal, NO generator call) and the dormant seam (generation-reaching -> TutorGenerationError -> 503). routes/cla.ts (NEW): POST /api/v1/learners/me/cla/ask + the two-envelope law + the verbatim exception mappings + the composition root wiring the REAL module (the sql-backed learner-model reads with the MED-2/ADR-032 relaxation; activeStruggleInferences honestly empty — no landed read, disclosed).
+- CONTRACT AMENDMENTS (disclosed): claAnswerViewSchema.model -> nullable (the frozen refusal serializes model: null; t1a's non-nullable shape was a staging gap); the ContextView flattening honoured (curriculumVersion/Board/Qualification as three flat strings).
+- 24 pins (apps/api/test/cla/cla-service.test.ts): the dispatch 400s, the gate ordering (wasGenerated()=false), the pipeline + spec-structure attribution, the §4.4 audit trace, the refusal law + the wire shape, the dormant seam, the §7.3 unlock + part-scoped discipline, and the route laws over the injected-auth 060 pattern (401/malformed/validation/enum/verbatim-400/200-contract/409/503).
+- OUT-OF-FENCE mount (apps/api/index.ts) as its own commit: /api/v1/learners/me/cla + the ratification-request comment block (the 010/020/031/043/052/061/060 precedent).
+- Gates at the head: typecheck x4 exit 0; bun test 1454/0/13skip/5804 across 77 files = the t1b base (1430/76f/5745) +24/+1/+59 EXACT; golden --selftest OK.
+- Card -> IN_REVIEW + the t2 execution_record entry + run-005-tranche2.json + this entry.
+
+Stage Summary:
+- T-MIG-069 COMPLETE on t-mig-067/w0a: t1a (39 pins) + t1b (18 pins) + t2 (24 pins) = 81 pins, gates green end-to-end. PR next with the full symmetric disclosure (id provenance 067->069, the contract amendment, the deferral, the dormant seam, the mount ratification request). Authors never self-merge — the desk/review acts first, the operator's standing order is the disclosed fallback. Zero golden/Neon/force.

@@ -1,0 +1,212 @@
+version: 1
+task:
+  id: T-MIG-069
+  title: "Wave-6 CLA (contextual assistant) — POST /api/v1/learners/me/cla/ask: the ClaService deterministic orchestration (context resolution, tool registry, leakage policy, grounded-evidence citation plumbing) over the ALREADY-PORTED tutor chain + the dormant generator seam (tutor posture)"
+  owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — operator directive trace 1a10fbe9465708c9 'Check if R0 has merged or not. If not, review+merge yourself and continue working': the merge half executed of record (T-MIG-060 #104 merged 6580b2c) and 'continue working' executes the standing claim directive trace 1a10d2c88b6f13c5 — claims the CLA band, the next unfiled Wave-6 surface (docs/MIGRATION_PLAN.md §5 Wave 6 lists 'CLA' explicitly; 060=tutor+sessions, 061=intervention, 062=research calibration are filed; CLA is not). Id ratification requested at PR review (030/032/039/040-PREP/041/043/060 precedent)"
+  status: IN_REVIEW # REFILED T-MIG-067 -> T-MIG-069 per R0-arbitration ruling2 (c78ed9a); t1a LANDED (39 pins); t1b LANDED (the context resolver, 18 pins); t2 LANDED (ClaService orchestration + routes/cla.ts + the OUT-OF-FENCE mount — id ratification + independent review requested at PR)
+  priority: P1
+  wave: 6
+  deps: [T-MIG-060, T-MIG-041, T-MIG-053] # the tutor chain services + ServableQuestions (060, this lane); LearnerModelService misconceptions (041); the knowledge graph service (053 family) — all on main at claim time
+  execution_record: >
+    (claim entry 2026-10-06T06:0xZ) Pre-claim zero-collision scan immediately
+    before branch cut @ origin/main 2a0b18d (the 060 bookkeeping head):
+    ls-remote ZERO t-mig-06[7-9] heads, zero 067+ yamls on main, zero 067
+    mentions in the repo worklog; open PRs: #106 (066/r1) only — all fences
+    disjoint from the CLA surface.
+    SURFACE MAP from frozen core @ 6cad6ef (line-against-line deep read
+    begins with tranche-1):
+    ClaController :36-101 — ONE endpoint: POST /api/v1/learners/me/cla/ask
+    (learner-scoped, @CurrentUserId; the request record + the ClaAnswerView
+    wire). ClaService :1-906 — the deterministic orchestration: consumes the
+    tutor chain DIRECTLY (KnowledgeRetriever, VectorRetriever,
+    ReciprocalRankFusion, EvidenceReranker, ContextAssembler, EvidenceItem,
+    CitationResolver, TutorPolicyService, TutorGenerator/
+    GroundedTutorGenerator) + KnowledgeGraphService/KnowledgeNodeRepository
+    (related-concepts tool) + LearnerModelService.MisconceptionReading +
+    assessment repos (Answer/Attempt/MarkScheme/QuestionPart/QuestionVersion
+    + ServableQuestionService via the context resolver) + content
+    (Document/DocumentChunk); publishes ClaInteractionEvent via
+    ApplicationEventPublisher (:422 — provenance-bearing LIM rows,
+    surface=CONTEXTUAL_ASSISTANT; the v2 telemetry posture of 061 — zero new
+    tables, ADR-031 intact: zero writes in this band).
+    ClaContextResolver :1-492 — the identity/ambiguity + context assembly
+    over ServableQuestionService + exam papers + question parts/mark
+    schemes. ClaToolRegistry :1-203 — the tool enumeration + the
+    RelatedConcepts tool. ClaLeakagePolicy :1-88 — the leakage law (what may
+    cross the wire to a learner mid-attempt). dto/ClaAnswerView :1-121.
+    shared/events/ClaInteractionEvent :1-67 + ToolInvocation.
+    FROZEN TESTS (the pin source): ClaServiceTest 1022 lines,
+    ClaContextResolverTest 574, ClaLeakagePolicyTest 218, ClaFlowIT 965.
+    LLM POSTURE: no new LLM client — the generator seam is the tutor's
+    dormant seam (generation-reaching asks 503 tutor_unavailable with the
+    fixed body, deterministic refusals NEVER 503; R-LLM: outputs never
+    golden-gated, the deterministic surfaces — authz, context resolution,
+    leakage policy, tool registry, citation plumbing — are the gated ones).
+    TRANCHE PLAN: t1 = contracts (cla.ts) + ClaLeakagePolicy +
+    ClaToolRegistry + ClaContextResolver line-against-line; t2 =
+    ClaService orchestration + the route + ClaAnswerView + the event
+    no-op/telemetry posture + pins; mount OUT-OF-FENCE as its own commit.
+    (t1a entry 2026-10-06T06:4xZ) TRANCHE-1A LANDED on t-mig-067/w0a —
+    contracts (packages/contracts/src/cla.ts: the closed Kind/Mode enums,
+    the ClaAskRequest admission discipline with the @NotBlank/@Size laws as
+    zod, the ContextView identity block, the ToolTrace audit shape, the
+    FIXED AttemptRequiredException body as CLA_CHECK_ATTEMPT_REQUIRED_MESSAGE)
+    + 16 contracts pins + index re-export one-liner (010/034/043-t1/052/053/
+    061/062 precedent); services/cla/context.ts (the ResourceContext record
+    :62-235 line-against-line incl. the four predicates + the gate-free
+    with-copies); services/cla/leakage-policy.ts (the four pure functions
+    :52-86 + ClaAttemptRequiredError, typed over the tutor EvidenceItem);
+    services/cla/tool-registry.ts (the fixed three-tool composition :96-113,
+    the spec-chain walk with the depth cap 8 + backtrack, the bounded
+    related-concepts reads 12/6, the SELF-only learner-state scope law
+    :192-199, the audit-trace size law) — the graph reads REUSE 053's
+    knowledgePrerequisites/knowledgeMisconceptions and the learner reads
+    REUSE the tutor LearnerModelPort (REUSE-not-redeclare); 23 api pins via
+    the shared param-aware fakeSql (incl. the 404-first read law riding the
+    reuse). Gates at the head: typecheck x4 exit 0; bun test apps/api
+    packages 1371/0/13skip/4687 across 72 files = the claim base (2a0b18d:
+    1332/4558/70f) +39 tests/+129 expects/+2 files EXACT (both new files,
+    zero existing-test touches — git diff --stat proof); golden --selftest OK.
+    Dependency decisions of record: SMART_LESSON + NOTE_SECTION resolver
+    branches DEFER to t1b/t3 — gated on T-MIG-053 t3 (revision notes) and
+    t4 (smart lesson) landing (r3a's tranches); the frozen controller law
+    "kinds not served by the current runtime step are a 400 (closed enum)"
+    is the serving mechanism for the deferral, disclosed at PR.
+    (refile entry 2026-10-06T07:0xZ, operator trace 1a10fea97de5d819) ID
+    REFILE EXECUTED of record: T-MIG-067 was triple-claimed within minutes
+    (r0 RICH-200-D f8e78f4 05:57:09Z; this lane e11e8ea 06:00:05Z; the
+    triage umbrella bc521b3 06:00:42Z) and R0-arbitration ruling2
+    (.syllabai/receipts/R0-arbitration/ruling2-t-mig-067-triple-claim.json,
+    landed c78ed9a) ruled earliest-claim-wins: 067 = RICH-200-D (merged
+    cdce05e via #107), the umbrella mechanically refiled 068 by R0, and
+    THIS BAND ordered refiled under the next free id "T-MIG-069 unless
+    taken, per the T-MIG-048→050 refile precedent" — the CLA WORK itself
+    ruled unaffected (the denial is id-only, scan-vs-push race class: the
+    @2a0b18d zero-collision scan could not see r0's unpushed branch).
+    Refile executed at the register level exactly as ruled: card git-mv'd
+    to T-MIG-069-cla-ask.yaml (this file), receipts dir T-MIG-067 ->
+    T-MIG-069 with run task fields updated + refile provenance added, the
+    branch name t-mig-067/w0a kept ("rename optional, cosmetic; the yaml
+    id is what the register reads" — ruling verbatim), 069 free-state
+    re-verified at origin/main 00831a6 (0 x 069 yamls/heads; the two
+    worklog mentions are the ruling's own earmark + the r9-hubx routing
+    suggestion). Id ratification STILL requested at PR review per the
+    030/032/039/040-PREP/041/043/060 precedent.
+    (t1b entry 2026-10-06T07:4xZ, operator trace 1a10fea97de5d819)
+    TRANCHE-1B LANDED — the context resolver port (frozen
+    ClaContextResolver.java :1-492 line-against-line,
+    services/cla/context-resolver.ts, factory buildClaContextResolver over
+    {sql, clock}): resolveKgTopic (:100-107), resolveSpecificationPoint
+    (:117-141 — the code-strip law kept verbatim), the shared
+    resolveCurriculumNode spine (:149-189 — subtree registry + the §1.2
+    validation gate + curriculum identity from the owning subject), the
+    shared resolveQuestionAnchor spine (:396-442 — paper → subject or the
+    paper-less SEED_DEMO subtree walk → primary topic + VALIDATED → current
+    version VALIDATED), contextFrom (:444-475) + the QuestionAnchor record
+    (:477-482), resolvePastPaperQuestion (:302-321 — active filter +
+    isServable gate + attempt-state read) and resolveQuestionPart
+    (:345-387 — part → version → question canonical FKs, the
+    CURRENT-version relationship gate, the foreign-subject root 404). The
+    frozen test ClaContextResolverTest pinned 1:1 for the four landed kinds
+    (18 pins: the happy paths with curriculum-identity/trim/precedence
+    laws, foreign-topic, unvalidated-topic + spec-code, non-subject-root,
+    unknown code, unknown part, superseded-version gate, unservable gate,
+    foreign-root, unknown-root, inactive question, the attempted state).
+    RUNTIME STEP of record: exactly four kinds served; the frozen
+    resolveSmartLesson (:209-222) / resolveNoteSection (:252-282) branches
+    DEFER behind the 053 t3/t4 gate (r3a's tranches) — the deferral pin
+    holds the surface shape (resolveSmartLesson/resolveNoteSection absent).
+    REUSE-not-redeclare: graph.tree = 053's knowledgeTree; subtreeIds =
+    the questions module's taxonomy port (composed via public classes);
+    isServable = ServableQuestions.findById !== null (the frozen gate IS
+    findById(...).isPresent() :166-168 — byte-identical chain);
+    SubjectsRepository + the row mapper reused; subjects.findByKnowledgeN
+    odeId + the repo-level question/version/part/paper/attempt reads are
+    the resolver's OWN frozen topology reads (different consumers,
+    different fail laws — disclosed in the header). 18 pins over the
+    shared param-aware fakeSql. Gates at the head: typecheck x4 exit 0;
+    bun test 1430/0/13skip/5745 across 76 files = the intake base
+    (1412/75f/5681 @ 314da7f) +18/+1/+64 EXACT; golden --selftest OK.
+    (t2 entry 2026-10-06T08:1xZ, operator trace 1a10fea97de5d819)
+    TRANCHE-2 LANDED — the orchestration + the route + the mount:
+    services/cla/service.ts (NEW — frozen ClaService.java :1-906
+    line-against-line): contextualAsk with the frozen dispatch
+    (:234-281 — the per-kind required-reference 400s verbatim + the
+    closed-enum default branch for the deferred kinds), the
+    registry-decides enablement + the §7.4 gate BEFORE retrieval
+    (:283-285), the traced tool reads, the deterministic single-anchor
+    KnowledgeContext (:281-303), the hybrid pool (the anchor + the
+    spec-structure evidence :631-655 + the T-C32 vector arm) →
+    fuseWithPlanWeights → rerank → cap → attribution → the
+    evidenceEligible filter (:337-343), the question-context FIXED lead
+    evidence (:339-377 — the stem item :699-714, the whole-question parts
+    item :716-753 with PART_PROMPT_BOUND 1200, the learner-work item
+    :677-697 with the part-scoped discipline, the VALIDATED scheme-point
+    item :786-838 with the part-appropriate subset), the modePlan law
+    (:459-536 verbatim — the question EXPLAIN decode-only branch, HINT's
+    scaffolding discipline, CHECK's unlocked feedback), the honest learner
+    brief (:538-565 + the knowledge brief :584-608), the REFUSAL law
+    (:84-89 — the frozen text-block string with its embedded newlines,
+    model null, provider deterministic-refusal, NO generator call, never
+    503) and the dormant seam (generation-reaching → TutorGenerationError
+    → the route's honest 503 tutor_unavailable); citations via the landed
+    resolveCitations; the interaction event via the injected sink (the 061
+    no-op posture, ADR-031 intact). routes/cla.ts (NEW — ClaController
+    :36-101): POST /api/v1/learners/me/cla/ask, the authz shell first, the
+    two-envelope law (malformed_body vs validation_failed with the jakarta
+    texts), the exception mappings verbatim (404 not_found e.message / 400
+    bad_request e.message for the dispatch laws / 409 attempt_required
+    with the FIXED CLA_CHECK_ATTEMPT_REQUIRED_MESSAGE / 400 malformed
+    request for ArgumentError / 503 tutor_unavailable with the FIXED
+    body). The composition root (buildClaRouters) wires the REAL module:
+    the resolver, the tool registry over the sql-backed learner-model
+    reads (skillStatesByRecency + the staleness-relaxed
+    misconceptionStatesByProbability — the MED-2/ADR-032 composition the
+    learner-me state view runs), the T-C32 vector arm, the grounded
+    generator over the DORMANT provider, the no-op telemetry sink;
+    activeStruggleInferences has NO landed v2 read — the port returns the
+    honest empty list, disclosed (the tutor module runs with NO learner
+    model at all). CONTRACT AMENDMENT (disclosed): claAnswerViewSchema
+    model is NULLABLE of record — the refusal constructs
+    GeneratedAnswer(REFUSAL, null, "deterministic-refusal") (:417) and
+    the frozen wire serializes "model": null. The ContextView flattening
+    of record: the CurriculumVersionInfo rides as three flat strings
+    (curriculumVersion/curriculumBoard/curriculumQualification — the
+    frozen ContextView :31-58 shape). 24 pins (the dispatch 400s, the
+    gate ordering with wasGenerated()=false, the pipeline + the
+    spec-structure attribution, the §4.4 audit trace, the refusal law +
+    the wire shape, the dormant seam, the question-context lead evidence
+    incl. the §7.3 unlock + the part-scoped discipline, the route laws
+    over the injected-auth pattern: 401/malformed/validation/enum/
+    verbatim-400/200-contract/409/503). Gates at the head: typecheck x4
+    exit 0; bun test 1454/0/13skip/5804 across 77 files = the t1b base
+    (1430/76f/5745) +24/+1/+59 EXACT; golden --selftest OK. The OUT-OF-
+    FENCE index.ts mount ships as its own commit (R0 ratification
+    requested, the 010/020/031/043/052/061/060 precedent).
+  base:
+    repo: "syllabai-v2 @ 2a0b18d at claim time (the 060 bookkeeping head); frozen refs: syllabai-core @ 6cad6ef"
+  basis: >
+    Operator directive 2026-10-06 trace 1a10fbe9465708c9 ('...review+merge
+    yourself and continue working') executing the standing claim word
+    trace 1a10d2c88b6f13c5; docs/MIGRATION_PLAN.md §5 Wave 6 — 'CLA' is the
+    wave's next unfiled surface after 060/061/062; the band reuses this
+    lane's own 060 seam (the fetch bank + resolver + the tutor chain) so
+    continuity argues for the same lane.
+scope:
+  allowed:
+    - "apps/api/src/services/cla/** (new)"
+    - "apps/api/src/routes/cla.ts (new, tranche-2)"
+    - "apps/api/test/** (this band's pins only)"
+    - "packages/contracts/src/cla.ts + cla.test.ts (new; same-lane contracts-first precedent, R1 coordination flagged at PR review)"
+    - ".syllabai/tasks/T-MIG-069-cla-ask.yaml (status/execution_record only)"
+    - ".syllabai/worklog.md (append-only)"
+    - ".syllabai/receipts/T-MIG-069/**"
+  forbidden:
+    - "packages/db/** (R2's lane — zero CLA tables needed; the event rides the 061 telemetry posture)"
+    - "apps/hub/** (R5's lane)"
+    - "golden/** (R6's fence — zero golden file edits, ever)"
+    - "apps/api/src/index.ts (OUT-OF-FENCE: the mount lands as a separate disclosed commit per the 010/020/031/043/052/061/060 precedent)"
+    - "services/tutor/** (060's landed fence — consumed read-only via imports, never edited; any needed seam change goes back through a 060-scope amendment at PR review)"
+    - "cla-free surfaces: llm-admin / ocr-ingestion / routing (the other unfiled Wave-6 members — separate bands, ids to be filed by their claimants)"
+    - "vercel.json / infra config (deploy lane)"
+    - "syllabai-core / syllabai-hub (frozen, C1)"
