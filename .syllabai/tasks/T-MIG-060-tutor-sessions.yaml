@@ -3,7 +3,7 @@ task:
   id: T-MIG-060
   title: "Wave-6 tutor/AI + admin opener — tutor + sessions: /api/v1/tutor/ask + /ask/stream (SSE streaming parity, the R-VERCEL W6 spike carrier) + /api/v1/tutor/sessions CRUD (create/list/latest/get/delete) + the KaRAG deterministic chain (retrievers, RRF, reranker, citation resolver, stream sanitizer, memory/policy services, session lifecycle)"
   owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — operator directive trace 1a10f3bbe255c491 'Check if R0 has merged or not. If not, review+merge yourself and continue working': R0 merge-of-record verified IN (043 t2 #85 merged 66c6618 by the delegated reviewer; R0-AUTO desk sweep 03:00 UTC merged #86), so the self-merge conditional did not fire and 'continue working' executes the standing claim directive trace 1a10d2c88b6f13c5 'Check and claim whichever lane other agents are not working' — claims the Wave-6 opener (first unclaimed MIGRATION_PLAN-reserved band after the register drained: W5 050/051/054 DONE, 052 owned r9-hubx t2 in flight #89, 053 in flight r3a #84, 055 claimed R0 #91; 060..066 were the only bands with zero yamls/branches/PRs/worklog claims). Id ratification requested at PR review (030/032/039/040-PREP/041/043 precedent)"
-  status: CLAIMED # flips IN_PROGRESS at branch push
+  status: IN_REVIEW # t1+t1b+t2 complete on t-mig-060/w0a; PR carries the full status timeline (CLAIMED -> IN_REVIEW at this push)
   priority: P1
   wave: 6
   deps: [T-MIG-016, T-MIG-014] # ratelimit (the llm:ask per-learner tier already ported — /ask + /ask/stream are the tier's named members) + db driver dispatch; tutor tables already in the baseline schema (tutor_sessions/tutor_session_turns/tutor_topic_engagements) so zero R2 work
@@ -68,6 +68,30 @@ task:
     review) + the R-VERCEL spike note; t2 = routes/tutor.ts + routes/
     tutorsessions.ts + OUT-OF-FENCE index.ts mount (separate commit, 043
     precedent) + route/engine pins.
+    (t1b+t2 entry 2026-10-06) t1 LANDED (4592444, intake 883131e, receipt
+    run-002) with the PaperQuestionResolver REQUIRED-port disclosure.
+    t1b CLOSED the disclosure: FetchQueryParser :61-268 + FetchService
+    identity/ambiguity seam (parts/markPoints view assembly disclosed as the
+    content band's port) + PaperQuestionResolver :92-649 line-against-line —
+    three anchors, fail-open verdict laws (L3 recovery, never-downgrade,
+    store-fail-keeps-card), serving law on every tier, 2026-10-03 seeking
+    allocation, deterministic unit binding + store sort + bound-unit filter,
+    atom-first chunk selection; karag resolver scope widens with the subject
+    code (structural, pre-1b fakes stay assignable); 42 pins.
+    t2 = routes/tutor.ts (POST /ask + the SSE twin /ask/stream — §22
+    pre-flight, append guard, the SSE wire law with the fixed M2 error text,
+    two-envelope body law, the frozen bounded-pool busy text disclosed as
+    having no v2 counterpart) + routes/tutorsessions.ts (the §22 CRUD, R13
+    cap, /latest ordering) + the T-C32-compliant sql vector arm (the frozen
+    law binds doc_version to the SEARCH SQL; the content ChunkHit drops it —
+    consolidation ruling requested) + the dormant LLM seam (smartmark
+    posture: generation-reaching asks 503 tutor_unavailable, deterministic
+    refusals never 503) + OUT-OF-FENCE index.ts mount (separate commit);
+    31 route pins. Gates @ the t2 head: typecheck x4 exit 0; bun test
+    1196/0/13skip/3607 across 64 files = the t1 intake baseline
+    (1123/0/13skip/3388 across 62) +73 tests/+219 expects/+2 files EXACT;
+    golden selftest OK. PR requests id ratification + independent review
+    (authors never self-merge).
   base:
     repo: "syllabai-v2 @ e6cc4d1 at claim time; frozen refs: syllabai-core @ 6cad6ef, syllabai-hub @ 93226a43"
   basis: >

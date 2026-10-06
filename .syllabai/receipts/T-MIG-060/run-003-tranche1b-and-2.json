@@ -1,0 +1,27 @@
+{
+  "task": "T-MIG-060",
+  "run": "run-003-tranche1b-and-2",
+  "date": "2026-10-06",
+  "lane": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "provenance": {
+    "operator_directive_trace": "1a10f7284c7a7a6d",
+    "directive": "continue with tranche-1b + tranche-2",
+    "resolution": "the declared next steps of run-002's tranche-1 receipt, executed on the same claim branch t-mig-060/w0a (the standing authorization chain: 1a10d0c303d3852d 'review+merge yourself' conditional did NOT fire — nothing of w0a's was pending; 1a10d2c88b6f13c5 claim word owns 060)"
+  },
+  "tranche_1b_scope": "the REQUIRED-port disclosure of run-002 closes: content/FetchQueryParser.java :61-268 (the shared parser: series words, full code / bare unit binding, keyword-led + ordinal-led question numbers, word numbers 1-49 cardinals+ordinals, NFKC full-width fold, letter-adjacent hyphen fold, letter-gated romans, msSeeking probes, partAtom) + content/FetchService.java identity/ambiguity seam (parse->bank SQL->hits; candidateCodes subject-codes+4CH0-alias; resolvePapers verbatim V35 SQL; resolveQuestion external_ref atom prefix; the ambiguity law verbatim; DISCLOSED TRIM: the FetchQuestion parts/markPoints view assembly :192-219 is the CLA FETCH surface's consumption — the question row still drives the ambiguity law exactly) + tutor/PaperQuestionResolver.java :92-649 line-against-line (three anchors: bank first-match-wins, qcard VALIDATED card tier, V33-chunk-mirror content-store tier; fail-open verdict laws: complete-identity-unbound -> identityParsed=true, L3 recovery keeps the guard armed under a fetch failure, mid-flight failures NEVER downgrade a parsed identity, store error keeps card evidence; serving law on every tier: REJECTED never serves, bank branch-1 tolerates SUGGESTED document rows, store pins only the VALIDATED top version; the 2026-10-03 seeking allocation QP1/MS3 vs QP2/MS2; deterministic unit binding paper-N->home+regional first-match-wins; store sort unitIndex->subject-prefix-outranks-4CH0->docVersion-desc + bound-unit filter; atom-first chunk selection with part-atom refinement + content-marker fallback incl. the Total-footer exclusion)",
+  "tranche_2_scope": "routes/tutor.ts (POST /ask + POST /ask/stream the SSE twin: §22 pre-flight foreign-session 404 + V53 course-consistency 409 BEFORE the pipeline/stream opens; history re-sanitization; the append guard — a persistence failure NEVER 5xxes the delivered answer; SSE wire law citations->meta->delta*->done with the append on completed only and post-open errors as the wire error event carrying the FIXED M2 text; two-envelope body law with the jakarta messages and zod min(1) as the @NotBlank discriminator; the frozen bounded delivery pool + busy text disclosed as having NO v2 counterpart — the Hono response IS the stream) + routes/tutorsessions.ts (the §22 CRUD: 201 CreatedSessionView exact shape, R13 cap 409, s143 summaries, /latest 204|200 never captured by /:sessionId, delete 204, foreign-404 indistinguishable) + services/tutor/vector-arm.ts (the T-C32-compliant sql vector arm: the frozen law binds doc_version provenance to the SEARCH SQL and the landed content ChunkHit drops it — composing would force null provenance or exactly the T-C32 N+1 the law removed; consolidation ruling requested at PR) + the buildTutorRouters composition root (scopes compose the content module's CurriculumScopeResolver; the dormant LLM seam — the smartmark posture: generation-reaching asks serve the honest 503 tutor_unavailable with the fixed body while deterministic refusals NEVER 503; telemetry no-op disclosed as T-MIG-061's title) + OUT-OF-FENCE index.ts mount as a separate commit (74f285d, R0 ratification requested)",
+  "commits": {
+    "tranche_1b": "<this commit>",
+    "tranche_2": "<this commit>",
+    "out_of_fence_mount": "74f285d",
+    "bookkeeping": "<this commit>"
+  },
+  "karag_type_note": "the PaperQuestionResolver scope param widens with the subject code the resolver's card/store tiers read (CurriculumScopePort satisfies structurally; functions typed against the narrower pre-1b shape stay assignable — contravariance)",
+  "adr_031_zero_write_audit": "the only writes remain tutor_sessions / tutor_session_turns (§22); the vector arm + fetch bank + resolver are READ-ONLY over documents/document_chunks/exam_papers/subjects/questions; zero golden file edits; zero Neon contact; zero force-push",
+  "gates": {
+    "typecheck": "x4 exit 0",
+    "bun_test_tranche_2_head": "apps/api packages: 1196 pass / 0 fail / 13 skip / 3607 expect across 64 files = the tranche-1 intake baseline (1123/0/13skip/3388 across 62 files) +73 tests/+219 expects/+2 files EXACT (paper-question.test.ts 42/121 + tutor-routes.test.ts 31/98)",
+    "golden_selftest": "OK"
+  },
+  "next": "PR with the full symmetric disclosure — R0 id ratification (030/032/039/040-PREP/041/043 precedent) + independent review (authors never self-merge); consolidation rulings requested for the fetch-bank/vector-arm structural seams (the nba.ts precedent)"
+}
