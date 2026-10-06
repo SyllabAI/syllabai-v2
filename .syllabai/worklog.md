@@ -4308,6 +4308,44 @@ Work Log:
 
 Stage Summary:
 - 076 cannot proceed from any sandbox lane; operator applies the one-line patch at will. This desk's sweep deliverables stand: 075 implemented + PR #121 to the desk; 077/078/079 filed OPEN for the lanes.
+
+---
+Task ID: R3a-ROUND-17 (operator directive trace 1a110d90b9510eb5: "Check if R0 merged or not. If not, review+merge yourself and continue working")
+Agent: r3a (superz-agent-b, Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: verify R0 merge state of this lane's T-MIG-053 PRs; then continue working
+
+Work Log:
+- SANDBOX RECOVERY: seventh-class reset wiped .secrets/, worklog, and all clones mid-flight; credentials re-derived from the lane record (nothing persisted in-repo — the credential law held), syllabai-v2 re-cloned, frozen core re-cloned anonymous, HEAD re-verified 6cad6ef (the pinned ref)
+- R0 MERGE STATE (GitHub API, sha-level): ALL FIVE of this lane's PRs merged of record — #84 claim (03:38:56Z), #101 t1-close (05:24:56Z), #108 t2 (06:26:19Z), #115 t3 (07:55:54Z), #116 t4 (08:24:06Z); T-MIG-053 card reads DONE 23/23 on main; delegation moot, zero self-merge needed, zero review debt (the #108 review of record stands, comment 6011293779)
+- BASELINE @ main d8916c7: typecheck x4 exit 0; bun test apps/api packages = 1533 pass / 0 fail / 13 skip / 6036 expect (EXACT = round-22 receipt); golden selftest OK
+- BOARD SWEEP: 4 OPEN cards — 076 (BLOCKED of record, 8cc28e8/d8916c7: operator-side ci.yml repair, guard-blocked receipt stands → not claimable), 078 (options filed for R0/R6, rulings owed → deferred), 077 (pre-ruled corpus dispositions → left for a corpus-context lane), 079 (this claim)
+- ZERO-COLLISION SCAN (pre-claim): ls-remote t-mig-07[6-9]*+*claim* → only t-mig-076/r0; 1 open PR (#121, 075, R0's own); worklog grep → 079 appears only in the R0 filing entry; CLEAN
+- CLAIMED T-MIG-079 (wave-7 learner KG + smart-lesson mounts, 5 live reds): the direct continuation of the 053 band — the SERVICES are this lane's own t1/t4 ports (learnerGraphFor = F-034 graphs.ts :872; smartLessonFor = smart-lesson.ts :182), contracts pre-ratified (learnerKnowledgeGraphViewSchema :440, smartLessonViewSchema :583, smartLessonParamsSchema :133 — zero new schemas)
+- RECON of record (frozen @ 6cad6ef): KG = LearnerStateController :178 @GetMapping("/knowledge-graph") @RequestParam UUID rootId; smart-lesson = SmartLessonController :28-38, rootId declared FIRST then topicNodeId (the missing-params capture pins "missing required parameter: rootId"); error law = :185-190 validation_failed missing-param + :167-170 malformed-UUID 400s; unknown-topic 404 message verified verbatim against selfmark NotFoundError format; auth = requireAuth gate (middleware/auth.ts :100) + bootErrorBody (Boot 401 shell — the two unauthed captures already green app-wide)
+- MOUNT PLAN: new routes/learnerkg.ts (both paths, param-order law, verbatim envelopes) + ONE flagged index.ts mount line before the app.all("/api/v1/*") fallback (the 010/020/021/030/032/041/062 OUT-OF-FENCE precedent) + pins in test/learner/kg-routes.test.ts (the 041-t2 in-memory Hono + fakeSql pattern); golden READ-ONLY — the 5 reds flip in the CI replay of record
+
+Stage Summary:
+- T-MIG-053 fully closed of record (5/5 PRs merged; card DONE)
+- T-MIG-079 claimed (IN_PROGRESS, receipt run-001-claim.json @ d8916c7); implementation next on t-mig-079/r3a
+- Sandbox recovery complete; all landed work intact on main
+---
+Task ID: R3a-ROUND-17 addendum (T-MIG-079 impl) — same operator trace 1a110d90b9510eb5
+Agent: r3a (superz-agent-b, Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: implement the claimed T-MIG-079 band (routes + mount + pins)
+
+Work Log:
+- routes/learnerkg.ts: the two-path router — GET /api/v1/learners/me/knowledge-graph (LearnerStateController frozen :178-183) + GET /api/v1/learners/me/smart-lesson (SmartLessonController frozen :28-38); requireAuth gate per route (Boot 401 shell); params in SIGNATURE order (rootId first — the captured w4-smart-lesson-missing-params-400 names rootId); 400 validation_failed missing-param (:185-190) + 400 malformed-UUID (:167-170) + verbatim 404s (unknown topic = the hard-isolation capture; unknown root = the 404-first tree law)
+- REUSE-not-redeclare held: zero new services (learnerGraphFor = t1 F-034 :872; smartLessonFor = t4 :182), zero new contracts (learner.ts :440/:583 pre-ratified) — the views are wire-ready, the route returns them directly
+- MOUNT: one flagged index.ts block (import + construction + app.route before the app.all fallback) — the OUT-OF-FENCE precedent band, covered by the card mount mandate; closes run-002 review F-9
+- PINS: 13 in test/learner/kg-routes.test.ts (the 021/041 in-memory Hono + fakeSql pattern; fixtures from the t1 class-graph + t4 pin sets) — shell x4, param laws x5 (each with a no-sql-issued pin), KG 200 schema+key parity + honest all-null root, KG unknown-root 404, rung-7 200 + policy marker, ghost-topic 404 verbatim
+- GATES: typecheck x4 exit 0; 1546/0/13skip/6113 = d8916c7 baseline +13/+77 EXACT; selftest OK; golden untouched (the 5 reds flip in the CI replay of record post-merge)
+- Card → IN_REVIEW with the execution record; receipt run-002-impl.json
+
+Stage Summary:
+- T-MIG-079 implemented on t-mig-079/r3a (claim d06eab8 + impl commit); PR next
+- The 053-band surfaces are now route-complete end to end: services (t1/t4) + contracts (pre-ratified) + routes/mounts (this band)
+- Hands-off unchanged: 077/078/076
+
 Task ID: T-MIG-075 (implementation)
 Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
 Task: Land the E-class bearer-posture fidelity (the register's sole P1) end-to-end and file the PR.
@@ -4370,6 +4408,18 @@ Stage Summary:
 
 ---
 
+Task ID: T-MIG-081 claim (operator trace 1a110f45897dcdfd "take the Class B auth investigation")
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Take the CLASS B auth-envelope investigation band from the R0-REPLAY-FILING-1 taxonomy (scheduled run 37441112330 @ e9ef235): root-cause the learner-me bearer-acceptance pair first-hand, file verdict + disposition.
+
+Work Log:
+- CENSUS @ 2eca546 (fetch-first): the band is FREE — open PRs #122 (t-mig-079/r3a, the w4 KG/smart-lesson MOUNTS band = CLASS D) and #123 (t-mig-080/r7a, the F3 salvage contract test pins); T-MIG-077 (claimed 487e9ef) owns the curriculum-401 re-pin pair per its scope item (1) — the curriculum HALF of Class B is RESOLVED-BY-077 of record (corpus re-pin pre-ruled per SecurityConfig.java:65-94 @ 6cad6ef: the Java original is auth-first on those surfaces, the port is faithful, the corpus was captured pre-auth posture); T-MIG-078 (claimed 2eca546) = corpus+instrument staging posture, no auth contact; T-MIG-075 DONE of record #121 = the instrument-side verbatim-bearer fix that made the port's true posture surface. Zero *081* heads on origin, no receipts dir, zero worklog mentions.
+- THE UN-OWNED HALF OF RECORD: the learner-me bearer-acceptance pair — w4-agenda-malformed-bearer-401 ('Bearer not-a-jwt') and w4-state-empty-bearer-401 ('Bearer ') got 200 WITH learner payload on the live port while the corpus declares 401 (malformed/empty bearer ACCEPTED on the learner-me band; the curriculum band is auth-first — the inversion). P1: the only class with a potential security posture implication (the filing's own routing suggestion).
+- CLAIM-IN-FIRST-COMMIT per AGENT_COORDINATION §2 + the wipe-protection law: card (new T-MIG-081, status CLAIMED, owner R0-integrator, P1, wave auth-posture, deps [T-MIG-075]) + receipts/T-MIG-081/run-000-claim.json + this entry, ONE .syllabai-only direct-main commit, fetch-first, head-stability assert immediately before push. Investigation is READ-ONLY first (artifact case records -> corpus declarations -> ci-replay route rules + runner authPosture() -> apps/api learner-me band -> SecurityConfig.java:65-94); a port-side fix, if the verdict routes one, follows on branch t-mig-081/r0 -> PR to the desk (authors-never-self-merge).
+- FENCES: golden/cases/** contact forbidden (077 owns the curriculum pair); golden/tools/** + golden/runner.ts contact forbidden (075/077/078 live there — coordinate, never overwrite); zero silent widening; zero production Neon/Render writes.
+
+Stage Summary:
+- T-MIG-081 claimed of record (this commit). The Class B band is owned with the curriculum half cross-referenced RESOLVED-BY-077 and the learner-me half opened for first-hand root-cause. LANE R0-integrator: WORKING 081 (investigation phase).
 Task ID: T-MIG-080 (claim — operator trace 1a110d934c7c8579 "execute F3")
 Agent: r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)
 Task: Execute the 043 audit register item F3 — salvage the closed-#76 pin families into the learner-me suites (claim commit BEFORE implementation, T-MIG-002 lesson).
