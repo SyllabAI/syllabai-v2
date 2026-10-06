@@ -1,19 +1,20 @@
 {
   "name": "curriculum-subject-bad-uuid-400",
-  "description": "GET /api/v1/curriculum/subjects/not-a-uuid: MethodArgumentTypeMismatch -> Boot default 400 {timestamp,status,error:'Bad Request',path}",
-  "source": "captured from the deployed frozen Java core (Render, https://syllabai-core.onrender.com) on 2026-10-05T19:02Z by T-MIG-004 run-001 (w0a); read-only GET, zero production writes; no PII present",
+  "description": "GET /api/v1/curriculum/subjects/not-a-uuid: RE-PINNED TO THE FROZEN LAW per run-9 R1 (R0R6-RUN9-TRIAGE section 3-R1, frozen-source verified): SecurityConfig.java:65-94 @ 6cad6ef permits no curriculum GET entry (anyRequest().authenticated() + entry point sendError(401)), so the law's answer is the Boot-default 401 {timestamp,status,error:'Unauthorized',path} — exactly what v2 serves (positive control content-reader-real-doc-unauthed-401 PASS shows v2 == law elsewhere). The capture's 400 cannot be reproduced from the pinned source (deployment drift or a scrubbed-away auth header at capture time); the run-7 auth-lane guard-alignment action was CANCELLED by the same ruling before implementation. The case name keeps the historical capture expectation (zero-deletion doctrine); the EXPECT governs. justified:true per GOLDEN_MASTER section 4, citing run-9 R1 + SecurityConfig.java:65-94 @ 6cad6ef.",
+  "source": "captured from the deployed frozen Java core (Render, https://syllabai-core.onrender.com) on 2026-10-05T19:02Z by T-MIG-004 run-001 (w0a); read-only GET, zero production writes; no PII present. R1 re-pin note: the capture-time 400 predates the ruling — the frozen law (SecurityConfig.java:65-94 @ 6cad6ef, untouched since 42ea7d0 2026-10-02; audit commit d77a061 touched only HSTS headers) governs the expect below.",
   "method": "GET",
   "path": "/api/v1/curriculum/subjects/not-a-uuid",
   "expect": {
-    "status": 400,
+    "status": 401,
     "body": {
-      "status": 400,
-      "error": "bad_request",
-      "message": "malformed request",
-      "timestamp": "2026-10-04T19:02:11.644341116Z"
+      "timestamp": "2026-10-04T19:02:11.644341116Z",
+      "status": 401,
+      "error": "Unauthorized",
+      "path": "/api/v1/curriculum/subjects/not-a-uuid"
     }
   },
   "tolerate": [
     "timestamp"
-  ]
+  ],
+  "justified": true
 }

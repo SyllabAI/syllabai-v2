@@ -82,7 +82,7 @@
  *      honest harness error, never a silent degraded replay. Zero case
  *      files touched (§7: no silent widening — the cases are forever).
  */
-import { loadCases, deepEqualTolerant, buildMultipartBody, partitionByTranche, checkHeaders, declaredLimiter429, ordinaryHeaderExpectations, authPosture } from "../runner.ts";
+import { loadCases, deepEqualTolerant, buildMultipartBody, partitionByTranche, checkHeaders, declaredLimiter429, ordinaryHeaderExpectations, authPosture, renderResponseBody } from "../runner.ts";
 import { join } from "node:path";
 
 const REALDATA = /realdata|-real-/; // verbatim posture regex (T-MIG-022 v2 tool)
@@ -334,15 +334,15 @@ async function replayOne(kase: GoldenCase, teacher: string, student: string, adm
   } catch (e) {
     return { name: kase.name, mode: CASE_MODE, pass: false, tranche, diff: `harness error: target unreachable (${e instanceof Error ? e.message : String(e)})` };
   }
-  let body: unknown = null;
-  try {
-    body = await res.json();
-  } catch {
-    body = "<non-json>";
-  }
-  // Bun fetch quirk (T-MIG-022, recorded for R6): res.json() returns null for
-  // 0-byte bodies; the wire is truly empty → normalize to the sentinel.
-  if (body === null && JSON.stringify(kase.expect.body) === '"<non-json:0 bytes>"') body = "<non-json>";
+  // T-MIG-077 (I-class sentinel law): length-aware rendering via the shared
+  // runner helper (the 071 zero-drift law: ONE rendering, both call sites).
+  // Supersedes the T-MIG-022 Bun-quirk patch (res.json() returned null for
+  // 0-byte bodies and was re-rendered INTO the non-empty "<non-json>"
+  // marker) — text-first parsing sidesteps the quirk entirely, and the
+  // empty wire body now carries its own explicit sentinel on BOTH sides of
+  // the compare. The quirk observation stands of record (Bun res.json()
+  // null on 0-byte); it no longer reaches the comparator.
+  const body = renderResponseBody(await res.text());
   // T-MIG-071 (R3-C): the declared limiter-429 disposition — identical
   // branch and provenance to golden/runner.ts replayAgainst (the frozen
   // core has no register limiter, so a 429 here is the operator-endorsed
