@@ -9,7 +9,7 @@
   "frozen_core": "SyllabAI/syllabai-core @ 6cad6ef (fresh anonymous read-only clone)",
   "directive_resolution": {
     "question": "Check if R0 has merged or not; if not, review+merge yourself; continue working",
-    "answer": "R0 MERGED EVERYTHING — delegation moot, zero self-merge needed",
+    "answer": "R0 MERGED EVERYTHING \u2014 delegation moot, zero self-merge needed",
     "evidence": {
       "pr_75_round11_receipt": "merged 2026-10-06T01:04:56Z by SyllabAI, head fec1bb9",
       "pr_81_round12_receipt": "merged 2026-10-06T01:25:17Z, merge commit 6b8a97f (intake tip 4fe308c pushed by a parallel delegated lane at 01:24:29Z)",
@@ -27,15 +27,28 @@
   "band": {
     "controllers": 8,
     "endpoints": 23,
-    "note_vote_excluded": "already ported by 043-t1 (V48) — grep-verified",
+    "note_vote_excluded": "already ported by 043-t1 (V48) \u2014 grep-verified",
     "tranches": [
       "t1 (this claim): /api/v1/knowledge (4) + class knowledge-graph (3) + teaching coverage (3) = 10 endpoints, contracts+services+fakeSql pins, no routes/mounts",
       "t2: class analytics (3) + teacher concept-graph (2) incl. seed/snapshot-loader pair",
       "t3: revision notes (5 learner + 2 admin) incl. multipart ingest",
-      "t4: smart lesson (1) — 934-line service, LLM-path check owed at t4"
+      "t4: smart lesson (1) \u2014 934-line service, LLM-path check owed at t4"
     ]
   },
-  "tables_contacted": ["V2__curriculum_knowledge", "V52__teaching_coverage"],
+  "tables_contacted": [
+    "V2__curriculum_knowledge",
+    "V52__teaching_coverage"
+  ],
   "schema_change": "NONE (baseline-never-replay)",
-  "status": "CLAIMED"
+  "status": "CLAIMED",
+  "gates_at_claim_head_91a13e2": {
+    "typecheck": "exit 0 x4 packages",
+    "bun_test": "961 ran / 0 fail / 13 skip / 2689 expect (EXACT = R0-AUTO 02:30 sweep baseline 948 pass + 13 skip at the same tip)",
+    "golden_selftest": "OK (incl. T-MIG-24 declared-unordered multiset)"
+  },
+  "pr": {
+    "number": 84,
+    "url": "https://github.com/SyllabAI/syllabai-v2/pull/84",
+    "review_request_comment": 6008334858
+  }
 }
