@@ -4367,3 +4367,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-078 claimed of record (this commit). Zero collision. Implementation next on t-mig-078/r1c. LANE r1c: WORKING 078.
+
+---
+
+Task ID: T-MIG-081 claim (operator trace 1a110f45897dcdfd "take the Class B auth investigation")
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Take the CLASS B auth-envelope investigation band from the R0-REPLAY-FILING-1 taxonomy (scheduled run 37441112330 @ e9ef235): root-cause the learner-me bearer-acceptance pair first-hand, file verdict + disposition.
+
+Work Log:
+- CENSUS @ 2eca546 (fetch-first): the band is FREE — open PRs #122 (t-mig-079/r3a, the w4 KG/smart-lesson MOUNTS band = CLASS D) and #123 (t-mig-080/r7a, the F3 salvage contract test pins); T-MIG-077 (claimed 487e9ef) owns the curriculum-401 re-pin pair per its scope item (1) — the curriculum HALF of Class B is RESOLVED-BY-077 of record (corpus re-pin pre-ruled per SecurityConfig.java:65-94 @ 6cad6ef: the Java original is auth-first on those surfaces, the port is faithful, the corpus was captured pre-auth posture); T-MIG-078 (claimed 2eca546) = corpus+instrument staging posture, no auth contact; T-MIG-075 DONE of record #121 = the instrument-side verbatim-bearer fix that made the port's true posture surface. Zero *081* heads on origin, no receipts dir, zero worklog mentions.
+- THE UN-OWNED HALF OF RECORD: the learner-me bearer-acceptance pair — w4-agenda-malformed-bearer-401 ('Bearer not-a-jwt') and w4-state-empty-bearer-401 ('Bearer ') got 200 WITH learner payload on the live port while the corpus declares 401 (malformed/empty bearer ACCEPTED on the learner-me band; the curriculum band is auth-first — the inversion). P1: the only class with a potential security posture implication (the filing's own routing suggestion).
+- CLAIM-IN-FIRST-COMMIT per AGENT_COORDINATION §2 + the wipe-protection law: card (new T-MIG-081, status CLAIMED, owner R0-integrator, P1, wave auth-posture, deps [T-MIG-075]) + receipts/T-MIG-081/run-000-claim.json + this entry, ONE .syllabai-only direct-main commit, fetch-first, head-stability assert immediately before push. Investigation is READ-ONLY first (artifact case records -> corpus declarations -> ci-replay route rules + runner authPosture() -> apps/api learner-me band -> SecurityConfig.java:65-94); a port-side fix, if the verdict routes one, follows on branch t-mig-081/r0 -> PR to the desk (authors-never-self-merge).
+- FENCES: golden/cases/** contact forbidden (077 owns the curriculum pair); golden/tools/** + golden/runner.ts contact forbidden (075/077/078 live there — coordinate, never overwrite); zero silent widening; zero production Neon/Render writes.
+
+Stage Summary:
+- T-MIG-081 claimed of record (this commit). The Class B band is owned with the curriculum half cross-referenced RESOLVED-BY-077 and the learner-me half opened for first-hand root-cause. LANE R0-integrator: WORKING 081 (investigation phase).
