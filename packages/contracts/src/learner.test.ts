@@ -203,6 +203,30 @@ describe("exam target + agenda + course stats", () => {
     expect(courseExamTargetViewSchema.safeParse({ ...examTarget, daysToWindowStart: 1.5 }).success).toBe(false);
   });
 
+  it("CourseExamTargetView: entryDeadline/resultsDate nullable (V62 'not always announced') — null parses, window dates do not", () => {
+    // The frozen record declares plain LocalDate (CourseExamTargetView.java
+    // :27-28) and V62 leaves entry_deadline/results_date nullable while
+    // window_start/window_end are NOT NULL — a series with neither date
+    // announced must parse (F2 register item, two-lane corroboration).
+    const nullDates = {
+      ...examTarget,
+      entryDeadline: null,
+      resultsDate: null,
+      // entryDeadlinePassed already encodes the null law in the port:
+      // entryDeadline != null && entryDeadline.isBefore(today) → false.
+      entryDeadlinePassed: false,
+    };
+    expect(courseExamTargetViewSchema.safeParse(nullDates).success).toBe(true);
+    // Half-announced state is legal too (each column independently nullable).
+    expect(
+      courseExamTargetViewSchema.safeParse({ ...examTarget, resultsDate: null }).success,
+    ).toBe(true);
+    // The NOT NULL columns stay strict.
+    expect(courseExamTargetViewSchema.safeParse({ ...examTarget, windowStart: null }).success).toBe(false);
+    expect(courseExamTargetViewSchema.safeParse({ ...examTarget, windowEnd: null }).success).toBe(false);
+    // And the full non-null posture (examTarget) still parses — widening only.
+  });
+
   it("AgendaView: actions nullable (no rootId supplied), examTargets an honest empty list", () => {
     expect(
       agendaViewSchema.safeParse({

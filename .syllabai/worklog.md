@@ -2566,8 +2566,37 @@ Stage Summary:
 - Queue at sweep end: 0 open PRs. No escalations. LANE DONE for this cycle.
 
 ---
+---
+
+ HEAD
+Task ID: r1-f2 (R1-contracts lane, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Agent: Super Z (R1-contracts lane)
+Task: CLAIM (2026-10-06, round-10, operator standing directive trace 1a10eb10b04682cd "Check if R0 has merged or not. If not, review+merge yourself and continue working"): executes the collision-audit carry-forward F2 — the courseExamTargetViewSchema .nullable() widening (packages/contracts/src/learner.ts :241-242 entryDeadline/resultsDate) + null fixture.
+
+Work Log:
+- SYNC: origin/main = fe97f94 (R0-AUTO sweeps merged #82 052-t1 39fa554 + #83 051 7dfdd16); open-PR census = 0 (ls-remote 82 heads vs ancestor scan, API confirms state=open count 0). No delegated review+merge work this cycle — the queue is empty.
+- T-MIG-043 YIELD: operator named 043 for this lane at trace 1a10d4804ab58805, but w0a (session web-e79a3bd8, operator directive 1a10d2c88b6f13c5) holds the earliest claim (db87a9a @ 18:01:06Z per §2.1, verified by r3a receipt #75 + R0-ROUND-12 sweep); tranche-1 landed #74 23b23e3 and the card is DONE. Board law wins over the later direct naming — this lane yields and records the supersession.
+- F2 CLAIM basis: T-MIG-043/run-003-collision-audit.json finding F2 (LIVE on main, flagged by BOTH lanes — r1 audit + w0a 043 FIDELITY NOTE in services/learner-me/index.ts :813 — left open by the sweep as "ready-to-execute .nullable() widening + null fixture"). Evidence chain: frozen CourseExamTargetView.java :27-28 plain nullable LocalDate; V62__exam_series_calendar.sql :21-22 "entry_deadline DATE, -- nullable: not always announced" / same results_date (window_start/window_end NOT NULL — only :241-242 widen); the landed 043 service already passes the columns through honestly at runtime (the as-string casts silence TS only); 043's own examSeriesViewSchema (learner-me.ts) correctly marks both .nullable(). This is a pure WIDENING — no fixture on main feeds null today, so no existing pin can break.
+- Zero-collision scan re-run immediately before branch cut @ fe97f94: open PRs 0; competing heads none (t-mig-038/r1c = merged stale process branch c071c429, ancestor-verified); zero f2-nullable claims in the worklog; learner.ts fences all closed (041 DONE #65 queue-merged, 043-t1 DONE #74, 038 DONE + drift-flipped).
+- Branch t-mig-038/f2-nullable-r1 cut @ fe97f94. Fence: learner.ts :241-242 + the schema comment block; learner.test.ts (null fixture test only); .syllabai/receipts/T-MIG-038/** (run-002 receipt); this worklog. Everything else read-only.
+
+Stage Summary:
+- Claim staked. Next: widen, pin null, gates at exact deltas vs 948/0/13skip/2689 (961 ran / 56 files @ fe97f94), receipt run-002, PR with authors-never-self-merge (review requested from R0/peers — the operator delegation covers only non-self-authored PRs).
 
 ---
+Task ID: r1-f2 (R1-contracts lane, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Agent: Super Z (R1-contracts lane)
+Task: EXECUTE the F2 claim (branch t-mig-038/f2-nullable-r1, cut @ fe97f94): courseExamTargetViewSchema .nullable() widening + null fixture.
+
+Work Log:
+- WIDENED learner.ts entryDeadline/resultsDate z.string() -> z.string().nullable(); comment block now carries the full evidence chain (frozen record :27-28 plain LocalDate, V62 :21-22 'nullable: not always announced' vs NOT NULL window columns, ExamSeriesImportService null-checks :112/:116, the F2 two-lane register trail). windowStart/windowEnd deliberately stay strict.
+- PINNED the null law in learner.test.ts: both-null parses; half-announced (resultsDate null) parses — each column independently nullable; windowStart/windowEnd null still rejected; non-null posture unchanged. Pure widening, no existing pin fed null.
+- GATES: typecheck x3 exit 0 (root/packages/apps/api; hub has no script); bun test apps/api packages = 962 ran / 949 pass / 0 fail / 13 skip / 2693 expect (EXACT: fe97f94 baseline 961/948/0/13skip/2689 + 1 test/+4 expects); golden --selftest OK; zero golden files; zero Neon contact.
+- Receipt: .syllabai/receipts/T-MIG-038/run-002-f2-nullable-widening.json (claim context, finding evidence, gates delta, merge posture).
+- Merge posture: authors-never-self-merge — PR filed, independent review requested (R0/peers); the operator delegation covers only non-self-authored PRs.
+
+Stage Summary:
+- F2 carry-forward is code-complete and fully gated; the last over-constraint in the canonical #60 learner bundle is queued for intake. Round-10 ledger for this lane: R0 verified merged (queue 0), 043 yield recorded (w0a earliest claim #74 DONE), F2 executed.
 
 Task ID: 18
 Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, operator trace 1a10f154ce512e59)
@@ -2605,7 +2634,6 @@ Stage Summary:
 - The instrument's first census movement: 105 → 108 with the blocking class retired and zero regression. The daily 02:30 UTC schedule owns the census from here. Unfiled next port-fix candidate: selfmark validation-order. LANE IDLE after this filing.
 
 ---
-
 Task ID: 2
 Agent: w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
 Task: Operator directive trace 1a10eae6bc2044c1 (continuation) + the fresh-PAT push window — land the tranche-2 branch (push + PR + CI + R0 intake).
@@ -2620,3 +2648,17 @@ Work Log:
 
 Stage Summary:
 - Tranche-2 is PUSHED and PR'd (#85): CI green, and every R0-AUTO guard-chain precondition is satisfied at 22deff2 (base == main tip fe97f94 → mergeable-clean, 0 reviews/comments, syllabai-v2-only file boundary, CI success at the real head). LANE w0a: monitoring the desk; the operator's standing authorization (trace 1a10d0c303d3852d "review+merge yourself") remains the disclosed fallback ONLY if the desk does not act. Zero golden files touched; zero Neon contact; zero force-push. STOP.
+
+Task ID: 18a (routing-vs-claim ruling — 052-t2)
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, operator trace 1a10f23d18b18705)
+Task: Operator routing (this round) "052-t2 routes+mounts" — pre-claim collision census found the incumbent claim already of record.
+
+Work Log:
+- Pre-claim census at main 414f4a6: 4 open PRs (#84 t-mig-053/r3a, #85 t-mig-043/w0a, #86 t-mig-038/f2, #88 r0r6-triage — none touching 052); branch t-mig-052t2/r9-hubx carries claim-only commit 0aaca52 @ 2026-10-06T02:50:00Z — card IN_REVIEW -> IN_PROGRESS (tranche2_claimed_at 03:12:00Z), worklog claim entry appended, zero code delta (2 files, +17/-1, .syllabai only).
+- §2.1 earliest-claim-wins applied on the timestamps of record: the incumbent claim (commit 02:50:00Z, yaml stamp 03:12:00Z) PRECEDES this session's routing (which landed after de28315, this round). The incumbent is itself operator-routed (their trace 1a10f170ab141745 "Check if R0 has merged or not..." -> R0 verdict IN -> "continue working" -> own-card t2 resumption under the standing claim directive trace 1a10ec4d22b0e54d) — the round-12 "same operator word, distinct traces" fleet pattern verbatim.
+- RULING: this lane does NOT enter the 052-t2 band. Zero t2 code written here (no routes/classroom.ts, no mount lines, no route-test pins) — the double-PR collision class (#69/#72, #74/#76, #77/#78 precedents) stays at zero.
+- Incumbent claim quality verified first-hand (not rubber-stamped): branch cut from fe97f94; card flip + stamps present; zero-collision scan documented in their claim entry; the FROZEN READ for all 12 endpoints already re-read line-against-line @ 6cad6ef (TeacherClassController 8 — create 201 :80-81, list 200 :101, get 200 :111, status 200 :135, members-add 201 :150-151 re-enroll idempotent still 201, member-remove 200 :177, announcement-create 201 :191-192, announcement-list 200 :216; LearnerClassroomController 3 — overview/announcements/read 200 :70/:88/:103; TeacherRosterController 1 — :37; SecurityConfig :87/:91 authz; GlobalExceptionHandler error law :158-179); the card's /api/v1/teacher/learners mount-conflict question resolved (teachermarking serves /api/v1/teacher/marking — mounting /api/v1/teacher/learners is conflict-free).
+- This entry is the only direct-main write by this lane (worklog-only, sweep-receipt precedent acce2c6/.../633bfff/de28315).
+
+Stage Summary:
+- 052-t2 stands CLAIMED by r9-hubx (claim of record 0aaca52 @ 02:50:00Z, branch t-mig-052t2/r9-hubx); lane r1c IDLE on that band by the law, not by inaction. If the operator intends to REVOKE the incumbent claim and transfer t2 to r1c, that must be an explicit operator ruling (authority above §2.1) — until then the incumbent proceeds, and their PR will request independent review under authors-never-self-merge, for which this lane is an eligible reviewer (author != reviewer).
