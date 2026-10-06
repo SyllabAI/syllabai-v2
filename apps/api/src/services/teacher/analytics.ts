@@ -794,12 +794,17 @@ async function representativeEvidence(
 const engineOf = (deps: AnalyticsDeps): AnalyticsEngineParams & { now: Date } => {
   const now = deps.clock.now();
   // the SAME engine numbers the learner surfaces use (LEARNER_ENGINE_PAPER_DEFAULTS
-  // — no teacher-specific tuning, § read-only-by-construction)
+  // — no teacher-specific tuning, § read-only-by-construction). The
+  // recommendation thresholds are the frozen CONFIG law (RecommendationProperties
+  // :23/:26 + application.yml :88/:91 — the values the frozen production wire
+  // runs): weak-mastery-ceiling 0.45 (the decay LOW band ceiling),
+  // min-attempts-for-weakness 2 — the same numbers the merged w0a NBA port
+  // carries (learner-me/nba.ts). #108 review finding, fix-forward.
   return {
     decay: deps.engine?.decay ?? LEARNER_ENGINE_PAPER_DEFAULTS.decay,
     bdt: deps.engine?.bdt ?? LEARNER_ENGINE_PAPER_DEFAULTS.bdt,
-    weakMasteryCeiling: deps.engine?.weakMasteryCeiling ?? 0.5,
-    minAttemptsForWeakness: deps.engine?.minAttemptsForWeakness ?? 3,
+    weakMasteryCeiling: deps.engine?.weakMasteryCeiling ?? 0.45,
+    minAttemptsForWeakness: deps.engine?.minAttemptsForWeakness ?? 2,
     now,
   };
 };
