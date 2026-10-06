@@ -1,0 +1,36 @@
+{
+  "task": "T-MIG-061",
+  "run": "run-002-tranche1",
+  "lane": "r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "operator_trace": "1a10f3ef205fa961",
+  "branch": "t-mig-061/r9-hubx",
+  "base": "origin/main ced0111 (claim) -> intake origin/main aca7a5e (2f6d461)",
+  "frozen_ref": "6cad6ef",
+  "commits": [
+    "claim 9543107 (card + run-001-claim + worklog Task-20)",
+    "contracts b44f1a1 (intervention.ts + 7 schema pins + index one-liner)",
+    "services 7de90d8 (lifecycle + scenario port, typed errors, F-061-A/B/C disclosed)",
+    "tests 9e3dcb3 (44 service pins over fakeSql + the in-memory run store)",
+    "intake 2f6d461 (worklog union, 0 markers)"
+  ],
+  "scope_landed": {
+    "endpoints_covered_by_module": 9,
+    "frozen_files_ported": 11,
+    "frozen_lines": 928,
+    "routes": "tranche-2 (OUT-OF-FENCE; the module carries the controller laws, the route mapping is documented on the module header)"
+  },
+  "gates": {
+    "typecheck": "x4 exit 0",
+    "api_packages": "1156 ran / 0 fail / 13 skip / 3482 expect over 63 files = main aca7a5e 1106-ran-3299-61f + this lane's +50 tests/+183 expect/+2 files EXACT",
+    "hub": "36 / 0",
+    "golden_selftest": "OK"
+  },
+  "findings": [
+    "F-061-A (R-043-A class): V26 intervention_run_terminal_ck requires terminal_outcome NOT NULL on CANCELLED/FAILED/COMPLETED, but frozen cancel() writes no outcome -> the live DB rejects the cancel write (500 at the storage seam); the port writes what v1 writes, pinned at the SET clause",
+    "F-061-B: the request @Size caps (R13) are INERT (bare @RequestBody, no @Valid) - reproduced as the honest absence",
+    "F-061-C: the Step entity's monotonic-sequence guard is unreachable through the module surface (server-assigned next always increases) - comment-resolved",
+    "F-061-D: the controller DONE/ATTEMPT_EVIDENCE defaults neutralize the VALIDATION pass only - the RAW null status/role reaches the entity constructors whose IllegalArgumentException yields the 400 FIXED 'malformed request' body; pinned both paths"
+  ],
+  "id_ratification": "requested at PR review (030/032/039/040-PREP/041/043/055/060 precedent)",
+  "self_merge": "never - independent review + R0 merge-intake requested"
+}

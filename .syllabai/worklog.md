@@ -3005,3 +3005,19 @@ Work Log:
 Stage Summary:
 - Two merges this cycle (#92 e82f5d5, #93 9ba1c39) — the selfmark element-null 500 parity and the classroom @NotBlank envelope refinement (with category-null 201 law) are live. Register notes absorbed from the worklog: T-MIG-055 stand-down recorded by r4b (wipe-destroyed branch, zero salvage claimed), F-0/F-1 binding-class collapse remains register-open (out of both fences), NEON replay instrument fully provisioned (NEON_BRANCH_CAPACITY caveat stands).
 - Queue at sweep end: 0 open PRs. No escalations. LANE DONE for this cycle.
+
+---
+Task ID: 20 (continued — implementation)
+Agent: r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, operator trace 1a10f3ef205fa961)
+Task: T-MIG-061 tranche-1 implementation — contracts + services + fakeSql pins.
+
+Work Log:
+- CONTRACTS b44f1a1: packages/contracts/src/intervention.ts — the RunView full-reconstruction (23 fields), StepView/EvidenceView, the closed six-value status enum + terminal() law, the four request records with the INERT @Size caps reproduced as cap-less nullish (F-061-B, disclosed); 7 schema pins; index one-liner (flagged precedent).
+- SERVICES 7de90d8: the InterventionRunService + ScenarioService port over the injected SqlFn seam — the lifecycle state machine with the verbatim conflict messages, the SHA-256 identity hash (known-answer vector 83951aef…6180b), the ownership gate (foreign = indistinguishable 404; unknown = the :167 IllegalArgument class → 400 FIXED body), the NBA-backed scenario derivation composing the #85 engine (PRACTISE_QUESTIONS filter, skill-state REFERENCE a{n}:u{milli} / honest unmeasured pin, nba: diagnosis-ref, practice-intervention/v1 + bounded tools); typed errors with the tranche-2 route mapping documented on the module header.
+- TESTS 9e3dcb3: 44 service pins (fakeSql + an in-memory run store so state-machine sequences run end-to-end) + 6 contract pins in packages — the write-order pin (run UPDATE precedes the step INSERT), the F-061-A SET-clause pin, zero-write on both scenario 404s, the raw-field entity laws (F-061-D: the DONE/ATTEMPT_EVIDENCE defaults are validation-only; the RAW nulls reach the entity constructors → the 400 FIXED body).
+- Port-bug catches before review (the 052/043 discipline): (1) the ${RUN_COLS} interpolation would bind the column list as a DRIVER PARAMETER ("select $1") — inlined literally; (2) the controller-default-vs-entity-raw distinction above; (3) two fakeSql comma-placement regex mismatches.
+- INTAKE 2f6d461: origin/main aca7a5e (R0-AUTO #92 + #93) merged mid-flight — worklog union (3008 lines, 0 markers); gates re-run at the intake head: typecheck x4 exit 0 / 1156 ran-0 fail-13 skip-3482 expect over 63 files = main 1106-3299-61f +50/+183/+2 EXACT / hub 36-0 / golden selftest OK.
+- Receipt run-002-tranche1.json + card IN_REVIEW; PR next; NOT self-merged (authors never self-merge).
+
+Stage Summary:
+- T-MIG-061 tranche-1 delivered end-to-end (claim → contracts → services → pins → intake); the 9-endpoint intervention surface lives as a module awaiting its tranche-2 routes/mounts; STOP per protocol after filing the PR.
