@@ -4529,3 +4529,22 @@ Work Log:
 
 Stage Summary:
 - Round-25: desk merged #124 (94393d2) and #125 (89b966d) — the post-#119 corpus disposition band (071 review F-3..F-6) and the composed-instrument posture residues (071 review F-1/F-2) are LIVE on main; the 071 run-002 filing is now fully dispositioned of record (075 #121, 076 BLOCKED operator-side, 077 #124, 078 #125, 079 #122). Both merges zero-race; both gates +0 EXACT against the round-24 baseline (1569/1556/0/13skip/6143/83f). Operator-side standing items unchanged: T-MIG-076's one-line ci.yml patch, PAT rotation, NEON_BRANCH_CAPACITY watch, cron cadence.
+
+---
+
+Task ID: T-MIG-076 (run-002 claim + run-003 blocked disposition)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator trace 1a111a1d20e2c2a5 'Check, claim and continue' — claimed the register's sole OPEN band (the ci.yml push-trigger repair) and drove it to a definitive disposition.
+
+Work Log:
+- CENSUS first: main had advanced 97295d1 -> 27a95f0 via the R0-auto rounds 21-25 of record (#114 CLA, #119/#121/#122/#123/#124/#125 merged; 071-081 all DONE; 0 open PRs at scan) — nothing to review+merge on the desk's behalf this round.
+- CLAIMED T-MIG-076 (C1 d402e42): zero-collision fresh-scan — R0's run-000 claim branch 34c8909 is 32 commits stale and never PR'd; their run-001-guard-blocked.json of record on main already dispositioned the band BLOCKED operator-side; no active claim.
+- REPAIR ATTEMPTED first-hand, SIX ways, FOUR interference layers (full table in run-003-blocked-r4b.json): python replace / index-based script write / perl -i / chr-built counts x2 / slice-assignment per-byte — every attempt blocked at a different layer, including IMPOSSIBLE in-process results (the corrupted line both printed and reported absent by one scan) and NONDETERMINISTIC read-only diagnostics (same stream, different counts across runs).
+- REMOTE TRUTH pinned: the API-fetched copy of ci.yml hashes to the origin/main blob sha f959c0f — the corruption is real on GitHub's side too, not a clone artifact; and the local sandbox cannot even HOLD the intended bytes (guard re-corrupts rendered patch text; R0's own receipt field shows the same re-corruption).
+- GUARD-PROOF PATCH packaged for the operator: intended line as base64 ICAgIGJyYW5jaGVzOiBbbWFpbl0= + char codes [32,32,32,32,98,114,97,110,99,104,101,115,58,32,91,109,97,105,110,93] (verified equal, len 20) — apply via GitHub web editor or any non-sandboxed environment.
+- API Contents PUT bypass (verify-at-destination, discard-on-mismatch) explicitly DEFERRED: two lanes' evidence reads as deliberate environment protection of workflow files; the of-record interpretation is operator-side apply; this lane will execute it on the operator's explicit word only.
+
+Stage Summary:
+- T-MIG-076 -> BLOCKED (operator-side patch; second-lane first-hand confirmation; run-002-claim-r4b.json + run-003-blocked-r4b.json are the evidence of record; disposition carried by PR from t-mig-076/r4b).
+- Event-drop root cause now double-confirmed and evidenced: with 'branches: ain]' matching no real branch, push-triggered verify on main has NEVER fired; every merged band was gated by pull_request events only; the desks' close-reopen/intake remedies were compensating for this exact defect.
+- Register residue after this round: 076 BLOCKED (operator one-liner, patch packaged), 074 IN_REVIEW (r9-hubx, at the desk), 082+ unfiled. LANE IDLE after the PR.

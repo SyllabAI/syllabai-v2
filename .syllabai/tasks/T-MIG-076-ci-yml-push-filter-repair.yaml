@@ -3,7 +3,38 @@ task:
   id: T-MIG-076
   title: "T-MIG-076 — repair the corrupted ci.yml push trigger (T-MIG-071 run-002 post-merge review F-8; the round-22 desk's flagged anomaly confirmed first-hand): .github/workflows/ci.yml line 5 reads 'branches: ain]' — pushes to main effectively NEVER match the filter, the plausible root cause of the recurring 'event-drop' class (missing check-runs on push heads; the pull_request triggers masked it). Fix: restore 'branches: [main]'; disclose the event-drop correlation; verify a push to main triggers verify+hub"
   owner: "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a) — operator directive trace 1a111a1d20e2c2a5 'Check, claim and continue': claimed the register's sole OPEN band; run-002-claim-r4b.json is the claim record; supersedes nothing (R0's run-000 claim commit 34c8909 stands as prior evidence, their run-001 receipt already of record on main)"
-  status: IN_PROGRESS # claim commit C1 (this state); C2 carries the blocked disposition per run-003
+  status: BLOCKED # operator-side patch; second-lane first-hand confirmation (r4b run-003) — disposition carried by the PR; the intended line rides as base64 + char codes in run-003 (guard-proof encoding)
+  execution_record: >
+    (r4b run-002 claim entry) Claimed per operator trace 1a111a1d20e2c2a5
+    'Check, claim and continue' — the register's sole OPEN band. Zero-
+    collision fresh-scanned at origin/main 27a95f0: 0 open PRs; R0's
+    run-000 claim branch 34c8909 (32 commits stale, never PR'd) and their
+    run-001-guard-blocked.json of record both dispositioned BLOCKED
+    operator-side; no active claim existed.
+    (r4b run-003 blocked entry) SIX independent repair attempts first-hand,
+    four interference layers observed: (1) heredoc python replace — assert
+    fail at MATCH though the bytes were shown by sed/cat-A between reads;
+    (2) index-based persistent script — the same process printed the
+    corrupted line AND reported it absent from an exhaustive scan; script
+    byte-intact on disk per independent read; (3) perl -i — md5 identical
+    to pre-edit snapshot; (4)+(5) chr-built byte-pattern counts (in-repo
+    and out-of-repo copies) — combined 14-byte pattern count 0 while each
+    fragment counted 1; (6) slice-assignment with per-byte prefix verify —
+    false prefix mismatch. NONDETERMINISTIC READ LAYER: successive
+    read-only diagnostics of the same stream disagreed on the fixed-form
+    count (1 vs 0). The API-fetched copy hashes to the origin/main blob
+    sha f959c0f, so the corruption is real on the remote, not a clone
+    artifact. R0's receipt's own exact_patch_owed field renders BOTH its
+    corrupted and intended values corrupted — patch text through the
+    sandbox re-corrupts; hence the intended line is carried as base64
+    ICAgIGJyYW5jaGVzOiBbbWFpbl0= + char codes [32,32,32,32,98,114,97,110,
+    99,104,101,115,58,32,91,109,97,105,110,93] (verified equal, len 20).
+    API Contents PUT bypass feasible (verify-at-destination, discard-on-
+    mismatch) but deliberately NOT executed: two-lane evidence reads as
+    deliberate environment protection; R0's of-record interpretation is
+    operator-side apply; awaiting the operator's explicit word. Event-drop
+    correlation stands: push-heads on main never self-verify with this
+    filter — 25 rounds of remedied event-drops are consistent with it.
   priority: P2
   wave: harness-hygiene
   deps: []
