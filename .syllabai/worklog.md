@@ -3357,7 +3357,6 @@ Stage Summary:
 
 
 ---
----
 Task ID: R3a-ROUND-15 (operator directive trace 1a10f7345efcba35: "the F-072 class-KG heatmap trio")
 Agent: superz-agent-b (R3a lane, Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
 Task: Close T-MIG-053 tranche-1 — the F-072 class-KG heatmap trio + the F-034 read model.
@@ -3470,7 +3469,6 @@ Work Log:
 Stage Summary:
 - T-MIG-062 IN_REVIEW with CI green at the final head 87c0874; the PR carries the full evidence chain (claim-first, receipts, exact arithmetic vs live-measured main, union intakes with zero entry loss). LANE IDLE — awaiting the desk's independent review + R0 verdict + Wave-6 id ratification.
 
----
 ---
 Task ID: T-MIG-060 (tranche-1b + tranche-2)
 Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
@@ -3632,3 +3630,17 @@ Work Log:
 Stage Summary:
 - Round-18: this desk merged #104 (6580b2c, the KaRAG deterministic core — Wave-6's largest band) with full intake+gates+arithmetic discipline; #102/#103 landed concurrently via the R4-api-b lane with proven retrigger remedy; main tip 6580b2c CI green, gates EXACT. Next: #106 per procedure.
 - POST-LANDING ADDENDUM (14:00+08, tooling-outage recovery): #106 merged of record d3f20f5 by the concurrent R0-MERGE-DESK-18 lane (68c21bf) during the outage — the "Next: #106" pointer above is superseded; queue state at this addendum's landing is the 14:00 sweep's own census.
+
+---
+
+Task ID: R0-DESK-SWEEP-19 (zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5, operator trace 1a10f988d00925cd "run the review/merge desk")
+Agent: r0 (Super Z — the review/merge desk)
+Task: The desk sweep over the open-PR queue; the bookkeeping pass (separator hygiene + this receipt).
+
+Work Log:
+- DESK SWEEP of record: #99 (T-MIG-064 F-B band) reviewed line-against-line + intake 9054484 (worklog union, one seam separator repaired and disclosed) + gates 1185-0-13skip-3615 EXACT at the intake head + CI green -> MERGED 862ca34. #100 (T-MIG-063) merged concurrently of record (ec40f1f) while under desk review — recorded. #101 (T-MIG-053 t1-close, +1035 service) reviewed line-against-line vs frozen 6cad6ef (gate chain, enabled-only roster, V39 predicate, misco keying, both-endpoints prerequisite filter, F-034 walk, teacher-lens deep-equal pin) + dual-intake convergence at 915d31c (code byte-identical to the desk review head) + gates 1207-0-13skip-3759 EXACT -> MERGED d14d949; nit of record: the convergence union left a doubled --- separator + missing EOF newline (repaired THIS commit). #102 (T-MIG-062 research calibration, 515-line service) reviewed line-against-line (skip-before-filter walk, emission clamp, three-state bins, k=5 C7 distinct-learner suppression, parser-parity nuances disclosed; the /api/v1/research mount RATIFIED per the 010..061 precedent) through a TRIPLE intake chain (eeef7e4 -> a17a48c -> 1ee92e9 — main advanced twice mid-CI; unions zero-marker/zero-new-gap, seams disclosed) + gates 1226-0-13skip-4239 EXACT + ci-replay selftest OK -> MERGED ea8f951. #103 (T-MIG-065 hub hygiene, config-only) finding REPRODUCED first-hand (bare bun test in apps/hub: 41/8/5fail/5errors -> 36/3/0/0) + root suite byte-identical + intake f098747 -> MERGED 32626cb. #104 (T-MIG-060 KaRAG band, 30 files) independent adversarial review (isolated subagent) returned REQUEST_CHANGES with 2 blockers (@NotBlank whitespace semantics dropped incl. the silent blank-turn drop at conversation.ts:74-75; NoReranker rerankScore-copy law dropped) — verdict of record posted as comment 6010396027; superseded by the OPERATOR DIRECT ORDER merge (6580b2c, trace 1a10fbe9465708c9) — disclosed here per append-only; the blockers remain on record for the follow-up band. #106 (T-MIG-066 consolidation) merged concurrently of record (d3f20f5, R0-MERGE-DESK-18).
+- INDEPENDENT GATES at the sweep tip 1f49d94: bun test apps/api packages 1332 pass / 0 fail / 13 skip / 4558 expect over 70 files — EXACT match to the corroborated receipts (6580b2c/d3f20f5 measurements); golden selftest OK; CI verify+hub success at the tip.
+- BOOKKEEPING (this commit, .syllabai/** only per the r0-role precedent): the two doubled --- separators removed (the 915d31c convergence residue + one later union residue, both zero-content-change per the e6cc4d1/9381d58 law) + the EOF newline restored + this receipt.
+
+Stage Summary:
+- Desk sweep complete: 5 PRs desk-merged or desk-adjudicated (#99 862ca34, #101 d14d949, #102 ea8f951, #103 32626cb desk-merged; #100/#106 concurrent of record; #104 operator-ordered over the desk REQUEST_CHANGES — disclosed), queue at zero, register carries RICH-200-C/D + T-MIG-067 + the #104 blocker band for the next rounds. LANE r0: STOP for this round.
