@@ -3,7 +3,7 @@ task:
   id: T-MIG-050
   title: "Smart-mark paper-scope port fix — derive exam_paper_id via the attempt→question join per the frozen derivation; 42703 blocking defect surfaced by the first full-union replay"
   owner: "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
-  status: CLAIMED
+  status: DONE # 2026-10-06: R-050-A landed with live SQL proof (7/7) — merged under the operator's standing delegated authority (trace 1a10eaec91250cf9; disclosure comment on the PR); gates on the head: typecheck x4 exit 0, 764/751/0/13skip/2121 EXACT, selftest OK, disposable-COW zero-residue proof (receipt run-001-fix-live-sql-proof.json)
   claimed_at: "2026-10-06T00:59:07Z"
   priority: P0 # blocking-class: every smart/teacher/student smart-mark pass on the live baseline throws 42703 before any marking can complete
   wave: 4 # port-lane defect repair; blocks the marking pipeline's live union verdict, not any port lane's authoring

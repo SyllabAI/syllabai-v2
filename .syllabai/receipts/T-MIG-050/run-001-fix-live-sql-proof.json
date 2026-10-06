@@ -1,0 +1,40 @@
+{
+  "task": "T-MIG-050",
+  "run": "run-001-fix-live-sql-proof",
+  "agent": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "date": "2026-10-06",
+  "operator_directive": "\"Proceed with T-MIG-048\" (trace 1a10eaec91250cf9). RULING OF RECORD: the receipts (T-MIG-047 run-001/run-002) named this defect 'T-MIG-048 candidate' — filing text only, never a card; the T-MIG-048 id is the neon-branch fail-path redaction card (DONE, PR #70 merged 190706e per R0s-ROUND-10a §2.1 earliest-claim-wins disclosure). The defect work was UNCLAIMED; filed under next free id T-MIG-050 and executed under the operator's standing delegated authority (precedents 260f452 / 39ee5d5 / 190706e).",
+  "base": "origin/main d077ffa",
+  "branch": "t-mig-050/r0",
+  "commits": ["4e63611 (CLAIMED card)", "9745d62 (R-050-A fix)", "fixtures+fence-amendment (see push)"],
+  "frozen_ref": "syllabai-core @ 6cad6ef — READ for the derivation: SmartMarkService.java :139 and :236 call kappaGatePassed(question.examPaperId()) where question = attempt.question(); StudentSmartMarkService.java :163 same; kappaGatePassed :333-345 (null paper id ⇒ paper gate false, global gate decides — fail-closed)",
+  "finding": {
+    "id": "T-MIG-047 run-001/run-002 genuine port finding (blocking-class)",
+    "defect": "v2 port selects attempts.exam_paper_id — the column does not exist on the live baseline (42703 undefined column at the first smart-mark call; boot-seed.log evidence). Stub-SQL tests structurally blind (fake router matches text, does not validate columns against a schema).",
+    "surface_bounded": [
+      "smartmark/index.ts markAttempt :492 (field consumed :553)",
+      "smartmark/index.ts loadOwnedAttempt :739 (field consumed :696)",
+      "smartmark/index.ts loadFeedbackSource :797",
+      "teachermarking/index.ts markAnswer :492 (attempt-sourced field NEVER read — paper scope already flows via the questions join :501, consumed :583 — frozen-faithful)",
+      "teachermarking/index.ts recordHumanMark :717 (same)"
+    ],
+    "verified_clean": "all other exam_paper_id references in apps/api (assessment/submit, exam-papers/papers, questions/servable, content/review-repos, assessment/history, learner/state, selfmark) read questions.exam_paper_id or unrelated columns — grep-bounded"
+  },
+  "fix": {
+    "id": "R-050-A",
+    "deliverable": "smartmark: the three attempt-row selects derive paper scope with 'join questions q on q.id = a.question_id' selecting q.exam_paper_id (row aliased a; 'for update of a' keeps the lock surface attempt-only — frozen parity, the frozen question load is unlocked); AttemptLockRow field documented as join-derived. teachermarking: phantom column dropped from the two lock selects + AttemptLockRow (unconsumed field; zero behavior surface). kappaGatePassed null law untouched (already byte-faithful).",
+    "fence_amendment": "apps/api/test/smartmark/{smartmark,routes}.test.ts added to scope.allowed BEFORE push — the fake-SQL router mirrors shipped SQL text, so route regexes must carry the corrected join shape; regex/comment lines only, row fixtures byte-unchanged; no other test file references the old text (grep-verified)."
+  },
+  "gates": {
+    "typecheck": "bun run typecheck (contracts, shared, db, api) — exit 0",
+    "suite": "764 ran / 751 pass / 0 fail / 13 skip / 2121 expect — EXACT baseline arithmetic (zero test delta vs main d077ffa stamp)",
+    "golden_selftest": "OK (tolerance engine incl. declared-unordered multiset)"
+  },
+  "live_sql_proof": {
+    "method": "read-only EXPLAIN + catalog reads against a disposable copy-on-write branch created with the T-MIG-046-fixed tool (seed br-muddy-forest-a5vzyznp + prod br-dawn-term-a5eif3gx, role passwords taken from creation responses, URIs masked); console-mirror fallback disclosed per T-MIG-046; ZERO writes; both branches DROPPED + 404-VERIFIED after the proof (zero residue)",
+    "assertions": "7/7 PASS — (1) attempts enumerates 14 columns and exam_paper_id is absent; (2) questions.exam_paper_id exists nullable=YES; (3) NEW join select 'for update of a' plans; (4) NEW join select plain-read plans; (5) OLD select reproduces 'column \"exam_paper_id\" does not exist' (42703) LIVE; (6) join returns rows on the seeded branch with paper_id=null exercising the frozen null law; (7) harness completed",
+    "harness": "scripts/t050-sql-proof.ts (session scripts dir, outside every repo tree; executed as an untracked repo scratch copy for module resolution, removed after run, never committed)"
+  },
+  "next": "the next neon-replay dispatch (daily 02:30 UTC or manual) retires the 42703 class from the failure census; smart-mark family cases get their first honest live verdict",
+  "register_unchanged": "H-2 Flyway-seed-pinned third-posture ruling (R0/R6), identity-pin amendments, 429 pacing decision, realdata drift tolerance — all still operator-visible; Actions register: recent ci runs green again (last observed 37360934904 success 2026-10-05T19:06Z) — the earlier 'Actions dark' note appears resolved, operator billing check may be stood down"
+}
