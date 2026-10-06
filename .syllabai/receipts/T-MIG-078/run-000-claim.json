@@ -1,0 +1,11 @@
+{
+  "task_id": "T-MIG-078",
+  "kind": "claim",
+  "run": "run-000",
+  "claimed_at": "2026-10-06T11:16:31Z",
+  "agent": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)",
+  "authority": "operator trace 1a110ec1863f3305 'next free band. Check, claim and continue' — 078 is the register's sole FREE OPEN band (075 DONE of record #121/6d03790; 076 BLOCKED operator-side of record 8cc28e8; 077 claimed 487e9ef @ 11:12:28Z with 'F-2 residues stay T-MIG-078's'; 079 branch-claimed by r3a d06eab8 @ 11:07:44Z); claimed from the T-MIG-071 run-002 post-merge review F-1/F-2 filing (6273c77)",
+  "zero_collision": "git ls-remote ZERO *078* heads on origin; no .syllabai/receipts/T-MIG-078/ on main; worklog 078 mentions = the 5-card filing + cross-references only; the 077 claim's scope explicitly excludes F-2; 076's operator-side block does not touch this band (078 is corpus+instrument only, .github/workflows forbidden by its own fence)",
+  "design": "F-1 topics 0-vs-4 (the V63-seeded-unstaged THIRD posture unreachable in the two-tranche instrument: the V63 question seed fires inside the rich staging builders, not the base apply-reset) + F-2 shared-learner state leakage (w3-history-after-submit-200 total 2-vs-1; w4-course-stats/w4-state-practiced flashcardRatings-vs-skillStates: the replay mints ONE student across cases while each capture used a fresh learner) — option selection AFTER a first-hand read of the live instrument (golden/runner.ts apply-reset + staging builders, golden/tools/ci-replay.ts partition) and the four named case files; zero silent widening (comparator untouched, no case deletions, no pacing additions); corpus+instrument fence per the card (golden/tools/** + construction-only case markers/ruled re-pins; apps/**, packages/** forbidden; no production Neon/Render writes)",
+  "gates_baseline": "1546 ran / 1533 pass / 0 fail / 13 skip / 6036 expect / 82 files at 64782f6 (the R0 review lane's ratified EXACT number, run-002); re-measured first-hand at the implementation branch cut before any edit"
+}

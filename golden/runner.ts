@@ -176,6 +176,38 @@ export function ordinaryHeaderExpectations(
   return rest;
 }
 
+// T-MIG-075 (E-class, run-7 note E keyword-set design; run-9 action 1, P1):
+// how the replay must treat a case's DECLARED Authorization header.
+//   none                    — no Authorization declared: send none (capture-faithful).
+//   substitute              — the value carries the {{TOKEN}} placeholder: replace it
+//                             with the minted/route-rule bearer (the T-MIG-006 law).
+//   verbatim-bearer-posture — the case NAME declares a deliberate 401 posture
+//                             (malformed-bearer | empty-bearer): send the DECLARED
+//                             value VERBATIM ("Bearer not-a-jwt", "Bearer "). These
+//                             postures prove v2's true authz behavior — the hadAuth
+//                             upgrade to a valid bearer masked them for 5+ runs
+//                             (run-7 class E). Zero case-file edits: the two cases
+//                             already pin the correct literals.
+//   re-mint                 — any other declared value is a scrubbed capture dummy
+//                             (44 authed cases): replace with the route-rule bearer
+//                             (the committed scrubbing convention — verbatim would
+//                             falsely 401 the whole authed corpus).
+// Single-sourced here and imported by golden/tools/ci-replay.ts (the 071
+// zero-drift law: ONE decision, both call sites).
+export type AuthPosture = "none" | "substitute" | "verbatim-bearer-posture" | "re-mint";
+
+const BEARER_POSTURE_NAME = /(^|-)(malformed-bearer|empty-bearer)(-|$)/;
+
+export function authPosture(kase: GoldenCase): AuthPosture {
+  const declared = Object.entries(kase.request?.headers ?? {}).find(
+    ([h]) => h.toLowerCase() === "authorization",
+  );
+  if (!declared) return "none";
+  if (declared[1].includes(TOKEN_PLACEHOLDER)) return "substitute";
+  if (BEARER_POSTURE_NAME.test(kase.name)) return "verbatim-bearer-posture";
+  return "re-mint";
+}
+
 const CASES_DIR = join(import.meta.dir, "cases");
 
 export function loadCases(): GoldenCase[] {
@@ -608,7 +640,42 @@ function selftest(): number {
     console.error("selftest FAILED: non-participating cases must keep their expectations");
     return 1;
   }
-  console.log("selftest OK: tolerance engine behaves (incl. declared-unordered multiset — T-MIG-024; RFC 8259 key canonicalization + tranche partition — T-MIG-072; pattern Retry-After pin + declared limiter-429 posture — T-MIG-071)");
+  // T-MIG-075 (E-class): the auth-posture decision — the four modes, proven
+  // against the REAL corpus names/values (the two 401-posture cases verbatim,
+  // the placeholder law, the scrubbed-dummy re-mint, the no-header path).
+  const authCase = (name: string, auth?: string) =>
+    ({
+      name,
+      method: "GET",
+      path: "/x",
+      expect: { status: 200, body: null },
+      ...(auth === undefined ? {} : { request: { headers: { Authorization: auth } } }),
+    }) as unknown as GoldenCase;
+  if (authPosture(authCase("w4-agenda-malformed-bearer-401", "Bearer not-a-jwt")) !== "verbatim-bearer-posture") {
+    console.error("selftest FAILED: the malformed-bearer posture must replay its declared value verbatim");
+    return 1;
+  }
+  if (authPosture(authCase("w4-state-empty-bearer-401", "Bearer ")) !== "verbatim-bearer-posture") {
+    console.error("selftest FAILED: the empty-bearer posture must replay its declared value verbatim");
+    return 1;
+  }
+  if (authPosture(authCase("auth-me-with-bearer-200", "Bearer {{TOKEN}}")) !== "substitute") {
+    console.error("selftest FAILED: the {{TOKEN}} placeholder law must substitute");
+    return 1;
+  }
+  if (authPosture(authCase("teacher-curriculum-nodes-teacher-200", "Bearer dummy-scrubbed")) !== "re-mint") {
+    console.error("selftest FAILED: scrubbed-dummy literals must keep the route-rule re-mint");
+    return 1;
+  }
+  if (authPosture(authCase("content-reader-real-doc-unauthed-401")) !== "none") {
+    console.error("selftest FAILED: no declared Authorization must send none");
+    return 1;
+  }
+  if (authPosture(authCase("auth-me-with-bearer-200", "Bearer dummy-scrubbed")) !== "re-mint") {
+    console.error("selftest FAILED: bearer-bearing names without a posture keyword must NOT go verbatim");
+    return 1;
+  }
+  console.log("selftest OK: tolerance engine behaves (incl. declared-unordered multiset — T-MIG-024; RFC 8259 key canonicalization + tranche partition — T-MIG-072; pattern Retry-After pin + declared limiter-429 posture — T-MIG-071; auth-posture decision — T-MIG-075)");
   return 0;
 }
 

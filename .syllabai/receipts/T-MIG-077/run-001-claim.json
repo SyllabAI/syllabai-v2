@@ -1,0 +1,27 @@
+{
+  "task_id": "T-MIG-077",
+  "kind": "claim",
+  "run": "run-001-claim",
+  "timestamp": "2026-10-06T11:11:16Z",
+  "agent": "main (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)",
+  "authority": "operator trace 1a110e73e0ad1219 '077' — direct directive naming this card from the open queue presented after the T-MIG-071 claim collision (071 was already DONE of record, PR #119; no re-claim attempted)",
+  "claimed_band": "T-MIG-077 — the post-#119 corpus disposition band (T-MIG-071 run-002 post-merge review F-3/F-4/F-5/F-6; all items PRE-RULED, zero new rulings needed): (1) R1 re-pin x2 curriculum 401-to-the-law; (2) RICH-200-E families multiset via the T-MIG-024 unordered[] convention; (3) I-class symmetric empty-body sentinel law x3; (4) G-class prod createdAt stored-precision passthrough x2",
+  "baseline_of_record": "main 226cc2b (round-23 receipt: #121 merged 6d03790, T-MIG-075 DONE, sole P1 closed; register: 076 BLOCKED operator-side, 077/078/079 open); last live replay of record run #17 37443535771 @ f6a4bb8 union 157/177",
+  "branch": "t-mig-077/r0 (off 226cc2b)",
+  "deps_check": "T-MIG-072 DONE of record (#117 c88b738, composition + F-class canonicalization rider live); T-MIG-071 DONE of record (#119 64782f6, pattern-pin rider live) — both deps green",
+  "zero_collision": "no t-mig-077* heads on origin at claim time; 0 open PRs; worklog 077 mentions = the 5-card filing note (line 4290) + round-23 register note only — no claim markers",
+  "scope": [
+    "golden/cases/{curriculum-subject-bad-uuid-400,curriculum-subject-unknown-404}.json — R1 re-pin: expect 401 + Boot-default body {timestamp,status:401,error:Unauthorized,path}, tolerate [timestamp], justified:true citing SecurityConfig.java:65-94 @ 6cad6ef (run-9 triage R1, frozen-source verified)",
+    "golden/cases/w3-questions-families-student-200.json — RICH-200-E multiset disposition per ruling3 R3-D2 effect 4: the T-MIG-024 unordered[] convention on the host-nondeterministic tie order (multiset identical, triple-confirmed) + justified disclosure",
+    "golden/cases/{w4-target-series-clear-204,w4-target-series-clear-again-204,question-assets-unknown-404}.json — I-class symmetric empty-body sentinel convention (run-7 action 8 / run-9 action 6): <non-json> vs {_raw:''} and <non-json> vs <non-json:0 bytes> normalize to one empty-body equivalence class; v2 0-byte behavior confirmed from run-#16 artifact (neon-replay-37441112330-1) before the runner change",
+    "golden/runner.ts + golden/tools/ci-replay.ts — ONLY the I-class symmetric sentinel normalization (construction-only, selftest grows, disclosed); zero comparator-semantics contact beyond the empty-body class; unordered[]/tolerate[]/key-canonicalization untouched",
+    "apps/api/src/services/content/** — ONLY the G-class stored-precision passthrough (claimant locates the exact serialization site; the w0a-class driver-precision risk is checked first-hand before any edit; zero other-module contact; pins grow EXACT — if the driver loses sub-ms before serialization, the finding is disclosed and dispositioned, never papered over with tolerate[])",
+    ".syllabai/receipts/T-MIG-077/**; this yaml; .syllabai/worklog.md (append-only)"
+  ],
+  "disclosures": [
+    "F-2 shared-learner residues (history-after-submit 2-vs-1; course-stats/state leakage) are T-MIG-078's — NOT touched in this band even where the same files pass through the comparator",
+    "live leg: agent sandbox is DNS-blocked from Neon — offline gates = golden selftest + bun suites +0 delta; the live confirmation leg is the standing CI instrument on merge",
+    "run-#16 artifact first-hand evidence already staged locally: union 149/177 with all four F-3..F-6 classes observed live (curriculum 401s, families tie flip, the two sentinel shapes, content-docs createdAt tails)"
+  ],
+  "next": "run-002 implementation + gates + PR (authors never self-merge)"
+}
