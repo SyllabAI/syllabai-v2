@@ -1,0 +1,36 @@
+{
+  "task": "T-MIG-059",
+  "run": "run-002-binding-law",
+  "timestamp": "2026-10-06T04:45:00Z",
+  "change": {
+    "files": [
+      "apps/api/src/routes/classroom.ts (+78/-14 net: the classifier restructure + header doc amendments)",
+      "apps/api/test/classroom/routes.test.ts (+120: the seven F-0/F-1 pins)"
+    ],
+    "zero_contact": ["packages/** (ZERO contracts change)", "golden/** (zero golden files)", "apps/api/src/services/** (zero service change)", "any other routes module"],
+    "implementation": {
+      "F-0": "classifyBodyError gains the isBinding gate — any invalid_type with received not in {undefined, null} (wrong JSON type) and any invalid_string (format parse; defensive on this band — the classroom schemas carry no format checks) answers 400 malformed_body 'request body is not readable (check field types and enum values)' VERBATIM. Jackson whole-document law: a binding failure ANYWHERE beats every constraint (pinned: the binding failure on courseLabel 123 wins over the FIRST-issue @NotBlank refine on courseSlug '').",
+      "F-1": "the invalid_type branch renders the jakarta default 'field: must not be blank' for null/absent binds on @NotBlank properties (the :158-165 getDefaultMessage law; 'request invalid' demoted to the :163 orElse — the root-null disclosed posture kept verbatim via the empty-path guard field === \"\" -> 'request invalid').",
+      "shape": "the fleet classifyBodyError union (teachermarking :129 / selfmark :59 convention; #90 prior art :121/:136-137 adopted with credit, reshaped onto the merged file layout); the #93-adopted branches byte-exact (too_small defensive, custom verbatim, too_big tightened { maximum: number } cast — the ?? 0 fallback stays dropped per the #93 nit-2 ruling)"
+    }
+  },
+  "pins": [
+    "create {}: 400 validation_failed 'courseSlug: must not be blank' + zero queries (F-1 missing)",
+    "create {courseSlug, courseLabel, name: null}: 400 validation_failed 'name: must not be blank' (F-1 null-bind; the #93 review nit-3 divergence)",
+    "create {courseSlug, courseLabel: 123, name}: 400 malformed_body verbatim + zero queries (F-0)",
+    "create {courseSlug: '', courseLabel: 123, name}: 400 malformed_body — the FIRST-issue constraint does NOT beat the later binding failure (F-0 Jackson whole-document precedence)",
+    "create body 'null': 400 validation_failed 'request invalid' (the #89-disclosed 400-not-500 root-null posture, now pinned)",
+    "enroll {}: 400 validation_failed 'email: must not be blank' (F-1 family coverage; no .email() format check on EnrollRequest)",
+    "publish {title, body, category: 123}: 400 malformed_body (F-0 on the @Size-only optional field — a number into String is still a binding failure)"
+  ],
+  "gates": {
+    "baseline_at_claim_commit_9853716_content_1aea8bc": "typecheck x3 exit 0 (apps/hub has NO typecheck script — the x3 convention per #94); bun test apps/api packages 1094 pass / 0 fail / 13 skip / 3302 expect (1107 ran / 61 files) — EXACT vs the #94 receipt; golden --selftest OK",
+    "head": "typecheck x3 exit 0; bun test apps/api packages 1101 pass / 0 fail / 13 skip / 3330 expect (1114 ran / 61 files); golden --selftest OK",
+    "delta": "+7 tests / +28 expects / +0 files — EXACT (the seven new pins; zero regressions, zero pre-existing pin rewritten)"
+  },
+  "disclosures": [
+    "the root-null rendering improves from the unpinned pre-existing ': request invalid' (leading colon from the empty-path interpolation) to the #89-sketch ratified 'request invalid' — now pinned; disclosed as an intentional defensive-branch alignment inside the adopted classifier",
+    "invalid_string is DEFENSIVE on this band (no format checks on the four request schemas) — carried for fleet drift parity with teachermarking/selfmark",
+    "status/publish/title-body @NotBlank null-binds on the OTHER schemas are covered by the same branch (family pins on create + enroll + publish prove the three routes; status shares the classifier)"
+  ]
+}
