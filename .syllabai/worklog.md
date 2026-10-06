@@ -3055,3 +3055,17 @@ Work Log:
 Stage Summary:
 - Wave-6 is live: T-MIG-061 tranche-1 (intervention runs — contracts + services + pins) landed as the first Wave-6 band, hot on the heels of #94 (T-MIG-058). Board momentum: W4 complete, W5 classroom/selfmark consolidating, W6 opened.
 - Queue at sweep end: 0 open PRs. No escalations. LANE DONE.
+
+---
+Task ID: T-MIG-059 (claim)
+Agent: r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Claim the F-B band (operator trace 1a10f747060b0901) — the selfmark exact-parts emulation, the register-open item this lane filed on the PR #92 review thread (6009074844/6009163427) and restated on the T-MIG-058 card.
+
+Work Log:
+- Fetch-first census @ 37d8825: T-MIG-058 landed as PR #94 (1aea8bc) by a parallel lane mid-census (the branch was pushed and CI-green; the desk filed+merged it — the 422 'no commits between' on the PR-file attempt was the tell, verified 1072ac4 IS an ancestor of main); #95 (T-MIG-061 t1) merged af33b6f; queue 0 open PRs. The F-B band is unclaimed (zero 059* heads, zero 059 mentions anywhere in .syllabai/) — claimed as T-MIG-059, claim-in-first-commit on branch t-mig-059/r1 cut @ 37d8825.
+- Frozen law re-verified line-against-line at pinned core 6cad6ef this session (not from the review memory): LearnerSelfMarkController :42-48 — the dedup throw fires on HashMap.put DISPLACING A NON-NULL PREVIOUS VALUE (value-dependent: {X:null},{X:1} does NOT throw; {X:1},{X:null} throws; put(null,v) legal :44); SelfMarkRequest :59 bare List — @NotNull :55 / @Min(0) @Max(99) :56 dead (no container-element cascade) so Jackson binds null AND ABSENT element fields as null; LearnerSelfMarkService :102-111 exact-parts gate (HashSet keySet equality, null key -> 400 bad_request 'self-mark must cover exactly the attempt's parts', ordered after the attempt 404) and :113-121 the bound loop `int marks = e.getValue()` (:116) — a null Integer NPEs ON UNBOXING after the gate, before any settle write -> catch-all 500 internal_error (data-dependent: in-attempt partId -> 500, not-in-attempt -> the exact-parts 400 first).
+- Port gaps on main (post-#94): (1) contracts partSelfMarkSchema requires non-null uuid partId + int marksAwarded — nested nulls/absent fields die upstream as 400 validation_failed instead of reaching the service; (2) the superRefine duplicate law is a plain seen-set — misses the value-dependent put() semantics; (3) services/selfmark bound loop compares with JS semantics — a null marks would silently coerce (null < 0 is false) and settle a 201 where the frozen core 500s.
+- Scope of record: contracts nullish widening (the min(0)/max(99) inferred-constraint divergence class NOT touched — stays disclosed per 057) + put-semantics superRefine; route map widening (undefined normalized to null — Jackson binds absent as null) + the 058 nested-null pin rewritten to the frozen law; service signature widening + an unboxing-parity pass AFTER the gate / BEFORE settle. The 057/058 depth-2 element-null 500 law stays byte-identical (bare null elements still reject upstream).
+
+Stage Summary:
+- T-MIG-059 CLAIMED at 2026-10-06T05:02:00Z (card + run-001-claim.json + this entry = the claim commit). Implementation next in this lane: contracts widening + pins, route/service emulation + rewritten pin, EXACT gates arithmetic vs the 37d8825 baseline 1144/0/13skip/3485, PR with disclosure, NOT self-merged (authors never self-merge) — handed to the merge desk.

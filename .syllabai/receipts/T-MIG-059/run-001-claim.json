@@ -1,0 +1,25 @@
+{
+  "task": "T-MIG-059",
+  "run": "001-claim",
+  "agent": "r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "operator_trace": "1a10f747060b0901 'F-B band (exact-parts emulation)'",
+  "date": "2026-10-06T05:02:00Z",
+  "base": "37d8825 (origin/main tip: R0-AUTO manual sweep receipt, gates 1144/0/13skip/3485; includes T-MIG-058 #94 and T-MIG-061 t1 #95)",
+  "branch": "t-mig-059/r1",
+  "what": "Claim of the F-B band: the selfmark exact-parts emulation — the register-open item this lane filed on the PR #92 review thread (6009074844 REQUEST_CHANGES + 6009163427 follow-up claim) and restated on the T-MIG-058 card. Claim-in-first-commit per the board's section-2 law.",
+  "zero_collision": {
+    "checked_at": "37d8825",
+    "origin_heads_059": 0,
+    "syllabai_mentions_059": "only this claim",
+    "open_prs": "none (queue empty at claim time)",
+    "fence": "packages/contracts/src/assessment.ts + its tests; apps/api/src/routes/selfmark/index.ts; apps/api/src/services/selfmark/index.ts; apps/api/test/smartmark/routes.test.ts — disjoint from every other lane's active surface (056/057 DONE, 058 merged #94, 060 w0a Wave-6, 061 r9-hubx merged t1)"
+  },
+  "frozen_law_of_record": {
+    "dedup_put_semantics": "LearnerSelfMarkController :42-48 — the duplicate throw fires on put() DISPLACING A NON-NULL PREVIOUS VALUE; {X:null},{X:1} does NOT throw; {X:1},{X:null} throws; null keys legal (HashMap.put(null,v) :44)",
+    "no_cascade": "SelfMarkRequest :59 bare List — @NotNull :55 / @Min(0) @Max(99) :56 never fire; Jackson binds null and ABSENT element fields as null",
+    "exact_parts_gate": "LearnerSelfMarkService :102-111 — HashSet keySet equality; a null key -> 400 bad_request 'self-mark must cover exactly the attempt's parts'; ordered AFTER the attempt 404 (:79-84) and BEFORE the bound loop",
+    "unboxing_npe": "LearnerSelfMarkService :116 — 'int marks = e.getValue()' NPEs on a null Integer AFTER the gate, BEFORE settle -> catch-all :224-230 -> 500 internal_error (data-dependent: in-attempt partId -> 500, not-in-attempt -> the 400 exact-parts first)"
+  },
+  "plan": "contracts nullish widening + put-semantics superRefine; route map widening + pin rewrite; service signature widening + unboxing-parity pass; contracts + route pins for the full matrix; gates with exact delta vs the 37d8825 baseline; PR with disclosure; authored by this lane -> NOT self-merged, handed to the merge desk",
+  "handoff": "authors-never-self-merge"
+}
