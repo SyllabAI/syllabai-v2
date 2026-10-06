@@ -51,6 +51,7 @@ import { buildExamPapersRouters } from "./routes/exam-papers";
 import { buildTestBuilderRouters } from "./routes/testbuilder";
 import { buildAnswerInputRouters } from "./routes/answer-input";
 import { buildTeacherMarkingRouters } from "./routes/teachermarking";
+import { buildLearnerRouters } from "./routes/learner";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
@@ -59,6 +60,7 @@ const identity = buildIdentityApp();
 const content = buildContentApp();
 const curriculum = buildCurriculumRouters();
 const assessment = buildAssessmentRouters();
+const learner = buildLearnerRouters();
 const selfmark = buildSelfMarkRouters();
 const smartmark = buildSmartMarkRouters();
 const questions = buildQuestionsRouters();
@@ -179,6 +181,25 @@ app.route("/api/v1/teacher/curriculum", curriculum.teacherRoute);
 // precedent so R0 can ratify or lift them out at review.
 app.route("/api/v1/attempts", assessment.attemptRoute);
 app.route("/api/v1/learners/me", assessment.historyRoute);
+
+// Learner state-model routers (T-MIG-041 tranche 2 — Wave 4). Path parity
+// with the frozen core: LearnerStateController GET /api/v1/learners/me/state
+// and CourseStatsController GET /api/v1/learners/me/course-stats share the
+// /api/v1/learners/me base with T-MIG-030's history router (each owns its
+// specific paths; Hono resolves per router). Falls under the frozen
+// anyRequest().authenticated() rule — the router owns its authz internally
+// (Boot 401 shell first, captured w4-*-unauthed-401); the /api/v1/* fallback
+// below stays the 404-after-auth path for NO router claimed. The rest of the
+// learner-me band (knowledge-graph, agenda, smart-lesson, flashcards, …) is
+// T-MIG-043's title — NOT mounted here.
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-041, R0 ratification requested):
+// T-MIG-041's tranche-2 scope.allowed covers routes/learner/**,
+// services/learner/**, test/learner/** — NOT this file. The mount line +
+// import + construction + this comment are the minimal app-level wiring,
+// shipped as a separate commit per the T-MIG-010/020/021/030/032 precedent
+// so R0 can ratify or lift them out at review.
+app.route("/api/v1/learners/me", learner.learnerRoute);
 
 // Marking routers (T-MIG-032 — Wave 3). Path parity with the frozen core:
 // LearnerSelfMarkController + StudentSmartMarkController share the

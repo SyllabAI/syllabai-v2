@@ -1,0 +1,32 @@
+{
+  "task_id": "T-MIG-041",
+  "kind": "TRANCHE-2 COMPLETE (routes + zod pins + mount; IN_REVIEW)",
+  "run": "003",
+  "timestamp": "2026-10-06T04:30:00Z",
+  "agent": "R7a (agent-da4ab8, zai-web session web-da4ab8b1)",
+  "provenance": "operator round-10 directive trace 1a10d400d30ac185: '#65 review. After merging, proceed to tranche-2 (routes/zod/mounts); T-MIG-043 (agenda/KG/smart-lesson/exam-series+flashcards)'. #65 was ALREADY MERGED by R0 (ed558ab, 2026-10-05T18:06:46Z, merge-commit style, R0 merge-forward 6c55575) — the review step became post-merge verification (main gates re-run green at 764/0/13skip/2121 before tranche-2 work began). T-MIG-043 was found ALREADY CLAIMED by w0a (db87a9a, operator trace 1a10d2c88b6f13c5) — §2.1 zero-collision: NOT touched, reported to operator.",
+  "branch": "t-mig-041/r7a",
+  "deliverable": {
+    "files": [
+      "apps/api/src/routes/learner/index.ts (createLearnerStateRouter: GET /api/v1/learners/me/state + GET /api/v1/learners/me/course-stats; wire serializers 1:1 with the frozen DTO records; buildLearnerRouters env composition, 021 build shape; injected now() factory threading ADR-031 determinism from the route layer, default fresh clock)",
+      "apps/api/test/learner/routes.test.ts (8 route tests: Boot 401 shells incl. anonymous-unknown-path 401-before-404, canonical learnerStateViewSchema/courseStatsViewSchema parse pins, nodeTitle key-parity asserted negatively, query-budget pins 9/4, empty-learner posture)",
+      "apps/api/src/index.ts (OUT-OF-FENCE commit: import + construction + app.route(\"/api/v1/learners/me\", learner.learnerRoute) + precedent comment — the minimal mount wiring, 010/020/021/030/032 convention, R0 ratification requested)",
+      "apps/api/src/services/learner/state.ts (R-FIX: TutorEngagementView nodeName -> nodeTitle, frozen LearnerStateView.java:77-79 + contracts tutorEngagementViewSchema parity)",
+      "apps/api/test/learner/state.test.ts (R-FIX pin: topic.nodeTitle)"
+    ],
+    "r_fix_disclosure": "tranche-1's TutorEngagementView drifted to nodeName; the frozen record and the #60 contracts schema pin nodeTitle (hub types.ts already used nodeTitle, corroborating the drift direction). Corrected in this tranche with the drift documented in-code; no wire consumer ever shipped on the wrong key (tranche-1 mounted no routes).",
+    "scope_honesty": "the router owns EXACTLY the two paths; the rest of the learner-me band (knowledge-graph, agenda, smart-lesson, exam-series, flashcards, note-votes, flashcard-ratings, assignments, flashcard-review-schedule) is T-MIG-043's title (claimed by w0a, db87a9a) and is NOT mounted; /attempts remains T-MIG-030's (landed)."
+  },
+  "determinism": "the frozen controller derives now = Instant.now() per request; the router threads an injectable now factory (default () => new Date()) into the module builders — production keeps fresh-clock semantics, route tests pin NOW; values computed on the read, never persisted (ADR-031). PRECISION carried over: Instant fields serialize ms (toISOString) vs the frozen ns — disclosed, sub-second relative exponent error ~1e-15.",
+  "gates": [
+    { "name": "typecheck x4 (contracts/shared/db/api)", "result": "exit 0" },
+    { "name": "bun test apps/api packages (CI scope)", "result": "772 ran / 0 fail / 13 skip / 2183 expect = main baseline 764/0/13/2121 +8 tests +62 expects EXACT" },
+    { "name": "golden/runner.ts --selftest", "result": "OK (tolerance engine incl. declared-unordered multiset)" },
+    { "name": "golden/tools/w4-readiness.ts", "result": "READY (57 cases, 0 findings)" }
+  ],
+  "fence_audit": {
+    "in_fence": ["apps/api/src/routes/learner/**", "apps/api/src/services/learner/** (R-fix)", "apps/api/test/learner/**", ".syllabai/**"],
+    "out_of_fence_flagged": ["apps/api/src/index.ts (3 hunks: import, construction, mount+comment — separate commit, ratification requested)"],
+    "untouched": ["packages/**", "apps/hub/**", "golden/**"]
+  }
+}

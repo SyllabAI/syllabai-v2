@@ -232,7 +232,12 @@ export interface ReviewView {
 
 export interface TutorEngagementView {
   nodeId: string;
-  nodeName: string | null;
+  /** Frozen field name parity: LearnerStateView.java:77-79 uses nodeTitle
+   *  (NOT nodeName — the SkillStateView/ReviewView fields keep nodeName).
+   *  R-fix (tranche 2): tranche 1 drifted to nodeName; the contracts schema
+   *  (tutorEngagementViewSchema, T-MIG-038 #60) pins nodeTitle and the wire
+   *  must match the frozen DTO key for key. */
+  nodeTitle: string | null;
   asks: number;
   lastAskedAt: Date;
   refusedAny: boolean;
@@ -518,7 +523,7 @@ export function groupEngagementSummary(
     for (const [k, v] of agg.signals) signalCounts[k] = v;
     views.push({
       nodeId,
-      nodeName: titleResolver(nodeId),
+      nodeTitle: titleResolver(nodeId),
       asks: agg.asks,
       lastAskedAt: agg.lastAskedAt,
       refusedAny: agg.refusedAny,

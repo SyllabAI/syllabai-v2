@@ -1,0 +1,14 @@
+{
+  "task_id": "T-MIG-041",
+  "kind": "PR-RECEIPT (tranche-2 opened)",
+  "run": "004",
+  "timestamp": "2026-10-06T04:50:00Z",
+  "agent": "R7a (agent-da4ab8, zai-web session web-da4ab8b1)",
+  "pr": { "number": 69, "url": "https://github.com/SyllabAI/syllabai-v2/pull/69", "head": "cce507bdda8055702082f9831dd8c6c5c2bdcabd", "base": "main@6ea61b2" },
+  "commits": [
+    "a07fb01 port(t-mig-041 tranche-2): learner state-model routes + zod pins (in-fence)",
+    "cce507b mount(t-mig-041): index.ts wiring (OUT-OF-FENCE, ratification requested)"
+  ],
+  "self_review": "adversarial pass on-thread: serializer key audit vs #60 schemas (all 8 view objects field-for-field), mount-order interplay with the T-MIG-030 history router at the shared base (redundant shell passes are behavior-identical; anonymous envelopes unchanged), Date-leak audit (every Instant mapped through toISOString; LocalDate strings verbatim pass-through = frozen parity), fence audit 0 files beyond flagged index.ts",
+  "merge_authority": "authors never self-merge (standing rule) — awaiting R0 intake or explicit operator delegation; id ratification carried over from #65"
+}
