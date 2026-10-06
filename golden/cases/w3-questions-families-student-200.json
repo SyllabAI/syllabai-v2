@@ -1,6 +1,6 @@
 {
   "name": "w3-questions-families-student-200",
-  "description": "Question families from V7 seed (deterministic fixed-uuid seed). captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "description": "Question families from V7 seed (deterministic fixed-uuid seed). captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy. RICH-200-E DISPOSITION (ruling3 R3-D2 effect 4, operator trace 1a1100c71ff48e05): the capture pins the capture host's Postgres tie order for the 8 non-corpus families — the frozen (source, qNum, input-order) law has no deterministic tie key and three environments produce three orders (T-MIG-067 run-001 live proof; replay runs #16/#17 show the flip live); the ROOT array is hereby declared unordered per the T-MIG-024 doctrine (GOLDEN_MASTER section 5, declared relaxation only, never silent): same elements after tolerate redaction, any order, element identity exact, nested parts arrays stay strict. justified:true per GOLDEN_MASTER section 4, citing ruling3 R3-D2 effect 4 + the triple-confirmed multiset identity.",
   "source": "captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
   "method": "GET",
   "path": "/api/v1/questions/families",
@@ -392,5 +392,7 @@
   },
   "tolerate": [
     "timestamp"
-  ]
+  ],
+  "unordered": [""],
+  "justified": true
 }

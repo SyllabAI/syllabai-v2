@@ -22,6 +22,25 @@
 /**
  * T-MIG-020 replay environment reset (branch sandbox, ROWS ONLY).
  *
+ * T-MIG-078 (option (i), ratified 2026-10-06): POST-WIPE V63 SEED
+ * RESTORATION. After the topological wipe + the roles re-seed (both
+ * UNCHANGED — the H-2 docstring/code divergence stays preserved-intact),
+ * this tool now applies golden/cases/files/t51-seed.sql — the frozen
+ * Flyway seed data (V2/V6/V7/V63) rows as INSERTs, dumped from the LOCAL
+ * frozen-core boot (syllabai-core @ 6cad6ef; provenance in that file's
+ * header) — so the seed pass replays against the V63-SEEDED-UNSTAGED
+ * posture the corpus's empty-tranche captures actually pin (T-MIG-071
+ * run-002 post-merge review F-1: the composed two-tranche instrument could
+ * not reach that third posture; the topics census saw 0 sections vs the
+ * captured V63 tree). The seed dump is DATA-ONLY (curriculum skeleton,
+ * questions/versions/options/topics, misconceptions, exam_series — zero
+ * users/attempts/skill_states/flashcard_ratings), so the empty-state
+ * constraint holds by construction: the 7 non-topics empty-tranche cases
+ * pin attempts/state, not question counts, and none of those rows exist
+ * after this step. Fresh-wipe = fresh db, so the dump's plain INSERTs
+ * apply cleanly (the file's own contract); the T-MIG-051 accounts staging
+ * already probes before its own seed apply and skips when present.
+ *
  * Posture: the T-MIG-004 golden cases are pinned to the Flyway-SEED state
  * (content tables empty, curriculum skeleton present, no users). The
  * sandbox branch is a COW copy of PRODUCTION, so the reset wipes the pilot
@@ -41,6 +60,7 @@
  */
 import postgres from "postgres";
 import { readFileSync } from "node:fs";
+import { join } from "node:path";
 
 const url = process.env.DATABASE_URL ?? "";
 if (!url) {
@@ -127,7 +147,24 @@ await sql.unsafe(`
   on conflict (name) do nothing`);
 console.log("roles re-seeded (V1__identity.sql verbatim)");
 
-// 5. posture probes
+// 5b. T-MIG-078 option (i): restore the V63 seed posture (DATA-ONLY) — the
+// empty-tranche captures pin V63-SEEDED-UNSTAGED, unreachable while the
+// store stayed empty after the wipe (run-002 review F-1). One sql.unsafe
+// call with the whole dump, the seed-t51-rich200.ts application shape
+// verbatim (postgres.js multi-statement simple-query path). The H-2 wipe
+// above is untouched: this RESTORES rows the captures pin, it does not
+// preserve pilot data.
+const seedSql = readFileSync(
+  join(import.meta.dir, "..", "cases", "files", "t51-seed.sql"),
+  "utf8",
+);
+await sql.unsafe(seedSql);
+const seeded = (await sql.unsafe(
+  `select count(*)::int as n from questions where external_ref like 'SEED-%'`,
+)) as Array<{ n: number }>;
+console.log(`V63 seed posture restored (T-MIG-078 option (i)): ${seeded[0]?.n} seed questions`);
+
+// 6. posture probes
 const probes = [
   ["documents", "select count(*)::int as n from documents"],
   ["exam_papers", "select count(*)::int as n from exam_papers"],
@@ -145,5 +182,4 @@ for (const [name, q] of probes) {
   console.log(`  ${name}: ${rows[0]?.n}`);
 }
 await sql.end();
-console.log("reset complete (topological wipe + posture verified)");
-void readFileSync;
+console.log("reset complete (topological wipe + V63 seed restoration + posture verified)");
