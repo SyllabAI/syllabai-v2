@@ -3341,6 +3341,22 @@ Work Log:
 Stage Summary:
 - THE RICH-200 SERIES IS PROCESSED END-TO-END: disposition of record (run-001) → harness capability restore (run-002, #100) → setup-limiter survival (run-004, #105) → LIVE 7/7 family verdict (run-004 union receipt). Register: RICH-200-C (case-owner), RICH-200-D (port P1), plus the standing C/B/third-posture classes. T-MIG-063 DONE.
 ---
+Task ID: 23
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, operator trace 1a10fad70cdfb4b5)
+Task: Operator directive "058 FB (nested null simulation)" — the F-B band routed to this lane.
+
+Work Log:
+- CLAIM CHECK (fetch-before-every-action): F-B was ALREADY CLAIMED, IMPLEMENTED, AND MERGED — the register item opened on the 058 card (merged #94) was executed by r1-contracts as T-MIG-064 ("Selfmark exact-parts emulation (the F-B band)", re-filed from 059 after the documented id collision with r0's binding-law band, earliest-claim-wins allocates 059 to r0; claim 63aaac1 @ 04:41:34Z vs r0's 9853716 @ 04:35:53Z) and landed via PR #99 (merge 862ca34). This lane's work = INDEPENDENT VERIFICATION, zero code written (no collision possible — nothing was built).
+- FIRST-HAND VERIFICATION of the F-B law on main (frozen citations re-read this session @ 6cad6ef BEFORE seeing the implementation):
+  1. CONTRACTS (packages/contracts/src/assessment.ts): parts array items widened to nullish partId/marksAwarded (Jackson bind parity — no @Valid cascade so @NotNull :55/@Min/@Max never fire on elements); the superRefine emulates the HashMap.put DISPLACEMENT law verbatim (LearnerSelfMarkController :42-48): {X:1},{X:2} throws; {X:null},{X:1} ACCEPTED (null displaced silently); {X:1},{X:null} throws; {null,1},{null,2} throws with the Java string-concat "…: null" rendering; last-write-wins map.
+  2. SERVICE (apps/api/src/services/selfmark): signature Map<string|null, number|null>; :125 empty-map 400; :181-183 the exact-parts gate with null-key set equality → BadRequestError "self-mark must cover exactly the attempt's parts" (frozen :102-111 verbatim); :201-204 the UNBOXING-NPE 500 parity AFTER the gate (int marks = e.getValue() on a null Integer, frozen :116) with the settle-write ordering preserved (NPE before any write) and the residual NPE-vs-ConflictException sub-ordering honestly disclosed as not emulated.
+  3. PINS on main: {partId:null,marksAwarded:1} → 400 bad_request via the gate (AFTER the attempt-404 ordering); {PART_A,null} → 500 internal_error (gate passes, NPE before settle); {X:null},{X,2} → 201 put-semantics last-write-wins. The full nested-null matrix is emulated and pinned.
+- INDEPENDENT GATES at the live tip (main advanced during verification: d14d949 #101 -> d6911f6 #105, R0 actively collecting): install --frozen-lockfile exit 0; typecheck x4 exit 0; bun test apps/api packages 1207 pass / 0 fail / 13 skip / 3759 expect (1220 ran / 65 files); golden --selftest OK. The F-B pins are in the passing suite.
+- POST-CENSUS: 3 open PRs remain (#102 t-mig-062/r4b, #103 t-mig-065/r0, #104 t-mig-060/w0a — NOT in this routing; left for the merge desk/R0). 058 card F-B register item: CLOSED on main by T-MIG-064 (card housekeeping/DONE flips are R0's field, not touched).
+
+Stage Summary:
+- F-B routing resolved to already-done work (T-MIG-064 via #99 by r1-contracts): verified end-to-end first-hand — schema widening + put-semantics + exact-parts null-key flow + unboxing-NPE parity all live and pinned; gates exact at 1207/0/13skip/3759 + selftest OK at d6911f6. Zero code by this lane. LANE r1c: STOP for this round.
+---
 Task ID: T-MIG-062 (run-001 claim)
 Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
 Task: Operator directive (trace 1a10f73d46ea053d): "Check if R0 has merged or not. If not, review+merge yourself and continue working" — R0 merge-of-record verified IN (queue drained), so continue-working claims the first self-contained Wave-6 band: the research calibration read surface (ADR-036 k-anonymity binds the port).
