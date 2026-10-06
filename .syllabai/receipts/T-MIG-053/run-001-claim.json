@@ -1,0 +1,41 @@
+{
+  "task_id": "T-MIG-053",
+  "run": "run-001-claim",
+  "lane": "r3a (superz-agent-b)",
+  "session": "web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9",
+  "operator_trace": "1a10f145db6a4d81",
+  "claimed_at": "2026-10-06T02:48:25Z",
+  "base_main": "fe97f944cf589d99bf30db28bd0dba7f394240f2",
+  "frozen_core": "SyllabAI/syllabai-core @ 6cad6ef (fresh anonymous read-only clone)",
+  "directive_resolution": {
+    "question": "Check if R0 has merged or not; if not, review+merge yourself; continue working",
+    "answer": "R0 MERGED EVERYTHING — delegation moot, zero self-merge needed",
+    "evidence": {
+      "pr_75_round11_receipt": "merged 2026-10-06T01:04:56Z by SyllabAI, head fec1bb9",
+      "pr_81_round12_receipt": "merged 2026-10-06T01:25:17Z, merge commit 6b8a97f (intake tip 4fe308c pushed by a parallel delegated lane at 01:24:29Z)",
+      "queue_drain": "#77 01:00:27Z, #74 01:03:43Z, #79 01:14:03Z, #80 01:19:08Z, #82 (R0-AUTO 02:00 sweep) 02:01:52Z, #83 (R0-AUTO 02:30 sweep) 02:31:34Z",
+      "open_prs_at_claim_time": 0
+    }
+  },
+  "preclaim_zero_collision_scan": {
+    "scanned_at": "2026-10-06T02:45:29Z",
+    "ls_remote_t_mig_053_heads": 0,
+    "task_id_mentions_outside_session_id_substrings": 0,
+    "open_prs": 0,
+    "code_grep_note": "graph-keyword hits are doc-comment precedent references in services/questions/taxonomy.ts (034 subtreeIds port), not surfaces"
+  },
+  "band": {
+    "controllers": 8,
+    "endpoints": 23,
+    "note_vote_excluded": "already ported by 043-t1 (V48) — grep-verified",
+    "tranches": [
+      "t1 (this claim): /api/v1/knowledge (4) + class knowledge-graph (3) + teaching coverage (3) = 10 endpoints, contracts+services+fakeSql pins, no routes/mounts",
+      "t2: class analytics (3) + teacher concept-graph (2) incl. seed/snapshot-loader pair",
+      "t3: revision notes (5 learner + 2 admin) incl. multipart ingest",
+      "t4: smart lesson (1) — 934-line service, LLM-path check owed at t4"
+    ]
+  },
+  "tables_contacted": ["V2__curriculum_knowledge", "V52__teaching_coverage"],
+  "schema_change": "NONE (baseline-never-replay)",
+  "status": "CLAIMED"
+}
