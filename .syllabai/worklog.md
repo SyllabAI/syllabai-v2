@@ -3117,3 +3117,17 @@ Work Log:
 
 Stage Summary:
 - 061 tranche-2 NOT touched: r9-hubx holds the claim (32b73ca) — the operator's condition resolved FALSE; stand-down receipted. Alternative continuation executed: #96 (T-MIG-059 binding law) independently reviewed and merged 07df48a with the intake-union procedure, gates exact at 1151/0/13skip/3513 + selftest OK. LANE r1c: STOP for this round.
+
+---
+Task ID: T-MIG-065 (claim)
+Agent: r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Operator directive trace 1a10f72fc83f0cbd "hub hygiene": execute the unfiled R0-ROUND-6C housekeeping item — scope the hub bun test runner so bare `bun test` inside apps/hub stops loading the Playwright specs.
+
+Work Log:
+- Census @ origin/main 30819de (post-#96): the item's full lineage read from the register (:2018 R0-ROUND-6C ENV NOTE + every subsequent "remaining claimable" mention); reproduced on main with bun 1.3.14 — apps/hub bare bun test = 41 tests / 8 files, 36 pass / 5 fail / 5 errors, every error being 'Playwright Test did not expect test() to be called here' from bun's runner loading tests/e2e/** specs; the 36 real hub bun tests (src/** incl. src/lib/decay) pass.
+- Fix verified on a scratch copy BEFORE the claim: apps/hub/bunfig.toml [test] root="src" -> 36 pass / 0 fail / 0 errors / exit 0 (36 tests / 3 files); bunfig is read from the invocation CWD so the root verify suite is provably unaffected (re-run: 1164 ran / 63 files / 1151-0-13skip / 3513 expect — unchanged); the hub CI job (build:hub) untouched; docs scan found no bare-`bun test` documentation to amend.
+- Zero-collision scan: zero t-mig-065* heads on origin, zero 065 mentions in .syllabai/; 062/r4b + 063/r0 + 064/r1 heads and open PRs #98-#101 observed and respected (none touch apps/hub/**).
+- FENCE DISCLOSURE (on the card): apps/hub/** is R5's lane per §1 — the operator's explicit routing of this flagged-and-unfiled item to this session is the provenance of record; config-only change; narrowest possible fence.
+
+Stage Summary:
+- T-MIG-065 CLAIMED on branch t-mig-065/r0 @ 30819de (card + run-001-claim.json + this entry = the claim commit). Implementation next: the bunfig + IN_REVIEW + run-002 receipt. r0 | claimed the hub scoped-runner hygiene, reproducing the 5-error class and verifying the [test] root scoping empirically | working | suggestion: after this lands, the remaining unfiled item is none — the 043 consolidation band is filed as T-MIG-066 by the direct-main bookkeeping commit of this round.
