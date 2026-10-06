@@ -1,0 +1,39 @@
+{
+  "task_id": "T-MIG-071",
+  "kind": "claim",
+  "run": "001",
+  "timestamp": "2026-10-06T09:20Z",
+  "agent": "r1b lane (Super Z, zai-web session discord DM 482bf272, operator trace 1a1107d8c03ba415 — 'T-MIG-071 proceed if not assigned yet')",
+  "baseline_of_record": "origin/main e9ef235 (round-20 R0-AUTO receipt; #117 c88b738 merged)",
+  "claim_census": {
+    "card_state_at_claim": "OPEN, owner OPEN (filed by R0-integrator 2026-10-06 on ruling3)",
+    "worklog_scan": "the only prior T-MIG-071 claims are the selfmark dead-constraint band REFILED to T-MIG-073 (r1-ROUND-21/run-003 provenance); zero claims on the case-amendment band",
+    "branch_scan": "t-mig-071/r1 on origin is the SUPERSEDED selfmark branch (merged as #113, name retained cosmetically per ruling2 — no force-push); this lane therefore cuts t-mig-071/r1b; no other t-mig-071* heads",
+    "pr_scan": "0 open PRs at claim time",
+    "collision_verdict": "ZERO — earliest-claim-wins satisfied by this commit (claim-in-first-commit per AGENT_COORDINATION §2)"
+  },
+  "claim_scope_readback": {
+    "R3_C": "8 auth-register class-C cases: justified:true + expect.headers Retry-After pin; family extension to success-201/duplicate-email-409 only if the live instrument shows them tripping (they are register POST #1-#3 of the burst — cannot trip on a fresh COW branch; extension not exercised this band)",
+    "R3_D3": "w4-target-series-put-201: tolerate[] += daysToWindowStart, daysToWindowEnd + justified:true",
+    "R3_D4": "w4-register-learner-201 += accessToken; w3-history-after-submit-200 += learnerId,attemptId; auth-me-with-bearer-200 += the seeded-identity fields (email, displayName per run-7 note H; id already tolerated)",
+    "rider": "golden/runner.ts pattern-value header support + selftest growth — EXERCISED: the Retry-After value is NOT deterministic at the replay posture",
+    "fence_amendment_planned": "w3-questions-families-student-200 (RICH-200-E residual) joins the fence by R3-D2 effect 4 routing — disclosed pre-push per the T-MIG-063 scope-amendment law"
+  },
+  "rotation_finding_of_record": {
+    "question": "is the live Retry-After deterministic at the replay posture (pin exact) or rotating (rider in scope)?",
+    "answer": "ROTATING — rider exercised",
+    "evidence": [
+      "frozen law apps/api/src/middleware/ratelimit.ts:214 retryAfterSeconds = max(1, floor((windowStart + windowMs - now + 999)/1000)) — the REMAINING seconds of the aligned 60s fixed window (windowMs default 60_000, registerPerIp default 5 per config.ts:71); the value depends on WHERE the burst lands inside the wall-clock window — phase-of-minute dependent by construction",
+      "run-7 observed Retry-After 46s (R0R6_R7_DIVERGENCE_TRIAGE.md note C) at that run's burst phase",
+      "T-MIG-063 run-003-live-finding-429.json: the throttled() setup helper was built honoring 'retry-after header / retryAfterSeconds body (clamped 5..90s +2 jitter)' — a RANGE, disclosed by the tooling lane that hit the live 429s",
+      "membership itself rotates between runs (run-7 note C; run-9 triage §2 class C: '5 of 8 tripped (membership rotates — burst-order dependent)')"
+    ]
+  },
+  "amendment_design_of_record": {
+    "class_C_mechanism": "the 8 class-C cases are RE-PINNED to the endorsed v2 limiter posture (429 + the filter-path body + the Retry-After pattern pin), justified:true per GOLDEN_MASTER §4 with the health.json case as the field-convention precedent; the captured core postures (400/403 + bodies) are preserved verbatim in each case description for archaeology",
+    "why_re_pin": "the ruling's Option B makes the limiter the ENDORSED actual behavior; GOLDEN_MASTER §4: a justified divergence is 'reflected by UPDATING THE CASE with a justified: true note'; keeping the captured posture under a Retry-After pin would fail in EVERY run (the header is absent when the limiter admits) — incoherent; the re-pin strictly improves the green count in every window-phase scenario (0->8 on exhausted-window runs, 3->5 on straddle runs vs today) and matches the run-9 §5 projection 'C ruling ≈ +5..8' with 177/177 REACHABLE",
+    "retryAfterSeconds_body_field": "the body twin of the ruled Retry-After header rotates with the same window phase (1..60) — it joins tolerate[] on the 8 cases as the mechanically-forced consequence of the ruling's own rotation branch; DISCLOSED here, on the card execution_record, and in the PR (a loud, receipted scope note per the 063/r1 scope-amendment precedents — never silent)",
+    "RICH_200_E_disposition": "w3-questions-families-student-200: unordered:[\"\"] (root-array multiset per T-MIG-024) — the tie order is triple-confirmed nondeterministic with an identical multiset (067 run-002: proof run [4,1,2,5,3,6,7,8], CI [2,...], gold [1,4,2,5,3,6,7,8]); unordered[] preserves full element-level regression power where a tolerate[] of the whole array would discard it; the live-instrument confirmation is the standing post-merge CI leg (sandbox DNS-blocked — the ci-replay posture of record)"
+  },
+  "stage_summary": "T-MIG-071 CLAIMED on t-mig-071/r1b @ e9ef235 — claim-in-first-commit: card flip + this receipt + the worklog entry. Implementation (8 re-pins + rider + D3/D4 + families) next; gates before push; PR handed to the desk (authors never self-merge)."
+}

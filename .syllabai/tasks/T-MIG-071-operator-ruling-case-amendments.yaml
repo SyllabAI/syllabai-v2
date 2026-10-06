@@ -2,8 +2,8 @@ version: 1
 task:
   id: T-MIG-071
   title: "T-MIG-071 — the operator-ruling case-amendment band (R0 arbitration ruling3, receipts/R0-arbitration/ruling3-operator-four-rulings.json, operator trace 1a1100c71ff48e05): (R3-C) the eight run-7 class-C auth-register cases gain justified:true + the expect.headers Retry-After pin — the limiter STAYS as operator-endorsed v2 hardening, the auth-lane strip/align action is CANCELLED, and the runner must NOT pace around the 429; (R3-D3) w4-target-series-put-201: daysToWindowStart/daysToWindowEnd join tolerate[] + justified:true (capture-time anchor, drift +1 day per replay day — the port's utcToday law is faithful); (R3-D4) tolerate[] identity amendments per Option A — w4-register-learner-201 += accessToken, w3-history-after-submit-200 += learnerId/attemptId (clears fully only after T-MIG-072 composition), auth-me-with-bearer-200 += the seeded-identity fields the live diff shows (email/displayName expected; id already tolerated); the staged-identity tranche is SHELVED"
-  owner: "OPEN — unassigned; the claiming lane claims in-first-commit per AGENT_COORDINATION §2"
-  status: OPEN # filed by the R0-integrator desk 2026-10-06 on operator ruling; case-owner lane work, .syllabai/** + golden/cases/** + (rider) golden/runner.ts only
+  owner: "r1b lane (Super Z, zai-web session discord DM 482bf272, operator trace 1a1107d8c03ba415) — claimed 2026-10-06T09:20Z @ origin/main e9ef235"
+  status: IN_PROGRESS # claimed 2026-10-06 by the r1b lane on the operator's direct routing (trace 1a1107d8c03ba415); branch t-mig-071/r1b (t-mig-071/r1 stays the superseded selfmark name per ruling2); claim receipt run-001-claim.json
   priority: P2
   wave: ruling-execution # not wave work — the four operator rulings' case-side half
   deps: []
@@ -19,6 +19,22 @@ task:
     case-insensitive NAMES with EXACT values — if the live Retry-After rotates, the rider
     (below) applies; justified:true is the health.json GOLDEN_MASTER §4 field convention.
     The CI runner never edits cases — this band is the case-owner lane's file edit.)
+    
+    (r1b lane, 2026-10-06, claim-time scope notes — run-001-claim.json is the full of record:
+    1. RIDER EXERCISED — the Retry-After value is NOT deterministic at the replay posture:
+       ratelimit.ts:214 computes the REMAINING seconds of the aligned 60s fixed window
+       (phase-of-minute dependent by construction); run-7 observed 46s; 063's throttled()
+       helper was built for a 5..90s range; membership rotates run-over-run (run-9 §2).
+    2. CLASS-C RE-PIN DESIGN — the 8 cases are re-pinned to the ENDORSED 429 limiter
+       posture (GOLDEN_MASTER §4 justified-divergence, health.json precedent); the captured
+       core postures stay in each description for archaeology. A bare header pin on the
+       captured posture would fail in every run (the header is absent when the limiter
+       admits) — incoherent; the re-pin strictly improves greens in every window-phase
+       scenario and matches the run-9 §5 projection '+5..8'.
+    3. TOLERATE SCOPE NOTE (loud, never silent) — the 429 body's retryAfterSeconds field
+       is the body twin of the ruled header and rotates with the same phase (1..60); it
+       joins tolerate[] on the 8 cases as the mechanically-forced consequence of the
+       ruling's own rotation branch. Disclosed here + receipt + PR.)
   scope:
     allowed:
       - "golden/cases/auth-register-{admin-refused-403,bad-email-400,blank-displayname-400,missing-fields-400,password-no-digit-400,short-password-400,teacher-no-joincode-403,unknown-role-400}.json (justified:true + Retry-After pin; family extension to success-201/duplicate-email-409 ONLY if the live instrument shows them tripping — disclosed)"
@@ -27,6 +43,7 @@ task:
       - "golden/cases/w3-history-after-submit-200.json (tolerate[] += learnerId, attemptId)"
       - "golden/cases/auth-me-with-bearer-200.json (tolerate[] += the live-diff-verified seeded-identity fields)"
       - "RIDER (only if Retry-After rotates at the replay posture): golden/runner.ts pattern-value header support + golden/tools selftest growth — construction-only, T-MIG-004 F-3 lineage, disclosed in the PR"
+      - "FENCE AMENDMENT (disclosed pre-push, R3-D2 effect 4 routing): golden/cases/w3-questions-families-student-200.json — the RICH-200-E tie-order residual's unordered[\"\"] disposition (see run-001-claim.json amendment_design_of_record)"
       - ".syllabai/receipts/T-MIG-071/**; this yaml; .syllabai/worklog.md (append-only)"
     forbidden:
       - "apps/**, packages/**, the auth limiter itself (R3-C: it STAYS — any limiter change violates the ruling)"
