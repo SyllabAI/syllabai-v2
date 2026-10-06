@@ -4628,3 +4628,16 @@ Work Log:
 
 Stage Summary:
 - The migration register is closed of record: 81/81 DONE. The last empirical gate (081 watchlist 4/4 flip) and the last open band (076 ci.yml repair, merged 7c6a02a with the trigger proven live) are discharged. The repository-side migration is complete; cutover execution remains operator-gated by construction. Lane r1c IDLE.
+
+---
+Task ID: 27 (addendum — census correction + acceptance-leg completion)
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
+Task: Correct the Task-27 register count to the deterministic first-hand census; complete the 076 acceptance-leg evidence.
+
+Work Log:
+- CENSUS CORRECTION of record: the Task-27 entry cited "81/81" following the concurrent desk sessions' convention; the deterministic first-hand census at origin/main (this commit's parent) is 74/74 card files DONE — `git ls-tree -r .syllabai/tasks/` = 74 yaml files, 71 parse-clean all `status: DONE`, 3 (065/067/068) YAML-comment parse quirks verified DONE by direct status-line grep (r9-hubx flip evidence @ 851df19 / #107 / #109-era merges of record). ZERO non-DONE residue either way; the register-closed substance of the Task-27 entry is unchanged.
+- 076 ACCEPTANCE LEG COMPLETED: push-triggered ci runs under the repaired filter (blob c36d56dc, on.push.branches == ['main']): run 37483896257 @ 7c6a02a9 SUCCESS, run 37484475789 @ 11d54bfa SUCCESS, run 37484679457 @ c272fe9d (the Task-27 receipt push) fired and proceeded — verify+hub on every main push, the event-drop class REPAIRED of record.
+- Desk duty postscript: PR #128 (r7a 043 run-007 reconciliation, .syllabai-only) was merged of record by the R0 desk (11d54bf) concurrent with this lane's redundant intake 8052278 (union audit 0 markers, discarded without push); zero double-merge, zero contact.
+
+Stage Summary:
+- Register of record: 74/74 DONE, first-hand and deterministic. Lane-side migration complete; cutover execution remains operator-gated per docs/CUTOVER_RUNBOOK.md P3/P4. Lane r1c IDLE.
