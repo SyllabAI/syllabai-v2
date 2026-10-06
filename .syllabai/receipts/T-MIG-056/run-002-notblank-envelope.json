@@ -1,0 +1,27 @@
+{
+  "task_id": "T-MIG-056",
+  "kind": "IMPLEMENTATION-RECEIPT (classroom @NotBlank envelope refinement + category-null binding + the maximum nit)",
+  "run": "002",
+  "timestamp": "2026-10-06T03:50:00Z",
+  "agent": "Super Z (r0 lane, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "implementation": {
+    "prior_art": "closed #90 branch t-mig-052/r0-t2 @ 6e9bfcf — the disclosed contracts amendment adopted VERBATIM (four refine swaps, chain order max FIRST / refine LAST, category .nullish()) with T-MIG-056 provenance in the header comment",
+    "files": [
+      "packages/contracts/src/classroom.ts — the four request schemas swap bare .min(1) for the auth.ts notBlank refine (the @NotBlank-exact port: whitespace-only fails @Valid BEFORE the controller law -> 400 validation_failed 'field: must not be blank', exactly jakarta); category widens .optional() -> .nullish() (explicit JSON null binds like absent -> Announcement.Category.parse(null) -> GENERAL -> the frozen 201); header amendment block",
+      "packages/contracts/src/classroom.test.ts — +3 expects inside existing blocks: whitespace-only name, whitespace-only courseSlug (both now schema-rejected), category explicit null (schema-accepted)",
+      "apps/api/src/routes/classroom.ts — validationMessage gains the custom-issue branch (surfaces the refine's verbatim jakarta message; without it the message would fall to 'field: request invalid'); the too_small branch demoted to defensive (no bare min() remains); the `maximum ?? 0` defensive fallback DROPPED (nit 2 — cast tightened to { maximum: number }); header amendment note",
+      "apps/api/test/classroom/routes.test.ts — the two pins that pinned the DIVERGENT whitespace posture rewritten to the frozen law (:340 blank-name -> validation_failed 'name: must not be blank'; :703 trimmed-blank body -> validation_failed 'body: must not be blank'; both keep their fail-closed assertions, the service trim-blank 400s stay pinned at the service level per t1 — unreachable over HTTP exactly as jakarta @Valid preempts); NEW pin: category explicit null -> 201 with the 'general' wire form (the F-3 fix evidence at the HTTP layer, modeled on the absent-category pin incl. the insert-row match)"
+    ],
+    "service_change": "ZERO — parseAnnouncementCategory already types `string | null | undefined` (services/classroom/index.ts :176, the t1 null->GENERAL law); the t1 service pins untouched"
+  },
+  "gates": {
+    "method": "baseline measured AT THE BASE COMMIT (1540ffc) via stash-restore in the installed checkout — not inherited from any receipt",
+    "baseline_1540ffc": "bun test apps/api packages: 1050 pass / 0 fail / 13 skip / 3211 expect / 59 files",
+    "head": "bun test apps/api packages: 1051 pass / 0 fail / 13 skip / 3216 expect / 59 files — EXACT delta +1 test / +5 expects / +0 files (+3 contracts expects, +2 routes expects from the new category-null pin)",
+    "typecheck": "x4 workspaces exit 0",
+    "hub": "bun test apps/hub 36/0 unchanged",
+    "golden": "runner.ts --selftest OK"
+  },
+  "out_of_scope_register": "F-0 (binding-class collapse -> frozen malformed_body) and F-1 (missing-field message -> frozen 'field: must not be blank') remain OPEN register items per the PR #89 ratification verdict's registration; ready prior art: #90's routes classifier (:121 binding-class detection, :136-137 @NotBlank(null) rendering). Not part of this fence.",
+  "red_flag_scan": "zero golden contact, zero db/ fixture contact (schema+classifier+pins only), zero Java leakage, no force-push, worklog append-only"
+}

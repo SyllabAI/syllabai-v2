@@ -64,6 +64,12 @@
  *     messages). Schemas from @syllabai/contracts classroom (T-MIG-052
  *     tranche 1: constraints copied exactly; the service-level parse laws —
  *     status tolerance, category vocabulary — stay in services/classroom).
+ *     T-MIG-056 amendment: the schemas carry the @NotBlank-exact notBlank
+ *     refine (whitespace-only bodies answer validation_failed BEFORE the
+ *     controller law — the refine reports as a `custom` issue whose verbatim
+ *     jakarta message this classifier surfaces) and `category` is nullish
+ *     (explicit JSON null binds like absent → the service parses GENERAL →
+ *     the frozen 201).
  *
  * Scope honesty: the learner router owns EXACTLY the three paths under
  * /api/v1/learners/me/classroom — the rest of the learner-me band stays
@@ -138,12 +144,19 @@ function validationMessage(error: ZodError): string {
     "",
   );
   if (first.code === "too_small") {
-    // @NotBlank (min 1) — the only too_small the classroom schemas carry
+    // defensive — no bare min() remains on the classroom schemas (the
+    // T-MIG-056 notBlank refine owns blank detection); kept for drift
     return `${field}: must not be blank`;
   }
+  if (first.code === "custom") {
+    // the @NotBlank refine reports as a `custom` issue carrying its own
+    // jakarta default message — surface it verbatim (first-field law,
+    // :158-165 renders getDefaultMessage())
+    return `${field}: ${first.message ?? "request invalid"}`;
+  }
   if (first.code === "too_big") {
-    const maximum = (first as { maximum?: number }).maximum;
-    return `${field}: size must be between 0 and ${maximum ?? 0}`;
+    const maximum = (first as { maximum: number }).maximum;
+    return `${field}: size must be between 0 and ${maximum}`;
   }
   return `${field}: request invalid`;
 }
