@@ -1,0 +1,21 @@
+{
+  "task": "T-MIG-067",
+  "run": "run-002-tranche1a",
+  "date": "2026-10-06",
+  "lane": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "provenance": {
+    "operator_directive_trace": "1a10fbe9465708c9",
+    "directive": "Check if R0 has merged or not. If not, review+merge yourself and continue working",
+    "resolution": "the merge half executed of record (060 #104 -> 6580b2c, run-004-merge); this tranche is the 'continue working' half on the claimed band (claim e11e8ea, run-001-claim)"
+  },
+  "tranche_1a_scope": "packages/contracts/src/cla.ts (the closed Kind/Mode enums; ClaAskRequest admission discipline — @NotBlank question 1..2000, @Size specCode<=80 noteId<=256, uuid references, strict two-envelope; ClaContextView identity block; ClaToolTrace audit shape; TopicAnchorView; ClaAnswerView; CLA_CHECK_ATTEMPT_REQUIRED_MESSAGE the fixed 409 body) + 16 contracts pins + index re-export one-liner; apps/api/src/services/cla/context.ts (ResourceContext :62-235 line-against-line: 20 fields, CurriculumVersionInfo, LessonActionInfo, the four predicates :196-228, the gate-free with-copies :230-249); apps/api/src/services/cla/leakage-policy.ts (checkModeAdmission :52-58 throwing ClaAttemptRequiredError pre-retrieval; markSchemeDocumentChunkAllowed :61-66; schemePointEvidenceAllowed :69-73; evidenceEligible :76-86 — typed over the tutor EvidenceItem); apps/api/src/services/cla/tool-registry.ts (enabledFor :96-113 the fixed composition + the registry-owned 400; specificationContext :116-122 + collectChain :170-189 with MAX_SPEC_CHAIN 8 + backtrack; relatedConcepts :125-136 bounded 12/6; learnerState :139-151 SELF-only scope filter; learnerStateScope :192-199; toolResultSize :154-166; the audit trace) + index barrel",
+  "reuse_not_redeclare": "the graph reads ride 053's knowledgePrerequisites/knowledgeMisconceptions (the single KG read implementations); the learner's own state rides the tutor port's LearnerModelPort (skillStates + misconceptionReadings); the fakeSql rides the shared test/assessment/helpers helper; zero new KG/learner SQL written",
+  "dependency_decisions": "SMART_LESSON + NOTE_SECTION resolver branches defer to t1b/t3, gated on T-MIG-053 t3 (revision notes) + t4 (smart lesson) landing (r3a's in-flight tranches); the frozen controller law 'kinds not served by the current runtime step are a 400 (closed enum, §1)' is the serving mechanism for the deferral — disclosed at PR, never silent",
+  "adr_031_zero_write_audit": "zero writes: the tranche adds read-only pure functions + registry reads over existing services; no tables touched; zero golden file edits; zero Neon contact; zero force-push",
+  "gates": {
+    "typecheck": "x4 exit 0",
+    "bun_test": "apps/api packages: 1371 pass / 0 fail / 13 skip / 4687 expect across 72 files = the claim base 2a0b18d (1332/0/13skip/4558 across 70) +39 tests/+129 expects/+2 files EXACT — both files new, zero existing-test touches (git diff --stat proof; the baseline worktree run was invalidated by the sandbox's node_modules layout and replaced by the diff-only delta proof)",
+    "golden_selftest": "OK (--selftest: tolerance engine behaves incl. declared-unordered multiset)"
+  },
+  "next": "t1b = ClaContextResolver line-against-line (the curriculum spine + spec-code resolution + the two assessment anchors over ServableQuestions + the 404-indistinguishability laws) for the four dependency-landed kinds; t2 = ClaService orchestration + routes/cla.ts + ClaAnswerView assembly + the event posture + the OUT-OF-FENCE mount + PR with id ratification request"
+}

@@ -3529,3 +3529,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-067 CLAIMED on t-mig-067/w0a @ 2a0b18d base. The band closes the Wave-6 CLA surface over this lane's own 060 seam. Remaining unfiled Wave-6 members for other claimants: LLM admin (LlmAdminController), OCR ingestion (GlmOcrIngestionController), routing (RoutingController) — all zero-claim at census time. Id ratification will be requested at PR (060 precedent). Zero golden/Neon/force.
+
+---
+Task ID: T-MIG-067 (tranche-1a)
+Agent: lane w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: T-MIG-067 tranche-1a — the deterministic CLA core (contracts + context port + leakage gate + tool registry) on the claimed branch.
+
+Work Log:
+- Read the full frozen surface line-against-line (6cad6ef): ClaLeakagePolicy (:1-88), ClaToolRegistry (:1-203), ResourceContext (:62-235), ResponseMode, AttemptRequiredException, ClaContextResolver (:1-492), ClaAnswerView, ClaController (:36-101) — the pin laws named per line in code headers.
+- Dependency audit of record: the tutor chain + ServableQuestions + knowledge reads + learner-state reads are ALL on main (060/041/053-t1 families); SMART_LESSON + NOTE_SECTION branches DEFER (gated on 053 t3 notes / t4 smart lesson — r3a's in-flight tranches); the deferral rides the frozen controller law "kinds not served by the current runtime step are a 400 (closed enum, §1)" — disclosed, never silent.
+- Tranche-1a implemented: contracts/cla.ts (+16 pins, index one-liner per precedent), services/cla/context.ts, services/cla/leakage-policy.ts, services/cla/tool-registry.ts (+23 api pins over the shared param-aware fakeSql). REUSE-not-redeclare: 053's KG reads + the tutor LearnerModelPort + the shared fakeSql helper; zero new KG/learner SQL.
+- Gates: typecheck x4 exit 0; bun test apps/api packages 1371/0/13skip/4687 across 72 files = claim base (1332/4558/70f @ 2a0b18d) +39/+129/+2 EXACT (git diff --stat proof: only the two new test files touch tests); golden --selftest OK. Two real port catches fixed en route (the noUncheckedIndexedAccess pins; the Route.rows required field) — no behavioral drift.
+- Card -> IN_PROGRESS + t1a execution_record entry + run-002-tranche1a.json + this entry.
+
+Stage Summary:
+- T-MIG-067 t1a LANDED on t-mig-067/w0a. Next: t1b (the context resolver for the four dependency-landed kinds — the 404-indistinguishability laws) then t2 (ClaService + route + mount + PR). Zero golden/Neon/force.
