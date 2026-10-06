@@ -795,6 +795,89 @@ import {
   examTargetsFor,
   setTargetSeries,
 } from "../../src/services/learner-me";
+// T-MIG-067 regression imports: the DATE-column seam (wireDate) and the
+// view builder whose daysBetween threw on raw pg Date objects.
+import {
+  courseExamTargetView,
+  wireDate,
+} from "../../src/services/learner-model/exam-target-reader";
+
+// ── T-MIG-067: DATE-column wire law (R3) + the target-put 500 regression ───
+
+describe("T-MIG-067: pg Date objects on DATE columns (runs #9/#11 evidence)", () => {
+  // The pg drivers parse `date` columns into JS Date objects; the frozen
+  // core serializes LocalDate as the bare calendar date. Before wireDate,
+  // the raw Date hit daysBetween ("toIso.slice is not a function" — the
+  // w4-target-series-put 500) and serialized as UTC timestamps on the
+  // exam-series reads (the w4-exam-series-* DATE-FORMAT class).
+  const pgRow = seriesRow({
+    window_start: new Date("2027-05-10T00:00:00.000Z") as unknown as string,
+    window_end: new Date("2027-06-24T00:00:00.000Z") as unknown as string,
+    entry_deadline: new Date("2027-03-20T00:00:00.000Z") as unknown as string,
+  });
+  // local route builders (the ones in the setTargetSeries describe are scoped there)
+  const localSeriesById = (rows: SeriesRowLike[]): Route => ({
+    match: /from exam_series where id = \?$/,
+    rows: [],
+    rowsFor: (params) => rows.filter((r) => r.id === params[0]) as never,
+  });
+  const localEnrolment = (rows: unknown[]): Route => ({
+    match: /from learner_course_enrolments where learner_id = \? and course_slug = \?$/,
+    rows: [],
+    rowsFor: () => rows as never,
+  });
+
+  test("wireDate normalizes Date, string, and nullable inputs to the bare date", () => {
+    expect(wireDate(new Date("2026-10-08T00:00:00.000Z"))).toBe("2026-10-08");
+    expect(wireDate("2026-10-08")).toBe("2026-10-08");
+    expect(wireDate("2026-10-08T14:30:00.000Z")).toBe("2026-10-08");
+    expect(wireDate(null)).toBeNull();
+    expect(wireDate(undefined)).toBeNull();
+  });
+
+  test("courseExamTargetView with pg Date objects: countdown derived, wire dates bare (the put-500 regression)", () => {
+    const view = courseExamTargetView(
+      {
+        id: "9a000000-0000-4000-8000-000000000001",
+        learner_id: LEARNER,
+        course_slug: "chm",
+        target_series_id: SERIES_A,
+        created_at: "2026-10-06T00:00:00Z",
+        updated_at: "2026-10-06T00:00:00Z",
+      },
+      pgRow as never,
+      "2026-10-06",
+    );
+    expect(view.windowStart).toBe("2027-05-10");
+    expect(view.windowEnd).toBe("2027-06-24");
+    expect(view.entryDeadline).toBe("2027-03-20");
+    expect(view.daysToWindowStart).toBe(216);
+    expect(view.daysToWindowEnd).toBe(261);
+    expect(view.entryDeadlinePassed).toBe(false);
+  });
+
+  test("setTargetSeries end-to-end with pg Date objects → 200-shaped view (was the 500)", async () => {
+    const sql = fakeSql([
+      localSeriesById([pgRow]),
+      localEnrolment([]),
+      { match: /insert into learner_course_enrolments/, rows: [] },
+    ]);
+    const view = await setTargetSeries({ sql, clock }, LEARNER, "chm", { seriesId: SERIES_A });
+    expect(view.windowStart).toBe("2027-05-10");
+    expect(view.daysToWindowStart).toBe(216);
+  });
+
+  test("examSeriesCalendar with pg Date objects → bare LocalDate wire (the R3 class)", async () => {
+    const sql = fakeSql([
+      { match: /where published = true order by window_start asc$/, rows: [pgRow] },
+    ]);
+    const view = (await examSeriesCalendar({ sql, clock }))[0]!;
+    expect(view.windowStart).toBe("2027-05-10");
+    expect(view.windowEnd).toBe("2027-06-24");
+    expect(view.entryDeadline).toBe("2027-03-20");
+    expect(view.windowStart).not.toContain("T00:00:00");
+  });
+});
 
 // ── V49/V51 learner assignments ─────────────────────────────────────────
 
