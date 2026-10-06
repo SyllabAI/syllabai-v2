@@ -82,7 +82,7 @@
  *      honest harness error, never a silent degraded replay. Zero case
  *      files touched (§7: no silent widening — the cases are forever).
  */
-import { loadCases, deepEqualTolerant, buildMultipartBody, partitionByTranche, checkHeaders, declaredLimiter429, ordinaryHeaderExpectations } from "../runner.ts";
+import { loadCases, deepEqualTolerant, buildMultipartBody, partitionByTranche, checkHeaders, declaredLimiter429, ordinaryHeaderExpectations, authPosture } from "../runner.ts";
 import { join } from "node:path";
 
 const REALDATA = /realdata|-real-/; // verbatim posture regex (T-MIG-022 v2 tool)
@@ -269,14 +269,21 @@ async function ensureUser(
 
 async function replayOne(kase: GoldenCase, teacher: string, student: string, admin: string): Promise<CaseResult> {
   const tranche: "empty" | "staged" = kase.tranche === "empty" ? "empty" : "staged";
-  // Only cases that CARRY an Authorization header get one (capture-faithful);
-  // its value is re-minted per route rule — {{TOKEN}} placeholders and the
-  // committed scrubbed dummy alike (v2 tool model, corpus-wide).
+  // T-MIG-075 (E-class): the Authorization decision is the single-sourced
+  // runner helper (imported — zero drift, ONE decision for both call sites).
+  // substitute / re-mint keep the route-rule bearer exactly as before
+  // ({{TOKEN}} placeholders and the 44 scrubbed-dummy captures — the committed
+  // scrubbing convention). NEW — verbatim-bearer-posture: cases whose NAME
+  // declares a deliberate 401 posture (malformed-bearer | empty-bearer) replay
+  // their DECLARED value VERBATIM ("Bearer not-a-jwt", "Bearer ") so v2's true
+  // authz behavior is finally exercised — the old hadAuth branch upgraded every
+  // declared header to a valid bearer and masked these postures for 5+ runs
+  // (run-7 class E, run-9 action 1). Any v2 defect the un-proven postures now
+  // reveal is an honest red filed for the port lanes, never masked; no pacing
+  // is added anywhere (the standing masking ban). none: capture-faithful.
   const headers: Record<string, string> = { "content-type": "application/json" };
-  const hadAuth = Object.keys(kase.request?.headers ?? {}).some(
-    (h) => h.toLowerCase() === "authorization",
-  );
-  if (hadAuth) {
+  const posture = authPosture(kase);
+  if (posture === "substitute" || posture === "re-mint") {
     const bearer = routeRuleBearer(kase.name, kase.path, teacher, student, admin);
     if (bearer === "") {
       return {
@@ -288,6 +295,11 @@ async function replayOne(kase: GoldenCase, teacher: string, student: string, adm
       };
     }
     headers["Authorization"] = `Bearer ${bearer}`;
+  } else if (posture === "verbatim-bearer-posture") {
+    const declared = Object.entries(kase.request?.headers ?? {}).find(
+      ([h]) => h.toLowerCase() === "authorization",
+    );
+    if (declared) headers["Authorization"] = declared[1];
   } else if (kase.request?.headers) {
     Object.assign(headers, kase.request.headers);
   }

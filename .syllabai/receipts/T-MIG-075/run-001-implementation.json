@@ -1,0 +1,12 @@
+{
+  "task_id": "T-MIG-075",
+  "kind": "implementation",
+  "run": "run-001",
+  "timestamp": "2026-10-06",
+  "agent": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "branch": "t-mig-075/r0 (cut from 6273c77)",
+  "design_executed": "run-7 note E keyword-set, single-sourced: golden/runner.ts exports authPosture(kase) -> none | substitute | verbatim-bearer-posture | re-mint (BEARER_POSTURE_NAME = /(^|-)(malformed-bearer|empty-bearer)(-|$)/ on the case name; {{TOKEN}} placeholder law first; scrubbed-dummy literals keep re-mint). golden/tools/ci-replay.ts replayOne consults it BEFORE the route-rule bearer: substitute/re-mint = the old hadAuth path byte-identical; verbatim-bearer-posture = the DECLARED Authorization sent VERBATIM (w4-agenda-malformed-bearer-401 'Bearer not-a-jwt', w4-state-empty-bearer-401 'Bearer '); none = unchanged capture-faithful no-header path. ZERO case-file edits (the two cases already pin the correct postures); zero pacing; the masking ban stands.",
+  "selftest_growth": "+6 assertions on the REAL corpus names/values (both 401 postures verbatim; the placeholder law; the dummy-literal re-mint negative; the no-header path; the with-bearer-name negative proving the keyword set is not over-broad).",
+  "gates": "bun golden/runner.ts --selftest OK (incl. the T-MIG-075 line); bun run typecheck exit 0; bun test apps/api packages 1546 ran / 1533 pass / 0 fail / 13 skip / 6036 expect / 82 files = the claim-time baseline +0 EXACT (harness-only band, zero app contact)",
+  "next": "PR to the desk (authors-never-self-merge); post-merge the neon-replay dispatch PROVES the two 401 postures live for the first time — if v2 fails either posture that is a NEW port finding, honest red, never masked"
+}
