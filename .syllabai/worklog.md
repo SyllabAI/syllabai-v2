@@ -4149,6 +4149,35 @@ Stage Summary:
 - Round-20: desk merged #117 (c88b738) — the RICH-200-C composition ruling is now executable on the live instrument: golden/runner.ts carries the tranche partition + the F-class RFC 8259 object-key canonicalization rider, ci-replay.ts runs the two ordered tranches (9 empty-pinned cases pre-staging, 153 staged after), 9 case files carry the declared "tranche": "empty" markers with zero expectation edits. Gates at the implementation head were the lane's +0 EXACT vs d25626e (1525/1512/0/13skip/5958/80f); the desk verified CI green at head and merge commit. Register follow-ups of record: T-MIG-071 (the RICH-200-E case-amendment residual) now unblocked; NEON replay run #8 still gated on NEON_BRANCH_CAPACITY.
 
 ---
+
+Task ID: T-MIG-071 claim (trace 1a1107d90d2f3cc9)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator standing directive "Check if R0 has merged or not. If not, review+merge yourself and continue working" — census executed, R0 merge check IN, the sole free filed band claimed.
+
+Work Log:
+- CENSUS @ e9ef235: R0 HAS MERGED of record since R4b-ROUND-20 — #115 d25626e (T-MIG-053 tranche-3), #116 3e9b54b (T-MIG-053 DONE, 23/23 endpoints), #117 c88b738 (T-MIG-072, the r0-auto desk lane's round-20 receipt e9ef235 documents the sha-pinned merge); open PRs 0, queue 0. PAT persistence held (all three 0600 files alive, no restore needed this round).
+- CLAIM CENSUS: T-MIG-071 (the operator-ruling case-amendment band, R3-C/D3/D4 per receipts/R0-arbitration/ruling3-operator-four-rulings.json) is the sole OPEN/unassigned card. Zero-collision: the t-mig-071/r1 origin head (14ed0ab) is the superseded refile evidence per the T-MIG-073 card's ruling2 note (yaml id is what the register reads); no 071 receipts dir; no 071 PR; r1's round-20 closeout names 071 'the next claim candidate for any lane ... now unblocked' (post-#117 composition). Owner-property bands untouched: 043 (w0a), 065 (r0), 072 card-flip (r1), 073 (r1-contracts).
+- CLAIM-IN-FIRST-COMMIT per AGENT_COORDINATION §2 and the wipe-protection law: card owner/status flip (OPEN -> IN_PROGRESS, claimed_at 2026-10-06T09:15:48Z) + receipts/T-MIG-071/run-000-claim.json + this entry, ONE .syllabai-only direct-main commit, fetch-first, pushed atomically. Implementation (golden/cases/** amendments per the ruling3 law, rider on runner.ts ONLY if Retry-After rotates) follows on a branch + PR to the desk per authors-never-self-merge.
+
+Stage Summary:
+- T-MIG-071 claimed by R4-api-b of record; claim receipt run-000; implementation next: R3-C eight auth-register justified/Retry-After pins, R3-D3 target-series day-window tolerates, R3-D4 Option A identity tolerates (register-learner accessToken, history-after-submit learnerId/attemptId, auth-me seeded-identity fields), scope-fenced to golden/cases/** + .syllabai/**.
+
+---
+Task ID: R9-HUBX-FLIP-24 (trace 1a1107c667b6f2e9)
+Agent: r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Operator directive "Proceed with three in-review cards plus Wave-7 cutover" — drive the in-review register to completion, then open the Wave-7 lane.
+
+Work Log:
+- CENSUS at fetch e9ef235: the directive's three IN_REVIEW cards (043 w0a, 065 r0, 072 r1-contracts) are ALL merged-of-record with stale statuses — 043 tranche-2 = PR #85 (both tranches of record: #74 + #85; #76 losing duplicate closed), 065 = PR #103 (apps/hub/bunfig.toml verified live on main), 072 = PR #117 -> c88b738 (R0-AUTO round-20 sha-pinned PUT). Zero open PRs; T-MIG-053 already flipped DONE by r1-ROUND-22 (t1-t4 = #101/#108/#115/#116); T-MIG-073 (#113) stays r1-contracts owner-property (IN_PROGRESS, not this directive's trio).
+- GATES first-hand at e9ef235 BEFORE the flip write: typecheck x4 exit 0; bun test apps/api packages 1533 pass / 0 fail / 13 skip / 6036 expects / 82 files — EXACT reconciliation vs r1-ROUND-22's union-head absolutes (1546 ran/1533/0/13/6036/82f); bun test apps/hub 36 pass / 0 fail / 291 expects; bun golden/runner.ts --selftest OK (corroborates the #117 composition live: tranche partition + RFC 8259 key canonicalization).
+- DESK FLIPS: 043/065/072 -> DONE in this commit — comment-only provenance-preserving edits (status line only, no field rewrites), each citing its merge-of-record PR + the first-hand gate evidence. All three PRs were merged by separate desk sessions; authors-never-self-merge held end-to-end; this lane only certifies and flips per the 061-flip precedent (e273b98) and the .syllabai-only direct-main receipt chain (3c07bae/bb537fa/2a0b18d/.../e9ef235).
+- WAVE-7 NEXT: the second half of the directive (cutover) files as T-MIG-074 on a branch — §7 preconditions audit + executable cutover runbook + migration report of record; PR handed to the desk, NOT self-merged. The one open W7 precondition gap is the golden-replay 100% line: T-MIG-071 (case-amendment band) was OPEN at this lane's census but was claimed mid-round by R4-api-b (f0b7189, trace 1a1107d90d2f3cc9 — concurrent-of-record, union preserved above); implementation pending on their branch.
+
+Stage Summary:
+- Register at this commit: 62 of 66 cards DONE (043/065/072 flipped here); non-DONE residue = 071 OPEN/unassigned (free lane), 073 IN_PROGRESS (r1-contracts, #113 merged of record, owner flip pending). Fleet convergence on the port is one free lane + one owner flip away; Wave-7 prep follows on branch t-mig-074/r9-hubx.
+
+---
+
 Task ID: R0-REPLAY-FILING-1 (operator trace 1a1107f16bd8d041 "Check current status again")
 Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
 Task: Status census + the first of-record filing of the standing neon-replay scheduled run's union verdict (the instrument red on main).

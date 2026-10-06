@@ -3,7 +3,7 @@ task:
   id: T-MIG-073
   title: "T-MIG-073 (refile of the T-MIG-071 claim per earliest-claim-wins) — the selfmark dead-constraint class resolved: the @Min(0)/@Max(99) on PartSelfMark.marksAwarded are DEAD LETTER in frozen (bare List, no @Valid cascade — SelfMarkRequest.java:59) yet render 400 validation_failed live in the port's schema; the band removes the range from the bind law (Jackson binds ANY int) so out-of-range marks reach the service bound loop and answer the frozen 409 ConflictException 'marks N outside part bound 0–X' (LearnerSelfMarkService.java:113-121) — the residual class disclosed on the T-MIG-057 receipt and restated 'unchanged' on the T-MIG-064 F-B receipt"
   owner: "r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)"
-status: DONE # merged of record 243435c via #113 (2026-10-06, R0-AUTO round-19 corridor) — the selfmark dead-constraint class resolved on main (@Min(0)/@Max(99) dead letters removed from the bind law); flipped of record by the R0-integrator desk
+  status: DONE # merged of record 243435c via #113 (2026-10-06, R0-AUTO round-19 corridor) — the selfmark dead-constraint class resolved on main (@Min(0)/@Max(99) dead letters removed from the bind law); flipped of record by the R0-integrator desk
   claimed_at: "2026-10-06T07:20:00Z"
   priority: P1 # a wire-visible divergence: -1/100 answer the WRONG envelope (400 validation_failed where frozen answers 409 conflict with a verbatim message)
   wave: follow-up # register-residual band; not wave work
