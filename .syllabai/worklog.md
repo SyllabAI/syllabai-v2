@@ -2751,3 +2751,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-055 IN_REVIEW (was T-MIG-053); PR next with collision + intake disclosure comment; merge under standing delegated authority, fetch-first FF, post-merge gates, replay dispatch.
+
+---
+
+Task ID: T-MIG-055 (merge + live re-proof)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Land T-MIG-055 (PR #91) and prove the fix on the live instrument.
+
+Work Log:
+- Intake round-2 during IN_REVIEW (e6cc4d1, w0a bookkeeping) — worklog tail resolved per append-only law; gates re-run EXACT (branch 1009/0/13skip/3072 = main 1006/3065 + this lane's 3 pins/7 expects, throwaway-worktree verified vs 855bef9).
+- PR #91 opened with the full disclosure body (frozen derivation, fix, gates, collision re-file 053->055, intake); standing-authority merge disclosure comment 6008667459; CI verify+hub success on the head; merged 9bebf7e; fetch-first FF; post-merge gates EXACT (1009/0/13skip/3072, typecheck x4 exit 0).
+- Live re-proof dispatched: neon-replay run 37408914789 on 9bebf7e — union verdict 120/177 (seed 107/162, prod 13/15), RED at the union step ONLY (doctrine held); read-only proof + drop+404-verify success (zero residue discipline).
+- HEADLINE: w3-selfmark-unknown-attempt-500 pass:true — the validation-order class RETIRES. Census diff vs T-MIG-050 run-002: RECOVERED 12 (1 = this fix, 1 = throughput key-order via 043-t2, 10 = the learner-me band serving live); NEW 7 = the T-MIG-051 rich-200 family's first live run (filed for R0/R6, not a port-fix item).
+- Receipts: T-MIG-055/run-002-union-verdict.json + run-002-union.md (evidence of record). Card -> DONE.
+
+Stage Summary:
+- T-MIG-055 DONE end-to-end (fix + collision-clean re-file + live union proof on main). Register: rich-200 first-run disposition sits with R6/R0; H-2 third posture / identity pins / 429 pacing unchanged. The daily 02:30 UTC schedule owns the census from here. LANE IDLE.

@@ -1,0 +1,37 @@
+{
+  "task": "T-MIG-055",
+  "kind": "union-receipt (run-002 class, T-MIG-050 precedent)",
+  "agent": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "date": "2026-10-06",
+  "ci_run": {
+    "id": 37408914789,
+    "workflow": "neon-replay.yml (workflow_dispatch)",
+    "head": "main 9bebf7e (the #91 merge commit)",
+    "dispatch_note": "T-MIG-055 re-proof: self-mark null-parts NPE parity merged at 9bebf7e — expect w3-selfmark-unknown-attempt-500 to recover (109/170 modulo 429 jitter)",
+    "conclusion": "failure — RED at the union verdict ONLY (doctrine held: the union is the single job gate, failures are filed never tolerated); every other step success incl. both passes, read-only proof, drop+404-verify (zero residue discipline ran)"
+  },
+  "union_verdict": { "pass": 120, "total": 177, "seed": "107/162", "prod": "13/15" },
+  "headline": "w3-selfmark-unknown-attempt-500 RECOVERED (pass: true in reports/seed.json) — the validation-order class retires from the port-fix register; the null-parts NPE parity is live-proven on the merged main",
+  "census_diff_vs_t-mig-050_run-002": {
+    "baseline": "run 37398183529 verdict 108/170 (receipts/T-MIG-050/run-002-union.md)",
+    "note": "corpus grew 170 -> 177 with the T-MIG-051 rich-200 captures joining; #85 (043 t1+t2) landed the learner-me surfaces",
+    "recovered_12": [
+      "[seed] w3-selfmark-unknown-attempt-500 — THIS FIX (T-MIG-055, R-053-A)",
+      "[seed] w3-marking-throughput-teacher-200 — key-order case, recovered by the 043 tranche-2 throughput port",
+      "[seed] w4-agenda-composed-200, w4-agenda-empty-200, w4-exam-series-unknown-qualification-200, w4-flashcard-rating-bad-cardid-400, w4-flashcard-rating-bad-rating-400, w4-flashcard-rating-dotted-anchor-400, w4-flashcard-rating-unknown-anchor-404, w4-flashcard-schedule-empty-200, w4-flashcard-trail-empty-200, w4-target-series-unknown-series-404 — the learner-me band (043 t1 #74 + t2 #85) now serves these surfaces live"
+    ],
+    "new_7": [
+      "[seed] w3-sme-ingest-rich-200, w3-sme-ingest-replace-rich-200, w3-sme-status-admin-rich-200, w3-teacher-marking-answers-rich-200, w3-teacher-marking-answers-paged-rich-200, w3-teacher-marking-queue-v2-rich-200, w3-teacher-marking-throughput-rich-200 — the T-MIG-051 rich-200 capture family's FIRST live run (newly captured pins, #83); first-run failures filed for R0/R6 disposition, never auto-fixed"
+    ]
+  },
+  "instrument_integrity": {
+    "read_only_proof": "step success — zero tracked-file changes (golden corpus untouched)",
+    "zero_residue": "drop step ran with 404-verify (always()); disposable seed+prod COW branches dropped",
+    "evidence": "artifact neon-replay-37408914789-1 (reports/seed.json, reports/prod.json, reports/union.md, boot logs); union.md copied to receipts/T-MIG-055/run-002-union.md"
+  },
+  "next": [
+    "the 7 rich-200 first-run failures are the T-MIG-051 family's live debut — disposition (capture-vs-port deltas) belongs to R6/R0 per GOLDEN_MASTER; not a port-fix register item",
+    "remaining register items unchanged: H-2 Flyway-seed-pinned third posture (the majority class), capture-time identity pins, 429 pacing, missing-fields envelope-class + question-assets empty-404 shape (R6 rulings)",
+    "the daily 02:30 UTC schedule owns the census from here"
+  ]
+}
