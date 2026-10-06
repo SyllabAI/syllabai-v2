@@ -140,8 +140,14 @@ export class ServableQuestions {
   private async optionsFor(questionIds: string[]): Promise<Map<string, OptionRow[]>> {
     const byQuestion = new Map<string, OptionRow[]>();
     if (questionIds.length === 0) return byQuestion;
+    // Column law: QuestionOption.java:33 @ 6cad6ef maps the Java `text`
+    // field onto the column `option_text` — the former bare `o.text` here
+    // selected a nonexistent column (Postgres 42703 "column o.text does
+    // not exist"), 500-ing the families/topics reads on the live instrument
+    // (runs #10/#11; T-MIG-067 P1 500-class). The alias keeps the OptionRow
+    // mapping below unchanged.
     const rows = (await this.sql`
-      select o.id, o.question_id, o.label, o.text, o.ordering
+      select o.id, o.question_id, o.label, o.option_text as text, o.ordering
       from question_options o
       where o.question_id = any(${questionIds}::uuid[])
       order by o.question_id, o.ordering`) as unknown as OptionRow[];

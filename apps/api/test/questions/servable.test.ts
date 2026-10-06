@@ -162,4 +162,19 @@ describe("findById (single-question fast path)", () => {
     ]);
     expect(await servable.findById(BLOCKED_ID)).toBeNull();
   });
+
+  test("the options read selects o.option_text (column law QuestionOption.java:33 @ 6cad6ef — the o.text 42703 regression, T-MIG-067)", async () => {
+    // The bare `o.text` selected a nonexistent column: Postgres 42703
+    // "column o.text does not exist", 500-ing the families/topics reads on
+    // the live instrument (runs #10/#11). The alias keeps the OptionRow
+    // mapping unchanged; this pin fails if the column law regresses.
+    const { servable, sql } = build([
+      { match: BY_ID, rows: [MCQ_ROW] },
+    ]);
+    await servable.findById(MCQ_ID);
+    const optionsQuery = sql.queries.find((q) => q.includes("from question_options o"));
+    expect(optionsQuery).toBeDefined();
+    expect(optionsQuery).toContain("o.option_text as text");
+    expect(optionsQuery).not.toContain("o.text,");
+  });
 });

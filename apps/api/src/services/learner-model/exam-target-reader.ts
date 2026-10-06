@@ -74,6 +74,24 @@ export interface EnrolmentRow {
 export const utcToday = (now: Date): string => now.toISOString().slice(0, 10);
 
 /**
+ * Wire form of a DATE-typed column — the LocalDate passthrough law. The
+ * frozen core serializes LocalDate fields as the bare calendar date
+ * ("2026-10-08" — ExamSeriesView.java / CourseExamTargetView.java), but the
+ * pg drivers hand JS a Date object for `date` columns, which
+ * JSON.stringify renders as a UTC timestamp ("2026-10-08T00:00:00.000Z" —
+ * the run #9/#11 DATE-FORMAT class, R3 ruling) and which broke
+ * daysBetween with "toIso.slice is not a function" (the
+ * w4-target-series-put 500, run #11 boot log; T-MIG-067). Normalizes BOTH
+ * runtime shapes to the bare date: Date → its ISO prefix; string → its
+ * first 10 chars; null/undefined → null (nullable LocalDate columns).
+ */
+export const wireDate = (value: unknown): string | null => {
+  if (value == null) return null;
+  const iso = value instanceof Date ? value.toISOString() : String(value);
+  return iso.slice(0, 10);
+};
+
+/**
  * ChronoUnit.DAYS.between(today, window) — WHOLE calendar days between two
  * ISO local dates (UTC). Calendar-day arithmetic on date STRINGS (both
  * normalized YYYY-MM-DD), not on ms timestamps — a UTC-day boundary never
@@ -106,25 +124,34 @@ export function courseExamTargetView(
   series: ExamSeriesRow,
   today: string,
 ): CourseExamTargetView {
+  // DATE columns arrive as Date objects from the pg drivers (see wireDate);
+  // normalize BEFORE the countdown arithmetic and the wire (T-MIG-067: the
+  // raw Date hit daysBetween as "toIso.slice is not a function" — the
+  // w4-target-series-put 500 — and serialized as UTC timestamps on the
+  // exam-series surfaces, the R3 DATE-FORMAT class).
+  const windowStart = wireDate(series.window_start) as string;
+  const windowEnd = wireDate(series.window_end) as string;
+  const entryDeadline = wireDate(series.entry_deadline);
+  const resultsDate = wireDate(series.results_date);
   return {
     courseSlug: enrolment.course_slug,
     seriesId: series.id,
     seriesCode: series.series_code,
     label: series.label,
-    windowStart: series.window_start,
-    windowEnd: series.window_end,
+    windowStart,
+    windowEnd,
     // FIDELITY NOTE (R0 flag, resolved by T-MIG-038 #86): the frozen
     // CourseExamTargetView record renders entryDeadline/resultsDate as the
     // raw LocalDate columns — NULL when the series row has no deadline/
     // results date — and the canonical courseExamTargetViewSchema
     // (learner.ts) now carries the .nullable() law; the cast documents the
     // honest pass-through at the former call sites.
-    entryDeadline: series.entry_deadline as string,
-    resultsDate: series.results_date as string,
+    entryDeadline: entryDeadline as string,
+    resultsDate: resultsDate as string,
     estimated: series.estimated,
-    daysToWindowStart: daysBetween(today, series.window_start),
-    daysToWindowEnd: daysBetween(today, series.window_end),
-    entryDeadlinePassed: series.entry_deadline != null && series.entry_deadline < today,
+    daysToWindowStart: daysBetween(today, windowStart),
+    daysToWindowEnd: daysBetween(today, windowEnd),
+    entryDeadlinePassed: entryDeadline != null && entryDeadline < today,
   };
 }
 
