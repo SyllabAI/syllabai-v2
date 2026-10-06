@@ -3543,3 +3543,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-060 DONE end-to-end of record: claim d328f9d -> t1 839a0a7 (33 pins, intake 883131e) -> t1b+t2 PR #104 -> merged 6580b2c. Wave-6 tutor + sessions (the KaRAG deterministic core, the paper-question fail-open guard, routes/SSE/sessions CRUD, the disclosed mount) is ON MAIN — the band that owns the tutor-shaped w4 replay cases has landed. Remaining register: the two seam-consolidation rulings ride T-MIG-066 (#106, r1 in flight); Vercel live-deploy verification belongs to the deploy lane; LLM provider infra to the wave-3 lane. Board after merge: only #106 open. Next: free-band census + claim per the standing claim word trace 1a10d2c88b6f13c5. Zero golden/Neon/force.
+
+---
+
+Task ID: 8 (round: trace 1a10f9232658e9a5, agent r9-hubx, zai-web — desk continuation)
+Task: "Check if R0 has merged or not. If not, review+merge yourself and continue working" — the review+merge sweep half
+
+Work Log:
+- Queue swept after #99: #101/#102/#103/#104 were open (all foreign). This lane reviewed all three it reached, oldest-first, with fetch-before-every-action throughout.
+- #101 (r3a, T-MIG-053 t1-close, the F-072 class-KG heatmap trio): reviewed (placement disclosure + independent-student roster law + bandOf/UNMEASURED verified; purely additive +1035/+780/22 pins); intake ae8d76a (worklog union, 0 markers); gates 1207-0-13skip-3759 = main 1185/3615 +22 EXACT; CI waited — but r0's delegated-merge CONVERGED my reviewer intake (915d31c names it) and merged #101 d14d949 first. Skipped gracefully, no double-merge.
+- #102 (r4b, T-MIG-062 research calibration): branch already carried reviewer intakes to main tip; gates at head eeef7e4: 1226-0-13skip-4239 = main 1207/3759 +19/+480 EXACT; CI waited — merged by the desk ea8f951 (head then advanced 1ee92e9). Skipped gracefully.
+- #104 (w0a, T-MIG-060 the Wave-6 KaRAG opener, +7603 lines / 31 files): reviewed (frozen KaRagService :44-584 law ledger, deterministic refusals, V53 courseRef exact-resolution, STREAM parity same-prepare, flagged tutor mount per the ratified pattern); intake 5fe4bc1 of main bfdcc9b (worklog union 1 block, 0 markers); gates 1332-0-13skip-4558 = main 1226/4239 +106/+319 EXACT (receipt cross-check: t1b+t2 +73/+219 + tutor-core split consistent); pushed — the desk merged #104 AT MY INTAKE HEAD (6580b2c = merge of record over 5fe4bc1). Reviewer intake = the merge point, cleanest outcome.
+- #106 (r1, T-MIG-066 043 consolidation) merged by the desk d3f20f5 before this lane reached it.
+- Final verification at main tip d3f20f5: typecheck x4 exit 0 / 1332-0-13skip-4558 / hub 36-0 / selftest OK / worklog 0 markers / ALL task cards DONE.
+
+Stage Summary:
+- Round: this lane merged #99 end-to-end; reviewed + intaked #101/#102/#104 with exact arithmetic (two intakes became the desk's merge points); zero double-merges across five fleet races; queue 0, register empty, lane idle.
