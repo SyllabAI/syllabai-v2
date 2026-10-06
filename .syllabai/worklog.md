@@ -2973,3 +2973,20 @@ Work Log:
 
 Stage Summary:
 - T-MIG-056 DONE. The classroom band now serves the frozen @NotBlank envelope law (whitespace-only -> validation_failed verbatim) and the frozen category-null binding (explicit null -> GENERAL -> 201). Register still open (documented on the card + receipt): F-0/F-1 binding-law divergences with #90's routes classifier as ready prior art; the rowsFor hardening nit. LANE returns to the operator's disposition.
+Task ID: R0-AUTO (cron job 438940, sweep 2026-10-06 04:00 UTC)
+Agent: R0-auto merge desk (Super Z scheduled integrator)
+Task: Periodic merge-desk sweep — review + merge open PRs per the standing R0-auto procedure (max 2 merges/run, oldest first).
+
+Work Log:
+- SANDBOX WIPE #8 class at sweep start: .gh-pat deleted + mirror reverted to a945c20. Recovery per standing law: PAT re-staged 0600 (verified login SyllabAI), mirror fast-forwarded. Zero state assumed beyond the recovery.
+- Census: #84 (T-MIG-053 t1) and #88 (r0r6 triage receipt) had been merged by parallel lanes; main had advanced to ced0111 (CI green). New filings: #92 (T-MIG-057 selfmark element-null parity, r4b) + #93 (T-MIG-056 classroom @NotBlank envelope refinement, r0).
+- #92 guard chain (head e34d85b37af32729d2dab1b836623c9cfd78a81e): CI verify+hub success; mergeable clean base=ced0111; 0 reviews, 0 hold/blocking comment hits; 6 files +181/-0 (selfmark routes + smartmark route pins + card + receipts) — boundary clean; single t-mig-057* branch. MERGED as e82f5d5 (sha-pinned).
+- #93 guard chain (head 33c79bd): CI verify+hub success at the real head; 0 blockers; 8 files +235/-18 (classroom routes/contracts/pins + card + receipts) — boundary clean; disjoint from #92 except the worklog tail. First PUT rejected: merge conflicts — the classic worklog-tail add/add (both PRs appended at the same tail; zero CODE conflicts).
+- INTAKE per procedure (c): branch t-mig-056/r0 merged with origin/main e82f5d5; worklog conflict resolved via the append-only chronological union (main's T-MIG-057 entries kept verbatim in place, PR's T-MIG-056 entries re-appended at tail — byte-checked resolver, both sides fully preserved, zero markers; intake d28cd55); pushed to the PR branch fast-forward, no force.
+- Gates at intake head d28cd55: install OK; typecheck exit 0; bun test apps/api packages 1093 pass / 0 fail / 13 skip / 3299 expect (1106 ran / 61 files — EXACT: main-with-#92 1092/0/13skip/3294 + the #93 delta +1 test/+5 expects); golden --selftest OK.
+- MERGED #93 as 9ba1c39. CI verified on new main tip 9ba1c39: verify + hub completed/success. Local gates re-run at 9ba1c39: 1093/0/13skip/3299 + selftest OK (same numbers — main == intake head content).
+- Receipt committed bookkeeping-only (.syllabai/**); zero force-push.
+
+Stage Summary:
+- Two merges this cycle (#92 e82f5d5, #93 9ba1c39) — the selfmark element-null 500 parity and the classroom @NotBlank envelope refinement (with category-null 201 law) are live. Register notes absorbed from the worklog: T-MIG-055 stand-down recorded by r4b (wipe-destroyed branch, zero salvage claimed), F-0/F-1 binding-class collapse remains register-open (out of both fences), NEON replay instrument fully provisioned (NEON_BRANCH_CAPACITY caveat stands).
+- Queue at sweep end: 0 open PRs. No escalations. LANE DONE for this cycle.
