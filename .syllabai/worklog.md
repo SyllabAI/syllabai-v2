@@ -4451,6 +4451,23 @@ Stage Summary:
 - The 043 audit register is now FULLY dispositioned: F1 archived, F2 absorbed (#86), F3 landed here (T-MIG-080), F4 cosmetics no-gate. Awaiting R0 merge.
 
 ---
+Task ID: R0-AUTO cron 438940 @ 2026-10-06 11:30Z (19:30 +08) — round-24 desk sweep (2 merges)
+Agent: R0-auto (Super Z, zai-web session discord DM 482bf272)
+Task: Periodic merge-desk sweep (max 2 merges, oldest first); queue was #122 (T-MIG-079) + #123 (T-MIG-080) — both processed end-to-end, max-2 respected.
+
+Work Log:
+- PRE-SWEEP: no wipe (PAT live as SyllabAI via /user, 7th consecutive round); lock protocol clean.
+- INTER-SWEEP CONTEXT: main advanced 226cc2b -> 2eca546 via two direct-main earliest-claim-wins claim commits (487e9ef T-MIG-077 @ 11:12:28Z; 2eca546 T-MIG-078 by r1c; both .syllabai-only); a further T-MIG-081 claim (class-B auth-envelope investigation) rode in direct-main during this round's window and auto-merged through the intake. Register residue now: 076 BLOCKED (operator-side ci.yml patch), 077/078/081 in flight, 079/080 closed this round.
+- MERGE 1 of 2 — PR #122 (T-MIG-079, r3a: W4 learner KG + smart-lesson routes + mount + 13 pins; closes run-002 review F-9's 5 live reds): head fa23ece was ALREADY CURRENT with main tip 2eca546 (the lane pre-intake'd — worklog append-only union at fa23ece), CI verify+hub success at the real head, reviews 0 / comments 0, fence clean (apps/api/src/index.ts ONE flagged mount per the 010/020/021/030/032/041/062 OUT-OF-FENCE precedent, routes/learnerkg.ts NEW, test/learner/kg-routes.test.ts +13 pins, .syllabai/**; zero .java/core/hub/Neon/prod). mergeable=True/clean -> sha-pinned PUT (sha=fa23ece235b5c3ffa2044113572990eb87f5c134) -> **2714e25**, first parent 2eca546, zero race. MAIN CI at 2714e25: verify + hub success.
+- MERGE 2 of 2 — PR #123 (T-MIG-080, r7a: the 043-audit F3 salvage — 10 additive learner-me pins + the two-line notBlank dead-branch fidelity fix): head 01bbf18 carried the lane's own DISCLOSED pre-file rebase force-push (17c202c/560eb59 -> 760d952/01bbf18, ls-remote-guarded, code files byte-identical per the lane's git-diff assert, worklog union parse-asserted) — recorded here as a disclosed lane action; the desk evaluated the CURRENT head only and pushed no force itself. Gate (b) PASS at 01bbf18 (verify+hub success); gate (d) PASS (1 review = the lane's own COMMENTED self-review disclosure, explicitly "not an approval", zero blocking signals; 1 comment = the same intake disclosure). Main had advanced to 2714e25 (#122) -> desk intake f25594d: single worklog conflict, union resolver (merge orientation) 33/33 non-empty conflict lines preserved, zero markers; code files disjoint from 079's band (learnerme.ts / learner-me tests / contracts/learner.ts vs index.ts / learnerkg.ts / kg test) -> zero CODE conflicts. GATES first-hand at f25594d: bun install --frozen-lockfile OK (930 pkgs); typecheck x4 exit 0; bun test apps/api packages 1569 ran / 1556 pass / 0 fail / 13 skip / 6143 expect / 83 files = 1533/6036/82f baseline +13 tests/+77 expects/+1 file (079) +10 tests/+30 expects (080) EXACT; golden --selftest OK. Push fast-forward 01bbf18..f25594d, no force; CI verify+hub success at the real head -> sha-pinned PUT -> **88c1965**, first parent 2714e25, zero race. MAIN CI at 88c1965: verify + hub success.
+- CARDS: T-MIG-079 IN_REVIEW -> DONE (cites #122/2714e25); T-MIG-080 IN_REVIEW -> DONE (cites #123/88c1965; the 043 audit register is now fully dispositioned: F1 archived, F2 #86, F3 here, F4 no-gate cosmetics).
+- QUEUE at sweep close: 0 open PRs.
+
+Stage Summary:
+- Round-24: desk merged #122 (2714e25) and #123 (88c1965) — the W4 learner KG + smart-lesson surfaces are LIVE on main (routes + mount + 13 pins; the D-class replay reds now closable) and the 043-audit F3 salvage is landed (learner-me suite fidelity + the notBlank dead-branch fix; zero golden exposure). Both gates at both merges were first-hand and reconciled EXACT against the 1533/6036/82f baseline with the two bands' declared deltas. Operator-side standing items unchanged: T-MIG-076's one-line ci.yml patch, PAT rotation, NEON_BRANCH_CAPACITY, cron cadence.
+
+---
+
 
 
 ---
