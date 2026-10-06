@@ -3103,6 +3103,37 @@ Work Log:
 Stage Summary:
 - Wave-6 is live: T-MIG-061 tranche-1 (intervention runs — contracts + services + pins) landed as the first Wave-6 band, hot on the heels of #94 (T-MIG-058). Board momentum: W4 complete, W5 classroom/selfmark consolidating, W6 opened.
 - Queue at sweep end: 0 open PRs. No escalations. LANE DONE.
+
+---
+Task ID: T-MIG-059 (claim)
+Agent: r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Claim the F-B band (operator trace 1a10f747060b0901) — the selfmark exact-parts emulation, the register-open item this lane filed on the PR #92 review thread (6009074844/6009163427) and restated on the T-MIG-058 card.
+
+Work Log:
+- Fetch-first census @ 37d8825: T-MIG-058 landed as PR #94 (1aea8bc) by a parallel lane mid-census (the branch was pushed and CI-green; the desk filed+merged it — the 422 'no commits between' on the PR-file attempt was the tell, verified 1072ac4 IS an ancestor of main); #95 (T-MIG-061 t1) merged af33b6f; queue 0 open PRs. The F-B band is unclaimed (zero 059* heads, zero 059 mentions anywhere in .syllabai/) — claimed as T-MIG-059, claim-in-first-commit on branch t-mig-059/r1 cut @ 37d8825.
+- Frozen law re-verified line-against-line at pinned core 6cad6ef this session (not from the review memory): LearnerSelfMarkController :42-48 — the dedup throw fires on HashMap.put DISPLACING A NON-NULL PREVIOUS VALUE (value-dependent: {X:null},{X:1} does NOT throw; {X:1},{X:null} throws; put(null,v) legal :44); SelfMarkRequest :59 bare List — @NotNull :55 / @Min(0) @Max(99) :56 dead (no container-element cascade) so Jackson binds null AND ABSENT element fields as null; LearnerSelfMarkService :102-111 exact-parts gate (HashSet keySet equality, null key -> 400 bad_request 'self-mark must cover exactly the attempt's parts', ordered after the attempt 404) and :113-121 the bound loop `int marks = e.getValue()` (:116) — a null Integer NPEs ON UNBOXING after the gate, before any settle write -> catch-all 500 internal_error (data-dependent: in-attempt partId -> 500, not-in-attempt -> the exact-parts 400 first).
+- Port gaps on main (post-#94): (1) contracts partSelfMarkSchema requires non-null uuid partId + int marksAwarded — nested nulls/absent fields die upstream as 400 validation_failed instead of reaching the service; (2) the superRefine duplicate law is a plain seen-set — misses the value-dependent put() semantics; (3) services/selfmark bound loop compares with JS semantics — a null marks would silently coerce (null < 0 is false) and settle a 201 where the frozen core 500s.
+- Scope of record: contracts nullish widening (the min(0)/max(99) inferred-constraint divergence class NOT touched — stays disclosed per 057) + put-semantics superRefine; route map widening (undefined normalized to null — Jackson binds absent as null) + the 058 nested-null pin rewritten to the frozen law; service signature widening + an unboxing-parity pass AFTER the gate / BEFORE settle. The 057/058 depth-2 element-null 500 law stays byte-identical (bare null elements still reject upstream).
+
+Stage Summary:
+- T-MIG-059 CLAIMED at 2026-10-06T05:02:00Z (card + run-001-claim.json + this entry = the claim commit). Implementation next in this lane: contracts widening + pins, route/service emulation + rewritten pin, EXACT gates arithmetic vs the 37d8825 baseline 1144/0/13skip/3485, PR with disclosure, NOT self-merged (authors never self-merge) — handed to the merge desk.
+
+---
+Task ID: T-MIG-059 (implementation)
+Agent: r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Implement the F-B band — the selfmark exact-parts emulation (schema widening + put-semantics dedup + service unboxing parity) end-to-end.
+
+Work Log:
+- CONTRACTS (packages/contracts/src/assessment.ts): partSelfMarkSchema widens partId/marksAwarded to .nullish() — Jackson BIND parity, NOT the dead constraints (SelfMarkRequest :59 bare List = no @Valid container-element cascade, so @NotNull :55 / @Min(0) @Max(99) :56 never evaluate; Jackson binds null AND absent element fields as null; HashMap.put(null, v) legal at :44). The selfMarkRequestSchema superRefine is now the EXACT put()-semantics emulation from LearnerSelfMarkController :42-48: throw ONLY on displacing a NON-NULL previous value ({X:null},{X:1} accepted; {X:1},{X:null} throws; null keys render 'duplicate part in self-mark: null' like Java string concat); last-write-wins preserved. The numeric checks stay as the disclosed inferred-constraint class (057) — untouched. Bare null ELEMENTS still reject upstream (depth-2 -> the 057/058 NPE-parity 500 law byte-identical).
+- ROUTE (routes/selfmark/index.ts): marks map widens to Map<string|null, number|null> with `?? null` normalization (absent binds as null); Map.set walk = last-write-wins = the HashMap.put sequence; the 057/058/059 comment block carries the full frozen matrix (the F-B register note closes); the classifier's invalid_type branch demoted to fail-closed defensive (received-null/undefined issues cannot exist after the widening — the only null-rejecting node left is the element object at depth 2, consumed by the elementNullIssue guard).
+- SERVICE (services/selfmark/index.ts): signature widens; byPartId key type widened so has(null) is type-true (false -> the exact-parts gate 400s the null key exactly like the frozen HashSet inequality :102-111, after the attempt 404 :79-84); NEW UNBOXING-PARITY pass after the gate / BEFORE settle: any null value throws the parity Error -> escapes the handler -> app error boundary -> 500 internal_error (the frozen `int marks = e.getValue()` :116; JS null would coerce silently — null < 0 is false — and settle a 201). Post-gates narrowing map keeps the bound/settle loops honestly typed. Residual disclosed on the guard: mixed null-value + out-of-bound-value winner is HashMap hash-iteration order (not emulated, unreachable by capture).
+- PINS: contracts — the missing-marksAwarded pin FLIPPED to accept (the @NotNull dead-letter law) + null/absent bind matrix + three-way put-semantics law; routes — the T-MIG-058 nested-null pin REWRITTEN to the frozen law ({partId:null} -> 400 bad_request 'self-mark must cover exactly the attempt's parts'), NEW {partId: PART_A, marksAwarded: null} -> 500 internal_error with fail-closed zero-settle-write assertions (no ANSWER_UPDATE / SELF_MARK_INSERT / ATTEMPT_UPDATE queries — the parity throw precedes settle), NEW put-semantics silent displacement ({X:null},{X:2} -> 201 marksAwarded 2).
+- GATES: install OK (no changes); typecheck x3 exit 0; bun test apps/api packages 1148/0/13skip/3502 (1161 ran / 63 files) = baseline 37d8825 1144/0/13skip/3485 +4 tests/+17 expects EXACT (2 contracts + 2 route; the rewritten pin stays one test); golden --selftest OK.
+- Receipt run-002-fix.json (full frozen matrix now green + residuals disclosed); card -> IN_REVIEW.
+
+Stage Summary:
+- T-MIG-059 IN_REVIEW: the F-B register item is implemented — nested partId-null now answers the frozen 400 bad_request via the exact-parts gate, nested marksAwarded-null answers the data-dependent 400/500 with the unboxing parity, and the duplicate law is value-dependent exactly like HashMap.put. Next: PR with disclosure -> NOT self-merged (authors never self-merge) -> merge desk.
+
 ---
 Task ID: 21
 Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, operator trace 1a10f73c1b7a5a01)
@@ -3136,6 +3167,20 @@ Work Log:
 Stage Summary:
 - T-MIG-061 tranche-2 delivered end-to-end on the card's documented plan (claim run-003 -> routes -> pins -> flagged mount -> gates); the 9-endpoint Wave-6 intervention surface is now wired live behind the module's state machine; the lane STOPs per protocol after filing the PR.
 
+---
+Task ID: T-MIG-064 (re-file of T-MIG-059 — id collision yield)
+Agent: r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Re-file the F-B band (exact-parts emulation) under the next free id — the T-MIG-059 id is yielded to the earliest claim per earliest-claim-wins.
+
+Work Log:
+- COLLISION OF RECORD (discovered at post-PR census): two DIFFERENT operator-directed bands both filed under T-MIG-059 — the r0 lane claimed the F-0/F-1 binding-law adoption (claim 9853716 @ 04:35:53Z, pushed immediately, PR #96 04:44:16Z, operator trace 1a10f743c93c27b9) while this lane claimed the F-B exact-parts emulation (claim 63aaac1 @ 04:41:34Z, PR #97 04:48:18Z, operator trace 1a10f747060b0901). Scope disjoint file-level (r0: routes/classroom.ts classifier; this lane: selfmark route/service + contracts selfmark schemas) — an id-space collision, not a scope duplicate. Earliest-claim-wins: r0's 04:35:53Z precedes this lane's 04:41:34Z -> the 059 id belongs to r0; this lane's claim is ~6 minutes late on the id axis only.
+- This lane's own zero-collision scan (at ~04:36Z, git ls-remote + .syllabai rg) found zero 059 heads — r0's branch was pushed in the seconds between that scan and this lane's claim commit; the race was invisible until the post-PR census (the ls-remote pattern also false-matched hex substrings in shas — the scan pattern lesson is noted).
+- RESOLUTION EXECUTED: PR #97 CLOSED superseded (comment of record on the thread); the band re-files as T-MIG-064 (056-063 all taken at re-file time: 056/057 DONE, 058 = the depth pin #94, 059 = r0 F-0/F-1, 060 w0a Wave-6, 061 r9-hubx t1 #95, 062 r4b research calibration, 063 R0-integrator ci-replay rich-200); card + receipts git-mv'd to 064 with the provenance fields updated; the T-MIG-059 worklog sections above remain verbatim (append-only) as the historical claim record.
+- INTAKE: origin/main ddbe9fe (r1c round-15 sweep receipt, worklog-only) merged into the branch — one worklog tail hunk resolved ours-then-theirs (this lane's 059 sections + r1c's Task-21 section both preserved; zero markers verified). NOTE: the N-hunk union script was lost to the 8th workspace wipe and is being re-created under scripts/ this cycle.
+- Gates re-run after intake + re-file: bookkeeping-only delta expected — full battery re-executed below in the fix receipt addendum (the code commits are byte-identical; the re-file touches .syllabai only).
+
+Stage Summary:
+- The F-B band is now T-MIG-064 (IN_REVIEW, implementation unchanged — contracts widening + put-semantics dedup + unboxing parity all landed on the code commits); the 059 id stands with r0's F-0/F-1 band. New branch t-mig-064/r1 (no force-push — the superseded t-mig-059/r1 stays on origin as the claim evidence); PR refiled; NOT self-merged.
 ---
 Task ID: 22
 Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, operator trace 1a10f899e2c27485)
@@ -3204,6 +3249,165 @@ Work Log:
 
 Stage Summary:
 - Round-16 net: 2 merges of record (#94 1aea8bc, #96 07df48a) + 1 corroborated desk merge (#95 af33b6f), the 043 register CLOSED to rulings (all four items dispositioned; the consolidation band filed as T-MIG-066), the last unfiled housekeeping item implemented behind PR #103 (T-MIG-065). Open after this commit: PRs #99/#100/#101 (active review flows, untouched per the hands-off law) + #103. CI event-drop pattern registered with the retrigger remedy. R0-integrator | round-16 executed per the operator's two-item directive | IDLE after push | suggestion: desk merges #103 after the (already-green-content) guard chain; T-MIG-066 is claim-ready for a quiet-board moment; the next sweep re-baselines main at 2d5a73d+ (061-t2 routes now live).
+Task ID: T-MIG-063 (claim — run-001 disposition)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, operator trace 1a10f806acdec285)
+Task: Operator directive "processing of the Rich-200 series" — disposition the rich-200 family's first live-instrument run and restore harness capability parity.
+
+Work Log:
+- Sandbox recovered from the 7th full wipe: syllabai-v2 re-cloned (main ddbe9fe, round-15 sweep tip), credential law restored from the /tmp remnant (GITHUB_PAT + NEON_PAT, HTTP 200 both, 0600 outside repo, credential-store wired).
+- Evidence: pulled artifact neon-replay-37408914789-1 (run on 9bebf7e, union 120/177, seed 107/162, prod 13/15). The 7 rich-200 fails decomposed: w3-sme- trio = 403 Forbidden on /api/v1/admin/** (harness default-student bearer); w3-teacher-marking- quartet = 200-vs-200 empty-vs-rich (T51 lifecycle never staged on the COW branch).
+- ROOT CAUSE (class RICH-200-A, HARNESS GAP): T-MIG-051 extended only golden/runner.ts; golden/tools/ci-replay.ts has zero bodyFile/multipart support, no /admin route rule, no rich-state staging. Port NOT implicated: T-MIG-051 run-003 proved the family 17/17 vs the live port on a fresh scratch db. Disposition filed: .syllabai/receipts/T-MIG-063/run-001-disposition.json (E-class/B-class precedent alignment; cross-effect disclosure: staging applies t51-seed.sql → B-class seed-posture reads may clear early, named at the next union, third-posture task remains the mechanism home).
+- ID PROVENANCE: 059 TAKEN (r0/r1, PRs #96/#97 F-0/F-1 binding-law), 060 reserved (w0a branch), 061 DONE (af33b6f), 062 TAKEN in-flight (t-mig-062/r4b remote head, no PR) — filed forward-only as T-MIG-063 (zero repo refs, zero remote heads, zero PRs at claim time; the T-MIG-055 free-id-check lesson applied: PRs + remote branches included).
+- Claim per §2: card + run-001 receipt + this entry in the SAME commit that starts t-mig-063/r0, pushed BEFORE any fix work. Fix (run-002): ci-replay.ts multipart import (buildMultipartBody from ../runner.ts — engine untouched), /admin route rule after the name rules, seed-t51-rich200.ts spawn staging at two loop boundaries, --selftest, workflow DATABASE_URL env for Pass A. Zero case files, zero runner.ts edits.
+
+Stage Summary:
+- T-MIG-063 CLAIMED at ddbe9fe; branch t-mig-063/r0; disposition of record filed for the rich-200 series (class RICH-200-A HARNESS GAP, port parity standing 17/17 local). Re-proof owed post-merge via neon-replay dispatch + run-003 union receipt.
+---
+Task ID: T-MIG-063 (run-002 implementation)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, operator trace 1a10f806acdec285)
+Task: ci-replay rich-200 parity — implement, gate, file PR.
+
+Work Log:
+- ci-replay.ts: routeRuleBearer gains the admin param + /api/v1/admin/ path rule placed AFTER the name rules; NEW -teacher-403 name rule (role-faithful; the corpus's only such case w3-sme-status-teacher-403 keeps its 403 verdict, now with the TEACHER bearer per T-MIG-051 run-003's role model); bodyFile/multipart wired via buildMultipartBody IMPORTED from ../runner.ts (content-type dropped, fetch sets the boundary — the runner's convention); richStagePlan sentinel-governed two-boundary plan (accounts @ first w3-sme- = seq 10; attempts @ first w3-teacher-marking- = seq 13; W4 seq'd cases interleaved at 10-12 unaffected); runRichStage spawns the committed seed-t51-rich200.ts VERBATIM and parses its declared ADMIN_TOKEN stdout; fail-fast everywhere (missing DATABASE_URL, staging failure, admin bearer without staging, bodyFile without descriptor).
+- --selftest: 16 deterministic assertions (precedence both ways, boundary laws incl. sentinel governance, multipart wiring) — OK; --plan now discloses the staging boundaries; workflow harness-sanity step runs it beside the runner selftest.
+- neon-replay.yml: Pass A replay step gains DATABASE_URL=${{ env.NEON_SEED_URL }}; T-MIG-047 evidence-producer comment preserved; prod pass unchanged (REALDATA filter never selects the family); read-only proof step unchanged.
+- GATES EXACT: bun run typecheck x4 exit 0; bun test apps/api packages 1144/0/13skip/3485 over 63 files = main ddbe9fe baseline byte-identical (zero test files touched); golden/runner.ts --selftest OK; ci-replay --selftest OK; change surface = ci-replay.ts + neon-replay.yml only (zero golden/cases/**, zero runner.ts, zero apps/packages).
+- Card → IN_REVIEW; receipt run-002-implementation.json; PR filed with disclosure; NOT self-merged.
+
+Stage Summary:
+- T-MIG-063 run-002 IN_REVIEW on t-mig-063/r0. Expected at the next union: family 7/7 (port parity standing 17/17 local); B-class seed-posture reads may clear early via t51-seed.sql (named case-by-case at run-003; third-posture task remains the mechanism home). Re-proof = neon-replay dispatch post-merge.
+
+---
+
+Task ID: 7 (round: trace 1a10f9232658e9a5, agent r9-hubx, zai-web)
+Task: "Check if R0 has merged or not. If not, review+merge yourself and continue working" (round 14)
+
+Work Log:
+- R0 verdict: R0 IS merging — R0-AUTO 05:00 UTC sweep merged our #98 (061-t2, 2d5a73d, receipt 045dc2a; our tranche-2 Wave-6 intervention band LIVE on main); earlier #94/#95/#96 landed via the desk. The 05:00 sweep had skipped #99 ("head moved mid-sweep") — this lane picked it up.
+- REVIEWED+MERGED #99 (r1's T-MIG-064, the F-B band re-file from 059): frozen-law verified line-against-line (put-displacement :42-48, dead-letter cascade :59, exact-parts gate :102-111, unboxing NPE :116); put-semantics four-quadrant emulation confirmed across contracts/route/service; 058 depth pin kept fail-closed; residuals disclosed; zero golden/classroom/061 contact.
+- INTAKE 449f9af of main 30819de into t-mig-064/r1 (worklog union 1 block, 0 markers, 3165 lines); r1 lane then stacked their own intake 9054484 (of 2d5a73d) on top — no force-push, both preserved.
+- Gates at intake head 449f9af: typecheck x4 exit 0 / 1155-0-13skip-3530 = main 1151-3513 + PR +4/+17 EXACT / hub 36-0 / golden selftest OK; CI verify+hub success @ 449f9af.
+- MERGED #99 -> 862ca34 (parents ec40f1f + 9054484; #100 = r0's 063 landed at ec40f1f mid-cycle by the desk); record comment 6009873662; authors-never-self-merge honored (r1 authored).
+- Gates at merged tip 862ca34: typecheck x4 / 1185-0-13skip-3615 = main@ec40f1f 1181-3598 (per #98 receipt 045dc2a + 063 workflow-only) + PR +4/+17 EXACT / hub 36-0 / selftest OK / worklog 0 markers.
+- Queue re-scan post-merge: open PRs + task register re-checked for the continue-working step (see next entry if claimed).
+
+Stage Summary:
+- Round-14: R0 active (our #98 landed via R0-AUTO); this lane reviewed+merged the F-B band #99 with exact arithmetic at both intake and merged tips; lane continues per the standing directive.
+
+
+---
+---
+Task ID: R3a-ROUND-15 (operator directive trace 1a10f7345efcba35: "the F-072 class-KG heatmap trio")
+Agent: superz-agent-b (R3a lane, Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Close T-MIG-053 tranche-1 — the F-072 class-KG heatmap trio + the F-034 read model.
+
+Work Log:
+- SANDBOX RESET RECOVERY: the workspace was wiped mid-round (clone, .secrets, worklogs all gone) — reconstructed .secrets/env.sh from the session record, re-cloned SyllabAI/syllabai-v2 with the PAT, re-fetched the branch. PR #84 verified MERGED (ced0111 @ 03:38:56Z) with the claim APPROVE (r1-contracts) and both tranche-1 commits intact on origin; branch t-mig-053/r3a still live at b29b874. Zero-collision re-scan: 0 open PRs, no other lane touching the trio band.
+- INTAKE: fast-forwarded the branch to origin/main 37d8825 (post-#92/#93/#95 — #95's bee47d8 intake pattern) so the closing commit diffs against the true head and gates re-baseline at 1144/3485.
+- THE TRIO (directive resolution): F-072 = the class-KG heatmap finding — ClassKnowledgeGraphController :37-113 (graph :59 / nodes/{id}/students :78 / learners/{id}/knowledge-graph :95) over ClassKnowledgeGraphService :38-580; the third leg DELEGATES to LearnerKnowledgeGraphService.graphFor (F-034) which was UNPORTED (043 card line 119: knowledge-graph stayed OUT of 043; the /me route is the 041 band's controller, unported) — so the F-034 read model ports here as learnerGraphFor, header-disclosed: the /me route MUST consume this builder (one-graph-implementation law).
+- CODE commit: services/knowledge/graphs.ts (classGraph / classNodeStudents / classLearnerKnowledgeGraph / learnerGraphFor) + index.ts barrel line + dbStatusToEnum export (the trio shares the coverage overlay). Frozen laws pinned: the 404->403->root-404 gate chain with NO archived gate on reads; the INDEPENDENT-STUDENT rule (roster = enabled member rows, captured-param pinned); honest unmeasured cells (null mean / UNMEASURED band / zeros) vs 4-dp mean + the 13.3 distribution; the V39 spec-point predicate driving verbatim-vs-derived coverage with taught>recorded>unrecorded precedence; misconception prevalence keyed by MISCONCEPTION nodes, DISTINCT active learners, staleness-relaxed; prerequisiteRelations both-endpoints/target=prerequisite/unknown-skipped; the drill-down subject-isolation 404, weakest-first/unmeasured-last deterministic sort, the 3-per-student evidence slice off the 120-cap scan; structural-invariant skips; F-034 walk covers misconceptions (9 vs 7), all-null unpractised, earliest-PENDING review merge, applicability verbatim; the teacher lens deep-equals the student read model.
+- TEST commit: test/knowledge/class-graph.test.ts — 22 pins incl. the roster-param capture (the independent-student rule proven at the SQL bind, not just the output), the short-circuit privacy boundary (zero 'from users' queries on a non-member), and the teacher-lens deep-equal (one implementation).
+- GATES at the closing head: typecheck x4 exit 0; bun test 1166 pass / 0 fail / 13 skip / 3629 expect (EXACT = 37d8825 baseline 1144/3485 + 22 tests / +144 expects); golden --selftest OK.
+- Bookkeeping: receipts/T-MIG-053/run-003-tranche1-close.json + card status flip to TRANCHE-1 CLOSED (10/10) with NEXT t2/t3/t4 + this worklog entry.
+
+Stage Summary:
+- Tranche-1 is CLOSED: all 10 endpoints (coverage 3 + knowledge reads 4 + the F-072 trio 3) with contracts+services+fakeSql pins, gates EXACT at every commit.
+- DISCLOSED placements: F-034 builder in services/knowledge (fence), graphOwnedClass projection split, single-anchor clock (ADR-031), roster string-sort (wire-invisible).
+- LANE NEXT: tranche PR review (author never self-merges); on merge R0 can flip the t1 slice; t2 = class analytics (3) + teacher concept-graph (2, incl. the 471+479-line seed/snapshot pair); t3 = revision notes; t4 = smart lesson (LLM-path check owed at t4).
+---
+Task ID: T-MIG-063 (run-003 live finding + run-004 fix)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, operator trace 1a10f806acdec285)
+Task: First re-dispatch decomposed — the C-class limiter bit the staging's setup layer; fix forward with a disclosed fence amendment.
+
+Work Log:
+- Dispatch 37417629684 on ec40f1f completed failure: seed.json/union.md ABSENT from the artifact; Pass A replay masked success (continue-on-error); union ENOENT red. Job log decomposed: the staging RAN (workflow DATABASE_URL wiring OK, spawn OK, t51-seed.sql applied on the Neon COW branch OK, bootstrap-admin claim OK — AUDIT 05:16:07.436Z "window consumed terminally") and THEN the tool's own registers (t51-student/t51-teacher) hit the v2-only register limiter: 429 retryAfterSeconds:53 → tool throw → runRichStage fail-fast (by design) → no report. Boundary timing verified exact (accounts fired at seq 10 after the auth band).
+- Finding RICH-200-B filed (receipt run-003-live-finding-429.json): setup-layer 429 = the triage's C-class parity defect leaking into the setup layer. NOT masked: the auth-register cases keep measuring the limiter honestly.
+- FIX (run-004): FENCE AMENDMENT DISCLOSED PRE-PUSH — golden/tools/seed-t51-rich200.ts joins the fence with throttled() (retry-after header / retryAfterSeconds body, clamped 5..90s +2, max 4 attempts) around the tool's OWN setup calls only (api() + the two register fetches); the bootstrap claim stays one-shot-safe (429 = handler never ran = window not consumed = retry safe). ci-replay.ts spawnSync timeout 240s→900s. Parse-validated (bun build), ci-replay selftest OK.
+
+Stage Summary:
+- T-MIG-063 run-004 pushed to t-mig-063/r0 (fence = ci-replay.ts + seed-t51-rich200.ts + workflow + card/receipts/worklog); re-dispatch = run-004 re-proof.
+---
+Task ID: T-MIG-063 (run-004 live verdict — closure)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, operator trace 1a10f806acdec285)
+Task: The rich-200 family's live verdict on the restored harness — closure of the series' processing.
+
+Work Log:
+- Dispatch 37418673048 on d6911f6 (post-#105): UNION 137/177 (seed 124/162 + prod 13/15), trajectory 108 → 120 → 137. THE FAMILY 7/7 PASS LIVE: the SIGNED-uuid tie-break, the BY_STATE_WIRE_ORDER HashMap law, the ADR-026 replace numbers, the multipart parser — all holding against the live port on the Neon instrument. RICH-200-A CLOSED (harness parity), RICH-200-B CLOSED (the throttle carried the staging past the v2-only register limiter; the C-class cases still measure it honestly — membership rotated exactly as recorded).
+- Cross-effects named (receipt run-004-union.json): 6 B-class seed-posture reads cleared as pre-disclosed (curriculum ×4, teacher-curriculum-nodes, w3-attempt-mcq-happy-201); auth-me honestly red (no users rows in t51-seed.sql — third-posture task remains the home); +10 W4 route-landing recoveries from the other lanes' merges (A-class cascade clearing).
+- NEW FINDINGS FILED: RICH-200-C — 7 empty-state 200s flipped by the staged/landed state (w3-marking-{answers,queue-v2,throughput}-teacher-200, w4-course-stats/flashcard-schedule/flashcard-trail/state empty) — a corpus-sequencing question for the case-owner lane (seq-position before the state builders / re-pin / tolerate); v2 renders both postures faithfully. RICH-200-D — PORT DEFECT P1: w3-questions-families/topics-student-200 return 500 internal_error on the V63 seed data (frozen serves rich 200s over the same rows; the port crashes — first exercised BY the staging; w3-questions port lane).
+- Doctrine steps verified: read-only proof OK (the staging writes only to the disposable COW branch), drop + 404-verify OK, union reds on the standing honest reds only.
+- Card → DONE (bookkeeping-only .syllabai/** per the r0-role precedent a695c92/aca7a5e/37d8825/ba3976b, fetch-first).
+
+Stage Summary:
+- THE RICH-200 SERIES IS PROCESSED END-TO-END: disposition of record (run-001) → harness capability restore (run-002, #100) → setup-limiter survival (run-004, #105) → LIVE 7/7 family verdict (run-004 union receipt). Register: RICH-200-C (case-owner), RICH-200-D (port P1), plus the standing C/B/third-posture classes. T-MIG-063 DONE.
+---
+Task ID: 23
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, operator trace 1a10fad70cdfb4b5)
+Task: Operator directive "058 FB (nested null simulation)" — the F-B band routed to this lane.
+
+Work Log:
+- CLAIM CHECK (fetch-before-every-action): F-B was ALREADY CLAIMED, IMPLEMENTED, AND MERGED — the register item opened on the 058 card (merged #94) was executed by r1-contracts as T-MIG-064 ("Selfmark exact-parts emulation (the F-B band)", re-filed from 059 after the documented id collision with r0's binding-law band, earliest-claim-wins allocates 059 to r0; claim 63aaac1 @ 04:41:34Z vs r0's 9853716 @ 04:35:53Z) and landed via PR #99 (merge 862ca34). This lane's work = INDEPENDENT VERIFICATION, zero code written (no collision possible — nothing was built).
+- FIRST-HAND VERIFICATION of the F-B law on main (frozen citations re-read this session @ 6cad6ef BEFORE seeing the implementation):
+  1. CONTRACTS (packages/contracts/src/assessment.ts): parts array items widened to nullish partId/marksAwarded (Jackson bind parity — no @Valid cascade so @NotNull :55/@Min/@Max never fire on elements); the superRefine emulates the HashMap.put DISPLACEMENT law verbatim (LearnerSelfMarkController :42-48): {X:1},{X:2} throws; {X:null},{X:1} ACCEPTED (null displaced silently); {X:1},{X:null} throws; {null,1},{null,2} throws with the Java string-concat "…: null" rendering; last-write-wins map.
+  2. SERVICE (apps/api/src/services/selfmark): signature Map<string|null, number|null>; :125 empty-map 400; :181-183 the exact-parts gate with null-key set equality → BadRequestError "self-mark must cover exactly the attempt's parts" (frozen :102-111 verbatim); :201-204 the UNBOXING-NPE 500 parity AFTER the gate (int marks = e.getValue() on a null Integer, frozen :116) with the settle-write ordering preserved (NPE before any write) and the residual NPE-vs-ConflictException sub-ordering honestly disclosed as not emulated.
+  3. PINS on main: {partId:null,marksAwarded:1} → 400 bad_request via the gate (AFTER the attempt-404 ordering); {PART_A,null} → 500 internal_error (gate passes, NPE before settle); {X:null},{X,2} → 201 put-semantics last-write-wins. The full nested-null matrix is emulated and pinned.
+- INDEPENDENT GATES at the live tip (main advanced during verification: d14d949 #101 -> d6911f6 #105, R0 actively collecting): install --frozen-lockfile exit 0; typecheck x4 exit 0; bun test apps/api packages 1207 pass / 0 fail / 13 skip / 3759 expect (1220 ran / 65 files); golden --selftest OK. The F-B pins are in the passing suite.
+- POST-CENSUS: 3 open PRs remain (#102 t-mig-062/r4b, #103 t-mig-065/r0, #104 t-mig-060/w0a — NOT in this routing; left for the merge desk/R0). 058 card F-B register item: CLOSED on main by T-MIG-064 (card housekeeping/DONE flips are R0's field, not touched).
+
+Stage Summary:
+- F-B routing resolved to already-done work (T-MIG-064 via #99 by r1-contracts): verified end-to-end first-hand — schema widening + put-semantics + exact-parts null-key flow + unboxing-NPE parity all live and pinned; gates exact at 1207/0/13skip/3759 + selftest OK at d6911f6. Zero code by this lane. LANE r1c: STOP for this round.
+---
+Task ID: T-MIG-062 (run-001 claim)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator directive (trace 1a10f73d46ea053d): "Check if R0 has merged or not. If not, review+merge yourself and continue working" — R0 merge-of-record verified IN (queue drained), so continue-working claims the first self-contained Wave-6 band: the research calibration read surface (ADR-036 k-anonymity binds the port).
+
+Work Log:
+- R0 MERGE CHECK (fetch-before-every-action): R0-AUTO job 438940 (04:00 UTC) merged #92 e82f5d5 (this lane's T-MIG-057 element-null parity) + #93 9ba1c39; a MANUAL sweep (trace 1a10f776069349cd, 04:27 UTC) then merged #94 1aea8bc (r1's T-MIG-058 depth-pin rescue) + #95 af33b6f (r9-hubx's T-MIG-061 t1, intake bee47d8). Open queue ZERO at 04:35Z. Review+merge branch of the directive: MOOT — nothing left unmerged.
+- INDEPENDENT CORROBORATION of #94 (on record): before the sweep's merge was observed, this lane re-verified r1's REQUEST_CHANGES finding line-against-line against frozen 6cad6ef first-hand (@Valid @RequestBody SelfMarkRequest with a BARE List — no cascade, so PartSelfMark's @NotNull :55 never fires; HashMap.put(null, 1) legal :44; the null key dies at LearnerSelfMarkService's exact-parts gate -> 400 bad_request; marksAwarded-null unboxing NPE only when the gate passes -> data-dependent). The i.path.length===2 depth pin is exactly right (057's {parts:[null]} law intact at length 2, nested nulls fall back to the classifier at length 3); SelfMarkRequest citation :59 (not :58 — :58 is blank) verified. The merged state is CORRECT; my 057 nested-null over-fire is fixed on main.
+- SYNC FIRST: local main ff ced0111 -> 37d8825; LOCAL GATES re-run INDEPENDENTLY at the tip (not rubber-stamped): bun install --frozen-lockfile OK; typecheck x4 exit 0; 1144 pass / 0 fail / 13 skip / 3485 expect over 63 files = EXACT vs the R0-AUTO receipt; golden --selftest OK.
+- CENSUS: 49/51 cards DONE (043/057/058 landed pending R0 DONE-flips; 053 r3a in progress; 060 w0a + 061-t2 r9-hubx = active fences, branches only: t-mig-060/w0a @ 839a0a7 advanced, 061 head static at bee47d8). ALL origin heads enumerated per the 055 lesson; zero 062-066 refs anywhere; zero worklog claims.
+- BAND SELECTION (Wave-6 = 060..066, MIGRATION_PLAN :155): CLA hard-depends on w0a's 060 KaRAG (r9's own disclosure); tutor sessions need KaRAG + the R-SSE spike; OCR is a 326KB band; LLM admin drags the provider-chain plumbing shared with 060's consumers. RESEARCH CALIBRATION (062) reads ONLY telemetry_events + frozen constants — the first self-contained band, and the one the plan explicitly binds to ADR-036 k-anonymity (:157).
+- FROZEN-LAW CATALOG extracted first-hand @ 6cad6ef (ResearchCalibrationController 40 lines; LearnerModelCalibrationService 515 lines; LearnerProperties.Bkt record + toParams; SecurityConfig :88-90): single ordered BKT_UPDATED fetch; skip-before-filter row walk (skippedRows global, filtered rows in NEITHER bucket); emission-mapped prediction latent*(1-slip)+(1-latent)*guess with the per-format guess resolver (MCQ 1/optionCount >=2 else paper 0.25; SHORT_ANSWER 0.05; STRUCTURED 0.01; unknown 0.25; clamp 1-slip-1e-9); ten equal-width bins with the three-state rendering (empty honest zeros / C7-suppressed nulls / reportable); k=5 MIN_REPORTABLE_LEARNERS as a CODE CONSTANT, distinct-learner unit per cell (pooled, per segment, per bin-within-segment); segment aggregates INCLUDE suppressed bins (no selection bias); fixed taxonomy orders MCQ_SINGLE(2-3)/(4)/(5+)/(malformed)/SHORT_ANSWER/STRUCTURED/UNTYPED and 0/1-30/31-90/91-365/366+/UNKNOWN; gap segments carry meanAnchor (anchorN excludes absent anchors); ECE = Σ (count/n)·|meanPredicted−observed| over non-empty bins; defensive doubleValue/longValue (Number or numeric-string).
+- DB BASELINE verified: telemetry_events (schema.ts :133 — payload jsonb, learner_id, ck_telemetry_type includes BKT_UPDATED, ix_telemetry_type) is the band's ONLY table; experiments/model_versions stay out of fence (the 041 note reserves the model_versions registry path for tranche-3).
+- CLAIM: branch t-mig-062/r4b cut @ 37d8825; card + run-001-claim receipt + this entry in the SAME commit; fix = run-002 on this branch, PUSHED IMMEDIATELY on the persisted PAT; PR after gates; authors never self-merge.
+
+Stage Summary:
+- Directive satisfied on both branches: R0 HAS merged everything (receipts e82f5d5 / 9ba1c39 / 1aea8bc / af33b6f / 37d8825 — nothing left to review+merge), so continue-working executed the standing claim law. T-MIG-062 claimed with a complete frozen-law catalog; run-002 (contracts + service + route + pins) follows on this branch.
+
+---
+Task ID: T-MIG-062 (run-002)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Implement the claimed Wave-6 research calibration band — contracts + 515-line service port + route + 19 pins + OUT-OF-FENCE mount; gates; IN_REVIEW flip; hand to the merge desk.
+
+Work Log:
+- CONTRACTS FIRST (packages/contracts/src/research.ts): the CalibrationReport/FormatSegment/GapSegment/Bin wire shapes verbatim from the frozen records (:289-385) + CALIBRATION_SEGMENT_ORDER / CALIBRATION_GAP_ORDER exported as frozen CONTRACT data (one taxonomy, one source of truth — the service imports them; a drift on either silently rewrites the ADR-036 posture). 4 schema pins (research.test.ts): taxonomy arrays, suppressed-null round-trip, empty-vs-reportable distinction, the full suppressed-headline shape. Index re-export one-liner (OUT-OF-FENCE-flagged, 061 precedent).
+- SERVICE (apps/api/src/services/research/index.ts): the 515-line LearnerModelCalibrationService port — single ordered fetch (event_type = BKT_UPDATED, occurred_at asc — the FP accumulation-order contract), the skip-before-filter walk (skippedRows global, nodeId filter drops rows into NEITHER bucket), the emission mapping through the ported LearnerProperties.Bkt.toParams (:94-111: MCQ 1/optionCount for usable counts, paper 0.25 for malformed/unknown, SHORT_ANSWER 0.05, STRUCTURED 0.01, the 1−slip−1e-9 clamp — F-062-A dead branch disclosed), normalizedBkt compact-ctor law (:56-62; the model_versions registry path stays tranche-3), the Accum with per-bin DISTINCT-learner Sets, k=5 MIN_REPORTABLE_LEARNERS as a code constant, three-state bins() (empty honest zeros / suppressed nulls / reportable), ECE Σ (count/n)·|meanPredicted−observed|, meanAnchor over anchor-carrying rows, the defensive parsers with Java-cast parity ((int) truncation + NaN→0, Long.parseLong strictness for numeric strings, decimal-regex doubleValue) — every nuance header-disclosed.
+- ROUTE (apps/api/src/routes/research/index.ts): GET /learner-model/calibration; authz shell FIRST (requireRole TEACHER/ADMIN — SecurityConfig :88-90, the @PreAuthorize re-gate collapsed with identical outcomes, zero queries before it); nodeId @RequestParam UUID law (unparseable → the :167-172 FIXED "malformed request" 400; parseable → canonical lowercase for the strict payload comparison); 200 = the canonical report.
+- PINS (apps/api/test/research/calibration.test.ts, 15 tests over fakeSql with the REAL module at the REAL mount prefix): authz shells (401/403 zero-sql + ADMIN passes); nodeId binding (400 FIXED body zero-sql; uppercase canonicalization); the honest-zero EMPTY report (schema-validated, both fixed orders, bin bounds); the REPORTABLE known-answer (5 learners × MCQ(4) latent 0.35 → predicted 0.4775, brier 0.27300625, ece 0.5225, calibrationError −0.5225 — hand-computed emission math, toBeCloseTo 12); C7 (1-learner 6-row pooled+segment+bin suppression with counts visible; the 6-row/2-learner row-floor trap; the inclusive k=5 boundary); the format-axis pricing fold (8 rows → all 7 segment keys, 4.9 (int) truncation, UNTYPED fold for unrecognized/blank, pooled known-answer over mixed pricing); the gap axis (13 rows → all 6 bands, "30" string bands / "30.5"→UNKNOWN / negative→UNKNOWN, meanAnchor laws incl. suppressed-null and empty-0.0); the nodeId NEITHER-bucket filter (uppercase param, non-string payload nodeId); the skip walk (5 malformed shapes never attributed + the numeric-STRING decayedPrior that MUST aggregate).
+- MOUNT (apps/api/src/index.ts): import + construction + ONE mount line + the OUT-OF-FENCE comment block (010/020/021/031/032/041/052/061 precedent; R0 ratification requested).
+- GATES at the run-002 head: bun install --frozen-lockfile OK; typecheck x4 exit 0; bun test apps/api packages 1163 pass / 0 fail / 13 skip / 3965 expect (1176 ran / 65 files) = claim-time baseline 1144/0/13skip/3485 (1157/63f) +19 tests / +480 expects / +2 files EXACT (the research pins, zero pre-existing tests touched); golden --selftest OK.
+- FIX-TIME corrections caught by my own pins (honest record): the format-fold fixture initially asserted learnerCount 7 from rows reusing L1-L3 (distinct set is 5 — the inclusive k boundary made the pooled cell reportable, which the pin needed anyway) and a latent-0.5 bin-index slip (floor(0.5·10)=5, not 4) plus two hand-arithmetic slips in the mixed-pricing pooled means (0.475/0.455, not 0.925/0.945 — the corrected known-answer block is in the pin). The SERVICE was never wrong; the fixture expectations were.
+- Card → IN_REVIEW; run-002 receipt written; this entry appended. PUSH on the persisted PAT; PR opens now; authors never self-merge — independent review + R0 verdict + Wave-6 id ratification (062) requested.
+
+Stage Summary:
+- T-MIG-062 implemented + gated (+19/+480/+2 EXACT, selftest OK): the research calibration surface is ported at frozen fidelity — the plan's ADR-036 binding (k-anonymity) is ENFORCED code with the learner-unit law, both segment axes render in fixed order, and the suppression posture (counts stay, outcomes go) is pinned at cell and bin granularity. Wave-6 progress: 060 (w0a, in flight) / 061-t1 (landed) / 062 (this band, IN_REVIEW). LANE IDLE after the PR opens.
+
+
+---
+Task ID: T-MIG-062 (run-003 intake addendum)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Post-PR intake ledger — the branch re-based onto the moving main twice while the fleet merged #96/#98/#99/#100 around it; CI event-drop diagnosed at the head and resolved by re-sync (R0's round-16 registered pattern).
+
+Work Log:
+- PR #102 opened @ ~05:00:30Z against base 37d8825. Main then advanced FOUR times in 12 minutes (07df48a/#96, ba3976b, 2d5a73d/#98, ec40f1f/#100) — the PR went mergeable-dirty and the pull_request CI events were SILENTLY DROPPED (check-runs==0 at both the opened and the first synchronize event; the merge-ref could not be created mid-flight — the same event-drop class R0 registered in the round-16 bookkeeping with the close->reopen retrigger remedy).
+- INTAKE 1 (70b9a95): Merge origin/main 2d5a73d into t-mig-062/r4b — conflicts exactly two: (a) apps/api/src/index.ts mount region (my research block vs 061-t2's intervention block — unioned, main's block first, both OUT-OF-FENCE comments preserved); (b) worklog-tail add/add (append-only union, main's entries verbatim in place, the 062 entries re-appended; 174 entries, 0 markers, the only Task-ID-less entries are main's pre-existing 22/81 quirks — verified identical on the main side). Gates re-run at 70b9a95: typecheck x4 exit 0; 1200/0/13skip/4078 (1213 ran/66 files); selftest OK.
+- ARITHMETIC PROVEN EXACT against a LIVE worktree measurement of main @ 2d5a73d (1181/0/13skip/3598, 1194 ran/64 files — bun install + bun test in the throwaway tree): merge head = main +19 tests/+480 expects/+2 files = precisely the research band, zero drift.
+- INTAKE 2 (87c0874): Merge origin/main ec40f1f — worklog-tail add/add only (063's entries + the round-16 receipts; 177 entries, 0 markers, my 062 entries final). Typecheck x4 + tests re-run green (1200/4078) + selftest OK before push.
+- CI GREEN OF RECORD at the real head 87c0874: verify completed/success + hub completed/success (the synchronize event fired correctly once the merge-ref was creatable — no close/reopen retrigger needed). Desk evidence chain: claim 1d8a086 -> run-002 b4af2cb..018736b -> intakes 70b9a95/87c0874, CI green at the final head.
+- Collision posture re-verified after the round's merges: 063's claim provenance explicitly notes "062 taken in-flight (t-mig-062/r4b)" — the id register held; zero surface overlap with #99 (064 selfmark F-B), #100 (063 ci-replay), #101 (053-t1), #103 (065 hub hygiene), #104 (060 KaRAG).
+
+Stage Summary:
+- T-MIG-062 IN_REVIEW with CI green at the final head 87c0874; the PR carries the full evidence chain (claim-first, receipts, exact arithmetic vs live-measured main, union intakes with zero entry loss). LANE IDLE — awaiting the desk's independent review + R0 verdict + Wave-6 id ratification.
 ---
 
 Task ID: T-MIG-065 (claim)

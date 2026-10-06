@@ -1,0 +1,62 @@
+{
+  "task_id": "T-MIG-063",
+  "kind": "DISPOSITION-RECEIPT (R0/R6 rich-200 series, delegated disposition per operator directive)",
+  "run": "001",
+  "timestamp": "2026-10-06T04:55:00Z",
+  "agent": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "authority": "operator directive trace 1a10f806acdec285 'processing of the Rich-200 series'; disposition reported per AGENT_COORDINATION §6 / GOLDEN_MASTER §4 (divergences are reported, never auto-fixed, never silently tolerated — this receipt reports; the run-002 fix is tooling CAPABILITY, touching zero case files)",
+  "evidence": {
+    "neon_replay_run": "37408914789 (workflow_dispatch on 9bebf7e, 2026-10-06T03:25:36Z, completed/failure — RED at the union verdict only; all other steps success: provision, both passes, read-only proof, drop+404-verify)",
+    "artifact": "neon-replay-37408914789-1 (artifact id 11387852924: seed.json / prod.json / union.md / boot-seed.log / boot-prod.log)",
+    "union": "120/177 PASS (seed 107/162, prod 13/15)",
+    "corpus": "177 cases = the T-MIG-051 corpus (170) + the 7 committed N-4 rich-200 cases at 7dfdd16 — the family's FIRST live instrument run",
+    "census_context": "T-MIG-055's worklog of record: 'new 7 = T-MIG-051 rich-200 family first live run (filed for R0/R6)'; the register carried 'rich-200 disposition' as open"
+  },
+  "the_seven": [
+    {
+      "case": "w3-sme-ingest-rich-200",
+      "observed": "403 Forbidden {timestamp,status:403,error:Forbidden,path:/api/v1/admin/question-bank/ingest} vs 200 IngestSummary {questions:2,mcq:1,structured:1,parts:2,options:3,markPoints:3,specPointMappings:2,topicMappings:1,assets:0,deactivated:0,corpusVersion:cor-t51-1}"
+    },
+    {
+      "case": "w3-sme-ingest-replace-rich-200",
+      "observed": "403 Forbidden (same envelope, /ingest) vs 200 IngestSummary with deactivated:2 (the ADR-026 replace lifecycle)"
+    },
+    {
+      "case": "w3-sme-status-admin-rich-200",
+      "observed": "403 Forbidden (same envelope, /status) vs 200 {activeQuestions:10,activeMcq:9,activeStructured:1,specPointMappings:4,assets:0}"
+    },
+    {
+      "case": "w3-teacher-marking-queue-v2-rich-200",
+      "observed": "200 {state:PENDING,groups:[],items:[]} vs 200 rich (1 group count:4 + 4 items, oldestPendingAt 2026-10-06T01:40:00Z — the N-4 tie, ids f0ae6395… before 4e094481… under the SIGNED uuidCompare law)"
+    },
+    {
+      "case": "w3-teacher-marking-answers-rich-200",
+      "observed": "200 [] vs 200 rich (4 answers, T51-WCH11-002, learnerDisplayName 'User 1', markingState PENDING)"
+    },
+    {
+      "case": "w3-teacher-marking-answers-paged-rich-200",
+      "observed": "200 {items:[],page:0,size:2,totalElements:0,totalPages:0} vs 200 rich (totalElements 4, 2-item page)"
+    },
+    {
+      "case": "w3-teacher-marking-throughput-rich-200",
+      "observed": "200 all-zero vs 200 rich (PENDING:4 in the JAVA HASHMAP wire order, pendingByPaper 1 entry, oldestPendingAt the N-4 tie instant)"
+    }
+  ],
+  "class_ruling": {
+    "id": "RICH-200-A",
+    "class": "HARNESS GAP (tooling lane, T-MIG-044 lineage) — P1",
+    "ruling": "All seven fails are harness-capability failures, NOT port divergences and NOT case defects. golden/tools/ci-replay.ts (the Neon instrument) lacks the three capabilities T-MIG-051 gave golden/runner.ts: (1) NO bodyFile/multipart support — replayOne JSON-stringifies request.body only, so the ingest cases cannot ship the corpus zip (files/t51-corpus.zip, one 'file' part); (2) NO admin route rule — routeRuleBearer resolves unauthed/student-name//teacher//default only, so /api/v1/admin/** falls to the DEFAULT student bearer → the observed 403s (the guard precedes the parser, so the missing multipart was masked); (3) NO rich-state staging — the harness mints only user_20 (TEACHER) + user_21 (STUDENT); the T51 lifecycle (t51-seed.sql posture, bootstrap-admin claim, the ingest cases as seq-10/11 state builders, the two structured attempts with the copy/re-point/delete id constants and the SQL-set created_at tie) is never built on the COW branch → the observed 200-vs-rich diffs. The cases DECLARE the requirement: 'Replay requires golden/tools/seed-t51-rich200.ts state' (w3-sme-ingest-rich-200.description).",
+    "port_parity_standing": "The port is NOT implicated by these seven: T-MIG-051 run-003 (.syllabai/receipts/T-MIG-051/run-003-replay.json) proved the family 17/17 against the live v2 port on a FRESH scratch db (two-pass, role-faithful tokens, no Neon contact) — the exact pins these cases carry (signed-uuid compareWithinPaper/pendingByPaper tie-breaks, BY_STATE_WIRE_ORDER HashMap law, ADR-026 replace numbers deactivated 0→2 / specPointMappings both generations, byte-exact multipart parsing). On the Neon instrument v2's rich-200 behavior is therefore neither cleared nor implicated — UNPROVEN, re-proof owed at run-002.",
+    "precedents": "Same disposition class as the R0R6-R7 triage's E-class (harness destroys case-pinned postures — 'v2 behavior UNPROVEN by this run, re-proof owed') and B-class (seed-posture gap — honest reds with disclosed cause until the posture lands). The instrument must drive real consumption, not mask it: the runner must NOT pace around or stub over a capability gap."
+  },
+  "cross_effect_disclosure": {
+    "mechanism": "The staging's stage-accounts applies golden/cases/files/t51-seed.sql (the frozen Flyway V2/V6/V7/V63 seed rows as INSERTs, dumped from the local frozen-core boot per T-MIG-051 run-002) when the branch has zero SEED-% questions — the seed COW branch after apply-reset qualifies (content tables wiped).",
+    "predicted_census_effect": "Seed-posture read cases pinned to the V6/V7 skeleton and V63 question bank (the R0R6-R7 triage's B-class tranche: curriculum-*, teacher-curriculum-*, w3-questions-*) may START PASSING in the same run — recorded as census movement, NOT a mechanism change. The B-class RATIFIED mechanism (the third Flyway-seed posture: apply-reset --seed + CASE_MODE=seeded tranche, triage action #4) remains the proper home for those cases; if they clear early via this staging, the next union receipt will name them explicitly for R0/R6 confirmation, and the third-posture task remains open as filed. auth-me-with-bearer-200 and the attempt-write B-class cases are NOT expected to clear (t51-seed.sql carries no users rows and no attempt lifecycle).",
+    "no_case_weakening": "Zero golden/cases/** files are touched by this task (fence: forbidden). The comparator, tolerate[], and unordered[] sets are untouched. The read-only proof step (git diff --exit-code over golden/ docs/ apps/ packages/ .github/ .syllabai/tasks/) continues to gate every run."
+  },
+  "action": {
+    "fix": "run-002 on t-mig-063/r0: ci-replay.ts imports buildMultipartBody from ../runner.ts (engine untouched, import-only); routeRuleBearer gains the /api/v1/admin/ path rule AFTER the name-based rules (student-named 403 postures keep the student bearer); the rich staging spawns the committed golden/tools/seed-t51-rich200.ts VERBATIM at two loop boundaries (accounts before the first w3-sme- case; attempts before the first w3-teacher-marking- case) with fail-fast when the family is present but DATABASE_URL is absent; --selftest + --plan staging disclosure; neon-replay.yml Pass A replay step gains DATABASE_URL env (prod pass unchanged — the REALDATA filter never selects the family).",
+    "re_proof": "After merge: dispatch neon-replay on the new main tip; the union receipt (run-003) files the family's live verdict + any cross-effect movement, named case-by-case."
+  },
+  "id_provenance": "T-MIG-063 verified free at claim time: zero refs in repo (rg T-MIG-063), zero remote heads (git ls-remote --heads), zero open/recent PRs matching. Occupied neighbors at claim time: 059 = r0/r1 lanes (PRs #96/#97, F-0/F-1 binding-law), 060 = reserved by w0a (branch t-mig-060/w0a), 061 = r9-hubx (merged af33b6f), 062 = r4b in-flight (branch t-mig-062/r4b, no PR yet)."
+}

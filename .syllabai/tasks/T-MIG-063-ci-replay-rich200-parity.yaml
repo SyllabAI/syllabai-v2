@@ -1,0 +1,79 @@
+version: 1
+task:
+  id: T-MIG-063
+  title: "ci-replay rich-200 parity — the Neon replay harness gains the T-MIG-051 runner capabilities (multipart bodyFile, /admin route rule, seed-t51-rich200 staging) so the N-4 rich-200 family replays on the live instrument"
+  owner: "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646) — operator directive trace 1a10f806acdec285 'processing of the Rich-200 series'"
+  status: DONE # run-004 union 137/177 (seed 124/162 + prod 13/15): the family 7/7 PASS on the LIVE Neon instrument — RICH-200-A (harness gap) + RICH-200-B (setup 429) CLOSED; register hand-offs: RICH-200-C (7 empty-state 200s flipped by the staged/landed state — case-owner lane), RICH-200-D (w3-questions surfaces 500 on the V63 seed data — port lane P1, first exercised BY the staging)
+  priority: P1 # the family is 0/7 on the standing live instrument while the port is locally proven 17/17 — the census under-reports parity until the harness reaches capability parity
+  wave: 3 # the family's wave (N-4 / T-MIG-051 lineage); tooling execution per T-MIG-044 lineage conventions
+  deps: [T-MIG-044, T-MIG-051]
+  basis: >
+    Operator directive 2026-10-06 trace 1a10f806acdec285. The first live Neon
+    run of the rich-200 family (neon-replay run 37408914789 on 9bebf7e,
+    union 120/177, corpus 177 = +7 rich-200 cases) returned the family 0/7:
+    the three w3-sme- cases 403 (harness sent the student bearer to
+    /api/v1/admin/** — routeRuleBearer has no admin rule) and the four
+    w3-teacher-marking- cases 200-vs-200 empty-vs-rich (the staged lifecycle —
+    ingested T51 corpus, the two structured attempts, the N-4 created_at tie —
+    was never built on the COW branch). Root cause: T-MIG-051 extended ONLY
+    golden/runner.ts (buildMultipartBody + --filter + staging partnership);
+    golden/tools/ci-replay.ts — the Neon instrument — has zero bodyFile/
+    multipart support, no admin route rule, and no rich-state staging. The
+    port itself is NOT implicated: T-MIG-051 run-003 proved the family 17/17
+    against the live port on a fresh scratch db. Full disposition:
+    .syllabai/receipts/T-MIG-063/run-001-disposition.json. The cases declare
+    the requirement themselves ("Replay requires golden/tools/seed-t51-rich200.ts
+    state", w3-sme-ingest-rich-200 description).
+  execution_record: >
+    (run-004 closure entry 2026-10-06T05:35Z) LIVE VERDICT: dispatch 37418673048
+    on d6911f6 — the family 7/7 PASS on live Neon (the signed-uuid tie-break,
+    the HashMap wire order, the ADR-026 replace numbers, the multipart parser —
+    all holding against the port live); union 137/177 (+17 vs the prior run);
+    read-only proof + drop/404-verify OK; RICH-200-C/D filed as hand-offs
+    (receipt run-004-union.json). PROCESSING OF THE RICH-200 SERIES COMPLETE.
+    (run-003/004 entry 2026-10-06T05:25Z) LIVE FINDING on dispatch
+    37417629684 (ec40f1f): the staging's setup registers were 429'd by the
+    v2-only register rate limiter (triage C-class, retryAfterSeconds:53)
+    AFTER the bootstrap claim consumed the one-time window — runRichStage's
+    fail-fast (by design) killed the replay pre-report. RICH-200-B,
+    setup-layer 429. FENCE AMENDMENT DISCLOSED PRE-PUSH:
+    golden/tools/seed-t51-rich200.ts joins the fence with a narrow 429-aware
+    retry (throttled(): retry-after header / retryAfterSeconds body, clamped
+    5..90s, max 4 attempts) around the tool's OWN setup calls only — zero
+    case semantics, zero capture posture; the auth-register cases still
+    measure the limiter honestly (no masking). ci-replay.ts spawnSync
+    timeout 240s -> 900s. Receipt run-003-live-finding-429.json; re-dispatch
+    = run-004 re-proof.
+    (run-002 entry 2026-10-06T05:1xZ) IMPLEMENTED on t-mig-063/r0: ci-replay.ts
+    gains buildMultipartBody import (engine untouched), the admin route rule
+    AFTER name rules (+ the role-faithful -teacher-403 name rule), the
+    sentinel-governed two-boundary staging spawning seed-t51-rich200.ts
+    verbatim, --selftest (16 assertions OK) and the --plan staging
+    disclosure; neon-replay.yml Pass A gains DATABASE_URL (prod pass
+    unchanged). Gates EXACT: typecheck x4 exit 0; bun test 1144/0/13skip/3485
+    = main ddbe9fe byte-identical baseline; runner selftest OK; zero case
+    files, zero runner.ts edits. Receipt run-002-implementation.json.
+    (claim entry 2026-10-06T04:5xZ) Claim per §2: card + run-001 disposition
+    receipt + worklog appended in the SAME commit that starts t-mig-063/r0,
+    pushed before any fix work (the T-MIG-055 process-gap lesson: free-id
+    checks MUST include open PRs + remote branches — verified: zero T-MIG-063
+    refs in repo, zero remote heads, no PR; 059 taken by r0/r1 (#96/#97), 062
+    branch taken by r4b in-flight, 060 reserved by w0a). Fix design (run-002):
+    ci-replay.ts imports buildMultipartBody from ../runner.ts (the gated
+    engine stays untouched — import-only, zero comparator/runner drift);
+    routeRuleBearer gains the /api/v1/admin/ path rule AFTER the name-based
+    rules (w3-sme-status-student-403 must keep the student bearer — 403
+    precedence verified in selftest); the rich staging reuses the committed
+    golden/tools/seed-t51-rich200.ts VERBATIM via subprocess spawn at two
+    loop boundaries (accounts before the first w3-sme- case = seq 10, after
+    the auth band's bootstrap window is intact on the freshly reset COW
+    branch; attempts before the first w3-teacher-marking- case = seq 13, so
+    the ingest cases are the state builders exactly as captured); the admin
+    token comes from the staging's declared stdout contract. Fail-fast
+    doctrine: rich family in corpus + no DATABASE_URL = honest harness error,
+    never a silent degraded replay. Workflow: DATABASE_URL joins Pass A's
+    replay step env (the prod pass never sees the family — REALDATA filter).
+    --selftest added to ci-replay.ts (rule precedence, boundary plan,
+    multipart import wiring, spawn-arg construction); --plan extends to
+    disclose the staging boundaries. Zero case files touched (the case-owner
+    lane owns amendments; §7 no silent widening). Zero runner.ts edits.

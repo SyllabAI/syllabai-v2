@@ -241,14 +241,12 @@ describe("POST /api/v1/learners/me/attempts/:id/self-mark", () => {
     expect((await res.json()).error).toBe("malformed_body");
   });
 
-  test("parts [{partId:null, marksAwarded:1}] → 400 validation_failed (NESTED null stays with the classifier — DEPTH PIN, T-MIG-058; the frozen full answer bad_request via the exact-parts gate is register-open F-B)", async () => {
-    // depth-pin law: the 057 NPE-parity throw covers EXACTLY parts[i]
-    // (path length 2). A nested null (partId) binds fine in the frozen core
-    // (no @Valid cascade; @NotNull at :55 never fires; HashMap.put(null,v)
-    // is legal at :44) and dies at the service's exact-parts gate — 400
-    // bad_request. The port's zod schema rejects the nested null upstream;
-    // the pre-057 classifier posture (validation_failed "must not be null")
-    // is restored here — the guard must NOT swallow it into a 500.
+  test("parts [{partId:null, marksAwarded:1}] → 400 bad_request 'self-mark must cover exactly the attempt's parts' (T-MIG-059 F-B: the widened schema mirrors Jackson's bind law — the null partId survives the controller loop, HashMap.put(null,v) legal :44, and dies at the exact-parts gate :102-111, AFTER the attempt 404)", async () => {
+    // frozen matrix of record: no @Valid cascade on the bare List
+    // (SelfMarkRequest :59) so the @NotNull at :55 never fires; the null
+    // key makes requested={null} != byPartId={PART_A} -> the frozen
+    // BadRequestException. (The 058 depth pin stays fail-closed above for
+    // bare null ELEMENTS — this shape no longer reaches the classifier.)
     const res = await makeApp(asStudent).request(`/api/v1/learners/me/attempts/${ATTEMPT_ID}/self-mark`, {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -256,8 +254,42 @@ describe("POST /api/v1/learners/me/attempts/:id/self-mark", () => {
     });
     expect(res.status).toBe(400);
     const body = await res.json();
-    expect(body.error).toBe("validation_failed");
-    expect(body.message).toBe("parts[0].partId: must not be null");
+    expect(body.error).toBe("bad_request");
+    expect(body.message).toBe("self-mark must cover exactly the attempt's parts");
+  });
+
+  test("parts [{partId: PART_A, marksAwarded: null}] → 500 internal_error (T-MIG-059 UNBOXING PARITY: the gate passes — {PART_A} covers the attempt — then `int marks = e.getValue()` NPEs on the null Integer, LearnerSelfMarkService :116, BEFORE any settle write)", async () => {
+    const sql = fakeSql(baseRoutes());
+    const res = await makeApp(asStudent, sql).request(`/api/v1/learners/me/attempts/${ATTEMPT_ID}/self-mark`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ parts: [{ partId: PART_A, marksAwarded: null }] }),
+    });
+    expect(res.status).toBe(500);
+    const body = await res.json();
+    expect(body.error).toBe("internal_error");
+    expect(body.message).toBe("an internal error occurred");
+    // fail-closed: the parity throw precedes the settle loop — no answers
+    // update and no learner_self_marks insert may have run
+    expect(sql.queries.some((q) => ANSWER_UPDATE.test(q))).toBe(false);
+    expect(sql.queries.some((q) => SELF_MARK_INSERT.test(q))).toBe(false);
+    expect(sql.queries.some((q) => ATTEMPT_UPDATE.test(q))).toBe(false);
+  });
+
+  test("duplicate partId with a null marksAwarded first → 201 (T-MIG-059 put-semantics: put(X,null) then put(X,2) displaces a NULL — no duplicate throw, LearnerSelfMarkController :42-48; last-write-wins lands {X:2} and the flow succeeds)", async () => {
+    const res = await makeApp(asStudent).request(`/api/v1/learners/me/attempts/${ATTEMPT_ID}/self-mark`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        parts: [
+          { partId: PART_A, marksAwarded: null },
+          { partId: PART_A, marksAwarded: 2 },
+        ],
+      }),
+    });
+    expect(res.status).toBe(201);
+    const body = await res.json();
+    expect(body.parts[0]!.marksAwarded).toBe(2);
   });
 
   test("unknown attempt (valid parts) → 404 not_found (frozen NotFoundException parity — the captured 500 was the null-parts NPE, T-MIG-053)", async () => {

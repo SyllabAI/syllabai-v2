@@ -53,8 +53,37 @@
  *     [--report-out reports/seed.json] [--plan]
  *   bun golden/tools/ci-replay.ts --union reports/seed.json reports/prod.json
  *     [--summary-out reports/union.md]   # merges two mode reports
+ *   bun golden/tools/ci-replay.ts --selftest
+ *
+ * T-MIG-063 (rich-200 series disposition, run-001/run-002): the N-4
+ * rich-200 family (the w3-sme- and w3-teacher-marking- rich-200 cases,
+ * T-MIG-051) needs the capabilities T-MIG-051 gave the LOCAL
+ * runner but this instrument lacked — its first live run (37408914789,
+ * union 120/177) returned the family 0/7 purely on harness gaps: the sme
+ * trio 403'd (no /admin route rule → default student bearer on
+ * /api/v1/admin/**) and the marking quartet saw an empty store (the T51
+ * lifecycle was never staged). This file therefore:
+ *   1. ships bodyFile/multipart cases via buildMultipartBody IMPORTED from
+ *      ../runner.ts (the gated engine stays untouched — import-only, zero
+ *      comparator/runner drift);
+ *   2. resolves /api/v1/admin/** to the ADMIN bearer — placed AFTER the
+ *      name-based rules so the student/teacher 403 postures keep the role
+ *      they captured (w3-sme-status-student-403 keeps the student bearer;
+ *      w3-sme-status-teacher-403 gains the role-faithful TEACHER bearer per
+ *      T-MIG-051 run-003's role model);
+ *   3. builds the family's state IN PARTNERSHIP WITH THE CASES by spawning
+ *      the committed golden/tools/seed-t51-rich200.ts VERBATIM at two loop
+ *      boundaries (--stage accounts before the first w3-sme- case;
+ *      --stage attempts before the first w3-teacher-marking- case — the
+ *      ingest cases themselves stay the seq-10/11 state builders exactly
+ *      as captured). The tool is the state the cases DECLARE
+ *      ("Replay requires golden/tools/seed-t51-rich200.ts state"); it is
+ *      reused unmodified. Fail-fast: family present + no DATABASE_URL =
+ *      honest harness error, never a silent degraded replay. Zero case
+ *      files touched (§7: no silent widening — the cases are forever).
  */
-import { loadCases, deepEqualTolerant } from "../runner.ts";
+import { loadCases, deepEqualTolerant, buildMultipartBody } from "../runner.ts";
+import { join } from "node:path";
 
 const REALDATA = /realdata|-real-/; // verbatim posture regex (T-MIG-022 v2 tool)
 const DUMMY = "scrubbed-fixed-dummy-jwt-token";
@@ -71,6 +100,12 @@ interface GoldenCase {
   tolerate?: string[];
   unordered?: string[];
   seq?: number;
+  // T-MIG-051/063: multipart request bodies — the case names a FILE under
+  // cases/files/ shipped as ONE part (the SME ingest's 'file' part). Built
+  // by buildMultipartBody imported from the gated runner (wired in
+  // --selftest here too).
+  bodyFile?: string;
+  multipart?: { partName: string; filename: string; contentType?: string };
 }
 
 interface CaseResult {
@@ -98,11 +133,81 @@ function selectCases(mode: string): GoldenCase[] {
 }
 
 // ── role selection by ROUTE RULE (SecurityConfig.java:66-91), v2 tool verbatim ──
-function routeRuleBearer(name: string, path: string, teacher: string, student: string): string {
+// T-MIG-063: the name-based rules keep precedence over the path rules so the
+// role-gated 403 postures replay with the role they captured; the /admin
+// path rule resolves to the staging's bootstrap-claimant bearer (ADMIN+
+// TEACHER — it passes every admin surface) and NEVER to the default student
+// bearer (the run-37408914789 403s). Empty admin return = caller renders
+// the honest per-case harness error.
+function routeRuleBearer(name: string, path: string, teacher: string, student: string, admin = ""): string {
   if (name.includes("unauthed")) return DUMMY; // invalid bearer → anonymous → 401 parity
   if (name.includes("student")) return student; // 403-parity probes: STUDENT on teacher routes
+  if (name.endsWith("-teacher-403")) return teacher; // T-MIG-063: role-faithful 403 posture (w3-sme-status-teacher-403 — the corpus's only -teacher-403 case)
+  if (path.includes("/api/v1/admin/")) {
+    if (!admin) return "";
+    return admin;
+  }
   if (path.includes("/api/v1/teacher/")) return teacher;
   return student;
+}
+
+// ── T-MIG-063: the rich-200 family's state partnership ─────────────────────
+// The staging boundaries are computed from the SAME filtered, seq-ordered
+// list the replay loop walks, so the ingest cases run as the state builders
+// exactly as captured (seq 10/11) and the marking reads see the tied
+// attempts (seq 13+, after --stage attempts). Sentinel: the family's first
+// committed case by name; boundaries fire AT MOST ONCE each, before the
+// first case of each sub-family.
+const RICH_SENTINEL = "w3-sme-ingest-rich-200";
+
+interface RichStageBoundary {
+  at: number;
+  stage: "accounts" | "attempts";
+}
+
+function richStagePlan(cases: GoldenCase[]): RichStageBoundary[] {
+  const plan: RichStageBoundary[] = [];
+  if (!cases.some((k) => k.name === RICH_SENTINEL)) return plan;
+  const sme = cases.findIndex((k) => k.name.startsWith("w3-sme-"));
+  const marking = cases.findIndex((k) => k.name.startsWith("w3-teacher-marking-"));
+  if (sme >= 0) plan.push({ at: sme, stage: "accounts" });
+  if (marking >= 0) plan.push({ at: marking, stage: "attempts" });
+  return plan;
+}
+
+// Spawn the committed seed-t51-rich200.ts VERBATIM (the state builder the
+// cases declare — zero copy, zero drift). Returns its ADMIN_TOKEN per the
+// tool's declared stdout contract. Any staging failure is a fail-fast
+// harness error: an unstaged replay would produce honest-but-worthless
+// empty-vs-rich diffs (the exact run-37408914789 failure mode).
+async function runRichStage(stage: "accounts" | "attempts"): Promise<string> {
+  const dbUrl = process.env.DATABASE_URL ?? "";
+  if (!dbUrl) {
+    fail(
+      `rich-200 family present but DATABASE_URL is not set — golden/tools/seed-t51-rich200.ts (the state the cases declare) cannot run; set DATABASE_URL to the disposable branch (fail-fast, never a degraded replay — T-MIG-063)`,
+    );
+  }
+  const { spawnSync } = await import("node:child_process");
+  const script = join(import.meta.dir, "seed-t51-rich200.ts");
+  const r = spawnSync(
+    process.execPath,
+    [script, "--stage", stage, "--target", TARGET, "--database-url", dbUrl],
+    // T-MIG-063 run-004: the tool's 429-aware retry (the v2-only register
+    // limiter, triage C-class) can legally wait out retryAfterSeconds
+    // windows — 15 min covers the worst honest throttle sequence.
+    { encoding: "utf8", timeout: 900_000, env: process.env },
+  );
+  if (r.error || r.status !== 0) {
+    fail(
+      `rich staging "${stage}" failed (status ${r.status}): ${(r.stderr ?? "").slice(-600) || String(r.error)}`,
+    );
+  }
+  const admin = String(r.stdout ?? "").match(/ADMIN_TOKEN=(\S+)/)?.[1] ?? "";
+  if (!admin) {
+    fail(`rich staging "${stage}" produced no ADMIN_TOKEN (the tool's declared stdout contract)`);
+  }
+  console.log(`[ci-replay] rich staging "${stage}" complete (bootstrap-claimant admin bearer; role-faithful per T-MIG-051 run-003)`);
+  return admin;
 }
 
 // ── token minting through the HONEST api surface (v2 tool verbatim) ──
@@ -149,7 +254,7 @@ function checkHeaders(actual: Headers, expected: Record<string, string> | undefi
   return null;
 }
 
-async function replayOne(kase: GoldenCase, teacher: string, student: string): Promise<CaseResult> {
+async function replayOne(kase: GoldenCase, teacher: string, student: string, admin: string): Promise<CaseResult> {
   // Only cases that CARRY an Authorization header get one (capture-faithful);
   // its value is re-minted per route rule — {{TOKEN}} placeholders and the
   // committed scrubbed dummy alike (v2 tool model, corpus-wide).
@@ -158,16 +263,45 @@ async function replayOne(kase: GoldenCase, teacher: string, student: string): Pr
     (h) => h.toLowerCase() === "authorization",
   );
   if (hadAuth) {
-    headers["Authorization"] = `Bearer ${routeRuleBearer(kase.name, kase.path, teacher, student)}`;
+    const bearer = routeRuleBearer(kase.name, kase.path, teacher, student, admin);
+    if (bearer === "") {
+      return {
+        name: kase.name,
+        mode: CASE_MODE,
+        pass: false,
+        diff: `harness error: ${kase.path} resolves to the ADMIN bearer but the rich staging provided none (T-MIG-063 fail-fast)`,
+      };
+    }
+    headers["Authorization"] = `Bearer ${bearer}`;
   } else if (kase.request?.headers) {
     Object.assign(headers, kase.request.headers);
+  }
+  // T-MIG-063: bodyFile cases ship their declared file as ONE multipart part
+  // through the gated runner builder (import-only); the content-type header
+  // is dropped so fetch sets the boundary itself (the runner's exact
+  // convention).
+  let reqBody: BodyInit | undefined;
+  if (kase.bodyFile) {
+    delete headers["content-type"];
+    try {
+      reqBody = buildMultipartBody(kase);
+    } catch (e) {
+      return {
+        name: kase.name,
+        mode: CASE_MODE,
+        pass: false,
+        diff: `harness error: ${e instanceof Error ? e.message : String(e)}`,
+      };
+    }
+  } else {
+    reqBody = kase.request?.body != null ? JSON.stringify(kase.request.body) : undefined;
   }
   let res: Response;
   try {
     res = await fetch(new URL(kase.path, TARGET), {
       method: kase.method,
       headers,
-      body: kase.request?.body != null ? JSON.stringify(kase.request.body) : undefined,
+      body: reqBody,
     });
   } catch (e) {
     return { name: kase.name, mode: CASE_MODE, pass: false, diff: `harness error: target unreachable (${e instanceof Error ? e.message : String(e)})` };
@@ -204,10 +338,23 @@ async function runMode(reportOut?: string): Promise<CaseResult[]> {
   const teacher = await ensureUser("user_20@example.invalid", PASSWORD, "User 20", "TEACHER");
   const student = await ensureUser("user_21@example.invalid", PASSWORD, "User 21", "STUDENT");
   console.log("[ci-replay] tokens minted (teacher+student) via /api/v1/auth");
+  // T-MIG-063: the rich-200 family's staging boundaries fire inline — the
+  // ingest cases remain the state builders (seq 10/11), the marking reads
+  // replay against the staged tied attempts (seq 13+).
+  const stages = richStagePlan(cases);
+  if (stages.length > 0) {
+    console.log(`[ci-replay] rich-200 staging plan: ${stages.map((s) => `${s.stage} @ ${cases[s.at]?.name}`).join(", ")} (state per the committed seed-t51-rich200.ts, verbatim)`);
+  }
+  let admin = "";
   const results: CaseResult[] = [];
   let pass = 0;
-  for (const kase of cases) {
-    const r = await replayOne(kase, teacher, student);
+  for (let i = 0; i < cases.length; i++) {
+    const boundary = stages.find((s) => s.at === i);
+    if (boundary) {
+      admin = await runRichStage(boundary.stage);
+    }
+    const kase = cases[i]!;
+    const r = await replayOne(kase, teacher, student, admin);
     results.push(r);
     if (r.pass) {
       pass++;
@@ -250,6 +397,12 @@ function plan(): void {
   console.log(`  prod families  → ${byFam(prod)}`);
   console.log(`  seq'd stateful cases (run first, seq order): ${all.filter((k) => k.seq != null).map((k) => `${k.name}#${k.seq}`).join(", ")}`);
   console.log(`  cases with expect.headers: ${all.filter((k) => Object.keys(k.expect.headers ?? {}).length > 0).length}`);
+  // T-MIG-063: disclose the rich-200 staging boundaries (deterministic —
+  // computed from the seed posture's own case list; DATABASE_URL is
+  // required at run time, fail-fast without it — never checked here, plan
+  // stays target-free).
+  const stages = richStagePlan(seed);
+  console.log(`  rich-200 staging (T-MIG-063): ${stages.length === 0 ? "none — family absent" : stages.map((s) => `${s.stage} @ ${seed[s.at]?.name}`).join(", ")} (seed pass only; DATABASE_URL required at run time)`);
 }
 
 // --union: merge the two posture reports into the standing re-proof verdict.
@@ -283,8 +436,85 @@ async function union(aPath: string, bPath: string, summaryOut?: string): Promise
   process.exit(fails.length === 0 ? 0 : 1);
 }
 
+// --selftest: the T-MIG-063 extensions must prove themselves before any live
+// replay (the runner's own selftest convention). Deterministic, zero network:
+// rule precedence, boundary plan, multipart import wiring, spawn-arg shape.
+function selftest(): number {
+  let bad = 0;
+  const t = (name: string, ok: boolean): void => {
+    if (!ok) {
+      bad++;
+      console.error(`ci-replay selftest FAILED: ${name}`);
+    }
+  };
+  const A = "admin-jwt";
+  const T = "teacher-jwt";
+  const S = "student-jwt";
+  // 1. route-rule precedence (the run-37408914789 postures, decided exactly)
+  t("admin path -> admin bearer", routeRuleBearer("w3-sme-status-admin-rich-200", "/api/v1/admin/question-bank/status", T, S, A) === A);
+  t("ingest rich -> admin bearer", routeRuleBearer("w3-sme-ingest-rich-200", "/api/v1/admin/question-bank/ingest", T, S, A) === A);
+  t("student NAME beats admin path (403 posture kept)", routeRuleBearer("w3-sme-status-student-403", "/api/v1/admin/question-bank/status", T, S, A) === S);
+  t("teacher-403 NAME -> teacher bearer (role-faithful)", routeRuleBearer("w3-sme-status-teacher-403", "/api/v1/admin/question-bank/status", T, S, A) === T);
+  t("unauthed NAME beats admin path (401 posture kept)", routeRuleBearer("w3-sme-status-unauthed-401", "/api/v1/admin/question-bank/status", T, S, A) === DUMMY);
+  t("teacher path -> teacher", routeRuleBearer("w3-teacher-marking-queue-v2-rich-200", "/api/v1/teacher/marking/queue-v2", T, S, A) === T);
+  t("default -> student", routeRuleBearer("auth-me-with-bearer-200", "/api/v1/auth/me", T, S, A) === S);
+  t("admin path without staging -> empty (honest per-case error)", routeRuleBearer("w3-sme-ingest-rich-200", "/api/v1/admin/question-bank/ingest", T, S, "") === "");
+  // 2. boundary plan on synthetic layouts
+  const fake = (name: string, seq?: number): GoldenCase =>
+    ({ name, method: "GET", path: "/", expect: { status: 200, body: null }, ...(seq !== undefined ? { seq } : {}) }) as GoldenCase;
+  const rich = [
+    fake("auth-register-success-201", 1),
+    fake("auth-login-200", 3),
+    fake("w3-sme-ingest-rich-200", 10),
+    fake("w3-sme-ingest-replace-rich-200", 11),
+    fake("w3-sme-status-admin-rich-200", 12),
+    fake("w3-teacher-marking-queue-v2-rich-200", 13),
+    fake("w3-teacher-marking-throughput-rich-200", 16),
+    fake("w3-sme-status-teacher-403"), // non-seq: filename-order tail
+  ];
+  const p1 = richStagePlan(rich);
+  t("plan: two boundaries", p1.length === 2);
+  t("plan: accounts before the first w3-sme- case", p1[0]?.stage === "accounts" && p1[0]?.at === 2);
+  t("plan: attempts before the first w3-teacher-marking- case", p1[1]?.stage === "attempts" && p1[1]?.at === 5);
+  const p0 = richStagePlan([fake("auth-me-with-bearer-200"), fake("content-docs-teacher-realdata-200")]);
+  t("plan: family absent -> no staging", p0.length === 0);
+  const pSentinel = richStagePlan([fake("w3-sme-status-teacher-403")]); // 403s without the builder cases: sentinel governs
+  t("plan: sentinel governs (no sentinel -> no staging even with family-named 403s)", pSentinel.length === 0);
+  // 3. multipart import wiring (the gated runner builder, unchanged)
+  const mf: GoldenCase = {
+    name: "w3-sme-ingest-rich-200",
+    method: "POST",
+    path: "/api/v1/admin/question-bank/ingest",
+    bodyFile: "files/t51-corpus.zip",
+    multipart: { partName: "file", filename: "t51-corpus.zip", contentType: "application/zip" },
+    expect: { status: 200, body: null },
+  };
+  let fd: FormData | null = null;
+  try {
+    fd = buildMultipartBody(mf);
+  } catch {
+    fd = null;
+  }
+  t("multipart: bodyFile builds a FormData via the runner import", fd !== null && fd.get("file") !== null);
+  t(
+    "multipart: fail-fast without the descriptor (never a silent JSON send)",
+    (() => {
+      try {
+        buildMultipartBody({ ...mf, multipart: undefined });
+        return false;
+      } catch {
+        return true;
+      }
+    })(),
+  );
+  console.log(bad === 0 ? "ci-replay selftest OK" : `ci-replay selftest FAILED (${bad} assertion(s))`);
+  return bad;
+}
+
 const args = process.argv.slice(2);
-if (args.includes("--plan")) {
+if (args.includes("--selftest")) {
+  process.exit(selftest());
+} else if (args.includes("--plan")) {
   plan();
 } else if (args.includes("--union")) {
   const i = args.indexOf("--union");
