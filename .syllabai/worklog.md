@@ -2708,3 +2708,46 @@ Work Log:
 
 Stage Summary:
 - LANE w0a: T-MIG-043 DONE end-to-end (t1 #74, t2 #85/66c6618); the register items of record (mount ratification, consolidation ruling, replay classification) sit with R0/the replay lane. Authors-never-self-merge held — the merge was executed by the delegated reviewer, not the author. STOP.
+Task ID: T-MIG-053 (claim commit)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Operator directive "claim the selfmark validation-order fix" (trace 1a10f2554257a059, 2026-10-06).
+
+Work Log:
+- Verified the on-record candidate: T-MIG-050 run-002 union receipt "next" register names "selfmark validation-order (400-vs-500)" as the next unfiled port-fix candidate — receipt text, never a card (T-MIG-048/050 ruling-of-record precedent).
+- Verified T-MIG-053 free: no card in .syllabai/tasks/, no receipts/ dir (gap between 052 and 054). Claimed under §2.1 earliest-claim-wins; card T-MIG-053-selfmark-validation-order-port-fix.yaml (status CLAIMED, owner set) IS this commit (claim-in-first-commit, §2).
+- Frozen derivation done pre-implementation (syllabai-core @ 6cad6ef, read-only): golden w3-selfmark-unknown-attempt-500 POSTs {} → Jackson binds parts=null (no constraint on the list) → @Valid passes (constraints are element-scoped) → controller dedup loop NPEs (LearnerSelfMarkController.java:42-43) → catch-all (:224-230) → 500 internal_error. Service never reached; its empty-marks gate (:74-76) is [] -only and already faithful. With VALID parts the frozen unknown-attempt is 404 (NotFoundException mapped) — already pinned and unchanged.
+- Fix R-053-A scoped: routes/selfmark/index.ts only (nullish parsed parts → throw past the handler to the app error boundary → exact frozen envelope); contracts comment-only resolution note; routes.test.ts new pins. Service, schema behavior, golden corpus, fixtures: untouched.
+
+Stage Summary:
+- T-MIG-053 CLAIMED at 2026-10-06T03:09:23Z on branch t-mig-053/r0 off origin/main 414f4a6. Implementation next in this lane.
+
+---
+
+Task ID: T-MIG-053 (implementation)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Execute the claimed selfmark validation-order port fix (R-053-A) end-to-end.
+
+Work Log:
+- R-053-A implemented (f0052b4): routes/selfmark/index.ts — after schema parse (frozen Jackson→@Valid order), nullish parsed parts throw past the handler to the app error boundary → 500 internal_error envelope (byte-equivalent to GlobalExceptionHandler.java:224-230); route header CAPTURED QUIRK resolved; classifier dead branch comment updated; controller-law comment corrected.
+- contracts/assessment.ts comment-only resolution note (schema behavior untouched — nullish-accepting IS Jackson parity, pinned by contracts tests :204-205).
+- Test pins added (test/smartmark/routes.test.ts): {} → 500 exact envelope; parts:null → 500; parts:[] → 400 service gate (previously unpinned at HTTP); stale 404-pin title updated (posture unchanged — the captured 500 was the NPE, not the lookup).
+- Gates: typecheck ×4 exit 0; suite 951/0/13skip/2696 vs baseline 948/0/13skip/2689 — delta is exactly the 3 new pins (+7 expects), zero other movement. No fake-SQL fixture changes (throw precedes any SQL).
+- Receipt receipts/T-MIG-053/run-001-npe-parity-fix.json (full frozen derivation incl. the F-a attribution correction: golden 500 = null-parts NPE, service never reached; valid-parts unknown attempt stays 404 in both cores).
+
+Stage Summary:
+- T-MIG-053 IN_REVIEW; PR next with disclosure comment; merge under standing delegated authority, then fetch-first FF + post-merge gates + replay dispatch (expect 109/170 modulo 429 jitter).
+
+---
+
+Task ID: T-MIG-055 (re-file after id collision)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Re-file the selfmark validation-order port fix under T-MIG-055 — the T-MIG-053 id was lost to an earlier in-flight claim (§2.1 earliest-claim-wins).
+
+Work Log:
+- COLLISION: this lane cut t-mig-053/r0 and claimed T-MIG-053 at 03:09:23Z after verifying tasks/ + receipts/ on main (414f4a6). r3a's claim PR #84 (branch t-mig-053/r3a, created 02:50:40Z, r1 claim-review APPROVE, merge withheld) predates it by 19 minutes. The free-id check missed OPEN PRs and remote branches — process gap recorded on the card.
+- Ruling applied (T-MIG-048/050 ruling-of-record precedent, R0s-ROUND-10a): 053 = r3a's Wave-5 knowledge band; this lane's work re-files under the next free id T-MIG-055 (054 = sme-package-contracts; no 055 anywhere; Wave 5 ends 053, Wave 6 starts 060). r1's claim-review receipt for r3a restored untouched under receipts/T-MIG-053/ after the git mv of this lane's receipts dir swept it in (caught immediately).
+- Forward-only: card git-mv'd to T-MIG-055-...yaml with id/basis/scope updated + collision disclosure appended; receipts git-mv'd to receipts/T-MIG-055/ (run-001 only); branch renamed t-mig-053/r0 → t-mig-055/r0 (new remote push, old remote head deleted — zero force-push, no other agent built on it). Zero code-file overlap with incoming main (verified at intake: learner-me/NBA/contracts-learner vs this fence).
+- Gates re-run post-intake on the merged head: typecheck x4 exit 0; suite EXACT vs the new main baseline carried by #85 (1005/0/13skip/3061) + this lane's 3 pins.
+
+Stage Summary:
+- T-MIG-055 IN_REVIEW (was T-MIG-053); PR next with collision + intake disclosure comment; merge under standing delegated authority, fetch-first FF, post-merge gates, replay dispatch.

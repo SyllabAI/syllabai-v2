@@ -280,8 +280,9 @@ export type PartSelfMark = z.infer<typeof partSelfMarkSchema>;
  * Java constraints (copied verbatim): NONE on this record — parts and
  * comment are unconstrained. That is faithful, not an oversight:
  *   - parts: null ACCEPTED here (binding succeeds), then the controller's
- *     dedup loop NPEs → 500 (captured-behaviour flag in the header;
- *     divergence call = R0). [] ACCEPTED (empty loop → service path).
+ *     dedup loop NPEs → 500 — RESOLVED frozen-faithful by T-MIG-053 (the
+ *     route throws NPE parity past the handler; the app error boundary
+ *     serves the opaque 500). [] ACCEPTED (empty loop → service path).
  *   - comment: unconstrained String, nullish.
  * The duplicate-part rule is ENFORCED at the boundary (controller loop →
  * BadRequestException "duplicate part in self-mark: {partId}" → 400), so
