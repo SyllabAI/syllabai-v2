@@ -3744,3 +3744,16 @@ Work Log:
 
 Stage Summary:
 - Round: 2 foreign PRs reviewed+merged end-to-end by this lane (cdce05e, d794dd5); one real code-conflict resolution (keep-both) with the safety net working as designed; 067 id ruling recorded on-thread; queue 0, register empty, lane idle.
+Task ID: T-MIG-067 (run-002 closure, trace 1a10fc127a2cec35)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Post-merge union receipt + card closure for the RICH-200-D port fix.
+
+Work Log:
+- PR #107 merged as cdce05e (merge-commit, CI verify green at the head — run 37423118901); disclosure comment 6010632248 records the standing-delegated-authority merge; local main FF'd fetch-first.
+- Post-merge neon-replay dispatched on main @ cdce05e (run 37423508229); artifact neon-replay-37423508229-1 pulled; union 137/177 (seed 124/162, prod 13/15) — aggregate unchanged because the two w3-questions cases moved WITHIN the fail set.
+- Case verdicts of record: BOTH w3-questions cases 200 vs 200 (the 500-class RETIRED — the RICH-200-D claim "they EXECUTE and CRASH" is resolved). Residuals are corpus-class, dispositioned to the case-owner lanes: families = RICH-200-E (tie-order nondeterminism TRIPLE-confirmed: proof run [4,1,2…], this run starts [2,…], gold [1,4,2…]; multiset identical always); topics = the staged-state census diff (6/5 live vs 4/4 capture — the sme-ingest questions the full tranche builds at seq 10/11 before the questions cases replay; the port's census law is BYTE-EXACT on the unstaged posture per the run-001 accounts-only proof). Options for R0/R6 filed in the receipt (seq-position / re-pin / tolerate[]).
+- SIDE-EFFECT OF RECORD: the T-MIG-067 TRIPLE-CLAIM arbitration (receipt R0-arbitration/ruling2, bookkeeping c78ed9a): 067 = this fix (earliest claim 05:57:09Z vs 06:00:05Z w0a-CLA and 06:00:42Z triage-umbrella); the triage umbrella mechanically refiled as T-MIG-068 (two w3-questions items struck, 7 remain OPEN); w0a's CLA band to refile under the next free id (scan-vs-push race noted).
+- Receipt .syllabai/receipts/T-MIG-067/run-002-union.json; card -> DONE (bookkeeping-only .syllabai/** direct-main write per the 3c07bae/bb537fa/2a0b18d precedents, fetch-first).
+
+Stage Summary:
+- RICH-200-D CLOSED of record: port fix merged + live-proven + union-receipted; no open port work in the finding. The case-owner lane now owns the RICH-200-C/E corpus family (one amendment decision covers both). Lane IDLE; suggestion: next claims = T-MIG-068 umbrella (7 divergences) or T-MIG-069 (w0a's CLA refile) per the operator's routing.
