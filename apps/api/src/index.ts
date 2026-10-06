@@ -52,6 +52,7 @@ import { buildTestBuilderRouters } from "./routes/testbuilder";
 import { buildAnswerInputRouters } from "./routes/answer-input";
 import { buildTeacherMarkingRouters } from "./routes/teachermarking";
 import { buildSmeRouters } from "./routes/sme";
+import { buildInterventionRouters } from "./routes/intervention";
 import { buildLearnerRouters } from "./routes/learner";
 import { buildClassroomRouters } from "./routes/classroom";
 import { buildLearnerMeRouters } from "./routes/learnerme";
@@ -73,6 +74,7 @@ const answerInput = buildAnswerInputRouters();
 const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
 const sme = buildSmeRouters();
+const intervention = buildInterventionRouters();
 const classroom = buildClassroomRouters();
 
 const app = new Hono();
@@ -346,6 +348,25 @@ app.route("/api/v1/admin/question-bank", sme.adminRoute);
 app.route("/api/v1/teacher/classes", classroom.teacherClassesRoute);
 app.route("/api/v1/learners/me/classroom", classroom.learnerClassroomRoute);
 app.route("/api/v1/teacher/learners", classroom.teacherRosterRoute);
+
+// Intervention-run router (T-MIG-061 tranche 2 — Wave 6). Path parity with the
+// frozen core: InterventionRunController under /api/v1/learners/me
+// /intervention-runs (9 endpoints — SecurityConfig.java:91
+// anyRequest().authenticated(); the learner ownership gate inside the module
+// makes another learner's run an indistinguishable 404). Each router owns its
+// authz internally — the /api/v1/* fallback below stays the 404-after-auth
+// path for NO router claimed.
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-061 tranche 2, R0 ratification requested):
+// T-MIG-061's tranche-2 scope covers routes/intervention.ts,
+// test/intervention/routes.test.ts — NOT this file. The import + construction
+// + mount line + this comment are the minimal app-level wiring the tranche-1
+// module needs (the NBA engine is built over the SAME sql + clock the
+// learner-me engine uses — one deterministic engine, composition only),
+// shipped as a separate commit per the
+// T-MIG-010/020/021/030/032/033/034/041/043/052t2 precedent so R0 can
+// ratify or lift them out at review.
+app.route("/api/v1/learners/me/intervention-runs", intervention.interventionRoute);
 
 // anyRequest().authenticated() parity for paths NO router claimed
 // (SecurityConfig.java:91): anonymous callers get the 401 Boot-shaped body;
