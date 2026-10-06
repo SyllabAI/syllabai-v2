@@ -3776,3 +3776,16 @@ Work Log:
 
 Stage Summary:
 - Baseline d902e9f RATIFIED; chain extended through cdce05e with identical gates, both first-hand. Next wave starts from the ratified chain tip 4d8cb7f (d902e9f -> cdce05e -> 4d8cb7f, all gates first-hand; any drift from 1386ran/1373/0/13skip/73f at claim time is a finding, not a footnote). LANE IDLE — desk returns to the operator's disposition; no self-filed wave work.
+
+---
+Task ID: T-MIG-070 (claim)
+Agent: r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Operator directive trace 1a10fe9d928e60dd "Check current state. Claim and continue" — claim the unclaimed #104 blocker band (the two frozen tutor laws the superseded adversarial review filed, comment 6010396027).
+
+Work Log:
+- STATE CENSUS @ 00831a6: queue = #109 only (t-mig-067/r0r6, the questions 500-class/DATE band, in-flight — not this lane's); T-MIG-033 verified ALREADY COMPLETE on main (t1 #50 + t2 #64 + t3 #77 — the standing directive from trace 1a10c9ee078c70c5 is discharged of record; the R0-BASELINE register line naming it was stale and is corrected by this entry); 068 umbrella = the r0r6 lane's in-flight scope; 069 soft-reserved for w0a's CLA refile (c78ed9a) — id deliberately avoided.
+- CLAIMED T-MIG-070 (the next free id): the tutor notBlank + NoReranker fidelity band. Both blockers re-verified first-hand on merged main BEFORE the claim: (1) contracts/tutor.ts :26/:32 z.string().min(1) admits whitespace-only binds — question " " maps to 400 bad_request where frozen serves 400 validation_failed "question: must not be blank", and a history turn text " " is SILENTLY DROPPED by conversation.ts :74-75 (200 with the turn gone vs frozen 400 — the dangerous one); (2) karag.ts :81-82 noReranker contradicts its own comment (no rerankScore copy; withRerankScore zero call sites). Zero-collision: zero t-mig-070* heads, zero 070 worklog/card mentions pre-claim; disjoint from #109's questions surfaces. Claim-in-first-commit: this card + run-001-claim.json + this entry, cut @ 00831a6.
+- FIX DESIGN (the #93/#96 classroom envelope precedent carries): contracts text/question -> the auth.ts notBlank refine with max FIRST / refine LAST; the tutor classifier gains the custom-issue branch rendering the refine's verbatim message (min(1) too_small branch demoted defensive); karag.ts noReranker = fused.map(i => withRerankScore(i, i.fusedScore)) (frozen NoReranker.java:14-22); conversation.ts drop becomes defensive-only with the binding-law comment; pins: question " " / history " " route 400s (zero-sql), the rerankScore-copy pin, + the nit-6 append-law pins (stripCitationMarkers + 4000-char bound, TutorSessionService.java:269,281-287).
+
+Stage Summary:
+- T-MIG-070 CLAIMED on t-mig-070/r0 @ 00831a6 (card + run-001-claim.json + this entry = the claim commit). Implementation next: contracts + classifier + karag one-liner + pins, gates EXACT vs the 1386ran/1373/0/13skip/73f baseline (expects run-variable 5552-5558 in the 053-t2 band per the ratified-baseline note). r0 | claimed the #104 blocker band, both blockers first-hand re-verified | working | suggestion: after this lands, the register's remaining open items are the case-owner lanes' (RICH-200-C/E) + the nba.ts header nit.
