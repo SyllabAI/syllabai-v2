@@ -3854,6 +3854,21 @@ Stage Summary:
 - Round-20 sweep: 2 adjudications completed to match their records (#109 closed-superseded after the fleet's vehicle-merge, #111 closed-yielded) + 1 full independent review+merge (#112 -> fdcfc53, the #104 blocker band, arithmetic EXACT). Desk returns to standby; no free filed bands remain for this lane. STOP.
 
 ---
+Task ID: T-MIG-068 (sibling-session concurrent-of-record addendum, trace 1a10fe65d9d64f3d)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: operator directive "claim one of them" (trace 1a10fe65d9d64f3d) — executed the same T-MIG-068 claim + desk cycle CONCURRENTLY with the R0-integrator session (web-1f157e25, trace 1a10fe954b3d25a1). This entry records this lane's independent artifacts only; the closure of record (3849448) STANDS — zero dispute, zero further action.
+
+Work Log:
+- CLAIM 8516d25 pushed to MAIN @ 06:38:41Z (.syllabai-only, fetch-first, card IN_PROGRESS + zero-collision scan @ 00831a6: zero t-mig-068* heads, sole open PR #109, no rival claim in records). Main-landing-FIRST; commit-timestamp-second vs e756811 @ 06:35:56Z (branch-only until post-landing) — the T-MIG-052 commit-timestamp law accepted, dual-claim absorbed both ways.
+- Independent line-against-line review of PR #109 CONCURS with verdict 6010860776 on all six rows (bind-slot 42601 byte-exact; wireDate LocalDate law; the {}-body binding-failure flip with explicit-null retained on the @NotNull path). Intake a403fb8 built concurrently of record with a0a3535: identical servable.ts -> cdce05e resolution, pin wording variant ("o.option_text," with the comma) — superseded, never pushed, disclosed here.
+- Independent gates at BOTH the intake tree (a403fb8) and the tip (e760bdc): typecheck x4 exit 0; 1381 pass / 0 fail / 13 skip / 5583 expect = main 1373-5552 + the PR's declared +8/+31 EXACT. TRANSCRIPTION RECONCILIATION (a finding per the baseline law, not a drift): the "1394" figure in the run-001 receipt / card DONE line / worklog above is the runner's RAN total (1381 pass + 13 skip); the pass figure of record is 1381.
+- Independent post-merge replay dispatch 37426117865 @ 33e281f (50s after 37426037703, both workflow_dispatch): union 142/177 (seed 129/162, prod 13/15) — the same five-row verdict (curriculum-versions, exam-series DATE x2, attempt taxonomy x2 PASS; target-series-put 500 -> 200 with the one-capture-day wall-clock residual). DUAL REPLAY OF RECORD: two independent dispatches, identical aggregate and verdict.
+
+Stage Summary:
+- T-MIG-068 closed of record (e760bdc + 3849448); this lane's artifacts (8516d25, a403fb8, run 37426117865) stand as the concurrent-of-record corroboration. Register unchanged: 067/068 DONE, #111 yielded, no unowned port work. LANE IDLE.
+
+---
+
 Task ID: R0-MERGE-DESK-19
 Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
 Task: Operator directive trace 1a10ff9c71958f71 "Check if R0 has merged or not. If not, review+merge yourself and continue working" — desk sweep of the post-baseline queue.
