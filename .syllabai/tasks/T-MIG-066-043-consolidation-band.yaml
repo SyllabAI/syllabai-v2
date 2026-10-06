@@ -1,0 +1,56 @@
+version: 1
+task:
+  id: T-MIG-066
+  title: "T-MIG-043 consolidation band (R0 ruling of record, trace 1a10f72fc83f0cbd) — collapse the per-module structural-seam DUPLICATES to the frozen seam: (1) ExamTargetReader — ONE canonical reader (frozen exam/ExamTargetReader.java is a single repository-backed reader shared by BOTH LearnerStateController AND LearnerAgendaController); today three law-sites exist (041's pure courseExamTargets + local CourseExamTargetView interface in services/learner/state.ts, 043's seam examTargetsFor + casts in services/learner-me/index.ts, the canonical contracts courseExamTargetViewSchema); (2) decay/BDT pure math — ONE canonical owner for bandOf/decayedMastery/relaxedToPrior + the paper defaults (frozen NBA composes the shared learner-model math; the port duplicates it as LEARNER_DECAY/BDT_PAPER_DEFAULTS vs NBA_DECAY/BDT_PAPER_DEFAULTS + inline exp-decay)"
+  owner: "unassigned"
+  status: OPEN
+  priority: P2
+  wave: follow-up # the 043 register item; not wave work
+  deps: [T-MIG-041, T-MIG-043, T-MIG-038]
+  execution_record: >
+    (R0 ruling filed 2026-10-06, direct-main bookkeeping @ 2d5a73d) WHY
+    consolidate — the drift cost is EMPIRICAL, not hypothetical: the F-2
+    .nullable() widening (T-MIG-038, #86) had to be hand-propagated to
+    THREE separate sites (contracts learner.ts courseExamTargetViewSchema
+    :253-254; 041's local interface state.ts :263-277; 043's casts
+    learner-me/index.ts :848-858) — three copies of one law already
+    diverged once and were reconciled only by register vigilance. The
+    per-module structural-seam doctrine was LANE-INDEPENDENCE scaffolding
+    (declared in 043's claim so w0a and r7a could work in parallel with
+    zero file overlap), NOT a fidelity law — the frozen architecture
+    itself is the consolidation target (one ExamTargetReader; NBA
+    composing the shared decay math). STATE VERIFIED THIS SESSION: zero
+    BEHAVIORAL divergence exists today (both targetsFor copies read
+    line-against-line in-law: first-wins batch, vanished-series filter,
+    whole-day ChronoUnit.DAYS countdowns, nullable-deadline law, STRICTLY-
+    before entryDeadlinePassed; both decay defaults mirror the same frozen
+    LearnerProperties paper; pins green) — so this band is hygiene, NOT a
+    hotfix: execute under the normal protocol at a quiet-board moment.
+    SCOPE GUIDANCE (binding for the claimant): (a) the canonical reader
+    takes the SEAM shape (own the reads, injected sql + clock — the frozen
+    reader's actual shape), with 041's pure composition re-derived on top
+    if LearnerStateController's batching needs preloaded rows; (b) the
+    canonical decay/BDT module owns bandOf/decayedMastery/relaxedToPrior +
+    the defaults, named after the frozen owner, byte-matched laws;
+    (c) EVERY pin that pins a moved symbol re-points its import, ZERO pin
+    semantics change — arithmetic must come out EXACT (+0 tests/+0
+    expects); (d) the fence is services/learner/** + services/learner-me/**
+    + a NEW shared module home (claimant proposes, R0 ratifies at review —
+    the 043-t2 mount precedent) + both modules' test dirs for the
+    import-only touches; (e) OUT-OF-FENCE: any contracts touch is
+    FORBIDDEN (the canonical schemas stay put — this band moves PORT code,
+    not the wire). REJECTED ALTERNATIVES: keep-the-copies (records the
+    three-site propagation cost forever and re-risks the drift on every
+    future schema widening); consolidate-contracts-side (mismatched — the
+    duplication is in the ports, the wire is already canonical).
+  scope:
+    allowed:
+      - "apps/api/src/services/learner/** (import re-pointing + the removed duplicates)"
+      - "apps/api/src/services/learner-me/** (import re-pointing + the removed duplicates)"
+      - "ONE new shared module home for the reader + the decay/BDT math (claimant proposes; R0 ratifies at review)"
+      - "the matching test dirs for import-only touches; .syllabai/receipts/T-MIG-066/**; this yaml; .syllabai/worklog.md (append-only)"
+    forbidden:
+      - "packages/contracts/** (the wire is canonical — zero touch)"
+      - "golden/** (zero weakening, zero touch expected — arithmetic must be +0/+0)"
+      - "routes/**, apps/api/src/index.ts (no mount or classifier changes)"
+      - "production Neon writes / Render writes of any kind"

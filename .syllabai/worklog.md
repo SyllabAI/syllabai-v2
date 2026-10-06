@@ -3170,6 +3170,68 @@ Work Log:
 Stage Summary:
 - T-MIG-059 DONE. The classroom two-envelope classifier now serves the FULL frozen binding law: wrong-typed fields and format-parse failures -> 400 malformed_body verbatim (Jackson binds the whole document BEFORE @Valid; binding beats every constraint — pinned in both directions incl. the FIRST-issue-constraint precedence case), null/absent binds on @NotBlank render the jakarta default "field: must not be blank", and the JSON-null root keeps the disclosed "request invalid" posture (now pinned). The four-finding F-set from the #89 REQUEST_CHANGES verdict is fully dispositioned (F-2/F-3 via #93, F-0/F-1 via #96); the #89 ratification registration has no open remainder on the classroom band. Register after this card: the T-MIG-058 F-B band is now filed as T-MIG-064 (PR #99 in flight, r1-contracts); the rowsFor hardening nit stays register-open (non-gating). LANE returns to the operator's disposition.
 
+---
+Task ID: R0-AUTO (cron job 438940, sweep 2026-10-06 05:00 UTC)
+Agent: R0-auto merge desk (Super Z scheduled integrator)
+Task: Periodic merge-desk sweep — review + merge open PRs per the standing R0-auto procedure (max 2 merges/run, oldest first).
+
+Work Log:
+- Census: main had advanced to ba3976b — #96 (T-MIG-059 F-0/F-1 binding-law adoption) was reviewed (independent adversarial APPROVE 6009603113) and merged 07df48a by the parallel R0-AUTO desk lane, housekeeping landed; the F-0/F-1 register item is CLOSED. Open PRs: #98 (061-t2 Wave-6 intervention routes, r9-hubx) / #99 (064 F-B selfmark exact-parts emulation, r1 re-file of the yielded 059 id per earliest-claim-wins, #97 closed superseded with documented collision record) / #100 (063 ci-replay rich-200 parity, r0).
+- #100: NO CI on head 959fc6b → skipped per rule (b). #99: CI green at snapshot head 4ec23ca, but the lane pushed a new head 449f9af mid-sweep with hub CI in_progress → skipped per rule (b).
+- #98 guard chain: CI verify+hub success at real head 2033ea9; 0 reviews / 0 comments / zero hold-block hits; 7 files +1167/-1 boundary-clean (routes/intervention.ts NEW 9-endpoint port + 735-line pin suite + index.ts flagged mount). First PUT rejected: merge conflicts → INTAKE per procedure (c).
+- INTAKE: merged origin/main ba3976b into t-mig-061/r9-hubx — worklog-tail add/add only (TWO conflict blocks, both worklog, zero code conflicts); append-only chronological union applied per block (main verbatim in place, PR's Task-20 implementation entry re-appended; byte-checked, first commit had residual second-block markers — caught, resolved, amended as a1e266c; zero markers).
+- CONCURRENT-INTEGRATOR CONVERGENCE: push rejected non-FF — the r9-hubx/delegated lane had independently built its own intake f6d4870 of the SAME main (the #55/#75 precedent). Merged their tip into mine; 4 worklog hunks all set-equal (their side contributed ZERO unique lines — proven by the union script), ordering unified to main-then-PR (convergence commit 2146f77). No force-push anywhere.
+- Gates at the converged head: install OK; typecheck exit 0; bun test apps/api packages 1181 pass / 0 fail / 13 skip / 3598 expect (1194 ran / 64 files = branch-head receipt 1174/3570 + the landed #96 delta +7/+28 EXACT); golden --selftest OK.
+- Pushed the converged intake (fast-forward of the remote branch, contains f6d4870); MERGED #98 as 2d5a73d. CI verified on new main tip 2d5a73d: verify + hub completed/success.
+
+Stage Summary:
+- Wave-6 intervention surface fully wired: 061 tranche-2 (9-endpoint routes + mounts + 30 pins) LIVE on main. F-0/F-1 register item closed via #96; the F-B band re-filed cleanly as 064 (id law holding under earliest-claim-wins).
+- Skipped this cycle awaiting CI: #99 (064, head moved mid-sweep), #100 (063, CI pending) — next sweep (05:30 UTC) picks them up oldest-first.
+- Queue at sweep end: 2 open PRs (99, 100). No escalations. LANE DONE for this cycle.
+---
+
+Task ID: R0-ROUND-16 (merge-intake + the 043 follow-up rulings of record)
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Operator directive trace 1a10f72fc83f0cbd "043 follow-ups, hub hygiene" — executed as: standing merge-intake over the open queue, the four T-MIG-043 register rulings, the hub scoped-runner housekeeping (T-MIG-065).
+
+Work Log:
+- Merge-intake this round: #94 (T-MIG-058 r1 depth pin) REVIEWED-MERGED as 1aea8bc — the frozen nested-null matrix verified line-against-line on core 6cad6ef (HashMap.put(null,v) legal :44; exact-parts gate :110 -> 400 bad_request; unboxing NPE :116 data-dependent); the i.path.length===2 depth pin restores status-code parity with the body-class divergence honestly registered F-B; gates at head 1094/0/13skip/3302 EXACT. #95 (T-MIG-061 t1) reviewed IN FULL (frozen V26 terminal-ck, service state machine, server-assigned sequence :106/:100, DONE-defaults, no-existence-oracle ownedRun, named-409 passthrough, hash canonicalization byte-matched, scenario constants) and MERGED IN FLIGHT by the parallel desk sweep (af33b6f, trace 1a10f776069349cd) minutes before my intake push — my gates at the tree-identical content (1157 ran/63 files/1144-0-13skip/3485) corroborate the desk's merge of record; both intakes (mine a640c87, theirs bee47d8) were tree-identical except a 2-line worklog boundary difference, since normalized on main. #96 (T-MIG-059 F-0/F-1 binding law) REVIEWED-MERGED as 07df48a — frozen GlobalExceptionHandler :158-165/:167-172/:174-179 verified verbatim; the isBinding classifier semantics faithful to Jackson bind-before-validate; gates at dca7992 1101/0/13skip/3330 EXACT (+7/+28); the desk's mergeable-dirty flag was stale (merge-tree clean, verified mechanically).
+- CI EVENT-DROPS (disclosed): push events for t-mig-061/r9-hubx 9381d58 and t-mig-059/r0 (and my t-mig-065/r0 head) never produced workflow runs while Actions was demonstrably alive (main runs green 04:09-04:54). Retrigger of record: close->reopen on the PR (fires the reopened pull_request event on the exact head) — worked for #96 (fea12ec2 run: completed/success); applied to #103 as well. Pattern registered for the desk: check-runs==0 at the real head is an EVENT-DROP, not a CI failure; the retrigger is the remedy, never a skipped guard.
+- Baseline re-verified after the round's merges: main @ 30819de gates 1151 pass / 0 fail / 13 skip / 3513 expect (1164 ran / 63 files) + selftest OK; CI success on 07df48a and 30819de. NOTE: #98 (061-t2 routes) merged at 2d5a73d AFTER that baseline — the next sweep re-baselines.
+- 043 FOLLOW-UPS (the rulings of record, appended to the DONE card): mount RATIFIED (evidence: 6008433613 boundary PASS + sustained green CI); consolidation RULED consolidate-at-the-frozen-seam and FILED as T-MIG-066 (OPEN, ruled scope, drift cost evidenced by the F-2 three-site propagation; zero behavioral divergence today — both targetsFor copies + both decay-default sets verified in-law this session); fidelity flags (ISO-millis reasonDetail / toFixed(2) / T7a tie order) DISPOSITIONED accept-and-pin with reopen-on-capture-evidence on the rounding tie; replay classification (57-case ownership map 29/6/22) ACCEPTED — the T-MIG-044 instrument is active (dispatch + cron 02:30 UTC) with its failure class triaged by the R0R6 run-7 disposition; the w4 full-union verdict belongs to the next green dispatch.
+- HUB HYGIENE: T-MIG-065 claimed + implemented on t-mig-065/r0 (claim-in-first-commit; apps/hub/bunfig.toml [test] root="src" — bare `bun test` in apps/hub: 41/8f/36-5-5errors -> 36/3f/36-0-0 exit 0; root suite provably unchanged; config-only; R5-fence disclosure on the card) — PR #103 filed, handed to the desk (authors-never-self-merge).
+- This commit is the bookkeeping-only direct-main write carrying: the T-MIG-066 card, the 043 rulings append, this entry (sweep-receipt precedent acce2c6/c94e437/d9fc9b4/d1ff74e/f908d0c/855bef9/ddbe9fe). Zero code touch. Zero force-push. Zero Neon.
+
+Stage Summary:
+- Round-16 net: 2 merges of record (#94 1aea8bc, #96 07df48a) + 1 corroborated desk merge (#95 af33b6f), the 043 register CLOSED to rulings (all four items dispositioned; the consolidation band filed as T-MIG-066), the last unfiled housekeeping item implemented behind PR #103 (T-MIG-065). Open after this commit: PRs #99/#100/#101 (active review flows, untouched per the hands-off law) + #103. CI event-drop pattern registered with the retrigger remedy. R0-integrator | round-16 executed per the operator's two-item directive | IDLE after push | suggestion: desk merges #103 after the (already-green-content) guard chain; T-MIG-066 is claim-ready for a quiet-board moment; the next sweep re-baselines main at 2d5a73d+ (061-t2 routes now live).
+Task ID: T-MIG-063 (claim — run-001 disposition)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, operator trace 1a10f806acdec285)
+Task: Operator directive "processing of the Rich-200 series" — disposition the rich-200 family's first live-instrument run and restore harness capability parity.
+
+Work Log:
+- Sandbox recovered from the 7th full wipe: syllabai-v2 re-cloned (main ddbe9fe, round-15 sweep tip), credential law restored from the /tmp remnant (GITHUB_PAT + NEON_PAT, HTTP 200 both, 0600 outside repo, credential-store wired).
+- Evidence: pulled artifact neon-replay-37408914789-1 (run on 9bebf7e, union 120/177, seed 107/162, prod 13/15). The 7 rich-200 fails decomposed: w3-sme- trio = 403 Forbidden on /api/v1/admin/** (harness default-student bearer); w3-teacher-marking- quartet = 200-vs-200 empty-vs-rich (T51 lifecycle never staged on the COW branch).
+- ROOT CAUSE (class RICH-200-A, HARNESS GAP): T-MIG-051 extended only golden/runner.ts; golden/tools/ci-replay.ts has zero bodyFile/multipart support, no /admin route rule, no rich-state staging. Port NOT implicated: T-MIG-051 run-003 proved the family 17/17 vs the live port on a fresh scratch db. Disposition filed: .syllabai/receipts/T-MIG-063/run-001-disposition.json (E-class/B-class precedent alignment; cross-effect disclosure: staging applies t51-seed.sql → B-class seed-posture reads may clear early, named at the next union, third-posture task remains the mechanism home).
+- ID PROVENANCE: 059 TAKEN (r0/r1, PRs #96/#97 F-0/F-1 binding-law), 060 reserved (w0a branch), 061 DONE (af33b6f), 062 TAKEN in-flight (t-mig-062/r4b remote head, no PR) — filed forward-only as T-MIG-063 (zero repo refs, zero remote heads, zero PRs at claim time; the T-MIG-055 free-id-check lesson applied: PRs + remote branches included).
+- Claim per §2: card + run-001 receipt + this entry in the SAME commit that starts t-mig-063/r0, pushed BEFORE any fix work. Fix (run-002): ci-replay.ts multipart import (buildMultipartBody from ../runner.ts — engine untouched), /admin route rule after the name rules, seed-t51-rich200.ts spawn staging at two loop boundaries, --selftest, workflow DATABASE_URL env for Pass A. Zero case files, zero runner.ts edits.
+
+Stage Summary:
+- T-MIG-063 CLAIMED at ddbe9fe; branch t-mig-063/r0; disposition of record filed for the rich-200 series (class RICH-200-A HARNESS GAP, port parity standing 17/17 local). Re-proof owed post-merge via neon-replay dispatch + run-003 union receipt.
+---
+Task ID: T-MIG-063 (run-002 implementation)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, operator trace 1a10f806acdec285)
+Task: ci-replay rich-200 parity — implement, gate, file PR.
+
+Work Log:
+- ci-replay.ts: routeRuleBearer gains the admin param + /api/v1/admin/ path rule placed AFTER the name rules; NEW -teacher-403 name rule (role-faithful; the corpus's only such case w3-sme-status-teacher-403 keeps its 403 verdict, now with the TEACHER bearer per T-MIG-051 run-003's role model); bodyFile/multipart wired via buildMultipartBody IMPORTED from ../runner.ts (content-type dropped, fetch sets the boundary — the runner's convention); richStagePlan sentinel-governed two-boundary plan (accounts @ first w3-sme- = seq 10; attempts @ first w3-teacher-marking- = seq 13; W4 seq'd cases interleaved at 10-12 unaffected); runRichStage spawns the committed seed-t51-rich200.ts VERBATIM and parses its declared ADMIN_TOKEN stdout; fail-fast everywhere (missing DATABASE_URL, staging failure, admin bearer without staging, bodyFile without descriptor).
+- --selftest: 16 deterministic assertions (precedence both ways, boundary laws incl. sentinel governance, multipart wiring) — OK; --plan now discloses the staging boundaries; workflow harness-sanity step runs it beside the runner selftest.
+- neon-replay.yml: Pass A replay step gains DATABASE_URL=${{ env.NEON_SEED_URL }}; T-MIG-047 evidence-producer comment preserved; prod pass unchanged (REALDATA filter never selects the family); read-only proof step unchanged.
+- GATES EXACT: bun run typecheck x4 exit 0; bun test apps/api packages 1144/0/13skip/3485 over 63 files = main ddbe9fe baseline byte-identical (zero test files touched); golden/runner.ts --selftest OK; ci-replay --selftest OK; change surface = ci-replay.ts + neon-replay.yml only (zero golden/cases/**, zero runner.ts, zero apps/packages).
+- Card → IN_REVIEW; receipt run-002-implementation.json; PR filed with disclosure; NOT self-merged.
+
+Stage Summary:
+- T-MIG-063 run-002 IN_REVIEW on t-mig-063/r0. Expected at the next union: family 7/7 (port parity standing 17/17 local); B-class seed-posture reads may clear early via t51-seed.sql (named case-by-case at run-003; third-posture task remains the mechanism home). Re-proof = neon-replay dispatch post-merge.
+
 
 ---
 Task ID: T-MIG-062 (run-001 claim)
@@ -3206,3 +3268,4 @@ Work Log:
 
 Stage Summary:
 - T-MIG-062 implemented + gated (+19/+480/+2 EXACT, selftest OK): the research calibration surface is ported at frozen fidelity — the plan's ADR-036 binding (k-anonymity) is ENFORCED code with the learner-unit law, both segment axes render in fixed order, and the suppression posture (counts stay, outcomes go) is pinned at cell and bin granularity. Wave-6 progress: 060 (w0a, in flight) / 061-t1 (landed) / 062 (this band, IN_REVIEW). LANE IDLE after the PR opens.
+
