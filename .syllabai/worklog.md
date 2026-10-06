@@ -3024,6 +3024,39 @@ Work Log:
 Stage Summary:
 - Round-12 net: 2 reviews of record (#92 REQUEST_CHANGES 6009074844 — vindicated post-merge; #93 APPROVE 6009127022 — merged 9ba1c39), 1 post-merge rescue claim (T-MIG-058, branch t-mig-058/r1). Board laws held: earliest-claim-wins (claims at 03:54:50Z/03:52s window), authors-never-self-merge (058 PR delegated back to the desk), zero force-push, zero prod Neon.
 - Register: F-B (nested-null exact-parts emulation) OPEN on the T-MIG-058 card; F-0/F-1 (binding-class collapse) still open from #93; #92/#93 threads carry the full evidence chains.
+
+---
+
+
+Task ID: T-MIG-059 (claim)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Claim the register-open F-0/F-1 binding-law divergences (the #89 REQUEST_CHANGES findings of record; operator directive trace 1a10f743c93c27b9 "F-0/F-1 binding-law") — the #90 routes-classifier adoption pass the #89 ratification verdict explicitly left unregistered.
+
+Work Log:
+- R0 census first (fetch-before-every-action): main 1aea8bc = #94 merge tip (T-MIG-058 selfmark depth pin, r1, merged 04:27:10Z, CI green); open PRs = #95 only (r9-hubx T-MIG-061 Wave-6 tranche-1 — disjoint fence, hands off). Zero t-mig-059* heads on origin, zero 059 mentions in .syllabai/; id band: 058 taken, 060 reserved (Wave-6 prep), 061 taken → 059 = next free non-reserved id.
+- Evidence chain re-read: findings of record = PR #89 comment 6008621186 (2026-10-06T03:17:21Z) — F-0 binding-class collapse ({"courseLabel": 123} → today validation_failed "courseLabel: request invalid"; frozen malformed_body verbatim — Jackson binds the whole document BEFORE @Valid, binding beats every constraint) + F-1 missing-field message ({} / null-bind on @NotBlank → today "request invalid"; frozen jakarta default "courseSlug: must not be blank", :158-165 getDefaultMessage). F-2/F-3 of the same four-finding set landed via T-MIG-056 (#93) — this pass completes the set.
+- Prior art extracted from the closed #90 branch (t-mig-052/r0-t2 @ 6e9bfcf): classifyBodyError with the isBinding gate (:121 — invalid_string, or invalid_type received ∉ {undefined, null}) and the invalid_type(null/undefined) → "field: must not be blank" rendering (:136-137). Diffed against the merged routes/classroom.ts: the ONLY divergences are the missing isBinding gate and the invalid_type branch falling to the "request invalid" default — the #93-adopted too_small/custom/too_big branches are byte-identical law and stay untouched (including the tightened { maximum: number } cast, the #93 nit-2 ruling).
+- Contracts re-read before claiming: the four request schemas carry NO format checks (EnrollRequest email is @NotBlank @Size(254) only — no .email()), so invalid_string is defensive-only on this band; every REQUIRED field is @NotBlank, so the "must not be blank" rendering is universally correct (the sibling classifiers render "must not be null" over their @NotNull DTOs — same convention, per-DTO message; teachermarking :129 / selfmark :59 post-#94).
+- Golden scan: zero classroom golden cases pin either divergent class (the 3 malformed_body cases are w3-attempt — different band) → zero golden contact. Existing-pins scan: zero classroom route pins assert "request invalid" → no divergent pin needs rewriting; the :358 unreadable-body pin is unaffected (binding gate adds a branch, never removes one).
+- CLAIM: branch t-mig-059/r0 cut @ 1aea8bc at 2026-10-06T04:33:45Z; card + run-001-claim.json + this entry = the claim commit, PUSHED IMMEDIATELY (the T-MIG-055 wipe lesson — no unpushed claim evidence).
+
+Stage Summary:
+- T-MIG-059 CLAIMED at 2026-10-06T04:33:45Z on t-mig-059/r0 (claim-in-first-commit, §2). Implementation next in this lane: the isBinding gate + invalid_type rendering in routes/classroom.ts (fleet classifyBodyError shape, prior-art credit #90), the six F-0/F-1 pins (create {} / name-null / courseLabel-123 / binding-beats-constraint / publish category-123 / enroll {}), EXACT gates arithmetic vs the measured 1aea8bc baseline, PR with full disclosure, independent review verdict on-thread, merge under the standing delegated authority, housekeeping.
+
+---
+Task ID: T-MIG-059 (run-002 implementation)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Implement the claimed F-0/F-1 binding-law adoption end-to-end (classifier restructure, seven route pins, EXACT gates), flip IN_REVIEW, push, open the PR.
+
+Work Log:
+- Baseline MEASURED at the claim commit (stash-free — the claim commit content IS 1aea8bc + bookkeeping): typecheck x3 exit 0 (apps/hub has NO typecheck script — the x3 convention per the merged #94 receipt); bun test apps/api packages 1094 pass / 0 fail / 13 skip / 3302 expect (1107 ran / 61 files) — EXACT vs the #94 receipt; golden --selftest OK.
+- FIX (apps/api/src/routes/classroom.ts, routes-layer only): validationMessage + bodyErrorResponse restructured into the fleet classifyBodyError union shape (teachermarking :129 / selfmark :59 convention; the closed #90 classifier :121/:136-137 adopted with credit, reshaped onto the merged file layout). F-0: the isBinding gate — invalid_string, or invalid_type with received ∉ {undefined, null} — routes to 400 malformed_body "request body is not readable (check field types and enum values)" VERBATIM, before any constraint rendering (Jackson binds the whole document BEFORE @Valid; binding beats every constraint). F-1: the invalid_type branch renders the jakarta default "field: must not be blank" for null/absent binds on @NotBlank properties; the empty-path JSON-null root keeps the #89-disclosed 400-not-500 posture ("request invalid" — the :163 orElse; the pre-existing unpinned ": request invalid" leading-colon rendering aligned to the ratified sketch and PINNED). The #93-adopted branches kept byte-exact (too_small defensive, custom refine verbatim, too_big tightened { maximum: number } cast). Header doc: the T-MIG-059 amendment paragraph + the two-envelope law bullet extended.
+- PINS (apps/api/test/classroom/routes.test.ts, +7): create {} → "courseSlug: must not be blank" (F-1 missing); create name-null → "name: must not be blank" (F-1 null-bind, the #93 review nit-3 divergence); create courseLabel-123 → malformed_body verbatim (F-0); create {courseSlug: "", courseLabel: 123} → malformed_body — the FIRST-issue constraint does NOT beat the later binding failure (F-0 whole-document precedence); create body "null" → validation_failed "request invalid" (the disclosed root-null posture, now pinned); enroll {} → "email: must not be blank" (F-1 family coverage; EnrollRequest has NO .email() — no invalid_string exposure); publish category-123 → malformed_body (F-0 on the @Size-only optional field). All with fail-closed zero-query assertions.
+- GATES at the fix head: typecheck x3 exit 0; bun test apps/api packages 1101 pass / 0 fail / 13 skip / 3330 expect (1114 ran / 61 files) — EXACT delta +7 tests / +28 expects / +0 files (the seven new pins; zero pre-existing pin rewritten, zero regressions); golden --selftest OK. ZERO packages/**, zero golden/**, zero services/**, zero other-routes contact.
+- Receipt run-002-binding-law.json; card → IN_REVIEW; branch pushed.
+
+Stage Summary:
+- T-MIG-059 IN_REVIEW on branch t-mig-059/r0 (claim 9853716 → fix). Next: PR with the full disclosure body, independent adversarial review verdict on-thread, merge under the standing delegated authority, housekeeping (card DONE + provenance, run-003-merge receipt, worklog). The four-finding F-set from the #89 REQUEST_CHANGES verdict is then fully dispositioned (F-2/F-3 via #93, F-0/F-1 here).
 Task ID: 20 (continued — implementation)
 Agent: r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, operator trace 1a10f3ef205fa961)
 Task: T-MIG-061 tranche-1 implementation — contracts + services + fakeSql pins.
@@ -3040,6 +3073,21 @@ Stage Summary:
 - T-MIG-061 tranche-1 delivered end-to-end (claim → contracts → services → pins → intake); the 9-endpoint intervention surface lives as a module awaiting its tranche-2 routes/mounts; STOP per protocol after filing the PR.
 
 ---
+Task ID: 20 (continued — tranche-2 claim)
+Agent: r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, operator trace 1a10f740529db241)
+Task: R0-check + merge-desk cycle, then "continue working" — T-MIG-061 tranche-2 claim (routes + mounts).
+
+Work Log:
+- R0 merge-of-record verified IN: R0-AUTO sweep (job 438940, 04:00 UTC) merged #92 e82f5d5 + #93 9ba1c39, receipt aca7a5e; fetched, local synced.
+- Merge-desk cycle on the two open PRs: #94 (r1's T-MIG-058 depth pin) independently re-verified on head 1072ac4 — typecheck x4 / 1094-0-13skip-3302 over 1107-61f = main 1093-3299 +1/+3 EXACT / hub 36-0 / selftest OK / CI green / clean @ aca7a5e — merged via API as 1aea8bc with the merge-desk record comment 6009335258 (authors-never-self-merge held: authored by r1, merged by the desk). #95 (this lane's tranche-1) became dirty on the 1aea8bc intake; this lane prepared the worklog-union intake (ef8130b) but the concurrent R0-AUTO sweep landed the identical intake bee47d8 first and merged #95 as af33b6f — local redundant commit discarded, no force-push, zero divergence (same base, same union outcome). Queue: 0 open PRs.
+- CONTINUE WORKING: the card's documented tranche-2 (routes + mounts). Claim scanned @ af33b6f: zero tranche-2 work on main (no routes/intervention.ts, no index.ts intervention lines); heads census = only t-mig-060/w0a (w0a's active KaRAG claim, untouched — CLA stays deferred per the card's id-order disclosure); zero open PRs; 062+ free and NOT claimed (this lane continues its own in-flight 061 per earliest-claim-wins).
+- Frozen controller re-read line-against-line (InterventionRunController.java :46-239 @ 6cad6ef): the create endpoint is @RequestParam UUID rootId + @ResponseStatus(CREATED) (:62-68) — NOT a body field; complete carries a CONTROLLER requireText (:135 "terminalOutcome is required") positioned after ownedRun and BEFORE the state machine — the module's complete() carries only the ENTITY law ("outcome is required" behind the ACTIVE gate), so the controller law is ROUTE-owned in tranche-2 (getRun + learner gate + requireText, then module.complete re-derives ownedRun); GlobalExceptionHandler re-verified: IllegalArgument+TypeMismatch -> 400 bad_request FIXED "malformed request" (:167-170), unreadable body -> 400 malformed_body, missing param -> 400 validation_failed "missing required parameter: {name}" (:185-190), VersionMismatch -> the NAMED 409 (:71-77).
+- Claim commit (this one): run-003-t2-claim.json + card status/execution_record + this entry. Implementation commits follow (routes file -> route pins -> flagged index.ts mount); gates before push; PR authored by r9-hubx -> NOT self-merged.
+
+Stage Summary:
+- Round-13 net so far: #94 merged (1aea8bc) + #95 landed (af33b6f, via the R0-AUTO sweep) + tranche-2 claimed on the card's documented plan. Board laws held: earliest-claim-wins, authors-never-self-merge (both merges were desk-executed), fetch-before-every-action (caught the #95 race cleanly), zero force-push, zero prod Neon.
+---
+
 Task ID: R0-AUTO (manual R0 sweep, operator ping trace 1a10f776069349cd, 2026-10-06 04:27 UTC)
 Agent: R0 merge desk (Super Z, R0-auto procedure)
 Task: Operator-pinged sweep — review + merge open PRs per the standing R0-auto procedure.
@@ -3055,6 +3103,73 @@ Work Log:
 Stage Summary:
 - Wave-6 is live: T-MIG-061 tranche-1 (intervention runs — contracts + services + pins) landed as the first Wave-6 band, hot on the heels of #94 (T-MIG-058). Board momentum: W4 complete, W5 classroom/selfmark consolidating, W6 opened.
 - Queue at sweep end: 0 open PRs. No escalations. LANE DONE.
+---
+Task ID: 21
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, operator trace 1a10f73c1b7a5a01)
+Task: Operator directive "sweep" — round-15 merge-desk sweep (7th full workspace wipe recovery included).
+
+Work Log:
+- WORKSPACE RECOVERY: the container was fully wiped (only download/README.md survived). Credential law restored from the /tmp remnant backup: GITHUB_PAT re-armed into .secrets/env.sh (0600, outside repo tracking), /user -> 200, fingerprint 8c1fcf2c4f0d5243 UNCHANGED (no operator rotation — same token as round-14's registration). syllabai-v2 re-cloned; syllabai-core-readonly re-cloned at the frozen pin 6cad6ef (verified identical tip).
+- R0 CHECK: R0-AUTO (job 438940, 04:00 UTC cycle) had merged #92 (057 selfmark element-null, e82f5d5) + #93 (056 @NotBlank envelope, 9ba1c39) before this round; the 03:38/03:33 cycle had collected #84 (053 t1, ced0111) + #88 (triage, 4fed5ba) right after Task 19. Queue at census: #94 (058) + #95 (061 t1).
+- REVIEWED+MERGED #94 (T-MIG-058 DEPTH PIN, r1-contracts) as 1aea8bc (sha-pinned 1072ac4): CI verify+hub completed/success at the real head; fence 6 files zero *.java/core/hub; LINE-AGAINST-LINE: the one-line i.path.length===2 pin restores the pre-057 classifier posture for NESTED nulls (frozen: no @Valid cascade, @NotNull :55 dead, HashMap.put(null,v) legal :44 -> exact-parts gate) — pin + third route pin + frozen-matrix comment block coherent; citation nit :58->:59 fixed; F-B honestly register-open. Race of record on #92 (REQUEST_CHANGES 6009074844 @ 04:02:24Z vs R0 merge @ 04:02:29Z) disclosed by the author — finding transferred verbatim, correct call.
+- REVIEWED+MERGED #95 (T-MIG-061 tranche-1 Wave-6 intervention runs, r9-hubx) as af33b6f (sha-pinned bee47d8): CI verify+hub completed/success at the real head (re-verified after the head advanced 1863572 -> bee47d8 = the intake merge of my 1aea8bc); GitHub mergeable recompute stalled at None/unknown >2min — guard satisfied INDEPENDENTLY via local `git merge-tree --write-tree` exit 0 + fence re-scan (9 files, zero *.java/core/hub); ID RATIFIED 061 (zero other 061 refs, 060 reserved by w0a, CLA honestly deferred with the ClaService :130-148 dependency disclosure); frozen law verified first-hand @ 6cad6ef: six-value enum + terminal() triple (COMPLETED|CANCELLED|FAILED), SHA-256 identity hash (:141), verbatim conflict strings ("Terminal run cannot be changed" :100 IllegalStateException -> ConflictException 409 at the controller boundary :169; "Unknown intervention run: " :135 IllegalArgument class -> 400 FIXED body :167-172), ownership gate (foreign = indistinguishable 404). Gates claimed 1156-0-13skip-3482 at intake head = main 1106-3299-61f +50/+183/+2 EXACT.
+- NOTE: R0's manual-sweep receipt 37d8825 (04:27 UTC) documents the same af33b6f intake — benign double-bookkeeping of one idempotent merge (single merge sha, zero double-merge risk); both narratives retained append-only.
+- INDEPENDENT GATES at tip 37d8825: install --frozen-lockfile exit 0; typecheck x4 exit 0; bun test apps/api packages 1144 pass / 0 fail / 13 skip / 3485 expect over 63 files — EXACT match to R0's af33b6f measurement and to my predicted delta (1094+50 / 3302+183); golden --selftest OK. Cumulative vs the fe97f94 round-14 baseline (948/0/13skip/2689): +196 pass / +796 expect.
+- POST-SWEEP CENSUS: 0 open PRs; branches t-mig-058/r1 and t-mig-061/r9-hubx fully contained in main. NO unscoped claimable observed (Wave-6 next bands: 061 tranche-2 routes/mounts = r9-hubx's module; CLA blocked behind w0a's 060 fence; hub hygiene = hub lane). NO new claim filed.
+
+Stage Summary:
+- Round-15 sweep complete: workspace rebuilt from wipe (#7) with credential law intact, both open PRs (#94, #95) independently reviewed and merged (1aea8bc, af33b6f), all gates exact at 1144/0/13skip/3485 + selftest OK, queue at zero. Register unchanged (NEON_BRANCH_CAPACITY; 058 F-B nested-null full emulation now ON the register via its card). LANE r1c: STOP for this round.
+
+---
+Task ID: 20 (continued — tranche-2 implementation)
+Agent: r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, operator trace 1a10f740529db241)
+Task: T-MIG-061 tranche-2 — the intervention routes + the flagged index.ts mount.
+
+Work Log:
+- INTAKES (eedc264): origin/t-mig-061/r9-hubx (9381d58, another lane's worklog hygiene fix on this branch — adopted, no force-push) + origin/main (ddbe9fe: the r1c round-15 sweep receipt — tranche-1 id-ratified — + the R0-AUTO receipt 37d8825); worklog union resolved; ONE entry-boundary repair disclosed on the merge commit (the R0-AUTO manual-sweep entry abutted Task-20's Stage Summary with no '---' separator — the e6cc4d1/9381d58 loss class, created by this merge's union; byte-verified zero content change; historical pre-main boundaries left untouched per append-only).
+- ROUTES acbb8b5: apps/api/src/routes/intervention.ts — the 9-endpoint Hono port of InterventionRunController :46-239. Frozen laws re-read line-against-line BEFORE the claim: create = @RequestParam UUID rootId + @ResponseStatus(CREATED) (:62-68 — a QUERY param, 201); the COMPLETE controller requireText (:135 'terminalOutcome is required') is ROUTE-owned — after ownedRun, BEFORE the state machine (the module carries the ENTITY law only; the route reproduces the wire order via getRun + the learner gate + requireText, then module.complete re-derives ownedRun); the ERROR->STATUS law per the module header + GlobalExceptionHandler :167-170/:71-77/:185-190; F-061-B honored (zod .nullish() passes every bound object; wrong-TYPE -> malformed_body per the ratified learnerme convention).
+- ROUTE PINS acbb8b5: 30 pins over the REAL module + fakeSql (the tranche-1 harness shapes) — the 201 create law (canonical RunView + the known-answer hash), missing/malformed rootId, the NBA fail-closed 404s (unknown subject root, no PRACTISE_QUESTIONS action), the :167 FIXED-body 400 for UNKNOWN runs (NOT a 404), the indistinguishable foreign-run 404, the state-machine 409s verbatim ('Terminal run cannot be changed' / 'Run cannot become ACTIVE from ACTIVE' / 'Only ACTIVE runs can record steps|complete'), the NAMED resume 409 carrying the run's stored identity, the requireText verbatim 400s (interventionVersion/observationType/evidenceRef/terminalOutcome), F-061-D wire parity on the RAW-null status AND role (the DONE/ATTEMPT_EVIDENCE defaults are validation-only -> the FIXED body), the server-assigned sequence (current_step null -> 0), the route-owned terminalOutcome ordering on BOTH the ACTIVE and CREATED paths, F-061-A cancel disclosure (terminal_outcome stays null), the Boot 401 shell. Test-side fixes during bring-up: the harness subject-route default (the happy create needed the subject present), the javaInstantSchema millis rendering on the round-tripped started_at, the SERVER-ASSIGNED evidence id (clock.newId, not the fixture constant).
+- MOUNT (separate flagged commit): index.ts import + construction (buildNbaEngine over the SAME sql + clock as the learner-me engine — composition only, contract §7) + ONE mount line /api/v1/learners/me/intervention-runs + the OUT-OF-FENCE comment (010/020/021/030/032/033/034/041/043/052t2 precedent, R0 ratification requested).
+- GATES at the branch head: typecheck x4 exit 0; bun test apps/api packages = 1174 pass / 0 fail / 13 skip / 3570 expect over 1187 ran / 64 files = main ddbe9fe 1144-3485-1157-63f +30/+85/+1 EXACT; hub 36-0; golden selftest OK.
+- Receipt run-004-t2.json + card IN_REVIEW + this entry; PR next, authored by r9-hubx -> NOT self-merged (authors-never-self-merge).
+
+Stage Summary:
+- T-MIG-061 tranche-2 delivered end-to-end on the card's documented plan (claim run-003 -> routes -> pins -> flagged mount -> gates); the 9-endpoint Wave-6 intervention surface is now wired live behind the module's state machine; the lane STOPs per protocol after filing the PR.
+
+---
+Task ID: 22
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, operator trace 1a10f899e2c27485)
+Task: Operator directive "Proceed with 061 tranche-2 if other agent not working on that. Otherwise continue with something else."
+
+Work Log:
+- 061-T2 CLAIM CHECK (fetch-before-every-action): STAND DOWN — r9-hubx's branch advanced past the t1 tip with commit 32b73ca "claim(t-mig-061 t2)" (trace 1a10f740529db241, receipt run-003-t2-claim.json, card update, worklog entry; intake merges d6d5a51/eedc264 on top; ls-remote shows the head actively pushed). Earliest-claim-wins per §2.1 — the same class as the Task-18a 052-t2 ruling. ZERO tranche-2 code written by this lane (census only before the discovery). The claim's own zero-collision scan @ af33b6f is consistent with mine.
+- "SOMETHING ELSE" = the open queue: #96 (T-MIG-059, lane r0 — the F-0/F-1 binding-law adoption for the classroom two-envelope classifier).
+- REVIEWED+MERGED #96 as 07df48a (sha-pinned at the intake head): LINE-AGAINST-LINE of the classifier restructure — the isBinding gate (invalid_string; invalid_type with received ∉ {undefined,null}) answering 400 malformed_body VERBATIM implements the Jackson whole-document-binding-precedes-@Valid law (F-0); the null/absent-bind invalid_type branch rendering the jakarta default "field: must not be blank" (:158-165 getDefaultMessage) with the empty-path root-null "request invalid" orElse kept + pinned (F-1); the #93 branches byte-exact; prior art from the closed #90 classifier credited in-source. All 7 pins read and coherent (F-0 wrong-type on create + optional category, F-0 binding-beats-constraint precedence, F-0 root-null, F-1 missing/null-bind on create + enroll). ZERO packages/golden/service files.
+- GUARD CHAIN on #96: CI was ABSENT at their head dca7992 (no check-runs; mergeable=dirty against ddbe9fe — the worklog-tail add/add class, their claim predates my Task-21 push); performed the R0-procedure-(c) INTAKE on their branch: merged origin/main ddbe9fe into t-mig-059/r0, worklog resolved via append-only union (3042 PR + 62 main-adds = 3104 lines, 0 markers; separator audit: 28 union flags = main's 28 verbatim, ZERO new gaps created by the union), intake commit fea12ec pushed to their branch (the bee47d8 precedent); CI verify+hub completed/success at fea12ec; sha-pinned merge -> 07df48a.
+- INDEPENDENT GATES at tip 07df48a: install --frozen-lockfile exit 0; typecheck x4 exit 0; bun test apps/api packages 1151 pass / 0 fail / 13 skip / 3513 expect (1164 ran / 63 files) = my ddbe9fe measurement 1144-0-13skip-3485 + the PR's claimed +7/+28 EXACT; golden --selftest OK. CI on 07df48a green (verify+hub).
+- POST-CENSUS: 0 open PRs after the merge. Active heads observed: t-mig-060/w0a (reserved, KaRAG), t-mig-061/r9-hubx (t2 in flight per 32b73ca), t-mig-062/r4b (new claim branch). 058 F-B register band remains open (r1-contracts' disclosure — not routed to this lane). NO new claim filed by this lane.
+
+Stage Summary:
+- 061 tranche-2 NOT touched: r9-hubx holds the claim (32b73ca) — the operator's condition resolved FALSE; stand-down receipted. Alternative continuation executed: #96 (T-MIG-059 binding law) independently reviewed and merged 07df48a with the intake-union procedure, gates exact at 1151/0/13skip/3513 + selftest OK. LANE r1c: STOP for this round.
+
+---
+Task ID: T-MIG-059 (merge + housekeeping)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Land T-MIG-059 (PR #96) and complete the housekeeping — the register-open F-0/F-1 binding-law divergences (operator directive trace 1a10f743c93c27b9).
+
+Work Log:
+- PR #96 opened on the pushed axis (claim 9853716 -> fix dca7992) with the full disclosure body (findings of record, the #90 prior-art credit, the seven pins, the measured gates arithmetic, the boundary/disclosures).
+- Independent adversarial review (isolated subagent, no stake in the implementation assumptions): APPROVE zero blockers, 4 non-gating nits — every input class empirically traced on the installed zod 3.25.76 (the malformed-beats-constraint precedence, the null-bind rendering, the root-null disclosed posture, the nullish-category 201, too_big/custom intact); the test diff verified PURE ADDITIONS; boundary clean; gates re-derived EXACT. Verdict of record posted on-thread (comment 6009603113, 04:54:13Z) — authors-never-self-merge held in substance.
+- CI verify+hub completed/success on the PR head (04:54:14Z run).
+- MERGED by the R0-AUTO desk at 04:55:44Z as 07df48a under the standing delegated authority (the desk's intake fea12ec resolved the worklog-tail add/add vs the r1c round-15 receipt push ddbe9fe — append-only union, zero code conflicts, no force).
+- COLLISION OF RECORD (no action needed): the r1-contracts lane had filed the F-B band under the 059 id concurrently (PR #97) — it yielded the id to the earliest claim (9853716 @ 04:35:53Z) per earliest-claim-wins and re-filed as T-MIG-064 (PR #99, comment 6009617732); the bands are disjoint (classroom binding-law vs selfmark exact-parts); the register is coherent (059 = this card, 064 = F-B).
+- Gates re-executed locally at the merged tip 07df48a: typecheck x3 exit 0; bun test apps/api packages 1151 pass / 0 fail / 13 skip / 3513 expect (1164 ran / 63 files) — EXACT (main-with-#95 1144/3485 + the #96 delta +7/+28); golden --selftest OK. CI success on the tip confirmed via the Actions API.
+- Independent confirmation of record: r1c Task-22 receipt (30819de) re-verified the merge and the gates.
+- Housekeeping: receipt run-003-merge.json; card -> DONE with provenance (this commit, bookkeeping-only .syllabai/** direct-to-main per the r0-role precedent a695c92/aca7a5e/37d8825).
+
+Stage Summary:
+- T-MIG-059 DONE. The classroom two-envelope classifier now serves the FULL frozen binding law: wrong-typed fields and format-parse failures -> 400 malformed_body verbatim (Jackson binds the whole document BEFORE @Valid; binding beats every constraint — pinned in both directions incl. the FIRST-issue-constraint precedence case), null/absent binds on @NotBlank render the jakarta default "field: must not be blank", and the JSON-null root keeps the disclosed "request invalid" posture (now pinned). The four-finding F-set from the #89 REQUEST_CHANGES verdict is fully dispositioned (F-2/F-3 via #93, F-0/F-1 via #96); the #89 ratification registration has no open remainder on the classroom band. Register after this card: the T-MIG-058 F-B band is now filed as T-MIG-064 (PR #99 in flight, r1-contracts); the rowsFor hardening nit stays register-open (non-gating). LANE returns to the operator's disposition.
+
 
 ---
 Task ID: T-MIG-062 (run-001 claim)
