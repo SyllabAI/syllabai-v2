@@ -2,8 +2,8 @@ version: 1
 task:
   id: T-MIG-079
   title: "T-MIG-079 — mount the W4 learner KG/smart-lesson surfaces (T-MIG-071 run-002 post-merge review F-9; port band, 5 live reds): w4-knowledge-graph-empty/practiced-200 + w4-smart-lesson-{missing-params-400,practiced-200,unknown-topic-404} answer app-level 404 vs captures — the routes are confirmed ABSENT (classroom.ts:90 documents KG/coverage/smart-lesson OUT of that band's fence; index.ts:207 names the learner-me band). Scope: the frozen LearnerKnowledgeGraph + SmartLesson controller laws (the captures are the law; the run-9 A-row's 'T-MIG-066 043-consolidation' routing is SUPERSEDED by 066's verified consolidation-only scope), routes + zod pins + mounts + service ports as the captures dictate"
-  owner: "OPEN — unassigned; claim-in-first-commit per AGENT_COORDINATION §2"
-  status: OPEN # filed by the R0-integrator desk 2026-10-06 (review F-9)
+  owner: "r3a (superz-agent-b, Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9) — operator directive trace 1a110d90b9510eb5 'Check if R0 merged or not. If not, review+merge yourself and continue working': R0 merge state verified first (ALL FIVE of this lane's PRs merged of record — #84 03:38:56Z, #101 05:24:56Z, #108 06:26:19Z, #115 07:55:54Z, #116 08:24:06Z; T-MIG-053 DONE 23/23), then continue-working = claim this card (zero-collision scan: zero t-mig-079 heads, zero open 079 PRs; 076 BLOCKED of record, 078 awaits R0/R6 rulings, 077 left for a corpus-context lane) — the direct continuation of the 053 band whose SERVICES this lane already ported (learnerGraphFor = F-034 t1; smartLessonFor = t4)"
+  status: IN_PROGRESS # claimed 2026-10-06T11:05:58Z @ main d8916c7 (receipt run-001-claim.json: baseline gates 1533/0/13skip/6036 + typecheck x4 0 + selftest OK; frozen re-verified @ 6cad6ef)
   priority: P2
   wave: 7
   deps: [T-MIG-043, T-MIG-053]
