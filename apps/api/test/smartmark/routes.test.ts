@@ -170,7 +170,7 @@ describe("POST /api/v1/learners/me/attempts/:id/self-mark", () => {
     expect((await res.json()).error).toBe("malformed_body");
   });
 
-  test("marksAwarded 100 → 409 conflict 'marks 100 outside part bound 0–3' (T-MIG-071: the dead @Max(99) removed from the bind law — Jackson binds any int, the range is the service bound loop's ConflictException, LearnerSelfMarkService :113-121; the former 400 validation_failed pin here was the disclosed inferred-constraint divergence of record, T-MIG-057/064 receipts)", async () => {
+  test("marksAwarded 100 → 409 conflict 'marks 100 outside part bound 0–3' (T-MIG-073: the dead @Max(99) removed from the bind law — Jackson binds any int, the range is the service bound loop's ConflictException, LearnerSelfMarkService :113-121; the former 400 validation_failed pin here was the disclosed inferred-constraint divergence of record, T-MIG-057/064 receipts)", async () => {
     const res = await makeApp(asStudent).request(`/api/v1/learners/me/attempts/${ATTEMPT_ID}/self-mark`, {
       method: "POST",
       headers: { "content-type": "application/json" },

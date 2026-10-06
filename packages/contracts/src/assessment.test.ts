@@ -181,12 +181,12 @@ describe("SelfMarkRequest — the boundary's accept/reject set", () => {
     expect(selfMarkRequestSchema.safeParse({ parts: [{ partId: UUID, marksAwarded: 99 }] }).success).toBe(true);
   });
 
-  test("T-MIG-071: accepts marksAwarded -1 and 100 (the DEAD @Min(0)/@Max(99) removed from the bind law — no @Valid cascade on the bare List, SelfMarkRequest :59; Jackson binds any int; the range is the SERVICE bound loop's 409, LearnerSelfMarkService :113-121)", () => {
+  test("T-MIG-073: accepts marksAwarded -1 and 100 (the DEAD @Min(0)/@Max(99) removed from the bind law — no @Valid cascade on the bare List, SelfMarkRequest :59; Jackson binds any int; the range is the SERVICE bound loop's 409, LearnerSelfMarkService :113-121)", () => {
     expect(selfMarkRequestSchema.safeParse({ parts: [{ partId: UUID, marksAwarded: -1 }] }).success).toBe(true);
     expect(selfMarkRequestSchema.safeParse({ parts: [{ partId: UUID, marksAwarded: 100 }] }).success).toBe(true);
   });
 
-  test("T-MIG-071 residual (disclosed): any JS int binds, including beyond int32 (the Jackson-Integer coercion class — frozen would 400 HttpMessageNotReadable; register-only, unreachable by capture)", () => {
+  test("T-MIG-073 residual (disclosed): any JS int binds, including beyond int32 (the Jackson-Integer coercion class — frozen would 400 HttpMessageNotReadable; register-only, unreachable by capture)", () => {
     expect(selfMarkRequestSchema.safeParse({ parts: [{ partId: UUID, marksAwarded: 2 ** 40 }] }).success).toBe(true);
     expect(selfMarkRequestSchema.safeParse({ parts: [{ partId: UUID, marksAwarded: -(2 ** 40) }] }).success).toBe(true);
   });

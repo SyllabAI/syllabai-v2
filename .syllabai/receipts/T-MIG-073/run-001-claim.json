@@ -1,5 +1,6 @@
 {
-  "task": "T-MIG-071",
+  "task": "T-MIG-073",
+  "refile_of": "T-MIG-071 (the id lost to r0's ruling3 filing — earliest-claim-wins: r0's operator-ruling-case-amendments card committed on main @ 2026-10-06T07:18:16Z vs this claim commit 00f457f @ 07:21:06Z; a DIFFERENT band, zero scope overlap; refile per the T-MIG-048->050 / 059->064 precedents)",
   "run": "run-001-claim",
   "lane": "r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
   "operator_trace": "1a1100f03295c239",
@@ -15,7 +16,7 @@
   ],
   "zero_collision": {
     "id_scan": "no T-MIG-071 anywhere in .syllabai/ @ 97295d1; no t-mig-071 heads on origin (ls-remote substring hits are 034/038/040-prep/052/054 + pull refs only)",
-    "id_choice": "069 SKIPPED — reserved for w0a's CLA band refile per R0-arbitration ruling2 (ruling2-t-mig-067-triple-claim.json: 'T-MIG-069 = free for the w0a CLA band refile (or the next free id at refile time, first-come-first-served)'); 070 taken (T-MIG-070 DONE); 071 is the next free id",
+    "id_choice": "originally filed as T-MIG-071 (069 skipped — reserved for w0a's CLA band refile per R0-arbitration ruling2; 070 taken); REFILED T-MIG-071 -> T-MIG-073: r0's ruling3 filing committed the 071 card (operator-ruling-case-amendments, a DIFFERENT band) on main 3 minutes before this lane's claim push — earliest-claim-wins gives r0 the id; 073 verified free (no references in .syllabai @ origin/main 6347b1a)",
     "fence_scan": "r3a's T-MIG-053 t3/t4 (revision notes / smart lesson services) is the one live foreign band — fence disjoint (notes/lesson services vs contracts/assessment.ts + test/selfmark); no other open PRs (queue zero @ census)"
   },
   "frozen_citations": [

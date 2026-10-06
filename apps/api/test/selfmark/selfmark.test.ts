@@ -204,7 +204,7 @@ describe("SelfMarkService — settle law (LearnerSelfMarkService :65-134)", () =
     );
   });
 
-  test("negative marks arm → 409 'marks -1 outside part bound 0–3' (the marks < 0 disjunct, LearnerSelfMarkService :117 — T-MIG-071: the wire can now deliver -1, the dead @Min(0) removed from the bind law)", async () => {
+  test("negative marks arm → 409 'marks -1 outside part bound 0–3' (the marks < 0 disjunct, LearnerSelfMarkService :117 — T-MIG-073: the wire can now deliver -1, the dead @Min(0) removed from the bind law)", async () => {
     const sql = fakeSql(routes());
     await expectError(
       new SelfMarkService(sql, claimingPublisher(), FIXED_CLOCK)
@@ -214,7 +214,7 @@ describe("SelfMarkService — settle law (LearnerSelfMarkService :65-134)", () =
     );
   });
 
-  test("0-mark-part sharp edge: bound = Math.max(0,0) = 0 + the 'bound > 0 &&' guard → ANY marks ≥ 0 settles (frozen :115-117 verbatim — pinned, not 'fixed'; T-MIG-071)", async () => {
+  test("0-mark-part sharp edge: bound = Math.max(0,0) = 0 + the 'bound > 0 &&' guard → ANY marks ≥ 0 settles (frozen :115-117 verbatim — pinned, not 'fixed'; T-MIG-073)", async () => {
     const sql = fakeSql(routes({
       answers: [answerRow({ marks: 0 }), answerRow({ id: ANSWER_B, question_part_id: PART_B, label: "(b)", marks: 1 })],
     }));
