@@ -2563,3 +2563,21 @@ Stage Summary:
 - Round-14 net: zero merges needed (queue already drained by R0-AUTO + parallel lanes); board verified green end-to-end (CI + all four local gates at the tip, arithmetic exact); the PAT persistence law is RESTORED after the wipe (0600 file outside repo tracking + auto-loader + fingerprint register + workspace .env hygiene). Credentials referenced by path only, never by value.
 - Register (carried for R0/operator): NEON_BRANCH_CAPACITY (CI replay instrument still blocked on slots); H-2 third posture; identity pins; 429 pacing; unpaged /answers order-unspecified note (T-MIG-051); Wave-5 id-band discrepancy (plan-reserved 050 consumed by R-050-A) still awaits an operator ruling BEFORE 053 is claimed.
 - LANE r1c: STOP for this round.
+
+---
+Task ID: T-MIG-050 run-002 (first post-fix full-union verdict — 42703 class RETIRED)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Operator directive (trace 1a10f1e0c861dfb1): "poll the replay and file its union receipt" — the manual dispatch (run 37398183529 on merged main 56a8baa) filed.
+
+Work Log:
+- Run 37398183529 completed in 96s end-to-end; job RED at the union verdict only (doctrine held — 62 failures filed, never tolerated); every other step success incl. read-only proof and drop+404-verify; evidence survived the RED run again (T-MIG-047 fix re-verified live); T-MIG-048 redaction live for the first time (no raw control-plane bodies anywhere).
+- UNION VERDICT: 108/170 (seed 95/155, prod 13/15) — +3 vs run-002's 105/170.
+- HEADLINE: the 42703 class is RETIRED — boot-seed.log has ZERO 42703/exam_paper_id hits; the smartmark family ALL-PASS on seed for the first time; w3-smartmark-unknown-attempt-404 yields the honest 404 through the new join (direct proof of R-050-A).
+- Census diff vs run-002 (case-level, both union.md artifacts): RECOVERED 5 = w3-smartmark-unknown-attempt-404 (this fix) + w3-sme-status-{student,teacher}-403 (033-t3 landing #77) + w4-course-stats-empty-200/w4-state-empty-200 (learner-me lineage #74/#69); NEW 2 = auth-register-{admin-refused,bad-email} 429 pacing-boundary jitter (same-class redistribution, not regressions).
+- Surviving genuine findings restated in the receipt: selfmark validation-order (400-vs-500, next port-fix candidate), throughput key-order (R6), missing-fields envelope-class (R6), question-assets empty-404 shape (minor). H-2 seed-row families still the majority (third-posture ruling = the big lever). Identity pins + 429 pacing unchanged.
+- Zero residue INDEPENDENTLY verified via the Neon API post-run: 7 standing branches, zero ci-replay-*.
+- Receipt: receipts/T-MIG-050/run-002-post-fix-union.json + run-002-union.md (evidence of record, run-002-precedent class).
+- INTAKE ×2 during IN_REVIEW (r0s precedent): main 56a8baa → fe97f94 → de28315 under this lane (R0-AUTO merged #82/#83 — T-MIG-051 rich-200 capture; round-14 sweep receipt r1c). Worklog tail conflict resolved per append-only law BOTH times (main's entries verbatim, this entry re-appended); receipt files are new-path additions (zero content overlap).
+
+Stage Summary:
+- The instrument's first census movement: 105 → 108 with the blocking class retired and zero regression. The daily 02:30 UTC schedule owns the census from here. Unfiled next port-fix candidate: selfmark validation-order. LANE IDLE after this filing.
