@@ -4328,3 +4328,20 @@ Stage Summary:
 - T-MIG-053 fully closed of record (5/5 PRs merged; card DONE)
 - T-MIG-079 claimed (IN_PROGRESS, receipt run-001-claim.json @ d8916c7); implementation next on t-mig-079/r3a
 - Sandbox recovery complete; all landed work intact on main
+---
+Task ID: R3a-ROUND-17 addendum (T-MIG-079 impl) — same operator trace 1a110d90b9510eb5
+Agent: r3a (superz-agent-b, Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: implement the claimed T-MIG-079 band (routes + mount + pins)
+
+Work Log:
+- routes/learnerkg.ts: the two-path router — GET /api/v1/learners/me/knowledge-graph (LearnerStateController frozen :178-183) + GET /api/v1/learners/me/smart-lesson (SmartLessonController frozen :28-38); requireAuth gate per route (Boot 401 shell); params in SIGNATURE order (rootId first — the captured w4-smart-lesson-missing-params-400 names rootId); 400 validation_failed missing-param (:185-190) + 400 malformed-UUID (:167-170) + verbatim 404s (unknown topic = the hard-isolation capture; unknown root = the 404-first tree law)
+- REUSE-not-redeclare held: zero new services (learnerGraphFor = t1 F-034 :872; smartLessonFor = t4 :182), zero new contracts (learner.ts :440/:583 pre-ratified) — the views are wire-ready, the route returns them directly
+- MOUNT: one flagged index.ts block (import + construction + app.route before the app.all fallback) — the OUT-OF-FENCE precedent band, covered by the card mount mandate; closes run-002 review F-9
+- PINS: 13 in test/learner/kg-routes.test.ts (the 021/041 in-memory Hono + fakeSql pattern; fixtures from the t1 class-graph + t4 pin sets) — shell x4, param laws x5 (each with a no-sql-issued pin), KG 200 schema+key parity + honest all-null root, KG unknown-root 404, rung-7 200 + policy marker, ghost-topic 404 verbatim
+- GATES: typecheck x4 exit 0; 1546/0/13skip/6113 = d8916c7 baseline +13/+77 EXACT; selftest OK; golden untouched (the 5 reds flip in the CI replay of record post-merge)
+- Card → IN_REVIEW with the execution record; receipt run-002-impl.json
+
+Stage Summary:
+- T-MIG-079 implemented on t-mig-079/r3a (claim d06eab8 + impl commit); PR next
+- The 053-band surfaces are now route-complete end to end: services (t1/t4) + contracts (pre-ratified) + routes/mounts (this band)
+- Hands-off unchanged: 077/078/076
