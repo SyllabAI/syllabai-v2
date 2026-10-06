@@ -1,9 +1,9 @@
 version: 1
 task:
-  id: T-MIG-059
+  id: T-MIG-064
   title: "Selfmark exact-parts emulation (the F-B band) — schema widening to Jackson bind-parity (nullish partId/marksAwarded + the value-dependent HashMap.put duplicate law) + the service-side exact-parts gate null-key flow + the unboxing-NPE 500 parity"
   owner: "r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)"
-  status: IN_REVIEW # implemented on t-mig-059/r1 (run-002-fix): contracts nullish widening + put-semantics superRefine + service unboxing-parity pass + the rewritten nested-null pin; gates 1148/0/13skip/3502 = baseline 37d8825 (1144/3485) +4 tests/+17 expects EXACT, typecheck x3, selftest OK; PR next, NOT self-merged (authors never self-merge)
+  status: IN_REVIEW # RE-FILED from T-MIG-059: id collision of record — two different operator-directed bands both took 059; earliest-claim-wins allocates the id to the r0 lane (claim 9853716 @ 04:35:53Z, PR #96, the F-0/F-1 binding-law band, trace 1a10f743c93c27b9) over this lane's 04:41:34Z claim (63aaac1, PR #97 closed superseded); the F-B band itself is UNCHANGED and continues here. Implemented on t-mig-059/r1 (run-002-fix): contracts nullish widening + put-semantics superRefine + service unboxing-parity pass + the rewritten nested-null pin; gates 1148/0/13skip/3502 = baseline 37d8825 (1144/3485) +4 tests/+17 expects EXACT, typecheck x3, selftest OK; PR next, NOT self-merged (authors never self-merge)
   claimed_at: "2026-10-06T05:02:00Z"
   priority: P1 # the 058 depth pin (merged #94) restored the classifier posture but the frozen FULL answer for nested nulls is still divergent on main — this band closes it
   wave: 3

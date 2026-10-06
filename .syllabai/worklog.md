@@ -3102,3 +3102,18 @@ Work Log:
 
 Stage Summary:
 - Round-15 sweep complete: workspace rebuilt from wipe (#7) with credential law intact, both open PRs (#94, #95) independently reviewed and merged (1aea8bc, af33b6f), all gates exact at 1144/0/13skip/3485 + selftest OK, queue at zero. Register unchanged (NEON_BRANCH_CAPACITY; 058 F-B nested-null full emulation now ON the register via its card). LANE r1c: STOP for this round.
+
+---
+Task ID: T-MIG-064 (re-file of T-MIG-059 — id collision yield)
+Agent: r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Re-file the F-B band (exact-parts emulation) under the next free id — the T-MIG-059 id is yielded to the earliest claim per earliest-claim-wins.
+
+Work Log:
+- COLLISION OF RECORD (discovered at post-PR census): two DIFFERENT operator-directed bands both filed under T-MIG-059 — the r0 lane claimed the F-0/F-1 binding-law adoption (claim 9853716 @ 04:35:53Z, pushed immediately, PR #96 04:44:16Z, operator trace 1a10f743c93c27b9) while this lane claimed the F-B exact-parts emulation (claim 63aaac1 @ 04:41:34Z, PR #97 04:48:18Z, operator trace 1a10f747060b0901). Scope disjoint file-level (r0: routes/classroom.ts classifier; this lane: selfmark route/service + contracts selfmark schemas) — an id-space collision, not a scope duplicate. Earliest-claim-wins: r0's 04:35:53Z precedes this lane's 04:41:34Z -> the 059 id belongs to r0; this lane's claim is ~6 minutes late on the id axis only.
+- This lane's own zero-collision scan (at ~04:36Z, git ls-remote + .syllabai rg) found zero 059 heads — r0's branch was pushed in the seconds between that scan and this lane's claim commit; the race was invisible until the post-PR census (the ls-remote pattern also false-matched hex substrings in shas — the scan pattern lesson is noted).
+- RESOLUTION EXECUTED: PR #97 CLOSED superseded (comment of record on the thread); the band re-files as T-MIG-064 (056-063 all taken at re-file time: 056/057 DONE, 058 = the depth pin #94, 059 = r0 F-0/F-1, 060 w0a Wave-6, 061 r9-hubx t1 #95, 062 r4b research calibration, 063 R0-integrator ci-replay rich-200); card + receipts git-mv'd to 064 with the provenance fields updated; the T-MIG-059 worklog sections above remain verbatim (append-only) as the historical claim record.
+- INTAKE: origin/main ddbe9fe (r1c round-15 sweep receipt, worklog-only) merged into the branch — one worklog tail hunk resolved ours-then-theirs (this lane's 059 sections + r1c's Task-21 section both preserved; zero markers verified). NOTE: the N-hunk union script was lost to the 8th workspace wipe and is being re-created under scripts/ this cycle.
+- Gates re-run after intake + re-file: bookkeeping-only delta expected — full battery re-executed below in the fix receipt addendum (the code commits are byte-identical; the re-file touches .syllabai only).
+
+Stage Summary:
+- The F-B band is now T-MIG-064 (IN_REVIEW, implementation unchanged — contracts widening + put-semantics dedup + unboxing parity all landed on the code commits); the 059 id stands with r0's F-0/F-1 band. New branch t-mig-064/r1 (no force-push — the superseded t-mig-059/r1 stays on origin as the claim evidence); PR refiled; NOT self-merged.

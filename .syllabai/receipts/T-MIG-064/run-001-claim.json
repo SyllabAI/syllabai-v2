@@ -1,5 +1,5 @@
 {
-  "task": "T-MIG-059",
+  "task": "T-MIG-064",
   "run": "001-claim",
   "agent": "r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
   "operator_trace": "1a10f747060b0901 'F-B band (exact-parts emulation)'",
@@ -21,5 +21,6 @@
     "unboxing_npe": "LearnerSelfMarkService :116 — 'int marks = e.getValue()' NPEs on a null Integer AFTER the gate, BEFORE settle -> catch-all :224-230 -> 500 internal_error (data-dependent: in-attempt partId -> 500, not-in-attempt -> the 400 exact-parts first)"
   },
   "plan": "contracts nullish widening + put-semantics superRefine; route map widening + pin rewrite; service signature widening + unboxing-parity pass; contracts + route pins for the full matrix; gates with exact delta vs the 37d8825 baseline; PR with disclosure; authored by this lane -> NOT self-merged, handed to the merge desk",
-  "handoff": "authors-never-self-merge"
+  "handoff": "authors-never-self-merge",
+  "refile_of": "T-MIG-059 claim 63aaac1 (r1-contracts, 04:41:34Z, PR #97) — id yielded to the earliest claim (r0, 9853716 @ 04:35:53Z, PR #96) per earliest-claim-wins; scope unchanged, re-filed under the next free id (056-063 all taken at re-file time: 060 w0a, 061 r9-hubx, 062 r4b, 063 R0-integrator)"
 }
