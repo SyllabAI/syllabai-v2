@@ -81,7 +81,11 @@ function classifyBodyError(error: ZodError): { kind: "malformed" } | { kind: "va
     // T-MIG-053: parts null/absent never reaches the classifier (the schema
     // binds it nullish and the route throws NPE parity BEFORE dedup); a
     // non-null wrong type is a Jackson BINDING failure caught by isBinding
-    // above, so this branch only serves element-level null constraint text.
+    // above. T-MIG-059 (F-B): the widened schema mirrors Jackson's bind law
+    // (nullish element fields), so nested received-null/undefined issues no
+    // longer exist — the only null-rejecting node left is the element OBJECT
+    // itself (depth 2), which the elementNullIssue guard consumes for the
+    // 500 law before this switch. This branch is fail-closed defensive.
     return { kind: "validation", message: `${field}: must not be null` };
   }
   if (first.code === "too_small") {
@@ -134,22 +138,23 @@ export function createLearnerSelfMarkRouter(module: ReturnType<typeof buildSelfM
       // binding failure (e.g. a malformed partId uuid) already returned
       // malformed_body above via isBinding — Jackson binds the whole document
       // before the handler runs. Constraint-class issues on non-null elements
-      // (e.g. @Max(99)) never fire in the frozen core without the cascade, and
-      // the loop NPE precedes them regardless, so any element-level null issue
-      // here routes to the same NPE-parity throw as the whole-field guard below.
+      // (e.g. the inferred @Max(99)) never fire in the frozen core without the
+      // cascade, and the loop NPE precedes them regardless, so any element-level
+      // null issue here routes to the same NPE-parity throw as the whole-field
+      // guard below.
       // T-MIG-058 DEPTH PIN: "element-level" means EXACTLY parts[i] — the
       // guard must not swallow NESTED nulls (parts[i].partId / parts[i]
-      // .marksAwarded, path length > 2). The frozen core binds a nested null
-      // (no cascade) and answers from the service: HashMap.put(null, v) is
-      // legal (LearnerSelfMarkController :44), so a null partId survives the
-      // loop and dies at the exact-parts gate — 400 bad_request
+      // .marksAwarded, path length > 2).
+      // T-MIG-059 (F-B): nested nulls no longer REACH this classifier at all —
+      // the widened schema mirrors Jackson's bind law (nullish partId /
+      // marksAwarded, absent-field-as-null) and they flow to the service: a
+      // null partId survives the controller loop (HashMap.put(null, v) legal,
+      // :44) and dies at the exact-parts gate — 400 bad_request
       // ("self-mark must cover exactly the attempt's parts"); a null
-      // marksAwarded is data-dependent (400 exact-parts first, or unboxing
-      // NPE -> 500 in the bound loop). The port's zod schema rejects nested
-      // nulls upstream (pre-existing classifier posture: 400 validation_failed
-      // "field: must not be null"), which the depth pin restores; the FULL
-      // frozen emulation (bad_request via the exact-parts gate) is
-      // register-open as T-MIG-058 F-B — not absorbed here.
+      // marksAwarded is data-dependent (400 exact-parts first, or the
+      // unboxing NPE -> 500 in the bound loop, LearnerSelfMarkService :116 —
+      // the service parity-throws). The depth pin stays fail-closed for any
+      // residual depth-2 element null (the bare-null-element 500 law).
       const elementNullIssue = parsed.error.issues.some(
         (i) =>
           i.code === "invalid_type" &&
@@ -179,11 +184,17 @@ export function createLearnerSelfMarkRouter(module: ReturnType<typeof buildSelfM
         "selfmark controller NPE parity: request.parts() is null (LearnerSelfMarkController.java:43)",
       );
     }
-    // controller law: dedup loop builds the Map (the schema already rejected
-    // duplicates); parts is non-null here (the NPE-parity throw above)
-    const marksByPartId = new Map<string, number>();
+    // controller law: the dedup loop builds the Map (the schema's put-semantics
+    // superRefine already rejected every displace-non-null duplicate —
+    // T-MIG-059); parts is non-null here (the NPE-parity throw above). Each
+    // entry normalizes to Jackson's bind law: an ABSENT field binds as null,
+    // so `?? null` mirrors the record the frozen controller would hold. The
+    // loop's Map.set is last-write-wins — exactly the HashMap.put sequence
+    // when no duplicate threw (a stored-null displacement is silent, so
+    // {X:null},{X:1} lands {X:1} here exactly as frozen).
+    const marksByPartId = new Map<string | null, number | null>();
     for (const p of parsed.data.parts) {
-      marksByPartId.set(p.partId, p.marksAwarded);
+      marksByPartId.set(p.partId ?? null, p.marksAwarded ?? null);
     }
     try {
       const view = await module.selfMark.selfMark(auth.userId, attemptId, marksByPartId, parsed.data.comment ?? null);
