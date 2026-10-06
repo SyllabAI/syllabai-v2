@@ -1,0 +1,59 @@
+{
+  "task_id": "T-MIG-053",
+  "run": "run-003-tranche1-close",
+  "lane": "r3a (superz-agent-b)",
+  "session": "web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9",
+  "operator_trace": "1a10f7345efcba35 (directive: 'the F-072 class-KG heatmap trio')",
+  "commits": {
+    "code": "(this commit — graphs.ts + index.ts barrel line + class-graph.test.ts)",
+    "bookkeeping": "(receipt/card/worklog commit)",
+    "intake": "origin/main 37d8825 fast-forwarded into the branch BEFORE the closing commit (post-#92/#93/#95 re-baseline; #95's bee47d8 intake pattern)"
+  },
+  "endpoints_done": "10 of 10 t1 — tranche-1 CLOSED (coverage 3 + knowledge reads 4 + class-KG heatmap trio 3)",
+  "endpoints_remaining": "NONE in tranche-1. t2 = class analytics (3) + teacher concept-graph (2); t3 = revision notes (7); t4 = smart lesson (1)",
+  "gates_at_head": {
+    "typecheck": "exit 0 x4",
+    "bun_test": "1166 pass / 0 fail / 13 skip / 3629 expect EXACT = 37d8825 baseline 1144/3485 + 22 trio tests / +144 expects",
+    "golden_selftest": "OK"
+  },
+  "pins": {
+    "contracts_cumulative": 15,
+    "services_cumulative": "25 + 22 = 47 (class-graph.test.ts carries the 22 trio pins)"
+  },
+  "f072_trio": {
+    "controller": "ClassKnowledgeGraphController.java :37-113 (/api/v1/teacher/classes/{classId}/knowledge-graph)",
+    "service": "ClassKnowledgeGraphService.java :38-580 (580 lines) + LearnerKnowledgeGraphService.java :49-147 (the F-034 delegation target, ported here as learnerGraphFor)",
+    "laws_pinned": [
+      "gate ORDER: 404 class not found -> 403 this class belongs to another teacher -> root 404-first via the tree read; NO archived-class gate on reads (409 is a write gate — past classes stay inspectable)",
+      "INDEPENDENT-STUDENT RULE: roster = exactly the class's ENABLED member rows — pinned by capturing the bound roster param (no disabled Carol, no non-member Dave, no vanished Gone row)",
+      "unmeasured cell honest absence: learnersMeasured 0 -> null meanMastery, UNMEASURED band (never null), zero counts",
+      "measured cell: 4-dp mean (:551 round), the 13.3 distribution (struggling/developing/proficient) so a polarized class cannot hide behind the mean, bandOf config-drift refusal (unexpected band throws)",
+      "coverage overlay: spec points (V39 predicate SUBTOPIC + applicability non-null) verbatim; other nodes derived taught > recorded > unrecorded, memoized bottom-up",
+      "misconception prevalence keyed by MISCONCEPTION node ids (never parents), DISTINCT active learners, staleness-relaxed (MED-2/ADR-032) — stale 0.55 relaxes below the 0.5 threshold",
+      "prerequisiteRelations :246-262: REQUIRES_PREREQUISITE with BOTH endpoints in the PART_OF subtree, target=prerequisite/source=dependent, unknown ids skipped never guessed, pass-through order (no ORDER BY upstream)",
+      "node drill-down: subject isolation 404 'node is not part of this subject subtree'; weakest-measured-first ascending effective, unmeasured last (then display name case-folded, then learner id); EVIDENCE_PER_STUDENT=3 slice off the ATTEMPT_SCAN_CAP=120 createdAt-desc scan; evidence marksAwarded nullable, markingState verbatim",
+      "per-student misconception: structural-invariant skip (a state on an unattached misconception node is skipped, not guessed), relaxed probability + active threshold",
+      "F-034 read model: walk covers misconception nodes (9 vs the heatmap's 7 — the two walks differ on purpose); unpractised = all-null state; earliest-PENDING review overlay (TOPIC T0 wins over T1); relaxed misconception overlay only on MISCONCEPTION nodes; applicability verbatim (T-C28)",
+      "teacher lens DELEGATES to the F-034 builder — pinned by deep-equal between classLearnerKnowledgeGraph and learnerGraphFor (one graph implementation, the lens adds only gates)",
+      "third-leg privacy boundary: non-member 404 'learner is not a member of this class' with the membership check SHORT-CIRCUITING before any user lookup (pinned: zero 'from users' queries issued)"
+    ]
+  },
+  "disclosures": [
+    "PLACEMENT: the frozen F-034 service lives in com.syllabai.learner; the V2 builder lands in services/knowledge/graphs.ts under THIS task's tranche-1 fence — the student-facing /api/v1/learners/me/knowledge-graph route (LearnerStateController :178-181, the 041 band's controller, currently unported) MUST consume this builder when it lands (one-implementation law, header-documented)",
+    "graphOwnedClass selects id/name/status/teacher_id (the trio needs the class name) — the coverage slice's covOwnedClass (id/status/teacher_id) untouched; same gate, same messages, same order; the classroom module's per-projection gate precedent (052-t2)",
+    "CLOCK (ADR-031): frozen reads Instant.now() per relaxed()/misconceptionReadings() call BESIDES the one graph anchor; the port evaluates every now()-dependent value from the SINGLE injected anchor (041 state.ts posture) — numerically identical within a read, replayable",
+    "roster sort: frozen graph leg sorts member ids via UUID.compareTo; the port uses JS string sort — wire-invisible (the graph consumes the roster as a count + batch params only)",
+    "frozen 'unknown' displayName fallback kept (names.getOrDefault) — unreachable with V2's NOT NULL display_name, kept for parity"
+  ],
+  "frozen_refs": [
+    "ClassKnowledgeGraphController.java :17-113",
+    "ClassKnowledgeGraphService.java :38-580",
+    "LearnerKnowledgeGraphService.java :20-148",
+    "LearnerModelService.java :206-235 (skillStates + misconceptionReadings)",
+    "KnowledgeGraphService.java :246-262 (prerequisiteRelations)",
+    "KnowledgeEdgeRepository.java :38-52 (findPrerequisiteEdgesWithin)",
+    "AttemptRepository.java :136-155 (findRecentByTopicNodeAndLearnerIdIn)",
+    "dto/ClassKnowledgeGraphViews.java",
+    "dto/LearnerKnowledgeGraphView.java"
+  ]
+}

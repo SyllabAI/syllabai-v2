@@ -181,10 +181,19 @@ describe("SelfMarkRequest — the boundary's accept/reject set", () => {
     expect(selfMarkRequestSchema.safeParse({ parts: [{ partId: UUID, marksAwarded: 99 }] }).success).toBe(true);
   });
 
-  test("rejects marksAwarded -1 and 100 (@Min(0) @Max(99)) and a missing one (@NotNull)", () => {
+  test("rejects marksAwarded -1 and 100 (@Min(0) @Max(99) — the disclosed inferred-constraint class, T-MIG-057)", () => {
     expect(selfMarkRequestSchema.safeParse({ parts: [{ partId: UUID, marksAwarded: -1 }] }).success).toBe(false);
     expect(selfMarkRequestSchema.safeParse({ parts: [{ partId: UUID, marksAwarded: 100 }] }).success).toBe(false);
-    expect(selfMarkRequestSchema.safeParse({ parts: [{ partId: UUID }] }).success).toBe(false);
+  });
+
+  test("T-MIG-059 (F-B): null/absent element fields BIND (the @NotNull/:55 and @Min/:56 constraints are dead — no @Valid cascade on the bare List, SelfMarkRequest :59; Jackson binds null AND absent as null)", () => {
+    expect(selfMarkRequestSchema.safeParse({ parts: [{ partId: UUID, marksAwarded: null }] }).success).toBe(true);
+    expect(selfMarkRequestSchema.safeParse({ parts: [{ partId: UUID }] }).success).toBe(true);
+    expect(selfMarkRequestSchema.safeParse({ parts: [{ partId: null, marksAwarded: 1 }] }).success).toBe(true);
+    expect(selfMarkRequestSchema.safeParse({ parts: [{ marksAwarded: 1 }] }).success).toBe(true);
+    // a bare null ELEMENT still rejects — the depth-2 invalid_type the route's
+    // 057/058 NPE-parity guard serves (the dedup loop NPEs → 500)
+    expect(selfMarkRequestSchema.safeParse({ parts: [null] }).success).toBe(false);
   });
 
   test("rejects duplicate partIds with the controller's exact 400 message", () => {
@@ -197,6 +206,32 @@ describe("SelfMarkRequest — the boundary's accept/reject set", () => {
     expect(dup.success).toBe(false);
     if (!dup.success) {
       expect(dup.error.issues[0]?.message).toBe(`duplicate part in self-mark: ${UUID}`);
+    }
+  });
+
+  test("T-MIG-059 (F-B): the dedup law is HashMap.put semantics — a throw only on displacing a NON-NULL previous value (LearnerSelfMarkController :42-48)", () => {
+    // put(X, null) then put(X, 1): the displaced value is null — NO throw
+    expect(
+      selfMarkRequestSchema.safeParse({
+        parts: [{ partId: UUID, marksAwarded: null }, { partId: UUID, marksAwarded: 1 }],
+      }).success,
+    ).toBe(true);
+    // put(X, 1) then put(X, null): displaces the non-null 1 — THROWS
+    const displaced = selfMarkRequestSchema.safeParse({
+      parts: [{ partId: UUID, marksAwarded: 1 }, { partId: UUID, marksAwarded: null }],
+    });
+    expect(displaced.success).toBe(false);
+    if (!displaced.success) {
+      expect(displaced.error.issues[0]?.message).toBe(`duplicate part in self-mark: ${UUID}`);
+    }
+    // null keys are legal (HashMap.put(null, v) :44) and string-concat
+    // renders them "null" exactly like Java
+    const nullKey = selfMarkRequestSchema.safeParse({
+      parts: [{ partId: null, marksAwarded: 1 }, { partId: null, marksAwarded: 2 }],
+    });
+    expect(nullKey.success).toBe(false);
+    if (!nullKey.success) {
+      expect(nullKey.error.issues[0]?.message).toBe("duplicate part in self-mark: null");
     }
   });
 

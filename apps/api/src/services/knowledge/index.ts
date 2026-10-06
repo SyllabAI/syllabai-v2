@@ -195,8 +195,9 @@ const flatNode = (n: KnowledgeNodeRow): NodeView => ({
   children: [],
 });
 
-/** the V52 CHECK stores the enum NAME; views map it through .wire(). */
-function dbStatusToEnum(dbStatus: string): CoverageStatus {
+/** the V52 CHECK stores the enum NAME; views map it through .wire().
+ *  (exported for graphs.ts — the F-072 trio shares the coverage overlay.) */
+export function dbStatusToEnum(dbStatus: string): CoverageStatus {
   return dbStatus === "NOT_TAUGHT" ? "NOT_TAUGHT" : "TAUGHT";
 }
 
@@ -535,3 +536,7 @@ export async function knowledgeMisconceptions(deps: KnowledgeDeps, topicNodeId: 
     where e.target_node_id = ${topicNodeId}::uuid and e.relation_type = 'MISCONCEPTION_OF'`) as KnowledgeNodeRow[];
   return rows.map(flatNode);
 }
+
+// the F-072 class-KG heatmap trio + the F-034 read model (graphs.ts) —
+// tranche-1's closing slice (T-MIG-053 r3a); single graph implementations
+export * from "./graphs";
