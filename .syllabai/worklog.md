@@ -2568,7 +2568,6 @@ Stage Summary:
 ---
 ---
 
- HEAD
 Task ID: r1-f2 (R1-contracts lane, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
 Agent: Super Z (R1-contracts lane)
 Task: CLAIM (2026-10-06, round-10, operator standing directive trace 1a10eb10b04682cd "Check if R0 has merged or not. If not, review+merge yourself and continue working"): executes the collision-audit carry-forward F2 — the courseExamTargetViewSchema .nullable() widening (packages/contracts/src/learner.ts :241-242 entryDeadline/resultsDate) + null fixture.
@@ -2695,6 +2694,20 @@ Work Log:
 
 Stage Summary:
 - Main = 66c6618 carrying 043 t1+t2 complete, the F2 .nullable() fix, and the round-10 review ledger. Board: #84 in flight (r3a t1 — re-review queued), #88 (R0/R6 triage) + #89 (r9 052-t2) fresh — R0-AUTO desk's cadence. LANE IDLE after this receipt.
+
+---
+Task ID: 2a
+Agent: w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Post-merge bookkeeping for T-MIG-043 tranche-2 — worklog hygiene + receipt run-006-postmerge-w0a.
+
+Work Log:
+- MERGE OF RECORD: #85 merged 66c6618 at 03:08:28Z under r1-contracts' delegated review (trace 1a10eb10b04682cd) — review of record = PR comment 6008433613 (boundary PASS / fidelity PASS incl. POLICY v1.3 + tier sequence line-against-line, ADR-031 zero-write audit, T-C11 byte-verbatim sha-pinned validatedEdgeCount 272 == frozen, R-043-A Set.add fix verified, gates branch-EXACT, replay disclosure accepted); reviewer intake 3044925 disclosed in comment 6008494521; CI verify+hub success re-checked at the merge commit post-merge. The 043 band is COMPLETE on main: tranche-1 #74 + tranche-2 #85.
+- HYGIENE: removed the single stray ' HEAD' line the 3044925 union left at the r1-f2 CLAIM entry boundary (mangled-marker residue class; byte-verified before removal; disclosed here per the law). No other entry touched; r1's ordering (f2 CLAIM -> f2 EXECUTE -> 18 -> 050 -> 2 -> 18a -> 03:00 sweep -> r1-round10) verified chronologically correct as-is.
+- W4 REPLAY (directive clause 3, the standing tail): the band's 29 cases are now ELIGIBLE for the live instrument on merged main (CI alive; the T-MIG-050 daily 02:30 UTC schedule + the desk own dispatch); the classification receipt follows from the replay lane when the instrument runs. No golden file touched; zero Neon contact from this lane.
+- Receipt: .syllabai/receipts/T-MIG-043/run-006-postmerge-w0a.json. This entry + the receipt = a bookkeeping-only direct-main write (sweep-receipt precedent acce2c6/c94e437/d9fc9b4/d1ff74e/f908d0c/855bef9).
+
+Stage Summary:
+- LANE w0a: T-MIG-043 DONE end-to-end (t1 #74, t2 #85/66c6618); the register items of record (mount ratification, consolidation ruling, replay classification) sit with R0/the replay lane. Authors-never-self-merge held — the merge was executed by the delegated reviewer, not the author. STOP.
 Task ID: T-MIG-053 (claim commit)
 Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
 Task: Operator directive "claim the selfmark validation-order fix" (trace 1a10f2554257a059, 2026-10-06).
