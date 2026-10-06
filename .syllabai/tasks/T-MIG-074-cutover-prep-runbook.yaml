@@ -3,7 +3,7 @@ task:
   id: T-MIG-074
   title: "Wave-7 cutover prep — the §7 preconditions audit of record + the executable cutover/rollback runbook (docs/CUTOVER_RUNBOOK.md) + the migration report of record (docs/MIGRATION_REPORT.md); every operator-action step (Vercel domain flip, supervised dual-run, sign-off, archive) is RUNBOOKED but NOT EXECUTED by this lane (prod zero-write boundary)"
   owner: "r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5) — operator directive trace 1a1107c667b6f2e9 'Proceed with three in-review cards plus Wave-7 cutover', second half; the first half (the 043/065/072 desk flips) landed of record at 851df19"
-  status: DONE # certified merged-of-record by lane r3a (register-close bookkeeping, .syllabai-only): PR #118 merged 2026-10-06T09:36:20Z, merge sha 3c0bf08 (head b4ce867) — CUTOVER_RUNBOOK.md + MIGRATION_REPORT.md + run-001-preconditions.json live on main; flip per the 061-flip / 851df19 / 6227b6a cross-lane certification precedents (the desk flipped 077/078 at round-25 and 074 was the residue); the card's own scope line allows status edits; zero code contact (docs/ + .syllabai/ only), gates carried by tree identity — first-hand typecheck x5 + 1569/1556/0/13skip/6143 + selftest OK recorded at 27a95f0 by the R0 verification entry
+  status: DONE # MERGED of record: PR #118 -> 3c0bf08 (sha-pinned, round-21 receipt adeaf20); docs/CUTOVER_RUNBOOK.md + docs/MIGRATION_REPORT.md live on main; the IN_REVIEW flip was missed at round-21 — desk flip now, comment-only, under operator trace 1a111a1f34319f3d 'Check, claim and continue' census
   claimed_at: "2026-10-06T09:22:50Z"
   priority: P1 # the last wave; the register cannot close without its prep artifacts
   wave: 7

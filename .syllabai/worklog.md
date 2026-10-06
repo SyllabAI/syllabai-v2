@@ -4547,6 +4547,20 @@ Work Log:
 Stage Summary:
 - #124 merge-of-record INDEPENDENTLY VERIFIED (review first-hand, gates EXACT, CI green, fences clean); the sibling desk's round-25 corroborated on every number. Board: queue 0 open PRs at census; 071 run-002 filing fully dispositioned (076 BLOCKED operator-side); replay reds reduced to CLASS A (limiter, no owner) + CLASS C (fixture volatility, seed-owner) + the expected 4/4 Class B flip pending the next cron. LANE R0-integrator: verification filed, IDLE.
 
+---
+Task ID: R0-LANE-CENSUS-1 (operator trace 1a111a1f34319f3d "Check, claim and continue")
+Agent: R0-auto session (Super Z, discord DM 482bf272)
+Task: census + claim the next free band + continue. Outcome: the sole open band (076) is claim-in-flight by another lane -> this session recused; the desk residue found (074 stale flip) closed this commit.
+
+Work Log:
+- CENSUS (27a95f0 -> 9bb629f, tip moved mid-census by the sibling R0-VERIFY-124 verification; redo per fetch-first): 0 open PRs; register 000-081 = 80 DONE after this commit's flip + T-MIG-076 (claim-in-flight).
+- T-MIG-074: IN_REVIEW STALE -> DONE, comment-only (cites #118/3c0bf08, round-21 receipt adeaf20; deliverables docs/CUTOVER_RUNBOOK.md + docs/MIGRATION_REPORT.md live on main — first-hand verified). Desk-owned post-merge register flip, zero task contact.
+- T-MIG-076 RECUSAL OF RECORD: two claims visible on origin — (a) t-mig-076/r0 34c8909 = the lapsed original claim (guard-blocked of record 8cc28e8, rounds 23-25; branch diff touches NO ci.yml), (b) t-mig-076/r0b 7bd6f87 = TAKEOVER-CLAIM under operator trace 1a111a0b9b917891 'Proceed, we have to finish the migration' (off 27a95f0; sandbox guard verified ABSENT in that environment with a workflows write round-trip; the scoped one-line trigger repair declared next as run-003; .syllabai-only so far). This session had drafted a claim under the current trace but never pushed it; the tip-stability redo surfaced the branch scan gap in the draft census (heads had not been enumerated) — corrected here of record. Per AGENT_COORDINATION §2 earliest-claim-wins, the takeover claim is the live earliest claim; a competing claim would be a duplicate-task-ID collision -> recusal, zero contact with the band from this session.
+- WATCHLIST: no new scheduled neon-replay run since 37441112330 (2026-10-06T09:10:13Z, pre-#121) — the 081 empirical closure (w4-agenda-malformed-bearer-401 + w4-state-empty-bearer-401 must flip PASS under the verbatim posture; curriculum pair expected green with 077 landed) remains pending the next daily run.
+- DESK STANDING: when the 076 repair PR arrives from the takeover lane, the desk processes it per the standard chain — real-head CI gate, fence scan (the diff must be the scoped ci.yml trigger block + .syllabai/** only), reviews scan, worklog union if dirty — and verifies a main push triggers verify+hub post-merge.
+
+Stage Summary:
+- Register of record: 80/81 DONE; sole open item T-MIG-076, claim-in-flight by the takeover lane (r0b) under operator trace 1a111a0b9b917891 — this session recused and touched nothing in the band. 074 residue closed (flip-only).
 
 ---
 
