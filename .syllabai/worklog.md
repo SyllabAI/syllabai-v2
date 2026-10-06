@@ -2416,3 +2416,22 @@ Work Log:
 
 Stage Summary:
 - The blocking-class marking-pipeline defect is FIXED with live SQL evidence; the 42703 class retires from the next replay census. Register items unchanged for R0/R6 (H-2 third posture, identity pins, 429 pacing, realdata drift). Actions green again. LANE continues: post-merge verification + next claim.
+
+---
+Task ID: 17
+Agent: Super Z (operator-directed independent lane, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Operator routing (trace 1a10ec4360ba292d): "N-4 rich-200 capture" — the golden-capture lane's register item this lane surfaced in Task ID 15; filed as T-MIG-051 (050 taken by the merged smartmark fix #79).
+
+Work Log:
+- CLAIM d29b8fc at main 56a8baa: zero-collision verified (no 051/n4/rich heads; open PRs = 0 at claim).
+- PROVISIONED no-root from a bare sandbox: Temurin JDK 25.0.4.1 (Adoptium) + Maven 3.9.9 + PostgreSQL 17.11 + pgvector 0.8.0 (apt-get download + dpkg -x; relocatable tree — share/lib resolve relative to the extracted bindir); anonymous clone of syllabai-core @ 6cad6ef (read-only C1); mvn -DskipTests package exit 0 -> the same 180266541-byte boot jar the T-MIG-004 run-002 receipt records. Boot: SYLLABAI_LLM_MODE=test + local-profile DemoUserSeeder (synthetic identities); Flyway V1..V63 applied by the core; zero Neon.
+- CAPTURED 7 rich-200 cases (receipt run-002-capture): SME ingest fresh (deactivated:0) + ADR-026 replace (deactivated:2) + populated status snapshot; teacher-marking queue-v2 / answers / paged answers / throughput over two STRUCTURED attempts on the ingested question. Deterministic corpus committed (files/t51-corpus.zip, 685 bytes) + the frozen Flyway seed posture as INSERTs (files/t51-seed.sql, T51 lifecycle rows excluded).
+- N-4 TIE-BREAK CONDITION FIRED (the thing the register hoped a capture would settle): with attempt created_at tied via SQL, the frozen core ordered 0xf0ae6395-… BEFORE 0x4e094481-… — java.util.UUID.compareTo is a SIGNED 64-bit pair compare, the reverse of the port's disclosed string-lex class. Resolved via the condition's first branch: uuidCompare ported (BigInt signed-i64 halves) into compareWithinPaper + the throughput pendingByPaper key tie-break; unit tests carry the captured vectors.
+- F-51-A (low, wire-byte): the throughput answersByState order is JAVA HASHMAP iteration order (HashMap<String,Long> seeded in enum order; Jackson renders map order; deterministic for these String keys) — derived order computed (bucket = (h ^ h>>>16) & 15, capacity 16, no resize) and matches the capture exactly; BY_STATE_WIRE_ORDER + unit pin. The port had rendered declaration order — invisible to every auth-boundary capture.
+- RUNNER EXTENSION (declared scope, selftest-covered): bodyFile/multipart case fields (the SME ingest 'file' part; fetch builds the boundary; diff engine untouched) + --filter name-substring for family-scoped live replays.
+- REPLAY PROOF vs the live port on a fresh scratch db (drizzle baseline + pgvector; receipt run-003-replay): two-pass state partnership — the ingest CASES are seq 10/11 state builders (seeding them would double the numbers), then the attempts + the tie exhibit, then the marking reads; ROLE-FAITHFUL tokens (admin/teacher for the reads, minted student/teacher for the 403 postures, anonymous for the 401s — a single admin token falsely 200s the 403s). RESULT 17/17 PASS, exit 0.
+- GATES at head: typecheck x4 exit 0; bun test 898 ran / 885 pass / 0 fail / 13 skip / 2520 expect (= main 893/880 + 5 new, exact); golden --selftest OK.
+
+Stage Summary:
+- N-4 CLOSED: the w3-teacher-marking + w3-sme surfaces now carry rich-200 golden gates alongside the auth-boundary postures; the T-MIG-033 capture condition is discharged with a ported comparator, not a disclosure. Card T-MIG-051 DONE. The capture environment recipe is fully reproducible from the receipts (no-root; no Neon; nothing writes to production).
+- Register for R0: (1) the unpaged /answers list stays order-unspecified in the frozen source (root-array unordered declaration, T-MIG-024 doctrine); (2) w4-readiness' "flyway-equivalent v2 migrations" note is now partially addressable — files/t51-seed.sql is a per-family seed posture, not a corpus-wide v2 seed; a corpus seed decision stays with the replay lane/operator.

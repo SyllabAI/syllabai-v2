@@ -1,0 +1,43 @@
+{
+  "name": "w3-teacher-marking-throughput-rich-200",
+  "description": "Populated throughput snapshot: answersByState PENDING=4 (the structured parts; MCQ attempts are marked at submit and enter no marking state), pendingByPaper one null-paper entry, honest counters. Empty-state law already captured (w3-marking-throughput-teacher-200); this carries the populated law.",
+  "method": "GET",
+  "path": "/api/v1/teacher/marking/throughput",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "answersByState": {
+        "HUMAN_MARKED": 0,
+        "SMART_MARKED": 0,
+        "PENDING": 4,
+        "SELF_MARKED": 0,
+        "OVERRIDDEN": 0
+      },
+      "humanMarks24h": 0,
+      "humanMarks7d": 0,
+      "pendingByPaper": [
+        {
+          "paperId": null,
+          "paperTitle": null,
+          "paperCode": null,
+          "pending": 4
+        }
+      ],
+      "oldestPendingAt": "2026-10-06T01:40:00Z",
+      "oldestPendingHours": null
+    }
+  },
+  "tolerate": [
+    "oldestPendingAt",
+    "oldestPendingHours",
+    "oldestWaitingHours",
+    "timestamp"
+  ],
+  "seq": 16,
+  "source": "captured from LOCAL frozen-core boot (syllabai-core @ 6cad6ef, Temurin JDK 25.0.4.1, Maven 3.9.9, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.11 + pgvector 0.8.0 2026-10-06T01:3xZ by T-MIG-051 run-002 (operator-directed lane, trace 1a10ec4360ba292d); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic (local profile demo seeder, scrubbed to User 1); tokens scrubbed to {{TOKEN}}; N-4 tie-break exhibited via SQL-set identical attempt created_at"
+}

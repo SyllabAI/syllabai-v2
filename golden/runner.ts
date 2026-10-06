@@ -44,6 +44,14 @@ interface GoldenCase {
   // login / me); all other cases follow in filename order. Absent seq = no
   // state claim. Replay still requires a fresh/reset db for write cases.
   seq?: number;
+  // T-MIG-051 (N-4 rich-200 capture): multipart request bodies. The case
+  // names a FILE under cases/files/ (the flat, non-recursive loader never
+  // picks it up as a case) shipped as ONE multipart part — the SME ingest's
+  // 'file' part (SmeQuestionAdminController @RequestPart). fetch builds the
+  // multipart envelope and sets the boundary content-type itself; the diff
+  // engine is untouched. Declared-scope engine change, selftest-covered.
+  bodyFile?: string;
+  multipart?: { partName: string; filename: string; contentType?: string };
 }
 
 // T-MIG-006 bearer injection: a case may carry the {{TOKEN}} placeholder in
@@ -122,6 +130,26 @@ function redact(body: unknown, tolerate: string[] = []): unknown {
   return out;
 }
 
+/**
+ * T-MIG-051: build the multipart body for a bodyFile case — one part, the
+ * file's bytes under the case's partName/filename. Exported for selftest.
+ * Fail-fast: a bodyFile case without a multipart descriptor is a harness
+ * error for that case, never a silent JSON send.
+ */
+export function buildMultipartBody(kase: GoldenCase): FormData {
+  if (!kase.bodyFile || !kase.multipart) {
+    throw new Error(`${kase.name}: bodyFile requires a multipart descriptor`);
+  }
+  const bytes = readFileSync(join(CASES_DIR, kase.bodyFile));
+  const form = new FormData();
+  form.append(
+    kase.multipart.partName,
+    new Blob([bytes], { type: kase.multipart.contentType ?? "application/octet-stream" }),
+    kase.multipart.filename,
+  );
+  return form;
+}
+
 async function replayAgainst(
   target: string,
   kase: GoldenCase,
@@ -135,19 +163,29 @@ async function replayAgainst(
     // fails this case loudly and honestly, but must not abort the whole run.
     return `harness error: ${e instanceof Error ? e.message : String(e)}`;
   }
-  const headers = {
-    "content-type": "application/json",
-    ...req?.headers,
-  };
+  let reqBody: BodyInit | undefined;
+  const headers: Record<string, string> = { ...req?.headers };
+  if (kase.bodyFile) {
+    // T-MIG-051: multipart case — fetch sets the boundary content-type;
+    // a manual content-type here would strip it.
+    try {
+      reqBody = buildMultipartBody(kase);
+    } catch (e) {
+      return `harness error: ${e instanceof Error ? e.message : String(e)}`;
+    }
+  } else {
+    headers["content-type"] = headers["content-type"] ?? "application/json";
+    // T-MIG-003 run-002 hardening: a null body must mean ABSENT (GET cases
+    // encode headers-only); JSON.stringify(null) would crash fetch on GET.
+    // Construction only — the diff engine is untouched.
+    reqBody = kase.request?.body != null ? JSON.stringify(kase.request.body) : undefined;
+  }
   let res: Response;
   try {
     res = await fetch(new URL(kase.path, target), {
       method: kase.method,
       headers,
-      // T-MIG-003 run-002 hardening: a null body must mean ABSENT (GET cases
-      // encode headers-only); JSON.stringify(null) would crash fetch on GET.
-      // Construction only — the diff engine is untouched.
-      body: kase.request?.body != null ? JSON.stringify(kase.request.body) : undefined,
+      body: reqBody,
     });
   } catch (e) {
     // Transport failures (target down, connection refused) are CASE-LOCAL
@@ -192,6 +230,47 @@ function selftest(): number {
   }
   if (deepEqualTolerant({ x: 1 }, { x: 2 }, [])) {
     console.error("selftest FAILED: real diff should fail");
+    return 1;
+  }
+  // T-MIG-051: multipart body construction — the SME ingest 'file' part.
+  // The engine must prove the bodyFile path before any live ingest replay
+  // trusts it: right part name, right filename, byte-exact size, and the
+  // fail-fast when a bodyFile case lacks its multipart descriptor.
+  try {
+    const zipPath = join(CASES_DIR, "files", "t51-corpus.zip");
+    const expected = readFileSync(zipPath).byteLength;
+    const form = buildMultipartBody({
+      name: "selftest-multipart",
+      method: "POST",
+      path: "/api/v1/admin/question-bank/ingest",
+      bodyFile: "files/t51-corpus.zip",
+      multipart: { partName: "file", filename: "t51-corpus.zip", contentType: "application/zip" },
+      expect: { status: 200, body: null },
+    } as unknown as GoldenCase);
+    const file = form.get("file");
+    if (
+      !(file instanceof File) ||
+      file.name !== "t51-corpus.zip" ||
+      file.size !== expected
+    ) {
+      console.error("selftest FAILED: multipart body construction (file/name/size)");
+      return 1;
+    }
+    try {
+      buildMultipartBody({
+        name: "selftest-multipart-bad",
+        method: "POST",
+        path: "/x",
+        bodyFile: "files/t51-corpus.zip",
+        expect: { status: 200, body: null },
+      } as unknown as GoldenCase);
+      console.error("selftest FAILED: bodyFile without multipart descriptor must throw");
+      return 1;
+    } catch {
+      // expected
+    }
+  } catch (e) {
+    console.error("selftest FAILED: multipart construction threw:", e);
     return 1;
   }
   // T-MIG-006: header-subset engine coverage (closes T-MIG-004 F-3)
@@ -330,7 +409,13 @@ if (import.meta.main) {
   if (args.includes("--target")) {
     const target = args[args.indexOf("--target") + 1];
     const token = args.includes("--token") ? args[args.indexOf("--token") + 1] : undefined;
-    const cases = loadCases();
+    // T-MIG-051: optional name-substring filter — a family-scoped live replay
+    // (the t51 rich-200 family needs only its seed state) without touching
+    // loadCases or the diff engine. Undeclared = every case (unchanged).
+    const filterIdx = args.indexOf("--filter");
+    const filter = filterIdx >= 0 ? args[filterIdx + 1] : undefined;
+    const all = loadCases();
+    const cases = filter ? all.filter((k) => k.name.includes(filter)) : all;
     let failures = 0;
     for (const kase of cases) {
       // R0 fix (merged via PR #25 as T-MIG-016, re-attributed to T-MIG-017 by
@@ -347,10 +432,10 @@ if (import.meta.main) {
         console.log(`PASS ${kase.name}`);
       }
     }
-    console.log(`\n${cases.length - failures}/${cases.length} golden cases pass against ${target}`);
+    console.log(`\n${cases.length - failures}/${cases.length} golden cases pass against ${target}${filter ? ` (filter: ${filter})` : ""}`);
     process.exit(failures === 0 ? 0 : 1);
   }
 
-  console.log("usage: bun golden/runner.ts (--selftest | --target <url> [--token <jwt>])");
+  console.log("usage: bun golden/runner.ts (--selftest | --target <url> [--token <jwt>] [--filter <name-substring>])");
   process.exit(1);
 }
