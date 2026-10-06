@@ -100,8 +100,14 @@ export class CurriculumReviewReader {
     rootId: string | null,
   ): Promise<{ validated: number; suggested: number; unvalidated: number }> {
     if (rootId === null) return { validated: 0, suggested: 0, unvalidated: 0 };
+    // BIND-SLOT LAW (T-MIG-067 P1 500-class): a plain-string interpolation
+    // inside the sql template renders a bind parameter, not SQL text — the
+    // former leading `${""}` comment slot sent the statement as
+    // "$1\n select n.validation_status …" and Postgres rejected it with
+    // 42601 "syntax error at or near $1" (position 8 = the leading
+    // newline+indent), 500-ing teacher-curriculum-versions on the live
+    // instrument (run #11 boot log). Keep prose comments OUT of the template.
     const rows = await this.sql`
-      ${"" /* CTE text inlined below — see the bind-slot note in subjects.ts */}
       select n.validation_status, count(*)::int as count
       from knowledge_nodes n
       where n.id in (

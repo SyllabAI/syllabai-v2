@@ -229,6 +229,7 @@ import {
   courseExamTargetView,
   examTargetsFor,
   utcToday,
+  wireDate,
   type EnrolmentRow,
   type ExamSeriesRow,
 } from "../learner-model/exam-target-reader";
@@ -750,10 +751,14 @@ const toExamSeriesView = (s: ExamSeriesRow) => ({
   qualification: s.qualification,
   seriesCode: s.series_code,
   label: s.label,
-  windowStart: s.window_start,
-  windowEnd: s.window_end,
-  entryDeadline: s.entry_deadline,
-  resultsDate: s.results_date,
+  // DATE columns are the bare LocalDate wire form (R3 ruling, T-MIG-067):
+  // wireDate normalizes the pg driver's Date objects to "YYYY-MM-DD" —
+  // the raw Date serialized as "2026-10-08T00:00:00.000Z" and diverged on
+  // w4-exam-series-qualification-filter / w4-exam-series-seeded-calendar.
+  windowStart: wireDate(s.window_start),
+  windowEnd: wireDate(s.window_end),
+  entryDeadline: wireDate(s.entry_deadline),
+  resultsDate: wireDate(s.results_date),
   estimated: s.estimated,
   sourceUrl: s.source_url,
   retrievedAt: toInstant(s.retrieved_at),

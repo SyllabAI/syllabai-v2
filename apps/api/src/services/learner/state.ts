@@ -34,6 +34,7 @@
  * re-implemented.
  */
 import type { SqlFn } from "./sql";
+import { wireDate } from "../learner-model/exam-target-reader";
 
 // ── engine parameters + the read-time math: CANONICAL OWNER (T-MIG-066) ────
 //
@@ -381,10 +382,13 @@ export async function examSeriesByIds(
       id: String(r.id),
       seriesCode: String(r.series_code),
       label: String(r.label),
-      windowStart: String(r.window_start),
-      windowEnd: String(r.window_end),
-      entryDeadline: r.entry_deadline == null ? null : String(r.entry_deadline),
-      resultsDate: r.results_date == null ? null : String(r.results_date),
+      // DATE columns: bare LocalDate wire form via wireDate (T-MIG-067 R3) —
+      // the former String(r.window_start) rendered a pg Date object as its
+      // toString() form on any non-empty examTargets leg.
+      windowStart: wireDate(r.window_start) as string,
+      windowEnd: wireDate(r.window_end) as string,
+      entryDeadline: wireDate(r.entry_deadline),
+      resultsDate: wireDate(r.results_date),
       estimated: Boolean(r.estimated),
     });
   }
