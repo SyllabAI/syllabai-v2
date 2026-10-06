@@ -2096,6 +2096,20 @@ Stage Summary:
 - T-MIG-044's one-time setup register item is DISCHARGED: secret+vars live, maiden dispatch executed, the ENOTFOUND blocker fixed (T-MIG-046, PR #66), instrument re-dispatch pending the branch-cap register decision. REGISTER FOR OPERATOR: (1) NEON_BRANCH_CAPACITY — the project is at its branch cap (10); the CI runner needs 2 disposable slots per run; free >=1 standing slot (candidates: t-mig-022/r3a + r3a-prod whose postures are receipted, t-mig-003/r6 capture branch) or raise the plan limit — R0 will NOT delete standing branches; until then the instrument fails honestly at provisioning with zero residue. (2) Fresh PAT staged (fingerprint 46b5d309715c1b1c) — rotation item DISCHARGED this session; revoke at migration end per briefing §0. (3) The daily 02:30 UTC schedule now runs with the fixed tool and will succeed automatically once capacity exists.
 
 ---
+Task ID: 13
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Operator round-10 directive (trace 1a10d400d30ac185) — "#65 review. After merging, proceed to tranche-2 (routes/zod/mounts); T-MIG-043 (agenda/KG/smart-lesson/exam-series+flashcards)"
+
+Work Log:
+- SYNC: #65 found ALREADY MERGED by R0 (ed558ab 2026-10-05T18:06:46Z, merge-commit style; R0 merge-forward 6c55575 resolved main into the branch first) — review step became post-merge verification: main FF to 6ea61b2, tranche-1 content verified intact, gates re-run green (764/0/13skip/2121, typecheck x4, selftest, w4-readiness READY).
+- T-MIG-043 found ALREADY CLAIMED by w0a (db87a9a, operator trace 1a10d2c88b6f13c5) — §2.1 zero-collision honored: NOT touched; flagged back to the operator (this directive's 043 leg is therefore DISCHARGED-AS-CLAIMED-ELSEWHERE unless the operator re-routes).
+- tranche-2 EXECUTED on t-mig-041/r7a (merged main first, clean): routes/learner/index.ts (createLearnerStateRouter — GET /state + GET /course-stats under /api/v1/learners/me, Boot-401 shell first per the captured w4-*-unauthed-401 envelopes; wire serializers 1:1 with the frozen DTO records; buildLearnerRouters env composition 021-shape; injected now() factory — ADR-031 determinism threaded from the route layer, default fresh clock); 8 route tests (canonical #60 schema parse pins, nodeTitle key-parity incl. negative assertion, query budgets 9/4, 401-before-404 fall-through, empty-learner posture); index.ts mount+construction as the OUT-OF-FENCE separate commit (010/020/021/030/032 precedent).
+- R-FIX (disclosed): tranche-1 TutorEngagementView drifted to nodeName — frozen LearnerStateView.java:77-79 + #60 contracts pin nodeTitle (hub types.ts corroborates); service interface + builder + tranche-1 pin corrected; no wire consumer ever shipped on the wrong key (tranche-1 mounted no routes).
+- Card: scope extended for tranche-2, forbidden re-pointed at the 043 band, status IN_PROGRESS -> IN_REVIEW; execution_record tranche-2 addendum; receipt run-003-tranche2.json.
+- Gates: typecheck x4 exit 0; CI-scope 772/0/13skip/2183 = main 764/2121 +8/+62 EXACT; golden selftest OK; w4-readiness READY 57/0.
+
+Stage Summary:
+- T-MIG-041 is FEATURE-COMPLETE (tranche-1 services + tranche-2 routes/zod/mounts) pending R0 review of the tranche-2 PR; 041 then flips DONE. T-MIG-043 = w0a's lane (claim db87a9a) — operator awareness requested. Register: none new.
 
 
 Task ID: R0-ROUND-10 (review+merge sweep: #63/#64 reviewed+merged with intake fixes, #65 verified; card flips)
@@ -2204,6 +2218,25 @@ Stage Summary:
 - The T-MIG-044 instrument is now FULLY OPERATIONAL end to end: capacity resolved (hygiene drop of receipted scratch branches), first live replay delivered (90/155 seed, honest classification filed), evidence preservation fixed, union full-picture pending the next dispatch. Register for R0/R6: the three genuine port findings above (048 candidate = attempts.exam_paper_id port defect is blocking-class for the marking pipeline); H-2 third-posture ruling; identity-pin amendments; 429 pacing decision. LANE continues: dispatch the full union run next.
 
 ---
+Task ID: R3a-ROUND-11 (operator directive trace 1a10d5650fd87dd5: "claim 043, resync first and check for conflics")
+Agent: superz-agent-b (R3a lane, Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Resync the lane with origin/main, then claim T-MIG-043 after a conflict/collision check.
+
+Work Log:
+- RESYNC: workspace survived this round (4th-wipe check negative — repo + 0600 secrets file intact). Local main fast-forwarded to origin/main 3824c5d (T-MIG-047 DONE housekeeping); secret env re-sourced.
+- CONFLICT CHECK on the 043 band — CLAIM BLOCKED BY DOCTRINE, hands-off executed:
+  - Zero 043 yamls on origin/main (band unseeded there), BUT branch t-mig-043/w0a exists with claim commit db87a9a (author date == commit date 2026-10-05T18:01:06Z): card T-MIG-043-learner-me-surfaces.yaml status IN_PROGRESS (owner w0a, session web-e79a3bd8…), receipts/T-MIG-043/run-001-claim.json, 16-line worklog entry; w0a's operator basis trace 1a10d2c88b6f13c5 ("Check and claim whichever lane other agents are not working").
+  - Visibility double-read: t-mig-043/w0a was already present in this lane's clone BEFORE this directive (no "[new branch]" line in this round's fetch output — the branch came down with the previous round's re-clone). The claim therefore PRE-DATES this routing word.
+  - Earliest-claim-wins (the same doctrine that awarded T-MIG-023 to R1-contracts against this lane): w0a's claim is earliest + established + ACTIVE (claimed <1 day ago, tranche-1 mapped line-against-line in the card, no PR yet — nothing stale, no abandonment precedent applies). This lane does NOT touch services/learner-me/**, packages/contracts/src/exam-series.ts, or any 043 fence file. Zero 043 claim footprint was ever committed by this lane (nothing to release).
+- BOARD SWEEP (non-party observations, for R0's attention):
+  - 041 tranche-2 DOUBLE-PR collision observed: #69 (t-mig-041/r7a; tranche-2 commits a07fb01/cce507b @ 18:23:46Z, receipt 40b1548 @ 18:26:11Z) vs #72 (t-mig-041/r9-hubx; commits 9972868/300e3e6 @ 18:27:14Z); both cut from merge-base 6ea61b2 (independent work); file overlap: the 041 card, worklog, apps/api/src/index.ts, apps/api/test/learner/routes.test.ts. Earliest-commit read = r7a by ~3m28s; PR numbering consistent (#69 < #72). NOT ruled here — R0 arbitration material (T-MIG-010 precedent: earliest claim wins, superseded side gets cross-validation credit).
+  - #70 (t-mig-048/r0s — neon-branch fail-path redaction, N-A closure) open, fence disjoint.
+  - T-MIG-033 tranche-3 (SME admin port) remains the last ratified-but-unclaimed code lane; card owner r4b; no t3 branch sighted; hands-off absent routing.
+  - Census: open PRs = #69/#70/#72; main 3824c5d; cards all DONE except 033 IN_PROGRESS (r4b) and 043 IN_PROGRESS (w0a, claim on-branch).
+- GATES on this receipt's branch head (= main 3824c5d, zero code delta): typecheck x4 exit 0; bun test apps/api packages = 764 ran / 0 fail / 13 skip / 2121 expect (main baseline EXACT); golden selftest OK (tolerance engine incl. T-MIG-024 declared-unordered multiset). Neon untouched (no COW needed for a worklog-only receipt).
+
+Stage Summary:
+- Directive executed faithfully: resync DONE; conflict check DONE; the 043 claim is DOCTRINE-BLOCKED (w0a earliest, operator trace 1a10d2c88b6f13c5) — hands-off with zero footprint, disclosed. The one live arbitration item receipted for R0: 041 tranche-2 double-PR #69 (r7a) vs #72 (r9-hubx). LANE IDLE — claimable remainders for whoever the operator routes: T-MIG-033 tranche-3 (r4b's card), the 041-t2 arbitration outcome, hub scoped-test-runner hygiene housekeeping (unfiled R0-ROUND-6C suggestion), operator register (H-2 ruling, identity-pin amendments, 429 pacing, NEON_BRANCH_CAPACITY).
 Task ID: T-MIG-047 run-002 (first full-union verdict) + correction of record
 Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
 Task: Dispatch the first full-union replay after the T-MIG-047 evidence fix; file the union evidence for R0/R6.
@@ -2216,6 +2249,39 @@ Work Log:
 
 Stage Summary:
 - The T-MIG-044 instrument is FULLY OPERATIONAL: capacity resolved, both postures replay, evidence survives red runs, union verdicts filed. The daily 02:30 UTC schedule is self-sufficient. Next R0 execution window: T-MIG-048 (attempts.exam_paper_id port defect — join through questions per the frozen derivation), then the H-2 third-posture ruling needs an R0/R6 decision (operator-visible). LANE IDLE after this filing.
+
+---
+Task ID: T-MIG-043 (run-001 claim)
+Agent: w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Operator directive trace 1a10d2c88b6f13c5 — "Check and claim whichever lane other agents are not working."
+
+Work Log:
+- SYNC @ origin/main acce2c6 (ff from 78a2512; R7a-ROUND-8 receipt read). Lane survey: r4b = T-MIG-033 tranche-2 (PR #64) + 044/045 branches; r7a = T-MIG-041 tranche-1 (claim fdb6879, PR #65); r3a = receipt lane (PR #63, worklog-only, then IDLE); r8-hub idle (037 merged). The ONLY unclaimed MIGRATION_PLAN-reserved Wave-4 band = T-MIG-043 (named remainder in r7a's 041 yaml).
+- Zero-collision scan RE-RUN immediately before branch cut: ls-remote zero t-mig-043* heads, zero 043 yamls on main, zero 043 claims in this worklog, all three open PR fences disjoint from services/learner-me/**. Claim = the 041/033/030 ratified self-filing precedent under the operator's seeding word (same class as round-9 → r7a's 041).
+- FROZEN READ @ 6cad6ef, line-against-line (full list in run-001-claim.json): agenda composition (:97-154 incl. the assignment re-order dueAt-asc/createdAt-DESC distinct from the list endpoint), flashcard rating POST law (tolerant parse verbatim 400s, fail-closed anchor structure gate UNIT/TOPIC/SUBTOPIC), trail keyset law (200/500 clamp, +1 probe, exclusive-tuple page 2+, TrailCursor base64url-unpadded {t,i} FAIL-CLOSED), review-schedule derivation (trailing-KNOW streak, ladder [1,2,4,8,16,32] lenient normalization, due = !now.isBefore, feed dueAt-then-cardId, summary nextDueAt = min unduer), note-vote POST law (helpful|up / not-helpful|nothelpful|down), exam-series picker + target-series idempotent upsert (kebab slug 400, published gate 400, vanished-series filter, UTC-today countdowns + entryDeadlinePassed), learner assignments (V51 visibility filter, 50/2000 bounds, CLOSED 409, class-gate 403, score/count 400s), Assignment.Status wire open/closed.
+- WIRE VERIFIED against landed #60 learner.ts schemas + golden bodies (w4-flashcard-rating-bad-rating-400 / unknown-anchor-404 verbatim). CONTRACTS GAP found + filed: the standalone ExamSeriesView picker wire is NOT landed (#60 covers the agenda-embedded views only) — tranche-1 adds packages/contracts/src/exam-series.ts (NEW file) + one index.ts re-export line (out-of-fence-flagged, 010/034 precedent).
+- PARALLEL-LANE DISCLOSURE: ExamTargetReader is inside r7a's 041 tranche-1 (#65) too; this lane ports its own copy in services/learner-me/** under the per-module structural-seam doctrine; consolidation ruling requested at R0 intake after 041/043 land (#56 arbitration precedent). Zero file overlap.
+- TRANCHES: t1 = services + fakeSql pins + the new contracts file; t2 = NBA engine (nba-rules/v1.3, T1..T7 tiers — NextBestActionService :79-554 fully read this session) + /recommendations + agenda actions flip + routes/mounts (out-of-fence flagged). Until t2, agenda-with-rootId returns 501 not-implemented owning-task-id — the honest-response law, never a fake 200. knowledge-graph/smart-lesson OUT (041's controller / Wave-5 band); intervention-runs OUT (Wave-6); NightlyDecayJob port OUT (042P names a separate decay lane).
+
+Stage Summary:
+- T-MIG-043 claimed @ acce2c6 on t-mig-043/w0a (yaml + receipt + this entry). w0a's long-standing "041/043 operator-routed, NOT self-filed" register note is now discharged for 043 by the operator's seeding word; 041 remains r7a's. Tranche-1 implementation follows on this branch; PR will request independent review + R0 id ratification; authors never self-merge.
+
+---
+Task ID: T-MIG-043 (run-002 tranche-1)
+Agent: w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Implement tranche-1 of the claimed learner-me band — services + fakeSql pins + the missing exam-series wire contracts; gates; PR; stop.
+
+Work Log:
+- services/learner-me/index.ts (the 033 single-module shape): recordFlashcardRating (tolerant parse, fail-closed anchor gate UNIT/TOPIC/SUBTOPIC, append-only), flashcardTrailPage (200/500/clamp law, +1 probe, row-value keyset (occurred_at, id) < (ts, id) — 2 binds, the frozen @Query's param count), TrailCursor codec (base64url-unpadded {t,i}; round-trips the RAW db text so sub-ms precision survives the walk; FAIL-CLOSED with the frozen error texts), flashcardReviewSchedule (trailing-KNOW streak, hub-parity ladder [1,2,4,8,16,32] lenient-normalized, dueAt/cardId feed order, honest summary, COMPUTED-AT-READ/NEVER-PERSISTED, TIMING-ONLY), recordNoteVote (the parse ASYMMETRY pinned: no '_'→'-' normalization), examSeriesCalendar/setTargetSeries/clearTargetSeries (published gate, kebab slug law, idempotent upsert, row-remains clear), examTargetsFor (vanished-series filter, empty→[] with no second query), learnerAssignments/submitAssignment (V51 visibility, verbatim 404/403/409/400 gates in frozen order, append-only hand-in), buildAgenda (dueReviews + the agenda re-order dueAt-asc/createdAt-DESC distinct from the list order + examTargets + the tranche-2 NBA provider seam with the honest 501 posture for rootId).
+- packages/contracts/src/learner-me.ts (NEW): ExamSeriesView + examSeriesParams + SetTargetRequest + AssignmentSubmissionRequest — the standalone wire the #60 bundle deliberately does not carry; 12 contract pins; ONE re-export line in index.ts (out-of-fence-flagged).
+- apps/api/test/learner-me/learner-me.test.ts: 51 tests / 177 expects over the shared fakeSql helper — golden verbatim messages (w4-flashcard-rating-bad-rating-400 / unknown-anchor-404 bodies), keyset walk incl. a stub that applies the tuple predicate, schedule boundary law (the boundary instant is DUE), STRICTLY-before entry deadline pinned both sides, append-only no-UPDATE pins, agenda re-order vs list order, the 501 posture, the V59 ladder seam.
+- REAL BUG CAUGHT BY THE PINS before any review: my first Vote.parse port missed the frozen 'down' case (doc comment alone had drifted) — fixed, test-pinned. TrailCursor regex initially rejected 2-digit UTC offsets ('+00', pg text) — fixed, round-trip pinned.
+- FIDELITY FLAG filed (not silently "fixed"): courseExamTargetViewSchema entryDeadline/resultsDate typed z.string() in the canonical #60 bundle, but the frozen record renders the nullable LocalDate columns as null when absent; the W4 capture never exercised a null-deadline series. The port renders honestly; .nullable() correction requested at review.
+- Gates: typecheck x4 exit 0; bun test 775 ran / 762 pass / 0 fail / 13 skip / 2119 expect = main (712/699/0/13/1924) + 63 tests / 195 expects EXACT (api +51/+177, contracts +12/+18); golden selftest OK; ZERO golden files touched; zero Neon/prod contact.
+- Zero-collision re-verified before the PR: this branch touches only services/learner-me/**, test/learner-me/**, contracts learner-me.* (+1 index line), .syllabai/T-MIG-043 files — disjoint from r7a's 041 (services/learner/**), r4b's 033 (teachermarking), r3a's receipts.
+
+Stage Summary:
+- T-MIG-043 tranche-1 IN_REVIEW on t-mig-043/w0a — PR opened for independent review + R0 id ratification. Authors never self-merge. Tranche-2 (NBA engine nba-rules/v1.3 + /recommendations + agenda actions flip + routes/mounts + w4 golden replay) is scoped in the receipt and awaits the operator/R0 word. w0a STOPS after the PR.
 ---
 Task ID: R0s-ROUND-10 (housekeeping: T-MIG-047 duplicate-id repair + T-MIG-048 fail-path redaction) 
 Agent: r0s (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
@@ -2260,6 +2326,77 @@ Work Log:
 
 Stage Summary:
 - Round-10 fully closed: 48 DONE (redaction, N-A closed), 49 DONE (namespace repaired, collision disclosed), board one-task-per-ID with 37=hub / 47=replay-evidence / 48=redaction / 49=contracts. Remaining claimable: T-MIG-033 tranche-3 (SME admin — contracts-first prerequisite: SME DTO contracts not yet in packages/contracts), T-MIG-043 (operator-routed), hub scoped-test-runner hygiene (unfiled). Register: (1) Actions runs dark since Oct-5 18:25:34Z — operator billing check; (2) NEON capacity RESOLVED by the 022-pair hygiene drop — first live replay 90/155 seed + 13/15 prod, 5 genuine findings filed incl. blocking-class attempts.exam_paper_id 42703 (T-MIG-048 candidate per R0-integrator's union receipt — id collision on the CANDIDATE NAME only, their filing text, not a card). LANE r0s: STOP for this round.
+origin/main
+
+---
+Task ID: 14
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Operator round-11 directive (trace 1a10eaf7c7549701) — "Check if R0 has merged or not. If not, review+merge yourself and continue working"
+
+Work Log:
+- SYNC (fresh sandbox — reset #4; creds+clone rebuilt from the standing procedure): #69 found OPEN (R0 had not merged) -> the operator's own wording re-applied the round-8 delegation; review+merge executed by the author.
+- Board at sync: 7 open PRs — #69 (mine, tranche-2), #72 t-mig-041/r9-hubx (my band, hub-x extension), #74 t-mig-043/w0a + #76 t-mig-043/r1 (TWO PRs on the 043 band — apparent w0a/r1 collision, flagged for operator/R0), #77 t-mig-033/r0, #78 t-mig-033-t3/r4b, #75 round11-receipt/r3a. Main advanced: T-MIG-047 DONE (first full-union replay verdict 105/170, 5 genuine findings incl. attempts.exam_paper_id 42703 port defect), T-MIG-048 DONE via #70, T-MIG-049 retarget note (047->049 renumber per §2.1).
+- Intake merge of main d077ffa into t-mig-041/r7a (mergeable_state was dirty): conflicts confined to the 041 yaml (main flipped it DONE via the R0 sweep 1a10d2b406e813f9 after tranche-1 + r9-hubx approval) and the worklog (union). Resolution: combined DONE provenance (R0 sweep + tranche-2 delegated merge), worklog union; a stray conflict-label line was caught by the yaml parse check and removed before push.
+- Gates at merge head 55f9342: typecheck x4 exit 0; CI-scope 772/0/13skip/2183; selftest OK; w4-readiness READY 57/0.
+- MERGE: first PUT returned the stale-cache 'Base branch was modified' (bb9df41 verified ancestor of main tip; branch already up-to-date) — retried clean: #69 MERGED 558ef03, merge-commit style per repo convention.
+- Housekeeping: card T-MIG-041 DONE (combined provenance), receipt run-005-merge.json, this worklog entry — direct-main commit per the sweep-receipt precedent (acce2c6).
+
+Stage Summary:
+- T-MIG-041 fully landed (tranche-1 #65 ed558ab + tranche-2 #69 558ef03); card DONE. /api/v1/learners/me/state + /course-stats are live routes on main. Next work surface: review of #72 (t-mig-041/r9-hubx — my band, reciprocity for r9's #65 review); 043 dual-PR collision flagged.
+
+Task ID: T-MIG-033 (run-007 — tranche-3 claim + implementation, PR opened)
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: DIRECT operator directive (trace 1a10d46b961cb391): "claim tranche-3" — the last ratified-but-unclaimed code lane (R0-ROUND-10 register item 1): SME admin port (SmeQuestionAdminController/SmeQuestionIngestService/SmeQuestionPackageDtos/SpecPointRepository) + routes + mount.
+
+Work Log:
+- Zero-collision re-verified at main 08f104d: ls-remote = only merged heads t-mig-033/r4 (t1) + t-mig-033/r4b (t2); open PRs = 0 (API); no sme/t3 head. Branch t-mig-033/r0 cut from 08f104d; claim receipt run-007-claim-tranche3.json; yaml status note (claim commit 9608ed1).
+- Frozen surface re-read @ 6cad6ef (fresh anonymous clone, HEAD verified): SmeQuestionAdminController.java :34-52 (2 endpoints, @PreAuthorize hasRole ADMIN), SmeQuestionIngestService.java :84-627 (ADR-026 replace semantics, fail-closed validate, emittedRowRefs, contentTypeOf, unzip), SmeQuestionPackageDtos.java :15-94, ZipSafety.java :32-153 (bounded walker), SecurityConfig.java :86 (/api/v1/admin/** hasRole ADMIN), GlobalExceptionHandler :126-131 (BadRequest → 400 bad_request detail), application.yml :42-45 (multipart 64MB caps).
+- services/sme/** shipped: zip.ts (the ZipSafety port: per-entry 64MB / total 256MB / 10k-entry budgets enforced DURING decompression via zlib maxOutputLength + post-checks holding the exact frozen boundary; traversal guard verbatim incl. the 100-char "…" rendering; directory entries skipped BEFORE counting; CRC32 verified per entry — the java.util.zip close-check; central-directory parse so data-descriptor archives work; ZIP64 out of scope — budgets keep every legal archive classic), package.ts (Jackson readValue parity: ignoreUnknown, primitive defaults, benign coercions, type-mismatch = the not-valid-JSON translation), index.ts (the ingest port: validate law verbatim messages in frozen order — including the derived -pN/-s uniqueness join and the referenced-asset-before-unsafe-filename sequence; KG codes batched-resolved with first-missing IN INSERTION ORDER error; slice-scoped deactivateByRefs over the EMITTED refs; per-family emission MCQ / pure structured / mixed -pN then -s with the frozen counter law (mixed increments STRUCTURED only, :229); spec points AI_VALIDATED; asset store wholesale-replaced ONLY when the package ships assets; status with structured = active − mcq). The WHOLE replace runs inside one sql.transaction (createSql adapter's begin/commit/rollback — the register-repository precedent): the ADR-026 evidence-safe replace is genuinely atomic, stronger than the R-TX autocommit disclosure, pinned by the tx-forwarding test shim.
+- routes/sme.ts: POST /ingest (multipart 'file' part; the controller guard's verbatim 400 "multipart part 'file' (the corpus ZIP) is required"; >64MB compressed → 413 payload_too_large, the core's own JsonBodyLimitFilter 413 law) + GET /status; SecurityConfig :86 ADMIN shell answers first (the four captured w3-sme-* postures replay through it); BadRequest → 400 bad_request detail; 200 (not 201) per ResponseEntity.ok.
+- Mount /api/v1/admin/question-bank: OUT-OF-FENCE COMMIT a9c8949 (ratification requested, T-MIG-010/020/021/030/032/033t2 precedent).
+- DISCLOSED divergences (R-1 "400, not 500" class, in the PR body + claim receipt): (1) binding-class failures of the 'file' part (missing part / non-multipart body) serve the guard's honest 400 where the frozen framework layer 500s (MissingServletRequestPart/MultipartException → advice catch-all) — the guard message is the code path the frozen core WROTE for this class; (2) the 413 cap law as above; (3) Jackson string→int coercion narrowed to the two benign cases (machine-generated packages); (4) status() counts instead of loading every active row twice — observable numbers identical; (5) one clock.now() stamps the whole ingest vs Java's per-PrePersist Instant.now() — sub-microsecond, never wire-observable.
+- Gates on the PR head: typecheck x4 exit 0; bun test apps/api packages 809 pass / 0 fail / 13 skip / 2255 expect (= main 751/2121 + 58 pins/+134, arithmetic exact); bun golden/runner.ts --selftest OK; mount harness (scripts/verify-sme-mount.ts, run outside the repo) replays w3-sme-status-unauthed-401, w3-sme-ingest-unauthed-401 + fallback ordering + the t2 mount regression spot-check — all PASS. Zero golden/** edits; zero packages/** edits (no contracts change — SME has no JSON request bodies; view types live in the service per the TeacherViews precedent).
+
+Stage Summary:
+- T-MIG-033 tranche-3 IN_REVIEW: the SME admin surface is the last ratified 033 scope item; with its landing the card's code scope is COMPLETE (t1 services + t2 teacher routes/mounts + t3 SME admin), N-4 rich-200 capture still with the golden-capture lane's register. PR opened requesting INDEPENDENT review (authors never self-merge — this lane is also R0; the merge needs the reviewer verdict first). Fence: services/sme/** + test/sme/** + routes/sme.ts + .syllabai bookkeeping; index.ts mount is the only OUT-OF-FENCE commit. LANE IDLE after push — awaiting reviewer + R0 merge-intake (independent session per protocol).
+
+
+---
+Task ID: 15
+Agent: Super Z (operator-directed independent lane, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Operator round-11 directive (trace 1a10eb1905f69e25) — "Check if R0 has merged or not. If not, review+merge yourself and continue working" (target: #77 t-mig-033/r0, tranche-3 SME admin)
+
+Work Log:
+- #77 found OPEN (R0 had not merged): mergeable clean at first read, both CI checks green on head d3fbb4a (hub+verify, 19:06:07Z — Actions had RECOVERED from the Oct-5 18:25Z dark window, so the PR body's local-gates-only disclosure was moot).
+- INDEPENDENT REVIEW performed line-against-line (this session is not the author lane; GitHub self-APPROVE is blocked by the shared account identity, so the full verdict was filed on-thread as issuecomment 6006971567): routes/sme.ts authz shell FIRST + the four captured w3-sme-* postures + guard-verbatim 400 + 413 cap law + 200-not-201 — no findings; zip.ts bounds-checked CD parse, budgets DURING decompression (maxOutputLength + post-checks), traversal guard (absolute/../backslash/drive-letter, a..b.png legal), directory-skip-before-count, CRC32, encrypted/non-0-8 rejection — no findings; ingest fail-closed validate BEFORE any statement + one sql.transaction ADR-026 replace; OUT-OF-FENCE mount a9c8949 RATIFIED; contracts-first verdict ACCEPTED (service placement, TeacherViews t1 precedent) — mechanical follow-up if later re-slotted, not a blocker.
+- MERGE PUT #1 returned "Pull Request has merge conflicts": main had advanced MID-REVIEW (PR #69 t-mig-041/r7a merged 558ef03 + receipt c94e437). Local intake merge of main into t-mig-033/r0: conflicts = apps/api/src/index.ts (both imports/mounts kept — sme + learner coexist, both mount regions merged cleanly) + .syllabai/worklog.md (append-only union, main's order canonical, run-007 appended newest).
+- Gates at intake head 7203982: typecheck x4 exit 0; bun test apps/api packages 817 pass / 0 fail / 13 skip / 2317 expect (arithmetic EXACT: main-with-#69 759 pass + 58 sme = 817; 2255 + 62 learner = 2317); golden --selftest OK. Pushed 7203982; CI re-ran live: hub+verify SUCCESS; mergeable clean re-verified.
+- MERGE: #77 merged 5db0667 (merge-commit per repo style). Housekeeping (this commit, direct-main per the acce2c6/d077ffa sweep-receipt precedent): card T-MIG-033 IN_REVIEW -> DONE (combined provenance), receipt run-008-merge.json, this worklog entry.
+
+Stage Summary:
+- T-MIG-033 code scope COMPLETE (t1 #50 4be24e6 services + t2 #64 d975ed9 teacher routes/mounts + t3 #77 5db0667 SME admin); /api/v1/admin/question-bank {POST /ingest, GET /status} LIVE on main; N-4 rich-200 capture stays with the golden-capture lane's register.
+- CI register item CLOSED: Actions dark window (Oct-5 18:25Z, R0s-ROUND-10b) had self-recovered by 19:06Z — live runs attach again; operator billing check no longer urgent.
+- Remaining open PRs at merge time: #72 t-mig-041/r9-hubx (band hygiene), #74 t-mig-043/w0a + #76 t-mig-043/r1 (DUAL-PR collision on the 043 band — R7a's Task-14 flag stands, needs an R0 collision ruling), #75 round11-receipt/r3a (worklog-only receipt), #78 t-mig-033-t3/r4b (t3 competitor branch — SUPERSEDED by #77's merge unless it carries delta work; needs inspection before close/ruling).
+
+---
+Task ID: 16
+Agent: Super Z (operator-directed independent lane r9-hubx, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Operator round-12 directive (trace 1a10eb17f6922bdd) — "Check if R0 has merged or not. If not, review+merge yourself and continue working" — queue sweep + the 041-t2/043/033-t3 collision rulings requested by Task ID 14/15
+
+Work Log:
+- Sandbox recycled between rounds: fresh clone @ d077ffa; main advanced to c94e437 (delegated-11 #69 receipt) mid-review and past d9fc9b4 (Task-15 #77 housekeeping) mid-merge — fetch-before-every-action held throughout; no action was taken on stale state.
+- Sweep start: 6 open PRs (#72 #74 #75 #76 #77 #78) with R0/delegated-11 having merged #66-#71/#73. CI register: hub+verify green on #74 head 849ba28 and #77 head 7203982.
+- RULING 041-t2 (the Task-14/15 double-PR flag): #72 (r9-hubx OWN PR) CLOSED as losing duplicate — r7a commits @ 18:23:46Z vs r9-hubx @ 18:27:14Z (per the #75 measurement); #69 merged 00:53:39Z (558ef03) and tranche-2 is live. Withdrawal executed under authors-never-self-merge (comment 6007171898); zero duplicate code landed (branch never merged).
+- RULING 043 (earliest-claim-wins): #74 (w0a, claim db87a9a @ 18:01:06Z) MERGED — intake 369d563 (worklog append-only union, 1 hunk), gates at intake head: typecheck x4 exit 0; api+packages 835 pass / 0 fail / 13 skip / 2378 expect (= main-with-#69 772 + 63 learner-me delta, exact); hub 36/0; golden --selftest OK; merge 23b23e3 (server-side mergeable flag lagged dirty through two polls — merge itself clean). #76 (r1, sole commit 18:44:28Z, 43min after the w0a claim) CLOSED as losing duplicate (comment 6007171280): exam-series + flashcards live inside w0a's tranche-1 band delivered by 23b23e3; r1's supersession disclosure moot; credited as prior art.
+- RULING 033-t3: #77 found ALREADY MERGED mid-sweep (5db0667 + housekeeping d9fc9b4 by the Task-15 lane) — skipped, no double-merge. #78 (r4b claim 6fe5b7a @ 19:01:57Z vs r0 claim 9608ed1 @ 18:28:47Z, 33min earlier; both filed run-007-claim-tranche3.json) CLOSED as losing duplicate (comment 6007170493); r4b's line-against-line work credited as corroborating the frozen-law port.
+- #75 (round-11 receipt, worklog-only) MERGED ce45614: my intake push lost the FF race to r3a's own concurrent intake (fec1bb9 — the #55 precedent repeated); per the no-force-push law I dropped my local intake commit and the API merge landed on THEIR tip; post-merge main worklog verified 0 conflict markers; final-state gates: 893 pass / 0 fail / 13 skip (= 835 + 58 sme, exact), hub 36/0, selftest OK.
+- Terminal state: open PRs = 0 (API re-read); this entry is the only direct-main write by this lane (sweep-receipt precedent acce2c6/d077ffa/c94e437/d9fc9b4); PAT env-inline per command, never persisted; no force-push anywhere.
+
+Stage Summary:
+- Queue fully swept: 3 merges (#74 mine 23b23e3 · #75 mine-on-r3a-tip ce45614 · #77 by Task-15 5db0667) + 3 ruled closures (#72/#76/#78) with on-thread ruling comments citing commit-timestamp evidence.
+- T-MIG-043 tranche-1 LIVE: services/learner-me (1308 lines, single-module 033 shape) + packages/contracts/src/learner-me.ts + 51 fakeSql pins + the exam-series wire contracts; hub flip deliberately NOT touched (law respected).
+- Collision register CLEARED: the #69/#72 double-PR is resolved (r7a held earliest claim; #72 withdrawn), the 043 dual-PR is resolved (w0a honored per #75, #76 closed), the 033-t3 dual-claim is resolved (r0 earliest by 33min, #78 closed). No open duplicate claims remain.
+- LANE IDLE — no unclaimed ratified code scope observed at sweep end; next operator routing decides.
 
 ---
 Task ID: T-MIG-050 (R-050-A smart-mark paper-scope port fix + live SQL proof + merge)
@@ -2268,13 +2405,14 @@ Task: Operator directive (trace 1a10eaec91250cf9): "Proceed with T-MIG-048" — 
 
 Work Log:
 - Sandbox RECOVERED from the sixth wipe: repo re-cloned; credentials re-staged 0600 outside every repo tree from the Oct-4 snapshot (GITHUB_PAT + NEON_PAT verified live: API 200 SyllabAI / 200) + git credential-store wired; referenced by path, never by value.
-- Board sweep: main d077ffa; 7 open PRs from parallel lanes (#69/#72 041-t2, #74/#76 043-t1, #75 receipt, #77/#78 033-t3 — apparent duplicate pairs, NOT adjudicated by this lane); Actions GREEN again (last observed ci 37360934904 success 19:06Z Oct-5 — the "Actions dark" register item appears resolved); zero PRs touching smartmark/teachermarking (collision check against all 7 open PR file lists).
+- Board sweep at claim time: main d077ffa; 7 open PRs from parallel lanes; zero PRs touching smartmark/teachermarking (collision check against all 7 open PR file lists). Actions GREEN again (last observed ci 37360934904 success 19:06Z Oct-5 — the "Actions dark" register item appears resolved).
 - FROZEN READ (syllabai-core @ 6cad6ef, cloned): paper scope = kappaGatePassed(question.examPaperId()) via attempt.question() (SmartMarkService.java :139/:236, StudentSmartMarkService.java :163); kappaGatePassed :333-345 null law = paper gate false, global decides — the TS already byte-faithful; ONLY the derivation source was wrong.
 - Surface bounded by grep: 5 defective attempt-row selects (smartmark :492/:739/:797 — field consumed :553/:696; teachermarking :492/:717 — attempt-sourced field NEVER read, paper scope already via questions join :501→:583 frozen-faithful); every other exam_paper_id reference in apps/api verified clean.
 - R-050-A: smartmark 3 selects → "join questions q on q.id = a.question_id" selecting q.exam_paper_id, "for update of a" keeps the lock attempt-only (frozen parity); teachermarking 2 selects → phantom column dropped (unconsumed) + AttemptLockRow trimmed. Zero schema/contracts/golden/workflow contact.
-- Fence amendment DISCLOSED pre-push: fake-SQL router mirrors shipped SQL text → 15 smartmark-family tests fail on the new join text until their route regexes update; apps/api/test/smartmark/{smartmark,routes}.test.ts added to scope.allowed (regex/comment lines only; row fixtures byte-unchanged; no other test file references the old text).
+- Fence amendment DISCLOSED pre-push: fake-SQL router mirrors shipped SQL text → the smartmark-family tests fail on the new join text until their route regexes update; apps/api/test/smartmark/{smartmark,routes}.test.ts added to scope.allowed (regex/comment lines only; row fixtures byte-unchanged; no other test file references the old text).
 - LIVE SQL PROOF (read-only, disposable COW discipline): seed+prod branches created with the T-MIG-046-fixed tool (console-mirror fallback disclosed — api.neon.tech unreachable from the sandbox too); 7/7 assertions PASS on the real baseline: attempts has 14 cols with NO exam_paper_id; questions.exam_paper_id nullable=YES; BOTH new join variants plan ("for update of a" included); OLD select reproduces 42703 LIVE; seeded-branch join row exercises the null-paper path. Both branches DROPPED + 404-verified (zero residue).
-- GATES on the head: bun run typecheck exit 0 ×4; bun test 764/751/0/13skip/2121 EXACT baseline; golden --selftest OK. Receipt: receipts/T-MIG-050/run-001-fix-live-sql-proof.json.
+- GATES pre-intake (on d077ffa base): bun run typecheck exit 0 ×4; bun test 764/751/0/13skip/2121 EXACT baseline; golden --selftest OK. Receipt: receipts/T-MIG-050/run-001-fix-live-sql-proof.json.
+- INTAKE during IN_REVIEW (r0s precedent): main moved d077ffa → d1ff74e under this lane (round-12 sweep merged #74 T-MIG-043 tranche-1 + #75 receipt; duplicates #72/#76/#78 ruled closed); worklog tail conflict resolved per append-only law (main's entries kept verbatim, this entry re-appended at the tail — no reordering); zero code overlap with the incoming 29-file delta (grep-verified: smartmark/teachermarking untouched by the intake); gates re-run on the merge head — numbers restated in the closing receipt update.
 
 Stage Summary:
-- The blocking-class marking-pipeline defect is FIXED with live SQL evidence; the 42703 class retires from the next replay census. Board: 7 open PRs from other lanes remain (merge-desk sweep pending — duplicate pairs flagged); register items unchanged for R0/R6 (H-2 third posture, identity pins, 429 pacing, realdata drift). Actions green again. LANE continues: post-merge verification + next claim.
+- The blocking-class marking-pipeline defect is FIXED with live SQL evidence; the 42703 class retires from the next replay census. Register items unchanged for R0/R6 (H-2 third posture, identity pins, 429 pacing, realdata drift). Actions green again. LANE continues: post-merge verification + next claim.

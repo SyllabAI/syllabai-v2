@@ -1,0 +1,29 @@
+{
+  "task_id": "T-MIG-033",
+  "kind": "MERGE-RECEIPT (tranche-3 SME admin, operator-delegated independent review + merge)",
+  "run": "008",
+  "timestamp": "2026-10-06T01:01:10Z",
+  "agent": "Super Z (operator-directed independent lane, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "provenance": "operator round-11 directive trace 1a10eb1905f69e25: 'Check if R0 has merged or not. If not, review+merge yourself and continue working' — #77 was found open (R0 had not merged). The authors-never-self-merge convention was honored in substance: this review was performed by an independent operator-directed session (not the author lane web-df0238cc), using the same SyllabAI account identity (GitHub blocks self-APPROVE, so the verdict was filed as an on-thread comment, issuecomment 6006971567).",
+  "merge": {
+    "pr": 77,
+    "merge_commit": "5db0667",
+    "method": "merge-commit (repo style, #65/#68/#69/#70 precedent)",
+    "head_before_merge": "7203982 (sme work d3fbb4a + intake of main 558ef03+c94e437; conflict-resolved: index.ts both imports/mounts kept — sme + learner coexist, worklog append-only union with main's order canonical and run-007 appended newest)"
+  },
+  "review_evidence": [
+    "line-against-line review of the security-critical surfaces: routes/sme.ts (authz shell FIRST via requireRole ADMIN; the four captured w3-sme-* postures replay through it; guard-verbatim 400 for missing/empty/non-multipart 'file'; 64MB compressed cap -> 413 payload_too_large per the core's JsonBodyLimitFilter law; 200-not-201; BadRequestError -> 400 with detail; opaque 500 catch-all) — no findings",
+    "services/sme/zip.ts: central-directory parse bounds-checked at every read; budgets enforced DURING decompression (zlib maxOutputLength) AND re-checked post (same frozen boundary held even if the runtime ignored the cap); traversal guard covers absolute / '..' / backslash / drive-letter with a..b.png legal; directory entries skipped BEFORE counting; CRC32 per entry; encrypted + non-0/8-method entries rejected as format errors — no findings",
+    "services/sme/index.ts: fail-closed validate BEFORE any statement (pin: validation failures leave the live bank untouched); the replace runs inside one sql.transaction (adapter begin/commit/rollback seam) so the ADR-026 evidence-safe replace is genuinely atomic; derived -pN/-s refs join the uniqueness set; SVG demoted at the insert; asset store touched only when assets ship",
+    "OUT-OF-FENCE mount commit a9c8949 RATIFIED as shipped (one import + construction + mount + comment, T-MIG-010/020/021/030/032/033t2 precedent)",
+    "contracts-first verdict filed on-thread: ACCEPTED — service placement (SME has no zod-validated JSON request bodies; BankStatusView/IngestSummary follow the TeacherViews t1 placement precedent; a later re-slot is a mechanical same-fence follow-up, not a blocker)",
+    "58 tests cover the captured postures + verbatim budget/guard/validation laws + fail-closed semantics + the mixed-family counter law"
+  ],
+  "gates": {
+    "intake_merge_head_7203982": "typecheck x4 exit 0; bun test apps/api packages 817 pass / 0 fail / 13 skip / 2317 expect (exact arithmetic: main-with-#69 759 pass + 58 sme = 817; 2255 sme-head + 62 learner = 2317); golden --selftest OK",
+    "ci_on_7203982": "hub success + verify success (live Actions attach — the Oct-5 18:25Z dark window had recovered by 19:06Z; the PR body's local-gates-only disclosure is moot)",
+    "ci_on_merge": "checked runs green on the PR head immediately before the merge PUT"
+  },
+  "card": "T-MIG-033 flipped IN_REVIEW -> DONE with provenance (this commit): t1 services (PR #50 4be24e6) + t2 teacher routes/mounts (PR #64 d975ed9) + t3 SME admin (PR #77 5db0667) = the card's code scope COMPLETE. N-4 rich-200 capture half stays with the golden-capture lane's register.",
+  "post_merge_gates": "main tip 5db0667 = the verified merge head (ff of 7203982 through the merge commit); no post-merge drift expected"
+}

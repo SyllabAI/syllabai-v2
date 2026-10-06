@@ -29,3 +29,4 @@ export * from "./decay";
 export * from "./teacher-marking";
 export * from "./test-builder";
 export * from "./transcription";
+export * from "./learner-me";

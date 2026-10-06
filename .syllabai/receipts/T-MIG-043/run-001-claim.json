@@ -1,0 +1,46 @@
+{
+  "task": "T-MIG-043",
+  "run": "run-001-claim",
+  "date": "2026-10-06",
+  "lane": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "provenance": {
+    "operator_directive_trace": "1a10d2c88b6f13c5",
+    "directive": "Check and claim whichever lane other agents are not working",
+    "same_class_precedents": [
+      "round-9 trace 1a10d2210b98ef81 'Proceed with any work. Check and claim' -> r7a seeded T-MIG-041 (fdb6879)",
+      "round-6 trace 1a10bdcc5d89e599 -> R4-api-b claimed T-MIG-033 seed"
+    ]
+  },
+  "zero_collision_scan": {
+    "scanned_at": "immediately before branch cut, origin/main acce2c6",
+    "ls_remote_t_mig_043_heads": 0,
+    "t_mig_043_yamls_on_main": 0,
+    "worklog_043_claims": 0,
+    "open_prs_at_claim": {
+      "63": "round9-receipt/r3a (worklog-only) — disjoint",
+      "64": "t-mig-033/r4b (services/teachermarking + routes) — disjoint",
+      "65": "t-mig-041/r7a (services/learner/** + test/learner/**) — disjoint; ExamTargetReader duplication disclosed, consolidation ruling requested at intake"
+    }
+  },
+  "claim": {
+    "branch": "t-mig-043/w0a",
+    "band": "Wave-4 learner-me surfaces: agenda + flashcard ratings/trail/review-schedule + note-votes + exam-series/target-series + learner assignments",
+    "tranche_1": "services + fakeSql pins + NEW contracts exam-series.ts (the missing picker wire) + single index.ts re-export line",
+    "tranche_2": "NBA engine (nba-rules/v1.3 T1..T7) + /recommendations + agenda actions flip + routes/mounts (out-of-fence flagged)"
+  },
+  "frozen_sources_read_line_against_line": [
+    "LearnerAgendaController.java :97-154",
+    "FlashcardRatingController.java :84-115 + FlashcardRating.java :43-52",
+    "FlashcardRatingRepository.java (keyset + card-grouped reads)",
+    "FlashcardRatingTrailController.java :90-140 + TrailCursor.java (full codec law)",
+    "FlashcardReviewScheduleController.java :79-125 + flashcard/FlashcardReviewScheduler.java + FlashcardReviewParams.java",
+    "NoteVoteController.java :67-100 + NoteVote.java Vote.parse/wire",
+    "LearnerExamSeriesController.java :59-117 + ExamTargetReader.java :28-52 + ExamSeries/ExamSeriesView/CourseExamTargetView/LearnerCourseEnrolment(+Repository)",
+    "LearnerAssignmentController.java :69-117 + Assignment/AssignmentSubmission + AssignmentViews dto",
+    "ReviewSchedule.java (Status/Reason enums) + ReviewScheduleRepository.java",
+    "dto/AgendaView.java (+ the 5-arg pre-T-C79 constructor)"
+  ],
+  "wire_contracts_verified": "packages/contracts/src/learner.ts @ acce2c6 (landed #60) — agendaViewSchema, learnerAssignmentViewSchema, assignmentViewSchema, assignmentSubmissionViewSchema, flashcardRatingViewSchema, flashcardRatingTrailViewSchema, cardScheduleViewSchema, flashcardReviewScheduleViewSchema, noteVoteViewSchema, courseExamTargetViewSchema, reviewViewSchema, TRAIL_DEFAULT_LIMIT=200, TRAIL_MAX_LIMIT=500; golden bodies w4-flashcard-rating-bad-rating-400 + w4-flashcard-rating-unknown-anchor-404 pinned verbatim",
+  "gates_at_claim": "typecheck x4 exit 0; bun test 712/0/13skip 1924 expect == R7a-ROUND-8 main baseline exact (zero code delta at the claim commit); golden selftest OK",
+  "next": "tranche-1 implementation on this branch; PR for independent review + R0 id ratification; authors never self-merge"
+}
