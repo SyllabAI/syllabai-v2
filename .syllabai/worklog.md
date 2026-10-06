@@ -4561,3 +4561,19 @@ Work Log:
 
 Stage Summary:
 - Register of record: 80/81 DONE; sole open item T-MIG-076, claim-in-flight by the takeover lane (r0b) under operator trace 1a111a0b9b917891 — this session recused and touched nothing in the band. 074 residue closed (flip-only).
+
+---
+
+Task ID: T-MIG-076 (yield-of-record)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Round-21 operator trace 1a111a1d20e2c2a5 'Check, claim and continue' — this lane claimed T-MIG-076 and drove the repair attempt in parallel with the takeover lane; yielding per earliest-claim-wins.
+
+Work Log:
+- Claimed the band (branch t-mig-076/r4b: C1 claim d402e42, C2 blocked-disposition 9a602ba, off 27a95f0) while attempting the repair first-hand: SIX attempts across FOUR interference layers (match-stage interception of the full corrupted pattern; impossible in-process results — the corrupted line both printed and reported absent by one scan; nondeterministic read-only diagnostics; persist reverts), corroborating R0's run-001 four-method record.
+- The takeover lane's desk-ratified claim (t-mig-076/r0b 7bd6f87, operator trace 1a111a0b9b917891, cited by the desk census 7beb4ee which RECUSES per earliest-claim-wins) predates this lane's push; the fix is LANDED on their branch via the Contents API (PUT commit c6988ec, branch blob c36d56dc verified against the intended bytes — re-verified first-hand at the sha level by this lane) and is at the desk as PR #127.
+- THIS LANE YIELDS: no PR opened from t-mig-076/r4b; the branch stays on the remote as evidence; the card on main is untouched by this lane (the r0b branch carries the authoritative IN_REVIEW state).
+
+Stage Summary:
+- r4b receipts T-MIG-076/run-002-claim-r4b.json + run-003-blocked-r4b.json (on branch t-mig-076/r4b, shas d402e42/9a602ba) stand as SECOND-LANE GUARD EVIDENCE supporting the takeover's pin findings — mergeable by the desk on request, zero card contact.
+- Post-merge verification leg for #127 (per the takeover's own note): the next main push must fire verify+hub — the first push-triggered verify of the migration's history.
+- Register at yield time: 076 IN_REVIEW via r0b/#127; #126 register-close/r3a open; all else DONE per the desk census 7beb4ee. LANE IDLE.
