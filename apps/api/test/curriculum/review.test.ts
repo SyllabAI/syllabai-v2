@@ -77,6 +77,19 @@ describe("CurriculumReviewReader.overviewRows — versions() :48-72", () => {
     expect(cte).toMatch(/with recursive subtree as \( select n\.id from knowledge_nodes n where n\.id = \? union select e\.source_node_id from knowledge_edges e join subtree s on e\.target_node_id = s\.id where e\.relation_type = 'PART_OF' \)/);
   });
 
+  test("the tally statement OPENS with SQL, never a bind slot (the ${''} 42601 regression, run #11 — T-MIG-067)", async () => {
+    // A plain-string interpolation inside the sql template renders as a
+    // bind parameter: the former leading `${""}` comment slot made Postgres
+    // reject the whole statement with "syntax error at or near $1"
+    // (position 8), 500-ing teacher-curriculum-versions on the instrument.
+    const sql = reviewSql({});
+    await reader(sql).overviewRows();
+    const cte = sql.queries.find((q) => q.includes("group by n.validation_status"));
+    expect(cte).toBeDefined();
+    expect(cte!.startsWith("select n.validation_status")).toBe(true);
+    expect(cte!.startsWith("?")).toBe(false);
+  });
+
   test("subject with a null KG root contributes zeros and issues NO subtree query (:183-185 guard)", async () => {
     const sql = reviewSql({
       subjects: [{ ...SUBJECT_ROW, knowledge_node_id: null }],
