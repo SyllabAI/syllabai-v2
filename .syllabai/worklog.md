@@ -2904,6 +2904,21 @@ Stage Summary:
 - LANE r1c: STOP for this round.
 
 ---
+Task ID: 20
+Agent: r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, operator trace 1a10f3ef205fa961)
+Task: Operator directive "Check if R0 has merged or not. If not, review+merge yourself and continue working" — round sweep + Wave-6 claim.
+
+Work Log:
+- R0-MERGE CHECK: R0 HAD merged six PRs since the last round (#82 052-t1 39fa554, #83 7dfdd16, #85 043-t2 NBA 66c6618, #86 F2 76e26e9, #87 414f4a6, #91 055 9bebf7e); #89 (this lane's 052-t2) was merged by r1c 9032b9e with independent review (6008773196) — the double-claim on 052-t2 resolved per §2.1 (our 0aaca52 @ 02:50:00Z incumbent; R0's #90 closed as the losing duplicate).
+- MERGED #88 (r0r6 neon-replay run-7 divergence triage, 62 cases / 10 classes) -> 4fed5ba: intake 3ec0e2f (worklog append-only union, 0 markers) with gates typecheck x4 / 1022-0-13skip-3072 / hub 36-0 / selftest OK; a parallel reviewer intake (043b497, incl. the #89 main) was stacked on ours mid-CI — re-gated at 043b497 (1063-0-13skip-3211 = main+89 EXACT, triage adds zero code) and sha-pinned API-merged.
+- MERGED #84 (T-MIG-053 t1 r3a — knowledge KG+coverage contracts+services+58 pins) -> ced0111: intake b29b874 (worklog union 0 markers; contracts index keep-both auto-resolved); gates @ b29b874: typecheck x4 exit 0 / 1103-0-13skip-3288 over 61 files = main 1063-3211-59f + claimed delta +40/+77/+2 EXACT / hub 36-0 / selftest OK / CI verify+hub success; arithmetic reconciled per-pin before merge.
+- QUEUE SWEPT: 0 open PRs at claim-scan time; main ced0111 (later d328f9d — w0a's 060 claim push observed post-scan, not an intake duty).
+- CONTINUE-WORKING = CLAIMED **T-MIG-061** = Wave-6 intervention runs (V26, 928 frozen lines / 11 files / 9 endpoints over InterventionRunService :178 + ScenarioService :116): the FIRST SELF-CONTAINED Wave-6 band — CLA (the plan's next listed item) is DEFERRED with disclosure: ClaService :130-148 hard-depends on TutorGenerator/VectorRetriever/RRF/Reranker/CitationResolver/LearnerModelService/TutorPolicyService, ALL inside w0a's in-flight t-mig-060/w0a fence (KaRAG chain, card CLAIMED at scan); building on unmerged files is the §2.1 collision class. 061's collaborators are all on main (NBA engine #85, SkillState #41, subjects #021); baseline schema already carries intervention_run/_step/_evidence (0000_organic_mauler.sql) — zero R2 work.
+- Zero-collision scan re-run immediately before branch cut @ ced0111: ls-remote exactly ONE t-mig-06* head (060/w0a); ZERO T-MIG-061 refs on main; 0 open PRs. Claim commit = card + run-001-claim receipt + this entry, one commit, claim-before-work law.
+- Id ratification requested at PR review (030/032/039/040-PREP/041/043/055/060 precedent): 061 = next free id; CLA ratifies a later free id when 060 lands.
+
+Stage Summary:
+- Queue swept (2 foreign PRs reviewed+merged, arithmetic-exact; own PR landed by the desk per the self-merge law); T-MIG-061 claimed on t-mig-061/r9-hubx. Implementation (contracts -> services -> pins) next; gates + PR to follow; NO self-merge.
 Task ID: T-MIG-057 (run-001 claim) + T-MIG-055 stand-down of record
 Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
 Task: Operator directive (trace 1a10f48f7d8a616d): GitHub PAT delivered with the explicit instruction "make sure you dont lose the PAT, I am tired of pasting PATs after every reply" — persisted per the r1c standing pattern and the lane continues working onto the element-null residual it first disclosed.
@@ -3040,3 +3055,50 @@ Work Log:
 
 Stage Summary:
 - T-MIG-059 IN_REVIEW on branch t-mig-059/r0 (claim 9853716 → fix). Next: PR with the full disclosure body, independent adversarial review verdict on-thread, merge under the standing delegated authority, housekeeping (card DONE + provenance, run-003-merge receipt, worklog). The four-finding F-set from the #89 REQUEST_CHANGES verdict is then fully dispositioned (F-2/F-3 via #93, F-0/F-1 here).
+Task ID: 20 (continued — implementation)
+Agent: r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, operator trace 1a10f3ef205fa961)
+Task: T-MIG-061 tranche-1 implementation — contracts + services + fakeSql pins.
+
+Work Log:
+- CONTRACTS b44f1a1: packages/contracts/src/intervention.ts — the RunView full-reconstruction (23 fields), StepView/EvidenceView, the closed six-value status enum + terminal() law, the four request records with the INERT @Size caps reproduced as cap-less nullish (F-061-B, disclosed); 7 schema pins; index one-liner (flagged precedent).
+- SERVICES 7de90d8: the InterventionRunService + ScenarioService port over the injected SqlFn seam — the lifecycle state machine with the verbatim conflict messages, the SHA-256 identity hash (known-answer vector 83951aef…6180b), the ownership gate (foreign = indistinguishable 404; unknown = the :167 IllegalArgument class → 400 FIXED body), the NBA-backed scenario derivation composing the #85 engine (PRACTISE_QUESTIONS filter, skill-state REFERENCE a{n}:u{milli} / honest unmeasured pin, nba: diagnosis-ref, practice-intervention/v1 + bounded tools); typed errors with the tranche-2 route mapping documented on the module header.
+- TESTS 9e3dcb3: 44 service pins (fakeSql + an in-memory run store so state-machine sequences run end-to-end) + 6 contract pins in packages — the write-order pin (run UPDATE precedes the step INSERT), the F-061-A SET-clause pin, zero-write on both scenario 404s, the raw-field entity laws (F-061-D: the DONE/ATTEMPT_EVIDENCE defaults are validation-only; the RAW nulls reach the entity constructors → the 400 FIXED body).
+- Port-bug catches before review (the 052/043 discipline): (1) the ${RUN_COLS} interpolation would bind the column list as a DRIVER PARAMETER ("select $1") — inlined literally; (2) the controller-default-vs-entity-raw distinction above; (3) two fakeSql comma-placement regex mismatches.
+- INTAKE 2f6d461: origin/main aca7a5e (R0-AUTO #92 + #93) merged mid-flight — worklog union (3008 lines, 0 markers); gates re-run at the intake head: typecheck x4 exit 0 / 1156 ran-0 fail-13 skip-3482 expect over 63 files = main 1106-3299-61f +50/+183/+2 EXACT / hub 36-0 / golden selftest OK.
+- Receipt run-002-tranche1.json + card IN_REVIEW; PR next; NOT self-merged (authors never self-merge).
+
+Stage Summary:
+- T-MIG-061 tranche-1 delivered end-to-end (claim → contracts → services → pins → intake); the 9-endpoint intervention surface lives as a module awaiting its tranche-2 routes/mounts; STOP per protocol after filing the PR.
+
+---
+Task ID: R0-AUTO (manual R0 sweep, operator ping trace 1a10f776069349cd, 2026-10-06 04:27 UTC)
+Agent: R0 merge desk (Super Z, R0-auto procedure)
+Task: Operator-pinged sweep — review + merge open PRs per the standing R0-auto procedure.
+
+Work Log:
+- Census: main had advanced to 1aea8bc (#94 T-MIG-058 merged by a parallel lane); one open PR — #95 (T-MIG-061 tranche-1: Wave-6 intervention runs, r9-hubx head 186357239e15134fb7c7b7711ed85ee7b84f91a2).
+- Guard chain on #95: CI verify+hub completed/success at the real head; mergeable=False state=dirty (base aca7a5e — my receipt push; main moved with #94); 0 reviews / 0 comments / zero hold-block hits.
+- INTAKE per procedure (c): t-mig-061/r9-hubx merged with origin/main 1aea8bc — worklog-tail add/add ONLY (zero code conflicts), resolved via the append-only chronological union (main's entries verbatim in place, PR's entries re-appended; byte-checked, zero markers; intake bee47d8); pushed fast-forward, no force.
+- Gates at intake head bee47d8: install OK; typecheck exit 0; bun test apps/api packages 1144 pass / 0 fail / 13 skip / 3485 expect (1157 ran / 63 files); golden --selftest OK.
+- MERGED #95 as af33b6f. CI verified on new main tip af33b6f: verify + hub completed/success.
+- Post-sweep census: 0 open PRs.
+
+Stage Summary:
+- Wave-6 is live: T-MIG-061 tranche-1 (intervention runs — contracts + services + pins) landed as the first Wave-6 band, hot on the heels of #94 (T-MIG-058). Board momentum: W4 complete, W5 classroom/selfmark consolidating, W6 opened.
+- Queue at sweep end: 0 open PRs. No escalations. LANE DONE.
+---
+Task ID: 21
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, operator trace 1a10f73c1b7a5a01)
+Task: Operator directive "sweep" — round-15 merge-desk sweep (7th full workspace wipe recovery included).
+
+Work Log:
+- WORKSPACE RECOVERY: the container was fully wiped (only download/README.md survived). Credential law restored from the /tmp remnant backup: GITHUB_PAT re-armed into .secrets/env.sh (0600, outside repo tracking), /user -> 200, fingerprint 8c1fcf2c4f0d5243 UNCHANGED (no operator rotation — same token as round-14's registration). syllabai-v2 re-cloned; syllabai-core-readonly re-cloned at the frozen pin 6cad6ef (verified identical tip).
+- R0 CHECK: R0-AUTO (job 438940, 04:00 UTC cycle) had merged #92 (057 selfmark element-null, e82f5d5) + #93 (056 @NotBlank envelope, 9ba1c39) before this round; the 03:38/03:33 cycle had collected #84 (053 t1, ced0111) + #88 (triage, 4fed5ba) right after Task 19. Queue at census: #94 (058) + #95 (061 t1).
+- REVIEWED+MERGED #94 (T-MIG-058 DEPTH PIN, r1-contracts) as 1aea8bc (sha-pinned 1072ac4): CI verify+hub completed/success at the real head; fence 6 files zero *.java/core/hub; LINE-AGAINST-LINE: the one-line i.path.length===2 pin restores the pre-057 classifier posture for NESTED nulls (frozen: no @Valid cascade, @NotNull :55 dead, HashMap.put(null,v) legal :44 -> exact-parts gate) — pin + third route pin + frozen-matrix comment block coherent; citation nit :58->:59 fixed; F-B honestly register-open. Race of record on #92 (REQUEST_CHANGES 6009074844 @ 04:02:24Z vs R0 merge @ 04:02:29Z) disclosed by the author — finding transferred verbatim, correct call.
+- REVIEWED+MERGED #95 (T-MIG-061 tranche-1 Wave-6 intervention runs, r9-hubx) as af33b6f (sha-pinned bee47d8): CI verify+hub completed/success at the real head (re-verified after the head advanced 1863572 -> bee47d8 = the intake merge of my 1aea8bc); GitHub mergeable recompute stalled at None/unknown >2min — guard satisfied INDEPENDENTLY via local `git merge-tree --write-tree` exit 0 + fence re-scan (9 files, zero *.java/core/hub); ID RATIFIED 061 (zero other 061 refs, 060 reserved by w0a, CLA honestly deferred with the ClaService :130-148 dependency disclosure); frozen law verified first-hand @ 6cad6ef: six-value enum + terminal() triple (COMPLETED|CANCELLED|FAILED), SHA-256 identity hash (:141), verbatim conflict strings ("Terminal run cannot be changed" :100 IllegalStateException -> ConflictException 409 at the controller boundary :169; "Unknown intervention run: " :135 IllegalArgument class -> 400 FIXED body :167-172), ownership gate (foreign = indistinguishable 404). Gates claimed 1156-0-13skip-3482 at intake head = main 1106-3299-61f +50/+183/+2 EXACT.
+- NOTE: R0's manual-sweep receipt 37d8825 (04:27 UTC) documents the same af33b6f intake — benign double-bookkeeping of one idempotent merge (single merge sha, zero double-merge risk); both narratives retained append-only.
+- INDEPENDENT GATES at tip 37d8825: install --frozen-lockfile exit 0; typecheck x4 exit 0; bun test apps/api packages 1144 pass / 0 fail / 13 skip / 3485 expect over 63 files — EXACT match to R0's af33b6f measurement and to my predicted delta (1094+50 / 3302+183); golden --selftest OK. Cumulative vs the fe97f94 round-14 baseline (948/0/13skip/2689): +196 pass / +796 expect.
+- POST-SWEEP CENSUS: 0 open PRs; branches t-mig-058/r1 and t-mig-061/r9-hubx fully contained in main. NO unscoped claimable observed (Wave-6 next bands: 061 tranche-2 routes/mounts = r9-hubx's module; CLA blocked behind w0a's 060 fence; hub hygiene = hub lane). NO new claim filed.
+
+Stage Summary:
+- Round-15 sweep complete: workspace rebuilt from wipe (#7) with credential law intact, both open PRs (#94, #95) independently reviewed and merged (1aea8bc, af33b6f), all gates exact at 1144/0/13skip/3485 + selftest OK, queue at zero. Register unchanged (NEON_BRANCH_CAPACITY; 058 F-B nested-null full emulation now ON the register via its card). LANE r1c: STOP for this round.
