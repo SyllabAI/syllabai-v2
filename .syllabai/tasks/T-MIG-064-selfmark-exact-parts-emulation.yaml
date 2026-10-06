@@ -1,0 +1,88 @@
+version: 1
+task:
+  id: T-MIG-064
+  title: "Selfmark exact-parts emulation (the F-B band) — schema widening to Jackson bind-parity (nullish partId/marksAwarded + the value-dependent HashMap.put duplicate law) + the service-side exact-parts gate null-key flow + the unboxing-NPE 500 parity"
+  owner: "r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)"
+  status: IN_REVIEW # RE-FILED from T-MIG-059: id collision of record — two different operator-directed bands both took 059; earliest-claim-wins allocates the id to the r0 lane (claim 9853716 @ 04:35:53Z, PR #96, the F-0/F-1 binding-law band, trace 1a10f743c93c27b9) over this lane's 04:41:34Z claim (63aaac1, PR #97 closed superseded); the F-B band itself is UNCHANGED and continues here. Implemented on t-mig-059/r1 (run-002-fix): contracts nullish widening + put-semantics superRefine + service unboxing-parity pass + the rewritten nested-null pin; gates 1148/0/13skip/3502 = baseline 37d8825 (1144/3485) +4 tests/+17 expects EXACT, typecheck x3, selftest OK; PR next, NOT self-merged (authors never self-merge)
+  claimed_at: "2026-10-06T05:02:00Z"
+  priority: P1 # the 058 depth pin (merged #94) restored the classifier posture but the frozen FULL answer for nested nulls is still divergent on main — this band closes it
+  wave: 3
+  deps: [T-MIG-057, T-MIG-058]
+  basis: >
+    The register-open F-B item filed by this lane's round-12 delegated review of
+    PR #92 (comment 6009074844, follow-up claim 6009163427, restated on the
+    T-MIG-058 card after #94 merged): the FULL frozen nested-null answer needs
+    schema widening + service-side emulation — real scope, own band. The
+    operator directed this band explicitly (trace 1a10f747060b0901).
+    FROZEN MATRIX OF RECORD (pinned core 6cad6ef, verified line-against-line
+    this session):
+      - LearnerSelfMarkController.java :42-48 — the dedup loop is
+        HashMap.put(p.partId(), p.marksAwarded()) and throws the duplicate
+        BadRequestException ONLY when put() DISPLACES A NON-NULL PREVIOUS
+        VALUE (the != null check on the RETURN value). Consequences the
+        port's plain set-based superRefine does not model: {X:null},{X:1}
+        does NOT throw (the stored null is displaced silently); {X:1},{X:null}
+        DOES throw; HashMap.put(null, v) is legal (a null partId key binds).
+      - SelfMarkRequest :59 declares the bare List<PartSelfMark> — NO @Valid
+        container-element cascade, so the element constraints (@NotNull :55,
+        @Min(0)/@Max(99) :56) NEVER FIRE: Jackson binds null partId, null
+        marksAwarded, AND ABSENT fields as null, then the controller loop and
+        the service answer.
+      - LearnerSelfMarkService.java :102-111 — the exact-parts gate:
+        new HashSet<>(marksByPartId.keySet()).equals(byPartId.keySet()); a
+        null key makes the sets unequal -> BadRequestException "self-mark
+        must cover exactly the attempt's parts" -> 400 bad_request.
+        Order: empty-marks gate :74-76, attempt load + ownership 404
+        :79-84, structured gate :86-88, no-answers 400 :90-93, settled 409
+        :94-100, exact-parts 400 :102-111, THEN the bound loop.
+      - LearnerSelfMarkService.java :113-121 — the bound loop reads
+        `int marks = e.getValue()` (:116): a null Integer NPEs ON UNBOXING
+        the moment its entry is reached (AFTER the exact-parts gate, before
+        any settle write) -> unmapped -> catch-all (GlobalExceptionHandler
+        :224-230) 500 internal_error. Data-dependent law for
+        {partId:"<in-attempt>", marksAwarded:null}: 500; for a partId NOT in
+        the attempt: the exact-parts 400 fires first.
+    PORT GAPS ON MAIN (post-#94, all verified):
+      1. contracts partSelfMarkSchema requires non-null uuid partId + int
+         marksAwarded — nested nulls (and absent fields) die upstream as
+         400 validation_failed "parts[0].partId: must not be null" instead
+         of reaching the service (the 058 depth pin restores that posture
+         faithfully but the frozen FULL answer is bad_request/500).
+      2. the superRefine duplicate law is a plain seen-set check — misses
+         the value-dependent put() semantics (only reachable once null
+         marksAwarded flows).
+      3. services/selfmark bound loop compares `marks < 0 ||` with JS
+         semantics — a null marks would silently coerce (null < 0 is false,
+         null > bound is false) and settle a 201 — the frozen core 500s.
+    SCOPE / FENCE:
+      - packages/contracts/src/assessment.ts: partSelfMarkSchema widens
+        partId/marksAwarded to .nullish() (Jackson BIND parity — the
+        constraints stay encoded-but-dead exactly as disclosed since t2 /
+        057: the min(0)/max(99) numeric checks are the known inferred-
+        constraint divergence class, NOT touched); the superRefine becomes
+        the exact put()-semantics emulation (displace-non-null throws with
+        the verbatim message, null rendered as "null" like Java string
+        concat); bare null ELEMENTS still rejected (the depth-2 issue the
+        057/058 NPE-parity guard serves — the 500 law intact).
+      - apps/api/src/routes/selfmark/index.ts: the map construction widens
+        to Map<string|null, number|null> with undefined normalized to null
+        (Jackson binds absent as null); comment blocks updated (the F-B
+        register note closes); the 058 nested-null pin REWRITTEN to the
+        frozen law (400 bad_request via the gate).
+      - apps/api/src/services/selfmark/index.ts: signature widens; the
+        exact-parts gate is already null-key-correct (byPartId.has(null)
+        is false -> 400); NEW unboxing-parity pass AFTER the gate /
+        BEFORE the settle writes (any null value -> the parity Error that
+        escapes to the app error boundary -> 500 internal_error, the same
+        mechanism as the route's 053/057 throws).
+    OUT OF SCOPE (register stays open, disclosed):
+      - the inferred-constraint class (@Min(0)/@Max(99) firing 400
+        validation_failed on -1/100 where the frozen core answers 409
+        conflict via the bound loop — the dead-constraint divergence
+        disclosed on 057, unchanged here);
+      - the mixed null-value + out-of-bound-value iteration-order edge
+        (frozen's winner is HashMap hash-iteration order between the
+        unboxing NPE and a ConflictException — not emulated, unreachable
+        by capture; disclosed in the receipt);
+      - F-0/F-1 (binding-class collapse, missing-field message) from the
+        #89 thread — separate register band, #90 classifier prior art.
