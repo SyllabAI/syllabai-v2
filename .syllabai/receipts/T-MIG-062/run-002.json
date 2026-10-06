@@ -1,0 +1,34 @@
+{
+  "task": "T-MIG-062",
+  "run": "002",
+  "agent": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "operator_trace": "1a10f73d46ea053d (standing continue-working directive; PAT persisted at /home/z/.ghtoken 0600, referenced by path, never embedded)",
+  "date": "2026-10-06T05:05:00Z",
+  "branch": "t-mig-062/r4b (claim 1d8a086 pushed BEFORE the fix — the 055 exposure class is closed)",
+  "implementation": {
+    "contracts": [
+      "packages/contracts/src/research.ts — calibrationBinSchema (three-state Bin :289-306), calibrationFormatSegmentSchema (:322-337), calibrationGapSegmentSchema (:354-369, meanAnchor), calibrationReportSchema (:371-385); CALIBRATION_SEGMENT_ORDER / CALIBRATION_GAP_ORDER exported as frozen CONTRACT data (one taxonomy, one source of truth — the service imports them)",
+      "packages/contracts/src/index.ts — the re-export one-liner (OUT-OF-FENCE-flagged, 010/034/043-t1/052/053/061 precedent)"
+    ],
+    "service": "apps/api/src/services/research/index.ts — the 515-line frozen service port verbatim: single ordered fetch (event_type = BKT_UPDATED, order by occurred_at asc — the FP accumulation contract), skip-before-filter walk, emission mapping via the ported LearnerProperties.Bkt.toParams (:94-111 — per-format guess resolver with the 1-slip-1e-9 clamp, F-062-A dead-branch disclosed), normalizedBkt compact-ctor law (:56-62, the tranche-3 registry path stays out of fence), Accum with per-bin learner Sets, k=5 MIN_REPORTABLE_LEARNERS code constant, ECE Σ (count/n)·|meanPredicted−observed| over non-empty bins, three-state bins(), defensive parsers (intValue (int)-cast parity, longValue Long.parseLong strictness, doubleValue decimal-regex — the NaN-string posture disclosed in the header), partition invariants by construction",
+    "route": "apps/api/src/routes/research/index.ts — GET /learner-model/calibration mounted at /api/v1/research; authz shell FIRST (requireRole TEACHER/ADMIN — SecurityConfig :88-90 + the collapsed @PreAuthorize re-gate, zero queries before it); nodeId @RequestParam UUID law (unparseable → 400 bad_request 'malformed request' FIXED body :167-172; parseable → canonical lowercase for the STRICT payload comparison)",
+    "mount": "apps/api/src/index.ts — import + construction + ONE mount line + the OUT-OF-FENCE comment block (010/020/021/031/032/041/052/061 precedent, R0 ratification requested)",
+    "tests": [
+      "apps/api/test/research/calibration.test.ts — 15 route+service tests over fakeSql with the REAL module at the REAL mount prefix: authz shells (401/403/ADMIN, zero sql), nodeId binding (400 FIXED body zero-sql; uppercase canonicalization), the honest-zero EMPTY report (schema-validated, fixed orders), the 5-learner REPORTABLE known-answer (emission-mapped 0.4775 headline, brier 0.27300625, ece 0.5225, bin 3 bounds), C7 suppression (1-learner pooled+segment+bin nulls with counts visible; the 6-row/2-learner row-floor trap; the inclusive k=5 boundary), the format-axis pricing fold (8 rows / 7 segment keys — membership via visible counts, pooled known-answer over mixed pricing, 4.9 (int) truncation), the gap axis (τ bands incl. numeric-STRING '30' banding and '30.5'→UNKNOWN Long.parseLong strictness, meanAnchor over anchor-carrying rows, suppressed meanAnchor null, empty-band 0.0 anchor), the nodeId filter NEITHER-bucket law (uppercase param, non-string payload nodeId), and the skip-before-filter walk (5 malformed shapes skipped globally + the numeric-STRING decayedPrior that must aggregate)",
+      "packages/contracts/src/research.test.ts — 4 schema pins: the frozen taxonomy arrays, the suppressed-null round-trip, the empty-honest-zero vs reportable distinction, the full suppressed-headline report shape"
+    ]
+  },
+  "gates": {
+    "baseline": "37d8825 claim-time measured 1144 pass / 0 fail / 13 skip / 3485 expect (1157 ran / 63 files) — INDEPENDENTLY re-run at the tip before the claim (matches the R0-AUTO receipt EXACTLY)",
+    "branch": "bun install --frozen-lockfile OK; typecheck x4 exit 0 (contracts/shared/db/api); bun test apps/api packages = 1163 pass / 0 fail / 13 skip / 3965 expect (1176 ran / 65 files); golden --selftest OK",
+    "arithmetic": "+19 tests / +480 expects / +2 files — the research pins EXACTLY (15 api + 4 contracts); zero pre-existing tests touched"
+  },
+  "disclosures": [
+    "F-062-A (dead-branch resolution, F-061-C precedent): the toParams clamp is unreachable with the paper constants — ported verbatim, documented not eliminated",
+    "NaN-string decayedPrior rows are SKIPPED in the port; the frozen would parse and poison the sums (NaN bypasses the [0,1] guard) — pathological hand-crafted payload outside the writer's contract, disclosed in the service header",
+    "doubleValue accepts plain decimal/scientific strings only (a decimal-regex) — hex/Infinity strings skip here where frozen parseDouble would accept them; band/outcome-equivalent for every realistic payload, disclosed",
+    "the model_versions registry path (LearnerProperties config) stays tranche-3 per the 041 note — the band consumes the PAPER constants; normalizedBkt is in place for that band to drop config in",
+    "the method-level @PreAuthorize re-gate collapses into the router shell (no second layer to bypass in a single-router mount) — same 401/403 outcomes, documented on the route header"
+  ],
+  "claim_law": "PR authored by R4-api-b → NOT self-merged (authors-never-self-merge); handed to the R0-AUTO/review desk with independent review + id ratification requested (062 per the Wave-6 id_order_disclosure)"
+}
