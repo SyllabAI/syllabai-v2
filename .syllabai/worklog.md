@@ -3911,3 +3911,20 @@ Work Log:
 
 Stage Summary:
 - Round: 1 foreign PR merged (#109) with a real semantic reconciliation; 1 duplicate ruled out (#111); 1 foreign PR merged (#112); own card 061 closed; the carried nit cleared. Lane idle, STOP.
+
+---
+
+Task ID: R4b-ROUND-20 (trace 1a110056d95b2265)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator standing directive "check whether R0 has done its work or not. If not, do it yourself" — census + independent verification + housekeeping.
+
+Work Log:
+- PAT MAINTENANCE (wipe check): /home/z/.ghtoken wiped again by workspace reset — restored from the 0600 mount /home/z/my-project/.secrets/ghpat (also re-chmod'd 600 after drift to 755); credential store /home/z/my-project/.secrets/git-credentials intact (0600). Validation: HTTP 200, login SyllabAI. Persistence layout of record holds.
+- CENSUS @ fetch 37ea7c2: R0 HAS DELIVERED since the R4b-ROUND-19 receipt (4fff2b1): #107 merged cdce05e (T-MIG-067 DONE, CI run 37423118901 green); #109 e760bdc + #110 3e4e22c merged (T-MIG-068 DONE, union 142/177, 5/6 PASS, dual replay 37426037703/37426117865); #112 merged fdcfc53 (T-MIG-070 DONE — the #104 blocker band closed of record, R0-MERGE-DESK-19); #111 closed-yielded per the author's own Task-26 record; #109 closed-superseded per r1c Task-25. Open PRs at census: ZERO. Desk queue: ZERO.
+- CLAIM CENSUS: no free filed bands. Non-DONE cards at census time are owner-property: 043 IN_REVIEW (w0a), 053 IN_PROGRESS (r3a tranches), 061 IN_REVIEW (r9-hubx), 065 IN_REVIEW (r0). RICH-200-C ordered tranches + RICH-200-E are case-owner lanes (web-752465e5) per the bc521b3 ruling. Register observes the 069 id skip (068 -> 070; no 069 card filed).
+- MERGED-TIP GATES first-hand at 37ea7c2 via the persisted harness: bun install --frozen-lockfile OK (940 installs, no changes); typecheck x4 exit 0; bun test apps/api packages = 1385 pass / 0 fail / 13 skip / 5599 expect; golden selftest OK. Reconciles EXACT vs the R0-MERGE-DESK-19 of-record (1398 ran = 1385+13, 73 files). Delta audit fdcfc53..37ea7c2: zero non-.syllabai files touched (bookkeeping-only advance), numbers carried over and re-verified anyway.
+- LOCAL SYNC: local main reset --hard 4fff2b1 -> 37ea7c2 (no unpushed local state; the R4b-ROUND-19 receipt 4fff2b1 already of record in origin history).
+- INTAKE RACE NOTE: main advanced 37ea7c2 -> e273b98 during this round's gates window (another lane's housekeeping: T-MIG-061 -> DONE owning-lane flip + the nba.ts:42-46 stale-header nit cleared, comment-only) — first push rejected non-fast-forward, atomic fetch-first re-apply executed per the hot-main loop; the concurrent 061 flip supersedes this receipt's census line for 061 (owner-property either way, conclusion unchanged); worklog tail union verified: their entries intact, this entry appended after, zero markers.
+
+Stage Summary:
+- R0 merge check IN of record (three merges + two closures since last round; queue zero, register clean of port work). Merged-tip gates 1385/0/13skip/5599 independently verified at the live tip. No r4b-actionable band exists; LANE IDLE — next actionable claim requires R0 to file new ids (069+ band free after the skip) or the case-owner lanes to open reviewable PRs.
