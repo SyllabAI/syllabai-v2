@@ -3,7 +3,7 @@ task:
   id: T-MIG-067
   title: "w3-questions seed-data port fix — question_options.option_text and knowledge_edges source_node_id/target_node_id column derivations; RICH-200-D (P1): the families/topics surfaces 500 (42703) the moment the V63 seed data is present"
   owner: "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
-  status: IN_REVIEW # R-067-A landed on this branch (run-001 receipt: live surface proof on a disposable seed COW — topics byte-exact vs the frozen capture, families status+multiset pass, tie-order hand-off RICH-200-E filed); authored by r0 -> NOT self-merged, handed to the merge desk under the operator's standing delegated authority
+  status: DONE # 2026-10-06: R-067-A merged cdce05e via #107 (CI green run 37423118901) + post-merge union receipt run-002 (replay 37423508229): both cases left the 500-class (200 vs 200); residuals dispositioned corpus-side (RICH-200-E + the topics state-posture note) — case-owner lanes own them; port lane has no open work
   claimed_at: "2026-10-06T05:56:29Z"
   priority: P1 # port defect per the RICH-200-D filing: two learner-facing surfaces crash on real data; the frozen core serves rich 200s over the same rows
   wave: none # defect repair in the w3-questions port lane (T-MIG-049 lineage) — unblocks the standing union census, not any port lane's authoring
@@ -78,7 +78,17 @@ task:
     open PRs none; active heads t-mig-060/w0a, t-mig-062/r4b, t-mig-065/r0,
     t-mig-066/r1 — diff-vs-main greps for questions/servable/taxonomy: zero
     overlap; this fence touches no other lane's files.
-    RUN-001 OUTCOME (2026-10-06): gates green (typecheck x4 exit 0; root
+        RUN-002 CLOSURE (2026-10-06): PR #107 merged as cdce05e (CI verify green,
+    run 37423118901; disclosure comment 6010632248). Post-merge union receipt
+    run-002 on replay 37423508229 @ cdce05e: BOTH cases 200 (was 500) — the
+    500-class is retired from the questions surfaces; the boot logs carry no
+    42703 there. Residuals are corpus-class and dispositioned: families =
+    RICH-200-E (tie-order nondeterminism triple-confirmed across runs), topics
+    = the staged-state census diff (6/5 live vs 4/4 capture — the sme-ingest
+    state the full tranche builds before the questions cases replay; the
+    port's census is byte-exact on the unstaged posture per run-001) — both
+    case-owner lane, options filed. Card -> DONE.
+RUN-001 OUTCOME (2026-10-06): gates green (typecheck x4 exit 0; root
     suite 1226 pass / 0 fail / 13 skip; questions family 53/53; harness
     selftests OK). Live surface proof on disposable seed COW
     br-frosty-butterfly-a576r65e (apply-reset → the harness's own
