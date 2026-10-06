@@ -1,0 +1,39 @@
+{
+  "task_id": "T-MIG-071",
+  "run": "001",
+  "kind": "implementation + live verification",
+  "timestamp": "2026-10-06T09:40:00Z",
+  "lane": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "trace": "1a1107d90d2f3cc9",
+  "implementation_commit": "f6a4bb8 (branch t-mig-071/r4b, PR #119)",
+  "ruling_law": "receipts/R0-arbitration/ruling3-operator-four-rulings.json (operator trace 1a1100c71ff48e05)",
+  "amendments": {
+    "R3-C": "the run-7 class-C eight: each gains justified:true + expect.headers.Retry-After = 're:^[1-9][0-9]*$'. The pin is a PATTERN because the limiter's value is remaining-window seconds (ratelimit.ts:214, registerPerIp=5/60s) and rotates every replay (run-7's '46' = capture-time artifact) — the ruled 'minimal runner extension' rider. Burst-order coverage BOTH ways: declaredLimiter429 (justified AND pin, neither alone) gates the 429 posture by the pin; the frozen 400/403 capture governs the admitted posture (ordinaryHeaderExpectations drops only the 429-only pin). The green is DISCLOSED (row-level marker + summary counts). No pacing anywhere. No family extension: success-201/duplicate-email-409 are seq 1/2 — first bucket consumers, admitted on the instrument; the ruling's extension condition is not met.",
+    "R3-D3": "w4-target-series-put-201 tolerate[] += daysToWindowStart, daysToWindowEnd + justified:true (capture-time anchor 2026-10-05; +1 day per replay day; port utcToday law faithful). All other fields stay byte-pinned.",
+    "R3-D4": "w4-register-learner-201 += accessToken; w3-history-after-submit-200 += learnerId ONLY (attemptId was already tolerated — zero silent widening); auth-me-with-bearer-200 += email, displayName (id already tolerated; run-7 note H). Staged-identity tranche stays SHELVED."
+  },
+  "tooling": [
+    "golden/runner.ts: checkHeaders pattern rider (exported) + declaredLimiter429 + ordinaryHeaderExpectations + ReplayVerdict {pass, declared429} + row-level disclosure + selftest growth (pattern pass/mismatch/non-numeric/malformed-fails-loudly/exact-unchanged + predicate both-ways + admitted-posture exclusion)",
+    "golden/tools/ci-replay.ts: the checkHeaders duplicate consolidated into the gated runner import (single source; parallel-edit drift risk removed) + the identical disposition branch in replayOne + CaseResult.declared429 evidence + disclosure counts in per-run/union/report summaries"
+  ],
+  "gates_local": {
+    "runner_selftest": "OK (grown)",
+    "ci_replay_selftest": "OK",
+    "unit_tests": "1533 pass / 0 fail / 13 skip / 6036 expect / 82 files = tip baseline (e9ef235) +0 EXACT (stash-measured at the same commit)",
+    "typecheck": "x5 exit 0 (root/api/contracts/db/shared)"
+  },
+  "gates_ci": "ci run 37443522654 SUCCESS at f6a4bb8",
+  "live_replay": {
+    "workflow": "neon-replay run 37443535771 at f6a4bb8 (read-only, disposable COW branches, dropped after — T-MIG-035 discipline; READ-ONLY PROOF step success)",
+    "union": "157/177 PASS (seed 144/162 + prod 13/15) — vs the 142/177 union of record at the T-MIG-068 baseline (33e281f, pre-#117-composition); the ruling3 projection for 071+072 combined was +14..17",
+    "declared429_cleared": ["auth-register-missing-fields-400", "auth-register-password-no-digit-400", "auth-register-short-password-400", "auth-register-teacher-no-joincode-403", "auth-register-unknown-role-400"],
+    "C_class_admitted_green": ["auth-register-admin-refused-403", "auth-register-bad-email-400", "auth-register-blank-displayname-400"],
+    "C_class_total": "8/8 GREEN — 5 via the disclosed declared-429 disposition, 3 via the ordinary frozen-capture path (burst-order coverage both ways proven live)",
+    "R3_D3": "w4-target-series-put-201 GREEN",
+    "R3_D4": "w4-register-learner-201 GREEN; auth-me-with-bearer-200 GREEN (email/displayName verified field-by-field); w3-history-after-submit-200 PARTIAL — the learnerId divergence is absorbed, but a residual attempt-count diff (live total:2/returned:2 vs captured 1/1) remains: a corpus-flow/B-class seed-posture divergence NOT ruled into this band's tolerate set (zero silent widening) — FILED for the case-owner lane with the standing B-class items",
+    "job_color_note": "the neon-replay JOB is red by design while any standing divergence remains (union exits nonzero); the row-level verdict above is the evidence of record",
+    "remaining_reds": "18 seed + 2 prod — all named standing items: E-class bearer posture (curriculum-subject x2, agenda/state malformed-bearer x2 — run-9 action 1), I-class sentinel (target-series-clear x2, question-assets-unknown — action 6), R1 re-pin candidates, KG/smart-lesson rows (068 residual disposition), RICH-200-E tie-order (topics/families), the history-after-submit count residual, G-class prod createdAt passthrough (content-docs x2 — action 11)"
+  },
+  "scope_fence": "golden/cases/** (12 files) + golden/runner.ts (ruled rider) + golden/tools/ci-replay.ts (consolidation) + .syllabai/** only; apps/** and packages/** untouched (git diff --stat verified at f6a4bb8: 14 files)",
+  "status": "IN_REVIEW — filed NOT self-merged (authors-never-self-merge); PR #119 awaits the desk"
+}
