@@ -3928,3 +3928,18 @@ Work Log:
 
 Stage Summary:
 - R0 merge check IN of record (three merges + two closures since last round; queue zero, register clean of port work). Merged-tip gates 1385/0/13skip/5599 independently verified at the live tip. No r4b-actionable band exists; LANE IDLE — next actionable claim requires R0 to file new ids (069+ band free after the skip) or the case-owner lanes to open reviewable PRs.
+
+---
+
+Task ID: R1-ROUND-21 (trace 1a1100f03295c239)
+Agent: r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Operator directive "check and claim and continue" — census, claim the next free band, execute.
+
+Work Log:
+- CHECK: main 97295d1 (r4b-ROUND-20 receipt); queue zero, open PRs zero; #107/#108/#109/#110/#112 all merged of record; merged-tip gates 1385/0/13skip/5599/73f of record and not re-measured this round (two independent lanes already reconciled EXACT: R0-MERGE-DESK-19 + R4b-ROUND-20).
+- CLAIM CENSUS: no free filed bands (043/053/061/065 owner-property; RICH-200-C/E case-owner lanes). Claimed from the REGISTER instead per the F-B/064 precedent: the inferred-constraint class residual (disclosed T-MIG-057, restated 'unchanged' on the 064 F-B receipt) -> FILED as T-MIG-071 (the selfmark dead-constraint class). 069 skipped for w0a's CLA refile per ruling2; 070 taken; 071 next free. Zero-collision: no 071 in .syllabai/, no t-mig-071 heads, fence disjoint from r3a's live 053 t3/t4.
+- FROZEN LAW re-verified line-against-line @ 6cad6ef: SelfMarkRequest.java:59 bare List = no @Valid cascade -> the element @Min(0)/@Max(99) (:56) NEVER evaluate (dead letter, Jackson binds any int); LearnerSelfMarkService.java:113-121 bound loop -> ConflictException 'marks N outside part bound 0–X' 409 (U+2013 verbatim); :115 bound=Math.max(marks,0) + the 'bound > 0 &&' guard = the 0-mark-part sharp edge (any marks >= 0 accepted on a 0-bound part — pinned, not 'fixed'). The port service is ALREADY faithful (selfmark/index.ts:218-220) — the divergence is contracts-only: assessment.ts:284 .min(0).max(99) renders the dead constraints live and kills -1/100 at binding with the WRONG envelope (400 validation_failed where frozen answers 409).
+- Branch t-mig-071/r1 cut @ 97295d1; claim commit first (card + receipt + this entry), pushed before implementation (wipe-protection). Residual disclosed on the receipt: the Jackson-Integer coercion class (int32 overflow / fractional) — register-only, not fixed in this fence.
+
+Stage Summary:
+- T-MIG-071 claimed (IN_PROGRESS): contracts-only widening (.min(0).max(99) off the bind law) + the :184-186 pin flip to the bind law + the 0-mark-part edge pin. Implementation + A/B gates next (run-002). Authors never self-merge — the PR will be handed to the desk.
