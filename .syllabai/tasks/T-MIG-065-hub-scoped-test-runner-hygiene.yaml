@@ -3,7 +3,7 @@ task:
   id: T-MIG-065
   title: "hub scoped-test-runner hygiene — the R0-ROUND-6C flagged housekeeping (worklog :2018): bare `bun test` inside apps/hub scans tests/e2e/** Playwright specs with bun's runner -> 5 'Playwright Test did not expect test() to be called here' errors; scope bun test discovery to src/ via apps/hub/bunfig.toml [test] root so the hub bun suite is green standalone; Playwright stays the ONLY runner for tests/e2e (test:e2e)"
   owner: "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e) — operator directive trace 1a10f72fc83f0cbd 'hub hygiene' routing the unfiled housekeeping item to this session; the item was R0-ROUND-6C's ENV NOTE ('hub bun test scans Playwright specs on main equally (5 errors) — CI correctly gates hub via build:hub only; flagged as future housekeeping (scoped runner hygiene)') and has sat unfiled through rounds 6C-15"
-  status: IN_REVIEW # impl landed on this branch (run-002); authored by r0 -> NOT self-merged, handed to the merge desk
+  status: DONE # merged of record 32626cb via #103 (verified against the GitHub PR of record 2026-10-06 by the R0-integrator desk) — the card was left IN_REVIEW stale after the merge; flipped of record now
   priority: P3 # hygiene: zero CI impact today (CI gates hub via build:hub; root verify scopes to apps/api + packages) — but every agent running bare `bun test` in apps/hub eats the 5 errors
   wave: none # housekeeping, not wave work (the no-self-filed-wave-work law held: this item was flagged by R0-ROUND-6C and routed by the operator)
   deps: [T-MIG-037] # the hub dual-run card whose CI-parity work established build:hub as the hub gate
