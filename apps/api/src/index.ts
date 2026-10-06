@@ -58,6 +58,7 @@ import { buildClassroomRouters } from "./routes/classroom";
 import { buildResearchRouters } from "./routes/research";
 import { buildLearnerMeRouters } from "./routes/learnerme";
 import { buildTutorRouters } from "./routes/tutor";
+import { buildClaRouters } from "./routes/cla";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
@@ -76,6 +77,7 @@ const answerInput = buildAnswerInputRouters();
 const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
 const tutor = buildTutorRouters();
+const cla = buildClaRouters();
 const sme = buildSmeRouters();
 const intervention = buildInterventionRouters();
 const classroom = buildClassroomRouters();
@@ -351,6 +353,29 @@ app.route("/api/v1/admin/question-bank", sme.adminRoute);
 // the /latest-never-captured-by-/:sessionId law reads top-down.
 app.route("/api/v1/tutor/sessions", tutor.tutorSessionsRoute);
 app.route("/api/v1/tutor", tutor.tutorRoute);
+
+// CLA ask surface (T-MIG-069 tranche 2 — Wave 6). Path parity with the
+// frozen core: ClaController under /api/v1/learners/me/cla (POST /ask —
+// the ONE endpoint, :36-101 @ 6cad6ef). Falls under the frozen
+// anyRequest().authenticated() rule (SecurityConfig.java:91 — no specific
+// matcher for this prefix); the router owns its authz internally. The
+// runtime-step law is WIRED: the four dependency-served kinds dispatch
+// (KG_TOPIC / SPECIFICATION_POINT / PAST_PAPER_QUESTION / QUESTION_PART);
+// SMART_LESSON + NOTE_SECTION are refused with the frozen closed-enum 400
+// (the T-MIG-053 t3/t4 gate — r3a's tranches; disclosed, never silent).
+// The paper-question serving gate is the landed ServableQuestions chain;
+// the LLM provider seam is DORMANT (the 060 posture — generation-reaching
+// asks serve the honest 503 tutor_unavailable, deterministic refusals
+// never 503); the interaction event rides the no-op telemetry sink (the
+// 061 posture — zero tables, ADR-031 intact).
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-069, R0 ratification requested):
+// T-MIG-069's scope.allowed covers routes/cla.ts, services/cla/**,
+// test/cla/**, packages/contracts/src/cla.ts — NOT this file. The import +
+// construction + one mount line + this comment are the minimal app-level
+// wiring, shipped as a separate commit per the
+// T-MIG-010/020/031/043/052/061/060 precedent.
+app.route("/api/v1/learners/me/cla", cla.claRoute);
 
 // Classroom/teacher foundation routers (T-MIG-052 tranche 2 — Wave 5). Path
 // parity with the frozen core: TeacherClassController under /api/v1/teacher
