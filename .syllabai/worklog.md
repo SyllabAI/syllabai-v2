@@ -3169,3 +3169,22 @@ Work Log:
 
 Stage Summary:
 - T-MIG-059 DONE. The classroom two-envelope classifier now serves the FULL frozen binding law: wrong-typed fields and format-parse failures -> 400 malformed_body verbatim (Jackson binds the whole document BEFORE @Valid; binding beats every constraint — pinned in both directions incl. the FIRST-issue-constraint precedence case), null/absent binds on @NotBlank render the jakarta default "field: must not be blank", and the JSON-null root keeps the disclosed "request invalid" posture (now pinned). The four-finding F-set from the #89 REQUEST_CHANGES verdict is fully dispositioned (F-2/F-3 via #93, F-0/F-1 via #96); the #89 ratification registration has no open remainder on the classroom band. Register after this card: the T-MIG-058 F-B band is now filed as T-MIG-064 (PR #99 in flight, r1-contracts); the rowsFor hardening nit stays register-open (non-gating). LANE returns to the operator's disposition.
+
+---
+Task ID: R0-AUTO (cron job 438940, sweep 2026-10-06 05:00 UTC)
+Agent: R0-auto merge desk (Super Z scheduled integrator)
+Task: Periodic merge-desk sweep — review + merge open PRs per the standing R0-auto procedure (max 2 merges/run, oldest first).
+
+Work Log:
+- Census: main had advanced to ba3976b — #96 (T-MIG-059 F-0/F-1 binding-law adoption) was reviewed (independent adversarial APPROVE 6009603113) and merged 07df48a by the parallel R0-AUTO desk lane, housekeeping landed; the F-0/F-1 register item is CLOSED. Open PRs: #98 (061-t2 Wave-6 intervention routes, r9-hubx) / #99 (064 F-B selfmark exact-parts emulation, r1 re-file of the yielded 059 id per earliest-claim-wins, #97 closed superseded with documented collision record) / #100 (063 ci-replay rich-200 parity, r0).
+- #100: NO CI on head 959fc6b → skipped per rule (b). #99: CI green at snapshot head 4ec23ca, but the lane pushed a new head 449f9af mid-sweep with hub CI in_progress → skipped per rule (b).
+- #98 guard chain: CI verify+hub success at real head 2033ea9; 0 reviews / 0 comments / zero hold-block hits; 7 files +1167/-1 boundary-clean (routes/intervention.ts NEW 9-endpoint port + 735-line pin suite + index.ts flagged mount). First PUT rejected: merge conflicts → INTAKE per procedure (c).
+- INTAKE: merged origin/main ba3976b into t-mig-061/r9-hubx — worklog-tail add/add only (TWO conflict blocks, both worklog, zero code conflicts); append-only chronological union applied per block (main verbatim in place, PR's Task-20 implementation entry re-appended; byte-checked, first commit had residual second-block markers — caught, resolved, amended as a1e266c; zero markers).
+- CONCURRENT-INTEGRATOR CONVERGENCE: push rejected non-FF — the r9-hubx/delegated lane had independently built its own intake f6d4870 of the SAME main (the #55/#75 precedent). Merged their tip into mine; 4 worklog hunks all set-equal (their side contributed ZERO unique lines — proven by the union script), ordering unified to main-then-PR (convergence commit 2146f77). No force-push anywhere.
+- Gates at the converged head: install OK; typecheck exit 0; bun test apps/api packages 1181 pass / 0 fail / 13 skip / 3598 expect (1194 ran / 64 files = branch-head receipt 1174/3570 + the landed #96 delta +7/+28 EXACT); golden --selftest OK.
+- Pushed the converged intake (fast-forward of the remote branch, contains f6d4870); MERGED #98 as 2d5a73d. CI verified on new main tip 2d5a73d: verify + hub completed/success.
+
+Stage Summary:
+- Wave-6 intervention surface fully wired: 061 tranche-2 (9-endpoint routes + mounts + 30 pins) LIVE on main. F-0/F-1 register item closed via #96; the F-B band re-filed cleanly as 064 (id law holding under earliest-claim-wins).
+- Skipped this cycle awaiting CI: #99 (064, head moved mid-sweep), #100 (063, CI pending) — next sweep (05:30 UTC) picks them up oldest-first.
+- Queue at sweep end: 2 open PRs (99, 100). No escalations. LANE DONE for this cycle.
