@@ -1,6 +1,6 @@
 {
   "name": "w4-register-learner-201",
-  "description": "register the W4 capture learner (synthetic identity; honest register path)",
+  "description": "register the W4 capture learner (synthetic identity; honest register path) (R3-D4 Option A, operator ruling: capture-minted/seeded-identity field tolerated per run-7 note H)",
   "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
   "method": "POST",
   "path": "/api/v1/auth/register",
@@ -28,7 +28,8 @@
   },
   "tolerate": [
     "id",
-    "timestamp"
+    "timestamp",
+    "accessToken"
   ],
   "seq": 1
 }

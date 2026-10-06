@@ -1,6 +1,6 @@
 {
   "name": "auth-me-with-bearer-200",
-  "description": "GET /api/v1/auth/me with a bearer token: 200 UserView{id,email,displayName,roles} [T-MIG-006: replay-readiness annotation - generated fields (fresh token/id per boot) tolerated by field name; scrubbed capture values kept for archaeology.]",
+  "description": "GET /api/v1/auth/me with a bearer token: 200 UserView{id,email,displayName,roles} [T-MIG-006: replay-readiness annotation - generated fields (fresh token/id per boot) tolerated by field name; scrubbed capture values kept for archaeology.] (R3-D4 Option A, operator ruling: capture-minted/seeded-identity field tolerated per run-7 note H) [id was already tolerated; email/displayName expected divergent per run-7 note H]",
   "source": "captured from a LOCAL boot of the frozen Java core (built from the frozen main tree, JDK 25) against Neon BRANCH t-mig-003/r6 (br-divine-mode-a5xur4zv, copy-on-write of production) on 2026-10-04T18:36Z by T-MIG-003 run-002 (R6); no production writes; scrubbed: accessToken->fixed dummy, user id->stable fake UUID, account identity synthetic from creation",
   "method": "GET",
   "path": "/api/v1/auth/me",
@@ -21,7 +21,9 @@
     }
   },
   "tolerate": [
-    "id"
+    "id",
+    "email",
+    "displayName"
   ],
   "seq": 5
 }

@@ -65,6 +65,19 @@ interface GoldenCase {
   // the composition lives in golden/tools/ci-replay.ts, where staging
   // exists — the ruling's routing: "ci-replay/corpus composition").
   tranche?: "empty" | "staged";
+  // T-MIG-071 (R0 arbitration ruling3 R3-C/D3, operator trace 1a1100c71ff48e05;
+  // GOLDEN_MASTER §4 lineage — the health.json case is the field convention):
+  // the case carries an OPERATOR-RULED justified divergence. For the register
+  // C-class this is v2's operator-endorsed register rate limiter (the
+  // RateLimitFilter port, registerPerIp=5 / 60s fixed window): the frozen core
+  // has NO register limiter, so a 429+Retry-After answer here is v2-only BY
+  // CONSTRUCTION and is gated — for that posture only — by the case's declared
+  // expect.headers Retry-After pin (pattern-capable, see checkHeaders) instead
+  // of the frozen status/body capture. The frozen capture STILL governs the
+  // admitted posture (burst-order coverage BOTH ways, zero re-pinning, zero
+  // deletions). Declared only — never a general 429 escape; the runner must
+  // NOT pace around the limiter (standing masking ban, run-7 note C).
+  justified?: boolean;
 }
 
 // T-MIG-006 bearer injection: a case may carry the {{TOKEN}} placeholder in
@@ -100,7 +113,18 @@ function substituteToken(
 // T-MIG-006 (T-MIG-004 F-3): response-header comparison - subset match,
 // case-insensitive header NAMES, exact VALUES (HTTP semantics). A missing
 // actual header is a failure reported by name.
-function checkHeaders(
+// T-MIG-071 (R3-C rider, explicitly ruled "minimal runner extension ... in
+// scope per the T-MIG-004 F-3 harness lineage"): an expected value prefixed
+// "re:" is a REGEX pattern matched against the FULL actual value (the case
+// declares its own anchors). Needed because the limiter's Retry-After is
+// remaining-window seconds — apps/api/src/middleware/ratelimit.ts:214 derives
+// it from the live clock, so it ROTATES every replay (run-7's "46" was a
+// capture-time artifact); an exact pin would be recurring maintenance by
+// construction. Values without the prefix keep exact semantics (no
+// pre-T-MIG-071 case declares expect.headers — verified at claim time).
+// A malformed pattern fails the case loudly (case-local, run completes) —
+// authoring error, never a crash.
+export function checkHeaders(
   actual: Headers,
   expected: Record<string, string> | undefined,
 ): string | null {
@@ -110,9 +134,46 @@ function checkHeaders(
   for (const [name, want] of Object.entries(expected)) {
     const got = lower.get(name.toLowerCase());
     if (got === undefined) return `header ${name} missing (expected "${want}")`;
+    if (want.startsWith("re:")) {
+      let ok = false;
+      try {
+        ok = new RegExp(want.slice(3)).test(got);
+      } catch {
+        ok = false;
+      }
+      if (!ok) return `header ${name}: "${got}" vs expected pattern "${want}"`;
+      continue;
+    }
     if (got !== want) return `header ${name}: "${got}" vs expected "${want}"`;
   }
   return null;
+}
+
+// T-MIG-071 (R3-C): the declared limiter-429 posture. A case participates
+// ONLY when it declares justified:true AND an expect.headers Retry-After pin
+// — both ruled together (the operator's Option B effect list); neither alone
+// enables the disposition. Exported for golden/tools (single source — the
+// composition's replay loop applies the identical branch).
+export function declaredLimiter429(kase: GoldenCase): boolean {
+  return (
+    kase.justified === true &&
+    kase.expect.headers !== undefined &&
+    "Retry-After" in kase.expect.headers
+  );
+}
+
+// T-MIG-071 (R3-C): header expectations for the ADMITTED posture (the frozen
+// 400/403 answer). The declared Retry-After pin documents the tripped posture
+// ONLY — it is a 429-only header by construction (the frozen core has no
+// register limiter and never serves it), so the ordinary evaluation must not
+// gate the frozen capture on it. Only the pin is dropped; any other declared
+// header expectation stays exact.
+export function ordinaryHeaderExpectations(
+  kase: GoldenCase,
+): Record<string, string> | undefined {
+  if (!declaredLimiter429(kase)) return kase.expect.headers;
+  const { "Retry-After": _pin, ...rest } = kase.expect.headers;
+  return rest;
 }
 
 const CASES_DIR = join(import.meta.dir, "cases");
@@ -206,18 +267,26 @@ export function buildMultipartBody(kase: GoldenCase): FormData {
   return form;
 }
 
+/**
+ * T-MIG-071 (R3-C): replay verdict shape — the declared-429 green is
+ * DISTINGUISHABLE from the ordinary green ("pass" with declared429:true) so
+ * the call sites disclose it, never silently. Module-local (the composition
+ * loop mirrors the branch via the shared exported helpers).
+ */
+type ReplayVerdict = { pass: true; declared429?: boolean } | { pass: false; diff: string };
+
 async function replayAgainst(
   target: string,
   kase: GoldenCase,
   token: string | undefined,
-): Promise<string | null> {
+): Promise<ReplayVerdict> {
   let req: GoldenCase["request"];
   try {
     req = substituteToken(kase, token);
   } catch (e) {
     // Fail-fast stays CASE-LOCAL: a {{TOKEN}} placeholder without --token
     // fails this case loudly and honestly, but must not abort the whole run.
-    return `harness error: ${e instanceof Error ? e.message : String(e)}`;
+    return { pass: false, diff: `harness error: ${e instanceof Error ? e.message : String(e)}` };
   }
   let reqBody: BodyInit | undefined;
   const headers: Record<string, string> = { ...req?.headers };
@@ -227,7 +296,7 @@ async function replayAgainst(
     try {
       reqBody = buildMultipartBody(kase);
     } catch (e) {
-      return `harness error: ${e instanceof Error ? e.message : String(e)}`;
+      return { pass: false, diff: `harness error: ${e instanceof Error ? e.message : String(e)}` };
     }
   } else {
     headers["content-type"] = headers["content-type"] ?? "application/json";
@@ -247,13 +316,28 @@ async function replayAgainst(
     // Transport failures (target down, connection refused) are CASE-LOCAL
     // harness errors too: the run completes and classifies every case
     // instead of crashing on the first unreachable one.
-    return `harness error: target unreachable (${e instanceof Error ? e.message : String(e)})`;
+    return { pass: false, diff: `harness error: target unreachable (${e instanceof Error ? e.message : String(e)})` };
   }
   let body: unknown = null;
   try {
     body = await res.json();
   } catch {
     body = "<non-json>";
+  }
+  // T-MIG-071 (R3-C): the declared limiter-429 disposition — evaluated
+  // BEFORE the frozen-capture comparison. When the operator-endorsed
+  // limiter trips (429 — v2-only by construction: the frozen core has no
+  // register limiter), the case's declared contract for THIS posture is
+  // the expect.headers pin (pattern-capable); the 429 body shape is pinned
+  // at the unit layer (apps/api/test/ratelimit/ratelimit-filter.test.ts),
+  // not re-pinned here (the ruling declares the header pin only). The
+  // green is DISCLOSED at the call site — never silent. Any non-429 answer
+  // (including a 429 WITHOUT the declared pin) falls through to the
+  // ordinary frozen-capture evaluation below.
+  if (res.status === 429 && declaredLimiter429(kase)) {
+    const pinDiff = checkHeaders(res.headers, kase.expect.headers);
+    if (pinDiff === null) return { pass: true, declared429: true };
+    return { pass: false, diff: `declared-429 pin failed (R3-C): ${pinDiff}` };
   }
   const statusOk = res.status === kase.expect.status;
   // Tolerate wiring provenance: the replay-path defect (deepEqual dropped
@@ -268,12 +352,15 @@ async function replayAgainst(
     kase.tolerate ?? [],
     kase.unordered ?? [],
   );
-  const headerDiff = checkHeaders(res.headers, kase.expect.headers);
-  if (statusOk && bodyOk && headerDiff === null) return null;
+  // T-MIG-071 (R3-C): the admitted posture drops the 429-only Retry-After
+  // pin from the header check (ordinaryHeaderExpectations) — the frozen
+  // capture must not be gated on a header the frozen core never serves.
+  const headerDiff = checkHeaders(res.headers, ordinaryHeaderExpectations(kase));
+  if (statusOk && bodyOk && headerDiff === null) return { pass: true };
   const parts = [`status ${res.status} vs ${kase.expect.status}`];
   if (!bodyOk) parts.push(`body ${JSON.stringify(body)} vs ${JSON.stringify(kase.expect.body)}`);
   if (headerDiff !== null) parts.push(headerDiff);
-  return parts.join("; ");
+  return { pass: false, diff: parts.join("; ") };
 }
 
 // ---- engine self-test: the engine must prove ITSELF before gating anything ----
@@ -451,7 +538,77 @@ function selftest(): number {
     console.error("selftest FAILED: staged tranche must not leak empties");
     return 1;
   }
-  console.log("selftest OK: tolerance engine behaves (incl. declared-unordered multiset — T-MIG-024; RFC 8259 key canonicalization + tranche partition — T-MIG-072)");
+  // T-MIG-071 (R3-C rider): pattern-value header match — the limiter's
+  // Retry-After is remaining-window seconds (rotates every replay), so the
+  // pin is a case-declared regex; exact values keep exact semantics.
+  const ra37 = new Headers({ "retry-after": "37" });
+  if (checkHeaders(ra37, { "Retry-After": "re:^[1-9][0-9]*$" }) !== null) {
+    console.error("selftest FAILED: pattern header pin should pass on a rotating value");
+    return 1;
+  }
+  if (checkHeaders(ra37, { "Retry-After": "re:^46$" }) === null) {
+    console.error("selftest FAILED: pattern pin must still fail on a real value mismatch");
+    return 1;
+  }
+  if (checkHeaders(new Headers({ "retry-after": "abc" }), { "Retry-After": "re:^[1-9][0-9]*$" }) === null) {
+    console.error("selftest FAILED: pattern pin must fail a non-numeric value");
+    return 1;
+  }
+  if (checkHeaders(new Headers({ "x-a": "v" }), { "X-A": "re:[unclosed" }) === null) {
+    console.error("selftest FAILED: malformed pattern must fail the case, never throw");
+    return 1;
+  }
+  if (checkHeaders(ra37, { "Retry-After": "37" }) !== null) {
+    console.error("selftest FAILED: unpinned values must keep exact semantics");
+    return 1;
+  }
+  // T-MIG-071 (R3-C): the declared limiter-429 posture — enabled by
+  // justified:true AND the Retry-After pin TOGETHER; neither alone.
+  const mkCase = (over: Record<string, unknown>) =>
+    ({
+      name: "t",
+      method: "POST",
+      path: "/x",
+      expect: { status: 400, body: null, headers: { "Retry-After": "re:^[1-9][0-9]*$" } },
+      ...over,
+    }) as unknown as GoldenCase;
+  if (!declaredLimiter429(mkCase({ justified: true }))) {
+    console.error("selftest FAILED: justified + pin must enable the declared-429 disposition");
+    return 1;
+  }
+  if (declaredLimiter429(mkCase({}))) {
+    console.error("selftest FAILED: the pin alone must NOT enable the disposition");
+    return 1;
+  }
+  if (
+    declaredLimiter429(
+      mkCase({ justified: true, expect: { status: 400, body: null } }),
+    )
+  ) {
+    console.error("selftest FAILED: justified without the pin must NOT enable the disposition");
+    return 1;
+  }
+  // T-MIG-071 (R3-C): the admitted posture must drop ONLY the Retry-After
+  // pin — every other declared header expectation stays exact.
+  const oh = ordinaryHeaderExpectations(
+    mkCase({
+      justified: true,
+      expect: {
+        status: 400,
+        body: null,
+        headers: { "Retry-After": "re:^[1-9][0-9]*$", "X-Capture": "frozen" },
+      },
+    }),
+  );
+  if (!oh || oh["X-Capture"] !== "frozen" || "Retry-After" in oh) {
+    console.error("selftest FAILED: ordinary posture must drop only the Retry-After pin");
+    return 1;
+  }
+  if (ordinaryHeaderExpectations(mkCase({})) === undefined) {
+    console.error("selftest FAILED: non-participating cases must keep their expectations");
+    return 1;
+  }
+  console.log("selftest OK: tolerance engine behaves (incl. declared-unordered multiset — T-MIG-024; RFC 8259 key canonicalization + tranche partition — T-MIG-072; pattern Retry-After pin + declared limiter-429 posture — T-MIG-071)");
   return 0;
 }
 
@@ -532,12 +689,18 @@ if (import.meta.main) {
       // delivers the same fix (see provenance note inside replayAgainst) plus
       // seq/token support - the call below is the subsuming form (now incl.
       // the T-MIG-024 declared-unordered arg).
-      const diff = await replayAgainst(target, kase, token);
-      if (diff) {
-        failures++;
-        console.error(`FAIL ${kase.name}: ${diff}`);
+      const verdict = await replayAgainst(target, kase, token);
+      if (verdict.pass) {
+        // T-MIG-071 (R3-C): the declared-429 green is DISCLOSED at the row
+        // level — the operator-endorsed limiter answered; the pin matched.
+        console.log(
+          verdict.declared429
+            ? `PASS ${kase.name} [declared-429: operator-endorsed limiter answered; Retry-After pin matched (R3-C)]`
+            : `PASS ${kase.name}`,
+        );
       } else {
-        console.log(`PASS ${kase.name}`);
+        failures++;
+        console.error(`FAIL ${kase.name}: ${verdict.diff}`);
       }
     }
     console.log(`\n${cases.length - failures}/${cases.length} golden cases pass against ${target}${filter ? ` (filter: ${filter})` : ""}`);
