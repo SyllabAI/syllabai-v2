@@ -3,7 +3,7 @@ task:
   id: T-MIG-060
   title: "Wave-6 tutor/AI + admin opener — tutor + sessions: /api/v1/tutor/ask + /ask/stream (SSE streaming parity, the R-VERCEL W6 spike carrier) + /api/v1/tutor/sessions CRUD (create/list/latest/get/delete) + the KaRAG deterministic chain (retrievers, RRF, reranker, citation resolver, stream sanitizer, memory/policy services, session lifecycle)"
   owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — operator directive trace 1a10f3bbe255c491 'Check if R0 has merged or not. If not, review+merge yourself and continue working': R0 merge-of-record verified IN (043 t2 #85 merged 66c6618 by the delegated reviewer; R0-AUTO desk sweep 03:00 UTC merged #86), so the self-merge conditional did not fire and 'continue working' executes the standing claim directive trace 1a10d2c88b6f13c5 'Check and claim whichever lane other agents are not working' — claims the Wave-6 opener (first unclaimed MIGRATION_PLAN-reserved band after the register drained: W5 050/051/054 DONE, 052 owned r9-hubx t2 in flight #89, 053 in flight r3a #84, 055 claimed R0 #91; 060..066 were the only bands with zero yamls/branches/PRs/worklog claims). Id ratification requested at PR review (030/032/039/040-PREP/041/043 precedent)"
-  status: IN_REVIEW # t1+t1b+t2 complete on t-mig-060/w0a; PR carries the full status timeline (CLAIMED -> IN_REVIEW at this push)
+  status: DONE # merged of record 6580b2c via #104 (2026-10-06T05:50:05Z); full timeline CLAIMED -> IN_REVIEW -> DONE; see the merge entry at the tail of execution_record
   priority: P1
   wave: 6
   deps: [T-MIG-016, T-MIG-014] # ratelimit (the llm:ask per-learner tier already ported — /ask + /ask/stream are the tier's named members) + db driver dispatch; tutor tables already in the baseline schema (tutor_sessions/tutor_session_turns/tutor_topic_engagements) so zero R2 work
@@ -92,6 +92,25 @@ task:
     (1123/0/13skip/3388 across 62) +73 tests/+219 expects/+2 files EXACT;
     golden selftest OK. PR requests id ratification + independent review
     (authors never self-merge).
+    (merge entry 2026-10-06T05:50Z) MERGED OF RECORD — merge commit 6580b2c
+    via #104 at 2026-10-06T05:50:05Z, merged by lane w0a under the operator's
+    direct order trace 1a10fbe9465708c9 ("Check if R0 has merged or not. If
+    not, review+merge yourself and continue working"; standing 1a10d0c303d3852d
+    / 1a10f3bbe255c491): R0 verified NOT-merged at window open (state=open,
+    merged=false), the conditional fired, authors-never-self-merge
+    operator-waived for this one merge and disclosed on the PR (comment
+    6010235803). Independent review of record: R4-api-b trace
+    1a10fae46578fa0d (comment 6010159749) — fence-clean 33/33,
+    disclosure-clean, CI-verified content, "ready for the desk once
+    intaked". Intakes of record: ec71613 (main ea8f951 union) + 5fe4bc1
+    (main bfdcc9b union) — both bookkeeping-only, ancestry proof e903978
+    (the lane's t1/t1b/t2) an ancestor of the merged head. Head CI:
+    verify+hub success at 5fe4bc1 (runs 37419179438 / 37420210946);
+    merge-commit CI re-verified post-merge: verify success + hub success at
+    6580b2c. The two ratification asks (the OUT-OF-FENCE index.ts mount +
+    the Wave-6 id) are carried by the operator's direct order as the
+    ratifying instrument of record. The two seam-consolidation rulings
+    (fetch-bank + vector-arm, the T-MIG-066 doctrine class) ride #106.
   base:
     repo: "syllabai-v2 @ e6cc4d1 at claim time; frozen refs: syllabai-core @ 6cad6ef, syllabai-hub @ 93226a43"
   basis: >

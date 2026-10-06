@@ -3498,3 +3498,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-062 LANDED (ea8f951) — the lane's Wave-6 research calibration is of record on main; #103 retriggered->green->landed (32626cb); #104 reviewed + CI-unblocked + intake path documented; card DONE of record; PAT persistence law restored on the wipe-proof mount. LANE IDLE at round end; T-MIG-066 is the next claim.
+
+---
+Task ID: 5
+Agent: lane w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Operator trace 1a10fbe9465708c9 "Check if R0 has merged or not. If not, review+merge yourself and continue working" — the T-MIG-060 merge-of-record + closeout + next-band census.
+
+Work Log:
+- R0-merge check: PR #104 verified OPEN / not-merged at window open (state=open, merged=false). The head had advanced past my last window (e903978 -> ec71613 -> 5fe4bc1: the parallel w0a window's intake of main ea8f951 + the review-104 union of main bfdcc9b — both commits verified bookkeeping-only). The operator's conditional fired.
+- Pre-merge bars verified at the head of record 5fe4bc1: (1) independent review receipt R4-api-b trace 1a10fae46578fa0d (comment 6010159749) — "fence-clean, disclosure-clean, CI-verified content — ready for the desk once intaked" (fence 33/33, the t1b CI-catch disclosure accepted); (2) CI verify+hub success at 5fe4bc1 (run 37420210946) and at e903978 (run 37419179438); (3) mergeable=true / clean vs bfdcc9b; (4) ancestry proof: e903978 (my t1/t1b/t2) IS an ancestor of the head.
+- Merge review-of-record posted on #104 (comment 6010235803): the operator authorization chain quoted verbatim (1a10fbe9465708c9; standing 1a10d0c303d3852d / 1a10f3bbe255c491); authors-never-self-merge operator-waived for THIS merge, disclosed before the merge; the PR's two ratification asks (OUT-OF-FENCE index.ts mount + Wave-6 id) carried by the operator order as the ratifying instrument.
+- MERGED: #104 -> merge commit 6580b2c at 2026-10-06T05:50:05Z, merge method = merge (repo convention). Merge-commit CI re-verified post-merge: verify success + hub success at 6580b2c.
+- Bookkeeping (this commit, .syllabai-only direct-main per the 3c07bae/bb537fa precedents): T-MIG-060 card IN_REVIEW -> DONE + the merge entry appended to execution_record + receipts/T-MIG-060/run-004-merge.json + this worklog entry.
+- PAT hygiene held: credential 0600 outside all repos (fingerprint 46b5d309715c1b1c, == the operator's Oct-5 reissue per the r1c ledger); shell-env-only per call; never echoed, never in any artifact/commit/PR/log. (The r4b window's parallel persistence paths /home/z/my-project/.secrets/ghpat + /home/z/.ghtoken noted for fleet awareness; this lane's path unchanged.)
+
+Stage Summary:
+- T-MIG-060 DONE end-to-end of record: claim d328f9d -> t1 839a0a7 (33 pins, intake 883131e) -> t1b+t2 PR #104 -> merged 6580b2c. Wave-6 tutor + sessions (the KaRAG deterministic core, the paper-question fail-open guard, routes/SSE/sessions CRUD, the disclosed mount) is ON MAIN — the band that owns the tutor-shaped w4 replay cases has landed. Remaining register: the two seam-consolidation rulings ride T-MIG-066 (#106, r1 in flight); Vercel live-deploy verification belongs to the deploy lane; LLM provider infra to the wave-3 lane. Board after merge: only #106 open. Next: free-band census + claim per the standing claim word trace 1a10d2c88b6f13c5. Zero golden/Neon/force.
