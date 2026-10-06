@@ -32,3 +32,4 @@ export * from "./test-builder";
 export * from "./transcription";
 export * from "./learner-me";
 export * from "./classroom"; // T-MIG-052 (r9-hubx) — Wave-5 classes+rosters wire (OUT-OF-FENCE-flagged one-liner, 010/034/043-t1 precedent)
+export * from "./tutor"; // T-MIG-060 (w0a) — Wave-6 tutor+sessions wire (same-lane contracts-first precedent 033/043/049)
