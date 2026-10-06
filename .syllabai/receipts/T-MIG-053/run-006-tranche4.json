@@ -1,0 +1,30 @@
+{
+  "task": "T-MIG-053",
+  "tranche": "t4 (smart lesson, 1 GET — the card's last surface)",
+  "agent": "r3a (superz-agent-b, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)",
+  "directive": "trace 1a10fffc01c66c25 'independent review on #108, then t3 (revision notes) -> t4 (smart lesson, LLM-path check)'",
+  "frozen_base": "syllabai-core @ 6cad6ef",
+  "llm_path_check": {
+    "obligation": "the operator's 'LLM-path check' owed for the smart-lesson band",
+    "verdict": "RESOLVED — NO LLM seam exists or is needed: the frozen 934-line SmartLessonService contains ZERO LLM/Gemini/client references (the only 'llm' hit in the file is the header's own claim 'no LLM in the loop', :36); the tutor references are the TutorTopicEngagement REPOSITORY (evidence rows: signal_type/refused/occurred_at) and the ASK_TUTOR reason text — a deterministic hand-off to the tutor surface (w0a's T-MIG-060 port owns the actual Gemini conversation, application.yml :216 timeout law); the service header declares 'no new state, no new thresholds, no LLM in the loop' and the full read confirms the decision ladder is purely deterministic over the learner model",
+    "port_posture": "the port introduces no LLM client; the deterministic ladder ports verbatim"
+  },
+  "t4_scope_landed": {
+    "contracts": "NO new schema — the SmartLessonView wire was already ratified in packages/contracts/src/learner.ts (T-MIG-041 pinned the records in advance: SMART_LESSON_POLICY smart-lesson/v2, lessonActionViewSchema, topicStatusViewSchema, prerequisiteStatusViewSchema, misconceptionStatusViewSchema, smartLessonViewSchema); reuse-not-redeclare (the TS2308/F-034 law) — the duplicate module written this session was deleted and the 8 contract pins re-point at the ratified module (vocabulary full-domain pins, the 3-state coverage vocabulary, the nullable honesty grains)",
+    "services": "apps/api/src/services/learner/tutor-signals.ts (TutorSignalPolicy :14-103: CONFUSION_SIGNALS, REPEATED_EXPLANATION_THRESHOLD=2, repeatedExplanationRequest, unresolvedQuestion off the V23 refused flag, postExplanationEngagement strictly-later, signalCounts in the Java TreeMap key order, lastConfusionAtByTopic) + apps/api/src/services/learner/smart-lesson.ts (the 934-line ladder verbatim: 8 rungs + the evidence-aware advance pass 1/1.5/2/2b/consolidation + the starter-question rotation with the verbatim revisit/count notes + topicStatus 3-state coverage + overdueNote/humanize + the verbatim evidence-trace compositions incl. the em-dash topic fact)",
+    "reuse": "kgTreeWithMisconceptions + prerequisiteRelations + skillStatesFor + misconceptionReadingsFor (nba 043 seams) + ServableQuestions + decayedMastery (learner-model) + the TutorTopicEngagementRow shape (state.ts) — the frozen config-law tuning (0.45/2/0.2/14) via the #108-review-verified constant set",
+    "pins": "13 service pins (every rung, the real-store corrective 4CH1-MIS-CONC-UNIT -> 4CH1-CON-VOL-CONVERSION via the packaged T-C11 graph, the verbatim 404, the rotation notes, the single attempted-ids read) + 8 contract pins"
+  },
+  "disclosed": [
+    "timestamps embedded in evidence/reasonDetail print through instantText() (the Java Instant.toString() shape); sub-ms precision lost at the Date driver — the w0a nba.ts disclosed the same class",
+    "fmt() is toFixed(2) — matches String.format %.2f ROOT for the 4-dp stored mastery values (no exact binary ties at 4-dp inputs)",
+    "the prerequisiteRelations seam re-runs the 404 guard + subtree CTE (the t1 call-sequence precedent — one extra guard read)",
+    "topicStatusOf is async (the frozen activeByTopic call site preserved verbatim inside it)"
+  ],
+  "fence": "contracts(already-ratified wire + re-pointed pins)+services+fakeSql pins; NO routes/mounts/hub; hands-off 052-t2 (r9-hubx) + 043-t2 (w0a) unchanged",
+  "gates": {
+    "typecheck_x4": "exit 0",
+    "bun_test": "1445 pass / 0 fail / 13 skip / 5762 expect = t3 head 1424/5683 + 21 tests/+79 expects (8 contracts + 13 service pins) EXACT",
+    "golden_selftest": "OK"
+  }
+}
