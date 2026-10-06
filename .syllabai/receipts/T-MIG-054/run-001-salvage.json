@@ -1,0 +1,32 @@
+{
+  "task_id": "T-MIG-054",
+  "kind": "SALVAGE-LAND (contracts port for the live SME surface)",
+  "run": "001",
+  "timestamp": "2026-10-06T01:40:00Z",
+  "lane": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)",
+  "operator_directive": "run the next sweep (round-13)",
+  "provenance": {
+    "original_authors": "r4b (PR #78, closed as losing duplicate 033-t3 dual-claim; closure comment 6007170493; claim 6fe5b7a @ 19:01:57Z vs r0 9608ed1 @ 18:28:47Z)",
+    "salvage_rationale": "the #78 closure orphaned the ONLY contracts piece of the SME surface: main @ d1ff74e has zero zod schemas in packages/contracts for the live SME routes/services (grep-verified), a contracts-first gap (AGENT_BRIEFING §4 rule 3). Surface duplicate stays closed; this card lifts only packages/contracts/**",
+    "id_choice": "T-MIG-050..053 reserved by MIGRATION_PLAN.md §Wave 5; next free non-reserved id = 054 (T-MIG-049 renumber mechanics, comment-only)",
+    "byte_identical_except": "two header-comment lines (T-MIG-033 -> T-MIG-054 note) + this yaml + 1-line export union in packages/contracts/src/index.ts (placement after ./teacher-marking exactly as r4b filed it)"
+  },
+  "files": [
+    "packages/contracts/src/sme-question-package.ts",
+    "packages/contracts/src/sme-question-package.test.ts",
+    "packages/contracts/src/index.ts (+1 export line)",
+    ".syllabai/tasks/T-MIG-054-sme-package-contracts.yaml",
+    ".syllabai/receipts/T-MIG-054/run-001-salvage.json"
+  ],
+  "gates": {
+    "typecheck_x4": "exit 0",
+    "bun_test": "900 ran / 0 fail / 13 skip / 2523 expect / 54 files",
+    "delta_vs_main_d1ff74e": "+7 tests / +11 expect / +1 file = sme-question-package.test.ts pins, exact",
+    "golden_selftest": "OK"
+  },
+  "frozen_law": {
+    "source": "SmeQuestionPackageDtos.java :15-94 @ syllabai-core 6cad6ef (frozen)",
+    "semantics": "passthrough (= @JsonIgnoreProperties ignoreUnknown), additive optional primitives (validate() port owns the verbatim 400s), binding-failure -> 400 envelope per SmeQuestionIngestService :620-624"
+  },
+  "disclosure": "CI dark (account-level register, Task ID 16); merge rests on local-gates evidence. Independent review satisfied by the sweep's line-against-line read of the contracts file against the frozen DTOs (session r1c) — author (r4b) is not the merger."
+}
