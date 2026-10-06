@@ -1,0 +1,45 @@
+{
+  "task": "T-MIG-080",
+  "run": "run-002-f3-salvage",
+  "agent": "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)",
+  "recorded_at": "2026-10-06 (operator directive trace 1a110d934c7c8579 'execute F3'; claim 17c202c on t-mig-080/r7a @ d8916c7)",
+  "base": "origin/main d8916c7 (baseline stamped at claim: 1546 ran / 1533 pass / 0 fail / 13 skip / 6036 expect / 82 files EXACT, typecheck x4 exit 0)",
+  "branch": "t-mig-080/r7a",
+  "deliverable": "F3 salvage — the closed-#76 pin families the learner-me suites lacked, re-scoped to main's architecture; 10 additive pins + a disclosed two-line fidelity fix that the salvage itself surfaced.",
+  "pins": {
+    "routes.test.ts (+4, the jakarta declaration-order constraint block — main implements the layer at the route, so r1's service-level pins port here 1:1)": [
+      "blank cardId fails first with the jakarta default (:87 @NotBlank) -> 400 validation_failed 'cardId: must not be blank'",
+      "cardId size law (declaration order) -> 'cardId: size must be between 3 and 64'",
+      "subtopicCode size law (declaration order) -> 'subtopicCode: size must be between 2 and 64'",
+      "constraint failure on cardId beats the unknown-rating parse (:87 @Valid first) — the same 'maybe' rating that independently 400s bad_request never reaches the service when the cardId constraint fires first (the two-envelope law in one body)"
+    ],
+    "learner-me.test.ts (+6)": [
+      "insert stores the rating as the enum NAME (:90) — rowsFor param capture, params[4] === 'STILL_LEARNING'",
+      "budget: exactly the anchor read then the insert — ONE insert, nothing else (queries.length === 2, queries[1] insert shape + occurred_at)",
+      "UNIT and SUBTOPIC anchors pass the structure gate (the structure range, not one level) — new NODE_UNIT fixture + anchorByCode entry",
+      "bad slug short-circuits before ANY query (PUT and DELETE) — queries.length === 0 on both",
+      "absent-row clear stays the silent no-op: the single blind UPDATE, never an insert (main's deliberate shape of r1's :240 law — same frozen ifPresent posture, different query shape; disclosed)",
+      "the schedule is COMPUTED-NEVER-PERSISTED (ADR-031): trail read + anchor codes only, zero writes (queries.length === 2, no insert/update)"
+    ]
+  },
+  "fidelity_fix_disclosure": {
+    "what": "The blank-cardId pin FAILED against main: received 'cardId: size must be between 3 and 64' where the frozen law (FlashcardRatingController :87 @NotBlank before @Size; r1's #76 pin :83) demands 'cardId: must not be blank'. Root cause: the classifier's blank branch probed issue.input, which zod v3 issues do not carry — dead code since landing.",
+    "fix": "Two-line, in-repo-pattern: (1) contracts learner.ts flashcardRatingRequestSchema — cardId + subtopicCode gain min(1, 'must not be blank') before their @Size min (the notBlank violation travels as its own issue, the auth router's validationMessage mechanism, T-MIG-017 heritage); (2) routes/learnerme.ts classifyBodyError — the dead input-probe is replaced by a same-field issue scan for the notBlank message before the @Size mapping (first-field-error law untouched; cross-field contamination excluded by path[0] equality).",
+    "why_in_scope": "F3's inventoried deliverable IS the jakarta declaration-order constraint block; the pins cannot be true without the law being true. The fix makes the frozen law hold; it was NOT possible to know the branch was dead because no pin exercised it — the salvage found it, per the register's purpose.",
+    "golden_exposure": "ZERO — verified: no golden case sends a blank cardId/subtopicCode on these surfaces; the captured pattern/size 400 bodies (w4-flashcard-rating-bad-cardid-400, w4-flashcard-rating-dotted-anchor-400, w4-flashcard-rating-bad-rating-400) are byte-unchanged; auth golden blanks ('password: must not be blank', 'displayName: must not be blank') ride the auth router's own classifier, untouched.",
+    "non_blank_messages": "byte-identical: 'ab' -> size message; 'W' -> size message; pattern messages unchanged; the beats-parse pin proves the ordering law."
+  },
+  "register_observations_filed": [
+    "rating blank-string ('' rating) serves 'rating: must be greater than or equal to 1' — the frozen @NotBlank would serve 'rating: must not be blank'; NOT in r1's inventoried pins, left as-filed (R0 may route a follow-up).",
+    "whitespace-only blanks ('  ') pass min(1) and serve the @Size message — the frozen @NotBlank trims; same disposition (out of the inventoried pins).",
+    "the note-vote path's classifier inherits the same dead-probe shape for noteId blanks — NOT touched (different surface, not in the inventoried pins); same R0 disposition."
+  ],
+  "gates": {
+    "typecheck": "x4 exit 0 (root script: contracts + shared + db + api)",
+    "bun_test_api_packages": "1556 ran / 1543 pass / 0 fail / 13 skip / 6066 expect / 82 files = d8916c7 baseline +10 tests / +30 expects EXACT",
+    "bun_test_hub": "36 pass / 0 fail / 291 expect — unchanged",
+    "golden": "--selftest OK; zero golden files touched; zero Neon contact"
+  },
+  "fence": "apps/api/test/learner-me/{routes,learner-me}.test.ts (additive) + packages/contracts/src/learner.ts (2 fields) + apps/api/src/routes/learnerme.ts (1 branch) + .syllabai bookkeeping; zero service-behavior edits beyond the disclosed classifier branch; zero golden edits",
+  "merge_posture": "authors-never-self-merge — PR to the desk; card IN_REVIEW for R0 to flip at merge"
+}
