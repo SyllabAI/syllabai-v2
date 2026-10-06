@@ -2547,6 +2547,36 @@ Stage Summary:
 - Queue at sweep end: 0 open PRs. No escalations. LANE DONE for this cycle.
 
 ---
+ HEAD
+Task ID: r1-f2 (R1-contracts lane, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Agent: Super Z (R1-contracts lane)
+Task: CLAIM (2026-10-06, round-10, operator standing directive trace 1a10eb10b04682cd "Check if R0 has merged or not. If not, review+merge yourself and continue working"): executes the collision-audit carry-forward F2 — the courseExamTargetViewSchema .nullable() widening (packages/contracts/src/learner.ts :241-242 entryDeadline/resultsDate) + null fixture.
+
+Work Log:
+- SYNC: origin/main = fe97f94 (R0-AUTO sweeps merged #82 052-t1 39fa554 + #83 051 7dfdd16); open-PR census = 0 (ls-remote 82 heads vs ancestor scan, API confirms state=open count 0). No delegated review+merge work this cycle — the queue is empty.
+- T-MIG-043 YIELD: operator named 043 for this lane at trace 1a10d4804ab58805, but w0a (session web-e79a3bd8, operator directive 1a10d2c88b6f13c5) holds the earliest claim (db87a9a @ 18:01:06Z per §2.1, verified by r3a receipt #75 + R0-ROUND-12 sweep); tranche-1 landed #74 23b23e3 and the card is DONE. Board law wins over the later direct naming — this lane yields and records the supersession.
+- F2 CLAIM basis: T-MIG-043/run-003-collision-audit.json finding F2 (LIVE on main, flagged by BOTH lanes — r1 audit + w0a 043 FIDELITY NOTE in services/learner-me/index.ts :813 — left open by the sweep as "ready-to-execute .nullable() widening + null fixture"). Evidence chain: frozen CourseExamTargetView.java :27-28 plain nullable LocalDate; V62__exam_series_calendar.sql :21-22 "entry_deadline DATE, -- nullable: not always announced" / same results_date (window_start/window_end NOT NULL — only :241-242 widen); the landed 043 service already passes the columns through honestly at runtime (the as-string casts silence TS only); 043's own examSeriesViewSchema (learner-me.ts) correctly marks both .nullable(). This is a pure WIDENING — no fixture on main feeds null today, so no existing pin can break.
+- Zero-collision scan re-run immediately before branch cut @ fe97f94: open PRs 0; competing heads none (t-mig-038/r1c = merged stale process branch c071c429, ancestor-verified); zero f2-nullable claims in the worklog; learner.ts fences all closed (041 DONE #65 queue-merged, 043-t1 DONE #74, 038 DONE + drift-flipped).
+- Branch t-mig-038/f2-nullable-r1 cut @ fe97f94. Fence: learner.ts :241-242 + the schema comment block; learner.test.ts (null fixture test only); .syllabai/receipts/T-MIG-038/** (run-002 receipt); this worklog. Everything else read-only.
+
+Stage Summary:
+- Claim staked. Next: widen, pin null, gates at exact deltas vs 948/0/13skip/2689 (961 ran / 56 files @ fe97f94), receipt run-002, PR with authors-never-self-merge (review requested from R0/peers — the operator delegation covers only non-self-authored PRs).
+
+---
+Task ID: r1-f2 (R1-contracts lane, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Agent: Super Z (R1-contracts lane)
+Task: EXECUTE the F2 claim (branch t-mig-038/f2-nullable-r1, cut @ fe97f94): courseExamTargetViewSchema .nullable() widening + null fixture.
+
+Work Log:
+- WIDENED learner.ts entryDeadline/resultsDate z.string() -> z.string().nullable(); comment block now carries the full evidence chain (frozen record :27-28 plain LocalDate, V62 :21-22 'nullable: not always announced' vs NOT NULL window columns, ExamSeriesImportService null-checks :112/:116, the F2 two-lane register trail). windowStart/windowEnd deliberately stay strict.
+- PINNED the null law in learner.test.ts: both-null parses; half-announced (resultsDate null) parses — each column independently nullable; windowStart/windowEnd null still rejected; non-null posture unchanged. Pure widening, no existing pin fed null.
+- GATES: typecheck x3 exit 0 (root/packages/apps/api; hub has no script); bun test apps/api packages = 962 ran / 949 pass / 0 fail / 13 skip / 2693 expect (EXACT: fe97f94 baseline 961/948/0/13skip/2689 + 1 test/+4 expects); golden --selftest OK; zero golden files; zero Neon contact.
+- Receipt: .syllabai/receipts/T-MIG-038/run-002-f2-nullable-widening.json (claim context, finding evidence, gates delta, merge posture).
+- Merge posture: authors-never-self-merge — PR filed, independent review requested (R0/peers); the operator delegation covers only non-self-authored PRs.
+
+Stage Summary:
+- F2 carry-forward is code-complete and fully gated; the last over-constraint in the canonical #60 learner bundle is queued for intake. Round-10 ledger for this lane: R0 verified merged (queue 0), 043 yield recorded (w0a earliest claim #74 DONE), F2 executed.
+
 Task ID: 18
 Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, operator trace 1a10f154ce512e59)
 Task: Operator round-14 directive "run the next sweep" — queue sweep following this lane's round-13 receipt; credential re-persistence + independent board verification.
