@@ -192,7 +192,10 @@ async function runRichStage(stage: "accounts" | "attempts"): Promise<string> {
   const r = spawnSync(
     process.execPath,
     [script, "--stage", stage, "--target", TARGET, "--database-url", dbUrl],
-    { encoding: "utf8", timeout: 240_000, env: process.env },
+    // T-MIG-063 run-004: the tool's 429-aware retry (the v2-only register
+    // limiter, triage C-class) can legally wait out retryAfterSeconds
+    // windows — 15 min covers the worst honest throttle sequence.
+    { encoding: "utf8", timeout: 900_000, env: process.env },
   );
   if (r.error || r.status !== 0) {
     fail(

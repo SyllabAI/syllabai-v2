@@ -3311,6 +3311,69 @@ Stage Summary:
 
 ---
 
+Task ID: 7 (round: trace 1a10f9232658e9a5, agent r9-hubx, zai-web)
+Task: "Check if R0 has merged or not. If not, review+merge yourself and continue working" (round 14)
+
+Work Log:
+- R0 verdict: R0 IS merging — R0-AUTO 05:00 UTC sweep merged our #98 (061-t2, 2d5a73d, receipt 045dc2a; our tranche-2 Wave-6 intervention band LIVE on main); earlier #94/#95/#96 landed via the desk. The 05:00 sweep had skipped #99 ("head moved mid-sweep") — this lane picked it up.
+- REVIEWED+MERGED #99 (r1's T-MIG-064, the F-B band re-file from 059): frozen-law verified line-against-line (put-displacement :42-48, dead-letter cascade :59, exact-parts gate :102-111, unboxing NPE :116); put-semantics four-quadrant emulation confirmed across contracts/route/service; 058 depth pin kept fail-closed; residuals disclosed; zero golden/classroom/061 contact.
+- INTAKE 449f9af of main 30819de into t-mig-064/r1 (worklog union 1 block, 0 markers, 3165 lines); r1 lane then stacked their own intake 9054484 (of 2d5a73d) on top — no force-push, both preserved.
+- Gates at intake head 449f9af: typecheck x4 exit 0 / 1155-0-13skip-3530 = main 1151-3513 + PR +4/+17 EXACT / hub 36-0 / golden selftest OK; CI verify+hub success @ 449f9af.
+- MERGED #99 -> 862ca34 (parents ec40f1f + 9054484; #100 = r0's 063 landed at ec40f1f mid-cycle by the desk); record comment 6009873662; authors-never-self-merge honored (r1 authored).
+- Gates at merged tip 862ca34: typecheck x4 / 1185-0-13skip-3615 = main@ec40f1f 1181-3598 (per #98 receipt 045dc2a + 063 workflow-only) + PR +4/+17 EXACT / hub 36-0 / selftest OK / worklog 0 markers.
+- Queue re-scan post-merge: open PRs + task register re-checked for the continue-working step (see next entry if claimed).
+
+Stage Summary:
+- Round-14: R0 active (our #98 landed via R0-AUTO); this lane reviewed+merged the F-B band #99 with exact arithmetic at both intake and merged tips; lane continues per the standing directive.
+
+
+---
+---
+Task ID: R3a-ROUND-15 (operator directive trace 1a10f7345efcba35: "the F-072 class-KG heatmap trio")
+Agent: superz-agent-b (R3a lane, Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Close T-MIG-053 tranche-1 — the F-072 class-KG heatmap trio + the F-034 read model.
+
+Work Log:
+- SANDBOX RESET RECOVERY: the workspace was wiped mid-round (clone, .secrets, worklogs all gone) — reconstructed .secrets/env.sh from the session record, re-cloned SyllabAI/syllabai-v2 with the PAT, re-fetched the branch. PR #84 verified MERGED (ced0111 @ 03:38:56Z) with the claim APPROVE (r1-contracts) and both tranche-1 commits intact on origin; branch t-mig-053/r3a still live at b29b874. Zero-collision re-scan: 0 open PRs, no other lane touching the trio band.
+- INTAKE: fast-forwarded the branch to origin/main 37d8825 (post-#92/#93/#95 — #95's bee47d8 intake pattern) so the closing commit diffs against the true head and gates re-baseline at 1144/3485.
+- THE TRIO (directive resolution): F-072 = the class-KG heatmap finding — ClassKnowledgeGraphController :37-113 (graph :59 / nodes/{id}/students :78 / learners/{id}/knowledge-graph :95) over ClassKnowledgeGraphService :38-580; the third leg DELEGATES to LearnerKnowledgeGraphService.graphFor (F-034) which was UNPORTED (043 card line 119: knowledge-graph stayed OUT of 043; the /me route is the 041 band's controller, unported) — so the F-034 read model ports here as learnerGraphFor, header-disclosed: the /me route MUST consume this builder (one-graph-implementation law).
+- CODE commit: services/knowledge/graphs.ts (classGraph / classNodeStudents / classLearnerKnowledgeGraph / learnerGraphFor) + index.ts barrel line + dbStatusToEnum export (the trio shares the coverage overlay). Frozen laws pinned: the 404->403->root-404 gate chain with NO archived gate on reads; the INDEPENDENT-STUDENT rule (roster = enabled member rows, captured-param pinned); honest unmeasured cells (null mean / UNMEASURED band / zeros) vs 4-dp mean + the 13.3 distribution; the V39 spec-point predicate driving verbatim-vs-derived coverage with taught>recorded>unrecorded precedence; misconception prevalence keyed by MISCONCEPTION nodes, DISTINCT active learners, staleness-relaxed; prerequisiteRelations both-endpoints/target=prerequisite/unknown-skipped; the drill-down subject-isolation 404, weakest-first/unmeasured-last deterministic sort, the 3-per-student evidence slice off the 120-cap scan; structural-invariant skips; F-034 walk covers misconceptions (9 vs 7), all-null unpractised, earliest-PENDING review merge, applicability verbatim; the teacher lens deep-equals the student read model.
+- TEST commit: test/knowledge/class-graph.test.ts — 22 pins incl. the roster-param capture (the independent-student rule proven at the SQL bind, not just the output), the short-circuit privacy boundary (zero 'from users' queries on a non-member), and the teacher-lens deep-equal (one implementation).
+- GATES at the closing head: typecheck x4 exit 0; bun test 1166 pass / 0 fail / 13 skip / 3629 expect (EXACT = 37d8825 baseline 1144/3485 + 22 tests / +144 expects); golden --selftest OK.
+- Bookkeeping: receipts/T-MIG-053/run-003-tranche1-close.json + card status flip to TRANCHE-1 CLOSED (10/10) with NEXT t2/t3/t4 + this worklog entry.
+
+Stage Summary:
+- Tranche-1 is CLOSED: all 10 endpoints (coverage 3 + knowledge reads 4 + the F-072 trio 3) with contracts+services+fakeSql pins, gates EXACT at every commit.
+- DISCLOSED placements: F-034 builder in services/knowledge (fence), graphOwnedClass projection split, single-anchor clock (ADR-031), roster string-sort (wire-invisible).
+- LANE NEXT: tranche PR review (author never self-merges); on merge R0 can flip the t1 slice; t2 = class analytics (3) + teacher concept-graph (2, incl. the 471+479-line seed/snapshot pair); t3 = revision notes; t4 = smart lesson (LLM-path check owed at t4).
+---
+Task ID: T-MIG-063 (run-003 live finding + run-004 fix)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, operator trace 1a10f806acdec285)
+Task: First re-dispatch decomposed — the C-class limiter bit the staging's setup layer; fix forward with a disclosed fence amendment.
+
+Work Log:
+- Dispatch 37417629684 on ec40f1f completed failure: seed.json/union.md ABSENT from the artifact; Pass A replay masked success (continue-on-error); union ENOENT red. Job log decomposed: the staging RAN (workflow DATABASE_URL wiring OK, spawn OK, t51-seed.sql applied on the Neon COW branch OK, bootstrap-admin claim OK — AUDIT 05:16:07.436Z "window consumed terminally") and THEN the tool's own registers (t51-student/t51-teacher) hit the v2-only register limiter: 429 retryAfterSeconds:53 → tool throw → runRichStage fail-fast (by design) → no report. Boundary timing verified exact (accounts fired at seq 10 after the auth band).
+- Finding RICH-200-B filed (receipt run-003-live-finding-429.json): setup-layer 429 = the triage's C-class parity defect leaking into the setup layer. NOT masked: the auth-register cases keep measuring the limiter honestly.
+- FIX (run-004): FENCE AMENDMENT DISCLOSED PRE-PUSH — golden/tools/seed-t51-rich200.ts joins the fence with throttled() (retry-after header / retryAfterSeconds body, clamped 5..90s +2, max 4 attempts) around the tool's OWN setup calls only (api() + the two register fetches); the bootstrap claim stays one-shot-safe (429 = handler never ran = window not consumed = retry safe). ci-replay.ts spawnSync timeout 240s→900s. Parse-validated (bun build), ci-replay selftest OK.
+
+Stage Summary:
+- T-MIG-063 run-004 pushed to t-mig-063/r0 (fence = ci-replay.ts + seed-t51-rich200.ts + workflow + card/receipts/worklog); re-dispatch = run-004 re-proof.
+---
+Task ID: T-MIG-063 (run-004 live verdict — closure)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, operator trace 1a10f806acdec285)
+Task: The rich-200 family's live verdict on the restored harness — closure of the series' processing.
+
+Work Log:
+- Dispatch 37418673048 on d6911f6 (post-#105): UNION 137/177 (seed 124/162 + prod 13/15), trajectory 108 → 120 → 137. THE FAMILY 7/7 PASS LIVE: the SIGNED-uuid tie-break, the BY_STATE_WIRE_ORDER HashMap law, the ADR-026 replace numbers, the multipart parser — all holding against the live port on the Neon instrument. RICH-200-A CLOSED (harness parity), RICH-200-B CLOSED (the throttle carried the staging past the v2-only register limiter; the C-class cases still measure it honestly — membership rotated exactly as recorded).
+- Cross-effects named (receipt run-004-union.json): 6 B-class seed-posture reads cleared as pre-disclosed (curriculum ×4, teacher-curriculum-nodes, w3-attempt-mcq-happy-201); auth-me honestly red (no users rows in t51-seed.sql — third-posture task remains the home); +10 W4 route-landing recoveries from the other lanes' merges (A-class cascade clearing).
+- NEW FINDINGS FILED: RICH-200-C — 7 empty-state 200s flipped by the staged/landed state (w3-marking-{answers,queue-v2,throughput}-teacher-200, w4-course-stats/flashcard-schedule/flashcard-trail/state empty) — a corpus-sequencing question for the case-owner lane (seq-position before the state builders / re-pin / tolerate); v2 renders both postures faithfully. RICH-200-D — PORT DEFECT P1: w3-questions-families/topics-student-200 return 500 internal_error on the V63 seed data (frozen serves rich 200s over the same rows; the port crashes — first exercised BY the staging; w3-questions port lane).
+- Doctrine steps verified: read-only proof OK (the staging writes only to the disposable COW branch), drop + 404-verify OK, union reds on the standing honest reds only.
+- Card → DONE (bookkeeping-only .syllabai/** per the r0-role precedent a695c92/aca7a5e/37d8825/ba3976b, fetch-first).
+
+Stage Summary:
+- THE RICH-200 SERIES IS PROCESSED END-TO-END: disposition of record (run-001) → harness capability restore (run-002, #100) → setup-limiter survival (run-004, #105) → LIVE 7/7 family verdict (run-004 union receipt). Register: RICH-200-C (case-owner), RICH-200-D (port P1), plus the standing C/B/third-posture classes. T-MIG-063 DONE.
+
+---
 ---
 Task ID: T-MIG-060 (tranche-1b + tranche-2)
 Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
