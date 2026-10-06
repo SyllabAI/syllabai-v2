@@ -3117,3 +3117,21 @@ Work Log:
 
 Stage Summary:
 - 061 tranche-2 NOT touched: r9-hubx holds the claim (32b73ca) — the operator's condition resolved FALSE; stand-down receipted. Alternative continuation executed: #96 (T-MIG-059 binding law) independently reviewed and merged 07df48a with the intake-union procedure, gates exact at 1151/0/13skip/3513 + selftest OK. LANE r1c: STOP for this round.
+
+---
+Task ID: T-MIG-059 (merge + housekeeping)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Land T-MIG-059 (PR #96) and complete the housekeeping — the register-open F-0/F-1 binding-law divergences (operator directive trace 1a10f743c93c27b9).
+
+Work Log:
+- PR #96 opened on the pushed axis (claim 9853716 -> fix dca7992) with the full disclosure body (findings of record, the #90 prior-art credit, the seven pins, the measured gates arithmetic, the boundary/disclosures).
+- Independent adversarial review (isolated subagent, no stake in the implementation assumptions): APPROVE zero blockers, 4 non-gating nits — every input class empirically traced on the installed zod 3.25.76 (the malformed-beats-constraint precedence, the null-bind rendering, the root-null disclosed posture, the nullish-category 201, too_big/custom intact); the test diff verified PURE ADDITIONS; boundary clean; gates re-derived EXACT. Verdict of record posted on-thread (comment 6009603113, 04:54:13Z) — authors-never-self-merge held in substance.
+- CI verify+hub completed/success on the PR head (04:54:14Z run).
+- MERGED by the R0-AUTO desk at 04:55:44Z as 07df48a under the standing delegated authority (the desk's intake fea12ec resolved the worklog-tail add/add vs the r1c round-15 receipt push ddbe9fe — append-only union, zero code conflicts, no force).
+- COLLISION OF RECORD (no action needed): the r1-contracts lane had filed the F-B band under the 059 id concurrently (PR #97) — it yielded the id to the earliest claim (9853716 @ 04:35:53Z) per earliest-claim-wins and re-filed as T-MIG-064 (PR #99, comment 6009617732); the bands are disjoint (classroom binding-law vs selfmark exact-parts); the register is coherent (059 = this card, 064 = F-B).
+- Gates re-executed locally at the merged tip 07df48a: typecheck x3 exit 0; bun test apps/api packages 1151 pass / 0 fail / 13 skip / 3513 expect (1164 ran / 63 files) — EXACT (main-with-#95 1144/3485 + the #96 delta +7/+28); golden --selftest OK. CI success on the tip confirmed via the Actions API.
+- Independent confirmation of record: r1c Task-22 receipt (30819de) re-verified the merge and the gates.
+- Housekeeping: receipt run-003-merge.json; card -> DONE with provenance (this commit, bookkeeping-only .syllabai/** direct-to-main per the r0-role precedent a695c92/aca7a5e/37d8825).
+
+Stage Summary:
+- T-MIG-059 DONE. The classroom two-envelope classifier now serves the FULL frozen binding law: wrong-typed fields and format-parse failures -> 400 malformed_body verbatim (Jackson binds the whole document BEFORE @Valid; binding beats every constraint — pinned in both directions incl. the FIRST-issue-constraint precedence case), null/absent binds on @NotBlank render the jakarta default "field: must not be blank", and the JSON-null root keeps the disclosed "request invalid" posture (now pinned). The four-finding F-set from the #89 REQUEST_CHANGES verdict is fully dispositioned (F-2/F-3 via #93, F-0/F-1 via #96); the #89 ratification registration has no open remainder on the classroom band. Register after this card: the T-MIG-058 F-B band is now filed as T-MIG-064 (PR #99 in flight, r1-contracts); the rowsFor hardening nit stays register-open (non-gating). LANE returns to the operator's disposition.
