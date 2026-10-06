@@ -3592,3 +3592,19 @@ Work Log:
 
 Stage Summary:
 - Claim law satisfied honestly: no free filed bands existed; 066 yielded to r1 and is now landed+ratified. The round delivered the double-tip merged-gates receipt (independently corroborated by R0's desk receipt), the 057 DONE-flip, and the routed/unfiled census teeing up R0's next id allocation (CLA first — its hard dep just landed). LANE IDLE.
+
+---
+Task ID: 24
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
+Task: (operator directive trace 1a10fc54e666be91) "Check if R0 has merged or not. If not, review+merge yourself and continue working" — the #106 (T-MIG-066) merge-desk check.
+
+Work Log:
+- FETCH-BEFORE-ACTION census: #99/#100/#101/#105 all merged; #106 (T-MIG-066, r1-contracts, head 6d3ec11, base c4318ea) OPEN with 0 filed reviews, mergeable=clean, CI verify+hub 2/2 success on the REAL head 6d3ec118f814adc0a14a90d10b7fb626d04af951 — took the review duty per the operator's not-merged clause.
+- INDEPENDENT REVIEW completed at the exact head, all guards: fence scan ZERO (9 files — 6 code under services/learner*/** + 4 .syllabai/**, zero *.java//core//hub/); bun install --frozen-lockfile OK (no changes); typecheck x4 exit 0; tests 1207 pass / 0 fail / 13 skip / 3759 expect / 65 files — EXACT zero-delta vs base c4318ea and vs my Task-23 baseline d6911f6 (zero test files touched, the card's binding arithmetic law); golden selftest OK.
+- BYTE-MATCH VERIFICATION of every moved symbol (the consolidation's core claim): decay.ts 100% verbatim (76/76 code lines matched in the old state.ts pool; LEARNER_DECAY_PAPER_DEFAULTS + bandOf/decayedMastery/relaxedToPrior normalized-identical); exam-target-reader.ts — courseExamTargetView + daysBetween + utcToday identical; examTargetsFor body identical (only the declared deps-type reshape to the new canonical ExamTargetReaderDeps); courseExamTargets body line-for-line identical (only the declared structural-minimum param types, guidance (a)'s re-derivation clause — 041's fakeSql pin semantics untouched); CourseExamTargetView single-owned reuse from @syllabai/contracts with the state.ts local interface retired (import+re-export confirmed in the file header). Matches R0's ratification verdict in the card.
+- RACE AT MERGE TIME, resolved by the guard: my sha-pinned PUT was blocked by the head-stability assert — R0-MERGE-DESK-18 merged #106 as d3f20f5 INSIDE my review window (head unchanged at 6d3ec11, so the desk merged the exact tree I verified). No double-merge attempted; my review stands as independent first-hand corroboration of the same head.
+- POST-MERGE VERIFY: d3f20f5 ancestor-of main; merged diff = the reviewed diff (5 code files +419/-357, the other 4 files are the .syllabai bookkeeping); worklog 0 markers on merged main; card 066 -> DONE with R0's byte-matched verdict + shared home apps/api/src/services/learner-model/ RATIFIED; merged-tip gates 1332/0/13skip/4558/70 reconcile EXACT (1326+6+0 / 4078+480+0 / 68+2+0 = #104-head + #102 + #106).
+- REGISTER STATE: queue EMPTY (0 open PRs). Stale-IN_REVIEW cards (043/058/061/064/065) are owning-lane/R0 bookkeeping — not touched by this lane per zero-collision (r4b is actively sweeping them: ROUND-18 @ 61299b0). Remaining actionable register: RICH-200-C/D unfiled (awaiting R0 id allocation) + the nba.ts :42-46 doc-only nit (rides the next touch of that fence per the card's own note). No OPEN/unassigned card exists to claim; this lane stands down to standby.
+
+Stage Summary:
+- #106 R0-merged as d3f20f5; r1c's independent 8-guard review = full corroboration at the merged head, zero divergence from the desk's verdict. Zero code change by this lane this round. Queue empty; awaiting R0's next card filings (RICH-200-C/D) or operator routing. STOP.
