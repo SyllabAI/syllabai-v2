@@ -100,6 +100,17 @@ function substituteToken(
 // T-MIG-006 (T-MIG-004 F-3): response-header comparison - subset match,
 // case-insensitive header NAMES, exact VALUES (HTTP semantics). A missing
 // actual header is a failure reported by name.
+//
+// T-MIG-071 (R3-C, operator ruling3; T-MIG-004 F-3 harness lineage): a case
+// may pin a header whose live value is NOT deterministic at the replay
+// posture — the v2 register limiter's Retry-After is the remaining seconds
+// of the aligned 60s fixed window (apps/api/src/middleware/ratelimit.ts:214),
+// phase-of-minute dependent at replay time (run-7 observed 46s; membership
+// rotates burst-order, run-9 §2). An expected value with the "pattern:"
+// prefix is an ANCHORED regex the actual value must MATCH — never compared
+// exactly. Construction-only extension; exact-value semantics are unchanged
+// for every other header and for pattern-free pins.
+const HEADER_PATTERN_PREFIX = "pattern:";
 function checkHeaders(
   actual: Headers,
   expected: Record<string, string> | undefined,
@@ -110,6 +121,13 @@ function checkHeaders(
   for (const [name, want] of Object.entries(expected)) {
     const got = lower.get(name.toLowerCase());
     if (got === undefined) return `header ${name} missing (expected "${want}")`;
+    if (want.startsWith(HEADER_PATTERN_PREFIX)) {
+      const source = want.slice(HEADER_PATTERN_PREFIX.length);
+      if (!new RegExp(source).test(got)) {
+        return `header ${name}: "${got}" vs expected pattern /${source}/`;
+      }
+      continue;
+    }
     if (got !== want) return `header ${name}: "${got}" vs expected "${want}"`;
   }
   return null;
@@ -345,6 +363,42 @@ function selftest(): number {
   }
   if (checkHeaders(h, undefined) !== null) {
     console.error("selftest FAILED: absent expectation must not constrain");
+    return 1;
+  }
+  // T-MIG-071 (R3-C): pattern-value header pins — the rotating limiter
+  // Retry-After. The pin must accept ANY window-phase value the frozen law
+  // can emit (ratelimit.ts:214: max(1, floor(remaining_ms/1000)) ∈ [1,60]),
+  // reject non-numeric junk, still fail on a missing header, and leave the
+  // exact-value path byte-identical.
+  const ra429 = new Headers({ "Retry-After": "46" });
+  const raPhase = new Headers({ "Retry-After": "3" });
+  const raPin = { "Retry-After": "pattern:^[1-9][0-9]*$" };
+  if (checkHeaders(ra429, raPin) !== null) {
+    console.error("selftest FAILED: Retry-After 46 must match the pattern pin");
+    return 1;
+  }
+  if (checkHeaders(raPhase, raPin) !== null) {
+    console.error("selftest FAILED: Retry-After 3 must match the pattern pin (window phase)");
+    return 1;
+  }
+  if (checkHeaders(new Headers({ "Retry-After": "soon" }), raPin) === null) {
+    console.error("selftest FAILED: non-numeric Retry-After must FAIL the pattern pin");
+    return 1;
+  }
+  if (checkHeaders(new Headers({ "Retry-After": "0" }), raPin) === null) {
+    console.error("selftest FAILED: Retry-After 0 is outside the frozen law's [1,60] — must FAIL");
+    return 1;
+  }
+  if (checkHeaders(new Headers({}), raPin) === null) {
+    console.error("selftest FAILED: a missing pattern-pinned header must still FAIL by name");
+    return 1;
+  }
+  if (checkHeaders(ra429, { "Retry-After": "46" }) !== null) {
+    console.error("selftest FAILED: exact-value header semantics must be unchanged");
+    return 1;
+  }
+  if (checkHeaders(raPhase, { "Retry-After": "46" }) === null) {
+    console.error("selftest FAILED: exact-value header mismatch must still FAIL");
     return 1;
   }
   // T-MIG-024 (W2-F3): declared-unordered multiset engine coverage.

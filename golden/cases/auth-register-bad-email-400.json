@@ -1,6 +1,6 @@
 {
   "name": "auth-register-bad-email-400",
-  "description": "Malformed email: 'email: must be a well-formed email address'",
+  "description": "Malformed email: 'email: must be a well-formed email address' [T-MIG-071 R3-C justified re-pin \u2014 operator ruling3 Option B: the v2 register rate limiter STAYS as operator-endorsed v2 hardening (run-7 class C); the captured FROZEN-CORE posture was 400 validation_failed \u2014 'email: must be a well-formed email address'; the replay burst trips the limiter (membership rotates burst-order, run-7 note C / run-9 \u00a72) and retryAfterSeconds + the Retry-After header rotate with the aligned 60s window phase (ratelimit.ts:214), hence tolerate[] + the pattern header pin; the runner must NOT pace (standing masking ban).]",
   "source": "captured from Render core https://syllabai-core.onrender.com 2026-10-04T18:19-18:26Z by T-MIG-003 run-001 (R6); payloads synthetic/masked at capture; no PII present",
   "method": "POST",
   "path": "/api/v1/auth/register",
@@ -13,15 +13,21 @@
     }
   },
   "expect": {
-    "status": 400,
+    "status": 429,
     "body": {
-      "status": 400,
-      "error": "validation_failed",
-      "message": "email: must be a well-formed email address",
+      "status": 429,
+      "error": "Too Many Requests",
+      "message": "Too many requests. Wait a moment and try again.",
+      "retryAfterSeconds": 46,
       "timestamp": "2026-10-04T18:25:22.139864028Z"
+    },
+    "headers": {
+      "Retry-After": "pattern:^[1-9][0-9]*$"
     }
   },
   "tolerate": [
-    "timestamp"
-  ]
+    "timestamp",
+    "retryAfterSeconds"
+  ],
+  "justified": true
 }

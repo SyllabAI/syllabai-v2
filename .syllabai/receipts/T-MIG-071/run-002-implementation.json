@@ -1,0 +1,34 @@
+{
+  "task_id": "T-MIG-071",
+  "kind": "implementation",
+  "run": "002",
+  "timestamp": "2026-10-06T09:35Z",
+  "agent": "r1b lane (Super Z, zai-web session discord DM 482bf272, operator trace 1a1107d8c03ba415)",
+  "branch_of_record": "t-mig-071/r1b @ claim 964a18d + this implementation commit",
+  "baseline_of_record": "origin/main e9ef235 (round-20 receipt tip; #117 c88b738)",
+  "amendments_manifest": [
+    "R3-C x8: auth-register-{admin-refused-403,bad-email-400,blank-displayname-400,missing-fields-400,password-no-digit-400,short-password-400,teacher-no-joincode-403,unknown-role-400}.json — expect.status re-pinned to the ENDORSED 429 limiter posture (GOLDEN_MASTER §4 justified-divergence, health.json field-convention precedent); expect.body = the filter-path law shape (status 429 / error 'Too Many Requests' / message 'Too many requests. Wait a moment and try again.' / retryAfterSeconds 46-as-observed-run-7 / timestamp carried); tolerate[] += retryAfterSeconds (the ruled header's body twin, same phase rotation — loud scope note, never silent); expect.headers = {Retry-After: 'pattern:^[1-9][0-9]*$'}; justified: true; captured core postures preserved verbatim in each description for archaeology",
+    "RIDER (exercised — the rotation finding of record in run-001): golden/runner.ts checkHeaders grows the 'pattern:' prefix branch (anchored regex match; exact-value semantics unchanged for every other header and pattern-free pin) + 7 selftest assertions (46 matches; 3 matches at another window phase; 'soon' fails; '0' fails — outside the frozen law's [1,60]; missing header still fails by name; exact-value pass unchanged; exact-value mismatch still fails)",
+    "R3-D3: w4-target-series-put-201.json — tolerate[] += daysToWindowStart,daysToWindowEnd; justified: true with the capture-time-anchor citation (2026-10-05 capture; +1 day per replay day; the port's utcToday law verified faithful in 068); ALL other fields stay byte-pinned (windowStart/windowEnd/entryDeadline/resultsDate/estimated/entryDeadlinePassed untouched)",
+    "R3-D4: w4-register-learner-201.json tolerate += accessToken; w3-history-after-submit-200.json tolerate += learnerId (attemptId was ALREADY tolerated — the ruling's '+=' is satisfied by the final array, disclosed); auth-me-with-bearer-200.json tolerate += email,displayName (run-7 note H: 'tolerate=[id] insufficient'; the card's pre-verified field set)",
+    "RICH-200-E (R3-D2 effect 4 routing — the DISCLOSED FENCE AMENDMENT): w3-questions-families-student-200.json gains unordered: [''] (root-array multiset per T-MIG-024) — the 8 non-corpus families have no deterministic tie key in the frozen law; order triple-confirmed nondeterministic across three environments with an IDENTICAL multiset (067 run-002); unordered[] preserves full element-level regression power where tolerate-the-whole-array would discard it; this is NOT a comparator widening (zero comparator code contact — the T-MIG-024 engine already implements declared multiset semantics)"
+  ],
+  "gates": {
+    "bun_install": "bun install --frozen-lockfile OK (930 packages, no lockfile drift)",
+    "typecheck": "bun run typecheck x4 (contracts/shared/db/api) exit 0",
+    "bun_test": "bun test apps/api packages = 1546 ran / 1533 pass / 0 fail / 13 skip / 6036 expect() / 82 files",
+    "selftest": "bun golden/runner.ts --selftest OK (the T-MIG-071 pattern assertions included); bun golden/tools/ci-replay.ts --selftest OK",
+    "census": "ci-replay --plan census UNCHANGED: 9 empty-pinned / 153 staged, admin-path 0, staging boundaries unchanged (accounts @ w3-sme-ingest-rich-200, attempts @ w3-teacher-marking-queue-v2-rich-200) — the amendments alter zero tranche membership"
+  },
+  "ab_accounting": {
+    "baseline_main_e9ef235": "1546 ran / 1533 pass / 0 fail / 13 skip / 6036 expect / 82 files (the round-22 first-hand measurement at 0e595bf, carried by tree identity through 3e9b54b and the e9ef235 bookkeeping tip)",
+    "branch_head": "1546 ran / 1533 pass / 0 fail / 13 skip / 6036 expect / 82 files",
+    "delta": "ZERO tests / ZERO expect / ZERO files — EXACT (zero apps/** and packages/** contact per the forbidden list; the band's entire surface is golden/cases/** + the golden/runner.ts rider + receipts)"
+  },
+  "honest_posture": {
+    "live_verification": "the sandbox is DNS-blocked from the live instrument — the live replay is the standing post-merge CI leg (the ci-replay posture of record since T-MIG-063). This band's constructions are verified against the FROZEN LAW first-hand (the limiter formula, the filter-path body, the corpus order) and against the recorded run-7/run-9/063/067/068 evidence bases.",
+    "class_C_residual": "the class-C cases go green WHENEVER the limiter trips (the endorsed posture). When a 60s window boundary straddles the staged filename block, up to 3 of the 8 ADMIT — they then stay honest reds with disclosed cause (the endorsed limiter did not trip; the captured core posture was served). This is the run-9 §5 projection's '+5..8' verbatim; 177/177 remains REACHABLE (exhausted-window runs), zero deletions, zero comparator widenings. The family extension to success-201/duplicate-email-409 stays unexercised: they are register POSTs #1-#3 of the burst on a fresh COW branch — the live instrument would have to show them tripping first (ruling3 effect 4's own condition).",
+    "families_live_confirmation": "the unordered[\"\"] disposition's live confirmation likewise lands on the post-merge CI leg; the construction is grounded in the 067 run-002 triple confirmation."
+  },
+  "stage_summary": "T-MIG-071 implementation COMPLETE on t-mig-071/r1b: 13 case files + the rider, gates green, zero src contact, zero tranche drift. PR next, handed to the desk (authors never self-merge)."
+}

@@ -1,6 +1,6 @@
 {
   "name": "w3-questions-families-student-200",
-  "description": "Question families from V7 seed (deterministic fixed-uuid seed). captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "description": "Question families from V7 seed (deterministic fixed-uuid seed). captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy [T-MIG-071 RICH-200-E disposition \u2014 operator ruling3 R3-D2 effect 4: the 8 non-corpus families have NO deterministic tie key in the frozen (source, qNum, input-order) law; order triple-confirmed nondeterministic across three environments with an IDENTICAL multiset (T-MIG-067 run-002), so the root array is declared unordered (T-MIG-024 multiset semantics \u2014 element-level equality fully preserved; not a comparator widening).]",
   "source": "captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
   "method": "GET",
   "path": "/api/v1/questions/families",
@@ -392,5 +392,8 @@
   },
   "tolerate": [
     "timestamp"
+  ],
+  "unordered": [
+    ""
   ]
 }

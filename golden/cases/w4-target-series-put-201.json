@@ -1,6 +1,6 @@
 {
   "name": "w4-target-series-put-201",
-  "description": "declare the V63-seeded IAL 2026-oct-nov series as the target for course slug chm: enrolment auto-created, countdown derived on read (never stored) \u2014 now-derived date fields tolerated",
+  "description": "declare the V63-seeded IAL 2026-oct-nov series as the target for course slug chm: enrolment auto-created, countdown derived on read (never stored) \u2014 now-derived date fields tolerated [T-MIG-071 R3-D3 justified tolerance \u2014 operator ruling3 Tolerate: daysToWindowStart/daysToWindowEnd derive from utcToday() at serve time (ChronoUnit.DAYS.between, the frozen law \u2014 the port is verified faithful); the capture pinned 2026-10-05 values and every replay day drifts +1 (capture-time anchor); ALL other fields stay byte-pinned.]",
   "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
   "method": "PUT",
   "path": "/api/v1/learners/me/courses/chm/target-series",
@@ -35,7 +35,10 @@
     "id",
     "targetDate",
     "timestamp",
-    "updatedAt"
+    "updatedAt",
+    "daysToWindowStart",
+    "daysToWindowEnd"
   ],
-  "seq": 30
+  "seq": 30,
+  "justified": true
 }
