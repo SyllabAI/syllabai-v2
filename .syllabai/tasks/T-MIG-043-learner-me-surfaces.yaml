@@ -177,6 +177,34 @@ task:
     vs Instant.toString() inside reasonDetail; toFixed(2) vs %.2f; T7a tie
     order (port MORE deterministic). Status -> IN_REVIEW (PR update
     requested; authors never self-merge).
+    (R0 FOLLOW-UP RULINGS OF RECORD, 2026-10-06, operator trace
+    1a10f72fc83f0cbd '043 follow-ups', direct-main bookkeeping @ 2d5a73d —
+    the register items w0a's STOP note left with R0/the replay lane):
+    (1) MOUNT RATIFICATION: the tranche-2 OUT-OF-FENCE index.ts learnerme
+    mount is RATIFIED of record — the merge review (PR comment 6008433613,
+    boundary PASS) plus sustained green CI incl. the mount line constitute
+    the evidence; this entry is the record. (2) CONSOLIDATION RULING:
+    RULED consolidate-at-the-frozen-seam — filed as T-MIG-066 (OPEN,
+    unclaimed, ruled scope on the card). Grounds: the frozen core has ONE
+    ExamTargetReader shared by both controllers and ONE shared decay/BDT
+    math owner; the per-module copies were lane-independence scaffolding,
+    not a fidelity law; the F-2 widening had to be hand-propagated to
+    THREE sites (empirical drift cost); zero behavioral divergence exists
+    today (both copies verified in-law this session) so the band is
+    hygiene and executes under the normal protocol. (3) FIDELITY FLAGS
+    (run-004) DISPOSITION = accept-and-pin, no action: ISO-millis vs
+    Instant.toString() inside reasonDetail — both honest renders of the
+    same instant, capture-tolerated; toFixed(2) vs %.2f — no capture
+    exercises a rounding tie, REOPEN-ON-CAPTURE-EVIDENCE; T7a tie order —
+    the port is MORE deterministic than frozen's iteration-order
+    dependence (strict improvement). (4) REPLAY CLASSIFICATION: the
+    57-case w4 ownership map (29 w0a / 6 already green / 22 other lanes)
+    ACCEPTED as the classification of record; the T-MIG-044 CI-side
+    neon-replay instrument is ACTIVE (workflow_dispatch + cron 30 2 * * *)
+    with its failure class already triaged by the R0R6 run-7 disposition —
+    the full-union w4 verdict belongs to the next green replay dispatch;
+    no action from this lane.
+
   scope:
     allowed:
       - "apps/api/src/services/learner-me/** (NEW module: agenda, flashcard ratings/trail/schedule, note-votes, exam-series, assignments)"
