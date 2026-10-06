@@ -1,0 +1,54 @@
+{
+  "task": "T-MIG-053",
+  "run": "run-004-tranche2",
+  "agent": "r3a (superz-agent-b)",
+  "directive": "Check if R0 has review/merge of PR #101. If not then, review + merge yourself. Then proceed to t2 (class analytics 3 + teacher concept-graph 2) — operator trace 1a10f9f08ba30251",
+  "at": "2026-10-06T06:0xZ",
+  "pr101_delegated_merge": {
+    "found": "open, 0 reviews, unmerged at a472a42 (R0 had NOT reviewed/merged)",
+    "intake": "816ca77 (main@045dc2a) + 903aa06 (main@bb537fa: #99 064 selfmark + #100 063 ci-replay + R0-ROUND-16 bookkeeping) + convergence 915d31c with the review-101 reviewer's parallel ae8d76a (main@862ca34) — set-equal proof: 207/207 Task ID entries covered, 0 non-empty lines uncovered; converged tree == 903aa06 tree",
+    "review": "APPROVE, zero blockers — adversarial port verification against frozen 6cad6ef: the trio 1:1 (ClassKnowledgeGraphController :37-113, graph :59 / nodes/{id}/students :78 / learners/{id}/knowledge-graph :95 over ClassKnowledgeGraphService :38-580); gate chain 404->403->root-404 with NO archived gate; meanBand never-null 4-state (:504/:527-528) + bandCounts refuse-to-bucket; independent-student roster at the SQL bind; V39 verbatim-vs-derived overlay; misconception prevalence DISTINCT+relaxed; the 4-key weakest-first sort byte-faithful; §17 membership short-circuit before user lookup; endpoint-3 delegates to learnerGraphFor (one graph implementation)",
+    "merged": "d14d949 via PUT /pulls/101/merge (merge commit, full receipt in the message); closing comment 6009968692"
+  },
+  "tranche2": {
+    "fence": "contracts + services + fakeSql pins; NO routes/mounts; hands-off: 052-t2 routes (r9-hubx), 043-t2 NBA (w0a)",
+    "endpoints": 5,
+    "code": [
+      "packages/contracts/src/teacher.ts (+14 pins in teacher.test.ts; index one-liner OUT-OF-FENCE-flagged)",
+      "apps/api/src/services/teacher/analytics.ts — ClassAnalyticsService :42-758 (overview/learners/topicDrillDown)",
+      "apps/api/src/services/teacher/kg.ts — the KnowledgeGraphService seam (subtreeIds/prerequisiteChain/conceptAnchorsWithin/semanticEdgesWithin/misconceptionFamilyEdgesWithin; seam-split disclosed)",
+      "apps/api/src/services/teacher/snapshot.ts — ConceptGraphSnapshotLoader :45-479 (six SHA-256 pins; counts 4/28/182/12/193/211/272/5; provenance line; T-C24 passthrough)",
+      "apps/api/src/services/teacher/concept-seed.ts — ConceptGraphSeedService :69-471 (idempotent activate; 409 on provenance mismatch; ACTIVE flip; SeedSummary)",
+      "apps/api/src/services/teacher/concept-edges.ts — TeacherConceptGraphController :87-103 read model",
+      "apps/api/src/services/teacher/concept-graph/{specification_points,topics,relationships}.yaml — byte-verbatim copies (SHAs = the frozen pins); the 3 T-C11 files REUSED from learner-me/concept-graph/ (043-t2, single copy on disk)",
+      "apps/api/src/services/knowledge/graphs.ts — prerequisiteRelations exported ADDITIVELY (weakPrerequisites reuse; full-subtree registry incl. CONCEPT nodes)",
+      "apps/api/test/teacher/{analytics,concept-graph}.test.ts — 27 fakeSql pins"
+    ],
+    "laws_pinned": [
+      "honest unmeasured cells (null mean + UNMEASURED band, never fabricated)",
+      "RAW stored mastery means on this surface (no decay) — 4-dp",
+      "the §11 batching law (ONE query per evidence table) pinned by query-count capture",
+      "the enabled-STUDENT cohort roster (findEnabledByRole; bind captured)",
+      "learner rows: evidenceState MEASURED|UNMEASURED; weakest topics under the evidence floor; misconception signals strongest-first under the BDT threshold; tutor counts in own fields (never mastery)",
+      "the deterministic attention order (UNMEASURED last -> mean asc -> name case-folded)",
+      "the T-C11 projection: concept prereq projects onto anchor SPs (derived + codes), self-projection collapse, unmeasured never weak",
+      "subject-isolation 404 on the drill-down; the reason vocabulary; the 20-cap evidence leg with the unknown-name fallback; the LIMIT bind captured",
+      "snapshot count contract fail-close (211 anchors / 272 validated / 5 excluded); SHA drift fails loudly",
+      "seed idempotency: fresh 420 nodes/709 edges created, re-run all reused alreadyActive=true; loud 409 on provenance mismatch; T-C24 one-time backfill; version lands ACTIVE",
+      "/edges: 404-first; PART_OF excluded by SQL text; the session-56 family widening pinned by bind capture; relation->source->target sort"
+    ],
+    "gates": {
+      "typecheck": "x4 exit 0",
+      "tests": "1248 pass / 0 fail / 13 skip / 4753 expect EXACT = d14d949 baseline (1207+14 contracts) + 27 tests / +974 expects",
+      "selftest": "OK"
+    }
+  },
+  "disclosures": [
+    "ONE clock anchor per analytics call (ADR-031 t1 posture; frozen calls Instant.now() per pass and per relaxed row) — header-documented",
+    "concepts are PART_OF members and enter the analytics structure registry verbatim (the frozen collect excludes only MISCONCEPTION)",
+    "the V2 knowledge_edges column carrying the settled confidence double is named strength; null stays null",
+    "the seam-split: the PART_OF subtree CTE now has a 4th occurrence (teacher band) rather than widening another band's private helper",
+    "the seed edge-created total is 709 (4 section->root + 28 + 182 + 12 practicals + 211 anchors + 272 semantic) — the frozen doc-comment's 693 predates the practical-attach line count; counters are derived, not asserted from the doc"
+  ],
+  "next": "t3 = revision notes (V27, multipart ingest via the 051 runner ext as golden vehicle, path-traversal law); t4 = smart lesson (LLM-path check owed)"
+}
