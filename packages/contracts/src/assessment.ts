@@ -266,10 +266,22 @@ export type StructuredSubmitRequest = z.infer<typeof structuredSubmitRequestSche
  * Java constraints (copied verbatim):
  *   partId:       @NotNull UUID
  *   marksAwarded: @NotNull @Min(0) @Max(99) Integer
+ *
+ * T-MIG-059 (the F-B band): the constraints are DEAD LETTER — the owning
+ * SelfMarkRequest (:59) declares the bare List<PartSelfMark> with NO @Valid
+ * container-element cascade, so jakarta never evaluates the element
+ * annotations. Jackson's BIND law is what actually governs, and it binds
+ * null partId, null marksAwarded, AND an absent field as a null value
+ * (HashMap.put(null, v) is legal at the controller :44; a null Integer
+ * field carries null). The schema widens both fields to .nullish() to
+ * mirror the BIND law, not the dead constraints; the numeric checks stay
+ * encoded as the disclosed inferred-constraint divergence class (T-MIG-057
+ * receipt) — NOT touched here. Bare null ELEMENTS still reject (the
+ * depth-2 invalid_type the route's 057/058 NPE-parity guard serves → 500).
  */
 export const partSelfMarkSchema = z.object({
-  partId: z.string().uuid(),
-  marksAwarded: z.number().int().min(0).max(99),
+  partId: z.string().uuid().nullish(),
+  marksAwarded: z.number().int().min(0).max(99).nullish(),
 });
 export type PartSelfMark = z.infer<typeof partSelfMarkSchema>;
 
@@ -287,6 +299,19 @@ export type PartSelfMark = z.infer<typeof partSelfMarkSchema>;
  * The duplicate-part rule is ENFORCED at the boundary (controller loop →
  * BadRequestException "duplicate part in self-mark: {partId}" → 400), so
  * it IS part of the accept/reject set and is encoded as a superRefine.
+ *
+ * T-MIG-059 (the F-B band) — the dedup loop is HashMap.put SEMANTICS, not
+ * a seen-set (LearnerSelfMarkController :42-48): the loop throws ONLY when
+ * put() DISPLACES A NON-NULL PREVIOUS VALUE (the != null check on the
+ * RETURN value). Consequences emulated here verbatim:
+ *   {X:1},{X:2}      → throws (displaces 1)
+ *   {X:null},{X:1}   → ACCEPTED (a stored null is displaced silently —
+ *                      put returns the old null; the loop keeps walking)
+ *   {X:1},{X:null}   → throws (displaces 1)
+ *   {null-part:1},{null-part:2} → throws, message renders the null key
+ *                      exactly like Java string concat ("...: null")
+ * The final map is last-write-wins either way (each put overwrites), which
+ * is what the route's Map.set walk reproduces when no issue fires.
  */
 export const selfMarkRequestSchema = z
   .object({
@@ -295,16 +320,20 @@ export const selfMarkRequestSchema = z
   })
   .superRefine((val, ctx) => {
     if (!Array.isArray(val.parts)) return; // null/undefined: no declared constraint
-    const seen = new Set<string>();
+    const seen = new Map<string | null, number | null>();
     for (const p of val.parts) {
-      if (seen.has(p.partId)) {
+      const key = p.partId ?? null; // Jackson binds absent partId as null
+      const previous = seen.get(key);
+      if (previous !== undefined && previous !== null) {
+        // put() displaced a NON-NULL previous value — the controller :44-47
+        // throws; a stored null (or an absent key) does NOT count.
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
-          message: `duplicate part in self-mark: ${p.partId}`,
+          message: `duplicate part in self-mark: ${key ?? "null"}`,
           path: ["parts"],
         });
       }
-      seen.add(p.partId);
+      seen.set(key, p.marksAwarded ?? null);
     }
   });
 export type SelfMarkRequest = z.infer<typeof selfMarkRequestSchema>;
