@@ -239,6 +239,36 @@ describe("ask body law — malformed_body vs validation_failed", () => {
     expect(((await res.json()) as Record<string, unknown>).message).toBe("question: must not be blank");
   });
 
+  test("whitespace-only question → @NotBlank trimmed-length law (T-MIG-070 blocker 1)", async () => {
+    // jakarta @NotBlank evaluates the TRIMMED length (TutorController.java
+    // :123-141): "   " is a constraint violation serving 400
+    // validation_failed "question: must not be blank" — the former
+    // z.string().min(1) admitted it into the service, which answered the
+    // WRONG envelope (400 bad_request "malformed request").
+    const { app } = makeApp({});
+    const res = await ask(app, { question: "   " });
+    expect(res.status).toBe(400);
+    const body = (await res.json()) as Record<string, unknown>;
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("question: must not be blank");
+  });
+
+  test("whitespace-only history turn → 400 at binding, never a silent drop (T-MIG-070 blocker 1)", async () => {
+    // THE DANGEROUS ONE (comment 6010396027): a history turn whose text is
+    // whitespace-only must be a binding-time 400 validation_failed — the
+    // former min(1) schema admitted it and conversation.ts's defensive
+    // trim-to-null silently served a 200 with the turn gone.
+    const { app } = makeApp({});
+    const res = await ask(app, {
+      question: "what is a mole?",
+      history: [{ role: "user", text: "   " }],
+    });
+    expect(res.status).toBe(400);
+    const body = (await res.json()) as Record<string, unknown>;
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("history[0].text: must not be blank");
+  });
+
   test("oversized question → the @Size jakarta message", async () => {
     const { app } = makeApp({});
     const res = await ask(app, { question: "x".repeat(2001) });

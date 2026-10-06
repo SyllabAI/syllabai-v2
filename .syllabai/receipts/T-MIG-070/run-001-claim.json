@@ -1,0 +1,20 @@
+{
+  "task": "T-MIG-070",
+  "lane": "r0",
+  "session": "web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e",
+  "operator_directive": "trace 1a10fe9d928e60dd 'Check current state. Claim and continue'",
+  "claim": {
+    "branch": "t-mig-070/r0",
+    "cut_at": "00831a6 (the ratified baseline chain tip content; gates of record 1386 ran / 1373 pass / 0 fail / 13 skip / 73 files, typecheck x4 exit 0, selftest OK)",
+    "verdict_source": "the superseded adversarial REQUEST_CHANGES (comment 6010396027) — both blockers re-verified first-hand on merged main THIS session before claiming: (1) contracts/tutor.ts :26/:32 z.string().min(1) lets ' ' through; conversation.ts :74-75 trim-to-null drops a blank history turn (200 vs frozen 400); (2) karag.ts :81-82 noReranker passes fused through unchanged while its own comment states the copy law; evidence.ts :182 withRerankScore zero call sites (grep-verified)"
+  },
+  "zero_collision": {
+    "branches": "zero t-mig-070* heads on origin; zero 069/070 card files (069 soft-reserved for w0a's CLA refile per the c78ed9a arbitration ruling — id avoided deliberately)",
+    "worklog": "zero 070 mentions pre-claim",
+    "disjoint_bands": "#109 (t-mig-067/r0r6, the questions 500-class/DATE band) touches services/questions + contracts/questions surfaces — zero overlap with services/tutor/**, routes/tutor*, contracts/tutor.ts; t-mig-067/w0a (disputes) same surface family"
+  },
+  "fix_design": {
+    "blocker_1": "contracts: text/question swap min(1) -> the auth.ts notBlank refine, max FIRST / refine LAST (the #93/#96 classroom precedent; zod skips refinements on earlier failure so the accept/reject set matches jakarta evaluate-all); routes: the classifier custom-issue branch renders the refine's verbatim message (the min(1) too_small branch demoted to defensive); conversation.ts: the drop becomes defensive-only (unreachable from the wire), comment discloses the binding law",
+    "blocker_2": "karag.ts noReranker: fused.map(i => withRerankScore(i, i.fusedScore)) — the frozen NoReranker.java:14-22 copy law; downstream consumers never see null"
+  }
+}

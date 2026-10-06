@@ -47,7 +47,7 @@ import {
   systemPrompt,
   userPrompt,
 } from "./prompt";
-import { evidenceFromNode, type EvidenceItem } from "./evidence";
+import { evidenceFromNode, withRerankScore, type EvidenceItem } from "./evidence";
 import { kgRetrieve } from "./kg-retriever";
 import {
   TUTOR_REFUSAL,
@@ -78,8 +78,15 @@ export type EvidenceReranker = (
   fused: ReadonlyArray<EvidenceItem>,
 ) => ReadonlyArray<EvidenceItem>;
 
-/** NoReranker — v0: copies the fused order with rerankScore = fused. */
-export const noReranker: EvidenceReranker = (_query, fused) => fused;
+/** NoReranker — v0: copies the fused order with rerankScore = fused.
+ * The frozen law is REAL, not commentary (NoReranker.java:14-22 —
+ * item.withRerankScore(item.fusedScore()): "rerankScore copies the fused
+ * score so downstream consumers never see null", the §19
+ * deterministic-identity/reproducibility contract). T-MIG-070 restores the
+ * copy — the former pass-through left rerankScore: null on every post-fusion
+ * item while this comment claimed otherwise. */
+export const noReranker: EvidenceReranker = (_query, fused) =>
+  fused.map((i) => withRerankScore(i, i.fusedScore));
 
 /** The vector arm (frozen ContentVectorRetriever :60-81): MIN_COSINE 0.50
  *  floor (T-C42 calibration), honest empty on an unavailable embedding
