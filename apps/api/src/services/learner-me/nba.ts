@@ -95,70 +95,6 @@ export const RECOMMENDATION_PAPER_DEFAULTS: RecommendationParams = {
   tutorEngagementWindowDays: 14,
 };
 
-/** LearnerProperties.Decay paper defaults (contracts decay.ts mirror). */
-export const NBA_DECAY_PAPER_DEFAULTS = {
-  tauLowDays: 30,
-  tauMidDays: 90,
-  tauHighDays: 365,
-  lowBandCeiling: 0.45,
-  highBandFloor: 0.8,
-  floor: 0.1,
-  reviewBelow: 0.6,
-} as const;
-
-/** LearnerProperties.Bdt paper defaults (activeThreshold 0.5, tau 180d). */
-export const NBA_BDT_PAPER_DEFAULTS = {
-  prior: 0.3,
-  activeThreshold: 0.5,
-  stalenessTauDays: 180,
-} as const;
-
-const DAY_MS = 86_400_000;
-
-// ── pure math (per-module structural-seam copies; see the header note) ──────
-
-const clamp01 = (v: number): number => Math.max(0, Math.min(1, v));
-
-export function nbaBandOf(mastery: number, p: typeof NBA_DECAY_PAPER_DEFAULTS): "LOW" | "DEVELOPING" | "SECURE" {
-  if (mastery < p.lowBandCeiling) return "LOW";
-  if (mastery < p.highBandFloor) return "DEVELOPING";
-  return "SECURE";
-}
-
-/** tau frozen on the STORED P0 (ADR-031); floored; recomputed, never persisted. */
-export function nbaDecayedMastery(
-  mastery: number,
-  lastPracticedAt: Date,
-  now: Date,
-  p: typeof NBA_DECAY_PAPER_DEFAULTS,
-): number {
-  if (!(now.getTime() > lastPracticedAt.getTime())) return clamp01(mastery);
-  const elapsedMs = now.getTime() - lastPracticedAt.getTime();
-  const tauDays =
-    mastery < p.lowBandCeiling ? p.tauLowDays : mastery < p.highBandFloor ? p.tauMidDays : p.tauHighDays;
-  const decayed = mastery * Math.exp(-elapsedMs / (tauDays * DAY_MS));
-  return Math.max(p.floor, clamp01(decayed));
-}
-
-/** effective = prior + (P_e − prior)·e^(−age/τ_s); fresh evidence returns the posterior. */
-export function nbaRelaxedToPrior(
-  posterior: number,
-  prior: number,
-  lastEvidenceAt: Date,
-  now: Date,
-  stalenessTauDays: number,
-): number {
-  if (stalenessTauDays <= 0) {
-    throw new Error("staleness tau must be positive, got " + stalenessTauDays);
-  }
-  const p = clamp01(posterior);
-  const base = clamp01(prior);
-  if (!(now.getTime() > lastEvidenceAt.getTime())) return p;
-  const ageMs = now.getTime() - lastEvidenceAt.getTime();
-  const relaxed = base + (p - base) * Math.exp(-ageMs / (stalenessTauDays * DAY_MS));
-  return clamp01(relaxed);
-}
-
 const fmt = (v: number): string => v.toFixed(2);
 
 // ── row shapes (snake_case columns as the selects read them) ────────────────
@@ -224,12 +160,27 @@ interface MisconceptionFamilyEdgeRow extends EdgeRow {
   source_type: string;
 }
 
+// T-MIG-066: the decay/BDT pure math is owned by the canonical
+// services/learner-model/decay.ts (the 043 consolidation band) — the former
+// per-module NBA_-prefixed copies (line-against-line matches, R0-verified
+// zero behavioral divergence) are retired; the canonical names serve here.
+import {
+  bandOf,
+  decayedMastery,
+  relaxedToPrior,
+  LEARNER_BDT_PAPER_DEFAULTS,
+  LEARNER_DECAY_PAPER_DEFAULTS,
+  type LearnerDecayParams,
+} from "../learner-model/decay";
+
+const DAY_MS = 86_400_000; // the tutor-window read's own implementation const
+
 // ── the engine deps ──────────────────────────────────────────────────────────
 
 export interface NbaDeps {
   sql: SqlFn;
   clock: SubmitClock;
-  decay?: typeof NBA_DECAY_PAPER_DEFAULTS;
+  decay?: LearnerDecayParams;
   bdt?: { prior: number; activeThreshold: number; stalenessTauDays: number };
   recommendation?: Partial<RecommendationParams>;
   /** test fixture injection (the frozen tests build fixture graphs) */
@@ -237,13 +188,13 @@ export interface NbaDeps {
 }
 
 function fullParams(deps: NbaDeps): {
-  decay: typeof NBA_DECAY_PAPER_DEFAULTS;
+  decay: LearnerDecayParams;
   bdt: { prior: number; activeThreshold: number; stalenessTauDays: number };
   rec: RecommendationParams;
 } {
   return {
-    decay: deps.decay ?? NBA_DECAY_PAPER_DEFAULTS,
-    bdt: deps.bdt ?? NBA_BDT_PAPER_DEFAULTS,
+    decay: deps.decay ?? LEARNER_DECAY_PAPER_DEFAULTS,
+    bdt: deps.bdt ?? LEARNER_BDT_PAPER_DEFAULTS,
     rec: { ...RECOMMENDATION_PAPER_DEFAULTS, ...deps.recommendation },
   };
 }
@@ -419,7 +370,7 @@ export async function misconceptionReadingsFor(
   return rows
     .map((r) => ({
       ...r,
-      effective: nbaRelaxedToPrior(
+      effective: relaxedToPrior(
         r.probability,
         bdt.prior,
         new Date(r.last_evidence_at),
@@ -504,7 +455,7 @@ export async function nbaActionsFor(
     if (byId.has(nodeId)) {
       effective.set(
         nodeId,
-        nbaDecayedMastery(s.mastery, new Date(s.last_practiced_at), now, decay),
+        decayedMastery(s.mastery, new Date(s.last_practiced_at), now, decay),
       );
     }
   }
@@ -915,7 +866,7 @@ export async function nbaActionsFor(
   for (const wc of weakCandidates) {
     if (ranked.length >= rec.maxActions) break;
     if (!claimTopic(wc.node.id)) continue;
-    const band = nbaBandOf(wc.eff, decay);
+    const band = bandOf(wc.eff, decay);
     ranked.push({
       rank: 0,
       actionType: "PRACTISE_QUESTIONS",
@@ -1050,7 +1001,7 @@ export function buildNbaEngine(
   sql: SqlFn,
   clock: SubmitClock,
   opts?: {
-    decay?: typeof NBA_DECAY_PAPER_DEFAULTS;
+    decay?: LearnerDecayParams;
     bdt?: { prior: number; activeThreshold: number; stalenessTauDays: number };
     recommendation?: Partial<RecommendationParams>;
     conceptGraph?: ConceptDependencyGraph;

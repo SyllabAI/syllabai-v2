@@ -3245,3 +3245,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-066 CLAIMED on branch t-mig-066/r1 @ ec40f1f (card + run-001-claim.json + this entry). Implementation next in this cycle; PR with disclosure; NOT self-merged.
+
+---
+Task ID: T-MIG-066 (consolidation)
+Agent: r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Implement the 043 consolidation — ONE canonical ExamTargetReader + ONE canonical decay/BDT math owner, per the card's binding scope guidance.
+
+Work Log:
+- CANONICAL HOME (claimant proposes, R0 ratifies): apps/api/src/services/learner-model/ — decay.ts + exam-target-reader.ts. The ADR-031 anchor law and the frozen law names carried over verbatim.
+- decay.ts: the state.ts block moved BYTE-VERBATIM (interfaces, the two paper-defaults objects, tauFor/clamp01/DAY_MS private, bandOf/decayedMastery/relaxedToPrior with their frozen-source comment blocks).
+- exam-target-reader.ts: the SEAM reader examTargetsFor + courseExamTargetView (+ the F-2 fidelity note, updated to resolved-by-#86) + the 043 snake row types + utcToday/daysBetween moved verbatim from learner-me/index.ts; the 041 PURE composition courseExamTargets moved verbatim with STRUCTURAL-MINIMUM param types — guidance (a)'s re-derivation clause is MANDATORY here because the state surface's fakeSql pins pin 041's own query texts (declaredEnrolments/examSeriesByIds select different column lists than the seam reader; state.test.ts :61/:69 + routes.test.ts :103/:118/:298) and switching the reads would change pin semantics; the view TYPE is single-owned REUSE from contracts (courseExamTargetViewSchema, the F-2-widened canonical) — the former local interface retired, not re-declared.
+- RETIRED: state.ts's decay block + local CourseExamTargetView + local courseExamTargets body; nba.ts's NBA_-prefixed defaults/functions (the engine's call sites re-pointed; NbaDeps.decay and buildNbaEngine opts.decay typed LearnerDecayParams); learner-me's local row types/helpers/reader. Barrel surfaces preserved byte-identical (state.ts re-exports the canonical names; the learner-me barrel swapped the retired NBA_ re-exports — ZERO external consumers verified — for the canonical names). The test dirs needed ZERO touches (stronger than the card's import-only allowance).
+- GATES: install OK (no changes); typecheck x3 exit 0; bun test apps/api packages 1181/0/13skip/3598 (1194 ran / 64 files) = +0 tests/+0 expects/+0 files EXACT (the card's binding arithmetic law); golden --selftest OK.
+- Receipt run-002-consolidation.json (design of record + three disclosed non-gating nits: the dual countdown micro-impls kept verbatim per move-verbatim, the as-const structural subsumption, the three private DAY_MS consts).
+
+Stage Summary:
+- T-MIG-066 IN_REVIEW: the drift cost the card records (the F-2 three-site hand-propagation) can never recur — the law has ONE owner. Next: PR with disclosure -> NOT self-merged -> merge desk (R0 ratifies the proposed home at review).
