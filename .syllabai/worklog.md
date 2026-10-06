@@ -2230,6 +2230,39 @@ Work Log:
 
 Stage Summary:
 - The T-MIG-044 instrument is FULLY OPERATIONAL: capacity resolved, both postures replay, evidence survives red runs, union verdicts filed. The daily 02:30 UTC schedule is self-sufficient. Next R0 execution window: T-MIG-048 (attempts.exam_paper_id port defect — join through questions per the frozen derivation), then the H-2 third-posture ruling needs an R0/R6 decision (operator-visible). LANE IDLE after this filing.
+
+---
+Task ID: T-MIG-043 (run-001 claim)
+Agent: w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Operator directive trace 1a10d2c88b6f13c5 — "Check and claim whichever lane other agents are not working."
+
+Work Log:
+- SYNC @ origin/main acce2c6 (ff from 78a2512; R7a-ROUND-8 receipt read). Lane survey: r4b = T-MIG-033 tranche-2 (PR #64) + 044/045 branches; r7a = T-MIG-041 tranche-1 (claim fdb6879, PR #65); r3a = receipt lane (PR #63, worklog-only, then IDLE); r8-hub idle (037 merged). The ONLY unclaimed MIGRATION_PLAN-reserved Wave-4 band = T-MIG-043 (named remainder in r7a's 041 yaml).
+- Zero-collision scan RE-RUN immediately before branch cut: ls-remote zero t-mig-043* heads, zero 043 yamls on main, zero 043 claims in this worklog, all three open PR fences disjoint from services/learner-me/**. Claim = the 041/033/030 ratified self-filing precedent under the operator's seeding word (same class as round-9 → r7a's 041).
+- FROZEN READ @ 6cad6ef, line-against-line (full list in run-001-claim.json): agenda composition (:97-154 incl. the assignment re-order dueAt-asc/createdAt-DESC distinct from the list endpoint), flashcard rating POST law (tolerant parse verbatim 400s, fail-closed anchor structure gate UNIT/TOPIC/SUBTOPIC), trail keyset law (200/500 clamp, +1 probe, exclusive-tuple page 2+, TrailCursor base64url-unpadded {t,i} FAIL-CLOSED), review-schedule derivation (trailing-KNOW streak, ladder [1,2,4,8,16,32] lenient normalization, due = !now.isBefore, feed dueAt-then-cardId, summary nextDueAt = min unduer), note-vote POST law (helpful|up / not-helpful|nothelpful|down), exam-series picker + target-series idempotent upsert (kebab slug 400, published gate 400, vanished-series filter, UTC-today countdowns + entryDeadlinePassed), learner assignments (V51 visibility filter, 50/2000 bounds, CLOSED 409, class-gate 403, score/count 400s), Assignment.Status wire open/closed.
+- WIRE VERIFIED against landed #60 learner.ts schemas + golden bodies (w4-flashcard-rating-bad-rating-400 / unknown-anchor-404 verbatim). CONTRACTS GAP found + filed: the standalone ExamSeriesView picker wire is NOT landed (#60 covers the agenda-embedded views only) — tranche-1 adds packages/contracts/src/exam-series.ts (NEW file) + one index.ts re-export line (out-of-fence-flagged, 010/034 precedent).
+- PARALLEL-LANE DISCLOSURE: ExamTargetReader is inside r7a's 041 tranche-1 (#65) too; this lane ports its own copy in services/learner-me/** under the per-module structural-seam doctrine; consolidation ruling requested at R0 intake after 041/043 land (#56 arbitration precedent). Zero file overlap.
+- TRANCHES: t1 = services + fakeSql pins + the new contracts file; t2 = NBA engine (nba-rules/v1.3, T1..T7 tiers — NextBestActionService :79-554 fully read this session) + /recommendations + agenda actions flip + routes/mounts (out-of-fence flagged). Until t2, agenda-with-rootId returns 501 not-implemented owning-task-id — the honest-response law, never a fake 200. knowledge-graph/smart-lesson OUT (041's controller / Wave-5 band); intervention-runs OUT (Wave-6); NightlyDecayJob port OUT (042P names a separate decay lane).
+
+Stage Summary:
+- T-MIG-043 claimed @ acce2c6 on t-mig-043/w0a (yaml + receipt + this entry). w0a's long-standing "041/043 operator-routed, NOT self-filed" register note is now discharged for 043 by the operator's seeding word; 041 remains r7a's. Tranche-1 implementation follows on this branch; PR will request independent review + R0 id ratification; authors never self-merge.
+
+---
+Task ID: T-MIG-043 (run-002 tranche-1)
+Agent: w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Implement tranche-1 of the claimed learner-me band — services + fakeSql pins + the missing exam-series wire contracts; gates; PR; stop.
+
+Work Log:
+- services/learner-me/index.ts (the 033 single-module shape): recordFlashcardRating (tolerant parse, fail-closed anchor gate UNIT/TOPIC/SUBTOPIC, append-only), flashcardTrailPage (200/500/clamp law, +1 probe, row-value keyset (occurred_at, id) < (ts, id) — 2 binds, the frozen @Query's param count), TrailCursor codec (base64url-unpadded {t,i}; round-trips the RAW db text so sub-ms precision survives the walk; FAIL-CLOSED with the frozen error texts), flashcardReviewSchedule (trailing-KNOW streak, hub-parity ladder [1,2,4,8,16,32] lenient-normalized, dueAt/cardId feed order, honest summary, COMPUTED-AT-READ/NEVER-PERSISTED, TIMING-ONLY), recordNoteVote (the parse ASYMMETRY pinned: no '_'→'-' normalization), examSeriesCalendar/setTargetSeries/clearTargetSeries (published gate, kebab slug law, idempotent upsert, row-remains clear), examTargetsFor (vanished-series filter, empty→[] with no second query), learnerAssignments/submitAssignment (V51 visibility, verbatim 404/403/409/400 gates in frozen order, append-only hand-in), buildAgenda (dueReviews + the agenda re-order dueAt-asc/createdAt-DESC distinct from the list order + examTargets + the tranche-2 NBA provider seam with the honest 501 posture for rootId).
+- packages/contracts/src/learner-me.ts (NEW): ExamSeriesView + examSeriesParams + SetTargetRequest + AssignmentSubmissionRequest — the standalone wire the #60 bundle deliberately does not carry; 12 contract pins; ONE re-export line in index.ts (out-of-fence-flagged).
+- apps/api/test/learner-me/learner-me.test.ts: 51 tests / 177 expects over the shared fakeSql helper — golden verbatim messages (w4-flashcard-rating-bad-rating-400 / unknown-anchor-404 bodies), keyset walk incl. a stub that applies the tuple predicate, schedule boundary law (the boundary instant is DUE), STRICTLY-before entry deadline pinned both sides, append-only no-UPDATE pins, agenda re-order vs list order, the 501 posture, the V59 ladder seam.
+- REAL BUG CAUGHT BY THE PINS before any review: my first Vote.parse port missed the frozen 'down' case (doc comment alone had drifted) — fixed, test-pinned. TrailCursor regex initially rejected 2-digit UTC offsets ('+00', pg text) — fixed, round-trip pinned.
+- FIDELITY FLAG filed (not silently "fixed"): courseExamTargetViewSchema entryDeadline/resultsDate typed z.string() in the canonical #60 bundle, but the frozen record renders the nullable LocalDate columns as null when absent; the W4 capture never exercised a null-deadline series. The port renders honestly; .nullable() correction requested at review.
+- Gates: typecheck x4 exit 0; bun test 775 ran / 762 pass / 0 fail / 13 skip / 2119 expect = main (712/699/0/13/1924) + 63 tests / 195 expects EXACT (api +51/+177, contracts +12/+18); golden selftest OK; ZERO golden files touched; zero Neon/prod contact.
+- Zero-collision re-verified before the PR: this branch touches only services/learner-me/**, test/learner-me/**, contracts learner-me.* (+1 index line), .syllabai/T-MIG-043 files — disjoint from r7a's 041 (services/learner/**), r4b's 033 (teachermarking), r3a's receipts.
+
+Stage Summary:
+- T-MIG-043 tranche-1 IN_REVIEW on t-mig-043/w0a — PR opened for independent review + R0 id ratification. Authors never self-merge. Tranche-2 (NBA engine nba-rules/v1.3 + /recommendations + agenda actions flip + routes/mounts + w4 golden replay) is scoped in the receipt and awaits the operator/R0 word. w0a STOPS after the PR.
 ---
 Task ID: R0s-ROUND-10 (housekeeping: T-MIG-047 duplicate-id repair + T-MIG-048 fail-path redaction) 
 Agent: r0s (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
