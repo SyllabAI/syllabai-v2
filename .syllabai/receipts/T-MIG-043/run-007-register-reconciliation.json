@@ -1,0 +1,41 @@
+{
+  "task": "T-MIG-043",
+  "run": "run-007-register-reconciliation",
+  "agent": "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)",
+  "recorded_at": "2026-10-06 (operator directive trace 1a111a0ee3476f85 'Proceed, we have to finish the migration')",
+  "base": "origin/main 7beb4ee (the R0-LANE-CENSUS-1 desk commit: 074 flip landed, 076 recused to the takeover lane)",
+  "branch": "t-mig-043/r7a-reconciliation",
+  "deliverable": ".syllabai-only reconciliation entry: the 043 register closure evidence consolidated of record, a distant T-MIG-076 guard reprobe corroboration from a fresh environment, and artifact-verified replay intel handed to the 081 watchlist owner. ZERO band contact with t-mig-076 (owned by takeover lane r0b, trace 1a111a0b9b917891, earliest-claim-wins).",
+  "f3_reconciliation_of_record": {
+    "corrects": "the post-compaction operator-facing summary this lane carried into the round (it said F3 'not started' — stale)",
+    "fact": "T-MIG-043 finding F3 was EXECUTED BY THIS LANE pre-compaction and is MERGED OF RECORD",
+    "evidence": [
+      "card .syllabai/tasks/T-MIG-080-f3-salvage-hygiene-pins.yaml — owner = this session (web-da4ab8b1-a924-45d1-ae19-04dc343162a6), operator directive trace 1a110d934c7c8579 'execute F3', status DONE",
+      "claim 17c202c on t-mig-080/r7a @ baseline d8916c7; receipts T-MIG-080/run-001-claim.json + run-002-f3-salvage.json",
+      "merged of record: PR #123 -> 88c1965 (R0-auto round-24, sha-pinned PUT @ f25594d)",
+      "deliverable landed: 10 additive pins — apps/api/test/learner-me/routes.test.ts +4 (the jakarta declaration-order constraint block re-scoped 1:1 to the route layer: blank-cardId jakarta default, cardId size, subtopicCode size, constraint-beats-unknown-rating-parse) + apps/api/test/learner-me/learner-me.test.ts +6 (insert stores enum NAME via rowsFor params[4]; exact two-query budget; structure-gate POSITIVE UNIT+SUBTOPIC; bad-slug short-circuits-before-ANY-query PUT+DELETE; absent-row single-blind-UPDATE no-op; schedule COMPUTED-NEVER-PERSISTED zero-writes) + the disclosed two-line notBlank fidelity fix (contracts learner.ts min(1) on cardId/subtopicCode + routes/learnerme.ts classifier same-field notBlank scan), zero golden exposure",
+      "gates of record at the band: d8916c7 baseline 1533/6036/82f +10 tests/+30 expects EXACT"
+    ],
+    "register_state": "T-MIG-043 findings fully dispositioned: F1 documented (record-correction), F2 -> PR #86 (r1-contracts, be47e32, transitively cast-free after 902250d), F3 -> PR #123 (this lane), F4 — none open. The 043 audit register is CLOSED."
+  },
+  "guard_reprobe_distant_corroboration": {
+    "scope": "observation only — the 076 band belongs to the takeover lane r0b; this lane filed nothing under T-MIG-076/**",
+    "method": "fresh sandbox (rebuilt twice on 2026-10-06): (1) scoped python replace on a checked-out .github/workflows/ci.yml — pattern reported not-found; (2) membership probe on the API-decoded file bytes returned False while the same bytes' repr contained the substring (print-falsification class); (3) ground truth via content-addressing: git blob sha of HEAD:ci.yml = f959c0ff3663237da1bcf63f364d6eee43a70baf == GitHub API contents sha for ref=main, decoded content 'branches: ain]' — the corruption is real and unfixed on main",
+    "conclusion": "corroborates T-MIG-076/run-001-guard-blocked.json AND adds the env-variance datapoint: the guard is PRESENT and print-deceptive in r7a's fresh environment while verified ABSENT in r0b's write round-trip — the takeover lane's repair path is genuine, not a desk artifact. No further probes attempted; the boundary is respected."
+  },
+  "replay_intel_for_the_watchlist_owner": {
+    "scope": "read-only artifact pull, no disposition claimed — R0/R6 own replay reds (never auto-fixed)",
+    "runs": "manual dispatch pair at THIS base commit 7beb4ee: 37481318211 (completed/failure, 14:43:10Z) + 37481369335 (completed/cancelled, 14:43:32Z)",
+    "artifact": "neon-replay-37481318211-1 (id 11421875179): union 167/177 PASS — seed 154/162, prod 13/15, 5 via the T-MIG-071 (R3-C) declared limiter-429 disposition",
+    "case_level_081_flip_achieved": "w4-agenda-malformed-bearer-401 and w4-state-empty-bearer-401 are NOT in the fail list (verbatim-posture PASS at 7beb4ee) and the curriculum pair is green — the empirical 4/4 demanded by the T-MIG-081 verdict watchlist exists on record ahead of the next scheduled run; the next daily cron (02:30Z) remains the of-record confirmation event per the watchlist's own wording",
+    "residual_reds_classified": "no new band suggested — all 10 reds are the KNOWN volatility classes: 8 seed reds are learner-UUID-pinning / per-run-fixture mismatches (w3-history-empty-student-200, w3-history-after-submit-200, w3-questions-families-student-200, w4-flashcard-schedule-derived-200, w4-flashcard-trail-200, w4-knowledge-graph-empty-200, w4-knowledge-graph-practiced-200, w4-state-practiced-200 — fresh-run learnerIds fa22cecc/c69124ff vs captured aa645313/da30cee5, empty-vs-seeded postures) + 2 prod reds are createdAt microsecond precision (content-docs-teacher-detail-realdata-200, content-docs-teacher-realdata-200)"
+  },
+  "gates_first_hand_at_this_head": {
+    "typecheck": "x4 exit 0 (root script: contracts + shared + db + api)",
+    "bun_test_api_packages": "1569 ran / 1556 pass / 0 fail / 13 skip / 6143 expect / 83 files = 9bb629f/27a95f0 baseline EXACT (+0 — .syllabai-only delta)",
+    "bun_test_hub": "36 pass / 0 fail / 291 expect — unchanged",
+    "golden": "--selftest OK (incl. T-MIG-024 multiset, T-MIG-072 canonicalization, T-MIG-071 limiter posture, T-MIG-075 auth-posture, T-MIG-077 sentinel law)"
+  },
+  "fence": ".syllabai/receipts/T-MIG-043/run-007-register-reconciliation.json + .syllabai/worklog.md (append-only entry) — zero code, zero golden, zero .github, zero T-MIG-076/** contact",
+  "merge_posture": "authors-never-self-merge — PR to the desk; no card flip requested (043 already DONE; this is closure evidence only)"
+}
