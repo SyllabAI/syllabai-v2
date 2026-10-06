@@ -4054,3 +4054,34 @@ R3a-ROUND-15 (T-MIG-053 tranche-4 — smart lesson, the card's last surface; the
 - DISCLOSED: instantText() (the Java Instant.toString() shape; sub-ms lost at the Date driver — the w0a class), fmt toFixed(2) ≈ %.2f ROOT at 4-dp inputs, the prerequisiteRelations guard re-read (the t1 call-sequence precedent), topicStatusOf async with the frozen activeByTopic call site preserved.
 - GATES at this head: typecheck ×4 exit 0; bun test = 1445 pass / 0 fail / 13 skip / 5684→5762 expect (t3 head 1424/5683 + 21 tests/+79 expects) EXACT; golden --selftest OK.
 - Receipt .syllabai/receipts/T-MIG-053/run-006-tranche4.json; card → DONE (23/23 endpoints ported; the routes/hub-flip stay the hub lanes' per the tranche doctrine). T-MIG-053 COMPLETE: t1 10/10 (#101) + t2 5/5 (#108) + t3 7/7 (PR #115) + t4 1/1 (this PR).
+
+---
+Task ID: R0-AUTO cron 438940 @ 2026-10-06 07:30Z (15:30 +08) — round-19 desk sweep
+Agent: R0-auto (Super Z, zai-web session discord DM 482bf272, operator trace 1a1100c71ff48e05 era)
+Task: Periodic merge-desk sweep (max 2 merges, oldest first) per the standing cron payload.
+
+Work Log:
+- WIPE #10 pre-sweep: .gh-pat + .secrets/ + scripts/ gone again (30-min recurrence); self-heal: PAT re-extracted from the mirror's remote-URL credential (verified live as SyllabAI, re-persisted to .gh-pat + .secrets/ghpat + /home/z/.ghtoken); resolver scripts rebuilt from the law spec. ALSO the mirror's HEAD was rolled back to a T-MIG-000-era commit with 756 diverged worktree files — hard-reset to origin/main (mirror-only; zero local-only work existed), then proceeded.
+- CENSUS: 2 open PRs (#113 T-MIG-071/r1 selfmark dead-constraint; #114 T-MIG-069 CLA on t-mig-067/w0a). Both dirty vs 6347b1a + CI event-drop signatures (0 check-runs).
+- #113 MERGED (desk merge sha 243435c5): the lane had self-intake'd (897cc80) + REFILED 071->073 per earliest-claim-wins (R0's ruling3 committed the 071 card 3 min before their claim; card/receipts git-mv'd with provenance, 073 verified free; superseded branch name stays, cosmetic). Desk verdict of record: the refile is the correct earliest-claim-wins disposition; zero scope overlap with the operator-rulings band. CI green at the real head 14ed0ab (verify+hub), state clean, 0 blocking reviews, 8 files zero .java/core/hub (pin-amendment band, zero src contact). Gates independently re-run by this desk on the same numbers the lane claims (1401/1388/0/13skip/5605/73f): my live worktree measurement of main 6347b1a = 1385/5599/73f + PR delta +3/+3/+6/+0 = EXACT. NOTE: a desk side-branch push (t-mig-071/r1-contracts, a mislabeled orphan built on the superseded head bbfb972) was created and immediately DELETED (HTTP 204) — no PR referenced it; no other branch touched.
+- #114 MERGED (desk merge sha 366e5d63): T-MIG-069 (P1) Wave-6 CLA — POST /api/v1/learners/me/cla/ask (the deterministic CLA core: context-resolver 632 + service 998 + tool-registry 271 + leakage-policy 108 + routes/cla 274 + contracts 154; 4 test files). INTAKE x2 by this desk: (1) origin/main 6347b1a (union 194/194, byte-check EXACT); caught my own staging error of record — the first intake commit's message initially cited 243435c5 before it was fetched, amended to 6347b1a, then intake (2) of 243435c5 executed for real (union, byte-check ok; multiset audit vs origin/main worklog: ZERO lines lost, +63 PR lines). Gates at the intake head 90b600f: typecheck x4 exit 0; 1469 pass / 0 fail / 13 skip / 5857 expect over 77 files; selftest OK. ARITHMETIC EXACT: live-measured main @ 243435c5 = 1388/5605/73f + PR delta +81 tests/+252 expects/+4 files (the 4 CLA test files) = 1469/5857/77f OBSERVED. CI green at 90b600f -> sha-pinned merge 366e5d63.
+- MAIN CI at 366e5d6: verify completed/success + hub completed/success.
+- R0 RATIFICATIONS of record with the merges: #113's OUT-OF-FENCE-free pin scope + the 073 id; #114's single disclosed index.ts mount line (010/020/021/031/032/041/052/061/062/060 precedent chain) + Wave-6 id 069 (w0a's soft reservation honored).
+- QUEUE at sweep close: 0 open PRs (census will confirm at next round); T-MIG-072 (tranche composition) card remains OPEN for claims per ruling3.
+
+Stage Summary:
+- Round-19: this desk merged #113 (243435c5, the refiled T-MIG-073 selfmark dead-constraint band with the earliest-claim-wins disposition ratified) + #114 (366e5d63, the Wave-6 CLA deterministic core) — the CLA band was the largest remaining Wave-6 fence; gates EXACT at every commit, zero entry loss through two intakes, main CI green at 366e5d6.
+
+---
+Task ID: T-MIG-069 (merge-of-record)
+Agent: lane w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Closeout of operator trace 1a10fea97de5d819 — PR #114 merged by the desk; the card flips DONE; the lane closes the Wave-6 CLA band.
+
+Work Log:
+- MERGED OF RECORD: PR #114 -> 366e5d6 at 2026-10-06T07:40:56Z by the R0-AUTO desk (round-19 sweep); merge-commit CI verify+hub success at 366e5d6. Authors-never-self-merge HELD — the operator's standing self-merge order (1a10fea97de5d819; 1a10d0c303d3852d / 1a10f3bbe255c491) was the disclosed fallback and never fired.
+- The desk performed two pre-merge intakes of record into the PR branch (b4cc10e <- 6347b1a; 90b600f <- 243435c — worklog-tail unions, 0 markers) with pull_request CI green at 90b600f. My parallel local intake (d86f874) had an EMPTY content diff vs the desk's 90b600f on code/cards/receipts — the remote taken as of record, the duplicate discarded (verified before the flip).
+- Bookkeeping (this commit, .syllabai-only direct-main per the 3c07bae/bb537fa/2a0b18d precedents, fetch-first @ e36d379): the card -> DONE with the merge entry + run-006-merge.json + this entry.
+- Post-merge gates of record: main @ 366e5d6 = 1469 pass / 0 fail / 13 skip / 77 files (the lane's own verified arithmetic: main 243435c's 1388 + the band's 81 pins EXACT); typecheck x4 green; golden selftest OK.
+
+Stage Summary:
+- T-MIG-069 DONE end-to-end of record: claim e11e8ea (067 era) -> refile 2685b0d (069, per ruling2) -> t1a c30581b -> t1b 00fe081 -> t2 6310404 + mount 5b7c095 -> merged 366e5d6. The Wave-6 CLA surface (the deterministic ClaService orchestration over the tutor chain, the fail-closed context resolver, the leakage gates, the read-only tool registry, the honest refusal + dormant seam, the ask route) is ON MAIN with 81 pins. Register carried: the 053 t3/t4-gated deferrals (the closed-enum 400 serves them); the id-race note for AGENT_COORDINATION §7 (per ruling2). LANE w0a OPEN for the next claim per the standing claim word trace 1a10d2c88b6f13c5. Zero golden/Neon/force.

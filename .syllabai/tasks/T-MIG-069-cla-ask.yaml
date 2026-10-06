@@ -3,7 +3,7 @@ task:
   id: T-MIG-069
   title: "Wave-6 CLA (contextual assistant) — POST /api/v1/learners/me/cla/ask: the ClaService deterministic orchestration (context resolution, tool registry, leakage policy, grounded-evidence citation plumbing) over the ALREADY-PORTED tutor chain + the dormant generator seam (tutor posture)"
   owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — operator directive trace 1a10fbe9465708c9 'Check if R0 has merged or not. If not, review+merge yourself and continue working': the merge half executed of record (T-MIG-060 #104 merged 6580b2c) and 'continue working' executes the standing claim directive trace 1a10d2c88b6f13c5 — claims the CLA band, the next unfiled Wave-6 surface (docs/MIGRATION_PLAN.md §5 Wave 6 lists 'CLA' explicitly; 060=tutor+sessions, 061=intervention, 062=research calibration are filed; CLA is not). Id ratification requested at PR review (030/032/039/040-PREP/041/043/060 precedent)"
-  status: IN_REVIEW # REFILED T-MIG-067 -> T-MIG-069 per R0-arbitration ruling2 (c78ed9a); t1a LANDED (39 pins); t1b LANDED (the context resolver, 18 pins); t2 LANDED (ClaService orchestration + routes/cla.ts + the OUT-OF-FENCE mount — id ratification + independent review requested at PR)
+  status: DONE # MERGED of record: PR #114 -> 366e5d6 2026-10-06T07:40:56Z by the R0-AUTO desk (round-19 sweep), merge-commit CI verify+hub success at 366e5d6; REFILED T-MIG-067 -> T-MIG-069 per R0-arbitration ruling2 (c78ed9a); t1a (39 pins) + t1b (18 pins) + t2 (24 pins) = 81 pins on main; the OUT-OF-FENCE mount (5b7c095) landed via the same PR — ratification carried by the merge of record
   priority: P1
   wave: 6
   deps: [T-MIG-060, T-MIG-041, T-MIG-053] # the tutor chain services + ServableQuestions (060, this lane); LearnerModelService misconceptions (041); the knowledge graph service (053 family) — all on main at claim time
@@ -183,6 +183,18 @@ task:
     (1430/76f/5745) +24/+1/+59 EXACT; golden --selftest OK. The OUT-OF-
     FENCE index.ts mount ships as its own commit (R0 ratification
     requested, the 010/020/031/043/052/061/060 precedent).
+    (merge entry 2026-10-06T07:5xZ) MERGED OF RECORD: PR #114 -> merge
+    commit 366e5d6 at 2026-10-06T07:40:56Z by the R0-AUTO desk (the
+    round-19 sweep) — authors-never-self-merge HELD (the desk merged;
+    the operator's standing self-merge order was the disclosed fallback
+    and never fired); merge-commit CI verify+hub success at 366e5d6; the
+    desk performed two pre-merge intakes of record (b4cc10e 6347b1a,
+    90b600f 243435c — worklog-tail unions, 0 markers) with the
+    pull_request CI green at 90b600f; the full band history
+    (e11e8ea claim -> c30581b t1a -> 2685b0d refile -> 314da7f intake ->
+    00fe081 t1b -> 6310404 t2 -> 5b7c095 mount) is ON MAIN; id
+    ratification carried by the merge of record (the register reads
+    T-MIG-069 = the Wave-6 CLA band, DONE).
   base:
     repo: "syllabai-v2 @ 2a0b18d at claim time (the 060 bookkeeping head); frozen refs: syllabai-core @ 6cad6ef"
   basis: >

@@ -1,0 +1,44 @@
+{
+  "task": "T-MIG-069",
+  "run": "run-006-merge",
+  "date": "2026-10-06",
+  "lane": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "provenance": {
+    "operator_directive_trace": "1a10fea97de5d819",
+    "directive": "Check if R0 has merged or not. If not, review+merge yourself and continue working",
+    "resolution": "R0 merged of record — the self-merge fallback never fired. The 'continue working' half completed the whole band on-branch this window (the refile run-003, t1b run-004, t2 run-005) and the desk merged PR #114 within 12 minutes of opening."
+  },
+  "merge_of_record": {
+    "pr": 114,
+    "merge_commit": "366e5d6",
+    "merged_at": "2026-10-06T07:40:56Z",
+    "merged_by": "R0-AUTO desk (the round-19 sweep, receipt e36d379)",
+    "merge_commit_ci": "verify + hub completed success at 366e5d6",
+    "pre_merge": [
+      "the desk performed two intakes of record into the PR branch (b4cc10e <- 6347b1a, 90b600f <- 243435c — worklog-tail append-only unions, 0 markers) — the r4b review-intake pattern",
+      "pull_request CI completed success at 90b600f (the PR head of record)",
+      "the content diff between my parallel local intake (d86f874) and the desk's 90b600f was EMPTY on code/cards/receipts — same union, the remote taken as of record, my duplicate discarded"
+    ],
+    "band_history_on_main": [
+      "e11e8ea claim (T-MIG-067 era)",
+      "c30581b tranche-1a (39 pins)",
+      "2685b0d refile -> T-MIG-069 (R0-arbitration ruling2 executed)",
+      "314da7f intake (00831a6)",
+      "00fe081 tranche-1b (18 pins)",
+      "6310404 tranche-2 (24 pins)",
+      "5b7c095 the OUT-OF-FENCE mount (ratification carried by the merge)",
+      "b4cc10e + 90b600f the desk's intakes",
+      "366e5d6 the merge"
+    ]
+  },
+  "register": {
+    "T-MIG-069": "DONE — the Wave-6 CLA band (POST /api/v1/learners/me/cla/ask) is ON MAIN: 81 pins total (t1a 39 + t1b 18 + t2 24), typecheck x4 green, golden selftest OK at every tranche head, merge-commit CI green",
+    "carried_items": [
+      "SMART_LESSON + NOTE_SECTION resolver branches + the note lead-evidence branch defer to the 053 t3/t4 gate — the frozen closed-enum 400 is the serving mechanism until r3a's tranches land (#115, 053-t3 in flight at merge time)",
+      "the id-race class (scan-vs-push) is noted for AGENT_COORDINATION §7 per ruling2 — no law change proposed",
+      "the mount ratification is carried by the merge of record (5b7c095 landed via #114)"
+    ]
+  },
+  "adr_031_zero_write_audit": "zero writes: this bookkeeping is .syllabai-only (the 3c07bae/bb537fa/2a0b18d precedents, fetch-first); zero code, zero tables, zero golden edits, zero Neon contact, zero force-push",
+  "lane_state": "Wave-6 CLA DONE end-to-end. Lane w0a open for the next claim per the standing claim word trace 1a10d2c88b6f13c5; the remaining unfiled Wave-6 members at merge time were LLM admin (LlmAdminController), OCR ingestion (GlmOcrIngestionController), routing (RoutingController) — subject to a fresh census."
+}
