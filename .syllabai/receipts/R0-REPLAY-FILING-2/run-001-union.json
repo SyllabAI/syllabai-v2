@@ -1,0 +1,65 @@
+{
+  "task_id": "R0-REPLAY-FILING-2",
+  "kind": "live-replay/union-filing",
+  "run": "run-001",
+  "timestamp": "2026-10-06T14:43:32Z",
+  "agent": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operator_trace": "1a1119f0fd157289 'Check if merged. Claim work and continue'",
+  "workflow_run": {
+    "id": 37481318211,
+    "dispatched_by_this_lane": false,
+    "dispatch_note": "a workflow_dispatch at the same ref landed 22s before this lane's identical dispatch (37481369335 @ 14:43:32Z, actor SyllabAI — PAT identity is shared across lanes); this lane CANCELLED its own duplicate (HTTP 202) per zero-waste + earliest-event-wins and files the union of the in-flight run; run identity indistinguishable by actor by design",
+    "head_sha": "7beb4ee",
+    "conclusion": "failure (honest-red design — T-MIG-047: the union verdict reds the job on any FAIL; evidence producer, not a gate)",
+    "artifact": "neon-replay-37481318211-1 (id 11421875179): union.md + seed.json + prod.json + boot logs"
+  },
+  "union_of_record": {
+    "total": "167/177 PASS (+10 vs the 157/177 prior of record @ f6a4bb8, run 37443535771)",
+    "seed": "154/162",
+    "prod": "13/15",
+    "declared_limiter_429_disposition": "5 via the T-MIG-071 (R3-C) posture, unchanged"
+  },
+  "headline": "T-MIG-081 WATCHLIST DISCHARGED EMPIRICALLY: w4-agenda-malformed-bearer-401 + w4-state-empty-bearer-401 both PASS under the verbatim-bearer posture (#121 a14816c) — the first replay run under that posture; with 077's curriculum re-pin pair also PASS, the verdict's 4/4 flip event of record is complete: CLASS B closure stands (instrument-residue, not a port gap), the P1 middleware-gap hypothesis stays DISPROVEN with live evidence.",
+  "flips_of_record_20_to_10": [
+    "curriculum-subject-bad-uuid-400 (077 F-4 R1 re-pin)",
+    "curriculum-subject-unknown-404 (077 F-4 R1 re-pin)",
+    "question-assets-unknown-404 (077 F-5 sentinel law)",
+    "w4-target-series-clear-204 (077 F-5 sentinel law)",
+    "w4-target-series-clear-again-204 (077 F-5 sentinel law)",
+    "w3-questions-topics-student-200 (078 F-1 V63-seeded-unstaged restoration)",
+    "w4-course-stats-practiced-200 (078 F-1 option (i) apply-reset posture)",
+    "w4-smart-lesson-missing-params-400 (079 mounts)",
+    "w4-smart-lesson-practiced-200 (079 mounts)",
+    "w4-smart-lesson-unknown-topic-404 (079 mounts)",
+    "w4-agenda-malformed-bearer-401 (075 verbatim posture — 081 watchlist)",
+    "w4-state-empty-bearer-401 (075 verbatim posture — 081 watchlist)"
+  ],
+  "regressions_filed": {
+    "cases": ["w4-flashcard-schedule-derived-200", "w4-flashcard-trail-200"],
+    "evidence": "both seed-posture: live bodies EMPTY vs corpus populated (schedule due:1/scheduled:2 + 3 trail events; live learnerId fa22cecc... vs corpus da30cee5...) — both PASSED in the prior run @ f6a4bb8 (pre-#125)",
+    "hypothesis_of_record": "the #125 (T-MIG-078) F-2 capture-declared learner routing resolves these two flashcard-surface cases to a seeded learner whose flashcard state is empty — routing-marker mismatch on the flashcard band (construction-only markers) or capture-declared learner vs seed-state-builder learner divergence",
+    "routed_to": "T-MIG-078 case-owner (r1c) + R0 review; zero auto-fix per GOLDEN_MASTER §4 / AGENT_COORDINATION §6; this lane makes zero golden/case contact"
+  },
+  "residuals_8_all_pre_filed": {
+    "G_class_diff_window_blindness_by_design": [
+      "PROD:content-docs-teacher-realdata-200",
+      "PROD:content-docs-teacher-detail-realdata-200"
+    ],
+    "note_G": "077 F-6 VERIFIED-NO-OP: the createdAt passthrough chain is javaInstantText-exact; the residual red is unobservable in the 400-char diff window (both sides cut mid-createdAt) — instrument tail-window finding stands for R0/R6",
+    "filed_by_078_predictions_CONFIRMED_EXACT": [
+      "w3-history-after-submit-200 (RED solely on the attemptedAt wire-precision pin — count residual 2-vs-1 is GONE: total 1 vs 1 this run)",
+      "w4-state-practiced-200 (RED on the dormant-pipeline BKT legs: live skillStates [] vs corpus populated)"
+    ],
+    "identity_family_seed_learnerid_mismatch": [
+      "w3-history-empty-student-200 (live fa22cecc... vs corpus aa645313...)",
+      "w4-knowledge-graph-empty-200 (live fa22cecc... vs corpus da30cee5...)",
+      "w4-knowledge-graph-practiced-200 (live fa22cecc... vs corpus da30cee5...)"
+    ],
+    "cause_unresolvable_in_400_char_window": [
+      "w3-questions-families-student-200 (077 F-3 unordered-root multiset amendment landed; still red — live first element ...002 vs corpus ...001; whether the residual is multiset-content drift (C-class) or comparator canonicalization scope cannot be determined inside the 400-char renderer window — filed for case-owner + the instrument tail-window band)"
+    ]
+  },
+  "method": "runs API poll -> artifact 11421875179 download -> union.md parse -> seed.json/prod.json failure-roster diff vs the prior run's artifact (11402690992) -> this receipt; zero repo/corpus/instrument contact beyond this .syllabai-only filing",
+  "empirical_side_note_filed_for_the_076_record": "the runs API shows ci push-triggered verify+hub runs SUCCEEDED on 15/15 recent main heads (94393d2, 89b966d, 27a95f0 et al.) DESPITE the corrupted 'branches: ain]' literal — the event-drop causal attribution in the 076 band should read 'hygiene + intent restoration' rather than 'pushes never matched'; the fix itself (PR #127) is correct and owed regardless; filed comment-only on the PR",
+  "register_state_after": "union of record advances to 167/177; the residual reds decompose into exactly the pre-filed classes + the 2 flashcard regressions (filed here); zero unexplained residues; zero deletions, zero widening, zero case/contact violations by this lane"
+}
