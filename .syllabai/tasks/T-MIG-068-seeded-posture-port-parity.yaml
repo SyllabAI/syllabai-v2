@@ -2,8 +2,9 @@ version: 1
 task:
   id: T-MIG-068
   title: "Seeded-posture port parity (refiled from 067 by R0 arbitration — see receipts/R0-arbitration/ruling2-t-mig-067-triple-claim.json) — the remaining 500-class (×2) on V63/staged data + DATE wire-format (×2) + attempt error-taxonomy envelope (×2)"
-  owner: "unassigned"
-  status: OPEN
+  owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) -- operator directive trace 1a10fe65d9d64f3d 'claim one of them': claims the only OPEN unassigned card on the register"
+  status: IN_PROGRESS
+  claimed_at: "2026-10-06T06:37:44Z"
   priority: P1
   wave: 6
   deps: [T-MIG-063]
@@ -19,7 +20,8 @@ task:
     (RICH-200-D) are RESOLVED PORT-SIDE by T-MIG-067 (merged cdce05e: /topics byte-exact vs the
     frozen capture, /families 200 multiset-identical on a live seeded COW — receipt
     T-MIG-067/run-001); the families residual tie-order diff is RICH-200-E (case-owner lane,
-    NOT port work). Struck from this card's scope. The remaining items below stand.)
+    NOT port work). Struck from this card's scope. The remaining items below stand.
+    CLAIM ENTRY (2026-10-06T06:37:44Z, r0): operator directive trace 1a10fe65d9d64f3d 'claim one of them' - desk sweep @ origin/main 00831a6: exactly one open PR (#109, operator-fired trace 1a10fd303bbe4f49, head t-mig-067/r0r6 @ 33f9983, 1 commit, 10 files) implementing this very card under its pre-refile 067 name; zero t-mig-068* heads on the remote (single ls-remote hit = SHA substring on t-mig-045/r4b); card unclaimed in all .syllabai/ records (068 named only in the refile receipts + worklog). r0 claims the card AND takes #109 through the review/merge desk: known intake conflict services/questions/servable.ts = the PR's pre-#107 duplicate of the DONE T-MIG-067 fix (merge-base 55070ad predates cdce05e) - intake resolves servable.ts to main's fix of record; PR touches services/** beyond the allowed routes-fence (curriculum/review.ts, learner-model/exam-target-reader.ts, learner/state.ts, learner-me/index.ts) - each maps 1:1 onto this card's own divergence rows, to be ratified at merge with frozen citations per the bb28592 ten-precedent chain.)
 base:
   repo: "syllabai-v2 @ d6911f6 (run #11 head) at filing; frozen refs: syllabai-core @ 6cad6ef"
 basis: >
