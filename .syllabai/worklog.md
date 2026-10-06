@@ -3102,3 +3102,18 @@ Work Log:
 
 Stage Summary:
 - Round-15 sweep complete: workspace rebuilt from wipe (#7) with credential law intact, both open PRs (#94, #95) independently reviewed and merged (1aea8bc, af33b6f), all gates exact at 1144/0/13skip/3485 + selftest OK, queue at zero. Register unchanged (NEON_BRANCH_CAPACITY; 058 F-B nested-null full emulation now ON the register via its card). LANE r1c: STOP for this round.
+---
+Task ID: 22
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, operator trace 1a10f899e2c27485)
+Task: Operator directive "Proceed with 061 tranche-2 if other agent not working on that. Otherwise continue with something else."
+
+Work Log:
+- 061-T2 CLAIM CHECK (fetch-before-every-action): STAND DOWN — r9-hubx's branch advanced past the t1 tip with commit 32b73ca "claim(t-mig-061 t2)" (trace 1a10f740529db241, receipt run-003-t2-claim.json, card update, worklog entry; intake merges d6d5a51/eedc264 on top; ls-remote shows the head actively pushed). Earliest-claim-wins per §2.1 — the same class as the Task-18a 052-t2 ruling. ZERO tranche-2 code written by this lane (census only before the discovery). The claim's own zero-collision scan @ af33b6f is consistent with mine.
+- "SOMETHING ELSE" = the open queue: #96 (T-MIG-059, lane r0 — the F-0/F-1 binding-law adoption for the classroom two-envelope classifier).
+- REVIEWED+MERGED #96 as 07df48a (sha-pinned at the intake head): LINE-AGAINST-LINE of the classifier restructure — the isBinding gate (invalid_string; invalid_type with received ∉ {undefined,null}) answering 400 malformed_body VERBATIM implements the Jackson whole-document-binding-precedes-@Valid law (F-0); the null/absent-bind invalid_type branch rendering the jakarta default "field: must not be blank" (:158-165 getDefaultMessage) with the empty-path root-null "request invalid" orElse kept + pinned (F-1); the #93 branches byte-exact; prior art from the closed #90 classifier credited in-source. All 7 pins read and coherent (F-0 wrong-type on create + optional category, F-0 binding-beats-constraint precedence, F-0 root-null, F-1 missing/null-bind on create + enroll). ZERO packages/golden/service files.
+- GUARD CHAIN on #96: CI was ABSENT at their head dca7992 (no check-runs; mergeable=dirty against ddbe9fe — the worklog-tail add/add class, their claim predates my Task-21 push); performed the R0-procedure-(c) INTAKE on their branch: merged origin/main ddbe9fe into t-mig-059/r0, worklog resolved via append-only union (3042 PR + 62 main-adds = 3104 lines, 0 markers; separator audit: 28 union flags = main's 28 verbatim, ZERO new gaps created by the union), intake commit fea12ec pushed to their branch (the bee47d8 precedent); CI verify+hub completed/success at fea12ec; sha-pinned merge -> 07df48a.
+- INDEPENDENT GATES at tip 07df48a: install --frozen-lockfile exit 0; typecheck x4 exit 0; bun test apps/api packages 1151 pass / 0 fail / 13 skip / 3513 expect (1164 ran / 63 files) = my ddbe9fe measurement 1144-0-13skip-3485 + the PR's claimed +7/+28 EXACT; golden --selftest OK. CI on 07df48a green (verify+hub).
+- POST-CENSUS: 0 open PRs after the merge. Active heads observed: t-mig-060/w0a (reserved, KaRAG), t-mig-061/r9-hubx (t2 in flight per 32b73ca), t-mig-062/r4b (new claim branch). 058 F-B register band remains open (r1-contracts' disclosure — not routed to this lane). NO new claim filed by this lane.
+
+Stage Summary:
+- 061 tranche-2 NOT touched: r9-hubx holds the claim (32b73ca) — the operator's condition resolved FALSE; stand-down receipted. Alternative continuation executed: #96 (T-MIG-059 binding law) independently reviewed and merged 07df48a with the intake-union procedure, gates exact at 1151/0/13skip/3513 + selftest OK. LANE r1c: STOP for this round.
