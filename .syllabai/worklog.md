@@ -2596,3 +2596,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-053 CLAIMED at 2026-10-06T03:09:23Z on branch t-mig-053/r0 off origin/main 414f4a6. Implementation next in this lane.
+
+---
+
+Task ID: T-MIG-053 (implementation)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Execute the claimed selfmark validation-order port fix (R-053-A) end-to-end.
+
+Work Log:
+- R-053-A implemented (f0052b4): routes/selfmark/index.ts — after schema parse (frozen Jackson→@Valid order), nullish parsed parts throw past the handler to the app error boundary → 500 internal_error envelope (byte-equivalent to GlobalExceptionHandler.java:224-230); route header CAPTURED QUIRK resolved; classifier dead branch comment updated; controller-law comment corrected.
+- contracts/assessment.ts comment-only resolution note (schema behavior untouched — nullish-accepting IS Jackson parity, pinned by contracts tests :204-205).
+- Test pins added (test/smartmark/routes.test.ts): {} → 500 exact envelope; parts:null → 500; parts:[] → 400 service gate (previously unpinned at HTTP); stale 404-pin title updated (posture unchanged — the captured 500 was the NPE, not the lookup).
+- Gates: typecheck ×4 exit 0; suite 951/0/13skip/2696 vs baseline 948/0/13skip/2689 — delta is exactly the 3 new pins (+7 expects), zero other movement. No fake-SQL fixture changes (throw precedes any SQL).
+- Receipt receipts/T-MIG-053/run-001-npe-parity-fix.json (full frozen derivation incl. the F-a attribution correction: golden 500 = null-parts NPE, service never reached; valid-parts unknown attempt stays 404 in both cores).
+
+Stage Summary:
+- T-MIG-053 IN_REVIEW; PR next with disclosure comment; merge under standing delegated authority, then fetch-first FF + post-merge gates + replay dispatch (expect 109/170 modulo 429 jitter).
