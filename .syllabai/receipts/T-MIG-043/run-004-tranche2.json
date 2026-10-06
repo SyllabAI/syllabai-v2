@@ -10,10 +10,26 @@
     "text": "Proceed with Tranche-2 (NBA engine + routes + w4 golden replay)"
   },
   "commits": [
-    { "sha": "e0726ac", "kind": "claim", "what": "tranche-2 claim (yaml fence expansion + run-003 receipt + the T-C11 snapshot byte-verbatim)" },
-    { "sha": "1d0128b", "kind": "port", "what": "the NBA engine + the T-C11 loader + the module-factory flip (33 engine pins)" },
-    { "sha": "9bede34", "kind": "port", "what": "routes/learnerme.ts + the index.ts OUT-OF-FENCE mount commit" },
-    { "sha": "4bf0638", "kind": "test", "what": "24 route pins + the shared nba-helpers fixture kit" }
+    {
+      "sha": "e0726ac",
+      "kind": "claim",
+      "what": "tranche-2 claim (yaml fence expansion + run-003 receipt + the T-C11 snapshot byte-verbatim)"
+    },
+    {
+      "sha": "1d0128b",
+      "kind": "port",
+      "what": "the NBA engine + the T-C11 loader + the module-factory flip (33 engine pins)"
+    },
+    {
+      "sha": "9bede34",
+      "kind": "port",
+      "what": "routes/learnerme.ts + the index.ts OUT-OF-FENCE mount commit"
+    },
+    {
+      "sha": "4bf0638",
+      "kind": "test",
+      "what": "24 route pins + the shared nba-helpers fixture kit"
+    }
   ],
   "implementation": {
     "nba_engine": {
@@ -69,5 +85,24 @@
     "reasonDetail timestamps render ISO-8601 millis where the frozen embeds Instant.toString() (variable precision) — no captured case pins any NBA detail (the composed-agenda capture has actions: null); unit pins fix both sides",
     "fmt() renders %.2f as toFixed(2) — half-even vs HALF_UP differs only on exact .005 double boundaries (none reachable from stored ranges)",
     "T7a ask-count ties keep insertion order where the frozen HashMap order is unspecified — the port is the MORE deterministic of the two"
-  ]
+  ],
+  "post_intake": {
+    "intakes": [
+      {
+        "sha": "d33d49f",
+        "what": "origin/t-mig-043/w0a 369d563 — the pre-merge intake the lost window pushed (carries the merged #69 041-t2 lineage); index.ts mount conflict resolved keeping BOTH routers (r7a's learner.learnerRoute + this lane's learnerMe.learnerMeRoute — disjoint paths at the shared base); worklog conflict resolved per the append-only union (chronological: main's round-10 entries, then this lane's run-003/004 entry)"
+      },
+      {
+        "sha": "f858eeb",
+        "what": "origin/main 06ca4e2 — the #74 tranche-1 merge (23b23e3), the R0-ROUND-12 DONE flip (493e3cd), R7a's collision audit (06ca4e2); index.ts conflict resolved keeping BOTH (sme + learnerMe); the yaml status conflict resolved with the full STATUS TIMELINE provenance (DONE flip on tranche-1 strength → the operator's tranche-2 word → re-opens IN_REVIEW via this branch); worklog union resolved"
+      }
+    ],
+    "gates_on_merged_head_f858eeb": {
+      "typecheck_x4": "exit 0",
+      "bun_test": "957 ran / 944 pass / 0 fail / 13 skip / 2895 expect — 0-fail maintained across both intakes; the delta composes from main's post-#74 content (incl. #77's +58), the #69 route tests carried by 369d563, and this lane's +57 tests / +372 expects",
+      "golden_selftest": "OK",
+      "w4_readiness": "READY exit 0"
+    },
+    "note": "no force-push anywhere; the branch push after these intakes is a fast-forward of origin/t-mig-043/w0a"
+  }
 }
