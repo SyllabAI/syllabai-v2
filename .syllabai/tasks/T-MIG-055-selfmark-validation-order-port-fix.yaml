@@ -1,9 +1,9 @@
 version: 1
 task:
-  id: T-MIG-053
+  id: T-MIG-055
   title: "Self-mark validation-order port fix — absent/null parts must NPE→500 at the controller boundary (LearnerSelfMarkController.java:42-43), not 400 at the service gate; recovers golden case w3-selfmark-unknown-attempt-500"
   owner: "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
-  status: IN_REVIEW # 2026-10-06: R-053-A landed — gates on the head: typecheck x4 exit 0, 951/0/13skip/2696 EXACT vs 948/0/13skip/2689 baseline (+3 tests = the three new boundary pins, +7 expects); receipt run-001-npe-parity-fix.json; PR open
+  status: IN_REVIEW # 2026-10-06: R-053-A (fix id keeps its original R-number for receipt continuity) landed — gates on the head: typecheck x4 exit 0, suite EXACT vs the 948/0/13skip/2689 baseline at claim time (+3 tests = the three new boundary pins); REFILED from T-MIG-053 -> T-MIG-055 (id collision with r3a's PR #84, disclosure in execution_record); intake of 855bef9 merged
   claimed_at: "2026-10-06T03:09:23Z"
   priority: P1 # port-lane defect repair ("blocking-class-adjacent" per the T-MIG-050 run-002 receipt); single-surface divergence, does not block other lanes
   wave: 4
@@ -14,11 +14,14 @@ task:
     receipt (merged 414f4a6): "unfiled port-fix candidates from the
     surviving genuine findings: selfmark validation-order (400-vs-500) is
     the next blocking-class-adjacent item" — a candidate NAME in receipt
-    text, never a card. No T-MIG-053 card existed at claim time (verified
-    against .syllabai/tasks/ and receipts/); filed here under the next free
-    id per §2.1 earliest-claim-wins, and executed under the operator's
-    standing delegated authority (review+merge yourself / continue working
-    precedents: 260f452, 39ee5d5, 190706e, 56a8baa).
+    text, never a card. Originally filed as T-MIG-053 (claim commit
+    9e1c94a, 2026-10-06T03:09:23Z); REFILED under T-MIG-055 — the 053 id
+    was won 19 minutes earlier by r3a's in-flight Wave-5 claim (PR #84,
+    branch t-mig-053/r3a, claim 2026-10-06T02:50:40Z, r1 claim-review
+    APPROVE) per §2.1 earliest-claim-wins and the T-MIG-048/050
+    ruling-of-record precedent (R0s-ROUND-10a). Executed under the
+    operator's standing delegated authority (review+merge yourself /
+    continue working precedents: 260f452, 39ee5d5, 190706e, 56a8baa).
   execution_record: >
     FROZEN DERIVATION (read at syllabai-core @ 6cad6ef, 2026-10-06): the
     golden case w3-selfmark-unknown-attempt-500 POSTs body {} — Jackson
@@ -81,8 +84,8 @@ scope:
     - "apps/api/src/routes/selfmark/index.ts"
     - "packages/contracts/src/assessment.ts (comment-only: resolution note on the captured-behaviour flag; zero schema behavior change)"
     - "apps/api/test/smartmark/routes.test.ts (new self-mark boundary pins + stale test title/comment update; no SQL fixture regex changes)"
-    - ".syllabai/tasks/T-MIG-053-selfmark-validation-order-port-fix.yaml (this file)"
-    - ".syllabai/receipts/T-MIG-053/**"
+    - ".syllabai/tasks/T-MIG-055-selfmark-validation-order-port-fix.yaml (this file)"
+    - ".syllabai/receipts/T-MIG-055/**"
     - ".syllabai/worklog.md (append-only)"
   forbidden:
     - "apps/api/src/services/selfmark/** (the service's empty-marks gate is frozen LearnerSelfMarkService.java:74-76 parity and stays)"
@@ -93,13 +96,24 @@ scope:
     - "upstream syllabai-core / syllabai-hub (C1)"
     - "standing Neon branches (read-only doctrine)"
 base:
-  repo: "syllabai-v2 (branch t-mig-053/r0 off origin/main 414f4a6); frozen ref: syllabai-core @ 6cad6ef (cloned and read for the derivation)"
+  repo: "syllabai-v2 (branch t-mig-055/r0 — renamed from the collision-cut t-mig-053/r0; cut off origin/main 414f4a6, intake 855bef9 merged); frozen ref: syllabai-core @ 6cad6ef (cloned and read for the derivation)"
 basis: >
   Operator directive "claim the selfmark validation-order fix" (trace
   1a10f2554257a059) interpreted through the T-MIG-050 run-002 receipt's
   "next" register line and the union census finding (w3-selfmark-unknown-
-  attempt-500, 400-vs-500). Filing law: docs/AGENT_COORDINATION §2
-  (claim-in-first-commit), §4 (yaml format); T-MIG-050 precedent for
-  receipt-named-candidate → next-free-id filing; briefing §0 credential
+  attempt-500, 400-vs-500). COLLISION DISCLOSURE (2026-10-06): originally
+  claimed as T-MIG-053 after verifying tasks/ and receipts/ on main
+  (414f4a6) — but r3a's in-flight claim PR #84 (branch t-mig-053/r3a,
+  created 02:50:40Z, r1-reviewed APPROVE) predates this lane's claim
+  (03:09:23Z); the free-id check missed OPEN PRs and remote branches, a
+  process gap this card records. Re-filed as T-MIG-055 (next free id —
+  054 held by sme-package-contracts, no 055 anywhere, Wave 5 ends at 053
+  and Wave 6 starts at 060); branch renamed t-mig-053/r0 → t-mig-055/r0
+  (old remote head deleted, zero force-push, no other agent built on it);
+  the r1 claim-review receipt for r3a's 053 stays untouched under
+  receipts/T-MIG-053/. Filing law: docs/AGENT_COORDINATION §2
+  (claim-in-first-commit), §4 (yaml format); T-MIG-048/050
+  ruling-of-record precedents (receipt-named-candidate → next-free-id;
+  earliest-claim-wins); briefing §0 credential
   law; GOLDEN_MASTER capture-as-is law (the golden case body is never
   edited — the port moves).

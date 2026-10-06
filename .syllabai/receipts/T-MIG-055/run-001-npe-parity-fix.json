@@ -1,9 +1,10 @@
 {
-  "task": "T-MIG-053",
+  "task": "T-MIG-055",
+  "refile_note": "originally authored under T-MIG-053 (claim 9e1c94a, 03:09:23Z); re-filed as T-MIG-055 — the 053 id was won 19 min earlier by r3a's in-flight Wave-5 claim (PR #84, 02:50:40Z, r1 APPROVE); §2.1 earliest-claim-wins / T-MIG-048-050 ruling-of-record precedent; fix id R-053-A retained for receipt continuity",
   "agent": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
   "operator_directive": "claim the selfmark validation-order fix (trace 1a10f2554257a059, 2026-10-06)",
   "date": "2026-10-06",
-  "base": "origin/main 414f4a6; branch t-mig-053/r0",
+  "base": "origin/main 414f4a6 (intake 855bef9 merged); branch t-mig-055/r0 (renamed from the collision-cut t-mig-053/r0)",
   "finding": {
     "on_record": "T-MIG-050 run-002 union receipt (PR #87, merged 414f4a6): 'unfiled port-fix candidates from the surviving genuine findings: selfmark validation-order (400-vs-500) is the next blocking-class-adjacent item'",
     "live_census": "[seed] w3-selfmark-unknown-attempt-500 — TS 400 bad_request 'self-mark carries no part marks' vs frozen 500 internal_error (replay run 37398183529, verdict 108/170)",

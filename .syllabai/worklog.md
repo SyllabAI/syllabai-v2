@@ -2723,3 +2723,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-053 IN_REVIEW; PR next with disclosure comment; merge under standing delegated authority, then fetch-first FF + post-merge gates + replay dispatch (expect 109/170 modulo 429 jitter).
+
+---
+
+Task ID: T-MIG-055 (re-file after id collision)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Re-file the selfmark validation-order port fix under T-MIG-055 — the T-MIG-053 id was lost to an earlier in-flight claim (§2.1 earliest-claim-wins).
+
+Work Log:
+- COLLISION: this lane cut t-mig-053/r0 and claimed T-MIG-053 at 03:09:23Z after verifying tasks/ + receipts/ on main (414f4a6). r3a's claim PR #84 (branch t-mig-053/r3a, created 02:50:40Z, r1 claim-review APPROVE, merge withheld) predates it by 19 minutes. The free-id check missed OPEN PRs and remote branches — process gap recorded on the card.
+- Ruling applied (T-MIG-048/050 ruling-of-record precedent, R0s-ROUND-10a): 053 = r3a's Wave-5 knowledge band; this lane's work re-files under the next free id T-MIG-055 (054 = sme-package-contracts; no 055 anywhere; Wave 5 ends 053, Wave 6 starts 060). r1's claim-review receipt for r3a restored untouched under receipts/T-MIG-053/ after the git mv of this lane's receipts dir swept it in (caught immediately).
+- Forward-only: card git-mv'd to T-MIG-055-...yaml with id/basis/scope updated + collision disclosure appended; receipts git-mv'd to receipts/T-MIG-055/ (run-001 only); branch renamed t-mig-053/r0 → t-mig-055/r0 (new remote push, old remote head deleted — zero force-push, no other agent built on it). Zero code-file overlap with incoming main (verified at intake: learner-me/NBA/contracts-learner vs this fence).
+- Gates re-run post-intake on the merged head: typecheck x4 exit 0; suite EXACT vs the new main baseline carried by #85 (1005/0/13skip/3061) + this lane's 3 pins.
+
+Stage Summary:
+- T-MIG-055 IN_REVIEW (was T-MIG-053); PR next with collision + intake disclosure comment; merge under standing delegated authority, fetch-first FF, post-merge gates, replay dispatch.
