@@ -393,6 +393,92 @@ describe("POST /api/v1/teacher/classes (:80-98 → 201)", () => {
     expect(body.error).toBe("validation_failed");
     expect(body.message).toBe("courseSlug: size must be between 0 and 64");
   });
+
+  test("F-1 missing-field law: {} → 400 validation_failed 'courseSlug: must not be blank' (jakarta @NotBlank null-bind default, T-MIG-059)", async () => {
+    // frozen truth (findings of record, #89 comment 6008621186): a missing
+    // @NotBlank property renders the jakarta DEFAULT (:158-165
+    // getDefaultMessage()) — "request invalid" is the :163 orElse reserved
+    // for the root-null case, never per-field messages
+    const { app, sql } = makeApp(asTeacher, []);
+    const res = await app.request("/api/v1/teacher/classes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({}),
+    });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("courseSlug: must not be blank");
+    expect(sql.queries).toHaveLength(0); // fail-closed before any statement
+  });
+
+  test("F-1 null-bind law: explicit null name → 400 validation_failed 'name: must not be blank' (T-MIG-059)", async () => {
+    // null BINDS fine (Jackson hands the null to the record) — its
+    // rejection is @NotBlank, a CONSTRAINT, so the envelope stays
+    // validation_failed with the jakarta default (the #93 review nit-3
+    // divergence, same F-1 class)
+    const { app, sql } = makeApp(asTeacher, []);
+    const res = await app.request("/api/v1/teacher/classes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ courseSlug: "s", courseLabel: "l", name: null }),
+    });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("name: must not be blank");
+    expect(sql.queries).toHaveLength(0);
+  });
+
+  test("F-0 binding-class law: wrong-typed courseLabel → 400 malformed_body verbatim (T-MIG-059)", async () => {
+    // frozen truth: Jackson binds the WHOLE document BEFORE @Valid — a
+    // binding-type failure beats every constraint (the R-1 fleet
+    // convention; teachermarking :129 reference; #90 classifier prior art)
+    const { app, sql } = makeApp(asTeacher, []);
+    const res = await app.request("/api/v1/teacher/classes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ courseSlug: "s", courseLabel: 123, name: "n" }),
+    });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("malformed_body");
+    expect(body.message).toBe("request body is not readable (check field types and enum values)");
+    expect(sql.queries).toHaveLength(0);
+  });
+
+  test("F-0 precedence: the binding failure beats the FIRST-issue constraint on the same body (Jackson whole-document order, T-MIG-059)", async () => {
+    // courseSlug "" fires the @NotBlank refine (issue[0], schema order)
+    // and courseLabel 123 fires the binding failure — the constraint does
+    // NOT win: malformed_body, exactly jakarta's bind-then-validate
+    const { app, sql } = makeApp(asTeacher, []);
+    const res = await app.request("/api/v1/teacher/classes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ courseSlug: "", courseLabel: 123, name: "n" }),
+    });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("malformed_body");
+    expect(body.message).toBe("request body is not readable (check field types and enum values)");
+    expect(sql.queries).toHaveLength(0);
+  });
+
+  test("F-0 root-null: JSON null body → 400 validation_failed 'request invalid' (the disclosed 400-not-500 posture, T-MIG-059)", async () => {
+    // the empty-path invalid_type (null root) keeps the #89-disclosed
+    // "request invalid" rendering — NOT a per-field @NotBlank message
+    const { app, sql } = makeApp(asTeacher, []);
+    const res = await app.request("/api/v1/teacher/classes", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: "null",
+    });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("request invalid");
+    expect(sql.queries).toHaveLength(0);
+  });
 });
 
 describe("GET /api/v1/teacher/classes (:101-109 → 200)", () => {
@@ -561,6 +647,23 @@ describe("POST /api/v1/teacher/classes/:id/members (:150-175 → 201)", () => {
     });
     expect(res.status).toBe(201);
     expect(inserted).toEqual([]); // the honest no-op
+  });
+
+  test("F-1 missing-field law on the enroll body: {} → 400 validation_failed 'email: must not be blank' (T-MIG-059)", async () => {
+    // family coverage: the @NotBlank null-bind default on the SECOND
+    // request schema — EnrollRequest email is @NotBlank @Size(254) (NO
+    // .email() format check, so there is no invalid_string exposure here)
+    const { app, sql } = makeApp(asTeacher, []);
+    const res = await app.request(`/api/v1/teacher/classes/${CLASS_A}/members`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({}),
+    });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("email: must not be blank");
+    expect(sql.queries).toHaveLength(0);
   });
 
   test("unknown email → 404 verbatim", async () => {
@@ -750,6 +853,23 @@ describe("POST /api/v1/teacher/classes/:id/announcements (:191-214 → 201)", ()
     const body = await res.json();
     expect(body.error).toBe("validation_failed");
     expect(body.message).toBe("category: size must be between 0 and 20");
+  });
+
+  test("F-0 on the OPTIONAL field: wrong-typed category binds-then-fails → 400 malformed_body (binding still beats the @Size constraint, T-MIG-059)", async () => {
+    // PublishRequest.category is @Size(20)-only (no @NotBlank) — but a
+    // number into the String property is still a BINDING failure (Jackson
+    // whole-document order), not a constraint answer
+    const { app, sql } = makeApp(asTeacher, []);
+    const res = await app.request(`/api/v1/teacher/classes/${CLASS_A}/announcements`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: "Exam", body: "Room 204.", category: 123 }),
+    });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("malformed_body");
+    expect(body.message).toBe("request body is not readable (check field types and enum values)");
+    expect(sql.queries).toHaveLength(0);
   });
 });
 

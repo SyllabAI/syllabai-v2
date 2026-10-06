@@ -1,0 +1,23 @@
+{
+  "task": "T-MIG-061",
+  "run": "003-t2-claim",
+  "agent": "r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "operator_trace": "1a10f740529db241 ('Check if R0 has merged or not. If not, review+merge yourself and continue working' — R0 merge-of-record verified IN: R0-AUTO sweep 04:00 UTC merged #92 e82f5d5 + #93 9ba1c39, receipt aca7a5e; the desk cycle then merged #94 1aea8bc (r1's T-MIG-058 depth pin, gates independently re-verified 1094-0-13skip-3302 EXACT) and swept #95 (this task's tranche-1) as af33b6f after the R0-AUTO intake bee47d8 — authors-never-self-merge held, the desk merged both; 'continue working' = the card's documented tranche-2)",
+  "date": "2026-10-06T08:20:00Z",
+  "base": "af33b6f (origin/main; tranche-1 landed: contracts b44f1a1 + services 7de90d8 + pins 9e3dcb3 + intake 2f6d461/bee47d8)",
+  "branch": "t-mig-061/r9-hubx",
+  "tranche_scope": {
+    "routes": "apps/api/src/routes/intervention.ts — the 9-endpoint Hono port of InterventionRunController.java :46-239: POST create-from-NBA-recommendation (@RequestParam UUID rootId -> 201 CREATED :62-68), GET /{runId} (:71-75), POST activate (:77-81) / pause (:83-87) / resume (:90-98) / steps (:101-116) / evidence (:119-129) / complete (:131-137) / cancel (:139-143); the route-owned ERROR->STATUS law per the service header + GlobalExceptionHandler :33-77 (IllegalArgument -> 400 bad_request FIXED 'malformed request' :167-170; BadRequest -> 400 verbatim; NotFound -> 404 verbatim; Conflict -> 409 verbatim; VersionMismatch -> 409 intervention_version_mismatch :71-77; unreadable body -> 400 malformed_body; missing @RequestParam -> 400 validation_failed 'missing required parameter: rootId' :185-190; malformed path uuid -> 400 bad_request FIXED)",
+    "controller_law_ownership": "the complete-endpoint controller requireText (:135 'terminalOutcome is required') is ROUTE-owned: positioned after ownedRun and BEFORE the state machine exactly as the frozen controller orders it — the module's complete() carries the ENTITY law ('outcome is required' behind the ACTIVE gate, reachable only by direct module callers, dead on the wire); routes reproduce the frozen wire order via module.getRun + the learner gate + the requireText, then module.complete (which re-derives ownedRun — correctness over round-trips)",
+    "binding_law": "F-061-B honored: the four request records bind with NO bean validation (bare @RequestBody) — zod .nullish() pins pass every object through; wrong-TYPE fields -> malformed_body per the ratified learnerme binding-class convention (Jackson scalar coercion NOT reproduced, tracked by the F-0/F-1 register family); requireText laws carried by the module fire verbatim",
+    "tests": "apps/api/test/intervention/routes.test.ts — the HTTP-layer pins over REAL module + fakeSql (~24-29: the 201 CREATED create law, the missing/malformed rootId laws, the NBA fail-closed 404s, the FIXED-body 400 for unknown runs (NOT 404), the indistinguishable foreign-run 404, the state machine 409s verbatim, the resume NAMED 409, the requireText 400s, the raw-null FIXED 400s (status/role), the server-assigned sequence, the route-owned terminalOutcome controller law on BOTH the ACTIVE and the wrong-state path, F-061-A cancel disclosure, the Boot 401 shell)",
+    "mount": "apps/api/src/index.ts — OUT-OF-FENCE-FLAGGED separate commit (010/034/043-t1/052-t2/033 precedent): import + construction (buildNbaEngine over the same sql+clock as the learner-me engine) + ONE mount line /api/v1/learners/me/intervention-runs + comment; the /api/v1/* fallback stays 404-after-auth for no router claimed"
+  },
+  "zero_collision": {
+    "ls_remote": "zero NEW t-mig-06x heads beyond t-mig-060/w0a (w0a's active KaRAG claim, untouched) at claim time; census after the sweep: 0 open PRs",
+    "register": "062+ free (061 in-flight by THIS lane per the earliest-claim-wins register; CLA deferred to 062+ after 060 lands, disclosed on the card)",
+    "surface": "routes/intervention.ts + test/intervention/routes.test.ts are NEW files; index.ts touch is the flagged one-liner mount family; ZERO overlap with w0a's 060 fence (tutor/CLA surfaces) or r1's merged 058 (selfmark routes)",
+    "main_delta_scan": "main af33b6f carries ZERO tranche-2 work (git grep intervention-runs on index.ts empty; no routes/intervention.ts)"
+  },
+  "claim_law": "claim-in-first-commit: this receipt + the card status/execution_record update + the worklog entry land BEFORE the implementation commits; push IMMEDIATELY; PR authored by r9-hubx -> NOT self-merged (authors-never-self-merge), handed to the R0-AUTO/review desk"
+}
