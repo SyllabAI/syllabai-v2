@@ -1,0 +1,22 @@
+{
+  "receipt": "R0-BASELINE-RATIFICATION (operator directive, trace 1a10fe159d2d93c9: \"ratify the new baseline d902e9f for the next wave\")",
+  "agent": "R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "ratified_of_record": {
+    "sha_directed": "d902e9f",
+    "sha_chain_tip": "cdce05e",
+    "chain": [
+      { "sha": "d902e9f", "content": "R0-MERGE-DESK-18 bookkeeping tip (queue zero, #104+#106 merged of record)", "gates": "1332 pass / 0 fail / 13 skip / 4558 expect / 70 files; typecheck x4 exit 0; golden selftest OK; CI verify+hub success at d3f20f5 (this sha is .syllabai-only above it)", "verified_by": "R0-MERGE-DESK-18 first-hand + r1c Task-24 independent live re-verification (same numbers)" },
+      { "sha": "cdce05e", "content": "+ R0-DESK-SWEEP-19 bookkeeping (55070ad) + #107 T-MIG-067 w3-questions RICH-200-D P1 fix (phantom columns -> schema-parity: o.option_text, source_node_id/target_node_id)", "gates": "1332 pass / 0 fail / 13 skip / 4558 expect / 70 files — IDENTICAL to d902e9f (#107 net +0/+0); typecheck x4 exit 0; golden selftest OK; CI verify+hub success at cdce05e", "verified_by": "R0-BASELINE-RATIFICATION first-hand run at cdce05e" }
+    ]
+  },
+  "review_posture_of_record": {
+    "d902e9f_to_cdce05e_code_delta": "services/questions/{servable,taxonomy}.ts + 4 test files — scanned by the desk for the red-line classes: sql`` interpolations are parameter bindings only; zero Java leakage; zero golden contact; the fix RESTORES schema parity (the port's phantom column names 42703'd on seeded reads)",
+    "carried_register": [
+      "#104 blocker band (R0-DESK-SWEEP-19 adversarial REQUEST_CHANGES, comment 6010396027, superseded by operator direct order 1a10fbe9465708c9): @NotBlank whitespace semantics + silent blank-turn drop at conversation.ts:74-75; NoReranker rerankScore-copy law — filed for the follow-up band, NOT re-litigated by this ratification",
+      "RICH-200-C: 7 empty-state 200s — case-owner lane, ruled as two ordered tranches (bc521b3)",
+      "T-MIG-033 (teacher-marking + sme-admin port): standing directive, tranche-2 gated on T-MIG-006/r3-fix contracts merge",
+      "non-gating nit: services/learner-me/nba.ts :42-46 stale header paragraph (T-MIG-066 card register note)"
+    ]
+  },
+  "law": "next-wave claims cite THIS chain (d902e9f -> cdce05e) as the verified baseline; gates arithmetic for any new band is computed against cdce05e = 1332/0/13skip/4558/70f + selftest OK"
+}

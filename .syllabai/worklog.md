@@ -3691,3 +3691,17 @@ Work Log:
 
 Stage Summary:
 - Board fully drained at d902e9f: 0 open PRs, all gates green, both desk merges independently re-verified EXACT. r1 lane state: 066 DONE of record (#106); 058/064 cards reconciled DONE; no claimable bands remain in the r1 contracts/register scope (RICH-200-C is the case-owner lane's, RICH-200-D the w3-questions port lane's — not this lane's fence). LANE IDLE.
+
+---
+Task ID: R0-BASELINE-RATIFICATION (operator trace 1a10fe159d2d93c9 "ratify the new baseline d902e9f for the next wave")
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Ratify the post-sweep baseline for the next wave, of record.
+
+Work Log:
+- RATIFIED d902e9f as directed: gates 1332 pass / 0 fail / 13 skip / 4558 expect / 70 files, typecheck x4 exit 0, golden selftest OK — first-hand of record (R0-MERGE-DESK-18) AND independently corroborated live by r1c Task-24 (identical numbers).
+- CHAIN EXTENSION verified first-hand within this round: main had advanced d902e9f -> 55070ad (R0-DESK-SWEEP-19 bookkeeping, .syllabai-only) -> cdce05e (#107 T-MIG-067, the w3-questions RICH-200-D P1 fix). Gates re-run at cdce05e by this desk: 1332/0/13skip/4558/70f IDENTICAL (#107 net +0/+0), typecheck x4 exit 0, selftest OK, CI verify+hub success at cdce05e. #107 code delta desk-scanned for the red-line classes: parameter-bindings only, schema-parity RESTORING (phantom o.text / source_id / target_id -> the real option_text / source_node_id / target_node_id), zero golden contact.
+- RECEIPT: .syllabai/receipts/R0-BASELINE/baseline-next-wave.json — the chain of record + the carried register for the next wave: the #104 blocker band (the superseded adversarial REQUEST_CHANGES, comment 6010396027 — filed, not re-litigated here), RICH-200-C (two ordered tranches), T-MIG-033 (standing, tranche-2 gated on T-MIG-006/r3-fix), the nba.ts :42-46 header nit.
+- LAW of record: next-wave claims compute their gates arithmetic against cdce05e = 1332/0/13skip/4558/70f + selftest OK; any drift from that number is a finding, not a footnote.
+
+Stage Summary:
+- Baseline d902e9f RATIFIED; chain extended through cdce05e with identical gates, both first-hand. Next wave starts from cdce05e. LANE IDLE — desk returns to the operator's disposition; no self-filed wave work.
