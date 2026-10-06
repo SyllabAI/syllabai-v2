@@ -4276,3 +4276,20 @@ Work Log:
 
 Stage Summary:
 - Round-22: desk merged #119 (64782f6) — T-MIG-071 (the operator-ruling case-amendment band, R3-C/D3/D4 per receipts/R0-arbitration/ruling3-operator-four-rulings.json) is ON MAIN: 8 class-C cases justified + Retry-After pattern pins with the disclosed declared limiter-429 posture (limiter STAYS per Option B), R3-D3 wall-clock tolerates (Option (a)), R3-D4 Option A identity tolerates (accessToken/learnerId/email+displayName; staged-identity tranche SHELVED). Live union of record 157/177 (+15 vs the 068 baseline), C-class closed 8/8. Register 66/66 — every filed card DONE. Residual disclosures for case-owner lanes: the history-after-submit count residual + the 20 named standing reds per the R0-REPLAY-FILING-1 taxonomy. Operator-side standing items unchanged: NEON_BRANCH_CAPACITY (scheduled run #8 watch), PAT rotation, cron cadence.
+
+
+---
+
+Task ID: T-MIG-071 post-merge review + register sweep (operator trace 1a110c50451452a5 "Review R4-api-b's 071 PR and Proceed with whatever is left and unclaimed")
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Post-merge deep review of PR #119 (the desk had merged it with reviews: 0), then census + claim of the unclaimed residue.
+
+Work Log:
+- SEVENTH sandbox reset recovered before this round (creds restored from the /tmp snapshot, both PATs HTTP-200, credential-store re-wired, repo re-cloned) — disclosed for the record.
+- REVIEW FILED of record: .syllabai/receipts/T-MIG-071/run-002-post-merge-review.json — verdict APPROVE: R3-C faithful (8/8 justified+pattern-pin; the two unpinned family members correctly untouched — 5 of 8 tripped live, neither un-pinned case ever tripped; declaredLimiter429 requires justified AND pin; both-posture coverage via ordinaryHeaderExpectations; 11 selftest assertions; limiter citation verified ratelimit.ts:214 rotating + registerPerIp 5/windowMs 60_000); R3-D3 faithful (day-count tolerate + justified, all else byte-pinned); R3-D4 faithful incl. the honest attemptId-already-tolerated narrowing; no pacing added; checkHeaders single-sourcing ratified. Gates re-run first-hand at 64782f6: 1546/1533-0-13skip/6036/82f EXACT, selftest OK, typecheck x3 exit 0. Live evidence: union 157/177 (5 via declared-429), trajectory 108->120->137->142->157.
+- THE 157/177 FILING DISPOSITIONED (20 reds -> 5 new cards + 1 claim): F-1 topics 0-vs-4 = a THIRD posture (V63-seeded-unstaged) unreachable in the two-tranche instrument (V63 seed fires in the rich staging, not the base reset; only topics carries tranche:'empty') -> T-MIG-078 options; F-2 shared-learner state leakage (history-after-submit 2-vs-1; course-stats/state flashcardRatings-vs-skillStates) -> T-MIG-078 options; F-3 families multiset disposition owed (ruling3-mandated) -> T-MIG-077; F-4 R1 re-pin x2 (pre-ruled, still unexecuted) -> T-MIG-077; F-5 I-class sentinel x3 -> T-MIG-077; F-6 G-class createdAt passthrough x2 -> T-MIG-077; F-7 E-class bearer fidelity (P1, 5+ runs; the gated runner's substituteToken is ALREADY correct — ci-replay-only; 44 dummy-literal cases make verbatim-preservation the WRONG fix; the run-7 keyword-set design is right) -> CLAIMED as T-MIG-075; F-8 ci.yml line 5 'branches: ain]' CONFIRMED corrupted (the plausible event-drop root cause) -> T-MIG-076; F-9 KG/smart-lesson mounts ABSENT (5 cases; classroom.ts:90 + index.ts:207 first-hand) -> T-MIG-079 (066's consolidation-only verified scope supersedes the run-9 A-row routing).
+- CARDS FILED: T-MIG-075 (IN_PROGRESS, claimed by this desk — the register's sole P1), T-MIG-076/077/078/079 (OPEN, earliest-claim-wins). Claim receipt receipts/T-MIG-075/run-000-claim.json. Zero-collision verified (075-079 fresh ids; 073 r1-contracts' property; 072 card-flip r1's property — both untouched).
+- Implementation of 075 next on t-mig-075/r0 -> PR to the desk (authors-never-self-merge).
+
+Stage Summary:
+- The 071 merge is ratified of record; the post-#119 residue is fully OWNED for the first time (no unowned reds): every remaining union red maps to a named card. This desk proceeds with 075 immediately.

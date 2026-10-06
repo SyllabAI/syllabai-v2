@@ -1,0 +1,34 @@
+version: 1
+task:
+  id: T-MIG-075
+  title: "T-MIG-075 — E-class bearer-posture fidelity (run-7 action 1, run-9 action 1, P1; claimed via the T-MIG-071 run-002 post-merge review F-7): golden/tools/ci-replay.ts replayOne's hadAuth branch replaces ANY case-declared Authorization with the route-rule bearer, silently upgrading w4-agenda-malformed-bearer-401 ('Bearer not-a-jwt') and w4-state-empty-bearer-401 ('Bearer ') to a VALID bearer — v2's true 401 postures have been UNPROVEN for 5+ runs. Fix per run-7 note E's keyword-set design: a case whose name declares a bearer posture (malformed-bearer | empty-bearer) replays its DECLARED Authorization VERBATIM; {{TOKEN}}-placeholder cases keep route-rule substitution; scrubbed-dummy-literal cases (44) keep re-minted route-rule bearers"
+  owner: "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646) — claimed under operator trace 1a110c50451452a5 'Review R4-api-b's 071 PR and Proceed with whatever is left and unclaimed'"
+  status: IN_PROGRESS # claim-in-first-commit: card + run-000-claim.json + the review receipt + worklog, ONE .syllabai-only main commit (fetch-first); implementation on t-mig-075/r0 -> PR to the desk (authors-never-self-merge)
+  claimed_at: "2026-10-06T10:55:00Z"
+  priority: P1
+  wave: ruling-execution
+  deps: [T-MIG-071]
+  execution_record: >
+    (PROVENANCE: run-7 class E + run-9 action 1 are the standing orders; the T-MIG-071
+    run-002 post-merge review F-7 re-verified the defect first-hand at 64782f6 and chose
+    the design. KEY FACTS: the gated runner's substituteToken is ALREADY placeholder-only
+    correct — the defect is ci-replay-only; verbatim-preservation is WRONG corpus-wide
+    (44 scrubbed-dummy-literal cases would 401 falsely); the two posture cases already
+    pin the correct literals — ZERO case-file edits needed. DESIGN: export the posture
+    decision from golden/runner.ts as a single-sourced helper (the 071 zero-drift
+    precedent) — returns substitute | verbatim | none per the case's declared
+    Authorization + name keywords (unauthed stays the no-header path); selftest grows
+    the three modes + the two real case names + a dummy-literal negative; ci-replay
+    imports it (the hadAuth branch consults it BEFORE the route-rule bearer). Any v2
+    defect the un-proven postures then reveal is a NEW finding — honest red, never
+    masked. No pacing anywhere; the masking ban is standing law.)
+  scope:
+    allowed:
+      - "golden/runner.ts (the exported auth-posture helper + selftest growth)"
+      - "golden/tools/ci-replay.ts (the hadAuth branch consults the helper; the verbatim path)"
+      - ".syllabai/receipts/T-MIG-075/**; this yaml; .syllabai/worklog.md (append-only)"
+    forbidden:
+      - "golden/cases/** (the two cases already pin the correct postures — zero edits)"
+      - "apps/**, packages/** (harness-only band; any v2 defect found is FILED, not fixed here)"
+      - "pacing/sleep/backoff additions (standing masking ban)"
+      - "production Neon/Render writes of any kind"

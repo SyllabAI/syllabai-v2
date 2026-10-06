@@ -1,0 +1,18 @@
+version: 1
+task:
+  id: T-MIG-078
+  title: "T-MIG-078 — the composed-instrument posture residues (T-MIG-071 run-002 post-merge review F-1/F-2; corpus+instrument class, options filed for R0/R6): (a) w3-questions-topics-student-200 regressed 0-vs-4 — the case (tranche:'empty') cannot reach its capture's THIRD posture (V63-seeded-unstaged 4/4): the V63 question seed fires inside the rich staging builders, not the base apply-reset; empty tranche = 0 questions, staged = 6/6 with ingest builders. Options: (i) move the V63 question seed into the base apply-reset posture (verify the 7 empty-state cases stay green — they pin attempts/state, not question counts), (ii) a third staging stage fired at a boundary before the questions cases (the boundary machinery already generalizes), (iii) re-pin the capture on the standing instrument; (b) shared-learner state leakage: w3-history-after-submit-200 (total 2 vs 1) + w4-course-stats/w4-state-practiced (flashcardRatings vs skillStates) — the replay mints ONE student across cases while each capture used a fresh learner. Options: per-case learner isolation for cases that declare it (harness), seq/tranche repositioning, or honest-red-with-disclosed-cause; zero silent widening"
+  owner: "OPEN — unassigned; claim-in-first-commit per AGENT_COORDINATION §2"
+  status: OPEN # filed by the R0-integrator desk 2026-10-06 (review F-1/F-2)
+  priority: P2
+  wave: corpus-dispositions
+  deps: [T-MIG-072]
+  scope:
+    allowed:
+      - "golden/tools/ci-replay.ts + golden/tools/** (the staging/posture machinery; COW discipline per T-MIG-035/063 — drop + 404-verify, zero residue)"
+      - "golden/cases/** ONLY for construction-only tranche/posture markers or ruled re-pins (every edit disclosed case-by-case)"
+      - ".syllabai/receipts/T-MIG-078/**; this yaml; .syllabai/worklog.md (append-only)"
+    forbidden:
+      - "apps/**, packages/** (corpus/instrument only)"
+      - "case deletions; comparator widening; pacing additions"
+      - "production Neon/Render writes of any kind"

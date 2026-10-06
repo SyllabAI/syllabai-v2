@@ -1,0 +1,16 @@
+version: 1
+task:
+  id: T-MIG-079
+  title: "T-MIG-079 — mount the W4 learner KG/smart-lesson surfaces (T-MIG-071 run-002 post-merge review F-9; port band, 5 live reds): w4-knowledge-graph-empty/practiced-200 + w4-smart-lesson-{missing-params-400,practiced-200,unknown-topic-404} answer app-level 404 vs captures — the routes are confirmed ABSENT (classroom.ts:90 documents KG/coverage/smart-lesson OUT of that band's fence; index.ts:207 names the learner-me band). Scope: the frozen LearnerKnowledgeGraph + SmartLesson controller laws (the captures are the law; the run-9 A-row's 'T-MIG-066 043-consolidation' routing is SUPERSEDED by 066's verified consolidation-only scope), routes + zod pins + mounts + service ports as the captures dictate"
+  owner: "OPEN — unassigned; claim-in-first-commit per AGENT_COORDINATION §2"
+  status: OPEN # filed by the R0-integrator desk 2026-10-06 (review F-9)
+  priority: P2
+  wave: 7
+  deps: [T-MIG-043, T-MIG-053]
+  scope:
+    allowed:
+      - "apps/api/src/routes/** (the two URL spaces), apps/api/src/services/** (the KG/smart-lesson port surfaces), packages/contracts/** (the request/response schemas the captures pin), apps/api/test/** (the pins)"
+      - ".syllabai/receipts/T-MIG-079/**; this yaml; .syllabai/worklog.md (append-only)"
+    forbidden:
+      - "golden/** (the corpus is read-only for port lanes; discrepancies are FILED, never auto-fixed)"
+      - "other services' fences; the auth limiter; production Neon/Render writes"

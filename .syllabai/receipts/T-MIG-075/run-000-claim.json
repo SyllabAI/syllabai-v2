@@ -1,0 +1,11 @@
+{
+  "task_id": "T-MIG-075",
+  "kind": "claim",
+  "run": "run-000",
+  "claimed_at": "2026-10-06T10:55:00Z",
+  "agent": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "authority": "operator trace 1a110c50451452a5 'Review R4-api-b's 071 PR and Proceed with whatever is left and unclaimed' — 075 is the register's sole P1 (the E-class bearer-posture fidelity, open 5+ runs), claimed from the T-MIG-071 run-002 post-merge review F-7",
+  "zero_collision": "075 is a fresh id (074 = r9-hubx, merged #118); no t-mig-075* heads, no 075 receipts/PR/worklog mentions pre-claim; the band is disjoint from the OPEN 076/077/078/079 filings (same commit) and from r1-contracts' IN_PROGRESS 073",
+  "design": "run-7 note E keyword-set: the posture decision single-sourced in golden/runner.ts (exported, selftest-covered: substitute for {{TOKEN}} placeholders, verbatim for name-declared malformed-bearer/empty-bearer postures, route-rule re-mint for the 44 scrubbed-dummy-literal cases); ci-replay.ts imports it and consults it before the hadAuth route-rule bearer; zero case-file edits (the two cases already pin the correct literals)",
+  "gates_baseline": "1546 ran / 1533 pass / 0 fail / 13 skip / 6036 expect / 82 files at 64782f6 (this desk, first-hand, the claim-time ratified number); selftest OK incl. the 071 rider"
+}

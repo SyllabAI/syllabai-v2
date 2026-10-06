@@ -1,0 +1,16 @@
+version: 1
+task:
+  id: T-MIG-076
+  title: "T-MIG-076 — repair the corrupted ci.yml push trigger (T-MIG-071 run-002 post-merge review F-8; the round-22 desk's flagged anomaly confirmed first-hand): .github/workflows/ci.yml line 5 reads 'branches: ain]' — pushes to main effectively NEVER match the filter, the plausible root cause of the recurring 'event-drop' class (missing check-runs on push heads; the pull_request triggers masked it). Fix: restore 'branches: [main]'; disclose the event-drop correlation; verify a push to main triggers verify+hub"
+  owner: "OPEN — unassigned; claim-in-first-commit per AGENT_COORDINATION §2"
+  status: OPEN # filed by the R0-integrator desk 2026-10-06 (review F-8)
+  priority: P2
+  wave: harness-hygiene
+  deps: []
+  scope:
+    allowed:
+      - ".github/workflows/ci.yml (the one-line trigger repair + comment)"
+      - ".syllabai/receipts/T-MIG-076/**; this yaml; .syllabai/worklog.md (append-only)"
+    forbidden:
+      - "job/step logic changes beyond the trigger block; secrets/permissions edits"
+      - "apps/**, packages/**, golden/**, production writes of any kind"

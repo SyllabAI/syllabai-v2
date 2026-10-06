@@ -1,0 +1,19 @@
+version: 1
+task:
+  id: T-MIG-077
+  title: "T-MIG-077 — the post-#119 corpus disposition band (T-MIG-071 run-002 post-merge review F-3/F-4/F-5/F-6; all items PRE-RULED by standing orders, zero new rulings needed): (1) R1 re-pin x2 per run-9 R1 — curriculum-subject-bad-uuid-400 + curriculum-subject-unknown-404 -> expect 401 + Boot-default body {timestamp,status:401,error:Unauthorized,path} with tolerate timestamp + justified:true citing SecurityConfig.java:65-94 @ 6cad6ef; (2) RICH-200-E families disposition per ruling3 R3-D2 effect 4 — w3-questions-families-student-200 gains the T-MIG-024 unordered[] multiset amendment (tie order is host-nondeterministic, multiset identical, triple-confirmed) + a justified disclosure; (3) I-class sentinel law x3 — w4-target-series-clear-204/-again-204 (<non-json> vs {_raw:''}) + question-assets-unknown-404 (<non-json> vs <non-json:0 bytes>): the symmetric empty-body marker convention (run-7 action 8, run-9 action 6) + v2 0-byte confirmation; (4) G-class prod createdAt passthrough x2 — content-docs-teacher[-detail]-realdata-200: the port passes the stored timestamp string through verbatim (apps/api content surface, run-7 disposition)"
+  owner: "OPEN — unassigned; claim-in-first-commit per AGENT_COORDINATION §2"
+  status: OPEN # filed by the R0-integrator desk 2026-10-06 (review F-3..F-6)
+  priority: P2
+  wave: corpus-dispositions
+  deps: [T-MIG-072, T-MIG-071]
+  scope:
+    allowed:
+      - "golden/cases/{curriculum-subject-bad-uuid-400,curriculum-subject-unknown-404,w3-questions-families-student-200,w4-target-series-clear-204,w4-target-series-clear-again-204,question-assets-unknown-404,content-docs-teacher-realdata-200,content-docs-teacher-detail-realdata-200}.json (only the ruled amendments; zero silent widening; zero deletions)"
+      - "golden/runner.ts + golden/tools/ci-replay.ts ONLY for the I-class symmetric sentinel normalization (construction-only, selftest grows, disclosed)"
+      - "apps/api/src/services/content/** ONLY for the G-class stored-precision passthrough (the claimant locates the exact serialization site; zero other-module contact; pins grow EXACT)"
+      - ".syllabai/receipts/T-MIG-077/**; this yaml; .syllabai/worklog.md (append-only)"
+    forbidden:
+      - "case deletions, re-pinning beyond the ruled fields, comparator widening beyond the ruled items"
+      - "the auth limiter, the tranche composition, pacing additions"
+      - "production Neon/Render writes of any kind"
