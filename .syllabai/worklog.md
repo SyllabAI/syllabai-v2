@@ -4105,3 +4105,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-072 IN_REVIEW on t-mig-072/r1: the ruling's composition executed of record with the exact §3-R5 membership, the F-class rider authorized in the same pass, gates EXACT +0. PR next, handed to the desk (authors never self-merge). r1 | composition landed | IDLE after filing | suggestion: after the desk merges, 071 (case amendments) assesses the RICH-200-E tie-order residual on the live instrument per R3-D2 effect 4.
+
+---
+Task ID: R1-ROUND-22 (trace 1a11029549c1db65 — closeout)
+Agent: r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: The "review+merge yourself" delegation, second firing this round — #116 (T-MIG-053 tranche-4, r3a) appeared mid-round; reviewed, merged; the lane's own T-MIG-072 PR filed (#117) and kept open for the desk.
+
+Work Log:
+- #116 REVIEW (APPROVE, comment 6012345125): the owed LLM-path check verified FIRST-HAND against the frozen tree — rg over the 934-line SmartLessonService.java @ 6cad6ef returns exactly one "llm" hit, the header's own no-LLM claim (:36); no LLM seam in the port. Targeted fidelity: the 8-rung ladder order matches the frozen rung comments 1:1 (:321/:359/:415/:437/:449/:462/:505/:513); tuning = the frozen config law 0.45/2/0.2/14; the 404 verbatim (two-arg NotFound ⇔ frozen :176); tutor-signals carries the TreeMap display-order + refused-flag + strictly-later laws; contracts reuse-not-redeclare honored (no new schema module — only the test file re-pinning the ratified learner.ts smartLessonViewSchema, T-MIG-041).
+- #116 GATES first-hand (detached worktrees): baseline d25626e = 1525/1512/0/13skip/5958/80f; union head 0e595bf (0b1a4b5 + worklog intake) = 1546/1533/0/13/6036/82f, typecheck x3, selftest OK — delta +21/+21/+0/+0/+2f EXACT. Expects reconciliation disclosed in the review: the PR prose said "+79" but its own absolutes say 5684+78=5762; measured deterministic +78 (3x identical) — prose slip in r3a's commit message, code reconciles.
+- #116 INTAKE pushed fast-forward 0b1a4b5..0e595bf (worklog-tail union via the N-hunk script, 256 Task sections, asserts pass) — the only conflict was the w0a 069-DONE bookkeeping entry.
+- #116 MERGED of record 3e9b54b via the sha-pinned PUT (json via file this time — the round's earlier shell-quoting failure not repeated): parents d25626e + 0e595bf verified, NO mid-merge race this firing (first parent IS the measured baseline), custom provenance commit message applied, git diff 0e595bf 3e9b54b -- ':!.syllabai' EMPTY (gates carry over by tree identity). T-MIG-053 card DONE 23/23 of record (t1 #101 + t2 #108 + t3 #115 + t4 #116).
+- #117 (this lane's T-MIG-072) filed and left OPEN for the desk — authors never self-merge; proactive intake of 3e9b54b pushed to the branch so the PR stays mergeable (worklog union only).
+- Board state at closeout: #117 open (this lane's, awaiting desk review); T-MIG-053 DONE; T-MIG-071 still OPEN/unassigned (the case-amendment band — the next claim candidate for any lane; its RICH-200-E residual assessment is unblocked now that 072 composition has landed).
+
+Stage Summary:
+- Round-22 of record for r1: #115 reviewed+merged+dual-disclosed (d25626e), T-MIG-072 claimed+implemented+#117 filed (gates +0 EXACT), #116 reviewed+merged (3e9b54b) — two delegation firings, one claim, zero force-pushes, sha-pin discipline held on both merges (one shell-quoting process slip on the #115 PUT's message, disclosed on the PR). Lane idle pending #117 desk review.
