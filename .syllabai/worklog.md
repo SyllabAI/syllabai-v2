@@ -2581,3 +2581,18 @@ Work Log:
 
 Stage Summary:
 - The instrument's first census movement: 105 → 108 with the blocking class retired and zero regression. The daily 02:30 UTC schedule owns the census from here. Unfiled next port-fix candidate: selfmark validation-order. LANE IDLE after this filing.
+
+---
+Task ID: 18a (routing-vs-claim ruling — 052-t2)
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, operator trace 1a10f23d18b18705)
+Task: Operator routing (this round) "052-t2 routes+mounts" — pre-claim collision census found the incumbent claim already of record.
+
+Work Log:
+- Pre-claim census at main 414f4a6: 4 open PRs (#84 t-mig-053/r3a, #85 t-mig-043/w0a, #86 t-mig-038/f2, #88 r0r6-triage — none touching 052); branch t-mig-052t2/r9-hubx carries claim-only commit 0aaca52 @ 2026-10-06T02:50:00Z — card IN_REVIEW -> IN_PROGRESS (tranche2_claimed_at 03:12:00Z), worklog claim entry appended, zero code delta (2 files, +17/-1, .syllabai only).
+- §2.1 earliest-claim-wins applied on the timestamps of record: the incumbent claim (commit 02:50:00Z, yaml stamp 03:12:00Z) PRECEDES this session's routing (which landed after de28315, this round). The incumbent is itself operator-routed (their trace 1a10f170ab141745 "Check if R0 has merged or not..." -> R0 verdict IN -> "continue working" -> own-card t2 resumption under the standing claim directive trace 1a10ec4d22b0e54d) — the round-12 "same operator word, distinct traces" fleet pattern verbatim.
+- RULING: this lane does NOT enter the 052-t2 band. Zero t2 code written here (no routes/classroom.ts, no mount lines, no route-test pins) — the double-PR collision class (#69/#72, #74/#76, #77/#78 precedents) stays at zero.
+- Incumbent claim quality verified first-hand (not rubber-stamped): branch cut from fe97f94; card flip + stamps present; zero-collision scan documented in their claim entry; the FROZEN READ for all 12 endpoints already re-read line-against-line @ 6cad6ef (TeacherClassController 8 — create 201 :80-81, list 200 :101, get 200 :111, status 200 :135, members-add 201 :150-151 re-enroll idempotent still 201, member-remove 200 :177, announcement-create 201 :191-192, announcement-list 200 :216; LearnerClassroomController 3 — overview/announcements/read 200 :70/:88/:103; TeacherRosterController 1 — :37; SecurityConfig :87/:91 authz; GlobalExceptionHandler error law :158-179); the card's /api/v1/teacher/learners mount-conflict question resolved (teachermarking serves /api/v1/teacher/marking — mounting /api/v1/teacher/learners is conflict-free).
+- This entry is the only direct-main write by this lane (worklog-only, sweep-receipt precedent acce2c6/.../633bfff/de28315).
+
+Stage Summary:
+- 052-t2 stands CLAIMED by r9-hubx (claim of record 0aaca52 @ 02:50:00Z, branch t-mig-052t2/r9-hubx); lane r1c IDLE on that band by the law, not by inaction. If the operator intends to REVOKE the incumbent claim and transfer t2 to r1c, that must be an explicit operator ruling (authority above §2.1) — until then the incumbent proceeds, and their PR will request independent review under authors-never-self-merge, for which this lane is an eligible reviewer (author != reviewer).
