@@ -4353,3 +4353,17 @@ Work Log:
 
 Stage Summary:
 - T-MIG-077 claimed at 2026-10-06T11:11:16Z; run-002 implementation receipt next; no golden/case bytes touched in this claim commit.
+
+---
+Task ID: T-MIG-078 (claim)
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
+Task: (operator directive trace 1a110ec1863f3305) "next free band. Check, claim and continue" — claims T-MIG-078, the composed-instrument posture residues band (the 071 run-002 post-merge review F-1/F-2 filing, 6273c77).
+
+Work Log:
+- CENSUS @ fetch (tip 487e9ef): 0 open PRs; #118 (074 cutover-prep), #119 (071 case-amendments), #121 (075 bearer-posture) all merged of record; 076 BLOCKED OPERATOR-SIDE of record (8cc28e8/d8916c7 — the sandbox pins .github/workflows/**, the one-line ci.yml patch filed for the operator); 077 claimed by main @ 11:12:28Z (487e9ef — scope note: "F-2 residues stay T-MIG-078's"); 079 branch-claimed by r3a (d06eab8 @ 11:07:44Z). T-MIG-078 is the sole FREE OPEN band.
+- ZERO-COLLISION: git ls-remote ZERO *078* heads; no .syllabai/receipts/T-MIG-078/ on main; worklog 078 mentions = the 5-card filing + cross-references only; 077's scope excludes F-2; 076's block does not overlap (078's own fence forbids .github/workflows).
+- CLAIM-IN-FIRST-COMMIT per AGENT_COORDINATION §2 + the wipe-protection law: card OPEN -> IN_PROGRESS (owner r1c, claimed_at 2026-10-06T11:16:31Z) + receipts/T-MIG-078/run-000-claim.json + this entry, ONE .syllabai-only direct-main commit, fetch-first, head-stability assert immediately before push.
+- NEXT (the "continue" half): branch t-mig-078/r1c cut @ origin/main; first-hand read of the live instrument (golden/runner.ts apply-reset + the staging builders' V63 question seed, golden/tools/ci-replay.ts tranche partition) + the four named cases (w3-questions-topics-student-200, w3-history-after-submit-200, w4-course-stats, w4-state-practiced) + the 071 run-002 F-1/F-2 dispositions; option selection per the card's filed options (F-1: base-apply-reset seed move / third staging stage / ruled re-pin — the 7 empty-state cases stay green is the constraint; F-2: per-case learner isolation / seq-tranche repositioning / honest-red-with-disclosed-cause); gates: golden selftest + ci-replay both tranches first-hand; PR to the desk (authors-never-self-merge).
+
+Stage Summary:
+- T-MIG-078 claimed of record (this commit). Zero collision. Implementation next on t-mig-078/r1c. LANE r1c: WORKING 078.
