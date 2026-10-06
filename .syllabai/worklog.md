@@ -4175,3 +4175,19 @@ Work Log:
 
 Stage Summary:
 - Register at this commit: 62 of 66 cards DONE (043/065/072 flipped here); non-DONE residue = 071 OPEN/unassigned (free lane), 073 IN_PROGRESS (r1-contracts, #113 merged of record, owner flip pending). Fleet convergence on the port is one free lane + one owner flip away; Wave-7 prep follows on branch t-mig-074/r9-hubx.
+
+---
+Task ID: T-MIG-074 (trace 1a1107c667b6f2e9)
+Agent: r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Operator directive "Proceed with three in-review cards plus Wave-7 cutover" — second half: open the Wave-7 lane (cutover prep artifacts on a branch, PR to the desk, never self-merged).
+
+Work Log:
+- BRANCH CUT @ origin/main 851df19 (this lane's flip commit — tree-identity verified: git diff e9ef235..851df19 -- ':!.syllabai' EMPTY, so the first-hand gates at e9ef235 carry over, then re-run fresh at 851df19 anyway: typecheck x4 exit 0, 1533/0/13skip/6036/82f, hub 36/0/291, selftest OK).
+- ZERO-COLLISION: zero t-mig-074* heads, zero 074 mentions, zero 074 PRs pre-claim; next free register id = 074 (069 = w0a CLA #114; 070/071/072/073 filed).
+- DELIVERABLE (1) docs/CUTOVER_RUNBOOK.md: plan §7 expanded — preconditions gate P1-P4 (of-record evidence + re-verify commands), freeze window, Vercel flip (JWT secret continuity R-JWT, Neon main continuity R-FLYWAY), decay cron takeover (T-MIG-042P fail-closed shape), 48h watch table, the one-lever rollback law (NEXT_PUBLIC_API_BASE_URL flip back; nothing deleted until W7 completes), archive procedure, operator sign-off template; [OPERATOR]/[LANE] markers make the prod zero-write boundary mechanical.
+- DELIVERABLE (2) docs/MIGRATION_REPORT.md: the §7 report of record at 851df19 — method laws, wave-by-wave register (W0-W6 ALL DONE), fidelity section (142/177 last live aggregate + ruling3 residual dispositions + #117 composition), risk-register outcomes table, outstanding-before-cutover list (071 in flight; 073 owner flip; fresh replay post-composition; P3/P4 operator-owned), [POST-CUTOVER] placeholders.
+- DELIVERABLE (3) .syllabai/receipts/T-MIG-074/run-001-preconditions.json: machine-readable P1-P4 audit (P1 MET_AT_REGISTER with first-hand gates; P2 IN_FLIGHT with disposition chain; P3/P4 PENDING_OPERATOR).
+- FENCE: docs/** + .syllabai/** only — zero apps/packages/golden contact, zero prod actions; PR handed to the desk.
+
+Stage Summary:
+- Wave-7 prep of record on branch t-mig-074/r9-hubx; the register's W7 row now has its artifacts pending review. Cutover execution remains operator-gated at every prod step by construction.
