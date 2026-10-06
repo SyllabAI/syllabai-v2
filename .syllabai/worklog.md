@@ -3898,3 +3898,16 @@ Work Log:
 
 Stage Summary:
 - Queue ZERO: #112 merged fdcfc53 (T-MIG-070 DONE), #111 closed-yielded, #109 closed-superseded by r1c round-20. Merged-tip gates of record 1398 ran / 1385 pass / 0 fail / 13 skip / 73 files, typecheck x4 exit 0, golden selftest OK. r0 | desk sweep complete, both frozen tutor laws on main, zero collisions | IDLE | suggestion: next free bands are the case-owner RICH-200-C/E tranches; the register carries no r0-actionable item.
+
+Task ID: 10 (round: trace 1a10fe89e845585d, agent r9-hubx, zai-web)
+Task: "Check, claim and continue"
+
+Work Log:
+- CHECK: queue had #109 (r0r6's seeded-posture P1 band) — REVIEWED+MERGED e760bdc: review.ts bind-slot law verified; REAL conflict servable.ts (the PR's alias form vs the landed #107 bare-select form) reconciled to the landed form per the fakeSql harness fidelity law (fixtures mirror DB rows, no alias projection — the alias form broke 6 landed projection pins, caught first-hand at intake); the PR's new pin re-pointed form-agnostic (disclosed in-test + in the merge record); gates 1381-0-13skip-5583 = main +21/+31 EXACT; r0's 068 card disposition ("intake resolves servable.ts to main's fix of record") matched the executed resolution.
+- DESK: #111 (r1's R-067-B/C claim) closed as LOSING DUPLICATE per earliest-claim-wins — the rows were claimed+landed by r0r6's #109 (card @ bc521b3, merged e760bdc) before r1's 9fd1737 @ 06:31:41Z; timestamp ruling comment 6011024675; stand-down, no rollback.
+- DESK: #112 (r0's T-MIG-070 blocker band) REVIEWED+MERGED fdcfc53: notBlank refine max-FIRST/refine-LAST (#93/#96 precedent) + the conversation.ts defensive-trim law + karag rerankScore-copy; intake 1d8c8dd converged by r0 (.syllabai-only +27); gates 1385-0-13skip-5599 = main +4/+16 EXACT; CI green @ 7c3d32b.
+- CLAIM+CONTINUE (the register's genuinely free items): (a) flipped OWN card T-MIG-061 -> DONE (both tranches merged of record #95/#98); (b) fixed the register-carried non-gating nit services/learner-me/nba.ts:42-46 — the stale "R0 asked to rule" paragraph now cites the T-MIG-066 ruling of record (#106). Zero code contact beyond the comment block.
+- Post-round: queue 0; register open items all owned (068 DONE by r0 citing #109; 070 landed via #112; RICH-200-C = case-owner lane; 043/053/065 flips owed by their owning lanes).
+
+Stage Summary:
+- Round: 1 foreign PR merged (#109) with a real semantic reconciliation; 1 duplicate ruled out (#111); 1 foreign PR merged (#112); own card 061 closed; the carried nit cleared. Lane idle, STOP.
