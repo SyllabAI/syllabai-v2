@@ -4177,6 +4177,21 @@ Stage Summary:
 - Register at this commit: 62 of 66 cards DONE (043/065/072 flipped here); non-DONE residue = 071 OPEN/unassigned (free lane), 073 IN_PROGRESS (r1-contracts, #113 merged of record, owner flip pending). Fleet convergence on the port is one free lane + one owner flip away; Wave-7 prep follows on branch t-mig-074/r9-hubx.
 
 ---
+Task ID: r1c Task-26 (post-reset recovery + the 069 routing adjudication)
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
+Task: (operator directive trace 1a1107e05fd76cc9) "route 069 when w0a files it" — adjudication + the post-reset census.
+
+Work Log:
+- ENVIRONMENT RECOVERY FIRST: the workspace container was RESET between rounds (my-project found empty at turn start; the bootstrap's pending-clone manifest records 6 failed restore attempts since 2026-10-06T03:35Z — the post-Task-25 workspace state, receipt drafts included, did not survive). Recovered: GITHUB_PAT re-provisioned from the pre-reset /tmp survivor (.env.syllabai, 0600, outside every repo; curl /user -> 200; sha256(token)[:16] = 8c1fcf2c4f0d5243 == this lane's ledger fingerprint), the repo re-cloned full. Origin is the source of truth; lane continuity intact (Task-24/Task-25 both on main of record). No repo state lost.
+- 069 ROUTING ADJUDICATED MOOT-OF-RECORD: w0a filed and the desk merged BEFORE the routing order arrived. T-MIG-069 (cla-ask; REFILED 067->069 per R0 arbitration ruling2) merged of record via PR #114 -> 366e5d6 2026-10-06T07:40:56Z by the R0-AUTO round-19 sweep (merge-commit CI verify+hub success at 366e5d6; GitHub merged_by shows the shared org credential — lane-level provenance carried by e36d379/f626848); t1a 39 + t1b 18 + t2 24 = 81 pins on main; the OUT-OF-FENCE mount 5b7c095 carried by the same merge; card -> DONE by w0a's own bookkeeping f626848 with authors-never-self-merge held (the desk merged; the standing self-merge order never fired). Zero 069 action remains for any lane; this lane takes none.
+- POST-RESET CENSUS @ fetch (origin/main f0b7189, re-based to 851df19 after a race-guard bounce): 0 open PRs. Register scan: 067/068/069/070 DONE; T-MIG-071 the sole live code band — claimed 2026-10-06T09:15:48Z by R4-api-b under operator trace 1a1107d90d2f3cc9 (claim commit f0b7189, .syllabai-only) — HANDS-OFF per earliest-claim-wins; the three stale-of-record IN_REVIEW cards (043/065/072 — all with merges of record #85-family/#103/#117 c88b738) were flipped DONE by r9-hubx's 851df19 mid-round, confirming this census's stale-card read; T-MIG-073 claim IN_PROGRESS by r1 (00f457f) — hands-off; 033's residual IN_REVIEW wording predates its merged-of-record tranches — owner bookkeeping, not touched.
+- LANE LEDGER reconstructed post-reset: Task-24 = the #106 independent corroboration (R0 merged d3f20f5, zero divergence); Task-25 = the round-20 sweep of record (#109 closed-superseded, #111 closed-yielded, #112 merged of record fdcfc53 — the #104 blocker band closed). The workspace-side worklog/scripts were lost with the container and are re-created this turn.
+
+Stage Summary:
+- The 069 routing closes moot-of-record: filed by w0a, merged by the desk (#114 -> 366e5d6), DONE — nothing to route. Queue zero; the sole live band 071 is R4-api-b's (hands-off). This lane executed zero code/merge/card actions — credential recovery + adjudication only. LANE r1c: STANDBY for the next operator routing or a desk-opened queue. STOP.
+
+---
+
 
 Task ID: R0-REPLAY-FILING-1 (operator trace 1a1107f16bd8d041 "Check current status again")
 Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
