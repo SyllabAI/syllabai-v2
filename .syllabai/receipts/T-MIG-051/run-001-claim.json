@@ -1,0 +1,27 @@
+{
+  "task_id": "T-MIG-051",
+  "kind": "CLAIM-RECEIPT",
+  "run": "001",
+  "timestamp": "2026-10-06T01:16:20Z",
+  "agent": "Super Z (operator-directed independent lane, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "authority": "Operator routing trace 1a10ec4360ba292d: 'N-4 rich-200 capture' — the registered-but-unrouted item this lane itself surfaced in worklog Task ID 15 (N-4 rich-200 capture half stays with the golden-capture lane's register). The operator's routing IS the golden-capture lane dispatch.",
+  "zero_collision": {
+    "checked_at": "2026-10-06T01:16Z",
+    "main": "56a8baa (post #79 T-MIG-050 smartmark fix merge)",
+    "ls_remote": "zero t-mig-051 / n4 / rich / capture heads; refs/pull/79 = the merged 050 fix (different work: smartmark paper-scope, merged 01:14:03Z)",
+    "open_prs": 0,
+    "yaml": "no T-MIG-050/051 collision — 050 taken by the MERGED smartmark fix card; 051 free; T-MIG-051 is the next free id"
+  },
+  "scope_planned": [
+    "golden/cases/w3-teacher-marking-{queue-v2,answers,throughput}-rich-200.json (populated read models, incl. a tied-created_at uuid tie-break case per the N-4 condition)",
+    "golden/cases/w3-sme-status-admin-rich-200.json (populated bank snapshot: activeQuestions/activeMcq/activeStructured/specPointMappings/assets)",
+    "golden/cases/w3-sme-ingest-{admin-200,}-family (multipart POST /ingest lifecycle; runner multipart extension declared as in-scope engine work with disclosure)",
+    "zero services/** or routes/** edits — capture + harness lane only; the ports under test are LIVE on main"
+  ],
+  "method": "T-MIG-007 run-002 recipe: frozen core boot on local scratch Postgres+pgvector, lifecycle seeding through the core's own write paths, deterministic scrub per GOLDEN_MASTER section 2, source: lines per case",
+  "disclosed_risks": [
+    "sandbox has JRE 21 only (T-MIG-007 used JDK 25) — core targets 17+; if the build refuses, provision Temurin via the Adoptium API no-root recipe",
+    "no Neon credentials in this session — LOCAL scratch Postgres via no-root deb unpack (pgdg recipe); nothing writes to production Neon (section 2 law)",
+    "admin bootstrap mechanism on the frozen core not yet inspected — will follow the core's own seed path; synthetic credentials only"
+  ]
+}

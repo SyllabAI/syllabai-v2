@@ -1,0 +1,93 @@
+version: 1
+task:
+  id: T-MIG-052
+  title: "Wave-5 classroom/teacher foundation — the classes+rosters core (V51/TFA-01/TFA-02): TeacherClassController (8 endpoints) + LearnerClassroomController (3) + TeacherRosterController (1, the 049-disclosed LearnerRosterView contracts residual); tranche-1 = contracts + services + fakeSql pins (021/033/041/043 template); routes/mounts = tranche-2"
+  owner: "r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5) — operator directive trace 1a10ec4d22b0e54d 'claim the next unscoped task': claims the next MIGRATION_PLAN-reserved band (Wave-5 §2.1 Classroom/teacher) after the register drained (050 = r0's smartmark fix merged #79; 051 = r0's N-4 rich-200 capture claim 2026-10-06T01:16Z; 054 = r1c's SME contracts salvage merged #80; 043-t2 NBA engine belongs to w0a's IN_REVIEW card)"
+  status: IN_REVIEW # tranche-1 implemented + gated on the branch (run-002-tranche-1.json); PR filed; id ratification + independent review requested; authors never self-merge
+  claimed_at: "2026-10-06T01:24:44Z"
+  priority: P1
+  wave: 5
+  deps: [T-MIG-049, T-MIG-014] # W3-remainder contracts lane (disclosed the LearnerRosterView residual this task consumes) + db driver dispatch
+  execution_record: >
+    (claim entry 2026-10-06T01:24Z) Pre-claim zero-collision scan RE-RUN
+    immediately before branch cut @ origin/main 6c58c15: ls-remote zero
+    t-mig-052* heads (the single grep hit was a SHA substring, not a branch),
+    zero 052/053 mentions anywhere in .syllabai/ or docs/, open PRs #79
+    (merged during scan) and #81 (r3a round-12 receipt, worklog-only) — no
+    classroom/roster fence anywhere. Scope map from frozen core @ 6cad6ef
+    (all read line-against-line this session):
+
+    TeacherClassController.java :57-292 (/api/v1/teacher/classes, TEACHER or
+    ADMIN shell + per-object OWNERSHIP gate §17): POST create (trim/blank
+    400 law; case-insensitive name clash on the same course among ACTIVE
+    classes → 409 "you already have a live class with this name on this
+    course"; the partial unique index ux_class_teacher_course_name is the
+    storage twin), GET list (LIMIT 100 newest-first, member counts ONE
+    grouped query), GET /{id} detail (roster enrolledAt asc + batched user
+    load; hard-removed accounts still show as "(removed account)" /
+    "(unavailable)" — the honesty rows), POST /{id}/status (tolerant parse
+    active|archived else 400 "status must be 'active' or 'archived'"),
+    POST /{id}/members enroll (archived → 409 "this class is archived —
+    reopen it before enrolling"; email trim+lowercase; unknown email → 404
+    "no account with that email — the student registers first, then you
+    enroll"; disabled → 409 "that account is disabled"; non-STUDENT → 409
+    "only student accounts can be enrolled in a class"; re-enroll =
+    idempotent no-op — no INSERT when existsByClassIdAndStudentId), DELETE
+    /{id}/members/{studentId}, POST /{id}/announcements publish (archived →
+    409 "this class is archived — reopen it before publishing"; Category
+    parse null/blank→GENERAL, kebab tolerant, else 400 "category must be
+    general, homework, notice, exam-reminder or resource"; title/body trim
+    blank → 400), GET /{id}/announcements (LIMIT 100 newest-first +
+    batched read counts over the roster).
+
+    LearnerClassroomController.java :46-177 (/api/v1/learners/me/classroom,
+    isAuthenticated but every read derives from membership rows ONLY — the
+    independent-student rule): GET overview (live memberships; ARCHIVED
+    classes DROP OUT of the overlay; empty = the honest state, not an
+    error; unread per class + flattened totalUnread; the 4-query batching
+    law: memberships, classes, feed LIMIT 100 across live classes
+    newest-first, my read-state ids; teacher names batched with the
+    "(unavailable)" fallback), GET /announcements (all announcements
+    across live classes newest-first with MY read flag beside each), POST
+    /announcements/{id}/read (404 "announcement not found"; membership
+    gate 403 "this announcement is not in your classroom" — never another
+    teacher's class; idempotent no-op when the read receipt exists;
+    append-only AnnouncementRead, the announcement row NEVER mutates).
+
+    TeacherRosterController.java :23-43 (GET /api/v1/teacher/learners, the
+    V49 ruling surface): enabled STUDENT cohort → LearnerRosterView
+    (identity projection only, no learning data); frozen query law
+    UserRepository :25-28 `select distinct u ... join u.roles r where
+    r = :role and u.enabled = true order by u.displayName asc, u.email
+    asc` — the V2 house form joins user_roles (element collection, the
+    services/identity users.ts lineage).
+
+    Entities/tables (V51__classroom_foundation.sql): classes (status
+    CHECK ACTIVE/ARCHIVED, partial unique (teacher_id, course_slug,
+    lower(name)) WHERE status='ACTIVE'), class_members (UNIQUE
+    (class_id, student_id) — the idempotency storage twin), announcements
+    (category CHECK, immutable once published — edit/delete deliberately
+    NOT in the foundation slice), announcement_reads (PK
+    (announcement_id, student_id), append-only). V51 also ALTERed
+    assignments with class_id — the V49/V51 targeting law already ported
+    by 043-t1's learner-assignments; zero overlap.
+
+    TRANCHES: t1 (this claim) = packages/contracts/src/classroom.ts +
+    services/classroom (the 12 service functions + the parse/wire laws +
+    the 100/100 bounds) + fakeSql pins; NO routes, NO mounts, NO hub-flip
+    (tranche-2 per the 041/043 doctrine). t2 = routes + mounts
+    (out-of-fence flagged, /api/v1/teacher/classes +
+    /api/v1/learners/me/classroom + /api/v1/teacher/learners) — NOTE
+    /api/v1/teacher/learners is TODAY served by the teachermarking mount
+    region? (verify at t2: the V51 ruling REPLACES the V49 cohort shortcut
+    with the explicit roster — the endpoint shape is unchanged). KG /
+    coverage / analytics / notes / revision / smart-lesson stay OUT (their
+    own W5 tranches); NO LLM path touches this module (§9); classroom
+    workflow writes NO learner-model state (the V47/V48/V49/V51 honesty
+    pin, ClassroomFlowIT).
+
+    HONESTY RULES carried verbatim: course refs are opaque hub-owned
+    strings (no course registry pretense); enrollment requires an ENABLED
+    STUDENT account; re-enrollment is the idempotent no-op it honestly is;
+    the independent-student rule (no membership rows → empty reads, an
+    honest zero); a class is workflow state, not evidence.

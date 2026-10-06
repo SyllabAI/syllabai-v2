@@ -1,0 +1,38 @@
+version: 1
+task:
+  id: T-MIG-051
+  title: "N-4 rich-200 golden capture — w3-teacher-marking + w3-sme populated read models + SME ingest/status lifecycle (the capture half the 033/034 tranches deferred to the golden-capture lane's register)"
+  owner: "Super Z (operator-directed independent lane, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) — operator routing trace 1a10ec4360ba292d: 'N-4 rich-200 capture'"
+  status: DONE # 2026-10-06 LANDED (PR self-referenced on merge): 7 rich-200 cases captured from the LOCAL frozen-core boot (syllabai-core @ 6cad6ef, Temurin 25.0.4.1 + Maven 3.9.9, PostgreSQL 17.11 + pgvector 0.8.0 no-root, Flyway V1..V63, zero Neon; receipts run-002-capture + run-003-replay). N-4 tie-break CONDITION FIRED and closed via its first branch: the capture exhibited signed-long uuid.compareTo order (0xf0ae… before 0x4e09… under a created_at tie) -> uuidCompare ported (compareWithinPaper + pendingByPaper tie-breaks) with captured-vector unit pins. F-51-A: the throughput answersByState wire order is JAVA HASHMAP iteration order (derived, deterministic) -> BY_STATE_WIRE_ORDER + pin. Runner extension (declared scope): bodyFile/multipart + --filter + selftest coverage. Two-pass replay proof vs the live port on a fresh scratch db: 17/17 PASS, exit 0, role-faithful tokens (the 403 postures replay student/teacher tokens minted through the honest join-code path). Gates at head: typecheck x4 exit 0; bun test 898 ran / 885 pass / 0 fail / 13 skip / 2520 expect = main 893/880 + 5 new exact; selftest OK. # claimed at main 56a8baa (post #79 smartmark fix); zero-collision: ls-remote zero 051/n4/rich heads, open PRs = 0
+  priority: P1 # the w3 auth-boundary postures are captured; the populated 200s are the remaining golden gap for the wave-3 marking + sme surfaces (N-4 register: T-MIG-033 card + run-004/run-005/run-008 receipts + R0-ROUND-6C)
+  wave: 3
+  deps: [T-MIG-007, T-MIG-033, T-MIG-034] # the captured surfaces' ports are live on main: teachermarking (#50/#64) + sme admin (#77) + testbuilder/answer-input (#62 family)
+  basis: >
+    N-4 (T-MIG-033 card + receipts): the captured w3-teacher-marking-* /
+    w3-sme-* golden postures are auth-boundary only (401/403, plus the
+    w3-marking-* EMPTY-state 200s); the RICH 200s are lifecycle/stateful and
+    were deferred to the golden-capture lane. N-4 also carries the uuid
+    tie-break CONDITION (run-r0-review-tranche1 + run-005): "if a
+    w3-teacher-marking capture exhibits tied rows, port the bit-order
+    comparator or pin with disclosure" — the capture must EXHIBIT tied
+    created_at rows to pin the ordering law. Surfaces (frozen 6cad6ef):
+    TeacherMarkingController queue-v2 / answers / throughput populated read
+    models; SmeQuestionAdminController GET /status populated bank snapshot +
+    POST /ingest multipart 200 IngestSummary (ADR-026 replace lifecycle).
+  execution_record: >
+    (claim entry 2026-10-06T01:16Z) Method per T-MIG-007 run-002 recipe:
+    boot the FROZEN core (syllabai-core @ 6cad6ef) on a local scratch
+    PostgreSQL + pgvector, seed the lifecycle through the core's own write
+    paths (register student/teacher via the honest join-code path; admin
+    bootstrap per the core's own mechanism; attempts via POST /api/v1/attempts;
+    marks via the marking routes; question bank via the SME ingest itself),
+    capture request/response pairs, scrub deterministically (GOLDEN_MASTER
+    section 2: emails -> user_<n>@example.invalid, names -> User <n>, tokens
+    -> fixed dummy, ids -> stable fakes), commit cases with source: lines.
+    Runner gap disclosed up front: golden/runner.ts has NO multipart support,
+    so the ingest case requires a runner extension (declared scope, engine
+    change + selftest coverage) OR a body-file convention — decided in-branch
+    with disclosure. Tie-break engineering: seeded directly via SQL to force
+    identical created_at on sibling attempts (wall-clock capture cannot
+    guarantee ties); the port's ordering law (created_at asc + id asc) is
+    then pinned by a strictly-ordered golden case.

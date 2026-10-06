@@ -2418,6 +2418,17 @@ Stage Summary:
 - The blocking-class marking-pipeline defect is FIXED with live SQL evidence; the 42703 class retires from the next replay census. Register items unchanged for R0/R6 (H-2 third posture, identity pins, 429 pacing, realdata drift). Actions green again. LANE continues: post-merge verification + next claim.
 
 ---
+Task ID: 17 (r9-hubx, trace 1a10ec4d22b0e54d)
+Agent: Super Z (operator-directed independent lane r9-hubx, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Operator directive — "claim the next unscoped task": claim + execute the next MIGRATION_PLAN-reserved band
+
+Work Log:
+- Register drained before the scan: 050 = r0's smartmark paper-scope fix (merged #79, 56a8baa); 051 = r0's N-4 rich-200 golden capture (claim d29b8fc @ 2026-10-06T01:16:59Z — the register item reserved for the golden-capture lane); 054 = r1c's SME package contracts salvage of r4b #78 (merged #80); 043-t2 (NBA engine + routes) belongs to w0a's IN_REVIEW card — all four NOT claimable.
+- Zero-collision scan @ origin/main 6c58c15: zero t-mig-052/053 heads (the single grep hit was a SHA-substring artifact), zero 052/053 mentions in .syllabai/ or docs/, queue = #79 (merged mid-scan) + #81 (r3a round-12 receipt confirming the Task-16 rulings by outcome — worklog-only). Wave-5 §2.1 Classroom/teacher = the next reserved-unclaimed band; ID T-MIG-052 claimed (053 held back as the next free slot).
+- Frozen core re-verified @ 6cad6ef (fresh anonymous clone of SyllabAI/syllabai-core): TeacherClassController :57-292 (8 endpoints: create/list/detail/status/enroll/remove/publish/announcements with the 409 clash + archived gates, the enable+role enroll law, idempotent re-enroll, "(removed account)" honesty rows, batched counts), LearnerClassroomController :46-177 (3 endpoints: the independent-student rule, archived-dropout overlay, 4-query batching, membership-gated idempotent markRead), TeacherRosterController :23-43 (GET /teacher/learners — the 049-disclosed LearnerRosterView residual; UserRepository :25-28 distinct+enabled+STUDENT order displayName,email). V51__classroom_foundation.sql read line-against-line (partial unique index, UNIQUE pair, append-only reads, assignments.class_id targeting already ported by 043-t1).
+- Branch t-mig-052/r9-hubx cut; card T-MIG-052-classes-rosters.yaml + run-001-claim.json + this entry in the SAME commit (claim-before-work law). Tranche-1 = contracts + services + fakeSql pins, NO routes/mounts/hub-flip; tranche-2 = routes + mounts (out-of-fence flagged at t2). Id ratification requested at review.
+- LANE CONTINUES IN-SESSION to implementation (run-002).
+- IMPLEMENTATION (run-002, same session): contracts classroom.ts (8 views + 5 request schemas, constraints verbatim; the 049-disclosed LearnerRosterView residual consumed) + 13 schema pins + the index.ts re-export one-liner (OUT-OF-FENCE-flagged, 010/034/043-t1 precedent); services/classroom/index.ts (12 functions over the injected SqlFn seam, the parse/wire law helpers, ClassroomNotFoundError/ClassroomForbiddenError verbatim-message carriers, buildClassroomModule composition root); test/classroom/classroom.test.ts (43 tests / 126 expects over fakeSql). Laws carried verbatim incl. the case-INSENSITIVE ACTIVE+course-scoped clash 409, the archived gates, the enable+STUDENT-role enroll chain, the idempotent no-INSERT re-enroll + re-read, the '(removed account)'/'(unavailable)' honesty rows, the independent-student EMPTY, the archived-dropout overlay, the 4-query batching, the immutable announcement + append-only receipts, and the V49 roster order (displayName asc, email asc). DISCLOSED divergence (same posture as every landed lane): Date renders truncate pg sub-millisecond precision to millis — tolerance-law governed at replay time. Gates: typecheck x4 exit 0; api+packages 943 pass / 0 fail / 13 skip / 2681 expect (= stash-verified 6c58c15 baseline 887/0/13 + 56 tests EXACT); hub 36/0/291; golden --selftest OK. Card flipped IN_REVIEW; LANE IDLE after push — independent review + R0 merge-intake requested (authors never self-merge); tranche-2 (routes + mounts, out-of-fence flagged) awaits the t1 verdict.
 Task ID: R3a-ROUND-12 (operator directive trace 1a10eaf682fd140d: "Check if R0 has merged or not. If not, review+merge yourself and continue working")
 Agent: superz-agent-b (R3a lane, Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
 Task: Check R0's merge state; delegated review+merge where unmerged; continue working.
@@ -2481,6 +2492,7 @@ Work Log:
 
 Stage Summary:
 - The 043 dual-PR ruling is audited and stands; the collision register entry is CLOSED with evidence. Two carry-forward items registered for R0: the 038 .nullable() widening (two-lane corroborated, precise scope: learner.ts :241-242 + learner.test.ts null fixture) and the optional r1 salvage hygiene card. Queue: zero open PRs at audit end. LANE IDLE.
+
 ---
 Task ID: T-MIG-043 (run-003 claim + run-004 tranche-2 execution)
 Agent: w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
@@ -2499,3 +2511,56 @@ Work Log:
 
 Stage Summary:
 - Tranche-2 LANDED on t-mig-043/w0a (claim e0726ac → engine 1d0128b → routes+mount 9bede34 → tests 4bf0638 → receipt): the Wave-4 learner-me band is CODE-COMPLETE — services, engine, routes, mounts, pins — and IN_REVIEW. The band's 29 w4 cases are replay-ready; the NBA engine's T1..T7 ranks the same evidence the frozen core ranks, under the same policy string, fail-closed graph layer included. Register for R0: (1) the index.ts mount needs ratification (the 010-line precedent); (2) the consolidation ruling — ExamTargetReader + the decay/BDT math now exist in BOTH 041 and 043 copies; (3) the 041-t2 double-PR arbitration (#69 vs #72) still gates the /state//course-stats/KG replay cases; (4) CI darkness blocks the replay dispatch — merges in this window rest on local-gates evidence, disclosed per the r0s practice. LANE w0a: STOP after the PR update; awaiting the operator's next word. Authors never self-merge.
+
+---
+Task ID: R0-AUTO (cron job 438940, sweep 2026-10-06 02:00 UTC)
+Agent: R0-auto merge desk (Super Z scheduled integrator)
+Task: Periodic merge-desk sweep — review + merge open PRs per the standing R0-auto procedure (max 2 merges/run, oldest first).
+
+Work Log:
+- Lock acquired 02:00 UTC; open-PR census: 1 (#82 t-mig-052/r9-hubx head b250a719c6f2ba238588aba41234c92cd6b81d03).
+- Guard chain on #82: CI check-runs verify+hub completed/success at the real head SHA; mergeable=True state=clean (no intake needed, base = main tip 06ca4e2); 0 reviews / 0 comments / zero HOLD-BLOCKING-REQUEST_CHANGES hits; file boundary scan: 9 files +2153/-0, zero *.java, zero core/hub content, syllabai-v2-only; collision scan: no T-MIG-052 card on main, exactly one t-mig-052* branch, zero prior 052 claims in the worklog.
+- MERGED #82 as 39fa554 (merge_method=merge, sha-pinned b250a719) — T-MIG-052 tranche-1 (Wave-5 classes+rosters core: classroom services + contracts + 56 pins) is LIVE.
+- CI verified on new main tip 39fa554: verify + hub both completed/success.
+- Local gates re-run at 39fa554: bun install --frozen-lockfile OK; typecheck exit 0; bun test apps/api packages 943 pass / 0 fail / 13 skip / 2681 expect (956 ran / 56 files — EXACT: prior 900 ran / 887 pass / 2523 expect + 56 tests / +158 expects from the classroom suites); golden --selftest OK.
+- Receipt committed bookkeeping-only (.syllabai/**); zero force-push.
+
+Stage Summary:
+- Wave-5 band is now OPEN and delivering under the operator directive (trace 1a10ec4d22b0e54d "claim the next unscoped task"): T-MIG-052 tranche-1 landed. Board: next up = 052 remaining tranches / 051 / 053 / 043 tranche-2 (NBA engine + routes).
+- Queue at sweep end: 0 open PRs. No escalations. LANE DONE for this cycle.
+
+Task ID: 17
+Agent: Super Z (operator-directed independent lane, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Operator routing (trace 1a10ec4360ba292d): "N-4 rich-200 capture" — the golden-capture lane's register item this lane surfaced in Task ID 15; filed as T-MIG-051 (050 taken by the merged smartmark fix #79).
+
+Work Log:
+- CLAIM d29b8fc at main 56a8baa: zero-collision verified (no 051/n4/rich heads; open PRs = 0 at claim).
+- PROVISIONED no-root from a bare sandbox: Temurin JDK 25.0.4.1 (Adoptium) + Maven 3.9.9 + PostgreSQL 17.11 + pgvector 0.8.0 (apt-get download + dpkg -x; relocatable tree — share/lib resolve relative to the extracted bindir); anonymous clone of syllabai-core @ 6cad6ef (read-only C1); mvn -DskipTests package exit 0 -> the same 180266541-byte boot jar the T-MIG-004 run-002 receipt records. Boot: SYLLABAI_LLM_MODE=test + local-profile DemoUserSeeder (synthetic identities); Flyway V1..V63 applied by the core; zero Neon.
+- CAPTURED 7 rich-200 cases (receipt run-002-capture): SME ingest fresh (deactivated:0) + ADR-026 replace (deactivated:2) + populated status snapshot; teacher-marking queue-v2 / answers / paged answers / throughput over two STRUCTURED attempts on the ingested question. Deterministic corpus committed (files/t51-corpus.zip, 685 bytes) + the frozen Flyway seed posture as INSERTs (files/t51-seed.sql, T51 lifecycle rows excluded).
+- N-4 TIE-BREAK CONDITION FIRED (the thing the register hoped a capture would settle): with attempt created_at tied via SQL, the frozen core ordered 0xf0ae6395-… BEFORE 0x4e094481-… — java.util.UUID.compareTo is a SIGNED 64-bit pair compare, the reverse of the port's disclosed string-lex class. Resolved via the condition's first branch: uuidCompare ported (BigInt signed-i64 halves) into compareWithinPaper + the throughput pendingByPaper key tie-break; unit tests carry the captured vectors.
+- F-51-A (low, wire-byte): the throughput answersByState order is JAVA HASHMAP iteration order (HashMap<String,Long> seeded in enum order; Jackson renders map order; deterministic for these String keys) — derived order computed (bucket = (h ^ h>>>16) & 15, capacity 16, no resize) and matches the capture exactly; BY_STATE_WIRE_ORDER + unit pin. The port had rendered declaration order — invisible to every auth-boundary capture.
+- RUNNER EXTENSION (declared scope, selftest-covered): bodyFile/multipart case fields (the SME ingest 'file' part; fetch builds the boundary; diff engine untouched) + --filter name-substring for family-scoped live replays.
+- REPLAY PROOF vs the live port on a fresh scratch db (drizzle baseline + pgvector; receipt run-003-replay): two-pass state partnership — the ingest CASES are seq 10/11 state builders (seeding them would double the numbers), then the attempts + the tie exhibit, then the marking reads; ROLE-FAITHFUL tokens (admin/teacher for the reads, minted student/teacher for the 403 postures, anonymous for the 401s — a single admin token falsely 200s the 403s). RESULT 17/17 PASS, exit 0.
+- GATES at head: typecheck x4 exit 0; bun test 898 ran / 885 pass / 0 fail / 13 skip / 2520 expect (= main 893/880 + 5 new, exact); golden --selftest OK.
+
+Stage Summary:
+- N-4 CLOSED: the w3-teacher-marking + w3-sme surfaces now carry rich-200 golden gates alongside the auth-boundary postures; the T-MIG-033 capture condition is discharged with a ported comparator, not a disclosure. Card T-MIG-051 DONE. The capture environment recipe is fully reproducible from the receipts (no-root; no Neon; nothing writes to production).
+- Register for R0: (1) the unpaged /answers list stays order-unspecified in the frozen source (root-array unordered declaration, T-MIG-024 doctrine); (2) w4-readiness' "flyway-equivalent v2 migrations" note is now partially addressable — files/t51-seed.sql is a per-family seed posture, not a corpus-wide v2 seed; a corpus seed decision stays with the replay lane/operator.
+
+
+---
+Task ID: R0-AUTO (cron job 438940, sweep 2026-10-06 02:30 UTC)
+Agent: R0-auto merge desk (Super Z scheduled integrator)
+Task: Periodic merge-desk sweep — review + merge open PRs per the standing R0-auto procedure (max 2 merges/run, oldest first).
+
+Work Log:
+- Lock acquired 02:30 UTC; open-PR census: 1 (#83 t-mig-051/r0 head d9e48161070132a1d6e74208bcb303f20ab4ddc5, operator-directed independent lane trace 1a10ec4360ba292d, N-4 rich-200 golden capture).
+- Guard chain on #83: CI verify+hub completed/success at the real head SHA; mergeable=True state=clean (base = main tip ee37657, no intake needed); 0 reviews / 0 comments / zero HOLD-BLOCKING-REQUEST_CHANGES hits; file boundary scan: 18 files +1231/-16 — zero *.java, zero core/hub content, golden cases/fixtures/runner.ts and teachermarking service+test mods all in-scope; collision scan: exactly one t-mig-051* branch, no 051 yaml on main, zero prior 051 worklog mentions.
+- MERGED #83 as 7dfdd16 (merge_method=merge, sha-pinned d9e4816) — T-MIG-051 N-4 rich-200 capture LIVE: 6 golden cases (SME ingest/replace/status-admin + teacher marking answers/answers-paged/queue-v2/throughput) with populated-200 fixtures (t51-corpus.zip + t51-seed.sql + seed-t51-rich200.ts), runner.ts comparison upgrade, signed-uuid semantics.
+- CI verified on new main tip 7dfdd16: verify + hub both completed/success.
+- Local gates re-run at 7dfdd16: install OK; typecheck exit 0; bun test apps/api packages 948 pass / 0 fail / 13 skip / 2689 expect (961 ran / 56 files — EXACT: prior 943/0/13skip/2681 + 5 tests/+8 expects from the capture's teachermarking additions); golden --selftest OK.
+- Receipt committed bookkeeping-only (.syllabai/**); zero force-push.
+
+Stage Summary:
+- N-4 register item (W3 marking + SME surfaces lacked populated-200 golden gates) is CLOSED by capture. Board: W5 band delivering (052 t1 landed 39fa554 last cycle; 051 landed this cycle), remaining claimable = 052 remaining tranches / 053 / 043 tranche-2 (NBA engine + routes) / hub scoped-test-runner hygiene.
+- Queue at sweep end: 0 open PRs. No escalations. LANE DONE for this cycle.
