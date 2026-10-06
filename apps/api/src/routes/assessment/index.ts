@@ -17,6 +17,13 @@
  *     enum values)" (HttpMessageNotReadableException :172-179; captured
  *     w3-attempt-missing-fields-400 "empty body" and
  *     w3-attempt-structured-missing-fields-400)
+ *   - PRESENT-BUT-FIELD-LESS bodies bind the SAME envelope (R4 ruling,
+ *     T-MIG-067: the replay harness serves those captures as `{}` JSON, and
+ *     runs #9/#11 pin the frozen core's answer for exactly that body as
+ *     malformed_body — record deserialization fails on absent required
+ *     creator properties, so a missing required field is a BINDING failure,
+ *     not a @NotNull constraint; the former "nulls bind, missing binds"
+ *     reading produced validation_failed and diverged)
  *   - UUID-typed fields are binding-fail-fast: Jackson's UUID parse fails
  *     for ANY non-UUID value (wrong scalar type or bad format) → malformed_body
  *     (captured w3-attempt-bad-uuid-400)
@@ -136,9 +143,15 @@ function classifyBodyError(error: ZodError): BodyError {
     if (i.code === "invalid_string") return true; // uuid parse (Jackson UUID)
     if (i.code === "invalid_type") {
       const received = (i as { received?: string }).received;
-      // null/undefined BIND fine for object types in Jackson (nulls handed
-      // to the record); their rejection is @NotNull/@NotEmpty — a constraint
-      return received !== "undefined" && received !== "null";
+      // null binds (Jackson hands the null to the record; rejection is
+      // @NotNull/@NotEmpty — a constraint, rendered validation_failed).
+      // MISSING (undefined) does NOT bind: the frozen core's record
+      // deserialization raises a binding failure on absent required
+      // creator properties, so a present-but-field-less body lands in the
+      // malformed_body envelope — R4 ruling (T-MIG-067; runs #9/#11 pin
+      // {} on BOTH attempt surfaces → malformed_body, never
+      // validation_failed, GlobalExceptionHandler.java:175-180 @ 6cad6ef).
+      return received !== "null";
     }
     return false;
   };
@@ -152,8 +165,9 @@ function classifyBodyError(error: ZodError): BodyError {
     "",
   );
   if (first.code === "invalid_type") {
-    // null/undefined on a required field: partAnswers carries @NotEmpty,
-    // everything else @NotNull (confidence has neither — absent is valid)
+    // null on a required field (missing fields never reach here — they bind
+    // malformed per R4): partAnswers carries @NotEmpty, everything else
+    // @NotNull (confidence has neither — absent is valid)
     if (first.path[0] === "partAnswers") {
       return { kind: "validation", message: "partAnswers: must not be empty" };
     }

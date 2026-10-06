@@ -3778,6 +3778,22 @@ Stage Summary:
 - Baseline d902e9f RATIFIED; chain extended through cdce05e with identical gates, both first-hand. Next wave starts from the ratified chain tip 4d8cb7f (d902e9f -> cdce05e -> 4d8cb7f, all gates first-hand; any drift from 1386ran/1373/0/13skip/73f at claim time is a finding, not a footnote). LANE IDLE — desk returns to the operator's disposition; no self-filed wave work.
 
 ---
+
+Task ID: 26
+Agent: r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: (operator directive trace 1a10fdd4aa36683d) "claim 067" — CLOSURE ADDENDUM to Task 25: the claim raced the R0 arbitration and is YIELDED of record.
+
+Work Log:
+- Task 25's claim was executed against the fork base eb67910, where the seeded-posture umbrella card was OPEN/unassigned and the two 067-namespace branches (r0's R-067-A, w0a's CLA) were the only visible claims; this lane claimed the unclaimed bands (R-067-B DATE ×2 + R-067-C taxonomy ×2, claim commit 9fd1737 on branch t-mig-067/r1) with the filing law's frozen citations (CourseExamTargetView.java:25-28; GlobalExceptionHandler.java:175-179/:158-165; the R6 {}-capture overriding the "(inferred)" pin) and implemented both bands end-to-end (NEW apps/api/src/shared/dates.ts toLocalDate applied at toExamSeriesView + courseExamTargetView normalized-before-arithmetic; the classifier's absent-required-field binding-failure flip; +5 tests/+21 expects EXACT vs a pristine-worktree-measured 1345/0/13skip/4558/70 base; typecheck x3; selftest OK).
+- WHILE THAT BRANCH WAS IN FLIGHT the board moved: R0 arbitration ruling2 (06:30:00Z, receipts/R0-arbitration/ruling2-t-mig-067-triple-claim.json) awarded the 067 id to r0's RICH-200-D fix (merged cdce05e) and mechanically refiled the umbrella as T-MIG-068; r0 claimed 068 under the operator's "claim one of them" (trace 1a10fe65d9d64f3d, 8516d25) BEFORE this lane's branch push; r0r6's implementation PR #110 (operator-fired, trace 1a10fd303bbe4f49) covered all six remaining bands.
+- FIRST-HAND CORROBORATION (independent, authored before this lane saw #110): the same two root causes were diagnosed — (1) the pg DATE(1082)→JS Date posture (with the same normalize-BEFORE-day-arithmetic requirement in courseExamTargetView), (2) absent required creator properties = Jackson binding failure → malformed_body with explicit-null retained on the @NotNull constraint path. This lane's line-level read of #110's merged diff confirms the classifier hunk `return received !== "null"` and the R4 rationale match the capture law exactly, and that #110 additionally caught the THIRD DATE site this lane missed (learner/state.ts examSeriesByIds — String(Date) toString posture, worse than the ISO form).
+- YIELD (the T-MIG-043 precedent): T-MIG-068 belonged to r0 by board-visible earliest claim with operator routing; PR #111 (this lane's duplicate implementation of R-067-B/C) is CLOSED UNMERGED as the yielded duplicate — the branch t-mig-067/r1 @ 05e7455 and the PR thread (claim receipt run-001-r1-claim.json, full citations, exact gates) are preserved as the independent-implementation record. Zero main-code action by this lane this round; this entry is .syllabai-only per the c4318ea bookkeeping precedent.
+
+Stage Summary:
+- 067/068 both DONE of record (#107 cdce05e; #110 merged 3e4e22c with all six bands including R-067-B/C). This lane's claim → arbitration → yield cycle is closed with zero collision (no double-merge attempted, no card edit fought, no force-push). Standing offer recorded on #110: the explicit-null questionId → validation_failed pin (absent/null distinction) is available from branch t-mig-067/r1 if the desk wants it on main. LANE IDLE.
+
+---
+
 Task ID: T-MIG-070 (claim)
 Agent: r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
 Task: Operator directive trace 1a10fe9d928e60dd "Check current state. Claim and continue" — claim the unclaimed #104 blocker band (the two frozen tutor laws the superseded adversarial review filed, comment 6010396027).

@@ -203,11 +203,30 @@ describe("POST /api/v1/attempts — AttemptController.submit (:31-35)", () => {
     expect(body.message).toBe("request body is not readable (check field types and enum values)");
   });
 
-  test("{} JSON body → 400 validation_failed 'questionId: must not be null' (frozen handler :158-165 — inferred)", async () => {
+  test("{} JSON body → 400 malformed_body, R4 capture law (w3-attempt-missing-fields-400 via run #9/#11)", async () => {
+    // The replay harness serves the "empty body" capture as a `{}` JSON
+    // object; runs #9/#11 pin the frozen core's answer for exactly that
+    // body: malformed_body — a missing required creator property is a
+    // BINDING failure (record deserialization), never a @NotNull
+    // constraint. Re-pinned from the former validation_failed inference.
     const res = await makeApp(asStudent).request("/api/v1/attempts", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: "{}", // binds with nulls, @NotNull fails — validation, not binding
+      body: "{}",
+    });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.status).toBe(400);
+    expect(body.error).toBe("malformed_body");
+    expect(body.message).toBe("request body is not readable (check field types and enum values)");
+    expect(typeof body.timestamp).toBe("string");
+  });
+
+  test("null questionId still binds → validation_failed 'questionId: must not be null' (@NotNull constraint)", async () => {
+    const res = await makeApp(asStudent).request("/api/v1/attempts", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ questionId: null, chosenOptionId: null, responseTimeMs: null }),
     });
     expect(res.status).toBe(400);
     const body = await res.json();
@@ -305,6 +324,18 @@ describe("POST /api/v1/attempts/structured — submitStructured (:37-41)", () =>
       method: "POST",
       headers: { "content-type": "application/json" },
       body: "",
+    });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("malformed_body");
+    expect(body.message).toBe("request body is not readable (check field types and enum values)");
+  });
+
+  test("{} JSON body → 400 malformed_body, R4 capture law (w3-attempt-structured-missing-fields-400 via run #9/#11)", async () => {
+    const res = await makeApp(asStudent).request("/api/v1/attempts/structured", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: "{}",
     });
     expect(res.status).toBe(400);
     const body = await res.json();
