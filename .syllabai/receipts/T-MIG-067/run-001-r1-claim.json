@@ -1,0 +1,33 @@
+{
+  "task": "T-MIG-067",
+  "lane": "r1-contracts",
+  "action": "claim",
+  "bands": ["R-067-B (DATE wire-format ×2)", "R-067-C (attempt error-taxonomy ×2)"],
+  "claimed_at": "2026-10-06",
+  "operator_trace": "1a10fdd4aa36683d",
+  "branch": "t-mig-067/r1",
+  "fork_point": "eb67910",
+  "earliest_claim_wins_census": {
+    "card_state_at_claim": "OPEN, owner unassigned",
+    "r0": "R-067-A (w3-questions families/topics 500 ×2) — claim f8e78f4, PR #107 OPEN — respected, untouched",
+    "w0a": "CLA band (off-card, c30581b, id-ratification requested) — respected, untouched",
+    "remaining_after_this_claim": "teacher-curriculum-versions-teacher-200 + w4-target-series-put-201 (500-class, left open for the port lane)"
+  },
+  "frozen_citations": {
+    "R-067-B": {
+      "core_law": "CourseExamTargetView.java:25-28 — LocalDate record components pass through as ISO_LOCAL_DATE bare dates (Spring Boot Jackson2ObjectMapperBuilder disables WRITE_DATES_AS_TIMESTAMPS); served by LearnerExamSeriesController :59-117",
+      "golden_pins": ["w4-exam-series-qualification-filter-200", "w4-exam-series-seeded-calendar-200"],
+      "v2_defect": "packages/db/src/client.ts:88 — postgres.js with no types override parses DATE(1082) to a JS Date on the live instrument; JSON.stringify renders the timestamp form; posture-dependent (fakeSql pins are plain strings)"
+    },
+    "R-067-C": {
+      "core_law": "GlobalExceptionHandler.java:175-179 (HttpMessageNotReadableException → malformed_body) + :158-165 (MethodArgumentNotValidException → validation_failed); SubmitAnswerRequest.java:16-25 / StructuredSubmitRequest.java:22-31",
+      "empirical_law": "R6 frozen-core boot capture 2026-10-05T06:47Z: EMPTY {} body = binding failure → malformed_body (overrides the v2's self-labelled \"(inferred)\" pin at routes.test.ts:206)",
+      "golden_pins": ["w3-attempt-missing-fields-400", "w3-attempt-structured-missing-fields-400"]
+    }
+  },
+  "fence_amendments": [
+    "services/learner-me/index.ts (toExamSeriesView) + services/learner-model/exam-target-reader.ts (courseExamTargetView) — the DATE divergence sites, outside the literal globs; date-serialization-only touch, disclosed per the r0 #107 precedent",
+    "packages/db/** NOT touched (R2's lane)"
+  ],
+  "next": "implementation commit + gates (delta arithmetic exact) + PR; claim-in-first-commit per AGENT_COORDINATION §2"
+}

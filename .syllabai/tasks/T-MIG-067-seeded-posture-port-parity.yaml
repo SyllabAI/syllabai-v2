@@ -2,8 +2,9 @@ version: 1
 task:
   id: T-MIG-067
   title: "Seeded-posture port parity — the 500-class (×4) on V63/staged data + DATE wire-format (×2) + attempt error-taxonomy envelope (×2)"
-  owner: "unassigned"
-  status: OPEN
+  owner: "r1-contracts (bands R-067-B DATE ×2 + R-067-C attempt error-taxonomy ×2; R-067-A held by r0 @ PR #107 claim f8e78f4; the 500-class remainder — teacher-curriculum-versions-teacher-200 + w4-target-series-put-201 — left open for the port lane)"
+  status: CLAIMED
+  claimed_at: "2026-10-06 (round-15, IM trace 1a10fdd4aa36683d)"
   priority: P1
   wave: 6
   deps: [T-MIG-063]
@@ -15,6 +16,41 @@ task:
     seed on the live instrument and surfaced these. FROZEN CITATIONS OWED AT CLAIM TIME, per case:
     the service/repository law each 500 diverges from. The 500s are §7 anti-pattern territory —
     a 500 where the frozen core returns 2xx.)
+  r1-contracts claim (R-067-B + R-067-C, 2026-10-06, trace 1a10fdd4aa36683d) —
+    FROZEN CITATIONS per the filing law:
+    · R-067-B (DATE ×2): the core passes LocalDate through as bare dates —
+      CourseExamTargetView.java:25-28 (record components `LocalDate
+      windowStart/windowEnd/entryDeadline/resultsDate`), served by
+      LearnerExamSeriesController (:59-117); Spring Boot's
+      Jackson2ObjectMapperBuilder disables WRITE_DATES_AS_TIMESTAMPS by
+      default → ISO_LOCAL_DATE wire form "2026-10-08". Golden pins:
+      w4-exam-series-qualification-filter-200 + w4-exam-series-seeded-calendar-200.
+      v2 defect: packages/db/src/client.ts:88 instantiates postgres.js with no
+      types override → DATE(1082) parses to a JS Date on the live instrument;
+      JSON.stringify renders the timestamp form — posture-dependent (fakeSql
+      pins carry plain strings, so tests stayed green). Fix is date-
+      serialization-only (the card's shared/** parenthetical): a toLocalDate
+      helper (string identity / Date→UTC date part / null→null) applied at the
+      two view boundaries — services/learner-me/index.ts toExamSeriesView and
+      services/learner-model/exam-target-reader.ts courseExamTargetView.
+      DISCLOSED FENCE AMENDMENT (r0 #107 precedent): those two service files
+      are the divergence sites and sit outside the literal globs; zero other
+      behavior change (string rows byte-identical). packages/db/** untouched
+      (R2's lane — the port consumes, never re-types, the driver).
+    · R-067-C (taxonomy ×2): GlobalExceptionHandler.java:175-179 —
+      HttpMessageNotReadableException → 400 malformed_body "request body is
+      not readable (check field types and enum values)"; :158-165 →
+      validation_failed for bound-but-invalid documents. The EMPIRICAL LAW is
+      the R6 frozen-core capture (golden w3-attempt-missing-fields-400 +
+      w3-attempt-structured-missing-fields-400, boot 2026-10-05T06:47Z): an
+      EMPTY {} body (absent required creator properties) is a BINDING failure
+      → malformed_body, overriding the v2's self-labelled "(inferred)" test
+      pin (routes.test.ts:206). Explicit-null stays bind→@NotNull →
+      validation_failed (SubmitAnswerRequest.java:16-25 /
+      StructuredSubmitRequest.java:22-31 constraints); present-value
+      constraint pins (responseTimeMs @Min, confidence @Max, partAnswers
+      @NotEmpty) unchanged. Fix: routes/assessment/index.ts classifier treats
+      absent (undefined) required fields as binding failures.
 base:
   repo: "syllabai-v2 @ d6911f6 (run #11 head) at filing; frozen refs: syllabai-core @ 6cad6ef"
 basis: >

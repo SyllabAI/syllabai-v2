@@ -3674,3 +3674,19 @@ Work Log:
 
 Stage Summary:
 - Board fully drained at d902e9f: 0 open PRs, all gates green, both desk merges independently re-verified EXACT. r1 lane state: 066 DONE of record (#106); 058/064 cards reconciled DONE; no claimable bands remain in the r1 contracts/register scope (RICH-200-C is the case-owner lane's, RICH-200-D the w3-questions port lane's — not this lane's fence). LANE IDLE.
+
+---
+
+Task ID: 25
+Agent: r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: (operator directive trace 1a10fdd4aa36683d) "claim 067" — claim the unclaimed bands of T-MIG-067 (Seeded-posture port parity) under earliest-claim-wins.
+
+Work Log:
+- FETCH-BEFORE-ACTION SYNC: main 855bef9 → eb67910 (ff-only). R0 verified absorbed across the gap: #99–#106 all merged of record (R0-DESK-SWEEP-19 receipt + r1c Task-24 on main); 058/060/062/063/064/065/066 DONE; intake history clean per the union asserts.
+- 067 CENSUS (earliest-claim-wins): card OPEN/unassigned with 8 divergences. r0 holds R-067-A (w3-questions families/topics 500 ×2; claim f8e78f4, PR #107 OPEN) — respected, untouched. w0a's branch claims the Wave-6 CLA band under the 067 id with an explicit id-ratification request (c30581b) — off this card's scope.allowed, respected, untouched. UNCLAIMED at claim time: teacher-curriculum-versions-teacher-200, w4-target-series-put-201 (both 500-class), DATE wire-format ×2, attempt error-taxonomy ×2.
+- CLAIMED (this lane): R-067-B (DATE ×2 — the card's stated shared/** date-serialization intent) + R-067-C (attempt error-taxonomy ×2 — the two-envelope binding-precedes-@Valid classifier law this lane ratified on #36). The two remaining 500-class ports are seed/port fixes in the port lane's active territory — left open for r0, zero-collision.
+- FROZEN CITATIONS (owed at claim time, filed in the card + receipts/T-MIG-067/run-001-r1-claim.json): R-067-B — CourseExamTargetView.java:25-28 (LocalDate record components, ISO_LOCAL_DATE passthrough; LearnerExamSeriesController :59-117); R-067-C — GlobalExceptionHandler.java:175-179/:158-165, SubmitAnswerRequest.java:16-25, StructuredSubmitRequest.java:22-31; the EMPIRICAL LAW is R6's frozen-core capture (w3-attempt-missing-fields-400 + w3-attempt-structured-missing-fields-400, boot 2026-10-05T06:47Z): an empty {} body is a BINDING failure → malformed_body, overriding the v2's self-labelled "(inferred)" pin at routes.test.ts:206.
+- DIVERGENCE MECHANISMS (diagnosed, to be fixed on this branch): (1) DATE — packages/db/src/client.ts:88 instantiates postgres.js with no types override, so DATE(1082) columns parse to JS Dates on the live instrument and JSON.stringify renders 2026-10-08T00:00:00.000Z; fakeSql pins carry plain strings, which is why tests stayed green (posture-dependent divergence). Fix: shared date-serialization helper (string identity / Date→UTC date part / null→null) applied at the two view boundaries (toExamSeriesView + courseExamTargetView) — DISCLOSED FENCE AMENDMENT per the r0 #107 precedent; packages/db/** untouched (R2's lane). (2) TAXONOMY — routes/assessment/index.ts classifyBodyError treats ABSENT required fields as bind-then-constraint (validation_failed); the capture proves absent = binding failure (malformed_body); explicit-null stays validation_failed; present-value constraint pins (@Min/@Max/@NotEmpty) unchanged.
+
+Stage Summary:
+- Claim commit: card (owner/status CLAIMED/claimed_at + citation block) + this entry + run-001-r1-claim.json in ONE commit per AGENT_COORDINATION §2, branch t-mig-067/r1 forked at eb67910. Implementation + gates (delta arithmetic exact) + PR next. r0's #107 and w0a's CLA branch: untouched.
