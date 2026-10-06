@@ -3778,37 +3778,6 @@ Stage Summary:
 - Baseline d902e9f RATIFIED; chain extended through cdce05e with identical gates, both first-hand. Next wave starts from the ratified chain tip 4d8cb7f (d902e9f -> cdce05e -> 4d8cb7f, all gates first-hand; any drift from 1386ran/1373/0/13skip/73f at claim time is a finding, not a footnote). LANE IDLE — desk returns to the operator's disposition; no self-filed wave work.
 
 ---
-
-Task ID: 26
-Agent: r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
-Task: (operator directive trace 1a10fdd4aa36683d) "claim 067" — CLOSURE ADDENDUM to Task 25: the claim raced the R0 arbitration and is YIELDED of record.
-
-Work Log:
-- Task 25's claim was executed against the fork base eb67910, where the seeded-posture umbrella card was OPEN/unassigned and the two 067-namespace branches (r0's R-067-A, w0a's CLA) were the only visible claims; this lane claimed the unclaimed bands (R-067-B DATE ×2 + R-067-C taxonomy ×2, claim commit 9fd1737 on branch t-mig-067/r1) with the filing law's frozen citations (CourseExamTargetView.java:25-28; GlobalExceptionHandler.java:175-179/:158-165; the R6 {}-capture overriding the "(inferred)" pin) and implemented both bands end-to-end (NEW apps/api/src/shared/dates.ts toLocalDate applied at toExamSeriesView + courseExamTargetView normalized-before-arithmetic; the classifier's absent-required-field binding-failure flip; +5 tests/+21 expects EXACT vs a pristine-worktree-measured 1345/0/13skip/4558/70 base; typecheck x3; selftest OK).
-- WHILE THAT BRANCH WAS IN FLIGHT the board moved: R0 arbitration ruling2 (06:30:00Z, receipts/R0-arbitration/ruling2-t-mig-067-triple-claim.json) awarded the 067 id to r0's RICH-200-D fix (merged cdce05e) and mechanically refiled the umbrella as T-MIG-068; r0 claimed 068 under the operator's "claim one of them" (trace 1a10fe65d9d64f3d, 8516d25) BEFORE this lane's branch push; r0r6's implementation PR #110 (operator-fired, trace 1a10fd303bbe4f49) covered all six remaining bands.
-- FIRST-HAND CORROBORATION (independent, authored before this lane saw #110): the same two root causes were diagnosed — (1) the pg DATE(1082)→JS Date posture (with the same normalize-BEFORE-day-arithmetic requirement in courseExamTargetView), (2) absent required creator properties = Jackson binding failure → malformed_body with explicit-null retained on the @NotNull constraint path. This lane's line-level read of #110's merged diff confirms the classifier hunk `return received !== "null"` and the R4 rationale match the capture law exactly, and that #110 additionally caught the THIRD DATE site this lane missed (learner/state.ts examSeriesByIds — String(Date) toString posture, worse than the ISO form).
-- YIELD (the T-MIG-043 precedent): T-MIG-068 belonged to r0 by board-visible earliest claim with operator routing; PR #111 (this lane's duplicate implementation of R-067-B/C) is CLOSED UNMERGED as the yielded duplicate — the branch t-mig-067/r1 @ 05e7455 and the PR thread (claim receipt run-001-r1-claim.json, full citations, exact gates) are preserved as the independent-implementation record. Zero main-code action by this lane this round; this entry is .syllabai-only per the c4318ea bookkeeping precedent.
-
-Stage Summary:
-- 067/068 both DONE of record (#107 cdce05e; #110 merged 3e4e22c with all six bands including R-067-B/C). This lane's claim → arbitration → yield cycle is closed with zero collision (no double-merge attempted, no card edit fought, no force-push). Standing offer recorded on #110: the explicit-null questionId → validation_failed pin (absent/null distinction) is available from branch t-mig-067/r1 if the desk wants it on main. LANE IDLE.
-
----
-Task ID: R4b-ROUND-19 (trace 1a10ff689b33d9f1)
-Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
-Task: Operator directive — "Check if R0 has merged or not. If not, review+merge yourself and continue working"
-
-Work Log:
-- R0 MERGE CHECK: YES — R0 merged #107 (067/RICH-200-D P1 closed, cdce05e), #108 (053-t2 analytics+concept-graph, d794dd5), #110 (068 seeded-posture parity, 3e4e22c); arbitration ruling2 + baseline ratification (cdce05e = 1332/4558 law) of record. Nothing to self-merge: #111 (r1) + #112 (r0) are fresh R0-lane work, R0 IS the desk.
-- #111 EVENT-DROP RETRIGGER APPLIED: check-runs==0 at head 05e74555 -> the close->reopen remedy of record (~06:5xZ); #112's CI was already green (hub+verify).
-- MERGED-TIP GATES at 3e4e22c (script persisted at my-project/scripts/gates-merged-tip.sh): install OK, typecheck x4 0, 1380 pass / 0 fail / 13 skip / 5580 expect, selftest OK. RECONCILIATION EXACT: cdce05e 1332/4558 -> #108 053-t2 +41/+1000 (R0's 5f2eebf chain receipt) -> #110 +7/+28 -> 1380/5580 = #110's own PR-body gates VERBATIM; expects inside the noted 5552-5558 run-variance. No drift finding. Footnote: 9ef8f6b's commit message says "Tests +8" where the PR body says +7 tests/+28 pins — net gates identical; count-slip in one of the two docs, non-gating.
-- CLAIM CENSUS: zero free filed bands — 069 reserved for w0a's CLA refile (ruling2), 070 in flight (r0 #112, CI green), RICH-200-C/E = case-owner lane, 053 t3/t4 = r3a, the R0-BASeline "T-MIG-033 tranche-2" carried-register line is STALE (033 card DONE, all three tranches landed). The nba.ts :42-46 header nit confirmed non-gating comment-only (stale pre-066-consolidation paragraph) — left for R0 bookkeeping or the next band touching the file. Unfiled remainder: OCR (326KB), LLM admin, routing — need R0 filings.
-
-Stage Summary:
-- Directive discharged: R0 active-of-record (3 merges + arbitration this hour); #111 unblocked; merged-tip gates independently corroborate #110's arithmetic EXACTLY; census filed. LANE IDLE — next claim requires R0 to file (OCR/LLM-admin/routing) or operator redirection.
-
----
-
-
 Task ID: T-MIG-070 (claim)
 Agent: r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
 Task: Operator directive trace 1a10fe9d928e60dd "Check current state. Claim and continue" — claim the unclaimed #104 blocker band (the two frozen tutor laws the superseded adversarial review filed, comment 6010396027).
@@ -3836,3 +3805,30 @@ Work Log:
 
 Stage Summary:
 - T-MIG-070 IN_REVIEW on t-mig-070/r0: both #104 blockers restored to the frozen bytes + pinned; the register's dangerous silent-200 class is closed on the wire. r0 | blocker band implemented, PR handed to the desk | IDLE after filing | suggestion: desk merge closes the superseded REQUEST_CHANGES for record; remaining open register = RICH-200-C/E (case-owner lanes) + the nba.ts header nit.
+
+Task ID: 26
+Agent: r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: (operator directive trace 1a10fdd4aa36683d) "claim 067" — CLOSURE ADDENDUM to Task 25: the claim raced the R0 arbitration and is YIELDED of record.
+
+Work Log:
+- Task 25's claim was executed against the fork base eb67910, where the seeded-posture umbrella card was OPEN/unassigned and the two 067-namespace branches (r0's R-067-A, w0a's CLA) were the only visible claims; this lane claimed the unclaimed bands (R-067-B DATE ×2 + R-067-C taxonomy ×2, claim commit 9fd1737 on branch t-mig-067/r1) with the filing law's frozen citations (CourseExamTargetView.java:25-28; GlobalExceptionHandler.java:175-179/:158-165; the R6 {}-capture overriding the "(inferred)" pin) and implemented both bands end-to-end (NEW apps/api/src/shared/dates.ts toLocalDate applied at toExamSeriesView + courseExamTargetView normalized-before-arithmetic; the classifier's absent-required-field binding-failure flip; +5 tests/+21 expects EXACT vs a pristine-worktree-measured 1345/0/13skip/4558/70 base; typecheck x3; selftest OK).
+- WHILE THAT BRANCH WAS IN FLIGHT the board moved: R0 arbitration ruling2 (06:30:00Z, receipts/R0-arbitration/ruling2-t-mig-067-triple-claim.json) awarded the 067 id to r0's RICH-200-D fix (merged cdce05e) and mechanically refiled the umbrella as T-MIG-068; r0 claimed 068 under the operator's "claim one of them" (trace 1a10fe65d9d64f3d, 8516d25) BEFORE this lane's branch push; r0r6's implementation PR #110 (operator-fired, trace 1a10fd303bbe4f49) covered all six remaining bands.
+- FIRST-HAND CORROBORATION (independent, authored before this lane saw #110): the same two root causes were diagnosed — (1) the pg DATE(1082)→JS Date posture (with the same normalize-BEFORE-day-arithmetic requirement in courseExamTargetView), (2) absent required creator properties = Jackson binding failure → malformed_body with explicit-null retained on the @NotNull constraint path. This lane's line-level read of #110's merged diff confirms the classifier hunk `return received !== "null"` and the R4 rationale match the capture law exactly, and that #110 additionally caught the THIRD DATE site this lane missed (learner/state.ts examSeriesByIds — String(Date) toString posture, worse than the ISO form).
+- YIELD (the T-MIG-043 precedent): T-MIG-068 belonged to r0 by board-visible earliest claim with operator routing; PR #111 (this lane's duplicate implementation of R-067-B/C) is CLOSED UNMERGED as the yielded duplicate — the branch t-mig-067/r1 @ 05e7455 and the PR thread (claim receipt run-001-r1-claim.json, full citations, exact gates) are preserved as the independent-implementation record. Zero main-code action by this lane this round; this entry is .syllabai-only per the c4318ea bookkeeping precedent.
+
+Stage Summary:
+- 067/068 both DONE of record (#107 cdce05e; #110 merged 3e4e22c with all six bands including R-067-B/C). This lane's claim → arbitration → yield cycle is closed with zero collision (no double-merge attempted, no card edit fought, no force-push). Standing offer recorded on #110: the explicit-null questionId → validation_failed pin (absent/null distinction) is available from branch t-mig-067/r1 if the desk wants it on main. LANE IDLE.
+
+---
+Task ID: R4b-ROUND-19 (trace 1a10ff689b33d9f1)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator directive — "Check if R0 has merged or not. If not, review+merge yourself and continue working"
+
+Work Log:
+- R0 MERGE CHECK: YES — R0 merged #107 (067/RICH-200-D P1 closed, cdce05e), #108 (053-t2 analytics+concept-graph, d794dd5), #110 (068 seeded-posture parity, 3e4e22c); arbitration ruling2 + baseline ratification (cdce05e = 1332/4558 law) of record. Nothing to self-merge: #111 (r1) + #112 (r0) are fresh R0-lane work, R0 IS the desk.
+- #111 EVENT-DROP RETRIGGER APPLIED: check-runs==0 at head 05e74555 -> the close->reopen remedy of record (~06:5xZ); #112's CI was already green (hub+verify).
+- MERGED-TIP GATES at 3e4e22c (script persisted at my-project/scripts/gates-merged-tip.sh): install OK, typecheck x4 0, 1380 pass / 0 fail / 13 skip / 5580 expect, selftest OK. RECONCILIATION EXACT: cdce05e 1332/4558 -> #108 053-t2 +41/+1000 (R0's 5f2eebf chain receipt) -> #110 +7/+28 -> 1380/5580 = #110's own PR-body gates VERBATIM; expects inside the noted 5552-5558 run-variance. No drift finding. Footnote: 9ef8f6b's commit message says "Tests +8" where the PR body says +7 tests/+28 pins — net gates identical; count-slip in one of the two docs, non-gating.
+- CLAIM CENSUS: zero free filed bands — 069 reserved for w0a's CLA refile (ruling2), 070 in flight (r0 #112, CI green), RICH-200-C/E = case-owner lane, 053 t3/t4 = r3a, the R0-BASeline "T-MIG-033 tranche-2" carried-register line is STALE (033 card DONE, all three tranches landed). The nba.ts :42-46 header nit confirmed non-gating comment-only (stale pre-066-consolidation paragraph) — left for R0 bookkeeping or the next band touching the file. Unfiled remainder: OCR (326KB), LLM admin, routing — need R0 filings.
+
+Stage Summary:
+- Directive discharged: R0 active-of-record (3 merges + arbitration this hour); #111 unblocked; merged-tip gates independently corroborate #110's arithmetic EXACTLY; census filed. LANE IDLE — next claim requires R0 to file (OCR/LLM-admin/routing) or operator redirection.
