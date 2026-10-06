@@ -3838,3 +3838,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-069 t1b LANDED on t-mig-067/w0a (branch name cosmetic per ruling2). Next: t2 (ClaService orchestration :1-906 + routes/cla.ts + the kind/mode dispatch with the fixed 400 for the deferred kinds + the event posture + the OUT-OF-FENCE mount, separate commit) -> PR with the id-ratification request. Zero golden/Neon/force.
+
+---
+Task ID: T-MIG-069 (tranche-2)
+Agent: lane w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: T-MIG-069 tranche-2 — the ClaService orchestration port + the ask route + the OUT-OF-FENCE mount + PR. The band completes on-branch.
+
+Work Log:
+- TRANCHE-2 implemented: services/cla/service.ts (NEW) — the frozen ClaService.java :1-906 line-against-line: the per-kind dispatch 400s verbatim + the closed-enum default (the deferred kinds' serving law), the registry-decides enablement + the §7.4 gate BEFORE retrieval, the deterministic single-anchor KnowledgeContext, the hybrid pool (anchor + spec-structure evidence capped 4 + the vector arm) -> fuseWithPlanWeights -> rerank -> cap -> attribution -> evidenceEligible, the question-context FIXED lead evidence (stem / whole-question parts with PART_PROMPT_BOUND 1200 / learner-work part-scoped / VALIDATED scheme points part-appropriate), the modePlan law verbatim (EXPLAIN decode-only on questions, HINT scaffolding, CHECK unlocked), the honest briefs, the REFUSAL law (the frozen text-block string, model null, provider deterministic-refusal, NO generator call) and the dormant seam (generation-reaching -> TutorGenerationError -> 503). routes/cla.ts (NEW): POST /api/v1/learners/me/cla/ask + the two-envelope law + the verbatim exception mappings + the composition root wiring the REAL module (the sql-backed learner-model reads with the MED-2/ADR-032 relaxation; activeStruggleInferences honestly empty — no landed read, disclosed).
+- CONTRACT AMENDMENTS (disclosed): claAnswerViewSchema.model -> nullable (the frozen refusal serializes model: null; t1a's non-nullable shape was a staging gap); the ContextView flattening honoured (curriculumVersion/Board/Qualification as three flat strings).
+- 24 pins (apps/api/test/cla/cla-service.test.ts): the dispatch 400s, the gate ordering (wasGenerated()=false), the pipeline + spec-structure attribution, the §4.4 audit trace, the refusal law + the wire shape, the dormant seam, the §7.3 unlock + part-scoped discipline, and the route laws over the injected-auth 060 pattern (401/malformed/validation/enum/verbatim-400/200-contract/409/503).
+- OUT-OF-FENCE mount (apps/api/index.ts) as its own commit: /api/v1/learners/me/cla + the ratification-request comment block (the 010/020/031/043/052/061/060 precedent).
+- Gates at the head: typecheck x4 exit 0; bun test 1454/0/13skip/5804 across 77 files = the t1b base (1430/76f/5745) +24/+1/+59 EXACT; golden --selftest OK.
+- Card -> IN_REVIEW + the t2 execution_record entry + run-005-tranche2.json + this entry.
+
+Stage Summary:
+- T-MIG-069 COMPLETE on t-mig-067/w0a: t1a (39 pins) + t1b (18 pins) + t2 (24 pins) = 81 pins, gates green end-to-end. PR next with the full symmetric disclosure (id provenance 067->069, the contract amendment, the deferral, the dormant seam, the mount ratification request). Authors never self-merge — the desk/review acts first, the operator's standing order is the disclosed fallback. Zero golden/Neon/force.

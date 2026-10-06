@@ -87,7 +87,7 @@ export interface ClaContextResolver {
   ): Promise<ClaResourceContext>;
   resolveSpecificationPoint(
     rootId: string,
-    specCode: string,
+    specCode: string | null,
     learnerId: string,
   ): Promise<ClaResourceContext>;
   resolvePastPaperQuestion(
@@ -467,7 +467,7 @@ export function buildClaContextResolver(
      * validation-state oracle.
      */
     async resolveSpecificationPoint(rootId, specCode, learnerId) {
-      if (specCode === null || specCode.trim().length === 0) {
+      if (specCode === null || specCode === undefined || specCode.trim().length === 0) {
         throw new BadRequestException("SPECIFICATION_POINT context requires specCode");
       }
       const subject = await subjectByKnowledgeNodeId(rootId);

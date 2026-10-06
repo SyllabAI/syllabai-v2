@@ -3,7 +3,7 @@ task:
   id: T-MIG-069
   title: "Wave-6 CLA (contextual assistant) — POST /api/v1/learners/me/cla/ask: the ClaService deterministic orchestration (context resolution, tool registry, leakage policy, grounded-evidence citation plumbing) over the ALREADY-PORTED tutor chain + the dormant generator seam (tutor posture)"
   owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — operator directive trace 1a10fbe9465708c9 'Check if R0 has merged or not. If not, review+merge yourself and continue working': the merge half executed of record (T-MIG-060 #104 merged 6580b2c) and 'continue working' executes the standing claim directive trace 1a10d2c88b6f13c5 — claims the CLA band, the next unfiled Wave-6 surface (docs/MIGRATION_PLAN.md §5 Wave 6 lists 'CLA' explicitly; 060=tutor+sessions, 061=intervention, 062=research calibration are filed; CLA is not). Id ratification requested at PR review (030/032/039/040-PREP/041/043/060 precedent)"
-  status: IN_PROGRESS # REFILED T-MIG-067 -> T-MIG-069 per R0-arbitration ruling2 (c78ed9a); tranche-1a LANDED (39 pins); tranche-1b LANDED (the context resolver, the four dependency-served kinds, 18 pins); t2 = service + route + mount + PR
+  status: IN_REVIEW # REFILED T-MIG-067 -> T-MIG-069 per R0-arbitration ruling2 (c78ed9a); t1a LANDED (39 pins); t1b LANDED (the context resolver, 18 pins); t2 LANDED (ClaService orchestration + routes/cla.ts + the OUT-OF-FENCE mount — id ratification + independent review requested at PR)
   priority: P1
   wave: 6
   deps: [T-MIG-060, T-MIG-041, T-MIG-053] # the tutor chain services + ServableQuestions (060, this lane); LearnerModelService misconceptions (041); the knowledge graph service (053 family) — all on main at claim time
@@ -127,6 +127,62 @@ task:
     shared param-aware fakeSql. Gates at the head: typecheck x4 exit 0;
     bun test 1430/0/13skip/5745 across 76 files = the intake base
     (1412/75f/5681 @ 314da7f) +18/+1/+64 EXACT; golden --selftest OK.
+    (t2 entry 2026-10-06T08:1xZ, operator trace 1a10fea97de5d819)
+    TRANCHE-2 LANDED — the orchestration + the route + the mount:
+    services/cla/service.ts (NEW — frozen ClaService.java :1-906
+    line-against-line): contextualAsk with the frozen dispatch
+    (:234-281 — the per-kind required-reference 400s verbatim + the
+    closed-enum default branch for the deferred kinds), the
+    registry-decides enablement + the §7.4 gate BEFORE retrieval
+    (:283-285), the traced tool reads, the deterministic single-anchor
+    KnowledgeContext (:281-303), the hybrid pool (the anchor + the
+    spec-structure evidence :631-655 + the T-C32 vector arm) →
+    fuseWithPlanWeights → rerank → cap → attribution → the
+    evidenceEligible filter (:337-343), the question-context FIXED lead
+    evidence (:339-377 — the stem item :699-714, the whole-question parts
+    item :716-753 with PART_PROMPT_BOUND 1200, the learner-work item
+    :677-697 with the part-scoped discipline, the VALIDATED scheme-point
+    item :786-838 with the part-appropriate subset), the modePlan law
+    (:459-536 verbatim — the question EXPLAIN decode-only branch, HINT's
+    scaffolding discipline, CHECK's unlocked feedback), the honest learner
+    brief (:538-565 + the knowledge brief :584-608), the REFUSAL law
+    (:84-89 — the frozen text-block string with its embedded newlines,
+    model null, provider deterministic-refusal, NO generator call, never
+    503) and the dormant seam (generation-reaching → TutorGenerationError
+    → the route's honest 503 tutor_unavailable); citations via the landed
+    resolveCitations; the interaction event via the injected sink (the 061
+    no-op posture, ADR-031 intact). routes/cla.ts (NEW — ClaController
+    :36-101): POST /api/v1/learners/me/cla/ask, the authz shell first, the
+    two-envelope law (malformed_body vs validation_failed with the jakarta
+    texts), the exception mappings verbatim (404 not_found e.message / 400
+    bad_request e.message for the dispatch laws / 409 attempt_required
+    with the FIXED CLA_CHECK_ATTEMPT_REQUIRED_MESSAGE / 400 malformed
+    request for ArgumentError / 503 tutor_unavailable with the FIXED
+    body). The composition root (buildClaRouters) wires the REAL module:
+    the resolver, the tool registry over the sql-backed learner-model
+    reads (skillStatesByRecency + the staleness-relaxed
+    misconceptionStatesByProbability — the MED-2/ADR-032 composition the
+    learner-me state view runs), the T-C32 vector arm, the grounded
+    generator over the DORMANT provider, the no-op telemetry sink;
+    activeStruggleInferences has NO landed v2 read — the port returns the
+    honest empty list, disclosed (the tutor module runs with NO learner
+    model at all). CONTRACT AMENDMENT (disclosed): claAnswerViewSchema
+    model is NULLABLE of record — the refusal constructs
+    GeneratedAnswer(REFUSAL, null, "deterministic-refusal") (:417) and
+    the frozen wire serializes "model": null. The ContextView flattening
+    of record: the CurriculumVersionInfo rides as three flat strings
+    (curriculumVersion/curriculumBoard/curriculumQualification — the
+    frozen ContextView :31-58 shape). 24 pins (the dispatch 400s, the
+    gate ordering with wasGenerated()=false, the pipeline + the
+    spec-structure attribution, the §4.4 audit trace, the refusal law +
+    the wire shape, the dormant seam, the question-context lead evidence
+    incl. the §7.3 unlock + the part-scoped discipline, the route laws
+    over the injected-auth pattern: 401/malformed/validation/enum/
+    verbatim-400/200-contract/409/503). Gates at the head: typecheck x4
+    exit 0; bun test 1454/0/13skip/5804 across 77 files = the t1b base
+    (1430/76f/5745) +24/+1/+59 EXACT; golden --selftest OK. The OUT-OF-
+    FENCE index.ts mount ships as its own commit (R0 ratification
+    requested, the 010/020/031/043/052/061/060 precedent).
   base:
     repo: "syllabai-v2 @ 2a0b18d at claim time (the 060 bookkeeping head); frozen refs: syllabai-core @ 6cad6ef"
   basis: >

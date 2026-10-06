@@ -12,3 +12,4 @@ export * from "./context";
 export * from "./context-resolver";
 export * from "./leakage-policy";
 export * from "./tool-registry";
+export * from "./service";

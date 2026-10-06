@@ -132,7 +132,11 @@ export const claToolTraceSchema = z
   .strict();
 export type ClaToolTrace = z.infer<typeof claToolTraceSchema>;
 
-/** ClaAnswerView :22-41 — the step-1 answer view. */
+/** ClaAnswerView :22-41 — the step-1 answer view. model is NULLABLE of
+ *  record (t2 amendment, disclosed): the deterministic refusal constructs
+ *  GeneratedAnswer(REFUSAL, null, "deterministic-refusal") (ClaService
+ *  :417 @ 6cad6ef) and the view passes generated.model() through — the
+ *  frozen wire serializes "model": null on every refusal. */
 export const claAnswerViewSchema = z
   .object({
     answer: z.string(),
@@ -140,7 +144,7 @@ export const claAnswerViewSchema = z
     context: claContextViewSchema,
     topics: z.array(claTopicAnchorSchema),
     evidenceCount: z.number().int(),
-    model: z.string(),
+    model: z.string().nullable(),
     provider: z.string(),
     refused: z.boolean(),
     latencyMs: z.number(),
