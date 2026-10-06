@@ -2416,3 +2416,15 @@ Work Log:
 
 Stage Summary:
 - The blocking-class marking-pipeline defect is FIXED with live SQL evidence; the 42703 class retires from the next replay census. Register items unchanged for R0/R6 (H-2 third posture, identity pins, 429 pacing, realdata drift). Actions green again. LANE continues: post-merge verification + next claim.
+
+---
+Task ID: 17 (r9-hubx, trace 1a10ec4d22b0e54d)
+Agent: Super Z (operator-directed independent lane r9-hubx, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Operator directive — "claim the next unscoped task": claim + execute the next MIGRATION_PLAN-reserved band
+
+Work Log:
+- Register drained before the scan: 050 = r0's smartmark paper-scope fix (merged #79, 56a8baa); 051 = r0's N-4 rich-200 golden capture (claim d29b8fc @ 2026-10-06T01:16:59Z — the register item reserved for the golden-capture lane); 054 = r1c's SME package contracts salvage of r4b #78 (merged #80); 043-t2 (NBA engine + routes) belongs to w0a's IN_REVIEW card — all four NOT claimable.
+- Zero-collision scan @ origin/main 6c58c15: zero t-mig-052/053 heads (the single grep hit was a SHA-substring artifact), zero 052/053 mentions in .syllabai/ or docs/, queue = #79 (merged mid-scan) + #81 (r3a round-12 receipt confirming the Task-16 rulings by outcome — worklog-only). Wave-5 §2.1 Classroom/teacher = the next reserved-unclaimed band; ID T-MIG-052 claimed (053 held back as the next free slot).
+- Frozen core re-verified @ 6cad6ef (fresh anonymous clone of SyllabAI/syllabai-core): TeacherClassController :57-292 (8 endpoints: create/list/detail/status/enroll/remove/publish/announcements with the 409 clash + archived gates, the enable+role enroll law, idempotent re-enroll, "(removed account)" honesty rows, batched counts), LearnerClassroomController :46-177 (3 endpoints: the independent-student rule, archived-dropout overlay, 4-query batching, membership-gated idempotent markRead), TeacherRosterController :23-43 (GET /teacher/learners — the 049-disclosed LearnerRosterView residual; UserRepository :25-28 distinct+enabled+STUDENT order displayName,email). V51__classroom_foundation.sql read line-against-line (partial unique index, UNIQUE pair, append-only reads, assignments.class_id targeting already ported by 043-t1).
+- Branch t-mig-052/r9-hubx cut; card T-MIG-052-classes-rosters.yaml + run-001-claim.json + this entry in the SAME commit (claim-before-work law). Tranche-1 = contracts + services + fakeSql pins, NO routes/mounts/hub-flip; tranche-2 = routes + mounts (out-of-fence flagged at t2). Id ratification requested at review.
+- LANE CONTINUES IN-SESSION to implementation (run-002).
