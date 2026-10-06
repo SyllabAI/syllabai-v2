@@ -2566,3 +2566,22 @@ Stage Summary:
 - Directive resolved with evidence: R0 (and R0-AUTO cron + parallel delegated lanes) merged the entire queue including this lane's #75/#81 — no self-merge anywhere this round.
 - T-MIG-053 claimed with the fleet's biggest remaining ratified band; claim-first discipline held (scan -> branch -> card+receipt+worklog commit pushed before implementation starts).
 - Next for this lane: tranche-1 contracts-first implementation (packages/contracts/src/knowledge.ts + services/knowledge + fakeSql pins), gates, tranche PR.
+
+
+---
+
+Task ID: R3a-ROUND-14 (operator directive trace 1a10f2f795e00b55: "tranche-1 services + fakeSql pins")
+Agent: superz-agent-b (R3a lane, Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Continue T-MIG-053 tranche-1 — services/knowledge + fakeSql pins.
+
+Work Log:
+- Resync: main fe97f94 -> 66c6618 (#86 F2 nullable widening + intake unions); PR #84 claim APPROVED by the r1-contracts lane (review of record comment 6008438106, trace 1a10eb10b04682cd — zero-collision scan independently re-verified). Open PRs #89 (r9-hubx 052-t2) / #88 (R0/R6 divergence triage) — both disjoint from 053; no collision.
+- CONTRACTS commit 5ab1577: packages/contracts/src/knowledge.ts (NodeView recursive via z.lazy + PrerequisiteView over KnowledgeController :17-46; the F-072 class-KG heatmap views; coverage row/event views + MarkRequest exact) + 15 schema pins + index export line. COLLISION DISCOVERY honored by reuse: contracts/learner.ts already owns the F-034 learner-KG view + NodeType (curriculum.ts) — knowledge.ts imports single-owned shapes (classServed* aliases), typecheck TS2308 caught the first draft. meanBand law pinned NEVER-null 4-state from ClassKnowledgeGraphService :504/:528 (default UNMEASURED, bandOf only when measured).
+- SERVICES commit 94ba98c: services/knowledge/index.ts — coverage law set (Status.parse trim+lowercase incl. not_taught; normalizeNote; §17 ownership 404/403; gate ORDER 409→400→404→400 V39; idempotent identical re-mark = zero writes; one audit event per change, previous_status null on first; firstMarked=created_at never mutates; recorded-rows-only list, vanished node → null identity per the V30 NO-ACTION FK law) + knowledge reads (node 404-first "knowledge node <id> not found"; tree = frozen subtree CTE + PART_OF children-by-target sorted by source code + dangling skip + the V15 fold; closure CTE deepest-first-then-id; misconception direction source=misconception). 25 fakeSql pins.
+- BUG THE PINS CAUGHT: Java Set.add() returns boolean (the dedupe law `if (attached.add(id))`); JS Set.add returns the set — naive port would double-attach misconceptions. Fixed to has/add split and pinned.
+- DISCLOSED: the 30s TTL tree/structure caches are Java-internal perf devices, wire-invisible, not ported; the misconceptions edge query has NO ORDER BY upstream — pass-through order pinned.
+- GATES at 94ba98c: typecheck x4 exit 0; bun test 1001 ran / 988 pass / 0 fail / 13 skip / 2766 expect (EXACT = contracts head 963 + 25 knowledge); golden --selftest OK.
+- REMAINING for tranche-1 close: the F-072 class-KG heatmap trio (ClassKnowledgeGraphController :37-113 — graph / node-students / learner-KG; integrates the 041/043 effective-mastery machinery) = the tranche-1 closing commit; then the tranche PR comment for independent review.
+
+Stage Summary:
+- Tranche-1 is 7/10 endpoints deep with gates EXACT at every commit; card + receipts (run-001-claim, run-002-tranche1-services) current on the branch. LANE CONTINUES on the class-KG trio.
