@@ -2581,3 +2581,18 @@ Work Log:
 
 Stage Summary:
 - The instrument's first census movement: 105 → 108 with the blocking class retired and zero regression. The daily 02:30 UTC schedule owns the census from here. Unfiled next port-fix candidate: selfmark validation-order. LANE IDLE after this filing.
+
+---
+
+Task ID: T-MIG-053 (claim commit)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Operator directive "claim the selfmark validation-order fix" (trace 1a10f2554257a059, 2026-10-06).
+
+Work Log:
+- Verified the on-record candidate: T-MIG-050 run-002 union receipt "next" register names "selfmark validation-order (400-vs-500)" as the next unfiled port-fix candidate — receipt text, never a card (T-MIG-048/050 ruling-of-record precedent).
+- Verified T-MIG-053 free: no card in .syllabai/tasks/, no receipts/ dir (gap between 052 and 054). Claimed under §2.1 earliest-claim-wins; card T-MIG-053-selfmark-validation-order-port-fix.yaml (status CLAIMED, owner set) IS this commit (claim-in-first-commit, §2).
+- Frozen derivation done pre-implementation (syllabai-core @ 6cad6ef, read-only): golden w3-selfmark-unknown-attempt-500 POSTs {} → Jackson binds parts=null (no constraint on the list) → @Valid passes (constraints are element-scoped) → controller dedup loop NPEs (LearnerSelfMarkController.java:42-43) → catch-all (:224-230) → 500 internal_error. Service never reached; its empty-marks gate (:74-76) is [] -only and already faithful. With VALID parts the frozen unknown-attempt is 404 (NotFoundException mapped) — already pinned and unchanged.
+- Fix R-053-A scoped: routes/selfmark/index.ts only (nullish parsed parts → throw past the handler to the app error boundary → exact frozen envelope); contracts comment-only resolution note; routes.test.ts new pins. Service, schema behavior, golden corpus, fixtures: untouched.
+
+Stage Summary:
+- T-MIG-053 CLAIMED at 2026-10-06T03:09:23Z on branch t-mig-053/r0 off origin/main 414f4a6. Implementation next in this lane.
