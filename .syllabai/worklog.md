@@ -2494,6 +2494,25 @@ Stage Summary:
 - The 043 dual-PR ruling is audited and stands; the collision register entry is CLOSED with evidence. Two carry-forward items registered for R0: the 038 .nullable() widening (two-lane corroborated, precise scope: learner.ts :241-242 + learner.test.ts null fixture) and the optional r1 salvage hygiene card. Queue: zero open PRs at audit end. LANE IDLE.
 
 ---
+Task ID: T-MIG-043 (run-003 claim + run-004 tranche-2 execution)
+Agent: w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Operator directive trace 1a10eae6bc2044c1 — "Proceed with Tranche-2 (NBA engine + routes + w4 golden replay)."
+
+Work Log:
+- SYNC on a wiped (sixth-class) sandbox: no PAT survived (the credential law held — nothing persisted), no clone; re-derived the board from origin/main d077ffa + the round-11 branch. LANE RECOVERY: R3a-ROUND-11's receipt honored w0a's earliest T-MIG-043 claim (db87a9a @ 2026-10-05T18:01:06Z, operator trace 1a10d2c88b6f13c5) with hands-off; tranche-1 was IN_REVIEW on t-mig-043/w0a (head 849ba28) with its tranche-2 scope filed as "awaits the operator/R0 word". The directive IS that word: it routes the 043 owner lane to complete the band. Frozen core re-cloned fresh; HEAD re-verified 6cad6ef9463e8d21f1555456561a4caaf7e89395 (the pinned ref).
+- CLAIM (run-003, commit e0726ac): fence expanded per the 033 same-lane precedent — routes/learnerme.ts (NEW), services/learner-me/nba.ts + nba-concept-graph.ts + concept-graph/*.yaml, test/learner-me/**, index.ts mount (OUT-OF-FENCE separate commit, R0 ratification per the 010/020/021/030/032/034 precedent). Collision scan re-run at claim: #69/#72 (the 041-t2 double-PR R3a receipted) overlap ONLY index.ts mounts — this lane's intake will rebase over whichever lands. Zero 043 counter-claims anywhere.
+- T-C11 SNAPSHOT (byte-verbatim): concept_edges.yaml / concepts.yaml / practicals.yaml copied from the frozen core's packaged resources; sha256 re-verified at copy AND at load (8a651dd9… / 24fa91ac… / e53e5f87… — the loader pins). The loader port (nba-concept-graph.ts): Bun.YAML + Bun.CryptoHasher, HUMAN_VALIDATED-only, known-relation/known-endpoint/no-duplicate fail-closed with the verbatim frozen error texts. VALIDATED COUNT 272 == the frozen loader's logged count (REQUIRES_PREREQUISITE 206 / REMEDIATED_BY 25). Boot fails loudly on any drift — the frozen snapshot contract, transplanted.
+- NBA ENGINE (commit 1d0128b): NextBestActionService :79-554 line-against-line — T1 due retrieval (overdue-first, humanized reason), T2 prerequisite remediation (both-measured-weak), T2b validated prerequisite chain (the graph only NOMINATES: unmeasured prerequisites reported honestly as unmeasured; measured strength overrides), T3 problem questions (cap 2, ratio <= 0.5, servable gate), T4 misconceptions (BDT 0.5 active threshold on the staleness-RELAXED value), T4b corrective remediation, T5 SIGNED fluency gaps (>= 0.2), T6 weak mastery (bandOf), T7a tutor engagement (14d, ask-count DESC, signal-mix evidence note — the v1.3 detail), T7 uncovered topics (DFS, cap 2); one action per topic, maxActions 8, rank renumber, per-request servable-count cache. Composition law held: ServableQuestions (the ONE serving-rule owner) is COMPOSED, never mirrored — the frozen javadoc forbids the mirror. Decay/BDT math ported per-module (the tranche-1 ExamTargetReader posture; consolidation ruling requested alongside it). The engine is now the module factory's DEFAULT nextBestActions provider — the honest 501 stays as the no-provider safety net, never a fake 200.
+- REAL PORT BUG caught by the pins before any review (R-043-A): JS Set.add returns the SET (truthy) — the frozen `if (!topicsWithActions.add(id)) continue;` dedupe ported literally NEVER deduped, so a topic claimed by T5 could take a second action in T6. Fixed with claimTopic() (explicit has-then-add); pinned.
+- ROUTES (commit 9bede34): routes/learnerme.ts — the 11 frozen surfaces under /api/v1/learners/me with the Boot exception law verbatim: 404 not_found carrying the frozen messages verbatim, 403 forbidden, 409 conflict, 400 bad_request "malformed request" on uuid mismatches, 400 validation_failed "missing required parameter: rootId" (the session-56 finding), the two-envelope R-1 law with the learner-me nuance (a @Pattern regex failure is a CONSTRAINT → validation_failed with the custom or jakarta default message 'must match "…"'; a malformed uuid field is a BINDING failure → malformed_body), 201-on-write / 204-on-clear. The index.ts mount shipped as its own OUT-OF-FENCE commit with the full disclosure comment.
+- TESTS (commit 4bf0638): 33 engine pins + 24 route pins over the shared nba-helpers fixture kit (8-node subject graph with two folded misconceptions, one out-of-subtree node, the T-C11 fixture-graph injection). The captured w4 400 bodies reproduced EXACTLY at the route layer (w4-flashcard-rating-bad-cardid-400 / -dotted-anchor-400 / -bad-rating-400), the recommendations missing-param law, the slug law, 204-always, and the honest-501 mapping.
+- GATES: typecheck x4 exit 0; bun test 884 ran / 871 pass / 0 fail / 13 skip / 2688 expect = pre-tranche-2 baseline (827/814/0/13/2316) + 57 tests / 372 expects EXACT; golden --selftest OK; w4-readiness READY (57 cases, 0 findings — the 040-PREP instrument re-run on this head); ZERO golden files touched; zero Neon contact.
+- W4 GOLDEN REPLAY (the third directive clause) — REPLAY-READY, dispatch blocked, disclosed in run-004: CI Actions dark repo-wide since Oct-5 18:25:34Z (the standing register item) and this sandbox has neither the Neon DNS path nor a NEON_PAT. The 57-case ownership map filed: 29 are this band's (every route mounted; the captured bodies pinned verbatim), 6 already green (identity/attempt/fallback), 22 belong to 041-t2 (unmerged #69/#72) and Wave-6. The dispatch-at-head delta is projected and the classification receipt will follow when the instrument runs. NO golden file was touched to make any of this pass.
+
+Stage Summary:
+- Tranche-2 LANDED on t-mig-043/w0a (claim e0726ac → engine 1d0128b → routes+mount 9bede34 → tests 4bf0638 → receipt): the Wave-4 learner-me band is CODE-COMPLETE — services, engine, routes, mounts, pins — and IN_REVIEW. The band's 29 w4 cases are replay-ready; the NBA engine's T1..T7 ranks the same evidence the frozen core ranks, under the same policy string, fail-closed graph layer included. Register for R0: (1) the index.ts mount needs ratification (the 010-line precedent); (2) the consolidation ruling — ExamTargetReader + the decay/BDT math now exist in BOTH 041 and 043 copies; (3) the 041-t2 double-PR arbitration (#69 vs #72) still gates the /state//course-stats/KG replay cases; (4) CI darkness blocks the replay dispatch — merges in this window rest on local-gates evidence, disclosed per the r0s practice. LANE w0a: STOP after the PR update; awaiting the operator's next word. Authors never self-merge.
+
+---
 Task ID: R0-AUTO (cron job 438940, sweep 2026-10-06 02:00 UTC)
 Agent: R0-auto merge desk (Super Z scheduled integrator)
 Task: Periodic merge-desk sweep — review + merge open PRs per the standing R0-auto procedure (max 2 merges/run, oldest first).
@@ -2547,6 +2566,8 @@ Stage Summary:
 - Queue at sweep end: 0 open PRs. No escalations. LANE DONE for this cycle.
 
 ---
+---
+
  HEAD
 Task ID: r1-f2 (R1-contracts lane, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
 Agent: Super Z (R1-contracts lane)
@@ -2613,6 +2634,21 @@ Stage Summary:
 - The instrument's first census movement: 105 → 108 with the blocking class retired and zero regression. The daily 02:30 UTC schedule owns the census from here. Unfiled next port-fix candidate: selfmark validation-order. LANE IDLE after this filing.
 
 ---
+Task ID: 2
+Agent: w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Operator directive trace 1a10eae6bc2044c1 (continuation) + the fresh-PAT push window — land the tranche-2 branch (push + PR + CI + R0 intake).
+
+Work Log:
+- Sandbox re-wiped between windows (credential law held — nothing persisted). Operator supplied a fresh PAT in-session with the standing "make sure you dont lose the PAT" word; the PAT was configured session-scoped and to a 0600 file OUTSIDE every repo/artifact path — never written to any receipt, worklog, commit, PR body, or log. gh CLI absent in the sandbox; raw git + the GitHub API used instead.
+- State re-derived read-only: remote t-mig-043/w0a still at 369d563 (the lost window's push), local clone held the full tranche-2 chain (e0726ac → db74d57, 37 commits ahead / 0 behind — a clean fast-forward). Board census: R0-AUTO alive and merging on its 30-min cadence (#82 merged 39fa554, receipt ee37657; #83 merged 7dfdd16, receipt fe97f94); open PRs = 0; the 052 claim (3c8a044) independently re-affirms "043-t2 w0a's" — zero counter-claims; #76 remains closed-unmerged per the Task-16/R7a rulings.
+- INTAKE: origin/main fe97f94 merged into the branch (22deff2) — zero 043/NBA/learner-me file overlap verified pre-merge; the worklog conflict resolved as a strict append-only union in chronological order (w0a run-003/004 @ 01:51:53Z → R0-AUTO 02:00 sweep → Task 17 (051) → R0-AUTO 02:30 sweep); zero entries dropped.
+- GATES at 22deff2 ALL GREEN: typecheck x4 exit 0; bun test 1018 ran / 1005 pass / 0 fail / 13 skip / 3061 expect across 58 files — EXACT arithmetic (branch 957/944/0/13skip/2895 + main delta +61 tests/+166 expects = 052 t1 +56/+158 + 051 +5/+8); golden --selftest OK; w4-readiness READY (57 cases, 0 findings).
+- PUSH: 369d563..22deff2 fast-forward (zero force). PR #85 opened with the full symmetric disclosure (mount OUT-OF-FENCE ratification request, consolidation ruling request, replay-after-merge plan, 041-t2 resolution note). CI on the PR head: verify + hub both completed/success @ 22deff2.
+- Receipt run-005-push-pr.json filed; this worklog entry + the receipt ride the bookkeeping push to the branch.
+
+Stage Summary:
+- Tranche-2 is PUSHED and PR'd (#85): CI green, and every R0-AUTO guard-chain precondition is satisfied at 22deff2 (base == main tip fe97f94 → mergeable-clean, 0 reviews/comments, syllabai-v2-only file boundary, CI success at the real head). LANE w0a: monitoring the desk; the operator's standing authorization (trace 1a10d0c303d3852d "review+merge yourself") remains the disclosed fallback ONLY if the desk does not act. Zero golden files touched; zero Neon contact; zero force-push. STOP.
+
 Task ID: 18a (routing-vs-claim ruling — 052-t2)
 Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, operator trace 1a10f23d18b18705)
 Task: Operator routing (this round) "052-t2 routes+mounts" — pre-claim collision census found the incumbent claim already of record.
