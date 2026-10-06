@@ -1,0 +1,37 @@
+{
+  "task_id": "T-MIG-078",
+  "kind": "implementation",
+  "run": "run-002",
+  "timestamp": "2026-10-06T12:1xZ",
+  "agent": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)",
+  "authority": "operator trace 1a110ec1863f3305 'next free band. Check, claim and continue' — claim run-000 @ 2eca546; the T-MIG-071 run-002 post-merge review F-1/F-2 filing (6273c77)",
+  "scope_executed": {
+    "F-1_option(i)": "apply-reset.ts: post-wipe V63 seed restoration — golden/cases/files/t51-seed.sql (the frozen Flyway V2/V6/V7/V63 seed dump, provenance in its header) applied via one sql.unsafe call after the topological wipe + roles re-seed; the H-2 wipe itself UNCHANGED; the header carries the ratification block. The CI seed pass now replays against the V63-SEDED-UNSTAGED posture the empty-tranche captures pin. The T-MIG-051 accounts staging's existing presence probe (seed-t51-rich200.ts: 'skip when already seeded') makes its own seed apply a disclosed no-op — zero coordination drift.",
+    "F-1_constraint_verified": "the 7 non-topics empty-tranche cases pin learner-scoped state only (attempts/skill_states/flashcard tallies/markings) and the seed dump is DATA-ONLY (curriculum skeleton, questions/versions/options/topics, misconceptions, exam_series — zero users/attempts/state rows): the card's '7 empty-state cases stay green' constraint holds BY CONSTRUCTION (verified against the dump's table census: 8 insert targets, none learner-scoped).",
+    "F-2_isolation": "ci-replay.ts: the capture-declared learner identity — construction-only case marker learner:\"w4-capture\" (comparator never sees it; the tranche precedent); lazy LOGIN-ONLY mint of learner_40@example.invalid (the account the corpus's OWN w4-register-learner-201 seq-1 case registers with the committed password capture-w4-runner — the capture user.id EQUALS the w4 captures' learnerId da30cee5); the declaration reroutes ONLY the default student resolution (the substitute posture); fail-fast honest harness error when the corpus's register case has not run; the harness NEVER registers a second identity.",
+    "F-2_markers": "seven construction-only case markers, every edit disclosed: w4-flashcard-rating-know-201, w4-flashcard-rating-know-2-201, w4-flashcard-rating-still-learning-201, w4-attempt-mcq-practice-201, w4-course-stats-practiced-200, w4-state-practiced-200, w3-history-after-submit-200. The rating trio + practice build the w4 learner's capture-faithful trail (3 ratings + 1 MCQ practice of SEED-WCH11-001 option A confidence 4 25s) exactly as the capture sessions did.",
+    "selftest_plan": "ci-replay selftest += 3 assertion groups (the declaring set is exactly the seven named cases; seed-posture-only + no unauthed/403 names; every declaring case substitutes {{TOKEN}}); --plan += the learner-declared census line (deterministic, CI-checkable)."
+  },
+  "gates_first_hand": {
+    "bun_install": "bun install --frozen-lockfile OK (930 pkgs)",
+    "golden_runner_selftest": "OK (golden/runner.ts byte-UNTOUCHED — the gated engine and comparator carry zero drift)",
+    "ci_replay_selftest": "OK (incl. the new T-MIG-078 groups)",
+    "plan_census": "9 empty / 153 staged (unchanged), empty-tranche admin 0, learner-declared 7 (the exact named set)",
+    "typecheck": "bun run typecheck exit 0",
+    "bun_test": "1546 ran / 1533 pass / 0 fail / 13 skip / 6036 expect / 82 files = the 6d03790 baseline +0 EXACT (no apps/packages changes)",
+    "live_replay": "NOT executable from this sandbox (DNS-blocked — the standing posture); the CI neon-replay run on this PR is the live evidence path (pull_request trigger)"
+  },
+  "predicted_verdicts": {
+    "method": "deepEqualTolerant simulations (scripts/verdict-sim-078.ts): capture vs a synthetic live body shaped exactly as the post-fix instrument produces it — the comparator of record, zero network",
+    "w4-course-stats-practiced-200": "PASS predicted — the w4 learner's tallies (attempts 1, distinctQuestions 1, flashcardsRated 3) match the capture; no volatile fields in the body; learnerId tolerated",
+    "w3-history-after-submit-200": "RED predicted with attemptedAt as the SOLE remaining divergence (control: with the capture attemptedAt the body PASSES) — total 1 via the w4 learner's single practice, every other field capture-faithful. ROOT: the v2 history renderer derives attemptedAt from created_at (services/assessment/history.ts:255, ISO-ms) while the capture pins the frozen core's replay-time microsecond Instant — a wire-precision divergence the ruling3 R3-D4 'clears fully' expectation did not anticipate. FILED for the ruler: the note-H/instantText-class one-field amendment '+ attemptedAt' (NOT executed here — a tolerate amendment is neither a construction-only marker nor a ruled re-pin, outside this band's fence).",
+    "w3-questions-topics-student-200": "GREEN expected structurally — the V63 seed restores the exact tree the capture pinned (the dump IS the capture boot's seed; the census arithmetic verified: T1.1 = 0001+0002 primary + 0003+0005 secondary = 4)."
+  },
+  "disclosed_residues_filed": {
+    "w4-state-practiced-200": "stays RED on exactly two legs (skillStates, misconceptionStates): the v2 evidence pipeline is DORMANT BY RATIFIED DESIGN — routes/assessment/index.ts:294-305 (E-2, 'This publisher claims true while emitting NOTHING... disclosed since tranche-1; the Observer contract is not golden-gated') — so skill_states/misconception_states are NEVER written on the golden surface and the capture's BKT-written legs are unreachable in ANY harness posture. The w4-learner routing puts the case in its capture IDENTITY posture (flashcardRatings faithful) so it clears the moment an evidence-consumer band lands or the ruler disposes. FILED: port-gap band or ruled re-pin, case-owner R0/R6.",
+    "w3-history-empty-student-200": "the run-002 review's unfiled 20th red: pinned capture learnerId (aa645313) with tolerate ['timestamp'] — the run-7 note H capture-minted-identity class, missed by the R3-D4 amendment round. PROPOSED one-liner for the desk/ruler: '+ = learnerId' (NOT executed — outside this band's fence). All other legs of the case are green in the empty tranche (total 0).",
+    "register_untouched": "F-3/F-4/F-5/F-6 (T-MIG-077's) and F-9 (T-MIG-079's) scopes verified disjoint and untouched; the curriculum re-pin cases keep their 401 answers under the seed (auth precedes uuid resolution — SecurityConfig law, the re-pin's own citation)."
+  },
+  "fence": "golden/tools/apply-reset.ts + golden/tools/ci-replay.ts + 7 case markers (construction-only) + this receipt + the card + the worklog. apps/**, packages/**, golden/runner.ts, golden/cases/files/** UNTOUCHED. Zero comparator widening, zero case deletions, zero pacing, no production Neon/Render writes.",
+  "next": "PR to the desk (authors-never-self-merge); the CI neon-replay run on the PR carries the live verdicts; the two disclosed amendments (attemptedAt, history-empty learnerId) and the evidence-consumer band await the ruler."
+}
