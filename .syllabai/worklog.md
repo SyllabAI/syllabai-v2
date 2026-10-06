@@ -3204,3 +3204,30 @@ Work Log:
 
 Stage Summary:
 - Round-16 net: 2 merges of record (#94 1aea8bc, #96 07df48a) + 1 corroborated desk merge (#95 af33b6f), the 043 register CLOSED to rulings (all four items dispositioned; the consolidation band filed as T-MIG-066), the last unfiled housekeeping item implemented behind PR #103 (T-MIG-065). Open after this commit: PRs #99/#100/#101 (active review flows, untouched per the hands-off law) + #103. CI event-drop pattern registered with the retrigger remedy. R0-integrator | round-16 executed per the operator's two-item directive | IDLE after push | suggestion: desk merges #103 after the (already-green-content) guard chain; T-MIG-066 is claim-ready for a quiet-board moment; the next sweep re-baselines main at 2d5a73d+ (061-t2 routes now live).
+Task ID: T-MIG-063 (claim — run-001 disposition)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, operator trace 1a10f806acdec285)
+Task: Operator directive "processing of the Rich-200 series" — disposition the rich-200 family's first live-instrument run and restore harness capability parity.
+
+Work Log:
+- Sandbox recovered from the 7th full wipe: syllabai-v2 re-cloned (main ddbe9fe, round-15 sweep tip), credential law restored from the /tmp remnant (GITHUB_PAT + NEON_PAT, HTTP 200 both, 0600 outside repo, credential-store wired).
+- Evidence: pulled artifact neon-replay-37408914789-1 (run on 9bebf7e, union 120/177, seed 107/162, prod 13/15). The 7 rich-200 fails decomposed: w3-sme- trio = 403 Forbidden on /api/v1/admin/** (harness default-student bearer); w3-teacher-marking- quartet = 200-vs-200 empty-vs-rich (T51 lifecycle never staged on the COW branch).
+- ROOT CAUSE (class RICH-200-A, HARNESS GAP): T-MIG-051 extended only golden/runner.ts; golden/tools/ci-replay.ts has zero bodyFile/multipart support, no /admin route rule, no rich-state staging. Port NOT implicated: T-MIG-051 run-003 proved the family 17/17 vs the live port on a fresh scratch db. Disposition filed: .syllabai/receipts/T-MIG-063/run-001-disposition.json (E-class/B-class precedent alignment; cross-effect disclosure: staging applies t51-seed.sql → B-class seed-posture reads may clear early, named at the next union, third-posture task remains the mechanism home).
+- ID PROVENANCE: 059 TAKEN (r0/r1, PRs #96/#97 F-0/F-1 binding-law), 060 reserved (w0a branch), 061 DONE (af33b6f), 062 TAKEN in-flight (t-mig-062/r4b remote head, no PR) — filed forward-only as T-MIG-063 (zero repo refs, zero remote heads, zero PRs at claim time; the T-MIG-055 free-id-check lesson applied: PRs + remote branches included).
+- Claim per §2: card + run-001 receipt + this entry in the SAME commit that starts t-mig-063/r0, pushed BEFORE any fix work. Fix (run-002): ci-replay.ts multipart import (buildMultipartBody from ../runner.ts — engine untouched), /admin route rule after the name rules, seed-t51-rich200.ts spawn staging at two loop boundaries, --selftest, workflow DATABASE_URL env for Pass A. Zero case files, zero runner.ts edits.
+
+Stage Summary:
+- T-MIG-063 CLAIMED at ddbe9fe; branch t-mig-063/r0; disposition of record filed for the rich-200 series (class RICH-200-A HARNESS GAP, port parity standing 17/17 local). Re-proof owed post-merge via neon-replay dispatch + run-003 union receipt.
+---
+Task ID: T-MIG-063 (run-002 implementation)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, operator trace 1a10f806acdec285)
+Task: ci-replay rich-200 parity — implement, gate, file PR.
+
+Work Log:
+- ci-replay.ts: routeRuleBearer gains the admin param + /api/v1/admin/ path rule placed AFTER the name rules; NEW -teacher-403 name rule (role-faithful; the corpus's only such case w3-sme-status-teacher-403 keeps its 403 verdict, now with the TEACHER bearer per T-MIG-051 run-003's role model); bodyFile/multipart wired via buildMultipartBody IMPORTED from ../runner.ts (content-type dropped, fetch sets the boundary — the runner's convention); richStagePlan sentinel-governed two-boundary plan (accounts @ first w3-sme- = seq 10; attempts @ first w3-teacher-marking- = seq 13; W4 seq'd cases interleaved at 10-12 unaffected); runRichStage spawns the committed seed-t51-rich200.ts VERBATIM and parses its declared ADMIN_TOKEN stdout; fail-fast everywhere (missing DATABASE_URL, staging failure, admin bearer without staging, bodyFile without descriptor).
+- --selftest: 16 deterministic assertions (precedence both ways, boundary laws incl. sentinel governance, multipart wiring) — OK; --plan now discloses the staging boundaries; workflow harness-sanity step runs it beside the runner selftest.
+- neon-replay.yml: Pass A replay step gains DATABASE_URL=${{ env.NEON_SEED_URL }}; T-MIG-047 evidence-producer comment preserved; prod pass unchanged (REALDATA filter never selects the family); read-only proof step unchanged.
+- GATES EXACT: bun run typecheck x4 exit 0; bun test apps/api packages 1144/0/13skip/3485 over 63 files = main ddbe9fe baseline byte-identical (zero test files touched); golden/runner.ts --selftest OK; ci-replay --selftest OK; change surface = ci-replay.ts + neon-replay.yml only (zero golden/cases/**, zero runner.ts, zero apps/packages).
+- Card → IN_REVIEW; receipt run-002-implementation.json; PR filed with disclosure; NOT self-merged.
+
+Stage Summary:
+- T-MIG-063 run-002 IN_REVIEW on t-mig-063/r0. Expected at the next union: family 7/7 (port parity standing 17/17 local); B-class seed-posture reads may clear early via t51-seed.sql (named case-by-case at run-003; third-posture task remains the mechanism home). Re-proof = neon-replay dispatch post-merge.
