@@ -1,0 +1,24 @@
+{
+  "task_id": "T-MIG-072",
+  "kind": "claim",
+  "run": "run-001-claim",
+  "timestamp": "2026-10-06T08:20:00Z",
+  "agent": "r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "authority": "operator trace 1a11029549c1db65 'Check if R0 has merged or not. If not, review+merge yourself and continue working' — merge duty discharged first (#115 reviewed/merged, comments 6011926429 + 6011979519, merge d25626e), then earliest-claim-wins over the OPEN desk-filed bands",
+  "claimed_band": "T-MIG-072 — the RICH-200-C/E composition ruling executed (R0 arbitration ruling3 R3-D2, option (a) seq-position tranches; run-9 triage §3-R5; routed_to T-MIG-072)",
+  "baseline_of_record": "main d25626e (PR #115 merged; first-hand gates 1525 ran / 1512 pass / 0 fail / 13 skip / 5958 expects / 80 files, typecheck x3, selftest OK)",
+  "branch": "t-mig-072/r1",
+  "deps_check": "T-MIG-063 DONE of record (staging instrument + COW discipline exists)",
+  "zero_collision": "no t-mig-072* heads on origin; worklog 072 mentions = R0-integrator filing + R0-AUTO queue note only",
+  "scope": [
+    "golden/runner.ts — tranche field declaration (default staged = today's behavior) + exported stable partition helper + selftest growth; the F-class rider (run-7 action 3): deepEqualTolerant object-key canonicalization per RFC 8259, selftest-grown, unordered[]/tolerate[] semantics untouched — authorized by the R3-D2 standing note 'same file, one pass allowed'",
+    "golden/tools/ci-replay.ts — the composition: empty-pinned tranche replayed BEFORE the staging state-builders, staged-pinned after (boundaries computed over the staged tranche), same disposable branch; --plan census extended (deterministic tranche membership, CI-checkable)",
+    "golden/cases/** — construction-only 'tranche': 'empty' markers on EXACTLY the 9 §3-R5-enumerated cases (marking-answers/queue-v2/throughput-teacher-200 + w4-course-stats/flashcard-schedule/flashcard-trail/state-empty-200 + w3-history-empty-student-200 + the separately-ruled w3-questions-topics-student-200); zero expectation/tolerate edits; w3-history-after-submit-200 stays staged (H-class -> T-MIG-071)"
+  ],
+  "disclosures": [
+    "count-label artifact: the ruling/card say '(7)' while §3-R5 enumerates 8 empty-state names (+1 census case ruled separately) — the enumeration controls",
+    "live leg: agent sandbox is DNS-blocked — the two-tranche live replay against a disposable COW branch is the standing CI instrument's leg on merge; offline gates = selftest growth + --plan census + A/B bun-test +0 delta",
+    "the (b) re-pin and (c) tolerate[] options remain REJECTED of record; zero case deletions"
+  ],
+  "next": "run-002 implementation + gates + PR (authors never self-merge)"
+}
