@@ -3613,3 +3613,22 @@ Stage Summary:
 - All 57 run-9 divergences dispositioned with named owners; 177/177 reachable with zero case deletions and zero comparator widenings
 - Critical prevent-harm call: the run-7 D action would have widened v2 auth beyond the frozen law — cancelled on evidence, documented
 - Standing: E-class bearer override still masks 2 authz postures (P1 tooling); C 429 parity ruling owed (auth lane + R0); prod createdAt passthrough (P3)
+Task ID: R0-AUTO cron 438940 @ 2026-10-06 05:30Z (13:30 +08) — round-18 desk sweep
+Agent: R0-auto (Super Z, zai-web session discord DM 482bf272, operator trace 1a10fa420069f2e1)
+Task: Periodic merge-desk sweep (max 2 merges, oldest first) per the standing cron payload.
+
+Work Log:
+- LOCK+PAT self-check OK; mirror fast-forwarded 349-commit-stale baseline -> live (wipe-class drift handled silently, no credential loss this round).
+- CENSUS at sweep open: 3 open PRs (#102 062 research calibration, #103 065 hub hygiene, #104 060 KaRAG w0a) + #96 already merged of record by another lane. Queue evolved twice mid-run (066 opened; #102/#103 landed concurrently).
+- #102 VERDICT (not merged by this desk): CI green first-hand verified at head 1ee92e9 (verify+hub success, state clean, 0 reviews, 31 files fence-clean); CONCURRENT desk lane (R4-api-b, R4b-ROUND-17) merged it of record at ea8f951 during this run's guard window. My redundant intake d3d51c6 (same base d6911f6, same union law) was never pushed — discarded in favor of the of-record eeef7e4; zero harm, zero duplicate refs.
+- #103 VERDICT (not merged by this desk): head 7c75d28 had check-runs==0 (the round-16 event-drop class, second sighting this round) + dirty; skipped per rule (b); the R4-api-b lane's close->reopen retrigger then landed it of record at 32626cb. Remedy now PROVEN twice (see their bfdcc9b receipt).
+- #104 MERGED BY THIS DESK: guards all green (CI verify+hub success at head e903978; 0 blocking reviews; the one comment = CI-catch disclosure + R4-api-b independent review receipt verdict "ready for the desk once intaked"; 31 files, zero .java/core/hub violations; author r9-hubx lane, no recusal). INTAKE executed: merge origin/main ea8f951 -> t-mig-060/w0a, single worklog-tail add/add conflict resolved via the append-only chronological union resolver (main verbatim in place, 060 entries re-appended; byte-check 69/69 non-empty lines preserved; zero markers) at ec71613; pushed no-force. The 060 reviewer lane then merged newer main (32626cb+bfdcc9b) on top -> 5fe4bc1 (my ec71613 an ancestor of record). CI green at 5fe4bc1, state clean -> sha-pinned PUT merge. MERGE SHA 6580b2c4.
+- MAIN CI at 6580b2c: verify completed/success + hub completed/success. LOCAL GATES re-run at the tip: bun install --frozen-lockfile OK; typecheck x4 exit 0; 1332 pass / 0 fail / 13 skip / 4558 expect over 70 files; golden --selftest OK.
+- ARITHMETIC EXACT: live-measured main @ ea8f951 = 1226/0/13skip/4239/67f (throwaway worktree); + tutor band +106 tests/+319 expects/+3 files (the 060 PR's declared research... tutor tranche delta) + #103 hub bunfig hygiene +0/+0/+0 = 1332/4558/70f OBSERVED at 6580b2c. Zero drift, zero entry loss, zero pre-existing tests touched.
+- R0 RATIFICATIONS of record with the #104 merge: (a) the single disclosed OUT-OF-FENCE index.ts mount (010/020/021/031/032/041/052/061/062 precedent chain); (b) Wave-6 id 060 within MIGRATION_PLAN :155 band 060..066.
+- HOUSEKEEPING ADVICE: T-MIG-060 card flip IN_REVIEW->DONE is earned by merge 6580b2c (owner lane or bookkeeping lane to execute, .syllabai-only); 043/057/058/061 flip lag already noted by earlier receipts.
+- QUEUE at sweep close: #106 (T-MIG-066, 043 consolidation / ExamTargetReader duality closure, R0-filed claim band) is the oldest actionable next round if CI green; zero collisions; register items F-0/F-1 closed via #96 of record.
+
+Stage Summary:
+- Round-18: this desk merged #104 (6580b2c, the KaRAG deterministic core — Wave-6's largest band) with full intake+gates+arithmetic discipline; #102/#103 landed concurrently via the R4-api-b lane with proven retrigger remedy; main tip 6580b2c CI green, gates EXACT. Next: #106 per procedure.
+- POST-LANDING ADDENDUM (14:00+08, tooling-outage recovery): #106 merged of record d3f20f5 by the concurrent R0-MERGE-DESK-18 lane (68c21bf) during the outage — the "Next: #106" pointer above is superseded; queue state at this addendum's landing is the 14:00 sweep's own census.
