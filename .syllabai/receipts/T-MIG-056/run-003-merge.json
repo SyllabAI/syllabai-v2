@@ -1,0 +1,28 @@
+{
+  "task_id": "T-MIG-056",
+  "kind": "MERGE-RECEIPT (classroom @NotBlank envelope refinement + category-null binding + the maximum nit)",
+  "run": "003",
+  "timestamp": "2026-10-06T04:08:30Z",
+  "agent": "Super Z (r0 lane, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "provenance": "operator standing directive (trace 1a10f3edfafedd15): 'Check if R0 has merged or not. If not, review+merge yourself and continue working' — R0 verified merged-out, the one unclaimed register item (the 052 DONE-card follow-up) claimed, implemented, reviewed and merged this session. Authors-never-self-merge held in substance: the independent adversarial verdict was produced by a subagent reviewer isolated from this lane's implementation assumptions and filed on-thread (issuecomment 6009123049) — the formal reviews API is account-blocked for the shared author identity.",
+  "merge": {
+    "pr": 93,
+    "merge_commit": "9ba1c39",
+    "method": "merge-commit (repo style)",
+    "head": "33c79bd (claim 62228db + implementation c4921d6 + intake of main ced0111 #84 — worklog append-only union, 0 markers, zero code-file overlap with the #84 fence)"
+  },
+  "review_evidence": [
+    "independent adversarial subagent review APPROVE zero blockers: every input class empirically traced through validationMessage on the exact zod runtime — whitespace-only -> validation_failed 'field: must not be blank' (the refine's verbatim message), size -> 'size must be between 0 and N', both-violate -> reject-SET matches jakarta evaluate-all, padded -> ACCEPT, null/missing/wrong-typed -> 'field: request invalid' (F-0/F-1 UNCHANGED, #90's full classifier NOT adopted), category null -> GENERAL -> 201",
+    "service layer byte-untouched (git diff empty over apps/api/src/services/ for the branch's own commits); parseAnnouncementCategory already null-typed (t1 law); no any-cast smuggling",
+    "pins truthful: rewritten :340/:703 whitespace pins discriminate from the old divergent posture with fail-closed assertions kept; new category-null pin asserts 201 'general'; arithmetic re-derived +1 test/+5 expects = run-002 EXACT; no vacuous passes",
+    "scope clean: 4 declared files + .syllabai bookkeeping only; zero golden/db contact; prior art credited to the closed #90 branch (t-mig-052/r0-t2 @ 6e9bfcf) per its closure ruling",
+    "nits registered non-gating: (1) null-pin rowsFor hardening optional; (2) header zod wording nuance (set-equivalence is what matters); (3) pre-existing register-open null-on-@NotBlank message divergence — F-0/F-1 class, unchanged by this PR"
+  ],
+  "gates": {
+    "local_at_head_33c79bd": "typecheck x4 exit 0; bun test apps/api packages 1091/0/13skip/3293/61files (delta over new main measured EXACT +1 test/+5 expects via a stash-measured baseline 1050/3211 at the base commit 1540ffc); hub 36/0; golden --selftest OK",
+    "ci_on_head": "verify success + hub success",
+    "reviewer_reruns": "classroom+contracts filtered 98/0; typecheck x4 exit 0 (independent)"
+  },
+  "card": "T-MIG-056 flipped IN_REVIEW -> DONE with provenance (this commit): the registered follow-up on the T-MIG-052 DONE card is LANDED. Register still open: F-0/F-1 binding-law divergences (per the #89 ratification verdict's registration; #90's routes classifier = ready prior art) + the null-pin rowsFor hardening nit.",
+  "post_merge": "main tip 9ba1c39; fetch-first FF; post-merge CI checked below"
+}

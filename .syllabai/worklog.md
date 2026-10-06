@@ -2958,3 +2958,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-056 IN_REVIEW on branch t-mig-056/r0 (claim 62228db). Next: intake of the moving main (ced0111 landed #84 T-MIG-053 t1 mid-flight), gates re-run on the intake head, PR with disclosure, on-thread verdict, merge under the standing delegated authority, housekeeping. Register still open (out of this fence): F-0/F-1 binding-law divergences (#90's routes classifier = ready prior art).
+
+---
+Task ID: T-MIG-056 (merge + housekeeping)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Land T-MIG-056 (PR #93) under the standing delegated authority and complete the housekeeping.
+
+Work Log:
+- PR #93 opened with the full disclosure body (scope of record, prior-art credit, pins, measured-baseline gates, the register-still-open F-0/F-1 note); CI verify+hub green on the intake head 33c79bd.
+- Independent adversarial review (subagent, isolated from the implementation assumptions): APPROVE zero blockers — every input class empirically traced through validationMessage on the exact zod runtime; service layer verified byte-untouched; pins verified truthful (arithmetic re-derived +1/+5 = run-002 EXACT); zero golden/db contact; scope-creep scan clean. Verdict of record filed on-thread (issuecomment 6009123049) — authors-never-self-merge held in substance.
+- Nits registered non-gating: null-pin rowsFor hardening (optional); header zod-wording nuance (set-equivalence is the law that matters); the pre-existing null-on-@NotBlank message divergence (F-0/F-1 class, register-open, unchanged).
+- Merged 9ba1c39 (merge-commit); fetch-first FF; merge receipt run-003-merge.json; card -> DONE with provenance.
+- The T-MIG-052 registered follow-up is now CLOSED end-to-end (claim 62228db -> implementation c4921d6 -> intake 33c79bd -> merge 9ba1c39, all on the pushed axis — the T-MIG-052 lesson applied throughout).
+
+Stage Summary:
+- T-MIG-056 DONE. The classroom band now serves the frozen @NotBlank envelope law (whitespace-only -> validation_failed verbatim) and the frozen category-null binding (explicit null -> GENERAL -> 201). Register still open (documented on the card + receipt): F-0/F-1 binding-law divergences with #90's routes classifier as ready prior art; the rowsFor hardening nit. LANE returns to the operator's disposition.
