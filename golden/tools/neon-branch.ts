@@ -37,6 +37,16 @@
  * The live-probe recipe (create → ready → ops-settle → role → DELETE+404) is
  * proven E2E including a real apply-reset run to Flyway-SEED posture.
  *
+ * T-MIG-048 fail-path redaction (N-A closure, round-10 finding): error text
+ * from this tool lands in PUBLIC CI logs — the previous fail paths embedded
+ * up to 400 chars of raw control-plane body into Error messages (both
+ * create sites + role create), and the create() catch re-emitted whatever
+ * the message carried. R-048-A: bodies are reduced to their honest
+ * actionable parts (Neon JSON message field / byte size) and
+ * credential-shaped patterns are scrubbed before any emission; HTTP status
+ * codes stay verbatim; success paths, drop mode and the 404-verify law are
+ * unchanged; the workflow interface keys are unchanged.
+ *
  * Required env:
  *   NEON_API_KEY           — Neon API token (GitHub secret)
  *   NEON_PROJECT_ID        — Neon project id (GitHub variable)
@@ -106,13 +116,50 @@ const neonFetch = async (path: string, init?: RequestInit): Promise<Response> =>
       return res;
     } catch (e) {
       lastErr = e;
-      console.error(`[neon-branch] control plane ${base} unreachable (${(e as Error).message})`);
+      console.error(`[neon-branch] control plane ${base} unreachable (${scrub((e as Error).message)})`);
     }
   }
   throw lastErr instanceof Error ? lastErr : new Error(String(lastErr));
 };
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+// T-MIG-048 (R-048-A): fail-path redaction. Error text reaches PUBLIC
+// Actions logs (and any receipt quoting it), so raw control-plane bodies and
+// credential-shaped material are never embedded. scrub() strips
+// credential-shaped patterns; redactBody() keeps an HTTP body's honest,
+// actionable parts — Neon's JSON `message` field (itself scrubbed) or the
+// byte size — and never dumps raw text. Status codes stay OUTSIDE these
+// helpers and verbatim in the throw templates.
+const SECRET_PATTERNS: Array<[RegExp, string]> = [
+  [/postgres(ql)?:\/\/[^\s"']+/gi, "postgresql://<redacted>"],
+  [/\beyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\b/g, "<jwt-redacted>"],
+  [/\b(password|passwd|secret|token|api[-_]?key|authorization)\b["'=:\s]+\S+/gi, "$1=<redacted>"],
+  [/[\w.+-]+@[\w-]+\.[\w.-]+/g, "<email-redacted>"],
+];
+
+function scrub(s: string, cap = 400): string {
+  let out = s;
+  for (const [re, rep] of SECRET_PATTERNS) out = out.replace(re, rep);
+  return out.slice(0, cap);
+}
+
+function redactBody(body: string): string {
+  let summary: string;
+  try {
+    const j = JSON.parse(body) as { message?: unknown; error?: unknown };
+    const m =
+      typeof j.message === "string"
+        ? j.message
+        : typeof j.error === "string"
+          ? j.error
+          : null;
+    summary = m !== null ? `message="${scrub(m, 160)}"` : `<JSON body: ${body.length} bytes>`;
+  } catch {
+    summary = body.trim() === "" ? "<empty body>" : `<non-JSON body: ${body.length} bytes>`;
+  }
+  return scrub(summary);
+}
 
 interface BranchResp {
   branch?: { id?: string; name?: string; current_state?: string };
@@ -138,7 +185,8 @@ async function createOne(role: string, runSalt: string): Promise<{ id: string; u
     }),
   });
   if (res.status !== 201) {
-    throw new Error(`create ${name} failed: HTTP ${res.status}: ${(await res.text()).slice(0, 400)}`);
+    // T-MIG-048: body redacted before it can reach the public log (R-048-A).
+    throw new Error(`create ${name} failed: HTTP ${res.status}: ${redactBody(await res.text())}`);
   }
   const body = (await res.json()) as BranchResp;
   const id = body.branch?.id;
@@ -202,7 +250,8 @@ async function createOne(role: string, runSalt: string): Promise<{ id: string; u
       continue; // conflicting ops — retry within the settle window
     }
     if (rr.status !== 201 && rr.status !== 200) {
-      throw new Error(`role create on the ${role} branch failed: HTTP ${rr.status}: ${(await rr.text()).slice(0, 400)}`);
+      // T-MIG-048: body redacted before it can reach the public log (R-048-A).
+      throw new Error(`role create on the ${role} branch failed: HTTP ${rr.status}: ${redactBody(await rr.text())}`);
     }
     roleBody = (await rr.json()) as RoleResp;
     break;
@@ -241,7 +290,9 @@ async function create(): Promise<void> {
     const prod = await createOne("prod", salt);
     created.push({ ...prod, role: "prod" });
   } catch (e) {
-    console.error(`[neon-branch] create failed: ${(e instanceof Error ? e.message : String(e)).slice(0, 400)}`);
+    // T-MIG-048: the re-emission is scrubbed too — our own throws are already
+    // redacted, but an unexpected failure class must not leak either.
+    console.error(`[neon-branch] create failed: ${scrub(e instanceof Error ? e.message : String(e))}`);
     await cleanupOnFailure();
     process.exit(1);
   }
