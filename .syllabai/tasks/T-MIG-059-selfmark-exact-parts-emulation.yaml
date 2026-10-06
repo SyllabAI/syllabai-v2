@@ -3,7 +3,7 @@ task:
   id: T-MIG-059
   title: "Selfmark exact-parts emulation (the F-B band) — schema widening to Jackson bind-parity (nullish partId/marksAwarded + the value-dependent HashMap.put duplicate law) + the service-side exact-parts gate null-key flow + the unboxing-NPE 500 parity"
   owner: "r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)"
-  status: CLAIMED # operator directive trace 1a10f747060b0901 'F-B band (exact-parts emulation)'; claim-in-first-commit on branch t-mig-059/r1 cut @ 37d8825
+  status: IN_REVIEW # implemented on t-mig-059/r1 (run-002-fix): contracts nullish widening + put-semantics superRefine + service unboxing-parity pass + the rewritten nested-null pin; gates 1148/0/13skip/3502 = baseline 37d8825 (1144/3485) +4 tests/+17 expects EXACT, typecheck x3, selftest OK; PR next, NOT self-merged (authors never self-merge)
   claimed_at: "2026-10-06T05:02:00Z"
   priority: P1 # the 058 depth pin (merged #94) restored the classifier posture but the frozen FULL answer for nested nulls is still divergent on main — this band closes it
   wave: 3

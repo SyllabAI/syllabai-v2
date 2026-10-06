@@ -1,0 +1,41 @@
+{
+  "task": "T-MIG-059",
+  "run": "002-fix",
+  "agent": "r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "operator_trace": "1a10f747060b0901 'F-B band (exact-parts emulation)'",
+  "date": "2026-10-06T05:20:00Z",
+  "base": "afb5-claim (t-mig-059/r1 claim commit; parent 37d8825 origin/main)",
+  "branch": "t-mig-059/r1",
+  "fix_scope": {
+    "files": [
+      "packages/contracts/src/assessment.ts — partSelfMarkSchema widens partId/marksAwarded to .nullish() (Jackson BIND parity: SelfMarkRequest :59 bare List, no @Valid container-element cascade — @NotNull :55 / @Min(0) @Max(99) :56 are dead letter; Jackson binds null AND absent element fields as null; HashMap.put(null, v) legal at the controller :44); the selfMarkRequestSchema superRefine becomes the EXACT put()-semantics emulation (LearnerSelfMarkController :42-48: the duplicate throw fires ONLY when put() displaces a NON-NULL previous value — {X:null},{X:1} accepted, {X:1},{X:null} throws, null keys render 'null' in the message like Java string concat; last-write-wins preserved); the numeric checks stay as the disclosed inferred-constraint divergence class (057 receipt) — NOT touched",
+      "packages/contracts/src/assessment.test.ts — the missing-marksAwarded pin FLIPPED to accept (Jackson absent-as-null bind law, title rewritten); +2 tests: the null/absent-field bind matrix incl. the bare-null-element depth-2 rejection (the 057/058 500 law), and the three-way put-semantics law (displace-null accepted / displace-non-null throws with the exact message / null-key duplicate renders ': null')",
+      "apps/api/src/routes/selfmark/index.ts — the marks map widens to Map<string|null, number|null> with `?? null` normalization (absent binds as null); Map.set walk = last-write-wins = the HashMap.put sequence when no duplicate threw; the 057/058/059 comment block updated (F-B closes the register note; the 058 depth pin stays fail-closed for bare null ELEMENTS — depth-2 — while nested nulls now flow to the service); the classifier's invalid_type branch demoted to fail-closed defensive (no received-null/undefined issue can exist after the widening)",
+      "apps/api/src/services/selfmark/index.ts — selfMark signature widens to Map<string|null, number|null>; byPartId key type widened (has(null) is false — the exact-parts gate 400s the null key exactly like the frozen HashSet inequality, LearnerSelfMarkService :102-111, after the attempt 404 :79-84); NEW UNBOXING-PARITY pass after the gate / BEFORE the settle loop: any null value throws the parity Error that escapes the handler to the app error boundary -> 500 internal_error (the frozen `int marks = e.getValue()` :116 NPE; JS null would coerce silently in the bound comparisons and settle a 201); post-gates narrowing map keeps the bound/settle loops honestly typed",
+      "apps/api/test/smartmark/routes.test.ts — the T-MIG-058 nested-null pin REWRITTEN to the frozen law: {parts:[{partId:null, marksAwarded:1}]} -> 400 bad_request 'self-mark must cover exactly the attempt's parts'; NEW pin: {parts:[{partId: PART_A, marksAwarded: null}]} -> 500 internal_error with the fail-closed no-settle-write assertions (zero ANSWER_UPDATE / SELF_MARK_INSERT / ATTEMPT_UPDATE queries — the parity throw precedes the settle loop); NEW pin: the put-semantics silent displacement {X:null},{X:2} -> 201 with marksAwarded 2 (the value-dependent duplicate law end-to-end)"
+    ],
+    "not_touched": "zero golden files, zero service files outside selfmark, zero Neon/production contact, the F-0/F-1 register band and the inferred @Min(0)/@Max(99) divergence class untouched"
+  },
+  "frozen_matrix_now_green": {
+    "parts_null_element": "{parts:[null]} -> 500 internal_error (057 law, unchanged, zero sql)",
+    "nested_partId_null": "{parts:[{partId:null, marksAwarded:1}]} -> 400 bad_request 'self-mark must cover exactly the attempt's parts' (was 400 validation_failed on main; frozen bad_request — CLOSED)",
+    "nested_marksAwarded_null_in_attempt": "{parts:[{partId:'<in-attempt>', marksAwarded:null}]} -> 500 internal_error, no settle writes (was 400 validation_failed; frozen data-dependent 500 — CLOSED)",
+    "nested_marksAwarded_null_not_in_attempt": "the exact-parts 400 fires first (gate order preserved: attempt 404 -> structured -> answers -> settled 409 -> exact-parts -> unboxing)",
+    "put_value_dependence": "{X:null},{X:2} -> 201 (displaces a stored null — no throw); {X:2},{X:null} -> 400 'duplicate part in self-mark: X' (displaces non-null)",
+    "binding_precedence": "non-null binding failures still beat everything (malformed_body); bare null elements still NPE-parity 500 at depth 2"
+  },
+  "gates": {
+    "install": "bun install --frozen-lockfile OK (no changes)",
+    "typecheck_x3": "exit 0 (root / packages/contracts / apps/api)",
+    "baseline_37d8825": "1144 pass / 0 fail / 13 skip / 3485 expect (1157 ran / 63 files) — the R0-AUTO manual-sweep receipt numbers, reproduced",
+    "branch": "1148 pass / 0 fail / 13 skip / 3502 expect (1161 ran / 63 files)",
+    "delta": "+4 tests / +17 expect / 0 files — ARITHMETICALLY EXACT (2 contracts tests + 2 route tests; the rewritten 058 pin stays one test)",
+    "golden_selftest": "OK (tolerance engine, declared-unordered multiset)"
+  },
+  "residuals_disclosed": {
+    "iteration_order_edge": "with BOTH a null value AND an out-of-bound value present, frozen's winner (unboxing NPE 500 vs ConflictException 409) is HashMap hash-iteration order — not emulated, unreachable by capture",
+    "inferred_constraints": "@Min(0)/@Max(99) still render 400 validation_failed on -1/100 where frozen answers 409 via the bound loop — the disclosed dead-constraint class (057 receipt), unchanged",
+    "f0_f1": "binding-class collapse + missing-field message (#89 thread) — separate register band, #90 classifier prior art"
+  },
+  "handoff": "PR authored by r1-contracts -> authors-never-self-merge -> NOT self-merged; handed to the R0-AUTO/review desk"
+}
