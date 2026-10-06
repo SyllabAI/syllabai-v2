@@ -1,0 +1,70 @@
+{
+  "task_id": "T-MIG-079",
+  "run": "run-002-impl",
+  "lane": "r3a (superz-agent-b)",
+  "session": "web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9",
+  "operator_trace": "1a110d90b9510eb5",
+  "implemented_at": "2026-10-06T11:35:00Z",
+  "base_main": "d8916c741bed54b310379cfa1cf51b8bf98c31c9",
+  "claim_commit": "d06eab8",
+  "frozen_core": "SyllabAI/syllabai-core @ 6cad6ef",
+  "deliverable": {
+    "new_files": [
+      "apps/api/src/routes/learnerkg.ts — the two-path router (LearnerStateController GET /knowledge-graph frozen :178-183 → learnerGraphFor the t1 F-034 port; SmartLessonController GET /smart-lesson frozen :28-38 → smartLessonFor the t4 ladder); requireAuth gate per route; params in signature order (rootId FIRST — the captured missing-params-400 law); verbatim 400/404 envelopes; buildLearnerKgRouters factory (the classroom.ts :424-437 shape)",
+      "apps/api/test/learner/kg-routes.test.ts — 13 route pins (the 021/041 in-memory Hono + fakeSql pattern)"
+    ],
+    "modified_files": [
+      "apps/api/src/index.ts — ONE flagged mount block (import + construction + app.route before the app.all(\"/api/v1/*\") fallback) — the OUT-OF-FENCE COMMIT per the 010/020/021/030/032/041/062 precedent, covered by the card's mount mandate"
+    ],
+    "contracts_delta": 0,
+    "services_delta": 0,
+    "golden_delta": 0
+  },
+  "reuse_not_redeclare": {
+    "learnerGraphFor": "services/knowledge/graphs.ts :872 (t1's F-034 port — untouched)",
+    "smartLessonFor": "services/learner/smart-lesson.ts :182 (t4's ladder — untouched)",
+    "learnerKnowledgeGraphViewSchema": "contracts/learner.ts :440 (041 ratification — untouched)",
+    "smartLessonViewSchema": "contracts/learner.ts :583 (t4 reuse — untouched)",
+    "wire_ready": "the service views serialize by direct return (asOf already the ISO instant, node keys frozen-camelCase)"
+  },
+  "laws_pinned": {
+    "authz_shell": "requireAuth per route → Boot 401 {timestamp,status,error:\"Unauthorized\",path} — the two unauthed captures' shape; the shell PRECEDES the param law (pinned)",
+    "param_order": "rootId declared FIRST in the frozen SmartLessonController — a both-missing request reports rootId (the captured w4-smart-lesson-missing-params-400 verbatim); topicNodeId second",
+    "missing_param": "400 validation_failed \"missing required parameter: {name}\" (GlobalExceptionHandler :185-190; the learnerme.ts :202-208 recommendations precedent)",
+    "malformed_uuid": "400 bad_request \"malformed request\" (:167-170 MethodArgumentTypeMismatchException parity)",
+    "unknown_topic": "404 not_found \"curriculum topic in this subject {id} not found\" — w4-smart-lesson-unknown-topic-404 verbatim (the hard-isolation law)",
+    "unknown_root": "404 not_found \"knowledge node {id} not found\" — the 404-first tree law",
+    "no_sql_on_400": "every param-law pin asserts zero queries issued — the route owns the law, the service never sees a malformed request"
+  },
+  "pins": {
+    "count": 13,
+    "file": "apps/api/test/learner/kg-routes.test.ts",
+    "coverage": [
+      "authz shell x4 (KG 401 + smart-lesson 401 + shell-precedes-param-law + exact-two-path ownership)",
+      "KG param law x2 (missing rootId / malformed rootId, no-sql pins)",
+      "KG 200 read model (canonical-schema parse + frozen key parity + honest all-null root + asOf anchor + prerequisiteEdges key parity)",
+      "KG unknown-root 404 (empty-rows fixture — the SERVICE throws, not the stub)",
+      "smart-lesson param law x3 (both-missing → rootId; topicNodeId-missing; malformed topicNodeId — no-sql pins)",
+      "smart-lesson rung-7 200 (PRACTISE_QUESTIONS / INSUFFICIENT_COVERAGE + policy smart-lesson/v2 + servableQuestionCount + topicStatus keys + schema parse)",
+      "smart-lesson ghost-topic 404 verbatim"
+    ]
+  },
+  "gates": {
+    "typecheck": "bun run typecheck — 4/4 packages exit 0",
+    "tests": "bun test apps/api packages → 1546 pass / 0 fail / 13 skip / 6113 expect() across 1559 tests / 83 files",
+    "arithmetic": "d8916c7 baseline 1533/6036 + 13 new pins +77 expects = 1546/6113 EXACT",
+    "selftest": "bun golden/runner.ts --selftest → OK"
+  },
+  "capture_disposition": {
+    "live_reds_expected_to_flip": [
+      "w4-knowledge-graph-empty-200",
+      "w4-knowledge-graph-practiced-200",
+      "w4-smart-lesson-missing-params-400",
+      "w4-smart-lesson-practiced-200",
+      "w4-smart-lesson-unknown-topic-404"
+    ],
+    "already_green": ["w4-knowledge-graph-unauthed-401 (app-wide Boot 401 shell)", "w4-smart-lesson-unauthed-401"],
+    "verification_venue": "golden/** is READ-ONLY for port lanes — the flip is verified by the CI replay of record post-merge"
+  },
+  "hands_off_unchanged": ["T-MIG-077 (corpus lane's band)", "T-MIG-078 (awaits R0/R6 option rulings)", "T-MIG-076 (operator-side, BLOCKED of record)"]
+}
