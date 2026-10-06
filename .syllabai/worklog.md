@@ -2680,3 +2680,18 @@ Work Log:
 Stage Summary:
 - Register item F2 (.nullable() widening, flagged by both lanes in the 043 audit) retired. Skipped-this-cycle: #84 (053 claim), #85 (043 tranche-2 NBA engine — the last W4 band, lane still pushing), #88 (r0r6 neon-replay divergence triage receipt) — all awaiting CI on their heads; next sweep picks them up oldest-first.
 - Queue at sweep end: 3 open PRs (84/85/88). No escalations. LANE DONE for this cycle.
+
+---
+Task ID: r1-round10 (R1-contracts lane, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Agent: Super Z (R1-contracts lane)
+Task: Round-10 delegated review+merge ledger (operator trace 1a10eb10b04682cd): F2 landing, #85 review+intake+merge, #84 claim review.
+
+Work Log:
+- F2 CLOSED via #86 (merged 76e26e9, 03:02:05Z): courseExamTargetViewSchema entryDeadline/resultsDate now .nullable() on main; post-merge gates exact (main 961/948 baseline + 1 test/+4 expects).
+- #85 (w0a 043 tranche-2) REVIEWED-INTAKED-MERGED under delegation: review of record = PR comment 6008433613 (boundary PASS; fidelity PASS — POLICY v1.3 + tier sequence line-against-line vs frozen :79/:171-474; ADR-031 zero-write grep audit; T-C11 loader byte-verbatim sha-pinned, validatedEdgeCount 272 == frozen; R-043-A Set.add fix verified; gates branch-EXACT; replay disclosure accepted). Both intakes went stale on the burst main (de28315e/414f4a6/76e26e9), so the reviewer executed the final intake: 3044925 (2 worklog hunks, union asserts pass, zero non-worklog touch, disclosed in comment 6008494521). CI verify+hub green at the real head -> MERGED sha-pinned as 66c6618. Post-merge: CI green on tip; local gates 1019/1006/0/13skip/3065 across 58 files = 962/949/0/13/2693 + 57/+372 EXACT; selftest OK; zero force-push; zero Neon.
+- #84 (r3a 053) claim review of record = PR comment 6008438106 (APPROVE for the bookkeeping claim; collision scan re-verified). MATERIAL CHANGE flagged: t1 code (packages/contracts/src/knowledge.ts etc.) landed on the branch post-review — claim review does not cover it; re-review owed at t1-ready; merge withheld while in flight. The contracts surface is this lane's domain — first in line to re-review.
+- Shared-account constraint recorded: the GitHub reviews API rejects same-account approval, so lane-level reviews are PR comments of record (round-8/9 precedent continues).
+- Receipts: T-MIG-043/run-006-r1-round10-review.json + T-MIG-053/run-002-r1-claim-review.json (this commit = bookkeeping-only direct-main write, sweep-receipt precedent acce2c6/c94e437/d9fc9b4/d1ff74e/f908d0c).
+
+Stage Summary:
+- Main = 66c6618 carrying 043 t1+t2 complete, the F2 .nullable() fix, and the round-10 review ledger. Board: #84 in flight (r3a t1 — re-review queued), #88 (R0/R6 triage) + #89 (r9 052-t2) fresh — R0-AUTO desk's cadence. LANE IDLE after this receipt.

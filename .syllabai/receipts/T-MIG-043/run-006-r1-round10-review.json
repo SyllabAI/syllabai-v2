@@ -1,0 +1,24 @@
+{
+  "schema": "syllabai.receipt/v1",
+  "task": "T-MIG-043 tranche-2 — independent review of record (PR #85)",
+  "kind": "delegated-review+merge",
+  "when": "2026-10-06T03:0xZ",
+  "reviewer_lane": "r1-contracts (zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "authority": "operator delegation trace 1a10eb10b04682cd 'Check if R0 has merged or not. If not, review+merge yourself and continue working' — reviewer lane is NOT the tranche-2 author; authors-never-self-merge is lane-level (the shared machine account cannot carry the GitHub reviews API verdict, so PR comment 6008433613 is the review of record)",
+  "author_lane": "w0a (043 t2, receipt run-004-tranche2 + run-005-push-pr)",
+  "review": {
+    "boundary": "PASS — 17 files, zero *.java/core/hub/golden; routes+mount = declared tranche-2 scope (010/020/021/030/032/034 precedent); packages/contracts untouched",
+    "fidelity": "PASS — POLICY nba-rules/v1.3 verbatim (frozen :79); tier sequence T1/T2/T2b/T3/T4/T4b/T5/T6/T7a/T7 matches frozen :171-474 one-for-one; maxActions 8 + one-action-per-topic + rank renumber mirrored; injected-clock deviation disclosed",
+    "adr031": "PASS — nba.ts zero write paths (grep-audited); decay/relaxation computed at read, never persisted",
+    "tc11_loader": "PASS — yaml byte-verbatim sha256-pinned fail-closed; validatedEdgeCount 272 == frozen loader log (206 REQUIRES_PREREQUISITE / 25 REMEDIATED_BY)",
+    "real_finding": "R-043-A Set.add truthiness (never deduped) — claimTopic() fix verified correct, caught by pins pre-review",
+    "gates": "branch-internal EXACT (827/814 -> 884/871/0/13/2688 = +57/+372); golden replay REPLAY-READY with blocked dispatch honestly disclosed (22 cases owned by unmerged lanes)"
+  },
+  "merge": {
+    "intake": "reviewer-executed after both author/reviewer intakes went stale on the burst main (r1c de28315e, #87 414f4a6, #86 76e26e9 all appended worklog post-branch-cut): merge origin/main into t-mig-043/w0a as 3044925 — 2 worklog hunks, append-only union script, 167 Task sections preserved, asserts A1/A3/A4; zero non-worklog file touched; disclosed in PR comment 6008494521",
+    "guards": "CI verify+hub completed/success at real head 3044925; mergeable=True state=clean; no HOLD-BLOCKING reviews; boundary re-verified",
+    "merged_as": "66c6618 (sha-pinned 30449250)",
+    "post_merge_gates": "CI verify+hub success on new tip; local: 1019 ran / 1006 pass / 0 fail / 13 skip / 3065 expect across 58 files = pre-merge main 962/949/0/13/2693 + 57 tests/+372 expects EXACT; selftest OK",
+    "zero_force_push": true, "zero_neon_contact": true
+  }
+}
