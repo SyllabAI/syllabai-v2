@@ -1,0 +1,29 @@
+{
+  "task": "T-MIG-061",
+  "run": "004-t2-implementation",
+  "agent": "r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "operator_trace": "1a10f740529db241 (continue-working execution of the card's documented tranche-2, claimed run-003-t2-claim @ af33b6f/32b73ca)",
+  "date": "2026-10-06T09:05:00Z",
+  "base": "af33b6f + intakes (eedc264 merges origin/t-mig-061/r9-hubx 9381d58 + origin/main ddbe9fe — the round-15 receipts; one worklog entry-boundary repair disclosed on the merge commit)",
+  "branch": "t-mig-061/r9-hubx",
+  "commits": {
+    "acbb8b5": "routes — the 9-endpoint Hono port + 30 route pins (zero service/contracts/golden files)",
+    "separate-flagged": "index.ts OUT-OF-FENCE mount commit — import + construction + ONE mount line at /api/v1/learners/me/intervention-runs (010..052t2 precedent, R0 ratification requested)"
+  },
+  "frozen_laws_carried": {
+    "create": "@RequestParam UUID rootId (a QUERY param) + @ResponseStatus(CREATED) :62-68 — 201; missing param -> 400 validation_failed 'missing required parameter: rootId' (:185-190); malformed uuid -> the :167 FIXED body",
+    "complete_controller_law": "the :135 requireText 'terminalOutcome is required' is ROUTE-owned: after ownedRun, BEFORE the state machine — the wire-parity pin covers BOTH the ACTIVE path (the CONTROLLER field name, not the entity's 'outcome') and the CREATED path (400 where the module alone would 409)",
+    "error_route_law": "IllegalArgument -> 400 bad_request FIXED 'malformed request' (:167-170, detail never echoed — an UNKNOWN run is a 400, NOT a 404); BadRequest verbatim 400; NotFound verbatim 404 (the indistinguishable foreign-run law); Conflict verbatim 409; VersionMismatch -> the NAMED 409 intervention_version_mismatch (:71-77)",
+    "binding_F_061_B": "bare @RequestBody: zod .nullish() pins pass every bound object; wrong-TYPE -> malformed_body (the ratified learnerme classifier convention; Jackson scalar coercion NOT reproduced — F-0/F-1 register family)",
+    "F_061_D_wire": "the DONE/ATTEMPT_EVIDENCE defaults are validation-only — the RAW nulls reach the entity constructors -> the 400 FIXED body (route pins on BOTH status and role)"
+  },
+  "gates": {
+    "typecheck": "x4 exit 0 (root / contracts / shared... / apps/api — the full workspace run)",
+    "main_baseline": "ddbe9fe = 1144 pass / 0 fail / 13 skip / 3485 expect (1157 ran / 63 files) per the r1c round-15 receipt + the R0-AUTO receipt 37d8825",
+    "branch": "1174 pass / 0 fail / 13 skip / 3570 expect (1187 ran / 64 files)",
+    "delta": "+30 tests / +85 expect / +1 file — ARITHMETICALLY EXACT (the route-pins file: 30 pins, 85 expects)",
+    "hub": "36 pass / 0 fail",
+    "selftest": "bun golden/runner.ts --selftest OK"
+  },
+  "handoff": "PR authored by r9-hubx -> authors-never-self-merge -> NOT self-merged; handed to the R0-AUTO/review desk; the card's tranche-2 plan executed verbatim (claim run-003-t2-claim); register unchanged (F-061-A/B/C/D disclosed on the module + card; F-0/F-1 binding-class family still register-open)"
+}
