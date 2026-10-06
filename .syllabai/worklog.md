@@ -2096,6 +2096,20 @@ Stage Summary:
 - T-MIG-044's one-time setup register item is DISCHARGED: secret+vars live, maiden dispatch executed, the ENOTFOUND blocker fixed (T-MIG-046, PR #66), instrument re-dispatch pending the branch-cap register decision. REGISTER FOR OPERATOR: (1) NEON_BRANCH_CAPACITY — the project is at its branch cap (10); the CI runner needs 2 disposable slots per run; free >=1 standing slot (candidates: t-mig-022/r3a + r3a-prod whose postures are receipted, t-mig-003/r6 capture branch) or raise the plan limit — R0 will NOT delete standing branches; until then the instrument fails honestly at provisioning with zero residue. (2) Fresh PAT staged (fingerprint 46b5d309715c1b1c) — rotation item DISCHARGED this session; revoke at migration end per briefing §0. (3) The daily 02:30 UTC schedule now runs with the fixed tool and will succeed automatically once capacity exists.
 
 ---
+Task ID: 13
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Operator round-10 directive (trace 1a10d400d30ac185) — "#65 review. After merging, proceed to tranche-2 (routes/zod/mounts); T-MIG-043 (agenda/KG/smart-lesson/exam-series+flashcards)"
+
+Work Log:
+- SYNC: #65 found ALREADY MERGED by R0 (ed558ab 2026-10-05T18:06:46Z, merge-commit style; R0 merge-forward 6c55575 resolved main into the branch first) — review step became post-merge verification: main FF to 6ea61b2, tranche-1 content verified intact, gates re-run green (764/0/13skip/2121, typecheck x4, selftest, w4-readiness READY).
+- T-MIG-043 found ALREADY CLAIMED by w0a (db87a9a, operator trace 1a10d2c88b6f13c5) — §2.1 zero-collision honored: NOT touched; flagged back to the operator (this directive's 043 leg is therefore DISCHARGED-AS-CLAIMED-ELSEWHERE unless the operator re-routes).
+- tranche-2 EXECUTED on t-mig-041/r7a (merged main first, clean): routes/learner/index.ts (createLearnerStateRouter — GET /state + GET /course-stats under /api/v1/learners/me, Boot-401 shell first per the captured w4-*-unauthed-401 envelopes; wire serializers 1:1 with the frozen DTO records; buildLearnerRouters env composition 021-shape; injected now() factory — ADR-031 determinism threaded from the route layer, default fresh clock); 8 route tests (canonical #60 schema parse pins, nodeTitle key-parity incl. negative assertion, query budgets 9/4, 401-before-404 fall-through, empty-learner posture); index.ts mount+construction as the OUT-OF-FENCE separate commit (010/020/021/030/032 precedent).
+- R-FIX (disclosed): tranche-1 TutorEngagementView drifted to nodeName — frozen LearnerStateView.java:77-79 + #60 contracts pin nodeTitle (hub types.ts corroborates); service interface + builder + tranche-1 pin corrected; no wire consumer ever shipped on the wrong key (tranche-1 mounted no routes).
+- Card: scope extended for tranche-2, forbidden re-pointed at the 043 band, status IN_PROGRESS -> IN_REVIEW; execution_record tranche-2 addendum; receipt run-003-tranche2.json.
+- Gates: typecheck x4 exit 0; CI-scope 772/0/13skip/2183 = main 764/2121 +8/+62 EXACT; golden selftest OK; w4-readiness READY 57/0.
+
+Stage Summary:
+- T-MIG-041 is FEATURE-COMPLETE (tranche-1 services + tranche-2 routes/zod/mounts) pending R0 review of the tranche-2 PR; 041 then flips DONE. T-MIG-043 = w0a's lane (claim db87a9a) — operator awareness requested. Register: none new.
 
 
 Task ID: R0-ROUND-10 (review+merge sweep: #63/#64 reviewed+merged with intake fixes, #65 verified; card flips)
@@ -2249,3 +2263,64 @@ Work Log:
 
 Stage Summary:
 - T-MIG-043 tranche-1 IN_REVIEW on t-mig-043/w0a — PR opened for independent review + R0 id ratification. Authors never self-merge. Tranche-2 (NBA engine nba-rules/v1.3 + /recommendations + agenda actions flip + routes/mounts + w4 golden replay) is scoped in the receipt and awaits the operator/R0 word. w0a STOPS after the PR.
+---
+Task ID: R0s-ROUND-10 (housekeeping: T-MIG-047 duplicate-id repair + T-MIG-048 fail-path redaction) 
+Agent: r0s (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Operator standing directive (trace 1a10d35bead06d61) "review+merge yourself and continue working" + PAT persistence directive — execute the two open housekeeping findings from the round-8 stand-in review, then continue.
+
+Work Log:
+- SYNC on a fresh sandbox (fifth wipe class): PAT re-seeded by the operator and PERSISTED per the standing instruction (0600 file outside every repo tree + git credential-store wiring; referenced by path, never by value). Board re-derived: R0-ROUND-10's close-out (39ee5d5) had drained the queue (#63/#64/#65/#67, cards 033->IN_PROGRESS t3-remaining / 041->DONE); zero open PRs at sweep time.
+- F-33-2 disposition verified FIRST-HAND before routing: the four body-envelope sites R3a specified are ALREADY FIXED on main by R0's R-1 intake (a1e4c5c) — readJsonBody/classifyBodyError + the two-envelope law present at smart-mark-batch/human-mark/kappa-evaluate (routes/teachermarking.ts); the finding raced the fix. A thread-note of record posted on #64 (no code action needed).
+- T-MIG-047 (C-1 duplicate id, both cards DONE but namespace broken): ruling per §2.1 earliest-claim-wins — hub dual-run expansion claimed 037 first (b12b5b3 15:34) vs contracts card (5929c4b 15:48), so HUB KEEPS 037 and contracts -> 047 (045 burned by the retained r4b evidence branch; 043 operator-reserved; 046 taken). This supersedes the pre-compaction round-8 note's direction with the recovered timestamps. Mechanics per R0-REPAIR-1/2 + T-MIG-016 precedent: git mv yaml + git mv receipts byte-identical (run-001.json sha256 316dad3fde4c5a31 verified before/after); id flip + scope.allowed self-paths; renumber paragraph appended to execution_record; live pointer repaired in T-MIG-038 deps; 6 contracts header comments renumbered (comment-only); worklog and historical receipts untouched. Timeline receipt: receipts/T-MIG-047/run-002-renumber.json.
+- T-MIG-048 (N-A, round-8 finding, re-verified @ 08f104d): five fail-path sites in golden/tools/neon-branch.ts embedded raw control-plane bodies (up to 400 chars) into PUBLIC CI logs — both create sites, role-create, the create() catch re-emission, plus the unreachable-base log as defense-in-depth; with the project at the branch cap the 422 prod failure is the EXPECTED dispatch path, so redaction precedes the next run. R-048-A: scrub() strips credential-shaped patterns (postgres:// URIs, JWTs, token/secret/key assignments, emails; 400 cap); redactBody() keeps the honest actionable parts (Neon JSON message field or byte size; '<empty body>'); status codes verbatim; success paths/drop mode/404-verify/workflow keys byte-unchanged. Live proof 8/8 PASS via a stripped-dispatch harness of the shipped file; usage smoke byte-unchanged. Receipt: receipts/T-MIG-048/run-001-redaction.json.
+- GATES on the head: typecheck x4 exit 0; bun test 764 ran / 751 pass / 0 fail / 13 skip / 2121 expect = R0-ROUND-10 post-merge main EXACT (zero test delta — golden/tools is outside every suite glob); golden --selftest OK.
+
+Stage Summary:
+- Board namespace restored (one task per ID: 37 = hub, 47 = W3-remainder contracts); the Neon instrument's failure mode is now log-safe ahead of the daily 02:30 UTC schedule. Remaining claimable: T-MIG-033 tranche-3 = SME admin port (the last ratified-but-unclaimed code lane — contracts-first prerequisite: SME DTO contracts are NOT in packages/contracts yet), T-MIG-043 (operator-routed), hub scoped-test-runner hygiene (unfiled). Operator register unchanged: NEON_BRANCH_CAPACITY decision (cap 10; R0 will NOT delete standing branches) gates the maiden successful replay dispatch. LANE r0s continues to the next claim in-session.
+
+---
+Task ID: R0s-ROUND-10a (renumber retarget 047 -> 049 — concurrent-claim resolution)
+Agent: r0s (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Amendment of record for the R0s-ROUND-10 entry above — the contracts-card renumber target raced a concurrent claim.
+
+Work Log:
+- PR #70 (branch t-mig-048/r0s, commit 8df666e) initially retargeted the duplicate-id repair "contracts 037 -> 047". During intake of origin/main 3824c5d (merge commit 886a9a6) the collision surfaced: R0-integrator (session web-1f157e25) had concurrently claimed T-MIG-047 for the replay-evidence-preservation instrument fix — claimed_at 2026-10-05T18:35:00Z, merged 9a97de8 (PR #73), DONE, operator trace 1a10d465caf49f99.
+- AGENT_COORDINATION §2.1 earliest-claim-wins applied: their 18:35Z Oct-5 claim precedes this lane's renumber record (Oct-6) — T-MIG-047 = replay-evidence-preservation stands; this lane's renumber retargets the W3-remainder contracts card to T-MIG-049 (next free id: 048 is this lane's T-MIG-048 neon-branch redaction card, claimed in 8df666e, zero counter-claim on main; 047/049 id-freedom re-verified against main's task tree).
+- Mechanics re-run for 049: yaml renamed 047->049 (id flip + scope.allowed self-paths + amendment paragraph appended to execution_record); receipts run-001.json + run-002-renumber.json moved to T-MIG-049/ byte-identical (sha256 316dad3fde4c5a31... re-verified at the hop; copy+delete fallback where git mv hit the flaky FS); T-MIG-038 deps -> [T-MIG-018, T-MIG-049]; 6 contracts header comments 047->049 (comment-only); T-MIG-047/ retains ONLY the R0-integrator artifacts (their yaml + run-001-first-live-replay.json); run-002-renumber.json rewritten as the timeline of record (initial target, collision, resolution).
+- The R0s-ROUND-10 entry above (header "contracts->047") stands as history per the append-only discipline; this amendment + the rewritten run-002-renumber.json are the corrections of record.
+
+Stage Summary:
+- Final namespace: 37 = hub dual-run expansion, 47 = replay-evidence-preservation (R0-integrator), 48 = neon-branch fail-path redaction (r0s), 49 = W3-remainder contracts (renumbered, DONE). One task per ID restored WITH the concurrent-claim resolution disclosed. PR #70 title/body updated; no force-push anywhere.
+
+---
+Task ID: R0s-ROUND-10b (PR #70 merge executed + T-MIG-048 card flip + post-merge verification)
+Agent: r0s (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Close out the round-10 housekeeping payload after the concurrent-claim retarget.
+
+Work Log:
+- PR #70 MERGED as 190706e (merge_method=merge, sha-pinned to head 663bc78 = base 0fe582a + intake 886a9a6 + retarget 03c7fd4 + union 663bc78; mergeable re-checked at the PUT after a second intake round for the R0-integrator 0fe582a union receipt).
+- Payload landed: T-MIG-048 neon-branch fail-path redaction (R-048-A: scrub()+redactBody() at five emission sites; status verbatim; success/drop paths untouched) + T-MIG-049 duplicate-id repair (hub kept 037; contracts 037->049 after losing 047 to the concurrent R0-integrator replay-evidence claim per §2.1) + append-only worklog unions (R0s-ROUND-10 / 10a entries + this one).
+- Card T-MIG-048 flipped IN_REVIEW -> DONE with provenance (this commit; R0-lane direct housekeeping practice per the 3824c5d/39ee5d5 precedents — disclosed here).
+- POST-MERGE MAIN GATES on 190706e: typecheck x4 exit 0; bun test 764/751/0/13skip/2121 EXACT; golden --selftest OK (numbers recorded below in this session's closing receipt).
+- CI register: zero Actions runs repo-wide since 18:25:34Z Oct-5 (PR-triggered included; the 02:30Z schedule also silent; suspected account-level spending limit — the billing API has moved, so the operator should check github.com/settings/billing). Merges in this window rest on local-gates evidence, disclosed per-PR.
+- F-33-2: no action from this lane — R3a's own closure record (86ead73 via PR #68) already filed the three-lens verification; my first-hand code check concurs (readJsonBody/classifyBodyError two-envelope law present at all three body sites).
+
+Stage Summary:
+- Round-10 fully closed: 48 DONE (redaction, N-A closed), 49 DONE (namespace repaired, collision disclosed), board one-task-per-ID with 37=hub / 47=replay-evidence / 48=redaction / 49=contracts. Remaining claimable: T-MIG-033 tranche-3 (SME admin — contracts-first prerequisite: SME DTO contracts not yet in packages/contracts), T-MIG-043 (operator-routed), hub scoped-test-runner hygiene (unfiled). Register: (1) Actions runs dark since Oct-5 18:25:34Z — operator billing check; (2) NEON capacity RESOLVED by the 022-pair hygiene drop — first live replay 90/155 seed + 13/15 prod, 5 genuine findings filed incl. blocking-class attempts.exam_paper_id 42703 (T-MIG-048 candidate per R0-integrator's union receipt — id collision on the CANDIDATE NAME only, their filing text, not a card). LANE r0s: STOP for this round.
+origin/main
+
+---
+Task ID: 14
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Operator round-11 directive (trace 1a10eaf7c7549701) — "Check if R0 has merged or not. If not, review+merge yourself and continue working"
+
+Work Log:
+- SYNC (fresh sandbox — reset #4; creds+clone rebuilt from the standing procedure): #69 found OPEN (R0 had not merged) -> the operator's own wording re-applied the round-8 delegation; review+merge executed by the author.
+- Board at sync: 7 open PRs — #69 (mine, tranche-2), #72 t-mig-041/r9-hubx (my band, hub-x extension), #74 t-mig-043/w0a + #76 t-mig-043/r1 (TWO PRs on the 043 band — apparent w0a/r1 collision, flagged for operator/R0), #77 t-mig-033/r0, #78 t-mig-033-t3/r4b, #75 round11-receipt/r3a. Main advanced: T-MIG-047 DONE (first full-union replay verdict 105/170, 5 genuine findings incl. attempts.exam_paper_id 42703 port defect), T-MIG-048 DONE via #70, T-MIG-049 retarget note (047->049 renumber per §2.1).
+- Intake merge of main d077ffa into t-mig-041/r7a (mergeable_state was dirty): conflicts confined to the 041 yaml (main flipped it DONE via the R0 sweep 1a10d2b406e813f9 after tranche-1 + r9-hubx approval) and the worklog (union). Resolution: combined DONE provenance (R0 sweep + tranche-2 delegated merge), worklog union; a stray conflict-label line was caught by the yaml parse check and removed before push.
+- Gates at merge head 55f9342: typecheck x4 exit 0; CI-scope 772/0/13skip/2183; selftest OK; w4-readiness READY 57/0.
+- MERGE: first PUT returned the stale-cache 'Base branch was modified' (bb9df41 verified ancestor of main tip; branch already up-to-date) — retried clean: #69 MERGED 558ef03, merge-commit style per repo convention.
+- Housekeeping: card T-MIG-041 DONE (combined provenance), receipt run-005-merge.json, this worklog entry — direct-main commit per the sweep-receipt precedent (acce2c6).
+
+Stage Summary:
+- T-MIG-041 fully landed (tranche-1 #65 ed558ab + tranche-2 #69 558ef03); card DONE. /api/v1/learners/me/state + /course-stats are live routes on main. Next work surface: review of #72 (t-mig-041/r9-hubx — my band, reciprocity for r9's #65 review); 043 dual-PR collision flagged.
