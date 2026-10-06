@@ -1,0 +1,28 @@
+{
+ "task": "T-MIG-052",
+ "run": "run-003-tranche-2",
+ "lane": "r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+ "operator_trace": "1a10f170ab141745 (R0 verdict + continue working; resumes 1a10ec4d22b0e54d 'claim the next unscoped task')",
+ "frozen_ref": "6cad6ef",
+ "base": "origin/main fe97f94 (post #82 tranche-1 39fa554 + #83 7dfdd16)",
+ "branch": "t-mig-052t2/r9-hubx",
+ "deliverable": {
+  "routes": "apps/api/src/routes/classroom.ts (NEW, in-fence) — three routers over the tranche-1 ClassroomModule: createTeacherClassesRouter (/api/v1/teacher/classes, 8 endpoints, TEACHER/ADMIN shell per SecurityConfig.java:87 + the M5 @PreAuthorize is defense in depth), createLearnerClassroomRouter (/api/v1/learners/me/classroom, 3 endpoints, anyRequest().authenticated() shell per :91), createTeacherRosterRouter (/api/v1/teacher/learners, the V49 ruling surface, mounted at the FULL path so the shell middleware cannot bleed onto the sibling /api/v1/teacher/* routers); buildClassroomRouters live factory (env → requireDatabaseUrl → createSql → buildClassroomModule, the buildTeacherMarkingRouters shape)",
+  "mounts": "apps/api/src/index.ts — import + construction + THREE mount lines + OUT-OF-FENCE comment, shipped as a SEPARATE commit per the 010/020/021/030/032/033/034/041t2 precedent (R0 ratification requested)",
+  "tests": "apps/api/test/classroom/routes.test.ts (NEW, 41 tests / 139 expects) — the T-MIG-041-t2 route-test pattern: real tranche-1 services over fakeSql at the REAL mount prefixes; 200/201 bodies validated against the canonical contracts schemas; authz shells (anon 401 Boot body with path, STUDENT-on-teacher-routes 403, shell-401-before-404-fallthrough); the two-envelope body law (malformed_body verbatim :175-179 vs validation_failed jakarta defaults :158-165 — @NotBlank 'must not be blank', @Size 'size must be between 0 and N', FIRST field error); UUID path mismatch → 400 'malformed request' (:169-172); the §17 ownership 403 + 'class not found' 404 verbatim; the enroll law chain end-to-end (archived 409 fail-closed, unknown email 404 verbatim, disabled 409, non-STUDENT 409, idempotent re-enroll = the SAME 201 detail with NO INSERT pinned via bound-param log); publish chain (category verbatim 400 + fail-closed, trimmed-blank 400, fresh row readCount 0, kebab wire); status tolerant parse + fail-closed unknown; learner overlay (independent-student empty 200, ARCHIVED drops out, unread arithmetic + flattened badge, markRead 404/403 verbatim + idempotent no-INSERT); roster identity-projection keys pin"
+ },
+ "frozen_semantics": {
+  "http_statuses": "TeacherClassController: create 201 (:80-81), list 200, detail 200, status 200, enroll 201 (:150-151 — re-enroll idempotent returns the SAME 201 detail, no 200 branch), removeMember 200, publish 201 (:191-192), announcements 200; LearnerClassroomController: overview 200, announcements 200, markRead 200 ReadResult; TeacherRosterController: learners 200 (:37)",
+  "mount_note": "card's open question RESOLVED: /api/v1/teacher/learners was served by NO mount before this commit (teachermarking lives at /api/v1/teacher/marking; the path fell into the app-level 404-after-auth fallback) — mounting is conflict-free; registered AFTER the sibling /api/v1/teacher/* mounts with no path overlap",
+  "error_law": "GlobalExceptionHandler: NotFound/BadRequest/Conflict/Forbidden → 404/400/409/403 detail verbatim (the tranche-1 messages ride through ClassroomNotFoundError/ClassroomForbiddenError/BadRequestError/ConflictError); MethodArgumentTypeMismatch → 400 bad_request 'malformed request'; two-envelope body law per the R-1 convention"
+ },
+ "out_of_fence": [
+  "apps/api/src/index.ts (+1 import, +1 construction, +3 mount lines, +1 comment) — OUT-OF-FENCE COMMIT, separate commit, R0 ratification requested per the ten-precedent chain"
+ ],
+ "gates": {
+  "typecheck": "bun run typecheck ×4 workspaces (contracts/shared/db/api) — exit 0, 0 TS errors",
+  "api_packages": "bun test apps/api packages — 989 pass / 0 fail / 13 skip / 2828 expect / 1002 ran / 57 files — EXACT arithmetic: main baseline 948/0/13skip/2689/961/56 (R0 receipt @ 7dfdd16) + 41 tests/+139 expects/+1 file from routes.test.ts; 41 = the routes file's test count (classroom dir 84 = 43 service + 41 route); hub 36/0 unchanged; golden --selftest OK"
+ },
+ "collision_register": "t2 claimed on branch t-mig-052t2/r9-hubx from fe97f94 after re-run zero-collision scan (ls-remote: only our own merged t1 branch carries a 052 prefix; 0 open PRs; 043-t2 advance (w0a 22deff2) and 038-r1 branch have zero classroom/roster fence overlap); claim commit 0aaca52 is the §2.1 timestamp evidence",
+ "authors_never_self_merge": "PR filed to main; independent review / R0 intake requested; this lane will NOT merge its own PR"
+}

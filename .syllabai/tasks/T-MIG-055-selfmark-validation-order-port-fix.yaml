@@ -3,7 +3,7 @@ task:
   id: T-MIG-055
   title: "Self-mark validation-order port fix — absent/null parts must NPE→500 at the controller boundary (LearnerSelfMarkController.java:42-43), not 400 at the service gate; recovers golden case w3-selfmark-unknown-attempt-500"
   owner: "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
-  status: IN_REVIEW # 2026-10-06: R-053-A (fix id keeps its original R-number for receipt continuity) landed — gates on the head: typecheck x4 exit 0, suite EXACT vs the 948/0/13skip/2689 baseline at claim time (+3 tests = the three new boundary pins); REFILED from T-MIG-053 -> T-MIG-055 (id collision with r3a's PR #84, disclosure in execution_record); intake of 855bef9 merged
+  status: DONE # 2026-10-06: PR #91 merged 9bebf7e; live re-proof run 37408914789 — w3-selfmark-unknown-attempt-500 RECOVERED (120/177 union, RED at union only per doctrine); receipt run-002-union-verdict.json + run-002-union.md
   claimed_at: "2026-10-06T03:09:23Z"
   priority: P1 # port-lane defect repair ("blocking-class-adjacent" per the T-MIG-050 run-002 receipt); single-surface divergence, does not block other lanes
   wave: 4
