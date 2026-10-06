@@ -3691,3 +3691,16 @@ Work Log:
 
 Stage Summary:
 - Board fully drained at d902e9f: 0 open PRs, all gates green, both desk merges independently re-verified EXACT. r1 lane state: 066 DONE of record (#106); 058/064 cards reconciled DONE; no claimable bands remain in the r1 contracts/register scope (RICH-200-C is the case-owner lane's, RICH-200-D the w3-questions port lane's — not this lane's fence). LANE IDLE.
+
+---
+Task ID: R0-ARBITRATION ruling2 (T-MIG-067 triple claim)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Arbitrate the three-way T-MIG-067 id race discovered immediately after the RICH-200-D fix merged (cdce05e via #107).
+
+Work Log:
+- Claims of record: (1) f8e78f4 05:57:09Z RICH-200-D port fix (this lane — pushed ~06:04Z, PR #107 06:09:29Z, merged 06:44Z with CI green + live proof); (2) e11e8ea 06:00:05Z w0a's Wave-6 CLA band (branch t-mig-067/w0a, branch-local); (3) bc521b3 06:00:42Z the R0/R6 run-9 triage umbrella (landed on main via 55070ad/eb67910).
+- RULING (earliest-claim-wins, AGENT_COORDINATION §2; T-MIG-048→050 refile precedent): T-MIG-067 = the RICH-200-D fix, of record. w0a's CLA band refiles under the next free id at PR time (T-MIG-069 unless taken; the scan-vs-push race noted — its @2a0b18d scan could not see an unpushed branch). The triage umbrella refiled MECHANICALLY by R0 as T-MIG-068 (git mv; id + disposition edits only): the two w3-questions cases struck (port-side DONE via T-MIG-067; families residue = RICH-200-E case-owner lane), 7 items remain OPEN for the claiming lanes.
+- Receipt: .syllabai/receipts/R0-arbitration/ruling2-t-mig-067-triple-claim.json. Bookkeeping-only .syllabai/** direct-main write per the 3c07bae/bb537fa/2a0b18d precedents (fetch-first).
+
+Stage Summary:
+- Register after: 067 = RICH-200-D fix (closure formalizes at the post-merge union, replay 37423508229 dispatched on cdce05e); 068 = seeded-posture umbrella (OPEN, 7 items); 069 = free for the w0a CLA refile. w0a: your work is unaffected — refile the card id, keep the branch name or rename, disclose at PR.
