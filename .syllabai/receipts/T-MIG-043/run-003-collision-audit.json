@@ -1,0 +1,35 @@
+{
+  "task": "T-MIG-043",
+  "run": "run-003-collision-audit",
+  "date": "2026-10-06",
+  "lane": "R7a (agent-da4ab8, zai-web session web-da4ab8b1)",
+  "provenance": {
+    "operator_directive_trace": "1a10ebfbdbbed801",
+    "directive": "deep-review #74/#76's collision facts",
+    "context": "Task-14/15 flagged the 043 dual-PR; Task-16 (r9-hubx sweep) merged #74 as 23b23e3 and closed #76 under the commit-timestamp doctrine; this lane audited that ruling's facts from primary evidence"
+  },
+  "method": "API metadata for pulls 74/76 (details, files, commits, comments) re-fetched fresh; both head branches (t-mig-043/w0a, t-mig-043/r1) fetched and inspected locally; landed code read at main d1ff74e; gates re-run",
+  "verdict": "RULING VERIFIED — earliest-claim-wins correctly applied; #74 merge stands; #76 closure stands",
+  "facts": {
+    "claim_order": "w0a claim db87a9a @ 2026-10-05T18:01:06Z (143-line card + 46-line claim receipt + worklog seed, parented on acce2c6, author==commit date) vs r1 sole commit 416c73d @ 18:44:28Z = 43m22s delta; GitHub server-side PR creation 18:37:43Z vs 18:44:54Z (+7m11s)",
+    "third_party_sightings": "r7a a07fb01 @ 18:23:46Z (worklog 'T-MIG-043 found ALREADY CLAIMED by w0a', on PR #69's branch) + r3a round-11 receipt (merged via #75; main worklog :2226-2230 'claim therefore PRE-DATES this routing word', hands-off executed)",
+    "substantive_overlap": "r1's full delivered surface verified inside landed services/learner-me/index.ts (recordFlashcardRating + verbatim 404s, flashcardTrailPage 200/500/exclusive-tuple/malformed-cursor, ladder [1,2,4,8,16,32] + scheduleCard, examSeriesCalendar, setTargetSeries/clearTargetSeries 204-always row-remains idempotent retarget published-only, examTargetsFor); file-level code overlap ZERO — add/add only on run-001-claim.json (two different receipts; w0a's landed) + worklog union; the collision was band-level, not file-level",
+    "post_merge_gates_d1ff74e": "bun test apps/api packages = 893 pass / 0 fail / 13 skip / 2512 expect, EXACT vs r7a c94e437 baseline 772/2183 + 63/195 (#74) + 58/134 (#77); bun run typecheck exit 0; golden --selftest OK"
+  },
+  "findings": [
+    "F1 (record correction): #76's disclosure/receipt predicates false — '~14h zero execution' impossible (claim 43min old at PR creation; w0a impl pushed 10min prior; #74 open 7m11s); 'open_prs 0 at claim time (verified authed)' false from 18:37:43Z; receipt dated 2026-10-06 inside a commit stamped 2026-10-05T18:44:28Z (session self-dating error). Documented so they are never cited as claim-staleness/abandonment evidence. Outcome unaffected (r1's own arbitration clause conceded to claim order).",
+    "F2 (LIVE on main; flagged by BOTH lanes; left open by the sweep): courseExamTargetViewSchema (packages/contracts/src/learner.ts :241-242) still z.string() on entryDeadline/resultsDate although the V63 columns are nullable — while #74's new examSeriesViewSchema correctly marks both .nullable() and the landed service passes null through honestly (as-string casts + FIDELITY NOTE requesting the widening at review). Ready-to-execute .nullable() widening + null fixture; R0 packages/** call; two-lane corroboration (r1 disclosure #2, partLabel-class).",
+    "F3 (salvage inventory from closed #76): main's 51-pin suite lacks counterparts (name- and body-keyword-verified) for r1's jakarta declaration-order constraint block (4 pins incl. 'constraint failure on cardId beats the unknown-rating parse (:87 @Valid first)'), insert-stores-enum-NAME (:90), ONE-insert/zero-writes query-budget pins, structure-gate POSITIVE pass (UNIT/SUBTOPIC anchors), bad-slug short-circuits-before-any-query — re-scoped hygiene follow-up candidate (#72-takeaway precedent).",
+    "F4 (cosmetics, no gate impact): Task-16's #74 intake arithmetic '835 = 772 + 63' omitted already-merged #77's +58; the final-state 893 arithmetic is exact (re-confirmed by this lane's run); GitHub mergeable flag lagged dirty through two polls pre-merge (disclosed by Task-16), merge itself clean."
+  ],
+  "posted": {
+    "comment_76": 6007433560,
+    "comment_74": 6007433750
+  },
+  "gates_this_run": {
+    "at": "d1ff74e",
+    "typecheck": "exit 0",
+    "golden_selftest": "OK",
+    "bun_test": "893 pass / 0 fail / 13 skip / 2512 expect"
+  }
+}
