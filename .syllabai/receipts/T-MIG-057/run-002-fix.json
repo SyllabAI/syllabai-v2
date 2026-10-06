@@ -1,0 +1,30 @@
+{
+  "task": "T-MIG-057",
+  "run": "002-fix",
+  "agent": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "operator_trace": "1a10f48f7d8a616d",
+  "date": "2026-10-06T04:20:00Z",
+  "branch": "t-mig-057/r4b (claim 05ba690 PUSHED before the fix commit — no sandbox-loss exposure this time)",
+  "base": "ced0111",
+  "delta": {
+    "files_changed": 3,
+    "surfaces": [
+      "apps/api/src/routes/selfmark/index.ts — element-null NPE parity in the !parsed.success block: ANY element-level null issue at parts[i] (invalid_type received null) routes to the same NPE-parity throw the landed T-MIG-053 whole-field guard uses (catch-all 500 internal_error verbatim); malformed-body precedence preserved (isBinding wins first = whole-document Jackson binding order); duplicate-part and remaining validation paths untouched",
+      "apps/api/test/smartmark/routes.test.ts — 2 route pins: (1) {parts:[null]} -> 500 internal_error 'an internal error occurred' + ZERO sql queries (loop precedes the service); (2) {parts:[null,{partId:'not-a-uuid',marksAwarded:1}]} -> 400 malformed_body (the non-null element's binding failure beats the loop NPE — frozen Jackson whole-document order)",
+      ".syllabai/tasks/T-MIG-057-selfmark-element-null-parity.yaml — status flip IN_REVIEW"
+    ],
+    "not_touched": "zero golden files, zero packages/** files, zero service files, zero Neon/production contact"
+  },
+  "gates": {
+    "install": "bun install --frozen-lockfile OK (930 packages)",
+    "typecheck_x4": "exit 0",
+    "bun_test": "1092 pass / 0 fail / 13 skip / 3294 expect (1105 ran / 61 files) — EXACT vs main ced0111 baseline 1090/0/13skip/3288 + 2 tests / +6 expects (the two new route pins)",
+    "golden_selftest": "OK (tolerance engine behaves, incl. declared-unordered multiset T-MIG-024)"
+  },
+  "frozen_law_of_record": {
+    "element_null": "SelfMarkRequest :58 declares the bare List<PartSelfMark> (no @Valid container-element cascade) -> Jackson binds {parts:[null]} successfully -> @Valid passes -> the dedup loop (LearnerSelfMarkController :40-47) NPEs on p.partId() -> catch-all (:224-230) 500 internal_error",
+    "binding_precedence": "Jackson binds the WHOLE document before the handler: a non-null element's binding failure (bad uuid -> InvalidFormatException) beats the loop NPE -> 400 malformed_body",
+    "constraint_non_cascade": "@Min/@Max/@NotNull on PartSelfMark components never fire without the cascade — the pre-existing disclosed 'inferred' @Max(99) pin (marksAwarded 100 -> 400 validation_failed) remains a known disclosed divergence, untouched by this card"
+  },
+  "request": "independent review + R0 verdict + id ratification at PR time; authors never self-merge"
+}

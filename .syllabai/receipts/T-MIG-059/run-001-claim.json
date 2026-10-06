@@ -1,0 +1,61 @@
+{
+  "task": "T-MIG-059",
+  "run": "run-001-claim",
+  "timestamp": "2026-10-06T04:33:45Z",
+  "operator_directive": {
+    "trace": "1a10f743c93c27b9",
+    "word": "F-0/F-1 binding-law",
+    "channel": "zai-web",
+    "session": "web-752465e5-2985-476b-86a3-0bf785493dc5"
+  },
+  "claim": {
+    "branch": "t-mig-059/r0",
+    "cut_from": "1aea8bc (origin/main at claim time; #94 merge tip, CI green)",
+    "claim_commit_contents": "card + run-001-claim.json + worklog append (claim-in-first-commit, §2)",
+    "pushed_immediately": true,
+    "reason": "the T-MIG-055 wipe lesson — claim evidence must be register-visible before any fix work"
+  },
+  "zero_collision_scan": {
+    "at_commit": "1aea8bc",
+    "remote_heads_t-mig-059": "zero (ls-remote)",
+    "syllabai_mentions_of_059": "zero (grep .syllabai/)",
+    "open_prs": [
+      {"number": 95, "owner": "r9-hubx", "task": "T-MIG-061 Wave-6 tranche-1", "overlap": "none — disjoint fence; hands off"}
+    ],
+    "id_band": "058 taken (merged #94 at 04:27:10Z), 060 reserved (Wave-6 prep), 061 taken (#95) — 059 next free non-reserved"
+  },
+  "findings_of_record": {
+    "source": "PR #89 comment 6008621186 (2026-10-06T03:17:21Z, the REQUEST_CHANGES verdict; frozen source verified at 6cad6ef when filed)",
+    "F-0": {
+      "name": "binding-class collapse",
+      "vector": "{\"courseLabel\": 123}",
+      "today": "400 validation_failed 'courseLabel: request invalid'",
+      "frozen": "400 malformed_body 'request body is not readable (check field types and enum values)' — Jackson binds the whole document BEFORE @Valid; a binding failure anywhere beats every constraint (R-1 fleet convention; teachermarking classifyBodyError :129 reference)",
+      "law": "invalid_type with received not in {undefined, null} (and invalid_string) => malformed"
+    },
+    "F-1": {
+      "name": "missing-field message",
+      "vector": "{} on any POST body; and explicit null on a @NotBlank property",
+      "today": "'courseSlug: request invalid'",
+      "frozen": "'courseSlug: must not be blank' — invalid_type received undefined/null on a @NotBlank property renders the jakarta default (GlobalExceptionHandler :158-165 getDefaultMessage()); 'request invalid' is the :163 orElse reserved for the root-null case",
+      "law": "invalid_type(null/undefined) => validation_failed 'field: must not be blank' (the #93 review nit-3 divergence, same class)"
+    },
+    "already_landed_siblings": "F-2 (whitespace @NotBlank envelope) + F-3 (category-null 201) landed via T-MIG-056 / PR #93 merged 9ba1c39 — this card completes the four-finding set"
+  },
+  "prior_art": {
+    "source": "closed PR #90 branch t-mig-052/r0-t2 @ 6e9bfcf (superseded by #89's merge; full disclosure credit per the closure ruling)",
+    "extracted": "apps/api/src/routes/classroom/index.ts — classifyBodyError (:121 isBinding detection; :136-137 invalid_type(null) -> 'must not be blank' rendering)",
+    "reshape": "onto the merged routes/classroom.ts layout; the #93-adopted branches kept byte-exact (too_small defensive, custom verbatim, too_big tightened cast)"
+  },
+  "verification_before_claim": {
+    "contracts_re-read": "no format checks on the four request schemas (EnrollRequest email is @NotBlank @Size(254) only — no .email()) => invalid_string defensive-only; every REQUIRED field is @NotBlank => the 'must not be blank' rendering is universally correct on this band",
+    "golden_scan": "zero classroom golden cases pin either class (the 3 malformed_body golden cases are w3-attempt — different band); zero golden contact planned",
+    "existing_pins_scan": "zero classroom route pins assert 'request invalid' — no divergent pin needs rewriting",
+    "reference_classifiers": "teachermarking :129 and selfmark :59 (post-#94) carry the identical isBinding convention — fleet consistency held"
+  },
+  "planned_verification": {
+    "gates": "typecheck x4 exit 0; bun test apps/api packages EXACT delta vs the measured 1aea8bc baseline (per #94 receipt: 1094/0/13skip/3302 — re-measured locally at the claim commit); golden --selftest OK",
+    "pins_planned": "{} -> 'courseSlug: must not be blank'; {name: null} -> 'name: must not be blank'; {courseLabel: 123} -> malformed_body verbatim; mixed binding-vs-constraint -> malformed_body (Jackson whole-document order); publish category 123 -> malformed_body; enroll {} -> 'email: must not be blank'",
+    "review": "independent adversarial subagent review posted on-thread before merge; authors-never-self-merge held in substance per the standing delegated authority"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "task_id": "T-MIG-056",
+  "kind": "CLAIM-RECEIPT (registered follow-up: classroom @NotBlank envelope refinement + the maximum nit)",
+  "run": "001",
+  "timestamp": "2026-10-06T03:42:19Z",
+  "agent": "Super Z (r0 lane, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "provenance": "operator standing directive (trace 1a10f3edfafedd15): 'Check if R0 has merged or not. If not, review+merge yourself and continue working' — R0 verified fully merged-out this session (PR #77 5db0667, PR #89 9032b9e, PR #88 via 4fed5ba; housekeeping a695c92 landed by the R0-integrator lane; the only open PR #84 is r3a's in-flight T-MIG-053 t1, hands-off). The register held exactly one unclaimed item: the T-MIG-052 DONE-card follow-up, claimed here under 'continue working'.",
+  "claim": {
+    "branch": "t-mig-056/r0",
+    "base": "1540ffc",
+    "claim_commit_is_this_commit": true,
+    "item_of_record": "T-MIG-052 DONE card follow-up note (commit a695c92) + PR #89 ratification verdict nits (1) and (2) (issue comment 2026-10-06T03:32:27Z)",
+    "zero_collision_scan": "ls-remote: zero t-mig-056* heads; grep .syllabai/: zero T-MIG-056..059 mentions; open PRs: #84 only (no overlap); the follow-up item is referenced only by its registration (052 card + worklog) — no claim, no branch, no receipt anywhere",
+    "prior_art": "closed #90 branch t-mig-052/r0-t2 @ 6e9bfcf — the disclosed contracts amendment (notBlank refine x4 max-first/refine-last + category .nullish()), adopted verbatim with T-MIG-056 provenance; #90 closure ruling credits the branch as corroborating prior art"
+  },
+  "scope": [
+    "packages/contracts/src/classroom.ts: the four request schemas swap bare .min(1) for the auth.ts notBlank refine (@NotBlank-exact); category widens .optional() -> .nullish(); header amendment comment",
+    "apps/api/src/routes/classroom.ts: validationMessage gains the custom-issue branch (surfaces the refine's verbatim jakarta message); defensive `maximum ?? 0` dropped (nit 2); header note",
+    "apps/api/test/classroom/routes.test.ts: :340 blank-name and :703 trimmed-blank pins rewritten to the frozen validation_failed envelope (fail-closed assertions kept); new pin: category explicit null -> 201 GENERAL",
+    "packages/contracts/src/classroom.test.ts: the prior art's whitespace + null pins"
+  ],
+  "out_of_scope_register": "F-0 (binding-class collapse -> frozen malformed_body) and F-1 (missing-field message -> frozen 'field: must not be blank') stay OPEN per the ratification verdict's registration — the r0 lane's REQUEST_CHANGES findings of record (PR #89 thread 03:17:21Z); ready prior art: #90's routes classifier (:121/:136-137). This card does not re-litigate the ratified #89 merge.",
+  "gates_at_claim": "bookkeeping-only commit (card + receipt + worklog): zero code touched — gates inherit the base 1540ffc state (CI verify+hub green per the round-11 ledger intake)"
+}

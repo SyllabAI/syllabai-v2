@@ -219,6 +219,47 @@ describe("POST /api/v1/learners/me/attempts/:id/self-mark", () => {
     expect(body.message).toBe("self-mark carries no part marks");
   });
 
+  test("parts [null] → 500 internal_error (ELEMENT-null NPE parity, T-MIG-057 — Jackson binds the null element, no @Valid cascade on the bare List, the loop NPEs before the service)", async () => {
+    const sql = fakeSql(baseRoutes());
+    const res = await makeApp(asStudent, sql).request(`/api/v1/learners/me/attempts/${ATTEMPT_ID}/self-mark`, {
+      method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ parts: [null] }),
+    });
+    expect(res.status).toBe(500);
+    const body = await res.json();
+    expect(body.error).toBe("internal_error");
+    expect(body.message).toBe("an internal error occurred");
+    expect(sql.queries.length).toBe(0); // the loop precedes the service — the lock never ran
+  });
+
+  test("parts [null, bad-uuid part] → 400 malformed_body (whole-document Jackson binding order — the non-null element's binding failure beats the loop NPE, T-MIG-057)", async () => {
+    const res = await makeApp(asStudent).request(`/api/v1/learners/me/attempts/${ATTEMPT_ID}/self-mark`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ parts: [null, { partId: "not-a-uuid", marksAwarded: 1 }] }),
+    });
+    expect(res.status).toBe(400);
+    expect((await res.json()).error).toBe("malformed_body");
+  });
+
+  test("parts [{partId:null, marksAwarded:1}] → 400 validation_failed (NESTED null stays with the classifier — DEPTH PIN, T-MIG-058; the frozen full answer bad_request via the exact-parts gate is register-open F-B)", async () => {
+    // depth-pin law: the 057 NPE-parity throw covers EXACTLY parts[i]
+    // (path length 2). A nested null (partId) binds fine in the frozen core
+    // (no @Valid cascade; @NotNull at :55 never fires; HashMap.put(null,v)
+    // is legal at :44) and dies at the service's exact-parts gate — 400
+    // bad_request. The port's zod schema rejects the nested null upstream;
+    // the pre-057 classifier posture (validation_failed "must not be null")
+    // is restored here — the guard must NOT swallow it into a 500.
+    const res = await makeApp(asStudent).request(`/api/v1/learners/me/attempts/${ATTEMPT_ID}/self-mark`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ parts: [{ partId: null, marksAwarded: 1 }] }),
+    });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("parts[0].partId: must not be null");
+  });
+
   test("unknown attempt (valid parts) → 404 not_found (frozen NotFoundException parity — the captured 500 was the null-parts NPE, T-MIG-053)", async () => {
     const sql = fakeSql(baseRoutes().map((r) => (r.match === LOCK ? { match: LOCK, rows: [] } : r)));
     const res = await makeApp(asStudent, sql).request(`/api/v1/learners/me/attempts/${ATTEMPT_ID}/self-mark`, {

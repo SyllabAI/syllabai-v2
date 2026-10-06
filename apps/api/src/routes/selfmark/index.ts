@@ -125,6 +125,44 @@ export function createLearnerSelfMarkRouter(module: ReturnType<typeof buildSelfM
       if (verdict.message.startsWith("duplicate part in self-mark:")) {
         return c.json(apiError(400, "bad_request", verdict.message), 400);
       }
+      // T-MIG-057: a null LIST ELEMENT is not a validation event in the frozen
+      // core. Jackson binds {"parts":[null]} into the bare List (SelfMarkRequest
+      // :59 declares no @Valid container-element cascade), @Valid passes, and
+      // the dedup loop NPEs on the first null element (LearnerSelfMarkController
+      // :40-47) -> catch-all 500 internal_error BEFORE the service. Whole-
+      // document binding order is preserved: shapes that ALSO carry a non-null
+      // binding failure (e.g. a malformed partId uuid) already returned
+      // malformed_body above via isBinding — Jackson binds the whole document
+      // before the handler runs. Constraint-class issues on non-null elements
+      // (e.g. @Max(99)) never fire in the frozen core without the cascade, and
+      // the loop NPE precedes them regardless, so any element-level null issue
+      // here routes to the same NPE-parity throw as the whole-field guard below.
+      // T-MIG-058 DEPTH PIN: "element-level" means EXACTLY parts[i] — the
+      // guard must not swallow NESTED nulls (parts[i].partId / parts[i]
+      // .marksAwarded, path length > 2). The frozen core binds a nested null
+      // (no cascade) and answers from the service: HashMap.put(null, v) is
+      // legal (LearnerSelfMarkController :44), so a null partId survives the
+      // loop and dies at the exact-parts gate — 400 bad_request
+      // ("self-mark must cover exactly the attempt's parts"); a null
+      // marksAwarded is data-dependent (400 exact-parts first, or unboxing
+      // NPE -> 500 in the bound loop). The port's zod schema rejects nested
+      // nulls upstream (pre-existing classifier posture: 400 validation_failed
+      // "field: must not be null"), which the depth pin restores; the FULL
+      // frozen emulation (bad_request via the exact-parts gate) is
+      // register-open as T-MIG-058 F-B — not absorbed here.
+      const elementNullIssue = parsed.error.issues.some(
+        (i) =>
+          i.code === "invalid_type" &&
+          (i as { received?: string }).received === "null" &&
+          i.path[0] === "parts" &&
+          typeof i.path[1] === "number" &&
+          i.path.length === 2,
+      );
+      if (elementNullIssue) {
+        throw new Error(
+          "selfmark controller NPE parity: request.parts() carries a null element (LearnerSelfMarkController.java:43 — no @Valid cascade on List<PartSelfMark>)",
+        );
+      }
       return c.json(apiError(400, "validation_failed", verdict.message), 400);
     }
     // T-MIG-053 frozen controller law (LearnerSelfMarkController.java:42-43):
