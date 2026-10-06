@@ -115,6 +115,17 @@ interface GoldenCase {
   // mirrored from the gated runner's interface; consumed via
   // declaredLimiter429 imported from ../runner.ts (zero drift).
   justified?: boolean;
+  // T-MIG-078 (F-2): the capture-declared learner identity — a
+  // construction-only posture marker (the comparator never sees it, the
+  // tranche precedent). "w4-capture" routes the case to the capture
+  // session's learner (learner_40@example.invalid — the account the
+  // corpus's OWN w4-register-learner-201 seq-1 case registers), so the
+  // capture's learner-scoped tallies become reachable instead of
+  // accumulating on the ONE shared student (the review's F-2 leakage). The
+  // declaration reroutes ONLY the default student resolution (the
+  // substitute posture) — unauthed/403 postures keep their declared
+  // bearers, and the gated runner is untouched (tools-side routing only).
+  learner?: string;
 }
 
 interface CaseResult {
@@ -228,6 +239,35 @@ async function runRichStage(stage: "accounts" | "attempts"): Promise<string> {
   return admin;
 }
 
+// ── T-MIG-078 (F-2): the capture-declared learner identity ──────────────────
+// The corpus's own w4-register-learner-201 (seq 1) registers the capture
+// session's learner (learner_40@example.invalid — the committed request body
+// IS the provenance; its capture user.id equals the w4 captures' learnerId).
+// Declaring cases replay against THAT account. The mint is LAZY (at the
+// first declaring case — strictly after the seq-1 register case, whose 201
+// expect would break if the account pre-existed) and LOGIN-ONLY with the
+// account's own committed password: the harness NEVER registers a second
+// identity (fail-fast honest harness error instead — the T-MIG-063
+// never-a-degraded-replay doctrine).
+let captureLearnerToken: string | null = null;
+async function ensureCaptureLearner(): Promise<string> {
+  if (captureLearnerToken) return captureLearnerToken;
+  const login = await fetch(new URL("/api/v1/auth/login", TARGET), {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ email: "learner_40@example.invalid", password: "capture-w4-runner" }),
+  });
+  if (login.status !== 200) {
+    fail(
+      `capture-learner login failed (${login.status}) — the corpus's own w4-register-learner-201 (seq 1) must register learner_40@example.invalid before any learner-declaring case replays (T-MIG-078; fail-fast, never a silent second identity)`,
+    );
+  }
+  const body = (await login.json()) as { accessToken: string };
+  captureLearnerToken = body.accessToken;
+  console.log("[ci-replay] capture-declared learner resolved (learner_40@example.invalid — the w4 capture session's identity, T-MIG-078)");
+  return captureLearnerToken;
+}
+
 // ── token minting through the HONEST api surface (v2 tool verbatim) ──
 async function ensureUser(
   email: string,
@@ -284,7 +324,14 @@ async function replayOne(kase: GoldenCase, teacher: string, student: string, adm
   const headers: Record<string, string> = { "content-type": "application/json" };
   const posture = authPosture(kase);
   if (posture === "substitute" || posture === "re-mint") {
-    const bearer = routeRuleBearer(kase.name, kase.path, teacher, student, admin);
+    // T-MIG-078 (F-2): a capture-declared learner reroutes the DEFAULT
+    // student resolution only (the substitute posture — every declaring
+    // case carries {{TOKEN}}); unauthed/403 postures and the admin rule
+    // keep the route-rule bearer exactly as before.
+    const bearer =
+      kase.learner === "w4-capture" && posture === "substitute"
+        ? await ensureCaptureLearner()
+        : routeRuleBearer(kase.name, kase.path, teacher, student, admin);
     if (bearer === "") {
       return {
         name: kase.name,
@@ -481,6 +528,10 @@ function plan(): void {
   for (const k of empty) console.log(`    empty-tranche: ${k.name} -> ${k.path}`);
   const adminEmpty = empty.filter((k) => k.path.includes("/api/v1/admin/"));
   console.log(`  empty-tranche admin-path cases (must be 0 — the staging has not run in that tranche): ${adminEmpty.length}${adminEmpty.length ? " — " + adminEmpty.map((k) => k.name).join(", ") : ""}`);
+  // T-MIG-078 (F-2): the capture-declared learner census — WHICH cases
+  // replay as the w4 capture identity (deterministic, CI-checkable).
+  const declared = seed.filter((k) => k.learner === "w4-capture");
+  console.log(`  learner-declared cases (T-MIG-078, replay as the w4 capture identity): ${declared.length}${declared.length ? " — " + declared.map((k) => k.name).join(", ") : ""}`);
 }
 
 // --union: merge the two posture reports into the standing re-proof verdict.
@@ -584,6 +635,27 @@ function selftest(): number {
   t(
     "corpus invariant: empty-tranche cases never resolve to /api/v1/admin/",
     corpusEmpty.length > 0 && corpusEmpty.every((k) => !k.path.includes("/api/v1/admin/")),
+  );
+  // 2c. T-MIG-078 (F-2): the learner declaration — corpus invariants. The
+  // declaring set is exactly the card's seven named cases; every one is a
+  // student-bearer substitute case in the seed posture (the declaration
+  // reroutes the DEFAULT bearer only; prod never sees it); none declares an
+  // unauthed/403 name whose capture pins a non-learner bearer.
+  const declared = (loadCases() as GoldenCase[]).filter((k) => k.learner === "w4-capture");
+  t(
+    "learner-declared: exactly the seven T-MIG-078 cases",
+    declared.length === 7 &&
+      declared.every((k) =>
+        /^(w4-flashcard-rating-know-201|w4-flashcard-rating-know-2-201|w4-flashcard-rating-still-learning-201|w4-attempt-mcq-practice-201|w4-course-stats-practiced-200|w4-state-practiced-200|w3-history-after-submit-200)$/.test(k.name),
+      ),
+  );
+  t(
+    "learner-declared: seed posture only, no unauthed/403 names (the declaration reroutes the default student bearer only)",
+    declared.every((k) => !REALDATA.test(k.name) && !k.name.includes("unauthed") && !k.name.endsWith("-403")),
+  );
+  t(
+    "learner-declared: every declaring case substitutes {{TOKEN}} (the rerouted resolution)",
+    declared.every((k) => JSON.stringify(k.request?.headers ?? {}).includes("{{TOKEN}}")),
   );
   // 3. multipart import wiring (the gated runner builder, unchanged)
   const mf: GoldenCase = {
