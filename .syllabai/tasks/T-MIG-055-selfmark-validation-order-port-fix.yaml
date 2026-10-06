@@ -1,0 +1,119 @@
+version: 1
+task:
+  id: T-MIG-055
+  title: "Self-mark validation-order port fix — absent/null parts must NPE→500 at the controller boundary (LearnerSelfMarkController.java:42-43), not 400 at the service gate; recovers golden case w3-selfmark-unknown-attempt-500"
+  owner: "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
+  status: DONE # 2026-10-06: PR #91 merged 9bebf7e; live re-proof run 37408914789 — w3-selfmark-unknown-attempt-500 RECOVERED (120/177 union, RED at union only per doctrine); receipt run-002-union-verdict.json + run-002-union.md
+  claimed_at: "2026-10-06T03:09:23Z"
+  priority: P1 # port-lane defect repair ("blocking-class-adjacent" per the T-MIG-050 run-002 receipt); single-surface divergence, does not block other lanes
+  wave: 4
+  deps: [T-MIG-032, T-MIG-047]
+  operator_directive: >
+    "claim the selfmark validation-order fix" (trace 1a10f2554257a059,
+    2026-10-06). The on-record name comes from the T-MIG-050 run-002 union
+    receipt (merged 414f4a6): "unfiled port-fix candidates from the
+    surviving genuine findings: selfmark validation-order (400-vs-500) is
+    the next blocking-class-adjacent item" — a candidate NAME in receipt
+    text, never a card. Originally filed as T-MIG-053 (claim commit
+    9e1c94a, 2026-10-06T03:09:23Z); REFILED under T-MIG-055 — the 053 id
+    was won 19 minutes earlier by r3a's in-flight Wave-5 claim (PR #84,
+    branch t-mig-053/r3a, claim 2026-10-06T02:50:40Z, r1 claim-review
+    APPROVE) per §2.1 earliest-claim-wins and the T-MIG-048/050
+    ruling-of-record precedent (R0s-ROUND-10a). Executed under the
+    operator's standing delegated authority (review+merge yourself /
+    continue working precedents: 260f452, 39ee5d5, 190706e, 56a8baa).
+  execution_record: >
+    FROZEN DERIVATION (read at syllabai-core @ 6cad6ef, 2026-10-06): the
+    golden case w3-selfmark-unknown-attempt-500 POSTs body {} — Jackson
+    binds SelfMarkRequest(parts=null, comment=null); SelfMarkRequest
+    declares NO constraint on the parts list itself, so @Valid passes (the
+    @NotNull/@Min/@Max constraints live on the PartSelfMark ELEMENTS, of
+    which there are none); the controller's dedup loop
+    (LearnerSelfMarkController.java:42-43, "for (PartSelfMark p :
+    request.parts())") then NPEs on the null list; the NPE is unmapped and
+    falls to the GlobalExceptionHandler catch-all (:224-230) which serves
+    the opaque 500 internal_error "an internal error occurred". The
+    service is NEVER reached — LearnerSelfMarkService.java:74-76 (the
+    empty-marks BadRequestException gate) only fires for an empty LIST
+    (parts: []), which the TS port already reproduces exactly. The
+    unknown-attempt attribution in the golden case description (finding
+    F-a: "core returns 500 (not 404) on unknown attempt self-mark") is
+    mechanistically imprecise: with VALID parts the frozen service maps
+    the unknown attempt to NotFoundException → 404 (:79-80) — which the
+    port already pins (routes.test.ts "unknown attempt → 404"). The
+    captured 500 is purely the null-parts NPE. DIVERGENCE (live replay
+    census, run 37398183529 verdict 108/170): [seed]
+    w3-selfmark-unknown-attempt-500 — TS 400 bad_request "self-mark
+    carries no part marks" vs frozen 500 internal_error; the port routes
+    {} through selfMarkRequestSchema (nullish-accepting by design) into
+    the service gate. FIX (R-053-A, routes/selfmark/index.ts only): after
+    the schema parse succeeds (binding + element validation, the frozen
+    Jackson→@Valid order) and BEFORE the dedup loop, a nullish parsed
+    parts (absent or JSON-null) throws a plain Error that escapes the
+    handler to the app error boundary — index.ts onError (:314-322)
+    serves apiError(500, "internal_error", "an internal error occurred"),
+    the byte-equivalent of the frozen catch-all envelope
+    ({status,error,message,timestamp}; timestamp tolerated by the golden
+    comparator). Mechanism parity: frozen = uncaught NPE → advice; port =
+    uncaught Error → onError. The service, the contracts schema
+    (nullish-accepting IS the Jackson-parity binding law, pinned by
+    contracts tests :204-205), and every other route are untouched. The
+    route's now-dead "parts: null → must not be null" classifier branch
+    and the CAPTURED QUIRK header are updated to record the resolved R0
+    call (comment-only, disclosure hygiene). Contracts comment updated
+    comment-only ("divergence call = R0" → resolved frozen-faithful as
+    500, T-MIG-053). Test pins added (routes.test.ts, the file that
+    already hosts the self-mark router tests): {} → 500 internal_error
+    exact envelope (the captured golden shape), parts:null → 500 (same
+    NPE), parts:[] → 400 "self-mark carries no part marks" (service gate,
+    previously unpinned at the HTTP surface); the stale "captured 500
+    stays disclosed for R0" title on the 404 test is updated (the
+    posture itself — 404 with valid parts — is unchanged and confirmed
+    frozen-faithful). No fake-SQL fixture regex changes: the NPE-parity
+    throw precedes any SQL, so no route regex text moves.
+  cross_slice_contract: >
+    CONSUMES: selfMarkRequestSchema nullish-accepting parts (T-MIG-032
+    tranche-2, Jackson-parity binding) and the app error boundary's
+    internal_error envelope (index.ts :314-322). PROVIDES: the self-mark
+    surface's absent/null-parts posture is frozen-faithful at the HTTP
+    boundary; the w3-selfmark-unknown-attempt-500 golden case recovers in
+    the next replay dispatch (expected 109/170 on an otherwise-identical
+    census, modulo 429 pacing jitter).
+scope:
+  allowed:
+    - "apps/api/src/routes/selfmark/index.ts"
+    - "packages/contracts/src/assessment.ts (comment-only: resolution note on the captured-behaviour flag; zero schema behavior change)"
+    - "apps/api/test/smartmark/routes.test.ts (new self-mark boundary pins + stale test title/comment update; no SQL fixture regex changes)"
+    - ".syllabai/tasks/T-MIG-055-selfmark-validation-order-port-fix.yaml (this file)"
+    - ".syllabai/receipts/T-MIG-055/**"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "apps/api/src/services/selfmark/** (the service's empty-marks gate is frozen LearnerSelfMarkService.java:74-76 parity and stays)"
+    - "golden/** (corpus, comparator, runner, workflows — zero contact; the golden case is frozen law and is never rewritten)"
+    - "packages/db/** (no schema surface)"
+    - "packages/contracts/** other than the comment-only assessment.ts note; packages/shared/** (no wire-contract change — the schema already accepts what frozen Jackson accepts)"
+    - "apps/api/src/routes/** other than selfmark/index.ts; apps/api/src/index.ts (the error boundary is consumed as-is)"
+    - "upstream syllabai-core / syllabai-hub (C1)"
+    - "standing Neon branches (read-only doctrine)"
+base:
+  repo: "syllabai-v2 (branch t-mig-055/r0 — renamed from the collision-cut t-mig-053/r0; cut off origin/main 414f4a6, intake 855bef9 merged); frozen ref: syllabai-core @ 6cad6ef (cloned and read for the derivation)"
+basis: >
+  Operator directive "claim the selfmark validation-order fix" (trace
+  1a10f2554257a059) interpreted through the T-MIG-050 run-002 receipt's
+  "next" register line and the union census finding (w3-selfmark-unknown-
+  attempt-500, 400-vs-500). COLLISION DISCLOSURE (2026-10-06): originally
+  claimed as T-MIG-053 after verifying tasks/ and receipts/ on main
+  (414f4a6) — but r3a's in-flight claim PR #84 (branch t-mig-053/r3a,
+  created 02:50:40Z, r1-reviewed APPROVE) predates this lane's claim
+  (03:09:23Z); the free-id check missed OPEN PRs and remote branches, a
+  process gap this card records. Re-filed as T-MIG-055 (next free id —
+  054 held by sme-package-contracts, no 055 anywhere, Wave 5 ends at 053
+  and Wave 6 starts at 060); branch renamed t-mig-053/r0 → t-mig-055/r0
+  (old remote head deleted, zero force-push, no other agent built on it);
+  the r1 claim-review receipt for r3a's 053 stays untouched under
+  receipts/T-MIG-053/. Filing law: docs/AGENT_COORDINATION §2
+  (claim-in-first-commit), §4 (yaml format); T-MIG-048/050
+  ruling-of-record precedents (receipt-named-candidate → next-free-id;
+  earliest-claim-wins); briefing §0 credential
+  law; GOLDEN_MASTER capture-as-is law (the golden case body is never
+  edited — the port moves).

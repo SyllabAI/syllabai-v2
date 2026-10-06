@@ -192,7 +192,34 @@ describe("POST /api/v1/learners/me/attempts/:id/self-mark", () => {
     expect(body.message).toBe("malformed request");
   });
 
-  test("unknown attempt → 404 not_found (port posture; the captured 500 stays disclosed for R0)", async () => {
+  test("body {} (parts absent) → 500 internal_error — NPE parity (captured w3-selfmark-unknown-attempt-500, T-MIG-053)", async () => {
+    const res = await makeApp(asStudent).request(`/api/v1/learners/me/attempts/${ATTEMPT_ID}/self-mark`, {
+      method: "POST", headers: { "content-type": "application/json" }, body: "{}",
+    });
+    expect(res.status).toBe(500);
+    const body = await res.json();
+    expect(body).toEqual({ status: 500, error: "internal_error", message: "an internal error occurred", timestamp: "2026-10-05T00:00:00Z" });
+  });
+
+  test("parts null → 500 internal_error (same NPE — binding succeeds, @Valid passes, loop iterates null, T-MIG-053)", async () => {
+    const res = await makeApp(asStudent).request(`/api/v1/learners/me/attempts/${ATTEMPT_ID}/self-mark`, {
+      method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ parts: null }),
+    });
+    expect(res.status).toBe(500);
+    expect((await res.json()).error).toBe("internal_error");
+  });
+
+  test("parts [] → 400 bad_request 'self-mark carries no part marks' (empty list reaches the service gate, LearnerSelfMarkService :74-76)", async () => {
+    const res = await makeApp(asStudent).request(`/api/v1/learners/me/attempts/${ATTEMPT_ID}/self-mark`, {
+      method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ parts: [] }),
+    });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("bad_request");
+    expect(body.message).toBe("self-mark carries no part marks");
+  });
+
+  test("unknown attempt (valid parts) → 404 not_found (frozen NotFoundException parity — the captured 500 was the null-parts NPE, T-MIG-053)", async () => {
     const sql = fakeSql(baseRoutes().map((r) => (r.match === LOCK ? { match: LOCK, rows: [] } : r)));
     const res = await makeApp(asStudent, sql).request(`/api/v1/learners/me/attempts/${ATTEMPT_ID}/self-mark`, {
       method: "POST",

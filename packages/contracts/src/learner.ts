@@ -230,6 +230,18 @@ export type ReviewView = z.infer<typeof reviewViewSchema>;
  * estimated rows MUST render with "≈" (never as fact). LocalDate fields
  * serialize ISO local dates (java.time.LocalDate.toString — plain string
  * per the javaInstantSchema posture; golden pins exact forms).
+ *
+ * entryDeadline/resultsDate are NULLABLE on the wire: the record declares
+ * plain LocalDate (:27-28, Jackson renders JSON null) and the V62
+ * exam_series_calendar columns are `entry_deadline DATE` / `results_date
+ * DATE` — both commented "nullable: not always announced" (V62 :21-22),
+ * while window_start/window_end are NOT NULL and stay z.string(). The
+ * frozen ExamSeriesImportService null-checks both (:112/:116), so null is
+ * a modeled state, not a corner. Widened per the two-lane F2 register
+ * item (T-MIG-043/run-003-collision-audit.json finding F2: r1 audit +
+ * w0a's 043 FIDELITY NOTE; the W4 capture never exercised a null-deadline
+ * series). entryDeadlinePassed already encodes the null law: null
+ * deadline can never be "passed".
  */
 export const courseExamTargetViewSchema = z.object({
   courseSlug: z.string(),
@@ -238,8 +250,8 @@ export const courseExamTargetViewSchema = z.object({
   label: z.string(),
   windowStart: z.string(),
   windowEnd: z.string(),
-  entryDeadline: z.string(),
-  resultsDate: z.string(),
+  entryDeadline: z.string().nullable(),
+  resultsDate: z.string().nullable(),
   estimated: z.boolean(),
   daysToWindowStart: z.number().int(),
   daysToWindowEnd: z.number().int(),

@@ -1,0 +1,49 @@
+{
+  "task": "T-MIG-050 run-002 — FIRST POST-FIX FULL-UNION VERDICT (42703 class RETIRED)",
+  "agent": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operator_directive": "trace 1a10f1e0c861dfb1: \"poll the replay and file its union receipt\" — following the T-MIG-050 merge; dispatched manually at merge time (run 37398183529 on 56a8baa) before the daily 02:30 UTC schedule took over",
+  "date": "2026-10-06",
+  "ci_run": "37398183529 (main @ 56a8baa — the T-MIG-050 fix live in the replayed lineage)",
+  "timing": "01:14:51Z → 01:16:27Z (96s end-to-end: provision, Pass A reset+boot+155, Pass B boot+15, union verdict, read-only proof, drop+404-verify)",
+  "union_verdict": {
+    "total": 170,
+    "pass": 108,
+    "seed": "95/155",
+    "prod_realdata": "13/15",
+    "delta_vs_run002": "+3 (105 → 108; five recovered, two new)",
+    "gate": "job RED on any fail — 62 failures FILED, never auto-fixed, never tolerated (doctrine held); evidence survived the RED run again (seed.json, prod.json, union.md, both boot logs uploaded)"
+  },
+  "headline": "THE 42703 CLASS IS RETIRED: boot-seed.log contains ZERO 42703/exam_paper_id errors (run-002's log carried the stack traces); the smartmark family is ALL-PASS on seed for the first time — w3-smartmark-unknown-attempt-404 now yields the honest 404 (the join select runs, empty result, correct refusal) where run-002 crashed at the broken select before the existence check; w3-smartmark-unauthed-401, w3-smartmark-feedback-unauthed-401, w3-teacher-marking-smartmark-batch-unauthed-401 all PASS.",
+  "recovered_5": {
+    "w3-smartmark-unknown-attempt-404": "T-MIG-050 (this fix) — direct proof: the attempt→question join select executes cleanly and the 404 path is reached",
+    "w3-sme-status-student-403 + w3-sme-status-teacher-403": "T-MIG-033 tranche-3 landing (PR #77, merged by the round-12 sweep before this run) — SME status routes now mounted, 403 matches frozen; run-002's 404-vs-403 finding (genuine port finding #4) is RESOLVED",
+    "w4-course-stats-empty-200 + w4-state-empty-200": "the learner-me lineage carried by main (T-MIG-043 tranche-1 #74 + T-MIG-041 tranche-2 #69) — routes now serve the empty-state shape"
+  },
+  "new_failures_2": {
+    "auth-register-admin-refused-403 + auth-register-bad-email-400": "429 pacing-boundary jitter, NOT code regressions — the identity-budget limiter exhausted its window two cases earlier this run; same class as the standing auth-register-429 bucket (8 seed cases this run). The R6 pacing decision (budget seeding / pre-warm) remains the disposition."
+  },
+  "census_by_class_62": {
+    "H2_flyway_seed_row_families": "STILL THE MAJORITY — curriculum subjects/versions [] , teacher-curriculum [], questions families/topics [], w3-attempt 404-on-question, w4 flashcard/agenda/target-series/exam-series 404s (apply-reset wipes; the Flyway-seed posture is not replayed by the current instrument) — R0/R6 third-posture ruling remains THE big lever, est. 30+ cases",
+    "identity_pins": "w4-register-learner-201 (minted uid vs captured), auth-me-with-bearer-200 (user_21 vs captured user_10), w3-history-after-submit/empty (learnerId/email), w4-state-empty-bearer-401, w4-agenda-malformed-bearer-401 — owning-lane amendments still pending",
+    "rate_limit_pacing": "8 auth-register-* cases 429 under replay pacing — R6 decision",
+    "genuine_findings_surviving": [
+      "w3-selfmark-unknown-attempt-500: v2 400 'self-mark carries no part marks' vs frozen 500 — validation-order divergence (port fix required, unfiled card)",
+      "w3-marking-throughput-teacher-200: answersByState KEY-ORDER divergence — comparator declared-unordered tolerance gap or case amendment (R6)",
+      "w3-attempt-missing-fields-400 (+structured variant): v2 validation_failed 'questionId: must not be null' vs captured malformed_body — envelope-class case/port question",
+      "question-assets-unknown-404: <non-json> vs <non-json:0 bytes> — empty-body asset-404 shape, minor case amendment candidate"
+    ],
+    "realdata_drift": "content-docs-teacher{-detail}-realdata-200 (prod 2) — live pilot data drift, R6 re-capture or tolerance"
+  },
+  "instrument_integrity": {
+    "provision": "console-mirror fallback path (api.neon.tech unreachable on runners — T-MIG-046 disclosed posture)",
+    "evidence_preservation": "T-MIG-047 fix verified AGAIN live: full artifact set on a RED run",
+    "read_only_proof": "success — runner wrote nothing to repo or corpus",
+    "zero_residue": "drop + 404-verify steps success; independent Neon API check post-run: 7 standing branches, ZERO ci-replay-* residue",
+    "redaction_live": "no raw control-plane bodies in any fail-path output (T-MIG-048 R-048-A live on main for the first time in this run)"
+  },
+  "next": [
+    "the daily 02:30 UTC schedule owns the census from here; next dispatches should hold 108/170 unless a port lane moves it",
+    "unfiled port-fix candidates from the surviving genuine findings: selfmark validation-order (400-vs-500) is the next blocking-class-adjacent item; envelope-class (missing-fields) and key-order (throughput) need R6 rulings first",
+    "H-2 third-posture ruling + identity-pin amendments + 429 pacing remain operator-visible register items"
+  ]
+}
