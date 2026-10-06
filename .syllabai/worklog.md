@@ -4420,6 +4420,70 @@ Work Log:
 
 Stage Summary:
 - T-MIG-081 claimed of record (this commit). The Class B band is owned with the curriculum half cross-referenced RESOLVED-BY-077 and the learner-me half opened for first-hand root-cause. LANE R0-integrator: WORKING 081 (investigation phase).
+Task ID: T-MIG-080 (claim — operator trace 1a110d934c7c8579 "execute F3")
+Agent: r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)
+Task: Execute the 043 audit register item F3 — salvage the closed-#76 pin families into the learner-me suites (claim commit BEFORE implementation, T-MIG-002 lesson).
+
+Work Log:
+- Pre-claim zero-collision scan @ origin/main d8916c7: zero 080 yamls/heads/worklog mentions; open PRs = #121 (075, disjoint fence). Sibling register item F2 verified ABSORBED of record (r1-contracts PR #86, be47e32, .nullable() + null fixture; casts/FIDELITY NOTE retired transitively by the 066 consolidation 902250d) — F3 is the register's remaining open item.
+- Source pins read first-hand from the #76 head 416c73d (flashcards.test.ts :83/:93/:108/:123/:133/:152/:206 + examseries.test.ts :205/:240/:388).
+- RE-SCOPING DISCOVERY: main carries the jakarta request-constraint layer at the ROUTE level (contracts flashcardRatingRequestSchema + learnerme.ts RATING_DEFAULTS classifier -> 400 validation_failed), not the service — r1's four service-level constraint pins port as ROUTE-level counterparts; the :87 @Valid-first order law holds end-to-end (zod safeParse precedes the service's parse-first law) and gets pinned there. r1's absent-row zero-writes pin re-scopes to main's deliberate blind-single-UPDATE shape (same frozen ifPresent posture, different query shape). Already-pinned pattern laws (:191/:199) NOT re-pinned.
+- Scope: 10 additive pins, test-only fence — routes.test.ts +4, learner-me.test.ts +6; zero service/contract/golden edits. Baseline stamped at claim: 1546 ran / 0 fail / 13 skip / 6036 expect / 82 files EXACT, typecheck x4 exit 0.
+- Card .syllabai/tasks/T-MIG-080-f3-salvage-hygiene-pins.yaml (IN_PROGRESS) + run-001-claim.json on branch t-mig-080/r7a cut @ d8916c7.
+
+Stage Summary:
+- T-MIG-080 claimed and staked; implementation next on this branch, then gates (EXACT delta), run-002 receipt, PR to the desk (authors-never-self-merge).
+
+---
+
+Task ID: T-MIG-080 (run-002: F3 salvage complete — operator trace 1a110d934c7c8579)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)
+Task: Land the F3 salvage — the closed-#76 pin families the learner-me suites lacked (claim 17c202c BEFORE implementation).
+
+Work Log:
+- 10 ADDITIVE PINS landed: routes.test.ts +4 (the jakarta declaration-order constraint block re-scoped 1:1 to the route layer main implements it at: blank-cardId jakarta default, cardId size, subtopicCode size, constraint-beats-unknown-rating-parse) + learner-me.test.ts +6 (enum-NAME storage capture params[4]; exact two-query budget; structure-gate POSITIVE UNIT+SUBTOPIC with a new NODE_UNIT fixture; bad-slug short-circuits-before-ANY-query PUT+DELETE; absent-row single-blind-UPDATE no-op; schedule COMPUTED-NEVER-PERSISTED zero-writes). Already-pinned pattern laws (:191/:199) not re-pinned.
+- THE SALVAGE EXPOSED A LIVE DIVERGENCE: the blank-cardId pin failed — the route classifier's @NotBlank-before-@Size branch was DEAD CODE (zod v3 issues carry no `input`), serving the @Size message for blank strings. FIXED per the auth router's in-repo pattern (T-MIG-017 heritage): contracts learner.ts min(1,'must not be blank') on cardId+subtopicCode + classifier same-field notBlank-message scan (first-field-error law kept; cross-field contamination excluded). Golden exposure verified ZERO (no golden exercises blank strings on these surfaces; captured 400 bodies byte-unchanged). Full disclosure in run-002 + card amendment.
+- Register observations filed (out of pin scope, R0 disposition): rating blank-string posture, whitespace-only-blank posture, note-vote notBlank dead-probe inheritance.
+- GATES: typecheck x4 exit 0; bun test apps/api packages 1556 ran / 1543 pass / 0 fail / 13 skip / 6066 expect = d8916c7 baseline +10 tests/+30 expects EXACT; bun test apps/hub 36/0/291 unchanged; golden --selftest OK; zero golden files; zero Neon.
+- Card T-MIG-080 -> IN_REVIEW (amendment key appended, folded block intact, parse-validated); run-002-f3-salvage.json receipt. PR to the desk (authors-never-self-merge).
+
+Stage Summary:
+- The 043 audit register is now FULLY dispositioned: F1 archived, F2 absorbed (#86), F3 landed here (T-MIG-080), F4 cosmetics no-gate. Awaiting R0 merge.
+
+---
+Task ID: R0-AUTO cron 438940 @ 2026-10-06 11:30Z (19:30 +08) — round-24 desk sweep (2 merges)
+Agent: R0-auto (Super Z, zai-web session discord DM 482bf272)
+Task: Periodic merge-desk sweep (max 2 merges, oldest first); queue was #122 (T-MIG-079) + #123 (T-MIG-080) — both processed end-to-end, max-2 respected.
+
+Work Log:
+- PRE-SWEEP: no wipe (PAT live as SyllabAI via /user, 7th consecutive round); lock protocol clean.
+- INTER-SWEEP CONTEXT: main advanced 226cc2b -> 2eca546 via two direct-main earliest-claim-wins claim commits (487e9ef T-MIG-077 @ 11:12:28Z; 2eca546 T-MIG-078 by r1c; both .syllabai-only); a further T-MIG-081 claim (class-B auth-envelope investigation) rode in direct-main during this round's window and auto-merged through the intake. Register residue now: 076 BLOCKED (operator-side ci.yml patch), 077/078/081 in flight, 079/080 closed this round.
+- MERGE 1 of 2 — PR #122 (T-MIG-079, r3a: W4 learner KG + smart-lesson routes + mount + 13 pins; closes run-002 review F-9's 5 live reds): head fa23ece was ALREADY CURRENT with main tip 2eca546 (the lane pre-intake'd — worklog append-only union at fa23ece), CI verify+hub success at the real head, reviews 0 / comments 0, fence clean (apps/api/src/index.ts ONE flagged mount per the 010/020/021/030/032/041/062 OUT-OF-FENCE precedent, routes/learnerkg.ts NEW, test/learner/kg-routes.test.ts +13 pins, .syllabai/**; zero .java/core/hub/Neon/prod). mergeable=True/clean -> sha-pinned PUT (sha=fa23ece235b5c3ffa2044113572990eb87f5c134) -> **2714e25**, first parent 2eca546, zero race. MAIN CI at 2714e25: verify + hub success.
+- MERGE 2 of 2 — PR #123 (T-MIG-080, r7a: the 043-audit F3 salvage — 10 additive learner-me pins + the two-line notBlank dead-branch fidelity fix): head 01bbf18 carried the lane's own DISCLOSED pre-file rebase force-push (17c202c/560eb59 -> 760d952/01bbf18, ls-remote-guarded, code files byte-identical per the lane's git-diff assert, worklog union parse-asserted) — recorded here as a disclosed lane action; the desk evaluated the CURRENT head only and pushed no force itself. Gate (b) PASS at 01bbf18 (verify+hub success); gate (d) PASS (1 review = the lane's own COMMENTED self-review disclosure, explicitly "not an approval", zero blocking signals; 1 comment = the same intake disclosure). Main had advanced to 2714e25 (#122) -> desk intake f25594d: single worklog conflict, union resolver (merge orientation) 33/33 non-empty conflict lines preserved, zero markers; code files disjoint from 079's band (learnerme.ts / learner-me tests / contracts/learner.ts vs index.ts / learnerkg.ts / kg test) -> zero CODE conflicts. GATES first-hand at f25594d: bun install --frozen-lockfile OK (930 pkgs); typecheck x4 exit 0; bun test apps/api packages 1569 ran / 1556 pass / 0 fail / 13 skip / 6143 expect / 83 files = 1533/6036/82f baseline +13 tests/+77 expects/+1 file (079) +10 tests/+30 expects (080) EXACT; golden --selftest OK. Push fast-forward 01bbf18..f25594d, no force; CI verify+hub success at the real head -> sha-pinned PUT -> **88c1965**, first parent 2714e25, zero race. MAIN CI at 88c1965: verify + hub success.
+- CARDS: T-MIG-079 IN_REVIEW -> DONE (cites #122/2714e25); T-MIG-080 IN_REVIEW -> DONE (cites #123/88c1965; the 043 audit register is now fully dispositioned: F1 archived, F2 #86, F3 here, F4 no-gate cosmetics).
+- QUEUE at sweep close: 0 open PRs.
+
+Stage Summary:
+- Round-24: desk merged #122 (2714e25) and #123 (88c1965) — the W4 learner KG + smart-lesson surfaces are LIVE on main (routes + mount + 13 pins; the D-class replay reds now closable) and the 043-audit F3 salvage is landed (learner-me suite fidelity + the notBlank dead-branch fix; zero golden exposure). Both gates at both merges were first-hand and reconciled EXACT against the 1533/6036/82f baseline with the two bands' declared deltas. Operator-side standing items unchanged: T-MIG-076's one-line ci.yml patch, PAT rotation, NEON_BRANCH_CAPACITY, cron cadence.
+
+---
+
+
+
+---
+
+Task ID: R0-CLASS-B-VERDICT-1 (operator trace 1a110f45897dcdfd "take the Class B auth investigation")
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: T-MIG-081 — root-cause the CLASS B auth-envelope inversion (learner-me bearer-acceptance pair) first-hand; file verdict + disposition; amend the R0-REPLAY-FILING-1 taxonomy of record.
+
+Work Log:
+- EVIDENCE (all first-hand; full chain in receipts/T-MIG-081/run-001-verdict.json): (1) CORPUS — the two learner-me cases were captured from the DEPLOYED FROZEN CORE answering 401 from the filter chain (Boot envelope; SecurityConfig source-ordering proof in T-MIG-040-PREP run-001). (2) INSTRUMENT AT RUN TIME — git show e9ef235:golden/tools/ci-replay.ts:268-286: the pre-#121 hadAuth branch upgraded EVERY declared Authorization value (including 'Bearer not-a-jwt' / 'Bearer ') to a VALID re-minted bearer. (3) TIMELINE — run 37441112330 created 09:10:13Z @ e9ef235; the verbatim-bearer fix a14816c committed 10:44:59Z; #121 merged 11:05:54Z — the run PREDATES the fix by 95 minutes; zero 'verbatim-bearer-posture' occurrences in the run-time runner. (4) INSTRUMENT AT HEAD — ci-replay consults runner authPosture() single-sourced; the two name-declared 401 postures replay their DECLARED values verbatim, selftest-pinned (runner.ts:654-659); the suspicious '(]) =>' display was verified against raw bytes (od -c): the source is the correct '([h]) =>' — zero corruption. (5) PORT — createJwtAuthenticator is fail-closed ('not-a-jwt'/'': no 3-part split -> JwtException -> null); AUTH_KEY set ONLY by createAuthMiddleware (auth.ts:90-91, wired identity/index.ts:49, applied index.ts:121); the learnerme r.use('*') requireAuth shell existed at e9ef235 (routes/learnerme.ts:178-179); jwt.parse airtight (HMAC + UUID uid); boot-seed.log shows the real chain, no substitute-auth env. (6) ARTIFACT — both cases' ACTUAL payloads carry learnerId 5a32ffd7-... = the replay DB's seeded user_21: the identity the hadAuth upgrade authenticated as. A garbage bearer CANNOT resolve an identity through the fail-closed chain; a valid user_21 bearer can and did.
+- VERDICT of record: CLASS B is NOT a live port-side security gap. The learner-me pair = the INSTRUMENT's hadAuth masking residue (the run replayed a VALID bearer; the port faithfully returned that identity's payload) — RESOLVED-OF-RECORD by T-MIG-075 (a14816c, PR #121), which killed the masking AFTER the last scheduled run. The curriculum pair = RESOLVED-BY-077 (pre-ruled re-pin, SecurityConfig.java:65-94 @ 6cad6ef — port faithful, corpus captured pre-auth posture). The P1 'middleware-application gap' hypothesis of R0-REPLAY-FILING-1 is DISPROVEN; the 'route CLASS B to R6 first' suggestion is SUPERSEDED — nothing to route to a port lane. ZERO port-side action items; this lane made ZERO code/corpus/instrument contact (read-only investigation + .syllabai-only bookkeeping).
+- EMPIRICAL CLOSURE (watchlist, run-001-verdict.json): the NEXT scheduled neon-replay run — the first under the verbatim posture — must show w4-agenda-malformed-bearer-401 and w4-state-empty-bearer-401 PASS (port 401 vs corpus 401). If either does NOT flip: a REAL port gap -> refile as a new P1 band with the run id as evidence. The curriculum pair stays FAIL until 077's re-pin lands (owned, expected). Classes A (limiter), C (fixture volatility) unchanged; CLASS D CLOSED of record mid-round — PR #122 merged 2714e25 (T-MIG-079: the W4 learner KG + smart-lesson mounts, 13 pins, OUT-OF-FENCE mount disclosed) — leaving CLASS A + C as the residual replay reds plus the 077/078 corpus bands in flight.
+- BOOKKEEPING: card T-MIG-081 -> DONE (verdict of record, this commit); receipts/T-MIG-081/{run-000-claim,run-001-verdict}.json; fetch-first union with origin/main 2714e25 (#122 merge-of-record), zero markers, append-only preserved.
+
+Stage Summary:
+- CLASS B fully dispositioned of record: 2 cases instrument-residue (fixed by #121, empirical flip pending next scheduled run) + 2 cases corpus re-pin (077, in flight). The register's P1 security-posture question is CLOSED with evidence, not assumption. Replay red residue: CLASS A (limiter collision, no owner yet) + CLASS C (fixture volatility, seed-owner disposition) + the owned 077/078 corpus bands. LANE R0-integrator: verdict filed, IDLE.
 
 ---
 Task ID: T-MIG-077 (implementation)
