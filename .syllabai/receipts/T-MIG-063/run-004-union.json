@@ -1,0 +1,69 @@
+{
+  "task_id": "T-MIG-063",
+  "kind": "UNION-RECEIPT (run-004: the rich-200 family's LIVE VERDICT — family RETIRED green; two new findings filed)",
+  "run": "004",
+  "timestamp": "2026-10-06T05:35:00Z",
+  "agent": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "authority": "operator directive trace 1a10f806acdec285 'processing of the Rich-200 series' — this receipt closes the series' processing loop",
+  "evidence": {
+    "neon_replay_run": "37418673048 (workflow_dispatch on d6911f6 post-#105, completed failure = RED AT THE UNION GATE ONLY, per doctrine — 38 seed fails + 2 prod fails remain filed, never auto-fixed)",
+    "artifact": "neon-replay-37418673048-1 (seed.json / prod.json / union.md / boot logs)",
+    "union": "137/177 PASS (seed 124/162, prod 13/15) — trajectory of record: 108/170 (run #7) → 120/177 (run 37408914789) → 137/177 (this run, +17)",
+    "doctrine_steps": "read-only proof OK (zero repo/corpus mutation incl. the staging — it writes only to the disposable COW branch); drop + 404-verify OK; union reds on the standing honest reds"
+  },
+  "the_family_verdict": {
+    "verdict": "7/7 PASS ON THE LIVE NEON INSTRUMENT — RICH-200-A (harness gap) CLOSED",
+    "cases": [
+      "w3-sme-ingest-rich-200 PASS",
+      "w3-sme-ingest-replace-rich-200 PASS (ADR-026 replace lifecycle: deactivated 0→2 live)",
+      "w3-sme-status-admin-rich-200 PASS",
+      "w3-teacher-marking-queue-v2-rich-200 PASS (the N-4 SIGNED-uuid tie-break live: f0ae6395… before 4e094481… under the created_at tie)",
+      "w3-teacher-marking-answers-rich-200 PASS",
+      "w3-teacher-marking-answers-paged-rich-200 PASS",
+      "w3-teacher-marking-throughput-rich-200 PASS (the JAVA HASHMAP BY_STATE_WIRE_ORDER live)"
+    ],
+    "meaning": "the port now holds the same pins live that T-MIG-051 run-003 proved locally; the port's rich-200 parity is CLEARED on the standing instrument, not merely locally"
+  },
+  "rich_200_b": "CLOSED — the throttled() amendment carried the staging past the v2-only register limiter (429 windows honored on the tool's own setup calls; the auth-register cases still measured the limiter honestly: 5 of the 8 C-class 429'd this run — admin-refused-403 and bad-email-400 passed this run, membership rotates exactly as the triage recorded)",
+  "cross_effects_named": {
+    "predicted_and_cleared_B_class (6)": [
+      "curriculum-subject-by-id-student-200",
+      "curriculum-subjects-student-200",
+      "curriculum-versions-archived-student-200",
+      "curriculum-versions-student-200",
+      "teacher-curriculum-nodes-teacher-200",
+      "w3-attempt-mcq-happy-201 (the V63 seeded MCQ now exists → the 201 posts honestly)"
+    ],
+    "predicted_not_cleared (as disclosed)": "auth-me-with-bearer-200 (no users rows in t51-seed.sql — still B-class honest red); the third-posture task (triage action #4) remains the ratified mechanism home for the remainder",
+    "other_recoveries (not this task's work, recorded for the census)": "w4-attempt-mcq-practice-201 + w4-flashcard-rating-know-201/know-2/still-learning + w4-flashcard-schedule-derived-200 + w4-flashcard-trail-200 + w4-intervention-create-missing-rootid-400 + w4-intervention-unknown-run-400 — the W4 practice-write/flashcard/intervention routes landed via the W4 lanes (T-MIG-040/043/061 lineage); the A-class cascade is clearing as predicted"
+  },
+  "new_findings_filed": [
+    {
+      "id": "RICH-200-C",
+      "class": "STATE-POSTURE COLLISION (case-owner lane) — 7 empty-state 200s flipped by the staged/landed state",
+      "cases": [
+        "w3-marking-answers-teacher-200",
+        "w3-marking-queue-v2-teacher-200",
+        "w3-marking-throughput-teacher-200",
+        "w4-course-stats-empty-200",
+        "w4-flashcard-schedule-empty-200",
+        "w4-flashcard-trail-empty-200",
+        "w4-state-empty-200"
+      ],
+      "mechanism": "these were captured against an EMPTY store (the N-4 register explicitly deferred the rich 200s because the empty 200s existed); the rich staging (T51 lifecycle) + the landed W4 practice-write route now populate those surfaces BEFORE the empty cases replay (filename order runs after the seq'd state builders) → the empty expectations no longer match an honestly-populated store. v2 renders BOTH postures faithfully (the rich cases pass; the empty cases passed pre-staging) — this is a corpus-sequencing question, not a port defect.",
+      "options_for_R0R6": "(a) seq-position the 7 empty-state cases BEFORE the state builders (seq 6-9 — a case-asset amendment, the case-owner lane); (b) re-pin to the populated postures; (c) tolerate[] the state fields. Honest reds until ruled; zero silent widening applied."
+    },
+    {
+      "id": "RICH-200-D",
+      "class": "PORT DEFECT (P1) — w3-questions surfaces 500 on the V63 seed data",
+      "cases": [
+        "w3-questions-families-student-200 (500 internal_error vs the frozen rich family list)",
+        "w3-questions-topics-student-200 (500 internal_error vs the frozen sections tree)"
+      ],
+      "mechanism": "the surfaces were only ever exercised against an EMPTY store (body-divergent 200s, the B-class note); with the V63 seed questions present (applied by the staging), they EXECUTE and CRASH — a data-dependent port bug the frozen core does not have (frozen: rich 200s over the same rows, syllabai-core @ 6cad6ef). First exercised BY this staging — the instrument driving real consumption exactly as designed.",
+      "owner": "the w3-questions port lane (T-MIG-049 lineage) — R6 derives the frozen shape, the lane fixes the crash; the staging that exposes it is now standing"
+    }
+  ],
+  "register_after": "RICH-200-A CLOSED (harness parity, this task); RICH-200-B CLOSED (setup limiter, this task); RICH-200-C OPEN (case-owner lane); RICH-200-D OPEN (w3-questions port lane, P1); C-class limiter parity still OPEN (auth lane, membership rotating); B-class remainder + third posture still OPEN (tooling + operator sign-off); D/E/F/G/I classes unchanged (standing P2/P3s); H-class amendments unchanged",
+  "task_closure": "T-MIG-063's deliverable — 'the N-4 rich-200 family replays on the live instrument' — is DONE: 7/7 live PASS with the full state partnership (seed posture, bootstrap admin, ingest state builders, tied attempts) standing on the Neon instrument. The two new findings are hand-offs, not open work of this task."
+}
