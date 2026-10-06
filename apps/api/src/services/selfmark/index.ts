@@ -119,7 +119,7 @@ export class SelfMarkService {
   async selfMark(
     learnerId: string,
     attemptId: string,
-    marksByPartId: Map<string, number>,
+    marksByPartId: Map<string | null, number | null>,
     comment: string | null,
   ): Promise<SelfMarkView> {
     if (marksByPartId === null || marksByPartId.size === 0) {
@@ -166,14 +166,54 @@ export class SelfMarkService {
     }
 
     // the request must cover exactly the attempt's parts -- no extras,
-    // no omissions (SME: one reveal, one full pass)
-    const byPartId = new Map(answers.map((a) => [a.question_part_id, a]));
+    // no omissions (SME: one reveal, one full pass). T-MIG-059 (F-B): a
+    // null partId key survives the controller loop (HashMap.put(null, v)
+    // is legal, LearnerSelfMarkController :44) and dies HERE — a null key
+    // is never in byPartId, so the has() check fails and the frozen
+    // BadRequestException "self-mark must cover exactly the attempt's
+    // parts" (:102-111, after the attempt 404 :79-84) fires.
+    // byPartId's key type is widened to string|null so the has() check below
+    // accepts the F-B null key directly (has(null) is false — the gate 400s,
+    // exactly the frozen HashSet inequality)
+    const byPartId = new Map<string | null, AnswerPartRow>(
+      answers.map((a) => [a.question_part_id, a]),
+    );
     if (marksByPartId.size !== byPartId.size ||
         ![...marksByPartId.keys()].every((k) => byPartId.has(k))) {
       throw new BadRequestError("self-mark must cover exactly the attempt's parts");
     }
 
-    for (const [partId, marks] of marksByPartId) {
+    // T-MIG-059 UNBOXING PARITY (frozen LearnerSelfMarkService :113-121):
+    // the bound loop reads `int marks = e.getValue()` (:116) — a null
+    // Integer NPEs ON UNBOXING the moment its entry is reached, AFTER the
+    // exact-parts gate but BEFORE any settle write, and the catch-all
+    // advice (:224-230) serves the opaque 500 internal_error. JS null
+    // would coerce silently in the comparisons below (null < 0 is false)
+    // and settle a 201 — the parity throw instead escapes the handler to
+    // the app error boundary, byte-equivalent to the frozen 500. The
+    // data-dependent law of record: {partId:"<in-attempt>", marksAwarded:
+    // null} -> 500 here; a partId NOT in the attempt -> the exact-parts
+    // 400 above fires first.
+    // (Residual, disclosed: with BOTH a null value AND an out-of-bound
+    // value present, frozen's winner is HashMap hash-iteration order
+    // between the NPE and the ConflictException — not emulated,
+    // unreachable by capture.)
+    for (const marks of marksByPartId.values()) {
+      if (marks === null) {
+        throw new Error(
+          "selfmark unboxing NPE parity: int marks = e.getValue() on a null Integer (LearnerSelfMarkService.java:116)",
+        );
+      }
+    }
+
+    // post-gates narrowing: the gates above guarantee every key is a real
+    // part id (a null key 400'd at the exact-parts gate) and every value a
+    // number (a null value 500'd at the parity pass) — the frozen core
+    // could not have reached here otherwise. The typed view below keeps
+    // the bound/settle loops honest.
+    const settled = new Map([...marksByPartId] as [string, number][]);
+
+    for (const [partId, marks] of settled) {
       const answer = byPartId.get(partId)!;
       const bound = Math.max(answer.marks, 0);
       if (marks < 0 || (bound > 0 && marks > bound)) {
@@ -183,7 +223,7 @@ export class SelfMarkService {
 
     // settle: answers first, then the attempt total, then evidence once
     const now = this.clock.now().toISOString();
-    for (const [partId, marks] of marksByPartId) {
+    for (const [partId, marks] of settled) {
       const answer = byPartId.get(partId)!;
       await this.sql`
         update answers set marks_awarded = ${marks}, marking_state = ${"SELF_MARKED"}
@@ -195,7 +235,7 @@ export class SelfMarkService {
       `;
     }
     const totalAwarded = answers
-      .map((a) => marksByPartId.get(a.question_part_id) ?? a.marks_awarded ?? 0)
+      .map((a) => settled.get(a.question_part_id) ?? a.marks_awarded ?? 0)
       .reduce((s, m) => s + m, 0);
     const correct = question.marks > 0 && totalAwarded >= question.marks;
     await this.sql`
@@ -234,7 +274,7 @@ export class SelfMarkService {
       parts: answers.map((a) => ({
         partId: a.question_part_id,
         label: a.label,
-        marksAwarded: marksByPartId.get(a.question_part_id) ?? a.marks_awarded ?? 0,
+        marksAwarded: settled.get(a.question_part_id) ?? a.marks_awarded ?? 0,
         marksPossible: a.marks,
         markingState: "SELF_MARKED",
       })),

@@ -1,0 +1,37 @@
+{
+  "task_id": "T-MIG-063",
+  "kind": "IMPLEMENTATION-RECEIPT (run-002: ci-replay rich-200 parity)",
+  "run": "002",
+  "timestamp": "2026-10-06T05:1xZ",
+  "agent": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "authority": "operator directive trace 1a10f806acdec285; per the run-001 disposition (class RICH-200-A HARNESS GAP)",
+  "change_surface": {
+    "files": [
+      "golden/tools/ci-replay.ts (+243/-10 net with the header block)",
+      ".github/workflows/neon-replay.yml (+13)",
+      ".syllabai/tasks/T-MIG-063-ci-replay-rich200-parity.yaml (status/execution_record)",
+      ".syllabai/receipts/T-MIG-063/* (this receipt)",
+      ".syllabai/worklog.md (append)"
+    ],
+    "zero_touch_proof": "golden/cases/** untouched (zero case amendments, §7); golden/runner.ts untouched (the gated engine — import-only reuse); apps/api/** + packages/** untouched (git diff --stat above is the complete surface)"
+    },
+  "implementation": {
+    "route_rules": "routeRuleBearer(name, path, teacher, student, admin) — precedence: unauthed-name → student-name → '-teacher-403' name (NEW, role-faithful: the corpus's only -teacher-403 case w3-sme-status-teacher-403 now replays with the TEACHER bearer per T-MIG-051 run-003's role model; it passed before with the default student bearer — the 403 verdict is unchanged, the role is now faithful) → /api/v1/admin/ path → NEW admin bearer (the staging's bootstrap claimant, ADMIN+TEACHER) → /api/v1/teacher/ path → default student. Empty admin on an admin path = honest per-case harness error, never the student bearer that 403'd run 37408914789.",
+    "multipart": "bodyFile cases ship their declared file as ONE multipart part via buildMultipartBody IMPORTED from ../runner.ts (zero engine drift; the fetch layer drops the content-type header so the boundary is set by fetch — the runner's exact convention). Fail-fast per case when a bodyFile case lacks its descriptor.",
+    "staging": "richStagePlan(cases) — sentinel-governed (w3-sme-ingest-rich-200); boundaries: --stage accounts before the FIRST w3-sme- case (seq 10), --stage attempts before the FIRST w3-teacher-marking- case (seq 13) — computed on the SAME filtered seq-ordered list the loop walks, so the ingest cases remain the state builders exactly as captured and the W4 seq'd cases interleaved at seq 10-12 are unaffected. runRichStage spawns the committed golden/tools/seed-t51-rich200.ts VERBATIM (zero copy, zero drift; the state the cases DECLARE) and parses its declared ADMIN_TOKEN stdout contract; any staging failure = fail-fast harness error (an unstaged replay would reproduce the exact run-37408914789 worthless empty-vs-rich diffs). DATABASE_URL required at run time when the family is present.",
+    "selftest": "bun golden/tools/ci-replay.ts --selftest — 16 deterministic assertions: 8 route-rule precedence (the exact run-37408914789 postures decided both ways), 4 boundary-plan laws (two boundaries at the family starts; family absent → none; sentinel governance), 2 multipart wirings (FormData builds via the runner import; fail-fast without the descriptor), plus the plan() staging disclosure. Wired into the workflow's harness-sanity step BESIDE the runner selftest.",
+    "workflow": "neon-replay.yml Pass A replay step gains DATABASE_URL=${{ env.NEON_SEED_URL }} (the same credential surface apply-reset already uses). The prod pass is unchanged — the REALDATA filter never selects the family, so no staging, no DATABASE_URL, zero behavior change. The T-MIG-047 evidence-producer comment preserved; the read-only proof step unchanged (the staging writes only to the disposable COW branch, never the repo — the tool reads cases/files, prints tokens)."
+  },
+  "gates": {
+    "typecheck": "bun run typecheck (contracts + shared + db + api) exit 0",
+    "bun_test": "1144 pass / 0 fail / 13 skip / 3485 expect over 63 files — EXACT match to the main ddbe9fe baseline (zero test files touched; bun test apps/api packages)",
+    "golden_runner_selftest": "OK (tolerance engine incl. T-MIG-024 multiset)",
+    "ci_replay_selftest": "OK (16/16 assertions)",
+    "plan_disclosure": "--plan now prints: 'rich-200 staging (T-MIG-063): accounts @ w3-sme-ingest-rich-200, attempts @ w3-teacher-marking-queue-v2-rich-200 (seed pass only; DATABASE_URL required at run time)'"
+  },
+  "expected_effects_next_union": {
+    "family": "the 7 rich-200 cases are expected to PASS (port parity standing from T-MIG-051 run-003 17/17 on the same pins; the staging reproduces the exact state partnership — t51-seed.sql posture, bootstrap admin, ingest state builders, tied structured attempts)",
+    "cross_effects": "B-class seed-posture read cases (curriculum-*, teacher-curriculum-*, w3-questions-*) may clear early via the t51-seed.sql application — named case-by-case at run-003 for R0/R6 confirmation; the ratified third-posture task remains the mechanism home. auth-me-with-bearer-200 and attempt-write B-class cases are NOT expected to clear (no users rows in t51-seed.sql, no attempt lifecycle beyond the T51 pair).",
+    "honest_failure_paths": "if the staging fails on Neon (e.g. prepared-statement posture on the branch endpoint), the harness fails fast with the tool's stderr — the union receipt will carry the root cause, not a silent mask"
+  }
+}
