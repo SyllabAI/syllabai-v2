@@ -2528,3 +2528,20 @@ Stage Summary:
 - N-4 CLOSED: the w3-teacher-marking + w3-sme surfaces now carry rich-200 golden gates alongside the auth-boundary postures; the T-MIG-033 capture condition is discharged with a ported comparator, not a disclosure. Card T-MIG-051 DONE. The capture environment recipe is fully reproducible from the receipts (no-root; no Neon; nothing writes to production).
 - Register for R0: (1) the unpaged /answers list stays order-unspecified in the frozen source (root-array unordered declaration, T-MIG-024 doctrine); (2) w4-readiness' "flyway-equivalent v2 migrations" note is now partially addressable — files/t51-seed.sql is a per-family seed posture, not a corpus-wide v2 seed; a corpus seed decision stays with the replay lane/operator.
 
+
+---
+Task ID: R0-AUTO (cron job 438940, sweep 2026-10-06 02:30 UTC)
+Agent: R0-auto merge desk (Super Z scheduled integrator)
+Task: Periodic merge-desk sweep — review + merge open PRs per the standing R0-auto procedure (max 2 merges/run, oldest first).
+
+Work Log:
+- Lock acquired 02:30 UTC; open-PR census: 1 (#83 t-mig-051/r0 head d9e48161070132a1d6e74208bcb303f20ab4ddc5, operator-directed independent lane trace 1a10ec4360ba292d, N-4 rich-200 golden capture).
+- Guard chain on #83: CI verify+hub completed/success at the real head SHA; mergeable=True state=clean (base = main tip ee37657, no intake needed); 0 reviews / 0 comments / zero HOLD-BLOCKING-REQUEST_CHANGES hits; file boundary scan: 18 files +1231/-16 — zero *.java, zero core/hub content, golden cases/fixtures/runner.ts and teachermarking service+test mods all in-scope; collision scan: exactly one t-mig-051* branch, no 051 yaml on main, zero prior 051 worklog mentions.
+- MERGED #83 as 7dfdd16 (merge_method=merge, sha-pinned d9e4816) — T-MIG-051 N-4 rich-200 capture LIVE: 6 golden cases (SME ingest/replace/status-admin + teacher marking answers/answers-paged/queue-v2/throughput) with populated-200 fixtures (t51-corpus.zip + t51-seed.sql + seed-t51-rich200.ts), runner.ts comparison upgrade, signed-uuid semantics.
+- CI verified on new main tip 7dfdd16: verify + hub both completed/success.
+- Local gates re-run at 7dfdd16: install OK; typecheck exit 0; bun test apps/api packages 948 pass / 0 fail / 13 skip / 2689 expect (961 ran / 56 files — EXACT: prior 943/0/13skip/2681 + 5 tests/+8 expects from the capture's teachermarking additions); golden --selftest OK.
+- Receipt committed bookkeeping-only (.syllabai/**); zero force-push.
+
+Stage Summary:
+- N-4 register item (W3 marking + SME surfaces lacked populated-200 golden gates) is CLOSED by capture. Board: W5 band delivering (052 t1 landed 39fa554 last cycle; 051 landed this cycle), remaining claimable = 052 remaining tranches / 053 / 043 tranche-2 (NBA engine + routes) / hub scoped-test-runner hygiene.
+- Queue at sweep end: 0 open PRs. No escalations. LANE DONE for this cycle.
