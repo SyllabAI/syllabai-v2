@@ -49,3 +49,5 @@ export function buildLearnerModule(sql: SqlFn, params: LearnerEngineParams = LEA
     },
   };
 }
+export * from "./smart-lesson";
+export * from "./tutor-signals";
