@@ -223,8 +223,12 @@ function evidenceRoutes(e: Evidence): Route[] {
 const ENGINE = {
   decay: LEARNER_ENGINE_PAPER_DEFAULTS.decay,
   bdt: LEARNER_ENGINE_PAPER_DEFAULTS.bdt,
-  weakMasteryCeiling: 0.5,
-  minAttemptsForWeakness: 3,
+  // the frozen CONFIG law (application.yml :88/:91 — the values the frozen
+  // production wire runs; the merged w0a NBA port carries the same):
+  // weak-mastery-ceiling 0.45, min-attempts-for-weakness 2. #108 review
+  // finding, fix-forward — the pins now pin the frozen tuning.
+  weakMasteryCeiling: 0.45,
+  minAttemptsForWeakness: 2,
 };
 
 function makeDeps(e: Evidence) {
@@ -522,7 +526,7 @@ describe("teacher topic drill-down — class → topic → learners → evidence
         { id: L1, display_name: "Ada", created_at: "2026-01-01T00:00:00Z" },
         { id: L2, display_name: "Ben", created_at: "2026-01-02T00:00:00Z" },
       ],
-      skills: [{ ...skill(L1, SP1, 0.2), attempts: 3 }], // Ada weak (below ceiling, at floor)
+      skills: [{ ...skill(L1, SP1, 0.2), attempts: 3 }], // Ada weak (below ceiling, above the frozen floor of 2)
       misconceptions: [
         misco(L1, 0.9), // Ada also misconception-affected → BOTH
         misco(L2, 0.8), // Ben misconception-only → mastery null

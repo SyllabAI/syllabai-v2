@@ -38,3 +38,4 @@ export * from "./intervention"; // T-MIG-061 (r9-hubx) — Wave-6 intervention-r
 export * from "./teacher"; // T-MIG-053 (r3a) — Wave-5 teacher analytics+concept-graph wire, tranche-2 (OUT-OF-FENCE-flagged one-liner, 010/034/043-t1/052/053-t1 precedent)
 export * from "./research"; // T-MIG-062 (R4-api-b) — Wave-6 research calibration wire (OUT-OF-FENCE-flagged one-liner, 010/034/043-t1/052/053/061 precedent)
 export * from "./cla"; // T-MIG-069 (w0a, refiled from 067) — Wave-6 CLA wire (OUT-OF-FENCE-flagged one-liner, 010/034/043-t1/052/053/061/062 precedent)
+export * from "./revision-notes"; // T-MIG-053 (r3a) — Wave-5 revision-notes wire, tranche-3 (OUT-OF-FENCE-flagged one-liner, 010/034/043-t1/052/053-t1/053-t2 precedent)

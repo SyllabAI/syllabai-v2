@@ -19,7 +19,7 @@
  *     strings (T-C11 honesty contract :112-116);
  *   - nodeType full domain (CONCEPT legal on EdgeNodeView :129-135);
  *   - validationStatus the store epistemic enum (UNVALIDATED|SUGGESTED|VALIDATED);
- *   - SeedSummary: 15 fields, alreadyActive boolean (:465-470).
+ *   - SeedSummary: 14 fields, alreadyActive boolean (:465-470).
  */
 import { describe, expect, test } from "bun:test";
 import {
@@ -222,7 +222,7 @@ describe("teacher contracts — the concept-graph read model", () => {
     }).success).toBeTrue();
   });
 
-  test("seed summary: 15 fields, alreadyActive boolean strict", () => {
+  test("seed summary: 14 fields, alreadyActive boolean strict", () => {
     const s = seedSummarySchema.parse({
       curriculumVersionId: UUID(1), subjectId: UUID(2), rootNodeId: UUID(3),
       sections: 4, subsections: 28, specPoints: 182, practicals: 12,

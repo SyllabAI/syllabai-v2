@@ -1,0 +1,31 @@
+{
+  "task": "T-MIG-053",
+  "tranche": "t3 (revision notes: learner 5 + admin 2)",
+  "agent": "r3a (superz-agent-b, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)",
+  "directive": "trace 1a10fffc01c66c25 'independent review on #108, then t3 (revision notes) -> t4 (smart lesson, LLM-path check)'",
+  "frozen_base": "syllabai-core @ 6cad6ef (fresh anonymous clone this session; SHA-verified store copies)",
+  "independent_review_of_108": {
+    "verdict": "conforms; zero wire-visible defects; posted as issue comment 6011293779",
+    "store_integrity": "6/6 SHA-256 byte-identical vs frozen classpath (topics a7b14cbd, relationships b3b75292, spec_points b1fea699, concepts 24fa91ac, concept_edges 8a651dd9, practicals e53e5f87)",
+    "count_contract": "488 edges = 211 PART_OF anchors + 272 validated semantic + 5 excluded (3 HOLD + 2 REVIEW_REQUIRED) — censused against the store this session",
+    "finding": "weakMasteryCeiling 0.5 / minAttemptsForWeakness 3 in engineOf fallbacks + pin ENGINE vs frozen config law 0.45/2 (application.yml :88/:91, RecommendationProperties :23/:26, merged w0a nba.ts :88/:91) — not wire-visible (no routes), no pin flips; fix-forwarded in THIS tranche as a fence-flagged constants amendment",
+    "prose_fix": "SeedSummary is 14 fields (frozen record :465-470) — card and teacher.test.ts prose said 15; wire was already correct",
+    "gates_at_3849448": "typecheck x4 exit 0; 1381/0/13skip/5583 EXACT tip baseline (+1 test = the T-MIG-068 servable.test.ts addition, path-diff verified); golden selftest OK"
+  },
+  "t3_scope_landed": {
+    "contracts": "packages/contracts/src/revision-notes.ts — the learner wire (index/body/progress/MarkNoteViewedRequest :17-54) + admin wire (ingest summary/status :56-63) + the corpus-package v1 Jackson-parity parse tree (:66-86, the sme-question-package precedent); 9 pins in revision-notes.test.ts",
+    "services": "apps/api/src/services/revision-notes/** — learner.ts (RevisionNoteService :21-148: canonical-order index with the empty-corpus early return :37-39, body prev/next by linear scan :90-91, ASSET_REF_FINDER :146-147, specCodes CSV :126-131, markViewed 404-first + first-view-wins :104-115, spec_map::text law) + ingest.ts (RevisionNoteIngestService :30-245: verbatim 400 vocabulary, R14 media allowlist, SAFE_FILENAME, the load-bearing service-level '..' check ON TOP of the shared structural guard, replace-all in the TxSqlFn transaction, orphan sweep with the JPA-flush disclosure, Java-primitive defaults :77-78, status honest nulls)",
+    "reuse": "the bounded ZIP walker is the SHARED sme/zip.ts port of ZipSafety (T-MIG-033 tranche-3) — reused not redeclared; TxSqlFn transaction seam from sme/index.ts; buildZip/clock/txSql test helpers from test/sme/helpers.ts",
+    "pins": "34 fakeSql pins in test/revision-notes/** (canonical ORDER BY capture, empty-corpus early return pins the viewed-leg absence, first-view-wins pins the NO-insert, statement-order count->deletes->inserts->sweep, bound-param captures for the '{}' / '' defaults and the single clock anchor, verbatim 400s, the a..b.png load-bearing case, status nulls)"
+  },
+  "fence": "contracts + services + fakeSql pins; NO routes/mounts/hub; the multipart envelope stays the route layer's (051 runner ext golden vehicle); hands-off 052-t2 (r9-hubx) + 043-t2 (w0a) unchanged",
+  "out_of_fence_flagged": [
+    "teacher/analytics.ts engineOf fallbacks + teacher.test.ts ENGINE -> 0.45/2 (the #108 review finding fix-forward, config-law constants)",
+    "teacher.test.ts + card prose: SeedSummary 15 -> 14 fields"
+  ],
+  "gates": {
+    "typecheck_x4": "exit 0",
+    "bun_test": "1424 pass / 0 fail / 13 skip / 5684 expect EXACT = 3849448 baseline 1381/5583 + 43 tests/+101 expects (9 contracts + 34 service pins)",
+    "golden_selftest": "OK"
+  }
+}
