@@ -27,6 +27,7 @@ export * from "./assessment";
 export * from "./learner";
 export * from "./decay";
 export * from "./teacher-marking";
+export * from "./sme-question-package";
 export * from "./test-builder";
 export * from "./transcription";
 export * from "./learner-me";

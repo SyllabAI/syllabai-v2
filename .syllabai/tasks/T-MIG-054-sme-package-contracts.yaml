@@ -1,0 +1,53 @@
+version: 1
+task:
+  id: T-MIG-054
+  title: "SME question-bank package contracts — the missing zod port for the live SME surface (salvage of r4b PR #78)"
+  owner: "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0) — round-13 sweep lane (operator directive 'run the next sweep')"
+  status: DONE # merged via PR #80 = 6c58c15 (round-13 sweep, r1c delegated intake; author r4b ≠ merger r1c, disclosed) — salvage of the #78 closure's orphaned contracts piece; surface duplicate stays closed
+  priority: P1
+  wave: 3 # contracts remediation for the Wave-3 assessment-loop band (033 SME half)
+  deps: [T-MIG-033, T-MIG-049]
+  execution_record: >
+    (claim 2026-10-06, r1c round-13 sweep) PROVENANCE AND ATTRIBUTION: the
+    payload of this card (packages/contracts/src/sme-question-package.ts +
+    .test.ts, 135+75 lines) was authored by lane r4b for PR #78 — closed as
+    the losing duplicate of the 033 tranche-3 dual-claim (r0 claimed 33min
+    earlier; closure comment 6007170493, ruling recorded in worklog Task ID
+    16). r4b's surface port (routes/services/tests duplicating #77) stays
+    closed — the salvage lifts ONLY the contracts piece, which the closure
+    orphaned. WHY IT MATTERS: main's live SME surface (apps/api/src/routes/
+    sme.ts + apps/api/src/services/sme/**, landed via #77 5db0667) carries
+    ZERO zod schemas in packages/contracts (verified by grep against
+    d1ff74e: no sme file under packages/contracts/src/, no z. usage in the
+    SME routes/services) — a contracts-first gap (AGENT_BRIEFING §4 rule 3)
+    on a live surface; the package.json payload inside the corpus ZIP is
+    the DTO surface (SmeQuestionPackageDtos.java :15-94 @ 6cad6ef) and was
+    previously validated only by the service's plain-TS guards. ID CHOICE:
+    T-MIG-050..053 are the plan-reserved Wave-5 band (MIGRATION_PLAN.md
+    §Wave 5), so the next free non-reserved id is 054 (T-MIG-049 renumber
+    mechanics: comment-only id updates in the two lifted files; export line
+    in packages/contracts/src/index.ts placed after ./teacher-marking
+    exactly as r4b filed it). AUTHOR CREDIT: SmeQuestionPackageDtos port,
+    Jackson binding-semantics law (passthrough = ignoreUnknown, additive
+    optional primitives, binding-failure 400 envelope) — all r4b's work,
+    lifted byte-identical except the two comment lines and this yaml.
+    Scope: packages/contracts/** only. No routes, no services, no hub.
+base:
+  repo: "syllabai-v2 @ d1ff74e at claim; frozen refs: syllabai-core @ 6cad6ef"
+basis: >
+  Operator round-13 directive 'run the next sweep' (session web-6ea7f4ac);
+  r9-hubx round-12 closure of #78 (comment 6007170493) + AGENT_BRIEFING §4
+  rule 3 (contracts-first) + MIGRATION_PLAN.md §Wave 3/5 id map.
+scope:
+  allowed:
+    - "packages/contracts/src/sme-question-package.ts"
+    - "packages/contracts/src/sme-question-package.test.ts"
+    - "packages/contracts/src/index.ts (export union, one line)"
+    - ".syllabai/tasks/T-MIG-054-sme-package-contracts.yaml (this file)"
+    - ".syllabai/receipts/T-MIG-054/**"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "apps/api/** (live surface — no behavior change in this card)"
+    - "apps/hub/** (R5's lane)"
+    - "packages/db/** (R2's lane)"
+    - "syllabai-core / syllabai-hub (frozen, C1)"

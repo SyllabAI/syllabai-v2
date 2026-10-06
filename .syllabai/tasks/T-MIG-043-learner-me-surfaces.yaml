@@ -3,7 +3,7 @@ task:
   id: T-MIG-043
   title: "Wave-4 learner port — the learner-me surface band: agenda (T-C76) + flashcard ratings/rating-trail/review-schedule (V47/T-C61/T-C53) + note-votes (V48) + exam-series picker & target-series (T-C79) + learner assignments (V49/V51); tranche-1 = services + fakeSql pins (021/033/041 template); NBA engine + routes = tranche-2"
   owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — operator directive trace 1a10d2c88b6f13c5 'Check and claim whichever lane other agents are not working': executes the seeding word for the last unclaimed MIGRATION_PLAN Wave-4-reserved band (040 PREP DONE #57, 042P DONE #54, 041 claimed+in-review r7a #65; 043 was the named remainder per r7a's 041 yaml 'agenda/…/exam-series+flashcards = T-MIG-043'). Id ratification requested at PR review (030/032/039/040-PREP/041 precedent)"
-  status: IN_REVIEW # tranche-2 LANDED on-branch 2026-10-06 (run-004 receipt; PR update requested); tranche-1 IN_REVIEW since 2026-10-06; tranche-2 CLAIMED 2026-10-06 (operator trace 1a10eae6bc2044c1)
+  status: IN_REVIEW # 2026-10-06 STATUS TIMELINE (provenance chain, no rewrite): R0-ROUND-12 flipped DONE @ 493e3cd on the strength of the tranche-1 merge (PR #74, 23b23e3 — w0a earliest claim honored, #76 closed as losing duplicate); the operator's tranche-2 word (trace 1a10eae6bc2044c1) then routed the never-merged tranche-2 (NBA engine + routes + w4 golden replay — tranche-1 did NOT carry them); this branch lands tranche-2 (run-004) and re-enters IN_REVIEW for R0 to re-flip at merge
   priority: P1
   wave: 4
   deps: [T-MIG-038, T-MIG-040-PREP, T-MIG-014] # landed W4 contracts (learner.ts) + the W4 golden capture that pins these surfaces + db driver dispatch
