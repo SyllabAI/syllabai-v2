@@ -1,0 +1,61 @@
+version: 1
+task:
+  id: T-MIG-056
+  title: "Classroom @NotBlank envelope refinement — the whitespace-body law + category-null binding (the #90 notBlank-refine prior art) + the routes/classroom.ts maximum nit"
+  owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) — operator standing directive trace 1a10f3edfafedd15 'review+merge yourself and continue working'"
+  status: CLAIMED # claim-in-first-commit (§2); implementation next on this branch
+  claimed_at: "2026-10-06T03:42:19Z"
+  priority: P2
+  wave: 5
+  deps: [T-MIG-052]
+  basis: >
+    REGISTERED follow-up on the T-MIG-052 DONE card (a695c92):
+    "Follow-up registered: whitespace-body @NotBlank envelope refinement
+    (the #90 notBlank-refine prior art) + the routes/classroom.ts nit".
+    The R0 ratification verdict on PR #89 (comment 2026-10-06T03:32:27Z)
+    filed the same two items as its nits (1) and (2). Scope of record:
+      1. packages/contracts classroom request schemas gain the auth.ts
+         notBlank refine (the @NotBlank-exact port: a whitespace-only value
+         fails @Valid BEFORE the controller law -> 400 validation_failed
+         "field: must not be blank", exactly jakarta; the bare .min(1)
+         let "   " through to the service's trim-blank 400 bad_request
+         envelope — status-correct but envelope-divergent). Chain order
+         per the auth.ts zod-3 note: max FIRST, refine LAST (zod skips
+         refinements when an earlier check fails — accept/reject sets
+         match jakarta's evaluate-all). `category` widens to nullish():
+         an explicit JSON null binds exactly like an absent field in
+         Jackson -> Announcement.Category.parse(null) -> GENERAL -> the
+         frozen 201 (today: 400 validation_failed "category: request
+         invalid" — a success-path divergence).
+      2. routes/classroom.ts validationMessage surfaces the refine's
+         verbatim message (custom issue class — today it would fall to
+         "field: request invalid" and swallow the message) + drops the
+         defensive `maximum ?? 0` fallback (nit 2 — unreachable).
+    OUT OF SCOPE (register still open — the r0 lane REQUEST_CHANGES
+    findings F-0/F-1 of record, PR #89 thread 2026-10-06T03:17:21Z):
+    the binding-class collapse (wrong-typed fields -> frozen malformed_body,
+    today validation_failed "field: request invalid") and the missing-field
+    message ("field: request invalid" today, frozen "field: must not be
+    blank" per jakarta @NotBlank rendering of a null bind). The
+    ratification verdict did NOT register these; adopting #90's full
+    classifier is a separate reviewed pass with the #90 branch as ready
+    prior art. This card does not re-litigate the ratified merge.
+  execution_record: >
+    (claim entry 2026-10-06T03:42:19Z) Pre-claim zero-collision scan at
+    origin/main 1540ffc: zero t-mig-056* heads on origin, zero 056/057/
+    058/059 mentions anywhere in .syllabai/, open PRs = #84 only (r3a's
+    T-MIG-053 t1 WIP — no overlap: that fence is the KG/coverage
+    contracts+services band, this one is the LANDED classroom schemas +
+    their classifier + their route pins). The item itself is unclaimed:
+    it exists only as the DONE-card registration + the two verdict nits.
+    The superseded #90 branch (t-mig-052/r0-t2 @ 6e9bfcf) carries the
+    disclosed contracts amendment adopted here VERBATIM (the four refine
+    swaps + the nullish widening + the chain-order law) — prior-art credit
+    per the #90 closure ruling. Verified before claim: the t1 service law
+    parseAnnouncementCategory already types `string | null | undefined`
+    (services/classroom/index.ts :176) — the nullish widening needs ZERO
+    service change; the two route pins that pin the DIVERGENT whitespace
+    posture (routes.test.ts :340 blank-name and :703 trimmed-blank body)
+    get rewritten to the frozen envelope with the fail-closed assertions
+    kept; the :367/:497 empty-string pins stay green (custom issue renders
+    the same verbatim message the too_small branch served).

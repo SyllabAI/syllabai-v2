@@ -2863,3 +2863,19 @@ Work Log:
 Stage Summary:
 - Directive satisfied: R0 had merged (#86/#85/#87/#91); this lane reviewed+merged #89 (052-t2, the full Wave-5 classroom routes+mounts — the module is now wire-live) with the independent review it requested; #84/#88 left honestly guarded (CI pending on active heads). Final-state gates exact at 9032b9e: 1050/0/13skip/3211 + selftest OK + tip CI green. Register unchanged (NEON_BRANCH_CAPACITY blocks the replay instrument — run #7 failure class; H-2; identity pins; 429 pacing; 053 id-band ruling now MOOT for 053 itself — r3a filed #84 under 053 with the #91 renumber precedent applied to 055).
 - LANE r1c: STOP for this round.
+
+---
+Task ID: T-MIG-056 (claim)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Claim the registered follow-up on the T-MIG-052 DONE card — the classroom @NotBlank envelope refinement (the #90 notBlank-refine prior art) + the routes/classroom.ts maximum nit (operator standing directive, trace 1a10f3edfafedd15).
+
+Work Log:
+- R0 census first (fetch-before-every-action): #77/#89/#88 all merged — main 1540ffc (round-11 ledger intake), CI verify+hub green; the only open PR #84 is r3a's in-flight T-MIG-053 t1 (2/3 commits, closing class-KG trio pending — hands off, its own review flow is active). The 052 housekeeping (card DONE + R0-ROUND-15 worklog) landed via a695c92 — nothing to duplicate.
+- The register held exactly ONE unclaimed item: the 052 DONE-card follow-up (a695c92) = the PR #89 ratification verdict's nits (1) whitespace-body @NotBlank envelope + (2) the routes `maximum ?? 0` nit. Claimed as T-MIG-056 (claim-in-first-commit, §2) on branch t-mig-056/r0 cut @ 1540ffc.
+- Zero-collision scan @ 1540ffc: zero t-mig-056* heads on origin, zero 056/057/058/059 mentions anywhere in .syllabai/, the item unclaimed (no branch/card/receipt anywhere); Wave-6 prep (t-mig-060/w0a) respected — no fence overlap.
+- Prior art read line-against-line: closed #90 branch (t-mig-052/r0-t2 @ 6e9bfcf) disclosed contracts amendment — the auth.ts notBlank refine (packages/contracts/src/auth.ts :56) on the four classroom request schemas, max FIRST / refine LAST (zod skips refinements when an earlier check fails — accept/reject sets match jakarta's evaluate-all), category .optional() → .nullish() (explicit JSON null binds like absent → Announcement.Category.parse(null) → GENERAL → the frozen 201).
+- Downstream compatibility verified pre-claim: parseAnnouncementCategory already types `string | null | undefined` (services/classroom/index.ts :176, the t1 null→GENERAL law) — zero service change; the merged classifier (routes/classroom.ts :133-148) renders custom issues as "field: request invalid" (:148) so the registered scope necessarily includes the minimal custom-branch touch, else the refine's verbatim message is swallowed; the two route pins that pin the DIVERGENT whitespace posture (:340 blank-name, :703 trimmed-blank) identified for rewrite with their fail-closed assertions kept.
+- F-0/F-1 (binding-class collapse; missing-field message) documented on the card as register-STILL-OPEN per the ratification verdict — not registered by it, so out of this fence; #90's full routes classifier (:121/:136-137) recorded as the ready prior art for that future pass.
+
+Stage Summary:
+- T-MIG-056 CLAIMED at 2026-10-06T03:42:19Z on branch t-mig-056/r0 off origin/main 1540ffc (card + run-001-claim.json + this entry = the claim commit). Implementation next in this lane: contracts refine + nullish, classifier custom branch + nit cleanup, pins rewrite + the category-null 201 pin, EXACT gates arithmetic, PR with disclosure.
