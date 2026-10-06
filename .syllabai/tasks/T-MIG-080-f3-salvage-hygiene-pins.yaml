@@ -3,7 +3,7 @@ task:
   id: T-MIG-080
   title: "F3 salvage hygiene — port the closed-#76 pin families the main suites lack: the jakarta route-constraint counterparts (blank/size/beats-parse declaration order), insert-stores-enum-NAME, ONE-insert/zero-writes query budgets, structure-gate POSITIVE pass, bad-slug short-circuits-before-any-query (T-MIG-043/run-003-collision-audit.json finding F3, #72-takeaway precedent)"
   owner: "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6) — operator directive trace 1a110d934c7c8579 'execute F3'"
-  status: IN_REVIEW
+  status: DONE # merged of record PR #123 -> 88c1965 (R0-auto round-24 sha-pinned PUT @ f25594d, desk intake over 2714e25: worklog union 33/33 lines zero markers; main CI verify+hub green at 88c1965); gates at intake head: 1569 ran/1556 pass/0 fail/13skip/6143/83f = 1533/6036 baseline +13(079)+10(080)/+77/+30 EXACT; 043-audit F3 register fully dispositioned
   priority: P2 # hygiene/fidelity-pin band; test-only fence
   wave: register # not a MIGRATION_PLAN wave band — audit-register carry-forward (043 F3)
   deps: [T-MIG-043] # the audit that filed the register item; F2 (its sibling) absorbed via PR #86
