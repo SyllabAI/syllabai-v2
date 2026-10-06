@@ -130,16 +130,19 @@ export class QuestionTaxonomy {
       nodeById.set(n.id, n);
     }
     // …and their PART_OF parents (deduped against duplicate structural edges:
-    // deterministically-lowest parent id wins the merge)
+    // deterministically-lowest parent id wins the merge). Columns are
+    // source_node_id/target_node_id (schema.ts:84-85) — the port's phantom
+    // source_id/target_id 42703'd here (RICH-200-D latent second crash: the
+    // census runs only after allActive, whose optionsFor crashed first).
     const parentByTopic = new Map<string, string>();
     if (countsByTopic.size > 0) {
       const edges = await this.sql`
-        select source_id, target_id from knowledge_edges
+        select source_node_id, target_node_id from knowledge_edges
         where relation_type = 'PART_OF'
-          and source_id = any(${[...countsByTopic.keys()]}::uuid[])`;
+          and source_node_id = any(${[...countsByTopic.keys()]}::uuid[])`;
       for (const e of edges) {
-        const source = String(e.source_id);
-        const target = String(e.target_id);
+        const source = String(e.source_node_id);
+        const target = String(e.target_node_id);
         const existing = parentByTopic.get(source);
         if (existing === undefined || target < existing) {
           parentByTopic.set(source, target);

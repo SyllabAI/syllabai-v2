@@ -58,9 +58,10 @@ describe("taxonomy census", () => {
         rows: [
           // duplicate structural PART_OF edges from the seed: TOPIC_ID has
           // TWO parents — deterministically-lowest parent id wins (SECTION_A)
-          { source_id: TOPIC_ID, target_id: SECTION_B_ID },
-          { source_id: TOPIC_ID, target_id: SECTION_A_ID },
-          { source_id: TOPIC2_ID, target_id: SECTION_A_ID },
+          // (row keys = the real columns, schema.ts:84-85 — R-067-A)
+          { source_node_id: TOPIC_ID, target_node_id: SECTION_B_ID },
+          { source_node_id: TOPIC_ID, target_node_id: SECTION_A_ID },
+          { source_node_id: TOPIC2_ID, target_node_id: SECTION_A_ID },
         ],
       },
     ]);
@@ -105,7 +106,7 @@ describe("taxonomy census", () => {
       ...BASE,
       {
         match: /from knowledge_edges/,
-        rows: [{ source_id: TOPIC2_ID, target_id: SECTION_A_ID }], // TOPIC_ID orphaned
+        rows: [{ source_node_id: TOPIC2_ID, target_node_id: SECTION_A_ID }], // TOPIC_ID orphaned
       },
     ]);
     const view = await taxonomy.taxonomy(null);
@@ -124,7 +125,7 @@ describe("taxonomy census", () => {
       ...BASE,
       {
         match: /from knowledge_edges/,
-        rows: [{ source_id: TOPIC_ID, target_id: SECTION_A_ID }],
+        rows: [{ source_node_id: TOPIC_ID, target_node_id: SECTION_A_ID }],
       },
       {
         // graph.node(rootId) 404-first contract

@@ -74,9 +74,12 @@ export const MCQ_ROW = {
   active: true,
 };
 
+/** DB-shaped option rows: the key mirrors the real column option_text
+ * (schema.ts:170) — R-067-A fixed the port's phantom o.text; the wire
+ * assertions below keep asserting the unchanged {id,label,text} view. */
 export const MCQ_OPTIONS = [
-  { id: OPT_A_ID, question_id: MCQ_ID, label: "A", text: "solid", ordering: 1 },
-  { id: OPT_B_ID, question_id: MCQ_ID, label: "B", text: "liquid", ordering: 2 },
+  { id: OPT_A_ID, question_id: MCQ_ID, label: "A", option_text: "solid", ordering: 1 },
+  { id: OPT_B_ID, question_id: MCQ_ID, label: "B", option_text: "liquid", ordering: 2 },
 ];
 
 /** STRUCTURED row under the VALIDATED paper, with a VALIDATED v2. */
