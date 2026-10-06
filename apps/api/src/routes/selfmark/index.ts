@@ -18,9 +18,15 @@
  * Path binding: @PathVariable UUID — unparseable → 400 bad_request "malformed
  * request" (MethodArgumentTypeMismatchException :167-170).
  *
- * CAPTURED QUIRK (disclosed on the yaml, R0 rules): self-mark on an UNKNOWN
- * attempt captured a 500 internal_error (lock-failure path); the port yields
- * 404 not_found naturally (service NotFound) — never silently "fixed".
+ * CAPTURED QUIRK — RESOLVED frozen-faithful (T-MIG-053, R0 call): the golden
+ * w3-selfmark-unknown-attempt-500 POSTs {} — Jackson binds parts=null (the
+ * record declares no constraint on the list), @Valid passes (its constraints
+ * are element-scoped), and the controller's dedup loop NPEs on the null list
+ * (LearnerSelfMarkController.java:42-43); the catch-all advice
+ * (GlobalExceptionHandler.java:224-230) serves the opaque 500. The port
+ * reproduces exactly that: nullish parsed parts → throw past the handler to
+ * the app error boundary (500 internal_error). An unknown attempt with VALID
+ * parts is a mapped 404 in both cores (NotFoundException) — never "fixed".
  */
 import { Hono } from "hono";
 import type { ZodError } from "zod";
@@ -72,11 +78,10 @@ function classifyBodyError(error: ZodError): { kind: "malformed" } | { kind: "va
     "",
   );
   if (first.code === "invalid_type") {
-    if (first.path[0] === "parts") {
-      // parts: null binds (no declared constraint — the frozen NPE-on-null is
-      // a captured flag for R0); [] reaches the service empty-loop path
-      return { kind: "validation", message: `${field}: must not be null` };
-    }
+    // T-MIG-053: parts null/absent never reaches the classifier (the schema
+    // binds it nullish and the route throws NPE parity BEFORE dedup); a
+    // non-null wrong type is a Jackson BINDING failure caught by isBinding
+    // above, so this branch only serves element-level null constraint text.
     return { kind: "validation", message: `${field}: must not be null` };
   }
   if (first.code === "too_small") {
@@ -122,10 +127,24 @@ export function createLearnerSelfMarkRouter(module: ReturnType<typeof buildSelfM
       }
       return c.json(apiError(400, "validation_failed", verdict.message), 400);
     }
+    // T-MIG-053 frozen controller law (LearnerSelfMarkController.java:42-43):
+    // the dedup loop iterates request.parts() directly — with parts ABSENT or
+    // JSON-null, binding succeeds (no constraint on the list), @Valid passes
+    // (nothing element-scoped to constrain), and the loop NPEs; the NPE is
+    // unmapped and the catch-all advice (:224-230) serves the opaque 500.
+    // Reproduced mechanically: the throw escapes the handler to the app error
+    // boundary, which serves the byte-equivalent internal_error envelope.
+    // The empty LIST (parts: []) skips this and reaches the service's
+    // empty-marks gate (LearnerSelfMarkService.java:74-76) — a 400, as frozen.
+    if (parsed.data.parts == null) {
+      throw new Error(
+        "selfmark controller NPE parity: request.parts() is null (LearnerSelfMarkController.java:43)",
+      );
+    }
     // controller law: dedup loop builds the Map (the schema already rejected
-    // duplicates); null parts reach the service empty-marks 400
+    // duplicates); parts is non-null here (the NPE-parity throw above)
     const marksByPartId = new Map<string, number>();
-    for (const p of parsed.data.parts ?? []) {
+    for (const p of parsed.data.parts) {
       marksByPartId.set(p.partId, p.marksAwarded);
     }
     try {
