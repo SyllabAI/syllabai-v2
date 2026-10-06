@@ -2492,3 +2492,20 @@ Work Log:
 
 Stage Summary:
 - The 043 dual-PR ruling is audited and stands; the collision register entry is CLOSED with evidence. Two carry-forward items registered for R0: the 038 .nullable() widening (two-lane corroborated, precise scope: learner.ts :241-242 + learner.test.ts null fixture) and the optional r1 salvage hygiene card. Queue: zero open PRs at audit end. LANE IDLE.
+
+---
+Task ID: R0-AUTO (cron job 438940, sweep 2026-10-06 02:00 UTC)
+Agent: R0-auto merge desk (Super Z scheduled integrator)
+Task: Periodic merge-desk sweep — review + merge open PRs per the standing R0-auto procedure (max 2 merges/run, oldest first).
+
+Work Log:
+- Lock acquired 02:00 UTC; open-PR census: 1 (#82 t-mig-052/r9-hubx head b250a719c6f2ba238588aba41234c92cd6b81d03).
+- Guard chain on #82: CI check-runs verify+hub completed/success at the real head SHA; mergeable=True state=clean (no intake needed, base = main tip 06ca4e2); 0 reviews / 0 comments / zero HOLD-BLOCKING-REQUEST_CHANGES hits; file boundary scan: 9 files +2153/-0, zero *.java, zero core/hub content, syllabai-v2-only; collision scan: no T-MIG-052 card on main, exactly one t-mig-052* branch, zero prior 052 claims in the worklog.
+- MERGED #82 as 39fa554 (merge_method=merge, sha-pinned b250a719) — T-MIG-052 tranche-1 (Wave-5 classes+rosters core: classroom services + contracts + 56 pins) is LIVE.
+- CI verified on new main tip 39fa554: verify + hub both completed/success.
+- Local gates re-run at 39fa554: bun install --frozen-lockfile OK; typecheck exit 0; bun test apps/api packages 943 pass / 0 fail / 13 skip / 2681 expect (956 ran / 56 files — EXACT: prior 900 ran / 887 pass / 2523 expect + 56 tests / +158 expects from the classroom suites); golden --selftest OK.
+- Receipt committed bookkeeping-only (.syllabai/**); zero force-push.
+
+Stage Summary:
+- Wave-5 band is now OPEN and delivering under the operator directive (trace 1a10ec4d22b0e54d "claim the next unscoped task"): T-MIG-052 tranche-1 landed. Board: next up = 052 remaining tranches / 051 / 053 / 043 tranche-2 (NBA engine + routes).
+- Queue at sweep end: 0 open PRs. No escalations. LANE DONE for this cycle.
