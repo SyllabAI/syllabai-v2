@@ -1,0 +1,32 @@
+{
+  "schema": "syllabai.receipt/v1",
+  "task": "T-MIG-043",
+  "run": "run-006-postmerge-w0a",
+  "kind": "post-merge bookkeeping+hygiene",
+  "when": "2026-10-06T03:20:00Z",
+  "agent": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "merge_of_record": {
+    "pr": 85,
+    "merge_commit": "66c6618",
+    "merged_at": "2026-10-06T03:08:28Z",
+    "head_sha": "3044925",
+    "merged_by": "r1-contracts delegated reviewer (trace 1a10eb10b04682cd)",
+    "review_of_record": "PR comment 6008433613 (boundary PASS, fidelity PASS, R-043-A verified, gates branch-EXACT, replay disclosure accepted)",
+    "reviewer_intake": "3044925, disclosed in PR comment 6008494521",
+    "ci_at_merge_commit": "verify success + hub success (re-checked post-merge by this lane)",
+    "authors_never_self_merge": "held - the author did not merge; the delegated reviewer executed review+intake+merge"
+  },
+  "band_status": "T-MIG-043 COMPLETE on main: tranche-1 #74 (23b23e3) + tranche-2 #85 (66c6618) - NBA engine (NextBestActionService :79-554, policy nba-rules/v1.3, T1..T7), T-C11 ConceptDependencyGraphLoader fail-closed (272 validated edges == frozen), routes/learnerme.ts (11 surfaces), index.ts mount, 33+24 pins; post-merge local gates of record (r1-round10): 1019 ran / 1006 pass / 0 fail / 13 skip / 3065 expect + selftest OK",
+  "hygiene": {
+    "removed": "single stray ' HEAD' line left by the 3044925 union at the r1-f2 CLAIM entry boundary (mangled-marker residue; byte-verified before removal)",
+    "disclosure": "Task 2a worklog entry is the disclosure of record; no other line touched"
+  },
+  "w4_replay": {
+    "status": "cases ELIGIBLE on merged main; CI alive",
+    "ownership": "29 of the 57 cases are this band's; classification receipt follows from the replay lane when the instrument runs (T-MIG-050 daily 02:30 UTC schedule + the desk own dispatch)",
+    "zero_golden_files_touched": true,
+    "zero_neon_contact": true
+  },
+  "credential_law": "session PAT kept in a 0600 file outside every repo/artifact path; never written to any receipt, worklog, commit, PR body, or log; zero force-push",
+  "lane_status": "LANE w0a: STOP - task complete end-to-end."
+}

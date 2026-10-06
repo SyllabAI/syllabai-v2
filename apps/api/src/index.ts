@@ -54,6 +54,7 @@ import { buildTeacherMarkingRouters } from "./routes/teachermarking";
 import { buildSmeRouters } from "./routes/sme";
 import { buildLearnerRouters } from "./routes/learner";
 import { buildClassroomRouters } from "./routes/classroom";
+import { buildLearnerMeRouters } from "./routes/learnerme";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
@@ -70,6 +71,7 @@ const examPapers = buildExamPapersRouters();
 const testbuilder = buildTestBuilderRouters();
 const answerInput = buildAnswerInputRouters();
 const teachermarking = buildTeacherMarkingRouters();
+const learnerMe = buildLearnerMeRouters();
 const sme = buildSmeRouters();
 const classroom = buildClassroomRouters();
 
@@ -282,6 +284,29 @@ app.route("/api/v1/learners/me/answer-input", answerInput.transcribeRoute);
 // answer 503 until the LLM-chain lane lands; read surfaces are live.
 app.route("/api/v1/teacher/marking", teachermarking.teacherRoute);
 
+// Learner-me router (T-MIG-043 tranche-2 — Wave 4). Path parity with the
+// frozen core: LearnerAgendaController (GET /agenda),
+// LearnerRecommendationController (GET /recommendations),
+// FlashcardRatingController (POST /flashcard-ratings),
+// FlashcardRatingTrailController (GET /flashcard-rating-trail),
+// FlashcardReviewScheduleController (GET /flashcard-review-schedule),
+// NoteVoteController (POST /note-votes), LearnerExamSeriesController
+// (GET /exam-series, PUT/DELETE /courses/{slug}/target-series),
+// LearnerAssignmentController (GET /assignments,
+// POST /assignments/{id}/submissions) — all under
+// /api/v1/learners/me (SecurityConfig.java:91 anyRequest().authenticated();
+// the router owns its authz internally — the /api/v1/* fallback below stays
+// the 404-after-auth path for NO router claimed).
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-043, R0 ratification requested):
+// T-MIG-043's scope.allowed covers routes/learnerme.ts,
+// services/learner-me/**, test/learner-me/** — NOT this file. The import +
+// construction + mount line + this comment are the minimal app-level
+// wiring, shipped as a separate commit per the T-MIG-010/020/021/030/032/
+// 034 precedent so R0 can ratify or lift them out at review. The NBA
+// engine (nba-rules/v1.3) is LIVE as the agenda's default actions provider
+// (the tranche-1 501 posture remains the no-provider safety net).
+app.route("/api/v1/learners/me", learnerMe.learnerMeRoute);
 // SME admin router (T-MIG-033 tranche-3 — Wave 3). Path parity with the
 // frozen core: SmeQuestionAdminController under /api/v1/admin/question-bank
 // (SecurityConfig.java:86 hasRole("ADMIN") + @PreAuthorize defense-in-depth;
