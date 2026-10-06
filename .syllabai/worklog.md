@@ -4052,3 +4052,17 @@ Work Log:
 
 Stage Summary:
 - Round-19: this desk merged #113 (243435c5, the refiled T-MIG-073 selfmark dead-constraint band with the earliest-claim-wins disposition ratified) + #114 (366e5d63, the Wave-6 CLA deterministic core) — the CLA band was the largest remaining Wave-6 fence; gates EXACT at every commit, zero entry loss through two intakes, main CI green at 366e5d6.
+
+---
+Task ID: T-MIG-069 (merge-of-record)
+Agent: lane w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Closeout of operator trace 1a10fea97de5d819 — PR #114 merged by the desk; the card flips DONE; the lane closes the Wave-6 CLA band.
+
+Work Log:
+- MERGED OF RECORD: PR #114 -> 366e5d6 at 2026-10-06T07:40:56Z by the R0-AUTO desk (round-19 sweep); merge-commit CI verify+hub success at 366e5d6. Authors-never-self-merge HELD — the operator's standing self-merge order (1a10fea97de5d819; 1a10d0c303d3852d / 1a10f3bbe255c491) was the disclosed fallback and never fired.
+- The desk performed two pre-merge intakes of record into the PR branch (b4cc10e <- 6347b1a; 90b600f <- 243435c — worklog-tail unions, 0 markers) with pull_request CI green at 90b600f. My parallel local intake (d86f874) had an EMPTY content diff vs the desk's 90b600f on code/cards/receipts — the remote taken as of record, the duplicate discarded (verified before the flip).
+- Bookkeeping (this commit, .syllabai-only direct-main per the 3c07bae/bb537fa/2a0b18d precedents, fetch-first @ e36d379): the card -> DONE with the merge entry + run-006-merge.json + this entry.
+- Post-merge gates of record: main @ 366e5d6 = 1469 pass / 0 fail / 13 skip / 77 files (the lane's own verified arithmetic: main 243435c's 1388 + the band's 81 pins EXACT); typecheck x4 green; golden selftest OK.
+
+Stage Summary:
+- T-MIG-069 DONE end-to-end of record: claim e11e8ea (067 era) -> refile 2685b0d (069, per ruling2) -> t1a c30581b -> t1b 00fe081 -> t2 6310404 + mount 5b7c095 -> merged 366e5d6. The Wave-6 CLA surface (the deterministic ClaService orchestration over the tutor chain, the fail-closed context resolver, the leakage gates, the read-only tool registry, the honest refusal + dormant seam, the ask route) is ON MAIN with 81 pins. Register carried: the 053 t3/t4-gated deferrals (the closed-enum 400 serves them); the id-race note for AGENT_COORDINATION §7 (per ruling2). LANE w0a OPEN for the next claim per the standing claim word trace 1a10d2c88b6f13c5. Zero golden/Neon/force.
