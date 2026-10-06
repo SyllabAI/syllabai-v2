@@ -4130,3 +4130,20 @@ Work Log:
 
 Stage Summary:
 - Round-22 of record for r1: #115 reviewed+merged+dual-disclosed (d25626e), T-MIG-072 claimed+implemented+#117 filed (gates +0 EXACT), #116 reviewed+merged (3e9b54b) — two delegation firings, one claim, zero force-pushes, sha-pin discipline held on both merges (one shell-quoting process slip on the #115 PUT's message, disclosed on the PR). Lane idle pending #117 desk review.
+
+---
+Task ID: R0-AUTO cron 438940 @ 2026-10-06 08:30Z (16:30 +08) — round-20 desk sweep
+Agent: R0-auto (Super Z, zai-web session discord DM 482bf272)
+Task: Periodic merge-desk sweep (max 2 merges, oldest first) per the standing cron payload.
+
+Work Log:
+- PRE-SWEEP: no wipe this round — .gh-pat present and verified live as SyllabAI (the round-19 self-heal held); lock protocol clean (no stale lock, lock created then removed at exit).
+- CENSUS: 1 open PR — #117 T-MIG-072 (r1-contracts: the R3-D2 two-tranche seed-pass composition + the F-class key-canonicalization rider), head af73286, base 3e9b54b, created 08:19Z (11 min old).
+- GATES at the REAL head af73286: CI verify completed/success + hub completed/success (no event-drop this round); mergeable=True state=clean (the lane had proactively intake'd main 3e9b54b into the branch — af73286 IS a merge of origin/main into t-mig-072/r1, so NO desk intake was needed); reviews 0, issue comments 0 (no HOLD/BLOCKING/do-not-merge hits); diff 15 files all inside .syllabai/ + golden/ — zero .java, zero core/hub contact, zero Neon/prod writes. Fence PASS.
+- MERGED OF RECORD: PR #117 -> c88b738 via the sha-pinned PUT (merge_method=merge, sha=af73286e...) at ~08:31Z, no mid-merge race (first parent of c88b738 = 3e9b54b = the main tip this desk measured pre-merge). Authors-never-self-merge held: the implementing lane (r1, round-22) filed #117 explicitly "left OPEN for the desk"; the desk is a separate sweep session.
+- MAIN CI at c88b738: verify completed/success + hub completed/success (hub checked after a 90s settle — in_progress on first look, green on re-check).
+- RECEIPT: this entry, bookkeeping-only commit (.syllabai/worklog.md only) direct to main per the 3c07bae/bb537fa/2a0b18d precedents, gates green at c88b738 first.
+- QUEUE at sweep close: 0 open PRs (4th consecutive idle census at sweep start — and the one #117 was landed this round).
+
+Stage Summary:
+- Round-20: desk merged #117 (c88b738) — the RICH-200-C composition ruling is now executable on the live instrument: golden/runner.ts carries the tranche partition + the F-class RFC 8259 object-key canonicalization rider, ci-replay.ts runs the two ordered tranches (9 empty-pinned cases pre-staging, 153 staged after), 9 case files carry the declared "tranche": "empty" markers with zero expectation edits. Gates at the implementation head were the lane's +0 EXACT vs d25626e (1525/1512/0/13skip/5958/80f); the desk verified CI green at head and merge commit. Register follow-ups of record: T-MIG-071 (the RICH-200-E case-amendment residual) now unblocked; NEON replay run #8 still gated on NEON_BRANCH_CAPACITY.
