@@ -2,12 +2,54 @@ version: 1
 task:
   id: T-MIG-071
   title: "T-MIG-071 — the operator-ruling case-amendment band (R0 arbitration ruling3, receipts/R0-arbitration/ruling3-operator-four-rulings.json, operator trace 1a1100c71ff48e05): (R3-C) the eight run-7 class-C auth-register cases gain justified:true + the expect.headers Retry-After pin — the limiter STAYS as operator-endorsed v2 hardening, the auth-lane strip/align action is CANCELLED, and the runner must NOT pace around the 429; (R3-D3) w4-target-series-put-201: daysToWindowStart/daysToWindowEnd join tolerate[] + justified:true (capture-time anchor, drift +1 day per replay day — the port's utcToday law is faithful); (R3-D4) tolerate[] identity amendments per Option A — w4-register-learner-201 += accessToken, w3-history-after-submit-200 += learnerId/attemptId (clears fully only after T-MIG-072 composition), auth-me-with-bearer-200 += the seeded-identity fields the live diff shows (email/displayName expected; id already tolerated); the staged-identity tranche is SHELVED"
-  owner: "OPEN — unassigned; the claiming lane claims in-first-commit per AGENT_COORDINATION §2"
-  status: OPEN # filed by the R0-integrator desk 2026-10-06 on operator ruling; case-owner lane work, .syllabai/** + golden/cases/** + (rider) golden/runner.ts only
+  owner: "r0desk (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) — claimed in-first-commit per AGENT_COORDINATION §2 on branch t-mig-071/r0desk cut @ origin/main e9ef235; operator directive trace 1a1107dcfaa8d9a1 're-check claim state on the cards before touching anything. Proceed with unclaimed' (register scan of record 09:2xZ: 0 open PRs; 071 the only OPEN unassigned executable band — 072 merged of record #117 c88b738, 073 actively owned by r1-contracts)"
+  status: IN_PROGRESS # claim commit first (wipe-protection), operator directive trace 1a1107dcfaa8d9a1; filed by the R0-integrator desk 2026-10-06 on operator ruling; case-owner lane work, .syllabai/** + golden/cases/** + (rider) golden/runner.ts only
+  claimed_at: "2026-10-06T09:30:00Z"
   priority: P2
   wave: ruling-execution # not wave work — the four operator rulings' case-side half
   deps: []
   execution_record: >
+    (CLAIM of record, r0desk 2026-10-06T09:30Z — branch t-mig-071/r0desk cut @
+    e9ef235 after a full register re-scan per the operator directive: 0 open PRs;
+    every wave band DONE; 072 IN_REVIEW-on-branch merged of record via #117
+    c88b738 (its card DONE flip rides this lane's PR as disclosed bookkeeping);
+    073 IN_PROGRESS by r1-contracts — untouched. Zero-collision: no t-mig-071
+    heads carrying a competing claim (the origin head t-mig-071/r1 is
+    r1-contracts' superseded 073 branch per that card's own provenance note),
+    worklog 071 mentions = the R0-integrator filing + round-22 closeout only.
+    DESIGN DECISIONS filed at claim time (each disclosed again in the PR):
+    (1) R3-C rider — the live Retry-After value ROTATES (run-7: 46s;
+    T-MIG-063 run-003: retryAfterSeconds 53) and the port emits
+    String(max(1, floor((windowEnd-now+999)/1000))) (ratelimit.ts:214/270), so
+    per effect 5 the pattern-value header support is IN scope; semantics are
+    PRESENCE-CONDITIONAL by design and disclosed: a "pattern:"-prefixed
+    expect.headers value must fully-match the actual header WHEN PRESENT and
+    is silent on absence — the pattern governs the RULED 429 divergence
+    posture (tripped answers carry Retry-After), while frozen-posture answers
+    (run-004: admin-refused-403 + bad-email-400 passed = no such header) must
+    keep passing; a hard always-present pin would flip untripped runs red and
+    contradict the operator's own projected clearing. Plain values keep exact
+    missing-fails semantics (regression-guarded in selftest).
+    (2) R3-D4 auth-me — amended exactly email + displayName per run-7 note H
+    ("tolerate=[id] insufficient"); field-by-field live verification is the
+    standing CI leg (honest posture, disclosed).
+    (3) R3-D4 history — the case ALREADY tolerates attemptId (earlier
+    H-class amendment); the amendment adds learnerId and restates attemptId
+    per the ruling text. Disclosed.
+    (4) R3-D2 effect 4 (RICH-200-E) — the assessment of record: tie-order
+    nondeterminism TRIPLE-CONFIRMED (proof run [4,1,2,5,3,6,7,8] / run-002 CI
+    [2,...] / gold [1,4,2,5,3,6,7,8], multiset identical every time), the
+    frozen (source, qNum, input-order) law has no deterministic tie key, so
+    the disposition of record is the DECLARED-UNORDERED multiset on the
+    families root array (unordered: [""], the established path convention of
+    w3-teacher-marking-answers-rich-200) — element identity stays exact,
+    zero deletions, not a tolerate[] widening (different mechanism, the
+    ruling's own first option); DISCLOSED SCOPE EXTENSION per the
+    scope-amendment law (T-MIG-063 fence_amendment precedent).
+    (5) The family of record stays the run-7 class-C eight — NO extension to
+    success-201/duplicate-email-409: no recorded evidence either ever tripped
+    (effect 4 extends ONLY on live-instrument evidence; the CI leg reports
+    and a follow-up disclosed amendment would extend if they do).
     (filed by R0-integrator, 2026-10-06 — operator trace 1a1100c71ff48e05 answered the
     four-ruling menu with Option B / (a) / Tolerate / Option A; the receipt is
     receipts/R0-arbitration/ruling3-operator-four-rulings.json and it is the LAW of record

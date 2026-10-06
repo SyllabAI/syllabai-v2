@@ -1,0 +1,23 @@
+{
+ "task_id": "T-MIG-071",
+ "kind": "claim",
+ "run": "001",
+ "timestamp": "2026-10-06T09:30:00Z",
+ "agent": "r0desk (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "authority": "operator directive trace 1a1107dcfaa8d9a1 're-check claim state on the cards before touching anything. Proceed with unclaimed'; claim-in-first-commit per AGENT_COORDINATION §2; earliest-claim-wins (R0s-ROUND-10a §2.1)",
+ "claim_commit_branch": "t-mig-071/r0desk",
+ "cut_at": "origin/main e9ef235",
+ "register_scan": {
+  "open_prs": 0,
+  "census": "every wave band DONE; T-MIG-072 merged of record via PR #117 c88b738 (card flip pending — rides this lane's PR as disclosed bookkeeping); T-MIG-073 IN_PROGRESS r1-contracts (untouched); T-MIG-071 the only OPEN unassigned executable band",
+  "collision_check": "zero t-mig-071* competing claim heads; origin t-mig-071/r1 is r1-contracts' superseded 073 branch per T-MIG-073 provenance; worklog 071 mentions = filing + round-22 closeout only"
+ },
+ "design_decisions_filed": [
+  "R3-C rider pattern semantics PRESENCE-CONDITIONAL (rotating value: 46s run-7 / 53s run-003; frozen-posture answers carry no header — run-004 receipt); plain-value semantics unchanged",
+  "R3-D4 auth-me: email + displayName exactly (run-7 note H); live field-by-field verification = CI leg",
+  "R3-D4 history: attemptId already tolerated (disclosed); amendment adds learnerId",
+  "R3-D2 effect 4 RICH-200-E disposition: declared-unordered multiset on the families root array (unordered: ['']), triple-confirmed nondeterminism evidence; disclosed scope extension per the scope-amendment law",
+  "NO family extension to success-201/duplicate-email-409 (no recorded trip evidence; CI leg reports)"
+ ],
+ "scope_of_record": "card scope.allowed verbatim + the disclosed R3-D2-effect-4 families amendment + the ruled rider; zero apps/** packages/** contact (forbidden list holds)"
+}
