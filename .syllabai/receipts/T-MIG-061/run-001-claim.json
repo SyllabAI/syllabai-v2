@@ -1,0 +1,37 @@
+{
+  "task": "T-MIG-061",
+  "run": "run-001-claim",
+  "lane": "r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "operator_trace": "1a10f3ef205fa961",
+  "directive": "Check if R0 has merged or not. If not, review+merge yourself and continue working",
+  "claimed_at": "2026-10-06T04:05:00Z",
+  "branch": "t-mig-061/r9-hubx",
+  "base": "origin/main ced0111",
+  "frozen_ref": "6cad6ef",
+  "r0_merge_check": {
+    "answer": "R0 HAD merged — and the residual queue was swept by this lane before claiming",
+    "merged_since_last_round": ["#82 052-t1 39fa554", "#83 7dfdd16", "#85 043-t2 66c6618", "#86 F2 76e26e9", "#87 414f4a6", "#91 9bebf7e"],
+    "reviewed_and_merged_by_this_lane": [
+      "#88 r0r6 neon-replay run-7 divergence triage -> 4fed5ba (intake 3ec0e2f worklog union + reviewer intake 043b497 stacked; gates @ 043b497: typecheck x4 / 1063-0-13skip-3211 / selftest OK / CI clean)",
+      "#84 T-MIG-053 t1 (r3a) -> ced0111 (intake b29b874 worklog union 0 markers, contracts index keep-both; gates @ b29b874: typecheck x4 / 1103-0-13skip-3288 over 61 files = main +40/+77/+2 EXACT / hub 36-0 / selftest OK / CI verify+hub success)",
+      "#89 (this lane's own 052-t2) was merged by r1c 9032b9e per authors-never-self-merge — not self-merged"
+    ]
+  },
+  "zero_collision_scan": {
+    "ls_remote": "exactly ONE t-mig-06* head = t-mig-060/w0a (w0a's active claim, fetched+read: tutor ask/stream SSE + sessions CRUD + KaRAG chain)",
+    "cards": "ZERO T-MIG-061 refs on main (git grep origin/main empty); zero 061..066 yamls; board at ced0111: every card DONE except 053 IN_PROGRESS (r3a) / 043 IN_REVIEW (w0a)",
+    "open_prs_at_scan": 0,
+    "band_selection": "Wave-6 §MIGRATION_PLAN:155 first SELF-CONTAINED band — CLA deferred (ClaService :130-148 hard-depends on TutorGenerator/VectorRetriever/RRF/Reranker/CitationResolver/LearnerModelService/TutorPolicyService, all inside w0a's in-flight 060 fence; building on unmerged files = the collision class §2.1 forbids); intervention runs' every collaborator ALREADY ON MAIN (NBA #85, SkillState #41, subjects #021); id-order deviation disclosed on the card for ratification at PR review",
+    "fence": "packages/contracts/src/intervention.ts + apps/api/src/services/intervention/** + apps/api/test/intervention/** + card/receipts/worklog; routes/mounts OUT-OF-FENCE separate commit; NO hub flip"
+  },
+  "scope": {
+    "endpoints": 9,
+    "frozen_lines": 928,
+    "frozen_files": 11,
+    "tables": ["intervention_run (V26)", "intervention_run_step (V26)", "intervention_run_evidence (V26)"],
+    "baseline_schema": "all three greps hit packages/db/drizzle/0000_organic_mauler.sql — zero R2 work"
+  },
+  "id_ratification": "requested at review (030/032/039/040-PREP/041/043/055/060 precedent); 061 = next free id, CLA deferred behind 060 with disclosure",
+  "self_merge": "never — independent review + R0 merge-intake requested",
+  "gates_at_claim": "n/a (no code yet); impl gates land with run-002"
+}
