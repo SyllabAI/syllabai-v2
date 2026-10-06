@@ -1,0 +1,28 @@
+{
+  "task": "T-MIG-069",
+  "run": "run-004-tranche1b",
+  "date": "2026-10-06",
+  "lane": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "provenance": {
+    "operator_directive_trace": "1a10fea97de5d819",
+    "directive": "Check if R0 has merged or not. If not, review+merge yourself and continue working",
+    "resolution": "R0 verified active of record (nothing of w0a's pending; #107/#108 merged by the desk); the 'continue working' half = the refile (run-003) then the tranches. This receipt covers tranche-1b, the context resolver port."
+  },
+  "tranche_1b_scope": "apps/api/src/services/cla/context-resolver.ts (NEW) — buildClaContextResolver({sql, clock}): resolveKgTopic + resolveSpecificationPoint + the shared resolveCurriculumNode spine + the shared resolveQuestionAnchor spine + contextFrom + the QuestionAnchor record + resolvePastPaperQuestion + resolveQuestionPart — frozen ClaContextResolver.java :1-492 line-against-line; the barrel gains the export; contracts index one-liner comment updated to the 069 id (register-level)",
+  "runtime_step_law": "exactly the four dependency-served kinds (KG_TOPIC, SPECIFICATION_POINT, PAST_PAPER_QUESTION, QUESTION_PART); resolveSmartLesson/resolveNoteSection DEFER behind the T-MIG-053 t3/t4 gate (r3a's tranches) — the frozen 'kinds not served by this runtime step are a 400 (closed enum, §1)' law is the route dispatch mechanism at tranche-2; a deferral pin holds the surface shape (the two resolvers are absent from the v2 factory)",
+  "reuse_not_redeclare": [
+    "graph.tree(rootId) = 053's knowledgeTree (the single PART_OF-tree read)",
+    "graph.subtreeIds(rootId) = the questions module's taxonomy.subtreeIds (the exported 404-first port; composed via the public classes)",
+    "ServableQuestionService.isServable(questionId) = ServableQuestions.findById(id) !== null — the frozen gate IS findById(...).isPresent() (:166-168), so the landed one-owner chain is byte-identical",
+    "SubjectRepository.findAllByOrderByCode + findById + mapSubjectJoinedRow reused (the paper-less walk + the paper-subject spine)",
+    "subjects.findByKnowledgeNodeId + the repo-level question/version/part/paper/attempt reads = the resolver's OWN frozen-topology reads (different consumers than the tutor/questions projections — different columns, different fail laws), disclosed in the file header"
+  ],
+  "pins": "apps/api/test/cla/context-resolver.test.ts — 18 pins over the shared param-aware fakeSql: the frozen ClaContextResolverTest laws 1:1 for the landed kinds (the KG_TOPIC happy path with curriculum-identity laws; foreign-topic 404; the §1.2 validation gate with the 'validated' message; non-subject-root 404; the SPECIFICATION_POINT code-strip law; unknown/foreign spec codes; the SUGGESTED-concept gate; the QUESTION_PART canonical-FK happy path with label/stem/marks/paperCode/attempted/command-word precedence; unknown part; the superseded-version relationship gate; the unservable gate x2; the foreign-root and unknown-root subject-isolation gates; the inactive-question 404; the PAST_PAPER_QUESTION spine with stem/command-word/marks precedence and the deterministic attempt state; the runtime-step deferral shape)",
+  "gates": {
+    "typecheck": "x4 exit 0",
+    "bun_test": "apps/api packages: 1430 pass / 0 fail / 13 skip / 5745 expect across 76 files = the intake base (1412/75f/5681 @ 314da7f) +18 tests/+1 file/+64 expect EXACT",
+    "golden_selftest": "OK"
+  },
+  "adr_031_zero_write_audit": "zero writes: read-only resolver over existing services/repos; no tables touched; zero golden file edits; zero Neon contact; zero force-push",
+  "next": "tranche-2 = ClaService orchestration (:1-906) + routes/cla.ts (the §22-style admission, the kind/mode dispatch, the fixed 400 for the deferred kinds) + ClaAnswerView assembly + the event posture + the OUT-OF-FENCE mount (separate commit) + PR with the id-ratification request"
+}

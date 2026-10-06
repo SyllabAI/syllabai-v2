@@ -3821,3 +3821,20 @@ Work Log:
 
 Stage Summary:
 - T-MIG-069 is the register id of record for the Wave-6 CLA band. Tranche-1a remains landed (c30581b); the refile is register-level only, zero code touched. Next: intake origin/main -> gates -> push; then tranche-1b (ClaContextResolver, the four dependency-landed kinds) -> tranche-2 (ClaService + route + mount) -> PR as T-MIG-069 with id-ratification request. Zero golden/Neon/force.
+---
+Task ID: T-MIG-069 (tranche-1b)
+Agent: lane w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: T-MIG-069 tranche-1b — the context resolver port (frozen ClaContextResolver :1-492) for the four dependency-served kinds.
+
+Work Log:
+- Intake first (314da7f): origin/main 00831a6 merged — one conflict (.syllabai/worklog.md) resolved as the strict append-only union (main verbatim in place, the lane's 3 entries re-appended; entry arithmetic 220 common + 17 main-only + 3 lane = 240 EXACT, zero markers); contracts index auto-merge kept the cla one-liner.
+- Refile of record (2685b0d, run-003): card + receipts git-mv'd to T-MIG-069 per R0-arbitration ruling2; branch name kept (ruling: cosmetic).
+- TRANCHE-1B implemented: services/cla/context-resolver.ts (NEW) — buildClaContextResolver({sql, clock}) porting frozen ClaContextResolver.java :1-492 line-against-line: resolveKgTopic, resolveSpecificationPoint (the code-strip law verbatim), resolveCurriculumNode (the shared spine: subtree registry + §1.2 gate + curriculum identity from the owning subject), resolveQuestionAnchor (paper → subject or the paper-less SEED_DEMO subtree walk → primary topic VALIDATED → current version VALIDATED), contextFrom + QuestionAnchor, resolvePastPaperQuestion (active filter + isServable + the attempt-state read), resolveQuestionPart (canonical-FK hops + the CURRENT-version relationship gate + the foreign-subject root 404).
+- RUNTIME STEP of record: exactly four kinds served; SMART_LESSON/NOTE_SECTION branches defer behind the 053 t3/t4 gate — the deferral is a PIN (the two resolvers absent from the factory) + the route dispatch will 400 the kinds at t2 (the frozen closed-enum law).
+- REUSE-not-redeclare of record: knowledgeTree (053), taxonomy.subtreeIds (the questions module's exported port), ServableQuestions.findById as the isServable gate (the frozen gate IS findById(...).isPresent() — byte-identical chain), SubjectsRepository + mapper; the resolver's OWN repo reads (findByKnowledgeNodeId, question/version/part/paper/attempt) are the frozen topology's local reads, disclosed in the header.
+- Pins: apps/api/test/cla/context-resolver.test.ts — 18 pins, the frozen ClaContextResolverTest laws 1:1 for the landed kinds, over the shared param-aware fakeSql.
+- Gates at the head: typecheck x4 exit 0; bun test 1430/0/13skip/5745 across 76 files = intake base (1412/75f/5681) +18/+1/+64 EXACT; golden --selftest OK.
+- Card status + t1b execution_record entry + run-004-tranche1b.json + this entry, one commit.
+
+Stage Summary:
+- T-MIG-069 t1b LANDED on t-mig-067/w0a (branch name cosmetic per ruling2). Next: t2 (ClaService orchestration :1-906 + routes/cla.ts + the kind/mode dispatch with the fixed 400 for the deferred kinds + the event posture + the OUT-OF-FENCE mount, separate commit) -> PR with the id-ratification request. Zero golden/Neon/force.
