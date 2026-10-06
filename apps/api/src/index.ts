@@ -54,6 +54,7 @@ import { buildTeacherMarkingRouters } from "./routes/teachermarking";
 import { buildSmeRouters } from "./routes/sme";
 import { buildLearnerRouters } from "./routes/learner";
 import { buildClassroomRouters } from "./routes/classroom";
+import { buildResearchRouters } from "./routes/research";
 import { buildLearnerMeRouters } from "./routes/learnerme";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
@@ -74,6 +75,7 @@ const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
 const sme = buildSmeRouters();
 const classroom = buildClassroomRouters();
+const research = buildResearchRouters();
 
 const app = new Hono();
 
@@ -346,6 +348,21 @@ app.route("/api/v1/admin/question-bank", sme.adminRoute);
 app.route("/api/v1/teacher/classes", classroom.teacherClassesRoute);
 app.route("/api/v1/learners/me/classroom", classroom.learnerClassroomRoute);
 app.route("/api/v1/teacher/learners", classroom.teacherRosterRoute);
+
+// Research calibration router (T-MIG-062 — Wave 6). Path parity with the
+// frozen core: ResearchCalibrationController GET /api/v1/research/learner-
+// model/calibration (SecurityConfig.java:88-90 hasAnyRole('TEACHER','ADMIN')
+// on /api/v1/research/** — the router owns its authz internally, Boot
+// 401/403 shells before any query). The /api/v1/* fallback below stays the
+// 404-after-auth path for NO router claimed.
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-062, R0 ratification requested):
+// T-MIG-062's scope covers routes/research/**, services/research/**,
+// test/research/**, packages/contracts/src/research.* — NOT this file. The
+// mount line + import + construction + this comment are the minimal
+// app-level wiring, shipped per the 010/020/021/031/032/041/052/061
+// precedent so R0 can ratify or lift them out at review.
+app.route("/api/v1/research", research.researchRoute);
 
 // anyRequest().authenticated() parity for paths NO router claimed
 // (SecurityConfig.java:91): anonymous callers get the 401 Boot-shaped body;
