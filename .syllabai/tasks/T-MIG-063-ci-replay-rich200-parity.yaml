@@ -3,7 +3,7 @@ task:
   id: T-MIG-063
   title: "ci-replay rich-200 parity — the Neon replay harness gains the T-MIG-051 runner capabilities (multipart bodyFile, /admin route rule, seed-t51-rich200 staging) so the N-4 rich-200 family replays on the live instrument"
   owner: "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646) — operator directive trace 1a10f806acdec285 'processing of the Rich-200 series'"
-  status: IN_REVIEW # PR filed; run-002 implementation receipt attached; NOT self-merged — merge desk per authors-never-self-merge standing delegation
+  status: DONE # run-004 union 137/177 (seed 124/162 + prod 13/15): the family 7/7 PASS on the LIVE Neon instrument — RICH-200-A (harness gap) + RICH-200-B (setup 429) CLOSED; register hand-offs: RICH-200-C (7 empty-state 200s flipped by the staged/landed state — case-owner lane), RICH-200-D (w3-questions surfaces 500 on the V63 seed data — port lane P1, first exercised BY the staging)
   priority: P1 # the family is 0/7 on the standing live instrument while the port is locally proven 17/17 — the census under-reports parity until the harness reaches capability parity
   wave: 3 # the family's wave (N-4 / T-MIG-051 lineage); tooling execution per T-MIG-044 lineage conventions
   deps: [T-MIG-044, T-MIG-051]
@@ -25,6 +25,12 @@ task:
     the requirement themselves ("Replay requires golden/tools/seed-t51-rich200.ts
     state", w3-sme-ingest-rich-200 description).
   execution_record: >
+    (run-004 closure entry 2026-10-06T05:35Z) LIVE VERDICT: dispatch 37418673048
+    on d6911f6 — the family 7/7 PASS on live Neon (the signed-uuid tie-break,
+    the HashMap wire order, the ADR-026 replace numbers, the multipart parser —
+    all holding against the port live); union 137/177 (+17 vs the prior run);
+    read-only proof + drop/404-verify OK; RICH-200-C/D filed as hand-offs
+    (receipt run-004-union.json). PROCESSING OF THE RICH-200 SERIES COMPLETE.
     (run-003/004 entry 2026-10-06T05:25Z) LIVE FINDING on dispatch
     37417629684 (ec40f1f): the staging's setup registers were 429'd by the
     v2-only register rate limiter (triage C-class, retryAfterSeconds:53)

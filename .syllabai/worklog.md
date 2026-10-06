@@ -3327,6 +3327,20 @@ Work Log:
 Stage Summary:
 - T-MIG-063 run-004 pushed to t-mig-063/r0 (fence = ci-replay.ts + seed-t51-rich200.ts + workflow + card/receipts/worklog); re-dispatch = run-004 re-proof.
 ---
+Task ID: T-MIG-063 (run-004 live verdict — closure)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, operator trace 1a10f806acdec285)
+Task: The rich-200 family's live verdict on the restored harness — closure of the series' processing.
+
+Work Log:
+- Dispatch 37418673048 on d6911f6 (post-#105): UNION 137/177 (seed 124/162 + prod 13/15), trajectory 108 → 120 → 137. THE FAMILY 7/7 PASS LIVE: the SIGNED-uuid tie-break, the BY_STATE_WIRE_ORDER HashMap law, the ADR-026 replace numbers, the multipart parser — all holding against the live port on the Neon instrument. RICH-200-A CLOSED (harness parity), RICH-200-B CLOSED (the throttle carried the staging past the v2-only register limiter; the C-class cases still measure it honestly — membership rotated exactly as recorded).
+- Cross-effects named (receipt run-004-union.json): 6 B-class seed-posture reads cleared as pre-disclosed (curriculum ×4, teacher-curriculum-nodes, w3-attempt-mcq-happy-201); auth-me honestly red (no users rows in t51-seed.sql — third-posture task remains the home); +10 W4 route-landing recoveries from the other lanes' merges (A-class cascade clearing).
+- NEW FINDINGS FILED: RICH-200-C — 7 empty-state 200s flipped by the staged/landed state (w3-marking-{answers,queue-v2,throughput}-teacher-200, w4-course-stats/flashcard-schedule/flashcard-trail/state empty) — a corpus-sequencing question for the case-owner lane (seq-position before the state builders / re-pin / tolerate); v2 renders both postures faithfully. RICH-200-D — PORT DEFECT P1: w3-questions-families/topics-student-200 return 500 internal_error on the V63 seed data (frozen serves rich 200s over the same rows; the port crashes — first exercised BY the staging; w3-questions port lane).
+- Doctrine steps verified: read-only proof OK (the staging writes only to the disposable COW branch), drop + 404-verify OK, union reds on the standing honest reds only.
+- Card → DONE (bookkeeping-only .syllabai/** per the r0-role precedent a695c92/aca7a5e/37d8825/ba3976b, fetch-first).
+
+Stage Summary:
+- THE RICH-200 SERIES IS PROCESSED END-TO-END: disposition of record (run-001) → harness capability restore (run-002, #100) → setup-limiter survival (run-004, #105) → LIVE 7/7 family verdict (run-004 union receipt). Register: RICH-200-C (case-owner), RICH-200-D (port P1), plus the standing C/B/third-posture classes. T-MIG-063 DONE.
+---
 Task ID: T-MIG-062 (run-001 claim)
 Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
 Task: Operator directive (trace 1a10f73d46ea053d): "Check if R0 has merged or not. If not, review+merge yourself and continue working" — R0 merge-of-record verified IN (queue drained), so continue-working claims the first self-contained Wave-6 band: the research calibration read surface (ADR-036 k-anonymity binds the port).
