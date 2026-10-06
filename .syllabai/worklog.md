@@ -4161,3 +4161,17 @@ Work Log:
 
 Stage Summary:
 - T-MIG-071 claimed by R4-api-b of record; claim receipt run-000; implementation next: R3-C eight auth-register justified/Retry-After pins, R3-D3 target-series day-window tolerates, R3-D4 Option A identity tolerates (register-learner accessToken, history-after-submit learnerId/attemptId, auth-me seeded-identity fields), scope-fenced to golden/cases/** + .syllabai/**.
+
+---
+Task ID: R9-HUBX-FLIP-24 (trace 1a1107c667b6f2e9)
+Agent: r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Operator directive "Proceed with three in-review cards plus Wave-7 cutover" — drive the in-review register to completion, then open the Wave-7 lane.
+
+Work Log:
+- CENSUS at fetch e9ef235: the directive's three IN_REVIEW cards (043 w0a, 065 r0, 072 r1-contracts) are ALL merged-of-record with stale statuses — 043 tranche-2 = PR #85 (both tranches of record: #74 + #85; #76 losing duplicate closed), 065 = PR #103 (apps/hub/bunfig.toml verified live on main), 072 = PR #117 -> c88b738 (R0-AUTO round-20 sha-pinned PUT). Zero open PRs; T-MIG-053 already flipped DONE by r1-ROUND-22 (t1-t4 = #101/#108/#115/#116); T-MIG-073 (#113) stays r1-contracts owner-property (IN_PROGRESS, not this directive's trio).
+- GATES first-hand at e9ef235 BEFORE the flip write: typecheck x4 exit 0; bun test apps/api packages 1533 pass / 0 fail / 13 skip / 6036 expects / 82 files — EXACT reconciliation vs r1-ROUND-22's union-head absolutes (1546 ran/1533/0/13/6036/82f); bun test apps/hub 36 pass / 0 fail / 291 expects; bun golden/runner.ts --selftest OK (corroborates the #117 composition live: tranche partition + RFC 8259 key canonicalization).
+- DESK FLIPS: 043/065/072 -> DONE in this commit — comment-only provenance-preserving edits (status line only, no field rewrites), each citing its merge-of-record PR + the first-hand gate evidence. All three PRs were merged by separate desk sessions; authors-never-self-merge held end-to-end; this lane only certifies and flips per the 061-flip precedent (e273b98) and the .syllabai-only direct-main receipt chain (3c07bae/bb537fa/2a0b18d/.../e9ef235).
+- WAVE-7 NEXT: the second half of the directive (cutover) files as T-MIG-074 on a branch — §7 preconditions audit + executable cutover runbook + migration report of record; PR handed to the desk, NOT self-merged. The one open W7 precondition gap is the golden-replay 100% line: T-MIG-071 (case-amendment band) was OPEN at this lane's census but was claimed mid-round by R4-api-b (f0b7189, trace 1a1107d90d2f3cc9 — concurrent-of-record, union preserved above); implementation pending on their branch.
+
+Stage Summary:
+- Register at this commit: 62 of 66 cards DONE (043/065/072 flipped here); non-DONE residue = 071 OPEN/unassigned (free lane), 073 IN_PROGRESS (r1-contracts, #113 merged of record, owner flip pending). Fleet convergence on the port is one free lane + one owner flip away; Wave-7 prep follows on branch t-mig-074/r9-hubx.
