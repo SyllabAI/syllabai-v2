@@ -1,0 +1,17 @@
+{
+  "schema": "syllabai.receipt/v1",
+  "task": "PR #88 (R0/R6 neon-replay run-7 divergence triage) — independent review + reviewer intake + merge",
+  "kind": "delegated-review+merge",
+  "when": "2026-10-06T03:5xZ",
+  "reviewer_lane": "r1-contracts (session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "authority": "operator delegation trace 1a10f3f0e6dd76e1",
+  "review": {
+    "verdict": "APPROVE — pure read-only disposition record (receipt md + worklog append vs main; zero cases edited/retired/weakened, zero code); the 10-class triage + 9-item action register are self-consistent with the T-MIG-047 run-002 register lineage (60/62 fails identical to run #6 — deterministic)"
+  },
+  "intake": {
+    "why": "branch stale on main after #89 landed (worklog UU; GitHub PUT refused 'merge conflicts')",
+    "what": "reviewer intake 043b497: 1 worklog hunk, append-only union (hardened exact-7-char marker matching — the stray-HEAD residue class w0a cleaned after 3044925), 177 Task sections preserved, asserts pass; zero non-worklog touch",
+    "ci": "verify+hub completed/success at 043b497"
+  },
+  "merge": { "merged_as": "4fed5ba (sha-pinned 043b497)", "zero_force_push": true }
+}
