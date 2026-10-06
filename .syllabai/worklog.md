@@ -3071,3 +3071,17 @@ Work Log:
 
 Stage Summary:
 - Round-15 sweep complete: workspace rebuilt from wipe (#7) with credential law intact, both open PRs (#94, #95) independently reviewed and merged (1aea8bc, af33b6f), all gates exact at 1144/0/13skip/3485 + selftest OK, queue at zero. Register unchanged (NEON_BRANCH_CAPACITY; 058 F-B nested-null full emulation now ON the register via its card). LANE r1c: STOP for this round.
+---
+Task ID: T-MIG-063 (claim — run-001 disposition)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, operator trace 1a10f806acdec285)
+Task: Operator directive "processing of the Rich-200 series" — disposition the rich-200 family's first live-instrument run and restore harness capability parity.
+
+Work Log:
+- Sandbox recovered from the 7th full wipe: syllabai-v2 re-cloned (main ddbe9fe, round-15 sweep tip), credential law restored from the /tmp remnant (GITHUB_PAT + NEON_PAT, HTTP 200 both, 0600 outside repo, credential-store wired).
+- Evidence: pulled artifact neon-replay-37408914789-1 (run on 9bebf7e, union 120/177, seed 107/162, prod 13/15). The 7 rich-200 fails decomposed: w3-sme- trio = 403 Forbidden on /api/v1/admin/** (harness default-student bearer); w3-teacher-marking- quartet = 200-vs-200 empty-vs-rich (T51 lifecycle never staged on the COW branch).
+- ROOT CAUSE (class RICH-200-A, HARNESS GAP): T-MIG-051 extended only golden/runner.ts; golden/tools/ci-replay.ts has zero bodyFile/multipart support, no /admin route rule, no rich-state staging. Port NOT implicated: T-MIG-051 run-003 proved the family 17/17 vs the live port on a fresh scratch db. Disposition filed: .syllabai/receipts/T-MIG-063/run-001-disposition.json (E-class/B-class precedent alignment; cross-effect disclosure: staging applies t51-seed.sql → B-class seed-posture reads may clear early, named at the next union, third-posture task remains the mechanism home).
+- ID PROVENANCE: 059 TAKEN (r0/r1, PRs #96/#97 F-0/F-1 binding-law), 060 reserved (w0a branch), 061 DONE (af33b6f), 062 TAKEN in-flight (t-mig-062/r4b remote head, no PR) — filed forward-only as T-MIG-063 (zero repo refs, zero remote heads, zero PRs at claim time; the T-MIG-055 free-id-check lesson applied: PRs + remote branches included).
+- Claim per §2: card + run-001 receipt + this entry in the SAME commit that starts t-mig-063/r0, pushed BEFORE any fix work. Fix (run-002): ci-replay.ts multipart import (buildMultipartBody from ../runner.ts — engine untouched), /admin route rule after the name rules, seed-t51-rich200.ts spawn staging at two loop boundaries, --selftest, workflow DATABASE_URL env for Pass A. Zero case files, zero runner.ts edits.
+
+Stage Summary:
+- T-MIG-063 CLAIMED at ddbe9fe; branch t-mig-063/r0; disposition of record filed for the rich-200 series (class RICH-200-A HARNESS GAP, port parity standing 17/17 local). Re-proof owed post-merge via neon-replay dispatch + run-003 union receipt.
