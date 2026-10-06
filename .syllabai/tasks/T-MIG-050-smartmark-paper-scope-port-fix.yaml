@@ -1,0 +1,90 @@
+version: 1
+task:
+  id: T-MIG-050
+  title: "Smart-mark paper-scope port fix — derive exam_paper_id via the attempt→question join per the frozen derivation; 42703 blocking defect surfaced by the first full-union replay"
+  owner: "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
+  status: CLAIMED
+  claimed_at: "2026-10-06T00:59:07Z"
+  priority: P0 # blocking-class: every smart/teacher/student smart-mark pass on the live baseline throws 42703 before any marking can complete
+  wave: 4 # port-lane defect repair; blocks the marking pipeline's live union verdict, not any port lane's authoring
+  deps: [T-MIG-044, T-MIG-047]
+  operator_directive: >
+    "Proceed with T-MIG-048" (trace 1a10eaec91250cf9, 2026-10-06). The
+    receipts and worklog name this defect "T-MIG-048 candidate" (T-MIG-047
+    run-001/run-002 genuine port findings) — that was a filing NAME, never a
+    card: the T-MIG-048 id was won by neon-branch fail-path redaction per
+    §2.1 earliest-claim-wins (R0s-ROUND-10a disclosure, PR #70). The defect
+    work itself was left UNCLAIMED. This card files it under the next free
+    id (050) and executes under the operator's standing delegated authority
+    (review+merge yourself / continue working precedents: 260f452, 39ee5d5,
+    190706e).
+  execution_record: >
+    FINDING (T-MIG-047 run-001/run-002, live replay evidence): the v2 port
+    selects attempts.exam_paper_id — a column that DOES NOT EXIST in the
+    live baseline (packages/db/src/schema/schema.ts:205 — attempts carries
+    id, learner_id, question_id, chosen_option_id, correct, marks_awarded,
+    response_time_ms, confidence_level, self_doubt_flag, timed_condition,
+    provenance, created_at, marking_state, evidence_emitted). Postgres
+    raises 42703 (undefined column) at the FIRST smart-mark call; boot log
+    proves it live (boot-seed.log); stub-SQL tests are structurally blind
+    (the stub does not validate column names). FROZEN DERIVATION (read at
+    syllabai-core @ 6cad6ef): SmartMarkService.java :139/:236 and
+    StudentSmartMarkService.java :163 call kappaGatePassed(
+    question.examPaperId()) where question = attempt.question() — paper
+    scope comes from the QUESTION joined via attempts.question_id, never
+    from the attempt row; kappaGatePassed (:333-345) treats a null paper id
+    as "paper gate false, global gate still decides" — the TS
+    kappaGatePassed already reproduces exactly that null law, so only the
+    derivation source is wrong. DEFECT SURFACE (bounded by grep of every
+    "from attempts" select + every exam_paper_id reference in apps/api):
+    smartmark/index.ts markAttempt :492, loadOwnedAttempt :739,
+    loadFeedbackSource :797 (three selects carrying the phantom column;
+    the field IS consumed at :553 and :696); teachermarking/index.ts
+    markAnswer :492 and recordHumanMark :717 (same phantom column in the
+    lock select, but the attempt-sourced field is NEVER read — paper scope
+    there already comes from the questions join at :501/:726 and is
+    consumed at :583, which is frozen-faithful). All other exam_paper_id
+    references in apps/api (assessment/submit, exam-papers/papers,
+    questions/servable, content/review-repos, assessment/history,
+    learner/state, selfmark) read questions.exam_paper_id or select
+    unrelated columns — verified clean. FIX (R-050-A): smartmark — the
+    three attempt-row selects derive paper scope with
+    "join questions q on q.id = a.question_id" selecting q.exam_paper_id
+    (attempt row aliased a; FOR UPDATE qualified as "for update of a" so
+    the lock surface stays byte-equivalent to the frozen core, which locks
+    only the attempt — the question read is unlocked); AttemptLockRow
+    exam_paper_id documented as join-derived. teachermarking — drop the
+    phantom column from the two lock selects and from the AttemptLockRow
+    interface (field unconsumed; zero behavior surface). NO zod/schema
+    edits, NO golden corpus or comparator contact, NO workflow interface
+    key changes, NO drizzle schema changes (the baseline is correct; the
+    PORT was wrong). Success-path SQL for every other statement untouched.
+  cross_slice_contract: >
+    CONSUMES: baseline schema (attempts.question_id FK → questions.id,
+    questions.exam_paper_id nullable — both guaranteed by drizzle pull).
+    PROVIDES: the marking pipeline's kappa gate can evaluate on the live
+    baseline; unblocks the smart-mark family of golden cases in the next
+    replay dispatch (the 42703 class retires from the failure census).
+scope:
+  allowed:
+    - "apps/api/src/services/smartmark/index.ts"
+    - "apps/api/src/services/teachermarking/index.ts"
+    - ".syllabai/tasks/T-MIG-050-smartmark-paper-scope-port-fix.yaml (this file)"
+    - ".syllabai/receipts/T-MIG-050/**"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "golden/** (corpus, comparator, runner, workflows — zero contact)"
+    - "packages/db/src/schema/** (baseline is correct; drizzle-pull law §7)"
+    - "packages/contracts/**, packages/shared/** (no wire-contract change — this is a service-internal SQL derivation fix)"
+    - "apps/api/src/services/** other than the two files above"
+    - "upstream syllabai-core / syllabai-hub (C1)"
+    - "standing Neon branches (read-only doctrine)"
+base:
+  repo: "syllabai-v2 (branch t-mig-050/r0 off origin/main d077ffa); frozen ref: syllabai-core @ 6cad6ef (cloned and read for the derivation)"
+basis: >
+  Operator directive "Proceed with T-MIG-048" (trace 1a10eaec91250cf9)
+  interpreted through the T-MIG-047 run-002 receipt's "next" line and the
+  R0s-ROUND-10a namespace ruling (048 = redaction card; the defect name
+  was a candidate label only). Filing law: docs/AGENT_COORDINATION §2
+  (claim-in-first-commit), §4 (yaml format), §7 (anti-patterns); briefing
+  §0 credential law; T-MIG-046 single-surface-fence precedent.
