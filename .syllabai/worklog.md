@@ -4308,3 +4308,15 @@ Work Log:
 
 Stage Summary:
 - 076 cannot proceed from any sandbox lane; operator applies the one-line patch at will. This desk's sweep deliverables stand: 075 implemented + PR #121 to the desk; 077/078/079 filed OPEN for the lanes.
+Task ID: T-MIG-075 (implementation)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Land the E-class bearer-posture fidelity (the register's sole P1) end-to-end and file the PR.
+
+Work Log:
+- FIX LANDED on t-mig-075/r0: golden/runner.ts authPosture() (exported, single-sourced — the 071 zero-drift law) + ci-replay.ts consults it before the route-rule bearer. substitute/re-mint paths are byte-identical to the old hadAuth behavior; the NEW verbatim-bearer-posture path sends the declared literal for the two name-declared 401 postures; none unchanged. Zero case edits, zero pacing, zero app contact.
+- Selftest +6 (real corpus names/values, incl. the over-breadth negative on auth-me-with-bearer-200).
+- GATES first-hand: selftest OK (incl. the 075 line), typecheck exit 0, 1546 ran / 1533-0-13skip / 6036 expect / 82 files = baseline +0 EXACT.
+- Receipt run-001-implementation.json; PR next, NOT self-merged — handed to the desk per authors-never-self-merge.
+
+Stage Summary:
+- The 5-run-unproven 401 postures become exercisable on the next replay; the fix is construction-only in the harness layer. Lane hands the PR to the desk.
