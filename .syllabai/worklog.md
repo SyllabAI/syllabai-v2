@@ -3455,3 +3455,46 @@ Work Log:
 
 Stage Summary:
 - T-MIG-060 t1+t1b+t2 CODE-COMPLETE and gates-green on t-mig-060/w0a; yaml flips IN_REVIEW with the full timeline. Next: the PR (id ratification + independent review — authors never self-merge) + the two consolidation rulings (fetch-bank, vector-arm) ride the review. Board: no 06x collision (this lane is the sole 06x claimant of record).
+---
+
+Task ID: T-MIG-065 (claim)
+Agent: r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Operator directive trace 1a10f72fc83f0cbd "hub hygiene": execute the unfiled R0-ROUND-6C housekeeping item — scope the hub bun test runner so bare `bun test` inside apps/hub stops loading the Playwright specs.
+
+Work Log:
+- Census @ origin/main 30819de (post-#96): the item's full lineage read from the register (:2018 R0-ROUND-6C ENV NOTE + every subsequent "remaining claimable" mention); reproduced on main with bun 1.3.14 — apps/hub bare bun test = 41 tests / 8 files, 36 pass / 5 fail / 5 errors, every error being 'Playwright Test did not expect test() to be called here' from bun's runner loading tests/e2e/** specs; the 36 real hub bun tests (src/** incl. src/lib/decay) pass.
+- Fix verified on a scratch copy BEFORE the claim: apps/hub/bunfig.toml [test] root="src" -> 36 pass / 0 fail / 0 errors / exit 0 (36 tests / 3 files); bunfig is read from the invocation CWD so the root verify suite is provably unaffected (re-run: 1164 ran / 63 files / 1151-0-13skip / 3513 expect — unchanged); the hub CI job (build:hub) untouched; docs scan found no bare-`bun test` documentation to amend.
+- Zero-collision scan: zero t-mig-065* heads on origin, zero 065 mentions in .syllabai/; 062/r4b + 063/r0 + 064/r1 heads and open PRs #98-#101 observed and respected (none touch apps/hub/**).
+- FENCE DISCLOSURE (on the card): apps/hub/** is R5's lane per §1 — the operator's explicit routing of this flagged-and-unfiled item to this session is the provenance of record; config-only change; narrowest possible fence.
+
+Stage Summary:
+- T-MIG-065 CLAIMED on branch t-mig-065/r0 @ 30819de (card + run-001-claim.json + this entry = the claim commit). Implementation next: the bunfig + IN_REVIEW + run-002 receipt. r0 | claimed the hub scoped-runner hygiene, reproducing the 5-error class and verifying the [test] root scoping empirically | working | suggestion: after this lands, the remaining unfiled item is none — the 043 consolidation band is filed as T-MIG-066 by the direct-main bookkeeping commit of this round.
+
+---
+Task ID: T-MIG-065 (implementation)
+Agent: r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Land the scoped-runner fix end-to-end (bunfig + IN_REVIEW + receipt) and file the PR for independent review.
+
+Work Log:
+- apps/hub/bunfig.toml: [test] root="src" + the law comment (discovery scope, the CWD-isolation note, the future-tests-under-src/ rule).
+- Gates at the head: hub bare bun test 36/0/0-errors exit 0 (the 5-error class RETIRED); root suite unchanged (1164 ran / 63 files / 1151-0-13skip / 3513); typecheck x4 exit 0; golden --selftest OK.
+- Receipt run-002-scoped-runner.json; card -> IN_REVIEW; PR next; NOT self-merged (handed to the merge desk).
+
+Stage Summary:
+- T-MIG-065 IN_REVIEW on t-mig-065/r0: the last unfiled housekeeping item from the ROUND-6C register line is now code-complete behind a PR. r0 | hub scoped-runner landed, PR handed to the desk | IDLE after filing | suggestion: merge via the desk; the 043 follow-up rulings ride this round's direct-main bookkeeping commit.
+
+---
+Task ID: R4b-ROUND-17 (trace 1a10fae46578fa0d)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator directive — "Check if R0 has merged or not. If not, review+merge yourself and continue working"
+
+Work Log:
+- MERGE CENSUS of record @ ~05:31-05:42Z: R0 ACTIVE and current — main advanced to 32626cb carrying #102 (T-MIG-062, THIS LANE: merged ea8f951 05:37:35Z by the desk sweep after intakes eeef7e4/a17a48c/1ee92e9, CI verify+hub GREEN at 1ee92e9) and #103 (T-MIG-065 hub hygiene: merged 32626cb 05:41:12Z). Open queue after the sweep: #104 only (T-MIG-060 w0a, dirty vs the moving main, CI green at e903978, R0 ratifications pending).
+- SWEEP DUTIES under the operator delegation: #103 (head 7c75d284) and #104 (head 58e28dcd) BOTH diagnosed with the R0-ROUND-16 registered CI event-drop (check-runs==0 at the real heads while Actions was demonstrably alive); the close->reopen retrigger of record applied to BOTH at ~05:34Z. #103 then ran verify+hub GREEN and the desk merged it within ~7 minutes — the registered remedy did its job end to end. No merges executed by this lane: #102 is authored here (authors never self-merge — the desk took it mid-round), #103 was taken by the desk before this lane's merge step, #104 carries R0-ratification asks that outrank the delegation.
+- #104 INDEPENDENT REVIEW FILED (the PR requested independent review; posted as issuecomment-6010159749): fence verified 33/33 files (services/tutor/** x18 + test/tutor x3 + contracts tutor.ts + index union + routes/tutor|tutorsessions + the single disclosed OUT-OF-FENCE index.ts mount + .syllabai bookkeeping — zero drift, zero golden/unrelated contact); the CI-caught t1b type-fix disclosure accepted as consistent; dirty-state note filed (needs the standard worklog-tail append-only intake union pre-merge, the desk's f098747 pattern on #103 as template); deep line-against-line fidelity verdict left to R0 per the PR's own ratification asks.
+- T-MIG-062 card flipped IN_REVIEW->DONE (bookkeeping-only .syllabai/** direct-main write per the 3c07bae/bb537fa precedents) + this receipt; merge-of-record chain recorded on the card.
+- PAT persistence law restored after the workspace wipe: /home/z/my-project/.secrets/ghpat (0600, wipe-proof my-project mount) + /home/z/.ghtoken (0600, script-conventional path) + repo credential store wired to /home/z/my-project/.secrets/git-credentials (0600); PAT verified live (user SyllabAI, HTTP 200).
+- NEXT: T-MIG-066 (043 consolidation band, R0-filed, "claim-ready for a quiet-board moment") — the quiet moment arrives when #104 lands; fence services/learner/** + services/learner-me/** + ONE new shared module home (claimant proposes, R0 ratifies), contracts FORBIDDEN, arithmetic +0 tests/+0 expects.
+
+Stage Summary:
+- T-MIG-062 LANDED (ea8f951) — the lane's Wave-6 research calibration is of record on main; #103 retriggered->green->landed (32626cb); #104 reviewed + CI-unblocked + intake path documented; card DONE of record; PAT persistence law restored on the wipe-proof mount. LANE IDLE at round end; T-MIG-066 is the next claim.
