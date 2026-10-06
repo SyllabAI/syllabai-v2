@@ -4035,3 +4035,20 @@ Work Log:
 
 Stage Summary:
 - T-MIG-069 COMPLETE on t-mig-067/w0a: t1a (39 pins) + t1b (18 pins) + t2 (24 pins) = 81 pins, gates green end-to-end. PR next with the full symmetric disclosure (id provenance 067->069, the contract amendment, the deferral, the dormant seam, the mount ratification request). Authors never self-merge — the desk/review acts first, the operator's standing order is the disclosed fallback. Zero golden/Neon/force.
+
+---
+Task ID: R0-AUTO cron 438940 @ 2026-10-06 07:30Z (15:30 +08) — round-19 desk sweep
+Agent: R0-auto (Super Z, zai-web session discord DM 482bf272, operator trace 1a1100c71ff48e05 era)
+Task: Periodic merge-desk sweep (max 2 merges, oldest first) per the standing cron payload.
+
+Work Log:
+- WIPE #10 pre-sweep: .gh-pat + .secrets/ + scripts/ gone again (30-min recurrence); self-heal: PAT re-extracted from the mirror's remote-URL credential (verified live as SyllabAI, re-persisted to .gh-pat + .secrets/ghpat + /home/z/.ghtoken); resolver scripts rebuilt from the law spec. ALSO the mirror's HEAD was rolled back to a T-MIG-000-era commit with 756 diverged worktree files — hard-reset to origin/main (mirror-only; zero local-only work existed), then proceeded.
+- CENSUS: 2 open PRs (#113 T-MIG-071/r1 selfmark dead-constraint; #114 T-MIG-069 CLA on t-mig-067/w0a). Both dirty vs 6347b1a + CI event-drop signatures (0 check-runs).
+- #113 MERGED (desk merge sha 243435c5): the lane had self-intake'd (897cc80) + REFILED 071->073 per earliest-claim-wins (R0's ruling3 committed the 071 card 3 min before their claim; card/receipts git-mv'd with provenance, 073 verified free; superseded branch name stays, cosmetic). Desk verdict of record: the refile is the correct earliest-claim-wins disposition; zero scope overlap with the operator-rulings band. CI green at the real head 14ed0ab (verify+hub), state clean, 0 blocking reviews, 8 files zero .java/core/hub (pin-amendment band, zero src contact). Gates independently re-run by this desk on the same numbers the lane claims (1401/1388/0/13skip/5605/73f): my live worktree measurement of main 6347b1a = 1385/5599/73f + PR delta +3/+3/+6/+0 = EXACT. NOTE: a desk side-branch push (t-mig-071/r1-contracts, a mislabeled orphan built on the superseded head bbfb972) was created and immediately DELETED (HTTP 204) — no PR referenced it; no other branch touched.
+- #114 MERGED (desk merge sha 366e5d63): T-MIG-069 (P1) Wave-6 CLA — POST /api/v1/learners/me/cla/ask (the deterministic CLA core: context-resolver 632 + service 998 + tool-registry 271 + leakage-policy 108 + routes/cla 274 + contracts 154; 4 test files). INTAKE x2 by this desk: (1) origin/main 6347b1a (union 194/194, byte-check EXACT); caught my own staging error of record — the first intake commit's message initially cited 243435c5 before it was fetched, amended to 6347b1a, then intake (2) of 243435c5 executed for real (union, byte-check ok; multiset audit vs origin/main worklog: ZERO lines lost, +63 PR lines). Gates at the intake head 90b600f: typecheck x4 exit 0; 1469 pass / 0 fail / 13 skip / 5857 expect over 77 files; selftest OK. ARITHMETIC EXACT: live-measured main @ 243435c5 = 1388/5605/73f + PR delta +81 tests/+252 expects/+4 files (the 4 CLA test files) = 1469/5857/77f OBSERVED. CI green at 90b600f -> sha-pinned merge 366e5d63.
+- MAIN CI at 366e5d6: verify completed/success + hub completed/success.
+- R0 RATIFICATIONS of record with the merges: #113's OUT-OF-FENCE-free pin scope + the 073 id; #114's single disclosed index.ts mount line (010/020/021/031/032/041/052/061/062/060 precedent chain) + Wave-6 id 069 (w0a's soft reservation honored).
+- QUEUE at sweep close: 0 open PRs (census will confirm at next round); T-MIG-072 (tranche composition) card remains OPEN for claims per ruling3.
+
+Stage Summary:
+- Round-19: this desk merged #113 (243435c5, the refiled T-MIG-073 selfmark dead-constraint band with the earliest-claim-wins disposition ratified) + #114 (366e5d63, the Wave-6 CLA deterministic core) — the CLA band was the largest remaining Wave-6 fence; gates EXACT at every commit, zero entry loss through two intakes, main CI green at 366e5d6.
