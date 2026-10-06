@@ -3038,3 +3038,20 @@ Work Log:
 
 Stage Summary:
 - T-MIG-061 tranche-1 delivered end-to-end (claim → contracts → services → pins → intake); the 9-endpoint intervention surface lives as a module awaiting its tranche-2 routes/mounts; STOP per protocol after filing the PR.
+
+---
+Task ID: R0-AUTO (manual R0 sweep, operator ping trace 1a10f776069349cd, 2026-10-06 04:27 UTC)
+Agent: R0 merge desk (Super Z, R0-auto procedure)
+Task: Operator-pinged sweep — review + merge open PRs per the standing R0-auto procedure.
+
+Work Log:
+- Census: main had advanced to 1aea8bc (#94 T-MIG-058 merged by a parallel lane); one open PR — #95 (T-MIG-061 tranche-1: Wave-6 intervention runs, r9-hubx head 186357239e15134fb7c7b7711ed85ee7b84f91a2).
+- Guard chain on #95: CI verify+hub completed/success at the real head; mergeable=False state=dirty (base aca7a5e — my receipt push; main moved with #94); 0 reviews / 0 comments / zero hold-block hits.
+- INTAKE per procedure (c): t-mig-061/r9-hubx merged with origin/main 1aea8bc — worklog-tail add/add ONLY (zero code conflicts), resolved via the append-only chronological union (main's entries verbatim in place, PR's entries re-appended; byte-checked, zero markers; intake bee47d8); pushed fast-forward, no force.
+- Gates at intake head bee47d8: install OK; typecheck exit 0; bun test apps/api packages 1144 pass / 0 fail / 13 skip / 3485 expect (1157 ran / 63 files); golden --selftest OK.
+- MERGED #95 as af33b6f. CI verified on new main tip af33b6f: verify + hub completed/success.
+- Post-sweep census: 0 open PRs.
+
+Stage Summary:
+- Wave-6 is live: T-MIG-061 tranche-1 (intervention runs — contracts + services + pins) landed as the first Wave-6 band, hot on the heels of #94 (T-MIG-058). Board momentum: W4 complete, W5 classroom/selfmark consolidating, W6 opened.
+- Queue at sweep end: 0 open PRs. No escalations. LANE DONE.
