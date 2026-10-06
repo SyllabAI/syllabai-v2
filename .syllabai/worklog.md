@@ -3269,3 +3269,19 @@ Work Log:
 Stage Summary:
 - T-MIG-062 implemented + gated (+19/+480/+2 EXACT, selftest OK): the research calibration surface is ported at frozen fidelity — the plan's ADR-036 binding (k-anonymity) is ENFORCED code with the learner-unit law, both segment axes render in fixed order, and the suppression posture (counts stay, outcomes go) is pinned at cell and bin granularity. Wave-6 progress: 060 (w0a, in flight) / 061-t1 (landed) / 062 (this band, IN_REVIEW). LANE IDLE after the PR opens.
 
+
+---
+Task ID: T-MIG-062 (run-003 intake addendum)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Post-PR intake ledger — the branch re-based onto the moving main twice while the fleet merged #96/#98/#99/#100 around it; CI event-drop diagnosed at the head and resolved by re-sync (R0's round-16 registered pattern).
+
+Work Log:
+- PR #102 opened @ ~05:00:30Z against base 37d8825. Main then advanced FOUR times in 12 minutes (07df48a/#96, ba3976b, 2d5a73d/#98, ec40f1f/#100) — the PR went mergeable-dirty and the pull_request CI events were SILENTLY DROPPED (check-runs==0 at both the opened and the first synchronize event; the merge-ref could not be created mid-flight — the same event-drop class R0 registered in the round-16 bookkeeping with the close->reopen retrigger remedy).
+- INTAKE 1 (70b9a95): Merge origin/main 2d5a73d into t-mig-062/r4b — conflicts exactly two: (a) apps/api/src/index.ts mount region (my research block vs 061-t2's intervention block — unioned, main's block first, both OUT-OF-FENCE comments preserved); (b) worklog-tail add/add (append-only union, main's entries verbatim in place, the 062 entries re-appended; 174 entries, 0 markers, the only Task-ID-less entries are main's pre-existing 22/81 quirks — verified identical on the main side). Gates re-run at 70b9a95: typecheck x4 exit 0; 1200/0/13skip/4078 (1213 ran/66 files); selftest OK.
+- ARITHMETIC PROVEN EXACT against a LIVE worktree measurement of main @ 2d5a73d (1181/0/13skip/3598, 1194 ran/64 files — bun install + bun test in the throwaway tree): merge head = main +19 tests/+480 expects/+2 files = precisely the research band, zero drift.
+- INTAKE 2 (87c0874): Merge origin/main ec40f1f — worklog-tail add/add only (063's entries + the round-16 receipts; 177 entries, 0 markers, my 062 entries final). Typecheck x4 + tests re-run green (1200/4078) + selftest OK before push.
+- CI GREEN OF RECORD at the real head 87c0874: verify completed/success + hub completed/success (the synchronize event fired correctly once the merge-ref was creatable — no close/reopen retrigger needed). Desk evidence chain: claim 1d8a086 -> run-002 b4af2cb..018736b -> intakes 70b9a95/87c0874, CI green at the final head.
+- Collision posture re-verified after the round's merges: 063's claim provenance explicitly notes "062 taken in-flight (t-mig-062/r4b)" — the id register held; zero surface overlap with #99 (064 selfmark F-B), #100 (063 ci-replay), #101 (053-t1), #103 (065 hub hygiene), #104 (060 KaRAG).
+
+Stage Summary:
+- T-MIG-062 IN_REVIEW with CI green at the final head 87c0874; the PR carries the full evidence chain (claim-first, receipts, exact arithmetic vs live-measured main, union intakes with zero entry loss). LANE IDLE — awaiting the desk's independent review + R0 verdict + Wave-6 id ratification.
