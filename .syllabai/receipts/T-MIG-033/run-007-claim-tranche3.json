@@ -1,0 +1,40 @@
+{
+  "run": "run-007-claim-tranche3",
+  "task": "T-MIG-033",
+  "tranche": 3,
+  "scope": "SME admin port — SmeQuestionAdminController / SmeQuestionIngestService / SmeQuestionPackageDtos / SmeQuestionSpecPointRepository (frozen @ 6cad6ef) + routes + mount",
+  "agent": "R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "directive": "DIRECT operator instruction 'claim tranche-3' (trace 1a10d46b961cb391); R0-ROUND-10 receipt had flagged t3 as the last ratified-but-unclaimed code lane",
+  "claimed_at": "2026-10-06",
+  "base": {
+    "main": "08f104d",
+    "branch": "t-mig-033/r0",
+    "frozen_ref": "syllabai-core @ 6cad6ef"
+  },
+  "zero_collision": {
+    "ls_remote": "only merged heads t-mig-033/r4 (tranche-1) + t-mig-033/r4b (tranche-2); zero heads matching sme|t3",
+    "open_prs": 0,
+    "worklog_scan": "no tranche-3 claim by any lane; r4b's claim covered tranche-2 only (landed via #64 + a1e4c5c)"
+  },
+  "plan": {
+    "services": "apps/api/src/services/sme/** — bounded ZIP walker (ZipSafety port: per-entry 64MB / total 256MB / 10k-entry budgets DURING decompression, traversal guard, CRC), package DTO parser (Jackson readValue parity: ignoreUnknown, type failures = the not-valid-JSON translation), SmeQuestionIngestService port (fail-closed validate law verbatim messages, emittedRowRefs derived -pN/-s law, slice-scoped deactivateByRefs, KG-code batched resolution + unknown-code 400, mixed-family -pN/-s emission, spec-point AI_VALIDATED mappings, asset-store wholesale replace ONLY when assets ship, contentTypeOf SVG demotion, status snapshot), ingest inside ONE sql.transaction (the createSql adapter's begin/commit/rollback — the ADR-026 evidence-safe replace, real atomicity)",
+    "routes": "apps/api/src/routes/sme.ts — POST /ingest (multipart 'file' part, guard-message 400) + GET /status, SecurityConfig :86 hasRole('ADMIN') shell (Boot 401/403 bodies — the four captured w3-sme-* postures), OUT-OF-FENCE mount in src/index.ts per the ratified T-MIG-010/020/021/030/032/033t2 pattern",
+    "tests": "apps/api/test/sme/** — fakeSql(+tx-forwarding) service pins (validation laws, family emission, asset-store law, status shape, walker budgets/traversal) + route tests (shell matrix, multipart law, error envelopes)",
+    "golden": "zero golden/** edits; the four w3-sme-* captured postures are auth-boundary and must pass through the new mount untouched (N-4 rich-200 capture stays with the golden-capture lane's register)"
+  },
+  "disclosures": [
+    "binding-class failures on POST /ingest (missing 'file' part / non-multipart body): frozen framework layer answers 500 (MissingServletRequestPartException/MultipartException -> advice catch-all); port serves the controller guard's honest 400 'multipart part 'file' (the corpus ZIP) is required' — the R-1 '400, not 500' convention (session-56 class)",
+    "compressed upload > 64MB: port serves 413 payload_too_large 'request body exceeds the allowed size' (the core's own JsonBodyLimitFilter 413 law) where frozen MaxUploadSizeExceededException falls to the 500 catch-all",
+    "package DTO type coercion: machine-generated packages (s104_build_question_package.py) always emit typed JSON; the port does not replicate Jackson's string->int coercion",
+    "status() read model: two COUNT queries + spec-point/asset counts instead of loading every active row twice (Java findAllActive() x2 with entity graph); observable numbers identical"
+  ],
+  "fence": [
+    "apps/api/src/services/sme/**",
+    "apps/api/src/routes/sme.ts",
+    "apps/api/test/sme/**",
+    ".syllabai/tasks/T-MIG-033-teacher-marking-port.yaml (status/execution_record only)",
+    ".syllabai/receipts/T-MIG-033/**",
+    ".syllabai/worklog.md (append-only receipt)",
+    "apps/api/src/index.ts (OUT-OF-FENCE mount commit only, ratification requested)"
+  ]
+}
