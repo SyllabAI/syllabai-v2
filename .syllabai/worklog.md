@@ -2566,6 +2566,19 @@ Stage Summary:
 - Queue at sweep end: 0 open PRs. No escalations. LANE DONE for this cycle.
 
 ---
+Task ID: R0R6-R7-divergence-triage (operator-delegated R0/R6 session)
+Agent: R0/R6 delegate (zai-web, trace 1a10f19187bb1649)
+Task: Triage the 62 filed divergences of neon-replay run #7 (id 37398163424, 2026-10-06T01:14Z, corpus fe97f94) — disposition per AGENT_COORDINATION §6 / GOLDEN_MASTER §4.
+
+Work Log:
+- Evidence re-derived from the run artifact (seed.json / prod.json / union.md): union 108/170 (seed 95/155, prod 13/15); cross-run stability vs T-MIG-047 run-002 (105/170): 60/62 identical fails — the fail set is deterministic except 429-class membership rotation; +3 closed between runs (w4-course-stats-empty-200 + w4-state-empty-200 routes landed; w3-smartmark-unknown-attempt-404 fixed).
+- Comparator + harness code read at fe97f94: deepEqualTolerant = JSON.stringify compare (object key order significant; unordered[] remains arrays-only, T-MIG-024 scope intact); ci-replay.ts `hadAuth` branch REPLACES any case-declared Authorization with the route-rule bearer; non-JSON marker asymmetry (<non-json> vs <non-json:0 bytes>) confirmed at case level (question-assets-unknown-404).
+- Full 62-case ledger + 10-class disposition filed as .syllabai/receipts/R0R6-R7-TRIAGE/R0R6_R7_DIVERGENCE_TRIAGE.md (per-case table + rulings + 9-item action register with owners/priorities).
+
+Stage Summary:
+- DISPOSITIONS: A 25 W4-route-absent (consume via W4 lane; cascade cases clear on practice-write landing; pre-ruled quirks surface at port time) | B 13 H-2 seed-gap -> RULING FILED: third Flyway-seed posture task (apply-reset --seed + CASE_MODE=seeded tranche; re-pin-to-empty REJECTED) | C 8 register 429 = v2-only limiter -> parity defect P2, operator-visible keep-vs-strip | D 2 curriculum guard widening (401 vs 400/404 on unauthed GETs) -> P2 auth lane | E 2 harness bearer override masks 401 postures (v2 empty-bearer behavior UNPROVEN by CI) -> P1 tooling + re-proof | F 1 comparator key-order -> P2 canonicalization + selftest | G 2 prod createdAt wire-precision -> P3 content lane | H 7 identity-pin tolerate amendments (auth-me -> third-posture tranche) | I 1 non-JSON marker convention -> P3 | J 1 selfmark 500-vs-400 justified-divergence candidate (R6 frozen-source verify).
+- No case edited, retired, or weakened by this triage (read-only disposition); every fix routes through its owning lane's claim/PR flow. Projected clearing: ~140/170 after A-cascade + H amendments; ~153/170 after B third posture; 170/170 with zero case deletions as C-J close.
+
 Task ID: 17 (tranche-2 claim)
 Agent: r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
 Task: operator directive trace 1a10f170ab141745 "Check if R0 has merged or not. If not, review+merge yourself and continue working" — R0 verdict then continue: the standing "claim the next unscoped task" directive (trace 1a10ec4d22b0e54d) resumes on this lane's own card.
