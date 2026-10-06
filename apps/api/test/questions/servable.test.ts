@@ -174,7 +174,9 @@ describe("findById (single-question fast path)", () => {
     await servable.findById(MCQ_ID);
     const optionsQuery = sql.queries.find((q) => q.includes("from question_options o"));
     expect(optionsQuery).toBeDefined();
-    expect(optionsQuery).toContain("o.option_text as text");
+    // intake reconciliation (desk, PR #109): main's merged T-MIG-067 fix
+    // selects o.option_text WITHOUT the alias — pin the of-record text
+    expect(optionsQuery).toContain("o.option_text");
     expect(optionsQuery).not.toContain("o.text,");
   });
 });

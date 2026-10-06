@@ -1,0 +1,29 @@
+{
+  "receipt": "R0 id arbitration — the triple claim of T-MIG-067 (2026-10-06)",
+  "when": "2026-10-06T06:30:00Z",
+  "arbitrated_by": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "authority": "docs/AGENT_COORDINATION §2 ('Two agents claiming one task: earliest claim wins, R0 arbitrates disputes') + the operator's standing delegation to this lane (traces 1a10f806acdec285 'processing of the Rich-200 series', 1a10fc127a2cec35 'claim RICH-200-D')",
+  "the_conflict": "three lanes used the id T-MIG-067 within minutes of each other, for three different tasks:",
+  "claims": [
+    {
+      "task": "RICH-200-D port fix (w3-questions seed-data 42703s: question_options.option_text + knowledge_edges source_node_id/target_node_id)",
+      "card": ".syllabai/tasks/T-MIG-067-w3-questions-seed-data-42703-fix.yaml",
+      "claim_commit": "f8e78f4 authored 2026-10-06T05:57:09Z (branch t-mig-067/r0, pushed ~06:04Z, PR #107 opened 06:09:29Z)",
+      "disposition": "WINS THE ID — earliest claim AND executed end-to-end: gates green, live surface proof on a disposable seed COW (receipt T-MIG-067/run-001), PR #107 merged as cdce05e under the standing delegated authority with CI verify green (run 37423118901)"
+    },
+    {
+      "task": "the Wave-6 CLA band (POST /api/v1/learners/me/cla/ask) by the w0a lane",
+      "card": ".syllabai/tasks/T-MIG-067-cla-ask.yaml (branch t-mig-067/w0a, branch-local)",
+      "claim_commit": "e11e8ea authored 2026-10-06T06:00:05Z",
+      "disposition": "ID DENIED — 3 minutes after the earliest claim; its zero-collision scan (@ 2a0b18d) could not see the RICH-200-D card because that card lived on an unpushed branch at scan time (the scan-vs-push race). The CLA WORK itself is unaffected: refile under the next free id at PR time (T-MIG-069 unless taken), per the T-MIG-048→T-MIG-050 refile precedent (R0s-ROUND-10a). The branch-name suffix (t-mig-067/w0a) is cosmetic; rename optional, the yaml id is what the register reads."
+    },
+    {
+      "task": "the R0/R6 run-9 triage umbrella (9 divergences: 500-class x4 incl. RICH-200-D's two cases, DATE wire-format x2, attempt error-taxonomy x2)",
+      "card": ".syllabai/tasks/T-MIG-067-seeded-posture-port-parity.yaml (landed on main via 55070ad/eb67910)",
+      "claim_commit": "bc521b3 authored 2026-10-06T06:00:42Z",
+      "disposition": "ID DENIED — 3.5 minutes after the earliest claim. REFILED MECHANICALLY BY R0 as T-MIG-068 (owner unassigned, filing lane was the R0/R6 triage under operator trace 1a10f8b3bf4a8111): .syllabai/tasks/T-MIG-068-seeded-posture-port-parity.yaml replaces the 067-named file 1:1, with the two w3-questions cases struck (port-side resolved by the merged T-MIG-067: both surfaces 200 on the live seed posture, topics byte-exact; the families tie-order residue is RICH-200-E, case-owner lane) — 7 items remain for the claiming lane."
+    }
+  ],
+  "register_after": "T-MIG-067 = RICH-200-D port fix (DONE-pending-union at arbitration time); T-MIG-068 = seeded-posture-port-parity umbrella (7 items, OPEN, unassigned); T-MIG-069 = free for the w0a CLA band refile (or the next free id at refile time, first-come-first-served); the id-race class (scan-vs-push) is noted for AGENT_COORDINATION §7 as a known arbitration pattern, no law change proposed",
+  "precedents": "T-MIG-048→T-MIG-050 refile (R0s-ROUND-10a disclosure, PR #70); earliest-claim-wins is the settled law"
+}

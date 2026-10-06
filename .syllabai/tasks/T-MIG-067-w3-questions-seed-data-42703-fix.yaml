@@ -1,0 +1,138 @@
+version: 1
+task:
+  id: T-MIG-067
+  title: "w3-questions seed-data port fix — question_options.option_text and knowledge_edges source_node_id/target_node_id column derivations; RICH-200-D (P1): the families/topics surfaces 500 (42703) the moment the V63 seed data is present"
+  owner: "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
+  status: DONE # 2026-10-06: R-067-A merged cdce05e via #107 (CI green run 37423118901) + post-merge union receipt run-002 (replay 37423508229): both cases left the 500-class (200 vs 200); residuals dispositioned corpus-side (RICH-200-E + the topics state-posture note) — case-owner lanes own them; port lane has no open work
+  claimed_at: "2026-10-06T05:56:29Z"
+  priority: P1 # port defect per the RICH-200-D filing: two learner-facing surfaces crash on real data; the frozen core serves rich 200s over the same rows
+  wave: none # defect repair in the w3-questions port lane (T-MIG-049 lineage) — unblocks the standing union census, not any port lane's authoring
+  deps: [T-MIG-049, T-MIG-063]
+  operator_directive: >
+    "claim RICH-200-D" (trace 1a10fc127a2cec35, 2026-10-06) — continuation of
+    "processing of the Rich-200 series" (trace 1a10f806acdec285). RICH-200-D
+    was filed by T-MIG-063 run-004 (union receipt .syllabai/receipts/T-MIG-063/
+    run-004-union.json): "PORT DEFECT (P1) — w3-questions surfaces 500 on the
+    V63 seed data … the surfaces were only ever exercised against an EMPTY
+    store (body-divergent 200s, the B-class note); with the V63 seed questions
+    present (applied by the staging), they EXECUTE and CRASH — a
+    data-dependent port bug the frozen core does not have (frozen: rich 200s
+    over the same rows, syllabai-core @ 6cad6ef) … owner: the w3-questions
+    port lane (T-MIG-049 lineage)". This card claims that finding under the
+    next free id (067 — verified: tasks dir ends at 066, zero T-MIG-067
+    mentions anywhere in .syllabai/) and executes under the operator's
+    standing delegated authority (review+merge yourself / continue working
+    precedents: 260f452, 39ee5d5, 190706e, 56a8baa).
+  execution_record: >
+    FINDING (T-MIG-063 run-004, live evidence — replay 37418673048 artifact
+    neon-replay-37418673048-1, boot-seed.log): w3-questions-families-student-200
+    and w3-questions-topics-student-200 both return 500 internal_error on the
+    seed posture. boot-seed.log carries the Postgres errors verbatim: TWO
+    occurrences of "42703 column o.text does not exist" (position 45) — one
+    per surface — and the census-only latent second defect verified below.
+    The corpus has NO authed plain-list case (w3-questions-list-unauthed-401
+    is the auth shell only), so these two cases are the ONLY live exercisers
+    of the servable projection chain — which is why exactly two 42703s
+    appear. ROOT CAUSE (verified against packages/db/src/schema/schema.ts —
+    the baseline is correct, the PORT wrote phantom columns; same class as
+    T-MIG-050): (1) servable.ts :144 optionsFor selects "o.text" but
+    question_options carries "option_text" (schema.ts:170 optionText:
+    text("option_text")); (2) taxonomy.ts :136-139 PART_OF parent census
+    selects "source_id, target_id" from knowledge_edges but the real columns
+    are "source_node_id"/"target_node_id" (schema.ts:84-85) — LATENT: fires
+    only after (1) is fixed, because /topics runs the census AFTER allActive
+    (whose optionsFor 42703s first); the subtreeIds CTE in the same file
+    (:272-274) already uses the correct source_node_id/target_node_id names.
+    The stub-SQL tests are structurally blind (the stub routes on query text
+    and returns fixture rows — it cannot validate column names; the T-MIG-050
+    precedent). FROZEN DERIVATION: the frozen core serves these surfaces
+    fine over the same rows (the captures w3-questions-families-student-200 /
+    w3-questions-topics-student-200 were captured from the frozen boot over
+    Flyway V1..V63 — rich 200 bodies of record); the port's own SQL is the
+    only divergence. Every other column reference in the questions module
+    was verified against the schema in this claim pass: questions (12 cols
+    incl. external_ref/question_type/primary_topic_node_id/exam_paper_id),
+    question_versions, question_parts, question_spec_points (spec_point_node_id
+    join), knowledge_nodes (id/code/title/applicability), question_topics
+    (question_id/node_id), exam_papers.validation_state — ALL correct; the
+    two phantom columns above are the complete defect surface (grep of the
+    module + its tests). FIX (R-067-A): servable.ts — optionsFor selects
+    "o.option_text"; the OptionRow row-shape interface renames its field to
+    option_text (the DB row key) and the single consumption point (:306)
+    maps "text: o.option_text" — the WIRE shape (StudentQuestionView options
+    text) is UNCHANGED. taxonomy.ts — the PART_OF census selects
+    "source_node_id, target_node_id" and the two JS row reads (:141-142)
+    follow the renamed keys. NO zod/contract edits, NO golden corpus or
+    comparator contact, NO workflow changes, NO drizzle schema changes.
+    AMENDMENT (2026-10-06, pre-claim disclosure): the fake-SQL test router
+    routes on normalized query text and returns fixture rows verbatim — the
+    row fixtures must carry the NEW column names for the fixed SQL to keep
+    dispatching: helpers.ts MCQ_OPTIONS row keys text→option_text (the
+    optionViews wire assertions in servable/routes tests keep asserting the
+    unchanged wire shape {id,label,text}), and the knowledge_edges fixture
+    rows in taxonomy.test.ts (:61-63,:108,:127) + routes.test.ts (:85) carry
+    source_node_id/target_node_id keys (their /from knowledge_edges/ match
+    regexes still hit the fixed SQL text). Disclosed BEFORE push; no other
+    test file references these row shapes (verified by grep across
+    apps/api/test). Zero-collision scan at claim time @ origin/main bfdcc9b:
+    open PRs none; active heads t-mig-060/w0a, t-mig-062/r4b, t-mig-065/r0,
+    t-mig-066/r1 — diff-vs-main greps for questions/servable/taxonomy: zero
+    overlap; this fence touches no other lane's files.
+        RUN-002 CLOSURE (2026-10-06): PR #107 merged as cdce05e (CI verify green,
+    run 37423118901; disclosure comment 6010632248). Post-merge union receipt
+    run-002 on replay 37423508229 @ cdce05e: BOTH cases 200 (was 500) — the
+    500-class is retired from the questions surfaces; the boot logs carry no
+    42703 there. Residuals are corpus-class and dispositioned: families =
+    RICH-200-E (tie-order nondeterminism triple-confirmed across runs), topics
+    = the staged-state census diff (6/5 live vs 4/4 capture — the sme-ingest
+    state the full tranche builds before the questions cases replay; the
+    port's census is byte-exact on the unstaged posture per run-001) — both
+    case-owner lane, options filed. Card -> DONE.
+RUN-001 OUTCOME (2026-10-06): gates green (typecheck x4 exit 0; root
+    suite 1226 pass / 0 fail / 13 skip; questions family 53/53; harness
+    selftests OK). Live surface proof on disposable seed COW
+    br-frosty-butterfly-a576r65e (apply-reset → the harness's own
+    seed-t51-rich200.ts --stage accounts → boot → honest GETs with the
+    staging's STUDENT_TOKEN): /families 200 (was 500; multiset identical to
+    the capture), /topics 200 and BYTE-EXACT vs the frozen capture, plain
+    list 200; branches dropped + 404-verified. Residual finding FILED
+    RICH-200-E (case-owner lane): the families capture pins the capture
+    host's Postgres tie order for the 8 non-corpus families (the frozen
+    (source, qNum, input-order) law has no deterministic tie key — three
+    environments produce three orders; the frozen core itself would flip on
+    a different host) — options filed for R0/R6, zero silent widening.
+  cross_slice_contract: >
+    CONSUMES: baseline schema (question_options.option_text,
+    knowledge_edges.source_node_id/target_node_id — both guaranteed by
+    drizzle pull). PROVIDES: the w3-questions families/topics surfaces
+    execute over seeded data — unblocks RICH-200-D's two cases in the next
+    replay dispatch and, transitively, the authed plain-list surface which
+    shares the projection chain (no authed case exists yet — the corpus
+    gap is the case-owner lane's, not this card's).
+scope:
+  allowed:
+    - "apps/api/src/services/questions/servable.ts"
+    - "apps/api/src/services/questions/taxonomy.ts"
+    - "apps/api/test/questions/helpers.ts (AMENDED 2026-10-06: MCQ_OPTIONS fixture row keys text→option_text — the stub returns DB-shaped rows; wire shapes unchanged)"
+    - "apps/api/test/questions/taxonomy.test.ts (AMENDED 2026-10-06: knowledge_edges fixture row keys source_id/target_id→source_node_id/target_node_id)"
+    - "apps/api/test/questions/routes.test.ts (AMENDED 2026-10-06: same edge-row key rename at the /from knowledge_edges/ fixture)"
+    - ".syllabai/tasks/T-MIG-067-w3-questions-seed-data-42703-fix.yaml (this file)"
+    - ".syllabai/receipts/T-MIG-067/**"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "golden/** (corpus, comparator, runner, workflows — zero contact)"
+    - "packages/db/src/schema/** (baseline is correct; drizzle-pull law §7)"
+    - "packages/contracts/**, packages/shared/** (no wire-contract change — the option wire shape keeps its text field)"
+    - "apps/api/src/services/** other than the two files above (sme/index.ts and content/review.ts carry a JS-level o.text property access — unrelated object fields, other lanes, verified not column references)"
+    - "upstream syllabai-core / syllabai-hub (C1)"
+    - "standing Neon branches (read-only doctrine; live proof rides a disposable COW branch per T-MIG-035/T-MIG-050 discipline)"
+base:
+  repo: "syllabai-v2 (branch t-mig-067/r0 off origin/main bfdcc9b); frozen ref: syllabai-core @ 6cad6ef (the captures' frozen boot; source read through the port files' verbatim law comments — upstream clone absent in this sandbox)"
+basis: >
+  Operator directive "claim RICH-200-D" (trace 1a10fc127a2cec35) executed
+  through the T-MIG-063 run-004 union receipt's new_findings_filed entry and
+  the register_after line ("RICH-200-D OPEN (w3-questions port lane, P1)").
+  Filing law: docs/AGENT_COORDINATION §2 (claim-in-first-commit), §4 (yaml
+  format), §7 (anti-patterns); briefing §0 credential law; T-MIG-050
+  single-defect-class precedent (42703 phantom-column port bug + stub-SQL
+  structural blindness + fixture amendment disclosure).
