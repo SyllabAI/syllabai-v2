@@ -4340,3 +4340,16 @@ Work Log:
 
 Stage Summary:
 - Round-23: desk merged #121 (6d03790) — the register's sole P1 is closed: golden/runner.ts now single-sources authPosture(kase) (none | substitute | verbatim-bearer-posture | re-mint) and ci-replay.ts consults it, so w4-agenda-malformed-bearer-401 and w4-state-empty-bearer-401 replay their DECLARED 401 postures verbatim instead of being silently upgraded to a valid bearer (the hadAuth masking, 5+ runs); substitution/re-mint behavior byte-identical for the other 106 cases. Post-merge proof path: the next neon-replay dispatch exercises the two postures live (honest red if v2 fails either — never masked). Operator-side standing items: T-MIG-076's one-line ci.yml patch (sandbox-blocked from the lane side), PAT rotation, NEON_BRANCH_CAPACITY watch, cron cadence.
+
+---
+Task ID: T-MIG-077 (claim)
+Agent: main (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)
+Task: Claim T-MIG-077 (the post-#119 corpus disposition band, review F-3..F-6, all pre-ruled) under operator trace 1a110e73e0ad1219 '077'.
+
+Work Log:
+- Fetch-first @ 226cc2b (round-23 receipt; 075 DONE via #121; 0 open PRs; no t-mig-077* heads; worklog 077 mentions = filing + register notes only) — zero collision confirmed.
+- Claim-in-first-commit: this card flip (OPEN -> CLAIMED) + receipts/T-MIG-077/run-001-claim.json + this entry, ONE .syllabai-only main commit per the 3c07bae/bb537fa/2a0b18d/075-lane precedents; implementation next on t-mig-077/r0 off 226cc2b -> PR to the desk (authors never self-merge).
+- Scope locked to the card's allowed list: R1 re-pin x2 (curriculum 401-to-the-law), families unordered[] multiset (T-MIG-024 convention, R3-D2 effect 4), I-class sentinel normalization x3 (runner/ci-replay construction-only, selftest grows), G-class createdAt stored-precision passthrough x2 (content service, serialization site located first-hand; driver-precision risk checked before any edit). F-2 shared-learner residues stay T-MIG-078's.
+
+Stage Summary:
+- T-MIG-077 claimed at 2026-10-06T11:11:16Z; run-002 implementation receipt next; no golden/case bytes touched in this claim commit.
