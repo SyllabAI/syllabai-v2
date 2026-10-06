@@ -274,14 +274,35 @@ export type StructuredSubmitRequest = z.infer<typeof structuredSubmitRequestSche
  * null partId, null marksAwarded, AND an absent field as a null value
  * (HashMap.put(null, v) is legal at the controller :44; a null Integer
  * field carries null). The schema widens both fields to .nullish() to
- * mirror the BIND law, not the dead constraints; the numeric checks stay
- * encoded as the disclosed inferred-constraint divergence class (T-MIG-057
- * receipt) — NOT touched here. Bare null ELEMENTS still reject (the
- * depth-2 invalid_type the route's 057/058 NPE-parity guard serves → 500).
+ * mirror the BIND law, not the dead constraints. Bare null ELEMENTS still
+ * reject (the depth-2 invalid_type the route's 057/058 NPE-parity guard
+ * serves → 500).
+ *
+ * T-MIG-071 (the dead-constraint class resolved): the RANGE row of the same
+ * dead-letter matrix is now mirrored too. @Min(0)/@Max(99) (:56) died with
+ * the same missing cascade, so Jackson binds -1, 100, and any int32 WITHOUT
+ * a murmur — the frozen answer for out-of-range marks is the SERVICE's
+ * bound loop, not the binder: LearnerSelfMarkService.java:113-121
+ * `if (marks < 0 || (bound > 0 && marks > bound)) throw new
+ * ConflictException("marks N outside part bound 0–X")` → 409 (U+2013
+ * verbatim; the port service already implements it byte-faithfully at
+ * services/selfmark/index.ts:218-220). The former .min(0).max(99) here
+ * rendered the dead constraints LIVE and answered the wrong envelope (400
+ * validation_failed where frozen answers 409 conflict) — the residual class
+ * disclosed on the T-MIG-057 receipt and restated 'unchanged' on the
+ * T-MIG-064 F-B receipt. REMOVED from the bind law; the range is the
+ * service's 409. RESIDUAL (disclosed, T-MIG-071 receipt): the
+ * Jackson-Integer coercion class — marksAwarded beyond int32 (2^31..2^53)
+ * parses here (JS number) but Jackson-Integer fails the bind
+ * (HttpMessageNotReadable → 400 malformed_body class); fractional values
+ * share the family. Register-only; no codebase-wide int32 numeric law to
+ * mirror (assessment.ts int32Text is a text-field specialist).
  */
 export const partSelfMarkSchema = z.object({
   partId: z.string().uuid().nullish(),
-  marksAwarded: z.number().int().min(0).max(99).nullish(),
+  // T-MIG-071: ANY int binds (the dead @Min(0)/@Max(99) removed from the
+  // bind law) — the range law is the service bound loop's 409 (:113-121).
+  marksAwarded: z.number().int().nullish(),
 });
 export type PartSelfMark = z.infer<typeof partSelfMarkSchema>;
 

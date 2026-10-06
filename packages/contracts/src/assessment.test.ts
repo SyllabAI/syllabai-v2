@@ -176,14 +176,19 @@ describe("StructuredSubmitRequest — partAnswers (@NotEmpty @Valid)", () => {
 describe("SelfMarkRequest — the boundary's accept/reject set", () => {
   const OK_SELF_MARK = { parts: [{ partId: UUID, marksAwarded: 2 }, { partId: UUID2, marksAwarded: 0 }] };
 
-  test("accepts a valid two-part self-mark and the boundary values 0 and 99", () => {
+  test("accepts a valid two-part self-mark (0 and 99 bind like any int — the range is no longer a bind law)", () => {
     expect(selfMarkRequestSchema.safeParse(OK_SELF_MARK).success).toBe(true);
     expect(selfMarkRequestSchema.safeParse({ parts: [{ partId: UUID, marksAwarded: 99 }] }).success).toBe(true);
   });
 
-  test("rejects marksAwarded -1 and 100 (@Min(0) @Max(99) — the disclosed inferred-constraint class, T-MIG-057)", () => {
-    expect(selfMarkRequestSchema.safeParse({ parts: [{ partId: UUID, marksAwarded: -1 }] }).success).toBe(false);
-    expect(selfMarkRequestSchema.safeParse({ parts: [{ partId: UUID, marksAwarded: 100 }] }).success).toBe(false);
+  test("T-MIG-071: accepts marksAwarded -1 and 100 (the DEAD @Min(0)/@Max(99) removed from the bind law — no @Valid cascade on the bare List, SelfMarkRequest :59; Jackson binds any int; the range is the SERVICE bound loop's 409, LearnerSelfMarkService :113-121)", () => {
+    expect(selfMarkRequestSchema.safeParse({ parts: [{ partId: UUID, marksAwarded: -1 }] }).success).toBe(true);
+    expect(selfMarkRequestSchema.safeParse({ parts: [{ partId: UUID, marksAwarded: 100 }] }).success).toBe(true);
+  });
+
+  test("T-MIG-071 residual (disclosed): any JS int binds, including beyond int32 (the Jackson-Integer coercion class — frozen would 400 HttpMessageNotReadable; register-only, unreachable by capture)", () => {
+    expect(selfMarkRequestSchema.safeParse({ parts: [{ partId: UUID, marksAwarded: 2 ** 40 }] }).success).toBe(true);
+    expect(selfMarkRequestSchema.safeParse({ parts: [{ partId: UUID, marksAwarded: -(2 ** 40) }] }).success).toBe(true);
   });
 
   test("T-MIG-059 (F-B): null/absent element fields BIND (the @NotNull/:55 and @Min/:56 constraints are dead — no @Valid cascade on the bare List, SelfMarkRequest :59; Jackson binds null AND absent as null)", () => {

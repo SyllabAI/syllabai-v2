@@ -170,16 +170,16 @@ describe("POST /api/v1/learners/me/attempts/:id/self-mark", () => {
     expect((await res.json()).error).toBe("malformed_body");
   });
 
-  test("marksAwarded 100 → 400 validation_failed (single-field pin, @Max(99) — inferred)", async () => {
+  test("marksAwarded 100 → 409 conflict 'marks 100 outside part bound 0–3' (T-MIG-071: the dead @Max(99) removed from the bind law — Jackson binds any int, the range is the service bound loop's ConflictException, LearnerSelfMarkService :113-121; the former 400 validation_failed pin here was the disclosed inferred-constraint divergence of record, T-MIG-057/064 receipts)", async () => {
     const res = await makeApp(asStudent).request(`/api/v1/learners/me/attempts/${ATTEMPT_ID}/self-mark`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ parts: [{ partId: PART_A, marksAwarded: 100 }] }),
     });
-    expect(res.status).toBe(400);
+    expect(res.status).toBe(409);
     const body = await res.json();
-    expect(body.error).toBe("validation_failed");
-    expect(body.message).toBe("parts[0].marksAwarded: must be less than or equal to 99");
+    expect(body.error).toBe("conflict");
+    expect(body.message).toBe("marks 100 outside part bound 0\u20133");
   });
 
   test("bad uuid in path → 400 bad_request 'malformed request' (conversion precedes handlers)", async () => {

@@ -56,7 +56,8 @@ task:
     allowed:
       - "packages/contracts/src/assessment.ts (partSelfMarkSchema.marksAwarded widening + header amendment block)"
       - "packages/contracts/src/assessment.test.ts (the -1/100 pin flip to the bind law + the int32-residual disclosure pin)"
-      - "apps/api/test/selfmark/selfmark.test.ts (the 0-mark-part sharp-edge pin + the out-of-range 409 wire-adjacent pins)"
+      - "apps/api/test/selfmark/selfmark.test.ts (the negative-marks arm + the 0-mark-part sharp-edge pins)"
+      - "apps/api/test/smartmark/routes.test.ts (the self-mark route's wire-level pin flip — AMENDED at run-002: the self-mark route's wire pins live in the smartmark harness (the SME reveal->tick->submit flow); the 'marksAwarded 100 -> 400 validation_failed' pin there was the wire-level divergence of record and flips to the frozen 409)"
       - ".syllabai/receipts/T-MIG-071/**; this yaml; .syllabai/worklog.md (append-only)"
     forbidden:
       - "packages/contracts/** beyond assessment.ts (no index.ts touch — partSelfMarkSchema is already exported)"

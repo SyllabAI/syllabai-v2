@@ -1,0 +1,29 @@
+{
+  "task": "T-MIG-071",
+  "run": "run-002-implementation",
+  "lane": "r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "implemented_at": "2026-10-06T07:35:00Z",
+  "changes": [
+    "packages/contracts/src/assessment.ts — partSelfMarkSchema.marksAwarded: z.number().int().min(0).max(99).nullish() -> z.number().int().nullish() (the dead @Min(0)/@Max(99) removed from the bind law — Jackson binds any int; the range is the service bound loop's 409, LearnerSelfMarkService.java:113-121); header amendment block T-MIG-071 (the dead-letter matrix's RANGE row resolved; the Jackson-Integer coercion residual disclosed)",
+    "packages/contracts/src/assessment.test.ts — the 'rejects marksAwarded -1 and 100' pin (self-labelled the disclosed inferred-constraint class) FLIPPED to the bind-law acceptance; NEW residual pin: any JS int binds incl. beyond int32 (2**40, -(2**40)) — frozen would 400 HttpMessageNotReadable, register-only; the boundary-value pin renamed (0 and 99 bind like any int)",
+    "apps/api/test/selfmark/selfmark.test.ts — NEW: the negative-marks arm 409 pin ('marks -1 outside part bound 0\\u20133', the marks < 0 disjunct LearnerSelfMarkService :117); NEW: the 0-mark-part sharp edge (bound = Math.max(0,0) = 0 + the 'bound > 0 &&' guard -> marksAwarded 50 on a 0-bound part SETTLES — frozen :115-117 verbatim, pinned not 'fixed')",
+    "apps/api/test/smartmark/routes.test.ts — the self-mark route's wire-level pin 'marksAwarded 100 -> 400 validation_failed (single-field pin, @Max(99) — inferred)' FLIPPED to the frozen answer: 409 conflict 'marks 100 outside part bound 0\\u20133' (verbatim en-dash). SCOPE AMENDMENT disclosed on the card: the self-mark route's wire pins live in the smartmark harness (the SME reveal->tick->submit flow) — the claim-time allowed-list named only test/selfmark; the amendment is test-file-only, same band, zero src contact"
+  ],
+  "gates": {
+    "method": "independent A/B, detached worktree baseline vs branch, same machine/env",
+    "baseline_97295d1": "1398 ran / 1385 pass / 0 fail / 13 skip / 5599 expects / 73 files; typecheck x3 exit 0; golden selftest OK",
+    "branch": "1401 ran / 1388 pass / 0 fail / 13 skip / 5605 expects / 73 files; typecheck x3 exit 0; golden selftest OK",
+    "delta": "+3 tests / +3 pass / +0 fail / +0 skip / +6 expects / +0 files — EXACT (residual pin +2 expects, negative-marks arm +2, 0-mark edge +2; both flipped pins net-zero count)"
+  },
+  "fidelity_notes": [
+    "the route's ConflictError -> apiError(409, 'conflict', e.message) serves the bound-loop message verbatim (routes/selfmark/index.ts:205) — matches frozen GlobalExceptionHandler ConflictException mapping",
+    "the classifier's too_small/too_big branches in routes/selfmark go DEFENSIVE for marksAwarded (they can no longer fire from this schema) — zero code change needed, they remain generic",
+    "the F-B band's nullish/null pins and the 057/058 NPE-parity guard are untouched and still green",
+    "order discipline preserved: settled 409 (:94-100) fires before the bound loop; the exact-parts 400 (:102-111) fires before it; per-entry unboxing NPE (:116) precedes the range test (the F-B 500 pass) — all pre-existing pins still green"
+  ],
+  "residuals": {
+    "jackson_integer_coercion_class": "int32 overflow + fractional marksAwarded (carried from run-001) — register-only",
+    "iteration_order_edge": "unchanged from the 064 disposition (mixed null + out-of-bound: HashMap order — not emulated, unreachable by capture)"
+  },
+  "red_lines": "zero src/routes/services contact (the service was already faithful), zero golden contact, zero contracts/index.ts touch, zero Neon/production contact, no force-push"
+}
