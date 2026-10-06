@@ -2275,3 +2275,19 @@ Work Log:
 Stage Summary:
 - Round-10 fully closed: 48 DONE (redaction, N-A closed), 49 DONE (namespace repaired, collision disclosed), board one-task-per-ID with 37=hub / 47=replay-evidence / 48=redaction / 49=contracts. Remaining claimable: T-MIG-033 tranche-3 (SME admin — contracts-first prerequisite: SME DTO contracts not yet in packages/contracts), T-MIG-043 (operator-routed), hub scoped-test-runner hygiene (unfiled). Register: (1) Actions runs dark since Oct-5 18:25:34Z — operator billing check; (2) NEON capacity RESOLVED by the 022-pair hygiene drop — first live replay 90/155 seed + 13/15 prod, 5 genuine findings filed incl. blocking-class attempts.exam_paper_id 42703 (T-MIG-048 candidate per R0-integrator's union receipt — id collision on the CANDIDATE NAME only, their filing text, not a card). LANE r0s: STOP for this round.
 origin/main
+
+---
+Task ID: 14
+Agent: R7a (agent-da4ab8, zai-web session web-da4ab8b1)
+Task: Operator round-11 directive (trace 1a10eaf7c7549701) — "Check if R0 has merged or not. If not, review+merge yourself and continue working"
+
+Work Log:
+- SYNC (fresh sandbox — reset #4; creds+clone rebuilt from the standing procedure): #69 found OPEN (R0 had not merged) -> the operator's own wording re-applied the round-8 delegation; review+merge executed by the author.
+- Board at sync: 7 open PRs — #69 (mine, tranche-2), #72 t-mig-041/r9-hubx (my band, hub-x extension), #74 t-mig-043/w0a + #76 t-mig-043/r1 (TWO PRs on the 043 band — apparent w0a/r1 collision, flagged for operator/R0), #77 t-mig-033/r0, #78 t-mig-033-t3/r4b, #75 round11-receipt/r3a. Main advanced: T-MIG-047 DONE (first full-union replay verdict 105/170, 5 genuine findings incl. attempts.exam_paper_id 42703 port defect), T-MIG-048 DONE via #70, T-MIG-049 retarget note (047->049 renumber per §2.1).
+- Intake merge of main d077ffa into t-mig-041/r7a (mergeable_state was dirty): conflicts confined to the 041 yaml (main flipped it DONE via the R0 sweep 1a10d2b406e813f9 after tranche-1 + r9-hubx approval) and the worklog (union). Resolution: combined DONE provenance (R0 sweep + tranche-2 delegated merge), worklog union; a stray conflict-label line was caught by the yaml parse check and removed before push.
+- Gates at merge head 55f9342: typecheck x4 exit 0; CI-scope 772/0/13skip/2183; selftest OK; w4-readiness READY 57/0.
+- MERGE: first PUT returned the stale-cache 'Base branch was modified' (bb9df41 verified ancestor of main tip; branch already up-to-date) — retried clean: #69 MERGED 558ef03, merge-commit style per repo convention.
+- Housekeeping: card T-MIG-041 DONE (combined provenance), receipt run-005-merge.json, this worklog entry — direct-main commit per the sweep-receipt precedent (acce2c6).
+
+Stage Summary:
+- T-MIG-041 fully landed (tranche-1 #65 ed558ab + tranche-2 #69 558ef03); card DONE. /api/v1/learners/me/state + /course-stats are live routes on main. Next work surface: review of #72 (t-mig-041/r9-hubx — my band, reciprocity for r9's #65 review); 043 dual-PR collision flagged.
