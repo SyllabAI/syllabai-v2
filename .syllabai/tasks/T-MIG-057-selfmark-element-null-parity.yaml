@@ -1,0 +1,55 @@
+version: 1
+task:
+  id: T-MIG-057
+  title: "self-mark parts ELEMENT-null parity — parts: [null] must 500 internal_error (frozen Jackson binds the null element; no @Valid cascade on the bare List<PartSelfMark>; the dedup loop NPEs on first null), not 400 validation_failed 'parts[0]: must not be null'; uncaptured residual disclosed in the R4-api-b T-MIG-055 (superseded) execution record, confirmed live on main post-#84"
+  owner: "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a) — the residual was first disclosed by this lane in its (workspace-lost, superseded) T-MIG-055 run-002 fix record; operator directive trace 1a10f48f7d8a616d ('make sure you dont lose the PAT...') persists the GitHub PAT per the r1c standing pattern and continues this lane onto the residual"
+  status: CLAIMED # claim-in-first-commit; flips IN_REVIEW with the fix commit after local gates
+  claimed_at: "2026-10-06T04:05:00Z"
+  priority: P2 # uncaptured frozen-divergence edge (no golden gate RED on it); hygiene-grade port fidelity
+  wave: 3 # selfmark fidelity follow-through (T-MIG-053 #84 + T-MIG-055 #91 lineage)
+  deps: [T-MIG-032, T-MIG-053, T-MIG-055]
+  execution_record: >
+    (claim entry 2026-10-06T04:05Z @ main ced0111, baseline recorded below)
+    PROVENANCE — the R4-api-b lane independently derived + implemented the
+    whole-field selfmark NPE parity (T-MIG-055, claim authored 03:20Z) while
+    r3a's PR #84 (claim 02:50:40Z, merged ced0111) carried the same fix to
+    main FIRST per §2.1; this lane's branch was then LOST to workspace wipe
+    #6/#7 (never pushed; commits 4d34a6a + 86026b0 unrecoverable) and the
+    lane STANDS DOWN from 055 with zero salvage claim (the landed #84/#91
+    work is more complete: absent + explicit-null + [] + 404-reframe all
+    pinned, live re-proof run 37408914789 recovered the golden gate). The
+    surviving lane value is the RESIDUAL this card claims: the ELEMENT-level
+    null shape, first disclosed in the lost 055 record, re-derived and
+    confirmed live on main today.
+    FROZEN READ @ 6cad6ef (re-verified line-against-line):
+    LearnerSelfMarkController :40-47 iterates request.parts() UNGUARDED;
+    SelfMarkRequest :58 declares the BARE List<PartSelfMark> (no @Valid
+    container-element cascade) — so for body {"parts":[null]} Jackson binds
+    a List carrying one null element, @Valid passes (constraints are
+    element-scoped AND never cascaded), and the dedup loop calls
+    p.partId() on null -> NPE -> catch-all 500 internal_error BEFORE the
+    service. Binding failures on NON-null elements still win FIRST
+    (Jackson binds the whole document before the handler runs), e.g.
+    {"parts":[null,{"partId":"not-a-uuid","marksAwarded":1}]} is a 400
+    malformed_body (UUID conversion), and the port already matches that
+    via the isBinding classifier.
+    PORT READ @ ced0111: the T-MIG-053 classifier comment states the
+    invalid_type branch "only serves element-level null constraint text" —
+    i.e. {"parts":[null]} parses-fails and renders 400 validation_failed
+    "parts[0]: must not be null" — a deliberate-but-divergent route
+    (frozen = 500). Zero golden case pins this shape (uncaptured edge);
+    zero worklog/receipt/card mention of element-null anywhere (sweep
+    re-verified at claim: zero t-mig-057* heads, 056 taken by r0's
+    classroom @NotBlank card at 62228db, next free non-reserved id 057).
+    FIX SCOPE (route-only, zero packages/golden/service files): in the
+    route's !parsed.success block, after the malformed-body return, ANY
+    element-level null issue at parts[i] (invalid_type received null,
+    path parts[i]) routes to the same NPE-parity throw the landed #84
+    whole-field guard uses — 500 internal_error via the app catch-all —
+    because the frozen loop NPEs before ANY constraint/classification
+    logic once binding has succeeded. Two route pins: {"parts":[null]}
+    -> 500 + zero sql queries (loop precedes the service); the mixed
+    binding-failure shape {"parts":[null,{"partId":"not-a-uuid",...}]}
+    -> 400 malformed_body (whole-document binding order preserved).
+    Baseline at claim: bun test apps/api packages 1090 pass / 0 fail /
+    13 skip / 3288 expect (1103 ran / 61 files), typecheck x4 exit 0.

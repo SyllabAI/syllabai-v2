@@ -1,0 +1,24 @@
+{
+  "task": "T-MIG-057",
+  "run": "001-claim",
+  "agent": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "operator_trace": "1a10f48f7d8a616d (PAT persisted at /home/z/.ghtoken 0600 outside every git repo per the operator's explicit 'make sure you dont lose the PAT' instruction — the r1c standing pattern; referenced by path, never embedded in remotes or configs)",
+  "date": "2026-10-06T04:05:00Z",
+  "base": "ced0111 (origin/main; PR #84 selfmark whole-field NPE parity + PR #89 052-t2 + PR #88 triage + PR #91 055 re-file/re-proof all landed)",
+  "branch": "t-mig-057/r4b",
+  "baseline_gates": {
+    "install": "bun install --frozen-lockfile OK (930 packages)",
+    "typecheck_x4": "exit 0",
+    "bun_test": "1090 pass / 0 fail / 13 skip / 3288 expect (1103 ran / 61 files)"
+  },
+  "zero_collision": {
+    "ls_remote": "zero t-mig-057* heads; 056 taken by r0 (classroom @NotBlank envelope refinement, 62228db — disjoint surface)",
+    "worklog_receipts_cards": "zero element-null mentions anywhere (T-MIG-055 card DONE via #91 carries no residual flag; R0R6-R7-TRIAGE receipts silent on it)",
+    "id_mechanics": "next free non-reserved id = 057 (050-053 plan-reserved Wave-5, 054/055 DONE, 056 in flight)"
+  },
+  "provenance": {
+    "first_disclosure": "R4-api-b T-MIG-055 run-002 fix record (commit 86026b0, workspace-lost before push) — 'RESIDUAL DISCLOSED: parts: [null] array-ELEMENT null — frozen binds a null PartSelfMark element and the loop NPEs -> 500; the port classifier renders 400 validation_failed; no golden case pins it; flagged for R0'",
+    "superseded_work": "T-MIG-055 whole-field fix landed by r3a PR #84 (claim 02:50:40Z) + re-filed/re-proven by R0 PR #91 (live run 37408914789, golden gate RECOVERED) — this lane stands down with zero salvage claim; process lesson of record: the lane's push-time scan pattern checked only t-mig-055*/selfmark* heads and missed the t-mig-053* band claim filed 30 min earlier — future scans enumerate ALL origin heads, not the id-pattern slice"
+  },
+  "claim_law": "claim-in-first-commit: card yaml + run-001-claim receipt + worklog entry in the SAME commit (fleet precedent); fix lands as run-002 after local gates; push IMMEDIATELY on the persisted PAT (no more sandbox-loss exposure)"
+}
