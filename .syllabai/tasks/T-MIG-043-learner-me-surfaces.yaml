@@ -3,7 +3,7 @@ task:
   id: T-MIG-043
   title: "Wave-4 learner port — the learner-me surface band: agenda (T-C76) + flashcard ratings/rating-trail/review-schedule (V47/T-C61/T-C53) + note-votes (V48) + exam-series picker & target-series (T-C79) + learner assignments (V49/V51); tranche-1 = services + fakeSql pins (021/033/041 template); NBA engine + routes = tranche-2"
   owner: "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — operator directive trace 1a10d2c88b6f13c5 'Check and claim whichever lane other agents are not working': executes the seeding word for the last unclaimed MIGRATION_PLAN Wave-4-reserved band (040 PREP DONE #57, 042P DONE #54, 041 claimed+in-review r7a #65; 043 was the named remainder per r7a's 041 yaml 'agenda/…/exam-series+flashcards = T-MIG-043'). Id ratification requested at PR review (030/032/039/040-PREP/041 precedent)"
-  status: IN_REVIEW # tranche-1 PR filed 2026-10-06 (claim 2026-10-06)
+  status: IN_PROGRESS # tranche-2 CLAIMED 2026-10-06 (operator trace 1a10eae6bc2044c1 "Proceed with Tranche-2 (NBA engine + routes + w4 golden replay)"); tranche-1 IN_REVIEW since 2026-10-06 (PR filed; claim 2026-10-06)
   priority: P1
   wave: 4
   deps: [T-MIG-038, T-MIG-040-PREP, T-MIG-014] # landed W4 contracts (learner.ts) + the W4 golden capture that pins these surfaces + db driver dispatch
@@ -139,19 +139,42 @@ task:
     null-deadline series) — .nullable() correction requested at review,
     the port renders honestly meanwhile. NBA engine + routes = tranche-2
     (the agenda 501 posture + provider seam are pinned).
+    (tranche-2 CLAIM, 2026-10-06, operator trace 1a10eae6bc2044c1
+    "Proceed with Tranche-2 (NBA engine + routes + w4 golden replay)"):
+    the awaited operator word for the tranche-2 scope this card already
+    reserved — it routes THIS lane to complete the band. Fence expansion
+    (same task, same branch t-mig-043/w0a, the 033-tranche-2 same-lane
+    precedent): routes/learnerme.ts (NEW — the learner-me router factory,
+    the selfmark/034 pattern), apps/api/src/index.ts mount wiring
+    (OUT-OF-FENCE, separate commit, R0 ratification per the
+    010/020/021/030/032/034 precedent), services/learner-me/nba.ts +
+    nba-concept-graph.ts + concept-graph/*.yaml (the settled T-C11
+    snapshot copied BYTE-VERBATIM from syllabai-core @ 6cad6ef
+    src/main/resources/concept-graph/ and SHA-256-pinned at load,
+    fail-closed per ConceptDependencyGraphLoader), test/learner-me/
+    nba.test.ts + routes.test.ts. The engine composes the questions
+    module's ServableQuestions (the ONE owner of the serving rule — the
+    frozen javadoc forbids mirroring it) and ports its own copies of the
+    decay/BDT pure math under the per-module structural-seam doctrine
+    (consolidation ruling requested with the ExamTargetReader one).
+    Status -> IN_PROGRESS.
   scope:
     allowed:
       - "apps/api/src/services/learner-me/** (NEW module: agenda, flashcard ratings/trail/schedule, note-votes, exam-series, assignments)"
       - "apps/api/test/learner-me/** (NEW: fakeSql pins)"
       - "packages/contracts/src/exam-series.ts + exam-series.test.ts (NEW file — the missing picker wire; ExamSeriesView/SetTargetRequest; CourseExamTargetView stays canonical in learner.ts)"
       - "packages/contracts/src/index.ts (the single re-export line for the new file — out-of-fence-flagged line, disclosed at review per the 010/034 ratified precedent)"
+      - "apps/api/src/routes/learnerme.ts (tranche-2: the learner-me router — auth shell + the frozen routes: agenda, recommendations, flashcard ratings/trail/schedule, note-votes, exam-series, target-series, assignments; route-factory pattern per routes/selfmark)"
+      - "apps/api/src/services/learner-me/nba.ts + nba-concept-graph.ts (tranche-2: the NextBestActionService :79-554 port + the T-C11 ConceptDependencyGraphLoader port)"
+      - "apps/api/src/services/learner-me/concept-graph/*.yaml (tranche-2: the settled T-C11 snapshot — byte-verbatim copies from the frozen core, sha256-pinned at load)"
+      - "apps/api/src/index.ts (tranche-2 mount line + import + construction + disclosure comment — OUT-OF-FENCE, separate commit, R0 ratification per the 010/020/021/030/032/034 precedent)"
       - ".syllabai/receipts/T-MIG-043/**"
       - ".syllabai/tasks/T-MIG-043-learner-me-surfaces.yaml (status/execution_record only)"
       - ".syllabai/worklog.md (append-only entries)"
     forbidden:
       - "apps/api/src/services/learner/** + apps/api/test/learner/** (r7a's 041 fence — zero overlap)"
-      - "apps/api/src/routes/** + apps/api/src/index.ts mounts (tranche-2; flagged separate commit)"
-      - "packages/contracts/src/learner.ts (canonical #60 bundle — read-only; new wire goes in the NEW exam-series.ts file)"
+      - "apps/api/src/routes/** other than learnerme.ts (other lanes' routers); apps/api/src/index.ts beyond the single tranche-2 mount commit"
+      - "packages/contracts/src/learner.ts (canonical #60 bundle — read-only; the NBA wire schemas nextBestActionViewSchema/nextBestActionsViewSchema are ALREADY landed there and are consumed as-is)"
       - "apps/hub/**, golden/** (040-PREP owns the capture; both merged — never weaken a case)"
       - "production Neon writes / Render writes of any kind"
       - "persisting any decayed/scheduled/derived value (ADR-031: computed, never stored)"

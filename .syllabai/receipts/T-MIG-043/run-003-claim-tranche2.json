@@ -1,0 +1,40 @@
+{
+  "schema": "syllabai.receipt/v1",
+  "task": "T-MIG-043",
+  "run": "run-003-claim-tranche2",
+  "kind": "claim",
+  "when": "2026-10-06T01:20:00Z",
+  "agent": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "directive": {
+    "trace_id": "1a10eae6bc2044c1",
+    "text": "Proceed with Tranche-2 (NBA engine + routes + w4 golden replay)",
+    "reading": "the operator word this card's tranche-2 reserve awaited (tranche-1 run-002 filed the tranche-2 scope as 'awaits the operator/R0 word'); it routes THIS lane (w0a, the 043 owner per earliest-claim, honored hands-off by R3a-ROUND-11) to complete the band"
+  },
+  "claim": {
+    "branch": "t-mig-043/w0a",
+    "base_at_claim": "849ba28 (tranche-1 run-002 receipt head; intake 854fb8f of main 190706e lineage)",
+    "frozen_ref": "syllabai-core @ 6cad6ef9463e8d21f1555456561a4caaf7e89395 (HEAD re-verified on a fresh clone this session)",
+    "fence_expansion": [
+      "apps/api/src/routes/learnerme.ts (NEW)",
+      "apps/api/src/index.ts mount wiring (OUT-OF-FENCE, separate commit, R0 ratification per 010/020/021/030/032/034)",
+      "apps/api/src/services/learner-me/nba.ts + nba-concept-graph.ts (NEW)",
+      "apps/api/src/services/learner-me/concept-graph/{concept_edges,concepts,practicals}.yaml (settled T-C11 snapshot, byte-verbatim copies)",
+      "apps/api/test/learner-me/nba.test.ts + routes.test.ts (NEW)"
+    ],
+    "collision_scan": {
+      "when": "immediately before the claim commit",
+      "t_mig_043_yamls_on_main": 0,
+      "open_PRs": "#69 (r7a 041-t2) / #72 (r9-hubx 041-t2) / #74-family (this lane's tranche-1) — none touch services/learner-me/** or routes/learnerme.ts; #69/#72 overlap apps/api/src/index.ts mounts (the 041-t2 double-PR arbitration R3a receipted) — this lane's mount commit will intake-rebase over whichever lands",
+      "043_claims": "w0a earliest (db87a9a, 2026-10-05T18:01:06Z) — R3a-ROUND-11 receipt honored it hands-off (branch round11-receipt/r3a, worklog-only)"
+    }
+  },
+  "tranche_2_scope": {
+    "nba_engine": "NextBestActionService.java :79-554 (policy nba-rules/v1.3) line-against-line: T1 due retrieval (overdue flag, reason name lowercased + '_'->' '), T2 prerequisite remediation (both-measured-weak gate), T2b validated prerequisite chain (REQUIRES_PREREQUISITE, learner-evidence-gated, putIfAbsent per prerequisite, prerequisite code order), T3 low-mark problem questions (cap 2, ratio <= 0.5, primary-topic isolation, ServableQuestionService reuse), T4 suspected misconceptions (BDT activeThreshold 0.5, staleness-relaxed, prob DESC then code), T4b validated remediation (REMEDIATED_BY, corrective study action), T5 fluency gaps (signed untimed-timed gap >= 0.2, |gap| DESC then code), T6 weak measured mastery (eff ASC then code, bandOf), T7a tutor engagement (14d window, ask-count DESC, TOPIC/SUBTOPIC only, servable>0, signal-mix evidence note), T7 uncovered topics (DFS curriculum order, cap 2, servable>0); one action per topic; rank renumber 1..n; maxActions 8",
+    "tc11_graph": "ConceptDependencyGraphLoader + ConceptDependencyGraph.of fail-closed law: SHA-256-pinned snapshot files (concept_edges 8a651dd9..., concepts 24fa91ac..., practicals e53e5f87...), HUMAN_VALIDATED-only, known-relation + known-endpoint + no-duplicate validation with the verbatim error texts, edges sorted (source, target)",
+    "routes": "the learner-me router: GET /agenda (optional rootId), GET /recommendations (required rootId), POST /flashcard-ratings (201), GET /flashcard-rating-trail, GET /flashcard-review-schedule, POST /note-votes (201), GET /exam-series, PUT /courses/:slug/target-series (200), DELETE /courses/:slug/target-series (204), GET /assignments, POST /assignments/:id/submissions (201); Boot exception mapping verbatim (404 not_found verbatim message, 400 bad_request 'malformed request' on UUID mismatch, 400 validation_failed 'missing required parameter: X', 403 forbidden, 409 conflict); the agenda 501 not-implemented posture stays as the no-engine safety net",
+    "golden_replay": "the W4 tranche's 57 cases; MY band = 29 cases (5 agenda + 8 flashcard-ratings + 3 trail + 3 schedule + 1 note-vote + 4 exam-series + 5 target-series); the live replay runs via the T-MIG-044 CI instrument (agent sandboxes are DNS-blocked for Neon by doctrine) — CI Actions dark since Oct-5 18:25:34Z (register item), so this tranche ships local-gates evidence + the replay-ready posture, disclosed"
+  },
+  "gates_at_claim": {
+    "note": "claim-only commit: yaml + this receipt; no code changed; gates carry over from run-002 (775/762/0/13skip/2119, typecheck x4, selftest OK)"
+  }
+}
