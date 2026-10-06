@@ -866,3 +866,71 @@ describe("smartMarkBatch", () => {
     expect(view.failed).toBe(1);
   });
 });
+
+// ── T-MIG-051 (N-4 closure): java.util.UUID.compareTo SIGNED tie-break law ──
+//
+// The golden capture w3-teacher-marking-queue-v2-rich-200 exhibits the
+// frozen in-memory ordering law: with attempt created_at tied, the
+// 0xf0ae6395-… attempt sorts BEFORE the 0x4e094481-… one — the 0xf0…
+// most-significant 64-bit half is NEGATIVE as a signed long — exactly the
+// reverse of unsigned/hex-lex order (the former disclosed string-lex class).
+// These pins carry the same vectors the capture pinned, plus the
+// least-significant-half boundary case.
+
+describe("uuidCompare (T-MIG-051 N-4 signed uuid law)", () => {
+  const { uuidCompare } = require("../../src/services/teachermarking/index") as {
+    uuidCompare: (a: string, b: string) => number;
+  };
+
+  test("captured tie-break pair: 0xf0ae… msb (negative signed) sorts BEFORE 0x4e09…", () => {
+    const first = "f0ae6395-1c08-4e5e-bd61-d566ea7ed61e";
+    const second = "4e094481-de2e-4cb2-9895-950660303cc4";
+    expect(uuidCompare(first, second)).toBeLessThan(0);
+    expect(uuidCompare(second, first)).toBeGreaterThan(0);
+  });
+
+  test("least-significant-half boundary: 0x8000_0000_0000_0000 lsb is signed-negative", () => {
+    // msb equal (0x0…0); lsb 0x7fff… is +2^63-1 while 0x8000… is -2^63 —
+    // signed order puts 0x8000… FIRST, unsigned would reverse it.
+    const maxPositive = "00000000-0000-0000-7fff-ffffffffffff";
+    const minNegative = "00000000-0000-0000-8000-000000000000";
+    expect(uuidCompare(minNegative, maxPositive)).toBeLessThan(0);
+    expect(uuidCompare(maxPositive, minNegative)).toBeGreaterThan(0);
+  });
+
+  test("equal uuids compare 0; plain low uuids keep the natural order", () => {
+    const a = "40000000-0000-0000-0000-000000000001";
+    expect(uuidCompare(a, a)).toBe(0);
+    expect(uuidCompare("40000000-0000-0000-0000-000000000001", "40000000-0000-0000-0000-000000000002")).toBeLessThan(0);
+  });
+});
+
+// ── T-MIG-051: the throughput answersByState WIRE order (Java HashMap law) ──
+//
+// The frozen ThroughputView serializes a HashMap<String,Long> seeded in enum
+// order; Jackson renders it in JAVA HASHMAP ITERATION ORDER — for these five
+// String keys a pure function of the spec-fixed String.hashCode (capacity 16,
+// five puts, no resize, bucket = (h ^ h>>>16) & 15). The golden capture
+// w3-teacher-marking-throughput-rich-200 pins the rendered order; this test
+// pins the port's initialization to the same derived order.
+
+describe("BY_STATE_WIRE_ORDER (T-MIG-051 Java HashMap iteration law)", () => {
+  const { BY_STATE_WIRE_ORDER, MARKING_STATES } = require("../../src/services/teachermarking/index") as {
+    BY_STATE_WIRE_ORDER: readonly string[];
+    MARKING_STATES: readonly string[];
+  };
+
+  test("wire order matches the derived HashMap order (and the captured golden body)", () => {
+    expect([...BY_STATE_WIRE_ORDER]).toEqual([
+      "HUMAN_MARKED",
+      "SMART_MARKED",
+      "PENDING",
+      "SELF_MARKED",
+      "OVERRIDDEN",
+    ]);
+  });
+
+  test("same key SET as the enum (only the wire order differs)", () => {
+    expect([...BY_STATE_WIRE_ORDER].sort()).toEqual([...MARKING_STATES].sort());
+  });
+});

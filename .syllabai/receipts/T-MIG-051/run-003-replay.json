@@ -1,0 +1,22 @@
+{
+  "task_id": "T-MIG-051",
+  "kind": "REPLAY-RECEIPT (two-pass family replay vs the live port, local scratch)",
+  "run": "003",
+  "timestamp": "2026-10-06T02:22:00Z",
+  "agent": "Super Z (operator-directed independent lane, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "target": "v2 apps/api @ t-mig-051/r0 head, booted locally on a FRESH scratch db (drizzle baseline 0000_organic_mauler.sql applied + pgvector extension; no Neon contact)",
+  "state_partnership": "the family's state is built in partnership with the cases: --stage accounts (seed posture + roles + bootstrap window + admin claim + student + teacher) -> PASS 1 replays the w3-sme- family where the ingest CASES THEMSELVES are seq 10/11 state builders; --stage attempts (structured attempts on the case-created bank + deterministic attempt-id constants via copy/re-point/delete + the created_at tie) -> PASS 2 replays the w3-teacher-marking- family",
+  "role_faithful_tokens": "per-case role substitution per the ci-replay doctrine: admin(+teacher) for the ingest/status-rich reads, the minted STUDENT token for w3-sme-status-student-403, the minted TEACHER token (honest join-code path) for w3-sme-status-teacher-403, anonymous for the unauthed-401 postures — a single-token replay would falsely 200 the role-gated 403s",
+  "results": {
+    "pass_1_w3_sme": "7/7 PASS (ingest-rich, ingest-replace-rich, status-admin-rich, status-unauthed-401, status-student-403, status-teacher-403)",
+    "pass_2_w3_teacher_marking": "10/10 PASS (queue-v2-rich, answers-rich, answers-paged-rich, throughput-rich + the six standing auth postures)",
+    "exit": 0
+  },
+  "validation_highlights": [
+    "the SIGNED uuid law is now a standing golden gate: the pre-fix string-lex port would reverse the tied items and FAIL w3-teacher-marking-queue-v2-rich-200 (the seed's id constants deliberately reverse unsigned order)",
+    "the HashMap wire order is golden-gated by w3-teacher-marking-throughput-rich-200",
+    "the multipart runner extension (bodyFile/multipart + selftest construction coverage) replayed the ingest cases byte-exactly against the port's multipart parser",
+    "the ADR-026 replace numbers replay exactly (deactivated 0 -> 2; status specPointMappings counts both generations = 4)"
+  ],
+  "runner_extension_disclosure": "golden/runner.ts: bodyFile/multipart case fields + buildMultipartBody (fetch builds the boundary; diff engine untouched), --filter name-substring for family-scoped live replays, selftest coverage for both — declared scope per the claim receipt"
+}

@@ -1,0 +1,35 @@
+{
+  "name": "w3-sme-ingest-rich-200",
+  "description": "SME question-bank ingest (multipart part 'file') over the V7-seeded bank — 200 IngestSummary with deactivated:0 (fresh corpus cor-t51-1: 1 MCQ + 1 structured 2-part; KG codes resolve to the V6 WCH11 seed). N-4 rich-200 family (T-MIG-051). Replay requires golden/tools/seed-t51-rich200.ts state.",
+  "method": "POST",
+  "path": "/api/v1/admin/question-bank/ingest",
+  "bodyFile": "files/t51-corpus.zip",
+  "multipart": {
+    "partName": "file",
+    "filename": "t51-corpus.zip",
+    "contentType": "application/zip"
+  },
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "questions": 2,
+      "mcq": 1,
+      "structured": 1,
+      "parts": 2,
+      "options": 3,
+      "markPoints": 3,
+      "specPointMappings": 2,
+      "topicMappings": 1,
+      "assets": 0,
+      "deactivated": 0,
+      "corpusVersion": "cor-t51-1"
+    }
+  },
+  "seq": 10,
+  "source": "captured from LOCAL frozen-core boot (syllabai-core @ 6cad6ef, Temurin JDK 25.0.4.1, Maven 3.9.9, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.11 + pgvector 0.8.0 2026-10-06T01:3xZ by T-MIG-051 run-002 (operator-directed lane, trace 1a10ec4360ba292d); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic (local profile demo seeder, scrubbed to User 1); tokens scrubbed to {{TOKEN}}; N-4 tie-break exhibited via SQL-set identical attempt created_at"
+}

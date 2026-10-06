@@ -1,0 +1,42 @@
+{
+  "task_id": "T-MIG-051",
+  "kind": "CAPTURE-RECEIPT (N-4 rich-200 family, frozen-core boot)",
+  "run": "002",
+  "timestamp": "2026-10-06T02:20:00Z",
+  "agent": "Super Z (operator-directed independent lane, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "authority": "operator routing trace 1a10ec4360ba292d 'N-4 rich-200 capture'; method per T-MIG-007 run-002 recipe (local frozen-core boot on local scratch Postgres; zero Neon; nothing writes to production)",
+  "environment": {
+    "frozen_core": "syllabai-core @ 6cad6ef (anonymous clone, read-only C1 posture; mvn -B -DskipTests package exit 0 -> target/syllabai-core-0.1.0-SNAPSHOT.jar 180266541 bytes — matches the T-MIG-004 run-002 receipt's artifact)",
+    "jdk": "Temurin 25.0.4.1 via Adoptium API (same version as T-MIG-007 run-002)",
+    "maven": "3.9.9 binary tarball",
+    "database": "PostgreSQL 17.11 + pgvector 0.8.0, no-root deb unpack (Debian 13), local scratch cluster port 5499; Flyway V1..V63 applied by the core itself",
+    "seeding": "local-profile DemoUserSeeder (admin@syllabai.dev ADMIN+TEACHER / teacher / student — synthetic, scrubbed) + lifecycle through the core's own write paths",
+    "posture": "SYLLABAI_LLM_MODE=test; identities synthetic from creation; tokens in shell memory only, never on disk"
+  },
+  "capture_sessions": [
+    {
+      "run": "run-002a (SME admin)",
+      "cases": ["w3-sme-ingest-rich-200 (seq 10)", "w3-sme-ingest-replace-rich-200 (seq 11)", "w3-sme-status-admin-rich-200 (seq 12)"],
+      "method": "multipart POST /api/v1/admin/question-bank/ingest with a 685-byte deterministic corpus (files/t51-corpus.zip: package.json + 1 MCQ + 1 structured 2-part; KG codes resolve to the V6 WCH11 seed), then GET /status; the second ingest is the ADR-026 replace (deactivated:2, mapping rows survive as evidence)"
+    },
+    {
+      "run": "run-002b (teacher marking)",
+      "cases": ["w3-teacher-marking-queue-v2-rich-200 (seq 13)", "w3-teacher-marking-answers-rich-200 (seq 14)", "w3-teacher-marking-answers-paged-rich-200 (seq 15)", "w3-teacher-marking-throughput-rich-200 (seq 16)"],
+      "method": "two STRUCTURED attempts by the student on the ingested T51-WCH11-002 (parts resolved from the db), then the N-4 TIE EXHIBIT: both attempt created_at set to the identical instant via SQL; the four teacher reads captured in the same session"
+    }
+  ],
+  "n4_tie_break_condition": {
+    "condition_text": "T-MIG-033 run-r0-review-tranche1 + run-005: 'if a w3-teacher-marking capture exhibits tied rows, port the bit-order comparator or pin with disclosure'",
+    "exhibited": true,
+    "finding": "the capture FIRED the condition: with attempt created_at tied, the frozen core ordered attempt 0xf0ae6395-… BEFORE 0x4e094481-… — java.util.UUID.compareTo compares the two 64-bit halves as SIGNED longs (0xf0ae… msb is negative), the REVERSE of the port's disclosed string-lex class",
+    "resolution": "COMPARATOR PORTED (the condition's first branch): uuidCompare (signed-i64 pair, BigInt) in services/teachermarking — compareWithinPaper attempt-id/answer-id tie-breaks + the throughput pendingByPaper key tie-break; pinned by unit tests carrying the captured vectors (teachermarking.test.ts)"
+  },
+  "second_finding": {
+    "id": "F-51-A",
+    "severity": "low (wire-byte fidelity)",
+    "finding": "the frozen ThroughputView serializes a HashMap<String,Long> seeded in enum order (QueueService :271-276); Jackson renders it in JAVA HASHMAP ITERATION ORDER — for the five String keys a pure function of the spec-fixed String.hashCode (capacity 16, five puts, no resize, bucket = (h ^ h>>>16) & 15). The port rendered declaration order — a wire-byte divergence invisible to every auth-boundary capture",
+    "resolution": "BY_STATE_WIRE_ORDER derived order in services/teachermarking (computation documented at the constant), pinned by unit test; golden-gated by w3-teacher-marking-throughput-rich-200"
+  },
+  "scrub": "emails absent from the captured views; learnerDisplayName 'Demo Student' -> 'User 1' (the seed script registers the replay identity under the scrubbed name, so the field is byte-stable WITHOUT being tolerated); tokens never captured ({{TOKEN}}); runtime-generated ids (attemptId/answerId/learnerId/questionId/nextAnswerId) stay in the files for archaeology behind tolerate; oldestWaitingHours/oldestPendingHours tolerated as wall-clock-derived (the capture's null was a sub-second race artifact between the SQL tie commit and the JVM Instant.now() — empirically re-verified: the frozen core renders 0 for a positive sub-hour wait, null only when oldestAt.isAfter(now), QueueService :254/:328-330 — the port's guard was already faithful)",
+  "unpaged_answers_order": "the unpaged /answers list is a derived query with NO OrderBy (frozen source leaves the order to the database) — the case declares the ROOT ARRAY unordered per the T-MIG-024/GOLDEN_MASTER §5 doctrine (same elements after redaction, any order); the paged variant pins the frozen TOTAL order (answer createdAt asc, id asc) strictly"
+}

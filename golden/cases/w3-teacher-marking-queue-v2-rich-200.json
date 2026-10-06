@@ -1,0 +1,148 @@
+{
+  "name": "w3-teacher-marking-queue-v2-rich-200",
+  "description": "Populated PENDING queue: one null-paper group (question-bank questions carry NO paper by design) with 4 items = 2 attempts x 2 parts. N-4 TIE-BREAK EXHIBIT: both attempts share created_at (SQL-set by the seed), so the within-paper comparator (:395-403) falls through to attempt.id — java.util.UUID.compareTo SIGNED 64-bit pair order: the 0xf0ae-prefixed attempt sorts BEFORE the 0x4e09 one (msb sign bit), which string-lex/unsigned hex order would REVERSE. Item order is strictly pinned. See the N-4 condition (T-MIG-033 run-r0-review-tranche1 + run-005) and the T-MIG-051 comparator fix.",
+  "method": "GET",
+  "path": "/api/v1/teacher/marking/queue-v2",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "state": "PENDING",
+      "groups": [
+        {
+          "paperId": null,
+          "paperTitle": null,
+          "sessionLabel": null,
+          "paperCode": null,
+          "count": 4,
+          "oldestPendingAt": "2026-10-06T01:40:00Z",
+          "oldestWaitingHours": null
+        }
+      ],
+      "items": [
+        {
+          "answer": {
+            "answerId": "0a986095-4abe-4723-b401-cf03e6252c55",
+            "attemptId": "f0ae6395-1c08-4e5e-bd61-d566ea7ed61e",
+            "learnerId": "65b6455c-8f56-444e-b24d-6d174be2a4a8",
+            "learnerDisplayName": "User 1",
+            "questionId": "4fac6e74-549a-4f08-843f-033b8cfc36e7",
+            "questionExternalRef": "T51-WCH11-002",
+            "partLabel": "(a)",
+            "partPrompt": "part a",
+            "partMarks": 2,
+            "answerText": "X because a",
+            "markingState": "PENDING",
+            "marksAwarded": null,
+            "latestSmartMark": null,
+            "latestHumanMark": null,
+            "examPaperId": null,
+            "paperTitle": null
+          },
+          "paperId": null,
+          "paperTitle": null,
+          "sessionLabel": null,
+          "paperCode": null,
+          "evidenceEmitted": false,
+          "nextAnswerId": "2c11edef-79a9-4ff6-805e-6bddd7b043ed"
+        },
+        {
+          "answer": {
+            "answerId": "2c11edef-79a9-4ff6-805e-6bddd7b043ed",
+            "attemptId": "f0ae6395-1c08-4e5e-bd61-d566ea7ed61e",
+            "learnerId": "65b6455c-8f56-444e-b24d-6d174be2a4a8",
+            "learnerDisplayName": "User 1",
+            "questionId": "4fac6e74-549a-4f08-843f-033b8cfc36e7",
+            "questionExternalRef": "T51-WCH11-002",
+            "partLabel": "(b)",
+            "partPrompt": "part b",
+            "partMarks": 2,
+            "answerText": "Y because b",
+            "markingState": "PENDING",
+            "marksAwarded": null,
+            "latestSmartMark": null,
+            "latestHumanMark": null,
+            "examPaperId": null,
+            "paperTitle": null
+          },
+          "paperId": null,
+          "paperTitle": null,
+          "sessionLabel": null,
+          "paperCode": null,
+          "evidenceEmitted": false,
+          "nextAnswerId": "d9a26286-b1ce-4d4f-b234-0b8b6e804da1"
+        },
+        {
+          "answer": {
+            "answerId": "d9a26286-b1ce-4d4f-b234-0b8b6e804da1",
+            "attemptId": "4e094481-de2e-4cb2-9895-950660303cc4",
+            "learnerId": "65b6455c-8f56-444e-b24d-6d174be2a4a8",
+            "learnerDisplayName": "User 1",
+            "questionId": "4fac6e74-549a-4f08-843f-033b8cfc36e7",
+            "questionExternalRef": "T51-WCH11-002",
+            "partLabel": "(a)",
+            "partPrompt": "part a",
+            "partMarks": 2,
+            "answerText": "Alt x text",
+            "markingState": "PENDING",
+            "marksAwarded": null,
+            "latestSmartMark": null,
+            "latestHumanMark": null,
+            "examPaperId": null,
+            "paperTitle": null
+          },
+          "paperId": null,
+          "paperTitle": null,
+          "sessionLabel": null,
+          "paperCode": null,
+          "evidenceEmitted": false,
+          "nextAnswerId": "91d8a56b-2a53-43c8-8e51-d239c304adc1"
+        },
+        {
+          "answer": {
+            "answerId": "91d8a56b-2a53-43c8-8e51-d239c304adc1",
+            "attemptId": "4e094481-de2e-4cb2-9895-950660303cc4",
+            "learnerId": "65b6455c-8f56-444e-b24d-6d174be2a4a8",
+            "learnerDisplayName": "User 1",
+            "questionId": "4fac6e74-549a-4f08-843f-033b8cfc36e7",
+            "questionExternalRef": "T51-WCH11-002",
+            "partLabel": "(b)",
+            "partPrompt": "part b",
+            "partMarks": 2,
+            "answerText": "Alt y text",
+            "markingState": "PENDING",
+            "marksAwarded": null,
+            "latestSmartMark": null,
+            "latestHumanMark": null,
+            "examPaperId": null,
+            "paperTitle": null
+          },
+          "paperId": null,
+          "paperTitle": null,
+          "sessionLabel": null,
+          "paperCode": null,
+          "evidenceEmitted": false,
+          "nextAnswerId": null
+        }
+      ]
+    }
+  },
+  "tolerate": [
+    "answerId",
+    "attemptId",
+    "id",
+    "learnerId",
+    "nextAnswerId",
+    "oldestPendingAt",
+    "oldestPendingHours",
+    "oldestWaitingHours",
+    "questionId",
+    "timestamp"
+  ],
+  "seq": 13,
+  "source": "captured from LOCAL frozen-core boot (syllabai-core @ 6cad6ef, Temurin JDK 25.0.4.1, Maven 3.9.9, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.11 + pgvector 0.8.0 2026-10-06T01:3xZ by T-MIG-051 run-002 (operator-directed lane, trace 1a10ec4360ba292d); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic (local profile demo seeder, scrubbed to User 1); tokens scrubbed to {{TOKEN}}; N-4 tie-break exhibited via SQL-set identical attempt created_at"
+}

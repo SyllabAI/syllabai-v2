@@ -1,0 +1,70 @@
+{
+  "name": "w3-teacher-marking-answers-paged-rich-200",
+  "description": "OPT-IN paged /answers?page=0&size=2 (G-5): AnswerMarkingPageView envelope with REAL totals (totalElements 4, totalPages 2 — the database's count, never an estimate). The paged surface pins the frozen TOTAL order (answer createdAt asc, then id asc — repository :42-51 + caller Pageable), so items[] is strictly order-pinned (unlike the unpaged list).",
+  "method": "GET",
+  "path": "/api/v1/teacher/marking/answers?page=0&size=2",
+  "request": {
+    "headers": {
+      "Authorization": "Bearer {{TOKEN}}"
+    }
+  },
+  "expect": {
+    "status": 200,
+    "body": {
+      "items": [
+        {
+          "answerId": "0a986095-4abe-4723-b401-cf03e6252c55",
+          "attemptId": "f0ae6395-1c08-4e5e-bd61-d566ea7ed61e",
+          "learnerId": "65b6455c-8f56-444e-b24d-6d174be2a4a8",
+          "learnerDisplayName": "User 1",
+          "questionId": "4fac6e74-549a-4f08-843f-033b8cfc36e7",
+          "questionExternalRef": "T51-WCH11-002",
+          "partLabel": "(a)",
+          "partPrompt": "part a",
+          "partMarks": 2,
+          "answerText": "X because a",
+          "markingState": "PENDING",
+          "marksAwarded": null,
+          "latestSmartMark": null,
+          "latestHumanMark": null,
+          "examPaperId": null,
+          "paperTitle": null
+        },
+        {
+          "answerId": "2c11edef-79a9-4ff6-805e-6bddd7b043ed",
+          "attemptId": "f0ae6395-1c08-4e5e-bd61-d566ea7ed61e",
+          "learnerId": "65b6455c-8f56-444e-b24d-6d174be2a4a8",
+          "learnerDisplayName": "User 1",
+          "questionId": "4fac6e74-549a-4f08-843f-033b8cfc36e7",
+          "questionExternalRef": "T51-WCH11-002",
+          "partLabel": "(b)",
+          "partPrompt": "part b",
+          "partMarks": 2,
+          "answerText": "Y because b",
+          "markingState": "PENDING",
+          "marksAwarded": null,
+          "latestSmartMark": null,
+          "latestHumanMark": null,
+          "examPaperId": null,
+          "paperTitle": null
+        }
+      ],
+      "page": 0,
+      "size": 2,
+      "totalElements": 4,
+      "totalPages": 2
+    }
+  },
+  "tolerate": [
+    "answerId",
+    "attemptId",
+    "id",
+    "learnerId",
+    "oldestPendingHours",
+    "oldestWaitingHours",
+    "questionId",
+    "timestamp"
+  ],
+  "seq": 15,
+  "source": "captured from LOCAL frozen-core boot (syllabai-core @ 6cad6ef, Temurin JDK 25.0.4.1, Maven 3.9.9, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.11 + pgvector 0.8.0 2026-10-06T01:3xZ by T-MIG-051 run-002 (operator-directed lane, trace 1a10ec4360ba292d); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic (local profile demo seeder, scrubbed to User 1); tokens scrubbed to {{TOKEN}}; N-4 tie-break exhibited via SQL-set identical attempt created_at"
+}
