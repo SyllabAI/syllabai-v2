@@ -16,17 +16,21 @@ Next.js hub (`apps/hub`) riding the same repo, under a strangler pattern with a
 **contracts-first (zod), golden-master-gated, honest-501/503** doctrine. At the
 report hash:
 
-- **Register: 64 of 66 filed cards DONE** — every wave card of Waves 0–6 is
-  DONE; the two non-DONE cards are non-wave bands (T-MIG-071 ruling-execution,
-  in flight; T-MIG-073 follow-up, merged-of-record pending its owner's flip).
+- **Register: 65 of 66 filed cards DONE** — every wave card of Waves 0–6 is
+  DONE; the sole non-DONE card is T-MIG-071 (ruling-execution band, in flight
+  — claim of record R4-api-b `f0b7189`); T-MIG-073 was flipped DONE by the R0
+  desk (`6227b6a`, convergent with this lane's census).
 - **Gates of record (first-hand at the report head):** `tsc --noEmit` ×4 exit 0;
   `bun test apps/api packages` = **1533 pass / 0 fail / 13 skip / 6036 expects
   / 82 files**; `bun test apps/hub` = **36 pass / 0 fail / 291 expects**;
   `bun golden/runner.ts --selftest` OK.
-- **Behavioural fidelity:** last live golden replay of record **union 142/177**
-  (seed 129/162; divergences 40 → 35 pre-#117), with every residual
-  dispositioned by operator ruling3 and closing through the 071/072 bands —
-  none are unexplained port defects.
+- **Behavioural fidelity:** live golden replay **union 149/177** at `e9ef235`
+  (run 37441112330, post-#117-composition, filed of record as R0-REPLAY-FILING-1
+  at `6227b6a`; prior aggregate 142/177, divergences 40 → 35 pre-#117), with
+  the 28-difference residual given a **4-class taxonomy** (register rate-limit
+  collision, learner-me auth-envelope inversion, fixture volatility,
+  smart-lesson route reachability) and a ruled disposition per class closing
+  through the 071 band — none are unexplained port defects.
 - **What remains before the flip:** the four §7 preconditions
   (`docs/CUTOVER_RUNBOOK.md` §0). P1 is met at the register level; P2–P4 are
   in flight / operator-owned. The cutover itself is a single Vercel env flip —
@@ -61,7 +65,7 @@ report hash:
 | W5 | Classroom/teacher (+ KG heatmap, analytics, smart lesson) | 10/10 | DONE | 053 t1–t4 = #101/#108/#115/#116 |
 | W6 | Tutor/AI + admin + research | 10/10 | DONE | 060 KaRAG #104; 062 research #102; 066 #106; 065 hygiene #103 |
 | — | ruling-execution | 072 DONE (#117); **071 in flight** | — | R3-C/D3/D4 case-amendment band |
-| — | follow-up | 073 merged-of-record (#113), owner flip pending | — | selfmark dead-constraint class |
+| — | follow-up | 073 DONE (flipped by R0 desk `6227b6a`; #113 merged-of-record) | — | selfmark dead-constraint class |
 | W7 | Cutover + freeze | 074 (this report + runbook) | PREP | `docs/CUTOVER_RUNBOOK.md` |
 
 ## 4. Fidelity of record
@@ -69,16 +73,23 @@ report hash:
 - **Instrument:** `golden/runner.ts` + `ci-replay.ts` against the recorded
   corpus; NEON replay for live-branch dual replay (recently gated on
   NEON_BRANCH_CAPACITY — operator-side capacity action outstanding).
-- **Last live aggregate of record:** union **142/177** (seed 129/162, prod
-  13/15), dual-dispatch corroborated (workflow runs 37426037703 /
-  37426117865). Divergence trajectory 40 → 35 across the 067/068/070 bands.
+- **Last live aggregate of record:** union **149/177** at `e9ef235` (NEON
+  replay run 37441112330, post-#117, R0-REPLAY-FILING-1 at `6227b6a`); the
+  prior of-record aggregate was union 142/177 (seed 129/162, prod 13/15,
+  dual-dispatch corroborated: workflow runs 37426037703 / 37426117865).
+  Divergence trajectory 40 → 35 → 28 across the 067/068/070 bands and the
+  #117 composition respectively.
 - **Residual disposition (ruling3, all corpus-side):** R3-C — the eight
   auth-register class-C cases carry the operator-endorsed v2 limiter
   (`justified: true` + Retry-After pin; limiter STAYS; no pacing); R3-D3 —
   target-series day-window tolerates (capture-time anchor law); R3-D4 —
   Option-A identity tolerates (register `accessToken`, history
   `learnerId`/`attemptId`, auth-me seeded-identity fields). These land via
-  **T-MIG-071** (claimed by R4-api-b at `f0b7189`).
+  **T-MIG-071** (claim of record: R4-api-b at `f0b7189`; work heads
+  `t-mig-071/r4b` and `t-mig-071/r0desk` visible on origin — any double-work
+  resolves by the standing earliest-claim-wins / arbitration precedents).
+  The fresh 4-class taxonomy from run 37441112330 is the 071 band's working
+  target list.
 - **Composition of record:** T-MIG-072 (#117) — two ordered seed-pass tranches
   (empty-pinned pre-staging, staged-pinned post), 9 construction-only tranche
   markers, F-class key-canonicalization rider; selftest at the report head
@@ -104,12 +115,14 @@ report hash:
 
 ## 6. Outstanding before the cutover can execute
 
-1. **T-MIG-071** (in flight, R4-api-b): the R3-C/D3/D4 case amendments — closes
-   the last non-justified divergence class.
-2. **T-MIG-073 owner flip** (r1-contracts): #113 is merged-of-record; register
-   hygiene only.
-3. **Fresh live replay** at the cutover candidate SHA (post-072 composition;
-   needs NEON_BRANCH_CAPACITY unblocked — operator action).
+1. **T-MIG-071** (in flight, claim of record R4-api-b): the R3-C/D3/D4 case
+   amendments + the 4-class taxonomy from run 37441112330 — closes the last
+   non-justified divergence class.
+2. **~~T-MIG-073 owner flip~~ CLOSED**: the R0 desk flipped 073 DONE of record
+   (`6227b6a`, merge-of-record verified) — convergent with this lane's census.
+3. **Fresh live replay** at the cutover candidate SHA (post-#117 aggregate
+   exists: 149/177 @ e9ef235; the cutover gate still requires a re-run at the
+   final candidate SHA; NEON_BRANCH_CAPACITY unblock is an operator action).
 4. **§7 P3/P4**: supervised dual-run loops + operator sign-off (runbook §7
    template).
 5. **[POST-CUTOVER]** — watch window results, archive SHAs, final sign-off
