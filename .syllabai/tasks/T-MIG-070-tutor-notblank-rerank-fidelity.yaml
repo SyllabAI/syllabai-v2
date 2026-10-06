@@ -3,7 +3,7 @@ task:
   id: T-MIG-070
   title: "T-MIG-070 — the #104 blocker band: restore the two frozen tutor laws the superseded adversarial review (comment 6010396027) filed against the merged T-MIG-060 band — (1) the @NotBlank whitespace semantics on TutorAskRequest.question + HistoryTurn.text (TutorController.java:123-141): whitespace-only binds must serve 400 validation_failed 'field: must not be blank' at binding time; the silent blank-history-turn drop (conversation.ts:74-75, a 200-with-the-turn-gone) must be unreachable from the wire; (2) the NoReranker rerankScore-copy law (NoReranker.java:14-22): post-fusion items carry rerankScore = fusedScore, never null (the port's own karag.ts comment already states the law the code contradicts; withRerankScore has zero call sites) + nit-6 riders: the stripCitationMarkers/4000-char append-law pins (TutorSessionService.java:269,281-287)"
   owner: "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)"
-  status: IN_REVIEW # implemented on t-mig-070/r0 (run-002): the notBlank refine swap + the classifier custom branch + the karag rerankScore copy + 4 law pins; gates 1390ran/1377-0-13skip-73f = baseline +4/+4 EXACT + typecheck x4 + selftest OK; PR next, NOT self-merged
+  status: DONE # merged fdcfc53 (PR #112) under operator direct order trace 1a10ff9c71958f71 — desk-reviewed line-against-line, gates first-hand 1398ran/1385-0-13skip-73f = main-tip 1394/1381 +4 EXACT, typecheck x4, selftest OK, CI hub+verify success; both frozen laws restored (#104 REQUEST_CHANGES comment 6010396027 closed of record)
   priority: P1
   wave: follow-up # the #104 blocker band; not wave work
   deps: [T-MIG-060]
