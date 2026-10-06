@@ -2,6 +2,10 @@ name: ci
 
 on:
   push:
+    # T-MIG-076: this literal was corrupted to 'branches: ain]' at T-MIG-000
+    # (matches no real branch, so push-triggered verify+hub on main never fired -
+    # the plausible root cause of the recurring event-drop class, masked by the
+    # pull_request triggers); restored 2026-10-06 run-003 via the API channel
     branches: [main]
   pull_request:
 
