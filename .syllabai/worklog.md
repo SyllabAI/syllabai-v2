@@ -3928,3 +3928,19 @@ Work Log:
 
 Stage Summary:
 - R0 merge check IN of record (three merges + two closures since last round; queue zero, register clean of port work). Merged-tip gates 1385/0/13skip/5599 independently verified at the live tip. No r4b-actionable band exists; LANE IDLE — next actionable claim requires R0 to file new ids (069+ band free after the skip) or the case-owner lanes to open reviewable PRs.
+
+---
+
+Task ID: R0-OPERATOR-RULINGS (operator trace 1a1100c71ff48e05)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Operator answered the four-ruling menu verbatim — "1 - Option B / 2 - (a) / 3 - Tolerate / 4 - Option A" — file the rulings of record and route the executable work.
+
+Work Log:
+- Baseline re-synced fetch-first: local main 3849448 -> fdcfc53 (PR #112, T-MIG-070 intake); the nine unseen commits' worklog entries read in full BEFORE this append (append-only law); no rival ruling filing exists (R0-arbitration/ held ruling1/ruling2 only at write time).
+- RULING3 FILED: .syllabai/receipts/R0-arbitration/ruling3-operator-four-rulings.json — R3-C limiter STAYS (Option B: the run-7 auth-lane strip/align action CANCELLED; the 8 class-C cases get justified:true + expect.headers Retry-After pins per T-MIG-004 F-3; the no-pacing masking ban is standing law); R3-D2 composition = option (a) seq-position (empty-pinned tranche BEFORE the staging builders, staged-pinned after; re-pin/tolerate options REJECTED; resolves the 7 empty-state 200s + the topics census diff; F-class canonicalization becomes provable); R3-D3 wall-clock TOLERATE (daysToWindowStart/End -> tolerate[], justified:true, capture-time anchor, everything else stays byte-pinned); R3-D4 identity pins = Option A (register-learner += accessToken; history-after-submit += learnerId/attemptId; auth-me += the live-diff-verified seeded-identity fields; the staged-identity tranche is SHELVED).
+- Mechanics verified first-hand before filing: expect.headers exists in the runner Case schema (golden/runner.ts:34); checkHeaders (runner.ts:90-103) = case-insensitive names, EXACT values (so a rotating Retry-After needs the disclosed pattern-support rider); justified:true is the health.json GOLDEN_MASTER §4 convention; all 12 affected case files exist under golden/cases/.
+- CARDS FILED (both OPEN, unassigned, claim-in-first-commit): T-MIG-071 (the case-amendment band: R3-C pins + R3-D3 tolerate + R3-D4 amendments; rider scope for header pattern support ONLY if the live Retry-After rotates; forbidden: limiter changes, pacing, deletions, silent widening) and T-MIG-072 (the tooling half: two ordered tranches via the corpus seq machinery; deps [T-MIG-063]; forbidden: port-code contact, re-pinning, comparator widening; COW discipline per T-MIG-035/063). 069 deliberately left to w0a's soft-reserved CLA refile (c78ed9a).
+- Register delta of record (in the receipt): run-9 actions 5/7/10 DECIDED + the new wall-clock ruling routed; actions 1 (E-class P1), 3 (F, provable after 072), 6 (I), 8 (R1 re-pin), 11 (G) + the nba.ts nit STANDING unchanged.
+
+Stage Summary:
+- The four open operator items are RULED and ROUTED of record: no decision is pending on the register anymore — the executable residue is T-MIG-071 + T-MIG-072 (both OPEN for the lanes) plus the standing case-owner/tooling items. Projected clearing unchanged: 177/177 reachable, zero deletions, zero comparator widenings. Desk IDLE; suggestion: the lanes claim 071/072 per earliest-claim-wins, or the operator routes them explicitly.
