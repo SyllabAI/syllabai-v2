@@ -38,8 +38,26 @@
  * SERVICE law — they live in services/classroom next to their pin tests,
  * per the parseFlashcardRating precedent (services/learner-me).
  * OWNED BY T-MIG-052 (r9-hubx) — id ratification requested at PR review.
+ *
+ * T-MIG-056 AMENDMENT (r0 lane, the registered follow-up on the 052 DONE
+ * card; adopted from the closed #90 branch's disclosed contracts amendment
+ * with prior-art credit): the four request schemas swap bare `.min(1)` for
+ * the auth.ts `notBlank` refine — the @NotBlank-exact port. jakarta
+ * @NotBlank rejects null, "" AND whitespace-only values at @Valid (BEFORE
+ * the controller body), so the frozen wire answers 400 validation_failed
+ * "field: must not be blank"; .min(1) let "   " through to the service's
+ * trim-blank 400 (bad_request envelope) — a status-correct but
+ * envelope-divergent shortcut. Chain order per the auth.ts zod-3 note:
+ * max FIRST, refine LAST (zod skips refinements when an earlier check
+ * fails; jakarta evaluates all constraints and rejects on any violation —
+ * accept/reject sets match). `category` widens to nullish(): Jackson binds
+ * an explicit JSON null the same as an absent field, and
+ * Announcement.Category.parse(null) -> GENERAL — both are the frozen 201.
+ * The t1 service verbatim 400s stay as the controller-law defense (frozen
+ * dead-code through @Valid; pinned at the service level by tranche-1).
  */
 import { z } from "zod";
+import { notBlank } from "./auth";
 
 // ── teacher side ─────────────────────────────────────────────────────────────
 
@@ -138,23 +156,23 @@ export type LearnerRosterView = z.infer<typeof learnerRosterViewSchema>;
 
 // ── request bodies (TeacherClassController :265-290 — constraints verbatim) ──
 
-/** POST /api/v1/teacher/classes body — CreateRequest. */
+/** POST /api/v1/teacher/classes body — CreateRequest (@NotBlank @Size 64/120/120). */
 export const classCreateRequestSchema = z.object({
-  courseSlug: z.string().min(1).max(64),
-  courseLabel: z.string().min(1).max(120),
-  name: z.string().min(1).max(120),
+  courseSlug: z.string().max(64).refine(notBlank("must not be blank"), "must not be blank"),
+  courseLabel: z.string().max(120).refine(notBlank("must not be blank"), "must not be blank"),
+  name: z.string().max(120).refine(notBlank("must not be blank"), "must not be blank"),
 });
 export type ClassCreateRequest = z.infer<typeof classCreateRequestSchema>;
 
 /** POST /api/v1/teacher/classes/{id}/status body — StatusRequest. */
 export const classStatusRequestSchema = z.object({
-  status: z.string().min(1),
+  status: z.string().refine(notBlank("must not be blank"), "must not be blank"),
 });
 export type ClassStatusRequest = z.infer<typeof classStatusRequestSchema>;
 
-/** POST /api/v1/teacher/classes/{id}/members body — EnrollRequest. */
+/** POST /api/v1/teacher/classes/{id}/members body — EnrollRequest (@NotBlank @Size(max 254)). */
 export const classEnrollRequestSchema = z.object({
-  email: z.string().min(1).max(254),
+  email: z.string().max(254).refine(notBlank("must not be blank"), "must not be blank"),
 });
 export type ClassEnrollRequest = z.infer<typeof classEnrollRequestSchema>;
 
@@ -165,9 +183,9 @@ export type ClassEnrollRequest = z.infer<typeof classEnrollRequestSchema>;
  * (the frozen verbatim message), not schema law.
  */
 export const classPublishRequestSchema = z.object({
-  title: z.string().min(1).max(200),
-  body: z.string().min(1),
-  category: z.string().max(20).optional(),
+  title: z.string().max(200).refine(notBlank("must not be blank"), "must not be blank"),
+  body: z.string().refine(notBlank("must not be blank"), "must not be blank"),
+  category: z.string().max(20).nullish(),
 });
 export type ClassPublishRequest = z.infer<typeof classPublishRequestSchema>;
 
