@@ -1,0 +1,106 @@
+version: 1
+task:
+  id: T-MIG-062
+  title: "Wave-6 research calibration — the /api/v1/research/learner-model/calibration read surface (ResearchCalibrationController 2.4KB, ONE endpoint + LearnerModelCalibrationService 515 frozen lines): Brier/ECE/ten equal-width bins over the BKT_UPDATED telemetry stream, per-format segments (C4 protocol §2), per-gap-band segments, k-anonymity per ADR-036 (MIN_REPORTABLE_LEARNERS=5, learner-unit cells, counts stay / outcomes go); deterministic read-only aggregation — zero LLM deps"
+  owner: "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a) — operator directive trace 1a10f73d46ea053d 'Check if R0 has merged or not. If not, review+merge yourself and continue working': R0 merge-of-record verified IN (#92 e82f5d5 057 + #93 9ba1c39 056 via job 438940; #94 1aea8bc 058 + #95 af33b6f 061-t1 via the manual sweep trace 1a10f776069349cd — open queue ZERO at 04:35Z census), so 'continue working' executes the standing claim directive"
+  status: DONE # MERGED OF RECORD: PR #102 -> main as ea8f951 (2026-10-06T05:37:35Z, desk sweep). Evidence chain: claim 1d8a086 -> run-002 b4af2cb..018736b (gates 1163/0/13skip/3965 EXACT vs the claim-time 1144/3288->3485 baseline, +19 tests / +480 expects / +2 files, typecheck x4, selftest OK) -> intakes 70b9a95/87c0874/30ab3d5/eeef7e4/a17a48c/1ee92e9 (append-only worklog unions, zero markers) -> CI verify+hub GREEN at the final head 1ee92e9. Authored by R4-api-b -> never self-merged; merged by the desk. Wave-6: 061 t1+t2 landed, 062 LANDED, 060 in flight (#104) — id ratified by merge
+  claimed_at: "2026-10-06T04:42:02Z"
+  priority: P1 # Wave-6 main-line band; the plan binds this port to ADR-036 k-anonymity explicitly (MIGRATION_PLAN :157)
+  wave: 6
+  deps: [T-MIG-002, T-MIG-041] # telemetry_events baseline table (002); learner params context (041 read-port constants — the Bkt toParams resolver is adopted INTO this band's module, not the learner files)
+  id_order_disclosure: >
+    Wave-6 is T-MIG-060..066 per MIGRATION_PLAN :155; 060 = w0a's in-flight
+    KaRAG fence (branch t-mig-060/w0a @ 839a0a7, no PR yet), 061 = r9-hubx's
+    intervention runs (t1 landed af33b6f, t2 routes pending on THEIR card).
+    062 is the next free Wave-6 id — research calibration, the first
+    SELF-CONTAINED band after 061 (CLA hard-depends on 060's KaRAG; tutor
+    sessions depend on KaRAG + SSE; OCR is a 326KB band of its own; LLM
+    admin drags the provider-chain plumbing). No 062 refs anywhere: zero
+    origin heads (ls-remote 04:35Z window), zero worklog mentions, zero cards.
+  execution_record: >
+    FROZEN-LAW CATALOG (syllabai-core @ 6cad6ef, fetched first-hand
+    line-against-line at claim):
+    - ResearchCalibrationController.java (:1-40): GET
+      /api/v1/research/learner-model/calibration?nodeId=<uuid optional> —
+      SecurityConfig.java:90 hasAnyRole('TEACHER','ADMIN') on
+      /api/v1/research/** + method-level @PreAuthorize re-gate (defense in
+      depth); nodeId @RequestParam(required=false) UUID — unparseable →
+      MethodArgumentTypeMismatch → 400 bad_request "malformed request"
+      (the :167-172 shared law).
+    - LearnerModelCalibrationService.java (515 lines, read-only
+      @Transactional): ONE ordered fetch
+      events.findByTypeOrderByOccurredAtAsc(BKT_UPDATED), single-pass
+      accumulation (C4 §6 "group rows in the same pass"); paging is a
+      named follow-up, not now.
+    - ROW CONTRACT: payload.decayedPrior (double, C1 scored forecast — the
+      computed never-persisted pre-attempt estimate, NOT the stored anchor);
+      payload.correctness (boolean) — missing/unparseable EITHER, or latent
+      outside [0,1] → skippedRows++ (counted globally, never attributed);
+      nodeId filter compares payload.nodeId string-equal to the filter —
+      filtered rows land in NEITHER bucket ("filtered, not malformed").
+    - EMISSION MAPPING (C2): predicted = latent*(1-slip) +
+      (1-latent)*guess_resolved — slip GLOBAL 0.1 (ADR-033 declined
+      format-aware slip); guess per format through the SAME resolver the
+      update path uses: LearnerProperties.Bkt.toParams(type, optionCount) —
+      MCQ_SINGLE && optionCount>=2 → 1.0/optionCount; MCQ_SINGLE else →
+      guess 0.25; SHORT_ANSWER → shortAnswerGuess 0.05; STRUCTURED →
+      structuredGuess 0.01; null/blank/unknown → 0.25; then
+      min(resolved, 1-slip-1e-9) clamp ("degrade, never invert").
+      Bkt compact-ctor normalization: any param <=0 falls back to paper
+      (0.1/0.1/0.25/0.1 + 0.05 + 0.01).
+    - BINS: ten equal-width over [0,1]: bin = min(9, max(0, floor(latent*10)));
+      lowerBound i/10.0, upperBound (i+1)/10.0. Three states: EMPTY (count 0
+      → all means 0.0 honest zeros, suppressed=false), SUPPRESSED (count>0,
+      distinct binLearners < k → all means null, traffic visible), REPORTABLE.
+    - K-ANONYMITY (C7 resolution, ADR-036 BINDS THE PORT): k=5
+      MIN_REPORTABLE_LEARNERS as a CODE CONSTANT (deliberately not
+      configuration); unit = DISTINCT learnerId per cell (pooled headline,
+      pooled bins, each segment, each bin-within-segment — one learner can
+      stack rows in one bin, so row floors would lie); suppressed cells
+      render statistics null with counts visible everywhere (sampleCount,
+      learnerCount, bin counts, skippedRows); segment aggregate Brier/ECE
+      still INCLUDE suppressed bins' contributions (no selection bias);
+      empty cells are distinct from suppressed (honest zeros vs nulls).
+    - FORMAT SEGMENTS (C4 §2, fixed render order): MCQ_SINGLE(2-3),
+      MCQ_SINGLE(4), MCQ_SINGLE(5+), MCQ_SINGLE(malformed) [optionCount<2],
+      SHORT_ANSWER, STRUCTURED, UNTYPED (null/blank/unrecognized — priced
+      identically to the paper constant, so the fold never mixes pricing);
+      segments partition the contract rows; pooled sampleCount = Σ segment
+      counts; empty segments render with honest zeros.
+    - GAP SEGMENTS (C4 §6 item 4, fixed render order): "0" / "1-30" /
+      "31-90" / "91-365" / "366+" / UNKNOWN (missing/unparseable/negative —
+      defensive tail: the publisher always writes gapDays, so a populated
+      UNKNOWN is a payload-contract finding); gapDays parses Number OR
+      numeric-string (longValue posture); zero-gap = the bit-identity leg
+      between decayed and raw priors; each gap segment carries meanAnchor
+      (mean raw priorMastery over rows carrying one; 0.0 when none).
+    - STATISTICS: Brier = mean (predicted-outcome)^2 on the EMISSION-MAPPED
+      prediction; ECE = Σ (binCount/n)·|meanPredicted - observed| over
+      non-empty bins (same accumulation reused per segment); bin
+      calibrationError SIGNED meanPredicted - observedAccuracy; meanAnchor
+      excludes rows without an anchor (anchorN); malformed-row skip precedes
+      the nodeId filter in the row walk.
+    - WIRE: CalibrationReport {sampleCount, skippedRows, brier, ece, bins[10],
+      segments[7], gapSegments[6], learnerCount, suppressed} — Jackson
+      records; Doubles null when suppressed; learnerCount is the honest
+      quantifier of the node-outcomes-not-iid-learners caveat (descriptive
+      instrument, no confidence intervals — stated in the frozen javadoc).
+    - DEFENSIVE PARSERS: doubleValue/longValue accept Number or
+      non-blank-numeric-String, else null (Jackson jsonb payloads may carry
+      either) — ported verbatim.
+    DB BASELINE VERIFIED: packages/db/src/schema/schema.ts :133
+    telemetry_events (payload jsonb, learner_id FK, ck_telemetry_type
+    includes 'BKT_UPDATED', ix_telemetry_learner_time + ix_telemetry_type);
+    :637 experiments / :652 model_versions exist but are NOT this band's
+    surface (the model_versions registry path is tranche-3 per the 041
+    note) — the read needs ONLY telemetry_events.
+    PORT SHAPE (run-002): contracts research.ts (report/segment/bin schemas
+    + 7 pins) + services/research (the 515-line port with its own SqlFn
+    structural seam; the toParams resolver adopted INSIDE the module —
+    zero learner-file touches) + routes/research (authz shell TEACHER/ADMIN
+    FIRST + nodeId uuid guard 400 + the single GET) + index.ts mount
+    (OUT-OF-FENCE one-liner, 010/020/021/031/032/041/052 precedent) +
+    route+service pins (authz shells, honest empty report, suppression
+    laws at cell and bin granularity, segment partition invariants, gap
+    bands, nodeId filter, malformed/legacy skip counting, defensive
+    parsers).

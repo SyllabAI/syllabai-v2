@@ -55,7 +55,9 @@ import { buildSmeRouters } from "./routes/sme";
 import { buildInterventionRouters } from "./routes/intervention";
 import { buildLearnerRouters } from "./routes/learner";
 import { buildClassroomRouters } from "./routes/classroom";
+import { buildResearchRouters } from "./routes/research";
 import { buildLearnerMeRouters } from "./routes/learnerme";
+import { buildTutorRouters } from "./routes/tutor";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
@@ -73,9 +75,11 @@ const testbuilder = buildTestBuilderRouters();
 const answerInput = buildAnswerInputRouters();
 const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
+const tutor = buildTutorRouters();
 const sme = buildSmeRouters();
 const intervention = buildInterventionRouters();
 const classroom = buildClassroomRouters();
+const research = buildResearchRouters();
 
 const app = new Hono();
 
@@ -323,6 +327,31 @@ app.route("/api/v1/learners/me", learnerMe.learnerMeRoute);
 // R0 can ratify or lift them out at review.
 app.route("/api/v1/admin/question-bank", sme.adminRoute);
 
+// Tutor routers (T-MIG-060 tranche 2 — Wave 6). Path parity with the frozen
+// core: TutorController under /api/v1/tutor (POST /ask + the SSE twin
+// POST /ask/stream — the R-VERCEL W6 spike carrier, streamed as a
+// ReadableStream response with the idle-timeout + client-disconnect stall
+// posture carried from the frozen controller) and TutorSessionController
+// under /api/v1/tutor/sessions (the §22 CRUD). Both fall under the frozen
+// anyRequest().authenticated() rule (SecurityConfig.java:91 — no specific
+// matchers for these prefixes) and each router owns its authz internally;
+// the R8 llm:ask tier (T-MIG-016's filter) already admits /ask + /ask/stream.
+// The paper-question fail-open guard is WIRED (the tranche-1b port — no
+// notPaperAsk default anywhere); the LLM provider seam is DORMANT (the
+// smartmark posture — generation-reaching asks serve the honest 503
+// tutor_unavailable while every deterministic law stays live).
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-060, R0 ratification requested):
+// T-MIG-060's scope.allowed covers routes/{tutor,tutorsessions}.ts,
+// services/tutor/**, test/tutor/**, packages/contracts/src/tutor.ts — NOT
+// this file. The imports + construction + two mount lines + this comment
+// are the minimal app-level wiring, shipped as a separate commit per the
+// T-MIG-010/020/021/030/032/033/041/043 precedent so R0 can ratify or lift
+// them out at review. The sessions router mounts BEFORE the ask router so
+// the /latest-never-captured-by-/:sessionId law reads top-down.
+app.route("/api/v1/tutor/sessions", tutor.tutorSessionsRoute);
+app.route("/api/v1/tutor", tutor.tutorRoute);
+
 // Classroom/teacher foundation routers (T-MIG-052 tranche 2 — Wave 5). Path
 // parity with the frozen core: TeacherClassController under /api/v1/teacher
 // /classes (8 endpoints — TEACHER/ADMIN via SecurityConfig.java:87 + the M5
@@ -367,6 +396,21 @@ app.route("/api/v1/teacher/learners", classroom.teacherRosterRoute);
 // T-MIG-010/020/021/030/032/033/034/041/043/052t2 precedent so R0 can
 // ratify or lift them out at review.
 app.route("/api/v1/learners/me/intervention-runs", intervention.interventionRoute);
+
+// Research calibration router (T-MIG-062 — Wave 6). Path parity with the
+// frozen core: ResearchCalibrationController GET /api/v1/research/learner-
+// model/calibration (SecurityConfig.java:88-90 hasAnyRole('TEACHER','ADMIN')
+// on /api/v1/research/** — the router owns its authz internally, Boot
+// 401/403 shells before any query). The /api/v1/* fallback below stays the
+// 404-after-auth path for NO router claimed.
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-062, R0 ratification requested):
+// T-MIG-062's scope covers routes/research/**, services/research/**,
+// test/research/**, packages/contracts/src/research.* — NOT this file. The
+// mount line + import + construction + this comment are the minimal
+// app-level wiring, shipped per the 010/020/021/031/032/041/052/061
+// precedent so R0 can ratify or lift them out at review.
+app.route("/api/v1/research", research.researchRoute);
 
 // anyRequest().authenticated() parity for paths NO router claimed
 // (SecurityConfig.java:91): anonymous callers get the 401 Boot-shaped body;

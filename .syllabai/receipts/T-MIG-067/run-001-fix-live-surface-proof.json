@@ -1,0 +1,39 @@
+{
+  "task_id": "T-MIG-067",
+  "kind": "RUN-001: the RICH-200-D port fix landed + live surface proof on a disposable seed COW (the two surfaces no longer 500; topics byte-exact vs the frozen capture; families multiset-exact with a corpus-class tie-order finding filed as RICH-200-E)",
+  "run": "001",
+  "timestamp": "2026-10-06T07:05:00Z",
+  "agent": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "authority": "operator directive trace 1a10fc127a2cec35 'claim RICH-200-D' — the T-MIG-063 run-004 filing (PORT DEFECT P1, w3-questions port lane)",
+  "the_fix": {
+    "id": "R-067-A",
+    "defect": "two phantom columns in the questions module's SQL (the baseline schema is correct; the port wrote column names that do not exist — same class as T-MIG-050): (1) servable.ts optionsFor selected o.text but question_options carries option_text (schema.ts:170) — the boot log of replay 37418673048 carries '42703: column o.text does not exist' TWICE, one per red case; (2) taxonomy.ts PART_OF parent census selected source_id/target_id but knowledge_edges carries source_node_id/target_node_id (schema.ts:84-85) — LATENT: fires only after (1) is fixed because /topics runs the census after allActive (whose optionsFor 42703'd first); verified as the complete defect surface by a claim-time column audit of every statement in the module (questions, question_versions, question_parts, question_spec_points, knowledge_nodes incl. applicability, question_topics, exam_papers.validation_state — all real).",
+    "fix": "servable.ts: o.text → o.option_text (OptionRow row-shape field renamed; the single consumption point maps text: o.option_text — the WIRE option shape {id,label,text} is UNCHANGED); taxonomy.ts: source_id/target_id → source_node_id/target_node_id in the census SQL + the two JS row reads (the same names the file's own subtreeIds CTE already used correctly). Zero contract/schema/workflow/corpus contact.",
+    "stub_blindness_note": "the fake-SQL router dispatches on query text and returns fixture rows verbatim — it cannot validate column names; the fixtures now carry the real column keys (disclosed fence amendment: helpers.ts option rows, taxonomy.test.ts + routes.test.ts edge rows)"
+  },
+  "gates": {
+    "typecheck": "bun install --frozen-lockfile + root typecheck (contracts/shared/db/api) — exit 0",
+    "tests": "root suite 1226 pass / 0 fail / 13 skip / 4239 expect (67 files) — zero regressions",
+    "questions_family": "apps/api/test/questions 53 pass / 0 fail (5 files)",
+    "harness_selftest": "golden/runner.ts --selftest OK; ci-replay.ts --selftest OK"
+  },
+  "live_surface_proof": {
+    "instrument": "disposable Neon COW seed branch br-frosty-butterfly-a576r65e (parent br-muddy-bar-a5huwldd, project billowing-cherry-15418366) — apply-reset.ts (topological wipe to the empty posture) → golden/tools/seed-t51-rich200.ts --stage accounts (the harness's own spawn: t51-seed.sql = the V2/V6/V7/V63 frozen-boot data rows + the accounts lifecycle) → bun golden/tools/boot-with-timeout.ts (SYLLABAI_JWT_SECRET = the workflow's synthetic replay constant) → honest-surface GETs with the staging's STUDENT_TOKEN (role-faithful: both cases are student-200)",
+    "script_of_record": "/home/z/my-project/scripts/t067-surface-proof.sh (outside the repo; untracked scratch, never committed)",
+    "results": [
+      "GET /api/v1/questions/families → 200 (was 500 internal_error): JSON array, n=8, key multiset IDENTICAL to the golden capture; deep-equal FAILS only on tie order (live [..-4, ..-1, ..-2, ..-5, ..-3, ..-6, ..-7, ..-8] vs pinned [..-1, ..-4, ..-2, ..-5, ..-3, ..-6, ..-7, ..-8])",
+      "GET /api/v1/questions/topics → 200 (was 500 internal_error): DEEP-EQUALS the frozen capture byte-exactly (3 sections, full census envelope) — the taxonomy law port is proven on live seeded data",
+      "GET /api/v1/questions (plain list, transitively the same projection chain, no authed corpus case exists) → 200"
+    ],
+    "residue": "both disposable branches dropped + 404-verified (neon-branch.ts drop: 'dropped + 404-verified: seed br-frosty-butterfly-a576r65e' + prod br-jolly-paper-a56f8e73); console-mirror fallback disclosed per T-MIG-046; zero standing-branch contact"
+  },
+  "new_finding_filed": {
+    "id": "RICH-200-E",
+    "class": "CAPTURE-PINNED ENVIRONMENT NONDETERMINISM (case-owner lane) — w3-questions-families-student-200 body tie order",
+    "mechanism": "the 8 captured families are all non-corpus rows (SEED-WCH11 refs): under the frozen (source, qNum, input-order) serving law they share source=U+FFFF and qNum=0, so their order is the findAllActive SQL's 'order by difficulty' TIE order — which has no deterministic key in the frozen law (no secondary ORDER BY: gold is not uuid/ref-ordered either). The capture pinned the capture-host's Postgres heap order; the dump (t51-seed.sql) inserts 001..008 in numeric order; Neon's heap yields yet another order (the single observed swap: ..-4 before ..-1 at difficulty 2 — multiset identical). The frozen core replayed on a different host would flip the SAME way — this is not a port defect and cannot be carried by the port lane without diverging from the frozen law.",
+    "options_for_R0R6": "(a) declare the families array unordered in the case's tolerate (the T-MIG-024 declared-unordered multiset the comparator already proves in selftest); (b) re-pin the case on the standing instrument (Neon posture) accepting the instrument's own tie order; (c) leave red and file as a known corpus artifact. Honest red until ruled; zero silent widening applied.",
+    "note": "RICH-200-D's two cases stay RED at the union gate until the case-owner ruling (a) or (b) lands: topics would pass today (byte-exact), families passes status+multiset only. The 500-class claim of RICH-200-D — 'they EXECUTE and CRASH' — is resolved by R-067-A regardless of the ruling."
+  },
+  "next": "PR (T-MIG-067: card + fix + fixtures + receipt + worklog) → merge via the operator's standing delegated authority with disclosure comment → post-merge neon-replay dispatch on the merge sha → poll → union receipt of record → RICH-200-D flip to CLOSED-with-hand-off (E to the case-owner lane).",
+  "register_after": "RICH-200-A CLOSED; RICH-200-B CLOSED; RICH-200-C OPEN (case-owner lane, 7 empty-state 200s); RICH-200-D RESOLVED-port-side by R-067-A (closure formalizes at the next union); RICH-200-E OPEN (case-owner lane, families tie order — filed by this run); C-class limiter parity still OPEN; B-class remainder + third posture still OPEN (tooling + operator sign-off); D/E/F/G/I classes unchanged"
+}

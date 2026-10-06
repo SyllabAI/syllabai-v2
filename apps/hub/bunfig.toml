@@ -1,0 +1,22 @@
+# T-MIG-065 — hub scoped-test-runner hygiene (the R0-ROUND-6C flagged
+# housekeeping, landed by operator trace 1a10f72fc83f0cbd).
+#
+# THE LAW: bun test inside apps/hub discovers tests ONLY under src/ —
+# the Playwright specs under tests/e2e/** belong to the Playwright runner
+# exclusively (bun run test:e2e). Without this scope, bare `bun test`
+# loads every e2e spec with bun's runner and throws 5 errors of the class
+# "Playwright Test did not expect test() to be called here" (reproduced on
+# main 30819de: 41 tests / 8 files / 36 pass / 5 fail / 5 errors -> with
+# this file: 36 tests / 3 files / 36 pass / 0 fail / 0 errors, exit 0).
+#
+# Scope notes:
+#   - bunfig.toml is read from the CWD of the bun invocation, so the ROOT
+#     suite (bun test apps/api packages — the CI verify command) and the
+#     other workspaces are unaffected.
+#   - The hub CI gate remains build:hub (T-MIG-037); this file changes no
+#     build or runtime behavior.
+#   - Future hub bun tests belong under src/**; e2e specs stay under
+#     tests/e2e/** and are never run by bun's runner.
+
+[test]
+root = "src"

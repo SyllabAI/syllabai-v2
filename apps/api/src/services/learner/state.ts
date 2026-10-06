@@ -35,109 +35,38 @@
  */
 import type { SqlFn } from "./sql";
 
-// ── engine parameters (frozen defaults; the model_versions registry path is
-//    tranche-3 — LearnerProperties normalization: <=0 falls back to paper) ──
+// ── engine parameters + the read-time math: CANONICAL OWNER (T-MIG-066) ────
+//
+// The decay/BDT pure math and the engine-parameter defaults moved verbatim to
+// the canonical `services/learner-model/decay.ts` (the 043 consolidation
+// band — one owner for the laws the NBA engine used to duplicate as the
+// NBA_-prefixed copies). This module re-exports them so every tranche-1
+// import path (the barrel's `export * from "./state"`) keeps its surface.
 
-/** DecayParams.paperDefaults() — mirrors contracts/src/decay.ts (T-MIG-038 #60). */
-export interface LearnerDecayParams {
-  tauLowDays: number; // 30
-  tauMidDays: number; // 90
-  tauHighDays: number; // 365
-  lowBandCeiling: number; // 0.45
-  highBandFloor: number; // 0.8
-  floor: number; // 0.1 (= BKT L0)
-  reviewBelow: number; // 0.6
-}
+import {
+  bandOf,
+  decayedMastery,
+  relaxedToPrior,
+  type LearnerBdtParams,
+  type LearnerDecayParams,
+} from "../learner-model/decay";
+import { courseExamTargets, type CourseExamTargetView } from "../learner-model/exam-target-reader";
 
-/** LearnerProperties.Bdt normalization (LearnerProperties.java, Bdt record). */
-export interface LearnerBdtParams {
-  prior: number; // 0.3
-  selectIfHeld: number; // 0.7 (unused on the read path — write-path BDT)
-  selectIfNotHeld: number; // 0.1 (unused on the read path)
-  activeThreshold: number; // 0.5
-  stalenessTauDays: number; // 180
-}
+const DAY_MS = 86_400_000; // the tutor-window read's own implementation const
 
-export const LEARNER_DECAY_PAPER_DEFAULTS: LearnerDecayParams = {
-  tauLowDays: 30,
-  tauMidDays: 90,
-  tauHighDays: 365,
-  lowBandCeiling: 0.45,
-  highBandFloor: 0.8,
-  floor: 0.1,
-  reviewBelow: 0.6,
-};
-
-export const LEARNER_BDT_PAPER_DEFAULTS: LearnerBdtParams = {
-  prior: 0.3,
-  selectIfHeld: 0.7,
-  selectIfNotHeld: 0.1,
-  activeThreshold: 0.5,
-  stalenessTauDays: 180,
-};
-
-const DAY_MS = 86_400_000;
-
-function clamp01(v: number): number {
-  return Math.max(0.0, Math.min(1.0, v));
-}
-
-/** DecayParams.tauFor (:59-68) — the band the given mastery falls into. */
-function tauFor(mastery: number, p: LearnerDecayParams): number {
-  if (mastery < p.lowBandCeiling) return p.tauLowDays;
-  if (mastery < p.highBandFloor) return p.tauMidDays;
-  return p.tauHighDays;
-}
-
-/** DecayParams.bandOf (:58-68): < lowBandCeiling -> LOW; < highBandFloor -> DEVELOPING; else SECURE. */
-export function bandOf(mastery: number, p: LearnerDecayParams): "LOW" | "DEVELOPING" | "SECURE" {
-  if (mastery < p.lowBandCeiling) return "LOW";
-  if (mastery < p.highBandFloor) return "DEVELOPING";
-  return "SECURE";
-}
-
-/**
- * EbbinghausDecayService.decayed (:29-40): P(t) = P0 * e^(-t/tau); tau frozen
- * on the STORED P0 (ADR-031 — "callers MUST pass the stored post-practice
- * posterior"); the result never drops below the floor; recomputed from the
- * anchor on every call and never persisted.
- */
-export function decayedMastery(
-  mastery: number,
-  lastPracticedAt: Date,
-  now: Date,
-  p: LearnerDecayParams,
-): number {
-  if (!(now.getTime() > lastPracticedAt.getTime())) return clamp01(mastery);
-  const elapsedMs = now.getTime() - lastPracticedAt.getTime();
-  const tauMs = tauFor(mastery, p) * DAY_MS;
-  const decayed = mastery * Math.exp(-elapsedMs / tauMs);
-  return Math.max(p.floor, clamp01(decayed));
-}
-
-/**
- * BdtEngine.relaxedToPrior: effective = prior + (P_e - prior) * e^(-age/tau_s);
- * fresh or clock-skewed evidence returns the full posterior; ns precision in
- * the core (see the precision note above).
- */
-export function relaxedToPrior(
-  posterior: number,
-  prior: number,
-  lastEvidenceAt: Date,
-  now: Date,
-  stalenessTauDays: number,
-): number {
-  if (stalenessTauDays <= 0) {
-    throw new Error("staleness tau must be positive, got " + stalenessTauDays);
-  }
-  const p = clamp01(posterior);
-  const base = clamp01(prior);
-  if (!(now.getTime() > lastEvidenceAt.getTime())) return p;
-  const ageMs = now.getTime() - lastEvidenceAt.getTime();
-  const tauMs = stalenessTauDays * DAY_MS;
-  const relaxed = base + (p - base) * Math.exp(-ageMs / tauMs);
-  return clamp01(relaxed);
-}
+export {
+  bandOf,
+  decayedMastery,
+  relaxedToPrior,
+  LEARNER_BDT_PAPER_DEFAULTS,
+  LEARNER_DECAY_PAPER_DEFAULTS,
+  type LearnerBdtParams,
+  type LearnerDecayParams,
+} from "../learner-model/decay";
+export {
+  courseExamTargets,
+  type CourseExamTargetView,
+} from "../learner-model/exam-target-reader";
 
 // ── row shapes (snake_case columns as the selects read them) ──────────────
 
@@ -258,21 +187,6 @@ export interface NoteVoteView {
   subtopicCode: string | null;
   nodeId: string;
   occurredAt: Date;
-}
-
-export interface CourseExamTargetView {
-  courseSlug: string;
-  seriesId: string;
-  seriesCode: string;
-  label: string;
-  windowStart: string;
-  windowEnd: string;
-  entryDeadline: string | null;
-  resultsDate: string | null;
-  estimated: boolean;
-  daysToWindowStart: number;
-  daysToWindowEnd: number;
-  entryDeadlinePassed: boolean;
 }
 
 export interface LearnerStateView {
@@ -531,42 +445,6 @@ export function groupEngagementSummary(
     });
   }
   return views;
-}
-
-/**
- * ExamTargetReader.targetsFor: declared enrolments (target_series_id NOT NULL)
- * -> batched series lookup -> rows whose series vanished are FILTERED (the
- * frozen code drops them via containsKey) -> countdowns derived on the read
- * from the caller's `today` (never stored, ADR-031). Days are WHOLE days
- * (ChronoUnit.DAYS.between) — negative when the window already opened.
- */
-export function courseExamTargets(
-  declared: CourseEnrolmentRow[],
-  seriesById: Map<string, ExamSeriesRow>,
-  today: string,
-): CourseExamTargetView[] {
-  const todayMs = Date.parse(today + "T00:00:00Z");
-  const daysBetween = (from: string): number =>
-    Math.round((Date.parse(from + "T00:00:00Z") - todayMs) / DAY_MS);
-  return declared
-    .filter((e) => seriesById.has(e.targetSeriesId))
-    .map((e) => {
-      const s = seriesById.get(e.targetSeriesId)!;
-      return {
-        courseSlug: e.courseSlug,
-        seriesId: s.id,
-        seriesCode: s.seriesCode,
-        label: s.label,
-        windowStart: s.windowStart,
-        windowEnd: s.windowEnd,
-        entryDeadline: s.entryDeadline,
-        resultsDate: s.resultsDate,
-        estimated: s.estimated,
-        daysToWindowStart: daysBetween(s.windowStart),
-        daysToWindowEnd: daysBetween(s.windowEnd),
-        entryDeadlinePassed: s.entryDeadline != null && Date.parse(s.entryDeadline + "T00:00:00Z") < todayMs,
-      };
-    });
 }
 
 // ── the state composite (LearnerStateController.state :84-177, leg for leg) ──
