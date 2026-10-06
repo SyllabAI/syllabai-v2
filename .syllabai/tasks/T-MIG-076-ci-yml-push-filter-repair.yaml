@@ -2,8 +2,8 @@ version: 1
 task:
   id: T-MIG-076
   title: "T-MIG-076 — repair the corrupted ci.yml push trigger (T-MIG-071 run-002 post-merge review F-8; the round-22 desk's flagged anomaly confirmed first-hand): .github/workflows/ci.yml line 5 reads 'branches: ain]' — pushes to main effectively NEVER match the filter, the plausible root cause of the recurring 'event-drop' class (missing check-runs on push heads; the pull_request triggers masked it). Fix: restore 'branches: [main]'; disclose the event-drop correlation; verify a push to main triggers verify+hub"
-  owner: "OPEN — unassigned; claim-in-first-commit per AGENT_COORDINATION §2"
-  status: OPEN # filed by the R0-integrator desk 2026-10-06 (review F-8)
+  owner: "main (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c) — takeover-claim under operator trace 1a111a0b9b917891 'Proceed, we have to finish the migration' (this card = the desk-filed operator-side patch; prior branch claim 34c8909 @ 11:20:00Z t-mig-076/r0 lapsed — its fix commit left ci.yml corrupted, lane self-filed guard-blocked 8cc28e8, BLOCKED-of-record rounds 23–25, card OPEN/unassigned on main; sandbox guard verified ABSENT in this fresh environment)"
+  status: CLAIMED # takeover-claim run-002 on t-mig-076/r0b off 27a95f0 @ 14:36:32Z — disclosed takeover, not a silent re-claim; the one-line trigger repair ('branches: ain]' -> 'branches: [main]') next as run-003
   priority: P2
   wave: harness-hygiene
   deps: []
