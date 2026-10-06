@@ -1,0 +1,14 @@
+{
+  "task": "T-MIG-065",
+  "run": "002-scoped-runner",
+  "at": "2026-10-06T05:08:00Z",
+  "change": "apps/hub/bunfig.toml [test] root=\"src\" + law comment (config-only; no other apps/hub path touched)",
+  "gates": {
+    "hub_scoped": { "command": "cd apps/hub && bun test", "before": { "tests": 41, "files": 8, "pass": 36, "fail": 5, "errors": 5 }, "after": { "tests": 36, "files": 3, "pass": 36, "fail": 0, "errors": 0, "exit": 0 } },
+    "root_suite": { "command": "bun test apps/api packages", "ran": 1164, "files": 63, "pass": 1151, "fail": 0, "skip": 13, "expect": 3513, "delta_vs_main": "unchanged" },
+    "typecheck_x4": "exit 0",
+    "golden_selftest": "OK"
+  },
+  "boundary": "zero golden/**, packages/**, apps/api/** contact; zero other apps/hub paths; ci.yml untouched",
+  "status": "IN_REVIEW — PR filed; authors-never-self-merge (handed to the merge desk)"
+}

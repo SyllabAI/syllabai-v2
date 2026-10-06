@@ -3131,3 +3131,16 @@ Work Log:
 
 Stage Summary:
 - T-MIG-065 CLAIMED on branch t-mig-065/r0 @ 30819de (card + run-001-claim.json + this entry = the claim commit). Implementation next: the bunfig + IN_REVIEW + run-002 receipt. r0 | claimed the hub scoped-runner hygiene, reproducing the 5-error class and verifying the [test] root scoping empirically | working | suggestion: after this lands, the remaining unfiled item is none — the 043 consolidation band is filed as T-MIG-066 by the direct-main bookkeeping commit of this round.
+
+---
+Task ID: T-MIG-065 (implementation)
+Agent: r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Land the scoped-runner fix end-to-end (bunfig + IN_REVIEW + receipt) and file the PR for independent review.
+
+Work Log:
+- apps/hub/bunfig.toml: [test] root="src" + the law comment (discovery scope, the CWD-isolation note, the future-tests-under-src/ rule).
+- Gates at the head: hub bare bun test 36/0/0-errors exit 0 (the 5-error class RETIRED); root suite unchanged (1164 ran / 63 files / 1151-0-13skip / 3513); typecheck x4 exit 0; golden --selftest OK.
+- Receipt run-002-scoped-runner.json; card -> IN_REVIEW; PR next; NOT self-merged (handed to the merge desk).
+
+Stage Summary:
+- T-MIG-065 IN_REVIEW on t-mig-065/r0: the last unfiled housekeeping item from the ROUND-6C register line is now code-complete behind a PR. r0 | hub scoped-runner landed, PR handed to the desk | IDLE after filing | suggestion: merge via the desk; the 043 follow-up rulings ride this round's direct-main bookkeeping commit.

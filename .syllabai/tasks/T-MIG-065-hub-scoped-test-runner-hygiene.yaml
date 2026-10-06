@@ -3,7 +3,7 @@ task:
   id: T-MIG-065
   title: "hub scoped-test-runner hygiene — the R0-ROUND-6C flagged housekeeping (worklog :2018): bare `bun test` inside apps/hub scans tests/e2e/** Playwright specs with bun's runner -> 5 'Playwright Test did not expect test() to be called here' errors; scope bun test discovery to src/ via apps/hub/bunfig.toml [test] root so the hub bun suite is green standalone; Playwright stays the ONLY runner for tests/e2e (test:e2e)"
   owner: "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e) — operator directive trace 1a10f72fc83f0cbd 'hub hygiene' routing the unfiled housekeeping item to this session; the item was R0-ROUND-6C's ENV NOTE ('hub bun test scans Playwright specs on main equally (5 errors) — CI correctly gates hub via build:hub only; flagged as future housekeeping (scoped runner hygiene)') and has sat unfiled through rounds 6C-15"
-  status: CLAIMED
+  status: IN_REVIEW # impl landed on this branch (run-002); authored by r0 -> NOT self-merged, handed to the merge desk
   priority: P3 # hygiene: zero CI impact today (CI gates hub via build:hub; root verify scopes to apps/api + packages) — but every agent running bare `bun test` in apps/hub eats the 5 errors
   wave: none # housekeeping, not wave work (the no-self-filed-wave-work law held: this item was flagged by R0-ROUND-6C and routed by the operator)
   deps: [T-MIG-037] # the hub dual-run card whose CI-parity work established build:hub as the hub gate
@@ -43,3 +43,15 @@ task:
       - "golden/**, packages/**, apps/api/**"
       - "the ROOT bunfig.toml / ci.yml (the verify + hub workflows are correct as-is)"
       - "production Neon writes / Render writes of any kind"
+    (implementation, 2026-10-06, run-002): apps/hub/bunfig.toml landed —
+    [test] root="src" + the law comment (discovery scoped to src/; the
+    Playwright specs under tests/e2e/** belong to the Playwright runner
+    exclusively; bunfig-is-read-from-CWD note for the root suite; future
+    hub bun tests under src/). Gates measured: cd apps/hub && bun test ->
+    36 tests / 3 files / 36 pass / 0 fail / 0 errors / exit 0 (was 41/8f/
+    36-5-5errors); root bun test apps/api packages UNCHANGED 1164 ran / 63
+    files / 1151 pass / 0 fail / 13 skip / 3513 expect; hub prebuild verify
+    scripts untouched (build:hub remains the CI gate); typecheck x4 at the
+    head exit 0 (inert file, verified); golden --selftest OK. ZERO other
+    apps/hub/** paths touched (no moves, no renames — the e2e specs are
+    byte-identical). Status -> IN_REVIEW.
