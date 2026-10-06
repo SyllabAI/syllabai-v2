@@ -1283,6 +1283,7 @@ export interface LearnerMeModule {
     assignmentId: string,
     request: AssignmentSubmissionRequest,
   ) => Promise<{ questionsCompleted: number; score: number | null; submittedAt: string }>;
+  nextBestActions: NextBestActionsProvider;
   buildAgenda: (
     learnerId: string,
     rootId?: string,
@@ -1337,6 +1338,7 @@ export function buildLearnerMeModule(
     learnerAssignments: (learnerId) => learnerAssignments(deps, learnerId),
     submitAssignment: (learnerId, assignmentId, request) =>
       submitAssignment(deps, learnerId, assignmentId, request),
+    nextBestActions,
     buildAgenda: (learnerId, rootId) =>
       buildAgenda(
         { sql, clock, nextBestActions },
