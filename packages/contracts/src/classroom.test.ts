@@ -160,6 +160,17 @@ describe("classroom request schemas (constraints verbatim)", () => {
       classCreateRequestSchema.safeParse({ courseSlug: "s", courseLabel: "l", name: "x".repeat(121) })
         .success,
     ).toBeFalse(); // @Size(max 120)
+    // T-MIG-056 amendment: @NotBlank is the whitespace-EXACT port — a
+    // whitespace-only value fails @Valid (validation_failed envelope),
+    // exactly jakarta; .min(1) would have passed it to the service
+    expect(
+      classCreateRequestSchema.safeParse({ courseSlug: "s", courseLabel: "l", name: "   " })
+        .success,
+    ).toBeFalse(); // @NotBlank name (whitespace-only)
+    expect(
+      classCreateRequestSchema.safeParse({ courseSlug: "  ", courseLabel: "l", name: "n" })
+        .success,
+    ).toBeFalse(); // @NotBlank courseSlug (whitespace-only)
   });
 
   test("classStatusRequestSchema: @NotBlank status (parse tolerance is service law)", () => {
@@ -181,6 +192,9 @@ describe("classroom request schemas (constraints verbatim)", () => {
     const base = { title: "t", body: "b" };
     expect(classPublishRequestSchema.safeParse(base).success).toBeTrue(); // category ABSENT → GENERAL at the service
     expect(classPublishRequestSchema.safeParse({ ...base, category: "exam-reminder" }).success).toBeTrue();
+    // T-MIG-056 amendment: an EXPLICIT JSON null binds exactly like an
+    // absent field in Jackson → Category.parse(null) → GENERAL (the 201)
+    expect(classPublishRequestSchema.safeParse({ ...base, category: null }).success).toBeTrue();
     expect(classPublishRequestSchema.safeParse({ ...base, category: "x".repeat(21) }).success).toBeFalse();
     expect(classPublishRequestSchema.safeParse({ ...base, title: "" }).success).toBeFalse();
     expect(classPublishRequestSchema.safeParse({ ...base, body: "" }).success).toBeFalse();

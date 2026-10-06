@@ -337,7 +337,11 @@ describe("POST /api/v1/teacher/classes (:80-98 → 201)", () => {
     expect(body.createdAt).toBe(NOW_ISO);
   });
 
-  test("service laws ride through the route: blank name → 400 'class name must not be blank'", async () => {
+  test("@NotBlank whitespace law: whitespace-only name → 400 validation_failed 'name: must not be blank' (T-MIG-056)", async () => {
+    // frozen parity: jakarta @Valid preempts the controller body for a
+    // whitespace-only @NotBlank, so the service's trim-blank 400
+    // ("class name must not be blank" — still pinned at the service level,
+    // tranche-1) is unreachable over HTTP for this posture
     const { app, sql } = makeApp(asTeacher, []);
     const res = await app.request("/api/v1/teacher/classes", {
       method: "POST",
@@ -346,8 +350,8 @@ describe("POST /api/v1/teacher/classes (:80-98 → 201)", () => {
     });
     expect(res.status).toBe(400);
     const body = await res.json();
-    expect(body.error).toBe("bad_request");
-    expect(body.message).toBe("class name must not be blank");
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("name: must not be blank");
     expect(sql.queries).toHaveLength(0); // fail-closed before any statement
   });
 
@@ -688,6 +692,27 @@ describe("POST /api/v1/teacher/classes/:id/announcements (:191-214 → 201)", ()
     expect((await res.json()).category).toBe("general");
   });
 
+  test("category EXPLICIT NULL binds like absent → GENERAL (Jackson parity, T-MIG-056)", async () => {
+    // frozen parity: PublishRequest.category carries @Size(max 20) with NO
+    // @NotBlank — jakarta considers null valid, the record binds null,
+    // Announcement.Category.parse(null) → GENERAL → the same 201 as absent
+    const { app } = makeApp(asTeacher, [
+      ownedClassRoute([classRow()]),
+      {
+        match: /^insert into announcements \(id, teacher_id, class_id, title, body, category, created_at\)/,
+        rows: [announcementRow({ category: "GENERAL", created_at: NOW })],
+      },
+      memberCountRoute(0),
+    ]);
+    const res = await app.request(`/api/v1/teacher/classes/${CLASS_A}/announcements`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: "Hello", body: "World.", category: null }),
+    });
+    expect(res.status).toBe(201);
+    expect((await res.json()).category).toBe("general");
+  });
+
   test("unknown category → 400 verbatim (service law, not schema law)", async () => {
     const { app, sql } = makeApp(asTeacher, [ownedClassRoute([classRow()])]);
     const res = await app.request(`/api/v1/teacher/classes/${CLASS_A}/announcements`, {
@@ -700,7 +725,10 @@ describe("POST /api/v1/teacher/classes/:id/announcements (:191-214 → 201)", ()
     expect(sql.queries.filter((q) => q.startsWith("insert"))).toHaveLength(0); // fail-closed
   });
 
-  test("trimmed-blank body → 400 'title and body must not be blank'", async () => {
+  test("@NotBlank whitespace law: whitespace-only body → 400 validation_failed 'body: must not be blank' (T-MIG-056)", async () => {
+    // frozen parity: @Valid preempts the controller body (the service's
+    // "title and body must not be blank" trim-blank 400 stays pinned at
+    // the service level, tranche-1 — unreachable over HTTP here)
     const { app } = makeApp(asTeacher, [ownedClassRoute([classRow()])]);
     const res = await app.request(`/api/v1/teacher/classes/${CLASS_A}/announcements`, {
       method: "POST",
@@ -708,7 +736,7 @@ describe("POST /api/v1/teacher/classes/:id/announcements (:191-214 → 201)", ()
       body: JSON.stringify({ title: "T", body: "   " }),
     });
     expect(res.status).toBe(400);
-    expect((await res.json()).message).toBe("title and body must not be blank");
+    expect((await res.json()).message).toBe("body: must not be blank");
   });
 
   test("21-char category → validation_failed 'category: size must be between 0 and 20' (@Size)", async () => {

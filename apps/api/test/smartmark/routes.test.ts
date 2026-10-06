@@ -219,6 +219,28 @@ describe("POST /api/v1/learners/me/attempts/:id/self-mark", () => {
     expect(body.message).toBe("self-mark carries no part marks");
   });
 
+  test("parts [null] → 500 internal_error (ELEMENT-null NPE parity, T-MIG-057 — Jackson binds the null element, no @Valid cascade on the bare List, the loop NPEs before the service)", async () => {
+    const sql = fakeSql(baseRoutes());
+    const res = await makeApp(asStudent, sql).request(`/api/v1/learners/me/attempts/${ATTEMPT_ID}/self-mark`, {
+      method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ parts: [null] }),
+    });
+    expect(res.status).toBe(500);
+    const body = await res.json();
+    expect(body.error).toBe("internal_error");
+    expect(body.message).toBe("an internal error occurred");
+    expect(sql.queries.length).toBe(0); // the loop precedes the service — the lock never ran
+  });
+
+  test("parts [null, bad-uuid part] → 400 malformed_body (whole-document Jackson binding order — the non-null element's binding failure beats the loop NPE, T-MIG-057)", async () => {
+    const res = await makeApp(asStudent).request(`/api/v1/learners/me/attempts/${ATTEMPT_ID}/self-mark`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ parts: [null, { partId: "not-a-uuid", marksAwarded: 1 }] }),
+    });
+    expect(res.status).toBe(400);
+    expect((await res.json()).error).toBe("malformed_body");
+  });
+
   test("unknown attempt (valid parts) → 404 not_found (frozen NotFoundException parity — the captured 500 was the null-parts NPE, T-MIG-053)", async () => {
     const sql = fakeSql(baseRoutes().map((r) => (r.match === LOCK ? { match: LOCK, rows: [] } : r)));
     const res = await makeApp(asStudent, sql).request(`/api/v1/learners/me/attempts/${ATTEMPT_ID}/self-mark`, {

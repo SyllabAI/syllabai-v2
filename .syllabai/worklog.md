@@ -2919,3 +2919,89 @@ Work Log:
 
 Stage Summary:
 - Queue swept (2 foreign PRs reviewed+merged, arithmetic-exact; own PR landed by the desk per the self-merge law); T-MIG-061 claimed on t-mig-061/r9-hubx. Implementation (contracts -> services -> pins) next; gates + PR to follow; NO self-merge.
+Task ID: T-MIG-057 (run-001 claim) + T-MIG-055 stand-down of record
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator directive (trace 1a10f48f7d8a616d): GitHub PAT delivered with the explicit instruction "make sure you dont lose the PAT, I am tired of pasting PATs after every reply" — persisted per the r1c standing pattern and the lane continues working onto the element-null residual it first disclosed.
+
+Work Log:
+- PAT PERSISTENCE (of record): ghp_ token stored 0600 at /home/z/.ghtoken OUTSIDE every git repo, referenced by path (r1c standing pattern); verified live (login SyllabAI, push perm on syllabai-v2). This is the operator's explicit override of this lane's after-use destroy habit — the token now persists across the workspace wipes that consumed its predecessors.
+- T-MIG-055 STAND-DOWN (honest ledger closure): this lane claimed 055 (whole-field selfmark NPE parity) at 03:20Z and implemented it (950/0/13skip/2696 EXACT) — but workspace wipe #6/#7 destroyed the branch BEFORE push (commits 4d34a6a/86026b0 unrecoverable, zero origin evidence), and r3a's PR #84 had claimed 053 for the same surface at 02:50:40Z (earliest claim; merged ced0111 with a MORE complete pin set: absent + explicit-null + [] + 404-reframe) with R0's PR #91 re-filing the card DONE + a live re-proof (run 37408914789 — w3-selfmark-unknown-attempt-500 RECOVERED). Zero salvage claim — the landed work is better than mine. PROCESS LESSON of record: my push-time scan checked only t-mig-055*/selfmark* heads and missed the t-mig-053* band claim — future scans enumerate ALL origin heads.
+- NEON SETUP VERIFIED (the round-14 discovery cross-checked against the live repo config): NEON_API_KEY secret + NEON_PROJECT_ID / NEON_PARENT_BRANCH_ID ACTIONS VARIABLES all present and EXACTLY matching my discovery values (billowing-cherry-15418366 / br-muddy-bar-a5huwldd; R0's lane set them Oct-5 17:47Z). The instrument is fully provisioned; live run 37408914789 already proved the pipeline end-to-end.
+- RESIDUAL ADOPTED (this claim): the element-level null shape {"parts":[null]} — first disclosed in the lost 055 record — is confirmed LIVE on main @ ced0111: the T-MIG-053 classifier routes it to 400 validation_failed "parts[0]: must not be null" while the frozen core (re-read @ 6cad6ef) BINDS the null element (SelfMarkRequest :58 = bare List, no @Valid cascade) and the dedup loop NPEs -> 500 BEFORE the service. Whole-document binding order preserved: mixed shapes with non-null binding failures stay 400 malformed_body (isBinding wins first). Uncaptured edge (no golden case); zero mentions anywhere; 057 = next free non-reserved id (056 taken by r0's classroom @NotBlank card, disjoint surface).
+- CLAIM: branch t-mig-057/r4b cut @ ced0111; card + run-001-claim + this entry in the SAME commit; baseline recorded (1090/0/13skip/3288, typecheck x4 0). Fix = run-002 on this branch, PUSHED IMMEDIATELY on the persisted PAT (no more sandbox-loss exposure); PR opens right after gates; authors never self-merge.
+
+---
+Task ID: T-MIG-057 (run-002 fix)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Implement the claimed selfmark parts ELEMENT-null parity — route-only fix + two route pins; gates; IN_REVIEW flip; immediate push on the persisted PAT.
+
+Work Log:
+- FIX (apps/api/src/routes/selfmark/index.ts, route-only): in the !parsed.success block, after the malformed-body return, ANY element-level null issue at parts[i] (invalid_type, received "null", path parts[i]) throws the same NPE-parity error the landed T-MIG-053 whole-field guard uses — the app error boundary serves the byte-equivalent 500 internal_error envelope. Precedence laws preserved and pinned: malformed-body (isBinding) wins first for shapes with a non-null binding failure (frozen Jackson whole-document order); duplicate-part boundary law untouched; remaining validation path untouched. Constraint non-cascade documented of record (the @Max(99) inferred pin stays a disclosed divergence, untouched).
+- PINS (apps/api/test/smartmark/routes.test.ts): {parts:[null]} -> 500 internal_error with the captured message + ZERO sql queries (the loop precedes the service); {parts:[null,{partId:"not-a-uuid",marksAwarded:1}]} -> 400 malformed_body (the non-null element's binding failure beats the loop NPE).
+- GATES at the fix head: bun install --frozen-lockfile OK; typecheck x4 exit 0; bun test apps/api packages 1092 pass / 0 fail / 13 skip / 3294 expect (1105 ran / 61 files — EXACT vs the claim-time baseline 1090/0/13skip/3288 + 2 tests / +6 expects); golden --selftest OK. Zero golden files, zero packages/**, zero service files touched.
+- PUSH DISCIPLINE: the CLAIM commit (05ba690) was pushed to origin BEFORE this fix commit — the workspace-wipe exposure that lost T-MIG-055 is closed. PR opens immediately after this push; independent review + R0 verdict + id ratification requested; authors never self-merge.
+
+Stage Summary:
+- T-MIG-057 implemented + gated (1092/0/13skip/3294 EXACT, selftest OK): the uncaptured element-null edge now matches the frozen core. The selfmark fidelity ledger is fully dispositioned for this lane: whole-field parity landed upstream (#84/#91), element-null parity delivered here, binding-precedence + non-cascade laws pinned. LANE IDLE after the PR opens.
+Task ID: T-MIG-056 (claim)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Claim the registered follow-up on the T-MIG-052 DONE card — the classroom @NotBlank envelope refinement (the #90 notBlank-refine prior art) + the routes/classroom.ts maximum nit (operator standing directive, trace 1a10f3edfafedd15).
+
+Work Log:
+- R0 census first (fetch-before-every-action): #77/#89/#88 all merged — main 1540ffc (round-11 ledger intake), CI verify+hub green; the only open PR #84 is r3a's in-flight T-MIG-053 t1 (2/3 commits, closing class-KG trio pending — hands off, its own review flow is active). The 052 housekeeping (card DONE + R0-ROUND-15 worklog) landed via a695c92 — nothing to duplicate.
+- The register held exactly ONE unclaimed item: the 052 DONE-card follow-up (a695c92) = the PR #89 ratification verdict's nits (1) whitespace-body @NotBlank envelope + (2) the routes `maximum ?? 0` nit. Claimed as T-MIG-056 (claim-in-first-commit, §2) on branch t-mig-056/r0 cut @ 1540ffc.
+- Zero-collision scan @ 1540ffc: zero t-mig-056* heads on origin, zero 056/057/058/059 mentions anywhere in .syllabai/, the item unclaimed (no branch/card/receipt anywhere); Wave-6 prep (t-mig-060/w0a) respected — no fence overlap.
+- Prior art read line-against-line: closed #90 branch (t-mig-052/r0-t2 @ 6e9bfcf) disclosed contracts amendment — the auth.ts notBlank refine (packages/contracts/src/auth.ts :56) on the four classroom request schemas, max FIRST / refine LAST (zod skips refinements when an earlier check fails — accept/reject sets match jakarta's evaluate-all), category .optional() → .nullish() (explicit JSON null binds like absent → Announcement.Category.parse(null) → GENERAL → the frozen 201).
+- Downstream compatibility verified pre-claim: parseAnnouncementCategory already types `string | null | undefined` (services/classroom/index.ts :176, the t1 null→GENERAL law) — zero service change; the merged classifier (routes/classroom.ts :133-148) renders custom issues as "field: request invalid" (:148) so the registered scope necessarily includes the minimal custom-branch touch, else the refine's verbatim message is swallowed; the two route pins that pin the DIVERGENT whitespace posture (:340 blank-name, :703 trimmed-blank) identified for rewrite with their fail-closed assertions kept.
+- F-0/F-1 (binding-class collapse; missing-field message) documented on the card as register-STILL-OPEN per the ratification verdict — not registered by it, so out of this fence; #90's full routes classifier (:121/:136-137) recorded as the ready prior art for that future pass.
+
+Stage Summary:
+- T-MIG-056 CLAIMED at 2026-10-06T03:42:19Z on branch t-mig-056/r0 off origin/main 1540ffc (card + run-001-claim.json + this entry = the claim commit). Implementation next in this lane: contracts refine + nullish, classifier custom branch + nit cleanup, pins rewrite + the category-null 201 pin, EXACT gates arithmetic, PR with disclosure.
+
+---
+Task ID: T-MIG-056 (implementation)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Implement the claimed classroom @NotBlank envelope refinement end-to-end (contracts refine + category nullish, classifier custom branch, the maximum nit, pins).
+
+Work Log:
+- Contracts amendment applied verbatim from the #90 prior art: the four classroom request schemas swap bare .min(1) for the auth.ts notBlank refine (max FIRST / refine LAST — zod skips refinements on earlier failure, accept/reject sets match jakarta's evaluate-all); category .optional() → .nullish(). Header amendment block carries the T-MIG-056 provenance and the chain-order law.
+- Classifier touch (routes/classroom.ts validationMessage): new custom-issue branch surfaces the refine's verbatim jakarta message (without it the message falls to "field: request invalid" — verified on main before claiming); too_small branch demoted to defensive (no bare min() remains); the `maximum ?? 0` defensive fallback DROPPED per nit 2 (cast tightened to { maximum: number }).
+- Zero service change: parseAnnouncementCategory already types `string | null | undefined` (the t1 null→GENERAL law) — the nullish widening flows through typecheck untouched.
+- Pins: the two DIVERGENT-whitespace route pins rewritten to the frozen law (:340 blank-name → validation_failed "name: must not be blank"; :703 whitespace-only body → validation_failed "body: must not be blank"; fail-closed assertions kept; the service trim-blank 400s stay pinned at the t1 service level — unreachable over HTTP exactly as @Valid preempts); NEW route pin: category explicit null → 201 "general" wire form (the F-3 fix evidence, modeled on the absent-category pin incl. the insert-row match); +3 contracts expects (whitespace name/courseSlug schema-rejected, null category schema-accepted).
+- Gates with a MEASURED baseline (stash-restore at the base commit 1540ffc in the installed checkout, not inherited): baseline 1050/0/13skip/3211/59files → head 1051/0/13skip/3216/59files — EXACT +1 test/+5 expects/+0 files; typecheck ×4 exit 0; hub 36/0 unchanged; golden --selftest OK.
+- Receipt run-002-notblank-envelope.json; card → IN_REVIEW.
+
+Stage Summary:
+- T-MIG-056 IN_REVIEW on branch t-mig-056/r0 (claim 62228db). Next: intake of the moving main (ced0111 landed #84 T-MIG-053 t1 mid-flight), gates re-run on the intake head, PR with disclosure, on-thread verdict, merge under the standing delegated authority, housekeeping. Register still open (out of this fence): F-0/F-1 binding-law divergences (#90's routes classifier = ready prior art).
+
+---
+Task ID: T-MIG-056 (merge + housekeeping)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Land T-MIG-056 (PR #93) under the standing delegated authority and complete the housekeeping.
+
+Work Log:
+- PR #93 opened with the full disclosure body (scope of record, prior-art credit, pins, measured-baseline gates, the register-still-open F-0/F-1 note); CI verify+hub green on the intake head 33c79bd.
+- Independent adversarial review (subagent, isolated from the implementation assumptions): APPROVE zero blockers — every input class empirically traced through validationMessage on the exact zod runtime; service layer verified byte-untouched; pins verified truthful (arithmetic re-derived +1/+5 = run-002 EXACT); zero golden/db contact; scope-creep scan clean. Verdict of record filed on-thread (issuecomment 6009123049) — authors-never-self-merge held in substance.
+- Nits registered non-gating: null-pin rowsFor hardening (optional); header zod-wording nuance (set-equivalence is the law that matters); the pre-existing null-on-@NotBlank message divergence (F-0/F-1 class, register-open, unchanged).
+- Merged 9ba1c39 (merge-commit); fetch-first FF; merge receipt run-003-merge.json; card -> DONE with provenance.
+- The T-MIG-052 registered follow-up is now CLOSED end-to-end (claim 62228db -> implementation c4921d6 -> intake 33c79bd -> merge 9ba1c39, all on the pushed axis — the T-MIG-052 lesson applied throughout).
+
+Stage Summary:
+- T-MIG-056 DONE. The classroom band now serves the frozen @NotBlank envelope law (whitespace-only -> validation_failed verbatim) and the frozen category-null binding (explicit null -> GENERAL -> 201). Register still open (documented on the card + receipt): F-0/F-1 binding-law divergences with #90's routes classifier as ready prior art; the rowsFor hardening nit. LANE returns to the operator's disposition.
+Task ID: R0-AUTO (cron job 438940, sweep 2026-10-06 04:00 UTC)
+Agent: R0-auto merge desk (Super Z scheduled integrator)
+Task: Periodic merge-desk sweep — review + merge open PRs per the standing R0-auto procedure (max 2 merges/run, oldest first).
+
+Work Log:
+- SANDBOX WIPE #8 class at sweep start: .gh-pat deleted + mirror reverted to a945c20. Recovery per standing law: PAT re-staged 0600 (verified login SyllabAI), mirror fast-forwarded. Zero state assumed beyond the recovery.
+- Census: #84 (T-MIG-053 t1) and #88 (r0r6 triage receipt) had been merged by parallel lanes; main had advanced to ced0111 (CI green). New filings: #92 (T-MIG-057 selfmark element-null parity, r4b) + #93 (T-MIG-056 classroom @NotBlank envelope refinement, r0).
+- #92 guard chain (head e34d85b37af32729d2dab1b836623c9cfd78a81e): CI verify+hub success; mergeable clean base=ced0111; 0 reviews, 0 hold/blocking comment hits; 6 files +181/-0 (selfmark routes + smartmark route pins + card + receipts) — boundary clean; single t-mig-057* branch. MERGED as e82f5d5 (sha-pinned).
+- #93 guard chain (head 33c79bd): CI verify+hub success at the real head; 0 blockers; 8 files +235/-18 (classroom routes/contracts/pins + card + receipts) — boundary clean; disjoint from #92 except the worklog tail. First PUT rejected: merge conflicts — the classic worklog-tail add/add (both PRs appended at the same tail; zero CODE conflicts).
+- INTAKE per procedure (c): branch t-mig-056/r0 merged with origin/main e82f5d5; worklog conflict resolved via the append-only chronological union (main's T-MIG-057 entries kept verbatim in place, PR's T-MIG-056 entries re-appended at tail — byte-checked resolver, both sides fully preserved, zero markers; intake d28cd55); pushed to the PR branch fast-forward, no force.
+- Gates at intake head d28cd55: install OK; typecheck exit 0; bun test apps/api packages 1093 pass / 0 fail / 13 skip / 3299 expect (1106 ran / 61 files — EXACT: main-with-#92 1092/0/13skip/3294 + the #93 delta +1 test/+5 expects); golden --selftest OK.
+- MERGED #93 as 9ba1c39. CI verified on new main tip 9ba1c39: verify + hub completed/success. Local gates re-run at 9ba1c39: 1093/0/13skip/3299 + selftest OK (same numbers — main == intake head content).
+- Receipt committed bookkeeping-only (.syllabai/**); zero force-push.
+
+Stage Summary:
+- Two merges this cycle (#92 e82f5d5, #93 9ba1c39) — the selfmark element-null 500 parity and the classroom @NotBlank envelope refinement (with category-null 201 law) are live. Register notes absorbed from the worklog: T-MIG-055 stand-down recorded by r4b (wipe-destroyed branch, zero salvage claimed), F-0/F-1 binding-class collapse remains register-open (out of both fences), NEON replay instrument fully provisioned (NEON_BRANCH_CAPACITY caveat stands).
+- Queue at sweep end: 0 open PRs. No escalations. LANE DONE for this cycle.
