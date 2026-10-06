@@ -1,0 +1,41 @@
+version: 1
+task:
+  id: T-MIG-074
+  title: "Wave-7 cutover prep — the §7 preconditions audit of record + the executable cutover/rollback runbook (docs/CUTOVER_RUNBOOK.md) + the migration report of record (docs/MIGRATION_REPORT.md); every operator-action step (Vercel domain flip, supervised dual-run, sign-off, archive) is RUNBOOKED but NOT EXECUTED by this lane (prod zero-write boundary)"
+  owner: "r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5) — operator directive trace 1a1107c667b6f2e9 'Proceed with three in-review cards plus Wave-7 cutover', second half; the first half (the 043/065/072 desk flips) landed of record at 851df19"
+  status: IN_REVIEW # impl on this branch (run-001 + run-002); authored by r9-hubx -> NOT self-merged, handed to the merge desk per AGENT_COORDINATION §2
+  claimed_at: "2026-10-06T09:22:50Z"
+  priority: P1 # the last wave; the register cannot close without its prep artifacts
+  wave: 7
+  deps: [] # W0-W6 exit cards are ALL DONE of record (the P1 precondition); 071/073 are non-wave bands tracked in the report's outstanding list
+  execution_record: >
+    (claim + implementation entry 2026-10-06) Zero-collision scan before branch
+    cut @ origin/main 851df19: zero t-mig-074* heads, zero 074 mentions in
+    .syllabai/, zero 074 PRs; the register's next free id is 074 (069 filed as
+    the w0a CLA band #114; 070/071/072/073 filed). Source of law:
+    docs/MIGRATION_PLAN.md §7 (cutover + rollback runbook) and §6 (risk
+    register). Deliverables: (1) docs/CUTOVER_RUNBOOK.md — the §7 summary
+    expanded into an executable preconditions gate (P1-P4 with of-record
+    evidence + re-verify commands), freeze/flip/cron-takeover/48h-watch/
+    rollback/archive procedures, operator sign-off template, [OPERATOR] vs
+    [LANE] markers so the prod boundary is mechanical; (2)
+    docs/MIGRATION_REPORT.md — the §7 migration report of record at 851df19
+    (method, wave-by-wave register, fidelity + residual dispositions, risk
+    outcomes, outstanding list, [POST-CUTOVER] placeholders); (3)
+    .syllabai/receipts/T-MIG-074/run-001-preconditions.json — machine-readable
+    P1-P4 audit. GATES at the branch head: docs + .syllabai-only delta vs
+    851df19 (zero code contact — gates carry by tree identity; typecheck x4 +
+    suites + selftest re-run first-hand at the report head recorded in
+    run-001).
+  scope:
+    allowed:
+      - "docs/CUTOVER_RUNBOOK.md (NEW)"
+      - "docs/MIGRATION_REPORT.md (NEW)"
+      - ".syllabai/receipts/T-MIG-074/**"
+      - ".syllabai/tasks/T-MIG-074-cutover-prep-runbook.yaml (status/execution_record only)"
+      - ".syllabai/worklog.md (append-only entries)"
+    forbidden:
+      - "production writes of ANY kind: Vercel env/deploy, Render service changes, Neon main writes, GitHub archive actions — all [OPERATOR] steps stay unexecuted"
+      - "apps/**, packages/**, golden/** (zero code + zero corpus contact — 071/072/073 own those fences)"
+      - "case edits, tolerate[] edits, runner edits (ruling3 case-owner lanes)"
+      - "force-push; self-merge of this PR"

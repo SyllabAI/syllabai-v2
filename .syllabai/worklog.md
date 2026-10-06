@@ -4163,6 +4163,86 @@ Stage Summary:
 - T-MIG-071 claimed by R4-api-b of record; claim receipt run-000; implementation next: R3-C eight auth-register justified/Retry-After pins, R3-D3 target-series day-window tolerates, R3-D4 Option A identity tolerates (register-learner accessToken, history-after-submit learnerId/attemptId, auth-me seeded-identity fields), scope-fenced to golden/cases/** + .syllabai/**.
 
 ---
+Task ID: R9-HUBX-FLIP-24 (trace 1a1107c667b6f2e9)
+Agent: r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Operator directive "Proceed with three in-review cards plus Wave-7 cutover" — drive the in-review register to completion, then open the Wave-7 lane.
+
+Work Log:
+- CENSUS at fetch e9ef235: the directive's three IN_REVIEW cards (043 w0a, 065 r0, 072 r1-contracts) are ALL merged-of-record with stale statuses — 043 tranche-2 = PR #85 (both tranches of record: #74 + #85; #76 losing duplicate closed), 065 = PR #103 (apps/hub/bunfig.toml verified live on main), 072 = PR #117 -> c88b738 (R0-AUTO round-20 sha-pinned PUT). Zero open PRs; T-MIG-053 already flipped DONE by r1-ROUND-22 (t1-t4 = #101/#108/#115/#116); T-MIG-073 (#113) stays r1-contracts owner-property (IN_PROGRESS, not this directive's trio).
+- GATES first-hand at e9ef235 BEFORE the flip write: typecheck x4 exit 0; bun test apps/api packages 1533 pass / 0 fail / 13 skip / 6036 expects / 82 files — EXACT reconciliation vs r1-ROUND-22's union-head absolutes (1546 ran/1533/0/13/6036/82f); bun test apps/hub 36 pass / 0 fail / 291 expects; bun golden/runner.ts --selftest OK (corroborates the #117 composition live: tranche partition + RFC 8259 key canonicalization).
+- DESK FLIPS: 043/065/072 -> DONE in this commit — comment-only provenance-preserving edits (status line only, no field rewrites), each citing its merge-of-record PR + the first-hand gate evidence. All three PRs were merged by separate desk sessions; authors-never-self-merge held end-to-end; this lane only certifies and flips per the 061-flip precedent (e273b98) and the .syllabai-only direct-main receipt chain (3c07bae/bb537fa/2a0b18d/.../e9ef235).
+- WAVE-7 NEXT: the second half of the directive (cutover) files as T-MIG-074 on a branch — §7 preconditions audit + executable cutover runbook + migration report of record; PR handed to the desk, NOT self-merged. The one open W7 precondition gap is the golden-replay 100% line: T-MIG-071 (case-amendment band) was OPEN at this lane's census but was claimed mid-round by R4-api-b (f0b7189, trace 1a1107d90d2f3cc9 — concurrent-of-record, union preserved above); implementation pending on their branch.
+
+Stage Summary:
+- Register at this commit: 62 of 66 cards DONE (043/065/072 flipped here); non-DONE residue = 071 OPEN/unassigned (free lane), 073 IN_PROGRESS (r1-contracts, #113 merged of record, owner flip pending). Fleet convergence on the port is one free lane + one owner flip away; Wave-7 prep follows on branch t-mig-074/r9-hubx.
+
+---
+Task ID: T-MIG-074 (trace 1a1107c667b6f2e9)
+Agent: r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Operator directive "Proceed with three in-review cards plus Wave-7 cutover" — second half: open the Wave-7 lane (cutover prep artifacts on a branch, PR to the desk, never self-merged).
+
+Work Log:
+- BRANCH CUT @ origin/main 851df19 (this lane's flip commit — tree-identity verified: git diff e9ef235..851df19 -- ':!.syllabai' EMPTY, so the first-hand gates at e9ef235 carry over, then re-run fresh at 851df19 anyway: typecheck x4 exit 0, 1533/0/13skip/6036/82f, hub 36/0/291, selftest OK).
+- ZERO-COLLISION: zero t-mig-074* heads, zero 074 mentions, zero 074 PRs pre-claim; next free register id = 074 (069 = w0a CLA #114; 070/071/072/073 filed).
+- DELIVERABLE (1) docs/CUTOVER_RUNBOOK.md: plan §7 expanded — preconditions gate P1-P4 (of-record evidence + re-verify commands), freeze window, Vercel flip (JWT secret continuity R-JWT, Neon main continuity R-FLYWAY), decay cron takeover (T-MIG-042P fail-closed shape), 48h watch table, the one-lever rollback law (NEXT_PUBLIC_API_BASE_URL flip back; nothing deleted until W7 completes), archive procedure, operator sign-off template; [OPERATOR]/[LANE] markers make the prod zero-write boundary mechanical.
+- DELIVERABLE (2) docs/MIGRATION_REPORT.md: the §7 report of record at 851df19 — method laws, wave-by-wave register (W0-W6 ALL DONE), fidelity section (142/177 last live aggregate + ruling3 residual dispositions + #117 composition), risk-register outcomes table, outstanding-before-cutover list (071 in flight; 073 owner flip; fresh replay post-composition; P3/P4 operator-owned), [POST-CUTOVER] placeholders.
+- DELIVERABLE (3) .syllabai/receipts/T-MIG-074/run-001-preconditions.json: machine-readable P1-P4 audit (P1 MET_AT_REGISTER with first-hand gates; P2 IN_FLIGHT with disposition chain; P3/P4 PENDING_OPERATOR).
+- FENCE: docs/** + .syllabai/** only — zero apps/packages/golden contact, zero prod actions; PR handed to the desk.
+
+Stage Summary:
+- Wave-7 prep of record on branch t-mig-074/r9-hubx; the register's W7 row now has its artifacts pending review. Cutover execution remains operator-gated at every prod step by construction.
+Task ID: r1c Task-26 (post-reset recovery + the 069 routing adjudication)
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)
+Task: (operator directive trace 1a1107e05fd76cc9) "route 069 when w0a files it" — adjudication + the post-reset census.
+
+Work Log:
+- ENVIRONMENT RECOVERY FIRST: the workspace container was RESET between rounds (my-project found empty at turn start; the bootstrap's pending-clone manifest records 6 failed restore attempts since 2026-10-06T03:35Z — the post-Task-25 workspace state, receipt drafts included, did not survive). Recovered: GITHUB_PAT re-provisioned from the pre-reset /tmp survivor (.env.syllabai, 0600, outside every repo; curl /user -> 200; sha256(token)[:16] = 8c1fcf2c4f0d5243 == this lane's ledger fingerprint), the repo re-cloned full. Origin is the source of truth; lane continuity intact (Task-24/Task-25 both on main of record). No repo state lost.
+- 069 ROUTING ADJUDICATED MOOT-OF-RECORD: w0a filed and the desk merged BEFORE the routing order arrived. T-MIG-069 (cla-ask; REFILED 067->069 per R0 arbitration ruling2) merged of record via PR #114 -> 366e5d6 2026-10-06T07:40:56Z by the R0-AUTO round-19 sweep (merge-commit CI verify+hub success at 366e5d6; GitHub merged_by shows the shared org credential — lane-level provenance carried by e36d379/f626848); t1a 39 + t1b 18 + t2 24 = 81 pins on main; the OUT-OF-FENCE mount 5b7c095 carried by the same merge; card -> DONE by w0a's own bookkeeping f626848 with authors-never-self-merge held (the desk merged; the standing self-merge order never fired). Zero 069 action remains for any lane; this lane takes none.
+- POST-RESET CENSUS @ fetch (origin/main f0b7189, re-based to 851df19 after a race-guard bounce): 0 open PRs. Register scan: 067/068/069/070 DONE; T-MIG-071 the sole live code band — claimed 2026-10-06T09:15:48Z by R4-api-b under operator trace 1a1107d90d2f3cc9 (claim commit f0b7189, .syllabai-only) — HANDS-OFF per earliest-claim-wins; the three stale-of-record IN_REVIEW cards (043/065/072 — all with merges of record #85-family/#103/#117 c88b738) were flipped DONE by r9-hubx's 851df19 mid-round, confirming this census's stale-card read; T-MIG-073 claim IN_PROGRESS by r1 (00f457f) — hands-off; 033's residual IN_REVIEW wording predates its merged-of-record tranches — owner bookkeeping, not touched.
+- LANE LEDGER reconstructed post-reset: Task-24 = the #106 independent corroboration (R0 merged d3f20f5, zero divergence); Task-25 = the round-20 sweep of record (#109 closed-superseded, #111 closed-yielded, #112 merged of record fdcfc53 — the #104 blocker band closed). The workspace-side worklog/scripts were lost with the container and are re-created this turn.
+
+Stage Summary:
+- The 069 routing closes moot-of-record: filed by w0a, merged by the desk (#114 -> 366e5d6), DONE — nothing to route. Queue zero; the sole live band 071 is R4-api-b's (hands-off). This lane executed zero code/merge/card actions — credential recovery + adjudication only. LANE r1c: STANDBY for the next operator routing or a desk-opened queue. STOP.
+
+---
+
+
+Task ID: R0-REPLAY-FILING-1 (operator trace 1a1107f16bd8d041 "Check current status again")
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Status census + the first of-record filing of the standing neon-replay scheduled run's union verdict (the instrument red on main).
+
+Work Log:
+- STATUS CENSUS @ e9ef235: queue ZERO (0 open PRs; #113 T-MIG-073 -> 243435c, #114 T-MIG-069 -> 366e5d6, #115 T-MIG-053 t3 -> d25626e, #116 T-MIG-053 t3 follow -> 3e9b54b, #117 T-MIG-072 -> c88b738 all merged of record since the last desk sweep; T-MIG-053 DONE 23/23; R0-AUTO cron 438940 rounds 19-20 sweeping). CI at tip: hub+verify GREEN, neon-replay RED.
+- STALE-CARD FLIPS of record (.syllabai-only): T-MIG-072 IN_REVIEW -> DONE (c88b738 via #117); T-MIG-073 IN_PROGRESS -> DONE (243435c via #113); T-MIG-065 IN_REVIEW -> DONE (32626cb via #103, merge-of-record verified against the PR API — the card had been stale since the merge). T-MIG-043 left untouched (its IN_REVIEW carries the intentional STATUS TIMELINE provenance-chain note — case-owner artifact, not a desk flip).
+- REPLAY FILING — run 37441112330 (SCHEDULED, main @ e9ef235, 09:10:13Z, artifact 11401222358): union 149/177 PASS (seed 136/162, prod 13/15), job RED per the union-is-the-gate law (T-MIG-047). Provisioning/boot/selftests/read-only-proof/branch-drop ALL green — the failures are REAL divergences, filed per GOLDEN_MASTER §4 (never auto-fixed, never silently tolerated). Failure taxonomy (28 cases, 4 classes):
+  - CLASS A — register rate-limit collision (5): auth-register-{missing-fields,short-password,password-no-digit,unknown-role,teacher-no-joincode} got 429 Too Many Requests (retryAfterSeconds 49, one burst @ 09:11:11.86Z) vs corpus 400/403. The live register limiter trips on the replay's rapid-fire sequence — the corpus was captured pre-limiter or at lower case density.
+  - CLASS B — auth-envelope inversion (4): w4-agenda-malformed-bearer-401 and w4-state-empty-bearer-401 got 200 WITH learner payload (malformed/empty bearer ACCEPTED on the learner-me band) while curriculum-subject-bad-uuid-400 and curriculum-subject-unknown-404 got 401 (auth-first on surfaces the corpus expects public/reachable) — an INTERNALLY INCONSISTENT auth posture across bands. Highest-priority class for R6: potential middleware-application gap on the learner-me routes.
+  - CLASS C — learner-fixture volatility / seed-vs-corpus drift (15): the harness learner resolves to a THIS-RUN random uuid (5a32ffd7-…) vs the corpus-frozen aa645313-…/da30cee5-…/00000000-…-0010 fixture graph; downstream w3-history/w3-questions-{topics,families}/w4-course-stats/w4-state-practiced bodies diverge on identity + attempt counts (2 vs 1, empty vs 4 topics). The apply-reset seed posture is producing a different fixture graph than the corpus captures — seed owner disposition.
+  - CLASS D — smart-lesson/knowledge-graph route reachability (4): w4-knowledge-graph-{empty,practiced} and w4-smart-lesson-{missing-params,practiced,unknown-topic} got the generic 404-after-auth envelope ("resource not found", the no-router-claimed path per index.ts:223) vs corpus 200/400/404-specific. Correlates with the just-landed T-MIG-053 tranche-4 (0b1a4b5 — SERVICES ONLY, "FENCE: no routes/mounts"): the service is on main but the replay boot reaches the 404-after-auth path on these surfaces — route-claim verification needed.
+  - DELTA of record: the r0 sibling's dual-of-record at 33e281f (run 37426117865, workflow_dispatch) was 142/177; this scheduled run at e9ef235 is 149/177 (+7 net pass across the #115/#117 corridor). Run history: 16 runs, recent ones all red — capacity-gated earlier (round-19/20 receipts), fully-provisioned now.
+- DISPOSITION: classes filed for R6/case-owner routing per the workflow's law (report, never auto-fix); NO golden contact made by this desk; the per-case artifacts live in the run's evidence bundle (retention 30d).
+
+Stage Summary:
+- Queue ZERO, board truthful (3 stale cards flipped of record), and the standing re-proof instrument's first fully-provisioned scheduled verdict is FILED of record: 149/177 with a 4-class taxonomy (rate-limit collision / auth-envelope inversion / fixture volatility / route reachability). r0 | status census + replay filing complete | IDLE | suggestion: route CLASS B (auth inversion) to R6 first — it is the only class with a potential security posture implication; CLASS D needs a route-claim check against the tranche-4 service land.
+
+---
+Task ID: R0-AUTO cron 438940 @ 2026-10-06 09:30Z (17:30 +08) — round-21 desk sweep
+Agent: R0-auto (Super Z, zai-web session discord DM 482bf272)
+Task: Periodic merge-desk sweep (max 2 merges, oldest first) per the standing cron payload; plus operator DM trace 1a1107d8c03ba415 ("T-MIG-071 proceed if not assigned yet") adjudicated in-run.
+
+Work Log:
+- PRE-SWEEP: no wipe (PAT live as SyllabAI, 3rd consecutive round); lock protocol clean.
+- CENSUS: 1 open PR — #118 T-MIG-074 (r9-hubx: Wave-7 cutover prep — §7 preconditions audit + executable runbook + migration report of record), head 7b2f083, 4 min old; main advanced e9ef235 -> 30008b4 mid-round (851df19 register flips, 6227b6a R0-REPLAY-FILING-1 + card flips, ed0965a r1c receipt, db9b9cc/30008b4 intakes).
+- #118 ORIGINAL HEAD: 0 check-runs on 7b2f083 (event-drop-class or CI-not-started; PR 4 min old) AND mergeable=False/dirty vs 30008b4 -> desk intake initiated regardless (an intake push creates a new head with fresh CI either way).
+- DESK INTAKE executed: merge origin/main into t-mig-074/r9-hubx at 0f00fab — single worklog conflict, union resolver (merge orientation) 38/38 non-empty lines preserved, zero markers; gates first-hand at 0f00fab: bun install --frozen-lockfile OK; typecheck x3 exit 0; bun test apps/api packages 1546 ran / 0 fail / 13 skip / 6036 expect / 82 files = main-verified baseline EXACT (zero src contact: PR band is docs/ + .syllabai/ only); golden --selftest OK (incl. T-MIG-072 composition + T-MIG-024).
+- PUSH RACE (benign): my intake push rejected non-fast-forward — the r9-hubx lane had concurrently pushed their OWN intake b4ce867 (30008b4 union + report §1/§3/§4/§6 + run-001 P2 evidence refreshed to the 149/177 aggregate; content superset of my 0f00fab). Per the #102 precedent my duplicate intake was DISCARDED (worktree removed), zero-harm exit, no force-push.
+- #118 GATES at the REAL head b4ce867: CI verify completed/success + hub completed/success; mergeable=True/clean; reviews 0, comments 0; file set unchanged inside the fence (docs/CUTOVER_RUNBOOK.md, docs/MIGRATION_REPORT.md, .syllabai/** — zero .java, zero core/hub, zero Neon/prod).
+- MERGED OF RECORD: PR #118 -> 3c0bf08 via the sha-pinned PUT (sha=b4ce867eabdb83aa5f1def93017e3b9d11d54e68) at ~09:44Z, no mid-merge race. MAIN CI at 3c0bf08: verify completed/success + hub completed/success.
+- T-MIG-071 ADJUDICATION of record (operator DM trace 1a1107d8c03ba415 "proceed if not assigned yet"): 071 IS ASSIGNED — R4-api-b claim f0b7189 @ 09:16:36Z (on main, direct-main claim-in-first-commit, zero-collision-verified at claim time) vs r0desk claim e384d59 @ 09:30:18Z (branch-only, operator trace 1a1107dcfaa8d9a1) — EARLIEST-CLAIM-WINS -> R4-api-b owns 071 (impl head f6a4bb8 already on their branch; r1c receipt ed0965a acknowledged the hands-off). The r0desk claim is VOID (14 min late); its branch is claim-only (.syllabai receipt/card/worklog, zero code) — stand-down or refile expected, no code collision exists. This desk did NOT claim 071 (condition unmet; merge-desk-only bound).
+- QUEUE at sweep close: 0 open PRs.
+
+Stage Summary:
+- Round-21: desk merged #118 (3c0bf08) — the Wave-7 cutover prep artifacts (executable CUTOVER_RUNBOOK + MIGRATION_REPORT of record + preconditions receipt) are ON MAIN; one benign push race absorbed per precedent (duplicate intake discarded, no force); T-MIG-071 ownership adjudicated earliest-claim-wins (R4-api-b, f0b7189) with the r0desk claim void — recorded before either lane files a PR, so no merge-time surprise remains. Register: 66/66 cards resolved or in-flight (071 in flight with R4-api-b).
 
 Task ID: T-MIG-071 implementation (trace 1a1107d90d2f3cc9)
 Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)

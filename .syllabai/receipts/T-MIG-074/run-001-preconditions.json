@@ -1,0 +1,56 @@
+{
+  "card": "T-MIG-074",
+  "run": "run-001-preconditions",
+  "lane": "r9-hubx (zai-web web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "trace": "1a1107c667b6f2e9",
+  "audit_head": "851df19",
+  "audit_utc": "2026-10-06T09:22:50Z",
+  "law_source": "docs/MIGRATION_PLAN.md §7 preconditions",
+  "preconditions": [
+    {
+      "id": "P1",
+      "requirement": "Waves 1-6 exit gates PASS",
+      "status": "MET_AT_REGISTER",
+      "evidence": {
+        "register": "W0 9/9, W1 9/9, W2 5/5, W3 10/10, W4 9/9, W5 10/10, W6 10/10 — all wave cards DONE at 851df19 (043/065/072 flipped by this lane same head); register 64/66 DONE, non-DONE = T-MIG-071 (ruling-execution, R4-api-b in flight), T-MIG-073 (follow-up, #113 merged-of-record, owner flip pending)",
+        "gates_first_hand": {
+          "typecheck_x4_exit": 0,
+          "api_packages": "1533 pass / 0 fail / 13 skip / 6036 expects / 1546 ran / 82 files",
+          "hub": "36 pass / 0 fail / 291 expects",
+          "golden_selftest": "OK (incl. T-MIG-072 tranche partition + RFC 8259 canonicalization)",
+          "measured_at": "851df19 (fresh re-run; also green at e9ef235 pre-flip)"
+        }
+      }
+    },
+    {
+      "id": "P2",
+      "requirement": "Golden replay 100% on deterministic surfaces",
+      "status": "IN_FLIGHT",
+      "evidence": {
+        "last_live_aggregate_of_record": "union 149/177 at e9ef235 (NEON replay run 37441112330, post-#117 composition, R0-REPLAY-FILING-1 at 6227b6a) with a 4-class residual taxonomy; prior aggregate union 142/177 (seed 129/162, prod 13/15), divergences 40 -> 35 pre-#117",
+        "corroboration": "dual replay workflow 37426037703 / 37426117865",
+        "composition_landed": "T-MIG-072 #117 -> c88b738 (two ordered tranches, 9 markers, F-class RFC 8259 rider)",
+        "residual_disposition": "ruling3 R3-C/D3/D4 (receipts/R0-arbitration/ruling3-operator-four-rulings.json) — all corpus-side, landing via T-MIG-071 (claimed f0b7189 by R4-api-b)",
+        "close_criterion": "fresh live replay at cutover candidate SHA with zero non-justified divergences; NEON replay currently gated on NEON_BRANCH_CAPACITY (operator capacity action)"
+      }
+    },
+    {
+      "id": "P3",
+      "requirement": "Supervised dual-run of the full learner loop + teacher loop against branch deployments",
+      "status": "PENDING_OPERATOR",
+      "evidence": {
+        "of_record": "hub dual-run CI parity (T-MIG-037) is automated-of-record; the §7 supervised loops are human-witnessed",
+        "procedure": "docs/CUTOVER_RUNBOOK.md §2 smoke list (learner spine, teacher spine, tutor SSE lifecycle)"
+      }
+    },
+    {
+      "id": "P4",
+      "requirement": "Operator sign-off recorded in .syllabai/worklog.md",
+      "status": "PENDING_OPERATOR",
+      "evidence": {
+        "template": "docs/CUTOVER_RUNBOOK.md §7"
+      }
+    }
+  ],
+  "boundary_statement": "This audit executes zero production actions: no Vercel/Render/Neon writes, no archive actions. The runbook's [OPERATOR]/[LANE] markers encode the prod zero-write boundary mechanically."
+}
