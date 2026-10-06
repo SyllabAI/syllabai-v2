@@ -57,6 +57,7 @@ import { buildLearnerRouters } from "./routes/learner";
 import { buildClassroomRouters } from "./routes/classroom";
 import { buildResearchRouters } from "./routes/research";
 import { buildLearnerMeRouters } from "./routes/learnerme";
+import { buildLearnerKgRouters } from "./routes/learnerkg";
 import { buildTutorRouters } from "./routes/tutor";
 import { buildClaRouters } from "./routes/cla";
 import { toErrorResponse, apiError } from "./services/identity/errors";
@@ -76,6 +77,7 @@ const testbuilder = buildTestBuilderRouters();
 const answerInput = buildAnswerInputRouters();
 const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
+const learnerKg = buildLearnerKgRouters();
 const tutor = buildTutorRouters();
 const cla = buildClaRouters();
 const sme = buildSmeRouters();
@@ -214,6 +216,29 @@ app.route("/api/v1/learners/me", assessment.historyRoute);
 // shipped as a separate commit per the T-MIG-010/020/021/030/032 precedent
 // so R0 can ratify or lift them out at review.
 app.route("/api/v1/learners/me", learner.learnerRoute);
+
+// Learner KG + smart-lesson router (T-MIG-079 — Wave-7 port band). Path
+// parity with the frozen core: LearnerStateController's
+// GET /api/v1/learners/me/knowledge-graph and SmartLessonController's
+// GET /api/v1/learners/me/smart-lesson share the /api/v1/learners/me base
+// with T-MIG-041's state router and T-MIG-043's learner-me router (each
+// owns its specific paths; Hono resolves per router). Falls under the
+// frozen anyRequest().authenticated() rule — the router owns its authz
+// internally (Boot 401 shell first, captured w4-knowledge-graph-
+// unauthed-401 / w4-smart-lesson-unauthed-401); the /api/v1/* fallback
+// below stays the 404-after-auth path for NO router claimed. The two
+// services are the T-MIG-053 band's own ports (learnerGraphFor = the F-034
+// t1 read model; smartLessonFor = the t4 deterministic ladder — NO LLM in
+// the loop); this band closes the run-002 review F-9 (5 live reds).
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-079, R0 ratification requested):
+// T-MIG-079's scope.allowed covers apps/api/src/routes/** (the two URL
+// spaces), apps/api/src/services/**, packages/contracts/**, apps/api/test/**
+// — this file INCLUDED by the card's explicit mount mandate, but the
+// mount line + import + construction + this comment still ship as the
+// minimal app-level wiring per the 010/020/021/030/032/041/062 precedent
+// so R0 can ratify or lift them out at review.
+app.route("/api/v1/learners/me", learnerKg.learnerKgRoute);
 
 // Marking routers (T-MIG-032 — Wave 3). Path parity with the frozen core:
 // LearnerSelfMarkController + StudentSmartMarkController share the

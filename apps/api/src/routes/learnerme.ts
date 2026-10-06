@@ -121,9 +121,18 @@ function classifyBodyError(
   if (first.code === "too_small" || first.code === "too_big") {
     const min = (first as { minimum?: number }).minimum;
     const max = (first as { maximum?: number }).maximum;
-    const value = (first as { input?: unknown }).input;
-    // @NotBlank on an empty/whitespace string fires before @Size
-    if (first.code === "too_small" && typeof value === "string" && value.trim().length === 0) {
+    // @NotBlank fires before @Size (jakarta declaration order in the frozen
+    // DTOs). zod v3 issues carry no `input`, so the former input-probe here
+    // was dead code and blank strings served the @Size message — the
+    // contracts now carry the notBlank violation as a min(1,
+    // "must not be blank") issue (the auth router's validationMessage
+    // pattern, T-MIG-017 heritage); scan the SAME field's issues for it,
+    // first-field-error law untouched (T-MIG-080 F3 salvage).
+    if (
+      error.issues.some(
+        (i) => i.path[0] === first.path[0] && i.message === "must not be blank",
+      )
+    ) {
       return { kind: "validation", message: `${field}: must not be blank` };
     }
     if (jakartaDefaults[field]?.size) {
