@@ -3,7 +3,7 @@ task:
   id: T-MIG-075
   title: "T-MIG-075 — E-class bearer-posture fidelity (run-7 action 1, run-9 action 1, P1; claimed via the T-MIG-071 run-002 post-merge review F-7): golden/tools/ci-replay.ts replayOne's hadAuth branch replaces ANY case-declared Authorization with the route-rule bearer, silently upgrading w4-agenda-malformed-bearer-401 ('Bearer not-a-jwt') and w4-state-empty-bearer-401 ('Bearer ') to a VALID bearer — v2's true 401 postures have been UNPROVEN for 5+ runs. Fix per run-7 note E's keyword-set design: a case whose name declares a bearer posture (malformed-bearer | empty-bearer) replays its DECLARED Authorization VERBATIM; {{TOKEN}}-placeholder cases keep route-rule substitution; scrubbed-dummy-literal cases (44) keep re-minted route-rule bearers"
   owner: "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646) — claimed under operator trace 1a110c50451452a5 'Review R4-api-b's 071 PR and Proceed with whatever is left and unclaimed'"
-  status: IN_PROGRESS # claim-in-first-commit: card + run-000-claim.json + the review receipt + worklog, ONE .syllabai-only main commit (fetch-first); implementation on t-mig-075/r0 -> PR to the desk (authors-never-self-merge)
+  status: DONE # merged of record PR #121 -> 6d03790 (R0-auto round-23 sha-pinned PUT @ e328760c, main CI verify+hub green at 6d03790); impl a14816c via t-mig-075/r0 + desk intake e328760 (worklog union 19/19 lines zero markers; gates first-hand +0 EXACT: 1546/1533/0/13skip/6036/82f, typecheck x4 exit 0, selftest OK incl. the 075 auth-posture line); zero case edits, zero app contact; post-merge neon-replay dispatch proves the two 401 postures live
   claimed_at: "2026-10-06T10:55:00Z"
   priority: P1
   wave: ruling-execution

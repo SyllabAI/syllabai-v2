@@ -4320,3 +4320,23 @@ Work Log:
 
 Stage Summary:
 - The 5-run-unproven 401 postures become exercisable on the next replay; the fix is construction-only in the harness layer. Lane hands the PR to the desk.
+
+---
+Task ID: R0-AUTO cron 438940 @ 2026-10-06 11:00Z (19:00 +08) — round-23 desk sweep
+Agent: R0-auto (Super Z, zai-web session discord DM 482bf272)
+Task: Periodic merge-desk sweep (max 2 merges, oldest first) per the standing cron payload; sole queue item was PR #121 (T-MIG-075, the E-class bearer-posture fidelity fix) — processed end-to-end.
+
+Work Log:
+- PRE-SWEEP: no wipe (PAT live as SyllabAI via /user, 6th consecutive round); lock protocol clean (one transient self-correction: the lock was released inside a census batch before the non-idle census landed — re-created immediately, never a work window without the lock).
+- INTER-SWEEP CONTEXT: main advanced 28862e3 -> d8916c7 via the r0-review lane (trace 1a110c50451452a5): T-MIG-071 post-merge deep review APPROVE of record (run-002, gates 1546/0/13skip/6036 EXACT at 64782f6); the 157/177 filing dispositioned into 5 owned cards (075/076/077/078/079); T-MIG-076 (the ci.yml `branches: ain]` repair this desk flagged in round-22) is BLOCKED OPERATOR-SIDE of record — the sandbox pins .github/workflows/** against modification (four edit methods reverted, guard receipt run-001-guard-blocked.json), the exact one-line patch is filed for the operator, posture degraded-but-functioning (pull_request gates all PRs; event-drop remedies self-heal).
+- CENSUS: 1 open PR — #121 T-MIG-075 (head a14816c on t-mig-075/r0, filed 10:45:15Z by the R0-integrator lane, handed to the desk per authors-never-self-merge). Gate (b) PASS on the real head: verify completed/success + hub completed/success. Gate (d) PASS: reviews 0, review comments 0, issue comments 0. Gate (e) PASS: 4-file diff (golden/runner.ts +69, golden/tools/ci-replay.ts +28, .syllabai/receipts/T-MIG-075/run-001-implementation.json, .syllabai/worklog.md) — zero .java, zero core/hub, zero Neon/prod contact, zero case-file edits, zero app contact.
+- MERGEABILITY: PR JSON mergeable None/unknown at first read (GitHub still computing); main had advanced past the 6273c77 cut -> intake per procedure (c) regardless.
+- DESK INTAKE: merge origin/main (d8916c7) into t-mig-075/r0 -> e328760. Single conflict (.syllabai/worklog.md); union resolver (merge orientation) 19/19 non-empty conflict lines preserved, zero markers (main's 11 verbatim in place, the branch's 12 re-appended at tail). No CODE conflicts; no other file touched by hand.
+- GATES first-hand at e328760: bun install --frozen-lockfile OK (930 pkgs); typecheck x4 exit 0; bun test apps/api packages 1546 ran / 1533 pass / 0 fail / 13 skip / 6036 expect / 82 files = baseline +0 EXACT; bun golden/runner.ts --selftest OK (incl. the T-MIG-075 auth-posture decision line, alongside 024/072/071). Push fast-forward a14816c..e328760, no force.
+- CI at the REAL head e328760c16a259411684af37dd0a8d297f549844 (fresh synchronize event): verify success + hub success; mergeable=True/clean re-confirmed on the fresh PR JSON.
+- MERGED OF RECORD: PR #121 -> 6d03790 via the sha-pinned PUT (sha=e328760c16a259411684af37dd0a8d297f549844, merge_method=merge; first attempt rejected on a truncated sha param — corrected to the full 40-char sha, no side effects) at ~11:10Z, first parent d8916c7 — zero race. MAIN CI at 6d03790: verify + hub both completed/success.
+- CARD: T-MIG-075 IN_PROGRESS -> DONE (status-line comment-only edit citing #121/6d03790 + the e328760 gate evidence). Register residue after this round: 076 BLOCKED (operator-side), 077/078/079 owned cards OPEN, everything else DONE.
+- QUEUE at sweep close: 0 open PRs.
+
+Stage Summary:
+- Round-23: desk merged #121 (6d03790) — the register's sole P1 is closed: golden/runner.ts now single-sources authPosture(kase) (none | substitute | verbatim-bearer-posture | re-mint) and ci-replay.ts consults it, so w4-agenda-malformed-bearer-401 and w4-state-empty-bearer-401 replay their DECLARED 401 postures verbatim instead of being silently upgraded to a valid bearer (the hadAuth masking, 5+ runs); substitution/re-mint behavior byte-identical for the other 106 cases. Post-merge proof path: the next neon-replay dispatch exercises the two postures live (honest red if v2 fails either — never masked). Operator-side standing items: T-MIG-076's one-line ci.yml patch (sandbox-blocked from the lane side), PAT rotation, NEON_BRANCH_CAPACITY watch, cron cadence.
