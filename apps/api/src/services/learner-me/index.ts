@@ -39,14 +39,15 @@
  *     members only; append-only hand-ins; the per-assignment bounds.)
  *
  * OUT OF FENCE (tranche-2, flagged per the 010/020/021/030/031/032/034
- * ratified precedent): routes + mounts; the NBA engine
- * (NextBestActionService :79-554, nba-rules/v1.3). Until tranche-2 the
- * agenda accepts an injected nextBestActions provider and returns the
- * honest 501 (owning task id T-MIG-043 tranche-2) when rootId is supplied
- * without one — never a fake 200. knowledge-graph/smart-lesson (041's
- * controller / Wave-5 band), intervention-runs (Wave-6) and the
- * NightlyDecayJob write path (the 042P seam names a separate decay lane)
- * stay OUT of this task entirely.
+ * ratified precedent): routes + mounts — LANDED in tranche-2 as
+ * routes/learnerme.ts + the index.ts mount (operator trace
+ * 1a10eae6bc2044c1). The NBA engine (NextBestActionService :79-554,
+ * nba-rules/v1.3) is tranche-2's ./nba.ts and is now the DEFAULT
+ * nextBestActions provider; the honest 501 (owning task id
+ * T-MIG-043 tranche-2) stays in buildAgenda as the no-provider safety
+ * net. knowledge-graph/smart-lesson (041's controller / Wave-5 band),
+ * intervention-runs (Wave-6) and the NightlyDecayJob write path (the 042P
+ * seam names a separate decay lane) stay OUT of this task entirely.
  *
  * PARALLEL-LANE DISCLOSURE (run-001-claim.json + the task yaml):
  * ExamTargetReader is ALSO inside r7a's 041 tranche-1 (PR #65). This
@@ -71,6 +72,8 @@
  */
 import type { SqlFn } from "../assessment/sql";
 import { BadRequestError, ConflictError, type SubmitClock } from "../selfmark";
+import { buildNbaEngine, type NbaDeps } from "./nba";
+import { LearnerMeForbiddenError, LearnerMeNotImplementedError, LearnerMeNotFoundError } from "./errors";
 import type {
   AssignmentSubmissionRequest,
   CardScheduleView,
@@ -89,18 +92,43 @@ import type {
 //
 // BadRequestError / ConflictError are the fleet's own classes from
 // services/selfmark (composition, never a fork — the existing routes
-// already map them). This module adds the two shapes the fleet classes
-// cannot carry: a verbatim-message 404 (the identity NotFoundError's
-// constructor formats "resource id not found", which would corrupt the
-// frozen messages "unknown subtopic anchor: X" / "exam series X does not
-// exist") and the 403 class-gate. T-MIG-043 tranche-2's routes map them:
+// already map them). The three learner-me classes live in ./errors.ts
+// (tranche-2 moved the definitions so the NBA engine avoids a barrel
+// cycle); they are RE-EXPORTED here — every tranche-1 import path keeps
+// working — and map:
 //   LearnerMeNotFoundError     → 404 not_found (e.message verbatim)
 //   LearnerMeForbiddenError    → 403 forbidden
 //   LearnerMeNotImplementedError → 501 not_implemented (owning task id)
 
-export class LearnerMeNotFoundError extends Error {}
-export class LearnerMeForbiddenError extends Error {}
-export class LearnerMeNotImplementedError extends Error {}
+export { LearnerMeForbiddenError, LearnerMeNotImplementedError, LearnerMeNotFoundError } from "./errors";
+
+// tranche-2: the NBA engine + the T-C11 loader, re-exported from the barrel
+export {
+  NBA_POLICY,
+  NBA_BDT_PAPER_DEFAULTS,
+  NBA_DECAY_PAPER_DEFAULTS,
+  RECOMMENDATION_PAPER_DEFAULTS,
+  buildNbaEngine,
+  nbaActionsFor,
+  nbaBandOf,
+  nbaDecayedMastery,
+  nbaRelaxedToPrior,
+  kgTreeWithMisconceptions,
+  prerequisiteRelations,
+  skillStatesFor,
+  misconceptionReadingsFor,
+  type NbaDeps,
+  type RecommendationParams,
+} from "./nba";
+export {
+  NBA_CONCEPT_GRAPH,
+  buildConceptDependencyGraphFromSnapshot,
+  conceptDependencyGraphOf,
+  SEMANTIC_RELATIONS,
+  type ConceptDependencyGraph,
+  type ConceptEdge,
+  type SemanticRelation,
+} from "./nba-concept-graph";
 
 // ── frozen constants ─────────────────────────────────────────────────────────
 
@@ -1255,6 +1283,7 @@ export interface LearnerMeModule {
     assignmentId: string,
     request: AssignmentSubmissionRequest,
   ) => Promise<{ questionsCompleted: number; score: number | null; submittedAt: string }>;
+  nextBestActions: NextBestActionsProvider;
   buildAgenda: (
     learnerId: string,
     rootId?: string,
@@ -1274,6 +1303,13 @@ export interface LearnerMeModule {
  * parameter exists for the V59 registry wiring `learner.flashcard-review`
  * — the production composition root reads the registry, tests pin the
  * lenient normalization).
+ *
+ * TRANCHE-2 FLIP: `nextBestActions` now DEFAULTS to the ported engine
+ * (buildNbaEngine over the same sql + clock — the nba.ts port of
+ * NextBestActionService :79-554, policy nba-rules/v1.3, the packaged T-C11
+ * snapshot). An explicit `opts.nextBestActions` still wins (the test
+ * injection seam tranche-1 pinned); the honest 501 in buildAgenda remains
+ * as the no-engine safety net for deps constructed without a provider.
  */
 export function buildLearnerMeModule(
   sql: SqlFn,
@@ -1281,9 +1317,13 @@ export function buildLearnerMeModule(
   opts?: {
     nextBestActions?: NextBestActionsProvider;
     flashcardReviewIntervalDays?: readonly number[];
+    nba?: Omit<NbaDeps, "sql" | "clock">;
   },
 ): LearnerMeModule {
   const deps = { sql, clock };
+  const nextBestActions =
+    opts?.nextBestActions ??
+    buildNbaEngine(sql, clock, opts?.nba);
   return {
     recordFlashcardRating: (learnerId, request) => recordFlashcardRating(deps, learnerId, request),
     flashcardTrailPage: (learnerId, params) => flashcardTrailPage(deps, learnerId, params),
@@ -1298,9 +1338,10 @@ export function buildLearnerMeModule(
     learnerAssignments: (learnerId) => learnerAssignments(deps, learnerId),
     submitAssignment: (learnerId, assignmentId, request) =>
       submitAssignment(deps, learnerId, assignmentId, request),
+    nextBestActions,
     buildAgenda: (learnerId, rootId) =>
       buildAgenda(
-        { sql, clock, nextBestActions: opts?.nextBestActions },
+        { sql, clock, nextBestActions },
         learnerId,
         rootId,
       ),

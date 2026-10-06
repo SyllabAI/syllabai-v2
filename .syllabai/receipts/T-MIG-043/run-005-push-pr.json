@@ -1,0 +1,55 @@
+{
+  "schema": "syllabai.receipt/v1",
+  "task": "T-MIG-043",
+  "run": "run-005-push-pr",
+  "kind": "push+pr+ci",
+  "when": "2026-10-06T02:52:37Z",
+  "agent": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "directive": {
+    "trace_id": "1a10eae6bc2044c1",
+    "text": "Proceed with Tranche-2 (NBA engine + routes + w4 golden replay)"
+  },
+  "sandbox_note": "Sandbox was wiped between windows; the operator supplied a fresh PAT in-session. Credential law held: PAT kept session-scoped + a 0600 file OUTSIDE every repo/artifact path; never written to any receipt, worklog, commit, PR body, or log.",
+  "intake": {
+    "merged": "origin/main fe97f94 (#83 T-MIG-051 N-4 rich-200 capture + #82 T-MIG-052 t1 classes+rosters + R0-AUTO receipts ee37657/fe97f94) into t-mig-043/w0a",
+    "merge_commit": "22deff2",
+    "overlap_check": "zero 043/NBA/learner-me file overlap in 06ca4e2..fe97f94 (verified pre-merge via git diff --name-only)",
+    "worklog_union": "append-only union resolved by hand: HEAD's run-003/run-004 w0a entry (authored 01:51:53Z) kept ahead of main's R0-AUTO 02:00 sweep + Task 17 (051) + R0-AUTO 02:30 sweep entries (chronological); zero entries dropped"
+  },
+  "push": {
+    "range": "369d563..22deff2",
+    "mode": "fast-forward",
+    "force": false,
+    "branch": "t-mig-043/w0a",
+    "remote": "origin (https://github.com/SyllabAI/syllabai-v2.git)"
+  },
+  "pull_request": {
+    "number": 85,
+    "url": "https://github.com/SyllabAI/syllabai-v2/pull/85",
+    "title": "port(t-mig-043 tranche-2): the NBA engine + learner-me routes + mounts + 57 pins - the Wave-4 band code-complete",
+    "head_sha": "22deff2e6b6e0e0c924f36a96f1f74fabb1b31d6",
+    "base": "main",
+    "body_disclosures": [
+      "index.ts mount OUT-OF-FENCE (separate commit) - R0 ratification requested per the 010/020/021/030/032/034 precedent",
+      "consolidation ruling requested: ExamTargetReader + decay/BDT math in BOTH 041 and 043 copies",
+      "w4 live replay dispatch: REPLAY-READY; the prior CI darkness (Oct-5 18:25:34Z) has lifted per the #82/#83 receipts; classification receipt follows post-merge",
+      "041-t2 double-PR arbitration register item RESOLVED by outcome (#69 merged, #72 closed unmerged) - the 22 gated w4 cases are unblocked"
+    ]
+  },
+  "ci": {
+    "at_sha": "22deff2e6b6e0e0c924f36a96f1f74fabb1b31d6",
+    "verify": "completed/success",
+    "hub": "completed/success",
+    "checked_at": "2026-10-06T02:51:00Z"
+  },
+  "gates_on_head_22deff2": {
+    "typecheck_x4": "exit 0 (contracts/shared/db/apps/api)",
+    "bun_test": "1018 ran / 1005 pass / 0 fail / 13 skip / 3061 expect across 58 files - EXACT arithmetic: branch pre-merge state 957 ran / 944 pass / 0 fail / 13 skip / 2895 expect + main's 06ca4e2->fe97f94 delta +61 tests / +166 expects (= 052 t1 +56/+158 + 051 +5/+8)",
+    "golden_selftest": "OK (tolerance engine incl. declared-unordered multiset, T-MIG-024)",
+    "w4_readiness": "READY (57 cases, 0 findings) - the 040-PREP instrument re-run on this head",
+    "zero_golden_files_touched": true,
+    "zero_neon_contact": true
+  },
+  "merge_expectation": "Authors never self-merge - R0-AUTO merge-intake requested (sweep cadence 30min; guard chain preconditions all green at 22deff2: CI verify+hub success at the real head, base == main tip fe97f94 so mergeable-clean, 0 reviews/comments, syllabai-v2-only file boundary). Operator authorization trace 1a10d0c303d3852d (review+merge yourself if R0 has not merged) stands as the fallback path ONLY if the desk does not act; any exercise of it will be symmetrically disclosed in a follow-up receipt + PR comment.",
+  "lane_status": "STOP after bookkeeping push; monitoring the R0-AUTO sweep."
+}
