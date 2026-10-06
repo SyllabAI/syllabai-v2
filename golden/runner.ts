@@ -52,6 +52,19 @@ interface GoldenCase {
   // engine is untouched. Declared-scope engine change, selftest-covered.
   bodyFile?: string;
   multipart?: { partName: string; filename: string; contentType?: string };
+  // T-MIG-072 (R0 arbitration ruling3 R3-D2, operator trace 1a1100c71ff48e05;
+  // run-9 triage §3-R5): the case's declared replay TRANCHE — the seq
+  // machinery generalized to posture order. "empty" = the case pins the
+  // UNSTAGED/empty-store posture and must replay BEFORE the staging
+  // state-builders; "staged" (the DEFAULT when absent — every pre-existing
+  // case keeps today's semantics byte-for-byte) = replayed after, exactly as
+  // the single pass has always done. The field is a DECLARED posture claim
+  // (construction-only case edit; zero expectation/tolerate semantic
+  // changes; re-pinning to the other posture is forbidden by the ruling).
+  // The runner's own --target loop is UNCHANGED (it has no state builders;
+  // the composition lives in golden/tools/ci-replay.ts, where staging
+  // exists — the ruling's routing: "ci-replay/corpus composition").
+  tranche?: "empty" | "staged";
 }
 
 // T-MIG-006 bearer injection: a case may carry the {{TOKEN}} placeholder in
@@ -120,6 +133,28 @@ export function loadCases(): GoldenCase[] {
     });
 }
 
+/**
+ * T-MIG-072 (R3-D2): stable tranche partition of an already seq-sorted case
+ * list. "empty"-marked cases come back first (they replay BEFORE the staging
+ * state-builders), everything else — absent field included — in the staged
+ * tranche; WITHIN each tranche the input (seq, filename) order is preserved
+ * (stable, no reordering of the staged pass relative to today). Exported for
+ * golden/tools (the composition consumes it import-only, zero drift — the
+ * deepEqualTolerant import precedent).
+ */
+export function partitionByTranche(cases: GoldenCase[]): {
+  empty: GoldenCase[];
+  staged: GoldenCase[];
+} {
+  const empty: GoldenCase[] = [];
+  const staged: GoldenCase[] = [];
+  for (const kase of cases) {
+    if (kase.tranche === "empty") empty.push(kase);
+    else staged.push(kase);
+  }
+  return { empty, staged };
+}
+
 function redact(body: unknown, tolerate: string[] = []): unknown {
   if (body === null || typeof body !== "object") return body;
   const out: Record<string, unknown> = Array.isArray(body) ? ([] as never) : {};
@@ -128,6 +163,27 @@ function redact(body: unknown, tolerate: string[] = []): unknown {
     out[k] = redact(v, tolerate);
   }
   return out;
+}
+
+/**
+ * T-MIG-072 (run-7 action 3 / triage F-class, R3-D2 standing note "same file,
+ * one pass allowed"): RFC 8259 — object key order is NOT significant. Sort
+ * keys recursively (deterministic, arrays untouched: element order remains
+ * significant unless a declared `unordered` path relaxes it) so the
+ * comparator stops being sensitive to Jackson-declaration-order vs v2
+ * insertion-order. Pure construction: both sides get the SAME canonical form,
+ * so a real value diff still fails and no declared relaxation widens.
+ */
+function sortObjectKeys(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(sortObjectKeys);
+  if (value !== null && typeof value === "object") {
+    const out: Record<string, unknown> = {};
+    for (const k of Object.keys(value as Record<string, unknown>).sort()) {
+      out[k] = sortObjectKeys((value as Record<string, unknown>)[k]);
+    }
+    return out;
+  }
+  return value;
 }
 
 /**
@@ -347,7 +403,55 @@ function selftest(): number {
     console.error("selftest FAILED: dotted unordered path should apply");
     return 1;
   }
-  console.log("selftest OK: tolerance engine behaves (incl. declared-unordered multiset — T-MIG-024)");
+  // T-MIG-072 (F-class / run-7 action 3): RFC 8259 key-order canonicalization.
+  // Same keys/values, different insertion order (Jackson declaration order vs
+  // v2 insertion order — the w3-marking-throughput-teacher-200 finding) must
+  // now compare EQUAL; a real value diff must still fail; nested objects and
+  // objects inside declared-unordered arrays compose.
+  const fA = { b: 2, a: 1, nested: { y: 2, x: 1 } };
+  const fB = { a: 1, b: 2, nested: { x: 1, y: 2 } };
+  if (!deepEqualTolerant(fA, fB, [])) {
+    console.error("selftest FAILED: key-order-only diff should pass (RFC 8259, T-MIG-072 F-class)");
+    return 1;
+  }
+  if (deepEqualTolerant({ a: 1 }, { a: 2 }, [])) {
+    console.error("selftest FAILED: value diff must still fail after key canonicalization");
+    return 1;
+  }
+  if (deepEqualTolerant({ a: [1, 2] }, { a: [2, 1] }, [])) {
+    console.error("selftest FAILED: array element order must stay significant (key sort is object-only)");
+    return 1;
+  }
+  const fArrA = { items: [{ b: 1, a: 2 }, { d: 3, c: 4 }] };
+  const fArrB = { items: [{ a: 2, b: 1 }, { c: 4, d: 3 }] };
+  if (!deepEqualTolerant(fArrA, fArrB, [], ["items"])) {
+    console.error("selftest FAILED: key canonicalization must compose with declared unordered");
+    return 1;
+  }
+  if (!deepEqualTolerant({ ts: "t1", a: 1 }, { a: 1, ts: "t2" }, ["ts"])) {
+    console.error("selftest FAILED: tolerate must still compose after key canonicalization");
+    return 1;
+  }
+  // T-MIG-072 (R3-D2): the tranche partition — stable, empty first, absent =
+  // staged (today's semantics preserved for every pre-existing case).
+  const tp = partitionByTranche([
+    { name: "c3", method: "GET", path: "/x", expect: { status: 200, body: null } },
+    { name: "e1", method: "GET", path: "/x", expect: { status: 200, body: null }, tranche: "empty" },
+    { name: "c1", method: "GET", path: "/x", expect: { status: 200, body: null } },
+    { name: "e2", method: "GET", path: "/x", expect: { status: 200, body: null }, tranche: "empty" },
+  ]);
+  if (
+    tp.empty.map((k) => k.name).join(",") !== "e1,e2" ||
+    tp.staged.map((k) => k.name).join(",") !== "c3,c1"
+  ) {
+    console.error("selftest FAILED: tranche partition must be stable, empty first, absent=staged");
+    return 1;
+  }
+  if (partitionByTranche(tp.staged).empty.length !== 0) {
+    console.error("selftest FAILED: staged tranche must not leak empties");
+    return 1;
+  }
+  console.log("selftest OK: tolerance engine behaves (incl. declared-unordered multiset — T-MIG-024; RFC 8259 key canonicalization + tranche partition — T-MIG-072)");
   return 0;
 }
 
@@ -357,8 +461,12 @@ export function deepEqualTolerant(
   tolerate: string[],
   unordered: string[] = [],
 ): boolean {
-  const ra = redact(a, tolerate);
-  const rb = redact(b, tolerate);
+  // T-MIG-072 (F-class): key canonicalization precedes the multiset
+  // canonicalization — sorted keys make the element serializations (and the
+  // whole compare) key-order-insensitive; array element order semantics are
+  // unchanged (declared unordered[] paths only, T-MIG-024 scope intact).
+  const ra = sortObjectKeys(redact(a, tolerate));
+  const rb = sortObjectKeys(redact(b, tolerate));
   if (unordered.length === 0) {
     return JSON.stringify(ra) === JSON.stringify(rb);
   }

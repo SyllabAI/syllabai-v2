@@ -82,7 +82,7 @@
  *      honest harness error, never a silent degraded replay. Zero case
  *      files touched (§7: no silent widening — the cases are forever).
  */
-import { loadCases, deepEqualTolerant, buildMultipartBody } from "../runner.ts";
+import { loadCases, deepEqualTolerant, buildMultipartBody, partitionByTranche } from "../runner.ts";
 import { join } from "node:path";
 
 const REALDATA = /realdata|-real-/; // verbatim posture regex (T-MIG-022 v2 tool)
@@ -106,6 +106,11 @@ interface GoldenCase {
   // --selftest here too).
   bodyFile?: string;
   multipart?: { partName: string; filename: string; contentType?: string };
+  // T-MIG-072 (R3-D2): declared replay tranche ("empty" | "staged", default
+  // staged) — declared on the gated runner's interface; mirrored here for
+  // the tool's own typing. Consumed via partitionByTranche imported from
+  // ../runner.ts (zero drift).
+  tranche?: "empty" | "staged";
 }
 
 interface CaseResult {
@@ -113,6 +118,10 @@ interface CaseResult {
   mode: string;
   pass: boolean;
   diff?: string;
+  // T-MIG-072: which tranche the case replayed in ("empty" = before the
+  // staging state-builders; "staged" = after, the default posture). Evidence
+  // field only — the comparator never sees it.
+  tranche?: "empty" | "staged";
 }
 
 function fail(msg: string): never {
@@ -255,6 +264,7 @@ function checkHeaders(actual: Headers, expected: Record<string, string> | undefi
 }
 
 async function replayOne(kase: GoldenCase, teacher: string, student: string, admin: string): Promise<CaseResult> {
+  const tranche: "empty" | "staged" = kase.tranche === "empty" ? "empty" : "staged";
   // Only cases that CARRY an Authorization header get one (capture-faithful);
   // its value is re-minted per route rule — {{TOKEN}} placeholders and the
   // committed scrubbed dummy alike (v2 tool model, corpus-wide).
@@ -269,6 +279,7 @@ async function replayOne(kase: GoldenCase, teacher: string, student: string, adm
         name: kase.name,
         mode: CASE_MODE,
         pass: false,
+        tranche,
         diff: `harness error: ${kase.path} resolves to the ADMIN bearer but the rich staging provided none (T-MIG-063 fail-fast)`,
       };
     }
@@ -290,6 +301,7 @@ async function replayOne(kase: GoldenCase, teacher: string, student: string, adm
         name: kase.name,
         mode: CASE_MODE,
         pass: false,
+        tranche,
         diff: `harness error: ${e instanceof Error ? e.message : String(e)}`,
       };
     }
@@ -304,7 +316,7 @@ async function replayOne(kase: GoldenCase, teacher: string, student: string, adm
       body: reqBody,
     });
   } catch (e) {
-    return { name: kase.name, mode: CASE_MODE, pass: false, diff: `harness error: target unreachable (${e instanceof Error ? e.message : String(e)})` };
+    return { name: kase.name, mode: CASE_MODE, pass: false, tranche, diff: `harness error: target unreachable (${e instanceof Error ? e.message : String(e)})` };
   }
   let body: unknown = null;
   try {
@@ -319,7 +331,7 @@ async function replayOne(kase: GoldenCase, teacher: string, student: string, adm
   const bodyOk = statusOk && deepEqualTolerant(kase.expect.body, body, kase.tolerate ?? [], kase.unordered ?? []);
   const headerDiff = checkHeaders(res.headers, kase.expect.headers);
   if (statusOk && bodyOk && headerDiff === null) {
-    return { name: kase.name, mode: CASE_MODE, pass: true };
+    return { name: kase.name, mode: CASE_MODE, pass: true, tranche };
   }
   const parts: string[] = [`status ${res.status} vs ${kase.expect.status}`];
   if (!bodyOk) {
@@ -328,7 +340,7 @@ async function replayOne(kase: GoldenCase, teacher: string, student: string, adm
     );
   }
   if (headerDiff !== null) parts.push(headerDiff);
-  return { name: kase.name, mode: CASE_MODE, pass: false, diff: parts.join("; ") };
+  return { name: kase.name, mode: CASE_MODE, pass: false, tranche, diff: parts.join("; ") };
 }
 
 async function runMode(reportOut?: string): Promise<CaseResult[]> {
@@ -338,22 +350,34 @@ async function runMode(reportOut?: string): Promise<CaseResult[]> {
   const teacher = await ensureUser("user_20@example.invalid", PASSWORD, "User 20", "TEACHER");
   const student = await ensureUser("user_21@example.invalid", PASSWORD, "User 21", "STUDENT");
   console.log("[ci-replay] tokens minted (teacher+student) via /api/v1/auth");
+  // T-MIG-072 (R0 arbitration ruling3 R3-D2, run-9 triage §3-R5): the seed
+  // pass is TWO ORDERED TRANCHES on the same disposable branch — the
+  // "empty"-marked cases replay BEFORE the staging state-builders (their
+  // captures pin the unstaged posture: the empty-state 200s, the
+  // w3-questions-topics-student-200 census), the staged-pinned (default)
+  // tranche after, in exactly the (seq, filename) order the single pass has
+  // always used. Stable partition of the already-sorted list (imported from
+  // the gated runner — zero comparator/ordering drift). No case is re-pinned
+  // to the other posture; zero deletions; the ruling's (b)/(c) options stay
+  // rejected. The empty tranche carries no admin bearer (staging has not run
+  // — an empty-marked /admin case would fail-fast honestly; the committed
+  // corpus has none, selftest-checked as a corpus invariant).
+  const { empty, staged } = partitionByTranche(cases);
+  if (empty.length > 0) {
+    console.log(`[ci-replay] tranche composition (T-MIG-072 / R3-D2): ${empty.length} empty-pinned case(s) BEFORE the staging state-builders — ${empty.map((k) => k.name).join(", ")}`);
+  }
   // T-MIG-063: the rich-200 family's staging boundaries fire inline — the
   // ingest cases remain the state builders (seq 10/11), the marking reads
-  // replay against the staged tied attempts (seq 13+).
-  const stages = richStagePlan(cases);
+  // replay against the staged tied attempts (seq 13+). Computed over the
+  // STAGED tranche only (the empty tranche has already replayed by then).
+  const stages = richStagePlan(staged);
   if (stages.length > 0) {
-    console.log(`[ci-replay] rich-200 staging plan: ${stages.map((s) => `${s.stage} @ ${cases[s.at]?.name}`).join(", ")} (state per the committed seed-t51-rich200.ts, verbatim)`);
+    console.log(`[ci-replay] rich-200 staging plan: ${stages.map((s) => `${s.stage} @ ${staged[s.at]?.name}`).join(", ")} (state per the committed seed-t51-rich200.ts, verbatim)`);
   }
   let admin = "";
   const results: CaseResult[] = [];
   let pass = 0;
-  for (let i = 0; i < cases.length; i++) {
-    const boundary = stages.find((s) => s.at === i);
-    if (boundary) {
-      admin = await runRichStage(boundary.stage);
-    }
-    const kase = cases[i]!;
+  const run = async (kase: GoldenCase): Promise<void> => {
     const r = await replayOne(kase, teacher, student, admin);
     results.push(r);
     if (r.pass) {
@@ -362,6 +386,16 @@ async function runMode(reportOut?: string): Promise<CaseResult[]> {
     } else {
       console.log(`FAIL ${r.name}: ${r.diff}`);
     }
+  };
+  for (const kase of empty) {
+    await run(kase);
+  }
+  for (let i = 0; i < staged.length; i++) {
+    const boundary = stages.find((s) => s.at === i);
+    if (boundary) {
+      admin = await runRichStage(boundary.stage);
+    }
+    await run(staged[i]!);
   }
   console.log(`\n${pass}/${cases.length} golden cases pass against ${TARGET} (CASE_MODE=${CASE_MODE})`);
   if (reportOut) {
@@ -403,6 +437,13 @@ function plan(): void {
   // stays target-free).
   const stages = richStagePlan(seed);
   console.log(`  rich-200 staging (T-MIG-063): ${stages.length === 0 ? "none — family absent" : stages.map((s) => `${s.stage} @ ${seed[s.at]?.name}`).join(", ")} (seed pass only; DATABASE_URL required at run time)`);
+  // T-MIG-072 (R3-D2): the two-tranche composition census — deterministic,
+  // CI-checkable proof of WHICH committed cases declare the empty posture.
+  const { empty, staged: stagedPlan } = partitionByTranche(seed);
+  console.log(`  tranche composition (T-MIG-072 / R3-D2): ${empty.length} empty-pinned BEFORE the staging state-builders / ${stagedPlan.length} staged after (same disposable branch)`);
+  for (const k of empty) console.log(`    empty-tranche: ${k.name} -> ${k.path}`);
+  const adminEmpty = empty.filter((k) => k.path.includes("/api/v1/admin/"));
+  console.log(`  empty-tranche admin-path cases (must be 0 — the staging has not run in that tranche): ${adminEmpty.length}${adminEmpty.length ? " — " + adminEmpty.map((k) => k.name).join(", ") : ""}`);
 }
 
 // --union: merge the two posture reports into the standing re-proof verdict.
@@ -480,6 +521,31 @@ function selftest(): number {
   t("plan: family absent -> no staging", p0.length === 0);
   const pSentinel = richStagePlan([fake("w3-sme-status-teacher-403")]); // 403s without the builder cases: sentinel governs
   t("plan: sentinel governs (no sentinel -> no staging even with family-named 403s)", pSentinel.length === 0);
+  // 2b. T-MIG-072 (R3-D2): tranche composition — empty first, staged after;
+  // boundaries are computed over the STAGED tranche only; the empty tranche
+  // never triggers staging.
+  const partInput = [
+    fake("w4-state-empty-200"),
+    fake("auth-register-success-201", 1),
+    fake("w3-sme-ingest-rich-200", 10),
+    fake("w3-teacher-marking-queue-v2-rich-200", 13),
+  ];
+  partInput[0]!.tranche = "empty";
+  const { empty: pe, staged: ps } = partitionByTranche(partInput);
+  t("partition: empty tranche first", pe.length === 1 && pe[0]?.name === "w4-state-empty-200");
+  t("partition: staged keeps seq order (register before ingest before marking)", ps.map((k) => k.name).join(",") === "auth-register-success-201,w3-sme-ingest-rich-200,w3-teacher-marking-queue-v2-rich-200");
+  const pStaged2 = richStagePlan(ps);
+  t("partition: staging boundary index resolved over the STAGED list (accounts @ ingest)", pStaged2.length === 2 && pStaged2[0]?.stage === "accounts" && pStaged2[0]?.at === 1);
+  t("partition: staging boundary (attempts @ marking)", pStaged2[1]?.stage === "attempts" && pStaged2[1]?.at === 2);
+  // Corpus invariant: no committed empty-tranche case resolves to an admin
+  // path (the empty tranche replays BEFORE any staging → no admin bearer
+  // exists yet; the T-MIG-063 fail-fast would fire honestly). Deterministic
+  // over the committed corpus, zero network.
+  const corpusEmpty = partitionByTranche(loadCases() as GoldenCase[]).empty;
+  t(
+    "corpus invariant: empty-tranche cases never resolve to /api/v1/admin/",
+    corpusEmpty.length > 0 && corpusEmpty.every((k) => !k.path.includes("/api/v1/admin/")),
+  );
   // 3. multipart import wiring (the gated runner builder, unchanged)
   const mf: GoldenCase = {
     name: "w3-sme-ingest-rich-200",

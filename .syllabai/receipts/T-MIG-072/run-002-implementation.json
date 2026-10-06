@@ -1,0 +1,40 @@
+{
+  "task_id": "T-MIG-072",
+  "kind": "implementation",
+  "run": "run-002-implementation",
+  "timestamp": "2026-10-06T08:45:00Z",
+  "agent": "r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)",
+  "authority": "operator trace 1a11029549c1db65; R0 arbitration ruling3 R3-D2 (receipts/R0-arbitration/ruling3-operator-four-rulings.json); run-9 triage §3-R5",
+  "head": "t-mig-072/r1",
+  "delta": {
+    "golden/runner.ts": [
+      "GoldenCase.tranche declared (\"empty\" | \"staged\", default staged = every pre-existing case keeps today's semantics byte-for-byte; T-MIG-072 provenance comment)",
+      "partitionByTranche exported — stable partition of the seq-sorted list (import-only consumption by ci-replay, the deepEqualTolerant zero-drift precedent)",
+      "F-CLASS RIDER (run-7 action 3, authorized by the R3-D2 standing note 'same file, one pass allowed, disclosed'): sortObjectKeys — RFC 8259 object-key canonicalization inside deepEqualTolerant, applied to BOTH sides before the unordered multiset canonicalization; array element order stays significant (declared unordered[] paths only, T-MIG-024 scope intact); unordered[]/tolerate[] semantics untouched",
+      "selftest grown: key-order-only diff passes, value diff still fails, array order still significant, canonicalization composes with unordered[] and tolerate[], partition stability pins"
+    ],
+    "golden/tools/ci-replay.ts": [
+      "runMode composed into the TWO ORDERED TRANCHES on the same disposable branch: empty-pinned tranche replays BEFORE the staging state-builders, staged-pinned (default) tranche after in exactly today's (seq, filename) order; staging boundaries computed over the STAGED tranche only; the empty tranche carries no admin bearer (honest fail-fast if a future marker ever claims an admin path — corpus-invariant selftest-checked)",
+      "--plan census extended: the deterministic empty-tranche membership (names + paths + admin-path must-be-0 check), CI-checkable",
+      "--selftest grown: partition/boundary-over-staged-list/corpus-invariant pins",
+      "CaseResult.tranche evidence field (comparator never sees it)"
+    ],
+    "golden/cases/** (9 files)": "construction-only \"tranche\": \"empty\" markers on EXACTLY the §3-R5-enumerated empty-pinned cases: w3-marking-answers-teacher-200, w3-marking-queue-v2-teacher-200, w3-marking-throughput-teacher-200, w4-course-stats-empty-200, w4-flashcard-schedule-empty-200, w4-flashcard-trail-empty-200, w4-state-empty-200, w3-history-empty-student-200 + the separately-ruled w3-questions-topics-student-200 census case. ZERO expectation/tolerate/unordered edits (git diff per file = the marker line + one comma). w3-history-after-submit-200 stays STAGED per §3-R5's own note (H-class -> T-MIG-071)."
+  },
+  "disclosures": [
+    "count-label artifact: the ruling/card say '(7)' while §3-R5 enumerates 8 empty-state names (+1 census case ruled separately in the same effect list) — the ENUMERATION is the law; the label is a transcription artifact, not silently widened scope (9 = 8 + 1, each name quoted in the receipts)",
+    "F-class rider provenance: run-7 triage F ('deepEqualTolerant compares JSON.stringify(redacted) — object key insertion order is significant... RFC 8259: objects are unordered. Fix: canonicalize object keys before compare (extend selftest accordingly); unordered[] array-multiset semantics unchanged (T-MIG-024 scope intact)') + run-9 action register #3 'unprovable until #5 lands' + R3-D2 standing note — the exact one-pass the note describes",
+    "LIVE LEG: the agent sandbox is DNS-blocked (the standing ci-replay header records this) — the two-tranche live replay against a disposable Neon COW branch (T-MIG-035/063 discipline: drop + 404-verify, zero residue) is the standing CI instrument's leg on merge; the --plan census + corpus-invariant selftest + partition selftests are the offline proofs that the composition is exactly the ruled one",
+    "expected live flips (from the ruling's own failure modes): the 9 empty-tranche cases flip PASS on the empty posture; w3-marking-throughput-teacher-200 additionally needs the F-class rider (key order) — both delivered here; w3-history-after-submit-200 remains RED until T-MIG-071's tolerate[] amendments (H-class, deliberately out of this fence)"
+  ],
+  "gates": {
+    "baseline_of_record": "main d25626e first-hand (this session's stamp): 1525 ran / 1512 pass / 0 fail / 13 skip / 5958 expects / 80 files",
+    "branch_head": "bun test apps/api packages = 1525 ran / 1512 pass / 0 fail / 13 skip / 5958 expects / 80 files — DELTA +0/+0/+0/+0/+0/+0 EXACT (zero apps/** packages/** contact per the card's forbidden list)",
+    "typecheck": "root + packages/contracts + apps/api exit 0 (x3)",
+    "frozen_lockfile": "bun install --frozen-lockfile OK",
+    "selftests": "bun golden/runner.ts --selftest OK (incl. T-MIG-072 pins); bun golden/tools/ci-replay.ts --selftest OK (incl. partition/boundary/corpus-invariant pins)",
+    "plan_census": "bun golden/tools/ci-replay.ts --plan: 9 empty-pinned / 153 staged (seed posture), admin-path cases 0, staging boundaries unchanged (accounts @ w3-sme-ingest-rich-200, attempts @ w3-teacher-marking-queue-v2-rich-200, now resolved over the staged tranche)"
+  },
+  "fence": "golden/runner.ts + golden/tools/ci-replay.ts + the 9 construction-only case markers + receipts/ + this yaml + worklog — ZERO apps/**, packages/**, hub contact; zero comparator semantics widening (unordered[]/tolerate[] untouched); zero case deletions/re-pins; zero pacing; zero Neon/Render writes",
+  "next": "PR filed and handed to the desk (authors never self-merge)"
+}
