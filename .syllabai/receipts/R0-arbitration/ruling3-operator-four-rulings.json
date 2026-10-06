@@ -1,0 +1,77 @@
+{
+  "task_id": "R0-OPERATOR-RULINGS",
+  "kind": "arbitration/ruling3",
+  "authority": "OPERATOR of record, IM trace 1a1100c71ff48e05, 2026-10-06 — received verbatim as: '1 - Option B / 2 - (a) / 3 - Tolerate / 4 - Option A' against the four-ruling menu filed by R0-integrator in the same session",
+  "agent": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "timestamp": "2026-10-06",
+  "baseline_of_record": "main fdcfc53 (PR #112 merged); neon-replay union 142/177 (seed 129/162, prod 13/15) at 33e281f per receipts/T-MIG-068/run-001-union.json",
+  "rulings": [
+    {
+      "id": "R3-C",
+      "register_item": "C-class — v2-only register rate limiter (run-7 class C, 8 cases; run-9 action #10)",
+      "ruling": "OPTION B — the limiter STAYS as v2 hardening",
+      "effects": [
+        "The run-7 class-C parity-first action ('auth lane strips or aligns the limiter') is CANCELLED before implementation — no auth-lane code change, the limiter is operator-endorsed v2 behavior",
+        "Each affected case carries justified:true + an expect.headers Retry-After pin per the T-MIG-004 F-3 gate (GOLDEN_MASTER §4 justified-divergence lineage; the health.json case is the field-convention precedent)",
+        "STANDING LAW unchanged: the replay runner must NOT pace/slow around the 429 — pacing would mask the (now endorsed) divergence and is forbidden",
+        "Membership rotates burst-order (5 of 8 tripped in run #9); the family of record is the run-7 class-C eight: auth-register-admin-refused-403, auth-register-bad-email-400, auth-register-blank-displayname-400, auth-register-missing-fields-400, auth-register-password-no-digit-400, auth-register-short-password-400, auth-register-teacher-no-joincode-403, auth-register-unknown-role-400. The claimant verifies burst-order coverage on the live instrument and may extend the amendment to auth-register-success-201 / auth-register-duplicate-email-409 ONLY if the instrument shows them tripping, disclosed in the PR",
+        "checkHeaders compares exact values (golden/runner.ts:90-103); if the live Retry-After value is deterministic at the replay posture, pin it; if it rotates, a minimal runner extension (pattern-value header match, construction-only, selftest must grow) is IN scope per the T-MIG-004 F-3 harness lineage — disclosed in the PR"
+      ],
+      "routed_to": "T-MIG-071 (case-owner amendment band; tooling rider only if the header pin needs pattern support)"
+    },
+    {
+      "id": "R3-D2",
+      "register_item": "RICH-200-C/E + the topics census residual — corpus sequencing (run-9 §3-R5; options filed in receipts/T-MIG-067/run-002-union.json)",
+      "ruling": "OPTION (a) — seq-position: the seed pass becomes ordered tranches on the corpus's own seq machinery",
+      "effects": [
+        "Empty-pinned cases replay BEFORE the staging state-builders; staged-pinned cases replay AFTER — both postures stay covered, no case re-pinning to the other posture, zero case deletions",
+        "Resolves the RICH-200-C empty-state 200s (7), the w3-questions-topics-student-200 staged-census diff (6/5 live vs 4/4 capture — the port law is byte-exact on the unstaged posture per the run-001 accounts-only proof), and the corpus half of RICH-200-E's exposure",
+        "Options (b) re-pin and (c) tolerate[] are REJECTED for this class of record",
+        "RICH-200-E tie-order nondeterminism (families: live [4,1,2,...] vs [2,...] vs gold [1,4,2...], multiset identical always) is NOT solved by tranche order alone — the case-owner amendment band assesses the residual (unordered[] multiset semantics or a tolerate/canonical-key disposition) on the live instrument after composition lands and discloses the choice",
+        "Standing note unchanged: F-class comparator canonicalization (run-7 action 3) becomes provable once composition lands (same file, one pass allowed)"
+      ],
+      "routed_to": "T-MIG-072 (tooling lane — ci-replay/corpus composition)"
+    },
+    {
+      "id": "R3-D3",
+      "register_item": "w4-target-series-put-201 wall-clock countdown residual (receipts/T-MIG-068/run-001-union.json residual_disposition)",
+      "ruling": "TOLERATE — option (a) of the three filed",
+      "effects": [
+        "daysToWindowStart + daysToWindowEnd join the case's tolerate[] array (wall-clock-derived by the frozen law ChronoUnit.DAYS.between(today, window); the port's utcToday law is verified faithful — the divergence is capture-age, not computation)",
+        "The case gains justified:true citing the capture-time anchor (2026-10-05 capture; drift grows +1 day per replay day — re-pinning would be recurring maintenance forever)",
+        "Options (b) re-pin per replay and (c) conditional-tolerance are REJECTED; zero silent widening — the DATE fields, series identity, estimated and entryDeadlinePassed remain byte-pinned",
+        "Sibling of the timestamp tolerance class; no port defect of record"
+      ],
+      "routed_to": "T-MIG-071 (case-owner amendment band)"
+    },
+    {
+      "id": "R3-D4",
+      "register_item": "Identity-pin policy — H-class capture-minted identity fields (run-7 class H; run-9 action #7; auth-me staged-identity tranche candidate)",
+      "ruling": "OPTION A — tolerate[] case-owner amendments; the staged-identity tranche is NOT filed",
+      "effects": [
+        "w4-register-learner-201 += accessToken (capture-minted at register time)",
+        "w3-history-after-submit-200 += learnerId, attemptId (dual-cause with the B-class seed posture per run-7 note H — clears fully only once T-MIG-072 composition lands; expected red until then, disclosed)",
+        "auth-me-with-bearer-200: id is already tolerated; the amendment adds the seeded-identity fields the next replay's diff shows divergent (email, displayName expected per run-7 note H 'tolerate=[id] insufficient') — the claimant verifies field-by-field against the live diff and amends exactly those, disclosed",
+        "The staged-identity tranche candidate (run-7 B-note routing, run-9 H row) is SHELVED of record — tolerate[] is the operator-endorsed mechanism for capture-minted identity",
+        "All amendments go through the case-owner lane — the CI runner never edits cases (read-only posture, run-7 note H)"
+      ],
+      "routed_to": "T-MIG-071 (case-owner amendment band)"
+    }
+  ],
+  "register_delta": {
+    "run9_action_5_two_tranche_composition": "DECIDED — option (a); routed T-MIG-072",
+    "run9_action_7_tolerate_amendments": "DECIDED — Option A; routed T-MIG-071",
+    "run9_action_10_register_429_parity": "DECIDED — Option B (limiter stays); routed T-MIG-071; the auth-lane strip/align action is CANCELLED",
+    "new_wall_clock_ruling": "TOLERATE; routed T-MIG-071",
+    "standing_unchanged": [
+      "run9 action 1 (E-class bearer-posture fidelity, tooling P1 — v2 401 postures unproven 4+ runs)",
+      "run9 action 3 (F-class comparator canonicalization — provable after T-MIG-072)",
+      "run9 action 6 (I-class non-JSON sentinel law, tooling P3)",
+      "run9 action 8 (R1 curriculum re-pin to the 401 law, case owners P2)",
+      "run9 action 11 (G-class prod createdAt passthrough, content lane P3)",
+      "nba.ts :42-46 header nit (P3)"
+    ]
+  },
+  "projected_clearing": "T-MIG-071 + T-MIG-072 land ≈ +14..17 of the remaining 35 reds (C-class 8, wall-clock 1, H/amendments 3..5, composition-dependent 3..7); the standing items cover the rest — 177/177 reachable with zero case deletions and zero comparator widenings (run-9 projection unchanged)",
+  "execution_law": "Both cards are OPEN and unassigned; claim-in-first-commit per AGENT_COORDINATION §2; earliest-claim-wins (R0s-ROUND-10a §2.1); authors-never-self-merge applies at PR time"
+}

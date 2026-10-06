@@ -1,0 +1,36 @@
+version: 1
+task:
+  id: T-MIG-071
+  title: "T-MIG-071 — the operator-ruling case-amendment band (R0 arbitration ruling3, receipts/R0-arbitration/ruling3-operator-four-rulings.json, operator trace 1a1100c71ff48e05): (R3-C) the eight run-7 class-C auth-register cases gain justified:true + the expect.headers Retry-After pin — the limiter STAYS as operator-endorsed v2 hardening, the auth-lane strip/align action is CANCELLED, and the runner must NOT pace around the 429; (R3-D3) w4-target-series-put-201: daysToWindowStart/daysToWindowEnd join tolerate[] + justified:true (capture-time anchor, drift +1 day per replay day — the port's utcToday law is faithful); (R3-D4) tolerate[] identity amendments per Option A — w4-register-learner-201 += accessToken, w3-history-after-submit-200 += learnerId/attemptId (clears fully only after T-MIG-072 composition), auth-me-with-bearer-200 += the seeded-identity fields the live diff shows (email/displayName expected; id already tolerated); the staged-identity tranche is SHELVED"
+  owner: "OPEN — unassigned; the claiming lane claims in-first-commit per AGENT_COORDINATION §2"
+  status: OPEN # filed by the R0-integrator desk 2026-10-06 on operator ruling; case-owner lane work, .syllabai/** + golden/cases/** + (rider) golden/runner.ts only
+  priority: P2
+  wave: ruling-execution # not wave work — the four operator rulings' case-side half
+  deps: []
+  execution_record: >
+    (filed by R0-integrator, 2026-10-06 — operator trace 1a1100c71ff48e05 answered the
+    four-ruling menu with Option B / (a) / Tolerate / Option A; the receipt is
+    receipts/R0-arbitration/ruling3-operator-four-rulings.json and it is the LAW of record
+    for every amendment in this band. Evidence bases: run-7 class C table
+    (receipts/R0R6-R7-TRIAGE/R0R6_R7_DIVERGENCE_TRIAGE.md), run-9 delta actions 7/10,
+    T-MIG-068 run-001-union.json residual_disposition, T-MIG-067 run-002-union.json.
+    Mechanics verified first-hand at filing time: expect.headers exists in the runner's
+    Case schema (golden/runner.ts:34) and checkHeaders (runner.ts:90-103) compares
+    case-insensitive NAMES with EXACT values — if the live Retry-After rotates, the rider
+    (below) applies; justified:true is the health.json GOLDEN_MASTER §4 field convention.
+    The CI runner never edits cases — this band is the case-owner lane's file edit.)
+  scope:
+    allowed:
+      - "golden/cases/auth-register-{admin-refused-403,bad-email-400,blank-displayname-400,missing-fields-400,password-no-digit-400,short-password-400,teacher-no-joincode-403,unknown-role-400}.json (justified:true + Retry-After pin; family extension to success-201/duplicate-email-409 ONLY if the live instrument shows them tripping — disclosed)"
+      - "golden/cases/w4-target-series-put-201.json (tolerate[] += daysToWindowStart, daysToWindowEnd; justified:true; ALL other fields stay byte-pinned)"
+      - "golden/cases/w4-register-learner-201.json (tolerate[] += accessToken)"
+      - "golden/cases/w3-history-after-submit-200.json (tolerate[] += learnerId, attemptId)"
+      - "golden/cases/auth-me-with-bearer-200.json (tolerate[] += the live-diff-verified seeded-identity fields)"
+      - "RIDER (only if Retry-After rotates at the replay posture): golden/runner.ts pattern-value header support + golden/tools selftest growth — construction-only, T-MIG-004 F-3 lineage, disclosed in the PR"
+      - ".syllabai/receipts/T-MIG-071/**; this yaml; .syllabai/worklog.md (append-only)"
+    forbidden:
+      - "apps/**, packages/**, the auth limiter itself (R3-C: it STAYS — any limiter change violates the ruling)"
+      - "pacing/sleep/backoff anywhere in golden/runner.ts (standing masking ban, run-7 note C)"
+      - "case DELETIONS or re-pinning cases to the other posture (zero-deletion doctrine)"
+      - "tolerate[] widening beyond the ruled fields (zero silent widening; byte-pins on wall-clock case stay except the two ruled fields)"
+      - "production Neon/Render writes of any kind"
