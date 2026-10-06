@@ -3,7 +3,7 @@ task:
   id: T-MIG-059
   title: "Classroom binding-law adoption — F-0 binding-class collapse (wrong-typed fields -> frozen malformed_body) + F-1 missing-field message (@NotBlank null-bind -> 'field: must not be blank'; the #90 routes-classifier prior art)"
   owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) — operator directive trace 1a10f743c93c27b9 'F-0/F-1 binding-law'"
-  status: CLAIMED # claim @ 2026-10-06T04:33:45Z on branch t-mig-059/r0 cut @ origin/main 1aea8bc
+  status: IN_REVIEW # run-002 @ 2026-10-06T04:45:00Z: the F-0/F-1 binding-law adoption LANDED on t-mig-059/r0 (classifier restructure to the fleet classifyBodyError shape: isBinding gate -> malformed_body verbatim; invalid_type null-bind -> jakarta 'field: must not be blank'; root-null disclosed posture kept + pinned); 7 route pins; gates 1094/0/13skip/3302 -> 1101/0/13skip/3330 EXACT (+7 tests/+28 expects/+0 files) vs the measured claim-commit baseline; typecheck x3; selftest OK; zero contracts/golden/service contact; prior art credited to closed #90 (t-mig-052/r0-t2 @ 6e9bfcf)
   claimed_at: "2026-10-06T04:33:45Z"
   priority: P2
   wave: 5
