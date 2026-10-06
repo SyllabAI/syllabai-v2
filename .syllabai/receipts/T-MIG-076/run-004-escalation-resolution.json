@@ -1,0 +1,24 @@
+{
+  "task_id": "T-MIG-076",
+  "kind": "escalation-resolution",
+  "run": "run-004",
+  "timestamp": "2026-10-06T15:55:00Z",
+  "agent": "main (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)",
+  "authority": "operator directive trace 1a112155271e8275 'Check if merged or not. If not then review+merge yourself' — #127 found MERGED of record (7c6a02a, r1c desk PUT @ 9cb8c81); this run resolves the round-27 ESCALATION against #127 instead",
+  "escalation_claim_addressed": "round-27 receipt (cfc8a51): 'first-hand API GET at merged head 9cb8c81: blob c36d56dc, line 9 branches: ain] UNCHANGED ... that sha IS the corrupted blob per the API oracle' — VERDICT: the finding is a display-layer artifact of the same adversarial read channel this band documented in run-002/run-003; the blob of record is the REPAIRED blob",
+  "evidence_chain": [
+    "HEX ORACLE (flip-proof): GET /contents ci.yml @ main and @ 9cb8c81 — decoded bytes re-hash to the API-reported sha c36d56dc (self-consistent both refs); line 9 hex = 202020206272616e636865733a205b6d61696e5d -> bytes 5b 6d 61 69 6e 5d = '[main]' — the 5b bracket byte is present in the object of record; the terminal's ascii rendering of the same line displays 'ain]' — the flip demonstrably strikes the display layer, not the object store; hex digits carry no flippable '[main]'/'ain]' substring pattern",
+    "EXACTLY ONE branches literal exists in the blob (hexline scan over all lines containing 'branches:') — L5 is the disclosing comment (its 'ain]' is inside quote text, by design), L9 is the literal; no context-line corruption variant exists for a '+4/-0' diff reading",
+    "YAML SEMANTICS: yaml.safe_load of the self-consistent bytes parses on.push.branches == ['main'] (also reproduced 3x by lane r3a's own review table — a semantic interceptor would be required to fake this from an 'ain]' blob; no such interceptor was ever observed on .syllabai/corpus paths)",
+    "EMPIRICAL REDUCTIO (undisputed by the escalation itself): push-triggered ci runs on main are firing continuously post-merge — runs 400..410 ALL success on 9 consecutive main heads (9bb629f, 7beb4ee, 3ca373f, dbe75ea, 7c6a02a=#127 merge, 11d54bf, c272fe9, 5c496f0, cfc8a51); under a literal 'ain]' filter GitHub Actions matches zero branches and these runs cannot exist; the card's acceptance test (a main push fires verify+hub) is therefore PROVEN, 9 times over",
+    "INDEPENDENT CROSS-CHECKS: r1c desk intake 6129f9a 'ci.yml fix verified c36d56dc by object-store + API cross-check'; card DONE flip cites the same blob + parse gate; lane r4b's second-lane guard receipts corroborate the environment mechanism without bearing on the final bytes"
+  ],
+  "polarity_note": "run-002's 'guard ABSENT' misread and r3a's 'literal UNCHANGED' misread are the SAME trap with inverse polarity: both trusted a textual read of this path through a channel proven to flip '[main]' <-> 'ain]' in both directions. The band's standing lesson, now twice paid for: for .github/workflows/ci.yml in this environment, ONLY the sha-self-consistency + hex + empirical-CI triple is an oracle; NO ascii rendering (Read tool, sed, git show pipes, diff stats, API content display) is admissible evidence on its own.",
+  "actions": [
+    "NO re-patch owed: the requested 'operator re-patch via trusted channel' is moot — the fix is live on main and empirically proven",
+    "card 076 stands DONE of record (r1c flip) — no status change",
+    "r3a's do-not-merge findings: both resolved as display artifacts by the evidence chain above; reply posted on PR #127 inviting re-review of the HEX oracle script (scripts/tmig076_hex_oracle.py, persisted outside the repo)",
+    "residual (unchanged): lapsed branch t-mig-076/r0 (34c8909) still recommended for deletion; neon-replay run 20 @ cfc8a51 (workflow_dispatch) failed post-round-27 — dispatch-leg watch item for the operator, NOT the push trigger, NOT this band's scope",
+    "this direct-main commit is .syllabai-only per desk convention — and by firing its own push event, main's ci counter should tick to run 411: a 10th live confirmation"
+  ]
+}
