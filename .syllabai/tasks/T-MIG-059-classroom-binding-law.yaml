@@ -1,0 +1,76 @@
+version: 1
+task:
+  id: T-MIG-059
+  title: "Classroom binding-law adoption — F-0 binding-class collapse (wrong-typed fields -> frozen malformed_body) + F-1 missing-field message (@NotBlank null-bind -> 'field: must not be blank'; the #90 routes-classifier prior art)"
+  owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) — operator directive trace 1a10f743c93c27b9 'F-0/F-1 binding-law'"
+  status: CLAIMED # claim @ 2026-10-06T04:33:45Z on branch t-mig-059/r0 cut @ origin/main 1aea8bc
+  claimed_at: "2026-10-06T04:33:45Z"
+  priority: P2
+  wave: 5
+  deps: [T-MIG-052, T-MIG-056]
+  basis: >
+    The REGISTER-OPEN F-0/F-1 binding-law divergences — the r0 lane's
+    REQUEST_CHANGES findings of record on PR #89 (comment 6008621186,
+    2026-10-06T03:17:21Z), explicitly left unregistered by the #89
+    ratification verdict and re-confirmed register-open on the T-MIG-056
+    card + merge receipt ("F-0/F-1 unchanged per the ratification
+    registration; #90's routes classifier = ready prior art"). This card
+    claims that pass. Scope of record (routes-layer only):
+      F-0 — binding-class collapse: a wrong-typed field (invalid_type with
+        received not in {undefined, null}, and invalid_string) must map to
+        400 malformed_body "request body is not readable (check field
+        types and enum values)" VERBATIM — Jackson binds the whole
+        document BEFORE @Valid, so a binding failure anywhere beats every
+        constraint (the R-1 fleet convention; teachermarking
+        classifyBodyError :129 is the reference). Today: 400
+        validation_failed "field: request invalid".
+      F-1 — missing-field message: invalid_type received undefined/null
+        on a @NotBlank property renders the jakarta DEFAULT "field: must
+        not be blank" (GlobalExceptionHandler :158-165
+        getDefaultMessage()). Today: "field: request invalid" — the
+        :163 orElse, reserved for the root-null case, is serving
+        per-field messages.
+    Implementation adopts the closed #90 branch's full routes classifier
+    (t-mig-052/r0-t2 @ 6e9bfcf — apps/api/src/routes/classroom/index.ts
+    classifyBodyError :121 binding-class detection, :136-137
+    @NotBlank(null) rendering) reshaped onto the MERGED #89/#93 file
+    layout (routes/classroom.ts), keeping the #93-adopted branches
+    byte-exact (too_small defensive, custom refine verbatim, too_big
+    tightened { maximum: number } cast — the ?? 0 fallback stays dropped
+    per the #93 nit-2 ruling).
+  scope: |
+    allowed:
+      - apps/api/src/routes/classroom.ts      # classifier + bodyErrorResponse + header doc block
+      - apps/api/test/classroom/routes.test.ts # the F-0/F-1 pins
+      - .syllabai/tasks/T-MIG-059-classroom-binding-law.yaml
+      - .syllabai/receipts/T-MIG-059/**
+      - .syllabai/worklog.md                  # append-only
+    forbidden:
+      - packages/**                           # ZERO contracts change — the schemas are already exact (T-MIG-056)
+      - golden/**                             # zero golden contact — no classroom case pins either divergent class
+      - apps/api/src/services/**              # zero service change — service laws unreachable-over-HTTP postures stay pinned at t1 level
+      - any other routes module               # the selfmark/assessment/teachermarking classifiers already carry the convention
+  execution_record: >
+    (claim entry 2026-10-06T04:33:45Z) Pre-claim zero-collision scan at
+    origin/main 1aea8bc: zero t-mig-059* heads on origin (ls-remote),
+    zero T-MIG-059 mentions anywhere in .syllabai/; open PRs #95 only
+    (r9-hubx T-MIG-061 Wave-6 tranche-1 — disjoint fence, hands off);
+    #94 (T-MIG-058 selfmark depth pin, r1) merged 1aea8bc 04:27:10Z.
+    Id band verified: 058 taken (merged #94), 060 reserved (Wave-6 prep
+    w0a), 061 taken (in flight #95) — 059 is the next free non-reserved
+    id. Evidence chain re-read this session: findings of record
+    (comment 6008621186) F-0 vector {"courseLabel": 123} and F-1 vector
+    {} / null-bind, verified at the frozen source 6cad6ef when filed;
+    prior art extracted from 6e9bfcf and diffed against the merged
+    classifier — the ONLY divergences are the isBinding gate (missing)
+    and the invalid_type(null/undefined) rendering (falls to the
+    default); the #93 custom/too_big branches are already the ratified
+    law. Contracts re-read: no format checks on the four request
+    schemas (email is @NotBlank @Size only — NO .email()), so
+    invalid_string is defensive-only on this band and every REQUIRED
+    field is @NotBlank — the "must not be blank" rendering is
+    universally correct here (teachermarking/selfmark render "must not
+    be null" over their @NotNull DTOs — same convention, per-DTO
+    message). Golden scan: zero classroom golden cases pin either class
+    (the 3 malformed_body cases are w3-attempt — different band).
+    Baseline recorded at the claim commit: gates on 1aea8bc content.
