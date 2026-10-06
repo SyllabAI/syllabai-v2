@@ -3,7 +3,7 @@ task:
   id: T-MIG-063
   title: "ci-replay rich-200 parity — the Neon replay harness gains the T-MIG-051 runner capabilities (multipart bodyFile, /admin route rule, seed-t51-rich200 staging) so the N-4 rich-200 family replays on the live instrument"
   owner: "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646) — operator directive trace 1a10f806acdec285 'processing of the Rich-200 series'"
-  status: CLAIMED
+  status: IN_REVIEW # PR filed; run-002 implementation receipt attached; NOT self-merged — merge desk per authors-never-self-merge standing delegation
   priority: P1 # the family is 0/7 on the standing live instrument while the port is locally proven 17/17 — the census under-reports parity until the harness reaches capability parity
   wave: 3 # the family's wave (N-4 / T-MIG-051 lineage); tooling execution per T-MIG-044 lineage conventions
   deps: [T-MIG-044, T-MIG-051]
@@ -25,6 +25,15 @@ task:
     the requirement themselves ("Replay requires golden/tools/seed-t51-rich200.ts
     state", w3-sme-ingest-rich-200 description).
   execution_record: >
+    (run-002 entry 2026-10-06T05:1xZ) IMPLEMENTED on t-mig-063/r0: ci-replay.ts
+    gains buildMultipartBody import (engine untouched), the admin route rule
+    AFTER name rules (+ the role-faithful -teacher-403 name rule), the
+    sentinel-governed two-boundary staging spawning seed-t51-rich200.ts
+    verbatim, --selftest (16 assertions OK) and the --plan staging
+    disclosure; neon-replay.yml Pass A gains DATABASE_URL (prod pass
+    unchanged). Gates EXACT: typecheck x4 exit 0; bun test 1144/0/13skip/3485
+    = main ddbe9fe byte-identical baseline; runner selftest OK; zero case
+    files, zero runner.ts edits. Receipt run-002-implementation.json.
     (claim entry 2026-10-06T04:5xZ) Claim per §2: card + run-001 disposition
     receipt + worklog appended in the SAME commit that starts t-mig-063/r0,
     pushed before any fix work (the T-MIG-055 process-gap lesson: free-id

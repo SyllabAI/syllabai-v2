@@ -66,8 +66,10 @@ jobs:
       - name: Install workspace deps (root lockfile, all workspaces)
         run: bun install --frozen-lockfile
 
-      - name: Harness sanity (selftest — the comparator must prove itself first)
-        run: bun golden/runner.ts --selftest
+      - name: Harness sanity (selftests — the comparators must prove themselves first)
+        run: |
+          bun golden/runner.ts --selftest
+          bun golden/tools/ci-replay.ts --selftest   # T-MIG-063: rule precedence + staging boundaries + multipart wiring
 
       - name: Preconditions (Neon config present; working tree clean)
         env:
@@ -120,6 +122,13 @@ jobs:
         env:
           TARGET: "http://localhost:8080"
           CASE_MODE: "seed"
+          # T-MIG-063: the N-4 rich-200 family's state builder
+          # (golden/tools/seed-t51-rich200.ts, spawned verbatim by the
+          # harness at its two loop boundaries) needs the disposable seed
+          # branch's direct pg url — same credential surface apply-reset
+          # already uses. Fail-fast honest harness error when absent; the
+          # prod pass never sees the family (REALDATA filter).
+          DATABASE_URL: ${{ env.NEON_SEED_URL }}
         run: bun golden/tools/ci-replay.ts --report-out reports/seed.json
 
       - name: Stop seed boot
