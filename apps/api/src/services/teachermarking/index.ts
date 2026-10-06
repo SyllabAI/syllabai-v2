@@ -99,7 +99,6 @@ interface AttemptLockRow {
   id: string;
   learner_id: string;
   question_id: string;
-  exam_paper_id: string | null;
   marking_state: string;
   evidence_emitted: boolean;
 }
@@ -489,7 +488,7 @@ export class TeacherSmartMarkService {
     if (attemptIdRows.length === 0) throw new NotFoundError("answer", answerId);
     const attemptId = attemptIdRows[0]!.attempt_id;
     const attemptRows = (await this.sql`
-      select id, learner_id, question_id, exam_paper_id, marking_state, evidence_emitted
+      select id, learner_id, question_id, marking_state, evidence_emitted
       from attempts where id = ${attemptId} for update
     `) as unknown as AttemptLockRow[];
     if (attemptRows.length === 0) throw new NotFoundError("attempt", attemptId);
@@ -714,7 +713,7 @@ export class TeacherMarkingService {
     if (attemptIdRows.length === 0) throw new NotFoundError("answer", answerId);
     const attemptId = attemptIdRows[0]!.attempt_id;
     const attemptRows = (await this.sql`
-      select id, learner_id, question_id, exam_paper_id, marking_state, evidence_emitted
+      select id, learner_id, question_id, marking_state, evidence_emitted
       from attempts where id = ${attemptId} for update
     `) as unknown as AttemptLockRow[];
     if (attemptRows.length === 0) throw new NotFoundError("attempt", attemptId);

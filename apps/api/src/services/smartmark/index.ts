@@ -440,6 +440,10 @@ interface AttemptLockRow {
   id: string;
   learner_id: string;
   question_id: string;
+  /** join-derived from questions.exam_paper_id — the frozen core reads paper
+   *  scope off attempt.question() (SmartMarkService.java :139/:236,
+   *  StudentSmartMarkService.java :163); the attempts table has no such column
+   *  on the live baseline (42703 — T-MIG-050 R-050-A). */
   exam_paper_id: string | null;
   marking_state: string;
   evidence_emitted: boolean;
@@ -488,9 +492,15 @@ export class SmartMarkService {
    * serialization).
    */
   async markAttempt(attemptId: string): Promise<Map<string, SmartMarkResultRow>> {
+    // paper scope via the attempt→question join (frozen derivation —
+    // kappaGatePassed(question.examPaperId())); "for update of a" keeps the
+    // lock surface on the attempt row only, matching the frozen pessimistic
+    // read (the question load is unlocked there too).
     const attemptRows = (await this.sql`
-      select id, learner_id, question_id, exam_paper_id, marking_state, evidence_emitted
-      from attempts where id = ${attemptId} for update
+      select a.id, a.learner_id, a.question_id, a.marking_state, a.evidence_emitted,
+             q.exam_paper_id
+      from attempts a join questions q on q.id = a.question_id
+      where a.id = ${attemptId} for update of a
     `) as unknown as AttemptLockRow[];
     if (attemptRows.length === 0) throw new NotFoundError("attempt", attemptId);
     const attempt = attemptRows[0]!;
@@ -735,9 +745,13 @@ export class StudentSmartMarkService {
   // ── grounding ─────────────────────────────────────────────────────────────
 
   private async loadOwnedAttempt(learnerId: string, attemptId: string) {
+    // paper scope via the attempt→question join (frozen derivation,
+    // StudentSmartMarkService.java :163); lock stays attempt-only ("of a").
     const attemptRows = (await this.sql`
-      select id, learner_id, question_id, exam_paper_id, marking_state, evidence_emitted
-      from attempts where id = ${attemptId} for update
+      select a.id, a.learner_id, a.question_id, a.marking_state, a.evidence_emitted,
+             q.exam_paper_id
+      from attempts a join questions q on q.id = a.question_id
+      where a.id = ${attemptId} for update of a
     `) as unknown as AttemptLockRow[];
     if (attemptRows.length === 0) throw new NotFoundError("attempt", attemptId);
     const attempt = attemptRows[0]!;
@@ -793,9 +807,13 @@ export class StudentSmartMarkService {
   }
 
   private async loadFeedbackSource(learnerId: string, attemptId: string, partId: string) {
+    // paper scope via the attempt→question join (frozen derivation); plain
+    // read — this path takes no attempt lock in the frozen core either.
     const attemptRows = (await this.sql`
-      select id, learner_id, question_id, exam_paper_id, marking_state, evidence_emitted
-      from attempts where id = ${attemptId}
+      select a.id, a.learner_id, a.question_id, a.marking_state, a.evidence_emitted,
+             q.exam_paper_id
+      from attempts a join questions q on q.id = a.question_id
+      where a.id = ${attemptId}
     `) as unknown as AttemptLockRow[];
     if (attemptRows.length === 0 || attemptRows[0]!.learner_id !== learnerId) {
       throw new NotFoundError("attempt", attemptId);
