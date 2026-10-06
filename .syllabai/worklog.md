@@ -2377,3 +2377,23 @@ Stage Summary:
 - T-MIG-033 code scope COMPLETE (t1 #50 4be24e6 services + t2 #64 d975ed9 teacher routes/mounts + t3 #77 5db0667 SME admin); /api/v1/admin/question-bank {POST /ingest, GET /status} LIVE on main; N-4 rich-200 capture stays with the golden-capture lane's register.
 - CI register item CLOSED: Actions dark window (Oct-5 18:25Z, R0s-ROUND-10b) had self-recovered by 19:06Z — live runs attach again; operator billing check no longer urgent.
 - Remaining open PRs at merge time: #72 t-mig-041/r9-hubx (band hygiene), #74 t-mig-043/w0a + #76 t-mig-043/r1 (DUAL-PR collision on the 043 band — R7a's Task-14 flag stands, needs an R0 collision ruling), #75 round11-receipt/r3a (worklog-only receipt), #78 t-mig-033-t3/r4b (t3 competitor branch — SUPERSEDED by #77's merge unless it carries delta work; needs inspection before close/ruling).
+
+---
+Task ID: 16
+Agent: Super Z (operator-directed independent lane r9-hubx, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Operator round-12 directive (trace 1a10eb17f6922bdd) — "Check if R0 has merged or not. If not, review+merge yourself and continue working" — queue sweep + the 041-t2/043/033-t3 collision rulings requested by Task ID 14/15
+
+Work Log:
+- Sandbox recycled between rounds: fresh clone @ d077ffa; main advanced to c94e437 (delegated-11 #69 receipt) mid-review and past d9fc9b4 (Task-15 #77 housekeeping) mid-merge — fetch-before-every-action held throughout; no action was taken on stale state.
+- Sweep start: 6 open PRs (#72 #74 #75 #76 #77 #78) with R0/delegated-11 having merged #66-#71/#73. CI register: hub+verify green on #74 head 849ba28 and #77 head 7203982.
+- RULING 041-t2 (the Task-14/15 double-PR flag): #72 (r9-hubx OWN PR) CLOSED as losing duplicate — r7a commits @ 18:23:46Z vs r9-hubx @ 18:27:14Z (per the #75 measurement); #69 merged 00:53:39Z (558ef03) and tranche-2 is live. Withdrawal executed under authors-never-self-merge (comment 6007171898); zero duplicate code landed (branch never merged).
+- RULING 043 (earliest-claim-wins): #74 (w0a, claim db87a9a @ 18:01:06Z) MERGED — intake 369d563 (worklog append-only union, 1 hunk), gates at intake head: typecheck x4 exit 0; api+packages 835 pass / 0 fail / 13 skip / 2378 expect (= main-with-#69 772 + 63 learner-me delta, exact); hub 36/0; golden --selftest OK; merge 23b23e3 (server-side mergeable flag lagged dirty through two polls — merge itself clean). #76 (r1, sole commit 18:44:28Z, 43min after the w0a claim) CLOSED as losing duplicate (comment 6007171280): exam-series + flashcards live inside w0a's tranche-1 band delivered by 23b23e3; r1's supersession disclosure moot; credited as prior art.
+- RULING 033-t3: #77 found ALREADY MERGED mid-sweep (5db0667 + housekeeping d9fc9b4 by the Task-15 lane) — skipped, no double-merge. #78 (r4b claim 6fe5b7a @ 19:01:57Z vs r0 claim 9608ed1 @ 18:28:47Z, 33min earlier; both filed run-007-claim-tranche3.json) CLOSED as losing duplicate (comment 6007170493); r4b's line-against-line work credited as corroborating the frozen-law port.
+- #75 (round-11 receipt, worklog-only) MERGED ce45614: my intake push lost the FF race to r3a's own concurrent intake (fec1bb9 — the #55 precedent repeated); per the no-force-push law I dropped my local intake commit and the API merge landed on THEIR tip; post-merge main worklog verified 0 conflict markers; final-state gates: 893 pass / 0 fail / 13 skip (= 835 + 58 sme, exact), hub 36/0, selftest OK.
+- Terminal state: open PRs = 0 (API re-read); this entry is the only direct-main write by this lane (sweep-receipt precedent acce2c6/d077ffa/c94e437/d9fc9b4); PAT env-inline per command, never persisted; no force-push anywhere.
+
+Stage Summary:
+- Queue fully swept: 3 merges (#74 mine 23b23e3 · #75 mine-on-r3a-tip ce45614 · #77 by Task-15 5db0667) + 3 ruled closures (#72/#76/#78) with on-thread ruling comments citing commit-timestamp evidence.
+- T-MIG-043 tranche-1 LIVE: services/learner-me (1308 lines, single-module 033 shape) + packages/contracts/src/learner-me.ts + 51 fakeSql pins + the exam-series wire contracts; hub flip deliberately NOT touched (law respected).
+- Collision register CLEARED: the #69/#72 double-PR is resolved (r7a held earliest claim; #72 withdrawn), the 043 dual-PR is resolved (w0a honored per #75, #76 closed), the 033-t3 dual-claim is resolved (r0 earliest by 33min, #78 closed). No open duplicate claims remain.
+- LANE IDLE — no unclaimed ratified code scope observed at sweep end; next operator routing decides.
