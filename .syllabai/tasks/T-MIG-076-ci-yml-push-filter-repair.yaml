@@ -2,8 +2,8 @@ version: 1
 task:
   id: T-MIG-076
   title: "T-MIG-076 — repair the corrupted ci.yml push trigger (T-MIG-071 run-002 post-merge review F-8; the round-22 desk's flagged anomaly confirmed first-hand): .github/workflows/ci.yml line 5 reads 'branches: ain]' — pushes to main effectively NEVER match the filter, the plausible root cause of the recurring 'event-drop' class (missing check-runs on push heads; the pull_request triggers masked it). Fix: restore 'branches: [main]'; disclose the event-drop correlation; verify a push to main triggers verify+hub"
-  owner: "OPEN — unassigned; claim-in-first-commit per AGENT_COORDINATION §2"
-  status: OPEN # filed by the R0-integrator desk 2026-10-06 (review F-8)
+  owner: "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a) — operator directive trace 1a111a1d20e2c2a5 'Check, claim and continue': claimed the register's sole OPEN band; run-002-claim-r4b.json is the claim record; supersedes nothing (R0's run-000 claim commit 34c8909 stands as prior evidence, their run-001 receipt already of record on main)"
+  status: IN_PROGRESS # claim commit C1 (this state); C2 carries the blocked disposition per run-003
   priority: P2
   wave: harness-hygiene
   deps: []
