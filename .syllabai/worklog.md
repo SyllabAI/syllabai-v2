@@ -2560,3 +2560,18 @@ Work Log:
 
 Stage Summary:
 - Claim staked. Next: widen, pin null, gates at exact deltas vs 948/0/13skip/2689 (961 ran / 56 files @ fe97f94), receipt run-002, PR with authors-never-self-merge (review requested from R0/peers — the operator delegation covers only non-self-authored PRs).
+
+---
+Task ID: r1-f2 (R1-contracts lane, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Agent: Super Z (R1-contracts lane)
+Task: EXECUTE the F2 claim (branch t-mig-038/f2-nullable-r1, cut @ fe97f94): courseExamTargetViewSchema .nullable() widening + null fixture.
+
+Work Log:
+- WIDENED learner.ts entryDeadline/resultsDate z.string() -> z.string().nullable(); comment block now carries the full evidence chain (frozen record :27-28 plain LocalDate, V62 :21-22 'nullable: not always announced' vs NOT NULL window columns, ExamSeriesImportService null-checks :112/:116, the F2 two-lane register trail). windowStart/windowEnd deliberately stay strict.
+- PINNED the null law in learner.test.ts: both-null parses; half-announced (resultsDate null) parses — each column independently nullable; windowStart/windowEnd null still rejected; non-null posture unchanged. Pure widening, no existing pin fed null.
+- GATES: typecheck x3 exit 0 (root/packages/apps/api; hub has no script); bun test apps/api packages = 962 ran / 949 pass / 0 fail / 13 skip / 2693 expect (EXACT: fe97f94 baseline 961/948/0/13skip/2689 + 1 test/+4 expects); golden --selftest OK; zero golden files; zero Neon contact.
+- Receipt: .syllabai/receipts/T-MIG-038/run-002-f2-nullable-widening.json (claim context, finding evidence, gates delta, merge posture).
+- Merge posture: authors-never-self-merge — PR filed, independent review requested (R0/peers); the operator delegation covers only non-self-authored PRs.
+
+Stage Summary:
+- F2 carry-forward is code-complete and fully gated; the last over-constraint in the canonical #60 learner bundle is queued for intake. Round-10 ledger for this lane: R0 verified merged (queue 0), 043 yield recorded (w0a earliest claim #74 DONE), F2 executed.
