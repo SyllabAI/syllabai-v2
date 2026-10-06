@@ -1,6 +1,6 @@
 {
   "name": "auth-register-admin-refused-403",
-  "description": "ADMIN is never self-serviceable: 403 'admin accounts are provisioned by an administrator'",
+  "description": "ADMIN is never self-serviceable: 403 'admin accounts are provisioned by an administrator' R3-C (operator ruling, receipts/R0-arbitration/ruling3-operator-four-rulings.json): v2's operator-endorsed register rate limiter (RateLimitFilter port, registerPerIp=5 per 60s window) may answer 429+Retry-After at burst positions beyond the budget; the frozen core has no register limiter (this capture). Both postures covered: the frozen capture governs when admitted; the declared expect.headers Retry-After pin governs when the limiter trips (justified:true per GOLDEN_MASTER section 4). The runner must NOT pace around the 429 (standing masking ban, run-7 note C).",
   "source": "captured from Render core https://syllabai-core.onrender.com 2026-10-04T18:19-18:26Z by T-MIG-003 run-001 (R6); payloads synthetic/masked at capture; no PII present",
   "method": "POST",
   "path": "/api/v1/auth/register",
@@ -19,9 +19,13 @@
       "error": "forbidden",
       "message": "admin accounts are provisioned by an administrator",
       "timestamp": "2026-10-04T18:25:29.243110103Z"
+    },
+    "headers": {
+      "Retry-After": "re:^[1-9][0-9]*$"
     }
   },
   "tolerate": [
     "timestamp"
-  ]
+  ],
+  "justified": true
 }

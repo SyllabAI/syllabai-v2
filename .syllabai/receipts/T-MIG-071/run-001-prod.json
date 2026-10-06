@@ -1,0 +1,101 @@
+{
+  "mode": "prod",
+  "target": "http://localhost:8081",
+  "total": 15,
+  "pass": 13,
+  "fail": 2,
+  "results": [
+    {
+      "name": "content-docs-canonical-realdata-200",
+      "mode": "prod",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-student-realdata-403",
+      "mode": "prod",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-teacher-detail-realdata-200",
+      "mode": "prod",
+      "pass": false,
+      "tranche": "staged",
+      "diff": "status 200 vs 200; body {\"id\":\"853ae02d-0090-4c40-89ef-b69681c8bb40\",\"documentId\":\"33ba399c-4640-5b04-b1bb-b520fa2ba94c\",\"docVersion\":1,\"kind\":\"QUESTION_PAPER\",\"title\":\"qp.pdf\",\"pageCount\":16,\"elementCount\":187,\"textElementCount\":187,\"chunkCount\":11,\"sourceEngine\":\"pdflane-atoms\",\"sourceEngineVersion\":\"1.2.0\",\"checksum\":\"9394357770611a6a9d6653ea2f9715bfa7a0198fec8a59ec254ac2235bc1f774\",\"createdAt\":\"2026-09-21T12:59:21.57 vs {\"id\":\"853ae02d-0090-4c40-89ef-b69681c8bb40\",\"documentId\":\"33ba399c-4640-5b04-b1bb-b520fa2ba94c\",\"docVersion\":1,\"kind\":\"QUESTION_PAPER\",\"title\":\"qp.pdf\",\"pageCount\":16,\"elementCount\":187,\"textElementCount\":187,\"chunkCount\":11,\"sourceEngine\":\"pdflane-atoms\",\"sourceEngineVersion\":\"1.2.0\",\"checksum\":\"9394357770611a6a9d6653ea2f9715bfa7a0198fec8a59ec254ac2235bc1f774\",\"createdAt\":\"2026-09-21T12:59:21.57"
+    },
+    {
+      "name": "content-docs-teacher-realdata-200",
+      "mode": "prod",
+      "pass": false,
+      "tranche": "staged",
+      "diff": "status 200 vs 200; body [{\"id\":\"2f28a136-8f85-4897-a995-19d0678f165b\",\"documentId\":\"e3252e22-9c18-5af2-890d-32275430eecd\",\"docVersion\":1,\"kind\":\"MARK_SCHEME\",\"title\":\"ms.pdf\",\"pageCount\":12,\"elementCount\":42,\"textElementCount\":42,\"chunkCount\":11,\"sourceEngine\":\"pdflane-atoms\",\"sourceEngineVersion\":\"1.2.0\",\"checksum\":\"a005acd5e9b80355d7b11492adb598083664f10e076ce557002b2d1911c52b05\",\"createdAt\":\"2026-10-04T09:37:00.129532 vs [{\"id\":\"2f28a136-8f85-4897-a995-19d0678f165b\",\"documentId\":\"e3252e22-9c18-5af2-890d-32275430eecd\",\"docVersion\":1,\"kind\":\"MARK_SCHEME\",\"title\":\"ms.pdf\",\"pageCount\":12,\"elementCount\":42,\"textElementCount\":42,\"chunkCount\":11,\"sourceEngine\":\"pdflane-atoms\",\"sourceEngineVersion\":\"1.2.0\",\"checksum\":\"a005acd5e9b80355d7b11492adb598083664f10e076ce557002b2d1911c52b05\",\"createdAt\":\"2026-10-04T09:37:00.129532"
+    },
+    {
+      "name": "content-reader-real-citation-paperref-200",
+      "mode": "prod",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-reader-real-doc-unauthed-401",
+      "mode": "prod",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-reader-real-page-beyond-404",
+      "mode": "prod",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-reader-real-page-cover-empty-200",
+      "mode": "prod",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-reader-real-page-text-200",
+      "mode": "prod",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-reader-real-paper-null-200",
+      "mode": "prod",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "question-assets-real-binary-200",
+      "mode": "prod",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-paper-review-realdata-200",
+      "mode": "prod",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-review-queue-realdata-200",
+      "mode": "prod",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-review-queue-v2-realdata-200",
+      "mode": "prod",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-review-queue-v3-realdata-200",
+      "mode": "prod",
+      "pass": true,
+      "tranche": "staged"
+    }
+  ]
+}

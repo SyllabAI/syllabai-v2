@@ -82,7 +82,7 @@
  *      honest harness error, never a silent degraded replay. Zero case
  *      files touched (§7: no silent widening — the cases are forever).
  */
-import { loadCases, deepEqualTolerant, buildMultipartBody, partitionByTranche } from "../runner.ts";
+import { loadCases, deepEqualTolerant, buildMultipartBody, partitionByTranche, checkHeaders, declaredLimiter429, ordinaryHeaderExpectations } from "../runner.ts";
 import { join } from "node:path";
 
 const REALDATA = /realdata|-real-/; // verbatim posture regex (T-MIG-022 v2 tool)
@@ -111,6 +111,10 @@ interface GoldenCase {
   // the tool's own typing. Consumed via partitionByTranche imported from
   // ../runner.ts (zero drift).
   tranche?: "empty" | "staged";
+  // T-MIG-071 (R3-C): the operator-ruled justified-divergence declaration —
+  // mirrored from the gated runner's interface; consumed via
+  // declaredLimiter429 imported from ../runner.ts (zero drift).
+  justified?: boolean;
 }
 
 interface CaseResult {
@@ -122,6 +126,11 @@ interface CaseResult {
   // staging state-builders; "staged" = after, the default posture). Evidence
   // field only — the comparator never sees it.
   tranche?: "empty" | "staged";
+  // T-MIG-071 (R3-C): the row cleared via the declared limiter-429
+  // disposition (justified case; the operator-endorsed limiter answered and
+  // the Retry-After pin matched). Evidence field only — surfaced in the
+  // summaries so the green is never silent.
+  declared429?: boolean;
 }
 
 function fail(msg: string): never {
@@ -250,18 +259,13 @@ async function ensureUser(
   return body.accessToken;
 }
 
-// ── response-header subset match — same semantics as golden/runner.ts checkHeaders ──
-function checkHeaders(actual: Headers, expected: Record<string, string> | undefined): string | null {
-  if (!expected) return null;
-  const lower = new Map<string, string>();
-  actual.forEach((value, key) => lower.set(key.toLowerCase(), value));
-  for (const [name, want] of Object.entries(expected)) {
-    const got = lower.get(name.toLowerCase());
-    if (got === undefined) return `header ${name} missing (expected "${want}")`;
-    if (got !== want) return `header ${name}: "${got}" vs expected "${want}"`;
-  }
-  return null;
-}
+// ── response-header subset match — IMPORTED from golden/runner.ts (T-MIG-071):
+// the local copy was byte-identical in semantics; the R3-C pattern-value rider
+// would have needed the identical edit twice, so the duplicate is consolidated
+// into the gated single source (the deepEqualTolerant import precedent — the
+// "zero drift" law is served by ONE implementation, not by parallel edits).
+// Also imported: declaredLimiter429 + ordinaryHeaderExpectations — the
+// R3-C declared limiter-429 posture helpers the replay loop below applies.
 
 async function replayOne(kase: GoldenCase, teacher: string, student: string, admin: string): Promise<CaseResult> {
   const tranche: "empty" | "staged" = kase.tranche === "empty" ? "empty" : "staged";
@@ -327,9 +331,24 @@ async function replayOne(kase: GoldenCase, teacher: string, student: string, adm
   // Bun fetch quirk (T-MIG-022, recorded for R6): res.json() returns null for
   // 0-byte bodies; the wire is truly empty → normalize to the sentinel.
   if (body === null && JSON.stringify(kase.expect.body) === '"<non-json:0 bytes>"') body = "<non-json>";
+  // T-MIG-071 (R3-C): the declared limiter-429 disposition — identical
+  // branch and provenance to golden/runner.ts replayAgainst (the frozen
+  // core has no register limiter, so a 429 here is the operator-endorsed
+  // v2 hardening; the declared Retry-After pin governs THIS posture only;
+  // the green is disclosed via the declared429 evidence field; any non-429
+  // answer falls through to the frozen-capture evaluation).
+  if (res.status === 429 && declaredLimiter429(kase)) {
+    const pinDiff = checkHeaders(res.headers, kase.expect.headers);
+    if (pinDiff === null) {
+      return { name: kase.name, mode: CASE_MODE, pass: true, tranche, declared429: true };
+    }
+    return { name: kase.name, mode: CASE_MODE, pass: false, tranche, diff: `declared-429 pin failed (R3-C): ${pinDiff}` };
+  }
   const statusOk = res.status === kase.expect.status;
   const bodyOk = statusOk && deepEqualTolerant(kase.expect.body, body, kase.tolerate ?? [], kase.unordered ?? []);
-  const headerDiff = checkHeaders(res.headers, kase.expect.headers);
+  // T-MIG-071 (R3-C): the admitted posture drops the 429-only Retry-After
+  // pin from the header check (ordinaryHeaderExpectations).
+  const headerDiff = checkHeaders(res.headers, ordinaryHeaderExpectations(kase));
   if (statusOk && bodyOk && headerDiff === null) {
     return { name: kase.name, mode: CASE_MODE, pass: true, tranche };
   }
@@ -382,7 +401,9 @@ async function runMode(reportOut?: string): Promise<CaseResult[]> {
     results.push(r);
     if (r.pass) {
       pass++;
-      console.log(`PASS ${r.name}`);
+      // T-MIG-071 (R3-C): the declared-429 green is DISCLOSED at the row
+      // level — never silent.
+      console.log(r.declared429 ? `PASS ${r.name} [declared-429: Retry-After pin matched (R3-C)]` : `PASS ${r.name}`);
     } else {
       console.log(`FAIL ${r.name}: ${r.diff}`);
     }
@@ -398,6 +419,10 @@ async function runMode(reportOut?: string): Promise<CaseResult[]> {
     await run(staged[i]!);
   }
   console.log(`\n${pass}/${cases.length} golden cases pass against ${TARGET} (CASE_MODE=${CASE_MODE})`);
+  const d429 = results.filter((r) => r.declared429).length;
+  if (d429 > 0) {
+    console.log(`[ci-replay] of the passing rows, ${d429} cleared via the T-MIG-071 (R3-C) declared limiter-429 disposition — operator-endorsed limiter answered, Retry-After pin matched`);
+  }
   if (reportOut) {
     const fs = await import("node:fs");
     const path = await import("node:path");
@@ -453,14 +478,16 @@ async function union(aPath: string, bPath: string, summaryOut?: string): Promise
   const b = JSON.parse(fs.readFileSync(bPath, "utf8")) as { mode: string; results: CaseResult[] };
   const all = [...a.results, ...b.results];
   const fails = all.filter((r) => !r.pass);
-  console.log(`\nUNION VERDICT: ${all.length - fails.length}/${all.length} golden cases pass (seed ${a.results.filter((r) => r.pass).length}/${a.results.length} + prod ${b.results.filter((r) => r.pass).length}/${b.results.length})`);
+  const d429 = all.filter((r) => r.declared429).length;
+  const d429Note = d429 > 0 ? ` — ${d429} via the T-MIG-071 (R3-C) declared limiter-429 disposition` : "";
+  console.log(`\nUNION VERDICT: ${all.length - fails.length}/${all.length} golden cases pass (seed ${a.results.filter((r) => r.pass).length}/${a.results.length} + prod ${b.results.filter((r) => r.pass).length}/${b.results.length})${d429Note}`);
   if (fails.length > 0) {
     console.log("failures (FILED, not fixed — AGENT_COORDINATION §6):");
     for (const f of fails) console.log(`  - [${f.mode}] ${f.name}: ${f.diff}`);
   }
   if (summaryOut) {
     const lines = [
-      `## Neon golden replay — union verdict: ${all.length - fails.length}/${all.length} PASS`,
+      `## Neon golden replay — union verdict: ${all.length - fails.length}/${all.length} PASS${d429Note}`,
       "",
       "| posture | pass | total |",
       "|---|---|---|",

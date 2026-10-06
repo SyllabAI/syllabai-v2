@@ -1,0 +1,1004 @@
+{
+  "mode": "seed",
+  "target": "http://localhost:8080",
+  "total": 162,
+  "pass": 144,
+  "fail": 18,
+  "results": [
+    {
+      "name": "w3-history-empty-student-200",
+      "mode": "seed",
+      "pass": false,
+      "tranche": "empty",
+      "diff": "status 200 vs 200; body {\"learnerId\":\"c2c96a98-33c3-466c-a30c-2e0c7d0fc913\",\"total\":0,\"returned\":0,\"attempts\":[]} vs {\"learnerId\":\"aa645313-5930-4381-91ed-caff67a2f836\",\"total\":0,\"returned\":0,\"attempts\":[]}"
+    },
+    {
+      "name": "w3-marking-answers-teacher-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "empty"
+    },
+    {
+      "name": "w3-marking-queue-v2-teacher-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "empty"
+    },
+    {
+      "name": "w3-marking-throughput-teacher-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "empty"
+    },
+    {
+      "name": "w3-questions-topics-student-200",
+      "mode": "seed",
+      "pass": false,
+      "tranche": "empty",
+      "diff": "status 200 vs 200; body {\"sections\":[],\"totalDistinctQuestions\":0,\"totalDistinctFamilies\":0} vs {\"sections\":[{\"nodeId\":\"20000000-0000-0000-0000-000000000011\",\"code\":\"WCH11-T1\",\"title\":\"Formulae, Equations and Amount of Substance\",\"distinctQuestionCount\":4,\"distinctFamilyCount\":4,\"topics\":[{\"nodeId\":\"20000000-0000-0000-0000-000000000012\",\"code\":\"WCH11-T1.1\",\"title\":\"Mole calculations and reacting masses\",\"questionCount\":4,\"mcqCount\":4,\"structuredCount\":0,\"familyCount\":4},{\"nodeId\":\"20000000-0"
+    },
+    {
+      "name": "w4-course-stats-empty-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "empty"
+    },
+    {
+      "name": "w4-flashcard-schedule-empty-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "empty"
+    },
+    {
+      "name": "w4-flashcard-trail-empty-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "empty"
+    },
+    {
+      "name": "w4-state-empty-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "empty"
+    },
+    {
+      "name": "auth-register-success-201",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-register-learner-201",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-register-duplicate-email-409",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-login-learner-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-login-success-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-login-wrong-password-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-me-with-bearer-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-sme-ingest-rich-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-rating-know-201",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-sme-ingest-replace-rich-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-rating-know-2-201",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-sme-status-admin-rich-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-rating-still-learning-201",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-marking-queue-v2-rich-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-marking-answers-rich-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-marking-answers-paged-rich-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-marking-throughput-rich-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-attempt-mcq-practice-201",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-target-series-put-201",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-target-series-clear-204",
+      "mode": "seed",
+      "pass": false,
+      "tranche": "staged",
+      "diff": "status 204 vs 204; body \"<non-json>\" vs {\"_raw\":\"\"}"
+    },
+    {
+      "name": "w4-target-series-clear-again-204",
+      "mode": "seed",
+      "pass": false,
+      "tranche": "staged",
+      "diff": "status 204 vs 204; body \"<non-json>\" vs {\"_raw\":\"\"}"
+    },
+    {
+      "name": "actuator-health-parity",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-login-missing-fields-400",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-login-unknown-email-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-register-admin-refused-403",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-register-bad-email-400",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-register-blank-displayname-400",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-register-missing-fields-400",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged",
+      "declared429": true
+    },
+    {
+      "name": "auth-register-password-no-digit-400",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged",
+      "declared429": true
+    },
+    {
+      "name": "auth-register-short-password-400",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged",
+      "declared429": true
+    },
+    {
+      "name": "auth-register-teacher-no-joincode-403",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged",
+      "declared429": true
+    },
+    {
+      "name": "auth-register-unknown-role-400",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged",
+      "declared429": true
+    },
+    {
+      "name": "content-docs-canonical-unknown-404",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-embed-unknown-404",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-search-blank-query-500",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-search-course-unresolved-teacher-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-search-empty-teacher-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-search-missing-query-400",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-search-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-student-403",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-teacher-empty-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-unknown-404",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-reader-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-reader-unknown-doc-404",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-reader-unknown-doc-page-404",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "curriculum-subject-bad-uuid-400",
+      "mode": "seed",
+      "pass": false,
+      "tranche": "staged",
+      "diff": "status 401 vs 400; body {\"timestamp\":\"2026-10-06T09:33:15.064Z\",\"status\":401,\"error\":\"Unauthorized\",\"path\":\"/api/v1/curriculum/subjects/not-a-uuid\"} vs {\"status\":400,\"error\":\"bad_request\",\"message\":\"malformed request\",\"timestamp\":\"2026-10-04T19:02:11.644341116Z\"}"
+    },
+    {
+      "name": "curriculum-subject-by-id-student-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "curriculum-subject-unknown-404",
+      "mode": "seed",
+      "pass": false,
+      "tranche": "staged",
+      "diff": "status 401 vs 404; body {\"timestamp\":\"2026-10-06T09:33:15.360Z\",\"status\":401,\"error\":\"Unauthorized\",\"path\":\"/api/v1/curriculum/subjects/00000000-0000-4000-8000-0000000000a1\"} vs {\"status\":404,\"error\":\"not_found\",\"message\":\"subject 00000000-0000-4000-8000-0000000000a1 not found\",\"timestamp\":\"2026-10-04T19:02:11.418749281Z\"}"
+    },
+    {
+      "name": "curriculum-subjects-student-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "curriculum-versions-archived-student-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "curriculum-versions-student-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "curriculum-versions-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "question-assets-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "question-assets-unknown-404",
+      "mode": "seed",
+      "pass": false,
+      "tranche": "staged",
+      "diff": "status 404 vs 404; body \"<non-json>\" vs \"<non-json:0 bytes>\""
+    },
+    {
+      "name": "teacher-content-paper-audit-unknown-404",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-paper-review-unknown-404",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-provenance-unknown-404",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-question-topics-unknown-404",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-review-queue-student-403",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-review-queue-teacher-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-review-queue-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-review-queue-v2-teacher-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-review-queue-v3-teacher-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-curriculum-nodes-suggested-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-curriculum-nodes-teacher-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-curriculum-nodes-unknown-version-200-empty",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-curriculum-versions-student-403",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-curriculum-versions-teacher-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-curriculum-versions-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-attempt-bad-uuid-400",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-attempt-history-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-attempt-mcq-happy-201",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-attempt-missing-fields-400",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-attempt-structured-missing-fields-400",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-attempts-post-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-attempts-structured-post-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-exam-paper-unknown-uuid-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-exam-papers-list-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-exam-papers-student-403-or-state",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-history-after-submit-200",
+      "mode": "seed",
+      "pass": false,
+      "tranche": "staged",
+      "diff": "status 200 vs 200; body {\"learnerId\":\"c2c96a98-33c3-466c-a30c-2e0c7d0fc913\",\"total\":2,\"returned\":2,\"attempts\":[{\"attemptId\":\"4d117e4c-a864-40f7-bac1-8906678004cf\",\"questionId\":\"40000000-0000-0000-0000-000000000001\",\"questionType\":\"MCQ_SINGLE\",\"externalRef\":\"SEED-WCH11-001\",\"commandWord\":\"Calculate\",\"stemExcerpt\":\"What is the mass of 0.25 mol of calcium carbonate, CaCO3 (Mr = 100.1)?\",\"marksTotal\":1,\"topicNodeId\":\"2000000 vs {\"learnerId\":\"aa645313-5930-4381-91ed-caff67a2f836\",\"total\":1,\"returned\":1,\"attempts\":[{\"attemptId\":\"519421f0-385f-484d-93ee-f3c426ed86c5\",\"questionId\":\"40000000-0000-0000-0000-000000000001\",\"questionType\":\"MCQ_SINGLE\",\"externalRef\":\"SEED-WCH11-001\",\"commandWord\":\"Calculate\",\"stemExcerpt\":\"What is the mass of 0.25 mol of calcium carbonate, CaCO3 (Mr = 100.1)?\",\"marksTotal\":1,\"topicNodeId\":\"2000000"
+    },
+    {
+      "name": "w3-marking-answers-student-403",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-marking-humanmark-unknown-404",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-question-markscheme-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-question-unknown-authed-404",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-question-unknown-uuid-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-questions-families-student-200",
+      "mode": "seed",
+      "pass": false,
+      "tranche": "staged",
+      "diff": "status 200 vs 200; body [{\"key\":\"40000000-0000-0000-0000-000000000002\",\"ref\":\"SEED-WCH11-002\",\"marks\":1,\"difficulty\":2,\"type\":\"MCQ\",\"multi\":false,\"parts\":[{\"id\":\"40000000-0000-0000-0000-000000000002\",\"externalRef\":\"SEED-WCH11-002\",\"type\":\"MCQ_SINGLE\",\"stem\":\"How many moles of sodium hydroxide, NaOH (Mr = 40.0), are present in 8.0 g?\",\"marks\":1,\"difficulty\":2,\"expectedTimeSeconds\":60,\"commandWord\":\"Calculate\",\"primaryTopi vs [{\"key\":\"40000000-0000-0000-0000-000000000001\",\"ref\":\"SEED-WCH11-001\",\"marks\":1,\"difficulty\":2,\"type\":\"MCQ\",\"multi\":false,\"parts\":[{\"id\":\"40000000-0000-0000-0000-000000000001\",\"externalRef\":\"SEED-WCH11-001\",\"type\":\"MCQ_SINGLE\",\"stem\":\"What is the mass of 0.25 mol of calcium carbonate, CaCO3 (Mr = 100.1)?\",\"marks\":1,\"difficulty\":2,\"expectedTimeSeconds\":60,\"commandWord\":\"Calculate\",\"primaryTopicNode"
+    },
+    {
+      "name": "w3-questions-families-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-questions-list-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-questions-topics-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-selfmark-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-selfmark-unknown-attempt-500",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-smartmark-feedback-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-smartmark-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-smartmark-unknown-attempt-404",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-sme-ingest-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-sme-status-student-403",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-sme-status-teacher-403",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-sme-status-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-marking-answer-unknown-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-marking-answers-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-marking-humanmark-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-marking-queue-v2-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-marking-smartmark-batch-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-marking-throughput-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-tests-preview-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-tests-weakness-options-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-tests-weakness-options-teacher-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-transcribe-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-agenda-composed-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-agenda-empty-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-agenda-malformed-bearer-401",
+      "mode": "seed",
+      "pass": false,
+      "tranche": "staged",
+      "diff": "status 200 vs 401; body {\"learnerId\":\"c2c96a98-33c3-466c-a30c-2e0c7d0fc913\",\"asOf\":\"2026-10-06T09:33:20.821Z\",\"dueReviews\":[],\"assignments\":[],\"actions\":null,\"examTargets\":[]} vs {\"timestamp\":\"2026-10-05T15:25:52.269Z\",\"status\":401,\"error\":\"Unauthorized\",\"path\":\"/api/v1/learners/me/agenda\"}"
+    },
+    {
+      "name": "w4-agenda-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-agenda-wrong-method-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-authed-unknown-path-404",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-course-stats-practiced-200",
+      "mode": "seed",
+      "pass": false,
+      "tranche": "staged",
+      "diff": "status 200 vs 200; body {\"learnerId\":\"c2c96a98-33c3-466c-a30c-2e0c7d0fc913\",\"attempts\":2,\"distinctQuestions\":1,\"notesViewed\":0,\"flashcardsRated\":3} vs {\"learnerId\":\"da30cee5-cb41-4565-9e8c-713894319ca8\",\"attempts\":1,\"distinctQuestions\":1,\"notesViewed\":0,\"flashcardsRated\":3}"
+    },
+    {
+      "name": "w4-course-stats-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-exam-series-qualification-filter-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-exam-series-seeded-calendar-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-exam-series-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-exam-series-unknown-qualification-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-rating-bad-cardid-400",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-rating-bad-rating-400",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-rating-dotted-anchor-400",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-rating-post-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-rating-unknown-anchor-404",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-schedule-derived-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-schedule-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-trail-200",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-trail-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-intervention-activate-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-intervention-cancel-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-intervention-complete-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-intervention-create-missing-rootid-400",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-intervention-create-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-intervention-get-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-intervention-steps-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-intervention-unknown-run-400",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-knowledge-graph-empty-200",
+      "mode": "seed",
+      "pass": false,
+      "tranche": "staged",
+      "diff": "status 404 vs 200; body {\"status\":404,\"error\":\"not_found\",\"message\":\"resource not found\",\"timestamp\":\"2026-10-06T09:33:22.483Z\"} vs {\"learnerId\":\"da30cee5-cb41-4565-9e8c-713894319ca8\",\"rootId\":\"20000000-0000-0000-0000-000000000001\",\"rootCode\":\"CHM\",\"rootTitle\":\"Chemistry\",\"asOf\":\"2026-10-05T15:48:31.912010576Z\",\"nodes\":[{\"id\":\"20000000-0000-0000-0000-000000000001\",\"code\":\"CHM\",\"type\":\"SUBJECT\",\"title\":\"Chemistry\",\"description\":\"Edexcel IAL Chemistry\",\"childIds\":[\"20000000-0000-0000-0000-000000000010\"],\"mastery\":null,\"effective"
+    },
+    {
+      "name": "w4-knowledge-graph-practiced-200",
+      "mode": "seed",
+      "pass": false,
+      "tranche": "staged",
+      "diff": "status 404 vs 200; body {\"status\":404,\"error\":\"not_found\",\"message\":\"resource not found\",\"timestamp\":\"2026-10-06T09:33:22.537Z\"} vs {\"learnerId\":\"da30cee5-cb41-4565-9e8c-713894319ca8\",\"rootId\":\"20000000-0000-0000-0000-000000000001\",\"rootCode\":\"CHM\",\"rootTitle\":\"Chemistry\",\"asOf\":\"2026-10-05T15:48:32.689409969Z\",\"nodes\":[{\"id\":\"20000000-0000-0000-0000-000000000001\",\"code\":\"CHM\",\"type\":\"SUBJECT\",\"title\":\"Chemistry\",\"description\":\"Edexcel IAL Chemistry\",\"childIds\":[\"20000000-0000-0000-0000-000000000010\"],\"mastery\":null,\"effective"
+    },
+    {
+      "name": "w4-knowledge-graph-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-note-vote-post-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-smart-lesson-missing-params-400",
+      "mode": "seed",
+      "pass": false,
+      "tranche": "staged",
+      "diff": "status 404 vs 400; body {\"status\":404,\"error\":\"not_found\",\"message\":\"resource not found\",\"timestamp\":\"2026-10-06T09:33:22.592Z\"} vs {\"status\":400,\"error\":\"validation_failed\",\"message\":\"missing required parameter: rootId\",\"timestamp\":\"2026-10-05T15:48:32.263723472Z\"}"
+    },
+    {
+      "name": "w4-smart-lesson-practiced-200",
+      "mode": "seed",
+      "pass": false,
+      "tranche": "staged",
+      "diff": "status 404 vs 200; body {\"status\":404,\"error\":\"not_found\",\"message\":\"resource not found\",\"timestamp\":\"2026-10-06T09:33:22.646Z\"} vs {\"learnerId\":\"da30cee5-cb41-4565-9e8c-713894319ca8\",\"rootId\":\"20000000-0000-0000-0000-000000000001\",\"topicNodeId\":\"20000000-0000-0000-0000-000000000011\",\"topicCode\":\"WCH11-T1\",\"topicTitle\":\"Formulae, Equations and Amount of Substance\",\"asOf\":\"2026-10-05T15:48:32.797011845Z\",\"policy\":\"smart-lesson/v2\",\"action\":{\"actionType\":\"PRACTISE_QUESTIONS\",\"reasonCode\":\"INSUFFICIENT_COVERAGE\",\"targetNodeId\":\"2"
+    },
+    {
+      "name": "w4-smart-lesson-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-smart-lesson-unknown-topic-404",
+      "mode": "seed",
+      "pass": false,
+      "tranche": "staged",
+      "diff": "status 404 vs 404; body {\"status\":404,\"error\":\"not_found\",\"message\":\"resource not found\",\"timestamp\":\"2026-10-06T09:33:22.701Z\"} vs {\"status\":404,\"error\":\"not_found\",\"message\":\"curriculum topic in this subject 00000000-0000-0000-0000-0000000000d4 not found\",\"timestamp\":\"2026-10-05T15:48:32.293639192Z\"}"
+    },
+    {
+      "name": "w4-state-empty-bearer-401",
+      "mode": "seed",
+      "pass": false,
+      "tranche": "staged",
+      "diff": "status 200 vs 401; body {\"learnerId\":\"c2c96a98-33c3-466c-a30c-2e0c7d0fc913\",\"skillStates\":[],\"misconceptionStates\":[],\"pendingReviews\":[],\"tutorEngagements\":[],\"flashcardRatings\":[{\"cardId\":\"fl_w4_cap_003\",\"rating\":\"still-learning\",\"subtopicCode\":null,\"nodeId\":\"20000000-0000-0000-0000-000000000011\",\"occurredAt\":\"2026-10-06T09:33:08.170Z\"},{\"cardId\":\"fl_w4_cap_002\",\"rating\":\"know\",\"subtopicCode\":null,\"nodeId\":\"20000000-00 vs {\"timestamp\":\"2026-10-05T15:25:52.934Z\",\"status\":401,\"error\":\"Unauthorized\",\"path\":\"/api/v1/learners/me/state\"}"
+    },
+    {
+      "name": "w4-state-practiced-200",
+      "mode": "seed",
+      "pass": false,
+      "tranche": "staged",
+      "diff": "status 200 vs 200; body {\"learnerId\":\"c2c96a98-33c3-466c-a30c-2e0c7d0fc913\",\"skillStates\":[],\"misconceptionStates\":[],\"pendingReviews\":[],\"tutorEngagements\":[],\"flashcardRatings\":[{\"cardId\":\"fl_w4_cap_003\",\"rating\":\"still-learning\",\"subtopicCode\":null,\"nodeId\":\"20000000-0000-0000-0000-000000000011\",\"occurredAt\":\"2026-10-06T09:33:08.170Z\"},{\"cardId\":\"fl_w4_cap_002\",\"rating\":\"know\",\"subtopicCode\":null,\"nodeId\":\"20000000-00 vs {\"learnerId\":\"da30cee5-cb41-4565-9e8c-713894319ca8\",\"skillStates\":[{\"nodeId\":\"20000000-0000-0000-0000-000000000012\",\"mastery\":0.11313868613138686,\"effectiveMastery\":0.11313868112534642,\"band\":\"LOW\",\"attempts\":1,\"correctCount\":0,\"lastPracticedAt\":\"2026-10-05T15:48:32.549788Z\",\"proceduralFluencyGap\":null,\"nodeName\":\"Mole calculations and reacting masses\"}],\"misconceptionStates\":[{\"misconceptionNodeI"
+    },
+    {
+      "name": "w4-state-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-target-series-delete-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-target-series-put-unauthed-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-target-series-unknown-series-404",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-unknown-learner-path-401",
+      "mode": "seed",
+      "pass": true,
+      "tranche": "staged"
+    }
+  ]
+}
