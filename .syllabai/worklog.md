@@ -3231,3 +3231,17 @@ Work Log:
 
 Stage Summary:
 - T-MIG-063 run-002 IN_REVIEW on t-mig-063/r0. Expected at the next union: family 7/7 (port parity standing 17/17 local); B-class seed-posture reads may clear early via t51-seed.sql (named case-by-case at run-003; third-posture task remains the mechanism home). Re-proof = neon-replay dispatch post-merge.
+
+---
+Task ID: T-MIG-066 (claim)
+Agent: r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Claim the OPEN 043-consolidation band (operator directive trace 1a10f954adaac0bd, continue-working clause) — collapse the per-module structural-seam duplicates to the frozen seam (one ExamTargetReader; one decay/BDT math owner).
+
+Work Log:
+- SWEEP FIRST (the review+merge clause): #98 (061-t2) REVIEWED + MERGED as 2d5a73d — CI green at the real head, fence clean (routes/mount/tests only), delta +30 tests/+85 expects/+1 file EXACT vs the receipt claim, frozen laws verified first-hand (create @RequestParam rootId :65 + the inStateConflictTerms mapping), worklog intake via the re-created union script (asserts A1-A4). #100 (063 ci-replay rich-200) REVIEWED + MERGED as ec40f1f — tooling-capability-only (golden/tools/ci-replay.ts + workflow; zero case/test/app files), bearer-precedence verified (student-403/teacher-403 postures keep their roles ahead of the new /admin rule), CI green at the author's own intake head 1d15bd0 (the branch moved twice mid-review; my redundant intake was discarded on the non-FF rejection — the author's own intake covered 045dc2a/56106f6). Max-2-per-sweep reached; #99 (this lane's T-MIG-064) is desk-ready at the reviewer intake 9054484 (CI green, mergeable clean) — NOT self-merged per the law; #101-#104 left to their own review flows (the next sweep, oldest first).
+- CLAIM: T-MIG-066 is the board's one OPEN unassigned item (060/062/065 in review as #104/#102/#103; 053-t1 close in review as #101; 064 mine as #99). Zero-collision verified against ALL FIVE open PR fences — none touch services/learner/** or services/learner-me/**. The motivation story is this lane's own record (the F-2 three-site propagation, #86).
+- Proposed shared home (claimant proposes, R0 ratifies): apps/api/src/services/learner-model/ — exam-target-reader.ts (canonical SEAM reader + view type + the pure composition for 041's batching) + decay.ts (bandOf/decayedMastery/relaxedToPrior + the two paper-defaults objects, byte-matched, named after the frozen law names).
+- Design of record: 041 keeps its leg reads and calls the canonical PURE composition (guidance (a)'s re-derivation clause — the batching stays, the law deduplicates); 043 keeps the seam reader verbatim; the NBA_-prefixed duplicates die into the canonical names; every moved-symbol pin re-points imports; arithmetic must come out +0 tests/+0 expects EXACT; contracts/golden/routes/index.ts untouched per the forbidden list.
+
+Stage Summary:
+- T-MIG-066 CLAIMED on branch t-mig-066/r1 @ ec40f1f (card + run-001-claim.json + this entry). Implementation next in this cycle; PR with disclosure; NOT self-merged.
