@@ -1,0 +1,42 @@
+{
+  "task": "T-MIG-060",
+  "run": "run-002-tranche1",
+  "date": "2026-10-06",
+  "lane": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "provenance": {
+    "operator_directive_trace": "1a10f3bbe255c491",
+    "directive": "Check if R0 has merged or not. If not, review+merge yourself and continue working",
+    "resolution": "R0 merge state verified IN (no self-merge needed); 'continue working' = the standing claim directive trace 1a10d2c88b6f13c5 -> T-MIG-060 claimed (run-001-claim, d328f9d) and tranche-1 implemented on the claim branch"
+  },
+  "tranche_1_scope": "the tutor deterministic core: conversation working memory, EvidenceItem + ordinal-pinned sources, weighted RRF, working-memory retrieval query, sanitizeAnswer + StreamSanitizer holdback, citation resolution, the v10 prompt assembly + fence codes + the three byte-verbatim refusal laws, KnowledgeContext + T-026 policy + s140 episodic digest + learner briefs, GraphKnowledgeRetriever (+ verbatim batched CTE reads), the §22 session store, the KA-RAG prepare/ask/askStream orchestration, buildGroundedTutorGenerator over the injected LlmProvider seam, buildTutorModule composition root, contracts tutor.ts, 33 pins",
+  "commits": {
+    "claim": "d328f9d",
+    "tranche_1": "4592444",
+    "intake": "883131e (origin/main ced0111 — #84 053 + #89 052-t2 + #88 triage + round-11 ledger; worklog append-only union, contracts index union)"
+  },
+  "frozen_sources_read_line_against_line": [
+    "KaRagService.java :44-584 (prepare/ask/askStream + refusal constants + retrievalQuery + identityKey + the L2 empty-generation law)",
+    "TutorController.java :60-260 (§22 probes, append guard, bounded pool, SSE error law, TutorAskRequest :123-146)",
+    "TutorSessionController.java :40-100 + TutorSessionService.java :35-288 (the §22 store, s143, V53, R13)",
+    "ConversationTurn.java :25-109, EvidenceItem.java :37-135, ReciprocalRankFusion.java :22-138",
+    "GraphKnowledgeRetriever.java :46-187 + KnowledgeNodeRepository.java :64-133 (the CTEs, verbatim) + JpaKnowledgeGraphRepository.java (the batched reads + the MISCONCEPTION_OF direction live-fix note)",
+    "ContentVectorRetriever.java :35-82 (MIN_COSINE 0.50 + the honest-degrade posture)",
+    "ContextAssembler.java + LearnerContextAssembler.java :17-142 + TutorPolicyService.java :42-111 + TutorMemoryService.java :40-181",
+    "GroundedTutorGenerator.java :21-537 (v10 system/user prompts, budgets, fences, sanitizeAnswer, UNAVAILABLE_MESSAGE, promptIdentity)",
+    "StreamSanitizer.java :39-165, CitationResolver.java + SimpleCitationResolver.java :22-81, TutorGenerator.java, dto/TutorAnswerView.java, TutorStreamEvent.java"
+  ],
+  "composition_law": "curriculum scopes + vector search COMPOSE the landed content module (services/content/scope.ts resolveActive/resolveForCourse + services/content/retrieval.ts searchServingEligible) — never mirrored; the learner-model reads + ADR-032 relaxation carry per-module structural-seam copies (consolidation ruling requested, the nba.ts precedent)",
+  "safety_disclosures": [
+    "PaperQuestionResolver.java :92-649 NOT ported in tranche-1 — the module factory REQUIRES the port (no silent notPaperAsk default: defaulting would disable the fail-open guard without anyone deciding to); full port = tranche-1b, routes wire it at tranche-2",
+    "R-VERCEL W6 spike (the plan binds it to the wave's first task): the port is designed to Vercel's streaming function model (SSE as a ReadableStream response, maxDuration bound, the idle-timeout + client-disconnect stall posture carried from the frozen controller); a LIVE deployment verification is the deploy lane's register item (no Vercel path from this sandbox — same honesty class as the 043 live-replay disclosure)",
+    "the misconception batched read pins order by (topic_id, title) where the frozen edge read leaves order unspecified — deterministic choice disclosed"
+  ],
+  "adr_031_zero_write_audit": "the only writes are tutor_sessions / tutor_session_turns (§22); zero BKT/SkillState/misconception/review writes; zero golden file edits; zero Neon contact; zero force-push",
+  "gates": {
+    "typecheck": "x4 exit 0",
+    "bun_test_tranche_1": "apps/api packages: 1039 pass / 0 fail / 13 skip / 3165 expect across 59 files = the pre-claim main baseline (1006/0/13skip/3065 across 58 files) + 33 tests/+100 expects EXACT",
+    "bun_test_intake": "apps/api packages: 1123 pass / 0 fail / 13 skip / 3388 expect across 62 files (zero regressions after the ced0111 intake — the +3 files are the landed #84 knowledge suite)",
+    "golden_selftest": "OK"
+  },
+  "next": "tranche-1b = PaperQuestionResolver :92-649 line-against-line; tranche-2 = routes/tutor.ts + routes/tutorsessions.ts + OUT-OF-FENCE index.ts mount + route pins + PR (id ratification + independent review, authors never self-merge)"
+}

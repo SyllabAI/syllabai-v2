@@ -2904,6 +2904,38 @@ Stage Summary:
 - LANE r1c: STOP for this round.
 
 ---
+Task ID: T-MIG-060 (claim)
+Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Operator trace 1a10f3bbe255c491 "Check if R0 has merged or not. If not, review+merge yourself and continue working" — R0 merge state verified IN (043-t2 #85 merged 66c6618 by the delegated reviewer; R0-AUTO sweep 03:00 merged #86), self-merge conditional did not fire; "continue working" executes the standing claim directive trace 1a10d2c88b6f13c5 — claimed the Wave-6 opener T-MIG-060 (tutor + sessions, SSE streaming parity).
+
+Work Log:
+- Pre-claim R0 state check @ origin/main e6cc4d1 (03:24Z): #85 merged (66c6618, 03:08:28Z, merged_by the delegated reviewer per trace 1a10eb10b04682cd); R0-AUTO desk ALIVE (03:00 UTC sweep receipt b26edbe merged #86; skipped 84/85/88 pending CI per rule (b)); 4 open PRs all owned (#84 r3a, #88 R0/R6, #89 r9-hubx 052t2, #91 R0 055); R0's own 052t2 duplicate head t-mig-052/r0-t2 self-closed unmerged as #90 at 03:19:49Z (§2.1 earliest-claim-wins honored by R0 itself — collision class stayed at zero). NOTHING of w0a's pending; no self-merge needed or performed.
+- Board census: register drained — W5 050/051/054 DONE, 052 owned (t2 in flight), 053 in flight (#84), 055 claimed by R0 (#91); Wave-7 is operator-gated cutover. T-MIG-060..066 = the ONLY zero-claim bands: ls-remote ZERO t-mig-06* heads, zero 06x yamls, zero 06x worklog claims (MIGRATION_PLAN :155 is the sole Wave-6 mention on main).
+- CLAIMED T-MIG-060 (Wave-6 opener: tutor + sessions — /ask + /ask/stream SSE parity + /sessions CRUD + the KaRAG deterministic chain) per the 030/032/039/040-PREP/041/043 self-filing precedent; id ratification requested at PR review. Branch t-mig-060/w0a cut from e6cc4d1; claim commit = yaml + this entry + receipt run-001-claim.json, zero code delta.
+- Frozen-core surface map read line-against-line at claim time (@ 6cad6ef): TutorController :60-260 (the §22 integrity probe 404-before-pipeline, V53/ADR-030 course-consistency 409, the append guard that never 5xxes a delivered answer, bounded daemon-pool admission control, the SSE open-stream wire-error law) + TutorSessionController :40-100 (201 create / s143 summaries list / latest 200|204 route-order law / foreign-or-unknown 404 indistinguishability) + the full tutor/ package inventory (KaRagService chain: GraphKnowledgeRetriever + ContentVectorRetriever + RRF + reranker + context assemblers + citation resolver + GroundedTutorGenerator seam + StreamSanitizer + memory/policy services + session store).
+- Dependencies verified: tutor tables already in the db baseline (schema.ts :929/:1048 — zero R2 work); the llm:ask ratelimit tier already ported (T-MIG-016, tutor named member); no contracts/src/tutor.ts yet (new in-fence file under the 033/043/049 same-lane contracts-first precedent, R1 coordination flagged at PR review). ADR-030 refusal is deterministic — golden-gateable per R-LLM (authz/session lifecycle/citation plumbing gated; LLM payloads excluded).
+- R-VERCEL spike obligation accepted: MIGRATION_PLAN §6 binds the W6 duration-limits spike to the wave's first task — tranche-1 deliverable; live-deploy verification disclosed as the deploy lane's register item (no Vercel path from this sandbox).
+
+Stage Summary:
+- LANE w0a re-opened on T-MIG-060 (one lane at a time held: 002R and 043 both DONE). Claim is branch-stamped for §2.1 priority; tranches t1 = services+contracts+spike record, t2 = routes+mount+pins. Zero code delta in the claim commit; golden/Neon/force untouched; authors never self-merge. Implementation proceeds on this branch.
+
+---
+Task ID: T-MIG-060 (tranche-1)
+Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Implement tranche-1 of the Wave-6 opener (the tutor deterministic core) under the operator's "continue working" (trace 1a10f3bbe255c491) — claim d328f9d, code 4592444, intake 883131e.
+
+Work Log:
+- FROZEN READ (line-against-line, @ 6cad6ef): KaRagService :44-584, TutorController :60-260, TutorSessionController + TutorSessionService :35-288, ConversationTurn, EvidenceItem, ReciprocalRankFusion, GraphKnowledgeRetriever (+ KnowledgeNodeRepository CTEs verbatim), ContentVectorRetriever, ContextAssembler/LearnerContextAssembler, TutorPolicyService, TutorMemoryService, GroundedTutorGenerator :21-537, StreamSanitizer, SimpleCitationResolver, TutorGenerator, TutorStreamEvent, dto/TutorAnswerView.
+- LANDED (17 files, +4036): services/tutor/** (conversation/evidence/rrf/retrieval-query/sanitize/citations/prompt/context/kg-retriever/session-store/karag/index + sql seam) + packages/contracts/src/tutor.ts + 33 pins in apps/api/test/tutor/tutor-core.test.ts. The stream-parity property is TESTED across hostile delta splits (1..11-char chunks) against the blocking sanitizeAnswer; the RRF arithmetic, refusal bytes, 0.5 specificity floor, VALIDATED-only visibility, policy precedence (confirmed > 0.65 > relaxed-0.5 misconception > explanation) and the §22 store laws are pinned.
+- COMPOSITION LAW held: scopes/vector-search compose the landed content module (scope.ts + retrieval.ts); the learner-model reads + ADR-032 relaxation are per-module structural-seam copies with the consolidation ruling requested (nba.ts precedent).
+- SAFETY: paperQuestionResolver is a REQUIRED port (no silent notPaperAsk default — the fail-open guard must not be silently disabled); its full port (PaperQuestionResolver :92-649) is tranche-1b, disclosed in run-002. The R-VERCEL W6 spike is recorded as a design note + deploy-lane register item (no Vercel path from this sandbox).
+- INTAKE: origin/main ced0111 (#84 053 + #89 052-t2 + #88 + round-11 ledger) merged as 883131e — worklog append-only union (fleet entries precede the lane's tail), contracts index union (knowledge+tutor one-liners coexist).
+- GATES: typecheck x4 exit 0; bun test apps/api packages 1039/0/13skip/3165 @ 59 files pre-intake (= main 1006/13skip/3065 + 33/+100 EXACT) and 1123/0/13skip/3388 @ 62 files post-intake (zero regressions); golden selftest OK. Zero golden/Neon/force; ADR-031 zero-write audit: only tutor_sessions/tutor_session_turns.
+
+Stage Summary:
+- T-MIG-060 tranche-1 CODE-COMPLETE and gates-green, pushed (4592444..883131e on t-mig-060/w0a). Next: tranche-1b (the paper-question resolver) + tranche-2 (routes + OUT-OF-FENCE mount + pins) then the PR for independent review + R0 id ratification — authors never self-merge. Board note: 056 (r0) and 057 (r4b) heads appeared during this window — the Wave-5x extension bands are being seeded by their own lanes; no 06x collision (this lane is the sole 06x claimant of record).
+
+---
 Task ID: 20
 Agent: r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, operator trace 1a10f3ef205fa961)
 Task: Operator directive "Check if R0 has merged or not. If not, review+merge yourself and continue working" — round sweep + Wave-6 claim.
@@ -3408,6 +3440,21 @@ Work Log:
 
 Stage Summary:
 - T-MIG-062 IN_REVIEW with CI green at the final head 87c0874; the PR carries the full evidence chain (claim-first, receipts, exact arithmetic vs live-measured main, union intakes with zero entry loss). LANE IDLE — awaiting the desk's independent review + R0 verdict + Wave-6 id ratification.
+
+---
+---
+Task ID: T-MIG-060 (tranche-1b + tranche-2)
+Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: Operator trace 1a10f7284c7a7a6d "continue with tranche-1b + tranche-2" — close the run-002 REQUIRED-port disclosure (PaperQuestionResolver :92-649) and take the Wave-6 band live (routes + SSE + OUT-OF-FENCE mount), receipt run-003-tranche1b-and-2.json.
+
+Work Log:
+- FROZEN READ (line-against-line, @ 6cad6ef): content/FetchQueryParser :61-268, content/FetchService :36-220, tutor/PaperQuestionResolver :92-649, EvidenceItem.fromChunk, Document/DocumentChunk entities + DocumentChunkRepository.findRowIdsByPaperIdentity, TutorController :60-338, TutorSessionController :40-98, SecurityConfig :66-91, RateLimitFilter budgetOf :143-160, GlobalExceptionHandler :95-104 + :167-170, ContentVectorRetriever :55-93 (the T-C32 doc_version law).
+- TRANCHE-1B (the disclosure CLOSED): services/tutor/fetch-parser.ts (the shared parser — word numbers 1-49, NFKC full-width fold, hyphen fold, letter-gated romans, msSeeking probes) + fetch-bank.ts (the identity/ambiguity seam — resolvePapers/resolveQuestion SQL verbatim; the parts/markPoints view assembly DISCLOSED as the content band's port, the ambiguity law exact) + paper-question.ts (the full resolver: three anchors, the fail-open verdict laws incl. L3 recovery + never-downgrade + store-fail-keeps-card, serving law on every tier, the 2026-10-03 seeking allocation, deterministic unit binding + store sort + bound-unit filter, atom-first selection with the Total-footer exclusion) — 42 pins. karag PaperQuestionResolver scope widens with the subject code (structural; pre-1b fakes stay assignable); the factory STILL has no notPaperAsk default.
+- TRANCHE-2: routes/tutor.ts (POST /ask + the SSE twin /ask/stream — §22 pre-flight 404/409 BEFORE the stream opens, history re-sanitization, the append guard, the SSE wire law citations->meta->delta*->done with the fixed M2 error text, two-envelope body law with the jakarta messages, the bounded-pool busy text disclosed as having no v2 counterpart) + routes/tutorsessions.ts (the §22 CRUD, R13 cap, /latest ordering) + vector-arm.ts (T-C32: doc_version rides the SEARCH SQL — the content ChunkHit drops it, consolidation ruling requested) + the buildTutorRouters root (scopes compose the content module; the dormant LLM seam: generation-reaching asks 503 tutor_unavailable with the FIXED body, deterministic refusals NEVER 503; telemetry no-op = 061's title) — 31 route pins. OUT-OF-FENCE index.ts mount shipped as its own commit (74f285d, R0 ratification requested).
+- GATES @ the t2 head: typecheck x4 exit 0; bun test apps/api packages 1196/0/13skip/3607 across 64 files = the t1 intake baseline (1123/3388/62) +73 tests/+219 expects/+2 files EXACT; golden selftest OK. Zero golden/Neon/force; ADR-031 zero-write audit: the resolver/vector-arm/fetch-bank are READ-ONLY over documents/document_chunks/exam_papers/subjects/questions; only the §22 tables ever write.
+
+Stage Summary:
+- T-MIG-060 t1+t1b+t2 CODE-COMPLETE and gates-green on t-mig-060/w0a; yaml flips IN_REVIEW with the full timeline. Next: the PR (id ratification + independent review — authors never self-merge) + the two consolidation rulings (fetch-bank, vector-arm) ride the review. Board: no 06x collision (this lane is the sole 06x claimant of record).
 ---
 
 Task ID: T-MIG-065 (claim)
