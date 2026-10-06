@@ -3833,6 +3833,8 @@ Work Log:
 - Receipt .syllabai/receipts/T-MIG-068/run-001-union.json; card → DONE (bookkeeping-only .syllabai/** direct-main write per the precedents, fetch-first).
 
 Stage Summary:
+
+- Directive discharged: R0 active-of-record (3 merges + arbitration this hour); #111 unblocked; merged-tip gates independently corroborate #110's arithmetic EXACTLY; census filed. LANE IDLE — next claim requires R0 to file (OCR/LLM-admin/routing) or operator redirection.
 - The seeded-posture band is CLOSED: 5/6 live PASS, the sixth out of the 500-class with a corpus-class residual filed. The remaining union reds are ALL corpus-class or standing-lane-owned (RICH-200-C/E, the wall-clock countdown, auth-me/third posture, C-class limiter). Lane IDLE; suggestion: the next movements are operator rulings (wall-clock tolerance, RICH-200-C/E amendments, the third posture) — no unowned port work remains on the register.
 
 ---
@@ -3852,3 +3854,16 @@ Work Log:
 
 Stage Summary:
 - Round-20 sweep: 2 adjudications completed to match their records (#109 closed-superseded after the fleet's vehicle-merge, #111 closed-yielded) + 1 full independent review+merge (#112 -> fdcfc53, the #104 blocker band, arithmetic EXACT). Desk returns to standby; no free filed bands remain for this lane. STOP.
+Task ID: T-MIG-068 (operator-fired trace 1a10fd303bbe4f49 "T-MIG-067")
+Agent: r0r6 (Super Z main agent, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)
+Task: Execute the fired band — the seeded-posture port-parity umbrella (T-MIG-067 as fired; refiled 068 by R0 arbitration ruling2)
+
+Work Log:
+- Claimed the fired band, found it 3-classes-wide (500 x4, DATE x2, error-taxonomy x2); diagnosed ALL of them first-hand from the run #11 seed boot log BEFORE touching code: o.text 42703 (column law QuestionOption.java:33 @ 6cad6ef), the ${""} template-comment bind-slot 42601 at position 8, pg Date objects breaking daysBetween (toIso.slice TypeError) + serializing DATE columns as UTC timestamps, and the attempt `{}`-body envelope (runs #9/#11 expected bodies vs GlobalExceptionHandler.java:175-180).
+- RACE of record: opened PR #109 (as 067) minutes before the arbitration ruling2 (c78ed9a) re-assigned 067 to the earliest-claim RICH-200-D fix (#107) and refiled the umbrella as 068; closed #109 concurrent-of-record with an overlap audit, dropped the questions lane per the 068 fence, re-branch t-mig-068/r0r6, rebased through r0's card claim (8516d25, dropping my own card edit — the card is r0's), opened #110; MERGED #110 of record -> 3e4e22c; the desk then reopened #109 and merged it -> e760bdc (content-identical on shared files — convergence); r1's independent implementation YIELDED with first-hand corroboration (33e281f), naming the state.ts examSeriesByIds DATE site as one this lane had missed — it was already fixed in the band.
+- GATES at 9ef8f6b: typecheck x4 exit 0; 1380/0/13skip/5580/73f (reconciles the ratified 1332/4558 law + #108's +41/+1000 + #110's +7/+28); golden selftest OK. Independently corroborated by R4b-ROUND-19 ("RECONCILIATION EXACT").
+- LIVE PROOF: dispatched neon-replay on merged main (run 37425696004 @ 3e4e22c): union 142/177 (seed 129/162) = +5 vs run #11 (40 -> 35 divergences). teacher-curriculum-versions, exam-series x2, attempts x2 = PASS outright; w4-target-series-put 200-vs-200 with CLOCK-DRIFT-ONLY residual (daysToWindowStart/End 2/24 vs frozen 3/25 — ADR-031 derived-on-read vs capture-day pin). Both w3-questions cases (067's) 200-vs-200 at this head (RICH-200-E tie-order + staged-census residuals, case-owner lane).
+- Bookkeeping: card -> DONE (owner stays r0's claim; CLOSURE entry appended to execution_record); receipt .syllabai/receipts/T-MIG-068/merge-and-proof-receipt.md (race chain, root causes with frozen citations, proof verdicts); this entry. .syllabai-only direct-main write per the 3c07bae/bb537fa/2a0b18d precedents (fetch-first).
+
+Stage Summary:
+- T-MIG-068 DONE of record: 6 of the umbrella's 8 original divergences live-proven cleared (5 outright + target-put status-retired), the questions pair was 067's (also live-proven at this head). Remaining residuals are ALL corpus-side, case-owner lane: (a) target-put tolerate[] += daysToWindowStart/daysToWindowEnd (or capture-anchored pin) — +1 to the union; (b) RICH-200-E families tie-order amendment; (c) topics staged-census re-pin (seq-position or tolerate); zero port-side findings remain in the band. Next: the operator's disposition (069 = w0a CLA refile reservation; E-class bearer override = action 1, still open; C-class 429 parity ruling = action 10).
