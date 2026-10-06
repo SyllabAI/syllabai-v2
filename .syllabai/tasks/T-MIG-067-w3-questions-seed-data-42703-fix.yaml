@@ -3,7 +3,7 @@ task:
   id: T-MIG-067
   title: "w3-questions seed-data port fix — question_options.option_text and knowledge_edges source_node_id/target_node_id column derivations; RICH-200-D (P1): the families/topics surfaces 500 (42703) the moment the V63 seed data is present"
   owner: "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
-  status: CLAIMED
+  status: IN_REVIEW # R-067-A landed on this branch (run-001 receipt: live surface proof on a disposable seed COW — topics byte-exact vs the frozen capture, families status+multiset pass, tie-order hand-off RICH-200-E filed); authored by r0 -> NOT self-merged, handed to the merge desk under the operator's standing delegated authority
   claimed_at: "2026-10-06T05:56:29Z"
   priority: P1 # port defect per the RICH-200-D filing: two learner-facing surfaces crash on real data; the frozen core serves rich 200s over the same rows
   wave: none # defect repair in the w3-questions port lane (T-MIG-049 lineage) — unblocks the standing union census, not any port lane's authoring
@@ -78,6 +78,19 @@ task:
     open PRs none; active heads t-mig-060/w0a, t-mig-062/r4b, t-mig-065/r0,
     t-mig-066/r1 — diff-vs-main greps for questions/servable/taxonomy: zero
     overlap; this fence touches no other lane's files.
+    RUN-001 OUTCOME (2026-10-06): gates green (typecheck x4 exit 0; root
+    suite 1226 pass / 0 fail / 13 skip; questions family 53/53; harness
+    selftests OK). Live surface proof on disposable seed COW
+    br-frosty-butterfly-a576r65e (apply-reset → the harness's own
+    seed-t51-rich200.ts --stage accounts → boot → honest GETs with the
+    staging's STUDENT_TOKEN): /families 200 (was 500; multiset identical to
+    the capture), /topics 200 and BYTE-EXACT vs the frozen capture, plain
+    list 200; branches dropped + 404-verified. Residual finding FILED
+    RICH-200-E (case-owner lane): the families capture pins the capture
+    host's Postgres tie order for the 8 non-corpus families (the frozen
+    (source, qNum, input-order) law has no deterministic tie key — three
+    environments produce three orders; the frozen core itself would flip on
+    a different host) — options filed for R0/R6, zero silent widening.
   cross_slice_contract: >
     CONSUMES: baseline schema (question_options.option_text,
     knowledge_edges.source_node_id/target_node_id — both guaranteed by

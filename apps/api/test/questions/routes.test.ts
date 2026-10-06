@@ -82,7 +82,8 @@ function baseRoutes(): Route[] {
     },
     {
       match: /from knowledge_edges/,
-      rows: [{ source_id: TOPIC_ID, target_id: SECTION_A_ID }, { source_id: TOPIC2_ID, target_id: SECTION_A_ID }],
+      // row keys = the real columns (schema.ts:84-85 — R-067-A)
+      rows: [{ source_node_id: TOPIC_ID, target_node_id: SECTION_A_ID }, { source_node_id: TOPIC2_ID, target_node_id: SECTION_A_ID }],
     },
     {
       // reveal: current version head + newest scheme + points + parts
