@@ -3103,6 +3103,37 @@ Work Log:
 Stage Summary:
 - Wave-6 is live: T-MIG-061 tranche-1 (intervention runs — contracts + services + pins) landed as the first Wave-6 band, hot on the heels of #94 (T-MIG-058). Board momentum: W4 complete, W5 classroom/selfmark consolidating, W6 opened.
 - Queue at sweep end: 0 open PRs. No escalations. LANE DONE.
+
+---
+Task ID: T-MIG-059 (claim)
+Agent: r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Claim the F-B band (operator trace 1a10f747060b0901) — the selfmark exact-parts emulation, the register-open item this lane filed on the PR #92 review thread (6009074844/6009163427) and restated on the T-MIG-058 card.
+
+Work Log:
+- Fetch-first census @ 37d8825: T-MIG-058 landed as PR #94 (1aea8bc) by a parallel lane mid-census (the branch was pushed and CI-green; the desk filed+merged it — the 422 'no commits between' on the PR-file attempt was the tell, verified 1072ac4 IS an ancestor of main); #95 (T-MIG-061 t1) merged af33b6f; queue 0 open PRs. The F-B band is unclaimed (zero 059* heads, zero 059 mentions anywhere in .syllabai/) — claimed as T-MIG-059, claim-in-first-commit on branch t-mig-059/r1 cut @ 37d8825.
+- Frozen law re-verified line-against-line at pinned core 6cad6ef this session (not from the review memory): LearnerSelfMarkController :42-48 — the dedup throw fires on HashMap.put DISPLACING A NON-NULL PREVIOUS VALUE (value-dependent: {X:null},{X:1} does NOT throw; {X:1},{X:null} throws; put(null,v) legal :44); SelfMarkRequest :59 bare List — @NotNull :55 / @Min(0) @Max(99) :56 dead (no container-element cascade) so Jackson binds null AND ABSENT element fields as null; LearnerSelfMarkService :102-111 exact-parts gate (HashSet keySet equality, null key -> 400 bad_request 'self-mark must cover exactly the attempt's parts', ordered after the attempt 404) and :113-121 the bound loop `int marks = e.getValue()` (:116) — a null Integer NPEs ON UNBOXING after the gate, before any settle write -> catch-all 500 internal_error (data-dependent: in-attempt partId -> 500, not-in-attempt -> the exact-parts 400 first).
+- Port gaps on main (post-#94): (1) contracts partSelfMarkSchema requires non-null uuid partId + int marksAwarded — nested nulls/absent fields die upstream as 400 validation_failed instead of reaching the service; (2) the superRefine duplicate law is a plain seen-set — misses the value-dependent put() semantics; (3) services/selfmark bound loop compares with JS semantics — a null marks would silently coerce (null < 0 is false) and settle a 201 where the frozen core 500s.
+- Scope of record: contracts nullish widening (the min(0)/max(99) inferred-constraint divergence class NOT touched — stays disclosed per 057) + put-semantics superRefine; route map widening (undefined normalized to null — Jackson binds absent as null) + the 058 nested-null pin rewritten to the frozen law; service signature widening + an unboxing-parity pass AFTER the gate / BEFORE settle. The 057/058 depth-2 element-null 500 law stays byte-identical (bare null elements still reject upstream).
+
+Stage Summary:
+- T-MIG-059 CLAIMED at 2026-10-06T05:02:00Z (card + run-001-claim.json + this entry = the claim commit). Implementation next in this lane: contracts widening + pins, route/service emulation + rewritten pin, EXACT gates arithmetic vs the 37d8825 baseline 1144/0/13skip/3485, PR with disclosure, NOT self-merged (authors never self-merge) — handed to the merge desk.
+
+---
+Task ID: T-MIG-059 (implementation)
+Agent: r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Implement the F-B band — the selfmark exact-parts emulation (schema widening + put-semantics dedup + service unboxing parity) end-to-end.
+
+Work Log:
+- CONTRACTS (packages/contracts/src/assessment.ts): partSelfMarkSchema widens partId/marksAwarded to .nullish() — Jackson BIND parity, NOT the dead constraints (SelfMarkRequest :59 bare List = no @Valid container-element cascade, so @NotNull :55 / @Min(0) @Max(99) :56 never evaluate; Jackson binds null AND absent element fields as null; HashMap.put(null, v) legal at :44). The selfMarkRequestSchema superRefine is now the EXACT put()-semantics emulation from LearnerSelfMarkController :42-48: throw ONLY on displacing a NON-NULL previous value ({X:null},{X:1} accepted; {X:1},{X:null} throws; null keys render 'duplicate part in self-mark: null' like Java string concat); last-write-wins preserved. The numeric checks stay as the disclosed inferred-constraint class (057) — untouched. Bare null ELEMENTS still reject upstream (depth-2 -> the 057/058 NPE-parity 500 law byte-identical).
+- ROUTE (routes/selfmark/index.ts): marks map widens to Map<string|null, number|null> with `?? null` normalization (absent binds as null); Map.set walk = last-write-wins = the HashMap.put sequence; the 057/058/059 comment block carries the full frozen matrix (the F-B register note closes); the classifier's invalid_type branch demoted to fail-closed defensive (received-null/undefined issues cannot exist after the widening — the only null-rejecting node left is the element object at depth 2, consumed by the elementNullIssue guard).
+- SERVICE (services/selfmark/index.ts): signature widens; byPartId key type widened so has(null) is type-true (false -> the exact-parts gate 400s the null key exactly like the frozen HashSet inequality :102-111, after the attempt 404 :79-84); NEW UNBOXING-PARITY pass after the gate / BEFORE settle: any null value throws the parity Error -> escapes the handler -> app error boundary -> 500 internal_error (the frozen `int marks = e.getValue()` :116; JS null would coerce silently — null < 0 is false — and settle a 201). Post-gates narrowing map keeps the bound/settle loops honestly typed. Residual disclosed on the guard: mixed null-value + out-of-bound-value winner is HashMap hash-iteration order (not emulated, unreachable by capture).
+- PINS: contracts — the missing-marksAwarded pin FLIPPED to accept (the @NotNull dead-letter law) + null/absent bind matrix + three-way put-semantics law; routes — the T-MIG-058 nested-null pin REWRITTEN to the frozen law ({partId:null} -> 400 bad_request 'self-mark must cover exactly the attempt's parts'), NEW {partId: PART_A, marksAwarded: null} -> 500 internal_error with fail-closed zero-settle-write assertions (no ANSWER_UPDATE / SELF_MARK_INSERT / ATTEMPT_UPDATE queries — the parity throw precedes settle), NEW put-semantics silent displacement ({X:null},{X:2} -> 201 marksAwarded 2).
+- GATES: install OK (no changes); typecheck x3 exit 0; bun test apps/api packages 1148/0/13skip/3502 (1161 ran / 63 files) = baseline 37d8825 1144/0/13skip/3485 +4 tests/+17 expects EXACT (2 contracts + 2 route; the rewritten pin stays one test); golden --selftest OK.
+- Receipt run-002-fix.json (full frozen matrix now green + residuals disclosed); card -> IN_REVIEW.
+
+Stage Summary:
+- T-MIG-059 IN_REVIEW: the F-B register item is implemented — nested partId-null now answers the frozen 400 bad_request via the exact-parts gate, nested marksAwarded-null answers the data-dependent 400/500 with the unboxing parity, and the duplicate law is value-dependent exactly like HashMap.put. Next: PR with disclosure -> NOT self-merged (authors never self-merge) -> merge desk.
+
 ---
 Task ID: 21
 Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, operator trace 1a10f73c1b7a5a01)
@@ -3136,6 +3167,20 @@ Work Log:
 Stage Summary:
 - T-MIG-061 tranche-2 delivered end-to-end on the card's documented plan (claim run-003 -> routes -> pins -> flagged mount -> gates); the 9-endpoint Wave-6 intervention surface is now wired live behind the module's state machine; the lane STOPs per protocol after filing the PR.
 
+---
+Task ID: T-MIG-064 (re-file of T-MIG-059 — id collision yield)
+Agent: r1-contracts (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
+Task: Re-file the F-B band (exact-parts emulation) under the next free id — the T-MIG-059 id is yielded to the earliest claim per earliest-claim-wins.
+
+Work Log:
+- COLLISION OF RECORD (discovered at post-PR census): two DIFFERENT operator-directed bands both filed under T-MIG-059 — the r0 lane claimed the F-0/F-1 binding-law adoption (claim 9853716 @ 04:35:53Z, pushed immediately, PR #96 04:44:16Z, operator trace 1a10f743c93c27b9) while this lane claimed the F-B exact-parts emulation (claim 63aaac1 @ 04:41:34Z, PR #97 04:48:18Z, operator trace 1a10f747060b0901). Scope disjoint file-level (r0: routes/classroom.ts classifier; this lane: selfmark route/service + contracts selfmark schemas) — an id-space collision, not a scope duplicate. Earliest-claim-wins: r0's 04:35:53Z precedes this lane's 04:41:34Z -> the 059 id belongs to r0; this lane's claim is ~6 minutes late on the id axis only.
+- This lane's own zero-collision scan (at ~04:36Z, git ls-remote + .syllabai rg) found zero 059 heads — r0's branch was pushed in the seconds between that scan and this lane's claim commit; the race was invisible until the post-PR census (the ls-remote pattern also false-matched hex substrings in shas — the scan pattern lesson is noted).
+- RESOLUTION EXECUTED: PR #97 CLOSED superseded (comment of record on the thread); the band re-files as T-MIG-064 (056-063 all taken at re-file time: 056/057 DONE, 058 = the depth pin #94, 059 = r0 F-0/F-1, 060 w0a Wave-6, 061 r9-hubx t1 #95, 062 r4b research calibration, 063 R0-integrator ci-replay rich-200); card + receipts git-mv'd to 064 with the provenance fields updated; the T-MIG-059 worklog sections above remain verbatim (append-only) as the historical claim record.
+- INTAKE: origin/main ddbe9fe (r1c round-15 sweep receipt, worklog-only) merged into the branch — one worklog tail hunk resolved ours-then-theirs (this lane's 059 sections + r1c's Task-21 section both preserved; zero markers verified). NOTE: the N-hunk union script was lost to the 8th workspace wipe and is being re-created under scripts/ this cycle.
+- Gates re-run after intake + re-file: bookkeeping-only delta expected — full battery re-executed below in the fix receipt addendum (the code commits are byte-identical; the re-file touches .syllabai only).
+
+Stage Summary:
+- The F-B band is now T-MIG-064 (IN_REVIEW, implementation unchanged — contracts widening + put-semantics dedup + unboxing parity all landed on the code commits); the 059 id stands with r0's F-0/F-1 band. New branch t-mig-064/r1 (no force-push — the superseded t-mig-059/r1 stays on origin as the claim evidence); PR refiled; NOT self-merged.
 ---
 Task ID: 22
 Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, operator trace 1a10f899e2c27485)
@@ -3231,6 +3276,23 @@ Work Log:
 
 Stage Summary:
 - T-MIG-063 run-002 IN_REVIEW on t-mig-063/r0. Expected at the next union: family 7/7 (port parity standing 17/17 local); B-class seed-posture reads may clear early via t51-seed.sql (named case-by-case at run-003; third-posture task remains the mechanism home). Re-proof = neon-replay dispatch post-merge.
+
+---
+
+Task ID: 7 (round: trace 1a10f9232658e9a5, agent r9-hubx, zai-web)
+Task: "Check if R0 has merged or not. If not, review+merge yourself and continue working" (round 14)
+
+Work Log:
+- R0 verdict: R0 IS merging — R0-AUTO 05:00 UTC sweep merged our #98 (061-t2, 2d5a73d, receipt 045dc2a; our tranche-2 Wave-6 intervention band LIVE on main); earlier #94/#95/#96 landed via the desk. The 05:00 sweep had skipped #99 ("head moved mid-sweep") — this lane picked it up.
+- REVIEWED+MERGED #99 (r1's T-MIG-064, the F-B band re-file from 059): frozen-law verified line-against-line (put-displacement :42-48, dead-letter cascade :59, exact-parts gate :102-111, unboxing NPE :116); put-semantics four-quadrant emulation confirmed across contracts/route/service; 058 depth pin kept fail-closed; residuals disclosed; zero golden/classroom/061 contact.
+- INTAKE 449f9af of main 30819de into t-mig-064/r1 (worklog union 1 block, 0 markers, 3165 lines); r1 lane then stacked their own intake 9054484 (of 2d5a73d) on top — no force-push, both preserved.
+- Gates at intake head 449f9af: typecheck x4 exit 0 / 1155-0-13skip-3530 = main 1151-3513 + PR +4/+17 EXACT / hub 36-0 / golden selftest OK; CI verify+hub success @ 449f9af.
+- MERGED #99 -> 862ca34 (parents ec40f1f + 9054484; #100 = r0's 063 landed at ec40f1f mid-cycle by the desk); record comment 6009873662; authors-never-self-merge honored (r1 authored).
+- Gates at merged tip 862ca34: typecheck x4 / 1185-0-13skip-3615 = main@ec40f1f 1181-3598 (per #98 receipt 045dc2a + 063 workflow-only) + PR +4/+17 EXACT / hub 36-0 / selftest OK / worklog 0 markers.
+- Queue re-scan post-merge: open PRs + task register re-checked for the continue-working step (see next entry if claimed).
+
+Stage Summary:
+- Round-14: R0 active (our #98 landed via R0-AUTO); this lane reviewed+merged the F-B band #99 with exact arithmetic at both intake and merged tips; lane continues per the standing directive.
 ---
 Task ID: T-MIG-063 (run-003 live finding + run-004 fix)
 Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, operator trace 1a10f806acdec285)
