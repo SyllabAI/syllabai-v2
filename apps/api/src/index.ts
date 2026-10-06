@@ -53,6 +53,7 @@ import { buildAnswerInputRouters } from "./routes/answer-input";
 import { buildTeacherMarkingRouters } from "./routes/teachermarking";
 import { buildSmeRouters } from "./routes/sme";
 import { buildLearnerRouters } from "./routes/learner";
+import { buildClassroomRouters } from "./routes/classroom";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
@@ -70,6 +71,7 @@ const testbuilder = buildTestBuilderRouters();
 const answerInput = buildAnswerInputRouters();
 const teachermarking = buildTeacherMarkingRouters();
 const sme = buildSmeRouters();
+const classroom = buildClassroomRouters();
 
 const app = new Hono();
 
@@ -293,6 +295,32 @@ app.route("/api/v1/teacher/marking", teachermarking.teacherRoute);
 // a separate commit per the T-MIG-010/020/021/030/032/033t2 precedent so
 // R0 can ratify or lift them out at review.
 app.route("/api/v1/admin/question-bank", sme.adminRoute);
+
+// Classroom/teacher foundation routers (T-MIG-052 tranche 2 — Wave 5). Path
+// parity with the frozen core: TeacherClassController under /api/v1/teacher
+// /classes (8 endpoints — TEACHER/ADMIN via SecurityConfig.java:87 + the M5
+// method-level @PreAuthorize defense in depth; the per-object §17 ownership
+// gate is 403 in the services), LearnerClassroomController under
+// /api/v1/learners/me/classroom (3 endpoints — SecurityConfig.java:91
+// anyRequest().authenticated(); the independent-student rule makes the empty
+// read the honest state), TeacherRosterController's GET /api/v1/teacher
+// /learners (the V49 ruling surface — mounted at the FULL path so its shell
+// cannot bleed onto the sibling /api/v1/teacher/* routers; NOTE verified at
+// t2: /api/v1/teacher/learners was served by NO mount before this — the
+// teachermarking mount lives at /api/v1/teacher/marking — so this is
+// conflict-free). Each router owns its authz internally — the /api/v1/*
+// fallback below stays the 404-after-auth path for NO router claimed.
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-052 tranche 2, R0 ratification requested):
+// T-MIG-052's tranche-2 scope covers routes/classroom.ts,
+// services/classroom/** (landed in tranche-1), test/classroom/** — NOT this
+// file. The import + construction + three mount lines + this comment are the
+// minimal app-level wiring the ported module needs, shipped as a separate
+// commit per the T-MIG-010/020/021/030/032/033/034/041t2 precedent so R0 can
+// ratify or lift them out at review.
+app.route("/api/v1/teacher/classes", classroom.teacherClassesRoute);
+app.route("/api/v1/learners/me/classroom", classroom.learnerClassroomRoute);
+app.route("/api/v1/teacher/learners", classroom.teacherRosterRoute);
 
 // anyRequest().authenticated() parity for paths NO router claimed
 // (SecurityConfig.java:91): anonymous callers get the 401 Boot-shaped body;
