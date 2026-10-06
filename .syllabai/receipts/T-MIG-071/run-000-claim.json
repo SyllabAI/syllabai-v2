@@ -1,0 +1,41 @@
+{
+  "task_id": "T-MIG-071",
+  "run": "000",
+  "kind": "claim",
+  "timestamp": "2026-10-06T09:15:48Z",
+  "lane": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "operator_directive": {
+    "trace": "1a1107d90d2f3cc9",
+    "text": "Check if R0 has merged or not. If not, review+merge yourself and continue working"
+  },
+  "census": {
+    "base": "e9ef235 (origin/main at claim time)",
+    "r0_merge_check": "IN of record — since R4b-ROUND-20 (97295d1): #115 d25626e (T-MIG-053 tranche-3), #116 3e9b54b (T-MIG-053 DONE 23/23), #117 c88b738 (T-MIG-072 merged by the r0-auto desk lane, e9ef235 receipt); open PRs at census: 0; desk queue: 0",
+    "free_bands": [
+      "T-MIG-071 (operator-ruling case-amendments, R3-C/D3/D4) — the sole OPEN/unassigned card"
+    ],
+    "owner_property": {
+      "T-MIG-043": "IN_REVIEW (w0a)",
+      "T-MIG-065": "IN_REVIEW (r0)",
+      "T-MIG-072": "IN_REVIEW (r1 — landed via #117, card flip owed by owner)",
+      "T-MIG-073": "IN_PROGRESS (r1-contracts)"
+    }
+  },
+  "zero_collision": {
+    "branches": "t-mig-071/r1 @ 14ed0ab on origin = the superseded refile-claim evidence per the T-MIG-073 card (ruling2: branch name cosmetic, the yaml id is what the register reads) — not an active 071 claim",
+    "receipts": "no .syllabai/receipts/T-MIG-071/ existed at claim time",
+    "prs": "zero open PRs touching 071",
+    "worklog": "r1 round-20 closeout (of record): 'T-MIG-071 still OPEN/unassigned (the case-amendment band — the next claim candidate for any lane; its RICH-200-E residual assessment is unblocked now that 072 composition has landed)'"
+  },
+  "claim": {
+    "protocol": "claim-commit-first (wipe-protection law): card owner/status flip + this receipt + worklog entry in ONE .syllabai-only direct-main commit per the 3c07bae/bb537fa/2a0b18d precedents (fetch-first)",
+    "implementation_plan": [
+      "R3-C: the eight run-7 class-C auth-register cases gain justified:true + expect.headers Retry-After pin (the limiter STAYS; no pacing anywhere)",
+      "R3-D3: w4-target-series-put-201 tolerate[] += daysToWindowStart, daysToWindowEnd + justified:true (all other fields stay byte-pinned)",
+      "R3-D4 Option A: w4-register-learner-201 tolerate[] += accessToken; w3-history-after-submit-200 tolerate[] += learnerId, attemptId (fully assessable only after the 072 composition — verify on the live instrument); auth-me-with-bearer-200 tolerate[] += the live-diff-verified seeded-identity fields (email/displayName expected; id already tolerated)",
+      "RIDER (only if Retry-After rotates at the replay posture): golden/runner.ts pattern-value header support + selftest growth, disclosed"
+    ],
+    "scope_fence": "golden/cases/** + .syllabai/** only; apps/** and packages/** FORBIDDEN; no pacing; no deletions; no widening beyond the ruled fields; production Neon/Render writes forbidden",
+    "gates_plan": "typecheck (runner workspaces), bun test apps/api packages (+0 expected — case files are not unit-test fixtures), golden/runner.ts --selftest, full corpus replay pre/post amendment for the verdict delta, ci-replay --plan census unchanged"
+  }
+}
