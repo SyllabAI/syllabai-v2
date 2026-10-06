@@ -3514,3 +3514,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-060 DONE end-to-end of record: claim d328f9d -> t1 839a0a7 (33 pins, intake 883131e) -> t1b+t2 PR #104 -> merged 6580b2c. Wave-6 tutor + sessions (the KaRAG deterministic core, the paper-question fail-open guard, routes/SSE/sessions CRUD, the disclosed mount) is ON MAIN — the band that owns the tutor-shaped w4 replay cases has landed. Remaining register: the two seam-consolidation rulings ride T-MIG-066 (#106, r1 in flight); Vercel live-deploy verification belongs to the deploy lane; LLM provider infra to the wave-3 lane. Board after merge: only #106 open. Next: free-band census + claim per the standing claim word trace 1a10d2c88b6f13c5. Zero golden/Neon/force.
+
+---
+Task ID: T-MIG-067 (claim)
+Agent: lane w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: The 'continue working' half of operator trace 1a10fbe9465708c9 (the merge half is worklog Task 5) — claim the next unfiled Wave-6 surface per the standing claim word trace 1a10d2c88b6f13c5.
+
+Work Log:
+- Free-band census after the #104 merge: 050..066 ALL owned (DONE x10: 050/051/052/054/055/056/059/060/062/063; in-flight x6: 057 r4b, 058 r1, 061 r9-hubx, 064 r1, 065 r0, 053 r3a; 066 open on r1's #106). Zero 067+ ids anywhere. docs/MIGRATION_PLAN.md §5 Wave 6 re-read: the surface list is 'tutor + sessions, CLA, intervention runs, LLM admin, research calibration, OCR ingestion, routing' — CLA is the only unfiled member that is deterministic-heavy AND seam-adjacent to this lane's landed 060.
+- CLAIMED T-MIG-067 (POST /api/v1/learners/me/cla/ask): frozen surface mapped from syllabai-core @ 6cad6ef — ClaController :36-101 (one endpoint), ClaService :906 ln, ClaContextResolver :492, ClaToolRegistry :203, ClaLeakagePolicy :88, dto/ClaAnswerView :121, ClaInteractionEvent :67 (ApplicationEventPublisher :422 -> LIM surface=CONTEXTUAL_ASSISTANT; zero new tables, ADR-031 intact); frozen tests 1022/574/218/965 ln are the pin source.
+- Dependency audit: consumes services/tutor/** + knowledge + learner model + assessment repos + ServableQuestions — ALL already on main (060/041/053 families); NO edits to landed fences; the generator seam is the tutor's dormant 503 posture (R-LLM honoured).
+- Zero-collision scan immediately before branch cut @ origin/main 2a0b18d: 0 remote 067+ heads, 0 yamls, 0 worklog mentions, open PRs = #106 only. Branch t-mig-067/w0a cut; card T-MIG-067-cla-ask.yaml + run-001-claim.json + this entry = the claim commit (claim-in-first-commit).
+- Tranche plan filed: t1 = contracts + leakage policy + tool registry + context resolver; t2 = service orchestration + route + view + event posture + mount (OUT-OF-FENCE, separate commit) + PR.
+
+Stage Summary:
+- T-MIG-067 CLAIMED on t-mig-067/w0a @ 2a0b18d base. The band closes the Wave-6 CLA surface over this lane's own 060 seam. Remaining unfiled Wave-6 members for other claimants: LLM admin (LlmAdminController), OCR ingestion (GlmOcrIngestionController), routing (RoutingController) — all zero-claim at census time. Id ratification will be requested at PR (060 precedent). Zero golden/Neon/force.

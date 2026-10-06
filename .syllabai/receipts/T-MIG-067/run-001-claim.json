@@ -1,0 +1,42 @@
+{
+  "task": "T-MIG-067",
+  "run": "run-001-claim",
+  "date": "2026-10-06",
+  "lane": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "provenance": {
+    "operator_directive_trace": "1a10fbe9465708c9",
+    "directive": "Check if R0 has merged or not. If not, review+merge yourself and continue working",
+    "resolution": "the merge half executed of record first (T-MIG-060 #104 -> merge commit 6580b2c, run-004-merge receipt); this claim is the 'continue working' half, executing the standing claim word trace 1a10d2c88b6f13c5"
+  },
+  "band": {
+    "id": "T-MIG-067",
+    "surface": "POST /api/v1/learners/me/cla/ask — the Wave-6 CLA (contextual assistant) fetch/ask surface",
+    "why_this_band": "docs/MIGRATION_PLAN.md §5 Wave 6 lists 'CLA' explicitly among 060..066; 060 (tutor+sessions, this lane, DONE of record), 061 (intervention), 062 (research calibration) are filed and 063..066 are owned — CLA is the wave's only unfiled member that is deterministic-heavy and seam-adjacent to this lane's landed 060 work (the band consumes the ported tutor chain + the fetch bank + ServableQuestions directly)",
+    "continuity": "the band's biggest dependency set is exactly 060's landed fence (services/tutor/**) — consumed read-only via imports; zero edits to landed fences"
+  },
+  "zero_collision_scan": {
+    "at": "origin/main 2a0b18d (the 060 bookkeeping head)",
+    "remote_heads_067plus": 0,
+    "yamls_067plus": 0,
+    "worklog_067_mentions": 0,
+    "open_prs": ["#106 (T-MIG-066, t-mig-066/r1) — not this lane's, fences disjoint"]
+  },
+  "surface_map_frozen_core_6cad6ef": {
+    "controller": "ClaController :36-101 — ONE endpoint POST /api/v1/learners/me/cla/ask",
+    "service": "ClaService :1-906 — deterministic orchestration over the tutor chain (KnowledgeRetriever, VectorRetriever, ReciprocalRankFusion, EvidenceReranker, ContextAssembler, CitationResolver, TutorPolicyService, the generator seam) + KnowledgeGraphService + LearnerModelService.MisconceptionReading + assessment repos + content",
+    "context_resolver": "ClaContextResolver :1-492 — identity/ambiguity + context assembly over ServableQuestionService + exam papers + parts/mark schemes",
+    "tool_registry": "ClaToolRegistry :1-203 — tool enumeration + RelatedConcepts",
+    "leakage_policy": "ClaLeakagePolicy :1-88 — the mid-attempt leakage law",
+    "wire": "dto/ClaAnswerView :1-121",
+    "event": "shared/events/ClaInteractionEvent :1-67 — published via ApplicationEventPublisher :422 (LIM surface=CONTEXTUAL_ASSISTANT); v2 posture = the 061 telemetry treatment, zero new tables",
+    "frozen_tests": ["ClaServiceTest 1022 ln", "ClaContextResolverTest 574 ln", "ClaLeakagePolicyTest 218 ln", "ClaFlowIT 965 ln"]
+  },
+  "llm_posture": "no new LLM client — the generator seam is the tutor's dormant seam (generation-reaching asks 503 tutor_unavailable fixed body; deterministic refusals NEVER 503); R-LLM: outputs never golden-gated, deterministic surfaces (authz, context resolution, leakage policy, tool registry, citation plumbing) are the gated ones",
+  "adr_031_note": "zero writes: no CLA tables exist in the v2 baseline and none are created; the interaction event rides the telemetry posture — ADR-031's only-write-surfaces list unchanged",
+  "tranche_plan": {
+    "t1": "contracts (packages/contracts/src/cla.ts) + ClaLeakagePolicy + ClaToolRegistry + ClaContextResolver line-against-line + pins",
+    "t2": "ClaService orchestration + routes/cla.ts + ClaAnswerView + event posture + pins; OUT-OF-FENCE index.ts mount as its own commit; PR with the full symmetric disclosure + id ratification request"
+  },
+  "credential_hygiene": "PAT file 0600 outside all repos (fingerprint 46b5d309715c1b1c); shell-env-only; never echoed, never in artifacts",
+  "next": "tranche-1 implementation on this branch; claim-in-first-commit = this commit"
+}
