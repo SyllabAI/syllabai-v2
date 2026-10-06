@@ -53,6 +53,7 @@ import { buildAnswerInputRouters } from "./routes/answer-input";
 import { buildTeacherMarkingRouters } from "./routes/teachermarking";
 import { buildSmeRouters } from "./routes/sme";
 import { buildLearnerRouters } from "./routes/learner";
+import { buildClassroomRouters } from "./routes/classroom";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
@@ -70,6 +71,7 @@ const testbuilder = buildTestBuilderRouters();
 const answerInput = buildAnswerInputRouters();
 const teachermarking = buildTeacherMarkingRouters();
 const sme = buildSmeRouters();
+const classroom = buildClassroomRouters();
 
 const app = new Hono();
 
@@ -293,6 +295,29 @@ app.route("/api/v1/teacher/marking", teachermarking.teacherRoute);
 // a separate commit per the T-MIG-010/020/021/030/032/033t2 precedent so
 // R0 can ratify or lift them out at review.
 app.route("/api/v1/admin/question-bank", sme.adminRoute);
+
+// Classroom/teacher routers (T-MIG-052 tranche-2 — Wave 5). Path parity with
+// the frozen core: TeacherClassController under /api/v1/teacher/classes (8
+// endpoints, TEACHER/ADMIN), LearnerClassroomController under
+// /api/v1/learners/me/classroom (3 endpoints, authenticated),
+// TeacherRosterController at the frozen /api/v1/teacher class mapping with
+// the single GET /learners method mapping (TEACHER/ADMIN — the V51 explicit
+// roster behind the UNCHANGED V49 endpoint shape; served by NO earlier
+// router, verified at t2). Each router owns its authz internally — the
+// /api/v1/* fallback below stays the 404-after-auth path for NO router
+// claimed; the roster router is registered LAST so the earlier teacher
+// routers keep first-match authority over their own prefixes.
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-052 tranche-2, R0 ratification requested):
+// T-MIG-052 t2's scope.allowed covers routes/classroom/**,
+// test/classroom/** + the DISCLOSED contracts notBlank amendment — NOT
+// this file. The import + construction + three mount lines + this comment
+// are the minimal app-level wiring, shipped as a separate commit per the
+// T-MIG-010/020/021/030/032/033/034/041 precedent so R0 can ratify or
+// lift them out at review.
+app.route("/api/v1/teacher/classes", classroom.teacherClassesRoute);
+app.route("/api/v1/learners/me/classroom", classroom.learnerClassroomRoute);
+app.route("/api/v1/teacher", classroom.teacherRosterRoute);
 
 // anyRequest().authenticated() parity for paths NO router claimed
 // (SecurityConfig.java:91): anonymous callers get the 401 Boot-shaped body;
