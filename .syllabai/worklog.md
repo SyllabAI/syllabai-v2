@@ -3852,3 +3852,19 @@ Work Log:
 
 Stage Summary:
 - Round-20 sweep: 2 adjudications completed to match their records (#109 closed-superseded after the fleet's vehicle-merge, #111 closed-yielded) + 1 full independent review+merge (#112 -> fdcfc53, the #104 blocker band, arithmetic EXACT). Desk returns to standby; no free filed bands remain for this lane. STOP.
+
+---
+Task ID: R0-MERGE-DESK-19
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Operator directive trace 1a10ff9c71958f71 "Check if R0 has merged or not. If not, review+merge yourself and continue working" — desk sweep of the post-baseline queue.
+
+Work Log:
+- STATE CENSUS @ 33e281f: main had advanced past the ratified chain (R0 lanes merged #109 e760bdc + #110 3e4e22c; r1 Task-26 yield addendum 33e281f; R4b-ROUND-19 receipt 4fff2b1). Queue = #112 (T-MIG-070, this session's r0 lane claim, CI green, filed NOT self-merged) + #111 (the yielded r1 duplicate, still open on GitHub despite the closure of record).
+- #112 REVIEWED under the operator direct order (the 1a10fbe9465708c9 #104 precedent): full 419-line diff read; supporting facts verified first-hand (notBlank = auth.ts:56 trimmed-length law; withRerankScore = evidence.ts:182; classifier field reducer yields history[0].text + the history.text defaults fallback; defaults.absent keys present; insert params [2]=role/[3]=content verified vs session-store.ts:323-333; bound() = MAX_CONTENT_CHARS 4000 + ellipsis, session-store.ts:363-368).
+- GATES first-hand: branch head 7c3d32b = 1398 ran / 1385 pass / 0 fail / 13 skip / 73 files / 5599 expects; pristine main tip 4fff2b1 measured in a separate worktree = 1394 / 1381 / 0 / 13 / 73 / 5583 — delta +4/+4/0/0/0 = EXACTLY the 4 pins; typecheck exit 0 across the script-bearing workspaces (root/api/contracts/db/shared — hub has no typecheck script, noted for the record); golden selftest OK; CI hub+verify success on 7c3d32b.
+- INTAKE: main raced twice during reconciliation (review-112 lane's 1d8c8dd dropped main's Task-26 entry from its union — 16 deletions zero insertions, flagged; reviewer cfb47be re-united 3834 lines zero markers; convergent union 7c3d32b pushed with each entry exactly once, verified: Task-26 + R4b-ROUND-19 + both 070 entries present singly, zero markers).
+- MERGED #112 -> fdcfc53 (commit message carries the full desk verdict + provenance); CLOSED #111 unmerged (the Task-26 yield of record formalized on GitHub). Post-merge gates re-run on fdcfc53 first-hand: 1398/1385/0/13skip/73f. r1c's independent round-20 receipt (c930fe0) corroborates both numbers EXACT.
+- REGISTER UPDATE: the #104 blocker band (register item 1 — conversation.ts blank-turn drop, @NotBlank whitespace, NoReranker rerankScore-copy) is CLOSED of record; the superseded adversarial REQUEST_CHANGES (comment 6010396027) fully discharged. Remaining open register: RICH-200-C two ordered tranches (bc521b3 ruling, case-owner lanes) + RICH-200-E + the nba.ts :42-46 stale-header nit (non-gating, belongs to the next lane touching the learner-me fence).
+
+Stage Summary:
+- Queue ZERO: #112 merged fdcfc53 (T-MIG-070 DONE), #111 closed-yielded, #109 closed-superseded by r1c round-20. Merged-tip gates of record 1398 ran / 1385 pass / 0 fail / 13 skip / 73 files, typecheck x4 exit 0, golden selftest OK. r0 | desk sweep complete, both frozen tutor laws on main, zero collisions | IDLE | suggestion: next free bands are the case-owner RICH-200-C/E tranches; the register carries no r0-actionable item.
