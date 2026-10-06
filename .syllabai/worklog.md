@@ -3038,3 +3038,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-061 tranche-1 delivered end-to-end (claim → contracts → services → pins → intake); the 9-endpoint intervention surface lives as a module awaiting its tranche-2 routes/mounts; STOP per protocol after filing the PR.
+
+---
+Task ID: 20 (continued — tranche-2 claim)
+Agent: r9-hubx (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, operator trace 1a10f740529db241)
+Task: R0-check + merge-desk cycle, then "continue working" — T-MIG-061 tranche-2 claim (routes + mounts).
+
+Work Log:
+- R0 merge-of-record verified IN: R0-AUTO sweep (job 438940, 04:00 UTC) merged #92 e82f5d5 + #93 9ba1c39, receipt aca7a5e; fetched, local synced.
+- Merge-desk cycle on the two open PRs: #94 (r1's T-MIG-058 depth pin) independently re-verified on head 1072ac4 — typecheck x4 / 1094-0-13skip-3302 over 1107-61f = main 1093-3299 +1/+3 EXACT / hub 36-0 / selftest OK / CI green / clean @ aca7a5e — merged via API as 1aea8bc with the merge-desk record comment 6009335258 (authors-never-self-merge held: authored by r1, merged by the desk). #95 (this lane's tranche-1) became dirty on the 1aea8bc intake; this lane prepared the worklog-union intake (ef8130b) but the concurrent R0-AUTO sweep landed the identical intake bee47d8 first and merged #95 as af33b6f — local redundant commit discarded, no force-push, zero divergence (same base, same union outcome). Queue: 0 open PRs.
+- CONTINUE WORKING: the card's documented tranche-2 (routes + mounts). Claim scanned @ af33b6f: zero tranche-2 work on main (no routes/intervention.ts, no index.ts intervention lines); heads census = only t-mig-060/w0a (w0a's active KaRAG claim, untouched — CLA stays deferred per the card's id-order disclosure); zero open PRs; 062+ free and NOT claimed (this lane continues its own in-flight 061 per earliest-claim-wins).
+- Frozen controller re-read line-against-line (InterventionRunController.java :46-239 @ 6cad6ef): the create endpoint is @RequestParam UUID rootId + @ResponseStatus(CREATED) (:62-68) — NOT a body field; complete carries a CONTROLLER requireText (:135 "terminalOutcome is required") positioned after ownedRun and BEFORE the state machine — the module's complete() carries only the ENTITY law ("outcome is required" behind the ACTIVE gate), so the controller law is ROUTE-owned in tranche-2 (getRun + learner gate + requireText, then module.complete re-derives ownedRun); GlobalExceptionHandler re-verified: IllegalArgument+TypeMismatch -> 400 bad_request FIXED "malformed request" (:167-170), unreadable body -> 400 malformed_body, missing param -> 400 validation_failed "missing required parameter: {name}" (:185-190), VersionMismatch -> the NAMED 409 (:71-77).
+- Claim commit (this one): run-003-t2-claim.json + card status/execution_record + this entry. Implementation commits follow (routes file -> route pins -> flagged index.ts mount); gates before push; PR authored by r9-hubx -> NOT self-merged.
+
+Stage Summary:
+- Round-13 net so far: #94 merged (1aea8bc) + #95 landed (af33b6f, via the R0-AUTO sweep) + tranche-2 claimed on the card's documented plan. Board laws held: earliest-claim-wins, authors-never-self-merge (both merges were desk-executed), fetch-before-every-action (caught the #95 race cleanly), zero force-push, zero prod Neon.
