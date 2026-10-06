@@ -196,6 +196,11 @@ export {
   type BankScope,
   type TutorFetchPort,
 } from "./fetch-bank";
+export {
+  // the sql-backed vector arm (tranche-2 — the T-C32 law: doc_version rides
+  // the search SQL, never a per-hit re-read)
+  buildSqlVectorArm,
+} from "./vector-arm";
 export type { SqlFn } from "./sql";
 
 export interface TutorModule {
