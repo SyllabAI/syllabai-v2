@@ -12,6 +12,21 @@ const CORE_ORIGIN = (process.env.NEXT_PUBLIC_API_BASE_URL ?? "")
   .replace(/\/api\/v1$/, "");
 
 /**
+ * DEPLOY-TIME WAVE-A FIX (R0-WAVEA-HOTFIX-CSP, intentionally UNCOMMITTED):
+ * the v2 origin is browser-direct for every flipped V2_SURFACE_PREFIXES family
+ * (api.ts API_V2_BASE) and must be allow-listed in connect-src exactly like
+ * the core origin above — the Wave-A env flip moved /api/v1/auth browser-side
+ * to the v2 base while this CSP only derived from the core base, so every
+ * flipped family (register/login included) died as "Failed to fetch" in real
+ * browsers (CSP enforcement) while all CLI smokes passed. The repo of record
+ * still owes this change via a reviewed PR; this working-tree patch exists
+ * only so the emergency CLI redeploy builds with it.
+ */
+const V2_ORIGIN = (process.env.NEXT_PUBLIC_API_V2_BASE_URL ?? "")
+  .replace(/\/$/, "")
+  .replace(/\/api\/v1$/, "");
+
+/**
  * Content-Security-Policy (promotion-plan Phase-1 item 6).
  *
  * Allow-list is derived from what the app actually loads — nothing speculative:
@@ -38,7 +53,7 @@ const CSP = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: https://raw.githubusercontent.com",
   "font-src 'self' data:",
-  `connect-src 'self' https://raw.githubusercontent.com${CORE_ORIGIN ? ` ${CORE_ORIGIN}` : ""}`,
+  `connect-src 'self' https://raw.githubusercontent.com${CORE_ORIGIN ? ` ${CORE_ORIGIN}` : ""}${V2_ORIGIN && V2_ORIGIN !== CORE_ORIGIN ? ` ${V2_ORIGIN}` : ""}`,
   "frame-src 'self'",
   "worker-src 'self' blob:",
   "object-src 'none'",
