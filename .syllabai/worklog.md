@@ -4918,3 +4918,22 @@ Work Log:
 
 Stage Summary:
 - PR #134 (branch t-mig-082-091/r1c @ 937ed62) delivers the operator's "Fix the 30 endpoints": every mountable census endpoint is mounted or honestly seamed; gates green first-hand; zero hub prefix widening (flip law honored); zero prod contact. Remaining to make them LIVE on syllabai-hub-v2: PR merge (R0) -> Wave-A api deployment + Neon (operator) -> per-family capture + golden-verify + prefix widening (lane, ordered). Decay: three-gate answer of record; enablement is the operator's §3 takeover lever, correctly fail-closed until then.
+
+
+---
+Task ID: capture-pass T-MIG-083..091 execution (trace 1a1151442250feb1, operator order "start the capture pass")
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Execute the claimed capture pass — record Java wire truth for the 9 unmounted families from frozen core 6cad6ef.
+
+Work Log:
+- Sandbox rebuilt of record: Temurin JDK 25.0.4.1 + Maven 3.9.9 + PG 17.11 + pgvector 0.8.7 (trixie debs, user-tree dpkg -x); frozen core copied to /home/z/build/core (upstream untouched); mvn -DskipTests package BUILD_OK; local boot :8090 with Flyway 63 migrations, SYLLABAI_LLM_MODE=test fail-closed, providers disabled, synthetic JWT secret + teacher join code. Zero prod/Neon contact.
+- Seed of record: synthetic learner/teacher (honest join-code API path) + FIRST ADMIN claimed via POST /api/v1/auth/bootstrap-admin (V19 state law, {"available":true}); teacher class created + learner enrolled; curriculum seeded by core migrations (31 TOPIC / 2 SUBJECT / 167 CONCEPT / 30 MISCONCEPTION / 5 UNIT / 200 SUBTOPIC).
+- 64 wire legs captured across 9 families (083 x8, 084 x8, 085 x7, 086 x7, 087 x8, 088 x9, 089 x6, 090 x4, 091 x7): auth shapes (401/403 teacher+learner+admin), empty-state 200s, error contracts, and SUCCESS shapes for 084 node/tree, 085 activate+edges, 086 graph+learner-kg, 087 list/mark/history, 088 enumerate/structured/fetch, 090 chain-health, 091 import (idempotent 200 upsert).
+- Display-layer guard interference CONFIRMED AGAIN this session (rg over controller paths showed telescoped literals "/api/v1/learners/me/n", "/api/v1/teacher/nn" vs byte-level truth "/api/v1/learners/me/revision-notes", "/api/v1/teacher/classes/{classId}/coverage") — same class as T-MIG-076; ALL path-sensitive reads done via python byte reads; statuses cross-verified from curl -w meta files on disk.
+- LAWS OF RECORD captured: knowledge nodes are UUID-typed (literal kn-1 -> 400); ALL class-KG sub-endpoints require ?rootId= (400 missing-parameter with exact name); coverage spec-point gate = SUBTOPIC + applicability != null (V39 invariant) with taught|not-taught vocabulary; class-KG ownership is teacher-scoped (admin 403); exam-series domain violations are 409 conflict (blank board, non-kebab-case seriesCode) vs 400 for enum violations; import is idempotent (repeat 200); glm-ocr pairs has NO validation layer ({} -> 500 NPE-family quirk, same class as T-MIG-053 self-mark); JSON-to-multipart on ingest -> 500.
+- Scrub of record: tokens never persisted (auth legs are seed infra, excluded); 26 UUIDs -> stable fakes 00000000-0000-4000-8000-{seq} (map: receipts/capture/2026-10-07/uuid-map-r4b.json); identities synthetic @example.invalid.
+- Emitted: golden-captures/t-mig-08{3..9}/ + t-mig-09{0,1}/ (64 files, r3a leg convention: {leg, method, path, status, captured_at_utc, source, request_headers redacted, response_headers, body, body_encoding}); receipts/T-MIG-08x/run-001-capture-r4b.json per family (method/seed/legs/scrub/seams/quirks); cards 083-091 -> CAPTURED.
+- DISCLOSED SEAMS (2): 083 ingest-success needs the real corpus ZIP; 089 pairs-success needs real canonical qp/ms documents (OCR LLM fail-closed in test mode). Everything else captured first-hand.
+
+Stage Summary:
+- Capture pass DONE of record for 083-091 (082 remains r3a's PR #135). The cards' remaining sequence per family: mount -> golden-verify -> widen V2_SURFACE_PREFIXES (flip law). 088-091 mounts remain open for claim (services: 088 substrate present, 089 W6-unported, 090 port-if-missing, 091 teacher-side port needed).

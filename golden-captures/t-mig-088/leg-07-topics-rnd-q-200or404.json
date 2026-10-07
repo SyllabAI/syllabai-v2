@@ -1,0 +1,25 @@
+{
+ "body": {
+  "error": "not_found",
+  "message": "question 00000000-0000-4000-8000-000000000025 not found",
+  "status": 404,
+  "timestamp": "2026-10-07T06:59:35.546864079Z"
+ },
+ "body_encoding": "json",
+ "captured_at_utc": "2026-10-07T07:05:00Z",
+ "leg": "leg-07-topics-rnd-q-200or404",
+ "method": "GET",
+ "path": "/api/v1/teacher/content/questions/00000000-0000-4000-8000-000000000025/topics",
+ "request_headers": {
+  "accept": "application/json",
+  "authorization": "Bearer ***REDACTED***"
+ },
+ "response_headers": {
+  "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+  "content-type": "application/json",
+  "x-content-type-options": "nosniff",
+  "x-frame-options": "DENY"
+ },
+ "source": "LOCAL boot of frozen Java core 6cad6ef (mvn package, JDK 25.0.4.1, Flyway v63) on LOCAL scratch PostgreSQL 17.11 + pgvector 0.8.7, port 8090; SYLLABAI_LLM_MODE=test fail-closed; synthetic join-code env; zero prod/Neon contact; R4-api-b trace 1a1151442250feb1",
+ "status": 404
+}

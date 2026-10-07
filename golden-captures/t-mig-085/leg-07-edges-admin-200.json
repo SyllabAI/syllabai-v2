@@ -1,0 +1,246 @@
+{
+ "body": {
+  "edges": [
+   {
+    "provenance": "chemistry education research",
+    "rationale": "Classic mole-concept confusion",
+    "relation": "MISCONCEPTION_OF",
+    "source": {
+     "code": "MIS-T1.1-01",
+     "nodeId": "00000000-0000-4000-8000-000000000016",
+     "nodeType": "MISCONCEPTION",
+     "title": "Moles and grams are interchangeable",
+     "validationStatus": "UNVALIDATED"
+    },
+    "target": {
+     "code": "WCH11-T1.1",
+     "nodeId": "00000000-0000-4000-8000-000000000004",
+     "nodeType": "SUBTOPIC",
+     "title": "Mole calculations and reacting masses",
+     "validationStatus": "UNVALIDATED"
+    },
+    "validationStatus": "UNVALIDATED"
+   },
+   {
+    "provenance": "chemistry education research",
+    "rationale": "Isotope chemistry confusion",
+    "relation": "MISCONCEPTION_OF",
+    "source": {
+     "code": "MIS-T2.1-01",
+     "nodeId": "00000000-0000-4000-8000-000000000017",
+     "nodeType": "MISCONCEPTION",
+     "title": "Isotopes of the same element differ chemically",
+     "validationStatus": "UNVALIDATED"
+    },
+    "target": {
+     "code": "WCH11-T2.1",
+     "nodeId": "00000000-0000-4000-8000-000000000007",
+     "nodeType": "SUBTOPIC",
+     "title": "Atomic structure, isotopes and ions",
+     "validationStatus": "UNVALIDATED"
+    },
+    "validationStatus": "UNVALIDATED"
+   },
+   {
+    "provenance": "chemistry education research",
+    "rationale": "Molecular vs lattice model confusion",
+    "relation": "MISCONCEPTION_OF",
+    "source": {
+     "code": "MIS-T3.1-01",
+     "nodeId": "00000000-0000-4000-8000-000000000018",
+     "nodeType": "MISCONCEPTION",
+     "title": "Ionic compounds form discrete molecule pairs",
+     "validationStatus": "UNVALIDATED"
+    },
+    "target": {
+     "code": "WCH11-T3.1",
+     "nodeId": "00000000-0000-4000-8000-000000000010",
+     "nodeType": "SUBTOPIC",
+     "title": "Ionic bonding and lattice structure",
+     "validationStatus": "UNVALIDATED"
+    },
+    "validationStatus": "UNVALIDATED"
+   },
+   {
+    "provenance": "chemistry education research",
+    "rationale": "Over-generalised octet rule",
+    "relation": "MISCONCEPTION_OF",
+    "source": {
+     "code": "MIS-T3.2-01",
+     "nodeId": "00000000-0000-4000-8000-000000000019",
+     "nodeType": "MISCONCEPTION",
+     "title": "The octet rule is an absolute law",
+     "validationStatus": "UNVALIDATED"
+    },
+    "target": {
+     "code": "WCH11-T3.2",
+     "nodeId": "00000000-0000-4000-8000-000000000011",
+     "nodeType": "SUBTOPIC",
+     "title": "Covalent bonding, shapes and intermolecular forces",
+     "validationStatus": "UNVALIDATED"
+    },
+    "validationStatus": "UNVALIDATED"
+   },
+   {
+    "provenance": "v0 heuristic \u2014 pedagogical ordering",
+    "rationale": "Amount of substance underpins relative masses and ionisation calculations",
+    "relation": "REQUIRES_PREREQUISITE",
+    "source": {
+     "code": "WCH11-T1",
+     "nodeId": "00000000-0000-4000-8000-000000000003",
+     "nodeType": "TOPIC",
+     "title": "Formulae, Equations and Amount of Substance",
+     "validationStatus": "UNVALIDATED"
+    },
+    "target": {
+     "code": "WCH11-T2",
+     "nodeId": "00000000-0000-4000-8000-000000000006",
+     "nodeType": "TOPIC",
+     "title": "Atomic Structure and the Periodic Table",
+     "validationStatus": "UNVALIDATED"
+    },
+    "validationStatus": "UNVALIDATED"
+   },
+   {
+    "provenance": "v0 heuristic \u2014 pedagogical ordering",
+    "rationale": "Empirical formulae scale mole calculations",
+    "relation": "REQUIRES_PREREQUISITE",
+    "source": {
+     "code": "WCH11-T1.1",
+     "nodeId": "00000000-0000-4000-8000-000000000004",
+     "nodeType": "SUBTOPIC",
+     "title": "Mole calculations and reacting masses",
+     "validationStatus": "UNVALIDATED"
+    },
+    "target": {
+     "code": "WCH11-T1.2",
+     "nodeId": "00000000-0000-4000-8000-000000000005",
+     "nodeType": "SUBTOPIC",
+     "title": "Empirical and molecular formulae",
+     "validationStatus": "UNVALIDATED"
+    },
+    "validationStatus": "UNVALIDATED"
+   },
+   {
+    "provenance": "v0 heuristic \u2014 pedagogical ordering",
+    "rationale": "Relative atomic mass calculations use the mole",
+    "relation": "REQUIRES_PREREQUISITE",
+    "source": {
+     "code": "WCH11-T1.1",
+     "nodeId": "00000000-0000-4000-8000-000000000004",
+     "nodeType": "SUBTOPIC",
+     "title": "Mole calculations and reacting masses",
+     "validationStatus": "UNVALIDATED"
+    },
+    "target": {
+     "code": "WCH11-T2.1",
+     "nodeId": "00000000-0000-4000-8000-000000000007",
+     "nodeType": "SUBTOPIC",
+     "title": "Atomic structure, isotopes and ions",
+     "validationStatus": "UNVALIDATED"
+    },
+    "validationStatus": "UNVALIDATED"
+   },
+   {
+    "provenance": "v0 heuristic \u2014 pedagogical ordering",
+    "rationale": "Bonding requires atomic structure (ions, electron configuration)",
+    "relation": "REQUIRES_PREREQUISITE",
+    "source": {
+     "code": "WCH11-T2",
+     "nodeId": "00000000-0000-4000-8000-000000000006",
+     "nodeType": "TOPIC",
+     "title": "Atomic Structure and the Periodic Table",
+     "validationStatus": "UNVALIDATED"
+    },
+    "target": {
+     "code": "WCH11-T3",
+     "nodeId": "00000000-0000-4000-8000-000000000009",
+     "nodeType": "TOPIC",
+     "title": "Bonding and Structure",
+     "validationStatus": "UNVALIDATED"
+    },
+    "validationStatus": "UNVALIDATED"
+   },
+   {
+    "provenance": "v0 heuristic \u2014 pedagogical ordering",
+    "rationale": "Electron configuration builds on subatomic structure",
+    "relation": "REQUIRES_PREREQUISITE",
+    "source": {
+     "code": "WCH11-T2.1",
+     "nodeId": "00000000-0000-4000-8000-000000000007",
+     "nodeType": "SUBTOPIC",
+     "title": "Atomic structure, isotopes and ions",
+     "validationStatus": "UNVALIDATED"
+    },
+    "target": {
+     "code": "WCH11-T2.2",
+     "nodeId": "00000000-0000-4000-8000-000000000008",
+     "nodeType": "SUBTOPIC",
+     "title": "Electron configuration and periodic trends",
+     "validationStatus": "UNVALIDATED"
+    },
+    "validationStatus": "UNVALIDATED"
+   },
+   {
+    "provenance": "v0 heuristic \u2014 pedagogical ordering",
+    "rationale": "Ion formation underpins ionic bonding",
+    "relation": "REQUIRES_PREREQUISITE",
+    "source": {
+     "code": "WCH11-T2.1",
+     "nodeId": "00000000-0000-4000-8000-000000000007",
+     "nodeType": "SUBTOPIC",
+     "title": "Atomic structure, isotopes and ions",
+     "validationStatus": "UNVALIDATED"
+    },
+    "target": {
+     "code": "WCH11-T3.1",
+     "nodeId": "00000000-0000-4000-8000-000000000010",
+     "nodeType": "SUBTOPIC",
+     "title": "Ionic bonding and lattice structure",
+     "validationStatus": "UNVALIDATED"
+    },
+    "validationStatus": "UNVALIDATED"
+   },
+   {
+    "provenance": "v0 heuristic \u2014 pedagogical ordering",
+    "rationale": "Shapes and polarity require electron configuration (lone pairs, shells)",
+    "relation": "REQUIRES_PREREQUISITE",
+    "source": {
+     "code": "WCH11-T2.2",
+     "nodeId": "00000000-0000-4000-8000-000000000008",
+     "nodeType": "SUBTOPIC",
+     "title": "Electron configuration and periodic trends",
+     "validationStatus": "UNVALIDATED"
+    },
+    "target": {
+     "code": "WCH11-T3.2",
+     "nodeId": "00000000-0000-4000-8000-000000000011",
+     "nodeType": "SUBTOPIC",
+     "title": "Covalent bonding, shapes and intermolecular forces",
+     "validationStatus": "UNVALIDATED"
+    },
+    "validationStatus": "UNVALIDATED"
+   }
+  ],
+  "policy": "concept-graph-teacher/v1",
+  "rootCode": "CHM",
+  "rootId": "00000000-0000-4000-8000-000000000001"
+ },
+ "body_encoding": "json",
+ "captured_at_utc": "2026-10-07T07:05:00Z",
+ "leg": "leg-07-edges-admin-200",
+ "method": "GET",
+ "path": "/api/v1/teacher/concept-graph/edges?rootId=00000000-0000-4000-8000-000000000001",
+ "request_headers": {
+  "accept": "application/json",
+  "authorization": "Bearer ***REDACTED***"
+ },
+ "response_headers": {
+  "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+  "content-type": "application/json",
+  "x-content-type-options": "nosniff",
+  "x-frame-options": "DENY"
+ },
+ "source": "LOCAL boot of frozen Java core 6cad6ef (mvn package, JDK 25.0.4.1, Flyway v63) on LOCAL scratch PostgreSQL 17.11 + pgvector 0.8.7, port 8090; SYLLABAI_LLM_MODE=test fail-closed; synthetic join-code env; zero prod/Neon contact; R4-api-b trace 1a1151442250feb1",
+ "status": 200
+}
