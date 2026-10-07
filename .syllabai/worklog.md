@@ -4857,3 +4857,20 @@ Work Log:
 
 Stage Summary:
 - T-MIG-082 claimed and tranche A (the pure wire band) implemented on t-mig-082/r0. The register's §2 flip-safety gap now has an owner of record. Standing: tranches B1-B3 (service ports) are the next sessions of this card; B4 needs a ruling; golden captures for the mounted families are the corpus lane's rider. Lane proceeds to pins + gates + PR.
+
+---
+Task ID: T-MIG-082 run-002 (operator trace 1a11549e3f3ff6c5)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: tranche A of the wire-mounts band — implement, gate, PR.
+
+Work Log:
+- Tranche A implemented on t-mig-082/r0 (impl commit ffb4d92 after claim d1c9f7f): 15 endpoints / 5 families over the ALREADY-PORTED services, ZERO service edits — routes/revisionnotes.ts (learnerRouter x5 + adminRouter x2), routes/coverage.ts (x3), routes/classkg.ts (x3), routes/conceptgraph.ts (x2) + the flagged OUT-OF-FENCE index.ts mount block (4 imports + constructions + mounts after research, before the app.all 404-after-auth fallback — the fleet precedent).
+- Frozen wire laws carried: asset Cache-Control "max-age=3600, private" + stored content-type; markViewed 204 + @Size(max=80) noteId + the null-bind 404 path; the exact sme.ts multipart law on admin ingest (200 not 201); the coverage gate chain 404→403→409→400-parse→404-node→V39-400 with the @NotBlank/@Size body classifier (validation-before-gates, F-0 bind law) and the idempotent re-mark no-op; the §17 ENABLED-member 404 short-circuit; activate 200-not-201 + SeedConflict 409; the edges relation→sourceCode→targetCode order + family widening + policy marker.
+- LAW DISCOVERED + PINNED: Hono matches in registration order while Spring resolves exact mappings before path variables — static segments MUST register before /:noteId (pinned by GET /progress 200).
+- FILED (not fixed): the 053 t2 message drift — concept-edges.ts :99 "knowledge node not found: {id}" vs the frozen "knowledge node {id} not found" (NotFoundException.java :16-18); route serves the ported message verbatim, pin pins it, review lane rules.
+- 48 route pins across 4 files (the 021/041/079 in-memory Hono + fakeSql pattern; fixtures reused from the 053 helpers/class-graph pin sets): shells 401/403, param laws with no-sql-issued pins, gate-order chains verbatim, cache headers, 204s, multipart 400s, both malformed envelopes, ordering + policy markers, activate over a fresh store via the catch-all fixture.
+- GATES first-hand: typecheck x4 exit 0; bun test apps/api packages → 1617/0/13skip/6307 across 87 files = baseline 1569/6143 across 83 +48 tests/+164 expect EXACT; golden selftest OK; golden/** + hub + services untouched.
+- PR #133 opened (t-mig-082/r0 → main, base e5cd4b8) with the full band + drift + census corrections in the body; card → IN_REVIEW; receipt run-002-impl-tranche-a.json filed.
+
+Stage Summary:
+- T-MIG-082 tranche A is ON THE DESK as PR #133: the §2 flip-safety gap shrinks from 30 to 7 mountable endpoints the moment it merges (22 genuine = 15 here + 7 tranche B; B4 chain-health BLOCKED-ON-DECISION; subjects/tree law-bound; topics-GET census-corrected). Remaining on the card: tranches B1-B3 (FetchService/EnumerateService, glm-ocr bridge, exam-series import — service ports first), B4 ruling, and the V2_SURFACE_PREFIXES widening rider (blocked on golden captures — corpus lane). Lane IDLE pending review/merge or the next operator routing.

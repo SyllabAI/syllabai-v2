@@ -1,0 +1,37 @@
+{
+  "task_id": "T-MIG-082",
+  "run": "run-002-impl-tranche-a",
+  "lane": "R0-integrator",
+  "session": "web-1f157e25-0ed7-4f18-8956-3b2a993bc646",
+  "operator_trace": "1a11549e3f3ff6c5",
+  "branch": "t-mig-082/r0",
+  "pr": "#133 (opened against main; base e5cd4b8)",
+  "commits": {
+    "claim": "d1c9f7f (card + receipt run-001 + worklog, claim-in-first-commit)",
+    "impl": "ffb4d92 (4 routers + index.ts flagged mount block + 4 pin files)"
+  },
+  "tranche_a_mounted": [
+    "A1 learner revision-notes x5 @ /api/v1/learners/me/revision-notes — index, body (canonical-order 404-first), asset (stored content-type + Cache-Control 'max-age=3600, private' — the Spring maxAge(1,HOURS).cachePrivate() rendering), progress, markViewed (204 noContent, idempotent; @Size(max=80) noteId law, null-bind 404 path, F-0 malformed_body classifier)",
+    "A2 admin revision-notes x2 @ /api/v1/admin/revision-notes — ingest (the EXACT sme.ts multipart law: missing/empty part 400 verbatim; 200 not 201; parse+validate BEFORE the tx via the RevisionNoteIngestService as-is) + status (honest nulls before the first ingest); ADMIN shell (TEACHER also 403 — hasRole('ADMIN') not hasAnyRole)",
+    "A3 TeachingCoverage x3 @ /api/v1/teacher/classes/:classId/coverage — list (spec_point asc), history (newest first), mark PUT (gate chain verbatim: 404 class → 403 owner → 409 archived → 400 parse → 404 node → V39 400; @NotBlank status + @Size(max=500) note classifier with validation-before-gates and the F-0 bind law; identical re-mark = no-op with NO insert; PUT returns 200 not 201)",
+    "A4 ClassKnowledgeGraph x3 @ /api/v1/teacher/classes/:classId/knowledge-graph — graph / nodes/:nodeId/students / learners/:learnerId/knowledge-graph; signature-order param law (path vars before the rootId query); §17 ENABLED-member 404 short-circuit BEFORE the user lookup (no-sql-issued pin); no archived-class gate on reads",
+    "A5 TeacherConceptGraph x2 @ /api/v1/teacher/concept-graph — activate (200 NOT 201, @ResponseStatus(OK) law; SeedConflictError → 409; version lands ACTIVE) + edges (rootId param law, policy marker 'concept-graph-teacher/v1', the relation→sourceCode→targetCode deterministic order, the misconception-family scope widening, PART_OF excluded)"
+  },
+  "mount_mechanics": "index.ts flagged OUT-OF-FENCE block: 4 imports + constructions + app.route mounts placed AFTER research and BEFORE the app.all('/api/v1/*') 404-after-auth fallback — the 010/020/021/030/032/033/041/043/061/062/079 precedent; coverage + classkg share the /api/v1/teacher/classes prefix with classroom's existing router (disjoint subpaths, per-router resolution)",
+  "registration_order_law_discovered": "Hono matches in REGISTRATION order while the frozen Spring MVC resolves EXACT mappings before path variables — the revision-notes router registers /, /progress, POST /progress/views, /assets/:filename BEFORE /:noteId or GET /progress is eaten by the body route (pinned by the GET /progress 200 pin)",
+  "gates": {
+    "typecheck": "bun run typecheck — 4 projects exit 0",
+    "tests": "bun test apps/api packages → 1617 pass / 0 fail / 13 skip / 6307 expect() across 87 files — baseline 1569/0/13skip/6143 across 83 files = +48 tests / +164 expect / +4 files EXACT",
+    "selftest": "bun golden/runner.ts --selftest → OK",
+    "hands_off": "golden/** untouched; apps/hub/** untouched; ZERO service edits (tranche A consumed the 053/043/020 lanes' ports as-is)"
+  },
+  "filed_of_record": [
+    "MESSAGE DRIFT (register finding, 053 t2 tranche): services/teacher/concept-edges.ts :99 throws 'knowledge node not found: {id}' while the frozen NotFoundException('knowledge node', rootId) renders 'knowledge node {id} not found' (NotFoundException.java :16-18). The route serves the ported message verbatim and the pin pins it — the review lane rules a one-word service amendment or a capture-time normalization; never silently hacked at the route layer",
+    "CENSUS CORRECTIONS (run-001 recon, now of record): GET /api/v1/teacher/content/questions/{id}/topics was already mounted at census head (020 band); subjects/tree x2 are the T-MIG-035 check-3 core-only LAW — the census's 30 = 22 genuine mountable endpoints (15 tranche A + 7 tranche B)"
+  ],
+  "remaining": {
+    "tranche_b": "B1 RoutingController family x3 (port FetchService + EnumerateService, the T-C07 scope law) · B2 glm-ocr x2 (port the bridge) · B3 teacher exam-series import x1 (port the fail-closed service) — service ports FIRST, then routes; subsequent sessions of this card",
+    "b4_blocked": "B4 chain-health x1 — BLOCKED-ON-DECISION: v2 has no FailoverLlmChain instrument (ADR-023 pool law lives core-side; v2 calls providers ad-hoc) — needs an R0/R6 chain-of-record ruling or an operator-ordered adapter law",
+    "rider": "V2_SURFACE_PREFIXES widening CANNOT fire for any of these families until golden captures exist (the corpus exercises NONE of them — r4b + r1c Task-33 of record); the golden-capture task is the case-owner/corpus lane's on a live deployed v2 api (Wave-A) or a seeded COW branch; hub api.ts untouched by this card"
+  }
+}

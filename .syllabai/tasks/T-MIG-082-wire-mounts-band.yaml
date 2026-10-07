@@ -3,7 +3,7 @@ task:
   id: T-MIG-082
   title: "T-MIG-082 — the wire-mounts band (Wave-B): mount the deferred v2 wire routes over the ported service layer and port the residual services, closing the r4b surface-coverage gap of record (census 6450ff5, receipt censuses/2026-10-06-surface-coverage-r4b.json: 30 core endpoints in 10 families unmounted; Task-32 Wave-B of record 'mount the 30 deferred endpoints, widen V2_SURFACE_PREFIXES family-by-family under golden gates, retire the core'). TRANCHE DOCTRINE (the 053/072 precedent): tranche A = pure wire mounts over ALREADY-PORTED services (15 endpoints, 5 families); tranche B = service ports first then routes (7 endpoints, 4 families); tranche C = the riders and law-bound exclusions"
   owner: "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646) — operator directive trace 1a11549e3f3ff6c5 'wire-mounts band (T-MIG-082)': file + claim + execute the band the r4b census recommended the desk file ('RECOMMENDED REGISTER ACTION: file a mount-the-deferred-routes band, or per-family bands, before any §2 cutover')"
-  status: IN_PROGRESS # claimed 2026-10-07T05:40Z, tranche A implemented on t-mig-082/r0 (PR of record); tranches B/C recorded below
+  status: IN_REVIEW # tranche A (15 endpoints / 5 families) = PR #133 (t-mig-082/r0 @ ffb4d92, base e5cd4b8; gates 1617/0/13skip/6307 +48/+164 EXACT, selftest OK, typecheck x4 0); tranches B1-B3 (service ports) + B4 (BLOCKED-ON-DECISION) remain on this card; receipt run-002-impl-tranche-a.json
   priority: P1 # the §2 flip-safety blocker of record — a full flip today would 404 every hub-emitted path in these families (r4b consequence)
   wave: 8
   deps: [T-MIG-053, T-MIG-079, T-MIG-020, T-MIG-041, T-MIG-043]
