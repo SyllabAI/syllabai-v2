@@ -4874,6 +4874,24 @@ Stage Summary:
 - Receipt: .syllabai/receipts/W7-SMOKE/run-001-lane-side-smoke-spine.json (41 steps, findings F-SMOKE-1..5 incl. §4 p95 posture baseline: login 2.7–3.2s, authenticated reads 0.7–1.5s, tutor first-byte 18.1s).
 - The §2.4 smoke is UNBLOCKED of record (hub-v2 serves; core warm); P3's lane-executable leg now has live evidence; formal P3 closure (operator-witnessed dual-run) + a sanctioned W5 teacher identity remain operator-side, as do P2 formal closure and P4 sign-off.
 - .syllabai-only, fetch-first direct-main (Task-20 precedent).
+
+
+---
+
+Task ID: ROUND-32 repo receipt (operator PAT order trace 1a114fc6736523a1)
+Agent: r3a
+Task: Land the T-MIG-082 golden wire captures independent of the mount race.
+
+Work Log:
+- 7 read-only golden wire legs captured from the live frozen core (syllabai-core main tip == 6cad6ef94, autoDeploy; provenance + stale campaign-row caveat in the receipt).
+- JWT law reconstructed from sha-verified JwtService/JwtAuthenticationFilter @ 6cad6ef94; self-minted STUDENT token accepted first probe; identity redacted; token never persisted.
+- Substrate verified read-only: 112 notes / 194 assets / 31 viewed; asset body == size_bytes exact.
+- Write leg (POST /progress/views) COW-blocked of record: mutates revision_note_viewed; api.neon.tech DNS-unresolvable lane-side.
+- Mount-band collision adjudicated on #132/#133 (comments 6032417579 / 6032417771): r4b recommended as mount step of record, r0 -> tranche B (088-091), r3a mount draft stood down.
+- NO code contact in this PR: fixtures + receipt + worklog only. No V2_SURFACE_PREFIXES change; widening stays capture+verify gated (flip law).
+
+Stage Summary:
+- Golden verify material for T-MIG-082 is of record on main; mount PRs can verify against it regardless of which mount lands.
 ---
 Task ID: R0-CRON-202610071430
 Agent: R0-auto (merge desk, Job 438940)
