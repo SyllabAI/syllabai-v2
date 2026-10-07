@@ -1,0 +1,34 @@
+{
+  "task": "T-MIG-082",
+  "agent": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "operator_traces": [
+    "1a114c788059e5fd (audit ask)",
+    "1a114d6b72af1bf9 ('Ok proceed')"
+  ],
+  "kind": "wire-mount-step",
+  "pr": "132 (branch t-mig-082/r4b)",
+  "zero_new_wire": "contracts untouched; 200 bodies schema-validated against pre-ratified @syllabai/contracts schemas",
+  "sequence_position": "MOUNT step of record; capture pass + golden-verify + V2_SURFACE_PREFIXES widening REMAIN per the card sequence (r1c Task-33)",
+  "collision_note": "r3a filed the per-family band (PR #131, da87d11) while the implementation was in flight; my duplicate whole-band T-MIG-082 card was DROPPED in favor of this band; work re-pointed per earliest-claim-wins",
+  "gates": {
+    "typecheck": "x4 exit 0",
+    "tests": "1631 pass / 0 fail / 13 skip / 6375 expect (baseline 1556/6143 +75 tests /+232 expects EXACT)",
+    "golden_selftest": "OK"
+  },
+  "family": "learner revision-notes (053 t3) \u2014 5 endpoints",
+  "endpoints": [
+    "GET /api/v1/learners/me/revision-notes",
+    "GET /api/v1/learners/me/revision-notes/{noteId}",
+    "GET /api/v1/learners/me/revision-notes/assets/{filename}",
+    "GET /api/v1/learners/me/revision-notes/progress",
+    "POST /api/v1/learners/me/revision-notes/progress/views"
+  ],
+  "router": "apps/api/src/routes/revision-notes.ts (createLearnerRevisionNotesRouter, mounted /api/v1/learners/me/revision-notes)",
+  "tests": "apps/api/test/revision-notes/routes.test.ts x19 (learner+admin; fixture fleet reused from test/revision-notes/helpers.ts)",
+  "laws": [
+    "requireAuth Boot 401 shell before any work",
+    "the null-tolerant @Size(max=80) markViewed bind: {'noteId':null} reaches the service -> 404 'revision note null not found' (RevisionNoteService :104-107); happy path 204 NO CONTENT (controller discards the ViewedView)",
+    "asset leg Content-Type + 'max-age=3600, private' (CacheControl.maxAge(1,HOURS).cachePrivate() verbatim)",
+    "route-order law: /progress + /assets/* registered before /:noteId (Spring literal-ahead-of-template parity; observed first-hand)"
+  ]
+}

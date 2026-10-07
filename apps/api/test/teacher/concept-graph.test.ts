@@ -140,8 +140,13 @@ type NodeRow = {
  * Builds a fakeSql route set that MATERIALIZES the seed into in-memory
  * maps — so the second activate() exercises the true reuse path (the
  * same-code+same-provenance resolution) rather than a hardcoded yes.
+ *
+ * T-MIG-082 (r4b, additive test-fixture export only): the router test
+ * (test/teacher/kg-coverage-routes.test.ts) reuses this materializer for
+ * the POST /activate happy path — the route's job is the HTTP contract,
+ * not re-pinning the seed law (already pinned below).
  */
-function seedRoutes(store: {
+export function seedRoutes(store: {
   nodes: Map<string, NodeRow>;
   edges: Map<string, string>;
   version: { id: string; status: string } | null;

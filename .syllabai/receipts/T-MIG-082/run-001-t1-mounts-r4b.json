@@ -1,0 +1,50 @@
+{
+  "kind": "tranche-1-route-mounts",
+  "task": "T-MIG-082",
+  "agent": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "operator_traces": ["1a114c788059e5fd (the audit ask)", "1a114d6b72af1bf9 ('Ok proceed')"],
+  "base": "6450ff5 (main, = origin/main at branch cut)",
+  "scope": "19 pure mounts over the T-MIG-053 ports: revision-notes learner x5 + admin x2, knowledge x4, coverage x3, classKG x3, concept-graph x2; subjects+tree adjudicated CORE-ONLY per T-MIG-035 check-3",
+  "files": {
+    "new_routes": [
+      "apps/api/src/routes/revision-notes.ts",
+      "apps/api/src/routes/knowledge.ts",
+      "apps/api/src/routes/teacher-kg.ts"
+    ],
+    "new_tests": [
+      "apps/api/test/revision-notes/routes.test.ts",
+      "apps/api/test/knowledge/routes.test.ts",
+      "apps/api/test/teacher/kg-coverage-routes.test.ts"
+    ],
+    "modified": [
+      "apps/api/src/index.ts (five mount lines + import + construction + OUT-OF-FENCE comment — the explicit mount mandate)",
+      "apps/api/test/teacher/concept-graph.test.ts (ADDITIVE export of the seedRoutes materializer fixture — disclosed)"
+    ],
+    "register": [
+      ".syllabai/tasks/T-MIG-082-mount-the-deferred-routes.yaml",
+      ".syllabai/receipts/T-MIG-082/run-001-t1-mounts-r4b.json",
+      ".syllabai/worklog.md"
+    ]
+  },
+  "zero_new_wire": "contracts untouched; every 200 body schema-validated against pre-ratified @syllabai/contracts schemas (revision-notes.ts, knowledge.ts, teacher.ts, learner.ts)",
+  "laws_pinned": [
+    "M5 TEACHER/ADMIN + ADMIN shells (Boot 401/403 bodies, before any handler work)",
+    "UUID path-param law: 400 bad_request 'malformed request', NO sql issued",
+    "missing rootId: 400 validation_failed 'missing required parameter: rootId' (079 signature-order precedent)",
+    "includeMisconceptions: Spring StringToBooleanConverter word set, defaultValue=false, else 400 malformed (disclosed fidelity)",
+    "PUT coverage @Valid-before-body: 'status: must not be blank' / 'note: size must be between 0 and 500' / unreadable-body verbatim :175-180; semantic status parse stays in the service (the frozen gate order)",
+    "the idempotent identical re-mark: 200, NO insert/update/event",
+    "markViewed null-tolerant @Size(max=80) bind: {'noteId':null} reaches the service -> 404 'revision note null not found' (RevisionNoteService :104-107); happy path 204 NO CONTENT",
+    "asset leg: Content-Type + 'max-age=3600, private' (CacheControl.maxAge(1,HOURS).cachePrivate() verbatim)",
+    "multipart ingest: the :37-40 guard verbatim + the sme.ts 413 cap; the REAL zip walker over a buildZip package (200, summary schema-valid)",
+    "route-order law: /progress + /assets/* registered before /:noteId (Spring literal-ahead-of-template parity; observed 404 first-hand before the reorder)",
+    "activate: 200 (the frozen @ResponseStatus(OK)) + the loud 409 on the subject/root code mismatch; idempotent re-run alreadyActive=true via the TRUE reuse path"
+  ],
+  "gates": {
+    "typecheck": "x4 exit 0",
+    "tests": "1631 pass / 0 fail / 13 skip / 6375 expect (baseline 1556/6143 +75 tests /+232 expects EXACT)",
+    "golden_selftest": "OK"
+  },
+  "outstanding": "tranche-2 = 9 endpoints whose services are NOT ported: ContentController-teacher x5, glm-ocr x2 (W6-unported of record), LlmAdminController chain-health x1, teacher exam-series import x1; hub V2_SURFACE_PREFIXES widening is the hub lanes' family-by-family follow-up per the flip law",
+  "self_merge_disclosure": "merged by the author lane under the standing operator directive ('review+merge yourself', trace 1a10f145db6a4d81 lineage) — fetch-first re-verified before the merge; zero competing PRs at scan and merge time"
+}

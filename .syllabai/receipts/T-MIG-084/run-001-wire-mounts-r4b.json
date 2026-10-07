@@ -1,0 +1,33 @@
+{
+  "task": "T-MIG-084",
+  "agent": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "operator_traces": [
+    "1a114c788059e5fd (audit ask)",
+    "1a114d6b72af1bf9 ('Ok proceed')"
+  ],
+  "kind": "wire-mount-step",
+  "pr": "132 (branch t-mig-082/r4b)",
+  "zero_new_wire": "contracts untouched; 200 bodies schema-validated against pre-ratified @syllabai/contracts schemas",
+  "sequence_position": "MOUNT step of record; capture pass + golden-verify + V2_SURFACE_PREFIXES widening REMAIN per the card sequence (r1c Task-33)",
+  "collision_note": "r3a filed the per-family band (PR #131, da87d11) while the implementation was in flight; my duplicate whole-band T-MIG-082 card was DROPPED in favor of this band; work re-pointed per earliest-claim-wins",
+  "gates": {
+    "typecheck": "x4 exit 0",
+    "tests": "1631 pass / 0 fail / 13 skip / 6375 expect (baseline 1556/6143 +75 tests /+232 expects EXACT)",
+    "golden_selftest": "OK"
+  },
+  "family": "KnowledgeController global tree (053 t1 substrate) \u2014 4 endpoints",
+  "endpoints": [
+    "GET /api/v1/knowledge/nodes/{id}",
+    "GET /api/v1/knowledge/nodes/{id}/tree",
+    "GET /api/v1/knowledge/nodes/{id}/prerequisites",
+    "GET /api/v1/knowledge/nodes/{id}/misconceptions"
+  ],
+  "router": "apps/api/src/routes/knowledge.ts (mounted /api/v1/knowledge)",
+  "tests": "apps/api/test/knowledge/routes.test.ts x15 (fixture shapes copied verbatim from test/knowledge/knowledge.test.ts)",
+  "laws": [
+    "UUID path law 400 malformed with NO sql",
+    "includeMisconceptions: Spring StringToBooleanConverter word set (true/on/yes/1 + false/off/no/0, case-insensitive), defaultValue=false, else 400 malformed (disclosed fidelity)",
+    "404-first node law verbatim",
+    "tree fold queries family edges ONLY on true; closure deepest-first then node id"
+  ]
+}
