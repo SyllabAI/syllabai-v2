@@ -40,4 +40,5 @@ export * from "./research"; // T-MIG-062 (R4-api-b) — Wave-6 research calibrat
 export * from "./cla"; // T-MIG-069 (w0a, refiled from 067) — Wave-6 CLA wire (OUT-OF-FENCE-flagged one-liner, 010/034/043-t1/052/053/061/062 precedent)
 export * from "./revision-notes"; // T-MIG-053 (r3a) — Wave-5 revision-notes wire, tranche-3 (OUT-OF-FENCE-flagged one-liner, 010/034/043-t1/052/053-t1/053-t2 precedent)
 export * from "./exam-series-import"; // T-MIG-091 (r1c) — W6 teacher exam-series import wire: ExamSeriesDatasetDto + ImportSummary (same-lane precedent)
+export * from "./glm-ocr"; // T-MIG-089 (r1c) — W6 GlmOcrIngestion wire: parser draft/reconciliation DTOs + pair-result/finding views (same-lane contracts-first precedent 060/062/069)
 export * from "./llm-admin"; // T-MIG-090 (r1c) — W6 LlmAdminController chain-health wire: provider-health snapshot + failure-class vocabulary (same-lane precedent)
