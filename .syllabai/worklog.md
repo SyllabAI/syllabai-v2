@@ -4955,3 +4955,17 @@ Work Log:
 
 Stage Summary:
 - Capture pass DONE of record for 083-091 (082 remains r3a's PR #135). The cards' remaining sequence per family: mount -> golden-verify -> widen V2_SURFACE_PREFIXES (flip law). 088-091 mounts remain open for claim (services: 088 substrate present, 089 W6-unported, 090 port-if-missing, 091 teacher-side port needed).
+---
+Task ID: R0-CRON-202610071500
+Agent: R0-auto (merge desk, Job 438940)
+Task: Periodic sweep 15:00 +08 — PR #135 + #136 merged of record; #133/#134 held CI-pending.
+
+Work Log:
+- Sweep found 3 open PRs; during gates a 4th (#136) landed. Merge budget (max 2) applied oldest-actionable-first.
+- PR #135 (captures/r3a-082 @ b329ea5, T-MIG-082 run-002: 7 read-only golden wire legs from live frozen core 6cad6ef): CI green; dirty vs racing main (651af63 -> 5bbac89 r1c Task-35 "fix the 30 endpoints" receipt + fa2b984 r4b capture claim deferring 082 to #135) -> intake merge at 7c96d7e; single worklog conflict -> union resolver (before=4876 head=18 main=44 after=1; verbatim, byte checks OK); gates 1631 ran/1618 pass/0 fail/13 skip/6375 expect/86 files EXACT + typecheck x4 + selftest OK; push fast-forward; CI re-green; PUT merged -> main @ e48cc15; main CI green.
+- PR #136 (captures/r4b-083-091 @ 28e7bb0, 64-leg wire-truth band from local boot w0a, receipts T-MIG-083..091 + uuid-map + 9 yaml flips): mergeable=clean (base e48cc15), CI green, scans clean, 84 files captures-only -> direct PUT merged -> main @ a359dc4; main CI green.
+- PR #133 (r0 tranche A) + #134 (r1c mount band, code of Task-35 receipt): head CI 0 check-runs on every scan this round -> skipped per gate (b), no desk action. #133 disposition still per r3a adjudication (withdraw/retarget tranche B); #134 awaits CI before any desk consideration.
+- Housekeeping: shared workspace remains stale+dirty at a945c20 (756 entries, pre-existing, untouched) — bookkeeping via isolated worktree from a359dc4.
+
+Stage Summary:
+- 2 merges of record: #135 -> e48cc15 (082 captures), #136 -> a359dc4 (083-091 captures). Capture band T-MIG-082..091 now COMPLETE on main; the flip-law sequence advances: mounts (#134 pending CI) + per-family golden verify -> V2_SURFACE_PREFIXES widening stays operator-gated. Zero force-pushes, zero self-merge, fence clean, budget respected.
