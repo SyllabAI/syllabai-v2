@@ -1,0 +1,70 @@
+{
+  "receipt": "R0-082-WIDEN-VERIFY-1/run-001",
+  "task": "operator trace 1a117115dd2b33f9 '082 widening verification' — independent R0 verification of the T-MIG-082 Wave-S3 widening (#137, merged 328e1f5)",
+  "lane": "R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "operator_trace": "1a117115dd2b33f9",
+  "verified_against": {
+    "tip_at_start": "17613ed",
+    "tip_at_filing": "e2d1f7bfda9f (#139 merged mid-flight)",
+    "widening_of_record": "#137 wave-s3/r3a-082-widen -> merged 328e1f5 (desk r9-hubx DESK-25)"
+  },
+  "checks": [
+    {
+      "name": "table_of_record",
+      "result": "PASS",
+      "evidence": "V2_SURFACE_PREFIXES at tip = 7 families; '/api/v1/learners/me/revision-notes' appended as last entry with NARROW family-only comment (golden-verified run-002 captures d19289cc8 from live frozen core 6cad6ef + run-003 verify 7/7 vs landed #132 mounts); v2SurfaceBase = pure startsWith decision surface"
+    },
+    {
+      "name": "pin_coherence",
+      "result": "PASS",
+      "evidence": "#137 diff on api.v2-surface.test.ts: +5 DUAL_RUN_PATHS forms (index / body rn_TWGVV6RXN3Ktqb9h / asset png / progress / progress/views); revision-notes REMOVED from CORE_ONLY_PATHS with disclosure comment; exact-set pin extended with the family"
+    },
+    {
+      "name": "startswith_safety_over_capture_scan",
+      "result": "PASS",
+      "evidence": "enumerated ALL 15 hub-emitted /api/v1/learners/me/* families from api.ts at tip (agenda, answer-input/transcribe, assignments, attempts, cla/ask, classroom, classroom/announcements, course-stats, exam-series, flashcard-rating-trail, flashcard-ratings, flashcard-review-schedule, note-votes, revision-notes, state); the new prefix captures ONLY the family's 5 emitted forms; 14 sibling families stay core; no revision-notes* prefix sibling exists -> zero over-capture"
+    },
+    {
+      "name": "gates",
+      "result": "PASS",
+      "evidence": "bun test apps/hub first-hand: 36 pass / 0 fail / 306 expect at BOTH 17613ed and re-anchored e2d1f7bf (reproduces DESK-25 gate line incl. #137's +15 flip-law asserts); tip CI check-runs (17613ed): hub=success, verify=success (total 2); #139 head 47f8458d CI hub=success verify=success pre-merge"
+    },
+    {
+      "name": "golden_verify_of_record",
+      "result": "PASS",
+      "evidence": ".syllabai/receipts/T-MIG-082/run-003-golden-verify-r3a.json verdict 'ALL PASS' (7 legs, landed #132 mounts replay the frozen core wire exactly) — the widening's evidence base, read first-hand from the of-record blob"
+    },
+    {
+      "name": "live_api_plane",
+      "result": "PARTIAL — envelope parity first-hand; deployed-bundle mount currency DISPUTED of record",
+      "evidence": "GET https://syllabai-api-v2.vercel.app/api/v1/learners/me/revision-notes unauth -> 401 Boot-default envelope {timestamp,status,error,path} in 1.47s, byte-shape IDENTICAL to Render core 401 on the same path (0.68s) -> the fail-closed unauth posture matches core on the widened family's path. CAVEATS: (1) the auth chain 401s every unauth /api/v1 path, so the 401 does NOT discriminate mounted-vs-unmounted; no authenticated probes available/attempted (zero prod writes). (2) Deployed-bundle currency is DISPUTED of record: r1c Task-37 states the bundle was built from origin/main 534332c (which DOES contain #132 — first-hand: merge-base --is-ancestor 8a09ab2 534332c = yes, index.ts at 534332c has 7 revision-notes mentions), while w0a's later receipt states the live api bundle is 'da87d11-era' stale and '#132 mounts 082-087' await the next api deploy from tip. Both claims cannot hold; until the next api deploy from tip lands, the widened family's server-side presence on the live v2 api is INDETERMINATE — hub-side routing is proven (live_hub_plane) but the v2 leg may still be stale-bundle"
+    },
+    {
+      "name": "live_hub_plane",
+      "result": "PASS",
+      "evidence": "chunk scan of live hub-v2 (14 script chunks fetched): /_next/static/chunks/0b-43fh10mp8e.js contains the V2_SURFACE_PREFIXES array literal verbatim: ',\"/api/v1/attempts\",\"/api/v1/learners/me/attempts\",\"/api/v1/learners/me/revision-notes\"]' — bare string in ARRAY-CLOSING context = the widened table itself, not the pre-existing caller strings (index caller + 3 template callers also present as expected) -> deployed hub bundle was built from a post-#137 source; the widening is ROUTING-LIVE, not merely of-record"
+    },
+    {
+      "name": "live_csp_finding",
+      "result": "RED (remediation merged mid-flight; redeploy pending)",
+      "evidence": "live CSP connect-src = 'self' https://raw.githubusercontent.com https://syllabai-core.onrender.com https://syllabai-v2.vercel.app — the REAL v2 origin (https://syllabai-api-v2.vercel.app) is ABSENT and the GHOST domain (syllabai-v2.vercel.app, Task-35-proven unresolvable) is present -> every flipped family (the 6 prior + widened revision-notes) is browser-blocked at CSP layer ('Failed to fetch') while CLI probes pass — confirms incident R0-WAVEA-HOTFIX-CSP-0750Z root cause live. Provenance note: main's next.config.ts at BOTH ef0055f and pre-#139 tip derives connect-src from CORE origin only, so a build from unpatched main cannot emit the ghost -> live build came from a CSP-patched working tree baked with the PRE-PATCH ghost env (reconstruction, flagged as such; Vercel build logs are operator-side)"
+    },
+    {
+      "name": "midflight_resolution",
+      "result": "RESOLVED-OF-RECORD / REDEPLOY-PENDING",
+      "evidence": "#139 (w0a, fix(hub): derive CSP connect-src from NEXT_PUBLIC_API_V2_BASE_URL) merged of record during this verification at e2d1f7b (16:01:48Z +06); w0a receipt b2a6dcf additionally root-causes register-500 to syllabai_v2_app_w2 INSERT grants on prod (COW replay green / prod SELECT green / prod INSERT 500; operator 1-liner GRANT owed). RE-PROBE of the prod alias post-merge: CSP STILL pre-fix (ghost) -> syllabai-hub-v2.vercel.app has NOT picked up a #139 build yet; redeploy from e2d1f7b with current env is the open lever (w0a's aliased dpl_5mv2CCMGTzDTtdhFYiCqnZreNd1S not confirmed on the prod alias first-hand)"
+    }
+  ],
+  "verdict": {
+    "widening": "VERIFIED hub-side — of-record table/pins/safety coherent, gates green first-hand at two tips, golden evidence of record ALL PASS, live hub bundle carries the widened table (routing-live); v2-api-side mount currency INDETERMINATE on the live bundle (r1c vs w0a of-record dispute; unauth 401 envelope parity with core holds regardless)",
+    "live_red": "ONE: prod-alias CSP connect-src missing the real v2 origin (browser-dead flipped families incl. widened revision-notes) — remediation #139 merged of record during this verification; redeploy from e2d1f7b pending",
+    "boundary": "read-only GETs + unauth 401 probes only; zero prod writes, zero Vercel/Render/Neon settings contact; no merges by this lane (#139 was w0a's, merged by its own desk path); isolated worktree, fetch-first, no force"
+  },
+  "watchlist": [
+    "hub redeploy from e2d1f7b + prod-alias CSP re-probe (expect syllabai-api-v2.vercel.app in connect-src, ghost gone)",
+    "api redeploy from tip so the deployed bundle carries #132 mounts + #138 tranche B (w0a stale-bundle flag resolves the r1c/w0a currency dispute)",
+    "register-500: operator 1-liner GRANT for syllabai_v2_app_w2 INSERT on prod (w0a root cause of record)",
+    "core rollback lever observed DOWN by w0a (120s unresponsive, watch item) — was GO at R0-MIGRATION-VERIFY-1 07:41Z; re-warm probe owed before any §2 flip decision",
+    "cron standing: adjudication of the 10 justified replay classes so scheduled slots can go green (R0-auto escalation 17613ed)"
+  ]
+}
