@@ -107,6 +107,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/attempts",
       "/api/v1/learners/me/attempts",
       "/api/v1/learners/me/revision-notes", // Wave S3: T-MIG-082 golden-verified (run-002/003, r3a)
+      "/api/v1/admin/llm/chain-health", // T-MIG-090: golden-verified (run-005, r0 rider) — NARROWEST: the prefix IS the single endpoint
     ]);
   });
 });
@@ -139,6 +140,32 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     expect("/api/v1/learners/me/answer-input/transcribe".startsWith("/api/v1/learners/me/attempts")).toBe(false);
     expect(v2SurfaceBase("/api/v1/learners/me/attempts?limit=5", V2)).toBe(V2);
     expect(v2SurfaceBase("/api/v1/learners/me/answer-input/transcribe", V2)).toBeNull();
+  });
+
+  test("the T-MIG-090 line: the exact chain-health surface flips with zero live-page routing change (r0 rider)", () => {
+    // the verified surface itself resolves to v2 (golden-verified of record:
+    // run-005, 4/4 legs at merged main bd4eaeb — the routing-availability pin)
+    expect(v2SurfaceBase("/api/v1/admin/llm/chain-health", V2)).toBe(V2);
+    // TRUE siblings (v2 serves none of them) stay core — the prefix must never
+    // capture them
+    for (const p of [
+      "/api/v1/admin/llm/other",
+      "/api/v1/admin/llm/chain",
+      "/api/v1/admin/users",
+      "/api/v1/admin/stats",
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBeNull();
+    }
+    // startsWith matching is prefix-string semantics (the same property every
+    // row of the table has — e.g. /api/v1/auth would capture /auth/loginx):
+    // a non-existent partial-segment sibling IS captured by the string match.
+    // This is pinned as DOCUMENTED INERT capture: no hub emitter and no route
+    // named chain-healthx exists on either side (the hub-source grep law in
+    // the api.ts table comment), so the capture can never route a live page.
+    expect(v2SurfaceBase("/api/v1/admin/llm/chain-healthx", V2)).toBe(V2);
+    expect("/api/v1/admin/llm/chain-healthx".startsWith("/api/v1/admin/llm/chain-health")).toBe(true);
+    // and the hub emits NOTHING under /api/v1/admin/** today (the line is
+    // routing availability, zero live-page behavior change)
   });
 });
 

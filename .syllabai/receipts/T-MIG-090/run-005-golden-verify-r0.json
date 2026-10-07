@@ -1,0 +1,100 @@
+{
+ "card": "T-MIG-090",
+ "run": "run-005-golden-verify-r0",
+ "lane": "r0",
+ "date": "2026-10-08",
+ "operator_trace": "IM trace_id 1a1179458d3a6681 ('route the rider to you. Proceed') \u2014 claim run-004-rider-claim-r0, arbitration R0-arbitration/rider-reroute-t-mig-090.json",
+ "target": "MERGED MAIN bd4eaeb \u2014 the post-merge golden-verify leg of record (boot code = main's code verbatim; the branch t-mig-090-rider/r0 carries ZERO code deltas over main, only .syllabai claim artifacts)",
+ "method": "082 run-003 pattern of record: local v2 boot (bun, harness-owned Bun.serve envelope per the T-MIG-022 boot-with-timeout pattern) in the CAPTURE posture (SYLLABAI_LLM_MODE=test + SYLLABAI_{GROQ,GEMINI,OPENROUTER}_ENABLED=false) + ZERO-KEY law (ruling4 \u00a73: no LLM credentials in the boot env, asserted by the harness, exit 4 on violation); Neon COW branch substrate for the bearer-leg revocation lookups (users.findById per bearer request \u2014 the R1/R2 fail-closed port); harness-minted STUDENT/TEACHER/ADMIN bearer tokens via the api's own JwtService (identical claim shape: sub/jti/uid/ver/roles, alg by key size); GET-only legs; envelope-timestamp normalization only; GOLDEN_MASTER diff semantics (parsed-body deep equality \u2014 JSON key order non-semantic)",
+ "substrate": {
+  "project": "billowing-cherry-15418366",
+  "branch": "br-fragrant-mud-a51fyqht (verify-t090-rider-r0-20261007-182524)",
+  "parent": "br-muddy-bar-a5huwldd (production) \u2014 copy-on-write, ZERO prod writes",
+  "seed": "3 synthetic harness users (t090r-{learner,teacher,admin}@verify.local; STUDENT/TEACHER/ADMIN; token_version=1, enabled) \u2014 INSERTs on the COW branch only; harness secret (48 random bytes, never committed); branch DELETED after the verify (zero residue, T-MIG-050 live-SQL-proof discipline)",
+  "tools": [
+   "tools/t090r-verify.ts (the replay harness \u2014 ZERO-KEY assertion + boot + serve + 4-leg replay + diff)",
+   "tools/t090r-seed.ts (the seed, idempotent)"
+  ]
+ },
+ "results": [
+  {
+   "leg": "leg-01-chain-no-token",
+   "expected_status": 401,
+   "actual_status": 401,
+   "status_match": true,
+   "body_match": true,
+   "byte_parity": null,
+   "header_diffs": [
+    "cache-control: capture=no-cache, no-store, max-age=0, must-revalidate actual=<absent>",
+    "x-content-type-options: capture=nosniff actual=<absent>",
+    "x-frame-options: capture=DENY actual=<absent>"
+   ],
+   "findings": [
+    "default cache posture missing on v2 (core: no-cache,no-store,max-age=0,must-revalidate) \u2014 api-wide class, filed of record at 082 run-003"
+   ]
+  },
+  {
+   "leg": "leg-02-chain-learner",
+   "expected_status": 403,
+   "actual_status": 403,
+   "status_match": true,
+   "body_match": true,
+   "byte_parity": null,
+   "header_diffs": [
+    "cache-control: capture=no-cache, no-store, max-age=0, must-revalidate actual=<absent>",
+    "x-content-type-options: capture=nosniff actual=<absent>",
+    "x-frame-options: capture=DENY actual=<absent>"
+   ],
+   "findings": [
+    "default cache posture missing on v2 (core: no-cache,no-store,max-age=0,must-revalidate) \u2014 api-wide class, filed of record at 082 run-003"
+   ]
+  },
+  {
+   "leg": "leg-03-chain-teacher",
+   "expected_status": 403,
+   "actual_status": 403,
+   "status_match": true,
+   "body_match": true,
+   "byte_parity": null,
+   "header_diffs": [
+    "cache-control: capture=no-cache, no-store, max-age=0, must-revalidate actual=<absent>",
+    "x-content-type-options: capture=nosniff actual=<absent>",
+    "x-frame-options: capture=DENY actual=<absent>"
+   ],
+   "findings": [
+    "default cache posture missing on v2 (core: no-cache,no-store,max-age=0,must-revalidate) \u2014 api-wide class, filed of record at 082 run-003"
+   ]
+  },
+  {
+   "leg": "leg-04-chain-admin",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "byte_parity": {
+    "top_level_order": "chainAvailable,providers",
+    "provider_order": "groq,gemini,openrouter",
+    "provider_order_matches_chain": true,
+    "field_order_capture_law": true,
+    "raw_text": true
+   },
+   "header_diffs": [
+    "cache-control: capture=no-cache, no-store, max-age=0, must-revalidate actual=<absent>",
+    "x-content-type-options: capture=nosniff actual=<absent>",
+    "x-frame-options: capture=DENY actual=<absent>"
+   ],
+   "findings": [
+    "default cache posture missing on v2 (core: no-cache,no-store,max-age=0,must-revalidate) \u2014 api-wide class, filed of record at 082 run-003"
+   ]
+  }
+ ],
+ "verdict": "PASS",
+ "acceptance": "status_match AND body_match on ALL legs + leg-04 emission-order laws (top-level [chainAvailable, providers]; providers in \u00a726.1 chain order groq,gemini,openrouter \u2014 the unit-layer pin of record on merged main; per-provider snapshot fields alphabetical per ruling4 \u00a72) + leg-04 RAW WIRE BYTE-PARITY against the capture body re-serialized in the pinned order",
+ "disclosures": [
+  "api-wide known class (filed of record at 082 run-003, re-disclosed per-leg, NOT a new divergence): v2 lacks the frozen core's default response headers cache-control: no-cache,no-store,max-age=0,must-revalidate + x-content-type-options: nosniff + x-frame-options: DENY",
+  "the capture FILE stores provider keys alphabetically (gemini,groq,openrouter) while the v2 wire emits \u00a726.1 chain order (groq,gemini,openrouter) \u2014 non-semantic JSON key ordering (GOLDEN_MASTER compares parsed bodies); the chain-order emission is the unit-layer pin of record merged in #140; byte-parity is therefore asserted against the PINNED order, not the file order",
+  "harness bug disclosed: the first harness run compared legs 02-04 against leg-01's capture (name.split('-')[0] matched 'leg' for every leg) \u2014 the WIRE ANSWERS WERE CORRECT in that run too (403/403/200 actuals visible in the run log); matcher fixed (leg number extraction) before this of-record run",
+  "one Neon cold-compute stall (~90s) during an interactive findById probe \u2014 the endpoint had suspended between calls; subsequent of-record run completed in 1.5s"
+ ],
+ "flip_gate": "DISCHARGED \u2014 the widening gate (4/4 PASS) is satisfied; widening proceeds in the next commit under the flip law"
+}
