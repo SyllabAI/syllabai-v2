@@ -5149,3 +5149,17 @@ Work Log:
 
 Stage Summary:
 - The DESK-25 090 reservation is discharged of record: decision filed, single-implementation law set, acceptance gate = golden-verify vs the r4b legs. The band's last mount step is in execution on t-mig-090/r0. Register items NOT touched here: the 10 justified classes (tip escalation, operator-gated), ci.yml patch, PAT rotation, P3/P4.
+
+---
+Task ID: T-MIG-090 mount implementation (operator trace 1a1171097283c475)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- Claimed the 090 mount step of record (claim-in-first-commit c212990 on t-mig-090/r0 @ main de30ef8, earliest-claim-wins on the card unblocked by R0-arbitration/ruling4; receipt run-002-mount-claim-r0.json).
+- Implemented the ruling4 adopted-and-amended vehicle (impl 1dd6143): services/llmchain/** (FailoverLlmChain + LlmProviderHealth + the THREE-layer LlmChainProperties projection — SYLLABAI_LLM_* env > frozen application.yml @ 6cad6ef layer > record compactor targets; 3-mode LlmMode; capture-order snapshot key assembly; ADR-023 fail-closed dormant members in every mode) + routes/llmadmin.ts (ADMIN shell verbatim, Boot 401/403 = legs 01-03) + index.ts mount lines (IN-FENCE per the 090 card) + contracts/llm-admin.ts (+1 barrel line; FENCE FLAG disclosed for desk ratification) + test/llmadmin/** — 18 pins incl. THE ACCEPTANCE GATE: capture-posture body deep-equals golden-captures/t-mig-090/leg-04 VERBATIM.
+- Amendments vs the r1c preserved vehicle disclosed line-against-line (file headers + PR body + receipt run-003-impl-tranche-r0.json): the frozen-EFFECTIVE config layer (the r1c code-default divergence that would have failed the family golden-verify), three-layer Spring precedence incl. compactor-target edges, 3-mode LlmMode, capture-order keys, the golden gate itself; r1c authorship credited in every header; the preserved branch untouched as provenance; #134 stays closed-superseded.
+- Gates first-hand at 1dd6143: typecheck x4 exit 0; bun test apps/api packages 1706/0/13skip/6715/89f (+18/+1/+75 EXACT vs main 1688/6640/88f); bun test apps/hub 36/0/306 EXACT; bun golden/runner.ts --selftest OK.
+- PR #140 opened for the desk (no self-merge; author != merger) with the full authority chain (DESK-25 reservation -> operator delegation trace 1a1171097283c475 -> ruling4 -> this PR), the zero-key law, the flip-law exclusions, and three requested desk dispositions (merge/deny; ratify the contracts-fence reading; route the post-merge golden-verify leg). Zero-key boot of record (ruling4 §3); hub + golden/** + V2_SURFACE_PREFIXES untouched.
+
+Stage Summary:
+- The band's last mount step is delivered of record pending desk merge: 082-089 + 090 + 091 all mounted-or-in-review. Post-merge residue on the card: the golden-verify leg (vs the r4b legs) then the family widening rider (flip law). The 090 chain-of-record ruling operator item is CLOSED (ruling4 + this execution).
