@@ -64,6 +64,8 @@ import { buildRevisionNotesRouters } from "./routes/revisionnotes";
 import { buildKnowledgeFamilyRouters } from "./routes/knowledgefamily";
 import { buildTeacherCoverageRouters } from "./routes/teacher-coverage";
 import { buildTeacherContentMethodsRouters } from "./routes/teacher-content-methods";
+import { buildLlmAdminRouters } from "./routes/llmadmin";
+import { buildGlmOcrRouters } from "./routes/glmocr";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
@@ -94,6 +96,8 @@ const revisionNotes = buildRevisionNotesRouters();
 const knowledgeFamily = buildKnowledgeFamilyRouters();
 const teacherCoverage = buildTeacherCoverageRouters();
 const teacherContentMethods = buildTeacherContentMethodsRouters();
+const llmAdmin = buildLlmAdminRouters();
+const glmOcr = buildGlmOcrRouters();
 
 const app = new Hono();
 
@@ -438,7 +442,7 @@ app.route("/api/v1/teacher/classes", classroom.teacherClassesRoute);
 app.route("/api/v1/learners/me/classroom", classroom.learnerClassroomRoute);
 app.route("/api/v1/teacher/learners", classroom.teacherRosterRoute);
 
-// T-MIG-082..088 mount band (r1c integration) — the deferred wire routes from
+// T-MIG-082..091 mount band (r1c integration) — the deferred wire routes from
 // the r4b surface-coverage census (cards 082..091 filed by r3a PR #131),
 // mounted on operator order trace 1a114e45f09db04d "Fix the 30 endpoints".
 // Service-backed 200s: learner+admin revision-notes (082/083, 053 t3
@@ -450,14 +454,21 @@ app.route("/api/v1/teacher/learners", classroom.teacherRosterRoute);
 // corpus exercises none of this family) and no service logic exists in-tree;
 // the seams are replaced when the capture pass lands (never a silent wrong
 // answer). GET questions/{id}/topics stays on the T-MIG-020 mount (first-
-// registered wins; the seam re-verified it). Registration AFTER the classroom
+// registered wins; the seam re-verified it). Ports from frozen 6cad6ef:
+// chain-health (090, faithful 200 incl. ADR-023 dormant members), teacher
+// exam-series import (091, faithful 200 — rides the existing T-MIG-021
+// teacher curriculum router, no mount line), glm-ocr findings (089, faithful
+// 200 over glm_ocr_bridge_records) + glm-ocr POST pairs (089, honest 501
+// seam — the T-013/T-011 write band exists nowhere in-tree; deterministic
+// prefix fully ported, flip = wire-up). Registration AFTER the classroom
 // trio per the router-hygiene pin (same-base sub-routers must not precede
 // the 1/2-segment class CRUD forms).
 //
-// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-082..088, R0 ratification requested): the
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-082..091, R0 ratification requested): the
 // cards cover routes/revisionnotes.ts, routes/knowledgefamily.ts,
-// routes/teacher-coverage.ts, routes/teacher-content-methods.ts and their
-// test/ trees — NOT this file. The imports + constructions + mount lines +
+// routes/teacher-coverage.ts, routes/teacher-content-methods.ts,
+// routes/llmadmin.ts, routes/glmocr.ts and their test/ trees — NOT this
+// file. The imports + constructions + mount lines +
 // this comment are the minimal app-level wiring, shipped per the
 // T-MIG-010/016/020/021/030/032/033/034/041/043/052/061/062 precedent so R0
 // can ratify or lift them out at review.
@@ -469,6 +480,8 @@ app.route("/api/v1/teacher/classes", knowledgeFamily.classKgRoute);
 app.route("/api/v1/teacher/class", knowledgeFamily.classDrillDownRoute);
 app.route("/api/v1/teacher/classes", teacherCoverage.teacherCoverageRoute);
 app.route("/api/v1/teacher/content", teacherContentMethods.teacherContentMethodsRoute);
+app.route("/api/v1/teacher/content", glmOcr.glmOcrRoute);
+app.route("/api/v1/admin/llm", llmAdmin.llmAdminRoute);
 
 // Intervention-run router (T-MIG-061 tranche 2 — Wave 6). Path parity with the
 // frozen core: InterventionRunController under /api/v1/learners/me
