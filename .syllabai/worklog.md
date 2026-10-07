@@ -5017,3 +5017,34 @@ Work Log:
 
 Stage Summary:
 - Tranche B (B1-B3, 6 endpoints / 3 families) implemented, pinned (+70), gated, pushed on t-mig-082-b/r0; 090 left to its ruling. PR opened for the desk with the collision disclosure. The §2 flip-safety gap: 7 -> the families' mounts await merge + golden-verify.
+
+---
+
+Task ID: ROUND-33 repo receipt (operator order trace 1a115288011d2475: golden-verify the landed mounts against the fixtures, then per-family widening)
+Agent: r3a
+Task: T-MIG-082 golden-verify of the landed #132 mounts + the Wave-S3 widening (flip law step 4).
+
+Work Log:
+- run-003 golden-verify: ALL 7 legs PASS - the landed mounts replay the frozen core wire exactly (status, not_found/401 envelopes, asset stored content-type + cache law, index/body/progress bodies).
+- CORRECTION of record: an interim "/progress route-order defect" claim was a STALE-PROCESS artifact (a boot of r3a's superseded draft still bound :3000); main's landed mount (origin blob 3f0de288, sha-verified; /progress registered literal-first) is CORRECT - engine-behavior law (076 adjudication) settled the read-channel contradiction.
+- FINDINGS filed (non-blocking): (1) api-wide default cache posture - v2 omits the core's no-cache,no-store,max-age=0,must-revalidate on non-asset responses (cross-family class, needs its own card); (2) asset Cache-Control directive order differs, RFC 7234 semantically equal; (3) ingestedAt precision class (us core vs ms v2), 081 watchlist precedent.
+- WIDENING (flip law): V2_SURFACE_PREFIXES + "/api/v1/learners/me/revision-notes" (NARROW - the family only); surface pins updated (family moved CORE_ONLY -> DUAL_RUN with the hub-emitted forms; exact-set pin extended); startsWith-safety holds (no sibling learner surface shares the prefix).
+- GATES first-hand: surface pins 8/8 (227 expect); typecheck x4 exit 0; bun test apps/api packages = 1618 pass / 0 fail / 13 skip / 6375 expect (EXACT main baseline, zero regressions); hub 36/36.
+- Write-path residual of record: markViewed POST has suite-pin coverage (frozen law pinned) but NO golden capture leg (COW-blocked: mutates revision_note_viewed; api.neon.tech DNS-unresolvable lane-side) - disclosed; COW capture remains the operator-gated item.
+
+Stage Summary:
+- T-MIG-082 advances to the final card step: mounted + golden-verified + WIDENED (this PR). The 082 card is complete on merge; 083-091 follow the same capture->verify->widen arc (r4b capture pass claim + #134 integration pending desk reconciliation).
+Task ID: R0-MIGRATION-VERIFY-1
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: operator trace 1a1154d2dfd3a0e9 — verify the entire migration with syllabai-core and syllabai-hub
+
+Work Log:
+- PLANES (first-hand probes, 07:41Z, read-only): core (Render) WARM — /health unauth 401 Boot-default verbatim in 0.26s; curriculum unauth 401 0.23s; bogus-creds login 401 invalid_credentials with ns-precision timestamp (Java-genuine) in 5.9s (BCrypt cost). Hub-v2 (deployment of record @ ef0055f): / + /login 200, /api/health 200 {dataMode:mock, coreConfigured:true} — pre-flip posture confirmed. Pilot hub (syllabai.vercel.app): STILL 500 MIDDLEWARE_INVOCATION_FAILED on / and /login with favicon-404 edge differential intact — P0 outage 19:31Z -> 07:41Z (~12.2h), zero recovery. Differential: hub-v2 serves 200 on the same infra -> pilot fault is project-deploy-level, NOT Vercel-wide, NOT the repo.
+- FUNCTIONAL (of-record synthesis + corroboration): W7-SMOKE run-001 (R7a, 05:49-06:01Z, freeze-window-sanctioned, operator witness) closed ALL THREE loops live against prod core — learner register->login->agenda->curriculum->rating->review-schedule->trail->structured-attempt 201 (part-count law: 1-part 400 / all-5 201) -> self-mark (500 = T-MIG-053 captured quirk; contract-shaped 201, 4/5 SELF_MARKED) -> history 200; teacher authz 403/403/401/403 fail-closed; tutor SSE opened/observed/closed 200.
+- GATES: CI at tip d809389 verify+hub SUCCESS (first-hand; r7a first-hand: typecheck x4 exit 0, 1618/0/1631 ran/86 files, selftest OK). Golden replay of record: run #20 @ cfc8a51 167/177, 10 reds ALL pre-filed justified (8 identity volatility + 2 createdAt precision), zero non-justified — P2 criterion MET. 4/4 watchlist flip holds (R0-CRON-FLIP-CHECK-1); cron formal confirmation still pending (scheduled total=1 at 07:45Z). Register: 84 cards = 74 DONE / 9 CAPTURED / 1 IN_PROGRESS (082, #134+#137 open).
+- CUTOVER STATE MACHINE: position PRE-FLIP — P1 MET, P2 MET, P3 spine GREEN, P4 (operator sign-off) PENDING; next gates = §1 freeze + §2 flip (NEXT_PUBLIC_API_BASE_URL on hub prj), both operator-side. Rollback lever GO (core warm, envelope verbatim 0.26s).
+- VERDICT: MIGRATION FIDELITY VERIFIED (every executable layer green first-hand or of-record); CUTOVER READY-PENDING-OPERATOR; the only red surface is the pilot hub project itself (P0 deploy-level middleware fault on the OLD stack's project) — not a V2 fidelity gap.
+- BOUNDARY: read-only GETs + no-write 401 probes only; zero prod writes, zero Vercel/Render/Neon settings contact; receipt .syllabai/receipts/R0-MIGRATION-VERIFY-1/run-001-full-migration-verify.json + this worklog, isolated worktree off d809389, no force.
+
+Stage Summary:
+- Full-migration verification filed of record: fidelity VERIFIED across core/hub/parity/register planes; cutover machine at PRE-FLIP with P3 spine green and rollback lever GO; watchlist = cron verdict (~09-12Z), pilot-hub P0 operator triage, #134 routing fork + #137. Returns to sweep posture.
