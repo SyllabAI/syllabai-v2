@@ -166,6 +166,20 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // chainAvailable honestly false with the report of what is missing — never a
   // 404/501, which is the failure mode the flip law exists to prevent.
   "/api/v1/admin/llm/chain-health",
+  // T-MIG-092 (r0 rider, operator trace 1a11790a99a3cb19) — tutor SESSIONS
+  // family: golden-verified of record (run-003: the post-fix 14-leg LLM-free
+  // matrix ALL PASS on the live v2 deploy dpl_5VuNMyfq5vknZSEsMkyFrUCgmcbL
+  // carrying the T-MIG-093 scalar-param IN fix a356a7d, vs the frozen core
+  // 6cad6ef94 fixtures of run-001; receipts T-MIG-092/run-003 + T-MIG-093/
+  // deploy-run-001). NARROW form: the prefix covers EXACTLY the verified
+  // sessions surface tree (list/create/latest/transcript/delete — every leg
+  // of the matrix) and does NOT capture /api/v1/tutor/ask or /ask/stream —
+  // different path segments — which STAY CORE this band (v2 zero-key law:
+  // generation-reaching asks would 503 tutor_unavailable on the dormant LLM
+  // seam; the hub's ask/ask-stream emitters ride coreFetchAuthorized /
+  // coreStreamAuthorized and keep their core routing). LLM-free law: the
+  // sessions CRUD never reaches the LLM seam, so the flip is wire-safe.
+  "/api/v1/tutor/sessions",
 ];
 
 /**

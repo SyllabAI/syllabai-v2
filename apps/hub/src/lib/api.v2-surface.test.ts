@@ -95,6 +95,10 @@ const CORE_ONLY_PATHS: readonly string[] = [
   "/api/v1/tree?includeMisconceptions=true",
   "/api/v1/knowledge/nodes/kn-1/tree",
   "/api/v1/tutor/ask",
+  // T-MIG-092 (r0 rider): the tutor SESSIONS tree flipped, so these siblings
+  // stay core-pinned explicitly — the zero-key law (generation-reaching asks
+  // 503 on the dormant v2 LLM seam) forbids their capture
+  "/api/v1/tutor/ask/stream",
 ];
 
 describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
@@ -108,6 +112,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/learners/me/attempts",
       "/api/v1/learners/me/revision-notes", // Wave S3: T-MIG-082 golden-verified (run-002/003, r3a)
       "/api/v1/admin/llm/chain-health", // T-MIG-090: golden-verified (run-005, r0 rider) — NARROWEST: the prefix IS the single endpoint
+      "/api/v1/tutor/sessions", // T-MIG-092: golden-verified (run-003 14/14, r0 rider) — NARROW: the sessions tree ONLY, ask/stream stay core
     ]);
   });
 });
@@ -118,6 +123,27 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
       expect(v2SurfaceBase(p, V2)).toBe(V2);
       expect(apiPath(p).startsWith(`${V2}/api/v1/`)).toBe(true);
     }
+  });
+
+  test("the T-MIG-092 line: the tutor sessions tree flips with ask/stream core-pinned (r0 rider)", () => {
+    // every verified leg path of the run-003 matrix resolves to v2
+    for (const p of [
+      "/api/v1/tutor/sessions", // L01/L06/L13 list
+      "/api/v1/tutor/sessions/latest", // L02/L07/L14
+      "/api/v1/tutor/sessions/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab", // L03/L08/L11/L12 transcript/delete paths
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBe(V2);
+    }
+    // the LLM-bearing siblings stay core — different segments, never captured
+    for (const p of ["/api/v1/tutor/ask", "/api/v1/tutor/ask/stream", "/api/v1/tutor"]) {
+      expect(v2SurfaceBase(p, V2)).toBeNull();
+    }
+    // startsWith matching is prefix-string semantics (the same property every
+    // row of the table has): a non-existent partial-segment sibling IS
+    // captured by the string match — DOCUMENTED INERT (no route or hub
+    // emitter named sessions* beyond the verified tree exists on either side)
+    expect(v2SurfaceBase("/api/v1/tutor/sessionsxyz", V2)).toBe(V2);
+    expect("/api/v1/tutor/sessionsxyz".startsWith("/api/v1/tutor/sessions")).toBe(true);
   });
 
   test("apiPath emits exact v2 URLs for representative surfaces", () => {
