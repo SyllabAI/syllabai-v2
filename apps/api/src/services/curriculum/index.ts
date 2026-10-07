@@ -18,6 +18,7 @@
 import { CurriculumVersionsRepository } from "./versions";
 import { SubjectsRepository } from "./subjects";
 import { CurriculumReviewReader } from "./review";
+import { ExamSeriesImportService } from "./exam-series-import";
 import type { SqlFn } from "./sql";
 
 export { CurriculumVersionsRepository, versionView } from "./versions";
@@ -26,12 +27,23 @@ export { SubjectsRepository, subjectView } from "./subjects";
 export type { SubjectJoinedRow, SubjectView } from "./subjects";
 export { CurriculumReviewReader, overviewOf } from "./review";
 export type { CurriculumOverview, KnowledgeNodeView, KnowledgeNodeValidationStatus } from "./review";
+export { ExamSeriesImportService, defaultExamSeriesImportClock } from "./exam-series-import"; // T-MIG-091 (r1c) — the T-C79 calendar import (same-module sibling of the ingestion package)
+export type {
+  ExamSeriesImportSummary,
+  ExamSeriesImportClock,
+  ExamSeriesStoredRow,
+  ExamSeriesImportSqlFn,
+} from "./exam-series-import";
 export type { SqlFn } from "./sql";
 
 export interface CurriculumModule {
   versions: CurriculumVersionsRepository;
   subjects: SubjectsRepository;
   review: CurriculumReviewReader;
+  /** T-MIG-091 (r1c) — TeacherExamSeriesImportController's import service
+   *  (ExamSeriesImportService) rides the curriculum module: same ingestion
+   *  family, same sql adapter, the T-C79/ADR-035 D1 import path. */
+  examSeriesImport: ExamSeriesImportService;
 }
 
 export function buildCurriculumModule(sql: SqlFn): CurriculumModule {
@@ -41,5 +53,6 @@ export function buildCurriculumModule(sql: SqlFn): CurriculumModule {
     versions,
     subjects,
     review: new CurriculumReviewReader(sql, versions, subjects),
+    examSeriesImport: new ExamSeriesImportService(sql),
   };
 }

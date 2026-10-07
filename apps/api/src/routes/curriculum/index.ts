@@ -30,6 +30,16 @@
  * outside T-MIG-021's READ title and answer 501 {status,
  * error:"not_implemented", message:"not yet ported — owned by <task>",
  * timestamp} — never a fabricated 200, never a silent drop.
+ *
+ * T-MIG-091 (r1c) EXCEPTION — POST /exam-series is IN-CARD ported (200-backed):
+ * TeacherExamSeriesImportController.java:32-35 (@RequestMapping the SAME
+ * /api/v1/teacher/curriculum base — a separate controller, extended here as a
+ * sibling route, never a duplicate mount) → ExamSeriesImportService.importDataset
+ * over the Flyway-frozen exam_series table (the learner picker's own table,
+ * already ported in services/learner-me — extend, don't duplicate). Binding
+ * failure (bad enum/date/instant) → 400 malformed_body verbatim
+ * (GlobalExceptionHandler.java:175-180); the service's fail-closed gates are
+ * verbatim 409s; the frozen NPE dereference order is replicated (500).
  */
 import { Hono, type Context } from "hono";
 import {
@@ -50,6 +60,7 @@ import {
   curriculumVersionsQuerySchema,
   curriculumSubjectsQuerySchema,
   teacherCurriculumNodesQuerySchema,
+  examSeriesDatasetSchema,
   type TeacherCurriculumNodesQuery,
 } from "@syllabai/contracts";
 
@@ -80,6 +91,16 @@ function parseUuid(raw: string): string {
   }
   return raw;
 }
+
+/**
+ * HttpMessageNotReadableException parity (GlobalExceptionHandler.java:175-180):
+ * 400 malformed_body with the fixed client message — the body cannot be read
+ * into the request type (bad field types, bad enum values, malformed JSON).
+ * Rendered inline (the assessment router's malformedBody() convention — the
+ * envelope is malformed_body, NOT the BadRequestException bad_request one).
+ */
+const malformedBody = () =>
+  apiError(400, "malformed_body", "request body is not readable (check field types and enum values)");
 
 /**
  * Learner curriculum router — CurriculumController (:36-62). Mounted at
@@ -175,6 +196,24 @@ export function createTeacherCurriculumRouter(module: CurriculumModule): Hono {
   r.post("/nodes/:id/reject", (c) => notImplemented(c, CURRICULUM_WRITE_TASK));
   r.post("/versions/:id/validate", (c) => notImplemented(c, CURRICULUM_WRITE_TASK));
   r.post("/versions/:id/archive", (c) => notImplemented(c, CURRICULUM_WRITE_TASK));
+
+  // POST /exam-series — TeacherExamSeriesImportController.java:32-35
+  // (T-MIG-091, IN-CARD 200-backed port). Binding is Jackson-without-@Valid
+  // parity: type failures (unknown enum value, malformed LocalDate/Instant)
+  // are HttpMessageNotReadableException → 400 malformed_body verbatim
+  // (GlobalExceptionHandler.java:175-180); absent fields bind null and the
+  // SERVICE's fail-closed gates answer (409s verbatim / NPE-parity 500s).
+  r.post("/exam-series", async (c) => {
+    let raw: unknown;
+    try {
+      raw = await c.req.json();
+    } catch {
+      return c.json(malformedBody(), 400);
+    }
+    const parsed = examSeriesDatasetSchema.safeParse(raw);
+    if (!parsed.success) return c.json(malformedBody(), 400);
+    return c.json(await module.examSeriesImport.importDataset(parsed.data));
+  });
 
   return r;
 }
