@@ -58,6 +58,9 @@ import { buildClassroomRouters } from "./routes/classroom";
 import { buildResearchRouters } from "./routes/research";
 import { buildLearnerMeRouters } from "./routes/learnerme";
 import { buildLearnerKgRouters } from "./routes/learnerkg";
+import { buildRevisionNotesRouters } from "./routes/revision-notes";
+import { buildKnowledgeRouters } from "./routes/knowledge";
+import { buildTeacherKgRouters } from "./routes/teacher-kg";
 import { buildTutorRouters } from "./routes/tutor";
 import { buildClaRouters } from "./routes/cla";
 import { toErrorResponse, apiError } from "./services/identity/errors";
@@ -83,6 +86,9 @@ const cla = buildClaRouters();
 const sme = buildSmeRouters();
 const intervention = buildInterventionRouters();
 const classroom = buildClassroomRouters();
+const revisionNotes = buildRevisionNotesRouters();
+const knowledge = buildKnowledgeRouters();
+const teacherKg = buildTeacherKgRouters();
 const research = buildResearchRouters();
 
 const app = new Hono();
@@ -427,6 +433,33 @@ app.route("/api/v1/learners/me/cla", cla.claRoute);
 app.route("/api/v1/teacher/classes", classroom.teacherClassesRoute);
 app.route("/api/v1/learners/me/classroom", classroom.learnerClassroomRoute);
 app.route("/api/v1/teacher/learners", classroom.teacherRosterRoute);
+
+// Revision-notes + knowledge + teacher-KG/coverage/concept-graph routers
+// (T-MIG-082 tranche-1 — the deferred-mount band, r4b). Path parity with the
+// frozen core: RevisionNoteLearnerController (/api/v1/learners/me/revision-
+// notes), RevisionNoteAdminController (/api/v1/admin/revision-notes),
+// KnowledgeController (/api/v1/knowledge), TeachingCoverage + Class KG
+// (/api/v1/teacher/classes/:id/{coverage,knowledge-graph}),
+// TeacherConceptGraphController (/api/v1/teacher/concept-graph). Each
+// router owns its authz internally (requireAuth learner gates; the M5
+// TEACHER/ADMIN + ADMIN shells) — the /api/v1/* fallback below stays the
+// 404-after-auth path for NO router claimed. The services are the
+// T-MIG-053 ports (REUSE-not-redeclare — this band adds NO new service
+// code); /api/v1/subjects + /api/v1/tree stay CORE-ONLY per T-MIG-035
+// check-3 (adjudication of record in the card).
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-082, R0 ratification requested):
+// T-MIG-082's scope.allowed covers routes/{revision-notes,knowledge,
+// teacher-kg}.ts, test/{revision-notes,knowledge,teacher}/** — this file
+// INCLUDED by the card's explicit mount mandate, but the five mount lines
+// + imports + construction + this comment ship as the minimal app-level
+// wiring per the 010/020/021/030/032/041/062/079 precedent so R0 can
+// ratify or lift them out at review.
+app.route("/api/v1/learners/me/revision-notes", revisionNotes.learnerRevisionNotesRoute);
+app.route("/api/v1/admin/revision-notes", revisionNotes.adminRevisionNotesRoute);
+app.route("/api/v1/knowledge", knowledge.knowledgeRoute);
+app.route("/api/v1/teacher/classes", teacherKg.teacherClassesKgRoute);
+app.route("/api/v1/teacher/concept-graph", teacherKg.teacherConceptGraphRoute);
 
 // Intervention-run router (T-MIG-061 tranche 2 — Wave 6). Path parity with the
 // frozen core: InterventionRunController under /api/v1/learners/me

@@ -1,0 +1,81 @@
+version: 1
+task:
+  id: T-MIG-082
+  title: "T-MIG-082 — mount the deferred routes (the surface-coverage audit's band, censuses/2026-10-06-surface-coverage-r4b.json): the 053 tranche doctrine deferred route mounts to the hub lanes and the hub lanes' completed scope (079) covered only the W4 KG + smart-lesson subset, leaving 28 core endpoints in 10 families with NO v2 route mount (plus /api/v1/subjects + /api/v1/tree, the 035 check-3 core-only law, adjudicated INTENTIONAL). tranche-1 (this PR) = the 19 pure mounts where the 053 services are already ported: revision-notes learner x5 + admin x2 (routes/revision-notes.ts), KnowledgeController x4 (routes/knowledge.ts), TeachingCoverage x3 + ClassKnowledgeGraph x3 + TeacherConceptGraph x2 (routes/teacher-kg.ts). tranche-2 (open checks) = the 9 endpoints whose SERVICES are not ported: ContentController-teacher x5 (enumerate/enumerate-structured/fetch/questions-topics), GlmOcrIngestion x2 (W6-unported of record), LlmAdminController chain-health x1 (no v2 trace), TeacherCurriculum exam-series import x1 (learner side served, teacher import not)"
+  owner: "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a) — operator trace 1a114c788059e5fd 'Verify if we have migrated everything from syllabai-core to v2' → the audit of record (6450ff5) found the wire-layer gap and recommended this band; operator follow-up 'Ok proceed' (trace 1a114d6b72af1bf9) = proceed with the recommended register action. Zero-collision scan pre-branch: 0 open PRs, remote main 6450ff5 (no drift), ZERO t-mig-082* heads, zero T-MIG-082 mentions anywhere"
+  status: IN_PROGRESS # tranche-1 LANDED (19/28): three route files + 75 route-test pins + the five app-level mount lines, gates green; tranche-2 (9 service-port endpoints) remains open — the card stays IN_PROGRESS until the band closes
+  priority: P1
+  wave: 8
+  deps: [T-MIG-035, T-MIG-053, T-MIG-079]
+  execution_record: >
+    (claim 2026-10-07, r4b) tranche-1 = pure mounts over the 053 ports,
+    REUSE-not-redeclare, ZERO new services, ZERO new contracts (the wire
+    schemas were all pre-ratified: revision-notes.ts / knowledge.ts /
+    teacher.ts / learner.ts). routes/revision-notes.ts: learner x5 (index
+    :34-36, body :39-41, asset :48-55 with the frozen
+    CacheControl.maxAge(1,HOURS).cachePrivate() → "max-age=3600, private"
+    + Content-Type headers, progress :57-59, markViewed :63-67 → 204 NO
+    CONTENT — the controller discards the ViewedView) + admin x2 (ingest
+    :33-46 multipart part "file" with the :37-40 guard verbatim + the
+    sme.ts 413 cap law, status :49-51) — the ADMIN shell is the sme.ts
+    precedent requireRole(c,"ADMIN"). THE NULL-TOLERANT BIND LAW: the
+    frozen MarkNoteViewedRequest is @Size(max=80) NOT @NotBlank
+    (RevisionNoteDtos :53) — jakarta constraints skip null, so
+    {"noteId":null} and {} bind null and REACH the service, whose
+    404-first lookup answers "revision note null not found"
+    (RevisionNoteService :104-107); the route carries this via a
+    nullish-tolerant zod bind and passes the Jackson null through the
+    port's string-typed seam (disclosed cast); 81 chars → 400
+    validation_failed "noteId: size must be between 0 and 80"; unreadable
+    body → 400 bad_request "request body is not readable (check field
+    types and enum values)" (GlobalExceptionHandler :175-180). THE
+    ROUTE-ORDER LAW: /progress and /assets/* register BEFORE /:noteId —
+    Spring's handler mapping sorts literal patterns ahead of templates
+    (:57/:48 vs :39) and Hono resolves by registration order; observed
+    first-hand (/progress 404'd under /:noteId before the reorder).
+    routes/knowledge.ts: the 4 GETs with the UUID law (400 malformed,
+    NO sql) + the includeMisconceptions conversion law (the Spring
+    StringToBooleanConverter words true/on/yes/1 + false/off/no/0
+    case-insensitive, defaultValue=false, else 400 malformed — disclosed
+    conversion-set fidelity). routes/teacher-kg.ts: coverage x3 + classKG
+    x3 + concept x2 behind the M5 requireRole(c,"TEACHER","ADMIN") shells
+    (the class-level @PreAuthorize parity, classroom.ts precedent); the
+    §17 ownership gate stays INSIDE the services (covOwnedClass /
+    classGraph's ownedClass — 404 "class not found" / 403 "this class
+    belongs to another teacher"); PUT body law = @Valid BEFORE the body
+    ({} → "status: must not be blank"; 501-char note → "note: size must
+    be between 0 and 500"; explicit null note SKIPS @Size) with the
+    SEMANTIC status parse left in the service (the frozen order: body
+    validation → ownedClass → archived 409 → status parse → node 404 →
+    the V39 invariant 400); /activate → 200 (the frozen
+    @ResponseStatus(OK)) with the loud 409 SeedConflictError mapping;
+    /edges missing rootId → 400 validation_failed "missing required
+    parameter: rootId" (the 079 signature-order precedent). subjects +
+    tree stay CORE-ONLY per T-MIG-035 check-3 (adjudication of record —
+    deliberately NOT mounted; the audit's 30-count reduces to 28 gap
+    endpoints + 2 intentional). app-level wiring: FIVE mount lines +
+    imports + construction in apps/api/src/index.ts as the minimal
+    OUT-OF-FENCE commit per the 010/020/021/030/032/041/062/079 precedent
+    (R0 ratification requested); /api/v1/teacher/classes mount shares the
+    classroom base — Hono resolves per router, every router authoritative
+    for its own paths. TESTS: 75 new route tests (revision-notes x19,
+    knowledge x15, teacher x41) over the REAL services with the shared
+    fixture fleet (revision-notes/helpers.ts learnerRoutes/ingestRoutes/
+    buildZip reused; class-graph + knowledge fixture shapes copied
+    verbatim; the activate happy path reuses the materializing seedRoutes
+    via an ADDITIVE export from test/teacher/concept-graph.test.ts —
+    fixture-only, no law changed, disclosed); 200 bodies validated
+    against the canonical contracts schemas; the idempotent re-mark pins
+    NO insert/update/event; the ingest happy path drives the REAL zip
+    walker over a buildZip package. GATES at the branch head: typecheck
+    x4 exit 0; bun test apps/api packages = 1631 pass / 0 fail / 13 skip
+    / 6375 expect = baseline 1556/6143 +75 tests /+232 expects EXACT;
+    golden selftest OK. TRANCHE-2 (open, the reason this card is NOT
+    DONE): ContentController teacher x5, glm-ocr x2 (the surface test
+    says W6-unported of record), chain-health x1, teacher exam-series
+    import x1 — each needs its SERVICE ported from the frozen core
+    before the mount; §2 full-flip stays unsafe until the tranche-2
+    mounts land AND the hub V2_SURFACE_PREFIXES widen family-by-family
+    with golden-verified surfaces (the flip law).
+  receipts:
+    - T-MIG-082/run-001-t1-mounts-r4b.json

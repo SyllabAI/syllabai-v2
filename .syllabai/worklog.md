@@ -4808,3 +4808,19 @@ Work Log:
 Stage Summary:
 - Receipt: .syllabai/receipts/censuses/2026-10-06-surface-coverage-r4b.json. Zero code contact; .syllabai-only; fetch-first direct-main.
 - RECOMMENDED REGISTER ACTION for the desk: file a mount-the-deferred-routes band (or per-family bands) before any §2 cutover; hub table widening rides each family's golden verification.
+
+---
+Task ID: T-MIG-082 tranche-1 (trace 1a114d6b72af1bf9 'Ok proceed')
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Execute the surface audit's recommended register action — file the mount-the-deferred-routes band and land the pure mounts.
+
+Work Log:
+- Zero-collision claim: 0 open PRs, remote main 6450ff5 (no drift), ZERO t-mig-082* heads, zero T-MIG-082 mentions; card filed of record (.syllabai/tasks/T-MIG-082-mount-the-deferred-routes.yaml, IN_PROGRESS — tranche-2 open).
+- tranche-1 LANDED (19/28 endpoints): routes/revision-notes.ts (learner x5 + admin x2, the null-tolerant @Size bind law, the asset cache-header law, the multipart guard verbatim), routes/knowledge.ts (x4, the UUID + includeMisconceptions conversion laws), routes/teacher-kg.ts (coverage x3 + classKG x3 + concept x2, the M5 shells, @Valid-before-body, the §17 gate inside the services); FIVE app-level mount lines (OUT-OF-FENCE commit per the 010/020/021/030/032/041/062/079 precedent, R0 ratification requested); subjects+tree adjudicated CORE-ONLY per 035 check-3.
+- 75 new route tests over the REAL services (fixture fleet reused verbatim; seedRoutes exported additively from concept-graph.test.ts — disclosed); 200s schema-validated against the pre-ratified contracts; zero new wire (contracts untouched).
+- GATES: typecheck x4 exit 0; 1631/0/13skip/6375 = baseline 1556/6143 +75/+232 EXACT; golden selftest OK.
+- Route-order law discovered first-hand: Hono resolves by registration order, /:noteId swallowed /progress until the literal paths registered first (Spring literal-ahead-of-template parity) — pinned in the route header + tests.
+
+Stage Summary:
+- Receipt: .syllabai/receipts/T-MIG-082/run-001-t1-mounts-r4b.json. Branch t-mig-082/r4b, PR + disclosed self-merge under the standing operator directive.
+- REMAINING for the band: tranche-2 = 9 service-port endpoints (ContentController-teacher x5, glm-ocr x2, chain-health x1, teacher exam-series import x1); then the hub lanes widen V2_SURFACE_PREFIXES family-by-family with golden-verified surfaces; §2 full flip re-evaluates AFTER both.
