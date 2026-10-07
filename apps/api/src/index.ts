@@ -56,6 +56,7 @@ import { buildInterventionRouters } from "./routes/intervention";
 import { buildLearnerRouters } from "./routes/learner";
 import { buildClassroomRouters } from "./routes/classroom";
 import { buildResearchRouters } from "./routes/research";
+import { buildIngestionRouters } from "./routes/ingestion";
 import { buildLearnerMeRouters } from "./routes/learnerme";
 import { buildLearnerKgRouters } from "./routes/learnerkg";
 import { buildRevisionNotesRouters } from "./routes/revision-notes";
@@ -90,6 +91,7 @@ const revisionNotes = buildRevisionNotesRouters();
 const knowledge = buildKnowledgeRouters();
 const teacherKg = buildTeacherKgRouters();
 const research = buildResearchRouters();
+const ingestion = buildIngestionRouters();
 
 const app = new Hono();
 
@@ -494,6 +496,37 @@ app.route("/api/v1/learners/me/intervention-runs", intervention.interventionRout
 // app-level wiring, shipped per the 010/020/021/031/032/041/052/061
 // precedent so R0 can ratify or lift them out at review.
 app.route("/api/v1/research", research.researchRoute);
+
+// Tranche-B ingestion routers (T-MIG-082 tranche B — the service-ports band,
+// R0). Path parity with the frozen core: RoutingController (GET /api/v1/
+// teacher/content/{fetch,enumerate,enumerate/structured}), GlmOcrIngestion
+// Controller (/api/v1/teacher/content/glm-ocr — POST /pairs, GET /papers/:
+// paperId/findings), TeacherExamSeriesImportController (POST /api/v1/teacher
+// /curriculum/exam-series — mounted at the FULL path so its shell cannot
+// bleed onto the T-MIG-021 teacher-curriculum routes; the 052 precedent).
+// Each router owns its authz internally (the TEACHER/ADMIN M5 shells; the
+// curriculum router's identical shell still fires first for the shared
+// prefix — double-gated by design, never differently); the /api/v1/*
+// fallback below stays the 404-after-auth path for NO router claimed. The
+// services are the tranche-B ports (services/ingestion/**): Fetch/
+// Enumerate + the FetchQueryParser (T-C07 scope law riding the T-MIG-020
+// CurriculumScopeResolver), the GLM-OCR bridge (T-013 store + T-011 bank +
+// the V13 bridge record), and the fail-closed exam-series import (T-C79).
+// golden/** is UNTOUCHED (the capture pass owns golden truth — r4-api-b,
+// trace 1a1151442250feb1); the V2_SURFACE_PREFIXES widening stays the filed
+// RIDER (the band card) — hub api.ts is NOT touched by this band.
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-082 tranche B, R0 ratification requested):
+// tranche-B scope.allowed covers routes/ingestion.ts,
+// services/ingestion/**, packages/contracts/src/ingestion.ts,
+// test/ingestion/** — this file INCLUDED by the card's explicit mount
+// mandate, but the three mount lines + import + construction + this
+// comment ship as the minimal app-level wiring per the
+// 010/020/021/030/032/041/062/079/revision-notes precedent so R0 can
+// ratify or lift them out at review.
+app.route("/api/v1/teacher/content", ingestion.contentRoutingRoute);
+app.route("/api/v1/teacher/content/glm-ocr", ingestion.glmOcrRoute);
+app.route("/api/v1/teacher/curriculum/exam-series", ingestion.examSeriesImportRoute);
 
 // anyRequest().authenticated() parity for paths NO router claimed
 // (SecurityConfig.java:91): anonymous callers get the 401 Boot-shaped body;

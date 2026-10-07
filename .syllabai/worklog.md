@@ -4987,6 +4987,36 @@ Stage Summary:
 - Open-PR queue after this entry: #134 only (held, arbitration fork with the operator). #133 closed superseded of record. Capture band 082..091 + mounts 082-087 of record on main @ 534332c; gates green first-hand at tip.
 - Band completion path of record: #134 resolution -> per-family golden verify vs #135/#136 fixtures -> V2_SURFACE_PREFIXES widening (operator-gated flip law) -> Wave-A deploy. W5 teacher identity + P2 formal closure + P3 witness + P4 sign-off remain operator-side.
 
+---
+Task ID: T-MIG-082 tranche-B claim (operator trace 1a115216b33347d9)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: 'proceed with tranche B' — claim the OPEN mount steps of T-MIG-088/089/091 (the RoutingController trio, the GlmOcrIngestion pair, the TeacherExamSeriesImport route) and execute the tranche-B service ports first, then routes; T-MIG-090 stays BLOCKED-ON-DECISION.
+
+Work Log:
+- Claimed @ 2026-10-07T07:03:12Z on origin/main fa2b984 (fetch-first; zero rival mount-step claims; capture step of record r4-api-b trace 1a1151442250feb1 respected and UNCHANGED — the capture pass continues independently; golden-verify rides it when it lands).
+- Tranche doctrine of record (band card T-MIG-082-wire-mounts-band.yaml, PR #133): B = service ports first then routes (7 ep/4 families) — the cards' own service_status fields name the same ports ('no v2 trace; port service if missing, then mount'). Claim-in-first-commit on branch t-mig-082-b/r0.
+- B4 (T-MIG-090 chain-health) NOT claimed: the band card's BLOCKED-ON-DECISION stands (no FailoverLlmChain single instrument in v2; chain-of-record ruling owed R0/R6) — filed, not improvised.
+- Implementation follows in the same branch: services/ingestion/** (fetch-parser/fetch/enumerate, chunking/canonical/past-paper/glm-ocr, exam-series), routes/ingestion.ts (3 routers at the exact controller URL spaces), packages/contracts/src/ingestion.ts, test/ingestion/**; mounts disclosed per the 010/020/021 out-of-fence precedent; golden/** read-only; hub untouched.
+
+Stage Summary:
+- Tranche B claimed of record on 088/089/091 (earliest-claim-wins); 090 left to its ruling. Implementation + gates + PR follow in this branch's next commits.
+
+---
+Task ID: T-MIG-082 tranche-B implementation (operator trace 1a115216b33347d9)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: 'proceed with tranche B' — execute the tranche-B service ports then mounts for the claimed mount steps of T-MIG-088/089/091; T-MIG-090 stays BLOCKED-ON-DECISION.
+
+Work Log:
+- Rebased the branch onto the capture-completed main (d809389: #135/#136 merged, 082..091 CAPTURED of record) — claim commit 2e0eb75 union-resolved (main's CAPTURED status text kept verbatim, the mount-claim injected; worklog union append-only, zero markers, zero loss).
+- B1 (T-MIG-088): FetchQueryParser + FetchService + EnumerateService ports (byte-faithful @ 6cad6ef) + GET /api/v1/teacher/content/{fetch,enumerate,enumerate/structured} over the T-MIG-020 scope resolver (T-C07 + ADR-030 courseRef law).
+- B2 (T-MIG-089): the FULL GLM-OCR bridge — ChunkingService/ChunkHeaderBuilder + ContentIngestionService (T-013) + PastPaperIngestionService (T-011) + GlmOcrDraftMapper + GlmOcrIngestionService — POST /pairs 201 + GET /papers/:paperId/findings (404 vs 200 []); the missing-subtree 500 = treeToValue parity, corroborated by r4b's captured 089 pairs NPE-quirk law of record.
+- B3 (T-MIG-091): the fail-closed exam-series import (six ordered 409 gates + NPE parity + re-import moves measured fields WITH the newer citation) — POST /api/v1/teacher/curriculum/exam-series (full-path router, 052 precedent).
+- B4 (T-MIG-090): NOT implemented BY DOCTRINE (band card BLOCKED-ON-DECISION; no FailoverLlmChain in v2; chain-of-record ruling owed R0/R6) — r1c's #134 chain-health improvisation is disclosed for the desk, not contested here.
+- COLLISION DISCLOSED of record: r1c's t-mig-089-091/r1c (06:51-53Z) + HELD PR #134 carry 089/090/091 implementation commits WITHOUT card-level claims or claim receipts (088's card reads 'OPEN' on their own branch); per R0s-ROUND-10a §2.1 the first card-level CLAIM of record is this branch's claim-in-first-commit (2e0eb75 @ 07:03:16Z). Per-family differences + the requested desk disposition are in receipts/T-MIG-082-B collision block (run-002 receipts).
+- Gates at the rebased tip fd2f320: typecheck x4 exit 0; 1688 pass / 0 fail / 13 skip / 6640 expect (+70/+265 EXACT vs the fa2b984 baseline 1618/1618/0/13skip/6375); selftest OK. golden/** untouched (golden-verify rides the capture band); hub untouched (the widening rider).
+
+Stage Summary:
+- Tranche B (B1-B3, 6 endpoints / 3 families) implemented, pinned (+70), gated, pushed on t-mig-082-b/r0; 090 left to its ruling. PR opened for the desk with the collision disclosure. The §2 flip-safety gap: 7 -> the families' mounts await merge + golden-verify.
 
 ---
 

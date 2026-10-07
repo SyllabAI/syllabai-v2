@@ -1,0 +1,32 @@
+{
+  "task_id": "T-MIG-089",
+  "run": "run-002-impl-tranche-b",
+  "kind": "implementation",
+  "claimed_at": "2026-10-07T07:42:05Z",
+  "claimant": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operator_trace": "1a115216b33347d9",
+  "branch": "t-mig-082-b/r0",
+  "claim_commit": "2e0eb75",
+  "impl_commit": "fd2f320",
+  "base": "d809389",
+  "gates": {
+    "typecheck_x4": 0,
+    "root_suite": "1688 pass / 0 fail / 13 skip / 6640 expect across 1701 tests / 88 files",
+    "delta_vs_baseline_fa2b984": "+70 tests / +265 expect (EXACT: 1618->1688, 6375->6640)",
+    "selftest": "OK",
+    "rebased": "fa2b984 -> d809389 (capture band #135/#136 union-resolved per append-only law; gates re-run EXACT at the rebased tip)"
+  },
+  "collision_disclosure": {
+    "rival": "r1c lanes t-mig-089-091/r1c (commits b53e711/b2bec12/db87261 @ 06:51-06:53Z, pushed) and the HELD PR #134 (t-mig-082-091/r1c, body: 'Cards 089-091 NOW LANDED on this branch')",
+    "why_this_claim_stands": "the cards of record at d809389 read 'mount step remains open for claim per earliest-claim-wins' for ALL of 088/089/091; no rival card-level claim or claim receipt exists on any branch or PR (088's card is literally 'OPEN' on t-mig-089-091/r1c); r1c's artifacts are implementation commits, not claims \u2014 per R0s-ROUND-10a \u00a72.1 the first CLAIM of record wins, and this branch's claim-in-first-commit (2e0eb75 @ 07:03:16Z, pushed 07:36Z) is the only one",
+    "per_family_differences": {
+      "T-MIG-088": "UNIQUE to this branch \u2014 r1c has NO fetch/enumerate implementation anywhere (routes/content untouched on their branches); the RoutingController trio + FetchQueryParser/Fetch/Enumerate ports are this claim's exclusive delivery",
+      "T-MIG-089": "pairs: this branch = the FULL faithful T-013+T-011+bridge port (201; validate->checksum-dedup->chunk->bank rows->V13 record; the missing-subtree 500 = treeToValue parity, CORROBORATED by r4b's captured '089 pairs NPE quirk' law); r1c's #134 = honest 501 seam (write band unported). findings: both faithful 200",
+      "T-MIG-090": "NOT implemented on this branch BY DOCTRINE \u2014 the band card's tranche-B4 BLOCKED-ON-DECISION stands ('no FailoverLlmChain single instrument in v2 \u2014 the honest port needs a chain-of-record ruling (R0/R6) or an operator-ordered adapter law; filed, not improvised'); r1c's #134 improvises a 487-line chain abstraction \u2014 that adjudication belongs to the desk/operator routing fork already open on #134",
+      "T-MIG-091": "both faithful 200; this branch mounts a SEPARATE full-path router (/api/v1/teacher/curriculum/exam-series, the 052 precedent \u2014 zero edits to the T-MIG-021 router file); r1c's rides the 021 router"
+    },
+    "desk_disposition_requested": "per-family code arbitration exactly as the desk forked on #134: this PR is the earliest CLAIM of record with the capture-corroborated wire behavior; where r1c's implementation is preferred the desk may lift families out (the T-MIG-055 refile precedent runs both ways)"
+  },
+  "implementation": "B2 \u2014 ChunkingService+ChunkHeaderBuilder (atom-boundary hard law, oversized-block, ceil/4 estimate, MS Q-prefix only without explicit label, spec-range numeric order 2.9<2.10) + ContentIngestionService port (validator = the T-MIG-006 canonicalDocumentViolations REUSE, checksum dedup 409 kind-mismatch, V33 identity mirror incl. embedRev=2, subject 404 law) + PastPaperIngestionService port (SUGGESTED-everything, identity gate, printed-components-only title, INGESTION-ANCHOR find-or-create with the bit-exact Java hashCode cap, uniquePartLabel .2/.3, questionRef prefix law) + GlmOcrDraftMapper (QP-first session/paperReference, subject NEVER inferred, whole-entry points, '13(b)(i)'->'13-b-i', QWC star strip) + GlmOcrIngestionService (ONE transaction, rerun->DUPLICATE, validateBundle 409s, bridge record V13 verbatim, findings assembly) \u2014 mounts: POST /pairs (201) + GET /papers/:paperId/findings (404 vs 200 [])",
+  "pins": "mapper refs/normalizePart/draft mapping/findings assembly/JSONB round-trip, chunker boundaries, route happy 201 + DUPLICATE rerun + bundle-mix 409 + recon-mismatch 409 + missing-subtree 500 + shape-mismatch 500 + malformed-body 400 + findings 404/200[]/200-filled"
+}
