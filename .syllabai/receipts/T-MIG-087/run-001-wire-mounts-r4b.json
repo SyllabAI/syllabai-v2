@@ -1,0 +1,31 @@
+{
+  "task": "T-MIG-087",
+  "agent": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "operator_traces": [
+    "1a114c788059e5fd (audit ask)",
+    "1a114d6b72af1bf9 ('Ok proceed')"
+  ],
+  "kind": "wire-mount-step",
+  "pr": "132 (branch t-mig-082/r4b)",
+  "zero_new_wire": "contracts untouched; 200 bodies schema-validated against pre-ratified @syllabai/contracts schemas",
+  "sequence_position": "MOUNT step of record; capture pass + golden-verify + V2_SURFACE_PREFIXES widening REMAIN per the card sequence (r1c Task-33)",
+  "collision_note": "r3a filed the per-family band (PR #131, da87d11) while the implementation was in flight; my duplicate whole-band T-MIG-082 card was DROPPED in favor of this band; work re-pointed per earliest-claim-wins",
+  "gates": {
+    "typecheck": "x4 exit 0",
+    "tests": "1631 pass / 0 fail / 13 skip / 6375 expect (baseline 1556/6143 +75 tests /+232 expects EXACT)",
+    "golden_selftest": "OK"
+  },
+  "family": "TeachingCoverage (053 t1) \u2014 3 endpoints",
+  "endpoints": [
+    "GET /api/v1/teacher/classes/{classId}/coverage",
+    "GET /api/v1/teacher/classes/{classId}/coverage/{specPointNodeId}/history",
+    "PUT /api/v1/teacher/classes/{classId}/coverage/{specPointNodeId}"
+  ],
+  "router": "apps/api/src/routes/teacher-kg.ts (createTeacherClassesKgRouter)",
+  "tests": "apps/api/test/teacher/kg-coverage-routes.test.ts (coverage describes: list asc + canonical kebab wire; history newest-first; PUT fresh mark exactly one row+one event prev=null; the idempotent identical re-mark = 200 NO writes; @Valid-before-body laws; archived 409; the V39 non-spec-point 400)",
+  "laws": [
+    "@Valid BEFORE the body: 'status: must not be blank' / 'note: size must be between 0 and 500' / unreadable-body verbatim :175-180",
+    "the frozen gate order: body validation -> ownedClass -> archived 409 -> status parse (service) -> node 404 -> the V39 invariant",
+    "explicit null note SKIPS @Size (normalizeNote owns it)"
+  ]
+}

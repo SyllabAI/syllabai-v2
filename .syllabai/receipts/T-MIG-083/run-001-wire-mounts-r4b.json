@@ -1,0 +1,29 @@
+{
+  "task": "T-MIG-083",
+  "agent": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "operator_traces": [
+    "1a114c788059e5fd (audit ask)",
+    "1a114d6b72af1bf9 ('Ok proceed')"
+  ],
+  "kind": "wire-mount-step",
+  "pr": "132 (branch t-mig-082/r4b)",
+  "zero_new_wire": "contracts untouched; 200 bodies schema-validated against pre-ratified @syllabai/contracts schemas",
+  "sequence_position": "MOUNT step of record; capture pass + golden-verify + V2_SURFACE_PREFIXES widening REMAIN per the card sequence (r1c Task-33)",
+  "collision_note": "r3a filed the per-family band (PR #131, da87d11) while the implementation was in flight; my duplicate whole-band T-MIG-082 card was DROPPED in favor of this band; work re-pointed per earliest-claim-wins",
+  "gates": {
+    "typecheck": "x4 exit 0",
+    "tests": "1631 pass / 0 fail / 13 skip / 6375 expect (baseline 1556/6143 +75 tests /+232 expects EXACT)",
+    "golden_selftest": "OK"
+  },
+  "family": "admin revision-notes (053 t3) \u2014 2 endpoints",
+  "endpoints": [
+    "POST /api/v1/admin/revision-notes/ingest",
+    "GET /api/v1/admin/revision-notes/status"
+  ],
+  "router": "apps/api/src/routes/revision-notes.ts (createAdminRevisionNotesRouter, mounted /api/v1/admin/revision-notes; ADMIN shell the sme.ts precedent)",
+  "tests": "apps/api/test/revision-notes/routes.test.ts (admin describe: 401/403 shells, the :37-40 guard verbatim, empty-part 400, the REAL zip walker over a buildZip package 200 + summary schema, status honest-nulls)",
+  "laws": [
+    "multipart part 'file' guard verbatim + the sme.ts 413 cap law",
+    "status honest nulls before the first ingest"
+  ]
+}
