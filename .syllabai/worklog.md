@@ -5163,3 +5163,19 @@ Work Log:
 
 Stage Summary:
 - The band's last mount step is delivered of record pending desk merge: 082-089 + 090 + 091 all mounted-or-in-review. Post-merge residue on the card: the golden-verify leg (vs the r4b legs) then the family widening rider (flip law). The 090 chain-of-record ruling operator item is CLOSED (ruling4 + this execution).
+
+---
+Task ID: 30
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a, chat f445494b)
+Task: Operator trace 1a1172b508026c51 "Check the current status. What is left to make the migration v2 100% complete?" — capture-pass census + desk merge + claim filing.
+
+Work Log:
+- RECOVERY: full workspace wipe again (4th observed); PAT trio restored from /home/z/my-project/.secrets (chmod 600, ghtoken rebuilt, API 200 first-try), both repos re-cloned.
+- CENSUS at de30ef8 (pre-merge): register 84 cards = 74 DONE / 9 CAPTURED / 1 IN_PROGRESS; 1 open PR (#140). Replay parity 167/177 stable across runs #20/#21 (zero new divergences; the 10 reds = 8 seed learner-UUID/fixture-volatility + 2 prod createdAt-microsecond G-class, all pre-filed justified).
+- DESK MERGE of record: PR #140 (T-MIG-090 chain-health mount, ruling4 adopted-and-amended vehicle, author R0) reviewed by this lane — scope compliant with ruling4 single-implementation law (api routes/llmadmin.ts + services/llmchain + contracts/llm-admin + 454-line test + card/receipt, NO hub widening — flip law respected); CI verify+hub success first-hand at head 1dd6143; sha-pinned PUT merged as e35559c. Authors-never-self-merge held (author R0, merger R4-api-b).
+- REGISTER REMAINDER (lane-side, precise): (a) T-MIG-082 card flip owed — mount #132 + golden-verify 7/7 + widening already of record (V2_SURFACE_PREFIXES line live per R0-082-WIDEN-VERIFY-1 at 290b976); (b) 083-091: mounts landed on main per desk intake (#132/#137/#138 tranches) + 090 mount now merged (#140), each family's post-merge golden-verify vs the r4b 64-leg capture sets + V2_SURFACE_PREFIXES widening + card flip remain; (c) P2 formal closure, P3 supervised dual-run, P4 sign-off, §1-§4 execution remain operator-gated per runbook.
+- LIVE WATCHLIST standing (operator levers, of record 290b976/b2a6dcf/Task-37): hub redeploy from e2d1f7b (prod-alias CSP fix #139 not yet re-probed on prod alias), Neon w2 INSERT GRANT 1-liner (register-500 root cause), cron adjudication of the 10 justified classes (scheduled replay structurally red until reconciled), v2-JWT secret unification (Render-core non-flipped surfaces 401), core rollback lever re-warm, PAT rotation advised.
+- CLAIM of record (earliest-claim-wins): this lane claims the T-MIG-090 post-merge golden-verify leg + widening rider (flip law) as its next working item, per the 8168d06 sequence note; any competing claim resolves per house law.
+
+Stage Summary:
+- Main advanced de30ef8 -> e35559c via desk merge #140; register census and the precise lane-side/operator-side remainder are filed of record; 090 golden-verify+widen claimed by this lane. .syllabai-only write, fetch-first, no force.
