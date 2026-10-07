@@ -1,0 +1,37 @@
+{
+ "body": {
+  "error": "not_found",
+  "message": "revision note asset no-such-file.png not found",
+  "status": 404,
+  "timestamp": "2026-10-07T06:30:56.045166384Z"
+ },
+ "body_encoding": "json",
+ "captured_at_utc": "2026-10-07T06:30:56Z",
+ "leg": "leg-07-asset-404-negative",
+ "method": "GET",
+ "path": "/api/v1/learners/me/revision-notes/assets/no-such-file.png",
+ "request_headers": {
+  "accept": "application/json",
+  "authorization": "Bearer ***REDACTED***"
+ },
+ "response_headers": {
+  "alt-svc": "h3=\":443\"; ma=86400",
+  "cache-control": "no-cache, no-store, max-age=0, must-revalidate",
+  "cf-cache-status": "DYNAMIC",
+  "cf-ray": "a46adc259f650f2c-HKG",
+  "content-type": "application/json",
+  "date": "Wed, 07 Oct 2026 06:30:56 GMT",
+  "expires": "0",
+  "pragma": "no-cache",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "rndr-id": "9acc7996-b083-4b73",
+  "server": "cloudflare",
+  "strict-transport-security": "max-age=31536000 ; includeSubDomains ; preload",
+  "vary": "origin,access-control-request-method,access-control-request-headers,accept-encoding",
+  "x-content-type-options": "nosniff",
+  "x-frame-options": "DENY",
+  "x-render-origin-server": "Render",
+  "x-xss-protection": "0"
+ },
+ "status": 404
+}
