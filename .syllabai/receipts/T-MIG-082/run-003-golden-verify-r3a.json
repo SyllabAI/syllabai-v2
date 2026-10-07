@@ -1,0 +1,96 @@
+{
+ "card": "T-MIG-082",
+ "fixtures_ref": "run-002-capture-r3a @ d19289cc8 / PR #135",
+ "lane": "r3a",
+ "method": "local v2 boot (bun, neon-http transport over 443) against the SAME Neon substrate as the frozen-core capture; GET-only legs; envelope-timestamp normalization only",
+ "operator_trace": "1a115288011d2475 (golden-verify the landed mounts, then per-family widening)",
+ "receipt": "run-003-golden-verify-r3a",
+ "results": [
+  {
+   "actual_status": 401,
+   "body_match": true,
+   "diffs": [],
+   "expected_status": 401,
+   "findings": [
+    "default cache posture missing on v2 (core: no-cache,no-store,max-age=0,must-revalidate) \u2014 api-wide class, cross-family, filed of record"
+   ],
+   "leg": "leg-01-index-401-negative",
+   "status_match": true,
+   "verdict": "PASS"
+  },
+  {
+   "actual_status": 200,
+   "body_match": true,
+   "diffs": [],
+   "expected_status": 200,
+   "findings": [
+    "default cache posture missing on v2 (core: no-cache,no-store,max-age=0,must-revalidate) \u2014 api-wide class, cross-family, filed of record"
+   ],
+   "leg": "leg-02-index-200",
+   "status_match": true,
+   "verdict": "PASS"
+  },
+  {
+   "actual_status": 200,
+   "body_match": true,
+   "diffs": [],
+   "expected_status": 200,
+   "findings": [
+    "default cache posture missing on v2 (core: no-cache,no-store,max-age=0,must-revalidate) \u2014 api-wide class, cross-family, filed of record"
+   ],
+   "leg": "leg-03-body-200",
+   "status_match": true,
+   "verdict": "PASS"
+  },
+  {
+   "actual_status": 404,
+   "body_match": true,
+   "diffs": [],
+   "expected_status": 404,
+   "findings": [
+    "default cache posture missing on v2 (core: no-cache,no-store,max-age=0,must-revalidate) \u2014 api-wide class, cross-family, filed of record"
+   ],
+   "leg": "leg-04-body-404-negative",
+   "status_match": true,
+   "verdict": "PASS"
+  },
+  {
+   "actual_status": 200,
+   "body_match": true,
+   "diffs": [],
+   "expected_status": 200,
+   "findings": [
+    "default cache posture missing on v2 (core: no-cache,no-store,max-age=0,must-revalidate) \u2014 api-wide class, cross-family, filed of record"
+   ],
+   "leg": "leg-05-progress-200",
+   "status_match": true,
+   "verdict": "PASS"
+  },
+  {
+   "actual_status": 200,
+   "body_match": true,
+   "cache_control_asset_match": true,
+   "diffs": [],
+   "expected_status": 200,
+   "findings": [],
+   "leg": "leg-06-asset-200",
+   "size_match": true,
+   "status_match": true,
+   "verdict": "PASS"
+  },
+  {
+   "actual_status": 404,
+   "body_match": true,
+   "diffs": [],
+   "expected_status": 404,
+   "findings": [
+    "default cache posture missing on v2 (core: no-cache,no-store,max-age=0,must-revalidate) \u2014 api-wide class, cross-family, filed of record"
+   ],
+   "leg": "leg-07-asset-404-negative",
+   "status_match": true,
+   "verdict": "PASS"
+  }
+ ],
+ "v2_ref": "main @ 5bbac8907 (#132 mounts landed; #134 pending does not alter this verify target)",
+ "verdict": "ALL PASS"
+}
