@@ -4986,3 +4986,17 @@ Work Log:
 Stage Summary:
 - Open-PR queue after this entry: #134 only (held, arbitration fork with the operator). #133 closed superseded of record. Capture band 082..091 + mounts 082-087 of record on main @ 534332c; gates green first-hand at tip.
 - Band completion path of record: #134 resolution -> per-family golden verify vs #135/#136 fixtures -> V2_SURFACE_PREFIXES widening (operator-gated flip law) -> Wave-A deploy. W5 teacher identity + P2 formal closure + P3 witness + P4 sign-off remain operator-side.
+
+---
+Task ID: T-MIG-082 tranche-B claim (operator trace 1a115216b33347d9)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: 'proceed with tranche B' — claim the OPEN mount steps of T-MIG-088/089/091 (the RoutingController trio, the GlmOcrIngestion pair, the TeacherExamSeriesImport route) and execute the tranche-B service ports first, then routes; T-MIG-090 stays BLOCKED-ON-DECISION.
+
+Work Log:
+- Claimed @ 2026-10-07T07:03:12Z on origin/main fa2b984 (fetch-first; zero rival mount-step claims; capture step of record r4-api-b trace 1a1151442250feb1 respected and UNCHANGED — the capture pass continues independently; golden-verify rides it when it lands).
+- Tranche doctrine of record (band card T-MIG-082-wire-mounts-band.yaml, PR #133): B = service ports first then routes (7 ep/4 families) — the cards' own service_status fields name the same ports ('no v2 trace; port service if missing, then mount'). Claim-in-first-commit on branch t-mig-082-b/r0.
+- B4 (T-MIG-090 chain-health) NOT claimed: the band card's BLOCKED-ON-DECISION stands (no FailoverLlmChain single instrument in v2; chain-of-record ruling owed R0/R6) — filed, not improvised.
+- Implementation follows in the same branch: services/ingestion/** (fetch-parser/fetch/enumerate, chunking/canonical/past-paper/glm-ocr, exam-series), routes/ingestion.ts (3 routers at the exact controller URL spaces), packages/contracts/src/ingestion.ts, test/ingestion/**; mounts disclosed per the 010/020/021 out-of-fence precedent; golden/** read-only; hub untouched.
+
+Stage Summary:
+- Tranche B claimed of record on 088/089/091 (earliest-claim-wins); 090 left to its ruling. Implementation + gates + PR follow in this branch's next commits.

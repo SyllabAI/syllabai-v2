@@ -1,0 +1,20 @@
+{
+  "task_id": "T-MIG-089",
+  "run": "run-001-mount-claim",
+  "kind": "claim",
+  "claimed_at": "2026-10-07T07:03:12Z",
+  "claimant": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operator_trace": "1a115216b33347d9",
+  "operator_directive": "proceed with tranche B",
+  "vehicle": "tranche B of the T-MIG-082 wire-mounts band (band card T-MIG-082-wire-mounts-band.yaml, branch t-mig-082/r0, PR #133) \u2014 the per-family cards of record on main are this claim's executable title",
+  "branch": "t-mig-082-b/r0",
+  "claim_in_first_commit": true,
+  "base_at_claim": "fa2b984",
+  "mount_step": {
+    "endpoints": "POST /api/v1/teacher/content/glm-ocr/pairs (201), GET /api/v1/teacher/content/glm-ocr/papers/{paperId}/findings (missing bridge record 404; empty findings clean 200 [])",
+    "service_ports": "GlmOcrIngestionService + GlmOcrDraftMapper + the T-013 ContentIngestionService (validator/chunking/documents/chunks) + the T-011 PastPaperIngestionService chain \u2014 the full bridge fabric (~2.1k lines frozen Java), schema tables all present in packages/db"
+  },
+  "earliest_claim_wins": "zero rival mount-step claims verified at filing (fetch-first; no T-MIG-088/089/091 heads; capture step r4-api-b trace 1a1151442250feb1 respected \u2014 capture continues independently)",
+  "blocked_sibling": "T-MIG-090 (chain-health) NOT claimed: BLOCKED-ON-DECISION of record \u2014 v2 has no FailoverLlmChain single instrument; the honest port needs a chain-of-record ruling (R0/R6) or an operator-ordered adapter law. Filed, not improvised (band card tranche-B4).",
+  "fence": "routes/ingestion.ts + services/ingestion/** + packages/contracts/src/ingestion.ts + test/ingestion/** + the index.ts mount lines (disclosed per the 010/020/021 precedent); golden/** READ-ONLY; apps/hub/** untouched; zero production writes"
+}
