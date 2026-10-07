@@ -1,0 +1,54 @@
+{
+  "kind": "t-mig-082-run-receipt",
+  "card": "T-MIG-082",
+  "run": "001-claim-and-mount-draft",
+  "agent": "r3a lane (Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)",
+  "operator_orders": [
+    "trace 1a114e1f1aab2521 'order the endpoint-mount work (cards for the 10 families) so section-2 becomes safe' (band filed, PR #131)",
+    "trace 1a114ea35473d091 'Check if #131 has landed. If not, review+merge yourself. Then continue working' (#131 self-reviewed id 5438199918 + merged da87d11 under the order; lane then claimed 082 and continued)"
+  ],
+  "claim": {
+    "branch": "t-mig-082/r3a",
+    "claim_commit": "3d973c8",
+    "card_state": "IN_PROGRESS (owner r3a; earliest-claim-wins T-MIG-071; no concurrent claim of record at claim time)"
+  },
+  "work_done": [
+    "mount draft: apps/api/src/routes/revision-notes.ts — the 5 learner surfaces (index/body/asset/progress/mark-viewed) with the frozen law encoded (RevisionNoteLearnerController :25-69; GlobalExceptionHandler 404-not_found verbatim; asset Cache-Control private,max-age=3600 = frozen :52-53 route-layer law; markViewed @Size(max=80) envelope with the Jackson-bind classification, absent/null noteId -> the service 404 'revision note null not found' — CAPTURE-ADJUDICATED shape)",
+    "index.ts wiring: import + construction + app.route('/api/v1/learners/me', revisionNotes.revisionNotesRoute) as its own commit per the 010/020/021/030/032/041/079 precedent (the card's scope.allowed explicitly covers the mount lines)"
+  ],
+  "gates": {
+    "typecheck": "4/4 packages clean (contracts/shared/db/api)",
+    "api_suite": "1174 pass / 0 fail / 13 skip (bun test apps/api)",
+    "surface_pins": "8/8 (api.v2-surface.test.ts untouched — the family stays core-only)",
+    "golden_selftest": "OK"
+  },
+  "capture_plan": {
+    "law": "GOLDEN_MASTER section-2: read-only surfaces capture from the Render URL; write surfaces from a Neon-branch-backed local boot; never write production Neon; scrub mandatory; cases committed only from real captures with a source: line",
+    "read_only_legs": [
+      "GET /api/v1/learners/me/revision-notes",
+      "GET /api/v1/learners/me/revision-notes/{noteId}",
+      "GET /api/v1/learners/me/revision-notes/assets/{filename}",
+      "GET /api/v1/learners/me/revision-notes/progress"
+    ],
+    "write_legs": ["POST /api/v1/learners/me/revision-notes/progress/views"],
+    "blockers_of_record": [
+      "capture credentials: the Render core is warm but auth-gated (golden 401-in-0.55s posture); lane holds no seeded identity for it — operator to provide a capture credential set OR order the COW-boot path",
+      "Neon COW boot for the write leg (+ full session if preferred): NEON_BRANCH_CAPACITY is operator-gated; the frozen tree's recorded capture used JDK 25 — sandbox has JDK 21, so a boot here needs the JDK 25 posture confirmed or the core's build target verified",
+      "corpus substrate: whether the replay branch carries revision_note rows (the family needs an ingested corpus for non-empty captures; empty-corpus cases capture regardless)"
+    ],
+    "case_skeletons_planned": [
+      "rnotes-index-uningested-200 (honest nulls :37-39)",
+      "rnotes-index-staged-200 (canonical tree + viewed)",
+      "rnotes-body-200 (canonical prev/next + specMapJson TEXT)",
+      "rnotes-body-missing-404 ('revision note X not found' verbatim)",
+      "rnotes-asset-200 (content-type + cache envelope + bytes)",
+      "rnotes-asset-missing-404",
+      "rnotes-progress-empty-200 / rnotes-progress-staged-200",
+      "rnotes-markviewed-fresh-200 + idempotent-second-200 (first-view-wins)",
+      "rnotes-markviewed-missing-note-404 (404 BEFORE the viewed table)",
+      "rnotes-markviewed-oversize-400 ('size must be between 0 and 80') + binding/classification cases (capture adjudicates)"
+    ]
+  },
+  "inertness_note": "the mount is INERT in the dual-run posture: the hub keeps routing the family to the core (surface pin core-only); V2_SURFACE_PREFIXES widens ONLY after the family's golden-verified surface (T-MIG-037 flip law)",
+  "next": "capture session (operator input per blockers) -> golden cases -> replay green -> surface widening -> card DONE"
+}
