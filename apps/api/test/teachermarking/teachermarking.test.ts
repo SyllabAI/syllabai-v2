@@ -178,7 +178,7 @@ function markAnswerRoutes(overrides: {
       match: /select id, validation_state from mark_schemes where question_version_id = \? and validation_state = \?/,
       rows: [{ id: SCHEME_ID, validation_state: "VALIDATED" }],
     },
-    { match: /from mark_scheme_points/, rows: POINT_ROWS },
+    { match: /from mark_points/, rows: POINT_ROWS },
     { match: /insert into smart_mark_results/, rows: [] },
     { match: /update answers set/, rows: [] },
     { match: /update attempts set marking_state/, rows: [] },
