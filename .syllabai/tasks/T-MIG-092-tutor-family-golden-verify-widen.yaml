@@ -3,7 +3,25 @@ task:
   id: T-MIG-092
   title: "T-MIG-092 - tutor family flip rider (operator order trace 1a11790a99a3cb19 'pick up the next flip rider (tutor family is the natural one)'): golden-verify the LANDED tutor SESSIONS wire (T-MIG-060 #104 t2 routes/tutorsessions.ts + T-MIG-070 #112 laws) against the live frozen core 6cad6ef, then widen V2_SURFACE_PREFIXES with the NARROW prefix /api/v1/tutor/sessions ONLY. /api/v1/tutor/ask + /ask/stream stay core-routed this band (v2 zero-key law: generation-reaching asks 503 tutor_unavailable on the dormant LLM seam; startsWith-safety forbids flipping an LLM surface the deployed v2 cannot serve)"
   owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) - operator direct order trace 1a11790a99a3cb19; claim-state check at filing: 0 open PRs, tip bd4eaeb, zero tutor-widen cards on main (census 083..091 = teacher/admin/llm families; 060/070 are DONE port cards, not flip riders), zero tutor claims in the repo worklog tail"
-  status: "IN_PROGRESS # claim-in-card per the 090 mount precedent; sequence = capture (run-001, live frozen core, learner-scoped, LLM-free legs only) -> golden-verify (run-002) -> narrow widen + routing pins -> gates -> PR"
+  status: "IN_PROGRESS # claim-in-card per the 090 mount precedent. PROGRESS OF RECORD: run-001 capture DONE (14 LLM-free legs vs live frozen core 6cad6ef94, all expected statuses; fixtures under golden-captures/t-mig-092/); run-002 golden-verify vs the live v2 deploy = 13/14 PASS, leg L06 FAIL -> REAL DEFECT (v2 500 on any non-empty sessions list; the array-as-one-wire-value law breach) -> defect band T-MIG-093 filed+claimed (fix + gates green first-hand). REMAINING SEQUENCE: 093 merge -> live deploy -> run-003 verify re-run -> ALL PASS -> narrow widen + routing pins -> gates -> PR (the flip law holds: widening stays gated on the family golden-verified surface)"
+  execution_record: >
+    (run-001 capture entry 2026-10-07T18:2xZ) 14-leg LLM-free matrix (sessions
+    CRUD + binding-time 400 + section-22 pre-flight 404; R-LLM excludes
+    valid-shape ask legs) against the live frozen core with a fresh
+    v2-registered probe learner (shared-secret token; seam verified closed
+    trace 1a1177d16bbd0a49). All 14 statuses on the mapped law pattern
+    (200/204/404/401/201/400/204/404). Write legs = probe-learner-owned
+    create+delete, net zero rows. Fixtures + uuid-map receipted.
+    (run-002 verify entry 2026-10-07T18:3xZ) Same matrix vs the live v2
+    deploy (DEVIATION of record: live-v2-as-target instead of the 082
+    local-neon-http boot - Neon creds not held in this session; the live
+    deploy IS the of-record mounted implementation). 13/14 PASS after the
+    comparator uuid-map direction fix (L05/L07/L08/L12 were comparator
+    artifacts, not defects). L06 = REAL: v2 500 vs core 200 on the non-empty
+    list -> T-MIG-093 defect band (root cause: `in ${ids}` array-as-one-param
+    wire law breach; fix = submit.ts :383 scalar-param law + construction
+    pins; kg-retriever same-class instances disclosed as a register item).
+    The verify receipt is honest of record: verdict FAIL is the gate working.
   priority: P1
   wave: "flip-riders # per-family golden-verify/widen band (T-MIG-082 Wave-S3 precedent, 61768fc)"
   deps: [T-MIG-060, T-MIG-070]

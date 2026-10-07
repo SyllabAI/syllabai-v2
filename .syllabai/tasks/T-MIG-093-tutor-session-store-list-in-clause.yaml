@@ -1,0 +1,21 @@
+version: 1
+task:
+  id: T-MIG-093
+  title: "T-MIG-093 - tutor session-store list defect band (filed from the T-MIG-092 golden-verify gate): GET /api/v1/tutor/sessions 500s on ANY non-empty list on the live v2 deploy — where session_id in ${ids} binds the whole JS array as ONE wire value ($1), a syntax/type error on the Neon WebSocket wire; core serves 200 [summary]. Fix = the submit.ts :383 scalar-param IN law at dynamic length (inList helper, per-element $n binding) + the construction pinned at the fakeSql adapter boundary. Empty list was masked (early return) and the fakeSql seam cannot expose driver binding semantics — the exact fake-vs-real class the per-family golden-verify gate exists to catch"
+  owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) - self-filed from the r0 golden-verify gate on the T-MIG-092 rider (operator order trace 1a11790a99a3cb19); claim-in-card, single-lane evidence chain run-001 capture -> run-002 verify FAIL -> this band"
+  status: "IN_PROGRESS # fix implemented + gate spine green first-hand (typecheck x4 exit 0; 1719/0/13skip/6722/89f = baseline 6715 +7 pin expects; selftest OK; hub 36/0/306 EXACT); wire proof = live golden-verify re-run AFTER merge+deploy (T-MIG-092 run-003), then the 092 narrow widen rides"
+  priority: P1
+  wave: "defect-band # the 070 precedent class: restore the frozen wire law the gate filed against the landed surface"
+  deps: [T-MIG-060, T-MIG-092]
+  scope:
+    allowed:
+      - "apps/api/src/services/tutor/session-store.ts (inList helper + the TWO list() call sites only)"
+      - "apps/api/test/tutor/tutor-routes.test.ts (the list pin rewrite + construction-law assertions)"
+      - "golden-captures/t-mig-092/** + .syllabai/receipts/T-MIG-092/** (the 092 capture/verify evidence chain this band discharges)"
+      - ".syllabai/tasks/T-MIG-092-tutor-family-golden-verify-widen.yaml (execution_record update ONLY - the run-002 verdict + this band linkage)"
+      - ".syllabai/tasks/T-MIG-093-tutor-session-store-list-in-clause.yaml (this yaml)"
+      - ".syllabai/worklog.md (append-only)"
+    forbidden:
+      - "services/tutor/kg-retriever.ts (REGISTER ITEM, same-class latent: 3x `in ${ids}`-shaped array bindings at lines ~100/118/145 — unreachable on the live zero-key deploy behind the dormant LLM seam; own band with its own pins, NOT this fence)"
+      - "golden/** corpus; apps/hub/**; packages/db/** (the adapter/toQuery layer is CORRECT per its own contract — the call site violated the wire law); other families; force-push; self-merge of this PR"
+      - "V2_SURFACE_PREFIXES widening (stays gated on the post-merge live golden-verify ALL PASS per the flip law)"

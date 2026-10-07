@@ -1,0 +1,49 @@
+{
+ "card": "T-MIG-093",
+ "receipt": "run-001-defect-r0",
+ "lane": "r0",
+ "created_at_utc": "2026-10-07T19:05:00Z",
+ "operator_trace": "1a11790a99a3cb19",
+ "defect": {
+  "surface": "GET /api/v1/tutor/sessions (learner-scoped list, s143)",
+  "wire_evidence": "T-MIG-092 run-002 leg L06: v2 (live deploy, main bd4eaeb) -> 500 {status, error:internal_error} vs frozen core 6cad6ef -> 200 [summary]; empty-list leg L13 200 (early-return mask)",
+  "v2_body_500": {
+   "status": 500,
+   "error": "internal_error",
+   "message": "an internal error occurred",
+   "timestamp": "2026-10-07T18:26:10.926Z"
+  },
+  "core_body_200": [
+   {
+    "courseRef": null,
+    "createdAt": "2026-10-07T18:23:52.264648Z",
+    "lastActiveAt": "2026-10-07T18:23:52.264648Z",
+    "sessionId": "410d7884-55ae-4014-9e54-f8043673dac6",
+    "title": null,
+    "turnCount": 0
+   }
+  ]
+ },
+ "root_cause": {
+  "file": "apps/api/src/services/tutor/session-store.ts list()",
+  "construction": "where session_id in ${ids} (whole JS array as ONE tagged param)",
+  "wire_law": "toQuery (services/identity/users.ts:142-150) -> text `... in $1 ...` values=[[...]] ; NeonWsClient (T-MIG-014 dispatch) binds values as scalars -> Postgres `uuid IN $1` = syntax/type error -> 500",
+  "proven_law": "services/assessment/submit.ts:383 binds EVERY element as its own scalar param (live-proven surface)",
+  "fake_vs_real": "fakeSql (learner helpers + tutor local) renders/matches template TEXT only - cannot expose driver binding semantics; the 060 route pins passed while the real wire 500'd; the per-family golden-verify gate caught it"
+ },
+ "fix": {
+  "shape": "module-local inList(prefix, ids, suffix) helper -> (strings, ...ids) spread; per-element $n, commas as template text; .raw attached for tagged-call parity",
+  "call_sites": "list() counts query + firstTurns query (only)",
+  "pin": "tutor-routes.test.ts list pin rewritten: construction text + per-element scalar assertions at the rowsFor boundary (no array ever crosses the seam)"
+ },
+ "register_item": {
+  "kg_retriever_same_class": "services/tutor/kg-retriever.ts ~lines 100/118/145 use the same `in ${ids}`-shaped array bindings - UNREACHABLE on the live zero-key deploy (dormant LLM seam) - own band with own pins, explicitly NOT this fence"
+ },
+ "gates_first_hand": {
+  "typecheck_x4": "exit 0",
+  "suite": "1719 pass / 0 fail / 13 skip / 6722 expect / 89 files (bd4eaeb baseline 6715 +7 pin expects)",
+  "golden_selftest": "OK",
+  "hub": "36 pass / 0 fail / 306 expect (EXACT baseline)"
+ },
+ "wire_proof_plan": "merge -> live deploy -> T-MIG-092 run-003 golden-verify re-run vs frozen core -> ALL PASS gates the 092 narrow widen (flip law)"
+}

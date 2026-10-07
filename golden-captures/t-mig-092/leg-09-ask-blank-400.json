@@ -1,0 +1,20 @@
+{
+ "auth": true,
+ "captured_at_utc": "2026-10-07T18:24:00Z",
+ "captured_from": "live frozen core syllabai-core.onrender.com (main 6cad6ef94)",
+ "leg": "L09",
+ "method": "POST",
+ "name": "ask-blank-400",
+ "path": "/api/v1/tutor/ask",
+ "request_body": {
+  "history": [],
+  "question": "   "
+ },
+ "response_body": {
+  "error": "validation_failed",
+  "message": "question: must not be blank",
+  "status": 400,
+  "timestamp": "2026-10-07T18:23:56.894282060Z"
+ },
+ "status": 400
+}
