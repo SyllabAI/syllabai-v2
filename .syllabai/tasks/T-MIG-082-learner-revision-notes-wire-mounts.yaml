@@ -1,0 +1,29 @@
+version: 1
+task:
+  id: T-MIG-082
+  title: 'T-MIG-082 - mount the learner revision-notes wire routes in v2 (5 endpoints under /api/v1/learners/me/revision-notes; r4b surface census 6450ff5; service PORTED 053-t3: services/revision-notes/**, contracts revision-notes.ts, 34 pins; hub calls YES - api.ts request() wrappers + 5 components, 46 refs)'
+  owner: '(unassigned - open for claim under earliest-claim-wins T-MIG-071; concurrency census clean at filing @ e5cd4b8: no mount/wire branches, 0 open PRs, no T-MIG-08x cards)'
+  status: 'OPEN # r3a round-30 filing: mount band per r4b surface census 6450ff5 (receipt censuses/2026-10-06-surface-coverage-r4b.json), operator mount order trace 1a114e1f1aab2521; sequence per r1c Task-33 gap-closure: capture Java wire truth from frozen core 6cad6ef (the 178-case corpus exercises NONE of this family) -> mount -> golden-verify -> widen V2_SURFACE_PREFIXES for this family (flip law: widening requires a new golden-verified surface)'
+  priority: P1
+  wave: s2-wire-layer
+  deps: []
+  endpoints:
+  - GET /api/v1/learners/me/revision-notes
+  - GET /api/v1/learners/me/revision-notes/{noteId}
+  - GET /api/v1/learners/me/revision-notes/assets/{filename}
+  - GET /api/v1/learners/me/revision-notes/progress
+  - POST /api/v1/learners/me/revision-notes/progress/views
+  service_status: ported (053 t3); route mount deferred by the 053 tranche doctrine
+  hub_calls: YES - 46 refs across 5 components
+  scope:
+    allowed:
+    - apps/api/src/routes/** (this family wire routes) + apps/api/src/index.ts (mount lines)
+    - service-layer port for this family IF the census marks it unported (frozen core 6cad6ef is the source of truth)
+    - golden fixtures captured from frozen core 6cad6ef for this family + family surface pins (api.v2-surface.test.ts extension)
+    - apps/hub/src/lib/api.ts V2_SURFACE_PREFIXES widening for THIS family only, gated on the family new golden-verified surface
+    - .syllabai/receipts/T-MIG-082/**; this yaml; .syllabai/worklog.md (append-only)
+    forbidden:
+    - V2_SURFACE_PREFIXES widening without this family new golden-verified surface (the flip law)
+    - the section-2 FULL flip (NEXT_PUBLIC_API_BASE_URL / NEXT_PUBLIC_API_V2_BASE_URL env changes, Vercel/Render/Neon production writes of any kind)
+    - other families mounts or surface edits; golden case edits outside captured family fixtures
+    - force-push; self-merge of this PR
