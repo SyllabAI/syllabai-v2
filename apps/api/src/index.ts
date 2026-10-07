@@ -58,6 +58,10 @@ import { buildClassroomRouters } from "./routes/classroom";
 import { buildResearchRouters } from "./routes/research";
 import { buildLearnerMeRouters } from "./routes/learnerme";
 import { buildLearnerKgRouters } from "./routes/learnerkg";
+import { buildRevisionNoteRouters } from "./routes/revisionnotes";
+import { buildCoverageRouters } from "./routes/coverage";
+import { buildClassKgRouters } from "./routes/classkg";
+import { buildConceptGraphRouters } from "./routes/conceptgraph";
 import { buildTutorRouters } from "./routes/tutor";
 import { buildClaRouters } from "./routes/cla";
 import { toErrorResponse, apiError } from "./services/identity/errors";
@@ -461,6 +465,48 @@ app.route("/api/v1/learners/me/intervention-runs", intervention.interventionRout
 // app-level wiring, shipped per the 010/020/021/031/032/041/052/061
 // precedent so R0 can ratify or lift them out at review.
 app.route("/api/v1/research", research.researchRoute);
+
+// Wire-mounts band (T-MIG-082 tranche A — Wave 8, R0-integrator). Path
+// parity with the frozen core (syllabai-core @ 6cad6ef) — the four routers
+// the r4b surface-coverage census (6450ff5) found unmounted, each owning
+// EXACTLY its URL space (the 079 first-match-wins per-router law; the
+// /api/v1/* fallback below stays the 404-after-auth path for NO router
+// claimed):
+//   learnerRouter   @ /api/v1/learners/me/revision-notes  (5 GET/POST — the
+//                   RevisionNoteLearnerController :26-68 law)
+//   adminRoute      @ /api/v1/admin/revision-notes        (POST /ingest
+//                   multipart + GET /status — the ADMIN gate, the sme.ts
+//                   :63 shell; the ingest service runs parse+validate
+//                   BEFORE the transaction, replace-all inside ONE tx)
+//   coverageRoute   @ /api/v1/teacher/classes (/:classId/coverage…)  (the
+//                   TeachingCoverageController :60-160 law — the full
+//                   fail-closed gate chain + the idempotent re-mark)
+//   classKgRoute    @ /api/v1/teacher/classes (/:classId/knowledge-graph…)
+//                   (the ClassKnowledgeGraphController :57-112 law — the
+//                   §17 ENABLED-member 404 short-circuit)
+//   conceptGraphRoute @ /api/v1/teacher/concept-graph     (POST /activate
+//                   200-not-201 + GET /edges — the TeacherConceptGraph-
+//                   Controller :58-96 law)
+// TEACHER/ADMIN + ADMIN gates are the routers' own (requireRole, the
+// classroom.ts :254 / sme.ts :63 precedents); the services are the 053/043
+// lanes' ports consumed AS-IS — zero service edits in this band.
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-082, R0 ratification requested):
+// T-MIG-082's scope.allowed covers routes/revisionnotes.ts, routes/
+// coverage.ts, routes/classkg.ts, routes/conceptgraph.ts, apps/api/test/**
+// — NOT this file. The four imports + constructions + mount lines + this
+// comment are the minimal app-level wiring, shipped per the
+// 010/020/021/030/032/033/041/043/061/062/079 precedent so R0 can ratify
+// or lift them out at review.
+const revisionNotes = buildRevisionNoteRouters();
+app.route("/api/v1/learners/me/revision-notes", revisionNotes.learnerRoute);
+app.route("/api/v1/admin/revision-notes", revisionNotes.adminRoute);
+const coverage = buildCoverageRouters();
+app.route("/api/v1/teacher/classes", coverage.coverageRoute);
+const classKg = buildClassKgRouters();
+app.route("/api/v1/teacher/classes", classKg.classKgRoute);
+const conceptGraph = buildConceptGraphRouters();
+app.route("/api/v1/teacher/concept-graph", conceptGraph.conceptGraphRoute);
 
 // anyRequest().authenticated() parity for paths NO router claimed
 // (SecurityConfig.java:91): anonymous callers get the 401 Boot-shaped body;
