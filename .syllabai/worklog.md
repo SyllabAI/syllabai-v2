@@ -4808,3 +4808,21 @@ Work Log:
 Stage Summary:
 - Receipt: .syllabai/receipts/censuses/2026-10-06-surface-coverage-r4b.json. Zero code contact; .syllabai-only; fetch-first direct-main.
 - RECOMMENDED REGISTER ACTION for the desk: file a mount-the-deferred-routes band (or per-family bands) before any §2 cutover; hub table widening rides each family's golden verification.
+---
+Task ID: 32
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)
+Task: Operator trace 1a114d5d2c53d8c5 "The entire point of the migration was that we will not be dependent on Render?" — architecture-of-record answer to the Render-dependence challenge (follow-on to Task-31's neon/login diagnostic).
+
+Work Log:
+- Fetch-first census: tip moved 8cb2316 -> 6450ff5 (r4b surface-coverage census @ 05:25:10Z, operator trace 1a114c788059e5fd) — read before answering; no collisions.
+- ARCHITECTURE OF RECORD (the answer): Render-independence is the §2 END-STATE and it is sequenced by the strangler-fig law (T-MIG-011, MIGRATION_PLAN §4.4; apps/hub/src/lib/api.ts:114-162): a hub surface flips to the v2 API only when its route is mounted AND golden-verified (V2_SURFACE_PREFIXES, currently 6 families incl. /api/v1/auth); the Java core keeps serving everything else and remains the §7 one-env-var rollback lever until the last family flips. Removing NEXT_PUBLIC_API_BASE_URL reverts the whole app to the core in one redeploy — the design never hard-couples to Render, it pivots on it.
+- WHY RENDER IS STILL IN THE LOOP TODAY (two compounding facts, both of record):
+  (1) The v2 API is NOT deployed to prod — account census: none of the 6 in-scope Vercel projects serves apps/api; the Neon connection (packages/db DATABASE_URL) belongs to apps/api, and ADR-029 removed the hub's neon provider at promotion ("a production frontend must not bypass the core domain layer and touch a database directly"; hub modes are mock | core-api only, data/index.ts) — so no prod service touches Neon today.
+  (2) r4b @ 6450ff5: service layer 100% ported, WIRE layer NOT — 30 core endpoints in 10 families unmounted (revision-notes x7, KnowledgeController x4, TeacherConceptGraph x2, ClassKG x3, TeachingCoverage x3, Content-teacher x5, glm-ocr x2, chain-health x1, teacher exam-series x1, subjects/tree x2); a §2 FULL flip executed today would 404 hub-emitted paths in those families — flip unsafe of record.
+- Consequence for the Task-30 deployment: NEXT_PUBLIC_API_BASE_URL=Render core + V2 base unset -> 100% of hub traffic (auth included) rides the legacy core; HUB_DATA_MODE=mock covers bundled-corpus reads only; auth is core-backed always. Login failure root cause stands (Task-31): Render free-tier cold start.
+- FRESH EVIDENCE (read-only probes @ 05:34Z, scripts/probe-render-dep-1a114d5d.sh): hub-v2 GET / 200-in-0.07s, GET /login 200-in-0.05s; Render core POST /api/v1/auth/login (bogus creds) 401 invalid_credentials in 0.43s (Java-genuine nanosecond timestamp) — core WARM; Vercel env census on prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl: exactly the 3 public vars (NEXT_PUBLIC_API_BASE_URL, SYLLABAI_CORE_BASE_URL, HUB_DATA_MODE), NEXT_PUBLIC_API_V2_BASE_URL absent.
+- PATH OFF RENDER staged in two waves (of record, on operator order): Wave-A — deploy apps/api (§2 target host) with Neon DATABASE_URL + set NEXT_PUBLIC_API_V2_BASE_URL on the hub project -> the 6 golden-gated families incl. /api/v1/auth (login) go v2-native immediately; Render keeps serving only the unmounted families as rollback. Wave-B — mount the 30 deferred endpoints (r4b register recommendation: file mount bands), widen V2_SURFACE_PREFIXES family-by-family under golden gates, retire the core.
+- Operator-gated levers unchanged: §2 execution order (runbook §2 operator-only; lane zero-write on prod Neon), Neon credential provisioning (DATABASE_URL on file lane-local per Task-31 receipt, not printed), decay enablement (§3, still fail-closed).
+
+Stage Summary:
+- Answer of record: the migration has NOT re-coupled to Render — Render rides along today only because the v2 API is undeployed and the wire layer is 30 endpoints short of a safe flip; login leaves Render at Wave-A (v2 api + Neon + one env var), full retirement at Wave-B. Read-only probes, zero prod writes, no flip, no decay change.
