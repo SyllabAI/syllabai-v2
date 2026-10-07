@@ -4874,3 +4874,18 @@ Stage Summary:
 - Receipt: .syllabai/receipts/W7-SMOKE/run-001-lane-side-smoke-spine.json (41 steps, findings F-SMOKE-1..5 incl. §4 p95 posture baseline: login 2.7–3.2s, authenticated reads 0.7–1.5s, tutor first-byte 18.1s).
 - The §2.4 smoke is UNBLOCKED of record (hub-v2 serves; core warm); P3's lane-executable leg now has live evidence; formal P3 closure (operator-witnessed dual-run) + a sanctioned W5 teacher identity remain operator-side, as do P2 formal closure and P4 sign-off.
 - .syllabai-only, fetch-first direct-main (Task-20 precedent).
+---
+Task ID: R0-CRON-202610071430
+Agent: R0-auto (merge desk, Job 438940)
+Task: Periodic sweep 14:30 +08 — PR #132 intake + merge of record; #133 collision noted.
+
+Work Log:
+- PR #132 (t-mig-082/r4b, T-MIG-082..087 mount step: 19 pure route mounts + 75 pins): head 7deb905 -> 3dd32fa mid-sweep (r3a-band reconciliation: duplicate whole-band card dropped, 082-087 claimed per earliest-claim-wins, per-family receipts filed). Gates at 3dd32fa: hub+verify success; reviews/comments clean; files=22 no java, no outside-scope; mergeable dirty -> intake.
+- INTAKE: origin/main had moved da87d11 -> a650380 (r7a Task-34 smoke-spine receipt, .syllabai-only) during fetch; merged into branch at 6cabdba; single conflict .syllabai/worklog.md -> append-only chronological union resolver (r0_union_resolver.py; before=4846 head=14 main=16 after=1; both blocks verbatim, no markers, byte checks OK); task-yaml add/add auto-merged clean.
+- GATES at 6cabdba: bun install --frozen-lockfile OK (930 pkgs); typecheck x4 exit 0; bun test apps/api packages = 1631 ran / 1618 pass / 0 fail / 13 skip / 6375 expect / 86 files (EXACT match to PR claim); golden selftest OK.
+- Pushed 3dd32fa..6cabdba to t-mig-082/r4b (fast-forward, no force); CI re-green (hub+verify success); PUT merge -> merged=true, main @ 8a09ab2; main CI re-verified green (hub+verify success @ 06:37Z).
+- PR #133 (t-mig-082/r0, tranche A 15 endpoints / 5 families): CI 0 check-runs -> skipped per gate (b) both scans. Collision with #132 adjudicated of record by band filer r3a (trace 1a114fc6736523a1, PR comment 06:35Z): #132 = mount step of record for 082-087 (strict coverage superset); r0 granted tranche B (cards 088-091, unclaimed); #133 requested to withdraw the five-family mount code + duplicate band card per the 076 yield precedent (3ca373ff). Desk takes no action on #133 this round; recheck next sweep for author compliance (withdraw or retarget).
+- Housekeeping: shared local workspace remains stale+dirty at a945c20 (pre-existing, untouched) — bookkeeping via isolated worktree from 8a09ab2; intake worktree removed after push.
+
+Stage Summary:
+- MERGED: #132 -> main @ 8a09ab2 (1 of 2 merge budget). T-MIG-082..087 mount step of record; capture-pass + V2_SURFACE_PREFIXES widening sequence (r1c Task-33 law) remains the riders; §2 full flip still operator-gated. #133 open, adjudicated, awaiting author disposition. Zero force-pushes, zero self-merge (r4b/r3a work), fence clean.
