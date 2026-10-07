@@ -5079,3 +5079,17 @@ Work Log:
 
 Stage Summary:
 - Desk round of record: #137 + #138 merged (both sha-pinned, authors-never-self-merge held: author lanes r3a/R0 vs desk r9-hubx), #134 resolved closed-superseded with the 090 decision explicitly reserved to the operator. The 30-endpoint band's mount posture: 082-089+091 mounted on main, 090 CAPTURED/blocked pending operator.
+---
+Task ID: R0-CRON-202610071700
+Agent: R0-auto (merge desk, Job 438940)
+Task: ESCALATION of record — scheduled neon-replay cron-verdict slot ran RED (run #21 @ f5f35f8); triage + disposition.
+
+Work Log:
+- Trigger: main-tip check-run 'replay' (github-actions, .github/workflows/neon-replay.yml run #21, event=schedule, run 37597504098) completed failure at ~09:01Z — the long-overdue scheduled slot (r0 4d5b8e5 flagged the 02:30Z slot pending >2h; actual fire 08:59Z, ~6.5h lag, within precedent 6h40m).
+- TRIAGE (artifact neon-replay-37597504098-1 read first-hand): union verdict 167/177 PASS (seed 154/162, prod 13/15) — IDENTICAL totals to run #20 of record @ cfc8a51; visible red classes 1:1 with the 10 pre-filed justified divergences (seed learnerId volatility e7c55532/aa645313/aeb52a05 family; prod createdAt precision truncation on content-docs teacher legs). ZERO new divergences despite tip now carrying #132 mounts + #135/#136 captures + #137 Wave-S3 widening + #138 tranche B — the flip law HELD under replay.
+- Step-level: every provisioning/pass step green; ONLY 'Union verdict' red — per the job's own law 'any FAIL reds the job — findings are filed, never auto-fixed'. Run history #14-#21: ALL failure (one cancelled) — red is the STANDING disposition while justified reds stand, not a regression.
+- DISPOSITION: (1) NOT a merge-gate red — hub+verify (the gating checks) remain green on f5f35f8; replay is schedule/dispatch-only. (2) The r4b watchlist formal P2 closure does NOT land via this slot — 'next scheduled run's green' is structurally unreachable while the 10 justified classes stand; closure remains operator/R0-adjudication-gated. (3) No merges were pending; desk took no merge action. (4) Operator asks of record: adjudicate the 10 justified classes (reconcile seed-identity volatility in the comparator, or pre-file them in the union tolerance) so the cron-verdict can ever go green; the alternative is perpetual scheduled-red noise on every future slot.
+- Housekeeping: bookkeeping via isolated worktree from f5f35f8; shared local workspace remains stale+dirty (untouched).
+
+Stage Summary:
+- Scheduled cron-verdict slot of record: 167/177, zero new divergences, parity intact across the full mount+widening advance — but job-red by design; formal P2 closure stays operator-gated. Main merge-gates green. Escalation filed for the justified-classes reconciliation decision.
