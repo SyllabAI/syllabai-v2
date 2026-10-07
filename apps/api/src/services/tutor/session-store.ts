@@ -220,13 +220,13 @@ export function buildTutorSessionStore(sql: SqlFn, clock: Clock) {
       const counts = (await sql`
         select session_id, count(*) as n
         from tutor_session_turns
-        where session_id in ${ids}
+        where session_id = any(${ids}::uuid[])
         group by session_id`) as unknown as Array<{ session_id: string; n: string | number }>;
       const countBy = new Map(counts.map((r) => [r.session_id, Number(r.n)]));
       const firstTurns = (await sql`
         select session_id, role, content
         from tutor_session_turns
-        where session_id in ${ids} and seq = 1`) as unknown as Array<{
+        where session_id = any(${ids}::uuid[]) and seq = 1`) as unknown as Array<{
         session_id: string;
         role: string;
         content: string;

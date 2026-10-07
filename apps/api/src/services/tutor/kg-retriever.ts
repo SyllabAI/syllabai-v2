@@ -97,7 +97,7 @@ export function buildSqlKgGraph(sql: SqlFn): KgGraphPort {
         with recursive prereq as (
             select e.source_node_id as origin_id, e.target_node_id as node_id, 1 as depth
             from knowledge_edges e
-            where e.source_node_id in ${topicIds} and e.relation_type = 'REQUIRES_PREREQUISITE'
+            where e.source_node_id = any(${topicIds}::uuid[]) and e.relation_type = 'REQUIRES_PREREQUISITE'
           union
             select p.origin_id, e.target_node_id, p.depth + 1
             from knowledge_edges e
@@ -115,7 +115,7 @@ export function buildSqlKgGraph(sql: SqlFn): KgGraphPort {
       if (rows.length === 0) return new Map();
       const prereqIds = [...new Set(rows.map((r) => r.node_id))];
       const nodeRows = (await sql`
-        select id, title from knowledge_nodes where id in ${prereqIds}`) as unknown as Array<{
+        select id, title from knowledge_nodes where id = any(${prereqIds}::uuid[])`) as unknown as Array<{
         id: string;
         title: string;
       }>;
@@ -142,7 +142,7 @@ export function buildSqlKgGraph(sql: SqlFn): KgGraphPort {
         from knowledge_edges e
         join knowledge_nodes n on n.id = e.source_node_id
         where e.relation_type = 'MISCONCEPTION_OF'
-          and e.target_node_id in ${topicIds}
+          and e.target_node_id = any(${topicIds}::uuid[])
         order by e.target_node_id, n.title`) as unknown as Array<{
         topic_id: string;
         id: string;
