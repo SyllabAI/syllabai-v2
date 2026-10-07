@@ -4747,3 +4747,19 @@ Work Log:
 
 Stage Summary:
 - Formal P0 escalation filed of record: hub hard-down ~2.5h with zero recovery and no operator response visible; rollback lever unverifiable from lane (was GO at 19:34Z); decay enablement must hold; operator triage requested per the four asks above. Desk returns to sweep posture; queue 0.
+
+---
+Task ID: R0-CRON-FLIP-CHECK-1
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: operator check — the next cron verdict for the T-MIG-081 watchlist 4/4 flip (trace 1a114a33f8fd8a05)
+
+Work Log:
+- CRON STATE (API first-hand, 04:34-04:40Z 2026-10-07): scheduled neon-replay runs of record total=1 — the 2026-10-07 02:30Z slot has NOT fired (>2h overdue). Precedent: the 10-06 02:30Z slot fired 6h40m late (09:10:13Z, run 37441112330 @ e9ef235 — GitHub schedule-queue lag); GitHub may also silently drop slots under queue pressure (no backfill). The NEXT CRON VERDICT IS PENDING, not failed: workflow state=active, cron "30 2 * * *" unchanged since T-MIG-044 (6979aff).
+- SCOPE DECOUPLING: the neon-replay cron is CI-side (per-run COW Neon branches, strict read-only posture) and does NOT ride the production hub — the P0 hub hard-down neither blocks nor explains its absence; the 02:00 UTC decay cron that rides the hub project is a different instrument (and must stay disabled until hub-200 per the standing escalation).
+- 4/4 FLIP FIRST-HAND (run 37497521056 "run #20", workflow_dispatch @ cfc8a51 16:40:14Z, artifact 11427449887): per-case seed.json records all four watchlist targets pass:true — w4-agenda-malformed-bearer-401 PASS + w4-state-empty-bearer-401 PASS (learner-me pair, #121 fix), curriculum-subject-bad-uuid-400 PASS + curriculum-subject-unknown-404 PASS (curriculum pair, #124 re-pin 94393d2, ancestor-verified below cfc8a51). The run's 10 reds = 8 seed per-run-identity volatility + 2 prod createdAt precision — zero target cases, zero new classes.
+- THEREFORE: the w7-p2 receipt (00f96f3) adjudication "081 4/4 flip holds at the tip" is corroborated first-hand from the artifact bytes; the r3a round-28 reopen-flag's evidentiary basis (run #20 red) never touched the flip pair. The formal cron confirmation remains outstanding purely as the scheduled-instrument formality.
+- NEXT CHECK: re-poll /actions/runs?event=schedule after ~09:00Z (lag-adjusted window); if no scheduled run by ~12:00Z, treat the 10-07 slot as dropped and either accept run #20 as the closing evidence of record or route an operator workflow_dispatch re-proof (the standing manual path).
+- BOUNDARY: read-only API GETs + artifact download to workspace only; zero prod writes; .syllabai/worklog.md-only append in an isolated worktree off origin/main ef0055f (the shared checkout at work/syllabai-v2 left untouched — its 1513-file diff is 0 insertions/0 deletions mode-noise, no content change); no force.
+
+Stage Summary:
+- The 4/4 flip is empirically closed at the tip (run #20 artifact first-hand: all four targets pass:true at cfc8a51, post-#121 + post-#124); the next cron verdict is PENDING (10-07 02:30Z slot >2h overdue; lag precedent 6h40m; drop-risk noted) — watchlist formal closure lands on the next scheduled run's green, or by operator acceptance of run #20 as closing evidence.
