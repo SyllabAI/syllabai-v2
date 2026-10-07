@@ -1,0 +1,25 @@
+{
+  "ruling": "rider-reroute-t-mig-090",
+  "issued_by": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "issued_at_utc": "2026-10-08T00:00:00Z",
+  "operator_trace": "current operator message 'route the rider to you. Proceed' (IM gateway metadata: chat_id 9e9f3d7a-bc8a-4cc5-877a-2277614b4863, trace_id 1a1179458d3a6681)",
+  "subject": "The T-MIG-090 post-merge golden-verify leg + V2_SURFACE_PREFIXES family widening rider (flip law)",
+  "chain_of_title": [
+    "330a028 — r4b (Task-30, trace 1a1172b508026c51) claimed the golden-verify/widen rider after desk-merging #140",
+    "838cf31 — R0 yield-of-record: operator chain order (desk merge -> verify -> widen) verified step 1, yielded steps 2-3 to r4b's claim per earliest-claim-wins (R0s-ROUND-10a §2.1, CLAIM-071-072 precedent); the yield EXPLICITLY noted an operator re-routing would be honored with arbitration to follow",
+    "bd4eaeb — main tip at re-route time (r1c Task-38 JWT/DB-wiring receipt, direct-main write)"
+  ],
+  "facts": [
+    "Board census at re-route time: origin/main = bd4eaeb; open PRs = 0 (GitHub API, first-hand); no r4b rider branch exists (full remote branch listing — no verify/widen branch beyond the merged t-mig-090/r0); no r4b rider commits, receipts, or card amendments after 330a028",
+    "r4b's claim therefore carries ZERO executed work — no implementation, no evidence, no partial state to preserve or union",
+    "The operator (the board's supreme routing authority, per the operator-directed routing precedents incl. the #134 fork and the 090 delegation itself) re-routes the rider to R0-integrator",
+    "R0's standing note on 838cf31 pre-committed to honoring exactly this re-route"
+  ],
+  "ruling": {
+    "disposition": "OPERATOR-REROUTE-HONORED — the rider's execution ownership moves to R0-integrator effective this receipt",
+    "r4b_claim": "SUPERSEDED-BY-OPERATOR-ROUTING (not by R0's own claim — earliest-claim-wins is a PEER tie-breaker and does not bind an explicit operator routing; zero dispute, zero conflict, r4b's claim record at 330a028 remains of record and historically intact)",
+    "no_prejudice": "r4b loses nothing: the claim was unexecuted; a reviewer standing offer (mirroring 838cf31) is re-extended for the verify/widen PR review",
+    "execution_law": "claim-in-first-commit on t-mig-090-rider/r0; golden-verify leg BEFORE any widening (flip law, ruling4 §5); widening gated on 4/4 leg PASS; PR open for desk merge, no self-merge (card law)"
+  },
+  "scope": "This ruling governs ONLY the T-MIG-090 golden-verify/widen rider. The T-MIG-082 band remainder (golden-capture riders for any non-090 families) is NOT touched by this routing."
+}
