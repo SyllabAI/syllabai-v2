@@ -1,0 +1,121 @@
+{
+ "card": "T-MIG-082",
+ "consistency_checks": [
+  "asset body 36775B == revision_note_asset.size_bytes 36775 (cross-substrate exact)",
+  "self-minted token accepted first probe (200) \u2014 JWT law reconstruction exact",
+  "404 envelope: {error:not_found, message:\"revision note <id> not found\", status:404, timestamp}",
+  "asset law: stored content-type image/png + cache-control \"max-age=3600, private\"",
+  "index shape: {corpusVersion, ingestedAt, topics, viewed}; progress fresh-learner {\"viewed\":[]}"
+ ],
+ "created_at_utc": "2026-10-07T06:32:17Z",
+ "fixtures": [
+  {
+   "bytes": 1148,
+   "file": "leg-01-index-401-negative.json",
+   "sha256": "bbfaf49dee64e4510ea0896a8c675161c2a7910ea2752687f7d806047bd318d0"
+  },
+  {
+   "bytes": 27659,
+   "file": "leg-02-index-200.json",
+   "sha256": "e52ebbd551f1fa1ad443ff345035232fb6c5b4432ad9eb6d9f20a38e388b7c82"
+  },
+  {
+   "bytes": 3840,
+   "file": "leg-03-body-200.json",
+   "sha256": "8d3492c8e8ebc9e4c4887cf816f935f32e04ed52e143244f3cd031980a3f7922"
+  },
+  {
+   "bytes": 1240,
+   "file": "leg-04-body-404-negative.json",
+   "sha256": "ed85a1f82d605707041d27ed217acd944935137b02fbb1fb07bcbbb751248e1b"
+  },
+  {
+   "bytes": 1008,
+   "file": "leg-05-progress-200.json",
+   "sha256": "2b574b9f894612de4fe5f5be6163f162dba10676931e0ddec3fdbca8ae1eacac"
+  },
+  {
+   "bytes": 1211,
+   "file": "leg-06-asset-200.json",
+   "sha256": "43258e89a3a46bc16ca0bed51b8b094951eb9676fa9ca3393168ab94a6cf6cc1"
+  },
+  {
+   "bytes": 1234,
+   "file": "leg-07-asset-404-negative.json",
+   "sha256": "7e872011efa565795104f101bb79bffeecee58473f2e55315566521e11503427"
+  }
+ ],
+ "lane": "r3a",
+ "legs": [
+  {
+   "fixture": "leg-01-index-401-negative.json",
+   "method": "GET",
+   "path": "/api/v1/learners/me/revision-notes",
+   "response_bytes": 1148,
+   "status": 401
+  },
+  {
+   "fixture": "leg-02-index-200.json",
+   "method": "GET",
+   "path": "/api/v1/learners/me/revision-notes",
+   "response_bytes": 27659,
+   "status": 200
+  },
+  {
+   "fixture": "leg-03-body-200.json",
+   "method": "GET",
+   "path": "/api/v1/learners/me/revision-notes/rn_TWGVV6RXN3Ktqb9h",
+   "response_bytes": 3840,
+   "status": 200
+  },
+  {
+   "fixture": "leg-04-body-404-negative.json",
+   "method": "GET",
+   "path": "/api/v1/learners/me/revision-notes/rn_doesnotexist00000000000",
+   "response_bytes": 1240,
+   "status": 404
+  },
+  {
+   "fixture": "leg-05-progress-200.json",
+   "method": "GET",
+   "path": "/api/v1/learners/me/revision-notes/progress",
+   "response_bytes": 1008,
+   "status": 200
+  },
+  {
+   "fixture": "leg-06-asset-200.json",
+   "method": "GET",
+   "path": "/api/v1/learners/me/revision-notes/assets/0093b0722e85-2-7-9-preparation-of-leadiisulfate-4.png",
+   "response_bytes": 1211,
+   "status": 200
+  },
+  {
+   "fixture": "leg-07-asset-404-negative.json",
+   "method": "GET",
+   "path": "/api/v1/learners/me/revision-notes/assets/no-such-file.png",
+   "response_bytes": 1234,
+   "status": 404
+  }
+ ],
+ "neon_control_plane": "api.neon.tech DNS-unresolvable from this sandbox (4 retries + DoH) \u2014 COW branch creation NOT executable lane-side; write leg remains operator-gated.",
+ "operator_trace": "1a114fc6736523a1 (render+neon PAT order: use it if needed)",
+ "provenance": {
+  "ancestry_note": "syllabai-core main tip == 6cad6ef94 @ 2026-10-04T13:02:40Z, therefore the auto-deployed live wire is the frozen wire. campaign_db_identity.core_commit=3a0f1b5 is a stale claim-time artifact (row claimed_at 2026-09-13, only last_seen refreshes); 3a0f1b5 is 425 commits BEHIND 6cad6ef (compare API, status=behind, ahead_by=0). Residual caveat recorded.",
+  "discipline": "GET-only legs. The write leg (POST /progress/views, markViewed-204) is INTENTIONALLY ABSENT: it mutates revision_note_viewed and stays COW-blocked of record.",
+  "frozen_ref": "6cad6ef94 (syllabai-core frozen capture ref)",
+  "identity": "first enabled STUDENT by created_at; uuid/email redacted in fixtures; token NEVER persisted",
+  "jwt_law_reconstruction": "HS256, key = raw SYLLABAI_JWT_SECRET bytes (JwtService.keys.hmacShaKeyFor); claims sub=email, jti+uid=user uuid, ver=users.token_version (fail-closed filter check), roles=[names], iat/exp TTL PT2H. Source of law: JwtService.java + JwtAuthenticationFilter.java @ 6cad6ef94, sha-verified blob fetches.",
+  "live_core": "https://syllabai-core.onrender.com (Render srv-dagijie7bikc73bc0460, autoDeploy from SyllabAI/syllabai-core main)"
+ },
+ "receipt": "run-002-capture-r3a",
+ "substrate": {
+  "enabled_roles": {
+   "ADMIN": 1,
+   "STUDENT": 323,
+   "TEACHER": 5
+  },
+  "revision_note_asset_rows": 194,
+  "revision_note_rows": 112,
+  "revision_note_viewed_rows": 31
+ }
+}
