@@ -1,0 +1,17 @@
+{
+  "task": "OPERATOR-DIRECTIVE-LLM-CHAIN-REAL-ADAPTERS",
+  "operator_trace": "1a117913519cd141",
+  "directive": "① land the LLM-chain real adapters + SYLLABAI_LLM_* env (unblocks Tutor/Smart-Mark/CLA/transcription at once)",
+  "lane": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "claimed_at": "2026-10-08T03:20:00Z",
+  "branch": "w0a/llm-chain-real-adapters",
+  "base": "5839c11f9923195369b6bf7e388069cb80f8ad48",
+  "claim_type": "operator-directive commission of the wave-3 LLM-chain lane surface (ADR-023 adapter construction); no register card existed for the adapter landing — T-MIG-090 covers the chain-health observability wire only",
+  "scope": [
+    "apps/api/src/services/llmchain/** (real provider adapters: groq/openrouter OpenAI-compatible + gemini vision member; request shape temp/maxTokens/media/reasoningEffort; media routing; chain.stream failover law; port bridges)",
+    "apps/api/src/routes/{tutor,cla,smartmark,answer-input,llmadmin}.ts + src/index.ts (composition wiring, one chain, disclosed out-of-fence)",
+    "apps/api/test/llmchain/** (deterministic fake-fetch tests); test/llmadmin/routes.test.ts (2 dormant-seam pins amended of record, golden leg-04 untouched)",
+    "docs/adr/ADR-MIG-0002-llm-chain-real-adapters.md; .syllabai/receipts/LLM-CHAIN/**; .syllabai/worklog.md (append-only)"
+  ],
+  "coordination": "earliest-claim-wins per AGENT_COORDINATION §2; T-MIG-092 (r0, tutor sessions wire) is complementary and untouched by this lane"
+}
