@@ -76,7 +76,13 @@ export function createLlmAdminRouter(chain: FailoverLlmChain): Hono {
  *     const llmadmin = buildLlmAdminRouters();
  *     app.route("/api/v1/admin/llm", llmadmin.llmAdminRoute);
  */
-export function buildLlmAdminRouters(env: Record<string, string | undefined> = process.env) {
-  const chain = buildLlmChain(env);
+export function buildLlmAdminRouters(
+  env: Record<string, string | undefined> = process.env,
+  shared?: FailoverLlmChain,
+) {
+  // the composition root passes the ONE chain of record (health counters,
+  // cooldowns and budgets are per-chain state — five separate chains would
+  // fragment the observability the report exists for)
+  const chain = shared ?? buildLlmChain(env);
   return { chain, llmAdminRoute: createLlmAdminRouter(chain) };
 }
