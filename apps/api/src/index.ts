@@ -60,6 +60,10 @@ import { buildLearnerMeRouters } from "./routes/learnerme";
 import { buildLearnerKgRouters } from "./routes/learnerkg";
 import { buildTutorRouters } from "./routes/tutor";
 import { buildClaRouters } from "./routes/cla";
+import { buildRevisionNotesRouters } from "./routes/revisionnotes";
+import { buildKnowledgeFamilyRouters } from "./routes/knowledgefamily";
+import { buildTeacherCoverageRouters } from "./routes/teacher-coverage";
+import { buildTeacherContentMethodsRouters } from "./routes/teacher-content-methods";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
@@ -84,6 +88,12 @@ const sme = buildSmeRouters();
 const intervention = buildInterventionRouters();
 const classroom = buildClassroomRouters();
 const research = buildResearchRouters();
+// T-MIG-082..088 mount band (r1c integration — see the mount-site comment
+// below for scope, seam disclosures, and the R0 ratification request).
+const revisionNotes = buildRevisionNotesRouters();
+const knowledgeFamily = buildKnowledgeFamilyRouters();
+const teacherCoverage = buildTeacherCoverageRouters();
+const teacherContentMethods = buildTeacherContentMethodsRouters();
 
 const app = new Hono();
 
@@ -427,6 +437,38 @@ app.route("/api/v1/learners/me/cla", cla.claRoute);
 app.route("/api/v1/teacher/classes", classroom.teacherClassesRoute);
 app.route("/api/v1/learners/me/classroom", classroom.learnerClassroomRoute);
 app.route("/api/v1/teacher/learners", classroom.teacherRosterRoute);
+
+// T-MIG-082..088 mount band (r1c integration) — the deferred wire routes from
+// the r4b surface-coverage census (cards 082..091 filed by r3a PR #131),
+// mounted on operator order trace 1a114e45f09db04d "Fix the 30 endpoints".
+// Service-backed 200s: learner+admin revision-notes (082/083, 053 t3
+// services), KnowledgeController tree (084), TeacherConceptGraph (085, 053
+// t2), ClassKG students/learner-graph (086, 053 t1/t2), TeachingCoverage
+// (087, 053 t2). Honest 501 seams inside teacher-content-methods (088):
+// POST questions/{id}/topics + enumerate + enumerate/structured + fetch —
+// the frozen ContentController wire truth is un-captured (the 178-case
+// corpus exercises none of this family) and no service logic exists in-tree;
+// the seams are replaced when the capture pass lands (never a silent wrong
+// answer). GET questions/{id}/topics stays on the T-MIG-020 mount (first-
+// registered wins; the seam re-verified it). Registration AFTER the classroom
+// trio per the router-hygiene pin (same-base sub-routers must not precede
+// the 1/2-segment class CRUD forms).
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-082..088, R0 ratification requested): the
+// cards cover routes/revisionnotes.ts, routes/knowledgefamily.ts,
+// routes/teacher-coverage.ts, routes/teacher-content-methods.ts and their
+// test/ trees — NOT this file. The imports + constructions + mount lines +
+// this comment are the minimal app-level wiring, shipped per the
+// T-MIG-010/016/020/021/030/032/033/034/041/043/052/061/062 precedent so R0
+// can ratify or lift them out at review.
+app.route("/api/v1/learners/me/revision-notes", revisionNotes.learnerRoute);
+app.route("/api/v1/admin/revision-notes", revisionNotes.adminRoute);
+app.route("/api/v1/knowledge", knowledgeFamily.knowledgeRoute);
+app.route("/api/v1/teacher/concept-graph", knowledgeFamily.conceptGraphRoute);
+app.route("/api/v1/teacher/classes", knowledgeFamily.classKgRoute);
+app.route("/api/v1/teacher/class", knowledgeFamily.classDrillDownRoute);
+app.route("/api/v1/teacher/classes", teacherCoverage.teacherCoverageRoute);
+app.route("/api/v1/teacher/content", teacherContentMethods.teacherContentMethodsRoute);
 
 // Intervention-run router (T-MIG-061 tranche 2 — Wave 6). Path parity with the
 // frozen core: InterventionRunController under /api/v1/learners/me
