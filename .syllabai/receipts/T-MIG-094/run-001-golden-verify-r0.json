@@ -1,0 +1,773 @@
+{
+ "card": "T-MIG-094",
+ "receipt": "run-001-golden-verify-r0",
+ "lane": "r0",
+ "created_at_utc": "2026-10-07T20:01:38Z",
+ "operator_trace": "1a117ee8fb5b520d (flip queue: CLA, learner-me heart, teacher surfaces)",
+ "method": "T-MIG-092 run-003 pattern: 18-leg LLM-free matrix dual-replayed LIVE against the frozen core (6cad6ef94 autoDeploy identity, re-verified same-day of record) and the live v2 deploy (dpl_5VuNMyfq5vknZSEsMkyFrUCgmcbL = main ec3bb4c content; main has advanced only by .syllabai/hub flip-table content since — zero api/packages changes). One fresh v2-registered probe learner (shared-secret token, seam closed of record; token never persisted, email redacted). Normalization: Boot envelope timestamp key dropped + ISO timestamps -> <TS>; uuid-map machinery unused (no create-201 legs — all writes ride error wires by design; the 201/204 write wires carry the mounts' unit pins, disclosed). NO field widening.",
+ "verdict": "FAIL",
+ "legs": [
+  {
+   "leg": "L01",
+   "name": "agenda-empty",
+   "method": "GET",
+   "path": "/api/v1/learners/me/agenda",
+   "core_status": 200,
+   "v2_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "actions": null,
+    "asOf": "<TS>",
+    "assignments": [
+     {
+      "assignment": {
+       "classId": null,
+       "courseLabel": "IGCSE Chemistry",
+       "courseSlug": "igcse-chemistry-19",
+       "createdAt": "<TS>",
+       "dueAt": "<TS>",
+       "id": "50c9c01e-27ec-46a0-b7fe-7a9955a12da1",
+       "marksTotal": 10,
+       "questionCount": 5,
+       "specRefs": [
+        "4CH1-S1-a"
+       ],
+       "status": "open",
+       "title": "probe late asprobe_1790628651"
+      },
+      "mySubmission": null
+     },
+     {
+      "assignment": {
+       "classId": null,
+       "courseLabel": "Chemistry",
+       "courseSlug": "igcse-chemistry-19",
+       "createdAt": "<TS>",
+       "dueAt": "<TS>",
+       "id": "a79a8959-79a5-4d7e-8e3a-2db569eb58c5",
+       "marksTotal": 44,
+       "questionCount": 21,
+       "specRefs": [
+        "4CH1-S1-h",
+        "4CH1-S2-d",
+        "4CH1-S4-g"
+       ],
+       "status": "open",
+       "title": "Chemistry - Targeted Practice"
+      },
+      "mySubmission": null
+     },
+     {
+      "assignment": {
+       "classId": null,
+       "courseLabel": "IGCSE Chemistry",
+       "courseSlug": "igcse-chemistry-19",
+       "createdAt": "<TS>",
+       "dueAt": "<TS>",
+       "id": "d9c37935-332d-4732-a9cb-0f2d74442adc",
+       "marksTotal": 10,
+       "questionCount": 5,
+       "specRefs": [
+        "4CH1-S1-a",
+        "4CH1-S2-a"
+       ],
+       "status": "open",
+       "title": "probe assignment asprobe_1790628651"
+      },
+      "mySubmission": null
+     }
+    ],
+    "dueReviews": [],
+    "examTargets": [],
+    "learnerId": "f8bee186-7e7c-4e77-ac9a-2c124e871507"
+   },
+   "v2_body": {
+    "actions": null,
+    "asOf": "<TS>",
+    "assignments": [
+     {
+      "assignment": {
+       "classId": null,
+       "courseLabel": "IGCSE Chemistry",
+       "courseSlug": "igcse-chemistry-19",
+       "createdAt": "<TS>",
+       "dueAt": "<TS>",
+       "id": "50c9c01e-27ec-46a0-b7fe-7a9955a12da1",
+       "marksTotal": 10,
+       "questionCount": 5,
+       "specRefs": [
+        "4CH1-S1-a"
+       ],
+       "status": "open",
+       "title": "probe late asprobe_1790628651"
+      },
+      "mySubmission": null
+     },
+     {
+      "assignment": {
+       "classId": null,
+       "courseLabel": "Chemistry",
+       "courseSlug": "igcse-chemistry-19",
+       "createdAt": "<TS>",
+       "dueAt": "<TS>",
+       "id": "a79a8959-79a5-4d7e-8e3a-2db569eb58c5",
+       "marksTotal": 44,
+       "questionCount": 21,
+       "specRefs": [
+        "4CH1-S1-h",
+        "4CH1-S2-d",
+        "4CH1-S4-g"
+       ],
+       "status": "open",
+       "title": "Chemistry - Targeted Practice"
+      },
+      "mySubmission": null
+     },
+     {
+      "assignment": {
+       "classId": null,
+       "courseLabel": "IGCSE Chemistry",
+       "courseSlug": "igcse-chemistry-19",
+       "createdAt": "<TS>",
+       "dueAt": "<TS>",
+       "id": "d9c37935-332d-4732-a9cb-0f2d74442adc",
+       "marksTotal": 10,
+       "questionCount": 5,
+       "specRefs": [
+        "4CH1-S1-a",
+        "4CH1-S2-a"
+       ],
+       "status": "open",
+       "title": "probe assignment asprobe_1790628651"
+      },
+      "mySubmission": null
+     }
+    ],
+    "dueReviews": [],
+    "examTargets": [],
+    "learnerId": "f8bee186-7e7c-4e77-ac9a-2c124e871507"
+   }
+  },
+  {
+   "leg": "L02",
+   "name": "agenda-unknown-root",
+   "method": "GET",
+   "path": "/api/v1/learners/me/agenda?rootId=3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
+   "core_status": 404,
+   "v2_status": 404,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "not_found",
+    "message": "knowledge node 3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab not found",
+    "status": 404
+   },
+   "v2_body": {
+    "error": "not_found",
+    "message": "knowledge node 3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab not found",
+    "status": 404
+   }
+  },
+  {
+   "leg": "L03",
+   "name": "recommendations-missing-root",
+   "method": "GET",
+   "path": "/api/v1/learners/me/recommendations",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "validation_failed",
+    "message": "missing required parameter: rootId",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "validation_failed",
+    "message": "missing required parameter: rootId",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L04",
+   "name": "recommendations-unknown-root",
+   "method": "GET",
+   "path": "/api/v1/learners/me/recommendations?rootId=3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
+   "core_status": 404,
+   "v2_status": 404,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "not_found",
+    "message": "knowledge node 3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab not found",
+    "status": 404
+   },
+   "v2_body": {
+    "error": "not_found",
+    "message": "knowledge node 3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab not found",
+    "status": 404
+   }
+  },
+  {
+   "leg": "L05",
+   "name": "trail-empty",
+   "method": "GET",
+   "path": "/api/v1/learners/me/flashcard-rating-trail",
+   "core_status": 200,
+   "v2_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "events": [],
+    "generatedAt": "<TS>",
+    "hasMore": false,
+    "nextCursor": null
+   },
+   "v2_body": {
+    "events": [],
+    "generatedAt": "<TS>",
+    "hasMore": false,
+    "nextCursor": null
+   }
+  },
+  {
+   "leg": "L06",
+   "name": "trail-limit-law",
+   "method": "GET",
+   "path": "/api/v1/learners/me/flashcard-rating-trail?limit=10000",
+   "core_status": 200,
+   "v2_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "events": [],
+    "generatedAt": "<TS>",
+    "hasMore": false,
+    "nextCursor": null
+   },
+   "v2_body": {
+    "events": [],
+    "generatedAt": "<TS>",
+    "hasMore": false,
+    "nextCursor": null
+   }
+  },
+  {
+   "leg": "L07",
+   "name": "review-schedule-empty",
+   "method": "GET",
+   "path": "/api/v1/learners/me/flashcard-review-schedule",
+   "core_status": 200,
+   "v2_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "cards": [],
+    "generatedAt": "<TS>",
+    "learnerId": "f8bee186-7e7c-4e77-ac9a-2c124e871507",
+    "summary": {
+     "due": 0,
+     "nextDueAt": null,
+     "scheduled": 0
+    }
+   },
+   "v2_body": {
+    "cards": [],
+    "generatedAt": "<TS>",
+    "learnerId": "f8bee186-7e7c-4e77-ac9a-2c124e871507",
+    "summary": {
+     "due": 0,
+     "nextDueAt": null,
+     "scheduled": 0
+    }
+   }
+  },
+  {
+   "leg": "L08",
+   "name": "flashcard-rating-blank",
+   "method": "POST",
+   "path": "/api/v1/learners/me/flashcard-ratings",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "validation_failed",
+    "message": "cardId: must not be blank",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "validation_failed",
+    "message": "cardId: must not be blank",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L09",
+   "name": "flashcard-rating-unknown-card",
+   "method": "POST",
+   "path": "/api/v1/learners/me/flashcard-ratings",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": false,
+   "verdict": "FAIL",
+   "core_body": {
+    "error": "validation_failed",
+    "message": "subtopicCode: must not be blank",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "validation_failed",
+    "message": "cardId: must not be blank",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L10",
+   "name": "note-vote-blank",
+   "method": "POST",
+   "path": "/api/v1/learners/me/note-votes",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": false,
+   "verdict": "FAIL",
+   "core_body": {
+    "error": "validation_failed",
+    "message": "vote: must not be blank",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "validation_failed",
+    "message": "noteId: must not be blank",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L11",
+   "name": "exam-series-empty",
+   "method": "GET",
+   "path": "/api/v1/learners/me/exam-series",
+   "core_status": 200,
+   "v2_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": [
+    {
+     "board": "PEARSON_EDEXCEL",
+     "entryDeadline": "2026-08-28",
+     "estimated": false,
+     "id": "0a000000-0000-0000-0000-000000000001",
+     "label": "October/November 2026",
+     "qualification": "IAL",
+     "resultsDate": "2027-01-21",
+     "retrievedAt": "<TS>",
+     "seriesCode": "2026-october-november",
+     "sourceUrl": "https://qualifications.pearson.com/content/dam/pdf/Support/Examination-timetables-for-International-Advanced-Levels/ial-october2026-final.pdf",
+     "windowEnd": "2026-10-30",
+     "windowStart": "2026-10-08"
+    },
+    {
+     "board": "PEARSON_EDEXCEL",
+     "entryDeadline": "2026-09-12",
+     "estimated": false,
+     "id": "0a000000-0000-0000-0000-000000000002",
+     "label": "November 2026",
+     "qualification": "INTERNATIONAL_GCSE",
+     "resultsDate": "2027-01-21",
+     "retrievedAt": "<TS>",
+     "seriesCode": "2026-november",
+     "sourceUrl": "https://qualifications.pearson.com/content/dam/pdf/Support/Examination-timetables-for-Edexcel-International-GCSE/intgcse-nov-2026-final.pdf",
+     "windowEnd": "2026-11-19",
+     "windowStart": "2026-10-27"
+    },
+    {
+     "board": "PEARSON_EDEXCEL",
+     "entryDeadline": "2026-10-16",
+     "estimated": false,
+     "id": "0a000000-0000-0000-0000-000000000003",
+     "label": "January 2027",
+     "qualification": "IAL",
+     "resultsDate": "2027-03-04",
+     "retrievedAt": "<TS>",
+     "seriesCode": "2027-january",
+     "sourceUrl": "https://qualifications.pearson.com/content/dam/pdf/Support/Examination-timetables-for-International-Advanced-Levels/ial-january-2027-final.pdf",
+     "windowEnd": "2027-01-25",
+     "windowStart": "2027-01-08"
+    },
+    {
+     "board": "PEARSON_EDEXCEL",
+     "entryDeadline": "2027-03-21",
+     "estimated": false,
+     "id": "0a000000-0000-0000-0000-000000000004",
+     "label": "May/June 2027",
+     "qualification": "IAL",
+     "resultsDate": "2027-08-12",
+     "retrievedAt": "<TS>",
+     "seriesCode": "2027-may-june",
+     "sourceUrl": "https://qualifications.pearson.com/content/dam/pdf/Support/Examination-timetables-for-International-Advanced-Levels/ial-summer-2027-final.pdf",
+     "windowEnd": "2027-06-10",
+     "windowStart": "2027-05-04"
+    },
+    {
+     "board": "PEARSON_EDEXCEL",
+     "entryDeadline": "2027-03-21",
+     "estimated": false,
+     "id": "0a000000-0000-0000-0000-000000000005",
+     "label": "May/June 2027",
+     "qualification": "INTERNATIONAL_GCSE",
+     "resultsDate": "2027-08-19",
+     "retrievedAt": "<TS>",
+     "seriesCode": "2027-may-june",
+     "sourceUrl": "https://qualifications.pearson.com/content/dam/pdf/Support/Examination-timetables-for-Edexcel-International-GCSE/int-gcse-summer-2027-final.pdf",
+     "windowEnd": "2027-06-18",
+     "windowStart": "2027-05-10"
+    }
+   ],
+   "v2_body": [
+    {
+     "board": "PEARSON_EDEXCEL",
+     "entryDeadline": "2026-08-28",
+     "estimated": false,
+     "id": "0a000000-0000-0000-0000-000000000001",
+     "label": "October/November 2026",
+     "qualification": "IAL",
+     "resultsDate": "2027-01-21",
+     "retrievedAt": "<TS>",
+     "seriesCode": "2026-october-november",
+     "sourceUrl": "https://qualifications.pearson.com/content/dam/pdf/Support/Examination-timetables-for-International-Advanced-Levels/ial-october2026-final.pdf",
+     "windowEnd": "2026-10-30",
+     "windowStart": "2026-10-08"
+    },
+    {
+     "board": "PEARSON_EDEXCEL",
+     "entryDeadline": "2026-09-12",
+     "estimated": false,
+     "id": "0a000000-0000-0000-0000-000000000002",
+     "label": "November 2026",
+     "qualification": "INTERNATIONAL_GCSE",
+     "resultsDate": "2027-01-21",
+     "retrievedAt": "<TS>",
+     "seriesCode": "2026-november",
+     "sourceUrl": "https://qualifications.pearson.com/content/dam/pdf/Support/Examination-timetables-for-Edexcel-International-GCSE/intgcse-nov-2026-final.pdf",
+     "windowEnd": "2026-11-19",
+     "windowStart": "2026-10-27"
+    },
+    {
+     "board": "PEARSON_EDEXCEL",
+     "entryDeadline": "2026-10-16",
+     "estimated": false,
+     "id": "0a000000-0000-0000-0000-000000000003",
+     "label": "January 2027",
+     "qualification": "IAL",
+     "resultsDate": "2027-03-04",
+     "retrievedAt": "<TS>",
+     "seriesCode": "2027-january",
+     "sourceUrl": "https://qualifications.pearson.com/content/dam/pdf/Support/Examination-timetables-for-International-Advanced-Levels/ial-january-2027-final.pdf",
+     "windowEnd": "2027-01-25",
+     "windowStart": "2027-01-08"
+    },
+    {
+     "board": "PEARSON_EDEXCEL",
+     "entryDeadline": "2027-03-21",
+     "estimated": false,
+     "id": "0a000000-0000-0000-0000-000000000004",
+     "label": "May/June 2027",
+     "qualification": "IAL",
+     "resultsDate": "2027-08-12",
+     "retrievedAt": "<TS>",
+     "seriesCode": "2027-may-june",
+     "sourceUrl": "https://qualifications.pearson.com/content/dam/pdf/Support/Examination-timetables-for-International-Advanced-Levels/ial-summer-2027-final.pdf",
+     "windowEnd": "2027-06-10",
+     "windowStart": "2027-05-04"
+    },
+    {
+     "board": "PEARSON_EDEXCEL",
+     "entryDeadline": "2027-03-21",
+     "estimated": false,
+     "id": "0a000000-0000-0000-0000-000000000005",
+     "label": "May/June 2027",
+     "qualification": "INTERNATIONAL_GCSE",
+     "resultsDate": "2027-08-19",
+     "retrievedAt": "<TS>",
+     "seriesCode": "2027-may-june",
+     "sourceUrl": "https://qualifications.pearson.com/content/dam/pdf/Support/Examination-timetables-for-Edexcel-International-GCSE/int-gcse-summer-2027-final.pdf",
+     "windowEnd": "2027-06-18",
+     "windowStart": "2027-05-10"
+    }
+   ]
+  },
+  {
+   "leg": "L12",
+   "name": "target-series-unknown-slug-put",
+   "method": "PUT",
+   "path": "/api/v1/learners/me/courses/igcse-physics-does-not-exist-094/target-series",
+   "core_status": 404,
+   "v2_status": 404,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "not_found",
+    "message": "exam series 3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab does not exist",
+    "status": 404
+   },
+   "v2_body": {
+    "error": "not_found",
+    "message": "exam series 3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab does not exist",
+    "status": 404
+   }
+  },
+  {
+   "leg": "L13",
+   "name": "target-series-unknown-slug-delete",
+   "method": "DELETE",
+   "path": "/api/v1/learners/me/courses/igcse-physics-does-not-exist-094/target-series",
+   "core_status": 204,
+   "v2_status": 204,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": null,
+   "v2_body": null
+  },
+  {
+   "leg": "L14",
+   "name": "assignments-empty",
+   "method": "GET",
+   "path": "/api/v1/learners/me/assignments",
+   "core_status": 200,
+   "v2_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": [
+    {
+     "assignment": {
+      "classId": null,
+      "courseLabel": "Chemistry",
+      "courseSlug": "igcse-chemistry-19",
+      "createdAt": "<TS>",
+      "dueAt": "<TS>",
+      "id": "a79a8959-79a5-4d7e-8e3a-2db569eb58c5",
+      "marksTotal": 44,
+      "questionCount": 21,
+      "specRefs": [
+       "4CH1-S1-h",
+       "4CH1-S2-d",
+       "4CH1-S4-g"
+      ],
+      "status": "open",
+      "title": "Chemistry - Targeted Practice"
+     },
+     "mySubmission": null
+    },
+    {
+     "assignment": {
+      "classId": null,
+      "courseLabel": "IGCSE Chemistry",
+      "courseSlug": "igcse-chemistry-19",
+      "createdAt": "<TS>",
+      "dueAt": "<TS>",
+      "id": "50c9c01e-27ec-46a0-b7fe-7a9955a12da1",
+      "marksTotal": 10,
+      "questionCount": 5,
+      "specRefs": [
+       "4CH1-S1-a"
+      ],
+      "status": "open",
+      "title": "probe late asprobe_1790628651"
+     },
+     "mySubmission": null
+    },
+    {
+     "assignment": {
+      "classId": null,
+      "courseLabel": "IGCSE Chemistry",
+      "courseSlug": "igcse-chemistry-19",
+      "createdAt": "<TS>",
+      "dueAt": "<TS>",
+      "id": "d9c37935-332d-4732-a9cb-0f2d74442adc",
+      "marksTotal": 10,
+      "questionCount": 5,
+      "specRefs": [
+       "4CH1-S1-a",
+       "4CH1-S2-a"
+      ],
+      "status": "open",
+      "title": "probe assignment asprobe_1790628651"
+     },
+     "mySubmission": null
+    }
+   ],
+   "v2_body": [
+    {
+     "assignment": {
+      "classId": null,
+      "courseLabel": "Chemistry",
+      "courseSlug": "igcse-chemistry-19",
+      "createdAt": "<TS>",
+      "dueAt": "<TS>",
+      "id": "a79a8959-79a5-4d7e-8e3a-2db569eb58c5",
+      "marksTotal": 44,
+      "questionCount": 21,
+      "specRefs": [
+       "4CH1-S1-h",
+       "4CH1-S2-d",
+       "4CH1-S4-g"
+      ],
+      "status": "open",
+      "title": "Chemistry - Targeted Practice"
+     },
+     "mySubmission": null
+    },
+    {
+     "assignment": {
+      "classId": null,
+      "courseLabel": "IGCSE Chemistry",
+      "courseSlug": "igcse-chemistry-19",
+      "createdAt": "<TS>",
+      "dueAt": "<TS>",
+      "id": "50c9c01e-27ec-46a0-b7fe-7a9955a12da1",
+      "marksTotal": 10,
+      "questionCount": 5,
+      "specRefs": [
+       "4CH1-S1-a"
+      ],
+      "status": "open",
+      "title": "probe late asprobe_1790628651"
+     },
+     "mySubmission": null
+    },
+    {
+     "assignment": {
+      "classId": null,
+      "courseLabel": "IGCSE Chemistry",
+      "courseSlug": "igcse-chemistry-19",
+      "createdAt": "<TS>",
+      "dueAt": "<TS>",
+      "id": "d9c37935-332d-4732-a9cb-0f2d74442adc",
+      "marksTotal": 10,
+      "questionCount": 5,
+      "specRefs": [
+       "4CH1-S1-a",
+       "4CH1-S2-a"
+      ],
+      "status": "open",
+      "title": "probe assignment asprobe_1790628651"
+     },
+     "mySubmission": null
+    }
+   ]
+  },
+  {
+   "leg": "L15",
+   "name": "submission-unknown-assignment",
+   "method": "POST",
+   "path": "/api/v1/learners/me/assignments/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/submissions",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "validation_failed",
+    "message": "questionsCompleted: must not be null",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "validation_failed",
+    "message": "questionsCompleted: must not be null",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L16",
+   "name": "state",
+   "method": "GET",
+   "path": "/api/v1/learners/me/state",
+   "core_status": 200,
+   "v2_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "examTargets": [],
+    "flashcardRatings": [],
+    "learnerId": "f8bee186-7e7c-4e77-ac9a-2c124e871507",
+    "misconceptionStates": [],
+    "noteVotes": [],
+    "pendingReviews": [],
+    "skillStates": [],
+    "tutorEngagements": []
+   },
+   "v2_body": {
+    "examTargets": [],
+    "flashcardRatings": [],
+    "learnerId": "f8bee186-7e7c-4e77-ac9a-2c124e871507",
+    "misconceptionStates": [],
+    "noteVotes": [],
+    "pendingReviews": [],
+    "skillStates": [],
+    "tutorEngagements": []
+   }
+  },
+  {
+   "leg": "L17",
+   "name": "course-stats",
+   "method": "GET",
+   "path": "/api/v1/learners/me/course-stats",
+   "core_status": 200,
+   "v2_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "attempts": 0,
+    "distinctQuestions": 0,
+    "flashcardsRated": 0,
+    "learnerId": "f8bee186-7e7c-4e77-ac9a-2c124e871507",
+    "notesViewed": 0
+   },
+   "v2_body": {
+    "attempts": 0,
+    "distinctQuestions": 0,
+    "flashcardsRated": 0,
+    "learnerId": "f8bee186-7e7c-4e77-ac9a-2c124e871507",
+    "notesViewed": 0
+   }
+  },
+  {
+   "leg": "L18",
+   "name": "agenda-unauthed-401",
+   "method": "GET",
+   "path": "/api/v1/learners/me/agenda",
+   "core_status": 401,
+   "v2_status": 401,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "Unauthorized",
+    "path": "/api/v1/learners/me/agenda",
+    "status": 401
+   },
+   "v2_body": {
+    "error": "Unauthorized",
+    "path": "/api/v1/learners/me/agenda",
+    "status": 401
+   }
+  }
+ ]
+}

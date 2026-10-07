@@ -80,10 +80,16 @@ const CORE_ONLY_PATHS: readonly string[] = [
   "/api/v1/questions/families",
   "/api/v1/exam-papers?subjectId=sub-1",
   "/api/v1/exam-papers/ep-1",
-  // non-attempts learner surfaces (W4) — the reason /api/v1/learners/me/attempts stays narrow
-  "/api/v1/learners/me/agenda",
-  "/api/v1/learners/me/state",
+  // non-attempts learner surfaces (W4) — agenda + state FLIPPED in T-MIG-094
+  // (run-001 golden-verify); flashcard-ratings + note-votes STAY CORE until
+  // the T-MIG-095 first-field-error defect band closes (frozen core serves
+  // subtopicCode/vote first; the port serves cardId/noteId first — a flip
+  // would 400 live user writes core accepts)
   "/api/v1/learners/me/flashcard-ratings",
+  "/api/v1/learners/me/note-votes",
+  // T-MIG-094: recommendations stays core this band — 400/404 wires verified
+  // (L03/L04) but the 200 NBA-engine wire is not live-proven yet (disclosed)
+  "/api/v1/learners/me/recommendations",
   "/api/v1/learners/me/cla/ask",
   "/api/v1/learners/me/answer-input/transcribe",
   // T-MIG-082 (Wave S3, r3a): revision-notes FLIPPED after its golden gate —
@@ -113,6 +119,14 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/learners/me/revision-notes", // Wave S3: T-MIG-082 golden-verified (run-002/003, r3a)
       "/api/v1/admin/llm/chain-health", // T-MIG-090: golden-verified (run-005, r0 rider) — NARROWEST: the prefix IS the single endpoint
       "/api/v1/tutor/sessions", // T-MIG-092: golden-verified (run-003 14/14, r0 rider) — NARROW: the sessions tree ONLY, ask/stream stay core
+      "/api/v1/learners/me/agenda", // T-MIG-094: golden-verified (run-001 16/18, r0 rider) — per-exact-subpath rows, NEVER the bare /learners/me
+      "/api/v1/learners/me/flashcard-rating-trail", // T-MIG-094 run-001 L05/L06
+      "/api/v1/learners/me/flashcard-review-schedule", // T-MIG-094 run-001 L07
+      "/api/v1/learners/me/exam-series", // T-MIG-094 run-001 L11
+      "/api/v1/learners/me/assignments", // T-MIG-094 run-001 L14/L15 (incl. the submissions subpath wire)
+      "/api/v1/learners/me/state", // T-MIG-094 run-001 L16
+      "/api/v1/learners/me/course-stats", // T-MIG-094 run-001 L17
+      "/api/v1/learners/me/courses", // T-MIG-094 run-001 L12/L13 — zero emitters, routing availability
     ]);
   });
 });
@@ -122,6 +136,36 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     for (const p of DUAL_RUN_PATHS) {
       expect(v2SurfaceBase(p, V2)).toBe(V2);
       expect(apiPath(p).startsWith(`${V2}/api/v1/`)).toBe(true);
+    }
+  });
+
+  test("the T-MIG-094 lines: the learner-me heart flips per-exact-subpath with the write surfaces core-pinned (r0 rider)", () => {
+    // every verified read path of the run-001 matrix resolves to v2
+    for (const p of [
+      "/api/v1/learners/me/agenda",
+      "/api/v1/learners/me/agenda?rootId=3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
+      "/api/v1/learners/me/flashcard-rating-trail?limit=20",
+      "/api/v1/learners/me/flashcard-review-schedule",
+      "/api/v1/learners/me/exam-series",
+      "/api/v1/learners/me/assignments",
+      "/api/v1/learners/me/assignments/a1/submissions", // the submission wire rides the assignments prefix (L15 law)
+      "/api/v1/learners/me/state",
+      "/api/v1/learners/me/course-stats",
+      "/api/v1/learners/me/courses/igcse-chemistry-19/target-series",
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBe(V2);
+    }
+    // the T-MIG-095-blocked write surfaces + the not-yet-verified 200 NBA
+    // wire stay core — the zero-key/defect-band law in string form
+    for (const p of [
+      "/api/v1/learners/me/flashcard-ratings",
+      "/api/v1/learners/me/note-votes",
+      "/api/v1/learners/me/recommendations?rootId=kn-1",
+      "/api/v1/learners/me/cla/ask",
+      "/api/v1/learners/me/classroom",
+      "/api/v1/learners/me/intervention-runs",
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBeNull();
     }
   });
 

@@ -180,6 +180,35 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // coreStreamAuthorized and keep their core routing). LLM-free law: the
   // sessions CRUD never reaches the LLM seam, so the flip is wire-safe.
   "/api/v1/tutor/sessions",
+  // T-MIG-094 (r0 rider, operator trace 1a117ee8fb5b520d) — the learner-me
+  // HEART family, NARROW per-exact-subpath form. GOLDEN-VERIFIED of record
+  // (run-001: 16/18 legs dual-replayed live core 6cad6ef94 vs the live v2
+  // deploy dpl_5VuNMyfq5vknZSEsMkyFrUCgmcbL — receipt
+  // .syllabai/receipts/T-MIG-094/run-001-golden-verify-r0.json). The two
+  // FAIL legs are REAL first-field-error law deviations on the WRITE
+  // surfaces (flashcard-ratings serves cardId-first vs the frozen
+  // subtopicCode-first; note-votes noteId-first vs frozen vote-first) —
+  // defect band T-MIG-095 owns them; those two paths STAY CORE until the
+  // band closes and the legs re-verify live. A bare /api/v1/learners/me
+  // prefix is FORBIDDEN by the zero-key law (it would capture cla/ask =
+  // LLM 503) and would capture classroom/intervention/knowledge-graph —
+  // hence one exact-subpath row per verified surface:
+  //   /agenda (L01 200 / L02 404 root-law), /flashcard-rating-trail (L05
+  //   200 keyset law), /flashcard-review-schedule (L07 200), /exam-series
+  //   (L11 200), /assignments (L14 200 + L15 submission 400 wire),
+  //   /state (L16 200 uuid/Instant-normalized deep-equal), /course-stats
+  //   (L17 200), /courses (L12 404 slug law + L13 204 idempotent delete;
+  //   zero hub emitters — routing availability per the 090 precedent).
+  // recommendations stays CORE this band (400/404 wires verified; the 200
+  // NBA-engine wire is not live-proven yet — disclosed, own follow-up).
+  "/api/v1/learners/me/agenda",
+  "/api/v1/learners/me/flashcard-rating-trail",
+  "/api/v1/learners/me/flashcard-review-schedule",
+  "/api/v1/learners/me/exam-series",
+  "/api/v1/learners/me/assignments",
+  "/api/v1/learners/me/state",
+  "/api/v1/learners/me/course-stats",
+  "/api/v1/learners/me/courses",
 ];
 
 /**
