@@ -1,0 +1,682 @@
+{
+  "task": "W7-SMOKE",
+  "run": "run-001-lane-side-smoke-spine",
+  "order": "operator trace 1a114da6732b313d: 'run the lane-side smoke spine'",
+  "law": [
+    "docs/CUTOVER_RUNBOOK.md \u00a72.4 step 4 \u2014 smoke is [LANE-executable checks, operator-witnessed]: learner login \u2192 agenda \u2192 flashcard rating \u2192 self-mark \u2192 history (W3/W4); teacher login \u2192 class \u2192 marking queue (W5); tutor SSE open/heartbeat/close (W6)",
+    "the operator's order is the \u00a72.4 witness; write volume sanctioned by the freeze-window declaration (Task-29 trace 1a112b0054c382d5) + this order",
+    "standing law survives: receipts, append-only worklog, redaction of credentials/LLM payloads"
+  ],
+  "executor": "R7a (agent-da4ab8, session web-da4ab8b1, zai-web)",
+  "executed_at_utc": "2026-10-07T05:49Z \u2013 06:01Z",
+  "repo_tip_at_execution": "6e1d909",
+  "targets": {
+    "core": "https://syllabai-core.onrender.com (live frozen Java core, WARM: 401-in-540ms bogus-creds probe, Java-genuine ns timestamp)",
+    "hub_v2": "https://syllabai-hub-v2.vercel.app (deployment of record @ ef0055f)"
+  },
+  "hub_plane": {
+    "GET /": 200,
+    "GET /login": 200,
+    "GET /api/health": {
+      "status": 200,
+      "dataMode": "mock",
+      "coreConfigured": true
+    },
+    "note": "pre-flip posture: V2 base absent on prj (Task-32); hub data = mock, auth plane = live core \u2014 spine therefore driven core-plane, hub-plane recorded as entry-point posture"
+  },
+  "open_pr_census": [
+    {
+      "number": 131,
+      "title": "T-MIG-082..091 mount band filed: 10 wire-route family cards from the r4b census (28 endpoints, capture-pass ga",
+      "head": "mount-band/r3a-filing",
+      "head_sha": "d35b50d",
+      "user": "SyllabAI",
+      "draft": false,
+      "mergeable_state": null
+    }
+  ],
+  "steps": [
+    {
+      "step": "S1 register learner",
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "status": 201,
+      "ms": 7021,
+      "verdict": "PASS 201",
+      "evidence": "<captured in lane record>"
+    },
+    {
+      "step": "S2 login learner",
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200,
+      "ms": 2803,
+      "verdict": "PASS 200 Bearer",
+      "evidence": {
+        "tokenType": "Bearer",
+        "user": {
+          "id": "5eec0da5-1168-4d45-a8b4-587ba17b26f0",
+          "email": "w7-smoke-r7a-20261007t0551sz@example.invalid",
+          "displayName": "W7 Smoke R7a (lane)",
+          "roles": [
+            "STUDENT"
+          ]
+        },
+        "accessToken": "scrubbed-at-collection"
+      }
+    },
+    {
+      "step": "S3 agenda (fresh)",
+      "method": "GET",
+      "path": "/api/v1/learners/me/agenda",
+      "status": 200,
+      "ms": 2100,
+      "verdict": "PASS 200",
+      "evidence": {
+        "learnerId": "5eec0da5-1168-4d45-a8b4-587ba17b26f0",
+        "keys": [
+          "actions",
+          "asOf",
+          "assignments",
+          "dueReviews",
+          "examTargets",
+          "learnerId"
+        ],
+        "dueReviews": [],
+        "examTargets": []
+      }
+    },
+    {
+      "step": "S4 curriculum subjects",
+      "method": "GET",
+      "path": "/api/v1/curriculum/subjects",
+      "status": 200,
+      "ms": 1459,
+      "verdict": "PASS 200",
+      "evidence": {
+        "count": 5,
+        "seed_subject_present": true,
+        "first_ids": [
+          "de18dcbb-c4c4-49e9-9132-8e7fbd7ef9f4",
+          "e56dc9ee-aa74-426f-94a6-4b72d3dc346b",
+          "0f3cc8ba-d8b6-464c-b915-77b29abd64af"
+        ]
+      }
+    },
+    {
+      "step": "S5 flashcard rating",
+      "method": "POST",
+      "path": "/api/v1/learners/me/flashcard-ratings",
+      "status": 201,
+      "ms": 1040,
+      "verdict": "PASS 201",
+      "evidence": "<captured in lane record>"
+    },
+    {
+      "step": "S6 flashcard schedule (derived)",
+      "method": "GET",
+      "path": "/api/v1/learners/me/flashcard-schedule",
+      "status": 404,
+      "ms": 1029,
+      "verdict": "OBSERVED 404",
+      "evidence": {
+        "keys": [
+          "error",
+          "message",
+          "status",
+          "timestamp"
+        ],
+        "nonempty": false
+      }
+    },
+    {
+      "step": "S7 flashcard trail",
+      "method": "GET",
+      "path": "/api/v1/learners/me/flashcard-trail",
+      "status": 404,
+      "ms": 423,
+      "verdict": "OBSERVED 404",
+      "evidence": {
+        "keys": [
+          "error",
+          "message",
+          "status",
+          "timestamp"
+        ],
+        "nonempty": false
+      }
+    },
+    {
+      "step": "S8 MCQ attempt (seed question)",
+      "method": "POST",
+      "path": "/api/v1/attempts",
+      "status": 404,
+      "ms": 690,
+      "verdict": "OBSERVED 404",
+      "evidence": "<captured in lane record>"
+    },
+    {
+      "step": "S8a exam-papers fallback discovery",
+      "method": "GET",
+      "path": "/api/v1/exam-papers",
+      "status": 200,
+      "ms": 1159,
+      "verdict": "OBSERVED (fallback discovery)",
+      "evidence": {
+        "count": 108
+      }
+    },
+    {
+      "step": "S9 self-mark",
+      "method": null,
+      "path": null,
+      "status": null,
+      "ms": null,
+      "verdict": "SKIPPED \u2014 no attemptId (S8 did not 201)",
+      "evidence": "<captured in lane record>"
+    },
+    {
+      "step": "S10 attempt history",
+      "method": "GET",
+      "path": "/api/v1/learners/me/attempts",
+      "status": 200,
+      "ms": 913,
+      "verdict": "PASS 200 (empty)",
+      "evidence": {
+        "total": 0,
+        "returned": 0,
+        "our_attempt_present": null,
+        "first_marking_state": null
+      }
+    },
+    {
+      "step": "W5-1 teacher register without join code",
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "status": 403,
+      "ms": 425,
+      "verdict": "PASS 403 fail-closed",
+      "evidence": "<captured in lane record>"
+    },
+    {
+      "step": "W5-2 marking queue-v2 as STUDENT",
+      "method": "GET",
+      "path": "/api/v1/teacher/marking/queue-v2",
+      "status": 403,
+      "ms": 423,
+      "verdict": "PASS 403 authz",
+      "evidence": "<captured in lane record>"
+    },
+    {
+      "step": "W5-3 marking queue-v2 unauthenticated",
+      "method": "GET",
+      "path": "/api/v1/teacher/marking/queue-v2",
+      "status": 401,
+      "ms": 239,
+      "verdict": "PASS 401",
+      "evidence": "<captured in lane record>"
+    },
+    {
+      "step": "W5-4 teacher curriculum as STUDENT",
+      "method": "GET",
+      "path": "/api/v1/teacher/curriculum/versions",
+      "status": 403,
+      "ms": 432,
+      "verdict": "PASS 403 authz",
+      "evidence": "<captured in lane record>"
+    },
+    {
+      "step": "W6 tutor SSE open/observe/close",
+      "method": "POST",
+      "path": "/api/v1/tutor/ask/stream",
+      "status": 200,
+      "ms": 18059,
+      "verdict": "PASS stream opened",
+      "evidence": {
+        "status": 200,
+        "content_type": "text/event-stream",
+        "events_seen": [
+          "citations",
+          "meta"
+        ],
+        "bytes_before_close": 1542,
+        "ms_to_first_byte": 18059,
+        "closed_by": "lane (early close \u2014 LLM payload not consumed; failed/incomplete stream persists nothing)"
+      }
+    },
+    {
+      "step": "R1 register learner",
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "status": 201,
+      "ms": 2837,
+      "verdict": "PASS 201",
+      "evidence": "<captured in lane record>"
+    },
+    {
+      "step": "R2 login learner",
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200,
+      "ms": 3200,
+      "verdict": "PASS 200 Bearer",
+      "evidence": {
+        "tokenType": "Bearer",
+        "accessToken": "scrubbed-at-collection",
+        "user": {
+          "id": "eb093e9c-06e5-475b-9004-d6a8bc1c27f4",
+          "email": "w7-smoke-r7a-run2-20261007t0554sz@example.invalid",
+          "displayName": "W7 Smoke R7a (lane, run-002)",
+          "roles": [
+            "STUDENT"
+          ]
+        }
+      }
+    },
+    {
+      "step": "R3 flashcard rating",
+      "method": "POST",
+      "path": "/api/v1/learners/me/flashcard-ratings",
+      "status": 201,
+      "ms": 734,
+      "verdict": "PASS 201",
+      "evidence": "<captured in lane record>"
+    },
+    {
+      "step": "R4 flashcard-review-schedule (derived)",
+      "method": "GET",
+      "path": "/api/v1/learners/me/flashcard-review-schedule",
+      "status": 200,
+      "ms": 952,
+      "verdict": "PASS 200",
+      "evidence": {
+        "keys": [
+          "cards",
+          "generatedAt",
+          "learnerId",
+          "summary"
+        ],
+        "nonempty_after_rating": true,
+        "sample": {
+          "learnerId": "eb093e9c-06e5-475b-9004-d6a8bc1c27f4",
+          "generatedAt": "2026-10-07T05:54:42.824391409Z"
+        }
+      }
+    },
+    {
+      "step": "R5 flashcard-rating-trail",
+      "method": "GET",
+      "path": "/api/v1/learners/me/flashcard-rating-trail",
+      "status": 200,
+      "ms": 733,
+      "verdict": "PASS 200 + rating visible",
+      "evidence": {
+        "keys": [
+          "events",
+          "generatedAt",
+          "hasMore",
+          "nextCursor"
+        ],
+        "our_card_in_trail": true,
+        "trail_len": 1
+      }
+    },
+    {
+      "step": "R6 exam-papers list",
+      "method": "GET",
+      "path": "/api/v1/exam-papers",
+      "status": 200,
+      "ms": 870,
+      "verdict": "PASS 200",
+      "evidence": {
+        "count": 108,
+        "first": {
+          "id": "9747f44a-6b11-4541-9308-b587ff059fa0",
+          "title": "4CH1 4CH1/2C June 2026",
+          "questionCount": null
+        }
+      }
+    },
+    {
+      "step": "R7 exam-paper detail (question discovery)",
+      "method": "GET",
+      "path": "/api/v1/exam-papers/9747f44a-6b11-4541-9308-b587ff059fa0",
+      "status": 200,
+      "ms": 1003,
+      "verdict": "OBSERVED \u2014 no MCQ harvestable",
+      "evidence": {
+        "paper_id": "9747f44a-6b11-4541-9308-b587ff059fa0",
+        "paper_keys": [
+          "paper",
+          "questions"
+        ],
+        "question_id": null,
+        "option_id": null,
+        "question_type": null
+      }
+    },
+    {
+      "step": "R9 self-mark",
+      "method": null,
+      "path": null,
+      "status": null,
+      "ms": null,
+      "verdict": "SKIPPED \u2014 no attemptId",
+      "evidence": "<captured in lane record>"
+    },
+    {
+      "step": "R10 attempt history (closure)",
+      "method": "GET",
+      "path": "/api/v1/learners/me/attempts",
+      "status": 200,
+      "ms": 740,
+      "verdict": "PASS 200 (empty)",
+      "evidence": {
+        "total": 0,
+        "our_attempt_present": false,
+        "our_attempt": null
+      }
+    },
+    {
+      "step": "F1 register learner",
+      "method": "POST",
+      "path": "/api/v1/auth/register",
+      "status": 201,
+      "ms": 2840,
+      "verdict": "PASS 201",
+      "evidence": "<captured in lane record>"
+    },
+    {
+      "step": "F2 login learner",
+      "method": "POST",
+      "path": "/api/v1/auth/login",
+      "status": 200,
+      "ms": 2697,
+      "verdict": "PASS 200 Bearer",
+      "evidence": {
+        "accessToken": "scrubbed-at-collection"
+      }
+    },
+    {
+      "step": "F3 exam-paper question shape inspection (read-only)",
+      "method": null,
+      "path": null,
+      "status": null,
+      "ms": null,
+      "verdict": "shape dumped to scratch; attempt not attempted",
+      "evidence": {
+        "papers_count": 108,
+        "paper_id": "9747f44a-6b11-4541-9308-b587ff059fa0",
+        "questions_count": 0,
+        "question_key_shapes": [],
+        "harvested": {
+          "question_id": null,
+          "option_id": null,
+          "type": null
+        }
+      }
+    },
+    {
+      "step": "C1 flashcard rating",
+      "method": "POST",
+      "path": "/api/v1/learners/me/flashcard-ratings",
+      "status": 201,
+      "ms": 833,
+      "verdict": "PASS 201",
+      "evidence": "<captured in lane record>"
+    },
+    {
+      "step": "C2 flashcard-review-schedule (derived)",
+      "method": "GET",
+      "path": "/api/v1/learners/me/flashcard-review-schedule",
+      "status": 200,
+      "ms": 728,
+      "verdict": "PASS 200 non-empty",
+      "evidence": {
+        "keys": [
+          "cards",
+          "generatedAt",
+          "learnerId",
+          "summary"
+        ],
+        "cards_len": 1,
+        "summary": {
+          "due": 0,
+          "scheduled": 1,
+          "nextDueAt": "2026-10-08T05:58:51.035100Z"
+        }
+      }
+    },
+    {
+      "step": "C3 question detail (parts)",
+      "method": "GET",
+      "path": "/api/v1/questions/92817c46-8103-4d2c-9f32-bd61636320a1",
+      "status": 200,
+      "ms": 1300,
+      "verdict": "PASS 200 with parts",
+      "evidence": {
+        "keys": [
+          "commandWord",
+          "difficulty",
+          "examPaperId",
+          "expectedTimeSeconds",
+          "externalRef",
+          "id",
+          "marks",
+          "options",
+          "parts",
+          "primaryTopicNodeId",
+          "specPointCodes",
+          "specPoints",
+          "stem",
+          "type"
+        ],
+        "part_count": 5,
+        "part_ids": [
+          "a47b02df-e3cc-4c2f-a6da-51185e6e4c97",
+          "69a1b177-ad76-49dd-be5a-df9b1bb7bf92",
+          "4f265a52-267b-4d59-86ea-554accde1c23",
+          "319b2e5e-211d-4540-a931-2280b15b2e34",
+          "99e560d4-589d-4fe7-8420-f8936437df5c"
+        ],
+        "part_shapes": [
+          {
+            "id": "a47b02df-e3cc-4c2f-a6da-51185e6e4c97",
+            "marks": 1
+          },
+          {
+            "id": "69a1b177-ad76-49dd-be5a-df9b1bb7bf92",
+            "marks": 1
+          },
+          {
+            "id": "4f265a52-267b-4d59-86ea-554accde1c23",
+            "marks": 1
+          }
+        ]
+      }
+    },
+    {
+      "step": "C4 structured attempt (real prod question+part)",
+      "method": "POST",
+      "path": "/api/v1/attempts/structured",
+      "status": 400,
+      "ms": 530,
+      "verdict": "OBSERVED 400",
+      "evidence": {
+        "attemptId": null
+      }
+    },
+    {
+      "step": "C5 self-mark",
+      "method": null,
+      "path": null,
+      "status": null,
+      "ms": null,
+      "verdict": "SKIPPED \u2014 no attemptId",
+      "evidence": "<captured in lane record>"
+    },
+    {
+      "step": "C6 attempt history (closure)",
+      "method": "GET",
+      "path": "/api/v1/learners/me/attempts",
+      "status": 200,
+      "ms": 714,
+      "verdict": "OBSERVED 200",
+      "evidence": {
+        "total": 0,
+        "our_attempt_present": false,
+        "our_attempt": null
+      }
+    },
+    {
+      "step": "diagnosis P1_full_schema",
+      "method": "POST",
+      "path": "/api/v1/attempts/structured",
+      "status": 400,
+      "ms": null,
+      "verdict": "400 (part-count law observed)",
+      "evidence": {
+        "questionId": "92817c46-8103-4d2c-9f32-bd61636320a1",
+        "responseTimeMs": 45000,
+        "confidence": 4,
+        "selfDoubtFlag": false,
+        "timedCondition": false,
+        "part_count": 1
+      }
+    },
+    {
+      "step": "diagnosis P2_minimal",
+      "method": "POST",
+      "path": "/api/v1/attempts/structured",
+      "status": 400,
+      "ms": null,
+      "verdict": "400 (empty answerText)",
+      "evidence": {
+        "questionId": "92817c46-8103-4d2c-9f32-bd61636320a1",
+        "part_count": 1
+      }
+    },
+    {
+      "step": "diagnosis P3_all_parts",
+      "method": "POST",
+      "path": "/api/v1/attempts/structured",
+      "status": 201,
+      "ms": null,
+      "verdict": "P3 -> 201 (all 5 parts); 1-part bodies -> 400",
+      "evidence": {
+        "questionId": "92817c46-8103-4d2c-9f32-bd61636320a1",
+        "responseTimeMs": 45000,
+        "confidence": 4,
+        "selfDoubtFlag": false,
+        "timedCondition": false,
+        "part_count": 5
+      }
+    },
+    {
+      "step": "M1 self-mark {} (observed)",
+      "method": "POST",
+      "path": "/api/v1/learners/me/attempts/37b35efc.../self-mark",
+      "status": 500,
+      "ms": null,
+      "verdict": "500 \u2014 DOCUMENTED captured quirk (T-MIG-053: null parts -> NPE -> opaque 500); parity CONFIRMED live",
+      "evidence": {
+        "status": 500,
+        "error": "internal_error",
+        "message": "an internal error occurred",
+        "timestamp": "2026-10-07T06:00:44.756899401Z"
+      }
+    },
+    {
+      "step": "M2 history (mid-run)",
+      "method": "GET",
+      "path": "/api/v1/learners/me/attempts",
+      "status": 200,
+      "ms": null,
+      "verdict": "200 total=1, attempt recorded PENDING 0/5-pending",
+      "evidence": {
+        "questionId": "92817c46-8103-4d2c-9f32-bd61636320a1",
+        "questionType": "STRUCTURED",
+        "topicCode": "4CH1-S1-b",
+        "markingState": "PENDING",
+        "marksAwarded": null,
+        "marksTotal": 5,
+        "attemptedAt": "2026-10-07T06:00:11.422620Z"
+      }
+    },
+    {
+      "step": "M3 self-mark contract-shaped",
+      "method": "POST",
+      "path": "/api/v1/learners/me/attempts/37b35efc.../self-mark",
+      "status": 201,
+      "ms": null,
+      "verdict": "201 SelfMarkView \u2014 4/5, evidenceFired, per-part SELF_MARKED",
+      "evidence": {
+        "marksAwarded": 4,
+        "marksTotal": 5,
+        "evidenceFired": true
+      }
+    },
+    {
+      "step": "M4 history (closure)",
+      "method": "GET",
+      "path": "/api/v1/learners/me/attempts",
+      "status": 200,
+      "ms": null,
+      "verdict": "200 \u2014 markingState SELF_MARKED 4/5",
+      "evidence": {
+        "markingState": "SELF_MARKED",
+        "marksAwarded": 4,
+        "marksTotal": 5
+      }
+    }
+  ],
+  "legs": {
+    "W3W4_learner_loop": "CLOSED end-to-end on the live prod core: register 201 \u2192 login 200 \u2192 agenda 200 (fresh empty posture, corpus shape) \u2192 flashcard rating 201 (corpus anchor WCH11-T1 \u2192 nodeId 20000000-\u2026-0011 EXACT corpus match) \u2192 flashcard-review-schedule 200 (derived: 1 card, nextDueAt +1d) \u2192 flashcard-rating-trail 200 \u2192 exam-papers 200 (108) \u2192 question detail 200 (real 5-part structured) \u2192 structured attempt 201 (PENDING) \u2192 self-mark 201 (4/5 SELF_MARKED, evidenceFired) \u2192 history 200 (SELF_MARKED 4/5)",
+    "W5_teacher_loop": "PARTIAL \u2014 posture-only: teacher register without join code \u2192 403 fail-closed (verbatim corpus message); marking queue-v2 student 403 / unauthed 401; teacher curriculum student 403. BLOCKER of record: no sanctioned teacher identity exists on prod (register is join-code-gated; join codes are operator-held) \u2014 the teacher-loop happy path requires an operator-supplied identity or join code",
+    "W6_tutor_sse": "OBSERVED \u2014 POST /api/v1/tutor/ask/stream (no sessionId) \u2192 200 text/event-stream, events [citations, meta] observed, 1542 bytes, lane closed early; ZERO writes (stream closed pre-completion persists nothing); LLM payload text excluded per standing law"
+  },
+  "findings": [
+    {
+      "id": "F-SMOKE-1",
+      "severity": "info",
+      "text": "seed CURRICULUM anchors ride prod (WCH11-T1 resolves to the corpus nodeId) but the seed QUESTION 40000000-\u2026-0001 is absent on prod-main (404 verbatim envelope) \u2014 golden corpus question seeds are local-boot artifacts"
+    },
+    {
+      "id": "F-SMOKE-2",
+      "severity": "watchlist",
+      "text": "structured attempt: the LIVE core rejected a 1-of-5-part partAnswers body (400 bad_request) and accepted the all-5-parts body (201); the v2 zod contract comment pins min(1) (contracts/assessment.ts :255) \u2014 the port service may still enforce all-parts (submit.ts service checks not audited in this run); flag for R4-api desk review, NOT filed as divergence by this lane"
+    },
+    {
+      "id": "F-SMOKE-3",
+      "severity": "info",
+      "text": "self-mark with {} \u2192 500 reproduced live = the DOCUMENTED captured quirk (T-MIG-053: null parts \u2192 dedup-loop NPE \u2192 opaque 500); contract-shaped {parts:[{partId,marksAwarded}]} \u2192 201 SelfMarkView \u2014 frozen-core parity CONFIRMED, no defect"
+    },
+    {
+      "id": "F-SMOKE-4",
+      "severity": "info",
+      "text": "exam-paper content population variance: June-2026 papers carry 0 questions; 2017\u20132024 papers carry 7\u201312 \u2014 informational for anyone scripting against papers[0]"
+    },
+    {
+      "id": "F-SMOKE-5",
+      "severity": "note",
+      "text": "\u00a74 p95 posture: core latencies this run: login 2.7\u20133.2s, register 2.8\u20137.0s, authenticated reads 0.7\u20131.5s, tutor first-byte 18.1s (LLM pre-flight) \u2014 capture-day tolerance baseline for the \u00a74 watch table"
+    }
+  ],
+  "write_ledger": {
+    "identities_registered": 3,
+    "identity_emails": [
+      "w7-smoke-r7a-20261007T0551SZ@example.invalid",
+      "w7-smoke-r7a-run2-20261007T0554SZ@example.invalid",
+      "w7-smoke-r7a-run3-20261007T0555SZ@example.invalid"
+    ],
+    "flashcard_ratings": 3,
+    "structured_attempts": 1,
+    "self_marks": 1,
+    "teacher_writes": 0,
+    "tutor_writes": 0,
+    "note": "all identities synthetic @example.invalid, corpus pattern (register \u2192 login \u2192 flows); passwords discarded post-run; tokens scrubbed-at-collection"
+  },
+  "p3_posture": "this run supplies the lane-executable P3 evidence of record (\u00a72.4 smoke legs W3/W4 CLOSED, W5 partial with named blocker, W6 observed); formal P3 closure per runbook \u00a70 remains the operator's (supervised dual-run), as do P2 formal closure and P4 sign-off",
+  "fence": ".syllabai/** only",
+  "redaction": "JWTs scrubbed-at-collection (register-201 bodies carried live tokens in lane-local scratch records; scrubbed before this receipt was composed); passwords shape-only; LLM payload text excluded (event names + byte counts only)"
+}
