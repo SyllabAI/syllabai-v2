@@ -113,6 +113,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/learners/me/revision-notes", // Wave S3: T-MIG-082 golden-verified (run-002/003, r3a)
       "/api/v1/admin/llm/chain-health", // T-MIG-090: golden-verified (run-005, r0 rider) — NARROWEST: the prefix IS the single endpoint
       "/api/v1/tutor/sessions", // T-MIG-092: golden-verified (run-003 14/14, r0 rider) — NARROW: the sessions tree ONLY, ask/stream stay core
+      "/api/v1/admin/revision-notes", // T-MIG-083: golden-verified (run-001 8/8, r9-hubx rider) — NARROW: ingest+status ONLY, rest of /api/v1/admin/** stays core
     ]);
   });
 });
@@ -192,6 +193,35 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     expect("/api/v1/admin/llm/chain-healthx".startsWith("/api/v1/admin/llm/chain-health")).toBe(true);
     // and the hub emits NOTHING under /api/v1/admin/** today (the line is
     // routing availability, zero live-page behavior change)
+  });
+
+  test("the T-MIG-083 line: admin revision-notes (ingest + status) flips after its golden gate (r9-hubx rider)", () => {
+    // the verified surfaces resolve to v2 (golden-verified of record:
+    // run-001, 8/8 legs vs the r4b frozen-core capture band — including the
+    // repaired leg-04 @RequestPart bind law: part-less multipart → the core's
+    // unhandled-bind 500 internal_error, reproduced verbatim + pinned in the
+    // api route tests)
+    expect(v2SurfaceBase("/api/v1/admin/revision-notes/ingest", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/admin/revision-notes/status", V2)).toBe(V2);
+    // TRUE siblings (v2 serves none of them) stay core — the prefix must never
+    // capture them. (/api/v1/admin/llm/chain-health is NOT here: it is already
+    // flipped by ITS OWN T-MIG-090 row — a sibling flipped row, not a core-only
+    // sibling. Pinned separately below so both rows' reach cannot drift.)
+    for (const p of [
+      "/api/v1/admin/users",
+      "/api/v1/admin/stats",
+      "/api/v1/admin/llm",
+      "/api/v1/admin/other",
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBeNull();
+    }
+    // the already-flipped 090 row keeps resolving (both rows coexist):
+    expect(v2SurfaceBase("/api/v1/admin/llm/chain-health", V2)).toBe(V2);
+    // the partial-segment property (shared string-matching semantics):
+    // non-existent partial-segment siblings WOULD be captured (DOCUMENTED
+    // INERT — no such routes or hub emitters exist on either side)
+    expect(v2SurfaceBase("/api/v1/admin/revision-notesx", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/admin/revision-notes-other", V2)).toBe(V2);
   });
 });
 
