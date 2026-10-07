@@ -180,8 +180,9 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // coreStreamAuthorized and keep their core routing). LLM-free law: the
   // sessions CRUD never reaches the LLM seam, so the flip is wire-safe.
   "/api/v1/tutor/sessions",
-  // T-MIG-094 (r0 rider, operator trace 1a117ee8fb5b520d) — the learner-me
-  // HEART family, NARROW per-exact-subpath form. GOLDEN-VERIFIED of record
+  // T-MIG-096 (r0 rider, operator trace 1a117ee8fb5b520d; RENUMBERED from
+  // T-MIG-094 - ID yielded to r4b's kg-retriever card per house law) — the
+  // learner-me HEART family, NARROW per-exact-subpath form. GOLDEN-VERIFIED of record
   // (run-001: 16/18 legs dual-replayed live core 6cad6ef94 vs the live v2
   // deploy dpl_5VuNMyfq5vknZSEsMkyFrUCgmcbL — receipt
   // .syllabai/receipts/T-MIG-094/run-001-golden-verify-r0.json). The two

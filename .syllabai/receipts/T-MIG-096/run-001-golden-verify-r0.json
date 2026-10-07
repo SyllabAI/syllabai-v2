@@ -1,10 +1,10 @@
 {
- "card": "T-MIG-094",
+ "card": "T-MIG-096",
  "receipt": "run-001-golden-verify-r0",
  "lane": "r0",
  "created_at_utc": "2026-10-07T20:01:38Z",
  "operator_trace": "1a117ee8fb5b520d (flip queue: CLA, learner-me heart, teacher surfaces)",
- "method": "T-MIG-092 run-003 pattern: 18-leg LLM-free matrix dual-replayed LIVE against the frozen core (6cad6ef94 autoDeploy identity, re-verified same-day of record) and the live v2 deploy (dpl_5VuNMyfq5vknZSEsMkyFrUCgmcbL = main ec3bb4c content; main has advanced only by .syllabai/hub flip-table content since — zero api/packages changes). One fresh v2-registered probe learner (shared-secret token, seam closed of record; token never persisted, email redacted). Normalization: Boot envelope timestamp key dropped + ISO timestamps -> <TS>; uuid-map machinery unused (no create-201 legs — all writes ride error wires by design; the 201/204 write wires carry the mounts' unit pins, disclosed). NO field widening.",
+ "method": "T-MIG-092 run-003 pattern: 18-leg LLM-free matrix dual-replayed LIVE against the frozen core (6cad6ef94 autoDeploy identity, re-verified same-day of record) and the live v2 deploy (dpl_5VuNMyfq5vknZSEsMkyFrUCgmcbL = main ec3bb4c content; main has advanced only by .syllabai/hub flip-table content since \u2014 zero api/packages changes). One fresh v2-registered probe learner (shared-secret token, seam closed of record; token never persisted, email redacted). Normalization: Boot envelope timestamp key dropped + ISO timestamps -> <TS>; uuid-map machinery unused (no create-201 legs \u2014 all writes ride error wires by design; the 201/204 write wires carry the mounts' unit pins, disclosed). NO field widening.",
  "verdict": "FAIL",
  "legs": [
   {
@@ -769,5 +769,6 @@
     "status": 401
    }
   }
- ]
+ ],
+ "renumber_note": "authored as T-MIG-094 before the ID collision with r4b's kg-retriever band (c7e0476) was discovered at intake; the rider's ID of record is T-MIG-096"
 }

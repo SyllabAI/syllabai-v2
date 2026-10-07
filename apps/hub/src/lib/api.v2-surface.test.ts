@@ -80,14 +80,14 @@ const CORE_ONLY_PATHS: readonly string[] = [
   "/api/v1/questions/families",
   "/api/v1/exam-papers?subjectId=sub-1",
   "/api/v1/exam-papers/ep-1",
-  // non-attempts learner surfaces (W4) — agenda + state FLIPPED in T-MIG-094
+  // non-attempts learner surfaces (W4) — agenda + state FLIPPED in T-MIG-096
   // (run-001 golden-verify); flashcard-ratings + note-votes STAY CORE until
   // the T-MIG-095 first-field-error defect band closes (frozen core serves
   // subtopicCode/vote first; the port serves cardId/noteId first — a flip
   // would 400 live user writes core accepts)
   "/api/v1/learners/me/flashcard-ratings",
   "/api/v1/learners/me/note-votes",
-  // T-MIG-094: recommendations stays core this band — 400/404 wires verified
+  // T-MIG-096: recommendations stays core this band — 400/404 wires verified
   // (L03/L04) but the 200 NBA-engine wire is not live-proven yet (disclosed)
   "/api/v1/learners/me/recommendations",
   "/api/v1/learners/me/cla/ask",
@@ -119,14 +119,14 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/learners/me/revision-notes", // Wave S3: T-MIG-082 golden-verified (run-002/003, r3a)
       "/api/v1/admin/llm/chain-health", // T-MIG-090: golden-verified (run-005, r0 rider) — NARROWEST: the prefix IS the single endpoint
       "/api/v1/tutor/sessions", // T-MIG-092: golden-verified (run-003 14/14, r0 rider) — NARROW: the sessions tree ONLY, ask/stream stay core
-      "/api/v1/learners/me/agenda", // T-MIG-094: golden-verified (run-001 16/18, r0 rider) — per-exact-subpath rows, NEVER the bare /learners/me
-      "/api/v1/learners/me/flashcard-rating-trail", // T-MIG-094 run-001 L05/L06
-      "/api/v1/learners/me/flashcard-review-schedule", // T-MIG-094 run-001 L07
-      "/api/v1/learners/me/exam-series", // T-MIG-094 run-001 L11
-      "/api/v1/learners/me/assignments", // T-MIG-094 run-001 L14/L15 (incl. the submissions subpath wire)
-      "/api/v1/learners/me/state", // T-MIG-094 run-001 L16
-      "/api/v1/learners/me/course-stats", // T-MIG-094 run-001 L17
-      "/api/v1/learners/me/courses", // T-MIG-094 run-001 L12/L13 — zero emitters, routing availability
+      "/api/v1/learners/me/agenda", // T-MIG-096: golden-verified (run-001 16/18, r0 rider) — per-exact-subpath rows, NEVER the bare /learners/me
+      "/api/v1/learners/me/flashcard-rating-trail", // T-MIG-096 run-001 L05/L06
+      "/api/v1/learners/me/flashcard-review-schedule", // T-MIG-096 run-001 L07
+      "/api/v1/learners/me/exam-series", // T-MIG-096 run-001 L11
+      "/api/v1/learners/me/assignments", // T-MIG-096 run-001 L14/L15 (incl. the submissions subpath wire)
+      "/api/v1/learners/me/state", // T-MIG-096 run-001 L16
+      "/api/v1/learners/me/course-stats", // T-MIG-096 run-001 L17
+      "/api/v1/learners/me/courses", // T-MIG-096 run-001 L12/L13 — zero emitters, routing availability
     ]);
   });
 });
@@ -139,7 +139,7 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     }
   });
 
-  test("the T-MIG-094 lines: the learner-me heart flips per-exact-subpath with the write surfaces core-pinned (r0 rider)", () => {
+  test("the T-MIG-096 lines: the learner-me heart flips per-exact-subpath with the write surfaces core-pinned (r0 rider)", () => {
     // every verified read path of the run-001 matrix resolves to v2
     for (const p of [
       "/api/v1/learners/me/agenda",
