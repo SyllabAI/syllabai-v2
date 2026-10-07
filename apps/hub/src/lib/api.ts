@@ -150,6 +150,22 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // NARROW like attempts: only this family flips — sibling /learners/me/*
   // surfaces stay core until their own capture+verify legs land.
   "/api/v1/learners/me/revision-notes",
+  // T-MIG-090 (r0 rider) — LLM chain-observability report: golden-verified of
+  // record (run-005: the post-merge golden-verify leg 4/4 PASS at merged main
+  // bd4eaeb vs the r4b wire truth golden-captures/t-mig-090/ legs 01-04 —
+  // 401/403/403/200 status+body deep-equal, leg-04 raw wire byte-parity in the
+  // pinned emission order; ruling4 §5 acceptance discharged). NARROWEST form:
+  // the prefix is the single endpoint's exact path — true siblings stay core;
+  // startsWith subpath/partial-segment capture is DOCUMENTED INERT (no such
+  // routes or hub emitters exist on either side — pinned in the surface test).
+  // startsWith-safety: NO hub page emits /api/v1/admin/** today (grep-verified
+  // at the widening commit) — this line is ROUTING AVAILABILITY of record for
+  // the verified surface, with zero live-page routing change; sibling
+  // /api/v1/admin/** paths stay core until their own golden gates. The v2
+  // answer is the ZERO-KEY fail-closed report of record (ruling4 §3):
+  // chainAvailable honestly false with the report of what is missing — never a
+  // 404/501, which is the failure mode the flip law exists to prevent.
+  "/api/v1/admin/llm/chain-health",
 ];
 
 /**
