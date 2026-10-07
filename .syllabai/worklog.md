@@ -4986,3 +4986,21 @@ Work Log:
 Stage Summary:
 - Open-PR queue after this entry: #134 only (held, arbitration fork with the operator). #133 closed superseded of record. Capture band 082..091 + mounts 082-087 of record on main @ 534332c; gates green first-hand at tip.
 - Band completion path of record: #134 resolution -> per-family golden verify vs #135/#136 fixtures -> V2_SURFACE_PREFIXES widening (operator-gated flip law) -> Wave-A deploy. W5 teacher identity + P2 formal closure + P3 witness + P4 sign-off remain operator-side.
+
+
+---
+
+Task ID: ROUND-33 repo receipt (operator order trace 1a115288011d2475: golden-verify the landed mounts against the fixtures, then per-family widening)
+Agent: r3a
+Task: T-MIG-082 golden-verify of the landed #132 mounts + the Wave-S3 widening (flip law step 4).
+
+Work Log:
+- run-003 golden-verify: ALL 7 legs PASS - the landed mounts replay the frozen core wire exactly (status, not_found/401 envelopes, asset stored content-type + cache law, index/body/progress bodies).
+- CORRECTION of record: an interim "/progress route-order defect" claim was a STALE-PROCESS artifact (a boot of r3a's superseded draft still bound :3000); main's landed mount (origin blob 3f0de288, sha-verified; /progress registered literal-first) is CORRECT - engine-behavior law (076 adjudication) settled the read-channel contradiction.
+- FINDINGS filed (non-blocking): (1) api-wide default cache posture - v2 omits the core's no-cache,no-store,max-age=0,must-revalidate on non-asset responses (cross-family class, needs its own card); (2) asset Cache-Control directive order differs, RFC 7234 semantically equal; (3) ingestedAt precision class (us core vs ms v2), 081 watchlist precedent.
+- WIDENING (flip law): V2_SURFACE_PREFIXES + "/api/v1/learners/me/revision-notes" (NARROW - the family only); surface pins updated (family moved CORE_ONLY -> DUAL_RUN with the hub-emitted forms; exact-set pin extended); startsWith-safety holds (no sibling learner surface shares the prefix).
+- GATES first-hand: surface pins 8/8 (227 expect); typecheck x4 exit 0; bun test apps/api packages = 1618 pass / 0 fail / 13 skip / 6375 expect (EXACT main baseline, zero regressions); hub 36/36.
+- Write-path residual of record: markViewed POST has suite-pin coverage (frozen law pinned) but NO golden capture leg (COW-blocked: mutates revision_note_viewed; api.neon.tech DNS-unresolvable lane-side) - disclosed; COW capture remains the operator-gated item.
+
+Stage Summary:
+- T-MIG-082 advances to the final card step: mounted + golden-verified + WIDENED (this PR). The 082 card is complete on merge; 083-091 follow the same capture->verify->widen arc (r4b capture pass claim + #134 integration pending desk reconciliation).

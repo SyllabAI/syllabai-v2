@@ -51,6 +51,13 @@ const DUAL_RUN_PATHS: readonly string[] = [
   "/api/v1/learners/me/attempts/att-1/smart-mark",
   "/api/v1/learners/me/attempts/att-1/parts/p-2/feedback-explanation",
   "/api/v1/learners/me/attempts/att-1/parts/p-2/improvement-plan",
+  // Wave S3 (T-MIG-082, r3a) — learner revision-notes, the family's hub-emitted
+  // forms (index / body / asset / progress / markViewed), golden-verified of record
+  "/api/v1/learners/me/revision-notes",
+  "/api/v1/learners/me/revision-notes/rn_TWGVV6RXN3Ktqb9h",
+  "/api/v1/learners/me/revision-notes/assets/0093b0722e85-2-7-9-preparation-of-leadiisulfate-4.png",
+  "/api/v1/learners/me/revision-notes/progress",
+  "/api/v1/learners/me/revision-notes/progress/views",
 ];
 
 /** Hub-emitted (or hub-adjacent) paths that MUST stay on the core in the dual-run posture. */
@@ -79,7 +86,9 @@ const CORE_ONLY_PATHS: readonly string[] = [
   "/api/v1/learners/me/flashcard-ratings",
   "/api/v1/learners/me/cla/ask",
   "/api/v1/learners/me/answer-input/transcribe",
-  "/api/v1/learners/me/revision-notes",
+  // T-MIG-082 (Wave S3, r3a): revision-notes FLIPPED after its golden gate —
+  // run-002 frozen-core captures (d19289cc8) + run-003 verify 7/7 vs the
+  // landed mounts; moved out of this CORE_ONLY list of record.
   "/api/v1/learners/me/knowledge-graph",
   // classic core-only surfaces (T-MIG-035 check-3 law, still true)
   "/api/v1/subjects",
@@ -97,6 +106,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/curriculum",
       "/api/v1/attempts",
       "/api/v1/learners/me/attempts",
+      "/api/v1/learners/me/revision-notes", // Wave S3: T-MIG-082 golden-verified (run-002/003, r3a)
     ]);
   });
 });

@@ -144,6 +144,12 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   "/api/v1/curriculum", // T-MIG-021 CurriculumController (learner) port
   "/api/v1/attempts", // T-MIG-030 AttemptController submit (+/structured)
   "/api/v1/learners/me/attempts", // T-MIG-030 history + T-MIG-032 self/smart-mark (NARROW — see above)
+  // Wave S3 (T-MIG-082, r3a) — learner revision-notes: golden-verified of record
+  // (run-002 captures d19289cc8 from the live frozen core 6cad6ef + run-003
+  // local verify 7/7 vs the landed #132 mounts; operator trace 1a115288011d2475).
+  // NARROW like attempts: only this family flips — sibling /learners/me/*
+  // surfaces stay core until their own capture+verify legs land.
+  "/api/v1/learners/me/revision-notes",
 ];
 
 /**
