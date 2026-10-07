@@ -3,7 +3,7 @@ task:
   id: T-MIG-087
   title: T-MIG-087 - mount the TeachingCoverage wire routes in v2 (3 endpoints; r4b census; service = 053-t2 analytics; classroom.ts/learnerkg.ts headers explicitly say coverage stays OUT, so a dedicated route file is expected; hub calls YES - 178 coverage refs, the bulk of the teacher heat-map UI)
   owner: '(unassigned - open for claim under earliest-claim-wins T-MIG-071; concurrency census clean at filing @ e5cd4b8: no mount/wire branches, 0 open PRs, no T-MIG-08x cards)'
-  status: 'IN_PROGRESS # r4b mount step of record (PR #132): routes + route-test pins for this family LANDED (see receipts); the card's sequence steps REMAIN — capture Java wire truth from frozen core 6cad6ef -> golden-verify -> widen V2_SURFACE_PREFIXES for this family (flip law) — r3a round-30 filing basis unchanged (operator mount order trace 1a114e1f1aab2521)'
+  status: 'IN_PROGRESS # r4b mount step of record (PR #132): routes + route-test pins for this family LANDED (see receipts); the card's sequence steps REMAIN — capture Java wire truth from frozen core 6cad6ef -> golden-verify -> widen V2_SURFACE_PREFIXES for this family (flip law) — r3a round-30 filing basis unchanged (operator mount order trace 1a114e1f1aab2521); capture step CLAIMED by r4b 2026-10-07 (trace 1a1151442250feb1, branch captures/r4b-083-091, local-boot w0a pattern)'
   priority: P1
   wave: s2-wire-layer
   deps: []
