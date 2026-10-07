@@ -58,6 +58,7 @@ import { buildClassroomRouters } from "./routes/classroom";
 import { buildResearchRouters } from "./routes/research";
 import { buildLearnerMeRouters } from "./routes/learnerme";
 import { buildLearnerKgRouters } from "./routes/learnerkg";
+import { buildRevisionNotesRouters } from "./routes/revision-notes";
 import { buildTutorRouters } from "./routes/tutor";
 import { buildClaRouters } from "./routes/cla";
 import { toErrorResponse, apiError } from "./services/identity/errors";
@@ -78,6 +79,7 @@ const answerInput = buildAnswerInputRouters();
 const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
 const learnerKg = buildLearnerKgRouters();
+const revisionNotes = buildRevisionNotesRouters();
 const tutor = buildTutorRouters();
 const cla = buildClaRouters();
 const sme = buildSmeRouters();
@@ -239,6 +241,26 @@ app.route("/api/v1/learners/me", learner.learnerRoute);
 // minimal app-level wiring per the 010/020/021/030/032/041/062 precedent
 // so R0 can ratify or lift them out at review.
 app.route("/api/v1/learners/me", learnerKg.learnerKgRoute);
+
+// Learner revision-notes router (T-MIG-082 — the mount band, operator order
+// trace 1a114e1f1aab2521). Path parity with RevisionNoteLearnerController
+// (syllabai-core @ 6cad6ef :25-69): the 5 learner surfaces under
+// /api/v1/learners/me/revision-notes (index/body/asset/progress/mark-viewed)
+// share the /api/v1/learners/me base with the 041/043/079 routers (each owns
+// its specific paths; Hono resolves per router). Falls under the frozen
+// anyRequest().authenticated() rule — the router owns its authz internally.
+// The service is the T-MIG-053 t3 port (34 pins); the golden cases for this
+// family are CAPTURE-PENDING (the 178-case corpus exercises none of it — r4b
+// census 6450ff5, r1c Task-33), so this mount is INERT in the dual-run
+// posture: api.v2-surface.test.ts keeps "/api/v1/learners/me/revision-notes"
+// core-only and V2_SURFACE_PREFIXES widens ONLY on the family's new
+// golden-verified surface (the T-MIG-037 flip law; card sequence capture →
+// mount → golden-verify → widen).
+//
+// The card's scope.allowed explicitly covers this file's mount lines; the
+// wiring still ships as its own commit per the 010/020/021/030/032/041/079
+// precedent so R0 can ratify or lift it out at review.
+app.route("/api/v1/learners/me", revisionNotes.revisionNotesRoute);
 
 // Marking routers (T-MIG-032 — Wave 3). Path parity with the frozen core:
 // LearnerSelfMarkController + StudentSmartMarkController share the
