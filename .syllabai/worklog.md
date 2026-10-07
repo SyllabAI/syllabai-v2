@@ -5109,3 +5109,14 @@ Work Log:
 
 Stage Summary:
 - Wave-A + incident + Option B landed of record; hub signup browser-path PROVEN fixed; register now blocked ONLY by the w2 INSERT grant (operator 1-liner away); CSP fix on the board as PR #139; receipts debt cleared.
+
+## R0-AUTO receipt — cron-202610080000 — PR #139
+
+- Task ID: cron-202610080000 (Job 438940, 00:00 +08 sweep)
+- PR #139: fix(hub): CSP connect-src must carry the v2 origin (Wave-A browser-direct families)
+- Author of record: w0a <w0a@syllabai.local> (recusal clear — not desk's own past work)
+- Head: 47f84586d40d11f99ef76794cd1100cb465ac0d3 → merged as e2d1f7bfda9f34a7d06ea41b044bac97acae1c82 (merge_method=merge, head-sha guarded, no force)
+- Gates: head CI verify+hub success (CI_GATE=PASS); mergeable=clean @ base 17613ed (no intake needed); reviews/comments 0 blocking; fence clean — 1 file apps/hub/next.config.ts +16/-1, no java, no outside scope, no Neon/prod writes
+- Post-merge: main tip e2d1f7b CI hub+verify success → green (verified 16:04Z)
+- Notes: CSP connect-src derived from NEXT_PUBLIC_API_V2_BASE_URL — closes Wave-A browser-direct seam left by ghost-domain root cause; hub-v2 redeploy will pick this up on next Vercel build
+- Receipt commit: bookkeeping-only (.syllabai/** only)
