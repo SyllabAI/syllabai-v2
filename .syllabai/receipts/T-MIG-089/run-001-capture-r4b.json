@@ -1,0 +1,54 @@
+{
+ "card": "T-MIG-089",
+ "family": "glm-ocr (pairs + findings)",
+ "run": "run-001-capture-r4b",
+ "agent": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+ "operator_order": "trace 1a1151442250feb1 \"start the capture pass\"",
+ "method": "LOCAL boot of frozen core 6cad6ef per the w0a T-MIG-004 run-002 pattern of record: tree copied to /home/z/build/core (upstream untouched), mvn -DskipTests package BUILD_OK (JDK Temurin 25.0.4.1, Maven 3.9.9), local PG 17.11 + pgvector 0.8.7 user-tree (trixie debs dpkg -x), port 5433, db syllabai_capture, Flyway 63 migrations applied at boot; server.port 8090; SYLLABAI_LLM_MODE=test; GROQ/GEMINI/OPENROUTER disabled; synthetic SYLLABAI_JWT_SECRET + SYLLABAI_TEACHER_JOIN_CODE (teacher registered via the honest API path); first ADMIN claimed via POST /api/v1/auth/bootstrap-admin (V19 state law). Zero production writes, zero Neon reads/writes.",
+ "seed": "cap_learner/cap_teacher/cap_admin @example.invalid (synthetic, passwords >=12 with letter+digit, discarded post-run); teacher class \"Capture Class A\" (courseSlug capture-phys) + learner enrolled; curriculum seeded by core migrations (31 TOPIC / 2 SUBJECT / 167 CONCEPT / 30 MISCONCEPTION / 5 UNIT / 200 SUBTOPIC; spec-point law = SUBTOPIC + applicability != null)",
+ "legs": [
+  {
+   "leg": "leg-01-pairs-no-token-401",
+   "method": "POST",
+   "path": "/api/v1/teacher/content/glm-ocr/pairs",
+   "status": 401
+  },
+  {
+   "leg": "leg-02-pairs-learner-403",
+   "method": "POST",
+   "path": "/api/v1/teacher/content/glm-ocr/pairs",
+   "status": 403
+  },
+  {
+   "leg": "leg-03-pairs-empty-body-400",
+   "method": "POST",
+   "path": "/api/v1/teacher/content/glm-ocr/pairs",
+   "status": 500
+  },
+  {
+   "leg": "leg-04-pairs-null-canonical-400",
+   "method": "POST",
+   "path": "/api/v1/teacher/content/glm-ocr/pairs",
+   "status": 500
+  },
+  {
+   "leg": "leg-05-findings-rnd-paper-200or404",
+   "method": "GET",
+   "path": "/api/v1/teacher/content/glm-ocr/papers/00000000-0000-4000-8000-000000000026/findings",
+   "status": 404
+  },
+  {
+   "leg": "leg-06-findings-admin-200",
+   "method": "GET",
+   "path": "/api/v1/teacher/content/glm-ocr/papers/00000000-0000-4000-8000-000000000026/findings",
+   "status": 404
+  }
+ ],
+ "scrub": "access tokens never persisted (auth legs excluded from emit; login legs are seed infra); all UUIDs mapped to stable fakes 00000000-0000-4000-8000-{seq}; map committed in .syllabai/receipts/capture/2026-10-07/uuid-map-r4b.json; identities are synthetic @example.invalid",
+ "seams": [
+  "pairs SUCCESS shape requires real canonical qp/ms documents + OCR path (LLM test-mode fail-closed locally) \u2014 500 internal_error quirk shapes captured; pairs-success is a disclosed seam"
+ ],
+ "quirks": [
+  "pairs with {} or null-canonicals yields 500 internal_error (NPE-family quirk, same class as the T-MIG-053 self-mark NPE of record) \u2014 no 400 validation layer on this endpoint"
+ ]
+}

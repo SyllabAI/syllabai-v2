@@ -1,0 +1,70 @@
+{
+ "card": "T-MIG-088",
+ "family": "teacher content routing (enumerate/structured/fetch/question topics)",
+ "run": "run-001-capture-r4b",
+ "agent": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+ "operator_order": "trace 1a1151442250feb1 \"start the capture pass\"",
+ "method": "LOCAL boot of frozen core 6cad6ef per the w0a T-MIG-004 run-002 pattern of record: tree copied to /home/z/build/core (upstream untouched), mvn -DskipTests package BUILD_OK (JDK Temurin 25.0.4.1, Maven 3.9.9), local PG 17.11 + pgvector 0.8.7 user-tree (trixie debs dpkg -x), port 5433, db syllabai_capture, Flyway 63 migrations applied at boot; server.port 8090; SYLLABAI_LLM_MODE=test; GROQ/GEMINI/OPENROUTER disabled; synthetic SYLLABAI_JWT_SECRET + SYLLABAI_TEACHER_JOIN_CODE (teacher registered via the honest API path); first ADMIN claimed via POST /api/v1/auth/bootstrap-admin (V19 state law). Zero production writes, zero Neon reads/writes.",
+ "seed": "cap_learner/cap_teacher/cap_admin @example.invalid (synthetic, passwords >=12 with letter+digit, discarded post-run); teacher class \"Capture Class A\" (courseSlug capture-phys) + learner enrolled; curriculum seeded by core migrations (31 TOPIC / 2 SUBJECT / 167 CONCEPT / 30 MISCONCEPTION / 5 UNIT / 200 SUBTOPIC; spec-point law = SUBTOPIC + applicability != null)",
+ "legs": [
+  {
+   "leg": "leg-01-enumerate-no-token-401",
+   "method": "GET",
+   "path": "/api/v1/teacher/content/enumerate",
+   "status": 401
+  },
+  {
+   "leg": "leg-02-enumerate-learner-403",
+   "method": "GET",
+   "path": "/api/v1/teacher/content/enumerate",
+   "status": 403
+  },
+  {
+   "leg": "leg-03-enumerate-200",
+   "method": "GET",
+   "path": "/api/v1/teacher/content/enumerate?query=physics",
+   "status": 200
+  },
+  {
+   "leg": "leg-04-enumerate-structured-200",
+   "method": "GET",
+   "path": "/api/v1/teacher/content/enumerate/structured?nodeCode=cap-node&axis=topic",
+   "status": 200
+  },
+  {
+   "leg": "leg-05-fetch-empty-200",
+   "method": "GET",
+   "path": "/api/v1/teacher/content/fetch?query=physics",
+   "status": 200
+  },
+  {
+   "leg": "leg-06-fetch-unknown-query-200or400",
+   "method": "GET",
+   "path": "/api/v1/teacher/content/fetch?query=zzz-no-such-paper",
+   "status": 200
+  },
+  {
+   "leg": "leg-07-topics-rnd-q-200or404",
+   "method": "GET",
+   "path": "/api/v1/teacher/content/questions/00000000-0000-4000-8000-000000000025/topics",
+   "status": 404
+  },
+  {
+   "leg": "leg-08-topics-post-rnd-q-404",
+   "method": "POST",
+   "path": "/api/v1/teacher/content/questions/00000000-0000-4000-8000-000000000025/topics",
+   "status": 404
+  },
+  {
+   "leg": "leg-09-topics-post-bad-body-400",
+   "method": "POST",
+   "path": "/api/v1/teacher/content/questions/00000000-0000-4000-8000-000000000025/topics",
+   "status": 400
+  }
+ ],
+ "scrub": "access tokens never persisted (auth legs excluded from emit; login legs are seed infra); all UUIDs mapped to stable fakes 00000000-0000-4000-8000-{seq}; map committed in .syllabai/receipts/capture/2026-10-07/uuid-map-r4b.json; identities are synthetic @example.invalid",
+ "seams": [],
+ "quirks": [
+  "enumerate + fetch require ?query=; enumerate/structured requires ?nodeCode=; 400 validation_failed shapes carry the exact missing-parameter name"
+ ]
+}
