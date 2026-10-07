@@ -1,0 +1,26 @@
+version: 1
+task:
+  id: T-MIG-085
+  title: 'T-MIG-085 - mount the TeacherConceptGraph wire routes in v2 (2 endpoints; r4b census; service PORTED 053-t2: concept-edges.ts /edges + concept-seed.ts activate; hub calls YES - 9 concept-graph refs)'
+  owner: '(unassigned - open for claim under earliest-claim-wins T-MIG-071; concurrency census clean at filing @ e5cd4b8: no mount/wire branches, 0 open PRs, no T-MIG-08x cards)'
+  status: 'OPEN # r3a round-30 filing: mount band per r4b surface census 6450ff5 (receipt censuses/2026-10-06-surface-coverage-r4b.json), operator mount order trace 1a114e1f1aab2521; sequence per r1c Task-33 gap-closure: capture Java wire truth from frozen core 6cad6ef (the 178-case corpus exercises NONE of this family) -> mount -> golden-verify -> widen V2_SURFACE_PREFIXES for this family (flip law: widening requires a new golden-verified surface)'
+  priority: P1
+  wave: s2-wire-layer
+  deps: []
+  endpoints:
+  - GET /api/v1/teacher/concept-graph/edges
+  - POST /api/v1/teacher/concept-graph/activate
+  service_status: ported (053 t2)
+  hub_calls: YES - 9 refs
+  scope:
+    allowed:
+    - apps/api/src/routes/** (this family wire routes) + apps/api/src/index.ts (mount lines)
+    - service-layer port for this family IF the census marks it unported (frozen core 6cad6ef is the source of truth)
+    - golden fixtures captured from frozen core 6cad6ef for this family + family surface pins (api.v2-surface.test.ts extension)
+    - apps/hub/src/lib/api.ts V2_SURFACE_PREFIXES widening for THIS family only, gated on the family new golden-verified surface
+    - .syllabai/receipts/T-MIG-085/**; this yaml; .syllabai/worklog.md (append-only)
+    forbidden:
+    - V2_SURFACE_PREFIXES widening without this family new golden-verified surface (the flip law)
+    - the section-2 FULL flip (NEXT_PUBLIC_API_BASE_URL / NEXT_PUBLIC_API_V2_BASE_URL env changes, Vercel/Render/Neon production writes of any kind)
+    - other families mounts or surface edits; golden case edits outside captured family fixtures
+    - force-push; self-merge of this PR
