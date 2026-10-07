@@ -5004,3 +5004,17 @@ Work Log:
 
 Stage Summary:
 - T-MIG-082 advances to the final card step: mounted + golden-verified + WIDENED (this PR). The 082 card is complete on merge; 083-091 follow the same capture->verify->widen arc (r4b capture pass claim + #134 integration pending desk reconciliation).
+Task ID: R0-MIGRATION-VERIFY-1
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: operator trace 1a1154d2dfd3a0e9 — verify the entire migration with syllabai-core and syllabai-hub
+
+Work Log:
+- PLANES (first-hand probes, 07:41Z, read-only): core (Render) WARM — /health unauth 401 Boot-default verbatim in 0.26s; curriculum unauth 401 0.23s; bogus-creds login 401 invalid_credentials with ns-precision timestamp (Java-genuine) in 5.9s (BCrypt cost). Hub-v2 (deployment of record @ ef0055f): / + /login 200, /api/health 200 {dataMode:mock, coreConfigured:true} — pre-flip posture confirmed. Pilot hub (syllabai.vercel.app): STILL 500 MIDDLEWARE_INVOCATION_FAILED on / and /login with favicon-404 edge differential intact — P0 outage 19:31Z -> 07:41Z (~12.2h), zero recovery. Differential: hub-v2 serves 200 on the same infra -> pilot fault is project-deploy-level, NOT Vercel-wide, NOT the repo.
+- FUNCTIONAL (of-record synthesis + corroboration): W7-SMOKE run-001 (R7a, 05:49-06:01Z, freeze-window-sanctioned, operator witness) closed ALL THREE loops live against prod core — learner register->login->agenda->curriculum->rating->review-schedule->trail->structured-attempt 201 (part-count law: 1-part 400 / all-5 201) -> self-mark (500 = T-MIG-053 captured quirk; contract-shaped 201, 4/5 SELF_MARKED) -> history 200; teacher authz 403/403/401/403 fail-closed; tutor SSE opened/observed/closed 200.
+- GATES: CI at tip d809389 verify+hub SUCCESS (first-hand; r7a first-hand: typecheck x4 exit 0, 1618/0/1631 ran/86 files, selftest OK). Golden replay of record: run #20 @ cfc8a51 167/177, 10 reds ALL pre-filed justified (8 identity volatility + 2 createdAt precision), zero non-justified — P2 criterion MET. 4/4 watchlist flip holds (R0-CRON-FLIP-CHECK-1); cron formal confirmation still pending (scheduled total=1 at 07:45Z). Register: 84 cards = 74 DONE / 9 CAPTURED / 1 IN_PROGRESS (082, #134+#137 open).
+- CUTOVER STATE MACHINE: position PRE-FLIP — P1 MET, P2 MET, P3 spine GREEN, P4 (operator sign-off) PENDING; next gates = §1 freeze + §2 flip (NEXT_PUBLIC_API_BASE_URL on hub prj), both operator-side. Rollback lever GO (core warm, envelope verbatim 0.26s).
+- VERDICT: MIGRATION FIDELITY VERIFIED (every executable layer green first-hand or of-record); CUTOVER READY-PENDING-OPERATOR; the only red surface is the pilot hub project itself (P0 deploy-level middleware fault on the OLD stack's project) — not a V2 fidelity gap.
+- BOUNDARY: read-only GETs + no-write 401 probes only; zero prod writes, zero Vercel/Render/Neon settings contact; receipt .syllabai/receipts/R0-MIGRATION-VERIFY-1/run-001-full-migration-verify.json + this worklog, isolated worktree off d809389, no force.
+
+Stage Summary:
+- Full-migration verification filed of record: fidelity VERIFIED across core/hub/parity/register planes; cutover machine at PRE-FLIP with P3 spine green and rollback lever GO; watchlist = cron verdict (~09-12Z), pilot-hub P0 operator triage, #134 routing fork + #137. Returns to sweep posture.
