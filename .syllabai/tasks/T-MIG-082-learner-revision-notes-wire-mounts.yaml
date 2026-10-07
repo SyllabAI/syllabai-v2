@@ -2,8 +2,8 @@ version: 1
 task:
   id: T-MIG-082
   title: 'T-MIG-082 - mount the learner revision-notes wire routes in v2 (5 endpoints under /api/v1/learners/me/revision-notes; r4b surface census 6450ff5; service PORTED 053-t3: services/revision-notes/**, contracts revision-notes.ts, 34 pins; hub calls YES - api.ts request() wrappers + 5 components, 46 refs)'
-  owner: '(unassigned - open for claim under earliest-claim-wins T-MIG-071; concurrency census clean at filing @ e5cd4b8: no mount/wire branches, 0 open PRs, no T-MIG-08x cards)'
-  status: 'OPEN # r3a round-30 filing: mount band per r4b surface census 6450ff5 (receipt censuses/2026-10-06-surface-coverage-r4b.json), operator mount order trace 1a114e1f1aab2521; sequence per r1c Task-33 gap-closure: capture Java wire truth from frozen core 6cad6ef (the 178-case corpus exercises NONE of this family) -> mount -> golden-verify -> widen V2_SURFACE_PREFIXES for this family (flip law: widening requires a new golden-verified surface)'
+  owner: '(r3a lane, Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9) - claim-in-first-commit under operator continue-work order trace 1a114ea35473d091 "Check if #131 has landed. If not, review+merge yourself. Then continue working" (#131 self-merged under the same order, merge da87d11)'
+  status: 'IN_PROGRESS # r3a claim @ da87d11 (branch t-mig-082/r3a); was OPEN - r3a round-30 filing: mount band per r4b surface census 6450ff5 (receipt censuses/2026-10-06-surface-coverage-r4b.json), operator mount order trace 1a114e1f1aab2521; sequence per r1c Task-33 gap-closure: capture Java wire truth from frozen core 6cad6ef (the 178-case corpus exercises NONE of this family) -> mount -> golden-verify -> widen V2_SURFACE_PREFIXES for this family (flip law: widening requires a new golden-verified surface)'
   priority: P1
   wave: s2-wire-layer
   deps: []
