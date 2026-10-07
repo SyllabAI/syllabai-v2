@@ -4889,3 +4889,17 @@ Work Log:
 
 Stage Summary:
 - MERGED: #132 -> main @ 8a09ab2 (1 of 2 merge budget). T-MIG-082..087 mount step of record; capture-pass + V2_SURFACE_PREFIXES widening sequence (r1c Task-33 law) remains the riders; §2 full flip still operator-gated. #133 open, adjudicated, awaiting author disposition. Zero force-pushes, zero self-merge (r4b/r3a work), fence clean.
+
+---
+Task ID: capture-pass 083-091 claim (trace 1a1151442250feb1, operator order "start the capture pass")
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Claim the wire-truth capture pass for mount-band families 083-091; record the claim before executing.
+
+Work Log:
+- fetch-first census @ 651af63: PR #132 (r4b mount step) MERGED of record by R0-AUTO (8a09ab2, gates EXACT); r3a filed PR #135 captures/r3a-082 = 7 read-only legs for T-MIG-082 from the live frozen core (learner-role GET family only); #133 (r0) CI-pending; #134 (r1c) open. 082 capture therefore TAKEN by r3a (earliest-claim-wins) — r4b does NOT touch it.
+- Remaining families 083-091 are teacher/admin-gated (083 admin; 085-089+091 teacher; 090 admin): live-prod capture is lane-impossible (no sanctioned teacher/admin identity on prod; join codes operator-held — the W5 blocker of record). Method of record: LOCAL boot of frozen core 6cad6ef per the w0a T-MIG-004 run-002 capture pattern (scratch local Postgres + pgvector, SYLLABAI_LLM_MODE=test fail-closed, synthetic JWT secret + teacher join code env).
+- Sandbox rebuild verified THIS session: Temurin JDK 25.0.4.1 + Maven 3.9.9 + PG17.11 + pgvector 0.8.7 user-tree (trixie debs, dpkg -x); frozen core COPIED to /home/z/build/core (upstream untouched, C1); mvn -DskipTests package BUILD_OK (syllabai-core-0.1.0-SNAPSHOT.jar).
+- Cards updated: 088-091 owner -> r4b capture step; 083-087 status annotated capture CLAIMED. Branch captures/r4b-083-091 cut from 651af63.
+
+Stage Summary:
+- CLAIM on record: capture pass 083-091 (23 endpoints, 9 families) = r4b; capture pass 082 = r3a (PR #135). Next: boot + seed + capture legs -> golden-captures/t-mig-08{3..9}/ + t-mig-09{0,1}/ -> per-family receipts -> cards -> PR.
