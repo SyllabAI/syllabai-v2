@@ -1,0 +1,50 @@
+{
+  "task_id": "T-MIG-082",
+  "run": "run-001-claim",
+  "lane": "R0-integrator",
+  "session": "web-1f157e25-0ed7-4f18-8956-3b2a993bc646",
+  "operator_trace": "1a11549e3f3ff6c5",
+  "directive": "wire-mounts band (T-MIG-082)",
+  "claimed_at": "2026-10-07T05:40:18Z",
+  "base_main": "e5cd4b8205535a73594d184a5137f491cc43ad4c (advanced from 6e1d909 mid-claim by r1c Task-33's .syllabai-only receipt — fetch-first rebased before the claim commit; baseline gates were run at 6e1d909, the suite is untouched by .syllabai-only commits)",
+  "head_stability_assert": "git diff vs origin/main re-checked after rebase — only .syllabai/worklog.md changed on main (r1c Task-33 receipt, -14 lines union), zero code contact; the claim proceeds on e5cd4b8",
+  "frozen_core": "SyllabAI/syllabai-core @ 6cad6ef (fresh anonymous read-only shallow clone, HEAD verified 6cad6ef9463e8d21f1555456561a4caaf7e89395 — the census-pinned ref)",
+  "directive_resolution": {
+    "question": "what the operator named",
+    "answer": "the register action the r4b surface-coverage census RECOMMENDED ('file a mount-the-deferred-routes band, or per-family bands, before any §2 cutover') and Task-32's Wave-B of record ('mount the 30 deferred endpoints, widen V2_SURFACE_PREFIXES family-by-family under golden gates, retire the core') — filed as ONE card with the 053/072 tranche doctrine: tranche A = pure wire mounts over ported services (15 endpoints), tranche B = service ports first (7 endpoints), tranche C = riders and law-bound exclusions"
+  },
+  "preclaim_zero_collision_scan": {
+    "ls_remote": "refs/heads/*082* → ZERO t-mig-082 heads",
+    "open_prs": "0 open PRs of record at claim time (GitHub API, token-verified)",
+    "card_register": ".syllabai/tasks/ ends at T-MIG-081 — T-MIG-082 did not exist before this claim (card filed IN this claim commit, claim-in-first-commit law)",
+    "worklog_tail": "read through the r1c Task-32 entry (Wave-B staging) — no rival 082 claim anywhere"
+  },
+  "baseline_gates_on_main": {
+    "commit": "6e1d909",
+    "typecheck": "bun run typecheck — 4 projects, exit 0",
+    "tests": "bun test apps/api packages → 1569 pass / 0 fail / 13 skip / 6143 expect() across 83 files",
+    "selftest": "bun golden/runner.ts --selftest → OK"
+  },
+  "recon_of_record": {
+    "census_readjudication_at_6e1d909": [
+      "correction: GET /api/v1/teacher/content/questions/{id}/topics ALREADY mounted at census head (routes/content/index.ts :231, verified git show b3d75e5 first-hand) — content-teacher family 5 claimed → 4 genuine",
+      "subjects/tree x2 are the T-MIG-035 check-3 core-only LAW, a designed exclusion — not a gap",
+      "tranche-A services confirmed ported first-hand (export signatures read): revision-notes learner.ts x5 fns + ingest.ts RevisionNoteIngestService, knowledge/index.ts coverageList/History/Mark, knowledge/graphs.ts classGraph/classNodeStudents/classLearnerKnowledgeGraph, teacher/concept-seed.ts activateConceptGraph + teacher/concept-edges.ts teacherConceptEdges",
+      "tranche-B confirmed UNPORTED first-hand: no EnumerateService/FetchService port (rg over apps/api/src + packages), no glm-ocr trace, no exam-series import in services/curriculum, no FailoverLlmChain instrument (B4 filed as BLOCKED-ON-DECISION, never improvised)"
+    ],
+    "mount_mechanics_law": "the 079 precedent: each new router owns EXACTLY its URL space, mounted before the app.all('/api/v1/*') 404-after-auth fallback; first-match-wins per-router resolution keeps every existing router authoritative for its own paths",
+    "gate_laws": "TEACHER/ADMIN via requireRole (classroom.ts :254 precedent); ADMIN via requireRole (sme.ts :63 precedent); learner notes requireAuth; shells PRECEDE param parsing"
+  },
+  "tranche_a_execution": {
+    "branch": "t-mig-082/r0",
+    "new_routers": [
+      "apps/api/src/routes/revisionnotes.ts — learnerRouter (5 routes @ /api/v1/learners/me/revision-notes) + adminRouter (2 routes @ /api/v1/admin/revision-notes)",
+      "apps/api/src/routes/coverage.ts — 3 routes @ /api/v1/teacher/classes/:classId/coverage",
+      "apps/api/src/routes/classkg.ts — 3 routes @ /api/v1/teacher/classes/:classId/knowledge-graph",
+      "apps/api/src/routes/conceptgraph.ts — 2 routes @ /api/v1/teacher/concept-graph"
+    ],
+    "mount_blocks": "ONE flagged index.ts block per router (import + construction + app.route), the 010/020/021/030/032/041/062/079 OUT-OF-FENCE precedent — the card's mount mandate covers index.ts",
+    "hands_off": "ZERO service edits in tranche A (the services are the 053/043/020 lanes' ports, consumed as-is); golden/** untouched; hub untouched"
+  },
+  "next": "tranche A pins + gates + PR; tranches B1-B3 as subsequent sessions of this card; B4 (chain-health) filed BLOCKED-ON-DECISION for R0/R6 or the operator"
+}

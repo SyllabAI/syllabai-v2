@@ -1,0 +1,60 @@
+version: 1
+task:
+  id: T-MIG-082
+  title: "T-MIG-082 — the wire-mounts band (Wave-B): mount the deferred v2 wire routes over the ported service layer and port the residual services, closing the r4b surface-coverage gap of record (census 6450ff5, receipt censuses/2026-10-06-surface-coverage-r4b.json: 30 core endpoints in 10 families unmounted; Task-32 Wave-B of record 'mount the 30 deferred endpoints, widen V2_SURFACE_PREFIXES family-by-family under golden gates, retire the core'). TRANCHE DOCTRINE (the 053/072 precedent): tranche A = pure wire mounts over ALREADY-PORTED services (15 endpoints, 5 families); tranche B = service ports first then routes (7 endpoints, 4 families); tranche C = the riders and law-bound exclusions"
+  owner: "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646) — operator directive trace 1a11549e3f3ff6c5 'wire-mounts band (T-MIG-082)': file + claim + execute the band the r4b census recommended the desk file ('RECOMMENDED REGISTER ACTION: file a mount-the-deferred-routes band, or per-family bands, before any §2 cutover')"
+  status: IN_PROGRESS # claimed 2026-10-07T05:40Z, tranche A implemented on t-mig-082/r0 (PR of record); tranches B/C recorded below
+  priority: P1 # the §2 flip-safety blocker of record — a full flip today would 404 every hub-emitted path in these families (r4b consequence)
+  wave: 8
+  deps: [T-MIG-053, T-MIG-079, T-MIG-020, T-MIG-041, T-MIG-043]
+  scope_of_record:
+    # re-adjudicated first-hand at claim head 6e1d909 (census head b3d75e5);
+    # the census's content-teacher family is CORRECTED of record below.
+    tranche_a_pure_wire_mounts: # services 100% ported of record — routes + zod params + mounts + pins only
+      - "A1 learner revision-notes x5 @ /api/v1/learners/me/revision-notes — RevisionNoteLearnerController.java :26-68 (frozen 6cad6ef): GET index, GET /{noteId} (canonical-order 404-first), GET /assets/{filename} (content-type + Cache-Control private max-age=1h — the ResponseEntity law), GET /progress, POST /progress/views (204 no-content, idempotent first-view-wins); services/revision-notes/learner.ts (revisionNotesIndex/revisionNoteBody/revisionNoteAsset/revisionNoteProgress/revisionNoteMarkViewed)"
+      - "A2 admin revision-notes x2 @ /api/v1/admin/revision-notes — RevisionNoteAdminController.java :20-52: POST /ingest (multipart, empty-file 400 'multipart part 'file' (the corpus ZIP) is required'), GET /status; ADMIN gate (the sme.ts requireRole precedent); services/revision-notes/ingest.ts RevisionNoteIngestService (parse+validate BEFORE the transaction, replace-all + orphan sweep inside ONE transaction)"
+      - "A3 TeachingCoverage x3 @ /api/v1/teacher/classes/{classId}/coverage — TeachingCoverageController.java :60-160: GET list, GET /{specPointNodeId}/history (newest first), PUT /{specPointNodeId} (gates IN ORDER: 404 class → 403 owner → 409 archived → 400 status-parse → 404 node → 400 V39 spec-point invariant; identical re-mark = honest no-op); services/knowledge/index.ts coverageList/coverageHistory/coverageMark"
+      - "A4 ClassKnowledgeGraph x3 @ /api/v1/teacher/classes/{classId}/knowledge-graph — ClassKnowledgeGraphController.java :57-112: GET graph, GET /nodes/{nodeId}/students, GET /learners/{learnerId}/knowledge-graph (the §17 privacy boundary: ENABLED-member 404, short-circuit BEFORE user lookup); services/knowledge/graphs.ts classGraph/classNodeStudents/classLearnerKnowledgeGraph (the 053 t1 ports)"
+      - "A5 TeacherConceptGraph x2 @ /api/v1/teacher/concept-graph — TeacherConceptGraphController.java :58-96: POST /activate (deterministic idempotent seed), GET /edges?rootId= (subtree scope + misconception-family widening, sorted relation/sourceCode/targetCode, PART_OF excluded); services/teacher/concept-seed.ts activateConceptGraph + concept-edges.ts teacherConceptEdges"
+    tranche_b_service_ports_first: # frozen service has NO v2 port yet — port then mount (subsequent sessions of this card)
+      - "B1 RoutingController family x3 @ /api/v1/teacher/content/{fetch,enumerate,enumerate/structured} — RoutingController.java :39-159 + FetchService + EnumerateService (the T-C07 scope law: 'enumerate never runs unscoped'); NO v2 port of either service exists (verified rg-first-hand); content/index.ts already mounts the review/read surfaces (020)"
+      - "B2 GlmOcrIngestion x2 @ /api/v1/teacher/content/glm-ocr — GlmOcrIngestionController.java :44-101: POST /pairs (201, verbatim parser contract, canonical subtrees as raw JSON), GET /papers/{paperId}/findings (MISSING bridge record = 404, empty findings = clean 200 [] — record existence and finding count are different questions); surface test of record: 'glm-ocr is W6-unported'"
+      - "B3 TeacherExamSeriesImport x1 @ POST /api/v1/teacher/curriculum/exam-series — TeacherExamSeriesImportController.java :21-37 + ExamSeriesImportService fail-closed law (no row without an https citation, no deadline-after-window, no silent non-published rows; re-import moves measured fields WITH their newer citation); learner-side exam-series reads already ported, the import path is not"
+      - "B4 LlmAdmin x1 @ GET /api/v1/admin/llm/chain-health — LlmAdminController.java :23-36 (chainAvailable + providers memberHealth, Master Spec §32/§26.1); BLOCKED ON A DECISION: v2 has no FailoverLlmChain single instrument (the pool law ADR-023 lives in the frozen core's failover chain; v2 calls providers ad-hoc from tutor/cla/answer-input) — the honest port needs a chain-of-record ruling (R0/R6) or an operator-ordered adapter law; filed, not improvised"
+    tranche_c_riders_and_exclusions:
+      - "EXCLUDED-BY-LAW subjects/tree x2 (GET /api/v1/subjects, GET /api/v1/tree) — the T-MIG-035 check-3 core-only law stands; the census counted them in the 30 but they are a DESIGNED exclusion, not a gap"
+      - "CORRECTION OF RECORD (census overcount): GET /api/v1/teacher/content/questions/{questionId}/topics was ALREADY mounted at census head b3d75e5 (routes/content/index.ts :231, the 020 band — verified git show first-hand); only its POST sibling is a declared write stub. Census content-teacher family = 5 claimed, 4 genuine"
+      - "OUT-OF-FENCE content write stubs (past-papers POST, validate/place/flag family, questions/{id}/topics POST …) — T-MIG-023's declared band ('content write surfaces — to be filed by R0'), NOT this band"
+      - "RIDER (case-owner/corpus lane + operator, out of this fence): V2_SURFACE_PREFIXES widening — the corpus exercises NONE of the unmounted families (r4b golden_gate_scope), so the flip law ('widening requires a new golden-verified surface') cannot fire for them until golden captures exist; hub api.ts is NOT touched by this card"
+  execution_record: >
+    (tranche A impl 2026-10-07, R0-integrator) Claimed @ 05:40Z on main 6e1d909
+    (baseline gates first-hand: typecheck x4 exit 0; 1569 pass / 0 fail / 13
+    skip / 6143 expect() across 83 files — the exact round-N baseline;
+    golden selftest OK). Frozen law source re-cloned anonymous read-only at
+    the census-pinned ref 6cad6ef9463e8d21f1555456561a4caaf7e89395. New
+    routers, each owning EXACTLY its URL space (the 079 first-match-wins
+    per-router law, mounted BEFORE the app.all('/api/v1/*') 404-after-auth
+    fallback): routes/revisionnotes.ts (learnerRouter @ /api/v1/learners/me/
+    revision-notes + adminRouter @ /api/v1/admin/revision-notes),
+    routes/coverage.ts @ /api/v1/teacher/classes/:classId/coverage,
+    routes/classkg.ts @ /api/v1/teacher/classes/:classId/knowledge-graph,
+    routes/conceptgraph.ts @ /api/v1/teacher/concept-graph. TEACHER/ADMIN
+    gates via requireRole (the classroom.ts :254 precedent); ADMIN gate on
+    the admin ingest/status pair (the sme.ts :63 precedent); learner notes
+    requireAuth. Asset law: Content-Type from the stored content_type +
+    Cache-Control: private, max-age=3600 (the ResponseEntity
+    cachePrivate(maxAge(1,HOURS)) law). 204-noContent on markViewed. The
+    coverage PUT returns the row view (200), NOT 201 — the frozen
+    @PutMapping law. Pins in apps/api/test/** (the 021/041/079 in-memory
+    Hono + fakeSql pattern): authz shells (401 precedes param law), param
+    laws (missing/malformed), the gate-ORDER chains verbatim, the idempotent
+    re-mark no-op, the first-view-wins marker, the asset cache headers, the
+    concept-edge ordering law, activate idempotence. golden/** untouched.
+  scope:
+    allowed:
+      - "apps/api/src/routes/** (the five new URL spaces), apps/api/src/services/** (tranche-B port surfaces ONLY: content fetch/enumerate, glm-ocr, exam-series import — tranche A touches ZERO services), packages/contracts/** (wire schemas the frozen DTOs pin, tranche-B only), apps/api/test/** (the pins)"
+      - ".syllabai/receipts/T-MIG-082/**; this yaml; .syllabai/worklog.md (append-only)"
+    forbidden:
+      - "apps/hub/** (V2_SURFACE_PREFIXES widening is the filed RIDER — flip law needs new golden-verified surfaces, corpus has none for these families)"
+      - "golden/** (read-only for port lanes; discrepancies are FILED, never auto-fixed)"
+      - "the T-MIG-023 content write surfaces; subjects/tree (T-MIG-035 core-only law); the auth limiter (071's settled law); production Neon/Render writes; frozen syllabai-core/syllabai-hub repos"
