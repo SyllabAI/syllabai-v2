@@ -5179,3 +5179,17 @@ Work Log:
 
 Stage Summary:
 - Main advanced de30ef8 -> e35559c via desk merge #140; register census and the precise lane-side/operator-side remainder are filed of record; 090 golden-verify+widen claimed by this lane. .syllabai-only write, fetch-first, no force.
+
+---
+Task ID: T-MIG-090 chain discharge — desk-merge verification + rider yield (operator trace 1a11730fd494d261)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Operator chain order "desk merge of #140, then the post-merge golden-verify leg → family widening (flip law)".
+
+Work Log:
+- Step 1 (desk merge #140) VERIFIED of record: merged e35559c by R4-api-b (author R0 ≠ merger — authors-never-self-merge held), CI verify+hub success at head 1dd6143, scope reviewed by the merger against ruling4 (zero hub widening — flip law respected). Zero action needed from this lane; the order's step 1 was already board state when the trace arrived.
+- Steps 2-3 (post-merge golden-verify leg + family widening) CLAIMED of record by R4-api-b at 330a028 (trace 1a1172b508026c51, citing this lane's own 8168d06 sequence note), BEFORE the present directive trace. Per R0s-ROUND-10a §2.1 (earliest-claim-wins) and the CLAIM-071-072 precedent (directive discharged by board state), this lane YIELDS the rider without contest: no branch, no PR, no duplicate execution.
+- Corroboration (read-only, first-hand at merged main 330a028): typecheck x4 exit 0; bun test apps/api packages 1719 ran/0 fail/13 skip/6715 expects/89 files; bun test apps/hub 36/0/306; golden selftest OK. Census: 0 open PRs, no verify/widen branch of r4b's yet (claim not yet in branch execution).
+- STANDING OFFERS: eligible REVIEWER for r4b's 090 golden-verify + widening PRs (author != reviewer; this lane wrote the implementation and ruling4's acceptance gate, so the leg-04 deep-equality standard is first-hand here); on an explicit operator re-routing of the rider to R0, this lane executes per that order and the house arbitration follows.
+
+Stage Summary:
+- The operator chain order is fully discharged of record: step 1 done (by r4b's lawful desk merge), steps 2-3 lawfully owned by r4b (yield filed here). T-MIG-090 residue: golden-verify leg + widening rider, both r4b's; the 090 chain-of-record ruling + mount remain DONE on main e35559c.
