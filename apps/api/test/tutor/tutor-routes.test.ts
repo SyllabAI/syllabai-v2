@@ -543,8 +543,8 @@ describe("tutor sessions CRUD", () => {
   test("GET / → 200 summaries only (no transcript bodies)", async () => {
     const { app } = makeApp({
       "order by last_active_at desc limit ?": [sessionRow()],
-      "where session_id in ? group by session_id": [{ session_id: SESSION_A, n: 2 }],
-      "where session_id in ? and seq = 1": [
+      "where session_id = any(?::uuid[]) group by session_id": [{ session_id: SESSION_A, n: 2 }],
+      "where session_id = any(?::uuid[]) and seq = 1": [
         { session_id: SESSION_A, role: "user", content: "What is electrolysis?" },
       ],
     });
