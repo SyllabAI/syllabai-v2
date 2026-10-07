@@ -1,0 +1,73 @@
+{
+  "task": "R0-MIGRATION-VERIFY-1",
+  "run": "run-001-full-migration-verify",
+  "order": "operator trace 1a1154d2dfd3a0e9: 'Verify the entire migration with syllabai-core and syllabai-hub'",
+  "executor": "R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "executed_at_utc": "2026-10-07T07:26Z-07:50Z",
+  "repo_tip_at_execution": "d809389",
+  "boundary": "read-only GETs + no-write 401 probes only; zero prod writes, zero Vercel/Render/Neon settings contact; .syllabai-only receipt+worklog",
+
+  "planes": {
+    "core_java_render": {
+      "url": "https://syllabai-core.onrender.com",
+      "posture": "WARM — rollback lever GO",
+      "probes": [
+        {"probe": "GET /health (unauth)", "observed": "401 Boot-default envelope in 0.26s", "body": "{\"timestamp\":\"2026-10-07T07:41:39.989Z\",\"status\":401,\"error\":\"Unauthorized\",\"path\":\"/health\"}", "verdict": "PASS — verbatim frozen Boot shape"},
+        {"probe": "GET /api/v1/curriculum/subjects (unauth)", "observed": "401 same envelope in 0.23s", "verdict": "PASS — fail-closed authz"},
+        {"probe": "POST /api/v1/auth/login bogus-creds (no-write)", "observed": "401 {status:401,error:invalid_credentials} in 5.9s, ns-precision timestamp", "verdict": "PASS — Java-genuine signature (ns timestamp), BCrypt-cost timing expected"}
+      ]
+    },
+    "hub_v2_vercel": {
+      "url": "https://syllabai-hub-v2.vercel.app (deployment of record @ ef0055f)",
+      "probes": [
+        {"probe": "GET /", "observed": "200 in 0.05s", "verdict": "PASS"},
+        {"probe": "GET /login", "observed": "200 in 0.04s", "verdict": "PASS"},
+        {"probe": "GET /api/health", "observed": "200 {status:ok, service:syllabai-hub, dataMode:mock, coreConfigured:true} in 1.7s", "verdict": "PASS — pre-flip posture confirmed (V2 base absent on hub prj; auth plane = live core)"}
+      ]
+    },
+    "pilot_hub": {
+      "url": "https://syllabai.vercel.app",
+      "probes": [
+        {"probe": "GET /favicon.ico", "observed": "404 via edge (x-vercel-id hkg1::iad1::...)", "verdict": "path-differential intact"},
+        {"probe": "GET / and /login", "observed": "500 MIDDLEWARE_INVOCATION_FAILED (x-vercel-error, region hkg1)", "verdict": "STILL HARD-DOWN — P0 of record continues, outage 19:31Z Oct-6 -> 07:41Z Oct-7 (~12.2h), zero recovery"}
+      ],
+      "differential_note": "hub-v2 serves 200 on the same Vercel infra while pilot hub 500s -> fault is project-level (pilot deploy's middleware bundle), NOT Vercel-wide, NOT the repo (hub-v2 deployment of record built from the same main). Consistent with the standing escalation's operator ask: Vercel dashboard triage of the pilot project's live deploy."
+    }
+  },
+
+  "end_to_end_functional": {
+    "source": ".syllabai/receipts/W7-SMOKE/run-001-lane-side-smoke-spine.json (R7a, 2026-10-07T05:49-06:01Z, freeze-window-sanctioned writes, operator trace 1a114da6732b313d as witness)",
+    "learner_loop": "CLOSED GREEN: register 201 -> login 200 Bearer -> agenda 200 -> curriculum subjects 200 -> flashcard rating 201 -> flashcard-review-schedule 200 -> rating-trail 200 -> structured attempt 201 (part-count law first-hand: 1-part 400 / all-5-parts 201) -> self-mark 500-documented (T-MIG-053 null-parts NP quirk, captured-class) -> contract-shaped self-mark 201 (4/5 SELF_MARKED, evidenceFired) -> history 200 markingState=SELF_MARKED",
+    "teacher_loop": "CLOSED GREEN (authz): register-without-join-code 403 fail-closed; marking queue-v2 as STUDENT 403; unauthenticated 401; curriculum-as-STUDENT 403",
+    "tutor_loop": "CLOSED GREEN: POST /api/v1/tutor/ask/stream 200 — SSE opened, events observed, closed (18.0s, LLM payloads redacted per standing law)",
+    "documented_quirks": [
+      "T-MIG-053 self-mark null-parts -> 500 NP (captured quirk, pre-filed, not a migration regression)",
+      "attempt part-count law (partial part bodies 400) — core-faithful validation behavior"
+    ]
+  },
+
+  "static_and_parity_gates": {
+    "ci_at_tip": "d809389 check-runs: verify SUCCESS + hub SUCCESS (first-hand API); r7a first-hand corroboration: typecheck x4 exit 0, bun test 1618/0/1631 ran/86 files EXACT, golden selftest OK",
+    "golden_replay_of_record": "run #20 (37497521056, workflow_dispatch @ cfc8a51): union 167/177 — seed 154/162 + prod 13/15; 10 reds = 8 seed per-run-identity volatility + 2 prod createdAt precision, ALL pre-filed justified, zero new classes; zero non-justified divergences (P2 criterion MET at candidate SHA)",
+    "watchlist_4x4_flip": "learner-me pair + curriculum pair ALL pass:true at cfc8a51 (R0-CRON-FLIP-CHECK-1, first-hand artifact read); formal cron confirmation still pending (scheduled runs of record total=1 as of 07:45Z; 10-07 02:30Z slot unlanded, lag precedent 6h40m, drop-risk noted)",
+    "register_census": "84 cards: 74 DONE / 9 CAPTURED (mount band 082-091, #135+#136 merged) / 1 IN_PROGRESS (082 integration, PRs #134+#137 open) — Waves 0-6 exit gate P1 remains MET",
+    "db_posture": "shared Neon main doctrine intact (no copy, flyway_schema_history untouchable); replay realm = per-run COW branches, strict read-only, dropped-with-404-verification"
+  },
+
+  "cutover_state_machine": {
+    "position": "PRE-FLIP — §0 preconditions: P1 MET, P2 MET (zero non-justified at candidate SHA), P3 spine GREEN (lane-executed, operator-witnessed by order), P4 PENDING (operator sign-off not yet filed)",
+    "next_gates": ["§1 freeze window [OPERATOR]", "§2 traffic flip via NEXT_PUBLIC_API_BASE_URL on the hub prj [OPERATOR]"],
+    "rollback_lever": "GO — Render core warm, Boot-default 401 verbatim in 0.26s (first-hand this run)",
+    "pilot_hub_p0": "OUTAGE CONTINUES — the pilot-facing hub is unservable independent of the migration state; cutover §2 flip and §2.4 operator-witnessed smoke remain blocked until the pilot prj serves (hub-v2 + core both healthy — the fix surface is the pilot project's deploy, per the standing escalation)"
+  },
+
+  "verdict": {
+    "migration_fidelity": "VERIFIED — every executable layer first-hand or of-record green: core faithful (frozen, warm, verbatim Boot envelope), V2 parity 167/177 with zero non-justified divergences + 4/4 watchlist flip holds, full learner/teacher/tutor spine live-green against prod core, hub-v2 serving, CI + register green",
+    "cutover_readiness": "READY-PENDING-OPERATOR — P4 sign-off + §1/§2 remain; the ONLY red surface is the pilot hub project itself (P0 middleware fault), which is a deploy-level fault on the OLD hub stack's project, not a V2 fidelity gap",
+    "watchlist": [
+      "cron slot: re-poll after ~09:00Z; if unlanded by ~12:00Z treat as dropped (accept run #20 or operator dispatch)",
+      "pilot hub P0: operator Vercel triage (live deploy + logs + last-200 timestamp) per the standing escalation",
+      "#134 routing fork (r1c-rebase / desk-intake / slim re-delivery) + #137 review — mount band 082-088 closure"
+    ]
+  }
+}
