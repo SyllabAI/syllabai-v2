@@ -1,0 +1,30 @@
+version: 1
+task:
+  id: T-MIG-092
+  title: "T-MIG-092 - tutor family flip rider (operator order trace 1a11790a99a3cb19 'pick up the next flip rider (tutor family is the natural one)'): golden-verify the LANDED tutor SESSIONS wire (T-MIG-060 #104 t2 routes/tutorsessions.ts + T-MIG-070 #112 laws) against the live frozen core 6cad6ef, then widen V2_SURFACE_PREFIXES with the NARROW prefix /api/v1/tutor/sessions ONLY. /api/v1/tutor/ask + /ask/stream stay core-routed this band (v2 zero-key law: generation-reaching asks 503 tutor_unavailable on the dormant LLM seam; startsWith-safety forbids flipping an LLM surface the deployed v2 cannot serve)"
+  owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) - operator direct order trace 1a11790a99a3cb19; claim-state check at filing: 0 open PRs, tip bd4eaeb, zero tutor-widen cards on main (census 083..091 = teacher/admin/llm families; 060/070 are DONE port cards, not flip riders), zero tutor claims in the repo worklog tail"
+  status: "IN_PROGRESS # claim-in-card per the 090 mount precedent; sequence = capture (run-001, live frozen core, learner-scoped, LLM-free legs only) -> golden-verify (run-002) -> narrow widen + routing pins -> gates -> PR"
+  priority: P1
+  wave: "flip-riders # per-family golden-verify/widen band (T-MIG-082 Wave-S3 precedent, 61768fc)"
+  deps: [T-MIG-060, T-MIG-070]
+  endpoints:
+    - GET /api/v1/tutor/sessions
+    - POST /api/v1/tutor/sessions
+    - GET /api/v1/tutor/sessions/latest
+    - GET /api/v1/tutor/sessions/{sessionId}
+    - DELETE /api/v1/tutor/sessions/{sessionId}
+  service_status: "ported + mounted of record (060 t2 OUT-OF-FENCE mount; 070 laws restored); v2 live 401 probe 2026-10-07T18:18Z = mounted + auth-gated; hub_calls: YES - api.ts tutors 858-886 (tutorAsk/tutorSessionCreate-Get-List-Delete)"
+  scope:
+    allowed:
+      - "golden-captures/t-mig-092/** (new capture fixtures, redaction law: probe-learner uuid/email mapped, token NEVER persisted)"
+      - ".syllabai/receipts/T-MIG-092/** (run-001 capture + run-002 verify)"
+      - "apps/hub/src/lib/api.ts (V2_SURFACE_PREFIXES widening for THIS family NARROW prefix only + the comment block)"
+      - "apps/hub/src/lib/api.v2-surface.test.ts (routing pins incl. NEGATIVE pins: /api/v1/tutor/ask and /ask/stream stay core)"
+      - ".syllabai/tasks/T-MIG-092-tutor-family-golden-verify-widen.yaml (status/execution_record only)"
+      - ".syllabai/worklog.md (append-only)"
+    forbidden:
+      - "/api/v1/tutor FULL prefix widening this band (zero-key 503 on ask/stream; own band after the operator LLM-key lever + its own verification)"
+      - "V2_SURFACE_PREFIXES widening without this family golden-verified surface (the flip law)"
+      - "the section-2 FULL flip (NEXT_PUBLIC_API_BASE_URL / NEXT_PUBLIC_API_V2_BASE_URL env changes, Vercel/Render/Neon production config writes of any kind)"
+      - "LLM-spending legs in capture OR verify (R-LLM: LLM payloads excluded; no valid-shape /ask leg - only binding-time 400, pre-flight 404/409-class legs)"
+      - "golden/** corpus edits (read-only fence); other families' prefixes; packages/db/**; apps/api/** source (no port changes this band - wire already merged); force-push; self-merge of this PR"
