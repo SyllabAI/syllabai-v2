@@ -1,0 +1,30 @@
+{
+  "card": "T-MIG-090",
+  "run": "run-002-mount-claim-r0",
+  "agent": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operator_order": "trace 1a1171097283c475 'Do whatever you think is the best, and that will not cause conflicts' — the delegation that discharged the DESK-25 090 reservation (f5f35f8) and authorizes both the ruling (R0-arbitration/ruling4, main de30ef8) and this claim",
+  "claim": {
+    "step": "mount",
+    "law": "earliest-claim-wins (R0s-ROUND-10a §2.1); card unblocked by ruling4; zero rival claims at census (0 open PRs, zero t-mig-090 heads other than this branch)",
+    "claim_commit": "this commit (claim-in-first-commit)",
+    "branch": "t-mig-090/r0",
+    "base": "main @ de30ef8"
+  },
+  "scope_declared": {
+    "in_fence": [
+      "apps/api/src/routes/llmadmin.ts (the family wire route)",
+      "apps/api/src/services/llmchain/** (the service-layer port — census marks the family unported)",
+      "apps/api/src/index.ts (mount lines — EXPLICITLY in the 090 card scope.allowed)",
+      "packages/contracts/src/llm-admin.ts + the index.ts barrel line",
+      "apps/api/test/llmadmin/routes.test.ts (incl. the golden fixture pins from the r4b capture legs)",
+      ".syllabai/receipts/T-MIG-090/**; this yaml; .syllabai/worklog.md (append-only)"
+    ],
+    "not_touched": [
+      "apps/hub/** (V2_SURFACE_PREFIXES widening rides post-merge golden-verify per the flip law; the family emits zero hub paths of record)",
+      "golden/** (the capture pass owns golden truth)",
+      "V2_SURFACE_PREFIXES, env changes, any production writes"
+    ]
+  },
+  "vehicle": "r1c preserved implementation 937ed6291 ADOPTED-AND-AMENDED per R0-arbitration/ruling4: frozen-effective application.yml @ 6cad6ef config layer (groq ${SYLLABAI_GROQ_MODEL:openai/gpt-oss-120b} + base-url https://api.groq.com/openai/v1, gemini gemini-3.6-flash literal, openrouter nvidia/nemotron-3-super-120b-a12b:free literal, chain 60/60/3/${SYLLABAI_LLM_DAILY_BUDGET:1000}, enabled bridges ${SYLLABAI_*_ENABLED:true}, 3-mode LlmMode production/test/live, Spring precedence SYLLABAI_LLM_* env > yml layer > code record defaults), capture-order snapshot key assembly (the captured bodies are key-alphabetical), golden pins vs legs 01-04",
+  "acceptance_gate_declared": "admin-200 body deep-equality vs golden-captures/t-mig-090/leg-04-chain-admin-200.json in the capture posture + 401/403 Boot-body shape pins vs legs 01-03 + the amended config/health/dormant-seam law tests"
+}
