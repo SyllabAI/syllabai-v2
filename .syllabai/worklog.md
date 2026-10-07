@@ -4793,3 +4793,18 @@ Work Log:
 
 Stage Summary:
 - Login failure root-caused to Render free-tier cold start; core now warm (401-in-0.55s golden posture) — operator retry expected to succeed on both hubs. Neon wiring of record: hub never touches Neon (ADR-029); Neon lives behind the not-yet-deployed v2 API; §2 flip (apps/api + Neon + NEXT_PUBLIC_API_V2_BASE_URL) is the standing path to v2-native auth on operator order.
+
+---
+
+Task ID: R4b-SURFACE-AUDIT (read-only census, receipt of record)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator trace 1a114c788059e5fd 'Verify if we have migrated everything from syllabai-core to v2'.
+
+Work Log:
+- Dual enumeration of record: 153 core endpoints (40 controllers, frozen 6cad6ef) vs 122 v2 Hono endpoints (mount->factory->helper-scope parse); normalized (slash/param-name-free) diff; every residual family adjudicated by rg over routes/, packages/, hub/, golden/cases/; hub routing law read from api.ts V2_SURFACE_PREFIXES + api.v2-surface.test.ts (8/8 pass at HEAD).
+- VERDICT: service/logic layer ported of record (register DONE, 053 23/23 service endpoints, gates green, replay 167/177 with 10 justified); WIRE layer NOT fully migrated — 30 core endpoints in 10 families unmounted (revision-notes x7, KnowledgeController x4, TeacherConceptGraph x2, ClassKnowledgeGraph x3, TeachingCoverage x3, ContentController teacher x5, glm-ocr x2, chain-health x1, teacher exam-series x1, subjects/tree x2 core-only law); hub V2_SURFACE_PREFIXES still = 6 families (intentional strangler posture); P2's replay-green is corpus-scoped and exercises none of the unmounted families.
+- CONSEQUENCE of record: runbook §2 full flip is NOT safe today (would 404 hub-emitted revision-notes/coverage/KG/glm-ocr/enumerate paths); the designed path is per-family prefix widening as mounts land + golden-verify; no register card tracks this gap class (053 tranche doctrine deferred routes to hub lanes; 079 covered only the W4 KG + smart-lesson subset).
+
+Stage Summary:
+- Receipt: .syllabai/receipts/censuses/2026-10-06-surface-coverage-r4b.json. Zero code contact; .syllabai-only; fetch-first direct-main.
+- RECOMMENDED REGISTER ACTION for the desk: file a mount-the-deferred-routes band (or per-family bands) before any §2 cutover; hub table widening rides each family's golden verification.

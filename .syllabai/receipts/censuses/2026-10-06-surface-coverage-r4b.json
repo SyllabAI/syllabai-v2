@@ -1,0 +1,32 @@
+{
+  "kind": "surface-coverage-audit",
+  "requested_by": "operator trace 1a114c788059e5fd 'Verify if we have migrated everything from syllabai-core to v2'",
+  "agent": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "audit_head": "b3d75e5 (main) vs frozen core 6cad6ef",
+  "method": "independent dual enumeration: 153 core HTTP endpoints extracted from 40 controllers (annotation parse, value/path-attribute aware) vs 122 v2 Hono endpoints (index.ts mount -> factory -> helper-scope brace-matched parse); normalized diff (trailing slash, // collapse, param-name-free); every residual family cross-checked by rg over apps/api/src/routes/, packages/, apps/hub/src/, golden/cases/; hub routing law read from apps/hub/src/lib/api.ts V2_SURFACE_PREFIXES + api.v2-surface.test.ts (passes 8/8 at HEAD)",
+  "verdict": {
+    "service_logic_layer": "PORTED of record - register 100% DONE, tranche doctrine executed (053: 23/23 service endpoints across t1-t4), gates green, golden corpus replay 167/177 with 10 justified reds (8 identity volatility + 2 createdAt precision, zero new classes)",
+    "wire_route_layer": "NOT FULLY MIGRATED - 28 core endpoints in 10 families have NO v2 route mount; plus /api/v1/subjects and /api/v1/tree (the T-MIG-035 check-3 core-only law) = 30 total",
+    "hub_routing_layer": "the strangler is INTENTIONALLY still mostly on the core: V2_SURFACE_PREFIXES = 6 families only (auth, content/documents, content/question-assets, curriculum, attempts, learners/me/attempts); 8/8 surface pins pass at HEAD",
+    "golden_gate_scope": "P2's 100% is CORPUS-SCOPED: the 178-case corpus exercises none of the unmounted families (glm-ocr appears only as response-body fields), so replay-green does not certify wire completeness"
+  },
+  "unmounted_families": [
+    {"family": "learner revision-notes (053 t3)", "endpoints": 5, "paths": ["GET /api/v1/learners/me/revision-notes", "GET /api/v1/learners/me/revision-notes/{noteId}", "GET /api/v1/learners/me/revision-notes/assets/{filename}", "GET /api/v1/learners/me/revision-notes/progress", "POST /api/v1/learners/me/revision-notes/progress/views"], "service_status": "ported (services/revision-notes/**, contracts revision-notes.ts, 34 pins); route mount deferred by the 053 tranche doctrine", "hub_calls": "YES - api.ts request() wrappers + 5 components (46 refs)"},
+    {"family": "admin revision-notes (053 t3)", "endpoints": 2, "paths": ["POST /api/v1/admin/revision-notes/ingest", "GET /api/v1/admin/revision-notes/status"], "service_status": "ported (ingest.ts verbatim 400s, R14 allowlist, zip walker)", "hub_calls": "admin-side"},
+    {"family": "KnowledgeController (global knowledge tree)", "endpoints": 4, "paths": ["GET /api/v1/knowledge/nodes/{id}", "/misconceptions", "/prerequisites", "/tree"], "service_status": "053 t1 graphs + 043 substrate; no route", "hub_calls": "YES - 6 refs incl. /api/v1/knowledge/nodes/kn-1/tree pinned core-only by the surface test"},
+    {"family": "TeacherConceptGraph", "endpoints": 2, "paths": ["GET /api/v1/teacher/concept-graph/edges", "POST /api/v1/teacher/concept-graph/activate"], "service_status": "ported (053 t2 concept-edges.ts /edges + concept-seed.ts activate)", "hub_calls": "YES - 9 concept-graph refs"},
+    {"family": "ClassKnowledgeGraph (teacher class-scoped)", "endpoints": 3, "paths": ["GET /learners/{learnerId}/knowledge-graph", "GET /nodes/{nodeId}/students", "GET /topics/{nodeId}/drill-down"] + "class-prefix", "service_status": "053 t1 learnerGraphFor + t2 kg.ts seam", "hub_calls": "YES - drill-down 21 refs"},
+    {"family": "TeachingCoverage", "endpoints": 3, "paths": ["GET /api/v1/teacher/classes/{classId}/coverage", "GET .../coverage/{specPointNodeId}/history", "PUT .../coverage/{specPointNodeId}"], "service_status": "053 t2 analytics; classroom.ts/learnerkg.ts headers explicitly say coverage stays OUT", "hub_calls": "YES - 178 coverage refs (bulk of teacher heat-map UI)"},
+    {"family": "ContentController teacher methods", "endpoints": 5, "paths": ["GET /api/v1/teacher/content/enumerate", "/enumerate/structured", "/fetch", "GET+POST /api/v1/teacher/content/questions/{questionId}/topics"], "service_status": "no route; hub pins content review families core-only", "hub_calls": "enumerate 3 refs"},
+    {"family": "GlmOcrIngestion", "endpoints": 2, "paths": ["POST /api/v1/teacher/content/glm-ocr/pairs", "GET /api/v1/teacher/content/glm-ocr/papers/{paperId}/findings"], "service_status": "surface test: 'glm-ocr is W6-unported' (of record)", "hub_calls": "YES - 5 refs"},
+    {"family": "LlmAdminController", "endpoints": 1, "paths": ["GET /api/v1/admin/llm/chain-health"], "service_status": "no v2 trace at all", "hub_calls": "no"},
+    {"family": "TeacherCurriculum exam-series import", "endpoints": 1, "paths": ["POST /api/v1/teacher/curriculum/exam-series"], "service_status": "learner exam-series ported; teacher import not", "hub_calls": "exam-series 13 refs (learner side served)"}
+  ],
+  "consequences": [
+    "the runbook §2 full flip (NEXT_PUBLIC_API_BASE_URL -> v2) executed today would 404 every hub-emitted path in these families (revision-notes pages, teacher coverage heat-map, class KG drill-down, glm-ocr findings, content enumerate/fetch) - the §2 flip is NOT safe yet",
+    "the designed alternative is already built into the hub: widen V2_SURFACE_PREFIXES family-by-family as mounts land + golden-verify (the flip law: 'widening requires a new golden-verified surface'); the core keeps serving the rest and stays the rollback lever",
+    "P3 supervised dual-run would surface these 404s; corpus does not",
+    "the register has no card tracking this class - the gap fell between the 053 tranche doctrine ('routes stay the hub lanes') and the hub lanes' completed scope (079 covered only the W4 KG + smart-lesson subset)"
+  ],
+  "parser_artifacts_excluded": "teacher-classes CRUD, target-series, learner exam-series, roster, assignments/submissions, flashcard-ratings, note-votes, actuator-health all resolve as present both sides after normalization; only the families above survive adjudication"
+}
