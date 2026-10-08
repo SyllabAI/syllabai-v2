@@ -1,0 +1,44 @@
+{
+  "task": "T-MIG-102",
+  "run": "run-001-claim",
+  "lane": "R0-integrator (zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operatorTrace": "1a11a06f8663438d",
+  "operatorDirective": "\"T-MIG-102\" \u2014 the T-MIG-101 adjudication's owner card routed to the R0 lane",
+  "claim": {
+    "branch": "t-mig-102/r0",
+    "offMain": "a33d4f2 (the PR #158 head \u2014 STACKED on the unmerged T-MIG-101 adjudication PR: the retirement acceptance requires #158's justified-ledger machinery, which main does not carry yet; merge order #158 then this PR; the branch rebases to main after #158 lands)",
+    "claimInFirstCommit": true,
+    "cardProvenance": "card filed by the T-MIG-101 adjudication on PR #158 (a33d4f2, pending desk merge); the card file is carried onto this branch at its #158 content with only the owner/status lines amended to CLAIMED \u2014 the merge order is #158 then this card-amend (add/add union per the append-only law, disclosed in the PR body)",
+    "deps": "T-MIG-032 (graded seams) merged of record; T-MIG-101 (PR #158) pending desk merge \u2014 the card file rides both branches, dependency order disclosed",
+    "baseCorrection": "the claim initially read 'offMain 08231a6' (main) \u2014 corrected pre-push of record: the branch was rebuilt on a33d4f2 when the retirement scope proved dependent on #158's ledger code; the claim-in-first-commit law holds (this receipt is still the branch's first commit; the correction is disclosed here and in the PR body)"
+  },
+  "scopeContract": {
+    "wired_this_card": "the MCQ submit seam (EvidencePublisher.publishMcq \u2014 the live evidence path of record: w4-attempt-mcq-practice-201 seq-20) gains the full learner-model update (BKT mastery + BDT misconceptions + the Paper B \u00a716 fluency-gap recompute), ported line-against-line from LearnerModelService.java @ 6cad6ef :74-203",
+    "rider_filed": "the three graded lanes (selfmark/smartmark/teachermarking GradedEvidencePublisher.publishGraded) carry the same event contract in the frozen core (EvidencePublisher.publishGraded fires at first authoritative marking); their seam payloads lack the event fields (primaryTopicNodeId/specPointNodeIds/questionType/optionCount) and their callers are a wider fence than this card's 'submit-path service (wiring only)' \u2014 the model-update module is event-source-agnostic, so the graded-lane wiring is a wiring-only rider filed on the card, not silently dropped",
+    "forbidden_respected": [
+      "no tolerate/amend INSTEAD of the port \u2014 the write is ported; the two case tolerate-list additions (probability/misconceptionProbability) cover the now-dependent read-time ADR-032 relaxation only, the same class the cases already tolerate (effectiveMastery/lastEvidenceAt/lastPracticedAt), and are disclosed per-case",
+      "no decayed values persisted \u2014 posteriors persist (ADR-031), decay computed at read exactly like the frozen updateMastery C1 law",
+      "no flyway_schema_history / structural changes",
+      "no frozen core writes",
+      "no force-push; no self-merge"
+    ]
+  },
+  "evidence_first_hand": {
+    "frozen_sources": [
+      "LearnerModelService.java @ 6cad6ef :74-203 (the evidence listener: updateMastery/updateMisconceptions/updateFluencyGaps)",
+      "BktEngine.java + BdtEngine.java + LearnerProperties.java (paper defaults = the yml effective layer \u2014 first-hand application.yml @ 6cad6ef :218-236 EQUALS the code defaults, no config divergence: bkt l0/slip/guess/learnRate 0.1/0.1/0.25/0.1; decay 30/90/365 0.45/0.8 floor 0.1 review 0.6; bdt 0.3/0.7/0.1 threshold 0.5)",
+      "SkillState.java :89-96 recordAttempt + MisconceptionState.java :77-81 update",
+      "EvidencePublisher.java :33-120 (event assembly: topicNodeIds = primary first + secondary deduped; specPointNodeIds deduped appended; questionType + LIVE optionCount)",
+      "AttemptRepository.aggregateGradedCorrectnessByCondition (the fluency aggregate SQL)",
+      "LearnerModelServiceTest.java (368 lines \u2014 the vectors this port pins)"
+    ],
+    "v2_side": [
+      "zero writers for skill_states/misconception_states anywhere in apps/api (T-MIG-101 first-hand, re-verified)",
+      "the seam exists: EvidencePublisher.publishMcq (services/assessment/submit.ts :91-108) with noop default + frozenParityEvidencePublisher live wiring (routes/assessment/index.ts :303) claiming true and emitting nothing",
+      "schema: packages/db/src/schema/schema.ts :408-432 (skill_states: id/learner_id/node_id/mastery/attempts/correct_count/last_practiced_at/procedural_fluency_gap/version; uq_skill_state) + :112-131 (misconception_states; uq_misconception_state)",
+      "readers of record: services/learner/state.ts (skillStatesByRecency/misconceptionStatesByProbability) + services/knowledge/graphs.ts \u2014 the surfaces the two declared-justified cases pin"
+    ],
+    "capture_math_verified": "w4-state-practiced-200 pins mastery 0.11313868613138686 = bktUpdate(0.1, false, {slip 0.1, guess 0.25, learnRate 0.1}) EXACTLY (hand-derived: 0.01/0.685 -> +T -> 0.11313868613138686) and probability anchor 0.75 = bdtUpdateOnTaggedDistractor(0.3) = 0.21/0.28 EXACTLY \u2014 the seeded question is 4-option MCQ_SINGLE (guess = 1/4), primary topic node ...0012, chosen distractor tagged misconception ...0001; the wire probability 0.7499999966070805 (state) / 0.7499999951885286 (KG) are the SAME anchor relaxed at read over ~116ms (ADR-032) \u2014 now-dependent, never byte-matchable at replay, hence the disclosed tolerate-class additions"
+  },
+  "acceptance": "the two declared-justified corpus rows (w4-state-practiced-200, w4-knowledge-graph-practiced-200) pass on their own merits through the REAL submit path (seq-20 POST /api/v1/attempts -> publisher -> skill_states/misconception_states writes -> state/KG reads), the two ledger entries RETIRE, and the cron union verdict stays honest with zero forgiven rows"
+}
