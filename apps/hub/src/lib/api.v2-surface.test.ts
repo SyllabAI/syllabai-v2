@@ -177,6 +177,9 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/learners/me/cla/ask", // T-MIG-097: BOTH wires live-proven (run-003 10/10 refusal dual-live + run-004 generation probe 200, r7a) — NARROWEST: the exact ask path
       "/api/v1/teacher/concept-graph", // T-MIG-085: golden-verified (run-002, r3a) — family-exact: activate+edges own the base exclusively
       "/api/v1/teacher/content/glm-ocr", // T-MIG-089: golden-verified (run-002 6/6, r4b band rider) — NARROWEST: the /glm-ocr segment family ONLY, the /teacher/content parent stays core (T-MIG-020/023 + T-MIG-100)
+      "/api/v1/teacher/content/fetch", // T-MIG-100: repaired + golden-verified (22-leg replay, r0 repair band) — per-exact-endpoint rows, the parent STAYS core
+      "/api/v1/teacher/content/enumerate", // T-MIG-100: same band — also captures /enumerate/structured (leg-04, same verified family tree)
+      "/api/v1/teacher/curriculum/exam-series", // T-MIG-100: 091 family 7/7 incl. the CLASS C repeat law — the FULL path row (the 052 mount law)
     ]);
   });
   test("the mid-path table is exactly the ruled set — the mechanism-A amendment needs its own golden gate too", () => {
@@ -346,13 +349,13 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
       expect(v2SurfaceBase(p, V2)).toBe(V2);
     }
     // TRUE siblings under the /api/v1/teacher/content parent stay core — the
-    // prefix must never capture them (T-MIG-020/023 surfaces; also the 088
-    // run-002 verify of record found the fetch parse-shape defect T-MIG-100-A
-    // + the topics-write coverage gap, so the parent MUST NOT flip this band)
+    // prefix must never capture them (T-MIG-020/023 surfaces). The former
+    // fetch/enumerate core-null pins MOVED OUT of this list — the T-MIG-100
+    // repair band closed CLASS A/C and the per-exact-endpoint rows flipped
+    // (the T-MIG-100 line test below); the parent + the topics-write gap stay
+    // core-pinned here
     for (const p of [
       "/api/v1/teacher/content", // the bare parent (the 501-shell root)
-      "/api/v1/teacher/content/enumerate?query=physics", // the NOT-YET-VERIFIED 088 read (T-MIG-100-A divergent family)
-      "/api/v1/teacher/content/fetch?query=physics",
       "/api/v1/teacher/content/questions/00000000-0000-4000-8000-000000000025/topics", // the T-MIG-023-owned write gap (501 vs frozen 404-first)
     ]) {
       expect(v2SurfaceBase(p, V2)).toBeNull();
@@ -367,6 +370,41 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     // either side — the hub-source grep law in the api.ts table comment)
     expect(v2SurfaceBase("/api/v1/teacher/content/glm-ocrx", V2)).toBe(V2);
     expect("/api/v1/teacher/content/glm-ocrx".startsWith("/api/v1/teacher/content/glm-ocr")).toBe(true);
+  });
+
+  test("the T-MIG-100 line: the RoutingController read endpoints + the exam-series import flip after the repair band (r0, port owner)", () => {
+    // GOLDEN-VERIFIED of record: the 22-leg replay (run-004, the repaired
+    // tree) — 088 legs 01-07 PASS incl. the CLASS A parse-defect legs 05/06
+    // (the empty-parse VIEW + parseDefect:true wire law) and 091 ALL 7 PASS
+    // incl. the CLASS C repeat legs 06/07 (the driver-coercion-safe date
+    // law); the two remaining non-PASS legs are the topics-write 501 shells
+    // (CLASS B, T-MIG-023 — core-pinned by construction below)
+    for (const p of [
+      "/api/v1/teacher/content/fetch?query=physics", // legs 05/06: the repaired parse-defect wire
+      "/api/v1/teacher/content/fetch?query=4CH1%2F1C%20june%202020%20question%207",
+      "/api/v1/teacher/content/enumerate?query=physics", // legs 01-04: the shells + the resolved-scope reads
+      "/api/v1/teacher/content/enumerate/structured?nodeCode=cap-node&axis=topic", // rides the /enumerate row (leg-04 law)
+      "/api/v1/teacher/curriculum/exam-series", // legs 01-07: the import family incl. the repeat law
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBe(V2);
+    }
+    // the T-MIG-020/023 siblings stay core-pinned: the bare parent + the
+    // topics-write family (501 shells vs the frozen 404-first / 400 wires)
+    for (const p of [
+      "/api/v1/teacher/content",
+      "/api/v1/teacher/content/questions/00000000-0000-4000-8000-000000000025/topics",
+      "/api/v1/teacher/content/review-queue",
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBeNull();
+    }
+    // startsWith partial-segment capture (fetchx/enumeratex) is DOCUMENTED
+    // INERT — no such route or hub emitter exists on either side (the
+    // hub-source grep law in the api.ts table comment)
+    expect(v2SurfaceBase("/api/v1/teacher/content/fetchx", V2)).toBe(V2);
+    expect("/api/v1/teacher/content/fetchx".startsWith("/api/v1/teacher/content/fetch")).toBe(true);
+    // teacher curriculum siblings stay core (the 052 full-path mount law):
+    // the row is the exam-series family tree ONLY
+    expect(v2SurfaceBase("/api/v1/teacher/curriculum/versions", V2)).toBeNull();
   });
 
   test("the T-MIG-085 line: the teacher concept-graph flips after its golden gate (r3a wave-s4)", () => {
