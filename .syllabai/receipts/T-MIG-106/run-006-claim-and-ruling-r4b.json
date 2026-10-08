@@ -1,0 +1,48 @@
+{
+  "run": "run-006-claim-and-ruling-r4b",
+  "lane": "r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "operator_trace": "1a11c4b762f6043d",
+  "operator_ruling_verbatim": "(a) amend v2 to core's 500-parity then flip, (b) declare-justified (v2's designed laws; core 500s are the defect) and flip both rows",
+  "ruling_reading_of_record": {
+    "executed": "(b) declare-justified — flip the ask/ask-stream pair",
+    "justification": [
+      "the ruling's own parenthetical states the defect direction as fact: 'v2's designed laws; core 500s are the defect' — the exact root-cause run-004 pinned of record",
+      "the T-MIG-104 precedent (operator trace 1a11c248ec801069): the operator ruled for the DESIGNED envelope over defect-shaped parity",
+      "the T-MIG-106 card's option (b) wording ('with the filed tolerance class') matches the declare-justified execution; option (a) would re-introduce the defect shape the core's own SOURCE law (TutorController.askStream :208-256) and its own BLOCKING controller (run-004 legs a1/a2 byte-parity) both contradict",
+      "DISCLOSED: this is the lane's ruled reading; the operator may veto of record and the (a) amend path remains available (the declared cases would then re-pin to the 500 captures)"
+    ]
+  },
+  "claim": {
+    "branch": "t-mig-106/r4b",
+    "off": "38871f7 (origin/main of record at claim time; fetch-first verified)",
+    "pattern": "claim-in-first-commit per the T-MIG-104 precedent (run-003-claim-r0.json, branch t-mig-104/r0)"
+  },
+  "declared_class": {
+    "id": "tutor-askstream-preflight-declared-justified",
+    "legs": {
+      "s2-stream-blank": "core RUNTIME 500 internal_error (defect) vs v2 DESIGNED 400 validation_failed 'question: must not be blank' (T-MIG-070 notBlank law) — corpus case tutor-askstream-blank-question-400 (justified:true)",
+      "s3-stream-malformed": "core RUNTIME 500 internal_error (defect) vs v2 DESIGNED 400 malformed_body 'request body is not readable (check field types and enum values)' — RECEIPT-ONLY of record: the raw non-JSON request bytes (leg s3 = 'not json at all') are NOT expressible in the golden case schema (the runner JSON.stringify's request.body; bodyFile is multipart-only) — disclosed here and on the T-MIG-106 card; the class declaration covers it identically",
+      "s4-stream-unknown-session": "core RUNTIME 500 internal_error (defect) vs v2 DESIGNED 404 not_found 'tutor session <id> not found' (the section-22 pre-flight fail-fast) — corpus case tutor-askstream-unknown-session-404 (justified:true)",
+      "s1-stream-unauthed": "byte-parity PASS both planes — corpus case tutor-askstream-unauthed-401 (plain, the authz law pinned)"
+    },
+    "ledger_posture": "ZERO justified-ledger ENTRIES — the declared cases pin the DESIGNED law and replay GREEN on merits (the T-MIG-101 endgame posture: declarations without tolerance rows); the ledger's learner-class invariant (7 T-MIG-078 + 3 T-MIG-101) is untouched — the 106 declarations are a distinct class"
+  },
+  "package": {
+    "golden_cases": [
+      "golden/cases/tutor-askstream-unauthed-401.json",
+      "golden/cases/tutor-askstream-blank-question-400.json",
+      "golden/cases/tutor-askstream-unknown-session-404.json"
+    ],
+    "hub_flip": "apps/hub/src/lib/api.ts — ONE prefix row /api/v1/tutor/ask = the INSEPARABLE PAIR flip (the row captures /api/v1/tutor/ask/stream under startsWith AND under the mid-path deeper-tails-free law; no exclusion form exists in either table — the Task-39 finding of record). Both surfaces flip; 'both rows' = both surfaces of the inseparable unit.",
+    "live_routing_effect": "the hub's blocking-ask emitter (tutorAsk, api.ts:1161, the request()/apiPath plane) now serves from v2 (keyed, generation-proven run-005 + TUTOR-VERIFY run-002/002b); the chat SSE path is core-hardwired by design (apps/hub/src/app/api/ai/chat/route.ts -> coreStreamAuthorized — NOT table-routed; the hub-proxy seam, T-MIG-094 territory) — unchanged by this flip",
+    "surface_test": "apps/hub/src/lib/api.v2-surface.test.ts — toEqual +1 row, CORE_ONLY_PATHS tutor ask pins MOVED OUT (the 089/095/097 convention), the 092 line's sibling posture updated, NEW T-MIG-106 line test, DUAL_RUN_PATHS + the live-routed emitter path"
+  },
+  "gates_planned": "golden selftest; hub tsc + full hub suite; typecheck chain; PR + head CI (hub+verify); desk merge (the card fence: NO self-merge)",
+  "gates_deviation_of_record": {
+    "blocked_leg": "the planned --filter live replay of the new cases vs the keyed v2 (https://syllabai-v2.vercel.app) is BLOCKED by a P0 episode of record: from ~16:35Z 2026-10-08 the api-of-record serves the Vercel edge NOT_FOUND (hkg1 x-vercel-id, the DEPLOYMENT_NOT_FOUND flapping class the R0-auto census has logged before) on ALL paths — 4 retries over ~60s all edge-404 — after serving the api's own 401 JSON envelope at 16:33Z (pre-episode probe of record)",
+    "coverage_held": "the cases pin EXACTLY the wire run-004 captured at 15:46Z (pre-episode, v2 serving); the CI verify workflow replays the full corpus against its own staged substrate (independent of prod); a POST-MERGE LIVE RE-VERIFY RIDER of the filtered replay is owed when the api-of-record serves again (the 104 live-verify rider pattern)",
+    "flip_safety_disclosure": "the flip lands into the standing dual-run posture: a set-but-unreachable v2 base serves the edge error to the flipped emitters (no per-request core fallback — the accepted posture of EVERY flipped row incl. auth/attempts/sessions/cla-ask); the rollback property (env unset) is untouched; the R0-auto P0 census at desk-merge time is the operator's hold/land visibility"
+  },
+  "fences_check": "no v2 code amendment (ruling (b) keeps v2's laws); no routing-infra change (no tail-exact/exclusion form introduced); golden edits confined to the captured legs; register card edits ride direct-main post-merge",
+  "write_ledger": "ZERO new learners, ZERO LLM generations, zero sessions, zero env writes — the live evidence is run-004/run-005 + TUTOR-VERIFY run-002/002b of record; the CI verify workflow stages its own throwaway substrate for the corpus replay"
+}
