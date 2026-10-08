@@ -209,8 +209,31 @@ describe("fetch — the wire contract (GET /api/v1/teacher/content/fetch)", () =
     expect(res.status).toBe(200);
     const view = fetchViewSchema.parse(await res.json());
     expect(view.parsed!.paperCode).toBe("4CH1/1C");
+    // T-MIG-100 CLASS A: the derived empty property is ALWAYS present (the
+    // Jackson record+isEmpty() serialization law) — false on a real parse.
+    expect(view.parsed!.empty).toBe(false);
     expect(view.papers[0]!.paperCode).toBe("4CH1/1C");
     expect(view.papers[0]!.question!.parts).toHaveLength(1);
+  });
+
+  test("parse-defect wire → the FULL empty-parse VIEW with empty:true + parseDefect:true (T-MIG-100 CLASS A; the leg-05/06 capture law)", async () => {
+    const { app } = makeApp(asTeacher, { routes: fetchRoutes });
+    const res = await app.request("/api/v1/teacher/content/fetch?query=physics");
+    expect(res.status).toBe(200);
+    // byte-honest capture shape: golden-captures/t-mig-088/leg-05-fetch-empty-200.json
+    expect(await res.json()).toEqual({
+      parsed: {
+        empty: true, msSeeking: true, normalized: "", paperCode: null,
+        part: null, partRoman: null, qnum: null, series: null, unit: null, year: null,
+      },
+      ambiguous: false,
+      parseDefect: true,
+      papers: [],
+    });
+    // the unknown-vocabulary sibling (leg-06) answers the same law
+    const res2 = await app.request("/api/v1/teacher/content/fetch?query=zzz-no-such-paper");
+    expect(res2.status).toBe(200);
+    expect((await res2.json()).parsed.empty).toBe(true);
   });
 
   test("unresolved scope → the honest empty view (parsed null), resolveActive path", async () => {
@@ -574,6 +597,35 @@ describe("exam-series POST /api/v1/teacher/curriculum/exam-series", () => {
     });
     const summary2 = examSeriesImportSummarySchema.parse(await moved.json());
     expect(summary2.updated).toBe(1); // the measured fields move WITH their newer citation
+  });
+
+  test("repeat law under REAL driver materialisation: DATE columns arrive as local-midnight JS Dates → unchanged, not updated (T-MIG-100 CLASS C)", async () => {
+    // the fakeSql blindness r4b filed: the #138 pins fed string-typed fixture
+    // rows, so the driver-binding site was never exercised. postgres.js
+    // materialises DATE as new Date(y, m-1, d) (local midnight) — exactly
+    // what these fixtures now carry. Pre-repair this counts updated:1
+    // (String(Date) ≠ the ISO wire value); post-repair it is unchanged:1,
+    // the frozen LocalDate.equals law.
+    const sameDates = [
+      {
+        label: "June 2026",
+        window_start: new Date(2026, 4, 1),
+        window_end: new Date(2026, 5, 30),
+        entry_deadline: new Date(2026, 3, 15),
+        results_date: new Date(2026, 7, 1),
+        published: true, estimated: false,
+        source_url: "https://qualifications.pearson.com/calendar-2026",
+      },
+    ];
+    const { app } = makeApp(asTeacher, { routes: importRoutes(sameDates) });
+    const res = await app.request("/api/v1/teacher/curriculum/exam-series", {
+      method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(DATASET),
+    });
+    expect(res.status).toBe(200);
+    const summary = examSeriesImportSummarySchema.parse(await res.json());
+    expect(summary.imported).toBe(0);
+    expect(summary.unchanged).toBe(1); // the core counts unchanged, never updated
+    expect(summary.updated).toBe(0);
   });
 
   test("fail-closed 409s: missing board, non-https citation", async () => {

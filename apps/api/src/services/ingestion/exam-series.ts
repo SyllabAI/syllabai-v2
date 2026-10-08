@@ -100,14 +100,35 @@ export function validateExamSeriesRow(row: ExamSeriesRow): void {
   }
 }
 
+/**
+ * The driver-coercion-safe DATE read (T-MIG-100 CLASS C — the 093
+ * scalar-param law's driver-binding-site class): postgres.js materialises
+ * DATE columns as local-midnight JS Date instances, so a raw String()
+ * compare answers "Tue Jan 06 2026…" against the wire's ISO "2026-01-06"
+ * and a byte-identical repeat import counts as an update. The DATE value is
+ * recovered with the LOCAL Y-M-D getters — the TZ-independent inverse of the
+ * driver's local-midnight construction; string materialisations pass
+ * through untouched; null stays null.
+ */
+function isoDate(v: unknown): string | null {
+  if (v == null) return null;
+  if (v instanceof Date) {
+    return (
+      `${v.getFullYear()}-${String(v.getMonth() + 1).padStart(2, "0")}-` +
+      `${String(v.getDate()).padStart(2, "0")}`
+    );
+  }
+  return String(v);
+}
+
 /** sameMeasurement (:134-143): every measured field + the citation. */
 function sameMeasurement(existing: Row, row: ExamSeriesRow): boolean {
   return (
     String(existing.label) === row.label &&
-    String(existing.window_start) === row.windowStart &&
-    String(existing.window_end) === row.windowEnd &&
-    (existing.entry_deadline == null ? null : String(existing.entry_deadline)) === row.entryDeadline &&
-    (existing.results_date == null ? null : String(existing.results_date)) === row.resultsDate &&
+    isoDate(existing.window_start) === row.windowStart &&
+    isoDate(existing.window_end) === row.windowEnd &&
+    isoDate(existing.entry_deadline) === row.entryDeadline &&
+    isoDate(existing.results_date) === row.resultsDate &&
     Boolean(existing.published) === row.published &&
     Boolean(existing.estimated) === (row.estimated === true) &&
     String(existing.source_url) === row.sourceUrl
