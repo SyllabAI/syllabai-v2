@@ -1,0 +1,39 @@
+{
+  "card": "LEVER api-of-record redeploy from tip (enumerated lever of the desk-round run-001 receipt 881960d: 'api-redeploy-from-tip lever RIPE')",
+  "receipt": "api-of-record-redeploy-from-tip-run-001-mainlane",
+  "lane": "main (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)",
+  "created_at_utc": "2026-10-08T06:3xZ",
+  "operator_trace": "1a11a1e91f442429 'api redeploy from tip'",
+  "source_of_record": "main tip 6f96dbf (post desk-round 881960d/fcbddc6 + the parallel-wave #156/#157/#159/#160 + T-MIG-099 run-002 live verify)",
+  "state_of_record_finding": [
+    "The lever was substantially DISCHARGED mid-flight by the parallel lanes under prior operator directives: dpl_Att7u (main 9a376fd, r9 receipt ee9911c), dpl_3QLQzJ (r1c Task-43), dpl_J4PjyJsEa3 (bc4ec31, llm-chain 95bee5f), i6gx4tvqp (fcbddc6, T-MIG-095 deploy-run-002-r0 — re-aliased to production by that lane), dpl_CgHcMLAcK3 (tip 95bee5f, llm-chain amendment 8f4a95c); the desk-round 'live bundle 993c18e' observation predates all of them",
+    "git diff fcbddc6..6f96dbf over apps/api + packages = EMPTY: the api-of-record bundle source at tip is IDENTICAL to the fcbddc6 bundle class already serving; the tip delta vs live is .syllabai-only plus hub-side (#160 cla/ask flip rows) plus the t097 verify vehicle workflow",
+    "Therefore a fresh deploy from tip is a CONTENT-EQUIVALENT consolidation act (provenance 'tip' of record + single of-record deployment resolving the disclosed 4-deploy race), not a code-delta act"
+  ],
+  "live_census_15_15": [
+    "health consolidated 200 UP; login-malformed 400 validation_failed parity",
+    "probe learner register 201 (synthetic identity, of-record ledger class); learners/me/state 200 with the minted Bearer (JWT law)",
+    "THE 095 LAW DISCRIMINATOR PASS: POST /api/v1/learners/me/flashcard-ratings whitespace body -> 400 validation_failed 'cardId: must not be blank' = the #153 zod law LIVE => production serves a >=fcbddc6 bundle == tip api-side (the pre-095 class answers 400 bad_request service-enum instead)",
+    "tutor create/list/latest/delete/list net-zero (L06 inList law); cla/ask unauth 401 boot law (flipped family mounted)",
+    "CORS hub-v2 preflight 204 + ACAO exact; hostile origin 403 no-ACAO (Task-17 prune holding)",
+    "hub-v2 /api/health dataMode=core-api (the §2 flip LIVE — post-flip world confirmed); frozen core hub 200 mock untouched; zombie syllabai-api-v2 404 DEPLOYMENT_NOT_FOUND (zero collateral)"
+  ],
+  "build_at_tip": [
+    "093 recipe verbatim (deploy_bundle_build.py, REPO/STAGE constants retargeted to this workspace topology per the r9-disclosed adaptation class; method untouched): shim v2 worktree-only (Bun.CryptoHasher->node:crypto, Bun.YAML.parse->js-yaml, 6 concept YAMLs inlined byte-verbatim via concept-assets.gen.ts, explicit Node adapter entry), restored post-build, git-verified clean tree",
+    "bundle: 318 modules / 3,081,728 bytes CJS (of-record fcbddc6 census: 318 / 3,081,705 — module-count identical; +23 bytes = bun-patch codegen nondeterminism, source-identical per git, disclosed)",
+    "asset SHAs == the 6 source pins EXACT (concepts 24fa91ac…, edges 8a651dd9…, practicals e53e5f87…, relationships b3b75292…, spec_points b1fea699…, topics a7b14cbd…) — enforced again at boot by the bundle's own requireHash law"
+  ],
+  "localgate_8_8": [
+    "ALL PASS on the production-shaped wire: health 200 UP; login-malformed 400; register 201 (real INSERT); tutor create 201 / list non-empty (L06) / latest 200 / delete 204 / list-after-delete []; LOCAL-ONLY 44-byte JWT key (production secret never lane-readable, law of record)",
+    "ADAPTATION disclosed (stronger write law than the of-record precedent): the of-record DATABASE_URL is lane-readable only via the vercel env API (VERCEL_PAT-gated) and this session's credential set is GITHUB_PAT + NEON_PAT only; per the briefing's zero-DDL-on-production law the gate ran against a disposable copy-on-write branch (BASELINE_DB.md §2 doctrine, the T-MIG-044/097 vehicle pattern): branch created WITH in-line read_write endpoint per the of-record neon-branch.ts payload shape, branch polled current_state=ready BEFORE role creation (423 discipline), branch-local role lg_w8 per R-046-B (connection_uri endpoint is 404 on this control plane; the API assigns the role password), probe rows landed on the COW only",
+    "COW br-proud-cloud-a5r31d7b (w8-localgate-1791440679) DROPPED + 404-VERIFIED (T-MIG-035 discipline); one earlier endpoint-less create (br-crimson-shadow-a5gzvoov) and its same-run successor were also lane-owned and dropped; production branch br-muddy-bar-a5huwldd untouched (no roles, no DDL, no rows)"
+  ],
+  "deploy_leg": [
+    "TOKEN-GATED: the vercel CLI deploy --prod act requires the VERCEL_PAT; this session holds none (briefing §0 paste absent, no .secrets.env stash, CI Actions hold NEON_API_KEY only — 'the vercel CLI deploy stays token-gated' per the t097 vehicle of record)",
+    "STAGED HANDOFF (one command once a token-bearing lane/operator acts): build per this receipt's build_at_tip (scripts/w8_deploy_bundle_build.py = the recipe tool with constants retargeted) -> stage = api/index.js + vercel.json (rewrites /api/v1/(.*) + /actuator/health) + .vercel/project.json {projectId prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ, orgId team_ULL54qkhzKBmnKrpO6BD4mYX} -> vercel CLI 62.7.0 deploy --prod from the stage -> alias syllabai-v2.vercel.app auto-switches to the new dpl",
+    "post-deploy battery of record = this receipt's live_census_15_15 (the 095 discriminator + CORS prune + hub flip posture must hold byte-for-byte)",
+    "rollback anchors of record (all READY + re-aliasable): i6gx4tvqp (fcbddc6, alias holder per run-002 receipt), dpl_CgHcMLAcK3 (95bee5f), dpl_Att7u (9a376fd), ooe5t3b4k (bc4ec31-class), eh53sdxjm (w0a 993c18e), dpl_Die9SrNyPQ (04:40 CORS-prune)"
+  ],
+  "write_ledger": "prod Neon: 2 census probe learners (register only, synthetic @example.invalid, the of-record census class) + tutor rows net-zero; COW branches: 1 probe learner + net-zero tutor rows on a dropped branch; ZERO production-branch writes (no role/DDL/rows); ZERO env writes; ZERO deployments; zero secret material printed/logged/committed",
+  "verdict": "PRE-CLEARED AND STAGED — tip 6f96dbf is deploy-ready (build 318/6-pins green, localgate 8/8, live census 15/15 with the api proven content-equivalent to the serving bundle); the single remaining act is the token-gated 'vercel deploy --prod' which fires the moment a VERCEL_PAT-bearing lane or the operator executes the staged handoff"
+}
