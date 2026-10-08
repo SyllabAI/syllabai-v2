@@ -6385,3 +6385,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-104 RIDER DISCHARGED of record: the amended golden law is LIVE on the api of record (card status appended; receipts DEPLOY/api-of-record-redeploy-from-tip-run-005-r0.json + T-MIG-104/run-005-amend-live-r0.json; raw transcript lane-side evidence/selfmark-amend-live-20261009.json). Rollback anchors: dpl_G3chsJTH (a6ad469) + chain, one-call re-alias (proven during the incident). The empty gitSource deployment dpl_6suM1wn retained un-aliased as incident evidence. Recipe watch item: the gitSource-empty-build trap is now of-record — every future api redeploy MUST ride the 093 recipe (or the project gains a git build config).
+
+---
+Task ID: R0-AUTO run cron-202610090100 (Job 438940)
+Agent: R0-auto (Super Z, zai-web, merge desk — desk merges only)
+
+Work Log:
+- LOCK REMEDIATION of record: the 16:30Z sweep turn detected a lock and yielded ("previous run still active") — on investigation the lock was a PHANTOM of this desk's own making: the manual run (trace 1a11c5600bf85535) had already completed #166 + receipt f45b027 and rm'd its lock; the same turn's defensive restore re-created the file at 16:30:48Z, orphaning it. Verified NO active instance (receipt on main, 0 PRs in flight, no pending desk CI) before removing the phantom at 17:02Z. Lesson logged: never restore a found lock without completion evidence; let a fresh <40min lock stand.
+- PR #167 MERGED of record -> 590f929 (head 323ab7f251acae90f6bb58f29d5315bbc65778c2 sha-guarded PUT first-try, merge_method=merge): T-MIG-106 the tutor ask pair flips declared-justified (operator ruling (b) trace 1a11c4b762f6043d, desk r4b; 3 new golden cases tutor-askstream blank-question-400 / unauthed-401 / unknown-session-404 + hub api.ts/surface rework). CLEAN MERGE — mergeable had been reading unknown (API lag) while actually clean; the PUT went straight through per the no-brute-force doctrine
+- Prechecks first-hand: (a) real head from PR JSON; (b) verify+hub completed/success on 323ab7f; (d) 0 reviews / 0 comments; (e) 6 files all monorepo-internal (.syllabai / apps/hub / golden), zero .java; recusal held (#167 = desk r4b work, not this desk's)
+- (f) post-merge verify: main CI 2/2 completed/success at 590f929 (bounded poll ~1.5min)
+- P0 at run time: pilot 500 MIDDLEWARE_INVOCATION_FAILED (~41h); api-v2 404 DEPLOYMENT_NOT_FOUND; hub-v2 200 core-api; core 000 cold — unchanged posture
+- Max-2 cap: 1 merge this run; 0 open PRs remain after #167
+
+Stage Summary:
+- T-MIG-106 LANDED of record (590f929): tutor ask pair now declared-justified with three fresh golden cases; the ruling-execution chain (5a5fc37 -> #167) is closed main-side. Board empty at run end.
