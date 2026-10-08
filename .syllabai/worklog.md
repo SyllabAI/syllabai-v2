@@ -5811,3 +5811,19 @@ Work Log:
 
 Stage Summary:
 - Wave-s4 fully landed of record; the 086/087 mechanism blocker is adjudicated and closed. Register trajectory: 083 (rider, corroborated) + 084 (r4b rider) + 085 WIDENED; 086/087 widen-unblocked pending wave-s5; 088/089/091 verify cycles + 090 post-#140 sequence remain. Standing operator levers unchanged (v2 api bundle currency, P2 adjudication, rollback re-warm, PAT rotation).
+
+---
+Task ID: 35
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator trace 1a11a36d9c2cc651 "① Merge desk #161 (or wait for operator action); ② Repair T-MIG-100 back to R0 (#138 port author)" — the #161 desk merge + the T-MIG-100 register-ID collision repair.
+
+Work Log:
+- Collision found first-hand: main's T-MIG-100 (5665a6c, w0a filing desk, drizzle index opclass scramble band per operator trace 1a11a1e1882c1b9d) vs PR #161's T-MIG-100 (r4b Task-34, the #138 ingestion-port wire-truth defect band, owner R0-integrator). Register-ID duplication — unreconcilable at merge time.
+- REPAIR ② of record (operator-directed, this trace): the T-MIG-100 ID returns to the #138-port band — w0a's card renumbered T-MIG-100 -> T-MIG-101 (file rename + id/title/scope-path edits + append-only renumber_provenance block; content beyond those byte-verbatim from 5665a6c; receipts/ T-MIG-100 dir verified EMPTY at renumber time; owed proof-leg receipt path redirected to receipts/T-MIG-101/). Commit rides this PR (NOT direct-main) so the register never passes through a dual-T-MIG-100 state in any pushed ref and the repair is CI-corroborated.
+- RECONCILIATION: origin/main (507def9) merged into the PR branch (dedff47) — hub api.ts V2_SURFACE_PREFIXES + surface-test table/pins = UNION (main 097+085+086/087 rows + r4b 089 rows, both verbatim, zero law edits, +3 net rows vs main: 097 ask, 085 concept-graph, 089 glm-ocr) ; worklog tail = UNION (Task-34 + main-side Task-44/45/099/T-MIG-100-filing/redeploy/ROUND-35/36, both verbatim).
+- Register validation: ALL T-MIG-*.yaml parse OK (yaml.safe_load round-trip); IDs unique; exactly one T-MIG-100 (the #138 band) + one T-MIG-101 (the drizzle band).
+- Gates first-hand at the final head: hub tsc exit 0; hub 46/0/395 (main 43/0/382 + the union's 089 rows/test — +3/+13 exact); typecheck chain x4 exit 0; api+packages 1778/13skip/0/6973 (zero api/packages code delta vs main, diff EMPTY first-hand); golden selftest OK.
+- Desk merge: PR #161 merged sha-pinned per the operator's explicit order (authors-never-self-merge superseded by trace 1a11a36d9c2cc651 for THIS PR only, the 881960d desk-round precedent).
+
+Stage Summary:
+- T-MIG-100 of record = the #138 ingestion-port wire-truth defect band (owner R0-integrator; 088/091 flips gate on its repairs + T-MIG-023). T-MIG-101 of record = the drizzle opclass scramble band (execution UNCLAIMED, earliest-claim-wins; receipt path T-MIG-101/). 089 verify+widen of record on main post-merge. Band: 083/084/090 DONE, 085 WIDENED, 086/087 widen-unblocked (wave-s5), 089 DONE-pending-flip-stamp, 088+091 gated on T-MIG-100.
