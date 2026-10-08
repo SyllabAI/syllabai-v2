@@ -6187,3 +6187,26 @@ Work Log:
 
 Stage Summary:
 - T-MIG-100 CLASS A/C repair + 088/091 replay-widen LANDED of record (bd80b96): the 088/091 verify gates from #161 are now unblocked from the defect side — next desk rounds can re-run golden-verify against the repaired port. Board empty at run end.
+
+---
+Task ID: Task-37 (lane R4-api-b)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Board reconciliation + verification desk-round at the post-#164 tip (operator enumeration trace 1a11bd2e64d6bb71: 'T-MIG-100 repairs (088/091 flips gate on them) + T-MIG-023; R0's 101/102 desk merges; 083's own DONE stamp (r9's card)')
+
+Work Log:
+- Workspace restored from wipe (PAT .secrets 0600 + credential store re-set, API 200, fresh clone at 51b0774)
+- Fetch-first census of record: my entire bookkeeping class already landed at 622d687 (Task-36: 089 DONE stamp + 084 DONE convergent + 086/087 WIDENED wave-s5 07c3ea5; gates at 558d96f) — the R31 operator enumeration is therefore a RECEIPT round, not a work round
+- Supersession reconciliation of the enumerated remainder, all first-hand on origin/main:
+  - T-MIG-100 repairs: DISCHARGED of record — PR #164 merged bd80b96 (7548d4e CLASS A+C, 5ea7f36 widen, 8408f37 receipts+flips, 51b0774 r0-auto cron receipt, main CI 2/2); card text IN_REVIEW is pre-merge wording, the post-merge stamp is R0's (port owner) — untouched
+  - 088/091 flips: LANDED of record at 8408f37 (GOLDEN-VERIFIED+WIDENED; 22-leg replay 20/22, the four owned defect legs ALL PASS) — the gate pair this lane carried since Task-36 is closed
+  - T-MIG-023: card DONE of record since PR #38/4be3fad; the topics-write 501 shells remain the standing 023-owned CLASS B posture (R0's replay legs 08/09 out-of-scope disclosure is consistent)
+  - R0's 101/102 desk merges: DISCHARGED of record (365c555 stamps: 101 DONE #158, 102 DONE #163)
+  - T-MIG-103: DONE of record (w0a push-green leg, receipts/T-MIG-100/run-001-push-green-w0a.json)
+  - 083's own DONE stamp: r9's card; the /api/v1/admin/revision-notes widen row IS of record on main (api.ts:255) — card flip owed by r9, untouched
+  - 0 open PRs remain (post-#164 board empty at PR level)
+- Gates corroboration first-hand at tip 51b0774 (this desk round, post-#164 merged tree): hub tsc exit 0; typecheck chain x4 exit 0; hub 48/0/427 (matches the #164 receipt); api+packages 1800/13skip/0/7036 (composition delta vs the 558d96f census 1811/7027 is R0's own #164 band test changes, zero failures); golden selftest OK
+- Surface row census (r4b coexistence check post-#164): V2_SURFACE_PREFIXES 27 rows + V2_SURFACE_MIDPATH_PREFIXES 3 rows; verified intact: 089 glm-ocr, 086 both knowledge-graph mid-path rows, 087 coverage mid-path row, 084 knowledge/nodes, 085 concept-graph, 083 admin revision-notes, R0's 088/091 exam-series/exact-endpoint rows
+- ZERO register writes: nothing of r4b's is stale; other lanes' cards (100 post-merge stamp = R0's; 083 stamp = r9's) deliberately untouched — no churn on active lanes
+
+Stage Summary:
+- The board enumeration in trace 1a11bd2e64d6bb71 is fully reconciled: every item is either DISCHARGED of record (100 repairs, 088/091 flips, 101/102 stamps, 023, 103) or owned-and-open elsewhere (083 stamp = r9). This lane's items are all of record (622d687). Fresh first-hand gates at 51b0774 corroborate the merged tree post-#164. .syllabai-only direct-main (fetch-first), no force.
