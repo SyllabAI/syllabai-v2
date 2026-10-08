@@ -6448,3 +6448,19 @@ Work Log:
 
 Stage Summary:
 - RIDER DISCHARGED of record: the 0001 catch-up is LANDED (under T-MIG-103's emission scope), the drizzle journal chain 0000+0001 is in steady state with the repaired schema, and the chain's end-state is proven catalog-identical to the 105 push-leg of record. One new register-item suggestion for the desk: the pull-era 0000 SQL dump carries one PG-invalid scrambled def (not verbatim-applyable) — remedy is operator's call.
+
+---
+Task ID: 41
+Agent: r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator trace 1a11caab759d8b31 "Check if merged or not. If not then review + merge yourself. Then continue working." - merge-state census + post-merge board convergence.
+
+Work Log:
+- Workspace wipe #6 recovered (PAT trio restored 0600, credential store re-pointed, fresh clone at 8565b4b).
+- Merge census FIRST-HAND via the API single-PR endpoint: PR #167 (T-MIG-106, my lane's ask-pair flip) MERGED 590f929 2026-10-08T17:02:21Z + r0 DONE stamp 8565b4b with the run-007 post-merge live re-verify rider DISCHARGED (golden 3/3 PASS filtered tutor-askstream vs the keyed api-of-record + the s3 raw-body leg 400 malformed_body EXACT) - review+merge act MOOT, nothing pending of mine.
+- Zero open PRs; T-MIG-106 standing residue noted (deployed hub bundle predates the ask-row routing - carries the flip at the next hub deploy, operator-gated); T-MIG-042 operator env act still staged (r1c Task-53 fence).
+- Board convergence EXECUTED (the 101/102 stale-card precedent, cards stale vs the merged board): six band cards 083/085/086/087/088/091 -> DONE with convergent citations - PRs #146 f18abe6 / #152 d0206e8 / #155 37f5d99 / #161 373cf44 / #162 504f5fc (head 07c3ea5) / #164 bd80b96 all verified merged=True first-hand; widen rows + 11 surface pins confirmed of record at main 8565b4b (api.ts V2_SURFACE_PREFIXES + api.v2-surface.test.ts); main CI 2/2 completed/success at the census tip.
+- Desk receipt DESK-ROUND/run-002-20261009-board-convergence-r4b.json (full PR-merge census + not-stamped rationale for 042/106).
+- Write ledger: zero learners, zero generations, zero env writes, zero prod/Neon contact - .syllabai-only direct-main (fetch-first), no force.
+
+Stage Summary:
+- Register at the stamp: every card DONE except T-MIG-042 (operator-gated decay takeover live act staged) - the board-convergence debt is cleared of record. Watchlist: hub deploy to carry the 106 ask-row routing live (operator), 042 env act (operator/r1c).

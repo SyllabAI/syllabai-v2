@@ -1,0 +1,96 @@
+{
+  "receipt": "run-002-20261009-board-convergence-r4b",
+  "task": "post-merge board convergence - six band cards DONE stamps",
+  "lane": "r4-api-b (Super Z, session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "operator_trace": "1a11caab759d8b31",
+  "operator_order": "Check if merged or not. If not then review + merge yourself. Then continue working.",
+  "basis": "the 101/102 stale-card precedent (365c555, 7f14bdc): cards stale at IN-REVIEW/WIDENED vs the merged board",
+  "main_of_record": "8565b4b",
+  "main_ci": "verify + hub completed/success at 8565b4b",
+  "pr_merge_census": {
+    "146": {
+      "merged": true,
+      "merge": "f18abe6",
+      "at": "2026-10-08T04:17:09Z",
+      "families": [
+        "T-MIG-083"
+      ]
+    },
+    "152": {
+      "merged": true,
+      "merge": "d0206e8",
+      "at": "2026-10-08T05:07:00Z",
+      "families": [
+        "T-MIG-083",
+        "T-MIG-085",
+        "T-MIG-086",
+        "T-MIG-087"
+      ]
+    },
+    "154": {
+      "merged": true,
+      "merge": "8c40306",
+      "at": "2026-10-08T05:09:06Z",
+      "families": [
+        "T-MIG-084"
+      ]
+    },
+    "155": {
+      "merged": true,
+      "merge": "37f5d99",
+      "at": "2026-10-08T06:20:05Z",
+      "families": [
+        "T-MIG-085"
+      ]
+    },
+    "161": {
+      "merged": true,
+      "merge": "373cf44",
+      "at": "2026-10-08T06:51:57Z",
+      "families": [
+        "T-MIG-088",
+        "T-MIG-091"
+      ]
+    },
+    "162": {
+      "merged": true,
+      "merge": "504f5fc",
+      "at": "2026-10-08T06:39:47Z",
+      "families": [
+        "T-MIG-086",
+        "T-MIG-087"
+      ]
+    },
+    "164": {
+      "merged": true,
+      "merge": "bd80b96",
+      "at": "2026-10-08T12:01:17Z",
+      "families": [
+        "T-MIG-088",
+        "T-MIG-091"
+      ]
+    },
+    "167": {
+      "merged": true,
+      "merge": "590f929",
+      "at": "2026-10-08T17:02:21Z",
+      "families": [
+        "T-MIG-106"
+      ]
+    }
+  },
+  "stamped_cards": [
+    "T-MIG-083",
+    "T-MIG-085",
+    "T-MIG-086",
+    "T-MIG-087",
+    "T-MIG-088",
+    "T-MIG-091"
+  ],
+  "not_stamped": {
+    "T-MIG-042": "IN_REVIEW legitimately - the operator-gated env act (CRON_SECRET/deploy/first-fire) is staged per r1c Task-53; the DONE flip belongs to that discharge",
+    "T-MIG-106": "already DONE of record (8565b4b, r0 run-007 rider discharged)"
+  },
+  "write_ledger": "zero learners, zero generations, zero env writes, zero prod/Neon contact - .syllabai-only",
+  "fetch_first_note": "mid-act origin movement caught by the fetch-first discipline: main advanced 8565b4b -> b775777 (T-MIG-103 0001 rider + 4th-firing mainlane receipt) while this desk round was in flight; zero overlap with the six stamped cards or this receipt (worklog tail UNION-merged); row/pin citations were verified at 8565b4b and remain of record at b775777; stamps landed on b775777"
+}
