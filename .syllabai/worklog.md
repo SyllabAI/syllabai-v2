@@ -5991,3 +5991,16 @@ Stage Summary:
 - This act's standing value: first execution at the T-MIG-101-bearing bundle class + the T-MIG-101 ARTIFACT DISCRIMINATOR PASS (1023/1023 Z-form + detail) — the artifact-level evidence r9's receipt honestly disclosed as NOT-EXERCISED; the serving bundle (same 093 recipe lineage >= 05bf473) inherits it
 - Rollback anchors of record unchanged + all READY (dpl_8njpAVm act-time; dpl_A8UAPTfb @ 05bf473 additionally re-aliasable; dpl_5j2otnsK3 @ 272b2ed)
 - Standing hygiene: the pasted credential transited chat — rotation recommended at session end (Task-1 precedent)
+
+---
+Task ID: TUTOR-VERIFY-1 (operator trace 1a11a5e8323396c1 "Is the Tutor working perfectly? All the features? Past paper retrieval? Which past papers are chunked and embedded?")
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+
+Work Log:
+- Read the full tutor law first-hand at origin/main: routes/tutor.ts (POST /ask + /ask/stream), services/tutor/paper-question.ts (deterministic 3-anchor resolver bank/card/content-store, T-C20, fail-open guard), fetch-parser.ts ("question no. 10(c)" + "paper 1/2" grammar), exam-papers + content reader routes.
+- LIVE battery on the api-of-record (login reuse of the disclosed 099 probe learner; 5 real-generation asks; reads otherwise): generic ask 200 evidenceCount=6 citations=6 (RAG live); fake-paper ask (june 2099 q10c paper 2) honest fail-open refusal 0.82s evidenceCount=0; REAL-paper asks against 4CH1/2C June 2019 — QP ask "question no. 1(c) from june 2019 paper 2" quotes the REAL stem with tiered citations across all three anchors (CARD qcard-4CH1-2C-JUN-2019.txt + QUESTION_PAPER pp1-3 + MARK_SCHEME p4, each with deepLink), MS-seeking ask returns the REAL scheme arithmetic (35x77.78+37x22.22 as shown in the scheme [3]).
+- Corpus census: GET /api/v1/exam-papers = 108-row Fetch bank — 93 VALIDATED Edexcel IGCSE Chemistry papers (4CH0 Jan 2012-Jun 2019 + 4CH1 Jun 2019-Jun 2026; papers 1C/1CR + 2C/2CR; June/January/November + Specimen 2017) each with linked QP+MS document ids; 13 REJECTED rows never serve (T-C20). Serving-anchor docs citable 200 (qcard/qp.pdf 20pp/ms.pdf 20pp); bank-linked doc rows SUGGESTED -> 404 (documented production posture; 404-after-auth is the designed law). Teacher content list/search 403 role-gated; per-chunk counts not lane-side enumerable (zero-DB-contact law).
+- Receipt .syllabai/receipts/TUTOR-VERIFY/run-001-live-r0.json (asserts 8/8 PASS); probe scripts + raw transcripts lane-side; .syllabai-only direct-main (fetch-first), no force.
+
+Stage Summary:
+- Tutor verdict LIVE-WORKING end-to-end: grounded RAG, deterministic paper-identity retrieval (the operator's phrasing parses and resolves), MS-seeking intent, honest-refusal guard for out-of-corpus papers. Corpus of record = 93 VALIDATED Edexcel IGCSE Chemistry papers 2011-2026 embedded as cards + QP/MS store chunks. Lane IDLE.

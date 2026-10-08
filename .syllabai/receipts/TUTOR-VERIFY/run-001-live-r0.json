@@ -1,0 +1,40 @@
+{
+  "receipt": "run-001-live-r0",
+  "dir": "TUTOR-VERIFY",
+  "lane": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "created_at_utc": "2026-10-08T06:55:00Z",
+  "operator_trace": "1a11a5e8323396c1 'Is the Tutor working perfectly? All the features? Past paper retrieval (give me question no. 10(c) from so and so year, paper 1/2)? And if working, which past papers is it going to work on — which past papers have been chunked and embedded?'",
+  "purpose": "first-hand product verification of the live tutor on the api-of-record: generic grounded ask, paper-identity retrieval, honest-refusal guard, and the corpus census (Fetch bank + serving posture)",
+  "target": "api-of-record https://syllabai-v2.vercel.app (dpl_8njpAVm/aa7d322-era serving window; main advanced 39a66cf mid-probe — same tutor stack, #163 post-merge)",
+  "flow_law": "code read first-hand at origin/main: routes/tutor.ts (POST /ask + /ask/stream, tutorAskRequestSchema question<=2000/sessionId?/history<=12/courseRef?), services/tutor/paper-question.ts (deterministic 3-anchor resolver: bank / question-card / content-store, T-C20 REJECTED-never-serves, fail-open guard), fetch-parser.ts (series/year/paper-code/qnum/part grammar, 'question no. 10(c)' + 'paper 1/2' -> 2C/2CR home-unit mapping), routes/exam-papers (GET / list), routes/content (reader GET /:id existsCitable gate)",
+  "write_ledger_disclosed": "ZERO new learners (login reuse of the disclosed 099 probe learner r0-099live-…@example.invalid); 5 blocking /ask executions (real LLM generation cost inherent: 1 generic + 1 fake-paper + 2 real-paper + 0; fake-paper answered 0.82s honest refusal, near-zero cost); read-only GETs otherwise",
+  "observed": {
+    "ask_generic": "200 in 5.2s — grounded RAG: evidenceCount=6, citations=6, real chemistry generation (\\ce{} LaTeX), refused=false — the vector+KG arms serve live",
+    "ask_fake_paper": "'Give me the answer to question 10(c) from june 2099 paper 2.' -> 200 in 0.82s, evidenceCount=0, HONEST FAIL-OPEN REFUSAL: 'I can't answer that from the validated course material yet. I could not find question 10(c) from the June 2099 paper 2 in the validated corpus' — the resolver parsed the identity, found no validated anchor, refused instead of hallucinating (the 09-27 G1 guard live)",
+    "ask_real_paper_qp": "'Give me question no. 1(c) from june 2019 paper 2.' -> 200 in 2.8s, evidenceCount=6, refused=false — the answer quotes the REAL 4CH1/2C June 2019 Q1(c) stem (isotopes sentence completion); citations tiered across ALL THREE anchors: Question card (CARD, qcard-4CH1-2C-JUN-2019.txt) + Question paper pp1-3 (QUESTION_PAPER w/ page) + Mark scheme p4 (MARK_SCHEME w/ page), each with deepLink",
+    "ask_real_paper_ms": "'Show me the mark scheme answer for question 2(a) from june 2019 paper 2.' -> 200 in 3.3s, evidenceCount=6 — the answer carries the REAL scheme arithmetic ('(35 x 77.78) + (37 x 22.22) = 3544.44 … as shown in the scheme [3]') — MS-seeking intent detection live",
+    "corpus_posture": "bank-linked document rows of 4CH1/2C June 2026 (qp/ms) 404 through the reader route = the DOCUMENTED production posture (bank row VALIDATED, linked doc rows SUGGESTED — resolver header; 404-after-auth is the designed law, per 39a66cf census) — while the SERVING anchor documents are citable 200: qcard-4CH1-2C-JUN-2019.txt (EXTERNAL_QUESTIONS), qp.pdf (20pp, QUESTION_PAPER), ms.pdf (20pp, MARK_SCHEME)",
+    "teacher_routes": "GET /api/v1/teacher/content/documents(+search) = 403 for a STUDENT-role bearer (role gate live)"
+  },
+  "corpus_census": {
+    "bank_total": 108,
+    "bank_validated": 93,
+    "bank_rejected": 13,
+    "shape": "Edexcel IGCSE Chemistry: 4CH0 (Jan 2012 - Jun 2019) + 4CH1 (Jun 2019 - Jun 2026), papers 1C/1CR + 2C/2CR, sessions June/January/November + Specimen 2017; every VALIDATED row carries linked questionPaperDocumentId + markSchemeDocumentId",
+    "sessions_covered": "2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026 (June+Jan+Nov per availability; NOV rows appear 2020+)",
+    "rejected_never_serve": "T-C20 law — the 13 REJECTED rows (AUDIT-E2E + legacy Summer-YYYY unlabeled) are unservable by design",
+    "embeddings": "vector arm live (generic ask evidenceCount=6); chunk corpus = question cards + QP/MS store docs (V33 chunk mirror w/ series+year+paper code); exact per-document chunk counts not enumerable lane-side (teacher/admin surfaces role-gated; zero DB contact law) — the census above is the bank-of-record answer"
+  },
+  "asserts": [
+    "login 200 (learner reuse, zero new writes)",
+    "exam-papers list 200 — 108-row bank census",
+    "generic ask 200 evidenceCount=6 citations=6 (RAG live)",
+    "fake-paper ask honest fail-open refusal (guard live)",
+    "real-paper QP ask quotes the real stem, 3-anchor tiered citations",
+    "real-paper MS-seeking ask returns the real scheme arithmetic",
+    "cited anchor docs citable 200; bank-linked SUGGESTED docs 404 (documented posture)",
+    "teacher content surfaces 403 role-gated"
+  ],
+  "verdict": "ASSERTS 8/8 PASS — the tutor is LIVE and WORKING end-to-end on the api-of-record: grounded generic asks, deterministic paper-question retrieval (the operator's 'question no. X(Y) from YEAR paper 1/2' phrasing parses and resolves), real mark-scheme-seeking, and the honest-refusal guard for papers not in the corpus. Corpus of record: 93 VALIDATED Edexcel IGCSE Chemistry papers (4CH0+4CH1, 2011-2026, papers 1C/1CR/2C/2CR) chunked+embedded as question cards + QP/MS store chunks; REJECTED rows never serve. Caveats of record: question-card coverage may exceed the structured bank for some sessions (card tier covers 'sessions the structured bank does not'); per-chunk counts not lane-side enumerable (role-gated surfaces, zero-DB-contact law).",
+  "scope_note": ".syllabai-only contact (this receipt + worklog); zero code, zero schema, zero flip-table, zero LLM-seam config contact; no force; probe script persisted lane-side scripts/tutor_live_verify_r0*.py, raw transcripts lane-side work/tutor_live_verify_r0*.json"
+}
