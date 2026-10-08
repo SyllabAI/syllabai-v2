@@ -1,0 +1,126 @@
+{
+ "card": "T-MIG-085",
+ "run": "run-002-golden-verify-r3a",
+ "family": "teacher concept graph (activate + edges)",
+ "fixtures_ref": "golden-captures/t-mig-085 (run-001-capture-r4b, PR #136 band)",
+ "lane": "r3a (Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)",
+ "operator_trace": "1a119a5ece785fc1 ('flip 082's card to DONE, and start the 083-087 golden-verify cycle from the r4b fixtures')",
+ "method": "Scratch substrate per the r4b local-boot recipe of record, reproduced lane-side: PostgreSQL 17.11 (Debian 17.11-0+deb13u1, dpkg -x user-tree) + pgvector 0.8.0 on :5433; schema + curriculum seed = the frozen core's 63 Flyway migrations at 6cad6ef applied in version order; identities (cap_learner/cap_teacher/cap_admin @example.invalid) registered via the honest v2 API paths (register x2 + V19 bootstrap-admin), class 'Capture Class A' (courseSlug capture-phys) + enrollment via the teacher API; tokens = scratch logins under a synthetic SYLLABAI_JWT_SECRET (wire law under verify is signature-independent; tokens never persisted into the repo). Compare law: status exact; bodies compared under uuid-isomorphism (ISO-8601 instants -> <TS>; uuid values mapped via the disclosed substitution map when known, any other uuid -> <UUID>) \u2014 the r4b fixtures carry scrubbed fake uuids, so value-level uuid equality is structurally unverifiable; codes/titles/counts/relations/messages compared exactly. Cache-Control: the v2 missing no-cache default is the standing api-wide class filed of record in T-MIG-082 run-003 findings \u2014 carried forward, not re-filed per leg. Write legs executed ON SCRATCH (zero-prod-write respected). SUBSTRATE EQUIVALENCE: post-activation census CONCEPT|167 MISCONCEPTION|30 SUBJECT|2 SUBTOPIC|200 TOPIC|31 UNIT|5 == the r4b capture-receipt census (31 TOPIC / 2 SUBJECT / 167 CONCEPT / 30 MISCONCEPTION / 5 UNIT / 200 SUBTOPIC) EXACT \u2014 the snapshot-driven node counts reproduce byte-for-value.",
+ "results": [
+  {
+   "leg": "leg-01-activate-no-token-401",
+   "method": "POST",
+   "fixture_path": "/api/v1/teacher/concept-graph/activate",
+   "replayed_path": "/teacher/concept-graph/activate",
+   "expected_status": 401,
+   "actual_status": 401,
+   "status_match": true,
+   "body_match": true,
+   "content_type": "?",
+   "content_type_match": false
+  },
+  {
+   "leg": "leg-02-activate-learner-403",
+   "method": "POST",
+   "fixture_path": "/api/v1/teacher/concept-graph/activate",
+   "replayed_path": "/teacher/concept-graph/activate",
+   "expected_status": 403,
+   "actual_status": 403,
+   "status_match": true,
+   "body_match": true,
+   "content_type": "?",
+   "content_type_match": false
+  },
+  {
+   "leg": "leg-04-edges-no-param-400",
+   "method": "GET",
+   "fixture_path": "/api/v1/teacher/concept-graph/edges",
+   "replayed_path": "/teacher/concept-graph/edges",
+   "expected_status": 400,
+   "actual_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "content_type": "?",
+   "content_type_match": false
+  },
+  {
+   "leg": "leg-03-activate-teacher-200",
+   "method": "POST",
+   "fixture_path": "/api/v1/teacher/concept-graph/activate",
+   "replayed_path": "/teacher/concept-graph/activate",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "content_type": "?",
+   "content_type_match": false,
+   "note": "write leg executed ON SCRATCH (zero-prod-write respected); counts come from the SHA-256-pinned snapshot = deterministic"
+  },
+  {
+   "leg": "leg-05-edges-200",
+   "method": "GET",
+   "fixture_path": "/api/v1/teacher/concept-graph/edges?rootId=00000000-0000-4000-8000-000000000001",
+   "replayed_path": "/teacher/concept-graph/edges?rootId=20000000-0000-0000-0000-000000000001",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "content_type": "?",
+   "content_type_match": false
+  },
+  {
+   "leg": "leg-06-edges-rnd-root-200or404",
+   "method": "GET",
+   "fixture_path": "/api/v1/teacher/concept-graph/edges?rootId=00000000-0000-4000-8000-000000000012",
+   "replayed_path": "/teacher/concept-graph/edges?rootId=00000000-0000-4000-8000-000000000012",
+   "expected_status": 404,
+   "actual_status": 404,
+   "status_match": true,
+   "body_match": false,
+   "content_type": "?",
+   "content_type_match": false,
+   "fixture_body_normalized": {
+    "error": "not_found",
+    "message": "knowledge node 00000000-0000-4000-8000-000000000012 not found",
+    "status": 404,
+    "timestamp": "<TS>"
+   },
+   "actual_body_normalized": {
+    "status": 404,
+    "error": "not_found",
+    "message": "knowledge node not found: 00000000-0000-4000-8000-000000000012",
+    "timestamp": "<TS>"
+   }
+  },
+  {
+   "leg": "leg-07-edges-admin-200",
+   "method": "GET",
+   "fixture_path": "/api/v1/teacher/concept-graph/edges?rootId=00000000-0000-4000-8000-000000000001",
+   "replayed_path": "/teacher/concept-graph/edges?rootId=20000000-0000-0000-0000-000000000001",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "content_type": "?",
+   "content_type_match": false
+  }
+ ],
+ "findings": [
+  {
+   "class": "activation determinism (write leg on scratch)",
+   "leg": "leg-03-activate-teacher-200",
+   "evidence": "alreadyActive:false + counts EXACT: conceptNodes 193, nodesCreated 420, edgesCreated 709, edgesReused 0, nodesReused 0, specPoints 182, practicals 12, sections 4, subsections 28, validatedSemanticEdges 272 \u2014 the SHA-256-pinned snapshot (apps/api/src/services/teacher/concept-graph/*.yaml, SHAs pinned == frozen classpath resources) reproduces the r4b activation counts value-for-value."
+  },
+  {
+   "class": "not-found message format divergence",
+   "leg": "leg-06-edges-rnd-root-200or404",
+   "evidence": "both sides 404; core 'knowledge node 00000000-0000-4000-8000-000000000012 not found' vs v2 'knowledge node not found: 00000000-0000-4000-8000-000000000012'. NOTE the INTRA-v2 inconsistency: 084 leg-06 (knowledge.ts mount) reproduces the frozen format byte-exact \u2014 the concept-edges path (teacher/kg.ts service) formats differently. FINDING FILED, not auto-fixed; fix-class candidate (align the message interpolation with the frozen wire)."
+  },
+  {
+   "class": "edges ordering law verified",
+   "leg": "leg-05/leg-07",
+   "evidence": "the /edges route (sorted relation->source-code->target-code) matches the captured order byte-exact under the uuid map \u2014 the deterministic-sort law holds where the core itself sorts."
+  }
+ ],
+ "verdict": "PASS-WITH-FILED-DIVERGENCE (1 filed, message-format)"
+}
