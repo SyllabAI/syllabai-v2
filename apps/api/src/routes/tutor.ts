@@ -70,6 +70,7 @@ import { resolveEmbeddingProvider } from "../services/content/retrieval";
 import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "../services/identity/users";
 import { defaultClock } from "../services/selfmark";
+import { buildLlmChain, chainAsLlmProvider, type FailoverLlmChain } from "../services/llmchain";
 import {
   ArgumentError,
   ConflictError,
@@ -383,12 +384,15 @@ export function createTutorRouter(module: TutorModule): Hono {
 }
 
 /**
- * The dormant LLM seam (the smartmark posture): the provider infra is the
- * wave-3 LLM-chain lane's surface. available() = false makes every
- * generation-reaching ask serve the honest 503 tutor_unavailable while the
- * deterministic laws stay live; never a fake 200.
+ * The dormant LLM seam (the historical ADR-023 posture): available() = false
+ * makes every generation-reaching ask serve the honest 503 tutor_unavailable
+ * while the deterministic laws stay live; never a fake 200. Retained as the
+ * explicit-dormant seam for callers that pass chain: null — the DEFAULT
+ * composition now wires the real chain (ADR-MIG-0002, operator directive ①:
+ * zero-key boots keep exactly this posture because every member registers
+ * dormant, so this constant only matters for forced-dormant rig work).
  */
-const dormantTutorLlm: LlmProvider = {
+export const dormantTutorLlm: LlmProvider = {
   available: () => false,
   generate: async () => ({ text: "", model: "dormant", providerName: "dormant" }),
   stream: async function* () {},
@@ -400,18 +404,33 @@ const dormantTutorLlm: LlmProvider = {
  * resolveForCourse compose, never mirrored), the T-C32-compliant vector
  * arm over the injected embedding provider (honest empty when unkeyed),
  * the tranche-1b paper-question resolver (the REQUIRED port — no
- * notPaperAsk default anywhere), the grounded generator over the dormant
- * LLM seam, and a no-op telemetry sink (the §18 research consumer is
+ * notPaperAsk default anywhere), the grounded generator over the LLM seam
+ * of record, and a no-op telemetry sink (the §18 research consumer is
  * T-MIG-061's title — disclosed dormant).
+ *
+ * LLM SEAM OF RECORD (ADR-MIG-0002, operator directive ① trace
+ * 1a117913519cd141): the §26.1 chain (groq → gemini → openrouter) rides the
+ * chainAsLlmProvider bridge. The generator's requireAvailable + wrap laws
+ * are UNCHANGED — a zero-key boot (or SYLLABAI_LLM_MODE=test) registers
+ * every member dormant, chain.available() is false, and every
+ * generation-reaching ask serves the honest 503 tutor_unavailable exactly
+ * as before; keyed boots generate for real with failover. opts.chain
+ * accepts the shared composition-root chain (index.ts builds ONE); chain
+ * null forces the dormant seam (rig work only).
  */
-export function buildTutorRouters(env: Record<string, string | undefined> = process.env) {
+export function buildTutorRouters(
+  env: Record<string, string | undefined> = process.env,
+  opts: { chain?: FailoverLlmChain | null } = {},
+) {
   const databaseUrl = requireDatabaseUrl(env as { DATABASE_URL?: string });
   const sql = createSql(databaseUrl);
+  const chain = opts.chain === undefined ? buildLlmChain(env) : opts.chain;
+  const llm = chain === null ? dormantTutorLlm : chainAsLlmProvider(chain);
   const module = buildTutorModule(sql, defaultClock, {
     scopes: new CurriculumScopeResolver(sql),
     vectorRetriever: buildSqlVectorArm(sql, resolveEmbeddingProvider(env)),
     paperQuestionResolver: buildPaperQuestionResolver(sql),
-    generator: buildGroundedTutorGenerator(dormantTutorLlm),
+    generator: buildGroundedTutorGenerator(llm),
     telemetry: () => {},
   });
   return {

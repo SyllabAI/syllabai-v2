@@ -36,20 +36,25 @@
  *     cooldown until the END OF THE UTC DAY; RATE_LIMITED below threshold →
  *     NO cooldown (transient, fail over); the UTC-day rollover resets
  *     requestsToday
- *   - the dormant-member generate seam (ADR-023 fail-closed): a configured
- *     member's generate raises the structured LlmProviderException instead
- *     of silently spending quota; the exhausted chain answers the aggregate
- *     "no available LLM provider in chain"
+ *   - the dormant-member generate seam (ADR-023 fail-closed, AMENDED OF
+ *     RECORD by ADR-MIG-0002 — operator directive ① trace 1a117913519cd141):
+ *     buildLlmChain now constructs REAL adapters for keyed members in
+ *     PRODUCTION/LIVE; TEST mode and zero-key boots stay fail-closed dormant
+ *     (a configured member without a real adapter still raises the structured
+ *     LlmProviderException instead of silently spending quota); the exhausted
+ *     chain answers the aggregate "no available LLM provider in chain"
  */
 import { describe, expect, test } from "bun:test";
 import { Hono, type Context } from "hono";
 import { createLlmAdminRouter } from "../../src/routes/llmadmin";
 import {
   buildLlmChain,
+  DormantChainMember,
   LlmProviderException,
   readLlmChainProperties,
   type HealthClock,
 } from "../../src/services/llmchain";
+import { OpenAiCompatibleChainMember } from "../../src/services/llmchain/adapters";
 import { toErrorResponse } from "../../src/services/identity/errors";
 import { chainHealthReportSchema } from "@syllabai/contracts";
 
@@ -325,7 +330,7 @@ describe("chain config law — the application.yml @ 6cad6ef layer of record", (
     expect(body.chainAvailable).toBe(false);
   });
 
-  test("LIVE mode: report posture = production (keys count), generation stays dormant (ruling4 §1)", async () => {
+  test("LIVE mode: report posture = production; keyed members construct the REAL adapters (ADR-MIG-0002)", async () => {
     const { app, chain } = makeApp(asAdmin, {
       SYLLABAI_LLM_MODE: "live",
       SYLLABAI_LLM_GROQ_ENABLED: "true",
@@ -335,14 +340,15 @@ describe("chain config law — the application.yml @ 6cad6ef layer of record", (
       providers: Record<string, Record<string, unknown>>;
     };
     expect(body.providers.groq!).toMatchObject({ enabled: true, configured: true, healthy: true });
-    // the dormant seam holds in EVERY mode: no real adapter is ever constructed here
-    try {
-      await chain.generate({ system: "s", user: "u" });
-      expect.unreachable();
-    } catch (e) {
-      expect(e).toBeInstanceOf(LlmProviderException);
-      expect((e as LlmProviderException).message).toContain("dormant seam");
-    }
+    // ADR-MIG-0002 (operator directive ①, trace 1a117913519cd141): LIVE
+    // constructs the real adapter for a configured member — the OpenAI-
+    // compatible wire client, whose generate/stream law over an INJECTED
+    // fake fetch is pinned in test/llmchain/adapters.test.ts (no network in
+    // CI, the behavioural-gate doctrine §6). Untouched members stay dormant.
+    const groq = chain.member("groq")!;
+    expect(groq).toBeInstanceOf(OpenAiCompatibleChainMember);
+    expect(chain.member("gemini")).toBeInstanceOf(DormantChainMember);
+    expect(chain.member("openrouter")).toBeInstanceOf(DormantChainMember);
   });
 
   test("layer-1 relaxed binding overrides the yml layer (Spring precedence)", async () => {
@@ -426,29 +432,52 @@ describe("FailoverLlmChain.generate — the dormant seam", () => {
     }
   });
 
-  test("configured-but-dormant member: generate raises the structured exception, never a silent spend", async () => {
-    const { chain } = makeApp(asAdmin, {
-      SYLLABAI_LLM_GROQ_ENABLED: "true",
-      SYLLABAI_LLM_GROQ_API_KEY: "gsk_test-key",
-    });
+  test("configured-but-dormant member (constructed directly): generate raises the structured exception, never a silent spend", async () => {
+    // ADR-MIG-0002 amendment: buildLlmChain no longer PRODUCES configured
+    // dormant members (keyed + enabled + non-test → the real adapter), so
+    // the dormant-seam discipline is pinned at the unit tier — a directly
+    // constructed configured DormantChainMember (the shape a zero-key boot
+    // registers, and the shape TEST mode forces regardless of keys) still
+    // refuses generation with the structured exception and records the
+    // attempt faithfully. The TEST-mode-ignores-keys law over the real
+    // builder is pinned above ("TEST mode IGNORES keys").
+    const dormant = new DormantChainMember("groq", true, true, false, 3, 60, 1000, "openai/gpt-oss-120b", clock);
+    expect(dormant.available()).toBe(true);
+    try {
+      await dormant.generate({ system: "s", user: "u" });
+      expect.unreachable();
+    } catch (e) {
+      expect(e).toBeInstanceOf(LlmProviderException);
+      const err = e as LlmProviderException;
+      expect(err.providerName).toBe("groq");
+      expect(err.message).toContain("dormant seam");
+      expect(err.failureClass).toBe("UNKNOWN");
+    }
+    // the attempt was recorded faithfully (observability stays honest)
+    const snap = dormant.health().snapshot();
+    expect(snap.consecutiveFailures).toBe(1);
+    expect(snap.requestsToday).toBe(1);
+    expect(snap.lastErrorMessage).toContain("dormant seam");
+  });
+
+  test("TEST mode + keys → the members the builder registers are dormant and refuse (fail-closed end-to-end)", async () => {
+    const chain = buildLlmChain(
+      {
+        SYLLABAI_LLM_MODE: "test",
+        SYLLABAI_LLM_GROQ_ENABLED: "true",
+        SYLLABAI_LLM_GROQ_API_KEY: "gsk_test-key",
+      },
+      clock,
+    );
+    const groq = chain.member("groq")!;
+    expect(groq).toBeInstanceOf(DormantChainMember);
+    expect(groq.available()).toBe(false); // configured=false — the unconfigured guard
     try {
       await chain.generate({ system: "s", user: "u" });
       expect.unreachable();
     } catch (e) {
       expect(e).toBeInstanceOf(LlmProviderException);
-      const err = e as LlmProviderException;
-      // the frozen aggregate: the chain throws with ITS name and the
-      // diagnosable "all providers failed, last error: … [detail]" body
-      expect(err.providerName).toBe("chain");
-      expect(err.message).toContain("all providers failed, last error:");
-      expect(err.message).toContain("dormant seam");
-      expect(err.message).toContain("[groq: ");
-      expect(err.failureClass).toBe("UNKNOWN");
+      expect((e as LlmProviderException).message).toBe("no available LLM provider in chain");
     }
-    // the attempt was recorded faithfully (observability stays honest)
-    const snap = chain.member("groq")!.health().snapshot();
-    expect(snap.consecutiveFailures).toBe(1);
-    expect(snap.requestsToday).toBe(1);
-    expect(snap.lastErrorMessage).toContain("dormant seam");
   });
 });

@@ -45,6 +45,11 @@ import {
   TranscriptionNothingReadableError,
   TranscriptionUnavailableError,
 } from "../services/answer-input/service";
+import {
+  buildLlmChain,
+  chainAsTranscriptionProvider,
+  type FailoverLlmChain,
+} from "../services/llmchain";
 
 /** HttpMessageNotReadableException handler body (:172-179) — verbatim. */
 const malformedBody = () =>
@@ -136,12 +141,27 @@ export function createAnswerInputRouter(deps: {
 }
 
 /**
- * Module + routers composition for the app root — the provider seam stays
- * DORMANT (null) until the LLM-chain lane wires it (T-MIG-032 precedent);
- * the validation shell + error envelopes are live.
+ * Module + routers composition for the app root. TRANSCRIPTION SEAM OF
+ * RECORD (ADR-MIG-0002, operator directive ① trace 1a117913519cd141): the
+ * §26.1 chain rides the chainAsTranscriptionProvider bridge — media-carrying
+ * requests route ONLY to the vision-capable member (gemini, the frozen
+ * HUB-ANSWER-BOX law). The historical dormant posture (null provider → 503
+ * transcription_unavailable) is PRESERVED on zero-key/test boots: the chain
+ * exhausts ("no vision-capable LLM provider available in chain" when keyed
+ * without gemini, "no available LLM provider in chain" when zero-key) and
+ * the service maps ANY throw to the same 503 envelope. opts.chain accepts
+ * the shared composition-root chain; chain null keeps the historical
+ * null-provider rig posture.
  */
-export function buildAnswerInputRouters() {
-  const components = buildAnswerInputComponents(null);
+export function buildAnswerInputRouters(
+  env: Record<string, string | undefined> = process.env,
+  opts: { chain?: FailoverLlmChain | null } = {},
+) {
+  const provider =
+    opts.chain === null
+      ? null
+      : chainAsTranscriptionProvider(opts.chain ?? buildLlmChain(env));
+  const components = buildAnswerInputComponents(provider);
   return {
     components,
     transcribeRoute: createAnswerInputRouter({ transcription: components.transcription }),

@@ -5472,7 +5472,6 @@ Work Log:
 Stage Summary:
 - The §2.4 spine is GREEN on the live prod posture at 0f43156 with ZERO expectation mismatches and the documented quirk parity holding; the v2 api-of-record demonstrates full data-plane continuity (token + shared Neon) under live cross-plane probes
 - Operator watch items: §2 flip lever still OPEN (hub redeploy = the act; posture constants verified unchanged); #144/#151/#152 at the desk; LIVE ENV PRUNE blocked on VERCEL_TOKEN; api redeploy lever [1] now picks up #146 leg-04 repair + #150 binding law (both merged)
-
 ---
 Task ID: r9-hubx Task-19 (local ledger 19)
 Agent: r9-hubx (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
@@ -5488,3 +5487,5 @@ Work Log:
 Stage Summary:
 - T-MIG-094 DONE: register now 81 DONE of 90 (CAPTURED 7: 084-089+091; IN_PROGRESS 095; BLOCKED 097); the 093->094 defect-band chain fully closed at the code+pin level, real-wire proof carried by the mounting band as documented
 - Watch: GitHub PAT dead (401) — if NOT deliberately rotated, GitHub API lane actions are blocked until a fresh PAT; #144/#151/#152/#153 remain at the desk
+
+- 2026-10-08T05:20Z w0a LLM-CHAIN run-004 (trace 1a119d20237149b1): intake-3 onto b062cc1 — T-MIG-099 ID YIELDED to main a289818 (operator-ordered pre-draft band card; this lane duplicate withdrawn, renumber precedent); ghost fix stays on #144 per the band card law; worklog union x3; CI-dirty root cause identified of record: pull_request workflows run on the merge ref — a conflicted PR gets ZERO runs (the integrator gate-1 and gate-3 are one gate: clean merge fires CI); gates on this tree then immediate push
