@@ -1,0 +1,37 @@
+{
+ "card": "CUTOVER-RUNBOOK redeploy ladder \u2014 the standing 'hub redeploy to carry #167's api.ts surface' operator item (verify act)",
+ "receipt": "hub-of-record-redeploy-verify-run-001-mainlane",
+ "lane": "mainlane (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)",
+ "created_at_utc": "2026-10-08T21:48:48Z",
+ "operator_trace": "1a11d74531d41231 'the hub redeploy to carry #167's api.ts surface'",
+ "purpose": "verify first-hand whether the operator order is already satisfied of record BEFORE any deploy act; fire NO duplicate deploy if it is (the no-duplicate / no-third-act law of the redeploy ladder)",
+ "state_of_record_at_act": {
+  "the_lever_already_fired": "hub-of-record-redeploy-run-004-r0 (receipt DEPLOY/hub-of-record-redeploy-run-004-r0.json, operator trace 1a11cb1ab3ba0029 'hub redeploy order, ci.yml patch') \u2014 dpl_H8AYEmt8Hr6qbvZPsUE3HdzUHxCZ READY --prod from tip 6813bb7 (created 2026-10-08T18:19:47Z), aliases syllabai-hub-v2.vercel.app + syllabai-hub-v2-syllab-ai.vercel.app, built WITH the #167 ask-row surface (28-row V2_SURFACE_PREFIXES incl. the T-MIG-106 row @ api.ts:419) and the #166 decay seam",
+  "merge_containment": "6813bb7 contains the #167 merge 590f929 (git merge-base --is-ancestor verified first-hand at act time)",
+  "post_serving_delta": "git diff 6813bb7..origin/main -- apps/hub = EMPTY (post-6813bb7 main = .syllabai-only receipts/worklog: 390012b, b33fb54, e08f51d, a5abd14) \u2014 the tip bundle is content-identical to the serving bundle; a fresh deploy would be a byte-equivalent duplicate",
+  "collision_precedent": "run-004-r0 already reconciled the parallel double-fire (dpl_CtTEANYB r7a, same sha, retained READY-unaliased) under the 'NO third act' ruling \u2014 a third same-content deploy is exactly the act the law forbids",
+  "posture_lineage": "the r1c section-2 flip (DEPLOY/hub-of-record-section2-flip-run-001-r1c.json, trace 1a119fdeb7c8a035, HUB_DATA_MODE mock -> core-api) + the r1c T-MIG-042 section 3.1 env act (9d0b3ca) + census r4b (e08f51d: latest prod READY dpl_H8AYEmt8Hr6q @ 6813bb7) stand upstream of this verify"
+ },
+ "live_battery": {
+  "method": "unauthenticated wire probes ONLY (zero credentials held lane-side; zero secret material; zero learners; zero LLM; zero env/deploy writes) \u2014 mirrors the run-004-r0 post_deploy_battery shape",
+  "target": "https://syllabai-hub-v2.vercel.app",
+  "ran_at_utc": "2026-10-08T21:47:15Z .. 2026-10-08T21:47:20Z",
+  "artifact_lane_side": "/home/z/my-project/scripts/hubredep_verify_witness.json",
+  "legs": {
+   "1_hub_health": "200 {status:ok, service:syllabai-hub, dataMode:'core-api', coreConfigured:true, time:'2026-10-08T21:47:17.226Z'} \u2014 the section-2 flip byte-law HOLDS live (dataMode=core-api, NOT the pre-flip mock)",
+   "2_hub_root": "200, 84,241 B html, 14 /_next/static/chunks links inventoried",
+   "3_ask_row_chunk_census": "THE #167 DISCRIMINATOR GREEN: '/api/v1/tutor/ask' occurrence_total == 2, sole carrier chunk 0an1zdqrqrypx.js, and the verbatim TABLE ADJACENCY 'exam-series\",\"/api/v1/tutor/ask\"],p=[' PRESENT \u2014 the ask row serves as a live V2_SURFACE_PREFIXES entry; the of-record control (pre-#167 run-003 bundle dpl_BBGcKU @ aa7d322) censused 1 occurrence (emitter only, no table row) \u2014 2-vs-1 + adjacency is byte-grade proof the served bundle carries #167's api.ts surface",
+   "4_decay_fail_closed": "401 {status:'unauthorized', reason:'missing or wrong Authorization bearer \u2014 Vercel Cron sends \\'Authorization: Bearer $CRON_SECRET\\' when CRON_SECRET is set'} \u2014 the #166 seam code live; the reason string is the CONFIGURED-law wrong-bearer branch (the post-3.1 shape per the Task-56 PS correction 390012b), stronger than the not-configured wall, fail-closed preserved",
+   "5_cla_tier_law": "POST /api/ai/cla {} -> 400 invalid_body (zod, course path) \u2014 the hub-plane tier law live"
+  },
+  "verdict": "5/5 PASS \u2014 WITNESS GREEN"
+ },
+ "decision": {
+  "what": "STAND-DOWN from a duplicate deploy; record the witness of record; the order is SATISFIED OF RECORD",
+  "why": "the serving bundle already carries #167's api.ts surface (byte-grade discriminator, first-hand re-proven), apps/hub carries ZERO delta since the serving sha, and the redeploy ladder's no-duplicate / no-third-act law forbids a content-identical third deploy",
+  "levers": "the HUB lever of the redeploy ladder stays CLOSED (discharged at run-004-r0); the api lever stays BANKRUPT-RIPE of record; section-2 flip EXECUTED of record; section 3.3 cross-check + section 4 watch remain the operator's standing items"
+ },
+ "write_ledger": "0 deploys + 0 probe learners + 0 LLM generations + 0 env writes + 0 code changes + 0 force-push + zero secret material printed/committed; wire contact limited to 17 unauthenticated GETs/POSTs against the public hub surface (.syllabai-only commit: this receipt + worklog Task-57)",
+ "rollback_anchors": "unchanged of record \u2014 dpl_H8AYEmt8Hr6qbvZPsUE3HdzUHxCZ (current, ask-row bundle) | dpl_CtTEANYBQ2NsnWCW6DNvNP9xPpsc (parallel, same sha, unaliased) | dpl_BBGcKUBy5qUZ8ps79a9UsDvjymXr (pre-#167 control) | dpl_FhmNnJAq (CLA-flip bundle); plus the r1c runbook lever (HUB_DATA_MODE PATCH back to mock + redeploy)",
+ "verdict": "ORDER SATISFIED OF RECORD \u2014 the hub-of-record serves #167's api.ts surface (T-MIG-106 ask row), re-proven live first-hand at act time; no deploy fired; nothing owed on this order"
+}

@@ -6581,3 +6581,21 @@ Work Log:
 
 Stage Summary:
 - T-MIG-094 real-wire gate DISCHARGED of record — the 093->094 defect-band chain closed end-to-end (code + fakeSql pins + REAL Neon wire multi-element binding proof). Per the operator's framing the last defect band is now closed lane-side. Receipt: .syllabai/receipts/T-MIG-094/run-003-real-wire-gate-r7a.json; card yaml real_wire_gate_r7a key appended; evidence scratch/r50_realwire_band.json (verbatim bodies + corrected verdict block). Write ledger: 1 probe learner (r7a-r50-a-20261008t204639@example.invalid) + 4 asks (3 zero-LLM refusals + 1 seam-rejected generation attempt, ZERO completed generations), zero session rows (sessionId omitted), zero deploys (carrier dpl_DJhp8McG already carries PR #150), zero env writes, zero DDL. Zero-mutation verify act — no rollback owed.
+
+---
+Task ID: 57 (mainlane)
+Agent: mainlane (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)
+Task: operator trace 1a11d74531d41231 'the hub redeploy to carry #167's api.ts surface'
+
+Work Log:
+- fetch-first: cloned/fetched syllabai-v2 + syllabai-hub of record; state-of-record census BEFORE any act
+- OF-RECORD FINDING: the order is already discharged — hub-of-record-redeploy-run-004-r0 (operator trace 1a11cb1ab3ba0029) deployed dpl_H8AYEmt8Hr6q READY --prod from tip 6813bb7 WITH the #167 ask-row surface; 6813bb7 contains merge 590f929 (merge-base --is-ancestor verified first-hand); the parallel r7a double-fire (dpl_CtTEANYB, same sha) already reconciled under the no-third-act ruling
+- DELTA CHECK: git diff 6813bb7..origin/main -- apps/hub = EMPTY (post-6813bb7 main is .syllabai-only bookkeeping) — a fresh deploy would be a content-identical duplicate, forbidden by the ladder's no-duplicate law
+- LIVE WITNESS BATTERY 5/5 PASS (unauth wire only, zero creds held lane-side): (1) /api/health 200 {ok, syllabai-hub, dataMode core-api, coreConfigured true} — section-2 flip byte-law holds; (2) root 200 / 14 chunks; (3) THE #167 DISCRIMINATOR: '/api/v1/tutor/ask' x2 in chunk 0an1zdqrqrypx.js WITH the verbatim table adjacency 'exam-series","/api/v1/tutor/ask"],p=[' (of-record control pre-#167 = 1, emitter only); (4) /api/cron/nightly-decay unauth 401 CONFIGURED-law wrong-bearer branch — fail-closed preserved; (5) /api/ai/cla {} 400 invalid_body zod
+- DECISION: STAND-DOWN from the duplicate deploy; witness receipt filed; HUB lever stays CLOSED (discharged at run-004-r0)
+
+Stage Summary:
+- Order 'the hub redeploy to carry #167's api.ts surface' = SATISFIED OF RECORD, re-proven live first-hand; zero deploys fired (write ledger: 0 deploys / 0 learners / 0 LLM / 0 env / 0 code)
+- Receipt: .syllabai/receipts/DEPLOY/hub-of-record-redeploy-verify-run-001-mainlane.json (battery artifact lane-side: scripts/hubredep_verify_witness.json)
+- Standing levers unchanged: section-2 flip EXECUTED; api lever BANKRUPT-RIPE; runbook section 3.3 cross-check (2026-10-09 window) + section 4 watch remain the operator's items
+- Scope: .syllabai-only (receipt + worklog), direct-main, fetch-first, no force
