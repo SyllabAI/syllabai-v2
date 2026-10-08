@@ -46,6 +46,7 @@ import { buildCurriculumRouters } from "./routes/curriculum";
 import { buildAssessmentRouters } from "./routes/assessment";
 import { buildSelfMarkRouters } from "./routes/selfmark";
 import { buildSmartMarkRouters } from "./routes/smartmark";
+import { buildCronRouters } from "./routes/cron";
 import { buildQuestionsRouters } from "./routes/questions";
 import { buildExamPapersRouters } from "./routes/exam-papers";
 import { buildTestBuilderRouters } from "./routes/testbuilder";
@@ -77,6 +78,7 @@ const assessment = buildAssessmentRouters();
 const learner = buildLearnerRouters();
 const selfmark = buildSelfMarkRouters();
 const smartmark = buildSmartMarkRouters();
+const cron = buildCronRouters();
 const questions = buildQuestionsRouters();
 const examPapers = buildExamPapersRouters();
 const testbuilder = buildTestBuilderRouters();
@@ -279,6 +281,16 @@ app.route("/api/v1/learners/me", learnerKg.learnerKgRoute);
 // T-MIG-010/020/021/030 precedent so R0 can ratify or lift them out at review.
 app.route("/api/v1/learners/me/attempts", selfmark.selfMarkRoute);
 app.route("/api/v1/learners/me/attempts", smartmark.studentRoute);
+
+// T-MIG-042 cron router (the NightlyDecayJob takeover's api arm — the hub
+// seam forwards here; CUTOVER_RUNBOOK §3).
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-032 precedent): T-MIG-042's scope.allowed
+// covers routes/cron.ts + services/cron/** + test/cron/** — NOT this file.
+// The import + construction + this one mount line are the minimal app-level
+// wiring, shipped as this separate disclosed commit so R0 can ratify or
+// lift them out at review.
+app.route("/api/v1/cron", cron.cronRoute);
 
 // Exam-papers + questions routers (T-MIG-031 — Wave 3). Path parity with the
 // frozen core: ExamPaperController under /api/v1/exam-papers (list + detail),
