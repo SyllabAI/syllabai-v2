@@ -1,0 +1,636 @@
+{
+ "card": "TUTOR-VERIFY (cross-family probe; no card writes)",
+ "receipt": "run-002-tutor-features-probe-r4b",
+ "lane": "r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+ "created_at_utc": "2026-10-08T15:34:01.795970+00:00",
+ "operator_trace": "1a11c1c5d8e696b9 'probe for tutor features (SSE flow, feedback explanation/improvement plan endpoints)'",
+ "targets": {
+  "api_of_record": "https://syllabai-v2.vercel.app",
+  "hub_of_record": "https://syllabai-hub-v2.vercel.app",
+  "core": "https://syllabai-core.onrender.com (via hub routing)"
+ },
+ "code_basis": "origin/main 35ab1fb: routes/tutor.ts:305 ask/stream SSE law; routes/smartmark/index.ts:107/:122 feedback-explanation + improvement-plan; services/smartmark/index.ts:809 loadFeedbackSource grounding (409 pre-accepted-result)",
+ "probe_learner": "r4b-tutor-probe-20261008t153332z@example.invalid",
+ "structured_attempt": "489e8155-e08e-453c-af3f-4a9e2bce583e",
+ "w7_smoke_question_of_record": "92817c46-8103-4d2c-9f32-bd61636320a1",
+ "legs": [
+  {
+   "leg": "p0a_stream_unauthed_api",
+   "status": 401,
+   "ms": 254,
+   "notes": "expect 401 JSON \u2014 stream NOT opened",
+   "response": {
+    "timestamp": "2026-10-08T15:33:32.435Z",
+    "status": 401,
+    "error": "Unauthorized",
+    "path": "/api/v1/tutor/ask/stream"
+   }
+  },
+  {
+   "leg": "p0b_stream_unauthed_hub",
+   "status": 404,
+   "ms": 48,
+   "notes": "hub->core posture, expect 401",
+   "response": "<!DOCTYPE html><html lang=\"en\" class=\"jakarta_ea5dab88-module__mflx9W__variable kodchasan_5da4c800-module__0PG_KW__variable instrumentsans_d2d7bb-module__YkT_2G__variable bricolage_d2301ca2-module__13bBrG__variable splinemono_a294ea2-module__0dK_gG__variable fraunces_56ebe361-module__p4Tm7G__variable nunito_50855809-module__PXIkfa__variable inter_793a5d1a-module__p5d4DG__variable\"><head><meta char"
+  },
+  {
+   "leg": "p1a_register",
+   "status": 400,
+   "ms": 249,
+   "notes": "expect 201",
+   "response": {
+    "status": 400,
+    "error": "bad_request",
+    "message": "unknown role: LEARNER",
+    "timestamp": "2026-10-08T15:33:32.744Z"
+   }
+  },
+  {
+   "leg": "p1a_register_norole",
+   "status": 201,
+   "ms": 720,
+   "notes": "fallback without role",
+   "response": {
+    "accessToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyNGItdHV0b3ItcHJvYmUtMjAyNjEwMDh0MTUzMzMyekBleGFtcGxlLmludmFsaWQiLCJqdGkiOiIxYmJmZWY4OC00YWE5LTQxNmMtYTQwNC1hNjNjNjUzMWNlNzYiLCJ1aWQiOiIxYmJmZWY4OC00YWE5LTQxNmMtYTQwNC1hNjNjNjUzMWNlNzYiLCJ2ZXIiOjEsInJvbGVzIjpbIlNUVURFTlQiXSwiaWF0IjoxNzkxNDczNjEzLCJleHAiOjE3OTE0ODA4MTN9.0JANIv1nBVDNtXIF3TrzBmcNd7EO7hK2jH6Y8S3KjFs",
+    "tokenType": "Bearer",
+    "user": {
+     "id": "1bbfef88-4aa9-416c-a404-a63c6531ce76",
+     "email": "r4b-tutor-probe-20261008t153332z@example.invalid",
+     "displayName": "r4b tutor probe",
+     "roles": [
+      "STUDENT"
+     ]
+    }
+   }
+  },
+  {
+   "leg": "p2a_question_read",
+   "status": 200,
+   "ms": 361,
+   "notes": "expect 200, 5 x 1-mark parts",
+   "response": {
+    "id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+    "externalRef": "4ch0-2c-201701#q1",
+    "type": "STRUCTURED",
+    "stem": "The box contains the names of some substances.\nDO NOT WRITE IN THIS AREA\nair\nchlorine\nhydrogen\niron\nnitrogen\noxygen\npotassium\nsodium\nChoose a substance from the box that best matches each description.\nEach substance may be used once, more than once or not at all.",
+    "marks": 5,
+    "difficulty": 3,
+    "expectedTimeSeconds": 450,
+    "commandWord": null,
+    "primaryTopicNodeId": "92e3fa7c-971d-4a76-a6e3-31513551ce2f",
+    "examPaperId": "21041891-11f6-4168-9136-771e666cd8fa",
+    "options": [],
+    "parts": [
+     {
+      "id": "a47b02df-e3cc-4c2f-a6da-51185e6e4c97",
+      "label": "a",
+      "prompt": "Which substance is a mixture?",
+      "commandWord": null,
+      "marks": 1
+     },
+     {
+      "id": "69a1b177-ad76-49dd-be5a-df9b1bb7bf92",
+      "label": "b",
+      "prompt": "Which substance is a gas that makes a squeaky pop when ignited?\nDO NOT WRITE IN THIS AREA",
+      "commandWord": null,
+      "marks": 1
+     },
+     {
+      "id": "4f265a52-267b-4d59-86ea-554accde1c23",
+      "label": "c",
+      "prompt": "Which substance is an element that is a green gas at room temperature?",
+      "commandWord": null,
+      "marks": 1
+     },
+     {
+      "id": "319b2e5e-211d-4540-a931-2280b15b2e34",
+      "label": "d",
+      "prompt": "Which substance is used to sterilise water?",
+      "commandWord": null,
+      "marks": 1
+     },
+     {
+      "id": "99e560d4-589d-4fe7-8420-f8936437df5c",
+      "label": "e",
+      "prompt": "Which substance is a metal that can be made by heating its oxide with carbon?",
+      "commandWord": null,
+      "marks": 1
+     }
+    ],
+    "specPointCodes": [
+     "4CH1-1.8",
+     "4CH1-2.23C",
+     "4CH1-2.44",
+     "4CH1-2.5"
+    ],
+    "specPoints": [
+     {
+      "code": "4CH1-1.8",
+      "role": "PRIMARY",
+      "applicability": {
+       "rule": "C-suffixed points are Chemistry-only content (not in Science Double Award) and are assessed in Paper 2C only; non-C points are shared with 4SD0 and assessed in both papers (PDF pages 7, 13, 14)",
+       "papers": [
+        "1C",
+        "2C"
+       ],
+       "double_award_shared": true
+      }
+     },
+     {
+      "code": "4CH1-2.23C",
+      "role": "SECONDARY",
+      "applicability": {
+       "rule": "C-suffixed points are Chemistry-only content (not in Science Double Award) and are assessed in Paper 2C only; non-C points are shared with 4SD0 and assessed in both papers (PDF pages 7, 13, 14)",
+       "papers": [
+        "2C"
+       ],
+       "double_award_shared": false
+      }
+     },
+     {
+      "code": "4CH1-2.44",
+      "role": "SECONDARY",
+      "applicability": {
+       "rule": "C-suffixed points are Chemistry-only content (not in Science Double Award) and are assessed in Paper 2C only; non-C points are shared with 4SD0 and assessed in both papers (PDF pages 7, 13, 14)",
+       "papers": [
+        "1C",
+        "2C"
+       ],
+       "double_award_shared": true
+      }
+     },
+     {
+      "code": "4CH1-2.5",
+      "role": "SECONDARY",
+      "applicability": {
+       "rule": "C-suffixed points are Chemistry-only content (not in Science Double Award) and are assessed in Paper 2C only; non-C points are shared with 4SD0 and assessed in both papers (PDF pages 7, 13, 14)",
+       "papers": [
+        "1C",
+        "2C"
+       ],
+       "double_award_shared": true
+      }
+     }
+    ]
+   }
+  },
+  {
+   "leg": "p2b_attempt_structured",
+   "status": 201,
+   "ms": 510,
+   "notes": "expect 201 PENDING",
+   "response": {
+    "attemptId": "489e8155-e08e-453c-af3f-4a9e2bce583e",
+    "questionId": "92817c46-8103-4d2c-9f32-bd61636320a1",
+    "marksPossible": 5,
+    "markingState": "PENDING",
+    "submittedAt": "2026-10-08T15:33:34.147Z",
+    "parts": [
+     {
+      "partId": "a47b02df-e3cc-4c2f-a6da-51185e6e4c97",
+      "label": "a",
+      "marksPossible": 1,
+      "markingState": "PENDING",
+      "marksAwarded": null
+     },
+     {
+      "partId": "69a1b177-ad76-49dd-be5a-df9b1bb7bf92",
+      "label": "b",
+      "marksPossible": 1,
+      "markingState": "PENDING",
+      "marksAwarded": null
+     },
+     {
+      "partId": "4f265a52-267b-4d59-86ea-554accde1c23",
+      "label": "c",
+      "marksPossible": 1,
+      "markingState": "PENDING",
+      "marksAwarded": null
+     },
+     {
+      "partId": "319b2e5e-211d-4540-a931-2280b15b2e34",
+      "label": "d",
+      "marksPossible": 1,
+      "markingState": "PENDING",
+      "marksAwarded": null
+     },
+     {
+      "partId": "99e560d4-589d-4fe7-8420-f8936437df5c",
+      "label": "e",
+      "marksPossible": 1,
+      "markingState": "PENDING",
+      "marksAwarded": null
+     }
+    ]
+   }
+  },
+  {
+   "leg": "p3a_feedback_presettlement_409",
+   "status": 409,
+   "ms": 361,
+   "notes": "expect 409 conflict \u2014 no validation-passed smart_mark_results row yet",
+   "response": {
+    "status": 409,
+    "error": "conflict",
+    "message": "no accepted Smart Mark result for this part yet -- run Smart mark first",
+    "timestamp": "2026-10-08T15:33:34.702Z"
+   }
+  },
+  {
+   "leg": "p4a_smart_mark",
+   "status": 200,
+   "ms": 2216,
+   "notes": "LLM GENERATION #1 \u2014 expect 200 attemptSmartMarkView",
+   "response": {
+    "attemptId": "489e8155-e08e-453c-af3f-4a9e2bce583e",
+    "questionId": "92817c46-8103-4d2c-9f32-bd61636320a1",
+    "schemeValidationState": "VALIDATED",
+    "marksPossible": 5,
+    "parts": [
+     {
+      "partId": "319b2e5e-211d-4540-a931-2280b15b2e34",
+      "label": "d",
+      "marksAwarded": 0,
+      "marksPossible": 1,
+      "markingState": "SMART_MARKED",
+      "authoritative": true,
+      "confidence": 1,
+      "modelId": "openai/gpt-oss-120b",
+      "validationPassed": true,
+      "failureReason": null,
+      "breakdown": [
+       {
+        "ref": "1-d",
+        "pointLabel": "chlorine",
+        "marks": 1,
+        "marksAwarded": 0,
+        "awarded": false,
+        "evidence": "",
+        "rationale": "Required term 'chlorine' not present."
+       }
+      ]
+     },
+     {
+      "partId": "4f265a52-267b-4d59-86ea-554accde1c23",
+      "label": "c",
+      "marksAwarded": 0,
+      "marksPossible": 1,
+      "markingState": "SMART_MARKED",
+      "authoritative": true,
+      "confidence": 1,
+      "modelId": "openai/gpt-oss-120b",
+      "validationPassed": true,
+      "failureReason": null,
+      "breakdown": [
+       {
+        "ref": "1-c",
+        "pointLabel": "chlorine",
+        "marks": 1,
+        "marksAwarded": 0,
+        "awarded": false,
+        "evidence": "",
+        "rationale": "Required term 'chlorine' not present."
+       }
+      ]
+     },
+     {
+      "partId": "69a1b177-ad76-49dd-be5a-df9b1bb7bf92",
+      "label": "b",
+      "marksAwarded": 0,
+      "marksPossible": 1,
+      "markingState": "SMART_MARKED",
+      "authoritative": true,
+      "confidence": 1,
+      "modelId": "openai/gpt-oss-120b",
+      "validationPassed": true,
+      "failureReason": null,
+      "breakdown": [
+       {
+        "ref": "1-b",
+        "pointLabel": "hydrogen",
+        "marks": 1,
+        "marksAwarded": 0,
+        "awarded": false,
+        "evidence": "",
+        "rationale": "Required term 'hydrogen' not present."
+       }
+      ]
+     },
+     {
+      "partId": "99e560d4-589d-4fe7-8420-f8936437df5c",
+      "label": "e",
+      "marksAwarded": 0,
+      "marksPossible": 1,
+      "markingState": "SMART_MARKED",
+      "authoritative": true,
+      "confidence": 1,
+      "modelId": "openai/gpt-oss-120b",
+      "validationPassed": true,
+      "failureReason": null,
+      "breakdown": [
+       {
+        "ref": "1-e",
+        "pointLabel": "iron",
+        "marks": 1,
+        "marksAwarded": 0,
+        "awarded": false,
+        "evidence": "",
+        "rationale": "Required term 'iron' not present."
+       }
+      ]
+     },
+     {
+      "partId": "a47b02df-e3cc-4c2f-a6da-51185e6e4c97",
+      "label": "a",
+      "marksAwarded": 0,
+      "marksPossible": 1,
+      "markingState": "SMART_MARKED",
+      "authoritative": true,
+      "confidence": 1,
+      "modelId": "openai/gpt-oss-120b",
+      "validationPassed": true,
+      "failureReason": null,
+      "breakdown": [
+       {
+        "ref": "1-a",
+        "pointLabel": "air",
+        "marks": 1,
+        "marksAwarded": 0,
+        "awarded": false,
+        "evidence": "",
+        "rationale": "Required term 'air' not present."
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "leg": "p5a_feedback_explanation",
+   "status": 200,
+   "ms": 1070,
+   "notes": "LLM GENERATION #2 \u2014 expect 200 {partId, explanation, modelId, generatedAt}",
+   "response": {
+    "partId": "a47b02df-e3cc-4c2f-a6da-51185e6e4c97",
+    "explanation": "You earned 0\u202fmarks out of\u202f1.\n\n1-a: 0 of 1 \u2013 You wrote \u201cThe particles gain kinetic energy and collide more frequently and with greater energy, so more collisions exceed the activation energy per second.\u201d\u202fHowever, the answer required you to refer to the role of **air** (e.g., how the presence of air affects the collisions). Since that specific reference was missing, no credit was awarded. Keep focusing on including every keyword the question asks for, and you\u2019ll capture the marks next time.",
+    "modelId": "openai/gpt-oss-120b",
+    "generatedAt": "2026-10-08T15:33:37.992Z"
+   }
+  },
+  {
+   "leg": "p5b_improvement_plan",
+   "status": 200,
+   "ms": 1554,
+   "notes": "LLM GENERATION #3 \u2014 expect 200 {partId, plan, modelId, generatedAt}",
+   "response": {
+    "partId": "a47b02df-e3cc-4c2f-a6da-51185e6e4c97",
+    "plan": "You still have 1 mark to gain.  \n\nYou correctly described particles gaining kinetic energy, colliding more often and with greater energy, but the examiner also required you to specify that these particles are in the **air (gas phase)**. Without naming the medium, the explanation is incomplete for this point.  \n\nNext time, after stating the kinetic\u2011energy effect, add a brief clause such as \u201cin the air (or gas phase) the molecules move faster\u201d or \u201cthe gaseous reactants in air have increased kinetic energy\u201d. This directly satisfies the missing sub\u2011point and secures the mark.",
+    "modelId": "openai/gpt-oss-120b",
+    "generatedAt": "2026-10-08T15:33:39.541Z"
+   }
+  },
+  {
+   "leg": "p6a_v2_sse_full",
+   "status": 200,
+   "ms": 5421,
+   "content_type": "text/event-stream",
+   "events_observed": [
+    {
+     "event": "citations",
+     "data": {
+      "citations": [
+       {
+        "index": 1,
+        "label": "Specification topic 4CH1-S3-b \u2014 Rates of reaction",
+        "sourceType": "KNOWLEDGE_NODE",
+        "documentId": null,
+        "page": null,
+        "nodeId": "a9ea76ff-9326-4121-8b4b-d4144d4b901f",
+        "deepLink": "/api/v1/knowledge/nodes/a9ea76ff-9326-4121-8b4b-d4144d4b901f"
+       },
+       {
+        "index": 2,
+        "label": "Specification topic 4CH1-S2-h \u2014 Chemical tests",
+        "sourceType": "KNOWLEDGE_NODE",
+        "documentId": null,
+        "page": null,
+        "nodeId": "352dec69-2785-4a03-a00f-eb8e6f644b47",
+        "deepLink": "/api/v1/knowledge/nodes/352dec69-2785-4a03-a00f-eb8e6f644b47"
+       },
+       {
+        "index": 3,
+        "label": "Revision notes \u2014 p1",
+        "sourceType": "NOTE",
+        "documentId": "37bde1ab-8aae-5a04-8677-18ecaee5423f",
+        "page": 1,
+        "nodeId": null,
+        "deepLink": "/api/v1/content/documents/e6dbd2ca-af6c-4d11-b723-7637636b5cfe?page=1"
+       },
+       {
+        "index": 4,
+        "label": "Specification topic 4CH1-3.12 \u2014 know that a catalyst is a substance that increases the rate of a reaction, but is chemically unchanged at the end of the reaction",
+        "sourceType": "KNOWLEDGE_NODE",
+        "documentId": null,
+        "page": null,
+        "nodeId": "b07c6a5e-a238-4d17-b7b8-1fade66fea54",
+        "deepLink": "/api/v1/knowledge/nodes/b07c6a5e-a238-4d17-b7b8-1fade66fea54"
+       },
+       {
+        "index": 5,
+        "label": "Specification topic 4CH1-3.7C \u2014 use bond energies to calculate the enthalpy change during a chemical reaction",
+        "sourceType": "KNOWLEDGE_NODE",
+        "documentId": null,
+        "page": null,
+        "nodeId": "6b98e809-034e-471e-8f78-5ea6bcc142c0",
+        "deepLink": "/api/v1/knowledge/nodes/6b98e809-034e-471e-8f78-5ea6bcc142c0"
+       },
+       {
+        "index": 6,
+        "label": "Specification topic 4CH1-3.10 \u2014 describe the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas, temperature and the use of a catalyst on the rate of a reaction",
+        "sourceType": "KNOWLEDGE_NODE",
+        "documentId": null,
+        "page": null,
+        "nodeId": "6cfa689d-2618-46bd-a905-427f96bc98ea",
+        "deepLink": "/api/v1/knowledge/nodes/6cfa689d-2618-46bd-a905-427f96bc98ea"
+       }
+      ],
+      "sufficient": true
+     }
+    },
+    {
+     "event": "meta",
+     "data": {
+      "provider": "openrouter",
+      "model": "nvidia/nemotron-3-super-120b-a12b:free",
+      "refused": false,
+      "evidenceCount": 6
+     }
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\"Increasing\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" temperature gives\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" particles more kinetic\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" energy, so they move\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" faster and collide\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" more frequently;\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" additionally, a larger\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" proportion of those collisions\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" possess sufficient energy to\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" exceed the activation\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" energy, making more\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" collisions successful.\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" Consequently, the\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" rate of reaction\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" rises\u202f[3]. \"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" \\n\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\"\\n**Understanding\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" check:** Can you\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" describe how\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" temperature influences both\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" collision frequency and the\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" fraction of\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" effective\"}"
+    },
+    {
+     "event": "delta",
+     "data": "{\"text\":\" collisions?\"}"
+    },
+    {
+     "event": "done",
+     "data": {
+      "ok": true
+     }
+    }
+   ],
+   "event_kinds": [
+    "citations",
+    "meta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "delta",
+    "done"
+   ],
+   "delta_count": 24,
+   "delta_chars": 707,
+   "notes": "LLM GENERATION #4 \u2014 v2 SSE delivery law: citations -> meta -> delta* -> done{ok:true}; no sessionId so nothing persists"
+  },
+  {
+   "leg": "p6b_stream_blank_question_400",
+   "status": 400,
+   "ms": 246,
+   "notes": "expect 400 validation_failed JSON BEFORE stream opens (T-MIG-070 notBlank law)",
+   "response": {
+    "status": 400,
+    "error": "validation_failed",
+    "message": "question: must not be blank",
+    "timestamp": "2026-10-08T15:33:45.216Z"
+   }
+  },
+  {
+   "leg": "p7a_hub_aichat_sse_earlyclose",
+   "status": 200,
+   "ms": 15917,
+   "content_type": "text/event-stream; charset=utf-8",
+   "events_observed": [],
+   "event_kinds": [],
+   "delta_count": 0,
+   "delta_chars": 0,
+   "notes": "hub /api/ai/chat -> coreStreamAuthorized -> CORE /api/v1/tutor/ask/stream; EARLY-CLOSED (r1c Task-50 pattern; partial LLM consumption disclosed)"
+  },
+  {
+   "leg": "p8a_sessions_list_v2row",
+   "status": 200,
+   "ms": 558,
+   "notes": "T-MIG-092 v2-routed row: expect 200 [] for fresh learner (net-zero)",
+   "response": []
+  }
+ ]
+}

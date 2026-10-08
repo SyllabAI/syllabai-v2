@@ -1,0 +1,283 @@
+{
+ "card": "TUTOR-VERIFY (cross-family probe; no card writes)",
+ "receipt": "run-002b-hub-sse-reprobe-r4b",
+ "lane": "r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+ "created_at_utc": "2026-10-08T15:35:27.612585+00:00",
+ "operator_trace": "1a11c1c5d8e696b9 'probe for tutor features (SSE flow, feedback explanation/improvement plan endpoints)'",
+ "purpose": "Run-002 p7a follow-up: the 12s window captured 0 events (Render core cold wake). This leg re-probes the hub SSE flow against the now-warm core with a 75s window, then early-closes.",
+ "flow": "POST https://syllabai-hub-v2.vercel.app/api/ai/chat (hub proxy route) -> coreStreamAuthorized('/api/v1/tutor/ask/stream') -> https://syllabai-core.onrender.com with the learner JWT forwarded",
+ "probe_learner": "r4b-tutor-probe-20261008t153332z@example.invalid (login reuse of the run-002 probe account of record; zero new learners this leg)",
+ "write_ledger": "ONE partial tutor generation on CORE via the hub proxy (early-closed after event capture; the run-002 p7a window likely consumed none or a partial \u2014 both disclosed).",
+ "leg": {
+  "status": 200,
+  "content_type": "text/event-stream; charset=utf-8",
+  "ms": 6230,
+  "error": null,
+  "raw_bytes": 2881,
+  "events_observed": [
+   {
+    "event": "citations",
+    "data": {
+     "citations": [
+      {
+       "index": 1,
+       "label": "Specification topic 4CH1-3.14C \u2014 draw and explain reaction profile diagrams showing $\\Delta H$ and activation energy",
+       "kind": "SPEC_POINT",
+       "ref": "8b33a9d8-90d4-4474-9136-a2643fbd0527",
+       "specPointCode": null,
+       "url": null,
+       "score": 1
+      },
+      {
+       "index": 2,
+       "label": "Revision notes \u2014 p1",
+       "kind": "NOTE",
+       "ref": "17be5d90-8d8c-543b-b557-67b9233d9dcb",
+       "specPointCode": null,
+       "url": "/sources/f3743ca6-3ba5-4585-a927-f0c7a1252363?page=1",
+       "score": 1
+      },
+      {
+       "index": 3,
+       "label": "Specification topic 4CH1-3.13 \u2014 know that a catalyst works by providing an alternative pathway with lower activation energy",
+       "kind": "SPEC_POINT",
+       "ref": "76e4df7a-c030-49f2-8c47-293c9deeeb6d",
+       "specPointCode": null,
+       "url": null,
+       "score": 1
+      },
+      {
+       "index": 4,
+       "label": "Revision notes \u2014 p1",
+       "kind": "NOTE",
+       "ref": "17be5d90-8d8c-543b-b557-67b9233d9dcb",
+       "specPointCode": null,
+       "url": "/sources/f3743ca6-3ba5-4585-a927-f0c7a1252363?page=1",
+       "score": 1
+      },
+      {
+       "index": 5,
+       "label": "Revision notes \u2014 p1",
+       "kind": "NOTE",
+       "ref": "17be5d90-8d8c-543b-b557-67b9233d9dcb",
+       "specPointCode": null,
+       "url": "/sources/f3743ca6-3ba5-4585-a927-f0c7a1252363?page=1",
+       "score": 1
+      },
+      {
+       "index": 6,
+       "label": "Revision notes \u2014 p1",
+       "kind": "NOTE",
+       "ref": "b2d742f1-5d39-597b-81f4-608f2b90e75f",
+       "specPointCode": null,
+       "url": "/sources/9ed9d6f8-9f7c-4268-88d6-d2afa7ee4d7a?page=1",
+       "score": 1
+      }
+     ],
+     "sufficient": true
+    }
+   },
+   {
+    "event": "meta",
+    "data": {
+     "provider": "groq",
+     "model": "openai/gpt-oss-120b",
+     "refused": false,
+     "evidenceCount": 6
+    }
+   },
+   {
+    "event": "delta",
+    "data": "{'text': 'The'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' supplied'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' sources'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' describe'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' reaction'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' profiles'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' and'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' note'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' that'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' a'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' catalyst'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' lowers'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' the'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' activation'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' energy,'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' but'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' none'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' provide'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' a'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' direct'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' definition'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' of'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' **activation'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' energy**'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' itself.'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' Therefore,'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' a'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' one\u2011sentence'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' definition'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' cannot'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' be'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' given'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' from'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' the'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' current'}"
+   },
+   {
+    "event": "delta",
+    "data": "{'text': ' sources.'}"
+   },
+   {
+    "event": "done",
+    "data": {
+     "ok": true
+    }
+   }
+  ],
+  "event_kinds": [
+   "citations",
+   "meta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "done"
+  ],
+  "delta_count": 36
+ }
+}
