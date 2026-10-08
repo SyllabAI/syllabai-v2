@@ -5399,3 +5399,20 @@ Work Log:
 
 Stage Summary:
 - The operator's unblock request is SATISFIED OF RECORD: no operator-held material is owed by the 084-089+091 verify band; execution resumed lane-side. .syllabai-only filing, fetch-first, no force.
+
+---
+Task ID: R0-TM053-RECON (operator trace 1a119bd827e66905 "dig into the T-MIG-053 reconciliation")
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+
+Work Log:
+- Read-only first-hand reconciliation, triggered by the R0-REVIEW-144-146 re-exam flag on #144's riding mark_points ghost-table fix. Probes: origin/main f18abe6 worktree + frozen syllabai-core @ 6cad6ef fresh read-only clone + PR #144 head 993c18e9ec9d (refs/pull/144/head) + golden corpus + receipts.
+- F1 ID HISTORY: two T-MIG-053 claims — 053 of record = r3a's W5 remainder band (claimed 02:50:40Z, DONE); the selfmark validation-order fix claimed 053 second (9e1c94a 03:09:23Z, lost earliest-claim-wins) and was REFILED as T-MIG-055 (DONE: #91 9bebf7e, live re-proof 37408914789). W7-SMOKE's "T-MIG-053 captured quirk" label = pre-renumber name of the 055 band; naming artifact only.
+- F2 QUIRK ATTRIBUTION CONFIRMED, INDEPENDENT OF THE GHOST: w3-selfmark-unknown-attempt-500 (captured from the FROZEN boot, T-MIG-007 F-a) fires in the frozen CONTROLLER ({} -> parts=null binds, no @Valid cascade -> dedup-loop NPE LearnerSelfMarkController.java:42-43 -> catch-all :224-230 -> 500) BEFORE any service/SQL; selfmark has ZERO mark-point SQL both sides. W7-SMOKE M1/M3 parity verdicts STAND; my #144 "plausible true root cause" hypothesis DISPROVEN; flag CLOSED with the original attribution CONFIRMED.
+- F3 GHOST = PORT-SIDE DEFECT, NOT FROZEN-INHERITED: mark_scheme_points at 4 SQL sites (smartmark :540/:846/:865 + teachermarking :550) + 3 self-referential fakeSql pins; introduced T-MIG-032 tranche-1 (9bffac2); frozen core has ZERO hits (Flyway V8:110 CREATE TABLE mark_points; MarkPoint.java:27; FetchService.java:208; MarkPointRepository.findByMarkSchemeIdOrderByOrdering = the exact law #144 restores).
+- F4 #144 FIX VERIFIED: 993c18e/29cea42 renames all 4 SQL sites + all 3 pins, column list unchanged, reconciles vs frozen V8 DDL AND v2 drizzle (mark_schemes.id UUID both sides — no deeper typing divergence); corpus-safe (all 3 smart-mark cases are empty-body 401/404 pre-gate — zero golden reach, zero replay drift).
+- F5 LIVE EXPOSURE (refined, material to cutover): flipped hub prefix /api/v1/learners/me/attempts routes learner smart-mark to v2 (api.ts:1288); ghost fires BEFORE the LLM call (scheme -> points[ghost] -> contexts -> LLM) so ANY real-attempt learner smart-mark on live v2 = 500 since the 032-era mount; teacher smart-mark stays core-routed (latent site only); SELF-MARK loop unaffected. #144's fix is a PRECONDITION for any live smart-mark parity claim.
+- F6 peripheral watchlist: ix_mark_points_scheme int4_ops opclass on uuid columns (drizzle-of-record oddity, 093-class; irrelevant to SELECT correctness; untestable lane-side).
+- Filed receipt R0-TM053-RECON/run-001.json + this entry; PR #144 comment posted resolving the re-exam flag; zero code contact, zero merges, no force.
+
+Stage Summary:
+- T-MIG-053 reconciliation CLOSED of record: quirk filing SOUND (T-MIG-055 family), ghost-table defect SEPARATE and port-side, #144's fix parity-restoring + corpus-safe + live-exposure-repairing (smart-mark band). #144 unblock list narrows to: head CI + disclosures/cards (item-2 disclosure still required, now with the card-link recommendation); desk intake union unchanged. Lane IDLE.
