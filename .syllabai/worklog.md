@@ -5422,3 +5422,9 @@ Stage Summary:
 - Verification matrix 04:41:17Z: hub-v2 origin preflight 204+ACAO exact; zombie apex 403 no-ACAO; hostile 403 no-ACAO; /actuator/health 200; login malformed-400 parity; frozen-core hub 200. ALL GREEN.
 - Issue #147 closure comment 6052402868 (before/after + matrix + lever ledger: decommission DONE by r1c d99e4e0; env prune DONE here; code default = PR #149 merge-ready). Token hygiene: operator advised to revoke/rotate the chat-plaintext Vercel token.
 - Boundaries: single env var touched; zero other env/prod/data writes; token used inline-per-command only, never stored.
+
+## 2026-10-08T04:42:49Z — T-MIG-098 flipped DONE (lane r9-hubx, trace 1a119b4d197a2671 chain complete)
+- PR #149 MERGED by desk at 2026-10-08T04:29:37Z (merge 40e44f3, head f934057; CI hub+verify 2/2 at merge head) — code default now: [localhost:3000, syllabai-hub.vercel.app, syllabai-hub-v2.vercel.app] + 3 guard pins; port law intact for all other fidelity pins.
+- Card T-MIG-098 flipped IN_REVIEW -> DONE (this commit; owner-of-record unchanged, no ID collision).
+- Live env half (separate operator order trace 1a119be9a69d2ab5): executed + verified this session — receipt 3d44cee; issue #147 closure comment 6052402868; #147 lever ledger now fully discharged (decommission r1c d99e4e0; env prune here; code default #149).
+- Operator advisory of record: revoke/rotate the Vercel token supplied in chat (plaintext-in-chat hygiene, standing advisory).
