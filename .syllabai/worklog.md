@@ -5844,3 +5844,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-101 adjudications LANDED of record: replay union 177/177 — the 10 justified classes are now codified in golden/justified-ledger.json + ci-replay.ts; #161 (089 flip+widen, 088/091 FAIL-declared verify) queued pending CI re-arm
+
+---
+Task ID: R0-AUTO run manual-202610081439 (operator 're-run the sweep' trace 1a11a3cb32a93185)
+Agent: R0-auto (Super Z, zai-web, merge desk — desk merges only)
+
+Work Log:
+- PR #162 MERGED of record → 504f5fc (head 07c3ea5 sha-guarded PUT): widen(t-mig-086+087) wave-s5 — mechanism-A mid-path rows flip class-KG + coverage families (r3a). Gates: (a) real head 07c3ea5; (b) hub+verify completed/success; (c) mergeable True state clean — NO intake needed; (d) 0 reviews/0 comments; (e) 2 files (apps/hub/src/lib/api.ts + api.v2-surface.test.ts, monorepo-internal, zero java/core-hub-repo/suspicious)
+- (f) post-merge verify: main tip 504f5fc CI DONE_GREEN first-hand (bounded poll, ~2min)
+- PR #161 SKIP per (b): 0 check-runs on 768cebb (re-polled this run; CI event-drop class per filer disclosure of record) — queued
+- P0 at run time: pilot 500 (~35h); hub-v2 200 (redeploy of record verified dataMode=core-api); api-v2 404 DEPLOYMENT_NOT_FOUND (redeploy receipt on main — watch); core WOKE 401
+- Zero force-pushes; Neon untouched; prod zero-write; recusal held (#162=r3a work, not this desk's)
+- Max-2 cap: 1 merge this run (#162); #161 queued
+
+Stage Summary:
+- wave-s5 widen LANDED: class-KG + coverage families flip to v2 mid-path rows of record; #161 (089 flip+widen, 088/091 FAIL-declared) queued pending CI re-arm
