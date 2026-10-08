@@ -5287,3 +5287,20 @@ Work Log:
 
 Stage Summary:
 - "Proceed with A. Lane legs" discharged: routing (a) moot-of-record; intent (r1c value landed and proven) FIRST-HAND-VERIFIED at bd4eaeb (spine exact-green + 167/177 zero-new-divergence replay) and since superseded forward by the 092/096/097 chains. Incident + wipe documented of record; re-landed clean at f8ac89f. Open for 100%: T-MIG-094/095/097 bands, 083-091 verify/widen riders (#146 in flight), w0a wave-3 adapters (#144), operator levers (section-3 LLM enablement, signup witness, zombie prj_D7vf, P2 adjudication, P3/P4, cutover chain, rotations).
+
+---
+Task ID: R0-STATE-SWEEP-1
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Operator trace 1a119a541b534e7d "Check current state" — full-state sweep, READ-ONLY.
+
+Work Log:
+- CENSUS first-hand at tip f8ac89f: CI hub+verify SUCCESS; open PRs #144 (w0a llm-chain real adapters) + #146 (T-MIG-083 admin revision-notes verify+widen, r4b's 083-091 band executing); register 90 cards = 79 DONE / 8 CAPTURED (083-089+091) / 1 OPEN (094 kg-retriever) / 1 IN_PROGRESS (095 first-field law) / 1 BLOCKED+DEFECT-BAND-FILED (097 CLA, flip BLOCKED on refusal wire + §3 LLM enablement). Cron: Oct-8 02:30Z slot NOT fired at 03:54Z (1.4h lag, within the 6.4-6.7h precedent window; expected ~08:50-09:10Z, drop-window ~12:00Z). V2_SURFACE_PREFIXES at tip = 17 families.
+- TOPOLOGY CORRECTION of record (supersedes my R0-082-WIDEN-VERIFY-1 live_red): the Task-35 'ghost' domain syllabai-v2.vercel.app is now the REAL API-OF-RECORD (prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ per r1c Task-39) — first-hand NOW: DNS resolves (216.198.79.3/64.29.17.3), /actuator/health 200 UP 0.62s, bogus-creds 401 invalid_credentials verbatim 0.52s (real Neon SELECT path). The live hub build CARRIES #139's CSP V2-origin line baked with the CURRENT env (connect-src contains syllabai-v2.vercel.app; a CORE-only pre-#139 derivation cannot emit it) -> the CSP 'live red' I filed at 290b976 is RESOLVED-BY-TOPOLOGY-MOVE: the origin it carries is real and healthy; my 'ghost' premise was stale of record.
+- ZOMBIE corroborated first-hand: prj_D7vf syllabai-api-v2.vercel.app login -> 500 internal_error 1.24s (stale pre-07:39Z baked DB password, Task-38/39 root cause); zero hub chunk references; decommission/redeploy lever = operator.
+- LIVE HUB CURRENCY (decisive discriminator): 'admin/llm/chain-health' x0 across all 14 live chunks — a TABLE-ONLY string (zero hub emitters under /api/v1/admin/**) -> deployed hub build PREDATES #142 (source ~= post-#137 + #139 working-tree CSP patch, dpl_5mv2 10:52:59Z-era): live routing table = 7 families (through revision-notes). The tutor/sessions (#143), chain-health (#142) and HEART (#145: agenda/trail/schedule/exam-series/assignments/state/course-stats/courses) flips are of-record on main but NOT live in hub routing until the next hub redeploy — hub bundle-staleness watch item CONFIRMED live.
+- PILOT HUB: syllabai.vercel.app still 500 (0.73s) — P0 deploy-level outage now ~32.5h standing (19:31Z Oct-6 -> 03:55Z Oct-8), differential vs hub-v2 unchanged.
+- RENDER CORE rollback lever: bogus-creds POST -> 401 in 7.4s (processing, warm envelope) — responsive at probe time; w0a's 120s-unresponsive DOWN observation superseded at this instant; re-probe owed before any §2 flip decision.
+- BOUNDARY: read-only GETs + unauth 401/500 probes only; zero prod writes, zero platform-settings contact; .syllabai-only entry, isolated worktree off f8ac89f, fetch-first, no force.
+
+Stage Summary:
+- State of record at 03:59Z Oct-8: main f8ac89f green (hub+verify), API-of-record syllabai-v2.vercel.app healthy with CSP correctly allow-listed live (correction filed), register 79/8/1/1/1 of 90, cron slot pending-in-window. OPEN levers: hub redeploy (routes 10 more of-record flips live), api redeploy from tip (bundle currency re-armed), #144+#146 desk, zombie prj_D7vf decommission, pilot-hub P0 triage (~32.5h), signup witness + Render JWT sync proof, rotations, cron adjudication. Lane returns to sweep posture.
