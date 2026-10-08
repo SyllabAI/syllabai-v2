@@ -1,0 +1,51 @@
+{
+ "card": "T-MIG-084",
+ "run": "run-002-golden-verify-r4b",
+ "lane": "r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+ "date": "2026-10-08",
+ "operator_trace": "IM trace_id 1a119cd1c09507e5 ('084 Knowledge Tree Verification Rider') \u2014 claimed of record Task-32/5fee3f8 ('084 verify rider is next')",
+ "target": "branch t-mig-084-verify/r4b = main 0f43156 + ZERO code deltas (hub widen + .syllabai artifacts only) \u2014 the verify boots the branch working tree verbatim (apps/api untouched this band since the #132 mount)",
+ "method": "the 083 run-001 pattern of record (T-MIG-083/run-001-verify-r9.json): LOCAL v2 boot (bun 1.3.14, harness-owned Bun.serve envelope per the T-MIG-022 boot-with-timeout pattern, apps/api/src/index.ts imported directly) in the CAPTURE posture + ZERO-KEY law (no LLM credentials in env, asserted by the harness, exit 4 on violation). Substrate: local scratch Postgres 17.11 user-tree (trixie debs dpkg -x, the r4b capture-band recipe) + pgvector 0.8.0 on 127.0.0.1:5433, db syllabai_v2_verify, full drizzle-kit push (62 tables; one disclosed 093-class drizzle-of-record index oddity \u2014 text_ops-on-uuid \u2014 non-blocking, indexes only). Harness users seeded synthetically (roles rows + STUDENT/TEACHER/ADMIN via honest user_roles; tokens minted by the api's own JwtService with the harness boot secret, HS256 44+ byte law). GET-only legs; envelope-timestamp normalization only (the 082 run-003 method); order-insensitive canonical JSON (GOLDEN_MASTER diff semantics). Zero production writes, zero Neon reads/writes, zero live-deploy contact.",
+ "substrate_seed": "knowledge substrate DERIVED FROM THE GOLDEN FIXTURES THEMSELVES (leg-03 tree body walked programmatically \u2014 11 nodes / 10 PART_OF edges inserted verbatim with the capture's stable fake UUIDs 00000000-0000-4000-8000-{seq}, so replay paths + bodies need zero remap; leg-06 unknown id ...0012 asserted absent pre-insert); seed tool = tools/t084-seed.ts; replay tool = tools/t084-verify.ts",
+ "capture_of_record": "golden-captures/t-mig-084/ (r4b run-001 local-boot capture of frozen core 6cad6ef, receipts/T-MIG-084/run-001-capture-r4b.json) \u2014 8 legs, wire truth of record",
+ "verdict": "PASS",
+ "pass_count": "8/8 FIRST PASS \u2014 zero repairs; the gate found NO divergence (contrast the 083 rider where leg-04 caught a real bind-class defect)",
+ "legs": [
+  {
+   "summary": "leg-01 [/api/v1/knowledge/nodes/00000000-0000-4000-8000-000000000001]: 401/401 status_match=True body_match=True header_diffs=3"
+  },
+  {
+   "summary": "leg-02 [/api/v1/knowledge/nodes/00000000-0000-4000-8000-000000000001]: 200/200 status_match=True body_match=True header_diffs=3"
+  },
+  {
+   "summary": "leg-03 [/api/v1/knowledge/nodes/00000000-0000-4000-8000-000000000001/tree]: 200/200 status_match=True body_match=True header_diffs=3"
+  },
+  {
+   "summary": "leg-04 [/api/v1/knowledge/nodes/00000000-0000-4000-8000-000000000001/prerequisites]: 200/200 status_match=True body_match=True header_diffs=3"
+  },
+  {
+   "summary": "leg-05 [/api/v1/knowledge/nodes/00000000-0000-4000-8000-000000000001/misconceptions]: 200/200 status_match=True body_match=True header_diffs=3"
+  },
+  {
+   "summary": "leg-06 [/api/v1/knowledge/nodes/00000000-0000-4000-8000-000000000012]: 404/404 status_match=True body_match=True header_diffs=3"
+  },
+  {
+   "summary": "leg-07 [/api/v1/knowledge/nodes/kn-1]: 400/400 status_match=True body_match=True header_diffs=3"
+  },
+  {
+   "summary": "leg-08 [/api/v1/knowledge/nodes/00000000-0000-4000-8000-000000000001/tree]: 200/200 status_match=True body_match=True header_diffs=3"
+  }
+ ],
+ "header_deltas": "every leg: cache-control/x-content-type-options/x-frame-options absent on v2 \u2014 the api-wide default cache-posture class filed of record at 082 run-003 (non-blocking, disclosed)",
+ "flip_law_check": "widening gated on a NEW golden-verified surface: the family's 4 endpoints all carry captured golden legs (node/tree/prerequisites/misconceptions + the 401/404/400 error-contract legs) \u2014 satisfied exactly as the law requires",
+ "gates_first_hand": {
+  "typecheck": "contracts+shared+db+api chain exit 0; hub tsc --noEmit exit 0",
+  "api_packages_suite": "1715 pass / 0 fail / 13 skip / 6758 expect (branch base 0f43156 census \u2014 this rider carries ZERO apps/api/packages code deltas; the count is the main-census number of record this round; the last band-reported 1725 predates the 053-recon-era main advances incl. #149)",
+  "hub_suite": "42 pass / 0 fail / 374 expect (surface test 14 pass / 0 fail / 295 expect: +1 test = the 084 boundary line, +39 expects)",
+  "golden_selftest": "OK"
+ },
+ "not_done_and_why": [
+  "NO new golden legs for the includeMisconceptions=true hub form \u2014 the hub's api.ts emitter default passes true, but the captured legs of record pin the default-false wire; the true variant rides the SAME golden-verified tree endpoint + the pinned Spring StringToBooleanConverter conversion law (route-test x15) and is disclosed in the widen receipt + surface pins rather than silently treated as verified",
+  "NO section-2 full-flip env changes, NO Vercel/Render/Neon production writes (card forbidden list)"
+ ]
+}

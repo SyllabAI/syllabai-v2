@@ -1,0 +1,113 @@
+version: 1
+task:
+  id: T-MIG-100
+  title: >
+    T-MIG-100 - drizzle-of-record index opclass scramble band — THIS is the register
+    item T-MIG-099 owed at run-001 F6 ("own register item owed, out of this fence"),
+    now filed: the explicit .op() layer in packages/db/src/schema/schema.ts is
+    systematically mis-opclassed — 41 of the 85 explicitly-pinned index declarations
+    (all in the btree layer) carry at least one opclass that does not accept the
+    indexed column's data type, so each such CREATE INDEX dies on real PostgreSQL
+    with SQLSTATE 42804 datatype_mismatch ('operator class "X_ops" does not accept
+    data type "Y"') and drizzle-kit push from packages/db is IMPOSSIBLE as-written
+    past the table-creation phase. Table/column/constraint shapes are NOT implicated
+    (both schemas of record remain CORRECT per the 099 fence) — the defect is
+    confined to the index opclass pins.
+  owner: "w0a lane (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — filing desk of record per operator directive 'T-MIG-099's final residual' (trace 1a11a1e1882c1b9d); execution UNCLAIMED (earliest-claim-wins)"
+  status: "OPEN # register item filed of record with the first-hand static audit baked into execution_record; the scratch push-green leg is owed to flip DONE"
+  claimed_at: "2026-10-08"
+  priority: P2 # performance + provisioning hygiene: SELECT law and the live api are unaffected (drizzle-kit push never runs at request time); the band blocks the 083-rider-pattern scratch provisioning legs and any future push-based reprovisioning
+  wave: "defect-band # drizzle-of-record repair family: restore type-correct index opclass pins; sibling of the 093 fake-vs-real class — same root cause: of-record artifacts that never confronted the real wire"
+  deps: [T-MIG-099]
+  execution_record: >
+    ORIGIN OF RECORD (T-MIG-099 run-001 F6 widening + RELATED WATCHLIST): r9's
+    sanctioned scratch replication first-hand landed the 62 tables then died at the
+    mis-opclassed index family on real PG; the 099 watchlist member
+    (ix_mark_points_scheme int4_ops on uuid — schema.ts:335 / emission :963) is
+    folded INTO this card (supersession note, append-only: 099's wording was 'its
+    own item if it ever bites' — this is that item).
+
+    FIRST-HAND STATIC AUDIT (this filing, at main 6f96dbf, script lane-side
+    scripts/tmig100-opclass-audit.py): 87 index declarations in schema.ts, 1:1 with
+    the commented 0000_organic_mauler.sql reference emission (zero name-set drift
+    both ways; emission opclass histogram: uuid_ops 48, text_ops 38, timestamptz_ops
+    34, int4_ops 14, float8_ops 4, date_ops 2, bool_ops/jsonb_ops/tsvector_ops/
+    vector_cosine_ops 1 each = 144 explicit pins). Of the 87: 85 carry explicit
+    .op() pins and 41 of those are mis-opclassed btree statements (any ONE bad
+    column kills the whole statement with 42804); 2 declarations use drizzle
+    defaults (type-correct by construction); the 2 gin + 1 hnsw pins are type-legal
+    (tsvector_ops on content_tsv; jsonb_ops partial on spec_codes;
+    vector_cosine_ops on the 768-dim embedding under hnsw) — the scramble is
+    CONFINED to the btree layer.
+
+    DEFECT TAXONOMY observed (not a single global swap — per-column scrambling):
+    (a) int4_ops<->uuid_ops swap pairs on (uuid,int) columns: ix_options_question,
+    ix_question_versions_question, ix_question_parts_version,
+    intervention_run_step_run_idx, idx_tutor_session_turns_session;
+    (b) uuid columns pinned text_ops/timestamptz_ops/float8_ops:
+    ix_edge_source_type.sourceNodeId, ix_telemetry_learner_time.learnerId,
+    idx_struggle_inference_learner_expiry.learnerId, and the learner/answer/user id
+    columns of attempts/smart_mark_results/human_marks/review_schedules/
+    intervention_run/revision_note_viewed/tutor_topic_engagements/
+    flashcard_ratings/assignment_submissions/tutor_sessions/announcements/
+    teaching_coverage_events;
+    (c) timestamp-without-tz pinned timestamptz_ops (~15 statements: occurredAt/
+    createdAt/dueAt/expiresAt/lastActiveAt/viewedAt/capturedAt families);
+    (d) varchar pinned uuid_ops/text_ops/date_ops: ix_edge_source_type.relationType,
+    ix_review_learner_status.status, ix_exam_series_lookup.board,
+    ix_document_chunks_subject_kind.kind, ix_cra_target.targetType;
+    (e) exam_series triple drift: board varchar->date_ops, published boolean->date_ops,
+    windowStart date->text_ops; (f) int4 pinned uuid_ops: question_versions.version,
+    question_parts.ordering, document_chunks.year, tutor_session_turns.seq;
+    (g) the 099 watchlist member ix_mark_points_scheme (markSchemeId uuid pinned
+    int4_ops; ordering int4 correctly int4_ops).
+
+    NUMBER RECONCILIATION of record: the 099 card recorded r9's replication-time
+    count '35 mis-opclassed CREATE INDEX statements'; this filing's first-hand
+    recount at 6f96dbf = 41. Both prove the same band; the delta is disclosed (r9
+    counted at its own act time), and the act-time recount governs for THIS card.
+
+    IMPACT LAW: zero live-exposure — btree opclasses are a CREATE INDEX-time
+    concern only; SELECT/DML correctness and the live v2 api are untouched (the
+    099 probes were index-independent by their own law). Real impact: (1) scratch
+    provisioning via drizzle-kit push (the 083-rider pattern) cannot pass the index
+    phase and must hand-carry index DDL or work around, as r9 did; (2) any future
+    push-based reprovisioning/parity leg inherits the block; (3) scratch legs that
+    abort at the index phase run unindexed (planner-hygiene noise in perf-sensitive
+    probes).
+
+    FIX LAW (for whoever claims): repair ONLY the .op() pins to the type-correct
+    opclass (or drop the pin to drizzle defaults) — uuid->uuid_ops,
+    integer->int4_ops, text/varchar->text_ops, timestamp->timestamp_ops,
+    timestamptz->timestamptz_ops, boolean->bool_ops, doublePrecision->float8_ops,
+    date->date_ops — with ZERO changes to column types/tables/constraints (the 099
+    fence reason stands verbatim: never 'fix' the schema shape to chase a tooling
+    emission); keep the commented-reference-header law of the 0000 emission
+    (regenerate or annotate consistently with the repaired pins).
+
+    OWED PROOF LEG (flips this card DONE): on the sanctioned scratch substrate
+    (the 083-rider/099 pattern: local scratch PostgreSQL, ZERO-KEY asserted, zero
+    prod/Neon contact), drizzle-kit push from packages/db runs GREEN end-to-end on
+    real PostgreSQL (tables + indexes complete with zero 42804), plus a pg_indexes
+    readback pinning the repaired opclasses; receipt to .syllabai/receipts/T-MIG-100/.
+
+    DESK LAW extension carried from 099: this is the second member of the
+    'of-record artifact never confronted the real wire' family after the fakeSql
+    band — introspection-emitted index DDL was never executed against real
+    PostgreSQL. Desk law going forward: any generated-of-record DDL must cite a
+    real-wire execution corroboration before it is relied upon for provisioning.
+  scope:
+    allowed:
+      - "packages/db/src/schema/schema.ts (index .op() pin repairs ONLY — no column/table/constraint edits)"
+      - "packages/db/drizzle/** (emission regeneration/annotation consistent with the repaired pins)"
+      - "packages/db/drizzle.config.ts (only if the push leg requires config repair, disclosed in the receipt)"
+      - ".syllabai/tasks/T-MIG-100-drizzle-index-opclass-scramble-band.yaml (this yaml)"
+      - ".syllabai/receipts/T-MIG-100/** (the owed push-green leg receipt)"
+      - ".syllabai/worklog.md (append-only)"
+    forbidden:
+      - "column/table/constraint shape edits in packages/db/** (the 099 fence reason stands verbatim: both schemas of record are CORRECT — opclass repair only)"
+      - "prod/Neon contact (read-only/COW-only law; push legs run on the sanctioned scratch substrate only)"
+      - "apps/** (api + hub zero contact; no flip-table edits, no LLM-seam posture changes)"
+      - "golden/** corpus (zero reach, zero re-capture owed)"
+      - "the frozen core (Flyway V8 remains the prod provisioning path of record; never touch)"
+      - "force-push; golden weakening; self-merge of other lanes' PRs"

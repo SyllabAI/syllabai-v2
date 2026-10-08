@@ -1,0 +1,31 @@
+{
+ "card": "T-MIG-095",
+ "receipt": "deploy-run-002-r0",
+ "lane": "r0",
+ "operator_trace": "1a119de303c9e599 ('desk merge -> deploy (093 recipe) -> live re-verify -> expand flashcard ratings + note-votes (096 linkage)')",
+ "created_at_utc": "2026-10-08T05:4xZ",
+ "source_of_record": "main fcbddc6 (desk-round run-001a tip; code union = #146 + #150 + #151 + #152 + #153(095 fix 46536fd) + #154)",
+ "build": [
+  "093 recipe of record: shim v2 worktree-only (Bun.CryptoHasher->node:crypto, Bun.YAML.parse->js-yaml, 6 hash-pinned concept-graph YAMLs inlined byte-verbatim via concept-assets.gen.ts, explicit Node adapter entry; restored post-build) — scripts/deploy_bundle_build.py lane artifact",
+  "bundle: 318 modules, 3081705 bytes CJS (prior of-record 315/3053764 = +adapters+097+095 code); asset SHAs byte-identical to the 6 of-record pins",
+  "stage: 2-file live bundle shape of record (api/index.js + vercel.json rewrites /api/v1/(.*) + /actuator/health)"
+ ],
+ "localgate": [
+  "8/8 PASS on the REAL Neon wire (of-record DATABASE_URL fetched via vercel env API decrypt=true with the section-0 VERCEL_PAT, identity syllabai-1403; written to the stage env file only, never persisted/logged/committed)",
+  "legs: health 200 UP; login-malformed 400 validation_failed; register 201 (real INSERT, probe learner of record); tutor create 201; LIST NON-EMPTY 200 (093 inList law on the real driver); latest 200; delete 204; list-after-delete 200 []",
+  "LOCAL-ONLY 44-byte JWT key (production secret never lane-readable, law of record)"
+ ],
+ "deploy": {
+  "method": "vercel CLI 62.7.0 deploy --prod from the 2-file stage (project prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ, team_ULL54qkhzKBmnKrpO6BD4mYX)",
+  "deployment": "dpl i6gx4tvqp (syllabai-v2-i6gx4tvqp-syllab-ai.vercel.app) READY 05:22:46Z",
+  "production_alias": "syllabai-v2.vercel.app -> i6gx4tvqp (see race disclosure)"
+ },
+ "concurrent_deploy_race_disclosure": [
+  "4 deployments landed 05:21-05:27Z by parallel lanes under the same operator order (6r9n9r0cj 05:21:01, eee0zk9tj 05:21:27, i6gx4tvqp 05:22:46 = THIS lane, ker6lm2ew 05:27:03; all creator syllabai-1403, all READY) + the 04:40:46 ooe5t3b4k (bc4ec31-class, pre-095)",
+  "ker6lm2ew (05:27, redeploy-class content WITHOUT the 095 law) briefly took the production alias — PROVEN by the whitespace discriminator legs serving 400 bad_request service-enum ('rating must be still-learning or know') instead of the 095 notBlank law",
+  "r0 re-aliased production to the verified tip bundle i6gx4tvqp (vercel alias set, 05:3xZ); post-alias full discriminator battery ALL PASS (see run-002-live-reverify-r0)",
+  "zero data-plane harm window: both bundles serve identical 093/097/adapters/keys behavior; the only delta class was the 095 whitespace/refine law"
+ ],
+ "rollback": "all prior deployments stay READY + re-aliasable (eh53sdxjm = the w0a 993c18e keyed adapters bundle; ooe5t3b4k = the 04:40 bc4ec31-class); zero env changes by this lane",
+ "verdict": "DEPLOYED AND VERIFIED — production serves main fcbddc6 content: 095 captured-law fix + 097 refusal repair + adapters/keys + 093 inList law"
+}

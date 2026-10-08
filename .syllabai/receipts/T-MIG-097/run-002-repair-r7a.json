@@ -1,0 +1,25 @@
+{
+  "card": "T-MIG-097",
+  "receipt": "run-002-repair-r7a",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1)",
+  "created_at_utc": "2026-10-08T04:35:00Z",
+  "operator_trace": "1a119b24a3198db5 ('take a defect band')",
+  "claim": "OPERATOR-REROUTE of record - r0's claim-in-card superseded-by-operator-routing per the rider-reroute-t-mig-090 precedent; claim-in-first-commit 86b0f36 on t-mig-097-refusal/r7a",
+  "scope_discipline": "card allowed list ONLY: apps/api/src/routes/cla.ts + apps/api/test/cla/cla-service.test.ts + card yaml + this receipt + worklog; service.ts and contracts/ UNTOUCHED; zero hub files; V2_SURFACE_PREFIXES untouched (flip BLOCKED of record)",
+  "repair": {
+    "L01": "question-first constraint precedence (capture: on {} core serves 'question: must not be blank', port served 'kind: must not be null')",
+    "L02_L03": "LAYER law: binding-class issues (wrong type, closed-enum value, malformed uuid) answer 400 malformed_body 'request body is not readable (check field types and enum values)' regardless of coexisting constraint violations (Jackson binds before @Valid); unknown kind/mode were misrouted to validation_failed",
+    "L04": "web-layer @NotBlank parity: whitespace-only question binds (zod min(1) counts whitespace), constraint stage answers 400 validation_failed 'question: must not be blank' before the service (port misrouted to bad_request 'malformed request' via service ArgumentError)",
+    "L05_L06": "deferred-kind reference gates BEFORE the runtime-step refusal: 'SMART_LESSON context requires rootId and topicNodeId' / 'NOTE_SECTION context requires rootId and noteId' verbatim as 400 bad_request (port served the runtime-step deferral text)",
+    "preserved_disclosed": "refs-present SMART_LESSON/NOTE_SECTION asks still reach the runtime-step deferral (pinned) - the generation wire rides the operator's section-3 lever; path flip stays BLOCKED until both wires golden"
+  },
+  "pins": "8 new/updated route pins in cla-service.test.ts (L01-L06 verbatim + layer-law precedence pin + refs-present disclosure pin); old 069-era 'undeclared kind = validation_failed' pin superseded by the capture law",
+  "gates_first_hand": {
+    "typecheck_x4": "exit 0",
+    "bun_test_apps_api_packages": "1713 pass / 0 fail / 13 skip / 6742 expect() / 89 files (+7 net vs main 1706/6715 EXACT = 8 new - 1 re-derived)",
+    "golden_selftest": "OK"
+  },
+  "ci_of_record": "PR #151 head 14d8d189d: verify SUCCESS + hub SUCCESS (pull_request event)",
+  "pr": 151,
+  "sequencing_disclosure": "the live dual-replay run-003 (10/10 refusal legs vs the live core) rides the deploy recipe-of-record post-merge; the flip decision stays BLOCKED on the operator's section-3 lever (LLM keys) + the post-enablement generation-wire verify rider"
+}

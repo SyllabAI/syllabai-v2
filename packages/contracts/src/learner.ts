@@ -60,6 +60,7 @@
  * Java declaration, pinned in learner.test.ts.
  */
 import { z } from "zod";
+import { notBlank } from "./auth";
 import { javaInstantSchema } from "./assessment";
 import { knowledgeNodeTypeSchema } from "./curriculum";
 
@@ -103,7 +104,21 @@ export const flashcardRatingRequestSchema = z.object({
     .min(3)
     .max(64)
     .regex(/^[A-Za-z0-9_-]+$/, "card id must be the hub content id"),
-  rating: z.string().min(1),
+  rating: z
+    .string()
+    // T-MIG-095 captured law (run-001, live core 2026-10-08): rating carries
+    // @NotBlank ONLY — blank AND whitespace-only values serve the jakarta
+    // default deterministically (8/8 + 6/6 core repeats), so the notBlank
+    // refine (auth.ts heritage, T-MIG-017) replaces the bare min(1) whose
+    // too_small issue served a message core never serves
+    // ("must be greater than or equal to 1"). The learnerme classifier's
+    // custom branch (added in the same band) maps the refine issue verbatim.
+    // Multi-constraint fields below keep their chains: the live core's
+    // constraint-selection order is request-level NONDETERMINISTIC on
+    // multi-violation payloads (run-001 repeat law), so any declared chain
+    // member is within the captured distribution — single-constraint legs
+    // are the byte-pinnable class and they pin 1:1.
+    .refine(notBlank("must not be blank"), "must not be blank"),
   subtopicCode: z
     .string()
     .min(1, "must not be blank")
@@ -120,7 +135,12 @@ export const noteVoteRequestSchema = z.object({
     .min(3)
     .max(64)
     .regex(/^[A-Za-z0-9_-]+$/, "note id must be the hub content id"),
-  vote: z.string().min(1),
+  vote: z
+    .string()
+    // T-MIG-095 captured law (run-001): same @NotBlank-only field law as
+    // rating — blank/whitespace-only serve "must not be blank" 8/8+6/6 on
+    // the live core; the notBlank refine is the faithful port.
+    .refine(notBlank("must not be blank"), "must not be blank"),
   subtopicCode: z.string().min(2).max(64).regex(/^[A-Za-z0-9-]+$/),
 });
 export type NoteVoteRequest = z.infer<typeof noteVoteRequestSchema>;

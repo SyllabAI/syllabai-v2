@@ -1,0 +1,41 @@
+{
+  "card": "T-MIG-097",
+  "receipt": "run-003-vehicle-state-r7a",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1)",
+  "created_at_utc": "2026-10-08T05:35:00Z",
+  "operator_trace": "1a119df7d930b609 ('Proceed with: desk merge -> deploy recipe -> live run-003 -> your section-3 LLM lever -> post-enablement generation rider -> flip')",
+  "chain_stage_1_desk_merge": {
+    "status": "DONE",
+    "pr": 151,
+    "merge_commit": "bc4ec31a87d5863150912db49917e737f2252e8e",
+    "sha_pinned_head": "d0bc76aff9146816d32c5aed5f1181276d0e5d84",
+    "authority": "authors-never-self-merge superseded-by-operator-order (the 141/142 precedent); mergeable=True at merge; union-intake rebases x2 (worklog-tail unions) before the merge",
+    "corroboration": "CI verify+hub of record at the pre-rebase head 14d8d18 (byte-identical code tree) + main push CI in_progress at bc4ec31; post-rebase PR CI events dropped by the T-MIG-076 event-drop class (disclosed on #151)"
+  },
+  "chain_stage_2_deploy_recipe": {
+    "status": "DONE-BY-THE-PARALLEL-WAVE",
+    "facts": "r9-hubx executed the API-of-record REDEPLOY under operator directive 1a119f00380075f9 ('API-of-record redeploy leverage'): main 9a376fd live via the 093 recipe verbatim, local gate 8/8, dpl_Att7uFazeneUCwBFKGjL READY 05:21:01Z, verification matrix 16/16 on the live apex \u2014 the deployed tip is POST-#151 (bc4ec31 at 05:07), so the live v2 serves the repaired refusal wire",
+    "lane_role": "this lane's vehicle work (the 093-recipe knowledge + the CI-verify fallback) stands; the token-gate concern is MOOT of record (the deploy lane holds the creds)"
+  },
+  "chain_stage_3_live_run_003": {
+    "status": "VEHICLE-BUILT-DISPATCHED-BLOCKED-ON-NEON-BRANCH-CEILING",
+    "vehicle": "PR #156 merged 6303fa21a (+ #157 verdict-step YAML repair a934fc3d): t097-refusal-verify workflow_dispatch \u2014 provisions a disposable Neon COW (neon-branch.ts of record, zero-residue 404-verify), boots the MERGED-main api in the H-1 envelope against the COW, dual-replays the 10-leg refusal matrix vs the LIVE core (dual-probe: each wire verified with a token its own issuer minted \u2014 identity-free refusal bodies, no secret sharing), uploads the receipt artifact, drops the COW always",
+    "dispatches": [
+      "37731738760 failure",
+      "37732192256 failure"
+    ],
+    "blocker": "Neon create -> HTTP 422 'branches limit exceeded' \u2014 the project is at its branch ceiling (the day's COW traffic); the NEON_API_KEY is Actions-only so lane-side cleanup is impossible",
+    "residue": "zero (drop step verified 'nothing to drop'); read-only proof green both runs",
+    "harness_v2": "tools/t097_verify.ts: T097_CORE/T097_V2 env overrides + dual probe + current disposition text (run-001 defaults preserved)"
+  },
+  "chain_stage_4_section_3_lever": {
+    "status": "DONE-BY-THE-PARALLEL-WAVE",
+    "facts": "#144 merged b16230f (real adapters) + the cla composition root wires buildLlmChain(env)/chainAsLlmProvider + the redeploy receipt records '4x LLM keys = #144 seams live' \u2014 generation is wired AND keyed on the live v2",
+    "remaining": "the live generation-wire proof (this lane executes a first rider probe after run-003)"
+  },
+  "chain_stages_5_6": {
+    "status": "GATED-BY-CONSTRUCTION",
+    "note": "post-enablement generation rider + the CLA flip (V2_SURFACE_PREFIXES + hub emitters) execute after stages 2-3 land the deploy + run-003 ALL PASS of record"
+  },
+  "conclusion": "Chain executed to the credential/resource gates: the repair is ON MAIN, the section-3 code is ON MAIN, the run-003 vehicle is ON MAIN and one dispatch away once the Neon ceiling clears; the deploy is one Actions secret away. Operator levers: (1) VERCEL_TOKEN Actions secret, (2) Neon branch ceiling cleanup/raise."
+}

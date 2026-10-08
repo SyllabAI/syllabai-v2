@@ -46,7 +46,8 @@ divergences:
   - "P1 500-class remaining x2: teacher-curriculum-versions-teacher-200, w4-target-series-put-201 — all 500 internal_error where the frozen core answers 200 on the same staged V63 seed state (the w3-questions pair of the original x4 is DONE via T-MIG-067)"
   - "P2 DATE wire-format: w4-exam-series-qualification-filter-200, w4-exam-series-seeded-calendar-200 — v2 serializes DATE columns as 2026-10-08T00:00:00.000Z; the core passes LocalDate through as 2026-10-08"
   - "P2 error-taxonomy: w3-attempt-missing-fields-400, w3-attempt-structured-missing-fields-400 — v2 validation_failed/questionId-must-not-be-null vs core malformed_body/request-body-is-not-readable on the same empty body"
-    RUN-001 CLOSURE (2026-10-06): the claim race resolved by absorption —
+RUN-001 CLOSURE (2026-10-06): >-
+    the claim race resolved by absorption —
     this session's claim (web-1f157e25, 06:35:40Z, trace 1a10fe954b3d25a1,
     pushed on t-mig-068/r0) is earliest-of-record; the sibling r0 session's
     claim (8516d25 @ 06:38:41Z, trace 1a10fe65d9d64f3d) and the r0r6 lane's

@@ -1,0 +1,25 @@
+{
+  "card": "LEVER api-of-record redeploy (no card; enumerated lever of the desk-round/w7 era)",
+  "receipt": "api-of-record-run-001-r9",
+  "lane": "r9-hubx (web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "created_at_utc": "2026-10-08T05:26:00Z",
+  "operator_trace": "1a119f00380075f9 'API-of-record redeploy leverage'",
+  "source_of_record": "main tip 9a376fd at build time (post #144/#151/#152/#153 desk landings + desk-round 881960d/fcbddc6 + R0-AUTO cron receipt 9a376fd)",
+  "recipe_of_record": "T-MIG-093 deploy-run-001-r0 verbatim: deploy_bundle_build.py shim v2 (Bun.CryptoHasher->node:crypto, Bun.YAML.parse->js-yaml, 6 concept YAMLs inlined byte-verbatim via concept-assets.gen.ts, SHA-256 pins enforced at boot) + explicit Node adapter entry + 2-file stage (api/index.js 3.08MB + vercel.json rewrites) + vercel CLI 62.7.0 deploy --prod",
+  "adaptations_disclosed": [
+    "REPO/STAGE constants retargeted to this workspace topology (method untouched)",
+    "localgate DATABASE_URL delivered via process env instead of stage .env file (zero-persist law strengthened; value never logged)",
+    "shimmed/generated files RESTORED post-build, git-verified clean tree"
+  ],
+  "local_gate": "8/8 ALL PASS on the bundle (node v24.21.0, of-record DATABASE_URL live via env API, LOCAL 44-byte JWT key): health/login-malformed-400/register-201-real-Neon/tutor create-list(L06)-latest-delete-204-list-empty",
+  "deployments": {
+    "r9": "dpl_Att7uFazeneUCwBFKGjL READY 05:21:01Z (gitRoot deploy-tools/api-stage)",
+    "concurrent_observed": "dpl_3QLQzJ3fGCJoxh1qPU7F READY 05:21:27Z (gitRoot api-stage = R0-AUTO cron lane, same recipe) + dpl_jb9pBzBm7TAHZMg6Jy9w READY (third, settled last \u2014 alias winner); benign same-source deploy race documented, no interference, no cancellations",
+    "prior_prod": "dpl_Die9SrNyPQyVJqEu4VGiwaEzUMpM (04:40:46Z, the Task-17 CORS-prune redeploy) stays READY re-aliasable = rollback anchor"
+  },
+  "verification_matrix": "16/16 ALL PASS 05:24Z: health consolidated shape; Boot 401 law learners-me/tutor-sessions/cla-ask; chain-health admin-gated 401 observed; login-malformed 400 validation_failed parity; CORS hub-v2 preflight 204 + ACAO exact + zombie no-ACAO (Task-17 prune survives); probe learner register 201 + tutor create/list/delete/list net-zero rows; hub-v2 health 200 + frozen-core hub 200 untouched",
+  "probe_rows_of_record": "1 learner r9-redeploy-df88a785a4@example.invalid (net), tutor sessions net-zero",
+  "env_writes": "ZERO \u2014 7 production env vars verified untouched (4x SYLLABAI_LLM_* keys confirmed present = the #144 seams live with zero env work per r1c Task-42; SYLLABAI_CORS_ORIGINS 34 chars = hub-v2 only, the Task-17 prune holding)",
+  "correction_of_record": "Task-19/20 receipts' 'GitHub PAT 401 Bad credentials / rotation presumed' statements are RETRACTED \u2014 the 401s were a shell-expansion artifact (inline VAR=x curl -H \"Bearer $VAR\" does not expand $VAR; empty bearer -> 401/403). PAT verified ALIVE 200 (login SyllabAI) this run; no rotation occurred; all API-based verifications re-enabled. The git-ancestry evidence in those receipts is unaffected (it never needed the API).",
+  "verdict": "DEPLOYED AND VERIFIED \u2014 main of record live on the api-of-record: #144 real adapters + mark_points ghost fix + T-MIG-094 binding law + 095/097 repairs + 083-087 verifies; T-MIG-099 condition (2) real-wire proof leg now UNBLOCKED (post-redeploy live error-class note can discharge on the next scoped execution)"
+}

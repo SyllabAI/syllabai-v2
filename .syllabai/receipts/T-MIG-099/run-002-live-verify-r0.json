@@ -1,0 +1,39 @@
+{
+  "card": "T-MIG-099",
+  "receipt": "run-002-live-verify-r0",
+  "lane": "r0 (web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "created_at_utc": "2026-10-08T06:02:00Z",
+  "operator_trace": "1a11a139ebd0d355 'run the live probe with a real learner'",
+  "purpose": "INDEPENDENT R0-side live replication of the card's completion claim (leg-2 live error-class note, r9 receipt run-001-proof-r9) — the desk does not take another lane's live claim unverified; the operator's directive supplies the real-learner sanction the card's residual named. Card remains DONE (this receipt corroborates, does not reopen).",
+  "probe_script": "scripts/t099_live_probe_r0.py (persisted lane-side; raw transcript work/t099_live_probe_r0_result.json lane-side)",
+  "target": "api-of-record https://syllabai-v2.vercel.app (topology law a6e89b1) — live prod wire, Vercel edge, smart-mark leg X-Vercel-Id hkg1::iad1::94h5n-1791439187501-64289db16a88, served 2026-10-08T05:59:50Z",
+  "flow_law": "routes/contracts read first-hand at origin/main e553658: POST /api/v1/auth/register (registerRequestSchema: email + passwordSchema min12 letter+digit + displayName 2-100) -> 201 AuthResponse{accessToken,user}; GET /api/v1/questions/:id -> servable view w/ parts[]; GET /api/v1/questions/:id/mark-scheme -> 200 body; POST /api/v1/attempts/structured (structuredSubmitRequestSchema: questionId + partAnswers[partId,answerText<=4000] + responseTimeMs) -> 201; POST /api/v1/learners/me/attempts/:id/smart-mark (no body, flipped-prefix mount index.ts:281) -> 200 AttemptSmartMarkView",
+  "write_ledger_disclosed": {
+    "probe_learner": "r0-099live-20261008t055945Z@example.invalid (id 11e0e7ed-77fa-40f1-b9d1-c96d982f26e0)",
+    "attempt": "fdbc5554-f209-462c-8e49-ba5d31a51654 (created 201 PENDING, owned by the probe learner)",
+    "corpus": "W7-SMOKE structured question of record 92817c46-8103-4d2c-9f32-bd61636320a1 (5 parts, read-only use)",
+    "llm_cost": "one smart-mark execution, real generation inherent to the leg (same disclosure class as run-001-proof-r9)"
+  },
+  "observed": {
+    "leg_register": "201 in 0.799s",
+    "leg_question_read": "200 in 0.431s — 5 parts served (a47b02df, 69a1b177, 4f265a52, 319b2e5e, 99e560d4)",
+    "leg_mark_scheme_read": "200 in 0.417s — scheme body live (VALIDATED-only reveal policy)",
+    "leg_attempt_create": "201 in 0.553s — structured attempt PENDING with 5 answered parts",
+    "leg_smart_mark": "HTTP 200 in 2.636s — AttemptSmartMarkView{schemeValidationState=VALIDATED, marksPossible=5}; ALL 5 parts markingState=SMART_MARKED, authoritative=true, validationPassed=true, failureReason=null, modelId=openai/gpt-oss-120b (openrouter adapter, #144 law live); per-point breakdowns cite the LIVE mark_points rows (pointLabels: chlorine, chlorine, hydrogen, iron, air — five distinct point rows served past the point-rows query); REAL differentiated marking: parts d+c awarded 1/1 (answer text contained 'chlorine'), parts b+e+a awarded 0/1 (required terms 'hydrogen'/'iron'/'air' absent per rationale) — total 2/5, proving the pipeline read the submitted answers and marked them against the served points, not a canned response",
+    "sql_class_discriminator": "ZERO SQL-class markers in the entire response body (no 42P01 / undefined_table / relation / mark_scheme_points / 'does not exist') — the pre-fix exposure law (run-001 F5: any real-attempt learner smart-mark = SQL-class 500 since the 032-era mount) is CONTRADICTED on the live wire, as repaired by #144 b16230f"
+  },
+  "asserts": [
+    "register 201 + bearer + learner id",
+    "question 200 servable, 5 parts with ids",
+    "mark-scheme 200 body (VALIDATED law on live)",
+    "structured submit 201 PENDING",
+    "smart-mark 200 (class discriminator vs pre-fix SQL-500)",
+    "schemeValidationState=VALIDATED + marksPossible=5 (point rows resolved for all 5 parts)",
+    "all 5 parts SMART_MARKED + authoritative=true + validationPassed=true",
+    "modelId=openai/gpt-oss-120b per part (real generation)",
+    "live mark_points law text served (5 pointLabels incl. chlorine/hydrogen/iron/air)",
+    "differentiated 2/5 marking (answers actually read against the points)"
+  ],
+  "verdict": "ASSERTS 10/10 PASS — the r9 leg-2 live error-class claim REPLICATED first-hand by the r0 desk: the learner smart-mark error class at the api-of-record stands changed from SQL-class 500 to a fully-functioning real-generation pipeline (200), with the mark_points rows law serving per-point breakdowns. T-MIG-099 completion claim CORROBORATED (card stays DONE, ledger closed); the 093-class desk law (fakeSql-pinned SQL cites real-wire corroboration) now carries BOTH an r9 and an independent r0 live citation for this band.",
+  "scope_note": ".syllabai-only contact (receipt + card corroboration line + worklog); zero code, zero schema, zero flip-table, zero LLM-seam contact; no force-push"
+}

@@ -1,0 +1,66 @@
+{
+  "card": "T-MIG-099",
+  "receipt": "run-001-proof-leg",
+  "lane": "R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "created_at_utc": "2026-10-08T05:35:00Z",
+  "operator_trace": "1a119ea32b25391d ('proceed with the 099 real-wire proof leg')",
+  "method": "OWED PROOF LEG on the sanctioned scratch substrate (083-rider recipe): LOCAL user-tree PostgreSQL 17.11 (Debian trixie debs 17.11-0+deb13u1 dpkg -x; pgvector 0.8.0) on 127.0.0.1:5433, db syllabai_v2_verify, cluster-wide log_statement=all + log_min_duration_statement=0 (the evidence channel). ZERO prod/Neon contact (asserted by URL guard in every tool, exit-2 refusal on any non-127.0.0.1:5433 target). ZERO-KEY law asserted (t084 harness verbatim guard: any GROQ/OPENROUTER/GEMINI/SYLLABAI_*_API_KEY in env -> exit 4). Schema completed from the OF-RECORD baseline emission (packages/db/drizzle/0000_organic_mauler.sql, byte-verbatim after unwrapping its of-record commented-emission wrapper, see F2), not from hand-written DDL. Wire under test: apps/api/src/index.ts served by Bun.serve (T-MIG-022 harness envelope) from the #144 merge tree of record (worktree at origin/main 8c40306, which contains b16230f = the #144 desk merge with the 7-file rename intact, desk-verified at R0-MERGE-144). ONE seeded VALIDATED-scheme wire + ONE learner smart-mark POST through the REAL pipeline. Harness token minted by the api's own JwtService (HS256, 76-byte harness secret, token_version=1 user_roles row).",
+  "seed_wire": {
+    "learner": "09900000-0000-4000-8000-000000000001 (STUDENT)",
+    "question": "09900000-0000-4000-8000-000000000010 (STRUCTURED, marks 5)",
+    "version": "09900000-0000-4000-8000-000000000011 (v1)",
+    "part_a": "09900000-0000-4000-8000-000000000020 (label a, marks 3, ordering 0)",
+    "part_b": "09900000-0000-4000-8000-000000000021 (label b, marks 2, ordering 1)",
+    "attempt": "09900000-0000-4000-8000-000000000030 (PENDING, provenance SELF)",
+    "answers": "09900000-0000-4000-8000-000000000040 (part A, non-blank = markable) + 09900000-0000-4000-8000-000000000041 (part B)",
+    "mark_scheme": "09900000-0000-4000-8000-000000000050 (validation_state VALIDATED)",
+    "mark_points": "TWO rows on part A (a(i) ordering 0 marks 1; a(ii) ordering 1 marks 2 = 3 total); ZERO rows on part B (exercises the deterministic NO_SCHEME_POINTS short-circuit and the per-part point filtering)"
+  },
+  "the_leg": {
+    "request": "POST /api/v1/learners/me/attempts/09900000-0000-4000-8000-000000000030/smart-mark (body-less per the frozen law) with Bearer harness token",
+    "response_status": 200,
+    "response_body_law": {
+      "schemeValidationState": "VALIDATED",
+      "marksPossible": 5,
+      "part_a": { "marksPossible": 3, "failureReason": "PROVIDER_UNAVAILABLE", "validationPassed": false, "marksAwarded": 0, "markingState": "PENDING", "authoritative": false },
+      "part_b": { "marksPossible": 0, "failureReason": "NO_SCHEME_POINTS", "validationPassed": false, "marksAwarded": 0, "markingState": "PENDING", "authoritative": false }
+    },
+    "db_asserts_all_pass": true,
+    "asserts": {
+      "http_200": true, "scheme_validated": true, "attempt_marks_possible_5": true,
+      "part_a_marks_possible_3": true, "part_a_refusal_provider_unavailable": true, "part_a_not_marked": true,
+      "part_b_marks_possible_0": true, "part_b_refusal_no_scheme_points": true,
+      "two_result_rows": true, "part_a_result_row": true, "part_b_result_row": true,
+      "results_stamped_with_scheme": true, "nothing_marked": true, "scheme_rows_at_least_two": true
+    },
+    "smart_mark_results_rows": "one row per part (pipeline_version 1.3.0), both stamped mark_scheme_id=...050 + scheme_validation_state=VALIDATED; failure_reasons PROVIDER_UNAVAILABLE / NO_SCHEME_POINTS; model_id null; nothing marked: attempt stays PENDING + marks_awarded null, both answers stay PENDING (fail-closed refusal semantics intact)"
+  },
+  "pg_log_evidence": {
+    "point_rows_statement_of_record": "select id, ref, ordering, text, marks, question_part_id from mark_points where mark_scheme_id = $1 order by ordering",
+    "executions_in_run_windows": 9,
+    "per_run_pipeline_law": "3 executions per run = markAttempt batch site (smartmark :540) once + project() per part (smartmark :865) twice; captured in the extended-protocol trace as parse/bind/execute with $1 bound to the seeded scheme UUID",
+    "ghost_string_hits_in_entire_cluster_log": 0,
+    "error_class_lines_in_run_window": 0,
+    "evidence_file": ".syllabai/receipts/T-MIG-099/results/run-window.log (+ run-of-record.log, substrate-apply.log)"
+  },
+  "verdict": "THE GHOST CLASS IS GONE ON THE REAL WIRE: the exact SELECT the #144 rename restored (mark_points, mark_scheme_id = $1, order by ordering) executed against a REAL PostgreSQL with REAL parameter binding and SERVED the seeded rows law (part A marksPossible = 3 read back from the two seeded mark_points rows through the fixed SQL; part B = 0 via in-memory filtering of the same result). Pre-fix this request died with SQL-class 500 'relation mark_scheme_points does not exist' BEFORE the LLM call (R0-TM053-RECON run-001 F5). The observed post-fix end-state is the LLM-seam's own ZERO-KEY refusal law: the live ADR-MIG-0002 chain unavailable -> chainAsCandidateGenerator throws CandidateGenerationError('PROVIDER_UNAVAILABLE') (bridges.ts :379-380/:393-394) -> SmartMarkPipeline fallback ladder -> fail-closed decisionRejected -> HTTP 200 with honest per-part failureReason, plus the deterministic NO_SCHEME_POINTS short-circuit for the point-less part. Desk law satisfied: the fakeSql pins now cite this real-wire corroboration of record.",
+  "findings": [
+    "F1 (substrate recipe blocked, first-hand): 'drizzle-kit push from packages/db' is IMPOSSIBLE as-written on any real PostgreSQL - two attempts died 42804 ResolveOpClass (attempt-1: operator class int4_ops does not accept data type uuid, the ix_mark_points_scheme band; attempt-2: uuid_ops does not accept timestamptz, the ix_smart_mark_results_answer band). The F6 watchlist oddity is therefore WIDENED: the drizzle-of-record .op() layer is systematically scrambled across the schema - 35 CREATE INDEX statements of record are rejected by PG with 42804 (full census in results/substrate-apply.log: ix_options_question, ix_question_versions_question, ix_exam_papers_paper_year_series, ix_question_parts_version, ix_mark_points_scheme, ix_smart_mark_results_answer, ix_human_marks_answer, idx_struggle_inference_*, ix_tve_target, ix_review_learner_status, intervention_*_idx, revision_note_viewed_user_idx, ix_document_chunks_subject_*, ix_tte_*, ix_cra_target, archive_tc27_*, idx_tutor_session_turns_session, ix_fr_learner_card, ix_asub_*, ix_edge_*, ix_telemetry_learner_time, ix_attempts_learner_time, ...). Pattern note: several look pairwise/shift-swapped (e.g. ix_question_versions_question emits question_id int4_ops + version uuid_ops where the column types are uuid + int4) - root cause is inside the drizzle-of-record generation chain (db:pull -> generate), OUT of this band's fence (packages/db/** forbidden); its own register item is owed.",
+    "F2 (of-record baseline structure, first-hand): 0000_organic_mauler.sql is NOT an executable migration - it opens with two '--' header lines ('generated after introspecting the database / uncomment this code before executing migrations') and wraps its ENTIRE body in ONE block comment (line 3 '/*' ... line 1033 '*/'). It is the introspected Neon end-state reference emission. The substrate tool follows the file's own header instruction (unwraps the single top-level comment, applies the DDL byte-verbatim) and fail-closed asserts: every rejection must be 42804 (all 35 are), 62 public tables land (flyway_schema_history included per the T-MIG-002 keep-discipline), mark_points columns/indexes match the law. Post-apply mark_points law verified: uuid PK, mark_scheme_id uuid, question_part_id uuid, ref varchar, ordering integer, text, marks integer (check marks > 0), plus valid indexes only - the mis-opclassed ix_mark_points_scheme correctly ABSENT from the scratch.",
+    "F3 (the run, of record): see the_leg + pg_log_evidence. ALL 14 asserts pass. The response body is the FIRST real-wire smart-mark parity evidence for the v2 api on this surface (every prior golden/replay shape on this route was a pre-gate 401/404 empty-body class - run-001 F4 corpus safety).",
+    "F4 (live-probe note posture - the leg's residual): the redeploy PRECONDITION is MET of record by the parallel wave: r1c Task-43 executed the redeploy lever per the T-MIG-093 recipe from 881960d (dpl_3QLQzJ READY 05:21:27Z, shim v2 + 6/6 asset SHA pins, local gate 8/8) and r9-hubx redeployed main 9a376fd (dpl_Att7u READY, gate 8/8, matrix 16/16) - 9a376fd CONTAINS b16230f (verified merge-base first-hand this run), so the api-of-record now serves the fixed SQL, with 4x LLM keys live = the #144 seams live. BUT the post-fix live error-class comparison is post-auth and needs a live learner bearer + an OWNED real attempt under a VALIDATED scheme: lane-side live probes (this run) got the Boot-parity 401 pre-gate envelope for both unauthed and forged bearers on the flipped route - identical pre/post fix, non-arbitrating; r1c's live 'smart-mark ghost zero' line is the same pre-gate class and explicitly defers this leg. Registering a fresh live learner yields no attempts (ownership 404-first), and the content chain needed to manufacture a VALIDATED-scheme attempt is teacher/admin-gated = a privileged prod write NOT sanctioned lane-side. The live note therefore stays an OPERATOR-SIDE residual (needs a live learner credential with a real VALIDATED-scheme attempt, or an operator-run probe): with LLM keys live the expected class for such a probe is a 200 real marking (pre-fix it was the SQL-class 500) - the F5 exposure law is retired by the fix, and any live smart-mark parity claim can now stand on this receipt + the redeploy receipts.",
+    "F5 (boot/env law, incidental first-hand): apps/api requires DATABASE_URL + SYLLABAI_JWT_SECRET at import time (env.ts fail-fast; /actuator/health does NOT probe the DB - the api came up green against a dead DB in the first harness invocation and the request surfaced the catch-all 500 envelope). Also first-hand on the of-record baseline: user_roles.role carries an FK to a roles(name) table (the t083-era seed pattern predates it on older scratches) - seed tools must upsert the role row first."
+  ],
+  "scope_compliance": {
+    "touched": ".syllabai/tasks/T-MIG-099-mark-points-ghost-table-band.yaml (status edit), .syllabai/receipts/T-MIG-099/** (tools + results + this receipt), .syllabai/worklog.md (append-only)",
+    "forbidden_surfaces_untouched": "packages/db/** (push attempted read-only; the substrate consumed the of-record emission without editing it), golden corpus, apps/hub/** + V2_SURFACE_PREFIXES, LLM-chain seam posture (ran under the #144 law as-is, ZERO-KEY), selfmark (055 band fenced off), no force-push"
+  },
+  "evidence_files": [
+    ".syllabai/receipts/T-MIG-099/results/substrate-apply.log (the of-record baseline apply: 168 applied / 35 rejected all-42804 / 62 tables / mark_points law)",
+    ".syllabai/receipts/T-MIG-099/results/run-of-record.log (the leg: HTTP 200 body + results rows + post-flight states + ALL ASSERTS PASS)",
+    ".syllabai/receipts/T-MIG-099/results/run-window.log (PG extended-protocol trace: parse/bind/execute of the fixed point-rows SELECT with $1 bound; zero ghost strings; zero errors)",
+    ".syllabai/receipts/T-MIG-099/tools/apply-baseline.ts",
+    ".syllabai/receipts/T-MIG-099/tools/seed.ts",
+    ".syllabai/receipts/T-MIG-099/tools/harness.ts"
+  ]
+}

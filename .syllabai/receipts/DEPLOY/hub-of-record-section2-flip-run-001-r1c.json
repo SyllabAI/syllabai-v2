@@ -1,0 +1,39 @@
+{
+  "card": "CUTOVER-RUNBOOK-§2",
+  "receipt": "hub-of-record-section2-flip-run-001-r1c",
+  "lane": "r1c (zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)",
+  "created_at_utc": "2026-10-08T05:58:00Z",
+  "operator_trace": "1a119fdeb7c8a035 'hub §2 flip, 099 proof leg'",
+  "purpose": "execute the section-2 traffic flip of record (runbook docs/CUTOVER_RUNBOOK.md §2 adapted to the Wave-A two-base topology): hub data layer mock -> core-api, redeploy from tip",
+  "coordination_of_record": {
+    "directive_part_1_099_proof_leg": "DISCHARGED-of-record by r9-hubx (receipt T-MIG-099/run-001-proof-r9.json @ 0928878, operator trace 1a119fb63da4d5e5: scratch real-wire leg ghost-class-GONE + live error-class note REAL 200 generation openai/gpt-oss-120b) — verified first-hand fetch-first; NO duplicate execution per the CLAIM-071-072 directive-discharged-by-board-state precedent; acknowledged in worklog Task-44",
+    "directive_part_2_hub_flip": "EXECUTED by this lane — the redeploy half was r0's hub-of-record-redeploy-run-001-r0 (e553658, trace 1a11a085f6ad49f5, dpl_HHgp alias winner, ZERO env changes by their own disclosure, dataMode=mock byte-baseline); the env half was UNCLAIMED at act time (three consecutive stand-down probes 05:45/05:48/05:50 all dataMode=mock) -> this lane executed the trace-bound env flip + fresh deployment",
+    "discovered_mid_census": "tip moved 0928878 -> e553658 (r0's receipt only, .syllabai-only, zero hub code delta); re-fetch immediately pre-act"
+  },
+  "env_flip": {
+    "project": "syllabai-hub-v2 (prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl)",
+    "change": "HUB_DATA_MODE mock -> core-api",
+    "method": "Vercel API PATCH /v9/projects/{id}/env/uP22TTCJu4yWlEq1 (POST upsert returns ENV_ALREADY_EXISTS on existing keys — upsert does not override; PUT route 404s; PATCH is the update verb of record)",
+    "targets": ["production", "preview"],
+    "type": "plain",
+    "readback": "core-api on both targets verified",
+    "rollback_anchor": "value 'mock' @ env id uP22TTCJu4yWlEq1 (PATCH back + redeploy) OR instant alias lever -> dpl_HHgp (still READY)"
+  },
+  "redeploy": {
+    "source": "origin/main e553658 (clean worktree, .syllabai-only delta vs r0's 0928878 source = identical hub bundle)",
+    "method": "vercel CLI 62.7.0 upload from worktree ROOT (rootDirectory=apps/hub project setting applies to CLI uploads — deploying from apps/hub errors 'Root Directory apps/hub does not exist' and leaves an ERROR deployment record: dpl..ktgnfq93n 05:52:52Z, same lesson as Task-25's 10:51:59Z ERROR, re-derived)",
+    "build": "Next.js, node 24.x, 42s",
+    "deployment": "dpl_J3pym8a5rSEC1mGjc2pSUoVwLXQu READY 05:53:24Z",
+    "alias": "syllabai-hub-v2.vercel.app switched to dpl_J3pym8a5"
+  },
+  "post_flip_verification": {
+    "health_discriminator": "GET /api/health -> {status:ok, service:syllabai-hub, dataMode:'core-api', coreConfigured:true} — THE flip indicator, byte-delta vs r0's mock byte-baseline",
+    "cla_hub_tier_law": "POST /api/ai/cla malformed body -> 400 invalid_body (hub plane route law live)",
+    "mark_route_posture": "POST /api/ai/mark -> 501 not_available — STATIC route unchanged BY DESIGN (AI-mark affordance arrives with the question-bridge lever; disclosed, not a flip defect)",
+    "pages": "GET / -> 200",
+    "rollback_lever_health": "Render core 401-warm re-probe post-flip (still-core families rollback anchor healthy)"
+  },
+  "operator_facing_meaning": "the hub-UI experience of CLA/Smart Work now rides REAL backends: hub pages serve live data per the baked flip table (r0's bundle-grep: 9/9 widen rows + v2 base inlined); learner Smart Work = hub -> /api/v1/learners/me/attempts -> v2 api smartmark (ghost fixed per T-MIG-099 DONE + REAL generation live per r9's live note); tutor sessions family v2-native; teacher marking + recommendations stay core-routed by law (the teachermarking :550 latent ghost site is MOOT against the frozen core which has mark_points)",
+  "write_ledger": "1 env var value change (the flip act itself) + 1 production deployment + 1 errored upload record (root-dir lesson, re-disclosed); zero prod Neon writes; zero code changes; zero force-push; zero secret material printed",
+  "remaining_levers": "operator-witnessed §2.4 W3/W4 spine through the hub UI (dual-run formality), §1 freeze + P4 sign-off bookkeeping, decay §3 takeover, pilot-hub P0, /api/ai/mark question-bridge lever, JWT/PAT rotation hygiene"
+}

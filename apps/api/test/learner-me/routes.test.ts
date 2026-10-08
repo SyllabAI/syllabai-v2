@@ -256,6 +256,125 @@ describe("POST /api/v1/learners/me/flashcard-ratings — FlashcardRatingControll
     expect(body.error).toBe("validation_failed");
     expect(body.message).toBe("cardId: size must be between 3 and 64");
   });
+
+  // ── T-MIG-095 captured-law pins (run-001, live core 2026-10-08) ────────────
+  // The live core's constraint-SELECTION order is request-level
+  // NONDETERMINISTIC whenever >=2 constraints are violated (same payload,
+  // consecutive requests, different first-messages — run-001 repeat law:
+  // cardId "" served size x4 / pattern x3 / notblank x1; subtopicCode ""
+  // served size x5 / notblank x2 / pattern x1). Single-constraint payloads
+  // are 100% deterministic and are pinned byte-exact below. rating carries
+  // @NotBlank ONLY: blank AND whitespace-only → "must not be blank"
+  // (8/8 + 6/6 core repeats) — the bare min(1) served a message core never
+  // serves ("must be greater than or equal to 1"); the notBlank refine +
+  // the classifier's custom branch are the faithful port.
+
+  test("blank rating → 400 validation_failed with the captured deterministic message (T-MIG-095 run-001 leg 07)", async () => {
+    const res = await post({ ...GOOD, rating: "" });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("rating: must not be blank");
+  });
+
+  test("whitespace-only rating → the same notBlank law (run-001 whitespace legs 6/6)", async () => {
+    const res = await post({ ...GOOD, rating: "   " });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("rating: must not be blank");
+  });
+});
+
+// ── POST /note-votes — the T-MIG-095 captured-law block ─────────────────────
+// run-001 (live core 2026-10-08) found the SAME structure as ratings:
+// single-constraint classes are deterministic (pinned 1:1 below);
+// multi-constraint classes are core-nondeterministic (the 096 L10
+// "vote-first" sample and the run-001 "noteId-first" sample are BOTH draws
+// from the same nondeterministic distribution — neither is a law). The port
+// serves its declared-order member deterministically; membership is the
+// receipt's parity class for those payloads.
+
+describe("POST /api/v1/learners/me/note-votes — NoteVoteController (:67-100)", () => {
+  const GOOD = { noteId: "note_w4_cap_001", vote: "helpful", subtopicCode: "4CH1-S1" };
+  const post = (body: unknown) =>
+    makeApp(asStudent, routesWith({})).request("/api/v1/learners/me/note-votes", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(body),
+    });
+
+  test("blank vote → 400 validation_failed with the captured deterministic message (run-001 votes leg 07, 8/8)", async () => {
+    const res = await post({ ...GOOD, vote: "" });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("vote: must not be blank");
+  });
+
+  test("whitespace-only vote → the same notBlank law (run-001 whitespace legs 6/6)", async () => {
+    const res = await post({ ...GOOD, vote: "   " });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("vote: must not be blank");
+  });
+
+  test("absent vote → the @NotNull-class absent map (deterministic single-constraint)", async () => {
+    const res = await post({ ...GOOD, vote: undefined });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("vote: must not be blank");
+  });
+
+  test("absent noteId → 'must not be blank' (deterministic: only @NotBlank fires on null)", async () => {
+    const res = await post({ vote: "helpful", subtopicCode: "4CH1-S1" });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("noteId: must not be blank");
+  });
+
+  test("noteId size law 'ab' → the size message (deterministic: pattern passes, @Size alone fires)", async () => {
+    const res = await post({ ...GOOD, noteId: "ab" });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("noteId: size must be between 3 and 64");
+  });
+
+  test("noteId pattern law → the verbatim @Pattern message (deterministic single-constraint)", async () => {
+    const res = await post({ ...GOOD, noteId: "bad note id!" });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("noteId: note id must be the hub content id");
+  });
+
+  test("subtopicCode absent → 'must not be blank' (deterministic single-constraint)", async () => {
+    const res = await post({ ...GOOD, subtopicCode: undefined });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("subtopicCode: must not be blank");
+  });
+
+  test("subtopicCode size law 'S' → the size message (deterministic single-constraint)", async () => {
+    const res = await post({ ...GOOD, subtopicCode: "S" });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("subtopicCode: size must be between 2 and 64");
+  });
+
+  test("subtopicCode pattern law → the verbatim @Pattern message (deterministic single-constraint)", async () => {
+    const res = await post({ ...GOOD, subtopicCode: "4CH1-S1.1" });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe('subtopicCode: must match "^[A-Za-z0-9-]+$"');
+  });
 });
 
 // ── GET /flashcard-rating-trail (the limit laws) ────────────────────────────

@@ -1,0 +1,222 @@
+{
+ "card": "T-MIG-097",
+ "receipt": "run-003-refusal-verify",
+ "lane": "r7a",
+ "created_at_utc": "2026-10-08T05:32:18Z",
+ "operator_trace": "1a119df7d930b609 (chain order: desk merge -> deploy -> live run-003 -> section-3 -> rider -> flip)",
+ "method": "T-MIG-097 run-001 pattern, DUAL-PROBE vehicle: the deterministic-refusal matrix (10 LLM-free legs, NO generation-reaching leg) dual-replayed CORE vs V2, each wire verified with a token its own issuer minted (core-registered probe for the core legs, v2-registered probe for the v2 legs; refusal bodies are identity-free). CORE and V2 are T097_CORE/T097_V2-overridable; defaults = live frozen core + the api-of-record alias. Normalization: Boot envelope timestamp dropped + ISO timestamps -> <TS>.",
+ "disposition": "POST-REPAIR POSTURE (run-002 landed via PR #151 bc4ec31): the refusal wire was repaired to the captured law (L01-L06 verbatim; PR #151 evidence). This run is the live re-verify: ALL PASS = the 10-leg deterministic-refusal matrix is frozen-identical end-to-end, closing the refusal half of the BLOCKED-of-record flip. The generation half rides the section-3 lever state (the #144 real-adapter chain is landed on main and wired via chainAsLlmProvider; keys are configured on the api-of-record env of record) + the post-enablement generation-wire verify rider.",
+ "verdict": "ALL PASS",
+ "legs": [
+  {
+   "leg": "L01",
+   "name": "empty-body-first-blank",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "validation_failed",
+    "message": "question: must not be blank",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "validation_failed",
+    "message": "question: must not be blank",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L02",
+   "name": "kind-closed-enum",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "malformed_body",
+    "message": "request body is not readable (check field types and enum values)",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "malformed_body",
+    "message": "request body is not readable (check field types and enum values)",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L03",
+   "name": "mode-closed-enum",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "malformed_body",
+    "message": "request body is not readable (check field types and enum values)",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "malformed_body",
+    "message": "request body is not readable (check field types and enum values)",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L04",
+   "name": "question-blank",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "validation_failed",
+    "message": "question: must not be blank",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "validation_failed",
+    "message": "question: must not be blank",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L05",
+   "name": "deferral-smart-lesson-400",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "bad_request",
+    "message": "SMART_LESSON context requires rootId and topicNodeId",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "bad_request",
+    "message": "SMART_LESSON context requires rootId and topicNodeId",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L06",
+   "name": "deferral-note-section-400",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "bad_request",
+    "message": "NOTE_SECTION context requires rootId and noteId",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "bad_request",
+    "message": "NOTE_SECTION context requires rootId and noteId",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L07",
+   "name": "spec-point-missing-ref",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "bad_request",
+    "message": "SPECIFICATION_POINT context requires rootId",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "bad_request",
+    "message": "SPECIFICATION_POINT context requires rootId",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L08",
+   "name": "spec-point-unknown-ref",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "bad_request",
+    "message": "SPECIFICATION_POINT context requires rootId",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "bad_request",
+    "message": "SPECIFICATION_POINT context requires rootId",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L09",
+   "name": "kg-topic-missing-ref",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "bad_request",
+    "message": "KG_TOPIC context requires rootId and topicNodeId",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "bad_request",
+    "message": "KG_TOPIC context requires rootId and topicNodeId",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L10",
+   "name": "unauthed-401",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "core_status": 401,
+   "v2_status": 401,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "Unauthorized",
+    "path": "/api/v1/learners/me/cla/ask",
+    "status": 401
+   },
+   "v2_body": {
+    "error": "Unauthorized",
+    "path": "/api/v1/learners/me/cla/ask",
+    "status": 401
+   }
+  }
+ ]
+}
