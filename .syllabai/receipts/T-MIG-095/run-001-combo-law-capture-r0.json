@@ -1,0 +1,74 @@
+{
+  "band": "T-MIG-095",
+  "run": "run-001",
+  "kind": "combo-law-capture + repeat-law verification",
+  "captured_at": "2026-10-08T04:17:57Z (matrix) / 04:2x-04:3xZ (repeat + whitespace batteries)",
+  "lane": "r0 (Super Z, zai-web web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "operator_trace": "1a119b4f3c6fc7d9 'start 095'",
+  "bases": {
+    "core": "https://syllabai-core.onrender.com (frozen core of record)",
+    "v2": "https://syllabai-v2.vercel.app (api of record, live deploy)"
+  },
+  "auth": "v2-minted learner bearer, seam-probe account of record (R-JWT seam closed, trace 1a1177d16bbd0a49); token memory-only, scrubbed",
+  "zero_write_safety": "every leg guarantees >=1 violated constraint (blank/absent/null/size/pattern) -> both planes answer 400 validation_failed BEFORE any service/DB write; no 201 path exists in the matrix by construction; zero prod writes",
+  "matrix": [
+    {"surface": "flashcard-ratings", "leg": "01-all-absent", "body": {}, "core": "400 rating: must not be blank", "v2": "400 cardId: must not be blank", "note": "core multi-violation nondeterministic class"},
+    {"surface": "flashcard-ratings", "leg": "02-all-blank", "body": {"cardId": "", "rating": "", "subtopicCode": ""}, "core": "400 cardId: size must be between 3 and 64", "v2": "400 cardId: must not be blank", "note": "core nondeterministic class"},
+    {"surface": "flashcard-ratings", "leg": "03-cardId-absent-others-valid", "body": {"rating": "GOOD", "subtopicCode": "S1"}, "core": "400 cardId: must not be blank", "v2": "400 cardId: must not be blank", "agree": true, "class": "single-constraint DETERMINISTIC"},
+    {"surface": "flashcard-ratings", "leg": "04-f2-absent-others-valid", "body": {"cardId": "abc", "subtopicCode": "S1"}, "core": "400 rating: must not be blank", "v2": "400 rating: must not be blank", "agree": true, "class": "single-constraint DETERMINISTIC"},
+    {"surface": "flashcard-ratings", "leg": "05-f3-absent-others-valid", "body": {"cardId": "abc", "rating": "GOOD"}, "core": "400 subtopicCode: must not be blank", "v2": "400 subtopicCode: must not be blank", "agree": true, "class": "single-constraint DETERMINISTIC"},
+    {"surface": "flashcard-ratings", "leg": "06-cardId-blank-only", "body": {"cardId": "", "rating": "GOOD", "subtopicCode": "S1"}, "core": "400 cardId: card id must be the hub content id", "v2": "400 cardId: must not be blank", "note": "within-field multi-constraint core-nondeterministic (see repeat battery B1); v2 message IS a member"},
+    {"surface": "flashcard-ratings", "leg": "07-f2-blank-only", "body": {"cardId": "abc", "rating": "", "subtopicCode": "S1"}, "core": "400 rating: must not be blank", "v2": "400 rating: must be greater than or equal to 1", "note": "REAL DIVERGENCE -> fixed by the band (notBlank refine); core deterministic 8/8 (battery B2)"},
+    {"surface": "flashcard-ratings", "leg": "08-f3-blank-only", "body": {"cardId": "abc", "rating": "GOOD", "subtopicCode": ""}, "core": "400 subtopicCode: size must be between 2 and 64", "v2": "400 subtopicCode: must not be blank", "note": "core nondeterministic (battery B3); v2 message IS a member"},
+    {"surface": "flashcard-ratings", "leg": "09-cardId-and-f2-blank", "body": {"cardId": "", "rating": "", "subtopicCode": "S1"}, "core": "400 cardId: card id must be the hub content id", "v2": "400 cardId: must not be blank", "note": "core nondeterministic class; v2 member"},
+    {"surface": "flashcard-ratings", "leg": "10-cardId-and-f3-blank", "body": {"cardId": "", "rating": "GOOD", "subtopicCode": ""}, "core": "400 subtopicCode: size must be between 2 and 64", "v2": "400 cardId: must not be blank", "note": "core nondeterministic class; v2 member"},
+    {"surface": "flashcard-ratings", "leg": "11-f2-and-f3-blank", "body": {"cardId": "abc", "rating": "", "subtopicCode": ""}, "core": "400 subtopicCode: size must be between 2 and 64", "v2": "400 rating: must be greater than or equal to 1", "note": "v2 message was NOT a member -> fixed by the band"},
+    {"surface": "flashcard-ratings", "leg": "12-all-null", "body": {"cardId": null, "rating": null, "subtopicCode": null}, "core": "400 rating: must not be blank", "v2": "400 cardId: must not be blank", "note": "core nondeterministic class; v2 member"},
+    {"surface": "flashcard-ratings", "leg": "13-unknown-prop-flashcardId", "body": {"flashcardId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "rating": "GOOD"}, "core": "400 subtopicCode: must not be blank", "v2": "400 cardId: must not be blank", "note": "L09 exact reproduction; core nondeterministic class ( Jackson ignores unknown prop; cardId+subtopicCode violated); v2 member"},
+    {"surface": "flashcard-ratings", "leg": "14-f1-size-only", "body": {"cardId": "ab", "rating": "GOOD", "subtopicCode": "S1"}, "core": "400 cardId: size must be between 3 and 64", "v2": "400 cardId: size must be between 3 and 64", "agree": true, "class": "single-constraint DETERMINISTIC"},
+    {"surface": "flashcard-ratings", "leg": "15-f3-size-only", "body": {"cardId": "abc", "rating": "GOOD", "subtopicCode": "S"}, "core": "400 subtopicCode: size must be between 2 and 64", "v2": "400 subtopicCode: size must be between 2 and 64", "agree": true, "class": "single-constraint DETERMINISTIC"},
+    {"surface": "flashcard-ratings", "leg": "16-f3-pattern-only", "body": {"cardId": "abc", "rating": "GOOD", "subtopicCode": "S!"}, "core": "400 subtopicCode: must match \"^[A-Za-z0-9-]+$\"", "v2": "400 subtopicCode: must match \"^[A-Za-z0-9-]+$\"", "agree": true, "class": "single-constraint DETERMINISTIC"},
+    {"surface": "note-votes", "leg": "01-all-absent", "body": {}, "core": "400 noteId: must not be blank", "v2": "400 noteId: must not be blank", "note": "core nondeterministic (battery B4: noteId/vote mixed); v2 member"},
+    {"surface": "note-votes", "leg": "02-all-blank", "body": {"noteId": "", "vote": "", "subtopicCode": ""}, "core": "400 vote: must not be blank", "v2": "400 noteId: size must be between 3 and 64", "note": "core nondeterministic class; v2 member"},
+    {"surface": "note-votes", "leg": "03-noteId-absent-others-valid", "body": {"vote": "UPVOTE", "subtopicCode": "S1"}, "core": "400 noteId: must not be blank", "v2": "400 noteId: must not be blank", "agree": true, "class": "single-constraint DETERMINISTIC"},
+    {"surface": "note-votes", "leg": "04-f2-absent-others-valid", "body": {"noteId": "abc", "subtopicCode": "S1"}, "core": "400 vote: must not be blank", "v2": "400 vote: must not be blank", "agree": true, "class": "single-constraint DETERMINISTIC"},
+    {"surface": "note-votes", "leg": "05-f3-absent-others-valid", "body": {"noteId": "abc", "vote": "UPVOTE"}, "core": "400 subtopicCode: must not be blank", "v2": "400 subtopicCode: must not be blank", "agree": true, "class": "single-constraint DETERMINISTIC"},
+    {"surface": "note-votes", "leg": "06-noteId-blank-only", "body": {"noteId": "", "vote": "UPVOTE", "subtopicCode": "S1"}, "core": "400 noteId: note id must be the hub content id", "v2": "400 noteId: size must be between 3 and 64", "note": "core nondeterministic (battery B5: pattern x4/size x4); v2 member"},
+    {"surface": "note-votes", "leg": "07-f2-blank-only", "body": {"noteId": "abc", "vote": "", "subtopicCode": "S1"}, "core": "400 vote: must not be blank", "v2": "400 vote: must be greater than or equal to 1", "note": "REAL DIVERGENCE -> fixed by the band; core deterministic 8/8 (battery B5b)"},
+    {"surface": "note-votes", "leg": "08-f3-blank-only", "body": {"noteId": "abc", "vote": "UPVOTE", "subtopicCode": ""}, "core": "400 subtopicCode: size must be between 2 and 64", "v2": "400 subtopicCode: size must be between 2 and 64", "agree": true, "class": "single-violated-FIELD multi-constraint within field (core nondeterministic but same message here)"},
+    {"surface": "note-votes", "leg": "09-noteId-and-f2-blank", "body": {"noteId": "", "vote": "", "subtopicCode": "S1"}, "core": "400 noteId: size must be between 3 and 64", "v2": "400 noteId: size must be between 3 and 64", "note": "coincidental agree; core nondeterministic class"},
+    {"surface": "note-votes", "leg": "10-noteId-and-f3-blank", "body": {"noteId": "", "vote": "UPVOTE", "subtopicCode": ""}, "core": "400 noteId: must not be blank", "v2": "400 noteId: size must be between 3 and 64", "note": "core nondeterministic class; v2 member (size)"},
+    {"surface": "note-votes", "leg": "11-f2-and-f3-blank", "body": {"noteId": "abc", "vote": "", "subtopicCode": ""}, "core": "400 vote: must not be blank", "v2": "400 vote: must be greater than or equal to 1", "note": "v2 message NOT a member -> fixed by the band"},
+    {"surface": "note-votes", "leg": "12-all-null", "body": {"noteId": null, "vote": null, "subtopicCode": null}, "core": "400 subtopicCode: must not be blank", "v2": "400 noteId: must not be blank", "note": "core nondeterministic class; v2 member"},
+    {"surface": "note-votes", "leg": "14-f1-size-only", "body": {"noteId": "ab", "vote": "UPVOTE", "subtopicCode": "S1"}, "core": "400 noteId: size must be between 3 and 64", "v2": "400 noteId: size must be between 3 and 64", "agree": true, "class": "single-constraint DETERMINISTIC"},
+    {"surface": "note-votes", "leg": "15-f3-size-only", "body": {"noteId": "abc", "vote": "UPVOTE", "subtopicCode": "S"}, "core": "400 subtopicCode: size must be between 2 and 64", "v2": "400 subtopicCode: size must be between 2 and 64", "agree": true, "class": "single-constraint DETERMINISTIC"},
+    {"surface": "note-votes", "leg": "16-f3-pattern-only", "body": {"noteId": "abc", "vote": "UPVOTE", "subtopicCode": "S!"}, "core": "400 subtopicCode: must match \"^[A-Za-z0-9-]+$\"", "v2": "400 subtopicCode: must match \"^[A-Za-z0-9-]+$\"", "agree": true, "class": "single-constraint DETERMINISTIC"}
+  ],
+  "repeat_batteries": [
+    {"id": "B0", "payload": "flashcard-ratings {} x6", "distribution": ["rating: must not be blank x5", "cardId: must not be blank x1", "subtopicCode: must not be blank x1"], "verdict": "core request-level NONDETERMINISTIC on multi-violation payloads"},
+    {"id": "B0b", "payload": "flashcard-ratings all-blank x6", "distribution": ["subtopicCode: size x2", "subtopicCode: pattern x2", "cardId: notblank x2", "subtopicCode: notblank x1"], "verdict": "NONDETERMINISTIC"},
+    {"id": "B0c", "payload": "note-votes {} x6", "distribution": ["noteId: must not be blank x2", "vote: must not be blank x4"], "verdict": "NONDETERMINISTIC"},
+    {"id": "B1", "payload": "ratings {cardId:'',rating:GOOD,subtopicCode:S1} x8", "distribution": ["cardId: size x4", "cardId: pattern x3", "cardId: notblank x1"], "verdict": "within-field selection NONDETERMINISTIC; FIELD selection deterministic"},
+    {"id": "B2", "payload": "ratings {rating:''} x8", "distribution": ["rating: must not be blank x8"], "verdict": "DETERMINISTIC (rating = @NotBlank-only field)"},
+    {"id": "B3", "payload": "ratings {subtopicCode:''} x8", "distribution": ["subtopicCode: size x5", "subtopicCode: pattern x1", "subtopicCode: notblank x2"], "verdict": "NONDETERMINISTIC"},
+    {"id": "B4", "payload": "note-votes {noteId:''} x8", "distribution": ["noteId: pattern x4", "noteId: size x4"], "verdict": "NONDETERMINISTIC"},
+    {"id": "B5", "payload": "note-votes {vote:''} x8", "distribution": ["vote: must not be blank x8"], "verdict": "DETERMINISTIC (vote = @NotBlank-only field)"}
+  ],
+  "whitespace_battery": [
+    {"payload": "ratings {rating:'   '} x6", "distribution": ["rating: must not be blank x6"], "verdict": "DETERMINISTIC"},
+    {"payload": "note-votes {vote:'   '} x6", "distribution": ["vote: must not be blank x6"], "verdict": "DETERMINISTIC"}
+  ],
+  "findings": [
+    "F1 (supersedes the band premise): the frozen core's constraint-SELECTION order is request-level NONDETERMINISTIC whenever >=2 constraints are violated, at BOTH granularity levels (across fields AND within a field). The 096 run-001 L09/L10 'first-field law' samples (subtopicCode-first / vote-first) were single draws from that distribution - NOT a reproducible port defect. NO schema field reordering is lawful; the T-MIG-080 F3 declaration-order reading and the live wire are reconciled by nondeterminism, not by a contradicting law.",
+    "F2 (the real deterministic divergences): rating/vote carry @NotBlank ONLY on the frozen DTOs - blank (8/8) and whitespace-only (6/6) values serve 'rating: must not be blank' / 'vote: must not be blank' deterministically. The port's bare z.string().min(1) served 'must be greater than or equal to 1' - a message the core NEVER serves for these fields (outside the captured distribution), and whitespace-only values passed validation entirely (reaching the service as a vocabulary bad_request where core 400s notBlank).",
+    "F3 (parity classes of record): single-constraint payloads are byte-pinnable and the port agrees 1:1 on every pre-existing class (absent->notblank, size-only->size, pattern-only->pattern, all 6 legs per surface). Multi-constraint payloads: golden parity = status 400 + error validation_failed + message MEMBERSHIP in the violated-constraint distribution; the port serves its declared-order member deterministically, which is within the core distribution on every leg after the F2 fix.",
+    "F4 (zero-write): every matrix/battery leg carries >=1 violated constraint -> all answers 400 validation_failed on both planes across 100+ requests; zero prod writes."
+  ],
+  "fix_of_record": [
+    "packages/contracts/src/learner.ts: rating + vote become z.string().refine(notBlank(\"must not be blank\"), \"must not be blank\") (auth.ts heritage, T-MIG-017; contracts reuse-not-redeclare); cardId/noteId/subtopicCode chains UNTOUCHED (F1: no lawful reordering exists)",
+    "apps/api/src/routes/learnerme.ts: classifyBodyError + custom branch (code 'custom' -> the refine's own message verbatim; auth router mapper precedent)",
+    "apps/api/test/learner-me/routes.test.ts: captured-law pins - ratings blank/whitespace rating; new note-votes describe block (vote blank/whitespace/absent, noteId absent/size/pattern, subtopicCode absent/size/pattern); multi-constraint classes disclosed as membership in comments"
+  ],
+  "verdict": "CAPTURE WINS - the band's filed 'first-field law deviations' are superseded by the deeper capture (core nondeterminism, proven by repeat batteries); the REAL deterministic divergence (rating/vote @NotBlank-only message law + whitespace pass-through) is fixed by the notBlank refine + classifier custom branch; deterministic classes byte-pinned 1:1; membership class of record for the nondeterministic class. Flip linkage: post-deploy live re-verify per the flip law, then the two paths widen (096 rider linkage).",
+  "tool": "tools/t095_capture.ts (matrix) + repeat batteries (session scripts, same probe contract)"
+}

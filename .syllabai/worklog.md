@@ -5539,6 +5539,14 @@ Stage Summary:
 - Enumerated levers (operator-ordered separately): api-of-record redeploy (lights the LLM seams + carries the ghost fix + 094 binding law live; keys already configured per r1c Task-42), T-MIG-099 proof leg (scratch substrate, zero-key), hub redeploy = the section-2 act
 - Open PRs after this merge: #151 (097 CLA) / #152 (083-087 run-002) / #153 (095); watch: GitHub PAT still dead
 
+
+## 2026-10-08T04:5xZ — worklog(r0): T-MIG-095 fix of record (operator 'start 095' trace 1a119b4f3c6fc7d9)
+- run-001 combo-law capture (31 legs dual-plane + 3 repeat batteries + whitespace battery, live core vs live v2, ALL-400 zero-write) SUPERSEDED the band premise: the frozen core's constraint-SELECTION order is request-level NONDETERMINISTIC whenever >=2 constraints are violated, at both granularities ({} on ratings served rating/cardId/subtopicCode-first across consecutive runs; cardId "" served size x4/pattern x3/notblank x1; noteId "" served pattern x4/size x4) — the 096 L09/L10 'first-field law' samples were draws from that distribution, NOT a reproducible port defect; NO schema reordering is lawful (T-MIG-080 F3 reading and the live wire reconcile by nondeterminism).
+- REAL deterministic divergence of record: rating/vote carry @NotBlank ONLY on the frozen DTOs — blank 8/8 + whitespace-only 6/6 serve 'must not be blank'; the port's bare min(1) served 'must be greater than or equal to 1' (a message core never serves) and whitespace passed through to the service (vocabulary bad_request where core 400s notBlank).
+- FIX: notBlank refine on rating/vote (packages/contracts/src/learner.ts, auth.ts T-MIG-017 heritage, reuse-not-redeclare) + learnerme classifier custom branch (refine message verbatim; auth router mapper precedent) + captured-law route pins (ratings +2; new note-votes block +9) — single-constraint classes byte-pinned 1:1, multi-constraint classes = message-membership with disclosure; cardId/noteId/subtopicCode chains untouched.
+- Gates first-hand at f18f601 base: typecheck x4 exit 0; bun test apps/api packages 1717 pass / 0 fail / 13 skip / 6755 expects / 89 files (= baseline 1706 +11 pins, +33 expects); bun test apps/hub 39/0/342; golden runner --selftest OK. Re-gate at the intake merge follows.
+- Receipt + tools of record: .syllabai/receipts/T-MIG-095/run-001-combo-law-capture-r0.json + tools/t095_capture.ts. Zero-write guarantee: every leg >=1 violated constraint -> 400 before service; 100+ requests, zero prod writes. Live re-verify post-deploy per the flip law, then the two paths widen (096 rider linkage). PR: no self-merge per the card law.
+
 ---
 Task ID: R0-MERGE-144 (operator trace 1a119de998dd9171 "take it when it's ready")
 Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)

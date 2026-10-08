@@ -143,6 +143,14 @@ function classifyBodyError(
     }
     return { kind: "validation", message: `${field}: must be less than or equal to ${max ?? 0}` };
   }
+  if (first.code === "custom") {
+    // T-MIG-095: the notBlank refine (auth.ts heritage) reports code
+    // "custom" — the refine's own message IS the jakarta default the frozen
+    // wire serves (run-001: blank/whitespace rating/vote → "must not be
+    // blank", deterministic 8/8+6/6; the auth router's mapper flows the
+    // refine message through verbatim — same law here).
+    return { kind: "validation", message: `${field}: ${first.message}` };
+  }
   return { kind: "validation", message: `${field}: request invalid` };
 }
 
