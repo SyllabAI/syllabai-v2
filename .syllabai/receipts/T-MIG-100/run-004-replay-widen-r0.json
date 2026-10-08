@@ -1,0 +1,27 @@
+{
+  "card": "T-MIG-100",
+  "run": "run-004-replay-widen-r0",
+  "lane": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "date": "2026-10-08",
+  "operator_trace": "IM trace_id 1a11b30a67f62ae9 'Continue'",
+  "commits": { "replay_target": "7548d4e (the repaired tree)", "widen": "5ea7f36" },
+  "replay": {
+    "harness": "receipts/T-MIG-100/tools/t088-091-verify.ts — RELOCATED for the 12th-reset sandbox (disclosed in run-002-claim-r0.json): only the hardcoded /home/z/my-project/repos/... import/capture paths were corrected to this checkout; the plan, canonicalization, diff and verdict logic are byte-verbatim",
+    "seed": "receipts/T-MIG-100/tools/t088-091-seed.ts law REPLICATED lane-side (empty-content law pre-flight + the 3 synthetic users) PLUS the additive 088 ACTIVE-scope substrate of substrate-census-r4b.json (one ACTIVE curriculum_versions row + subject VER -> VROOT SUBJECT VALIDATED -> V1 UNIT VALIDATED + one PART_OF edge; no cap-node code)",
+    "schema": "drizzle-kit push (the T-MIG-103 throwaway file-schema config recipe, deleted after the run) — 0 -> 62 tables, exit 0",
+    "substrate": "user-tree PostgreSQL 17.11 (Debian debs, user-extracted — the 099-leg class) + pgvector 0.8.0 @ 127.0.0.1:5544, db syllabai_v2_verify; ZERO-KEY asserted at boot (exit-4 guard); zero prod/Neon contact",
+    "verdict": "20/22 PASS — the pre-repair run-2 of record was 16/22; the +4 are exactly the four owned defect legs",
+    "class_a_legs": "088 leg-05 + leg-06 now PASS — the parse-defect wire answers the FULL empty-parse VIEW {empty:true, msSeeking:true, normalized:'', paperCode:null, part:null, partRoman:null, qnum:null, series:null, unit:null, year:null} + parseDefect:true, deep-equal vs the captures",
+    "class_c_legs": "091 leg-06 + leg-07 now PASS — the byte-identical repeat import answers {imported:0, unchanged:1, updated:0} on the REAL driver (the repaired comparator read the materialised Dates)",
+    "out_of_scope_legs": "088 legs 08/09 (the topics-write 501 shells) remain FAIL = CLASS B, T-MIG-023 ownership — the pre-filed out-of-scope class, unchanged by design"
+  },
+  "widen": {
+    "rows": ["/api/v1/teacher/content/fetch", "/api/v1/teacher/content/enumerate", "/api/v1/teacher/curriculum/exam-series"],
+    "form": "NARROWEST LEGAL FORM — per-exact-endpoint rows; the /enumerate row also captures /enumerate/structured (leg-04 verified, same family tree); the /api/v1/teacher/content parent STAYS CORE (the 089 row's 'parent MUST NOT flip this band' condition discharged for the verified endpoints only; the 020/023 siblings core-pinned in the surface test)",
+    "hub_emitters": "ZERO hub emitters on all three rows (grep-verified at the widening commit) — routing availability of record, zero live-page routing change (the 090/089 posture); DUAL_RUN_PATHS honestly not extended",
+    "llm_free_law": "fetch/enumerate are the frozen DETERMINISTIC bank-SQL paths (no vector calls); the import is fail-closed reference data — no LLM seam reachable",
+    "surface_test": "table toEqual +3; the 089-line fetch/enumerate core-null pins MOVED OUT (superseded by the flip); the new T-MIG-100 line test pins the flips + the core siblings + the inert partial-segment property + the teacher-curriculum siblings (the 052 full-path mount law)",
+    "hub_gates": "48 pass / 0 fail / 427 expect (+1/+9 vs the 47/0/418 baseline)"
+  },
+  "results_file": "scripts/t100-replay-results.json (lane-side; the per-leg records incl. the api-wide cache-posture header class, the 082 run-003 disclosure)"
+}

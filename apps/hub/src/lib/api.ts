@@ -350,6 +350,35 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // the T-MIG-090 posture. LLM-free law: the bridge is deterministic over
   // the sealed drafts — no LLM seam reachable.
   "/api/v1/teacher/content/glm-ocr",
+  // T-MIG-100 (r0, the port owner's repair band, operator trace
+  // 1a11b30a67f62ae9 'Continue') — the RoutingController read endpoints +
+  // the exam-series import: REPAIRED and GOLDEN-VERIFIED of record (the
+  // 22-leg replay, run-004: 088 legs 01-07 PASS incl. the CLASS A
+  // parse-defect legs 05/06 — the empty-parse VIEW {empty:true,...} +
+  // parseDefect:true, the Jackson record+isEmpty() wire law — and 091 ALL
+  // 7 PASS incl. the CLASS C repeat legs 06/07 (the driver-coercion-safe
+  // date law) — the two classes T-MIG-100 owns are CLOSED. The two
+  // remaining 22-leg non-PASS legs are the topics-write 501 shells
+  // (legs 08/09) = CLASS B, T-MIG-023 ownership — out of this band's scope
+  // of record). NARROWEST LEGAL FORM: per-exact-endpoint rows — the PARENT
+  // /api/v1/teacher/content STAYS CORE (the T-MIG-020/023 unverified
+  // siblings: review-queue*, exam-papers/*, question-versions/*,
+  // mark-schemes/*, the topics-write shells — pinned in the surface test);
+  // the 089 row's "parent MUST NOT flip this band" widening condition is
+  // hereby discharged for the verified endpoints only. startsWith-safety:
+  // the /enumerate row also captures /enumerate/structured (leg-04
+  // verified, the same family tree); partial-segment capture
+  // (fetchx/enumeratex) is DOCUMENTED INERT — no such route or hub emitter
+  // exists on either side (pinned in the surface test). Zero live-page
+  // routing change: NO hub page emits /api/v1/teacher/content/fetch,
+  // /enumerate, or /api/v1/teacher/curriculum/exam-series today
+  // (grep-verified at the widening commit) — ROUTING AVAILABILITY of
+  // record, the 090/089 posture. LLM-free law: fetch/enumerate are the
+  // frozen DETERMINISTIC bank-SQL paths (no vector calls); the import is
+  // fail-closed reference data — no LLM seam reachable.
+  "/api/v1/teacher/content/fetch",
+  "/api/v1/teacher/content/enumerate",
+  "/api/v1/teacher/curriculum/exam-series",
 ];
 
 /**

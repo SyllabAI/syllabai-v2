@@ -1,0 +1,23 @@
+{
+  "card": "T-MIG-100",
+  "run": "run-002-claim-r0",
+  "lane": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "date": "2026-10-08",
+  "operator_trace": "IM trace_id 1a11b30a67f62ae9 'Continue' — the lane-chain continuation; ownership of record: the filing receipt (r4-api-b, port owner for classes A/C: R0-integrator, the #138 tranche-B author) + the r4b Task-36 stamp 622d687 ('088/091 stay gated (T-MIG-100 owner R0 + T-MIG-023)')",
+  "claim": {
+    "branch": "t-mig-100/r0",
+    "off_main": "365c555",
+    "law": "claim-in-first-commit (R0s-ROUND-10a §2.1) — this receipt + the card status flip are the first commit on the branch",
+    "scope": "CLASS A + CLASS C repairs only; the topics-write surface stays T-MIG-023 (legs 08/09 NOT in scope); the 088/091 flip+widen steps ride THIS card's closure per the card's own disposition, NARROW-gated per the flip law"
+  },
+  "plan": [
+    "CLASS A: the wire parsed view gains the derived 'empty' field — Jackson record + isEmpty() serialization parity (the frozen FetchView serializes the raw ParsedFetchQuery record; Jackson merges the derived boolean getter as an ALWAYS-PRESENT property; golden-captures legs 05/06 prove empty:true on the empty parse) — derived at the view boundary via parsedIsEmpty; the internal parser/service shapes stay untouched",
+    "CLASS C: sameMeasurement ISO-normalises driver-materialised JS Date instances (local Y-M-D getters — the TZ-independent inverse of postgres.js' local-midnight DATE materialisation; string materialisations pass through; null preserved) — the 093 scalar-param law's driver-binding-site precedent",
+    "acceptance: the 22-leg replay of record (receipts/T-MIG-100/tools harness — relocated for the 12th-reset sandbox with paths corrected, logic VERBATIM, disclosed) then the flip law; the T-MIG-100 receipt tail"
+  ],
+  "substrate": "user-tree PostgreSQL 17.11 (Debian 17.11-0+deb13u1 debs, user-extracted — the 099-leg user-tree class) + pgvector 0.8.0 @ 127.0.0.1:5544, db syllabai_v2_verify, trust-auth scratch cluster — ZERO-KEY by construction, zero prod/Neon contact",
+  "disclosures": [
+    "packages/contracts/src/ingestion.ts gains ONE required field on parsedFetchQuerySchema (empty: boolean) — the wire-shape repair requires it (the T-MIG-102 fence-flag precedent); the internal fetch-parser ParsedFetchQuery type is NOT widened",
+    "the replay harness + seed are copied lane-side with their hardcoded /home/z/my-project/repos/... import paths corrected to this sandbox's checkout; harness logic byte-verbatim otherwise"
+  ]
+}

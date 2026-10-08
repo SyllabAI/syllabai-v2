@@ -581,7 +581,10 @@ describe("fetch — the deterministic resolution (FetchService.java:71-100)", ()
     expect(paper.question!.parts).toHaveLength(2);
     expect(paper.question!.markPoints).toHaveLength(2);
     const view = fetchViewSchema.parse({
-      parsed: result.parsed, ambiguous: result.ambiguous,
+      // the wire-boundary law (T-MIG-100 CLASS A): empty is derived by the
+      // route mapper — a successful parse serializes empty:false
+      parsed: { ...result.parsed, empty: false },
+      ambiguous: result.ambiguous,
       parseDefect: result.parseDefect,
       papers: result.papers.map((p) => ({
         ...p, question: p.question === null ? null : { ...p.question },

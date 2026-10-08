@@ -90,6 +90,7 @@ import {
   type FetchResult,
   type EnumerateResult,
 } from "../services/ingestion/content-routing";
+import { parsedIsEmpty } from "../services/ingestion/fetch-parser";
 import { CurriculumScopeResolver, type CurriculumScope } from "../services/content/scope";
 import { getAuth } from "../middleware/auth";
 import { ingestGlmOcrPair, reviewFindingsForPaper } from "../services/ingestion/glm-ocr";
@@ -249,7 +250,12 @@ function fetchViewEmpty(): FetchView {
 
 function mapFetchResult(result: FetchResult): FetchView {
   return {
-    parsed: result.parsed as FetchView["parsed"],
+    // T-MIG-100 CLASS A (the capture law, golden-captures legs 05/06): the
+    // frozen wire serializes the raw ParsedFetchQuery record, and Jackson
+    // merges the derived isEmpty() boolean getter as an ALWAYS-PRESENT
+    // "empty" property. Derived here at the view boundary — the internal
+    // parser/service shapes stay the untouched 9-field port.
+    parsed: { ...result.parsed, empty: parsedIsEmpty(result.parsed) },
     ambiguous: result.ambiguous,
     parseDefect: result.parseDefect,
     papers: result.papers.map(

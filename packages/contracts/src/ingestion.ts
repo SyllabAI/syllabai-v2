@@ -47,7 +47,15 @@ import {
 
 // ── Fetch / Enumerate wire views (RoutingController :120-169 + services) ────
 
-/** ParsedFetchQuery (FetchQueryParser.java:63-98) — the response echo. */
+/**
+ * ParsedFetchQuery (FetchQueryParser.java:63-98) — the response echo.
+ * empty: the T-MIG-100 CLASS A wire law — the frozen serializer merges the
+ * record's derived isEmpty() boolean getter into the JSON as an ALWAYS-PRESENT
+ * property (golden-captures/t-mig-088 legs 05/06 carry empty:true on the empty
+ * parse; a Jackson boolean getter never omits, so successful parses carry
+ * empty:false). Derived at the wire boundary; the internal parser shape is the
+ * untouched 9-field port.
+ */
 export const parsedFetchQuerySchema = z.object({
   paperCode: z.string().nullable(),
   unit: z.string().nullable(),
@@ -58,6 +66,7 @@ export const parsedFetchQuerySchema = z.object({
   msSeeking: z.boolean(),
   normalized: z.string(),
   partRoman: z.string().nullable(),
+  empty: z.boolean(),
 });
 export type ParsedFetchQuery = z.infer<typeof parsedFetchQuerySchema>;
 
