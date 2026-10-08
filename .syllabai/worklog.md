@@ -6319,3 +6319,18 @@ Work Log:
 
 Stage Summary:
 - DECAY GO state of record: §3's code path is IMPLEMENTED and gated (the port that §3.1 assumed exists now exists); the takeover goes LIVE at the operator-gated env act — merge -> api redeploy -> hub redeploy+env -> first fire -> 02:00Z cron self-fire -> §3.3 morning cross-check -> §4 watch window (the §6.1 archive gate clock starts there). Lane IDLE on this act pending the PAT delivery or the merge.
+
+---
+Task ID: R0-AUTO run manual-202610090030 (Job 438940, operator trace 1a11c5600bf85535 "Re sweep")
+Agent: R0-auto (Super Z, zai-web, merge desk — desk merges only)
+
+Work Log:
+- PR #166 MERGED of record -> 9ce5c55 (head f8bffd827329bf8444f44a26e9c177477a9343b4, full-40-char sha-guarded PUT — first PUT attempt rejected on a 7-char sha, corrected per the rev-parse law; merge_method=merge): T-MIG-042 NightlyDecayJob takeover port, the 042P seam goes LIVE (api arm: services/cron/nightly-decay.ts ledger writes + routes/cron.ts + index.ts mount; hub decay lib rework + tests; desk r1c, operator trace 1a11c1d07db6a9dd on the claim)
+- Intake note: the 00:00Z cron round SKIPPED this PR per (b) — 0 check-runs across ~4min (event-drop class, head was c33eb3f dirty); the filer then self-intake-merged origin/main (f8bffd8 = a merge commit of 38871f7), CI re-armed 2/2 completed/success, mergeable True/clean — no desk-side intake needed
+- Prechecks first-hand: (a) real head f8bffd8 -> full sha via PR JSON; (b) verify+hub completed/success; (c) clean (base 38871f7 == main tip at merge time); (d) 0 reviews / 0 comments re-scanned twice, no HOLD/BLOCK/do-not-merge; (e) 10 files all monorepo-internal (.syllabai / apps/api / apps/hub), zero .java, zero core/hub-repo content; recusal held (#166 = desk r1c work, not this desk's)
+- (f) post-merge verify: main CI 2/2 completed/success at 9ce5c55 (bounded poll ~1.5min)
+- P0 at run time: pilot 500 MIDDLEWARE_INVOCATION_FAILED (~40h); api-v2 404 DEPLOYMENT_NOT_FOUND (operator lane unchanged); hub-v2 200 core-api; core 000 cold
+- Max-2 cap: 1 merge this run; 0 open PRs remain after #166
+
+Stage Summary:
+- T-MIG-042 LANDED of record (9ce5c55): the nightly-decay ledger write seam is now main-side on the api arm — §3 decay takeover advances from the operator-watch list into ported code; watch the next deploy round for the live-wire. Board empty at run end.
