@@ -6334,3 +6334,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-042 LANDED of record (9ce5c55): the nightly-decay ledger write seam is now main-side on the api arm — §3 decay takeover advances from the operator-watch list into ported code; watch the next deploy round for the live-wire. Board empty at run end.
+
+---
+
+Task ID: 54
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Operator trace 1a11c5477f783c35 "desk merge of #164; then the band residue is exactly T-MIG-023 (topics-write, CLASS B), and the RE-RIPE api deploy lever".
+
+Work Log:
+- 13th sandbox reset on entry; recovery recipe executed (restore-creds.sh: both PATs HTTP 200, credential-store re-wired; repo re-cloned).
+- Operator step 1 (desk merge of #164) VERIFIED of record, zero duplicate action per the desk-merge-of-#140 precedent — the board had already moved: #164 merged bd80b96 2026-10-08T12:01:17Z by the desk identity (GitHub API merge facts first-hand), r0-auto cron receipt 51b0774 (clean merge no intake, main CI 2/2 green) + r4b Task-37 verification desk-round 80bce0f of record.
+- Post-merge stamp filed of record: T-MIG-100 -> DONE (the 101/102 precedent — card stale at IN_REVIEW vs the merged board; run-003/run-004 record stands verbatim in the card). Receipt run-005-postmerge-stamp-r0.json. Zero code deltas; .syllabai-only direct-main (fetch-first), no force.
+- BAND RESIDUE of record (per the operator's composition, verified first-hand against the register + deploy receipts): (1) the topics-write surface = CLASS B under the T-MIG-023 attribution — the 088 replay legs 08-09 answer 501 not_implemented honest shells (content/index.ts:252) vs the frozen 404-first / 400 validation_failed wire law (wire truth waits in golden-captures/t-mig-088/); the T-MIG-023 CARD itself is DONE via PR #38 — the coverage gap is the residual class; (2) the RE-RIPE api deploy lever — live api-of-record dpl_G3chsJTH from tip a6ad469 (run-004-r9 receipt bd6c1ed) already carries the #164 band; pending deltas = #165 b8ddab7 (T-MIG-104 golden-law amendment, live re-verify rider; lever RIPENED of record 3dcab7a) + #166 T-MIG-042 decay wiring (the r1c §3.1 staged env act includes the api redeploy). The lever stays OPERATOR-GATED per 48cdb6c ("NOT executed pending an operator order"); zero Vercel creds lane-side.
+
+Stage Summary:
+- The operator chain is discharged: step 1 verified of record (already merged), residue composition filed on the 100 card + receipt of record. Standing operator items unchanged: the RE-RIPE lever order, T-MIG-106 ruling (r4b Task-39 FAIL-NO-FLIP), t-mig-042 §3.1 env act (VERCEL_PAT delivery), ci.yml patch, PAT rotation, P3/P4.
