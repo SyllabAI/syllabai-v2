@@ -57,6 +57,7 @@ import { buildLearnerRouters } from "./routes/learner";
 import { buildClassroomRouters } from "./routes/classroom";
 import { buildResearchRouters } from "./routes/research";
 import { buildIngestionRouters } from "./routes/ingestion";
+import { buildLlmAdminRouters } from "./routes/llmadmin";
 import { buildLearnerMeRouters } from "./routes/learnerme";
 import { buildLearnerKgRouters } from "./routes/learnerkg";
 import { buildRevisionNotesRouters } from "./routes/revision-notes";
@@ -92,6 +93,7 @@ const knowledge = buildKnowledgeRouters();
 const teacherKg = buildTeacherKgRouters();
 const research = buildResearchRouters();
 const ingestion = buildIngestionRouters();
+const llmadmin = buildLlmAdminRouters();
 
 const app = new Hono();
 
@@ -361,6 +363,18 @@ app.route("/api/v1/learners/me", learnerMe.learnerMeRoute);
 // a separate commit per the T-MIG-010/020/021/030/032/033t2 precedent so
 // R0 can ratify or lift them out at review.
 app.route("/api/v1/admin/question-bank", sme.adminRoute);
+
+// LLM chain-observability router (T-MIG-090 — R0, the ruling4
+// adopted-and-amended vehicle). Path parity with the frozen core:
+// LlmAdminController under /api/v1/admin/llm (SecurityConfig.java
+// /api/v1/admin/** hasRole("ADMIN") + @PreAuthorize defense-in-depth;
+// the router owns its authz internally — the /api/v1/* fallback below
+// stays the 404-after-auth path for NO router claimed).
+// Mount lines IN-FENCE per the 090 card scope.allowed; config = the
+// frozen-effective application.yml @ 6cad6ef layer (ruling4 §2);
+// ZERO-KEY boot of record (ruling4 §3) — the report shows what is
+// missing and generation stays ADR-023 fail-closed dormant.
+app.route("/api/v1/admin/llm", llmadmin.llmAdminRoute);
 
 // Tutor routers (T-MIG-060 tranche 2 — Wave 6). Path parity with the frozen
 // core: TutorController under /api/v1/tutor (POST /ask + the SSE twin

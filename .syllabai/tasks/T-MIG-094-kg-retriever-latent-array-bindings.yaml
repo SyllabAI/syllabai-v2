@@ -1,0 +1,14 @@
+version: 1
+task:
+  id: T-MIG-094
+  title: 'T-MIG-094 - kg-retriever latent array-as-one-wire-value bindings (filed from the T-MIG-093 register disclosure): kg-retriever.ts ~:100/:118/:145 builds the same `in ${ids}` dynamic-length IN class that T-MIG-093 proved 500s on the Neon WebSocket wire (whole JS array bound as ONE wire value $1; fakeSql seam cannot expose driver binding semantics — the fake-vs-real class the per-family golden gates exist to catch). Currently UNREACHABLE on the live deploy behind the zero-key LLM seam (dormant generation path), so no live incident; fix = the 093 inList scalar-param law (per-element $n, commas as template text) + construction pins at the adapter boundary, BEFORE any family golden-verify reaches these legs'
+  owner: 'OPEN for claim per earliest-claim-wins — filed by R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a) as desk bookkeeping from the r0 T-MIG-093 filing disclosure of record (worklog, trace 1a11790a99a3cb19 chain)'
+  status: 'OPEN # latent-defect band, zero live exposure (zero-key law); fix pattern of record = T-MIG-093 submit.ts :383 inList precedent (merged a356a7d, live-verified 14/14 via the 092 run-003 re-run); gate = the family golden-verify that first exercises these legs must run on REAL Neon wire (fakeSql cannot catch this class)'
+  priority: P2
+  wave: defect-band
+  deps: [T-MIG-093]
+  scope:
+    allowed:
+      - 'apps/api/src/services/** kg-retriever.ts (the three flagged sites + inList helper reuse from the 093 precedent)'
+      - 'construction pins at the fakeSql adapter boundary + family surface pins if the fixing band also widens'
+      - '.syllabai/receipts/T-MIG-094/**; this yaml; .syllabai/worklog.md (append-only)'

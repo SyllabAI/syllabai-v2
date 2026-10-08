@@ -80,10 +80,16 @@ const CORE_ONLY_PATHS: readonly string[] = [
   "/api/v1/questions/families",
   "/api/v1/exam-papers?subjectId=sub-1",
   "/api/v1/exam-papers/ep-1",
-  // non-attempts learner surfaces (W4) — the reason /api/v1/learners/me/attempts stays narrow
-  "/api/v1/learners/me/agenda",
-  "/api/v1/learners/me/state",
+  // non-attempts learner surfaces (W4) — agenda + state FLIPPED in T-MIG-096
+  // (run-001 golden-verify); flashcard-ratings + note-votes STAY CORE until
+  // the T-MIG-095 first-field-error defect band closes (frozen core serves
+  // subtopicCode/vote first; the port serves cardId/noteId first — a flip
+  // would 400 live user writes core accepts)
   "/api/v1/learners/me/flashcard-ratings",
+  "/api/v1/learners/me/note-votes",
+  // T-MIG-096: recommendations stays core this band — 400/404 wires verified
+  // (L03/L04) but the 200 NBA-engine wire is not live-proven yet (disclosed)
+  "/api/v1/learners/me/recommendations",
   "/api/v1/learners/me/cla/ask",
   "/api/v1/learners/me/answer-input/transcribe",
   // T-MIG-082 (Wave S3, r3a): revision-notes FLIPPED after its golden gate —
@@ -95,6 +101,10 @@ const CORE_ONLY_PATHS: readonly string[] = [
   "/api/v1/tree?includeMisconceptions=true",
   "/api/v1/knowledge/nodes/kn-1/tree",
   "/api/v1/tutor/ask",
+  // T-MIG-092 (r0 rider): the tutor SESSIONS tree flipped, so these siblings
+  // stay core-pinned explicitly — the zero-key law (generation-reaching asks
+  // 503 on the dormant v2 LLM seam) forbids their capture
+  "/api/v1/tutor/ask/stream",
 ];
 
 describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
@@ -107,6 +117,16 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/attempts",
       "/api/v1/learners/me/attempts",
       "/api/v1/learners/me/revision-notes", // Wave S3: T-MIG-082 golden-verified (run-002/003, r3a)
+      "/api/v1/admin/llm/chain-health", // T-MIG-090: golden-verified (run-005, r0 rider) — NARROWEST: the prefix IS the single endpoint
+      "/api/v1/tutor/sessions", // T-MIG-092: golden-verified (run-003 14/14, r0 rider) — NARROW: the sessions tree ONLY, ask/stream stay core
+      "/api/v1/learners/me/agenda", // T-MIG-096: golden-verified (run-001 16/18, r0 rider) — per-exact-subpath rows, NEVER the bare /learners/me
+      "/api/v1/learners/me/flashcard-rating-trail", // T-MIG-096 run-001 L05/L06
+      "/api/v1/learners/me/flashcard-review-schedule", // T-MIG-096 run-001 L07
+      "/api/v1/learners/me/exam-series", // T-MIG-096 run-001 L11
+      "/api/v1/learners/me/assignments", // T-MIG-096 run-001 L14/L15 (incl. the submissions subpath wire)
+      "/api/v1/learners/me/state", // T-MIG-096 run-001 L16
+      "/api/v1/learners/me/course-stats", // T-MIG-096 run-001 L17
+      "/api/v1/learners/me/courses", // T-MIG-096 run-001 L12/L13 — zero emitters, routing availability
     ]);
   });
 });
@@ -117,6 +137,57 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
       expect(v2SurfaceBase(p, V2)).toBe(V2);
       expect(apiPath(p).startsWith(`${V2}/api/v1/`)).toBe(true);
     }
+  });
+
+  test("the T-MIG-096 lines: the learner-me heart flips per-exact-subpath with the write surfaces core-pinned (r0 rider)", () => {
+    // every verified read path of the run-001 matrix resolves to v2
+    for (const p of [
+      "/api/v1/learners/me/agenda",
+      "/api/v1/learners/me/agenda?rootId=3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
+      "/api/v1/learners/me/flashcard-rating-trail?limit=20",
+      "/api/v1/learners/me/flashcard-review-schedule",
+      "/api/v1/learners/me/exam-series",
+      "/api/v1/learners/me/assignments",
+      "/api/v1/learners/me/assignments/a1/submissions", // the submission wire rides the assignments prefix (L15 law)
+      "/api/v1/learners/me/state",
+      "/api/v1/learners/me/course-stats",
+      "/api/v1/learners/me/courses/igcse-chemistry-19/target-series",
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBe(V2);
+    }
+    // the T-MIG-095-blocked write surfaces + the not-yet-verified 200 NBA
+    // wire stay core — the zero-key/defect-band law in string form
+    for (const p of [
+      "/api/v1/learners/me/flashcard-ratings",
+      "/api/v1/learners/me/note-votes",
+      "/api/v1/learners/me/recommendations?rootId=kn-1",
+      "/api/v1/learners/me/cla/ask",
+      "/api/v1/learners/me/classroom",
+      "/api/v1/learners/me/intervention-runs",
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBeNull();
+    }
+  });
+
+  test("the T-MIG-092 line: the tutor sessions tree flips with ask/stream core-pinned (r0 rider)", () => {
+    // every verified leg path of the run-003 matrix resolves to v2
+    for (const p of [
+      "/api/v1/tutor/sessions", // L01/L06/L13 list
+      "/api/v1/tutor/sessions/latest", // L02/L07/L14
+      "/api/v1/tutor/sessions/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab", // L03/L08/L11/L12 transcript/delete paths
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBe(V2);
+    }
+    // the LLM-bearing siblings stay core — different segments, never captured
+    for (const p of ["/api/v1/tutor/ask", "/api/v1/tutor/ask/stream", "/api/v1/tutor"]) {
+      expect(v2SurfaceBase(p, V2)).toBeNull();
+    }
+    // startsWith matching is prefix-string semantics (the same property every
+    // row of the table has): a non-existent partial-segment sibling IS
+    // captured by the string match — DOCUMENTED INERT (no route or hub
+    // emitter named sessions* beyond the verified tree exists on either side)
+    expect(v2SurfaceBase("/api/v1/tutor/sessionsxyz", V2)).toBe(V2);
+    expect("/api/v1/tutor/sessionsxyz".startsWith("/api/v1/tutor/sessions")).toBe(true);
   });
 
   test("apiPath emits exact v2 URLs for representative surfaces", () => {
@@ -139,6 +210,32 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     expect("/api/v1/learners/me/answer-input/transcribe".startsWith("/api/v1/learners/me/attempts")).toBe(false);
     expect(v2SurfaceBase("/api/v1/learners/me/attempts?limit=5", V2)).toBe(V2);
     expect(v2SurfaceBase("/api/v1/learners/me/answer-input/transcribe", V2)).toBeNull();
+  });
+
+  test("the T-MIG-090 line: the exact chain-health surface flips with zero live-page routing change (r0 rider)", () => {
+    // the verified surface itself resolves to v2 (golden-verified of record:
+    // run-005, 4/4 legs at merged main bd4eaeb — the routing-availability pin)
+    expect(v2SurfaceBase("/api/v1/admin/llm/chain-health", V2)).toBe(V2);
+    // TRUE siblings (v2 serves none of them) stay core — the prefix must never
+    // capture them
+    for (const p of [
+      "/api/v1/admin/llm/other",
+      "/api/v1/admin/llm/chain",
+      "/api/v1/admin/users",
+      "/api/v1/admin/stats",
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBeNull();
+    }
+    // startsWith matching is prefix-string semantics (the same property every
+    // row of the table has — e.g. /api/v1/auth would capture /auth/loginx):
+    // a non-existent partial-segment sibling IS captured by the string match.
+    // This is pinned as DOCUMENTED INERT capture: no hub emitter and no route
+    // named chain-healthx exists on either side (the hub-source grep law in
+    // the api.ts table comment), so the capture can never route a live page.
+    expect(v2SurfaceBase("/api/v1/admin/llm/chain-healthx", V2)).toBe(V2);
+    expect("/api/v1/admin/llm/chain-healthx".startsWith("/api/v1/admin/llm/chain-health")).toBe(true);
+    // and the hub emits NOTHING under /api/v1/admin/** today (the line is
+    // routing availability, zero live-page behavior change)
   });
 });
 

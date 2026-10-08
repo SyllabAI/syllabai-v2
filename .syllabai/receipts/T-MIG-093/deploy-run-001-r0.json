@@ -1,0 +1,41 @@
+{
+ "card": "T-MIG-093",
+ "receipt": "deploy-run-001-r0",
+ "lane": "r0",
+ "created_at_utc": "2026-10-07T19:38:40Z",
+ "operator_trace": "1a117b373fb79e01 (direct merge order, 'proceed')",
+ "purpose": "the chain-of-record wire proof sequence (T-MIG-092 card): 093 merge a356a7d -> LIVE DEPLOY -> run-003 golden-verify re-run -> ALL PASS gates the 092 narrow widen (flip law)",
+ "discovery": [
+  "GitHub autoDeploy is NOT wired for the of-record api project (v6 deployments: zero deploys fired for merges #141/#142; project link = {} via /v9/projects; no vercel.json repo-side)",
+  "the production alias served dpl_ja4ieJuNzhgarcgD4dadbd7HYEUC (2026-10-07T16:56:37Z, source=cli, creator syllabai-1403, gitDirty staging meta 'scripts/apideploy') = the da87d11+/bd4eaeb-era bundle WITHOUT the 093 fix — L06-equivalent live probe 500 across 18 attempts 19:02-19:18Z",
+  "recipe of record recovered from worklog :5060 (r1c Wave-A): bun single-file bundle -> path-preserving Vercel Node adapter -> worktree-only deploy shims for the module-scope Bun.* APIs; live bundle file set of record = exactly 2 files (api/index.js + vercel.json)"
+ ],
+ "build": [
+  "source of record: main tip ec3bb4c (= a356a7d 093 fix + #142; verified merge-base of the deployed content)",
+  "shim v2 (worktree-only, upstream untouched, restored post-build; scripts of record under tools/): (1) Bun.CryptoHasher -> node:crypto createHash, Bun.YAML.parse -> js-yaml@4.1.1 load in services/teacher/snapshot.ts + services/learner-me/nba-concept-graph.ts; (2) the 6 hash-pinned concept-graph YAMLs INLINED byte-verbatim via generated concept-assets.gen.ts — bun build statically resolves import.meta.url to source paths, so r1c's filesystem mirror cannot survive bundling; the module-scope singleton reads the inlined bytes and the SHA-256 pins still enforce byte integrity at boot (frozen drift/missing error texts preserved); (3) entry = explicit Node adapter (x-forwarded-proto/host + req.url reconstruction, streaming response pass-through; hono/vercel handle is a deprecated Web-Request wrapper unusable as a Node handler)",
+  "bundle: 315 modules, 3,053,764 bytes CJS; asset SHAs at build time: concepts 24fa91ac7149682b, concept_edges 8a651dd9e60bfefa, practicals e53e5f87606a2b5a, relationships b3b7529222d77d80, specification_points b1fea69953205077, topics a7b14cbdd34bb9fe (16-char prefixes; repo-side hash pins are the law of record)",
+  "vercel.json (2 rewrites): /api/v1/(.*) and /actuator/health -> /api/index; unknown paths fall to Vercel plain 404 (live behavior preserved: /actuator/info probe)"
+ ],
+ "local_gate": [
+  "real Node http server on the bundle (node v24.21.0), of-record DATABASE_URL (fetched via owner env API, never persisted/logged), LOCAL-ONLY 44-char JWT key (the production secret is not lane-readable via env API decrypt; any 44-raw-byte key exercises the same HS256 law)",
+  "8/8 PASS: health 200 {groups,status:UP}; login malformed 400 validation_failed; register 201 (real Neon INSERT); tutor create 201; tutor LIST NON-EMPTY 200 [summary] (the L06 fix on the real wire driver); latest 200; delete 204; list-after-delete 200 []"
+ ],
+ "deploy": {
+  "method": "vercel CLI 62.7.0 deploy --prod from a 2-file stage (.vercel/project.json linked to prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ / team_ULL54qkhzKBmnKrpO6BD4mYX)",
+  "deployment": "dpl_5VuNMyfq5vknZSEsMkyFrUCgmcbL",
+  "ready_at_utc": "2026-10-07T19:37:32Z",
+  "production_alias_switched": true
+ },
+ "post_deploy_probes": [
+  "health 200 {\"groups\":[\"liveness\",\"readiness\"],\"status\":\"UP\"} 19:38Z",
+  "fresh probe learner register -> 201; tutor session create -> 201; GET /api/v1/tutor/sessions non-empty -> 200 (L06-equivalent, was 500 on the prior deploy)",
+  "then the official T-MIG-092 run-003 golden-verify: ALL PASS 14/14 (see ../T-MIG-092/run-003-golden-verify-r0.json)"
+ ],
+ "rollback": "MIGRATION_PLAN §5 lever intact — the prior production deployment dpl_ja4ieJuNzhgarcgD4dadbd7HYEUC stays READY and re-aliasable; zero env changes made by this lane",
+ "disclosures": [
+  "production env untouched (3 vars, production-scoped — why a preview dress rehearsal was impossible: preview boots env-less and the api is fail-fast)",
+  "the shimmed files are NOT committed (git-verified restore after build); the deployed bundle differs from main-tip source only by the disclosed shims, all three r1c-precedented worktree-only deploy machinery",
+  "probe learners registered this band are of record (example.invalid), net DB rows: probe users + zero tutor sessions (create+delete legs)"
+ ],
+ "verdict": "DEPLOYED AND VERIFIED — the 093 fix is live on the of-record v2 api; run-003 ALL PASS gates the 092 narrow widen"
+}
