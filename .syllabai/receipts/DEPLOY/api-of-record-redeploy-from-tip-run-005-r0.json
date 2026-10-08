@@ -1,0 +1,40 @@
+{
+  "card": "LEVER api-of-record redeploy from tip — EXECUTED (run-005, R0; carrying the T-MIG-104 amended law PR #165/bfad2ea + the T-MIG-042 cron port 9ce5c55 live, discharging the T-MIG-104 rider 'LIVE RE-VERIFY rides the NEXT API REDEPLOY')",
+  "receipt": "api-of-record-redeploy-from-tip-run-005-r0",
+  "lane": "R0-integrator (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "operator_trace": "1a11c55b6c371805 'order the api redeploy from tip to carry the amendment live (then I'll live-verify the 400)' — VERCEL_PAT operator-delivered in-transit, memory-only, never persisted/logged",
+  "source_of_record": "main tip f45b027 (fetch-first verified immediately before the act; the serving-of-record at act start was dpl_G3chsJTHztqnfoCXhDw5BtiSTBn1 = main a6ad469 = PRE-amendment, proven first-hand by the live 500 on the parts-null shapes)",
+  "mechanism_note": "the of-record redeploy mechanism is the 093 CLI-upload recipe (2-file stage), NOT the deployments-API gitSource lever — the project's git integration exists but carries NO build config (framework/rootDirectory/buildCommand all null), so a gitSource deployment builds EMPTY and serves Vercel NOT_FOUND on every route",
+  "incident_disclosure": {
+    "what": "the first lever attempt used POST /v13/deployments gitSource {type:github, org:SyllabAI, repo:syllabai-v2, ref:f45b027} -> dpl_6suM1wnMB2vmjVcyyCtibPz45xbq built EMPTY (builds: [], no functions) yet READY and PRODUCTION-targeted, and the promotion flipped the production alias syllabai-v2.vercel.app to it",
+    "window_utc": "aliasAssigned ~16:36:33Z .. restored ~16:39:56Z (≈3.5 min; all routes served the Vercel NOT_FOUND page on the production alias; deployment URLs were SSO-302 so nothing served)",
+    "detection": "first-hand zero-write wire check returned Vercel NOT_FOUND on EVERY leg including /api/v1/auth/login (not an app envelope) — deployment-level emptiness identified within minutes",
+    "restore": "POST /v2/deployments/dpl_G3chsJTHztqnfoCXhDw5BtiSTBn1/aliases {alias: syllabai-v2.vercel.app} -> alias uid 5d49c3c3... (oldDeploymentId dpl_6suM1wn...) — production re-pointed to the last-good upload (a6ad469, the pre-amendment old law); verified app envelopes 401/404/500 on the wire immediately",
+    "root_cause": "wrong mechanism for this project's deploy shape; the 093 recipe of record was then read from the register and followed verbatim",
+    "residue": "the empty gitSource deployment dpl_6suM1wnMB2vmjVcyyCtibPz45xbq is retained UN-ALIASED (zero traffic) as incident evidence; no cleanup act taken"
+  },
+  "build_at_tip": [
+    "093 recipe verbatim via the lane-side runner scripts/r0_deploy_bundle_build.py (contents byte-identical to .syllabai/receipts/T-MIG-093/tools/deploy_bundle_build.py except the REPO/STAGE path constants)",
+    "shim-target drift pre-check: git diff a6ad469..f45b027 over snapshot.ts + nba-concept-graph.ts = EMPTY (no drift)",
+    "6 asset SHAs == the 6 source pins EXACT first-hand (concepts 24fa91ac7149682b, edges 8a651dd9e60bfefa, practicals e53e5f87606a2b5a, relationships b3b7529222d77d80, spec_points b1fea69953205077, topics a7b14cbdd34bb9fe)",
+    "bundle: 321 modules / 3,093,752 bytes CJS — +2 modules vs the of-record 319 @ a6ad469 IS the T-MIG-042 cron port (services/cron/nightly-decay.ts + routes/cron.ts) made visible at bundle census; worktree restored post-build (git checkout of the 2 shimmed files, rm of the 2 generated files), git status clean",
+    "bun 1.3.14, node 24.21.0, bun install --frozen-lockfile (no changes)"
+  ],
+  "localgate_8_8": [
+    "ALL PASS on the production-shaped wire (real Neon) via the lane-side runner scripts/r0_localgate_bundle.py (gate contents of-record; DATABASE_URL passed via VOLATILE SHELL ENV ONLY — fetched through the sanctioned env API decrypt, never printed, never written to disk; the stage-file .env.localgate path was replaced by the env read to hold the zero-secrets-on-disk discipline)",
+    "legs: health 200 UP; login-malformed 400 validation_failed; register 201 (probe learner r0-104gate-*@example.invalid, body masked — token discipline); tutor create/list(L06)/latest/delete/list-after-delete net-zero"
+  ],
+  "deploy_leg": [
+    "EXECUTED: vercel CLI 62.7.0 deploy --prod --yes from the 2-file stage (vercel.json rewrites + api/index.js + .vercel/project.json prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ / team_ULL54qkhzKBmnKrpO6BD4mYX)",
+    "dpl_Br8j9BxgVqepQf1j1BrUDUp885n8 (syllabai-v2-5t4dgrhlo-syllab-ai.vercel.app) READY on FIRST poll, target=production, BOTH production aliases switched (syllabai-v2.vercel.app + syllabai-v2-syllab-ai.vercel.app), aliasAssigned true",
+    "rollback anchors of record: dpl_G3chsJTHztqnfoCXhDw5BtiSTBn1 (a6ad469, READY) and the deploy chain behind it — re-alias restores in one API call (proven during the incident restore)"
+  ],
+  "live_census_5_5": [
+    "zero-write wire check (probe account of record r0-seam-probe-20261008a@example.invalid; dead attempt id 00000000-0000-4000-8000-00000000dead — the amended boundary 400 precedes the attempt lookup, attempt id inert): L1 {} -> 400 bad_request 'self-mark carries no part marks' PASS; L2 {\"parts\":null} -> 400 same envelope PASS; L3 {\"parts\":[null]} -> 500 internal_error (T-MIG-057/058 element-null residual UNCHANGED per the ruling scope) PASS; L4 valid 5-part shape + unknown attempt -> 404 mapped no-leak PASS; L5 unauthenticated -> 401 PASS",
+    "verdict: AMENDMENT LIVE OF RECORD — transcript /home/z/my-project/evidence/selfmark-amend-live-20261009.json, receipts/T-MIG-104/run-005-amend-live-r0.json",
+    "T-MIG-042 note: the cron port now rides the LIVE bundle; its §3.1 env act (CRON_SECRET adds + first fire) remains operator-side per that card's staged handoff — this receipt does NOT discharge 042"
+  ],
+  "write_ledger": "ZERO application writes: the live census legs are dead-id boundary probes (pre-lookup) + unauth 401 + login; the localgate wrote its of-record probe learner + net-zero tutor CRUD rows (recipe-of-record); the incident window wrote nothing (empty build served no app code)",
+  "hygiene": "VERCEL_PAT memory-only (env/inline), zero token material in any file/receipt/log/transcript; repo worktree clean at f45b027 post-build-restore; no force-push; .syllabai-only filing commit follows",
+  "verdict": "DEPLOYED AND VERIFIED — api-of-record serves main tip f45b027 as dpl_Br8j9BxgVqepQf1j1BrUDUp885n8; the T-MIG-104 amended law (whole-field parts-null -> 400 bad_request 'self-mark carries no part marks') is LIVE; the element-null residual 500 and every other error class verified intact; incident disclosed with mechanism root-cause and one-call restore proof"
+}

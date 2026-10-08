@@ -1,0 +1,18 @@
+{
+  "card": "T-MIG-104 — rider discharge: LIVE RE-VERIFY of the amended law (the 'NEXT API REDEPLOY' arrived: operator trace 1a11c55b6c371805)",
+  "receipt": "T-MIG-104/run-005-amend-live-r0",
+  "probe": "r0_tm104_amend_liveverify.py (lane-side; zero-write dead-id boundary legs — the amended 400 precedes the attempt lookup, attempt id inert per the amended law)",
+  "when_utc": "2026-10-08T16:52:27Z..16:52:29Z (post-deploy dpl_Br8j9BxgVqepQf1j1BrUDUp885n8, alias syllabai-v2.vercel.app)",
+  "account": "r0-seam-probe-20261008a@example.invalid (probe account of record)",
+  "write_ledger": "ZERO application writes",
+  "legs": [
+    {"leg": "L1", "request": "POST /api/v1/learners/me/attempts/00000000-0000-4000-8000-00000000dead/self-mark body {}", "expect": "400 bad_request 'self-mark carries no part marks' (THE AMENDED LAW)", "got": {"status": 400, "error": "bad_request", "message": "self-mark carries no part marks", "timestamp": "2026-10-08T16:52:27.689Z"}, "verdict": "PASS"},
+    {"leg": "L2", "request": "same path body {\"parts\":null}", "expect": "400 same envelope", "got": {"status": 400, "error": "bad_request", "message": "self-mark carries no part marks", "timestamp": "2026-10-08T16:52:28.225Z"}, "verdict": "PASS"},
+    {"leg": "L3", "request": "same path body {\"parts\":[null]}", "expect": "500 internal_error (T-MIG-057/058 element-null NPE-parity residual, OUT of ruling scope)", "got": {"status": 500, "error": "internal_error", "message": "an internal error occurred", "timestamp": "2026-10-08T16:52:28.733Z"}, "verdict": "PASS"},
+    {"leg": "L4", "request": "same path, valid 5-part shape (partIds of record from run-001)", "expect": "404 not_found mapped no-leak (regression guard)", "got": {"status": 404, "error": "not_found", "message": "attempt 00000000-0000-4000-8000-00000000dead not found"}, "verdict": "PASS"},
+    {"leg": "L5", "request": "same path, no Authorization header", "expect": "401 (bearer law intact)", "got": {"status": 401, "error": "Unauthorized"}, "verdict": "PASS"}
+  ],
+  "asserts": "5/5 PASS",
+  "verdict": "AMENDMENT LIVE OF RECORD — the whole-field parts-null class (absent/null) now serves the mapped 400 bad_request 'self-mark carries no part marks' on the production wire; the element-null residual 500 and every other class verified unchanged; x-vercel-id anchors in the raw transcript (lane-side evidence/selfmark-amend-live-20261009.json)",
+  "operator_verify_slot": "the operator's own live-verify of the 400 is now unblocked — POST {} or {\"parts\":null} to any self-mark path serves the mapped 400"
+}
