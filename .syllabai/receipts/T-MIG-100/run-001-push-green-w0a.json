@@ -1,0 +1,63 @@
+{
+  "task": "T-MIG-100",
+  "run": "run-001-push-green-w0a",
+  "agent": "w0a lane (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "operator_trace": "1a11a3d52352d30d 'claim the T-MIG-100 proof leg'",
+  "claim_commit": "6cbc48a",
+  "fix_of_record": {
+    "law": "opclass pins only — ZERO column/table/constraint changes (the 099 fence reason stands)",
+    "statements_repaired": 34,
+    "pins_corrected": 57,
+    "schema_ts_lines_changed": 34,
+    "emission_statements_mirrored": 34,
+    "normalized_diff_guard": "with all [a-z0-9]+_ops tokens masked, backup-vs-repaired diff is EMPTY for BOTH src/schema/schema.ts and drizzle/0000_organic_mauler.sql — only opclass tokens changed",
+    "typecheck": "packages/db tsc --noEmit exit 0",
+    "idempotence": "fix re-run finds 0 remaining repairs",
+    "count_reconciliation": "the filing's static audit said 41 (over-counted by loose table attribution; superseded of record); the emission-side ground truth (CREATE TABLE types vs pinned opclasses, zero TS parsing) = 34 mis-opclassed statements — agreeing with the strict parser (34/57) and with r9's recorded '35' within the checker's one generated-column parse artifact (content_tsv); the repair set = 34 statements / 57 pins, independently derived twice"
+  },
+  "substrate": {
+    "pattern": "083-rider/099 sanctioned scratch substrate",
+    "engine": "PostgreSQL 17.6, source-built to /home/z/scratchpg/pg17 — build notes: PG 17.6 tarball ships no pre-generated parser sources, so bison 3.8.2 + flex 2.6.4 were staged from Debian trixie debs into a tools prefix (ftp.gnu.org unreachable from this sandbox); zonky 17.3 portable binaries were tried first and discarded (runtime-only, no pgxs/headers, pgvector uncompilable)",
+    "extension": "pgvector 0.8.0 built against the prefix pg_config (vector.so + vector.control installed)",
+    "endpoint": "127.0.0.1:5544, trust auth, listen_addresses=127.0.0.1, db syllabai_t100",
+    "zero_key_assertion": "no provider keys in env (names-only check: none); the inherited DATABASE_URL was shadowed per-invocation, never read and never printed; host assertion aborts any non-127.0.0.1 target; ZERO prod/Neon contact; zero secret material printed"
+  },
+  "leg_of_record": {
+    "command_class": "drizzle-kit push --force --config <throwaway file-schema config>",
+    "kit": "drizzle-kit 0.30.6 / drizzle-orm 0.38.4 (the repo root node_modules pair of record)",
+    "harness_accommodations_disclosed": [
+      "throwaway UNTRACKED config targeting src/schema/schema.ts as a FILE, deleted immediately after the run: drizzle-kit 0.30.6 imports the whole schema DIRECTORY as JS modules and crashes on src/schema/README.md markdown before generating any SQL — a latent of-record kit-compat defect disclosed for its own register item (NOT repaired within this card's fence)",
+      "pre-push assert: 0 tables; the push ran against a guaranteed-empty local db"
+    ],
+    "result": "[✓] Changes applied — exit 0",
+    "tables_created": "0 -> 62",
+    "sqlstate_42804_markers": 0,
+    "index_presence": "87/87 declared index names present in pg_indexes (missing: none); 171 total index objects including pkey/uq constraint-backings",
+    "indclass_bindings_of_record": "pg_index.indclass -> pg_opclass -> pg_type catalog verdicts captured for 9 key members: ix_mark_points_scheme (mark_scheme_id uuid_ops ON uuid; ordering int4_ops ON int4), ix_options_question swap healed, ix_edge_source_type swap healed, ix_telemetry_learner_time (learner_id uuid_ops, occurred_at timestamptz_ops), idx_struggle_inference_supersede (4-col), ix_exam_series_lookup triple healed (board text_ops ON varchar; published bool_ops ON bool; window_start date_ops ON date), ix_document_chunks_subject_year_series, ix_fr_learner_card, ix_tte_learner_surface — json: scripts/t100-readback.json (lane-side)",
+    "non_btree_members": "idx_document_chunks_content_tsv gin; ix_document_chunks_spec_codes gin; ix_document_chunks_embedding hnsw (vector_cosine_ops) — as declared"
+  },
+  "gates_all_green": [
+    "emission-truth checker: 34 -> 0 mis-opclassed statements",
+    "normalized diff: opclass-tokens-only in both files",
+    "idempotence: 0",
+    "packages/db typecheck: exit 0",
+    "push: exit 0, zero 42804/datatype_mismatch markers",
+    "pg_indexes: 87/87 declared names present",
+    "indclass catalog verdicts: every sampled binding type-correct"
+  ],
+  "posture": {
+    "api_redeploy": "NOT owed by this act: opclass pins are DDL-time metadata, unreachable at query time — zero runtime delta; operator may order a tip redeploy if posture requires it",
+    "followup_suggested": "drizzle-kit 0.30.6 schema-DIR import crashes on src/schema/README.md (markdown ingested as a module) — own kit-compat register item suggested, out of this fence"
+  },
+  "timestamp_utc": "2026-10-08T07:30Z",
+  "artifacts_lane_side": [
+    "scripts/tmig100-fix-opclass.py",
+    "scripts/t100-emission-truth.py",
+    "scripts/t100-push.sh",
+    "scripts/t100-readback.py",
+    "scripts/t100-fix-ledger.json",
+    "scripts/t100-readback.json",
+    "scripts/out-t100-push.log",
+    "scripts/t100-backup-schema.ts + t100-backup-0000.sql (pre-repair snapshots)"
+  ]
+}

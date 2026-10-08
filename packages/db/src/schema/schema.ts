@@ -92,8 +92,8 @@ export const knowledgeEdges = pgTable("knowledge_edges", {
 	version: integer().default(1).notNull(),
 	createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
-	index("ix_edge_source_type").using("btree", table.sourceNodeId.asc().nullsLast().op("text_ops"), table.relationType.asc().nullsLast().op("uuid_ops")),
-	index("ix_edge_target_type").using("btree", table.targetNodeId.asc().nullsLast().op("text_ops"), table.relationType.asc().nullsLast().op("text_ops")),
+	index("ix_edge_source_type").using("btree", table.sourceNodeId.asc().nullsLast().op("uuid_ops"), table.relationType.asc().nullsLast().op("text_ops")),
+	index("ix_edge_target_type").using("btree", table.targetNodeId.asc().nullsLast().op("uuid_ops"), table.relationType.asc().nullsLast().op("text_ops")),
 	foreignKey({
 			columns: [table.sourceNodeId],
 			foreignColumns: [knowledgeNodes.id],
@@ -138,7 +138,7 @@ export const telemetryEvents = pgTable("telemetry_events", {
 	payload: jsonb().notNull(),
 	occurredAt: timestamp("occurred_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
-	index("ix_telemetry_learner_time").using("btree", table.learnerId.asc().nullsLast().op("timestamptz_ops"), table.occurredAt.desc().nullsFirst().op("timestamptz_ops")),
+	index("ix_telemetry_learner_time").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.occurredAt.desc().nullsFirst().op("timestamptz_ops")),
 	index("ix_telemetry_type").using("btree", table.eventType.asc().nullsLast().op("text_ops")),
 	foreignKey({
 			columns: [table.learnerId],
@@ -173,7 +173,7 @@ export const questionOptions = pgTable("question_options", {
 	ordering: integer().default(0).notNull(),
 	createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
-	index("ix_options_question").using("btree", table.questionId.asc().nullsLast().op("int4_ops"), table.ordering.asc().nullsLast().op("uuid_ops")),
+	index("ix_options_question").using("btree", table.questionId.asc().nullsLast().op("uuid_ops"), table.ordering.asc().nullsLast().op("int4_ops")),
 	uniqueIndex("uq_one_correct_option").using("btree", table.questionId.asc().nullsLast().op("uuid_ops")).where(sql`is_correct`),
 	foreignKey({
 			columns: [table.questionId],
@@ -219,7 +219,7 @@ export const attempts = pgTable("attempts", {
 	markingState: varchar("marking_state", { length: 16 }).default('AUTO_GRADED').notNull(),
 	evidenceEmitted: boolean("evidence_emitted").default(false).notNull(),
 }, (table) => [
-	index("ix_attempts_learner_time").using("btree", table.learnerId.asc().nullsLast().op("timestamptz_ops"), table.createdAt.desc().nullsFirst().op("timestamptz_ops")),
+	index("ix_attempts_learner_time").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.createdAt.desc().nullsFirst().op("timestamptz_ops")),
 	index("ix_attempts_question").using("btree", table.questionId.asc().nullsLast().op("uuid_ops")),
 	foreignKey({
 			columns: [table.learnerId],
@@ -255,7 +255,7 @@ export const examPapers = pgTable("exam_papers", {
 	series: varchar({ length: 3 }),
 	year: integer(),
 }, (table) => [
-	index("ix_exam_papers_paper_year_series").using("btree", table.paperCode.asc().nullsLast().op("text_ops"), table.year.asc().nullsLast().op("int4_ops"), table.series.asc().nullsLast().op("int4_ops")).where(sql`(paper_code IS NOT NULL)`),
+	index("ix_exam_papers_paper_year_series").using("btree", table.paperCode.asc().nullsLast().op("text_ops"), table.year.asc().nullsLast().op("int4_ops"), table.series.asc().nullsLast().op("text_ops")).where(sql`(paper_code IS NOT NULL)`),
 	index("ix_exam_papers_subject").using("btree", table.subjectId.asc().nullsLast().op("uuid_ops")),
 	uniqueIndex("uq_exam_paper_identity").using("btree", table.paperCode.asc().nullsLast().op("text_ops"), table.sessionLabel.asc().nullsLast().op("text_ops")).where(sql`(paper_code IS NOT NULL)`),
 	foreignKey({
@@ -283,7 +283,7 @@ export const questionVersions = pgTable("question_versions", {
 	extractionMethod: varchar("extraction_method", { length: 120 }),
 	createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
-	index("ix_question_versions_question").using("btree", table.questionId.asc().nullsLast().op("int4_ops"), table.version.desc().nullsFirst().op("uuid_ops")),
+	index("ix_question_versions_question").using("btree", table.questionId.asc().nullsLast().op("uuid_ops"), table.version.desc().nullsFirst().op("int4_ops")),
 	foreignKey({
 			columns: [table.questionId],
 			foreignColumns: [questions.id],
@@ -308,7 +308,7 @@ export const questionParts = pgTable("question_parts", {
 	ordering: integer().notNull(),
 	createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
-	index("ix_question_parts_version").using("btree", table.questionVersionId.asc().nullsLast().op("int4_ops"), table.ordering.asc().nullsLast().op("uuid_ops")),
+	index("ix_question_parts_version").using("btree", table.questionVersionId.asc().nullsLast().op("uuid_ops"), table.ordering.asc().nullsLast().op("int4_ops")),
 	foreignKey({
 			columns: [table.questionVersionId],
 			foreignColumns: [questionVersions.id],
@@ -332,7 +332,7 @@ export const markPoints = pgTable("mark_points", {
 	createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
 	index("ix_mark_points_part").using("btree", table.questionPartId.asc().nullsLast().op("uuid_ops")),
-	index("ix_mark_points_scheme").using("btree", table.markSchemeId.asc().nullsLast().op("int4_ops"), table.ordering.asc().nullsLast().op("int4_ops")),
+	index("ix_mark_points_scheme").using("btree", table.markSchemeId.asc().nullsLast().op("uuid_ops"), table.ordering.asc().nullsLast().op("int4_ops")),
 	foreignKey({
 			columns: [table.markSchemeId],
 			foreignColumns: [markSchemes.id],
@@ -390,7 +390,7 @@ export const smartMarkResults = pgTable("smart_mark_results", {
 	markSchemeId: uuid("mark_scheme_id"),
 	schemeValidationState: varchar("scheme_validation_state", { length: 12 }),
 }, (table) => [
-	index("ix_smart_mark_results_answer").using("btree", table.answerId.asc().nullsLast().op("timestamptz_ops"), table.createdAt.desc().nullsFirst().op("timestamptz_ops")),
+	index("ix_smart_mark_results_answer").using("btree", table.answerId.asc().nullsLast().op("uuid_ops"), table.createdAt.desc().nullsFirst().op("timestamptz_ops")),
 	foreignKey({
 			columns: [table.answerId],
 			foreignColumns: [answers.id],
@@ -440,7 +440,7 @@ export const humanMarks = pgTable("human_marks", {
 	comments: text(),
 	createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
-	index("ix_human_marks_answer").using("btree", table.answerId.asc().nullsLast().op("timestamptz_ops"), table.createdAt.desc().nullsFirst().op("timestamptz_ops")),
+	index("ix_human_marks_answer").using("btree", table.answerId.asc().nullsLast().op("uuid_ops"), table.createdAt.desc().nullsFirst().op("timestamptz_ops")),
 	foreignKey({
 			columns: [table.answerId],
 			foreignColumns: [answers.id],
@@ -487,9 +487,9 @@ export const struggleInferences = pgTable("struggle_inferences", {
 	overriddenBy: uuid("overridden_by"),
 	overriddenAt: timestamp("overridden_at", { withTimezone: true, mode: 'string' }),
 }, (table) => [
-	index("idx_struggle_inference_learner_expiry").using("btree", table.learnerId.asc().nullsLast().op("float8_ops"), table.expiresAt.desc().nullsFirst().op("uuid_ops"), table.probability.desc().nullsFirst().op("uuid_ops")),
-	index("idx_struggle_inference_learner_topic_expiry").using("btree", table.learnerId.asc().nullsLast().op("float8_ops"), table.topicNodeId.asc().nullsLast().op("float8_ops"), table.expiresAt.desc().nullsFirst().op("timestamptz_ops"), table.probability.desc().nullsFirst().op("float8_ops")),
-	index("idx_struggle_inference_supersede").using("btree", table.learnerId.asc().nullsLast().op("timestamptz_ops"), table.topicNodeId.asc().nullsLast().op("timestamptz_ops"), table.type.asc().nullsLast().op("timestamptz_ops"), table.expiresAt.desc().nullsFirst().op("uuid_ops")).where(sql`(superseded_at IS NULL)`),
+	index("idx_struggle_inference_learner_expiry").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.expiresAt.desc().nullsFirst().op("timestamptz_ops"), table.probability.desc().nullsFirst().op("float8_ops")),
+	index("idx_struggle_inference_learner_topic_expiry").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.topicNodeId.asc().nullsLast().op("uuid_ops"), table.expiresAt.desc().nullsFirst().op("timestamptz_ops"), table.probability.desc().nullsFirst().op("float8_ops")),
+	index("idx_struggle_inference_supersede").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.topicNodeId.asc().nullsLast().op("uuid_ops"), table.type.asc().nullsLast().op("text_ops"), table.expiresAt.desc().nullsFirst().op("timestamptz_ops")).where(sql`(superseded_at IS NULL)`),
 	foreignKey({
 			columns: [table.learnerId],
 			foreignColumns: [users.id],
@@ -537,7 +537,7 @@ export const teacherValidationEvents = pgTable("teacher_validation_events", {
 	appliedAt: timestamp("applied_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
 }, (table) => [
 	index("ix_tve_run").using("btree", table.importerRunId.asc().nullsLast().op("uuid_ops")),
-	index("ix_tve_target").using("btree", table.targetType.asc().nullsLast().op("text_ops"), table.targetId.asc().nullsLast().op("text_ops")),
+	index("ix_tve_target").using("btree", table.targetType.asc().nullsLast().op("text_ops"), table.targetId.asc().nullsLast().op("uuid_ops")),
 	unique("uq_tve_decision").on(table.decisionHash, table.decisionSeq),
 	check("ck_tve_action", sql`(action)::text = ANY ((ARRAY['VALIDATE'::character varying, 'REJECT'::character varying, 'FLAG'::character varying, 'REVERSE'::character varying])::text[])`),
 	check("ck_tve_result_state", sql`(result_state)::text = ANY ((ARRAY['SUGGESTED'::character varying, 'VALIDATED'::character varying, 'REJECTED'::character varying])::text[])`),
@@ -586,7 +586,7 @@ export const reviewSchedules = pgTable("review_schedules", {
 	status: varchar({ length: 16 }).default('PENDING').notNull(),
 	createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
-	index("ix_review_learner_status").using("btree", table.learnerId.asc().nullsLast().op("text_ops"), table.status.asc().nullsLast().op("uuid_ops"), table.dueAt.asc().nullsLast().op("timestamptz_ops")),
+	index("ix_review_learner_status").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.status.asc().nullsLast().op("text_ops"), table.dueAt.asc().nullsLast().op("timestamptz_ops")),
 	index("ix_review_status_due").using("btree", table.status.asc().nullsLast().op("text_ops"), table.dueAt.asc().nullsLast().op("timestamptz_ops")),
 	foreignKey({
 			columns: [table.learnerId],
@@ -609,7 +609,7 @@ export const interventionRunStep = pgTable("intervention_run_step", {
 	startedAt: timestamp("started_at", { withTimezone: true, mode: 'string' }).notNull(),
 	completedAt: timestamp("completed_at", { withTimezone: true, mode: 'string' }),
 }, (table) => [
-	index("intervention_run_step_run_idx").using("btree", table.runId.asc().nullsLast().op("int4_ops"), table.sequenceNo.asc().nullsLast().op("uuid_ops")),
+	index("intervention_run_step_run_idx").using("btree", table.runId.asc().nullsLast().op("uuid_ops"), table.sequenceNo.asc().nullsLast().op("int4_ops")),
 	foreignKey({
 			columns: [table.runId],
 			foreignColumns: [interventionRun.runId],
@@ -668,7 +668,7 @@ export const interventionRunEvidence = pgTable("intervention_run_evidence", {
 	role: varchar({ length: 32 }).notNull(),
 	capturedAt: timestamp("captured_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
-	index("intervention_run_evidence_run_idx").using("btree", table.runId.asc().nullsLast().op("timestamptz_ops"), table.capturedAt.asc().nullsLast().op("timestamptz_ops")),
+	index("intervention_run_evidence_run_idx").using("btree", table.runId.asc().nullsLast().op("uuid_ops"), table.capturedAt.asc().nullsLast().op("timestamptz_ops")),
 	foreignKey({
 			columns: [table.runId],
 			foreignColumns: [interventionRun.runId],
@@ -713,7 +713,7 @@ export const revisionNoteViewed = pgTable("revision_note_viewed", {
 	noteId: varchar("note_id", { length: 256 }).notNull(),
 	viewedAt: timestamp("viewed_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
-	index("revision_note_viewed_user_idx").using("btree", table.userId.asc().nullsLast().op("timestamptz_ops"), table.viewedAt.desc().nullsFirst().op("timestamptz_ops")),
+	index("revision_note_viewed_user_idx").using("btree", table.userId.asc().nullsLast().op("uuid_ops"), table.viewedAt.desc().nullsFirst().op("timestamptz_ops")),
 	foreignKey({
 			columns: [table.userId],
 			foreignColumns: [users.id],
@@ -762,7 +762,7 @@ export const interventionRun = pgTable("intervention_run", {
 	completedAt: timestamp("completed_at", { withTimezone: true, mode: 'string' }),
 	cancelledAt: timestamp("cancelled_at", { withTimezone: true, mode: 'string' }),
 }, (table) => [
-	index("intervention_run_learner_created_idx").using("btree", table.learnerId.asc().nullsLast().op("timestamptz_ops"), table.createdAt.desc().nullsFirst().op("timestamptz_ops")),
+	index("intervention_run_learner_created_idx").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.createdAt.desc().nullsFirst().op("timestamptz_ops")),
 	foreignKey({
 			columns: [table.learnerId],
 			foreignColumns: [users.id],
@@ -863,8 +863,8 @@ export const documentChunks = pgTable("document_chunks", {
 	index("ix_document_chunks_embedding").using("hnsw", table.embedding.asc().nullsLast().op("vector_cosine_ops")),
 	index("ix_document_chunks_pending").using("btree", table.documentRowId.asc().nullsLast().op("uuid_ops")).where(sql`(embedding IS NULL)`),
 	index("ix_document_chunks_spec_codes").using("gin", table.specCodes.asc().nullsLast().op("jsonb_ops")).where(sql`(spec_codes IS NOT NULL)`),
-	index("ix_document_chunks_subject_kind").using("btree", table.subjectId.asc().nullsLast().op("text_ops"), table.kind.asc().nullsLast().op("uuid_ops")).where(sql`(subject_id IS NOT NULL)`),
-	index("ix_document_chunks_subject_year_series").using("btree", table.subjectId.asc().nullsLast().op("text_ops"), table.year.asc().nullsLast().op("uuid_ops"), table.series.asc().nullsLast().op("int4_ops")).where(sql`(subject_id IS NOT NULL)`),
+	index("ix_document_chunks_subject_kind").using("btree", table.subjectId.asc().nullsLast().op("uuid_ops"), table.kind.asc().nullsLast().op("text_ops")).where(sql`(subject_id IS NOT NULL)`),
+	index("ix_document_chunks_subject_year_series").using("btree", table.subjectId.asc().nullsLast().op("uuid_ops"), table.year.asc().nullsLast().op("int4_ops"), table.series.asc().nullsLast().op("text_ops")).where(sql`(subject_id IS NOT NULL)`),
 	foreignKey({
 			columns: [table.documentRowId],
 			foreignColumns: [documents.id],
@@ -942,9 +942,9 @@ export const tutorTopicEngagements = pgTable("tutor_topic_engagements", {
 	contextReference: uuid("context_reference"),
 	classifierVersion: varchar("classifier_version", { length: 48 }).default('tutor-signals/v1').notNull(),
 }, (table) => [
-	index("ix_tte_learner_recent").using("btree", table.learnerId.asc().nullsLast().op("timestamptz_ops"), table.occurredAt.desc().nullsFirst().op("uuid_ops")),
+	index("ix_tte_learner_recent").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.occurredAt.desc().nullsFirst().op("timestamptz_ops")),
 	index("ix_tte_learner_signal").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.signalType.asc().nullsLast().op("text_ops")),
-	index("ix_tte_learner_surface").using("btree", table.learnerId.asc().nullsLast().op("text_ops"), table.surface.asc().nullsLast().op("text_ops"), table.occurredAt.desc().nullsFirst().op("uuid_ops")),
+	index("ix_tte_learner_surface").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.surface.asc().nullsLast().op("text_ops"), table.occurredAt.desc().nullsFirst().op("timestamptz_ops")),
 	index("ix_tte_node").using("btree", table.nodeId.asc().nullsLast().op("uuid_ops")),
 	foreignKey({
 			columns: [table.learnerId],
@@ -969,7 +969,7 @@ export const contentReviewAudit = pgTable("content_review_audit", {
 }, (table) => [
 	index("ix_cra_actor").using("btree", table.actorUserId.asc().nullsLast().op("uuid_ops")),
 	index("ix_cra_occurred").using("btree", table.occurredAt.desc().nullsFirst().op("timestamptz_ops")),
-	index("ix_cra_target").using("btree", table.targetType.asc().nullsLast().op("uuid_ops"), table.targetId.asc().nullsLast().op("text_ops")),
+	index("ix_cra_target").using("btree", table.targetType.asc().nullsLast().op("text_ops"), table.targetId.asc().nullsLast().op("uuid_ops")),
 	foreignKey({
 			columns: [table.actorUserId],
 			foreignColumns: [users.id],
@@ -1034,7 +1034,7 @@ export const archiveTc27CardWave20260928 = pgTable("archive_tc27_card_wave_20260
 }, (table) => [
 	uniqueIndex("archive_tc27_card_wave_20260928_checksum_idx").using("btree", table.checksum.asc().nullsLast().op("text_ops")),
 	index("archive_tc27_card_wave_20260928_created_at_idx").using("btree", table.createdAt.desc().nullsFirst().op("timestamptz_ops")),
-	uniqueIndex("archive_tc27_card_wave_20260928_document_id_doc_version_idx").using("btree", table.documentId.asc().nullsLast().op("text_ops"), table.docVersion.asc().nullsLast().op("text_ops")),
+	uniqueIndex("archive_tc27_card_wave_20260928_document_id_doc_version_idx").using("btree", table.documentId.asc().nullsLast().op("text_ops"), table.docVersion.asc().nullsLast().op("int4_ops")),
 	index("archive_tc27_card_wave_20260928_kind_idx").using("btree", table.kind.asc().nullsLast().op("text_ops")),
 	check("ck_documents_kind", sql`(kind)::text = ANY ((ARRAY['QUESTION_PAPER'::character varying, 'MARK_SCHEME'::character varying, 'SYLLABUS'::character varying, 'OTHER'::character varying, 'TEXTBOOK'::character varying, 'EXTERNAL_NOTES'::character varying, 'EXTERNAL_QUESTIONS'::character varying])::text[])`),
 	check("ck_documents_validation_state", sql`(validation_state)::text = ANY ((ARRAY['SUGGESTED'::character varying, 'VALIDATED'::character varying, 'REJECTED'::character varying, 'FLAGGED'::character varying])::text[])`),
@@ -1058,7 +1058,7 @@ export const tutorSessionTurns = pgTable("tutor_session_turns", {
 	latencyMs: doublePrecision("latency_ms"),
 	createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
-	index("idx_tutor_session_turns_session").using("btree", table.sessionId.asc().nullsLast().op("int4_ops"), table.seq.asc().nullsLast().op("uuid_ops")),
+	index("idx_tutor_session_turns_session").using("btree", table.sessionId.asc().nullsLast().op("uuid_ops"), table.seq.asc().nullsLast().op("int4_ops")),
 	foreignKey({
 			columns: [table.sessionId],
 			foreignColumns: [tutorSessions.id],
@@ -1077,7 +1077,7 @@ export const flashcardRatings = pgTable("flashcard_ratings", {
 	occurredAt: timestamp("occurred_at", { withTimezone: true, mode: 'string' }).notNull(),
 	createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
-	index("ix_fr_learner_card").using("btree", table.learnerId.asc().nullsLast().op("text_ops"), table.cardId.asc().nullsLast().op("uuid_ops")),
+	index("ix_fr_learner_card").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.cardId.asc().nullsLast().op("text_ops")),
 	index("ix_fr_learner_recent").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.occurredAt.desc().nullsFirst().op("timestamptz_ops")),
 	check("flashcard_ratings_rating_check", sql`(rating)::text = ANY ((ARRAY['STILL_LEARNING'::character varying, 'KNOW'::character varying])::text[])`),
 ]);
@@ -1091,7 +1091,7 @@ export const assignmentSubmissions = pgTable("assignment_submissions", {
 	occurredAt: timestamp("occurred_at", { withTimezone: true, mode: 'string' }).notNull(),
 	createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
-	index("ix_asub_assignment_recent").using("btree", table.assignmentId.asc().nullsLast().op("timestamptz_ops"), table.occurredAt.desc().nullsFirst().op("timestamptz_ops")),
+	index("ix_asub_assignment_recent").using("btree", table.assignmentId.asc().nullsLast().op("uuid_ops"), table.occurredAt.desc().nullsFirst().op("timestamptz_ops")),
 	index("ix_asub_learner").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops")),
 	check("assignment_submissions_questions_completed_check", sql`questions_completed >= 0`),
 	check("assignment_submissions_score_check", sql`(score IS NULL) OR (score >= 0)`),
@@ -1107,7 +1107,7 @@ export const noteVotes = pgTable("note_votes", {
 	createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
 	index("ix_nv_learner_note").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.noteId.asc().nullsLast().op("text_ops")),
-	index("ix_nv_learner_recent").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.occurredAt.desc().nullsFirst().op("uuid_ops")),
+	index("ix_nv_learner_recent").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.occurredAt.desc().nullsFirst().op("timestamptz_ops")),
 	check("note_votes_vote_check", sql`(vote)::text = ANY ((ARRAY['HELPFUL'::character varying, 'NOT_HELPFUL'::character varying])::text[])`),
 ]);
 
@@ -1118,7 +1118,7 @@ export const tutorSessions = pgTable("tutor_sessions", {
 	lastActiveAt: timestamp("last_active_at", { withTimezone: true, mode: 'string' }).notNull(),
 	courseRef: varchar("course_ref", { length: 64 }),
 }, (table) => [
-	index("idx_tutor_sessions_learner_active").using("btree", table.learnerId.asc().nullsLast().op("timestamptz_ops"), table.lastActiveAt.desc().nullsFirst().op("timestamptz_ops")),
+	index("idx_tutor_sessions_learner_active").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.lastActiveAt.desc().nullsFirst().op("timestamptz_ops")),
 	foreignKey({
 			columns: [table.learnerId],
 			foreignColumns: [users.id],
@@ -1165,7 +1165,7 @@ export const announcements = pgTable("announcements", {
 	category: varchar({ length: 20 }).default('GENERAL').notNull(),
 	createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
-	index("ix_ann_class_recent").using("btree", table.classId.asc().nullsLast().op("timestamptz_ops"), table.createdAt.desc().nullsFirst().op("timestamptz_ops")),
+	index("ix_ann_class_recent").using("btree", table.classId.asc().nullsLast().op("uuid_ops"), table.createdAt.desc().nullsFirst().op("timestamptz_ops")),
 	foreignKey({
 			columns: [table.classId],
 			foreignColumns: [classes.id],
@@ -1218,7 +1218,7 @@ export const examSeries = pgTable("exam_series", {
 	createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
 	updatedAt: timestamp("updated_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
-	index("ix_exam_series_lookup").using("btree", table.board.asc().nullsLast().op("date_ops"), table.qualification.asc().nullsLast().op("text_ops"), table.published.asc().nullsLast().op("date_ops"), table.windowStart.asc().nullsLast().op("text_ops")),
+	index("ix_exam_series_lookup").using("btree", table.board.asc().nullsLast().op("text_ops"), table.qualification.asc().nullsLast().op("text_ops"), table.published.asc().nullsLast().op("bool_ops"), table.windowStart.asc().nullsLast().op("date_ops")),
 	unique("uq_exam_series").on(table.board, table.qualification, table.seriesCode),
 	check("ck_exam_series_window", sql`window_end >= window_start`),
 ]);
@@ -1250,7 +1250,7 @@ export const teachingCoverageEvents = pgTable("teaching_coverage_events", {
 	note: varchar({ length: 500 }),
 	createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
-	index("ix_tcov_event_point").using("btree", table.classId.asc().nullsLast().op("uuid_ops"), table.specPointNodeId.asc().nullsLast().op("timestamptz_ops"), table.createdAt.desc().nullsFirst().op("uuid_ops")),
+	index("ix_tcov_event_point").using("btree", table.classId.asc().nullsLast().op("uuid_ops"), table.specPointNodeId.asc().nullsLast().op("uuid_ops"), table.createdAt.desc().nullsFirst().op("timestamptz_ops")),
 	foreignKey({
 			columns: [table.classId],
 			foreignColumns: [classes.id],

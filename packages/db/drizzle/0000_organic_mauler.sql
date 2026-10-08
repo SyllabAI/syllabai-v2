@@ -946,43 +946,43 @@ ALTER TABLE "teaching_coverage" ADD CONSTRAINT "teaching_coverage_spec_point_nod
 CREATE INDEX "ix_knowledge_node_type" ON "knowledge_nodes" USING btree ("node_type" text_ops);--> statement-breakpoint
 CREATE UNIQUE INDEX "uq_knowledge_node_code" ON "knowledge_nodes" USING btree ("code" text_ops);--> statement-breakpoint
 CREATE UNIQUE INDEX "uq_users_email" ON "users" USING btree (lower((email)::text) text_ops);--> statement-breakpoint
-CREATE INDEX "ix_edge_source_type" ON "knowledge_edges" USING btree ("source_node_id" text_ops,"relation_type" uuid_ops);--> statement-breakpoint
-CREATE INDEX "ix_edge_target_type" ON "knowledge_edges" USING btree ("target_node_id" text_ops,"relation_type" text_ops);--> statement-breakpoint
-CREATE INDEX "ix_telemetry_learner_time" ON "telemetry_events" USING btree ("learner_id" timestamptz_ops,"occurred_at" timestamptz_ops);--> statement-breakpoint
+CREATE INDEX "ix_edge_source_type" ON "knowledge_edges" USING btree ("source_node_id" uuid_ops,"relation_type" text_ops);--> statement-breakpoint
+CREATE INDEX "ix_edge_target_type" ON "knowledge_edges" USING btree ("target_node_id" uuid_ops,"relation_type" text_ops);--> statement-breakpoint
+CREATE INDEX "ix_telemetry_learner_time" ON "telemetry_events" USING btree ("learner_id" uuid_ops,"occurred_at" timestamptz_ops);--> statement-breakpoint
 CREATE INDEX "ix_telemetry_type" ON "telemetry_events" USING btree ("event_type" text_ops);--> statement-breakpoint
-CREATE INDEX "ix_options_question" ON "question_options" USING btree ("question_id" int4_ops,"ordering" uuid_ops);--> statement-breakpoint
+CREATE INDEX "ix_options_question" ON "question_options" USING btree ("question_id" uuid_ops,"ordering" int4_ops);--> statement-breakpoint
 CREATE UNIQUE INDEX "uq_one_correct_option" ON "question_options" USING btree ("question_id" uuid_ops) WHERE is_correct;--> statement-breakpoint
-CREATE INDEX "ix_attempts_learner_time" ON "attempts" USING btree ("learner_id" timestamptz_ops,"created_at" timestamptz_ops);--> statement-breakpoint
+CREATE INDEX "ix_attempts_learner_time" ON "attempts" USING btree ("learner_id" uuid_ops,"created_at" timestamptz_ops);--> statement-breakpoint
 CREATE INDEX "ix_attempts_question" ON "attempts" USING btree ("question_id" uuid_ops);--> statement-breakpoint
-CREATE INDEX "ix_exam_papers_paper_year_series" ON "exam_papers" USING btree ("paper_code" text_ops,"year" int4_ops,"series" int4_ops) WHERE (paper_code IS NOT NULL);--> statement-breakpoint
+CREATE INDEX "ix_exam_papers_paper_year_series" ON "exam_papers" USING btree ("paper_code" text_ops,"year" int4_ops,"series" text_ops) WHERE (paper_code IS NOT NULL);--> statement-breakpoint
 CREATE INDEX "ix_exam_papers_subject" ON "exam_papers" USING btree ("subject_id" uuid_ops);--> statement-breakpoint
 CREATE UNIQUE INDEX "uq_exam_paper_identity" ON "exam_papers" USING btree ("paper_code" text_ops,"session_label" text_ops) WHERE (paper_code IS NOT NULL);--> statement-breakpoint
-CREATE INDEX "ix_question_versions_question" ON "question_versions" USING btree ("question_id" int4_ops,"version" uuid_ops);--> statement-breakpoint
-CREATE INDEX "ix_question_parts_version" ON "question_parts" USING btree ("question_version_id" int4_ops,"ordering" uuid_ops);--> statement-breakpoint
+CREATE INDEX "ix_question_versions_question" ON "question_versions" USING btree ("question_id" uuid_ops,"version" int4_ops);--> statement-breakpoint
+CREATE INDEX "ix_question_parts_version" ON "question_parts" USING btree ("question_version_id" uuid_ops,"ordering" int4_ops);--> statement-breakpoint
 CREATE INDEX "ix_mark_points_part" ON "mark_points" USING btree ("question_part_id" uuid_ops);--> statement-breakpoint
-CREATE INDEX "ix_mark_points_scheme" ON "mark_points" USING btree ("mark_scheme_id" int4_ops,"ordering" int4_ops);--> statement-breakpoint
+CREATE INDEX "ix_mark_points_scheme" ON "mark_points" USING btree ("mark_scheme_id" uuid_ops,"ordering" int4_ops);--> statement-breakpoint
 CREATE INDEX "ix_answers_attempt" ON "answers" USING btree ("attempt_id" uuid_ops);--> statement-breakpoint
 CREATE INDEX "ix_answers_part" ON "answers" USING btree ("question_part_id" uuid_ops);--> statement-breakpoint
 CREATE INDEX "ix_answers_state" ON "answers" USING btree ("marking_state" text_ops);--> statement-breakpoint
-CREATE INDEX "ix_smart_mark_results_answer" ON "smart_mark_results" USING btree ("answer_id" timestamptz_ops,"created_at" timestamptz_ops);--> statement-breakpoint
+CREATE INDEX "ix_smart_mark_results_answer" ON "smart_mark_results" USING btree ("answer_id" uuid_ops,"created_at" timestamptz_ops);--> statement-breakpoint
 CREATE INDEX "ix_skill_states_last_practice" ON "skill_states" USING btree ("last_practiced_at" timestamptz_ops);--> statement-breakpoint
 CREATE INDEX "ix_skill_states_node" ON "skill_states" USING btree ("node_id" uuid_ops);--> statement-breakpoint
-CREATE INDEX "ix_human_marks_answer" ON "human_marks" USING btree ("answer_id" timestamptz_ops,"created_at" timestamptz_ops);--> statement-breakpoint
-CREATE INDEX "idx_struggle_inference_learner_expiry" ON "struggle_inferences" USING btree ("learner_id" float8_ops,"expires_at" uuid_ops,"probability" uuid_ops);--> statement-breakpoint
-CREATE INDEX "idx_struggle_inference_learner_topic_expiry" ON "struggle_inferences" USING btree ("learner_id" float8_ops,"topic_node_id" float8_ops,"expires_at" timestamptz_ops,"probability" float8_ops);--> statement-breakpoint
-CREATE INDEX "idx_struggle_inference_supersede" ON "struggle_inferences" USING btree ("learner_id" timestamptz_ops,"topic_node_id" timestamptz_ops,"type" timestamptz_ops,"expires_at" uuid_ops) WHERE (superseded_at IS NULL);--> statement-breakpoint
+CREATE INDEX "ix_human_marks_answer" ON "human_marks" USING btree ("answer_id" uuid_ops,"created_at" timestamptz_ops);--> statement-breakpoint
+CREATE INDEX "idx_struggle_inference_learner_expiry" ON "struggle_inferences" USING btree ("learner_id" uuid_ops,"expires_at" timestamptz_ops,"probability" float8_ops);--> statement-breakpoint
+CREATE INDEX "idx_struggle_inference_learner_topic_expiry" ON "struggle_inferences" USING btree ("learner_id" uuid_ops,"topic_node_id" uuid_ops,"expires_at" timestamptz_ops,"probability" float8_ops);--> statement-breakpoint
+CREATE INDEX "idx_struggle_inference_supersede" ON "struggle_inferences" USING btree ("learner_id" uuid_ops,"topic_node_id" uuid_ops,"type" text_ops,"expires_at" timestamptz_ops) WHERE (superseded_at IS NULL);--> statement-breakpoint
 CREATE INDEX "ix_tve_run" ON "teacher_validation_events" USING btree ("importer_run_id" uuid_ops);--> statement-breakpoint
-CREATE INDEX "ix_tve_target" ON "teacher_validation_events" USING btree ("target_type" text_ops,"target_id" text_ops);--> statement-breakpoint
+CREATE INDEX "ix_tve_target" ON "teacher_validation_events" USING btree ("target_type" text_ops,"target_id" uuid_ops);--> statement-breakpoint
 CREATE INDEX "ix_questions_paper" ON "questions" USING btree ("exam_paper_id" uuid_ops) WHERE (exam_paper_id IS NOT NULL);--> statement-breakpoint
 CREATE INDEX "ix_questions_topic" ON "questions" USING btree ("primary_topic_node_id" uuid_ops) WHERE active;--> statement-breakpoint
-CREATE INDEX "ix_review_learner_status" ON "review_schedules" USING btree ("learner_id" text_ops,"status" uuid_ops,"due_at" timestamptz_ops);--> statement-breakpoint
+CREATE INDEX "ix_review_learner_status" ON "review_schedules" USING btree ("learner_id" uuid_ops,"status" text_ops,"due_at" timestamptz_ops);--> statement-breakpoint
 CREATE INDEX "ix_review_status_due" ON "review_schedules" USING btree ("status" text_ops,"due_at" timestamptz_ops);--> statement-breakpoint
-CREATE INDEX "intervention_run_step_run_idx" ON "intervention_run_step" USING btree ("run_id" int4_ops,"sequence_no" uuid_ops);--> statement-breakpoint
+CREATE INDEX "intervention_run_step_run_idx" ON "intervention_run_step" USING btree ("run_id" uuid_ops,"sequence_no" int4_ops);--> statement-breakpoint
 CREATE INDEX "flyway_schema_history_s_idx" ON "flyway_schema_history" USING btree ("success" bool_ops);--> statement-breakpoint
-CREATE INDEX "intervention_run_evidence_run_idx" ON "intervention_run_evidence" USING btree ("run_id" timestamptz_ops,"captured_at" timestamptz_ops);--> statement-breakpoint
+CREATE INDEX "intervention_run_evidence_run_idx" ON "intervention_run_evidence" USING btree ("run_id" uuid_ops,"captured_at" timestamptz_ops);--> statement-breakpoint
 CREATE INDEX "revision_note_tree_idx" ON "revision_note" USING btree ("topic_order" int4_ops,"subtopic_order" int4_ops,"note_order" int4_ops);--> statement-breakpoint
-CREATE INDEX "revision_note_viewed_user_idx" ON "revision_note_viewed" USING btree ("user_id" timestamptz_ops,"viewed_at" timestamptz_ops);--> statement-breakpoint
-CREATE INDEX "intervention_run_learner_created_idx" ON "intervention_run" USING btree ("learner_id" timestamptz_ops,"created_at" timestamptz_ops);--> statement-breakpoint
+CREATE INDEX "revision_note_viewed_user_idx" ON "revision_note_viewed" USING btree ("user_id" uuid_ops,"viewed_at" timestamptz_ops);--> statement-breakpoint
+CREATE INDEX "intervention_run_learner_created_idx" ON "intervention_run" USING btree ("learner_id" uuid_ops,"created_at" timestamptz_ops);--> statement-breakpoint
 CREATE INDEX "ix_documents_created" ON "documents" USING btree ("created_at" timestamptz_ops);--> statement-breakpoint
 CREATE INDEX "ix_documents_kind" ON "documents" USING btree ("kind" text_ops);--> statement-breakpoint
 CREATE UNIQUE INDEX "uq_documents_canonical_id" ON "documents" USING btree ("document_id" text_ops,"doc_version" int4_ops);--> statement-breakpoint
@@ -994,40 +994,40 @@ CREATE INDEX "ix_document_chunks_document" ON "document_chunks" USING btree ("do
 CREATE INDEX "ix_document_chunks_embedding" ON "document_chunks" USING hnsw ("embedding" vector_cosine_ops);--> statement-breakpoint
 CREATE INDEX "ix_document_chunks_pending" ON "document_chunks" USING btree ("document_row_id" uuid_ops) WHERE (embedding IS NULL);--> statement-breakpoint
 CREATE INDEX "ix_document_chunks_spec_codes" ON "document_chunks" USING gin ("spec_codes" jsonb_ops) WHERE (spec_codes IS NOT NULL);--> statement-breakpoint
-CREATE INDEX "ix_document_chunks_subject_kind" ON "document_chunks" USING btree ("subject_id" text_ops,"kind" uuid_ops) WHERE (subject_id IS NOT NULL);--> statement-breakpoint
-CREATE INDEX "ix_document_chunks_subject_year_series" ON "document_chunks" USING btree ("subject_id" text_ops,"year" uuid_ops,"series" int4_ops) WHERE (subject_id IS NOT NULL);--> statement-breakpoint
+CREATE INDEX "ix_document_chunks_subject_kind" ON "document_chunks" USING btree ("subject_id" uuid_ops,"kind" text_ops) WHERE (subject_id IS NOT NULL);--> statement-breakpoint
+CREATE INDEX "ix_document_chunks_subject_year_series" ON "document_chunks" USING btree ("subject_id" uuid_ops,"year" int4_ops,"series" text_ops) WHERE (subject_id IS NOT NULL);--> statement-breakpoint
 CREATE INDEX "ix_lsm_answer" ON "learner_self_marks" USING btree ("answer_id" uuid_ops);--> statement-breakpoint
 CREATE INDEX "ix_lsm_learner" ON "learner_self_marks" USING btree ("learner_id" uuid_ops);--> statement-breakpoint
-CREATE INDEX "ix_tte_learner_recent" ON "tutor_topic_engagements" USING btree ("learner_id" timestamptz_ops,"occurred_at" uuid_ops);--> statement-breakpoint
+CREATE INDEX "ix_tte_learner_recent" ON "tutor_topic_engagements" USING btree ("learner_id" uuid_ops,"occurred_at" timestamptz_ops);--> statement-breakpoint
 CREATE INDEX "ix_tte_learner_signal" ON "tutor_topic_engagements" USING btree ("learner_id" uuid_ops,"signal_type" text_ops);--> statement-breakpoint
-CREATE INDEX "ix_tte_learner_surface" ON "tutor_topic_engagements" USING btree ("learner_id" text_ops,"surface" text_ops,"occurred_at" uuid_ops);--> statement-breakpoint
+CREATE INDEX "ix_tte_learner_surface" ON "tutor_topic_engagements" USING btree ("learner_id" uuid_ops,"surface" text_ops,"occurred_at" timestamptz_ops);--> statement-breakpoint
 CREATE INDEX "ix_tte_node" ON "tutor_topic_engagements" USING btree ("node_id" uuid_ops);--> statement-breakpoint
 CREATE INDEX "ix_cra_actor" ON "content_review_audit" USING btree ("actor_user_id" uuid_ops);--> statement-breakpoint
 CREATE INDEX "ix_cra_occurred" ON "content_review_audit" USING btree ("occurred_at" timestamptz_ops);--> statement-breakpoint
-CREATE INDEX "ix_cra_target" ON "content_review_audit" USING btree ("target_type" uuid_ops,"target_id" text_ops);--> statement-breakpoint
+CREATE INDEX "ix_cra_target" ON "content_review_audit" USING btree ("target_type" text_ops,"target_id" uuid_ops);--> statement-breakpoint
 CREATE INDEX "ix_glm_ocr_bridge_reconciliation" ON "glm_ocr_bridge_records" USING btree ("reconciliation_status" text_ops);--> statement-breakpoint
 CREATE UNIQUE INDEX "uq_glm_ocr_bridge_pair" ON "glm_ocr_bridge_records" USING btree ("qp_document_id" text_ops,"ms_document_id" text_ops);--> statement-breakpoint
 CREATE UNIQUE INDEX "uq_glm_ocr_bridge_paper" ON "glm_ocr_bridge_records" USING btree ("paper_id" uuid_ops);--> statement-breakpoint
 CREATE UNIQUE INDEX "archive_tc27_card_wave_20260928_checksum_idx" ON "archive_tc27_card_wave_20260928" USING btree ("checksum" text_ops);--> statement-breakpoint
 CREATE INDEX "archive_tc27_card_wave_20260928_created_at_idx" ON "archive_tc27_card_wave_20260928" USING btree ("created_at" timestamptz_ops);--> statement-breakpoint
-CREATE UNIQUE INDEX "archive_tc27_card_wave_20260928_document_id_doc_version_idx" ON "archive_tc27_card_wave_20260928" USING btree ("document_id" text_ops,"doc_version" text_ops);--> statement-breakpoint
+CREATE UNIQUE INDEX "archive_tc27_card_wave_20260928_document_id_doc_version_idx" ON "archive_tc27_card_wave_20260928" USING btree ("document_id" text_ops,"doc_version" int4_ops);--> statement-breakpoint
 CREATE INDEX "archive_tc27_card_wave_20260928_kind_idx" ON "archive_tc27_card_wave_20260928" USING btree ("kind" text_ops);--> statement-breakpoint
-CREATE INDEX "idx_tutor_session_turns_session" ON "tutor_session_turns" USING btree ("session_id" int4_ops,"seq" uuid_ops);--> statement-breakpoint
-CREATE INDEX "ix_fr_learner_card" ON "flashcard_ratings" USING btree ("learner_id" text_ops,"card_id" uuid_ops);--> statement-breakpoint
+CREATE INDEX "idx_tutor_session_turns_session" ON "tutor_session_turns" USING btree ("session_id" uuid_ops,"seq" int4_ops);--> statement-breakpoint
+CREATE INDEX "ix_fr_learner_card" ON "flashcard_ratings" USING btree ("learner_id" uuid_ops,"card_id" text_ops);--> statement-breakpoint
 CREATE INDEX "ix_fr_learner_recent" ON "flashcard_ratings" USING btree ("learner_id" uuid_ops,"occurred_at" timestamptz_ops);--> statement-breakpoint
-CREATE INDEX "ix_asub_assignment_recent" ON "assignment_submissions" USING btree ("assignment_id" timestamptz_ops,"occurred_at" timestamptz_ops);--> statement-breakpoint
+CREATE INDEX "ix_asub_assignment_recent" ON "assignment_submissions" USING btree ("assignment_id" uuid_ops,"occurred_at" timestamptz_ops);--> statement-breakpoint
 CREATE INDEX "ix_asub_learner" ON "assignment_submissions" USING btree ("learner_id" uuid_ops);--> statement-breakpoint
 CREATE INDEX "ix_nv_learner_note" ON "note_votes" USING btree ("learner_id" uuid_ops,"note_id" text_ops);--> statement-breakpoint
-CREATE INDEX "ix_nv_learner_recent" ON "note_votes" USING btree ("learner_id" uuid_ops,"occurred_at" uuid_ops);--> statement-breakpoint
-CREATE INDEX "idx_tutor_sessions_learner_active" ON "tutor_sessions" USING btree ("learner_id" timestamptz_ops,"last_active_at" timestamptz_ops);--> statement-breakpoint
+CREATE INDEX "ix_nv_learner_recent" ON "note_votes" USING btree ("learner_id" uuid_ops,"occurred_at" timestamptz_ops);--> statement-breakpoint
+CREATE INDEX "idx_tutor_sessions_learner_active" ON "tutor_sessions" USING btree ("learner_id" uuid_ops,"last_active_at" timestamptz_ops);--> statement-breakpoint
 CREATE INDEX "ix_class_teacher" ON "classes" USING btree ("teacher_id" uuid_ops);--> statement-breakpoint
 CREATE UNIQUE INDEX "ux_class_teacher_course_name" ON "classes" USING btree (teacher_id text_ops,course_slug text_ops,lower((name)::text) text_ops) WHERE ((status)::text = 'ACTIVE'::text);--> statement-breakpoint
 CREATE INDEX "ix_cmember_student" ON "class_members" USING btree ("student_id" uuid_ops);--> statement-breakpoint
-CREATE INDEX "ix_ann_class_recent" ON "announcements" USING btree ("class_id" timestamptz_ops,"created_at" timestamptz_ops);--> statement-breakpoint
+CREATE INDEX "ix_ann_class_recent" ON "announcements" USING btree ("class_id" uuid_ops,"created_at" timestamptz_ops);--> statement-breakpoint
 CREATE INDEX "ix_as_class" ON "assignments" USING btree ("class_id" uuid_ops);--> statement-breakpoint
 CREATE INDEX "ix_as_created" ON "assignments" USING btree ("created_at" timestamptz_ops);--> statement-breakpoint
 CREATE INDEX "ix_as_teacher" ON "assignments" USING btree ("teacher_id" uuid_ops);--> statement-breakpoint
-CREATE INDEX "ix_exam_series_lookup" ON "exam_series" USING btree ("board" date_ops,"qualification" text_ops,"published" date_ops,"window_start" text_ops);--> statement-breakpoint
+CREATE INDEX "ix_exam_series_lookup" ON "exam_series" USING btree ("board" text_ops,"qualification" text_ops,"published" bool_ops,"window_start" date_ops);--> statement-breakpoint
 CREATE INDEX "ix_learner_course_enrolment_series" ON "learner_course_enrolments" USING btree ("target_series_id" uuid_ops);--> statement-breakpoint
-CREATE INDEX "ix_tcov_event_point" ON "teaching_coverage_events" USING btree ("class_id" uuid_ops,"spec_point_node_id" timestamptz_ops,"created_at" uuid_ops);
+CREATE INDEX "ix_tcov_event_point" ON "teaching_coverage_events" USING btree ("class_id" uuid_ops,"spec_point_node_id" uuid_ops,"created_at" timestamptz_ops);
 */
