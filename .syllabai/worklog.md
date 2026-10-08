@@ -5428,3 +5428,15 @@ Stage Summary:
 - Card T-MIG-098 flipped IN_REVIEW -> DONE (this commit; owner-of-record unchanged, no ID collision).
 - Live env half (separate operator order trace 1a119be9a69d2ab5): executed + verified this session — receipt 3d44cee; issue #147 closure comment 6052402868; #147 lever ledger now fully discharged (decommission r1c d99e4e0; env prune here; code default #149).
 - Operator advisory of record: revoke/rotate the Vercel token supplied in chat (plaintext-in-chat hygiene, standing advisory).
+
+---
+Task ID: T-MIG-099 (desk filing; operator trace 1a119d1cf23272f5 "pre-draft the 093-class defect-band card for the ghost fix")
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+
+Work Log:
+- Zero-collision scan @ origin/main 6a30e96: zero T-MIG-099 file in .syllabai/tasks/ (highest = 098), zero *099* branch heads ls-remote — 099 is the next free id, claimed by THIS card filing.
+- Filed .syllabai/tasks/T-MIG-099-mark-points-ghost-table-band.yaml — the 093 fake-vs-real class, schema-existence/self-referential-pinning member: 4 ghost SQL sites (smartmark :540/:846/:865 + teachermarking :550) + 3 self-referential fakeSql pins querying mark_scheme_points which exists in NEITHER schema of record (frozen Flyway V8 / v2 drizzle 0000); frozen law = mark_points (V8:110, MarkPoint.java:27, FetchService.java:208, the derived repo query); fix-of-record = the #144 rename (29cea42/993c18e) verified by R0-TM053-RECON run-001 F3/F4; exposure law per F5 (learner smart-mark live-routed through the ghost pre-LLM; teacher site latent; self-mark unaffected — the T-MIG-055 quirk band explicitly fenced OFF); corpus safety per F4 (zero re-capture); owed proof leg = real-wire seeded-VALIDATED-scheme smart-mark on the sanctioned scratch substrate + post-redeploy live error-class note; class ledger filed (093 binding / 099 schema-existence / kg-retriever register item) + the desk law: fakeSql-pinned SQL must cite real-wire corroboration.
+- Status OPEN -> DONE requires: #144 desk-merge carrying the 7-file rename intact + the proof leg. Pointer comment posted on #144 (the card-link completion of review 5451273481 item-2 / comment 6052294137). Card YAML parse-verified. .syllabai-only direct-main (fetch-first), no merges, no force.
+
+Stage Summary:
+- T-MIG-099 filed of record as the disclosure/card-link target for #144's riding ghost-table fix; the 093-class fake-vs-real family now has its schema-existence member named and the real-wire-corroboration desk law on record. #144 unblock list: head CI + this card (done) + intake union. Lane IDLE.
