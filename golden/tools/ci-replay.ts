@@ -84,6 +84,7 @@
  */
 import { loadCases, deepEqualTolerant, buildMultipartBody, partitionByTranche, checkHeaders, declaredLimiter429, ordinaryHeaderExpectations, authPosture, renderResponseBody } from "../runner.ts";
 import { join } from "node:path";
+import { readFileSync } from "node:fs";
 
 const REALDATA = /realdata|-real-/; // verbatim posture regex (T-MIG-022 v2 tool)
 const DUMMY = "scrubbed-fixed-dummy-jwt-token";
@@ -534,6 +535,39 @@ function plan(): void {
   console.log(`  learner-declared cases (T-MIG-078, replay as the w4 capture identity): ${declared.length}${declared.length ? " — " + declared.map((k) => k.name).join(", ") : ""}`);
 }
 
+// T-MIG-099 (operator trace 1a119d17533d1985): the declared justified-class
+// ledger — the union-verdict tolerance the operator's cron-slot ask of record
+// named ("pre-file them in the union tolerance"). The REPLAY path never sees
+// it: the case-level comparison stays byte-honest (deepEqualTolerant untouched,
+// GOLDEN_MASTER §4 "cases are forever"). A FAIL is forgiven by the union verdict
+// iff the case is named in the committed ledger AND the case file itself declares
+// justified:true (selftest-pinned invariants). Every forgiven row is DISCLOSED
+// in the verdict line and summary — the green is never silent (the R3-C
+// declared429 precedent, verdict-layer only).
+interface JustifiedLedgerEntry {
+  case: string;
+  class: string;
+  owner: string;
+}
+interface JustifiedLedger {
+  version: number;
+  entries: JustifiedLedgerEntry[];
+}
+
+function loadJustifiedLedger(): Map<string, JustifiedLedgerEntry> {
+  const path = join(import.meta.dir, "..", "justified-ledger.json");
+  const ledger = JSON.parse(readFileSync(path, "utf8")) as JustifiedLedger;
+  if (!ledger || ledger.version !== 1 || !Array.isArray(ledger.entries)) {
+    fail(`justified-ledger.json malformed (expected version 1 + entries[])`);
+  }
+  const map = new Map<string, JustifiedLedgerEntry>();
+  for (const e of ledger.entries) {
+    if (!e.case || !e.class || !e.owner) fail(`justified-ledger entry malformed: ${JSON.stringify(e)}`);
+    map.set(e.case, e);
+  }
+  return map;
+}
+
 // --union: merge the two posture reports into the standing re-proof verdict.
 async function union(aPath: string, bPath: string, summaryOut?: string): Promise<void> {
   const fs = await import("node:fs");
@@ -543,28 +577,49 @@ async function union(aPath: string, bPath: string, summaryOut?: string): Promise
   const fails = all.filter((r) => !r.pass);
   const d429 = all.filter((r) => r.declared429).length;
   const d429Note = d429 > 0 ? ` — ${d429} via the T-MIG-071 (R3-C) declared limiter-429 disposition` : "";
-  console.log(`\nUNION VERDICT: ${all.length - fails.length}/${all.length} golden cases pass (seed ${a.results.filter((r) => r.pass).length}/${a.results.length} + prod ${b.results.filter((r) => r.pass).length}/${b.results.length})${d429Note}`);
-  if (fails.length > 0) {
+  // T-MIG-099: split the reds into declared-justified (forgiven, disclosed) vs
+  // unforgiven (still red the job — any divergence outside the ledger gates).
+  const ledger = loadJustifiedLedger();
+  const justified = fails.filter((f) => ledger.has(f.name));
+  const unforgiven = fails.filter((f) => !ledger.has(f.name));
+  const justifiedNote =
+    justified.length > 0
+      ? ` — ${justified.length} via the T-MIG-099 declared justified-class ledger (${[...new Set(justified.map((f) => `${f.name} -> ${ledger.get(f.name)!.owner}`))].join(", ")})`
+      : "";
+  console.log(`\nUNION VERDICT: ${all.length - unforgiven.length}/${all.length} golden cases pass (seed ${a.results.filter((r) => r.pass).length}/${a.results.length} + prod ${b.results.filter((r) => r.pass).length}/${b.results.length})${d429Note}${justifiedNote}`);
+  if (justified.length > 0) {
+    console.log("declared-justified (T-MIG-099 ledger — case-level diff stays of record; green is never silent):");
+    for (const f of justified) {
+      const e = ledger.get(f.name)!;
+      console.log(`  ~ [${f.mode}] ${f.name} (class ${e.class}, owner ${e.owner}): ${f.diff}`);
+    }
+  }
+  if (unforgiven.length > 0) {
     console.log("failures (FILED, not fixed — AGENT_COORDINATION §6):");
-    for (const f of fails) console.log(`  - [${f.mode}] ${f.name}: ${f.diff}`);
+    for (const f of unforgiven) console.log(`  - [${f.mode}] ${f.name}: ${f.diff}`);
   }
   if (summaryOut) {
     const lines = [
-      `## Neon golden replay — union verdict: ${all.length - fails.length}/${all.length} PASS${d429Note}`,
+      `## Neon golden replay — union verdict: ${all.length - unforgiven.length}/${all.length} PASS${d429Note}${justifiedNote}`,
       "",
       "| posture | pass | total |",
       "|---|---|---|",
       `| seed (apply-reset, non-realdata) | ${a.results.filter((r) => r.pass).length} | ${a.results.length} |`,
       `| prod (as-cowed, realdata) | ${b.results.filter((r) => r.pass).length} | ${b.results.length} |`,
       "",
-      ...(fails.length
-        ? ["<details><summary>failures (filed for R0/R6, never auto-fixed)</summary>", "", ...fails.map((f) => `- **[${f.mode}] ${f.name}** — ${f.diff}`), "</details>"]
-        : ["All cases green."]),
+      ...(justified.length
+        ? ["<details><summary>declared-justified (T-MIG-099 ledger — owner cards named; retire on fix)</summary>", "", ...justified.map((f) => { const e = ledger.get(f.name)!; return `- **[${f.mode}] ${f.name}** — class \`${e.class}\`, owner **${e.owner}** — ${f.diff}`; }), "</details>", ""]
+        : []),
+      ...(unforgiven.length
+        ? ["<details><summary>failures (filed for R0/R6, never auto-fixed)</summary>", "", ...unforgiven.map((f) => `- **[${f.mode}] ${f.name}** — ${f.diff}`), "</details>"]
+        : unforgiven.length === 0 && justified.length === 0
+          ? ["All cases green."]
+          : []),
     ];
     fs.writeFileSync(summaryOut, lines.join("\n") + "\n");
     console.log(`[ci-replay] union summary written: ${summaryOut}`);
   }
-  process.exit(fails.length === 0 ? 0 : 1);
+  process.exit(unforgiven.length === 0 ? 0 : 1);
 }
 
 // --selftest: the T-MIG-063 extensions must prove themselves before any live
@@ -642,11 +697,16 @@ function selftest(): number {
   // reroutes the DEFAULT bearer only; prod never sees it); none declares an
   // unauthed/403 name whose capture pins a non-learner bearer.
   const declared = (loadCases() as GoldenCase[]).filter((k) => k.learner === "w4-capture");
+  // T-MIG-099: the declared set grows 7 -> 10 — the three additions
+  // (flashcard-schedule-derived, flashcard-trail, knowledge-graph-practiced)
+  // declare the SAME capture identity per the T-MIG-078 F-2 pattern (the
+  // capture read the capture session's learner; first-hand learner_40
+  // verification in the T-MIG-099 reproduction). Same invariants.
   t(
-    "learner-declared: exactly the seven T-MIG-078 cases",
-    declared.length === 7 &&
+    "learner-declared: exactly the 7 T-MIG-078 + 3 T-MIG-099 cases",
+    declared.length === 10 &&
       declared.every((k) =>
-        /^(w4-flashcard-rating-know-201|w4-flashcard-rating-know-2-201|w4-flashcard-rating-still-learning-201|w4-attempt-mcq-practice-201|w4-course-stats-practiced-200|w4-state-practiced-200|w3-history-after-submit-200)$/.test(k.name),
+        /^(w4-flashcard-rating-know-201|w4-flashcard-rating-know-2-201|w4-flashcard-rating-still-learning-201|w4-attempt-mcq-practice-201|w4-course-stats-practiced-200|w4-state-practiced-200|w3-history-after-submit-200|w4-flashcard-schedule-derived-200|w4-flashcard-trail-200|w4-knowledge-graph-practiced-200)$/.test(k.name),
       ),
   );
   t(
@@ -656,6 +716,29 @@ function selftest(): number {
   t(
     "learner-declared: every declaring case substitutes {{TOKEN}} (the rerouted resolution)",
     declared.every((k) => JSON.stringify(k.request?.headers ?? {}).includes("{{TOKEN}}")),
+  );
+  // T-MIG-099: the justified-ledger invariants — every ledger case exists in
+  // the committed corpus AND declares justified:true in its own file (the
+  // GOLDEN_MASTER §4 approval lives on the case, not only in the ledger);
+  // every entry names a non-empty owner card. The REPLAY path is unaffected
+  // (the ledger is union-layer only — asserted here, consumed in --union).
+  const ledger = JSON.parse(
+    readFileSync(join(import.meta.dir, "..", "justified-ledger.json"), "utf8"),
+  ) as { version: number; entries: Array<{ case: string; owner: string }> };
+  const corpus = loadCases() as GoldenCase[];
+  t("justified-ledger: version 1 with a non-empty entry list", ledger.version === 1 && ledger.entries.length > 0);
+  t(
+    "justified-ledger: every entry names an existing corpus case carrying justified:true + a non-empty owner",
+    ledger.entries.every((e) => {
+      const k = corpus.find((c) => c.name === e.case);
+      return k !== undefined && k.justified === true && typeof e.owner === "string" && e.owner.startsWith("T-MIG-");
+    }),
+  );
+  t(
+    "justified-ledger: the declared set is exactly the two learner-model-write-path-gap cases (T-MIG-100)",
+    ledger.entries.length === 2 &&
+      ledger.entries.map((e) => e.case).sort().join(",") === "w4-knowledge-graph-practiced-200,w4-state-practiced-200" &&
+      ledger.entries.every((e) => e.owner === "T-MIG-100"),
   );
   // 3. multipart import wiring (the gated runner builder, unchanged)
   const mf: GoldenCase = {

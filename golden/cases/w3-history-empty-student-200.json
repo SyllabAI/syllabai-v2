@@ -1,6 +1,6 @@
 {
   "name": "w3-history-empty-student-200",
-  "description": "Fresh student attempt history: 200 [] empty state. captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
+  "description": "Fresh student attempt history: 200 [] empty state. captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy T-MIG-099 adjudication (operator trace 1a119d17533d1985): learnerId joins tolerate per the ruled H-class (run-7 note H; R3-D4 Option A operator ruling: capture-minted/seeded-identity fields tolerated) — the replay registers a fresh learner per run and the pass evidence (union run #22 + the T-MIG-099 COW reproduction) shows learnerId is the ONLY non-tolerated diff (total/returned/attempts match exactly).",
   "source": "captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
   "method": "GET",
   "path": "/api/v1/learners/me/attempts",
@@ -19,7 +19,8 @@
     }
   },
   "tolerate": [
-    "timestamp"
+    "timestamp",
+    "learnerId"
   ],
   "tranche": "empty"
 }

@@ -1,6 +1,6 @@
 {
   "name": "w4-knowledge-graph-practiced-200",
-  "description": "knowledge graph after practice: effective mastery = decayService.decayed(...) at read (:115) \u2014 now-dependent numerics tolerated",
+  "description": "knowledge graph after practice: effective mastery = decayService.decayed(...) at read (:115) — now-dependent numerics tolerated T-MIG-099: learner \"w4-capture\" declared (T-MIG-078 pattern — the capture read the practiced capture learner) + prerequisiteEdges declared unordered (R3-D2 tie-order class, same edge multiset rotated) + justified:true per GOLDEN_MASTER §4. RESIDUAL OF RECORD: the nodes' persisted-posterior fields (band/attempts/correctCount/misconceptionProbability/misconceptionActive) stay null until the LearnerModelService submit-path writes are ported (T-MIG-100: frozen LearnerModelService.java :102-163 writes skill_states (BKT) + misconception_states (BDT); v2 ports only the readers) — declared-justified in golden/justified-ledger.json, owner T-MIG-100, retires when T-MIG-100 lands.",
   "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
   "method": "GET",
   "path": "/api/v1/learners/me/knowledge-graph?rootId=20000000-0000-0000-0000-000000000001",
@@ -45,7 +45,7 @@
           "code": "WCH11",
           "type": "UNIT",
           "title": "Unit 1: Structure, Bonding and Introduction to Organic Chemistry",
-          "description": "WCH11 \u2014 IAL Chemistry Unit 1",
+          "description": "WCH11 — IAL Chemistry Unit 1",
           "childIds": [
             "20000000-0000-0000-0000-000000000011",
             "20000000-0000-0000-0000-000000000021",
@@ -396,5 +396,11 @@
     "learnerId",
     "mastery",
     "timestamp"
-  ]
+  ],
+  "learner": "w4-capture",
+  "unordered": [
+    "prerequisiteEdges"
+  ],
+  "justified": true,
+  "justifiedClass": "learner-model-write-path-gap"
 }

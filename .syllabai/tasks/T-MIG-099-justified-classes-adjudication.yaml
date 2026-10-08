@@ -1,0 +1,33 @@
+version: 1
+task:
+  id: T-MIG-099
+  title: "T-MIG-099 - the 10 justified-class adjudications (operator trace 1a119d17533d1985 '10 justified-class adjudications.'): the standing tip escalation — the scheduled neon-replay cron is structurally red by instrument design (union 167/177, any FAIL reds the job) because 10 pre-filed 'justified classes' were never formally adjudicated. Adjudication executed FIRST-HAND: disposable COW reproduction (seed+prod full corpus passes at the workflow envelope), full-body path-aware probe of all 10 reds (the 400-char diff renderer had hidden the true differing fields for 10+ runs — the run-20 cron filing's 1:1 'identity volatility' mapping is CORRECTED of record), proposed-amendment comparator verification against live state BEFORE any verdict. VERDICTS: 8 classes GREEN (6 disclosed case amendments under already-ruled doctrine + 1 one-line port fix), 2 classes DECLARED-JUSTIFIED as a genuine port gap (T-MIG-100 owner) via the operator's own option (b) 'pre-file them in the union tolerance' — a union-verdict ledger with per-row disclosure, case-level diffs byte-honest, comparator untouched"
+  owner: "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646) - operator trace 1a119d17533d1985; claim 25ff982 on t-mig-099/r0 off 6a30e96"
+  status: "IN_REVIEW"
+  priority: "P1"
+  wave: "cutover-gate / P2 formal-closure precondition (the cron-verdict can never go green until the 10 are adjudicated; runbook P2 gate 'zero non-justified divergences')"
+  deps: [T-MIG-071, T-MIG-072, T-MIG-077, T-MIG-078]
+  scope:
+    allowed:
+      - "golden/cases/w3-history-empty-student-200.json (tolerate += learnerId, H-class completion)"
+      - "golden/cases/w3-history-after-submit-200.json (tolerate += attemptedAt, H-class completion)"
+      - "golden/cases/w3-questions-families-student-200.json (tranche empty declaration — restore captured pre-T51 posture)"
+      - "golden/cases/w4-flashcard-schedule-derived-200.json (learner declaration, T-MIG-078 pattern)"
+      - "golden/cases/w4-flashcard-trail-200.json (learner declaration, T-MIG-078 pattern)"
+      - "golden/cases/w4-knowledge-graph-empty-200.json (unordered prerequisiteEdges + justified note)"
+      - "golden/cases/w4-knowledge-graph-practiced-200.json (learner declaration + unordered edges + declared residual note)"
+      - "golden/cases/w4-state-practiced-200.json (declared divergence disclosure, owner T-MIG-100)"
+      - "golden/justified-ledger.json (NEW — the union-verdict tolerance of record)"
+      - "golden/tools/ci-replay.ts (ledger-gated --union + selftest census 7->10 + ledger invariants)"
+      - "apps/api/src/services/content/repositories.ts (javaInstantText: accept the T-form the selects actually emit — the G-class one-line fix)"
+      - "apps/api/test/content/fidelity-fixes.test.ts (T-form vectors)"
+      - ".syllabai/tasks/T-MIG-099-justified-classes-adjudication.yaml (this yaml)"
+      - ".syllabai/tasks/T-MIG-100-learner-model-write-path-port.yaml (owner card)"
+      - ".syllabai/receipts/T-MIG-099/* + .syllabai/receipts/R0-arbitration/justified-classes-adjudication-run-001.json"
+      - ".syllabai/worklog.md (append-only)"
+    forbidden:
+      - "deleting or weakening any case expect.body (GOLDEN_MASTER §4 — zero expect edits in this band)"
+      - "comparator changes (deepEqualTolerant/canonicalize/redact untouched — the tolerance is union-layer only)"
+      - "tolerating the state-practiced/KG-practiced content diffs (they are a port gap, owned T-MIG-100 — never masked)"
+      - "prod/Neon main writes (disposable COW branches only, both dropped + 404-verified)"
+      - "force-push; self-merge of this PR"

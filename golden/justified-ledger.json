@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "name": "justified-ledger",
+  "authority": "Operator trace 1a119d17533d1985 ('10 justified-class adjudications.') routing the standing cron-slot escalation to the R0-integrator lane; adjudication of record at .syllabai/receipts/R0-arbitration/justified-classes-adjudication-run-001.json (first-hand COW reproduction + full-body probe evidence); card T-MIG-099.",
+  "law": "UNION-VERDICT TOLERANCE ONLY (the operator's option (b), 'pre-file them in the union tolerance'): the case-level comparison stays byte-honest — deepEqualTolerant is untouched, no tolerate list is widened here, no case is deleted. A FAIL reported by a replay pass is FORGIVEN by the --union verdict iff (1) the case is named in entries, (2) the case file itself declares justified:true (GOLDEN_MASTER §4: integrator approval + justified note on the case), and (3) the fail's diff is a manifesting of the entry's declared class. ANY red outside this ledger reds the job, as before. Every entry is disclosed per-row in union.md — the green is never silent. Entries RETIRE when their owner card lands (the case then passes on its own merits).",
+  "entries": [
+    {
+      "case": "w4-state-practiced-200",
+      "class": "learner-model-write-path-gap",
+      "owner": "T-MIG-100",
+      "declared_diff": "skillStates[] and misconceptionStates[] answer empty where the capture pins one BKT skill row (nodeId ...0012, band LOW, attempts 1, correctCount 0) and one BDT misconception row (...0001, probability 0.75, active, evidenceCount 1); the flashcardRatings half matches under the capture identity.",
+      "why_justified": "Not a port behavioral divergence but a NOT-YET-PORTED component: the frozen core's LearnerModelService.java (:102-163 @ 6cad6ef) persists skill_states (BKT) and misconception_states (BDT) on practice events; v2 ports only the readers (learner/state.ts, knowledge/graphs.ts, ...) with zero writers anywhere in apps/api (T-MIG-099 first-hand grep + probe). The surface faithfully answers the persisted posture it was ported against.",
+      "retire_when": "T-MIG-100 lands the submit-path model-update write; the case then passes on its own merits and this entry is removed."
+    },
+    {
+      "case": "w4-knowledge-graph-practiced-200",
+      "class": "learner-model-write-path-gap",
+      "owner": "T-MIG-100",
+      "declared_diff": "nodes[] persisted-posterior fields (band/attempts/correctCount on the practiced topic node; misconceptionProbability/misconceptionActive on the misconception node) answer null where the capture pins the core's BKT/BDT-posterior values; the graph structure, node identity and (with the declared unordered) prerequisiteEdges multiset match under the capture-identity declaration.",
+      "why_justified": "Same root cause as w4-state-practiced-200 — the KG's node posteriors read the same unpopulated skill_states/misconception_states tables (T-MIG-100 owner). One gap, two surfaces; filed once, disclosed twice.",
+      "retire_when": "T-MIG-100 lands; this entry is removed with its sibling."
+    }
+  ],
+  "invariants_selftest_pinned": [
+    "every entry.case exists in the committed corpus",
+    "every entry.case declares justified:true in its own file",
+    "every entry names a non-empty owner card id",
+    "the learner-declared corpus set is exactly the 7 T-MIG-078 cases + the 3 T-MIG-099 declarations"
+  ]
+}

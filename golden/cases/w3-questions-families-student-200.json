@@ -1,6 +1,6 @@
 {
   "name": "w3-questions-families-student-200",
-  "description": "Question families from V7 seed (deterministic fixed-uuid seed). captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy. RICH-200-E DISPOSITION (ruling3 R3-D2 effect 4, operator trace 1a1100c71ff48e05): the capture pins the capture host's Postgres tie order for the 8 non-corpus families — the frozen (source, qNum, input-order) law has no deterministic tie key and three environments produce three orders (T-MIG-067 run-001 live proof; replay runs #16/#17 show the flip live); the ROOT array is hereby declared unordered per the T-MIG-024 doctrine (GOLDEN_MASTER section 5, declared relaxation only, never silent): same elements after tolerate redaction, any order, element identity exact, nested parts arrays stay strict. justified:true per GOLDEN_MASTER section 4, citing ruling3 R3-D2 effect 4 + the triple-confirmed multiset identity.",
+  "description": "Question families from V7 seed (deterministic fixed-uuid seed). captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy. RICH-200-E DISPOSITION (ruling3 R3-D2 effect 4, operator trace 1a1100c71ff48e05): the capture pins the capture host's Postgres tie order for the 8 non-corpus families — the frozen (source, qNum, input-order) law has no deterministic tie key and three environments produce three orders (T-MIG-067 run-001 live proof; replay runs #16/#17 show the flip live); the ROOT array is hereby declared unordered per the T-MIG-024 doctrine (GOLDEN_MASTER section 5, declared relaxation only, never silent): same elements after tolerate redaction, any order, element identity exact, nested parts arrays stay strict. justified:true per GOLDEN_MASTER section 4, citing ruling3 R3-D2 effect 4 + the triple-confirmed multiset identity. T-MIG-099: tranche \"empty\" declared — the capture (2026-10-05T06:47Z) predates the T51 question-bank state-builders (T-MIG-051/063 ingest, seq 10/11 + staging tool), and the first-hand reproduction shows the staged tranche's families census legitimately grows by the T51 corpus rows (8 -> 10; the root unordered declaration cannot span an element-set change). The captured posture is the V7-seed-only census; per the T-MIG-072 tranche doctrine (a case replays in the posture its capture pins) the empty declaration RESTORES it — not a re-pin to a foreign posture. The declared unordered-root relaxation above applies unchanged; nested parts/options arrays stay strict.",
   "source": "captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
   "method": "GET",
   "path": "/api/v1/questions/families",
@@ -353,7 +353,7 @@
             "id": "40000000-0000-0000-0000-000000000008",
             "externalRef": "SEED-WCH11-008",
             "type": "MCQ_SINGLE",
-            "stem": "Ammonia, NH3, has a bond angle of approximately 107\u00b0. Why is it not 109.5\u00b0, as in methane?",
+            "stem": "Ammonia, NH3, has a bond angle of approximately 107°. Why is it not 109.5°, as in methane?",
             "marks": 1,
             "difficulty": 4,
             "expectedTimeSeconds": 90,
@@ -379,7 +379,7 @@
               {
                 "id": "41000000-0000-0000-0000-000000000074",
                 "label": "D",
-                "text": "Ammonia is a planar molecule with 107\u00b0 angles by convention"
+                "text": "Ammonia is a planar molecule with 107° angles by convention"
               }
             ],
             "parts": [],
@@ -393,6 +393,9 @@
   "tolerate": [
     "timestamp"
   ],
-  "unordered": [""],
-  "justified": true
+  "unordered": [
+    ""
+  ],
+  "justified": true,
+  "tranche": "empty"
 }
