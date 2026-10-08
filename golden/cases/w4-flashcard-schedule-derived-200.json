@@ -1,6 +1,6 @@
 {
   "name": "w4-flashcard-schedule-derived-200",
-  "description": "derived review schedule after ratings: streak counts and intervalDays are the deterministic FlashcardReviewScheduler law (trailing KNOW run -> ladder; STILL_LEARNING tail -> streak 0, due now); dueAt/due are now-dependent and tolerated (dueAt = latest occurred_at + intervalDays, T-C53)",
+  "description": "derived review schedule after ratings: streak counts and intervalDays are the deterministic FlashcardReviewScheduler law (trailing KNOW run -> ladder; STILL_LEARNING tail -> streak 0, due now); dueAt/due are now-dependent and tolerated (dueAt = latest occurred_at + intervalDays, T-C53) T-MIG-101: learner \"w4-capture\" declared (the T-MIG-078 F-2 capture-identity pattern, construction-only — the comparator never sees it): the capture read the capture session's learner (da30cee5 = learner_40@example.invalid, the account the corpus's own seq-1 case registers) for the review schedule; the shared student carries no ratings by construction, so the undeclared read answers an empty collection the capture never pinned. First-hand learner_40 verification (T-MIG-101 COW reproduction): ZERO residual diffs against this expect.",
   "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
   "method": "GET",
   "path": "/api/v1/learners/me/flashcard-review-schedule",
@@ -65,5 +65,6 @@
     "nextDueAt",
     "occurredAt",
     "timestamp"
-  ]
+  ],
+  "learner": "w4-capture"
 }
