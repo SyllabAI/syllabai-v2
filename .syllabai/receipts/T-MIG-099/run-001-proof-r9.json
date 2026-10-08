@@ -1,0 +1,26 @@
+{
+  "card": "T-MIG-099",
+  "receipt": "run-001-proof-r9",
+  "lane": "r9-hubx (web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "created_at_utc": "2026-10-08T05:45:00Z",
+  "operator_trace": "1a119fb63da4d5e5 'T-MIG-099 condition (2) unlocked (scratch leg first + live error-class note to DONE)'",
+  "purpose": "discharge the card's OWED PROOF LEG (both components) and flip the card DONE",
+  "leg_1_scratch_real_wire": {
+    "substrate": "local scratch PG 17.3 (zonky portable binaries) + pgvector 0.8.0 (debian .so, ABI-major-17) + drizzle-kit push of packages/db 0000 baseline (62 tables; the disclosed-of-record opclass-mismatch family index errors observed live: 'timestamptz_ops does not accept data type uuid' \u2014 the 099 watchlist sibling; zero SELECT impact)",
+    "db": "syllabai_v2_verify @127.0.0.1:55432 \u2014 ZERO prod/Neon contact",
+    "seed": "roles + users(STUDENT) + questions(STRUCTURED, exam_paper_id null) + question_versions + 2 question_parts + mark_schemes(VALIDATED) + 4 mark_points + attempts + 2 answers(PENDING); fixed 099-prefixed UUIDs; seed chain self-verified (answers=2, points=4)",
+    "ZERO_KEY_law": "asserted pre-boot (083 harness pattern) \u2014 no LLM credentials in env; boot secret = local 44-byte key",
+    "execution": "POST /api/v1/learners/me/attempts/09900000-\u2026-20/smart-mark over the real bun-served Hono wire (T-MIG-014 dispatch: non-neon host -> postgres.js TCP)",
+    "observed": "HTTP 200 + AttemptSmartMarkView (schemeValidationState=VALIDATED, marksPossible=4) + 2 smart_mark_results rows stamped mark_scheme_id=\u202612 = the pipeline RESOLVED the scheme, SERVED the mark_points rows into contexts, and refused honestly at the zero-key provider gate (failure_reason=PROVIDER_UNAVAILABLE, validation_passed=false)",
+    "assertion": "PASS \u2014 the ghost 'relation mark_scheme_points does not exist' class is GONE on the real wire; the mark_points rows law serves past the point-rows query"
+  },
+  "leg_2_live_error_class_note": {
+    "probe": "scripts/t099_live_note_probe.py (persisted lane-side)",
+    "target": "api-of-record syllabai-v2.vercel.app at main 9a376fd-era deploy (dpl_Att7u-\u2026-jb9pBz alias winner)",
+    "corpus": "the W7-SMOKE structured question of record 92817c46-8103-4d2c-9f32-bd61636320a1 (5 parts) \u2014 carries a VALIDATED scheme on live",
+    "write_ledger": "1 probe learner r9-099note-20261008t053948z@example.invalid + 1 structured attempt 9df6ed16-4ece-4b7b-80ab-ef9102bdb94c + pipeline result rows (disclosed; LLM generation cost inherent to this leg, one execution)",
+    "observed": "HTTP 200 in 2.4s \u2014 REAL smart-marking end-to-end: modelId openai/gpt-oss-120b (openrouter adapter, #144 live), validation_passed=true, authoritative=true (kappa gate), per-point breakdowns citing the mark_points law text ('chlorine' pointLabel), markingState SMART_MARKED",
+    "class_change_of_record": "SQL-class 500 (ghost, pre-fix exposure law) -> 200 with the pipeline's own real-generation outcome \u2014 the LLM-seam posture (keys live) is OUT of this band's fence, recorded not asserted"
+  },
+  "verdict": "CONDITION (2) DISCHARGED BOTH LEGS \u2014 card flips DONE (condition (1) already met at the #144 desk-merge b16230f: rename survived intact, zero mark_scheme_points hits, desk-verified)"
+}

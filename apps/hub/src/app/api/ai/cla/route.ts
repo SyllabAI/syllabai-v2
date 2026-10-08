@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { z } from "zod";
-import { coreBaseUrl, coreFetchAuthorized, coreErrorDetail } from "@/lib/core-proxy";
+import { coreBaseUrl, coreFetchAuthorized, coreErrorDetail, type CoreFetchResult } from "@/lib/core-proxy";
+import { v2SurfaceBase } from "@/lib/api";
 import {
   surfaceForCourseSlug,
   mapCitation,
@@ -175,7 +176,7 @@ export async function POST(req: NextRequest) {
         { status: 404 },
       );
     }
-    const result = await coreFetchAuthorized<Record<string, unknown>>("/api/v1/learners/me/cla/ask", {
+    const result = await claAskFetch<Record<string, unknown>>({
       method: "POST",
       token,
       body: { kind: "NOTE_SECTION", rootId, noteId: parsed.noteId, mode: parsed.mode, question: parsed.question },
@@ -204,12 +205,49 @@ export async function POST(req: NextRequest) {
       { status: 404 },
     );
   }
-  const result = await coreFetchAuthorized<Record<string, unknown>>("/api/v1/learners/me/cla/ask", {
+  const result = await claAskFetch<Record<string, unknown>>({
     method: "POST",
     token,
     body: { kind: "KG_TOPIC", rootId, topicNodeId, mode: parsed.mode, question: parsed.question },
   });
   return claResponse(result, parsed.mode, surface);
+}
+
+/**
+ * T-MIG-097 flip (r7a, operator chain order trace 1a119df7d930b609): the CLA
+ * ask routes by the V2_SURFACE_PREFIXES table — the exact ask path flipped
+ * of record after BOTH wires were proven live (run-003: the 10-leg refusal
+ * matrix ALL PASS dual-live vs the frozen core; run-004: the generation
+ * rider probe — the live v2 served a real 200 answer-envelope on a
+ * learner-scoped KG_TOPIC anchor with the #144 chain + keys live). Core
+ * parity shape preserved verbatim; core stays the fallback whenever the v2
+ * base is unset or the path leaves the verified table.
+ */
+async function claAskFetch<T>(
+  init: { method: "POST"; token: string | null; body: unknown },
+): Promise<CoreFetchResult<T>> {
+  const path = "/api/v1/learners/me/cla/ask";
+  const v2 = v2SurfaceBase(path, process.env.NEXT_PUBLIC_API_V2_BASE_URL);
+  if (!v2) return coreFetchAuthorized<T>(path, init);
+  const headers: Record<string, string> = { Accept: "application/json", "Content-Type": "application/json" };
+  if (init.token) headers.Authorization = `Bearer ${init.token}`;
+  const res = await fetch(`${v2}${path}`, {
+    method: init.method,
+    headers,
+    body: JSON.stringify(init.body),
+    signal: AbortSignal.timeout(120_000),
+    cache: "no-store",
+  });
+  if (res.ok) {
+    return { ok: true, status: res.status, data: (await res.json()) as T, errorBody: null };
+  }
+  let errorBody: unknown = null;
+  try {
+    errorBody = await res.json();
+  } catch {
+    errorBody = null;
+  }
+  return { ok: false, status: res.status, data: null, errorBody };
 }
 
 /** Adapt core's ClaAnswerView → the hub client's expected shape. */
