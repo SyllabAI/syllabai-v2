@@ -6413,3 +6413,21 @@ Work Log:
 
 Stage Summary:
 - T-MIG-106 CLOSED of record: ruled (b), flipped, stamped, and the declared class live-verified 4/4 on the keyed api-of-record. The 092-family ask/ask-stream widening is complete end-to-end at the code-of-record layer. Operator items unchanged: hub bundle redeploy (carries the ask row live), ci.yml patch, PAT rotation, P3/P4.
+
+---
+Task ID: api-redeploy-from-tip-run006 (operator trace 1a11c97a245affa1 "4th firing")
+Agent: mainlane (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)
+
+Work Log:
+- Fetch-first: fresh clone at d4ddcf1 -> origin moved mid-round d4ddcf1..8565b4b (r0 .syllabai-only bookkeeping: T-MIG-106 DONE stamp + their run-006 rider discharge) -> ff-synced, act at 8565b4b; delta of record f45b027..8565b4b over apps/api+packages = packages/db/drizzle.config.ts ONLY (build-time config, does NOT ride the bundle) => TIP-CONSOLIDATION firing (run-002-r9 precedent class); #167 T-MIG-106 = hub-side, rides the HUB lever
+- Build per 093 recipe of record (in-repo T-MIG-093 tool, path constants only): shim-drift pre-check EMPTY; 6/6 asset SHAs == the 6 source pins EXACT; 321 modules == of-record 321 EXACT; 3,093,758 B (+6 B vs run-005 = ONE dead default-param teacherDir path string embedded at bundle time, inert by shim construction, present in every lane bundle incl. the serving of record); worktree restored git-clean
+- Localgate 8/8 ALL PASS on the real Neon wire (DATABASE_URL via sanctioned env-API read IN-MEMORY ONLY, zero secret on disk; local-only 44-byte JWT key; probe learner of the census class; tutor net-zero)
+- DEPLOYED: vercel CLI 62.7.0 --prod from the 2-file stage -> dpl_GJK1wP5Lpn4pw1XEMYhTkNsat6Gd READY FIRST-POLL (~17s class), target=production, BOTH production aliases attached (v13 alias field first-hand); gitSource trap avoided of record
+- LIVE CENSUS 26/26: Band A census class 16/16 raw + A11 reclassified PASS-by-law (run-003-mainlane precedent: bare reader-listing 404-after-auth IS the designed envelope 'resource not found'; Z-law evidence = run-003 artifact-level proof inherited by this serving lineage: routes/content unchanged 05bf473..8565b4b, 321==321, 6/6 pins); Band B T-MIG-104 amended law 5/5 LIVE ({} and parts:null -> 400 'self-mark carries no part marks'; parts:[null] -> 500 residual unchanged; valid-shape dead-attempt -> 404 no-leak; unauth 401); Band C T-MIG-106 trio 3/3 LIVE (blank-question 400 'question: must not be blank' declared law; unauthed 401 pre-stream; unknown-session 404 no-leak); Band D identity PASS (id|uid shape artifact disclosed)
+- Posture: hub-v2 /api/health {dataMode:core-api, coreConfigured:true} = FLIP POSTURE INTACT; frozen hub mock untouched; zombie 404 DEPLOYMENT_NOT_FOUND zero-collateral
+- Pushed <SHA> (.syllabai-only direct-main, receipt + this entry; race-guard fetch-rebase at push time)
+
+Stage Summary:
+- Receipt of record: .syllabai/receipts/DEPLOY/api-of-record-redeploy-from-tip-run-006-mainlane.json — the operator's "4th firing" order EXECUTED CLEAN; api-of-record = dpl_GJK1wP5Lpn4pw1XEMYhTkNsat6Gd @ main tip 8565b4b; census 26/26 incl. BOTH declared-law bands live; firing-ledger reconciliation filed in the receipt (both countings disclosed)
+- Ladder state: redeploy lever BANKRUPT-RIPE only on future apps/api+packages runtime deltas beyond 8565b4b; hub lever (T-MIG-106 surface) OPEN operator-side; T-MIG-104 rider stays discharged; token rotation recommendation STANDS (0600 off-repo, never echoed)
+- Write ledger: 2 probe learners (register class, synthetic), net-zero tutor rows, zero DDL, ONE production deployment, zero PRs
