@@ -258,6 +258,29 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // whole family is read-only over the knowledge spine — no LLM seam, no
   // 404/501 failure mode (the flip law's target).
   "/api/v1/knowledge/nodes",
+  // T-MIG-089 (r4b band rider, lane trace 1a119fc0f2824479) — the GLM-OCR
+  // bridge family: GOLDEN-VERIFIED of record (run-002: 6/6 legs, status+body
+  // deep-equal vs the r4b frozen-core 6cad6ef capture band
+  // golden-captures/t-mig-089/ — 401 anon / 403 learner / the 500 catch-all
+  // law on {} and on the all-null canonical body (the Jackson-wide binding
+  // semantics, reproduced by the treeToValue-parity throw in
+  // routes/ingestion.ts) / 404-first unknown paper under teacher AND admin
+  // tokens; requests verbatim from the capture-driver.py definitions of
+  // record; substrate = the surviving Task-33 scratch PG cluster with the
+  // empty-content law asserted; receipts
+  // T-MIG-089/run-002-golden-verify-r4b.json). NARROWEST LEGAL FORM: the
+  // ONLY hub-emitted segment under this family is the paperFindings findings
+  // row below (:1230-class) — the pairs POST is not hub-emitted; the PARENT
+  // /api/v1/teacher/content tree (review-queue, exam-papers/*,
+  // question-versions/*, mark-schemes/*, the topics-write honest-501 shells)
+  // STAYS CORE (T-MIG-020/023 surfaces — pinned in the surface test; also
+  // the 088 verify found the fetch parse-shape defect + the topics-write
+  // coverage gap — T-MIG-100 — so the parent MUST NOT flip this band).
+  // Zero live-page routing change: paperFindings has ZERO page call-sites
+  // (grep-verified at the widening commit) — ROUTING AVAILABILITY of record,
+  // the T-MIG-090 posture. LLM-free law: the bridge is deterministic over
+  // the sealed drafts — no LLM seam reachable.
+  "/api/v1/teacher/content/glm-ocr",
 ];
 
 /**

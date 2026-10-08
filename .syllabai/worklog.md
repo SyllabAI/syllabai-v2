@@ -5674,3 +5674,21 @@ Work Log:
 
 Stage Summary:
 - The chain is executed to its two external gates: repair ON MAIN (bc4ec31), section-3 code ON MAIN (#144 + wiring), run-003 vehicle ON MAIN (one dispatch away), deploy one secret away. Operator levers filed: (1) VERCEL_TOKEN Actions secret -> deploy -> generation lights; (2) Neon branch ceiling cleanup/raise -> re-dispatch t097-refusal-verify -> run-003 ALL PASS -> post-enablement rider -> the CLA flip.
+
+Task ID: 34
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Trace 1a119fc0f2824479 "proceed with those" — the 083-091 verify band remainder: 088/089/091 run-002 golden-verify riders (+ flip/widen where the gate discharges; + defect filing where it does not).
+
+Work Log:
+- Recovery: PAT trio restored (workspace survived this round; repos/ intact); desk-round run-001 verified first-hand — #152 AND #154 MERGED (083..087 evidence + 084 verify+widen of record), main 990d37a. #155 (r3a widen 084+085) open with mergeable=False — its 084 row is now REDUNDANT (my #154 landed the /api/v1/knowledge/nodes widen first); r3a's own #155 body adjudicates 086/087 STRUCTURALLY NOT PREFIX-ADDRESSABLE (stays core, adjudication ask). Convergence note posted on #155 (desk adjudication, drop-the-084-row + rebase ask).
+- Scratch PG: binaries rebuilt (trixie debs dpkg -x, PG 17.11 + pgvector 0.8.0-1); the Task-33 cluster discovered STILL RUNNING on :5433 (data dir survived) and reused verbatim; first-hand drift check 0f43156->990d37a on packages/db = EMPTY. Empty-content law asserted (questions/exam_series/glm_ocr_bridge_records/exam_papers = 0); run-fresh synthetic users (083 method).
+- Harness: scripts/t088-091-verify.ts + t088-091-seed.ts (the 084 rider method of record, adapted); 22 legs, requests verbatim from capture-driver.py; ZERO-KEY asserted; JwtService self-minted tokens.
+- Substrate repair of record (disclosed): the capture env's core Flyway seeds ONE ACTIVE curriculum_versions row owning a validated KG surface — the bare drizzle db had none, so 088 legs 03-06 first replayed the scope-null empty views (14/22). Repaired ADDITIVELY (ACTIVE version + subject -> NEW VROOT/V1 UNIT-VALIDATED subtree; the 084 fixture tree byte-identical, its re-runnability preserved). Run-2 of record: 16/22.
+- VERDICTS: 089 6/6 PASS FIRST PASS (incl. the 500 catch-all law on {} / all-null canonical — treeToValue parity reproduced) -> GOLDEN-VERIFIED+WIDENED (IN-REVIEW). 088 5/9 FAIL-NO-FLIP (CLASS A parse-shape legs 05-06 -> T-MIG-100-A; CLASS B legs 08-09 the T-MIG-020 501 shell shadowing the frozen 404-first/400 wires -> T-MIG-023 ownership, NOT a #138 defect). 091 5/7 FAIL-NO-FLIP (CLASS C legs 06-07 repeat law -> T-MIG-100-C, ROOT CAUSE PROVEN FIRST-HAND: sameMeasurement String()-compares postgres.js Date objects vs ISO strings — the fakeSql pins structurally blind, the 093/094 fake-vs-real class THIRD family).
+- FILED: T-MIG-100 (the #138 ingestion-port wire-truth defect band; owner R0-integrator as port author) + receipts T-MIG-100/run-001-filing-r4b.json + tools/ (raw results, harness, seed, substrate census); run-002 receipts under T-MIG-088|089|091.
+- WIDEN run-003 (089): V2_SURFACE_PREFIXES += /api/v1/teacher/content/glm-ocr (NARROWEST: the family's ONLY hub emitter is the DORMANT paperFindings row — zero page call-sites grep-verified — the 090 posture; the /api/v1/teacher/content PARENT stays core, pinned); surface test: DUAL_RUN_PATHS += findings form, the stale core-only glm-ocr pin MOVED OUT (the 084 move-out precedent), table snapshot +1, NEW 089 boundary test.
+- Gates first-hand: hub tsc exit 0; hub 43/0/382 (surface 15/0/303, +1/+8); api+packages zero code deltas (main census stands: api 1396/13skip/0/6086, contracts/db green, typecheck chain x3 exit 0); golden selftest OK.
+- PR branch t-mig-089-091-verify/r4b pushed; PR opened for desk merge; NO self-merge (authors-never-self-merge).
+
+Stage Summary:
+- Band of record now: 083 DONE / 084 DONE (#154) / 085 widen r3a #155 in flight / 086-087 stay-core adjudication ask (r3a) / 089 verify+widen LANDED-PENDING-DESK / 088+091 FAIL-NO-FLIP gated on T-MIG-100 (A/C) + T-MIG-023 / 090 DONE / 094 real-wire gate owed. Register: ~81 DONE-flippable on desk merges. Traces 1a119fc0f2824479 / PR #161 (this round).

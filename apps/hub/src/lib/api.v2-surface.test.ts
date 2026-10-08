@@ -69,18 +69,27 @@ const DUAL_RUN_PATHS: readonly string[] = [
   // neither belongs in this list.
   "/api/v1/knowledge/nodes/kn-root/tree?includeMisconceptions=true",
   "/api/v1/knowledge/nodes/kn-x/prerequisites",
+  // T-MIG-089 (r4b band rider) — the GLM-OCR bridge family's request()-routed
+  // emitter form (lib/api.ts paperFindings — the family's ONLY hub emitter).
+  // Dormant today — zero page call-sites exist (grep-verified at the widening
+  // commit; disclosed in the api.ts line comment) — ROUTING AVAILABILITY, the
+  // 090 posture. The pairs POST is not hub-emitted; the findings form pins it.
+  "/api/v1/teacher/content/glm-ocr/papers/00000000-0000-4000-8000-000000000026/findings",
 ];
 
 /** Hub-emitted (or hub-adjacent) paths that MUST stay on the core in the dual-run posture. */
 const CORE_ONLY_PATHS: readonly string[] = [
-  // teacher content: v2 serves honest 501 write stubs + does NOT serve glm-ocr at all
+  // teacher content: v2 serves honest 501 write stubs; the glm-ocr FAMILY
+  // flipped in T-MIG-089 (the former core-only glm-ocr/papers/p-1/findings
+  // pin MOVED OUT — v2 golden-verified 6/6, receipts
+  // T-MIG-089/run-002-golden-verify-r4b.json — and pinned in DUAL_RUN_PATHS);
+  // every OTHER /api/v1/teacher/content sibling stays core
   "/api/v1/teacher/content/review-queue",
   "/api/v1/teacher/content/review-queue-v3",
   "/api/v1/teacher/content/exam-papers/ep-1/review",
   "/api/v1/teacher/content/exam-papers/ep-1/validate",
   "/api/v1/teacher/content/question-versions/qv-1/flag",
   "/api/v1/teacher/content/mark-schemes/ms-1/reject",
-  "/api/v1/teacher/content/glm-ocr/papers/p-1/findings",
   // teacher curriculum + teacher W5 families (unported)
   "/api/v1/teacher/curriculum/versions",
   "/api/v1/teacher/classes",
@@ -144,6 +153,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/learners/me/courses", // T-MIG-096 run-001 L12/L13 — zero emitters, routing availability
       "/api/v1/admin/revision-notes", // T-MIG-083: golden-verified (run-001 8/8, r9-hubx rider) — NARROW: ingest+status ONLY, rest of /api/v1/admin/** stays core
       "/api/v1/knowledge/nodes", // T-MIG-084: golden-verified (run-002 8/8, r4b rider) — NARROWEST: the /nodes segment family ONLY, siblings outside /nodes stay core
+      "/api/v1/teacher/content/glm-ocr", // T-MIG-089: golden-verified (run-002 6/6, r4b band rider) — NARROWEST: the /glm-ocr segment family ONLY, the /teacher/content parent stays core (T-MIG-020/023 + T-MIG-100)
     ]);
   });
 });
@@ -268,6 +278,42 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     // either side — the hub-source grep law in the api.ts table comment)
     expect(v2SurfaceBase("/api/v1/knowledge/nodesx", V2)).toBe(V2);
     expect("/api/v1/knowledge/nodesx".startsWith("/api/v1/knowledge/nodes")).toBe(true);
+  });
+
+  test("the T-MIG-089 line: the glm-ocr bridge family flips after its golden gate (r4b band rider)", () => {
+    // the golden-verified findings shape of record resolves to v2 (run-002:
+    // 6/6 legs status+body deep-equal vs the r4b frozen-core capture band —
+    // receipts T-MIG-089/run-002-golden-verify-r4b.json; the 500 catch-all
+    // law on {} / all-null canonical and the 404-first law both reproduced;
+    // substrate = the surviving Task-33 scratch PG, empty-content law)
+    for (const p of [
+      "/api/v1/teacher/content/glm-ocr/papers/00000000-0000-4000-8000-000000000026/findings", // legs 05/06 404-first law (the hub emitter form, dormant)
+      "/api/v1/teacher/content/glm-ocr/papers/00000000-0000-4000-8000-000000000026/findings?flag=true", // query-tolerant form, same endpoint
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBe(V2);
+    }
+    // TRUE siblings under the /api/v1/teacher/content parent stay core — the
+    // prefix must never capture them (T-MIG-020/023 surfaces; also the 088
+    // run-002 verify of record found the fetch parse-shape defect T-MIG-100-A
+    // + the topics-write coverage gap, so the parent MUST NOT flip this band)
+    for (const p of [
+      "/api/v1/teacher/content", // the bare parent (the 501-shell root)
+      "/api/v1/teacher/content/enumerate?query=physics", // the NOT-YET-VERIFIED 088 read (T-MIG-100-A divergent family)
+      "/api/v1/teacher/content/fetch?query=physics",
+      "/api/v1/teacher/content/questions/00000000-0000-4000-8000-000000000025/topics", // the T-MIG-023-owned write gap (501 vs frozen 404-first)
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBeNull();
+    }
+    // the pairs POST IS served by v2 (golden-verified legs 03/04) but is not
+    // hub-emitted — routing availability rides the same family prefix
+    expect(v2SurfaceBase("/api/v1/teacher/content/glm-ocr/pairs", V2)).toBe(V2);
+    // startsWith matching is prefix-string semantics (the same property every
+    // row of the table has): a non-existent partial-segment sibling IS
+    // captured by the string match — DOCUMENTED INERT (no route or hub
+    // emitter named glm-ocr* beyond the verified /glm-ocr family exists on
+    // either side — the hub-source grep law in the api.ts table comment)
+    expect(v2SurfaceBase("/api/v1/teacher/content/glm-ocrx", V2)).toBe(V2);
+    expect("/api/v1/teacher/content/glm-ocrx".startsWith("/api/v1/teacher/content/glm-ocr")).toBe(true);
   });
 
   test("apiPath emits exact v2 URLs for representative surfaces", () => {

@@ -1,0 +1,18 @@
+version: 1
+task:
+  id: T-MIG-100
+  title: "T-MIG-100 - the #138 ingestion-port wire-truth defect band (the 093/094 fake-vs-real class, THIRD family): the 088/089/091 run-002 golden-verify replay of record (22 legs at main 990d37a, ZERO code deltas, vs the frozen-core wire truth golden-captures/t-mig-088|089|091) proved TWO port defect classes FIRST-HAND — CLASS A (088 legs 05-06 fetch parse-shape): the v2 FetchQueryParser answers parsed:null + parseDefect:false where the frozen core answers the empty-parse VIEW {empty:true, msSeeking:true, normalized:\"\", paperCode:null, part:null, partRoman:null, qnum:null, series:null, unit:null, year:null} + parseDefect:true; CLASS C (091 legs 06-07 exam-series repeat law): sameMeasurement (services/ingestion/exam-series.ts:104-115) String()-compares date columns, postgres.js materialises JS Date objects (String(Date) = 'Tue Jan 06 2026...' != the ISO '2026-01-06') so a byte-identical repeat import counts {imported:0, updated:1, unchanged:0} where the core counts {imported:0, unchanged:1, updated:0} — the #138 +70 fakeSql pins were structurally blind (string-typed fixture rows for existing-row reads; fakeSql cannot validate DRIVER BINDING semantics), the schema-existence member being 099. CROSS-REF (NOT this card's defect): the 088 topics-write legs 08-09 answer 501 not_implemented (the T-MIG-020 honest shell, content/index.ts:252) where the frozen wire is 404-first (unknown question) / 400 validation_failed (primaryNodeId null) — COVERAGE GAP owned by T-MIG-023; the wire truth waits in golden-captures/t-mig-088/"
+  owner: "filed by r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a, lane trace 1a119fc0f2824479 'proceed with those'); port owner for classes A/C: R0-integrator (the #138 tranche-B author)"
+  status: "OPEN # filed, not repaired (the verify rider files; repairs belong to the port owner). Register impact of the proving run: 088 5/9 FAIL-NO-FLIP + 091 5/7 FAIL-NO-FLIP of record (receipts T-MIG-088|091/run-002-golden-verify-r4b.json); 089 6/6 PASS flipped+widened in the same rider (receipts T-MIG-089/run-002+run-003). DISPOSITION: on repair, re-run the 22-leg replay (harness of record receipts/T-MIG-100/tools/t088-091-verify.ts + t088-091-seed.ts, substrate census tools/substrate-census-r4b.json), then the 088/091 flip+widen steps discharge per the flip law (088 parent-tree widen remains NARROW-gated even then: the /api/v1/teacher/content parent must NEVER capture the T-MIG-020/023 unverified siblings)"
+  claimed_at: "2026-10-08"
+  priority: P1 # 088/091 flips + the 083-091 band completion gate on these repairs; 091-C is an audited-state divergence on a write surface
+  wave: "defect-band # the 070/093/099 precedent class: restore the frozen wire law against the landed surface; fake-vs-real family, driver-binding member (date coercion) + parse-shape member"
+  deps: [T-MIG-088, T-MIG-091, T-MIG-023]
+  scope:
+    - "CLASS A repair: fetch-parser unparsed branch must return the empty-parse VIEW + parseDefect:true (the captured wire shape)"
+    - "CLASS C repair: sameMeasurement must compare date columns under a driver-coercion-safe law (ISO-normalise JS Date instances; the 093 scalar-param law is the precedent for a driver-binding-site fix)"
+    - "NOT in scope: the topics-write surface (T-MIG-023 ownership); the 088/091 widen steps (they ride THIS card's closure)"
+  exclude:
+    - "hub surface edits beyond the already-filed 089 widen rider"
+    - "repairs improvised by any lane other than the port owner without an operator reroute"
+    - "force-push; self-merge"
