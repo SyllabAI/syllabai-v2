@@ -1,0 +1,20 @@
+{
+  "name": "tutor-askstream-unauthed-401",
+  "description": "Tutor ask/stream pre-flight authz law: an anonymous ask is refused 401 as JSON BEFORE the SSE stream opens (no stream handshake, no LLM spend). Byte-parity leg of record: run-004 leg s1, core 401 == v2 401 status+body (receipts/T-MIG-092/run-004-askstream-golden-verify-r4b.json). Companion to the two T-MIG-106 declared-law cases (tutor-askstream-blank-question-400 / tutor-askstream-unknown-session-404).",
+  "source": "captured from the live frozen core syllabai-core.onrender.com and replayed byte-parity on the keyed api-of-record syllabai-v2.vercel.app 2026-10-08T15:46Z by r4b run-004 (operator trace 1a11c2d6849bda61); synthetic probe learner, token never persisted, no PII",
+  "method": "POST",
+  "path": "/api/v1/tutor/ask/stream",
+  "request": {
+    "body": { "question": "ping" }
+  },
+  "expect": {
+    "status": 401,
+    "body": {
+      "timestamp": "2026-10-08T15:46:23.289Z",
+      "status": 401,
+      "error": "Unauthorized",
+      "path": "/api/v1/tutor/ask/stream"
+    }
+  },
+  "tolerate": ["timestamp"]
+}

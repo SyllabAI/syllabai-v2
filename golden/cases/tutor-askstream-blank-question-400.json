@@ -1,0 +1,21 @@
+{
+  "name": "tutor-askstream-blank-question-400",
+  "description": "T-MIG-106 DECLARED LAW (operator ruling (b) trace 1a11c4b762f6043d 'declare-justified (v2's designed laws; core 500s are the defect) and flip both rows' — GOLDEN_MASTER section 4 justified divergence, the T-MIG-071 declared-case convention; justified:true): the stream pre-flight blank-question class serves v2's DESIGNED 400 validation_failed 'question: must not be blank' (the T-MIG-070 notBlank law — the section-22 pre-flight the v2 port implemented from the core SOURCE TutorController.askStream :208-256). The live frozen core RUNTIME serves 500 internal_error on the identical request (run-004 leg s2, receipts/T-MIG-092/run-004-askstream-golden-verify-r4b.json) — the core-side stream-controller pre-stream error-mapping DEFECT (its own BLOCKING controller maps the identical class to the same 400, run-004 leg a1 byte-parity). Ruling (a) amend-to-500-parity was REJECTED: it would re-introduce the defect shape the core's own source law contradicts. This case pins the DECLARED law, never the defective capture; it replays GREEN on merits (zero justified-ledger entries — the 101 endgame posture).",
+  "source": "declared from the r4b run-004 dual-live capture 2026-10-08T15:46Z (core 500 defect-shape recorded in the receipt; v2 designed law pinned here) under the operator ruling (b) trace 1a11c4b762f6043d; synthetic probe learner, token never persisted, no PII",
+  "method": "POST",
+  "path": "/api/v1/tutor/ask/stream",
+  "request": {
+    "headers": { "Authorization": "Bearer {{TOKEN}}" },
+    "body": { "question": "   " }
+  },
+  "expect": {
+    "status": 400,
+    "body": {
+      "status": 400,
+      "error": "validation_failed",
+      "message": "question: must not be blank"
+    }
+  },
+  "tolerate": ["timestamp"],
+  "justified": true
+}

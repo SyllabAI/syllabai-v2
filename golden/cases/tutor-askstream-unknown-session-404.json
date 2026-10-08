@@ -1,0 +1,24 @@
+{
+  "name": "tutor-askstream-unknown-session-404",
+  "description": "T-MIG-106 DECLARED LAW (operator ruling (b) trace 1a11c4b762f6043d 'declare-justified (v2's designed laws; core 500s are the defect) and flip both rows' — GOLDEN_MASTER section 4 justified divergence, the T-MIG-071 declared-case convention; justified:true): the stream pre-flight unknown-session class serves v2's DESIGNED 404 not_found 'tutor session <id> not found' (the section-22 pre-flight fail-fast the v2 port implemented from the core SOURCE TutorController.askStream :208-256; the echo is deterministic over the requested id). The live frozen core RUNTIME serves 500 internal_error on the identical request (run-004 leg s4, receipts/T-MIG-092/run-004-askstream-golden-verify-r4b.json) — the core-side stream-controller pre-stream error-mapping DEFECT (its own BLOCKING controller maps the identical class to the same 404, run-004 leg a2 byte-parity). The pinned sessionId is the capture's fixed foreign uuid (exists on neither plane). Ruling (a) amend-to-500-parity was REJECTED: it would re-introduce the defect shape the core's own source law contradicts. This case pins the DECLARED law, never the defective capture; it replays GREEN on merits (zero justified-ledger entries — the 101 endgame posture).",
+  "source": "declared from the r4b run-004 dual-live capture 2026-10-08T15:46Z (core 500 defect-shape recorded in the receipt; v2 designed law pinned here) under the operator ruling (b) trace 1a11c4b762f6043d; synthetic probe learner, token never persisted, no PII",
+  "method": "POST",
+  "path": "/api/v1/tutor/ask/stream",
+  "request": {
+    "headers": { "Authorization": "Bearer {{TOKEN}}" },
+    "body": {
+      "question": "define rate of reaction",
+      "sessionId": "07cafeab-d743-46ce-8ed6-c23c18b7eddd"
+    }
+  },
+  "expect": {
+    "status": 404,
+    "body": {
+      "status": 404,
+      "error": "not_found",
+      "message": "tutor session 07cafeab-d743-46ce-8ed6-c23c18b7eddd not found"
+    }
+  },
+  "tolerate": ["timestamp"],
+  "justified": true
+}

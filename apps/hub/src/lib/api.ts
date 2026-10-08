@@ -179,6 +179,12 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // seam; the hub's ask/ask-stream emitters ride coreFetchAuthorized /
   // coreStreamAuthorized and keep their core routing). LLM-free law: the
   // sessions CRUD never reaches the LLM seam, so the flip is wire-safe.
+  //
+  // T-MIG-106 UPDATE of record: the STAY-CORE posture below for ask/ask-stream
+  // was the 092 band's zero-key law — RETIRED of record (the keyed v2 serves
+  // real generations, run-005); the pair flipped DECLARED-JUSTIFIED under the
+  // operator ruling (b) trace 1a11c4b762f6043d (the 106 row at the table
+  // tail). The chat SSE hub route stays core-hardwired (not table-routed).
   "/api/v1/tutor/sessions",
   // T-MIG-096 (r0 rider, operator trace 1a117ee8fb5b520d; RENUMBERED from
   // T-MIG-094 - ID yielded to r4b's kg-retriever card per house law) — the
@@ -379,6 +385,38 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   "/api/v1/teacher/content/fetch",
   "/api/v1/teacher/content/enumerate",
   "/api/v1/teacher/curriculum/exam-series",
+  // T-MIG-106 (r4b, operator ruling (b) trace 1a11c4b762f6043d
+  // 'declare-justified (v2's designed laws; core 500s are the defect) and
+  // flip both rows') — the tutor ASK family: the 092 zero-key blocker is
+  // RETIRED of record (the LLM seam is KEYED — v2 serves real generations,
+  // run-005 blocking ask 200 TutorAnswerView + the TUTOR-VERIFY run-002/002b
+  // SSE event law proven on BOTH planes). GOLDEN-VERIFIED with ONE
+  // DECLARED-JUSTIFIED divergence class (GOLDEN_MASTER §4, the T-MIG-071
+  // declared-case convention; receipts T-MIG-092/run-004 + T-MIG-106/run-006):
+  // the deterministic pre-flight legs serve byte-parity on unauthed 401 and
+  // on the blocking twins (blank 400 / unknown-session 404), while the STREAM
+  // pre-flight error classes serve the DESIGNED 400/404 on v2 vs the live
+  // frozen core's 500 internal_error — the core-side stream-controller
+  // pre-stream error-mapping DEFECT (its own BLOCKING controller maps the
+  // identical classes correctly; the v2 port implemented the core SOURCE law,
+  // TutorController.askStream :208-256). The declared law is pinned in the
+  // corpus (tutor-askstream-unauthed-401 plain + -blank-question-400 /
+  // -unknown-session-404 justified:true; the raw-bytes malformed leg is
+  // receipt-only — not case-schema-expressible, disclosed in run-006).
+  // FLIP UNIT = THE PAIR (the routing-inseparability finding of record): this
+  // ONE prefix row captures BOTH /api/v1/tutor/ask AND /api/v1/tutor/ask/stream
+  // under startsWith (and identically under the mid-path deeper-tails-free
+  // law) — no exclusion form exists in either table; 'both rows' flipped.
+  // LLM law: the flipped surface REACHES the LLM seam on v2 (keyed —
+  // groq/gpt-oss-120b + openrouter failover; never a 503 tutor_unavailable,
+  // the failure mode the flip law exists to prevent). Live routing change:
+  // the hub's blocking-ask emitter (tutorAsk, api.ts:1161, the request()/
+  // apiPath plane) now serves from v2; the chat SSE path stays core-hardwired
+  // by design (apps/hub/src/app/api/ai/chat/route.ts coreStreamAuthorized —
+  // NOT table-routed; the hub-proxy seam, T-MIG-094 territory).
+  // Partial-segment capture (tutor/askx) DOCUMENTED INERT — no such route or
+  // hub emitter exists on either side (pinned in the surface test).
+  "/api/v1/tutor/ask",
 ];
 
 /**
