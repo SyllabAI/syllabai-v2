@@ -5688,7 +5688,7 @@ Work Log:
 - FILED: T-MIG-100 (the #138 ingestion-port wire-truth defect band; owner R0-integrator as port author) + receipts T-MIG-100/run-001-filing-r4b.json + tools/ (raw results, harness, seed, substrate census); run-002 receipts under T-MIG-088|089|091.
 - WIDEN run-003 (089): V2_SURFACE_PREFIXES += /api/v1/teacher/content/glm-ocr (NARROWEST: the family's ONLY hub emitter is the DORMANT paperFindings row — zero page call-sites grep-verified — the 090 posture; the /api/v1/teacher/content PARENT stays core, pinned); surface test: DUAL_RUN_PATHS += findings form, the stale core-only glm-ocr pin MOVED OUT (the 084 move-out precedent), table snapshot +1, NEW 089 boundary test.
 - Gates first-hand: hub tsc exit 0; hub 43/0/382 (surface 15/0/303, +1/+8); api+packages zero code deltas (main census stands: api 1396/13skip/0/6086, contracts/db green, typecheck chain x3 exit 0); golden selftest OK.
-- PR branch t-mig-089-091-verify/r4b pushed; PR opened for desk merge; NO self-merge (authors-never-self-merge).
+- PR branch t-mig-089-091-verify/r4b pushed; PR #161 opened for desk merge; NO self-merge (authors-never-self-merge).
 
 Stage Summary:
-- Band of record now: 083 DONE / 084 DONE (#154) / 085 widen r3a #155 in flight / 086-087 stay-core adjudication ask (r3a) / 089 verify+widen LANDED-PENDING-DESK / 088+091 FAIL-NO-FLIP gated on T-MIG-100 (A/C) + T-MIG-023 / 090 DONE / 094 real-wire gate owed. Register: ~81 DONE-flippable on desk merges. Traces 1a119fc0f2824479 / PR #161 (this round).
+- Band of record now: 083 DONE / 084 DONE (#154) / 085 widen r3a #155 in flight / 086-087 stay-core adjudication ask (r3a) / 089 verify+widen LANDED-PENDING-DESK / 088+091 FAIL-NO-FLIP gated on T-MIG-100 (A/C) + T-MIG-023 / 090 DONE / 094 real-wire gate owed. Register: ~81 DONE-flippable on desk merges. Traces 1a119fc0f2824479 / PR #161 (opened, head CI pending first scan).
