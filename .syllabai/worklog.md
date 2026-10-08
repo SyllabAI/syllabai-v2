@@ -6272,3 +6272,16 @@ Work Log:
 
 Stage Summary:
 - Paper-question retrieval measured at 100% paper-level coverage of the VALIDATED bank (95/95), 100% MS sample, 83% question sweep (3 misses = honest guard, correct). Feature verdict: production-real end-to-end. Lane IDLE.
+Task ID: R0-TM104-REPAIR-1 (lane R0, operator trace 1a11c248ec801069)
+Agent: R0-integrator (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: operator ruling "(a)" — execute the T-MIG-104 amendment: golden re-capture + classifier repair + pins + desk-merge
+
+Work Log:
+- Ruling of record: "(a)" — w3-selfmark-unknown-attempt-500 AMENDED (the 071 case-amendment precedent); claim-in-first-commit d2f7e04 (run-003-claim-r0.json, branch t-mig-104/r0 off 35ab1fb)
+- Amended law designed + implemented: whole-field parts-null -> 400 bad_request 'self-mark carries no part marks' — the service no-part-marks gate envelope (LearnerSelfMarkService :74-76), ONE law for absent/null/[]; route-leg only (service + contracts untouched); the 053 NPE-parity throw retired; the 057/058 element-null NPE-parity 500 byte-identical (out of ruling scope, residual disclosed)
+- Golden case amended IN PLACE (zero deletion, name kept): expect 500 -> 400 with the amended envelope; amendment note rides the description; the attempt id is INERT under the boundary law (disclosed)
+- Gates first-hand @ b8ddab7: typecheck x4 exit 0; apps/api 1418/13skip/0; golden selftest OK; PR #165 head CI hub+verify 2/2 SUCCESS; desk-merged bfad2ead08c3; merge-commit CI 2/2 SUCCESS
+- Card flips DONE (ruling executed; residual element-null + live-verify rider of record); receipts run-003/run-004 landed; deploy lever RIPENED (live api still serves the pre-amendment 500 until the next api redeploy — lane has zero Vercel creds, 48cdb6c filed-not-executed pattern)
+
+Stage Summary:
+- T-MIG-104 CLOSED of record (DONE @ bfad2ea): the self-mark 500 defect the operator ordered filed is now amended by their own ruling to the mapped product envelope; the live-wire flip rides the next api redeploy. .syllabai bookkeeping direct-main (fetch-first), code via PR; no force.
