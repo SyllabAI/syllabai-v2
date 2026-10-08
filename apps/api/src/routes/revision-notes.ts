@@ -41,11 +41,21 @@
  *     law, the sme service's own mapping precedent — the frozen service
  *     wraps zip failures as the shared BadRequestException family).
  *
- * Multipart law (POST /ingest, the sme.ts :72-90 precedent verbatim):
- *   - non-multipart / unreadable body → the part is absent → 400
- *     "multipart part 'file' (the corpus ZIP) is required";
- *   - file == null || file.size === 0 → the controller guard verbatim
- *     (:37-40) → the same 400;
+ * Multipart law (POST /ingest — REVISED by the t083 golden-verify gate):
+ *   - well-formed multipart body WITHOUT the 'file' part → the part never
+ *     reaches the controller: Spring's @RequestPart bind throws
+ *     MissingServletRequestPartException, UNHANDLED by the frozen
+ *     GlobalExceptionHandler → the catch-all 500 internal_error envelope
+ *     (the wire truth of record: golden-captures/t-mig-083 leg-04, r4b
+ *     run-001 capture of frozen core 6cad6ef). The sme.ts binding-class 400
+ *     was the wrong precedent for @RequestPart controllers — sme takes
+ *     @RequestParam, which Spring maps to 400; @RequestPart does not.
+ *   - non-multipart / unreadable body → the media-type refusal — kept 400
+ *     "multipart part 'file' (the corpus ZIP) is required" (fail-closed;
+ *     shape not captured of record, disclosed as an honest gap);
+ *   - empty 'file' part → the controller guard verbatim (:37-40,
+ *     file.isEmpty()) → the same 400 (the bind DID succeed here — the
+ *     guard runs inside the controller body);
  *   - file.size > MULTIPART_MAX_FILE_BYTES (application.yml :44, the core's
  *     own global multipart cap) → 413 payload_too_large (disclosed; the
  *     frozen 500s through the catch-all);
@@ -250,11 +260,25 @@ export function createAdminRevisionNotesRouter(deps: RevisionNotesDeps): Hono {
         const form = await c.req.formData();
         file = form.get("file");
       } catch {
-        // non-multipart / unreadable body — the part is absent (disclosed
-        // binding-class 400; the sme.ts :75-80 precedent)
+        // non-multipart / unreadable body — the media-type refusal. KEPT 400
+        // (fail-closed, uncaptured shape; the leg-04 500 law below covers only
+        // the well-formed-multipart-without-part bind failure).
         throw new BadRequestError(FILE_PART_REQUIRED);
       }
-      if (file === null || !(file instanceof File) || file.size === 0) {
+      if (file === null) {
+        // The bind law of record (golden-captures/t-mig-083 leg-04, r4b run-001
+        // capture of frozen core 6cad6ef): @RequestPart("file") with the part
+        // absent throws BEFORE the controller body — MissingServletRequestPart
+        // Exception is unhandled by the frozen GlobalExceptionHandler → the
+        // catch-all 500 internal_error envelope. Reproduced verbatim by letting
+        // the plain error fall to the app-level onError boundary (found by the
+        // t083 golden-verify gate first pass 7/8; the sme.ts 400 was the wrong
+        // precedent for @RequestPart controllers).
+        throw new Error("multipart part 'file' absent — the core's unhandled @RequestPart bind law");
+      }
+      if (!(file instanceof File) || file.size === 0) {
+        // the controller guard verbatim (:37-40, file.isEmpty()) — the bind DID
+        // succeed here, so the in-body guard (not the servlet layer) fires → 400.
         throw new BadRequestError(FILE_PART_REQUIRED);
       }
       if (file.size > MULTIPART_MAX_FILE_BYTES) {
