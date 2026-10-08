@@ -1,0 +1,35 @@
+{
+  "card": "T-MIG-100",
+  "run": "substrate-census-r4b",
+  "lane": "r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "date": "2026-10-08",
+  "kind": "substrate census + disclosure for the 088/089/091 run-002 golden-verify replay",
+  "cluster": {
+    "provenance": "the Task-33 scratch cluster on :5433 was discovered STILL RUNNING this round (postmaster /home/z/build/pgdata/t084, started 04:41Z — the server process and data dir survived the wipe that took the dpkg-extracted binaries). Rebuilt the binary tree first (trixie debs: postgresql-17 17.11-0+deb13u1 + postgresql-client-17 + libpq5 + libicu76 + postgresql-17-pgvector 0.8.0-1, dpkg -x to /home/z/build/pgroot) to regain psql/pg_ctl; a fresh initdb attempt then failed honestly on the occupied port (Address already in use), the running cluster was probed (superuser role postgres), and REUSED verbatim",
+    "port": 5433,
+    "db": "syllabai_v2_verify",
+    "schema_freshness": "pushed at 0f43156 (Task-33); first-hand drift check git diff 0f43156..990d37a -- packages/db = EMPTY (62 tables)"
+  },
+  "empty_content_law": {
+    "asserted": ["questions", "exam_series", "glm_ocr_bridge_records", "exam_papers"],
+    "values": [0, 0, 0, 0],
+    "note": "pre-flight in the seed script (exit 2 on violation); exam_series re-reset between the 091 replay runs"
+  },
+  "synthetic_identities": [
+    "08800000-0000-4000-8000-000000000001 STUDENT t088-learner@verify.local",
+    "08800000-0000-4000-8000-000000000002 TEACHER t088-teacher@verify.local",
+    "08800000-0000-4000-8000-000000000003 ADMIN t088-admin@verify.local"
+  ],
+  "additive_scope_substrate_088": {
+    "why": "the capture env's core Flyway seeds ONE ACTIVE curriculum_versions row owning a validated KG surface; the bare drizzle-push db had none, so resolveActive returned null and 088 legs 03-06 replayed the scope-null empty views (enumerate 'unscoped' / fetch parsed:null) — a SUBSTRATE MISS, not a port divergence",
+    "rows": [
+      "curriculum_versions 08800000-...-c0 'verify-active-1' ACTIVE",
+      "subjects 08800000-...-f0 'VER' -> knowledge_node 08800000-...-d0",
+      "knowledge_nodes ...-d0 'VROOT' SUBJECT VALIDATED + ...-d1 'V1' UNIT VALIDATED + 1 PART_OF edge"
+    ],
+    "isolation": "ADDITIVE ONLY — the 084 fixture tree (11 nodes / 10 edges, ids 00000000-0000-4000-8000-0000000000{01..11}) is byte-identical before/after; the 084 verify of record stays re-runnable",
+    "law_check": "ownsSurface satisfied via the V1 UNIT VALIDATED (services/content/scope.ts hasValidatedStructure); no cap-node code present (leg-04's unknown-nodeCode law)"
+  },
+  "disclosure_run1": "the first replay (14/22) ran BEFORE the scope-substrate repair; its divergent leg bodies are superseded by the run-2 of record (16/22). The final results file (tools/run-002-verify-results.json) is the RUN-2 of record.",
+  "zero_contact": "zero prod / Neon reads or writes; the LLM-key env was unset and the ZERO-KEY law asserted at boot (exit 4 guard)"
+}

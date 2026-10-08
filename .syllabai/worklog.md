@@ -5893,3 +5893,49 @@ Work Log:
 
 Stage Summary:
 - T-MIG-102 implemented + verified end-to-end on t-mig-102/r0 -> PR pending desk merge. The learner-model write path is LIVE: every marked attempt now upserts BKT/BDT posteriors + the fluency gap; the two T-MIG-101 declared-justified rows pass on their own merits; the union ledger retires EMPTY. Rider filed: the three graded-lane publishGraded seams' wiring (payload fields + callers, wiring-only, the module is event-source-agnostic). Standing operator items unchanged: ci.yml patch, PAT rotation, P3/P4.
+
+---
+Task ID: 34
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Trace 1a119fc0f2824479 "proceed with those" — the 083-091 verify band remainder: 088/089/091 run-002 golden-verify riders (+ flip/widen where the gate discharges; + defect filing where it does not).
+
+Work Log:
+- Recovery: PAT trio restored (workspace survived this round; repos/ intact); desk-round run-001 verified first-hand — #152 AND #154 MERGED (083..087 evidence + 084 verify+widen of record), main 990d37a. #155 (r3a widen 084+085) open with mergeable=False — its 084 row is now REDUNDANT (my #154 landed the /api/v1/knowledge/nodes widen first); r3a's own #155 body adjudicates 086/087 STRUCTURALLY NOT PREFIX-ADDRESSABLE (stays core, adjudication ask). Convergence note posted on #155 (desk adjudication, drop-the-084-row + rebase ask).
+- Scratch PG: binaries rebuilt (trixie debs dpkg -x, PG 17.11 + pgvector 0.8.0-1); the Task-33 cluster discovered STILL RUNNING on :5433 (data dir survived) and reused verbatim; first-hand drift check 0f43156->990d37a on packages/db = EMPTY. Empty-content law asserted (questions/exam_series/glm_ocr_bridge_records/exam_papers = 0); run-fresh synthetic users (083 method).
+- Harness: scripts/t088-091-verify.ts + t088-091-seed.ts (the 084 rider method of record, adapted); 22 legs, requests verbatim from capture-driver.py; ZERO-KEY asserted; JwtService self-minted tokens.
+- Substrate repair of record (disclosed): the capture env's core Flyway seeds ONE ACTIVE curriculum_versions row owning a validated KG surface — the bare drizzle db had none, so 088 legs 03-06 first replayed the scope-null empty views (14/22). Repaired ADDITIVELY (ACTIVE version + subject -> NEW VROOT/V1 UNIT-VALIDATED subtree; the 084 fixture tree byte-identical, its re-runnability preserved). Run-2 of record: 16/22.
+- VERDICTS: 089 6/6 PASS FIRST PASS (incl. the 500 catch-all law on {} / all-null canonical — treeToValue parity reproduced) -> GOLDEN-VERIFIED+WIDENED (IN-REVIEW). 088 5/9 FAIL-NO-FLIP (CLASS A parse-shape legs 05-06 -> T-MIG-100-A; CLASS B legs 08-09 the T-MIG-020 501 shell shadowing the frozen 404-first/400 wires -> T-MIG-023 ownership, NOT a #138 defect). 091 5/7 FAIL-NO-FLIP (CLASS C legs 06-07 repeat law -> T-MIG-100-C, ROOT CAUSE PROVEN FIRST-HAND: sameMeasurement String()-compares postgres.js Date objects vs ISO strings — the fakeSql pins structurally blind, the 093/094 fake-vs-real class THIRD family).
+- FILED: T-MIG-100 (the #138 ingestion-port wire-truth defect band; owner R0-integrator as port author) + receipts T-MIG-100/run-001-filing-r4b.json + tools/ (raw results, harness, seed, substrate census); run-002 receipts under T-MIG-088|089|091.
+- WIDEN run-003 (089): V2_SURFACE_PREFIXES += /api/v1/teacher/content/glm-ocr (NARROWEST: the family's ONLY hub emitter is the DORMANT paperFindings row — zero page call-sites grep-verified — the 090 posture; the /api/v1/teacher/content PARENT stays core, pinned); surface test: DUAL_RUN_PATHS += findings form, the stale core-only glm-ocr pin MOVED OUT (the 084 move-out precedent), table snapshot +1, NEW 089 boundary test.
+- Gates first-hand: hub tsc exit 0; hub 43/0/382 (surface 15/0/303, +1/+8); api+packages zero code deltas (main census stands: api 1396/13skip/0/6086, contracts/db green, typecheck chain x3 exit 0); golden selftest OK.
+- PR branch t-mig-089-091-verify/r4b pushed; PR #161 opened for desk merge; NO self-merge (authors-never-self-merge).
+
+Stage Summary:
+- Band of record now: 083 DONE / 084 DONE (#154) / 085 widen r3a #155 in flight / 086-087 stay-core adjudication ask (r3a) / 089 verify+widen LANDED-PENDING-DESK / 088+091 FAIL-NO-FLIP gated on T-MIG-100 (A/C) + T-MIG-023 / 090 DONE / 094 real-wire gate owed. Register: ~81 DONE-flippable on desk merges. Traces 1a119fc0f2824479 / PR #161 (opened, head CI pending first scan).
+---
+Task ID: 35
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator trace 1a11a36d9c2cc651 "① Merge desk #161 (or wait for operator action); ② Repair T-MIG-100 back to R0 (#138 port author)" — the #161 desk merge + the T-MIG-100 register-ID collision repair.
+
+Work Log:
+- Collision found first-hand: main's T-MIG-100 (5665a6c, w0a filing desk, drizzle index opclass scramble band per operator trace 1a11a1e1882c1b9d) vs PR #161's T-MIG-100 (r4b Task-34, the #138 ingestion-port wire-truth defect band, owner R0-integrator). Register-ID duplication — unreconcilable at merge time.
+- REPAIR ② of record (operator-directed, this trace): the T-MIG-100 ID returns to the #138-port band — w0a's card renumbered T-MIG-100 -> T-MIG-101 (file rename + id/title/scope-path edits + append-only renumber_provenance block; content beyond those byte-verbatim from 5665a6c; receipts/ T-MIG-100 dir verified EMPTY at renumber time). Commit rides this PR (NOT direct-main) so the register never passes through a dual-T-MIG-100 state in any pushed ref and the repair is CI-corroborated. AMENDED AT DESK TIME: R0-integrator's justified-classes adjudication band landed T-MIG-101 of record on main FIRST (d68fd93, PR #158) while this reconciliation was in flight — earliest-of-record-wins — so the drizzle band was RE-RENUMBERED T-MIG-101 -> T-MIG-103 (next free ID; 102 = R0's learner-model write-path card); the card's renumber_provenance carries the full three-step chain.
+- RECONCILIATION: origin/main (507def9) merged into the PR branch (dedff47) — hub api.ts V2_SURFACE_PREFIXES + surface-test table/pins = UNION (main 097+085+086/087 rows + r4b 089 rows, both verbatim, zero law edits, +3 net rows vs main: 097 ask, 085 concept-graph, 089 glm-ocr) ; worklog tail = UNION (Task-34 + main-side Task-44/45/099/T-MIG-100-filing/redeploy/ROUND-35/36, both verbatim).
+- Register validation: ALL T-MIG-*.yaml parse OK (yaml.safe_load round-trip); IDs unique; exactly one T-MIG-100 (the #138 band) + one T-MIG-101 (the drizzle band).
+- Gates first-hand at the final head: hub tsc exit 0; hub 46/0/395 (main 43/0/382 + the union's 089 rows/test — +3/+13 exact); typecheck chain x4 exit 0; api+packages 1778/13skip/0/6973 (zero api/packages code delta vs main, diff EMPTY first-hand); golden selftest OK.
+- Desk merge: PR #161 merged sha-pinned per the operator's explicit order (authors-never-self-merge superseded by trace 1a11a36d9c2cc651 for THIS PR only, the 881960d desk-round precedent).
+
+Stage Summary:
+- T-MIG-100 of record = the #138 ingestion-port wire-truth defect band (owner R0-integrator; 088/091 flips gate on its repairs + T-MIG-023). T-MIG-103 of record = the drizzle opclass scramble band (execution UNCLAIMED, earliest-claim-wins; receipt path T-MIG-103/; renumber chain 100->101->103 disclosed in-card). 089 verify+widen of record on main post-merge. Band: 083/084/090 DONE, 085 WIDENED, 086/087 widen-unblocked (wave-s5), 089 DONE-pending-flip-stamp, 088+091 gated on T-MIG-100.
+
+---
+Task ID: 35a (post-merge stamp for Task-35)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Stamp the Task-35 desk round with the merge commit of record.
+
+Work Log:
+- PR #161 MERGED of record: 373cf44 (sha-pinned PUT at head bdf09f9, merge_method=merge, operator trace 1a11a36d9c2cc651). Desk-round basis comment 6054240169.
+- Post-merge register verified first-hand at 373cf44: exactly one card per high ID — T-MIG-100 = the #138 ingestion-port wire-truth defect band (port owner R0-integrator), T-MIG-101 = R0 justified-classes adjudication, T-MIG-102 = R0 learner-model write-path, T-MIG-103 = the drizzle opclass band (renumber chain 100->101->103 in-card). 96 cards parse OK, zero duplicates.
+
+Stage Summary:
+- Operator instruction 1a11a36d9c2cc651 DISCHARGED both prongs: \u2460 #161 desk-merged (373cf44); \u2461 T-MIG-100 repaired back to R0 (the #138 port author) of record. Band state on main: 083/084/090 DONE, 089 verify+widen of record (flip-stamp rides a bookkeeping pass), 085 WIDENED, 086/087 widen-unblocked, 088/091 gated on T-MIG-100 repairs + T-MIG-023.

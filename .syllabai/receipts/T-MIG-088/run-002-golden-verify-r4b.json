@@ -1,0 +1,34 @@
+{
+  "card": "T-MIG-088",
+  "run": "run-002-golden-verify-r4b",
+  "lane": "r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "date": "2026-10-08",
+  "operator_trace": "IM trace_id 1a119fc0f2824479 'proceed with those' — the claimed 083-091 verify band",
+  "target": "main 990d37a working tree, ZERO code deltas — mounts of record are #132 (reads shell, r3a) + #138 (fetch/enumerate/structured port, R0-integrator)",
+  "method": "the 083/084 pattern of record: LOCAL v2 boot, ZERO-KEY asserted, JwtService self-minted STUDENT/TEACHER tokens, replay in capture order, status+body deep-equal (timestamp dropped, canonical JSON), header deltas disclosed",
+  "substrate": "the surviving Task-33 scratch cluster (:5433, syllabai_v2_verify, zero schema drift). PLUS the 088-specific ACTIVE-scope substrate: the capture env's core Flyway seeds ONE ACTIVE curriculum_versions row owning a validated KG surface — the bare drizzle-push db had none, so run-1 replay saw scope=null empty views (enumerate mode 'unscoped' / fetch parsed:null) on legs 03-06. Repaired ADDITIVELY for run-2: ACTIVE version 08800000-...-c0 + subject VER -> a NEW VROOT/V1 knowledge subtree (V1 = UNIT VALIDATED — the ownsSurface law) — zero mutation of the 084 fixture tree (the 084 11-node/10-edge substrate stays byte-identical, its own re-runnability preserved). Empty-content law held (questions=0). Full census + disclosure: receipts/T-MIG-100/tools/substrate-census-r4b.json.",
+  "capture_of_record": "golden-captures/t-mig-088/ — 9 legs; requests verbatim from capture-driver.py",
+  "verdict": "FAIL — NO FLIP (5/9 legs PASS; two divergence classes, both filed)",
+  "pass_count": "5/9",
+  "legs": [
+    { "leg": "leg-01-enumerate-no-token-401", "status": "401/401", "body": "DEEP-EQUAL" },
+    { "leg": "leg-02-enumerate-learner-403", "status": "403/403", "body": "DEEP-EQUAL" },
+    { "leg": "leg-03-enumerate-200", "status": "200/200", "body": "DEEP-EQUAL (run-2, post substrate repair)", "note": "mode 'unparsed' over the resolved scope" },
+    { "leg": "leg-04-enumerate-structured-200", "status": "200/200", "body": "DEEP-EQUAL (run-2)", "note": "nodeCode=cap-node tolerated, resolvedNodeTitle null — the unknown-nodeCode law" },
+    { "leg": "leg-05-fetch-empty-200", "status": "200/200", "body": "DIFF — CLASS A (T-MIG-100)", "note": "capture parsed={empty:true,msSeeking:true,normalized:\"\",...8 null fields} + parseDefect:true; v2 parsed:null + parseDefect:false — the v2 FetchQueryParser returns NULL for unparsable queries where the frozen core returns the empty-parse VIEW and flags the parse defect" },
+    { "leg": "leg-06-fetch-unknown-query-200or400", "status": "200/200", "body": "DIFF — CLASS A (T-MIG-100)", "note": "same law, query 'zzz-no-such-paper'" },
+    { "leg": "leg-07-topics-rnd-q-200or404", "status": "404/404", "body": "DEEP-EQUAL", "note": "the GET topics 404-first law (content/index.ts:231 handler)" },
+    { "leg": "leg-08-topics-post-rnd-q-404", "status": "501/404 MISMATCH", "body": "DIFF — CLASS B (T-MIG-023 owned)", "note": "the T-MIG-020 honest-501 write shell (content/index.ts:252, mounted BEFORE the #138 router at index.ts:187 vs :555) shadows the frozen wire: Java answers 404-first on the unknown question; v2 answers not_implemented. COVERAGE GAP, not a #138 port defect — the #138 scope was the 3 read endpoints only" },
+    { "leg": "leg-09-topics-post-bad-body-400", "status": "501/400 MISMATCH", "body": "DIFF — CLASS B (T-MIG-023 owned)", "note": "same shadow: capture 400 validation_failed 'primaryNodeId: must not be null'" }
+  ],
+  "header_deltas": "every leg: the 082 run-003 api-wide cache-posture class (disclosed)",
+  "flip_law_check": "NOT discharged — the family carries 4 wire-divergent legs in two classes; the flip law widens only golden-verified surfaces. /api/v1/teacher/content STAYS CORE this band (which is also what keeps the 020/023 siblings and the 501 shells honestly core-pinned).",
+  "defect_filing": {
+    "class_a": "T-MIG-100-A — the fetch parse-shape port defect (legs 05/06; port owner: R0-integrator via #138)",
+    "class_b": "T-MIG-023 ownership — the topics-write surface (legs 08/09) answers 501 until the content write surfaces band lands; the frozen wire truth (404-first / 400 validation) is captured and waits in golden-captures/t-mig-088/"
+  },
+  "not_done_and_why": [
+    "no repair of Class A/B — the verify rider files, repairs belong to the port owner (R0) and the T-MIG-023 band",
+    "no widen — flip law not discharged"
+  ]
+}

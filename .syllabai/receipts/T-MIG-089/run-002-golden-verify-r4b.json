@@ -1,0 +1,33 @@
+{
+  "card": "T-MIG-089",
+  "run": "run-002-golden-verify-r4b",
+  "lane": "r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "date": "2026-10-08",
+  "operator_trace": "IM trace_id 1a119fc0f2824479 'proceed with those' — the claimed 083-091 verify band (Task-33 stage note: 'Band remaining: 085-089+091 riders')",
+  "target": "main 990d37a working tree, ZERO code deltas — the verify boots the working tree verbatim; the family's mounts are the #138 tranche-B land of record (fd2f320, R0-integrator)",
+  "method": "the 083/084 pattern of record: LOCAL v2 boot (bun 1.3.14, harness-owned Bun.serve envelope, T-MIG-022 posture), ZERO-KEY law asserted at boot (no LLM credentials in env, exit 4), JwtService self-minted TEACHER/ADMIN tokens over honest user_roles rows (the 083 synthetic-identity method — zero operator material), replay of the capture legs in capture order, status+body deep-equal (envelope timestamp dropped, order-insensitive canonical JSON), header deltas disclosed per-leg",
+  "substrate": "the SURVIVING Task-33 scratch cluster (/home/z/build/pgdata/t084, PG 17.11 + pgvector 0.8.0, :5433, db syllabai_v2_verify; schema pushed at 0f43156 — zero schema drift to 990d37a of record, checked first-hand). Empty-content law asserted pre-flight: questions=0 / exam_series=0 / glm_ocr_bridge_records=0 / exam_papers=0. Run-fresh synthetic users 08800000-...-01/02/03 (STUDENT/TEACHER/ADMIN). See receipts/T-MIG-100/tools/substrate-census-r4b.json for the full census + the run-1 substrate-miss disclosure.",
+  "capture_of_record": "golden-captures/t-mig-089/ (r4b run-001 local-boot capture of frozen core 6cad6ef, receipts/T-MIG-089/run-001-capture-r4b.json) — 6 legs; requests reproduced verbatim from the capture-driver.py definitions of record (rawbody '{}' and the all-null canonical body included)",
+  "verdict": "PASS",
+  "pass_count": "6/6 FIRST PASS — zero repairs",
+  "legs": [
+    { "leg": "leg-01-pairs-no-token-401", "status": "401/401", "body": "DEEP-EQUAL" },
+    { "leg": "leg-02-pairs-learner-403", "status": "403/403", "body": "DEEP-EQUAL" },
+    { "leg": "leg-03-pairs-empty-body-400", "status": "500/500", "body": "DEEP-EQUAL", "note": "the catch-all-500 law: v2 throws at the subtree bind (treeToValue parity, routes/ingestion.ts:396) and the T-MIG-022 envelope answers internal_error — the Jackson-wide binding semantics REPRODUCED" },
+    { "leg": "leg-04-pairs-null-canonical-400", "status": "500/500", "body": "DEEP-EQUAL", "note": "all-null canonical body -> same catch-all-500 envelope" },
+    { "leg": "leg-05-findings-rnd-paper-200or404", "status": "404/404", "body": "DEEP-EQUAL", "note": "404-first law on unknown paper ...0026 (teacher token)" },
+    { "leg": "leg-06-findings-admin-200", "status": "404/404", "body": "DEEP-EQUAL", "note": "same law under the ADMIN token" }
+  ],
+  "header_deltas": "every leg: cache-control/x-content-type-options/x-frame-options absent on v2 — the api-wide default cache-posture class filed of record at 082 run-003 (disclosed, non-blocking, does not affect the verdict)",
+  "flip_law_check": "widening gated on a NEW golden-verified surface: the family's 2 endpoints (POST /pairs, GET /papers/:id/findings) both carry captured golden legs and all replay PASS — gate DISCHARGED. Hub emitter scan: the hub emits exactly ONE row under the family (lib/api.ts paperFindings -> /api/v1/teacher/content/glm-ocr/papers/:id/findings, :1230); the pairs POST is not hub-emitted. NARROWEST legal form = the /api/v1/teacher/content/glm-ocr segment family ONLY — the parent /api/v1/teacher/content tree (review-queue, exam-papers/*, question-versions/*, mark-schemes/*, the topics-write 501 shells) STAYS CORE (T-MIG-020/023 surfaces, pinned in the surface test). paperFindings is DORMANT (zero page call-sites, grep-verified at the widening commit) — ROUTING AVAILABILITY of record, the 090 posture. LLM-free law: the bridge is deterministic ingestion/findings over the sealed drafts — no LLM seam reachable (the GLM OCR generation itself is an operator-side external flow, not an api seam).",
+  "gates_first_hand": {
+    "hub_tsc": "exit 0",
+    "hub_suite": "green (counts in run-003-widen-r4b.json)",
+    "api_packages_suite": "no code deltas — main census of record stands (990d37a: 1715/0/13/6758 class)",
+    "zero_key": "asserted at boot"
+  },
+  "not_done_and_why": [
+    "no repair of the 088/091 divergence classes found by this same replay — they are filed as T-MIG-100 (the #138 port defect band) with first-hand evidence; the verify rider files, it does not repair",
+    "no live-page routing change — the family's single hub emitter is dormant (090 posture); the flip is routing availability"
+  ]
+}
