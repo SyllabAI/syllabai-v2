@@ -1,0 +1,27 @@
+{
+  "card": "T-MIG-104",
+  "receipt": "run-004-repair-r0",
+  "lane": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "created_at_utc": "2026-10-08T15:55:00Z",
+  "operator_trace": "1a11c248ec801069 '(a)' — the golden-law amendment ruling, executed",
+  "purpose": "The amendment-gated repair leg of record: classifier repair + golden re-capture + pin re-derivation, merged and CI-verified.",
+  "of_record": {
+    "branch": "t-mig-104/r0 (claim d2f7e04 claim-in-first-commit, repair b8ddab7)",
+    "pr": "#165, desk-merged bfad2ead08c3 (merge commit = main tip)",
+    "amended_law": "POST /api/v1/learners/me/attempts/:attemptId/self-mark with a parts-nullish body ({}, {\"parts\":null}, comment-only) serves 400 bad_request 'self-mark carries no part marks' — the service no-part-marks gate envelope (LearnerSelfMarkService.java:74-76); ONE product law for every no-declared-parts shape (absent/null/[]); the frozen controller-boundary NPE (LearnerSelfMarkController.java:42-43, the captured opaque 500) is no longer reproduced on the live flipped surface",
+    "files": "5 (claim receipt + card status; route leg + header law; 2 whole-field pins re-derived; golden case amended IN PLACE zero deletion, name kept)",
+    "fence_respected": "element-null parts[i]=null keeps its T-MIG-057/058 NPE-parity 500 (byte-identical pins); service + contracts + hub + flip-table + packages/db untouched"
+  },
+  "gates": {
+    "local_b8ddab7": "typecheck x4 (contracts/shared/db/api) exit 0; apps/api 1418 pass / 13 skip / 0 fail; golden selftest OK",
+    "ci_head": "PR head b8ddab780ec5: hub SUCCESS + verify SUCCESS (2/2 check-runs — no event-drop this window)",
+    "ci_merge": "merge commit bfad2ead08c3: hub SUCCESS + verify SUCCESS (2/2 check-runs, bounded poll)"
+  },
+  "residual_and_riders": {
+    "element_null": "the [null]-element shape still serves the NPE-parity 500 of record (057/058 pins) — OUT of the ruling scope; a further amendment (or its repair) is its own act if the operator ever extends the ruling",
+    "live_wire": "LIVE RE-VERIFY RIDES THE NEXT API REDEPLOY: the live api of record still serves the pre-amendment 500 until a deploy carries bfad2ea; lane has zero Vercel creds (env census 0) — the redeploy lever RIPENED for the operator/deploy lane (the 48cdb6c filed-not-executed pattern); the golden runner's replay lanes pick up the amended expect on their next run",
+    "golden_replay": "the amended case now gates the boundary law (attempt id inert, disclosed in the case description); selftest OK"
+  },
+  "verdict": "T-MIG-104 REPAIR LEG COMPLETE OF RECORD — the operator ruling (a) is executed: golden law amended (zero deletion), route serves the mapped 400, pins re-derived, gates green local + CI head + CI merge; card flips DONE with the live-verify rider; the deploy lever ripens for the api redeploy of record",
+  "scope_note": "code+golden+tests via PR #165 (branch, CI, desk-merge); .syllabai bookkeeping via direct-main; no force-push; zero prod/Neon schema contact; zero Vercel contact (no creds)"
+}

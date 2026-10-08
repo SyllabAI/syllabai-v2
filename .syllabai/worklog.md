@@ -6242,6 +6242,66 @@ Work Log:
 Stage Summary:
 - The kit-compat register item is FILED as T-MIG-105 with first-hand repro evidence and a silent-0-exit CI trap finding beyond the original disclosure; the T-MIG-104 ID collision with r4b's self-mark band was caught at fetch and resolved by renumber before anything of record crossed.
 
+Task ID: Task-38 (lane R4-api-b)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Tutor features live probe — SSE flow + feedback-explanation/improvement-plan endpoints (operator trace 1a11c1c5d8e696b9 'probe for tutor features')
+
+Work Log:
+- Workspace verified (PAT 0600 API 200, repo at 35ab1fb after ff); wire census first-hand at origin/main: routes/tutor.ts:305 ask/stream SSE law (citations -> meta -> delta* -> done{ok:true}; JSON errors BEFORE stream opens; fixed `error` event after), routes/smartmark/index.ts:107/:122 the two feedback POSTs, services/smartmark/index.ts:809 loadFeedbackSource grounding (owned attempt + answer row + validation-passed smart_mark_results row), hub /api/ai/chat proxy route (coreStreamAuthorized -> CORE with learner JWT forwarded)
+- Probe script persisted lane-side (scripts/r4b_tutor_features_probe.py + r4b_hub_sse_reprobe.py); receipts .syllabai/receipts/TUTOR-VERIFY/run-002-tutor-features-probe-r4b.json + run-002b-hub-sse-reprobe-r4b.json
+- FREE law legs all HOLD: 401 JSON on unauthed ask/stream at v2 (stream NOT opened); hub /api/v1/tutor/ask/stream = 404 BY DESIGN (no hub route at that path — the SSE flow rides POST /api/ai/chat; p0b pins the negative); blank-question stream -> 400 validation_failed 'question: must not be blank' as JSON BEFORE the stream opens (T-MIG-070 notBlank law); feedback-explanation pre-smart-mark -> 409 conflict 'no accepted Smart Mark result for this part yet -- run Smart mark first' (grounding law); register with explicit role 'LEARNER' -> 400 'unknown role: LEARNER' (self-serve register requires role omitted; roleless -> 201)
+- LIVE happy paths (keyed api-of-record syllabai-v2.vercel.app): structured attempt 201 PENDING on the W7-SMOKE question of record (5 x 1-mark parts) -> smart-mark 200 in 2.2s (validation-passed results) -> feedback-explanation 200 in 1.1s ({partId, explanation, modelId 'openai/gpt-oss-120b', generatedAt}; grounded per-point walkthrough 'You earned 0 marks out of 1...') -> improvement-plan 200 in 1.6s ({partId, plan, ...}; coaching 'You still have 1 mark to gain...') — the LLM explains decisions, never makes them
+- SSE FLOW #1 (v2 direct, generation-reaching): POST /api/v1/tutor/ask/stream -> 200 text/event-stream in 5.4s: citations (KNOWLEDGE_NODE spec topic 4CH1-S3-b, nodeId deepLink) -> meta {provider openrouter, model nvidia/nemotron-3-super-120b-a12b:free, refused false, evidenceCount 6} -> delta x24 -> done {ok:true}; no sessionId so zero persistence (net-zero)
+- SSE FLOW #2 (the production hub path): POST /api/ai/chat on hub-of-record -> 200 text/event-stream in 6.2s (run-002b, warm core after the 12s cold-wake miss in run-002 p7a): citations (SPEC_POINT 4CH1-3.14C) -> meta {provider groq, model openai/gpt-oss-120b, refused false, evidenceCount 6} -> delta x36 (683 chars) -> done {ok:true}; the hub proxy pipes core's SSE in real time with citation remap — the exact flow the chat UI consumes
+- Sessions family sanity: GET /api/v1/tutor/sessions (T-MIG-092 v2-routed row) -> 200 [] for the fresh probe learner
+- ZERO card writes (probe-only round; all observed laws are the DESIGNED laws — no defect shapes found)
+
+Stage Summary:
+- Both probe targets are GREEN end-to-end first-hand: the tutor SSE flow works on BOTH planes (v2 keyed direct + hub->core proxy, same event law, evidenceCount=6 grounded citations both sides) and the smart-mark feedback pair (explanation + improvement-plan) serve grounded 200s under the exact documented grounding law (409 pre-accepted-result). Findings of record, none defects: (1) hub 404s /api/v1/tutor/ask/stream by design — the UI path is /api/ai/chat; (2) self-serve register rejects explicit role strings; (3) run-002's first hub window hit the Render cold-wake (re-probed run-002b). Write ledger DISCLOSED: 2 census probe learners (one from the aborted pre-fix run), 1 structured attempt + 5 answers, ~6 LLM generations (smart-mark, 2 feedback, 2 tutor asks, 1 possibly-none cold window), zero sessions, zero env/teacher/prod-DB writes. .syllabai-only direct-main (fetch-first), no force.
+
+---
+Task ID: TUTOR-VERIFY-2 (operator trace 1a11c1a86c60dd19 "batch test combinations of entire sets of papers/years/questions to measure anchor coverage")
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+
+Work Log:
+- Read the llm:ask ratelimit law first-hand (identity/config.ts: SYLLABAI_RATELIMIT_LLM_PER_LEARNER default 20/min/learner, 60s fixed window) -> batch paced <=19/min shared across 2 workers, checkpointed JSONL, 429-aware, resume-safe; zero 429s occurred.
+- BATCH of 129 real-generation asks against the api-of-record: Phase A QP-seeking floor = all 95 VALIDATED bank papers ('question 1(a) from SESSION paper CODE') -> 95/95 RESOLVED (100% paper-level anchor coverage incl. Specimen 2017 + every 4CH0/4CH1 session 2011-2026); Phase B stratified MS-seeking sample 16/16 RESOLVED; Phase C per-question sweeps on 4CH1/2C Jun 2019 + 4CH0/2C Jun 2018 -> 15/18 RESOLVED with 3 HONEST fail-open refusals (q9c/q10c/q12c — guard echoes the parsed identity, refuses rather than wrong-paper-bleeds).
+- Anchor attribution across the 111 QP-seeking asks: QUESTION_PAPER 107, MARK_SCHEME 111, CARD 34 (card tier where session qcards exist), KNOWLEDGE_NODE 66; latency median 6.7s / p90 32.1s / max 72.4s, zero failures.
+- Operator workbook built per the xlsx skill pipeline (Summary live-formula + Paper Matrix + Question Sweep + amber Review sheet; recalc 0 errors, validate exit 0, all Review checks PASS) — download/tutor-anchor-coverage-r0.xlsx. Receipt run-002-batch-coverage-r0.json; probe scripts + raw JSONL lane-side. Write ledger disclosed: 129 asks, zero new learners.
+- .syllabai-only direct-main (fetch-first), no force.
+
+Stage Summary:
+- Paper-question retrieval measured at 100% paper-level coverage of the VALIDATED bank (95/95), 100% MS sample, 83% question sweep (3 misses = honest guard, correct). Feature verdict: production-real end-to-end. Lane IDLE.
+Task ID: R0-TM104-REPAIR-1 (lane R0, operator trace 1a11c248ec801069)
+Agent: R0-integrator (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: operator ruling "(a)" — execute the T-MIG-104 amendment: golden re-capture + classifier repair + pins + desk-merge
+
+Work Log:
+- Ruling of record: "(a)" — w3-selfmark-unknown-attempt-500 AMENDED (the 071 case-amendment precedent); claim-in-first-commit d2f7e04 (run-003-claim-r0.json, branch t-mig-104/r0 off 35ab1fb)
+- Amended law designed + implemented: whole-field parts-null -> 400 bad_request 'self-mark carries no part marks' — the service no-part-marks gate envelope (LearnerSelfMarkService :74-76), ONE law for absent/null/[]; route-leg only (service + contracts untouched); the 053 NPE-parity throw retired; the 057/058 element-null NPE-parity 500 byte-identical (out of ruling scope, residual disclosed)
+- Golden case amended IN PLACE (zero deletion, name kept): expect 500 -> 400 with the amended envelope; amendment note rides the description; the attempt id is INERT under the boundary law (disclosed)
+- Gates first-hand @ b8ddab7: typecheck x4 exit 0; apps/api 1418/13skip/0; golden selftest OK; PR #165 head CI hub+verify 2/2 SUCCESS; desk-merged bfad2ead08c3; merge-commit CI 2/2 SUCCESS
+- Card flips DONE (ruling executed; residual element-null + live-verify rider of record); receipts run-003/run-004 landed; deploy lever RIPENED (live api still serves the pre-amendment 500 until the next api redeploy — lane has zero Vercel creds, 48cdb6c filed-not-executed pattern)
+
+Stage Summary:
+- T-MIG-104 CLOSED of record (DONE @ bfad2ea): the self-mark 500 defect the operator ordered filed is now amended by their own ruling to the mapped product envelope; the live-wire flip rides the next api redeploy. .syllabai bookkeeping direct-main (fetch-first), code via PR; no force.
+
+---
+Task ID: Task-39 (lane R4-api-b)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: 092-family widen rider — tutor ask/stream golden-verify (operator trace 1a11c2d6849bda61 'flipped into the v2 prefix table (e.g. tutor ask/stream now that v2 is keyed), that's a 092-family widening decision — golden-verify')
+
+Work Log:
+- Workspace verified (PAT 0600 API 200, repo ff to 3dcab7a); method assembled per the 097 LLM-flip precedent: deterministic dual-live matrix + generation rider; routing basis read first-hand (v2SurfaceBase startsWith table + midPathPrefixMatches segment-exact/deeper-tails-free matcher, api.ts:440-475; the 097 claAskFetch pattern)
+- run-004 golden-verify (receipts/T-MIG-092/run-004-askstream-golden-verify-r4b.json, script scripts/r4b_092_askstream_golden_verify.py): captured the deterministic legs from the LIVE FROZEN CORE and replayed byte-parity (canon: volatile timestamp fields normalized per the declared-tolerance law) vs the keyed v2 — RESULT 3 PASS / 3 FAIL: PASS = stream unauthed 401 + blocking-ask blank 400 + blocking-ask unknown-session 404 (byte-parity both planes, consistent with the existing band captures leg-09/leg-10); FAIL = the stream pre-flight classes — core serves 500 internal_error on blank/malformed/unknown-session where v2 serves the DESIGNED 400 validation_failed / 400 malformed_body / 404 not_found (the v2 port implemented the core SOURCE law, TutorController.askStream :208-256; the core runtime 500s are defect-shaped — its own BLOCKING controller maps the identical classes correctly)
+- Generation riders GREEN: run-005 (v2 blocking ask 200 1.8s, TutorAnswerView answer + citations x6 evidenceCount=6 groq gpt-oss-120b) + the TUTOR-VERIFY run-002/002b SSE law of record
+- ROUTING-INSEPARABILITY pinned: the /ask prefix row captures /ask/stream under startsWith, and the mid-path matcher's deeper-tails-free law captures it identically — NO exclusion form exists in either table, so the flip unit is the PAIR and cannot land while any leg fails parity
+- FAIL-NO-FLIP executed (the 088/091 -> T-MIG-100 precedent): T-MIG-106 FILED (the ask/stream pre-flight divergence band, OPEN P2, operator golden-law ruling owed; ruling options in-card: amend-to-500-parity vs declare-justified vs defer; fences pin the rows, the pre-flight, and the routing infra); T-MIG-092 card rider appended (r0's progression verbatim); ZERO code deltas this round — no PR, register+receipts only
+- Write ledger: 2 census probe learners (run-004 register + the failed-email login attempt consumed none), 1 blocking-ask generation, zero sessions, zero env writes
+
+Stage Summary:
+- The golden gate did its job: the operator-ordered flip is WITHHELD of record and the divergence class is pinned as T-MIG-106 with first-hand receipts. The happy path is proven GREEN on both planes (blocking + stream); the blocker is exactly the three deterministic stream pre-flight legs. Awaiting the operator ruling on T-MIG-106 to execute the flip unit (+ any amend) under a fresh trace. .syllabai-only direct-main (fetch-first), no force.
+
 ---
 Task ID: 53
 Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)

@@ -1,0 +1,37 @@
+{
+  "card": "LEVER api-of-record redeploy from tip — EXECUTED (run-004; the third firing of the lever, carrying the T-MIG-102 learner-model write path + the #164 wave live per the run-003 post_push_correction filing)",
+  "receipt": "api-of-record-redeploy-from-tip-run-004-r9",
+  "lane": "r9-hubx (main, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "operator_trace": "1a11c257774f6a19 'carry the T-MIG-102 learner model to the deployment path' (direct operator order discharging the lever filed re-ripe in the run-003 post_push_correction)",
+  "source_of_record": "main tip a6ad469 (FRESH CLONE: the session workspace was reset between windows — clone, deploy-tools, and worklog.md were rebuilt of record from the repo + in-context script contents; bun install --frozen-lockfile 930 packages; nothing of the pipeline changed)",
+  "delta_of_record": [
+    "git diff aa7d322..a6ad469 over apps/api+packages = 14 files / +1191/-84, three bands of record: (1) T-MIG-102 learner-model write path — services/learner-model/model-update.ts NEW (BKT mastery w/ C1 decayed-prior + BDT misconceptions + fluency gaps, the LearnerModelService @ 6cad6ef :74-203 port) + the LIVE createLearnerModelEvidencePublisher wiring on the MCQ submit seam (publishMcq; frozenParity double retired to E-2 claim-law test duty); (2) T-MIG-100 class A/C repair — packages/db 0000_organic_mauler.sql opclass pins + schema.ts (DDL FILES ONLY: no DB migration executes at deploy, zero-DDL law intact, prod Neon untouched); (3) ingestion band — routes/ingestion.ts + exam-series.ts + contracts/ingestion.ts",
+    "plus .syllabai-only bookkeeping (104/105 register filings, #164 merge receipts, worklog stamps) — zero deploy impact"
+  ],
+  "build_at_tip": [
+    "093 recipe verbatim via the REBUILT deploy-tools/deploy_bundle_build.py (contents verbatim from the run-002/003 tool; one idempotency incident disclosed: the first build attempt pre-dated bun install, died at hono resolution AFTER shimming — worktree restored, second run clean)",
+    "bundle: 319 modules / 3,090,291 bytes CJS — the +1 module vs the of-record 318 IS the new model-update.ts service (the 102 delta made visible at bundle census); +8.6KB vs run-003 = the write path + ingestion source delta class, disclosed",
+    "asset SHAs == the 6 source pins EXACT, all six printed first-hand (concepts 24fa91ac7149682b, edges 8a651dd9e60bfefa, practicals e53e5f87606a2b5a, relationships b3b7529222d77d80, spec_points b1fea69953205077, topics a7b14cbdd34bb9fe)"
+  ],
+  "localgate_8_8": [
+    "ALL PASS on the production-shaped wire (real Neon ep-ancient-cake): health 200 UP; login-malformed 400 validation_failed; register 201 (synthetic probe learner r0-092gate-*@example.invalid); tutor create/list(L06)/latest/delete/list-after-delete net-zero",
+    "credential discipline held: production DATABASE_URL via the sanctioned env API into the VOLATILE shell env only; zero secret material on disk; zero key prefixes printed"
+  ],
+  "deploy_leg": [
+    "EXECUTED: vercel CLI 62.7.0 deploy --prod --yes from the 2-file stage",
+    "dpl_G3chsJTHztqnfoCXhDw5BtiSTBn1 READY + PROMOTED on FIRST poll; both aliases switched; no concurrent-deploy race this run"
+  ],
+  "live_census_16_16": [
+    "census battery 15/15 ALL PASS (same legs as run-002/003): health UP / login-malformed parity / probe register 201 / learners-me-state JWT law / THE 095 LAW DISCRIMINATOR PASS / cla-ask unauth 401 / tutor L06 net-zero / CORS hub-v2 204 ACAO exact / hostile no-ACAO / hub dataMode=core-api / frozen core untouched",
+    "leg 16 zombie syllabai-api-v2 -> 404",
+    "T-MIG-102 LIVE-WIRE PROBE (deploy-tools/probe_t102.py) — PASS, THE LAW IS LIVE WITH FROZEN-PARITY EXACTNESS: probe learner pre-submit skillStates=0 misconceptionStates=0 (the pre-102 class) -> GET /api/v1/questions 200 (954 rows) -> MCQ fab6a9d8-b444-4af2-942c-e5fb83d95cc3 (4 options) -> POST /api/v1/attempts 201 auto-grade (correct=false marksAwarded=0 — the incorrect-answer BKT branch) -> post-submit skillStates=2 (nodeId 9e0b68a0… + 525adc73…, band LOW) with mastery 0.11313868613138686 == THE RUN-002 FROZEN-VECTOR ANCHOR EXACTLY (bktUpdate(0.1,false,{0.1,0.25,0.1}) to the last digit) and effectiveMastery 0.11313866526707862 (the C1 decayed-prior law live) — the w4 capture parity proven on the production wire",
+    "write ledger: 3 synthetic probe learners (localgate r0-092gate-* + census r9-tipcensus-* + t102 probe r9-t102probe-39aaa46485, all @example.invalid census class) + 1 OWNED attempt (1b343b4d) + the 2 learner-model skillState rows the write path legitimately created for that probe learner + tutor rows net-zero; ZERO env writes; ZERO DDL; 1 production deployment (the operator-ordered act)"
+  ],
+  "rollback_anchors": [
+    "dpl_8njpAVmTVaRu3a5XNJp3z2WaWSC1 (aa7d322, PRE-DEPLOY alias holder — primary, one re-alias command)",
+    "dpl_5j2otnsK3dET4yRkS7yvrwopSHFa (272b2ed)",
+    "dpl_CgHcMLAcK3VBUexbJbZZHrp7XEpX (95bee5f)",
+    "i6gx4tvqp (fcbddc6) / dpl_Att7u (9a376fd) / ooe5t3b4k / eh53sdxjm / dpl_Die9SrNyPQ"
+  ],
+  "verdict": "DEPLOYED AND VERIFIED — api-of-record serves main tip a6ad469 as dpl_G3chsJTH (READY, PROMOTED, dual-aliased); the T-MIG-102 learner-model write path is LIVE with frozen-parity-exact BKT values on the production wire; the 100-repair and ingestion bands ride the same bundle; 16/16 census legs green; workspace-reset incident disclosed with full of-record rebuild"
+}
