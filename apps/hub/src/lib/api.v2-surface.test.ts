@@ -104,7 +104,11 @@ const CORE_ONLY_PATHS: readonly string[] = [
   // T-MIG-096: recommendations stays core this band — 400/404 wires verified
   // (L03/L04) but the 200 NBA-engine wire is not live-proven yet (disclosed)
   "/api/v1/learners/me/recommendations",
-  "/api/v1/learners/me/cla/ask",
+  // T-MIG-097 (r7a): cla/ask MOVED OUT of this CORE_ONLY list — BOTH wires
+  // live-proven (run-003 10/10 refusal dual-live + run-004 generation probe
+  // 200 answer-envelope) and the exact-path row flipped under the chain
+  // order 1a119df7d930b609; the emitter routes table-first with core as the
+  // unset-base fallback.
   "/api/v1/learners/me/answer-input/transcribe",
   // T-MIG-082 (Wave S3, r3a): revision-notes FLIPPED after its golden gate —
   // run-002 frozen-core captures (d19289cc8) + run-003 verify 7/7 vs the
@@ -149,6 +153,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/learners/me/note-votes", // T-MIG-095: same band + run-002 — per-exact-subpath, never the bare /learners/me
       "/api/v1/admin/revision-notes", // T-MIG-083: golden-verified (run-001 8/8, r9-hubx rider) — NARROW: ingest+status ONLY, rest of /api/v1/admin/** stays core
       "/api/v1/knowledge/nodes", // T-MIG-084: golden-verified (run-002 8/8, r4b rider) — NARROWEST: the /nodes segment family ONLY, siblings outside /nodes stay core
+      "/api/v1/learners/me/cla/ask", // T-MIG-097: BOTH wires live-proven (run-003 10/10 refusal dual-live + run-004 generation probe 200, r7a) — NARROWEST: the exact ask path
     ]);
   });
 });
@@ -180,14 +185,38 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     // the not-yet-verified 200 NBA wire + LLM-bearing surfaces stay core —
     // the zero-key law in string form (the T-MIG-095-blocked write surfaces
     // LEFT this list: band closed + run-002 live re-verify — see the 095 test)
+    // the T-MIG-095-blocked write surfaces + the not-yet-verified 200 NBA
+    // wire stay core — the zero-key/defect-band law in string form.
+    // cla/ask LEFT this list at the T-MIG-097 flip (both wires live-proven:
+    // run-003 10/10 refusal dual-live + run-004 generation probe 200)
     for (const p of [
       "/api/v1/learners/me/recommendations?rootId=kn-1",
-      "/api/v1/learners/me/cla/ask",
       "/api/v1/learners/me/classroom",
       "/api/v1/learners/me/intervention-runs",
     ]) {
       expect(v2SurfaceBase(p, V2)).toBeNull();
     }
+  });
+
+  test("the T-MIG-097 line: the CLA ask flips after BOTH wires were proven live (r7a, chain order 1a119df7d930b609)", () => {
+    // the ask path resolves to v2 (run-003 10/10 refusal dual-live + run-004
+    // generation probe 200 answer-envelope of record)
+    expect(v2SurfaceBase("/api/v1/learners/me/cla/ask", V2)).toBe(V2);
+    // the rest of the /learners/me/cla subtree stays table-governed (none of
+    // it is captured by this exact-path row)
+    for (const p of [
+      "/api/v1/learners/me/cla",
+      "/api/v1/learners/me/cla/other",
+      "/api/v1/learners/me/classroom",
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBeNull();
+    }
+    // startsWith matching is prefix-string semantics (the same property every
+    // row of the table has): a non-existent partial-segment sibling IS
+    // captured by the string match — DOCUMENTED INERT (no route or hub
+    // emitter named cla/ask* beyond the exact path exists on either side)
+    expect(v2SurfaceBase("/api/v1/learners/me/cla/askx", V2)).toBe(V2);
+    expect("/api/v1/learners/me/cla/askx".startsWith("/api/v1/learners/me/cla/ask")).toBe(true);
   });
 
   test("the T-MIG-092 line: the tutor sessions tree flips with ask/stream core-pinned (r0 rider)", () => {

@@ -282,6 +282,24 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // whole family is read-only over the knowledge spine — no LLM seam, no
   // 404/501 failure mode (the flip law's target).
   "/api/v1/knowledge/nodes",
+  // T-MIG-097 (r7a, operator chain order trace 1a119df7d930b609) — the CLA
+  // ask surface: BOTH wires proven live of record. Refusal wire: run-003
+  // 10/10 dual-live ALL PASS (9 deterministic byte-parity legs + L01 under
+  // the declared first-field relaxation — the frozen core's multi-violation
+  // order is NONDETERMINISTIC of record: run-001 sampled "question", run-003
+  // sampled "mode"; the port pins the deterministic question-first choice,
+  // GOLDEN_MASTER §5 declared-only) vs the LIVE core, at the redeployed
+  // api-of-record dpl_Att7u carrying bc4ec31 (receipts T-MIG-097/run-003-*).
+  // Generation wire: the run-004 rider probe — the live v2 served a real 200
+  // answer-envelope (908 generated chars) on a learner-scoped KG_TOPIC
+  // anchor with the #144 real-adapter chain + keys live, while the frozen
+  // core 500'd the same ask (its legacy LLM path — the core is the retiring
+  // surface; filed, not a v2 defect). NARROWEST form: the exact ask path
+  // only; startsWith partial-segment capture (cla/askx) DOCUMENTED INERT
+  // (no such route or emitter exists on either side — pinned in the surface
+  // test). The hub emitter rides claAskFetch: table-governed, core fallback
+  // whenever the v2 base is unset.
+  "/api/v1/learners/me/cla/ask",
 ];
 
 /**
