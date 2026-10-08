@@ -6022,3 +6022,57 @@ Work Log:
 Stage Summary:
 - Gate path state after this act: P1 MET of record; P2 RULE-ABLE (one fresh tip replay owed, R0-AUTO cadence); P3 lane leg DONE 22/22 (operator witness remains the formal act); P4 template handed to the operator pre-filled. Operator's remaining path to watch-open: P3 witness + P4 paste + §1 freeze + §3 "decay go" binding; §6.1 archive clicks after 48h green (GITHUB_PAT scope-blocked lane-side); §6.3 SHA record lane-files on order.
 - Next repo receipt = Task-51; next workspace = Task-38.
+
+---
+
+## Task-48 (r7a)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6, trace 1a11a4fd0340cd79)
+Task: the run-002-r7a STAGED ONE-COMMAND HANDOFF fired — operator delivered the VERCEL_PAT
+("Here") under the standing "hub redeploy proceed" (1a11a20025e76305): execute the hub
+redeploy at tip with the #155/#161/#162 widen content + the post-deploy battery of record.
+(Numbering note: "Task-48" appeared once as r1c's forward-pointer at :5911, superseded by
+r1c's own auto-renumbering to Task-50 — lane content distinct, zero collision.)
+
+Work Log:
+- Credential verified first-hand: vcp_-prefix token fingerprint d254bbfaac004354 MATCHES the
+  of-record operator census fingerprint (worklog :4772); identity syllabai-1403 @ team
+  team_ULL54qkhzKBmnKrpO6BD4mYX; project prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl = syllabai-hub-v2.
+  Stored 0600 .creds/vercel.env (outside the repo); never printed/committed.
+- Fetch-first pre-flight: tip aa7d322 (#161 + #162 merged since run-002 — a CODE-DELTA act);
+  race-guard: latest prod deployment still dpl_FhmNnJAq (no duplicate act). Gates at tip
+  first-hand: hub tsc 0; hub tests 47/0/418; surface tables 24 prefix rows + 3 mid-path rows
+  counted first-hand.
+- DEPLOY: .vercel/project.json at worktree ROOT + vercel CLI 62.7.0 (pinned per handoff)
+  deploy --prod FROM ROOT — zero root-dir errors, build 56s, dpl_BBGcKUBy5qUZ8ps79a9UsDvjymXr
+  READY 07:13:08Z, syllabai-hub-v2.vercel.app aliased.
+- Battery of record 6/6 legs (run-003 receipt for full detail): health dataMode=core-api
+  byte-law; root 200; cla malformed 400 invalid_body; 084 knowledge-tree LEARNER 200 at
+  payload (run-004 anchor exact, run-004 topic node in tree); 085/086/087 learner family
+  forms 403 on the v2 base; mid-path matcher discriminator LIVE (malformed-uuid -> CORE,
+  Server: cloudflare, vs well-formed -> v2, X-Vercel-Id); flip-payload cla ask 200 in 6.56s
+  (335-char groq gpt-oss-120b answer, 6 citations, latencyMs 1757 — byte-law on the new
+  bundle); api actuator UP.
+- Findings of record (never auto-fixed): F1 transient register 500 on first POST after the
+  r9 api redeploy (diagnostic recheck + one disclosed retry -> 201); F2 hub topic-ask 404
+  context_not_found while the Render core sleeps — the cla anchor resolution reads via
+  core-proxy with a 30s timeout; route path BYTE-IDENTICAL 3dafc79..aa7d322 (environmental,
+  ADR-029 R3 posture; the /api/ai/mark question-bridge lever is the decoupling path);
+  F3 battery script header-capture case-sensitivity artifact (fixed in the retry run).
+- Teacher-token 200-level family legs (085/086/087 teacher forms) BLOCKED lane-side:
+  TEACHER registration join-code-gated (fails CLOSED, operator secret) — routing proof
+  stands via the verbatim learner forms; rides the standing operator credential lever.
+- Push-time recount: main aa7d322 -> 05581d1 (#163 T-MIG-102 merged, API-side);
+  git diff -- apps/hub EMPTY -> the deployed hub bundle stays BYTE-CURRENT vs tip.
+- Receipt DEPLOY/hub-of-record-redeploy-run-003-r7a.json; write ledger: 1 production
+  deployment + 3 probe learners (example.invalid) + 1 LLM ask + 0 env/code changes.
+
+Stage Summary:
+- The hub now serves the 24-prefix + 3-mid-path surface tables of record with the §2
+  core-api flip and the #160 cla flip verified to the payload on dpl_BBGcKUBy5qUZ8ps79a9UsDvjymXr
+  — the hub side of the cutover surface chain is current-of-record. Rollback anchors:
+  dpl_BBGcKUBy5qUZ8ps79a9UsDvjymXr / dpl_FhmNnJAq / dpl_J3pym8a5 / dpl_HHgp (+ the r1c
+  HUB_DATA_MODE PATCH lever). Board while working: #163 merged (first zero-forgiveness
+  union 177/177), api lever RE-RIPE for the #163 delta (48cdb6c filed-not-executed,
+  operator's call), r1c W7-SMOKE run-002 22/22 + P2 RULE-ABLE, r0 tutor live receipt.
+  Remaining levers unchanged: §1 freeze + P4 (operator), decay §3 (operator), pilot-hub
+  P0, /api/ai/mark question-bridge, teacher-credential lever, JWT/PAT rotation hygiene.

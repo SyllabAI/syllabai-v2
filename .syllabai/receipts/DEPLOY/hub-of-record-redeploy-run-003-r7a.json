@@ -1,0 +1,51 @@
+{
+  "card": "CUTOVER-RUNBOOK-§2 (continuation) + the run-002-r7a staged handoff",
+  "receipt": "hub-of-record-redeploy-run-003-r7a",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)",
+  "created_at_utc": "2026-10-08T07:35:00Z",
+  "operator_lineage": "the run-002-r7a STAGED ONE-COMMAND HANDOFF (deploy_leg of record) FIRED — credential delivery trace 1a11a4fd0340cd79 (VERCEL_PAT 'Here') under the standing 'hub redeploy proceed' (1a11a20025e76305); the api-side twin handoff was separately fired by the main lane (r9 5590983 dpl_8njpAVm @ aa7d322, census 16/16) — no collision, distinct projects",
+  "credential": {
+    "what": "operator-issued VERCEL_PAT (vcp_ prefix), stored 0600 /home/z/my-project/.creds/vercel.env lane-side; never printed, never committed, used inline only",
+    "fingerprint": "d254bbfaac004354 — MATCHES the of-record operator census fingerprint (worklog :4772)",
+    "identity": "GET /v2/user -> username=syllabai-1403; team SyllabAI (team_ULL54qkhzKBmnKrpO6BD4mYX); project prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl = syllabai-hub-v2 (framework nextjs)"
+  },
+  "pre_flight": {
+    "fetch_first_census": "tip aa7d322 at act time — #161 (373cf44, r4b 088/089/091 verify + hub surface union) and #162 (504f5fc, wave-s5 086/087 mid-path mechanism) merged SINCE the run-002 filing: this deploy is a CODE-DELTA act (the act-time-recount law, T-MIG-100 posture)",
+    "race_guard": "GET /v6/deployments (production, newest first) -> latest = dpl_FhmNnJAq5wKgEgjkvuWvKuYZcgw3 READY — NO lane deployed the hub since the run-002 act; the handoff is not a duplicate",
+    "worktree": "ff-only to aa7d322, git status clean, .vercel/ gitignored (line 28-29)"
+  },
+  "gates_at_tip_first_hand": [
+    "hub tsc --noEmit @ aa7d322 -> exit 0",
+    "bun test apps/hub @ aa7d322 -> 47 pass / 0 fail / 418 expect() / 3 files (up from 45/0/387 at 272b2ed — the #161/#162 surface additions live in the test of record)",
+    "surface tables counted first-hand at aa7d322: V2_SURFACE_PREFIXES = 24 rows (api.ts:138-353) + V2_SURFACE_MIDPATH_PREFIXES = 3 rows (api.ts:403-407, the wave-s5 mechanism-A table)"
+  ],
+  "deploy_act": {
+    "how": ".vercel/project.json {projectId: prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl, orgId: team_ULL54qkhzKBmnKrpO6BD4mYX} at the worktree ROOT; vercel CLI 62.7.0 (pinned verbatim per the staged handoff) 'deploy --prod --yes' FROM ROOT — the twice-bitten rootDirectory lesson followed: zero root-dir errors, no ERROR record left",
+    "deployment": "dpl_BBGcKUBy5qUZ8ps79a9UsDvjymXr READY, created 2026-10-08T07:13:08Z, build 56s (within the handoff's 42-60s band), 'Ready in 1m'",
+    "alias": "syllabai-hub-v2.vercel.app auto-switched (CLI: 'Aliased'); prod URL syllabai-hub-v2-1rot6folb-syllab-ai.vercel.app",
+    "source": "main aa7d322 (clean worktree, first-hand gates above)"
+  },
+  "post_deploy_battery": {
+    "1_hub_health": "200 {status:ok, service:syllabai-hub, dataMode:'core-api', coreConfigured:true} — THE §2 flip discriminator byte-law HOLDS on the new bundle",
+    "2_hub_root": "200",
+    "3_hub_cla_malformed": "POST /api/ai/cla {} -> 400 invalid_body (zod detail) — the hub-plane tier law live",
+    "4a_084_knowledge_nodes_payload": "family form leg-08 verbatim (tree with LEARNER token): GET v2 /api/v1/knowledge/nodes/{rootId}/tree?includeMisconceptions=true -> 200, root = 297a8706 (run-004 anchor EXACT match via v2 curriculum/subjects), 4 children, run-004 topic node 2fa5ee0e IN tree — the #155 knowledge-reader row is LIVE at payload level",
+    "4b_085_concept_graph": "family form leg-02 verbatim: POST v2 /api/v1/teacher/concept-graph/activate with learner -> 403 Forbidden (Spring-parity envelope, v2 base); supplementary edges?rootId learner -> 403 — routing-leg live",
+    "4c_086_midpath_row": "family form leg-02 verbatim: GET v2 /api/v1/teacher/classes/00000000-0000-4000-8000-000000000020/knowledge-graph with learner -> 403 — the mid-path row's family form live; PLUS the matcher discriminator: malformed-uuid control (/classes/not-a-uuid/knowledge-graph) -> served by the CORE (403, Server: cloudflare, NO X-Vercel-Id) while well-formed uuid rides v2 (Server: Vercel + X-Vercel-Id captured on the retry run) — the :uuid segment law of the mechanism-A matcher discriminates LIVE",
+    "4d_087_midpath_row": "family form leg-02 verbatim: GET v2 /api/v1/teacher/classes/00000000-0000-4000-8000-000000000020/coverage with learner -> 403 — the 087 routing-availability row live",
+    "5_flip_payload_cla": "FIRST ATTEMPT 404 context_not_found in 30.3s — root-caused environmental, NOT a bundle regression (see finding F2); DISCLOSED RETRY after core wake -> HTTP 200 in 6.56s: the full mapped hub claResponse envelope {answer(335 chars, real LLM text), mode, citations(6), provider:'groq', model:'openai/gpt-oss-120b', refused:false, evidenceCount:6, latencyMs:1757} on the run-004 anchor (4CH1-S1-a) — the #160 flip byte-law HOLDS on the new bundle",
+    "6_api_actuator": "GET v2 /actuator/health -> 200 {groups:[liveness,readiness], status:UP}",
+    "disclosed_gap": "teacher-token 200-level family legs (085 leg-03/05, 086 leg-03/04/05, 087 teacher legs) NOT executed: TEACHER registration is join-code-gated (SYLLABAI_TEACHER_JOIN_CODE fails CLOSED, service.ts:132-133 — operator secret, not lane-side); the routing proof stands via the verbatim learner family forms + the deployed-table construction; the teacher legs ride the standing operator credential lever"
+  },
+  "findings_of_record": {
+    "F1_transient_register_500": "first register POST after the r9 api redeploy -> 500 internal_error (v2's own envelope, 0.278s, timestamp 2026-10-08T07:17:12.661Z; no request-id field in the envelope); disclosed diagnostic recheck: actuator UP + unauth 401 gate proper + ONE retry -> 201 (07:18:42Z), battery register -> 201 (07:19:05Z), retry register -> 201 (07:24:02Z) — class: first-call transient on the freshly redeployed api plane; noted, never auto-fixed",
+    "F2_core_cold_cla_context_404": "the hub topic-ask route resolves its anchor via core-proxy (coreBaseUrl -> fetchCoreJson, 30s AbortSignal — apps/hub/src/app/api/ai/cla/route.ts:187-197 + lib/core-topics.ts:40-56); with the Render core ASLEEP the resolution returns null -> 404 context_not_found after exactly 30.3s; the core woke (0.5s UP) and the same ask returned 200 — PROOF NOT-A-REGRESSION: git log 3dafc79..aa7d322 on route.ts + core-topics.ts + core-proxy.ts is EMPTY (byte-identical path); class: hub-plane topic asks depend on core warmth (ADR-029 R3 posture; the /api/ai/mark question-bridge lever remains the decoupling path); noted, never auto-fixed",
+    "F3_script_artifact": "the battery script's header capture was case-sensitive and missed X-Vercel-Id on part-1 responses; fixed case-insensitive in the retry run (the v2/core plane discriminator stands on the retry captures)"
+  },
+  "bundle_currency_push_time": "act-time fetch-first recount caught main move aa7d322 -> 05581d1 (#163 T-MIG-102 learner-model write path merged 34f84ee, API-SIDE): git diff aa7d322..origin/main -- apps/hub is EMPTY — the deployed hub bundle dpl_BBGcKUBy5qUZ8ps79a9UsDvjymXr stays BYTE-CURRENT vs tip 05581d1 of record; no re-deploy owed",
+  "write_ledger": "1 production deployment (dpl_BBGcKUBy5qUZ8ps79a9UsDvjymXr) + 3 probe learners created (example.invalid of-record class: r7a-diag-20261008t071842 token printed-truncated to run log only, r7a-hubredep3-20261008t071905 c86025f4, r7a-hubredep3b-20261008t072402 4f20b2aa) + 1 failed register (500, no row) + 1 LLM generation ask (the b5 retry 200; the 404 attempt died at core resolution BEFORE the v2 ask — zero LLM spend) + read-only family-form probes + 0 env changes + 0 code changes + 0 force-push + zero secret material printed",
+  "rollback_anchors": "all verified at census: dpl_BBGcKUBy5qUZ8ps79a9UsDvjymXr (NEW current, the 24+3-row bundle), dpl_FhmNnJAq (the CLA-flip bundle @ 3dafc79), dpl_J3pym8a5 (pre-#160 core-api), dpl_HHgp (r0 pre-flip) — plus the r1c runbook lever (HUB_DATA_MODE PATCH back to mock + redeploy)",
+  "board_while_working": "#163 merged (T-MIG-102 write path, FIRST zero-forgiveness full-green union 177/177 of record); api redeploy lever re-ripe for the #163 runtime delta, filed NOT executed by the main lane (48cdb6c — files, does not fire, pending operator order); r1c W7-SMOKE run-002 post-flip spine 22/22 PASS + P2 RULE-ABLE (union 177/177 @ 004d105); r0 tutor-verify run-001 live receipt",
+  "probe_scripts": "lane-side scripts/r47_creds_census.py + scripts/r47_postdeploy_battery.py + scratch_r47_battery.json + scratch_r47_retry.json (full bodies); deploy log /tmp/vercel_deploy_r7a.log",
+  "verdict": "THE STAGED HANDOFF FIRED END-TO-END: the hub now serves the 24-prefix + 3-mid-path surface tables of record (the #155/#161/#162 widen content) with the §2 core-api flip and the #160 cla flip byte-law verified to the payload on the new bundle; the hub side of the cutover surface chain is current-of-record vs tip 05581d1"
+}
