@@ -1,0 +1,33 @@
+{
+  "run": "run-002-impl-r0",
+  "task": "T-MIG-107",
+  "actor": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operator_trace": "1a11d70865c2e505",
+  "implementation": {
+    "new_files": [
+      "apps/api/src/services/content/review-writes.ts — the ContentReviewService write-method port (place/validate/reject/flag/unflag x3 levels, validate-all, validateMarkScheme+criteria+generalGuidance, mapQuestionTopics) + the ContentAuditRecorder port (recordAudit: same-tx fail-closed append, actorLabel = email|system) + the pure state-machine guards (assertFlaggable/assertUnflaggable, messages verbatim)"
+    ],
+    "wired": [
+      "apps/api/src/routes/content/index.ts — 17 honest-501 shells -> real handlers: POST /documents (kind=@RequestParam default OTHER, parse-fail 400 invalid_document fixed message, 201 IngestionView), POST /past-papers (201 IngestionResultView SUGGESTED, schemaVersion 409 before ingestion), validate-all (force Boolean binding, non-boolean -> 400 malformed request), place/topics (Bean-Validation @NotNull -> 400 validation_failed first-field), mark-scheme validate (@RequestBody(required=false), no @Valid cascade on criteria elements -> null markPointId reaches the point lookup -> 404 'mark point in scheme null not found'), Jackson body-uuid parse failures -> 400 malformed_body",
+      "apps/api/src/services/content/index.ts — ContentReadApp gains writes/ingestDocument/ingestPastPaper; the app factory wires ContentReviewWriteService over TxSqlFn + routes the ingestion ports inside sql.transaction (the exam-series import precedent)",
+      "apps/api/src/services/ingestion/canonical.ts — kind param type WIDENED to the 7-value DocumentKind (zero logic delta; the Java ingest accepts all 7 kinds, the DB ck_documents_kind already carries them)"
+    ],
+    "tests": [
+      "apps/api/test/content/write-port.test.ts (NEW, 47 pins): real-service-over-fakeSql tier (state machines, guard messages verbatim, guard order, audit rows with action/target/detail params, batch in-memory entity-mutation law) + route-wire tier (088 leg-08/09 laws EXACT, 400 validation_failed laws, Jackson malformed_body laws, opaque-500 IllegalState mapping, 201 views, 409 schema guard, actor plumbing)",
+      "apps/api/test/content/routes.test.ts — the 16 honest-501 pins replaced by the 14 flip pins (each former shell now reaches the write service and returns the frozen view; the wrong-path probe still 404s)"
+    ]
+  },
+  "gates": {
+    "typecheck_x4": "exit 0",
+    "bun_test_apps_api_packages": "1854 pass / 0 fail / 13 skip / 7182 expect() across 97 files — EXACT vs the a5abd14 baseline 1809/0/13/7081: +47 (write-port) -2 (routes.test.ts 51->49, the 16 501 pins -> 14 flip pins) = +45 pass, +101 expect",
+    "bun_test_apps_hub": "54 pass / 0 fail / 432 expect() — unchanged",
+    "golden_selftest": "OK"
+  },
+  "laws_disclosed": [
+    "the jakarta @Valid NON-cascade on List<PointCriteriaUpdate> (no @Valid on the field) — the element @NotNull constraints are DEAD in the core; a null markPointId answers 404 'mark point in scheme null not found', NOT 400 (the contracts/content-writes.ts comment claims 400 — the source law wins; contracts untouched, the route binds Jackson-faithfully)",
+    "the validate-all batch mutates in-memory state post-UPDATE (the Java entity mutation law) — the final unvalidated re-check reads that state",
+    "a null secondaryNodeIds element binds through Jackson and dies 404 'curriculum topic null not found' WITHOUT reaching SQL (findById(null) parity)"
+  ],
+  "acceptance_status": "the 088 replay legs 08-09 wire shapes are now answered by REAL implementations (404 question law / 400 primaryNodeId law EXACT) — the T-MIG-023 CLASS B honest-501 class closes at the code layer",
+  "timestamp_utc": "2026-10-09"
+}

@@ -75,6 +75,59 @@ function fakeApp(overrides: Partial<ContentReadApp> = {}): ContentReadApp {
         throw new Error("not faked");
       },
     } as unknown as ContentReadApp["review"],
+    writes: {
+      placePaper: async () => {
+        throw new Error("not faked");
+      },
+      validatePaper: async () => {
+        throw new Error("not faked");
+      },
+      rejectPaper: async () => {
+        throw new Error("not faked");
+      },
+      flagPaper: async () => {
+        throw new Error("not faked");
+      },
+      unflagPaper: async () => {
+        throw new Error("not faked");
+      },
+      validateQuestionVersion: async () => {
+        throw new Error("not faked");
+      },
+      rejectQuestionVersion: async () => {
+        throw new Error("not faked");
+      },
+      flagQuestionVersion: async () => {
+        throw new Error("not faked");
+      },
+      unflagQuestionVersion: async () => {
+        throw new Error("not faked");
+      },
+      validateMarkScheme: async () => {
+        throw new Error("not faked");
+      },
+      rejectMarkScheme: async () => {
+        throw new Error("not faked");
+      },
+      flagMarkScheme: async () => {
+        throw new Error("not faked");
+      },
+      unflagMarkScheme: async () => {
+        throw new Error("not faked");
+      },
+      validateAllForPaper: async () => {
+        throw new Error("not faked");
+      },
+      mapQuestionTopics: async () => {
+        throw new Error("not faked");
+      },
+    } as unknown as ContentReadApp["writes"],
+    ingestDocument: async () => {
+      throw new Error("not faked");
+    },
+    ingestPastPaper: async () => {
+      throw new Error("not faked");
+    },
     scope: {
       resolveActive: async () => null,
       resolveForCourse: async () => null,
@@ -382,37 +435,91 @@ describe("paper surfaces — unknown-id 404 parity (captured messages)", () => {
   });
 });
 
-// ── honest 501 discipline ────────────────────────────────────────────────
+// ── the write band (T-MIG-107) — the honest 501 shells FLIPPED ───────────
+// The shells answered 501 not_implemented since T-MIG-020; T-MIG-107 ports
+// the frozen wire laws (teacher/ContentController.java + ContentDocument
+// Controller.ingest @ 6cad6ef). The full per-surface wire pins live in
+// write-port.test.ts; this block pins the FLIP itself: every former shell
+// now reaches the write service (which the fake records), and the wrong-path
+// probe still answers 404 (never a fabricated success, never a 501 probe).
 
-describe("write surfaces — honest 501 + owning task", () => {
-  const writes: Array<[string, string]> = [
-    ["/past-papers", "POST"],
-    ["/documents", "POST"],
-    [`/documents/${UNKNOWN_DOC}/embed2`, "POST"], // wrong path → 404 fallback, not a 501 probe
-    ["/exam-papers/00000000-0000-4000-8000-0000000000e1/validate-all", "POST"],
-    ["/exam-papers/00000000-0000-4000-8000-0000000000e1/place", "POST"],
-    ["/exam-papers/00000000-0000-4000-8000-0000000000e1/reject", "POST"],
-    ["/exam-papers/00000000-0000-4000-8000-0000000000e1/flag", "POST"],
-    ["/exam-papers/00000000-0000-4000-8000-0000000000e1/unflag", "POST"],
-    ["/exam-papers/00000000-0000-4000-8000-0000000000e1/validate", "POST"],
-    ["/question-versions/00000000-0000-4000-8000-0000000000e1/validate", "POST"],
-    ["/question-versions/00000000-0000-4000-8000-0000000000e1/reject", "POST"],
-    ["/question-versions/00000000-0000-4000-8000-0000000000e1/flag", "POST"],
-    ["/question-versions/00000000-0000-4000-8000-0000000000e1/unflag", "POST"],
-    ["/mark-schemes/00000000-0000-4000-8000-0000000000e1/validate", "POST"],
-    ["/mark-schemes/00000000-0000-4000-8000-0000000000e1/reject", "POST"],
-    ["/questions/00000000-0000-4000-8000-0000000000e3/topics", "POST"],
+describe("write surfaces — the T-MIG-107 flip", () => {
+  function recordingWrites(): { writes: Record<string, unknown>; calls: string[] } {
+    const calls: string[] = [];
+    const make = (name: string, ret: unknown) => async (...args: unknown[]) => {
+      calls.push(name);
+      return ret;
+    };
+    return {
+      calls,
+      writes: {
+        placePaper: make("placePaper", { id: "p", subjectId: null, title: null, paperCode: null, sessionLabel: null, board: null, qualification: null, validationState: "SUGGESTED" }),
+        validatePaper: make("validatePaper", { id: "p", subjectId: null, title: null, paperCode: null, sessionLabel: null, board: null, qualification: null, validationState: "VALIDATED" }),
+        rejectPaper: make("rejectPaper", { id: "p", subjectId: null, title: null, paperCode: null, sessionLabel: null, board: null, qualification: null, validationState: "REJECTED" }),
+        flagPaper: make("flagPaper", { id: "p", subjectId: null, title: null, paperCode: null, sessionLabel: null, board: null, qualification: null, validationState: "FLAGGED" }),
+        unflagPaper: make("unflagPaper", { id: "p", subjectId: null, title: null, paperCode: null, sessionLabel: null, board: null, qualification: null, validationState: "SUGGESTED" }),
+        validateQuestionVersion: make("validateQuestionVersion", { id: "v", questionId: "q", version: 1, validationState: "VALIDATED" }),
+        rejectQuestionVersion: make("rejectQuestionVersion", { id: "v", questionId: "q", version: 1, validationState: "REJECTED" }),
+        flagQuestionVersion: make("flagQuestionVersion", { id: "v", questionId: "q", version: 1, validationState: "FLAGGED" }),
+        unflagQuestionVersion: make("unflagQuestionVersion", { id: "v", questionId: "q", version: 1, validationState: "SUGGESTED" }),
+        validateMarkScheme: make("validateMarkScheme", { id: "s", questionVersionId: "v", pointCount: 0, validationState: "VALIDATED" }),
+        rejectMarkScheme: make("rejectMarkScheme", { id: "s", questionVersionId: "v", pointCount: 0, validationState: "REJECTED" }),
+        flagMarkScheme: make("flagMarkScheme", { id: "s", questionVersionId: "v", pointCount: 0, validationState: "FLAGGED" }),
+        unflagMarkScheme: make("unflagMarkScheme", { id: "s", questionVersionId: "v", pointCount: 0, validationState: "SUGGESTED" }),
+        validateAllForPaper: make("validateAllForPaper", { paperId: "p", paperState: "VALIDATED", totalVersions: 0, versionsValidated: 0, schemesValidated: 0 }),
+        mapQuestionTopics: make("mapQuestionTopics", { questionId: "q", primaryNodeId: "n", primaryCode: "c", primaryTitle: "t", topicCount: 1 }),
+      },
+    };
+  }
+
+  const flipCases: Array<[string, string, string, string]> = [
+    [`/exam-papers/${UNKNOWN_PAPER}/validate`, "validatePaper", "VALIDATE exam paper", "validationState=VALIDATED"],
+    [`/exam-papers/${UNKNOWN_PAPER}/reject`, "rejectPaper", "REJECT", "validationState=REJECTED"],
+    [`/exam-papers/${UNKNOWN_PAPER}/flag`, "flagPaper", "FLAG", "validationState=FLAGGED"],
+    [`/exam-papers/${UNKNOWN_PAPER}/unflag`, "unflagPaper", "UNFLAG", "validationState=SUGGESTED"],
+    [`/exam-papers/${UNKNOWN_PAPER}/validate-all`, "validateAllForPaper", "BATCH", "paperState=VALIDATED"],
+    [`/question-versions/00000000-0000-4000-8000-0000000000e1/validate`, "validateQuestionVersion", "VALIDATE version", "validationState=VALIDATED"],
+    [`/question-versions/00000000-0000-4000-8000-0000000000e1/reject`, "rejectQuestionVersion", "REJECT version", "validationState=REJECTED"],
+    [`/question-versions/00000000-0000-4000-8000-0000000000e1/flag`, "flagQuestionVersion", "FLAG version", "validationState=FLAGGED"],
+    [`/question-versions/00000000-0000-4000-8000-0000000000e1/unflag`, "unflagQuestionVersion", "UNFLAG version", "validationState=SUGGESTED"],
+    [`/mark-schemes/00000000-0000-4000-8000-0000000000e1/validate`, "validateMarkScheme", "VALIDATE scheme", "validationState=VALIDATED"],
+    [`/mark-schemes/00000000-0000-4000-8000-0000000000e1/reject`, "rejectMarkScheme", "REJECT scheme", "validationState=REJECTED"],
   ];
-  for (const [path, method] of writes) {
-    test(`${method} ${path} → 501 naming the owning task`, async () => {
-      if (path.endsWith("/embed2")) return; // not a real surface
-      const res = await teacherRouter(fakeApp(), asTeacher).request(path, { method });
-      expect(res.status).toBe(501);
-      const body = await res.json();
-      expect(body.error).toBe("not_implemented");
-      expect(body.message).toContain("owned by");
+
+  for (const [path, method, , ret] of flipCases) {
+    test(`POST ${path} reaches the write service (${ret})`, async () => {
+      const { writes, calls } = recordingWrites();
+      const res = await teacherRouter(fakeApp({ writes } as unknown as Partial<ContentReadApp>), asTeacher).request(path, { method: "POST" });
+      expect(res.status).toBe(200);
+      expect(calls).toEqual([method]);
+      expect(JSON.stringify(await res.json())).toContain(ret.split("=")[1] ?? ret);
     });
   }
+
+  test("POST place reaches the write service with the body subject", async () => {
+    const { writes, calls } = recordingWrites();
+    const res = await teacherRouter(fakeApp({ writes } as unknown as Partial<ContentReadApp>), asTeacher).request(
+      `/exam-papers/${UNKNOWN_PAPER}/place`,
+      { method: "POST", body: JSON.stringify({ subjectId: "70000000-0000-4000-8000-000000000002" }) },
+    );
+    expect(res.status).toBe(200);
+    expect(calls).toEqual(["placePaper"]);
+  });
+
+  test("POST topics reaches the write service (the 501 era is over)", async () => {
+    const { writes, calls } = recordingWrites();
+    const res = await teacherRouter(fakeApp({ writes } as unknown as Partial<ContentReadApp>), asTeacher).request(
+      `/questions/00000000-0000-4000-8000-0000000000e3/topics`,
+      { method: "POST", body: JSON.stringify({ primaryNodeId: "20000000-0000-4000-8000-000000000012" }) },
+    );
+    expect(res.status).toBe(200);
+    expect(calls).toEqual(["mapQuestionTopics"]);
+  });
+
+  test("a wrong path still 404s (never a fabricated write)", async () => {
+    const res = await teacherRouter(fakeApp(), asTeacher).request(`/documents/${UNKNOWN_DOC}/embed2`, { method: "POST" });
+    expect(res.status).toBe(404);
+  });
 });
 
 // ── ContentReaderController ──────────────────────────────────────────────

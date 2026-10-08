@@ -30,6 +30,7 @@
 import {
   canonicalDocumentViolations,
   type CanonicalDocument,
+  type DocumentKind,
 } from "@syllabai/contracts";
 import type { SqlFn } from "../identity/users";
 import { CURRENT_EMBED_REV } from "../content/retrieval";
@@ -132,7 +133,7 @@ export async function ingestCanonicalDocument(
   sql: SqlFn,
   doc: CanonicalDocument,
   rawJson: string,
-  kind: "QUESTION_PAPER" | "MARK_SCHEME",
+  kind: DocumentKind,
   ingestedBy: string | null,
   now: Date,
 ): Promise<IngestionResult> {

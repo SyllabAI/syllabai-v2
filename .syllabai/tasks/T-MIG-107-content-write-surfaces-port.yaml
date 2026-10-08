@@ -1,0 +1,43 @@
+version: 1
+task:
+  id: T-MIG-107
+  title: 'T-MIG-107 - the content-write surfaces port: the 17 honest-501 write routes on /api/v1/teacher/content (+ POST /documents) become the frozen wire-law implementations — the T-MIG-023 CLASS B residual class (088 replay legs 08-09) closes; the ContentReviewService write methods (place/validate/reject/flag/unflag x3 levels + validate-all + topics mapping + scheme criteria authoring) + the ContentAuditRecorder write port + the ingestion route wiring (ingestCanonicalDocument / ingestPastPaperDraft already byte-faithfully ported in services/ingestion since T-MIG-082 tranche B2)'
+  owner: 'R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646) — CLAIMED per operator directive (IM trace 1a11d70865c2e505, 2026-10-09 "the content-write port", ordering the lane R0 itself proposed as the last knowingly-dead surface after the Task-57 verification sweep). The 501 shells cite "T-MIG-023 (content write surfaces — to be filed by R0)" — this card IS that filing; the T-MIG-023 card itself stays DONE (F-1/F-2 port fixes, PR #38). ID 107 free at claim (106 DONE 590f929). Same session''s prior lanes all DONE/CLOSED — one lane at a time.'
+  claimed_at: "2026-10-09"
+  status: IN_REVIEW
+  priority: P2 # the only knowingly non-functional surface class on the api-of-record; the §7 validation workflow is the operational gate for ALL served content (nothing serves until validated HERE)
+  wave: s2-wire-layer
+  deps: [T-MIG-020, T-MIG-082, T-MIG-088, T-MIG-100]
+  endpoints:
+  - 'POST /api/v1/teacher/content/documents                       (201 IngestionView; kind=@RequestParam default OTHER; parse-fail 400 invalid_document fixed message; checksum dedup + kind-conflict 409)'
+  - 'POST /api/v1/teacher/content/past-papers                     (201 IngestionResultView "SUGGESTED"; unsupported schemaVersion 409; ingestPastPaperDraft single-transaction)'
+  - 'POST /api/v1/teacher/content/exam-papers/:id/validate-all    (BatchResult; REJECTED/FLAGGED/REVIEW_REQUIRED/blocked-versions 409 guards; force query param)'
+  - 'POST /api/v1/teacher/content/exam-papers/:id/validate        (PaperSummary; unvalidated-count 409; marking-contract 409)'
+  - 'POST /api/v1/teacher/content/exam-papers/:id/place           (PaperSummary; 404 subject; idempotent same-subject; audit PLACE)'
+  - 'POST /api/v1/teacher/content/exam-papers/:id/reject          (PaperSummary; audit REJECT)'
+  - 'POST /api/v1/teacher/content/exam-papers/:id/flag            (PaperSummary; SUGGESTED/VALIDATED-only else opaque 500 — the IllegalStateException catch-all law)'
+  - 'POST /api/v1/teacher/content/exam-papers/:id/unflag          (PaperSummary; FLAGGED-only else opaque 500)'
+  - 'POST /api/v1/teacher/content/question-versions/:id/validate  (VersionSummary; audit)'
+  - 'POST /api/v1/teacher/content/question-versions/:id/reject    (VersionSummary; audit)'
+  - 'POST /api/v1/teacher/content/question-versions/:id/flag      (VersionSummary; SUGGESTED/VALIDATED-only)'
+  - 'POST /api/v1/teacher/content/question-versions/:id/unflag    (VersionSummary; FLAGGED-only)'
+  - 'POST /api/v1/teacher/content/mark-schemes/:id/validate       (SchemeSummary; optional body: per-point criteria authoring + generalGuidance null/blank->null; 404 mark-point-in-scheme)'
+  - 'POST /api/v1/teacher/content/mark-schemes/:id/reject         (SchemeSummary)'
+  - 'POST /api/v1/teacher/content/mark-schemes/:id/flag           (SchemeSummary)'
+  - 'POST /api/v1/teacher/content/mark-schemes/:id/unflag         (SchemeSummary)'
+  - 'POST /api/v1/teacher/content/questions/:id/topics            (TopicMappingResult; 088 leg-08 404 question law + leg-09 400 validation_failed "primaryNodeId: must not be null" law; ING- anchor 409s; secondaries dedup/max-5/skip-primary; delete-before-insert question_topics rewrite; audit MAP_TOPICS)'
+  frozen_law: 'syllabai-core @ 6cad6ef: teacher/ContentController.java (352L, write half) + teacher/ContentReviewService.java (947L, write methods :98-420 + :712-759) + teacher/ContentAuditRecorder.java + teacher/ContentReviewAudit.java (actorLabel = email | "system", occurredAt = now, fail-closed same-tx) + assessment entities (ExamPaper/QuestionVersion/MarkScheme flag/unflag IllegalState guards) + content/ContentDocumentController.ingest (:66-76, parse law :180-191) + content/ContentIngestionService.ingest (dedup/kind-conflict/V33 identity) + shared/GlobalExceptionHandler (Conflict->409 conflict / NotFound->404 not_found / MethodArgumentNotValid->400 validation_failed first-field "field: message" / IllegalState->opaque 500 internal_error "an internal error occurred"). Golden captures: golden-captures/t-mig-088/leg-08 (404 question unknown) + leg-09 (400 primaryNodeId: must not be null) — the acceptance pins.'
+  scope:
+    allowed:
+    - apps/api/src/services/content/review-writes.ts (NEW — the write service port)
+    - apps/api/src/services/content/index.ts (mount wiring of the write deps)
+    - apps/api/src/routes/content/index.ts (17 shells -> handlers + POST /documents + POST /past-papers wiring)
+    - apps/api/src/index.ts (only if the app factory signature needs the write knob)
+    - apps/api/test/content/** (new write-port pins)
+    - .syllabai/receipts/T-MIG-107/**; this yaml; .syllabai/worklog.md (append-only)
+    forbidden:
+    - packages/db/** source changes (writes ride raw SQL over the caller''s SqlFn — the house pattern; the 62-table schema already carries every needed table incl. content_review_audit ck constraints)
+    - apps/hub/** (no emitter changes — the hub surface table rows for these paths already exist as v2-surface routing rows; the write rows flip WITH the golden-verify widening rider, post-merge)
+    - the READ surfaces and their captures (golden/cases content-* stay byte-untouched)
+    - services/ingestion/** logic changes (the byte-faithful ports stay verbatim; wiring only)
+    - force-push; self-merge of the PR

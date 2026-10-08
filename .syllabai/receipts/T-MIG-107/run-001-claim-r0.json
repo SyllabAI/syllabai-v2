@@ -1,0 +1,48 @@
+{
+  "run": "run-001-claim-r0",
+  "task": "T-MIG-107",
+  "actor": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operator_trace": "1a11d70865c2e505",
+  "operator_directive": "the content-write port",
+  "claim": {
+    "what": "the content-write surfaces port — the 17 honest-501 write routes on /api/v1/teacher/content (+ POST /documents), the T-MIG-023 CLASS B residual class",
+    "filing_basis": "the 501 shells cite CONTENT_WRITE_TASK = 'T-MIG-023 (content write surfaces — to be filed by R0)'; this card IS that filing; the T-MIG-023 card itself stays DONE (F-1/F-2, PR #38)",
+    "id_free_at_claim": "T-MIG-107 (106 DONE 590f929)",
+    "branch": "t-mig-107/r0 off a5abd14 (claim-in-first-commit)"
+  },
+  "census_of_record": {
+    "wire_law_sources_frozen_6cad6ef": [
+      "teacher/ContentController.java (352L) — the 16 write endpoints + views (PaperSummary/VersionSummary/SchemeSummary/BatchResult/TopicMappingResult/IngestionResultView)",
+      "teacher/ContentReviewService.java (947L) — write methods :98-420 (place/validate/reject/flag/unflag/validate-all) + :712-759 (mapQuestionTopics + questionTopicRows anchor-synthesis)",
+      "teacher/ContentAuditRecorder.java — same-tx fail-closed append; actorLabel = reviewer email | 'system'",
+      "teacher/ContentReviewAudit.java — actor_label NOT NULL default ''->email|system, occurred_at NOT NULL now",
+      "assessment/ExamPaper.java :134-150 + QuestionVersion.java :141-158 + MarkScheme.java :122-138 — flag/unflag IllegalStateException guards (SUGGESTED/VALIDATED->FLAGGED; FLAGGED->SUGGESTED; else opaque 500 via the GlobalExceptionHandler Exception catch-all)",
+      "content/ContentDocumentController.java :66-76 + :180-191 — POST /documents: 201 CREATED, kind=@RequestParam(defaultValue=OTHER), parse-fail -> InvalidDocumentException 'request body is not a canonical document (schema 1.0)' 400 invalid_document",
+      "content/ContentIngestionService.java :48-140 — validator -> checksum dedup (kind-conflict 409) -> chunking -> V33 identity mirror",
+      "shared/GlobalExceptionHandler.java — ConflictException->409 'conflict' / NotFoundException->404 'not_found' / MethodArgumentNotValidException->400 'validation_failed' first field error 'field: message' / Exception->500 'internal_error' 'an internal error occurred' (opaque, detail suppressed)"
+    ],
+    "golden_captures": [
+      "golden-captures/t-mig-088/leg-08-topics-post-rnd-q-404.json — 404 not_found 'question {id} not found'",
+      "golden-captures/t-mig-088/leg-09-topics-post-bad-body-400.json — 400 validation_failed 'primaryNodeId: must not be null'"
+    ],
+    "v2_preexisting_of_record": [
+      "services/ingestion/canonical.ts ingestCanonicalDocument — byte-faithful ContentIngestionService orchestration (T-MIG-082 tranche B2 era)",
+      "services/ingestion/past-paper.ts ingestPastPaperDraft — byte-faithful PastPaperIngestionService (496L)",
+      "services/content/review-repos.ts + repositories.ts — the read-side query surface + ContentReviewAuditRepository.findPaperAudit",
+      "services/identity/errors.ts — ConflictException 409 'conflict' / NotFoundException 404 / app.onError catch-all 500 'internal_error' 'an internal error occurred' (index.ts:588-596, the verbatim core parity)",
+      "packages/db schema — content_review_audit (ck_cra_action 7 values, ck_cra_target_type 5 values), question_topics, glm_ocr_bridge_records, subjects, knowledge_nodes all present"
+    ]
+  },
+  "implementation_plan": [
+    "services/content/review-writes.ts (NEW): ContentAuditRecorder port + the write methods over the caller's TxSqlFn (sql.transaction — the exam-series import route precedent) + the entity state-machine guards (IllegalState = plain Error -> the app onError opaque 500) + the result views",
+    "routes/content/index.ts: 17 notImplemented shells -> real handlers; body validation laws (place subjectId / topics primaryNodeId / scheme criteria NotNull) as the MethodArgumentNotValid 'field: message' law; POST /documents + POST /past-papers wired to the existing ingestion ports with the 201/409/400 laws",
+    "services/content/index.ts: wire the write deps into the teacher content router factory",
+    "apps/api/test/content/write-port.test.ts (new): the state-transition matrix, guard laws, audit rows, body-validation laws, 088 leg-08/09 acceptance pins, ingestion 201/409/invalid_document laws"
+  ],
+  "acceptance": [
+    "typecheck x4 exit 0; bun test apps/api packages EXACT-delta pins vs the a5abd14 baseline (1809/0/13skip); hub 54/0; golden selftest OK",
+    "the 088 legs 08/09 wire shapes answered EXACTLY (404 question law / 400 primaryNodeId law) — the T-MIG-023 CLASS B class closes at the code layer",
+    "every mutation writes its content_review_audit row in the same transaction (fail-closed)"
+  ],
+  "timestamp_utc": "2026-10-09"
+}
