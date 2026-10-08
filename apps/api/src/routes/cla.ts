@@ -19,6 +19,24 @@
  * unresolvable references are 404 with no existence oracles; CHECK without
  * attempt evidence is a 409 (the §7.3 answer-leakage gate).
  *
+ * T-MIG-097 repair (run-001 capture L01-L06, capture > source-reading —
+ * the 095 finding generalized): the live frozen wire CONTRADICTED the
+ * 069-era reading of this file in three laws, repaired here —
+ *   (1) the two-envelope law is a LAYER law: Jackson binds the whole
+ *       document BEFORE @Valid, so any binding-class failure (wrong type,
+ *       closed-enum violation, malformed uuid) answers malformed_body even
+ *       when a constraint violation coexists (capture L02/L03: unknown
+ *       kind/mode = malformed_body, NOT validation_failed);
+ *   (2) among constraint violations the QUESTION field reports first
+ *       (capture L01: on {} the core serves "question: must not be blank",
+ *       not "kind: must not be null");
+ *   (3) the DEFERRED kinds' required-reference gates fire BEFORE the
+ *       runtime-step refusal (capture L05/L06: "SMART_LESSON context
+ *       requires rootId and topicNodeId" / "NOTE_SECTION context requires
+ *       rootId and noteId" verbatim) — the runtime-step refusal remains
+ *       for refs-present asks (the generation wire rides the operator's
+ *       section-3 lever, disclosed).
+ *
  * Exception law (GlobalExceptionHandler parity, verbatim):
  *   NotFoundError / NotFoundException → 404 not_found, e.message verbatim
  *   BadRequestException               → 400 bad_request, e.message verbatim
@@ -36,9 +54,12 @@
  *                                       refusals NEVER 503
  *
  * Two-envelope body law (Jackson binds the whole document before @Valid):
- *   binding failures (wrong JSON types, malformed uuids) → 400 malformed_body;
+ *   binding failures (wrong JSON types, closed-enum values, malformed
+ *   uuids) → 400 malformed_body — LAYER 1, answers before any constraint
+ *   reading (capture L02/L03);
  *   constraint violations (@NotNull kind/mode, @NotBlank/@Size question,
- *   @Size specCode/noteId) → 400 validation_failed "field: message".
+ *   @Size specCode/noteId) → 400 validation_failed "field: message" —
+ *   LAYER 2, the question field reports first (capture L01).
  */
 import { Hono } from "hono";
 import type { ZodError } from "zod";
@@ -105,41 +126,72 @@ const CLA_ASK_DEFAULTS: Record<string, { absent?: string; size?: string; pattern
  * Two-envelope classifier — the 060 classifier shape re-applied to the CLA
  * request fields (the tutor's classifier is module-private to its landed
  * fence; this copy-adapt is disclosed, same law, different fields).
+ *
+ * T-MIG-097 repair: the classifier now implements the LAYER law (Jackson
+ * binds before @Valid) instead of first-issue-by-field-order — a
+ * binding-class issue anywhere answers malformed_body even when a
+ * constraint violation coexists; among constraint issues the question
+ * field reports first (capture L01), otherwise schema-field order.
  */
-function classifyAskError(error: ZodError): { kind: "malformed" } | { kind: "validation"; message: string } {
-  const first = error.issues[0];
-  if (!first) return { kind: "malformed" };
-  const field = first.path.reduce<string>(
+type ClaZodIssue = ZodError["issues"][number];
+
+function issueField(issue: ClaZodIssue): string {
+  return issue.path.reduce<string>(
     (acc, seg) => (typeof seg === "number" ? `${acc}[${seg}]` : acc ? `${acc}.${seg}` : String(seg)),
     "",
   );
+}
+
+/** LAYER 1 — Jackson binding class: wrong types, closed-enum values, bad uuids. */
+function isBindingClass(issue: ClaZodIssue): boolean {
+  if (issue.code === "invalid_type") {
+    const received = (issue as { received?: string }).received;
+    return received !== "undefined" && received !== "null";
+  }
+  if (issue.code === "invalid_string") {
+    return (issue as { validation?: string }).validation === "uuid";
+  }
+  // the Jackson strict-enum read failure (capture L02/L03: unknown
+  // kind/mode = malformed_body "request body is not readable ...")
+  return issue.code === "invalid_enum_value";
+}
+
+/** LAYER 2 — the @Valid constraint class (single first-violation message). */
+function classifyConstraintIssue(issue: ClaZodIssue): string {
+  const field = issueField(issue);
   const defaults = CLA_ASK_DEFAULTS[field] ?? {};
-  if (first.code === "invalid_type") {
-    const received = (first as { received?: string }).received;
-    if (received !== "undefined" && received !== "null") return { kind: "malformed" };
-    return { kind: "validation", message: `${field}: ${defaults.absent ?? "must not be null"}` };
+  if (issue.code === "invalid_type") {
+    // received undefined/null — the @NotNull class
+    return `${field}: ${defaults.absent ?? "must not be null"}`;
   }
-  if (first.code === "invalid_string") {
-    if ((first as { validation?: string }).validation === "uuid") return { kind: "malformed" };
-    return { kind: "validation", message: `${field}: request invalid` };
-  }
-  if (first.code === "invalid_enum_value") {
-    return { kind: "validation", message: `${field}: ${defaults.pattern ?? "request invalid"}` };
-  }
-  if (first.code === "too_small" || first.code === "too_big") {
-    const minimum = (first as { minimum?: number }).minimum;
-    const zodType = (first as { type?: string }).type;
-    if (first.code === "too_small" && zodType === "string" && minimum === 1) {
-      return { kind: "validation", message: `${field}: ${defaults.absent ?? "must not be blank"}` };
+  if (issue.code === "too_small" || issue.code === "too_big") {
+    const minimum = (issue as { minimum?: number }).minimum;
+    const zodType = (issue as { type?: string }).type;
+    if (issue.code === "too_small" && zodType === "string" && minimum === 1) {
+      return `${field}: ${defaults.absent ?? "must not be blank"}`;
     }
-    if (defaults.size) return { kind: "validation", message: `${field}: ${defaults.size}` };
-    const max = (first as { maximum?: number }).maximum;
-    return {
-      kind: "validation",
-      message: `${field}: size must be between ${minimum ?? 0} and ${max ?? 0}`,
-    };
+    if (defaults.size) return `${field}: ${defaults.size}`;
+    const max = (issue as { maximum?: number }).maximum;
+    return `${field}: size must be between ${minimum ?? 0} and ${max ?? 0}`;
   }
-  return { kind: "validation", message: `${field}: request invalid` };
+  return `${field}: request invalid`;
+}
+
+function classifyAskError(error: ZodError): { kind: "malformed" } | { kind: "validation"; message: string } {
+  const issues = error.issues;
+  if (issues.length === 0) return { kind: "malformed" };
+  // LAYER 1 — any binding-class failure answers malformed_body regardless
+  // of coexisting constraint violations (the Jackson bind-before-@Valid law)
+  if (issues.some(isBindingClass)) return { kind: "malformed" };
+  // LAYER 2 — constraint violations: the question field reports first
+  // (capture L01); the size class does NOT take precedence (conservative:
+  // no capture pins it against kind/mode absences)
+  const questionIssue = issues.find(
+    (i) => issueField(i) === "question" && (i.code === "invalid_type" || i.code === "too_small"),
+  );
+  const chosen = questionIssue ?? issues[0];
+  if (!chosen) return { kind: "malformed" }; // unreachable: issues.length > 0 above
+  return { kind: "validation", message: classifyConstraintIssue(chosen) };
 }
 
 /** the shared error mapping for the CLA ask route (the frozen handler). */
@@ -184,16 +236,44 @@ export function createClaRouter(cla: ClaService): Hono {
       if (verdict.kind === "malformed") return c.json(malformedBody(), 400);
       return c.json(apiError(400, "validation_failed", verdict.message), 400);
     }
+    // the web-layer @NotBlank parity (capture L04): a whitespace-only
+    // question BINDS (zod min(1) counts whitespace) but the frozen
+    // constraint stage answers validation_failed before the service runs
+    if (parsed.data.question.trim().length === 0) {
+      return c.json(apiError(400, "validation_failed", "question: must not be blank"), 400);
+    }
+    // the T-MIG-097 deferred-kind reference gates (capture L05/L06): the
+    // frozen dispatch checks SMART_LESSON/NOTE_SECTION required references
+    // BEFORE the runtime-step refusal — the context-requirement law is
+    // load-bearing on the wire. Refs-present asks still reach the disclosed
+    // runtime-step deferral below (SmartLessonService/RevisionNoteRepository
+    // ride T-MIG-053 t3/t4; the generation wire rides the operator's
+    // section-3 lever).
+    const rootId = parsed.data.rootId ?? null;
+    const topicNodeId = parsed.data.topicNodeId ?? null;
+    const noteId = parsed.data.noteId ?? null;
+    if (parsed.data.kind === "SMART_LESSON" && (rootId === null || topicNodeId === null)) {
+      return c.json(
+        apiError(400, "bad_request", "SMART_LESSON context requires rootId and topicNodeId"),
+        400,
+      );
+    }
+    if (parsed.data.kind === "NOTE_SECTION" && (rootId === null || noteId === null)) {
+      return c.json(
+        apiError(400, "bad_request", "NOTE_SECTION context requires rootId and noteId"),
+        400,
+      );
+    }
     try {
       const answer = await cla.contextualAsk({
         learnerId: auth.userId,
         kind: parsed.data.kind,
-        rootId: parsed.data.rootId ?? null,
-        topicNodeId: parsed.data.topicNodeId ?? null,
+        rootId,
+        topicNodeId,
         questionId: parsed.data.questionId ?? null,
         partId: parsed.data.partId ?? null,
         specCode: parsed.data.specCode ?? null,
-        noteId: parsed.data.noteId ?? null,
+        noteId,
         mode: parsed.data.mode,
         question: parsed.data.question,
       });
