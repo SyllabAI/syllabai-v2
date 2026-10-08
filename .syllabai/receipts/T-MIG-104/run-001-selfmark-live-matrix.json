@@ -1,0 +1,41 @@
+{
+  "card": "T-MIG-104",
+  "receipt": "run-001-selfmark-live-matrix",
+  "lane": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "created_at_utc": "2026-10-08T14:20:00Z",
+  "operator_trace": "1a11bda3802bef79 'file the self-mark 500 defect to the register'",
+  "purpose": "First-hand live capture of the learner self-mark error matrix at the api-of-record, pinning the 500 defect shape the operator ordered filed, and separating it from every DESIGNED error class (the T-MIG-055/057/058 parity pins) so the band's fence is exact.",
+  "probe_scripts": "scripts/r0_selfmark_500_probe.py + scripts/r0_selfmark_500_shapematrix.py (persisted lane-side, /home/z/my-project/scripts/; raw transcripts evidence/selfmark-500-probe-20261008.json + evidence/selfmark-500-shapematrix-20261008.json lane-side)",
+  "target": "api-of-record https://syllabai-v2.vercel.app (topology law a6e89b1) — live prod wire, Vercel edge (hkg1::iad1), served 2026-10-08T14:15:55Z..14:17:24Z; the flipped NARROW family mount of record (index.ts:280, T-MIG-037; hub exposure law per T-MIG-099 run-001 F5)",
+  "flow_law": "routes/contracts read first-hand at origin/main 80bce0f: POST /api/v1/learners/me/attempts/:attemptId/self-mark (routes/selfmark/index.ts:115; contract selfMarkRequestSchema = {parts: [{partId, marksAwarded}] nullish, comment: string nullish}, packages/contracts/src/assessment.ts:337); structured attempt creation POST /api/v1/attempts/structured; W7-SMOKE structured question of record 92817c46-8103-4d2c-9f32-bd61636320a1 (5 x 1-mark parts, read-only use); designed law per services/selfmark/index.ts header: settled re-submit -> 409, part-set equality -> 400 on mismatch, bounds 0..marks -> 409, parts=null -> NPE-parity 500 (T-MIG-055 captured quirk)",
+  "write_ledger_disclosed": {
+    "probe_learner": "r0-seam-probe-20261008a@example.invalid (the probe account of record, login 200)",
+    "attempts": "2 structured attempts created 201 PENDING: 1143f696-35c9-4431-a750-d6b87a81bce3 (settled SELF_MARKED by leg D) + 04f699d9-d2e7-4729-a717-65f66c3478b7 (left PENDING; exercised by 400/409/500 legs)",
+    "self_marks": "1 valid self-mark (attempt 1143f696, 3/5, parts -> SELF_MARKED)",
+    "llm_cost": "ZERO (this receipt's legs never reach the LLM seam; the smart-mark disambiguation leg is receipt run-002)"
+  },
+  "observed": {
+    "leg_A1_login": "200 in 2408ms — probe account of record, bearer in memory only",
+    "leg_B_question_read": "200 in 627ms — 5 x 1-mark parts served (a47b02df, 69a1b177, 4f265a52, 319b2e5e, 99e560d4 prefixes)",
+    "leg_C_attempt_create": "201 in 560ms — structured attempt 1143f696 PENDING marksPossible=5",
+    "leg_D_selfmark_valid": "HTTP 201 in 598ms — THE HAPPY PATH IS GREEN: valid 5-part body settled the attempt (marksAwarded=3, marksTotal=5, parts SELF_MARKED, evidenceFired=false) — no 500 on the designed path",
+    "leg_E_unknown_attempt": "404 in 270ms — valid-shaped parts on unknown attempt UUID -> mapped NotFound('attempt') body {status:404,error:not_found,message:'attempt <uuid> not found'} — the no-existence-leak law, NOT a 500",
+    "leg_D2_resubmit_settled": "409 in 312ms — re-self-mark of the settled 1143f696 -> {error:conflict,message:'attempt already settled (SELF_MARKED) -- self-marking is single-shot'} — designed class, correct",
+    "leg_D3_subset_mismatch": "400 in 306ms — 1-of-5 parts on PENDING 04f699d9 -> {error:bad_request,message:'self-mark must cover exactly the attempt's parts'} — designed class, correct",
+    "leg_D4_bounds_violation": "409 in 308ms — marksAwarded=99 on 1-mark parts -> {error:conflict,message:'marks 99 outside part bound 0–1'} — designed class, correct",
+    "leg_D5_null_parts_500": "HTTP 500 in 268ms — body {} (binds parts=null) on PENDING 04f699d9 -> {status:500,error:internal_error,message:'an internal error occurred',timestamp:2026-10-08T14:17:23.764Z} — X-Vercel-Id hkg1::iad1::cm6w9-1791469043621-ac525d5f — THE DEFECT SHAPE of record: the opaque catch-all 500 the operator ordered filed (the frozen NPE-parity class, pre-service, routes/selfmark/index.ts T-MIG-055 law)"
+  },
+  "asserts": [
+    "login 200 + bearer (memory only)",
+    "question 200 servable, 5 x 1-mark parts",
+    "structured submit 201 PENDING (x2)",
+    "VALID self-mark body -> 201 settled (happy path GREEN, no 500)",
+    "unknown attempt + valid parts -> 404 mapped (no leak, no 500)",
+    "settled re-submit -> 409 designed, correct",
+    "part-set mismatch -> 400 designed, correct",
+    "bounds violation -> 409 designed, correct",
+    "parts=null body -> 500 opaque internal_error (THE DEFECT SHAPE, first-hand on the live wire)"
+  ],
+  "verdict": "ASSERTS 9/9 PASS — the learner self-mark surface at the api-of-record serves every DESIGNED error class correctly (201/404/409/400/409) and serves an OPAQUE 500 internal_error for exactly one shape: a body that binds parts=null ({} / {\"parts\":null} / comment-only). That shape is today pinned as frozen-faithful parity (T-MIG-055 captured quirk + T-MIG-057/058 depth pins + golden w3-selfmark-unknown-attempt-500), so the port is faithful but the PRODUCT behavior on a live user-reachable flipped surface is a non-actionable opaque 500 — filed as the T-MIG-104 defect band with the operator's trace as the filing sanction; the repair class is a golden-law AMENDMENT (operator ruling), never a unilateral port change.",
+  "scope_note": ".syllabai-only contact (receipts + card + worklog); zero code, zero schema, zero flip-table, zero LLM-seam contact in THIS receipt; write ledger disclosed above; no force-push"
+}

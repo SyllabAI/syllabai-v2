@@ -1,0 +1,82 @@
+version: 1
+task:
+  id: T-MIG-104
+  title: "T-MIG-104 - learner self-mark null-parts opaque-500 defect band (operator trace 1a11bda3802bef79 'file the self-mark 500 defect to the register'; filed from R0 live-matrix run-001): on the LIVE flipped learner surface POST /api/v1/learners/me/attempts/:attemptId/self-mark (index.ts:280, the T-MIG-037 NARROW family), a request body that binds parts=null ({}, {\"parts\":null}, or comment-only) serves an OPAQUE 500 internal_error 'an internal error occurred' — first-hand captured on the live wire (receipts/T-MIG-104/run-001-selfmark-live-matrix.json, X-Vercel-Id hkg1::iad1::cm6w9-1791469043621-ac525d5f, 2026-10-08T14:17:23.764Z). The shape is today PINNED as frozen-faithful parity (the T-MIG-055 captured quirk: Jackson binds SelfMarkRequest.parts=null, @Valid passes, the controller dedup loop NPEs, catch-all advice serves the opaque 500; golden w3-selfmark-unknown-attempt-500 + the T-MIG-057/058 depth pins), so the PORT is faithful but the PRODUCT behavior on a live user-reachable surface is a non-actionable opaque 500 — every OTHER class on the surface is verified correct first-hand (happy path 201 settled; unknown attempt 404 no-leak; settled re-submit 409; part-set mismatch 400; bounds violation 409), and the smart-mark pipeline the UI actually rides is GREEN on the current bundle (receipts/T-MIG-104/run-002-smartmark-disambiguation.json, 200 in 2.6s VALIDATED) — the defect is EXACTLY the null-parts shape. Repair class = golden-law AMENDMENT (the 071 operator-ruling precedent): the register currently PINS the 500, so no unilateral port change may pass the parity gates — an operator ruling must either (a) AMEND w3-selfmark-unknown-attempt-500 to a mapped 4xx envelope (then: route-classifier repair + golden re-capture + pin updates + live re-verify under this band) or (b) RETAIN the 500 parity and close this band as WONTFIX-documented (the exposure note then stands as the of-record disclosure). Exposure context, disclosed: the hub UI never invokes the endpoint of record (api.selfMarkAttempt emitter apps/hub/src/lib/api.ts:859 is DORMANT — zero call sites in apps/hub/src; the question-player 'How did you do?' self-score is browser-local localStorage per lib/progress.ts recordSelfScore), so today's exposure is direct/API-level clients and any FUTURE UI adoption that submits an empty/unbound body"
+  owner: "R0-integrator (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) - desk-filed of record per operator trace 1a11bda3802bef79; repair claim open to the port owner lane under the standing claim law (re-check claim state before touching anything)"
+  status: "OPEN # defect band filed of record (this filing); A/C: (1) operator golden-law ruling on w3-selfmark-unknown-attempt-500 (amend to 4xx vs retain-and-document); (2) IF amend: the repair leg (route classifier + golden re-capture + pins + live re-verify) under this band; (3) card flips DONE on the ruling + its leg"
+  claimed_at: "2026-10-08"
+  priority: "P2 # live-exposure band on a flipped user-reachable surface (the 099 exposure-law class), but NO hub-UI call path exists today (the emitter is dormant) — the 500 requires a client submitting a parts=null body; contrast 099's P1 where the batch pipeline sat on a live UI path"
+  wave: "defect-band # the 099/097 precedent class: a live-surface error-class defect filed with first-hand wire evidence; the amendment-gated subclass (register law pins the defecting behavior, so repair requires an operator golden-law ruling first)"
+  deps: [T-MIG-032, T-MIG-055]
+  execution_record: >
+    EVIDENCE OF RECORD (receipts/T-MIG-104/run-001-selfmark-live-matrix.json,
+    run-002-smartmark-disambiguation.json; probe scripts persisted lane-side
+    /home/z/my-project/scripts/r0_selfmark_500_probe.py,
+    r0_selfmark_500_shapematrix.py, r0_smartmark_retest.py; raw transcripts
+    lane-side evidence/selfmark-500-*.json + evidence/smartmark-retest-*.json):
+    live matrix at the api-of-record 2026-10-08T14:15:55Z..14:21:08Z on the
+    probe account of record r0-seam-probe-20261008a@example.invalid —
+    login 200; W7-SMOKE question 92817c46 read 200 (5 x 1-mark parts);
+    structured attempts 201 PENDING x3 (1143f696, 04f699d9, d38e7be0);
+    VALID self-mark -> 201 settled 3/5 SELF_MARKED (happy path GREEN);
+    unknown attempt + valid parts -> 404 mapped no-leak; settled re-submit
+    -> 409 'attempt already settled (SELF_MARKED) -- self-marking is
+    single-shot'; 1-of-5 subset -> 400 'self-mark must cover exactly the
+    attempt's parts'; marksAwarded=99 -> 409 'marks 99 outside part bound
+    0–1'; body {} -> **500 opaque internal_error** (THE DEFECT SHAPE);
+    smart-mark disambiguation -> 200 in 2.6s VALIDATED marksPossible=5
+    per-point breakdowns, zero SQL-class markers (T-MIG-099 run-002
+    re-confirmed on the current bundle; matrix watch item discharged).
+
+    CLASS SEPARATION (material to the fence): (a) the T-MIG-099 ghost-table
+    SQL-class 500 is a DIFFERENT band, DONE of record (#144 rename + live
+    error-class notes run-001-proof-r9/run-002-live-verify-r0; the run-002
+    re-test here corroborates on the current bundle) — do not conflate;
+    (b) the T-MIG-055/057/058 family pinned the null-parts NPE parity as
+    FROZEN-FAITHFUL (the port reproduces the core's controller-boundary NPE
+    verbatim, golden-captured) — this band does NOT accuse the port of
+    infidelity; it files the PRODUCT defect of that inherited behavior on a
+    now-live flipped surface, per the operator's explicit filing order;
+    (c) the T-MIG-099 card's 'selfmark independent band / re-exam flag
+    CLOSED' line governed the 099 fence (don't fold selfmark into the ghost
+    repair), not a permanent bar on filing product defects — the operator's
+    trace supersedes as arbiter.
+
+    WHY AMENDMENT-GATED: parity gates (golden replay + route pins +
+    routes.test law) assert the 500 today; a repair PR that changes the
+    served class WITHOUT a golden amendment fails its own gates. The 071
+    operator-ruling precedent (case amendments) owns this class: the ruling
+    decides the target envelope (candidate: 400 bad_request
+    'parts must not be null'-class, or validation_failed per the 097
+    first-field law), then the repair leg re-derives pins from the CAPTURED
+    law (capture > source-reading, the 095/097 finding).
+
+    EXPOSURE LAW (current state, disclosed): hub UI reach = NONE today
+    (api.selfMarkAttempt dormant at api.ts:859, zero invocations in
+    apps/hub/src; question-player SME self-score is localStorage-local);
+    the mock-results strip is a SIMULATED record, no api contact; exposure
+    = direct API clients (docs/SDK/manual) and any future UI wiring. The
+    hub flip-table row for /api/v1/learners/me/attempts (T-MIG-037 NARROW)
+    routes the family to the v2 api of record — the surface IS live.
+
+    WRITE LEDGER of record (disclosed): 1 probe learner (existing account
+    of record) + 3 structured attempts + 1 valid self-mark (3/5) + 1
+    smart-mark real generation; zero prod/Neon schema contact, zero key
+    material in files (bearer memory-only, tokens scrubbed per probe
+    scripts).
+  scope:
+    allowed:
+      - "apps/api/src/routes/selfmark/index.ts (the null-parts classifier leg ONLY, under the amendment ruling — the T-MIG-055/057/058 parity pins re-derive with it)"
+      - "apps/api/test/selfmark/** route pins (re-derived from the captured law)"
+      - "golden/cases/w3-selfmark-unknown-attempt-500.json (re-capture UNDER THE OPERATOR RULING ONLY)"
+      - "packages/contracts/src/assessment.ts (selfMarkRequestSchema superRefine ONLY IF the ruling moves the null-parts class to the contract layer)"
+      - ".syllabai/tasks/T-MIG-104-selfmark-nullparts-opaque-500-band.yaml (this yaml)"
+      - ".syllabai/receipts/T-MIG-104/** (further evidence/repair receipts)"
+      - ".syllabai/worklog.md (append-only)"
+    forbidden:
+      - "the T-MIG-055/057/058 parity pins as a class (they ride the same repair commit IF the ruling amends; never touched piecemeal)"
+      - "apps/hub/** (the dormant emitter is correct as-is; no UI wiring ordered, no flip-table contact)"
+      - "services/smartmark/** + services/teachermarking/** (the 099 band, DONE — do not conflate)"
+      - "packages/db/** (zero schema defect: learner_self_marks + evidence_emitted verified present of record)"
+      - "the LLM-chain seam (smart-mark pipeline verified GREEN; zero contact)"
+      - "force-push; direct repair WITHOUT the operator golden-law ruling (the amendment gate is the band's own A/C)"

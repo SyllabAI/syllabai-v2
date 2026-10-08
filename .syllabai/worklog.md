@@ -6210,3 +6210,19 @@ Work Log:
 
 Stage Summary:
 - The board enumeration in trace 1a11bd2e64d6bb71 is fully reconciled: every item is either DISCHARGED of record (100 repairs, 088/091 flips, 101/102 stamps, 023, 103) or owned-and-open elsewhere (083 stamp = r9). This lane's items are all of record (622d687). Fresh first-hand gates at 51b0774 corroborate the merged tree post-#164. .syllabai-only direct-main (fetch-first), no force.
+
+---
+Task ID: R0-TM104-FILING-1 (lane R0, operator trace 1a11bda3802bef79)
+Agent: R0-integrator (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: "file the self-mark 500 defect to the register" — desk evidence + register filing
+
+Work Log:
+- Standing precheck first-hand: fetch-first sync to origin/main 80bce0f; register census 104 cards (T-MIG-000..103), ZERO existing self-mark-500 claim (T-MIG-099 is the DONE smart-mark ghost band; 055/057/058 are the CLOSED parity pins; the 099 card's "selfmark independent band" line governed that fence, not a filing bar — operator trace supersedes as arbiter)
+- Source law read first-hand @ 80bce0f: routes/selfmark/index.ts:115 (POST :attemptId/self-mark, mount index.ts:280 = the T-MIG-037 NARROW flipped family), selfMarkRequestSchema (contracts/src/assessment.ts:337), the 055 NPE-parity classifier, services/selfmark header law; schema check: learner_self_marks + evidence_emitted present of record (NOT the 099 ghost class)
+- Live matrix run-001 (probe account of record, W7-SMOKE 92817c46): VALID 5-part self-mark -> 201 settled 3/5 (happy path GREEN); unknown attempt -> 404 mapped; settled re-submit -> 409; subset -> 400; bounds 99 -> 409; body {} (parts=null) -> 500 opaque internal_error (THE DEFECT SHAPE, X-Vercel-Id hkg1::iad1::cm6w9-1791469043621-ac525d5f)
+- Disambiguation run-002: smart-mark on a fresh attempt -> 200 in 2.6s VALIDATED marksPossible=5, zero SQL-class markers — the UI's "Smart Mark my answers" pipeline is GREEN on the current bundle; T-MIG-099 run-002 re-confirmed; feature-matrix Smart Mark watch item DISCHARGED
+- Exposure law established: hub UI NEVER calls self-mark of record (api.selfMarkAttempt api.ts:859 DORMANT, zero call sites; UI self-score is localStorage) — the 500 is reachable by direct API clients / future UI wiring
+- Filed of record: card T-MIG-104 (OPEN, P2, amendment-gated per the 071 ruling precedent — the register PINS the 500 today, so repair requires the operator golden-law ruling on w3-selfmark-unknown-attempt-500: amend to 4xx vs retain-and-document) + receipts run-001-selfmark-live-matrix.json + run-002-smartmark-disambiguation.json
+
+Stage Summary:
+- The self-mark 500 of record is EXACTLY the parts=null opaque internal_error shape on the live flipped surface; every other class on the surface verified correct first-hand (201/404/409/400/409); smart-mark GREEN (200) — the defect is isolated, evidenced, and filed as T-MIG-104 with the amendment-gated repair path. Write ledger disclosed: 3 attempts + 1 self-mark + 1 smart-mark generation. .syllabai-only direct-main (fetch-first), no force.

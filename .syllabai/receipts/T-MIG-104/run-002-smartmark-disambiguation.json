@@ -1,0 +1,30 @@
+{
+  "card": "T-MIG-104",
+  "receipt": "run-002-smartmark-disambiguation",
+  "lane": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "created_at_utc": "2026-10-08T14:23:00Z",
+  "operator_trace": "1a11bda3802bef79 'file the self-mark 500 defect to the register'",
+  "purpose": "Disambiguation leg: prove the SMART-MARK pipeline (the surface the hub UI's 'Smart Mark my answers' button actually rides, api.smartMarkAttempt -> POST /api/v1/learners/me/attempts/:id/smart-mark) is NOT the source of the operator-observed self-mark 500 — re-testing the T-MIG-099 run-002 claim on the CURRENT live bundle, which simultaneously discharges the feature-correctness-matrix watch item 'Smart Mark of-record run-002 200 VALIDATED needs re-test on current bundle'.",
+  "probe_script": "scripts/r0_smartmark_retest.py (persisted lane-side; raw transcript evidence/smartmark-retest-20261008.json lane-side)",
+  "target": "api-of-record https://syllabai-v2.vercel.app — live prod wire, Vercel edge, served 2026-10-08T14:21:08Z; current bundle context: tip 80bce0f, live deploy lineage dpl_8njpAVm (run-003-r9, aa7d322 build) with #163 raced into the window; #164 merged bd80b96 (T-MIG-100 class A/C repair — DDL-metadata-only per 312966b, zero runtime delta)",
+  "flow_law": "T-MIG-099 run-002-live-verify-r0 receipt recipe verbatim: fresh structured attempt on W7-SMOKE 92817c46-8103-4d2c-9f32-bd61636320a1 -> POST /api/v1/learners/me/attempts/:id/smart-mark (no body) -> AttemptSmartMarkView",
+  "write_ledger_disclosed": {
+    "probe_learner": "r0-seam-probe-20261008a@example.invalid (the probe account of record)",
+    "attempt": "d38e7be0-589d-4aea-a198-60add3947454 (created 201 PENDING)",
+    "llm_cost": "ONE smart-mark execution, real generation inherent to the leg (same disclosure class as T-MIG-099 run-001/run-002, operator-ordered re-test)"
+  },
+  "observed": {
+    "leg_attempt_create": "201 — structured attempt d38e7be0 PENDING",
+    "leg_smart_mark": "HTTP 200 in 2630ms — AttemptSmartMarkView{schemeValidationState=VALIDATED, marksPossible=5}; parts markingState=SMART_MARKED with authoritative validation and per-point breakdowns (X-Vercel-Id hkg1::iad1::d9hsc-1791469269515-fd5d091f) — the #144-repaired mark_points pipeline RE-CONFIRMED on the current live bundle",
+    "sql_class_discriminator": "ZERO SQL-class markers in the body (no 42P01 / relation / mark_scheme_points / 'does not exist')"
+  },
+  "asserts": [
+    "structured submit 201 PENDING on the probe account of record",
+    "smart-mark 200 on the current live bundle (T-MIG-099 run-002 re-test discharged)",
+    "schemeValidationState=VALIDATED + marksPossible=5 (point rows resolved)",
+    "real generation (modelId per part, per-point breakdowns served)",
+    "zero SQL-class markers"
+  ],
+  "verdict": "ASSERTS 5/5 PASS — smart-mark is GREEN on the current live bundle; the operator-observed 'self-mark 500' is therefore NOT the smart-mark pipeline. Combined with run-001 (happy path 201 + every designed error class correct), the 500 of record is EXACTLY the parts=null opaque internal_error shape on the SELF-MARK surface — the T-MIG-104 band's defect shape, isolated and first-hand. Feature-correctness-matrix watch item for Smart Mark: DISCHARGED GREEN.",
+  "scope_note": ".syllabai-only contact (receipts + card + worklog); zero code, zero schema, zero flip-table contact; ONE disclosed real-generation leg; no force-push"
+}
