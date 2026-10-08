@@ -1,6 +1,6 @@
 {
   "name": "w4-state-practiced-200",
-  "description": "learner state after practice: skill-state structure deterministic; mastery numerics embed the ADR-031 read-time decay (P0*e^(-t/tau), tau bands 30/90/365d, floor 0.1) and are tolerated T-MIG-101 ADJUDICATION (operator trace 1a119d17533d1985): the flashcardRatings half matches under the capture identity (learner declaration already of record via T-MIG-078); the skillStates/misconceptionStates emptiness is a REAL port gap, not identity volatility — the run-20 cron filing's 1:1 'volatility' mapping is CORRECTED of record (the 400-char diff renderer hid the content diff). Frozen law: LearnerModelService.java :102-163 writes skill_states (BKT mastery) + misconception_states (BDT probability) on practice events; v2 ports only the readers (first-hand: zero writers anywhere in apps/api). Declared-justified per GOLDEN_MASTER §4 with the integrator's approval under the operator's adjudication routing (golden/justified-ledger.json, owner T-MIG-102); the case-level diff stays byte-honest and this entry retires when T-MIG-102 lands.",
+  "description": "learner state after practice: skill-state structure deterministic; mastery numerics embed the ADR-031 read-time decay (P0*e^(-t/tau), tau bands 30/90/365d, floor 0.1) and are tolerated T-MIG-101 ADJUDICATION (operator trace 1a119d17533d1985): the flashcardRatings half matches under the capture identity (learner declaration already of record via T-MIG-078); the skillStates/misconceptionStates emptiness is a REAL port gap, not identity volatility \u2014 the run-20 cron filing's 1:1 'volatility' mapping is CORRECTED of record (the 400-char diff renderer hid the content diff). Frozen law: LearnerModelService.java :102-163 writes skill_states (BKT mastery) + misconception_states (BDT probability) on practice events; v2 ports only the readers (first-hand: zero writers anywhere in apps/api). Declared-justified per GOLDEN_MASTER \u00a74 with the integrator's approval under the operator's adjudication routing (golden/justified-ledger.json, owner T-MIG-102); the case-level diff stays byte-honest and this entry retires when T-MIG-102 lands. T-MIG-102 RETIREMENT (run-002): the submit-path write landed \u2014 the rows are now written by the REAL publisher (seq-20 POST /api/v1/attempts -> skill_states/misconception_states); the ledger entry is REMOVED and the case passes on its own merits. 'probability' joins the tolerate list at retirement: the wire value is the ADR-032 staleness-RELAXED read (anchor 0.75 deterministic; the relaxation varies at the e-9 level with the write->read wall gap), the same now-dependent class the case already tolerates (effectiveMastery/lastEvidenceAt/lastPracticedAt/occurredAt) \u2014 never byte-matchable at replay, disclosed per GOLDEN_MASTER \u00a74.",
   "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
   "method": "GET",
   "path": "/api/v1/learners/me/state",
@@ -75,7 +75,8 @@
     "occurredAt",
     "p0",
     "timestamp",
-    "updatedAt"
+    "updatedAt",
+    "probability"
   ],
   "learner": "w4-capture",
   "justified": true,

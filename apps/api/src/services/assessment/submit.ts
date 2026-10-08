@@ -88,6 +88,14 @@ const BLOCKING_PAPER_STATES = ["REJECTED", "FLAGGED"] as const;
  * sites bind to the SAME claim + guarded-flip contract (publishGraded
  * returns false when evidence already fired — EvidencePublisher.java:53).
  */
+/**
+ * T-MIG-102 payload extension (disclosed): the event now carries the fields
+ * the learner-model listener consumes — primaryTopicNodeId + specPointNodeIds
+ * (EvidencePublisher.topicNodeIds/specPointNodeIds @ 6cad6ef :100-120) and
+ * questionType + optionCount (emit :86-87, S2/ADR-033 format pricing). The
+ * T-MIG-030 fields keep their shapes; consumers of the old payload are
+ * source-compatible (spy/noop doubles unchanged).
+ */
 export interface EvidencePublisher {
   publishMcq(event: {
     attemptId: string;
@@ -96,9 +104,13 @@ export interface EvidencePublisher {
     chosenOptionId: string;
     correct: boolean;
     marksAwarded: number;
+    primaryTopicNodeId: string | null;
     secondaryTopicNodeIds: string[];
+    specPointNodeIds: string[];
     expressedMisconceptionIds: string[];
     observedMisconceptionIds: string[];
+    questionType: string;
+    optionCount: number;
     occurredAt: string;
   }): Promise<boolean>;
 }
@@ -113,6 +125,7 @@ interface QuestionRow {
   marks: number;
   exam_paper_id: string | null;
   active: boolean;
+  primary_topic_node_id: string | null;
 }
 
 interface OptionRow {
@@ -141,7 +154,7 @@ export class AssessmentSubmitter {
     // 1. findWithOptions + active filter (one statement + the options
     //    statement — EntityGraph fetch split, boundary unchanged).
     const questionRows = (await this.sql`
-      select id, question_type, marks, exam_paper_id, active
+      select id, question_type, marks, exam_paper_id, active, primary_topic_node_id
       from questions
       where id = ${request.questionId}
     `) as unknown as QuestionRow[];
@@ -200,10 +213,23 @@ export class AssessmentSubmitter {
     `;
 
     // 7. evidence event (Observer seam — never a mastery update here).
+    //    T-MIG-102: the event assembly now carries the FULL frozen shape —
+    //    topicNodeIds = primary first + secondary deduped and the mapped spec
+    //    points (EvidencePublisher.java :100-120), questionType + the LIVE
+    //    option count (:86-87). The spec-point lookup is one extra statement
+    //    per MCQ submit — the frozen emit issues the same findByQuestionId.
     const secondary = await this.sql`
       select node_id from question_topics where question_id = ${question.id}
     `;
-    const secondaryTopicNodeIds = secondary.map((r) => String(r.node_id));
+    const secondaryTopicNodeIds = secondary
+      .map((r) => String(r.node_id))
+      .filter((id) => id !== question.primary_topic_node_id);
+    const specPointRows = await this.sql`
+      select spec_point_node_id from question_spec_points where question_id = ${question.id}
+    `;
+    const specPointNodeIds = [
+      ...new Set(specPointRows.map((r) => String(r.spec_point_node_id))),
+    ];
     const expressedMisconceptionIds =
       chosen.misconception_node_id === null ? [] : [chosen.misconception_node_id];
     const observedMisconceptionIds = [
@@ -220,9 +246,13 @@ export class AssessmentSubmitter {
       chosenOptionId: chosen.id,
       correct,
       marksAwarded,
+      primaryTopicNodeId: question.primary_topic_node_id,
       secondaryTopicNodeIds,
+      specPointNodeIds,
       expressedMisconceptionIds,
       observedMisconceptionIds,
+      questionType: question.question_type,
+      optionCount: question.question_type === "MCQ_SINGLE" ? optionRows.length : 0,
       occurredAt: createdAt.toISOString(),
     });
     if (fired) {
@@ -256,8 +286,11 @@ export class AssessmentSubmitter {
     request: StructuredSubmitRequest,
   ): Promise<StructuredAttemptResultView> {
     // 1. active + STRUCTURED filter → "structured question" 404.
+    //    (T-MIG-102: the select carries primary_topic_node_id for shape parity
+    //    with submit() — the structured path emits no evidence, the column is
+    //    simply unused here.)
     const questionRows = (await this.sql`
-      select id, question_type, marks, exam_paper_id, active
+      select id, question_type, marks, exam_paper_id, active, primary_topic_node_id
       from questions
       where id = ${request.questionId}
     `) as unknown as QuestionRow[];

@@ -1,6 +1,6 @@
 {
   "name": "w4-knowledge-graph-practiced-200",
-  "description": "knowledge graph after practice: effective mastery = decayService.decayed(...) at read (:115) — now-dependent numerics tolerated T-MIG-101: learner \"w4-capture\" declared (T-MIG-078 pattern — the capture read the practiced capture learner) + prerequisiteEdges declared unordered (R3-D2 tie-order class, same edge multiset rotated) + justified:true per GOLDEN_MASTER §4. RESIDUAL OF RECORD: the nodes' persisted-posterior fields (band/attempts/correctCount/misconceptionProbability/misconceptionActive) stay null until the LearnerModelService submit-path writes are ported (T-MIG-102: frozen LearnerModelService.java :102-163 writes skill_states (BKT) + misconception_states (BDT); v2 ports only the readers) — declared-justified in golden/justified-ledger.json, owner T-MIG-102, retires when T-MIG-102 lands.",
+  "description": "knowledge graph after practice: effective mastery = decayService.decayed(...) at read (:115) \u2014 now-dependent numerics tolerated T-MIG-101: learner \"w4-capture\" declared (T-MIG-078 pattern \u2014 the capture read the practiced capture learner) + prerequisiteEdges declared unordered (R3-D2 tie-order class, same edge multiset rotated) + justified:true per GOLDEN_MASTER \u00a74. RESIDUAL OF RECORD: the nodes' persisted-posterior fields (band/attempts/correctCount/misconceptionProbability/misconceptionActive) stay null until the LearnerModelService submit-path writes are ported (T-MIG-102: frozen LearnerModelService.java :102-163 writes skill_states (BKT) + misconception_states (BDT); v2 ports only the readers) \u2014 declared-justified in golden/justified-ledger.json, owner T-MIG-102, retires when T-MIG-102 lands. T-MIG-102 RETIREMENT (run-002): the submit-path write landed \u2014 the KG node posteriors now read rows written by the REAL publisher; the ledger entry is REMOVED and the case passes on its own merits. 'misconceptionProbability' joins the tolerate list at retirement: the wire value is the ADR-032 staleness-relaxed read (anchor 0.75 deterministic; the e-9-level deviation is the write->read wall gap), the same now-dependent class the case already tolerates (effectiveMastery/lastPracticedAt/asOf) \u2014 disclosed per GOLDEN_MASTER \u00a74.",
   "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
   "method": "GET",
   "path": "/api/v1/learners/me/knowledge-graph?rootId=20000000-0000-0000-0000-000000000001",
@@ -45,7 +45,7 @@
           "code": "WCH11",
           "type": "UNIT",
           "title": "Unit 1: Structure, Bonding and Introduction to Organic Chemistry",
-          "description": "WCH11 — IAL Chemistry Unit 1",
+          "description": "WCH11 \u2014 IAL Chemistry Unit 1",
           "childIds": [
             "20000000-0000-0000-0000-000000000011",
             "20000000-0000-0000-0000-000000000021",
@@ -395,7 +395,8 @@
     "lastPracticedAt",
     "learnerId",
     "mastery",
-    "timestamp"
+    "timestamp",
+    "misconceptionProbability"
   ],
   "learner": "w4-capture",
   "unordered": [

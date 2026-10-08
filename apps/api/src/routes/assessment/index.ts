@@ -57,6 +57,7 @@ import {
   type AssessmentModule,
 } from "../../services/assessment";
 import type { EvidencePublisher } from "../../services/assessment/submit";
+import { updateOnAssessmentEvidence } from "../../services/learner-model/model-update";
 import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "../../services/identity/users";
 import { apiError, BadRequestException } from "../../services/identity/errors";
@@ -299,10 +300,38 @@ export function createAttemptHistoryRouter(module: AssessmentModule): Hono {
  * pipeline stays dormant (disclosed since tranche-1; the Observer contract is
  * not golden-gated). noopEvidencePublisher remains the 032/033 publishGraded
  * suppression TEST double — never the live wiring.
+ *
+ * T-MIG-102 UPDATE: the LIVE wiring no longer uses this double —
+ * createLearnerModelEvidencePublisher below performs the real learner-model
+ * write and claims true (the E-2 claim law preserved; the dormant-pipeline
+ * disclosure is retired for the MCQ seam). This export stays as the E-2
+ * claim-law double for the route tests (its contract — claims true, emits
+ * nothing — is exactly the pre-102 posture it documents).
  */
 export const frozenParityEvidencePublisher: EvidencePublisher = {
   publishMcq: async () => true,
 };
+
+/**
+ * T-MIG-102 — the LIVE evidence publisher: the learner-model write path
+ * bound to the Observer seam. publishMcq runs the full evidence listener
+ * (BKT mastery -> BDT misconceptions -> fluency gaps, LearnerModelService
+ * @ 6cad6ef :74-203 port) against the same sql adapter and claims TRUE —
+ * the E-2 law (Attempt.java:159-161: MCQ publish always fires) holds because
+ * the write IS the event firing; a failed write propagates (the frozen
+ * synchronous @Transactional listener fails the submit the same way —
+ * fail-loud on model-write defects, never a silently dropped update).
+ */
+export function createLearnerModelEvidencePublisher(
+  sql: ReturnType<typeof createSql>,
+): EvidencePublisher {
+  return {
+    publishMcq: async (event) => {
+      await updateOnAssessmentEvidence(sql, event);
+      return true;
+    },
+  };
+}
 
 /**
  * Module + routers composition for the app root — mirrors
@@ -316,7 +345,9 @@ export function buildAssessmentRouters(env: Record<string, string | undefined> =
   const sql = createSql(databaseUrl);
   // E-2: the live wiring claims evidence (Attempt.java domain law); unit
   // tests inject their own doubles (spy claims / noop suppression).
-  const module = buildAssessmentModule(sql, frozenParityEvidencePublisher);
+  // T-MIG-102: the claim is now the REAL learner-model write (the dormant
+  // frozenParity double stays exported above for the E-2 route tests).
+  const module = buildAssessmentModule(sql, createLearnerModelEvidencePublisher(sql));
   return {
     module,
     attemptRoute: createAttemptRouter(module),

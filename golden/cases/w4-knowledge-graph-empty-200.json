@@ -1,6 +1,6 @@
 {
   "name": "w4-knowledge-graph-empty-200",
-  "description": "knowledge graph over the CHM root, fresh learner: structure present, mastery at floor; effective-mastery numerics are now-dependent (EbbinghausDecayService recomputes P0*e^(-t/tau) at read, ADR-031) — tolerated T-MIG-101: prerequisiteEdges declared unordered + justified:true per GOLDEN_MASTER §4 — the graph-edge query has no deterministic cross-environment tie key (the R3-D2 / RICH-200-E tie-order class, triple-confirmed on the families root); the T-MIG-101 full-body reproduction shows the SAME edge multiset in rotated order. Declared relaxation only (T-MIG-024 doctrine): element identity exact, nested arrays stay strict.",
+  "description": "knowledge graph over the CHM root, fresh learner: structure present, mastery at floor; effective-mastery numerics are now-dependent (EbbinghausDecayService recomputes P0*e^(-t/tau) at read, ADR-031) \u2014 tolerated T-MIG-101: prerequisiteEdges declared unordered + justified:true per GOLDEN_MASTER \u00a74 \u2014 the graph-edge query has no deterministic cross-environment tie key (the R3-D2 / RICH-200-E tie-order class, triple-confirmed on the families root); the T-MIG-101 full-body reproduction shows the SAME edge multiset in rotated order. Declared relaxation only (T-MIG-024 doctrine): element identity exact, nested arrays stay strict. T-MIG-102 tranche correction (run-002): declared tranche:'empty' \u2014 the capture's own asOf (15:48:31.912) precedes the practiced captures (15:48:32.6+) by ~0.8s: this case pins the PRE-PRACTICE graph, so it must replay in the empty tranche before the seq-20 practice submit (the R3-D2 posture doctrine). Pre-102 the ordering was latent: the dormant pipeline wrote nothing, so the post-submit graph read identical to the empty one and the case passed for the wrong reason; with the write path live the practiced posteriors (node ...0012 mastery/band/attempts + node ...0001 misconception fields) would violate the all-null expectations.",
   "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
   "method": "GET",
   "path": "/api/v1/learners/me/knowledge-graph?rootId=20000000-0000-0000-0000-000000000001",
@@ -45,7 +45,7 @@
           "code": "WCH11",
           "type": "UNIT",
           "title": "Unit 1: Structure, Bonding and Introduction to Organic Chemistry",
-          "description": "WCH11 — IAL Chemistry Unit 1",
+          "description": "WCH11 \u2014 IAL Chemistry Unit 1",
           "childIds": [
             "20000000-0000-0000-0000-000000000011",
             "20000000-0000-0000-0000-000000000021",
@@ -399,5 +399,6 @@
   "unordered": [
     "prerequisiteEdges"
   ],
-  "justified": true
+  "justified": true,
+  "tranche": "empty"
 }

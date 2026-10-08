@@ -46,13 +46,16 @@ export const OPTION_A_ID = "50000000-0000-0000-0000-00000000000a";
 export const OPTION_B_ID = "50000000-0000-0000-0000-00000000000b";
 export const OPTION_C_ID = "50000000-0000-0000-0000-00000000000c";
 
-/** questions row — plain column names as submit.ts selects them. */
+/** questions row — plain column names as submit.ts selects them.
+ *  T-MIG-102: primary_topic_node_id joined the select (the evidence event's
+ *  primary-first topic assembly, EvidencePublisher.java:111-120). */
 export const QUESTION_ROW = {
   id: QUESTION_ID,
   question_type: "MCQ_SINGLE",
   marks: 1,
   exam_paper_id: null,
   active: true,
+  primary_topic_node_id: TOPIC_NODE_ID,
 };
 
 /** question_options rows — submit.ts / history.ts select shape. */
@@ -109,10 +112,18 @@ export const NODE_ROW = {
   title: "Mole calculations and reacting masses",
 };
 
-/** question_topics row — evidence event payload only (not wire-visible). */
+/** question_topics row — evidence event payload only (not wire-visible).
+ *  NOTE (T-MIG-102): the captured secondary equals the question's primary —
+ *  the frozen publisher assembly dedups it away (EvidencePublisher.java:114-118),
+ *  so the emitted secondaryTopicNodeIds is EMPTY and the primary carries the node. */
 export const SECONDARY_TOPIC_ROWS = [
   { node_id: TOPIC_NODE_ID },
 ];
+
+/** question_spec_points rows — the captured question maps NONE (the capture's
+ *  single skill row is the primary topic; T-MIG-102 event assembly selects
+ *  the mapping per EvidencePublisher.specPointNodeIds :100-109). */
+export const SPEC_POINT_ROWS: Array<Record<string, unknown>> = [];
 
 /** question_parts row shape (submit.ts select). */
 export function partRow(overrides: Partial<Record<string, unknown>> = {}) {

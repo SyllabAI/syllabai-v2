@@ -14,6 +14,7 @@ import {
   QUESTION_ROW,
   OPTION_ROWS,
   SECONDARY_TOPIC_ROWS,
+  SPEC_POINT_ROWS,
   QUESTION_ID,
   LEARNER_ID,
   MISCONCEPTION_ID,
@@ -25,13 +26,14 @@ import {
   type Route,
 } from "./helpers";
 
-const QUESTION_MATCH = /select id, question_type, marks, exam_paper_id, active from questions where id = \?/;
+const QUESTION_MATCH = /select id, question_type, marks, exam_paper_id, active, primary_topic_node_id from questions where id = \?/;
 const VERSIONS_MATCH = /select validation_state from question_versions where question_id = \? order by version desc/;
 const VERSIONS_ID_MATCH = /select id, validation_state from question_versions where question_id = \? order by version desc/;
 const PAPERS_MATCH = /select id from exam_papers where validation_state in \( \? , \? \)/;
 const OPTIONS_MATCH = /select id, label, is_correct, misconception_node_id from question_options where question_id = \? order by ordering/;
 const INSERT_ATTEMPT = /insert into attempts/;
 const TOPICS_MATCH = /select node_id from question_topics where question_id = \?/;
+const SPEC_POINTS_MATCH = /select spec_point_node_id from question_spec_points where question_id = \?/;
 const PARTS_MATCH = /select id, label, marks from question_parts where question_version_id = \? order by ordering/;
 const INSERT_ANSWER = /insert into answers/;
 const EVIDENCE_FLIP = /update attempts set evidence_emitted = true where id = \? and evidence_emitted = false/;
@@ -52,6 +54,7 @@ function mcqRoutes(overrides: Route[] = []): Route[] {
     { match: OPTIONS_MATCH, rows: OPTION_ROWS },
     { match: INSERT_ATTEMPT, rows: [] },
     { match: TOPICS_MATCH, rows: SECONDARY_TOPIC_ROWS },
+    { match: SPEC_POINTS_MATCH, rows: SPEC_POINT_ROWS }, // T-MIG-102 event assembly
     { match: EVIDENCE_FLIP, rows: [] }, // E-1: fired by the claiming spy publisher
     ...overrides,
   ];
@@ -145,6 +148,11 @@ describe("submit — MCQ auto-grade law", () => {
     const spy = spyPublisher();
     await new AssessmentSubmitter(fakeSql(mcqRoutes()), spy, FIXED_CLOCK).submit(LEARNER_ID, MCQ_REQUEST);
     expect(spy.events.length).toBe(1);
+    // T-MIG-102: the event assembly is the FULL frozen shape — primary-first
+    // topics with the secondary deduped against the primary
+    // (EvidencePublisher.java:111-120), the mapped spec points (:100-109 —
+    // none on the captured question), questionType + the LIVE option count
+    // (:86-87: 3 options -> guess resolves to 1/3).
     expect(spy.events[0]).toMatchObject({
       attemptId: "7e571d00-0000-4000-8000-000000000001",
       learnerId: LEARNER_ID,
@@ -152,9 +160,13 @@ describe("submit — MCQ auto-grade law", () => {
       chosenOptionId: OPTION_A_ID,
       correct: false,
       marksAwarded: 0,
-      secondaryTopicNodeIds: [TOPIC_NODE_ID],
+      primaryTopicNodeId: TOPIC_NODE_ID,
+      secondaryTopicNodeIds: [],
+      specPointNodeIds: [],
       expressedMisconceptionIds: [MISCONCEPTION_ID],
       observedMisconceptionIds: [MISCONCEPTION_ID],
+      questionType: "MCQ_SINGLE",
+      optionCount: 3,
     });
   });
 

@@ -726,19 +726,27 @@ function selftest(): number {
     readFileSync(join(import.meta.dir, "..", "justified-ledger.json"), "utf8"),
   ) as { version: number; entries: Array<{ case: string; owner: string }> };
   const corpus = loadCases() as GoldenCase[];
-  t("justified-ledger: version 1 with a non-empty entry list", ledger.version === 1 && ledger.entries.length > 0);
+  // T-MIG-102 RETIREMENT (run-002): the owner card landed the write path —
+  // BOTH entries retired of record (the two rows now pass through the REAL
+  // submit path; the corpus green carries ZERO forgiven rows). The invariants
+  // pin the RETIRED posture: version 1, empty entries, and the two retired
+  // cases still declaring justified:true with their capture identity intact.
   t(
-    "justified-ledger: every entry names an existing corpus case carrying justified:true + a non-empty owner",
+    "justified-ledger: version 1 with the RETIRED entry list (T-MIG-102 landed — zero forgiven rows, the union green is outright)",
+    ledger.version === 1 && ledger.entries.length === 0,
+  );
+  t(
+    "justified-ledger: any future entry names an existing corpus case carrying justified:true + a non-empty owner",
     ledger.entries.every((e) => {
       const k = corpus.find((c) => c.name === e.case);
       return k !== undefined && k.justified === true && typeof e.owner === "string" && e.owner.startsWith("T-MIG-");
     }),
   );
   t(
-    "justified-ledger: the declared set is exactly the two learner-model-write-path-gap cases (T-MIG-102)",
-    ledger.entries.length === 2 &&
-      ledger.entries.map((e) => e.case).sort().join(",") === "w4-knowledge-graph-practiced-200,w4-state-practiced-200" &&
-      ledger.entries.every((e) => e.owner === "T-MIG-102"),
+    "justified-ledger: the two retired write-path cases keep their capture identity + the ADR-032 relaxed fields tolerated",
+    corpus
+      .filter((c) => c.name === "w4-state-practiced-200" || c.name === "w4-knowledge-graph-practiced-200")
+      .every((c) => c.justified === true && Array.isArray(c.tolerate)),
   );
   // 3. multipart import wiring (the gated runner builder, unchanged)
   const mf: GoldenCase = {
