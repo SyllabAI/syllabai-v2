@@ -5149,3 +5149,19 @@ Work Log:
 
 Stage Summary:
 - The DESK-25 090 reservation is discharged of record: decision filed, single-implementation law set, acceptance gate = golden-verify vs the r4b legs. The band's last mount step is in execution on t-mig-090/r0. Register items NOT touched here: the 10 justified classes (tip escalation, operator-gated), ci.yml patch, PAT rotation, P3/P4.
+
+---
+Task ID: R3A-083-087-GOLDEN-VERIFY (operator directive trace 1a119a5ece785fc1, second leg)
+Agent: r3a (Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Golden-verify the landed 083-087 mounts against the r4b fixtures (38 legs, five families).
+
+Work Log:
+- SUBSTRATE REPRODUCED of record (r4b recipe): PostgreSQL 17.11 (17.11-0+deb13u1, dpkg -x user-tree) + pgvector 0.8.0 on :5433; frozen core 6cad6ef cloned and ALL 63 Flyway migrations applied in version order; v2 api booted locally (bun, postgres.js TCP, synthetic JWT secret disclosed); identities via the honest API paths (register x2 + V19 bootstrap-admin), class + enrollment via the teacher API.
+- SUBSTRATE EQUIVALENCE PROVEN: post-activation census 2 SUBJECT / 5 UNIT / 31 TOPIC / 200 SUBTOPIC / 167 CONCEPT / 30 MISCONCEPTION == the r4b capture-receipt census EXACT; the V6 seed reproduces the captured CHM subtree value-exact; 085 activation counts (193/420/709/0/0/182/12/4/28/272, alreadyActive:false) reproduce from the SHA-256-pinned snapshot value-for-value.
+- 38 LEGS EXECUTED (five families, write legs ON SCRATCH — zero prod contact of any kind): verdicts 083 PASS-WITH-FILED-DIVERGENCES(2), 084 ALL PASS 8/8, 085 PASS-WITH-FILED-DIVERGENCE(1), 086 PASS-WITH-FILED-DIVERGENCE(1 justified, 2 legs), 087 ALL PASS 8/8. Receipts run-002-golden-verify-r3a under .syllabai/receipts/T-MIG-08{3..7}/; card status lines updated (verify DONE, widen remains).
+- FINDINGS FILED (house law: filed, never auto-fixed): (1) 083 leg-04 500->400 binding-class — pre-disclosed at mount (revision-notes.ts :252-258), disposition stands; (2) 083 leg-05 invalid-archive message 'not a readable ZIP' vs core 'missing package.json' (status law held); (3) 085 leg-06 not-found message interpolation 'knowledge node not found: X' vs frozen 'knowledge node X not found' — INTRA-v2 inconsistency (084 leg-06 reproduces the frozen format byte-exact; fix-class candidate); (4) 086 leg-03/05 prerequisiteEdges ORDER: sets identical 7/7, core order = DB heap (frozen JPQL has NO ORDER BY, KnowledgeEdgeRepository.java :44-52; heap == V6 insert order at capture) vs v2 deterministic sort (teacher/kg.ts :205) — volatile-by-construction on the core side; recommended disposition: unordered[] declaration per the T-MIG-024 convention.
+- NON-MUTATION PROVEN: 083 status probe unchanged after failed ingests; 087 pre-write list [] and post-write trail exactly 1 entry.
+- DISCLOSURES: compare law = uuid-isomorphism (r4b fixtures carry scrubbed fake uuids; values compared exactly for codes/titles/counts/messages/relations); Cache-Control standing class carried from 082 run-003; scratch tokens never persisted (env file deleted post-run); sandbox-recycle losses this round: Render PAT + Neon DSN + core JWT secret unrecoverable lane-side (control-plane DNS still dead — re-confirmed) which is WHY the scratch route was taken (the live-substrate 082 method was not executable this generation).
+
+Stage Summary:
+- 083-087 golden-verify CYCLE COMPLETE of record: every landed mount replayed against the captured frozen wire on a substrate proven equivalent by census + seed + snapshot counts. 34/38 legs byte-exact under the disclosed compare law; 4 divergence classes filed with frozen-source line citations. Per flip law the per-family widening may now proceed on the verified families (084/087 clean; 083/085/086 carry filed-but-non-blocking divergences per the 081-class precedent — operator/dispatcher adjudicates whether any filed class blocks its family's widen).
