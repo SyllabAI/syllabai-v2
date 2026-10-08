@@ -706,12 +706,80 @@ describe("cla route — POST /ask", () => {
     expect(body.message).toBe("question: must not be blank");
   });
 
-  it("an undeclared kind is a 400 validation_failed (the §3 closed-enum admission at the wire)", async () => {
+  it("an undeclared kind is a BINDING failure: 400 malformed_body (the Jackson strict-enum law, capture L02 — T-MIG-097)", async () => {
     const { app } = makeApp();
     const res = await askRoute(app, { kind: "NOT_A_KIND", mode: "EXPLAIN", question: "x" });
     expect(res.status).toBe(400);
+    const body = (await res.json()) as { error: string; message: string };
+    expect(body.error).toBe("malformed_body");
+    expect(body.message).toBe("request body is not readable (check field types and enum values)");
+  });
+
+  it("an undeclared mode is a BINDING failure too (capture L03 — T-MIG-097)", async () => {
+    const { app } = makeApp();
+    const res = await askRoute(app, { kind: "SPECIFICATION_POINT", mode: "NOT_A_MODE", question: "x" });
+    expect(res.status).toBe(400);
     const body = (await res.json()) as { error: string };
+    expect(body.error).toBe("malformed_body");
+  });
+
+  it("binding-class beats constraint-class: a bogus kind answers malformed_body even with a blank question coexisting (the LAYER law — T-MIG-097)", async () => {
+    const { app } = makeApp();
+    const res = await askRoute(app, { kind: "NOT_A_KIND", mode: "EXPLAIN", question: "" });
+    expect(res.status).toBe(400);
+    const body = (await res.json()) as { error: string };
+    expect(body.error).toBe("malformed_body");
+  });
+
+  it("on {} the QUESTION constraint reports first, not kind (capture L01 — T-MIG-097)", async () => {
+    const { app } = makeApp();
+    const res = await askRoute(app, {});
+    expect(res.status).toBe(400);
+    const body = (await res.json()) as { error: string; message: string };
     expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("question: must not be blank");
+  });
+
+  it("a whitespace-only question BINDS (min(1) counts whitespace) and the @NotBlank constraint stage answers validation_failed (capture L04 — T-MIG-097)", async () => {
+    const { app } = makeApp();
+    const res = await askRoute(app, { kind: "SPECIFICATION_POINT", mode: "EXPLAIN", question: "   " });
+    expect(res.status).toBe(400);
+    const body = (await res.json()) as { error: string; message: string };
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("question: must not be blank");
+  });
+
+  it("SMART_LESSON without its required references answers the CONTEXT-REQUIREMENT law, not the runtime-step deferral (capture L05 — T-MIG-097)", async () => {
+    const { app } = makeApp();
+    const res = await askRoute(app, { kind: "SMART_LESSON", mode: "EXPLAIN", question: "Explain topic X" });
+    expect(res.status).toBe(400);
+    const body = (await res.json()) as { error: string; message: string };
+    expect(body.error).toBe("bad_request");
+    expect(body.message).toBe("SMART_LESSON context requires rootId and topicNodeId");
+  });
+
+  it("NOTE_SECTION without its required references answers the CONTEXT-REQUIREMENT law (capture L06 — T-MIG-097)", async () => {
+    const { app } = makeApp();
+    const res = await askRoute(app, { kind: "NOTE_SECTION", mode: "HINT", question: "Summarize my note" });
+    expect(res.status).toBe(400);
+    const body = (await res.json()) as { error: string; message: string };
+    expect(body.error).toBe("bad_request");
+    expect(body.message).toBe("NOTE_SECTION context requires rootId and noteId");
+  });
+
+  it("a REFS-PRESENT SMART_LESSON ask still reaches the disclosed runtime-step deferral (the generation wire rides the operator's section-3 lever — T-MIG-097 disclosure)", async () => {
+    const { app } = makeApp();
+    const res = await askRoute(app, {
+      kind: "SMART_LESSON",
+      rootId: ROOT,
+      topicNodeId: TOPIC,
+      mode: "EXPLAIN",
+      question: "Explain topic X",
+    });
+    expect(res.status).toBe(400);
+    const body = (await res.json()) as { error: string; message: string };
+    expect(body.error).toBe("bad_request");
+    expect(body.message).toBe("context kind not supported by this runtime step: SMART_LESSON");
   });
 
   it("the dispatch 400s carry the frozen verbatim messages (bad_request + e.message)", async () => {
