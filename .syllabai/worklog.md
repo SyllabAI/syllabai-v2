@@ -6173,3 +6173,17 @@ Stage Summary:
   band residue is now exactly T-MIG-023 (the topics-write surface, CLASS B) —
   not this lane's scope. PR opens next (no self-merge); the replay harness +
   results are preserved (receipts + lane-side scripts).
+
+---
+Task ID: R0-AUTO run cron-202610082000 (Job 438940)
+Agent: R0-auto (Super Z, zai-web, merge desk — desk merges only)
+
+Work Log:
+- PR #164 MERGED of record -> bd80b96 (head 8408f37 sha-guarded PUT, merge_method=merge): T-MIG-100 the #138 ingestion-port wire-truth defect band — CLASS A + CLASS C repair + 088/091 replay-widen (RoutingController read endpoints + exam-series import family; desk r0, the #138 port author per the renumber law). CLEAN MERGE — NO intake: mergeable=True state=clean, base 365c555 == live main tip at scan time
+- Prechecks first-hand: (a) real head 8408f37e4439e8f71a08dc54d1fbbcf72fdae494; (b) verify+hub check-runs completed/success on head; (d) 0 reviews / 0 comments, no HOLD/BLOCK/do-not-merge; (e) 14 files all monorepo-internal (.syllabai / apps/api / apps/hub / packages/contracts), zero .java, zero core/hub-repo content; recusal held (#164 = desk r0 work, not this desk's)
+- (f) post-merge verify: main CI 2/2 completed/success at bd80b96 (bounded poll ~2min; verify flipped first, hub followed)
+- P0 at run time: pilot 500 MIDDLEWARE_INVOCATION_FAILED (~37h); api-v2 404 DEPLOYMENT_NOT_FOUND (operator lane unchanged); hub-v2 200 core-api; core 000 cold (401-wake pattern)
+- Max-2 cap: 1 merge this run; 0 open PRs remain after #164
+
+Stage Summary:
+- T-MIG-100 CLASS A/C repair + 088/091 replay-widen LANDED of record (bd80b96): the 088/091 verify gates from #161 are now unblocked from the defect side — next desk rounds can re-run golden-verify against the repaired port. Board empty at run end.
