@@ -1,0 +1,143 @@
+# T-MIG-097 run-003 vehicle — the CLA deterministic-refusal matrix verified
+# LIVE against a CI-booted v2 (merged main) dual-replayed with the LIVE
+# frozen core (operator chain order trace 1a119df7d930b609: "desk merge ->
+# deploy recipe -> live run-003 -> section-3 -> rider -> flip").
+#
+# WHY a CI boot: the agent sandboxes are DNS-blocked from Neon and the api
+# deploy (vercel CLI) is token-gated — CI is the lane-executable serving
+# envelope (the T-MIG-044 doctrine re-applied). The refusal legs are
+# LLM-free and identity-free (fail at the web layer before any SQL or
+# generation), so the COW-of-production only carries the probe register
+# INSERT + the bearer revocation lookups.
+#
+# STRICT DISPOSITIONS (the neon-replay doctrine, verbatim class):
+#   - the workflow NEVER writes to the repo (post-run git diff proof) and
+#     the disposable COW branch is DROPPED afterwards with 404-verification,
+#     even on failure (`if: always()`);
+#   - any leg FAIL reds the job (findings are filed, never auto-fixed);
+#   - the probe learners: one registered on the CI v2 (INSERTed into the
+#     COW, dropped with it) + one registered on the LIVE core (a prod
+#     users-table row of the established probe class, disclosed in the
+#     receipt).
+name: t097-refusal-verify
+
+on:
+  workflow_dispatch:
+    inputs:
+      note:
+        description: "Operator note for this manual verify run"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: t097-refusal-verify
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      # The boot is the H-1 canonical envelope with a synthetic JWT secret —
+      # NEVER the production secret (token parity is per-wire: the core legs
+      # carry a core-minted token, the v2 legs a v2-minted one).
+      SYLLABAI_JWT_SECRET: "ci-t097-verify-synthetic-jwt-secret-0123456789abcdef"
+      SYLLABAI_TEACHER_JOIN_CODE: "ci-replay-synthetic-join"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install workspace deps (root lockfile, all workspaces)
+        run: bun install --frozen-lockfile
+
+      - name: Preconditions (Neon config present)
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PARENT_BRANCH_ID: ${{ vars.NEON_PARENT_BRANCH_ID }}
+        run: |
+          miss=0
+          for v in NEON_API_KEY NEON_PROJECT_ID NEON_PARENT_BRANCH_ID; do
+            if [ -z "${!v}" ]; then echo "::error::${v} is not configured"; miss=1; fi
+          done
+          exit $miss
+
+      - name: Provision disposable Neon COW branch (prod posture, as-cowed)
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PARENT_BRANCH_ID: ${{ vars.NEON_PARENT_BRANCH_ID }}
+        run: bun golden/tools/neon-branch.ts create
+
+      - name: Boot v2 api (merged main) against the COW branch
+        env:
+          DATABASE_URL: ${{ env.NEON_PROD_URL }}
+          PORT: "8081"
+        run: |
+          bun golden/tools/boot-with-timeout.ts > boot-t097.log 2>&1 &
+          echo $! > boot-t097.pid
+          for i in $(seq 1 45); do
+            if curl -fsS http://localhost:8081/actuator/health >/dev/null 2>&1; then echo "api healthy (attempt $i)"; exit 0; fi
+            sleep 2
+          done
+          echo "::error::api failed to become healthy"; cat boot-t097.log; exit 1
+
+      - name: Run-003 — the 10-leg refusal matrix, dual-live (CI v2 boot vs the live core)
+        env:
+          T097_CORE: "https://syllabai-core.onrender.com"
+          T097_V2: "http://localhost:8081"
+          T097_RECEIPT_NAME: "run-003-refusal-verify"
+        run: |
+          mkdir -p reports
+          bun .syllabai/receipts/T-MIG-097/tools/t097_verify.ts --out reports/run-003-refusal-verify.json
+
+      - name: Verdict (ALL PASS gates the job — findings are filed, never auto-fixed)
+        if: always()
+        run: |
+          if [ -f reports/run-003-refusal-verify.json ]; then
+            python3 -c "
+import json,sys
+d=json.load(open('reports/run-003-refusal-verify.json'))
+print('verdict:', d['verdict'])
+for l in d['legs']: print(l['leg'], l['name'], l['verdict'])
+sys.exit(0 if d['verdict']=='ALL PASS' else 1)"
+          else
+            echo "::error::no receipt produced"; exit 1
+          fi
+
+      - name: Stop boot
+        if: always()
+        run: |
+          [ -f boot-t097.pid ] && kill "$(cat boot-t097.pid)" 2>/dev/null || true
+          mkdir -p reports && cp boot-t097.log reports/ 2>/dev/null || true
+
+      - name: READ-ONLY PROOF — the runner wrote nothing to the repo
+        if: always()
+        run: |
+          git diff --exit-code -- golden/ docs/ apps/ packages/ .github/ .syllabai/tasks/ \
+            || { echo "::error::repo mutation detected — the read-only posture is VIOLATED"; exit 1; }
+          echo "read-only posture verified"
+
+      - name: Upload run-003 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t097-run-003-${{ github.run_id }}-${{ github.run_attempt }}
+          path: reports/
+          retention-days: 30
+          if-no-files-found: warn
+
+      # ── ALWAYS drop the disposable branch — zero residue, zero production contact ──
+      - name: Drop disposable COW branch (+ 404-verify, T-MIG-035 discipline)
+        if: always()
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PROD_BRANCH_ID: ${{ env.NEON_PROD_BRANCH_ID }}
+        run: bun golden/tools/neon-branch.ts drop
