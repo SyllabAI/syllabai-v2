@@ -58,6 +58,14 @@ const DUAL_RUN_PATHS: readonly string[] = [
   "/api/v1/learners/me/revision-notes/assets/0093b0722e85-2-7-9-preparation-of-leadiisulfate-4.png",
   "/api/v1/learners/me/revision-notes/progress",
   "/api/v1/learners/me/revision-notes/progress/views",
+  // Wave S4 (T-MIG-084 + T-MIG-085, r3a) — knowledge-nodes + teacher
+  // concept-graph, the families' hub-emitted forms, golden-verified of record
+  "/api/v1/knowledge/nodes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
+  "/api/v1/knowledge/nodes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/tree?includeMisconceptions=true",
+  "/api/v1/knowledge/nodes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/prerequisites",
+  "/api/v1/knowledge/nodes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/misconceptions",
+  "/api/v1/teacher/concept-graph/activate",
+  "/api/v1/teacher/concept-graph/edges?rootId=3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
 ];
 
 /** Hub-emitted (or hub-adjacent) paths that MUST stay on the core in the dual-run posture. */
@@ -96,15 +104,31 @@ const CORE_ONLY_PATHS: readonly string[] = [
   // run-002 frozen-core captures (d19289cc8) + run-003 verify 7/7 vs the
   // landed mounts; moved out of this CORE_ONLY list of record.
   "/api/v1/learners/me/knowledge-graph",
-  // classic core-only surfaces (T-MIG-035 check-3 law, still true)
+  // classic core-only surfaces (T-MIG-035 check-3 law, still true) — the
+  // knowledge nodes row of the T-MIG-084 line moved out of this list of
+  // record when its golden gate landed (the 082 precedent)
   "/api/v1/subjects",
   "/api/v1/tree?includeMisconceptions=true",
-  "/api/v1/knowledge/nodes/kn-1/tree",
   "/api/v1/tutor/ask",
   // T-MIG-092 (r0 rider): the tutor SESSIONS tree flipped, so these siblings
   // stay core-pinned explicitly — the zero-key law (generation-reaching asks
   // 503 on the dormant v2 LLM seam) forbids their capture
   "/api/v1/tutor/ask/stream",
+  // Wave S4 structural pins (T-MIG-086 + T-MIG-087, r3a): the class-scoped
+  // KG + coverage families are golden-verified (run-002-golden-verify-r3a,
+  // PR #152) AND mounted real on v2 (routes/teacher-kg.ts
+  // teacherClassesKgRoute) — but they are STRUCTURALLY NOT
+  // PREFIX-ADDRESSABLE: the distinguishing segment sits AFTER the {classId}
+  // wildcard and the /api/v1/teacher/classes base is SHARED with the
+  // unverified class-management surfaces (list/detail/members/announcements/
+  // status — api.ts:810-852 emitters, classroom.teacherClassesRoute). Any
+  // prefix row either captures those unverified siblings (routing live
+  // class pages into surfaces whose golden gates have not run — the exact
+  // failure the flip law forbids) or does not exist. They stay core until
+  // the whole subtree verifies or the flip mechanism grows a mid-path row
+  // form (desk/operator adjudication ask of record, widening PR body).
+  "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graph?rootId=r-1",
+  "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/coverage",
 ];
 
 describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
@@ -128,6 +152,8 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/learners/me/course-stats", // T-MIG-096 run-001 L17
       "/api/v1/learners/me/courses", // T-MIG-096 run-001 L12/L13 — zero emitters, routing availability
       "/api/v1/admin/revision-notes", // T-MIG-083: golden-verified (run-001 8/8, r9-hubx rider) — NARROW: ingest+status ONLY, rest of /api/v1/admin/** stays core
+      "/api/v1/knowledge/nodes", // T-MIG-084: golden-verified (run-002 8/8, r3a) — NARROW family form; live routing for the knowledge reader
+      "/api/v1/teacher/concept-graph", // T-MIG-085: golden-verified (run-002, r3a) — family-exact: activate+edges own the base exclusively
     ]);
   });
 });
@@ -295,6 +321,48 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     // INERT — no such routes or hub emitters exist on either side)
     expect(v2SurfaceBase("/api/v1/admin/revision-notesx", V2)).toBe(V2);
     expect(v2SurfaceBase("/api/v1/admin/revision-notes-other", V2)).toBe(V2);
+  });
+
+  test("the T-MIG-084/085 lines: knowledge-nodes + teacher concept-graph flip after their golden gates (r3a wave-s4)", () => {
+    // every verified family path resolves to v2 (golden-verified of record:
+    // run-002-golden-verify-r3a — 084 8/8 ALL PASS; 085 with one filed
+    // message-format class, non-blocking per the 081-class precedent;
+    // receipts via PR #152, operator widen directive trace 1a119d95d71fbce9;
+    // vs the r4b frozen-core capture band golden-captures/t-mig-08{4,5})
+    for (const p of [
+      "/api/v1/knowledge/nodes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
+      "/api/v1/knowledge/nodes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/tree?includeMisconceptions=true",
+      "/api/v1/knowledge/nodes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/prerequisites",
+      "/api/v1/knowledge/nodes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/misconceptions",
+      "/api/v1/teacher/concept-graph/activate",
+      "/api/v1/teacher/concept-graph/edges?rootId=3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBe(V2);
+    }
+    // the NARROW row law: the bare knowledge base is NOT the row — any
+    // future sibling mounted there stays core until its own gate
+    expect(v2SurfaceBase("/api/v1/knowledge", V2)).toBeNull();
+    // partial-prefix negative: the row never captures a shorter base of the
+    // same segment
+    expect(v2SurfaceBase("/api/v1/teacher/concept", V2)).toBeNull();
+    // partial-segment property (shared string-matching semantics) —
+    // DOCUMENTED INERT on both rows (no such routes or hub emitters exist)
+    expect(v2SurfaceBase("/api/v1/knowledge/nodesx", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/teacher/concept-graphx", V2)).toBe(V2);
+    // the T-MIG-086/087 structural negatives: verified AND mounted, but
+    // mid-path-wildcard surfaces cannot be addressed by a prefix row without
+    // capturing the unverified class-management siblings — pinned CORE here
+    for (const p of [
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graph?rootId=r-1",
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graph/nodes/n-1/students?rootId=r-1",
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/learners/l-1/knowledge-graph?rootId=r-1",
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/coverage",
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/coverage/sp-1/history",
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/members",
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/announcements",
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBeNull();
+    }
   });
 });
 

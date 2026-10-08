@@ -229,6 +229,43 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // (part-less bind 500, non-package.json zip 400) — zero corpus mutation
   // reachable from the flipped surface without an admin-supplied valid zip.
   "/api/v1/admin/revision-notes",
+  // Wave S4 (T-MIG-084 + T-MIG-085, r3a) — knowledge-nodes + teacher
+  // concept-graph: golden-verified of record (run-002-golden-verify-r3a:
+  // 084 = 8/8 ALL PASS; 085 = PASS-WITH-FILED-DIVERGENCE, one message-format
+  // class, non-blocking per the 081-class precedent; receipts
+  // .syllabai/receipts/T-MIG-08{4,5}/run-002-golden-verify-r3a.json via PR
+  // #152) vs the r4b frozen-core 6cad6ef capture band golden-captures/
+  // t-mig-08{4,5}, on the lane-reproduced r4b scratch substrate (PG 17.11 +
+  // pgvector, all 63 Flyway migrations, uuid-isomorphism compare law, write
+  // legs executed on scratch only). Operator widen directive trace
+  // 1a119d95d71fbce9 ("proceed with the widening PRs for the five verified
+  // families"). T-MIG-083 of the same verified five is NOT re-widened here:
+  // its rider line above is already of record (r9-hubx, 002a501/259746f) —
+  // the r3a run-002 083 receipt stands as independent corroboration.
+  //
+  // /api/v1/knowledge/nodes — NARROW family form: the v2 knowledgeRoute's
+  // entire tree IS the verified family (nodes/:id, /tree, /prerequisites,
+  // /misconceptions — routes/knowledge.ts:81-143), and the hub's only
+  // emitters under /api/v1/knowledge are nodes-family reads (api.ts:573/579,
+  // core-topics.ts:96, citation-map.ts:76 deep links) — this row IS a live
+  // routing change for the learner knowledge reader (unlike the 090/083
+  // routing-availability rows). The bare /api/v1/knowledge base is
+  // deliberately NOT the row: any future sibling mounted there stays core
+  // until its own golden gate. Partial-segment capture (nodesx) is
+  // DOCUMENTED INERT (no such route or emitter on either side).
+  "/api/v1/knowledge/nodes",
+  //
+  // /api/v1/teacher/concept-graph — family-exact form: activate + edges are
+  // the ENTIRE teacherConceptGraphRoute (routes/teacher-kg.ts:338-352) and
+  // the hub's only emitters under the base (api.ts:1066/:1073 — the teacher
+  // concept-graph page) — a live routing change for that page. TRUE
+  // siblings: none (the router owns the base exclusively). The sibling
+  // /api/v1/teacher/classes subtree stays core this band: the verified
+  // class-KG/coverage families are STRUCTURALLY NOT PREFIX-ADDRESSABLE
+  // (their distinguishing segment sits after the {classId} wildcard and the
+  // base is shared with unverified class-management surfaces) — pinned in
+  // the surface-test CORE list of record with the full adjudication note.
+  "/api/v1/teacher/concept-graph",
 ];
 
 /**
