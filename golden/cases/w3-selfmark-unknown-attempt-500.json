@@ -1,6 +1,6 @@
 {
   "name": "w3-selfmark-unknown-attempt-500",
-  "description": "Self-mark on unknown attempt id: 404. captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy [T-MIG-007 finding F-a: core returns 500 (not 404) on unknown attempt self-mark; captured as-is per GOLDEN_MASTER - divergence call belongs to R0.]",
+  "description": "Self-mark on unknown attempt id: 404. captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy [T-MIG-007 finding F-a: core returns 500 (not 404) on unknown attempt self-mark; captured as-is per GOLDEN_MASTER - divergence call belongs to R0.] [T-MIG-104 AMENDMENT of record — operator ruling (a), trace 1a11c248ec801069, 2026-10-08, the T-MIG-071 case-amendment precedent: the SERVED class for the parts-null body is amended from the frozen-captured opaque 500 internal_error to the mapped 400 bad_request 'self-mark carries no part marks' — the service no-part-marks gate envelope (LearnerSelfMarkService.java:74-76), ONE product law for every no-declared-parts shape (absent/null/[]); the frozen core's controller-boundary NPE (LearnerSelfMarkController.java:42-43) is no longer reproduced on this live flipped surface (T-MIG-104: the port was faithful, the PRODUCT behavior was the defect). The name keeps its historical -500 suffix (zero-deletion doctrine; identifier stable). WHOLE-FIELD null ONLY: the element-null shape parts[i]=null KEEPS its T-MIG-057/058 NPE-parity 500. The attempt id in the path is INERT under the amended law (the boundary 400 precedes the attempt lookup) — the case now gates the boundary law, not the existence leak.]",
   "source": "captured from LOCAL frozen-core boot (JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 2026-10-05T06:47Z by T-MIG-007 run-002 (R6); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
   "method": "POST",
   "path": "/api/v1/learners/me/attempts/00000000-0000-4000-8000-00000000dead/self-mark",
@@ -11,11 +11,11 @@
     }
   },
   "expect": {
-    "status": 500,
+    "status": 400,
     "body": {
-      "status": 500,
-      "error": "internal_error",
-      "message": "an internal error occurred",
+      "status": 400,
+      "error": "bad_request",
+      "message": "self-mark carries no part marks",
       "timestamp": "2026-10-05T06:47:11.943683173Z"
     }
   },
