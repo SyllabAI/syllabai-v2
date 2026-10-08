@@ -1,0 +1,46 @@
+{
+  "task": "W7-SMOKE",
+  "run": "run-002-postflip-spine-r1c",
+  "order": "operator trace 1a11a56c2977f7d9 'Ok proceed' — advance the Wave-7 gate path per r1c's retirement-order recommendation (censuses/wave7-archive-preflight-run-001-r1c): P3 lane leg = §2.4 spine [LANE-executable, operator-witnessed], re-run of the W7-SMOKE run-001 recipe of record in the POST-§2 world",
+  "executor": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)",
+  "executed_at_utc": "2026-10-08T07:18Z - 07:29Z",
+  "repo_tip_at_execution": "34f84ee (PR #163 merged)",
+  "world": "hub syllabai-hub-v2 dataMode=core-api LIVE (§2 flip of record, Task-45); api-of-record syllabai-v2.vercel.app UP; frozen core syllabai-core.onrender.com 401-warm ALIVE",
+  "law": [
+    "docs/CUTOVER_RUNBOOK.md @ tip: §2.4 smoke = [LANE-executable checks, operator-witnessed] — learner login -> agenda -> flashcard rating -> self/smart-mark -> history (W3/W4); teacher login -> class -> marking queue (W5); tutor SSE open/heartbeat/close (W6)",
+    "§0 gate: P1 MET, P2 rule-able (union 177/177 at 004d105, zero non-justified divergences; fresh dispatch at tip 34f84ee owed — R0-AUTO cadence), P3 this receipt is the LANE leg, the operator-witnessed spine remains the formal act; P4 = operator §7 template",
+    "§1 freeze, §3 decay takeover, §6 archive are [OPERATOR] — 'forbidden to code lanes' per the runbook header; lanes verified §3 READINESS only (route exists at tip + 401 fail-closed LIVE)"
+  ],
+  "results_summary": "22/22 legs PASS (3 disclosed retries: partAnswers contract law, displayName-size law, W6 ordering + core 'question' field law)",
+  "hub_plane": {
+    "GET /": 200,
+    "GET /api/health": { "status": 200, "dataMode": "core-api", "coreConfigured": true },
+    "GET /api/cron/nightly-decay unauth": 401,
+    "note": "post-flip discriminator live; §3 gate-1 fail-closed law live on the hub route (apps/hub/src/app/api/cron/nightly-decay/route.ts exists at tip)"
+  },
+  "spine": {
+    "S1_register": 201, "S2_login": "200 roles=[STUDENT]",
+    "S3_agenda": 200, "S4_subjects": 200,
+    "S5a_rating_095_zod_law": "400 validation_failed (blank cardId) — #153 law LIVE at api-of-record",
+    "S5b_rating_real": "201 (cardId fl_2m2xT6PnzS3yzp4P, subtopic 4CH1-S1-a, rating know)",
+    "S6_review_schedule": "200 derived non-empty", "S7_trail": "200 our card visible",
+    "C3_question": "200 92817c46-8103-4d2c-9f32-bd61636320a1, 5 parts",
+    "C4_structured": "201 after partAnswers contract law (first attempt 400 malformed_body on 'parts' — the DTO field of record is partAnswers: PartAnswerRequest[]; disclosed retry)",
+    "M_smart_mark": "200 REAL generation — schemeValidationState=VALIDATED, marksPossible=5, per-part SMART_MARKED + authoritative=true + modelId=openai/gpt-oss-120b + pointLabel breakdowns (chlorine) — the #144-repaired pipeline LIVE post-flip (r0 run-002 law re-confirmed)",
+    "M4_history": "200 total=1, attempt d1a2962c present (attempts[].attemptId shape)",
+    "W5_1_teacher_register_no_join_code": "403 fail-closed (lawful displayName retry — first 400 was a 1-char displayName hitting the size law, disclosed)",
+    "W5_2_marking_queue_student": 403, "W5_3_marking_queue_unauth": 401,
+    "W6_1_session_create_v2": 201, "W6_2_list": 200, "W6_3_delete": 204,
+    "W6_4_ask_stream_core": "200 text/event-stream via CORE (ask/stream stays core per flip-table law; early-closed, LLM payload not consumed; first attempt 45s ERR timeout, second 400 'question: must not be blank' — core contract field is question; final ordered pass create->stream->delete PASS)"
+  },
+  "write_ledger": "1 probe learner r1c-w7spine-20261008t071808Z@example.invalid (register+login rows); 1 structured attempt d1a2962c-cc71-4efe-b456-bc000d547358 + smart-mark pipeline rows (ONE LLM generation — r0 run-002 disclosure class); 1 flashcard rating; 1 teacher-register attempt 403 (no row); tutor sessions created+deleted NET-ZERO (b460629d + W6f sid both 204-verified); zero admin/env/deploy/schema/flip-table changes; zero secret material printed",
+  "runbook_supersession_finding": "runbook §1.3/§5 rollback lever as written ('flip NEXT_PUBLIC_API_BASE_URL back to the Render core URL') is STALE vs the live strangler topology of record — actual rollback anchors of record are Task-45's: env HUB_DATA_MODE PATCH back to 'mock' (env id uP22TTCJu4yWlEq1) + redeploy, or instant alias levers dpl_J3pym8a5 / dpl_HHgp / dpl_FhmNnJAq (all READY at Task-45 time); flip-table rows per-surface + HUB_DATA_MODE posture are the real levers. Desk bookkeeping: annotate the runbook.",
+  "p2_state": "RULE-ABLE of record (T-MIG-101 adjudications landed: union 177/177 exit 0, first full-green prod posture, golden/justified-ledger.json codified; zero non-justified divergences; 2 declared-justified rows carry owner + retire condition). Letter-of-law residual: ONE fresh live NEON replay at tip 34f84ee (the 177/177 aggregate predates #161/#163; #163 edited golden cases/justified-ledger/ci-replay) — R0-AUTO cadence active (runs at 13:30/14:39 observed) or explicit dispatch order.",
+  "operator_gate_list": [
+    "P3 witness: the §2.4 spine operator-witnessed leg (lane receipts run-001 + run-002 are the evidence base)",
+    "P4: paste the §7 sign-off into .syllabai/worklog.md (template pre-fillable from this receipt + Task-45/47 anchors)",
+    "§1 freeze window [OPERATOR]; §3 decay takeover [OPERATOR] (env DECAY_CRON_ENABLED=1 + CRON_SECRET on prj_YhOJ — readiness VERIFIED lane-side: route + 401 fail-closed live)",
+    "§4 watch opens at sign-off; §6.1 archive clicks after 48h green [OPERATOR] (token-blocked lane-side: GITHUB_PAT is syllabai-v2-scoped); §6.3 SHA record = lane files on order"
+  ],
+  "scripts": ["scripts/w7-spine-postflip-r1c.py", "scripts/w7-spine-fixup-r1c.py", "scripts/w7-spine-results-20261008t071808Z.json", "scripts/w7-spine-fixup-results.json", "scripts/w7-spine-w6-final.json"]
+}

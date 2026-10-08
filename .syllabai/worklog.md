@@ -6004,3 +6004,21 @@ Work Log:
 
 Stage Summary:
 - Tutor verdict LIVE-WORKING end-to-end: grounded RAG, deterministic paper-identity retrieval (the operator's phrasing parses and resolves), MS-seeking intent, honest-refusal guard for out-of-corpus papers. Corpus of record = 93 VALIDATED Edexcel IGCSE Chemistry papers 2011-2026 embedded as cards + QP/MS store chunks. Lane IDLE.
+---
+Task ID: 50
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)
+Task: Operator trace 1a11a56c2977f7d9 "Ok proceed" — advance the Wave-7 gate path per r1c's retirement-order recommendation (Task-47): P3 lane leg EXECUTED (§2.4 spine post-flip re-run, 22/22 PASS), P2 state verified rule-able, P4 prep delivered, §1/§3/§6 confirmed [OPERATOR]-locked.
+
+Work Log:
+- Fetch-first at act time: tip 842a6cb -> 34f84ee mid-census (PR #163 T-MIG-102 merge; earlier #161 merge 373cf44 with the T-MIG-100 ID repair chain 100->101->103 of record; band 083/084/090 DONE, 085 WIDENED, 089 done-pending-stamp, 088/091 gated on T-MIG-100).
+- Runbook re-read first-hand at tip (139 lines): §2.4 smoke = [LANE-executable checks, operator-witnessed]; §1/§3/§6 = [OPERATOR] "forbidden to code lanes" per the header — the retirement order's operator levers stay operator-side; §0 gate law: all of P1-P4 before §1.
+- P3 LANE LEG EXECUTED: the W7-SMOKE run-001 recipe of record re-run POST-FLIP at tip 34f84ee — 22/22 legs PASS with 3 disclosed contract-law retries (structured DTO field = partAnswers not parts; displayName size law >=2; W6 ordered create->stream->delete + core ask/stream field = question): hub plane 200/health core-api/decay 401 fail-closed; register 201 + login 200 STUDENT; agenda 200; subjects 200; 095 zod law 400 LIVE; flashcard rating 201 real card fl_2m2xT6PnzS3yzp4P; review-schedule 200 derived; trail 200; question 200 5 parts; structured attempt 201; SMART-MARK 200 REAL generation (schemeValidationState=VALIDATED, marksPossible=5, per-part SMART_MARKED authoritative=true modelId=openai/gpt-oss-120b, pointLabel breakdowns) — the #144-repaired pipeline re-confirmed LIVE post-flip; history 200 attempt present; teacher laws 403/403/401; tutor sessions v2 create/list/delete net-zero + ask/stream via CORE 200 text/event-stream early-closed (LLM payload not consumed).
+- P2 STATE VERIFIED RULE-ABLE of record: T-MIG-101 adjudications landed (union 177/177 exit 0 at 004d105 — first full-green prod posture; golden/justified-ledger.json codified; zero non-justified divergences). Letter-of-law residual: ONE fresh live NEON replay at tip 34f84ee (the aggregate predates #161/#163; #163 edited golden cases/justified-ledger/ci-replay) — R0-AUTO cadence active or explicit dispatch order.
+- §3 READINESS leg (read-only): decay route EXISTS at tip (apps/hub/src/app/api/cron/nightly-decay/route.ts) + unauth 401 fail-closed LIVE on hub-v2 — the DECAY_CRON_ENABLED=1 + CRON_SECRET env act itself stays [OPERATOR] (prj_YhOJ).
+- RUNBOOK SUPERSESSION FINDING filed: §1.3/§5's single-var rollback lever (NEXT_PUBLIC_API_BASE_URL flip) is stale vs the live strangler topology — actual rollback anchors of record are Task-45's (HUB_DATA_MODE PATCH env uP22TTCJu4yWlEq1 + redeploy; alias levers dpl_J3pym8a5 / dpl_HHgp / dpl_FhmNnJAq). Desk bookkeeping item.
+- Write ledger: 1 probe learner + 1 structured attempt + smart-mark rows (ONE LLM generation, r0 run-002 class) + 1 flashcard rating + 1 403'd teacher register (no row) + tutor sessions NET-ZERO (both 204-verified); zero admin/env/deploy/schema/flip-table changes; zero secret material printed.
+- Receipt of record: .syllabai/receipts/W7-SMOKE/run-002-postflip-spine-r1c.json; probe scripts + raw results persisted lane-side (scripts/w7-spine-*.py|json); push via the guard chain (dup-check Task-49, scope check, head-stability, union-retry).
+
+Stage Summary:
+- Gate path state after this act: P1 MET of record; P2 RULE-ABLE (one fresh tip replay owed, R0-AUTO cadence); P3 lane leg DONE 22/22 (operator witness remains the formal act); P4 template handed to the operator pre-filled. Operator's remaining path to watch-open: P3 witness + P4 paste + §1 freeze + §3 "decay go" binding; §6.1 archive clicks after 48h green (GITHUB_PAT scope-blocked lane-side); §6.3 SHA record lane-files on order.
+- Next repo receipt = Task-51; next workspace = Task-38.
