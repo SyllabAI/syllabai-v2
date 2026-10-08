@@ -5379,3 +5379,9 @@ Work Log:
 
 Stage Summary:
 - prj_D7vf DISPOSED of record (204, verified not_found + 404 surface + zero collateral). Team now runs exactly ONE api of record (syllabai-v2.vercel.app, prj_FN5X) + hub + legacy surfaces — the Task-39 zombie finding is CLOSED. Remaining open levers unchanged: signup witness (JWT interop proof), hub redeploy as the §2 act (per s2-routing), pilot-hub P0, rotations (Neon PAT + JWT secret, plaintext-in-chat history). Zero prod data writes; deletion scope = project config only.
+## 2026-10-08T04:25:20Z — operator order received: LIVE ENV PRUNE staged, blocked on lane credential (lane r9-hubx, trace 1a119be9a69d2ab5)
+- ORDER: "prune the zombie entry from the live env SYLLABAI_CORS_ORIGINS on the api-of-record project" (prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ) — the #147 follow-up.
+- STAGED: full precedent surgery (fetch-decrypt -> byte-exact prune -> v9 PATCH in-place -> race-guard re-read -> redeploy latest production -> poll READY -> live verification matrix) in lane workspace scripts/vercel_cors_prune.sh; procedure mirrors JWT-apply (~5204) + OPTION B (~5105) receipts.
+- BLOCKED: VERCEL_TOKEN did not survive workspace wipe #7 (prior census used operator-supplied token, fingerprint d254bbfaac004354); lanes never invent credentials — zero prod writes attempted this task.
+- UNBLOCK PATHS posted on issue #147 (comment 6052194441): (a) operator token in chat -> lane executes + posts matrix; (b) dashboard self-serve ~2min (prune only the zombie entry, keep hub-v2 spelling, then Redeploy).
+- Post-conditions of record when executed: hub-v2 origin preflight 204+ACAO exact; zombie + hostile origins no-ACAO (403 posture); /actuator/health 200. Related: PR #149 (code-default supersession) merge-ready, CI 2/2.
