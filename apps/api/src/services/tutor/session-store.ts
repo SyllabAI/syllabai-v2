@@ -41,7 +41,7 @@ export const MAX_CONTENT_CHARS = 4000;
  * commas are template text. Returns the (strings, ...params) spread exactly
  * in the tagged-call shape the structural SqlFn contract consumes.
  */
-function inList(
+export function inList(
   prefix: string,
   ids: readonly string[],
   suffix: string,

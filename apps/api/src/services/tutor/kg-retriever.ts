@@ -20,6 +20,7 @@
  * intent surface.
  */
 import type { SqlFn } from "./sql";
+import { inList } from "./session-store";
 import {
   type KnowledgeContext,
   type MatchedTopic,
@@ -93,11 +94,18 @@ export function buildSqlKgGraph(sql: SqlFn): KgGraphPort {
     },
     async prerequisiteChains(topicIds) {
       if (topicIds.length === 0) return new Map();
-      const rows = (await sql`
-        with recursive prereq as (
+      // T-MIG-094: the 093 inList scalar-param law — a bound JS array is a
+      // single wire value and 500s the Neon WebSocket wire (fakeSql cannot
+      // expose binding semantics; construction pinned in
+      // test/tutor/kg-retriever-wire.test.ts at the adapter boundary).
+      const rows = (await sql(
+        ...inList(
+          `with recursive prereq as (
             select e.source_node_id as origin_id, e.target_node_id as node_id, 1 as depth
             from knowledge_edges e
-            where e.source_node_id = any(${topicIds}::uuid[]) and e.relation_type = 'REQUIRES_PREREQUISITE'
+            where e.source_node_id in (`,
+          topicIds,
+          `) and e.relation_type = 'REQUIRES_PREREQUISITE'
           union
             select p.origin_id, e.target_node_id, p.depth + 1
             from knowledge_edges e
@@ -107,15 +115,18 @@ export function buildSqlKgGraph(sql: SqlFn): KgGraphPort {
         select origin_id, node_id, max(depth) as depth
         from prereq
         group by origin_id, node_id
-        order by origin_id, depth desc, node_id`) as unknown as Array<{
+        order by origin_id, depth desc, node_id`,
+        ),
+      )) as unknown as Array<{
         origin_id: string;
         node_id: string;
         depth: number;
       }>;
       if (rows.length === 0) return new Map();
       const prereqIds = [...new Set(rows.map((r) => r.node_id))];
-      const nodeRows = (await sql`
-        select id, title from knowledge_nodes where id = any(${prereqIds}::uuid[])`) as unknown as Array<{
+      const nodeRows = (await sql(
+        ...inList("select id, title from knowledge_nodes where id in (", prereqIds, ")"),
+      )) as unknown as Array<{
         id: string;
         title: string;
       }>;
@@ -137,13 +148,18 @@ export function buildSqlKgGraph(sql: SqlFn): KgGraphPort {
       // misconception, §7 seed contract): select edges pointing AT the topic
       // and return their sources (the JpaKnowledgeGraphRepository live-fix
       // note — both directions inverted pre-fix, misconceptions never showed).
-      const rows = (await sql`
-        select e.target_node_id as topic_id, n.id, n.title
+      const rows = (await sql(
+        ...inList(
+          `select e.target_node_id as topic_id, n.id, n.title
         from knowledge_edges e
         join knowledge_nodes n on n.id = e.source_node_id
         where e.relation_type = 'MISCONCEPTION_OF'
-          and e.target_node_id = any(${topicIds}::uuid[])
-        order by e.target_node_id, n.title`) as unknown as Array<{
+          and e.target_node_id in (`,
+          topicIds,
+          `)
+        order by e.target_node_id, n.title`,
+        ),
+      )) as unknown as Array<{
         topic_id: string;
         id: string;
         title: string;

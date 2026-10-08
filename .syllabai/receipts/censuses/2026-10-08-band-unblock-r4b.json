@@ -1,0 +1,29 @@
+{
+  "receipt": "2026-10-08-band-unblock-r4b",
+  "card_scope": "T-MIG-084..089 + T-MIG-091 golden-verify + widen band (r4b claim of record c7e0476, reaffirmed by the r9 083 arbitration)",
+  "operator_order": "trace 1a119bfee07eb795 'want those unblocked first' (the teacher/admin identity prerequisites flagged in the r4b band report)",
+  "adjudication": {
+    "w5_blocker_original_scope": "prod teacher/admin identity + join codes operator-held = blocker for LIVE-CAPTURE from the live frozen core (066-band W5 filing)",
+    "w5_blocker_current_relevance": "NONE for this band: the capture pass is COMPLETE of record (run-001-capture-r4b.json per family; 52 legs: 084 x8, 085 x7, 086 x7, 087 x8, 088 x9, 089 x6, 091 x7; golden-captures/t-mig-08{4..9}/ + t-mig-091/ all on main) — no further live-core contact is required by the flip law",
+    "verify_identity_method_of_record": "the T-MIG-083 rider (r9-hubx, run-001-verify-r9.json, merged f18abe6): LOCAL v2 boot via Bun.serve under the T-MIG-022 CAPTURE-posture envelope, ZERO-KEY law asserted, substrate = local scratch Postgres 17.11 user-tree (trixie debs dpkg -x, the r4b capture recipe) + pgvector, schema via drizzle-kit push (packages/db schema — the faithful path per the 002R finding), HARNESS USERS SEEDED SYNTHETICALLY (t083-seed.ts pattern: users + user_roles rows), TOKENS MINTED BY THE API'S OWN JwtService with the harness boot secret — role-faithful per leg (admin/teacher/learner/anonymous). Zero operator-held material consumed; zero prod/Neon/Vercel contact.",
+    "conclusion": "the teacher/admin identity prerequisites for the 084-089+091 verify band are SATISFIED LANE-SIDE by the 083 method of record; the band is GO with zero operator dependencies; the residual operator levers are platform-side only and are NOT band-gating"
+  },
+  "per_family_verify_requirements": {
+    "T-MIG-084": {"legs": 8, "auth_classes": ["anonymous 401", "learner 200 tree", "teacher/admin 200 node/tree/prereq/misconceptions"], "substrate_seeds": ["users+roles synthetic", "knowledge node(s) matching the capture uuid-map fakes"], "disclosed_laws": ["UUID-typed path params (kn-1 -> 400)"]},
+    "T-MIG-085": {"legs": 7, "auth_classes": ["401/403 boundary", "teacher activate+edges 200s"], "substrate_seeds": ["class owned by synthetic teacher"]},
+    "T-MIG-086": {"legs": 7, "auth_classes": ["401/403", "graph+learner-kg 200s", "?rootId= 400 law"], "substrate_seeds": ["class + learner binding"]},
+    "T-MIG-087": {"legs": 8, "auth_classes": ["401/403", "list/mark/history 200s"], "substrate_seeds": ["teaching coverage rows (SUBTOPIC + applicability invariant V39)"]},
+    "T-MIG-088": {"legs": 9, "auth_classes": ["401/403", "enumerate/structured/fetch 200s"], "substrate_seeds": ["teacher content rows"]},
+    "T-MIG-089": {"legs": 6, "auth_classes": ["401/403", "pairs error contracts"], "disclosed_seam": "pairs-success needs real canonical qp/ms documents (OCR LLM fail-closed in test mode) — captured shapes are the error contracts"},
+    "T-MIG-091": {"legs": 7, "auth_classes": ["401/403", "import idempotent 200 upsert", "409 domain vs 400 enum violations"], "substrate_seeds": ["exam-series writable state"]}
+  },
+  "residual_operator_levers_NOT_band_gating": [
+    "frozen-core hub redeploy (only for FUTURE live captures; none owed by this band)",
+    "api/hub redeploys = the Wave-A/§2 acts (s2-routing run-001 enumeration)",
+    "zombie decommission per corrected f18f601; pilot-hub P0; signup witness + JWT sync; rollback anchor snapshot; 081 triage",
+    "P2 formal adjudication of the 10 justified classes; P3 supervised dual-run; P4 sign-off"
+  ],
+  "method_discipline": "local-only verify planes; zero prod/Neon writes; tokens synthetic and never persisted; uuid-map normalization per receipts/capture/2026-10-07/uuid-map-r4b.json; envelope-timestamp normalization per the 082 run-003 law; capture-wins on divergence (capture is the wire truth of record)",
+  "agent": "R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "trace": "1a119bfee07eb795"
+}

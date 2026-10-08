@@ -264,13 +264,31 @@ describe("admin revision-notes — the ADMIN shell + ingest/status", () => {
     expect((await status.json()).error).toBe("Forbidden");
   });
 
-  test("POST /ingest without the file part → 400 (the :37-40 guard verbatim)", async () => {
+  test("POST /ingest bodyless/non-multipart → 400 (the media-type refusal; fail-closed, uncaptured shape)", async () => {
     const { app } = makeApp(asAdmin, ingestRoutes());
     const res = await app.request("/api/v1/admin/revision-notes/ingest", { method: "POST" });
     expect(res.status).toBe(400);
     const body = await res.json();
     expect(body.error).toBe("bad_request");
     expect(body.message).toBe("multipart part 'file' (the corpus ZIP) is required");
+  });
+
+  test("POST /ingest multipart WITHOUT the 'file' part → the core's unhandled @RequestPart bind 500 (golden-captures/t-mig-083 leg-04 wire law of record)", async () => {
+    const { app } = makeApp(asAdmin, ingestRoutes());
+    const form = new FormData();
+    form.set("note", "a part, but not the 'file' part");
+    const res = await app.request("/api/v1/admin/revision-notes/ingest", {
+      method: "POST",
+      body: form,
+    });
+    // the frozen core's @RequestPart bind throws MissingServletRequestPartException
+    // BEFORE the controller body → unhandled → the GlobalExceptionHandler catch-all
+    // 500 internal_error envelope, captured of record (r4b run-001, 6cad6ef).
+    expect(res.status).toBe(500);
+    const body = await res.json();
+    expect(body.error).toBe("internal_error");
+    expect(body.message).toBe("an internal error occurred");
+    expect(body.status).toBe(500);
   });
 
   test("POST /ingest with an EMPTY file part → the same 400 (file.isEmpty())", async () => {
