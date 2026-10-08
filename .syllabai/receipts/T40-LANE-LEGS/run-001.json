@@ -1,0 +1,35 @@
+{
+  "task": "T40-LANE-LEGS",
+  "supersedes_local_only": "T39-LANE-LEGS (original local commit 372d35e lost in the 6th workspace wipe before push; re-landed under this entry)",
+  "agent": "r7a (Super Z, zai-web session web-da4ab8b1)",
+  "operator_traces": ["1a11737eac439149 (Proceed with A. Lane legs)", "1a119a5a7b5fd391 (Check again now)"],
+  "original_execution_utc": "2026-10-07T16:47:27Z (before the GitHub write-plane incident)",
+  "relanding_utc": "2026-10-08T03:53:00Z (post-recovery, main advanced to f8ac89fa8)",
+  "routing_reconciliation": {
+    "ordered": "fork (a) from the Task-36 #134 routing table (r1c rebase)",
+    "found_at_census": "fork already RESOLVED of record: #134 CLOSED close-superseded (branch preserved untouched) by the r9-hubx desk adjudication under operator trace 1a1155c0e7017f99; reserved 090 discharged via ruling4 + PR #140 (merged e35559c)",
+    "value_map_of_record": "082 -> #132+#137 (golden 7/7 vs live core); 084-087 -> #132; 088/089/091 -> #138 (services/ingestion/**); 090 -> #140 (r1c adopted-and-amended)",
+    "decision": "literal (a) moot - rebasing would resurrect superseded implementations and destroy a provenance-preserved branch; executed the ORDER'S INTENT as lane legs proving the landed value; zero mutation to #134"
+  },
+  "state_at_original_execution": {"main_tip": "bd4eaeb6e", "open_pulls": 0},
+  "lane_leg_L1_gate_spine": {
+    "at": "main bd4eaeb6e",
+    "install": "930 packages, frozen lockfile",
+    "typecheck_x4": "exit 0 (contracts/shared/db/api)",
+    "bun_test_apps_api_packages": "1706 pass / 13 skip / 0 fail / 6715 expect() / 89 files — EXACT vs #140 of-record gates",
+    "golden_selftest": "OK (T-MIG-024/071/072/075/077 engine laws)"
+  },
+  "lane_leg_L2_full_golden_replay": {
+    "vehicle": "neon-replay workflow_dispatch (T-MIG-044)",
+    "run_id": 37654798014,
+    "sha": "bd4eaeb6e",
+    "verdict": "167/177 PASS (seed 154/162 + prod 13/15; 5 via T-MIG-071 R3-C declared limiter-429); conclusion=failure = union-gate design posture",
+    "failure_set_proof": "artifact 11497189087 union.md diffed vs pre-#140 baseline run 37597504098 @ f5f35f810: SAME 10 cases byte-for-byte modulo run-ephemeral learnerId UUIDs + timestamps -> ZERO new golden divergences at bd4eaeb",
+    "supersession_note": "T-MIG-097 run-001 (4/10, six real deviation classes) is the CURRENT replay evidence of record at the CLA surface post-widening (main f8ac89f); this receipt stands as the bd4eaeb-era band-landing proof"
+  },
+  "incident_of_record": {
+    "github_write_plane_500s": "4x git push + 1x issues-comment POST rejected 2026-10-07T16:54-16:58Z (request IDs B58A:2BDC:1057DC5:10D279E:6AC67934, 8695:235A57:1143F09:11BE4BD:6AC67947, 4FE2:231445:31D5:3B08:6AC67986, F5C6:13721C:BB6E66:C350F7:6AC67A47, + one API 500) while API reads stayed healthy",
+    "workspace_wipe": "6th observed wipe (Task-31 precedent: 5th) — local commit 372d35e lost with the repo; recovered from /tmp/my-project survivor: creds, scripts, replay evidence, mirror; repo re-cloned fresh at f8ac89fa8"
+  },
+  "conclusion": "Lane legs GREEN of record at bd4eaeb (band-landing proof); board has since advanced (#145 T-MIG-096 widen, T-MIG-097 CLA flip BLOCKED); this entry closes the r7a loop on the #134 fork and the incident."
+}
