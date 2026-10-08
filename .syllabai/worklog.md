@@ -6621,3 +6621,18 @@ Stage Summary:
 - GATES first-hand at d3d38a3: typecheck x4 exit 0; bun test apps/api packages = 1854 pass / 0 fail / 13 skip / 7182 expect — EXACT delta vs the a5abd14 baseline 1809/0/13/7081: +47 (write-port.test.ts NEW) −2 (routes.test.ts 51→49: the 16 501 pins replaced by 14 flip pins); hub 54/0/432 unchanged; golden selftest OK.
 - LAWS DISCLOSED: (1) the jakarta @Valid non-cascade on List<PointCriteriaUpdate> — the contracts/content-writes.ts comment claims 400 for null element fields; the SOURCE law (no @Valid on the field) wins: 404, contracts untouched; (2) the validate-all batch mutates in-memory state post-UPDATE (the Java entity-mutation law the final unvalidated re-check reads); (3) a null secondaryNodeIds element → 404 "curriculum topic null not found" WITHOUT reaching SQL.
 - PR opened (no self-merge). Standing operator items unchanged: PAT rotation, P3/P4 operator-side witness asks. Post-merge residue: the golden-verify widening rider for the write rows (the hub V2_SURFACE_PREFIXES widening rides its own golden gate per the flip law).
+
+---
+Task ID: R0-AUTO run cron-202610090630 (Job 438940)
+Agent: R0-auto (Super Z, zai-web, merge desk — desk merges only)
+
+Work Log:
+- PR #168 MERGED of record -> d2308eb (head c9685f02e01e0898ed217557d0af3f73a5b05ed8 sha-guarded PUT first-try, merge_method=merge): T-MIG-107 the content-write surfaces port — the 17 honest-501 write routes + POST port (r0 implementation lane, 2 commits, 10 files)
+- CLEAN MERGE — mergeable=True/state=clean vs base de1baaa (== main tip at PR open); no intake needed
+- Prechecks first-hand: (a) real head from PR JSON; (b) verify+hub completed/success on c9685f0; (d) 0 reviews / 0 comments, no holds; (e) 10 files all monorepo-internal (4 .syllabai + 6 apps/api incl. services/content/review-writes.ts +808 and test/content/write-port.test.ts +987), zero .java, zero core/hub, no Neon/prod surface; recusal held (r0 implementation lane is other-desk work, never claimed here)
+- (f) post-merge verify: main CI 2/2 completed/success at d2308eb (bounded poll ~75s)
+- P0 at run time: pilot 500 MIDDLEWARE_INVOCATION_FAILED (~45h); api-v2 404 DEPLOYMENT_NOT_FOUND; hub-v2 200 core-api; core 000 cold — unchanged posture
+- Max-2 cap: 1 merge this run; 0 open PRs remain after #168
+
+Stage Summary:
+- T-MIG-107 LANDED of record (d2308eb): the content-write surfaces port (17 honest-501 write routes + POST port) live on main. Board empty at run end.
