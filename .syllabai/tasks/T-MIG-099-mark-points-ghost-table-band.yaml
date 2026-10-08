@@ -1,0 +1,107 @@
+version: 1
+task:
+  id: T-MIG-099
+  title: "T-MIG-099 - mark_points ghost-table port-defect band (the 093 fake-vs-real class, schema-existence member; filed from R0-REVIEW-144-146 + R0-TM053-RECON run-001): four real-wire SQL sites in the smartmark/teachermarking services query 'mark_scheme_points' — a table that exists in NEITHER schema of record (frozen Flyway V8 creates mark_points; v2 drizzle 0000_organic_mauler.sql:220 creates mark_points) — so any real-data execution of the smart-mark pipeline or the teacher smart-mark context assembly dies with 'relation mark_scheme_points does not exist' -> opaque 500. The three fakeSql pins pin the port's own ghost string verbatim (self-referential), so every stubbed gate passes byte-perfect — fakeSql cannot validate table EXISTENCE, the second member of the fake-vs-real class after 093's binding-semantics member. Fix of record = the mark_scheme_points -> mark_points rename riding PR #144 (commit 29cea42, head 993c18e9ec9d), verified parity-restoring and corpus-safe first-hand by R0-TM053-RECON run-001 F3/F4"
+  owner: "R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e) - desk-filed of record per operator trace 1a119d1cf23272f5 'pre-draft the 093-class defect-band card for the ghost fix'; the fix code itself is authored by w0a inside PR #144 (disclosed there per review 5451273481 item-2; this card IS the required card-link target, pointer posted as PR comment 6052294137 -> this filing)"
+  status: "OPEN # fix-of-record rides PR #144 (REQUEST_CHANGES fix-forward per R0-REVIEW-144-146); flips DONE when BOTH land: (1) #144 desk-merge carries the 7-file rename (4 SQL sites + 3 pins) intact through the intake union; (2) the real-wire proof leg of this card's execution_record discharges (post-merge, on the sanctioned scratch substrate or a redeployed live api)"
+  claimed_at: "2026-10-08"
+  priority: P1 # live-exposure band: the ghost sits on a LIVE-ROUTED, flipped surface (see exposure law below)
+  wave: "defect-band # the 070/093 precedent class: restore the frozen wire law against the landed surface; fake-vs-real family, schema-existence member"
+  deps: [T-MIG-032, T-MIG-093]
+  execution_record: >
+    ORIGIN OF RECORD (R0-TM053-RECON run-001 F3): the ghost name enters at
+    T-MIG-032 tranche-1 (9bffac2, the selfmark+smartmark services port) and
+    is a PORT-SIDE transcription defect, NOT frozen-inherited — the frozen
+    core has ZERO mark_scheme_points anywhere: Flyway V8__multipart_
+    assessment.sql:110 CREATE TABLE mark_points, MarkPoint.java:27
+    @Table(name="mark_points"), FetchService.java:208 native SQL, and
+    MarkPointRepository.findByMarkSchemeIdOrderByOrdering whose derived
+    query (where mark_scheme_id=? order by ordering) is EXACTLY the law the
+    #144 rename restores. SITES OF RECORD at main 6a30e96: services/
+    smartmark/index.ts :540 (SmartMarkService batch pipeline point rows)
+    + :846 (StudentSmartMarkService per-part serve/resolve) + :865 (project()
+    view projection) + :57 (comment) and services/teachermarking/index.ts
+    :550 (TeacherSmartMarkService context assembly); pins of record:
+    test/smartmark/routes.test.ts:47, test/smartmark/smartmark.test.ts:164,
+    test/teachermarking/teachermarking.test.ts:181.
+
+    EXPOSURE LAW (run-001 F5, material to cutover): the flipped hub prefix
+    /api/v1/learners/me/attempts (T-MIG-037, NARROW) routes learner
+    smart-mark to the v2 api (hub api.ts:1288; the flip-table comment
+    itself declares self/smart-mark mounted under that base), and the batch
+    pipeline fires the ghost BEFORE the LLM call (scheme rows -> point rows
+    [GHOST] -> contexts -> LLM), so ANY real-attempt learner smart-mark on
+    the live v2 api = SQL-class 500 since the 032-era mount went live,
+    independent of LLM-key posture. Teacher smart-mark stays core-routed
+    (teacher marking NOT in the flip table) -> the teachermarking :550 site
+    is latent until that surface flips. The SELF-MARK loop is unaffected
+    (zero ghost sites; the T-MIG-055 captured-quirk family is a frozen
+    CONTROLLER-boundary NPE, pre-service, independent of this band per
+    run-001 F2 — the re-exam flag is CLOSED, do not conflate the bands).
+    #144's fix is a PRECONDITION for any live smart-mark parity claim.
+
+    CORPUS SAFETY (run-001 F4): all three smart-mark golden cases
+    (w3-smartmark-unknown-attempt-404, w3-smartmark-unauthed-401,
+    w3-teacher-marking-smartmark-batch-unauthed-401) are empty-body
+    401/404 shapes whose gates precede the scheme/point queries — zero
+    golden reach into the ghost sites, zero replay drift from the rename;
+    no re-capture owed by this band.
+
+    FIX VERIFICATION OF RECORD (run-001 F4): #144 head 993c18e (29cea42)
+    renames all 4 SQL sites + all 3 pins; SELECT column list unchanged
+    (id, ref, ordering, text, marks, question_part_id where mark_scheme_id
+    = ? order by ordering); the column law reconciles against BOTH schemas
+    of record (frozen V8 DDL and v2 drizzle schema.ts:322 markPoints —
+    mark_schemes.id UUID both sides, no deeper typing divergence). The
+    7-file rename must survive the #144 intake union INTACT (desk checklist
+    item).
+
+    OWED PROOF LEG (flips the card DONE, alongside the #144 merge): a
+    real-wire leg on the sanctioned scratch substrate (the 083-rider
+    pattern: local scratch PG + drizzle-kit push from packages/db,
+    harness-minted tokens, ZERO-KEY asserted, zero prod/Neon contact)
+    exercising ONE seeded VALIDATED-scheme smart-mark execution past the
+    point-rows query — asserting the ghost 'relation does not exist'
+    class is gone and the mark_points rows law serves — plus, after the
+    next api redeploy carries the fix live, a live-probe note that the
+    learner smart-mark error class at the api-of-record changed from
+    SQL-class 500 to the LLM-seam's own refusal law (the LLM-seam posture
+    itself is OUT of this band's fence — SYLLABAI_LLM_* env law is #144's
+    surface, not this card's).
+
+    RELATED WATCHLIST (out of fence, disclosed at run-001 F6): the
+    of-record drizzle index ix_mark_points_scheme declares int4_ops
+    opclass on uuid columns (schema.ts:333 / 0000_organic_mauler.sql:963)
+    — irrelevant to SELECT correctness, live-index existence untestable
+    lane-side, 093-class drizzle-of-record oddity; its own item if it ever
+    bites.
+
+    CLASS LEDGER of record (fake-vs-real family): (a) T-MIG-093 binding
+    semantics — fakeSql cannot expose driver binding (in-array $1 vs
+    per-element $n), fixed #141 + live deploy dpl_5VuNMyfq5vknZSEsMkyFrUCg
+    mcbL; (b) THIS BAND schema existence / self-referential pinning —
+    fakeSql cannot validate table existence and the pins were written from
+    the port's own SQL, so the defect passes gates byte-perfect; (c) the
+    kg-retriever array-binding register item (T-MIG-094 card + PR #150's
+    real-wire gate restatement) — same family, own band. Desk law going
+    forward: any fakeSql-pinned SQL string that names a table or a binding
+    shape must cite its real-wire corroboration (golden-verify leg, deploy
+    receipt, or an explicit live-exposure disclosure) — this card is the
+    naming precedent.
+  scope:
+    allowed:
+      - "apps/api/src/services/smartmark/index.ts (the :540/:846/:865 SQL sites + :57 comment — via the PR #144 rider, rename only)"
+      - "apps/api/src/services/teachermarking/index.ts (the :550 SQL site — via the PR #144 rider, rename only)"
+      - "apps/api/test/smartmark/routes.test.ts (the :47 pin)"
+      - "apps/api/test/smartmark/smartmark.test.ts (the :164 pin)"
+      - "apps/api/test/teachermarking/teachermarking.test.ts (the :181 pin)"
+      - ".syllabai/tasks/T-MIG-099-mark-points-ghost-table-band.yaml (this yaml)"
+      - ".syllabai/receipts/T-MIG-099/** (the owed proof-leg receipt)"
+      - ".syllabai/worklog.md (append-only)"
+    forbidden:
+      - "packages/db/** (BOTH schemas of record are CORRECT — mark_points exists in each; the call sites violated the wire law, the 093 fence precedent: never 'fix' the schema to match a port typo)"
+      - "golden/** corpus (zero reach, zero re-capture owed — the three smart-mark cases are pre-gate shapes)"
+      - "apps/hub/** + V2_SURFACE_PREFIXES (the exposure band is a v2-api repair; no flip-table contact, no widening)"
+      - "the LLM-chain seam posture (SYLLABAI_LLM_* env law is #144's own surface; this band ends at the point-rows query)"
+      - "selfmark services/routes (independent band — T-MIG-055 family, controller-boundary NPE, CLOSED re-exam per R0-TM053-RECON run-001 F2)"
+      - "force-push; self-merge of PR #144 (desk merge per the standing review, after head CI + this card's linkage + intake union)"

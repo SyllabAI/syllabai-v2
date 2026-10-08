@@ -1,0 +1,44 @@
+{
+  "card": "T-MIG-083",
+  "receipt": "run-001-verify-r9",
+  "lane": "r9-hubx (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "created_at_utc": "2026-10-07T20:3xZ",
+  "operator_trace": "1a117eee0ed70419 ('① desk-merge #143; ② operator lever to redeploy the frozen-core hub; ③ then continue the flip-rider band (083-089/091 golden-verify)')",
+  "method": "LOCAL v2 boot of the working tree @ main 23c22e2 + this rider's deltas, served by the harness (Bun.serve, apps/api/src/index.ts imported directly) under the T-MIG-022 harness envelope in CAPTURE posture + ZERO-KEY law (no LLM credentials in env, asserted exit-4 guard). Substrate: local scratch Postgres 17.11.11 user-tree (trixie debs dpkg -x, the r4b capture-band recipe) on 127.0.0.1:5433, db syllabai_v2_verify, schema pushed from packages/db/src/schema via drizzle-kit push + CREATE EXTENSION vector (pgvector 0.8.7) — the T-MIG-014 dispatch rule puts any non-neon host on postgres.js TCP. Harness users seeded synthetically (STUDENT/TEACHER/ADMIN via the honest user_roles rows; passwords never used — tokens minted by the api's own JwtService with the harness boot secret, HS256 44+ byte law). Zero production writes, zero Neon reads/writes, zero contact with the live v2 deploy (it does not yet carry the leg-04 repair).",
+  "capture_of_record": "golden-captures/t-mig-083/ (r4b run-001 local-boot capture of frozen core 6cad6ef, receipts/T-MIG-083/run-001-capture-r4b.json) — 8 legs, wire truth of record",
+  "harness": ".syllabai/receipts/T-MIG-083/tools/t083-verify.ts (+ t083-seed.ts); normalization: envelope timestamp dropped (type-only, the 082 run-003 method), order-insensitive canonical JSON; header deltas disclosed per-leg",
+  "first_pass_verdict": "7/8 — the gate worked as designed",
+  "first_pass_finding": {
+    "leg": "leg-04-ingest-admin-multipart-nopart",
+    "divergence": "v2 answered a well-formed multipart body WITHOUT the 'file' part with 400 bad_request 'multipart part file (the corpus ZIP) is required' (the sme.ts binding-class precedent), while the frozen core's capture of record is 500 internal_error 'an internal error occurred'.",
+    "root_cause": "The sme precedent is the wrong one for @RequestPart controllers: sme takes @RequestParam, which Spring maps to a handled 400; RevisionNoteAdminController.ingest takes @RequestPart('file'), whose missing-part bind failure (MissingServletRequestPartException) is NOT handled by the frozen GlobalExceptionHandler and falls to the catch-all 500 envelope. The part-absent failure happens in the servlet layer BEFORE the controller body (:33-46), distinct from the controller's own file.isEmpty() guard (:37-40) which IS a 400 — both laws now pinned separately.",
+    "repair": "apps/api/src/routes/revision-notes.ts — the file===null branch now throws a plain error that falls to the app-level onError catch-all, reproducing the capture's 500 internal_error envelope verbatim; the non-multipart media-type refusal stays 400 (fail-closed, uncaptured shape, honestly disclosed); the empty-part branch stays the controller-guard 400 (bind succeeded, in-body guard). Route-test pins updated: the bodyless/non-multipart 400 pin renamed to its true shape + NEW pin for the multipart-without-part 500 wire law citing the capture."
+  },
+  "final_pass_verdict": "8/8 PASS",
+  "legs": [
+    { "leg": "leg-01-ingest-no-token", "result": "PASS", "status": "401/401", "body": "DEEP-EQUAL (Boot 401 envelope)" },
+    { "leg": "leg-02-ingest-learner-403", "result": "PASS", "status": "403/403", "body": "DEEP-EQUAL" },
+    { "leg": "leg-03-ingest-teacher-403", "result": "PASS", "status": "403/403", "body": "DEEP-EQUAL" },
+    { "leg": "leg-04-ingest-admin-multipart-nopart", "result": "PASS (after repair)", "status": "500/500", "body": "DEEP-EQUAL (internal_error catch-all envelope)" },
+    { "leg": "leg-05-ingest-admin-non-zip", "result": "PASS", "status": "400/400", "body": "DEEP-EQUAL ('revision-notes package is missing package.json' — harness fixture: valid zip, no package.json entry)" },
+    { "leg": "leg-06-status-admin", "result": "PASS", "status": "200/200", "body": "DEEP-EQUAL (empty-state: {assets:0, corpusVersion:null, ingested:false, ingestedAt:null, notes:0})" },
+    { "leg": "leg-07-status-teacher-403", "result": "PASS", "status": "403/403", "body": "DEEP-EQUAL" },
+    { "leg": "leg-08-status-no-token", "result": "PASS", "status": "401/401", "body": "DEEP-EQUAL" }
+  ],
+  "header_disclosure": "Per-leg header deltas: cache-control (capture: no-cache,no-store,max-age=0,must-revalidate; v2: absent), x-content-type-options (nosniff absent), x-frame-options (DENY absent) — the api-wide default cache/posture class, the KNOWN finding of record filed at 082 run-003; not a new divergence.",
+  "write_safety": "All 8 legs are either auth-gate rejections (401/403 before any handler work), fail-closed pre-write failures (leg-04 bind 500; leg-05 zip-walker structural 400 — both reject BEFORE any DB mutation), or a pure read (leg-06 status on an empty scratch DB). Zero rows written beyond the harness's own synthetic users; no corpus content ingested at any point.",
+  "gates": {
+    "typecheck": "tsc --noEmit x4 exit 0 (api, contracts, db, shared, hub workspaces)",
+    "api_tests": "bun test apps/api packages = 1720 pass / 0 fail / 13 skip / 6726 expect() across 89 files (baseline 23c22e2 = 1719/0/13/6722; delta = +1 test +4 expects = the new leg-04 500 pin, EXACT)",
+    "hub_tests": "bun test apps/hub = 39 pass / 0 fail / 335 expect() across 3 files (baseline 38 pass; delta = +1 test = the T-MIG-083 surface line; the table-integrity guard was updated WITH the new row, per its own flip-law contract)",
+    "selftest": "bun golden/runner.ts --selftest OK"
+  },
+  "widening": {
+    "row": "/api/v1/admin/revision-notes",
+    "form": "NARROW family tree (exactly the two verified endpoints: /ingest, /status); sibling /api/v1/admin/** stays core until its own golden gates",
+    "hub_emitters": "ZERO hub emitters under /api/v1/admin/revision-notes (grep-verified at the widening commit) — ROUTING AVAILABILITY of record, zero live-page routing change (the T-MIG-090 precedent)",
+    "pins": "api.v2-surface.test.ts: the 083 line test (both endpoints flip; core-only siblings pinned null; the 090 flipped row coexists via its own prefix; partial-segment siblings pinned DOCUMENTED INERT); the table-integrity expected-set updated with the new row",
+    "flip_law": "gate discharged by this receipt: the family surface is golden-verified 8/8 of record"
+  },
+  "stage_summary": "T-MIG-083 sequence COMPLETE end-to-end of record: capture (r4b run-001) -> mount (#132) -> golden-verify (this run-001: first pass 7/8 — the gate caught the @RequestPart bind-law divergence; repaired in-rider within the card's route fence; final pass 8/8) -> widen (+ surface pins). The mount-band flip ledger gains its second admin-family row. PR left open for desk merge (authors-never-self-merge)."
+}

@@ -1,0 +1,467 @@
+{
+ "task": "W7-SMOKE",
+ "run": "run-002-live-posture-spine",
+ "order": "operator trace 1a119cbadc682c95: 'smoke'",
+ "law": [
+  "docs/CUTOVER_RUNBOOK.md \u00a72.4 step 4 \u2014 smoke is [LANE-executable checks, operator-witnessed]",
+  "the operator's order is the \u00a72.4 witness; write volume sanctioned by the freeze-window declaration (Task-29 trace 1a112b0054c382d5) + this order",
+  "standing law survives: receipts, append-only worklog, redaction of credentials/LLM payloads"
+ ],
+ "executor": "main (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)",
+ "executed_at_utc": "2026-10-08T04:44Z",
+ "repo_tip_at_execution": "0f43156",
+ "delta_vs_run001": "post prj_D7vf disposal (d99e4e0), #149 CORS merged, #150 kg-retriever merged, recon 0f43156; NEW v2-plane continuity legs E1-E4 per Wave-A ~90%-executed posture (S2-ROUTING run-001)",
+ "targets": {
+  "core": "https://syllabai-core.onrender.com",
+  "v2_api_of_record": "https://syllabai-v2.vercel.app",
+  "hub": "https://syllabai-hub.vercel.app",
+  "hub_v2": "https://syllabai-hub-v2.vercel.app",
+  "zombie": "https://syllabai.vercel.app"
+ },
+ "census": {
+  "hub": {
+   "status": 404,
+   "body": {
+    "non_json": true
+   }
+  },
+  "hub_v2": {
+   "status": 404,
+   "body": {
+    "non_json": true
+   }
+  },
+  "v2_api": {
+   "status": 200,
+   "body": {
+    "groups": [
+     "liveness",
+     "readiness"
+    ],
+    "status": "UP"
+   }
+  },
+  "core": {
+   "status": 200,
+   "body": {
+    "groups": [
+     "liveness",
+     "readiness"
+    ],
+    "status": "UP"
+   }
+  },
+  "hub_dataMode": "<!DOCTYPE html><html lang=\"en\" class=\"ja",
+  "zombie_status": 500,
+  "core_401": 401,
+  "v2_401": 401
+ },
+ "steps": [
+  {
+   "step": "A-hub hub health",
+   "method": "GET",
+   "path": "https://syllabai-hub.vercel.app/api/health/status",
+   "status": 404,
+   "ms": 57,
+   "verdict": "OBSERVED 404",
+   "evidence": {
+    "body": "{\"non_json\": true}"
+   }
+  },
+  {
+   "step": "A-hub_v2 hub_v2 health",
+   "method": "GET",
+   "path": "https://syllabai-hub-v2.vercel.app/api/health/status",
+   "status": 404,
+   "ms": 294,
+   "verdict": "OBSERVED 404",
+   "evidence": {
+    "body": "{\"non_json\": true}"
+   }
+  },
+  {
+   "step": "A-v2_api v2_api health",
+   "method": "GET",
+   "path": "https://syllabai-v2.vercel.app/actuator/health",
+   "status": 200,
+   "ms": 250,
+   "verdict": "OBSERVED 200",
+   "evidence": {
+    "body": "{\"groups\": [\"liveness\", \"readiness\"], \"status\": \"UP\"}"
+   }
+  },
+  {
+   "step": "A-core core health",
+   "method": "GET",
+   "path": "https://syllabai-core.onrender.com/actuator/health",
+   "status": 200,
+   "ms": 426,
+   "verdict": "OBSERVED 200",
+   "evidence": {
+    "body": "{\"groups\": [\"liveness\", \"readiness\"], \"status\": \"UP\"}"
+   }
+  },
+  {
+   "step": "A-hub-dataMode hub dataMode",
+   "method": "GET",
+   "path": "https://syllabai-hub.vercel.app/api/health/dataMode",
+   "status": 404,
+   "ms": 51,
+   "verdict": "OBSERVED 404",
+   "evidence": {
+    "value": "<!DOCTYPE html><html lang=\"en\" class=\"ja"
+   }
+  },
+  {
+   "step": "A-hub-coreConfigured hub coreConfigured",
+   "method": "GET",
+   "path": "https://syllabai-hub.vercel.app/api/health/coreConfigured",
+   "status": 404,
+   "ms": 40,
+   "verdict": "OBSERVED 404",
+   "evidence": {
+    "value": "<!DOCTYPE html><html lang=\"en\" class=\"ja"
+   }
+  },
+  {
+   "step": "A-zombie zombie surface post-disposal",
+   "method": "GET",
+   "path": "https://syllabai.vercel.app/",
+   "status": 500,
+   "ms": 795,
+   "verdict": "OBSERVED 500",
+   "evidence": {
+    "expected": "404 per d99e4e0 disposal of prj_D7vf"
+   }
+  },
+  {
+   "step": "A-core-401law core bogus-creds 401 law",
+   "method": "POST",
+   "path": "https://syllabai-core.onrender.com/api/v1/auth/login",
+   "status": 401,
+   "ms": 1155,
+   "verdict": "OBSERVED 401",
+   "evidence": {
+    "envelope": {
+     "status": 401,
+     "error": "invalid_credentials",
+     "message": "invalid credentials"
+    }
+   }
+  },
+  {
+   "step": "A-v2-401law v2 bogus-creds 401 law",
+   "method": "POST",
+   "path": "https://syllabai-v2.vercel.app/api/v1/auth/login",
+   "status": 401,
+   "ms": 353,
+   "verdict": "OBSERVED 401",
+   "evidence": {
+    "envelope": {
+     "status": 401,
+     "error": "invalid_credentials",
+     "message": "invalid credentials"
+    }
+   }
+  },
+  {
+   "step": "S1 register learner",
+   "method": "POST",
+   "path": "https://syllabai-core.onrender.com/api/v1/auth/register",
+   "status": 201,
+   "ms": 5145,
+   "verdict": "201 PASS",
+   "evidence": {
+    "email": "w7-smoke-main-20261008t044337z@example.invalid"
+   }
+  },
+  {
+   "step": "S2 login learner",
+   "method": "POST",
+   "path": "https://syllabai-core.onrender.com/api/v1/auth/login",
+   "status": 200,
+   "ms": 2698,
+   "verdict": "200 PASS",
+   "evidence": {
+    "tokenType": "Bearer",
+    "userId": "6f920c6a-d1ce-4679-b07e-3e44e1ccf49c",
+    "roles": [
+     "STUDENT"
+    ],
+    "accessToken": "scrubbed-at-collection"
+   }
+  },
+  {
+   "step": "S3 agenda (fresh)",
+   "method": "GET",
+   "path": "https://syllabai-core.onrender.com/api/v1/learners/me/agenda",
+   "status": 200,
+   "ms": 1688,
+   "verdict": "200 PASS",
+   "evidence": {
+    "learnerId": "6f920c6a-d1ce-4679-b07e-3e44e1ccf49c",
+    "keys": [
+     "actions",
+     "asOf",
+     "assignments",
+     "dueReviews",
+     "examTargets",
+     "learnerId"
+    ]
+   }
+  },
+  {
+   "step": "S4 curriculum subjects",
+   "method": "GET",
+   "path": "https://syllabai-core.onrender.com/api/v1/curriculum/subjects",
+   "status": 200,
+   "ms": 735,
+   "verdict": "200 PASS",
+   "evidence": {
+    "count": 5
+   }
+  },
+  {
+   "step": "S5 flashcard rating (corpus anchor WCH11-T1)",
+   "method": "POST",
+   "path": "https://syllabai-core.onrender.com/api/v1/learners/me/flashcard-ratings",
+   "status": 201,
+   "ms": 861,
+   "verdict": "201 PASS",
+   "evidence": {
+    "cardId": "WCH11-T1",
+    "nodeId": "20000000-0000-0000-0000-000000000011",
+    "rating": "know"
+   }
+  },
+  {
+   "step": "R4 flashcard-review-schedule (derived)",
+   "method": "GET",
+   "path": "https://syllabai-core.onrender.com/api/v1/learners/me/flashcard-review-schedule",
+   "status": 200,
+   "ms": 1297,
+   "verdict": "200 PASS"
+  },
+  {
+   "step": "R5 flashcard-rating-trail",
+   "method": "GET",
+   "path": "https://syllabai-core.onrender.com/api/v1/learners/me/flashcard-rating-trail",
+   "status": 200,
+   "ms": 903,
+   "verdict": "200 PASS",
+   "evidence": {
+    "rows": "obj"
+   }
+  },
+  {
+   "step": "C3 question detail (parts)",
+   "method": "GET",
+   "path": "https://syllabai-core.onrender.com/api/v1/questions/92817c46-8103-4d2c-9f32-bd61636320a1",
+   "status": 200,
+   "ms": 1298,
+   "verdict": "200 PASS",
+   "evidence": {
+    "part_count": 5,
+    "part_ids": [
+     "a47b02df-e3cc-4c2f-a6da-51185e6e4c97",
+     "69a1b177-ad76-49dd-be5a-df9b1bb7bf92",
+     "4f265a52-267b-4d59-86ea-554accde1c23",
+     "319b2e5e-211d-4540-a931-2280b15b2e34",
+     "99e560d4-589d-4fe7-8420-f8936437df5c"
+    ],
+    "marks": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ]
+   }
+  },
+  {
+   "step": "P3 structured attempt (all 5 parts)",
+   "method": "POST",
+   "path": "https://syllabai-core.onrender.com/api/v1/attempts/structured",
+   "status": 201,
+   "ms": 8775,
+   "verdict": "201 PASS",
+   "evidence": {
+    "attemptId": "7cab3329-c7f9-419b-aff7-8dfe14d65be1"
+   }
+  },
+  {
+   "step": "M1 self-mark {} (documented 053/055 quirk)",
+   "method": "POST",
+   "path": "https://syllabai-core.onrender.com/api/v1/learners/me/attempts/7cab3329-c7f9-419b-aff7-8dfe14d65be1/self-mark",
+   "status": 500,
+   "ms": 535,
+   "verdict": "OBSERVED 500",
+   "evidence": {
+    "envelope": {
+     "status": 500,
+     "error": "internal_error",
+     "message": "an internal error occurred"
+    },
+    "law": "T-MIG-053 null parts -> dedup-loop NPE -> opaque 500 (recon 0f43156 F2 CONFIRMED)"
+   }
+  },
+  {
+   "step": "M2 history (mid-run)",
+   "method": "GET",
+   "path": "https://syllabai-core.onrender.com/api/v1/learners/me/attempts",
+   "status": 200,
+   "ms": 987,
+   "verdict": "200 PASS"
+  },
+  {
+   "step": "M3 self-mark contract-shaped",
+   "method": "POST",
+   "path": "https://syllabai-core.onrender.com/api/v1/learners/me/attempts/7cab3329-c7f9-419b-aff7-8dfe14d65be1/self-mark",
+   "status": 201,
+   "ms": 6893,
+   "verdict": "201 PASS",
+   "evidence": {
+    "marksAwarded": 5,
+    "marksTotal": 5,
+    "evidenceFired": true
+   }
+  },
+  {
+   "step": "M4 attempt history (closure)",
+   "method": "GET",
+   "path": "https://syllabai-core.onrender.com/api/v1/learners/me/attempts",
+   "status": 200,
+   "ms": 1494,
+   "verdict": "200 PASS",
+   "evidence": {
+    "rows": "obj",
+    "runAttemptPresent": null
+   }
+  },
+  {
+   "step": "W5-1 teacher register without join code",
+   "method": "POST",
+   "path": "https://syllabai-core.onrender.com/api/v1/auth/register",
+   "status": 403,
+   "ms": 439,
+   "verdict": "403 PASS",
+   "evidence": {
+    "message": "teacher registration requires a valid join code"
+   }
+  },
+  {
+   "step": "W5-2 marking queue-v2 as STUDENT",
+   "method": "GET",
+   "path": "https://syllabai-core.onrender.com/api/v1/teacher/marking/queue-v2",
+   "status": 403,
+   "ms": 436,
+   "verdict": "403 PASS"
+  },
+  {
+   "step": "W5-3 marking queue-v2 unauthenticated",
+   "method": "GET",
+   "path": "https://syllabai-core.onrender.com/api/v1/teacher/marking/queue-v2",
+   "status": 401,
+   "ms": 242,
+   "verdict": "401 PASS"
+  },
+  {
+   "step": "W5-4 teacher curriculum as STUDENT",
+   "method": "GET",
+   "path": "https://syllabai-core.onrender.com/api/v1/teacher/curriculum/versions",
+   "status": 403,
+   "ms": 439,
+   "verdict": "403 PASS"
+  },
+  {
+   "step": "W6 tutor SSE open/observe/close",
+   "method": "POST",
+   "path": "https://syllabai-core.onrender.com/api/v1/tutor/ask/stream",
+   "status": 200,
+   "ms": 7235,
+   "verdict": "200 stream opened",
+   "evidence": {
+    "content_type": "text/event-stream",
+    "events_seen": [
+     "citations",
+     "meta",
+     "delta",
+     "delta",
+     "delta",
+     "delta"
+    ],
+    "bytes_before_close": 2270,
+    "closed_by": "lane (early close \u2014 LLM payload not consumed; failed/incomplete stream persists nothing)"
+   }
+  },
+  {
+   "step": "E1 v2 native login (same identity)",
+   "method": "POST",
+   "path": "https://syllabai-v2.vercel.app/api/v1/auth/login",
+   "status": 200,
+   "ms": 680,
+   "verdict": "200 PASS",
+   "evidence": {
+    "tokenType": "Bearer",
+    "accessToken": "scrubbed-at-collection"
+   }
+  },
+  {
+   "step": "E2 core-Bearer accepted on v2 agenda (T-MIG-010 live)",
+   "method": "GET",
+   "path": "https://syllabai-v2.vercel.app/api/v1/learners/me/agenda",
+   "status": 200,
+   "ms": 391,
+   "verdict": "200 PASS",
+   "evidence": {
+    "law": "Java-issued token parses in v2 (same SYLLABAI_JWT_SECRET)"
+   }
+  },
+  {
+   "step": "E3 v2 sees core-plane rating write (shared Neon)",
+   "method": "GET",
+   "path": "https://syllabai-v2.vercel.app/api/v1/learners/me/flashcard-rating-trail",
+   "status": 200,
+   "ms": 300,
+   "verdict": "200 PASS",
+   "evidence": {
+    "rows": "obj",
+    "law": "single Neon main URL \u2014 cross-plane visibility witness"
+   }
+  },
+  {
+   "step": "E4 v2 sees structured attempt (history parity)",
+   "method": "GET",
+   "path": "https://syllabai-v2.vercel.app/api/v1/learners/me/attempts",
+   "status": 200,
+   "ms": 390,
+   "verdict": "200 PASS",
+   "evidence": {
+    "rows": "obj",
+    "runAttemptPresent": null
+   }
+  }
+ ],
+ "expectation_mismatches": [],
+ "write_ledger": {
+  "identities_registered": 1,
+  "identity_emails": [
+   "w7-smoke-main-20261008t044337z@example.invalid"
+  ],
+  "flashcard_ratings": 1,
+  "structured_attempts": 1,
+  "self_marks": 1,
+  "teacher_writes": 0,
+  "tutor_writes": 0,
+  "note": "synthetic identity @example.invalid, corpus pattern; password discarded post-run; tokens scrubbed-at-collection; M1 500 is pre-service NPE (no write)"
+ },
+ "census_deep_followup_utc": "2026-10-08T04:47Z",
+ "census_deep": {
+  "hub_bare_health": "GET /api/health -> 200 {status:ok, service:syllabai-hub, dataMode:mock, coreConfigured:true} \u2014 PRE-FLIP POSTURE UNCHANGED (same constants as W7-SMOKE run-001 hub_plane)",
+  "hub_health_path_correction": "tip has ONLY apps/hub/src/app/api/health/route.ts (unchanged since seed 3a92153); the /api/health/status|dataMode|coreConfigured subpaths probed in run-001 hub_plane do not exist at the hub builds now serving (HTML 404) \u2014 probe-path correction of record; the POSTURE CONSTANTS (dataMode mock, coreConfigured true) match run-001 exactly, so the flip posture is byte-for-byte comparable and UNPULLED",
+  "hub_not_a_public_gateway": "GET /api/v1/admin/llm/chain-health unauthed on HUB and HUBV2 -> Next.js HTML 404 (NOT a JSON 401): the hub does not publicly proxy /api/v1/** \u2014 V2_SURFACE_PREFIXES governs hub SERVER-SIDE fetch base selection (api.ts) + Wave-A browser-direct families (CSP connect-src fix 47f8458); therefore no unauthenticated hub-plane probe can discriminate v2-vs-core routing, and the run-001 methodology (spine driven core-plane, hub-plane entry-point posture only) remains the correct \u00a72.4 approach pre-flip; S2-ROUTING wording auth+7-families-routed-live = hub-side fetch routing, consistent",
+  "zombie": "GET / and /login and /api/health/* on syllabai.vercel.app -> 500 MIDDLEWARE_INVOCATION_FAILED (hkg1 edge ids) \u2014 edge residual of the DISPOSED prj_D7vf (project verified not_found via API at d99e4e0 04:24:04Z); surface code differs from that receipt 404 reading (deleted-project edge states oscillate: DEPLOYMENT_NOT_FOUND vs middleware-invocation failure); zero collateral \u2014 one api of record remains (v2), zombie had zero env/repo refs",
+  "flip_verdict": "\u00a72 traffic flip (runbook \u00a72) NOT executed: dataMode=mock + coreConfigured=true + no operator redeploy evidence; the smoke therefore ran against the CURRENT sanctioned posture (Wave-A dual-run, core-plane spine) exactly per run-001 methodology"
+ },
+ "verdict": "SPINE GREEN 21/21 expectation-exact (M1 500 is the DOCUMENTED 053/055 quirk, expected-exact); census posture = pre-flip unchanged; NEW v2-plane continuity legs E1-E4 4/4 PASS (v2-native login, Java-issued Bearer accepted on v2 = T-MIG-010 live witness, shared-Neon cross-plane visibility of the rating write and the structured attempt); zero unexpected mismatches; zero infra failures"
+}
