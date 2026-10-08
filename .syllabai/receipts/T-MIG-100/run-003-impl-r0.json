@@ -1,0 +1,25 @@
+{
+  "card": "T-MIG-100",
+  "run": "run-003-impl-r0",
+  "lane": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "date": "2026-10-08",
+  "operator_trace": "IM trace_id 1a11b30a67f62ae9 'Continue'",
+  "commit": "7548d4e",
+  "class_a": {
+    "defect": "the v2 fetch wire answered parsed without the empty field where the frozen wire carries the empty-parse VIEW + parseDefect:true (golden-captures legs 05/06)",
+    "root_law": "the frozen FetchView serializes the raw ParsedFetchQuery RECORD; Jackson merges the derived isEmpty() boolean getter as an ALWAYS-PRESENT property (a boolean getter never omits — successful parses carry empty:false; the capture legs prove empty:true on the empty parse)",
+    "repair": "mapFetchResult derives empty at the view boundary via parsedIsEmpty (routes/ingestion.ts); the internal parser/service shapes stay the untouched 9-field port; contracts parsedFetchQuerySchema gains the one required wire field (fence-flag disclosed in run-002-claim-r0.json)",
+    "frozen_source_reads": ["content/FetchQueryParser.java :63-98 (the record + isEmpty())", "content/RoutingController.java :148-157 (FetchView.from/empty via the contents API @ 6cad6ef)"]
+  },
+  "class_c": {
+    "defect": "sameMeasurement String()-compared date columns; postgres.js materialises DATE as local-midnight JS Date instances so String(Date) != the ISO wire value and a byte-identical repeat import counted {updated:1} where the core counts {unchanged:1} (091 legs 06/07)",
+    "root_law": "the frozen comparator is LocalDate.equals — value equality the Java driver never mangles; the v2 repair must inverse the driver's coercion at the binding site (the 093 scalar-param law's driver-binding-site precedent)",
+    "repair": "isoDate(): JS Date instances are read back through the LOCAL Y-M-D getters (the TZ-independent inverse of the driver's local-midnight construction), string materialisations pass through, null preserved (services/ingestion/exam-series.ts)"
+  },
+  "pins": "+2 tests / +9 expects EXACT vs the 365c555 baseline (1798/0/13skip/7027/95f -> 1800/0/13skip/7036/95f): the leg-05 byte-honest parse-defect wire shape, empty:false on the happy path, and the repeat law under REAL driver materialisation (local-midnight Date fixtures — the fakeSql structural blindness r4b filed, now exercised)",
+  "gates": {
+    "typecheck": "x4 exit 0 + hub tsc 0",
+    "api_packages": "1800 pass / 0 fail / 13 skip / 7036 expect / 95 files",
+    "hub": "47 pass / 0 fail / 418 expect (pre-widen)"
+  }
+}

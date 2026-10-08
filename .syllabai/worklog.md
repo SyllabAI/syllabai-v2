@@ -6118,3 +6118,58 @@ Stage Summary:
 - Register truth restored: the T-MIG-101/102 chain is CLOSED end-to-end of record (adjudication #158 -> port #163 ->
   ledger retirement). The band residue is T-MIG-100 (CLASS A fetch parse-shape + CLASS C exam-series date coercion,
   port owner = this lane per #138) — claimed in the follow-up act.
+
+---
+
+## Task-52 (r0)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, trace 1a11b30a67f62ae9 "Continue")
+Task: T-MIG-100 — the #138 ingestion-port wire-truth defect band (CLASS A fetch
+parse-shape + CLASS C exam-series repeat law), the port owner's repair; then the
+088/091 flip+widen per the flip law. (Branch t-mig-100/r0; claim-in-first-commit.)
+
+Work Log:
+- CLAIMED of record (run-002-claim-r0.json, claim 8e648a2): port owner per the
+  filing receipt + the r4b Task-36 stamp ("088/091 stay gated (T-MIG-100 owner R0)").
+- FROZEN READS first-hand @ 6cad6ef via the GitHub contents API:
+  FetchQueryParser.java :63-98 (the record + isEmpty()) + RoutingController.java
+  :148-157 (FetchView serializes the RAW record) -> CLASS A root law: Jackson
+  merges the derived isEmpty() getter as an ALWAYS-PRESENT wire property.
+  ExamSeriesImportService.java :134-143 (LocalDate.equals value law) -> CLASS C
+  root law: a driver-coercion-safe date read at the binding site.
+- REPAIRED (7548d4e, run-003): mapFetchResult derives `empty` at the view
+  boundary via parsedIsEmpty (internal shapes untouched; contracts
+  parsedFetchQuerySchema +1 required wire field, fence-flag disclosed);
+  sameMeasurement reads date columns through isoDate() (local Y-M-D getters for
+  Date instances — the TZ-independent inverse of postgres.js' local-midnight
+  materialisation; strings pass through; null preserved). Pins +2/+9 EXACT vs
+  the 365c555 baseline (1798/7027 -> 1800/7036): the leg-05 byte-honest wire
+  shape, empty:false on the happy path, and the repeat law under REAL driver
+  materialisation (local-midnight Date fixtures — the fakeSql blindness r4b
+  filed, now exercised). Gates: typecheck x4 0 + hub tsc 0.
+- REPLAYED of record (run-004): substrate rebuilt from the census — user-tree
+  PostgreSQL 17.11 (Debian debs, user-extracted; the 099-leg class) + pgvector
+  0.8.0 @ 127.0.0.1:5544, drizzle push 0 -> 62 tables (the T-MIG-103 throwaway
+  file-schema config recipe), the empty-content law + 3 synthetic users + the
+  additive 088 ACTIVE-scope substrate; ZERO-KEY asserted (exit-4 guard), zero
+  prod/Neon contact. Harness relocated (paths corrected, logic verbatim,
+  disclosed). VERDICT: 20/22 — the pre-repair 16/22's four owned defect legs
+  ALL PASS (088 legs 05/06 + 091 legs 06/07); the two remaining non-PASS legs
+  are the topics-write 501 shells = CLASS B, T-MIG-023 (out of scope, by design).
+- WIDENED of record (5ea7f36, run-004): NARROWEST per-exact-endpoint rows
+  /fetch + /enumerate (incl. /structured) + /api/v1/teacher/curriculum/
+  exam-series; the /api/v1/teacher/content parent STAYS CORE (the 089 row's
+  condition discharged for the verified endpoints only; 020/023 siblings
+  core-pinned); zero hub emitters (grep-verified) = routing availability, zero
+  live-page routing change; DUAL_RUN_PATHS honestly not extended. Hub surface
+  test +1 line (48/0/427): the toEqual +3, the superseded 089-line core-null
+  pins moved out, the T-MIG-100 line test pins the flips + siblings + inert
+  partial-segment + the 052 curriculum-sibling law.
+- CARDS: T-MIG-100 -> IN_REVIEW (PR pending desk merge); T-MIG-088 + T-MIG-091
+  -> GOLDEN-VERIFIED+WIDENED (this band). Receipts run-002/003/004 filed.
+
+Stage Summary:
+- The 083-091 band's two ownerless defect classes are closed by the port owner:
+  the §2 flip-safety gap for the verified read/import endpoints is zero; the
+  band residue is now exactly T-MIG-023 (the topics-write surface, CLASS B) —
+  not this lane's scope. PR opens next (no self-merge); the replay harness +
+  results are preserved (receipts + lane-side scripts).
