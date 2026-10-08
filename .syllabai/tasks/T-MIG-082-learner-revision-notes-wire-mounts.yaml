@@ -3,7 +3,7 @@ task:
   id: T-MIG-082
   title: 'T-MIG-082 - mount the learner revision-notes wire routes in v2 (5 endpoints under /api/v1/learners/me/revision-notes; r4b surface census 6450ff5; service PORTED 053-t3: services/revision-notes/**, contracts revision-notes.ts, 34 pins; hub calls YES - api.ts request() wrappers + 5 components, 46 refs)'
   owner: '(unassigned - open for claim under earliest-claim-wins T-MIG-071; concurrency census clean at filing @ e5cd4b8: no mount/wire branches, 0 open PRs, no T-MIG-08x cards)'
-  status: 'IN_PROGRESS # r4b mount step of record (PR #132): routes + route-test pins for this family LANDED (see receipts); the card's sequence steps REMAIN — capture Java wire truth from frozen core 6cad6ef -> golden-verify -> widen V2_SURFACE_PREFIXES for this family (flip law) — r3a round-30 filing basis unchanged (operator mount order trace 1a114e1f1aab2521)'
+  status: 'DONE # full sequence of record: mount #132 (merge 8a09ab25f, routes + route-test pins) -> capture run-002 (7 read-only legs off LIVE frozen core 6cad6ef @ d19289cc8, PR #135 merged e48cc15d) -> golden-verify run-003 (7/7 ALL PASS vs the landed mounts, receipt T-MIG-082/run-003-golden-verify-r3a.json) -> widen #137 (wave-s3/r3a-082-widen merged 328e1f5; V2_SURFACE_PREFIXES family line + 5 DUAL_RUN forms + CORE_ONLY removal) -> independent R0 verification R0-082-WIDEN-VERIFY-1/run-001 ALL PASS (table/pins/startswith-safety/gates/live-hub-bundle). Card flip per operator directive trace 1a119a5ece785fc1 (r3a, authors-never-self-merge: desk merge requested).'
   priority: P1
   wave: s2-wire-layer
   deps: []
