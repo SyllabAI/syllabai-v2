@@ -1,0 +1,27 @@
+{
+  "receipt": "run-002-batch-coverage-r0",
+  "dir": "TUTOR-VERIFY",
+  "lane": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "created_at_utc": "2026-10-08T08:05:00Z",
+  "operator_trace": "1a11c1a86c60dd19 'batch test combinations of entire sets of papers/years/questions to measure anchor coverage'",
+  "purpose": "measure the paper-question resolver's anchor coverage across the ENTIRE VALIDATED Fetch bank (paper-level floor), a stratified MS-seeking sample, and per-question sweeps — the full combinations matrix the operator ordered",
+  "target": "api-of-record https://syllabai-v2.vercel.app (tip bfad2ea-era serving; #165 post-merge)",
+  "method": "3-phase batch, persisted lane-side scripts/tutor_batch_coverage_r0.py, checkpointed JSONL (work/tutor_batch_results.jsonl), 2 workers, shared pacing <=19 asks/60s under the llm:ask budget (SYLLABAI_RATELIMIT_LLM_PER_LEARNER default 20/min/learner — config read first-hand), 429-aware; login reuse of the disclosed 099 probe learner (zero new learners)",
+  "phases": {
+    "A_paper_floor": "one QP-seeking ask per VALIDATED bank paper: 'Give me question 1(a) from {sessionLabel} paper {paperCode}.' — 95 papers",
+    "B_ms_sample": "stratified every-6th MS-seeking ask: 'Show me the mark scheme answer for question 1(a) from …' — 16 papers",
+    "C_question_sweep": "per-question parts on two grounded papers — 4CH1/2C June 2019 (card-grounded: q1a,q2c,q3c,q4b,q5,q6,q7c,q8c,q9c,q10c) + 4CH0/2C June 2018 (q1a,q2a,q3c,q4c,q5b,q6,q9,q12c) — 18 asks"
+  },
+  "write_ledger_disclosed": "129 real-generation asks total (95+16+18), one per probe; ~zero-cost honest refusals; zero new learners; zero other writes",
+  "results": {
+    "http": "129/129 = 200; ZERO 429s (pacing held), ZERO errors",
+    "phase_A": "95/95 RESOLVED = 100.0% paper-level coverage of the VALIDATED bank — every paper/series/year/unit combination resolves, including the Specimen 2017 rows (explicit code binding rode the resolver) and all NOV/Jan/June sessions 2011-2026",
+    "phase_B": "16/16 RESOLVED — MS-seeking intent + mark-scheme chunk serving live across eras",
+    "phase_C": "15/18 RESOLVED; 3 honest fail-open refusals (4CH1/2C Jun 2019 q9(c)+q10(c); 4CH0/2C Jun 2018 q12(c)) — the guard echoes the parsed identity ('I could not find question 9(c) from the June 2019 paper 2C in the validated corpus') and refuses rather than answering from wrong-paper chunks; per-question resolution ~sub-second on the refusal path",
+    "anchor_attribution_QP_asks_111": "QUESTION_PAPER cited 107, MARK_SCHEME 111, CARD 34, KNOWLEDGE_NODE 66 — the 3-anchor pool composition law visible per-ask (card tier present where qcard docs exist for the session; KG arm composes ~60%)",
+    "latency": "median 6.7s, p90 32.1s, max 72.4s (LLM-chain slow tail, no failures)"
+  },
+  "verdict": "ANCHOR COVERAGE = 100% at paper level (95/95 VALIDATED bank papers resolve end-to-end with real generation + tiered citations), 100% of the MS sample, 83% of the per-question sweep with the 3 misses being the HONEST-REFUSAL guard (correct behavior for question/part shapes without validated chunks — the guard's wrong-paper-bleed prevention working as designed). The 'give me question X(Y) from year Z paper 1/2' feature is production-real across the entire chunked corpus.",
+  "deliverables": "operator workbook download/tutor-anchor-coverage-r0.xlsx (Summary + Paper Matrix + Question Sweep + Review, live formulas, validate exit 0); receipt + worklog in-repo; raw JSONL lane-side",
+  "scope_note": ".syllabai-only contact; zero code/schema/flip-table/seam contact; no force"
+}

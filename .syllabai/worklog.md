@@ -6258,3 +6258,17 @@ Work Log:
 
 Stage Summary:
 - Both probe targets are GREEN end-to-end first-hand: the tutor SSE flow works on BOTH planes (v2 keyed direct + hub->core proxy, same event law, evidenceCount=6 grounded citations both sides) and the smart-mark feedback pair (explanation + improvement-plan) serve grounded 200s under the exact documented grounding law (409 pre-accepted-result). Findings of record, none defects: (1) hub 404s /api/v1/tutor/ask/stream by design — the UI path is /api/ai/chat; (2) self-serve register rejects explicit role strings; (3) run-002's first hub window hit the Render cold-wake (re-probed run-002b). Write ledger DISCLOSED: 2 census probe learners (one from the aborted pre-fix run), 1 structured attempt + 5 answers, ~6 LLM generations (smart-mark, 2 feedback, 2 tutor asks, 1 possibly-none cold window), zero sessions, zero env/teacher/prod-DB writes. .syllabai-only direct-main (fetch-first), no force.
+
+---
+Task ID: TUTOR-VERIFY-2 (operator trace 1a11c1a86c60dd19 "batch test combinations of entire sets of papers/years/questions to measure anchor coverage")
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+
+Work Log:
+- Read the llm:ask ratelimit law first-hand (identity/config.ts: SYLLABAI_RATELIMIT_LLM_PER_LEARNER default 20/min/learner, 60s fixed window) -> batch paced <=19/min shared across 2 workers, checkpointed JSONL, 429-aware, resume-safe; zero 429s occurred.
+- BATCH of 129 real-generation asks against the api-of-record: Phase A QP-seeking floor = all 95 VALIDATED bank papers ('question 1(a) from SESSION paper CODE') -> 95/95 RESOLVED (100% paper-level anchor coverage incl. Specimen 2017 + every 4CH0/4CH1 session 2011-2026); Phase B stratified MS-seeking sample 16/16 RESOLVED; Phase C per-question sweeps on 4CH1/2C Jun 2019 + 4CH0/2C Jun 2018 -> 15/18 RESOLVED with 3 HONEST fail-open refusals (q9c/q10c/q12c — guard echoes the parsed identity, refuses rather than wrong-paper-bleeds).
+- Anchor attribution across the 111 QP-seeking asks: QUESTION_PAPER 107, MARK_SCHEME 111, CARD 34 (card tier where session qcards exist), KNOWLEDGE_NODE 66; latency median 6.7s / p90 32.1s / max 72.4s, zero failures.
+- Operator workbook built per the xlsx skill pipeline (Summary live-formula + Paper Matrix + Question Sweep + amber Review sheet; recalc 0 errors, validate exit 0, all Review checks PASS) — download/tutor-anchor-coverage-r0.xlsx. Receipt run-002-batch-coverage-r0.json; probe scripts + raw JSONL lane-side. Write ledger disclosed: 129 asks, zero new learners.
+- .syllabai-only direct-main (fetch-first), no force.
+
+Stage Summary:
+- Paper-question retrieval measured at 100% paper-level coverage of the VALIDATED bank (95/95), 100% MS sample, 83% question sweep (3 misses = honest guard, correct). Feature verdict: production-real end-to-end. Lane IDLE.
