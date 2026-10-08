@@ -93,6 +93,14 @@ const DUAL_RUN_PATHS: readonly string[] = [
   // commit; disclosed in the api.ts line comment) — ROUTING AVAILABILITY, the
   // 090 posture. The pairs POST is not hub-emitted; the findings form pins it.
   "/api/v1/teacher/content/glm-ocr/papers/00000000-0000-4000-8000-000000000026/findings",
+  // T-MIG-106 (r4b, operator ruling (b) trace 1a11c4b762f6043d): the tutor
+  // ask pair flipped declared-justified — the blocking-ask emitter (tutorAsk,
+  // api.ts:1161) is LIVE-ROUTED to v2 (keyed generations, run-005 + the
+  // TUTOR-VERIFY run-002/002b SSE law of record). The stream surface has NO
+  // apiPath-plane emitter (the chat UI rides /api/ai/chat ->
+  // coreStreamAuthorized, core-hardwired by design) — pinned in the 106 line
+  // test below.
+  "/api/v1/tutor/ask",
 ];
 
 /** Hub-emitted (or hub-adjacent) paths that MUST stay on the core in the dual-run posture. */
@@ -143,11 +151,13 @@ const CORE_ONLY_PATHS: readonly string[] = [
   // leg-07 class; route-test x15), so the capture is wire-safe)
   "/api/v1/subjects",
   "/api/v1/tree?includeMisconceptions=true",
-  "/api/v1/tutor/ask",
-  // T-MIG-092 (r0 rider): the tutor SESSIONS tree flipped, so these siblings
-  // stay core-pinned explicitly — the zero-key law (generation-reaching asks
-  // 503 on the dormant v2 LLM seam) forbids their capture
-  "/api/v1/tutor/ask/stream",
+  // T-MIG-092 (r0 rider) + T-MIG-106 (r4b): the tutor ask/ask/stream pins
+  // MOVED OUT of this CORE_ONLY list of record — the 092 zero-key blocker
+  // RETIRED (the keyed v2 serves real generations, run-005) and the pair
+  // flipped declared-justified under the operator ruling (b) trace
+  // 1a11c4b762f6043d (GOLDEN_MASTER §4 declared class; corpus cases
+  // tutor-askstream-*; the 106 line test pins the flip). The BARE
+  // /api/v1/tutor root stays core (no route, never captured).
 ];
 
 describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
@@ -180,6 +190,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/teacher/content/fetch", // T-MIG-100: repaired + golden-verified (22-leg replay, r0 repair band) — per-exact-endpoint rows, the parent STAYS core
       "/api/v1/teacher/content/enumerate", // T-MIG-100: same band — also captures /enumerate/structured (leg-04, same verified family tree)
       "/api/v1/teacher/curriculum/exam-series", // T-MIG-100: 091 family 7/7 incl. the CLASS C repeat law — the FULL path row (the 052 mount law)
+      "/api/v1/tutor/ask", // T-MIG-106: declared-justified flip (operator ruling (b) trace 1a11c4b762f6043d) — the ask row IS the pair (captures /ask/stream under startsWith, the routing-inseparability finding); the 092 zero-key blocker RETIRED (keyed v2, run-005)
     ]);
   });
   test("the mid-path table is exactly the ruled set — the mechanism-A amendment needs its own golden gate too", () => {
@@ -252,7 +263,7 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     expect("/api/v1/learners/me/cla/askx".startsWith("/api/v1/learners/me/cla/ask")).toBe(true);
   });
 
-  test("the T-MIG-092 line: the tutor sessions tree flips with ask/stream core-pinned (r0 rider)", () => {
+  test("the T-MIG-092 line: the tutor sessions tree flips (r0 rider; the ask pair's posture moved to the T-MIG-106 line)", () => {
     // every verified leg path of the run-003 matrix resolves to v2
     for (const p of [
       "/api/v1/tutor/sessions", // L01/L06/L13 list
@@ -261,16 +272,45 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     ]) {
       expect(v2SurfaceBase(p, V2)).toBe(V2);
     }
-    // the LLM-bearing siblings stay core — different segments, never captured
-    for (const p of ["/api/v1/tutor/ask", "/api/v1/tutor/ask/stream", "/api/v1/tutor"]) {
-      expect(v2SurfaceBase(p, V2)).toBeNull();
-    }
+    // the LLM-bearing siblings: the 092 band's zero-key law RETIRED of record
+    // (the keyed v2 serves real generations, run-005) — the pair flipped
+    // declared-justified under the T-MIG-106 ruling (b); see the 106 line
+    // below. The BARE /api/v1/tutor root stays core (no route, never captured).
+    expect(v2SurfaceBase("/api/v1/tutor", V2)).toBeNull();
     // startsWith matching is prefix-string semantics (the same property every
     // row of the table has): a non-existent partial-segment sibling IS
     // captured by the string match — DOCUMENTED INERT (no route or hub
     // emitter named sessions* beyond the verified tree exists on either side)
     expect(v2SurfaceBase("/api/v1/tutor/sessionsxyz", V2)).toBe(V2);
     expect("/api/v1/tutor/sessionsxyz".startsWith("/api/v1/tutor/sessions")).toBe(true);
+  });
+
+  test("the T-MIG-106 line: the tutor ask pair flips declared-justified (r4b, operator ruling (b) trace 1a11c4b762f6043d)", () => {
+    // BOTH pair surfaces resolve to v2 — ONE prefix row (the routing-
+    // inseparability finding of record: /api/v1/tutor/ask captures /ask/stream
+    // under startsWith AND under the mid-path deeper-tails-free law; no
+    // exclusion form exists in either table — the flip unit is the PAIR).
+    // Declared-justified class (GOLDEN_MASTER §4, the T-MIG-071 declared-case
+    // convention): the stream pre-flight error classes serve v2's DESIGNED
+    // 400/404 where the frozen core RUNTIME serves defect-shaped 500
+    // internal_error (run-004 dual-live of record) — the corpus pins the
+    // declared law (tutor-askstream-unauthed-401 / -blank-question-400 /
+    // -unknown-session-404; zero justified-ledger entries — green on merits).
+    for (const p of ["/api/v1/tutor/ask", "/api/v1/tutor/ask/stream"]) {
+      expect(v2SurfaceBase(p, V2)).toBe(V2);
+    }
+    // the hub's blocking-ask emitter (tutorAsk, api.ts:1161) is live-routed;
+    // the chat SSE path is core-hardwired by design (/api/ai/chat ->
+    // coreStreamAuthorized — NOT table-routed; the hub-proxy seam)
+    expect(apiPath("/api/v1/tutor/ask").startsWith(`${V2}/api/v1/`)).toBe(true);
+    // the bare tutor root stays core
+    expect(v2SurfaceBase("/api/v1/tutor", V2)).toBeNull();
+    // startsWith matching is prefix-string semantics (the same property every
+    // row of the table has): a non-existent partial-segment sibling IS
+    // captured by the string match — DOCUMENTED INERT (no route or hub
+    // emitter named ask* beyond the pair exists on either side)
+    expect(v2SurfaceBase("/api/v1/tutor/askx", V2)).toBe(V2);
+    expect("/api/v1/tutor/askx".startsWith("/api/v1/tutor/ask")).toBe(true);
   });
 
   test("the T-MIG-083 line: admin revision-notes (ingest + status) flips after its golden gate (r9-hubx rider)", () => {
