@@ -6464,3 +6464,19 @@ Work Log:
 
 Stage Summary:
 - Register at the stamp: every card DONE except T-MIG-042 (operator-gated decay takeover live act staged) - the board-convergence debt is cleared of record. Watchlist: hub deploy to carry the 106 ask-row routing live (operator), 042 env act (operator/r1c).
+Task ID: 49 (r7a)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6, trace 1a11c976f46744f1)
+Task: "teacher-credential handoff" — make the operator-delivered teacher credential effective and close the run-003 disclosed_gap (teacher-token 200-level family legs).
+
+Work Log:
+- Identity chain first-hand: delivered token fp d254bbfaac004354 == VERCEL_PAT of record (Task-48) == .creds/teacher.env — SAME SECRET, second operator designation; Step A token-as-joinCode 403 (gate closed); Step B env census via the PAT: SYLLABAI_TEACHER_JOIN_CODE absent on BOTH api (7 vars) and hub (4 vars) projects — the handoff is the provisioning act (no other credential source exists; core frozen per ADR-029 R3).
+- Provisioned SYLLABAI_TEACHER_JOIN_CODE (production, encrypted) on the api project 17:51:18Z -> 201; value never printed/committed.
+- 093 recipe executed anyway per the discipline: drift pre-check EMPTY; 6 asset SHAs == pins EXACT; 321 modules == 321 EXACT (+3 bytes = single embedded worktree path, behaviorally inert — localgate SUP-11 proof: teacher edges 200 from the inlined assets on a path-free machine); LOCALGATE 8/8 ALL PASS on the real Neon wire + join-code gate law supplements (wrong 403 / right 201 TEACHER) on THE bundle.
+- RACE-GUARD CATCH 17:54:01Z: parallel-actor dpl_GJK1wP5Lpn4pw1XEMYhTkNsat6Gd READY production created AFTER the provision -> carries it; NO-DUPLICATE-UPLOAD law (CLAIM-071-072): staged upload RETAINED UNDEPLOYED, deploy leg discharged by the carrier.
+- Live discriminator: teacher register joinCode=<token> -> 201 roles=['TEACHER'] reproduced x4 — THE CREDENTIAL IS LIVE OF RECORD.
+- run-003 disclosed_gap closed to the executable maximum: 085 leg-03/05 200/200; 086 leg-03 200 (394-node tree), leg-04 200, leg-05 200 (§17 both ways: unenrolled 404 -> enroll 201 -> enrolled 200, 480-node view), leg-06 404 + two distinct designed 400 envelopes; 087 leg-03 200 (both forms), leg-04/leg-06 400s law-correct, V39 spec-point gate 400 x3, history 200 (empty-trail), coverage list 200; authz regression grid 401/403 intact.
+- FINDING (filed, never auto-fixed): 087 leg-05 mark-taught-200 unexecutable live — V39 (SUBTOPIC + applicability non-null) refuses all probed nodes; the live 4CH1 tree exposes zero applicability-bearing spec points via any of-record read; mass PUT probing forbidden (real writes); seeding = seed-tool/operator territory (seed-t51-rich200.ts). leg-07 post-mark form rides the same condition.
+- Receipt: .syllabai/receipts/DEPLOY/teacher-credential-handoff-run-004-r7a.json — .syllabai-only direct-main (fetch-first).
+
+Stage Summary:
+- The teacher-credential lever is OPEN of record: SYLLABAI_TEACHER_JOIN_CODE provisioned from the operator-delivered credential, live-verified x4; teacher 200-level family legs green on every executable leg (085 complete, 086 complete incl. the §17 pair, 087 complete minus the V39-gated mark write). Probe writes: 4 teachers / 4 learners / 3 classes / 1 enrollment / 1 activation / 0 marks / 0 generations. Open: the spec-point seeding residual (operator), the remaining operator levers (§1/P4, decay §3 watch, rotations), /api/ai/mark bridge. Rollback: DELETE env var + redeploy.
