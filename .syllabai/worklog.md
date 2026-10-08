@@ -5632,3 +5632,18 @@ Stage Summary:
 - The live api's smart-mark pipeline is REAL end-to-end: SQL law + #144 adapters + kappa gate + per-point projection all verified live
 - Next: the section-2 traffic flip (same operator trace)
 
+---
+Task ID: R0-HUB-REDEPLOY-1
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: operator trace 1a11a085f6ad49f5 "hub redeploy" — the standing hub-redeploy lever: bake the of-record widen rows into the live hub bundle, posture constants unchanged.
+
+Work Log:
+- Recipe of record recovered (.syllabai/worklog :4776, r1c): project syllabai-hub-v2 prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl (rootDirectory apps/hub, nextjs, node 24) — clean git worktree + vercel CLI 62.7.0 upload --prod.
+- Env census first (keys only): NEXT_PUBLIC_API_V2_BASE_URL=https://syllabai-v2.vercel.app IS SET (the flipped rows resolve v2 at runtime), NEXT_PUBLIC_API_BASE_URL/SYLLABAI_CORE_BASE_URL=Render core, HUB_DATA_MODE=mock — the 4 posture constants of record; zero env changes made.
+- fetch-first: deploy tip 0928878 (INCLUDES the 095 widen 61fd394 — ancestry checked; plus the 099 band closure card flip). Clean worktree /tmp/hub-wt + project link -> vercel deploy --prod -> dpl b8ahu8s5s READY; alias syllabai-hub-v2.vercel.app -> b8ahu8s5s verified post-switch (no concurrent race this act).
+- VERIFICATION (scripts/r0_hub_bundle_grep.py of record): live bundle = 14 chunks / 765,428 bytes — ALL 9 expected flipped families BAKED (flashcard-ratings + note-votes = the 095 headline rows, tutor/sessions, agenda/rating-trail/state heart rows, knowledge/nodes, admin/revision-notes, chain-health); v2 base inlined; core base referenced. Health posture UNCHANGED: {status:ok, dataMode:mock, coreConfigured:true} = the W7-SMOKE run-002 baseline constants.
+- Effect of record: the widen rows are now LIVE ROUTING — the hub serves these families from the v2 api of record (whose surfaces were each live-verified of record: 092 14/14, 096 16/18, 084 8/8, 083 8/8, 095 run-002 PASS). Unported families stay core per the strangler table (tutor ask/stream zero-key law, cla/ask, recommendations, teacher). The §2 FULL flip (HUB_DATA_MODE/API_BASE posture change) deliberately untouched — operator's separate lever.
+- Receipt: .syllabai/receipts/DEPLOY/hub-of-record-redeploy-run-001-r0.json; .syllabai-only direct-main (fetch-first). Hygiene 0; PAT inline only; zero Neon contact; read-only probes only.
+
+Stage Summary:
+- Hub redeployed from tip 0928878 with posture constants unchanged: every of-record widen row (092/096/083/084/090/095) is now LIVE routing on syllabai-hub-v2; the pre-flip data posture (mock + coreConfigured) byte-unchanged; §7 rollback lever intact. Remaining levers: the operator's §2 full flip (data posture), §3 decay, P4/48h watch, Render retirement sequence.

@@ -1,0 +1,34 @@
+{
+ "receipt": "hub-of-record-redeploy-run-001-r0",
+ "operator_trace": "1a11a085f6ad49f5 ('hub redeploy')",
+ "created_at_utc": "2026-10-08T05:50xZ",
+ "purpose": "the standing hub-redeploy lever: bake the build-time V2_SURFACE_PREFIXES widen rows into the live hub bundle — the flips of record (092/096/083/084/090/095) become LIVE routing; posture constants UNCHANGED per the operator order",
+ "source_of_record": "main 0928878 (clean git worktree; includes the 095 widen 61fd394 + the 099 band closure; the 093-recipe widening line + every prior of-record row)",
+ "project": {
+  "name": "syllabai-hub-v2",
+  "id": "prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl",
+  "rootDirectory": "apps/hub",
+  "framework": "nextjs",
+  "nodeVersion": "24.x",
+  "recipe": "the r1c of-record shape: clean git worktree of SyllabAI/syllabai-v2 + .vercel/project.json link + vercel CLI 62.7.0 upload --prod"
+ },
+ "deploy": {
+  "deployment": "dpl b8ahu8s5s (syllabai-hub-v2-b8ahu8s5s-syllab-ai.vercel.app) READY",
+  "production_alias": "syllabai-hub-v2.vercel.app -> b8ahu8s5s (verified post-switch, no concurrent race this act)",
+  "env_changes": "ZERO — the 4 posture constants untouched (NEXT_PUBLIC_API_V2_BASE_URL=https://syllabai-v2.vercel.app, NEXT_PUBLIC_API_BASE_URL=https://syllabai-core.onrender.com, SYLLABAI_CORE_BASE_URL=core, HUB_DATA_MODE=mock; production+preview targets, plain-readable census)"
+ },
+ "verification": [
+  "LIVE BUNDLE GREP (scripts/r0_hub_bundle_grep.py): 14 client chunks, 765,428 bytes scanned — ALL 9 expected flipped families BAKED: /api/v1/learners/me/flashcard-ratings + /note-votes (095 headline rows) + tutor/sessions (092) + agenda/flashcard-rating-trail/state (096 heart rows) + knowledge/nodes (084) + admin/revision-notes (083) + admin/llm/chain-health (090)",
+  "NEXT_PUBLIC_API_V2_BASE_URL inlined in the client bundle = the rows resolve flipped paths to the v2 api of record at runtime; core base referenced for everything else",
+  "HEALTH POSTURE UNCHANGED: GET /api/health -> {status:ok, service:syllabai-hub, dataMode:mock, coreConfigured:true} = the pre-flip constants of record (W7-SMOKE run-002 baseline), byte-comparable",
+  "homepage 200; the api side of every flipped row was already live-verified of record (092 run-003 14/14, 096 run-001 16/18, 084 run-002 8/8, 083 run-001 8/8, 095 run-002 live re-verify PASS + the 093-recipe deploy battery)"
+ ],
+ "effect_of_record": [
+  "hub live routing now: auth + content/curriculum/attempts/revision-notes (prior) + tutor SESSIONS + the learner-me HEART rows incl. agenda/state/courses/stats/exam-series/assignments/rating-trail/review-schedule + flashcard-ratings + note-votes + knowledge/nodes + admin/revision-notes + chain-health -> the v2 api of record (syllabai-v2.vercel.app)",
+  "everything unported stays on the Render core per the strangler table (incl. tutor ask/stream zero-key law, cla/ask, recommendations, teacher surfaces)",
+  "the §2 FULL flip (HUB_DATA_MODE / NEXT_PUBLIC_API_BASE_URL posture change) remains the OPERATOR's separate lever — deliberately untouched by this act"
+ ],
+ "rollback": "redeploy the prior hub deployment or unset NEXT_PUBLIC_API_V2_BASE_URL (the §7 one-env rollback, pinned at the decision layer by the surface tests)",
+ "hygiene": "section-0 PAT inline only, never persisted/committed; zero Neon contact; zero writes beyond the read-only probes",
+ "verdict": "HUB REDEPLOYED AND VERIFIED — the widen rows of record are LIVE routing; posture constants unchanged; rollback lever intact"
+}
