@@ -1,0 +1,116 @@
+version: 1
+task:
+  id: T-MIG-105
+  title: >
+    T-MIG-105 - drizzle-kit schema-dir compat band (the "kit-compat" register item,
+    filed per operator directive trace 1a11b2fcdf871229 "File the kit-compat register
+    card"): packages/db's of-record drizzle.config.ts points the kit at the schema
+    DIRECTORY (`schema: "./src/schema"`), and drizzle-kit 0.30.6 (the bun.lock
+    resolution of record) imports EVERY file in that directory as a JavaScript module
+    with no extension filtering — it dies on src/schema/README.md (the load-bearing
+    T-MIG-002 baseline + re-baselining doc) before any SQL is produced. First-hand
+    filing repro (this filing, lane-side scripts/kitcompat-repro/, schema dir copied
+    VERBATIM from main 558d96f, kit pinned exact 0.30.6 + drizzle-orm 0.38.4 per
+    bun.lock): [A] OF-RECORD SHAPE (dir-schema) -> SyntaxError: Invalid or unexpected
+    token at README.md:1 through the kit's own loader chain (bin.cjs newLoader ->
+    node wrapSafe/Module._compile); out dir left with a journal-only meta
+    ({"version":"7","dialect":"postgresql","entries":[]}) and — the trap — EXIT CODE 0:
+    `drizzle-kit generate` is a SILENT-SUCCESS-SHAPED FAILURE (CI-green, zero SQL);
+    [B] WORKAROUND SHAPE (file-schema `schema: "./src/schema/schema.ts"`) -> GREEN:
+    62 tables enumerated, full 0000 DDL emitted (carrying the T-MIG-103 opclass-repaired
+    pins), import graph safe for DDL (schema.ts imports ./custom_types transitively;
+    relations.ts is query-time-only, zero DDL impact). Both shapes exit 0; only [A]
+    produces nothing. Origin of record: the T-MIG-103 push-green leg's out-of-fence
+    disclosure ("drizzle-kit 0.30.6 imports the schema DIRECTORY as modules and crashes
+    on src/schema/README.md before generating SQL (the leg used a throwaway untracked
+    file-schema config, deleted after the run) — own register item suggested",
+    receipts/T-MIG-100/run-001-push-green-w0a.json + commit 312966b).
+  owner: "w0a lane (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — filing desk of record per operator directive 'File the kit-compat register card' (trace 1a11b2fcdf871229); repro evidence and card are the same act"
+  status: "OPEN # filed with first-hand repro evidence (shape A crash + silent-0 exit captured, shape B green); owed proof leg = of-record config fixed so EVERY kit verb (generate/push/pull/check) loads the schema from packages/db with NO throwaway config, evidenced by the same repro battery + a scratch-substrate push (the 103 pattern) and receipt to .syllabai/receipts/T-MIG-105/"
+  claimed_at: "2026-10-08"
+  priority: P2 # zero runtime exposure (the kit never runs at request time; prod provisioning path is the frozen core's Flyway); impact = local dev, fresh scratch provisioning (083-rider pattern), re-baselining legs, and CI trap surface
+  wave: "tooling-hygiene / compat # of-record tooling never confronted its own directory layout; sibling of the T-MIG-103 family law — generated-of-record artifacts must cite real-wire execution before reliance"
+  deps: [T-MIG-103]
+  execution_record: >
+    REPRO OF RECORD (filing-time, lane-side scripts/kitcompat-repro/ — zero repo
+    contact, zero DB contact; schema files copied verbatim @ main 558d96f with
+    sha256 pins: schema.ts be6fe636ccb51cf7..., relations.ts edc748027a492e33...,
+    custom_types.ts 5fd5dd7a72d23798..., README.md a7d47e56294caee2...; battery
+    run-repro.sh + results.txt):
+
+    [A] OF-RECORD SHAPE — config byte-mirror of packages/db/drizzle.config.ts
+    (schema: "./src/schema", out: ./drizzle-dir, strict/verbose): kit prints the
+    config path then dies INSIDE README.md with `SyntaxError: Invalid or unexpected
+    token` (line 1 is the markdown heading `# packages/db — generated schema...`);
+    stack is the kit's own module loader (drizzle-kit/bin.cjs newLoader ->
+    node:internal/modules/cjs/loader wrapSafe/Module._compile) — i.e. the kit
+    `require()`s every dir entry with no extension filter. Artifacts: out dir gets
+    ONLY meta/_journal.json with entries:[] — NO migration SQL. Exit code 0 (raw,
+    no-pipe verified). CONSEQUENCE: any CI leg running db:generate from packages/db
+    is green while producing nothing — a silent-success trap of the same family the
+    desk law names (of-record artifact never confronted the real wire).
+
+    [B] WORKAROUND SHAPE — file-schema config (schema: "./src/schema/schema.ts",
+    out: ./drizzle-file): GREEN first-hand — 62 tables enumerated with column/index/
+    fk counts, full 0000 DDL emitted incl. the T-MIG-103-repaired opclass pins.
+    Import-graph safety note (this filing): schema.ts imports ./custom_types
+    (bytea, tsvector) so the file-schema load keeps custom types; relations.ts
+    imports FROM schema.ts (never the reverse) and is query-time-only — zero DDL
+    impact. This is exactly the throwaway pattern the T-MIG-103 push leg used.
+
+    IMPACT LAW: (1) every kit verb that loads the schema (generate / push / pull /
+    check / studio) is dead as-written from packages/db; (2) the silent-0-exit on
+    generate makes it a CI trap, not merely a local annoyance; (3) scratch
+    provisioning legs (the 083-rider/099/103 pattern) must hand-carry an untracked
+    file-schema config until fixed — that throwaway is now precedented THREE times
+    and deserves a real home; (4) re-baselining (db:pull per docs/BASELINE_DB.md)
+    inherits the same death; (5) README.md is LOAD-BEARING (T-MIG-002 baseline
+    provenance + re-baselining procedure) — deleting it is NOT a fix.
+
+    FIX LAW (claimant chooses ONE, disclosed): (a) FILE-SCHEMA CONFIG OF RECORD —
+    drizzle.config.ts schema: "./src/schema/schema.ts"; minimal and precedented;
+    MUST verify db:pull re-baselining behavior under file-schema first-hand
+    (pull writes the schema files — confirm target/shape and disclose any
+    procedural change to docs/BASELINE_DB.md references); (b) RELOCATE README.md
+    out of the schema dir (e.g. packages/db/docs/SCHEMA.md) content BYTE-EXACT,
+    keeping dir-schema config untouched; MUST leave NO markdown (or any non-module)
+    file behind in the dir — a "pointer" .md left in place reproduces the crash
+    verbatim; (c) KIT UPGRADE past 0.30.x — supply-chain act: only if the new
+    version provably filters non-module files (re-run this filing's battery to
+    prove it), with bun.lock parity and disclosure. Whichever lands, the OWED
+    PROOF LEG: re-run this repro battery against the OF-RECORD config (shape [A]
+    must go green end-to-end) + one drizzle-kit push on the sanctioned scratch
+    substrate (local PostgreSQL + pgvector, ZERO-KEY asserted, zero prod/Neon
+    contact — the 103 pattern) with NO throwaway config, + receipt under
+    .syllabai/receipts/T-MIG-105/. If option (a) is NOT taken (i.e. dir-schema
+    remains), add a tripwire wherever db:generate runs in CI: assert the journal
+    gained entries (entries>0) post-generate, because kit 0.30.6 exits 0 on this
+    failure mode.
+  scope:
+    allowed:
+      - "packages/db/drizzle.config.ts (schema-path change / documented comment ONLY)"
+      - "packages/db/src/schema/README.md (RELOCATION ONLY — content byte-exact, new home inside packages/db/**)"
+      - "packages/db/package.json + bun.lock (ONLY for the fenced kit-upgrade path, disclosed)"
+      - "docs/BASELINE_DB.md or packages/db README pointers (only to keep re-baselining procedure discoverable after a relocation/file-schema change)"
+      - ".syllabai/tasks/T-MIG-105-drizzle-kit-schema-dir-compat-band.yaml (this yaml)"
+      - ".syllabai/receipts/T-MIG-105/** (the owed proof-leg receipt)"
+      - ".syllabai/worklog.md (append-only)"
+    forbidden:
+      - "deleting or rewriting README.md content (load-bearing T-MIG-002 provenance; relocation must be byte-exact)"
+      - "content edits to schema.ts / relations.ts / custom_types.ts (the T-MIG-103 fence stands verbatim: shape is correct, tooling must adapt)"
+      - "prod/Neon contact (read-only/COW-only law; proof legs run on the sanctioned scratch substrate only)"
+      - "apps/** (api + hub zero contact) and the frozen core (Flyway remains the prod provisioning path of record)"
+      - "golden/** corpus (zero reach)"
+      - "force-push; golden weakening; self-merge of other lanes' PRs"
+  renumber_provenance: >
+    APPEND-ONLY of record, renumber chain of one step: this band was FILED lane-side
+    as T-MIG-104 at 94ea75c (unpushed — never of record anywhere); RENUMBERED
+    T-MIG-104 -> T-MIG-105 at push time: r4b's learner self-mark null-parts opaque-500
+    defect band landed the T-MIG-104 ID of record on main FIRST (35ab1fb,
+    2026-10-08T14:26:25Z, operator trace 1a11bda3802bef79, with
+    .syllabai/receipts/T-MIG-104/ paths baked) — earliest-of-record-wins (the
+    T-MIG-103 renumber chain precedent); T-MIG-105 was the next free ID at push time
+    (census: zero T-MIG-105 refs board-wide). No receipts exist under any old path
+    for THIS band; the owed proof-leg receipt is .syllabai/receipts/T-MIG-105/
+    going forward. Content beyond the id/title/path/self-reference renumber is
+    byte-verbatim from the 94ea75c filing.
