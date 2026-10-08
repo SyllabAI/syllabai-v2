@@ -42,6 +42,23 @@ import {
 import { CurriculumScopeResolver, type CurriculumScope } from "./scope";
 import { ContentReviewService } from "./review";
 import {
+  ContentReviewWriteService,
+  type TxSqlFn,
+} from "./review-writes";
+import {
+  ingestCanonicalDocument,
+  InvalidDocumentError,
+  type IngestionResult,
+} from "../ingestion/canonical";
+import {
+  ingestPastPaperDraft,
+  type IngestionSummary,
+} from "../ingestion/past-paper";
+import {
+  canonicalDocumentSchema,
+  type PastPaperDraft,
+} from "@syllabai/contracts";
+import {
   searchServingEligible,
   diagnoseEmpty,
   embedDocument,
@@ -63,6 +80,18 @@ export interface ContentReadApp {
   documents: DocumentRepository;
   questionAssets: QuestionAssetRepository;
   review: ContentReviewService;
+  /** T-MIG-107 — the §7 write half (ContentReviewService mutations + audit). */
+  writes: ContentReviewWriteService;
+  /** POST /documents — the ContentIngestionService.ingest port (parse +
+   * validate + checksum dedup + chunking in ONE transaction). */
+  ingestDocument(
+    kind: "QUESTION_PAPER" | "MARK_SCHEME" | "SYLLABUS" | "OTHER" | "TEXTBOOK" | "EXTERNAL_NOTES" | "EXTERNAL_QUESTIONS",
+    rawJson: string,
+    ingestedBy: string | null,
+  ): Promise<IngestionResult>;
+  /** POST /past-papers — the PastPaperIngestionService.ingest port (whole-draft,
+   * single transaction). */
+  ingestPastPaper(draft: PastPaperDraft, ingestedBy: string | null): Promise<IngestionSummary>;
   scope: CurriculumScopeResolver;
   /** @CurrentUserId parity — the authenticated caller's id (search scope). */
   requesterId(c: Context): string | null;
@@ -101,7 +130,8 @@ export function buildContentApp(
   env: Record<string, string | undefined> = process.env,
 ): ContentRouters {
   const databaseUrl = requireDatabaseUrl(env as { DATABASE_URL?: string });
-  const sql = createSql(databaseUrl);
+  const sql = createSql(databaseUrl) as TxSqlFn;
+  const clock = { now: () => new Date() };
 
   const documents = new DocumentRepository(sql);
   const questionAssets = new QuestionAssetRepository(sql);
@@ -119,11 +149,33 @@ export function buildContentApp(
   });
   const scope = new CurriculumScopeResolver(sql);
   const provider = resolveEmbeddingProvider(env);
+  const writes = new ContentReviewWriteService({ sql, clock });
 
   const app: ContentReadApp = {
     documents,
     questionAssets,
     review,
+    writes,
+    ingestDocument: async (kind, rawJson, ingestedBy) => {
+      // the ContentDocumentController.parse law (:180-191): a body that
+      // fails Jackson binding answers 400 invalid_document with the fixed
+      // client message — request-derived excerpts stay in the log
+      let parsed: unknown;
+      try {
+        parsed = JSON.parse(rawJson) as unknown;
+      } catch {
+        throw new InvalidDocumentError("request body is not a canonical document (schema 1.0)", []);
+      }
+      const bound = canonicalDocumentSchema.safeParse(parsed);
+      if (!bound.success) {
+        throw new InvalidDocumentError("request body is not a canonical document (schema 1.0)", []);
+      }
+      return sql.transaction((tx) =>
+        ingestCanonicalDocument(tx, bound.data, rawJson, kind, ingestedBy, clock.now()),
+      );
+    },
+    ingestPastPaper: (draft, ingestedBy) =>
+      sql.transaction((tx) => ingestPastPaperDraft(tx, draft, ingestedBy)),
     scope,
     requesterId: (c: Context) => getAuth(c)?.userId ?? null,
     requireEmbeddingProvider: () => {
