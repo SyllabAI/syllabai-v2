@@ -1,0 +1,48 @@
+{
+ "task": "DESK-ROUND",
+ "run": "run-001-20261008-mainlane",
+ "order": "operator trace 1a119e27bbe116e9 'Proceed' (after W7-SMOKE run-002 GREEN baseline)",
+ "executor": "main (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)",
+ "executed_at_utc": "2026-10-08T05:2xZ",
+ "merges": [
+  {
+   "pr": 152,
+   "sha": "d0206e8",
+   "what": "verify 083..087 golden-verify run-002 (r3a, 38 legs; 084/087 ALL PASS; 083/085/086 PASS-WITH-FILED-DIVERGENCES disclosed); verify-only zero code",
+   "intake": "worklog-tail + T-MIG-083 card add/add unions resolved of record (rider GOLDEN-VERIFIED+WIDENED line kept verbatim, r3a run-002 cross-verify clause appended)"
+  },
+  {
+   "pr": 154,
+   "sha": "8c40306",
+   "what": "T-MIG-084 Knowledge Tree golden-verify 8/8 FIRST PASS + widen V2_SURFACE_PREFIXES += /api/v1/knowledge/nodes (narrowest legal form, 090 posture, LLM-free)",
+   "intake": "worklog + 084 card unions (branch line = complete progression); desk spot-check: hub surface tests 14/14 PASS on head c0cc03e"
+  },
+  {
+   "pr": 153,
+   "sha": "46536fd",
+   "what": "T-MIG-095 learner-me write-surface captured-law fix (rating/vote @NotBlank-ONLY law; combo-law capture superseded the band premise)",
+   "intake": "none owed (lane intake round-2 onto bc4ec31); desk spot-check: learner-me routes 39/39 PASS on 908ed8a (095 content byte-identical in the intake delta) + CI verify/hub success on final head 92df7fe"
+  }
+ ],
+ "merges_by_other_lanes_during_round": [
+  {
+   "pr": 144,
+   "sha": "b16230f",
+   "by": "desk/R0 (operator trace 1a119de998dd9171 take-it-when-its-ready)",
+   "note": "R0-MERGE-144 receipt c254e56; LLM-chain adapters + 099 ghost rename"
+  },
+  {
+   "pr": 151,
+   "sha": "bc4ec31",
+   "by": "operator direct-merge order trace 1a119df7d930b6",
+   "note": "097 refusal-wire repair + 076-class ci re-trigger d0bc76a"
+  }
+ ],
+ "desk_checks": [
+  "T-MIG-099 condition-(1) DISCHARGED: mark_scheme_points ghost name = ZERO hits in main tree @ 3e9568b; mark_points law present (smartmark x4 + teachermarking x1); the 7-file rename survived the #144 intake union intact",
+  "T-MIG-099 condition-(2) remains: the real-wire proof leg on the sanctioned scratch substrate + post-redeploy live error-class note (owner: 099 card)",
+  "card stamps filed this round: 095 DONE (46536fd), 097 DONE (bc4ec31)"
+ ],
+ "api_redeploy_readiness": "live api-of-record bundle = 993c18e (#144 branch, keyed env, flip-proof 200s) \u2014 main now carries #146 leg-04 repair + #150 binding law + #151 refusal-wire + #152/#153/#154; redeploy-from-tip lever ripe (lane enumerates; deploy creds/act remain the operator-side pattern of record per bfaae67 recipe)",
+ "boundary_law": "zero prod writes this round; all merges repo-side; spot-checks local/scratch or read-only; .syllabai-only receipt + card stamps direct-main (fetch-first)"
+}
