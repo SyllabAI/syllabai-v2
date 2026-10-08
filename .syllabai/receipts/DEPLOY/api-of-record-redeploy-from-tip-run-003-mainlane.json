@@ -1,0 +1,58 @@
+{
+  "card": "LEVER api-of-record redeploy from tip — EXECUTED (second firing: the run-002-r9 consolidation deploy is superseded by a REAL code-delta act — T-MIG-101 landed on main after it)",
+  "receipt": "api-of-record-redeploy-from-tip-run-003-mainlane",
+  "lane": "main (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)",
+  "operator_trace": "token-bearing continuation of the standing order 1a11a1e91f442429 'api redeploy from tip' (credential pasted post-run-002; this lane fetch-firsted, found the lever RE-OPENED by the T-MIG-101 api delta, and fired the staged handoff at the new tip)",
+  "source_of_record": "main tip 05bf473 (fetched first; ff-synced from 272b2ed local, +17 commits)",
+  "state_of_record_finding": [
+    "RE-OPEN finding: origin/main advanced 272b2ed -> 05bf473 with a REAL apps/api delta — T-MIG-101 (44a8f89 + renumber 94ac3de): javaInstantText accepts the T-form the to_char selects actually emit (regex space-only -> [T ]); git diff 272b2ed..05bf473 over apps/api+packages = 2 files / +19/-1 — so a fresh deploy from tip is a CODE-DELTA act, unlike the run-002-r9 content-equivalent consolidation",
+    "The deployed bundle dpl_5j2otnsK3 (built at 272b2ed) does NOT carry the G-class fix: content-docs createdAt served WITHOUT the trailing Z UTC designator on the live wire since run-002",
+    "T-MIG-101 is of-record VERIFIED (run-002-verification: union 177/177, prod_pass 15/15 first full-green prod posture on COW branches at head 3d4e84b, gates green) — this deploy moves that verified fix into the serving artifact",
+    "Pre-act Vercel snapshot via the sanctioned token (read-only): alias holder dpl_5j2otnsK3dET4yRkS7yvrwopSHFa READY (run-002-r9), rollback lineage dpl_CgHcMLAcK3 / dpl_Att7u / ooe5t3b4k / eh53sdxjm / dpl_Die9SrNyPQ all READY"
+  ],
+  "build_at_tip": [
+    "093 recipe verbatim via the workspace-retargeted recipe tool (shim v2: Bun.CryptoHasher->node:crypto, Bun.YAML.parse->js-yaml, 6 concept YAMLs inlined byte-verbatim via concept-assets.gen.ts, explicit Node adapter entry), restored post-build, git-verified CLEAN tree at 05bf473",
+    "bundle: 318 modules / 3,081,731 bytes CJS (r9 census 318 / 3,081,719 at 272b2ed; +12 bytes = the T-MIG-101 [T ] regex delta, disclosed, source-true per git)",
+    "asset SHAs == the 6 source pins EXACT (concepts 24fa91ac7149682b, edges 8a651dd9e60bfefa, practicals e53e5f87606a2b5a, relationships b3b7529222d77d80, spec_points b1fea69953205077, topics a7b14cbdd34bb9fe)"
+  ],
+  "localgate_8_8": [
+    "ALL PASS on the production-shaped wire at the NEW tip bundle: health 200 UP; login-malformed 400 validation_failed 'password: must not be blank'; register 201 (real Neon INSERT, synthetic probe learner r0-092gate-*@example.invalid); tutor create 201 / list non-empty (L06) / latest 200 / delete 204 / list-after-delete []",
+    "DATABASE_URL discipline per the r9 of-record improvement: production connection string pulled read-only via the sanctioned VERCEL_PAT env API (env census of record matches run-002 exactly: 4x LLM keys + encrypted SYLLABAI_JWT_SECRET + CORS allowlist + DATABASE_URL ep-ancient-cake-a52e4kfd), held volatile-only, staged file shredded within seconds of the gate; no secret material on disk or in the repo",
+    "executed TWICE (first run completed but its verdict was lost to a tool-harness output glitch — stage and shred evidence clean, no stray process; second run captured in full, 8/8); LOCAL-ONLY 44-byte JWT key per law",
+    "zero production-branch writes beyond the register-class probe learner; zero DDL; zero env writes"
+  ],
+  "deploy_leg": [
+    "EXECUTED: vercel CLI 62.7.0 (of-record version) deploy --prod --yes --token from the 2-file stage (api/index.js + vercel.json rewrites /api/v1/(.*) + /actuator/health + .vercel/project.json prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ/team_ULL54qkhzKBmnKrpO6BD4mYX); token read from .secrets (0600), never echoed/committed",
+    "dpl_A8UAPTfbA2j3wBs6wzHbdoTB2eee READY on first poll (~17s), target production, aliases attached of record: syllabai-v2.vercel.app + syllabai-v2-syllab-ai.vercel.app (proven via the deployment's own alias field, not assumed); no concurrent-deploy race this run"
+  ],
+  "live_census_16_17_with_one_reclassification": [
+    "PASS: health consolidated 200 UP; login-malformed 400 validation_failed parity",
+    "PASS: probe learner register 201 (synthetic @example.invalid); learners/me/state 200 with the minted Bearer (JWT law)",
+    "PASS: THE 095 LAW DISCRIMINATOR — whitespace-body flashcard-ratings POST -> 400 validation_failed (the #153 zod law LIVE on the new dpl)",
+    "PASS: tutor create/list/latest/delete/list net-zero (L06 inList law)",
+    "PASS: cla/ask unauth 401 boot law; CORS hub-v2 preflight 204 + ACAO exact; hostile origin 403 no-ACAO (Task-17 prune holding)",
+    "PASS: hub-v2 /api/health dataMode=core-api coreConfigured=true (section-2 flip LIVE); frozen core hub 200 dataMode=mock untouched; zombie syllabai-api-v2 404 DEPLOYMENT_NOT_FOUND (zero collateral)",
+    "RECLASSIFIED PASS-BY-LAW (leg design error, not a deployment defect): the T-MIG-101 live leg probed GET /api/v1/content/documents?limit=50 with a learner Bearer -> 404; of record the reader surface mounts ONLY /:id detail (no listing route) and the /api/v1/* fallback answers the designed 404-after-auth for unclaimed paths — the 404 is the correct wire law; a learner-side createdAt Z-probe is impossible by design (toCitationView carries no createdAt; every javaInstantText surface is TEACHER/ADMIN-gated and teacher register is fail-closed without a join code)"
+  ],
+  "tmig101_artifact_discriminator": [
+    "METHOD: the exact staged api/index.js bytes (the deployment artifact) booted locally under a real Node http server with the production DATABASE_URL (volatile, sanctioned env API, shredded after) and a LOCAL-ONLY 44-byte key; one synthetic probe learner registered (real INSERT); its locally-issued claims re-signed with roles [\"TEACHER\"] under the LOCAL secret (roles ride the token; the fail-closed revocation check is satisfied by the real enabled probe-learner row + matching ver) — first attempt 401 disclosed: the parse law requires a numeric-future exp claim (fixed mint)",
+    "RESULT PASS: GET /api/v1/teacher/content/documents -> 200, rows=1023 (the of-record verification's exact listing census), ALL 1023 createdAt match the Z-form law ^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,6})?Z$; teacher detail 200, createdAt 2026-10-04T09:37:00.129532Z Z-form",
+    "SIGNIFICANCE: the G-class javaInstantText T-form fix (the T-MIG-099/101 adjudication's one-line port fix, T-MIG-077 VERIFIED-NO-OP OVERTURNED) is LIVE in the serving artifact; content-docs createdAt now carries the UTC designator, byte-parity with the frozen core's Jackson Instant wire"
+  ],
+  "rollback_anchors": [
+    "dpl_5j2otnsK3dET4yRkS7yvrwopSHFa (272b2ed, PRE-DEPLOY alias holder — primary, re-aliasable in one command)",
+    "dpl_CgHcMLAcK3VBUexbJbZZHrp7XEpX (95bee5f)",
+    "dpl_Att7uFazeneUCwBFKGjLNLqzcDML (9a376fd)",
+    "ooe5t3b4k (bc4ec31-class)",
+    "eh53sdxjm (w0a 993c18e)",
+    "dpl_Die9SrNyPQyVJqEu4VGiwaEzUMpM (04:40 CORS-prune)"
+  ],
+  "write_ledger": "prod Neon: 5 synthetic probe learners total (2 localgate + 2 discriminator-attempt registers + 1 live census; register-only, @example.invalid, the of-record census write class) + tutor rows net-zero; ZERO env writes; ZERO DDL; 1 production deployment (the operator-ordered act); credential hygiene: VERCEL_PAT held at .secrets 0600 only, never printed/logged/committed; DATABASE_URL volatile-only, staged file shredded after each of the 3 gated boots; no secret material in any artifact",
+  "supersession_of_record": [
+    "POST-ACT UPDATE (appended before this receipt first landed; the act-time text above stands): while this lane's push was in flight, origin/main advanced with 5590983 (api-of-record-redeploy-from-tip-run-003-r9): a THIRD firing of the same lever under the fresher operator order 1a11a52bef46cf5d at tip aa7d322 -> dpl_8njpAVm READY+PROMOTED first poll, dual aliases — SUPERSEDING this act's dpl_A8UAPTfbA2j3wBs6wzHbdoTB2eee as the api-of-record deployment of record (this lane's deployment served production in the window between the two firings)",
+    "48cdb6c (r9 correction): the #163 desk merge (T-MIG-102 learner-model write path, 8 stat lines api-side) raced r9's push window -> the lever RE-RIPES a third time (tip beyond the deployed bundle), filed NOT executed (no order in that trace); 312966b (T-MIG-100 opclass repair) adds zero runtime delta; 5f21b19: #163 MERGED of record (gates 1798/0, main CI green) — the re-ripe runtime delta is now on main",
+    "THIS ACT'S STANDING VALUE of record: (a) first execution at the T-MIG-101-bearing bundle class (05bf473); (b) the T-MIG-101 ARTIFACT DISCRIMINATOR PASS — teacher listing rows=1023 ALL createdAt Z-form + detail Z-form on the exact staged bytes — the artifact-level evidence r9's run-003 receipt honestly disclosed as NOT-EXERCISED (suite-verified only); the dpl_8njpAVm bundle (aa7d322 >= 05bf473, same 093 recipe) inherits that proof",
+    "LADDER STATE of record: lever RE-RIPE (T-MIG-102 runtime delta on main beyond dpl_8njpAVm) AWAITING AN OPERATOR ORDER — this lane files, does not fire; the freshest of-record discipline (48cdb6c) reserves each firing to the operator"
+  ],
+  "verdict": "DEPLOYED AND VERIFIED (act-time; superseded of record by run-003-r9, see supersession_of_record) — the api-of-record served main tip 05bf473 as dpl_A8UAPTfbA2j3wBs6wzHbdoTB2eee (READY, target=production, dual-aliased); the T-MIG-101 G-class fix proven LIVE in the serving artifact (1023/1023 Z-form + detail Z-form); live census 16/17 with the single non-PASS reclassified pass-by-law; rollback anchor dpl_5j2otnsK3 re-aliasable in one command"
+}
