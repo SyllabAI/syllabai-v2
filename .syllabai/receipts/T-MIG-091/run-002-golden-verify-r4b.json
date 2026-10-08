@@ -1,0 +1,31 @@
+{
+  "card": "T-MIG-091",
+  "run": "run-002-golden-verify-r4b",
+  "lane": "r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "date": "2026-10-08",
+  "operator_trace": "IM trace_id 1a119fc0f2824479 'proceed with those' — the claimed 083-091 verify band",
+  "target": "main 990d37a working tree, ZERO code deltas — the mount of record is #138 tranche-B B3 (examSeriesImportRoute mounted at the FULL path /api/v1/teacher/curriculum/exam-series, R0-integrator)",
+  "method": "the 083/084 pattern of record: LOCAL v2 boot, ZERO-KEY asserted, JwtService self-minted TEACHER/ADMIN tokens, replay in capture order (the write legs are ORDER-DEPENDENT: leg-05 imports, legs 06/07 repeat), status+body deep-equal (timestamp dropped, canonical JSON), header deltas disclosed",
+  "substrate": "the surviving Task-33 scratch cluster (:5433, zero schema drift). exam_series reset to EMPTY before the run (the 091 repeat law needs the fresh-import state). Synthetic users as per the census receipt. Full census + disclosure: receipts/T-MIG-100/tools/substrate-census-r4b.json.",
+  "capture_of_record": "golden-captures/t-mig-091/ — 7 legs; requests verbatim from capture-driver.py (the valid Edexcel/IAL jan-2026 single-series dataset)",
+  "verdict": "FAIL — NO FLIP (5/7 legs PASS; one divergence class, filed)",
+  "pass_count": "5/7",
+  "legs": [
+    { "leg": "leg-01-import-no-token-401", "status": "401/401", "body": "DEEP-EQUAL" },
+    { "leg": "leg-02-import-learner-403", "status": "403/403", "body": "DEEP-EQUAL" },
+    { "leg": "leg-03-import-empty-400", "status": "409/409", "body": "DEEP-EQUAL", "note": "the 409 no-board conflict law ('exam-series dataset must name its board')" },
+    { "leg": "leg-04-import-bad-qual-400", "status": "400/400", "body": "DEEP-EQUAL", "note": "the 400 malformed_body enum law (NOT_A_QUAL)" },
+    { "leg": "leg-05-import-valid-200", "status": "200/200", "body": "DEEP-EQUAL", "note": "{imported:1, unchanged:0, updated:0} — the fresh-import law" },
+    { "leg": "leg-06-import-valid-repeat-200or409", "status": "200/200", "body": "DIFF — CLASS C (T-MIG-100)", "note": "capture {imported:0, unchanged:1, updated:0}; v2 {imported:0, updated:1, unchanged:0} — the byte-identical repeat is classified as a calendar CORRECTION (update) instead of a no-op" },
+    { "leg": "leg-07-import-admin-200", "status": "200/200", "body": "DIFF — CLASS C (T-MIG-100)", "note": "same law under the ADMIN token" }
+  ],
+  "header_deltas": "every leg: the 082 run-003 api-wide cache-posture class (disclosed)",
+  "flip_law_check": "NOT discharged — the repeat law (legs 06/07) diverges on the family's own write semantics. /api/v1/teacher/curriculum/exam-series STAYS CORE this band. (Moot for the hub table today: the hub emits NO row under the teacher/curriculum/exam-series segment — the flip would have been routing availability per the 090 posture.)",
+  "defect_filing": {
+    "class_c": "T-MIG-100-C — the exam-series repeat/coercion port defect (legs 06/07; port owner: R0-integrator via #138). ROOT CAUSE PROVEN FIRST-HAND: sameMeasurement (services/ingestion/exam-series.ts:104-115) compares String(existing.window_start) against the incoming ISO string — postgres.js returns JS Date objects for date columns, so String(Date) = 'Tue Jan 06 2026 00:00:00 GMT+0000...' != '2026-01-06' -> the branch falls to the UPDATE arm. The +70 fakeSql pins could never catch it: their existing-rows are string-typed fixtures. The T-MIG-093/094 fake-vs-real class, witnessed live on the real driver."
+  },
+  "not_done_and_why": [
+    "no repair of Class C — filed to T-MIG-100; repairs belong to the port owner",
+    "no widen — flip law not discharged"
+  ]
+}

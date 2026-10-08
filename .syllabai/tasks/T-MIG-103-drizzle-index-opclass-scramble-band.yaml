@@ -1,8 +1,8 @@
 version: 1
 task:
-  id: T-MIG-100
+  id: T-MIG-103
   title: >
-    T-MIG-100 - drizzle-of-record index opclass scramble band — THIS is the register
+    T-MIG-103 - drizzle-of-record index opclass scramble band — THIS is the register
     item T-MIG-099 owed at run-001 F6 ("own register item owed, out of this fence"),
     now filed: the explicit .op() layer in packages/db/src/schema/schema.ts is
     systematically mis-opclassed — 41 of the 85 explicitly-pinned index declarations
@@ -89,20 +89,40 @@ task:
     (the 083-rider/099 pattern: local scratch PostgreSQL, ZERO-KEY asserted, zero
     prod/Neon contact), drizzle-kit push from packages/db runs GREEN end-to-end on
     real PostgreSQL (tables + indexes complete with zero 42804), plus a pg_indexes
-    readback pinning the repaired opclasses; receipt to .syllabai/receipts/T-MIG-100/.
+    readback pinning the repaired opclasses; receipt to .syllabai/receipts/T-MIG-103/ (path redirected by the renumber chain).
 
     DESK LAW extension carried from 099: this is the second member of the
     'of-record artifact never confronted the real wire' family after the fakeSql
     band — introspection-emitted index DDL was never executed against real
     PostgreSQL. Desk law going forward: any generated-of-record DDL must cite a
     real-wire execution corroboration before it is relied upon for provisioning.
+  renumber_provenance: >
+    APPEND-ONLY of record, renumber chain of three steps: (1) this band was FILED as
+    T-MIG-100 at 5665a6c (filing desk w0a lane, operator directive "T-MIG-099's
+    final residual", trace 1a11a1e1882c1b9d); (2) renumbered T-MIG-100 -> T-MIG-101
+    per operator trace 1a11a36d9c2cc651 "Repair T-MIG-100 back to R0 (#138 port
+    author)" so the T-MIG-100 ID of record returns to the #138 ingestion-port
+    wire-truth defect band (classes A parse-shape / C date-coercion, proven
+    first-hand by the 088/091 run-002 golden-verify, owner R0-integrator as the
+    #138 tranche-B port author, riding PR #161); (3) RE-RENUMBERED T-MIG-101 ->
+    T-MIG-103 at PR-#161 desk time: R0-integrator's justified-classes adjudication
+    band landed T-MIG-101 of record on main FIRST (d68fd93, PR #158, with
+    golden/justified-ledger.json + receipts/T-MIG-101/ paths baked) —
+    earliest-of-record-wins, the 101 ID belongs to that band; T-MIG-102 is R0's
+    learner-model write-path card; T-MIG-103 was the next free ID at act time. No
+    receipts exist under the old T-MIG-100/101 paths for THIS band (receipts dirs
+    verified EMPTY at each renumber step); the owed proof-leg receipt of this band
+    is .syllabai/receipts/T-MIG-103/ going forward. Historical worklog/receipt
+    prose citing "T-MIG-100" at act time refers to the register state of that
+    moment; this note is the disambiguator of record. Content beyond the
+    id/title/scope-path edits is byte-verbatim from 5665a6c.
   scope:
     allowed:
       - "packages/db/src/schema/schema.ts (index .op() pin repairs ONLY — no column/table/constraint edits)"
       - "packages/db/drizzle/** (emission regeneration/annotation consistent with the repaired pins)"
       - "packages/db/drizzle.config.ts (only if the push leg requires config repair, disclosed in the receipt)"
-      - ".syllabai/tasks/T-MIG-100-drizzle-index-opclass-scramble-band.yaml (this yaml)"
-      - ".syllabai/receipts/T-MIG-100/** (the owed push-green leg receipt)"
+      - ".syllabai/tasks/T-MIG-103-drizzle-index-opclass-scramble-band.yaml (this yaml)"
+      - ".syllabai/receipts/T-MIG-103/** (the owed push-green leg receipt)"
       - ".syllabai/worklog.md (append-only)"
     forbidden:
       - "column/table/constraint shape edits in packages/db/** (the 099 fence reason stands verbatim: both schemas of record are CORRECT — opclass repair only)"

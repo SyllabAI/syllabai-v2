@@ -1,0 +1,36 @@
+{
+  "card": "T-MIG-100",
+  "run": "run-001-filing-r4b",
+  "lane": "r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "date": "2026-10-08",
+  "kind": "defect band filing — the #138 tranche-B ingestion-port wire-truth divergences (2 port classes) + the substrate census of the 088/089/091 verify replay",
+  "operator_trace": "IM trace_id 1a119fc0f2824479 'proceed with those' — the claimed 083-091 verify band (Task-33 stage note)",
+  "evidence_source": "run-002-golden-verify-r4b on cards 088/089/091 — 22-leg replay at main 990d37a, ZERO code deltas, vs golden-captures/t-mig-088|089|091 (the frozen-core wire truth of record); full raw results in tools/run-002-verify-results.json; harness + seed in tools/ (the 084 rider scripts of record, adapted)",
+  "classes": [
+    {
+      "id": "T-MIG-100-A",
+      "family": "T-MIG-088 fetch parse-shape",
+      "legs": ["t-mig-088/leg-05-fetch-empty-200", "t-mig-088/leg-06-fetch-unknown-query-200or400"],
+      "law": "frozen core: an unparsable query string yields the EMPTY-PARSE VIEW {empty:true, msSeeking:true, normalized:\"\", paperCode:null, part:null, partRoman:null, qnum:null, series:null, unit:null, year:null} with parseDefect:true. v2 (#138 fetch-parser): returns parsed=null with parseDefect:false.",
+      "owner": "R0-integrator (the #138 port author)",
+      "severity": "wire-shape class on a read surface — teacher-facing search reports no defect where the core reports one; non-crashing but wire-divergent",
+      "suspect_site": "apps/api/src/routes/ingestion.ts mapFetchResult / services/ingestion/fetch-parser.ts unparsed branch"
+    },
+    {
+      "id": "T-MIG-100-C",
+      "family": "T-MIG-091 exam-series repeat semantics",
+      "legs": ["t-mig-091/leg-06-import-valid-repeat-200or409", "t-mig-091/leg-07-import-admin-200"],
+      "law": "frozen core: a byte-identical re-import answers {imported:0, unchanged:1, updated:0}. v2 answers {imported:0, updated:1, unchanged:0} — the repeat is classified as a calendar correction.",
+      "root_cause_proven_first_hand": "services/ingestion/exam-series.ts sameMeasurement (:104-115) compares String(existing.window_start) === row.windowStart. postgres.js materialises date columns as JS Date objects; String(Date) = 'Tue Jan 06 2026 00:00:00 GMT+0000 (Coordinated Universal Time)' != '2026-01-06' -> the UPDATE arm fires. First-hand repro: SELECT window_start from exam_series -> Date instance (see the census transcript). The #138 +70 fakeSql pins return string-typed fixture rows, so the pin suite was structurally blind to it — the T-MIG-093/094 fake-vs-real class, second family.",
+      "owner": "R0-integrator (the #138 port author)",
+      "severity": "write-semantics class on a teacher/admin write surface — audited state (updated_at churn + 'updated' accounting) differs from the core on identical input",
+      "suspect_site": "apps/api/src/services/ingestion/exam-series.ts sameMeasurement (entry_deadline / results_date / window_start / window_end all date-typed)"
+    }
+  ],
+  "cross_reference": {
+    "T-MIG-023": "the 088 topics-write legs (08/09: 501 not_implemented vs the captured 404-first / 400 validation wires) are a COVERAGE GAP of the T-MIG-020 honest-501 shell, NOT a #138 port defect — owned by the content-write-surfaces band (T-MIG-023). The frozen wire truth waits in golden-captures/t-mig-088/ legs 08-09."
+  },
+  "substrate_census": "see tools/substrate-census-r4b.json — the surviving Task-33 scratch cluster (:5433), zero schema drift 0f43156->990d37a, the empty-content law, the ADDITIVE 088 scope substrate (ACTIVE curriculum version + subject -> NEW VROOT/V1 UNIT-VALIDATED subtree; the 084 fixture tree untouched), and the disclosed run-1 substrate miss (legs 088-03..06 replayed against an unscoped bare db first — repaired additively, replay re-run; the run-1 bodies are preserved in tools/run-002-verify-results.json's sibling run-1 file).",
+  "disposition": "filed, not repaired (the verify rider files; repairs belong to the port owner). On repair: re-run the 22-leg replay (harness in tools/), then 088/091 flip+widen steps discharge per the flip law.",
+  "register_impact": "088/091 verdicts FAIL-NO-FLIP of record; 089 PASS (flipped + widened in the same rider, receipts T-MIG-089/run-002 + run-003)"
+}
