@@ -35,5 +35,10 @@
     "dpl_Att7u (9a376fd)",
     "ooe5t3b4k (bc4ec31-class) / eh53sdxjm (993c18e) / dpl_Die9SrNyPQ (CORS-prune)"
   ],
-  "verdict": "DEPLOYED AND VERIFIED — api-of-record serves main tip aa7d322 as dpl_8njpAVm (READY, PROMOTED, dual-aliased); the T-MIG-101 javaInstantText T-form fix is LIVE of record (suite-verified; live-wire probe honestly NOT-EXERCISED with learner-class credentials); 16/16 census legs green; no residual api-side delta remains between origin/main and the serving bundle at push time"
+  "verdict": "DEPLOYED AND VERIFIED — api-of-record serves main tip aa7d322 as dpl_8njpAVm (READY, PROMOTED, dual-aliased); the T-MIG-101 javaInstantText T-form fix is LIVE of record (suite-verified; live-wire probe honestly NOT-EXERCISED with learner-class credentials); 16/16 census legs green; no residual api-side delta remains between origin/main and the serving bundle at push time",
+  "post_push_correction": [
+    "the verdict's 'no residual api-side delta at push time' held AT THE ACT (serving aa7d322 == the ordered tip; diff aa7d322 vs tip was EMPTY at deploy time) — but the push window raced the #163 desk merge (34f84ee, T-MIG-102 learner-model write path: services/learner-model/model-update.ts NEW + publishMcq LIVE wiring + 19 frozen-vector tests; diff aa7d322..34f84ee over apps/api+packages = 8 stat lines first-hand)",
+    "THEREFORE the lever re-ripes a THIRD time: a future 'api redeploy from tip' will carry the T-MIG-102 write path live; no order for it exists in this trace — filed as the ripe lever of record, not executed",
+    "this correction is append-only; the original verdict text above stands as the act-time truth"
+  ]
 }
