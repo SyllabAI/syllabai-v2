@@ -5909,3 +5909,15 @@ Work Log:
 Stage Summary:
 - Operator question answered of record: retire = YES in ARCHIVE form (never delete), gated on the §4 48h watch passing; watch not yet open. Recommended order: P3 dual-run + P4 sign-off + §1 freeze + §3 decay (operator levers) -> watch opens -> 48h green -> §6.1 archive clicks [OPERATOR] + §6.3 SHA record -> §6.2 Render disable ONLY after a posture ruling (core-api hazard). Legacy surfaces verified UP at census; zero writes this act.
 - Next repo receipt = Task-48; next workspace = Task-36.
+
+---
+Task ID: 35a (post-merge stamp for Task-35)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Stamp the Task-35 desk round with the merge commit of record.
+
+Work Log:
+- PR #161 MERGED of record: 373cf44 (sha-pinned PUT at head bdf09f9, merge_method=merge, operator trace 1a11a36d9c2cc651). Desk-round basis comment 6054240169.
+- Post-merge register verified first-hand at 373cf44: exactly one card per high ID — T-MIG-100 = the #138 ingestion-port wire-truth defect band (port owner R0-integrator), T-MIG-101 = R0 justified-classes adjudication, T-MIG-102 = R0 learner-model write-path, T-MIG-103 = the drizzle opclass band (renumber chain 100->101->103 in-card). 96 cards parse OK, zero duplicates.
+
+Stage Summary:
+- Operator instruction 1a11a36d9c2cc651 DISCHARGED both prongs: \u2460 #161 desk-merged (373cf44); \u2461 T-MIG-100 repaired back to R0 (the #138 port author) of record. Band state on main: 083/084/090 DONE, 089 verify+widen of record (flip-stamp rides a bookkeeping pass), 085 WIDENED, 086/087 widen-unblocked, 088/091 gated on T-MIG-100 repairs + T-MIG-023.
