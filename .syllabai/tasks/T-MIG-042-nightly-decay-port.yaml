@@ -1,0 +1,59 @@
+version: 1
+task:
+  id: T-MIG-042
+  title: "NightlyDecayJob takeover port (Wave-4 cron band completion, CUTOVER_RUNBOOK §3): the 042P wiring seam goes LIVE — hub cron endpoint forwards the Vercel-Cron bearer to the api-of-record's /api/v1/cron/nightly-decay, which writes the exactly-once decay_job_runs ledger row (window_start PK, ON CONFLICT DO NOTHING); ADR-031 read-time law retires the batch-decay role (decayed/reviews_scheduled = honest 0/0)"
+  owner: "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606) — operator directive trace 1a11c1d07db6a9dd 'DECAY GO' binding CUTOVER_RUNBOOK §3; lane-authored card per the T-MIG-030/042P precedent (no pre-existing card: only T-MIG-042P exists in the register)"
+  status: IN_PROGRESS # claim-in-first-commit; flips IN_REVIEW at the PR-head commit; DONE at merge by the merging lane
+  priority: P1 # cutover critical path: §3 cannot complete without it (enabling the env on the stub = nightly 501s, zero ledger rows, §4 watch red by its own metric); the §6 archive gate (48h watch) sits behind §4's decay metric
+  wave: 4 # completes the Wave-4 decay subsystem band (038/040/041/042P/043/066 landed the read-time math + learner state; the nightly-job port was the missing piece)
+  deps: [T-MIG-042P, T-MIG-066, T-MIG-002]
+  provenance: >
+    Operator trace 1a11c1d07db6a9dd "DECAY GO" — the §3 binding of the
+    retirement sequence (Task-50 stage summary: "Operator's remaining path
+    to watch-open: P3 witness + P4 paste + §1 freeze + §3 'decay go'
+    binding"). First-hand discovery at tip 35ab1fb: (a) the 042P seam
+    runNightlyDecay() is STILL the stub ({implemented:false}) — the
+    runbook §3.1 parenthetical "501 ... only if the Wave-4 decay port were
+    absent — it is not" is STALE at tip and would mislead an env-act into
+    nightly 501s with ZERO decay_job_runs rows; (b) the hub is DB-less by
+    architecture law (no db driver in apps/hub deps, zero packages/db
+    imports) so the ledger write cannot live in the hub; (c) NOTHING in v2
+    writes decay_job_runs today (the only refs are the schema table + the
+    hub seam); (d) live probes 2026-10-08T15:36Z: hub-v2 decay route 401
+    "CRON_SECRET is not configured" on both unauth and wrong-bearer (=
+    CRON_SECRET definitively unset; the nightly 02:00Z Vercel Cron hit
+    currently 401s harmlessly), hub health dataMode=core-api; (e) the
+    vercel.json crons entry (0 2 * * *) is LIVE-deployed. Zero-collision:
+    no T-MIG-042 card, no decay/042 branch (only the merged t-mig-042p/r1),
+    register census clean at claim time.
+  scope:
+    allowed:
+      - "apps/api/src/services/cron/** (NEW — the ledger writer)"
+      - "apps/api/src/routes/cron.ts (NEW — bearer law + dispatch)"
+      - "apps/api/test/cron/** (NEW)"
+      - "apps/api/src/index.ts (mount wiring ONLY — import + construction + one app.route line, out-of-fence disclosed per the T-MIG-032 precedent)"
+      - "apps/hub/src/lib/decay/** (the seam implementation + tests — replaces the 042P stub pin)"
+      - "apps/hub/src/app/api/cron/nightly-decay/route.ts (seam deps: apiBase + bearer forward)"
+      - ".syllabai/receipts/T-MIG-042/**"
+      - ".syllabai/tasks/T-MIG-042-nightly-decay-port.yaml"
+    forbidden:
+      - "packages/db/**, packages/contracts/** (zero contract deltas — the ledger row shape is route-local JSON)"
+      - "golden/** (infra-class surface: no golden case pins the cron route; unit battery + the §4 decay_job_runs watch govern it)"
+      - "apps/hub/vercel.json (the schedule entry is ALREADY live-deployed from 042P — unchanged; single-cron-entry law item 5 preserved)"
+      - "prod env (DECAY_CRON_ENABLED=1 + CRON_SECRET on hub/api + redeploys = the [OPERATOR] §3.1 env act, STAGED as a one-command handoff awaiting the VERCEL_PAT delivery per the r7a precedent)"
+      - "flyway_schema_history and every core-owned bookkeeping table"
+      - "the Java core's scheduler; core/hub frozen upstream repos"
+  design:
+    topology: "hub /api/cron/nightly-decay (the ONLY Vercel Cron entry, schedule 0 2 * * * already deployed) --forward bearer--> api-of-record /api/v1/cron/nightly-decay --createSql--> decay_job_runs INSERT ... ON CONFLICT (window_start) DO NOTHING RETURNING; empty INSERT result -> SELECT the existing row -> {status:'already-run'}"
+    window: "the API derives its OWN UTC-day window server-side (042P computeWindowStart law) and IGNORES client-supplied windows — a bearer-holder can never backfill arbitrary windows; the hub's windowStart is observability-only"
+    auth: "the hub's R-2 timing-safe length-gated bearer law mirrored verbatim on the api route; ONE shared CRON_SECRET value configured on BOTH Vercel projects; drift = loud 401 at the seam (throw -> 5xx on the cron hit + §4 missing-row metric + deployment logs)"
+    adr031: "decayed=0 / reviews_scheduled=0 are LITERAL SQL (not params) — the honest batch-effect counts of the read-time architecture (T-MIG-066 canonical owner); the ledger row's residual job = the §3.3/§4 exactly-once takeover evidence"
+    loud_failure: "no silent skips anywhere: misconfigured apiBase, bearer drift, non-OK api, missing ledgerRow, and the INSERT/SELECT race all throw; the route keeps the 042P 501 shape as a regression signal only"
+  acceptance:
+    - "typecheck x4 + hub tsc exit 0; bun test apps/api packages 1822/0/13skip; bun test apps/hub 53/0; bun golden/runner.ts --selftest OK (counts of record at the PR head)"
+    - "route law: 401 fail-closed (unset secret / missing / wrong / same-length-wrong bearer) BEFORE any DB dependency; zero-DB on every 401 path"
+    - "ledger law: exactly-once per UTC window (window_start PK ON CONFLICT DO NOTHING; already-run reports the EXISTING row); calendar-validated window"
+    - "seam law: bearer forwarded verbatim; ok/already-run mapped honestly; every failure mode LOUD (6 seam tests replace the 042P stub pin)"
+    - "single-cron-entry law: apps/hub/vercel.json byte-unchanged; no second scheduler introduced anywhere"
+    - "the staged env-act handoff executes: env adds (hub CRON_SECRET+DECAY_CRON_ENABLED=1; api CRON_SECRET) + redeploys (api first, then hub) + manual first fire (200 ok + ledgerRow) + idempotency re-fire (200 already-run) — §3.1 complete; the 02:00Z cron self-fire + §3.3 morning cross-check + §4 watch open WITHOUT further code"
+  status_history: "claimed 2026-10-08 under operator trace 1a11c1d07db6a9dd; implementation + gates same act; PR t-mig-042/r1c -> main opened immediately after the claim commit (number assigned at open time — see the receipt and the PR body of record)"
