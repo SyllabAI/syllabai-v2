@@ -110,11 +110,19 @@ async function call(
   return { status: res.status, body: parsed };
 }
 
-type Leg = { leg: string; name: string; method: string; path: string; body?: unknown; auth: boolean };
+type Leg = { leg: string; name: string; method: string; path: string; body?: unknown; auth: boolean; tolerateFirstField?: boolean };
 const ASK = "/api/v1/learners/me/cla/ask";
 
 const LEGS: Leg[] = [
-  { leg: "L01", name: "empty-body-first-blank", method: "POST", path: ASK, body: {}, auth: true },
+  // T-MIG-097 run-003 FINDING OF RECORD: the frozen core's first-violation
+  // choice on a multi-violation body ({}) is NONDETERMINISTIC (run-001
+  // sampled "question: must not be blank", run-003 sampled "mode: must not
+  // be null" — the @Valid handler's iteration order is not stable). The
+  // declared relaxation (GOLDEN_MASTER §5, the T-MIG-071 declared-429
+  // pattern): the leg compares envelope + error class, and the v2 message
+  // must be one of the three frozen constraint texts; the port pins the
+  // DETERMINISTIC question-first choice (capture-consistent with run-001).
+  { leg: "L01", name: "empty-body-first-blank", method: "POST", path: ASK, body: {}, auth: true, tolerateFirstField: true },
   { leg: "L02", name: "kind-closed-enum", method: "POST", path: ASK, body: { kind: "BOGUS_KIND_097", mode: "EXPLAIN", question: "What is electrolysis?" }, auth: true },
   { leg: "L03", name: "mode-closed-enum", method: "POST", path: ASK, body: { kind: "SPECIFICATION_POINT", mode: "BOGUS_MODE_097", question: "What is electrolysis?" }, auth: true },
   { leg: "L04", name: "question-blank", method: "POST", path: ASK, body: { kind: "SPECIFICATION_POINT", mode: "EXPLAIN", question: "   " }, auth: true },
@@ -164,16 +172,39 @@ async function main(): Promise<number> {
     const statusMatch = core.status === v2.status;
     const coreBody = normalize(core.body);
     const v2Body = normalize(v2.body);
-    const bodyMatch = JSON.stringify(coreBody) === JSON.stringify(v2Body);
+    let bodyMatch = JSON.stringify(coreBody) === JSON.stringify(v2Body);
+    let declaredRelaxation = false;
+    if (!bodyMatch && s.tolerateFirstField && statusMatch) {
+      // the declared first-field relaxation: both sides must answer the
+      // validation_failed envelope with one of the frozen constraint texts
+      const FROZEN_TEXTS = new Set([
+        "question: must not be blank",
+        "kind: must not be null",
+        "mode: must not be null",
+      ]);
+      const cb = coreBody as { error?: string; message?: string };
+      const vb = v2Body as { error?: string; message?: string };
+      if (
+        cb.error === "validation_failed" && vb.error === "validation_failed" &&
+        typeof cb.message === "string" && FROZEN_TEXTS.has(cb.message) &&
+        typeof vb.message === "string" && FROZEN_TEXTS.has(vb.message)
+      ) {
+        bodyMatch = true;
+        declaredRelaxation = true;
+      }
+    }
     const verdict = statusMatch && bodyMatch ? "PASS" : "FAIL";
     if (verdict === "FAIL") allPass = false;
     legs.push({
       leg: s.leg, name: s.name, method: s.method, path: s.path,
       core_status: core.status, v2_status: v2.status,
       status_match: statusMatch, body_match: bodyMatch, verdict,
+      ...(declaredRelaxation ? {
+        declared_relaxation: "T-MIG-097 run-003 declared first-field relaxation: the frozen core's multi-violation order is nondeterministic (run-001 'question' vs run-003 'mode'); the port pins the deterministic question-first choice (GOLDEN_MASTER §5 declared-only)",
+      } : {}),
       core_body: coreBody, v2_body: v2Body,
     });
-    console.log(`${s.leg} ${s.name}: core=${core.status} v2=${v2.status} ${verdict}`);
+    console.log(`${s.leg} ${s.name}: core=${core.status} v2=${v2.status} ${verdict}${declaredRelaxation ? " [declared first-field relaxation]" : ""}`);
   }
 
   const receipt = {
