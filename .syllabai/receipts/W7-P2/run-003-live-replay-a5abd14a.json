@@ -1,0 +1,29 @@
+{
+ "task": "W7-P2",
+ "receipt": "run-003-live-replay-a5abd14a",
+ "lane": "r3a (Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)",
+ "operator_trace": "1a11d73e872a7045 ('the board is at the P-gate band — P2 formal closure, P3 dual-run, P4 sign-off')",
+ "recorded_at_utc": "2026-10-09",
+ "closure": "P2 FORMALLY CLOSED of record — runbook docs/CUTOVER_RUNBOOK.md gate rule: 'P2 closes when a fresh live replay at the cutover candidate SHA returns zero non-justified divergences'. The cutover candidate is main tip a5abd14ad (the §2 flip of record 2026-10-08T05:58:00Z r1c + api-of-record redeploys through run-006 '4th firing' + hub run-004 all deploy from main tips; no unpushed candidate exists).",
+ "closing_run": {
+  "workflow": ".github/workflows/neon-replay.yml (T-MIG-044 instrument; disposable Neon COW branches; read-only re-proof posture)",
+  "run_id": 37849192585,
+  "run_number": 25,
+  "event": "workflow_dispatch",
+  "dispatched_by": "r3a (this lane)",
+  "head_sha": "a5abd14adc30a733378d5c8dbe5fc2070f5527fd",
+  "conclusion": "success",
+  "union": "180/180 PASS — 'All cases green' — 5 limiter-429 instances forgiven via the T-MIG-071 (R3-C) declared limiter-429 disposition",
+  "seed": "165/165 (apply-reset posture, non-realdata tranche)",
+  "prod": "15/15 (as-cowed realdata tranche)",
+  "artifact": "neon-replay-37849192585-1 (union.md/seed.json/prod.json first-hand downloaded; local mirror r39/art25)",
+  "justified_residuals": "the limiter-429 class only, pre-declared of record (T-MIG-071 R3-C disposition inside the ci-replay instrument; ledger entries:[] — zero ledger tolerance consumed)",
+  "non_justified_divergences": 0
+ },
+ "evidence_chain": {
+  "run_23_corroboration": "run 23 id=37755266916 @ 558d96f5d completed/success (2026-10-08T09:14:25Z, scheduled) — the instrument's first green union; all 19 steps success",
+  "run_24_disclosure": "run 24 id=37848846616 @ a5abd14ad completed/failure — SINGLE red auth-login-unknown-email-401 (429 Too Many Requests, retryAfterSeconds:43 vs captured 401 invalid_credentials); classified ENVIRONMENTAL non-port-side: the replay's own request pressure trips the rate limiter window (same class as the union-forgiven limiter instances; seed was 164/165, prod 15/15; zero new divergence classes, zero port behavior diffs; artifact neon-replay-37848846616-1 first-hand classified, local mirror r39/art24). The re-dispatch (run 25) passed the identical case — confirming the race, not the port.",
+  "ledger_state": "golden/justified-ledger.json @ tip: entries [] — both T-MIG-101 declarations RETIRED via T-MIG-102 (learner-model write path landed; the two declared rows pass on their own merits)"
+ },
+ "fence": ".syllabai/receipts/W7-P2/run-003-live-replay-a5abd14a.json + W7-P3 + W7-P4 receipts + worklog append — zero code, zero corpus, zero golden, zero .github contact"
+}

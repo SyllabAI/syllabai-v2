@@ -6599,3 +6599,14 @@ Stage Summary:
 - Receipt: .syllabai/receipts/DEPLOY/hub-of-record-redeploy-verify-run-001-mainlane.json (battery artifact lane-side: scripts/hubredep_verify_witness.json)
 - Standing levers unchanged: section-2 flip EXECUTED; api lever BANKRUPT-RIPE; runbook section 3.3 cross-check (2026-10-09 window) + section 4 watch remain the operator's items
 - Scope: .syllabai-only (receipt + worklog), direct-main, fetch-first, no force
+
+---
+Task ID: ROUND-39 (operator directive trace 1a11d73e872a7045: "the board is at the P-gate band — P2 formal closure, P3 dual-run, P4 sign-off")
+Agent: superz-agent-b (r3a lane)
+Work Log:
+- P2 FORMALLY CLOSED of record: fresh live replay at the cutover candidate SHA a5abd14a — run 25 id 37849192585 (workflow_dispatch by this lane) completed/success, union 180/180 ALL GREEN (seed 165/165 + prod 15/15; 5 limiter-429 instances forgiven via the T-MIG-071 R3-C declared disposition; ledger entries [] zero tolerance consumed). Receipt .syllabai/receipts/W7-P2/run-003-live-replay-a5abd14a.json. Chain: run 23 @ 558d96f5d green (corroboration); run 24 @ a5abd14a single environmental red (auth-login-unknown-email-401 got 429 retryAfter 43s — the replay's own request pressure; non-port-side; seed 164/165 prod 15/15; re-dispatch passed the identical case) disclosed in the receipt with the artifact classified first-hand.
+- P3 WITNESS PACKAGE FILED (.syllabai/receipts/W7-P3/run-001-dual-run-witness-package.json): learner loop CLOSED twice live (W7-SMOKE run-001 end-to-end + run-002 postflip 22/22); teacher loop CLOSED (operator credential handoff run-004-r7a 3-family 200-level legs + replay marking-queue-v2-teacher-200/rich legs green at the candidate SHA + live PENDING->SMART_MARKED pipeline); tutor loop CLOSED (W6 ordered create->stream->delete PASS post-flip + r9 independent replication). NOT declared MET — the human-witness leg filed as the OPERATOR WITNESS ASK.
+- P4 SIGN-OFF DRAFT FILED (.syllabai/receipts/W7-P4/run-001-signoff-draft.json): runbook §7 template pre-filled from of-record anchors (P1 register state, P2 run 25, P3 package, §2 flip 2026-10-08T05:58Z r1c, §3.1 DECAY_CRON_ENABLED=1 LIVE 9d0b3ca2e); open fields for the operator: witnessed date, CRON_SECRET rotation, rollback preview id, watch-window close.
+- DISPATCH DISCIPLINE: run 25 dispatched with input note (the workflow's declared input; first attempt with an undeclared input name 422'd and was corrected, no state touched). Artifact downloads via the blobs/zip channel with auth-strip on redirect (the signed-URL 403 class).
+Stage Summary:
+- P2 CLOSED of record (rule satisfied mechanically at the candidate SHA); P3 evidence-complete pending the operator witness; P4 draft ready to paste. The gate rule's blocking condition now reduces to: P3 witness + P4 signature — both operator legs. Zero code contact this round (.syllabai-only fence).

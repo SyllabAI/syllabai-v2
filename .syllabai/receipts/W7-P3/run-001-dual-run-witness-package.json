@@ -1,0 +1,34 @@
+{
+ "task": "W7-P3",
+ "receipt": "run-001-dual-run-witness-package",
+ "lane": "r3a (Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)",
+ "operator_trace": "1a11d73e872a7045 (P-gate band directive)",
+ "recorded_at_utc": "2026-10-09",
+ "law": "runbook P3: 'Supervised dual-run of the full learner loop + teacher loop against branch deployments — operator-supervised; the supervised loops are a human-witnessed exercise, not CI'. THIS RECEIPT DOES NOT DECLARE P3 MET — it assembles the of-record execution evidence per §2.4 leg set and files the OPERATOR WITNESS ASK; the witness leg is the operator's.",
+ "learner_loop": {
+  "legs_required": "login -> agenda -> flashcard rating -> self-mark -> history (W3/W4 spine)",
+  "evidence": [
+   ".syllabai/receipts/W7-SMOKE/run-001-lane-side-smoke-spine.json (r7a): W3W4_learner_loop 'CLOSED end-to-end on the live prod core' — register 201 -> login 200 -> agenda 200 -> flashcard rating 201 (corpus anchor) -> review-schedule 200 (derived) -> trail 200 -> exam-papers 200 -> question 200 -> structured attempt 201 -> self-mark 201 (4/5 SELF_MARKED) -> history 200",
+   ".syllabai/receipts/W7-SMOKE/run-002-postflip-spine-r1c.json: 22/22 legs PASS POST-FLIP incl. S1-S7 learner spine + C3/C4 structured attempt + M4 history (total=1 attempt present)"
+  ],
+  "verdict": "CLOSED twice live (pre- and post-flip), instrument-corroborated by every replay's W3/W4 cases at the candidate SHA"
+ },
+ "teacher_loop": {
+  "legs_required": "login -> class -> marking queue (W5)",
+  "evidence": [
+   ".syllabai/receipts/DEPLOY/teacher-credential-handoff-run-004-r7a.json: operator-designated teacher credential (identity chain fp d254bbfaac004354, traces 1a11a4fd0340cd79 + 1a11c976f46744f1) — teacher-token 200-level legs GREEN live across three families: 085 activate/edges, 086 class-kg (394-node 4CH1 tree)/node-students/learner-kg (enrollment gate BOTH ways 404->201->200), 087 coverage list/mark/history; authz regression legs (unauth 401 / learner 403) hold",
+   "replay run-24/25 seed pass @ candidate SHA: w3-marking-queue-v2-teacher-200 + w3-teacher-marking-queue-v2-rich-200 + w3-marking-answers-teacher-200 + w3-marking-throughput-teacher-200 ALL PASS — the marking-queue leg is instrument-grade green",
+   ".syllabai/receipts/TUTOR-VERIFY/run-002-tutor-features-probe-r4b.json: markingState PENDING -> SMART_MARKED transitions live (the marking pipeline end-to-end)"
+  ],
+  "verdict": "CLOSED: teacher identity (operator handoff) + class-scoped family legs live + marking-queue 200s green on the instrument at the candidate SHA"
+ },
+ "tutor_loop": {
+  "legs_required": "SSE open/heartbeat/close (W6 — LLM payloads excluded from golden gating by standing law)",
+  "evidence": [
+   ".syllabai/receipts/W7-SMOKE/run-002-postflip-spine-r1c.json: W6_1 session create 201 / W6_2 list 200 / W6_3 delete 204 / W6_4 ask_stream core 200 text/event-stream — 'final ordered pass create->stream->delete PASS' (ask/stream stays core per flip-table law)",
+   ".syllabai/receipts/TUTOR-VERIFY/run-001-live-r0.json + run-002b-hub-sse-reprobe-r4b.json + run-008 independent live replication (commit b33fb5497, lane r9, operator traces 1a11c9d4c0eb7e31 + 1a11cf24...) — multi-lane independent live corroboration"
+  ],
+  "verdict": "CLOSED: ordered create->stream->delete PASS post-flip + independent replications of record"
+ },
+ "operator_witness_ask": "P3's human-witness leg: the operator is asked to witness/countersign this package (reply with the witnessing trace, or execute a spot leg personally). Upon witness, P3 = MET of record and the §7 template W7-P4 draft is ready to paste."
+}

@@ -1,0 +1,26 @@
+{
+ "task": "W7-P4",
+ "receipt": "run-001-signoff-draft",
+ "lane": "r3a (Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)",
+ "operator_trace": "1a11d73e872a7045 (P-gate band directive)",
+ "recorded_at_utc": "2026-10-09",
+ "law": "runbook §7: the sign-off is the OPERATOR's entry in .syllabai/worklog.md. This is the PRE-FILLED DRAFT with every field anchored to of-record evidence — the operator reviews, completes the witnessed-date + rollback-probe fields, and pastes.",
+ "draft": {
+  "Task_ID": "W7-CUTOVER-SIGNOFF",
+  "Agent": "OPERATOR (human)",
+  "Task": "Wave-7 cutover sign-off per docs/CUTOVER_RUNBOOK.md.",
+  "Work_Log": [
+   "Preconditions P1 [MET — register 100 cards, 98 terminal at a5abd14ad lineage], P2 [MET — neon-replay run 25 id 37849192585 @ a5abd14ad: union 180/180, zero non-justified divergences; ledger entries [], runbook .syllabai/receipts/W7-P2/run-003-live-replay-a5abd14a.json], P3 dual-run learner loop [PASS — W7-SMOKE run-001 + run-002 22/22] teacher loop [PASS — handoff run-004 3-family legs + replay marking-queue-200s] tutor loop [PASS — W6 ordered pass + r9 independent replication] (witnessed <date — operator to complete>), P4 this entry.",
+   "Cutover executed 2026-10-08T05:58Z (§2 flip of record, r1c receipt hub-of-record-section2-flip-run-001; hub redeploys through run-004-r0; api-of-record redeploys through run-006 '4th firing').",
+   "DECAY_CRON_ENABLED=1 applied (T-MIG-042 §3.1 takeover LIVE of record, env-act(r1c) 9d0b3ca2e; CRON_SECRET state <operator to confirm rotation Y/N>).",
+   "Rollback lever: verified via preview deployment <id — see hub-of-record-redeploy-run-003-r7a rollback_anchors; §2.4.5 preview probe status operator to confirm>."
+  ],
+  "Stage_Summary": "V2 IS LIVE for pilot traffic as of 2026-10-08T05:58Z. Watch window opens, closes <UTC+48h>."
+ },
+ "open_fields_for_operator": [
+  "witnessed date for P3",
+  "CRON_SECRET rotation Y/N",
+  "rollback preview deployment id confirmation",
+  "watch window close timestamp"
+ ]
+}
