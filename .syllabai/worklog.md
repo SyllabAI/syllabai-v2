@@ -5859,3 +5859,21 @@ Work Log:
 
 Stage Summary:
 - wave-s5 widen LANDED: class-KG + coverage families flip to v2 mid-path rows of record; #161 (089 flip+widen, 088/091 FAIL-declared) queued pending CI re-arm
+---
+Task ID: 47
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)
+Task: Operator trace 1a11a36625adf959 "Can we retire syllabai-hub and syllabai-core repos?" — Wave-7 §6 archive pre-flight census (READ-ONLY) + gated verdict of record.
+
+Work Log:
+- RENUMBERED Task-46 -> Task-47 on guard-44 (dup-check fired: r7a's hub-redeploy entry took 46 mid-flight, trace 1a11a20025e76305 — content-collision checked FIRST, theirs is the "hub redeploy proceed" disposition, distinct ask; renumber per the Task-40 precedent). Fetch-first re-run at renumber time: tip 507def9 -> 842a6cb (T-MIG-101 filed/renumbered, R0-AUTO sweeps, #155 + #158 merged per r7a's disclosure — two NEW widen rows knowledge/nodes + teacher/concept-graph staged behind a token-gated hub redeploy; PR #161 open). None of the mid-flight delta touches the retirement verdict: hub-v2 posture stays core-api, Render core stays a live runtime dependency, §6 gate unchanged. Census evidence anchored to 507def9; probes taken 06:39Z.
+- Runbook law read first-hand (docs/CUTOVER_RUNBOOK.md @ origin/main 507def9, Wave 7): §6 Archive [OPERATOR] — "GitHub: archive SyllabAI/syllabai-core and SyllabAI/syllabai-hub (archive = read-only; NEVER delete — issues, receipts, blame stay)"; §6.2 Render disable (not delete) after the 48h check; §6.3 record archive SHAs + service states; §6 gate = "only after the 48h watch passes" (§4).
+- Gate state at census: watch NOT OPENED — §0 P3 (supervised dual-run, operator-witnessed hub-UI spine W3/W4) + P4 sign-off pending; §1 freeze bookkeeping pending; §3 decay takeover pending (Task-45 stage summary of record). Therefore §6 gate UNMET at census time.
+- LIVE probes 06:39Z (4 legs): legacy hub syllabai-hub.vercel.app /api/health 200 {dataMode:mock, coreConfigured:true} — frozen frontend of record UP; hub-v2 /api/health 200 {dataMode:core-api} — §2 posture LIVE; Render core /api/health and / both 401 fail-closed warm — Java core ALIVE and, per the live §2 posture, a RUNTIME dependency of hub-v2 for the still-core families (teacher marking, recommendations, tutor ask/stream per flip-table law).
+- VERDICT of record: YES-but-gated — repo ARCHIVE (never delete) is the codified §6 end-state for both repos; the gate is unmet (watch not opened). Archive != service disable: archiving freezes code + stops webhooks/auto-deploys; running surfaces unaffected; reversible via unarchive. SEQUENCING HAZARD flagged for the desk: §6.2 Render disable must NOT fire while HUB_DATA_MODE=core-api (still-core families would 500) — §6.2 precondition = port the remaining families per the flip table OR an explicit posture ruling.
+- Lane limits disclosed: GitHub-side census BLOCKED lane-side (syllabai-v2 push token = "Bad credentials" against the sibling repos — scoped token; unauthenticated api.github.com = egress IP rate-limit). Operator-side pre-flight items of record: zero-open-PR confirmation (legacy PR #34 seen in the Task-25 era), HEAD-SHA capture of both default branches for the §6.3 archive-SHA record (known anchors: syllabai-core frozen @ 6cad6ef per R0-REVIEW read-only clone; syllabai-hub prod build 93226a43 per Task-25 — re-verify at archive time), and the §6.1 archive clicks themselves ([OPERATOR] per the runbook header).
+- Zero-write ledger: 4 read-only probes + 2 blocked GitHub API reads + git fetch; zero env/deploy/repo-state/code/schema/flip-table changes; zero force-push; zero secret material printed.
+- Receipt of record: .syllabai/receipts/censuses/wave7-archive-preflight-run-001-r1c.json; push via the guard chain (dup-check Task-47, scope check, head-stability, union-retry).
+
+Stage Summary:
+- Operator question answered of record: retire = YES in ARCHIVE form (never delete), gated on the §4 48h watch passing; watch not yet open. Recommended order: P3 dual-run + P4 sign-off + §1 freeze + §3 decay (operator levers) -> watch opens -> 48h green -> §6.1 archive clicks [OPERATOR] + §6.3 SHA record -> §6.2 Render disable ONLY after a posture ruling (core-api hazard). Legacy surfaces verified UP at census; zero writes this act.
+- Next repo receipt = Task-48; next workspace = Task-36.
