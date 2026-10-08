@@ -1,0 +1,50 @@
+{
+  "run": "run-007-postmerge-live-reverify-r0",
+  "task": "T-MIG-106",
+  "actor": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a996722e18fd-alias: web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operator_trace": "1a11c996722e18fd",
+  "operator_directive": "T-MIG-106 ruling",
+  "disposition": "the ruling ALREADY EXECUTED of record under the operator ruling (b) trace 1a11c4b762f6043d (PR #167 merged 590f929 by the desk identity; API merge facts first-hand; CI verify+hub success at tip) \u2014 no rival ruling filed (zero-waste); this lane discharged the two run-006 post-merge residues: the card stamp (this push) + the live re-verify rider (below)",
+  "verification_of_record": {
+    "ruling_receipt": ".syllabai/receipts/T-MIG-106/run-006-claim-and-ruling-r4b.json (read first-hand)",
+    "flip": "ONE /api/v1/tutor/ask prefix row (apps/hub/src/lib/api.ts:419, inseparability comment :407) + api.v2-surface.test.ts T-MIG-106 line (:96/:193/:288)",
+    "goldens": "3 declared cases added (2 justified:true + 1 plain; the s3 class receipt-only per the schema limit disclosed in run-006)",
+    "ledger": "ZERO justified-ledger entries (the 101 endgame posture: declarations without tolerance rows)",
+    "ci": "verify+hub success at main tip d4ddcf1 (API check-runs first-hand)"
+  },
+  "rider_execution": {
+    "rider": "run-007-postmerge-live-reverify-r0",
+    "base": "https://syllabai-v2.vercel.app",
+    "probe_learner": "r0-t106-rider-20261008t174712z@example.invalid",
+    "run_ts": "20261008T174712Z",
+    "legs": [
+      {
+        "leg": "p0-health-probe",
+        "attempt": 1,
+        "status": 200,
+        "body": "{\"groups\":[\"liveness\",\"readiness\"],\"status\":\"UP\"}"
+      },
+      {
+        "leg": "register",
+        "status": 201,
+        "body": "{\"accessToken\":\"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyMC10MTA2LXJpZGVyLTIwMjYxMDA4dDE3NDcxMnpAZXhhbXBsZS5pbnZhbGlkIiwianRpIjoiOTdiZDUzMzktMzA5Yi00OGY2LWE2NzQtYjQ1ZTY2OGJmOTkxIiwidWlkIjoiOTdiZDUzMzktMzA5Yi00OGY2LWE2NzQtYjQ1ZTY2OGJmOTkxIiwidmVyIjoxLCJyb2xlcyI6WyJTVFVERU5UIl0sImlhdCI6MTc5MTQ4MTYzMiwiZXhwIjo"
+      },
+      {
+        "leg": "s3-stream-malformed-manual",
+        "status": 400,
+        "body": "{\"status\":400,\"error\":\"malformed_body\",\"message\":\"request body is not readable (check field types and enum values)\",\"timestamp\":\"2026-10-08T17:47:14.070Z\"}"
+      }
+    ],
+    "runner_stdout": "PASS tutor-askstream-blank-question-400\nPASS tutor-askstream-unauthed-401\nPASS tutor-askstream-unknown-session-404\n\n3/3 golden cases pass against https://syllabai-v2.vercel.app (filter: tutor-askstream)\n",
+    "runner_stderr": "",
+    "runner_exit": 0,
+    "s3_expect": {
+      "status": 400,
+      "error": "malformed_body",
+      "message": "request body is not readable (check field types and enum values)"
+    }
+  },
+  "rider_verdict": "4/4 LIVE-VERIFIED on merits: runner 3/3 PASS (blank-question-400 / unauthed-401 / unknown-session-404) + the s3 manual leg 400 malformed_body EXACT (status+error+message byte-law)",
+  "write_ledger": "1 census probe learner (r0-t106-rider-20261008t174712z@example.invalid, register 201); ZERO LLM generations (every leg dies pre-flight); zero sessions, zero env writes",
+  "base_sha": "d4ddcf1a88e0513c6b1ef7b426d055400df9a883"
+}

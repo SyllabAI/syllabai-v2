@@ -6400,3 +6400,16 @@ Work Log:
 
 Stage Summary:
 - T-MIG-106 LANDED of record (590f929): tutor ask pair now declared-justified with three fresh golden cases; the ruling-execution chain (5a5fc37 -> #167) is closed main-side. Board empty at run end.
+
+---
+Task ID: 55
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Operator trace 1a11c996722e18fd "T-MIG-106 ruling".
+
+Work Log:
+- Board read first (13th-reset sandbox recovered: PATs 200, repo re-cloned; fetch-first held): the ruling ALREADY EXECUTED of record — PR #167 merged 590f929 2026-10-08T17:02:21Z by the desk identity carrying the OPERATOR RULING (b) trace 1a11c4b762f6043d (r4b lane): declare-justified (v2 designed laws; the core stream 500s are the core-side defect) + the INSEPARABLE ask-pair flip (ONE /api/v1/tutor/ask row + the surface T-MIG-106 line + 3 declared golden cases; ZERO justified-ledger entries). No rival ruling filed (zero-waste; the operator ruling of record is the authority).
+- The two run-006 post-merge residues discharged: (1) CARD STAMP — T-MIG-106 OPEN -> DONE (the 365c555/7f14bdc precedent; the run-006 fence itself routed card edits to direct-main post-merge); (2) LIVE RE-VERIFY RIDER run-007-postmerge-live-reverify-r0 — health UP first probe (the 16:35Z DEPLOYMENT_NOT_FOUND flapping P0 cleared by the dpl_Br8j9Bxg redeploy of record e6cc8d5), census probe learner registered 201, golden runner --target https://syllabai-v2.vercel.app --filter tutor-askstream = 3/3 PASS, s3 receipt-only manual raw-body leg = 400 malformed_body EXACT (status+error+message). Zero LLM generations (all legs die pre-flight); zero new learners beyond the one disclosed census probe.
+- Standing residue of record: the deployed hub bundle predates the ask-row routing (the flip goes live at the next hub deploy — operator-gated, zero Vercel creds lane-side); rollback property (env unset) untouched.
+
+Stage Summary:
+- T-MIG-106 CLOSED of record: ruled (b), flipped, stamped, and the declared class live-verified 4/4 on the keyed api-of-record. The 092-family ask/ask-stream widening is complete end-to-end at the code-of-record layer. Operator items unchanged: hub bundle redeploy (carries the ask row live), ci.yml patch, PAT rotation, P3/P4.
