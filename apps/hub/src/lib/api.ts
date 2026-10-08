@@ -300,6 +300,33 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // test). The hub emitter rides claAskFetch: table-governed, core fallback
   // whenever the v2 base is unset.
   "/api/v1/learners/me/cla/ask",
+  // Wave S4 (T-MIG-085, r3a; reconciled onto the r4b 084 rider of record) —
+  // teacher concept-graph: golden-verified of record (run-002-golden-verify-r3a,
+  // PASS with ONE filed message-format class — non-blocking per the 081-class
+  // precedent; receipt .syllabai/receipts/T-MIG-085/run-002-golden-verify-r3a.json
+  // via PR #152) vs the r4b frozen-core 6cad6ef capture band
+  // golden-captures/t-mig-085, on the lane-reproduced r4b scratch substrate
+  // (PG 17.11 + pgvector, all 63 Flyway migrations, uuid-isomorphism compare
+  // law, write legs executed on scratch only). Operator widen directive trace
+  // 1a119d95d71fbce9 ("proceed with the widening PRs for the five verified
+  // families"); wave-s4 was filed as PR #155 and superseded on the 084 leg by
+  // the r4b rider — this row is the residual widening of record. T-MIG-083 of
+  // the same verified five is NOT re-widened: its rider line above is already
+  // of record (r9-hubx, 002a501/259746f) — the r3a run-002 083 receipt stands
+  // as independent corroboration.
+  //
+  // /api/v1/teacher/concept-graph — family-exact form: activate + edges are
+  // the ENTIRE teacherConceptGraphRoute (routes/teacher-kg.ts) and the hub's
+  // only emitters under the base (lib/api.ts:1137/:1144 — the teacher
+  // concept-graph page) — a live routing change for that page. TRUE siblings:
+  // none (the router owns the base exclusively); the /api/v1/teacher/classes
+  // subtree is a DIFFERENT route and stays core this band — the verified
+  // class-KG/coverage families (T-MIG-086/087) are STRUCTURALLY NOT
+  // PREFIX-ADDRESSABLE (their distinguishing segment sits after the {classId}
+  // wildcard on a base shared with unverified class-management emitters,
+  // lib/api.ts:881-923) — pinned in the surface-test CORE list of record with
+  // the adjudication note (mid-path row form mechanism ask, PR #155).
+  "/api/v1/teacher/concept-graph",
 ];
 
 /**

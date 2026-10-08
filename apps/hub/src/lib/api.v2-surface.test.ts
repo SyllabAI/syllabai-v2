@@ -69,6 +69,11 @@ const DUAL_RUN_PATHS: readonly string[] = [
   // neither belongs in this list.
   "/api/v1/knowledge/nodes/kn-root/tree?includeMisconceptions=true",
   "/api/v1/knowledge/nodes/kn-x/prerequisites",
+  // Wave S4 (T-MIG-085, r3a) — the teacher concept-graph page's emitter
+  // forms: golden-verified of record (run-002-golden-verify-r3a via PR #152;
+  // one filed message-format class, non-blocking per the 081-class precedent).
+  "/api/v1/teacher/concept-graph/activate",
+  "/api/v1/teacher/concept-graph/edges?rootId=3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
   // T-MIG-095 (r0 band) — the learner-me WRITE surfaces the hub emits
   // (lib/api.ts rating/vote emitters): flipped after the band closed + the
   // live re-verify passed (run-002 of record). The family is EXACTLY these
@@ -154,6 +159,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/admin/revision-notes", // T-MIG-083: golden-verified (run-001 8/8, r9-hubx rider) — NARROW: ingest+status ONLY, rest of /api/v1/admin/** stays core
       "/api/v1/knowledge/nodes", // T-MIG-084: golden-verified (run-002 8/8, r4b rider) — NARROWEST: the /nodes segment family ONLY, siblings outside /nodes stay core
       "/api/v1/learners/me/cla/ask", // T-MIG-097: BOTH wires live-proven (run-003 10/10 refusal dual-live + run-004 generation probe 200, r7a) — NARROWEST: the exact ask path
+      "/api/v1/teacher/concept-graph", // T-MIG-085: golden-verified (run-002, r3a) — family-exact: activate+edges own the base exclusively
     ]);
   });
 });
@@ -301,6 +307,47 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     // either side — the hub-source grep law in the api.ts table comment)
     expect(v2SurfaceBase("/api/v1/knowledge/nodesx", V2)).toBe(V2);
     expect("/api/v1/knowledge/nodesx".startsWith("/api/v1/knowledge/nodes")).toBe(true);
+  });
+
+  test("the T-MIG-085 line: the teacher concept-graph flips after its golden gate (r3a wave-s4)", () => {
+    // family-exact: activate + edges are the ENTIRE teacherConceptGraphRoute
+    // (run-002-golden-verify-r3a: PASS with one filed message-format class,
+    // non-blocking per the 081-class precedent — receipts via PR #152, vs the
+    // r4b frozen-core capture band golden-captures/t-mig-085)
+    for (const p of [
+      "/api/v1/teacher/concept-graph/activate",
+      "/api/v1/teacher/concept-graph/edges?rootId=3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBe(V2);
+    }
+    // startsWith partial-segment capture (concept-graphx) is DOCUMENTED INERT
+    // (no such route or emitter exists on either side) — the same prefix-
+    // string property every row of the table has
+    expect(v2SurfaceBase("/api/v1/teacher/concept-graphx", V2)).toBe(V2);
+  });
+
+  test("the T-MIG-086/087 structural pins: class-scoped KG + coverage stay core this band (r3a adjudication ask of record)", () => {
+    // 086 + 087 are golden-verified (run-002-golden-verify-r3a, PR #152) AND
+    // mounted real on v2 (routes/teacher-kg.ts) — but they are STRUCTURALLY
+    // NOT PREFIX-ADDRESSABLE: the distinguishing segment sits AFTER the
+    // {classId} wildcard and the /api/v1/teacher/classes base is SHARED with
+    // the unverified class-management emitters (list/detail/members/
+    // announcements/status, lib/api.ts:881-923). Any prefix row either
+    // captures those unverified siblings (the exact failure the flip law
+    // forbids) or does not exist. Widen awaits the mechanism ruling (A: a
+    // mid-path row form — r3a recommendation — vs B: subtree filing), filed
+    // in PR #155.
+    for (const p of [
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graph?rootId=r-1",
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graph/nodes/0f0f1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/students?rootId=r-1",
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/learners/9e9e1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graph?rootId=r-1",
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/coverage",
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBeNull();
+    }
+    // and the management siblings any prefix row would have captured
+    expect(v2SurfaceBase("/api/v1/teacher/classes", V2)).toBeNull();
+    expect(v2SurfaceBase("/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab", V2)).toBeNull();
   });
 
   test("apiPath emits exact v2 URLs for representative surfaces", () => {
