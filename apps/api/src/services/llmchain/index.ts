@@ -40,207 +40,86 @@
  * openrouter, LlmChainProperties.chainOrder()).
  *
  * CONFIG SEAM: the same shape the existing v2 LLM services use — the tutor
- * and CLA composition roots already gate generation behind an injected
- * LlmProvider port (routes/tutor.ts dormantTutorLlm, routes/cla.ts
- * dormantClaLlm — the smartmark posture, available() = false → honest
- * 503). Providers register only when enabled AND their key is present
+ * and CLA composition roots gate generation behind an injected LlmProvider
+ * port, the smartmark module behind MarkingCandidateGenerator/FeedbackLlm,
+ * transcription behind TranscriptionProvider. bridges.ts adapts the chain to
+ * all four; the composition roots wire the ONE chain of record (index.ts).
+ * Providers register only when enabled AND their key is present
  * (LlmChainConfig registerProvider) — the ZERO-KEY boot of record
  * (ruling4 §3) is clean and the chain report shows what is missing.
  *
- * ADR-023 FAIL-CLOSED (hard law, never violated): NO real provider adapter
- * is constructed here — real ChatModel construction is the wave-3
- * LLM-chain lane's surface, in EVERY mode (LIVE included: this lane's LIVE
- * posture differs from PRODUCTION only in that a future lane may construct
- * adapters there; the report semantics are identical and generation stays
- * fail-closed here). A configured member's generate() raises the
- * structured LlmProviderException instead of silently spending quota (the
- * frozen TEST discipline, LlmChainConfig :106-110, generalized per ADR-023
- * as of record). Tests wire deterministic fakes — never real adapters.
+ * ADR-023 AMENDMENT OF RECORD (operator directive ①, trace
+ * 1a117913519cd141, ADR-MIG-0002): the original port constructed NO real
+ * provider adapter in any mode (fail-closed dormant seam; the wave-3
+ * LLM-chain lane's surface). The operator has now commissioned that lane:
+ * buildLlmChain constructs the REAL adapters (adapters.ts — groq/openrouter
+ * OpenAI-compatible, gemini vision-capable) when the mode allows it AND the
+ * provider is enabled AND its key is present, exactly the frozen
+ * LlmChainConfig.registerProvider law. The fail-closed posture survives
+ * UNCHANGED where it was load-bearing: TEST mode ignores keys entirely
+ * (never constructs real adapters — no code path can silently spend quota);
+ * zero-key boots register dormant members (chain report shows what is
+ * missing; generation refuses honestly); golden cases are untouched (the
+ * leg-04 capture posture is zero-key/TEST). Tests wire deterministic fakes
+ * via the injected fetchImpl — never real adapters over real HTTP.
+ *
+ * Media routing (HUB-ANSWER-BOX wave 3, frozen FailoverLlmChain javadoc): a
+ * request carrying media is offered ONLY to members that declare
+ * supportsMedia() — when no vision-capable member is available the request
+ * fails with the DISTINCT frozen message ("no vision-capable LLM provider
+ * available in chain") instead of degrading into a text-only hallucination
+ * of an image the provider never saw.
+ *
+ * Streaming (tutor SSE tranche): FailoverLlmChain.stream matches the frozen
+ * law EXACTLY up to the first token — an error arriving before any delta
+ * moves the stream to the next candidate; once the first delta is emitted
+ * the stream is COMMITTED to that provider and a mid-stream failure
+ * propagates (the caller surfaces the honest error event).
  */
-import { providerHealthSnapshotSchema, type ProviderHealthSnapshot } from "@syllabai/contracts";
+import {
+  type ChainMember,
+  type HealthClock,
+  type LlmChainRequest,
+  type LlmChainResponse,
+  LlmProviderException,
+  LlmProviderHealth,
+} from "./health";
+import { GeminiChainMember, OpenAiCompatibleChainMember } from "./adapters";
 
-// ── LlmFailureClass (LlmFailureClass.java) ──────────────────────────────────
+// re-export the kernel — the historical import surface
+// (routes/llmadmin.ts, test/llmadmin/**) stays byte-stable
+export {
+  isConfigurationFailure,
+  LlmProviderException,
+  LlmProviderHealth,
+} from "./health";
+export type {
+  HealthClock,
+  LlmMedia,
+  LlmReasoningEffort,
+  LlmChainRequest,
+  LlmChainResponse,
+  ChainMember,
+} from "./health";
+export { classifyHttpStatus, classifyTransportError } from "./adapters";
+export {
+  chainAsLlmProvider,
+  chainAsFeedbackLlm,
+  chainAsTranscriptionProvider,
+  chainAsCandidateGenerator,
+  isTruncationFinish,
+  completionBudget,
+  batchCompletionBudget,
+  resolveMarks,
+} from "./bridges";
 
-export type LlmFailureClassName =
-  | "RATE_LIMITED"
-  | "AUTHENTICATION_FAILURE"
-  | "PROVIDER_UNAVAILABLE"
-  | "TIMEOUT"
-  | "BAD_REQUEST"
-  | "MODEL_NOT_FOUND"
-  | "INVALID_RESPONSE"
-  | "UNKNOWN";
-
-/** True when the failure means the provider's CONFIGURATION is broken. */
-export function isConfigurationFailure(f: LlmFailureClassName): boolean {
-  return f === "AUTHENTICATION_FAILURE" || f === "MODEL_NOT_FOUND";
-}
-
-/** LlmProviderException (structured, classified at the adapter boundary). */
-export class LlmProviderException extends Error {
-  constructor(
-    readonly providerName: string,
-    message: string,
-    readonly failureClass: LlmFailureClassName = "UNKNOWN",
-  ) {
-    super(message);
-    this.name = "LlmProviderException";
-  }
-}
-
-// ── LlmProviderHealth (LlmProviderHealth.java, line-against-line) ───────────
-
-/** Injectable UTC-day clock (the frozen package-private test wiring). */
-export interface HealthClock {
-  now(): Date;
-  utcDay(): string; // "YYYY-MM-DD" — LocalDate.now(ZoneOffset.UTC) parity
-}
-
-const realClock: HealthClock = {
-  now: () => new Date(),
-  utcDay: () => new Date().toISOString().slice(0, 10),
-};
-
-function isoOrNull(d: Date | null): string | null {
-  return d == null ? null : d.toISOString();
-}
+// ── DormantChainMember — the fail-closed member (TEST mode + zero-key) ──────
 
 /**
- * The daily budget is a CONFIGURED LOCAL ROUTING GUARD — a ceiling on the
- * requests THIS application routes at the provider per UTC day. Both
- * successful and failed attempts count. <= 0 = unlimited (no local guard).
- */
-export class LlmProviderHealth {
-  private readonly failureThreshold: number;
-  private readonly cooldownSeconds: number;
-  private consecutiveFailures = 0;
-  private requestsToday = 0;
-  private lastErrorAt: Date | null = null;
-  private lastErrorMessage: string | null = null;
-  private lastFailureClass: LlmFailureClassName | null = null;
-  private cooldownUntil: Date | null = null;
-  private day: string;
-
-  constructor(
-    private readonly enabled: boolean,
-    private readonly configured: boolean,
-    failureThreshold: number,
-    cooldownSeconds: number,
-    private readonly dailyBudget: number,
-    private readonly effectiveModel: string | null,
-    private readonly clock: HealthClock = realClock,
-  ) {
-    this.failureThreshold = Math.max(1, failureThreshold); // record compactor
-    this.cooldownSeconds = Math.max(1, cooldownSeconds); // record compactor
-    this.day = clock.utcDay();
-  }
-
-  /** recordSuccess — clears failures, counts against the day. */
-  recordSuccess(): void {
-    this.rollDay();
-    this.consecutiveFailures = 0;
-    this.requestsToday += 1;
-  }
-
-  /** recordFailure — classified at the adapter boundary. */
-  recordFailure(message: string, failureClass: LlmFailureClassName = "UNKNOWN"): void {
-    this.rollDay();
-    this.consecutiveFailures += 1;
-    this.requestsToday += 1;
-    this.lastErrorAt = this.clock.now();
-    this.lastErrorMessage = message;
-    const classified = failureClass ?? "UNKNOWN";
-    this.lastFailureClass = classified;
-    if (isConfigurationFailure(classified)) {
-      // dead key / retired model cannot heal mid-deployment: skip future
-      // attempts until the UTC day rolls over (ADR-023)
-      this.cooldownUntil = this.endOfUtcDay();
-    } else if (this.consecutiveFailures >= this.failureThreshold) {
-      this.cooldownUntil = new Date(this.clock.now().getTime() + this.cooldownSeconds * 1000);
-    }
-  }
-
-  private endOfUtcDay(): Date {
-    // utcDay.plusDays(1).atStartOfDay(ZoneOffset.UTC)
-    const day = this.clock.utcDay();
-    return new Date(new Date(`${day}T00:00:00.000Z`).getTime() + 24 * 3600 * 1000);
-  }
-
-  inCooldown(): boolean {
-    const until = this.cooldownUntil;
-    return until != null && this.clock.now().getTime() < until.getTime();
-  }
-
-  /** budgetExhausted — true when the local daily budget is consumed. */
-  budgetExhausted(): boolean {
-    this.rollDay();
-    return this.dailyBudget > 0 && this.requestsToday >= this.dailyBudget;
-  }
-
-  /** healthy — can the member serve traffic right now (ADR-023). */
-  healthy(): boolean {
-    return this.configured && !this.inCooldown() && !this.budgetExhausted();
-  }
-
-  /** snapshot — the immutable observability view, in the CAPTURED key order. */
-  snapshot(): ProviderHealthSnapshot {
-    this.rollDay();
-    const cooling = this.inCooldown();
-    const body = {
-      configured: this.configured,
-      consecutiveFailures: this.consecutiveFailures,
-      cooldownUntil: isoOrNull(this.cooldownUntil),
-      coolingDown: cooling,
-      dailyBudget: this.dailyBudget > 0 ? this.dailyBudget : null,
-      effectiveModel: this.effectiveModel,
-      enabled: this.enabled,
-      healthy: this.healthy(),
-      lastErrorAt: isoOrNull(this.lastErrorAt),
-      lastErrorMessage: this.lastErrorMessage,
-      lastFailureClass: this.lastFailureClass,
-      remainingLocalBudget:
-        this.dailyBudget > 0 ? Math.max(0, this.dailyBudget - this.requestsToday) : null,
-      requestsToday: this.requestsToday,
-    };
-    // the wire shape IS the contract (LlmAdminControllerTest shape gate +
-    // the r4b leg-04 golden — the zod parse re-issues keys in the captured
-    // declaration order)
-    return providerHealthSnapshotSchema.parse(body);
-  }
-
-  /** rollDay — resets the per-day request counter on UTC rollover. */
-  private rollDay(): void {
-    const today = this.clock.utcDay();
-    if (today !== this.day) {
-      this.day = today;
-      this.requestsToday = 0;
-    }
-  }
-}
-
-// ── chain members (SpringAiChatModelAdapter port, generation dormant) ───────
-
-/** Minimal request shape — the chain's deterministic plumbing is the surface. */
-export interface LlmChainRequest {
-  system: string;
-  user: string;
-  model?: string | null;
-}
-
-export interface ChainMember {
-  name: string;
-  /** available(): configured && not cooling && budget not exhausted. */
-  available(): boolean;
-  supportsMedia(): boolean;
-  health(): LlmProviderHealth;
-  generate(request: LlmChainRequest): Promise<{ text: string; model: string; providerName: string }>;
-}
-
-/**
- * One chain member — SpringAiChatModelAdapter without the ChatModel. Real
- * adapter construction is the wave-3 LLM-chain lane's surface (ADR-023
- * fail-closed, every mode); this member records health faithfully and
- * answers generation with the structured exception (never a silent spend).
+ * One chain member without a real adapter — the ADR-023 fail-closed posture
+ * for unconfigured providers (and every provider in TEST mode). Records
+ * health faithfully and answers generation with the structured exception
+ * (never a silent spend).
  */
 export class DormantChainMember implements ChainMember {
   readonly healthObj: LlmProviderHealth;
@@ -280,13 +159,30 @@ export class DormantChainMember implements ChainMember {
     return this.healthObj;
   }
 
-  async generate(_request: LlmChainRequest): Promise<{ text: string; model: string; providerName: string }> {
+  async generate(_request: LlmChainRequest): Promise<LlmChainResponse> {
     if (!this.configured) {
       // the frozen unconfigured guard (SpringAiChatModelAdapter)
       throw new LlmProviderException(this.name, "provider not configured");
     }
-    // ADR-023 fail-closed: no real adapter exists in this lane — the wave-3
-    // LLM-chain lane owns provider construction. Structured, classified, honest.
+    // ADR-023 fail-closed (TEST mode): no real adapter exists for this member —
+    // structured, classified, honest.
+    this.healthObj.recordFailure(
+      `provider adapter not constructed in this lane — dormant seam (ADR-023 fail-closed, ${this.name})`,
+      "UNKNOWN",
+    );
+    throw new LlmProviderException(
+      this.name,
+      "provider adapter not constructed in this lane — dormant seam (ADR-023 fail-closed)",
+    );
+  }
+
+  async *stream(_request: LlmChainRequest): AsyncIterable<LlmChainResponse> {
+    // the same fail-closed contract on the streaming path — the generator
+    // body throws on first pull, which the chain treats as a pre-first-delta
+    // failure (failover-eligible)
+    if (!this.configured) {
+      throw new LlmProviderException(this.name, "provider not configured");
+    }
     this.healthObj.recordFailure(
       `provider adapter not constructed in this lane — dormant seam (ADR-023 fail-closed, ${this.name})`,
       "UNKNOWN",
@@ -322,8 +218,8 @@ export class FailoverLlmChain {
   }
 
   /** memberHealth(): snapshot of every member, chain order. */
-  memberHealth(): Record<string, ProviderHealthSnapshot> {
-    const snapshot: Record<string, ProviderHealthSnapshot> = {};
+  memberHealth(): Record<string, ReturnType<LlmProviderHealth["snapshot"]>> {
+    const snapshot: Record<string, ReturnType<LlmProviderHealth["snapshot"]>> = {};
     for (const [name, member] of this.membersByName) {
       snapshot[name] = member.health().snapshot();
     }
@@ -340,15 +236,34 @@ export class FailoverLlmChain {
   }
 
   /**
+   * routingOf — the shared routing step (the frozen javadoc: the filter
+   * lives in the shared routing step so the blocking and streaming paths
+   * cannot drift apart on it): media-carrying requests are offered ONLY to
+   * supportsMedia() members.
+   */
+  private routingOf(request: LlmChainRequest): ChainMember[] {
+    const candidates = this.orderedAvailable();
+    if (request.media == null) return candidates;
+    return candidates.filter((member) => member.supportsMedia());
+  }
+
+  /** Distinct exhaustion message for media requests (frozen emptyChainMessage). */
+  private static emptyChainMessage(request: LlmChainRequest): string {
+    return request.media != null
+      ? "no vision-capable LLM provider available in chain"
+      : "no available LLM provider in chain";
+  }
+
+  /**
    * generate — the frozen failover loop: one bounded attempt per provider;
    * failures aggregate into the diagnosable exhaustion throw. (Experiment
-   * pinning + media routing are the wave-3 generation lane's surface; this
-   * port carries the TEXT chain's deterministic plumbing.)
+   * pinning is the research registry's surface — no v2 read exists; disclosed
+   * dormant exactly like the core's absent-registry posture.)
    */
   async generate(request: LlmChainRequest) {
-    const candidates = this.orderedAvailable();
+    const candidates = this.routingOf(request);
     if (candidates.length === 0) {
-      throw new LlmProviderException("chain", "no available LLM provider in chain");
+      throw new LlmProviderException("chain", FailoverLlmChain.emptyChainMessage(request));
     }
     let last: LlmProviderException | null = null;
     const failures: string[] = [];
@@ -372,6 +287,63 @@ export class FailoverLlmChain {
       "chain",
       `all providers failed, last error: ${last == null ? "unknown" : last.message} [${detail}]`,
       last == null ? "UNKNOWN" : last.failureClass,
+    );
+  }
+
+  /**
+   * stream — the frozen law (FailoverLlmChain.stream): failover matches
+   * generate EXACTLY up to the first token; after that the stream is
+   * committed to one provider and a mid-stream failure propagates as the
+   * honest error (resuming on a second provider would duplicate or
+   * interleave text).
+   */
+  async *stream(request: LlmChainRequest): AsyncIterable<LlmChainResponse> {
+    const candidates = this.routingOf(request);
+    if (candidates.length === 0) {
+      throw new LlmProviderException("chain", FailoverLlmChain.emptyChainMessage(request));
+    }
+    const failures: string[] = [];
+    for (const provider of candidates) {
+      const iterator = provider.stream(request)[Symbol.asyncIterator]();
+      // the commit gate: the first delta pulled through the member's own
+      // error boundary. An error BEFORE that point is invisible upstream
+      // (nothing delivered), so the failover is a clean restart on the next
+      // member. Once a delta HAS been delivered the stream is COMMITTED —
+      // a mid-stream failure propagates (resuming on a second provider
+      // would duplicate or interleave text; the frozen switchOnFirst law).
+      let committed = false;
+      try {
+        const first = await iterator.next();
+        if (first.done !== true) {
+          committed = true;
+          yield first.value;
+          while (true) {
+            const next = await iterator.next();
+            if (next.done === true) break;
+            yield next.value;
+          }
+        }
+        return; // completed (possibly empty-complete — the frozen law)
+      } catch (e) {
+        const err =
+          e instanceof LlmProviderException
+            ? e
+            : new LlmProviderException(provider.name, String(e), "UNKNOWN");
+        if (committed) {
+          // COMMITTED: the honest error propagates to the caller — never a
+          // silent restart on the next provider after text was delivered
+          throw err;
+        }
+        failures.push(`${provider.name}: ${err.message} (classified ${err.failureClass})`);
+        // fall through to the next candidate — nothing was delivered
+      }
+    }
+    // the same aggregate contract as the exhausted generate() path
+    const detail = failures.join(" | ");
+    throw new LlmProviderException(
+      "chain",
+      `all providers failed before first token [${detail}]`,
+      "UNKNOWN",
     );
   }
 
@@ -545,12 +517,15 @@ function hasKey(apiKey: string | null): boolean {
 }
 
 /**
- * buildLlmChain — LlmChainConfig.failoverLlmChain with the adapter
- * construction replaced by the ADR-023 fail-closed dormant member (real
- * ChatModel construction is the wave-3 lane's surface, every mode). Chain
- * order per §26.1: Groq → Gemini → OpenRouter; gemini is the
- * vision-capable member. TEST mode ignores keys present in the
- * environment (the frozen fail-closed discipline).
+ * buildLlmChain — LlmChainConfig.failoverLlmChain. Chain order per §26.1:
+ * Groq → Gemini → OpenRouter; gemini is the vision-capable member (media
+ * routing, HUB-ANSWER-BOX wave 3). ADR-023 AMENDMENT (ADR-MIG-0002, operator
+ * directive ①): configured members construct the REAL adapters (adapters.ts)
+ * in PRODUCTION and LIVE; TEST mode ignores keys entirely (the frozen
+ * fail-closed discipline — real ChatModels are never constructed, no code
+ * path can silently spend quota); unconfigured providers register the
+ * dormant member, still visible in the chain report with the model it WOULD
+ * use (the enabled/configured distinction is the drift signal).
  */
 export function buildLlmChain(
   env: Record<string, string | undefined> = process.env,
@@ -561,24 +536,33 @@ export function buildLlmChain(
   const threshold = Math.max(1, props.chain.failureThreshold);
   const cooldown = Math.max(1, props.chain.cooldownSeconds);
   const dailyBudget = Math.max(1, props.chain.dailyBudgetPerProvider);
+  const timeout = Math.max(1, props.chain.timeoutSeconds);
+  const memberOpts = { failureThreshold: threshold, cooldownSeconds: cooldown, dailyBudget, timeoutSeconds: timeout, clock };
 
   const register = (
     name: string,
     enabled: boolean,
     apiKey: string | null,
+    construct: (key: string) => ChainMember,
     defaultModel: string,
     mediaCapable: boolean,
   ): ChainMember => {
-    // real adapters are constructed only when the mode allows it AND the
-    // provider is enabled AND its key is present — otherwise the member
-    // registers unconfigured, still visible in the chain report with the
-    // model it WOULD use (the enabled/configured distinction is the drift
-    // signal). TEST ignores keys entirely (fail-closed).
-    const configured = !testMode && enabled && hasKey(apiKey);
+    // the frozen registerProvider law: real adapters only when the mode
+    // allows it AND the provider is enabled AND its key is present
+    if (!testMode && enabled && hasKey(apiKey)) {
+      return construct(apiKey as string);
+    }
+    if (testMode && enabled && hasKey(apiKey)) {
+      // the frozen warn: the key is present but IGNORED (fail-closed)
+      console.warn(
+        `LLM mode=test: provider '${name}' has an API key in the environment but it is ` +
+          `IGNORED — real providers are never constructed in test mode (fail-closed, ADR-023)`,
+      );
+    }
     return new DormantChainMember(
       name,
       enabled,
-      configured,
+      false,
       mediaCapable,
       threshold,
       cooldown,
@@ -589,8 +573,35 @@ export function buildLlmChain(
   };
 
   return new FailoverLlmChain([
-    register("groq", props.groq.enabled, props.groq.apiKey, props.groq.model, false),
-    register("gemini", props.gemini.enabled, props.gemini.apiKey, props.gemini.model, true),
-    register("openrouter", props.openRouter.enabled, props.openRouter.apiKey, props.openRouter.model, false),
+    register(
+      "groq",
+      props.groq.enabled,
+      props.groq.apiKey,
+      (key) =>
+        new OpenAiCompatibleChainMember("groq", { apiKey: key, baseUrl: props.groq.baseUrl, model: props.groq.model }, memberOpts),
+      props.groq.model,
+      false,
+    ),
+    register(
+      "gemini",
+      props.gemini.enabled,
+      props.gemini.apiKey,
+      (key) => new GeminiChainMember("gemini", { apiKey: key, model: props.gemini.model }, memberOpts),
+      props.gemini.model,
+      true,
+    ),
+    register(
+      "openrouter",
+      props.openRouter.enabled,
+      props.openRouter.apiKey,
+      (key) =>
+        new OpenAiCompatibleChainMember(
+          "openrouter",
+          { apiKey: key, baseUrl: props.openRouter.baseUrl, model: props.openRouter.model },
+          memberOpts,
+        ),
+      props.openRouter.model,
+      false,
+    ),
   ]);
 }

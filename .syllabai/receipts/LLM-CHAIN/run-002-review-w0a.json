@@ -1,0 +1,27 @@
+{
+  "task": "LLM-CHAIN (operator directive 1a117913519cd141, ① land the LLM-chain real adapters + SYLLABAI_LLM_* env)",
+  "activity": "self-review of open PR #144 per operator order (trace 1a119a3b8c2d9d8d 'Check if reviewed or not. If not then review yourself. And continue working')",
+  "agent": "w0a",
+  "date": "2026-10-08",
+  "pr": { "number": 144, "head_of_record": "993c18e", "base_at_claim": "5839c11", "main_ahead_at_review": 17 },
+  "verdict": "APPROVE after intake aec9d41 (this lane, first-hand)",
+  "review_findings": [
+    "SCOPE/LAW: implements directive ① exactly; ADR-MIG-0002 amendment of record on branch; fail-closed law preserved (TEST mode never constructs adapters; zero-key boots dormant byte-identical; r4b leg-04 golden untouched); ONE chain of record shared tutor/CLA/smart-mark/transcription + chain-health",
+    "CREDENTIAL HYGIENE: diff sweep clean (only fake gsk_test fixtures); no apiKey in any log call; chain-health report is the two-key schema-pinned shape (chainAvailable + providers snapshot), key material never serialized",
+    "LIVE-PROVEN: flip-proof battery with operator keys caught 2 real defects, fixed of record — text-embedding-004 retired from v1beta -> gemini-embedding-001 + outputDimensionality=768 (probe first-hand); mark_scheme_points -> mark_points rename x5 (prod information_schema verified)",
+    "kg-retriever any(arr::uuid[]) fix NECESSARY: raw in ${ids} -> in $1 -> postgres 42601 on real Neon wire (live-caught on tutor/ask prereq CTE); T-MIG-094 latent class closed by execution; card flip owed at merge bookkeeping; 23dfb84's 'driver-dispatch array-semantics audit across all modules' filed as follow-up band note",
+    "CONFLICT ADJUDICATION (intake aec9d41): session-store.ts + tutor-routes.test.ts = main side (T-MIG-093 inList scalar law — golden-verified flipped surface, zero churn; PR-side rewrite was a stale-base artifact vs 5839c11); kg-retriever.ts = PR side (necessary fix); .syllabai/worklog.md = append-only union per 75c1708 precedent"
+  ],
+  "gates_on_resolved_tree": {
+    "typecheck": "apps/api + packages/contracts + packages/db + packages/shared + apps/hub all exit 0",
+    "bun_test_apps_api_packages": "1764 tests / 1751 pass / 13 skip / 0 fail (house-exact)",
+    "bun_test_apps_hub": "39 pass / 0 fail",
+    "golden_runner_selftest": "OK"
+  },
+  "residuals": [
+    "intake commit aec9d41 is LOCAL — push blocked on GitHub PAT (sandbox recycled, key files wiped; fingerprints of record: GH a8ccee736aa8c75b, Vercel d254bbfaac004354, Neon 4c2e12da872b6959)",
+    "T-MIG-094 card flip owed at merge bookkeeping",
+    "post-merge: api redeploy from tip reusing the receipts-of-record deploy machinery, then live chain verification (chain-health + generation legs); T-MIG-097 generation rider unblocks",
+    "authors-never-self-merge stands: desk merge or operator direct-merge order per #141/#142 precedent"
+  ]
+}

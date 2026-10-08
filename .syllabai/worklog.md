@@ -5151,6 +5151,21 @@ Stage Summary:
 - The DESK-25 090 reservation is discharged of record: decision filed, single-implementation law set, acceptance gate = golden-verify vs the r4b legs. The band's last mount step is in execution on t-mig-090/r0. Register items NOT touched here: the 10 justified classes (tip escalation, operator-gated), ci.yml patch, PAT rotation, P3/P4.
 
 ---
+Task ID: R3A-083-087-GOLDEN-VERIFY (operator directive trace 1a119a5ece785fc1, second leg)
+Agent: r3a (Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)
+Task: Golden-verify the landed 083-087 mounts against the r4b fixtures (38 legs, five families).
+
+Work Log:
+- SUBSTRATE REPRODUCED of record (r4b recipe): PostgreSQL 17.11 (17.11-0+deb13u1, dpkg -x user-tree) + pgvector 0.8.0 on :5433; frozen core 6cad6ef cloned and ALL 63 Flyway migrations applied in version order; v2 api booted locally (bun, postgres.js TCP, synthetic JWT secret disclosed); identities via the honest API paths (register x2 + V19 bootstrap-admin), class + enrollment via the teacher API.
+- SUBSTRATE EQUIVALENCE PROVEN: post-activation census 2 SUBJECT / 5 UNIT / 31 TOPIC / 200 SUBTOPIC / 167 CONCEPT / 30 MISCONCEPTION == the r4b capture-receipt census EXACT; the V6 seed reproduces the captured CHM subtree value-exact; 085 activation counts (193/420/709/0/0/182/12/4/28/272, alreadyActive:false) reproduce from the SHA-256-pinned snapshot value-for-value.
+- 38 LEGS EXECUTED (five families, write legs ON SCRATCH — zero prod contact of any kind): verdicts 083 PASS-WITH-FILED-DIVERGENCES(2), 084 ALL PASS 8/8, 085 PASS-WITH-FILED-DIVERGENCE(1), 086 PASS-WITH-FILED-DIVERGENCE(1 justified, 2 legs), 087 ALL PASS 8/8. Receipts run-002-golden-verify-r3a under .syllabai/receipts/T-MIG-08{3..7}/; card status lines updated (verify DONE, widen remains).
+- FINDINGS FILED (house law: filed, never auto-fixed): (1) 083 leg-04 500->400 binding-class — pre-disclosed at mount (revision-notes.ts :252-258), disposition stands; (2) 083 leg-05 invalid-archive message 'not a readable ZIP' vs core 'missing package.json' (status law held); (3) 085 leg-06 not-found message interpolation 'knowledge node not found: X' vs frozen 'knowledge node X not found' — INTRA-v2 inconsistency (084 leg-06 reproduces the frozen format byte-exact; fix-class candidate); (4) 086 leg-03/05 prerequisiteEdges ORDER: sets identical 7/7, core order = DB heap (frozen JPQL has NO ORDER BY, KnowledgeEdgeRepository.java :44-52; heap == V6 insert order at capture) vs v2 deterministic sort (teacher/kg.ts :205) — volatile-by-construction on the core side; recommended disposition: unordered[] declaration per the T-MIG-024 convention.
+- NON-MUTATION PROVEN: 083 status probe unchanged after failed ingests; 087 pre-write list [] and post-write trail exactly 1 entry.
+- DISCLOSURES: compare law = uuid-isomorphism (r4b fixtures carry scrubbed fake uuids; values compared exactly for codes/titles/counts/messages/relations); Cache-Control standing class carried from 082 run-003; scratch tokens never persisted (env file deleted post-run); sandbox-recycle losses this round: Render PAT + Neon DSN + core JWT secret unrecoverable lane-side (control-plane DNS still dead — re-confirmed) which is WHY the scratch route was taken (the live-substrate 082 method was not executable this generation).
+
+Stage Summary:
+- 083-087 golden-verify CYCLE COMPLETE of record: every landed mount replayed against the captured frozen wire on a substrate proven equivalent by census + seed + snapshot counts. 34/38 legs byte-exact under the disclosed compare law; 4 divergence classes filed with frozen-source line citations. Per flip law the per-family widening may now proceed on the verified families (084/087 clean; 083/085/086 carry filed-but-non-blocking divergences per the 081-class precedent — operator/dispatcher adjudicates whether any filed class blocks its family's widen).
+
 Task ID: T-MIG-090 mount implementation (operator trace 1a1171097283c475)
 Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
 
@@ -5472,7 +5487,6 @@ Work Log:
 Stage Summary:
 - The §2.4 spine is GREEN on the live prod posture at 0f43156 with ZERO expectation mismatches and the documented quirk parity holding; the v2 api-of-record demonstrates full data-plane continuity (token + shared Neon) under live cross-plane probes
 - Operator watch items: §2 flip lever still OPEN (hub redeploy = the act; posture constants verified unchanged); #144/#151/#152 at the desk; LIVE ENV PRUNE blocked on VERCEL_TOKEN; api redeploy lever [1] now picks up #146 leg-04 repair + #150 binding law (both merged)
-
 ---
 Task ID: r9-hubx Task-19 (local ledger 19)
 Agent: r9-hubx (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
@@ -5503,3 +5517,38 @@ Work Log:
 
 Stage Summary:
 - 084 band: verify+widen DONE of record, awaiting desk merge. Remaining CAPTURED band after 084: 085-089, 091 (same rider shape, same scratch-PG method now proven twice); 094 (kg-retriever, IN_REVIEW r0) rides the family verifies; 095/097 operator-side bands. Register moves to ~80 DONE-flippable on merge.
+
+
+- 2026-10-08T05:20Z w0a LLM-CHAIN run-004 (trace 1a119d20237149b1): intake-3 onto b062cc1 — T-MIG-099 ID YIELDED to main a289818 (operator-ordered pre-draft band card; this lane duplicate withdrawn, renumber precedent); ghost fix stays on #144 per the band card law; worklog union x3; CI-dirty root cause identified of record: pull_request workflows run on the merge ref — a conflicted PR gets ZERO runs (the integrator gate-1 and gate-3 are one gate: clean merge fires CI); gates on this tree then immediate push
+---
+Task ID: r9-hubx Task-20 (local ledger 20)
+Agent: r9-hubx (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Operator directive trace 1a119ddbdf0927c1 'Continue with the desktop side #144 (R0 REQUEST_CHANGES fix-forward)' — desk-advance and desk-merge PR #144.
+
+Work Log:
+- Fetch-first: w0a branch had advanced 4df5e83 -> c4695a6 (intake-3: T-MIG-099 ID yield recorded; CI-dirty ROOT CAUSE identified of record — pull_request CI runs on the merge ref, conflicted PR = ZERO runs, gates 1+3 are one gate)
+- Built desk-union e4817e1 (main 56c98b8 into c4695a6; worklog keep-both union, zero code conflicts) and gated it first-hand; push rejected non-FF = w0a landed intake-4 a37a622 mid-flight (same two parents, union x4) — CODE-TREE PARITY PROVEN (git diff e4817e1..a37a622: sole diff worklog.md 2 lines, apps/packages/golden byte-identical)
+- Full gates battery re-run on the ACTUAL merge head a37a622: typecheck x4 exit 0 / spine 1760 pass 0 fail 13 skip 6920 expect 94 files / hub 41-0 / golden selftest OK
+- R0-REVIEW-144 REQUIRED ledger discharged: (1) CI gate root-caused + structurally unblocked by the union, check-runs unreadable (GitHub PAT 401, hygiene rotation presumed) so desk basis = the #141 precedent (local gates ARE the CI battery, first-hand on the merge head); (2) disclosures card-linked — T-MIG-099 band card a289818 + pointer comment 6052294137, kg-retriever any() YIELDED to the T-MIG-094 law 5e16264 + session-store law main-of-record (branch touches NEITHER, git-diff proven); (3) dirty resolved (union x4, zero code conflicts at any intake)
+- DESK MERGED: b16230f = Merge pull request #144 (a37a622 into main 56c98b8), pushed 56c98b8..b16230f; authors-never-self-merge held (desk r9-hubx != author w0a); no force-push; zero prod writes
+- Desk checklist verified first-hand on the merge tree: the 7-file mark_points rename survived INTACT — zero 'mark_scheme_points' hits across apps/api/src+test+packages; mark_points serving at all 4+1 law sites
+- T-MIG-099 card annotated: condition (1) MET; card stays OPEN on condition (2) (real-wire proof leg + post-redeploy live error-class note)
+
+Stage Summary:
+- PR #144 LANDED of record: LLM-chain real adapters (adapters/bridges/health + wiring + 3 new test files + ADR-MIG-0002) + the ghost rename are on main at b16230f; spine +35 tests to 1760
+- Enumerated levers (operator-ordered separately): api-of-record redeploy (lights the LLM seams + carries the ghost fix + 094 binding law live; keys already configured per r1c Task-42), T-MIG-099 proof leg (scratch substrate, zero-key), hub redeploy = the section-2 act
+- Open PRs after this merge: #151 (097 CLA) / #152 (083-087 run-002) / #153 (095); watch: GitHub PAT still dead
+
+---
+Task ID: R0-MERGE-144 (operator trace 1a119de998dd9171 "take it when it's ready")
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+
+Work Log:
+- Took the #144 desk cycle: w0a re-pushed (c4695a6 = intake-3 @ b062cc1) with head CI SUCCESS (hub+verify) and the item-2 disclosures resolved of record in the PR body — (a) ghost fix card-linked to main's T-MIG-099 (w0a's duplicate 099 draft YIELDED fe92b8d), (b) kg-retriever YIELDED to main's T-MIG-094 inList law 5e16264 (single-implementation), (c) session-store hunk = stale-base artifact, intake-1 kept main's version.
+- Dirty state = exactly one main commit since merge-base (56c98b8, r9-hubx Task-19 094 card flip). Desk intake-4 executed in an isolated worktree: merge origin/main, single worklog-tail add/add conflict resolved theirs-verbatim-first + the run-004 line re-appended (zero markers); red lines re-verified on the union diff (zero secret material, zero hub/packages-db/contracts contact, cla seam composition only, 097 fence intact).
+- Gates FIRST-HAND on the union tree a37a622: typecheck x4 exit 0; bun test apps/api packages 1773/0/13skip/6920; bun test apps/hub 41/0/360; golden runner --selftest OK. Pushed to the PR branch; branch CI hub+verify SUCCESS; PR mergeable=True/clean.
+- DESK MERGE of record: #144 merged b16230f (merge commit, standard method). Post-merge asserts first-hand: mark_scheme_points ZERO hits in apps/ on main; from mark_points 3 (smartmark) + 1 (teachermarking) intact; PR-vs-main apps/ delta empty; main-tip CI hub+verify SUCCESS.
+- Bookkeeping: the card edit RACED and correctly no-ops — r9-hubx Task-20 (eb29e3a) already updated T-MIG-099 of record (condition 1 MET at b16230f, richer status line; card stays OPEN on the real-wire proof leg); their bookkeeping is the of-record version, mine withdrawn; merge-receipt comment posted on #144 (adds the CI-green confirmations their PAT-401 run could not read); this entry is the desk-side merge receipt; .syllabai-only direct-main (fetch-first at eb29e3a), no force.
+
+Stage Summary:
+- The LLM-CHAIN lane LANDED of record: real provider adapters + SYLLABAI_LLM_* env law + the ghost-table repair + ADR-MIG-0002; the api of record already carries LLM keys per Task-39/42 census, so a redeploy lights the dormant seams with zero env work. Register moves: 144's riding fixes all dispositioned (099 card open on its proof leg; 094/093 items closed by yield/supersession). Next desk levers: hub+api redeploys (the staging/flip act), 099 proof leg on the next real-wire window, pilot-hub P0, cron adjudication. Lane IDLE.

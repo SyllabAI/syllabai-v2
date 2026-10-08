@@ -1,0 +1,134 @@
+{
+ "card": "T-MIG-087",
+ "run": "run-002-golden-verify-r3a",
+ "family": "teaching coverage (list/mark/history)",
+ "fixtures_ref": "golden-captures/t-mig-087 (run-001-capture-r4b, PR #136 band)",
+ "lane": "r3a (Super Z, zai-web session web-06433aa8-e5f9-4e9b-9519-db4ca339d2a9)",
+ "operator_trace": "1a119a5ece785fc1 ('flip 082's card to DONE, and start the 083-087 golden-verify cycle from the r4b fixtures')",
+ "method": "Scratch substrate per the r4b local-boot recipe of record, reproduced lane-side: PostgreSQL 17.11 (Debian 17.11-0+deb13u1, dpkg -x user-tree) + pgvector 0.8.0 on :5433; schema + curriculum seed = the frozen core's 63 Flyway migrations at 6cad6ef applied in version order; identities (cap_learner/cap_teacher/cap_admin @example.invalid) registered via the honest v2 API paths (register x2 + V19 bootstrap-admin), class 'Capture Class A' (courseSlug capture-phys) + enrollment via the teacher API; tokens = scratch logins under a synthetic SYLLABAI_JWT_SECRET (wire law under verify is signature-independent; tokens never persisted into the repo). Compare law: status exact; bodies compared under uuid-isomorphism (ISO-8601 instants -> <TS>; uuid values mapped via the disclosed substitution map when known, any other uuid -> <UUID>) \u2014 the r4b fixtures carry scrubbed fake uuids, so value-level uuid equality is structurally unverifiable; codes/titles/counts/relations/messages compared exactly. Cache-Control: the v2 missing no-cache default is the standing api-wide class filed of record in T-MIG-082 run-003 findings \u2014 carried forward, not re-filed per leg. Write legs executed ON SCRATCH (zero-prod-write respected). SUBSTRATE EQUIVALENCE: post-activation census CONCEPT|167 MISCONCEPTION|30 SUBJECT|2 SUBTOPIC|200 TOPIC|31 UNIT|5 == the r4b capture-receipt census (31 TOPIC / 2 SUBJECT / 167 CONCEPT / 30 MISCONCEPTION / 5 UNIT / 200 SUBTOPIC) EXACT \u2014 the snapshot-driven node counts reproduce byte-for-value.",
+ "results": [
+  {
+   "leg": "leg-01-list-no-token-401",
+   "method": "GET",
+   "fixture_path": "/api/v1/teacher/classes/00000000-0000-4000-8000-000000000020/coverage",
+   "replayed_path": "/teacher/classes/1977e839-d467-4877-81f3-2a695855399f/coverage",
+   "expected_status": 401,
+   "actual_status": 401,
+   "status_match": true,
+   "body_match": true,
+   "content_type": "?",
+   "content_type_match": false
+  },
+  {
+   "leg": "leg-02-list-learner-403",
+   "method": "GET",
+   "fixture_path": "/api/v1/teacher/classes/00000000-0000-4000-8000-000000000020/coverage",
+   "replayed_path": "/teacher/classes/1977e839-d467-4877-81f3-2a695855399f/coverage",
+   "expected_status": 403,
+   "actual_status": 403,
+   "status_match": true,
+   "body_match": true,
+   "content_type": "?",
+   "content_type_match": false
+  },
+  {
+   "leg": "leg-03-list-teacher-200",
+   "method": "GET",
+   "fixture_path": "/api/v1/teacher/classes/00000000-0000-4000-8000-000000000020/coverage",
+   "replayed_path": "/teacher/classes/1977e839-d467-4877-81f3-2a695855399f/coverage",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "content_type": "?",
+   "content_type_match": false
+  },
+  {
+   "leg": "leg-04-mark-blank-400",
+   "method": "PUT",
+   "fixture_path": "/api/v1/teacher/classes/00000000-0000-4000-8000-000000000020/coverage/00000000-0000-4000-8000-000000000021",
+   "replayed_path": "/teacher/classes/1977e839-d467-4877-81f3-2a695855399f/coverage/5169d792-b654-47d5-b0ee-b59564f0e7cb",
+   "expected_status": 400,
+   "actual_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "content_type": "?",
+   "content_type_match": false,
+   "note": "blank status \u2014 bean-validation 400 fires BEFORE any service gate (fixture path fake uuid kept via sub map)"
+  },
+  {
+   "leg": "leg-08-list-unknown-class-404",
+   "method": "GET",
+   "fixture_path": "/api/v1/teacher/classes/00000000-0000-4000-8000-000000000023/coverage",
+   "replayed_path": "/teacher/classes/00000000-0000-4000-8000-000000000023/coverage",
+   "expected_status": 404,
+   "actual_status": 404,
+   "status_match": true,
+   "body_match": true,
+   "content_type": "?",
+   "content_type_match": false
+  },
+  {
+   "leg": "leg-06-mark-bad-status-400",
+   "method": "PUT",
+   "fixture_path": "/api/v1/teacher/classes/00000000-0000-4000-8000-000000000020/coverage/00000000-0000-4000-8000-000000000021",
+   "replayed_path": "/teacher/classes/1977e839-d467-4877-81f3-2a695855399f/coverage/5169d792-b654-47d5-b0ee-b59564f0e7cb",
+   "expected_status": 400,
+   "actual_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "content_type": "?",
+   "content_type_match": false,
+   "note": "service-level status parse 400 (pre-write gate order: 404 -> 403 -> 409 -> 400 status parse)"
+  },
+  {
+   "leg": "leg-05-mark-taught-200",
+   "method": "PUT",
+   "fixture_path": "/api/v1/teacher/classes/00000000-0000-4000-8000-000000000020/coverage/00000000-0000-4000-8000-000000000021",
+   "replayed_path": "/teacher/classes/1977e839-d467-4877-81f3-2a695855399f/coverage/5169d792-b654-47d5-b0ee-b59564f0e7cb",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "content_type": "?",
+   "content_type_match": false,
+   "note": "write leg executed ON SCRATCH (zero-prod-write respected)"
+  },
+  {
+   "leg": "leg-07-history-200",
+   "method": "GET",
+   "fixture_path": "/api/v1/teacher/classes/00000000-0000-4000-8000-000000000020/coverage/00000000-0000-4000-8000-000000000021/history",
+   "replayed_path": "/teacher/classes/1977e839-d467-4877-81f3-2a695855399f/coverage/5169d792-b654-47d5-b0ee-b59564f0e7cb/history",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "content_type": "?",
+   "content_type_match": false,
+   "note": "runs AFTER the mark write \u2014 fixture has exactly 1 trail entry"
+  }
+ ],
+ "findings": [
+  {
+   "class": "validation-before-service law",
+   "leg": "leg-04-mark-blank-400",
+   "evidence": "blank status: 400 validation_failed 'status: must not be blank' byte-exact \u2014 the zod markRequestSchema message composition reproduces the Hibernate Validator wire (teacher-kg.ts :110-117, :207-215); fires before any service gate."
+  },
+  {
+   "class": "service status-parse gate (pre-write)",
+   "leg": "leg-06-mark-bad-status-400",
+   "evidence": "400 bad_request \"status must be 'taught' or 'not-taught'\" byte-exact \u2014 the service-level parse fires at the documented gate position (404 -> 403 -> 409 -> 400 status parse), proving the write path is never reached with an invalid status."
+  },
+  {
+   "class": "write leg + append-only trail",
+   "leg": "leg-05/leg-07",
+   "evidence": "mark-taught 200 (shape+value law: code/title/status/note exact; markedAt/firstMarkedAt/markedBy uuid+timestamp-isomorphic); history GET AFTER the mark returns exactly 1 trail entry {actorId, createdAt, note, previousStatus:null, status} \u2014 the append-only law holds on the executed write (executed ON SCRATCH; zero-prod-write respected)."
+  },
+  {
+   "class": "pre-write list posture",
+   "leg": "leg-03-list-teacher-200",
+   "evidence": "coverage list BEFORE any mark: [] byte-exact (recorded rows only)."
+  }
+ ],
+ "verdict": "ALL PASS (8/8 under the compare law; write legs on scratch)"
+}
