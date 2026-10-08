@@ -39,19 +39,21 @@ import {
   LEARNER_ID,
   MISCONCEPTION_ID,
   OPTION_A_ID,
+  SPEC_POINT_ROWS,
   partRow,
   type Route,
 } from "./helpers";
 
 // ── sql stubs (union of every query the two routers' services can issue) ────
 
-const QUESTION_MATCH = /select id, question_type, marks, exam_paper_id, active from questions where id = \?/;
+const QUESTION_MATCH = /select id, question_type, marks, exam_paper_id, active, primary_topic_node_id from questions where id = \?/; // T-MIG-102: primary topic joined the select
 const VERSIONS_ID_MATCH = /select id, validation_state from question_versions where question_id = \? order by version desc/;
 const PAPERS_MATCH = /select id from exam_papers where validation_state in \( \? , \? \)/;
 const OPTIONS_MATCH = /select id, label, is_correct, misconception_node_id from question_options where question_id = \? order by ordering/;
 const HISTORY_OPTIONS_MATCH = /select id, question_id, label, is_correct, misconception_node_id from question_options where question_id = any\( \? ::uuid\[\]\) order by ordering/;
 const INSERT_ATTEMPT = /insert into attempts/;
 const TOPICS_MATCH = /select node_id from question_topics where question_id = \?/;
+const SPEC_POINTS_MATCH = /select spec_point_node_id from question_spec_points where question_id = \?/;
 const PARTS_MATCH = /select id, label, marks from question_parts where question_version_id = \? order by ordering/;
 const INSERT_ANSWER = /insert into answers/;
 const PAGE_MATCH = /select a\.id, a\.question_id, a\.chosen_option_id.*from attempts a join questions q on q\.id = a\.question_id where a\.learner_id = \? order by a\.created_at desc limit \?/;
@@ -78,6 +80,7 @@ function moduleSql(
     { match: HISTORY_OPTIONS_MATCH, rows: OPTION_ROWS },
     { match: INSERT_ATTEMPT, rows: [] },
     { match: TOPICS_MATCH, rows: SECONDARY_TOPIC_ROWS },
+    { match: SPEC_POINTS_MATCH, rows: SPEC_POINT_ROWS }, // T-MIG-102 event assembly
     {
       match: PARTS_MATCH,
       rows: [partRow(), partRow({ id: "60000000-0000-0000-0000-000000000002", label: "(b)", marks: 1 })],

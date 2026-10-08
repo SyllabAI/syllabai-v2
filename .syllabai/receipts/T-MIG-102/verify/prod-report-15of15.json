@@ -1,0 +1,85 @@
+{
+  "mode": "prod",
+  "target": "http://localhost:8081",
+  "total": 15,
+  "pass": 15,
+  "fail": 0,
+  "results": [
+    {
+      "name": "content-docs-canonical-realdata-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-student-realdata-403",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-teacher-detail-realdata-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-teacher-realdata-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-reader-real-citation-paperref-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-reader-real-doc-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-reader-real-page-beyond-404",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-reader-real-page-cover-empty-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-reader-real-page-text-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-reader-real-paper-null-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "question-assets-real-binary-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-paper-review-realdata-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-review-queue-realdata-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-review-queue-v2-realdata-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-review-queue-v3-realdata-200",
+      "pass": true,
+      "tranche": "staged"
+    }
+  ],
+  "receipt_note": "per-case bodies trimmed for receipt weight (the diff evidence lives in this verify run's stdout transcript); verdicts verbatim"
+}

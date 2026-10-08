@@ -2,8 +2,8 @@ version: 1
 task:
   id: T-MIG-102
   title: "T-MIG-102 - port the LearnerModelService submit-path model updates (the T-MIG-101 adjudication's owner card): the frozen core persists learner-model posteriors on every practice event — LearnerModelService.java @ 6cad6ef :102-133 upserts skill_states (BKT mastery per topic node: findByLearnerIdAndNodeId, update on the attempt event, saveAll) and :141-163 upserts misconception_states (BDT probability: correct weakens every monitored misconception, wrong strengthens the chosen distractor's; evidence rows per attempt). v2 ports ONLY the readers (apps/api/src/services/learner/state.ts skillStatesByRecency/misconceptionStatesByProbability, services/knowledge/graphs.ts, teacher/analytics, learner-me/nba, tutor/context, intervention) — first-hand T-MIG-101 verification: ZERO writers for either table anywhere in apps/api, so every v2-submitted attempt leaves the persisted-posterior surfaces empty. Live evidence of record: w4-state-practiced-200 (skillStates[]/misconceptionStates[] empty vs the capture's 1+1 rows after a genuine AUTO_GRADED attempt that history-after-submit proves exists) and w4-knowledge-graph-practiced-200 (node posteriors null) — both declared-justified in golden/justified-ledger.json pending this card"
-  owner: "OPEN (filed by T-MIG-101 adjudication; claim-in-first-commit per R0s-ROUND-10a §2.1)"
-  status: "OPEN"
+  owner: "R0-integrator (claimed on t-mig-102/r0 off main 08231a6; operator IM trace 1a11a06f8663438d routed the card; claim-in-first-commit per R0s-ROUND-10a §2.1)"
+  status: "IN_REVIEW (PR pending desk merge; run-002: implemented + gates + live union 177/177 zero-forgiveness — the two declared rows pass on their own merits and BOTH ledger entries retired)"
   priority: "P1"
   wave: "port fidelity — persisted-posterior write path (blocks the two declared-justified corpus rows from retiring; blocks any live smart-mark-adjacent parity claim that reads learner-model state)"
   deps: [T-MIG-032, T-MIG-101]

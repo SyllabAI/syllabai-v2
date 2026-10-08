@@ -1,0 +1,820 @@
+{
+  "mode": "seed",
+  "target": "http://localhost:8080",
+  "total": 162,
+  "pass": 162,
+  "fail": 0,
+  "results": [
+    {
+      "name": "w3-history-empty-student-200",
+      "pass": true,
+      "tranche": "empty"
+    },
+    {
+      "name": "w3-marking-answers-teacher-200",
+      "pass": true,
+      "tranche": "empty"
+    },
+    {
+      "name": "w3-marking-queue-v2-teacher-200",
+      "pass": true,
+      "tranche": "empty"
+    },
+    {
+      "name": "w3-marking-throughput-teacher-200",
+      "pass": true,
+      "tranche": "empty"
+    },
+    {
+      "name": "w3-questions-families-student-200",
+      "pass": true,
+      "tranche": "empty"
+    },
+    {
+      "name": "w3-questions-topics-student-200",
+      "pass": true,
+      "tranche": "empty"
+    },
+    {
+      "name": "w4-course-stats-empty-200",
+      "pass": true,
+      "tranche": "empty"
+    },
+    {
+      "name": "w4-flashcard-schedule-empty-200",
+      "pass": true,
+      "tranche": "empty"
+    },
+    {
+      "name": "w4-flashcard-trail-empty-200",
+      "pass": true,
+      "tranche": "empty"
+    },
+    {
+      "name": "w4-knowledge-graph-empty-200",
+      "pass": true,
+      "tranche": "empty"
+    },
+    {
+      "name": "w4-state-empty-200",
+      "pass": true,
+      "tranche": "empty"
+    },
+    {
+      "name": "auth-register-success-201",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-register-learner-201",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-register-duplicate-email-409",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-login-learner-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-login-success-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-login-wrong-password-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-me-with-bearer-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-sme-ingest-rich-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-rating-know-201",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-sme-ingest-replace-rich-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-rating-know-2-201",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-sme-status-admin-rich-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-rating-still-learning-201",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-marking-queue-v2-rich-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-marking-answers-rich-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-marking-answers-paged-rich-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-marking-throughput-rich-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-attempt-mcq-practice-201",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-target-series-put-201",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-target-series-clear-204",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-target-series-clear-again-204",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "actuator-health-parity",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-login-missing-fields-400",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-login-unknown-email-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-register-admin-refused-403",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-register-bad-email-400",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-register-blank-displayname-400",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-register-missing-fields-400",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-register-password-no-digit-400",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-register-short-password-400",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-register-teacher-no-joincode-403",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "auth-register-unknown-role-400",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-canonical-unknown-404",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-embed-unknown-404",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-search-blank-query-500",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-search-course-unresolved-teacher-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-search-empty-teacher-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-search-missing-query-400",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-search-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-student-403",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-teacher-empty-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-docs-unknown-404",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-reader-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-reader-unknown-doc-404",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "content-reader-unknown-doc-page-404",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "curriculum-subject-bad-uuid-400",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "curriculum-subject-by-id-student-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "curriculum-subject-unknown-404",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "curriculum-subjects-student-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "curriculum-versions-archived-student-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "curriculum-versions-student-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "curriculum-versions-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "question-assets-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "question-assets-unknown-404",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-paper-audit-unknown-404",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-paper-review-unknown-404",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-provenance-unknown-404",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-question-topics-unknown-404",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-review-queue-student-403",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-review-queue-teacher-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-review-queue-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-review-queue-v2-teacher-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-content-review-queue-v3-teacher-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-curriculum-nodes-suggested-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-curriculum-nodes-teacher-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-curriculum-nodes-unknown-version-200-empty",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-curriculum-versions-student-403",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-curriculum-versions-teacher-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "teacher-curriculum-versions-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-attempt-bad-uuid-400",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-attempt-history-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-attempt-mcq-happy-201",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-attempt-missing-fields-400",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-attempt-structured-missing-fields-400",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-attempts-post-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-attempts-structured-post-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-exam-paper-unknown-uuid-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-exam-papers-list-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-exam-papers-student-403-or-state",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-history-after-submit-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-marking-answers-student-403",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-marking-humanmark-unknown-404",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-question-markscheme-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-question-unknown-authed-404",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-question-unknown-uuid-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-questions-families-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-questions-list-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-questions-topics-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-selfmark-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-selfmark-unknown-attempt-500",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-smartmark-feedback-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-smartmark-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-smartmark-unknown-attempt-404",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-sme-ingest-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-sme-status-student-403",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-sme-status-teacher-403",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-sme-status-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-marking-answer-unknown-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-marking-answers-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-marking-humanmark-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-marking-queue-v2-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-marking-smartmark-batch-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-marking-throughput-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-tests-preview-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-teacher-tests-weakness-options-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-tests-weakness-options-teacher-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w3-transcribe-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-agenda-composed-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-agenda-empty-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-agenda-malformed-bearer-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-agenda-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-agenda-wrong-method-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-authed-unknown-path-404",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-course-stats-practiced-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-course-stats-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-exam-series-qualification-filter-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-exam-series-seeded-calendar-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-exam-series-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-exam-series-unknown-qualification-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-rating-bad-cardid-400",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-rating-bad-rating-400",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-rating-dotted-anchor-400",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-rating-post-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-rating-unknown-anchor-404",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-schedule-derived-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-schedule-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-trail-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-flashcard-trail-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-intervention-activate-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-intervention-cancel-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-intervention-complete-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-intervention-create-missing-rootid-400",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-intervention-create-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-intervention-get-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-intervention-steps-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-intervention-unknown-run-400",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-knowledge-graph-practiced-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-knowledge-graph-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-note-vote-post-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-smart-lesson-missing-params-400",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-smart-lesson-practiced-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-smart-lesson-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-smart-lesson-unknown-topic-404",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-state-empty-bearer-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-state-practiced-200",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-state-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-target-series-delete-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-target-series-put-unauthed-401",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-target-series-unknown-series-404",
+      "pass": true,
+      "tranche": "staged"
+    },
+    {
+      "name": "w4-unknown-learner-path-401",
+      "pass": true,
+      "tranche": "staged"
+    }
+  ],
+  "receipt_note": "per-case bodies trimmed for receipt weight (the diff evidence lives in this verify run's stdout transcript); verdicts verbatim"
+}
