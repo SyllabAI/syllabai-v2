@@ -1,0 +1,31 @@
+{
+  "task": "LLM-CHAIN post-merge redeploy from tip (operator trace 1a119e8786b71c51 'direct-merge order. and post-merge api redeploy from tip' + Vercel token)",
+  "agent": "w0a",
+  "date": "2026-10-08",
+  "merge_of_record": "PR #144 merged b16230f @ 05:02:25Z by the desk (r9-hubx Task-20 eb29e3a + r0 receipt c254e56) under operator trace 1a119de998dd9171 — the direct-merge order was satisfied of record before this lane's leg; w0a intake-3 c4695a6 push was redundant-but-harmless (post-merge branch push)",
+  "deploy": {
+    "source": "origin/main bc4ec31 (post-#151 tip)",
+    "build": "of-record machinery: gen-w0a-entry.cjs (6 YAML assets embedded byte-verbatim from tip) + esbuild CJS minified target node20 + Bun shims (node:crypto/js-yaml) + --define:import.meta.dir (NEW this round: the two import.meta.dir sites crash CJS boot otherwise — of-record runs used the worktree-only shim variant)",
+    "staging": "scripts/apideploy (api/index.js 2496765 bytes + vercel.json catch-all rewrite)",
+    "local_gate": "boot 227ms PASS (eager NBA_CONCEPT_GRAPH build + runtime sha256 pins on all 6 embedded assets) + health 200 UP 21ms; DB legs environment-blocked this sandbox (Neon DNS-blocked of record) — not bundle-verified-here, covered live below",
+    "deployment": "dpl_J4PjyJsEa3 READY production, alias syllabai-v2.vercel.app; rollback anchor dpl_Die9SrNyPQ (prior READY)",
+    "env": "4 LLM keys + EMBEDDING key present of record (Task-39/42 census); DATABASE_URL w2r2 fp b289a2298e707904; JWT fp a7dfe6e342ba1e7d; SYLLABAI_LLM_MODE unset = code default production"
+  },
+  "live_battery": {
+    "health": "200 UP",
+    "bogus_login": "401 invalid_credentials 0.29s (Neon SELECT path live from Vercel infra)",
+    "empty_register": "400 validation_failed",
+    "chain_health_unauth": "401 (mounted, auth-gated)",
+    "probe_register": "201 roles [STUDENT] (DISCLOSED prod write: w0a-probe-20261008b@example.com, one account)",
+    "auth_me": "200",
+    "cla_ask_empty": "400 validation_failed 'question: must not be blank' — the 097 REPAIRED first-field law LIVE (PR #151)",
+    "tutor_ask_generation": "HTTP 200 in 1.92s — REAL GENERATION END-TO-END: provider=groq model=openai/gpt-oss-120b refused=false evidenceCount=6 (kg vector retrieval live) topics=[4CH1-S1-i Electrolysis matchScore 1] — the full chain (JWT -> Gemini embedding -> vector retrieval -> kg-retriever SQL (094 inList law) -> failover chain (26.1 order) -> answer) LIT IN PRODUCTION",
+    "chain_health_student": "403 Forbidden (admin gate)"
+  },
+  "disclosures": [
+    "one probe account created (register write) + one tutor/ask LLM call spent (groq quota, minimal single question)",
+    "T-MIG-099: the mark_points rename IS in the live bundle (merged b16230f); the card's owed real-wire smart-mark proof leg stays with the card owner (r9-hubx Task-20); the ghost-table 500 class is eliminated at the code layer of record",
+    "local DB legs skipped (sandbox DNS block, of-record) — DB path proven live instead",
+    "smart-mark/CLA generation legs not probed beyond the deterministic-refusal shape (quota discipline; Tutor leg is the ① unblock proof)"
+  ]
+}
