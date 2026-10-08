@@ -54,7 +54,7 @@ export interface MarkingPoint {
   questionPartId: string;
 }
 
-/** Raw mark_scheme_points row (snake columns) → the camel projection. */
+/** Raw mark_points row (snake columns) → the camel projection. */
 export function toMarkingPoint(r: Record<string, unknown>): MarkingPoint {
   return {
     id: String(r.id),
@@ -537,7 +537,7 @@ export class SmartMarkService {
     const scheme = validatedRows[0]!;
     const pointRows = (await this.sql`
       select id, ref, ordering, text, marks, question_part_id
-      from mark_scheme_points where mark_scheme_id = ${scheme.id} order by ordering
+      from mark_points where mark_scheme_id = ${scheme.id} order by ordering
     `) as unknown as Array<Record<string, unknown>>;
     const points = pointRows.map(toMarkingPoint);
 
@@ -843,7 +843,7 @@ export class StudentSmartMarkService {
     const scheme = await this.resolveScheme(attempt.question_id);
     const pointRows = (await this.sql`
       select id, ref, ordering, text, marks, question_part_id
-      from mark_scheme_points where mark_scheme_id = ${scheme.id} order by ordering
+      from mark_points where mark_scheme_id = ${scheme.id} order by ordering
     `) as unknown as Array<Record<string, unknown>>;
     const points = pointRows.map(toMarkingPoint);
     return {
@@ -862,7 +862,7 @@ export class StudentSmartMarkService {
   ): Promise<PartSmartMarkView> {
     const pointRows = (await this.sql`
       select id, ref, ordering, text, marks, question_part_id
-      from mark_scheme_points where mark_scheme_id = ${schemeId} order by ordering
+      from mark_points where mark_scheme_id = ${schemeId} order by ordering
     `) as unknown as Array<Record<string, unknown>>;
     const points = pointRows.map(toMarkingPoint);
     const inScope = points.filter((p) => p.questionPartId === answer.question_part_id);

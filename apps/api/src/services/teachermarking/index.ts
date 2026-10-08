@@ -547,7 +547,7 @@ export class TeacherSmartMarkService {
 
     const pointRows = (await this.sql`
       select id, ref, ordering, text, marks, question_part_id
-      from mark_scheme_points where mark_scheme_id = ${scheme.id} order by ordering
+      from mark_points where mark_scheme_id = ${scheme.id} order by ordering
     `) as unknown as Array<Record<string, unknown>>;
     const context: MarkingContext = {
       answer: {

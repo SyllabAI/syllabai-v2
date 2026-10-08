@@ -5472,6 +5472,42 @@ Work Log:
 Stage Summary:
 - The §2.4 spine is GREEN on the live prod posture at 0f43156 with ZERO expectation mismatches and the documented quirk parity holding; the v2 api-of-record demonstrates full data-plane continuity (token + shared Neon) under live cross-plane probes
 - Operator watch items: §2 flip lever still OPEN (hub redeploy = the act; posture constants verified unchanged); #144/#151/#152 at the desk; LIVE ENV PRUNE blocked on VERCEL_TOKEN; api redeploy lever [1] now picks up #146 leg-04 repair + #150 binding law (both merged)
+---
+Task ID: r9-hubx Task-19 (local ledger 19)
+Agent: r9-hubx (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Operator directive trace 1a119d851a655029 'grab the tiny 094 card-flip' — desk-flip T-MIG-094 to DONE post-landing.
+
+Work Log:
+- Fetch-first: origin/main 6a30e96 -> b062cc1 (w7-smoke receipt + T-MIG-099 filing + r1c Task-42 worklog); local main ff-synced clean; zero collision — no in-flight work touches the 094 card (open PRs #144/#151/#152/#153 all unrelated to this yaml)
+- Evidence chain first-hand: PR #150 no longer open (census of record x2: w7-smoke sweep 'verified via API' + Task-18 census 'closed-landed direct-main'); branch tip 5e16264 IS on origin/main, single-parent FF off claim 00745e2, remote t-mig-094/r0 tip == 5e16264 — mechanically a direct-main landing, NOT a merge-button merge
+- GitHub PAT 401 Bad credentials this run (fresh API pull impossible) — standing-hygiene rotation presumed of record; landing evidence stands on git ancestry alone, no credential needed
+- Card flipped IN_REVIEW -> DONE with full content restatement + REAL-WIRE GATE OWED BY THE MOUNTING BAND preserved of record (fakeSql cannot expose binding semantics; first family golden-verify reaching these legs runs on real Neon wire; 093-precedent carry-over, T-MIG-099 class ledger cross-reference)
+- Owner field untouched (main lane implemented under 1a119b0c8fe09e99); flip is desk-level routing per operator order; .syllabai-only direct-main per precedent (fetch-first), authors-never-self-merge N/A (no code PR involved)
+
+Stage Summary:
+- T-MIG-094 DONE: register now 81 DONE of 90 (CAPTURED 7: 084-089+091; IN_PROGRESS 095; BLOCKED 097); the 093->094 defect-band chain fully closed at the code+pin level, real-wire proof carried by the mounting band as documented
+- Watch: GitHub PAT dead (401) — if NOT deliberately rotated, GitHub API lane actions are blocked until a fresh PAT; #144/#151/#152/#153 remain at the desk
+
+- 2026-10-08T05:20Z w0a LLM-CHAIN run-004 (trace 1a119d20237149b1): intake-3 onto b062cc1 — T-MIG-099 ID YIELDED to main a289818 (operator-ordered pre-draft band card; this lane duplicate withdrawn, renumber precedent); ghost fix stays on #144 per the band card law; worklog union x3; CI-dirty root cause identified of record: pull_request workflows run on the merge ref — a conflicted PR gets ZERO runs (the integrator gate-1 and gate-3 are one gate: clean merge fires CI); gates on this tree then immediate push
+---
+Task ID: r9-hubx Task-20 (local ledger 20)
+Agent: r9-hubx (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Operator directive trace 1a119ddbdf0927c1 'Continue with the desktop side #144 (R0 REQUEST_CHANGES fix-forward)' — desk-advance and desk-merge PR #144.
+
+Work Log:
+- Fetch-first: w0a branch had advanced 4df5e83 -> c4695a6 (intake-3: T-MIG-099 ID yield recorded; CI-dirty ROOT CAUSE identified of record — pull_request CI runs on the merge ref, conflicted PR = ZERO runs, gates 1+3 are one gate)
+- Built desk-union e4817e1 (main 56c98b8 into c4695a6; worklog keep-both union, zero code conflicts) and gated it first-hand; push rejected non-FF = w0a landed intake-4 a37a622 mid-flight (same two parents, union x4) — CODE-TREE PARITY PROVEN (git diff e4817e1..a37a622: sole diff worklog.md 2 lines, apps/packages/golden byte-identical)
+- Full gates battery re-run on the ACTUAL merge head a37a622: typecheck x4 exit 0 / spine 1760 pass 0 fail 13 skip 6920 expect 94 files / hub 41-0 / golden selftest OK
+- R0-REVIEW-144 REQUIRED ledger discharged: (1) CI gate root-caused + structurally unblocked by the union, check-runs unreadable (GitHub PAT 401, hygiene rotation presumed) so desk basis = the #141 precedent (local gates ARE the CI battery, first-hand on the merge head); (2) disclosures card-linked — T-MIG-099 band card a289818 + pointer comment 6052294137, kg-retriever any() YIELDED to the T-MIG-094 law 5e16264 + session-store law main-of-record (branch touches NEITHER, git-diff proven); (3) dirty resolved (union x4, zero code conflicts at any intake)
+- DESK MERGED: b16230f = Merge pull request #144 (a37a622 into main 56c98b8), pushed 56c98b8..b16230f; authors-never-self-merge held (desk r9-hubx != author w0a); no force-push; zero prod writes
+- Desk checklist verified first-hand on the merge tree: the 7-file mark_points rename survived INTACT — zero 'mark_scheme_points' hits across apps/api/src+test+packages; mark_points serving at all 4+1 law sites
+- T-MIG-099 card annotated: condition (1) MET; card stays OPEN on condition (2) (real-wire proof leg + post-redeploy live error-class note)
+
+Stage Summary:
+- PR #144 LANDED of record: LLM-chain real adapters (adapters/bridges/health + wiring + 3 new test files + ADR-MIG-0002) + the ghost rename are on main at b16230f; spine +35 tests to 1760
+- Enumerated levers (operator-ordered separately): api-of-record redeploy (lights the LLM seams + carries the ghost fix + 094 binding law live; keys already configured per r1c Task-42), T-MIG-099 proof leg (scratch substrate, zero-key), hub redeploy = the section-2 act
+- Open PRs after this merge: #151 (097 CLA) / #152 (083-087 run-002) / #153 (095); watch: GitHub PAT still dead
+
 
 ## 2026-10-08T04:5xZ — worklog(r0): T-MIG-095 fix of record (operator 'start 095' trace 1a119b4f3c6fc7d9)
 - run-001 combo-law capture (31 legs dual-plane + 3 repeat batteries + whitespace battery, live core vs live v2, ALL-400 zero-write) SUPERSEDED the band premise: the frozen core's constraint-SELECTION order is request-level NONDETERMINISTIC whenever >=2 constraints are violated, at both granularities ({} on ratings served rating/cardId/subtopicCode-first across consecutive runs; cardId "" served size x4/pattern x3/notblank x1; noteId "" served pattern x4/size x4) — the 096 L09/L10 'first-field law' samples were draws from that distribution, NOT a reproducible port defect; NO schema reordering is lawful (T-MIG-080 F3 reading and the live wire reconcile by nondeterminism).

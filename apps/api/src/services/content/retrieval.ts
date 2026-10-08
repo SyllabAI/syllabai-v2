@@ -95,15 +95,22 @@ export interface EmbeddingProvider {
 const EMBED_DIMENSION = 768;
 
 /**
- * GeminiEmbeddingProvider query path (text-embedding-004, 768-dim, no
- * failover by design). A transport failure throws — the chain degrades to
- * the core's own provider-absent posture, never to a silent empty search.
+ * GeminiEmbeddingProvider query path (gemini-embedding-001 pinned to 768
+ * output dimensions, no failover by design). A transport failure throws —
+ * the chain degrades to the core's own provider-absent posture, never to a
+ * silent empty search.
+ *
+ * 2026-10 amendment of record (lane w0a, live flip-proof): Google retired
+ * text-embedding-004 from v1beta (models/text-embedding-004 → 404 NOT_FOUND
+ * for embedContent), so the model rides gemini-embedding-001 with explicit
+ * outputDimensionality 768 — the vector(768) column and EMBED_DIMENSION law
+ * are unchanged, only the provider-side model name moves.
  */
 export class GeminiEmbeddingProvider implements EmbeddingProvider {
   constructor(private readonly apiKey: string) {}
 
   model(): string {
-    return "text-embedding-004";
+    return "gemini-embedding-001";
   }
 
   dimension(): number {
@@ -112,14 +119,18 @@ export class GeminiEmbeddingProvider implements EmbeddingProvider {
 
   private async embed(text: string): Promise<number[]> {
     const res = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/text-embedding-004:embedContent`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-001:embedContent`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "x-goog-api-key": this.apiKey,
         },
-        body: JSON.stringify({ model: "models/text-embedding-004", content: { parts: [{ text }] } }),
+        body: JSON.stringify({
+          model: "models/gemini-embedding-001",
+          content: { parts: [{ text }] },
+          outputDimensionality: EMBED_DIMENSION,
+        }),
       },
     );
     if (!res.ok) {

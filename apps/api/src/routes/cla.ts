@@ -65,6 +65,7 @@ import {
 import { buildClaContextResolver } from "../services/cla/context-resolver";
 import { buildClaService } from "../services/cla/service";
 import { ClaAttemptRequiredError } from "../services/cla/leakage-policy";
+import { buildLlmChain, chainAsLlmProvider, type FailoverLlmChain } from "../services/llmchain";
 import {
   ArgumentError,
   TUTOR_UNAVAILABLE_MESSAGE,
@@ -217,16 +218,24 @@ export function createClaRouter(cla: ClaService): Hono {
  * misconception readings — the SAME composition the learner-me state view
  * uses, MED-2/ADR-032), the T-C32-compliant vector arm over the injected
  * embedding provider (honest empty when unkeyed), the grounded generator
- * over the DORMANT LLM seam (the tutor posture — generation-reaching asks
- * 503 tutor_unavailable, deterministic refusals never 503), and a no-op
- * telemetry sink (the 061 posture — zero tables, ADR-031 intact;
- * disclosed). activeStruggleInferences has NO landed v2 read (the
- * struggle-inference table read is a later wave; the tutor module itself
- * runs with NO learner model at all) — the port returns the honest empty
- * list, the policy falls through to the no-signal EXPLANATION plan,
- * disclosed.
+ * over the LLM seam of record, and a no-op telemetry sink (the 061 posture
+ * — zero tables, ADR-031 intact; disclosed). activeStruggleInferences has
+ * NO landed v2 read (the struggle-inference table read is a later wave; the
+ * tutor module itself runs with NO learner model at all) — the port returns
+ * the honest empty list, the policy falls through to the no-signal
+ * EXPLANATION plan, disclosed.
+ *
+ * LLM SEAM OF RECORD (ADR-MIG-0002, operator directive ①): the §26.1 chain
+ * rides the chainAsLlmProvider bridge — zero-key/test boots keep the honest
+ * 503 tutor_unavailable posture (every member registers dormant, the
+ * deterministic refusals NEVER 503 law is untouched); keyed boots generate
+ * for real with failover. opts.chain accepts the shared composition-root
+ * chain; chain null forces the dormant seam (rig work only).
  */
-export function buildClaRouters(env: Record<string, string | undefined> = process.env) {
+export function buildClaRouters(
+  env: Record<string, string | undefined> = process.env,
+  opts: { chain?: FailoverLlmChain | null } = {},
+) {
   const databaseUrl = requireDatabaseUrl(env as { DATABASE_URL?: string });
   const sql = createSql(databaseUrl);
   const resolver = buildClaContextResolver({ sql, clock: defaultClock });
@@ -257,6 +266,7 @@ export function buildClaRouters(env: Record<string, string | undefined> = proces
     generate: async () => ({ text: "", model: "dormant", providerName: "dormant" }),
     stream: async function* () {},
   };
+  const chain = opts.chain === undefined ? buildLlmChain(env) : opts.chain;
   const cla = buildClaService({
     sql,
     clock: defaultClock,
@@ -264,7 +274,7 @@ export function buildClaRouters(env: Record<string, string | undefined> = proces
     registryDeps: { sql, clock: defaultClock, learnerModel },
     learnerModel,
     vectorRetriever: buildSqlVectorArm(sql, resolveEmbeddingProvider(env)),
-    generator: buildGroundedTutorGenerator(dormantClaLlm),
+    generator: buildGroundedTutorGenerator(chain === null ? dormantClaLlm : chainAsLlmProvider(chain)),
     telemetry: () => {},
   });
   return {
