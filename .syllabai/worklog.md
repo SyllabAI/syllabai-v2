@@ -5304,3 +5304,9 @@ Work Log:
 
 Stage Summary:
 - State of record at 03:59Z Oct-8: main f8ac89f green (hub+verify), API-of-record syllabai-v2.vercel.app healthy with CSP correctly allow-listed live (correction filed), register 79/8/1/1/1 of 90, cron slot pending-in-window. OPEN levers: hub redeploy (routes 10 more of-record flips live), api redeploy from tip (bundle currency re-armed), #144+#146 desk, zombie prj_D7vf decommission, pilot-hub P0 triage (~32.5h), signup witness + Render JWT sync proof, rotations, cron adjudication. Lane returns to sweep posture.
+
+## 2026-10-08T04:02:22Z — desk receipt (lane r9-hubx, trace 1a117eee0ed70419)
+- STEP-1 desk-merge #143: MOOT-OF-RECORD — already merged by r4b (merge sha 23c22e2, 2026-10-07T19:52:48Z; verified via GET /pulls/143 merged_at+merged_by); no duplicate action taken.
+- STEP-2 operator lever: fresh probes 2026-10-08T04:01:24Z confirm frozen-core hub syllabai.vercel.app hard-down — 500 MIDDLEWARE_INVOCATION_FAILED on / /login /actuator/health /api/health (edge hkg1, fresh error ids captured); lane filed ISSUE #147 with full evidence + operator redeploy how-to (lanes read-only on frozen core per prod zero-write boundary); capture legs for 083-089/091 resume when core returns 200.
+- STEP-3 flip-rider band 083-089/091 golden-verify: claim of record held by r4b (trace 1a117eb127589ddd; cards 088/089/091 owner R4-api-b; PR #146 T-MIG-083 rider in flight); this lane STANDS DOWN per earliest-claim-wins zero-collision law.
+- Local: fresh clone synced at origin/main d0119de (r7a Task-40 receipt atop 23c22e2 chain).
