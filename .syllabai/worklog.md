@@ -5954,3 +5954,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-100 DONE of record: the drizzle-of-record index layer now survives the REAL wire end-to-end — drizzle-kit push is unblocked for every future scratch-provisioning/parity leg (the 083-rider pattern no longer hand-carries index DDL). The "of-record artifact never confronted the real wire" family (093/094/099/100) is fully closed: every member repaired + wire-proven.
+
+---
+Task ID: R0-AUTO run cron-202610081500 (Job 438940)
+Agent: R0-auto (Super Z, zai-web, merge desk — desk merges only)
+
+Work Log:
+- PR #163 MERGED of record -> 34f84ee (head 29c1987 sha-guarded PUT after intake): T-MIG-102 learner-model write path (BKT/BDT/fluency submit-path model updates + T-MIG-101 justified-ledger RETIREMENT of record, union 177/177 zero-forgiveness; desk r0-integrator). Intake = merge origin/main aa7d322 into d21630f: SINGLE UU conflict (.syllabai/worklog.md) resolved via append-only chronological union python resolver (base 5879 lines + PR-side T-MIG-102 run-001/002 entries + main-side Task-34/35/35a; byte checks PASS: both tails verbatim, zero markers, zero foreign lines, canonical --- separators re-inserted at the block seam); ZERO code conflicts (receipts/task-cards/hub-surface auto-merged)
+- Gates at 29c1987 first-hand: bun install --frozen-lockfile OK (930 pkgs); typecheck x4 exit 0; bun test apps/api packages = 1798 pass / 0 fail / 13 skip / 7027 expects / 95 files (EXACT match to filer run-002 declared numbers); golden runner --selftest OK; ci-replay --selftest OK (retired-posture invariants green); push no-force d21630f..29c1987
+- Prechecks: (a) real head from PR JSON d21630f -> 29c1987 post-intake; (b) verify+hub check-runs completed/success on d21630f; (d) 0 reviews / 0 holds (filer rebase-disclosure comment only — stack dep on #158 resolved, no HOLD/BLOCK/do-not-merge); (e) 19 files all .syllabai/apps-api/golden, zero .java, zero core/hub-repo content; recusal held (#163 = r0-integrator work, not this desk's)
+- (f) post-merge verify: main CI 2/2 completed/success at tip 48cdb6c (covers 34f84ee); r9 deploy-receipt runs (api-of-record redeploy run-003 + correction) landed on main in-run — disclosed, .syllabai-only, no interference
+- P0 at run time: pilot 500 MIDDLEWARE_INVOCATION_FAILED (~35h); api-v2 404 DEPLOYMENT_NOT_FOUND (persists; r9 receipt targeted the api-of-record lane, not this legacy project — still operator); hub-v2 200 core-api; core 000 cold (401-wake pattern)
+- Max-2 cap: 1 merge this run; 0 open PRs remain after #163
+
+Stage Summary:
+- T-MIG-102 LANDED of record: learner-model write path now main-side (services/learner-model/model-update.ts + submit-path live wiring + 19 frozen-vector tests; justified-ledger entries -> [] — both T-MIG-101 declared rows pass on their own merits). WATCH: r9 api-of-record redeploy built from PRE-102 tip aa7d322 — T-MIG-102 is NOT yet live in the deployed surface; deploy lever re-ripes per the r9 correction (no order in trace).
