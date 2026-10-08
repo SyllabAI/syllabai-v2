@@ -1,0 +1,71 @@
+{
+  "family": "T-MIG-042",
+  "run": "run-002-env-act-live-r1c",
+  "operator_trace": "1a11caa5b6c6e53d",
+  "operator_order": "Check if merged or not. If not then review + merge yourself. Then continue working.",
+  "lane": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)",
+  "timestamp_utc": "2026-10-08T18:00Z - 18:26Z",
+  "merge_census_of_record": {
+    "open_prs": "ZERO at act time (GitHub API, token-authenticated)",
+    "pr_166_t-mig-042": "MERGED 2026-10-08T15:43:20Z as 9ce5c55 by the integrator lane — authors-never-self-merge honored of record; no merge action owed",
+    "pr_167_t-mig-106": "MERGED 2026-10-08T17:02:21Z as 590f929",
+    "corroboration": "r4b independently converged the same census at d117a54 (trace 1a11caab759d8b31) and explicitly left the T-MIG-042 env act to the r1c fence — 'review+merge act moot'",
+    "conclusion": "the review+merge half of the operator order is SATISFIED by the of-record merges; 'continue working' executed as the staged §3.1 env act"
+  },
+  "env_act_legs": {
+    "law": "CUTOVER_RUNBOOK §3.1 + T-MIG-042 card acceptance final bullet + run-001 staged sequencing law (merge -> api redeploy first -> hub redeploy -> first fire -> re-fire; the 02:00Z cron self-fire + §3.3 cross-check follow WITHOUT further code)",
+    "secret": "CRON_SECRET 64-hex from .secrets/cron-env.sh (0600, generated in the DECAY GO act) — sha256 value-fingerprint 67a70d6e19192906 == the PR #166 body of record disclosure; value NEVER printed/committed; ONE shared value on both projects (drift = loud 401 by design)",
+    "leg1_env_adds": [
+      "api project syllabai-v2 (prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ): CRON_SECRET type=encrypted target=production — OK",
+      "hub project syllabai-hub-v2 (prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl): CRON_SECRET type=encrypted target=production — OK",
+      "hub project syllabai-hub-v2: DECAY_CRON_ENABLED=1 type=plain target=production — OK (the single OFF-switch law; absent => 200 skipped)",
+      "target=production only: Vercel Cron fires production deployments; least privilege"
+    ],
+    "leg2_api_redeploy": {
+      "method": "Vercel instant redeploy-by-id: POST /v13/deployments {name:syllabai-v2, deploymentId:dpl_GJK1wP5Lpn4pw1XEMYhTkNsat6Gd, target:production} — zero code delta BY CONSTRUCTION (reuses the uploaded bundle of the serving deployment)",
+      "source_bundle": "dpl_GJK1wP5L = the r0-auto mainlane '4th firing' (ef94597, operator trace 1a11c97a245affa1): 093 recipe from tip 8565b4b, 321 modules == of-record, 6/6 asset SHA pins, LIVE CENSUS 26/26 — verified content of record",
+      "result": "dpl_DJhp8McGKbKTKb6im18kBgNu3eav READY first poll, aliases [syllabai-v2.vercel.app, syllabai-v2-syllab-ai.vercel.app] — the CRON_SECRET snapshot rides a byte-identical bundle",
+      "why_not_full_093": "env-only act; deploy-tools/ is sandbox-local (not tracked); redeploy-by-id is the minimal-delta path and keeps the 26/26-verified bundle the serving content"
+    },
+    "leg3_hub_redeploy": {
+      "source": "origin/main 6813bb7d70069bb4d80faec7c40bea83dc574697 (fetched first-hand; hub-code content == the #166+#167 merged board — .syllabai-only deltas since 590f929)",
+      "gates_at_tip_first_hand": ["hub tsc --noEmit exit 0", "bun test apps/hub 54 pass / 0 fail / 432 expect() across 3 files"],
+      "method": "vercel CLI 62.7.0 (version of record), link syllabai-hub-v2 (project rootDirectory=apps/hub, framework nextjs) + deploy --prod --yes from the clean clone root",
+      "race_disclosure": "gitSource double-create (the e6cc8d5 incident class, benign this run): one CLI invocation produced dpl_CtTEANYBQ (18:18:58Z, READY 92s, dual-aliased first) AND dpl_H8AYEmt8 (18:19:47Z, CLI retry, READY ~18:21Z) — SAME sha 6813bb7, same real build pipeline, both retained; final alias holder = dpl_H8AYEmt8 [syllabai-hub-v2.vercel.app, syllabai-hub-v2-syllab-ai.vercel.app]; no empty build held the alias at any instant (first build was a real 92s one)",
+      "hygiene": "vercel link pulled .env.local (VERCEL_OIDC_TOKEN) into the scratch clone — shredded (shred -u) immediately after the deploy; never committed; the clone is scratch, origin URL token-embedded, worktree removed post-act"
+    },
+    "leg4_battery": {
+      "hub_health": "200 {status:ok, service:syllabai-hub, dataMode:core-api, coreConfigured:true} — the §2 flip discriminator byte-law HOLDS on the new bundle",
+      "api_health": "200 {groups:[liveness,readiness], status:UP}",
+      "hub_decay_unauth_and_wrong_bearer": "401 {status:unauthorized, reason:'missing or wrong Authorization bearer — Vercel Cron sends Authorization: Bearer $CRON_SECRET when CRON_SECRET is set'} — the 'CRON_SECRET is not configured' wall (proven at 15:36Z) is GONE; the decision law now reaches the bearer branch = CRON_SECRET configured, live-proven",
+      "api_decay_unauth_and_wrong_bearer": "401 {status:unauthorized, reason:'missing or wrong Authorization bearer — the hub seam forwards the Vercel Cron bearer verbatim'} — api bearer law live",
+      "first_fire": "200 {status:'ok', ledgerRow:{windowStart:'2026-10-08 00:00:00+00', executedAt:'2026-10-08 18:22:46.477+00', triggerKind:'vercel-cron', decayed:0, reviewsScheduled:0}} — THE exactly-once ledger row written to PROD Neon via the seam (hub -> api-of-record -> createSql INSERT .. ON CONFLICT DO NOTHING RETURNING); decayed/reviewsScheduled literal 0/0 per the ADR-031 read-time law",
+      "re_fire": "200 {status:'already-run', ledgerRow SAME row (identical windowStart+executedAt)} — window_start PK idempotency PROVEN LIVE"
+    }
+  },
+  "runbook_3_state_after_act": {
+    "s3_1": "COMPLETE of record (env adds + redeploys + first fire + re-fire, all green)",
+    "s3_2": "Java core scheduler left running-but-idle by design (unchanged); 48h harmless no-op verify happens inside §4",
+    "s3_3": "cross-check DUE 2026-10-09 after the 02:00Z self-fire: expect decay_job_runs rows for windows 2026-10-08 (the manual first fire, executedAt 18:22:46.477+00, trigger_kind vercel-cron) and 2026-10-09 (the self-fire) — exactly one row per window; the 02:00Z fire lands on a NEW window so 'ok' (not 'already-run') is the expected shape",
+    "s4": "the 48h watch opens after the §3.3 morning cross-check; the §6.1 archive gate clock starts there",
+    "s6_2_hazard_unchanged": "Render core disable stays forbidden while HUB_DATA_MODE=core-api families (teacher marking, recommendations, tutor ask/stream) still route core-ward — the standing sequencing hazard of record"
+  },
+  "rollback_anchors": [
+    "api: dpl_GJK1wP5Lpn4pw1XEMYhTkNsat6Gd (pre-act serving bundle, one re-alias call) — note: rolling back removes the CRON_SECRET snapshot; the cron route re-walls to 401-not-configured (harmless, fail-closed)",
+    "hub: dpl_BBGcKUBy5qUZ8ps79a9UsDvjymXr @ aa7d322 (pre-act prod holder) — note: aa7d322 predates the 042 hub arm (042P stub) — a hub rollback reverts the seam to the stub; with env set, the stub path forwards and 501s are DEAD code, the stub returns not-implemented ONLY via result.implemented=false which the implemented seam never sets — disclosed: hub rollback also unwants the §2-flip-era routing fixes; treat as last-resort",
+    "intra-act evidence holders: dpl_CtTEANYBQ (hub, same sha, no aliases) — retained"
+  ],
+  "write_ledger": {
+    "prod_neon": "ONE INSERT (the designed decay_job_runs window row 2026-10-08, 0/0 literal, trigger_kind vercel-cron) — the takeover act itself",
+    "vercel_env": "3 adds (api CRON_SECRET; hub CRON_SECRET; hub DECAY_CRON_ENABLED=1)",
+    "deployments": "2 api (1 instant-redeploy env-only) + 2 hub (same-sha race, disclosed)",
+    "learners": "0", "generations": "0", "ddl": "0", "secrets_printed": "0 (fingerprints only)",
+    "repo": ".syllabai-only (this receipt + card flip + worklog) — zero code deltas"
+  },
+  "residuals": [
+    "runbook §3.1 parenthetical ('it is not [absent]'): ACCURATE again as of this act (the port exists and is live) — no runbook edit owed anymore; the Task-53 correction-carry is DISCHARGED",
+    "operator credential rotation (Neon PAT + JWT secret) still standing-advised",
+    "T-MIG-042 card flipped IN_REVIEW -> DONE by the filer (the merging lane's 'DONE at merge' flip never landed; the 101/102 stale-card precedent governs)"
+  ],
+  "verdict": "§3 NIGHTLY DECAY TAKEOVER IS LIVE OF RECORD — the Vercel Cron entry now drives the v2 ledger exactly-once; first fire + re-fire green on prod; §3.3 cross-check tomorrow then the §4 48h watch opens"
+}
