@@ -6564,3 +6564,20 @@ Work Log:
 
 Stage Summary:
 - The decay takeover is LIVE of record and independently verified end-to-end; the ONLY remaining 042 item is the §3.3 morning cross-check after tonight's 02:00Z self-fire, then the §4 watch. Board: every card DONE; no open PRs; no lane-side code debt of record.
+
+---
+Task ID: 50 (r7a)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6, operator trace 1a11d36f0b721e31)
+Task: "continue to the next defect band (094 kg-retriever is the last to be unlocked)" — T-MIG-094 real-wire gate discharge (the band's owed residual; code+pins of record since PR #150).
+
+Work Log:
+- Workspace wipe #8 on resume; restored from the /tmp/my-project survivor (creds incl. the Task-49 teacher.env 0600, scripts, replay evidence, worklog mirror) — zero loss; teacher credential verified persisted.
+- Fetch-first census first-hand: main e08f51d81 (r4b Task-42 decay census); open PRs ZERO; board all-DONE; 094 card DONE # flipped with the REAL-WIRE GATE owed of record ("the family golden-verify that first exercises these legs must run on real Neon wire — fakeSql cannot expose binding semantics"); the 084/085/086 family verifies of record rode the scratch-PG substrate, so the gate stayed owed.
+- Fix of record verified first-hand @ e08f51d81: inList exported session-store.ts :44; three kg-retriever IN sites (recursive-CTE :102, title back-fill :128, MISCONCEPTION_OF :152) per-element annotated T-MIG-094; zero residual dynamic IN; 5 construction pins in test/tutor/kg-retriever-wire.test.ts.
+- Vehicle: kg-retriever serves the tutor generation path (karag step 1 — kgRetrieve BEFORE vector/paper-resolution/LLM); non-empty topicIds fires the IN sites; zero-LLM probe = complete paper identity with out-of-range Q99 -> 3-anchor resolver binds zero -> fail-open guard (identityBoundUnserved) -> deterministic paper refusal 200 AFTER the SQL legs ran; the ask 200 body topics echo = the binding observable.
+- LIVE RUN on syllabai-v2.vercel.app (learner bearer, 4 probes, 4s pacing, no retries): P1 identity-only guard control 200 refused deterministic-paper-refusal topics=[]; P2 single bind 200 topics=[Esters 4CH1-S4-g @1.0]; P3 multi bind 200 topics x4 (Alkanes+Alkenes @1.0 + spec-points 4CH1-4.28/4.17) — the IN sites bound MULTI-ELEMENT per-element scalar-param lists on the real Neon WebSocket wire, ZERO 093-class 500; P4 non-identity ask -> vector candidates found (embedding provider live) -> generation-reaching honest 503 tutor_unavailable (ADR-MIG-0002 two-valued law shape, kg legs already run at step 1).
+- CORRECTION DISCLOSED (no-silent-correction): the in-run assertion pass misread the call envelope (status read off the body); verdicts re-run OFFLINE vs the saved verbatim bodies (r50_realwire_verdict.py), ZERO new live calls — all six gates green, zero deviations.
+- Anchors: actuator 200 UP; ask unauth 401 Boot law; knowledge tree 4CH1 200 (084 family live corroboration); title back-fill conditional-execution disclosed (shares the proven inList implementation + R13 pins).
+
+Stage Summary:
+- T-MIG-094 real-wire gate DISCHARGED of record — the 093->094 defect-band chain closed end-to-end (code + fakeSql pins + REAL Neon wire multi-element binding proof). Per the operator's framing the last defect band is now closed lane-side. Receipt: .syllabai/receipts/T-MIG-094/run-003-real-wire-gate-r7a.json; card yaml real_wire_gate_r7a key appended; evidence scratch/r50_realwire_band.json (verbatim bodies + corrected verdict block). Write ledger: 1 probe learner (r7a-r50-a-20261008t204639@example.invalid) + 4 asks (3 zero-LLM refusals + 1 seam-rejected generation attempt, ZERO completed generations), zero session rows (sessionId omitted), zero deploys (carrier dpl_DJhp8McG already carries PR #150), zero env writes, zero DDL. Zero-mutation verify act — no rollback owed.

@@ -1,0 +1,69 @@
+{
+  "card": "T-MIG-094 — kg-retriever latent array-as-one-wire-value bindings: REAL-WIRE GATE DISCHARGED (run-003)",
+  "receipt": "run-003-real-wire-gate-r7a",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)",
+  "operator_trace": "1a11d36f0b721e31 — 'continue to the next defect band (094 kg-retriever is the last to be unlocked)'",
+  "owed_gate_provenance": "card status of record (flipped DONE by r9-hubx under trace 1a119d851a655029): 'REAL-WIRE GATE REMAINS OWED BY THE MOUNTING BAND: fakeSql cannot expose binding semantics — the family golden-verify that first exercises these legs must run on real Neon wire; zero live exposure meanwhile: sites unreachable behind the zero-key LLM seam until the mounting band flips'. The mounting families are live (084/085/086 DONE, verified + widened); the family verifies of record rode the scratch-PG substrate (local boot :5433), NOT the Neon WebSocket wire — the gate stayed owed. This run discharges it on the live api-of-record.",
+  "fix_of_record_verified_first_hand": {
+    "at": "e08f51d81 (main tip at census; PR #150 merged of record)",
+    "inList_helper": "apps/api/src/services/tutor/session-store.ts:44 (exported, single-implementation law)",
+    "three_sites": [
+      "kg-retriever.ts :102 — recursive-CTE prerequisiteChains (per-element $n, annotated T-MIG-094)",
+      "kg-retriever.ts :128 — title back-fill knowledge_nodes IN (per-element)",
+      "kg-retriever.ts :152 — MISCONCEPTION_OF misconceptionsForTopics (per-element)"
+    ],
+    "residual_dynamic_in": "NONE (grep first-hand)",
+    "construction_pins": "apps/api/test/tutor/kg-retriever-wire.test.ts — 5 pins (093 R13 pattern)"
+  },
+  "vehicle": {
+    "endpoint": "POST /api/v1/tutor/ask (learner bearer, live syllabai-v2.vercel.app)",
+    "why_this_exercises_the_legs": "kgRetrieve runs at karag pipeline step 1 — BEFORE vector retrieval, paper resolution, and any LLM call; with a resolved curriculum scope (resolveActive global path), non-empty topicIds fires prerequisiteChains + misconceptionsForTopics (and the title back-fill iff the CTE returns rows) against the real Neon wire",
+    "zero_llm_design": "question = complete parseable paper identity with an OUT-OF-RANGE Q (qnum 99, june 2019 paper 2) -> the 3-anchor resolver binds ZERO validated anchors -> fail-open guard (identityBoundUnserved) zeroes the pool -> deterministic paper refusal 200 — the generator is never invoked",
+    "binding_observable": "the ask 200 body echoes `topics` (kgRetrieve's ranked matches): topics non-empty + refused + provider 'deterministic-paper-refusal' proves the IN-lists bound on the wire and the request completed — the 093 defect class (whole array bound as ONE wire value) would 500 at the binding, before any refusal branch"
+  },
+  "probes": {
+    "P1_guard_control_identity_only": {"q": "question 99 from june 2019 paper 2", "status": 200, "refused": true, "provider": "deterministic-paper-refusal", "topics": [], "latencyMs": 3.126},
+    "P2_single_topic_bind": {"q": "explain esters question 99 from june 2019 paper 2", "status": 200, "refused": true, "provider": "deterministic-paper-refusal", "topics": [{"code": "4CH1-S4-g", "title": "Esters", "matchScore": 1}], "latencyMs": 0.915},
+    "P3_multi_topic_bind": {"q": "alkanes and alkenes question 99 from june 2019 paper 2", "status": 200, "refused": true, "provider": "deterministic-paper-refusal", "topics_count": 4, "topics": ["Alkanes 4CH1-S4-c @1.0", "Alkenes 4CH1-S4-d @1.0", "spec-point 4CH1-4.28 @0.286", "spec-point 4CH1-4.17 @0.133"], "latencyMs": 0.956},
+    "P4_generic_no_identity": {"q": "explain xylophonic zwitterion dynamics", "status": 503, "shape": {"error": "tutor_unavailable", "message": "the tutor is temporarily unavailable — please try again shortly"}, "law_reading": "the ADR-MIG-0002 two-valued shape: vector candidates FOUND (embedding provider live on prod) -> generation-reaching ask -> the honest 503 tutor_unavailable of the dormant/unavailable seam — NOT a deviation; the kg legs had already run at step 1"}
+  },
+  "gates": {
+    "refusal_probes_all_200": true,
+    "no_unlawful_5xx": true,
+    "single_topic_bind_observed": true,
+    "multi_element_inlist_bind_observed": true,
+    "zero_completed_generations": true,
+    "guard_control_clean": true
+  },
+  "gate_verdict": "REAL-WIRE GATE DISCHARGED — the three kg-retriever IN sites executed with multi-element per-element scalar-param IN-lists on the real Neon WebSocket wire behind the live api-of-record; zero 093-class 500; zero unlawful 5xx; zero completed generations",
+  "honesty_notes": [
+    "CORRECTION DISCLOSED (no-silent-correction): the in-run assertion pass misread the call envelope (read 'status' off the response body); verdicts were re-run OFFLINE against the saved verbatim bodies (scripts/r50_realwire_verdict.py) with ZERO new live calls; the recorded bodies are authoritative; all six gates green on the corrected pass",
+    "title back-fill leg (:128) executes IFF the recursive CTE returns rows; the certainly-executed legs are the CTE (:102) and MISCONCEPTION_OF (:152) — both bound multi-element per-element lists live; the back-fill shares the single inList implementation proven at the same sites and is construction-pinned (fakeSql R13 pattern) — conditional execution disclosed, not assumed",
+    "topics echo includes spec-point SUBTOPIC rows (4CH1-4.28/4.17): the matcher ranks ALL validated structure nodes in scope surface, not only TOPIC-type — observation of record, no action",
+    "P4 evidence implies the embedding provider is live/keyed on prod while the generation chain stays dormant-or-saturated — corroboration of the ADR-MIG-0002 seam posture, no action",
+    "workspace wipe #8 on resume; restored from the /tmp/my-project survivor (teacher credential of Task-49 verified persisted 0600) — zero loss"
+  ],
+  "anchors": {
+    "actuator_health": "200 UP (groups liveness/readiness)",
+    "ask_unauth_401": "Boot 401 shell law first-hand",
+    "knowledge_tree_4ch1": "GET /api/v1/knowledge/nodes/297a8706-b957-40cb-8bb6-0bfed66980b7/tree -> 200, root 'Chemistry (4CH1)' VALIDATED (084 family live corroboration)",
+    "serving_deployment_chain": "api-of-record dpl_DJhp8McG (r1c env-act carrier) byte-identical to the 8565b4b 4th-firing bundle — includes PR #150 by construction; zero deploys fired this run"
+  },
+  "probe_write_ledger": {
+    "probe_learners": 1,
+    "asks": 4,
+    "completed_generations": 0,
+    "generation_attempts_seam_rejected": 1,
+    "session_rows": 0,
+    "deploys": 0,
+    "env_writes": 0,
+    "neon_ddl": 0,
+    "note": "sessionId omitted -> zero transcript writes (route append guard verified first-hand); pacing 4s; no retries fired (union-gate posture)"
+  },
+  "evidence": {
+    "scratch": "scratch/r50_realwire_band.json (verbatim bodies + of_record_verdict block)",
+    "scripts": ["scripts/r50_realwire_band.py", "scripts/r50_realwire_verdict.py", "scripts/census_r7a.py"],
+    "worklog": ".syllabai/worklog.md Task-50 (r7a)",
+    "at": "2026-10-08T20:4x-20:5xZ"
+  }
+}
