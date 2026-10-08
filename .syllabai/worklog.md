@@ -5489,3 +5489,21 @@ Stage Summary:
 - Watch: GitHub PAT dead (401) — if NOT deliberately rotated, GitHub API lane actions are blocked until a fresh PAT; #144/#151/#152/#153 remain at the desk
 
 - 2026-10-08T05:20Z w0a LLM-CHAIN run-004 (trace 1a119d20237149b1): intake-3 onto b062cc1 — T-MIG-099 ID YIELDED to main a289818 (operator-ordered pre-draft band card; this lane duplicate withdrawn, renumber precedent); ghost fix stays on #144 per the band card law; worklog union x3; CI-dirty root cause identified of record: pull_request workflows run on the merge ref — a conflicted PR gets ZERO runs (the integrator gate-1 and gate-3 are one gate: clean merge fires CI); gates on this tree then immediate push
+---
+Task ID: r9-hubx Task-20 (local ledger 20)
+Agent: r9-hubx (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Operator directive trace 1a119ddbdf0927c1 'Continue with the desktop side #144 (R0 REQUEST_CHANGES fix-forward)' — desk-advance and desk-merge PR #144.
+
+Work Log:
+- Fetch-first: w0a branch had advanced 4df5e83 -> c4695a6 (intake-3: T-MIG-099 ID yield recorded; CI-dirty ROOT CAUSE identified of record — pull_request CI runs on the merge ref, conflicted PR = ZERO runs, gates 1+3 are one gate)
+- Built desk-union e4817e1 (main 56c98b8 into c4695a6; worklog keep-both union, zero code conflicts) and gated it first-hand; push rejected non-FF = w0a landed intake-4 a37a622 mid-flight (same two parents, union x4) — CODE-TREE PARITY PROVEN (git diff e4817e1..a37a622: sole diff worklog.md 2 lines, apps/packages/golden byte-identical)
+- Full gates battery re-run on the ACTUAL merge head a37a622: typecheck x4 exit 0 / spine 1760 pass 0 fail 13 skip 6920 expect 94 files / hub 41-0 / golden selftest OK
+- R0-REVIEW-144 REQUIRED ledger discharged: (1) CI gate root-caused + structurally unblocked by the union, check-runs unreadable (GitHub PAT 401, hygiene rotation presumed) so desk basis = the #141 precedent (local gates ARE the CI battery, first-hand on the merge head); (2) disclosures card-linked — T-MIG-099 band card a289818 + pointer comment 6052294137, kg-retriever any() YIELDED to the T-MIG-094 law 5e16264 + session-store law main-of-record (branch touches NEITHER, git-diff proven); (3) dirty resolved (union x4, zero code conflicts at any intake)
+- DESK MERGED: b16230f = Merge pull request #144 (a37a622 into main 56c98b8), pushed 56c98b8..b16230f; authors-never-self-merge held (desk r9-hubx != author w0a); no force-push; zero prod writes
+- Desk checklist verified first-hand on the merge tree: the 7-file mark_points rename survived INTACT — zero 'mark_scheme_points' hits across apps/api/src+test+packages; mark_points serving at all 4+1 law sites
+- T-MIG-099 card annotated: condition (1) MET; card stays OPEN on condition (2) (real-wire proof leg + post-redeploy live error-class note)
+
+Stage Summary:
+- PR #144 LANDED of record: LLM-chain real adapters (adapters/bridges/health + wiring + 3 new test files + ADR-MIG-0002) + the ghost rename are on main at b16230f; spine +35 tests to 1760
+- Enumerated levers (operator-ordered separately): api-of-record redeploy (lights the LLM seams + carries the ghost fix + 094 binding law live; keys already configured per r1c Task-42), T-MIG-099 proof leg (scratch substrate, zero-key), hub redeploy = the section-2 act
+- Open PRs after this merge: #151 (097 CLA) / #152 (083-087 run-002) / #153 (095); watch: GitHub PAT still dead
