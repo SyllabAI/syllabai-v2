@@ -18,15 +18,23 @@
  * Path binding: @PathVariable UUID — unparseable → 400 bad_request "malformed
  * request" (MethodArgumentTypeMismatchException :167-170).
  *
- * CAPTURED QUIRK — RESOLVED frozen-faithful (T-MIG-053, R0 call): the golden
+ * CAPTURED QUIRK — FROZEN-FAITHFUL AT CAPTURE (T-MIG-053, R0 call), now
+ * PARTIALLY AMENDED by operator ruling (T-MIG-104): the golden
  * w3-selfmark-unknown-attempt-500 POSTs {} — Jackson binds parts=null (the
  * record declares no constraint on the list), @Valid passes (its constraints
  * are element-scoped), and the controller's dedup loop NPEs on the null list
  * (LearnerSelfMarkController.java:42-43); the catch-all advice
  * (GlobalExceptionHandler.java:224-230) serves the opaque 500. The port
- * reproduces exactly that: nullish parsed parts → throw past the handler to
- * the app error boundary (500 internal_error). An unknown attempt with VALID
- * parts is a mapped 404 in both cores (NotFoundException) — never "fixed".
+ * reproduced exactly that (T-MIG-055 family, golden-captured). OPERATOR
+ * RULING (a) trace 1a11c248ec801069 (2026-10-08, the 071 case-amendment
+ * precedent) AMENDS the whole-field null shape on this live flipped surface:
+ * the port no longer reproduces the frozen 500 — nullish parts serve the
+ * mapped 400 bad_request "self-mark carries no part marks" (the service's
+ * own no-part-marks gate envelope, LearnerSelfMarkService :74-76 — ONE law
+ * for every no-declared-parts shape: absent / null / []). The ELEMENT-null
+ * shape (parts[i] = null) is OUT of the ruling: the T-MIG-057/058 NPE-parity
+ * 500 STANDS. An unknown attempt with VALID parts remains a mapped 404 in
+ * the port (NotFoundException) — never "fixed".
  */
 import { Hono } from "hono";
 import type { ZodError } from "zod";
@@ -170,23 +178,24 @@ export function createLearnerSelfMarkRouter(module: ReturnType<typeof buildSelfM
       }
       return c.json(apiError(400, "validation_failed", verdict.message), 400);
     }
-    // T-MIG-053 frozen controller law (LearnerSelfMarkController.java:42-43):
-    // the dedup loop iterates request.parts() directly — with parts ABSENT or
-    // JSON-null, binding succeeds (no constraint on the list), @Valid passes
-    // (nothing element-scoped to constrain), and the loop NPEs; the NPE is
-    // unmapped and the catch-all advice (:224-230) serves the opaque 500.
-    // Reproduced mechanically: the throw escapes the handler to the app error
-    // boundary, which serves the byte-equivalent internal_error envelope.
-    // The empty LIST (parts: []) skips this and reaches the service's
-    // empty-marks gate (LearnerSelfMarkService.java:74-76) — a 400, as frozen.
+    // T-MIG-104 AMENDED LAW (operator ruling (a), trace 1a11c248ec801069;
+    // the 071 case-amendment precedent): the frozen controller law iterated
+    // request.parts() directly — with parts ABSENT or JSON-null, binding
+    // succeeded (no constraint on the list), @Valid passed, and the loop
+    // NPE'd (LearnerSelfMarkController.java:42-43); the unmapped NPE served
+    // the opaque 500 the port reproduced (T-MIG-053/055, golden-captured).
+    // The operator amended the golden law: the port now serves the MAPPED
+    // product envelope — the SAME 400 the service's no-part-marks gate
+    // (LearnerSelfMarkService.java:74-76) serves for the empty list, so ONE
+    // law covers every no-declared-parts shape (absent / null / []). The
+    // ELEMENT-null shape (parts[i] = null) keeps its T-MIG-057/058 NPE-parity
+    // 500 — the elementNullIssue guard below is UNCHANGED by this amendment.
     if (parsed.data.parts == null) {
-      throw new Error(
-        "selfmark controller NPE parity: request.parts() is null (LearnerSelfMarkController.java:43)",
-      );
+      return c.json(apiError(400, "bad_request", "self-mark carries no part marks"), 400);
     }
     // controller law: the dedup loop builds the Map (the schema's put-semantics
     // superRefine already rejected every displace-non-null duplicate —
-    // T-MIG-059); parts is non-null here (the NPE-parity throw above). Each
+    // T-MIG-059); parts is non-null here (the T-MIG-104 amended 400 above). Each
     // entry normalizes to Jackson's bind law: an ABSENT field binds as null,
     // so `?? null` mirrors the record the frozen controller would hold. The
     // loop's Map.set is last-write-wins — exactly the HashMap.put sequence

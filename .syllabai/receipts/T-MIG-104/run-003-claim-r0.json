@@ -1,0 +1,19 @@
+{
+  "card": "T-MIG-104",
+  "receipt": "run-003-claim-r0",
+  "lane": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "created_at_utc": "2026-10-08T14:40:00Z",
+  "operator_trace": "1a11c248ec801069 '(a)' — the operator golden-law ruling on w3-selfmark-unknown-attempt-500: AMEND to the mapped 4xx envelope (option (a) of the card's A/C menu)",
+  "purpose": "Claim of record for the T-MIG-104 repair leg under the ruling — classifier repair + golden re-capture + pin updates, per the card's amendment-gated A/C; live re-verify rides the deploy recipe-of-record.",
+  "claim_state": {
+    "fetch_first_census": "origin/main 35ab1fb (the filing commit itself is tip); T-MIG-104 filed by THIS lane at 35ab1fb — no competing claim; card OPEN -> IN_PROGRESS-REPAIR in this commit (claim-in-first-commit, AGENT_COORDINATION sec 2; the 8e648a2 precedent)",
+    "branch": "t-mig-104/r0 off 35ab1fb"
+  },
+  "repair_plan": {
+    "amended_law": "parts nullish/absent -> 400 bad_request 'self-mark carries no part marks' — the EXACT envelope of the service's no-part-marks gate (LearnerSelfMarkService :74-76, the law the empty list already serves): one product law for every no-declared-parts shape (absent/null/[]); the route stops pre-empting the gate with the frozen NPE-parity throw",
+    "fence": "WHOLE-FIELD null ONLY — the element-null shape parts[i]=null KEEPS the T-MIG-057/058 NPE-parity 500 (out of the ruling scope; residual disclosed in card + receipts)",
+    "files": "apps/api/src/routes/selfmark/index.ts (header comment + the nullish-parts leg), apps/api/test/smartmark/routes.test.ts (the two whole-field pins re-derived; element pins byte-identical), golden/cases/w3-selfmark-unknown-attempt-500.json (expect 500->400 in place, zero deletion, amendment note in description)",
+    "gates": "api tsc + api test suite (smartmark routes pins first, then full) + golden selftest; CI on the PR head; desk-merge per the standing review authority"
+  },
+  "scope_note": "card-faithful fence: route-leg only (the service file untouched — its gate IS the amended law's envelope source); contracts untouched (the nullish schema shape stays Jackson-bind-faithful — the amendment lives at the route law, not the contract)"
+}

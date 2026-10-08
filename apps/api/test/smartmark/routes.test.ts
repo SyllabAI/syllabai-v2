@@ -192,21 +192,27 @@ describe("POST /api/v1/learners/me/attempts/:id/self-mark", () => {
     expect(body.message).toBe("malformed request");
   });
 
-  test("body {} (parts absent) → 500 internal_error — NPE parity (captured w3-selfmark-unknown-attempt-500, T-MIG-053)", async () => {
+  test("body {} (parts absent) → 400 bad_request 'self-mark carries no part marks' (T-MIG-104 AMENDED LAW, operator ruling (a) trace 1a11c248ec801069 — supersedes the T-MIG-053 NPE-parity pin and the golden case's captured 500; ONE law with the empty-list gate)", async () => {
     const res = await makeApp(asStudent).request(`/api/v1/learners/me/attempts/${ATTEMPT_ID}/self-mark`, {
       method: "POST", headers: { "content-type": "application/json" }, body: "{}",
     });
-    expect(res.status).toBe(500);
+    expect(res.status).toBe(400);
     const body = await res.json();
-    expect(body).toEqual({ status: 500, error: "internal_error", message: "an internal error occurred", timestamp: "2026-10-05T00:00:00Z" });
+    expect(body.error).toBe("bad_request");
+    expect(body.message).toBe("self-mark carries no part marks");
+    expect(body.status).toBe(400);
+    // timestamp is the apiError wall-clock (isoNow) — asserted by shape, not value
+    expect(typeof body.timestamp).toBe("string");
   });
 
-  test("parts null → 500 internal_error (same NPE — binding succeeds, @Valid passes, loop iterates null, T-MIG-053)", async () => {
+  test("parts null → 400 bad_request 'self-mark carries no part marks' (same T-MIG-104 amended law — explicit JSON-null binds like absent under the ruling)", async () => {
     const res = await makeApp(asStudent).request(`/api/v1/learners/me/attempts/${ATTEMPT_ID}/self-mark`, {
       method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ parts: null }),
     });
-    expect(res.status).toBe(500);
-    expect((await res.json()).error).toBe("internal_error");
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("bad_request");
+    expect(body.message).toBe("self-mark carries no part marks");
   });
 
   test("parts [] → 400 bad_request 'self-mark carries no part marks' (empty list reaches the service gate, LearnerSelfMarkService :74-76)", async () => {
