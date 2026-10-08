@@ -1,0 +1,30 @@
+{
+  "run": "run-008-postmerge-live-replay-replication-r9",
+  "card": "T-MIG-106",
+  "class": "INDEPENDENT-REPLICATION + CREDENTIAL-HANDOFF (no deploy; corroborates the run-007-r0 rider discharge)",
+  "battery_ts": "2026-10-08T17:57Z",
+  "lane": "r9-hubx (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "operator_traces": "1a11c9d4c0eb7e31 ('Now what's next?') + 1a11cf248cca7b99 (GitHub credential delivery 'Here' firing the staged handoff)",
+  "relation_to_of_record": "the post-merge re-verify rider was DISCHARGED of record by run-007-postmerge-live-reverify-r0 (fired 17:47:12Z, 10 minutes before this lane's battery) AND by the 4th-firing census 26/26 (ef94597: T-MIG-106 trio 3/3 live); this receipt files this lane's independent battery as CORROBORATION (T-MIG-099 replication precedent), renumbered run-008 after the run-007 id was taken by r0",
+  "battery_legs": [
+    {"leg": "L0_health_post_p0_edge_anchor", "verdict": "PASS", "evidence": "GET /actuator/health 200 {groups:[liveness,readiness],status:UP} @ 17:57:21Z — post-P0 heal first-hand (cron-202610090100 had observed api-v2 404 DEPLOYMENT_NOT_FOUND ~17:00Z)"},
+    {"leg": "L1_v2_askstream_unauthed_401_corpus", "verdict": "PASS", "evidence": "401 {status:401,error:Unauthorized,path:/api/v1/tutor/ask/stream} — golden tutor-askstream-unauthed-401 byte-shape exact (timestamp tolerated)"},
+    {"leg": "L1c_core_askstream_unauthed_401_parity_anchor", "verdict": "NOT-EXERCISED", "evidence": "frozen core cold: ReadTimeout 30s + 90s retry (matches the cron 'core 000 cold' posture); parity of record = r4b run-004 dual-live 2026-10-08T15:46Z; non-blocking anchor"},
+    {"leg": "L15_probe_learner_register_census_class", "verdict": "PASS", "evidence": "201 AuthResponse{tokenType:Bearer,roles:[STUDENT]} — probe probe-t106-r9-3a39881f@example.invalid; token volatile only"},
+    {"leg": "L2_v2_askstream_blank_question_400_corpus_declared", "verdict": "PASS", "evidence": "400 {status:400,error:validation_failed,message:'question: must not be blank'} — DECLARED law live, exact"},
+    {"leg": "L3_v2_askstream_unknown_session_404_corpus_declared", "verdict": "PASS", "evidence": "404 {status:404,error:not_found,message:'tutor session 07cafeab-d743-46ce-8ed6-c23c18b7eddd not found'} — deterministic id echo, DECLARED law live, exact"},
+    {"leg": "L4_v2_blocking_ask_unauthed_401_prefix_row_anchor", "verdict": "PASS", "evidence": "401 {status:401,error:Unauthorized,path:/api/v1/tutor/ask} — blocking half of the inseparable prefix-row pair (extra anchor beyond the r0 runner legs)"}
+  ],
+  "verdict": "6/7 PASS + 1 NOT-EXERCISED (core parity, cold, disclosed) — INDEPENDENT REPLICATION GREEN: the T-MIG-106 declared trio verified byte-exact by a third lane on a distinct probe learner; rider posture UNCHANGED (discharged of record by run-007-r0)",
+  "serving_context": {
+    "at_battery_time_1757Z": "dpl_Br8j9Bxg @ f45b027 (run-005) — aliases first-hand via v4/aliases",
+    "at_push_time": "dpl_DJhp8McG = r1c env-act instant-redeploy (byte-identical 4th-firing bundle @ 8565b4b + CRON_SECRET, zero code delta); the trio is byte-consistent across both bundles per the of-record censuses"
+  },
+  "disclosures": [
+    "DOUBLE WORKSPACE RESET: this lane's sandbox was wiped twice between acts (repo clone, scripts, receipts, worklog lost both times); the first staged handoff commit c9af4d1 (receipt run-007-postmerge-live-replay-r9 + worklog Task-23) was never pushed and is lost with reset #2",
+    "NO-FORCE INCIDENT DISCLOSED: after reset #2 a push fired from the post-reset scaffold repo (unrelated history) was REJECTED non-fast-forward by GitHub — origin untouched, zero damage; recovery = anonymous re-clone + receipt re-filed from the session record",
+    "RACE OF RECORD: r0's run-007 fired 17:47:12Z vs this lane's battery 17:57Z — rider lost by ~10 min, honestly renumbered to run-008 replication; no rival discharge claimed",
+    "credential hygiene: operator-delivered GitHub token used bash-inline only (one-shot push URL), never written to disk or receipts; fingerprint sha256:16 = a8ccee736aa8c75b; identity SyllabAI (org), full repo scope verified pre-push"
+  ],
+  "write_ledger": "1 census-class probe learner (probe-t106-r9-3a39881f@example.invalid @ 17:57Z); zero LLM spend (all corpus legs pre-stream fail-fast); zero other writes; zero env writes; zero deploys; pushes: 1 (this commit)"
+}
