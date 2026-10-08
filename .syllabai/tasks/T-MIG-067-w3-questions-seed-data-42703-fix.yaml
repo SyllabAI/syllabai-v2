@@ -88,7 +88,8 @@ task:
     state the full tranche builds before the questions cases replay; the
     port's census is byte-exact on the unstaged posture per run-001) — both
     case-owner lane, options filed. Card -> DONE.
-RUN-001 OUTCOME (2026-10-06): gates green (typecheck x4 exit 0; root
+RUN-001 OUTCOME (2026-10-06): >-
+    gates green (typecheck x4 exit 0; root
     suite 1226 pass / 0 fail / 13 skip; questions family 53/53; harness
     selftests OK). Live surface proof on disposable seed COW
     br-frosty-butterfly-a576r65e (apply-reset → the harness's own
@@ -101,7 +102,7 @@ RUN-001 OUTCOME (2026-10-06): gates green (typecheck x4 exit 0; root
     (source, qNum, input-order) law has no deterministic tie key — three
     environments produce three orders; the frozen core itself would flip on
     a different host) — options filed for R0/R6, zero silent widening.
-  cross_slice_contract: >
+cross_slice_contract: >
     CONSUMES: baseline schema (question_options.option_text,
     knowledge_edges.source_node_id/target_node_id — both guaranteed by
     drizzle pull). PROVIDES: the w3-questions families/topics surfaces
