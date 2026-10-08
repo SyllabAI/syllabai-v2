@@ -127,6 +127,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/learners/me/state", // T-MIG-096 run-001 L16
       "/api/v1/learners/me/course-stats", // T-MIG-096 run-001 L17
       "/api/v1/learners/me/courses", // T-MIG-096 run-001 L12/L13 — zero emitters, routing availability
+      "/api/v1/admin/revision-notes", // T-MIG-083: golden-verified (run-001 8/8, r9-hubx rider) — NARROW: ingest+status ONLY, rest of /api/v1/admin/** stays core
     ]);
   });
 });
@@ -188,6 +189,35 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     // emitter named sessions* beyond the verified tree exists on either side)
     expect(v2SurfaceBase("/api/v1/tutor/sessionsxyz", V2)).toBe(V2);
     expect("/api/v1/tutor/sessionsxyz".startsWith("/api/v1/tutor/sessions")).toBe(true);
+  });
+
+  test("the T-MIG-083 line: admin revision-notes (ingest + status) flips after its golden gate (r9-hubx rider)", () => {
+    // the verified surfaces resolve to v2 (golden-verified of record:
+    // run-001, 8/8 legs vs the r4b frozen-core capture band — including the
+    // repaired leg-04 @RequestPart bind law: part-less multipart → the core's
+    // unhandled-bind 500 internal_error, reproduced verbatim + pinned in the
+    // api route tests)
+    expect(v2SurfaceBase("/api/v1/admin/revision-notes/ingest", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/admin/revision-notes/status", V2)).toBe(V2);
+    // TRUE siblings (v2 serves none of them) stay core — the prefix must never
+    // capture them. (/api/v1/admin/llm/chain-health is NOT here: it is already
+    // flipped by ITS OWN T-MIG-090 row — a sibling flipped row, not a core-only
+    // sibling. Pinned separately below so both rows' reach cannot drift.)
+    for (const p of [
+      "/api/v1/admin/users",
+      "/api/v1/admin/stats",
+      "/api/v1/admin/llm",
+      "/api/v1/admin/other",
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBeNull();
+    }
+    // the already-flipped 090 row keeps resolving (both rows coexist):
+    expect(v2SurfaceBase("/api/v1/admin/llm/chain-health", V2)).toBe(V2);
+    // the partial-segment property (shared string-matching semantics):
+    // non-existent partial-segment siblings WOULD be captured (DOCUMENTED
+    // INERT — no such routes or hub emitters exist on either side)
+    expect(v2SurfaceBase("/api/v1/admin/revision-notesx", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/admin/revision-notes-other", V2)).toBe(V2);
   });
 
   test("apiPath emits exact v2 URLs for representative surfaces", () => {

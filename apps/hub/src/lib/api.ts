@@ -210,6 +210,25 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   "/api/v1/learners/me/state",
   "/api/v1/learners/me/course-stats",
   "/api/v1/learners/me/courses",
+  // T-MIG-083 (r9-hubx rider) — admin revision-notes (ingest + status):
+  // golden-verified of record (run-001: the 8-leg matrix 8/8 PASS on the local
+  // scratch-Postgres boot of main 23c22e2 + the leg-04 wire repair, vs the r4b
+  // wire truth golden-captures/t-mig-083/ captured from the frozen core
+  // 6cad6ef local boot — 401/403/403/500/400/200/403/401 status+body
+  // deep-equal; the gate FIRST found the leg-04 divergence: v2 answered the
+  // part-less multipart bind with the sme.ts 400 while the core's @RequestPart
+  // bind 500s through the unhandled catch-all — repaired in this rider, pinned
+  // in the route tests; receipts T-MIG-083/run-001-verify). NARROW form: the
+  // prefix covers exactly the two verified endpoints' family tree
+  // (/ingest, /status) and NOTHING else; sibling /api/v1/admin/** stays core
+  // until its own golden gates. startsWith-safety: NO hub page emits
+  // /api/v1/admin/revision-notes today (grep-verified at the widening commit)
+  // — this line is ROUTING AVAILABILITY of record with zero live-page routing
+  // change (the T-MIG-090 precedent). LLM-free law: ingest/status never reach
+  // the LLM seam; ingest write legs are fail-closed on the captured shapes
+  // (part-less bind 500, non-package.json zip 400) — zero corpus mutation
+  // reachable from the flipped surface without an admin-supplied valid zip.
+  "/api/v1/admin/revision-notes",
 ];
 
 /**
