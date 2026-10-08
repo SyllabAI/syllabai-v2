@@ -5607,3 +5607,15 @@ Work Log:
 
 Stage Summary:
 - 2 merges of record this run (#144 b16230f, #153 46536fd): LLM-chain lane + ghost-table fix + 095 captured-law fix now on main; T-MIG-095 card flips DONE per its card condition at bookkeeping; #155 queued for next R0 run
+
+---
+Task ID: desk-round-20261008-run-001b
+Agent: main (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)
+Task: Register yaml-integrity repair (follow-up to the desk round, same operator trace 1a119e27bbe116e9 'Proceed').
+
+Work Log:
+- Post-stamp validation surfaced malformed cards; bisected first-hand: 8 cards (067/068/085/086/087/088/089/091) were ALREADY broken at 0f43156 (pre-existing upstream; none caused by this round's edits), plus 2 scalars broken by my own run-001 stamps (quote-collision) — all repaired: committed conflict markers resolved (088/089/091, later r4b-capture side kept), unescaped apostrophes normalized (text verbatim), broken plain-scalar paragraphs converted to block scalars (067/068, text byte-verbatim), T-MIG-065 truncated tail reconstructed (status DONE restored per register 851df19)
+- Provenance notes embedded in the repaired status lines; zero content edits — structure only; validation first-hand: ALL 92 T-MIG-*.yaml parse OK (fcbddc6 + 4f880e9)
+
+Stage Summary:
+- The task register is machine-readable again (was 9-10/92 unparseable); every repair carries a DESK-REPAIR provenance note; standing hygiene proposal: status-line stamps should go through a yaml-validating helper (my own run-001 stamp broke two cards before the helper existed — lesson filed)
