@@ -1,0 +1,65 @@
+{
+  "receipt": "run-001-config-fix-push-green-w0a",
+  "card": "T-MIG-105",
+  "band": "drizzle-kit schema-dir compat (kit-compat)",
+  "claim_chain": "run-000-claim-w0a (commit bf1a7a6, operator trace 1a11c5976a60feb1 'claim it'); this receipt = the owed proof leg, EXECUTED",
+  "claimant": "w0a lane (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "fix_landed": {
+    "option": "(a) file-schema config of record",
+    "path": "packages/db/drizzle.config.ts",
+    "change": "schema: './src/schema' -> './src/schema/schema.ts' + in-file T-MIG-105 rationale block (documented why: kit 0.30.6 loads every dir entry as a JS module, dies on README.md, exits 0 with journal-only out = silent-success CI trap)",
+    "scope_note": "the ONLY repo-path change of this act; schema.ts/relations.ts/custom_types.ts/README.md untouched (content-frozen per card fence)"
+  },
+  "pull_probe_first_hand": {
+    "why": "the card demands db:pull re-baselining behavior verification BEFORE adopting file-schema",
+    "method": "lane-side pullprobe (scripts/kitcompat-repro/pullprobe/): probe table created on scratch db; stub schema.ts with marker content; file-schema config vs scratch db",
+    "result": "pull does NOT touch the schema path in EITHER shape: it wrote out/schema.ts + out/relations.ts + out/0000_*.sql (introspection artifacts land in the OUT dir); the stub schema.ts stayed byte-untouched; exit 0",
+    "verdict": "ZERO re-baselining procedural change from the shape fix — pull's write target is out/ regardless"
+  },
+  "battery": {
+    "environment": "repo tree at f45b027+blob, bun install --frozen-lockfile (940 installs, lock parity), hoisted kit 0.30.6 + orm 0.38.4 verified of-record pins",
+    "generate": "GREEN under fixed config; IMPORTANT DISCLOSURE: it emits drizzle/0001 (75 lines) — the opclass-repair CATCH-UP migration (38 index drop/recreates with repaired pins + revision_note_asset_name_ck/question_asset_name_ck rebuilds) because the journal's pull-era 0000_snapshot.json predates the T-MIG-103 repairs; NOT landed (drizzle/** is outside this card's scope; landing it is 103-emission-scope work); files reverted, drizzle/ byte-identical pre/post (sha256 snapshots), evidence preserved lane-side (0001-catchup-evidence.sql)",
+    "check": "GREEN — 'Everything's fine' (journal consistent)",
+    "push": "GREEN END-TO-END on the sanctioned scratch substrate — drizzle-kit push --force from packages/db, DATABASE_URL host-asserted postgresql://scratch@127.0.0.1:5544/scratch (ZERO-KEY: no credentials embedded, zero prod/Neon contact; db emptied first = zero destructive statements), exit 0 '[✓] Changes applied', 0 -> 62 tables",
+    "typecheck": "packages/db tsc --noEmit exit 0 (config edit clean)"
+  },
+  "readback": {
+    "tables": 62,
+    "declared_indexes": {"declared_names": 87, "present": "87/87", "missing": 0},
+    "pg_indexes_total": 171,
+    "opclass_verdicts": {
+      "method": "pg_index.indclass -> pg_opclass.opcname vs pg_attribute/pg_type column types",
+      "members": [
+        "ix_mark_points_scheme: mark_scheme_id uuid|uuid_ops, ordering int4|int4_ops (the T-MIG-099 watchlist member, healed)",
+        "ix_options_question: question_id uuid|uuid_ops, ordering int4|int4_ops (swap pair healed)",
+        "ix_edge_source_type: source_node_id uuid|uuid_ops, relation_type varchar|text_ops (swap healed)",
+        "ix_exam_series_lookup: board varchar|text_ops, qualification varchar|text_ops, published bool|bool_ops, window_start date|date_ops (triple healed)",
+        "ix_telemetry_learner_time: learner_id uuid|uuid_ops, occurred_at timestamptz|timestamptz_ops (was text_ops-on-uuid)",
+        "idx_struggle_inference_learner_expiry: learner_id uuid|uuid_ops, expires_at timestamptz|timestamptz_ops, probability float8|float8_ops (was scrambled)"
+      ],
+      "special": ["idx_document_chunks_content_tsv gin (content_tsv)", "ix_document_chunks_spec_codes gin partial (spec_codes)", "ix_document_chunks_embedding hnsw (embedding vector_cosine_ops)"]
+    },
+    "residue": "zero 42804/datatype_mismatch markers in push output; every declared index exists"
+  },
+  "disclosed_out_of_fence": {
+    "finding_2_pull_dead_under_pins": {
+      "fact": "db:pull is DEAD under of-record pins for an INDEPENDENT reason: kit 0.30.6's pull path requires drizzle-orm/gel-core, but drizzle-orm 0.38.4 (bun.lock of record) does not define that subpath -> ERR_PACKAGE_PATH_NOT_EXPORTED at startup, zero writes (reproduced in-repo AND lane-side)",
+      "version_scan": "drizzle-orm exports ./gel-core only from 0.40.0+ (0.38.0-0.39.3 lack it; registry scan of record)",
+      "implication": "the T-MIG-002 re-baselining procedure cannot run as-pinned TODAY; NOT fixable by config shape (probe proves pull never loads the schema path)",
+      "remedy": "fenced option (c) territory — kit/orm version-bump rider is a supply-chain act requiring operator sanction; suggested as its own register item"
+    },
+    "finding_3_generate_catchup": "db:generate's emitted 0001 (the 103 catch-up) is real and owed — but under the 103 card's emission scope (drizzle/** 'consistent with the repaired pins'), not this card; the 0000_snapshot.json machine-snapshot still carries pull-era broken pins while schema.ts + the 0000 SQL text are repaired",
+    "claim_commit_message_typo": "claim commit bf1a7a6's message carries a duplicated-substring typo of the operator trace ('1a11c5976a5976a60feb1'); the run-000 receipt JSON is authoritative and correct — left unamended (pushed of record)"
+  },
+  "substrate_rebuild_of_record": {
+    "why": "sandbox recycle wiped the 103-era build",
+    "recipe": "PostgreSQL 17.6 source-built (prefix /home/z/pg17, --without-readline --without-icu; bison 3.8.2 + flex 2.6.4 built lane-side first — sandbox lacks them, no root) + pgvector 0.8.0; cluster @ 127.0.0.1:5544 (listen_addresses=127.0.0.1), db scratch, extension vector 0.8.0",
+    "zero_key": "every contact host-asserted 127.0.0.1:5544 with the scratch role; no Neon/prod endpoints or credentials touched at any point"
+  },
+  "write_ledger": {
+    "prod_or_neon_writes": 0,
+    "scratch_db_ddl": "62 tables + 171 indexes/constraint indexes on the lane-owned scratch cluster (created by the push leg)",
+    "repo_writes": "packages/db/drizzle.config.ts ONLY; .syllabai/receipts/T-MIG-105/**; .syllabai/tasks/T-MIG-105-*.yaml status flip; .syllabai/worklog.md append",
+    "drizzle_dir_integrity": "byte-identical pre/post across generate + pull probes (sha256 snapshot diffs clean)"
+  }
+}

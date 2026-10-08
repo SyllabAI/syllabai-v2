@@ -26,7 +26,23 @@ task:
     file-schema config, deleted after the run) — own register item suggested",
     receipts/T-MIG-100/run-001-push-green-w0a.json + commit 312966b).
   owner: "w0a lane (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — filing desk of record per operator directive 'File the kit-compat register card' (trace 1a11b2fcdf871229); repro evidence and card are the same act"
-  status: "IN_PROGRESS # CLAIMED by w0a for the owed proof leg (receipts/T-MIG-105/run-000-claim-w0a.json, operator trace 1a11c5976a60feb1 'claim it'): fix option (a) file-schema config selected pending the card-demanded first-hand db:pull verification; scratch substrate rebuild owed (recycled); ## filed with first-hand repro evidence (shape A crash + silent-0 exit captured, shape B green); owed proof leg = of-record config fixed so EVERY kit verb (generate/push/pull/check) loads the schema from packages/db with NO throwaway config, evidenced by the same repro battery + a scratch-substrate push (the 103 pattern) and receipt to .syllabai/receipts/T-MIG-105/"
+  status: >-
+    DONE # proof leg MET of record (receipts/T-MIG-105/run-001-config-fix-push-green-w0a.json, w0a, operator trace
+    1a11c5976a60feb1 'claim it', claim bf1a7a6): fix option (a) LANDED -- drizzle.config.ts of record now schema:
+    ./src/schema/schema.ts with the T-MIG-105 rationale in-file; the card-demanded db:pull probe ran FIRST-HAND
+    (pull writes schema.ts/relations.ts/SQL to the OUT dir in BOTH shapes, schema path byte-untouched) = zero re-
+    baselining procedural change; battery: db:generate GREEN (and emits a 75-line 0001 catch-up materializing the
+    103 opclass repairs + 2 ck rebuilds -- DISCLOSED out-of-scope here, reverted, evidence preserved; its landing
+    is 103-emission-scope work), db:check GREEN, drizzle-kit push GREEN END-TO-END on the sanctioned scratch
+    substrate (rebuilt of-record recipe: PG 17.6 source-built + pgvector 0.8.0 @ 127.0.0.1:5544, ZERO-KEY
+    asserted, zero prod/Neon contact) -- 0->62 tables, exit 0, 87/87 declared index names present (0 missing),
+    pg_index.indclass->pg_opclass->pg_type verdicts type-correct (ix_mark_points_scheme uuid_ops-on-uuid;
+    ix_options_question and ix_edge_source_type swaps healed; ix_exam_series_lookup triple board
+    text_ops/published bool_ops/window_start date_ops; gin x2 + hnsw vector_cosine_ops as declared); packages/db
+    tsc exit 0; DISCLOSED out-of-fence: db:pull is DEAD under of-record pins for an INDEPENDENT reason (kit 0.30.6
+    pull path requires drizzle-orm/gel-core; orm 0.38.4 of record lacks the subpath -- present only from 0.40.0;
+    version scan of record) -- a version-bump rider is fenced option (c) supply-chain territory, operator call;
+    pull's write-target probe proves the schema-path shape is NOT implicated
   claimed_at: "2026-10-08"
   priority: P2 # zero runtime exposure (the kit never runs at request time; prod provisioning path is the frozen core's Flyway); impact = local dev, fresh scratch provisioning (083-rider pattern), re-baselining legs, and CI trap surface
   wave: "tooling-hygiene / compat # of-record tooling never confronted its own directory layout; sibling of the T-MIG-103 family law — generated-of-record artifacts must cite real-wire execution before reliance"
