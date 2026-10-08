@@ -5472,4 +5472,20 @@ Work Log:
 Stage Summary:
 - The §2.4 spine is GREEN on the live prod posture at 0f43156 with ZERO expectation mismatches and the documented quirk parity holding; the v2 api-of-record demonstrates full data-plane continuity (token + shared Neon) under live cross-plane probes
 - Operator watch items: §2 flip lever still OPEN (hub redeploy = the act; posture constants verified unchanged); #144/#151/#152 at the desk; LIVE ENV PRUNE blocked on VERCEL_TOKEN; api redeploy lever [1] now picks up #146 leg-04 repair + #150 binding law (both merged)
+---
+Task ID: r9-hubx Task-19 (local ledger 19)
+Agent: r9-hubx (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Operator directive trace 1a119d851a655029 'grab the tiny 094 card-flip' — desk-flip T-MIG-094 to DONE post-landing.
+
+Work Log:
+- Fetch-first: origin/main 6a30e96 -> b062cc1 (w7-smoke receipt + T-MIG-099 filing + r1c Task-42 worklog); local main ff-synced clean; zero collision — no in-flight work touches the 094 card (open PRs #144/#151/#152/#153 all unrelated to this yaml)
+- Evidence chain first-hand: PR #150 no longer open (census of record x2: w7-smoke sweep 'verified via API' + Task-18 census 'closed-landed direct-main'); branch tip 5e16264 IS on origin/main, single-parent FF off claim 00745e2, remote t-mig-094/r0 tip == 5e16264 — mechanically a direct-main landing, NOT a merge-button merge
+- GitHub PAT 401 Bad credentials this run (fresh API pull impossible) — standing-hygiene rotation presumed of record; landing evidence stands on git ancestry alone, no credential needed
+- Card flipped IN_REVIEW -> DONE with full content restatement + REAL-WIRE GATE OWED BY THE MOUNTING BAND preserved of record (fakeSql cannot expose binding semantics; first family golden-verify reaching these legs runs on real Neon wire; 093-precedent carry-over, T-MIG-099 class ledger cross-reference)
+- Owner field untouched (main lane implemented under 1a119b0c8fe09e99); flip is desk-level routing per operator order; .syllabai-only direct-main per precedent (fetch-first), authors-never-self-merge N/A (no code PR involved)
+
+Stage Summary:
+- T-MIG-094 DONE: register now 81 DONE of 90 (CAPTURED 7: 084-089+091; IN_PROGRESS 095; BLOCKED 097); the 093->094 defect-band chain fully closed at the code+pin level, real-wire proof carried by the mounting band as documented
+- Watch: GitHub PAT dead (401) — if NOT deliberately rotated, GitHub API lane actions are blocked until a fresh PAT; #144/#151/#152/#153 remain at the desk
+
 - 2026-10-08T05:20Z w0a LLM-CHAIN run-004 (trace 1a119d20237149b1): intake-3 onto b062cc1 — T-MIG-099 ID YIELDED to main a289818 (operator-ordered pre-draft band card; this lane duplicate withdrawn, renumber precedent); ghost fix stays on #144 per the band card law; worklog union x3; CI-dirty root cause identified of record: pull_request workflows run on the merge ref — a conflicted PR gets ZERO runs (the integrator gate-1 and gate-3 are one gate: clean merge fires CI); gates on this tree then immediate push
