@@ -104,9 +104,75 @@ describe("computeWindowStart (UTC day key)", () => {
   });
 });
 
-describe("runNightlyDecay seam (scaffold stub)", () => {
-  it("reports not-implemented and performs nothing (zero-DB scaffold)", async () => {
-    const r = await runNightlyDecay("2026-10-05");
-    expect(r).toEqual({ implemented: false });
+describe("runNightlyDecay seam (T-MIG-042 port: ledger write via the api-of-record)", () => {
+  const ROW = {
+    windowStart: "2026-10-08T00:00:00Z",
+    executedAt: "2026-10-08T02:00:01Z",
+    triggerKind: "vercel-cron",
+    decayed: 0,
+    reviewsScheduled: 0,
+  };
+  const apiResponse = (body: unknown, status = 200) =>
+    new Response(JSON.stringify(body), { status });
+
+  it("maps the api-of-record 200 ok response to implemented:true / ok with the ledger row", async () => {
+    let captured = { url: "", auth: "" };
+    const r = await runNightlyDecay("2026-10-08", {
+      apiBase: "https://api.example.com/",
+      bearer: "Bearer test-cron-secret",
+      fetchImpl: (async (url: any, init: any) => {
+        captured = { url: String(url), auth: init?.headers?.authorization ?? "" };
+        return apiResponse({ status: "ok", ledgerRow: ROW });
+      }) as unknown as typeof fetch,
+    });
+    expect(r).toEqual({ implemented: true, status: "ok", ledgerRow: ROW });
+    expect(captured.url).toBe("https://api.example.com/api/v1/cron/nightly-decay");
+    expect(captured.auth).toBe("Bearer test-cron-secret");
+  });
+
+  it("forwards 'already-run' honestly (the exactly-once window law)", async () => {
+    const r = await runNightlyDecay("2026-10-08", {
+      apiBase: "https://api.example.com",
+      bearer: "Bearer test-cron-secret",
+      fetchImpl: (async () =>
+        apiResponse({ status: "already-run", ledgerRow: ROW })) as unknown as typeof fetch,
+    });
+    expect(r).toEqual({ implemented: true, status: "already-run", ledgerRow: ROW });
+  });
+
+  it("throws LOUD on a 401 (CRON_SECRET drift between the projects)", async () => {
+    await expect(
+      runNightlyDecay("2026-10-08", {
+        apiBase: "https://api.example.com",
+        bearer: "Bearer stale-secret",
+        fetchImpl: (async () => apiResponse({}, 401)) as unknown as typeof fetch,
+      }),
+    ).rejects.toThrow(/rejected the decay bearer/);
+  });
+
+  it("throws LOUD on a non-401 api failure", async () => {
+    await expect(
+      runNightlyDecay("2026-10-08", {
+        apiBase: "https://api.example.com",
+        bearer: "Bearer test-cron-secret",
+        fetchImpl: (async () => apiResponse({}, 500)) as unknown as typeof fetch,
+      }),
+    ).rejects.toThrow(/HTTP 500/);
+  });
+
+  it("refuses to report success without ledger evidence", async () => {
+    await expect(
+      runNightlyDecay("2026-10-08", {
+        apiBase: "https://api.example.com",
+        bearer: "Bearer test-cron-secret",
+        fetchImpl: (async () => apiResponse({ status: "ok" })) as unknown as typeof fetch,
+      }),
+    ).rejects.toThrow(/no ledgerRow/);
+  });
+
+  it("throws LOUD when the api base is unconfigured (misconfig, never a silent skip)", async () => {
+    await expect(
+      runNightlyDecay("2026-10-08", { apiBase: undefined, bearer: null }),
+    ).rejects.toThrow(/not configured/);
   });
 });
