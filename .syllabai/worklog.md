@@ -5614,3 +5614,21 @@ Work Log:
 
 Stage Summary:
 - T-MIG-095 PIPELINE CLOSED end-to-end: 095 fix merged 46536fd -> live on the aliased tip bundle i6gx4tvqp @ fcbddc6 (093 recipe) -> live re-verify PASS run-002 -> the final 2 learner-me heart write paths FLIPPED 61fd394. Production now serves: adapters/keys (LLM 200s) + 093 inList + 097 refusal law + 095 captured law. Watch items: hub-v2 bundle still stale (the flip becomes live ROUTING at the next hub redeploy — the standing redeploy lever, §2 act; all my widen rows 092/096/084/095 are of-record waiting on it); recommendations still core (own band); the alias-race pattern is a known hazard while multiple lanes deploy concurrently — the whitespace discriminator legs are the cheap arbiter.
+
+---
+Task ID: r9-hubx Task-22 (local ledger 22)
+Agent: r9-hubx (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Operator directive trace 1a119fb63da4d5e5 — T-MIG-099 condition (2) discharge (scratch leg first + live error-class note to DONE).
+
+Work Log:
+- SCRATCH SUBSTRATE built from scratch (this workspace has no user-tree PG): portable PG 17.3 via zonky binaries + pgvector 0.8.0 (debian .so placed in pkglibdir + extension control in share/postgresql/extension) + drizzle-kit push of packages/db 0000 baseline (62 tables, --bun runtime; the opclass-mismatch index family error observed = the 099-watchlist sibling, zero SELECT impact); db syllabai_v2_verify @127.0.0.1 — ZERO prod/Neon contact
+- Seed: full VALIDATED-scheme structured chain (roles/users/questions/question_versions/2 parts/mark_schemes VALIDATED/4 mark_points/attempts/2 answers PENDING; fixed 099-prefixed UUIDs; chain self-verified)
+- LEG 2a SCRATCH REAL-WIRE: bun-served Hono app (T-MIG-014 dispatch -> postgres.js TCP), ZERO-KEY asserted (083 pattern) -> POST smart-mark: HTTP 200, 2 smart_mark_results rows stamped mark_scheme_id (mark_points rows SERVED into contexts), honest failure_reason=PROVIDER_UNAVAILABLE — GHOST CLASS PROVEN GONE on the real wire
+- LEG 2b LIVE ERROR-CLASS NOTE (probe persisted scripts/t099_live_note_probe.py): register -> structured attempt on the W7-SMOKE question 92817c46 (5 parts, VALIDATED scheme live) -> smart-mark: HTTP 200 in 2.4s with REAL generation — modelId openai/gpt-oss-120b (openrouter adapter live), validation_passed=true, authoritative=true (kappa), breakdowns citing mark_points text; error class: SQL-500 -> fully-functioning pipeline; write ledger 1 learner + 1 attempt + pipeline rows (disclosed)
+- T-MIG-099 flipped DONE (both conditions discharged); receipt .syllabai/receipts/T-MIG-099/run-001-proof-r9.json; yaml parse-validated per the desk-round hygiene law
+
+Stage Summary:
+- The 093 fake-vs-real class ledger is now fully closed at all three members (093 binding / 099 schema-existence / 094 kg-retriever register)
+- The live api's smart-mark pipeline is REAL end-to-end: SQL law + #144 adapters + kappa gate + per-point projection all verified live
+- Next: the section-2 traffic flip (same operator trace)
+
