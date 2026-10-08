@@ -210,6 +210,30 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   "/api/v1/learners/me/state",
   "/api/v1/learners/me/course-stats",
   "/api/v1/learners/me/courses",
+  // T-MIG-095 (r0 defect band, operator trace 1a119b4f3c6fc7d9 'start 095' +
+  // 1a119de303c9e599 'desk merge -> deploy (093 recipe) -> live re-verify ->
+  // expand flashcard ratings + note-votes') — the learner-me HEART WRITE
+  // surfaces, the 096 linkage the band unblocked. Band CLOSED of record
+  // (095 DONE 46536fd: rating/vote @NotBlank refine + classifier custom
+  // branch + captured-law pins; the run-001 combo-law capture PROVED the
+  // core's constraint-selection is request-level NONDETERMINISTIC whenever
+  // >=2 constraints are violated, so the 096 L09/L10 'first-field' samples
+  // were distribution draws — the deterministic REAL divergence was the
+  // bare min(1) message + whitespace passing through to the service).
+  // LIVE RE-VERIFY of record (run-002, post-deploy): the 31-leg dual-plane
+  // matrix = 20/31 byte-agree, the 11 multi-violation legs ALL within the
+  // captured class universe (membership law, 0 x 5xx), and the whitespace
+  // discriminator legs serve 400 validation_failed 'rating|vote: must not be
+  // blank' on the aliased tip deploy (i6gx4tvqp, built from fcbddc6 + the
+  // 093-recipe shims; localgate 8/8 on the real Neon wire; cla/ask 097 law
+  // + keyed tutor/ask 200 co-verified on the same alias). LLM-free law: the
+  // two write surfaces never reach the LLM seam. NARROW per-exact-subpath
+  // rows (bare /learners/me stays FORBIDDEN): the rows are proper prefixes
+  // of NO other path (flashcard-ratings vs flashcard-rating-trail diverge at
+  // the trailing 's' — segment-safe); note-votesx-style partial-segment
+  // capture is DOCUMENTED INERT (no such route or hub emitter).
+  "/api/v1/learners/me/flashcard-ratings",
+  "/api/v1/learners/me/note-votes",
   // T-MIG-083 (r9-hubx rider) — admin revision-notes (ingest + status):
   // golden-verified of record (run-001: the 8-leg matrix 8/8 PASS on the local
   // scratch-Postgres boot of main 23c22e2 + the leg-04 wire repair, vs the r4b

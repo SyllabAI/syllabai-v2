@@ -69,6 +69,12 @@ const DUAL_RUN_PATHS: readonly string[] = [
   // neither belongs in this list.
   "/api/v1/knowledge/nodes/kn-root/tree?includeMisconceptions=true",
   "/api/v1/knowledge/nodes/kn-x/prerequisites",
+  // T-MIG-095 (r0 band) — the learner-me WRITE surfaces the hub emits
+  // (lib/api.ts rating/vote emitters): flipped after the band closed + the
+  // live re-verify passed (run-002 of record). The family is EXACTLY these
+  // two POST endpoints (no subpaths on either side).
+  "/api/v1/learners/me/flashcard-ratings",
+  "/api/v1/learners/me/note-votes",
 ];
 
 /** Hub-emitted (or hub-adjacent) paths that MUST stay on the core in the dual-run posture. */
@@ -92,12 +98,9 @@ const CORE_ONLY_PATHS: readonly string[] = [
   "/api/v1/exam-papers?subjectId=sub-1",
   "/api/v1/exam-papers/ep-1",
   // non-attempts learner surfaces (W4) — agenda + state FLIPPED in T-MIG-096
-  // (run-001 golden-verify); flashcard-ratings + note-votes STAY CORE until
-  // the T-MIG-095 first-field-error defect band closes (frozen core serves
-  // subtopicCode/vote first; the port serves cardId/noteId first — a flip
-  // would 400 live user writes core accepts)
-  "/api/v1/learners/me/flashcard-ratings",
-  "/api/v1/learners/me/note-votes",
+  // (run-001 golden-verify); flashcard-ratings + note-votes FLIPPED in
+  // T-MIG-095 after the band closed (46536fd) and the live re-verify passed
+  // (run-002 of record) — moved out of this CORE_ONLY list of record
   // T-MIG-096: recommendations stays core this band — 400/404 wires verified
   // (L03/L04) but the 200 NBA-engine wire is not live-proven yet (disclosed)
   "/api/v1/learners/me/recommendations",
@@ -142,6 +145,8 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/learners/me/state", // T-MIG-096 run-001 L16
       "/api/v1/learners/me/course-stats", // T-MIG-096 run-001 L17
       "/api/v1/learners/me/courses", // T-MIG-096 run-001 L12/L13 — zero emitters, routing availability
+      "/api/v1/learners/me/flashcard-ratings", // T-MIG-095: band CLOSED (46536fd) + live re-verify PASS (run-002) — the 096 linkage writes flip
+      "/api/v1/learners/me/note-votes", // T-MIG-095: same band + run-002 — per-exact-subpath, never the bare /learners/me
       "/api/v1/admin/revision-notes", // T-MIG-083: golden-verified (run-001 8/8, r9-hubx rider) — NARROW: ingest+status ONLY, rest of /api/v1/admin/** stays core
       "/api/v1/knowledge/nodes", // T-MIG-084: golden-verified (run-002 8/8, r4b rider) — NARROWEST: the /nodes segment family ONLY, siblings outside /nodes stay core
     ]);
@@ -172,11 +177,10 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     ]) {
       expect(v2SurfaceBase(p, V2)).toBe(V2);
     }
-    // the T-MIG-095-blocked write surfaces + the not-yet-verified 200 NBA
-    // wire stay core — the zero-key/defect-band law in string form
+    // the not-yet-verified 200 NBA wire + LLM-bearing surfaces stay core —
+    // the zero-key law in string form (the T-MIG-095-blocked write surfaces
+    // LEFT this list: band closed + run-002 live re-verify — see the 095 test)
     for (const p of [
-      "/api/v1/learners/me/flashcard-ratings",
-      "/api/v1/learners/me/note-votes",
       "/api/v1/learners/me/recommendations?rootId=kn-1",
       "/api/v1/learners/me/cla/ask",
       "/api/v1/learners/me/classroom",
