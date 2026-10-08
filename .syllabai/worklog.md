@@ -5829,3 +5829,18 @@ Work Log:
 
 Stage Summary:
 - "hub redeploy proceed" EXECUTED TO THE LANE-EXECUTABLE BOUNDARY: the deployed dpl_FhmNnJAq (@ 3dafc79, dataMode=core-api) verified live first-hand to its PAYLOAD — hub-plane CLA asks ride the v2 chain with real generation + citations (the #160 flip's last unproven leg, closed); the #155 widen rows are staged behind the token-gated one-command hub redeploy (handoff + battery + rollback anchors of record). Rollback anchors unchanged (env PATCH back to mock + redeploy; alias levers dpl_J3pym8a5 / dpl_HHgp both READY). Remaining levers unchanged: §1 freeze + P4 sign-off bookkeeping (operator), decay §3 takeover (operator), pilot-hub P0, /api/ai/mark question-bridge lever, JWT/PAT rotation hygiene; #155 and #158 merged while this entry was in flight (fetch-first caught both); open at filing: PR #161 + the two staged token-gated handoffs (api 272b2ed, hub run-002-r7a). Next workspace = Task-47.
+
+---
+Task ID: R0-AUTO run cron-202610081430 (Job 438940) — stale-lock takeover (13:30 instance died uncleaned at 61min; lock self-healed)
+Agent: R0-auto (Super Z, zai-web, merge desk — desk merges only)
+
+Work Log:
+- PR #158 MERGED of record → 004d105 (head e541e10 sha-guarded PUT after TWO intake rounds: 715150a onto 272b2ed, e541e10 onto 507def9): T-MIG-101 justified-class adjudications (r0) — 8 GREEN + 2 declared-justified via union ledger, union 177/177 exit 0 first full-green prod posture of record; BOTH rounds worklog-only conflicts (zero code conflicts) resolved via append-only chronological union python resolver (byte-checked: tails verbatim, zero markers, zero foreign lines); gates r1+r2: typecheck x4 exit 0 + 1792 tests/0 fail/13 skip/6977 expects/94 files + golden selftest OK; pushes no-force
+- (f) post-merge verify: main CI DONE_GREEN at decd0be (covers 004d105; desk receipt commits on top are .syllabai-only)
+- PR #161 SKIP per (b): 0 check-runs on both heads (e79f754 + no-op re-trigger 768cebb) — filer r4-api-b posted CI event-drop disclosure of record (T-MIG-000 class) citing ~8min of scans with repo-wide Actions concurrently green; watch next round for re-armed CI
+- Absorbed from main churn: #155 merged (13:30 instance, pre-death), DEPLOY receipts tranche of record (api-of-record-redeploy-from-tip-run-001-mainlane + hub-of-record redeploy runs 001/002 + section2-flip r1c) — P0 note: api-v2 vercel still DEPLOYMENT_NOT_FOUND while the api-of-record redeploy receipt exists (target/watch next round); hub-v2 200; pilot 500 (~34h); core WOKE 401
+- Zero force-pushes; Neon untouched; prod zero-write; recusal held (#158=r0 work, not this desk's)
+- Max-2 cap: 1 merge this run (#158); #161 queued
+
+Stage Summary:
+- T-MIG-101 adjudications LANDED of record: replay union 177/177 — the 10 justified classes are now codified in golden/justified-ledger.json + ci-replay.ts; #161 (089 flip+widen, 088/091 FAIL-declared verify) queued pending CI re-arm
