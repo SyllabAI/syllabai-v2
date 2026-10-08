@@ -210,6 +210,30 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   "/api/v1/learners/me/state",
   "/api/v1/learners/me/course-stats",
   "/api/v1/learners/me/courses",
+  // T-MIG-095 (r0 defect band, operator trace 1a119b4f3c6fc7d9 'start 095' +
+  // 1a119de303c9e599 'desk merge -> deploy (093 recipe) -> live re-verify ->
+  // expand flashcard ratings + note-votes') — the learner-me HEART WRITE
+  // surfaces, the 096 linkage the band unblocked. Band CLOSED of record
+  // (095 DONE 46536fd: rating/vote @NotBlank refine + classifier custom
+  // branch + captured-law pins; the run-001 combo-law capture PROVED the
+  // core's constraint-selection is request-level NONDETERMINISTIC whenever
+  // >=2 constraints are violated, so the 096 L09/L10 'first-field' samples
+  // were distribution draws — the deterministic REAL divergence was the
+  // bare min(1) message + whitespace passing through to the service).
+  // LIVE RE-VERIFY of record (run-002, post-deploy): the 31-leg dual-plane
+  // matrix = 20/31 byte-agree, the 11 multi-violation legs ALL within the
+  // captured class universe (membership law, 0 x 5xx), and the whitespace
+  // discriminator legs serve 400 validation_failed 'rating|vote: must not be
+  // blank' on the aliased tip deploy (i6gx4tvqp, built from fcbddc6 + the
+  // 093-recipe shims; localgate 8/8 on the real Neon wire; cla/ask 097 law
+  // + keyed tutor/ask 200 co-verified on the same alias). LLM-free law: the
+  // two write surfaces never reach the LLM seam. NARROW per-exact-subpath
+  // rows (bare /learners/me stays FORBIDDEN): the rows are proper prefixes
+  // of NO other path (flashcard-ratings vs flashcard-rating-trail diverge at
+  // the trailing 's' — segment-safe); note-votesx-style partial-segment
+  // capture is DOCUMENTED INERT (no such route or hub emitter).
+  "/api/v1/learners/me/flashcard-ratings",
+  "/api/v1/learners/me/note-votes",
   // T-MIG-083 (r9-hubx rider) — admin revision-notes (ingest + status):
   // golden-verified of record (run-001: the 8-leg matrix 8/8 PASS on the local
   // scratch-Postgres boot of main 23c22e2 + the leg-04 wire repair, vs the r4b
@@ -258,6 +282,51 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // whole family is read-only over the knowledge spine — no LLM seam, no
   // 404/501 failure mode (the flip law's target).
   "/api/v1/knowledge/nodes",
+  // T-MIG-097 (r7a, operator chain order trace 1a119df7d930b609) — the CLA
+  // ask surface: BOTH wires proven live of record. Refusal wire: run-003
+  // 10/10 dual-live ALL PASS (9 deterministic byte-parity legs + L01 under
+  // the declared first-field relaxation — the frozen core's multi-violation
+  // order is NONDETERMINISTIC of record: run-001 sampled "question", run-003
+  // sampled "mode"; the port pins the deterministic question-first choice,
+  // GOLDEN_MASTER §5 declared-only) vs the LIVE core, at the redeployed
+  // api-of-record dpl_Att7u carrying bc4ec31 (receipts T-MIG-097/run-003-*).
+  // Generation wire: the run-004 rider probe — the live v2 served a real 200
+  // answer-envelope (908 generated chars) on a learner-scoped KG_TOPIC
+  // anchor with the #144 real-adapter chain + keys live, while the frozen
+  // core 500'd the same ask (its legacy LLM path — the core is the retiring
+  // surface; filed, not a v2 defect). NARROWEST form: the exact ask path
+  // only; startsWith partial-segment capture (cla/askx) DOCUMENTED INERT
+  // (no such route or emitter exists on either side — pinned in the surface
+  // test). The hub emitter rides claAskFetch: table-governed, core fallback
+  // whenever the v2 base is unset.
+  "/api/v1/learners/me/cla/ask",
+  // Wave S4 (T-MIG-085, r3a; reconciled onto the r4b 084 rider of record) —
+  // teacher concept-graph: golden-verified of record (run-002-golden-verify-r3a,
+  // PASS with ONE filed message-format class — non-blocking per the 081-class
+  // precedent; receipt .syllabai/receipts/T-MIG-085/run-002-golden-verify-r3a.json
+  // via PR #152) vs the r4b frozen-core 6cad6ef capture band
+  // golden-captures/t-mig-085, on the lane-reproduced r4b scratch substrate
+  // (PG 17.11 + pgvector, all 63 Flyway migrations, uuid-isomorphism compare
+  // law, write legs executed on scratch only). Operator widen directive trace
+  // 1a119d95d71fbce9 ("proceed with the widening PRs for the five verified
+  // families"); wave-s4 was filed as PR #155 and superseded on the 084 leg by
+  // the r4b rider — this row is the residual widening of record. T-MIG-083 of
+  // the same verified five is NOT re-widened: its rider line above is already
+  // of record (r9-hubx, 002a501/259746f) — the r3a run-002 083 receipt stands
+  // as independent corroboration.
+  //
+  // /api/v1/teacher/concept-graph — family-exact form: activate + edges are
+  // the ENTIRE teacherConceptGraphRoute (routes/teacher-kg.ts) and the hub's
+  // only emitters under the base (lib/api.ts:1137/:1144 — the teacher
+  // concept-graph page) — a live routing change for that page. TRUE siblings:
+  // none (the router owns the base exclusively); the /api/v1/teacher/classes
+  // subtree is a DIFFERENT route and stays core this band — the verified
+  // class-KG/coverage families (T-MIG-086/087) are STRUCTURALLY NOT
+  // PREFIX-ADDRESSABLE (their distinguishing segment sits after the {classId}
+  // wildcard on a base shared with unverified class-management emitters,
+  // lib/api.ts:881-923) — pinned in the surface-test CORE list of record with
+  // the adjudication note (mid-path row form mechanism ask, PR #155).
+  "/api/v1/teacher/concept-graph",
 ];
 
 /**

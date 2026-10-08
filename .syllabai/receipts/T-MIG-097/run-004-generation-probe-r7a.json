@@ -1,0 +1,30 @@
+{
+ "card": "T-MIG-097",
+ "receipt": "run-004-generation-probe",
+ "lane": "r7a",
+ "created_at_utc": "2026-10-08T05:34:49Z",
+ "operator_trace": "1a119df7d930b609 (stage 5: post-enablement generation rider probe)",
+ "law": "LLM-dependent surfaces are NEVER golden-gated — status + envelope shape only; anchors are learner-scoped and differ per wire by design",
+ "core": {
+  "wire": "core",
+  "kg_status": 200,
+  "ask_status": 500,
+  "rootId": "297a8706-b957-40cb-8bb6-0bfed66980b7",
+  "topic": "2fa5ee0e-1bd1-44a7-b993-83b08241d882",
+  "shape": "internal_error",
+  "answer_chars": 0,
+  "error_message": "an internal error occurred"
+ },
+ "v2": {
+  "wire": "v2",
+  "kg_status": 200,
+  "ask_status": 200,
+  "rootId": "297a8706-b957-40cb-8bb6-0bfed66980b7",
+  "topic": "2fa5ee0e-1bd1-44a7-b993-83b08241d882",
+  "shape": "answer-envelope",
+  "answer_chars": 908,
+  "error_message": null
+ },
+ "generation_live": false,
+ "verdict": "NOT-LIVE (see statuses — 503 = dormant seam still served; 400/404 = anchor resolution issue; filed, never auto-fixed)"
+}
