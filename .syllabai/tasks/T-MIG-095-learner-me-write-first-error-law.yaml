@@ -1,0 +1,21 @@
+version: 1
+task:
+  id: T-MIG-095
+  title: "T-MIG-095 - defect band, filed from the T-MIG-094 golden-verify gate (operator order trace 1a117ee8fb5b520d): FIRST-FIELD-ERROR LAW deviations on the two learner-me write surfaces - POST /api/v1/learners/me/flashcard-ratings: frozen core (live capture) serves 'subtopicCode: must not be blank' as the first constraint error on an all-blank request, the v2 port serves 'cardId: must not be blank' (the T-MIG-080 F3 declaration-order READING is contradicted by the live wire - capture wins); POST /api/v1/learners/me/note-votes: frozen core serves 'vote: must not be blank' first, v2 serves 'noteId: must not be blank'. The hub emitters (api.ts :617/:658) send the frozen field SET (cardId+rating+subtopicCode / noteId+vote+subtopicCode) so the fields match - the deviation is the zod schema field ORDER (+ the exact blank-issue message on vote/subtopicCode paths). A flip with the deviant order would 400 live user ratings/votes that core accepts - the exact class the per-family golden gate exists to catch. Fix = reproduce the captured first-field law in the contracts schemas / route classifier + update the route test pins to the captured law + live re-verify the legs post-deploy, then the two paths widen (094 rider linkage)"
+  owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) - self-filed from the r0 golden-verify gate on the T-MIG-094 rider (operator order trace 1a117ee8fb5b520d); claim-in-card, single-lane evidence chain run-001 (16/18 PASS, L09/L10 FAIL = the gate working)"
+  status: "IN_PROGRESS # fix design: capture the partial-combination first-error law from the live frozen core (single-blank + multi-blank combos), reproduce it in flashcardRatingRequestSchema/noteVoteRequestSchema ordering + messages, update the route pins, gates, live re-verify (deploy per the T-MIG-093 deploy-run-001 recipe-of-record), then widen the two paths"
+  priority: "P1"
+  wave: "defect-band # the 070/093 precedent class: restore the frozen wire law the gate filed against the landed surface"
+  deps: [T-MIG-043, T-MIG-094]
+  scope:
+    allowed:
+      - "packages/contracts/src/learner.ts (flashcardRatingRequestSchema + noteVoteRequestSchema field order/message law ONLY)"
+      - "apps/api/src/routes/learnerme.ts (the first-issue classifier if the law lives there) + apps/api/test/ learner-me route test pins"
+      - "apps/hub test pins if any pin the deviant order (hub emitter shapes UNCHANGED - the field SET is frozen-correct)"
+      - "golden-captures/t-mig-095/** + .syllabai/receipts/T-MIG-095/** (combo-law captures + re-verify receipts)"
+      - ".syllabai/tasks/T-MIG-095-learner-me-write-first-error-law.yaml (this yaml)"
+      - ".syllabai/worklog.md (append-only)"
+    forbidden:
+      - "the hub emitter field sets (cardId/rating/subtopicCode, noteId/vote/subtopicCode are frozen-correct per the capture)"
+      - "V2_SURFACE_PREFIXES widening of the two paths until the live re-verify passes post-deploy (the flip law)"
+      - "other families; the 094 widen set (lands in its own PR); force-push; self-merge of this PR"

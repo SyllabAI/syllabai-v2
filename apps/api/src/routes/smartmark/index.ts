@@ -43,6 +43,7 @@ import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "../../services/identity/users";
 import { apiError } from "../../services/identity/errors";
 import { requireAuth, getAuth } from "../../middleware/auth";
+import { buildLlmChain, chainAsCandidateGenerator, chainAsFeedbackLlm, type FailoverLlmChain } from "../../services/llmchain";
 
 const UUID_RE = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
 
@@ -142,6 +143,19 @@ export function createStudentSmartMarkRouter(module: ReturnType<typeof buildSmar
  * wiring parity: the E-2 frozenParity posture applies to publishGraded too —
  * claims are domain law; the 032 publisher default here is the claiming
  * frozen-parity double).
+ *
+ * LLM SEAM OF RECORD (ADR-MIG-0002, operator directive ① trace
+ * 1a117913519cd141): when seams.generator/llm are absent the §26.1 chain
+ * rides the chainAsCandidateGenerator / chainAsFeedbackLlm bridges — the
+ * LlmMarkingCandidateGenerator port (prompt v3 + v4 batch envelope, budget
+ * formula, truncation refusals, deterministic-validator downstream). A
+ * zero-key boot (or SYLLABAI_LLM_MODE=test) keeps EXACTLY the dormant-pair
+ * behaviour (the chain refuses → CandidateGenerationError → the pipeline's
+ * fail-closed rejection decisions; feedback llm.available() = false → the
+ * honest 503), so the golden pins and the dormant constants above stay the
+ * rig contract; keyed boots mark and explain for real with failover. The
+ * explicit seams still win when provided (the capture/replay proxy of
+ * ADR-MIG-0001 rides this unchanged).
  */
 export function buildSmartMarkRouters(
   env: Record<string, string | undefined> = process.env,
@@ -150,17 +164,19 @@ export function buildSmartMarkRouters(
     llm?: FeedbackLlm;
     publisher?: GradedEvidencePublisher;
     clock?: SubmitClock;
+    chain?: FailoverLlmChain;
   } = {},
 ) {
   const databaseUrl = requireDatabaseUrl(env as { DATABASE_URL?: string });
   const sql = createSql(databaseUrl);
+  const chain = seams.chain ?? buildLlmChain(env);
   const selfMarkModule = buildSelfMarkModule(sql, seams.publisher, seams.clock);
   const module = buildSmartMarkModule(
     sql,
-    seams.generator ?? dormantCandidateGenerator,
+    seams.generator ?? chainAsCandidateGenerator(chain),
     seams.publisher ?? { publishGraded: async () => true },
     seams.clock ?? { newId: () => crypto.randomUUID(), now: () => new Date() },
-    seams.llm ?? dormantFeedbackLlm,
+    seams.llm ?? chainAsFeedbackLlm(chain),
   );
   return { module, selfMarkModule, studentRoute: createStudentSmartMarkRouter(module) };
 }

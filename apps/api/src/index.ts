@@ -57,6 +57,7 @@ import { buildLearnerRouters } from "./routes/learner";
 import { buildClassroomRouters } from "./routes/classroom";
 import { buildResearchRouters } from "./routes/research";
 import { buildIngestionRouters } from "./routes/ingestion";
+import { buildLlmAdminRouters } from "./routes/llmadmin";
 import { buildLearnerMeRouters } from "./routes/learnerme";
 import { buildLearnerKgRouters } from "./routes/learnerkg";
 import { buildRevisionNotesRouters } from "./routes/revision-notes";
@@ -64,6 +65,7 @@ import { buildKnowledgeRouters } from "./routes/knowledge";
 import { buildTeacherKgRouters } from "./routes/teacher-kg";
 import { buildTutorRouters } from "./routes/tutor";
 import { buildClaRouters } from "./routes/cla";
+import { buildLlmChain } from "./services/llmchain";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
@@ -78,12 +80,9 @@ const smartmark = buildSmartMarkRouters();
 const questions = buildQuestionsRouters();
 const examPapers = buildExamPapersRouters();
 const testbuilder = buildTestBuilderRouters();
-const answerInput = buildAnswerInputRouters();
 const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
 const learnerKg = buildLearnerKgRouters();
-const tutor = buildTutorRouters();
-const cla = buildClaRouters();
 const sme = buildSmeRouters();
 const intervention = buildInterventionRouters();
 const classroom = buildClassroomRouters();
@@ -92,6 +91,21 @@ const knowledge = buildKnowledgeRouters();
 const teacherKg = buildTeacherKgRouters();
 const research = buildResearchRouters();
 const ingestion = buildIngestionRouters();
+
+// THE ONE LLM CHAIN OF RECORD (ADR-MIG-0002, operator directive ① trace
+// 1a117913519cd141): the §26.1 free-tier chain (groq → gemini → openrouter)
+// is built ONCE here and shared by every consuming composition root — tutor,
+// CLA, smart-mark, transcription and the admin chain-health report. Health
+// counters, cooldowns and daily budgets are per-chain state; fragmenting
+// them across five chains would break the observability contract. Zero-key
+// boots (and SYLLABAI_LLM_MODE=test) register every member dormant — the
+// honest 503 postures everywhere are byte-identical to the pre-adapter
+// surface; keyed boots generate/mark/transcribe for real with failover.
+const llmChain = buildLlmChain();
+const tutor = buildTutorRouters(process.env, { chain: llmChain });
+const cla = buildClaRouters(process.env, { chain: llmChain });
+const answerInput = buildAnswerInputRouters(process.env, { chain: llmChain });
+const llmadmin = buildLlmAdminRouters(process.env, llmChain);
 
 const app = new Hono();
 
@@ -293,8 +307,10 @@ app.route("/api/v1/questions", questions.questionsRoute);
 // its authz internally) and TranscriptionController under
 // /api/v1/learners/me/answer-input (SecurityConfig.java:91
 // anyRequest().authenticated() — the router owns its authz internally). The
-// transcription provider seam is DORMANT (null → 503
-// transcription_unavailable parity, T-MIG-032 precedent); the weakness-options
+// transcription provider seam is the shared §26.1 chain (ADR-MIG-0002):
+// media rides ONLY to the vision-capable member; zero-key/test boots keep
+// the dormant-equivalent 503 transcription_unavailable parity, T-MIG-032
+// precedent); the weakness-options
 // analytics port is DORMANT (null → 501 with the task reference — the
 // class-analytics read service is unclaimed work). The /api/v1/* fallback
 // below stays the 404-after-auth path for NO router claimed.
@@ -361,6 +377,18 @@ app.route("/api/v1/learners/me", learnerMe.learnerMeRoute);
 // a separate commit per the T-MIG-010/020/021/030/032/033t2 precedent so
 // R0 can ratify or lift them out at review.
 app.route("/api/v1/admin/question-bank", sme.adminRoute);
+
+// LLM chain-observability router (T-MIG-090 — R0, the ruling4
+// adopted-and-amended vehicle). Path parity with the frozen core:
+// LlmAdminController under /api/v1/admin/llm (SecurityConfig.java
+// /api/v1/admin/** hasRole("ADMIN") + @PreAuthorize defense-in-depth;
+// the router owns its authz internally — the /api/v1/* fallback below
+// stays the 404-after-auth path for NO router claimed).
+// Mount lines IN-FENCE per the 090 card scope.allowed; config = the
+// frozen-effective application.yml @ 6cad6ef layer (ruling4 §2);
+// ZERO-KEY boot of record (ruling4 §3) — the report shows what is
+// missing and generation stays ADR-023 fail-closed dormant.
+app.route("/api/v1/admin/llm", llmadmin.llmAdminRoute);
 
 // Tutor routers (T-MIG-060 tranche 2 — Wave 6). Path parity with the frozen
 // core: TutorController under /api/v1/tutor (POST /ask + the SSE twin

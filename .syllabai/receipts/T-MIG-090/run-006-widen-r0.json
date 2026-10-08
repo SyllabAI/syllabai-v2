@@ -1,0 +1,17 @@
+{
+ "card": "T-MIG-090",
+ "run": "run-006-widen-r0",
+ "lane": "r0",
+ "date": "2026-10-08",
+ "operator_trace": "IM trace_id 1a1179458d3a6681 \u2014 the widen step of the rider (flip-law gate discharged by run-005 4/4 PASS)",
+ "change": {
+  "apps/hub/src/lib/api.ts": "V2_SURFACE_PREFIXES += '/api/v1/admin/llm/chain-health' \u2014 the NARROWEST legal form (the prefix is the single verified endpoint's exact path), with the full flip-law comment: golden-verified of record (run-005), ZERO hub emitters under /api/v1/admin/** (grep-verified at this commit) so the line is ROUTING AVAILABILITY of record with zero live-page routing change, sibling admin paths stay core until their own golden gates, and the v2 answer is the ZERO-KEY fail-closed report (never a 404/501 \u2014 the failure mode the flip law prevents)",
+  "apps/hub/src/lib/api.v2-surface.test.ts": "table pin extended (is-exactly-the-verified-set) + new boundary pin: the exact surface flips; TRUE siblings (/api/v1/admin/llm/other, /admin/llm/chain, /admin/users, /admin/stats) stay core; the startsWith partial-segment property (chain-healthx) pinned as DOCUMENTED INERT capture \u2014 honest about the string-matching semantics every table row shares; rollback posture pins unchanged and still cover the new line"
+ },
+ "not_done_and_why": [
+  "DUAL_RUN_PATHS array NOT extended \u2014 that pin's contract is 'every flipped HUB-EMITTED path'; the hub emits no admin/llm path today, so adding one would be dishonest; the routing-availability pin lives in its own test instead",
+  "NO section-2 full-flip env changes, NO Vercel/Render/Neon production writes (card forbidden list)"
+ ],
+ "verification": "bun test apps/hub/src/lib/api.v2-surface.test.ts: 9 pass / 0 fail / 234 expect calls (first-hand); full gate suite in the PR body",
+ "flip_law_check": "widening gated on a NEW golden-verified surface (run-005) \u2014 the gate is satisfied exactly as the law requires"
+}

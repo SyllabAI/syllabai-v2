@@ -1,0 +1,37 @@
+version: 1
+task:
+  id: T-MIG-096
+  title: "T-MIG-096 - learner-me HEART flip rider (RENUMBERED from T-MIG-094 at push time - ID yielded to the kg-retriever latent band card r4b filed on main c7e0476 first; the T-MIG-014->13 precedent) (operator order trace 1a117ee8fb5b520d 'CLA, learner-me heart (agenda/flashcards), teacher surfaces'): golden-verify the LLM-free learner-me family wire (agenda, flashcard-ratings/-trail/-review-schedule, note-votes, exam-series, assignments(+submissions error-wire), state, course-stats; T-MIG-041/043/054 mounts) against the live frozen core 6cad6ef, then widen V2_SURFACE_PREFIXES with NARROW per-exact-subpath lines ONLY - a bare /api/v1/learners/me prefix is FORBIDDEN (it would capture cla/ask = LLM zero-key 503 + classroom/intervention/knowledge-graph = own bands). LLM-free discipline: NO generation-reaching legs; write surfaces get error-wire legs (400/404) + unit-pinned 201/204 wires disclosed; recommendations + courses/target-series widen only if their wires are live-proven this band"
+  owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5) - operator direct order trace 1a117ee8fb5b520d (the flip queue listing); claim-in-card per the 092 precedent; pre-claim census: 0 open PRs at filing, main 23c22e2, 043/041/069 = DONE mount bands (not flip riders), zero learner-me-heart claims in the worklog tail"
+  renumber_note: "the receipts/PR references below that read T-MIG-094 were authored BEFORE the collision was discovered at intake; the ID of record for this rider is T-MIG-096"
+  status: "DONE # run-001 golden-verify (receipt .syllabai/receipts/T-MIG-094/run-001-golden-verify-r0.json + tools/): 18-leg LLM-free matrix dual-replayed live core 6cad6ef94 vs the live v2 deploy = 16/18 PASS; the 2 FAILs are REAL first-field-error law deviations on the write surfaces (flashcard-ratings cardId-first vs frozen subtopicCode-first; note-votes noteId-first vs frozen vote-first) -> defect band T-MIG-095 filed+claimed; per the flip law the widen lands the 16-verified paths ONLY: agenda, flashcard-rating-trail, flashcard-review-schedule, exam-series, assignments(+submissions wire), state, course-stats, courses (L12/L13; zero emitters = routing availability) - flashcard-ratings + note-votes STAY CORE until 095 closes; recommendations stays core this band (400/404 verified; the 200 NBA wire not live-proven - disclosed). Gates: typecheck x4 + 1719/0/13 + hub 39/0/342 (+1 posture test) + selftest OK. The bare /api/v1/learners/me prefix stayed FORBIDDEN (zero-key law: cla/ask capture; classroom/intervention own bands)"
+  priority: "P1"
+  wave: "flip-riders # per-family golden-verify/widen band (T-MIG-082 Wave-S3 + T-MIG-092 precedents)"
+  deps: [T-MIG-041, T-MIG-043, T-MIG-054]
+  endpoints:
+    - GET /api/v1/learners/me/agenda
+    - GET /api/v1/learners/me/recommendations
+    - POST /api/v1/learners/me/flashcard-ratings
+    - GET /api/v1/learners/me/flashcard-rating-trail
+    - GET /api/v1/learners/me/flashcard-review-schedule
+    - POST /api/v1/learners/me/note-votes
+    - GET /api/v1/learners/me/exam-series
+    - PUT /api/v1/learners/me/courses/{courseSlug}/target-series
+    - DELETE /api/v1/learners/me/courses/{courseSlug}/target-series
+    - GET /api/v1/learners/me/assignments
+    - POST /api/v1/learners/me/assignments/{id}/submissions
+    - GET /api/v1/learners/me/state
+    - GET /api/v1/learners/me/course-stats
+  scope:
+    allowed:
+      - "apps/hub/src/lib/api.ts V2_SURFACE_PREFIXES widening for THIS family's verified exact subpaths only"
+      - "apps/hub/src/lib/api.v2-surface.test.ts family surface pins"
+      - "golden-captures/t-mig-094/** + .syllabai/receipts/T-MIG-094/** (evidence chain + tools)"
+      - ".syllabai/tasks/T-MIG-094-learner-me-heart-flip-rider.yaml (this yaml)"
+      - ".syllabai/worklog.md (append-only)"
+    forbidden:
+      - "a bare /api/v1/learners/me prefix row (would capture cla/ask - LLM zero-key 503 law - plus classroom/intervention/knowledge-graph/answer-input = own bands)"
+      - "V2_SURFACE_PREFIXES widening without this family's golden-verified surface (the flip law)"
+      - "the section-2 FULL flip (env changes, Vercel/Render/Neon production writes of any kind)"
+      - "other families (cla, teacher) - own riders per the same operator order"
+      - "force-push; self-merge of this PR"

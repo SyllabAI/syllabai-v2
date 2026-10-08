@@ -1,0 +1,199 @@
+{
+ "results": [
+  {
+   "leg": "leg-01",
+   "expected_status": 401,
+   "actual_status": 401,
+   "status_match": true,
+   "body_match": true,
+   "header_diffs": [
+    "cache-control: capture=no-cache, no-store, max-age=0, must-revalidate actual=<absent>",
+    "x-content-type-options: capture=nosniff actual=<absent>",
+    "x-frame-options: capture=DENY actual=<absent>"
+   ],
+   "actual_body": {
+    "timestamp": "2026-10-07T20:15:08.047Z",
+    "status": 401,
+    "error": "Unauthorized",
+    "path": "/api/v1/admin/revision-notes/ingest"
+   },
+   "expected_body": {
+    "error": "Unauthorized",
+    "path": "/api/v1/admin/revision-notes/ingest",
+    "status": 401,
+    "timestamp": "2026-10-07T06:59:34.328Z"
+   }
+  },
+  {
+   "leg": "leg-02",
+   "expected_status": 403,
+   "actual_status": 403,
+   "status_match": true,
+   "body_match": true,
+   "header_diffs": [
+    "cache-control: capture=no-cache, no-store, max-age=0, must-revalidate actual=<absent>",
+    "x-content-type-options: capture=nosniff actual=<absent>",
+    "x-frame-options: capture=DENY actual=<absent>"
+   ],
+   "actual_body": {
+    "timestamp": "2026-10-07T20:15:08.062Z",
+    "status": 403,
+    "error": "Forbidden",
+    "path": "/api/v1/admin/revision-notes/ingest"
+   },
+   "expected_body": {
+    "error": "Forbidden",
+    "path": "/api/v1/admin/revision-notes/ingest",
+    "status": 403,
+    "timestamp": "2026-10-07T06:59:34.344Z"
+   }
+  },
+  {
+   "leg": "leg-03",
+   "expected_status": 403,
+   "actual_status": 403,
+   "status_match": true,
+   "body_match": true,
+   "header_diffs": [
+    "cache-control: capture=no-cache, no-store, max-age=0, must-revalidate actual=<absent>",
+    "x-content-type-options: capture=nosniff actual=<absent>",
+    "x-frame-options: capture=DENY actual=<absent>"
+   ],
+   "actual_body": {
+    "timestamp": "2026-10-07T20:15:08.064Z",
+    "status": 403,
+    "error": "Forbidden",
+    "path": "/api/v1/admin/revision-notes/ingest"
+   },
+   "expected_body": {
+    "error": "Forbidden",
+    "path": "/api/v1/admin/revision-notes/ingest",
+    "status": 403,
+    "timestamp": "2026-10-07T06:59:34.357Z"
+   }
+  },
+  {
+   "leg": "leg-04",
+   "expected_status": 500,
+   "actual_status": 500,
+   "status_match": true,
+   "body_match": true,
+   "header_diffs": [
+    "cache-control: capture=no-cache, no-store, max-age=0, must-revalidate actual=<absent>",
+    "x-content-type-options: capture=nosniff actual=<absent>",
+    "x-frame-options: capture=DENY actual=<absent>"
+   ],
+   "actual_body": {
+    "status": 500,
+    "error": "internal_error",
+    "message": "an internal error occurred",
+    "timestamp": "2026-10-07T20:15:08.065Z"
+   },
+   "expected_body": {
+    "error": "internal_error",
+    "message": "an internal error occurred",
+    "status": 500,
+    "timestamp": "2026-10-07T06:59:34.410040004Z"
+   }
+  },
+  {
+   "leg": "leg-05",
+   "expected_status": 400,
+   "actual_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "header_diffs": [
+    "cache-control: capture=no-cache, no-store, max-age=0, must-revalidate actual=<absent>",
+    "x-content-type-options: capture=nosniff actual=<absent>",
+    "x-frame-options: capture=DENY actual=<absent>"
+   ],
+   "actual_body": {
+    "status": 400,
+    "error": "bad_request",
+    "message": "revision-notes package is missing package.json",
+    "timestamp": "2026-10-07T20:15:08.067Z"
+   },
+   "expected_body": {
+    "error": "bad_request",
+    "message": "revision-notes package is missing package.json",
+    "status": 400,
+    "timestamp": "2026-10-07T06:59:34.444027535Z"
+   }
+  },
+  {
+   "leg": "leg-06",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "header_diffs": [
+    "cache-control: capture=no-cache, no-store, max-age=0, must-revalidate actual=<absent>",
+    "x-content-type-options: capture=nosniff actual=<absent>",
+    "x-frame-options: capture=DENY actual=<absent>"
+   ],
+   "actual_body": {
+    "ingested": false,
+    "notes": 0,
+    "assets": 0,
+    "ingestedAt": null,
+    "corpusVersion": null
+   },
+   "expected_body": {
+    "assets": 0,
+    "corpusVersion": null,
+    "ingested": false,
+    "ingestedAt": null,
+    "notes": 0
+   }
+  },
+  {
+   "leg": "leg-07",
+   "expected_status": 403,
+   "actual_status": 403,
+   "status_match": true,
+   "body_match": true,
+   "header_diffs": [
+    "cache-control: capture=no-cache, no-store, max-age=0, must-revalidate actual=<absent>",
+    "x-content-type-options: capture=nosniff actual=<absent>",
+    "x-frame-options: capture=DENY actual=<absent>"
+   ],
+   "actual_body": {
+    "timestamp": "2026-10-07T20:15:08.076Z",
+    "status": 403,
+    "error": "Forbidden",
+    "path": "/api/v1/admin/revision-notes/status"
+   },
+   "expected_body": {
+    "error": "Forbidden",
+    "path": "/api/v1/admin/revision-notes/status",
+    "status": 403,
+    "timestamp": "2026-10-07T06:59:34.534Z"
+   }
+  },
+  {
+   "leg": "leg-08",
+   "expected_status": 401,
+   "actual_status": 401,
+   "status_match": true,
+   "body_match": true,
+   "header_diffs": [
+    "cache-control: capture=no-cache, no-store, max-age=0, must-revalidate actual=<absent>",
+    "x-content-type-options: capture=nosniff actual=<absent>",
+    "x-frame-options: capture=DENY actual=<absent>"
+   ],
+   "actual_body": {
+    "timestamp": "2026-10-07T20:15:08.076Z",
+    "status": 401,
+    "error": "Unauthorized",
+    "path": "/api/v1/admin/revision-notes/status"
+   },
+   "expected_body": {
+    "error": "Unauthorized",
+    "path": "/api/v1/admin/revision-notes/status",
+    "status": 401,
+    "timestamp": "2026-10-07T06:59:34.549Z"
+   }
+  }
+ ],
+ "verdict": "PASS"
+}

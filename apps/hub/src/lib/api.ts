@@ -150,6 +150,85 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // NARROW like attempts: only this family flips — sibling /learners/me/*
   // surfaces stay core until their own capture+verify legs land.
   "/api/v1/learners/me/revision-notes",
+  // T-MIG-090 (r0 rider) — LLM chain-observability report: golden-verified of
+  // record (run-005: the post-merge golden-verify leg 4/4 PASS at merged main
+  // bd4eaeb vs the r4b wire truth golden-captures/t-mig-090/ legs 01-04 —
+  // 401/403/403/200 status+body deep-equal, leg-04 raw wire byte-parity in the
+  // pinned emission order; ruling4 §5 acceptance discharged). NARROWEST form:
+  // the prefix is the single endpoint's exact path — true siblings stay core;
+  // startsWith subpath/partial-segment capture is DOCUMENTED INERT (no such
+  // routes or hub emitters exist on either side — pinned in the surface test).
+  // startsWith-safety: NO hub page emits /api/v1/admin/** today (grep-verified
+  // at the widening commit) — this line is ROUTING AVAILABILITY of record for
+  // the verified surface, with zero live-page routing change; sibling
+  // /api/v1/admin/** paths stay core until their own golden gates. The v2
+  // answer is the ZERO-KEY fail-closed report of record (ruling4 §3):
+  // chainAvailable honestly false with the report of what is missing — never a
+  // 404/501, which is the failure mode the flip law exists to prevent.
+  "/api/v1/admin/llm/chain-health",
+  // T-MIG-092 (r0 rider, operator trace 1a11790a99a3cb19) — tutor SESSIONS
+  // family: golden-verified of record (run-003: the post-fix 14-leg LLM-free
+  // matrix ALL PASS on the live v2 deploy dpl_5VuNMyfq5vknZSEsMkyFrUCgmcbL
+  // carrying the T-MIG-093 scalar-param IN fix a356a7d, vs the frozen core
+  // 6cad6ef94 fixtures of run-001; receipts T-MIG-092/run-003 + T-MIG-093/
+  // deploy-run-001). NARROW form: the prefix covers EXACTLY the verified
+  // sessions surface tree (list/create/latest/transcript/delete — every leg
+  // of the matrix) and does NOT capture /api/v1/tutor/ask or /ask/stream —
+  // different path segments — which STAY CORE this band (v2 zero-key law:
+  // generation-reaching asks would 503 tutor_unavailable on the dormant LLM
+  // seam; the hub's ask/ask-stream emitters ride coreFetchAuthorized /
+  // coreStreamAuthorized and keep their core routing). LLM-free law: the
+  // sessions CRUD never reaches the LLM seam, so the flip is wire-safe.
+  "/api/v1/tutor/sessions",
+  // T-MIG-096 (r0 rider, operator trace 1a117ee8fb5b520d; RENUMBERED from
+  // T-MIG-094 - ID yielded to r4b's kg-retriever card per house law) — the
+  // learner-me HEART family, NARROW per-exact-subpath form. GOLDEN-VERIFIED of record
+  // (run-001: 16/18 legs dual-replayed live core 6cad6ef94 vs the live v2
+  // deploy dpl_5VuNMyfq5vknZSEsMkyFrUCgmcbL — receipt
+  // .syllabai/receipts/T-MIG-094/run-001-golden-verify-r0.json). The two
+  // FAIL legs are REAL first-field-error law deviations on the WRITE
+  // surfaces (flashcard-ratings serves cardId-first vs the frozen
+  // subtopicCode-first; note-votes noteId-first vs frozen vote-first) —
+  // defect band T-MIG-095 owns them; those two paths STAY CORE until the
+  // band closes and the legs re-verify live. A bare /api/v1/learners/me
+  // prefix is FORBIDDEN by the zero-key law (it would capture cla/ask =
+  // LLM 503) and would capture classroom/intervention/knowledge-graph —
+  // hence one exact-subpath row per verified surface:
+  //   /agenda (L01 200 / L02 404 root-law), /flashcard-rating-trail (L05
+  //   200 keyset law), /flashcard-review-schedule (L07 200), /exam-series
+  //   (L11 200), /assignments (L14 200 + L15 submission 400 wire),
+  //   /state (L16 200 uuid/Instant-normalized deep-equal), /course-stats
+  //   (L17 200), /courses (L12 404 slug law + L13 204 idempotent delete;
+  //   zero hub emitters — routing availability per the 090 precedent).
+  // recommendations stays CORE this band (400/404 wires verified; the 200
+  // NBA-engine wire is not live-proven yet — disclosed, own follow-up).
+  "/api/v1/learners/me/agenda",
+  "/api/v1/learners/me/flashcard-rating-trail",
+  "/api/v1/learners/me/flashcard-review-schedule",
+  "/api/v1/learners/me/exam-series",
+  "/api/v1/learners/me/assignments",
+  "/api/v1/learners/me/state",
+  "/api/v1/learners/me/course-stats",
+  "/api/v1/learners/me/courses",
+  // T-MIG-083 (r9-hubx rider) — admin revision-notes (ingest + status):
+  // golden-verified of record (run-001: the 8-leg matrix 8/8 PASS on the local
+  // scratch-Postgres boot of main 23c22e2 + the leg-04 wire repair, vs the r4b
+  // wire truth golden-captures/t-mig-083/ captured from the frozen core
+  // 6cad6ef local boot — 401/403/403/500/400/200/403/401 status+body
+  // deep-equal; the gate FIRST found the leg-04 divergence: v2 answered the
+  // part-less multipart bind with the sme.ts 400 while the core's @RequestPart
+  // bind 500s through the unhandled catch-all — repaired in this rider, pinned
+  // in the route tests; receipts T-MIG-083/run-001-verify). NARROW form: the
+  // prefix covers exactly the two verified endpoints' family tree
+  // (/ingest, /status) and NOTHING else; sibling /api/v1/admin/** stays core
+  // until its own golden gates. startsWith-safety: NO hub page emits
+  // /api/v1/admin/revision-notes today (grep-verified at the widening commit)
+  // — this line is ROUTING AVAILABILITY of record with zero live-page routing
+  // change (the T-MIG-090 precedent). LLM-free law: ingest/status never reach
+  // the LLM seam; ingest write legs are fail-closed on the captured shapes
+  // (part-less bind 500, non-package.json zip 400) — zero corpus mutation
+  // reachable from the flipped surface without an admin-supplied valid zip.
+  "/api/v1/admin/revision-notes",
 ];
 
 /**

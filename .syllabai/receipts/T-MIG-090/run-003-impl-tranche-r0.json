@@ -1,0 +1,34 @@
+{
+ "card": "T-MIG-090",
+ "run": "run-003-impl-tranche-r0",
+ "agent": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+ "operator_order": "trace 1a1171097283c475 (the ruling4 delegation) — same trace owns claim c212990 + this implementation",
+ "pr": {"number": 140, "branch": "t-mig-090/r0", "head": "1dd6143", "base": "main @ de30ef8", "mergeable_state_at_open": "unknown (API warmup); zero conflicts expected — family files are net-new, index.ts touchpoints are import/construction/mount-line only"},
+ "implementation": {
+  "files": [
+   "apps/api/src/services/llmchain/index.ts (NEW — FailoverLlmChain + LlmProviderHealth + DormantChainMember + the THREE-layer LlmChainProperties projection; 3-mode LlmMode; capture-order snapshots; ADR-023 fail-closed dormant members in every mode)",
+   "apps/api/src/routes/llmadmin.ts (NEW — ADMIN shell verbatim + GET /chain-health two-key report)",
+   "apps/api/src/index.ts (import + construction + mount line at /api/v1/admin/llm — IN-FENCE per the 090 card scope.allowed)",
+   "packages/contracts/src/llm-admin.ts (NEW — snapshot schema in the captured alphabetical key order + chainHealthReportSchema; FENCE FLAG DISCLOSED for desk ratification: contracts/** not verbatim in the card allowed-list, filed as the wire-contract companion of the service port per the barrel one-liner precedent)",
+   "packages/contracts/src/index.ts (+1 barrel line)",
+   "apps/api/test/llmadmin/routes.test.ts (NEW — 18 pins)"
+  ],
+  "amendments_vs_r1c_937ed6291": [
+   "config layer: the frozen-EFFECTIVE application.yml @ 6cad6ef values replace the record defaults as the no-env boot posture (models openai/gpt-oss-120b / gemini-3.6-flash / nvidia/nemotron-3-super-120b-a12b:free; groq base-url https://api.groq.com/openai/v1; chain 60/60/3/1000; enabled bridges ${SYLLABAI_*_ENABLED:true}) — the r1c divergence that would have failed the family golden-verify",
+   "precedence: explicit three-layer resolution (SYLLABAI_LLM_* relaxed binding > yml layer incl. the SYLLABAI_GROQ_MODEL / SYLLABAI_LLM_DAILY_BUDGET placeholder bridges > record compactor targets on blank/non-positive sets) — Spring semantics preserved including the compactor-target edges r1c did not model",
+   "LlmMode: THREE modes (production/test/live) — r1c ported two; LIVE report posture = production, generation dormant in every mode (disclosed ADR-023 lane law)",
+   "snapshot key order: the captured alphabetical order (leg-04) — r1c's schema order was neither declaration-faithful nor capture-faithful",
+   "golden gate: the capture-posture admin-200 body deep-equals leg-04 VERBATIM (new, the ruling4 §5 acceptance gate) — absent from the preserved vehicle",
+   "tests: 13 → 18 (added: golden gate, capture-order keys, yml-effective no-env boot, properties-of-record incl. /v1 + 60s timeout, compactor-target edges, LIVE mode); all env names corrected to the frozen bridges"
+  ],
+  "untouched": ["apps/hub/** incl. V2_SURFACE_PREFIXES (flip law: widening rides post-merge golden-verify)", "golden/** (capture pass owns golden truth)", "env files / production writes (zero-key boot of record, ruling4 §3)"]
+ },
+ "gates": {
+  "typecheck_x4": "exit 0 (contracts/shared/db/api)",
+  "bun_test_api_packages": "1706 pass / 0 fail / 13 skip / 6715 expects / 89 files — EXACT delta vs main (1688/0/13skip/6640/88f): +18 tests, +1 file, +75 expects, all this card's",
+  "bun_test_hub": "36 / 0 / 306 EXACT (untouched family)",
+  "selftest": "bun golden/runner.ts --selftest OK (tolerance engine incl. 024/072/071/075/077 laws)"
+ },
+ "acceptance_gate_status": "SATISFIED AT THE UNIT LAYER — the leg-04 deep-equality pin runs green in the capture posture (SYLLABAI_LLM_MODE=test + the three DISABLE bridges, deterministic clock). The POST-MERGE golden-verify leg (mounted v2 vs the r4b legs, local-boot or live posture) remains the flip-law gate for the family's V2_SURFACE_PREFIXES widening — filed as the card's next run, not this PR.",
+ "provenance": "r1c's preserved implementation 937ed6291 adopted per R0-arbitration/ruling4 §2 with authorship credited in every amended file header; the preserved branch stays untouched as provenance; #134 stays closed-superseded; single-implementation law in force (ruling4 §7)."
+}

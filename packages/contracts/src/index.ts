@@ -40,3 +40,4 @@ export * from "./research"; // T-MIG-062 (R4-api-b) — Wave-6 research calibrat
 export * from "./cla"; // T-MIG-069 (w0a, refiled from 067) — Wave-6 CLA wire (OUT-OF-FENCE-flagged one-liner, 010/034/043-t1/052/053/061/062 precedent)
 export * from "./revision-notes"; // T-MIG-053 (r3a) — Wave-5 revision-notes wire, tranche-3 (OUT-OF-FENCE-flagged one-liner, 010/034/043-t1/052/053-t1/053-t2 precedent)
 export * from "./ingestion"; // T-MIG-082 tranche B (R0) — the Fetch/Enumerate + glm-ocr bridge + exam-series import wire (OUT-OF-FENCE-flagged one-liner, 010/034/043-t1/052/053/061/062/069/revision-notes precedent)
+export * from "./llm-admin"; // T-MIG-090 (R0) — the admin LLM chain-observability wire (ruling4 adopted-and-amended vehicle; barrel one-liner precedent 010/034/043-t1/052/053/061/062/069/revision-notes/ingestion)

@@ -1,0 +1,27 @@
+{
+  "card": "T-MIG-090",
+  "run": "run-004-rider-claim-r0",
+  "lane": "r0",
+  "operator_trace": "IM gateway trace_id 1a1179458d3a6681 ('route the rider to you. Proceed') — arbitration of record: .syllabai/receipts/R0-arbitration/rider-reroute-t-mig-090.json",
+  "claim": "T-MIG-090 post-merge golden-verify leg + V2_SURFACE_PREFIXES family widening (flip law) — the final two steps of the card sequence mount -> golden-verify -> widen",
+  "branch": "t-mig-090-rider/r0 off origin/main bd4eaeb",
+  "method": [
+    "golden-verify: the 082 run-003 pattern of record — local v2 boot of MERGED MAIN (bd4eaeb) in the CAPTURE posture (SYLLABAI_LLM_MODE=test + the three DISABLE bridges; ZERO-KEY boot per ruling4 §3 — no LLM credentials in the boot env), Neon COW branch substrate for the bearer-leg revocation lookups, harness-minted learner/teacher/admin JWTs via the api's own JwtService (identical claim shape, HS256 by key size), GET-only legs, envelope-timestamp normalization only",
+    "acceptance: status + body deep-equal vs golden-captures/t-mig-090/leg-0{1..4}.json (the r4b wire truth of record); the api-wide default-cache-posture divergence (filed of record at 082 run-003) is a KNOWN class, disclosed per-leg, not a new divergence",
+    "widening: gated on 4/4 PASS — NARROW exact-endpoint prefix in apps/hub/src/lib/api.ts + v2-surface table pins + flip-law comment disclosing the zero-hub-emitter fact (no hub page emits /api/v1/admin/llm/** today: the line is routing-availability of record, zero live-page behavior change, startsWith-safety exact-path)"
+  ],
+  "scope_fence": {
+    "allowed": [
+      "apps/hub/src/lib/api.ts (THIS family prefix line only)",
+      "apps/hub/src/lib/api.v2-surface.test.ts (table pins extension)",
+      "this yaml; .syllabai/receipts/T-MIG-090/** + R0-arbitration/**; .syllabai/worklog.md (append-only)"
+    ],
+    "forbidden": [
+      "V2_SURFACE_PREFIXES widening beyond the exact chain-health family (the flip law)",
+      "the section-2 FULL flip (env changes, Vercel/Render/Neon production writes)",
+      "other families' mounts or surface edits; golden capture edits",
+      "force-push; self-merge"
+    ]
+  },
+  "neon_discipline": "disposable COW branch created via the Neon API under NEON_PAT from the production parent; seed INSERTs (3 synthetic harness users) and all reads land on the COW branch only; branch DELETED after the verify (zero residue, zero prod contact) — the T-MIG-050 live-SQL-proof discipline"
+}

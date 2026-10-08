@@ -1,0 +1,21 @@
+{
+ "auth": true,
+ "captured_at_utc": "2026-10-07T18:24:00Z",
+ "captured_from": "live frozen core syllabai-core.onrender.com (main 6cad6ef94)",
+ "leg": "L10",
+ "method": "POST",
+ "name": "ask-unknown-session-404",
+ "path": "/api/v1/tutor/ask",
+ "request_body": {
+  "history": [],
+  "question": "What is 2+2?",
+  "sessionId": "3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab"
+ },
+ "response_body": {
+  "error": "not_found",
+  "message": "tutor session 3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab not found",
+  "status": 404,
+  "timestamp": "2026-10-07T18:23:57.618825093Z"
+ },
+ "status": 404
+}

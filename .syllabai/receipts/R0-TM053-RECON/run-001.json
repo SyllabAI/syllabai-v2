@@ -1,0 +1,49 @@
+{
+  "task_id": "R0-TM053-RECON",
+  "run": "run-001",
+  "agent": "R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "operator_trace": "1a119bd827e66905",
+  "directive": "dig into the T-MIG-053 reconciliation",
+  "trigger": "R0-REVIEW-144-146 flagged #144's riding mark_points ghost-table fix with a T-MIG-053 quirk re-exam flag (plausible true root cause hypothesis)",
+  "date_utc": "2026-10-08",
+  "method": "read-only first-hand: origin/main f18abe6 worktree + frozen syllabai-core @ 6cad6ef fresh read-only clone + PR #144 head 993c18e9ec9d pulled refs/pull/144/head + golden corpus + receipts of record",
+  "verdict": "RECONCILED — the captured-quirk filing and the ghost-table defect are INDEPENDENT; #144's fix is parity-RESTORING and corpus-safe; the re-exam flag CLOSES with the original attribution CONFIRMED",
+  "findings": [
+    {
+      "id": "F1",
+      "finding": "ID HISTORY: there were two T-MIG-053 claims. The 053 id of record = r3a's Wave-5 remainder band (claimed 2026-10-06T02:50:40Z, DONE 4 tranches #101/#108/#115/t4). The selfmark validation-order fix claimed 053 second (9e1c94a, 03:09:23Z, collision lost earliest-claim-wins) and was REFILED as T-MIG-055 (of record, DONE: PR #91 merged 9bebf7e, live re-proof run 37408914789 recovered w3-selfmark-unknown-attempt-500). The W7-SMOKE filing's 'T-MIG-053 captured quirk' label is the pre-renumber name of the band now of record as T-MIG-055 — naming artifact only, substance identical.",
+      "evidence": ".syllabai/tasks/T-MIG-055-selfmark-validation-order-port-fix.yaml lines 17-20; worklog entry at 2800 (the frozen derivation)"
+    },
+    {
+      "id": "F2",
+      "finding": "CAPTURED QUIRK ATTRIBUTION CONFIRMED, INDEPENDENT OF THE GHOST TABLE: golden w3-selfmark-unknown-attempt-500 was captured from the FROZEN core boot (T-MIG-007 run-002, F-a). Frozen derivation re-verified first-hand @ 6cad6ef: POST {} -> Jackson binds parts=null (bare List, no @Valid cascade) -> controller dedup loop NPEs (LearnerSelfMarkController.java:42-43) -> catch-all (:224-230) -> 500 internal_error, all in the CONTROLLER, BEFORE any service or SQL executes. The selfmark path has ZERO mark-point SQL both sides (frozen LearnerSelfMarkService touches learner_self_marks; v2 selfmark has zero ghost sites). W7-SMOKE M1 leg + M3 leg verdicts (parity CONFIRMED, no defect) STAND.",
+      "evidence": "core-readonly-053 LearnerSelfMarkController.java:42-48 LearnerSelfMarkService.java; golden/cases/w3-selfmark-unknown-attempt-500.json; W7-SMOKE run-001 steps[37]"
+    },
+    {
+      "id": "F3",
+      "finding": "GHOST TABLE IS A PORT-SIDE TRANSCRIPTION DEFECT, NOT FROZEN-INHERITED: v2 of record carries mark_scheme_points at 4 SQL sites (services/smartmark/index.ts:540,846,865 + services/teachermarking/index.ts:550) + 1 comment (:57) + 3 self-referential fakeSql pins (routes.test.ts:47, smartmark.test.ts:164, teachermarking.test.ts:181) — pins match the ghost string so gates could never catch it (093 class). Introduced at T-MIG-032 tranche-1 (9bffac2, the smartmark service port). The FROZEN core has ZERO mark_scheme_points anywhere: Flyway V8__multipart_assessment.sql:110 CREATE TABLE mark_points, MarkPoint.java:27 @Table(name=\"mark_points\"), FetchService.java:208 native SQL, MarkPointRepository.findByMarkSchemeIdOrderByOrdering (derived query = where mark_scheme_id=? order by ordering — exactly the frozen law #144's fix restores).",
+      "evidence": "git log -S mark_scheme_points origin/main (introducing commit 9bffac2); frozen clone sweep zero hits; drizzle 0000_organic_mauler.sql:220"
+    },
+    {
+      "id": "F4",
+      "finding": "#144 FIX IS COMPLETE AND PARITY-RESTORING: head 993c18e (commit 29cea42 'mark_points table rename — live flip-proof findings') renames all 4 SQL sites + all 3 pins; SELECT column list unchanged (id, ref, ordering, text, marks, question_part_id where mark_scheme_id = ? order by ordering) and reconciles against BOTH schemas of record (frozen V8 DDL and v2 drizzle schema.ts:322 — mark_schemes.id UUID both sides, no deeper typing divergence). Corpus-safe: all 3 smart-mark corpus cases (w3-smartmark-unknown-attempt-404, w3-smartmark-unauthed-401, w3-teacher-marking-smartmark-batch-unauthed-401) are empty-body 401/404 shapes whose gates precede the scheme/point queries — zero golden reach into the ghost sites, zero replay drift from the rename.",
+      "evidence": "git diff origin/main..pr-144-head on the 5 files; golden corpus census; PR files list (26 files)"
+    },
+    {
+      "id": "F5",
+      "finding": "LIVE EXPOSURE BAND (material to cutover, refined): the flipped hub prefix /api/v1/learners/me/attempts (T-MIG-037, NARROW) routes learner smart-mark to the v2 api (hub api.ts:1288; flip-table comment: 'v2 api mounts attempt history and self/smart-mark under exactly that base'). The ghost fires BEFORE the LLM call (batch pipeline order: scheme rows -> point rows [ghost] -> contexts -> LLM), so ANY real-attempt learner smart-mark on the live v2 api = SQL error relation mark_scheme_points does not exist -> 500 since the 032-era mount went live. Teacher smart-mark stays core-routed (teacher marking NOT in the flip table) — the v2 teachermarking ghost site is latent until that surface flips. The SELF-MARK loop is unaffected (no ghost sites). #144's fix is a PRECONDITION for any live smart-mark parity claim.",
+      "evidence": "apps/hub/src/lib/api.ts:138-146,1288; services/smartmark/index.ts:525-541 order of queries"
+    },
+    {
+      "id": "F6",
+      "finding": "PERIPHERAL WATCHLIST (non-blocking, out of #144 scope): the of-record drizzle index ix_mark_points_scheme declares int4_ops opclass on uuid columns (schema.ts:333, 0000_organic_mauler.sql:963) — live-DB index existence is untestable lane-side and irrelevant to SELECT correctness (table-level law verified); 093-class drizzle-of-record oddity, note only.",
+      "evidence": "packages/db/src/schema/schema.ts:333"
+    }
+  ],
+  "disposition": {
+    "re_exam_flag": "CLOSED — original quirk attribution CONFIRMED (controller-boundary NPE, pre-service, zero SQL involvement); W7-SMOKE + T-MIG-055 verdicts stand of record",
+    "pr_144": "disclosure requirement from R0-REVIEW-144-146 item-2 STANDS (uncarded defect fix must be disclosed + card-linked before desk merge); the fix itself is verified parity-restoring and corpus-safe; no parity-divergence objection",
+    "recommended_card_link": "file/link the ghost-table fix under its own defect-band card (093-class port-defect family, live-exposure band per F5) rather than riding silently in #144",
+    "code_contact": "ZERO this run (read-only investigation; receipt + worklog + PR comment only)"
+  }
+}

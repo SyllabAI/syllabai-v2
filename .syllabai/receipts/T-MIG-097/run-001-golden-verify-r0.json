@@ -1,0 +1,222 @@
+{
+ "card": "T-MIG-097",
+ "receipt": "run-001-golden-verify-r0",
+ "lane": "r0",
+ "created_at_utc": "2026-10-07T20:31:08Z",
+ "operator_trace": "1a117ee8fb5b520d (flip queue leg: CLA)",
+ "method": "T-MIG-092/096 run pattern: deterministic-refusal matrix (LLM-free per the cla.ts law 'deterministic refusals NEVER 503' — NO generation-reaching leg in this matrix) dual-replayed LIVE core 6cad6ef94 vs the live v2 deploy. Fresh v2-registered probe learner; token never persisted, email redacted. Normalization: Boot envelope timestamp dropped + ISO timestamps -> <TS>.",
+ "disposition": "THE PATH FLIP IS BLOCKED-ON-LLM-ENABLEMENT of record: the served kinds' generation-reaching leg 503s on the v2 zero-key deploy (dormant seam, TutorGenerationError law) where the live core serves 200 — a path flip would 503 real user asks. The flip rides the operator's section-3 lever (LLM keys on v2 + DECAY_CRON-style enablement decision), then a thin verify rider. This run proves the refusal wire is ALREADY frozen-identical, so the post-enablement rider only needs the generation-wire legs.",
+ "verdict": "FAIL",
+ "legs": [
+  {
+   "leg": "L01",
+   "name": "empty-body-first-blank",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": false,
+   "verdict": "FAIL",
+   "core_body": {
+    "error": "validation_failed",
+    "message": "question: must not be blank",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "validation_failed",
+    "message": "kind: must not be null",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L02",
+   "name": "kind-closed-enum",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": false,
+   "verdict": "FAIL",
+   "core_body": {
+    "error": "malformed_body",
+    "message": "request body is not readable (check field types and enum values)",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "validation_failed",
+    "message": "kind: request invalid",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L03",
+   "name": "mode-closed-enum",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": false,
+   "verdict": "FAIL",
+   "core_body": {
+    "error": "malformed_body",
+    "message": "request body is not readable (check field types and enum values)",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "validation_failed",
+    "message": "mode: request invalid",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L04",
+   "name": "question-blank",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": false,
+   "verdict": "FAIL",
+   "core_body": {
+    "error": "validation_failed",
+    "message": "question: must not be blank",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "bad_request",
+    "message": "malformed request",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L05",
+   "name": "deferral-smart-lesson-400",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": false,
+   "verdict": "FAIL",
+   "core_body": {
+    "error": "bad_request",
+    "message": "SMART_LESSON context requires rootId and topicNodeId",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "bad_request",
+    "message": "context kind not supported by this runtime step: SMART_LESSON",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L06",
+   "name": "deferral-note-section-400",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": false,
+   "verdict": "FAIL",
+   "core_body": {
+    "error": "bad_request",
+    "message": "NOTE_SECTION context requires rootId and noteId",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "bad_request",
+    "message": "context kind not supported by this runtime step: NOTE_SECTION",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L07",
+   "name": "spec-point-missing-ref",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "bad_request",
+    "message": "SPECIFICATION_POINT context requires rootId",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "bad_request",
+    "message": "SPECIFICATION_POINT context requires rootId",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L08",
+   "name": "spec-point-unknown-ref",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "bad_request",
+    "message": "SPECIFICATION_POINT context requires rootId",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "bad_request",
+    "message": "SPECIFICATION_POINT context requires rootId",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L09",
+   "name": "kg-topic-missing-ref",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "core_status": 400,
+   "v2_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "bad_request",
+    "message": "KG_TOPIC context requires rootId and topicNodeId",
+    "status": 400
+   },
+   "v2_body": {
+    "error": "bad_request",
+    "message": "KG_TOPIC context requires rootId and topicNodeId",
+    "status": 400
+   }
+  },
+  {
+   "leg": "L10",
+   "name": "unauthed-401",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "core_status": 401,
+   "v2_status": 401,
+   "status_match": true,
+   "body_match": true,
+   "verdict": "PASS",
+   "core_body": {
+    "error": "Unauthorized",
+    "path": "/api/v1/learners/me/cla/ask",
+    "status": 401
+   },
+   "v2_body": {
+    "error": "Unauthorized",
+    "path": "/api/v1/learners/me/cla/ask",
+    "status": 401
+   }
+  }
+ ]
+}

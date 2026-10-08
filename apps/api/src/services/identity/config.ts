@@ -5,8 +5,10 @@
  *   SYLLABAI_JWT_SECRET           — required, ≥32 bytes (JwtService fail-fast)
  *   SYLLABAI_JWT_TTL              — default PT2H (application.yml:109)
  *   SYLLABAI_TEACHER_JOIN_CODE    — default "" → gate CLOSED (application.yml:117)
- *   SYLLABAI_CORS_ORIGINS         — default localhost:3000 + syllabai.vercel.app
- *                                    (application.yml:110)
+ *   SYLLABAI_CORS_ORIGINS         — default localhost:3000 + syllabai-hub.vercel.app
+ *                                    + syllabai-hub-v2.vercel.app (documented supersession
+ *                                    of the application.yml:110 port, which carried the
+ *                                    legacy apex — T-MIG-098 / issue #147)
  *   SYLLABAI_RATELIMIT_ENABLED    — default true (application.yml:131)
  *   rate limit window             — 60s, login-per-account 10 (:132,:141)
  *   SYLLABAI_RATELIMIT_LOGIN_PER_IP     — default 10  (RateLimitProperties:54,
@@ -42,7 +44,22 @@ export interface IdentityConfig {
   };
 }
 
-export const DEFAULT_CORS_ORIGINS = ["http://localhost:3000", "https://syllabai.vercel.app"];
+/**
+ * Ported default of the frozen core's application.yml:110 was
+ * ["http://localhost:3000", "https://syllabai.vercel.app"]. The apex project is
+ * now the decommission-pending zombie cluster (500 MIDDLEWARE_INVOCATION_FAILED,
+ * issue #147 / prj_D7vf; topology of record in the R0 sweep a6e89b1), so the
+ * faithful-port default named a dead origin. Documented supersession per the
+ * operator order trace 1a119b4d197a2671 (T-MIG-098): the live browser origins
+ * are the frozen-core hub (syllabai-hub.vercel.app) and the v2 hub
+ * (syllabai-hub-v2.vercel.app). Production runs on the SYLLABAI_CORS_ORIGINS
+ * env override, so this default governs local dev and fresh deployments.
+ */
+export const DEFAULT_CORS_ORIGINS = [
+  "http://localhost:3000",
+  "https://syllabai-hub.vercel.app",
+  "https://syllabai-hub-v2.vercel.app",
+];
 
 export function readIdentityConfig(env: Record<string, string | undefined> = process.env): IdentityConfig {
   const jwtSecret = env.SYLLABAI_JWT_SECRET ?? "";
