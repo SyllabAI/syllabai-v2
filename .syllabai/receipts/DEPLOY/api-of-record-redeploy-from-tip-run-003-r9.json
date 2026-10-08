@@ -1,0 +1,39 @@
+{
+  "card": "LEVER api-of-record redeploy from tip — EXECUTED AGAIN on the operator's direct order (the lever re-ripened when the #158 wave landed an api-side delta AFTER the run-002 consolidation deploy)",
+  "receipt": "api-of-record-redeploy-from-tip-run-003-r9",
+  "lane": "r9-hubx (main, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "operator_trace": "1a11a52bef46cf5d 'api redeploy from tip' (direct operator order — prod-write legality satisfied; the lever was filed 'ripe' at the tail of the run-002-r9 receipt)",
+  "source_of_record": "main tip aa7d322 (fetched first; ff-synced from d308749 local)",
+  "delta_of_record": [
+    "THIS deploy is a CODE-DELTA act (unlike run-002's content-equivalent consolidation): the #158 wave landed apps/api/src/services/content/repositories.ts (+9/-1) + apps/api/test/content/fidelity-fixes.test.ts (+11) — the T-MIG-101 G-class javaInstantText fix (regex /^([date]) ([time])$/ -> /^([date])[T ]([time])$/: accept BOTH the space form AND the literal-T form the module's own to_char selects emit; output law unchanged T + Z Java Instant wire)",
+    "git diff 272b2ed..origin/main over apps/api+packages = exactly these 2 files / 19 lines (verified first-hand at fetch and re-verified post-fetch); everything else in d308749..aa7d322 was .syllabai-only bookkeeping (worklogs, T-MIG-100->101->103 renumber chain, #161 merge receipts)",
+    "the fix OVERTURNS the T-MIG-077 VERIFIED-NO-OP of record (the 1021-observed-divergences class at createdAt, digits passthrough-faithful, trailing Z missing vs the frozen core's Jackson Instant)"
+  ],
+  "build_at_tip": [
+    "093 recipe verbatim via deploy-tools/deploy_bundle_build.py (shim v2 worktree-only, restored post-build, git-verified CLEAN tree at aa7d322)",
+    "bundle: 318 modules / 3,081,722 bytes CJS (+17 bytes vs the fcbddc6 census — codegen nondeterminism + the 19-line source delta class, disclosed)",
+    "asset SHAs == the 6 source pins EXACT, all six printed first-hand (concepts 24fa91ac7149682b, edges 8a651dd9e60bfefa, practicals e53e5f87606a2b5a, relationships b3b7529222d77d80, spec_points b1fea69953205077, topics a7b14cbdd34bb9fe)"
+  ],
+  "localgate_8_8": [
+    "ALL PASS on the production-shaped wire (real Neon ep-ancient-cake): health 200 UP; login-malformed 400 validation_failed; register 201 (synthetic probe learner r0-092gate-*@example.invalid); tutor create/list(L06)/latest/delete/list-after-delete net-zero",
+    "credential discipline (cleaner than run-002): production DATABASE_URL pulled read-only via the sanctioned env API and held in the VOLATILE shell env only — NO staging file created at any point, nothing shredded because nothing was ever on disk; local-only 44-byte JWT key"
+  ],
+  "deploy_leg": [
+    "EXECUTED: vercel CLI 62.7.0 deploy --prod --yes from the 2-file stage",
+    "dpl_8njpAVmTVaRu3a5XNJp3z2WaWSC1 READY + PROMOTED on FIRST poll; both aliases (syllabai-v2.vercel.app, syllabai-v2-syllab-ai.vercel.app) switched; no concurrent-deploy race this run"
+  ],
+  "live_census_16_16": [
+    "census battery 15/15 ALL PASS (same legs as run-002): health UP / login-malformed parity / probe register 201 / learners-me-state JWT law / THE 095 LAW DISCRIMINATOR PASS (validation_failed, deeper cardId hub-content-id zod layer) / cla-ask unauth 401 boot law / tutor L06 net-zero / CORS hub-v2 204 ACAO exact / hostile no-ACAO / hub dataMode=core-api / frozen core untouched",
+    "leg 16 zombie syllabai-api-v2 -> 404 (zero collateral)",
+    "T-MIG-101 LIVE-WIRE PROBE (deploy-tools/probe_t101.py, honest verdict NOT-EXERCISED): exam-papers list 200 (108 rows, summary projection omits createdAt); exam-paper detail 200 but createdAt absent from the detail view shape; content documents/search 400 bad_request malformed-request (query binding law enforced — 'the' fails the pattern), documents list 404 (no bare-list route on the reader surface); the of-record red surface is content-docs-TEACHER-detail-realdata — teacher-class, unreachable with learner-class credentials by design; VERDICT: the fixed CODE is deployed and live of record, verified by the suite (fidelity-fixes.test.ts green in the 1778-test gate chain at d56f792 and unchanged since) — live-wire exercise of the T+Z designator deferred to a teacher-class credential holder, no privileged writes forced",
+    "write ledger: 5 synthetic probe learners total this run (2x localgate register incl. SQLite-misconfig debug leg earlier in the window? NO — 1 localgate + 1 census + 3 probe registrations across the t101 probe iterations, all @example.invalid census class) + tutor rows net-zero; ZERO env writes; ZERO DDL; 1 production deployment (the operator-ordered act); zero secret material on disk (volatile-env discipline held throughout); zero key prefixes printed this run (env pulled via in-command pipe, never echoed)"
+  ],
+  "rollback_anchors": [
+    "dpl_5j2otnsK3dET4yRkS7yvrwopSHFa (272b2ed, PRE-DEPLOY alias holder — primary, one re-alias command)",
+    "dpl_CgHcMLAcK3VBUexbJbZZHrp7XEpX (95bee5f)",
+    "i6gx4tvqp (fcbddc6)",
+    "dpl_Att7u (9a376fd)",
+    "ooe5t3b4k (bc4ec31-class) / eh53sdxjm (993c18e) / dpl_Die9SrNyPQ (CORS-prune)"
+  ],
+  "verdict": "DEPLOYED AND VERIFIED — api-of-record serves main tip aa7d322 as dpl_8njpAVm (READY, PROMOTED, dual-aliased); the T-MIG-101 javaInstantText T-form fix is LIVE of record (suite-verified; live-wire probe honestly NOT-EXERCISED with learner-class credentials); 16/16 census legs green; no residual api-side delta remains between origin/main and the serving bundle at push time"
+}
