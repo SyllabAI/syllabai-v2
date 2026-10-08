@@ -1,0 +1,56 @@
+{
+  "id": "T-MIG-103",
+  "run": "run-001-rider-0001-catchup-land-w0a",
+  "title": "RIDER DISCHARGE: 0001 catch-up migration landed of record (operator trace 1a11c994738d9c61 '0001 rider')",
+  "actor": "w0a (zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "utc": "2026-10-08T18:04:08Z",
+  "anchor": {
+    "order": "operator message '0001 rider' (trace 1a11c994738d9c61) — discharge the follow-up disclosed of record by the T-MIG-105 proof leg (commit 844f9d9): 'the 103-scope 0001 catch-up migration landing'",
+    "scope_law": "packages/db/drizzle/** emission regeneration consistent with the repaired pins is THIS card's scope.allowed; T-MIG-105's scope has no drizzle/** entry, so the discharge rides T-MIG-103 with a cross-ref note on the 105 card",
+    "disclosure_of_record": ".syllabai/tasks/T-MIG-105-*.yaml execution_record + .syllabai/receipts/T-MIG-105/run-001-config-fix-push-green-w0a.json + worklog lines 6348-6372 ('emits a 75-line 0001 catch-up ... DISCLOSED out-of-scope, reverted byte-identical, evidence preserved lane-side; landing it is 103-emission-scope work')"
+  },
+  "landed_set": {
+    "packages/db/drizzle/0001_faithful_lila_cheney.sql": { "sha256": "09dfaf47da227a3537520091dc70730fb13f385e7e7ae8dd62d4fa95f0e9fd0b", "bytes": 8674, "lines_wc": 75 },
+    "packages/db/drizzle/meta/0001_snapshot.json": { "sha256": "b1db248c638e6da2dc0bd30f962e4e08f5d73f1fd5be11583ddc99bfd9fc709f" },
+    "packages/db/drizzle/meta/_journal.json": { "sha256": "1ee15280c9f34808b857f97cf76fedb1e4766bbeb6ece3cdcacb37ccaecdd796", "idx1": { "version": 7, "when": 1791481630044, "tag": "0001_faithful_lila_cheney", "breakpoints": true } },
+    "byte_untouched": ["packages/db/drizzle/0000_organic_mauler.sql (sha 084e30c586bb7180... pre==post)", "packages/db/drizzle/meta/0000_snapshot.json (sha 1b13fea0dda8401e... pre==post)", "packages/db/src/schema/* (content-frozen law; zero contact)"]
+  },
+  "battery": {
+    "db:generate": "EXIT 0 — emits the 0001 catch-up under the OF-RECORD file-schema config (no throwaway config)",
+    "byte_identity": "landed 0001 SQL sha256 09dfaf47... BYTE-IDENTICAL to the lane-preserved emission from the 105 proof-leg battery (scripts/kitcompat-repro/0001-catchup-evidence.sql, same sha) — deterministic of-record emission; the of-record journal codename (faithful_lila_cheney) differs from the preserved run's (flippant_obadiah_stane) — codename is per-run random, content identical",
+    "db:check": "EXIT 0 — 'Everything's fine' (journal consistency incl. idx 1)",
+    "steady_state": "second db:generate: 'No schema changes, nothing to migrate' EXIT 0, no 0002 emitted — the journal chain (0000+0001) is now IN SYNC with the 103-repaired schema.ts; the catch-up is complete by construction",
+    "statement_census": "2 DROP CONSTRAINT + 36 DROP INDEX + 36 CREATE INDEX + 2 ADD CONSTRAINT = 38 drop/recreate pairs of record (36 index pairs + 2 check-constraint rebuilds — reconciles the 105 prose '38 ... + 2 ck'); explicit opclass tokens x31 (uuid_ops members); partial WHERE clauses preserved (ix_exam_papers_paper_year_series, idx_struggle_inference_supersede, ix_document_chunks x2, ux_class_teacher_course_name)",
+    "tsc": "packages/db tsc --noEmit EXIT 0"
+  },
+  "surgical_proof": {
+    "substrate": "sanctioned scratch substrate — local PostgreSQL 17.6 + pgvector 0.8.0 @ 127.0.0.1:5544 loopback (the 103/105 rebuilt cluster), db scratch_r3; ZERO prod/Neon contact; ZERO-KEY asserted (no provider token vars in env; DATABASE_URL-class value = local file: plumbing only, disclosed, overridden to the loopback URL for db verbs)",
+    "design": "0001's claim is 'db in the 0000-snapshot state + 0001 == schema.ts state'. The snapshot-intent state was materialized lane-side (uncommented temp copy of 0000 per the dump's own header instruction; repo file byte-untouched; sha-verified), then the OF-RECORD 0001 SQL was applied VERBATIM (psql ON_ERROR_STOP=1, EXIT 0, all 38 pairs landed)",
+    "lane_side_patch_disclosed": "exactly ONE def of the snapshot-intent copy was patched: ux_class_teacher_course_name (FINDING #1 below); soundness: a scrambled def necessarily differs from the 103-repaired schema.ts def, hence every invalid def is provably inside 0001's rebuild set (0001 == diff(0000_snapshot, schema.ts))",
+    "pre_state": "62 tables / 170 indexes (ux_class_teacher_course_name absent — the one PG-invalid def)",
+    "post_state": "62 tables / 171 pg_indexes / declared 87 present 87 missing 0",
+    "verdicts_post_0001": {
+      "ix_mark_points_scheme": "uuid_ops-on-uuid(mark_scheme_id) + int4_ops-on-int4(ordering) — the 099 watchlist member, repaired",
+      "swaps": "ix_options_question uuid_ops/int4_ops; ix_edge_source_type uuid_ops/text_ops; ix_edge_target_type uuid_ops/text_ops — type-correct (healed)",
+      "ix_exam_series_lookup": "board text_ops / qualification text_ops / published bool_ops / window_start date_ops",
+      "target_pairs": "ix_tve_target + ix_cra_target: text_ops(target_type) + uuid_ops(target_id)",
+      "ix_telemetry_learner_time": "uuid_ops(learner_id) + timestamptz_ops(occurred_at)",
+      "fulltext_vector": "gin x2 (idx_document_chunks_content_tsv, ix_document_chunks_spec_codes) + hnsw (ix_document_chunks_embedding)",
+      "checks": "revision_note_asset_name_ck + question_asset_name_ck rebuilt to the '[/\]' serialization (pull-era stored '[/\\]' — the serialization delta is why generate rebuilt them)",
+      "expression_unique": "uq_users_email lower(email); ux_class_teacher_course_name (teacher_id, course_slug, lower(name)) WHERE status='ACTIVE'",
+      "equivalence": "POST-0001 catalog == the T-MIG-105 push-leg catalog OF RECORD (62 tables / 171 pg_indexes / 87-of-87 declared / every 103 verdict) — the journal-chain end-state equals the push end-state"
+    }
+  },
+  "findings": [
+    "FINDING #1: packages/db/drizzle/0000_organic_mauler.sql is NOT verbatim-applyable — exactly one PG-invalid def of record: line 1021 'CREATE UNIQUE INDEX \"ux_class_teacher_course_name\" ... (teacher_id text_ops, course_slug text_ops, ...)' — text_ops on a uuid column (the scramble artifact serialized into the pull-era dump; PG rejects: operator class text_ops does not accept data type uuid). The snapshot JSON is the diff-engine truth; the SQL dump is a lossy serialization. Any 'uncomment and run' of the baseline dump fails. Remedy (dump repair or re-baseline) = own register item, operator call.",
+    "FINDING #2: drizzle-kit migrate is structurally incompatible with the commented pull-era 0000 (comment fragments between breakpoints lex as unterminated /* comments — ERROR 42601) — by design: T-MIG-002 law is 'the end-state is the contract; the migration history is not replayed'. Future journal consumers start at 0002+ on a hand-built baseline. Disclosed for the register.",
+    "COUNT-NOTE: 105 prose says '75-line' — confirmed (wc -l 75; 76 logical lines, no trailing newline). Prose '38 index drop/recreates with repaired pins + 2 ck rebuilds' reconciles as 36 index pairs + 2 ck pairs = 38 drop/recreate pairs."
+  ],
+  "write_ledger": {
+    "repo": ["packages/db/drizzle/0001_faithful_lila_cheney.sql (new)", "packages/db/drizzle/meta/0001_snapshot.json (new)", "packages/db/drizzle/meta/_journal.json (idx 1 appended)", ".syllabai/tasks/T-MIG-103-*.yaml (rider_0001_discharge key appended)", ".syllabai/tasks/T-MIG-105-*.yaml (rider_0001_crossref key appended)", ".syllabai/receipts/T-MIG-103/run-001-rider-0001-catchup-land-w0a.json (this receipt; dir created — no prior receipts existed under T-MIG-103/, the band's push-green receipt lives under receipts/T-MIG-100/ at act time)", ".syllabai/worklog.md (append-only entry)"],
+    "scratch_ddl_only": "fresh dbs scratch_r1/r2/r3 on the loopback cluster; dropped/recreated lane-side",
+    "zero_contact": ["prod/Neon", "apps/**", "golden/**", "frozen core (Flyway)", "packages/db/src/schema/*", "0000 artifacts"],
+    "no_force": true,
+    "fetch_first": "origin/main d4ddcf1 verified before act; re-verify at push"
+  }
+}

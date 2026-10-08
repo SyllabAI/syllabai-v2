@@ -130,3 +130,13 @@ task:
     for THIS band; the owed proof-leg receipt is .syllabai/receipts/T-MIG-105/
     going forward. Content beyond the id/title/path/self-reference renumber is
     byte-verbatim from the 94ea75c filing.
+  rider_0001_crossref: >
+    APPEND-ONLY CROSS-REF (lane w0a, operator trace 1a11c994738d9c61 "0001 rider",
+    2026-10-08T18:04Z): the 0001 catch-up this card's execution_record disclosed as
+    emitted-then-reverted/out-of-scope is now LANDED of record under T-MIG-103's
+    emission scope (packages/db/drizzle/** regeneration consistent with the repaired
+    pins) — see .syllabai/receipts/T-MIG-103/run-001-rider-0001-catchup-land-w0a.json
+    and the rider_0001_discharge key on the T-MIG-103 card. The landed 0001 SQL is
+    byte-identical (sha256 09dfaf47...) to the emission preserved from THIS card's
+    proof-leg battery; the journal chain is now in steady state (re-generate emits
+    nothing). No other field of this card is touched; band remains DONE.
