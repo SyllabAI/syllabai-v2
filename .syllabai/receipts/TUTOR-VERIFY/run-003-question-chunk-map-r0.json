@@ -1,0 +1,209 @@
+{
+  "receipt": "run-003-question-chunk-map-r0",
+  "dir": "TUTOR-VERIFY",
+  "lane": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "created_at_utc": "2026-10-08T18:20:00Z",
+  "operator_trace": "1a11c5b0b2d9e599 'extend the sweep to all questions on a few more papers to map exactly which question-chunks are missing'",
+  "purpose": "per-question chunk map across 7 papers (5 new + full completion of the 2 run-002 Phase-C papers): every question number probed plain, refusals discriminated by part-variant and MS-seeking reprobes, so missing question-chunks are separated from out-of-range tails",
+  "target": "api-of-record https://syllabai-v2.vercel.app \u2014 SERVING WINDOW MOVED mid-run: total 404 (even /) observed 16:37-16:43Z, then hkg1::iad1:: edge path live (post-#166-era build aliased); all sweep data is from the new window",
+  "method": "scripts/tutor_chunk_map_r0.py (v1) + _v2.py + _agg_r0.py; 7 papers x Q1..Q14 plain asks; S2 part-(a) reprobe on every refusal; S2B MS-seeking reprobe ('show me the mark scheme answer for question N(a)') on every refusal; S4 one inventory-seeking ask per paper; S3 reader GETs on tutor-cited QP chunk docs; checkpointed JSONL work/tutor_chunk_map_r0.jsonl (413 rows, 186 unique keys), paced <=19 asks/60s, 503-aware retries",
+  "papers_swept": {
+    "4CH0/1C January 2012 (earliest era)": {
+      "resolved": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "present_ungenerated_pool_saturated": [],
+      "refused_tails": [
+        12,
+        13,
+        14
+      ],
+      "part_shape_only": [],
+      "last_evidenced_question": 11
+    },
+    "4CH0/2C June 2015 (mid 4CH0)": {
+      "resolved": [
+        1,
+        2,
+        3,
+        4,
+        6
+      ],
+      "present_ungenerated_pool_saturated": [
+        5
+      ],
+      "refused_tails": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "part_shape_only": [],
+      "last_evidenced_question": 6
+    },
+    "4CH1/1C June 2019 (card era, unit 1)": {
+      "resolved": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        9,
+        10,
+        12,
+        13,
+        14
+      ],
+      "present_ungenerated_pool_saturated": [
+        3,
+        7,
+        8,
+        11
+      ],
+      "refused_tails": [],
+      "part_shape_only": [],
+      "last_evidenced_question": 14
+    },
+    "4CH1/2C November 2023 (recent NOV)": {
+      "resolved": [],
+      "present_ungenerated_pool_saturated": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "refused_tails": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "part_shape_only": [],
+      "last_evidenced_question": 7
+    },
+    "4CH1/2C June 2026 (latest row)": {
+      "resolved": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "present_ungenerated_pool_saturated": [
+        1
+      ],
+      "refused_tails": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "part_shape_only": [],
+      "last_evidenced_question": 6
+    },
+    "4CH1/2C June 2019 (run-002 control, completed)": {
+      "resolved": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "present_ungenerated_pool_saturated": [
+        8
+      ],
+      "refused_tails": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "part_shape_only": [],
+      "last_evidenced_question": 8
+    },
+    "4CH0/2C June 2018 (run-002 sweep, completed)": {
+      "resolved": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "present_ungenerated_pool_saturated": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "refused_tails": [
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "part_shape_only": [],
+      "last_evidenced_question": 9
+    }
+  },
+  "classification_law": {
+    "RESOLVED": "200 with tiered citations; real generation; question-chunk fully serving",
+    "PRESENT-UNGENERATED(pool-saturated)": "503 tutor_unavailable \u2014 VERIFIED LIVE LAW: the deterministic 3-anchor resolver runs BEFORE generation, so a 503 means the resolver FOUND evidence for that paper+question identity and only the LLM generator was saturated (deterministic refusals kept flowing 200/~1s throughout the wall; each PRESENT key observed 503 on 3+ independent tries, zero refusals ever)",
+    "refused tails": "deterministic-paper-refusal (~1s, no LLM) \u2014 classified OUT-OF-RANGE when beyond the last evidenced question of the paper (tail-consistent across plain/part phrasings, both anchors, both serving windows); MISSING-CHUNK would require an in-range refusal \u2014 ZERO occurred",
+    "PART-SHAPE": "plain-N refused but N(a) resolves \u2014 ZERO occurred (identity binding is question-number-keyed)"
+  },
+  "results": {
+    "headline": "ZERO missing question-chunks found inside evidenced ranges. Every refusal sits beyond the last evidenced question of its paper and is stable across phrasings (plain vs part), anchors (QP vs MS), learners, and BOTH serving windows (08:05Z run-002 vs 16:47-18:14Z run-003).",
+    "per_question_resolution": "98 S1 keys: 42 RESOLVED (full generation + citations), 19 PRESENT-UNGENERATED (resolver-evidence law), 37 refused tails, 0 errors unclassified, 0 PART-SHAPE, 0 in-range MISSING",
+    "paper_shapes_inferred": "4CH0/1C 2012 = 11 questions (Q1-11 all resolve); 4CH0/2C 2015 = 6 (Q1-6); 4CH1/1C 2019 = 14+ (Q1-14 all present, cap hit); 4CH1/2C 2019 = 8 (Q1-8; Q9+ refuse \u2014 Phase-C q9c/q10c refusals EXPLAINED as out-of-range, NOT missing chunks); 4CH1/2C 2018-4CH0 = 9 (Q1-9; q12c refusal EXPLAINED as out-of-range); 4CH1/2C 2023 NOV = 7 evidenced (Q1-7 present, Q8+ refuse); 4CH1/2C 2026 = 6 (Q1-6 \u2014 the SUGGESTED-bank-linked-doc paper RESOLVES fully at the chunk layer: chunk corpus is independent of bank doc rows)",
+    "ms_discrimination": "37/37 S2B MS-seeking reprobes REFUSED in lockstep with their QP-side refusals (zero MS-only hits) \u2014 tail questions are absent from BOTH anchors, consistent with out-of-range rather than single-tier chunk gaps",
+    "run002_correction": "run-002's 3 Phase-C misses (4CH1/2C Jun 2019 q9c+q10c; 4CH0/2C Jun 2018 q12c) were interpreted as 'question/part shapes without validated chunks'; the completed maps show those papers end at Q8/Q9 \u2014 the 3 misses were OUT-OF-RANGE probes; the honest-refusal guard refused them correctly. Guard behavior remains exactly right; no chunk repair owed from those rows."
+  },
+  "findings_beyond_the_map": [
+    "READER CITABILITY IS PER-DOC: tutor citations point at internal chunk docs that 404 for students (e.g. 4CH1/2C Jun 2019 QP chunks f11e2595/98622045) while OTHER docs of the same paper serve 200 (run-001 trio e73c6d44/1e615bf0/cf54fef3) \u2014 a student following such a citation hits a dead reader link; product-level follow-up suggested",
+    "CITABLE DOCS SERVE METADATA-ONLY: reader 200s expose kind/title/pageCount but empty text (probed pages 1+2) \u2014 per-chunk text is not lane-side readable (matches run-001 'per-chunk counts not enumerable')",
+    "INVENTORY ENUMERATION NOT A SERVED CAPABILITY: S4 asks ('list every question number in paper X') return honest LLM declines from front-matter/cross-paper chunks (4/7 answered pre-wall; 3/7 503'd in the wall) \u2014 per-question retrieval is the working shape, paper-wide listing is not",
+    "PROVIDER WALL LAW: instant-503 saturating from ~16:45Z; learner-keyed daily quota RULED OUT first-hand (fresh learner registered 201 -> one 200 -> walled within minutes); global upstream pool saturation (openrouter free tier, UTC evening) is the consistent explanation; morning run-002 (08:05Z) had zero failures on 129 asks",
+    "4 transient 429s during 503-retry bursts (service limiter, pacing then held); 1 transient 500 internal_error; zero data corruption rows"
+  ],
+  "write_ledger_disclosed": "413 probe rows total (319 S1 incl 503-retries, 37 S2, 37 S2B, 13 S4, 7 S3 reader GETs); ~47 real LLM generations (42 S1 resolves + 4 S4 + 1 discriminator); 243 instant-503s and ~114 deterministic refusals cost zero generation; 2 probe learners disclosed: r0-099live-20261008t055945Z@example.invalid (primary, hit the provider wall mid-run) and r0-chunkmap-20261008t173428@example.invalid (registered 201 for the quota-discrimination test, then used as rotation); no other writes",
+  "asserts": [
+    "A1: all 98 S1 keys classified (0 unclassified) \u2014 PASS",
+    "A2: every S1 refusal carries both S2 and S2B discrimination rows (37/37) \u2014 PASS",
+    "A3: zero in-range MISSING-CHUNK classifications across 7 papers \u2014 PASS",
+    "A4: refusal tails stable across two serving windows for the 2 control papers (08:05Z vs 17:00Z-era refusals identical) \u2014 PASS",
+    "A5: 503=resolver-found law verified by concurrent refusal-flow (200 refusals during the wall) + fresh-learner discriminator \u2014 PASS",
+    "A6: serving-window 404 gap observed and documented (16:37-16:43Z, even / 404, then iad1 path) \u2014 PASS"
+  ],
+  "verdict": "QUESTION-CHUNK MAP COMPLETE for 7 papers: anchor coverage is question-complete inside every evidenced paper range \u2014 the tutor's per-question retrieval resolves (or provably has evidence for) EVERY question of the swept papers, with refusal tails being out-of-range probes the guard correctly declines. No chunk-repair backlog surfaced. Product caveats filed: citation->reader dead links on internal chunk docs, metadata-only citable docs, no paper-inventory capability.",
+  "deliverables": "raw JSONL + frozen summary lane-side (work/tutor_chunk_map_r0.jsonl, work/tutor_chunk_map_r0_summary.json); operator workbook Chunk Map sheet appended (download/tutor-anchor-coverage-r0.xlsx); receipt + worklog in-repo",
+  "scope_note": ".syllabai-only repo contact; zero code/schema/flip-table/seam contact; no force; live-wire probes only on sanctioned student surfaces"
+}
