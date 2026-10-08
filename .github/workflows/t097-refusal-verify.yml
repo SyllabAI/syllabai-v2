@@ -101,12 +101,7 @@ jobs:
         if: always()
         run: |
           if [ -f reports/run-003-refusal-verify.json ]; then
-            python3 -c "
-import json,sys
-d=json.load(open('reports/run-003-refusal-verify.json'))
-print('verdict:', d['verdict'])
-for l in d['legs']: print(l['leg'], l['name'], l['verdict'])
-sys.exit(0 if d['verdict']=='ALL PASS' else 1)"
+            bun -e 'const d = await Bun.file("reports/run-003-refusal-verify.json").json(); console.log("verdict:", d.verdict); for (const l of d.legs) console.log(l.leg, l.name, l.verdict); process.exit(d.verdict === "ALL PASS" ? 0 : 1);'
           else
             echo "::error::no receipt produced"; exit 1
           fi
