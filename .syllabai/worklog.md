@@ -6076,3 +6076,17 @@ Stage Summary:
   operator's call), r1c W7-SMOKE run-002 22/22 + P2 RULE-ABLE, r0 tutor live receipt.
   Remaining levers unchanged: §1 freeze + P4 (operator), decay §3 (operator), pilot-hub
   P0, /api/ai/mark question-bridge, teacher-credential lever, JWT/PAT rotation hygiene.
+
+---
+Task ID: 36
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator trace 1a11b2df0c3cecfd "continue: 088/091 flips remain gated on T-MIG-100 repairs (R0's lane as port owner) + T-MIG-023; 089's flip-stamp and 086/087 wave-s5 widening are bookkeeping-class" — the bookkeeping-class round.
+
+Work Log:
+- Wipe #8 recovered (PAT trio rebuilt from ghpat, credential store restored, re-clone at 558d96f); zero open PRs at census; wave-s5 CODE already landed of record by r3a (07c3ea5 direct-main, mechanism A per ruling PR #155 comment 6053748307 — V2_SURFACE_MIDPATH_PREFIXES + segment-exact matcher + the three ruled rows + isolator/malformed-uuid/verified-form surface pins first-hand verified in the test of record) but the announced card stamps had NOT followed.
+- GATES at tip 558d96f first-hand (the wave-s5 corroboration of record): hub tsc exit 0; hub 47/0/418 (24 prefix + 3 mid-path rows); typecheck chain x4 exit 0; api+packages 1811/13skip/0/7027; golden selftest OK. Independent agreement: r7a Task-48's own census (tsc 0, hub 47/0/418) AND the live redeploy battery — mid-path matcher discriminator LIVE (malformed-uuid -> core cloudflare vs well-formed -> v2 X-Vercel-Id), 084 knowledge-tree learner 200 at payload, 086/087 learner forms 403 on v2.
+- STAMPS of record (this commit, append-only verbatim prior-progression preserved, round-trip + verbatim asserts first-hand): 089 -> DONE (flip-stamp; verify 6/6 + widen landed #161/373cf44; family sequence COMPLETE); 084 -> DONE (convergent stale-IN-REVIEW class, the 082/090 precedent; verify 8/8 + rider widen of record); 086 -> WIDENED (wave-s5 two rows; PASS-WITH-FILED-DIVERGENCE stands non-blocking per the 081-class); 087 -> WIDENED (wave-s5 coverage row; 8/8 of record; zero hub emitters — the 090 posture).
+- 088/091 NOT touched: gated on T-MIG-100 repairs (owner R0-integrator as the #138 tranche-B port author; repairs-by-non-owner excluded by card law absent an operator reroute) + T-MIG-023 (topics-write coverage gap). T-MIG-103 (drizzle opclass band) remains UNCLAIMED — the 083-rider provisioning pattern blocker.
+
+Stage Summary:
+- Register after this round: the 083-091 band is 7/9 flipped of record (083 DONE, 084 DONE, 085 WIDENED, 086 WIDENED, 087 WIDENED, 089 DONE, 090 DONE; 088+091 gated on T-MIG-100/T-MIG-023). Hub live posture: 24 prefix + 3 mid-path rows deployed and live-verified (r7a Task-48). Remaining lane work: NONE actionable without operator levers (T-MIG-100 reroute or R0 repairs; T-MIG-023 ownership; T-MIG-103 claim; 094 real-wire gate).
