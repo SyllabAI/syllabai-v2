@@ -1,0 +1,18 @@
+{
+  "task_id": "T-MIG-094",
+  "kind": "implementation",
+  "run": "run-002",
+  "timestamp": "2026-10-08T04:35:00Z",
+  "agent": "main (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)",
+  "authority": "operator trace 1a119b0c8fe09e99 'Wave-A, the §2 routing' + run-001-claim on this branch",
+  "the_fix": "the three flagged kg-retriever IN sites (prerequisiteChains recursive-CTE :100, the knowledge_nodes title back-fill :118, misconceptionsForTopics :145) rewritten from the array-as-one-wire-value class (`in ${ids}`) to the T-MIG-093 inList scalar-param law — per-element $n, commas as template text, tagged-call shape; the inList helper now EXPORTED from session-store.ts :44 (single-implementation law, one keyword, zero duplication); zero behavior change beyond binding semantics (same SQL text at driver level, same rows); empty-list guards preserved (length===0 returns before any query — now pinned)",
+  "construction_pins": "NEW apps/api/test/tutor/kg-retriever-wire.test.ts — 5 pins at the fakeSql boundary (the 093 R13 pattern): (1) recursive-CTE IN renders (?, ?, ?) with 3 scalar params in order; (2) two-element list renders (?, ?) — construction grows per element; (3) MISCONCEPTION_OF leg same law; (4) empty-list guards never reach the wire (zero queries fired); (5) structureNodes (the unflagged leg) stays a plain zero-param template — drift pinned",
+  "gates": "typecheck x4 exit 0 (contracts/shared/db/api); bun test apps/api packages = 1725 ran / 0 fail / 13 skip / 6754 expect() / 90 files (band delta = +5 construction pins, +1 test file); bun test apps/hub 41/0/360; bun golden/runner.ts --selftest OK (all standing pins incl. the 093 scalar-param law)",
+  "gate_honesty": "fakeSql pins the CONSTRUCTION law only — driver binding semantics are invisible to it (the fake-vs-real class); the card's real-wire gate (the family golden-verify that first exercises these legs must run on REAL Neon wire) remains OWED by the flip band that mounts Knowledge/ClassKG/TeacherConceptGraph — restated in the pin file header + run-001-claim disclosures so it cannot be lost; the 093 precedent satisfied the same class via its live-deploy re-run (deploy-run-001-r0.json)",
+  "residuals_disclosed": [
+    "zero live exposure today (unreachable behind the zero-key LLM seam) — this band is pre-emptive flip-path hygiene, exactly as the card filed it",
+    "the kg families' mounts stay with their own bands (083-089/091 standdown per r4b claim; census 6450ff5); this fix lands the binding law BEFORE any of their golden-verify legs can reach the wire",
+    "author's note: my desk_union_resolve.py over-broad code-conflict fallback was caught and corrected this round (259746f on #146) — the resolver is scoped to worklog-only unions going forward; lesson filed with the desk receipt"
+  ],
+  "next": "PR to the desk (authors-never-self-merge)"
+}
