@@ -1,0 +1,29 @@
+{
+ "card": "T-MIG-095",
+ "receipt": "run-002-live-reverify-r0",
+ "lane": "r0",
+ "operator_trace": "1a119de303c9e599 (pipeline step 3: live re-verify post-deploy — the flip-law precondition for the widen)",
+ "created_at_utc": "2026-10-08T05:4xZ",
+ "surface_law": "POST /api/v1/learners/me/flashcard-ratings + POST /api/v1/learners/me/note-votes — the 095 captured law (notBlank refine on rating/vote, classifier custom branch, verbatim message; single-constraint classes byte-pinned 1:1, multi-violation classes = membership with disclosure)",
+ "matrix": {
+  "tool": "tools of record scripts/t095_capture.ts (run-001 capture harness, dual-plane replay)",
+  "legs": 31,
+  "core_base": "live frozen core (syllabai-core.onrender.com)",
+  "v2_base": "https://syllabai-v2.vercel.app (aliased tip bundle i6gx4tvqp @ fcbddc6)",
+  "byte_agree": "20/31",
+  "non_agree": "11 — ALL multi-violation classes (01/02/06/09/10/11/12 family): the core's constraint-selection is request-level NONDETERMINISTIC there (run-001 findings F1-F4 of record), byte-agreement is not a lawful expectation; membership check of every v2 message against the captured class universe (run-001 matrix + repeat batteries) = 0 violations",
+  "server_errors": "0 x 5xx across 31 legs x 2 planes",
+  "write_ledger": "0 — every leg >=1 violated constraint, all-400 by construction"
+ },
+ "whitespace_discriminator_legs": [
+  "ratings {cardId:abc, rating:'   ', subtopicCode:S1} -> 400 validation_failed 'rating: must not be blank' (the 095 law; the pre-095 bundle passes whitespace to the service and answers 400 bad_request service-enum — this leg EXPOSED the concurrent-deploy alias race)",
+  "votes {noteId:abc, vote:'   ', subtopicCode:S1} -> 400 validation_failed 'vote: must not be blank'",
+  "deterministic 6/6 law class of run-001"
+ ],
+ "co_verified_on_same_alias": [
+  "cla/ask {} -> 400 validation_failed 'question: must not be blank' = the 097 repaired law (bc4ec31)",
+  "tutor/ask {question} -> 200 grounded answer 1.35-1.8s = keyed adapters live (no regression from the deploy)",
+  "health 200 UP"
+ ],
+ "verdict": "LIVE RE-VERIFY PASS — the flip-law precondition satisfied; the two paths widened of record (PR #159, 61fd394) under the same operator order"
+}
