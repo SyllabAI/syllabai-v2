@@ -1,0 +1,24 @@
+version: 1
+task:
+  id: T-MIG-102
+  title: "T-MIG-102 - port the LearnerModelService submit-path model updates (the T-MIG-101 adjudication's owner card): the frozen core persists learner-model posteriors on every practice event — LearnerModelService.java @ 6cad6ef :102-133 upserts skill_states (BKT mastery per topic node: findByLearnerIdAndNodeId, update on the attempt event, saveAll) and :141-163 upserts misconception_states (BDT probability: correct weakens every monitored misconception, wrong strengthens the chosen distractor's; evidence rows per attempt). v2 ports ONLY the readers (apps/api/src/services/learner/state.ts skillStatesByRecency/misconceptionStatesByProbability, services/knowledge/graphs.ts, teacher/analytics, learner-me/nba, tutor/context, intervention) — first-hand T-MIG-101 verification: ZERO writers for either table anywhere in apps/api, so every v2-submitted attempt leaves the persisted-posterior surfaces empty. Live evidence of record: w4-state-practiced-200 (skillStates[]/misconceptionStates[] empty vs the capture's 1+1 rows after a genuine AUTO_GRADED attempt that history-after-submit proves exists) and w4-knowledge-graph-practiced-200 (node posteriors null) — both declared-justified in golden/justified-ledger.json pending this card"
+  owner: "OPEN (filed by T-MIG-101 adjudication; claim-in-first-commit per R0s-ROUND-10a §2.1)"
+  status: "OPEN"
+  priority: "P1"
+  wave: "port fidelity — persisted-posterior write path (blocks the two declared-justified corpus rows from retiring; blocks any live smart-mark-adjacent parity claim that reads learner-model state)"
+  deps: [T-MIG-032, T-MIG-101]
+  scope:
+    allowed:
+      - "apps/api/src/services/learner-model/** (NEW model-update module alongside the existing decay.ts/exam-target-reader.ts)"
+      - "apps/api/src/services/attempt*/** or the owning submit-path service (wiring only — the attempt write path gains the model-update call)"
+      - "packages/contracts/** (only if a wire shape requires it — not expected: the write path is DB-side)"
+      - "apps/api/test/** (fidelity pins: BKT/BDT update vectors from LearnerModelServiceTest.java @ 6cad6ef)"
+      - ".syllabai/tasks/T-MIG-102-learner-model-write-path-port.yaml (this yaml)"
+      - "golden/justified-ledger.json (RETIREMENT commit: remove both entries when the corpus rows pass on their own merits)"
+      - ".syllabai/worklog.md (append-only)"
+    forbidden:
+      - "tolerating/amending the two declared-justified cases instead of porting the write (the golden corpus stays honest)"
+      - "persisting decayed values (ADR-031 law: posteriors persist, decay is computed at read — store P0-posteriors, never P(t))"
+      - "flyway_schema_history / structural changes to Flyway-owned tables"
+      - "frozen core writes (read-only boundary)"
+      - "force-push; self-merge"

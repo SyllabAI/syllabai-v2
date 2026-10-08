@@ -59,7 +59,7 @@ const DOCUMENT_COLUMNS = `
  * to_char product → pass through untouched (defensive).
  */
 export function javaInstantText(utcText: string): string {
-  // T-MIG-099 (G-class adjudication, operator trace 1a119d17533d1985): accept
+  // T-MIG-101 (G-class adjudication, operator trace 1a119d17533d1985): accept
   // BOTH the space form AND the T form this module's own selects actually
   // emit — the to_char format 'YYYY-MM-DD"T"HH24:MI:SS.US' carries a LITERAL
   // T, so the old space-only regex never matched and every createdAt passed

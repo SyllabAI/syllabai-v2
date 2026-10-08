@@ -46,9 +46,9 @@ describe("F-1 javaInstantText — Java Instant.toString() law", () => {
     expect(javaInstantText("2026-10-04 09:36:00")).toBe("2026-10-04T09:36:00Z"); // whole second
   });
 
-  test("T-MIG-099: the T-form the selects ACTUALLY emit (to_char literal \"T\") gets the Z (the G-class fix)", () => {
+  test("T-MIG-101: the T-form the selects ACTUALLY emit (to_char literal \"T\") gets the Z (the G-class fix)", () => {
     // verbatim product of to_char(..., 'YYYY-MM-DD"T"HH24:MI:SS.US') — first-hand
-    // T-MIG-099 reproduction on a production COW branch (raw to_char text was
+    // T-MIG-101 reproduction on a production COW branch (raw to_char text was
     // "2026-10-04T09:37:00.129532"; the space-form vectors above were never
     // reachable from this module's own queries, which is why the Z went missing)
     expect(javaInstantText("2026-09-21T12:59:21.578011")).toBe("2026-09-21T12:59:21.578011Z");

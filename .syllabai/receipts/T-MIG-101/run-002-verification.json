@@ -1,0 +1,29 @@
+{
+  "task": "T-MIG-101",
+  "run": "run-002-verification",
+  "type": "end-to-end-verification",
+  "timestamp": "2026-10-08T05:30:00Z",
+  "method": "full amended-corpus replay on freshly re-set disposable COW branches at the workflow envelope (same recipe as the of-record instrument), then the ledger-gated union",
+  "environment": {
+    "branches": "br-polished-field-a5hpbnw6 (seed) / br-falling-night-a5tyjauf (prod) — dropped + 404-verified after",
+    "boot": "golden/tools/boot-with-timeout.ts, idleTimeout=255, synthetic JWT secret, zero LLM keys (GET-only reds; ZERO-KEY law asserted)",
+    "head": "3d4e84b (the T-MIG-101 implementation commit; branch t-mig-099/r0)"
+  },
+  "results": {
+    "seed_pass": { "verdict": "160/162", "fails": ["w4-knowledge-graph-practiced-200 (declared-justified, T-MIG-102)", "w4-state-practiced-200 (declared-justified, T-MIG-102)"], "note": "the 8 adjudicated-GREEN cases all pass on their own merits first-hand: history-empty (learnerId tolerance), history-after-submit (attemptedAt), families IN THE EMPTY TRANCHE (the captured pre-T51 census verified live: 8-element multiset), schedule-derived + trail (learner_40 declarations), KG-empty (unordered prerequisiteEdges); zero C-class limiter rotations this pass" },
+    "prod_pass": { "verdict": "15/15 — FIRST FULL-GREEN PROD POSTURE OF RECORD", "note": "the javaInstantText T-form fix verified against production data: both content-docs G-class rows pass genuinely (1023-row listing + detail, createdAt carries the Z)" },
+    "union": {
+      "verdict": "177/177 PASS — 5 via the T-MIG-071 (R3-C) declared limiter-429 disposition — 2 via the T-MIG-101 declared justified-class ledger (w4-knowledge-graph-practiced-200 -> T-MIG-102, w4-state-practiced-200 -> T-MIG-102)",
+      "exit": 0,
+      "summary_file": "reports/union-amended.md (lane-local; the cron regenerates it per run)",
+      "significance": "the scheduled neon-replay cron can go green for the first time since the T-MIG-063 staging era; the green is disclosed, never silent; any future divergence outside the ledger still reds the job"
+    }
+  },
+  "gates": {
+    "typecheck": "x4 exit 0",
+    "bun_test": "apps/api+packages 1716/0/13skip/6762 expect/91 files (0 fail; +1 test = the T-form vectors, +47 expect vs the pre-branch tip which already carried 094/098/2d8587d additions); hub 41/0",
+    "selftests": "golden/runner.ts --selftest OK; golden/tools/ci-replay.ts --selftest OK (learner-declared census 7 -> 10 + the ledger invariant pins)"
+  },
+  "read_only_proof": "golden/ expect bodies byte-untouched (git diff shows only tolerate/learner/tranche/unordered/justified/description fields); comparator untouched; zero case deletions",
+  "residue": "zero — both disposable branches dropped + 404-verified; zero prod writes; zero LLM credentials in any envelope"
+}

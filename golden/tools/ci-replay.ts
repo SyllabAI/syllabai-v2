@@ -535,7 +535,7 @@ function plan(): void {
   console.log(`  learner-declared cases (T-MIG-078, replay as the w4 capture identity): ${declared.length}${declared.length ? " — " + declared.map((k) => k.name).join(", ") : ""}`);
 }
 
-// T-MIG-099 (operator trace 1a119d17533d1985): the declared justified-class
+// T-MIG-101 (operator trace 1a119d17533d1985): the declared justified-class
 // ledger — the union-verdict tolerance the operator's cron-slot ask of record
 // named ("pre-file them in the union tolerance"). The REPLAY path never sees
 // it: the case-level comparison stays byte-honest (deepEqualTolerant untouched,
@@ -577,18 +577,18 @@ async function union(aPath: string, bPath: string, summaryOut?: string): Promise
   const fails = all.filter((r) => !r.pass);
   const d429 = all.filter((r) => r.declared429).length;
   const d429Note = d429 > 0 ? ` — ${d429} via the T-MIG-071 (R3-C) declared limiter-429 disposition` : "";
-  // T-MIG-099: split the reds into declared-justified (forgiven, disclosed) vs
+  // T-MIG-101: split the reds into declared-justified (forgiven, disclosed) vs
   // unforgiven (still red the job — any divergence outside the ledger gates).
   const ledger = loadJustifiedLedger();
   const justified = fails.filter((f) => ledger.has(f.name));
   const unforgiven = fails.filter((f) => !ledger.has(f.name));
   const justifiedNote =
     justified.length > 0
-      ? ` — ${justified.length} via the T-MIG-099 declared justified-class ledger (${[...new Set(justified.map((f) => `${f.name} -> ${ledger.get(f.name)!.owner}`))].join(", ")})`
+      ? ` — ${justified.length} via the T-MIG-101 declared justified-class ledger (${[...new Set(justified.map((f) => `${f.name} -> ${ledger.get(f.name)!.owner}`))].join(", ")})`
       : "";
   console.log(`\nUNION VERDICT: ${all.length - unforgiven.length}/${all.length} golden cases pass (seed ${a.results.filter((r) => r.pass).length}/${a.results.length} + prod ${b.results.filter((r) => r.pass).length}/${b.results.length})${d429Note}${justifiedNote}`);
   if (justified.length > 0) {
-    console.log("declared-justified (T-MIG-099 ledger — case-level diff stays of record; green is never silent):");
+    console.log("declared-justified (T-MIG-101 ledger — case-level diff stays of record; green is never silent):");
     for (const f of justified) {
       const e = ledger.get(f.name)!;
       console.log(`  ~ [${f.mode}] ${f.name} (class ${e.class}, owner ${e.owner}): ${f.diff}`);
@@ -608,7 +608,7 @@ async function union(aPath: string, bPath: string, summaryOut?: string): Promise
       `| prod (as-cowed, realdata) | ${b.results.filter((r) => r.pass).length} | ${b.results.length} |`,
       "",
       ...(justified.length
-        ? ["<details><summary>declared-justified (T-MIG-099 ledger — owner cards named; retire on fix)</summary>", "", ...justified.map((f) => { const e = ledger.get(f.name)!; return `- **[${f.mode}] ${f.name}** — class \`${e.class}\`, owner **${e.owner}** — ${f.diff}`; }), "</details>", ""]
+        ? ["<details><summary>declared-justified (T-MIG-101 ledger — owner cards named; retire on fix)</summary>", "", ...justified.map((f) => { const e = ledger.get(f.name)!; return `- **[${f.mode}] ${f.name}** — class \`${e.class}\`, owner **${e.owner}** — ${f.diff}`; }), "</details>", ""]
         : []),
       ...(unforgiven.length
         ? ["<details><summary>failures (filed for R0/R6, never auto-fixed)</summary>", "", ...unforgiven.map((f) => `- **[${f.mode}] ${f.name}** — ${f.diff}`), "</details>"]
@@ -697,13 +697,13 @@ function selftest(): number {
   // reroutes the DEFAULT bearer only; prod never sees it); none declares an
   // unauthed/403 name whose capture pins a non-learner bearer.
   const declared = (loadCases() as GoldenCase[]).filter((k) => k.learner === "w4-capture");
-  // T-MIG-099: the declared set grows 7 -> 10 — the three additions
+  // T-MIG-101: the declared set grows 7 -> 10 — the three additions
   // (flashcard-schedule-derived, flashcard-trail, knowledge-graph-practiced)
   // declare the SAME capture identity per the T-MIG-078 F-2 pattern (the
   // capture read the capture session's learner; first-hand learner_40
-  // verification in the T-MIG-099 reproduction). Same invariants.
+  // verification in the T-MIG-101 reproduction). Same invariants.
   t(
-    "learner-declared: exactly the 7 T-MIG-078 + 3 T-MIG-099 cases",
+    "learner-declared: exactly the 7 T-MIG-078 + 3 T-MIG-101 cases",
     declared.length === 10 &&
       declared.every((k) =>
         /^(w4-flashcard-rating-know-201|w4-flashcard-rating-know-2-201|w4-flashcard-rating-still-learning-201|w4-attempt-mcq-practice-201|w4-course-stats-practiced-200|w4-state-practiced-200|w3-history-after-submit-200|w4-flashcard-schedule-derived-200|w4-flashcard-trail-200|w4-knowledge-graph-practiced-200)$/.test(k.name),
@@ -717,7 +717,7 @@ function selftest(): number {
     "learner-declared: every declaring case substitutes {{TOKEN}} (the rerouted resolution)",
     declared.every((k) => JSON.stringify(k.request?.headers ?? {}).includes("{{TOKEN}}")),
   );
-  // T-MIG-099: the justified-ledger invariants — every ledger case exists in
+  // T-MIG-101: the justified-ledger invariants — every ledger case exists in
   // the committed corpus AND declares justified:true in its own file (the
   // GOLDEN_MASTER §4 approval lives on the case, not only in the ledger);
   // every entry names a non-empty owner card. The REPLAY path is unaffected
@@ -735,10 +735,10 @@ function selftest(): number {
     }),
   );
   t(
-    "justified-ledger: the declared set is exactly the two learner-model-write-path-gap cases (T-MIG-100)",
+    "justified-ledger: the declared set is exactly the two learner-model-write-path-gap cases (T-MIG-102)",
     ledger.entries.length === 2 &&
       ledger.entries.map((e) => e.case).sort().join(",") === "w4-knowledge-graph-practiced-200,w4-state-practiced-200" &&
-      ledger.entries.every((e) => e.owner === "T-MIG-100"),
+      ledger.entries.every((e) => e.owner === "T-MIG-102"),
   );
   // 3. multipart import wiring (the gated runner builder, unchanged)
   const mf: GoldenCase = {
