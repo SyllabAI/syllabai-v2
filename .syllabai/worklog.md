@@ -5416,3 +5416,9 @@ Work Log:
 
 Stage Summary:
 - T-MIG-053 reconciliation CLOSED of record: quirk filing SOUND (T-MIG-055 family), ghost-table defect SEPARATE and port-side, #144's fix parity-restoring + corpus-safe + live-exposure-repairing (smart-mark band). #144 unblock list narrows to: head CI + disclosures/cards (item-2 disclosure still required, now with the card-link recommendation); desk intake union unchanged. Lane IDLE.
+## 2026-10-08T04:41:53Z — LIVE ENV PRUNE EXECUTED + VERIFIED (lane r9-hubx, trace 1a119be9a69d2ab5, closes the #147 CORS lever)
+- Phase A (read-only): token sanity; project syllabai-v2 prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ resolved at user scope; env census = 7 vars; SYLLABAI_CORS_ORIGINS row tFhC8AntWiCAc2py (plain, production) value 'https://syllabai-hub-v2.vercel.app,https://syllabai.vercel.app'.
+- Phase B (write): v9 PATCH in-place -> value 'https://syllabai-hub-v2.vercel.app' (zombie apex pruned); race-guard re-read = value confirmed + all 6 other env keys byte-untouched; redeploy dpl_Die9SrNyPQyVJqEu4VGiwaEzUMpM (from dpl_2cvMkzVGAQhMeZMxiUHd6FAZbxYR) READY <=10s.
+- Verification matrix 04:41:17Z: hub-v2 origin preflight 204+ACAO exact; zombie apex 403 no-ACAO; hostile 403 no-ACAO; /actuator/health 200; login malformed-400 parity; frozen-core hub 200. ALL GREEN.
+- Issue #147 closure comment 6052402868 (before/after + matrix + lever ledger: decommission DONE by r1c d99e4e0; env prune DONE here; code default = PR #149 merge-ready). Token hygiene: operator advised to revoke/rotate the chat-plaintext Vercel token.
+- Boundaries: single env var touched; zero other env/prod/data writes; token used inline-per-command only, never stored.
