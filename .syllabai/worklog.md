@@ -5507,3 +5507,17 @@ Stage Summary:
 - PR #144 LANDED of record: LLM-chain real adapters (adapters/bridges/health + wiring + 3 new test files + ADR-MIG-0002) + the ghost rename are on main at b16230f; spine +35 tests to 1760
 - Enumerated levers (operator-ordered separately): api-of-record redeploy (lights the LLM seams + carries the ghost fix + 094 binding law live; keys already configured per r1c Task-42), T-MIG-099 proof leg (scratch substrate, zero-key), hub redeploy = the section-2 act
 - Open PRs after this merge: #151 (097 CLA) / #152 (083-087 run-002) / #153 (095); watch: GitHub PAT still dead
+
+---
+Task ID: R0-MERGE-144 (operator trace 1a119de998dd9171 "take it when it's ready")
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+
+Work Log:
+- Took the #144 desk cycle: w0a re-pushed (c4695a6 = intake-3 @ b062cc1) with head CI SUCCESS (hub+verify) and the item-2 disclosures resolved of record in the PR body — (a) ghost fix card-linked to main's T-MIG-099 (w0a's duplicate 099 draft YIELDED fe92b8d), (b) kg-retriever YIELDED to main's T-MIG-094 inList law 5e16264 (single-implementation), (c) session-store hunk = stale-base artifact, intake-1 kept main's version.
+- Dirty state = exactly one main commit since merge-base (56c98b8, r9-hubx Task-19 094 card flip). Desk intake-4 executed in an isolated worktree: merge origin/main, single worklog-tail add/add conflict resolved theirs-verbatim-first + the run-004 line re-appended (zero markers); red lines re-verified on the union diff (zero secret material, zero hub/packages-db/contracts contact, cla seam composition only, 097 fence intact).
+- Gates FIRST-HAND on the union tree a37a622: typecheck x4 exit 0; bun test apps/api packages 1773/0/13skip/6920; bun test apps/hub 41/0/360; golden runner --selftest OK. Pushed to the PR branch; branch CI hub+verify SUCCESS; PR mergeable=True/clean.
+- DESK MERGE of record: #144 merged b16230f (merge commit, standard method). Post-merge asserts first-hand: mark_scheme_points ZERO hits in apps/ on main; from mark_points 3 (smartmark) + 1 (teachermarking) intact; PR-vs-main apps/ delta empty; main-tip CI hub+verify SUCCESS.
+- Bookkeeping: the card edit RACED and correctly no-ops — r9-hubx Task-20 (eb29e3a) already updated T-MIG-099 of record (condition 1 MET at b16230f, richer status line; card stays OPEN on the real-wire proof leg); their bookkeeping is the of-record version, mine withdrawn; merge-receipt comment posted on #144 (adds the CI-green confirmations their PAT-401 run could not read); this entry is the desk-side merge receipt; .syllabai-only direct-main (fetch-first at eb29e3a), no force.
+
+Stage Summary:
+- The LLM-CHAIN lane LANDED of record: real provider adapters + SYLLABAI_LLM_* env law + the ghost-table repair + ADR-MIG-0002; the api of record already carries LLM keys per Task-39/42 census, so a redeploy lights the dormant seams with zero env work. Register moves: 144's riding fixes all dispositioned (099 card open on its proof leg; 094/093 items closed by yield/supersession). Next desk levers: hub+api redeploys (the staging/flip act), 099 proof leg on the next real-wire window, pilot-hub P0, cron adjudication. Lane IDLE.
