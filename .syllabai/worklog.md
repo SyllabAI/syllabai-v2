@@ -5385,3 +5385,17 @@ Stage Summary:
 - BLOCKED: VERCEL_TOKEN did not survive workspace wipe #7 (prior census used operator-supplied token, fingerprint d254bbfaac004354); lanes never invent credentials — zero prod writes attempted this task.
 - UNBLOCK PATHS posted on issue #147 (comment 6052194441): (a) operator token in chat -> lane executes + posts matrix; (b) dashboard self-serve ~2min (prune only the zombie entry, keep hub-v2 spelling, then Redeploy).
 - Post-conditions of record when executed: hub-v2 origin preflight 204+ACAO exact; zombie + hostile origins no-ACAO (403 posture); /actuator/health 200. Related: PR #149 (code-default supersession) merge-ready, CI 2/2.
+
+---
+Task ID: 32
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a, chat f445494b)
+Task: Operator trace 1a119bfee07eb795 "want those unblocked first" — the 084-089+091 band identity prerequisites adjudication + band execution start.
+
+Work Log:
+- RECOVERY: 6th observed workspace wipe; PAT trio restored (API 200), repo re-cloned at 2d8587d.
+- W5 RE-ADJUDICATION of record (receipts/censuses/2026-10-08-band-unblock-r4b.json): the teacher/admin identity blocker gated LIVE-CAPTURE only; the capture pass is COMPLETE (52 legs on main, r4b run-001 sets); verify identity = the 083 method of record (local scratch PG + synthetic users + JwtService self-minted tokens, ZERO-KEY, zero platform contact). The band is GO lane-side with ZERO operator dependencies; residual operator levers are platform-side and not band-gating.
+- BAND CENSUS at 2d8587d: register 90 cards = 79 DONE / 7 CAPTURED / 083 GOLDEN-VERIFIED+WIDENED (IN-REVIEW, r9 rider, R0 APPROVE, merged f18abe6 of record per s2-routing run-001) / 094 IN_REVIEW (PR #150) / 095 IN_PROGRESS / 097 BLOCKED (PR #151 open) / #144 at R0 REQUEST_CHANGES fix-forward / #149 open (098 CORS). Flip table 16 verified lines; staged-flip pre-clear live (Boot 401 law across staged families).
+- EXECUTION START (T-MIG-084 first per the c7e0476 claim): substrate + harness build begins this round per the 083 pattern (t083-seed.ts/t083-verify.ts adaptation); receipts under .syllabai/receipts/T-MIG-084/; capture-wins law; widen rides post-verify per the flip law.
+
+Stage Summary:
+- The operator's unblock request is SATISFIED OF RECORD: no operator-held material is owed by the 084-089+091 verify band; execution resumed lane-side. .syllabai-only filing, fetch-first, no force.
