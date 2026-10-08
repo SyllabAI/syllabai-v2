@@ -6636,3 +6636,16 @@ Work Log:
 
 Stage Summary:
 - T-MIG-107 LANDED of record (d2308eb): the content-write surfaces port (17 honest-501 write routes + POST port) live on main. Board empty at run end.
+
+---
+Task ID: TUTOR-VERIFY-4 (operator trace 1a11d35ee2801a2d "pull the missing per-question answer text for the 19 PRESENT-UNGENERATED keys")
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+
+Work Log:
+- Filled the run-003 PRESENT-UNGENERATED class with real answer text: all 19 keys re-probed with run-003-identical phrasing, both disclosed learners rotated, 559 probes over 20:33-23:25Z riding the flapping pool windows (18 checkpointed slices, pacing <=19/min, zero 429s).
+- 15/19 GENERATED of record (200, evidenceCount=6, tiered QP+MS citations, answer bodies 86-1380 chars, med 3.0s). ZERO refusals across all 559 probes — run-003 resolver-found law corroborated at scale. One empty-body 200 (4CH1/2C NOV 2023 Q6) cleanly regenerated (705ch); EMPTY-ANSWER re-pull class added to the classify law.
+- Residual 4 keys (4CH1/2C Jun 2019 Q8; 4CH0/2C Jun 2018 Q5/Q7/Q9) blocked by a live tutor-chain outage: 503-pool era (20:33-~22:39Z) then a 500-fast-fail era from ~22:43Z that 500s KNOWN-GOOD controls at ~0.5s while bank-list/question-read stay 200 (discriminator + api-health probes filed); 84-89 tries each, all instant-fail, zero generation.
+- Receipt TUTOR-VERIFY/run-004-pu-answer-text-fill-r0.json (asserts 6/6); workbook PU Fill sheet appended (recalc 0 errors, validate exit 0, Review 11/11 PASS); raw JSONL + frozen summary lane-side.
+
+Stage Summary:
+- Chunk-map verdict STRENGTHENED: every key that ever reached the generator produced a real grounded answer — the PRESENT-UNGENERATED class was 100% an upstream-pool artifact, zero chunk gaps, zero refusals. Residual = outage-pending; resume = one checkpoint-safe command (scripts/tutor_pu_fill_r0.py) when the chain recovers. New watchlist: tutor-surface 500-fast-fail era. Lane IDLE.

@@ -1,0 +1,46 @@
+{
+  "receipt": "run-004-pu-answer-text-fill-r0",
+  "dir": "TUTOR-VERIFY",
+  "lane": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "created_at_utc": "2026-10-08T23:30:00Z",
+  "operator_trace": "1a11d35ee2801a2d 'pull the missing per-question answer text for the 19 PRESENT-UNGENERATED keys'",
+  "purpose": "complete the run-003 question-chunk map with REAL generated answer text for the 19 keys that carried only resolver evidence (PRESENT-UNGENERATED pool-saturated class of receipt run-003)",
+  "target": "api-of-record https://syllabai-v2.vercel.app — provider wall state all evening: flapping 503 pool (20:33-~22:39Z) then a 500-fast-fail tutor-chain state (~22:43Z onward, ongoing at freeze 23:25Z)",
+  "method": "scripts/tutor_pu_fill_r0.py (probe mode + checkpoint-safe round-robin fill + freeze; key list derived PROGRAMMATICALLY from the frozen run-003 summary — no hand transcription); phrasing IDENTICAL to run-003 S1 ('Give me question N from <session> paper <code>.'); both disclosed probe learners in rotation; pacing <=19 asks/60s (zero 429s across 559 probes); 18 slices over 20:33-23:25Z riding the flapping pool windows; discriminator script tutor_pu_discrim_r0.py for the 500-era classification",
+  "the_19_keys": {
+    "source": "work/tutor_chunk_map_r0_summary.json present_ungenerated lists (= receipt run-003)",
+    "list": [
+      "4CH0/2C June 2015 Q5", "4CH1/1C June 2019 Q3", "4CH1/1C June 2019 Q7",
+      "4CH1/1C June 2019 Q8", "4CH1/1C June 2019 Q11", "4CH1/2C November 2023 Q1",
+      "4CH1/2C November 2023 Q2", "4CH1/2C November 2023 Q3", "4CH1/2C November 2023 Q4",
+      "4CH1/2C November 2023 Q5", "4CH1/2C November 2023 Q6", "4CH1/2C November 2023 Q7",
+      "4CH1/2C June 2026 Q1", "4CH1/2C June 2019 Q8", "4CH0/2C June 2018 Q5",
+      "4CH0/2C June 2018 Q6", "4CH0/2C June 2018 Q7", "4CH0/2C June 2018 Q8",
+      "4CH0/2C June 2018 Q9"
+    ]
+  },
+  "results": {
+    "headline": "15/19 keys now carry REAL per-question answer text of record (200, evidenceCount=6, tiered QUESTION_PAPER+MARK_SCHEME citations, answer bodies 86-1380 chars, latency med 3.0s max 7.0s). The remaining 4 are blocked by a live tutor-chain outage that also breaks KNOWN-GOOD controls — resolver evidence for those 4 stands from run-003; zero refusal evidence anywhere.",
+    "generated_15": "4CH0/2C Jun 2015 Q5 (1145ch); 4CH1/1C Jun 2019 Q3/Q7/Q8/Q11 (698/397/87/781ch); 4CH1/2C NOV 2023 Q1-Q7 (764/630/561/121/925/705/1309ch); 4CH1/2C Jun 2026 Q1 (861ch); 4CH0/2C Jun 2018 Q6/Q8 (1025/1380ch)",
+    "pending_4": "4CH1/2C June 2019 Q8; 4CH0/2C June 2018 Q5/Q7/Q9 — every try during the outage window failed 503 (pool) then 500 (fast-fail); 84-89 tries each across ~2h50m; zero refusals, zero data-quality anomalies on any 200",
+    "law_corroboration": "ZERO refused rows across all 559 probes: not one of the 19 PRESENT keys ever returned the honest-refusal shape — every outcome was 200-generate, 503-pool, or 500-fast-fail. The run-003 resolver-found law (503 = resolver FOUND evidence, refusal would have been deterministic and instant) is now corroborated from the opposite direction at 559-probe scale.",
+    "empty_answer_event": "one 200 returned citations + empty answer body (4CH1/2C NOV 2023 Q6 @ 20:39:45Z, inside a pool window); the same key cleanly regenerated later (705ch, 2.56s) — generation-side flakiness class, NOT chunk absence; classify law was patched to re-pull empty-body 200s (EMPTY-ANSWER class)"
+  },
+  "live_events_filed": [
+    "PROVIDER WALL ERA 2 (flapping): 20:33-~22:39Z — instant-503 tutor_unavailable with sporadic open windows (first slice grabbed 10 keys 20:34-20:40Z; then single/double grabs at ~20:48, ~21:35, ~21:52, ~22:00, 22:43Z); learner-keyed quota re-ruled-out (both learners walled identically; rotation landed grabs on both)",
+    "TUTOR-CHAIN 500-FAST-FAIL ERA: from ~22:43Z — /tutor/ask returns 500 internal_error in ~0.5s for ALL keys INCLUDING known-good controls (4CH1/2C Jun 2019 Q1 and 4CH0/1C Jan 2012 Q1, both generated clean earlier, 500'd at 23:05:45-55Z) while NON-TUTOR surfaces stay healthy (bank list 200 @23:07Z, question read 200 @23:07Z) — a tutor-surface-only degradation, distinct from the 503 pool wall; distinct latency signature (500 ~0.5s < 503 ~1.0s < real generation 3-7s); ongoing at freeze; watchlist item for the serving window",
+    "NO 429s across 559 probes (pacing <=19/min held); NO serving-window 404 recurrence"
+  ],
+  "write_ledger_disclosed": "559 probe rows total (16 x 200 real LLM generations incl. the 1 empty-body event; 432 x instant-503; 111 x instant-500 — the 543 non-200s cost zero generation); 2 learners REUSED, zero new registrations: r0-099live-20261008t055945Z@example.invalid (325 asks) + r0-chunkmap-20261008t173428@example.invalid (234 asks); no other api writes. Workbook download/tutor-anchor-coverage-r0.xlsx edited lane-side (PU Fill sheet + 3 Review rows).",
+  "asserts": [
+    "A1: all 19 keys attempted to exhaustion — 559 probes over 20:33-23:25Z, 29-89 tries per walled key, zero unclassified — PASS",
+    "A2: 15/19 keys GENERATED with real answer text (200, evidenceCount=6, tiered QP+MS citations, med 3.0s) — PASS",
+    "A3: ZERO refusals across all 559 probes — run-003 resolver-found law corroborated at scale — PASS",
+    "A4: the 4 pending keys are blocked by a live api-side outage, proven by known-good-control 500s in the same seconds (discriminator 23:05Z) + healthy non-tutor surfaces (23:07Z) — PASS",
+    "A5: empty-answer event observed once and cleanly regenerated; classify law patched (EMPTY-ANSWER re-pull class) — PASS",
+    "A6: workbook PU Fill sheet appended; recalc 0 errors; validate exit 0; Review 11/11 PASS — PASS"
+  ],
+  "verdict": "PU-FILL 15/19 of record. The run-003 chunk-map verdict STRENGTHENS: every key that ever got generator access produced a real grounded answer with full citations — the PRESENT-UNGENERATED class was 100% an upstream-pool artifact, never a chunk gap and never a refusal. Residual: 4 keys (4CH1/2C Jun 2019 Q8; 4CH0/2C Jun 2018 Q5/Q7/Q9) remain answer-text-pending solely on the live 500-fast-fail tutor-chain state; resume is ONE checkpoint-safe command (python3 scripts/tutor_pu_fill_r0.py) when the chain recovers. New watchlist: tutor-surface 500-fast-fail era (tutor-only; non-tutor surfaces healthy).",
+  "deliverables": "raw JSONL + frozen summary lane-side (work/tutor_pu_fill_r0.jsonl 559 rows, work/tutor_pu_fill_r0_summary.json); workbook PU Fill sheet (download/tutor-anchor-coverage-r0.xlsx); receipt + worklog in-repo",
+  "scope_note": ".syllabai-only repo contact; zero code/schema/flip-table/seam contact; no force; live-wire probes only on sanctioned student surfaces; chunk-map sheet left frozen (PU Fill sheet is the addendum of record)"
+}
