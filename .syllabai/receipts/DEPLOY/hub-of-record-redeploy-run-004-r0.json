@@ -1,0 +1,50 @@
+{
+  "card": "T-MIG-106 standing residue discharge + the standing 'hub bundle redeploy' operator item (the HUB lever of the redeploy ladder)",
+  "receipt": "hub-of-record-redeploy-run-004-r0",
+  "lane": "r0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, chat 9e9f3d7a-bc8a-4cc5-877a-2277614b4863)",
+  "created_at_utc": "2026-10-08T18:35:00Z",
+  "operator_lineage": "operator trace 1a11cb1ab3ba0029 'hub redeploy order, ci.yml patch' — fires the HUB lever the mainlane ladder left OPEN operator-side (worklog: '#167 T-MIG-106 = hub-side, rides the HUB lever'; Task-55: 'the deployed hub bundle predates the ask-row routing (the flip goes live at the next hub deploy — operator-gated)'). The enabling VERCEL_PAT arrived via the operator secrets delivery (the §3.1 env-act envelope, keys incl. VERCEL_PAT; fingerprint d254bbfaac004354 == the of-record operator census fingerprint, worklog :4772) — the lever is no longer creds-blocked.",
+  "credential": {
+    "what": "VERCEL_PAT from the lane-side secrets envelope (/home/z/.secrets/secrets.env, 0600, repo-external); used inline only (CLI --token + API bearer), never printed, never committed, zero env writes",
+    "identity": "GET /v2/user -> username=syllabai-1403; project prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl = syllabai-hub-v2 (framework nextjs), team team_ULL54qkhzKBmnKrpO6BD4mYX — all matching the run-003-r7a identity of record"
+  },
+  "pre_flight": {
+    "fetch_first_census": "act at tip 6813bb7 (ff from 8565b4b through d117a54 + b775777 + 6813bb7; mid-act origin moves b775777->6813bb7 observed and ff-absorbed — both .syllabai-only bookkeeping: r4b board-convergence stamps d117a54, r7a teacher-credential handoff receipt 6813bb7)",
+    "act_time_delta_recount": "git diff aa7d322..6813bb7 -- apps/hub = EXACTLY 5 files (api.ts +67, api.v2-surface.test.ts +108, cron/nightly-decay/route.ts, decay/nightly-decay.ts +138, nightly-decay.test.ts +74) = the #167 ask-row surface + the #166 decay seam — a CODE-DELTA act (the act-time-recount law), NOT tip-consolidation",
+    "api_plane_currency": "8565b4b..6813bb7 touches ZERO apps/api/packages runtime files (103 rider = packages/db/drizzle 0001 SQL + .syllabai; the rest .syllabai-only) — the api-of-record dpl_GJK1wP5L (4th firing @ 8565b4b) stays current of record; no api re-deploy owed, ladder stays BANKRUPT-RIPE",
+    "race_guard": "GET /v6/deployments (production, hub project) at ~18:16Z -> latest = dpl_BBGcKUBy5qUZ8ps79a9UsDvjymXr READY @ 07:13:08Z (run-003) — NO lane had deployed the hub; the act is not a duplicate AT GUARD TIME (a parallel actor fired mid-act — see collision_of_record)"
+  },
+  "gates_at_tip_first_hand": [
+    "bun install --frozen-lockfile (root workspace) OK (930 packages)",
+    "bun run typecheck (root) exit 0",
+    "hub tsc --noEmit exit 0",
+    "bun test apps/hub -> 54 pass / 0 fail / 432 expect() / 3 files (up from 47/0/418 at aa7d322 — the #167 surface additions live in the test of record)",
+    "surface tables counted first-hand by bracket-match at 6813bb7: V2_SURFACE_PREFIXES = 28 rows (24 at run-003 + the s4/s5 widen rows + the T-MIG-106 ask row) + V2_SURFACE_MIDPATH_PREFIXES = 3 rows (unchanged); the ask row present at api.ts:419",
+    "bun golden/runner.ts --selftest OK (tolerance engine sanity)"
+  ],
+  "deploy_act": {
+    "how": ".vercel/project.json {projectId: prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl, orgId: team_ULL54qkhzKBmnKrpO6BD4mYX} at the worktree ROOT (gitignored, .gitignore:29); vercel CLI 62.7.0 (pinned, version captured) 'deploy --prod --yes' FROM ROOT — the twice-bitten rootDirectory lesson followed; gitSource trap avoided (CLI upload, no /v13 gitSource POST)",
+    "deployment": "dpl_H8AYEmt8Hr6qbvZPsUE3HdzUHxCZ READY, created 2026-10-08T18:19:47Z, build 58s (within the run-003 42-60s band), 'Ready in 2m'",
+    "alias": "syllabai-hub-v2.vercel.app + syllabai-hub-v2-syllab-ai.vercel.app BOTH attached (v2 /deployments/{uid}/aliases first-hand); prod URL syllabai-hub-v2-8zzwpvp4q-syllab-ai.vercel.app",
+    "source": "main 6813bb7 (clean worktree, ff-only, gates above)"
+  },
+  "collision_of_record": {
+    "what": "a PARALLEL hub deploy fired mid-act: dpl_CtTEANYBQ2NsnWCW6DNvNP9xPpsc created 2026-10-08T18:18:58Z (49s before mine), creator syllabai-1403, githubCommitSha 6813bb7 (SAME tip), ref 'HEAD' vs my 'main' — the r7a lane firing the same operator order; my race-guard (~18:16Z) pre-dated their creation, so the guard could not catch it (true interleaving, the guard honored its own evidence)",
+    "resolution": "NO third act, NO deletions, NO re-alias (zero-collateral + no-duplicate laws): both deployments are built from the SAME sha 6813bb7 with identical project env — content-equivalent serving either way; the production alias resolved to MY deployment (dpl_H8AYEmt8, the later READY+alias, verified via /v2/deployments/{uid}/aliases: mine holds syllabai-hub-v2.vercel.app, theirs holds NONE); the runner-up retained READY-unaliased as evidence",
+    "disclosure": "the r7a lane's own receipt for this act should appear under their lane id; if they also file a DEPLOY receipt, the two receipts are the same lever fired twice — this entry is the reconciliation record"
+  },
+  "post_deploy_battery": {
+    "architecture_law_first_hand": "apps/hub has NO server-side /api/v1 routes (route inventory: ai, core, course-stats, cron, health, kg-learner-bridge, notes, questions, sources, teacher) — V2_SURFACE_PREFIXES is CLIENT-side routing availability (NEXT_PUBLIC base); therefore the ask-row proof = the live-chunk census (the r1c-era technique), not same-origin probes",
+    "1_hub_health": "200 {status:ok, service:syllabai-hub, dataMode:'core-api', coreConfigured:true} — the §2 flip discriminator byte-law HOLDS on the new bundle",
+    "2_hub_root": "200 (84,241 B html)",
+    "3_hub_cla_malformed": "POST /api/ai/cla {} -> 400 invalid_body (zod detail, course path) — the hub-plane tier law live",
+    "4_ask_row_live_chunk_census": "14 chunks censused on the LIVE alias: /api/v1/tutor/ask found in chunk 0an1zdqrqrypx.js with OCCURRENCE COUNT 2 and the verbatim TABLE adjacency '...exam-series\",\"/api/v1/tutor/ask\"],p=[...' (the ask row as a V2_SURFACE_PREFIXES entry) + the emitter ctx — THE T-MIG-106 ASK ROW IS LIVE IN THE DEPLOYED SURFACE TABLE (artifact: hubredep4-askrow-discriminator.json, lane-side)",
+    "5_pre_deploy_control": "the run-003 deployment (dpl_BBGcKU @ aa7d322, pre-#167) chunk census: the SAME string appears exactly ONCE (emitter only, NO table row) — the 2-vs-1 + adjacency is the byte-grade discriminator (the naive presence-needle alone is non-discriminating: the string pre-existed as the emitter path at api.ts:1133)",
+    "6_decay_fail_closed": "GET /api/cron/nightly-decay (unauth) -> 401 {status:'unauthorized', reason:'missing or wrong Authorization bearer — Vercel Cron sends Authorization: Bearer $CRON_SECRET when CRON_SECRET is set'} — the #166 seam code is LIVE and the fail-closed posture is PRESERVED (CRON_SECRET/DECAY_CRON_ENABLED remain unset: the §3.1 env act is NOT part of this order and stays operator-gated by card law)",
+    "api_plane_trio_of_record": "the ask/ask-stream declared trio (blank-question 400 validation_failed / unauthed 401 / unknown-session 404) is 3/3 LIVE of record on the CURRENT api serving (4th firing ef94597 Band C vs dpl_GJK1wP5L; run-007 3/3 vs the prior lineage) — hub row (this receipt) + api laws (that receipt) = the ask surface complete end-to-end; zero LLM generations were spent anywhere in this act (all pinned legs die pre-flight)",
+    "disclosed_battery_correction": "battery v1 legs 4-7 (same-origin /api/v1/** probes) returned the hub's HTML 404 — MY test-design error (the client-routing law above), not a deploy defect; the v1 run created ZERO learners (its register leg died at the hub 404 before reaching v2); v2 replaces those legs with the chunk census"
+  },
+  "write_ledger": "2 production deployments TOTAL (dpl_H8AYEmt8 mine, dpl_CtTEANYB the parallel r7a actor — one lever fired twice, reconciled above) + 0 probe learners + 0 LLM generations + 0 env changes + 0 code changes + 0 force-push + zero secret material printed; .vercel/project.json written at the worktree root (gitignored)",
+  "rollback_anchors": "dpl_H8AYEmt8Hr6qbvZPsUE3HdzUHxCZ (NEW current, the 28-row ask-row bundle) | dpl_CtTEANYBQ2NsnWCW6DNvNP9xPpsc (parallel, same sha, unaliased) | dpl_BBGcKUBy5qUZ8ps79a9UsDvjymXr (run-003, 24-row pre-ask bundle @ aa7d322) | dpl_FhmNnJAq (CLA-flip bundle @ 3dafc79) — plus the r1c runbook lever (HUB_DATA_MODE PATCH back to mock + redeploy)",
+  "verdict": "THE STANDING HUB RESIDUE IS DISCHARGED OF RECORD: the hub-of-record now serves the 28-row surface table with the T-MIG-106 ask row live (byte-grade chunk discriminator), the §2 flip byte-law and the hub-plane tier law intact, and the #166 decay seam code live but fail-closed pending the operator §3.1 env act; the hub lever CLOSES on the redeploy ladder"
+}

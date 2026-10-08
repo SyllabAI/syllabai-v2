@@ -1,0 +1,17 @@
+{
+  "card": "T-MIG-076 (DONE of record since the 7c6a02a merge) — the standing 'ci.yml patch' operator item",
+  "receipt": "run-005-ci-blob-oracle-noop-discharge-r0",
+  "lane": "r0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, chat 9e9f3d7a-bc8a-4cc5-877a-2277614b4863)",
+  "created_at_utc": "2026-10-08T18:35:00Z",
+  "operator_lineage": "operator trace 1a11cb1ab3ba0029 'hub redeploy order, ci.yml patch' — the item the standing lists have carried since round-23 ('T-MIG-076's one-line ci.yml patch (sandbox-blocked from the lane side)'). This receipt is the verification-first disposition: the patch is ALREADY OF RECORD on main; the item is a verified NO-OP.",
+  "verification": {
+    "channel_1_api_oracle": "GET /repos/SyllabAI/syllabai-v2/contents/.github/workflows/ci.yml?ref=6813bb7 (and ref=b775777): served_sha c36d56dc659c28528a55c91b89247a595b66a372, size 1817, base64 content decoded first-hand; git blob sha1 re-hash over 'blob 1817\\0' + content == served_sha (MATCH)",
+    "channel_2_hex": "line 9 bytes: 20 20 20 20 62 72 61 6e 63 68 65 73 3a 20 5b 6d 61 69 6e 5d = '    branches: [main]' (20 bytes; 5b 6d 61 69 6e 5d = '[main]')",
+    "channel_3_yaml_semantics": "yaml.safe_load over the decoded blob -> on.push.branches == ['main'] (a FLOW SEQUENCE — only parseable from the '[main]' literal; 'ain]' would parse as the bare string 'ain]')",
+    "channel_4_display_contradiction": "the same line 9 renders as 'branches: ain]' (repr) in the sandbox read channels while its own len() is 20 — arithmetically incompatible with the 18-char corrupt literal; the display layer is the falsified channel, exactly the f27c3c6 adjudication",
+    "channel_5_empirical_seal": "Actions API, branch=main: EVERY recent main commit carries an event:push ci run, ALL completed/success — runs 594-610 cover 38871f7, 9ce5c55, f45b027, bf1a7a6, 7f14bdc (my Task-54 stamp), 5a5fc37, 602-608 (844f9d9, e6cc8d5, 590f929, d4ddcf1, 8565b4b, ef94597, b775777), d117a54, 6813bb7. A 'ain]' filter matches NO branch — zero of these runs could exist. The push trigger fires on every main push of record.",
+    "pat_scope": "the current GITHUB_PAT carries the 'workflow' scope (X-OAuth-Scopes first-hand) — the round-23-era 'workflows pinned; patch filed for operator' sandbox blockage no longer exists; had the blob needed repair, it was executable lane-side"
+  },
+  "disposition": "NO-OP of record: the one-line patch the item names (branches ain] -> [main]) is ALREADY the committed bytes at c36d56dc; the blob comment ('restored 2026-10-06 run-003 via the API channel') is ACCURATE of record; the f27c3c6 hex-oracle adjudication is REPRODUCED and REAFFIRMED by this independent re-verification at tip 6813bb7 (the r1c round-27 escalation reading — 'the blob remains corrupted' — was made on the falsified display and stands corrected by the adjudication it anticipated). The item CLOSES of record: standing-items lists should stop carrying 'ci.yml patch'. A byte-identical rewrite commit was deliberately NOT made (zero-delta pushes are noise; the receipt is the discharge).",
+  "write_ledger": "zero writes of any kind (API GETs only) — pure verification receipt"
+}
