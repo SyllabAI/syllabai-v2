@@ -5619,3 +5619,23 @@ Work Log:
 
 Stage Summary:
 - The task register is machine-readable again (was 9-10/92 unparseable); every repair carries a DESK-REPAIR provenance note; standing hygiene proposal: status-line stamps should go through a yaml-validating helper (my own run-001 stamp broke two cards before the helper existed — lesson filed)
+
+---
+Task ID: r9-hubx Task-21 (local ledger 21)
+Agent: r9-hubx (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Operator directive trace 1a119f00380075f9 'API-of-record redeploy leverage' — carry main of record live (T-MIG-093 deploy recipe verbatim).
+
+Work Log:
+- Fetch-first: main fcbddc6 -> 9a376fd at build time (desk-round + R0-AUTO cron receipts; #144/#151/#152/#153 all merged-verified via the ALIVE GitHub API — see correction below)
+- CORRECTION OF RECORD: Task-19/20 'GitHub PAT 401 / rotation presumed' RETRACTED — the 401s were a shell-expansion artifact (inline VAR=x prefix assignment does not participate in $VAR argument expansion; empty bearer header -> 401/403). PAT verified ALIVE 200 (login SyllabAI); Vercel token likewise ALIVE (the same artifact had produced the first 403s). Git-ancestry evidence in those receipts unaffected.
+- Build per the T-MIG-093 recipe of record (deploy_bundle_build.py shim v2: node:crypto + js-yaml + 6 concept YAMLs inlined byte-verbatim, SHA-256 boot pins; explicit Node adapter entry; 2-file stage api/index.js 3.08MB + vercel.json): shim assert-patterns matched ZERO drift on 9a376fd; bundle 318 modules 78ms; adaptations disclosed (workspace paths, DATABASE_URL via process env — zero persist); shimmed files RESTORED post-build (git-verified clean)
+- LOCAL GATE 8/8 ALL PASS (node v24.21.0, of-record DATABASE_URL live-fetched never-persisted, local 44-byte JWT key): register 201 on the real Neon + the full tutor CRUD law
+- DEPLOYED: dpl_Att7uFazeneUCwBFKGjL READY 05:21:01Z; concurrent same-recipe deploys observed+documented (R0-AUTO cron dpl_3QLQz + dpl_jb9pBz, settled last = alias winner); NO interference, prior prod dpl_Die9 stays READY = rollback anchor
+- VERIFICATION MATRIX 16/16 ALL PASS on the live apex: consolidated health; Boot 401 law (learners-me/tutor-sessions/cla-ask) + admin chain-health 401; login-malformed 400 parity; CORS hub-v2 204+ACAO exact + zombie no-ACAO (Task-17 prune survives); probe learner + tutor net-zero legs on real Neon; hub-v2 + frozen-core untouched
+- Env: ZERO writes; 7 prod vars verified — 4x LLM keys present = the #144 seams LIVE with zero env work (r1c Task-42 prediction held); CORS 34-char holding
+- Receipt: .syllabai/receipts/DEPLOY/api-of-record-run-001-r9.json
+
+Stage Summary:
+- Main of record is LIVE on syllabai-v2.vercel.app: #144 real adapters + mark_points ghost fix + T-MIG-094 binding law + 095/097 repairs + 083-087 verifies now serve
+- T-MIG-099 condition (2) UNBLOCKED: the post-redeploy live error-class note can discharge on the next scoped execution (scratch leg per card law runs first)
+- Watch: probe rows 1 learner of record; concurrent-lane deploy races documented benign; token hygiene advisory stands for the chat-plaintext Vercel token
