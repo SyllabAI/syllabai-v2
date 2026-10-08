@@ -43,15 +43,17 @@ task:
       - "golden/**, packages/**, apps/api/**"
       - "the ROOT bunfig.toml / ci.yml (the verify + hub workflows are correct as-is)"
       - "production Neon writes / Render writes of any kind"
-    (implementation, 2026-10-06, run-002): apps/hub/bunfig.toml landed —
-    [test] root="src" + the law comment (discovery scoped to src/; the
-    Playwright specs under tests/e2e/** belong to the Playwright runner
-    exclusively; bunfig-is-read-from-CWD note for the root suite; future
-    hub bun tests under src/). Gates measured: cd apps/hub && bun test ->
-    36 tests / 3 files / 36 pass / 0 fail / 0 errors / exit 0 (was 41/8f/
-    36-5-5errors); root bun test apps/api packages UNCHANGED 1164 ran / 63
-    files / 1151 pass / 0 fail / 13 skip / 3513 expect; hub prebuild verify
-    scripts untouched (build:hub remains the CI gate); typecheck x4 at the
-    head exit 0 (inert file, verified); golden --selftest OK. ZERO other
-    apps/hub/** paths touched (no moves, no renames — the e2e specs are
-    byte-identical). Status -> IN_REVIEW.
+    (implementation, 2026-10-06, run-002): >-
+      [test] root="src" + the law comment (discovery scoped to src/; the
+      Playwright specs under tests/e2e/** belong to the Playwright runner
+      exclusively; bunfig-is-read-from-CWD note for the root suite; future
+      hub bun tests under src/). Gates measured: cd apps/hub && bun test ->
+      36 tests / 3 files / 36 pass / 0 fail / 0 errors / exit 0 (was 41/8f/
+      36-5-5errors); root bun test apps/api packages UNCHANGED 1164 ran / 63
+      files / 1151 pass / 0 fail / 13 skip / 3513 expect; hub prebuild verify
+      scripts untouched (build:hub remains the CI gate); typecheck x4 at the
+      head exit 0 (inert file, verified); golden --selftest OK. ZERO other
+      apps/hub/** paths touched (no moves, no renames — the e2e specs are
+      byte-identical). Status -> IN_REVIEW.
+
+  status: "DONE # of record via register 851df19 (register(r9-hubx): T-MIG-043/065/072 -> DONE). NOTE of record: this card file arrived TRUNCATED on main (status key missing, implementation paragraph mis-indented under scope:) — structure repaired minimally by desk 2026-10-08 trace 1a119e27bbe116e9; all preserved content above is byte-verbatim from main @ 881960d"
