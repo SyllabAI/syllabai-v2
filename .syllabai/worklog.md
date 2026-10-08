@@ -5727,3 +5727,17 @@ Work Log:
 
 Stage Summary:
 - T-MIG-099 completion claim now carries BOTH an r9 and an independent r0 live citation: the learner smart-mark error class at the api-of-record stands changed from SQL-class 500 to a fully-functioning real-generation pipeline, mark_points law serving. 093-class ledger closed + corroborated. Lane IDLE.force)
+
+---
+Task ID: T-MIG-100 (filing; operator directive "T-MIG-099's final residual", trace 1a11a1e1882c1b9d)
+Agent: w0a lane (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: determine and carry T-MIG-099's final residual — the register item owed by the 099 run-001 F6 widening
+
+Work Log:
+- Fetch-first census at act time: PR #144 merged of record (b16230f, intake-4 a37a622, operator direct-merge order executed); T-MIG-099 DONE + doubly corroborated (r9 run-001-proof scratch+live; r0 independent live replication run-002 @ 6f96dbf); T-MIG-093/094 DONE; task registry ends at T-MIG-099 -> the owed register item is UNFILED, and it is the band's final residual.
+- First-hand static audit (script lane-side, scripts/tmig100-opclass-audit.py): 87 index declarations in packages/db/src/schema/schema.ts, 1:1 with the commented 0000_organic_mauler.sql reference emission (zero name-set drift both ways; emission histogram uuid_ops 48 / text_ops 38 / timestamptz_ops 34 / int4_ops 14 / float8_ops 4 / date_ops 2 / bool+jsonb+tsvector+vector_cosine 1 each = 144 pins); 85 explicit .op() pins of which 41 btree statements are mis-opclassed (SQLSTATE 42804 datatype_mismatch on real PG — any one bad column kills the statement); 2 gin + 1 hnsw + 2 drizzle-default declarations type-legal; scramble CONFINED to the btree layer. Full per-statement taxonomy baked into the card. 099-recorded r9-time count "35" disclosed; act-time recount at 6f96dbf governs.
+- Filed .syllabai/tasks/T-MIG-100-drizzle-index-opclass-scramble-band.yaml: OPEN, execution UNCLAIMED (earliest-claim-wins); P2 (zero live-exposure — SELECT law + live api untouched; blocks the 083-rider scratch-provisioning pattern); fix law = opclass pins only (never the schema shape, per the 099 fence); owed proof leg = sanctioned-scratch drizzle-kit push GREEN end-to-end + pg_indexes readback receipt; ix_mark_points_scheme watchlist member folded in with append-only supersession note; desk law extension: generated-of-record DDL must cite real-wire execution corroboration before provisioning reliance.
+- .syllabai-only direct-main (fetch-first, ff-only, no force, no code/schema/flip-table/LLM-seam contact; zero secret material printed).
+
+Stage Summary:
+- T-MIG-099's final residual carried of record: T-MIG-100 (OPEN) — the drizzle-of-record index opclass scramble band, second member of the "of-record artifact never confronted the real wire" family after the fakeSql band (093/099/094). Registry: T-MIG-099 ledger fully closed including its owed register item.
