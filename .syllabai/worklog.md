@@ -5592,3 +5592,18 @@ Stage Summary:
 - Wave-S4 widening of record: 084+085 flip lines filed with full evidence chains; 083 disposition (already of record) documented; 086/087 widen-blocked on a STRUCTURAL mechanism finding with the adjudication ask of record in PR #155 — the flip table itself cannot express their shape without a decision-fn amendment.
 - Register movement this round: 75 DONE post-#152-merge; open PRs: #155 (this widen). Waiting lane-side: desk merge of #155, the 086/087 mechanism ruling (A/B), and the post-merge card flips (084/085 -> WIDENED + the 086/087 structural note) as a .syllabai-only bookkeeping commit.
 - Standing operator levers unchanged: v2 api redeploy from tip (bundle currency), hub-v2 redeploy, Neon INSERT GRANT, P2 adjudication, rollback re-warm, PAT rotation.
+
+---
+Task ID: R0-AUTO run cron-202610081300 (Job 438940) — operator 'Review+merge new PRs' trace 1a119d87a2aade09 executed
+Agent: R0-auto (Super Z, zai-web, merge desk — desk merges only)
+
+Work Log:
+- PR #144 MERGED of record → b16230f (head a37a622 sha-guarded PUT): LLM-chain real adapters (w0a fix-forward). Gates: (a) real head a37a622; (b) hub+verify completed/success on that SHA; (c) mergeable True; (d) REQUEST_CHANGES of record SUPERSEDED-of-record (04:32 re-exam CLOSED + 04:43 APPROVE run-002 operator-ordered + 04:48 w0a remediation 'all three gates addressed'); (e) 24 files, zero java, zero core/hub-repo paths, zero suspicious writes
+- PR #153 MERGED of record → 46536fd (head 92df7fe sha-guarded PUT): T-MIG-095 learner-me write-surface captured-law fix (r0). TWO intake rounds required: r1 908ed8a onto eb29e3a, r2 92df7fe onto bc4ec31 (#151 operator direct-merge landed mid-flight); BOTH rounds worklog-only conflicts (zero code conflicts) resolved via append-only chronological union python resolver with byte checks (both tails verbatim, zero markers, zero foreign lines); gates r1: typecheck x4 exit 0 + 1784 tests/0 fail/13 skip/6953 expects/94 files + golden selftest OK; gates r2: typecheck x4 exit 0 + 1791 tests/0 fail/13 skip/6973 expects/94 files + selftest OK; pushes no-force
+- (f) post-merge verify: main advanced through concurrent desk merges (#154 8c40306, #156 6303fa2, #152 d0206e8 desk-round) → fcbddc6 CI hub+verify completed/success first-hand (bounded poll)
+- CI-stall root cause CONFIRMED of record (filer d0bc76a): mergeable-dirty suppresses the pull_request workflow — the 04:20-05:0x zero-check-runs window across #144/#151/#152/#153 heads was that suppression; resolved by intake re-arms; escalation withdrawn as root-caused
+- Remaining open: #155 (wave-s4/r3a-084-085-widen, head 5d5ff2a, CI green) — QUEUED next run (max-2-merges cap reached this run)
+- Zero force-pushes; Neon untouched; prod zero-write; recusal held (no self-merges: #144=w0a work, #153=r0 work, this desk authored neither)
+
+Stage Summary:
+- 2 merges of record this run (#144 b16230f, #153 46536fd): LLM-chain lane + ghost-table fix + 095 captured-law fix now on main; T-MIG-095 card flips DONE per its card condition at bookkeeping; #155 queued for next R0 run
