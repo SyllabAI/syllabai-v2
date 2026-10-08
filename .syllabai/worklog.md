@@ -5502,6 +5502,22 @@ Work Log:
 Stage Summary:
 - T-MIG-094 DONE: register now 81 DONE of 90 (CAPTURED 7: 084-089+091; IN_PROGRESS 095; BLOCKED 097); the 093->094 defect-band chain fully closed at the code+pin level, real-wire proof carried by the mounting band as documented
 - Watch: GitHub PAT dead (401) — if NOT deliberately rotated, GitHub API lane actions are blocked until a fresh PAT; #144/#151/#152/#153 remain at the desk
+---
+
+Task ID: 33
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator trace 1a119cd1c09507e5 "084 Knowledge Tree Verification Rider" — T-MIG-084 golden-verify + V2_SURFACE_PREFIXES widening (the flip law).
+
+Work Log:
+- Workspace wipe #7 recovery (PAT trio restored, API 200, re-clone at 0f43156); scratch PG 17.11 + pgvector 0.8.0 rebuilt user-tree from trixie debs (:5433, db syllabai_v2_verify, full drizzle-kit push — one disclosed 093-class drizzle-of-record index oddity text_ops-on-uuid, non-blocking, indexes only).
+- run-002 GOLDEN-VERIFY: 8/8 PASS FIRST PASS (zero repairs — contrast 083's gate-caught leg-04 defect) vs the r4b frozen-core capture band golden-captures/t-mig-084/ (8 legs of record). Method = the 083 run-001 scratch-PG pattern: local v2 boot ZERO-KEY (asserted exit-4 guard) + Bun.serve harness envelope + JwtService self-minted tokens. SUBSTRATE SEEDED FROM THE FIXTURES THEMSELVES: leg-03 tree body walked programmatically -> 11 nodes / 10 PART_OF edges inserted verbatim with the capture stable fake UUIDs (zero remap, zero transcription); leg-06 unknown id ...0012 asserted absent pre-insert; roles table seeded first (user_roles.role FK law, a scratch-db prerequisite the 083 receipt did not need to disclose). Header deltas: the api-wide default cache-posture class (082 run-003) — every leg, disclosed.
+- run-003 WIDEN: V2_SURFACE_PREFIXES += /api/v1/knowledge/nodes — NARROWEST legal form analysis of record: the ONLY segment family the hub emits (api.ts knowledgeTree + prerequisites are the two request()-routed emitters, both /nodes/{id}; core-topics.ts:96 rides fetchCoreJson = core-pinned un-routed; citation-map.ts:76 deepLink is a href mapper, never a fetch); v2 serves EVERY /nodes/{id} shape with real implementations (malformed UUID -> captured leg-07 400 BEFORE any sql; unknown -> captured leg-06 404-first); siblings outside /nodes stay core; startsWith nodesx DOCUMENTED INERT. ZERO live-page routing change: no page call-sites for the dormant emitters (grep-verified) — the 090 routing-availability posture. includeMisconceptions=true hub form rides the same golden-verified tree endpoint via the pinned StringToBooleanConverter law (route-test x15) — DISCLOSED, not silently treated as golden-leg-verified. Surface pins: table pin + DUAL_RUN_PATHS += the two dormant emitter forms (literal emitters unlike 090's nonexistent admin paths) + former core-only kn-1/tree pin MOVED OUT (captured by the flipped row; v2 answers the SAME UUID_RE 400 law — wire-safe; move documented in-place) + new 084 boundary test.
+- Gates first-hand: typecheck chain (contracts/shared/db/api) + hub tsc exit 0; hub 42/0/374 (surface 14/0/295: +1 test/+39 expects); api+packages 1715/0/13/6758 (this rider carries ZERO api/packages code deltas — the count is the main 0f43156 census of record; the last band-reported 1725 predates the 053-recon-era main advances incl. #149); golden selftest OK.
+- Card 084 -> GOLDEN-VERIFIED+WIDENED (IN-REVIEW); receipts run-002-golden-verify-r4b.json + run-003-widen-r4b.json + tools/ (t084-seed.ts, t084-verify.ts); PR opened for desk merge (no self-merge — authors-never-self-merge).
+
+Stage Summary:
+- 084 band: verify+widen DONE of record, awaiting desk merge. Remaining CAPTURED band after 084: 085-089, 091 (same rider shape, same scratch-PG method now proven twice); 094 (kg-retriever, IN_REVIEW r0) rides the family verifies; 095/097 operator-side bands. Register moves to ~80 DONE-flippable on merge.
+
 
 - 2026-10-08T05:20Z w0a LLM-CHAIN run-004 (trace 1a119d20237149b1): intake-3 onto b062cc1 — T-MIG-099 ID YIELDED to main a289818 (operator-ordered pre-draft band card; this lane duplicate withdrawn, renumber precedent); ghost fix stays on #144 per the band card law; worklog union x3; CI-dirty root cause identified of record: pull_request workflows run on the merge ref — a conflicted PR gets ZERO runs (the integrator gate-1 and gate-3 are one gate: clean merge fires CI); gates on this tree then immediate push
 ---

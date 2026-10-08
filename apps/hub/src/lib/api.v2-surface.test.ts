@@ -58,6 +58,17 @@ const DUAL_RUN_PATHS: readonly string[] = [
   "/api/v1/learners/me/revision-notes/assets/0093b0722e85-2-7-9-preparation-of-leadiisulfate-4.png",
   "/api/v1/learners/me/revision-notes/progress",
   "/api/v1/learners/me/revision-notes/progress/views",
+  // T-MIG-084 (r4b rider) — the knowledge-tree family's request()-routed
+  // emitter forms (lib/api.ts knowledgeTree + prerequisites DEFINITIONS).
+  // Dormant today — zero page call-sites exist (grep-verified at the
+  // widening commit; disclosed in the api.ts line comment) — but they ARE
+  // literal emitters, unlike 090's nonexistent admin paths, so their forms
+  // belong here: if ever called they resolve to the v2 base. The
+  // core-topics.ts tree emitter is fetchCoreJson (core-pinned, un-routed
+  // by the table) and citation-map's knowledge deepLink is a href mapper —
+  // neither belongs in this list.
+  "/api/v1/knowledge/nodes/kn-root/tree?includeMisconceptions=true",
+  "/api/v1/knowledge/nodes/kn-x/prerequisites",
 ];
 
 /** Hub-emitted (or hub-adjacent) paths that MUST stay on the core in the dual-run posture. */
@@ -96,10 +107,14 @@ const CORE_ONLY_PATHS: readonly string[] = [
   // run-002 frozen-core captures (d19289cc8) + run-003 verify 7/7 vs the
   // landed mounts; moved out of this CORE_ONLY list of record.
   "/api/v1/learners/me/knowledge-graph",
-  // classic core-only surfaces (T-MIG-035 check-3 law, still true)
+  // classic core-only surfaces (T-MIG-035 check-3 law; /subjects and the
+  // LEGACY /api/v1/tree path are still true. NOTE: the former
+  // "/api/v1/knowledge/nodes/kn-1/tree" pin MOVED OUT of this list — it is
+  // captured by the flipped T-MIG-084 /api/v1/knowledge/nodes row and v2
+  // answers the SAME UUID_RE 400 malformed law the core does (captured
+  // leg-07 class; route-test x15), so the capture is wire-safe)
   "/api/v1/subjects",
   "/api/v1/tree?includeMisconceptions=true",
-  "/api/v1/knowledge/nodes/kn-1/tree",
   "/api/v1/tutor/ask",
   // T-MIG-092 (r0 rider): the tutor SESSIONS tree flipped, so these siblings
   // stay core-pinned explicitly — the zero-key law (generation-reaching asks
@@ -128,6 +143,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/learners/me/course-stats", // T-MIG-096 run-001 L17
       "/api/v1/learners/me/courses", // T-MIG-096 run-001 L12/L13 — zero emitters, routing availability
       "/api/v1/admin/revision-notes", // T-MIG-083: golden-verified (run-001 8/8, r9-hubx rider) — NARROW: ingest+status ONLY, rest of /api/v1/admin/** stays core
+      "/api/v1/knowledge/nodes", // T-MIG-084: golden-verified (run-002 8/8, r4b rider) — NARROWEST: the /nodes segment family ONLY, siblings outside /nodes stay core
     ]);
   });
 });
@@ -218,6 +234,40 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     // INERT — no such routes or hub emitters exist on either side)
     expect(v2SurfaceBase("/api/v1/admin/revision-notesx", V2)).toBe(V2);
     expect(v2SurfaceBase("/api/v1/admin/revision-notes-other", V2)).toBe(V2);
+  });
+
+  test("the T-MIG-084 line: the knowledge /nodes segment family flips after its golden gate (r4b rider)", () => {
+    // every golden-verified shape of record resolves to v2 (run-002: 8/8
+    // legs status+body deep-equal vs the r4b frozen-core capture band —
+    // receipts T-MIG-084/run-002-golden-verify-r4b.json; substrate = local
+    // scratch PG seeded FROM the fixtures, fake-UUID law, zero remap)
+    for (const p of [
+      "/api/v1/knowledge/nodes/00000000-0000-4000-8000-000000000001", // leg-02 flat node 200 / leg-06 unknown 404 law class
+      "/api/v1/knowledge/nodes/00000000-0000-4000-8000-000000000001/tree", // legs 03/08 (admin+learner) 200
+      "/api/v1/knowledge/nodes/00000000-0000-4000-8000-000000000001/tree?includeMisconceptions=true", // the hub's api.ts emitter form — same verified endpoint, pinned conversion law
+      "/api/v1/knowledge/nodes/00000000-0000-4000-8000-000000000001/prerequisites", // leg-04 200
+      "/api/v1/knowledge/nodes/00000000-0000-4000-8000-000000000001/misconceptions", // leg-05 200
+      "/api/v1/knowledge/nodes/kn-1/tree", // the FORMER core-only pin: v2 answers the SAME UUID_RE 400 malformed law (leg-07 class, BEFORE any sql; route-pinned x15) — capture is wire-safe
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBe(V2);
+    }
+    // TRUE siblings outside the /nodes segment (v2 mounts none, hub emits
+    // none) stay core — the prefix must never capture them. The legacy
+    // /api/v1/tree path is a DIFFERENT route (no /knowledge segment).
+    for (const p of [
+      "/api/v1/knowledge",
+      "/api/v1/knowledge/other",
+      "/api/v1/tree?includeMisconceptions=true",
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBeNull();
+    }
+    // startsWith matching is prefix-string semantics (the same property
+    // every row of the table has): a non-existent partial-segment sibling
+    // IS captured by the string match — DOCUMENTED INERT (no route or hub
+    // emitter named nodes* beyond the verified /nodes family exists on
+    // either side — the hub-source grep law in the api.ts table comment)
+    expect(v2SurfaceBase("/api/v1/knowledge/nodesx", V2)).toBe(V2);
+    expect("/api/v1/knowledge/nodesx".startsWith("/api/v1/knowledge/nodes")).toBe(true);
   });
 
   test("apiPath emits exact v2 URLs for representative surfaces", () => {

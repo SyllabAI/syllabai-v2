@@ -229,6 +229,35 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // (part-less bind 500, non-package.json zip 400) — zero corpus mutation
   // reachable from the flipped surface without an admin-supplied valid zip.
   "/api/v1/admin/revision-notes",
+  // T-MIG-084 (r4b rider, operator trace 1a119cd1c09507e5) — the GLOBAL
+  // knowledge-tree family: GOLDEN-VERIFIED of record (run-002: 8/8 legs,
+  // status+body deep-equal vs the r4b frozen-core 6cad6ef capture band
+  // golden-captures/t-mig-084/ — 401 anon / 200 flat node / 200 PART_OF
+  // tree (11 nodes) / 200 prerequisites [] / 200 misconceptions [] /
+  // 404-first unknown / 400 malformed-UUID / 200 learner tree; scratch-PG
+  // substrate seeded FROM the fixtures themselves (fake-UUID law, zero
+  // remap); receipts T-MIG-084/run-002-golden-verify-r4b.json). NARROWEST
+  // LEGAL FORM: /api/v1/knowledge/nodes is the ONLY segment family the hub
+  // emits — the two request()-routed emitters (lib/api.ts knowledgeTree +
+  // prerequisites) both live under /nodes/{id}, and the core-topics.ts tree
+  // emitter rides fetchCoreJson (core-pinned, un-routed by this table;
+  // citation-map's knowledge deepLink is a href mapper, never a fetch).
+  // v2 serves EVERY /nodes/{id} shape with real implementations (flat node,
+  // tree, prerequisites, misconceptions; malformed UUID -> the captured 400
+  // leg-07 law BEFORE any sql; unknown -> the captured 404-first leg-06
+  // law). Sibling paths outside /nodes stay core (no v2 mount, no hub
+  // emitter). startsWith subpath capture is DOCUMENTED INERT (no nodesx
+  // route or emitter exists on either side — pinned in the surface test).
+  // Zero live-page routing change today: NO page call-sites exist for the
+  // two dormant emitters (grep-verified at the widening commit) — ROUTING
+  // AVAILABILITY of record, the T-MIG-090 posture. The hub's
+  // includeMisconceptions=true tree form rides the SAME golden-verified
+  // tree endpoint via the pinned Spring StringToBooleanConverter conversion
+  // law (route-test x15; the fold is the V15 misconception family — never
+  // LLM-reaching, so the zero-key law is unaffected). LLM-free law: the
+  // whole family is read-only over the knowledge spine — no LLM seam, no
+  // 404/501 failure mode (the flip law's target).
+  "/api/v1/knowledge/nodes",
 ];
 
 /**

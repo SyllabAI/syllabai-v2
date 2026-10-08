@@ -1,0 +1,17 @@
+{
+ "card": "T-MIG-084",
+ "run": "run-003-widen-r4b",
+ "lane": "r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+ "date": "2026-10-08",
+ "operator_trace": "IM trace_id 1a119cd1c09507e5 ('084 Knowledge Tree Verification Rider') \u2014 the widen step of the rider (flip-law gate discharged by run-002 8/8 PASS)",
+ "change": {
+  "apps/hub/src/lib/api.ts": "V2_SURFACE_PREFIXES += '/api/v1/knowledge/nodes' \u2014 the NARROWEST legal form: the ONLY segment family the hub emits (the two request()-routed emitters lib/api.ts knowledgeTree + prerequisites both live under /nodes/{id}; the core-topics.ts emitter rides fetchCoreJson \u2014 core-pinned, un-routed; citation-map's knowledge deepLink is a href mapper, never a fetch). v2 serves EVERY /nodes/{id} shape with real implementations (flat node / tree / prerequisites / misconceptions; malformed UUID -> the captured leg-07 400 law BEFORE any sql; unknown -> the captured leg-06 404-first law). Siblings outside /nodes stay core. startsWith subpath capture DOCUMENTED INERT (no nodesx routes/emitters on either side). Zero live-page routing change: NO page call-sites exist for the two dormant emitters (grep-verified at the widening commit) \u2014 ROUTING AVAILABILITY of record, the 090/083 posture. The includeMisconceptions=true hub form rides the SAME golden-verified tree endpoint via the pinned conversion law (route-test x15) \u2014 disclosed, not silently treated as golden-leg-verified. LLM-free law: read-only family, no LLM seam, no 404/501 failure mode (the flip law's target).",
+  "apps/hub/src/lib/api.v2-surface.test.ts": "table pin extended (is-exactly-the-verified-set) + DUAL_RUN_PATHS += the two dormant request()-routed emitter forms (literal emitters unlike 090's nonexistent admin paths \u2014 disclosed dormant, zero call-sites) + the former core-only pin '/api/v1/knowledge/nodes/kn-1/tree' MOVED OUT of CORE_ONLY_PATHS (captured by the flipped row; v2 answers the SAME UUID_RE 400 law \u2014 wire-safe) with the move documented in-place + NEW boundary test 'the T-MIG-084 line': all golden-verified shapes resolve v2, TRUE siblings outside /nodes (/api/v1/knowledge, /api/v1/knowledge/other, legacy /api/v1/tree) stay core, partial-segment nodesx pinned DOCUMENTED INERT; rollback posture pins unchanged and still cover the new line"
+ },
+ "not_done_and_why": [
+  "DUAL_RUN_PATHS deliberately does NOT include the core-topics.ts fetchCoreJson tree emitter \u2014 that helper is hard-pinned to the core base and un-routed by the table; adding it would be dishonest",
+  "NO section-2 full-flip env changes, NO Vercel/Render/Neon production writes (card forbidden list)"
+ ],
+ "verification": "bun test apps/hub/src/lib/api.v2-surface.test.ts: 14 pass / 0 fail / 295 expect (first-hand); full hub 42/0/374; typecheck chain + hub tsc exit 0; api+packages 1715/0/13/6758 (zero api deltas); golden selftest OK",
+ "flip_law_check": "widening gated on a NEW golden-verified surface (run-002, 8/8 PASS) \u2014 the gate is satisfied exactly as the law requires"
+}
