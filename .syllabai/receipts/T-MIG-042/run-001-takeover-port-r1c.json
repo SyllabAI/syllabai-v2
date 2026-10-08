@@ -1,0 +1,75 @@
+{
+  "family": "T-MIG-042",
+  "run": "run-001-takeover-port-r1c",
+  "operator_trace": "1a11c1d07db6a9dd",
+  "operator_order": "DECAY GO — binding CUTOVER_RUNBOOK §3 (nightly decay takeover) in the retirement sequence",
+  "lane": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0)",
+  "timestamp_utc": "2026-10-08T15:36Z",
+  "tip_at_claim": "35ab1fb",
+  "branch": "t-mig-042/r1c",
+
+  "discovery_battery": {
+    "port_absent_at_tip": {
+      "finding": "runNightlyDecay() is the 042P stub ({implemented:false}) at tip 35ab1fb — first-hand read",
+      "consequence": "the runbook §3.1 parenthetical '501 only if the Wave-4 decay port were absent — it is not' is STALE; enabling DECAY_CRON_ENABLED=1 on the stub = nightly 02:00Z 501s with ZERO decay_job_runs rows = the §4 watch red by its own metric (missing row at 02:00 UTC+epsilon)",
+      "resolution": "the port is the critical path of DECAY GO — claimed and implemented in this run"
+    },
+    "hub_is_dbless": "no db driver in apps/hub/package.json deps; zero packages/db imports in apps/hub/src — the ledger write architecturally belongs to the api-of-record; the seam forwards",
+    "nothing_writes_the_ledger": "decay_job_runs refs at tip = packages/db/src/schema/schema.ts (table def) + the hub seam ONLY — no writer exists in v2",
+    "live_probes_1536Z": {
+      "hub_decay_unauth": "401 {status:unauthorized, reason:'CRON_SECRET is not configured on this deployment...'}",
+      "hub_decay_wrong_bearer": "401 SAME not-configured body -> CRON_SECRET definitively UNSET on hub-v2 prod (decision law short-circuits before the bearer branch only when the secret is unset)",
+      "hub_health": "200 {status:ok, service:syllabai-hub, dataMode:core-api, coreConfigured:true}",
+      "cron_schedule": "apps/hub/vercel.json crons [{path:/api/cron/nightly-decay, schedule:0 2 * * *}] — live-deployed since 042P (PR #54); the nightly invocation currently lands on the 401 wall harmlessly"
+    },
+    "neon_baseline_blocked": "api.neon.tech DNS unresolvable lane-side (egress) — the core-era decay_job_rows baseline (and the empirical V38 firing-hour confirmation the 042P acceptance deferred) is deferred to the §3.3 cross-check; evidence path = the route's ledgerRow mirrors (ok/already-run responses ARE the table rows) + an operator-side read if desired"
+  },
+
+  "implementation_of_record": {
+    "api_arm": [
+      "apps/api/src/services/cron/nightly-decay.ts — the ledger writer: INSERT .. ON CONFLICT (window_start) DO NOTHING RETURNING; empty -> SELECT existing -> already-run; lost-window race throws (never fabricates); decayed/reviews_scheduled are LITERAL 0/0 (ADR-031 read-time law, T-MIG-066); decayWindowTimestamp validates the UTC CALENDAR day",
+      "apps/api/src/routes/cron.ts — GET /nightly-decay under /api/v1/cron: the 042P R-2 timing-safe length-gated bearer law mirrored; server-derived window (client windows IGNORED — no arbitrary backfill); builds sql via the repo createSql idiom",
+      "apps/api/test/cron/nightly-decay.test.ts — 9 tests: auth law (unset/wrong/same-length/missing 401s), dispatch-reaches-ledger (loud ENOTFOUND on the scratch host proves auth opened), ledger ok path (SQL text pins INSERT/ON CONFLICT/RETURNING + literal 0/0), already-run path (SELECT fallback, no second INSERT), window calendar law"
+    ],
+    "hub_arm": [
+      "apps/hub/src/lib/decay/nightly-decay.ts — the seam IMPLEMENTED: forwards the validated bearer to the api-of-record, maps ok/already-run + ledgerRow; LOUD failures (unset apiBase, 401 drift, non-OK, missing ledgerRow); the 042P scaffold contract comment updated item-by-item (window/API-write/ADR-031-retirement/flyway-untouched/single-cron-entry)",
+      "apps/hub/src/app/api/cron/nightly-decay/route.ts — passes {apiBase: NEXT_PUBLIC_API_V2_BASE_URL, bearer: incoming Authorization}; success forwards the api's status honestly",
+      "apps/hub/src/lib/decay/nightly-decay.test.ts — the stub pin REPLACED by 6 seam tests (url+verbatim-bearer capture, already-run honesty, 401 drift throw, 500 throw, no-ledgerRow throw, unset apiBase throw)"
+    ],
+    "wiring": "apps/api/src/index.ts: import + construction + ONE app.route('/api/v1/cron', cron.cronRoute) line — out-of-fence disclosed in-place per the T-MIG-032 precedent (global authMiddleware is a soft-attach authenticator: anonymous passes to next(); requireAuth is per-handler, so the route's own bearer law is the gate; rate-limit volume = 1 hit/day)",
+    "contracts_delta": "ZERO — the ledger row shape is route-local JSON; @syllabai/contracts untouched",
+    "golden_delta": "ZERO — infra-class surface, no golden case pins it (disclosed); unit battery + §4 watch govern"
+  },
+
+  "gates_at_pr_head": {
+    "typecheck_x4": "0 errors (contracts/shared/db/api)",
+    "hub_tsc_noEmit": "0 errors",
+    "bun_test_api_packages": "1822 pass / 0 fail / 13 skip",
+    "bun_test_hub": "53 pass / 0 fail / 434 expects",
+    "golden_selftest": "OK",
+    "note": "fresh sandbox required bun install --frozen-lockfile (930 pkgs) before gates — disclosed"
+  },
+
+  "staged_env_act": {
+    "law": "§3.1 is [OPERATOR] (runbook header: prod env forbidden to code lanes) — STAGED as a one-command handoff awaiting the VERCEL_PAT delivery, per the r7a 'staged handoff fired on PAT delivery' precedent (trace 1a11a4fd0340cd79)",
+    "staged_artifacts": [
+      "~/.secrets/cron-env.sh (0600) — the generated CRON_SECRET (64-hex); value NEVER printed/committed; sha256 fingerprint disclosed in the PR body of record",
+      "scripts/decay-env-act-staged.sh — preflight (PR merged + PAT staged) -> env adds (hub: CRON_SECRET + DECAY_CRON_ENABLED=1; api: CRON_SECRET) -> redeploys (api first, then hub from ROOT per the r7a recipe) -> manual FIRST FIRE with the bearer (expect 200 {status:ok, ledgerRow}) -> idempotency RE-FIRE (expect 200 {status:already-run}) -> unauth 401 re-checks"
+    ],
+    "sequencing_law": "merge FIRST, api redeploy first, hub redeploy second, then the first fire; tonight 02:00Z the cron self-fires into an already-run (or writes the row if fired before) — either way exactly-once; §3.3 cross-check next morning; §4 watch opens at the first fire",
+    "operator_alternative": "the operator may perform §3.1 in the Vercel UI instead — the CRON_SECRET value is available lane-side and will be delivered on request (chat-transit disclosure + rotation advisory per the standing hygiene law)"
+  },
+
+  "write_ledger": {
+    "prod": "ZERO — code-only PR; no env/deploy/schema/flip changes; no Neon writes (the ledger write happens only after merge + the operator-gated env act)",
+    "local": "bun install (lockfile-faithful); probe reads only (hub decay route unauth + wrong-bearer, hub health); one DNS-failed read attempt against api.neon.tech (no data, no creds printed)"
+  },
+
+  "sec3_verify_protocol_of_record": {
+    "s3_3_morning_cross_check": "exactly one decay_job_runs row per window; evidence = the first-fire + cron-fire route responses (ok then already-run) whose ledgerRow mirrors ARE the rows; missing-row or duplicate-row = §4 alert -> §5 rollback decision rule",
+    "s4_watch_metric": "nightly decay: row present at 02:00 UTC+epsilon, exactly-once; lanes may run read-only SELECTs (runbook §4) subject to lane egress",
+    "java_core_overlap": "the core's scheduler stays running-but-idle by design (§3.2); the window_start PK makes double-fire impossible across BOTH schedulers during the overlap; Render disable stays [OPERATOR] and NOT before the 48h check"
+  },
+
+  "runbook_correction_owed": "docs/CUTOVER_RUNBOOK.md §3.1 parenthetical ('it is not [absent]') is stale at tip until this PR merges — desk bookkeeping item for the runbook owner; this receipt + the card carry the correction of record in the interim"
+}

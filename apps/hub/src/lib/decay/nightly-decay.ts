@@ -1,18 +1,30 @@
 /**
  * T-MIG-042-PREP — NightlyDecayJob Vercel Cron scaffold: decision law + wiring seam.
+ * T-MIG-042 — the seam is now IMPLEMENTED (the Wave-4 cron port, CUTOVER_RUNBOOK
+ * §3 "nightly decay takeover"): the seam forwards to the api-of-record's
+ * /api/v1/cron/nightly-decay, which owns the decay_job_runs ledger write
+ * (the hub stays DB-less — no db driver in apps/hub, by architecture law).
  *
- * SCOPE GUARD (operator directive trace 1a10c9d1ef9ebbe1): this file is
- * SCAFFOLD ONLY — schedule + invoke shape + wiring seam. NO decay port, NO
- * decay math, NO DB calls. The Wave-4 port (MIGRATION_PLAN: T-MIG-040..043,
- * "Ebbinghaus decay subsystem (NightlyDecayJob -> Vercel Cron; decay math is
- * deterministic -> golden-gated)") implements the seam below.
+ * SCAFFOLD HISTORY (operator directive trace 1a10c9d1ef9ebbe1): schedule +
+ * invoke shape + wiring seam landed with NO decay port (the Wave-4 owner's
+ * lane); the port was claimed under the operator's "DECAY GO" order
+ * (trace 1a11c1d07db6a9dd) after the Task-50 readiness leg proved the port
+ * absent at tip (the runbook §3.1 "it is not [absent]" parenthetical was
+ * stale — enabling the env on the stub would 501 every night with ZERO
+ * ledger rows, red-ing the §4 watch by its own metric).
  *
- * DOCTRINE (BASELINE_DB §4.3): the nightly decay job moves to Vercel Cron at
- * cutover; until then the Java core's scheduler keeps running and v2 must
- * NOT double-schedule decay against the same branch — double-decay is a
- * correctness bug, not a perf bug. Hence the scaffold is env-gated OFF by
- * default (DECAY_CRON_ENABLED != "1" => 200 {status:"skipped"}) and touches
- * zero data on every path.
+ * DECISION LAW (unchanged):
+ * - Fail-closed: 401 unless the bearer matches CRON_SECRET (timing-safe,
+ *   length-gated — review finding R-2 law).
+ * - Env-gated OFF by default: 200 {status:"skipped"} while
+ *   DECAY_CRON_ENABLED != "1" (BASELINE_DB §4.3 — the Java core's scheduler
+ *   owned decay until the Wave-7 cutover; enabling early risks
+ *   double-decay, a correctness bug).
+ * - Enabled: the seam runs (T-MIG-042). ADR-031 note: learner-model decay
+ *   is READ-TIME math (recomputed from anchors, never persisted — the
+ *   T-MIG-066 canonical owner); the nightly job's residual role is the
+ *   exactly-once decay_job_runs ledger row (window_start PK idempotency)
+ *   that §3.3 / §4 cross-check.
  */
 import { timingSafeEqual } from "node:crypto";
 
@@ -108,35 +120,91 @@ export function decideDecayCron(input: {
   return { action: "run", httpStatus: null, windowStart };
 }
 
-/** Result contract the Wave-4 port must return. */
+/** Result contract the port returns (T-MIG-042 refinement of the 042P
+ * contract: the implemented variant carries the api-of-record's ledger
+ * outcome — 'ok' (row written) or 'already-run' (window taken by a prior
+ * writer) — and the mirrored ledger row, so the cron response is the §3.3
+ * cross-check evidence verbatim). */
+export interface DecayLedgerRowMirror {
+  windowStart: string;
+  executedAt: string;
+  triggerKind: string;
+  decayed: number;
+  reviewsScheduled: number;
+}
+
 export type DecayRunResult =
   | { implemented: false }
   | {
       implemented: true;
-      /** Mirror of the decay_job_runs ledger row written by the port. */
-      ledgerRow: {
-        windowStart: string;
-        executedAt: string;
-        [k: string]: unknown;
-      };
+      status: "ok" | "already-run";
+      ledgerRow: DecayLedgerRowMirror;
     };
 
-/** The wiring seam the Wave-4 NightlyDecayJob port implements.
+/** Seam invocation deps (T-MIG-042): the takeover writes NO rows from the
+ * hub — it forwards the bearer to the api-of-record, which owns the DB.
+ * fetchImpl is the test seam; production uses global fetch. */
+export interface NightlyDecayDeps {
+  /** Server-side base of the v2 api (NEXT_PUBLIC_API_V2_BASE_URL). */
+  apiBase: string | undefined;
+  /** The incoming (Vercel-Cron-validated) Authorization header, forwarded
+   * verbatim — the same CRON_SECRET value is configured on both projects. */
+  bearer: string | null;
+  fetchImpl?: typeof fetch;
+}
+
+/** The wiring seam — IMPLEMENTED by the T-MIG-042 port.
  *
- * Scaffold stub: reports not-implemented and performs NOTHING (zero DB
- * contact, zero writes). The port (T-MIG-042, Wave 4) must:
- *  1. confirm the UTC decay window (V38 semantics; window_start is the
- *     decay_job_runs primary key — retries must be idempotent),
- *  2. write the decay_job_runs ledger row (window_start PK => ON-CONFLICT
- *     skip semantics, so a Vercel retry never double-decays),
- *  3. apply the deterministic Ebbinghaus decay math — golden-gated per
- *     MIGRATION_PLAN Wave 4,
- *  4. never touch flyway_schema_history or any core-owned bookkeeping table,
- *  5. keep this endpoint the ONLY Vercel Cron entry (no second scheduler).
- */
-export async function runNightlyDecay(_windowStart: string): Promise<DecayRunResult> {
-  console.info(
-    "[nightly-decay] seam invoked — decay port NOT implemented (T-MIG-042-PREP scaffold; the Wave-4 port owns the implementation)",
-  );
-  return { implemented: false };
+ *  1. window confirmation: the caller's UTC-day window (042P
+ *     computeWindowStart law) is forwarded for observability only — the api
+ *     derives its OWN server-side window for the ledger row, so a
+ *     bearer-holder can never backfill arbitrary windows.
+ *  2. the decay_job_runs ledger row is written by the api-of-record
+ *     (window_start PK => ON CONFLICT DO NOTHING — a Vercel retry never
+ *     double-writes).
+ *  3. decay math: RETIRED by the ADR-031 read-time law (T-MIG-066) — the
+ *     job's batch-decay role does not exist in v2; the ledger row's
+ *     decayed/reviews_scheduled are the honest 0/0.
+ *  4. flyway_schema_history / core bookkeeping: untouched (the api route
+ *     writes ONLY decay_job_runs).
+ *  5. this endpoint remains the ONLY Vercel Cron entry (apps/hub/vercel.json
+ *     unchanged; no scheduler was added anywhere).
+ *
+ * Failure law: LOUD — a misconfigured/unreachable api or a 401 bearer-drift
+ * throws (surfacing as a 5xx on the cron hit + the §4 "missing row" metric
+ * + deployment logs). The scaffold's 501 not-implemented shape remains in
+ * the route as the honest regression signal only. */
+export async function runNightlyDecay(
+  _windowStart: string,
+  deps: NightlyDecayDeps,
+): Promise<DecayRunResult> {
+  if (!deps.apiBase) {
+    throw new Error(
+      "[nightly-decay] NEXT_PUBLIC_API_V2_BASE_URL is not configured — the decay takeover seam cannot reach the api-of-record (T-MIG-042)",
+    );
+  }
+  const base = deps.apiBase.replace(/\/+$/, "");
+  const res = await (deps.fetchImpl ?? fetch)(`${base}/api/v1/cron/nightly-decay`, {
+    method: "GET",
+    headers: deps.bearer ? { authorization: deps.bearer } : {},
+  });
+  if (res.status === 401) {
+    throw new Error(
+      "[nightly-decay] api-of-record rejected the decay bearer — CRON_SECRET drift between the hub and api projects? (T-MIG-042)",
+    );
+  }
+  if (!res.ok) {
+    throw new Error(`[nightly-decay] api-of-record decay ledger write failed: HTTP ${res.status}`);
+  }
+  const body = (await res.json()) as { status?: string; ledgerRow?: DecayLedgerRowMirror };
+  if (!body?.ledgerRow) {
+    throw new Error(
+      "[nightly-decay] api-of-record returned no ledgerRow — refusing to report takeover success without ledger evidence (T-MIG-042)",
+    );
+  }
+  return {
+    implemented: true,
+    status: body.status === "already-run" ? "already-run" : "ok",
+    ledgerRow: body.ledgerRow,
+  };
 }

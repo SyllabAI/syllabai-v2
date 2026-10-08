@@ -27,7 +27,13 @@ export async function GET(request: Request) {
   });
 
   if (decision.action === "run") {
-    const result = await runNightlyDecay(decision.windowStart);
+    // T-MIG-042 port: the seam forwards the (bearer-validated) request to
+    // the api-of-record, which owns the decay_job_runs ledger write — the
+    // hub stays DB-less by architecture law.
+    const result = await runNightlyDecay(decision.windowStart, {
+      apiBase: process.env.NEXT_PUBLIC_API_V2_BASE_URL,
+      bearer: request.headers.get("authorization"),
+    });
     if (!result.implemented) {
       return Response.json(
         {
@@ -39,7 +45,7 @@ export async function GET(request: Request) {
         { status: 501 },
       );
     }
-    return Response.json({ status: "ok", ledgerRow: result.ledgerRow });
+    return Response.json({ status: result.status, ledgerRow: result.ledgerRow });
   }
 
   return Response.json(decision.body, { status: decision.httpStatus });
