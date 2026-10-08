@@ -541,12 +541,25 @@ describe("tutor sessions CRUD", () => {
   });
 
   test("GET / → 200 summaries only (no transcript bodies)", async () => {
+    // T-MIG-093 construction law pinned at the adapter boundary: the IN list
+    // binds EVERY id as its own scalar $n (submit.ts :383 law at dynamic
+    // length) — a bound JS array is a single wire value and 500s the Neon
+    // wire (golden-verify T-MIG-092 run-002 L06). fakeSql joins the template
+    // strings with "?", so the per-element construction shows up as "(?)"
+    // (and "(?, ?)" for two ids) — and the responder receives ids.length
+    // scalar params, never an array.
+    const seenCounts: unknown[][] = [];
+    const seenFirst: unknown[][] = [];
     const { app } = makeApp({
       "order by last_active_at desc limit ?": [sessionRow()],
-      "where session_id = any(?::uuid[]) group by session_id": [{ session_id: SESSION_A, n: 2 }],
-      "where session_id = any(?::uuid[]) and seq = 1": [
-        { session_id: SESSION_A, role: "user", content: "What is electrolysis?" },
-      ],
+      "where session_id in (?) group by session_id": (params: unknown[]) => {
+        seenCounts.push(params);
+        return [{ session_id: SESSION_A, n: 2 }];
+      },
+      "where session_id in (?) and seq = 1": (params: unknown[]) => {
+        seenFirst.push(params);
+        return [{ session_id: SESSION_A, role: "user", content: "What is electrolysis?" }];
+      },
     });
     const res = await app.request("/api/v1/tutor/sessions");
     expect(res.status).toBe(200);
@@ -556,6 +569,14 @@ describe("tutor sessions CRUD", () => {
     expect(body[0]!.title).toBe("What is electrolysis?");
     expect(body[0]!.turnCount).toBe(2);
     expect(body[0]).not.toHaveProperty("turns");
+    // every id rode its own scalar parameter — no array ever crossed the seam
+    expect(seenCounts).toHaveLength(1);
+    expect(seenCounts[0]).toHaveLength(1);
+    expect(Array.isArray(seenCounts[0]![0])).toBe(false);
+    expect(seenCounts[0]![0]).toBe(SESSION_A);
+    expect(seenFirst).toHaveLength(1);
+    expect(seenFirst[0]).toHaveLength(1);
+    expect(Array.isArray(seenFirst[0]![0])).toBe(false);
   });
 
   test("GET /latest → 204 when the learner never chatted", async () => {

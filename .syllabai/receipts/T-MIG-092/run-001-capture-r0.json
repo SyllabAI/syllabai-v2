@@ -1,0 +1,89 @@
+{
+ "card": "T-MIG-092",
+ "receipt": "run-001-capture-r0",
+ "lane": "r0",
+ "created_at_utc": "2026-10-07T18:24:00Z",
+ "operator_trace": "1a11790a99a3cb19",
+ "provenance": {
+  "frozen_ref": "6cad6ef94 (syllabai-core main tip re-verified 2026-10-07 via API = autoDeploy live wire IS the frozen wire)",
+  "live_core": "https://syllabai-core.onrender.com",
+  "identity": "fresh probe learner registered on the v2 plane (shared-secret token, seam verified closed trace 1a1177d16bbd0a49); email/uuid redacted; token NEVER persisted",
+  "discipline": "LLM-FREE legs only (R-LLM): sessions CRUD + binding-time 400 + section-22 pre-flight 404; NO valid-shape /ask leg. Write legs = probe-learner-owned create+delete, net zero rows.",
+  "uuid_map": {
+   "PROBE_SESSION_1": "410d7884-55ae-4014-9e54-f8043673dac6"
+  },
+  "redaction": "session uuids mapped to PROBE_SESSION_1 in fixtures via uuid_map above; no learner PII in any response body (SessionView/Summary carry no learnerId)"
+ },
+ "fixtures": [
+  {
+   "file": "leg-01-list-initial.json",
+   "leg": "L01",
+   "status": 200
+  },
+  {
+   "file": "leg-02-latest-initial-204.json",
+   "leg": "L02",
+   "status": 204
+  },
+  {
+   "file": "leg-03-unknown-session-404.json",
+   "leg": "L03",
+   "status": 404
+  },
+  {
+   "file": "leg-04-list-unauthed-401.json",
+   "leg": "L04",
+   "status": 401
+  },
+  {
+   "file": "leg-05-create-201.json",
+   "leg": "L05",
+   "status": 201
+  },
+  {
+   "file": "leg-06-list-one-summary-200.json",
+   "leg": "L06",
+   "status": 200
+  },
+  {
+   "file": "leg-07-latest-200.json",
+   "leg": "L07",
+   "status": 200
+  },
+  {
+   "file": "leg-08-transcript-200.json",
+   "leg": "L08",
+   "status": 200
+  },
+  {
+   "file": "leg-09-ask-blank-400.json",
+   "leg": "L09",
+   "status": 400
+  },
+  {
+   "file": "leg-10-ask-unknown-session-404.json",
+   "leg": "L10",
+   "status": 404
+  },
+  {
+   "file": "leg-11-delete-204.json",
+   "leg": "L11",
+   "status": 204
+  },
+  {
+   "file": "leg-12-get-deleted-404.json",
+   "leg": "L12",
+   "status": 404
+  },
+  {
+   "file": "leg-13-list-after-delete-200.json",
+   "leg": "L13",
+   "status": 200
+  },
+  {
+   "file": "leg-14-latest-after-delete-204.json",
+   "leg": "L14",
+   "status": 204
+  }
+ ]
+}

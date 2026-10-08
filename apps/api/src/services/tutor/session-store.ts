@@ -31,6 +31,30 @@ export const MAX_SESSIONS_PER_LEARNER = 50;
  *  transcripts get air */
 export const MAX_CONTENT_CHARS = 4000;
 
+/**
+ * Scalar-param IN-list — the services/assessment/submit.ts :383 proven wire
+ * law at dynamic length. A bound JS array is a SINGLE wire value on both
+ * driver adapters: toQuery renders `where x in ${ids}` as `x in $1` and the
+ * Neon WebSocket wire answers with a syntax/type error (the 500 the
+ * T-MIG-092 run-002 L06 golden-verify caught live on GET /tutor/sessions
+ * with a non-empty list). Every id must ride its own $n parameter; the
+ * commas are template text. Returns the (strings, ...params) spread exactly
+ * in the tagged-call shape the structural SqlFn contract consumes.
+ */
+function inList(
+  prefix: string,
+  ids: readonly string[],
+  suffix: string,
+): [TemplateStringsArray, ...string[]] {
+  const parts = [prefix];
+  for (let i = 1; i < ids.length; i++) parts.push(", ");
+  parts.push(suffix);
+  const strings = Object.assign([...parts], {
+    raw: [...parts],
+  }) as unknown as TemplateStringsArray;
+  return [strings, ...ids];
+}
+
 export interface TurnView {
   seq: number;
   role: string;
@@ -217,16 +241,21 @@ export function buildTutorSessionStore(sql: SqlFn, clock: Clock) {
         limit ${MAX_LISTED_SESSIONS}`) as unknown as SessionRow[];
       if (recent.length === 0) return [];
       const ids = recent.map((s) => s.id);
-      const counts = (await sql`
-        select session_id, count(*) as n
-        from tutor_session_turns
-        where session_id = any(${ids}::uuid[])
-        group by session_id`) as unknown as Array<{ session_id: string; n: string | number }>;
+      const counts = (await sql(
+        ...inList(
+          "select session_id, count(*) as n from tutor_session_turns where session_id in (",
+          ids,
+          ") group by session_id",
+        ),
+      )) as unknown as Array<{ session_id: string; n: string | number }>;
       const countBy = new Map(counts.map((r) => [r.session_id, Number(r.n)]));
-      const firstTurns = (await sql`
-        select session_id, role, content
-        from tutor_session_turns
-        where session_id = any(${ids}::uuid[]) and seq = 1`) as unknown as Array<{
+      const firstTurns = (await sql(
+        ...inList(
+          "select session_id, role, content from tutor_session_turns where session_id in (",
+          ids,
+          ") and seq = 1",
+        ),
+      )) as unknown as Array<{
         session_id: string;
         role: string;
         content: string;
