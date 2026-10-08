@@ -19,7 +19,7 @@
  */
 process.env.NEXT_PUBLIC_API_V2_BASE_URL = "https://v2.example";
 
-const { apiPath, v2SurfaceBase, V2_SURFACE_PREFIXES } = await import("./api");
+const { apiPath, v2SurfaceBase, V2_SURFACE_PREFIXES, V2_SURFACE_MIDPATH_PREFIXES } = await import("./api");
 
 import { describe, expect, test } from "bun:test";
 
@@ -69,6 +69,13 @@ const DUAL_RUN_PATHS: readonly string[] = [
   // neither belongs in this list.
   "/api/v1/knowledge/nodes/kn-root/tree?includeMisconceptions=true",
   "/api/v1/knowledge/nodes/kn-x/prerequisites",
+  // Wave S5 (T-MIG-086, r3a) — the class-KG emitters the hub REALLY emits
+  // (lib/api.ts:934/:943/:955): flipped under the mechanism-A mid-path rows
+  // after the ruling of record (run-002-golden-verify-r3a via PR #152;
+  // ordering class ruled non-blocking; #155 comment 6053748307).
+  "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graph?rootId=3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
+  "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graph/nodes/0f0f1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/students?rootId=3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
+  "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/learners/9e9e1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graph?rootId=3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
   // Wave S4 (T-MIG-085, r3a) — the teacher concept-graph page's emitter
   // forms: golden-verified of record (run-002-golden-verify-r3a via PR #152;
   // one filed message-format class, non-blocking per the 081-class precedent).
@@ -170,6 +177,13 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/learners/me/cla/ask", // T-MIG-097: BOTH wires live-proven (run-003 10/10 refusal dual-live + run-004 generation probe 200, r7a) — NARROWEST: the exact ask path
       "/api/v1/teacher/concept-graph", // T-MIG-085: golden-verified (run-002, r3a) — family-exact: activate+edges own the base exclusively
       "/api/v1/teacher/content/glm-ocr", // T-MIG-089: golden-verified (run-002 6/6, r4b band rider) — NARROWEST: the /glm-ocr segment family ONLY, the /teacher/content parent stays core (T-MIG-020/023 + T-MIG-100)
+    ]);
+  });
+  test("the mid-path table is exactly the ruled set — the mechanism-A amendment needs its own golden gate too", () => {
+    expect([...V2_SURFACE_MIDPATH_PREFIXES]).toEqual([
+      "/api/v1/teacher/classes/:uuid/knowledge-graph", // T-MIG-086: heatmap + node-students
+      "/api/v1/teacher/classes/:uuid/learners/:uuid/knowledge-graph", // T-MIG-086: learner-kg
+      "/api/v1/teacher/classes/:uuid/coverage", // T-MIG-087: list + mark + history
     ]);
   });
 });
@@ -372,28 +386,48 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     expect(v2SurfaceBase("/api/v1/teacher/concept-graphx", V2)).toBe(V2);
   });
 
-  test("the T-MIG-086/087 structural pins: class-scoped KG + coverage stay core this band (r3a adjudication ask of record)", () => {
-    // 086 + 087 are golden-verified (run-002-golden-verify-r3a, PR #152) AND
-    // mounted real on v2 (routes/teacher-kg.ts) — but they are STRUCTURALLY
-    // NOT PREFIX-ADDRESSABLE: the distinguishing segment sits AFTER the
-    // {classId} wildcard and the /api/v1/teacher/classes base is SHARED with
-    // the unverified class-management emitters (list/detail/members/
-    // announcements/status, lib/api.ts:881-923). Any prefix row either
-    // captures those unverified siblings (the exact failure the flip law
-    // forbids) or does not exist. Widen awaits the mechanism ruling (A: a
-    // mid-path row form — r3a recommendation — vs B: subtree filing), filed
-    // in PR #155.
+  test("the T-MIG-086/087 lines: class-scoped KG + coverage flip under the mid-path rows after the mechanism ruling (r3a wave-s5)", () => {
+    // Mechanism A of record (r3a delegated ruling, operator trace
+    // 1a119eda53f9af4d, #155 comment 6053748307): the families are golden-
+    // verified (run-002-golden-verify-r3a, PR #152) and mounted real on v2
+    // (routes/teacher-kg.ts); the wave-s4 structural pins flip here. The
+    // tail literal isolates the unverified class-management siblings.
     for (const p of [
-      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graph?rootId=r-1",
-      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graph/nodes/0f0f1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/students?rootId=r-1",
-      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/learners/9e9e1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graph?rootId=r-1",
-      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/coverage",
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graph?rootId=r-1", // leg-03/07 heatmap
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graph/nodes/0f0f1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/students?rootId=r-1", // leg-04 node students (deeper tail rides the row)
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/learners/9e9e1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graph?rootId=r-1", // leg-05 learner-kg
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/coverage", // leg-01..03 list — zero hub emitters, routing availability (090 posture)
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/coverage/mark", // leg-04..06 mark (POST subpath rides the row)
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/coverage/0c0c1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/history", // leg-07 history (deeper tail)
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBe(V2);
+    }
+    // THE GUARD (the flip law preserved in string form): the unverified
+    // class-management siblings NEVER match a mid-path row — the tail
+    // literal isolates them and shorter paths fail the segment-count floor.
+    for (const p of [
+      "/api/v1/teacher/classes", // the list (4 segs < row floor)
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab", // bare detail (tail empty)
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/members",
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/members/st-1",
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/announcements",
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/status",
     ]) {
       expect(v2SurfaceBase(p, V2)).toBeNull();
     }
-    // and the management siblings any prefix row would have captured
-    expect(v2SurfaceBase("/api/v1/teacher/classes", V2)).toBeNull();
-    expect(v2SurfaceBase("/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab", V2)).toBeNull();
+    // The :uuid wildcard is bound to the pinned UUID_RE law: malformed and
+    // non-UUID class ids do NOT match (stay core, where the SAME captured
+    // 400-first malformed law governs at the origin — teacher-kg.ts:156-158
+    // reproduces it v2-side; the 084 leg-07 precedent class). Non-row tails
+    // never match either (segment-exact).
+    for (const p of [
+      "/api/v1/teacher/classes/not-a-uuid/knowledge-graph",
+      "/api/v1/teacher/classes/kn-1/knowledge-graph",
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graphx", // segment-exact: partial-segment capture structurally dead
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/coverageq",
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBeNull();
+    }
   });
 
   test("apiPath emits exact v2 URLs for representative surfaces", () => {

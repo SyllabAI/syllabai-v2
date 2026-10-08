@@ -59,7 +59,14 @@ const DOCUMENT_COLUMNS = `
  * to_char product → pass through untouched (defensive).
  */
 export function javaInstantText(utcText: string): string {
-  const m = /^(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}:\d{2})(?:\.(\d{1,6}))?$/.exec(utcText);
+  // T-MIG-101 (G-class adjudication, operator trace 1a119d17533d1985): accept
+  // BOTH the space form AND the T form this module's own selects actually
+  // emit — the to_char format 'YYYY-MM-DD"T"HH24:MI:SS.US' carries a LITERAL
+  // T, so the old space-only regex never matched and every createdAt passed
+  // through WITHOUT the UTC designator (the G-class red: digits
+  // passthrough-faithful, trailing Z missing vs the frozen core's Jackson
+  // Instant wire). Output law unchanged (T + Z, Java Instant.toString()).
+  const m = /^(\d{4}-\d{2}-\d{2})[T ](\d{2}:\d{2}:\d{2})(?:\.(\d{1,6}))?$/.exec(utcText);
   if (!m) return utcText;
   const [, date, time, fracRaw] = m;
   let fraction = "";

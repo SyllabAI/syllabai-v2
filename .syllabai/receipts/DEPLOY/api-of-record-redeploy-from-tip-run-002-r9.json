@@ -1,0 +1,48 @@
+{
+  "card": "LEVER api-of-record redeploy from tip — EXECUTED (the staged one-command handoff of receipt api-of-record-redeploy-from-tip-run-001-mainlane.json, fired by a token-bearing lane)",
+  "receipt": "api-of-record-redeploy-from-tip-run-002-r9",
+  "lane": "r9-hubx (main, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "operator_traces": [
+    "1a11a1e91f442429 'api redeploy from tip' (the standing order whose deploy leg was TOKEN-GATED and staged by the mainlane)",
+    "1a11a335730f06e1 'Continue. Why did you stop?' (the resume order — this lane identified the staged handoff as the halted act and fired it)"
+  ],
+  "source_of_record": "main tip 272b2ed (fetched first; ff-synced from eb29e3a-lineage local)",
+  "state_of_record_finding": [
+    "content-equivalence proven first-hand TWICE: git diff fcbddc6..272b2ed over apps/api+packages = EMPTY, and 95bee5f IS ancestor of 272b2ed with the same EMPTY diff — so the serving bundle class (alias holder dpl_CgHcMLAcK3, tip 95bee5f) was already tip-equivalent; the deploy is a CONTENT-EQUIVALENT consolidation act (provenance 'tip 272b2ed' of record + single of-record deployment), exactly as adjudicated in the run-001-mainlane receipt",
+    "alias holder at act time = dpl_CgHcMLAcK3VBUexbJbZZHrp7XEpX (95bee5f, llm-chain amendment redeploy) — this SUPERSEDES the run-001 receipt's 'i6gx4tvqp alias holder' reading and is filed as the primary rollback anchor",
+    "prod env of record read via the sanctioned VERCEL_TOKEN-gated env API path (read-only): 4x LLM keys + JWE-class SYLLABAI_JWT_SECRET + CORS allowlist + Neon DATABASE_URL (ep-ancient-cake-a52e4kfd) — zero env writes"
+  ],
+  "build_at_tip": [
+    "093 recipe verbatim via deploy-tools/deploy_bundle_build.py (REPO/STAGE constants retargeted to this workspace topology; method untouched): shim v2 worktree-only (Bun.CryptoHasher->node:crypto, Bun.YAML.parse->js-yaml, 6 concept YAMLs inlined byte-verbatim via concept-assets.gen.ts, explicit Node adapter entry), restored post-build, git-verified CLEAN tree at 272b2ed",
+    "bundle: 318 modules / 3,081,719 bytes CJS (of-record class: 318 modules; +14 bytes vs the fcbddc6 census 3,081,705 = bun-patch codegen nondeterminism, source-identical per git, disclosed)",
+    "asset SHAs == the 6 source pins EXACT (concepts 24fa91ac7149682b, edges 8a651dd9e60bfefa, practicals e53e5f87606a2b5a, relationships b3b7529222d77d80, spec_points b1fea69953205077, topics a7b14cbdd34bb9fe) — enforced again at boot by the bundle's own requireHash law"
+  ],
+  "localgate_8_8": [
+    "ALL PASS on the production-shaped wire: health 200 UP; login-malformed 400 validation_failed 'password: must not be blank'; register 201 (real Neon INSERT, synthetic probe learner r0-092gate-*@example.invalid); tutor create 201 / list non-empty (L06) / latest 200 / delete 204 / list-after-delete []",
+    "DATABASE_URL discipline (improvement over the Task-21 .env.localgate staged-file class): production connection string pulled read-only via the sanctioned env API, held in the volatile session env ONLY, staged file shredded within ~40s of creation; no secret material on disk or in the repo",
+    "LOCAL-ONLY 44-byte JWT key (production secret never lane-readable, law of record); any 44-byte key exercises the same HS256 law"
+  ],
+  "deploy_leg": [
+    "EXECUTED: vercel CLI 62.7.0 deploy --prod --yes from the 2-file stage (api/index.js + vercel.json rewrites /api/v1/(.*) + /actuator/health + .vercel/project.json prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ/team_ULL54qkhzKBmnKrpO6BD4mYX)",
+    "dpl_5j2otnsK3dET4yRkS7yvrwopSHFa READY + PROMOTED on FIRST poll (~15s); both aliases (syllabai-v2.vercel.app, syllabai-v2-syllab-ai.vercel.app) switched to it; no concurrent-deploy race this run"
+  ],
+  "live_census_16_16": [
+    "health consolidated 200 UP; login-malformed 400 validation_failed parity",
+    "probe learner register 201 (synthetic @example.invalid, of-record census class); learners/me/state 200 with the minted Bearer (JWT law)",
+    "THE 095 LAW DISCRIMINATOR PASS: whitespace-body flashcard-ratings POST -> 400 validation_failed, message 'cardId: card id must be the hub content id' — the whitespace input passed the blank layer into the DEEPER zod hub-content-id layer, still the #153 validation_failed class (the pre-095 class answers 400 bad_request service-enum): the zod law is LIVE on the new dpl (exact-message delta from the run-001 census disclosed)",
+    "cla/ask unauth 401 boot law (the flipped family mounted at /api/v1/learners/me/cla/ask)",
+    "tutor create/list/latest/delete/list net-zero (L06 inList law)",
+    "CORS hub-v2 preflight 204 + ACAO exact https://syllabai-hub-v2.vercel.app; hostile origin 403-class no-ACAO (Task-17 prune holding)",
+    "hub-v2 /api/health dataMode=core-api coreConfigured=true (the section-2 flip LIVE); frozen core hub 200 untouched; zombie syllabai-api-v2 404 not_found (zero collateral)"
+  ],
+  "rollback_anchors": [
+    "dpl_CgHcMLAcK3VBUexbJbZZHrp7XEpX (95bee5f, PRE-DEPLOY alias holder — primary)",
+    "i6gx4tvqp (fcbddc6, T-MIG-095 deploy-run-002)",
+    "dpl_Att7u (9a376fd, Task-21 run-001-r9)",
+    "ooe5t3b4k (bc4ec31-class)",
+    "eh53sdxjm (w0a 993c18e)",
+    "dpl_Die9SrNyPQ (04:40 CORS-prune)"
+  ],
+  "write_ledger": "prod Neon: 2 synthetic probe learners (localgate r0-092gate-* + census r9-tipcensus-801f42614d, register-only, @example.invalid, the of-record census write class) + tutor rows net-zero; ZERO env writes; ZERO DDL; 1 production deployment (the operator-ordered act); credential hygiene: LLM-key/JWT prefixes (<=24 chars) transiently printed during the env census read — disclosed, no key material on disk or committed; the .gate_db_url staging file existed <40s and was shredded before the gate ran",
+  "verdict": "DEPLOYED AND VERIFIED — api-of-record serves main tip 272b2ed as dpl_5j2otnsK3 (READY, PROMOTED, dual-aliased); the staged handoff of the run-001-mainlane receipt is fully discharged; 16/16 live census legs green; rollback anchor dpl_CgHcMLAcK3 re-aliasable in one command"
+}

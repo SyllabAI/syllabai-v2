@@ -1,6 +1,6 @@
 {
   "name": "w4-knowledge-graph-empty-200",
-  "description": "knowledge graph over the CHM root, fresh learner: structure present, mastery at floor; effective-mastery numerics are now-dependent (EbbinghausDecayService recomputes P0*e^(-t/tau) at read, ADR-031) \u2014 tolerated",
+  "description": "knowledge graph over the CHM root, fresh learner: structure present, mastery at floor; effective-mastery numerics are now-dependent (EbbinghausDecayService recomputes P0*e^(-t/tau) at read, ADR-031) — tolerated T-MIG-101: prerequisiteEdges declared unordered + justified:true per GOLDEN_MASTER §4 — the graph-edge query has no deterministic cross-environment tie key (the R3-D2 / RICH-200-E tie-order class, triple-confirmed on the families root); the T-MIG-101 full-body reproduction shows the SAME edge multiset in rotated order. Declared relaxation only (T-MIG-024 doctrine): element identity exact, nested arrays stay strict.",
   "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
   "method": "GET",
   "path": "/api/v1/learners/me/knowledge-graph?rootId=20000000-0000-0000-0000-000000000001",
@@ -45,7 +45,7 @@
           "code": "WCH11",
           "type": "UNIT",
           "title": "Unit 1: Structure, Bonding and Introduction to Organic Chemistry",
-          "description": "WCH11 \u2014 IAL Chemistry Unit 1",
+          "description": "WCH11 — IAL Chemistry Unit 1",
           "childIds": [
             "20000000-0000-0000-0000-000000000011",
             "20000000-0000-0000-0000-000000000021",
@@ -395,5 +395,9 @@
     "learnerId",
     "mastery",
     "timestamp"
-  ]
+  ],
+  "unordered": [
+    "prerequisiteEdges"
+  ],
+  "justified": true
 }

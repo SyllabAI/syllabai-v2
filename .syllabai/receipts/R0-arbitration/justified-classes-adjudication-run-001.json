@@ -1,0 +1,142 @@
+{
+  "task": "T-MIG-101",
+  "run": "run-001-adjudication",
+  "type": "R0-arbitration/adjudication-of-record",
+  "timestamp": "2026-10-08T05:55:00Z",
+  "authority": {
+    "operator_trace": "1a119d17533d1985 ('10 justified-class adjudications.')",
+    "standing_ask_of_record": "cron-slot + LIVE WATCHLIST filings (290b976/b2a6dcf/Task-37 lineage): 'adjudicate the 10 justified classes (reconcile seed-identity volatility in the comparator, or pre-file them in the union tolerance) so the cron-verdict can ever go green; the alternative is perpetual scheduled-red noise on every future slot.'",
+    "operator_options": [
+      "(a) reconcile seed-identity volatility in the comparator",
+      "(b) pre-file them in the union tolerance"
+    ],
+    "integrator_approval": "GOLDEN_MASTER §4 'justified divergences need the integrator's approval + a justified:true note on the case' — the R0-integrator lane adjudicates under the operator's explicit routing; every disposition carries its case-level note."
+  },
+  "method_first_hand": {
+    "reproduction": "disposable Neon COW branches br-polished-field-a5hpbnw6 (seed) + br-falling-night-a5tyjauf (prod), created/dropped via the repo's own golden/tools/neon-branch.ts (drop + 404-verify, zero residue); apply-reset V1..V63; boot at the workflow envelope (SYLLABAI_JWT_SECRET synthetic, idleTimeout=255); full corpus passes: seed 153/162 first-hand (one C-class limiter-rotation transient, see disclosures) + prod 13/15 — the run-22 aggregate reproduced exactly.",
+    "probe": "full-body probe of all 10 reds with a path-aware diff walker over the tolerate-redacted trees (the of-record diff renderer slices at 400 chars — the true differing fields were hidden for 10+ runs; the run-20 cron filing's 1:1 'learner-UUID-pinning volatility' mapping is hereby CORRECTED: only 4 of the 8 seed reds are identity/time class)",
+    "verification": "proposed-amendment comparator (deepEqualTolerant, the gated engine) against live state BEFORE any file edit; end-to-end amended-corpus pass after."
+  },
+  "verdicts": [
+    {
+      "n": 1,
+      "case": "w3-history-empty-student-200",
+      "old_class": "identity-volatility (H)",
+      "verdict": "GREEN-BY-AMENDMENT",
+      "evidence": "pass + probe: the ONLY diff is learnerId (per-run register identity); total/returned/attempts byte-equal",
+      "disposition": "tolerate += learnerId (H-class completion — run-7 note H, R3-D4 Option A operator ruling: capture-minted identity fields tolerated; the case was simply missed by the of-record run-9 action-7 amendment list)",
+      "comparator": "untouched",
+      "residual": "none"
+    },
+    {
+      "n": 2,
+      "case": "w3-history-after-submit-200",
+      "old_class": "identity-volatility (H)",
+      "verdict": "GREEN-BY-AMENDMENT",
+      "evidence": "probe (learner-declared already of record): EXACTLY ONE residual diff — attempts[0].attemptedAt (the staged submit's write-time clock: '2026-10-05T06:47:12.304192Z' pinned vs the run's staging time); all semantic attempt fields byte-equal",
+      "disposition": "tolerate += attemptedAt (same capture-minted staging-time class as the already-tolerated submittedAt)",
+      "comparator": "untouched",
+      "residual": "none"
+    },
+    {
+      "n": 3,
+      "case": "w3-questions-families-student-200",
+      "old_class": "declared-unordered tie-order (RICH-200-E)",
+      "verdict": "GREEN-BY-AMENDMENT",
+      "evidence": "probe: the root multiset DIFFERS 8 vs 10 — the run's census includes the T51 corpus questions (T51-WCH11-001, random uuids): the staged tranche's families read happens AFTER the T-MIG-051/063 ingest state-builders (seq 10/11 run in the staged tranche before the filename-order reads), and the T51 rows legitimately exist by then; the capture (2026-10-05T06:47Z) PREDATES the T51 corpus entirely",
+      "disposition": "tranche:\"empty\" declared — the captured posture IS the pre-T51 V7-seed-only census; the T-MIG-072 tranche doctrine ('a case replays in the posture its capture pins') restores it; NOT a re-pin to a foreign posture. The declared unordered-root relaxation applies unchanged; nested parts/options arrays stay strict",
+      "comparator": "untouched",
+      "residual": "none (empty-tranche posture verified by the amended-corpus pass)"
+    },
+    {
+      "n": 4,
+      "case": "w4-flashcard-schedule-derived-200",
+      "old_class": "identity-volatility",
+      "verdict": "GREEN-BY-AMENDMENT",
+      "evidence": "probe: the default-student resolution (shared user_21) carries no ratings by construction — cards[] empty vs the capture's 3; the capture read the capture session's learner (da30cee5 = learner_40, the seq-1 case's account)",
+      "disposition": "learner:\"w4-capture\" declared (the T-MIG-078 F-2 capture-identity pattern — construction-only, comparator-invisible; the declared set grows 7 -> 10)",
+      "verification": "learner_40 GET first-hand: ZERO residual diffs (scheduler math deterministic: streaks/intervalDays/summary 1/2 match)",
+      "comparator": "untouched",
+      "residual": "none"
+    },
+    {
+      "n": 5,
+      "case": "w4-flashcard-trail-200",
+      "old_class": "identity-volatility",
+      "verdict": "GREEN-BY-AMENDMENT",
+      "evidence": "same default-student class as case 4 (events[] empty vs 3)",
+      "disposition": "learner:\"w4-capture\" declared (T-MIG-078 pattern)",
+      "verification": "learner_40 GET first-hand: ZERO residual diffs (subtopicCode WCH11-T1 emitted correctly on the trail projection)",
+      "comparator": "untouched",
+      "residual": "none"
+    },
+    {
+      "n": 6,
+      "case": "w4-knowledge-graph-empty-200",
+      "old_class": "identity-volatility",
+      "verdict": "GREEN-BY-AMENDMENT",
+      "evidence": "probe: learnerId/asOf are ALREADY tolerated; the true hidden diff is the prerequisiteEdges ARRAY ORDER — the same edge multiset in rotated order (no deterministic cross-environment tie key; the R3-D2/RICH-200-E tie-order class, triple-confirmed on the families root)",
+      "disposition": "unordered:[\"prerequisiteEdges\"] + justified:true (declared relaxation only, T-MIG-024 doctrine: element identity exact, nested arrays strict)",
+      "comparator": "untouched",
+      "residual": "none"
+    },
+    {
+      "n": 7,
+      "case": "w4-knowledge-graph-practiced-200",
+      "old_class": "identity-volatility",
+      "verdict": "DECLARED-JUSTIFIED (partial green)",
+      "evidence": "two stacked causes: (a) identity — the capture read the practiced capture learner; (b) CONTENT — even as learner_40, the nodes' persisted-posterior fields (band/attempts/correctCount/misconceptionProbability/misconceptionActive) stay null: the KG reads the same unpopulated skill_states/misconception_states tables as case 9",
+      "disposition": "learner:\"w4-capture\" + unordered:[\"prerequisiteEdges\"] + justified:true with the residual declared in golden/justified-ledger.json (owner T-MIG-102); the case-level diff stays byte-honest and the entry retires when T-MIG-102 lands",
+      "comparator": "untouched",
+      "residual": "T-MIG-102 class (see verdict 9)"
+    },
+    {
+      "n": 8,
+      "case": "content-docs-teacher-realdata-200",
+      "old_class": "G (createdAt wire precision)",
+      "verdict": "GREEN-BY-PORT-FIX",
+      "evidence": "prod probe first-hand: run createdAt '2026-10-04T09:37:00.129532' vs capture '...129532Z' — the digits are passthrough-faithful (T-MIG-077's precision claim CONFIRMED) but the trailing UTC designator Z is MISSING on every one of the 1023 listing rows + the detail row",
+      "root_cause": "javaInstantText (repositories.ts :61) assumed a SPACE-separated to_char product, but the module's own format 'YYYY-MM-DD\"T\"HH24:MI:SS.US' emits a LITERAL T — the space-only regex never matched and the function passed the text through without appending Z (first-hand: raw to_char text '2026-10-04T09:37:00.129532', typeof string)",
+      "disposition": "PORT FIX (one line): the regex accepts [T ]; output law unchanged (T + Z, Java Instant.toString()); T-form vectors pinned in fidelity-fixes.test.ts. T-MIG-077's 'VERIFIED-NO-OP' disposition is OVERTURNED of record — the port DID reformat, by omission, and the 400-char renderer hid it",
+      "comparator": "untouched",
+      "residual": "none"
+    },
+    {
+      "n": 9,
+      "case": "w4-state-practiced-200",
+      "old_class": "identity-volatility (RECLASSIFIED)",
+      "verdict": "DECLARED-JUSTIFIED (genuine port gap)",
+      "evidence": "learner-declared already of record; the run's flashcardRatings half MATCHES the capture (3 events, correct shape); skillStates[]/misconceptionStates[] EMPTY vs the capture's 1+1 (BKT: nodeId ...0012, band LOW, attempts 1, correctCount 0; BDT: ...0001, probability 0.75, active, evidenceCount 1) — despite a genuine AUTO_GRADED attempt existing for the same learner (history-after-submit, same run, total 1, topicNodeId ...0012, implicatedMisconceptionIds [...0001])",
+      "root_cause": "the frozen core's LearnerModelService.java @ 6cad6ef :102-133 (skill_states BKT upsert) + :141-163 (misconception_states BDT upsert) fire on every practice event; v2 ports ONLY the readers (learner/state.ts, knowledge/graphs.ts, teacher/analytics, learner-me/nba, tutor/context, intervention) — first-hand: ZERO writers for either table anywhere in apps/api, and services/learner-model/ carries only decay.ts + exam-target-reader.ts",
+      "disposition": "NOT amended (tolerating the arrays would gut the case's semantic claim); declared-justified per the operator's option (b): justified:true on the case + golden/justified-ledger.json entry (class learner-model-write-path-gap, owner T-MIG-102) + the union verdict forgives exactly these named rows with per-row disclosure; owner card T-MIG-102 filed OPEN",
+      "comparator": "untouched",
+      "residual": "T-MIG-102"
+    },
+    {
+      "n": 10,
+      "case": "content-docs-teacher-detail-realdata-200",
+      "old_class": "G",
+      "verdict": "GREEN-BY-PORT-FIX",
+      "evidence": "same root cause as verdict 8 (detail row createdAt '2026-09-21T12:59:21.578011' missing the Z)",
+      "disposition": "the javaInstantText fix covers both surfaces (listing + detail share the repo chain)",
+      "comparator": "untouched",
+      "residual": "none"
+    }
+  ],
+  "mechanism": {
+    "ledger": "golden/justified-ledger.json — union-verdict tolerance of record: a FAIL is forgiven iff the case is named in the ledger AND declares justified:true in its own file; per-row disclosure in the union verdict + union.md; per-row retire condition (T-MIG-102 landing)",
+    "union_exit": "exit 0 iff zero UNFORGIVEN fails (any divergence outside the ledger still reds the job — the cron green is honest)",
+    "selftest_pins": "learner-declared census 7 -> 10; ledger invariants (existence, justified:true, owner card, exact declared set)"
+  },
+  "disclosures": [
+    "the reproduction seed pass tripped ONE C-class limiter rotation (auth-login-unknown-email-401 answered 429 once — the standing register/login limiter class, burst-order dependent, P2 operator-visible keep-vs-strip since run-7; NOT one of the 10 and not reclassified)",
+    "the run-20 cron filing's 'ALL 10 REDS MAP 1:1 TO THE ... volatility class' is CORRECTED: 4/8 seed reds are identity/time, 2/8 are tie-order, 2/8 are a genuine port gap; the 2 prod reds are a one-character port defect",
+    "T-MIG-077's G-class 'VERIFIED-NO-OP' disposition is OVERTURNED (the passthrough claim was right about digits, wrong about the conclusion — the Z omission is a real reformatting)",
+    "disposable COW branches dropped + 404-verified; zero prod writes; zero LLM keys in the envelope (GET-only surfaces)"
+  ],
+  "verification": {
+    "amended_corpus_pass": "re-reset seed branch + full amended-corpus seed pass + full prod pass + union — see run-002-verification.json",
+    "gates": "typecheck xN exit 0; bun test apps/api+packages; hub; selftests — see run-002"
+  },
+  "renumbering_note": "Cards were filed as T-MIG-099/T-MIG-100 at claim time (25ff982); main 491b2c3 subsequently carried T-MIG-099-mark-points-ghost-table-band (desk round, trace 1a119e27bbe116e9) — renumbered to T-MIG-101/T-MIG-102 per the pre-renumber precedent (T-MIG-055); zero content change."
+}

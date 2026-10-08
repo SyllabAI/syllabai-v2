@@ -353,17 +353,91 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
 ];
 
 /**
+ * Mid-path row table (wave-s5, T-MIG-086/087) — the mechanism-A amendment of
+ * record (r3a delegated ruling, operator trace 1a119eda53f9af4d, filed as PR
+ * #155 comment 6053748307; the adjudication ask itself was filed with the
+ * wave-s4 widening PR #155 and pinned in the surface-test CORE list before
+ * any row landed).
+ *
+ * WHY mid-path rows exist: the class-scoped KG + coverage families are
+ * golden-verified of record (run-002-golden-verify-r3a via PR #152 — 086
+ * PASS-with-filed-ordering-class, ruled non-blocking per the 081-class
+ * precedent; 087 ALL PASS 8/8) AND mounted real on v2 (routes/teacher-kg.ts
+ * teacherClassesKgRoute) — but their distinguishing segment sits AFTER the
+ * {classId} wildcard, on a base SHARED with the unverified class-management
+ * emitters (list/detail/members/announcements/status, lib/api.ts:881-923).
+ * No prefix row can express them: a broad row would route live class pages
+ * into surfaces whose golden gates have not run — the exact failure the flip
+ * law forbids. A mid-path row cannot capture those siblings: the tail
+ * literal (knowledge-graph / coverage / learners) isolates them (the
+ * management tails differ at the same segment positions), and bare-detail
+ * or shorter paths fail the segment-count floor.
+ *
+ * ROW GRAMMAR (binding, pinned by test): segments are literals except ":uuid",
+ * which matches exactly ONE path segment satisfying the UUID_RE law pinned in
+ * the v2 api (routes/teacher-kg.ts:104 — the same regex behind the captured
+ * 400-first malformed law, BEFORE any sql: teacher-kg.ts:156-158/:175; the
+ * 084 leg-07 precedent class). Matching is segment-exact; path segments
+ * beyond the row length are free (the same prefix-in-length semantics every
+ * prefix row has — deeper verified-family tails ride the row). A malformed
+ * {classId} does NOT match (stays core, where the same captured 400 law
+ * governs at the origin) — the tightest wire-safe posture.
+ *
+ * Verified family coverage (run-002, golden-captures/t-mig-08{6,7}):
+ * - /classes/:uuid/knowledge-graph        — 086 heatmap (leg-03/07) + node
+ *                                           students (leg-04; deeper tail)
+ * - /classes/:uuid/learners/:uuid/knowledge-graph — 086 learner-kg (leg-05)
+ * - /classes/:uuid/coverage               — 087 list (leg-01..03/08) + mark
+ *                                           (leg-04..06; POST subpath) +
+ *                                           history (leg-07; deeper tail).
+ *                                           Zero hub emitters — the 090
+ *                                           routing-availability posture.
+ */
+export const V2_SURFACE_MIDPATH_PREFIXES: readonly string[] = [
+  "/api/v1/teacher/classes/:uuid/knowledge-graph", // T-MIG-086: heatmap + node-students (verified legs 03/04/07)
+  "/api/v1/teacher/classes/:uuid/learners/:uuid/knowledge-graph", // T-MIG-086: learner-kg (verified leg-05)
+  "/api/v1/teacher/classes/:uuid/coverage", // T-MIG-087: list + mark + history (verified legs 01-08) — routing availability
+];
+
+const UUID_SEGMENT_RE = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
+
+/**
+ * Segment-exact matcher for a mid-path row: every row segment must match the
+ * path's corresponding segment (literals exactly; ":uuid" against the pinned
+ * UUID shape); path segments beyond the row length are free. The query string
+ * is stripped before segmentation. Trailing slashes and empty segments are
+ * tolerated on both sides.
+ */
+function midPathPrefixMatches(row: string, path: string): boolean {
+  const segs = path.split("?")[0].split("/").filter((s) => s.length > 0);
+  const rowSegs = row.split("/").filter((s) => s.length > 0);
+  if (segs.length < rowSegs.length) return false;
+  return rowSegs.every((rs, i) => (rs === ":uuid" ? UUID_SEGMENT_RE.test(segs[i]) : rs === segs[i]));
+}
+
+/**
  * The pure strangler decision: which base serves `path` when the v2 api is
  * available at `v2Base`? Returns the v2 base (normalized: trailing slash and
  * a trailing /api/v1 are stripped, matching the operator-convention
  * tolerance below), or null when the path must stay on the legacy core
- * (env unset, or path outside the verified prefix table).
+ * (env unset, or path outside the verified tables).
  * resolveBase delegates here — this is the single decision surface the
  * committed routing pins and the T-MIG-035-pattern live harness exercise.
+ *
+ * Mid-path evaluation (wave-s5, the mechanism-A amendment of record — r3a
+ * ruling, operator trace 1a119eda53f9af4d, filed as PR #155 comment
+ * 6053748307): the prefix table is evaluated FIRST and unchanged; only when
+ * no prefix row matches do the mid-path rows get a chance. Segment-exact
+ * matching eliminates the startsWith partial-segment capture class
+ * (knowledge-graphx can never match the segment knowledge-graph), so a
+ * mid-path row is strictly TIGHTER than any prefix row — the flip law's
+ * no-unverified-surface-live guarantee is preserved with more precision.
  */
 export function v2SurfaceBase(path: string, v2Base: string | undefined): string | null {
   const v2 = (v2Base ?? "").replace(/\/+$/, "").replace(/\/api\/v1$/, "");
-  if (v2 && V2_SURFACE_PREFIXES.some((p) => path.startsWith(p))) return v2;
+  if (!v2) return null;
+  if (V2_SURFACE_PREFIXES.some((p) => path.startsWith(p))) return v2;
+  if (V2_SURFACE_MIDPATH_PREFIXES.some((p) => midPathPrefixMatches(p, path))) return v2;
   return null;
 }
 

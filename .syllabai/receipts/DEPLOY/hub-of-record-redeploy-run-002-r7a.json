@@ -1,0 +1,69 @@
+{
+  "card": "CUTOVER-RUNBOOK-§2 (continuation) + T-MIG-097 (flip-payload corroboration)",
+  "receipt": "hub-of-record-redeploy-run-002-r7a",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)",
+  "created_at_utc": "2026-10-08T06:32:00Z",
+  "operator_trace": "1a11a20025e76305 'hub redeploy proceed'",
+  "disposition": "DISCHARGED-OF-RECORD — verified first-hand, NO duplicate execution (the CLAIM-071-072 directive-discharged-by-board-state precedent)",
+  "redeploy_of_record": {
+    "who": "r1c, receipts/DEPLOY/hub-of-record-section2-flip-run-001-r1c.json (worklog Task-45, operator trace 1a119fdeb7c8a035)",
+    "deployment": "dpl_FhmNnJAq5wKgEgjkvuWvKuYZcgw3 READY 05:58:26Z (stage 2 of 2; stage 1 dpl_J3pym8a5 disclosed)",
+    "source_commit": "main 3dafc79 (the #160 cla/ask flip row INCLUDED — r1c's mid-act supersession)",
+    "env_posture": "HUB_DATA_MODE=core-api (env id uP22TTCJu4yWlEq1, production+preview) — the §2 flip",
+    "found_by_this_lane": "fetch-first census BEFORE any deploy act; the act was of record on main at census time"
+  },
+  "why_no_fresh_upload": {
+    "bundle_currency_proof": "git diff 3dafc79..origin/main (6f96dbf) = exactly 4 files, ALL under .syllabai/ (r1c DEPLOY receipt + r0 099 run-002 receipt + 099 task yaml corroboration + worklog) — the hub code tree is BYTE-IDENTICAL between the deployed commit and the tip, so a fresh upload would produce a functionally identical bundle (the r1c stage-1 identical-bundle disclosure class)",
+    "lever_disclosure": "this lane holds no Vercel lever (creds of record = GITHUB_PAT only, .creds/syllabai.env) — no upload was ATTEMPTED; none is required-of-record given the currency proof",
+    "scope_note": "DIRECTIVE-TIME STATE ONLY — superseded act-time by the #155 merge, see act_time_supersession + deploy_leg"
+  },
+  "first_hand_verification": [
+    "GET hub /api/health -> 200 {status:ok, service:syllabai-hub, dataMode:'core-api', coreConfigured:true} — THE flip discriminator, live at 06:16:35Z",
+    "GET hub / -> 200",
+    "POST hub /api/ai/cla malformed {} -> 400 invalid_body (hub-plane tier law live)",
+    "GET api-of-record /actuator/health -> 200 {groups:[liveness,readiness], status:UP}",
+    "THE FLIP-PAYLOAD LEG (see below) -> hub 200 answer-envelope with citations"
+  ],
+  "flip_payload_leg": {
+    "what": "the one still-unproven leg of the #160 flip: a tier-PASSING ask through the HUB plane riding claAskFetch (table-governed -> V2_SURFACE_PREFIXES exact-path row -> v2 cla/ask)",
+    "probe_learner": "7bf74251-bcb6-43ba-829c-9204a85410e8 (r7a-hubredep-20261008t062359@example.invalid, registered 201 on the api-of-record; token masked, never printed)",
+    "anchor": "rootId 297a8706-b957-40cb-8bb6-0bfed66980b7 (run-004 match TRUE) + topicCode 4CH1-S1-a (node 2fa5ee0e-1bd1-44a7-b993-83b08241d882, resolved via core subjects+tree read models with the caller's token, exactly the hub route's own resolution path)",
+    "request": "POST https://syllabai-hub-v2.vercel.app/api/ai/cla {kind:'topic', course:'igcse-chemistry-19', topicCode:'4CH1-S1-a', mode:'EXPLAIN', question:'Explain why chlorine is used to treat drinking water...'} with the learner bearer",
+    "result": "HTTP 200 in 4.193s, x-vercel-id hkg1::iad1::94h5n-1791440642513-575b55c73d8d — mapped hub envelope {answer, mode, citations, provider, model, refused, evidenceCount, latencyMs} (the claResponse adaptation of core's ClaAnswerView), 229-char LLM-authored grounded answer, 6 citations — REAL generation through the deployed dpl_FhmNnJAq (construction proof: the deployed bundle @ 3dafc79 carries the flip row + r0's v2-base-inlined bundle-grep of record)",
+    "verdict": "THE FLIPPED CLA ASK PATH IS LIVE END-TO-END FOR HUB USERS"
+  },
+  "core_contrast_finding": {
+    "observation": "the SAME ask posted straight at the frozen core -> HTTP 200 in 5.524s, 552-char answer, raw core envelope (incl. context/topics/tools), 6 citations",
+    "class": "run-004 sampled core 500 internal_error on this same anchor; the frozen core's GENERATION path is therefore NONDETERMINISTIC across runs — the generation-path member of the run-003 core-nondeterminism class (first-field order)",
+    "law": "noted, never auto-fixed; does NOT weaken the routing proof (construction-based on the deployed bundle; the v2 surface separately proven live by run-004 and by this hub-plane leg)"
+  },
+  "disclosed_retries": "2 register-contract retries before 201: (1) register wants displayName (not name) — validation_failed 400; (2) AuthResponse shape = {accessToken, tokenType, user} — the probe script guard first checked 'token'; both are the r1c probe-path-lesson class (gate-script artifacts, zero code defects); 3 probe learners total written (example.invalid)",
+  "write_ledger": "3 probe learners (example.invalid, of-record class) + 1 KG_TOPIC generation ask per wire (LLM cost inherent, one execution each) + 0 env changes + 0 deployments + 0 code changes + 0 force-push + zero secret material printed",
+  "rollback_anchors": "unchanged from r1c Task-45: PATCH env uP22TTCJu4yWlEq1 back to 'mock' + redeploy, or instant alias levers dpl_J3pym8a5 (pre-#160 core-api) / dpl_HHgp (r0 pre-flip) — both still READY",
+  "operator_facing_meaning": "the hub redeploy named as the chain's sole remaining act (worklog Task-44 addendum) is LIVE of record and now VERIFIED to its payload: hub-UI CLA asks ride the v2 chain for real. Remaining levers unchanged (r1c Task-45 enumeration): §1 freeze + P4 sign-off bookkeeping (operator), decay §3 takeover (operator), pilot-hub P0, /api/ai/mark question-bridge lever, JWT/PAT rotation hygiene; board moves caught in-flight by fetch-first: #155 merged (act_time_supersession) and #158 merged (the T-MIG-101 adjudication tranche, 004d105) while this receipt was in flight; open at filing: PR #161 (r4b 088/089/091 verify) + the two staged token-gated handoffs (api 272b2ed, hub this receipt)",
+  "probe_script": "lane-side scripts/hub_flip_payload_probe_r7a.py + scratch_hub_probe.json (full bodies)",
+  "act_time_supersession": {
+    "what": "fetch-first mid-act caught main move 6f96dbf -> 272b2ed while this receipt was being filed: PR #155 MERGED (37f5d99, operator widen directive trace 1a119eda53f9af4d) carrying b17e72a wave-s4 — the T-MIG-084/085 widening (knowledge-nodes + teacher concept-graph flip to v2, narrow family forms per r3a's filing)",
+    "hub_side_delta": "git diff 3dafc79..272b2ed -- apps/hub = +74 lines in exactly 2 files: src/lib/api.ts +27 (the two NEW V2_SURFACE_PREFIXES rows: /api/v1/knowledge/nodes + /api/v1/teacher/concept-graph) + src/lib/api.v2-surface.test.ts +47 (surface pins table 18->20: +6 DUAL_RUN, +2 CORE structural)",
+    "consequence": "the deployed dpl_FhmNnJAq (@ 3dafc79) is now STALE-OF-RECORD vs tip: the knowledge reader (hub emitters api.ts:573/579 + core-topics.ts:96 + citation-map.ts:76) and the teacher concept-graph page (api.ts:1066/1073) still route CORE on the live hub until a hub redeploy carries b17e72a — the hub redeploy is therefore a CODE-DELTA act (not the content-equivalent consolidation the directive-time census showed)",
+    "discipline": "the directive-time verification above remains VALID for the deployed bundle (verified at its own act time); the act-time recount governs for the redeploy requirement (the T-MIG-100 act-time-recount precedent)"
+  },
+  "gates_at_tip_first_hand": [
+    "hub tsc --noEmit at 272b2ed -> exit 0",
+    "bun test apps/hub at 272b2ed -> 45 pass / 0 fail / 387 expect (3 files), incl. the surface table 17/0 (20-row table: the 2 new DUAL_RUN rows live in the test of record)",
+    "(r3a's own gates of record at b17e72a: surface 14/14 at filing time + hub tsc exit 0 — independent corroboration)"
+  ],
+  "deploy_leg": {
+    "status": "TOKEN-GATED — staged one-command handoff (the api-of-record-redeploy-from-tip-run-001-mainlane pattern verbatim)",
+    "gate_evidence": "this session's credential set = GITHUB_PAT only (.creds/syllabai.env); no VERCEL_PAT lane-side, no .secrets.env stash; CI Actions hold NEON_API_KEY only (the t097-vehicle of record) — the main lane's 272b2ed receipt disclosed the identical gate for the api project",
+    "staged_handoff": [
+      "pre-flight: fresh fetch-first, clean worktree at >= 272b2ed, git status clean",
+      "link: .vercel/project.json at the worktree ROOT = {projectId: prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl, orgId: team_ULL54qkhzKBmnKrpO6BD4mYX}",
+      "THE LESSON OF RECORD (Task-25 + r1c Task-45 re-derivation, twice-bitten): run vercel CLI 62.7.0 from the worktree ROOT — deploying FROM apps/hub errors 'Root Directory apps/hub does not exist' (the rootDirectory=apps/hub project setting applies to CLI uploads too) and leaves an ERROR deployment record",
+      "command: vercel deploy --prod (Next.js build, node 24.x, ~42-60s) -> alias syllabai-hub-v2.vercel.app auto-switches",
+      "post-deploy battery of record: (1) /api/health -> dataMode=core-api byte-law; (2) GET / -> 200; (3) hub /api/ai/cla malformed {} -> 400 invalid_body; (4) THE NEW WIDEN ROWS through the hub plane: learner knowledge-nodes reader + teacher concept-graph per the r3a family forms (these two probes are the payload proof for #155); (5) THIS receipt's flip-payload cla probe (should hold byte-law on the new bundle); (6) api-of-record /actuator/health UP",
+      "rollback anchors (all READY + re-aliasable): dpl_FhmNnJAq (current, the CLA-flip bundle), dpl_J3pym8a5 (pre-#160 core-api), dpl_HHgp (r0 pre-flip)"
+    ]
+  },
+  "verdict": "LIVE-VERIFIED TO THE PAYLOAD + ACT-TIME STALENESS DETECTED + HANDOFF STAGED — the deployed dpl_FhmNnJAq serves the CLA flip live (proven to the payload, this receipt); the #155 widen rows await the token-gated hub redeploy: one staged command + battery, fires the moment a VERCEL_PAT-bearing lane or the operator acts"
+}
