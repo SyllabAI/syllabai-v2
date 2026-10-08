@@ -5326,3 +5326,9 @@ Work Log:
 
 Stage Summary:
 - T-MIG-082 card DONE pending desk merge. 083-087 golden-verify harness in execution on the Neon substrate with the disclosed compare law; receipts to file per family under .syllabai/receipts/T-MIG-08{3..7}/.
+
+## 2026-10-08T04:14:53Z — claim of record (lane r9-hubx, trace 1a119b4d197a2671)
+- CLAIM: T-MIG-098 — CORS-origin allowlist cleanup: apps/api/src/services/identity/config.ts DEFAULT_CORS_ORIGINS carries the zombie apex https://syllabai.vercel.app (latent find f18f601 / issue #147 correction). Operator direct order "claim the CORS-origin cleanup".
+- Pre-claim census: open PRs #146/#148/#144 (zero CORS overlap); zero CORS-claim hits in worklog tail; main tip f18f601. No test pins CORS defaults today.
+- Porting-law disposition: the default is a faithful port of the frozen core's application.yml:110 (stale UPSTREAM default, not an invented value) — fix = DOCUMENTED SUPERSESSION to the live topology of record (frozen-core hub syllabai-hub.vercel.app + v2 hub syllabai-hub-v2.vercel.app per R0 sweep a6e89b1), zombie apex dropped, guard test added. Prod stays on the SYLLABAI_CORS_ORIGINS env override (default dormant in prod); the live env's zombie entry (SYLLABAI_CORS_ORIGINS = hub-v2|syllabai.vercel.app on prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ) is OPERATOR-side housekeeping, flagged in #147.
+- Fence: config.ts default + its doc comment + one guard test + this card + worklog only. Forbidden: prod env writes, other fidelity pins, force-push, self-merge. Branch + card + PR to follow.
