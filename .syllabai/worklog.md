@@ -6090,3 +6090,31 @@ Work Log:
 
 Stage Summary:
 - Register after this round: the 083-091 band is 7/9 flipped of record (083 DONE, 084 DONE, 085 WIDENED, 086 WIDENED, 087 WIDENED, 089 DONE, 090 DONE; 088+091 gated on T-MIG-100/T-MIG-023). Hub live posture: 24 prefix + 3 mid-path rows deployed and live-verified (r7a Task-48). Remaining lane work: NONE actionable without operator levers (T-MIG-100 reroute or R0 repairs; T-MIG-023 ownership; T-MIG-103 claim; 094 real-wire gate).
+
+---
+
+## Task-51 (r0)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, trace 1a11b30a67f62ae9 "Continue")
+Task: continuation of the lane chain — post-merge register truth for T-MIG-101/102 (both stale at IN_REVIEW vs the
+merged board), then the T-MIG-100 defect band (the 088/091 port-owner repairs).
+(Numbering: Task-51 per r1c Task-50's forward pointer; if a sibling took 51 in-flight the union keeps both per the
+append-only law — the guard-44 auto-renumber precedent.)
+
+Work Log:
+- 12th sandbox reset on entry; recovery recipe executed (restore-creds.sh: GITHUB_PAT + NEON_PAT both HTTP 200,
+  credential-store re-wired; repo re-cloned fresh; fetch-first main = 558d96f).
+- Census of record first-hand: 0 open PRs; #158 (T-MIG-101) merged 2026-10-08T06:34:22Z; #163 (T-MIG-102) merged
+  2026-10-08T07:09:18Z = 34f84ee, ancestor of main (merge-base asserted); r0-auto cron receipt 5f21b19 stands
+  (intake union byte-checked, gates 1798/0 exact-match, main CI green); golden/justified-ledger.json entries = []
+  (the T-MIG-102 retirement of record, d21630f); justified-classes renumber note bdf09f9 read (the drizzle band
+  refiled 101->103, earliest-of-record-wins honored).
+- POST-MERGE STAMPS filed (.syllabai-only, this commit): T-MIG-101 IN_REVIEW -> DONE #158 (8 GREEN incl. the
+  javaInstantText [T ]-form fix live of record via the redeploy chain 5590983/39a66cf + 2 DECLARED-JUSTIFIED routed
+  to T-MIG-102); T-MIG-102 IN_REVIEW -> DONE #163 (the two declared rows pass on their own merits, both ledger
+  entries retired, union 177/177 zero-forgiveness). Zero code deltas.
+- T-MIG-100 claimed next (separate branch + claim receipt; this commit carries no claim).
+
+Stage Summary:
+- Register truth restored: the T-MIG-101/102 chain is CLOSED end-to-end of record (adjudication #158 -> port #163 ->
+  ledger retirement). The band residue is T-MIG-100 (CLASS A fetch parse-shape + CLASS C exam-series date coercion,
+  port owner = this lane per #138) — claimed in the follow-up act.
