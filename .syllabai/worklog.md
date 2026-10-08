@@ -5713,3 +5713,17 @@ Stage Summary:
 - "099 proof leg" DISCHARGED-of-record by r9-hubx, verified first-hand on main; no duplicate execution.
 - Rollback lever of record: PATCH env back to mock + redeploy (or alias -> dpl_HHgp instant); core warm post-flip.
 - Remaining levers: §1 freeze + P4 sign-off bookkeeping (operator), decay §3 takeover (operator), pilot-hub P0, /api/ai/mark question-bridge lever, JWT/PAT rotation hygiene. Next repo receipt = Task-46; next workspace = Task-36.
+---
+Task ID: T-MIG-099 (independent live replication; operator trace 1a11a139ebd0d355 "run the live probe with a real learner")
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+
+Work Log:
+- Desk does not take another lane's live claim unverified: ran the INDEPENDENT r0 live probe with a real learner against the api-of-record syllabai-v2.vercel.app, corroborating the r9 leg-2 note (run-001-proof-r9) first-hand; card 099 stays DONE, this receipt corroborates (append-only).
+- Flow law read first-hand at e553658 (routes/contracts): POST /api/v1/auth/register -> 201 AuthResponse; GET /api/v1/questions/:id + /mark-scheme; POST /api/v1/attempts/structured -> 201; POST /api/v1/learners/me/attempts/:id/smart-mark (flipped-prefix mount, index.ts:281).
+- LIVE WIRE (Vercel edge, smart-mark leg X-Vercel-Id hkg1::iad1::94h5n-1791439187501-64289db16a88, served 05:59:50Z): registered probe learner r0-099live-20261008t055945Z@example.invalid (11e0e7ed, 201 in 0.8s); W7-SMOKE question 92817c46 servable (5 parts, 200 in 0.43s); mark-scheme body live (200); OWNED structured attempt fdbc5554 created 201 PENDING with 5 answered parts; THE PROBE smart-mark -> HTTP 200 in 2.636s.
+- EVIDENCE: AttemptSmartMarkView{schemeValidationState=VALIDATED, marksPossible=5}; ALL 5 parts SMART_MARKED + authoritative=true + validationPassed=true + modelId=openai/gpt-oss-120b; per-point breakdowns cite the LIVE mark_points rows (pointLabels chlorine/chlorine/hydrogen/iron/air — five distinct point rows served past the restored point-rows query); REAL differentiated marking 2/5 (parts d+c awarded on 'chlorine', b/e/a zero on absent 'hydrogen'/'iron'/'air' per rationale) — answers actually read against the served points, not canned; ZERO SQL-class markers in the body (no 42P01/undefined_table/relation/mark_scheme_points/'does not exist') — the pre-fix exposure law (SQL-class 500) contradicted on the live wire, as repaired by #144 b16230f.
+- ASSERTS 10/10 PASS. Write ledger disclosed: 1 probe learner + 1 structured attempt + pipeline rows (LLM generation cost inherent, one execution — same disclosure class as run-001-proof-r9). Probe script persisted lane-side (scripts/t099_live_probe_r0.py); raw transcript lane-side.
+- Receipt .syllabai/receipts/T-MIG-099/run-002-live-verify-r0.json + card corroboration line appended to the 099 status (append-only, yaml intact); .syllabai-only direct-main (fetch-first), no force, no code/schema/flip-table/LLM-seam contact.
+
+Stage Summary:
+- T-MIG-099 completion claim now carries BOTH an r9 and an independent r0 live citation: the learner smart-mark error class at the api-of-record stands changed from SQL-class 500 to a fully-functioning real-generation pipeline, mark_points law serving. 093-class ledger closed + corroborated. Lane IDLE.force)
