@@ -1,0 +1,91 @@
+{
+ "card": "T-MIG-092 (family widen rider, r4b)",
+ "receipt": "run-005-ask-generation-rider-r4b",
+ "lane": "r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+ "created_at_utc": "2026-10-08T15:48:48.013783+00:00",
+ "operator_trace": "1a11c2d6849bda61 (092-family widening decision \u2014 golden-verify)",
+ "purpose": "097-standard generation rider for the NARROW /api/v1/tutor/ask flip: one real blocking ask on the current keyed deployment; run-004 legs a1/a2 already PASS byte-parity dual-live.",
+ "probe_learner": "r4b-tutor-widen-20261008t154622z@example.invalid (login reuse of the run-004 account of record; zero new learners)",
+ "write_ledger": "1 LLM generation (blocking ask), zero sessions, zero other writes",
+ "leg": {
+  "status": 200,
+  "ms": 1797,
+  "shape_ok": true,
+  "response": {
+   "answer": "A **catalyst** provides an alternative pathway for the reaction that **lowers the activation energy ($E_a$)** required for the reactants to form products\u30101\u2020L1-L1\u3011\u30102\u2020L1-L3\u3011.  \n\n*Check:* Does this mean ",
+   "citations": [
+    {
+     "index": 1,
+     "label": "Specification topic 4CH1-3.13 \u2014 know that a catalyst works by providing an alternative pathway with lower activation energy",
+     "sourceType": "KNOWLEDGE_NODE",
+     "documentId": null,
+     "page": null,
+     "nodeId": "76e4df7a-c030-49f2-8c47-293c9deeeb6d",
+     "deepLink": "/api/v1/knowledge/nodes/76e4df7a-c030-49f2-8c47-293c9deeeb6d"
+    },
+    {
+     "index": 2,
+     "label": "Revision notes \u2014 p1",
+     "sourceType": "NOTE",
+     "documentId": "17be5d90-8d8c-543b-b557-67b9233d9dcb",
+     "page": 1,
+     "nodeId": null,
+     "deepLink": "/api/v1/content/documents/f3743ca6-3ba5-4585-a927-f0c7a1252363?page=1"
+    },
+    {
+     "index": 3,
+     "label": "Specification topic 4CH1-3.14C \u2014 draw and explain reaction profile diagrams showing $\\Delta H$ and activation energy",
+     "sourceType": "KNOWLEDGE_NODE",
+     "documentId": null,
+     "page": null,
+     "nodeId": "8b33a9d8-90d4-4474-9136-a2643fbd0527",
+     "deepLink": "/api/v1/knowledge/nodes/8b33a9d8-90d4-4474-9136-a2643fbd0527"
+    },
+    {
+     "index": 4,
+     "label": "Revision notes \u2014 p1",
+     "sourceType": "NOTE",
+     "documentId": "b2d742f1-5d39-597b-81f4-608f2b90e75f",
+     "page": 1,
+     "nodeId": null,
+     "deepLink": "/api/v1/content/documents/9ed9d6f8-9f7c-4268-88d6-d2afa7ee4d7a?page=1"
+    },
+    {
+     "index": 5,
+     "label": "Revision notes \u2014 p1",
+     "sourceType": "NOTE",
+     "documentId": "b2d742f1-5d39-597b-81f4-608f2b90e75f",
+     "page": 1,
+     "nodeId": null,
+     "deepLink": "/api/v1/content/documents/9ed9d6f8-9f7c-4268-88d6-d2afa7ee4d7a?page=1"
+    },
+    {
+     "index": 6,
+     "label": "Revision notes \u2014 p1",
+     "sourceType": "NOTE",
+     "documentId": "05cd790d-674e-5ccb-b33b-64c09a43953b",
+     "page": 1,
+     "nodeId": null,
+     "deepLink": "/api/v1/content/documents/e2235e23-2650-4a56-a702-3481e8811e77?page=1"
+    }
+   ],
+   "topics": [
+    {
+     "code": "4CH1-3.13",
+     "title": "know that a catalyst works by providing an alternative pathway with lower activation energy",
+     "matchScore": 0.3333333333333333
+    },
+    {
+     "code": "4CH1-3.14C",
+     "title": "draw and explain reaction profile diagrams showing $\\Delta H$ and activation energy",
+     "matchScore": 0.25
+    }
+   ],
+   "evidenceCount": 6,
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "refused": false,
+   "latencyMs": 1.528
+  }
+ }
+}

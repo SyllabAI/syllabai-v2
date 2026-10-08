@@ -6285,3 +6285,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-104 CLOSED of record (DONE @ bfad2ea): the self-mark 500 defect the operator ordered filed is now amended by their own ruling to the mapped product envelope; the live-wire flip rides the next api redeploy. .syllabai bookkeeping direct-main (fetch-first), code via PR; no force.
+
+---
+Task ID: Task-39 (lane R4-api-b)
+Agent: R4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: 092-family widen rider — tutor ask/stream golden-verify (operator trace 1a11c2d6849bda61 'flipped into the v2 prefix table (e.g. tutor ask/stream now that v2 is keyed), that's a 092-family widening decision — golden-verify')
+
+Work Log:
+- Workspace verified (PAT 0600 API 200, repo ff to 3dcab7a); method assembled per the 097 LLM-flip precedent: deterministic dual-live matrix + generation rider; routing basis read first-hand (v2SurfaceBase startsWith table + midPathPrefixMatches segment-exact/deeper-tails-free matcher, api.ts:440-475; the 097 claAskFetch pattern)
+- run-004 golden-verify (receipts/T-MIG-092/run-004-askstream-golden-verify-r4b.json, script scripts/r4b_092_askstream_golden_verify.py): captured the deterministic legs from the LIVE FROZEN CORE and replayed byte-parity (canon: volatile timestamp fields normalized per the declared-tolerance law) vs the keyed v2 — RESULT 3 PASS / 3 FAIL: PASS = stream unauthed 401 + blocking-ask blank 400 + blocking-ask unknown-session 404 (byte-parity both planes, consistent with the existing band captures leg-09/leg-10); FAIL = the stream pre-flight classes — core serves 500 internal_error on blank/malformed/unknown-session where v2 serves the DESIGNED 400 validation_failed / 400 malformed_body / 404 not_found (the v2 port implemented the core SOURCE law, TutorController.askStream :208-256; the core runtime 500s are defect-shaped — its own BLOCKING controller maps the identical classes correctly)
+- Generation riders GREEN: run-005 (v2 blocking ask 200 1.8s, TutorAnswerView answer + citations x6 evidenceCount=6 groq gpt-oss-120b) + the TUTOR-VERIFY run-002/002b SSE law of record
+- ROUTING-INSEPARABILITY pinned: the /ask prefix row captures /ask/stream under startsWith, and the mid-path matcher's deeper-tails-free law captures it identically — NO exclusion form exists in either table, so the flip unit is the PAIR and cannot land while any leg fails parity
+- FAIL-NO-FLIP executed (the 088/091 -> T-MIG-100 precedent): T-MIG-106 FILED (the ask/stream pre-flight divergence band, OPEN P2, operator golden-law ruling owed; ruling options in-card: amend-to-500-parity vs declare-justified vs defer; fences pin the rows, the pre-flight, and the routing infra); T-MIG-092 card rider appended (r0's progression verbatim); ZERO code deltas this round — no PR, register+receipts only
+- Write ledger: 2 census probe learners (run-004 register + the failed-email login attempt consumed none), 1 blocking-ask generation, zero sessions, zero env writes
+
+Stage Summary:
+- The golden gate did its job: the operator-ordered flip is WITHHELD of record and the divergence class is pinned as T-MIG-106 with first-hand receipts. The happy path is proven GREEN on both planes (blocking + stream); the blocker is exactly the three deterministic stream pre-flight legs. Awaiting the operator ruling on T-MIG-106 to execute the flip unit (+ any amend) under a fresh trace. .syllabai-only direct-main (fetch-first), no force.

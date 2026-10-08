@@ -1,0 +1,162 @@
+{
+ "capture": [
+  {
+   "leg": "s1-stream-unauthed-401",
+   "base": "core",
+   "status": 401,
+   "ms": 241,
+   "body": "{\"timestamp\":\"2026-10-08T15:46:23.289Z\",\"status\":401,\"error\":\"Unauthorized\",\"path\":\"/api/v1/tutor/ask/stream\"}"
+  },
+  {
+   "leg": "s2-stream-blank-400",
+   "base": "core",
+   "status": 500,
+   "ms": 2088,
+   "body": "{\"status\":500,\"error\":\"internal_error\",\"message\":\"an internal error occurred\",\"timestamp\":\"2026-10-08T15:46:23.741295258Z\"}"
+  },
+  {
+   "leg": "s3-stream-malformed-400",
+   "base": "core",
+   "status": 500,
+   "ms": 525,
+   "body": "{\"status\":500,\"error\":\"internal_error\",\"message\":\"an internal error occurred\",\"timestamp\":\"2026-10-08T15:46:25.902990996Z\"}"
+  },
+  {
+   "leg": "s4-stream-unknown-session-404",
+   "base": "core",
+   "status": 500,
+   "ms": 426,
+   "body": "{\"status\":500,\"error\":\"internal_error\",\"message\":\"an internal error occurred\",\"timestamp\":\"2026-10-08T15:46:26.332343252Z\"}"
+  },
+  {
+   "leg": "a1-ask-blank-400",
+   "base": "core",
+   "status": 400,
+   "ms": 642,
+   "body": "{\"status\":400,\"error\":\"validation_failed\",\"message\":\"question: must not be blank\",\"timestamp\":\"2026-10-08T15:46:26.973055330Z\"}"
+  },
+  {
+   "leg": "a2-ask-unknown-session-404",
+   "base": "core",
+   "status": 404,
+   "ms": 625,
+   "body": "{\"status\":404,\"error\":\"not_found\",\"message\":\"tutor session 07cafeab-d743-46ce-8ed6-c23c18b7eddd not found\",\"timestamp\":\"2026-10-08T15:46:27.601620282Z\"}"
+  }
+ ],
+ "replay": [
+  {
+   "leg": "s1-stream-unauthed-401",
+   "status": 401,
+   "ms": 268,
+   "body": "{\"timestamp\":\"2026-10-08T15:46:27.856Z\",\"status\":401,\"error\":\"Unauthorized\",\"path\":\"/api/v1/tutor/ask/stream\"}",
+   "core_status": 401,
+   "verdict": "PASS"
+  },
+  {
+   "leg": "s2-stream-blank-400",
+   "status": 400,
+   "ms": 285,
+   "body": "{\"status\":400,\"error\":\"validation_failed\",\"message\":\"question: must not be blank\",\"timestamp\":\"2026-10-08T15:46:28.128Z\"}",
+   "core_status": 500,
+   "verdict": "FAIL"
+  },
+  {
+   "leg": "s3-stream-malformed-400",
+   "status": 400,
+   "ms": 266,
+   "body": "{\"status\":400,\"error\":\"malformed_body\",\"message\":\"request body is not readable (check field types and enum values)\",\"timestamp\":\"2026-10-08T15:46:28.409Z\"}",
+   "core_status": 500,
+   "verdict": "FAIL"
+  },
+  {
+   "leg": "s4-stream-unknown-session-404",
+   "status": 404,
+   "ms": 347,
+   "body": "{\"status\":404,\"error\":\"not_found\",\"message\":\"tutor session 07cafeab-d743-46ce-8ed6-c23c18b7eddd not found\",\"timestamp\":\"2026-10-08T15:46:28.755Z\"}",
+   "core_status": 500,
+   "verdict": "FAIL"
+  },
+  {
+   "leg": "a1-ask-blank-400",
+   "status": 400,
+   "ms": 266,
+   "body": "{\"status\":400,\"error\":\"validation_failed\",\"message\":\"question: must not be blank\",\"timestamp\":\"2026-10-08T15:46:29.025Z\"}",
+   "core_status": 400,
+   "verdict": "PASS"
+  },
+  {
+   "leg": "a2-ask-unknown-session-404",
+   "status": 404,
+   "ms": 282,
+   "body": "{\"status\":404,\"error\":\"not_found\",\"message\":\"tutor session 07cafeab-d743-46ce-8ed6-c23c18b7eddd not found\",\"timestamp\":\"2026-10-08T15:46:29.303Z\"}",
+   "core_status": 404,
+   "verdict": "PASS"
+  }
+ ],
+ "rider": {
+  "status": 200,
+  "content_type": "text/event-stream",
+  "event_kinds": [
+   "citations",
+   "meta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "delta",
+   "done"
+  ],
+  "delta_count": 43,
+  "meta": {
+   "provider": "groq",
+   "model": "openai/gpt-oss-120b",
+   "refused": false,
+   "evidenceCount": 6
+  },
+  "structural_law": "PASS"
+ },
+ "verdict": {
+  "parity": "FAIL",
+  "rider": "PASS"
+ },
+ "probe_learner": "r4b-tutor-widen-20261008t154622z@example.invalid",
+ "run_ts": "20261008T154622Z"
+}
