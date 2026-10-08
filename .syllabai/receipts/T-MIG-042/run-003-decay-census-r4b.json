@@ -1,0 +1,39 @@
+{
+  "receipt": "run-003-decay-census-r4b",
+  "task": "T-MIG-042 independent post-§3.1 census + T-MIG-106 ask-row live-bundle replication; §3.3-due watch filing",
+  "lane": "r4-api-b (Super Z, session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "operator_trace": "1a11d2352c506a41",
+  "operator_order": "T-MIG-042 . Vercel PAT:<redacted> — credential delivery (persisted .secrets/vercelpat 0600, sha256 fingerprint d254bbfaac004354, value never echoed/committed; used read-only)",
+  "context_of_record": "§3.1 already COMPLETE of record (r1c run-002-env-act-live-r1c, commit 9d0b3ca, operator trace 1a11caa5b6c6e53d; r0 PS corrections 390012b) — this receipt is an INDEPENDENT replication + census, not a re-execution",
+  "clock": "2026-10-08T20:15-20:19Z — the 02:00Z 2026-10-09 cron self-fire PENDING (~5h45m); §3.3 cross-check DUE after it",
+  "no_fire_law": "zero manual fires this act: a manual fire before 02:00Z would pre-execute the 2026-10-09 window and contaminate the §3.3 trigger_kind=vercel-cron evidence shape (the exactly-once idempotency would also mask a cron-side failure)",
+  "census_legs": {
+    "vercel_projects": "syllabai-v2 (prj_FN5XQUMb...) + syllabai-hub-v2 (prj_YhOJvdlH...) present",
+    "env_presence_production": {
+      "syllabai-v2/CRON_SECRET": "present (value masked by list API, never requested)",
+      "syllabai-hub-v2/CRON_SECRET": "present (masked)",
+      "syllabai-hub-v2/DECAY_CRON_ENABLED": "present (masked)"
+    },
+    "deployments_READY_production": {
+      "api_latest": "dpl_DJhp8McGKbKT (r1c instant-redeploy carrying the secret snapshot)",
+      "hub_latest": "dpl_H8AYEmt8Hr6q @ 6813bb7 (r0 run-004, the ask-row-live deploy; runner-up dpl_CtTEANYBQ2Ns same sha unaliased, benign of record)"
+    },
+    "decay_401_law_api": "POST /api/v1/cron/nightly-decay unauth + wrong-bearer -> 401 Spring envelope (timestamp/status/error/path) — configured-law",
+    "decay_401_law_hub": "GET /api/cron/nightly-decay unauth + wrong-bearer -> 401 {status:unauthorized, reason:'missing or wrong Authorization bearer — Vercel Cron sends Authorization: Bearer $CRON_SECRET when CRON_SECRET is set'} — the 'not configured' wall GONE; byte-shape == r1c leg4; probe artifact disclosed: POST on the hub route serves 405 (GET-only law, the Vercel Cron verb)",
+    "hub_health": "200 {status:ok, dataMode:core-api, coreConfigured:true}",
+    "t-mig-106_ask_row_live_bundle": "homepage chunk census (14 chunks): literal /api/v1/tutor/ask = 2 occurrences (chunk 0an1zdqrqrypx.js) — matches r0 run-004 of-record census (live 2 incl. table row vs pre-flip control 1); /api/v1/tutor/sessions = 5; direct hub URL hits on /api/v1/* 404 by design (no catch-all proxy; routing lives in emitters — the R32 finding), hence the bundle census is the correct live check"
+  },
+  "watch": {
+    "02:00Z_self_fire": "2026-10-09T02:00:00Z — hub vercel.json cron POSTs/GETs /api/cron/nightly-decay with Authorization: Bearer $CRON_SECRET",
+    "s3_3_cross_check_due": "2026-10-09 after the self-fire: exactly one decay_job_runs row per window — 2026-10-08 (manual first fire, executedAt 18:22:46.477+00) + 2026-10-09 (trigger_kind vercel-cron); verify via a controlled re-fire (expect already-run SAME row) or Neon read",
+    "s4_watch": "opens after §3.3; 48h harmless no-op verify of the Java core scheduler inside §4"
+  },
+  "write_ledger": {
+    "fires": 0,
+    "vercel_env_writes": 0,
+    "prod_neon_writes": 0,
+    "llm_generations": 0,
+    "learners": 0,
+    "repo": ".syllabai-only (card census key + this receipt + worklog Task-42)"
+  }
+}

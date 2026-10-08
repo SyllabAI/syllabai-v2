@@ -6549,3 +6549,18 @@ Stage Summary:
 - T-MIG-102 lever CLOSED of record (run-004-r9 upstream; no duplicate deploy fired — fetch-first discipline held through both resets)
 - T-MIG-106 rider posture: discharged of record (run-007-r0) + triple-live corroboration (4th-firing census 26/26 + this lane's run-008 replication 6/7 PASS, 1 NOT-EXERCISED disclosed)
 - The credential-gated handoff from the run-001 precedent is hereby FIRED by this commit's push
+
+---
+Task ID: 42
+Agent: r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator trace 1a11d2352c506a41 "T-MIG-042 . Vercel PAT:<delivered>" — the PAT arrives after r1c's 9d0b3ca already executed §3.1 of record; round converted to the independent census + §3.3-due watch filing (no re-execution).
+
+Work Log:
+- Workspace recovered again (PAT trio 0600 re-set, mode-bit noise on 488 files = sandbox quirk, hard reset to b33fb54 clean).
+- Census first: upstream d117a54..b33fb54 shows §3.1 ALREADY COMPLETE of record (r1c run-002: env adds + api instant-redeploy dpl_DJhp8McG + hub 6813bb7 dpl_H8AYEmt8 + FIRST FIRE 200 ledgerRow window 2026-10-08 + RE-FIRE already-run; card DONE; r0 Task-56 PS corrections; r0 run-004 took the T-MIG-106 ask row LIVE on the same hub deploy — the Task-55 residue DISCHARGED; r9 run-008 independent replication). VERCEL_PAT persisted .secrets/vercelpat 0600 (fingerprint d254bbfaac004354, value never echoed).
+- Independent census executed (receipt run-003-decay-census-r4b.json): env presence on production verified via the Vercel API (api CRON_SECRET; hub CRON_SECRET + DECAY_CRON_ENABLED — names/targets only, values never requested); latest prod READY both projects; decay 401 CONFIGURED-law replicated on BOTH planes (hub GET-law — the not-configured wall GONE, POST=405 probe artifact disclosed; api Spring 401 envelope); hub health 200 core-api; T-MIG-106 ask-row live-bundle census replicated (2 occurrences of /api/v1/tutor/ask in chunk 0an1zdqrqrypx.js == r0 run-004 of-record count).
+- ZERO FIRES held deliberately: a manual fire before the 02:00Z 2026-10-09 cron self-fire would pre-execute the 10-09 window and contaminate the §3.3 trigger_kind=vercel-cron evidence shape (and the exactly-once idempotency would mask a cron-side failure). §3.3 cross-check DUE 2026-10-09 after the self-fire (expect one row per window: 2026-10-08 manual + 2026-10-09 vercel-cron); §4 watch opens there.
+- Card census_r4b key appended; write ledger: zero fires, zero env writes, zero prod/Neon writes, zero LLM, zero learners — .syllabai-only direct-main (fetch-first), no force.
+
+Stage Summary:
+- The decay takeover is LIVE of record and independently verified end-to-end; the ONLY remaining 042 item is the §3.3 morning cross-check after tonight's 02:00Z self-fire, then the §4 watch. Board: every card DONE; no open PRs; no lane-side code debt of record.
