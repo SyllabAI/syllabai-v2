@@ -133,6 +133,23 @@ const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") ?? "";
  * deliberately narrow: the v2 api mounts attempt history and self/smart-mark
  * under exactly that base, while 20+ sibling /api/v1/learners/me/* surfaces
  * are not ported yet. Each further surface flips as its own verified line.
+ *
+ * T-MIG-111 UPDATE of record (the enumeration above is HISTORICAL — the
+ * per-row comments and the surface test carry the live posture): glm-ocr
+ * flipped in T-MIG-089; the learner-me heart family flipped per-exact-subpath
+ * in T-MIG-095/096/110; the corpus-verified documents/review-queue/
+ * question-bank/topics/smart-lesson/knowledge-graph rows flipped in
+ * T-MIG-111. The REMAINING core-only surfaces and their laws of record:
+ * teacher/marking (read positives corpus-proven, but the hub-emitted
+ * human-mark write has no positive wire captured — the 095/107 write-verify
+ * bar; smart-mark-batch 401-only + LLM-adjacent), teacher/curriculum/
+ * versions (honest-501 write stubs under /versions/:id/* — the stub law),
+ * the classroom foundation (teacher/classes CRUD + learners/me/classroom —
+ * ZERO corpus legs, its own capture+verify band), questions
+ * list/detail/mark-scheme + families (positive wires uncaptured), teacher/
+ * tests preview+weakness-options (no positive 200 captured),
+ * answer-input/transcribe (401-only + the GLM seam), intervention-runs (no
+ * positive wire), subjects/tree (the T-MIG-035 check-3 adjudication).
  */
 const API_V2_BASE = process.env.NEXT_PUBLIC_API_V2_BASE_URL?.replace(/\/$/, "") ?? "";
 export const V2_SURFACE_PREFIXES: readonly string[] = [
@@ -486,6 +503,97 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // the hub redeploy; core stays the unset-base fallback (§7 rollback
   // intact).
   "/api/v1/learners/me/recommendations",
+  // T-MIG-111 (r7a, operator order trace 1a120e747bb195dd 'Proceed with the
+  // remaining unflipped verified families (smart-lesson, knowledge-graph,
+  // class-KG siblings…)') — SIX corpus-verified rows. Verification class of
+  // record for ALL six: the golden corpus ITSELF — every leg below is GREEN
+  // in the union replay at the current tip (186/186, justified-ledger empty),
+  // i.e. the live v2 answers each path per the frozen core's captured law
+  // (run-28 instrument class; scripts/r111_corpus_census.py is the census of
+  // record: 186 cases -> 100 covered pre-band, 86 uncovered in 13 families,
+  // each classified verified / stub-law / no-positive-wire).
+  //
+  // 1. /api/v1/learners/me/knowledge-graph — the learner-me KG view (the
+  // T-MIG-079 mount, LearnerStateController GET /knowledge-graph port):
+  // corpus legs w4-knowledge-graph-{empty-200, practiced-200,
+  // unauthed-401} GREEN. THE BAND'S ONE LIVE ROUTING CHANGE: the hub
+  // emitters are LIVE (dashboard-core.ts:86 api.learnerKnowledgeGraph — the
+  // pilot dashboard; kg-learner-state.ts:508 — the KG explorer state
+  // loader; both request()/apiPath-plane) and go v2-native with the hub
+  // redeploy; core stays the unset-base fallback (§7 rollback intact).
+  // NARROW per-exact-subpath (the 096 heart-family convention): the row is
+  // a proper prefix of NO other hub-emitted path or v2 route (learnerkg.ts
+  // owns exactly /knowledge-graph + /smart-lesson; no /knowledge-graph/*
+  // subroute exists either side) — partial-segment capture
+  // (knowledge-graphx) DOCUMENTED INERT (pinned in the surface test).
+  // LLM-free law: read-only KG view over the knowledge spine.
+  "/api/v1/learners/me/knowledge-graph",
+  // 2. /api/v1/learners/me/smart-lesson — the SmartLessonController GET
+  // /smart-lesson port (the deterministic 8-rung ladder — NO LLM in the
+  // loop, the t4 law): corpus legs w4-smart-lesson-{practiced-200,
+  // missing-params-400, unauthed-401, unknown-topic-404} GREEN — the FULL
+  // law matrix (param order rootId-first, the hard-isolation 404, the Boot
+  // 401 shell). The hub emitter (api.ts:1258 api.smartLesson) is DORMANT —
+  // zero page call-sites (grep-verified at the widening commit) — so this
+  // row is ROUTING AVAILABILITY with its emitter form pinned in
+  // DUAL_RUN_PATHS (the 084 dormant-emitter posture). Partial-segment
+  // capture (smart-lessonx) DOCUMENTED INERT.
+  "/api/v1/learners/me/smart-lesson",
+  // 3. /api/v1/questions/topics — the servable-question taxonomy leaf
+  // (questionsRoute GET /topics): corpus legs w3-questions-topics-{student
+  // -200, unauthed-401} GREEN. The hub emitter (api.ts:930
+  // api.questionTaxonomy) is DORMANT — zero page call-sites (grep-verified;
+  // the exam-questions-sidebar comment in the emitter is aspirational) —
+  // routing availability. LEAF ROW ONLY: the REST of the /api/v1/questions
+  // family STAYS CORE this band — list/detail/mark-scheme positive wires
+  // are NOT corpus-captured (only the 401 shells + the unknown-authed-404
+  // law are), and the families emitter is coreFetchAuthorized CORE-PINNED
+  // (not table-routed, apps/hub/src/app/api/core/questions/route.ts:62) —
+  // their flips await their own capture legs. Partial-segment capture
+  // (topicsx) DOCUMENTED INERT.
+  "/api/v1/questions/topics",
+  // 4. /api/v1/teacher/content/documents — the TEACHER-side documents
+  // family (content.teacherRoute; the LEARNER reader /api/v1/content/
+  // documents row above is a DIFFERENT base, already flipped): 16 corpus
+  // legs GREEN incl. the captured 500 laws (embed-unknown-500,
+  // search-blank-query-500 — the T-MIG-004 F-2 verbatim-500 posture),
+  // canonical/detail/list/search 200s, the 400 parse-fail bind law on
+  // POST /documents, 403/401/404 laws. ZERO hub emitters (grep-verified:
+  // the hub emits only the learner reader base) — ROUTING AVAILABILITY of
+  // record, the T-MIG-090 posture, zero live-page routing change. The
+  // subtree is fully REAL on v2 (zero 501s remain in content/index.ts —
+  // the T-MIG-107 write band retired them). startsWith-safety: no other
+  // content family extends the 'documents' segment; past-papers stays
+  // core (its own 409 schema law, not this band's set).
+  "/api/v1/teacher/content/documents",
+  // 5. /api/v1/teacher/content/review-queue — ONE row for the verified
+  // TRIO: startsWith captures /review-queue, /review-queue-v2 AND
+  // /review-queue-v3, ALL of which are v2-real with corpus-proven laws
+  // (8 legs GREEN: teacher/realdata 200s on all three, student-403,
+  // unauthed-401) — the multi-family capture is DOCUMENTED HERE per the
+  // startsWith-safety law (every captured path is served with a real
+  // implementation + a captured law; the 091 full-path row precedent).
+  // THREE DORMANT request()-plane emitters ride the row
+  // (contentReviewQueue :1558, contentReviewQueueV2 :1610,
+  // contentReviewQueueV3 :1616 — ZERO page call-sites, grep-verified at
+  // the widening commit; the live review page reads ride the flipped
+  // exam-papers review/audit subtree rows) — routing availability with the
+  // DUAL_RUN forms pinned (the 084 dormant-emitter posture). The
+  // pre-deploy bundle census caught the emitter inventory (3 literals in
+  // the serving chunk) after an earlier zero-emitter misstatement was
+  // self-caught and corrected pre-deploy — no silent posture change:
+  // dormant emitters route NOWHERE unless a page calls them.
+  "/api/v1/teacher/content/review-queue",
+  // 6. /api/v1/admin/question-bank — the SME question-bank family
+  // (sme.adminRoute, /ingest + /status): 7 corpus legs GREEN incl. BOTH
+  // ingest 200 write laws (rich + replace) + the admin-200/student-403/
+  // teacher-403/unauthed-401 role law matrix. ZERO hub emitters
+  // (grep-verified; no admin page exists in the hub) — ROUTING
+  // AVAILABILITY, the T-MIG-090 posture. NO admin/** sibling is captured
+  // (the row is the exact question-bank subtree; llm/chain-health and
+  // revision-notes keep their own rows). LLM-free law: deterministic
+  // ingest/status over the question bank.
+  "/api/v1/admin/question-bank",
 ];
 
 /**

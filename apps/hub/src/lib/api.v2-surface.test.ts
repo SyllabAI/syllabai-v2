@@ -132,6 +132,22 @@ const DUAL_RUN_PATHS: readonly string[] = [
   // re-verified the 200 nba-rules/v1.3 wire on BOTH planes (the line test
   // pins the flip); dashboard-core.ts:85 is the hub's only emitter.
   "/api/v1/learners/me/recommendations?rootId=kn-1",
+  // T-MIG-111 (r7a): the corpus-verified widen band's emitter forms. The
+  // knowledge-graph form is the band's ONE LIVE routing change (both
+  // call-sites real: dashboard-core.ts:86 + kg-learner-state.ts:508); the
+  // smart-lesson + topics emitters are DORMANT (zero page call-sites,
+  // grep-verified at the widening commit) — pinned in the 084
+  // dormant-emitter posture. The documents/question-bank rows have ZERO hub
+  // emitters — nothing to pin here (the 090 posture); review-queue rides
+  // THREE dormant request()-plane emitters (contentReviewQueue/-V2/-V3,
+  // zero call-sites — the inventory the pre-deploy bundle census caught
+  // after a zero-emitter misstatement was self-caught pre-deploy).
+  "/api/v1/learners/me/knowledge-graph?rootId=kn-1",
+  "/api/v1/learners/me/smart-lesson?rootId=kn-1&topicNodeId=kn-11",
+  "/api/v1/questions/topics?rootId=kn-1",
+  "/api/v1/teacher/content/review-queue",
+  "/api/v1/teacher/content/review-queue-v2",
+  "/api/v1/teacher/content/review-queue-v3",
 ];
 
 /** Hub-emitted (or hub-adjacent) paths that MUST stay on the core in the dual-run posture. */
@@ -142,15 +158,40 @@ const CORE_ONLY_PATHS: readonly string[] = [
   // the glm-ocr FAMILY flipped in T-MIG-089 (the former core-only
   // glm-ocr/papers/p-1/findings pin MOVED OUT — v2 golden-verified 6/6,
   // receipts T-MIG-089/run-002-golden-verify-r4b.json — and pinned in
-  // DUAL_RUN_PATHS); the review-queue READ siblings + the bare parent stay core
-  "/api/v1/teacher/content/review-queue",
-  "/api/v1/teacher/content/review-queue-v3",
-  // teacher curriculum + teacher W5 families (unported)
+  // DUAL_RUN_PATHS); the bare parent stays core
+  // T-MIG-111 (r7a): review-queue + review-queue-v3 MOVED OUT of this list —
+  // the ONE row /api/v1/teacher/content/review-queue captures the verified
+  // TRIO (queue/-v2/-v3, 8 corpus legs GREEN incl. 200s on all three; zero
+  // hub emitters — routing availability, the 090 posture). The documents row
+  // (16 legs incl. the captured 500 laws) flipped the same band — it was
+  // never pinned here (zero emitters, never hub-routed).
+  // teacher curriculum + teacher W5 families (unported). T-MIG-111 EXCLUSION
+  // LAW of record: teacher/curriculum/versions STAYS CORE — its subtree
+  // contains the honest-501 write stubs POST /versions/:id/archive +
+  // /validate (curriculum/index.ts :170) — the stub law forbids a row whose
+  // capture includes a stub, even with zero hub emitters; the family flip
+  // awaits its own port band.
   "/api/v1/teacher/curriculum/versions",
+  // teacher/classes STAYS CORE: the class-KG/coverage families flip under
+  // the MID-PATH rows (T-MIG-086/087); the FOUNDATION family (list/detail/
+  // status/members/announcements + learners/me/classroom) has ZERO corpus
+  // legs of record (grep-verified census, T-MIG-111) — the flip law's
+  // golden-verified bar is UNMET; its own capture+verify band owns the flip.
   "/api/v1/teacher/classes",
+  // teacher/marking STAYS CORE (T-MIG-111 exclusion law): the READ positives
+  // are corpus-proven (answers 200x3 + 403 + 401s, queue-v2 200x2,
+  // throughput 200x2) BUT the hub-emitted human-mark WRITE (api.ts:1379)
+  // has NO positive wire captured (only the unknown-400 + unauthed-401
+  // laws) — the 095/107 write-verify bar; smart-mark-batch is 401-only +
+  // LLM-adjacent. The family flip awaits its own write-capture band.
   "/api/v1/teacher/marking/answers",
   "/api/v1/teacher/assignments",
-  // learner /questions + /exam-papers: NOT mounted in the v2 api yet (T-MIG-031 tranche-2)
+  // learner /questions + /exam-papers: the questions ROUTER is mounted and
+  // corpus-proven on /topics (FLIPPED in T-MIG-111, the leaf row) but the
+  // list/detail/mark-scheme positive wires are NOT captured (401 shells +
+  // the unknown-404 law only) and families is coreFetchAuthorized
+  // CORE-PINNED — they stay core per the 111 leaf-row-only law. The
+  // exam-papers learner reads stay unverified-positive (401/403 only).
   "/api/v1/questions?q=photosynthesis",
   "/api/v1/questions/families",
   "/api/v1/exam-papers?subjectId=sub-1",
@@ -173,7 +214,13 @@ const CORE_ONLY_PATHS: readonly string[] = [
   // T-MIG-082 (Wave S3, r3a): revision-notes FLIPPED after its golden gate —
   // run-002 frozen-core captures (d19289cc8) + run-003 verify 7/7 vs the
   // landed mounts; moved out of this CORE_ONLY list of record.
-  "/api/v1/learners/me/knowledge-graph",
+  // T-MIG-111 (r7a): knowledge-graph MOVED OUT of this list — the row
+  // /api/v1/learners/me/knowledge-graph flipped (3 w4 corpus legs GREEN incl.
+  // both 200 shapes; the band's ONE LIVE routing change — dashboard-core.ts
+  // :86 + kg-learner-state.ts:508). The smart-lesson sibling flipped the same
+  // band (4 legs, the FULL law matrix) — never pinned here. transcribe
+  // STAYS CORE (401-only + the GLM seam); intervention-runs STAYS CORE (no
+  // positive wire).
   // classic core-only surfaces (T-MIG-035 check-3 law; /subjects and the
   // LEGACY /api/v1/tree path are still true. NOTE: the former
   // "/api/v1/knowledge/nodes/kn-1/tree" pin MOVED OUT of this list — it is
@@ -227,6 +274,12 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/teacher/content/mark-schemes/", // T-MIG-107: same band — subtree = exactly the 4 verified state verbs (3 legs declared-justified, the 106 ruling (b) class)
       "/api/v1/teacher/content/questions/", // T-MIG-107: same band — the topics family (088 leg-08/09 laws + the 50/51/52 capture laws)
       "/api/v1/learners/me/recommendations", // T-MIG-110: LIVE-PROVEN by the T-MIG-108 chain (PR #169 fix d4ad173 + redeploy dpl_FprVRBHzqB7xy8K1sBGnZVGAE97Y + double-plane 200 census R1/R3 parity, r7a) — the operator flip order 1a120a8e85d04205; NARROW: the leaf endpoint's exact path, never the bare /learners/me
+      "/api/v1/learners/me/knowledge-graph", // T-MIG-111: corpus-verified (3 w4 legs GREEN at tip; the band's ONE LIVE routing change — dashboard-core.ts:86 + kg-learner-state.ts:508) — the operator verified-families order 1a120e747bb195dd
+      "/api/v1/learners/me/smart-lesson", // T-MIG-111: corpus-verified FULL law matrix (4 w4 legs: 200/400/401/404; the deterministic 8-rung ladder, no LLM) — dormant emitter (zero call-sites), routing availability
+      "/api/v1/questions/topics", // T-MIG-111: leaf row ONLY (2 legs GREEN: student-200 + unauthed-401) — list/detail/mark-scheme positive wires uncaptured, families core-pinned; the rest of /questions stays core
+      "/api/v1/teacher/content/documents", // T-MIG-111: the TEACHER-side family (16 legs GREEN incl. the captured 500 laws; zero hub emitters — routing availability, the 090 posture; zero 501s remain post-107)
+      "/api/v1/teacher/content/review-queue", // T-MIG-111: ONE row captures the verified TRIO (queue/-v2/-v3, 8 legs GREEN incl. 200s on all three; THREE dormant emitters ride it, zero call-sites — startsWith multi-family capture DOCUMENTED in the row comment)
+      "/api/v1/admin/question-bank", // T-MIG-111: the SME family (7 legs GREEN incl. both ingest 200 write laws + the role-law matrix; zero hub emitters — routing availability)
     ]);
   });
   test("the mid-path table is exactly the ruled set — the mechanism-A amendment needs its own golden gate too", () => {
@@ -292,15 +345,16 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
       `${V2}/api/v1/learners/me/recommendations?rootId=kn-1`,
     );
     // TRUE siblings stay core — the row is the LEAF endpoint's exact path and
-    // must never capture them (smart-lesson is mounted on v2 (T-MIG-079) but
-    // NOT flipped — no golden gate of record for the flip law; classroom +
-    // intervention-runs are the 096 LLM-bearing pins)
+    // must never capture them (classroom + intervention-runs are the 096
+    // LLM-bearing pins; they STILL stay core after T-MIG-111 — no positive
+    // wire / zero corpus legs). T-MIG-111 UPDATE of record: smart-lesson +
+    // knowledge-graph MOVED OUT of this stay-core list — the corpus-verified
+    // widen band flipped both (the w4 legs GREEN at tip; the 111 line test
+    // pins their rows) — the 110 comment's 'no golden gate of record' posture
+    // is DISCHARGED by the corpus of record (union 186/186 incl. the w4 legs).
     for (const p of [
-      "/api/v1/learners/me/smart-lesson?rootId=kn-1&topicNodeId=tn-1",
-      "/api/v1/learners/me/smart-lesson",
       "/api/v1/learners/me/classroom",
       "/api/v1/learners/me/intervention-runs",
-      "/api/v1/learners/me/knowledge-graph?rootId=kn-1",
     ]) {
       expect(v2SurfaceBase(p, V2)).toBeNull();
     }
@@ -313,6 +367,56 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     expect(
       "/api/v1/learners/me/recommendationsx".startsWith("/api/v1/learners/me/recommendations"),
     ).toBe(true);
+  });
+
+  test("the T-MIG-111 line: the corpus-verified families widen band (r7a, operator order 1a120e747bb195dd)", () => {
+    // The ONE live routing change: the learner-me KG read goes v2-native
+    // (both call-sites real); smart-lesson + topics ride dormant emitters;
+    // documents/question-bank are zero-emitter availability rows;
+    // review-queue rides three dormant emitters (zero call-sites). The
+    // exclusions are LAWS pinned in CORE_ONLY: marking (write-
+    // verify bar), curriculum/versions (501 stubs), teacher/classes (zero
+    // corpus legs), transcribe (GLM seam), intervention (no positive wire).
+    for (const p of [
+      "/api/v1/learners/me/knowledge-graph?rootId=kn-1",
+      "/api/v1/learners/me/smart-lesson?rootId=kn-1&topicNodeId=kn-11",
+      "/api/v1/questions/topics?rootId=kn-1",
+      "/api/v1/teacher/content/documents/doc-1/canonical",
+      "/api/v1/teacher/content/review-queue",
+      "/api/v1/teacher/content/review-queue-v2",
+      "/api/v1/teacher/content/review-queue-v3",
+      "/api/v1/admin/question-bank/ingest",
+      "/api/v1/admin/question-bank/status",
+    ]) expect(v2SurfaceBase(p, V2)).toBe(V2);
+    // startsWith matching is prefix-string semantics (the same property every
+    // row of the table has): a non-existent partial-segment sibling IS
+    // captured by the string match — DOCUMENTED INERT (no route or hub
+    // emitter named review-queue* beyond the three verified versions exists
+    // on either side — grep-verified at the widening commit)
+    expect(v2SurfaceBase("/api/v1/teacher/content/review-queuex", V2)).toBe(V2);
+    expect(
+      "/api/v1/teacher/content/review-queuex".startsWith("/api/v1/teacher/content/review-queue"),
+    ).toBe(true);
+    // the EXCLUDED siblings stay core (the 111 exclusion laws):
+    for (const p of [
+      "/api/v1/teacher/marking/answers",
+      "/api/v1/teacher/marking/answers/a-1/human-mark",
+      "/api/v1/teacher/marking/queue-v2",
+      "/api/v1/teacher/marking/smart-mark-batch",
+      "/api/v1/teacher/curriculum/versions",
+      "/api/v1/teacher/curriculum/versions/v-1/nodes",
+      "/api/v1/teacher/tests/preview",
+      "/api/v1/teacher/tests/weakness-options",
+      "/api/v1/teacher/classes",
+      "/api/v1/learners/me/classroom",
+      "/api/v1/learners/me/answer-input/transcribe",
+      "/api/v1/learners/me/intervention-runs",
+      "/api/v1/questions?q=photosynthesis",
+      "/api/v1/questions/families",
+      "/api/v1/questions/q-1",
+      "/api/v1/questions/q-1/mark-scheme",
+      "/api/v1/teacher/content/past-papers",
+    ]) expect(v2SurfaceBase(p, V2)).toBeNull();
   });
 
   test("the T-MIG-097 line: the CLA ask flips after BOTH wires were proven live (r7a, chain order 1a119df7d930b609)", () => {
@@ -501,12 +605,12 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     ]) {
       expect(v2SurfaceBase(p, V2)).toBe(V2);
     }
-    // the T-MIG-020/023 siblings stay core-pinned: the bare parent + the
-    // review-queue read sibling (the topics-write family MOVED OUT — the
-    // T-MIG-107 flip closed CLASS B; see the 107 line test below)
+    // the T-MIG-020/023 siblings: the bare parent stays core-pinned; the
+    // topics-write family MOVED OUT (the T-MIG-107 flip closed CLASS B) and
+    // the review-queue read sibling MOVED OUT in T-MIG-111 (the verified-trio
+    // row; 8 corpus legs GREEN — the 111 line test pins the flip)
     for (const p of [
       "/api/v1/teacher/content",
-      "/api/v1/teacher/content/review-queue",
     ]) {
       expect(v2SurfaceBase(p, V2)).toBeNull();
     }
@@ -556,15 +660,15 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     // leg-08/09 acceptance path) now routes to v2 — the 404-first/400 laws
     // verified on v2 by the same 53-leg leg
     expect(v2SurfaceBase("/api/v1/teacher/content/questions/00000000-0000-4000-8000-000000000025/topics", V2)).toBe(V2);
-    // the bare parent + the review-queue READ siblings stay core (not this
-    // band's verified set; the narrowest-legal-form discharge — the 107
-    // comment in the api.ts table)
+    // the bare parent + past-papers stay core (not this band's verified set;
+    // the narrowest-legal-form discharge — the 107 comment in the api.ts
+    // table). T-MIG-111 UPDATE of record: review-queue/-v2/-v3 + documents
+    // MOVED OUT of this stay-core list — the corpus-verified widen band
+    // flipped them (the trio row + the documents row; 24 corpus legs GREEN
+    // incl. the captured 500 laws; zero hub emitters — the 090 availability
+    // posture; the 111 line test pins both rows)
     for (const p of [
       "/api/v1/teacher/content",
-      "/api/v1/teacher/content/review-queue",
-      "/api/v1/teacher/content/review-queue-v2",
-      "/api/v1/teacher/content/review-queue-v3",
-      "/api/v1/teacher/content/documents",
       "/api/v1/teacher/content/past-papers",
     ]) {
       expect(v2SurfaceBase(p, V2)).toBeNull();
