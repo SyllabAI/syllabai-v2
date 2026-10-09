@@ -6910,3 +6910,21 @@ Work Log:
 
 Stage Summary:
 - T-MIG-112 LANDED of record (8907daa): the classroom-foundation band — the 111 exclusion discharged, 3 tail rows widened (both tables now agree v2 for every class path), 17 corpus cases join the union (186 -> 203 planned). Post-merge legs owed per the 093/110/111 recipe: hub redeploy + double-plane battery + union replay (r7a re_verify_plan). Board empty at run end; main CI 2/2 green at 8907daa.
+
+
+
+---
+
+Task ID: T-MIG-112 (closure)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)
+Task: close the ordered classroom-foundation capture+verify band (operator trace 1a1213760243901d).
+
+Work Log:
+- PR #174 opened; the desk merged via merge-intake (2e6d70e main-into-branch, zero code conflicts, the worklog union byte-checked) -> main 8907daa, CI 2/2 green
+- the 093/110/111-recipe hub redeploy: pre-census -> main-CI wait -> fetch-first reset -> race-guard clear (rollback anchor dpl_EfD8Km7FKhgEXcLWK4tM6n1T7asT) -> vercel --prod -> dpl_Bhau3pD7sfTmXhRCVUk4ZJ86aV4d READY; BAKED-TABLE EVIDENCE EXACT (teacher-classes +1, learner-classroom +1, teacher-learners +1; the six 111 needles 0)
+- post-deploy battery 24/24 ALL LAWS PASS: Band A 9/9 + the flipped wires double-plane (learner-classroom v2 200 honest-zero + core parity same-bearer with the cold-start disclosure; teacher-classes v2 200 fresh-[] + core parity FIRST TRY — the fresh-account teacher-bearer continuity re-proven live; roster 200/401/403) + the captured 401/403/400-first laws through the flip + R13-R15 no-regression (the 111/110/096 flips)
+- union replay run 37957733959 at d5605ffe6 (post-merge drift = ONE .syllabai-only desk receipt, verified): UNION 203/203 PASS — seed 188/188 (the 17 classroom cases ALL GREEN first-replay), prod 15/15, ledger empty
+- closure receipt run-004 + card DONE flip + this entry; push .syllabai-only direct-main (fetch-first, no force)
+
+Stage Summary:
+- T-MIG-112 DONE: the classroom foundation is capture+verify+flip complete — the LAST zero-corpus exclusion of the 111 census discharged; the corpus of record 203/203; the flip LIVE on the served bundle; the strangler posture intact (rollback = unset the one env var)

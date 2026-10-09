@@ -1,0 +1,88 @@
+{
+ "task": "T-MIG-112",
+ "run": "run-004",
+ "lane": "r7a (web-da4ab8b1)",
+ "at": "2026-10-09T16:19:18Z",
+ "what": "the post-merge closure battery of record: PR #174 merge-intake, the 093/110/111-recipe hub redeploy, the post-deploy double-plane battery, the union replay",
+ "merge": {
+  "pr": 174,
+  "merged_sha": "8907daa",
+  "intake": "the desk merged via merge-intake (2e6d70e: origin/main merged INTO the branch \u2014 zero code conflicts, the worklog union byte-checked); main CI 2/2 green at the merge tip",
+  "post_merge_drift": "8907daa -> d5605ffe6 = ONE .syllabai-only receipt commit (the r0-auto cron-202610100000 bookkeeping for this very merge) \u2014 the replay ran at the drifted tip, the deploy source was the merge tip (the 111 .syllabai-only-drift law)"
+ },
+ "deploy": {
+  "recipe": "the 093/110/111 recipe (pre-census -> main-CI wait -> fetch-first reset -> race-guard -> vercel --prod -> READY poll -> baked-table bundle evidence); ZERO api contact (the api carrier untouched)",
+  "deployment": "dpl_Bhau3pD7sfTmXhRCVUk4ZJ86aV4d",
+  "ready": true,
+  "rollback_anchor": "dpl_EfD8Km7FKhgEXcLWK4tM6n1T7asT",
+  "baked_table_evidence": {
+   "pre": {
+    "teacher-classes": 14,
+    "learner-classroom": 3,
+    "teacher-learners": 1,
+    "knowledge-graph": 2,
+    "smart-lesson": 2,
+    "topics": 2,
+    "documents": 1,
+    "review-queue": 4,
+    "question-bank": 1
+   },
+   "post": {
+    "teacher-classes": 15,
+    "learner-classroom": 4,
+    "teacher-learners": 2,
+    "knowledge-graph": 2,
+    "smart-lesson": 2,
+    "topics": 2,
+    "documents": 1,
+    "review-queue": 4,
+    "question-bank": 1
+   },
+   "deltas": {
+    "teacher-classes": 1,
+    "learner-classroom": 1,
+    "teacher-learners": 1,
+    "knowledge-graph": 0,
+    "smart-lesson": 0,
+    "topics": 0,
+    "documents": 0,
+    "review-queue": 0,
+    "question-bank": 0
+   },
+   "verdict": "EXACT \u2014 each classroom row literal +1 occurrence, all six 111 needles delta 0 (no regression)"
+  }
+ },
+ "battery": {
+  "legs": 24,
+  "passed": 24,
+  "verdict": "ALL LAWS PASS 24/24",
+  "flips_live": [
+   "R1/R4 learner-classroom 200 (honest-zero + empty-feed laws) through the v2 base + R2 core parity same-bearer (the 108 cold-start pattern disclosed: attempts -1,-1,200)",
+   "R5 teacher-classes 200 (fresh-teacher honest []) + R6 core parity same-bearer FIRST TRY (the fresh account's v2-minted teacher bearer verified by core \u2014 the R2 continuity re-proven live)",
+   "R10 roster 200 teacher"
+  ],
+  "captured_laws_through_the_flip": [
+   "R3 learner-classroom unauth 401",
+   "R7 classes unauth 401",
+   "R8 classes-as-student 403 role law",
+   "R9 malformed-uuid 400-first law",
+   "R11 roster unauth 401",
+   "R12 roster-as-student 403 role law"
+  ],
+  "no_regression": [
+   "R13 learner-kg 200 (the 111 flip)",
+   "R14 recommendations 200 (the 110 flip)",
+   "R15 me-state 200 (the 096 spine)"
+  ],
+  "band_a": "9/9 (health, root-404, login-400, tutor/decay 401s, CORS 204, hub 200, census-class registers)",
+  "write_ledger": "2 census-class registers (1 probe student + 1 probe teacher, battery accounts) \u2014 zero content mutations, zero DDL, zero env"
+ },
+ "union_replay": {
+  "run": 37957733959,
+  "conclusion": "success",
+  "head": "d5605ffe6",
+  "verdict": "UNION 203/203 PASS (seed 188/188 = 171 + the 17 classroom cases ALL GREEN first-replay; prod 15/15; 5 via the T-MIG-071 declared limiter-429 disposition) \u2014 the justified-ledger stays EMPTY",
+  "artifact": 11629390146
+ },
+ "closure": "T-MIG-112 DONE of record: the classroom foundation is capture+verify+flip complete (the last zero-corpus exclusion of the 111 census discharged); the flip is LIVE on the served bundle; the corpus of record is 203/203"
+}
