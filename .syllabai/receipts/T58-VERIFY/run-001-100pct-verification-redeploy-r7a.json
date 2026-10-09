@@ -1,0 +1,55 @@
+{
+  "task": "T58-VERIFY",
+  "receipt": "run-001-100pct-verification-redeploy-r7a",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)",
+  "operator_trace": "1a11f804f222f9b9 'Check the current status of v2 migration. Check if it is actually 100% complete. Verify everything is working perfectly. If not autonomously fix it. Goal is to retire syllabai-core and syllab-hub completely (dont have to do anything in those repo, just keep them as is). Keep working until goal is met. DO NOT MAKE MISTAKES AND BREAK ANYTHING.'",
+  "recorded_at_utc": "2026-10-09",
+  "verdict": "V2 MIGRATION IS 100% COMPLETE OF RECORD at main 3b6d664: board 101/101 cards DONE (T-MIG-107 flipped this run, the stale-card precedent); P1 re-verified first-hand at tip; P2 FORMALLY CLOSED of record (r3a run-25, union 180/180) + freshness re-proven by run 26 at the new candidate 3b6d664 (this receipt); P3 dual-run evidence package closed lane-side (operator witness ask standing, r3a W7-P3); P4 sign-off draft pre-filled (operator paste owed); sections 1-3 EXECUTED of record (freeze+flip r1c 2026-10-08T05:58Z; decay takeover r1c env act + first-fire + re-fire; S3.3 cross-check r4b 3b6d664 with v2 cron self-fire 02:29:12.335Z vercel-cron 0/0 + exactly-once global + the S3.2 corrected law: core scheduler NOT no-op but skill_states read-only per core source ADR-031/C-4 — zero double-decay by construction both sides); S4 48h watch OPENED (r4b; S6.1 archive eligible 2026-10-11). Retirement residuals ALL [OPERATOR]-gated: P3 witness countersign, P4 sign-off paste, Render core disable (post-watch), GitHub archive of syllabai-core + syllabai-hub (S6.1, eligible 2026-10-11), PAT rotation. LANE-SIDE DEBT: ZERO.",
+  "census_of_record": {
+    "board": "101/101 DONE after this run's T-MIG-107 flip (was 100/101; the only IN_REVIEW card — PR #168 merged d2308eb with its flip never landed, the T-MIG-042 stale-card precedent)",
+    "open_prs": 0,
+    "ci_at_tip": "verify SUCCESS + hub SUCCESS at 0b4ffa9 (checked first-hand via check-runs API; r0-auto 2/2 at d2308eb also of record)",
+    "local_gates_first_hand_at_tip": "typecheck x4 exit 0; bun test apps/api packages = 1854 pass / 0 fail / 13 skip / 7182 expects (EXACT of-record c9685f0); bun test apps/hub = 54/0/432; golden selftest OK",
+    "serving_bundles": {
+      "api": "STALE at census time — dpl_DJhp8McG @ 8565b4b while main carried T-MIG-107 (#168, apps/api delta 9 files +10032: review-writes.ts NEW 808L, routes/content +377, canonical kind widening, 103-rider 0001 emission bookkeeping) — THE one lane-side gap found, FIXED this run (below)",
+      "hub": "CURRENT — dpl_H8AYEmt8 @ 6813bb7, apps/hub delta 6813bb7..3b6d664 EMPTY, no lever owed"
+    },
+    "preconditions": {
+      "P1": "MET (register + this run's first-hand gates at 3b6d664)",
+      "P2": "CLOSED of record (r3a W7-P2 run 25 @ a5abd14a union 180/180 zero non-justified) + THIS run re-proves freshness at 3b6d664 (neon-replay run 26 id 37900236414)",
+      "P3": "evidence package CLOSED lane-side (learner CLOSED x2 live, teacher CLOSED via handoff+instrument, tutor CLOSED ordered+r9); human-witness countersign = the standing [OPERATOR] ask",
+      "P4": "draft pre-filled (r3a W7-P4); operator paste owed"
+    }
+  },
+  "s33_corroboration_independent": {
+    "note": "r4b filed the of-record S3.3 cross-check (3b6d664) minutes before this lane's read-only census; BOTH converged on identical first-hand numbers — filed here as independent corroboration, no duplicate receipt",
+    "method": "read-only SELECT decay_job_runs via the sanctioned repo postgres driver (DATABASE_URL via the Vercel single-env decrypt endpoint, in-memory only)",
+    "rows": 21,
+    "v2_family": "window 2026-10-09 00:00:00+00 executed 02:29:12.335Z trigger=vercel-cron decayed=0 reviews=0 (SELF-FIRE PROVEN); window 2026-10-08 00:00:00+00 executed 18:22:46.477Z (manual first-fire of record)",
+    "core_family": "03:00:00+00 windows through 2026-10-09 (CATCH_UP decayed=117 @ 03:15Z) — the S3.2 finding: NOT a harmless no-op",
+    "double_decay_ruling": "ZERO by construction on BOTH sides: v2 ADR-031 read-time never persists (apps/api/src/services/learner-model/decay.ts) AND the core's NightlyDecayJob is read-only over skill_states ('No saveAll here, deliberately'; writes = own ledger family + deduped PENDING review_schedules inserts only — core source read via raw.githubusercontent SyllabAI/syllabai-core @ 6cad6ef, read-only, zero repo contact)",
+    "jitter": "29m18s vs the 02:00 pin — within Vercel Cron best-effort; row present + unique = no S4 alert (r4b concurrence)"
+  },
+  "fix_of_record": {
+    "gap": "api-of-record serving bundle stale vs main (8565b4b < 3b6d664 with the T-MIG-107 apps/api delta) — the last knowingly-dead surface class implemented on main but not served",
+    "act": "api-of-record redeploy from tip (the 093 recipe of record; operator's standing 100%-verification order = firing legality)",
+    "build": "worktree-only shims (r1c Wave-A precedent, upstream untouched; restored post-build, git status clean), 6/6 asset SHA pins EXACT (concepts 24fa91ac7149682b, edges 8a651dd9e60bfefa, practicals e53e5f87606a2b5a, relationships b3b7529222d77d80, spec_points b1fea69953205077, topics a7b14cbdd34bb9fe), bundle 322 modules (of-record 321 +1 = the review-writes service — the exact T-MIG-107 delta), 3,122,406 bytes CJS (of-record 3,093,758 +28,648 = the content-write implementation)",
+    "localgate": "8/8 of-record probes + 3/3 supplemental ALL PASS on the real Neon wire (ep-ancient-cake-a52e4kfd, the single main; DATABASE_URL in-memory only; probe learner r7a-t58gate-* census register class; tutor CRUD net-zero 201/200/200/204/200; teacher join-code fail-closed 403 + gate-open 201; teacher concept-graph edges 200 exercising the inlined assets)",
+    "deploy": "vercel CLI 62.7.0 deploy --prod --yes from the 2-file stage (CLI-upload recipe; gitSource lever stays BANNED of record) -> dpl_G4PCQtvjzU92HSynY4wa1KfbdG79 READY, BOTH production aliases attached (syllabai-v2.vercel.app + syllabai-v2-syllab-ai.vercel.app, verified via v2 aliases API); prior holder dpl_DJhp8McG alias-less retained as evidence; race-guard clean pre-fire (latest = dpl_DJhp8McG, no parallel deploy)",
+    "live_census_17_17": {
+      "band_A_unauth_laws": "11/11 (health 200 byte-parity; root 404; login-malformed 400 validation_failed; hub cla {} 400 invalid_body; tutor unauth 401; decay unauth 401 fail-closed; CORS hub-v2 preflight 204 ACAO exact; hostile origin 403 no-ACAO = the run-003 of-record prune law — the prober's 204 expectation was the test-design error, DISCLOSED no-silent-correction; hub health 200 dataMode core-api coreConfigured true; learner register 201; me/state 200 JWT law)",
+      "band_C_tmig107_discriminators": "5/5 (empty-body POST /documents 400 malformed HttpMessageNotReadable parity; bad-kind 400 conversion-precedes-body; unknown-paper validate 404; validate-all 404 exam-paper laws; teacher documents list 200) — the prior carrier served honest-501 to ALL of these; T-MIG-107 IS LIVE on the api-of-record; every probe mutation-free by construction, ZERO content writes fired",
+      "saved": "scratch/t58_postdeploy_census_1791531483.json (verbatim bodies)"
+    }
+  },
+  "p2_freshness_run_26": {
+    "dispatch": "neon-replay.yml run 26 id 37900236414 @ 3b6d664 (workflow_dispatch, this lane), read-only instrument, disposable Neon COW branches, zero prod contact",
+    "verdict": "UNION 180/180 PASS at 3b6d664 (seed tranche 165/165 + prod tranche 15/15; 5 via the T-MIG-071 R3-C declared limiter-429 disposition — the same justified class as the run-25 closure) — completed success 07:43Z, every workflow step green incl. the union-verdict gate and the read-only-proof step; artifact 11602515849; P2 freshness RE-PROVEN at the new cutover candidate, zero new non-justified divergences (the S4 watch golden metric GREEN)"
+  },
+  "write_ledger": {
+    "repo": [".syllabai/tasks/T-MIG-107-content-write-surfaces-port.yaml (desk-flip DONE + flipped_at)", ".syllabai/receipts/T58-VERIFY/run-001-100pct-verification-redeploy-r7a.json (this receipt)", ".syllabai/worklog.md (append-only Task-58 entry)"],
+    "prod_writes": ["api-of-record redeploy dpl_G4PCQtvjzU92HSynY4wa1KfbdG79 (the owed lever; the 5th firing of the from-tip lineage)", "census-class probe learners + 1 probe teacher (r7a-t58census-*, r7a-t58gate-*) + tutor session create/delete net-zero"],
+    "zero": ["zero DDL", "zero env writes", "zero content-write mutations (all 107 probes mutation-free)", "zero Neon main writes beyond the census-class register rows", "zero force-push", "zero core/hub repo contact (core source READ-ONLY via raw.githubusercontent)"],
+    "fetch_first": "origin 3b6d664 verified pre-act; push re-verify after"
+  }
+}
