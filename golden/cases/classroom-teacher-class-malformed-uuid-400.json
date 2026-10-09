@@ -1,0 +1,24 @@
+{
+ "name": "classroom-teacher-class-malformed-uuid-400",
+ "description": "GET /api/v1/teacher/classes/not-a-uuid as TEACHER: 400 bad_request 'malformed request' \u2014 the malformed-path law BEFORE any sql (the 084 leg-07 precedent class) [T-MIG-112 L08]",
+ "source": "captured from the live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef) on 2026-10-09 by T-MIG-112 run-001/run-003 (r7a); probe-account capture \u2014 probe emails mapped to role labels, runtime uuids mapped to role-labelled fakes, tokens never persisted; no PII present",
+ "method": "GET",
+ "path": "/api/v1/teacher/classes/not-a-uuid",
+ "request": {
+  "headers": {
+   "Authorization": "Bearer scrubbed-fixed-dummy-jwt-token"
+  }
+ },
+ "expect": {
+  "status": 400,
+  "body": {
+   "status": 400,
+   "error": "bad_request",
+   "message": "malformed request",
+   "timestamp": "2026-10-09T15:34:50.331805283Z"
+  }
+ },
+ "tolerate": [
+  "timestamp"
+ ]
+}

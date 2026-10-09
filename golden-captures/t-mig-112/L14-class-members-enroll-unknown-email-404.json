@@ -1,0 +1,19 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T15:34:55Z",
+ "captured_from": "live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef)",
+ "leg": "L14",
+ "method": "POST",
+ "name": "class-members-enroll-unknown-email-404",
+ "path": "/api/v1/teacher/classes/00000000-0000-4000-8000-000000000001/members",
+ "request_body": {
+  "email": "nobody-unknown@example.invalid"
+ },
+ "response_body": {
+  "status": 404,
+  "error": "not_found",
+  "message": "no account with that email \u2014 the student registers first, then you enroll",
+  "timestamp": "2026-10-09T15:34:55.401479403Z"
+ },
+ "status": 404
+}

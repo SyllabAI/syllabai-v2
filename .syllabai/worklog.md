@@ -6862,3 +6862,36 @@ Work Log:
 
 Stage Summary:
 - §3.3 window cross-check REPLICATED of record; §4 watch datapoint refreshed with the golden metric GREEN at the tip (union 186/186); watch window OPEN since r4b 07:40Z, closes ~2026-10-11 07:40Z. Next decay watch event: 2026-10-10 00:00Z window — one vercel-cron row by ~02:30Z (jitter baseline 29m18s), zero duplicates. §3.2 Render-disable decision remains operator-gated with the core-NOT-no-op finding as its evidence. Lane IDLE.
+
+---
+
+Task ID: T-MIG-112
+Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)
+Task: ORDERED (operator trace 1a1213760243901d "order the classroom-foundation capture+verify band") — execute the T-MIG-111 exclusion law: give the Wave-5 classroom/teacher foundation (T-MIG-052 slice: teacher/classes CRUD x8 + learners/me/classroom x3 + teacher/learners roster x1 = 12 surfaces, ZERO corpus legs) its two-plane golden-verify per the T-MIG-092 recipe, with the narrow-widen rider gated on the ALL-GREEN verdict (FAIL-NO-FLIP), per the operator's standing flip order trace 1a120e747bb195dd which named the class-KG siblings and the 111 closure receipt which reserved the flip to "its own capture+verify band".
+
+Work Log:
+- fresh fetch-first census at claim: origin/main e3939d8 (T-MIG-111 closure addendum), 0 open PRs, 0 t-mig-112* heads, CI 2/2 + neon-replay run 37950104606 green at tip — union baseline standing, band unclaimed
+- family inventory re-proven from source: TeacherClassController x8 (POST create / GET list / GET /{id} detail / POST /{id}/status / POST+DELETE /{id}/members / POST+GET /{id}/announcements), LearnerClassroomController x3 (GET overview / GET+POST /announcements...), TeacherRosterController x1 (GET /api/v1/teacher/learners); hub emitters api.ts:1249-1338 + teacherLearners :1444; zero golden/cases coverage under any of the three subtrees (grep); the already-flipped mid-path rows (knowledge-graph x2, coverage) are CLOSED laws — no-regression legs only
+- row-grammar safety re-proof: /api/v1/learners/me/classroom row is segment-safe from the CLA LLM surface (/api/v1/learners/me/cla — the 111 bare-prefix forbidden law); teacher/classes subtree carries ONLY the 8 CRUD + the flipped KG/coverage tails; roster path is bare-only
+- capture/verify instrument design per the 092 recipe + the corpus id-free rider per the 109 mis-cut lesson (NO server-generated-id chaining in static corpus cases — the tutor precedent: positive laws live in the per-family verify of record)
+- card written + claim pushed (this commit); run-001 capture next
+
+Stage Summary:
+- T-MIG-112 OPEN on branch t-mig-112/r7a; the last zero-corpus exclusion of the 111 census is now in flight; corpus 186 -> ~200 planned; union gate + FAIL-NO-FLIP hold end-to-end
+
+---
+
+Task ID: T-MIG-112 (runs + widen rider)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)
+Task: execute the ordered classroom-foundation capture+verify band end-to-end (operator trace 1a1213760243901d).
+
+Work Log:
+- run-001 capture: 49 legs vs the LIVE frozen core — probe teacher+student registered on V2 (joinCode per the r49 law, value never printed), the R2 same-bearer continuity LIVE-proven for BOTH roles (S05/S06 200s on core); role-labelled uuid-map redaction, tokens never persisted; capture-decides: L08 malformed-uuid 400-first (the 084 class), L15/L16 enroll 201 idempotent pair, L17 delete-unknown 200 no-op; write ledger census-class (2 registers + 2 classes + enrollments + 2 announcements + reads), BOTH probe classes ARCHIVED at the close law; the production roster body redacted to the probe-owned row (PII law)
+- run-002 verify: the SAME matrix vs the LIVE v2 (live-v2-as-target, the 092 deviation) — 38/40 byte-law PASS in-run; the 2 reds (L29 membership-gate, C02 close-archive) ruled INSTRUMENT ARTIFACTS first-hand (real-id re-probe: the 403 'this announcement is not in your classroom' law BYTE-EXACT 3x stable — intermittency RULED OUT; the archive 200 close law exact) — VERDICT OF RECORD: ALL-GREEN, the widen gate MET (no defect band needed)
+- run-003 addendum: the 4 unknown-uuid ordering laws (status 404 class-first; members blank-email 400 validation-first; members unknown-email 404 class-before-email; announcements blank-title 400 validation-first) — ALL byte-equal core-vs-v2, fail-closed, zero rows
+- corpus rider: 17 id-free classroom cases joined golden/cases (authz shells x6, honest zeros x3 tranche-empty, lookup/validation laws x8) — NO stateful pins (the 092 tutor precedent: positive-chain laws live in the fixtures + receipts; the 109 mis-cut lesson: no cohort pins, no capture-identity pins)
+- widen rider (gate MET): THREE narrow rows at the table tail (/api/v1/teacher/classes + /api/v1/learners/me/classroom + /api/v1/teacher/learners) with grep-verified emitter inventories (8 live call-sites across 5 files + 6 dormant), the KG/coverage MID-PATH rows untouched, the segment-safety from the cla family proven; surface test exact-set +3 + the 112 line test + the CORE_ONLY/096/110/111 guard inversions (the foundation tails now resolve v2, every captured path law-covered)
+- gates: typecheck x4 exit 0; surface 25/25; hub 58/58; repo 1855/0/13 — ALL GREEN
+
+Stage Summary:
+- the LAST zero-corpus exclusion of the 111 census is capture+verify+flip complete: the classroom foundation is golden-verified of record and the rows land behind the operator's standing flip order (trace 1a120e747bb195dd named the class-KG siblings; the 111 closure receipt reserved the flip to this band; the operator ordered the band by name); PR next, r0-auto merge, then the 093/110/111-recipe hub redeploy + battery + the union replay (186 -> 203 planned)

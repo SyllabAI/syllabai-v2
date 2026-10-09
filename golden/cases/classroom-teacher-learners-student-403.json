@@ -1,0 +1,24 @@
+{
+ "name": "classroom-teacher-learners-student-403",
+ "description": "GET /api/v1/teacher/learners as STUDENT: 403 (role recorded in the name) [T-MIG-112 L35]",
+ "source": "captured from the live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef) on 2026-10-09 by T-MIG-112 run-001/run-003 (r7a); probe-account capture \u2014 probe emails mapped to role labels, runtime uuids mapped to role-labelled fakes, tokens never persisted; no PII present",
+ "method": "GET",
+ "path": "/api/v1/teacher/learners",
+ "request": {
+  "headers": {
+   "Authorization": "Bearer scrubbed-fixed-dummy-jwt-token"
+  }
+ },
+ "expect": {
+  "status": 403,
+  "body": {
+   "timestamp": "2026-10-09T15:34:41.603Z",
+   "status": 403,
+   "error": "Forbidden",
+   "path": "/api/v1/teacher/learners"
+  }
+ },
+ "tolerate": [
+  "timestamp"
+ ]
+}

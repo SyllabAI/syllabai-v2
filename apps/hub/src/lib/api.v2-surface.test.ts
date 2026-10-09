@@ -172,12 +172,13 @@ const CORE_ONLY_PATHS: readonly string[] = [
   // capture includes a stub, even with zero hub emitters; the family flip
   // awaits its own port band.
   "/api/v1/teacher/curriculum/versions",
-  // teacher/classes STAYS CORE: the class-KG/coverage families flip under
-  // the MID-PATH rows (T-MIG-086/087); the FOUNDATION family (list/detail/
-  // status/members/announcements + learners/me/classroom) has ZERO corpus
-  // legs of record (grep-verified census, T-MIG-111) — the flip law's
-  // golden-verified bar is UNMET; its own capture+verify band owns the flip.
-  "/api/v1/teacher/classes",
+  // teacher/classes FLIPPED in T-MIG-112 (the former STAYS-CORE pin MOVED
+  // OUT of this list of record): the class-KG/coverage families ride the
+  // MID-PATH rows (T-MIG-086/087, untouched) and the FOUNDATION family
+  // (list/detail/status/members/announcements + learners/me/classroom +
+  // teacher/learners) is now golden-verified of record — the 092-recipe
+  // two-plane verify ALL-GREEN (receipts T-MIG-112/run-001..003) + 17 id-free
+  // corpus cases; the T-MIG-111 zero-corpus exclusion law DISCHARGED.
   // teacher/marking STAYS CORE (T-MIG-111 exclusion law): the READ positives
   // are corpus-proven (answers 200x3 + 403 + 401s, queue-v2 200x2,
   // throughput 200x2) BUT the hub-emitted human-mark WRITE (api.ts:1379)
@@ -280,6 +281,9 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/teacher/content/documents", // T-MIG-111: the TEACHER-side family (16 legs GREEN incl. the captured 500 laws; zero hub emitters — routing availability, the 090 posture; zero 501s remain post-107)
       "/api/v1/teacher/content/review-queue", // T-MIG-111: ONE row captures the verified TRIO (queue/-v2/-v3, 8 legs GREEN incl. 200s on all three; THREE dormant emitters ride it, zero call-sites — startsWith multi-family capture DOCUMENTED in the row comment)
       "/api/v1/admin/question-bank", // T-MIG-111: the SME family (7 legs GREEN incl. both ingest 200 write laws + the role-law matrix; zero hub emitters — routing availability)
+      "/api/v1/teacher/classes", // T-MIG-112: the classroom FOUNDATION (the operator-ordered capture+verify band trace 1a1213760243901d) — 092-recipe two-plane golden-verify of record (49-leg capture + 40-leg verify ALL-GREEN incl. the artifact triage + the run-003 ordering-law addendum); the KG/coverage MID-PATH rows untouched
+      "/api/v1/learners/me/classroom", // T-MIG-112: the learner overlay (overview/feed/markRead; the membership-gate 403 byte-exact 3x-stable; segment-safe from the cla family)
+      "/api/v1/teacher/learners", // T-MIG-112: the V49 ruling roster (identity projection only; bare-only path, no deeper tail either plane)
     ]);
   });
   test("the mid-path table is exactly the ruled set — the mechanism-A amendment needs its own golden gate too", () => {
@@ -322,8 +326,9 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     // T-MIG-108 chain live-proved it, see the 110 test)
     // cla/ask LEFT this list at the T-MIG-097 flip (both wires live-proven:
     // run-003 10/10 refusal dual-live + run-004 generation probe 200)
+    // T-MIG-112: classroom LEFT this list — its row flipped (the 112 line
+    // test pins the flip; the capture+verify band of record)
     for (const p of [
-      "/api/v1/learners/me/classroom",
       "/api/v1/learners/me/intervention-runs",
     ]) {
       expect(v2SurfaceBase(p, V2)).toBeNull();
@@ -345,15 +350,17 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
       `${V2}/api/v1/learners/me/recommendations?rootId=kn-1`,
     );
     // TRUE siblings stay core — the row is the LEAF endpoint's exact path and
-    // must never capture them (classroom + intervention-runs are the 096
-    // LLM-bearing pins; they STILL stay core after T-MIG-111 — no positive
-    // wire / zero corpus legs). T-MIG-111 UPDATE of record: smart-lesson +
+    // must never capture them (intervention-runs is the 096
+    // LLM-bearing pin; it STILL stays core after T-MIG-111 — no positive
+    // wire). T-MIG-111 UPDATE of record: smart-lesson +
     // knowledge-graph MOVED OUT of this stay-core list — the corpus-verified
     // widen band flipped both (the w4 legs GREEN at tip; the 111 line test
     // pins their rows) — the 110 comment's 'no golden gate of record' posture
     // is DISCHARGED by the corpus of record (union 186/186 incl. the w4 legs).
+    // T-MIG-112 UPDATE of record: classroom MOVED OUT of this stay-core list
+    // — its own capture+verify band flipped it (the 112 line test pins the
+    // flip; the 092-recipe verify of record ALL-GREEN).
     for (const p of [
-      "/api/v1/learners/me/classroom",
       "/api/v1/learners/me/intervention-runs",
     ]) {
       expect(v2SurfaceBase(p, V2)).toBeNull();
@@ -398,6 +405,10 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
       "/api/v1/teacher/content/review-queuex".startsWith("/api/v1/teacher/content/review-queue"),
     ).toBe(true);
     // the EXCLUDED siblings stay core (the 111 exclusion laws):
+    // T-MIG-112 UPDATE of record: teacher/classes + learners/me/classroom
+    // MOVED OUT of this excluded list — their own capture+verify band
+    // flipped them (the 112 line test pins the flip; the 111 exclusion law
+    // is DISCHARGED of record).
     for (const p of [
       "/api/v1/teacher/marking/answers",
       "/api/v1/teacher/marking/answers/a-1/human-mark",
@@ -407,8 +418,6 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
       "/api/v1/teacher/curriculum/versions/v-1/nodes",
       "/api/v1/teacher/tests/preview",
       "/api/v1/teacher/tests/weakness-options",
-      "/api/v1/teacher/classes",
-      "/api/v1/learners/me/classroom",
       "/api/v1/learners/me/answer-input/transcribe",
       "/api/v1/learners/me/intervention-runs",
       "/api/v1/questions?q=photosynthesis",
@@ -419,16 +428,73 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     ]) expect(v2SurfaceBase(p, V2)).toBeNull();
   });
 
+  test("the T-MIG-112 line: the classroom foundation flips via its own capture+verify band (r7a, operator order 1a1213760243901d)", () => {
+    // The 092-recipe two-plane golden-verify of record (receipts
+    // T-MIG-112/run-001..003): 49-leg capture vs the live frozen core (probe
+    // accounts v2-registered, the R2 same-bearer continuity LIVE-proven for
+    // BOTH roles) + 40-leg verify vs the live v2 ALL-GREEN (38/40 in-run
+    // byte-laws + 2 comparator-artifact legs re-proven first-hand 3x-stable:
+    // the membership-gate 403 law BYTE-EXACT, the close-archive 200 law)
+    // + the run-003 ordering-law addendum byte-equal both planes. 17 id-free
+    // corpus cases joined the union. The T-MIG-111 zero-corpus exclusion law
+    // is DISCHARGED.
+    // the teacher foundation inventory (the 8 CRUD endpoints + roster):
+    for (const p of [
+      "/api/v1/teacher/classes", // list (newest-first) + create
+      "/api/v1/teacher/classes/00000000-0000-4000-8000-000000000001", // detail (roster)
+      "/api/v1/teacher/classes/00000000-0000-4000-8000-000000000001/status", // tolerant parse + archive/reopen
+      "/api/v1/teacher/classes/00000000-0000-4000-8000-000000000001/members", // enroll + remove member
+      "/api/v1/teacher/classes/00000000-0000-4000-8000-000000000001/members/00000000-0000-4000-8000-000000000005",
+      "/api/v1/teacher/classes/00000000-0000-4000-8000-000000000001/announcements", // publish + list
+      "/api/v1/teacher/learners", // the V49 ruling roster (bare-only path)
+    ]) expect(v2SurfaceBase(p, V2)).toBe(V2);
+    // the learner overlay inventory (the 3 endpoints):
+    for (const p of [
+      "/api/v1/learners/me/classroom", // overview (the honest zero + archived-dropout laws)
+      "/api/v1/learners/me/classroom/announcements", // the feed
+      "/api/v1/learners/me/classroom/announcements/00000000-0000-4000-8000-000000000003/read", // markRead (append-only)
+    ]) expect(v2SurfaceBase(p, V2)).toBe(V2);
+    // malformed-uuid class paths are captured by the PREFIX row (startsWith —
+    // no UUID_RE guard, unlike the mid-path rows): wire-safe of record — v2
+    // serves the captured 400-first malformed law (run-001 L08 byte-equal,
+    // the 035 tree-pin precedent)
+    expect(v2SurfaceBase("/api/v1/teacher/classes/not-a-uuid", V2)).toBe(V2);
+    // SEGMENT-SAFETY: the classroom row never captures the shorter cla
+    // sibling family (cla/ask keeps its OWN exact-path row) nor any other
+    // learners/me sibling
+    expect(v2SurfaceBase("/api/v1/learners/me/class", V2)).toBeNull();
+    // the already-verified mid-path rows still resolve v2 (no regression):
+    expect(
+      v2SurfaceBase(
+        "/api/v1/teacher/classes/00000000-0000-4000-8000-000000000001/knowledge-graph?rootId=kn-1",
+        V2,
+      ),
+    ).toBe(V2);
+    expect(
+      v2SurfaceBase(
+        "/api/v1/teacher/classes/00000000-0000-4000-8000-000000000001/coverage",
+        V2,
+      ),
+    ).toBe(V2);
+    // the 111-excluded siblings KEEP their stay-core laws (unchanged):
+    expect(v2SurfaceBase("/api/v1/teacher/curriculum/versions", V2)).toBeNull();
+    expect(v2SurfaceBase("/api/v1/teacher/marking/answers", V2)).toBeNull();
+  });
+
   test("the T-MIG-097 line: the CLA ask flips after BOTH wires were proven live (r7a, chain order 1a119df7d930b609)", () => {
     // the ask path resolves to v2 (run-003 10/10 refusal dual-live + run-004
     // generation probe 200 answer-envelope of record)
     expect(v2SurfaceBase("/api/v1/learners/me/cla/ask", V2)).toBe(V2);
     // the rest of the /learners/me/cla subtree stays table-governed (none of
-    // it is captured by this exact-path row)
+    // it is captured by this exact-path row). T-MIG-112 UPDATE of record:
+    // classroom MOVED OUT of this list — its own row flipped (the 112 line
+    // test); the shorter-segment sibling "/class" exemplifies the same
+    // protection law (the classroom row cannot capture the cla family —
+    // cla is SHORTER than classroom).
     for (const p of [
       "/api/v1/learners/me/cla",
       "/api/v1/learners/me/cla/other",
-      "/api/v1/learners/me/classroom",
+      "/api/v1/learners/me/class",
     ]) {
       expect(v2SurfaceBase(p, V2)).toBeNull();
     }
@@ -714,31 +780,39 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     ]) {
       expect(v2SurfaceBase(p, V2)).toBe(V2);
     }
-    // THE GUARD (the flip law preserved in string form): the unverified
-    // class-management siblings NEVER match a mid-path row — the tail
-    // literal isolates them and shorter paths fail the segment-count floor.
+    // THE GUARD (the flip law in string form) — T-MIG-112 UPDATE of record:
+    // the guard INVERTED for the foundation tails — the classroom FOUNDATION
+    // row (T-MIG-112, golden-verified of record via its own capture+verify
+    // band) now captures EVERY /api/v1/teacher/classes** path (startsWith),
+    // so the former stay-core pins all resolve V2 — every captured path is a
+    // real v2 handler with a captured law (run-001/002/003). The mid-path
+    // rows remain for grammar-governed routing; there is no observable
+    // difference (both tables resolve v2 for the whole subtree).
     for (const p of [
-      "/api/v1/teacher/classes", // the list (4 segs < row floor)
-      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab", // bare detail (tail empty)
+      "/api/v1/teacher/classes", // the list + create (the foundation row)
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab", // bare detail (roster)
       "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/members",
       "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/members/st-1",
       "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/announcements",
       "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/status",
     ]) {
-      expect(v2SurfaceBase(p, V2)).toBeNull();
+      expect(v2SurfaceBase(p, V2)).toBe(V2);
     }
-    // The :uuid wildcard is bound to the pinned UUID_RE law: malformed and
-    // non-UUID class ids do NOT match (stay core, where the SAME captured
-    // 400-first malformed law governs at the origin — teacher-kg.ts:156-158
-    // reproduces it v2-side; the 084 leg-07 precedent class). Non-row tails
-    // never match either (segment-exact).
+    // The :uuid wildcard law still binds the MID-PATH rows: malformed and
+    // non-UUID class ids do NOT match a mid-path row — but they ARE captured
+    // by the foundation PREFIX row (no UUID_RE guard on prefix rows), and
+    // that is wire-safe of record: v2 serves the SAME captured 400-first
+    // malformed law at the origin (run-001 L08 byte-equal; the 035 tree-pin
+    // precedent). Non-row mid-path tails (partial-segment siblings) ride the
+    // prefix row the same way — DOCUMENTED INERT where no route exists,
+    // LAW-COVERED where one does (the subtree is fully captured).
     for (const p of [
       "/api/v1/teacher/classes/not-a-uuid/knowledge-graph",
       "/api/v1/teacher/classes/kn-1/knowledge-graph",
-      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graphx", // segment-exact: partial-segment capture structurally dead
+      "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graphx", // segment-exact mid-path: no match — the prefix row serves it
       "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/coverageq",
     ]) {
-      expect(v2SurfaceBase(p, V2)).toBeNull();
+      expect(v2SurfaceBase(p, V2)).toBe(V2);
     }
   });
 

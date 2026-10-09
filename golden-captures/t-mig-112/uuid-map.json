@@ -1,0 +1,25 @@
+{
+ "map": {
+  "52324796-f5f1-44e3-89d2-baabadab64bd": "00000000-0000-4000-8000-000000000005",
+  "56b3d2b8-c8b3-4467-aeb1-1fb5fb23fae7": "00000000-0000-4000-8000-000000000006",
+  "9bc34eb3-e96a-4c0c-af22-21a0015a5004": "00000000-0000-4000-8000-000000000001",
+  "95230d29-18b9-4485-b489-38382aca1bba": "00000000-0000-4000-8000-000000000003",
+  "f63db637-d70d-4d12-891a-8dc76bc99136": "00000000-0000-4000-8000-000000000002",
+  "15eb2a68-ecd9-4989-9d19-5a92c94ce4d5": "00000000-0000-4000-8000-000000000004"
+ },
+ "fakes": {
+  "CLASS_A": "00000000-0000-4000-8000-000000000001",
+  "CLASS_B": "00000000-0000-4000-8000-000000000002",
+  "ANN_A": "00000000-0000-4000-8000-000000000003",
+  "ANN_B": "00000000-0000-4000-8000-000000000004",
+  "STUDENT": "00000000-0000-4000-8000-000000000005",
+  "TEACHER": "00000000-0000-4000-8000-000000000006",
+  "UNKNOWN_UUID": "00000000-0000-4000-8000-0000000000ff"
+ },
+ "note": "role-labelled map \u2014 the verify driver resolves the SAME roles on the v2 substrate; probe emails mapped to probe-teacher/probe-student@example.invalid; tokens never persisted",
+ "probe_emails": {
+  "teacher": "probe-teacher@example.invalid",
+  "student": "probe-student@example.invalid"
+ },
+ "version": 1
+}

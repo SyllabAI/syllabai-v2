@@ -1,0 +1,19 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T15:34:52Z",
+ "captured_from": "live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef)",
+ "leg": "L11",
+ "method": "POST",
+ "name": "class-members-enroll-archived-409",
+ "path": "/api/v1/teacher/classes/00000000-0000-4000-8000-000000000001/members",
+ "request_body": {
+  "email": "probe-student@example.invalid"
+ },
+ "response_body": {
+  "status": 409,
+  "error": "conflict",
+  "message": "this class is archived \u2014 reopen it before enrolling",
+  "timestamp": "2026-10-09T15:34:52.706112830Z"
+ },
+ "status": 409
+}

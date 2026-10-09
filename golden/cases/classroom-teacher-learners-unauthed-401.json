@@ -1,0 +1,19 @@
+{
+ "name": "classroom-teacher-learners-unauthed-401",
+ "description": "GET /api/v1/teacher/learners (the V49 ruling roster) with no token: 401 before @PreAuthorize [T-MIG-112 L33]",
+ "source": "captured from the live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef) on 2026-10-09 by T-MIG-112 run-001/run-003 (r7a); probe-account capture \u2014 probe emails mapped to role labels, runtime uuids mapped to role-labelled fakes, tokens never persisted; no PII present",
+ "method": "GET",
+ "path": "/api/v1/teacher/learners",
+ "expect": {
+  "status": 401,
+  "body": {
+   "timestamp": "2026-10-09T15:34:41.148Z",
+   "status": 401,
+   "error": "Unauthorized",
+   "path": "/api/v1/teacher/learners"
+  }
+ },
+ "tolerate": [
+  "timestamp"
+ ]
+}

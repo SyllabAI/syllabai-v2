@@ -1,0 +1,38 @@
+{
+ "task": "T-MIG-112",
+ "run": "run-001",
+ "lane": "r7a (web-da4ab8b1)",
+ "at": "2026-10-09T15:50:02Z",
+ "operator_order": "trace 1a1213760243901d 'order the classroom-foundation capture+verify band'",
+ "what": "the classroom-foundation capture matrix (49 legs) against the LIVE frozen core, per the T-MIG-092 run-001 recipe",
+ "posture": {
+  "capture_plane": "CORE https://syllabai-core.onrender.com (the frozen core of record, 6cad6ef lineage)",
+  "probe_accounts": "fresh probe teacher + probe student registered on V2 via the honest register surface; the teacher joinCode per the r49 provisioning law of record (value NEVER printed, fp-only in the driver log)",
+  "bearer_continuity": "LIVE-PROVEN: the v2-minted bearers serve 200 on the core plane for BOTH roles (S05 student me/state 200; S06 teacher roster 200) \u2014 the T-MIG-111 R2 same-bearer continuity law extended to teacher-role; the vcp_ fallback was NOT needed",
+  "redaction": "probe emails -> probe-teacher/probe-student@example.invalid; runtime uuids -> role-labelled fakes (uuid-map.json of record); tokens NEVER persisted; the production roster body redacted to the probe-owned row (PII law)"
+ },
+ "legs": {
+  "total": 49,
+  "non_5xx": 49,
+  "attempts_beyond_first": [
+   "S00 core warm (actuator health)"
+  ]
+ },
+ "capture_decides": [
+  "L08 malformed class uuid -> 400 bad_request 'malformed request' FIRST (the 084 leg-07 precedent class; the card's 404 prediction is superseded by the captured law)",
+  "L15/L16 enroll -> 201 (the card's 200 prediction superseded; the captured 201 is the law, idempotent pair byte-identical)",
+  "L17 DELETE unknown member -> 200 (the idempotent no-op law, :188-198)"
+ ],
+ "write_ledger": {
+  "census_class_only": true,
+  "rows": "1 probe teacher register + 1 probe student register + 2 probe classes (A primary, B membership-403 substrate) + 2 enrollments (idempotent pair) + 2 announcements + read receipts",
+  "close_law": "C01/C02 archived BOTH probe classes 200 \u2014 ALL probe rows inert (archived classes drop out of learner overlays and refuse all new writes); the foundation has NO delete endpoints (the 052 honesty law) so net-zero is impossible \u2014 residue disclosed",
+  "planes_touched": "CORE only for the class rows (the probe accounts themselves live in the shared Neon DB via the v2 register)"
+ },
+ "fixtures": "golden-captures/t-mig-112/ (45 leg fixtures + uuid-map.json)",
+ "disclosures": [
+  "L34 roster served in 45.34s (the production cohort query) \u2014 body redacted to the probe-owned row, total row count NOT persisted (PII law)",
+  "S00 core warm-up 200 first attempt; zero infra retries across all 49 legs",
+  "one 302-class artifact: none (all legs direct)"
+ ]
+}

@@ -1,0 +1,25 @@
+{
+ "auth": "student",
+ "captured_at_utc": "2026-10-09T15:35:13Z",
+ "captured_from": "live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef)",
+ "leg": "L31",
+ "method": "GET",
+ "name": "learner-overview-post-read-200",
+ "path": "/api/v1/learners/me/classroom",
+ "request_body": null,
+ "response_body": {
+  "classes": [
+   {
+    "id": "00000000-0000-4000-8000-000000000001",
+    "courseSlug": "r7a-t112-probe-course",
+    "courseLabel": "r7a t112 probe course",
+    "name": "r7a t112 probe class",
+    "teacherName": "r7a t112 probe teacher",
+    "unreadAnnouncements": 0,
+    "enrolledAt": "2026-10-09T15:34:56.269082Z"
+   }
+  ],
+  "unreadAnnouncements": 0
+ },
+ "status": 200
+}

@@ -1,0 +1,21 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T15:34:47Z",
+ "captured_from": "live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef)",
+ "leg": "L05",
+ "method": "POST",
+ "name": "classes-create-duplicate-409",
+ "path": "/api/v1/teacher/classes",
+ "request_body": {
+  "courseSlug": "r7a-t112-probe-course",
+  "courseLabel": "r7a t112 probe course",
+  "name": "R7A T112 PROBE CLASS"
+ },
+ "response_body": {
+  "status": 409,
+  "error": "conflict",
+  "message": "you already have a live class with this name on this course",
+  "timestamp": "2026-10-09T15:34:47.339672602Z"
+ },
+ "status": 409
+}

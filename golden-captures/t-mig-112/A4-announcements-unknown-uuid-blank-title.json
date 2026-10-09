@@ -1,0 +1,21 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T15:47:18Z",
+ "captured_from": "live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef)",
+ "leg": "A4",
+ "method": "POST",
+ "name": "announcements-unknown-uuid-blank-title",
+ "path": "/api/v1/teacher/classes/00000000-0000-4000-8000-0000000000ff/announcements",
+ "request_body": {
+  "title": "   ",
+  "body": "probe body"
+ },
+ "response_body": {
+  "status": 400,
+  "error": "validation_failed",
+  "message": "title: must not be blank",
+  "timestamp": "2026-10-09T15:47:17.168292096Z"
+ },
+ "status": 400,
+ "note": "run-003 addendum: the unknown-uuid ordering law (capture decides)"
+}

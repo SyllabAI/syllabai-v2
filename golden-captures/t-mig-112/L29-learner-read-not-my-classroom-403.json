@@ -1,0 +1,17 @@
+{
+ "auth": "student",
+ "captured_at_utc": "2026-10-09T15:35:09Z",
+ "captured_from": "live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef)",
+ "leg": "L29",
+ "method": "POST",
+ "name": "learner-read-not-my-classroom-403",
+ "path": "/api/v1/learners/me/classroom/announcements/00000000-0000-4000-8000-000000000004/read",
+ "request_body": null,
+ "response_body": {
+  "status": 403,
+  "error": "forbidden",
+  "message": "this announcement is not in your classroom",
+  "timestamp": "2026-10-09T15:35:09.293422648Z"
+ },
+ "status": 403
+}
