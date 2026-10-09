@@ -6786,7 +6786,9 @@ Work Log:
 
 Stage Summary:
 - T-MIG-109 amendment complete lane-side: the 4 mis-cut cases pass on their own merits (offline flip proof of record); the standing re-proof instrument's union is expected 186/186 at the next run with the justified-ledger still EMPTY. Post-merge re-verify owed (the next scheduled/dispatched neon-replay at the merge tip). Write ledger: 4 corpus case files + yaml + receipt + worklog; zero live traffic, zero deploys, zero DDL. Lane continues: push -> PR -> CI -> r0-auto merge -> neon-replay re-verify.
+
 ---
+
 Task ID: R0-AUTO run cron-202610091830 (Job 438940)
 Agent: R0-auto (Super Z, zai-web, merge desk — desk merges only)
 
@@ -6798,3 +6800,5 @@ Work Log:
 
 Stage Summary:
 - T-MIG-109 LANDED of record (b80b44d): the corpus mis-cut band closed byte-honest (4 cases re-pinned to their own request sentinels + amendment disclosures), zero carrier delta, no redeploy owed. Main CI 3/3 green (verify+hub+replay) — the first 3-check green of record; replay red carried since 09:23Z is closed. Board empty at run end.
+
+PUSH ADDENDUM (Task-60 r7a): PR #171 merged of record b80b44d by the r0-auto desk (sha-guarded, first-try PUT, 10:31:33Z — house law held, no self-merge); CI 2/2 green at the merge tip first-hand; the T-MIG-109 re-verify leg DISCHARGED independently of the desk's own re-fire (RACE DISCLOSED, harmless duplication: both the cron's merge-refire and this lane's manual dispatch ran — the of-record artifact is this lane's run-28): neon-replay DISPATCHED run-28 (id 37918250138, workflow_dispatch, head b80b44d) — UNION 186/186 PASS (seed 171/171 + prod 15/15, ZERO failure rows, the 4 amended content-write cases PASS on their own merits, justified-ledger still EMPTY); artifact 11610583405 pulled first-hand. The standing re-proof instrument's union is restored green on its own merits — no tolerance widened anywhere, the engine untouched. Main tip of record now b8e7746 (the desk's cron receipt atop the merge). Write ledger: zero live traffic beyond the sanctioned CI replay itself (disposable COW branches, dropped post-run per the T-MIG-035 discipline), zero deploys (ZERO carrier delta — corpus-only band), zero DDL, zero env writes. Lane IDLE.
