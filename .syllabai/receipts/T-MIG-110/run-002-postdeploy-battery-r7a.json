@@ -1,0 +1,31 @@
+{
+  "task": "T-MIG-110",
+  "run": "run-002-postdeploy-battery",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)",
+  "operator_trace": "1a120a8e85d04205 (the flip order; the standing hub-redeploy proceed 1a11a20025e76305 covers the deploy leg)",
+  "utc": "2026-10-09",
+  "base": "dee08a4 (the PR #172 merge tip; b232da0 is the desk's own bookkeeping atop)",
+  "title": "the flip row is LIVE — hub redeploy of record + the baked-table bundle evidence + the double-plane battery 13/13",
+  "deploy_of_record": {
+    "recipe": "the run-003 093-recipe hub redeploy: vercel CLI 63.1.0 --prod --yes FROM ROOT (.vercel/project.json at root = syllabai-hub-v2 prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl, linked this run), source = local HEAD dee08a4 (fetch-first reset)",
+    "race_guard": "CLEAR — latest hub prod dpl_H8AYEmt8Hr6q @ 6813bb7 was 1123min old, nothing in flight",
+    "carrier": "dpl_CJsYfT3R4nGsBbeCBvdQbnJTdDPg READY; rollback anchor: dpl_H8AYEmt8Hr6q (the pre-flip hub carrier); the api carrier UNTOUCHED (dpl_FprVRBHzqB7xy8K1sBGnZVGAE97Y still serving — zero api delta, corpus of the flip is hub-side only)"
+  },
+  "baked_table_evidence": {
+    "needle": "'learners/me/recommendations' across the hub origin's _next/static client chunks",
+    "before": "1 occurrence (the emitter literal only) — chunk 0an1zdqrqrypx.js of the dpl_H8AYEmt8Hr6q carrier",
+    "after": "2 occurrences (the emitter + the TABLE ROW) — chunk 12p3k_7fz3-d8.js of dpl_CJsYfT3R4nGsBbeCBvdQbnJTdDPg",
+    "verdict": "the V2_SURFACE_PREFIXES recommendations row is BAKED into the served client bundle — the flip is LIVE of record"
+  },
+  "battery_13_of_13": {
+    "band_a_unauth_laws_9_9": "health 200 / root 404 / login-malformed 400 / tutor-unauth 401 / decay-unauth 401 / CORS preflight 204 (hub origin) / hub origin 200 / learner register 201 (census-class probe r7a-t110flip-a-*) / me-state 200 JWT law",
+    "R1_the_flip_wire": "GET /api/v1/learners/me/recommendations?rootId=297a8706 (the 108 census root) with the probe learner bearer -> 200 {learnerId, rootId echo, asOf, policy: nba-rules/v1.3} in 1.22s",
+    "R2_v2_plain_law": "400 validation_failed (the designed required-rootId law, learnerme.ts :219)",
+    "R3_core_parity_control": "SAME ask + SAME v2-issued bearer -> https://syllabai-core.onrender.com 200 in 21.06s (warm, first attempt — no cold-start retry needed) {learnerId SAME as R1 (token continuity), rootId echo, policy: nba-rules/v1.3}",
+    "R4_core_plain_parity": "400 — byte-parity of the required-rootId law on BOTH planes",
+    "disclosures": "the first battery pass mis-aimed two probes (register body used 'name' not the displayName field law; the A2 leg probed an /api/v1/* path instead of the origin root) — the 401 cascade was DIAGNOSED against the auth register law (password floor 12, REQUIRED_STRING_FIELDS displayName), corrected, re-run 13/13 green; the mis-aimed probes wrote NOTHING (the register 400 created no learner); the superseded pass-1 artifact remains in scratch/r110_battery.json history (overwritten by the green pass — pass-1 results quoted here)"
+  },
+  "main_ci": "verify + hub SUCCESS at dee08a4 and at b232da0 (the desk's receipt) — first-hand; no replay re-fire owed (the act touches NO golden/ path — hub routing only)",
+  "write_ledger": "1 hub redeploy (dpl_CJsYfT3R4nGsBbeCBvdQbnJTdDPg); 1 census-class probe learner register; ZERO content mutations, zero DDL, zero env writes, zero api deploys (the api carrier untouched); core probed read-only via HTTPS (the keep-them-as-is law held); hub repo ZERO contact (deployed from the v2 monorepo of record)",
+  "closure": "T-MIG-110 CLOSED end-to-end of record: the row landed (#172 dee08a4) -> the hub redeploy bakes it -> the served bundle carries the table (1->2) -> the flipped wire serves 200 nba-rules/v1.3 with core parity. The T-MIG-108 close's LAST owed residue is DISCHARGED — no owed residue remains lane-side."
+}
