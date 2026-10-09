@@ -573,10 +573,16 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // unauthed-401) — the multi-family capture is DOCUMENTED HERE per the
   // startsWith-safety law (every captured path is served with a real
   // implementation + a captured law; the 091 full-path row precedent).
-  // ZERO hub emitters (grep-verified: the review page reads ride the
-  // flipped exam-papers review/audit subtree rows, not these) — routing
-  // availability, zero live-page routing change. Partial-segment capture
-  // (review-queuex) DOCUMENTED INERT (no such route or emitter).
+  // THREE DORMANT request()-plane emitters ride the row
+  // (contentReviewQueue :1558, contentReviewQueueV2 :1610,
+  // contentReviewQueueV3 :1616 — ZERO page call-sites, grep-verified at
+  // the widening commit; the live review page reads ride the flipped
+  // exam-papers review/audit subtree rows) — routing availability with the
+  // DUAL_RUN forms pinned (the 084 dormant-emitter posture). The
+  // pre-deploy bundle census caught the emitter inventory (3 literals in
+  // the serving chunk) after an earlier zero-emitter misstatement was
+  // self-caught and corrected pre-deploy — no silent posture change:
+  // dormant emitters route NOWHERE unless a page calls them.
   "/api/v1/teacher/content/review-queue",
   // 6. /api/v1/admin/question-bank — the SME question-bank family
   // (sme.adminRoute, /ingest + /status): 7 corpus legs GREEN incl. BOTH

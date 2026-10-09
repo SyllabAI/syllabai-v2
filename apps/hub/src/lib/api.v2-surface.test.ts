@@ -137,11 +137,17 @@ const DUAL_RUN_PATHS: readonly string[] = [
   // call-sites real: dashboard-core.ts:86 + kg-learner-state.ts:508); the
   // smart-lesson + topics emitters are DORMANT (zero page call-sites,
   // grep-verified at the widening commit) — pinned in the 084
-  // dormant-emitter posture. The documents/review-queue/question-bank rows
-  // have ZERO hub emitters — nothing to pin here (the 090 posture).
+  // dormant-emitter posture. The documents/question-bank rows have ZERO hub
+  // emitters — nothing to pin here (the 090 posture); review-queue rides
+  // THREE dormant request()-plane emitters (contentReviewQueue/-V2/-V3,
+  // zero call-sites — the inventory the pre-deploy bundle census caught
+  // after a zero-emitter misstatement was self-caught pre-deploy).
   "/api/v1/learners/me/knowledge-graph?rootId=kn-1",
   "/api/v1/learners/me/smart-lesson?rootId=kn-1&topicNodeId=kn-11",
   "/api/v1/questions/topics?rootId=kn-1",
+  "/api/v1/teacher/content/review-queue",
+  "/api/v1/teacher/content/review-queue-v2",
+  "/api/v1/teacher/content/review-queue-v3",
 ];
 
 /** Hub-emitted (or hub-adjacent) paths that MUST stay on the core in the dual-run posture. */
@@ -272,7 +278,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/learners/me/smart-lesson", // T-MIG-111: corpus-verified FULL law matrix (4 w4 legs: 200/400/401/404; the deterministic 8-rung ladder, no LLM) — dormant emitter (zero call-sites), routing availability
       "/api/v1/questions/topics", // T-MIG-111: leaf row ONLY (2 legs GREEN: student-200 + unauthed-401) — list/detail/mark-scheme positive wires uncaptured, families core-pinned; the rest of /questions stays core
       "/api/v1/teacher/content/documents", // T-MIG-111: the TEACHER-side family (16 legs GREEN incl. the captured 500 laws; zero hub emitters — routing availability, the 090 posture; zero 501s remain post-107)
-      "/api/v1/teacher/content/review-queue", // T-MIG-111: ONE row captures the verified TRIO (queue/-v2/-v3, 8 legs GREEN incl. 200s on all three; zero hub emitters — startsWith multi-family capture DOCUMENTED in the row comment)
+      "/api/v1/teacher/content/review-queue", // T-MIG-111: ONE row captures the verified TRIO (queue/-v2/-v3, 8 legs GREEN incl. 200s on all three; THREE dormant emitters ride it, zero call-sites — startsWith multi-family capture DOCUMENTED in the row comment)
       "/api/v1/admin/question-bank", // T-MIG-111: the SME family (7 legs GREEN incl. both ingest 200 write laws + the role-law matrix; zero hub emitters — routing availability)
     ]);
   });
@@ -366,8 +372,9 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
   test("the T-MIG-111 line: the corpus-verified families widen band (r7a, operator order 1a120e747bb195dd)", () => {
     // The ONE live routing change: the learner-me KG read goes v2-native
     // (both call-sites real); smart-lesson + topics ride dormant emitters;
-    // documents/review-queue/question-bank are zero-emitter availability
-    // rows. The exclusions are LAWS pinned in CORE_ONLY: marking (write-
+    // documents/question-bank are zero-emitter availability rows;
+    // review-queue rides three dormant emitters (zero call-sites). The
+    // exclusions are LAWS pinned in CORE_ONLY: marking (write-
     // verify bar), curriculum/versions (501 stubs), teacher/classes (zero
     // corpus legs), transcribe (GLM seam), intervention (no positive wire).
     for (const p of [
