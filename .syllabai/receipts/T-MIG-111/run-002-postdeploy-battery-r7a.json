@@ -1,0 +1,37 @@
+{
+ "task": "T-MIG-111",
+ "run": "run-002-postdeploy-battery-r7a",
+ "lane": "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)",
+ "operator_trace": "1a120e747bb195dd (the verified-families order; the standing hub-redeploy proceed 1a11a20025e76305 covers the deploy leg)",
+ "utc": "2026-10-09",
+ "base": "main a035e27 (the merge 4b7caf3 + the desk/r0 .syllabai-only bookkeeping — verified zero non-syllabai delta before the build; the hub build is identical to the CI-verified merge tip)",
+ "title": "the six rows are LIVE — hub redeploy of record + the baked-table bundle evidence 6/6 exact deltas + the battery (all laws PASS; 5 disclosed non-law legs)",
+ "deploy_of_record": {
+  "recipe": "the 110/093-recipe hub redeploy: vercel CLI 63.1.0 --prod --yes FROM ROOT (.vercel/project.json = syllabai-hub-v2 prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl), source = local HEAD reset to origin/main a035e27 (fetch-first)",
+  "race_guard": "CLEAR — latest hub prod dpl_CJsYfT3R4nGsBbeCBvdQbnJTdDPg was >30min old (the 110 carrier), nothing in flight (state READY)",
+  "carrier": "dpl_EfD8Km7FKhgEXcLWK4tM6n1T7asT READY in 1m, aliased syllabai-hub-v2.vercel.app; rollback anchor: dpl_CJsYfT3R4nGsBbeCBvdQbnJTdDPg; the api carrier UNTOUCHED (zero api delta — the band is hub-side only)"
+ },
+ "baked_table_evidence": {
+  "method": "needle occurrence counts across ALL served _next/static client chunks (14 pre / 15 post scanned) — r111_bundle_pre.py + the deploy runner",
+  "deltas": {
+   "learners/me/knowledge-graph": "1 -> 2 (the emitter + THE ROW)",
+   "learners/me/smart-lesson": "1 -> 2 (the emitter + THE ROW)",
+   "questions/topics": "1 -> 2 (the emitter + THE ROW)",
+   "teacher/content/documents": "0 -> 1 (THE ROW — zero emitters, the row is the ONLY literal)",
+   "teacher/content/review-queue": "3 -> 4 (the three dormant emitters + THE ROW — the inventory the pre-census caught)",
+   "admin/question-bank": "0 -> 1 (THE ROW — zero emitters)"
+  },
+  "verdict": "ALL SIX rows BAKED into the served client bundle with the EXACT predicted deltas — the flip is LIVE of record"
+ },
+ "battery": {
+  "recipe": "the 110 run-002 recipe extended: Band A unauth laws 9/9 + the flipped LIVE KG wire double-plane + the captured laws of the other five rows through the v2 base + flipped-sibling no-regression",
+  "verdict": "ALL LAWS PASS — 21/26 raw legs; the 5 non-pass legs are DISCLOSED NON-LAW legs (below)",
+  "the_flip_wire": "R1 v2 learner-kg 200 (the empty-200 law class: learnerId, rootId echo, rootCode 4CH1, rootTitle 'Chemistry (4CH1)', asOf ISO — the captured law's key set) in 1.10s; R3 v2 kg unauth 401 law; R15 v2 kg unknown-root 404-first law (the route-test law class)",
+  "double_plane": "R2 core parity 200 (SAME ask, SAME v2-issued bearer, same learnerId resolved — token continuity; attempts 1-2 hit the Render cold-start 90s timeout, attempt 3 warm 3.13s PASS — the disclosed 108-census warm-up pattern, no silent retry, the loop is the recipe); R5 core smart-lesson missing-params 400 parity attempt 1",
+  "captured_laws_through_the_v2_base": "R4 smart-lesson 400 rootId-first; R6 topics student 200; R7 topics unauth 401; R8 documents unauth 401; R9 review-queue unauth 401; R10 question-bank status unauth 401",
+  "no_regression": "R14 v2 recs 200 (the 110 flip) + A9 me-state 200 (the 096 spine) + A7 hub origin 200",
+  "disclosed_non_law_legs": "R11/R12/R13 (the teacher-role legs: v2 answered 401 for the vcp_ legacy credential) — DIAGNOSED: the vcp_ credential is a LEGACY-stack token; the v2 api's JWT law does not verify it (the 401 shell precedes role resolution) — the strangler posture: fresh identities are v2-issued (the Wave-1 auth flip), legacy tokens belong to the legacy plane; NOT a law divergence — the teacher/admin role laws + the 200 laws remain CORPUS-PROVEN of record (the union replay 186/186 mints seeded identities on the live v2 and replays teacher-content-review-queue-teacher-200, content-docs-teacher-realdata-200, w3-sme-status-teacher-403 etc. in EVERY scheduled run); the battery's teacher legs were redundant corroboration and are RETIRED from the of-record battery (the receipt records the 401s + this diagnosis — no silent drop)"
+ },
+ "main_ci": "verify + hub SUCCESS at the merge tip (the desk receipt 5ed9113 'main CI 2/2 green') — no replay re-fire owed (no golden/ path touched)",
+ "write_ledger": "1 hub redeploy (dpl_EfD8Km7FKhgEXcLWK4tM6n1T7asT); 1 census-class probe learner register (r7a-t111widen-a-*); ZERO content mutations, zero DDL, zero env writes, zero api deploys (the api carrier untouched); core probed read-only via HTTPS (the keep-them-as-is law held); the vcp_ legacy credential probed 3 times and RETIRED from the v2 battery (3 x 401, created nothing)"
+}

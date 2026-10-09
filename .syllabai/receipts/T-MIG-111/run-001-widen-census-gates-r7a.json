@@ -1,0 +1,33 @@
+{
+ "task": "T-MIG-111",
+ "run": "run-001-widen-census-gates-r7a",
+ "lane": "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)",
+ "operator_trace": "1a120e747bb195dd ('Proceed with the remaining unflipped verified families (smart-lesson, knowledge-graph, class-KG siblings…)'); the standing flip-law gates apply; the standing hub-redeploy proceed 1a11a20025e76305 covers the deploy leg",
+ "utc": "2026-10-09",
+ "base": "b959ce4 (the T-MIG-110 closure tip; PR #173 branch t-mig-111/r7a, merged 4b7caf3 by the r0-auto desk cron-202610092230 clean first-try PUT)",
+ "title": "SIX corpus-verified rows land at the hub routing table tail — the flip law's bar met by the golden corpus of record",
+ "census_of_record": {
+  "instrument": "scripts/r111_corpus_census.py — every golden/cases/*.json path checked against the LIVE tables (bun import of api.ts, startsWith + :uuid mid-path semantics)",
+  "numbers": "186 corpus cases -> 100 covered by the pre-band tables, 86 UNCOVERED in 13 families; every uncovered family classified: verified (corpus positive wires) / stub-law / no-positive-wire / adjudication"
+ },
+ "rows_landed": [
+  {"row": "/api/v1/learners/me/knowledge-graph", "corpus_legs": "3 w4 legs GREEN at tip (w4-knowledge-graph-empty-200, w4-knowledge-graph-practiced-200, w4-knowledge-graph-unauthed-401)", "emitters": "dashboard-core.ts:86 + kg-learner-state.ts:508 (LIVE, request()-plane) — THE BAND'S ONE LIVE ROUTING CHANGE", "row_shape": "NARROW per-exact-subpath (no subpaths either side; partial-segment capture DOCUMENTED INERT)"},
+  {"row": "/api/v1/learners/me/smart-lesson", "corpus_legs": "4 w4 legs GREEN (practiced-200, missing-params-400 rootId-first, unauthed-401, unknown-topic-404) — the FULL law matrix", "emitters": "api.ts:1258 DORMANT (zero call-sites)", "row_shape": "exact-subpath; LLM-free law: the deterministic 8-rung ladder (the t4 law)"},
+  {"row": "/api/v1/questions/topics", "corpus_legs": "2 legs GREEN (w3-questions-topics-student-200, -unauthed-401)", "emitters": "api.ts:930 DORMANT; the families emitter is coreFetchAuthorized CORE-PINNED (NOT table-routed)", "row_shape": "LEAF ROW ONLY — list/detail/mark-scheme positive wires uncaptured stay core"},
+  {"row": "/api/v1/teacher/content/documents", "corpus_legs": "16 legs GREEN incl. the captured 500 laws (embed-unknown-500, search-blank-query-500) + the 400 parse-fail bind law on POST /documents", "emitters": "ZERO (full grep + pre-deploy bundle count 0)", "row_shape": "subtree row; zero 501s remain post-107; routing availability (the 090 posture)"},
+  {"row": "/api/v1/teacher/content/review-queue", "corpus_legs": "8 legs GREEN (teacher/realdata 200s on ALL THREE of queue/-v2/-v3, student-403, unauthed-401)", "emitters": "THREE DORMANT request()-plane emitters (contentReviewQueue :1558, contentReviewQueueV2 :1610, contentReviewQueueV3 :1616 — ZERO page call-sites)", "row_shape": "ONE row captures the verified TRIO (startsWith multi-family capture DOCUMENTED in the row comment; the 091 full-path precedent)"},
+  {"row": "/api/v1/admin/question-bank", "corpus_legs": "7 legs GREEN (ingest rich-200 + replace-rich-200, status admin-rich-200, student-403, teacher-403, unauthed-401 x2)", "emitters": "ZERO (full grep + pre-deploy bundle count 0)", "row_shape": "exact subtree /ingest + /status; routing availability"}
+ ],
+ "exclusions_are_laws": [
+  "teacher/marking STAYS CORE: read positives x8 corpus-proven (answers 200x3 + 403 + 401s, queue-v2 200x2 + 401, throughput 200x2 + 401) BUT the hub-emitted human-mark WRITE (api.ts:1379) has NO positive wire captured (only the unknown-400 + unauthed-401 laws) — the 095/107 write-verify bar; smart-mark-batch 401-only + LLM-adjacent",
+  "teacher/curriculum/versions STAYS CORE: honest-501 write stubs POST /versions/:id/archive + /validate under the subtree (curriculum/index.ts :170) — the stub law forbids a row whose capture includes a stub (corpus GET legs are 6/6 GREEN; the family flip awaits its own port band)",
+  "teacher/classes + learners/me/classroom STAY CORE (the operator's 'class-KG siblings' = the classroom foundation): ZERO corpus legs of record (census grep) — the flip law's golden-verified bar UNMET; its own capture+verify band owns the flip",
+  "questions list/detail/mark-scheme + families: positive wires uncaptured (401 shells + the unknown-authed-404 law only); families core-pinned anyway",
+  "teacher/tests preview + weakness-options: no positive 200 captured (the 'teacher-200'-named case captures a 400 law — expect.status=400 of record)",
+  "answer-input/transcribe: 401-only + the GLM seam; intervention-runs: no positive wire; past-papers: 409 schema law (not this band's set); subjects/tree: the T-MIG-035 check-3 adjudication"
+ ],
+ "self_caught_correction": "the review-queue row was first misstated ZERO-EMITTER; the PRE-DEPLOY BUNDLE CENSUS (r111_bundle_pre.py: 3 literals of 'teacher/content/review-queue' in the serving carrier dpl_CJsYfT3R4nGsBbeCBvdQbnJTdDPg chunks) caught it; the no-head-cut source re-grep found the three dormant emitters; disclosure corrected on the branch (commit c4073e7) BEFORE the deploy — no silent posture change; documents/question-bank re-verified zero-emitter (claims STAND: full grep + pre-count 0)",
+ "gates": "root typecheck x4 exit 0; hub 57/0/538 EXACT post-correction (+1 test / +29 expect vs the 110 baseline 56/0/509 — exact-set +6, DUAL_RUN +6 forms total, CORE_ONLY -3 moved-out notes, the NEW 111 line test [9 v2 resolutions + the review-queuex inert-capture string-fact + 17 excluded siblings stay core], the 110/100/107 line tests' moved-out pins updated with 111 discharge notes, the header prose 111 UPDATE note); golden runner --selftest OK; ZERO live calls; ZERO carrier delta (apps/api + packages + golden untouched); PR #173 CI verify+hub GREEN at d0e04c6 AND at c4073e7 first-hand; post-merge main CI 2/2 green (the desk receipt 5ed9113); NO replay re-fire owed (the act touches NO golden/ path — hub routing only, the 110 receipt precedent)",
+ "surface_test_lockstep": "exact-set 39 rows (tail order exact, zero duplicates — bun import verified); mid-path unchanged (3 rows)",
+ "write_ledger": "0 deploys this run (run-002 owns the one hub redeploy); 0 content mutations, 0 DDL, 0 env writes, 0 api deploys; core/hub repos zero contact"
+}
