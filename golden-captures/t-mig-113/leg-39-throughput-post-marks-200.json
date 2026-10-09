@@ -1,0 +1,33 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T18:00:09Z",
+ "captured_from": "LOCAL boot of the frozen core 6cad6ef (the 107 write-surface rig; prod Neon untouched)",
+ "leg": "39",
+ "method": "GET",
+ "name": "throughput-post-marks-200",
+ "path": "/api/v1/teacher/marking/throughput",
+ "request_body": null,
+ "response_body": {
+  "answersByState": {
+   "HUMAN_MARKED": 1,
+   "SMART_MARKED": 0,
+   "PENDING": 1,
+   "SELF_MARKED": 0,
+   "OVERRIDDEN": 0
+  },
+  "humanMarks24h": 2,
+  "humanMarks7d": 2,
+  "pendingByPaper": [
+   {
+    "paperId": null,
+    "paperTitle": null,
+    "paperCode": null,
+    "pending": 1
+   }
+  ],
+  "oldestPendingAt": "2026-10-09T18:00:07.800477Z",
+  "oldestPendingHours": 0
+ },
+ "status": 200,
+ "note": "deterministic local counts: PENDING=1, OVERRIDDEN=1, humanMarks24h=2 humanMarks7d=2"
+}

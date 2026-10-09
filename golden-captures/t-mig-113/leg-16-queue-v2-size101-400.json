@@ -1,0 +1,17 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T18:00:08Z",
+ "captured_from": "LOCAL boot of the frozen core 6cad6ef (the 107 write-surface rig; prod Neon untouched)",
+ "leg": "16",
+ "method": "GET",
+ "name": "queue-v2-size101-400",
+ "path": "/api/v1/teacher/marking/queue-v2?state=PENDING&page=0&size=101",
+ "request_body": null,
+ "response_body": {
+  "status": 400,
+  "error": "bad_request",
+  "message": "size must be between 1 and 100 (paper groups per page)",
+  "timestamp": "2026-10-09T18:00:08.287789327Z"
+ },
+ "status": 400
+}

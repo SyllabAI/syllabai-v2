@@ -1,0 +1,24 @@
+{
+ "name": "marking-throughput-student-403",
+ "description": "Throughput STUDENT bearer: 403 role gate (T-MIG-113 rider).",
+ "source": "T-MIG-113 run-001 (the LOCAL frozen-core boot 6cad6ef, the 107 write-surface law \u2014 prod marking state untouched) + run-002 verify (the local v2 boot, 42/44 deepEqualTolerant)",
+ "method": "GET",
+ "path": "/api/v1/teacher/marking/throughput",
+ "request": {
+  "headers": {
+   "Authorization": "Bearer {{TOKEN}}"
+  }
+ },
+ "expect": {
+  "status": 403,
+  "body": {
+   "timestamp": "2026-10-09T18:00:08Z",
+   "status": 403,
+   "error": "Forbidden",
+   "path": "/api/v1/teacher/marking/throughput"
+  }
+ },
+ "tolerate": [
+  "timestamp"
+ ]
+}

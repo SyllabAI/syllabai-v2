@@ -1,0 +1,20 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T18:00:08Z",
+ "captured_from": "LOCAL boot of the frozen core 6cad6ef (the 107 write-surface rig; prod Neon untouched)",
+ "leg": "30",
+ "method": "POST",
+ "name": "humanmark-partbound-409",
+ "path": "/api/v1/teacher/marking/answers/ANSWER-A/human-mark",
+ "request_body": {
+  "marksAwarded": 3
+ },
+ "response_body": {
+  "status": 409,
+  "error": "conflict",
+  "message": "marks 3 outside part bound 0\u20132",
+  "timestamp": "2026-10-09T18:00:08.716326881Z"
+ },
+ "status": 409,
+ "note": "the SERVICE part-bound law: 3 > part (a) bound 2 -> Conflict 409 AFTER the jakarta @Max(99) passes"
+}

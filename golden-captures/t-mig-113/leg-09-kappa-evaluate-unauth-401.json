@@ -1,0 +1,17 @@
+{
+ "auth": "anon",
+ "captured_at_utc": "2026-10-09T18:00:08Z",
+ "captured_from": "LOCAL boot of the frozen core 6cad6ef (the 107 write-surface rig; prod Neon untouched)",
+ "leg": "09",
+ "method": "POST",
+ "name": "kappa-evaluate-unauth-401",
+ "path": "/api/v1/teacher/marking/kappa/evaluate",
+ "request_body": {},
+ "response_body": {
+  "timestamp": "2026-10-09T18:00:08.080Z",
+  "status": 401,
+  "error": "Unauthorized",
+  "path": "/api/v1/teacher/marking/kappa/evaluate"
+ },
+ "status": 401
+}

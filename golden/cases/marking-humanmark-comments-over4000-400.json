@@ -1,0 +1,28 @@
+{
+ "name": "marking-humanmark-comments-over4000-400",
+ "description": "HumanMarkRequest comments @Size(max=4000) law: 4001 chars -> 400 validation-first (T-MIG-113 rider).",
+ "source": "T-MIG-113 run-001 (the LOCAL frozen-core boot 6cad6ef, the 107 write-surface law \u2014 prod marking state untouched) + run-002 verify (the local v2 boot, 42/44 deepEqualTolerant)",
+ "method": "POST",
+ "path": "/api/v1/teacher/marking/answers/00000000-0000-4000-8000-0000000000ff/human-mark",
+ "request": {
+  "headers": {
+   "Authorization": "Bearer {{TOKEN}}"
+  },
+  "body": {
+   "marksAwarded": 1,
+   "comments": "(4001 x's)"
+  }
+ },
+ "expect": {
+  "status": 400,
+  "body": {
+   "status": 400,
+   "error": "validation_failed",
+   "message": "comments: size must be between 0 and 4000",
+   "timestamp": "2026-10-09T18:00:08Z"
+  }
+ },
+ "tolerate": [
+  "timestamp"
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T18:00:08Z",
+ "captured_from": "LOCAL boot of the frozen core 6cad6ef (the 107 write-surface rig; prod Neon untouched)",
+ "leg": "34",
+ "method": "POST",
+ "name": "humanmark-201-positive",
+ "path": "/api/v1/teacher/marking/answers/ANSWER-A/human-mark",
+ "request_body": {
+  "marksAwarded": 2,
+  "perPointDecisions": {
+   "45990000-...-0001 (fake)": 1,
+   "45990000-...-0002 (fake)": 0
+  },
+  "comments": "probe mark: full credit part (a)"
+ },
+ "response_body": {
+  "id": "HUMANMARK-1",
+  "markerId": "TEACHER-ID",
+  "marksAwarded": 2,
+  "perPointDecisions": {
+   "45990000-0000-0000-0000-000000000001": 1,
+   "45990000-0000-0000-0000-000000000002": 0
+  },
+  "comments": "probe mark: full credit part (a)",
+  "createdAt": "2026-10-09T18:00:08.851788080Z"
+ },
+ "status": 201,
+ "note": "THE positive: 201 HumanMarkView; the answer enters HUMAN_MARKED; evidence fires once"
+}

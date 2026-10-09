@@ -1,0 +1,22 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T18:00:08Z",
+ "captured_from": "LOCAL boot of the frozen core 6cad6ef (the 107 write-surface rig; prod Neon untouched)",
+ "leg": "33",
+ "method": "POST",
+ "name": "humanmark-unknown-404",
+ "path": "/api/v1/teacher/marking/answers/00000000-0000-4000-8000-0000000000ff/human-mark",
+ "request_body": {
+  "marksAwarded": 1,
+  "perPointDecisions": {},
+  "comments": "valid"
+ },
+ "response_body": {
+  "status": 404,
+  "error": "not_found",
+  "message": "answer 00000000-0000-4000-8000-0000000000ff not found",
+  "timestamp": "2026-10-09T18:00:08.777059857Z"
+ },
+ "status": 404,
+ "note": "the OTHER half of the ordering law: valid body + unknown answer -> 404"
+}

@@ -1,0 +1,24 @@
+{
+ "name": "marking-queue-v2-size101-400",
+ "description": "G-5 queue-v2 bounds law: size 101 > 100 -> 400 (T-MIG-113 rider).",
+ "source": "T-MIG-113 run-001 (the LOCAL frozen-core boot 6cad6ef, the 107 write-surface law \u2014 prod marking state untouched) + run-002 verify (the local v2 boot, 42/44 deepEqualTolerant)",
+ "method": "GET",
+ "path": "/api/v1/teacher/marking/queue-v2?state=PENDING&page=0&size=101",
+ "request": {
+  "headers": {
+   "Authorization": "Bearer {{TOKEN}}"
+  }
+ },
+ "expect": {
+  "status": 400,
+  "body": {
+   "status": 400,
+   "error": "bad_request",
+   "message": "size must be between 1 and 100 (paper groups per page)",
+   "timestamp": "2026-10-09T18:00:08Z"
+  }
+ },
+ "tolerate": [
+  "timestamp"
+ ]
+}

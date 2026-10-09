@@ -1,0 +1,19 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T18:00:08Z",
+ "captured_from": "LOCAL boot of the frozen core 6cad6ef (the 107 write-surface rig; prod Neon untouched)",
+ "leg": "28",
+ "method": "POST",
+ "name": "humanmark-negative-400",
+ "path": "/api/v1/teacher/marking/answers/ANSWER-A/human-mark",
+ "request_body": {
+  "marksAwarded": -1
+ },
+ "response_body": {
+  "status": 400,
+  "error": "validation_failed",
+  "message": "marksAwarded: must be greater than or equal to 0",
+  "timestamp": "2026-10-09T18:00:08.671592138Z"
+ },
+ "status": 400
+}

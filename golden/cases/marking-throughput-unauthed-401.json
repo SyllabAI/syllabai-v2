@@ -1,0 +1,24 @@
+{
+ "name": "marking-throughput-unauthed-401",
+ "description": "Throughput anon: the Boot 401 shell (the missing role-law leg of the w3 pair; T-MIG-113 rider).",
+ "source": "T-MIG-113 run-001 (the LOCAL frozen-core boot 6cad6ef, the 107 write-surface law \u2014 prod marking state untouched) + run-002 verify (the local v2 boot, 42/44 deepEqualTolerant)",
+ "method": "GET",
+ "path": "/api/v1/teacher/marking/throughput",
+ "request": {
+  "headers": {
+   "Authorization": "Bearer {{TOKEN}}"
+  }
+ },
+ "expect": {
+  "status": 401,
+  "body": {
+   "timestamp": "2026-10-09T18:00:08Z",
+   "status": 401,
+   "error": "Unauthorized",
+   "path": "/api/v1/teacher/marking/throughput"
+  }
+ },
+ "tolerate": [
+  "timestamp"
+ ]
+}

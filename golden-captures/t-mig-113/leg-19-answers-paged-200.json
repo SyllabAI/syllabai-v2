@@ -1,0 +1,56 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T18:00:08Z",
+ "captured_from": "LOCAL boot of the frozen core 6cad6ef (the 107 write-surface rig; prod Neon untouched)",
+ "leg": "19",
+ "method": "GET",
+ "name": "answers-paged-200",
+ "path": "/api/v1/teacher/marking/answers?state=PENDING&page=0&size=50",
+ "request_body": null,
+ "response_body": {
+  "items": [
+   {
+    "answerId": "ANSWER-A",
+    "attemptId": "ATTEMPT-ID",
+    "learnerId": "STUDENT-ID",
+    "learnerDisplayName": "r7a-t113-student",
+    "questionId": "45000000-0000-0000-0000-000000000001",
+    "questionExternalRef": "T113-RIG-STRUCTURED-001",
+    "partLabel": "(a)",
+    "partPrompt": "Rig part (a): describe the reaction.",
+    "partMarks": 2,
+    "answerText": "probe answer part a \u2014 rig fixture",
+    "markingState": "PENDING",
+    "marksAwarded": null,
+    "latestSmartMark": null,
+    "latestHumanMark": null,
+    "examPaperId": null,
+    "paperTitle": null
+   },
+   {
+    "answerId": "ANSWER-B",
+    "attemptId": "ATTEMPT-ID",
+    "learnerId": "STUDENT-ID",
+    "learnerDisplayName": "r7a-t113-student",
+    "questionId": "45000000-0000-0000-0000-000000000001",
+    "questionExternalRef": "T113-RIG-STRUCTURED-001",
+    "partLabel": "(b)",
+    "partPrompt": "Rig part (b): explain the energy change.",
+    "partMarks": 1,
+    "answerText": "probe answer part b \u2014 rig fixture",
+    "markingState": "PENDING",
+    "marksAwarded": null,
+    "latestSmartMark": null,
+    "latestHumanMark": null,
+    "examPaperId": null,
+    "paperTitle": null
+   }
+  ],
+  "page": 0,
+  "size": 50,
+  "totalElements": 2,
+  "totalPages": 1
+ },
+ "status": 200,
+ "note": "the G-5 controller-bounded envelope (page >= 0, size 1..200 default 50)"
+}

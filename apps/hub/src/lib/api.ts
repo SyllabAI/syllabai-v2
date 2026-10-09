@@ -643,6 +643,38 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // exists on either plane (documented inert). 1 LIVE call-site
   // (the marking page's roster read).
   "/api/v1/teacher/learners",
+  // T-MIG-113 (r7a, operator order trace 1a121acfb1079055 'order the next
+  // band') — the teacher/marking capture+verify band: the 111 census's
+  // FIRST-NAMED exclusion discharged for the READ plane. The governing law
+  // of the capture: the w3 marking rich-200 cases are HARD stateful pins on
+  // the LIVE shared marking state (throughput PENDING:4 + humanMarks24h/7d:0
+  // + the exact seed answer lists), so the uncaptured laws were captured
+  // from a LOCAL boot of the frozen core 6cad6ef (the T-MIG-107
+  // write-surface procedure — prod Neon untouched) and verified against the
+  // local v2 boot on the same substrate: 42/44 PASS with deepEqualTolerant
+  // (zero comparator drift); the 2 reds are REAL findings filed as
+  // T-MIG-114 (the perPointDecisions max-size message law + the detail
+  // latestHumanMark projection) — FAIL-NO-FLIP holds for the human-mark
+  // row (WITHHELD this band; it lands with the 114 fix). The FOUR rows
+  // here are the leaf READ surfaces whose every captured leg is GREEN:
+  // queue-v2 (dual-shape G-5 + bounds + C-9), throughput (deterministic
+  // counts), kappa/latest (404-empty + role shells) and kappa/evaluate
+  // (the ZERO-KEY 409 no-pairs law — the v2 generator is DORMANT of record,
+  // so the empty-pairs 409 is the stable law both planes). The marking
+  // page's LIVE reads go v2-native with the hub redeploy
+  // (markingQueueV2Page :160, markingThroughput :178, kappaLatest :196);
+  // evaluateKappa (:1547) is dormant — routing availability, the 084/090
+  // posture. STAY CORE with declared laws: bare /answers (its startsWith
+  // row would over-capture the detail + smart-mark + human-mark tails),
+  // the answers/:uuid detail (a mid-path row would over-capture BOTH POST
+  // tails — smart-mark UNVERIFIED), /smart-mark + /smart-mark-batch
+  // (LLM-adjacent, the 111 law stands), the bare /api/v1/teacher/marking
+  // base. Partial-segment capture classes DOCUMENTED INERT (no such routes
+  // or emitters exist on either side — pinned in the surface test).
+  "/api/v1/teacher/marking/queue-v2",
+  "/api/v1/teacher/marking/throughput",
+  "/api/v1/teacher/marking/kappa/latest",
+  "/api/v1/teacher/marking/kappa/evaluate",
 ];
 
 /**
