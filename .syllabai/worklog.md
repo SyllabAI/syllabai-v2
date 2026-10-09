@@ -6958,3 +6958,19 @@ Work Log:
 
 Stage Summary:
 - T-MIG-113 the read plane CLOSED of record: the marking page's LIVE reads (queue-v2, throughput, kappa-latest) go v2-native with the hub redeploy; kappa/evaluate rides dormant availability. The human-mark row is WITHHELD on the two findings (T-MIG-114 owns the fixes + the re-verify + the row + the ppd case). Union 203 -> 223 planned. PR next, r0-auto merge, then the 093/110/111/112/113-recipe hub redeploy + battery (READ-ONLY live legs — zero live marking writes, the corpus pins hold) + the union replay.
+
+---
+Task ID: cron-202610100230
+Agent: R0-auto (merge desk)
+Task: Periodic sweep — PR intake and merge for T-MIG-113 band
+
+Work Log:
+- Sweep 18:30Z: 1 open PR #175 (T-MIG-113 teacher/marking capture+verify band, r7a), head c651ba7, mergeable=clean, CI on head 2/2 (verify+hub success), zero reviews/comments.
+- Boundary scan (74 files): all monorepo-internal — receipts/tasks cards, hub api.ts +32 (FOUR marking leaf rows at tail), surface tests +58/-9, 44 golden-captures legs, 17 golden cases, uuid-map. Zero *.java, zero core/hub repo content, zero prod writes (corpus captured from LOCAL frozen-core 6cad6ef boot on scratch PG per the T-MIG-107 write-surface procedure).
+- Body doctrine check: FAIL-NO-FLIP holds — human-mark flip row WITHHELD (2 real verify findings filed as T-MIG-114); widen rider = 4 read leaves; union 203 -> 223 planned; gates EXACT vs 112 baseline (typecheck x4, surface 26/26, hub 59/59, repo 1855/13/0, selftest OK); no self-merge declared.
+- Sha-guarded PUT first-try: PR #175 merged c651ba7 -> 9f83fa9. Post-merge CI on main tip 9f83fa9: 2/2 green (verify+hub).
+
+Stage Summary:
+- T-MIG-113 READ plane landed: marking page LIVE reads (queue-v2, throughput, kappa/latest) + dormant kappa/evaluate go v2-native pending hub redeploy; human-mark write row withheld pending T-MIG-114 fixes + 44/44 re-verify.
+- Post-merge legs owed (093/110/111/112/113 recipe): hub redeploy + READ-ONLY live battery + union replay dispatch 203 -> 223 — r7a lane.
+- Bookkeeping-only receipt commit (.syllabai/** only), main CI green first, no force.
