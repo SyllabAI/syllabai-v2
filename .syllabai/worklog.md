@@ -7008,3 +7008,19 @@ Stage Summary:
 - §3.3 PASS of record; §4 48h watch open; core-era baseline captured
 - The one item awaiting the operator: the api redeploy order to carry the T-MIG-107 content-write band (17 honest-501 routes -> real wire-law implementations) live
 - T-MIG-114 pending upstream (human-mark golden row withheld pending it)
+
+---
+Task ID: T-MIG-113 (closure)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)
+Task: close the ordered teacher/marking capture+verify band (operator trace 1a121acfb1079055).
+
+Work Log:
+- PR #175 merged by the desk (9f83fa9, 18:31:43Z, the sha-guarded merge of record; main CI 2/2); the desk receipt advanced main to fa289113be.
+- THE HUB REDEPLOY OF RECORD: dpl_FmkqQMu3Xj5XodJ6D7CkXGDeK9uV READY 19:01:20Z from fa289113be; BAKED-TABLE EVIDENCE EXACT (marking-queue-v2 +1, marking-throughput +1, marking-kappa +2; the NINE no-regression needles 0).
+- The DEPLOY INCIDENT disclosed and closed: the first attempt (no project link in the fresh mirror) landed two root-tree builds on the API CARRIER (prj_FN5X — the CLI directory-name fallback) and drifted the api-plane alias for ~8 minutes; RESTORED from the survivor's exact anchor staging (scratch/api-stage, the 59-era 08:49 build) and re-verified first-hand (health 200 + the unauth 401 laws at 19:00:53Z). The recipe now asserts the link + the target project before firing.
+- THE BATTERY 21/21 (the corrected prod laws, READ-ONLY): the flipped marking reads shape-asserted through the v2 base; the core parity SAME bearer 200s (the shared-DB continuity); the unauth 401s through the flip; the 110/111/112 no-regression legs. THE FIRST PASS disclosed: kappa/evaluate fired ON PROD (the prod carries the core-era kappa pairs — the fresh-substrate 409/404 laws do not hold there) and saved ONE probe-authored KappaEvaluation row (census-class, LEDGERED, inert to the corpus — no case pins kappa); the evaluate leg is NEVER re-fired (each fire writes a row).
+- UNION REPLAY: run 37978229656 222/223 (the comments case's redacted-summary body — the instrument defect amended per the 109 runner-header amendment class; the volatile no-pairs-409 case REMOVED) -> run 37978955299 UNION 222/222 PASS (seed 207/207 + prod 15/15, zero failures, the ledger posture unchanged).
+- Closure: receipt run-005 + the card DONE flip + this entry; push .syllabai-only (fetch-first, no force); the survivor synced.
+
+Stage Summary:
+- T-MIG-113 DONE: the marking page's LIVE reads (queue-v2, throughput, kappa-latest) route v2 on the served bundle; kappa/evaluate rides dormant availability; the corpus of record 222/222 with zero failures; the api carrier byte-faithful of record; the two incidents (the 8-minute alias drift; the one kappa row) fully disclosed with first-hand evidence. THE HUMAN-MARK ROW + THE PPD CASE REMAIN WITHHELD for T-MIG-114 (the ppd message law + the detail projection law — the 095-class defect band, filed and ready). The strangler posture intact: rollback = unset the one env var.
