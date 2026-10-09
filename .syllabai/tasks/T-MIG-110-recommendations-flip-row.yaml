@@ -1,0 +1,31 @@
+version: 1
+task:
+  id: T-MIG-110
+  title: "T-MIG-110 - the V2_SURFACE_PREFIXES recommendations flip row (the widening act the T-MIG-108 close staged): the operator flip order trace 1a120a8e85d04205 'V2_SURFACE_PREFIXES recommendations flip row' lands the NARROW per-exact-subpath row '/api/v1/learners/me/recommendations' at the hub routing table tail — the learner-me NBA recommendations family flips to the v2 api after the T-MIG-108 chain LIVE-PROVED the 200 wire on BOTH planes (run-001 dual-live probes: v2 500 42703 'column a.learner_id does not exist' vs core 200 nba-rules/v1.3, root-caused to the recentAnswers T3 read alias defect; PR #169 merged d4ad173 the one-token `where at.learner_id` fix; 093-recipe redeploy dpl_FprVRBHzqB7xy8K1sBGnZVGAE97Y from tip fa1b65f with the bundle byte-proof +1 byte = the inserted 't'; POST-DEPLOY DOUBLE-PLANE 200 CENSUS 18/18: R1 v2 200 nba-rules/v1.3 actions=2 rootEcho+learnerEcho ok, R3 core control 200 nba-rules/v1.3 actions=2 parity on the SAME ask + the SAME v2-issued bearer, R2/R4 the 400 required-rootId law parity-proven both planes). The 096 stay-core posture ('the 200 NBA-engine wire is not live-proven yet') is DISCHARGED of record by that chain"
+  owner: "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6) — the T-MIG-108 band's owner lane; the flip order 1a120a8e85d04205 named the row this lane staged"
+  claimed_at: "2026-10-09"
+  status: 'DONE # run-001: the row landed at the table tail (api.ts) + the 096 stay-core comment discharged inline (the T-MIG-106 update precedent) + the surface test in lockstep (exact-set pin +1 row, DUAL_RUN_PATHS +1 emitter form, CORE_ONLY_PATHS -1 pin with the moved-out note, the NEW T-MIG-110 line test: leaf-resolves-v2 + TRUE-siblings-stay-core incl. the mounted-but-unflipped smart-lesson + partial-segment capture DOCUMENTED INERT); gates: root typecheck x4 exit 0, hub tsc exit 0, bun test apps/hub 56/0/509 (EXACT +1 test/+8 assertions vs the 55/0/501 record = the 110 line), golden selftest OK; post-merge: the 093-recipe hub redeploy bakes the row into the client bundle (the live routing change for the pilot dashboard emitter dashboard-core.ts:85)'
+  priority: "P1 # the last owed residue of the T-MIG-108 close; the flip law's bar (a golden-verified surface) is met by the 108 chain of record"
+  wave: widening-act # the 096/095/097/106/107 rider class — flip rows are their own acts per the flip law
+  deps: [T-MIG-108, T-MIG-096]
+  evidence:
+    flip_order: "operator trace 1a120a8e85d04205 ('V2_SURFACE_PREFIXES recommendations flip row') — the operator-gated lever the flip law reserves"
+    golden_evidence_of_record: "the T-MIG-108 chain (receipts T-MIG-108/run-001 + run-003): dual-live probes, the at.learner_id fix, the redeploy, the double-plane 200 census R1/R3/R2/R4"
+    row_shape: "NARROW per-exact-subpath (the 096 heart-family convention): the leaf endpoint's exact path; a proper prefix of NO other hub-emitted path or v2 route (the emitter appends only ?rootId=); partial-segment capture (recommendationsx) DOCUMENTED INERT — grep-verified at the widening commit (hub side: the ONLY emitter is dashboard-core.ts:85 via api.ts:1220; v2 side: the ONLY route is learnerme.ts :218 GET /recommendations)"
+    llm_free_law: "the NBA engine is deterministic read-time scoring over the attempts/skill-state spine (nba-rules/v1.3) — no LLM seam reachable; the flip law's target failure mode (404/501/503 on a live page) is unreachable"
+    live_routing_change: "dashboard-core.ts:85 api.recommendations(pilot.rootId) — the pilot dashboard's next-best-actions read becomes v2-native with the hub redeploy; core stays the unset-base fallback (MIGRATION_PLAN §7 rollback intact: unset NEXT_PUBLIC_API_V2_BASE_URL reverts EVERY surface in one redeploy)"
+  scope:
+    allowed:
+      - "apps/hub/src/lib/api.ts (the V2_SURFACE_PREFIXES table tail row + the 096 comment discharge note ONLY)"
+      - "apps/hub/src/lib/api.v2-surface.test.ts (the lockstep pins: exact-set, DUAL_RUN, CORE_ONLY, the 110 line test)"
+      - ".syllabai/tasks/T-MIG-110-recommendations-flip-row.yaml (this yaml)"
+      - ".syllabai/receipts/T-MIG-110/**"
+      - ".syllabai/worklog.md (append-only)"
+    forbidden:
+      - "the bare /api/v1/learners/me prefix (FORBIDDEN by the zero-key law — would capture cla/ask-class LLM surfaces and unverified siblings)"
+      - "other surface rows; the mid-path table; the api/package sources (the port is LIVE-PROVEN — zero api carrier delta)"
+      - "force-push; self-merge of this act's PR"
+  acceptance:
+    - "the surface test's exact-set pin carries the row; hub tests green with the EXACT +1/+8 delta"
+    - "post-merge hub redeploy READY from the merge tip; the served client bundle carries the row literal (the pre/post occurrence-count delta of 'learners/me/recommendations' = the baked-table evidence)"
+    - "post-deploy battery: the flipped wire 200 nba-rules/v1.3 through the v2 base (R1-class), the core parity control 200 (R3-class), the 400 required-rootId law both planes (R2/R4-class); flipped-sibling no-regression legs"
