@@ -6734,3 +6734,17 @@ Work Log:
 
 Stage Summary:
 - The write-row widening is GOLDEN-VERIFIED + WIDENED of record on the rider's own leg; PR (hub rows + corpus cases + captures/receipts) opened for the desk — no self-merge. Standing operator items unchanged: PAT rotation, P3/P4 witness asks.
+---
+Task ID: R0-AUTO run cron-202610091630 (Job 438940)
+Agent: R0-auto (Super Z, zai-web, merge desk — desk merges only)
+
+Work Log:
+- PR #169 MERGED of record -> d4ad173 (head daa06ee4f859fdeb263bc3d1511907b7f29fbba6 sha-guarded PUT first-try, merge_method=merge): T-MIG-108 the recommendations NBA-engine 500 defect band (r7a lane self-filed + claimed per operator directive trace 1a11f804f222f9b9; 5 files: 3 .syllabai + apps/api nba.ts +1/-1 + nba.test.ts +24)
+- PR #170 MERGED of record -> a2d08c4 (head 7ea277ea6525077244534453fd30b0d1175ed4eb sha-guarded PUT first-try; mergeable re-checked clean vs d4ad173 post-#169): T-MIG-107 the write-row widening's own golden-verify leg — 53/53 replay vs the frozen core 6cad6ef local boot (GOLDEN_MASTER §2, zero-prod-contact) + the T-MIG-037 4 per-SUBTREE hub-row flips (76 files: .syllabai receipts/tools + apps/hub api.ts + surface test + 53 golden-captures + 6 corpus cases)
+- BOTH CLEAN MERGES — mergeable=True/state=clean, no intake needed; oldest-first; max-2 cap exactly filled (2 merges this run); 0 open PRs remain after
+- Prechecks first-hand (both PRs): (a) real heads from PR JSON; (b) verify+hub completed/success on each head; (d) 0 reviews / 0 comments / 0 issue-comments, no holds — bodies carry "Authors-never-self-merge — desk merge requested" (a desk-merge REQUEST, not a hold); (e) all files monorepo-internal, zero .java, zero core/hub repo content, capture/seed tools disclosed inside .syllabai/receipts/T-MIG-107/tools/, no Neon/prod writes
+- (f) post-merge verify: main CI 2/2 completed/success at final tip a2d08c4 (bounded poll, ~175s to green — the 76-file leg ran long); d4ad173 covered by lineage (same run, both tips' CI by the a2d08c4 verdict)
+- P0 at run time: pilot 500 MIDDLEWARE_INVOCATION_FAILED + api-v2 404 DEPLOYMENT_NOT_FOUND (both LEGACY surfaces — the of-record ruling at worklog 6695 already adjudged these stale/other-surface readings; of-record hub+api pair healthy); hub-v2 200 core-api; core 401 wake (known healthy pattern)
+
+Stage Summary:
+- T-MIG-108 LANDED of record (d4ad173): the NBA-engine 500 defect band closed — the T-MIG-096 follow-up CLOSES and the recommendations surface flip evidence completes (table row lands as its own widening act per the flip law). T-MIG-107 WIDENED + GOLDEN-VERIFIED of record (a2d08c4): 53/53 legs (50 byte-honest + 3 declared-justified), T-MIG-037 hub-row flips landed, topics-write gap pin moved out (CLASS B closed). Board empty at run end; main CI 2/2 green at a2d08c4.
