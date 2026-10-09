@@ -1,0 +1,18 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T18:00:09Z",
+ "captured_from": "LOCAL boot of the frozen core 6cad6ef (the 107 write-surface rig; prod Neon untouched)",
+ "leg": "44",
+ "method": "GET",
+ "name": "kappa-latest-post-eval-404",
+ "path": "/api/v1/teacher/marking/kappa/latest",
+ "request_body": null,
+ "response_body": {
+  "status": 404,
+  "error": "not_found",
+  "message": "kappa evaluation ALL not found",
+  "timestamp": "2026-10-09T18:00:09.097450676Z"
+ },
+ "status": 404,
+ "note": "the 409 path saved NOTHING \u2014 latest still 404 (the fail-closed evidence law)"
+}

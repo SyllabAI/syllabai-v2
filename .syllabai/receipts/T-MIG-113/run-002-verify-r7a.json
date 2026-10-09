@@ -1,0 +1,34 @@
+{
+ "task": "T-MIG-113",
+ "run": "run-002",
+ "lane": "r7a (web-da4ab8b1)",
+ "at": "2026-10-09T18:08:56Z",
+ "what": "the SAME 48-leg matrix replayed against the LOCAL v2 api boot on a FRESH same-substrate (drizzle-kit push 62 tables + pgvector + the Flyway DATA seed rows the drizzle push does not carry (roles) + the identical literal-uuid rig seed), the 107 run-002 procedure",
+ "rig": {
+  "api": "apps/api @ the working tree of the 113 branch (bun src/index.ts, PORT 8091)",
+  "db": "the same LOCAL PG cluster, db syllabai_verify (fresh)",
+  "boot": "SYLLABAI_JWT_SECRET synthetic (DIFFERENT from the capture secret \u2014 no cross-boot token reuse possible); SYLLABAI_TEACHER_JOIN_CODE the same synthetic; ZERO-KEY asserted (env grep exit-4 gate passed)",
+  "comparator": "deepEqualTolerant imported from golden/runner.ts (ZERO comparator drift \u2014 the 107 receipt law); tolerate: timestamp keys only (createdAt/timestamp/oldestPendingAt/submittedAt/computedAt); generated ids normalized by the role-labelled maps on BOTH sides"
+ },
+ "verdict": "42/44 PASS, 2 FAIL \u2014 the FAIL-NO-FLIP law applies to the human-mark row",
+ "reds_of_record": [
+  {
+   "leg": "leg-31-humanmark-ppd-over50-400",
+   "class": "FINDING #1 (the ppd message law)",
+   "core": "{\"status\": 400, \"error\": \"validation_failed\", \"message\": \"perPointDecisions: size must be between 0 and 50\", \"timestamp\": \"2026-10-09T18:00:08.753815879Z\"}",
+   "v2": "{\"status\": 400, \"error\": \"validation_failed\", \"message\": \"perPointDecisions: request invalid\", \"timestamp\": \"2026-10-09T18:00:16.133Z\"}"
+  },
+  {
+   "leg": "leg-35-answer-detail-post-mark-200",
+   "class": "FINDING #2 (the detail projection law)",
+   "core": "{\"answerId\": \"ANSWER-A\", \"attemptId\": \"ATTEMPT-ID\", \"learnerId\": \"STUDENT-ID\", \"learnerDisplayName\": \"r7a-t113-student\", \"questionId\": \"45000000-0000-0000-0000-000000000001\", \"questionExternalRef\": \"T",
+   "v2": "{\"answerId\": \"ANSWER-A\", \"attemptId\": \"ATTEMPT-ID\", \"learnerId\": \"STUDENT-ID\", \"learnerDisplayName\": \"r7a-t113-student\", \"questionId\": \"45000000-0000-0000-0000-000000000001\", \"questionExternalRef\": \"T"
+  }
+ ],
+ "analysis": "BOTH reds are REAL law divergences (not comparator artifacts): #1 the >50-entry perPointDecisions message (core 'size must be between 0 and 50' vs v2 'request invalid' \u2014 the contracts refine's custom zod code falls through the teachermarking classifier); #2 the detail read's latestHumanMark.perPointDecisions (core omits the JSONB decisions on the GET wire; v2 hydrates). The 095/096 precedent governs: the defect band T-MIG-114 owns the fixes, the re-verify, and the withheld flip row",
+ "probe_ledger": "2 probe users + 1 attempt + 2 answers + 2 human marks on the LOCAL verify db \u2014 zero prod writes",
+ "disclosures": [
+  "the FIRST verify run carried incomplete redaction maps (9 instrument-artifact FAILs) \u2014 the maps were completed and BOTH sides re-run; this run-002 is of record",
+  "the roles seed defect (the drizzle push carries structure, not the Flyway data seeds) fixed via the dumped roles rows \u2014 the 107 'seed rows dumped from the capture boot' law"
+ ]
+}

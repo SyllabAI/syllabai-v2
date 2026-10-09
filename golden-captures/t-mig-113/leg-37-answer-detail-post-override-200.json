@@ -1,0 +1,37 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T18:00:08Z",
+ "captured_from": "LOCAL boot of the frozen core 6cad6ef (the 107 write-surface rig; prod Neon untouched)",
+ "leg": "37",
+ "method": "GET",
+ "name": "answer-detail-post-override-200",
+ "path": "/api/v1/teacher/marking/answers/ANSWER-A",
+ "request_body": null,
+ "response_body": {
+  "answerId": "ANSWER-A",
+  "attemptId": "ATTEMPT-ID",
+  "learnerId": "STUDENT-ID",
+  "learnerDisplayName": "r7a-t113-student",
+  "questionId": "45000000-0000-0000-0000-000000000001",
+  "questionExternalRef": "T113-RIG-STRUCTURED-001",
+  "partLabel": "(a)",
+  "partPrompt": "Rig part (a): describe the reaction.",
+  "partMarks": 2,
+  "answerText": "probe answer part a \u2014 rig fixture",
+  "markingState": "HUMAN_MARKED",
+  "marksAwarded": 1,
+  "latestSmartMark": null,
+  "latestHumanMark": {
+   "id": "HUMANMARK-2",
+   "markerId": "TEACHER-ID",
+   "marksAwarded": 1,
+   "perPointDecisions": null,
+   "comments": "revised: 1 mark",
+   "createdAt": "2026-10-09T18:00:08.973093Z"
+  },
+  "examPaperId": null,
+  "paperTitle": null
+ },
+ "status": 200,
+ "note": "markingState OVERRIDDEN + the LATEST human mark surfaced"
+}

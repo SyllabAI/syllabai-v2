@@ -1,0 +1,17 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T18:00:08Z",
+ "captured_from": "LOCAL boot of the frozen core 6cad6ef (the 107 write-surface rig; prod Neon untouched)",
+ "leg": "20",
+ "method": "GET",
+ "name": "answers-page-neg-400",
+ "path": "/api/v1/teacher/marking/answers?state=PENDING&page=-1",
+ "request_body": null,
+ "response_body": {
+  "status": 400,
+  "error": "bad_request",
+  "message": "page must be >= 0",
+  "timestamp": "2026-10-09T18:00:08.384502763Z"
+ },
+ "status": 400
+}

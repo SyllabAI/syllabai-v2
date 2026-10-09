@@ -1,0 +1,17 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T18:00:08Z",
+ "captured_from": "LOCAL boot of the frozen core 6cad6ef (the 107 write-surface rig; prod Neon untouched)",
+ "leg": "23",
+ "method": "GET",
+ "name": "answers-unknown-state-400",
+ "path": "/api/v1/teacher/marking/answers?state=BOGUS",
+ "request_body": null,
+ "response_body": {
+  "status": 400,
+  "error": "bad_request",
+  "message": "unknown marking state: BOGUS (expected PENDING, SMART_MARKED, HUMAN_MARKED or OVERRIDDEN)",
+  "timestamp": "2026-10-09T18:00:08.407510629Z"
+ },
+ "status": 400
+}

@@ -1,0 +1,17 @@
+{
+ "auth": "anon",
+ "captured_at_utc": "2026-10-09T18:00:07Z",
+ "captured_from": "LOCAL boot of the frozen core 6cad6ef (the 107 write-surface rig; prod Neon untouched)",
+ "leg": "01",
+ "method": "GET",
+ "name": "queue-v2-unauth-401",
+ "path": "/api/v1/teacher/marking/queue-v2",
+ "request_body": null,
+ "response_body": {
+  "timestamp": "2026-10-09T18:00:07.990Z",
+  "status": 401,
+  "error": "Unauthorized",
+  "path": "/api/v1/teacher/marking/queue-v2"
+ },
+ "status": 401
+}

@@ -1,0 +1,23 @@
+{
+ "task": "T-MIG-113",
+ "run": "run-003",
+ "lane": "r7a (web-da4ab8b1)",
+ "at": "2026-10-09T18:08:56Z",
+ "what": "the widen gates on the read-plane rows (the human-mark row WITHHELD per FAIL-NO-FLIP)",
+ "gates": {
+  "typecheck": "root + apps/api + packages/contracts + packages/db \u2014 exit 0 x4 (hub has no typecheck script; its gate is the test suite)",
+  "surface_test": "26/26 pass (the exact-set +4 marking leaf rows, the mid-path table unchanged, the dual-run loop, the CORE_ONLY loop, the 113 line test)",
+  "hub_suite": "59 pass / 0 fail (the 112 baseline 58 + the 113 line test)",
+  "repo_suite": "1855 pass / 13 skip / 0 fail / 7186 expect \u2014 EXACT vs the 112 baseline (zero api/packages source delta)",
+  "offline_flip_proof": "the dual-run section IS the instrument (the 112 convention): each new leaf row resolves the v2 base for its emitter forms (the marking-client live reads :160/:178/:196 + the dormant evaluateKappa :1547); every excluded sibling (bare answers, the detail, smart-mark, smart-mark-batch, the bare marking base) still resolves core \u2014 ZERO live calls"
+ },
+ "corpus_rider": "20 id-free state-free marking cases joined golden/cases (8 shells, 7 bounds/C-9, 4 validation-first human-mark laws, 1 kappa 409 no-pairs) \u2014 every case replays GREEN against the LIVE v2 today; the ppd-over50 message case WITHHELD (it joins with the 114 fix); union 203 -> 223 planned",
+ "emitter_inventory": "grep-verified at the widen commit: LIVE call-sites markingQueueV2Page marking-client.tsx:160, markingThroughput :178, kappaLatest :196; DORMANT markingQueue :1495, markingQueueV2 :1499, runSmartMark :1524, recordHumanMark :1536, evaluateKappa :1547; markingAnswer :234 is LIVE but its row STAYS CORE (the over-capture law \u2014 a mid-path row would capture BOTH POST tails, smart-mark UNVERIFIED)",
+ "flip_rows": [
+  "/api/v1/teacher/marking/queue-v2 (LIVE wire flip)",
+  "/api/v1/teacher/marking/throughput (LIVE wire flip)",
+  "/api/v1/teacher/marking/kappa/latest (LIVE wire flip)",
+  "/api/v1/teacher/marking/kappa/evaluate (dormant \u2014 routing availability, the 084/090 posture)"
+ ],
+ "withheld": "/api/v1/teacher/marking/answers/:uuid/human-mark \u2014 lands in T-MIG-114 with the fix + the 44/44 re-verify"
+}

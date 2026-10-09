@@ -1,0 +1,24 @@
+{
+ "name": "marking-answers-page-neg-400",
+ "description": "G-5 /answers bounds law (controller-owned): page -1 -> 400 'page must be >= 0' (T-MIG-113 rider).",
+ "source": "T-MIG-113 run-001 (the LOCAL frozen-core boot 6cad6ef, the 107 write-surface law \u2014 prod marking state untouched) + run-002 verify (the local v2 boot, 42/44 deepEqualTolerant)",
+ "method": "GET",
+ "path": "/api/v1/teacher/marking/answers?state=PENDING&page=-1",
+ "request": {
+  "headers": {
+   "Authorization": "Bearer {{TOKEN}}"
+  }
+ },
+ "expect": {
+  "status": 400,
+  "body": {
+   "status": 400,
+   "error": "bad_request",
+   "message": "page must be >= 0",
+   "timestamp": "2026-10-09T18:00:08Z"
+  }
+ },
+ "tolerate": [
+  "timestamp"
+ ]
+}

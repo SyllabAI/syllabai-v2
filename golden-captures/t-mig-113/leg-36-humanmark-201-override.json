@@ -1,0 +1,23 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T18:00:08Z",
+ "captured_from": "LOCAL boot of the frozen core 6cad6ef (the 107 write-surface rig; prod Neon untouched)",
+ "leg": "36",
+ "method": "POST",
+ "name": "humanmark-201-override",
+ "path": "/api/v1/teacher/marking/answers/ANSWER-A/human-mark",
+ "request_body": {
+  "marksAwarded": 1,
+  "comments": "revised: 1 mark"
+ },
+ "response_body": {
+  "id": "HUMANMARK-2",
+  "markerId": "TEACHER-ID",
+  "marksAwarded": 1,
+  "perPointDecisions": null,
+  "comments": "revised: 1 mark",
+  "createdAt": "2026-10-09T18:00:08.973093412Z"
+ },
+ "status": 201,
+ "note": "the RE-MARK law: evidence already emitted -> the override path -> 201 + OVERRIDDEN"
+}

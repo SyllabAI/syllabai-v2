@@ -1,0 +1,41 @@
+{
+ "task": "T-MIG-113",
+ "run": "run-001",
+ "lane": "r7a (web-da4ab8b1)",
+ "at": "2026-10-09T18:00:09Z",
+ "operator_order": "trace 1a121acfb1079055 'order the next band' (the 111 census's first-named exclusion: teacher/marking)",
+ "what": "the 48-leg marking law matrix captured from the LOCAL boot of the frozen core 6cad6ef \u2014 the T-MIG-107 write-surface procedure of record, because the w3 marking rich-200 cases are HARD stateful pins on the LIVE shared marking state (throughput PENDING:4 + humanMarks24h/7d:0 + the exact seed answer lists): a live-prod marking write would break three corpus cases (the 109 mis-cut class) and is FORBIDDEN",
+ "rig": {
+  "core": "SyllabAI/syllabai-core @ 6cad6ef (fresh clone, tree untouched)",
+  "build": "mvn -DskipTests package BUILD SUCCESS (Debian openjdk 25.0.4.1+1-1~deb13u1 user-tree via dpkg -x \u2014 the conf/security symlink-to-/etc defect repaired by materializing the real files; Maven 3.9.9 binary from repo.maven.apache.org \u2014 the exact toolchain of the 107/088 recipes)",
+  "db": "LOCAL PostgreSQL 17.11 + pgvector 0.8.0 user-tree (trixie debs dpkg -x, the T-MIG-100 recipe) on 127.0.0.1:5544 db syllabai_capture (fresh per run), unix_socket_directories repointed to the user tree; Flyway V1..V63 applied by the core at boot",
+  "server": "SERVER_PORT 8090; SYLLABAI_LLM_MODE=test; GROQ/GEMINI/OPENROUTER ABSENT (the ZERO-KEY law); synthetic SYLLABAI_JWT_SECRET + SYLLABAI_TEACHER_JOIN_CODE",
+  "seed": "scripts/r113_rig_seed.sql \u2014 ONE STRUCTURED question (45000000-...-0001, the fake-uuid law) + version VALIDATED + parts (a) marks=2 / (b) marks=1; the minimal deterministic substrate the human-mark part-bound law exercises (marks 3 vs bound 0-2 -> 409)",
+  "identities": "probe teacher (register + the synthetic join code) + probe student (register) \u2014 tokens in-memory ONLY, never persisted, never printed"
+ },
+ "legs": {
+  "total": 48,
+  "band_a_authz_shells": "legs 01-12: 12/12 (401 anon / 403 student on queue-v2, answers, throughput, kappa/latest, kappa/evaluate, human-mark)",
+  "band_b_read_laws": "legs 13-26: 14/14 (queue-v2 unpaged+paged G-5 envelopes, size0/size101 bounds 'size must be between 1 and 100 (paper groups per page)', the C-9 verbatim hint; /answers unpaged+paged, page-neg 'page must be >= 0', size0/size201 'size must be between 1 and 200', C-9; throughput deterministic counts; detail positive; unknown 404)",
+  "band_c_validation_laws": "legs 27-33: 7/7 (marksAwarded @NotNull/@Min/@Max, the SERVICE part-bound 409 'marks 3 outside part bound 0-2' AFTER @Max(99) passes, perPointDecisions @Size(max=50), comments @Size(max=4000), the unknown+valid-body 404 ordering half)",
+  "band_d_positive_pair": "legs 34-39: 6/6 (THE human-mark 201 positive with perPointDecisions + comments -> HUMAN_MARKED; the post-mark detail read; the RE-MARK 201 -> OVERRIDDEN (evidence already emitted -> the override path); the state-filtered list; the deterministic post-mark throughput PENDING=1 OVERRIDDEN=1 humanMarks24h=2 humanMarks7d=2)",
+  "band_e_kappa_laws": "legs 40-44: 5/5 (kappa/latest 404-empty by scope; kappa/evaluate 409 'no paired smart/human mark-point decisions available for \u03ba evaluation' \u2014 the ZERO-KEY dormancy: the v2 generator is DORMANT of record so smart results never exist; the 409 saves NOTHING \u2014 kappa/latest still 404 after, the fail-closed evidence law)"
+ },
+ "capture_decides": [
+  "the human-mark POSITIVE 201 law exists and is deterministic (the re-mark pair: first -> HUMAN_MARKED, re-mark -> OVERRIDDEN, both 201)",
+  "the kappa evaluate law on a zero-smark substrate is the 409 no-pairs Conflict \u2014 the 201 evaluate path is unreachable under the ZERO-KEY law (the dormant generator), so the 409 is the stable law both planes",
+  "the detail view's latestHumanMark.perPointDecisions renders NULL on the core wire while the POST echo carries the map \u2014 the two shapes differ BY DESIGN (the findLatest projection vs the fresh entity) \u2014 FINDING #2 of record"
+ ],
+ "write_ledger": {
+  "plane": "LOCAL ONLY (the scratch PG capture db) \u2014 ZERO writes against prod Neon, ZERO prod API writes; the corpus pins w3-teacher-marking-{throughput,answers,queue-v2}-rich-200 untouched by construction",
+  "rows": "2 probe users + 1 attempt + 2 answers + 2 human marks (probe-owned, disposable substrate, dropped/recreated per run)",
+  "llm": "0 calls (the ZERO-KEY law; SYLLABAI_LLM_MODE=test)",
+  "ddl": "0 hand DDL beyond the rig seed INSERTs + CREATE DATABASE/EXTENSION on the scratch cluster"
+ },
+ "fixtures": "golden-captures/t-mig-113/ (44 law-leg fixtures + _setup-structured-submit.json + uuid-map.json \u2014 role-labelled stable fakes, the t-mig-107 redaction law)",
+ "disclosures": [
+  "no silent retries: write legs NEVER retried; the two register 403/500 pre-fix failures (the joinCode field + the roles seed) were SCRIPT defects fixed before the capture of record \u2014 the capture run itself is the 48/48 clean run",
+  "the mvn toolchain defect (Debian's conf/security files are symlinks into /etc) is disclosed in the rig block \u2014 repaired by materializing the real files, zero law impact",
+  "the capture re-ran ONCE with the completed redaction maps (attemptId + the human-mark ids mapped BEFORE fixture write) \u2014 the first run's fixtures were instrument-imperfect, the second run is of record"
+ ]
+}

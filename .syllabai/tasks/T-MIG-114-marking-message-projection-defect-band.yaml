@@ -1,0 +1,34 @@
+version: 1
+task:
+  id: T-MIG-114
+  title: "T-MIG-114 - the marking message-law + detail-projection defect band (r7a, filed BY the T-MIG-113 verify gate per the FAIL-NO-FLIP law): TWO first-hand findings from the 44-leg local-rig verify (run-002 of record, deepEqualTolerant zero-drift) — (1) THE PPD MESSAGE LAW: a >50-entry perPointDecisions map serves core 'perPointDecisions: size must be between 0 and 50' (jakarta @Size via the capture leg-31) but v2 serves 'perPointDecisions: request invalid' — the contracts humanMarkRequestSchema uses a .refine() (zod code 'custom') for the 50-entry cap while the teachermarking classifyBodyError only maps the too_big code for that field, so the custom issue falls through to the fallback; the fix is the 095-pattern classifier branch (custom + perPointDecisions -> 'size must be between 0 and 50'), the same class as the 095 rating/vote classifier custom branch; (2) THE DETAIL PROJECTION LAW: GET /answers/{id} renders latestHumanMark.perPointDecisions as the HYDRATED map on v2 while the frozen core's wire OMITS it (null — the core's HumanMarkRepository.findLatest projection does not select the JSONB decisions column; deterministic on 6cad6ef; first-hand capture leg-35) — v2 implemented the ENTITY truth, not the WIRE truth; the fix renders the core's wire shape on the detail read (the POST echo keeps the map — the capture leg-34 proves the two shapes DIFFER BY DESIGN on the core). DISCHARGE: the one-branch classifier fix + the projection fix + contracts/route test pins + the 44-leg re-verify (expect 44/44) + the WITHHELD human-mark flip row lands (the T-MIG-112 mid-path-row form: /api/v1/teacher/marking/answers/:uuid/human-mark in V2_SURFACE_MIDPATH_PREFIXES) + the withheld ppd corpus case joins the union + the 093/110/111/112/113-recipe hub redeploy + battery + union replay"
+  owner: "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6) — the 113 band's owner lane; the findings are the 113 run-002 reds of record"
+  claimed_at: "2026-10-10"
+  status: 'filed # by the 113 verify gate; the fix + re-verify + the withheld row land in this band'
+  priority: "P1 # the 113 flip law's condition: the human-mark row stays grounded until this band closes"
+  wave: defect-band # the 095 class: the verify reds become a defect band; the fix re-verifies before ANY flip lands
+  deps: [T-MIG-113, T-MIG-095]
+  evidence:
+    finding_1: "capture leg-31 vs verify leg C05: core 'perPointDecisions: size must be between 0 and 50' vs v2 'perPointDecisions: request invalid' — the contracts refine at packages/contracts/src/teacher-marking.ts:157-163 carries the RIGHT message text ('perPointDecisions must have at most 50 entries' — a THIRD string) but the route classifier (apps/api/src/routes/teachermarking.ts:129-176) never maps the custom code for this field"
+    finding_2: "capture leg-35 vs verify leg D02: the detail read's latestHumanMark.perPointDecisions — core null vs v2 the hydrated map; the POST response (leg-34) echoes the map on BOTH planes — the two shapes differ BY DESIGN on the core (the fresh entity vs the findLatest projection)"
+    verdict_of_record: "42/44 PASS (the honest 113 run-002); the human-mark flip row WITHHELD per FAIL-NO-FLIP; the ppd corpus case withheld from the 113 rider"
+  scope:
+    allowed:
+      - "apps/api/src/routes/teachermarking.ts (the ONE classifier branch: custom + perPointDecisions -> the jakarta-parity message; + the detail projection law fix in the service/builder the route reads through)"
+      - "packages/contracts/src/teacher-marking.ts + its test (the message-law pins; NO schema shape change — the refine stays, the classifier maps it)"
+      - "apps/api/src/routes/teachermarking.test.ts or the contracts test (the two message/projection pins)"
+      - "apps/hub/src/lib/api.ts (the ONE mid-path row /api/v1/teacher/marking/answers/:uuid/human-mark + its disclosure comment ONLY — conditional on the 44/44 re-verify)"
+      - "apps/hub/src/lib/api.v2-surface.test.ts (the mid-path exact-set +1, the 114 line test, the withheld-row MOVED-OUT notes)"
+      - "golden/cases/marking-humanmark-ppd-over50-400.json (the withheld corpus case)"
+      - ".syllabai/tasks/T-MIG-114-*.yaml; .syllabai/receipts/T-MIG-114/**; .syllabai/worklog.md (append-only)"
+    forbidden:
+      - "any golden/cases/** edit beyond the ONE new case; the existing corpus fence holds"
+      - "the detail/smart-mark/smart-mark-batch rows (the over-capture + LLM-adjacency laws stand)"
+      - "golden/tools/** edits; the legacy core/hub repos; force-push; self-merge"
+  acceptance:
+    - "the classifier branch maps custom+perPointDecisions to 'perPointDecisions: size must be between 0 and 50' (byte-equal to the capture leg-31)"
+    - "the detail read serves latestHumanMark.perPointDecisions = null (byte-equal to the capture leg-35) while the POST echo keeps the map (leg-34 law)"
+    - "the 44-leg re-verify ALL-GREEN (the same matrix, the same comparator)"
+    - "the mid-path row lands; the surface test exact-set +1; hub tests green with the EXACT delta; typecheck x4 exit 0"
+    - "the ppd corpus case joins the union; the replay verdict ALL GREEN at the new count, ledger empty"
+    - "post-merge hub redeploy READY (the sanctioned recipe); battery: the human-mark unauth-401 through the v2 base + the flipped-sibling no-regression legs + Band A"

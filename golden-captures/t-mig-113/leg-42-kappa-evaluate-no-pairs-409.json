@@ -1,0 +1,18 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T18:00:09Z",
+ "captured_from": "LOCAL boot of the frozen core 6cad6ef (the 107 write-surface rig; prod Neon untouched)",
+ "leg": "42",
+ "method": "POST",
+ "name": "kappa-evaluate-no-pairs-409",
+ "path": "/api/v1/teacher/marking/kappa/evaluate",
+ "request_body": null,
+ "response_body": {
+  "status": 409,
+  "error": "conflict",
+  "message": "no paired smart/human mark-point decisions available for \u03ba evaluation",
+  "timestamp": "2026-10-09T18:00:09.080180540Z"
+ },
+ "status": 409,
+ "note": "the empty-pairs law: human marks exist BUT zero SMART results (the dormant generator) -> Conflict 409; nothing saved"
+}

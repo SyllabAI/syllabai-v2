@@ -1,0 +1,18 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T18:00:08Z",
+ "captured_from": "LOCAL boot of the frozen core 6cad6ef (the 107 write-surface rig; prod Neon untouched)",
+ "leg": "27",
+ "method": "POST",
+ "name": "humanmark-empty-400",
+ "path": "/api/v1/teacher/marking/answers/ANSWER-A/human-mark",
+ "request_body": {},
+ "response_body": {
+  "status": 400,
+  "error": "validation_failed",
+  "message": "marksAwarded: must not be null",
+  "timestamp": "2026-10-09T18:00:08.657582645Z"
+ },
+ "status": 400,
+ "note": "marksAwarded @NotNull fires BEFORE the lookup (validation-first ordering)"
+}

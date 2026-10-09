@@ -1,0 +1,33 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T18:00:08Z",
+ "captured_from": "LOCAL boot of the frozen core 6cad6ef (the 107 write-surface rig; prod Neon untouched)",
+ "leg": "24",
+ "method": "GET",
+ "name": "throughput-200",
+ "path": "/api/v1/teacher/marking/throughput",
+ "request_body": null,
+ "response_body": {
+  "answersByState": {
+   "HUMAN_MARKED": 0,
+   "SMART_MARKED": 0,
+   "PENDING": 2,
+   "SELF_MARKED": 0,
+   "OVERRIDDEN": 0
+  },
+  "humanMarks24h": 0,
+  "humanMarks7d": 0,
+  "pendingByPaper": [
+   {
+    "paperId": null,
+    "paperTitle": null,
+    "paperCode": null,
+    "pending": 2
+   }
+  ],
+  "oldestPendingAt": "2026-10-09T18:00:07.800477Z",
+  "oldestPendingHours": 0
+ },
+ "status": 200,
+ "note": "the probe-only substrate: PENDING=2, every other state 0, humanMarks24h/7d=0"
+}
