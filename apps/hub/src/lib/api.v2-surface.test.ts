@@ -101,21 +101,44 @@ const DUAL_RUN_PATHS: readonly string[] = [
   // coreStreamAuthorized, core-hardwired by design) — pinned in the 106 line
   // test below.
   "/api/v1/tutor/ask",
+  // T-MIG-107 (r0, operator trace 1a11f7bc1d47fa31): the §7 review-workflow
+  // write family the hub emits (lib/api.ts validate/place/reject/flag/unflag
+  // x3 levels + validate-all + review/audit GETs + the topics GET/POST emitters)
+  // — flipped per-SUBTREE after the widening's own golden-verify leg
+  // (run-001 capture from the frozen core 6cad6ef local boot + run-002
+  // 53/53 replay vs the booted v2; 3 legs declared-justified, the 106 ruling
+  // (b) class; 6 corpus cases content-write-*). The review/audit GETs ride
+  // the exam-papers subtree row (v2-real since #168, zero 501 stubs remain).
+  "/api/v1/teacher/content/exam-papers/ep-1/validate",
+  "/api/v1/teacher/content/exam-papers/ep-1/validate-all?force=true",
+  "/api/v1/teacher/content/exam-papers/ep-1/place",
+  "/api/v1/teacher/content/exam-papers/ep-1/reject",
+  "/api/v1/teacher/content/exam-papers/ep-1/flag",
+  "/api/v1/teacher/content/exam-papers/ep-1/unflag",
+  "/api/v1/teacher/content/exam-papers/ep-1/review",
+  "/api/v1/teacher/content/exam-papers/ep-1/audit",
+  "/api/v1/teacher/content/question-versions/qv-1/validate",
+  "/api/v1/teacher/content/question-versions/qv-1/reject",
+  "/api/v1/teacher/content/question-versions/qv-1/flag",
+  "/api/v1/teacher/content/question-versions/qv-1/unflag",
+  "/api/v1/teacher/content/mark-schemes/ms-1/validate",
+  "/api/v1/teacher/content/mark-schemes/ms-1/reject",
+  "/api/v1/teacher/content/mark-schemes/ms-1/flag",
+  "/api/v1/teacher/content/mark-schemes/ms-1/unflag",
+  "/api/v1/teacher/content/questions/q-1/topics",
 ];
 
 /** Hub-emitted (or hub-adjacent) paths that MUST stay on the core in the dual-run posture. */
 const CORE_ONLY_PATHS: readonly string[] = [
-  // teacher content: v2 serves honest 501 write stubs; the glm-ocr FAMILY
-  // flipped in T-MIG-089 (the former core-only glm-ocr/papers/p-1/findings
-  // pin MOVED OUT — v2 golden-verified 6/6, receipts
-  // T-MIG-089/run-002-golden-verify-r4b.json — and pinned in DUAL_RUN_PATHS);
-  // every OTHER /api/v1/teacher/content sibling stays core
+  // teacher content: the write SUBTREES flipped in T-MIG-107 (the former
+  // exam-papers/validate + question-versions/flag + mark-schemes/reject pins
+  // MOVED OUT — PR #168 made them real + the 53-leg golden-verify of record);
+  // the glm-ocr FAMILY flipped in T-MIG-089 (the former core-only
+  // glm-ocr/papers/p-1/findings pin MOVED OUT — v2 golden-verified 6/6,
+  // receipts T-MIG-089/run-002-golden-verify-r4b.json — and pinned in
+  // DUAL_RUN_PATHS); the review-queue READ siblings + the bare parent stay core
   "/api/v1/teacher/content/review-queue",
   "/api/v1/teacher/content/review-queue-v3",
-  "/api/v1/teacher/content/exam-papers/ep-1/review",
-  "/api/v1/teacher/content/exam-papers/ep-1/validate",
-  "/api/v1/teacher/content/question-versions/qv-1/flag",
-  "/api/v1/teacher/content/mark-schemes/ms-1/reject",
   // teacher curriculum + teacher W5 families (unported)
   "/api/v1/teacher/curriculum/versions",
   "/api/v1/teacher/classes",
@@ -191,6 +214,10 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/teacher/content/enumerate", // T-MIG-100: same band — also captures /enumerate/structured (leg-04, same verified family tree)
       "/api/v1/teacher/curriculum/exam-series", // T-MIG-100: 091 family 7/7 incl. the CLASS C repeat law — the FULL path row (the 052 mount law)
       "/api/v1/tutor/ask", // T-MIG-106: declared-justified flip (operator ruling (b) trace 1a11c4b762f6043d) — the ask row IS the pair (captures /ask/stream under startsWith, the routing-inseparability finding); the 092 zero-key blocker RETIRED (keyed v2, run-005)
+      "/api/v1/teacher/content/exam-papers/", // T-MIG-107: golden-verified (run-002 53/53, r0 widening rider) — per-SUBTREE row for the parametrized write verbs; review/audit GETs v2-real since #168
+      "/api/v1/teacher/content/question-versions/", // T-MIG-107: same band — subtree = exactly the 4 verified state verbs
+      "/api/v1/teacher/content/mark-schemes/", // T-MIG-107: same band — subtree = exactly the 4 verified state verbs (3 legs declared-justified, the 106 ruling (b) class)
+      "/api/v1/teacher/content/questions/", // T-MIG-107: same band — the topics family (088 leg-08/09 laws + the 50/51/52 capture laws)
     ]);
   });
   test("the mid-path table is exactly the ruled set — the mechanism-A amendment needs its own golden gate too", () => {
@@ -392,11 +419,11 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     // prefix must never capture them (T-MIG-020/023 surfaces). The former
     // fetch/enumerate core-null pins MOVED OUT of this list — the T-MIG-100
     // repair band closed CLASS A/C and the per-exact-endpoint rows flipped
-    // (the T-MIG-100 line test below); the parent + the topics-write gap stay
-    // core-pinned here
+    // (the T-MIG-100 line test below); the topics-write gap pin MOVED OUT at
+    // the T-MIG-107 flip (the write subtrees; see the 107 line test) — the
+    // bare parent stays core-pinned here
     for (const p of [
-      "/api/v1/teacher/content", // the bare parent (the 501-shell root)
-      "/api/v1/teacher/content/questions/00000000-0000-4000-8000-000000000025/topics", // the T-MIG-023-owned write gap (501 vs frozen 404-first)
+      "/api/v1/teacher/content", // the bare parent
     ]) {
       expect(v2SurfaceBase(p, V2)).toBeNull();
     }
@@ -429,10 +456,10 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
       expect(v2SurfaceBase(p, V2)).toBe(V2);
     }
     // the T-MIG-020/023 siblings stay core-pinned: the bare parent + the
-    // topics-write family (501 shells vs the frozen 404-first / 400 wires)
+    // review-queue read sibling (the topics-write family MOVED OUT — the
+    // T-MIG-107 flip closed CLASS B; see the 107 line test below)
     for (const p of [
       "/api/v1/teacher/content",
-      "/api/v1/teacher/content/questions/00000000-0000-4000-8000-000000000025/topics",
       "/api/v1/teacher/content/review-queue",
     ]) {
       expect(v2SurfaceBase(p, V2)).toBeNull();
@@ -445,6 +472,63 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     // teacher curriculum siblings stay core (the 052 full-path mount law):
     // the row is the exam-series family tree ONLY
     expect(v2SurfaceBase("/api/v1/teacher/curriculum/versions", V2)).toBeNull();
+  });
+
+  test("the T-MIG-107 line: the §7 review-workflow write subtrees flip after the widening's own golden-verify leg (r0, port owner)", () => {
+    // GOLDEN-VERIFIED of record: run-001-capture-r0 (53 legs from a LOCAL
+    // boot of the frozen core 6cad6ef per GOLDEN_MASTER §2 — the write-surface
+    // procedure, never prod Neon) + run-002-golden-verify-r0 (53/53 replay vs
+    // the booted v2 on a fresh local substrate — 50 byte-honest deep-equals +
+    // 3 DECLARED-JUSTIFIED legs: the frozen core's Hibernate
+    // LazyInitializationException 500s on scheme reject/flag(/unflag chain)
+    // vs v2's DESIGNED law, the T-MIG-106 ruling (b) class) + 6 declared
+    // corpus cases (golden/cases/content-write-*, tranche empty). PR #168
+    // (merged d2308eb) had already made the 17 honest-501 shells REAL.
+    for (const p of [
+      // the exam-papers subtree: the 6 write verbs (legs 11-26 capture laws)
+      "/api/v1/teacher/content/exam-papers/00000000-0000-4000-8000-0000000000c1/validate",
+      "/api/v1/teacher/content/exam-papers/00000000-0000-4000-8000-0000000000c1/validate-all",
+      "/api/v1/teacher/content/exam-papers/00000000-0000-4000-8000-0000000000c1/place",
+      "/api/v1/teacher/content/exam-papers/00000000-0000-4000-8000-0000000000c1/reject",
+      "/api/v1/teacher/content/exam-papers/00000000-0000-4000-8000-0000000000c1/flag",
+      "/api/v1/teacher/content/exam-papers/00000000-0000-4000-8000-0000000000c1/unflag",
+      // review/audit ride the subtree row (v2-real since #168, zero 501 stubs)
+      "/api/v1/teacher/content/exam-papers/00000000-0000-4000-8000-0000000000c1/review",
+      "/api/v1/teacher/content/exam-papers/00000000-0000-4000-8000-0000000000c1/audit",
+      // the question-versions + mark-schemes subtrees (legs 27-44 capture laws)
+      "/api/v1/teacher/content/question-versions/00000000-0000-4000-8000-0000000000c2/validate",
+      "/api/v1/teacher/content/question-versions/00000000-0000-4000-8000-0000000000c2/unflag",
+      "/api/v1/teacher/content/mark-schemes/00000000-0000-4000-8000-0000000000c3/validate",
+      "/api/v1/teacher/content/mark-schemes/00000000-0000-4000-8000-0000000000c3/reject",
+      // the topics family (legs 45-53: the 088 leg-08/09 laws + the
+      // anchor-409 / rewrite / anchor-secondary-409 capture laws)
+      "/api/v1/teacher/content/questions/40000000-0000-0000-0000-000000000001/topics",
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBe(V2);
+    }
+    // the topics-write gap is CLOSED: the former core-null pin (the 088
+    // leg-08/09 acceptance path) now routes to v2 — the 404-first/400 laws
+    // verified on v2 by the same 53-leg leg
+    expect(v2SurfaceBase("/api/v1/teacher/content/questions/00000000-0000-4000-8000-000000000025/topics", V2)).toBe(V2);
+    // the bare parent + the review-queue READ siblings stay core (not this
+    // band's verified set; the narrowest-legal-form discharge — the 107
+    // comment in the api.ts table)
+    for (const p of [
+      "/api/v1/teacher/content",
+      "/api/v1/teacher/content/review-queue",
+      "/api/v1/teacher/content/review-queue-v2",
+      "/api/v1/teacher/content/review-queue-v3",
+      "/api/v1/teacher/content/documents",
+      "/api/v1/teacher/content/past-papers",
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBeNull();
+    }
+    // the trailing-slash row law: the bare segment WITHOUT a slash stays core
+    // (no such route or hub emitter exists on either side — DOCUMENTED INERT)
+    expect(v2SurfaceBase("/api/v1/teacher/content/exam-papers", V2)).toBeNull();
+    // startsWith partial-segment capture (exam-papersx) is DOCUMENTED INERT
+    expect(v2SurfaceBase("/api/v1/teacher/content/exam-papersx", V2)).toBeNull();
+    expect(v2SurfaceBase("/api/v1/teacher/content/exam-papers/ep-1/validateAll", V2)).toBe(V2); // tail-insensitive prefix capture (startsWith), the same property every row has
   });
 
   test("the T-MIG-085 line: the teacher concept-graph flips after its golden gate (r3a wave-s4)", () => {

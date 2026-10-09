@@ -1,0 +1,1141 @@
+{
+ "results": [
+  {
+   "leg": "leg-01-documents-no-token-401",
+   "path": "/api/v1/teacher/content/documents",
+   "expected_status": 401,
+   "actual_status": 401,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "timestamp": "2026-10-09T08:08:11.015Z",
+    "status": 401,
+    "error": "Unauthorized",
+    "path": "/api/v1/teacher/content/documents"
+   },
+   "expected_body": {
+    "error": "Unauthorized",
+    "path": "/api/v1/teacher/content/documents",
+    "status": 401,
+    "timestamp": "2026-10-09T08:04:22.151Z"
+   }
+  },
+  {
+   "leg": "leg-02-documents-learner-403",
+   "path": "/api/v1/teacher/content/documents",
+   "expected_status": 403,
+   "actual_status": 403,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "timestamp": "2026-10-09T08:08:11.025Z",
+    "status": 403,
+    "error": "Forbidden",
+    "path": "/api/v1/teacher/content/documents"
+   },
+   "expected_body": {
+    "error": "Forbidden",
+    "path": "/api/v1/teacher/content/documents",
+    "status": 403,
+    "timestamp": "2026-10-09T08:04:22.260Z"
+   }
+  },
+  {
+   "leg": "leg-03-documents-201",
+   "path": "/api/v1/teacher/content/documents",
+   "expected_status": 201,
+   "actual_status": 201,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "id": "8ceddcc6-add1-449f-a43f-eae1516d7a0d",
+    "documentId": "00000000-0000-4000-8000-000000000002",
+    "duplicate": false,
+    "chunks": 1,
+    "elements": 1,
+    "pages": 1,
+    "kind": "OTHER"
+   },
+   "expected_body": {
+    "chunks": 1,
+    "documentId": "00000000-0000-4000-8000-000000000002",
+    "duplicate": false,
+    "elements": 1,
+    "id": "00000000-0000-4000-8000-000000000001",
+    "kind": "OTHER",
+    "pages": 1
+   }
+  },
+  {
+   "leg": "leg-04-documents-parse-fail-400",
+   "path": "/api/v1/teacher/content/documents",
+   "expected_status": 400,
+   "actual_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 400,
+    "error": "invalid_document",
+    "message": "request body is not a canonical document (schema 1.0)",
+    "timestamp": "2026-10-09T08:08:11.045Z"
+   },
+   "expected_body": {
+    "error": "invalid_document",
+    "message": "request body is not a canonical document (schema 1.0)",
+    "status": 400,
+    "timestamp": "2026-10-09T08:04:22.460412381Z"
+   }
+  },
+  {
+   "leg": "leg-05-documents-dedup-201",
+   "path": "/api/v1/teacher/content/documents",
+   "expected_status": 201,
+   "actual_status": 201,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "id": "8ceddcc6-add1-449f-a43f-eae1516d7a0d",
+    "documentId": "00000000-0000-4000-8000-000000000002",
+    "duplicate": true,
+    "chunks": 1,
+    "elements": 1,
+    "pages": 1,
+    "kind": "OTHER"
+   },
+   "expected_body": {
+    "chunks": 1,
+    "documentId": "00000000-0000-4000-8000-000000000002",
+    "duplicate": true,
+    "elements": 1,
+    "id": "00000000-0000-4000-8000-000000000001",
+    "kind": "OTHER",
+    "pages": 1
+   }
+  },
+  {
+   "leg": "leg-06-documents-kind-conflict-409",
+   "path": "/api/v1/teacher/content/documents?kind=QUESTION_PAPER",
+   "expected_status": 409,
+   "actual_status": 409,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 409,
+    "error": "conflict",
+    "message": "checksum capture-checksum-1 already ingested as kind OTHER (requested QUESTION_PAPER)",
+    "timestamp": "2026-10-09T08:08:11.051Z"
+   },
+   "expected_body": {
+    "error": "conflict",
+    "message": "checksum capture-checksum-1 already ingested as kind OTHER (requested QUESTION_PAPER)",
+    "status": 409,
+    "timestamp": "2026-10-09T08:04:22.518910834Z"
+   }
+  },
+  {
+   "leg": "leg-07-past-papers-201",
+   "path": "/api/v1/teacher/content/past-papers",
+   "expected_status": 201,
+   "actual_status": 201,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "paperId": "3421e000-368f-499e-8b4f-4cc5d4e1c023",
+    "questions": 1,
+    "parts": 1,
+    "markPoints": 1,
+    "validationState": "SUGGESTED"
+   },
+   "expected_body": {
+    "markPoints": 1,
+    "paperId": "00000000-0000-4000-8000-000000000003",
+    "parts": 1,
+    "questions": 1,
+    "validationState": "SUGGESTED"
+   }
+  },
+  {
+   "leg": "leg-08-past-papers-p2-201",
+   "path": "/api/v1/teacher/content/past-papers",
+   "expected_status": 201,
+   "actual_status": 201,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "paperId": "e659a1a7-5ab1-4495-bed9-4fb401af698a",
+    "questions": 1,
+    "parts": 1,
+    "markPoints": 1,
+    "validationState": "SUGGESTED"
+   },
+   "expected_body": {
+    "markPoints": 1,
+    "paperId": "00000000-0000-4000-8000-000000000004",
+    "parts": 1,
+    "questions": 1,
+    "validationState": "SUGGESTED"
+   }
+  },
+  {
+   "leg": "leg-09-past-papers-p3-noscheme-201",
+   "path": "/api/v1/teacher/content/past-papers",
+   "expected_status": 201,
+   "actual_status": 201,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "paperId": "b2693db0-ba8d-43a6-8a3b-2845da4caf1a",
+    "questions": 1,
+    "parts": 1,
+    "markPoints": 0,
+    "validationState": "SUGGESTED"
+   },
+   "expected_body": {
+    "markPoints": 0,
+    "paperId": "00000000-0000-4000-8000-000000000005",
+    "parts": 1,
+    "questions": 1,
+    "validationState": "SUGGESTED"
+   }
+  },
+  {
+   "leg": "leg-10-past-papers-schema-409",
+   "path": "/api/v1/teacher/content/past-papers",
+   "expected_status": 409,
+   "actual_status": 409,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 409,
+    "error": "conflict",
+    "message": "unsupported draft schemaVersion 9.9 (expected 1.0)",
+    "timestamp": "2026-10-09T08:08:11.080Z"
+   },
+   "expected_body": {
+    "error": "conflict",
+    "message": "unsupported draft schemaVersion 9.9 (expected 1.0)",
+    "status": 409,
+    "timestamp": "2026-10-09T08:04:22.736091481Z"
+   }
+  },
+  {
+   "leg": "leg-11-validate-all-p1-200",
+   "path": "/api/v1/teacher/content/exam-papers/3421e000-368f-499e-8b4f-4cc5d4e1c023/validate-all",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "paperId": "00000000-0000-4000-8000-000000000003",
+    "paperState": "VALIDATED",
+    "totalVersions": 1,
+    "versionsValidated": 1,
+    "schemesValidated": 1
+   },
+   "expected_body": {
+    "paperId": "00000000-0000-4000-8000-000000000003",
+    "paperState": "VALIDATED",
+    "schemesValidated": 1,
+    "totalVersions": 1,
+    "versionsValidated": 1
+   }
+  },
+  {
+   "leg": "leg-12-validate-p1-200",
+   "path": "/api/v1/teacher/content/exam-papers/3421e000-368f-499e-8b4f-4cc5d4e1c023/validate",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "id": "00000000-0000-4000-8000-000000000003",
+    "subjectId": "21bd4530-5d92-4d93-a2d3-78e48d02a500",
+    "title": "A Level 9706 9706/11 June 2014 9706/11",
+    "paperCode": "9706/11",
+    "sessionLabel": "June 2014 9706/11",
+    "board": "CIE",
+    "qualification": "A Level",
+    "validationState": "VALIDATED"
+   },
+   "expected_body": {
+    "board": "CIE",
+    "id": "00000000-0000-4000-8000-000000000003",
+    "paperCode": "9706/11",
+    "qualification": "A Level",
+    "sessionLabel": "June 2014 9706/11",
+    "subjectId": "00000000-0000-4000-8000-000000000006",
+    "title": "A Level 9706 9706/11 June 2014 9706/11",
+    "validationState": "VALIDATED"
+   }
+  },
+  {
+   "leg": "leg-13-validate-p2-unvalidated-409",
+   "path": "/api/v1/teacher/content/exam-papers/e659a1a7-5ab1-4495-bed9-4fb401af698a/validate",
+   "expected_status": 409,
+   "actual_status": 409,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 409,
+    "error": "conflict",
+    "message": "paper has 1 unvalidated question version(s) — validate versions first",
+    "timestamp": "2026-10-09T08:08:11.100Z"
+   },
+   "expected_body": {
+    "error": "conflict",
+    "message": "paper has 1 unvalidated question version(s) — validate versions first",
+    "status": 409,
+    "timestamp": "2026-10-09T08:04:22.875442056Z"
+   }
+  },
+  {
+   "leg": "leg-14-validate-all-p3-schemeless-409",
+   "path": "/api/v1/teacher/content/exam-papers/b2693db0-ba8d-43a6-8a3b-2845da4caf1a/validate-all",
+   "expected_status": 409,
+   "actual_status": 409,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 409,
+    "error": "conflict",
+    "message": "paper has 1 question version(s) without any mark scheme — the deterministic marking contract is incomplete; author the schemes first or pass force=true to validate anyway",
+    "timestamp": "2026-10-09T08:08:11.107Z"
+   },
+   "expected_body": {
+    "error": "conflict",
+    "message": "paper has 1 question version(s) without any mark scheme — the deterministic marking contract is incomplete; author the schemes first or pass force=true to validate anyway",
+    "status": 409,
+    "timestamp": "2026-10-09T08:04:22.907875369Z"
+   }
+  },
+  {
+   "leg": "leg-15-place-p1-unknown-subject-404",
+   "path": "/api/v1/teacher/content/exam-papers/3421e000-368f-499e-8b4f-4cc5d4e1c023/place",
+   "expected_status": 404,
+   "actual_status": 404,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 404,
+    "error": "not_found",
+    "message": "subject 00000000-0000-4000-8000-000000000008 not found",
+    "timestamp": "2026-10-09T08:08:11.109Z"
+   },
+   "expected_body": {
+    "error": "not_found",
+    "message": "subject 00000000-0000-4000-8000-000000000008 not found",
+    "status": 404,
+    "timestamp": "2026-10-09T08:04:22.930549227Z"
+   }
+  },
+  {
+   "leg": "leg-16-place-p1-200",
+   "path": "/api/v1/teacher/content/exam-papers/3421e000-368f-499e-8b4f-4cc5d4e1c023/place",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "id": "00000000-0000-4000-8000-000000000003",
+    "subjectId": "00000000-0000-4000-8000-000000000007",
+    "title": "A Level 9706 9706/11 June 2014 9706/11",
+    "paperCode": "9706/11",
+    "sessionLabel": "June 2014 9706/11",
+    "board": "CIE",
+    "qualification": "A Level",
+    "validationState": "VALIDATED"
+   },
+   "expected_body": {
+    "board": "CIE",
+    "id": "00000000-0000-4000-8000-000000000003",
+    "paperCode": "9706/11",
+    "qualification": "A Level",
+    "sessionLabel": "June 2014 9706/11",
+    "subjectId": "00000000-0000-4000-8000-000000000007",
+    "title": "A Level 9706 9706/11 June 2014 9706/11",
+    "validationState": "VALIDATED"
+   }
+  },
+  {
+   "leg": "leg-17-place-p1-again-200",
+   "path": "/api/v1/teacher/content/exam-papers/3421e000-368f-499e-8b4f-4cc5d4e1c023/place",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "id": "00000000-0000-4000-8000-000000000003",
+    "subjectId": "00000000-0000-4000-8000-000000000007",
+    "title": "A Level 9706 9706/11 June 2014 9706/11",
+    "paperCode": "9706/11",
+    "sessionLabel": "June 2014 9706/11",
+    "board": "CIE",
+    "qualification": "A Level",
+    "validationState": "VALIDATED"
+   },
+   "expected_body": {
+    "board": "CIE",
+    "id": "00000000-0000-4000-8000-000000000003",
+    "paperCode": "9706/11",
+    "qualification": "A Level",
+    "sessionLabel": "June 2014 9706/11",
+    "subjectId": "00000000-0000-4000-8000-000000000007",
+    "title": "A Level 9706 9706/11 June 2014 9706/11",
+    "validationState": "VALIDATED"
+   }
+  },
+  {
+   "leg": "leg-18-place-no-token-401",
+   "path": "/api/v1/teacher/content/exam-papers/3421e000-368f-499e-8b4f-4cc5d4e1c023/place",
+   "expected_status": 401,
+   "actual_status": 401,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "timestamp": "2026-10-09T08:08:11.115Z",
+    "status": 401,
+    "error": "Unauthorized",
+    "path": "/api/v1/teacher/content/exam-papers/00000000-0000-4000-8000-000000000003/place"
+   },
+   "expected_body": {
+    "error": "Unauthorized",
+    "path": "/api/v1/teacher/content/exam-papers/00000000-0000-4000-8000-000000000003/place",
+    "status": 401,
+    "timestamp": "2026-10-09T08:04:22.956Z"
+   }
+  },
+  {
+   "leg": "leg-19-flag-p1-200",
+   "path": "/api/v1/teacher/content/exam-papers/3421e000-368f-499e-8b4f-4cc5d4e1c023/flag",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "id": "00000000-0000-4000-8000-000000000003",
+    "subjectId": "00000000-0000-4000-8000-000000000007",
+    "title": "A Level 9706 9706/11 June 2014 9706/11",
+    "paperCode": "9706/11",
+    "sessionLabel": "June 2014 9706/11",
+    "board": "CIE",
+    "qualification": "A Level",
+    "validationState": "FLAGGED"
+   },
+   "expected_body": {
+    "board": "CIE",
+    "id": "00000000-0000-4000-8000-000000000003",
+    "paperCode": "9706/11",
+    "qualification": "A Level",
+    "sessionLabel": "June 2014 9706/11",
+    "subjectId": "00000000-0000-4000-8000-000000000007",
+    "title": "A Level 9706 9706/11 June 2014 9706/11",
+    "validationState": "FLAGGED"
+   }
+  },
+  {
+   "leg": "leg-20-flag-p1-flagged-500",
+   "path": "/api/v1/teacher/content/exam-papers/3421e000-368f-499e-8b4f-4cc5d4e1c023/flag",
+   "expected_status": 500,
+   "actual_status": 500,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 500,
+    "error": "internal_error",
+    "message": "an internal error occurred",
+    "timestamp": "2026-10-09T08:08:11.118Z"
+   },
+   "expected_body": {
+    "error": "internal_error",
+    "message": "an internal error occurred",
+    "status": 500,
+    "timestamp": "2026-10-09T08:04:23.009275083Z"
+   }
+  },
+  {
+   "leg": "leg-21-unflag-p1-200",
+   "path": "/api/v1/teacher/content/exam-papers/3421e000-368f-499e-8b4f-4cc5d4e1c023/unflag",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "id": "00000000-0000-4000-8000-000000000003",
+    "subjectId": "00000000-0000-4000-8000-000000000007",
+    "title": "A Level 9706 9706/11 June 2014 9706/11",
+    "paperCode": "9706/11",
+    "sessionLabel": "June 2014 9706/11",
+    "board": "CIE",
+    "qualification": "A Level",
+    "validationState": "SUGGESTED"
+   },
+   "expected_body": {
+    "board": "CIE",
+    "id": "00000000-0000-4000-8000-000000000003",
+    "paperCode": "9706/11",
+    "qualification": "A Level",
+    "sessionLabel": "June 2014 9706/11",
+    "subjectId": "00000000-0000-4000-8000-000000000007",
+    "title": "A Level 9706 9706/11 June 2014 9706/11",
+    "validationState": "SUGGESTED"
+   }
+  },
+  {
+   "leg": "leg-22-reject-p1-200",
+   "path": "/api/v1/teacher/content/exam-papers/3421e000-368f-499e-8b4f-4cc5d4e1c023/reject",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "id": "00000000-0000-4000-8000-000000000003",
+    "subjectId": "00000000-0000-4000-8000-000000000007",
+    "title": "A Level 9706 9706/11 June 2014 9706/11",
+    "paperCode": "9706/11",
+    "sessionLabel": "June 2014 9706/11",
+    "board": "CIE",
+    "qualification": "A Level",
+    "validationState": "REJECTED"
+   },
+   "expected_body": {
+    "board": "CIE",
+    "id": "00000000-0000-4000-8000-000000000003",
+    "paperCode": "9706/11",
+    "qualification": "A Level",
+    "sessionLabel": "June 2014 9706/11",
+    "subjectId": "00000000-0000-4000-8000-000000000007",
+    "title": "A Level 9706 9706/11 June 2014 9706/11",
+    "validationState": "REJECTED"
+   }
+  },
+  {
+   "leg": "leg-23-flag-p1-rejected-500",
+   "path": "/api/v1/teacher/content/exam-papers/3421e000-368f-499e-8b4f-4cc5d4e1c023/flag",
+   "expected_status": 500,
+   "actual_status": 500,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 500,
+    "error": "internal_error",
+    "message": "an internal error occurred",
+    "timestamp": "2026-10-09T08:08:11.127Z"
+   },
+   "expected_body": {
+    "error": "internal_error",
+    "message": "an internal error occurred",
+    "status": 500,
+    "timestamp": "2026-10-09T08:04:23.047986011Z"
+   }
+  },
+  {
+   "leg": "leg-24-validate-all-p1-rejected-409",
+   "path": "/api/v1/teacher/content/exam-papers/3421e000-368f-499e-8b4f-4cc5d4e1c023/validate-all",
+   "expected_status": 409,
+   "actual_status": 409,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 409,
+    "error": "conflict",
+    "message": "paper is REJECTED — validation is not possible",
+    "timestamp": "2026-10-09T08:08:11.128Z"
+   },
+   "expected_body": {
+    "error": "conflict",
+    "message": "paper is REJECTED — validation is not possible",
+    "status": 409,
+    "timestamp": "2026-10-09T08:04:23.057432046Z"
+   }
+  },
+  {
+   "leg": "leg-25-unflag-p2-notflagged-500",
+   "path": "/api/v1/teacher/content/exam-papers/e659a1a7-5ab1-4495-bed9-4fb401af698a/unflag",
+   "expected_status": 500,
+   "actual_status": 500,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 500,
+    "error": "internal_error",
+    "message": "an internal error occurred",
+    "timestamp": "2026-10-09T08:08:11.130Z"
+   },
+   "expected_body": {
+    "error": "internal_error",
+    "message": "an internal error occurred",
+    "status": 500,
+    "timestamp": "2026-10-09T08:04:23.065313131Z"
+   }
+  },
+  {
+   "leg": "leg-26-validate-unknown-paper-404",
+   "path": "/api/v1/teacher/content/exam-papers/00000000-0000-4000-8000-0000000000fe/validate",
+   "expected_status": 404,
+   "actual_status": 404,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 404,
+    "error": "not_found",
+    "message": "exam paper 00000000-0000-4000-8000-000000000009 not found",
+    "timestamp": "2026-10-09T08:08:11.131Z"
+   },
+   "expected_body": {
+    "error": "not_found",
+    "message": "exam paper 00000000-0000-4000-8000-000000000009 not found",
+    "status": 404,
+    "timestamp": "2026-10-09T08:04:23.072578308Z"
+   }
+  },
+  {
+   "leg": "leg-27-validate-unknown-version-404",
+   "path": "/api/v1/teacher/content/question-versions/00000000-0000-4000-8000-0000000000fd/validate",
+   "expected_status": 404,
+   "actual_status": 404,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 404,
+    "error": "not_found",
+    "message": "question version 00000000-0000-4000-8000-000000000013 not found",
+    "timestamp": "2026-10-09T08:08:11.133Z"
+   },
+   "expected_body": {
+    "error": "not_found",
+    "message": "question version 00000000-0000-4000-8000-000000000013 not found",
+    "status": 404,
+    "timestamp": "2026-10-09T08:04:23.124879433Z"
+   }
+  },
+  {
+   "leg": "leg-28-validate-pv2-200",
+   "path": "/api/v1/teacher/content/question-versions/ffdbb55e-131a-4ee8-bdf2-f5e75b398d85/validate",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "id": "00000000-0000-4000-8000-000000000011",
+    "questionId": "34b8f102-6f29-4e65-9f9a-9061115923a8",
+    "version": 1,
+    "validationState": "VALIDATED"
+   },
+   "expected_body": {
+    "id": "00000000-0000-4000-8000-000000000011",
+    "questionId": "00000000-0000-4000-8000-000000000014",
+    "validationState": "VALIDATED",
+    "version": 1
+   }
+  },
+  {
+   "leg": "leg-29-validate-pv2-again-200",
+   "path": "/api/v1/teacher/content/question-versions/ffdbb55e-131a-4ee8-bdf2-f5e75b398d85/validate",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "id": "00000000-0000-4000-8000-000000000011",
+    "questionId": "34b8f102-6f29-4e65-9f9a-9061115923a8",
+    "version": 1,
+    "validationState": "VALIDATED"
+   },
+   "expected_body": {
+    "id": "00000000-0000-4000-8000-000000000011",
+    "questionId": "00000000-0000-4000-8000-000000000014",
+    "validationState": "VALIDATED",
+    "version": 1
+   }
+  },
+  {
+   "leg": "leg-30-reject-pv3-200",
+   "path": "/api/v1/teacher/content/question-versions/a9bef4a0-1c62-4095-b91e-d60f31cbee84/reject",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "id": "00000000-0000-4000-8000-000000000012",
+    "questionId": "2eea4a2d-4c5c-4b81-9c1b-f10a74b8c4f5",
+    "version": 1,
+    "validationState": "REJECTED"
+   },
+   "expected_body": {
+    "id": "00000000-0000-4000-8000-000000000012",
+    "questionId": "00000000-0000-4000-8000-000000000015",
+    "validationState": "REJECTED",
+    "version": 1
+   }
+  },
+  {
+   "leg": "leg-31-flag-pv2-200",
+   "path": "/api/v1/teacher/content/question-versions/ffdbb55e-131a-4ee8-bdf2-f5e75b398d85/flag",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "id": "00000000-0000-4000-8000-000000000011",
+    "questionId": "34b8f102-6f29-4e65-9f9a-9061115923a8",
+    "version": 1,
+    "validationState": "FLAGGED"
+   },
+   "expected_body": {
+    "id": "00000000-0000-4000-8000-000000000011",
+    "questionId": "00000000-0000-4000-8000-000000000014",
+    "validationState": "FLAGGED",
+    "version": 1
+   }
+  },
+  {
+   "leg": "leg-32-unflag-pv2-200",
+   "path": "/api/v1/teacher/content/question-versions/ffdbb55e-131a-4ee8-bdf2-f5e75b398d85/unflag",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "id": "00000000-0000-4000-8000-000000000011",
+    "questionId": "34b8f102-6f29-4e65-9f9a-9061115923a8",
+    "version": 1,
+    "validationState": "SUGGESTED"
+   },
+   "expected_body": {
+    "id": "00000000-0000-4000-8000-000000000011",
+    "questionId": "00000000-0000-4000-8000-000000000014",
+    "validationState": "SUGGESTED",
+    "version": 1
+   }
+  },
+  {
+   "leg": "leg-33-unflag-pv2-again-500",
+   "path": "/api/v1/teacher/content/question-versions/ffdbb55e-131a-4ee8-bdf2-f5e75b398d85/unflag",
+   "expected_status": 500,
+   "actual_status": 500,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 500,
+    "error": "internal_error",
+    "message": "an internal error occurred",
+    "timestamp": "2026-10-09T08:08:11.149Z"
+   },
+   "expected_body": {
+    "error": "internal_error",
+    "message": "an internal error occurred",
+    "status": 500,
+    "timestamp": "2026-10-09T08:04:23.219292317Z"
+   }
+  },
+  {
+   "leg": "leg-34-flag-pv3-rejected-500",
+   "path": "/api/v1/teacher/content/question-versions/a9bef4a0-1c62-4095-b91e-d60f31cbee84/flag",
+   "expected_status": 500,
+   "actual_status": 500,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 500,
+    "error": "internal_error",
+    "message": "an internal error occurred",
+    "timestamp": "2026-10-09T08:08:11.152Z"
+   },
+   "expected_body": {
+    "error": "internal_error",
+    "message": "an internal error occurred",
+    "status": 500,
+    "timestamp": "2026-10-09T08:04:23.227234395Z"
+   }
+  },
+  {
+   "leg": "leg-35-validate-scheme-s2-200",
+   "path": "/api/v1/teacher/content/mark-schemes/2496d327-d932-4b41-9d03-979460c50b72/validate",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "id": "00000000-0000-4000-8000-000000000017",
+    "questionVersionId": "00000000-0000-4000-8000-000000000011",
+    "pointCount": 1,
+    "validationState": "VALIDATED"
+   },
+   "expected_body": {
+    "id": "00000000-0000-4000-8000-000000000017",
+    "pointCount": 1,
+    "questionVersionId": "00000000-0000-4000-8000-000000000011",
+    "validationState": "VALIDATED"
+   }
+  },
+  {
+   "leg": "leg-36-validate-scheme-s1-criteria-200",
+   "path": "/api/v1/teacher/content/mark-schemes/a74b216a-7032-4070-9ad9-94cf53eeafea/validate",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "id": "00000000-0000-4000-8000-000000000016",
+    "questionVersionId": "00000000-0000-4000-8000-000000000010",
+    "pointCount": 1,
+    "validationState": "VALIDATED"
+   },
+   "expected_body": {
+    "id": "00000000-0000-4000-8000-000000000016",
+    "pointCount": 1,
+    "questionVersionId": "00000000-0000-4000-8000-000000000010",
+    "validationState": "VALIDATED"
+   }
+  },
+  {
+   "leg": "leg-37-validate-scheme-unknown-point-404",
+   "path": "/api/v1/teacher/content/mark-schemes/a74b216a-7032-4070-9ad9-94cf53eeafea/validate",
+   "expected_status": 404,
+   "actual_status": 404,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 404,
+    "error": "not_found",
+    "message": "mark point in scheme 00000000-0000-4000-8000-000000000019 not found",
+    "timestamp": "2026-10-09T08:08:11.160Z"
+   },
+   "expected_body": {
+    "error": "not_found",
+    "message": "mark point in scheme 00000000-0000-4000-8000-000000000019 not found",
+    "status": 404,
+    "timestamp": "2026-10-09T08:04:23.359325825Z"
+   }
+  },
+  {
+   "leg": "leg-38-validate-scheme-null-point-404",
+   "path": "/api/v1/teacher/content/mark-schemes/a74b216a-7032-4070-9ad9-94cf53eeafea/validate",
+   "expected_status": 404,
+   "actual_status": 404,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 404,
+    "error": "not_found",
+    "message": "mark point in scheme null not found",
+    "timestamp": "2026-10-09T08:08:11.162Z"
+   },
+   "expected_body": {
+    "error": "not_found",
+    "message": "mark point in scheme null not found",
+    "status": 404,
+    "timestamp": "2026-10-09T08:04:23.368974695Z"
+   }
+  },
+  {
+   "leg": "leg-39-validate-unknown-scheme-404",
+   "path": "/api/v1/teacher/content/mark-schemes/00000000-0000-4000-8000-0000000000fb/validate",
+   "expected_status": 404,
+   "actual_status": 404,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 404,
+    "error": "not_found",
+    "message": "mark scheme 00000000-0000-4000-8000-000000000020 not found",
+    "timestamp": "2026-10-09T08:08:11.164Z"
+   },
+   "expected_body": {
+    "error": "not_found",
+    "message": "mark scheme 00000000-0000-4000-8000-000000000020 not found",
+    "status": 404,
+    "timestamp": "2026-10-09T08:04:23.405015189Z"
+   }
+  },
+  {
+   "leg": "leg-40-reject-scheme-s1-core-defect-500",
+   "path": "/api/v1/teacher/content/mark-schemes/a74b216a-7032-4070-9ad9-94cf53eeafea/reject",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "justified": "frozen core 500 = Hibernate LazyInitializationException on MarkScheme.points (Session artifact); v2 serves the DESIGNED law (the T-MIG-106 ruling (b) class)",
+   "actual_body": {
+    "id": "00000000-0000-4000-8000-000000000016",
+    "questionVersionId": "00000000-0000-4000-8000-000000000010",
+    "pointCount": 1,
+    "validationState": "REJECTED"
+   },
+   "expected_body": {
+    "id": "00000000-0000-4000-8000-000000000016",
+    "pointCount": 1,
+    "questionVersionId": "00000000-0000-4000-8000-000000000010",
+    "validationState": "REJECTED"
+   }
+  },
+  {
+   "leg": "leg-41-flag-scheme-s2-core-defect-500",
+   "path": "/api/v1/teacher/content/mark-schemes/2496d327-d932-4b41-9d03-979460c50b72/flag",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "justified": "same core defect; v2 answers designed 200 FLAGGED",
+   "actual_body": {
+    "id": "00000000-0000-4000-8000-000000000017",
+    "questionVersionId": "00000000-0000-4000-8000-000000000011",
+    "pointCount": 1,
+    "validationState": "FLAGGED"
+   },
+   "expected_body": {
+    "id": "00000000-0000-4000-8000-000000000017",
+    "pointCount": 1,
+    "questionVersionId": "00000000-0000-4000-8000-000000000011",
+    "validationState": "FLAGGED"
+   }
+  },
+  {
+   "leg": "leg-42-unflag-scheme-s2-postdefect-500",
+   "path": "/api/v1/teacher/content/mark-schemes/2496d327-d932-4b41-9d03-979460c50b72/unflag",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "justified": "chained on v2's FLAGGED state (leg-41 designed 200) → designed 200 SUGGESTED",
+   "actual_body": {
+    "id": "00000000-0000-4000-8000-000000000017",
+    "questionVersionId": "00000000-0000-4000-8000-000000000011",
+    "pointCount": 1,
+    "validationState": "SUGGESTED"
+   },
+   "expected_body": {
+    "id": "00000000-0000-4000-8000-000000000017",
+    "pointCount": 1,
+    "questionVersionId": "00000000-0000-4000-8000-000000000011",
+    "validationState": "SUGGESTED"
+   }
+  },
+  {
+   "leg": "leg-43-unflag-scheme-s2-again-500",
+   "path": "/api/v1/teacher/content/mark-schemes/2496d327-d932-4b41-9d03-979460c50b72/unflag",
+   "expected_status": 500,
+   "actual_status": 500,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 500,
+    "error": "internal_error",
+    "message": "an internal error occurred",
+    "timestamp": "2026-10-09T08:08:11.173Z"
+   },
+   "expected_body": {
+    "error": "internal_error",
+    "message": "an internal error occurred",
+    "status": 500,
+    "timestamp": "2026-10-09T08:04:23.454207112Z"
+   }
+  },
+  {
+   "leg": "leg-44-flag-scheme-s1-rejected-500",
+   "path": "/api/v1/teacher/content/mark-schemes/a74b216a-7032-4070-9ad9-94cf53eeafea/flag",
+   "expected_status": 500,
+   "actual_status": 500,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 500,
+    "error": "internal_error",
+    "message": "an internal error occurred",
+    "timestamp": "2026-10-09T08:08:11.174Z"
+   },
+   "expected_body": {
+    "error": "internal_error",
+    "message": "an internal error occurred",
+    "status": 500,
+    "timestamp": "2026-10-09T08:04:23.462548352Z"
+   }
+  },
+  {
+   "leg": "leg-45-topics-no-token-401",
+   "path": "/api/v1/teacher/content/questions/40000000-0000-0000-0000-000000000001/topics",
+   "expected_status": 401,
+   "actual_status": 401,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "timestamp": "2026-10-09T08:08:11.174Z",
+    "status": 401,
+    "error": "Unauthorized",
+    "path": "/api/v1/teacher/content/questions/00000000-0000-4000-8000-000000000021/topics"
+   },
+   "expected_body": {
+    "error": "Unauthorized",
+    "path": "/api/v1/teacher/content/questions/00000000-0000-4000-8000-000000000021/topics",
+    "status": 401,
+    "timestamp": "2026-10-09T08:04:23.520Z"
+   }
+  },
+  {
+   "leg": "leg-46-topics-post-rnd-q-404",
+   "path": "/api/v1/teacher/content/questions/00000000-0000-4000-8000-0000000000fa/topics",
+   "expected_status": 404,
+   "actual_status": 404,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 404,
+    "error": "not_found",
+    "message": "question 00000000-0000-4000-8000-000000000024 not found",
+    "timestamp": "2026-10-09T08:08:11.176Z"
+   },
+   "expected_body": {
+    "error": "not_found",
+    "message": "question 00000000-0000-4000-8000-000000000024 not found",
+    "status": 404,
+    "timestamp": "2026-10-09T08:04:23.534265061Z"
+   }
+  },
+  {
+   "leg": "leg-47-topics-post-bad-body-400",
+   "path": "/api/v1/teacher/content/questions/40000000-0000-0000-0000-000000000001/topics",
+   "expected_status": 400,
+   "actual_status": 400,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 400,
+    "error": "validation_failed",
+    "message": "primaryNodeId: must not be null",
+    "timestamp": "2026-10-09T08:08:11.177Z"
+   },
+   "expected_body": {
+    "error": "validation_failed",
+    "message": "primaryNodeId: must not be null",
+    "status": 400,
+    "timestamp": "2026-10-09T08:04:23.560846453Z"
+   }
+  },
+  {
+   "leg": "leg-48-topics-unknown-primary-404",
+   "path": "/api/v1/teacher/content/questions/40000000-0000-0000-0000-000000000001/topics",
+   "expected_status": 404,
+   "actual_status": 404,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 404,
+    "error": "not_found",
+    "message": "curriculum topic 00000000-0000-4000-8000-000000000025 not found",
+    "timestamp": "2026-10-09T08:08:11.179Z"
+   },
+   "expected_body": {
+    "error": "not_found",
+    "message": "curriculum topic 00000000-0000-4000-8000-000000000025 not found",
+    "status": 404,
+    "timestamp": "2026-10-09T08:04:23.570825100Z"
+   }
+  },
+  {
+   "leg": "leg-49-topics-anchor-primary-409",
+   "path": "/api/v1/teacher/content/questions/40000000-0000-0000-0000-000000000001/topics",
+   "expected_status": 409,
+   "actual_status": 409,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 409,
+    "error": "conflict",
+    "message": "primary topic ING-970611JUNE2014970611 is an ingestion anchor — pick a real curriculum topic",
+    "timestamp": "2026-10-09T08:08:11.181Z"
+   },
+   "expected_body": {
+    "error": "conflict",
+    "message": "primary topic ING-970611JUNE2014970611 is an ingestion anchor — pick a real curriculum topic",
+    "status": 409,
+    "timestamp": "2026-10-09T08:04:23.579555509Z"
+   }
+  },
+  {
+   "leg": "leg-50-topics-200",
+   "path": "/api/v1/teacher/content/questions/40000000-0000-0000-0000-000000000001/topics",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "questionId": "00000000-0000-4000-8000-000000000021",
+    "primaryNodeId": "00000000-0000-4000-8000-000000000022",
+    "primaryCode": "WCH11-T1",
+    "primaryTitle": "Formulae, Equations and Amount of Substance",
+    "topicCount": 1
+   },
+   "expected_body": {
+    "primaryCode": "WCH11-T1",
+    "primaryNodeId": "00000000-0000-4000-8000-000000000022",
+    "primaryTitle": "Formulae, Equations and Amount of Substance",
+    "questionId": "00000000-0000-4000-8000-000000000021",
+    "topicCount": 1
+   }
+  },
+  {
+   "leg": "leg-51-topics-rewrite-200",
+   "path": "/api/v1/teacher/content/questions/40000000-0000-0000-0000-000000000001/topics",
+   "expected_status": 200,
+   "actual_status": 200,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "questionId": "00000000-0000-4000-8000-000000000021",
+    "primaryNodeId": "00000000-0000-4000-8000-000000000022",
+    "primaryCode": "WCH11-T1",
+    "primaryTitle": "Formulae, Equations and Amount of Substance",
+    "topicCount": 1
+   },
+   "expected_body": {
+    "primaryCode": "WCH11-T1",
+    "primaryNodeId": "00000000-0000-4000-8000-000000000022",
+    "primaryTitle": "Formulae, Equations and Amount of Substance",
+    "questionId": "00000000-0000-4000-8000-000000000021",
+    "topicCount": 1
+   }
+  },
+  {
+   "leg": "leg-52-topics-anchor-secondary-409",
+   "path": "/api/v1/teacher/content/questions/40000000-0000-0000-0000-000000000001/topics",
+   "expected_status": 409,
+   "actual_status": 409,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "status": 409,
+    "error": "conflict",
+    "message": "secondary topic ING-970611JUNE2014970611 is an ingestion anchor — pick real curriculum topics",
+    "timestamp": "2026-10-09T08:08:11.208Z"
+   },
+   "expected_body": {
+    "error": "conflict",
+    "message": "secondary topic ING-970611JUNE2014970611 is an ingestion anchor — pick real curriculum topics",
+    "status": 409,
+    "timestamp": "2026-10-09T08:04:23.663361144Z"
+   }
+  },
+  {
+   "leg": "leg-53-topics-learner-403",
+   "path": "/api/v1/teacher/content/questions/40000000-0000-0000-0000-000000000001/topics",
+   "expected_status": 403,
+   "actual_status": 403,
+   "status_match": true,
+   "body_match": true,
+   "actual_body": {
+    "timestamp": "2026-10-09T08:08:11.209Z",
+    "status": 403,
+    "error": "Forbidden",
+    "path": "/api/v1/teacher/content/questions/00000000-0000-4000-8000-000000000021/topics"
+   },
+   "expected_body": {
+    "error": "Forbidden",
+    "path": "/api/v1/teacher/content/questions/00000000-0000-4000-8000-000000000021/topics",
+    "status": 403,
+    "timestamp": "2026-10-09T08:04:23.669Z"
+   }
+  }
+ ],
+ "verdict": "PASS",
+ "justified_legs": 3
+}

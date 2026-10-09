@@ -1,0 +1,27 @@
+{
+ "description": "POST /documents with an unparseable body as TEACHER: 400 invalid_document with the FIXED client message (R10 M2 hygiene law \u2014 Jackson parse errors never echo request excerpts). declared from the T-MIG-107 run-001 capture of record (LOCAL boot of frozen Java core 6cad6ef, mvn -DskipTests package BUILD SUCCESS, JDK 25.0.4.1 + Maven 3.9.9, Flyway V1..V63 at boot, on LOCAL scratch PostgreSQL 17.11 + pgvector 0.8.0 user-tree, port 5544, db syllabai_capture, server.port 8090; SYLLABAI_LLM_MODE=test; zero LLM keys; zero prod/Neon contact; R0-integrator, operator trace 1a11f7bc1d47fa31) and verified 53/53 against the v2 code of record (PR #168) in run-002-golden-verify-r0 (local substrate, t100 harness pattern); tokens scrubbed per the T-MIG-003 fixed-dummy convention \u2014 the replay harness re-mints per-target per the route rule (TEACHER/ADMIN for /api/v1/teacher/**). Tranche: empty (the case pins the UNSTAGED/empty-store posture \u2014 T-MIG-072 declared field).",
+ "expect": {
+  "body": {
+   "error": "invalid_document",
+   "message": "request body is not a canonical document (schema 1.0)",
+   "status": 400,
+   "timestamp": "2026-10-09T08:04:22.460412381Z"
+  },
+  "status": 400
+ },
+ "method": "POST",
+ "name": "content-write-docs-parse-fail-400",
+ "path": "/api/v1/teacher/content/documents",
+ "request": {
+  "body": "{not-json",
+  "headers": {
+   "Authorization": "Bearer {{TOKEN}}",
+   "content-type": "application/json"
+  }
+ },
+ "source": "T-MIG-107 golden-captures/t-mig-107/leg-04-documents-parse-fail-400.json (uuid-map role-labelled; scrubbed)",
+ "tolerate": [
+  "timestamp"
+ ],
+ "tranche": "empty"
+}
