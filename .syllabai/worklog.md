@@ -6786,3 +6786,15 @@ Work Log:
 
 Stage Summary:
 - T-MIG-109 amendment complete lane-side: the 4 mis-cut cases pass on their own merits (offline flip proof of record); the standing re-proof instrument's union is expected 186/186 at the next run with the justified-ledger still EMPTY. Post-merge re-verify owed (the next scheduled/dispatched neon-replay at the merge tip). Write ledger: 4 corpus case files + yaml + receipt + worklog; zero live traffic, zero deploys, zero DDL. Lane continues: push -> PR -> CI -> r0-auto merge -> neon-replay re-verify.
+---
+Task ID: R0-AUTO run cron-202610091830 (Job 438940)
+Agent: R0-auto (Super Z, zai-web, merge desk — desk merges only)
+
+Work Log:
+- PR #171 MERGED of record -> b80b44d (head c6562670a6049416515e2c87a79463f8d3d09c77 sha-guarded PUT first-try, merge_method=merge): T-MIG-109 the content-write unknown-id 404 corpus mis-cut band (r7a lane, operator trace 1a12025923693c75 "take the band"; 7 files: 3 .syllabai + 4 golden/cases content-write-*-404.json amended 2 lines each)
+- RED-CI JUDGMENT of record: main carried the replay run-27 red (id 37910903186, union 182/186, escalated cron-202610091730) — this PR is the DIAGNOSED, operator-directed remedy of record (root cause: the T-MIG-107 corpus cut relabelled request paths via uuid-map but not the captured expect.body.message strings; v2 echo proven FAITHFUL from source legs leg-46/26/39/27). Merged under the ci-replay.ts header law of record ("cases pinning capture-time identity values in NON-tolerated fields ... will fail until R6/R0 amend the case") — the merge gate (b) tests the PR HEAD's CI (hub+verify green), and the main-red escalation resolves by landing the diagnosed remedy, not by waiting
+- Prechecks first-hand: (a) real head from PR JSON; (b) hub+verify completed/success on c656267; (c) mergeable=True/state=clean vs base facc1b4 == main tip, no intake; (d) 0 reviews / 0 comments / 0 issue-comments, no holds; (e) 7 files all monorepo-internal, zero .java, zero core/hub repo content, zero carrier delta per receipt (engine untouched, zero tolerate widened, zero justified-ledger entry, golden-captures untouched), no Neon/prod writes
+- (f) post-merge verify: main CI **3/3 completed/success** at b80b44d — verify+hub green (~90s), AND the neon-replay check RE-FIRED on the merge itself (started 10:32:44Z) and completed SUCCESS (~4 bounded polls): the PR's acceptance criterion (next union verdict 186/186, justified-ledger empty) corroborated GREEN of record — the red-CI-on-main condition is RESOLVED
+
+Stage Summary:
+- T-MIG-109 LANDED of record (b80b44d): the corpus mis-cut band closed byte-honest (4 cases re-pinned to their own request sentinels + amendment disclosures), zero carrier delta, no redeploy owed. Main CI 3/3 green (verify+hub+replay) — the first 3-check green of record; replay red carried since 09:23Z is closed. Board empty at run end.
