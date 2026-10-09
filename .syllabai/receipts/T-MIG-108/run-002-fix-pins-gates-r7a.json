@@ -1,0 +1,30 @@
+{
+  "id": "T-MIG-108",
+  "run": "run-002-fix-pins-gates-r7a",
+  "title": "the one-line schema-truth fix + the captured-query-text pins + the full gate battery",
+  "actor": "r7a (zai-web session web-da4ab8b1)",
+  "utc": "2026-10-09T08:10:00Z",
+  "fix_of_record": {
+    "file": "apps/api/src/services/learner-me/nba.ts (recentAnswers :397)",
+    "delta": "where a.learner_id = ${learnerId}  ->  where at.learner_id = ${learnerId}",
+    "law": "the core AnswerRepository.findByLearnerIdOrderByCreatedAtDesc joins THROUGH the attempt ('where a.attempt.learnerId = :learnerId order by a.createdAt desc'); the v2 query already aliases attempts as `at` (:395, the T3 question_id read) so the where rides it; answers.created_at ordering is unchanged (orderByCreatedAtDesc verbatim)"
+  },
+  "pins_of_record": {
+    "file": "apps/api/test/learner-me/nba.test.ts (the T-MIG-108 describe)",
+    "class": "the 093/094 captured-query-text pins — schema truth where fakeSql prefix-matching cannot reach",
+    "asserts": ["the T3 read is unconditional (>=1 captured 'from answers a' query per engine run)", "the text contains 'join attempts at on at.id = a.attempt_id' AND 'where at.learner_id = ?'", "the text contains NO 'a.learner_id' (the 42703 defect class dead forever; substring-safe: 'at.learner_id' does not contain 'a.learner_id')"],
+    "power_disclosure": "the stash-based pre-fix simulation withdrew the pin AND the fix together (0 fail, uninformative) — the pin's power rests on the direct logic: the pre-fix captured text provably contained 'where a.learner_id = ?' (the live 500 + the local boot log are the of-record proof the string was in the query)"
+  },
+  "gates_first_hand": {
+    "typecheck": "x4 exit 0",
+    "api_packages": "1855 pass / 0 fail / 13 skip / 7186 expects — EXACT delta vs the 3b6d664 lineage (1854+1 test, 7182+4 expects)",
+    "hub": "54 pass / 0 fail / 432 expects",
+    "selftest": "OK"
+  },
+  "post_merge_owed": ["093-recipe redeploy carries the fix to the api-of-record", "the dual-plane probe re-runs: v2 must serve the 200 nba-rules/v1.3 shape (the 096 follow-up closes; the recommendations flip evidence completes; the table row lands as its own widening act per the flip law)"],
+  "write_ledger": {
+    "repo": ["nba.ts (1 line)", "nba.test.ts (the pin describe)", "receipts/T-MIG-108/run-002 (this)"],
+    "prod_writes": "zero (offline gates only)",
+    "no_force": true
+  }
+}

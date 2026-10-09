@@ -394,7 +394,7 @@ async function recentAnswers(sql: SqlFn, learnerId: string): Promise<RecentAnswe
     join question_parts p on p.id = a.question_part_id
     join attempts at on at.id = a.attempt_id
     join questions q on q.id = at.question_id
-    where a.learner_id = ${learnerId}
+    where at.learner_id = ${learnerId}
     order by a.created_at desc`) as unknown as RecentAnswerRow[];
 }
 
