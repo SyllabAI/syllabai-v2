@@ -1,0 +1,35 @@
+version: 1
+task:
+  id: T-MIG-111
+  title: "T-MIG-111 - the V2_SURFACE_PREFIXES verified-families widen band (r7a, operator order trace 1a120e747bb195dd 'Proceed with the remaining unflipped verified families (smart-lesson, knowledge-graph, class-KG siblings…)'): SIX corpus-verified rows land at the hub routing table tail — /api/v1/learners/me/knowledge-graph (3 w4 legs: empty-200 + practiced-200 + unauthed-401, LIVE emitters dashboard-core.ts:86 + kg-learner-state.ts:508 = the band's one live routing change), /api/v1/learners/me/smart-lesson (4 w4 legs: practiced-200 + missing-params-400 + unauthed-401 + unknown-topic-404 — the FULL law matrix; emitter api.ts:1258 dormant, zero call-sites), /api/v1/questions/topics (2 legs: student-200 + unauthed-401; emitter api.ts:930 dormant — the families emitter is coreFetchAuthorized core-pinned, NOT table-routed), /api/v1/teacher/content/documents (16 legs incl the captured 500 laws: embed-unknown-500 + search-blank-query-500 — zero hub emitters, availability per the 090/084/091 posture), /api/v1/teacher/content/review-queue (8 legs incl -v2/-v3 positives — ONE row captures the verified trio, startsWith-documented), /api/v1/admin/question-bank (7 legs incl both ingest 200 writes — zero emitters). ALL 40 legs GREEN of record in the union 186/186 replay at tip b959ce4 (run-28 instrument; the corpus replays the LIVE v2 against the frozen-core captured law). EXCLUDED this band, each by its own law of record: the classroom foundation (teacher/classes CRUD x8 + learners/me/classroom x3 — the operator's 'class-KG siblings') has ZERO corpus legs = the flip law's golden-verified bar UNMET -> its own capture+verify band; teacher/marking (read positives x8 proven BUT the hub-emitted human-mark write api.ts:1379 has NO positive wire captured -> the 095/107 write-verify bar; smart-mark-batch 401-only + LLM-adjacent); teacher/curriculum/versions (honest-501 write stubs POST /versions/:id/archive + /validate under the subtree -> the stub law); questions list/detail/mark-scheme + families (positive wires uncaptured; families emitter core-pinned anyway); teacher/tests preview+weakness-options (no positive 200 — the 'teacher-200'-named case captures a 400 law); answer-input/transcribe (401-only + the GLM seam); intervention-runs (no positive wire); subjects/tree (the 035 check-3 adjudication of record)"
+  owner: "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6) — the 108/109/110 lane; the operator order named this lane's next widening act"
+  claimed_at: "2026-10-09"
+  status: 'IN_PROGRESS # branch t-mig-111/r7a from b959ce4; zero-collision scan clean (no 111 heads, 0 open PRs, issue #147 the known zombie-domain only)'
+
+  priority: "P1 # the operator-ordered widening act; the corpus of record (union 186/186) IS the golden-verification for every row"
+  wave: widening-act # flip rows are their own acts per the flip law; the 110 single-row precedent extended to the verified set
+  deps: [T-MIG-079, T-MIG-084, T-MIG-100, T-MIG-107, T-MIG-110]
+  evidence:
+    operator_order: "trace 1a120e747bb195dd 'Proceed with the remaining unflipped verified families (smart-lesson, knowledge-graph, class-KG siblings…)'"
+    verification_of_record: "the golden corpus itself — 40 legs across the six families, ALL GREEN in the union replay at the current tip (186/186, justified-ledger empty): the corpus captures the frozen core's law and the live v2 replay answers per it"
+    census_instrument: "scripts/r111_corpus_census.py — every corpus case path checked against the LIVE tables (bun import of api.ts): 186 cases, 100 covered by the pre-band tables, 86 uncovered in 13 families, each classified verified/stub-law/no-positive-wire"
+    row_shape: "NARROW per-exact-subpath for the learner-me pair (segment-safe: knowledge-graph/smart-lesson have no subpaths either side); leaf row for questions/topics; subtree rows ONLY where every captured path is a real v2 handler with a captured law (documents, review-queue trio, question-bank)"
+    llm_free_law: "KG reads + smart-lesson (the deterministic 8-rung ladder, NO LLM — the t4 law) + topics taxonomy + documents/review-queue reads + question-bank ingest/status: zero live-page LLM seam reachable; the smart-mark LLM-adjacent batch STAYS CORE"
+    live_routing_change: "exactly ONE: the learner-me KG read (dashboard-core.ts:86 + kg-learner-state.ts:508) goes v2-native with the hub redeploy; all other rows are dormant-emitter or zero-emitter availability (090/084/091 posture); MIGRATION_PLAN §7 rollback intact (unset NEXT_PUBLIC_API_V2_BASE_URL reverts EVERY surface in one redeploy)"
+  scope:
+    allowed:
+      - "apps/hub/src/lib/api.ts (the SIX table tail rows + their disclosure comments + the header 111 update note ONLY)"
+      - "apps/hub/src/lib/api.v2-surface.test.ts (the lockstep pins: exact-set +6, DUAL_RUN +3 emitter forms, CORE_ONLY -3 moved-out notes, the 111 line test)"
+      - ".syllabai/tasks/T-MIG-111-verified-families-widen-band.yaml (this yaml)"
+      - ".syllabai/receipts/T-MIG-111/**"
+      - ".syllabai/worklog.md (append-only)"
+    forbidden:
+      - "any row whose subtree contains a stub (501) or an uncaptured-write path — the marking/curriculum-versions/classroom exclusions are LAWS, not deferrals of convenience"
+      - "the bare /api/v1/learners/me prefix (FORBIDDEN by the zero-key law — would capture cla/ask-class LLM surfaces and unverified siblings)"
+      - "apps/api/**, packages/**, golden/** (the corpus is the EVIDENCE, untouched); the legacy core/hub repos"
+      - "force-push; self-merge of this act's PR"
+  acceptance:
+    - "the surface test's exact-set pin carries the SIX rows; hub tests green with the EXACT computed delta; root typecheck x4 exit 0"
+    - "the offline flip proof: each new row resolves the v2 base for its emitter forms; every excluded sibling (marking/answers, curriculum/versions, transcribe, smart-mark-batch, teacher/tests, teacher/classes, bare questions, intervention-runs) still resolves core — ZERO live calls"
+    - "post-merge hub redeploy READY from the merge tip; the served client bundle carries the new row literals (occurrence-count delta = the baked-table evidence)"
+    - "post-deploy battery: the flipped LIVE wire (learner-me knowledge-graph) 200 through the v2 base + core parity control on the SAME ask + SAME bearer; the smart-lesson/topics captured laws both planes; the availability rows' unauthed-401 laws through the v2 base; Band A unauth laws; flipped-sibling no-regression legs"
