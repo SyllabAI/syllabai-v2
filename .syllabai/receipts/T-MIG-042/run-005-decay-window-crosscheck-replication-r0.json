@@ -1,0 +1,46 @@
+{
+  "family": "T-MIG-042",
+  "run": "run-005-decay-window-crosscheck-replication-r0",
+  "lane": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "operator_order": "trace 1a121329067858b9 'window cross-check'",
+  "timestamp_utc": "2026-10-09T15:10Z - 15:3xZ",
+  "purpose": "R0-desk INDEPENDENT replication of the \u00a73.3 of-record cross-check per the standing desk law (another lane's live claim is not taken unverified): r4b run-004-decay-s33-crosscheck-r4b.json @ 3b6d664 + the r9 Task-58 corroboration are the of-record filings; this run re-verifies every credential-free observable live, brings the census/watch CURRENT, and refreshes the \u00a74 golden metric at the post-108/110/111 tip",
+  "credential_boundary_disclosed": "R0 holds ZERO credentials lane-side (no Vercel PAT / CRON_SECRET / DATABASE_URL \u2014 the r4b/r7a stashes were lane-local by design and correctly never propagated). The row-level decay_job_runs re-read therefore stays a credentialed-lane property; this replication covers: fail-closed wire laws on both planes, \u00a72/\u00a73 flip health, the \u00a74 spine error-rate datapoint, the of-record chain verification at git level, decay-band source-drift check, and the replay refresh through the sanctioned CI channel (workflow_dispatch). NOT a gap in the of-record chain: two independent credentialed readings (r4b + r9) already agree.",
+  "battery_results": {
+    "method": "scripts/decay_crosscheck_r0.py (persisted; artifact work/decay_crosscheck_r0.json); all legs GET/POST-law probes, ZERO writes, ZERO fires",
+    "legs": [
+      "A1 hub GET /api/cron/nightly-decay unauth -> 401 {status:unauthorized} \u2014 the fail-closed CONFIGURED law holds post-111-redeploy (wrong-bearer branch reachable = CRON_SECRET still configured)",
+      "A2 api GET /api/v1/cron/nightly-decay unauth -> 401 {status:unauthorized} \u2014 Spring-parity envelope byte-class",
+      "B1 hub GET /api/health -> 200 {status:ok, dataMode:core-api, coreConfigured:true} \u2014 \u00a72 flip byte-law holds on the T-MIG-111 carrier (dpl_EfD8Km7FKhgEXcLWK4tM6n1T7asT)",
+      "B2 api GET /actuator/health -> 200 {status:UP} \u2014 Java-parity path (Task-58 disclosure honored)",
+      "C1 api GET /api/v1/exam-papers (learner bearer, disclosed reuse r0-099live, GET-only) -> 200 \u2014 \u00a74 spine",
+      "C2 api GET /api/v1/questions/92817c46 (W7-SMOKE of-record probe question) -> 200 \u2014 \u00a74 spine"
+    ]
+  },
+  "of_record_chain_verified": [
+    "r4b run-004 census of record: decay_job_runs 21 rows / 21 distinct windows / 0 duplicates (core CATCH_UP era 03:00Z windows 2026-09-21..10-09 + 2 vercel-cron takeover rows 10-08 manual 18:22:46.477Z + 10-09 SELF-FIRE 02:29:12.335Z, 0/0 literals per ADR-031); r9 Task-58 numbers IDENTICAL first-hand (of record)",
+    "\u00a73.2 finding of record stands: core scheduler NOT a harmless no-op (CATCH_UP decayed=117 @ 2026-10-09T03:15Z); blast radius NONE under the ADR-031 read-time law; Render disable stays [OPERATOR]-gated",
+    "SELF-CAUGHT-AND-CORRECTED pre-filing (no-silent-correction): this run's diff-census briefly suspected a stale api carrier (T-MIG-108 daa06ee apps/api delta post-dating the T58 3b6d664 build) \u2014 DISCHARGED on reading the of-record chain: T-MIG-108 run-003-postmerge-redeploy-dualplane-r7a already executed the 093-recipe redeploy + dual-plane 200 re-verify; the carrier chain is current of record",
+    "decay-band source drift 3b6d664..e3939d8: ZERO contact \u2014 vercel.json cron entry untouched, routes/cron.ts untouched, services/cron untouched (diff census first-hand; the only apps/api delta is the T-MIG-108 nba.ts one-liner, carried + redeployed of record)"
+  ],
+  "replay_currency": {
+    "state_of_record": "run 26 @ 3b6d664 union 180/180 green; run 27 @ facc1b4 (schedule) RED \u2014 closed of record by T-MIG-109; run 28 @ b80b44d union 186/186 green (the newest green before this run)",
+    "this_run": "run 29 EXECUTED + GREEN at tip e3939d8 (id 37950104606, workflow_dispatch ref main): UNION 186/186 PASS (seed 171/171 non-realdata + prod 15/15 realdata; 5 via the T-MIG-071 (R3-C) declared limiter-429 disposition \u2014 the same justified class as runs 25/26/28), all 22 job steps success incl. the union gate + the read-only proof; evidence artifact 11625791696 read first-hand (union.md verbatim)"
+  },
+  "s4_watch_datapoint": {
+    "watch_state": "OPEN since r4b 07:40Z; closes ~2026-10-11 07:40Z (\u00a76.1 archive gate then)",
+    "spine": "200/200 on the C-legs at 15:10Z; zero 5xx observed; the tutor-chain 500-fast-fail era (run-004 watchlist) SELF-RECOVERED by 07:07Z (TUTOR-VERIFY run-005 of record)",
+    "next_decay_window": "2026-10-10 00:00Z \u2014 watch law expects exactly ONE vercel-cron row by 02:00 UTC+epsilon (jitter baseline 29m18s) and zero duplicate windows; core's 03:00Z CATCH_UP family is the \u00a73.2 finding (inert, ledger-only)",
+    "metrics": "API 5xx rate: no sustained elevation observable from the wire (6/6 legs 2xx-class or lawful-401); auth token verify: 200s clean (no R-JWT drift signature); hub issue triage: no open repo issues of record"
+  },
+  "write_ledger": "ZERO manual fires (deliberate \u2014 a fire would pre-execute the 2026-10-10 window and contaminate the vercel-cron evidence shape, the r4b Task-42 law); ZERO DB reads/writes (credential boundary); ZERO env writes, ZERO deploys, ZERO learners registered; 1 learner LOGIN reused (r0-099live, disclosed); 6 GET-class probes + 1 CI replay dispatch (workflow_dispatch, compute only). Repo: .syllabai-only receipt + worklog, direct-main fetch-first, no force.",
+  "asserts": [
+    "A1: fail-closed cron law replicated on BOTH planes post-111-redeploy (401 unauthorized, unauth) \u2014 PASS",
+    "A2: \u00a72 flip byte-law + actuator parity live (hub 200 core-api coreConfigured true; api 200 UP) \u2014 PASS",
+    "A3: \u00a74 spine datapoint clean (bank list + question read 200, disclosed learner reuse, zero writes) \u2014 PASS",
+    "A4: of-record \u00a73.3 chain verified at git level (r4b census + r9 corroboration receipts present and mutually consistent; decay-band source drift ZERO 3b6d664..e3939d8) \u2014 PASS",
+    "A5: stale-carrier suspicion self-caught and discharged against the of-record chain (T-MIG-108 run-003 redeploy of record) \u2014 no false finding filed \u2014 PASS",
+    "A6: replay currency refreshed \u2014 run 29 GREEN at e3939d8 (union 186/186, zero new non-justified divergences) \u2014 PASS"
+  ],
+  "verdict": "\u00a73.3 WINDOW CROSS-CHECK REPLICATED of record: every credential-free observable of the r4b/r9 filings re-verified live at 15:10Z (fail-closed laws both planes, flip health, spine clean); the decay ledger's exactly-once state of record (21/21/0 + 02:29:12.335Z vercel-cron self-fire) stands un-rebutted; \u00a74 watch datapoint refreshed at the post-108/110/111 tip; S4 golden metric GREEN at the tip (run 29 union 186/186, artifact-read first-hand). Lane IDLE; next decay watch event = the 2026-10-10 00:00Z window (one vercel-cron row by ~02:30Z)."
+}
