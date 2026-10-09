@@ -144,8 +144,10 @@ const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") ?? "";
  * human-mark write has no positive wire captured — the 095/107 write-verify
  * bar; smart-mark-batch 401-only + LLM-adjacent), teacher/curriculum/
  * versions (honest-501 write stubs under /versions/:id/* — the stub law),
- * the classroom foundation (teacher/classes CRUD + learners/me/classroom —
- * ZERO corpus legs, its own capture+verify band), questions
+ * the classroom foundation FLIPPED in T-MIG-112 (its own capture+verify band:
+ * 49-leg capture vs the live core + 40-leg verify vs the live v2 — ALL-GREEN
+ * of record incl. the artifact triage — + the run-003 ordering-law addendum;
+ * 17 id-free corpus cases joined the union), questions
  * list/detail/mark-scheme + families (positive wires uncaptured), teacher/
  * tests preview+weakness-options (no positive 200 captured),
  * answer-input/transcribe (401-only + the GLM seam), intervention-runs (no
@@ -594,6 +596,53 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // revision-notes keep their own rows). LLM-free law: deterministic
   // ingest/status over the question bank.
   "/api/v1/admin/question-bank",
+  // 7. /api/v1/teacher/classes — the classroom FOUNDATION family
+  // (T-MIG-112, the operator-ordered capture+verify band trace
+  // 1a1213760243901d): the T-MIG-111 zero-corpus exclusion law DISCHARGED —
+  // the 092-recipe two-plane golden-verify of record (run-001: 49-leg capture
+  // vs the live frozen core with v2-registered probe accounts, the R2
+  // same-bearer continuity LIVE-proven for BOTH roles; run-002: 40-leg verify
+  // vs the live v2, ALL-GREEN of record — 38/40 in-run byte-laws + 2
+  // comparator-artifact legs re-proven first-hand 3x-stable; run-003: the 4
+  // unknown-uuid ordering laws byte-equal both planes). Corpus: 17 id-free
+  // classroom cases joined the union (authz shells + honest zeros + the
+  // lookup/validation ordering laws). The row captures the 8 CRUD endpoints
+  // (create 201/blank-400/duplicate-409, list newest-first, detail roster,
+  // status tolerant-parse + archive/reopen, members enroll-201 idempotent +
+  // delete-unknown-200 no-op, announcements publish/list) PLUS the already-
+  // verified mid-path tails (knowledge-graph x2 + coverage — their OWN rows
+  // in V2_SURFACE_MIDPATH_PREFIXES are untouched; the base row and the
+  // mid-path rows now agree on v2 for every class path) PLUS malformed-uuid
+  // paths (v2 serves the captured 400-first law, run-001 L08 — wire-safe, the
+  // 035 tree-pin precedent). LLM-FREE of record: no LLM seam reachable from
+  // any captured path. Emitter inventory (grep-verified at the widening
+  // commit): 8 LIVE call-sites across 5 files (teacher/classes list page,
+  // class-detail client x2 incl. the class-KG page's detail read, enroll +
+  // remove on the detail page) + 4 DORMANT request()-plane emitters
+  // (teacherClassCreate, teacherAnnouncementPublish, teacherAnnouncements,
+  // teacherClassStatus — zero call-sites; dormant emitters route NOWHERE
+  // unless a page calls them, the 084 posture).
+  "/api/v1/teacher/classes",
+  // 8. /api/v1/learners/me/classroom — the learner classroom overlay
+  // (T-MIG-112, same band): overview (the honest empty zero + the
+  // archived-dropout law + unread counts), the announcements feed, and the
+  // append-only markRead (the membership-gate 403 'this announcement is not
+  // in your classroom' — BYTE-EXACT both planes, 3x-stable of record). ALL 3
+  // endpoints captured + verified. SEGMENT-SAFETY: the row never captures
+  // the cla family (cla is a SHORTER sibling segment — the bare /learners/me
+  // prefix stays FORBIDDEN per the 111 zero-key law) nor any other
+  // learners/me sibling. Emitter inventory (grep-verified): 2 LIVE call-sites
+  // (the learner classroom tab: overview + feed) + 1 DORMANT
+  // (learnerAnnouncementRead — zero call-sites).
+  "/api/v1/learners/me/classroom",
+  // 9. /api/v1/teacher/learners — the V49 ruling roster (T-MIG-112, same
+  // band): the enabled-STUDENT cohort read, identity projection ONLY (the
+  // captured teacher-200 + unauthed-401 + student-403 laws; the cohort body
+  // is NOT corpus-pinned — the 109 cohort-brittleness lesson — the live law
+  // carries in the run-001/002 fixtures). BARE-ONLY path: no deeper tail
+  // exists on either plane (documented inert). 1 LIVE call-site
+  // (the marking page's roster read).
+  "/api/v1/teacher/learners",
 ];
 
 /**
