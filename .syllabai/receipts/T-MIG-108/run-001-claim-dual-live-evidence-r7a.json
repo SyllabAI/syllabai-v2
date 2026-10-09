@@ -1,0 +1,26 @@
+{
+  "id": "T-MIG-108",
+  "run": "run-001-claim-dual-live-evidence-r7a",
+  "title": "the recommendations NBA 500 defect band — claim + the dual-live divergence evidence + the local root-cause repro",
+  "actor": "r7a (zai-web session web-da4ab8b1, chat 1f3003b6)",
+  "operator_trace": "1a11f804f222f9b9 ('If not autonomously fix it... Keep working until goal is met')",
+  "utc": "2026-10-09T08:00:00Z",
+  "branch": "t-mig-108/r7a off origin/main 25765de (claim-in-first-commit, the 107/097 precedent)",
+  "evidence_chain": {
+    "discovery": "the T-MIG-096 disclosed follow-up (recommendations 200 NBA wire 'not live-proven yet — own follow-up') probed during the T58-VERIFY retirement-front sweep",
+    "dual_live": {
+      "v2": "500 internal_error 0.5s (learner bearer, rootId 297a8706-b957-40cb-8bb6-0bfed66980b7, fresh probe learner r7a-t58rec3-*)",
+      "core": "200 nba-rules/v1.3 full payload 32.5s (Render cold start incl.) — SAME ask, SAME v2-issued bearer; the core resolved the same learnerId = token continuity re-proven incidentally",
+      "scratch": "scratch/t58_recs_dual.json + t58_recs_probe2_*.json"
+    },
+    "local_repro": "the of-record stage bundle booted on the real Neon wire (r49 localgate recipe, local 44-byte JWT secret, fresh local register) — server log: PG 42703 column a.learner_id does not exist (hint: at.learner_id), position 350",
+    "root_cause": "nba.ts:397 where a.learner_id — the answers table has no learner_id (schema.ts:351 + the core Answer entity: ownership rides attempt_id -> attempts.learner_id); the core AnswerRepository.findByLearnerIdOrderByCreatedAtDesc law is `where a.attempt.learnerId = :learnerId order by a.createdAt desc` (read-only raw.githubusercontent fetch @ main, zero repo contact)",
+    "coverage_hole": "fakeSql answers route matches the SELECT prefix only — the where clause was never schema-validated; the route-test 200 leg rode canned rows"
+  },
+  "fix_shape": "one line: where a.learner_id -> where at.learner_id (the attempts alias is already joined at :395 for the T3 question_id read) + the query-text pins in nba.test.ts (the 093/094 class)",
+  "write_ledger": {
+    "repo": ["card T-MIG-108 (NEW)", "receipts/T-MIG-108/run-001 (this)", "nba.ts one-line fix + nba.test.ts pins (commit 2)", "worklog append (the branch)"],
+    "prod_writes": "3 census-class probe learners (r7a-t58rec*/repro-*) + read-only GETs; ZERO content mutations",
+    "core_hub_repos": "ZERO contact (core source read-only via raw.githubusercontent per the operator's keep-them-as-is)"
+  }
+}
