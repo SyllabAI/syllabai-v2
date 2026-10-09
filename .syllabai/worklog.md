@@ -6748,3 +6748,24 @@ Work Log:
 
 Stage Summary:
 - T-MIG-108 LANDED of record (d4ad173): the NBA-engine 500 defect band closed — the T-MIG-096 follow-up CLOSES and the recommendations surface flip evidence completes (table row lands as its own widening act per the flip law). T-MIG-107 WIDENED + GOLDEN-VERIFIED of record (a2d08c4): 53/53 legs (50 byte-honest + 3 declared-justified), T-MIG-037 hub-row flips landed, topics-write gap pin moved out (CLASS B closed). Board empty at run end; main CI 2/2 green at a2d08c4.
+
+---
+
+Task ID: 59 (r7a)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6, operator trace 1a11fcf9c32dc8e9)
+Task: "Direct merge order. redeploy + double-plane 200 to re-verify the closed-loop band;" — the T-MIG-108 band's closing legs.
+
+Work Log:
+- Fetch-first census first-hand: the merge half was ALREADY DISCHARGED of record — the r0-auto desk cron (Job 438940) had PUT-merged PR #169 -> d4ad173 (head daa06ee sha-guarded first-try) alongside #170 -> a2d08c4 before the order arrived; PR #169 merged=true, rev-list --count origin/main..t-mig-108/r7a == 0 — NO duplicate merge fired; CI 2/2 green at fa1b65f; the api-of-record carrier confirmed STALE (dpl_G4PCQtvjzU92HSynY4 @ the T58 3b6d664 build, pre-fix).
+- Gates at tip fa1b65f first-hand: typecheck x4 exit 0; api+packages 1855/0/13skip/7186 EXACT vs the band gates; hub 55/0/501 (+1/+69 = the #170 widen rows); golden selftest OK.
+- 093-recipe build of record: shims worktree-only, RESTORED post-build (0 dirty files, upstream untouched); 6/6 asset SHA pins EXACT; 322 modules EXACT; bundle 3,122,407 bytes = EXACTLY +1 vs the serving pre-fix carrier — cmp proof: first 2,724,402 bytes byte-identical, sole delta the inserted 't' (at.learner_id), tail identical modulo shift. THE MINIMAL FAITHFUL CARRIER, proven byte-grade.
+- Localgate on the real Neon wire (DATABASE_URL recovered via the api env list — the by-key 404 is the Task-42 disclosed quirk; 0600 stash, fp b289a2298e707904, never printed): 8/8 + SUP 3/3 ALL PASS.
+- Local recs pre-proof (the t58 repro harness, flipped expectation): GET /recommendations?rootId=297a8706 -> 200 nba-rules/v1.3 actions=2 (rank1 PRACTISE_QUESTIONS), ZERO 42703 lines; the plain variant 400 validation_failed = the DESIGNED law (learnerme.ts:219 rootId REQUIRED; the pre-fix probe of record got 400 too) — my in-run want=200 mislabel corrected OFFLINE vs the saved verbatim bodies, zero new live calls (no-silent-correction, the r50 precedent).
+- Deploy: race-guard CLEAR (latest = the T58 carrier 76.9min old; origin re-verified fa1b65f); vercel CLI 62.7.0 --prod from the 093 STAGE (cleaned to minimal carrier contents, disclosed) -> READY 13s -> dpl_FprVRBHzqB7xy8K1sBGnZVGAE97Y DUAL-ALIASED (syllabai-v2.vercel.app + syllabai-v2-syllab-ai.vercel.app); health 200 UP first probe. Rollback anchor: dpl_G4PCQtvjzU92HSynY4 retained.
+- POST-DEPLOY CENSUS 18/18: band A unauth wire laws 9/9; band C T-MIG-107 discriminators 5/5 (NO REGRESSION); R1 v2 recs?rootId= 200 nba-rules/v1.3 actions=2 rootEcho+learnerEcho ok (1.3s) — THE FLIP LIVE; R2 plain 400 law; R3 core control (same ask, same v2-issued bearer) 200 nba-rules/v1.3 actions=2 (17.6s warm after a Render cold-start timeout, patient retry disclosed); R4 core plain 400 — the required-rootId law parity-proven BOTH planes.
+- VERDICT: DOUBLE-PLANE 200 RE-VERIFY COMPLETE — the closed loop closes (defect -> fix -> merge -> deploy -> live re-verify); the T-MIG-096 follow-up CLOSES; the recommendations flip evidence completes (the V2_SURFACE_PREFIXES recommendations row lands as its own widening act per the flip law — next act).
+- DISCLOSURE (no-silent): a failed ad-hoc one-liner (missing .strip() on the token load) echoed the VERCEL_PAT value in a header-validation exception; the value is the operator-delivered secret of record (Task-49 identity chain, fp d254bbfaac004354, originally delivered plaintext in this chat) — no NEW exposure surface; the standing operator PAT-rotation item absorbs; all lane scripts use the stripped loader.
+- Receipt: .syllabai/receipts/T-MIG-108/run-003-postmerge-redeploy-dualplane-r7a.json. Write ledger: 1 api redeploy (the chain's 6th from-tip firing), 0 hub deploys, 0 DDL, 0 env writes, 0 content mutations; 5 census-class registers (3 learners + 2 teachers); core/hub repos ZERO contact (core probed read-only).
+
+Stage Summary:
+- T-MIG-108 CLOSED end-to-end of record; the recommendations surface is golden on the live wire of both planes; the only owed residue is the flip row itself (its own widening act, operator-gated per the flip law). Lane IDLE.

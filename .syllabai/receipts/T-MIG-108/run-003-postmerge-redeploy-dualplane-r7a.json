@@ -1,0 +1,69 @@
+{
+  "id": "T-MIG-108",
+  "run": "run-003-postmerge-redeploy-dualplane-r7a",
+  "title": "the band's closing legs — post-merge 093-recipe redeploy + the double-plane 200 re-verify (the closed-loop re-verify of record)",
+  "actor": "r7a (zai-web session web-da4ab8b1, chat 1f3003b6)",
+  "operator_trace": "1a11fcf9c32dc8e9 ('Direct merge order. redeploy + double-plane 200 to re-verify the closed-loop band;')",
+  "utc": "2026-10-09T09:00:00Z",
+  "merge_finding_of_record": {
+    "order": "the operator's DIRECT MERGE order arrived AFTER the merge was already executed of record: the r0-auto desk cron (Job 438940, run cron-202610091630) had PUT-merged PR #169 -> d4ad173 (head daa06ee sha-guarded, first-try) alongside PR #170 -> a2d08c4; main stamp fa1b65f",
+    "proof": "GitHub API PR #169 merged=true merge_commit_sha=d4ad173741f5...; git rev-list --count origin/main..t-mig-108/r7a == 0; branch --merged origin/main lists t-mig-108/r7a",
+    "ruling": "NO duplicate merge fired (fetch-first discipline; a second merge would be a no-op/collision risk); the order's merge half = ALREADY DISCHARGED of record, corroborated first-hand"
+  },
+  "gates_at_tip_first_hand": {
+    "tip": "fa1b65f (origin/main at act time, fetch-first re-verified immediately pre-deploy)",
+    "typecheck": "x4 (contracts/shared/db/api) exit 0",
+    "tests": "bun test apps/api packages: 1855 pass / 0 fail / 13 skip / 7186 expects — EXACT match vs the band gates of record (daa06ee)",
+    "hub": "55 pass / 0 fail / 501 expects (the +1/+69 delta vs 54/0/432 = PR #170's widen rows; CI hub success at fa1b65f corroborates)",
+    "golden_selftest": "OK"
+  },
+  "build_of_record_093_recipe": {
+    "shims": "worktree-only (r1c Wave-A precedent): concept-assets.gen.ts (6 hash-pinned YAMLs inlined), snapshot.ts + nba-concept-graph.ts patched, deploy-entry.ts written; RESTORED after build — git status 0 dirty files, upstream repo untouched",
+    "asset_pins": "6/6 SHA-256 pins EXACT (learner-me concepts/concept_edges/practicals + teacher relationships/specification_points/topics)",
+    "modules": "322 EXACT (= the T58 of-record count 321+1)",
+    "bundle": "3,122,407 bytes vs the of-record pre-fix carrier bundle 3,122,406 = EXACTLY +1 byte",
+    "byte_proof": "first 2,724,402 bytes byte-identical to the deployed pre-fix bundle; sole delta = the single inserted 't' (where a.learner_id -> where at.learner_id); tail byte-identical modulo the 1-byte shift (cmp -i 2724403:2724402 clean) — the carrier is a MINIMAL faithful delta"
+  },
+  "localgate_of_record": {
+    "wire": "real Neon (DATABASE_URL via the api project env list; the by-key single-env GET 404 = the Task-42 disclosed API quirk — list/by-id path used; value 0600-stashed .creds/neon.env, fp b289a2298e707904, never printed)",
+    "result": "of-record 8: ALL PASS + SUPPLEMENTAL 9-11: PASS (teacher-edges 200 from the inlined assets = the shim proof)"
+  },
+  "local_recs_preproof": {
+    "harness": "the t58 repro harness (real Neon wire, local 44-byte JWT secret) with the FLIPPED expectation",
+    "result": "GET /recommendations?rootId=297a8706-b957-40cb-8bb6-0bfed66980b7 -> 200 {policy: nba-rules/v1.3, actions: 2, rank1: PRACTISE_QUESTIONS, rootId echoed}; server log 42703 occurrences: 0",
+    "plain_variant": "400 validation_failed 'missing required parameter: rootId' = the DESIGNED law (learnerme.ts:219 'rootId is REQUIRED') — the pre-fix probe of record (scratch/t58_recs_probe_1791532409.json) got 400 too: parity, NOT a divergence",
+    "no_silent_correction": "the in-run assertion pass mislabeled the plain-variant 400 as FAIL (my want=200 — test-design error, the Task-56 disclosed class); verdicts re-derived OFFLINE vs the saved verbatim bodies, ZERO new live calls (the r50_realwire_verdict.py precedent)"
+  },
+  "deploy_of_record": {
+    "race_guard": "CLEAR — latest prod was still dpl_G4PCQtvjzU92HSynY4wa1KfbdG79 (the T58 carrier, 76.9min old); origin/main re-verified fa1b65f immediately pre-fire",
+    "method": "vercel CLI 62.7.0 --prod --yes from the 093 STAGE layout (api/index.js + vercel.json rewrites + .vercel/project.json); STAGE cleaned to minimal carrier contents first (the byte-proof baseline + server-bootstrap .cjs moved out — content-inert, disclosed)",
+    "result": "READY in 13s -> dpl_FprVRBHzqB7xy8K1sBGnZVGAE97Y, DUAL-ALIASED (syllabai-v2.vercel.app + syllabai-v2-syllab-ai.vercel.app); prev carrier retained as evidence/rollback anchor",
+    "health": "actuator/health 200 UP on first probe post-alias"
+  },
+  "postdeploy_census_18_of_18": {
+    "band_a_unauth_laws_9_9": "health 200 / root 404 / login-malformed 400 / tutor-unauth 401 / decay-unauth 401 / CORS preflight 204 (hub origin) / hub health 200 / learner register 201 / me-state 200 JWT law",
+    "band_c_107_discriminators_5_5": "docs empty-body 400 / bad-kind 400 / validate-unknown-paper 404 / validate-all-unknown 404 / docs list 200 — T-MIG-107 serving intact, NO REGRESSION from the redeploy",
+    "R1_v2_the_flip": "GET /recommendations?rootId= (fresh probe learner r7a-t108census-*, learner bearer) -> 200 {learnerId, rootId echo, asOf, policy: nba-rules/v1.3, actions: [2]} in 1.3s — the run-001 v2 500 is FLIPPED TO 200 OF RECORD",
+    "R2_v2_plain_law": "400 validation_failed (designed required-rootId law)",
+    "R3_core_control": "SAME ask, SAME v2-issued bearer -> https://syllabai-core.onrender.com 200 in 17.56s (warm) {policy: nba-rules/v1.3, actions: 2, rootId echo} — parity control green; the first attempt timed out on Render cold start (patient warm-up retry, disclosed)",
+    "R4_core_plain_control": "400 — the core ALSO rejects the plain variant: the v2 400-required law is byte-parity of record",
+    "verdict": "DOUBLE-PLANE 200 RE-VERIFY COMPLETE: v2 200 nba-rules/v1.3 + core 200 nba-rules/v1.3, actions=2 on BOTH planes — THE CLOSED LOOP CLOSES (defect -> fix -> merge -> deploy -> live re-verify)"
+  },
+  "closures": [
+    "T-MIG-108 band CLOSED end-to-end of record",
+    "the T-MIG-096 disclosed follow-up ('the 200 NBA-engine wire is not live-proven yet') CLOSES",
+    "the recommendations surface flip evidence COMPLETES (the V2_SURFACE_PREFIXES recommendations row lands as its own widening act per the flip law — next act, not this receipt)"
+  ],
+  "disclosures": [
+    "TRANSIENT TOKEN ECHO: a failed ad-hoc one-liner (missing .strip() on the token load) surfaced the VERCEL_PAT value in a header-validation exception message; the value is the operator-delivered secret (Task-49 identity chain of record, fp d254bbfaac004354, originally delivered plaintext in this chat via trace 1a11a4fd0340cd79); no secret material NEWLY exposed outside the session; the standing operator PAT-rotation item absorbs the rotation decision; the lane's scripts all use the stripped loader",
+    "the local recs pre-proof's want=200 on the plain variant was MY test-design error, corrected of record (see no_silent_correction)",
+    "DATABASE_URL recovery used the env LIST (plain-readable var) after a by-key single-env GET 404 — the Task-42 disclosed API quirk",
+    "probe learners/teachers this run (census register class): localgate r7a-t58gate-* (1 learner + 2 teachers incl. the fail-closed wrong-code refusal), local preproof r7a-t108recs-* (1, local boot on the same Neon), census r7a-t108census-* (1 learner + 1 teacher); recommendations probes are read-only GETs"
+  ],
+  "write_ledger": {
+    "repo": [".syllabai/receipts/T-MIG-108/run-003 (this)", "card T-MIG-108 status -> DONE + closing keys", "worklog Task-59 append"],
+    "deploys": "1 api redeploy (the lane-chain's 6th from-tip firing) — carries PR #169's nba.ts fix",
+    "prod_writes": "5 census-class registers (3 learners + 2 teachers across localgate/localproof/census), ZERO content mutations, ZERO DDL, ZERO env writes, zero hub deploys",
+    "core_hub_repos": "ZERO contact (core probed read-only via HTTPS; the keep-them-as-is law held)"
+  }
+}
