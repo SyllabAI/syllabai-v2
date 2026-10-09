@@ -6990,3 +6990,21 @@ Work Log:
 
 Stage Summary:
 - The 113 band is LIVE of record: the marking page's reads (queue-v2, throughput, kappa-latest) route v2 on the served hub bundle (dpl_FmkqQMu3); the api carrier restored byte-faithful to the 59-era anchor staging; the battery 21/21 with the corrected prod laws; the union replay pending the re-dispatch at 223/223. The two incidents (the 8-minute api-plane alias drift; the one probe-authored kappa row) are FULLY disclosed with first-hand evidence in run-004. The human-mark row + the ppd corpus case remain WITHHELD for T-MIG-114 (the two message/projection findings stand).
+Task ID: r9-hubx Task-24 (local ledger 24)
+
+Agent: r9-hubx (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, operator trace 1a1220f221a61635 "So we have nothing left to do?")
+
+Task: Answer the operator's inventory question fetch-first; discharge whatever is law-compatible; identify what awaits an order.
+
+Work Log:
+- Fetch-first sweep at ~19:05Z: tip fa28911 (PRs #174 T-MIG-112 + #175 T-MIG-113 merged, hub redeployed run-004-r0; 0 open PRs; main CI green per the cron receipt)
+- API REDEPLOY LEVER RE-RIPENED: T-MIG-107's content-write band sits on main PAST the serving bundle @ 8565b4b — apps/api/src/services/content/review-writes.ts NEW (+808), routes/content/index.ts +377/-, services/content/index.ts +54, ingestion/canonical.ts kind widening, learner-me/nba.ts touch, + packages/db/drizzle 0001_faithful_lila_cheney.sql catch-up migration (T-MIG-103 rider) + meta snapshot; 11 files +10057/-66; awaiting a direct operator order (prod writes = operator-only law)
+- T-MIG-042 §3.3 cross-check (dated 2026-10-09, DNS-deferred by r1c) DISCHARGED read-only: prod Neon decay_job_runs censused via the sanctioned env-API volatile path (zero disk, zero prints); 21 rows = 19 core-era baseline (CATCH_UP x18 + SCHEDULED x1, 03:00Z convention, real counts — the deferred baseline captured) + 2 v2 takeover rows (00:00Z window, vercel-cron, literal 0/0); first-fire row digit-exact vs run-002 receipt (18:22:46.477); CRON SELF-FIRE ROW EXISTS (2026-10-09, executed 02:29:12.335Z, jitter disclosed) -> §3.3 PASS, §4 48h watch opens; V38 firing-hour empirical confirmation included
+- FALSE ALARM RETRACTED on the record: probe #1 was misjudged as 'suspected fabricated tool output' by an incomplete table-law model (stub-era-zero-rows + literal-zeros-only assumptions); hardened probe #2 (information_schema discriminator + digit-exact receipt match + byte-identical data) retracts it — the data is real, the model was incomplete
+- WATCH OBSERVATION (never-auto-fixed): the frozen core's decay job STILL FIRES DAILY on the shared production DB (2026-10-09: CATCH_UP decayed=117 reviews_scheduled=5) — the dual-writer posture visible in the ledger; input to the §4 watch, not a defect
+- Receipt: .syllabai/receipts/T-MIG-042/run-003-s33-crosscheck-r9.json; write ledger zero (SELECT-only)
+
+Stage Summary:
+- §3.3 PASS of record; §4 48h watch open; core-era baseline captured
+- The one item awaiting the operator: the api redeploy order to carry the T-MIG-107 content-write band (17 honest-501 routes -> real wire-law implementations) live
+- T-MIG-114 pending upstream (human-mark golden row withheld pending it)

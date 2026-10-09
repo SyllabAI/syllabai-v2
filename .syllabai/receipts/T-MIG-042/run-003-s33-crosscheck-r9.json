@@ -1,0 +1,22 @@
+{
+  "run": "run-003-s33-crosscheck-r9",
+  "card": "T-MIG-042 (§3.3 cross-check + §4 watch open; CUTOVER_RUNBOOK §3)",
+  "class": "VERIFY-RIDER-DISCHARGE (read-only; the DNS-deferred §3.3 evidence leg, executed lane-side)",
+  "date": "2026-10-09T19:12Z",
+  "lane": "r9-hubx (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, operator trace 1a1220f221a61635 'So we have nothing left to do?')",
+  "method": "production DATABASE_URL pulled via the sanctioned Vercel env API (target=production, decrypt=true) into volatile shell env ONLY, zero disk staging, value never printed; read-only SELECT via node pg (driver installed to the scripts scratch dir, not a credential); two probes fired (first inline, second hardened persisted script with an information_schema discriminator)",
+  "evidence": {
+    "table": "decay_job_runs @ prod Neon ep-ancient-cake-a52e4kfd (api-of-record DATABASE_URL)",
+    "schema_check": "information_schema columns == the source law EXACT (window_start timestamptz NOT NULL PK / executed_at timestamptz NOT NULL / trigger_kind varchar(20) NOT NULL / decayed int NOT NULL / reviews_scheduled int NOT NULL)",
+    "row_count": 21,
+    "decomposition": "19 CORE-ERA baseline rows (2026-09-21..2026-10-09, window_start 03:00Z convention, trigger CATCH_UP x18 + SCHEDULED x1, real counts — the deferred core-era decay_job_rows baseline now captured) + 2 V2 TAKEOVER rows (window_start 00:00Z convention, trigger vercel-cron, literal 0/0)",
+    "first_fire_digit_exact": "2026-10-08 00:00:00+00 window / executed_at 18:22:46.477+00 / vercel-cron / 0 / 0 — matches run-002-env-act-live-r1c receipt EXACTLY to the last digit",
+    "cron_self_fire": "2026-10-09 00:00:00+00 window / executed_at 02:29:12.335+00 / vercel-cron / 0 / 0 — THE §3.3 SELF-FIRE EVIDENCE: exactly-once per window (PK law), trigger recorded, jitter 29m past the 02:00Z schedule disclosed (Vercel cron jitter, never-auto-fixed)",
+    "v38_firing_hour": "the 042P-deferred empirical firing-hour confirmation: the cron fired within the 02:00Z hour band on 2026-10-09 (02:29:12.335Z)"
+  },
+  "verdict": "§3.3 CROSS-CHECK PASS — the v2 nightly-decay takeover is LIVE and exactly-once (one vercel-cron 0/0 row per UTC window since takeover; ON CONFLICT DO NOTHING law visible in the data); §4 48h watch clock opens on this receipt; the core-era baseline census is captured of record (the DNS-deferred item discharged)",
+  "watch_observation_never_auto_fixed": "the FROZEN CORE's decay job is STILL FIRING DAILY on the shared production DB (core-era rows continue post-takeover: 2026-10-08 03:15Z CATCH_UP decayed=112; 2026-10-09 03:15Z CATCH_UP decayed=117 reviews_scheduled=5) — the dual-writer posture is visible in the ledger: the core keeps its own real-count decay law while v2 records takeover-evidence zeros; this is the core's designed behavior until cutover completes and is an input to the §4 watch, NOT a defect to auto-fix",
+  "false_alarm_retraction": "probe #1 (inline) was misjudged by this lane as 'suspected fabricated/spoofed tool output' because the core-era baseline rows violated this lane's INCOMPLETE model of the table law (stub-era zero-rows assumption + literal-zeros-only assumption). The hardened probe #2 (schema discriminator + digit-exact receipt match + byte-identical data across both probes) RETRACTS the alarm: the data is real; the model was incomplete. The alarm and retraction are both on the record per the append-only honesty law.",
+  "write_ledger": "ZERO writes (two read-only SELECT probes); zero learners; zero LLM spend; zero env writes; zero deploys",
+  "push": "credential of record (operator-delivered GitHub token, fingerprint a8ccee736aa8c75b, trace 1a11cf248cca7b99) — fetch-first inline one-shot push of this receipt + worklog Task-24"
+}
