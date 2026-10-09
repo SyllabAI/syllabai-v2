@@ -1,0 +1,34 @@
+version: 1
+task:
+  id: T-MIG-108
+  title: "T-MIG-108 - the learner-me recommendations NBA-engine 500 defect band: GET /api/v1/learners/me/recommendations?rootId=... serves opaque 500 internal_error on the api-of-record where the frozen core 6cad6ef serves the 200 NBA payload (nba-rules/v1.3 + ranked actions) — root cause of record: services/learner-me/nba.ts recentAnswers() T3 read pins `where a.learner_id` but the answers table has NO learner_id column (PG 42703 'column a.learner_id does not exist' + hint 'Perhaps you meant to reference the column at.learner_id'); the core law (AnswerRepository.findByLearnerIdOrderByCreatedAtDesc @ main) is `where a.attempt.learnerId = :learnerId order by a.createdAt desc` — ownership rides the ATTEMPT join; the port aliased attempts as `at` in the same query and wrote the where against the wrong alias. Coverage-hole law: the route test's 200 leg feeds the engine through fakeSql whose answers route matches the SELECT prefix only, so the where-clause was never schema-validated — the wire was disclosed not-live-proven (T-MIG-096: 'recommendations stays CORE this band — the 200 NBA-engine wire is not live-proven yet') and the dual-live probe (this band run-001) is the first exercise"
+  owner: "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6) — self-filed + claimed per operator directive (IM trace 1a11f804f222f9b9, 2026-10-09 'Check the current status of v2 migration... If not autonomously fix it... Keep working until goal is met'): the defect surfaced during the T58-VERIFY retirement-front sweep (the 096-disclosed follow-up probe), one of the remaining core-routed families blocking the core-detach wave"
+  claimed_at: "2026-10-09"
+  status: 'IN_REVIEW # the fix + query-text pins on branch t-mig-108/r7a (claim-in-first-commit, the 107/097 precedent); PR to the desk (authors-never-self-merge); post-merge: 093-recipe redeploy carries the fix, dual-live re-verify discharges the band, and the recommendations surface flip evidence completes (the T-MIG-096 follow-up closes; the table row lands as its own widening act per the flip law)'
+  priority: "P1 # a live 500 on a learner-facing read the hub still routes to core (so pilot users are UNAFFECTED today — the flip law held), but the wire must be golden before the retirement flip; the defect is the blocker"
+  wave: defect-band # the 070/093/095/104 precedent class
+  deps: [T-MIG-043, T-MIG-096]
+  evidence:
+    dual_live_probe_of_record:
+      v2: "GET /api/v1/learners/me/recommendations?rootId=297a8706-b957-40cb-8bb6-0bfed66980b7 (fresh probe learner r7a-t58rec3-*, learner bearer) -> 500 internal_error in 0.5s (opaque GlobalExceptionHandler catch-all shape)"
+      core: "the SAME ask + the SAME v2-issued bearer (token continuity — the core resolved the same learnerId) -> 200 in 32.5s (Render cold start included): {learnerId, rootId, asOf, policy: nba-rules/v1.3, actions: [{rank: 1, actionType: PRACTISE_QUESTIONS, ...}]}"
+      probe_utc: "2026-10-09T07:54-07:55Z"
+      scratch: "t58_recs_dual.json + t58_recs_probe2_*.json (verbatim bodies)"
+    local_repro_of_record: "the of-record stage bundle (322 modules == dpl_G4PCQtvjzU92HSynY4wa1KfbdG79) booted locally on the real Neon wire (r49 localgate recipe) — server log: error 42703 'column a.learner_id does not exist ... Perhaps you meant to reference the column \"at.learner_id\"' at position 350, file parse_relation.c (postgres.js WebSocket dispatch)"
+    root_cause_of_record: "nba.ts recentAnswers :397 `where a.learner_id = ${learnerId}` — answers has (id, attempt_id, question_part_id, answer_text, marks_awarded, marking_state, created_at) per packages/db schema.ts:351 AND the core Answer entity (ManyToOne attempt, no learner field); the where must ride the joined alias at (attempts.learner_id), exactly the core's a.attempt.learnerId path"
+    coverage_hole_of_record: "fakeSql (test/assessment/helpers.ts) matches routes on the whitespace-collapsed query TEXT; nba-helpers nbaRoutes answers route matches the SELECT-prefix only ('^select a.id, a.marking_state, ...'), so any where-clause passes — schema truth never reached the T3 read"
+  scope:
+    allowed:
+      - "apps/api/src/services/learner-me/nba.ts (the recentAnswers where-clause ONLY)"
+      - "apps/api/test/learner-me/nba.test.ts (the query-text pins)"
+      - ".syllabai/tasks/T-MIG-108-nba-recommendations-500-band.yaml (this yaml)"
+      - ".syllabai/receipts/T-MIG-108/**"
+      - ".syllabai/worklog.md (append-only)"
+    forbidden:
+      - "the V2_SURFACE_PREFIXES recommendations row (lands as its own widening act after the band's live re-verify — the flip law)"
+      - "other NBA engine reads; the agenda composition; force-push; self-merge of this band's PR"
+  acceptance:
+    - "the fix: `where at.learner_id = ${learnerId}` (the join already provides the alias; order by a.created_at desc is the core orderByCreatedAtDesc verbatim)"
+    - "pins: the captured recentAnswers query text contains 'where at.learner_id = ?' and contains NO 'a.learner_id' (the 093/094 query-text pin class — schema-truth where fakeSql prefix-matching cannot reach)"
+    - "gates: typecheck x4 exit 0; bun test apps/api packages EXACT-delta vs 3b6d664 lineage; hub 54/0; golden selftest OK"
+    - "post-merge live re-verify: the dual-plane probe flips to v2 200 with the nba-rules/v1.3 shape (the 096 follow-up closes; flip evidence complete)"

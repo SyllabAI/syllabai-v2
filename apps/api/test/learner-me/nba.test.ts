@@ -155,6 +155,30 @@ describe("nba engine — scoping + determinism", () => {
   });
 });
 
+// ── T-MIG-108 — the recentAnswers schema-truth pins ──────────────────────────
+// fakeSql routes match a query's SELECT prefix, so the route-test 200 leg never
+// validated the T3 read's where-clause against the real schema. The core law
+// (AnswerRepository.findByLearnerIdOrderByCreatedAtDesc) joins THROUGH the
+// attempt — `where a.attempt.learnerId = :learnerId` — and the answers table has
+// NO learner_id column (the live wire served the miss as the opaque 500: PG
+// 42703 'column a.learner_id does not exist ... Perhaps you meant to reference
+// the column "at.learner_id"', T-MIG-108 run-001). These pins read the CAPTURED
+// query text — the schema truth fakeSql prefix-matching cannot reach.
+
+describe("nba engine — recentAnswers schema-truth pins (T-MIG-108)", () => {
+  test("the T3 read joins through attempts: at.learner_id, never a.learner_id", async () => {
+    const fake = fakeSql(nbaRoutes({}));
+    await nbaActionsFor({ sql: fake, clock } as unknown as NbaDeps, LEARNER, SUBJECT);
+    const answers = fake.queries.filter((q) => q.includes("from answers a"));
+    expect(answers.length).toBeGreaterThan(0); // the T3 read is unconditional in the engine flow
+    for (const q of answers) {
+      expect(q).toContain("join attempts at on at.id = a.attempt_id");
+      expect(q).toContain("where at.learner_id = ?");
+      expect(q).not.toContain("a.learner_id"); // the 42703 defect class, dead forever
+    }
+  });
+});
+
 // ── T1 — due retrieval (decay-triggered reviews), overdue first ─────────────
 
 describe("nba engine — T1 due retrieval", () => {
