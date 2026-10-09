@@ -1,0 +1,28 @@
+{
+  "run": "run-002-golden-verify-r0",
+  "task": "T-MIG-107 (the widening rider — the write-row widening rides its own golden-verify leg per the flip law)",
+  "actor": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operator_trace": "1a11f7bc1d47fa31",
+  "what": "GOLDEN-VERIFY of the 17 write surfaces: the 53 capture legs (run-001-capture-r0) replayed against the booted v2 code of record (PR #168, merged d2308eb) — the t100 harness pattern (in-process Bun.serve of apps/api, ZERO-KEY boot law, deepEqualTolerant imported from golden/runner.ts — zero comparator drift).",
+  "verdict": "53/53 PASS — 50 byte-honest (status + body deep-equal vs the frozen-core captures, tolerate: timestamp + generated-id fields) + 3 DECLARED-JUSTIFIED (the 106 ruling (b) class)",
+  "substrate": {
+    "db": "LOCAL PostgreSQL 17.11 + pgvector 0.8.0 @ 127.0.0.1:5544, db syllabai_verify (fresh per run: drizzle-kit push 62 tables via the T-MIG-105 file-schema config + the V6/V7 fixed-uuid seed rows dumped from the capture boot (tools/v6v7-seed.sql) + 3 harness users t107-*@verify.local)",
+    "identity_law": "the V6/V7 rows carry the SAME literal uuids on both sides — the driver ASSERTS presence of the capture-side reals (question1/topic1/subject1) before replay; ingestion-created roles (papers/versions/schemes/markpoint/ING-anchor) resolved from the verify DB after the ingestion legs replay; the document row resolved by the V33 derived documentId",
+    "boot": "SYLLABAI_JWT_SECRET synthetic; ZERO-KEY law asserted (exit 4 on any LLM credential); /actuator/health poll before replay"
+  },
+  "justified_legs": [
+    {"leg": "leg-40-reject-scheme-s1-core-defect-500", "core": "500 internal_error (Hibernate LazyInitializationException on MarkScheme.points)", "v2": "200 SchemeSummary validationState=REJECTED (the designed law)", "authority": "GOLDEN_MASTER §4 (R0 approval) + the T-MIG-106 operator ruling (b) class precedent"},
+    {"leg": "leg-41-flag-scheme-s2-core-defect-500", "core": "500 (same defect)", "v2": "200 FLAGGED (designed)", "authority": "same"},
+    {"leg": "leg-42-unflag-scheme-s2-postdefect-500", "core": "500 (post-defect state: S2 never became FLAGGED on the core)", "v2": "200 SUGGESTED (the designed FLAGGED->SUGGESTED unflag chain on v2's own state)", "authority": "same"}
+  ],
+  "results": "tools/t107-verify-results.json (per-leg expected/actual + the justified notes); driver of record tools/t107-verify.ts (relocated into the receipt from the repo-root run copy — path-corrected only, logic verbatim)",
+  "gates_after": {
+    "typecheck_x4": "root + apps/api + packages/contracts + packages/db exit 0 (hub: tsc --noEmit exit 0)",
+    "bun_test_apps_api_packages": "1854 pass / 0 fail / 13 skip / 7182 expect() across 97 files — EXACT vs the #168 receipt baseline (zero api/package deltas this band)",
+    "bun_test_apps_hub": "55 pass / 0 fail / 501 expect() (+1 test, +69 expect vs 54/0/432: the T-MIG-107 line test + the moved pins)",
+    "golden_selftest": "OK (the tolerance engine + tranche partition + corpus of 187 cases)"
+  },
+  "corpus": "6 declared cases golden/cases/content-write-{docs-parse-fail-400, past-papers-schema-409, validate-unknown-paper-404, validate-unknown-version-404, validate-unknown-scheme-404, topics-unknown-question-404} — the seed-posture-replayable validation classes (tranche: empty); the stateful happy-path/state-machine classes ride THIS leg (the t100/088/091 evidence tier — golden-captures are forever-gates of their own tier)",
+  "flip": "the hub V2_SURFACE_PREFIXES gains 4 per-SUBTREE rows (exam-papers/, question-versions/, mark-schemes/, questions/ — the narrowest legal form for the parametrized write verbs; every captured hub-emitted path is v2-REAL per the T-MIG-037 bar); the bare parent + review-queue* + documents/past-papers stay core/un-rowed; the topics-write gap pin MOVED OUT (CLASS B closed)",
+  "zero_contact": "zero production writes, zero Neon reads/writes, zero live-plane touches — the entire leg ran on 127.0.0.1"
+}

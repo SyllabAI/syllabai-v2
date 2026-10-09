@@ -1,0 +1,31 @@
+{
+  "run": "run-001-capture-r0",
+  "task": "T-MIG-107 (the widening rider — 'the write-row widening rides its own golden-verify leg per the flip law')",
+  "actor": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operator_trace": "1a11f7bc1d47fa31",
+  "what": "CAPTURE of the 17 content write surfaces from the LOCAL boot of the frozen Java core — the GOLDEN_MASTER §2 write-surface procedure (write surfaces are verified from a local boot, never prod Neon). Evidence: golden-captures/t-mig-107/leg-01..53 + uuid-map.json (role-labelled stable fakes).",
+  "rig": {
+    "core": "SyllabAI/syllabai-core @ 6cad6ef (default-branch tip == the frozen law commit; fresh clone, tree untouched)",
+    "build": "mvn -DskipTests package BUILD SUCCESS (Debian openjdk 25.0.4.1+1-1~deb13u1 user-tree via dpkg -x, Maven 3.9.9 binary from repo.maven.apache.org) — the exact toolchain versions of the 088 capture recipe of record",
+    "db": "LOCAL PostgreSQL 17.11 + pgvector 0.8.0 user-tree (trixie debs dpkg -x, the T-MIG-100 recipe) on 127.0.0.1:5544, db syllabai_capture; Flyway V1..V63 applied by the core at boot",
+    "server": "server.port 8090; SYLLABAI_LLM_MODE=test; GROQ/GEMINI/OPENROUTER absent (ZERO-KEY law); synthetic SYLLABAI_JWT_SECRET + SYLLABAI_TEACHER_JOIN_CODE",
+    "identities": "cap_teacher (via the honest register+join-code path), cap_learner (register), cap_admin (POST /api/v1/auth/bootstrap-admin, the V19 state law); tokens in-memory ONLY, never persisted"
+  },
+  "legs": {
+    "total": 53,
+    "documents": "legs 01-06: 401 / 403 / 201 IngestionView / 400 invalid_document fixed-message / 201 dedup duplicate=true / 409 kind-conflict (the V33 derived-documentId law: documentId = uuidv5(checksum+engine+engineVersion) — the core REJECTS an arbitrary documentId, first boot's rejection message named the expected derivation)",
+    "past-papers": "legs 07-10: 3x 201 IngestionResultView SUGGESTED (papers 9706/11,12,13 — the third WITHOUT markScheme, the schemeless guard fixture) + 409 unsupported schemaVersion BEFORE ingestion",
+    "exam_papers": "legs 11-26: validate-all 200 / validate 200 / unvalidated-409 / schemeless-409 / place unknown-subject 404 / place 200 / place idempotent 200 / 401 / flag 200 / flag-FLAGGED opaque 500 / unflag 200 / reject 200 / flag-REJECTED opaque 500 / validate-all-REJECTED 409 / unflag-not-flagged opaque 500 / unknown-paper 404",
+    "question_versions": "legs 27-34: unknown 404 / validate 200 / validate idempotent 200 / reject 200 / flag 200 / unflag 200 / unflag-again opaque 500 / flag-REJECTED opaque 500",
+    "mark_schemes": "legs 35-44: validate 200 / validate+criteria 200 / unknown-point 404 / null-point 404 ('mark point in scheme null not found' — the jakarta @Valid non-cascade law) / unknown 404 / REJECT-CORE-DEFECT-500 / FLAG-CORE-DEFECT-500 / unflag-postdefect 500 / unflag-again opaque 500 / flag-REJECTED opaque 500",
+    "topics": "legs 45-53: 401 / unknown-question 404 (the 088 leg-08 law) / null-body 400 validation_failed first-field (the 088 leg-09 law) / unknown-primary 404 / anchor-primary 409 ('primary topic ING-... is an ingestion anchor') / 200 TopicMappingResult / rewrite 200 (delete-before-insert) / anchor-secondary 409 / learner 403"
+  },
+  "core_defect_disclosure": {
+    "class": "the T-MIG-106 operator ruling (b) class (trace 1a11c4b762f6043d): the frozen core 500s where v2's DESIGNED law answers 200 — 'v2's designed laws; the core 500s are the core-side defect'",
+    "found": "legs 40/41 (+ the chained 42): POST /mark-schemes/{id}/reject and /flag answer 500 internal_error from org.hibernate.LazyInitializationException: 'Cannot lazily initialize collection of role com.syllabai.assessment.MarkScheme.points (no session)' — SchemeSummary.from touches the lazy points collection after the transaction/session closed. First-hand stacktraces in the boot log at 07:48:16.945/.957Z.",
+    "disposition": "the captures stay byte-honest (the core's 500s are RECORDED as captured); the verify driver pins v2's designed 200s as the declared-justified divergences (GOLDEN_MASTER §4, R0-approved per the law's own authority; the 106 precedent). v2 is NOT taught the defect."
+  },
+  "scrub": "tokens never persisted; emails/names synthetic from creation; uuids mapped to stable fakes 00000000-0000-4000-8000-{seq} via uuid-map.json (role-labelled: paper1-3, version1-3, scheme1/2, markpoint1, question1/topic1/subject1 = V6/V7 fixed uuids, anchor1 = the ingestion-created ING- anchor); embedded uuids (error paths/messages) scrubbed via the same map",
+  "zero_contact": "zero production writes, zero Neon reads/writes (NEON_PAT present in env but unused by the rig; the capture talks ONLY to 127.0.0.1)",
+  "reproducibility": "tools/t107-capture.py (the driver of record) + tools/t107-reset-substrate.sh + tools/v6v7-seed.sql + tools/t107-gen-seed.py (the verify-substrate dump from the capture boot)"
+}

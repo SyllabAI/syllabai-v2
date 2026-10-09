@@ -351,6 +351,10 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // STAYS CORE (T-MIG-020/023 surfaces — pinned in the surface test; also
   // the 088 verify found the fetch parse-shape defect + the topics-write
   // coverage gap — T-MIG-100 — so the parent MUST NOT flip this band).
+  // T-MIG-107 DISCHARGE NOTE: the parent STILL stays core, but the write
+  // SUBTREES below it flipped in the 107 widening rider (PR #168 made them
+  // real; the 53-leg golden-verify of record) — see the 107 rows at the
+  // table tail.
   // Zero live-page routing change: paperFindings has ZERO page call-sites
   // (grep-verified at the widening commit) — ROUTING AVAILABILITY of record,
   // the T-MIG-090 posture. LLM-free law: the bridge is deterministic over
@@ -371,7 +375,11 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // siblings: review-queue*, exam-papers/*, question-versions/*,
   // mark-schemes/*, the topics-write shells — pinned in the surface test);
   // the 089 row's "parent MUST NOT flip this band" widening condition is
-  // hereby discharged for the verified endpoints only. startsWith-safety:
+  // hereby discharged for the verified endpoints only. T-MIG-107 DISCHARGE
+  // NOTE: CLASS B (the topics-write shells) closed of record — PR #168 +
+  // the 53-leg golden-verify — and the write SUBTREES flipped in the 107
+  // widening rider (see the table tail); review-queue* and the bare parent
+  // stay core. startsWith-safety:
   // the /enumerate row also captures /enumerate/structured (leg-04
   // verified, the same family tree); partial-segment capture
   // (fetchx/enumeratex) is DOCUMENTED INERT — no such route or hub emitter
@@ -417,6 +425,36 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // Partial-segment capture (tutor/askx) DOCUMENTED INERT — no such route or
   // hub emitter exists on either side (pinned in the surface test).
   "/api/v1/tutor/ask",
+  // T-MIG-107 (r0, the port owner's widening rider, operator trace
+  // 1a11f7bc1d47fa31 'the write-row widening rides its own golden-verify leg
+  // per the flip law') — the §7 review-WORKFLOW write family: PR #168 (merged
+  // d2308eb) made the 17 honest-501 write routes REAL, and the widening's own
+  // golden-verify leg verified them of record: 53 capture legs from a LOCAL
+  // boot of the frozen core 6cad6ef (the GOLDEN_MASTER §2 write-surface
+  // procedure — never prod Neon) replayed 53/53 against the booted v2 on a
+  // fresh local substrate (run-001-capture-r0 + run-002-golden-verify-r0,
+  // receipts .syllabai/receipts/T-MIG-107/) — 50 byte-honest deep-equals +
+  // 3 DECLARED-JUSTIFIED legs (the T-MIG-106 ruling (b) class: the frozen
+  // core 500s on a Hibernate LazyInitializationException session artifact in
+  // reject/flag/unflag MarkScheme paths; v2 serves the DESIGNED law), plus 6
+  // declared corpus cases (golden/cases/content-write-*, tranche empty).
+  // NARROWEST LEGAL FORM: per-SUBTREE rows — the only row shape that can
+  // capture the parametrized write verbs (/exam-papers/{id}/validate etc.)
+  // under startsWith prefix matching. Each row captures ONLY hub-emitted
+  // paths V2 serves with REAL implementations (the T-MIG-037 bar): the
+  // question-versions/mark-schemes/questions subtrees are exactly the
+  // verified families on both sides; the exam-papers subtree additionally
+  // captures the review/audit GETs (hub-emitted, v2-real since the
+  // ContentReviewService port — no 501 stubs remain anywhere under it). The
+  // BARE PARENT /api/v1/teacher/content STAYS CORE (the review-queue* read
+  // siblings stay core — not this band's verified set); documents/past-papers
+  // are v2-served and verified but NOT hub-emitted (no rows — the 090/089
+  // routing-availability posture). Partial-segment capture (exam-papersx) is
+  // DOCUMENTED INERT — no such route or emitter exists on either side.
+  "/api/v1/teacher/content/exam-papers/",
+  "/api/v1/teacher/content/question-versions/",
+  "/api/v1/teacher/content/mark-schemes/",
+  "/api/v1/teacher/content/questions/",
 ];
 
 /**

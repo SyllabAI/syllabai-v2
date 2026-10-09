@@ -6718,3 +6718,19 @@ Work Log:
 
 Stage Summary:
 - The T58-VERIFY verdict stands CORRECTED of record: migration-as-filed 100% complete; the retirement front is enumerated (the CORE_ONLY list + the two-base env law) with its first defect band already fixed-of-record on the PR awaiting desk merge. The operator's two paste-level acts (P3 witness, P4 sign-off) and the S6 acts (post-2026-10-11) remain the [OPERATOR] side of the retirement gate. Write ledger: zero prod writes this PS; the branch carries the code. .syllabai-only direct-main (fetch-first), no force.
+
+Task ID: T-MIG-107 widening rider (R0-integrator, operator trace 1a11f7bc1d47fa31)
+Task: "the write-row widening rides its own golden-verify leg per the flip law" — the rider the T-MIG-107 implementation band declared as its post-merge residue.
+
+Work Log:
+- Fetch-first: PR #168 verified MERGED (d2308eb, head c9685f0, CI green) — the 17 write routes are code-of-record; the flip law read at its source (T-MIG-037 card SAFETY ANALYSIS + the surface test's T-MIG-037 describe) + GOLDEN_MASTER §2/§4 (write surfaces verify from a LOCAL boot, never prod Neon; justified divergences are declared, never deleted).
+- Toolchain rebuilt from the recipes of record: Debian openjdk 25.0.4.1 + Maven 3.9.9 (dpkg -x user-tree / maven-central binary) + PostgreSQL 17.11 + pgvector 0.8.0 user-tree @ 127.0.0.1:5544 — the exact 088-capture/100-replay versions.
+- CAPTURE (run-001-capture-r0): SyllabAI/syllabai-core @ 6cad6ef (default tip == the frozen law commit) built BUILD SUCCESS, booted :8090 on db syllabai_capture (Flyway V1..V63 at boot, ZERO-KEY, SYLLABAI_LLM_MODE=test); identities via the honest register/join-code/bootstrap-admin paths; 53 legs captured across the 17 write surfaces incl. the V33 derived-documentId law (the core REJECTS an arbitrary documentId), the dedup/kind-conflict 409 pair, the unvalidated/schemeless/blocked 409s, the full flag/unflag IllegalState opaque-500 family, the topics anchor-409/rewrite/anchor-secondary laws, and the 088 leg-08/09 acceptance classes; scrubbed to role-labelled stable fakes (uuid-map.json).
+- CORE DEFECT FOUND + DECLARED: the frozen core 500s on scheme reject/flag (Hibernate LazyInitializationException on MarkScheme.points — session artifact); captured byte-honest; v2's designed 200s pinned as the 3 declared-justified legs per the T-MIG-106 ruling (b) class (GOLDEN_MASTER §4).
+- VERIFY (run-002-golden-verify-r0): fresh substrate (drizzle push + the V6/V7 fixed-uuid dump + harness users), v2 served in-process (t100 pattern, deepEqualTolerant imported — zero comparator drift), role substitution fake->verify resolved per side; verdict 53/53 PASS (50 byte-honest + 3 justified).
+- CORPUS: 6 declared cases golden/cases/content-write-* (tranche: empty — the seed-posture-replayable validation classes; the stateful chains ride the leg tier).
+- FLIP (T-MIG-037 narrowest legal form): 4 per-SUBTREE rows in V2_SURFACE_PREFIXES (exam-papers/, question-versions/, mark-schemes/, questions/) + the surface test's exact-array/CORE_ONLY/DUAL_RUN updates + the new T-MIG-107 line test; the bare parent + review-queue* stay core; the topics-write gap pin MOVED OUT (CLASS B closed).
+- GATES first-hand: typecheck x4 exit 0 (+ hub tsc exit 0); api+packages 1854/0/13skip/7182 expect (EXACT vs the #168 baseline); hub 55/0/501; golden selftest OK.
+
+Stage Summary:
+- The write-row widening is GOLDEN-VERIFIED + WIDENED of record on the rider's own leg; PR (hub rows + corpus cases + captures/receipts) opened for the desk — no self-merge. Standing operator items unchanged: PAT rotation, P3/P4 witness asks.
