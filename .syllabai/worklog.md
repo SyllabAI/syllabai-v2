@@ -6769,3 +6769,20 @@ Work Log:
 
 Stage Summary:
 - T-MIG-108 CLOSED end-to-end of record; the recommendations surface is golden on the live wire of both planes; the only owed residue is the flip row itself (its own widening act, operator-gated per the flip law). Lane IDLE.
+
+---
+
+Task ID: 60 (r7a)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6, operator trace 1a12025923693c75)
+Task: "take the band" (standing 1a119b24a3198db5) — the neon-replay run-27 union red classed and taken as T-MIG-109.
+
+Work Log:
+- Fresh fetch-first census first-hand (parallel desks active): main facc1b4 (local ff'd 18 behind / 0 ahead), open PRs 0, band-class issues 0, unmerged branches all stale early-phase lanes; ci SUCCESS at tip — and the neon-replay SCHEDULED run-27 (09:22:58Z, id 37910903186) FAILURE = the finding: union 182/186, seed 167/171 with FOUR reds (content-write-topics-unknown-question-404, content-write-validate-unknown-paper/scheme/version-404), prod 15/15 (the legacy prod divergences resolved by the T-MIG-037/107 lineage). Artifact 11606471537 pulled first-hand.
+- Classification: all four at 404/404 parity; field order irrelevant (sortObjectKeys canonicalizes) and timestamp already tolerated — the SOLE divergence is the sentinel uuid inside the non-tolerated expect.body.message: each case's request path carries the uuid-map-relabelled sentinel (00fa/00fe/00fb/00fd) while the expect message kept the PRE-map capture id (0024/0009/0020/0013).
+- Root cause of record: the T-MIG-107 corpus cut relabelled the request paths via uuid-map but did not propagate the relabel into the captured message strings. The frozen-core echo law proven from the source legs of record (leg-46/leg-26/leg-39/leg-27 — in EVERY leg the message names the REQUESTED id, path-id == message-id): v2's observed echo is FAITHFUL; the corpus cut is the defect. The exact ci-replay.ts header amendment class ("cases pinning capture-time identity values in NON-tolerated fields ... will fail until R6/R0 amend the case").
+- Amendment of record: the 4 case files' expect.body.message re-pinned to each case's OWN request sentinel + full disclosure appended to each description (what/why/law anchor/proof). The engine untouched: deepEqualTolerant unmodified, zero tolerate widened, zero justified-ledger entry, zero apps//packages/ change (ZERO carrier delta, no redeploy owed), golden-captures/ untouched.
+- Gates: amendment script round-trips an unmodified witness case BYTE-IDENTICAL before mutating (JSON.stringify(x,null,1)-shape, ASCII-escaped — the writer fidelity proof); git diff surgical (4 files, 2 lines each); bun install --frozen-lockfile clean; runner selftest OK; ci-replay selftest OK; corpus --plan OK; OFFLINE VERDICT PROOF 4/4 through the gated deepEqualTolerant import (golden/runner.ts:760 — zero comparator drift): pre-amendment vs run-27 verbatim observed bodies = FALSE (the red), post-amendment = TRUE (the flip) — ZERO live calls spent.
+- Receipt .syllabai/receipts/T-MIG-109/run-001-corpus-mis-cut-amendment-r7a.json; card T-MIG-109-content-write-corpus-mis-cut-band.yaml.
+
+Stage Summary:
+- T-MIG-109 amendment complete lane-side: the 4 mis-cut cases pass on their own merits (offline flip proof of record); the standing re-proof instrument's union is expected 186/186 at the next run with the justified-ledger still EMPTY. Post-merge re-verify owed (the next scheduled/dispatched neon-replay at the merge tip). Write ledger: 4 corpus case files + yaml + receipt + worklog; zero live traffic, zero deploys, zero DDL. Lane continues: push -> PR -> CI -> r0-auto merge -> neon-replay re-verify.
