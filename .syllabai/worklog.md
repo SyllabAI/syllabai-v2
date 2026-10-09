@@ -6895,3 +6895,18 @@ Work Log:
 
 Stage Summary:
 - the LAST zero-corpus exclusion of the 111 census is capture+verify+flip complete: the classroom foundation is golden-verified of record and the rows land behind the operator's standing flip order (trace 1a120e747bb195dd named the class-KG siblings; the 111 closure receipt reserved the flip to this band; the operator ordered the band by name); PR next, r0-auto merge, then the 093/110/111-recipe hub redeploy + battery + the union replay (186 -> 203 planned)
+---
+Task ID: R0-AUTO run cron-202610100000 (Job 438940)
+Agent: R0-auto (Super Z, zai-web, merge desk — desk merges only)
+
+Work Log:
+- PR #174 MERGED of record -> 8907daa via ESTABLISHED MERGE-INTAKE (mergeable=dirty): T-MIG-112 the classroom-foundation capture+verify band (r7a lane, operator order trace 1a1213760243901d; 67 files: 49-leg golden-captures + 17 id-free corpus cases + uuid-map + receipts run-001..003 + task card + apps/hub api.ts +51/-2 + surface test +102/-28 + worklog +33) — executes the T-MIG-111 exclusion law verbatim (the "class-KG siblings" get their own band): THREE narrow tail rows /api/v1/teacher/classes + /api/v1/learners/me/classroom + /api/v1/teacher/learners, gate MET per the 092-recipe ALL-GREEN verdict (40-leg verify, 2 reds ruled instrument artifacts first-hand)
+- INTAKE of record: conflict was EXACTLY ONE file — .syllabai/worklog.md (UU), ZERO code conflicts; resolved via the append-only chronological union resolver (scripts/r0_worklog_union.py) with byte checks: base e3939d8 is a byte-prefix of BOTH sides (pure appends proven), union = base + main-tail (T-MIG-042 run-005 @ 15:17:56Z) + pr-tail (T-MIG-112 @ 15:56:06Z, newer commit timestamp), pr_tail verbatim-contiguous exactly once, zero conflict markers, zero content loss either side
+- Intake gates first-hand at merge commit 2e6d70e: bun install --frozen-lockfile 930 pkgs OK; typecheck x4 exit 0; bun test apps/api packages 1855 pass / 13 skip / 0 fail / 7186 expect (EXACT vs the PR baseline); golden runner --selftest OK
+- Pushed intake merge to the PR branch (normal push, NO force — 2e6d70e is a descendant of the PR head 46685ce); CI re-ran on the new head: hub+verify completed/success (bounded poll ~75s)
+- (f) merged sha-guarded PUT (2e6d70efbbf2c8dddd63cf60d25014b0bc845075, first-try) -> main 8907daa; post-merge CI 2/2 completed/success (~75s bounded poll)
+- Prechecks: (d) 0 reviews / 0 comments, no holds, body carries "no self-merge (r0-auto owns the merge)"; (e) 67 files all monorepo-internal, zero .java, zero core/hub repo content, write ledger census-class disclosed (probe rows inert, zero DDL/env); 1 merge this run (cap 2); 0 open PRs remain
+- ENV NOTE of record: the local mirror was found with a stale HEAD (b8e7746) + dirty worktree at run start (provenance unclear — no sweep had touched it since the 22:33 bookkeeping); recovered via checkout main + fetch + reset --hard origin/main before the intake; no mirror state was trusted for the intake (PR head fetched by refs/pull/174/head)
+
+Stage Summary:
+- T-MIG-112 LANDED of record (8907daa): the classroom-foundation band — the 111 exclusion discharged, 3 tail rows widened (both tables now agree v2 for every class path), 17 corpus cases join the union (186 -> 203 planned). Post-merge legs owed per the 093/110/111 recipe: hub redeploy + double-plane battery + union replay (r7a re_verify_plan). Board empty at run end; main CI 2/2 green at 8907daa.
