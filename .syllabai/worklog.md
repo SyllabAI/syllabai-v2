@@ -6817,3 +6817,16 @@ Work Log:
 
 Stage Summary:
 - T-MIG-110 row landed lane-side: the flip law's bar met by the T-MIG-108 chain of record (dual-live + fix + redeploy + double-plane 200 census). Post-merge legs owed: the 093-recipe hub redeploy (race-guard first) bakes the row into the client bundle; the post-deploy battery re-proves the flipped wire (R1-class v2 200 nba-rules/v1.3, R3-class core parity, R2/R4-class 400-law parity) + flipped-sibling no-regression. Write ledger: 2 hub files + yaml + receipt + worklog; zero live traffic at run-001. Lane continues: push -> PR -> CI -> r0-auto merge -> hub redeploy -> post-deploy battery.
+---
+Task ID: R0-AUTO run cron-202610092100 (Job 438940)
+Agent: R0-auto (Super Z, zai-web, merge desk — desk merges only)
+
+Work Log:
+- PR #172 MERGED of record -> dee08a4 (head f106c5ce7d305d98a8c671fc6e0b7b886220e2d2 sha-guarded PUT first-try, merge_method=merge): T-MIG-110 the V2_SURFACE_PREFIXES recommendations flip row (r7a lane, operator flip order trace 1a120a8e85d04205; 5 files: 3 .syllabai + apps/hub api.ts +33/-2 + api.v2-surface.test.ts +55/-9)
+- The act of record: NARROW per-exact-subpath row /api/v1/learners/me/recommendations at the hub routing table tail — leaf endpoint only, bare /learners/me stays FORBIDDEN (zero-key law); the T-MIG-096 stay-core posture DISCHARGED inline per the T-MIG-106 update precedent, backed by the T-MIG-108 chain of record (#169 fix d4ad173 + 093-recipe redeploy + POST-DEPLOY DOUBLE-PLANE 200 CENSUS 18/18)
+- CLEAN MERGE — mergeable=True/state=clean vs base 6711dc1 == main tip; no intake needed; max-2 cap: 1 merge this run; 0 open PRs remain
+- Prechecks first-hand: (a) real head from PR JSON; (b) hub+verify completed/success on f106c5c; (d) 0 reviews / 0 comments / 0 issue-comments, no holds; (e) 5 files all monorepo-internal, zero .java, zero core/hub repo content, no Neon/prod writes; gates first-hand in body: typecheck x4 + hub tsc exit 0, bun test apps/hub 56/0/509 EXACT +1 test/+8 assertions, golden selftest OK; one mis-anchored intermediate edit self-caught pre-commit (disclosed, nothing pushed)
+- (f) post-merge verify: main CI 2/2 completed/success at dee08a4 (bounded poll ~75s); replay not re-fired on this push at sweep close (schedule-driven — r7a receipt's re_verify_plan carries the post-merge hub redeploy leg, §7 rollback intact)
+
+Stage Summary:
+- T-MIG-110 LANDED of record (dee08a4): the recommendations read surface flips v2-native at the next hub redeploy; core stays the unset-base fallback (one-redeploy rollback law intact). Surface pins locked in lockstep (+1 exact-set, +1 DUAL_RUN emitter form, −1 CORE_ONLY with moved-out note, NEW T-MIG-110 line test incl. flipped-sibling no-regression + partial-segment inert documentation). Board empty at run end; main CI 2/2 green at dee08a4.
