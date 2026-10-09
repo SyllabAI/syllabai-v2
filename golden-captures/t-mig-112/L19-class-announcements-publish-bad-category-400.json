@@ -1,0 +1,21 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T15:35:01Z",
+ "captured_from": "live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef)",
+ "leg": "L19",
+ "method": "POST",
+ "name": "class-announcements-publish-bad-category-400",
+ "path": "/api/v1/teacher/classes/00000000-0000-4000-8000-000000000001/announcements",
+ "request_body": {
+  "title": "r7a t112 probe",
+  "body": "probe body",
+  "category": "not-a-category"
+ },
+ "response_body": {
+  "status": 400,
+  "error": "bad_request",
+  "message": "category must be general, homework, notice, exam-reminder or resource",
+  "timestamp": "2026-10-09T15:35:01.007444440Z"
+ },
+ "status": 400
+}

@@ -1,0 +1,24 @@
+{
+ "name": "classroom-teacher-class-unknown-uuid-404",
+ "description": "GET /api/v1/teacher/classes/{unknown well-formed uuid} as TEACHER: 404 not_found 'class not found' \u2014 the no-leak law [T-MIG-112 L07]",
+ "source": "captured from the live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef) on 2026-10-09 by T-MIG-112 run-001/run-003 (r7a); probe-account capture \u2014 probe emails mapped to role labels, runtime uuids mapped to role-labelled fakes, tokens never persisted; no PII present",
+ "method": "GET",
+ "path": "/api/v1/teacher/classes/00000000-0000-4000-8000-0000000000ff",
+ "request": {
+  "headers": {
+   "Authorization": "Bearer scrubbed-fixed-dummy-jwt-token"
+  }
+ },
+ "expect": {
+  "status": 404,
+  "body": {
+   "status": 404,
+   "error": "not_found",
+   "message": "class not found",
+   "timestamp": "2026-10-09T15:34:49.885660244Z"
+  }
+ },
+ "tolerate": [
+  "timestamp"
+ ]
+}

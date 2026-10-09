@@ -1,0 +1,29 @@
+{
+ "name": "classroom-teacher-class-create-blank-name-400",
+ "description": "POST /api/v1/teacher/classes with a whitespace name as TEACHER: 400 validation_failed 'name: must not be blank' \u2014 the @NotBlank law (the 056 notBlank refine) [T-MIG-112 L03]",
+ "source": "captured from the live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef) on 2026-10-09 by T-MIG-112 run-001/run-003 (r7a); probe-account capture \u2014 probe emails mapped to role labels, runtime uuids mapped to role-labelled fakes, tokens never persisted; no PII present",
+ "method": "POST",
+ "path": "/api/v1/teacher/classes",
+ "request": {
+  "headers": {
+   "Authorization": "Bearer scrubbed-fixed-dummy-jwt-token"
+  },
+  "body": {
+   "courseSlug": "r7a-t112-probe-course",
+   "courseLabel": "r7a t112 probe course",
+   "name": "   "
+  }
+ },
+ "expect": {
+  "status": 400,
+  "body": {
+   "status": 400,
+   "error": "validation_failed",
+   "message": "name: must not be blank",
+   "timestamp": "2026-10-09T15:34:45.389577329Z"
+  }
+ },
+ "tolerate": [
+  "timestamp"
+ ]
+}

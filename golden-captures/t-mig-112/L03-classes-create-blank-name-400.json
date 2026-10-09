@@ -1,0 +1,21 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T15:34:45Z",
+ "captured_from": "live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef)",
+ "leg": "L03",
+ "method": "POST",
+ "name": "classes-create-blank-name-400",
+ "path": "/api/v1/teacher/classes",
+ "request_body": {
+  "courseSlug": "r7a-t112-probe-course",
+  "courseLabel": "r7a t112 probe course",
+  "name": "   "
+ },
+ "response_body": {
+  "status": 400,
+  "error": "validation_failed",
+  "message": "name: must not be blank",
+  "timestamp": "2026-10-09T15:34:45.389577329Z"
+ },
+ "status": 400
+}

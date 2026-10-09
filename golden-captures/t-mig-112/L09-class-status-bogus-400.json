@@ -1,0 +1,19 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T15:34:51Z",
+ "captured_from": "live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef)",
+ "leg": "L09",
+ "method": "POST",
+ "name": "class-status-bogus-400",
+ "path": "/api/v1/teacher/classes/00000000-0000-4000-8000-000000000001/status",
+ "request_body": {
+  "status": "bogus"
+ },
+ "response_body": {
+  "status": 400,
+  "error": "bad_request",
+  "message": "status must be 'active' or 'archived'",
+  "timestamp": "2026-10-09T15:34:50.978663636Z"
+ },
+ "status": 400
+}

@@ -1,0 +1,27 @@
+{
+ "name": "classroom-teacher-class-status-unknown-uuid-404",
+ "description": "POST /api/v1/teacher/classes/{unknown uuid}/status as TEACHER: 404 class-lookup-first \u2014 the tolerant status parse never fires for an unknown class (run-003 addendum ordering law) [T-MIG-112 A1]",
+ "source": "captured from the live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef) on 2026-10-09 by T-MIG-112 run-001/run-003 (r7a); probe-account capture \u2014 probe emails mapped to role labels, runtime uuids mapped to role-labelled fakes, tokens never persisted; no PII present",
+ "method": "POST",
+ "path": "/api/v1/teacher/classes/00000000-0000-4000-8000-0000000000ff/status",
+ "request": {
+  "headers": {
+   "Authorization": "Bearer scrubbed-fixed-dummy-jwt-token"
+  },
+  "body": {
+   "status": "archived"
+  }
+ },
+ "expect": {
+  "status": 404,
+  "body": {
+   "status": 404,
+   "error": "not_found",
+   "message": "class not found",
+   "timestamp": "2026-10-09T15:47:14.831957634Z"
+  }
+ },
+ "tolerate": [
+  "timestamp"
+ ]
+}

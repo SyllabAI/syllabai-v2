@@ -1,0 +1,32 @@
+{
+ "task": "T-MIG-112",
+ "run": "run-003",
+ "lane": "r7a (web-da4ab8b1)",
+ "at": "2026-10-09T15:50:02Z",
+ "what": "the unknown-uuid ORDERING laws (validation-first vs lookup-first) on the three class-write routes \u2014 captured core, verified v2, same pass",
+ "method": "the class id = the role-labelled fake 00000000-0000-4000-8000-0000000000ff (well-formed, unknown); every leg fails closed \u2014 ZERO rows created either plane",
+ "laws_of_record": [
+  {
+   "leg": "A1",
+   "ask": "POST /{unknown}/status {archived}",
+   "law": "404 class-lookup-first 'class not found' \u2014 the tolerant status parse never fires for an unknown class"
+  },
+  {
+   "leg": "A2",
+   "ask": "POST /{unknown}/members {blank email}",
+   "law": "400 validation-FIRST 'email: must not be blank' \u2014 @NotBlank precedes the class lookup"
+  },
+  {
+   "leg": "A3",
+   "ask": "POST /{unknown}/members {unknown email}",
+   "law": "404 class-lookup-first 'class not found' \u2014 the class lookup precedes the email lookup"
+  },
+  {
+   "leg": "A4",
+   "ask": "POST /{unknown}/announcements {blank title}",
+   "law": "400 validation-FIRST 'title: must not be blank' \u2014 @NotBlank precedes the class lookup"
+  }
+ ],
+ "parity": "ALL 4 byte-equal core vs v2 (status + error + message)",
+ "corpus_effect": "the 4 ordering laws join the corpus as id-free cases (classroom-teacher-class-{status-unknown-uuid-404, members-unknown-uuid-blank-email-400, members-unknown-uuid-unknown-email-404, announcements-unknown-uuid-blank-title-400})"
+}

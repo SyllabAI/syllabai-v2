@@ -1,0 +1,29 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T15:34:59Z",
+ "captured_from": "live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef)",
+ "leg": "L17",
+ "method": "DELETE",
+ "name": "class-member-delete-unknown",
+ "path": "/api/v1/teacher/classes/00000000-0000-4000-8000-000000000001/members/00000000-0000-4000-8000-0000000000ff",
+ "request_body": null,
+ "response_body": {
+  "id": "00000000-0000-4000-8000-000000000001",
+  "courseSlug": "r7a-t112-probe-course",
+  "courseLabel": "r7a t112 probe course",
+  "name": "r7a t112 probe class",
+  "status": "active",
+  "createdAt": "2026-10-09T15:34:46.269762Z",
+  "members": [
+   {
+    "studentId": "00000000-0000-4000-8000-000000000005",
+    "displayName": "r7a t112 probe student",
+    "email": "probe-student@example.invalid",
+    "enrolledBy": "00000000-0000-4000-8000-000000000006",
+    "enrolledAt": "2026-10-09T15:34:56.269082Z"
+   }
+  ]
+ },
+ "status": 200,
+ "note": "capture decides: the :188-198 law"
+}

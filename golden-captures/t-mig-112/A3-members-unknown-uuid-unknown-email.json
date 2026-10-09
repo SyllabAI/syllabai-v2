@@ -1,0 +1,20 @@
+{
+ "auth": "teacher",
+ "captured_at_utc": "2026-10-09T15:47:18Z",
+ "captured_from": "live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef)",
+ "leg": "A3",
+ "method": "POST",
+ "name": "members-unknown-uuid-unknown-email",
+ "path": "/api/v1/teacher/classes/00000000-0000-4000-8000-0000000000ff/members",
+ "request_body": {
+  "email": "nobody-2b795c61@example.invalid"
+ },
+ "response_body": {
+  "status": 404,
+  "error": "not_found",
+  "message": "class not found",
+  "timestamp": "2026-10-09T15:47:16.616143602Z"
+ },
+ "status": 404,
+ "note": "run-003 addendum: the unknown-uuid ordering law (capture decides)"
+}

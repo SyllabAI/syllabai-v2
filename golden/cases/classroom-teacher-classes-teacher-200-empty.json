@@ -1,0 +1,18 @@
+{
+ "name": "classroom-teacher-classes-teacher-200-empty",
+ "description": "GET /api/v1/teacher/classes as TEACHER on a fresh identity: the honest empty list [] \u2014 LIMIT 100 newest-first with zero rows (role: teacher via the route rule; DISCLOSURE: any future corpus case that creates a class for user_20 must re-pin this case \u2014 the 109 mis-cut lesson) [T-MIG-112 L02]",
+ "source": "captured from the live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef) on 2026-10-09 by T-MIG-112 run-001/run-003 (r7a); probe-account capture \u2014 probe emails mapped to role labels, runtime uuids mapped to role-labelled fakes, tokens never persisted; no PII present",
+ "method": "GET",
+ "path": "/api/v1/teacher/classes",
+ "request": {
+  "headers": {
+   "Authorization": "Bearer scrubbed-fixed-dummy-jwt-token"
+  }
+ },
+ "expect": {
+  "status": 200,
+  "body": []
+ },
+ "tolerate": [],
+ "tranche": "empty"
+}

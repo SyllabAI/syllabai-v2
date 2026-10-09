@@ -1,0 +1,27 @@
+{
+ "name": "classroom-teacher-class-members-unknown-uuid-unknown-email-404",
+ "description": "POST /api/v1/teacher/classes/{unknown uuid}/members with a well-formed unknown email as TEACHER: 404 'class not found' \u2014 the class lookup precedes the email lookup (run-003 addendum ordering law) [T-MIG-112 A3]",
+ "source": "captured from the live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef) on 2026-10-09 by T-MIG-112 run-001/run-003 (r7a); probe-account capture \u2014 probe emails mapped to role labels, runtime uuids mapped to role-labelled fakes, tokens never persisted; no PII present",
+ "method": "POST",
+ "path": "/api/v1/teacher/classes/00000000-0000-4000-8000-0000000000ff/members",
+ "request": {
+  "headers": {
+   "Authorization": "Bearer scrubbed-fixed-dummy-jwt-token"
+  },
+  "body": {
+   "email": "nobody-unknown@example.invalid"
+  }
+ },
+ "expect": {
+  "status": 404,
+  "body": {
+   "status": 404,
+   "error": "not_found",
+   "message": "class not found",
+   "timestamp": "2026-10-09T15:47:16.616143602Z"
+  }
+ },
+ "tolerate": [
+  "timestamp"
+ ]
+}

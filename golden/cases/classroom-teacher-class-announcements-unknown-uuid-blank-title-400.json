@@ -1,0 +1,28 @@
+{
+ "name": "classroom-teacher-class-announcements-unknown-uuid-blank-title-400",
+ "description": "POST /api/v1/teacher/classes/{unknown uuid}/announcements with a whitespace title as TEACHER: 400 validation-first 'title: must not be blank' \u2014 @NotBlank precedes the class lookup (run-003 addendum ordering law) [T-MIG-112 A4]",
+ "source": "captured from the live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef) on 2026-10-09 by T-MIG-112 run-001/run-003 (r7a); probe-account capture \u2014 probe emails mapped to role labels, runtime uuids mapped to role-labelled fakes, tokens never persisted; no PII present",
+ "method": "POST",
+ "path": "/api/v1/teacher/classes/00000000-0000-4000-8000-0000000000ff/announcements",
+ "request": {
+  "headers": {
+   "Authorization": "Bearer scrubbed-fixed-dummy-jwt-token"
+  },
+  "body": {
+   "title": "   ",
+   "body": "probe body"
+  }
+ },
+ "expect": {
+  "status": 400,
+  "body": {
+   "status": 400,
+   "error": "validation_failed",
+   "message": "title: must not be blank",
+   "timestamp": "2026-10-09T15:47:17.168292096Z"
+  }
+ },
+ "tolerate": [
+  "timestamp"
+ ]
+}

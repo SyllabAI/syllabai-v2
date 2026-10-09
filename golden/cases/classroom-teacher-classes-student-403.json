@@ -1,0 +1,24 @@
+{
+ "name": "classroom-teacher-classes-student-403",
+ "description": "GET /api/v1/teacher/classes as STUDENT: the TEACHER-or-ADMIN shell refuses 403 (role recorded in the name \u2014 the route rule re-mints the student bearer) [T-MIG-112 L36]",
+ "source": "captured from the live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef) on 2026-10-09 by T-MIG-112 run-001/run-003 (r7a); probe-account capture \u2014 probe emails mapped to role labels, runtime uuids mapped to role-labelled fakes, tokens never persisted; no PII present",
+ "method": "GET",
+ "path": "/api/v1/teacher/classes",
+ "request": {
+  "headers": {
+   "Authorization": "Bearer scrubbed-fixed-dummy-jwt-token"
+  }
+ },
+ "expect": {
+  "status": 403,
+  "body": {
+   "timestamp": "2026-10-09T15:34:39.970Z",
+   "status": 403,
+   "error": "Forbidden",
+   "path": "/api/v1/teacher/classes"
+  }
+ },
+ "tolerate": [
+  "timestamp"
+ ]
+}

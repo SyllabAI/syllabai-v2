@@ -1,0 +1,29 @@
+{
+ "name": "classroom-teacher-classes-create-student-403",
+ "description": "POST /api/v1/teacher/classes as STUDENT: the TEACHER-or-ADMIN shell refuses the write 403 before body validation (role recorded in the name) [T-MIG-112 L37]",
+ "source": "captured from the live frozen core syllabai-core.onrender.com (frozen @ 6cad6ef) on 2026-10-09 by T-MIG-112 run-001/run-003 (r7a); probe-account capture \u2014 probe emails mapped to role labels, runtime uuids mapped to role-labelled fakes, tokens never persisted; no PII present",
+ "method": "POST",
+ "path": "/api/v1/teacher/classes",
+ "request": {
+  "headers": {
+   "Authorization": "Bearer scrubbed-fixed-dummy-jwt-token"
+  },
+  "body": {
+   "courseSlug": "r7a-t112-probe-course",
+   "courseLabel": "r7a t112 probe course",
+   "name": "r7a t112 probe class"
+  }
+ },
+ "expect": {
+  "status": 403,
+  "body": {
+   "timestamp": "2026-10-09T15:34:40.446Z",
+   "status": 403,
+   "error": "Forbidden",
+   "path": "/api/v1/teacher/classes"
+  }
+ },
+ "tolerate": [
+  "timestamp"
+ ]
+}
