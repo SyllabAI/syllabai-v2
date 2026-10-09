@@ -1,0 +1,44 @@
+{
+  "task": "T-MIG-109",
+  "run": "run-001",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)",
+  "operator_trace": "1a12025923693c75 ('take the band'; standing 1a119b24a3198db5 'take a defect band')",
+  "utc": "2026-10-09",
+  "base": "facc1b4 (main tip of record at claim time)",
+  "branch": "t-mig-109/r7a",
+  "title": "the content-write unknown-id 404 corpus mis-cut band — 4 cases amended, union restored on its own merits",
+  "census": {
+    "method": "fetch-first (git fetch --prune + GitHub API first-hand): main facc1b4, local 0 ahead / 18 behind -> ff'd; open PRs: 0; open issues: 1 (housekeeping #147, not band-class); branches with unmerged commits: 10, all stale/archived early-phase lanes; CI at tip: ci SUCCESS (push) — neon-replay scheduled run-27 FAILURE (the finding that IS this band)",
+    "no_parallel_claim": "no open PR, no band-class issue, no receipt naming this red at census time; worklog tail of record = Task-59 (this lane's own T-MIG-108 close)"
+  },
+  "finding": {
+    "instrument": "neon-replay run-27 (id 37910903186, scheduled 2026-10-09T09:22:58Z, head facc1b4)",
+    "union": "182/186 — seed 167/171 (4 red), prod 15/15 (legacy prod divergences resolved by the T-MIG-037/107 lineage)",
+    "artifact": "11606471537 pulled first-hand to replay-run27/ (union.md + seed.json + prod.json verbatim)",
+    "the_reds": [
+      "content-write-topics-unknown-question-404",
+      "content-write-validate-unknown-paper-404",
+      "content-write-validate-unknown-scheme-404",
+      "content-write-validate-unknown-version-404"
+    ],
+    "shape": "all four: status 404 vs 404 (parity); the sole divergence = the sentinel uuid inside the non-tolerated expect.body.message (field order irrelevant — the comparator sortObjectKeys canonicalizes; timestamp already tolerated)"
+  },
+  "root_cause_of_record": "the T-MIG-107 corpus cut relabelled each case's request-path sentinel via uuid-map (0024->00fa, 0009->00fe, 0020->00fb, 0013->00fd) but left the PRE-map capture id inside expect.body.message; the frozen-core echo law proven from the source legs of record (leg-46/leg-26/leg-39/leg-27: message names the REQUESTED id, path-id == message-id in every leg) => v2's observed echo behavior is FAITHFUL, the corpus cut is the defect — the exact ci-replay.ts header amendment class ('cases pinning capture-time identity values in NON-tolerated fields ... will fail until R6/R0 amend the case')",
+  "fix_of_record": {
+    "what": "the 4 case files amended: expect.body.message uuid re-pinned to each case's OWN request sentinel + a full amendment disclosure appended to each description (what/why/law anchor/proof)",
+    "what_NOT": "comparator engine untouched (golden/runner.ts unmodified); zero tolerate widened; zero justified-ledger entry; zero apps//packages/ change => ZERO carrier delta, no redeploy owed; golden-captures/ (immutable evidence) untouched",
+    "fidelity": "the amendment script (scripts/r109_amend_cases.py) round-trips an unmodified witness case BYTE-IDENTICAL before mutating; git diff surgical: 4 files, 2 lines each"
+  },
+  "gates": {
+    "runner_selftest": "OK (tolerance engine incl. T-MIG-024 multiset, T-MIG-072 canonicalization, T-MIG-071 limiter-429, T-MIG-075 auth-posture, T-MIG-077 sentinel)",
+    "ci_replay_selftest": "OK",
+    "corpus_plan": "OK (loadCases + posture plan over the amended corpus)",
+    "offline_verdict_proof": "4/4 through the gated deepEqualTolerant (golden/runner.ts:760 import — zero comparator drift): pre-amendment vs run-27 observed = FALSE (the red), post-amendment = TRUE (the flip) — scripts/r109_offline_verdict.ts, inputs scratch/r109_offline_inputs.json, ZERO live calls spent"
+  },
+  "write_ledger": "4 corpus case files + this receipt + task yaml + worklog entry; ZERO live traffic (no Neon, no api-of-record probes, no core probes, no deploys, no env writes, no DDL, no registers)",
+  "re_verify_plan": "post-merge: the next neon-replay union verdict is expected 186/186 with the justified-ledger still empty — the standing instrument's green restored on its own merits",
+  "disclosures": [
+    "the run-27 red predates this task's claim by ~1h; parallel desks were active — the census above is the no-collision evidence of record; the push below re-runs fetch-first",
+    "this band is corpus-side: the carrier (dpl_FprVRBHzqB7xy8K1sBGnZVGAE97Y) is untouched and remains the serving of record"
+  ]
+}
