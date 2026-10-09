@@ -206,8 +206,10 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   //   /state (L16 200 uuid/Instant-normalized deep-equal), /course-stats
   //   (L17 200), /courses (L12 404 slug law + L13 204 idempotent delete;
   //   zero hub emitters — routing availability per the 090 precedent).
-  // recommendations stays CORE this band (400/404 wires verified; the 200
-  // NBA-engine wire is not live-proven yet — disclosed, own follow-up).
+  // T-MIG-110 UPDATE of record (operator flip order trace 1a120a8e85d04205):
+  // the recommendations stay-core posture below was the 096 band's
+  // not-yet-live-proven law — DISCHARGED (the T-MIG-108 chain live-proved the
+  // 200 NBA wire on BOTH planes; the row now lives at the table tail).
   "/api/v1/learners/me/agenda",
   "/api/v1/learners/me/flashcard-rating-trail",
   "/api/v1/learners/me/flashcard-review-schedule",
@@ -455,6 +457,35 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   "/api/v1/teacher/content/question-versions/",
   "/api/v1/teacher/content/mark-schemes/",
   "/api/v1/teacher/content/questions/",
+  // T-MIG-110 (r7a, operator flip order trace 1a120a8e85d04205
+  // 'V2_SURFACE_PREFIXES recommendations flip row' — the owed widening act the
+  // T-MIG-108 close staged) — the learner-me NBA recommendations family:
+  // LIVE-PROVEN of record (the T-MIG-108 chain: dual-live probes run-001 —
+  // v2 500 42703 'column a.learner_id does not exist' vs core 200
+  // nba-rules/v1.3 — root-caused to the recentAnswers T3 read pinning the
+  // wrong alias; PR #169 merged d4ad173, the one-token fix `where
+  // at.learner_id`; 093-recipe redeploy dpl_FprVRBHzqB7xy8K1sBGnZVGAE97Y from
+  // tip fa1b65f with the bundle byte-proof (+1 byte = the inserted 't'); the
+  // POST-DEPLOY DOUBLE-PLANE 200 CENSUS 18/18 — R1 v2 200 nba-rules/v1.3
+  // actions=2 rootEcho+learnerEcho ok, R3 core control 200 nba-rules/v1.3
+  // actions=2 parity (the SAME ask + the SAME v2-issued bearer), R2/R4 the
+  // 400 required-rootId law parity-proven BOTH planes; receipts
+  // T-MIG-108/run-001 + run-003). The 096 stay-core posture above is
+  // DISCHARGED of record (its 'not live-proven yet' condition closed by the
+  // 108 chain). NARROW per-exact-subpath form (the 096 heart-family
+  // convention — bare /learners/me stays FORBIDDEN): the row is the leaf
+  // endpoint's exact path; it is a proper prefix of NO other hub-emitted
+  // path or v2 route (the emitter appends only ?rootId=) — partial-segment
+  // capture (recommendationsx) DOCUMENTED INERT (no such route or hub
+  // emitter exists on either side — pinned in the surface test). LLM-free
+  // law: the NBA engine is deterministic read-time scoring over the
+  // attempts/skill-state spine — no LLM seam reachable (the failure mode the
+  // flip law exists to prevent is unreachable). Live routing change of
+  // record: the hub's ONLY emitter (dashboard-core.ts:85, api.recommendations
+  // — the pilot dashboard) rides request()/apiPath and becomes v2-native with
+  // the hub redeploy; core stays the unset-base fallback (§7 rollback
+  // intact).
+  "/api/v1/learners/me/recommendations",
 ];
 
 /**

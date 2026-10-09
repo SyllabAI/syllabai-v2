@@ -1,0 +1,32 @@
+{
+  "task": "T-MIG-110",
+  "run": "run-001",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)",
+  "operator_trace": "1a120a8e85d04205 ('V2_SURFACE_PREFIXES recommendations flip row')",
+  "utc": "2026-10-09",
+  "base": "6711dc1 (main tip of record at claim time)",
+  "branch": "t-mig-110/r7a",
+  "title": "the V2_SURFACE_PREFIXES recommendations flip row — the widening act the T-MIG-108 close staged",
+  "census": {
+    "method": "fetch-first at claim: local == origin/main == 6711dc1, worktree clean; no open PR naming the flip; the row absent from the table of record (the 096 stay-core comment still in place, discharged by this act)",
+    "hub_project_of_record": "syllabai-hub-v2 (prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl); hub carrier of record dpl_H8AYEmt8Hr6q @ 6813bb7; alias syllabai-hub-v2.vercel.app"
+  },
+  "flip_evidence_of_record": {
+    "chain": "T-MIG-108 (receipts T-MIG-108/run-001-dual-live + run-003-postmerge-redeploy-dualplane): the 500 42703 root cause (nba.ts recentAnswers where a.learner_id -> at.learner_id), PR #169 merged d4ad173, redeploy dpl_FprVRBHzqB7xy8K1sBGnZVGAE97Y (bundle byte-proof +1 byte), DOUBLE-PLANE 200 CENSUS 18/18 — R1 v2 200 nba-rules/v1.3 actions=2, R3 core control 200 parity (same ask + same v2-issued bearer), R2/R4 the 400 required-rootId law parity both planes",
+    "law_bar": "the flip law (api.ts table header + MIGRATION_PLAN §4.4): every row captures ONLY hub-emitted paths the v2 api serves with REAL implementations, golden-verified before the row lands — met by the 108 chain of record"
+  },
+  "act_of_record": {
+    "api_ts": "the NARROW row '/api/v1/learners/me/recommendations' appended at the TABLE TAIL (chronological wave order preserved) with the full T-MIG-110 comment block; the 096 stay-core comment DISCHARGED inline with an UPDATE-of-record note (the T-MIG-106 update precedent)",
+    "surface_test_lockstep": "exact-set pin +1 row (at the tail, order matching api.ts); DUAL_RUN_PATHS +1 emitter form ('/api/v1/learners/me/recommendations?rootId=kn-1' — dashboard-core.ts:85 is the hub's ONLY emitter, grep-verified); CORE_ONLY_PATHS -1 pin with the moved-out note (T-MIG-096→110); the NEW 'T-MIG-110 line' test: leaf resolves v2 (bare + ?rootId + the exact apiPath form), TRUE siblings stay core (smart-lesson — mounted per T-MIG-079 but NOT flipped, no golden gate for the flip; classroom + intervention-runs the 096 LLM-bearing pins; knowledge-graph), partial-segment capture recommendationsx DOCUMENTED INERT",
+    "grep_law": "hub side: the ONLY emitter is dashboard-core.ts:85 (api.recommendations) via api.ts:1220 request()/apiPath — table-governed, zero emitter code change needed; v2 side: the ONLY route is learnerme.ts :218 GET /recommendations (the :219 rootId REQUIRED law)"
+  },
+  "gates": {
+    "root_typecheck": "exit 0 (contracts/shared/db/api)",
+    "hub_tsc": "exit 0",
+    "hub_tests": "56/0/509 — EXACT +1 test/+8 assertions vs the 55/0/501 record of Task-59 (= the 110 line test + the array edits; measured first-hand)",
+    "golden_selftest": "OK",
+    "disclosure_of_record": "one intermediate mis-anchored edit was self-caught by the gates BEFORE any commit: the DUAL_RUN emitter form first landed inside CORE_ONLY_PATHS (a lookalike comment block at that array's tail) and the exact-set pin order mismatched the api.ts tail append — both caught by the surface test run (2 fail), fixed, re-run green; nothing was pushed in the interim"
+  },
+  "write_ledger": "2 hub source files + this receipt + task yaml + worklog entry; ZERO live traffic at run-001 (the post-merge redeploy + battery are the follow-up legs), zero deploys, zero env writes, zero DDL",
+  "re_verify_plan": "post-merge: the 093-recipe hub redeploy (vercel CLI --prod from the merge tip, race-guard first) bakes the row into the client bundle — the served chunk carries the row literal (pre/post occurrence count of 'learners/me/recommendations' = the baked-table evidence); the post-deploy battery re-proves the flipped wire (R1-class v2 200 nba-rules/v1.3, R3-class core parity, R2/R4-class 400-law both planes) + flipped-sibling no-regression legs"
+}

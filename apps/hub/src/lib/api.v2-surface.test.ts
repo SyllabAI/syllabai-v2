@@ -126,6 +126,12 @@ const DUAL_RUN_PATHS: readonly string[] = [
   "/api/v1/teacher/content/mark-schemes/ms-1/flag",
   "/api/v1/teacher/content/mark-schemes/ms-1/unflag",
   "/api/v1/teacher/content/questions/q-1/topics",
+  // T-MIG-110 (r7a): the NBA recommendations emitter form ADDED — the flip row
+  // landed at the table tail under the operator flip order
+  // 1a120a8e85d04205 after the T-MIG-108 chain closed the 500 band and
+  // re-verified the 200 nba-rules/v1.3 wire on BOTH planes (the line test
+  // pins the flip); dashboard-core.ts:85 is the hub's only emitter.
+  "/api/v1/learners/me/recommendations?rootId=kn-1",
 ];
 
 /** Hub-emitted (or hub-adjacent) paths that MUST stay on the core in the dual-run posture. */
@@ -153,9 +159,11 @@ const CORE_ONLY_PATHS: readonly string[] = [
   // (run-001 golden-verify); flashcard-ratings + note-votes FLIPPED in
   // T-MIG-095 after the band closed (46536fd) and the live re-verify passed
   // (run-002 of record) — moved out of this CORE_ONLY list of record
-  // T-MIG-096: recommendations stays core this band — 400/404 wires verified
-  // (L03/L04) but the 200 NBA-engine wire is not live-proven yet (disclosed)
-  "/api/v1/learners/me/recommendations",
+  // T-MIG-096→110: recommendations LEFT this list of record — the 200
+  // NBA-engine wire was live-proven by the T-MIG-108 chain (the 500 band
+  // closed: PR #169 fix d4ad173, redeploy dpl_FprVRBHzqB7xy8K1sBGnZVGAE97Y,
+  // double-plane 200 census R1/R3 parity) and the row flipped under the
+  // operator flip order 1a120a8e85d04205 (the 110 line test pins the flip).
   // T-MIG-097 (r7a): cla/ask MOVED OUT of this CORE_ONLY list — BOTH wires
   // live-proven (run-003 10/10 refusal dual-live + run-004 generation probe
   // 200 answer-envelope) and the exact-path row flipped under the chain
@@ -218,6 +226,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/teacher/content/question-versions/", // T-MIG-107: same band — subtree = exactly the 4 verified state verbs
       "/api/v1/teacher/content/mark-schemes/", // T-MIG-107: same band — subtree = exactly the 4 verified state verbs (3 legs declared-justified, the 106 ruling (b) class)
       "/api/v1/teacher/content/questions/", // T-MIG-107: same band — the topics family (088 leg-08/09 laws + the 50/51/52 capture laws)
+      "/api/v1/learners/me/recommendations", // T-MIG-110: LIVE-PROVEN by the T-MIG-108 chain (PR #169 fix d4ad173 + redeploy dpl_FprVRBHzqB7xy8K1sBGnZVGAE97Y + double-plane 200 census R1/R3 parity, r7a) — the operator flip order 1a120a8e85d04205; NARROW: the leaf endpoint's exact path, never the bare /learners/me
     ]);
   });
   test("the mid-path table is exactly the ruled set — the mechanism-A amendment needs its own golden gate too", () => {
@@ -253,20 +262,57 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     ]) {
       expect(v2SurfaceBase(p, V2)).toBe(V2);
     }
-    // the not-yet-verified 200 NBA wire + LLM-bearing surfaces stay core —
-    // the zero-key law in string form (the T-MIG-095-blocked write surfaces
-    // LEFT this list: band closed + run-002 live re-verify — see the 095 test)
-    // the T-MIG-095-blocked write surfaces + the not-yet-verified 200 NBA
-    // wire stay core — the zero-key/defect-band law in string form.
+    // the LLM-bearing + not-yet-verified surfaces stay core — the zero-key
+    // law in string form (the T-MIG-095-blocked write surfaces LEFT this
+    // list: band closed + run-002 live re-verify — see the 095 test; the
+    // NBA recommendations wire LEFT this list at the T-MIG-110 flip — the
+    // T-MIG-108 chain live-proved it, see the 110 test)
     // cla/ask LEFT this list at the T-MIG-097 flip (both wires live-proven:
     // run-003 10/10 refusal dual-live + run-004 generation probe 200)
     for (const p of [
-      "/api/v1/learners/me/recommendations?rootId=kn-1",
       "/api/v1/learners/me/classroom",
       "/api/v1/learners/me/intervention-runs",
     ]) {
       expect(v2SurfaceBase(p, V2)).toBeNull();
     }
+  });
+
+  test("the T-MIG-110 line: the NBA recommendations leaf flips after the T-MIG-108 chain live-proved both planes (r7a, operator flip order 1a120a8e85d04205)", () => {
+    // the verified surface resolves to v2 — the hub's ONLY emitter form
+    // (dashboard-core.ts:85 api.recommendations(pilot.rootId) →
+    // /api/v1/learners/me/recommendations?rootId=…). Golden evidence of
+    // record: the T-MIG-108 chain (run-001 dual-live probes → PR #169 the
+    // one-token at.learner_id fix → redeploy dpl_FprVRBHzqB7xy8K1sBGnZVGAE97Y
+    // → the POST-DEPLOY DOUBLE-PLANE 200 CENSUS 18/18: R1 v2 200
+    // nba-rules/v1.3 actions=2 + R3 core control 200 parity + R2/R4 the
+    // 400 required-rootId law parity both planes).
+    expect(v2SurfaceBase("/api/v1/learners/me/recommendations", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/learners/me/recommendations?rootId=kn-1", V2)).toBe(V2);
+    expect(apiPath("/api/v1/learners/me/recommendations?rootId=kn-1")).toBe(
+      `${V2}/api/v1/learners/me/recommendations?rootId=kn-1`,
+    );
+    // TRUE siblings stay core — the row is the LEAF endpoint's exact path and
+    // must never capture them (smart-lesson is mounted on v2 (T-MIG-079) but
+    // NOT flipped — no golden gate of record for the flip law; classroom +
+    // intervention-runs are the 096 LLM-bearing pins)
+    for (const p of [
+      "/api/v1/learners/me/smart-lesson?rootId=kn-1&topicNodeId=tn-1",
+      "/api/v1/learners/me/smart-lesson",
+      "/api/v1/learners/me/classroom",
+      "/api/v1/learners/me/intervention-runs",
+      "/api/v1/learners/me/knowledge-graph?rootId=kn-1",
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBeNull();
+    }
+    // startsWith matching is prefix-string semantics (the same property every
+    // row of the table has): a non-existent partial-segment sibling IS
+    // captured by the string match — DOCUMENTED INERT (no route or hub
+    // emitter named recommendations* beyond the leaf path exists on either
+    // side; the emitter appends only ?rootId=)
+    expect(v2SurfaceBase("/api/v1/learners/me/recommendationsx", V2)).toBe(V2);
+    expect(
+      "/api/v1/learners/me/recommendationsx".startsWith("/api/v1/learners/me/recommendations"),
+    ).toBe(true);
   });
 
   test("the T-MIG-097 line: the CLA ask flips after BOTH wires were proven live (r7a, chain order 1a119df7d930b609)", () => {
