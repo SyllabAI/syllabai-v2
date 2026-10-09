@@ -1,0 +1,34 @@
+{
+  "receipt": "run-005-pu-fill-completion-r0",
+  "dir": "TUTOR-VERIFY",
+  "lane": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "created_at_utc": "2026-10-09T07:35:00Z",
+  "operator_trace": "1a11f7bc3aa30f99 'Re run' — resume the run-004 residual (the receipt's own declared resume command) once the tutor chain recovered",
+  "purpose": "complete the run-004 PU-fill residual: pull real answer text for the 4 outage-blocked keys (4CH1/2C Jun 2019 Q8; 4CH0/2C Jun 2018 Q5/Q7/Q9) and re-verify every accepted body under a content-quality law",
+  "target": "api-of-record https://syllabai-v2.vercel.app — tutor chain RECOVERED by 07:07Z 2026-10-09 (500-fast-fail era over)",
+  "method": "scripts/tutor_pu_discrim_r0.py health discriminator FIRST (4 asks: 2 known-good controls + 2 residual keys, same seconds); then the run-004 checkpoint-safe fill (scripts/tutor_pu_fill_r0.py, run-003-identical phrasing, both disclosed learners rotated, pacing <=19/min); run-005 adds the body_ok content-quality law (>=250 chars + sane head) to classify/best-map so truncated or garbled 200-bodies are re-pull classes, not accepted",
+  "results": {
+    "headline": "19/19 GENERATED of record. All 4 outage-residual keys filled first-try after recovery (200, evidenceCount=6, tiered QP+MS citations). Final accepted bodies 397-1380 chars; ZERO refusals and ZERO 5xx across all 14 run-005 wire asks.",
+    "residual_4_filled": "4CH1/2C Jun 2019 Q8 (1181ch, 2.78s); 4CH0/2C Jun 2018 Q5 (498ch, 3.47s); Q7 (992ch, 2.08s after 2 defective 200s); Q9 (871ch, 3.01s after 1 defective 200)",
+    "correction_of_record_run004": "First-hand content review under the new quality law found 2 of run-004's 15 'GENERATED' bodies were DEFECTIVE and should not have been accepted by the non-empty-only law: 4CH1/1C Jun 2019 Q8 (87ch, truncated preamble) and 4CH1/2C NOV 2023 Q4 (121ch, truncated mid-sentence). Both re-pulled clean this run (668ch / 1225ch). run-004's asserts 1-6 stand as filed (their wording is accurate for what was measured), but the acceptance law was too weak — disclosed here per the write-disclosure desk law.",
+    "defective_body_class": "new: 200 + non-refused + non-empty but truncated/garbled body (observed 87-144ch cutoffs and one meta-text-leak head); classify law patched (DEFECTIVE-BODY re-pull class); 4 defective bodies observed this run, 4/4 re-pulled clean"
+  },
+  "live_events_filed": [
+    "TUTOR-CHAIN RECOVERY: discriminator 07:07:28-53Z — all 4 probes 200 (controls 4CH1/2C Jun 2019 Q1 4.8s + 4CH0/1C Jan 2012 Q1 2.69s; residual keys Q8-2019 2.85s + Q5-2018 10.75s) — the run-004 500-fast-fail era is OVER",
+    "FILL PASS 1 (07:08:14-32Z): all 4 residual keys 200 GENERATED first try (2.78-5.78s)",
+    "QUALITY PASS (07:11:11-50Z): 4 defective-body keys re-pulled; 3 clean first-try; 4CH0/2C Jun 2018 Q7 truncated twice more (102ch/96ch) before a clean 992ch body at 07:11:50Z — the truncation flakiness is generator-side, same class as run-004's empty-body event",
+    "NO 429s, NO 503s, NO 500s across all 14 run-005 asks; no serving-window 404 recurrence"
+  ],
+  "write_ledger_disclosed": "14 tutor asks this run (10 fill-rows in the checkpoint JSONL + 4 discriminator probes), all 200; both disclosed learners REUSED, zero new registrations: r0-099live-20261008t055945Z@example.invalid (8 asks) + r0-chunkmap-20261008t173428@example.invalid (6 asks); no other api writes. Workbook download/tutor-anchor-coverage-r0.xlsx PU Fill sheet re-frozen at 19/19 (Review PU-Fill rows updated in place, never duplicated).",
+  "asserts": [
+    "A1: chain recovery proven by discriminator BEFORE the fill — 4/4 probes 200 incl. the 2 residual keys in the same seconds as known-good controls — PASS",
+    "A2: all 4 outage-residual keys now GENERATED (200, evidenceCount=6, tiered QUESTION_PAPER+MARK_SCHEME citations) — PASS",
+    "A3: content-quality law added; 4 defective bodies (2 run-004-era survivors + 2 fresh) all re-pulled to clean complete bodies (668/1225/871/992ch); run-004 correction disclosed — PASS",
+    "A4: 19/19 keys GENERATED final state, accepted bodies 397-1380 chars, ZERO refusals across 569 checkpointed probes + 4 discriminator asks (573 total) — PASS",
+    "A5: workbook PU Fill sheet re-frozen at 19/19; recalc 0 errors / 30 formulas; validate exit 0; Review PU-Fill rows 3/3 PASS updated in place — PASS",
+    "A6: write ledger minimal and disclosed (14 asks, 2 reused learners, zero registrations) — PASS"
+  ],
+  "verdict": "PU-FILL COMPLETE 19/19 of record. The run-003 chunk-map verdict is now CLOSED end-to-end: every one of the 108-bank VALIDATED papers resolves at paper level, every probed in-range question key carries real grounded per-question answer text with tiered citations, and the PRESENT-UNGENERATED class is fully explained (upstream pool + brief generator truncation flakiness) with zero chunk gaps and zero honest-refusals on in-corpus shapes. Chunk-repair backlog: NONE. Watchlist: the 500-fast-fail tutor-surface era self-recovered by 07:07Z 2026-10-09 (cause unknown server-side, duration ~8.4h from ~22:43Z); monitoring suggestion stands.",
+  "deliverables": "raw JSONL + frozen summary lane-side (work/tutor_pu_fill_r0.jsonl 569 rows total, work/tutor_pu_fill_r0_summary.json frozen at 19/19); workbook PU Fill sheet (download/tutor-anchor-coverage-r0.xlsx); receipt + worklog in-repo",
+  "scope_note": ".syllabai-only repo contact; zero code/schema/flip-table/seam contact; no force; live-wire probes only on sanctioned student surfaces"
+}

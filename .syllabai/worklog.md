@@ -6649,3 +6649,18 @@ Work Log:
 
 Stage Summary:
 - Chunk-map verdict STRENGTHENED: every key that ever reached the generator produced a real grounded answer — the PRESENT-UNGENERATED class was 100% an upstream-pool artifact, zero chunk gaps, zero refusals. Residual = outage-pending; resume = one checkpoint-safe command (scripts/tutor_pu_fill_r0.py) when the chain recovers. New watchlist: tutor-surface 500-fast-fail era. Lane IDLE.
+
+---
+Task ID: TUTOR-VERIFY-5 (operator trace 1a11f7bc3aa30f99 "Re run" — the run-004 receipt's declared resume command)
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+
+Work Log:
+- Health discriminator FIRST (07:07:28-53Z): 4/4 probes 200 — known-good controls (4CH1/2C Jun 2019 Q1 4.8s; 4CH0/1C Jan 2012 Q1 2.69s) AND the 2 residual keys (Q8-2019 2.85s; Q5-2018 10.75s) — the run-004 500-fast-fail tutor-chain era is OVER (duration ~8.4h from ~22:43Z).
+- Checkpoint-safe fill resumed: all 4 outage-residual keys 200 GENERATED first try (07:08:14-32Z, 2.78-5.78s): 4CH1/2C Jun 2019 Q8 (1181ch); 4CH0/2C Jun 2018 Q5 (498ch) / Q7 / Q9.
+- CORRECTION OF RECORD (run-004): first-hand content review under a NEW content-quality law (body_ok: >=250 chars + sane head) found 2 of run-004's 15 accepted bodies were defective (4CH1/1C Jun 2019 Q8 87ch truncated preamble; 4CH1/2C NOV 2023 Q4 121ch truncated) — the non-empty-only law was too weak, disclosed per the write-disclosure desk law; both re-pulled clean (668ch / 1225ch).
+- DEFECTIVE-BODY re-pull class added to the classify law; 4 defective bodies observed this run (incl. 2 fresh on Q7/Q9-2018), 4/4 re-pulled to clean complete bodies (Q7-2018 needed 3 tries: 102ch/96ch truncations before the clean 992ch — generator-side truncation flakiness, same class as run-004's empty-body event).
+- FINAL 19/19 GENERATED: accepted bodies 397-1380 chars, all evidenceCount=6 with tiered QP+MS cites; ZERO refusals and ZERO 5xx across all 14 run-005 asks (573 total probes across runs 004+005, still zero 429s).
+- Receipt TUTOR-VERIFY/run-005-pu-fill-completion-r0.json (asserts 6/6); workbook PU Fill sheet re-frozen at 19/19 (recalc 0 errors / 30 formulas, validate exit 0, Review PU-Fill rows 3/3 PASS updated in place); raw JSONL 569 rows + frozen summary lane-side.
+
+Stage Summary:
+- PU-FILL COMPLETE 19/19 of record; run-003 chunk-map verdict CLOSED end-to-end: 93 VALIDATED papers resolve at paper level, every probed in-range question key carries real grounded answer text with tiered citations; chunk-repair backlog NONE; PRESENT-UNGENERATED class fully explained (upstream pool + brief generator truncation flakiness). Watchlist: 500-fast-fail era self-recovered (cause server-side, unknown); redeploy-window 404 monitoring suggestion stands. Lane IDLE.
