@@ -6664,3 +6664,20 @@ Work Log:
 
 Stage Summary:
 - PU-FILL COMPLETE 19/19 of record; run-003 chunk-map verdict CLOSED end-to-end: 93 VALIDATED papers resolve at paper level, every probed in-range question key carries real grounded answer text with tiered citations; chunk-repair backlog NONE; PRESENT-UNGENERATED class fully explained (upstream pool + brief generator truncation flakiness). Watchlist: 500-fast-fail era self-recovered (cause server-side, unknown); redeploy-window 404 monitoring suggestion stands. Lane IDLE.
+
+---
+Task ID: Task-42 (§3.3 cross-check, operator trace 1a11d2352c506a41 standing order, session trace 1a11f7a52e6ce8b1)
+Agent: r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+
+Work Log:
+- Opened at 07:04Z 2026-10-09 — the §3.3 cross-check window (DUE today after the 02:00Z self-fire). Workspace survived; origin had moved +8 (T-MIG-107 #168 landed, cc517c2 hub-redeploy-verify closed the 106-ask-row-bundle item of record); ff-only to 0b4ffa9; local mode-only exec-bit drift restored + core.fileMode=false as the durable fix.
+- CRON_SECRET recovered: the r1c-era .secrets/cron-env.sh was lane-local (never existed here); recovered via the Vercel single-env decrypt endpoint (the LIST endpoint returns the ciphertext blob even with decrypt=true — API quirk disclosed); fingerprint 67a70d6e19192906 == run-002 of record; persisted .secrets/cron-env.sh 0600, never printed.
+- §3.3 probe: hub GET with bearer -> 200 already-run {windowStart 2026-10-09 00:00:00+00, executedAt 02:29:12.335+00, triggerKind vercel-cron, 0/0}; api-direct GET same bearer -> byte-identical already-run. Probe wrote nothing (SELECT path); the row pre-existed -> materialized by the self-fire.
+- Full-table read-only census (runbook §4-permitted): decay_job_runs = 21 rows / 21 distinct windows / 0 duplicates — core CATCH_UP era (03:00Z windows 09-21..10-09) + the 2 vercel-cron takeover rows. Exactly-once held GLOBALLY.
+- §3.2 FINDING filed: the core scheduler is NOT a harmless no-op — CATCH_UP decayed=117 at 2026-10-09T03:15Z post-cutover; inert to v2 per ADR-031; Render disable stays [OPERATOR]-owned with this receipt as the live evidence.
+- Self-fire jitter 29m18s disclosed (row present + unique -> no §4 alert). Vercel crons endpoints 404 — attribution is inference-by-exclusion, disclosed in the receipt.
+- §4 48h watch OPENED at this receipt (§6.1 eligible 2026-10-11). Receipt T-MIG-042/run-004-decay-s33-crosscheck-r4b.json + card s33_crosscheck_r4b key. Write ledger: zero prod writes (2 already-run probes + 1 read-only SELECT), 0 env writes, 0 deploys — .syllabai-only direct-main (fetch-first), no force.
+- REBASE DISCLOSURE: mid-act origin move 0b4ffa9..ca6c06d (TUTOR-VERIFY run-005, disjoint receipts, same worklog tail) — UNION-merge resolved per the R35 precedent (origin tail taken verbatim, this entry re-appended on top).
+
+Stage Summary:
+- §3 NIGHTLY DECAY TAKEOVER CROSS-CHECKED OF RECORD — self-fire verified, exactly-once global, idempotency re-proven both planes; §4 watch open with the 21-row baseline. T-MIG-042 fully closed including the takeover runbook legs within lane scope; remaining = operator's 48h watch + §3.2 disable decision + §6 archive gate (2026-10-11).

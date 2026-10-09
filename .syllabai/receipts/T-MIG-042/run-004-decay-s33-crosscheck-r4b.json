@@ -1,0 +1,66 @@
+{
+  "family": "T-MIG-042",
+  "run": "run-004-decay-s33-crosscheck-r4b",
+  "operator_order": "standing R36 order trace 1a11d2352c506a41 'T-MIG-042 . Vercel PAT:<delivered>' — executed under session trace 1a11f7a52e6ce8b1 ('Ping' continuation); the §3.3 cross-check was DUE 2026-10-09 after the 02:00Z self-fire per the census_r4b card key and runbook §3.3",
+  "lane": "r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a, chat f445494b)",
+  "timestamp_utc": "2026-10-09T07:04Z - 07:4xZ",
+  "opening_checklist": {
+    "workspace": "no wipe this round (survived); repos/syllabai-v2 present at e08f51d, ff-only updated to 0b4ffa9 (origin +8: a5abd14 094-gate receipt, cc517c2 hub-redeploy-verify CLOSES the 106-ask-row-bundle watchlist item of record, de1baaa w7 P2/P3/P4, 79a99d9+c9685f0+d2308eb T-MIG-107 #168, b50aabb r0-auto, 0b4ffa9 tutor-verify run-004)",
+    "local_drift": "4 files showed mode-only exec-bit drift (644->755, workspace-restore quirk; zero content deltas) — restored; core.fileMode=false set locally as the durable fix",
+    "credentials": "ghpat trio intact (perms re-chmoded 600); credential helper restored (store --file=.secrets/git-credentials); VERCEL_PAT verified against the handed token verbatim",
+    "cron_secret_recovery": "the r1c-era .secrets/cron-env.sh never existed in this workspace (r1c lane-local) — recovered from the Vercel env API: GET single-env endpoint /v9/projects/{prj}/env/{id}?decrypt=true returns the plaintext (list endpoint returns the ciphertext blob even with decrypt=true — API quirk disclosed); sha256 value-fingerprint 67a70d6e19192906 MATCHES the run-002 of-record fingerprint (64-hex, len 64); persisted .secrets/cron-env.sh 0600; value NEVER printed/committed"
+  },
+  "probe_legs": {
+    "law": "hub GET /api/cron/nightly-decay with Authorization: Bearer $CRON_SECRET is the Vercel-Cron invoke shape of record; the already-run branch is a SELECT of the existing row (ON CONFLICT DO NOTHING) — zero prod writes by construction",
+    "hub": "200 {status:'already-run', ledgerRow:{windowStart:'2026-10-09 00:00:00+00', executedAt:'2026-10-09 02:29:12.335+00', triggerKind:'vercel-cron', decayed:0, reviewsScheduled:0}}",
+    "api_direct": "200 byte-identical already-run row on https://syllabai-v2.vercel.app/api/v1/cron/nightly-decay with the same bearer — the seam-forward equality law holds both directions",
+    "interpretation": "already-run at probe time (~07:20Z) proves the 10-09 row PRE-EXISTED the probe — this lane wrote nothing; the row was materialized by the 02:00Z-window cron self-fire"
+  },
+  "db_census": {
+    "law": "runbook §4: 'decay_job_runs table (read-only SELECT from lanes is permitted)'",
+    "method": "postgres(pg) driver 3.4.9 via bun, single connection, SELECT * FROM decay_job_runs ORDER BY window_start; DATABASE_URL pulled from the api project env via the same single-env decrypt path, masked in all outputs, never printed/committed",
+    "row_count": 21,
+    "distinct_windows": 21,
+    "duplicate_rows": 0,
+    "eras": [
+      "core-era rows: 19 rows, window_start 03:00 UTC daily 2026-09-21..2026-10-09, trigger_kind in {CATCH_UP, SCHEDULED} (one SCHEDULED 09-27 03:00:00.108Z), decayed 17..117, reviews_scheduled 0..52 — the Java batch scheduler's own ledger rows in the shared Neon DB",
+      "vercel-cron takeover rows: 2026-10-08T00:00Z (executedAt 18:22:46.477Z = the r1c manual first fire, run-002 of record) + 2026-10-09T00:00Z (executedAt 02:29:12.335Z = the self-fire), triggerKind 'vercel-cron', decayed/reviews_scheduled 0/0 literals (ADR-031)"
+    ]
+  },
+  "s3_3_verdict": {
+    "exactly_once_per_window": "PASS — 21 rows / 21 distinct window_start values / 0 duplicates across BOTH writers (core CATCH_UP era + vercel-cron takeover era); PK idempotency now proven globally, not just on the takeover windows",
+    "takeover_rows": "PASS — both expected vercel-cron rows present with the of-record executedAt timestamps and 0/0 literals",
+    "zero_double_decay": "PASS in the PK sense (disjoint windows per UTC day: core 03:00Z vs v2 00:00Z, zero conflicts); the ADR-031 read-time law makes core's batch writes inert to v2's decay math (v2 never consumes the batch columns) — see the s3_2 finding below",
+    "attribution_of_the_10_09_row": "inference by exclusion, disclosed: executedAt 02:29:12.335Z; this probe got already-run at ~07:20Z (row pre-existed); no lane held a fire between 02:00Z and 07:20Z (r1c act closed 18:26Z 10-08; census e08f51d held ZERO FIRES; this lane's only calls are the two already-run probes + the read-only SELECT); the sole automated invoker of the hub GET path is Vercel Cron (vercel.json 0 2 * * *, live-deployed); Vercel-side crons endpoints 404 on /v1 and /v2 shapes (no dashboard corroboration available) — the exclusion argument stands",
+    "jitter_disclosure": "self-fire executed 29m18s after the 02:00:00Z schedule boundary — Vercel-side scheduling jitter; the §4 alert metric is 'missing row at 02:00 UTC+ε or duplicate rows', and the row is PRESENT and UNIQUE, so no alert condition; epsilon is disclosed here for the watch record"
+  },
+  "s3_2_finding": {
+    "headline": "the Java core's scheduler is NOT a harmless no-op — the runbook §3.2 premise is falsified as written",
+    "evidence": "CATCH_UP rows continue through 2026-10-09T03:15:00.111Z (decayed=117, reviews_scheduled=5) — post-cutover, post-flip, core's batch scheduler still finds and mutates review-side state DAILY on the shared Neon DB (the §3.2 'no traffic -> no triggers' premise holds for request traffic, but the scheduler's own CATCH_UP trigger is time-driven, not traffic-driven)",
+    "blast_radius": "NONE under the ADR-031 read-time law — v2's decay math is computed at read time from timestamps and never consumes the batch-decay columns; core's writes are inert legacy bookkeeping; the §3.3 zero-double-decay observable (disjoint windows, zero PK conflicts) is unaffected",
+    "action": "NONE taken — §3.2 explicitly reserves the Render-service disable for [OPERATOR] ('not before'); this receipt supplies the live evidence the operator's 48h no-op verify was meant to gather; recommended reading for the disable decision"
+  },
+  "s4_watch": {
+    "state": "OPEN — the §3.3 morning cross-check is the runbook's watch-open gate; clock starts at this receipt",
+    "opened_utc": "2026-10-09T07:40Z (approx)",
+    "archive_gate": "§6.1 eligible 2026-10-11 ~07:40Z after the 48h watch",
+    "decay_metric_baseline": "the 21-row census in this receipt; watch checks = one vercel-cron row per UTC day (00:00Z window) present by 02:00 UTC+epsilon and zero duplicate windows",
+    "standing_503_note": "the TUTOR-VERIFY run-004 500-fast-fail era is a tutor-chain watch item, independent of the decay band"
+  },
+  "write_ledger": {
+    "prod_neon": "ZERO writes this act (two already-run probes = SELECT path; one read-only full-table SELECT)",
+    "vercel_env": "0 adds / 0 edits (two name-only censuses + two decrypt reads: CRON_SECRET recovery, DATABASE_URL pull)",
+    "deployments": 0,
+    "fires": "0 materializing (both probe legs returned already-run; zero new rows)",
+    "learners": 0,
+    "generations": 0,
+    "secrets_printed": 0,
+    "repo": ".syllabai-only (this receipt + card s33_crosscheck_r4b key + worklog Task-42) — zero code deltas"
+  },
+  "residuals": [
+    "operator: Render core scheduler disable decision (§3.2) — this receipt's s3_2_finding is the live evidence (still-firing CATCH_UP); disable remains operator-owned",
+    "operator: credential rotation (Neon + JWT) still standing-advised (run-002 residual[1])",
+    "watch: §4 opened; next vercel-cron row expected 2026-10-10 00:00Z window by ~02:00Z+jitter"
+  ],
+  "verdict": "§3 NIGHTLY DECAY TAKEOVER CROSS-CHECKED OF RECORD — the 02:00Z self-fire materialized the 2026-10-09 window row (02:29:12.335Z, vercel-cron, 0/0), exactly-once held globally (21/21 distinct windows, zero duplicates), idempotency re-proven on BOTH planes post-fire; §4 48h watch OPENS with this receipt"
+}
