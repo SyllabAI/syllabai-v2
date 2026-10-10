@@ -7038,3 +7038,22 @@ Work Log:
 
 Stage Summary:
 - T-MIG-114 claimed of record; the grounding correction disclosed before any code; the fix plan: (1) the classifier branch custom+perPointDecisions -> 'perPointDecisions: size must be between 0 and 50' (byte-equal to capture leg-31); (2) humanMarkView hydrates per_point_decisions (the normalizeBreakdown toleration) so the detail read serves the core's map wire (capture leg-35); test pins in the contracts test + the marking routes/service tests; then the 44/44 re-verify, the withheld row, the withheld case, PR, r0-auto merge, redeploy + battery + union replay.
+
+---
+Task ID: cron-202610101900
+Agent: R0-auto (merge desk)
+Task: Replay-red disposition + PR #176 merge (T-MIG-114)
+
+Work Log:
+- 09:08Z escalation of record: scheduled replay fire 38038915087 @ dd9b166 (08:44Z) red on EXACTLY ONE case — auth-login-unknown-email-401 got 429 Too Many Requests (retryAfter 41s) vs pinned 401; Pass A (seed) + Pass B (prod) tranches green; hub+verify green; the worklog-6607 known environmental class (the replay's own request pressure; non-port-side).
+- #176 (T-MIG-114 marking defect band) HELD 4 sweeps on the red-main rule — gate-complete throughout (head CI 2/2 @ e032162, clean, zero reviews, 11 files in-bounds).
+- 10:01Z-19:00Z: no lane re-dispatch; scheduled cadence is daily 02:30 UTC (next fire ~22h away) — passive hold would stall the band ~1 day; the desk therefore executed the of-record treatment itself: workflow_dispatch re-proof on dd9b166 (run 38047008069, note disclosed: read-only re-proof, NOT a corpus/code remedy; the workflow names R0/R6 as the disposition recipient, R0-SWEEP-5 standing re-proof instrument).
+- VERDICT: run 38047008069 completed/SUCCESS on dd9b166 — ZERO FAIL lines, union green, the identical corpus + identical sha passed. The 08:44Z red is ADJUDICATED of record: single-case limiter-429 environmental flake, the 6607 treatment reproduced exactly (also corroborated by the lane's own fa28911 red -> 1c57951/1dd5335 green dispatch pattern of 19:09-19:15Z yesterday).
+- UNBLOCK + MERGE: PR #176 sha-guarded PUT first-try e032162 -> e4eaf93. Post-merge CI on main tip e4eaf93: 2/2 green (verify+hub).
+- The band: T-MIG-114 fixes (ppd message law via the 095-pattern classifier branch; humanMarkView hydrates perPointDecisions on the detail read), the withheld human-mark flip row LANDED (mid-path prefix per the 086/087 grammar), the withheld ppd corpus case joined (union 222 -> 223), grounding correction disclosed in the PR body of record.
+
+Stage Summary:
+- Replay red CLOSED by adjudication (green re-proof of record, no silent green — both fires disclosed here); #176 T-MIG-114 LANDED, main @ e4eaf93 CI 2/2 green.
+- Post-merge legs owed (093/110/111/112/113/114 recipe): hub redeploy + READ-ONLY battery + union replay dispatch 223/223 — r7a lane.
+- Watch item: if a future scheduled fire reds on limiter-429s again, the class may have gone systematic after the 113/114 band growth (more auth-bearing cases = more login burst); the remedy would be a replay-harness pacing fix (lane task, filed NOT auto-fixed).
+- Bookkeeping-only receipt commit (.syllabai/** only), main CI green first, no force.
