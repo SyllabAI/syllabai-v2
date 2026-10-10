@@ -172,6 +172,19 @@ function classifyBodyError(error: ZodError, body: unknown): BodyError {
       ? { kind: "validation", message: "marksAwarded: must be greater than or equal to 0" }
       : { kind: "validation", message: "marksAwarded: must be less than or equal to 99" };
   }
+  // T-MIG-114 (the ppd message law of record): the 50-entry cap is a
+  // contracts .refine() (zod issue code "custom", teacher-marking.ts
+  // humanMarkRequestSchema) — the too_big branch above can never fire for
+  // it. The frozen core binds Map<String,Integer> with @Size(max=50)
+  // (HumanMarkRequest :300-304) and serves the jakarta default
+  // "perPointDecisions: size must be between 0 and 50" (capture leg-31,
+  // the 113 run-001 byte-law); the custom issue fell through to the
+  // "request invalid" fallback (the verify leg C05 red, run-002 42/44).
+  // The 095 classifier-branch pattern maps it (the same class as the
+  // marksAwarded custom branch above).
+  if (first.code === "custom" && field === "perPointDecisions") {
+    return { kind: "validation", message: "perPointDecisions: size must be between 0 and 50" };
+  }
   return { kind: "validation", message: `${field}: request invalid` };
 }
 
