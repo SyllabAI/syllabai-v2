@@ -7121,3 +7121,22 @@ Stage Summary:
 - BOARD COMPLETE OF RECORD: 109/109 cards DONE — zero OPEN, zero claimed, zero unclaimed. The migration board reads 100% after the rider flip.
 - The human-mark write row is LIVE through the v2 base with the unauth law fail-closed; the ppd corpus case is in the union; the login family carries the declared-429 rider; the deploy recipe asserts the link+project before and after firing.
 - Open ahead (operator-gated, unchanged): the api redeploy lever (the T-MIG-107 content-write band sits on main past the serving bundle — prod writes operator-only law); the 2026-10-11 retirement levers (Render disable post-48h-watch, GitHub archive of the legacy repos, PAT rotation, P3 witness, P4 paste); dual-writer posture stands until the Render disable.
+
+---
+Task ID: trace 1a12669287b65af5 (api redeploy lever)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: pull the api redeploy lever — bring main 7ccbfc59 (incl. the T-MIG-107 content-write band) live on the api carrier.
+
+Work Log:
+- PRE-STATE first-hand: 11-leg no-write battery ALL-EXPECTED against the serving bundle (unauth 401 x5, learner 403 x3, reader-root 404, human-mark fail-closed 401, W7-SMOKE 200) — the 17 content-write routes CLAIMED + RBAC'd; no unauth flip exists (auth-first both eras).
+- INCIDENT of record: the first fire used the gitSource class (dpl_GhrefLdByZ2uq9fGGQpnGt8Pz2jT, 15:35:02Z) -> READY + aliasAssigned but ZERO functions — edge NOT_FOUND on every /api/v1/* path including /api/v1/auth/register. ROOT CAUSE already of record (T-MIG-093 discovery 2026-10-07): no project git link, framework/buildCommand/rootDirectory null, no repo vercel.json — gitSource builds complete in 2s with an EMPTY output. The gitSource class is extinct-of-record; the r0 error was reusing the 104-era script shape instead of the 092/093 bundle recipe.
+- Rollback anchor identified (dpl_2fn6n6kPkgJpCXKFgJxMuBh9vKug, source=cli) but NOT needed — restoration was FIX-FORWARD via the recipe of record. The v13 aliases POST rejects vercel.app hostnames (invalid_alias; 3 forms incl. teamId) — the alias-API finding is disclosed.
+- THE DEPLOY OF RECORD: the 092/093 bundle recipe at 7ccbfc59 — worktree-only shims (6 concept-graph YAMLs inlined byte-verbatim SHA-pinned; node:crypto/js-yaml parity with the v4 named-export fix disclosed; the path-preserving Hono->Vercel Node adapter), stage 3.13MB/321 modules + vercel.json rewrites + the project link, bun build, worktree restored, node require-smoke OK under the ZERO-KEY law. Fired via the vercel CLI --prod 15:47Z -> READY in 17s -> ALIASED syllabai-v2.vercel.app (deployment syllabai-v2-go80kthq6-syllab-ai.vercel.app).
+- POST-FIRE WIRE SMOKE (new load-bearing gate): register 201 accessToken / unauth 401 / dup-register 409 — the real implementation laws live 15:47:42Z.
+- VERIFICATION: post battery 11/11; the 19-leg first-hand marking shape matrix 19/19 (the 104 amended law byte-exact; the 500 residual STANDS; smart-mark 200; attempt-2-still-PENDING); UNION REPLAY run 38065104738 at main 7ccbfc59 -> job 'replay' SUCCESS 15:48:38Z..15:50:29Z (223 cases incl. the 43 content cases + prod legs + the w3 pins GREEN).
+- Write ledger: 2 probe registers + the probe-owned shape-matrix writes (the run-006 pattern) — ZERO content writes, ZERO teacher-class writes. Receipt: receipts/T-MIG-107/api-redeploy-lever-r0.json. Push .syllabai-only (fetch-first, no force).
+
+Stage Summary:
+- THE API CARRIER SERVES MAIN 7ccbfc59: the T-MIG-107 content-write surfaces are LIVE of record (the 17 honest-501 stubs are now the frozen wire-law implementations; the unauth/RBAC fail-closed class verified on the wire; teacher-class positive writes remain operator-gated by the corpus-pin hazard law).
+- THE LEVER LAW AMENDED: POST-FIRE WIRE SMOKE before any success declaration (pin + drift assertions necessary but NOT sufficient — a deployment can be READY + aliased and serve nothing); the gitSource class retired from api-lever use; the 092/093 bundle recipe is the only api deploy path of record.
+- Open ahead (operator-gated, unchanged): the 2026-10-11 retirement levers (Render disable post-48h-watch, GitHub archive of the legacy repos, PAT rotation, P3 witness, P4 paste); dual-writer posture stands until the Render disable.
