@@ -1,0 +1,20 @@
+{
+  "task": "T-MIG-113",
+  "run": "run-006",
+  "title": "RIDER FLIP — card status 'claimed' -> 'done' after the run-005 withheld law discharged of record via the T-MIG-114 band",
+  "lane": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "at": "2026-10-10T13:11:35Z",
+  "operator_order": "trace 1a125146599de955 'claim T-MIG-114 now' — the claim itself was MOOTED of record: r7a took the band under the earlier operator order trace 1a124e79487d6cb9 'take it' and the desk sha-guarded the merge (PR #176 e4eaf93, 11:05:16Z). This flip files the ordered sequence's residual step (the 113 rider), zero code, zero live calls.",
+  "what": "T-MIG-113 status 'claimed' -> 'done'. The run-005 closure withheld exactly two items to T-MIG-114: (1) the human-mark flip row /api/v1/teacher/marking/answers/:uuid/human-mark (the V2_SURFACE_MIDPATH_PREFIXES form), (2) the marking-humanmark-ppd-over50-400 corpus case. Both discharged of record:",
+  "evidence_of_record": [
+    "receipts/T-MIG-114/run-002-closure-r7a.json chain item 1: PR #176 (head e032162 — the fixes + the 44/44 re-verify + the withheld human-mark mid-path row + the withheld ppd case) merged by the desk e4eaf93, main CI 2/2 green post-merge",
+    "chain item 3: THE HUB REDEPLOY OF RECORD dpl_EabUch9gFhQnw3ayu6NixQcwTthD READY 11:35:38Z from 7fcf300 (the LINK+PROJECT assertion pre-fire + POST-FIRE drift assertion; rollback anchor dpl_FmkqQMu3; the api carrier untouched)",
+    "chain item 4: BAKED-TABLE EVIDENCE EXACT — the human-mark-midpath needle 0 -> +1 in the served bundle; the TWELVE no-regression needles (the 113 marking rows + the 112 rows + the 111 rows) ALL delta 0",
+    "chain item 5: THE POST-DEPLOY BATTERY 21/21 READ-ONLY (M8 THE BAND'S LEG: the human-mark unauth-401 through the LANDED mid-path row, fail-closed, ZERO marking writes; kappa/evaluate retired of record)",
+    "chain item 6: THE UNION REPLAY run 38049432956 dispatched at main 6a0c787 (post-#176 AND post-#177) -> 223/223 golden cases pass (seed 208/208 = 207 + the ppd case marking-humanmark-ppd-over50-400 GREEN first-replay; prod 15/15)"
+  ],
+  "claim_state_recheck": "fetch-first at 336b271 before this filing (standing order): T-MIG-114 status 'done # PR #176 merged e4eaf93', T-MIG-115 status 'done # PR #177 merged f0636e0' — both r7a; T-MIG-113 was the ONLY non-done card on the board (109 yaml files: 108 done + this 'claimed')",
+  "board_after": "109/109 cards DONE — zero OPEN, zero claimed, zero unclaimed. The migration board reads COMPLETE of record.",
+  "write_ledger": "zero live calls, zero prod writes, zero code changes; files touched: this receipt + the card status line + the .syllabai/worklog.md append — .syllabai-only",
+  "push": "direct-main bookkeeping push per house law (fetch-first race check, no force, inline URL, token never persisted)"
+}

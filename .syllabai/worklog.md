@@ -7103,3 +7103,21 @@ Work Log:
 
 Stage Summary:
 - BOTH BANDS DONE: the human-mark write row is LIVE of record (the marking page's human-mark submit routes v2-native; the unauth law fail-closed on the wire), the ppd corpus case is in the union (223/223), the login family carries the operator-ruled declared-429 rider (the scheduled-gate flake class retired), and the deploy recipe now structurally asserts the link + target project before AND after firing. The strangler posture intact: rollback = unset the one env var. Open ahead: the api redeploy lever (the T-MIG-107 content-write band sits on main PAST the serving bundle — awaiting the direct operator order, prod writes = operator-only law).
+
+---
+Task ID: trace 1a125146599de955 (claim T-MIG-114 now) + trace 1a125e95fa87b05d (desk merged)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: claim T-MIG-114 — mooted by the desk merge of record; residual = the T-MIG-113 rider flip filing.
+
+Work Log:
+- fetch-first re-check (standing order) at main 336b271: T-MIG-114 status 'done # PR #176 merged e4eaf93' and T-MIG-115 status 'done # PR #177 merged f0636e0' — both r7a under the earlier operator order trace 1a124e79487d6cb9 'take it'; the claim order is MOOTED of record, no claim filed, no double-entry.
+- Board census first-hand: 109 yaml cards = 108 done + ONE 'claimed' (T-MIG-113); zero deletions in dd9b166..336b271 (only T-MIG-115 added); T-MIG-105 folded-block status reads DONE.
+- T-MIG-113 run-005-closure-r7a.json read first-hand: the withheld law names exactly two items to land in T-MIG-114 — the human-mark mid-path flip row (V2_SURFACE_MIDPATH_PREFIXES form) + the marking-humanmark-ppd-over50-400 corpus case.
+- T-MIG-114 run-002-closure-r7a.json read first-hand: both withheld items discharged — PR #176 e4eaf93 (the fixes + the 44/44 re-verify + the withheld row + the withheld case), hub redeploy dpl_EabUch9gFhQnw3ayu6NixQcwTthD READY, baked-table human-mark-midpath 0->+1 (twelve no-regression needles all 0), battery 21/21 read-only (M8 fail-closed, zero marking writes), union 223/223 run 38049432956 at 6a0c787 (seed 208/208 incl. the ppd case; prod 15/15).
+- RIDER FLIP FILED: T-MIG-113 status 'claimed' -> 'done' with the full citation; receipt run-006-rider-flip-r0.json filed under .syllabai/receipts/T-MIG-113/; this entry. Zero code, zero live calls, zero prod writes.
+- Push: direct-main .syllabai-only bookkeeping commit (fetch-first race check, no force, inline URL; token never persisted).
+
+Stage Summary:
+- BOARD COMPLETE OF RECORD: 109/109 cards DONE — zero OPEN, zero claimed, zero unclaimed. The migration board reads 100% after the rider flip.
+- The human-mark write row is LIVE through the v2 base with the unauth law fail-closed; the ppd corpus case is in the union; the login family carries the declared-429 rider; the deploy recipe asserts the link+project before and after firing.
+- Open ahead (operator-gated, unchanged): the api redeploy lever (the T-MIG-107 content-write band sits on main past the serving bundle — prod writes operator-only law); the 2026-10-11 retirement levers (Render disable post-48h-watch, GitHub archive of the legacy repos, PAT rotation, P3 witness, P4 paste); dual-writer posture stands until the Render disable.
