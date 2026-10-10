@@ -1,0 +1,31 @@
+version: 1
+task:
+  id: T-MIG-115
+  title: "T-MIG-115 - the login declared-429 rider band (r7a, filed BY the scheduled replay gate per the union law: failure = findings filed, never auto-fixed): the SCHEDULED neon-replay run 38038915087 at main dd9b166 (2026-10-10T08:44:13Z) served UNION 221/222 (seed 206/207 + prod 15/15, 7 via the T-MIG-071 R3-C declared limiter-429 disposition) with the ONE red auth-login-unknown-email-401: v2 served 429 {error: 'Too Many Requests', message: 'Too many requests. Wait a moment and try again.', retryAfterSeconds: 41} vs the pinned 401 invalid_credentials — the RateLimitFilter loginPerIp bucket (auth tier, per-IP, fixed 60s window) tripped at the case's burst position. ROOT CAUSE (first-hand, job log 114175077070): the frozen core's OWN auth-tier limiter (apps/api/src/middleware/ratelimit.ts is the line-for-line port of core RateLimitFilter.java — loginPerIp=10/60s fixed window, RateLimitProperties defaults) is shared by the replay's rich-staging account-building logins AND the case logins; the fixed windows are wall-clock aligned (windowStart = floor(now/window)*window), so which case occupies the tripping burst position depends on minute-boundary alignment — timing-flaky, never tripped at capture time, tripped today. retryAfterSeconds=41 arithmetic confirms the trip inside window [08:45:00,08:46:00). The register family already carries the operator-ruled declared-429 rider (T-MIG-071 R3-C, ruling3 R3-C/D3, operator trace 1a1100c71ff48e05; run-29 itself cleared 7 register rows through the disposition branch — the branch is live-proven); the login family was missed because no prior run tripped it. DISCHARGE: the login family joins the R3-C posture — expect.headers Retry-After 're:^[1-9][0-9]*$' pins + justified:true + the limiter-law descriptions on the FIVE /api/v1/auth/login cases; NO runner edits (declaredLimiter429 + ordinaryHeaderExpectations already exist in golden/runner.ts, imported by ci-replay.ts — zero drift); NO code changes; NO carrier changes."
+  owner: "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)"
+  claimed_at: "2026-10-10"
+  status: 'claimed # the run-29 red is the band trigger; the amendment is case-file-only'
+  priority: "P1 # the scheduled replay re-fires on cadence — the union gate must be stable"
+  wave: instrument-amendment # the 109 class: instrument defects are amended, disclosed, never silently
+  deps: [T-MIG-071, T-MIG-109]
+  evidence:
+    red_of_record: "run 38038915087 job 114175077070 08:45:19.9276447Z: FAIL auth-login-unknown-email-401: status 429 vs 401; body {status:429, error:'Too Many Requests', message:'Too many requests. Wait a moment and try again.', retryAfterSeconds:41} — the FILTER path body (ratelimit.ts:274, message with retryAfterSeconds body field) NOT the R5 exception path ('Too many attempts...')"
+    limiter_law: "apps/api/src/middleware/ratelimit.ts header: the port of core RateLimitFilter.java (deep-audit 09-28 M1); auth tier = POST /api/v1/auth/{login,register,bootstrap-admin,password} keyed by client IP, 4 independent buckets; fixed windows wall-clock aligned; identity/config.ts:89 loginPerIp default 10/60s (SYLLABAI_RATELIMIT_LOGIN_PER_IP unset in the CI boot — defaults govern)"
+    exposure: "ALL FIVE /api/v1/auth/login cases share the bucket: auth-login-success-200, auth-login-wrong-password-401, auth-login-missing-fields-400, auth-login-unknown-email-401, w4-login-learner-200 — any may occupy the tripping position run-to-run; amending ONE would leave the union flaky (the register band amended all 8)"
+    residual_disclosed: "the runner-internal token mints (2 POSTs per phase, no case file) cannot carry a rider — they fire first on a fresh in-memory bucket (seed) or are 2-of-10 on the long-lived prod carrier; a mint trip would fail the run at mint — residual risk accepted and disclosed, NOT paced around (standing masking ban)"
+    comparator_zero_drift: "the disposition branch is SHARED code (golden/runner.ts:367 replayAgainst + ci-replay.ts:400 replayOne; the predicate + helpers single-sourced in runner.ts:157-175) — the amendment exercises existing proven machinery; run-29 cleared 7 register rows through the identical branch"
+  scope:
+    allowed:
+      - "golden/cases/{auth-login-success-200,auth-login-wrong-password-401,auth-login-missing-fields-400,auth-login-unknown-email-401,w4-login-learner-200}.json (expect.headers Retry-After pin + justified:true + description rider — NOTHING else in the cases)"
+      - ".syllabai/tasks/T-MIG-115-*.yaml; .syllabai/receipts/T-MIG-115/**; .syllabai/worklog.md (append-only)"
+    forbidden:
+      - "golden/runner.ts + golden/tools/** (zero runner edits — the machinery exists)"
+      - "apps/** + packages/** (zero code changes — the limiter is frozen-core parity, NOT a v2 defect)"
+      - "any other golden/cases/** file (the corpus fence holds)"
+      - "pacing/retrying around the 429 in ANY form (standing masking ban, run-7 note C); force-push; self-merge"
+  acceptance:
+    - "the 5 cases declare justified:true + expect.headers.Retry-After 're:^[1-9][0-9]*$' (the R3-C convention, field-order-faithful to the register cases)"
+    - "the frozen captures govern the admitted posture byte-for-byte (status/body/tolerate untouched — offline verdict + witness round-trip)"
+    - "declaredLimiter429 participants = exactly 13 (5 login + 8 register), loadCases 222 (riders add none), runner --selftest OK"
+    - "the next union replay at the merged tip serves ALL GREEN: a tripped case clears via the disclosed declared-429 pin (counted in the verdict line, never silent); an admitted case clears via the frozen capture"
+    - "no carrier/hub/api delta of any kind (the red was instrument-side)"

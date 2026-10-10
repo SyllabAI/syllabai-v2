@@ -1,6 +1,6 @@
 {
   "name": "w4-login-learner-200",
-  "description": "login the W4 capture learner; token field scrubbed to {{TOKEN}} + tolerated",
+  "description": "login the W4 capture learner; token field scrubbed to {{TOKEN}} + tolerated [T-MIG-115 (r7a, scheduled run 38038915087 union 221/222): the login family joins the T-MIG-071 (R3-C) declared limiter-429 posture \u2014 the operator-ruled register precedent (ruling3 R3-C/D3, trace 1a1100c71ff48e05). v2's RateLimitFilter port serves the FROZEN core's own auth-tier loginPerIp=10/60s fixed-window per-IP budget (RateLimitProperties; the rich-staging account-building logins share the bucket), so a 429+Retry-After may answer at burst positions beyond the budget depending on wall-clock window alignment \u2014 timing-flaky, never seen at capture. Both postures covered: the frozen capture governs when admitted; the declared expect.headers Retry-After pin governs when the limiter trips (justified:true per GOLDEN_MASTER section 4). The runner must NOT pace around the 429 (standing masking ban, run-7 note C).]",
   "source": "captured from LOCAL frozen-core boot (Temurin JDK 25.0.4.1 + Maven 3.9.16, mvn -DskipTests package exit 0) on LOCAL PostgreSQL 17.9 + pgvector 0.8.7 (2026-10-05, T-MIG-040-PREP run-002, R7a); Flyway V1..V63 applied by the core itself; zero Neon connections; identities synthetic from creation; tokens scrubbed to fixed dummy",
   "method": "POST",
   "path": "/api/v1/auth/login",
@@ -23,6 +23,9 @@
           "STUDENT"
         ]
       }
+    },
+    "headers": {
+      "Retry-After": "re:^[1-9][0-9]*$"
     }
   },
   "tolerate": [
@@ -30,5 +33,6 @@
     "id",
     "timestamp"
   ],
-  "seq": 2
+  "seq": 2,
+  "justified": true
 }

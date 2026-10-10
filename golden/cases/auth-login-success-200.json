@@ -1,6 +1,6 @@
 {
   "name": "auth-login-success-200",
-  "description": "Login happy path: 200 with AuthResponse (same shape as register; BCrypt verify against the stored hash; fresh token each login \u2014 token scrubbed) [T-MIG-006: replay-readiness annotation - generated fields (fresh token/id per boot) tolerated by field name; scrubbed capture values kept for archaeology.]",
+  "description": "Login happy path: 200 with AuthResponse (same shape as register; BCrypt verify against the stored hash; fresh token each login \u2014 token scrubbed) [T-MIG-006: replay-readiness annotation - generated fields (fresh token/id per boot) tolerated by field name; scrubbed capture values kept for archaeology.] [T-MIG-115 (r7a, scheduled run 38038915087 union 221/222): the login family joins the T-MIG-071 (R3-C) declared limiter-429 posture \u2014 the operator-ruled register precedent (ruling3 R3-C/D3, trace 1a1100c71ff48e05). v2's RateLimitFilter port serves the FROZEN core's own auth-tier loginPerIp=10/60s fixed-window per-IP budget (RateLimitProperties; the rich-staging account-building logins share the bucket), so a 429+Retry-After may answer at burst positions beyond the budget depending on wall-clock window alignment \u2014 timing-flaky, never seen at capture. Both postures covered: the frozen capture governs when admitted; the declared expect.headers Retry-After pin governs when the limiter trips (justified:true per GOLDEN_MASTER section 4). The runner must NOT pace around the 429 (standing masking ban, run-7 note C).]",
   "source": "captured from a LOCAL boot of the frozen Java core (built from the frozen main tree, JDK 25) against Neon BRANCH t-mig-003/r6 (br-divine-mode-a5xur4zv, copy-on-write of production) on 2026-10-04T18:36Z by T-MIG-003 run-002 (R6); no production writes; scrubbed: accessToken->fixed dummy, user id->stable fake UUID, account identity synthetic from creation",
   "method": "POST",
   "path": "/api/v1/auth/login",
@@ -23,11 +23,15 @@
           "STUDENT"
         ]
       }
+    },
+    "headers": {
+      "Retry-After": "re:^[1-9][0-9]*$"
     }
   },
   "tolerate": [
     "accessToken",
     "id"
   ],
-  "seq": 3
+  "seq": 3,
+  "justified": true
 }
