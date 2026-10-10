@@ -1,0 +1,54 @@
+{
+  "task": "T-MIG-115",
+  "run": "001",
+  "title": "login declared-429 rider amendment - the run-29 red triaged + the five-case rider landed offline",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)",
+  "operator_order": "trace 1a124e79487d6cb9 'take it' (the standing defect-band order 1a119b24a3198db5 + the union gate law: failure = findings filed, never auto-fixed)",
+  "trigger": {
+    "what": "SCHEDULED neon-replay run 38038915087 at main dd9b166 RED - the first scheduled-run red since the union gate existed",
+    "when": "2026-10-10T08:44:13Z (run), verdict 08:45:48.1712995Z",
+    "verdict_of_record": "UNION VERDICT: 221/222 golden cases pass (seed 206/207 + prod 15/15) - 7 via the T-MIG-071 (R3-C) declared limiter-429 disposition",
+    "red": "FAIL auth-login-unknown-email-401: status 429 vs 401; body {status:429, error:'Too Many Requests', message:'Too many requests. Wait a moment and try again.', retryAfterSeconds:41, timestamp:'2026-10-10T08:45:19.927Z'} vs pinned {status:401, error:'invalid_credentials', message:'invalid credentials', timestamp:'2026-10-04T18:23:39.084977762Z'}",
+    "artifact": "job log 114175077070 downloaded first-hand to evidence/replay-run29/job-114175077070.log (54,488 bytes)"
+  },
+  "root_cause_first_hand": [
+    "the 429 body is the FILTER path (ratelimit.ts:274 'Too many requests. Wait a moment and try again.' + retryAfterSeconds body field) - NOT the R5 LoginAttemptBudget exception path ('Too many attempts...', no retryAfterSeconds field) - so the tripping bucket is the RateLimitFilter loginPerIp auth-tier bucket",
+    "retryAfterSeconds=41 arithmetic: windowEnd 08:46:00.000 - now 08:45:19.927 = 40.073s; max(1, floor((40073+999)/1000)) = 41 - confirms the trip inside the wall-clock-aligned fixed window [08:45:00, 08:46:00)",
+    "loginPerIp default 10/60s (identity/config.ts:89, SYLLABAI_RATELIMIT_LOGIN_PER_IP unset in the CI boot - the ##[group] env dump shows no RATELIMIT var); the seed replay's own case logins in that window number only 5 (w4-login-learner, auth-login-success, auth-login-wrong-password, auth-login-missing-fields, auth-login-unknown-email) - the balance of the budget was consumed by the rich-staging account-building logins (the staging completes at 08:45:06/08:45:16 between the case logins), all sharing the per-IP bucket",
+    "the limiter is FROZEN-CORE PARITY: apps/api/src/middleware/ratelimit.ts is the line-for-line port of core RateLimitFilter.java (deep-audit 09-28 M1) - the 429 is NOT a v2 defect; the capture never tripped it (quiet capture substrate)",
+    "the trip position is timing-flaky: fixed windows are wall-clock aligned, the run-to-run minute-boundary alignment shifts which login POST occupies the tripping position - today unknown-email; tomorrow any of the five",
+    "the register family shows the SAME limiter answering 429 in the same run (8 register cases at 08:45:19.99 all cleared via the R3-C declared pins) - the disposition branch is live-proven on the very run that red'd the login case"
+  ],
+  "amendment": {
+    "class": "instrument amendment (the 109 class) - case-file only, zero runner edits, zero code changes",
+    "files": [
+      "golden/cases/auth-login-success-200.json",
+      "golden/cases/auth-login-wrong-password-401.json",
+      "golden/cases/auth-login-missing-fields-400.json",
+      "golden/cases/auth-login-unknown-email-401.json",
+      "golden/cases/w4-login-learner-200.json"
+    ],
+    "change_per_file": "expect.headers {Retry-After: 're:^[1-9][0-9]*$'} + justified:true + the limiter-law description rider (the T-MIG-071 R3-C convention, field-order-faithful to the 8 register cases)",
+    "byte_honesty": "witness round-trip FIRST: all 5 files reproduce byte-identically via json.dumps(indent=2, ensure_ascii=True) + trailing newline; post-write re-witness passed (script r115_amend_cases.py, persisted)",
+    "both_postures": "the frozen capture governs when the limiter admits (401/400/200 laws unchanged, tolerate lists untouched); the declared pin governs when it trips (disclosed green via the declared429 evidence field, counted in the verdict line - never silent)"
+  },
+  "offline_verdict": {
+    "zero_live_calls": true,
+    "checks": [
+      "loadCases parses the whole corpus: 222 cases (riders add none)",
+      "declaredLimiter429 participants: exactly 13 = 5 login (amended) + 8 register (existing precedent)",
+      "red-of-record case: justified=true, pin 're:^[1-9][0-9]*$' present",
+      "ordinaryHeaderExpectations drops ONLY the pin (the admitted posture is not gated on a 429-only header)",
+      "frozen capture intact: 401 invalid_credentials still governs; tolerate lists unchanged",
+      "golden/runner.ts --selftest OK (the pattern Retry-After pin + declared limiter-429 posture is part of the selftest's own law list)"
+    ],
+    "script": "scripts/r115_offline_verdict.ts (persisted, imported from the in-repo runner - zero drift)"
+  },
+  "residuals_disclosed": [
+    "the runner-internal token mints (2 POSTs per replay phase) cannot carry a case rider; on the fresh seed substrate the bucket is empty at mint (residual negligible); on the long-lived prod carrier the mint is 2-of-10 shared with whatever else egresses from the runner IP - a mint trip would fail the run at mint and would be a NEW finding, filed not fixed",
+    "the R3-C disposition means a tripped case's frozen law (e.g. the 200 happy-path shape) goes unverified THAT run - disclosed by the verdict-line counter (the register precedent's accepted posture, operator-ruled at T-MIG-071)",
+    "no local live-replay of the amended rows was fired: the disposition branch is single-sourced shared code already exercised by run-29's 7 register clears; the next scheduled/dispatched union replay at the merged tip is the live proof (acceptance 4)"
+  ],
+  "fence": "git diff = exactly the 5 case files (+8/-2 each); golden/runner.ts, golden/tools/**, apps/**, packages/** untouched; the card + this receipt + the worklog entry are the only .syllabai additions",
+  "next": "branch t-mig-115/r7a -> PR -> CI green -> the desk sha-guarded merge (never self-merge) -> the next scheduled/dispatched union replay ALL GREEN at 222 (or 223 once T-MIG-114's ppd case lands) -> receipt run-002 + card DONE flip"
+}
