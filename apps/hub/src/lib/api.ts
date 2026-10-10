@@ -654,8 +654,10 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // local v2 boot on the same substrate: 42/44 PASS with deepEqualTolerant
   // (zero comparator drift); the 2 reds are REAL findings filed as
   // T-MIG-114 (the perPointDecisions max-size message law + the detail
-  // latestHumanMark projection) — FAIL-NO-FLIP holds for the human-mark
-  // row (WITHHELD this band; it lands with the 114 fix). The FOUR rows
+  // latestHumanMark projection) — T-MIG-114 UPDATE of record: BOTH findings
+  // are FIXED and the 44-leg re-verify is ALL-GREEN (the r114 run of
+  // record), so FAIL-NO-FLIP is DISCHARGED and the human-mark row LANDED
+  // (the mid-path row in the table below). The FOUR rows
   // here are the leaf READ surfaces whose every captured leg is GREEN:
   // queue-v2 (dual-shape G-5 + bounds + C-9), throughput (deterministic
   // counts), kappa/latest (404-empty + role shells) and kappa/evaluate
@@ -664,7 +666,11 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // page's LIVE reads go v2-native with the hub redeploy
   // (markingQueueV2Page :160, markingThroughput :178, kappaLatest :196);
   // evaluateKappa (:1547) is dormant — routing availability, the 084/090
-  // posture. STAY CORE with declared laws: bare /answers (its startsWith
+  // posture. T-MIG-114 UPDATE
+  // of record: the human-mark row WITHHELD by this block has LANDED (the
+  // mid-path row below — the two findings fixed + the 44/44 re-verify of
+  // record discharged FAIL-NO-FLIP). STAY CORE with declared laws: bare
+  // /answers (its startsWith
   // row would over-capture the detail + smart-mark + human-mark tails),
   // the answers/:uuid detail (a mid-path row would over-capture BOTH POST
   // tails — smart-mark UNVERIFIED), /smart-mark + /smart-mark-batch
@@ -722,6 +728,22 @@ export const V2_SURFACE_MIDPATH_PREFIXES: readonly string[] = [
   "/api/v1/teacher/classes/:uuid/knowledge-graph", // T-MIG-086: heatmap + node-students (verified legs 03/04/07)
   "/api/v1/teacher/classes/:uuid/learners/:uuid/knowledge-graph", // T-MIG-086: learner-kg (verified leg-05)
   "/api/v1/teacher/classes/:uuid/coverage", // T-MIG-087: list + mark + history (verified legs 01-08) — routing availability
+  // T-MIG-114 (r7a, operator order trace 1a124e79487d6cb9 "take it") — the
+  // human-mark WRITE row, the WITHHELD row of the 113 band, landing per
+  // FAIL-NO-FLIP: the two 113 verify reds are FIXED and the 44-leg re-verify
+  // is ALL-GREEN of record (r114, deepEqualTolerant zero drift vs the
+  // in-repo capture fixtures — leg-31 the ppd message law byte-equal
+  // 'perPointDecisions: size must be between 0 and 50'; leg-35 the detail
+  // read serving the core's hydrated-map wire). The row grammar: ":uuid"
+  // matches exactly ONE well-formed uuid segment (the 086/087 law) — the
+  // row captures ONLY the human-mark tail; the detail GET (6 segments < 7)
+  // and the smart-mark/smart-mark-batch tails (different tail literals)
+  // never match; a malformed uuid stays core where the same captured
+  // 400-first law governs at the origin (the 112 malformed-uuid class).
+  // The withheld ppd-over50 corpus case joined the union with this band.
+  // The marking page's human-mark emitter (submitHumanMark :1568) routes
+  // v2-native with the hub redeploy.
+  "/api/v1/teacher/marking/answers/:uuid/human-mark",
 ];
 
 const UUID_SEGMENT_RE = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;

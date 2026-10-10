@@ -399,7 +399,22 @@ function humanMarkView(mark: HumanMarkRow | null): HumanMarkView | null {
     id: mark.id,
     markerId: mark.marker_id,
     marksAwarded: mark.marks_awarded,
-    perPointDecisions: mark.per_point_decisions,
+    // T-MIG-114 (the detail projection law of record): the jsonb column
+    // arrives as a STRING from the live driver (the exact driver law
+    // normalizeBreakdown documents for the smart path's breakdown). The
+    // frozen core serves the HYDRATED map on BOTH the detail read and the
+    // POST echo — HumanMarkRepository.findLatest selects the full entity
+    // (`select h from HumanMark h`; the JSONB Map<String,Integer> field
+    // hydrates) and TeacherViews.HumanMarkView.from renders
+    // h.perPointDecisions() directly (source first-hand at 6cad6ef; the
+    // capture leg-35 body is the map — the 113 run-002 red of record was
+    // v2's raw string vs the core's map). Render the hydrated map; null
+    // stays null (the D04 both-sides-null law). The POST echo is untouched
+    // — recordHumanMark returns the parsed INPUT (the leg-34 law: the two
+    // shapes are byte-equal on the core).
+    perPointDecisions: normalizeBreakdown(mark.per_point_decisions) as
+      | Record<string, number>
+      | null,
     comments: mark.comments,
     createdAt: mark.created_at,
   };

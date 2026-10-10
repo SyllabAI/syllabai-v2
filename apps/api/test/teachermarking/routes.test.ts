@@ -376,6 +376,34 @@ test("constraint failures render validation_failed with the jakarta default mess
   const overBatchBody = await batchOver.json();
   expect(overBatchBody.error).toBe("validation_failed");
   expect(overBatchBody.message).toBe("answerIds: size must be between 0 and 50");
+
+  // T-MIG-114 (the ppd message law of record): the 50-entry perPointDecisions
+  // cap is a contracts .refine() (zod code "custom") — before the fix the
+  // custom issue fell through to the "request invalid" fallback (the 113
+  // run-002 verify leg C05 red); the classifier branch now serves the
+  // jakarta @Size(max=50) default, byte-equal to the capture leg-31 core
+  // body ('perPointDecisions: size must be between 0 and 50').
+  const ppdOver = Object.fromEntries(Array.from({ length: 51 }, (_, i) => [`p${i}`, 1]));
+  const ppd = await app.request(`/answers/${ANSWER_ID}/human-mark`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ marksAwarded: 1, perPointDecisions: ppdOver }),
+  });
+  expect(ppd.status).toBe(400);
+  const ppdBody = await ppd.json();
+  expect(ppdBody.error).toBe("validation_failed");
+  expect(ppdBody.message).toBe("perPointDecisions: size must be between 0 and 50");
+
+  // the boundary: exactly 50 entries passes validation (the @Size law is
+  // inclusive) — the stubbed service then runs and answers 201, proving
+  // validation did NOT reject the 50-entry map
+  const ppdExact = Object.fromEntries(Array.from({ length: 50 }, (_, i) => [`p${i}`, 1]));
+  const exact = await app.request(`/answers/${ANSWER_ID}/human-mark`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ marksAwarded: 1, perPointDecisions: ppdExact }),
+  });
+  expect(exact.status).toBe(201);
 });
 
 test("binding failures render malformed_body, not validation_failed (bind beats constraints)", async () => {

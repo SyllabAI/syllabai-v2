@@ -789,6 +789,67 @@ describe("throughput", () => {
   });
 });
 
+// ── answerById — the detail projection law (T-MIG-114) ──────────────────────
+
+describe("answerById — the detail projection law (T-MIG-114)", () => {
+  // The live driver hands the jsonb per_point_decisions column as a STRING
+  // (the normalizeBreakdown driver law); the frozen core serves the HYDRATED
+  // map on the detail read (HumanMarkRepository.findLatest selects the full
+  // entity; TeacherViews.HumanMarkView.from renders the Map field — source
+  // first-hand at 6cad6ef; the capture leg-35 body of record IS the map, and
+  // the 113 run-002 red was v2's raw string vs that map). The detail read
+  // must render the hydrated map; null stays null (the D04 both-sides-null
+  // law). The POST echo is a different path (recordHumanMark returns the
+  // parsed INPUT) and is pinned separately by the recordHumanMark tests.
+  function answerByIdRoutes(humanRow: Record<string, unknown>): Route[] {
+    return [
+      {
+        match: /from answers ans join question_parts/,
+        rows: [answerRow()],
+      },
+      { match: /from smart_mark_results where answer_id = \?/, rows: [] },
+      { match: /from human_marks where answer_id = \?/, rows: [humanRow] },
+      { match: /from users where id = \?/, rows: [{ id: LEARNER_ID, display_name: "Ada" }] },
+    ];
+  }
+
+  const markRow = (perPointDecisions: unknown) => ({
+    id: "f1000000-0000-4000-8000-000000000001",
+    answer_id: ANSWER_A,
+    marker_id: MARKER_ID,
+    marks_awarded: 2,
+    per_point_decisions: perPointDecisions,
+    comments: "probe mark: full credit part (a)",
+    created_at: T1,
+  });
+
+  test("stringified jsonb renders the HYDRATED map on latestHumanMark (the core wire law)", async () => {
+    const { module } = build(answerByIdRoutes(markRow(JSON.stringify({ [POINT_A1]: 1, [POINT_A2]: 0 }))));
+    const view = await module.queue.answerById(ANSWER_A);
+    expect(view).not.toBeNull();
+    expect(view!.latestHumanMark!.perPointDecisions).toEqual({ [POINT_A1]: 1, [POINT_A2]: 0 });
+  });
+
+  test("parsed-object jsonb renders unchanged; null stays null (the D04 law)", async () => {
+    const parsedRoutes = answerByIdRoutes(markRow({ [POINT_A1]: 1 }));
+    const { module } = build(parsedRoutes);
+    const view = await module.queue.answerById(ANSWER_A);
+    expect(view!.latestHumanMark!.perPointDecisions).toEqual({ [POINT_A1]: 1 });
+
+    const { module: m2 } = build(answerByIdRoutes(markRow(null)));
+    const v2 = await m2.queue.answerById(ANSWER_A);
+    expect(v2!.latestHumanMark!.perPointDecisions).toBeNull();
+  });
+
+  test("no human mark at all → latestHumanMark null (the pre-mark detail law)", async () => {
+    const routes = answerByIdRoutes(markRow(null));
+    routes[2] = { match: /from human_marks where answer_id = \?/, rows: [] };
+    const { module } = build(routes);
+    const view = await module.queue.answerById(ANSWER_A);
+    expect(view!.latestHumanMark).toBeNull();
+  });
+});
+
 // ── smartMarkBatch — bounded, idempotent, partial-success-preserving ─────────
 
 describe("smartMarkBatch", () => {
