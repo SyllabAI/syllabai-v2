@@ -298,6 +298,27 @@ describe("request bodies", () => {
     ).toBe(false);
   });
 
+  // T-MIG-114 (the ppd message law of record): the 50-entry cap is a .refine()
+  // — zod reports it with code "custom" (NOT too_big), so the route classifier
+  // must map the custom issue to the jakarta-parity message. The schema shape
+  // is UNCHANGED (the refine stays); this pin documents the issue shape the
+  // classifier branch reads. The core byte-law 'perPointDecisions: size must
+  // be between 0 and 50' lives in the route (capture leg-31, the 113 run-001
+  // byte-law; the verify leg C05 red is the 113 run-002 finding).
+  it("humanMarkRequestSchema: the >50-entry ppd issue is a refine (code custom) — the classifier maps it (T-MIG-114)", () => {
+    const fiftyOne = Object.fromEntries(Array.from({ length: 51 }, (_, i) => [`k${i}`, 0]));
+    const parsed = humanMarkRequestSchema.safeParse({
+      marksAwarded: 1,
+      perPointDecisions: fiftyOne,
+    });
+    expect(parsed.success).toBe(false);
+    if (!parsed.success) {
+      const issue = parsed.error.issues.find((i) => i.path.join(".") === "perPointDecisions");
+      expect(issue?.code).toBe("custom"); // NOT too_big — the too_big branch can never fire
+      expect(issue?.message).toBe("perPointDecisions must have at most 50 entries");
+    }
+  });
+
   it("humanMarkRequestSchema: comments @Size(max=4000), absent ≡ null", () => {
     expect(humanMarkRequestSchema.safeParse({ marksAwarded: 1, comments: null }).success).toBe(
       true,

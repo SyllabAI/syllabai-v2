@@ -1,0 +1,63 @@
+{
+ "task": "T-MIG-114",
+ "run": "run-001",
+ "lane": "r7a (web-da4ab8b1)",
+ "at": "2026-10-10T09:05:00Z",
+ "operator_order": "trace 1a124e79487d6cb9 'take it' (the next-band order 1a121acfb1079055; the filed T-MIG-114 is the band)",
+ "what": "the 095-class defect band discharged: the ONE classifier branch (custom + perPointDecisions -> the jakarta-parity message) + the detail projection hydration + the test pins + the 44-leg re-verify ALL-GREEN + the WITHHELD human-mark mid-path row + the withheld ppd corpus case",
+ "grounding_correction": {
+  "disclosed_first": "before any code — the worklog claim entry",
+  "finding": "the card's finding-2 narrative (core detail wire OMITS perPointDecisions as null via a findLatest projection that skips the JSONB) is contradicted by the band's own evidence of record on THREE independent first-hand reads",
+  "the_three_reads": [
+   "(a) the run-002 verdict row leg-35 capture_body (the of-record red): the CORE served latestHumanMark.perPointDecisions as the HYDRATED MAP while v2 served the JSON-ENCODED STRING — a map-vs-string TYPE divergence, not null-vs-map",
+   "(b) the survivor rig files (r113_capture.json leg D02 / r113_verify_legs.json leg-38) agree byte-for-byte with the verdict row; the C05 timestamps match the receipt quotes exactly, so the files ARE the run-001/run-002 of record",
+   "(c) the frozen core SOURCE at 6cad6ef (fresh read-only clone): HumanMarkRepository.findLatest is `select h from HumanMark h` — the FULL entity including the @JdbcTypeCode(SqlTypes.JSON) Map<String,Integer> field — and TeacherMarkingController :243-251 builds TeacherViews.HumanMarkView.from(human) rendering h.perPointDecisions() directly: the HYDRATED MAP on the detail read, exactly as on the POST echo (the two shapes differ only in id/createdAt serializer precision)"
+  ],
+  "resolution": "the fix follows the EVIDENCE (the capture bodies are the wire truth of record and the governing comparator input): the detail read renders the HYDRATED map; null stays null (the D04 both-sides-null law holds — leg-37 PASS). The card narrative's core-null claim is recorded as a filing-time mischaracterization; the acceptance 'byte-equal to the capture leg-35' is honored against the CAPTURE BODY"
+ },
+ "fixes": [
+  {
+   "file": "apps/api/src/routes/teachermarking.ts",
+   "change": "the 095-pattern classifier branch: first.code === 'custom' && field === 'perPointDecisions' -> 'perPointDecisions: size must be between 0 and 50' (byte-equal to the capture leg-31 core body). The too_big branch above it can never fire for the 50-entry cap (the contracts .refine() emits zod code 'custom'); the custom issue previously fell through to the 'request invalid' fallback"
+  },
+  {
+   "file": "apps/api/src/services/teachermarking/index.ts",
+   "change": "humanMarkView renders perPointDecisions through normalizeBreakdown (the disclosed driver law: 'jsonb arrives parsed from both live drivers and the stub; tolerate strings') — the detail read serves the core's hydrated-map wire; the POST echo untouched (recordHumanMark returns the parsed INPUT, the leg-34 law)"
+  }
+ ],
+ "test_pins": [
+  "packages/contracts/src/teacher-marking.test.ts: the >50-entry ppd issue carries code 'custom' with the refine's message — documenting why the classifier branch must map it (the schema shape UNCHANGED; the refine stays)",
+  "apps/api/test/teachermarking/routes.test.ts: the ppd-over50 envelope pin (51 entries -> 400 validation_failed 'perPointDecisions: size must be between 0 and 50') + the boundary pin (exactly 50 entries passes validation -> 201 through the stubbed service)",
+  "apps/api/test/teachermarking/teachermarking.test.ts: the new answerById describe block — stringified jsonb renders the HYDRATED map; parsed-object renders unchanged; null stays null (the D04 law); no mark -> latestHumanMark null"
+ ],
+ "re_verify": {
+  "procedure": "the 113 run-002 procedure verbatim: fresh local substrate (drop/create syllabai_verify + pgvector + drizzle push + the Flyway DATA seed rows the push does not carry + the identical literal-uuid rig seed) -> boot v2 from the FIXED tree (ZERO-KEY asserted, exit-4 gate passed) -> replay the SAME 48-leg matrix -> deepEqualTolerant imported from golden/runner.ts (ZERO comparator drift) vs the IN-REPO capture fixtures golden-captures/t-mig-113 (the 113 run-001 capture of record)",
+  "driver": "scripts/r114_verify_matrix.py + r114_verify_verdict.ts + r114_verify_run.sh (the r113 drivers re-anchored to the survivor rig paths; the PAIRING byte-identical to the 113 verdict)",
+  "verdict": "44/44 PASS, 0 FAIL",
+  "the_two_reds_now_green": [
+   "leg-31-humanmark-ppd-over50-400 PASS (the classifier branch serves the jakarta message byte-equal)",
+   "leg-35-answer-detail-post-mark-200 PASS (the detail read serves the hydrated map byte-equal)"
+  ],
+  "zero_regression": "the other 42 legs unchanged green, including leg-37 (the D04 both-sides-null law) and the four validation-first ordering laws",
+  "disclosures": [
+   "the FIRST r114 matrix run produced 7 FAILs — ALL instrument artifacts of the driver variant (the probe display names renamed r7a-t113-* -> r7a-t114-*; the of-record capture bodies embed the display-name constants, which the 113 run-002 reused so those pins compare byte-equal outside the redaction maps). The matrix re-ran with the capture's display-name constants (emails stay salted-unique) -> 44/44. The 113 receipt disclosed the same class ('incomplete redaction maps — 9 instrument-artifact FAILs; the maps were completed and BOTH sides re-run'). Zero v2/core deltas between the runs — the driver fix only",
+   "the survivor PG cluster needed its empty runtime subdirectories recreated (pg_notify, pg_logical/snapshots, pg_multixact/members+offsets, pg_stat, pg_tblspc, et al — the survivor sync drops empty dirs); data directories untouched (76M intact), the cluster verified healthy before the substrate reset",
+   "zero prod writes this run (the local substrate only — the 107 write-surface law); the write ledger: 2 probe users + 1 attempt + 2 answers + 2 human marks on the LOCAL verify db"
+  ]
+ },
+ "widen_gates": {
+  "hub_row": "the mid-path row /api/v1/teacher/marking/answers/:uuid/human-mark LANDED in V2_SURFACE_MIDPATH_PREFIXES (the 086/087 grammar: :uuid matches exactly ONE well-formed uuid segment; the detail GET 6 segments and the smart-mark tails never match; malformed uuids stay core where the same captured 400-first law governs at the origin) + its disclosure comment + the two stale WITHHELD clauses amended with T-MIG-114 UPDATE-of-record markers (the 113 block keeps its attribution)",
+  "surface_test": "the exact-set +1; the 113 line test replaced by the 114 line test (the well-formed tails flip v2, the malformed stay core, the over-capture + LLM-adjacency laws stand, the four read rows no-regression); the CORE_ONLY note amended; the a-1 malformed pin kept with the corrected reason",
+  "corpus": "golden/cases/marking-humanmark-ppd-over50-400.json joins the union (222 -> 223): the TRUE 51-entry payload (no redaction defect — the 109 lesson), the validation-first 400 law on the well-formed unknown uuid (the comments sibling's form), byte-honest json (indent=1, ensure_ascii=True, witness round-trip OK)"
+ },
+ "gates": {
+  "typecheck_x4": "exit 0",
+  "api_packages_suite": "1859 pass / 13 skip / 0 fail / 7198 expect (the of-record 1855/13/0/7186 + EXACTLY the 4 new 114 tests / +12 expects)",
+  "hub_suite": "59 pass / 0 fail / 584 expect (the of-record 59/59 baseline)",
+  "surface": "26/26 (498 expects) with the exact-set +1",
+  "golden_selftest": "OK",
+  "corpus_count": "223 cases"
+ },
+ "scope_compliance": "the card's allowed files only: the route classifier + the service builder + the three test files + the hub api.ts row/comment + the surface test + the ONE new corpus case + the card/worklog/receipts; zero golden/cases edits beyond the new case; zero golden/tools edits; zero legacy-repo content (the core clone was READ-ONLY for grounding); no force; no self-merge",
+ "next": "PR -> CI -> r0-auto merge -> the 093/110/111/112/113-recipe hub redeploy (link-asserted) + battery (READ-ONLY) + union replay at 223/223 -> closure receipt + card DONE + worklog + push"
+}

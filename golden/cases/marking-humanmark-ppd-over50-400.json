@@ -1,0 +1,80 @@
+{
+ "name": "marking-humanmark-ppd-over50-400",
+ "description": "HumanMarkRequest perPointDecisions @Size(max=50) law: 51 entries -> 400 validation-first (T-MIG-114, the WITHHELD case of the 113 rider landing after the fix). HISTORY of record: the 113 rider drafted a ppd sibling and WITHDREW it before commit (its body carried the same redacted-summary instrument defect as the comments case amendment + the prod kappa-rows volatility); the law stayed grounded in the 113 capture leg-31 (the LOCAL frozen-core boot 6cad6ef body: 'perPointDecisions: size must be between 0 and 50') while v2 served 'request invalid' (the 113 run-002 verify leg C05 red \u2014 the contracts .refine() emits the zod code 'custom' which the route classifier never mapped). The 114 band fixed the classifier (the 095-pattern custom branch) and the re-verify leg-31 is PASS byte-equal (the r114 run of record, deepEqualTolerant zero drift); this case carries the TRUE 51-entry payload (no redaction defect \u2014 the 109 lesson applied) and the validation-first ordering law on the well-formed unknown uuid (the comments sibling's form).",
+ "source": "T-MIG-113 run-001 capture leg-31 (the LOCAL frozen-core boot 6cad6ef \u2014 prod marking state untouched) + the T-MIG-114 r114 re-verify (the fixed v2 boot, 44/44 deepEqualTolerant)",
+ "method": "POST",
+ "path": "/api/v1/teacher/marking/answers/00000000-0000-4000-8000-0000000000ff/human-mark",
+ "request": {
+  "headers": {
+   "Authorization": "Bearer {{TOKEN}}"
+  },
+  "body": {
+   "marksAwarded": 1,
+   "perPointDecisions": {
+    "p0": 1,
+    "p1": 1,
+    "p2": 1,
+    "p3": 1,
+    "p4": 1,
+    "p5": 1,
+    "p6": 1,
+    "p7": 1,
+    "p8": 1,
+    "p9": 1,
+    "p10": 1,
+    "p11": 1,
+    "p12": 1,
+    "p13": 1,
+    "p14": 1,
+    "p15": 1,
+    "p16": 1,
+    "p17": 1,
+    "p18": 1,
+    "p19": 1,
+    "p20": 1,
+    "p21": 1,
+    "p22": 1,
+    "p23": 1,
+    "p24": 1,
+    "p25": 1,
+    "p26": 1,
+    "p27": 1,
+    "p28": 1,
+    "p29": 1,
+    "p30": 1,
+    "p31": 1,
+    "p32": 1,
+    "p33": 1,
+    "p34": 1,
+    "p35": 1,
+    "p36": 1,
+    "p37": 1,
+    "p38": 1,
+    "p39": 1,
+    "p40": 1,
+    "p41": 1,
+    "p42": 1,
+    "p43": 1,
+    "p44": 1,
+    "p45": 1,
+    "p46": 1,
+    "p47": 1,
+    "p48": 1,
+    "p49": 1,
+    "p50": 1
+   }
+  }
+ },
+ "expect": {
+  "status": 400,
+  "body": {
+   "status": 400,
+   "error": "validation_failed",
+   "message": "perPointDecisions: size must be between 0 and 50",
+   "timestamp": "2026-10-09T18:00:08Z"
+  }
+ },
+ "tolerate": [
+  "timestamp"
+ ]
+}
