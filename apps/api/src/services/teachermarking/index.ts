@@ -399,7 +399,7 @@ function humanMarkView(mark: HumanMarkRow | null): HumanMarkView | null {
     id: mark.id,
     markerId: mark.marker_id,
     marksAwarded: mark.marks_awarded,
-    perPointDecisions: mark.per_point_decisions,
+    perPointDecisions: mark.per_point_decisions ?? null,
     comments: mark.comments,
     createdAt: mark.created_at,
   };
@@ -1278,7 +1278,7 @@ export class TeacherMarkingQueueService {
       order by created_at desc, id desc limit 1
     `) as unknown as SmartRunRow[];
     const humanRuns = (await this.sql`
-      select id, answer_id, marker_id, marks_awarded, per_point_decisions,
+      select id, answer_id, marker_id, marks_awarded,
              comments, created_at
       from human_marks where answer_id = ${id}
       order by created_at desc, id desc limit 1

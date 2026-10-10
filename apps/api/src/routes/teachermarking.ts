@@ -164,6 +164,12 @@ function classifyBodyError(error: ZodError, body: unknown): BodyError {
     const maximum = (first as { maximum?: number }).maximum;
     return { kind: "validation", message: `${field}: must be less than or equal to ${maximum ?? 99}` };
   }
+  // the perPointDecisions size refine (contracts :161-163) is a zod "custom"
+  // issue, not too_big — the core serves the jakarta @Size message verbatim
+  // (capture leg-31; the 095 classifier-branch pattern)
+  if (first.code === "custom" && field === "perPointDecisions") {
+    return { kind: "validation", message: "perPointDecisions: size must be between 0 and 50" };
+  }
   // the marksAwarded range refine (contracts #58): split to the jakarta
   // @Min/@Max default messages by reading the offending value
   if (first.code === "custom" && field === "marksAwarded") {
