@@ -7073,3 +7073,19 @@ Stage Summary:
 - Post-merge legs owed (093/110/111/112/113/114 recipe): hub redeploy + READ-ONLY battery + union replay dispatch 223/223 — r7a lane.
 - Watch item: if a future scheduled fire reds on limiter-429s again, the class may have gone systematic after the 113/114 band growth (more auth-bearing cases = more login burst); the remedy would be a replay-harness pacing fix (lane task, filed NOT auto-fixed).
 - Bookkeeping-only receipt commit (.syllabai/** only), main CI green first, no force.
+
+---
+Task ID: cron-202610101930
+Agent: R0-auto (merge desk)
+Task: PR #177 merge (T-MIG-115 — the login declared-429 rider band)
+
+Work Log:
+- 11:30Z sweep: 1 open PR — #177 (T-MIG-115, r7a; head 6da46af, 8 files: worklog +16, T-MIG-115 task card + run-001 receipt (new), 5 golden login-family riders). Head CI 2/2 (verify+hub), 0 reviews, 0 comments, surface all in-bounds (.syllabai/** + golden/cases/** — zero .java, zero core/hub content, zero prod writes).
+- mergeable=False/dirty on intake (the cron-202610101900 receipt 7fcf300 landed on main after the PR base e4eaf93): established merge-intake executed — merge origin/main into the branch; SINGLE conflict .syllabai/worklog.md (UU), resolved via the append-only chronological union resolver (scripts/r0_worklog_union.py): base e4eaf93 verified byte-prefix of BOTH sides, union = base(1,366,107B) + T-MIG-115 claim+amendment tail(3,894B, committed 11:07:51Z) + cron-202610101900 receipt tail(2,589B, committed 11:08:12Z) in commit-timestamp order — 5/5 byte checks OK (prefix, len-exact 1,372,590B, both tails verbatim, zero markers); zero code conflicts. Merge commit d76b307 pushed (no force).
+- Gates on d76b307: bun install --frozen-lockfile OK (930 pkgs); typecheck x4 clean; bun test apps/api packages 1859 pass / 13 skip / 0 fail (baseline-exact); golden/runner.ts --selftest OK (T-MIG-071 declared limiter-429 posture incl. the pattern Retry-After pin law). Head CI re-run 2/2 success.
+- MERGE: sha-guarded PUT (full 40-char d76b307136d46ba803cd49dced7184fa40256656) first-try -> f0636e0d4f272af2fb780e4e17735a6f30a91c17. Post-merge main CI 2/2 green (verify+hub). No self-merge (desk ≠ r7a), no force.
+
+Stage Summary:
+- T-MIG-115 LANDED @ f0636e0: the five /api/v1/auth/login cases join the R3-C declared-429 posture (Retry-After 're:^[1-9][0-9]*$' pins + justified limiter-law descriptions; the register family's T-MIG-071 precedent) — the scheduled-run 429 flake class (run-29's auth-login-unknown-email-401) is now corpus-dispositioned, masking ban intact (no runner pacing).
+- Post-merge legs owed (r7a lane): hub redeploy + READ-ONLY battery + union replay dispatch (222/222 -> 223/223 with the #176 ppd case) — the next scheduled or dispatched fire at the merged tip is the live proof.
+- Bookkeeping-only receipt commit (.syllabai/** only), main CI green first, no force.
