@@ -1,0 +1,25 @@
+{
+  "task": "T-MIG-107 (the content-write surfaces port — activation lever)",
+  "run": "api-redeploy-lever-custody-r7a",
+  "title": "API REDEPLOY LEVER — custody verified, no duplicate fire; the post-#178 fire staged under the amended lever law",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)",
+  "at": "2026-10-10T16:04:21Z .. 16:15:00Z",
+  "operator_order": "trace 1a1268cf97d3b601 'api redeploy lever' — arrives at this lane 12 minutes after the same-order fire of record (trace 1a12669287b65af5, r0, receipt api-redeploy-lever-r0.json, main commit 1b76b57)",
+  "verdict": "NO-DUPLICATE-FIRE — the lever is already PULLED of record and independently verified live by this lane; the next owed fire (post PR #178 merge) is staged under the amended lever law",
+  "independent_verification": [
+    "api carrier https://syllabai-v2.vercel.app first-hand READ-ONLY: /actuator/health 200 {\"groups\":[\"liveness\",\"readiness\"],\"status\":\"UP\"} (Spring Boot law shape); unauth /api/v1/teacher/marking/queue-v2 401 and unauth /api/v1/questions/topics 401 with the exact Boot-law envelope {timestamp,status:401,error:Unauthorized,path} — the fail-closed class live on the carrier",
+    "hub plane first-hand READ-ONLY: https://syllabai-hub-v2.vercel.app/api/health 200 {status:ok,service:syllabai-hub,dataMode:core-api,coreConfigured:true} — the double-plane byte-law intact",
+    "main CI 2/2 completed/success at tip 1b76b57 (verify + hub)",
+    "UNION REPLAY run 38065104738 (workflow_dispatch at 7ccbfc5) SUCCESS 15:48:35Z — the 223-case corpus (seed 208 incl. the 43 content cases + the ppd case; prod 15) GREEN at the new carrier",
+    "VERCEL_PAT custody first-hand: .creds/vercel.env fingerprint sha256:16 d254bbfaac004354 == the of-record fingerprint; token never printed",
+    "fetch-first census x2 (16:04Z and 16:11Z): origin/main tip 1b76b57 stable; open PRs: #178 only (t-mig-114/r0); open issue: #147 (the zombie-decommission operator lever, not lane-executable)"
+  ],
+  "no_duplicate_fire_basis": [
+    "the carrier serves main 7ccbfc59 (r0 receipt of record: CLI --prod 15:47Z READY 17s aliased; wire smoke register 201 / unauth 401 / dup 409; battery 11/11; shape matrix 19/19; replay 223/223) — this lane re-verified the wire read-only first-hand",
+    "1b76b57 is .syllabai-only bookkeeping (receipt + worklog, zero runtime delta) — a re-fire would deploy zero code delta and re-expose the hollow-deployment incident class for no content gain (the race-guard + no-duplicate-upload laws, CLAIM-071-072)",
+    "the only api-code content NOT yet live is PR #178 (T-MIG-114 amended: the marking message-law + the detail-read jsonb round-trip + the human-mark flip row + the ppd corpus case) — UNMERGED (mergeable_state dirty at 16:09Z; the intake belongs to the r0-auto sha-guarded cron flow; authors/desks never self-merge); deploying unmerged code is forbidden"
+  ],
+  "staged_posture": "when PR #178 lands (r0-auto cron, sha-guarded), the api carrier redeploy fires under the amended lever law: the 092/093 bundle recipe (worktree shims + stage + bun build + worktree restored + zero-key require-smoke) -> LINK+PROJECT assertion (prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ / team_ULL54qkhzKBmnKrpO6BD4mYX) pre+post-fire -> race-guard (3-min window) -> CLI --prod -> POST-FIRE WIRE SMOKE gate (the load-bearing law: a deployment can be READY + aliased and serve nothing) -> read-only battery + union replay dispatch -> receipt/worklog/push; hub redeploy per the standing hub lever; rollback anchor = the current serving deployment of record (syllabai-v2-go80kthq6, source=cli)",
+  "write_ledger": "ZERO prod writes, ZERO deploys, ZERO learners, ZERO env writes — this act is read-only verification + .syllabai-only bookkeeping",
+  "scope": ".syllabai-only (this receipt + the worklog entry); fetch-first, no force, no self-merge, legacy repos untouched"
+}
