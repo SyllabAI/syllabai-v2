@@ -1,0 +1,51 @@
+{
+ "task": "T-MIG-114",
+ "run": "run-001-reverify-r0",
+ "lane": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "at": "2026-10-10T12:00:00Z",
+ "operator_order": "trace 1a125146599de955 'claim T-MIG-114 now' (resumed post session-restart, the prescribed remedy for the tool-corruption incidents class)",
+ "what": "the 44-leg re-verify of record + the ADJUDICATION of the 113 run-002 red-2 + the band's amended fixes + the WITHHELD human-mark flip row + the ppd corpus case",
+ "adjudication_of_record": {
+  "finding": "the 113 run-002 red-2 attribution ('core omits the JSONB decisions on the GET wire; v2 hydrates') is REJECTED",
+  "evidence_three_way": [
+   "the core SOURCE at 6cad6ef (fetched byte-exact, on-disk sha-verified): HumanMarkRepository.findLatest is a FULL-ENTITY query (select h from HumanMark h); HumanMarkView.from passes h.perPointDecisions() straight through; the entity maps per_point_decisions as a persistent jsonb column (@JdbcTypeCode SqlTypes.JSON)",
+   "the FIRST-HAND live core re-capture (the rig rebuilt per the 107/113 recipe: PG 17.11 + pgvector 0.8.0 user-tree @ 127.0.0.1:5544 syllabai_capture, openjdk 25.0.4.1+1-1~deb13u1 user-tree via dpkg -x + Maven 3.9.9, core clone 6cad6ef, Flyway V1..V63 self-applied, ZERO-KEY + SYLLABAI_LLM_MODE=test): leg-35 detail read serves the POPULATED map, leg-37 serves null (the row's own null), leg-31 serves the byte-exact @Size message",
+   "the COMMITTED capture fixtures of record (git-tracked golden-captures/t-mig-113/): identical to the live capture (arbiter-confirm 5/5, role-labelled scrub + the comparator tolerance classes)",
+   "the recovered rig seed of record (disclosed reconstruction): part (b) prompt 'Rig part (b): explain the energy change.' recovered from the leg-13/14/18/19 fixture byte-diffs"
+  ],
+  "ruling": "the core's detail read renders latestHumanMark.perPointDecisions AS STORED (the entity-truth IS the wire-truth); the pre-band v2 hydrate behavior was CORRECT; the run-002 red-2 was an instrument misattribution (the true divergence: v2's detail read returned the jsonb round-trip as a JSON STRING where the core serves the OBJECT — exposed by the 114 re-verify differ at leg-35); the band's original fix-2 (the SELECT column drop + '?? null') was a DEFECT built on the misattribution and was REVERTED byte-exact (the service file is byte-identical to dd9b166 again)"
+ },
+ "amended_fixes": [
+  "fix-1 (STANDS): the ONE classifier branch custom + perPointDecisions -> 'perPointDecisions: size must be between 0 and 50' (apps/api/src/routes/teachermarking.ts +6, byte-equal the capture leg-31; the 095 pattern; zero schema change)",
+  "fix-2 (REPLACED): the detail-read jsonb round-trip parse in the humanMarkView chokepoint (apps/api/src/services/teachermarking/index.ts) — the wire law (leg-35) renders the decisions AS THE OBJECT the core serves; the driver's raw jsonb string is parsed when it arrives as one; the POST echo path is untouched BY CONSTRUCTION (its own view object); scope-honest: the row TYPE is NOT widened and the kappa pairing sites are untouched — the latent string-hazard in the kappa pairing (Object.keys on a string class, unreachable under the ZERO-KEY dormancy of record since smart results never exist on any law leg) is DISCLOSED for a future band, not fixed here"
+ ],
+ "reverify": {
+  "matrix": "the SAME 44 capture legs (golden-captures/t-mig-113/, the 113 run-001 capture of record), the SAME comparator (deepEqualTolerant from golden/runner.ts, ZERO comparator drift; tolerate: timestamp keys only; ids normalized by the role-labelled maps on both sides)",
+  "rig": "apps/api IN-PROCESS Bun.serve (the t100/107 harness pattern, ZERO-KEY boot law exit-4 gate asserted) on the userspace PG 17.11 + pgvector 0.8.0 @ 127.0.0.1:5544, db syllabai_verify (fresh per run: drizzle push 62 tables + the Flyway V1 roles seed rows verbatim + the literal-uuid rig seed incl. the recovered part (b) prompt); the run-004 amendment law applied by the driver (the comments case's true 4001-char body); the probe displayNames registered with the fixture literals for byte-comparability (disclosed)",
+  "verdict": "44/44 PASS",
+  "driver_of_record": "tools/t114-verify.ts (relocated from the repo-root run copy, path-corrected only, logic verbatim); per-leg results t114-reverify-results.json (lane-side)"
+ },
+ "gates_after": {
+  "typecheck_x4": "root + apps/api + packages/contracts + packages/db exit 0 (hub: tsc --noEmit exit 0)",
+  "bun_test_apps_api_packages": "1857 pass / 0 fail / 13 skip / 7192 expect() across 97 files — EXACT delta = +2 tests +6 expect (the two pins: the leg-31 message-law pin + the leg-35/37 entity-truth wire pin, both in routes.test.ts)",
+  "bun_test_apps_hub": "60 pass / 0 fail / 583 expect() across 3 files — EXACT delta = +1 test (the T-MIG-114 line test), the mid-path exact-set +1, the withheld-row notes MOVED OUT"
+ },
+ "flip_row": {
+  "what": "/api/v1/teacher/marking/answers/:uuid/human-mark into V2_SURFACE_MIDPATH_PREFIXES (apps/hub/src/lib/api.ts, the 112 mid-path-row form) — CONDITIONAL on the 44/44 re-verify per FAIL-NO-FLIP: the condition is MET and DISCHARGED",
+  "over_capture_laws": "the bare /answers, the detail read, smart-mark, smart-mark-batch stay core (the 114 scope fence forbids their rows); non-uuid segments never match (the matcher's segment law)"
+ },
+ "corpus_case": "golden/cases/marking-humanmark-ppd-over50-400.json — the withheld ppd case joins the union (the 51-entry map, validation-first 400, byte-equal leg-31); the union count goes 222 -> 223 at the next replay",
+ "write_ledger": {
+  "plane": "LOCAL ONLY (the scratch PG dbs syllabai_capture + syllabai_verify, dropped/recreated per run) — ZERO prod Neon writes, ZERO prod API writes, zero live-plane contact",
+  "rows": "per run: 2 probe users + 1 attempt + 2 answers + 2 human marks (+0 from the leg-32/31 validation 400s); probe passwords/tokens memory-only, never persisted, never printed; the register/submit/human-mark writes disclosed",
+  "llm": "0 calls (the ZERO-KEY law asserted at both boots; SYLLABAI_LLM_MODE=test)",
+  "ddl": "0 hand DDL beyond the rig seed INSERTs + CREATE DATABASE/EXTENSION on the scratch cluster"
+ },
+ "disclosures": [
+  "the sandbox recycle wiped the prior lane substrate (node_modules, PG, JDK/Maven, the core clone) — the rig was REBUILT first-hand per the 107/113 recipe (the exact toolchain versions), the rebuild disclosed in the claim receipt's plan",
+  "the first re-verify run scored 34/44 — ALL 10 diffs were driver-instrument classes (the redacted leg-32 body, the ' (fake)' key redactions, the cap.leg string type, the reconstructed part (b) prompt), each fixed and the run repeated on a FRESH db; the final run is of record; zero v2 law divergences surfaced in any run",
+  "the second run scored 43/44 — the remaining diff (leg-35) exposed the TRUE defect (the jsonb string round-trip) which the band then fixed (fix-2 replaced); the instrument failures of the of-record 113 run-002 analysis are attributable to this same class",
+  "the arbiter triad re-capture files (role-labelled-scrubbed) + both drivers relocate into this receipt (tools/ + arbiter-core-recapture/); the fresh capture raws carry scratch-probe synthetic uuids only (no tokens, no passwords) and stay lane-side",
+  "the ampersand of record: the card's finding_2 + acceptance line-2 are AMENDED by this receipt (the card status line carries the pointer); the card's prior text is preserved unchanged (append-only law)"
+ ]
+}

@@ -1,0 +1,80 @@
+{
+ "name": "marking-humanmark-ppd-over50-400",
+ "description": "HumanMarkRequest perPointDecisions @Size(max=50) law: a 51-entry map -> 400 validation-first 'perPointDecisions: size must be between 0 and 50' (the T-MIG-114 fix of record: the 095-pattern classifier branch maps the contracts .refine() custom zod issue to the jakarta @Size message; byte-equal the capture leg-31). The ppd corpus case joins the union at the T-MIG-114 close (44/44 re-verify run-001-reverify-r0) \u2014 restoring the sibling case the T-MIG-113 band withheld (the union amendment note: the earlier removal was the body-defect class; this case carries the true 51-entry payload by construction).",
+ "source": "T-MIG-114 run-001-reverify-r0 (leg-31 replay, the 44-leg matrix, deepEqualTolerant 44/44) + golden-captures/t-mig-113/leg-31-humanmark-ppd-over50-400.json (the LOCAL frozen-core boot 6cad6ef, the 107 write-surface law)",
+ "method": "POST",
+ "path": "/api/v1/teacher/marking/answers/00000000-0000-4000-8000-0000000000ff/human-mark",
+ "request": {
+  "headers": {
+   "Authorization": "Bearer {{TOKEN}}"
+  },
+  "body": {
+   "marksAwarded": 1,
+   "perPointDecisions": {
+    "p0": 1,
+    "p1": 1,
+    "p2": 1,
+    "p3": 1,
+    "p4": 1,
+    "p5": 1,
+    "p6": 1,
+    "p7": 1,
+    "p8": 1,
+    "p9": 1,
+    "p10": 1,
+    "p11": 1,
+    "p12": 1,
+    "p13": 1,
+    "p14": 1,
+    "p15": 1,
+    "p16": 1,
+    "p17": 1,
+    "p18": 1,
+    "p19": 1,
+    "p20": 1,
+    "p21": 1,
+    "p22": 1,
+    "p23": 1,
+    "p24": 1,
+    "p25": 1,
+    "p26": 1,
+    "p27": 1,
+    "p28": 1,
+    "p29": 1,
+    "p30": 1,
+    "p31": 1,
+    "p32": 1,
+    "p33": 1,
+    "p34": 1,
+    "p35": 1,
+    "p36": 1,
+    "p37": 1,
+    "p38": 1,
+    "p39": 1,
+    "p40": 1,
+    "p41": 1,
+    "p42": 1,
+    "p43": 1,
+    "p44": 1,
+    "p45": 1,
+    "p46": 1,
+    "p47": 1,
+    "p48": 1,
+    "p49": 1,
+    "p50": 1
+   }
+  }
+ },
+ "expect": {
+  "status": 400,
+  "body": {
+   "status": 400,
+   "error": "validation_failed",
+   "message": "perPointDecisions: size must be between 0 and 50",
+   "timestamp": "2026-10-09T18:00:08Z"
+  }
+ },
+ "tolerate": [
+  "timestamp"
+ ]
+}

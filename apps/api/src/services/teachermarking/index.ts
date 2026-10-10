@@ -399,7 +399,13 @@ function humanMarkView(mark: HumanMarkRow | null): HumanMarkView | null {
     id: mark.id,
     markerId: mark.marker_id,
     marksAwarded: mark.marks_awarded,
-    perPointDecisions: mark.per_point_decisions ?? null,
+    // the jsonb round-trip: the detail read re-reads the row from PG — the
+    // wire law (capture leg-35) renders the decisions as the OBJECT the core
+    // serves; parse the driver's raw jsonb string when it arrives as one
+    perPointDecisions:
+      typeof mark.per_point_decisions === "string"
+        ? (JSON.parse(mark.per_point_decisions) as Record<string, number>)
+        : mark.per_point_decisions,
     comments: mark.comments,
     createdAt: mark.created_at,
   };
@@ -1278,7 +1284,7 @@ export class TeacherMarkingQueueService {
       order by created_at desc, id desc limit 1
     `) as unknown as SmartRunRow[];
     const humanRuns = (await this.sql`
-      select id, answer_id, marker_id, marks_awarded,
+      select id, answer_id, marker_id, marks_awarded, per_point_decisions,
              comments, created_at
       from human_marks where answer_id = ${id}
       order by created_at desc, id desc limit 1

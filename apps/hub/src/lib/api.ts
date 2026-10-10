@@ -722,6 +722,7 @@ export const V2_SURFACE_MIDPATH_PREFIXES: readonly string[] = [
   "/api/v1/teacher/classes/:uuid/knowledge-graph", // T-MIG-086: heatmap + node-students (verified legs 03/04/07)
   "/api/v1/teacher/classes/:uuid/learners/:uuid/knowledge-graph", // T-MIG-086: learner-kg (verified leg-05)
   "/api/v1/teacher/classes/:uuid/coverage", // T-MIG-087: list + mark + history (verified legs 01-08) — routing availability
+  "/api/v1/teacher/marking/answers/:uuid/human-mark", // T-MIG-114: the human-mark flip row — CONDITIONAL on the 44/44 re-verify (met: run-001-reverify-r0, the message law + the detail-read entity-truth law of record; the 112 mid-path-row form)
 ];
 
 const UUID_SEGMENT_RE = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;

@@ -199,11 +199,10 @@ const CORE_ONLY_PATHS: readonly string[] = [
   // table tail (the local-rig 107-law capture 42/44 + the two findings
   // filed T-MIG-114). STAYS CORE here: the BARE /answers path (its
   // startsWith row would over-capture the detail + smart-mark +
-  // human-mark tails — the row-grammar law), the human-mark WRITE row
-  // (WITHHELD — the perPointDecisions message law + the detail
-  // latestHumanMark projection are RED findings of record; it lands with
-  // the 114 fix per FAIL-NO-FLIP), smart-mark + smart-mark-batch
-  // (LLM-adjacent, the 111 law stands).
+  // human-mark tails — the row-grammar law), smart-mark + smart-mark-batch
+  // (LLM-adjacent, the 111 law stands). T-MIG-114 UPDATE of record: the
+  // human-mark WRITE row MOVED OUT of this excluded list — the 44/44
+  // re-verify closed the band (the 114 mid-path row at the table tail).
   "/api/v1/teacher/marking/answers",
   "/api/v1/teacher/assignments",
   // learner /questions + /exam-papers: the questions ROUTER is mounted and
@@ -306,7 +305,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/teacher/marking/queue-v2", // T-MIG-113: the dual-shape G-5 queue read (LOCAL-rig 107-law capture + 42/44 verify; the marking page's live paged read flips)
       "/api/v1/teacher/marking/throughput", // T-MIG-113: the deterministic counts read (the marking page's live read flips)
       "/api/v1/teacher/marking/kappa/latest", // T-MIG-113: the 404-empty/200-by-scope law (the marking page's live kappa read flips)
-      "/api/v1/teacher/marking/kappa/evaluate", // T-MIG-113: the ZERO-KEY 409 no-pairs law (dormant emitter — routing availability, the 084 posture); the human-mark row WITHHELD (the 114 findings)
+      "/api/v1/teacher/marking/kappa/evaluate", // T-MIG-113: the ZERO-KEY 409 no-pairs law (dormant emitter — routing availability, the 084 posture); the human-mark row MOVED OUT at the T-MIG-114 flip
     ]);
   });
   test("the mid-path table is exactly the ruled set — the mechanism-A amendment needs its own golden gate too", () => {
@@ -314,6 +313,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/teacher/classes/:uuid/knowledge-graph", // T-MIG-086: heatmap + node-students
       "/api/v1/teacher/classes/:uuid/learners/:uuid/knowledge-graph", // T-MIG-086: learner-kg
       "/api/v1/teacher/classes/:uuid/coverage", // T-MIG-087: list + mark + history
+      "/api/v1/teacher/marking/answers/:uuid/human-mark", // T-MIG-114: the human-mark flip row (the 44/44 re-verify condition met)
     ]);
   });
 });
@@ -434,7 +434,7 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     // is DISCHARGED of record).
     for (const p of [
       "/api/v1/teacher/marking/answers", // T-MIG-113 UPDATE: the bare path STAYS (over-capture law) — but queue-v2 MOVED OUT (its leaf row flipped)
-      "/api/v1/teacher/marking/answers/a-1/human-mark", // T-MIG-113: WITHHELD — the perPointDecisions message law + the detail projection are RED findings (T-MIG-114); FAIL-NO-FLIP
+      "/api/v1/teacher/marking/answers/a-1/human-mark", // T-MIG-114: the uuid-shaped row MOVED OUT (the 114 flip); a NON-uuid segment stays core by the matcher's segment law
       "/api/v1/teacher/marking/smart-mark-batch",
       "/api/v1/teacher/curriculum/versions",
       "/api/v1/teacher/curriculum/versions/v-1/nodes",
@@ -504,30 +504,52 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     expect(v2SurfaceBase("/api/v1/teacher/marking/smart-mark-batch", V2)).toBeNull();
   });
 
-  test("the T-MIG-113 line: the marking read plane flips, the human-mark row WITHHELD on the 114 findings (r7a, operator order 1a121acfb1079055)", () => {
+  test("the T-MIG-113 line: the marking read plane flips (r7a, operator order 1a121acfb1079055; the 114 update moves the human-mark row)", () => {
     // the marking page's LIVE reads go v2-native (markingQueueV2Page :160,
     // markingThroughput :178, kappaLatest :196); evaluateKappa is dormant
     // availability. The capture law: the LOCAL frozen-core boot (the 107
     // write-surface procedure — the w3 rich-200 cases pin the prod marking
     // state, so zero prod marking writes) + the same-substrate v2 verify:
-    // 42/44 PASS with deepEqualTolerant; the 2 reds are REAL findings
-    // (T-MIG-114): the perPointDecisions max-size message law
-    // (core 'size must be between 0 and 50' vs v2 'request invalid') and
-    // the detail latestHumanMark projection (core omits the JSONB
-    // decisions on the GET wire; v2 hydrates) — the human-mark row and
-    // the ppd corpus case stay grounded until the 114 fix re-verifies.
+    // 42/44 PASS with deepEqualTolerant; the 2 reds were the T-MIG-114 band:
+    // the perPointDecisions max-size message law (FIXED: the 095-pattern
+    // classifier branch, byte-equal the capture leg-31) and the detail
+    // latestHumanMark round-trip (ADJUDICATED first-hand @ 6cad6ef: the
+    // core serves the decisions AS STORED — the run-002 red-2 attribution
+    // was REJECTED; the jsonb round-trip now parses to the object). The
+    // human-mark row FLIPPED at the 114 close; the ppd corpus case joined
+    // the union.
     expect(v2SurfaceBase("/api/v1/teacher/marking/queue-v2?state=PENDING&page=0&size=5", V2)).toBe(V2);
     expect(v2SurfaceBase("/api/v1/teacher/marking/throughput", V2)).toBe(V2);
     expect(v2SurfaceBase("/api/v1/teacher/marking/kappa/latest?paperId=p-1", V2)).toBe(V2);
     expect(v2SurfaceBase("/api/v1/teacher/marking/kappa/evaluate", V2)).toBe(V2);
-    // the withheld write row + the over-capture laws (unchanged):
-    expect(v2SurfaceBase("/api/v1/teacher/marking/answers/00000000-0000-4000-8000-0000000000ff/human-mark", V2)).toBeNull();
+    // the human-mark row FLIPPED at the 114 close; the over-capture laws:
+    expect(v2SurfaceBase("/api/v1/teacher/marking/answers/00000000-0000-4000-8000-0000000000ff/human-mark", V2)).toBe(V2);
     expect(v2SurfaceBase("/api/v1/teacher/marking/answers", V2)).toBeNull();
     expect(v2SurfaceBase("/api/v1/teacher/marking", V2)).toBeNull();
     // partial-segment capture (queue-v2x) is a startsWith MECHANISM fact —
     // DOCUMENTED INERT: no such route or emitter exists on either side
     // (the 111 review-queuex pin convention):
     expect("/api/v1/teacher/marking/queue-v2x".startsWith("/api/v1/teacher/marking/queue-v2")).toBe(true);
+  });
+
+  test("the T-MIG-114 line: the human-mark write row flips after the 44/44 re-verify (r0, operator order 1a125146599de955)", () => {
+    // the defect band of record: fix-1 the ONE classifier branch (custom +
+    // perPointDecisions -> 'perPointDecisions: size must be between 0 and 50',
+    // byte-equal the capture leg-31) + the detail-read jsonb round-trip (the
+    // leg-35/37 entity-truth law — the core serves the decisions AS STORED;
+    // the run-002 red-2 attribution REJECTED by the first-hand core
+    // re-capture, 5/5 fixture-matched). The 44-leg re-verify: 44/44 PASS
+    // (run-001-reverify-r0). The row flips per the 112 mid-path-row form;
+    // the FAIL-NO-FLIP condition is DISCHARGED.
+    expect(v2SurfaceBase("/api/v1/teacher/marking/answers/00000000-0000-4000-8000-000000000001/human-mark", V2)).toBe(V2);
+    // the over-capture laws hold (the detail/smart-mark rows are forbidden
+    // by the 114 scope fence):
+    expect(v2SurfaceBase("/api/v1/teacher/marking/answers", V2)).toBeNull();
+    expect(v2SurfaceBase("/api/v1/teacher/marking/answers/00000000-0000-4000-8000-000000000001", V2)).toBeNull();
+    expect(v2SurfaceBase("/api/v1/teacher/marking/answers/00000000-0000-4000-8000-000000000001/smart-mark", V2)).toBeNull();
+    expect(v2SurfaceBase("/api/v1/teacher/marking/smart-mark-batch", V2)).toBeNull();
+    // non-uuid segments never match the mid-path row (the matcher law):
+    expect(v2SurfaceBase("/api/v1/teacher/marking/answers/a-1/human-mark", V2)).toBeNull();
   });
 
   test("the T-MIG-097 line: the CLA ask flips after BOTH wires were proven live (r7a, chain order 1a119df7d930b609)", () => {

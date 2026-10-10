@@ -261,6 +261,50 @@ test("human mark requires marksAwarded (@NotNull parity)", async () => {
   expect(res.status).toBe(400);
 });
 
+test("perPointDecisions >50 entries maps the custom refine to the jakarta @Size message (the leg-31 law, T-MIG-114 fix)", async () => {
+  const { app } = boot({ roles: TEACHER });
+  const res = await app.request(`/answers/${ANSWER_ID}/human-mark`, {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      marksAwarded: 1,
+      perPointDecisions: Object.fromEntries(Array.from({ length: 51 }, (_, i) => [`p${i}`, 1])),
+    }),
+  });
+  expect(res.status).toBe(400);
+  expect((await res.json()).message).toBe("perPointDecisions: size must be between 0 and 50");
+});
+
+test("detail read renders latestHumanMark.perPointDecisions as stored (the leg-35/37 entity-truth wire law, T-MIG-114 pin)", async () => {
+  const withMap = boot({
+    roles: TEACHER,
+    module: {
+      queue: {
+        answerById: (async () => ({
+          answerId: ANSWER_ID,
+          latestHumanMark: { id: "m1", markerId: "t", marksAwarded: 2, perPointDecisions: { p1: 1 }, comments: null, createdAt: "2026-10-10T00:00:00Z" },
+        })) as unknown as TeacherMarkingModule["queue"]["answerById"],
+      },
+    },
+  });
+  const r1 = await withMap.app.request(`/answers/${ANSWER_ID}`);
+  expect(r1.status).toBe(200);
+  expect((await r1.json()).latestHumanMark.perPointDecisions).toEqual({ p1: 1 });
+  const withNull = boot({
+    roles: TEACHER,
+    module: {
+      queue: {
+        answerById: (async () => ({
+          answerId: ANSWER_ID,
+          latestHumanMark: { id: "m2", markerId: "t", marksAwarded: 1, perPointDecisions: null, comments: "revised", createdAt: "2026-10-10T00:00:00Z" },
+        })) as unknown as TeacherMarkingModule["queue"]["answerById"],
+      },
+    },
+  });
+  const r2 = await withNull.app.request(`/answers/${ANSWER_ID}`);
+  expect(r2.status).toBe(200);
+  expect((await r2.json()).latestHumanMark.perPointDecisions).toBeNull();
+});
+
 // ── POST /kappa/evaluate (:273-280) — @RequestBody(required=false) ──────────
 
 test("absent body evaluates scope ALL; 201", async () => {

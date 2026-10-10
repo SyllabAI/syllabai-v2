@@ -7032,3 +7032,22 @@ Stage Summary:
 - Tool-I/O incident DISCLOSED: the receipt Write's tool-result rendered a lookalike path + mutated content; byte-level python audit proved ZERO lookalike dirs exist and the on-disk receipt is intact (sha256 f28218c4107267e2, all 7 discriminators OK) — display-layer-only corruption, no disk contact; the receipt itself discloses the audit.
 - Plan of record (the card's scope fence binding): fix 1 the ONE classifier branch (custom + perPointDecisions -> 'perPointDecisions: size must be between 0 and 50', the 095 pattern, no schema shape change); fix 2 the detail-read projection wire-truth (latestHumanMark.perPointDecisions = null on GET, the map KEPT on the POST echo, legs 34/35 differ BY DESIGN); pins + gates EXACT-delta + the 44-leg rig re-verify (expect 44/44, rig rebuild disclosed post-recycle) + the WITHHELD human-mark flip row CONDITIONAL on 44/44 (FAIL-NO-FLIP) + the ppd corpus case + surface lockstep + PR/desk merge + hub redeploy + battery + union replay.
 - Zero code contact in this commit; zero live-wire contact; fetch-first, no force, no self-merge.
+
+---
+Task ID: Task-63 (t-mig-114 run-001-reverify-r0)
+Agent: r0 (Super Z, web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: the 44-leg re-verify + the adjudication of the 113 red-2 + the amended fixes + the flip row + the ppd corpus case (operator trace 1a125146599de955, resumed post session-restart)
+
+Work Log:
+- PINS 11/11 GREEN (the gt114c/e/f test-file anchors — byte-stable, EXACT-delta law held through the recycle)
+- THE RIG REBUILT first-hand (the 107/113 recipe, exact toolchain: PG 17.11 + pgvector 0.8.0 user-tree dpkg -x @ 127.0.0.1:5544, openjdk 25.0.4.1 user-tree, Maven 3.9.9, core clone 6cad6ef, Flyway V1..V63 self-applied, ZERO-KEY asserted both boots)
+- THE ARBITER: first-hand live-core re-capture of the disputed triad (leg-31/34/35/36/37) — arbiter-confirm 5/5 fixture-matched; the core serves latestHumanMark.perPointDecisions AS STORED (leg-35 map, leg-37 null); the 113 run-002 red-2 attribution REJECTED; the band's original fix-2 REVERTED byte-exact (the service file byte-identical to dd9b166)
+- THE TRUE DEFECT (exposed by the re-verify differ at leg-35): v2's detail read returned the jsonb round-trip as a JSON STRING where the core serves the OBJECT — fixed at the humanMarkView chokepoint (parse-if-string, the POST echo untouched by construction); the kappa-pairing string-hazard DISCLOSED out-of-fence (unreachable under the ZERO-KEY dormancy of record)
+- fix-1 STANDS (the ONE classifier branch, byte-equal leg-31); the two test pins LANDED (routes.test.ts: the message-law pin + the entity-truth wire pin)
+- GATES: typecheck x4 exit 0; api+packages 1857/0/13/7192 (EXACT delta +2 tests +6 expect); hub 60/0/583 (+1 test, exact-set +1, the moved-out notes)
+- THE 44-LEG RE-VERIFY: 44/44 PASS (run-001-reverify-r0, fresh syllabai_verify per run, deepEqualTolerant, the run-004 amendment law applied, the probe displayNames = the fixture literals)
+- THE FLIP ROW LANDED: /api/v1/teacher/marking/answers/:uuid/human-mark into V2_SURFACE_MIDPATH_PREFIXES (FAIL-NO-FLIP DISCHARGED); the ppd corpus case joined the union (the count goes 222 -> 223 at the next replay)
+
+Stage Summary:
+- the band's code work is COMPLETE of record; post-merge owed: hub redeploy + battery + union replay + card DONE + the T-MIG-113 rider flip
+- disclosures: the rig rebuild (recycle wipe), the 34/44 and 43/44 instrument-failure runs (each fixed, fresh-db re-runs, the final of record), the recovered rig seed part (b) prompt
