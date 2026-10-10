@@ -7024,3 +7024,11 @@ Work Log:
 
 Stage Summary:
 - T-MIG-113 DONE: the marking page's LIVE reads (queue-v2, throughput, kappa-latest) route v2 on the served bundle; kappa/evaluate rides dormant availability; the corpus of record 222/222 with zero failures; the api carrier byte-faithful of record; the two incidents (the 8-minute alias drift; the one kappa row) fully disclosed with first-hand evidence. THE HUMAN-MARK ROW + THE PPD CASE REMAIN WITHHELD for T-MIG-114 (the ppd message law + the detail projection law — the 095-class defect band, filed and ready). The strangler posture intact: rollback = unset the one env var.
+
+## Task-62 — T-MIG-114 claim (r0, operator trace 1a125146599de955)
+
+- Fetch-first fresh claim-state check: remote tip dd9b166, zero new commits, card status 'filed' — UNCLAIMED; claimed per the operator's order 'claim T-MIG-114 now' (the operator's trace supersedes the filing lane's session id as arbiter, the 071/104 precedent).
+- Branch t-mig-114/r0 off dd9b166, claim-in-first-commit (this worklog + card flip to IN_PROGRESS-CLAIMED + receipts/T-MIG-114/run-000-claim-r0.json).
+- Tool-I/O incident DISCLOSED: the receipt Write's tool-result rendered a lookalike path + mutated content; byte-level python audit proved ZERO lookalike dirs exist and the on-disk receipt is intact (sha256 f28218c4107267e2, all 7 discriminators OK) — display-layer-only corruption, no disk contact; the receipt itself discloses the audit.
+- Plan of record (the card's scope fence binding): fix 1 the ONE classifier branch (custom + perPointDecisions -> 'perPointDecisions: size must be between 0 and 50', the 095 pattern, no schema shape change); fix 2 the detail-read projection wire-truth (latestHumanMark.perPointDecisions = null on GET, the map KEPT on the POST echo, legs 34/35 differ BY DESIGN); pins + gates EXACT-delta + the 44-leg rig re-verify (expect 44/44, rig rebuild disclosed post-recycle) + the WITHHELD human-mark flip row CONDITIONAL on 44/44 (FAIL-NO-FLIP) + the ppd corpus case + surface lockstep + PR/desk merge + hub redeploy + battery + union replay.
+- Zero code contact in this commit; zero live-wire contact; fetch-first, no force, no self-merge.
