@@ -1,0 +1,37 @@
+{
+  "card": "T-MIG-114",
+  "receipt": "run-000-claim-r0",
+  "lane": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "created_at_utc": "2026-10-10T03:30:00Z",
+  "operator_trace": "1a125146599de955 'claim T-MIG-114 now'",
+  "purpose": "Claim-of-record for the marking message-law + detail-projection defect band: the fix + re-verify + the WITHHELD human-mark flip row land under this claim. Claim-in-first-commit on branch t-mig-114/r0.",
+  "claim_state_check": {
+    "method": "fetch-first (inline-URL fetch, PAT memory-only, zero disk contact)",
+    "observed": "remote tip dd9b166 (r7a T-MIG-113 closure), zero new commits since the sweep; card status 'filed' — UNCLAIMED; the operator's order supersedes the filing lane's session id as arbiter (the 071/104 precedent)"
+  },
+  "plan_of_record": [
+    "fix 1: the ONE classifier branch in apps/api/src/routes/teachermarking.ts — custom + perPointDecisions -> 'perPointDecisions: size must be between 0 and 50' (byte-equal to the capture leg-31; the 095 pattern, NO schema shape change — the refine stays)",
+    "fix 2: the detail-read projection wire-truth — GET /answers/{id} serves latestHumanMark.perPointDecisions = null (byte-equal to the capture leg-35) while the POST echo KEEPS the map (leg-34 law: the two shapes differ BY DESIGN on the core)",
+    "pins: the two message/projection pins in the contracts/route tests; EXACT-delta test law",
+    "gates: typecheck x4 exit 0; api+packages suite EXACT-delta; hub suite; golden selftest OK",
+    "the 44-leg local-rig re-verify (expect 44/44) — the 113 run-002 matrix, same comparator, the rig rebuilt per the 107/113 recipe (JDK 25 user-tree + Maven 3.9.9 + PG 17.11 + pgvector 0.8.0 on 127.0.0.1:5544 + core clone 6cad6ef; sandbox recycle wiped the prior substrate — rebuild disclosed)",
+    "the WITHHELD human-mark flip row: /api/v1/teacher/marking/answers/:uuid/human-mark into V2_SURFACE_MIDPATH_PREFIXES (the 112 mid-path-row form) — CONDITIONAL on the 44/44 re-verify (FAIL-NO-FLIP)",
+    "the withheld ppd corpus case golden/cases/marking-humanmark-ppd-over50-400.json joins the union",
+    "surface test lockstep: exact-set +1, the 114 line test, moved-out notes",
+    "push branch -> PR -> desk merge (authors-never-self-merge)",
+    "post-merge: hub redeploy (the sanctioned 093/110/111/112/113 recipe, the incident-hardened link+target assert), POST-DEPLOY battery (the human-mark unauth-401 through the v2 base + flipped-sibling no-regression + Band A), union replay dispatch at the merge tip, card DONE, receipts + worklog"
+  ],
+  "scope_law": "the card's scope.allowed fence is binding: the ONE classifier branch + the projection fix + the two test pins + the ONE mid-path row + the surface test + the ONE new corpus case + .syllabai bookkeeping; forbidden: golden/cases/** beyond the ONE case, the detail/smart-mark rows, golden/tools/**, the legacy repos, force-push, self-merge",
+  "write_ledger_disclosed": {
+    "repo_writes": "this claim commit (.syllabai-only: card status + this receipt + worklog Task-62); ZERO code contact until the impl commit",
+    "live_writes": "ZERO — no live-wire contact in this receipt"
+  },
+  "asserts": [
+    "fetch-first claim-state check: card unclaimed at dd9b166",
+    "claim-in-first-commit on branch t-mig-114/r0 off dd9b166",
+    "card status flipped to IN_PROGRESS-CLAIMED with the filing lane disclosed",
+    "the scope fence + acceptance criteria restated unchanged"
+  ],
+  "verdict": "CLAIMED OF RECORD — the last open card on the register is now under active repair; the retirement-clock residuals (Render disable / GitHub archive / PAT rotation, eligible 2026-10-11) are untouched and remain operator-gated.",
+  "scope_note": ".syllabai-only contact in THIS commit (card + receipt + worklog); zero code, zero golden, zero live-wire; fetch-first, no force-push, no self-merge"
+}

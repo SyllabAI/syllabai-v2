@@ -7025,6 +7025,14 @@ Work Log:
 Stage Summary:
 - T-MIG-113 DONE: the marking page's LIVE reads (queue-v2, throughput, kappa-latest) route v2 on the served bundle; kappa/evaluate rides dormant availability; the corpus of record 222/222 with zero failures; the api carrier byte-faithful of record; the two incidents (the 8-minute alias drift; the one kappa row) fully disclosed with first-hand evidence. THE HUMAN-MARK ROW + THE PPD CASE REMAIN WITHHELD for T-MIG-114 (the ppd message law + the detail projection law — the 095-class defect band, filed and ready). The strangler posture intact: rollback = unset the one env var.
 
+## Task-62 — T-MIG-114 claim (r0, operator trace 1a125146599de955)
+
+- Fetch-first fresh claim-state check: remote tip dd9b166, zero new commits, card status 'filed' — UNCLAIMED; claimed per the operator's order 'claim T-MIG-114 now' (the operator's trace supersedes the filing lane's session id as arbiter, the 071/104 precedent).
+- Branch t-mig-114/r0 off dd9b166, claim-in-first-commit (this worklog + card flip to IN_PROGRESS-CLAIMED + receipts/T-MIG-114/run-000-claim-r0.json).
+- Tool-I/O incident DISCLOSED: the receipt Write's tool-result rendered a lookalike path + mutated content; byte-level python audit proved ZERO lookalike dirs exist and the on-disk receipt is intact (sha256 f28218c4107267e2, all 7 discriminators OK) — display-layer-only corruption, no disk contact; the receipt itself discloses the audit.
+- Plan of record (the card's scope fence binding): fix 1 the ONE classifier branch (custom + perPointDecisions -> 'perPointDecisions: size must be between 0 and 50', the 095 pattern, no schema shape change); fix 2 the detail-read projection wire-truth (latestHumanMark.perPointDecisions = null on GET, the map KEPT on the POST echo, legs 34/35 differ BY DESIGN); pins + gates EXACT-delta + the 44-leg rig re-verify (expect 44/44, rig rebuild disclosed post-recycle) + the WITHHELD human-mark flip row CONDITIONAL on 44/44 (FAIL-NO-FLIP) + the ppd corpus case + surface lockstep + PR/desk merge + hub redeploy + battery + union replay.
+- Zero code contact in this commit; zero live-wire contact; fetch-first, no force, no self-merge.
+
 ---
 Task ID: T-MIG-114 (order + claim)
 Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)
@@ -7091,6 +7099,24 @@ Stage Summary:
 - Bookkeeping-only receipt commit (.syllabai/** only), main CI green first, no force.
 
 ---
+Task ID: Task-63 (t-mig-114 run-001-reverify-r0)
+Agent: r0 (Super Z, web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: the 44-leg re-verify + the adjudication of the 113 red-2 + the amended fixes + the flip row + the ppd corpus case (operator trace 1a125146599de955, resumed post session-restart)
+
+Work Log:
+- PINS 11/11 GREEN (the gt114c/e/f test-file anchors — byte-stable, EXACT-delta law held through the recycle)
+- THE RIG REBUILT first-hand (the 107/113 recipe, exact toolchain: PG 17.11 + pgvector 0.8.0 user-tree dpkg -x @ 127.0.0.1:5544, openjdk 25.0.4.1 user-tree, Maven 3.9.9, core clone 6cad6ef, Flyway V1..V63 self-applied, ZERO-KEY asserted both boots)
+- THE ARBITER: first-hand live-core re-capture of the disputed triad (leg-31/34/35/36/37) — arbiter-confirm 5/5 fixture-matched; the core serves latestHumanMark.perPointDecisions AS STORED (leg-35 map, leg-37 null); the 113 run-002 red-2 attribution REJECTED; the band's original fix-2 REVERTED byte-exact (the service file byte-identical to dd9b166)
+- THE TRUE DEFECT (exposed by the re-verify differ at leg-35): v2's detail read returned the jsonb round-trip as a JSON STRING where the core serves the OBJECT — fixed at the humanMarkView chokepoint (parse-if-string, the POST echo untouched by construction); the kappa-pairing string-hazard DISCLOSED out-of-fence (unreachable under the ZERO-KEY dormancy of record)
+- fix-1 STANDS (the ONE classifier branch, byte-equal leg-31); the two test pins LANDED (routes.test.ts: the message-law pin + the entity-truth wire pin)
+- GATES: typecheck x4 exit 0; api+packages 1857/0/13/7192 (EXACT delta +2 tests +6 expect); hub 60/0/583 (+1 test, exact-set +1, the moved-out notes)
+- THE 44-LEG RE-VERIFY: 44/44 PASS (run-001-reverify-r0, fresh syllabai_verify per run, deepEqualTolerant, the run-004 amendment law applied, the probe displayNames = the fixture literals)
+- THE FLIP ROW LANDED: /api/v1/teacher/marking/answers/:uuid/human-mark into V2_SURFACE_MIDPATH_PREFIXES (FAIL-NO-FLIP DISCHARGED); the ppd corpus case joined the union (the count goes 222 -> 223 at the next replay)
+
+Stage Summary:
+- the band's code work is COMPLETE of record; post-merge owed: hub redeploy + battery + union replay + card DONE + the T-MIG-113 rider flip
+- disclosures: the rig rebuild (recycle wipe), the 34/44 and 43/44 instrument-failure runs (each fixed, fresh-db re-runs, the final of record), the recovered rig seed part (b) prompt
+---
 Task ID: T-MIG-114 + T-MIG-115 (closure)
 Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)
 Task: close both bands of record (operator order trace 1a124e79487d6cb9 "take it" — T-MIG-114 was the filed band; T-MIG-115 was filed by the union gate itself mid-band).
@@ -7156,3 +7182,20 @@ Work Log:
 
 Stage Summary:
 - THE API REDEPLOY LEVER: fired of record (r0, trace 1a12669287b65af5) and independently verified live by this lane — the carrier serves main 7ccbfc59 with the T-MIG-107 content-write surfaces live and the fail-closed class byte-law-exact; NO duplicate fire per evidence. The next owed api fire is the post-#178 carrier bring-up, staged under the amended lever law (the post-fire wire smoke is the load-bearing gate). Board unchanged: 109/109 DONE. Open ahead (operator-gated): the post-#178 fires (api + hub), the 2026-10-11 retirement levers (Render disable post-48h-watch, legacy-repo archive, PAT rotation, P3/P4); issue #147 zombie decommission stays an operator lever.
+
+---
+Task ID: T-MIG-114 + PR #178 (intake supersede-merge)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6, operator trace 1a12bdba7b350dc1 "Check if any pending PRs exist. Review+merge them"; monitor order trace 1a12716dcb148121)
+Task: the pending-PR census + review + merge of record — open PR #178 (the r0 parallel T-MIG-114 band) reviewed hunk-by-hunk and merged as the SUPERSEDE-MERGE.
+
+Work Log:
+- Census first-hand (GitHub API + ls-remote, fetch-first): main tip of record 42a13e9; open PRs EXACTLY ONE — #178 (head f8ce183, branch t-mig-114/r0, recorded base 6a0c787, mergeable FALSE / state dirty, created 2026-10-10T11:45:11Z, ZERO CI runs on the head, no pushes since creation); zero other pending PRs of record.
+- REVIEW VERDICT: #178 is a PARALLEL RE-DERIVATION of the T-MIG-114 band, forked at dd9b166 (BEFORE #176 e4eaf93 landed 11:05:16Z). Every runtime byte it wants is ALREADY LANDED AND LIVE-VERIFIED via #176: (1) the perPointDecisions classifier branch — identical condition+message, landed at the richer position; (2) the detail-read law — #176's landed normalizeBreakdown IS the parse-if-string law WITH try/catch (r0's bare JSON.parse is strictly less robust); (3) the hub human-mark mid-path row landed with the moved-out notes; (4) the ppd corpus case landed and inside the green union 223/223 (byte diff vs r0's copy = description/source prose + trailing newline only); (5) the leg-31 route 400 law landed RICHER (the 400 message byte-equal leg-31 + the 50-entry inclusive 201 boundary inside the constraint-failures test); (6) the entity-truth law landed at the service layer (the teachermarking.test.ts trio). The "REVERTED fix-2" of r0's message refers to r0's OWN wip commit 639a2dd (branch-internal history) — the LANDED #176 contains NO SELECT drop; its humanMarkView comment already cites the same 6cad6ef core-source adjudication r0 re-derived.
+- UNIQUE VALUE SALVAGED (the supersede-merge resolution): (a) the ROUTE-layer entity-truth pin carried verbatim (routes.test.ts "detail read renders latestHumanMark.perPointDecisions as stored" — complementary to the landed service-layer trio) with an intake note disclosing the non-carried subset; (b) r0's evidence artifacts landed additively — receipts run-000-claim-r0.json + run-001-reverify-r0.json, the arbiter-core-recapture fixtures (leg-31/34/35/36/37 + _setup), the tools (t114-capture-core.py, t114-confirm-fixtures.py, t114-verify.ts); (c) the worklog Task-62/Task-63 entries unioned VERBATIM, chronologically by carrier-commit timestamp (09:14:47Z claim before the 114 order+claim entry; 11:42:35Z amend before the 11:48:40Z closure entry) — the d76b307 2nd-intake precedent.
+- REJECTED AT RESOLUTION (the would-have-broken list): the duplicate classifier branch (git auto-merged BOTH branches — restored main's single landed branch); the duplicate hub surface row (would break the exact-set surface test); bare JSON.parse replacing normalizeBreakdown (loses the try/catch); #178's stale card flip (IN_PROGRESS-CLAIMED regressing the landed DONE — card untouched, main's DONE stands); #178's ppd-case prose over the union byte-member; the redundant standalone leg-31 400 test (strict subset of the landed richer legs).
+- GATES on the merged tree (first-hand, before push): typecheck x4 (contracts/shared/db/api) exit 0 + hub tsc --noEmit exit 0; bun test apps/api packages = 1860 pass / 13 skip / 0 fail / 7202 expect (EXACT delta: main 1859 + the 1 carried route-layer pin); bun test apps/hub = 59 pass / 0 fail / 584 expect (= main's count — ZERO hub delta by construction); golden selftest OK.
+- Merge-tree delta vs main 42a13e9: 13 files, +714 — ZERO runtime file changes (routes/teachermarking.ts, services/teachermarking/index.ts, hub api.ts + surface test, golden ppd case, the T-MIG-114 card all byte-identical to main's landed versions).
+- Post-push legs (the follow-up run-002 receipt stamps them): main CI 2/2 at the merge tip + the union replay dispatch at the merged tip (expected 223/223 — the carrier-of-record runtime is unchanged by construction). The staged post-#178 api redeploy (the 42a13e9 custody receipt) is DISCHARGED as the zero-runtime-delta no-op class (the T-MIG-076 ci.yml precedent) unless the replay adjudicates otherwise.
+
+Stage Summary:
+- PR #178 merged of record as the supersede-merge: the operator's review+merge order discharged; the green state untouched by construction; the r0 lane's parallel-work evidence of record preserved additively; the pending-PR queue EMPTY of record after this intake. Receipt: .syllabai/receipts/T-MIG-114/run-002-intake-178-supersede-r7a.json (filed with the post-push verification stamps by the follow-up .syllabai-only commit).

@@ -261,6 +261,45 @@ test("human mark requires marksAwarded (@NotNull parity)", async () => {
   expect(res.status).toBe(400);
 });
 
+// T-MIG-114 intake note (the #178 supersede-merge): the standalone leg-31
+// 400-message test from the parallel r0 branch was NOT carried — the landed
+// constraint-failures test below already pins the same law RICHER (the 400
+// message byte-equal leg-31 + the 50-entry inclusive 201 boundary). The
+// route-layer entity-truth pin below IS carried (complementary coverage:
+// the landed teachermarking.test.ts trio pins the service layer, this pins
+// the route serialization layer).
+
+test("detail read renders latestHumanMark.perPointDecisions as stored (the leg-35/37 entity-truth wire law, T-MIG-114 pin)", async () => {
+  const withMap = boot({
+    roles: TEACHER,
+    module: {
+      queue: {
+        answerById: (async () => ({
+          answerId: ANSWER_ID,
+          latestHumanMark: { id: "m1", markerId: "t", marksAwarded: 2, perPointDecisions: { p1: 1 }, comments: null, createdAt: "2026-10-10T00:00:00Z" },
+        })) as unknown as TeacherMarkingModule["queue"]["answerById"],
+      },
+    },
+  });
+  const r1 = await withMap.app.request(`/answers/${ANSWER_ID}`);
+  expect(r1.status).toBe(200);
+  expect((await r1.json()).latestHumanMark.perPointDecisions).toEqual({ p1: 1 });
+  const withNull = boot({
+    roles: TEACHER,
+    module: {
+      queue: {
+        answerById: (async () => ({
+          answerId: ANSWER_ID,
+          latestHumanMark: { id: "m2", markerId: "t", marksAwarded: 1, perPointDecisions: null, comments: "revised", createdAt: "2026-10-10T00:00:00Z" },
+        })) as unknown as TeacherMarkingModule["queue"]["answerById"],
+      },
+    },
+  });
+  const r2 = await withNull.app.request(`/answers/${ANSWER_ID}`);
+  expect(r2.status).toBe(200);
+  expect((await r2.json()).latestHumanMark.perPointDecisions).toBeNull();
+});
+
 // ── POST /kappa/evaluate (:273-280) — @RequestBody(required=false) ──────────
 
 test("absent body evaluates scope ALL; 201", async () => {
