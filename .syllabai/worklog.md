@@ -7265,3 +7265,17 @@ Work Log:
 
 Stage Summary:
 - The operator's parallel order is now IN THE BOARD: B1 claimed (marking subtree, gate law staged), B2 claimed (port-first, capture starting), B4 claimed (evidence band, expected to reach its exit gate this session). Zero prod contact, zero code contact, zero live-wire calls in the claim act itself. Next: run-001 read-only live laws per band (401/unknown-uuid/method laws B1; core-plane golden list B2; the two-plane subjects verify B4).
+
+---
+Task ID: trace 1a12c68dd42c7511 (run-001: the B1/B2/B4 read-only evidence battery + the B4 exit)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1)
+Task: run-001 evidence for the triple claim — the marking tail laws (B1), the assignments core golden + port-owed law (B2), the subjects wire-truth + corrected census (B4).
+
+Work Log:
+- Battery r119_run001_probes.py (the 110/111/112/113/114 recipe): ONE census-class probe register (disclosed), two-plane login via the shared-Neon doctrine, then 20 read-only legs. Core carrier pre-wake per the 108 warm-up law (first attempt zero-byte timeout -> 401 on attempt 2, disclosed). VERDICT 20/20 PASS.
+- B1 (T-MIG-116): the detail unknown-uuid 404 law is byte-identical both planes (message-shape law of record); all three tails' unauth 401s green. The LLM-adjacent tail verify stays STAGED (the rig: no docker/maven this sandbox — the claim disclosure stands) or the plan-authorized operator ruling (b) path. FAIL-NO-FLIP holds: no flip row lands on this evidence.
+- B2 (T-MIG-117): the core-plane list GET golden captured verbatim (200, 1309 bytes; the 47.9s cold-Render DB leg disclosed, single attempt); the v2 plane answers the honest NO-router 404-after-auth law — the port-owed evidence of record. The corrected census lists the TRUE 4-wire family (list/create/status/roster).
+- B4 (T-MIG-119): the two-plane subjects verify PASS-BYTE (5 subjects byte-equal v2 vs frozen core, same probe identity); the emitter rides the Wave-1-era /api/v1/curriculum row — the class pages' subjects wire rides v2 TODAY. The instrument HARDENED in-band (per-call-site wire-path resolution, prefix-emitter resolution, comment drop, the intervention-runs pin folded in, flip-row coverage vs both tables) — the plan §Z law. Corrected census of record: LIVE 5 -> 4, subjects RIDES-V2, dormant 7. The 035 check-3 law re-homed as a dormant-path pin (its subject stays true). Card -> IN_REVIEW.
+
+Stage Summary:
+- The operator's parallel order is fully engaged: B1 claimed + law layer live-proven (gate staged), B2 claimed + golden captured (port staged), B4 claimed + EXIT GATE MET (IN_REVIEW for the r0 desk). Zero prod writes beyond the one disclosed probe register; zero authed POSTs to any target family; zero LLM calls. Evidence: replay-run30/run001_probes.json (survivor); receipts T-MIG-116/117/119 run-001 + W7-CUTOVER/zero-core-census-2026-10-11-r7a.json.

@@ -1,0 +1,33 @@
+{
+ "task": "T-MIG-119",
+ "run": "run-001-wire-truth-r7a",
+ "lane": "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)",
+ "at": "2026-10-11T19:39-19:47Z",
+ "operator_order": "trace 1a12c68dd42c7511 (the B1/B2/B4 parallel order)",
+ "what": "the subjects wire-truth two-plane verify + the corrected zero-core census of record + the dispositions",
+ "write_ledger": "1 probe register (census-class, shared with the run-001 battery; disclosed); ZERO other writes; all legs read-only",
+ "two_plane_verify": {
+  "wire": "GET /api/v1/curriculum/subjects (the subjects() emitter's TRUE path, api.ts :1107)",
+  "planes": {"v2": "https://syllabai-v2.vercel.app", "core": "https://syllabai-core.onrender.com (wake-gated; woke per the 108 warm-up law)"},
+  "identity": "the SAME probe teacher account logged in on BOTH planes (the shared-Neon doctrine — one register, two logins)",
+  "result": "PASS-BYTE — 5 subjects each, json-canonical byte-equal (sort_keys compare, no multiset fallback needed)",
+  "unauth_laws": "401 both planes",
+  "verbatim_v2_body": [
+   {"id": "de18dcbb-c4c4-49e9-9132-8e7fbd7ef9f4", "code": "4CH0CHEMISTRY", "name": "Chemistry", "knowledgeNodeId": null, "curriculumVersion": {"id": "9cf15786-dbb9-4dda-9ff3-e88ef241795f", "board": "Edexcel", "qualification": "4CH0", "code": "4CH0CHEMISTRY-INGEST", "title": "4CH0 Chemistry (ingested, pending review)", "status": "DRAFT"}},
+   "…+4 more subjects (full bodies in the run battery evidence /home/z/my-project/replay-run30/run001_probes.json, b4_subjects_v2/b4_subjects_core)"
+  ]
+ },
+ "routing_assertion_of_record": "the subjects() emitter's wire /api/v1/curriculum/subjects is covered by the EXACT row /api/v1/curriculum (Wave-1-era, pinned in the V2_SURFACE_PREFIXES exact-set test) — the teacher class pages (class-client.tsx :82, classes/[id]/knowledge-graph/client.tsx :73) ride v2 TODAY under the dual-run posture; the claim-time finding CONFIRMED on the live wire",
+ "census_correction_of_record": {
+  "instrument": "scripts/preflight_zero_core_census.py HARDENED in-band (the plan §Z law): per-call-site wire-path resolution (api.<emitter>( lines resolve to THEIR emitter's wire), prefix-emitter resolution (smartMark -> smartMarkAttempt), comment-line drop, the intervention-runs pin folded into the inventory, flip-row coverage check against BOTH routing tables",
+  "corrected_receipt": ".syllabai/receipts/W7-CUTOVER/zero-core-census-2026-10-11-r7a.json (NEW file — the baseline receipt untouched, append-only culture)",
+  "delta": "pins 10 -> 11 (intervention-runs folded in); LIVE 5 -> 4: the bare /api/v1/subjects entry re-classified RIDES-V2 (its two call-sites resolve to /api/v1/curriculum/subjects which rides the /api/v1/curriculum row); the marking pin's learner-side smartMarkAttempt wire call re-attributed to the flipped attempts row (the plan note-b law, now mechanical); comment-line hits dropped (3 on marking, 2 on transcribe); the assignments pin now shows its TRUE 4-wire family (list/create/status/roster — the B2 claim finding, now in the census); the chat hardwire down to its ONE true fetch site (chat.tsx :320)"
+ },
+ "dispositions_of_record": [
+  "bare /api/v1/subjects = DORMANT-CORE (zero hub emitters resolve to it; v2 serves the /curriculum/subjects path — no bare mount exists on v2; the CORE_ONLY pin stays until the §6.2 disable, disclosed; NO flip row lands — nothing to flip)",
+  "legacy /api/v1/tree?includeMisconceptions=true = DORMANT-CORE (the knowledgeTree emitter is repointed to /api/v1/knowledge/nodes/:uuid/tree which rides the flipped T-MIG-084 row; the legacy path has zero emitters)",
+  "the T-MIG-035 check-3 law: its SUBJECT (the bare /subjects path stays core) remains TRUE — what corrects is the census LIVE classification, not the pin; the law is discharged as a LIVE-routing concern and re-homed as a dormant-path pin"
+ ],
+ "exit_gate": "the plan's B4 exit is MET of record: both teacher class pages ride v2 for subjects (wire-truth + live two-plane byte-verify); tree explicitly ruled dormant-core; the corrected census receipt is the §Z instrument hardening's first product. Band status: IN_REVIEW (the deliverables are receipts + the instrument hardening; no PR needed — scripts/ + .syllabai-only, both landed of record).",
+ "next": "none owed by this band; the census-soak (the Z gate) continues at every band merge"
+}

@@ -1,0 +1,27 @@
+{
+ "task": "T-MIG-117",
+ "run": "run-001-core-golden-r7a",
+ "lane": "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)",
+ "at": "2026-10-11T19:39-19:40Z",
+ "operator_order": "trace 1a12c68dd42c7511 (B2 in parallel)",
+ "what": "the core-plane golden capture of the teacher/assignments list read + the port-owed law evidence both planes",
+ "write_ledger": "ZERO writes to the assignments family (the create/status legs were NOT probed authed — they capture on the local rig only, the card law); the register write is shared with the run-001 battery (1 census-class probe, disclosed)",
+ "family_census_of_record": "the page emits FOUR wires (the claim finding, now census-confirmed at :134 list GET / :318 create POST / :347 status POST / :202 roster GET) — the corrected census receipt lists all four sites",
+ "legs": [
+  {"leg": "list GET golden (core plane)", "probe": "GET /api/v1/teacher/assignments, authed teacher, frozen core", "result": "200 in 47.94s (the wake-gated Render cold-DB leg — disclosed, single attempt, no retry)", "captured": true},
+  {"leg": "list GET (v2 plane)", "probe": "GET same, authed teacher, v2 carrier", "result": "404 {status:404, error:not_found, message:'resource not found'} — the /api/v1/* NO-router-claimed fallback law (index.ts :313-348 comment law)", "verdict": "the honest port-owed evidence of record"},
+  {"leg": "list GET unauth", "probe": "no token", "core": "401", "v2": "401", "verdict": "PASS"}
+ ],
+ "golden_of_record": {
+  "note": "verbatim body embedded below (1309 bytes) — the port's golden for the list GET; corpus-dependent per the 109 fixture-mapped law (the body reflects the shared-Neon state at capture time; the port verify re-captures at rig time)",
+  "status": 200,
+  "body": {"placeholder": "full verbatim body stored in the run battery evidence /home/z/my-project/replay-run30/run001_probes.json key b2_list_core_golden — embedded there byte-exact; the receipt keeps the pointer to keep this file review-sized"}
+ },
+ "port_staging_of_record": {
+  "source": "the frozen core's TeacherAssignmentController family (the port READS the frozen source — C1 intact; the /tmp core clone is EMPTY of record — the port session re-fetches the source per the 114 fetch-byte-exact law)",
+  "shape": "apps/api/src/routes/assignments.ts + services/teacher-assignments/** + tests; the index.ts mount as its own out-of-fence ratification commit (the 043/033 precedent)",
+  "gates": "the list leg vs THIS golden; the write legs on the 107 local rig (staged — no docker/maven this sandbox, the claim disclosure stands); then the row-form decision (one subtree row per the 107 law vs the bare leaf first) with the capture in hand"
+ },
+ "evidence": "/home/z/my-project/replay-run30/run001_probes.json",
+ "next": "the port band itself (a rig-capable session or a desk with the toolchain); FAIL-NO-FLIP trivially holds (nothing to flip until the port lands)"
+}

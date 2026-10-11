@@ -1,0 +1,160 @@
+{
+ "instrument": "preflight_zero_core_census.py (hardened: per-call-site wire-path resolution \u2014 the T-MIG-119 band, the plan \u00a7Z law)",
+ "generated_utc": "2026-10-11T19:45:17Z",
+ "source_of_record": "apps/hub/src/lib/api.v2-surface.test.ts CORE_ONLY_PATHS (+ manual additions + hardwires)",
+ "core_only_pins_total": 11,
+ "manual_pin_additions": [
+  "/api/v1/learners/me/intervention-runs"
+ ],
+ "live": [
+  {
+   "core_only_path": "/api/v1/teacher/marking/answers",
+   "emitter_hints": [
+    "markingAnswer",
+    "marking/answers",
+    "smartMark",
+    "smart-mark"
+   ],
+   "live_call_sites": [
+    "apps/hub/src/app/teacher/marking/marking-client.tsx:234:        const view = await api.markingAnswer(answerId);",
+    "apps/hub/src/app/courses/[course]/exam-questions/[topicSlug]/question-player.tsx:1504:  const smartMark = async () => {",
+    "apps/hub/src/app/courses/[course]/exam-questions/[topicSlug]/question-player.tsx:1586:          <Button size=\"sm\" variant=\"outline\" disabled={phase === \"marking\"} onClick={smartMark}>",
+    "apps/hub/src/app/teacher/marking/marking-client.tsx:289:        const result = await api.smartMarkBatch(ids);"
+   ],
+   "classification": "LIVE",
+   "rides_v2_wire_truth": [
+    {
+     "site": "apps/hub/src/app/courses/[course]/exam-questions/[topicSlug]/question-player.tsx:1509:        attempts.map((a) => api.smartMarkAttempt(a.attemptId)),",
+     "emitter": "smartMarkAttempt",
+     "wire_path": "/api/v1/learners/me/attempts/*/smart-mark",
+     "rides_row": "/api/v1/learners/me/attempts"
+    }
+   ],
+   "dropped_comment_lines": 3
+  },
+  {
+   "core_only_path": "/api/v1/teacher/assignments",
+   "emitter_hints": [
+    "teacherAssignments",
+    "teacherCreateAssignment",
+    "teacherSetAssignmentStatus",
+    "teacherAssignmentRoster"
+   ],
+   "live_call_sites": [
+    "apps/hub/src/app/teacher/assignments/assignments-client.tsx:134:      setListRows(await api.teacherAssignments());",
+    "apps/hub/src/app/teacher/assignments/assignments-client.tsx:318:      const created = await api.teacherCreateAssignment({",
+    "apps/hub/src/app/teacher/assignments/assignments-client.tsx:347:        await api.teacherSetAssignmentStatus(id, status);",
+    "apps/hub/src/app/teacher/assignments/assignments-client.tsx:202:      .teacherAssignmentRoster(selectedId)"
+   ],
+   "classification": "LIVE"
+  },
+  {
+   "core_only_path": "/api/v1/learners/me/answer-input/transcribe",
+   "emitter_hints": [
+    "transcribe"
+   ],
+   "live_call_sites": [
+    "apps/hub/src/components/answer-ink-pad.tsx:194:      const result = await api.transcribeHandwriting(base64, \"image/jpeg\");",
+    "apps/hub/src/components/answer-ink-pad.tsx:246:      const result = await api.transcribeHandwriting(base64, \"image/png\");"
+   ],
+   "classification": "LIVE",
+   "dropped_comment_lines": 4
+  },
+  {
+   "core_only_path": "hub route /api/ai/chat (SSE -> coreStreamAuthorized)",
+   "emitter_hints": [
+    "api/ai/chat"
+   ],
+   "live_call_sites": [
+    "apps/hub/src/app/tutor/chat.tsx:320:        const res = await fetch(\"/api/ai/chat\", {"
+   ],
+   "classification": "HARDWIRE-LIVE"
+  }
+ ],
+ "rides_v2_wire_truth": [
+  {
+   "core_only_path": "/api/v1/subjects",
+   "emitter_hints": [
+    "subjects("
+   ],
+   "live_call_sites": [],
+   "classification": "RIDES-V2",
+   "rides_v2_wire_truth": [
+    {
+     "site": "apps/hub/src/app/teacher/class/class-client.tsx:82:      .subjects()",
+     "emitter": "subjects",
+     "wire_path": "/api/v1/curriculum/subjects",
+     "rides_row": "/api/v1/curriculum"
+    },
+    {
+     "site": "apps/hub/src/app/teacher/classes/[id]/knowledge-graph/client.tsx:73:        const [d, s] = await Promise.all([api.teacherClassDetail(classId), api.subjects()]);",
+     "emitter": "teacherClassDetail",
+     "wire_path": "/api/v1/teacher/classes/*",
+     "rides_row": "/api/v1/teacher/classes"
+    }
+   ]
+  }
+ ],
+ "dormant": [
+  {
+   "core_only_path": "/api/v1/teacher/curriculum/versions",
+   "emitter_hints": [
+    "curriculum/versions",
+    "curriculumVersions"
+   ],
+   "live_call_sites": [],
+   "classification": "DORMANT"
+  },
+  {
+   "core_only_path": "/api/v1/questions?q=photosynthesis",
+   "emitter_hints": [
+    "questions("
+   ],
+   "live_call_sites": [],
+   "classification": "DORMANT"
+  },
+  {
+   "core_only_path": "/api/v1/questions/families",
+   "emitter_hints": [
+    "families("
+   ],
+   "live_call_sites": [],
+   "classification": "DORMANT"
+  },
+  {
+   "core_only_path": "/api/v1/exam-papers?subjectId=sub-1",
+   "emitter_hints": [
+    "examPapers"
+   ],
+   "live_call_sites": [],
+   "classification": "DORMANT"
+  },
+  {
+   "core_only_path": "/api/v1/exam-papers/ep-1",
+   "emitter_hints": [
+    "examPapers"
+   ],
+   "live_call_sites": [],
+   "classification": "DORMANT"
+  },
+  {
+   "core_only_path": "/api/v1/tree?includeMisconceptions=true",
+   "emitter_hints": [
+    "tree("
+   ],
+   "live_call_sites": [],
+   "classification": "DORMANT"
+  },
+  {
+   "core_only_path": "/api/v1/learners/me/intervention-runs",
+   "emitter_hints": [
+    "intervention-runs",
+    "interventionRuns"
+   ],
+   "live_call_sites": [],
+   "classification": "DORMANT"
+  }
+ ],
+ "unmapped_needs_manual_review": [],
+ "gate_law": "the SS 6.2 Render-disable pre-gate: this list must reach ZERO live entries, then hold green for the census-soak, before the operator disable"
+}

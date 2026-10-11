@@ -1,0 +1,23 @@
+{
+ "task": "T-MIG-116",
+ "run": "run-001-live-laws-r7a",
+ "lane": "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)",
+ "at": "2026-10-11T19:39Z",
+ "operator_order": "trace 1a12c68dd42c7511 (claim the marking band)",
+ "what": "fresh READ-ONLY live law evidence for the marking answers/:uuid subtree (B1) — the deterministic law layer both planes",
+ "write_ledger": "ZERO marking writes; ZERO authed POSTs (the tails probed UNAUTH-401 only — fail-closed pre-handler, the 110/111/114 battery law); ZERO LLM calls; the register write is shared with the run-001 battery (1 census-class probe, disclosed)",
+ "legs": [
+  {"leg": "detail unknown-uuid LAW", "probe": "GET /api/v1/teacher/marking/answers/<random-uuid4> authed teacher", "core": "404 {status:404, error:not_found, message:'answer <uuid> not found', timestamp:…}", "v2": "404 IDENTICAL body modulo timestamp", "verdict": "PASS — byte-parity law both planes"},
+  {"leg": "detail unauth", "probe": "GET same, no token", "core": "401", "v2": "401", "verdict": "PASS"},
+  {"leg": "smart-mark tail unauth", "probe": "POST /api/v1/teacher/marking/answers/<uuid>/smart-mark empty body, NO token", "core": "401", "v2": "401", "verdict": "PASS (fail-closed pre-handler; zero write)"},
+  {"leg": "smart-mark-batch tail unauth", "probe": "POST /api/v1/teacher/marking/smart-mark-batch empty body, NO token", "core": "401", "v2": "401", "verdict": "PASS (fail-closed pre-handler; zero write)"}
+ ],
+ "law_layer_reading": "the v2 carrier's deterministic law layer for the subtree (unknown-uuid 404 + all unauth 401s) is byte-level identical to the frozen core TODAY — consistent with the 114 44/44 re-verify of record (the detail projection legs included)",
+ "what_is_still_owed_before_the_flip": [
+  "the smart-mark + smart-mark-batch LLM-adjacent legs: the plan's preferred gate is the 107/113/114 local-rig recipe (ZERO-KEY + SYLLABAI_LLM_MODE=test — the keyless law capture the plan conditions on); the r7a sandbox has NO docker/maven (disclosed at claim) — the rig legs are STAGED, not skipped",
+  "the plan-authorized fallback: the operator ruling (b) declared class per the 106 precedent, conditioned on a captured keyless law — the leg-31 @Size 400 law of record (the 114 corpus) IS keyless; any ruling receipt is operator-ordered, never self-granted",
+  "FAIL-NO-FLIP holds: NO flip row lands on this evidence alone"
+ ],
+ "evidence": "/home/z/my-project/replay-run30/run001_probes.json (verbatim bodies: b1_detail_core / b1_detail_v2)",
+ "next": "the rig staging for the two tails (rig-capable session) OR the operator ruling path; then the row grammar decision + the 3-leg verify + the flip PR"
+}
