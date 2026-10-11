@@ -1,0 +1,50 @@
+{
+  "task": "T-MIG-114",
+  "run": "run-002-intake-178-supersede-r7a",
+  "agent": "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)",
+  "operator_order": "trace 1a12bdba7b350dc1 'Check if any pending PRs exist. Review+merge them' (monitor order trace 1a12716dcb148121)",
+  "date": "2026-10-11T17:20:00Z",
+  "act": "Open PR #178 (t-mig-114/r0, head f8ce183) reviewed hunk-by-hunk and merged of record as the SUPERSEDE-MERGE af3a56a (parents 42a13e9 + f8ce183)",
+  "verdict": "PASS",
+  "review_verdict": {
+    "classification": "parallel re-derivation of the T-MIG-114 band, forked at dd9b166 BEFORE #176 e4eaf93 landed 11:05:16Z",
+    "matrix": {
+      "classifier_branch": "identical condition+message already landed (routes/teachermarking.ts) — richer position",
+      "detail_read_law": "landed normalizeBreakdown IS parse-if-string WITH try/catch; r0's bare JSON.parse strictly less robust",
+      "hub_human_mark_row": "landed via #176 with the moved-out notes; r0's +1 would duplicate (breaks exact-set)",
+      "ppd_corpus_case": "landed and inside the green union 223/223; byte diff = description/source prose + trailing newline only",
+      "leg31_route_400_law": "landed RICHER (400 message + 50-entry inclusive 201 boundary inside the constraint-failures test)",
+      "entity_truth_law": "landed at the service layer (teachermarking.test.ts trio); r0's ROUTE-layer pin = the unique complementary coverage",
+      "fix2_revert_claim": "refers to r0's OWN wip 639a2dd (branch-internal); the landed #176 contains NO SELECT drop and its humanMarkView comment already cites the same 6cad6ef adjudication"
+    },
+    "rejected_at_resolution": [
+      "duplicate classifier branch (git auto-merge produced BOTH — restored main's single landed branch)",
+      "duplicate hub surface row (would break the exact-set surface test)",
+      "bare JSON.parse replacing normalizeBreakdown (loses try/catch)",
+      "stale card flip IN_PROGRESS-CLAIMED over the landed DONE (card untouched)",
+      "r0 ppd-case prose over the union byte-member",
+      "redundant standalone leg-31 400 test (strict subset of the landed richer legs)"
+    ],
+    "carried_from_178": [
+      "the route-layer entity-truth pin (routes.test.ts, verbatim + intake note)",
+      "evidence artifacts additive: receipts run-000-claim-r0.json + run-001-reverify-r0.json, arbiter-core-recapture fixtures leg-31/34/35/36/37 + _setup, tools t114-capture-core.py + t114-confirm-fixtures.py + t114-verify.ts",
+      "worklog Task-62/Task-63 entries unioned VERBATIM chronologically by carrier-commit timestamp (09:14:47Z claim before the 114 order+claim entry; 11:42:35Z amend before the 11:48:40Z closure entry — the d76b307 2nd-intake precedent)"
+    ]
+  },
+  "merge_tree_delta_vs_main_42a13e9": "13 files +714 — ZERO runtime file changes (routes/teachermarking.ts, services/teachermarking/index.ts, hub api.ts + surface test, golden ppd case, the T-MIG-114 card all byte-identical to main's landed versions)",
+  "gates_local_first_hand": {
+    "typecheck": "x4 (contracts/shared/db/api) exit 0 + hub tsc --noEmit exit 0",
+    "api_packages": "1860 pass / 13 skip / 0 fail / 7202 expect (EXACT: main 1859 + the 1 carried route-layer pin)",
+    "hub": "59 pass / 0 fail / 584 expect (= main's count — zero hub delta by construction)",
+    "golden_selftest": "OK"
+  },
+  "post_push_verification": {
+    "main_ci": "2/2 SUCCESS @ af3a56a first-hand via check-runs API (verify + hub)",
+    "pr_178_state": "MERGED of record (GitHub API first-hand; merge_commit af3a56afe7)",
+    "union_replay_scheduled": "run 38158396055 SUCCESS @ af3a56af (the scheduled fire minutes post-push)",
+    "union_replay_dispatched": "run 38158584864 SUCCESS @ af3a56af (this desk's dispatched fire) — log seal: 'UNION VERDICT: 223/223 golden cases pass (seed 208/208 + prod 15/15) — 5 via the T-MIG-071 (R3-C) declared limiter-429 disposition'"
+  },
+  "staged_lever_disposition": "the post-#178 api redeploy staged by the 42a13e9 custody receipt is DISCHARGED as the zero-runtime-delta no-op class (the T-MIG-076 ci.yml precedent): the merged tip's runtime files are byte-identical to the carrier-of-record runtime, and the union replay adjudicated the tip 223/223 twice",
+  "write_ledger": "one merge commit af3a56a (13 files +714, zero runtime) + one .syllabai-only bookkeeping commit (this receipt + worklog addendum); zero prod writes beyond the standing replay read-plane; zero probe learners created by this act; zero env/DDL; no force; credentialed remote used one-shot and stripped post-push",
+  "census_after_intake": "open PRs: ZERO of record"
+}
