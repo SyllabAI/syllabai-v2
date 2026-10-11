@@ -1,0 +1,40 @@
+{
+  "task": "W7-CUTOVER pre-archive readiness census (r7a) - operator traces 1a12c09380db0325 ('resume the classroom-foundation capture+verify band' + 'Can we proceed to retire the syllabai-core and syllabai-hub repos?')",
+  "agent": "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)",
+  "probed_utc": "2026-10-11T17:39..17:46Z",
+  "method": "fetch-first, read-only: GitHub API (PRs/CI/issue #147) + git fetch + HTTP GET probes; zero prod writes; no force",
+  "findings": {
+    "classroom_foundation_band": "ALREADY CLOSED END-TO-END OF RECORD - nothing to resume: T-MIG-112 run-004-closure-r7a (PR #174 merged 8907daa, hub redeploy dpl_Bhau3pD7sfTmXhRCVUk4ZJ86aV4d READY, baked-table EXACT +1/+1/+1 all six 111 needles 0, battery 24/24 read-only, union 203/203 at d5605ffe6 with the 17 classroom cases first-replay GREEN, ledger empty); the three rows (teacher/classes, learners/me/classroom, teacher/learners) live in V2_SURFACE_PREFIXES at tip 77ba0a4 and the 111/112 line tests pin them; the T-MIG-111 zero-corpus exclusion law DISCHARGED",
+    "pending_pr_queue": "ZERO open PRs (GitHub API first-hand 17:39Z); PR #178 supersede-merge af3a56a verified of record (receipts/T-MIG-114/run-002-intake-178-supersede-r7a.json); the operator review+merge order 1a12bdba7b350dc1 remains DISCHARGED",
+    "repo_state": "origin/main 77ba0a4 (r0-auto #178-escalation-closure bookkeeping); local ff'd clean 0/1; CI check-runs verify+hub 2/2 success at tip",
+    "union_replay": "223/223 (seed 208/208 + prod 15/15) TWICE green at af3a56a of record (scheduled 38158396055 + dispatched 38158584864); justified-ledger posture unchanged (zero non-justified; the R3-C declared limiter-429 disposition disclosed)",
+    "carrier_census": {
+      "v2_api_syllabai-v2.vercel.app": "UP - /actuator/health 200 {status:UP}; unauth marking-queue-v2 401 + subjects 401 laws live through the carrier",
+      "v2_hub_syllabai-hub-v2.vercel.app": "UP - /api/health 200 {status:ok, service:syllabai-hub, dataMode:core-api, coreConfigured:true}",
+      "frozen_hub_syllabai-hub.vercel.app": "UP - / 200; /api/health 200 {dataMode:mock, coreConfigured:true}",
+      "frozen_core_syllabai-core.onrender.com": "UP - extended cold-start disclosed: attempts 1-3 (25s/60s/60s) zero-byte timeout, attempt 4 HEAD / 401 in 0.44s, attempt 5 /actuator/health 200 {status:UP} in 0.75s (the 108 warm-up pattern, disclosed in attempts; the 042 no-double-decay law intact)",
+      "zombie_syllabai.vercel.app_prj_D7vf": "STILL 500 per issue #147 - the zombie-decommission operator lever stands"
+    }
+  },
+  "retirement_readiness_per_docs_CUTOVER_RUNBOOK.md": {
+    "P1_waves_exit_gates": "MET of record - board 109/109 cards DONE (zero open/claimed/unclaimed, r0 rider-flip census)",
+    "P2_golden_replay": "MET at the candidate SHA - union 223/223 twice at af3a56a, zero non-justified divergences, declared classes disclosed per the ruling3/071 law",
+    "P3_supervised_dual_run_witness": "PENDING - operator-supervised human-witnessed exercise (learner loop + teacher loop), not lane-executable",
+    "P4_operator_signoff": "PENDING - template at runbook section 7, paste into .syllabai/worklog.md",
+    "section2_traffic_flip": "SUPERSEDED BY THE DUAL-RUN FLIP-TABLE POSTURE of record - per-family flips each golden-gated (44 exact rows + 4 mid-path rows); rollback law intact (unset one env var, surface-test-pinned)",
+    "section3_decay_takeover": "DONE of record - T-MIG-042 chain: v2 vercel-cron drives the decay ledger exactly-once (21/21 distinct windows, zero double-fire), cross-checked; the core scheduler running-but-idle by design",
+    "section4_48h_watch": "WINDOW ELAPSED - opened 2026-10-09 (T-MIG-042 run-004), archive gate eligible 2026-10-11 ~07:40Z; continuous union green + zero new non-justified divergences throughout",
+    "section6_1_github_archive": "ELIGIBLE OF RECORD + OPERATOR-ONLY (the lane GITHUB_PAT is syllabai-v2-scoped, token-blocked lane-side per W7-SMOKE run-002); archive = read-only, NEVER delete; does not touch the legacy repo bodies (the standing law preserved); the recorded pre-gate P3/P4 remain the letter-of-law blockers",
+    "section6_2_render_disable": "NOT YET SAFE UNDER THE DUAL-RUN POSTURE - the CORE_ONLY law of record still routes LIVE hub emitters to the core carrier: the bare marking /answers tail (markingAnswer detail read, marking-client :234 + smart-mark/smart-mark-batch LLM-adjacent), the chat SSE hub route (core-hardwired, not table-routed), /api/v1/subjects + /api/v1/tree (the 035 check-3 law), /api/v1/questions list/detail/families + learner /exam-papers (positive wires uncaptured), answer-input/transcribe (GLM seam), learners/me/intervention-runs (no positive wire), teacher/assignments, teacher/curriculum/versions (the honest-501 stub subtree). Disabling Render NOW strands those surfaces",
+    "issue_147": "zombie decommission stays an operator lever (syllabai.vercel.app prj_D7vf 500s, still reproducing fresh)"
+  },
+  "recommended_operator_sequence": [
+    "1. P3: witness the dual-run loops (learner spine + teacher spine) on syllabai-hub-v2.vercel.app - lane can stage the click-path script on order",
+    "2. P4: paste the section-7 sign-off into the worklog (or hand the lane an explicit order to file it with the operator's words of record)",
+    "3. section 6.1: archive SyllabAI/syllabai-core + SyllabAI/syllabai-hub (read-only, never delete) - the operator's two dashboard clicks",
+    "4. BEFORE section 6.2 Render disable: final decommission bands - capture+verify+flip (or operator-ruled retire) the remaining live core-routed families above, then a zero-core-routing emitter census of record",
+    "5. issue #147: decommission the zombie project syllabai.vercel.app (prj_D7vf)",
+    "6. PAT rotation + the P3/P4 paste items from the recorded retirement levers"
+  ],
+  "boundaries": "read-only probes only; zero writes to prod/Neon/frozen-core; the legacy repos untouched; no force; token never persisted"
+}

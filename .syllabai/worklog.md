@@ -7217,3 +7217,19 @@ Work Log:
 
 Stage Summary:
 - PR #178 escalation CLOSED; T-MIG-114 of record via merged #176 + #178 intake; pending-PR queue EMPTY; desk watch continues on main CI + replay axis
+
+---
+Task ID: trace 1a12c09380db0325 (resume classroom band + retirement readiness)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)
+Task: the operator asked to resume the classroom-foundation capture+verify band and whether the syllabai-core/syllabai-hub repos can be retired — fetch-first census + the W7-CUTOVER readiness verdict.
+
+Work Log:
+- Fetch-first re-verification at the post-#178 tip: origin/main 77ba0a4 (r0-auto escalation-closure bookkeeping), local ff'd clean, CI check-runs verify+hub 2/2 success; open PRs ZERO (GitHub API first-hand 17:39Z) — the review+merge order 1a12bdba7b350dc1 stays DISCHARGED of record.
+- CLASSROOM BAND: T-MIG-112 verified ALREADY CLOSED END-TO-END of record — the card DONE with receipts run-001..004 (capture 49-leg + verify 40-leg ALL-GREEN + ordering-law addendum + closure: PR #174 merged 8907daa, hub redeploy dpl_Bhau3pD7sfTmXhRCVUk4ZJ86aV4d READY, battery 24/24 read-only, union 203/203 at d5605ffe6 with the 17 classroom cases first-replay GREEN, ledger empty); the three flip rows live in V2_SURFACE_PREFIXES at tip and pinned by the 111/112 line tests; the T-MIG-111 zero-corpus exclusion law DISCHARGED. Nothing to resume; no re-run performed (the union gate owns re-verification).
+- CARRIER CENSUS (read-only): v2 api syllabai-v2.vercel.app UP (actuator 200 + unauth 401 laws); v2 hub syllabai-hub-v2.vercel.app UP (api/health 200 core-api/coreConfigured:true); frozen hub syllabai-hub.vercel.app UP (200); frozen core syllabai-core.onrender.com UP after an EXTENDED cold-start disclosed (attempts 1-3 zero-byte timeout 25/60/60s, attempt 4 root 401 0.44s, attempt 5 actuator 200 0.75s — the 108 warm-up pattern, disclosed in attempts); the zombie syllabai.vercel.app (prj_D7vf) STILL 500 per issue #147.
+- RETIREMENT READINESS vs docs/CUTOVER_RUNBOOK.md (receipt W7-CUTOVER/retirement-readiness-census-2026-10-12-r7a.json): P1 MET (board 109/109); P2 MET at af3a56a (union 223/223 twice, zero non-justified); P3+P4 PENDING (operator-witnessed loops + the sign-off paste); §3 decay DONE; §4 48h window ELAPSED (gate 2026-10-11 ~07:40Z); §6.1 GitHub archive ELIGIBLE + OPERATOR-ONLY (lane token-blocked of record); §6.2 Render disable NOT YET SAFE under the dual-run posture — the CORE_ONLY law still routes LIVE hub emitters to the core (marking bare-/answers detail + smart-mark tails, chat SSE hardwire, subjects/tree, questions list/detail/families, learner exam-papers, transcribe, intervention-runs, teacher/assignments, teacher/curriculum/versions 501 stubs) — the recorded operator sequence is in the receipt.
+- Push: this .syllabai-only bookkeeping commit (fetch-first race check, no force, credentialed remote one-shot stripped post-push).
+
+Stage Summary:
+- The classroom-foundation band is CLOSED of record; the pending-PR queue is EMPTY; all four live carriers UP (the zombie still 500 per #147).
+- RETIREMENT VERDICT of record: the legacy-repo ARCHIVE lever (§6.1) is ELIGIBLE and awaits the operator's P3 witness + P4 sign-off + the two dashboard clicks; the Render disable (§6.2) must WAIT for the final decommission bands (the remaining live core-routed families) + a zero-core-routing emitter census. The lane stands ready to stage the P3 click-path script and the decommission bands on order.
