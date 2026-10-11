@@ -7233,3 +7233,19 @@ Work Log:
 Stage Summary:
 - The classroom-foundation band is CLOSED of record; the pending-PR queue is EMPTY; all four live carriers UP (the zombie still 500 per #147).
 - RETIREMENT VERDICT of record: the legacy-repo ARCHIVE lever (§6.1) is ELIGIBLE and awaits the operator's P3 witness + P4 sign-off + the two dashboard clicks; the Render disable (§6.2) must WAIT for the final decommission bands (the remaining live core-routed families) + a zero-core-routing emitter census. The lane stands ready to stage the P3 click-path script and the decommission bands on order.
+
+---
+Task ID: trace 1a12c1607ee86c41 (P3/P4 staging + decommission bands plan)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)
+Task: the operator order — stage the P3 witness click-path script, the pre-filled P4 sign-off, and plan the final decommission bands (capture+verify+flip the remaining live core-routed families).
+
+Work Log:
+- docs/P3-WITNESS-CLICKPATH.md staged: Loops A (learner A1-A7, all v2), B (teacher B1-B8, with B4 subjects + B7 marking-detail disclosed as the EXPECTED core legs), C (tutor SSE C1-C3, core-hardwired); per-step wire call + plane + init table; preconditions + witness declaration.
+- docs/P4-SIGNOFF-PREFILL.md staged: the runbook §7 template adapted to the executed posture (flip-table supersession, §3 DONE, §4 elapsed); P1/P2 pre-filled with receipt citations; exactly three operator blanks; the why-three-blanks law.
+- The zero-core-routing census instrument landed (scripts/preflight_zero_core_census.py, report form) and the baseline of record filed (receipts/W7-CUTOVER/zero-core-census-baseline.json): 10 stay-core pins — LIVE: marking answers tail (detail + teacher smart-mark), teacher/assignments, transcribe, subjects, the chat SSE hardwire, + the annotated /api/core/questions server-proxy family; dormant: exam-papers learner reads, intervention-runs, tree, curriculum/versions stub subtree. Instrument disclosures: comment-stripped extraction, fixed-string grep (the GNU-BRE quirk), the learner-side smartMarkAttempt hits ride the FLIPPED attempts row.
+- docs/DECOMMISSION-BANDS-PLAN.md landed: bands B1-B7 (proposed T-MIG-116..122) + the Z census gate; B1 = the marking answers/:uuid subtree in ONE band (the 114 over-capture lesson), B3 = the SSE re-point (the 106 declared law carries), B5 = the capture-heaviest proxy family; sequencing + the redeploy serialization law; the census ledger tracks LIVE 6 -> 0; §6.2 becomes operator-safe at zero LIVE + census-soak.
+- The lane-side READ-ONLY pre-flight (receipts/W7-CUTOVER/p3-preflight-probe-2026-10-12-r7a.json): 10/10 hub pages 200, /api/health 200, /api/ai/chat 405 method law, /api/core/questions 400 validation law — the click-path is walkable today.
+- NO band claimed; the P4 block staged NOT pasted (operator testimony); no prod writes; push .syllabai+docs+scripts (fetch-first, no force).
+
+Stage Summary:
+- All three staged deliverables of record; the census baseline (LIVE=6 annotated) is the decommission ledger's zero mark. The operator's remaining path: P3 witness session -> P4 paste -> §6.1 archive clicks (eligible) -> bands B1..B7 on order -> Z gate -> §6.2 disable.
