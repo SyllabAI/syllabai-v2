@@ -1,0 +1,62 @@
+version: 1
+task:
+  id: T-MIG-116
+  title: "Decommission band B1 — the marking answers/:uuid subtree (detail GET + smart-mark + smart-mark-batch POST tails) capture+verify+flip"
+  owner: "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)"
+  status: CLAIMED
+  claimed_at: "2026-10-11T19:31:44Z"
+  claimed_by_order: "operator trace 1a12c68dd42c7511 'claim the marking band, and B2/B4 for the small leaf bands in parallel'"
+  priority: P1
+  wave: W7-CUTOVER
+  deps: [T-MIG-113, T-MIG-114]
+  execution_record: >
+    CLAIMED 2026-10-11T19:31Z (r7a, fetch-first behind=0 @ 3a4acf8; claim-state fresh:
+    no prior card, no competing claim of record). Scope = the marking answers/:uuid
+    SUBTREE in ONE band per the plan row: the detail GET /api/v1/teacher/marking/
+    answers/:uuid + the two POST tails /answers/:uuid/smart-mark and /smart-mark-batch
+    (the 114 lesson: a mid-path row over-captures BOTH tails, so all three laws must be
+    golden-verified BEFORE the row lands — FAIL-NO-FLIP). The bare /answers list row
+    STAYS CORE (zero hub emitters of record, the census; the 090 routing-availability
+    posture is NOT invoked here — the plan's B1 exit is the page riding v2, which the
+    queue-v2/throughput/kappa rows + the three B1 legs satisfy). v2 impl of record
+    EXISTS (apps/api/src/routes/teachermarking.ts :277 detail, :287 smart-mark,
+    :268 smart-mark-batch; :295 human-mark already flipped mid-path in T-MIG-114) —
+    zero v2 code changes expected; any divergence = FAIL-NO-FLIP = a filed defect band
+    (the 114 pattern), never a widening. Planned rows: V2_SURFACE_MIDPATH_PREFIXES +
+    "/api/v1/teacher/marking/answers/:uuid" (startsWith captures the detail GET + the
+    smart-mark tail) + the batch leaf row "/api/v1/teacher/marking/smart-mark-batch"
+    at the V2_SURFACE_PREFIXES tail (NOT under the :uuid prefix; the exact row grammar
+    re-decided at flip with the capture in hand). GATE LAW (preferred): the 107/113/114
+    LOCAL-RIG recipe of record (PG 17.11 + pgvector 0.8.0 @ 127.0.0.1:5544,
+    openjdk 25 via dpkg -x + Maven 3.9.9, core clone 6cad6ef, Flyway V1..V63,
+    ZERO-KEY + SYLLABAI_LLM_MODE=test — drivers of record relocated in
+    .syllabai/receipts/T-MIG-114/tools/) capturing the tails' keyless laws BOTH planes
+    + the 44-leg matrix re-run green. SANDBOX DISCLOSURE of record: the r7a sandbox
+    has NO docker and NO maven (checked 2026-10-11T19:2xZ) — the rig is NOT runnable
+    in this session; the rig legs are STAGED, not skipped. GATE LAW (fallback,
+    plan-authorized): docs/DECOMMISSION-BANDS-PLAN.md B1 row pre-authorizes the
+    operator ruling (b) declared class per the 106 precedent IF a keyless law is
+    captured — the leg-31 @Size 400 law of record IS keyless (the 114 corpus). Any
+    ruling receipt is operator-ordered, never self-granted. Fresh read-only live
+    evidence lands as run-001 (unauth 401 laws + unknown-uuid detail laws both planes
+    + the batch-route method law; ZERO prod writes, ZERO authed POSTs, ZERO LLM calls).
+    Exit gate: 3-leg verify ALL-GREEN; the marking page rides v2 end-to-end; battery
+    needles 0; union replay green at the flip tip; census LIVE -1 (marking).
+base:
+  repo: "syllabai-v2 @ 3a4acf8 (fetch-first behind=0 at claim); frozen refs: syllabai-core @ 6cad6ef (the 114 rig ref of record)"
+basis: >
+  Operator order trace 1a12c68dd42c7511; docs/DECOMMISSION-BANDS-PLAN.md (93d805c)
+  band table B1; the zero-core census baseline of record; the 113/114 corpus laws.
+scope:
+  allowed:
+    - "apps/hub/src/lib/api.ts (flip rows + row notes only)"
+    - "apps/hub/src/lib/api.v2-surface.test.ts (row-set pins + line tests only)"
+    - "golden/** (corpus cases if the verify manufactures them)"
+    - ".syllabai/tasks/T-MIG-116.yaml (status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-116/**"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "apps/api/** (the v2 marking impl is of record; defects -> FAIL-NO-FLIP defect band)"
+    - "apps/hub/src/app/** (no page code changes)"
+    - "syllabai-core / syllabai-hub repos (frozen, C1)"
+    - "prod writes of any class (authed POSTs to the live planes forbidden this band)"

@@ -7249,3 +7249,19 @@ Work Log:
 
 Stage Summary:
 - All three staged deliverables of record; the census baseline (LIVE=6 annotated) is the decommission ledger's zero mark. The operator's remaining path: P3 witness session -> P4 paste -> §6.1 archive clicks (eligible) -> bands B1..B7 on order -> Z gate -> §6.2 disable.
+
+---
+Task ID: trace 1a12c68dd42c7511 (the B1/B2/B4 triple claim — marking band + the two small leaf bands in parallel)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1, operator trace 1a12c68dd42c7511 "claim the marking band, and B2/B4 for the small leaf bands in parallel")
+Task: claim T-MIG-116 (B1, the marking answers/:uuid subtree) + T-MIG-117 (B2, teacher/assignments) + T-MIG-119 (B4, subjects wire-truth) per the final decommission bands plan of record (93d805c).
+
+Work Log:
+- Environment re-verified first-hand on resume (the wipe-risk law): creds intact (syllabai.env / teacher.env / neon.env), repo present, core.filemode=false preserved; fetch-first census caught the lane 9 behind (42a13e9 -> 3a4acf8) — ff-only synced; the gap = the #178 supersede-merge chain + THIS lane's own 0779e72/93d805c/3a4acf8 staging band (P3 pre-flight 10/10 + the P4 prefill + the bands plan + the zero-core census baseline) — all confirmed of record, zero re-work needed.
+- The plan's identities pinned against the wire before claiming: B1 = the marking answers/:uuid subtree (bare /answers stays core, zero emitters); B2 = teacher/assignments; B4 = subjects.
+- CLAIM-TIME FINDING (B4, of record): the census baseline's LIVE entry for bare /api/v1/subjects is an instrument over-capture — the subjects() emitter actually hits /api/v1/curriculum/subjects (api.ts :1107), which ALREADY rides the flipped Wave-1-era /api/v1/curriculum row; the class pages' subjects wire rides v2 TODAY; the legacy /api/v1/tree pin is likewise dormant (knowledgeTree repointed to the nodes path, riding the flipped 084 row). B4 re-scoped to a ruling/evidence band (no flip rows) — the honest outcome the plan's B4 exit already allows.
+- CLAIM-TIME FINDING (B2, of record): the family is FOUR wires (list GET :134, create POST :318, status POST :347, roster GET /:id) — the plan's "+ same-page write emitters found at claim" clause fired; AND apps/api has ZERO teacher-assignments implementation (only the learner /assignments, learnerme.ts :367) — B2 is PORT-FIRST, flip row form decided at flip with capture in hand (the plan's "bare-only leaf" presumption refuted).
+- CLAIM-TIME SANDBOX DISCLOSURE (B1, of record): no docker + no maven in this sandbox (checked first-hand) — the 107/113/114 local rig is NOT runnable this session; the rig legs are STAGED (recipe + drivers of record in T-MIG-114 receipts/tools), not skipped; the plan-authorized fallback (operator ruling (b) declared class, conditioned on the keyless leg-31 law) stands available and operator-ordered.
+- Three cards filed + CLAIMED with owner/claimed_at/claimed_by_order, three run-000-claim receipts, scope fences per band (B1: no apps/api contact; B2: the port fence incl. the out-of-fence mount precedent; B4: no api.ts rows, no flip).
+
+Stage Summary:
+- The operator's parallel order is now IN THE BOARD: B1 claimed (marking subtree, gate law staged), B2 claimed (port-first, capture starting), B4 claimed (evidence band, expected to reach its exit gate this session). Zero prod contact, zero code contact, zero live-wire calls in the claim act itself. Next: run-001 read-only live laws per band (401/unknown-uuid/method laws B1; core-plane golden list B2; the two-plane subjects verify B4).

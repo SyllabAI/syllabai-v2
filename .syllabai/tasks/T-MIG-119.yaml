@@ -1,0 +1,58 @@
+version: 1
+task:
+  id: T-MIG-119
+  title: "Decommission band B4 — subjects wire-truth + census correction (the /api/v1/curriculum/subjects finding) + tree disposition"
+  owner: "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)"
+  status: CLAIMED
+  claimed_at: "2026-10-11T19:31:44Z"
+  claimed_by_order: "operator trace 1a12c68dd42c7511 'B4 for the small leaf bands in parallel'"
+  priority: P2
+  wave: W7-CUTOVER
+  deps: []
+  execution_record: >
+    CLAIMED 2026-10-11T19:31Z (r7a, fetch-first behind=0 @ 3a4acf8; claim-state fresh).
+    CLAIM-TIME FINDING of record (reframes the plan row): the hub subjects() emitter
+    hits /api/v1/curriculum/subjects (api.ts :1107-1110) — NOT the pinned bare
+    /api/v1/subjects. The /api/v1/curriculum prefix row is ALREADY in
+    V2_SURFACE_PREFIXES (the Wave-1-era row, pinned in the exact-set test) — so the
+    teacher class pages' subjects wire ALREADY RIDES V2 under the dual-run posture.
+    The census baseline's LIVE entry for bare /api/v1/subjects is an instrument
+    over-capture (the emitter-hint 'subjects(' resolved to the wrong path; the plan
+    section Z already flags per-call-site path resolution as the owed hardening).
+    BAND SCOPE (a ruling/evidence band, the B7 class — NO flip rows land): (1) the
+    fresh two-plane verify of the live wire (GET /api/v1/curriculum/subjects,
+    teacher bearer, v2 carrier syllabai-v2.vercel.app vs the frozen core carrier
+    syllabai-core.onrender.com, byte-law compare, read-only) as TODAY evidence;
+    (2) the disposition ruling of record: bare /api/v1/subjects = DORMANT-CORE
+    (zero hub emitters; v2 serves the /curriculum/subjects path, no bare mount —
+    the pin stays until the section 6.2 disable, disclosed); the legacy
+    /api/v1/tree?includeMisconceptions=true pin = DORMANT-CORE (the knowledgeTree
+    emitter is repointed to /api/v1/knowledge/nodes/:uuid/tree which rides the
+    flipped T-MIG-084 row; the legacy path has zero emitters); (3) the T-MIG-035
+    check-3 law disposition: the law's SUBJECT (bare /subjects stays core) remains
+    TRUE — what corrects is the census LIVE classification, not the pin; (4) the
+    corrected census receipt: the LIVE-of-record list drops the subjects entry
+    (6 annotated -> 5). Exit gate: the two-plane verify green of record; the
+    class pages confirmed riding v2 (the routing assertion in evidence); the
+    corrected census receipt; NO table change (nothing to flip — the honest
+    outcome the plan's exit gate already allows: 'tree either flipped or explicitly
+    ruled dormant-core', here extended to the subjects bare path with the
+    wire-truth evidence).
+base:
+  repo: "syllabai-v2 @ 3a4acf8 (fetch-first behind=0 at claim)"
+basis: >
+  Operator order trace 1a12c68dd42c7511; docs/DECOMMISSION-BANDS-PLAN.md band
+  table B4 + the Z census-gate law; the zero-core census baseline of record; the
+  035 check-3 law annotation; the 084 nodes row of record.
+scope:
+  allowed:
+    - "apps/hub/src/lib/api.v2-surface.test.ts (annotation/comment corrections only — NO row-set change expected; any discovered need for one = stop and re-scope)"
+    - "scripts/preflight_zero_core_census.py (the per-call-site path-resolution hardening if landed inside this band)"
+    - ".syllabai/tasks/T-MIG-119.yaml (status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-119/** and .syllabai/receipts/W7-CUTOVER/** (the corrected census receipt)"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "apps/hub/src/lib/api.ts (no flip rows — the family already rides v2)"
+    - "apps/api/**"
+    - "syllabai-core / syllabai-hub repos (frozen, C1)"
+    - "prod writes (this band is read-only by construction)"

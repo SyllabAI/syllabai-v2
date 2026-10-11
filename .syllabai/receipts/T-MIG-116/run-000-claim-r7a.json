@@ -1,0 +1,22 @@
+{
+ "task": "T-MIG-116",
+ "run": "run-000-claim-r7a",
+ "lane": "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)",
+ "at": "2026-10-11T19:31:44Z",
+ "operator_order": "trace 1a12c68dd42c7511 'claim the marking band, and B2/B4 for the small leaf bands in parallel'",
+ "claim_state_check": {
+  "fetch_first": "behind=0 @ 3a4acf8 (two fetches: 19:2xZ env-verify + 19:31Z pre-write race check)",
+  "prior_card": "none (the plan law: cards land on claim)",
+  "competing_claim": "none of record"
+ },
+ "band_identity": "B1 of docs/DECOMMISSION-BANDS-PLAN.md (93d805c) — the marking answers/:uuid subtree: detail GET + smart-mark POST + smart-mark-batch POST; the bare /answers list stays core (zero emitters)",
+ "v2_impl_of_record": "apps/api/src/routes/teachermarking.ts :277/:287/:268 (detail/smart-mark/smart-mark-batch) — zero code change expected, FAIL-NO-FLIP for any divergence",
+ "planned_rows": ["V2_SURFACE_MIDPATH_PREFIXES + /api/v1/teacher/marking/answers/:uuid", "V2_SURFACE_PREFIXES tail + /api/v1/teacher/marking/smart-mark-batch (grammar re-decided at flip)"],
+ "gate_law": {
+  "preferred": "the 107/113/114 local-rig recipe (PG 17.11 + pgvector 0.8.0 @127.0.0.1:5544, openjdk 25 dpkg -x, Maven 3.9.9, core 6cad6ef, Flyway V1..V63, ZERO-KEY + SYLLABAI_LLM_MODE=test; drivers in .syllabai/receipts/T-MIG-114/tools/) — the tails' keyless laws both planes + the 44-leg matrix re-run",
+  "fallback_plan_authorized": "operator ruling (b) declared class per the 106 precedent, conditioned on a captured keyless law (leg-31 @Size 400 of record is keyless) — operator-ordered receipt, never self-granted",
+  "sandbox_disclosure": "the r7a sandbox has NO docker + NO maven (checked 2026-10-11T19:2xZ) — rig legs STAGED not skipped; the band does NOT flip on read-only evidence alone"
+ },
+ "this_run": "claim only — zero prod contact, zero code contact",
+ "next": "run-001 fresh read-only live laws (unauth 401 + unknown-uuid detail + batch method law, both planes); then the rig staging or the operator ruling path"
+}

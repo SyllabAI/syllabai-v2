@@ -1,0 +1,58 @@
+version: 1
+task:
+  id: T-MIG-117
+  title: "Decommission band B2 — teacher/assignments (port-first: list GET + create POST + roster GET + status POST) capture+verify+flip"
+  owner: "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)"
+  status: CLAIMED
+  claimed_at: "2026-10-11T19:31:44Z"
+  claimed_by_order: "operator trace 1a12c68dd42c7511 'B2 for the small leaf bands in parallel'"
+  priority: P1
+  wave: W7-CUTOVER
+  deps: []
+  execution_record: >
+    CLAIMED 2026-10-11T19:31Z (r7a, fetch-first behind=0 @ 3a4acf8; claim-state fresh).
+    CLAIM-TIME SCOPE FINDING of record: the family is NOT a list-read-only leaf — the
+    assignments page emits FOUR wires into the /api/v1/teacher/assignments subtree:
+    GET list (assignments-client.tsx :134), POST create (:318), POST /:id/status
+    (:347), and GET /:id roster (api.ts teacherAssignmentRoster — call-site located
+    at capture). The plan's "+ any same-page write emitters found at claim" clause
+    FIRES: two write legs are in-family. PORT-FIRST of record: apps/api has ZERO
+    teacher-assignments implementation (grep 2026-10-11: only the learner /assignments
+    in learnerme.ts :367) — the band ports the core TeacherAssignmentController
+    family to apps/api (routes + services + tests; the index.ts wiring lands as the
+    043/033 out-of-fence-mount precedent commit for R0 ratification) BEFORE any flip.
+    CAPTURE CLASSES: the list GET golden from the live core carrier (read-only,
+    run-001 this session); the write legs via the 107 LOCAL-RIG class (staged — the
+    r7a sandbox has NO docker/maven, disclosed; the rig recipe of record is the
+    114 chain) with the 109 fixture-mapped class for corpus-dependent bodies; the
+    unauth 401 + 404-after-auth laws captured live both planes read-only (the v2
+    /api/v1/* fallback answers 404-after-auth for NO router claimed — the honest
+    evidence that the port is owed). FLIP ROW FORM decided at flip with the capture
+    in hand: EITHER one subtree row /api/v1/teacher/assignments (the 107
+    per-SUBTREE law — requires ALL legs verified incl. the two write verbs) OR the
+    bare list leaf first + the write-leg rows at their own gate; the plan's
+    "bare-only leaf" form presumed no write emitters, which the claim refuted.
+    Exit gate: the page rides v2 end-to-end; no-regression needles 0; union replay
+    green at the tip; census LIVE -1 (assignments).
+base:
+  repo: "syllabai-v2 @ 3a4acf8 (fetch-first behind=0 at claim); frozen refs: syllabai-core @ 6cad6ef (the rig ref; the port source is the frozen controller)"
+basis: >
+  Operator order trace 1a12c68dd42c7511; docs/DECOMMISSION-BANDS-PLAN.md band
+  table B2 (+ its own "+ same-page write emitters found at claim" clause); the
+  zero-core census baseline; the 112 roster posture + the 107 subtree-row law.
+scope:
+  allowed:
+    - "apps/api/src/routes/assignments.ts (new, the port)"
+    - "apps/api/src/services/teacher-assignments/** (new, the port)"
+    - "apps/api/test/** (the port's tests)"
+    - "apps/api/src/index.ts (the mount wiring, as its own out-of-fence ratification commit per the 043/033 precedent)"
+    - "apps/hub/src/lib/api.ts (flip rows + row notes only)"
+    - "apps/hub/src/lib/api.v2-surface.test.ts (row-set pins + line tests only)"
+    - "golden/** (corpus cases)"
+    - ".syllabai/tasks/T-MIG-117.yaml (status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-117/**"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "apps/hub/src/app/** (no page code changes)"
+    - "syllabai-core / syllabai-hub repos (frozen, C1 — the port READS the frozen source, never writes it)"
+    - "prod writes of any class (the create/status POST legs are captured on the local rig, NEVER on the live planes)"
