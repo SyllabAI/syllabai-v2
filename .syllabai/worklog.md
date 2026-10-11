@@ -7295,3 +7295,5 @@ Work Log:
 
 Stage Summary:
 - B4 (T-MIG-119) DONE of record — the subjects wire-truth band ratified on first-hand re-verification (five legs, one disclosed register). B2 (T-MIG-117) ORDERED with its execution gate of record: the port band runs in the first rig/toolchain-capable session (docker+maven present), with the order spec + in-hand assets filed so the capable session starts at the frozen law, not at zero. Board at the stamp: B1 (T-MIG-116) claimed/law-layer proven with the LLM tails staged per the rig gate law — the same rig gate now formally on record for B2; the census-soak gate continues at every band merge.
+
+PS (run-002 CI seal): main CI 2/2 completed/success at the desk tip b6f78f7 (verify + hub, first-hand via the checks API after the push); origin/main verified == b6f78f7 (fetch-after-push); the desk artifacts are the only delta (5 files, 114 insertions, .syllabai-only).
