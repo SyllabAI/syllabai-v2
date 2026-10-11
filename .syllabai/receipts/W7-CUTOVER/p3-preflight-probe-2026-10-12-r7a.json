@@ -1,0 +1,62 @@
+{
+ "probe_utc": "2026-10-11T18:00:12Z",
+ "carrier": "https://syllabai-hub-v2.vercel.app",
+ "pages": {
+  "/login": {
+   "status": 200,
+   "loc": ""
+  },
+  "/dashboard": {
+   "status": 200,
+   "loc": ""
+  },
+  "/learner": {
+   "status": 200,
+   "loc": ""
+  },
+  "/practice": {
+   "status": 200,
+   "loc": ""
+  },
+  "/tutor": {
+   "status": 200,
+   "loc": ""
+  },
+  "/teacher/marking": {
+   "status": 200,
+   "loc": ""
+  },
+  "/teacher/classes": {
+   "status": 200,
+   "loc": ""
+  },
+  "/teacher/assignments": {
+   "status": 200,
+   "loc": ""
+  },
+  "/teacher/class": {
+   "status": 200,
+   "loc": ""
+  },
+  "/teacher/classes/x/knowledge-graph": {
+   "status": 200,
+   "loc": ""
+  }
+ },
+ "routes": {
+  "/api/health": {
+   "status": 200,
+   "loc": ""
+  },
+  "/api/ai/chat": {
+   "status": 405,
+   "loc": ""
+  },
+  "/api/core/questions?rootId=probe": {
+   "status": 400,
+   "loc": ""
+  }
+ }
+}
+
+SUMMARY: pages-ok 10/10 (200 or auth-redirect), routes-answering 3/3
