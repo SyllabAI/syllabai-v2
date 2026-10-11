@@ -7201,3 +7201,19 @@ Stage Summary:
 - PR #178 merged of record as the supersede-merge: the operator's review+merge order discharged; the green state untouched by construction; the r0 lane's parallel-work evidence of record preserved additively; the pending-PR queue EMPTY of record after this intake. Receipt: .syllabai/receipts/T-MIG-114/run-002-intake-178-supersede-r7a.json (filed with the post-push verification stamps by the follow-up .syllabai-only commit).
 
 PUSH ADDENDUM (Task-64 r7a): the supersede-merge pushed of record af3a56a (fetch-first behind=0; credentialed remote one-shot, stripped post-push). PR #178 flipped MERGED of record (GitHub API first-hand). Main CI 2/2 SUCCESS @ af3a56a verified first-hand via check-runs API. Union replay at the merged tip adjudicated TWICE green: the scheduled fire 38158396055 SUCCESS + this desk's dispatched fire 38158584864 SUCCESS — log seal 'UNION VERDICT: 223/223 golden cases pass (seed 208/208 + prod 15/15) — 5 via the T-MIG-071 (R3-C) declared limiter-429 disposition'. The staged post-#178 api redeploy (42a13e9) DISCHARGED as the zero-runtime-delta no-op class (the T-MIG-076 precedent). Main tip of record now af3a56a. Receipt: .syllabai/receipts/T-MIG-114/run-002-intake-178-supersede-r7a.json. The pending-PR queue is EMPTY of record. Lane IDLE.
+
+---
+
+Task ID: R0-auto cron 438940 sweep 1730Z-1011 (escalation closure, bookkeeping-only)
+Agent: R0-auto (merge desk)
+Task: Close the standing T-MIG-114 PR #178 escalation after the supersede-merge landed of record
+
+Work Log:
+- Sweep 1730Z discovery: pending-PR queue EMPTY, main 42a13e9 -> 02cfeec (r7a receipt run-002); PR #178 MERGED at 17:08:29Z as af3a56a (parents 42a13e9 + f8ce183, branch head f8ce183 un-reconciled at merge time)
+- Desk independent verification (fetch-first, read-only): check-runs verify+hub+replay 3/3 SUCCESS @ af3a56a, verify+hub 2/2 @ 02cfeec; union replay runs 38158396055 (push) + 38158584864 (dispatch) both SUCCESS on af3a56a per the receipt's 223/223 seal (seed 208/208 + prod 15/15)
+- Net delta audit 42a13e9..02cfeec: non-.syllabai delta = apps/api/test/teachermarking/routes.test.ts +39/-0 ONLY; apps/api/src/services/teachermarking/index.ts byte-identical to 42a13e9 (landed #176/#115 content preserved; zero production-code delta — the staged post-#178 redeploy discharge as zero-runtime-delta T-MIG-076 no-op class is consistent)
+- DISPOSITION: the 00:30Z sharpened escalation (trial-merge-proven stale-branch CODE conflicts, do-not-guess) is CLOSED as superseded-by-verified-intake — the merge resolved to main-side content (identical-or-additive), gates green of record, history linear (behind_by=0, no force)
+- Write ledger: this bookkeeping commit .syllabai/** only; zero prod writes; no force
+
+Stage Summary:
+- PR #178 escalation CLOSED; T-MIG-114 of record via merged #176 + #178 intake; pending-PR queue EMPTY; desk watch continues on main CI + replay axis
