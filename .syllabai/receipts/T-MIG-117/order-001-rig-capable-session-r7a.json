@@ -1,0 +1,41 @@
+{
+  "receipt": "order-001-rig-capable-session-r7a",
+  "task": "T-MIG-117",
+  "band": "B2 — teacher/assignments (port-first: list GET + create POST + roster GET + status POST) capture+verify+flip",
+  "kind": "BAND ORDER FILING (the port band ordered; execution gated on a rig/toolchain-capable session)",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)",
+  "operator_order": "trace 1a12cae16d07ced5: 'order the B2 port band (needs a rig/toolchain-capable session)'",
+  "at": "2026-10-12T04:58Z (UTC+8 session ~12:58)",
+  "order": {
+    "what": "the T-MIG-117 port band is ORDERED into the board; the band EXECUTES in the first rig/toolchain-capable session that picks it up",
+    "why_gated": "the band's write-leg captures (create POST / status POST / roster GET fixtures) are the 107 LOCAL-RIG class — they require docker + maven + the 114-chain local rig; live-plane writes to the family are forbidden by the band's own fence",
+    "this_session_capability_census": {
+      "docker": "ABSENT (command not found, checked first-hand 2026-10-12)",
+      "maven/mvn": "ABSENT (command not found, checked first-hand 2026-10-12)",
+      "java": "OpenJDK 21.0.12.1 present (insufficient alone for the rig class)",
+      "bun": "1.3.14 present",
+      "verdict": "NOT rig/toolchain-capable — matches the claim-time disclosure; the port does NOT start in this session"
+    },
+    "order_spec_what_the_capable_session_owes": [
+      "(1) the PORT: apps/api/src/routes/assignments.ts + apps/api/src/services/teacher-assignments/** + tests, line-against-line the frozen TeacherAssignmentController family @ syllabai-core 6cad6ef — all FOUR wires (list GET, create POST, status POST, roster GET), the true family per the corrected census",
+      "(2) the index.ts mount wiring as its OWN out-of-fence ratification commit (the 043/033 precedent) for R0 ratification",
+      "(3) the write-leg captures (create/status/roster) on the LOCAL RIG ONLY (the 114-chain recipe); ZERO live-plane writes to the family — the fence stands",
+      "(4) the flip-row form decided WITH capture in hand: the 107 per-SUBTREE row law (requires ALL legs verified incl. both write verbs) vs the bare-list-first leaf form + write-leg rows at their own gate",
+      "(5) the EXIT GATE: the page rides v2 end-to-end; no-regression needles 0; union replay green at the tip; census LIVE -1 (assignments)"
+    ],
+    "already_in_hand_no_rework": [
+      "run-001 core-plane list GET golden captured verbatim (200, 1309 bytes; .syllabai/receipts/T-MIG-117/run-001-core-golden-r7a.json + the survivor evidence b2_list_core_golden)",
+      "the true 4-wire family mapping in the corrected census (LIVE /api/v1/teacher/assignments, 4 call-sites)",
+      "the v2-plane NO-router 404-after-auth law (the honest port-owed evidence)",
+      "unauth 401 laws both planes (run-001)"
+    ],
+    "claim_carry_over": "this lane's claim + scope fence carry over; a rig/toolchain-capable session may re-claim under its own lane id per the two-sessions-never-share-one-id law (claim timestamps: 2026-10-11T19:31:44Z this lane)"
+  },
+  "not_authorized_by_this_order": [
+    "any live-plane write to the assignments family (create/status/roster POSTs stay rig-only)",
+    "any flip row before the port + captures are of record",
+    "any port code in THIS non-capable session"
+  ],
+  "write_ledger": "zero writes of any class in the filing itself (card + receipt + worklog only); the desk battery on the sibling B4 order spent ONE disclosed census-class register (its own receipt, T-MIG-119)",
+  "next": "the first rig/toolchain-capable session picks up T-MIG-117 per the order spec; r7a remains available for the read-only legs (golden re-capture, law probes) on request"
+}

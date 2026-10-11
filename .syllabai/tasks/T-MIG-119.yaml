@@ -3,7 +3,7 @@ task:
   id: T-MIG-119
   title: "Decommission band B4 — subjects wire-truth + census correction (the /api/v1/curriculum/subjects finding) + tree disposition"
   owner: "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)"
-  status: IN_REVIEW
+  status: DONE
   claimed_at: "2026-10-11T19:31:44Z"
   claimed_by_order: "operator trace 1a12c68dd42c7511 'B4 for the small leaf bands in parallel'"
   priority: P2
@@ -60,3 +60,6 @@ progress_log:
   - run: run-001-wire-truth-r7a (2026-10-11T19:47Z)
     what: "the two-plane subjects verify PASS-BYTE (5 subjects, byte-equal v2 vs frozen core, same probe identity via the shared-Neon doctrine) + the instrument HARDENED in-band (per-call-site wire-path resolution) + the corrected census of record (LIVE 5 -> 4; subjects re-classified RIDES-V2 riding the Wave-1-era /api/v1/curriculum row; the assignments 4-wire family; the chat hardwire's one true fetch site). Dispositions of record: bare /api/v1/subjects DORMANT-CORE, legacy /api/v1/tree DORMANT-CORE, the 035 check-3 law re-homed as a dormant-path pin (its subject stays true)."
     exit_gate: "MET per the plan's B4 exit (class pages ride v2 for subjects; tree ruled dormant-core). IN_REVIEW for the r0 desk ratification — no PR (receipts + instrument only, the 93d805c staging class)."
+  - run: desk-ratification-run-002-r7a (2026-10-12T~04:55Z)
+    what: "R0-DESK RATIFICATION EXECUTED (operator-ordered, trace 1a12cae16d07ced5) — independent verification battery r119_desk_ratify.py: LEG E zero-write recompute of the of-record byte-compare from the survivor evidence PASS-BYTE reproduces_of_record=True; LEG C-lite zero-write live unauth 401 laws BOTH planes PASS (core needed one infra retry per the Render wake law, disclosed); LEG C live two-plane replication with ONE disclosed census-class probe register PASS-BYTE (5 subjects, byte-equal, cross-run stability vs run-001 ALSO PASS-BYTE — the corpus is stable across runs). Static legs first-hand: the /api/v1/curriculum row at api.ts:163, the subjects emitter /api/v1/curriculum/subjects at api.ts:1109, the exact-set pins (:269/:887), the hardened census instrument re-run reproduces pins=11 LIVE=4 dormant=7 unmapped=0 (one run-time caveat disclosed: the instrument's default output path overwrites the baseline receipt in-place — the desk caught it and restored the tracked baseline to HEAD before staging anything; the baseline-of-record file is untouched in this commit)."
+    verdict: "RATIFIED — the B4 exit gate stands on first-hand re-verification. Card DONE. No PR (receipts + instrument only, per the band class). Zero prod writes beyond the one disclosed probe register; zero authed POSTs to any family; zero LLM."

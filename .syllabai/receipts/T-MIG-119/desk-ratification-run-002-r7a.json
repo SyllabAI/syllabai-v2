@@ -1,0 +1,50 @@
+{
+  "receipt": "desk-ratification-run-002-r7a",
+  "task": "T-MIG-119",
+  "band": "B4 — subjects wire-truth + census correction (decommission band, the B7 evidence class)",
+  "kind": "R0-DESK RATIFICATION (operator-ordered desk)",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)",
+  "operator_order": "trace 1a12cae16d07ced5: 'r0-desk ratification of B4'",
+  "at": "2026-10-12T04:50-04:56Z (UTC+8 session 2026-10-12 ~12:50)",
+  "ratified_artifacts": [
+    ".syllabai/receipts/T-MIG-119/run-001-wire-truth-r7a.json (the of-record verify)",
+    ".syllabai/receipts/W7-CUTOVER/zero-core-census-2026-10-11-r7a.json (the corrected census)",
+    "scripts/preflight_zero_core_census.py (the §Z-hardened instrument)",
+    "replay-run30/run001_probes.json (the run-001 survivor evidence, b4_subjects_v2/b4_subjects_core)"
+  ],
+  "verification_battery": {
+    "script": "scripts/r119_desk_ratify.py (evidence replay-run30/desk119_ratify.json)",
+    "leg_E_evidence_recompute": {
+      "class": "zero-write",
+      "what": "independent canonical byte-compare RECOMPUTED from the survivor evidence bodies (not a re-read of the recorded verdict)",
+      "result": "PASS-BYTE, n_v2=5, n_core=5, reproduces_of_record=True"
+    },
+    "leg_C_lite_unauth_laws": {
+      "class": "zero-write, live",
+      "what": "GET /api/v1/curriculum/subjects unauth on BOTH planes",
+      "result": "401 both planes PASS (core needed one infra retry per the Render wake law, disclosed)"
+    },
+    "leg_C_live_replication": {
+      "class": "ONE census-class probe teacher register (disclosed) + two-plane login (shared-Neon doctrine)",
+      "what": "GET /api/v1/curriculum/subjects authed (teacher bearer) on BOTH planes",
+      "result": "PASS-BYTE (5 subjects each, byte-equal); cross-run stability vs the run-001 evidence bodies ALSO PASS-BYTE (corpus stable across runs)"
+    },
+    "leg_A_static": {
+      "class": "zero-write, repo",
+      "results": [
+        "apps/hub/src/lib/api.ts:163 — the /api/v1/curriculum row IN V2_SURFACE_PREFIXES (Wave-1-era, T-MIG-021 annotation)",
+        "apps/hub/src/lib/api.ts:1109 — the subjects() emitter wire is /api/v1/curriculum/subjects",
+        "apps/hub/src/lib/api.v2-surface.test.ts:269 + :887 — the exact-set and routing pins"
+      ]
+    },
+    "leg_B_census_instrument": {
+      "class": "zero-write, repo",
+      "what": "the hardened instrument re-run first-hand",
+      "result": "pins=11 LIVE=4 dormant=7 unmapped=0 — EXACTLY the corrected census of record (subjects absent from LIVE; the assignments pin shows its true 4-wire family; the chat hardwire its one true fetch site)",
+      "run_time_caveat_disclosed": "the instrument's default output path overwrites .syllabai/receipts/W7-CUTOVER/zero-core-census-baseline.json IN-PLACE on every run; the desk caught the working-tree dirty state, restored the tracked baseline to HEAD (git checkout), and staged nothing from the overwrite — the baseline-of-record file ships UNCHANGED in this commit; the corrected census of record remains the separate 2026-10-11 file; the instrument's default path should be re-pointed at next touch (filed as an in-band note, not a defect of the correction)"
+    }
+  },
+  "desk_verdict": "RATIFIED — the B4 exit gate (class pages ride v2 for subjects; tree ruled dormant-core; corrected census of record) stands on first-hand re-verification across five independent legs. Card T-MIG-119 -> DONE.",
+  "write_ledger": "ONE probe teacher register (census-class, disclosed; identity r7a-b124-desk-teacher-<salt>@example.invalid); zero authed POSTs to any band family; zero LLM calls; zero env writes; zero deploys; .syllabai-only direct-main (fetch-first), no force",
+  "next": "none owed by B4; the census-soak (the §Z gate) continues at every band merge; B2 (T-MIG-117) is ORDERED separately per the same operator trace"
+}
