@@ -2,7 +2,7 @@
 """Zero-core-routing pre-census (the decommission baseline).
 
 Walks the CORE_ONLY stay-core pins of record (apps/hub/src/lib/api.v2-surface.test.ts)
-plus the two known hub hardwires, and for each entry greps the hub source for
+plus the known hub hardwires, and for each entry greps the hub source for
 LIVE call-sites (outside lib definitions and tests). Output: the remaining-core
 inventory with LIVE / dormant / UNMAPPED classification - the baseline the
 docs/DECOMMISSION-BANDS-PLAN.md bands retire until the list is empty, at which
@@ -38,6 +38,8 @@ EMITTER_HINTS = {
     "/api/v1/tree?includeMisconceptions=true": ["tree("],
 }
 HARDWIRES = {
+    # the key string is CONTINUITY-OF-RECORD (the baseline receipts cite it);
+    # the classification truth since B3 (T-MIG-118) rides hardwire_v2_truth below.
     "hub route /api/ai/chat (SSE -> coreStreamAuthorized)": ["api/ai/chat"],
 }
 
@@ -95,6 +97,67 @@ def midpath_covers(path: str, midpath: list[str]) -> str | None:
         if re.match(pat, path):
             return r
     return None
+
+
+def hardwire_v2_truth(key: str) -> dict | None:
+    """T-MIG-123 hardening (the 122-class matcher law carried to the hardwire
+    class, the plan §Z per-call-site law): a hardwire row is classified by its
+    ROUTE FILE'S SERVING DECISION, not by residual literal hits.
+
+    Motivating correction of record: the chat rule predates the B3 re-point and
+    kept the row HARDWIRE-LIVE after T-MIG-118 moved the always-on upstream to
+    v2 — the only live-looking hit was the chat.tsx browser fetch of the hub's
+    OWN route (the browser contract, unchanged by B3 by design), not a
+    hub->core dependency (T-MIG-122 run-003 adjudication: STALE-RULE).
+
+    Resolution: find the route file for the key's /api/ai/<name> path; resolve
+    EVERY v2SurfaceBase(<arg>, ...) call in it (an identifier arg is chased to
+    its string-literal assignment in the same file); if EVERY resolved v2 wire
+    is covered by a flip row of record AND the key's fallback helper (the
+    '-> <helper>)' suffix) survives only as the same decision's rollback arm,
+    the hardwire RIDES-V2 with the one-env-var rollback disclosed (the
+    claAskFetch class). Any uncovered wire or missing decision -> None (the
+    row stays HARDWIRE-LIVE — FAIL-NO-FLIP posture for the classifier itself)."""
+    km = re.search(r"(/api/ai/[a-z0-9-]+)", key)
+    if not km:
+        return None
+    route = HUB_SRC / "app" / km.group(1).strip("/") / "route.ts"
+    if not route.exists():
+        return None
+    src = route.read_text()
+    fb = re.search(r"->\s*([A-Za-z_][A-Za-z0-9_]*)\s*\)", key)
+    fallback_helper = fb.group(1) if fb else None
+    decisions = []
+    for m in re.finditer(r"v2SurfaceBase\(\s*([A-Za-z_][A-Za-z0-9_]*|\"[^\"]+\"|`[^`]+`)\s*,", src):
+        arg = m.group(1)
+        if arg[0] in "\"`":
+            wire = arg[1:-1]
+            ident = None
+        else:
+            ident = arg
+            dm = re.search(r"\b" + re.escape(arg) + r"\s*=\s*[\"`]([^\"`]+)[\"`]", src)
+            if not dm:
+                return None  # unresolvable serving decision -> stays LIVE
+            wire = dm.group(1)
+        covering = row_covers(wire)
+        if not covering:
+            return None  # a serving wire NOT flip-row-covered -> stays LIVE
+        decisions.append({"identifier": ident, "wire": wire, "rides_row": covering})
+    if not decisions:
+        return None  # no table-governed v2 decision of record -> stays LIVE
+    if fallback_helper and fallback_helper not in src:
+        return None  # the key's fallback helper vanished -> key stale, not v2-first
+    return {
+        "route_file": str(route.relative_to(REPO)),
+        "serving_decisions": decisions,
+        "core_rollback_fallback": fallback_helper,
+        "fallback_law": ("the one-env-var rollback (NEXT_PUBLIC_API_V2_BASE_URL unset "
+                         "-> core), the claAskFetch table-governed class "
+                         "(T-MIG-097/118); the core helper is NOT the serving path"),
+        "residual_sites": ("browser-side fetches of the hub's OWN route (e.g. "
+                           "chat.tsx) are the unchanged browser contract, not "
+                           "hub->core dependencies"),
+    }
 
 
 def is_comment_line(hit: str) -> bool:
@@ -218,16 +281,26 @@ def main() -> None:
     hardwire_rows = []
     for k, hints in HARDWIRES.items():
         sites = [h for h in grep_call_sites(hints[0]) if not is_comment_line(h)]
-        hardwire_rows.append({
-            "core_only_path": k, "emitter_hints": hints,
-            "live_call_sites": sites,
-            "classification": "HARDWIRE-LIVE" if sites else "dormant"})
+        row = {"core_only_path": k, "emitter_hints": hints, "live_call_sites": sites}
+        truth = hardwire_v2_truth(k)
+        if truth is not None:
+            row["classification"] = "RIDES-V2"
+            row["rides_v2_wire_truth"] = truth
+            # the residual literal hits stay on the row, disclosed — honesty
+            # over tidiness (the baseline diff readers see BOTH sides)
+            row["residual_sites_disclosed"] = sites
+        else:
+            row["classification"] = "HARDWIRE-LIVE" if sites else "dormant"
+        hardwire_rows.append(row)
     live = [r for r in rows + hardwire_rows if r["classification"] in ("LIVE", "HARDWIRE-LIVE")]
-    rides_v2 = [r for r in rows if r["classification"] == "RIDES-V2"]
+    rides_v2 = [r for r in rows + hardwire_rows if r["classification"] == "RIDES-V2"]
     dormant = [r for r in rows + hardwire_rows if r["classification"] in ("DORMANT", "dormant")]
     unmapped = [r for r in rows if r["classification"] == "UNMAPPED"]
     report = {
-        "instrument": "preflight_zero_core_census.py (hardened: per-call-site wire-path resolution — the T-MIG-119 band, the plan §Z law)",
+        "instrument": ("preflight_zero_core_census.py (hardened: per-call-site wire-path "
+                       "resolution — the T-MIG-119 band; the midpath segment-join — the "
+                       "T-MIG-122 band; the hardwire serving-decision law — the T-MIG-123 "
+                       "band, the plan §Z law)"),
         "generated_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "source_of_record": "apps/hub/src/lib/api.v2-surface.test.ts CORE_ONLY_PATHS (+ manual additions + hardwires)",
         "core_only_pins_total": len(pins),

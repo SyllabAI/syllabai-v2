@@ -1,0 +1,64 @@
+version: 1
+task:
+  id: T-MIG-123
+  title: "Decommission §Z residual — the census chat_sse matcher hardening (the B3 stale rule): the hardwire class classified by the route file's SERVING DECISION"
+  owner: "r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
+  status: IN_REVIEW
+  claimed_at: "2026-10-12T15:02:38Z"
+  claimed_by_order: "operator trace 1a1309c5baf14f8d 'B3 SSE'"
+  priority: P1
+  wave: W7-CUTOVER
+  deps: [T-MIG-118, T-MIG-122]
+  execution_record: >
+    CLAIMED 2026-10-12T15:02Z (r0, fetch-first behind=0 @ f8890e1; claim-state fresh:
+    no Z-band card of record — T-MIG-122 run-003 adjudicated the chat_sse row
+    STALE-RULE and explicitly left the hardening un-filed "left to the Z band
+    claim per scope discipline; NOT self-filed"; no competing claim; race check
+    two fetches 14:59Z + 15:02Z, tip stable f8890e1). CLAIM-TIME FINDINGS of
+    record: (1) the census instrument's chat hardwire row is LIVE solely on the
+    chat.tsx:320 browser fetch of "/api/ai/chat" — the hub's OWN browser contract
+    (unchanged by B3 by design), NOT a hub->core dependency; (2) the route's
+    serving decision is TABLE-GOVERNED V2-FIRST of record (route.ts :148
+    streamPath = "/api/v1/tutor/ask/stream", :149 v2SurfaceBase(streamPath, ...),
+    :152-161 the ternary — coreStreamAuthorized ONLY on the env-unset rollback
+    arm, the claAskFetch class; :343-346 the blocking twin askPath =
+    "/api/v1/tutor/ask", the 106 PAIR row); (3) row_covers resolves BOTH wires
+    onto the "/api/v1/tutor/ask" flip row first-hand. THE HARDENING (the 122-class
+    matcher law carried to the hardwire class, the plan §Z per-call-site law):
+    a hardwire row is classified by its ROUTE FILE'S SERVING DECISION — resolve
+    every v2SurfaceBase call (identifier args resolved to their string-literal
+    assignments in the same file); if EVERY resolved v2 wire is covered by a flip
+    row of record AND the core helper survives only as the same decision's
+    fallback arm, the row RIDES-V2 with the one-env-var rollback + the residual
+    browser-contract sites disclosed; else HARDWIRE-LIVE unchanged. ZERO app-code
+    change (apps/** untouchable — the B3 re-point is of record; any divergence =
+    FAIL-NO-FLIP defect band). Post-merge owed: NONE beyond the stamps — scripts/
+    + .syllabai are outside both deploy bundles (zero redeploy owed; the api+hub
+    carriers stay operator-gated as standing).
+base:
+  repo: "syllabai-v2 @ f8890e1 (fetch-first behind=0 at claim); frozen refs: syllabai-core @ 6cad6ef"
+basis: >
+  Operator order trace 1a1309c5baf14f8d 'B3 SSE'; the T-MIG-122 run-003
+  adjudication of record (chat_sse STALE-RULE, the hardening explicitly owed and
+  NOT self-filed); docs/DECOMMISSION-BANDS-PLAN.md §Z law (the census is the
+  SS 6.2 Render-disable pre-gate and must classify by wire truth); the 119/122
+  in-band hardening precedents (per-call-site wire-path resolution; the
+  midpath_covers "/".join fix — the matcher-fix class); the B3 re-point of record
+  (T-MIG-118 PR #180, run-002 acceptance: B3 SERVING).
+scope:
+  allowed:
+    - "scripts/preflight_zero_core_census.py (the hardwire serving-decision law + docstring/instrument-string truth only)"
+    - ".syllabai/tasks/T-MIG-123.yaml (status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-123/**"
+    - ".syllabai/receipts/W7-CUTOVER/zero-core-census-2026-10-12-t123-r0.json (the dated --out census re-run; the tracked zero-core-census-baseline.json UNTOUCHED — the disclosed overwrite caveat not exercised a 4th time)"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "apps/** (zero code change — the B3 re-point is of record; any divergence = FAIL-NO-FLIP defect band, never a widening)"
+    - "the tracked zero-core-census-baseline.json (the overwrite caveat — dated --out only)"
+    - "syllabai-core / syllabai-hub repos (frozen, C1)"
+    - "authed POSTs / prod writes / LLM spend (the wire confirmations are the unauth 400-parse-first + 401 law legs only, the run-003 battery class)"
+progress_log:
+  - run: run-001-z-hardening-r0 (2026-10-12T15:08Z)
+    what: "THE HARDENING LANDED (scripts/preflight_zero_core_census.py +80/-7, ZERO app-code change): hardwire_v2_truth() classifies a hardwire row by its ROUTE FILE'S SERVING DECISION — every v2SurfaceBase call resolved (identifier args chased to their string-literal assignments), EVERY wire must be flip-row-covered AND the key's fallback helper rollback-only, else the row stays HARDWIRE-LIVE (the classifier's own FAIL-NO-FLIP posture). The dated census re-run --out (the tracked baseline untouched — the overwrite caveat NOT exercised a 4th time): pins=8 LIVE=1 dormant=5 unmapped=0 (rides=3) — the chat row RIDES-V2 (streamPath /api/v1/tutor/ask/stream + askPath /api/v1/tutor/ask BOTH onto the 106 pair row; coreStreamAuthorized = the env-unset rollback arm; the chat.tsx browser fetch disclosed as the unchanged browser contract). ZERO row movement vs the run-003 census other than the intended reclassification (the tracked baseline is a stale pre-B5 snapshot — disclosed in the receipt). Determinism: two runs IDENTICAL modulo timestamp; py_compile exit 0. The zero-write wire confirmations 2/2 PASS through the SERVING wave-2 bundle (chat {} -> 400 zod parse-first; {question} unauth -> 401 the B3 route law; zero auth/LLM/persistence/prod-db)."
+    census_of_record: "LIVE 2 -> 1 — the one true residual LIVE row is the B6 transcribe (the flip STAGED pending the operator ruling (b)); the SS 6.2 zero-live pre-gate is now ONE operator ruling away (plus the B7 rulings)"
+    post_merge_owed: "NONE beyond the stamps (scripts/ + .syllabai outside both deploy bundles; the api+hub carriers stay operator-gated as standing)"

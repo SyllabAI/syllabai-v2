@@ -7505,3 +7505,14 @@ Work Log:
 
 Stage Summary:
 - B1/B2 redeploy leg VERIFIED SERVING of record (with B3/B5 riding the same waves): the marking tails + assignments + tutor stream + questions anchors ride v2 live. 6.2 path remaining: the Z instrument hardening (chat rule) + the B6 operator ruling (b) + the B7 rulings -> LIVE 0 -> CI gate + 48h soak. Lane IDLE.
+
+---
+
+## 2026-10-12T15:08Z — r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646) — T-MIG-123: the census chat_sse matcher hardening (the B3 stale rule) — operator trace 1a1309c5baf14f8d 'B3 SSE'
+
+- Fetch-first behind=0 @ f8890e1 (two fetches, tip stable; race check clean — no Z-band card of record; the T-MIG-122 run-003 adjudication left this hardening explicitly un-filed for the Z claim).
+- THE HARDENING (scripts/preflight_zero_core_census.py +80/-7, ZERO app-code change): a hardwire row is classified by its ROUTE FILE'S SERVING DECISION — every v2SurfaceBase call resolved (identifier args chased to their string-literal assignments in the same file), EVERY resolved v2 wire must be flip-row-covered AND the key's fallback helper rollback-only, else HARDWIRE-LIVE unchanged (the classifier's own FAIL-NO-FLIP posture). Motivating correction of record: the chat rule predates the B3 re-point and counted the chat.tsx:320 browser fetch of the hub's OWN route as a core dependency.
+- The dated census re-run --out (the tracked baseline UNTOUCHED — the disclosed overwrite caveat NOT exercised a 4th time): pins=8 LIVE=1 dormant=5 unmapped=0 (rides=3). The chat row RIDES-V2: streamPath /api/v1/tutor/ask/stream + askPath /api/v1/tutor/ask BOTH resolve onto the 106 pair row; coreStreamAuthorized = the env-unset rollback arm (the claAskFetch class); the residual browser-contract site disclosed. ZERO row movement vs the run-003 census other than the intended reclassification (the tracked baseline is a stale pre-B5 snapshot — disclosed in the receipt).
+- Gates: py_compile exit 0; determinism two runs IDENTICAL modulo timestamp; the zero-write wire confirmations 2/2 PASS through the SERVING wave-2 bundle (chat {} -> 400 zod parse-first; {question} unauth -> 401 the B3 route law) — zero auth/LLM/persistence/prod-db.
+- CENSUS-OF-RECORD: LIVE 2 -> 1 — the one true residual LIVE row is the B6 transcribe (the flip STAGED pending the operator ruling (b)); the SS 6.2 zero-live pre-gate is now ONE operator ruling away (plus the B7 rulings).
+- Post-merge owed: NONE beyond the stamps (scripts/ + .syllabai outside both deploy bundles; the api+hub carriers stay operator-gated as standing). Card IN_REVIEW (authors never self-merge); receipt run-001-z-hardening-r0.json; no force.

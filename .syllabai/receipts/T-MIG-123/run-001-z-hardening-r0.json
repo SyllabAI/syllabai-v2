@@ -1,0 +1,53 @@
+{
+  "run": "run-001-z-hardening-r0",
+  "task": "T-MIG-123 — the census chat_sse matcher hardening (the B3 stale rule): the hardwire class classified by the route file's SERVING DECISION",
+  "actor": "r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operator_trace": "1a1309c5baf14f8d 'B3 SSE'",
+  "claim_state": {
+    "fetch_first": "behind=0 @ f8890e1 (two fetches 14:59Z + 15:02Z, tip stable)",
+    "claim_freshness": "no Z-band card of record; T-MIG-122 run-003 adjudicated the chat_sse row STALE-RULE and explicitly left the hardening un-filed ('left to the Z band claim per scope discipline; NOT self-filed'); no competing claim; the repo worklog of record lists 'the Z instrument hardening (chat rule)' as the 6.2-path residual",
+    "base": "syllabai-v2 @ f8890e1"
+  },
+  "discharged_adjudication": "T-MIG-122 run-003-redeploy-verification-and-z-rerun-r0.json z_census_rerun_first_hand.rows.chat_sse: 'LIVE ON THE INSTRUMENT but adjudicated STALE-RULE first-hand ... needs the 122-class matcher hardening'",
+  "the_hardening": {
+    "law": "a hardwire row is classified by its ROUTE FILE'S SERVING DECISION, not by residual literal hits (the 122-class matcher law carried to the hardwire class; the plan §Z per-call-site law)",
+    "motivating_correction": "the chat rule predates the B3 re-point and kept the row HARDWIRE-LIVE after T-MIG-118 moved the always-on upstream to v2 — the only live-looking hit was the chat.tsx:320 browser fetch of the hub's OWN route (the browser contract, unchanged by B3 by design), not a hub->core dependency",
+    "resolution": "find the route file for the key's /api/ai/<name> path; resolve EVERY v2SurfaceBase(<arg>, ...) call (identifier args chased to their string-literal assignments in the same file); if EVERY resolved v2 wire is covered by a flip row of record AND the key's fallback helper survives only as the same decision's rollback arm -> RIDES-V2 with the one-env-var rollback + residual browser-contract sites disclosed; ANY uncovered wire / unresolvable decision / missing fallback -> None (row stays HARDWIRE-LIVE — the FAIL-NO-FLIP posture for the classifier itself)",
+    "diff_scope": "scripts/preflight_zero_core_census.py ONLY (+80/-7): hardwire_v2_truth() + the hardwire loop branches + the rides_v2 aggregate now includes hardwire rows + the instrument string + the docstring 'two known hub hardwires'->'known hub hardwires'; ZERO app-code change (apps/** untouched)"
+  },
+  "census_rerun_first_hand": {
+    "at": "tip f8890e1 (working tree = the hardening; apps/** identical to HEAD)",
+    "invocation": "python3 scripts/preflight_zero_core_census.py --out zero-core-census-2026-10-12-t123-r0.json (the dated --out; the tracked zero-core-census-baseline.json UNTOUCHED — the disclosed overwrite caveat NOT exercised a 4th time)",
+    "result": "pins=8 LIVE=1 dormant=5 unmapped=0 (rides_v2_wire_truth=3)",
+    "chat_row": {
+      "classification": "RIDES-V2",
+      "serving_decisions": [
+        {"identifier": "streamPath", "wire": "/api/v1/tutor/ask/stream", "rides_row": "/api/v1/tutor/ask"},
+        {"identifier": "askPath", "wire": "/api/v1/tutor/ask", "rides_row": "/api/v1/tutor/ask"}
+      ],
+      "core_rollback_fallback": "coreStreamAuthorized (the env-unset arm, the claAskFetch class; NOT the serving path)",
+      "residual_site_disclosed": "apps/hub/src/app/tutor/chat.tsx:320 fetch('/api/ai/chat') — the hub's own browser contract"
+    },
+    "one_true_residual_live_row": "/api/v1/learners/me/answer-input/transcribe — the B6 flip STAGED of record pending the operator ruling (b) (T-MIG-121 run-001: the deterministic law set ALL-GREEN both planes)",
+    "regression_vs_run003_census": "ZERO row movement other than the intended chat row HARDWIRE-LIVE -> RIDES-V2 (run-003: pins=8 LIVE=2 dormant=5 unmapped=0; the 8 pins' classifications identical, the questions rows absent from BOTH because the B5 flip retired them from CORE_ONLY_PATHS)",
+    "tracked_baseline_disclosure": "the tracked zero-core-census-baseline.json is a STALE pre-B5 snapshot (the overwrite caveat's restore artifact — it still lists the retired questions pins); the true comparison base is the run-003 adjudication's row set; the dated --out sidesteps the caveat going forward",
+    "determinism": "two consecutive runs IDENTICAL modulo generated_utc (the scratch verified and removed)",
+    "compile_gate": "python3 -m py_compile exit 0"
+  },
+  "wire_confirmations_zero_write": {
+    "class": "the run-003 unauth battery, re-confirmed through the SERVING wave-2 bundle",
+    "carrier": "syllabai-hub-v2 deployment syllabai-hub-v2-o9tx6my90-syllab-ai.vercel.app READY (the dpl_2n5M3AKhG3i9xEMcd6kuHkneXGzo wave; resolved read-only via the Vercel API)",
+    "legs": [
+      {"leg": "POST /api/ai/chat {}", "status": 400, "law": "zod parse-first invalid_body", "match": true},
+      {"leg": "POST /api/ai/chat {question} unauth", "status": 401, "law": "the B3 route law (unauthorized)", "match": true}
+    ],
+    "spend": "zero auth tokens, zero LLM spend (both legs resolve BEFORE any upstream call), zero persistence, zero prod-db contact"
+  },
+  "gates": {
+    "type_scope": "git diff --stat = scripts/preflight_zero_core_census.py only; new files = the card + this receipt + the dated census receipt; scripts/__pycache__ removed",
+    "hub_suite": "NOT re-run in-band: the change is repo-side python (outside every bundling surface — apps/hub tests cannot observe it); the instrument's own determinism + compile gates are the applicable class",
+    "ci": "expected green at the PR tip (no bundling surface touched)"
+  },
+  "post_merge_owed": "NONE beyond the stamps — scripts/ + .syllabai are outside both deploy bundles (zero redeploy owed; the api+hub carriers stay operator-gated as standing); the 6.2 path after this band: the B6 operator ruling (b) + the B7 rulings -> LIVE 0 -> the CI-gate flip + the 48h soak",
+  "verdict": "PASS — the census-of-record is now WIRE-TRUTH: LIVE 2 -> 1, the chat SSE hardwire retires onto RIDES-V2 with the rollback + browser-contract disclosures, exactly one hardening + one operator ruling away from the SS 6.2 zero-live pre-gate"
+}
