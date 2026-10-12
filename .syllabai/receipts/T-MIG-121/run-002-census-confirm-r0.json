@@ -1,0 +1,20 @@
+{
+  "task": "T-MIG-121",
+  "run": "run-002-census-confirm-r0",
+  "lane": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "at": "2026-10-12T17:38:46Z",
+  "operator_order": "trace 1a1301057de38aa5 'proceed with the unclaimed bands B3/B5/B6' (continuation 'Continue' 2026-10-12T17:3xZ); this run = READ-ONLY census confirmation + the standing ruling request",
+  "band_identity": "B6 — answer-input/transcribe (the GLM seam); capture+verify COMPLETE of record (run-001), the flip STAGED pending the operator ruling (b)",
+  "census_reproduction": {
+    "instrument": "scripts/preflight_zero_core_census.py (the T-MIG-123 hardened instrument, --gate)",
+    "tip": "6759200 (fetch-first FF from ec880b3; local == origin/main at run time)",
+    "counts": { "pins": 8, "LIVE": 1, "rides-v2": 2, "rollback-fallback": 1, "dormant": 5, "unmapped": 0, "stale-hints": 0, "unknown-route": 0 },
+    "gate": "RED — exactly 1 blocking row: /api/v1/learners/me/answer-input/transcribe (THIS band; emitters answer-ink-pad.tsx:194,246)",
+    "of_record_match": "EXACT reproduction of the f8890e1 census of record (commit 0cf23fd) — no drift"
+  },
+  "ci_at_tip": "2/2 green at 6759200 (verify + hub, both success — the check-runs API first-hand); zero open PRs",
+  "ruling_status": "the OPERATOR RULING (b) remains REQUESTED (run-001 receipt of record) and STANDING — NOT granted of record as of this receipt; the staged flip rows stay UN-LANDED (never self-granted, the 106/116 discipline). The ruling is the SOLE remaining gate between the current census (LIVE=1) and the zero-LIVE census that unblocks the §Z CI wiring + the §6.2 soak path",
+  "card_action": "progress_log run-002 appended; status stays CLAIMED (no self-grant); HYGIENE: the card's dangling-quote YAML defect (the disclosed heredoc-class lane-script truncation) repaired in the same edit — the file parses clean post-edit",
+  "boundaries": "read-only band-wise: zero code changes, zero prod writes, zero authed POSTs, zero LLM spend, zero Neon, zero deploys, zero Vercel-API contact; no force; .syllabai-only",
+  "verdict": "B6 capture+verify COMPLETE of record; the deterministic law set ALL-GREEN two planes (run-001); the flip is the SOLE remaining §Z gate blocker — one operator ruling (b) away from zero-LIVE"
+}
