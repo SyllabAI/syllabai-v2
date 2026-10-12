@@ -7351,3 +7351,17 @@ Work Log:
 Stage Summary:
 - The operator's "Do it yourself" order is fully discharged on BOTH legs: B2 (the port band) reached PR #179 with the 44/44 golden-verify; B1's staged gate ran and did exactly what gates are for — it caught the smart-mark tail's unverified wire shape BEFORE a flip row could carry it live. The marking page's flip now waits on ONE well-scoped fix (a response mapping with the capture + recipe in hand). The rig recipe is proven docker-free and repeatable: the "rig/toolchain-capable session" constraint is retired as a board concept — any session can rebuild it from the receipts in minutes.
 
+---
+Task ID: trace 1a1301057de38aa5 (the B3/B5/B6 triple claim — the remaining live decommission bands)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: operator order "proceed with the unclaimed bands B3/B5/B6" — claim T-MIG-118 (B3, the chat SSE re-point) + T-MIG-120 (B5, the questions proxy family) + T-MIG-121 (B6, the transcribe GLM seam) per docs/DECOMMISSION-BANDS-PLAN.md.
+
+Work Log:
+- Fetch-first race check twice (12:39Z + 12:41Z): behind=0 @ ec880b3, REMOTE==LOCAL; cards 118/120/121 absent, zero competing claims of record; zero open PRs (API check 12:40Z); tip CI 2/2 (ci 38204543796 + neon-replay 38230419119).
+- Claim-time scoping first-hand (the runs' claim receipts carry the findings): B3 — v2 ask/stream is the line-against-line port (tutor.ts :307-381) whose SSE vocabulary IS pipeSse's contract; the 106 declared divergence rides; the re-point is a route-code band (no new row). B5 — the CLA ask forwarding is ALREADY table-governed (claAskFetch :226-231); the live server-side core set is core-topics (subjects+tree, both flipped rows) + familiesForRoot (families); v2 implements all five question surfaces (T-MIG-031); the dormant client emitters come along under the bare /api/v1/questions subtree row (the 107 form); lib/data/core-api.ts disclosed out-of-scope (mock-degrading demo lane). B6 — the v2 impl EXISTS of record (T-MIG-034, the doctrine: LLM-OUTPUT surface, behavioural gates only) — capture+verify+flip, NOT a port band; keyed live-prove unavailable (ZERO-KEY) so the flip is STAGED pending the operator ruling (b), REQUESTED not self-granted.
+- Three cards filed CLAIMED with owner/claimed_at/claimed_by_order + three run-000-claim receipts + per-band scope fences (B3/B5 fences are disjoint: the chat route vs the anchors/families routes; both share the surface-test file — the desk serializes per the race-guard law).
+- Sandbox census first-hand: bun 1.3.14 + node 24 + java 21 present; docker/maven/pg ABSENT — but NO rig leg is owed by these three bands (B3 law-level, B5 two-plane GET-only shared-Neon parity, B6 keyless live laws).
+- No band work before the claim (the fac4c9a law). Zero prod contact, zero code contact in the claim act.
+
+Stage Summary:
+- All three remaining live bands are IN THE BOARD: B3 claimed (law-level witness class), B5 claimed (two-plane capture class, the widest server-side family), B6 claimed (keyless capture + the ruling gate). Post-band the census reaches the B7 tail (dormant rulings) -> the Z soak -> section 6.2. Next: run-001 batteries per band, then the re-points + PRs.

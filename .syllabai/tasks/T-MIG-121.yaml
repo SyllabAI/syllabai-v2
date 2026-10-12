@@ -1,0 +1,58 @@
+version: 1
+task:
+  id: T-MIG-121
+  title: "Decommission band B6 — answer-input/transcribe (the GLM seam) capture+verify+flip"
+  owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)"
+  status: CLAIMED
+  claimed_at: "2026-10-12T12:41:46Z"
+  claimed_by_order: "operator trace 1a1301057de38aa5 'proceed with the unclaimed bands B3/B5/B6'"
+  priority: P2
+  wave: W7-CUTOVER
+  deps: [T-MIG-034]
+  execution_record: >
+    CLAIMED 2026-10-12T12:41Z (r0, fetch-first behind=0 @ ec880b3; claim-state fresh:
+    no prior card, no competing claim of record). CLAIM-TIME FINDING of record: the
+    v2 impl EXISTS of record — routes/answer-input.ts (the T-MIG-034 port, verified
+    2026-10-05) with the FULL wire-law set documented verbatim (malformed_body
+    HttpMessageNotReadableException :172-179 parity; the service laws 400
+    transcription_bad_request "image is required" / "unsupported image type" /
+    413 image too large / 422 nothing readable / the dormant-provider 503
+    transcription_unavailable; the Jackson scalar->String coercion
+    coerceStringFields) and the DOCTRINE of record: "LLM-OUTPUT surface — NOT
+    golden-gated (GOLDEN_MASTER §3); behavioural gates only". So B6 is
+    capture+verify+flip — NOT a port band, zero code change expected, FAIL-NO-FLIP
+    for any divergence. CAPTURE (keyless, live two-plane, zero LLM spend, zero
+    persistence — every leg throws BEFORE the provider call by the service law):
+    unauth 401 both planes (the w3 capture of record + fresh confirm); authed
+    validation/service laws both planes (absent image 400 / unsupported mime 400 /
+    non-base64 422 / oversized 413) + the method law; NO valid-image leg anywhere
+    (a valid image on the KEYED live v2 carrier would spend real GLM — forbidden).
+    FLIP (STAGED): the bare /api/v1/learners/me/answer-input subtree row at the
+    table tail (the 107 narrowest-legal form; the hub emits ONLY transcribeHandwriting
+    api.ts :1889-1891). GATE LAW (the plan's B6 row): keyed live-prove (the 097
+    class) OR operator ruling (b) if the capture stays 401-law-only. ZERO-KEY
+    posture: keyed live-prove UNAVAILABLE. The capture EXCEEDS 401-law-only (the
+    full deterministic law set is live-capturable) but the positive 200 is
+    LLM-output (excluded from golden gating by the standing GOLDEN_MASTER §3) —
+    the flip lands ONLY on the operator ruling (b), REQUESTED in the run-001
+    receipt, never self-granted (the 106/116 discipline). Exit gate: the ink pad
+    rides v2; the GLM seam dependency disclosed of record; the census transcribe
+    row re-classified.
+base:
+  repo: "syllabai-v2 @ ec880b3 (fetch-first behind=0 at claim); frozen refs: syllabai-core @ 6cad6ef"
+basis: >
+  Operator order trace 1a1301057de38aa5; docs/DECOMMISSION-BANDS-PLAN.md band table
+  B6; the T-MIG-034 port + its doctrine; the w3 transcribe corpus (the unauthed-401
+  Boot envelope of record); the 097/106 ruling-class precedents.
+scope:
+  allowed:
+    - "apps/hub/src/lib/api.ts (the answer-input subtree flip row + row notes only, AFTER the operator ruling)"
+    - "apps/hub/src/lib/api.v2-surface.test.ts (exact-set pin + DUAL_RUN forms + the B6 line test only, AFTER the ruling)"
+    - ".syllabai/tasks/T-MIG-121.yaml (status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-121/**"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "apps/api/** (the v2 impl is of record; any divergence = FAIL-NO-FLIP defect band)"
+    - "any authed POST carrying a VALID decodable image (real GLM spend on the keyed carrier — forbidden)"
+    - "syllabai-core / syllabai-hub repos (frozen, C1)"
+progress_log: []

@@ -1,0 +1,21 @@
+{
+ "task": "T-MIG-118",
+ "run": "run-000-claim-r0",
+ "lane": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "at": "2026-10-12T12:41:46Z",
+ "operator_order": "trace 1a1301057de38aa5 'proceed with the unclaimed bands B3/B5/B6'",
+ "claim_state_check": {
+  "fetch_first": "behind=0 @ ec880b3 (12:39Z scoping fetch + 12:41Z pre-write race check; REMOTE==LOCAL==ec880b3)",
+  "prior_card": "none (the plan law: cards land on claim)",
+  "competing_claim": "none of record; cards 118/120/121 absent from .syllabai/tasks/ at claim time"
+ },
+ "band_identity": "B3 of docs/DECOMMISSION-BANDS-PLAN.md (93d805c) — the hub /api/ai/chat SSE re-point to the v2 tutor stream; a hub CODE band, NO table row (the 106 prefix row already captures /ask/stream)",
+ "claim_time_findings": [
+  "v2 ask/stream = the line-against-line port (routes/tutor.ts :307-381); the SSE event vocabulary is exactly pipeSse's browser contract (route.ts :194-304)",
+  "the 106 declared divergence (core stream pre-flight 500s vs v2 designed 400/404) rides of record — the re-point moves those classes onto the designed law",
+  "rollback fallback (env unset -> core) per the claAskFetch table-governed precedent :226-231; the ALWAYS-ON core dependency retires, the rollback path stays pinned"
+ ],
+ "capture_class": "law-level SSE contract parity per the plan's B3 row (LLM payloads excluded from golden gating by standing law); live keyless pre-flight legs vs the 106 corpus pins",
+ "this_run": "claim only — zero prod contact, zero code contact",
+ "next": "run-001 law-level capture + verify; then the route re-point + v2-proxy helper + surface pin -> PR"
+}

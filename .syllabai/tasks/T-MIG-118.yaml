@@ -1,0 +1,63 @@
+version: 1
+task:
+  id: T-MIG-118
+  title: "Decommission band B3 — the hub /api/ai/chat SSE re-point to the v2 tutor stream (the coreStreamAuthorized hardwire retires)"
+  owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)"
+  status: CLAIMED
+  claimed_at: "2026-10-12T12:41:46Z"
+  claimed_by_order: "operator trace 1a1301057de38aa5 'proceed with the unclaimed bands B3/B5/B6'"
+  priority: P1
+  wave: W7-CUTOVER
+  deps: [T-MIG-106, T-MIG-060]
+  execution_record: >
+    CLAIMED 2026-10-12T12:41Z (r0, fetch-first behind=0 @ ec880b3; claim-state fresh:
+    no prior card, no competing claim of record; race check two fetches 12:39Z +
+    12:41Z). Scope = the hub CODE band per the plan row: the chat route's
+    coreStreamAuthorized("/api/v1/tutor/ask/stream") re-pointed to the v2 tutor
+    stream — NO table row (the /api/v1/tutor/ask prefix row of the 106 ruling ALREADY
+    captures BOTH /ask and /ask/stream, so v2SurfaceBase resolves the stream path
+    TODAY). CLAIM-TIME FINDINGS of record: (1) v2's ask/stream is the line-against-
+    line port (routes/tutor.ts :307-381 vs TutorController.askStream :208-256) — the
+    SSE event vocabulary (citations {citations,sufficient} -> meta
+    {provider,model,refused,evidenceCount} -> delta {text} -> done {ok:true} / error
+    {message}) is EXACTLY the pipeSse browser contract (route.ts :194-304, "core's
+    shapes ARE the browser contract") — the port is of record since T-MIG-060
+    tranche-2; (2) the 106 declared divergence rides of record: the frozen core's
+    STREAM controller pre-flight classes serve 500 internal_error where v2 serves the
+    DESIGNED 400/404 (the corpus pins them justified:true) — the re-point moves those
+    classes onto the designed law under the standing declared ruling; (3) the
+    rollback fallback (v2 env unset -> core) follows the claAskFetch table-governed
+    precedent (ai/cla/route.ts :226-231): the core helpers survive ONLY as the pinned
+    one-env-var rollback path (MIGRATION_PLAN §7) — the route's ALWAYS-ON core
+    dependency retires. Capture class (the plan's B3 row, verbatim): SSE contract
+    parity LAW-LEVEL — "LLM payloads excluded from golden gating by standing law
+    (the witness is law-level, not payload-level)"; the deterministic pre-flight
+    legs (unauth 401 / blank 400 / unknown-session 404) verified live on the v2
+    carrier against the 106 corpus pins; the §22 append-on-completed + the append
+    guard verified in the port's code of record. Exit gate: the tutor loop answers
+    through v2 (the always-on upstream); coreStreamAuthorized zero ALWAYS-ON
+    call-sites (the rollback fallback disclosed per the claAskFetch class); the
+    surface-test pin lands; union green at the flip tip; post-merge owed: hub
+    redeploy + post-fire wire smoke + battery + union replay (the 092/093 recipe +
+    race-guard).
+base:
+  repo: "syllabai-v2 @ ec880b3 (fetch-first behind=0 at claim); frozen refs: syllabai-core @ 6cad6ef"
+basis: >
+  Operator order trace 1a1301057de38aa5; docs/DECOMMISSION-BANDS-PLAN.md band table
+  B3 (the 106 declared law carries directly); the tutor flip row of record
+  (api.ts :425-452); the tutor.ts SSE delivery law (:34-47); the claAskFetch
+  table-governed precedent; the 106 corpus pins.
+scope:
+  allowed:
+    - "apps/hub/src/app/api/ai/chat/route.ts (upstream re-point only — the browser-facing contract unchanged)"
+    - "apps/hub/src/lib/v2-proxy.ts (NEW — the v2 mirror of the core stream helper, server-only)"
+    - "apps/hub/src/lib/api.v2-surface.test.ts (the B3 line test + DUAL_RUN form pins only)"
+    - ".syllabai/tasks/T-MIG-118.yaml (status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-118/**"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "apps/api/** (the v2 tutor impl is of record; any divergence = FAIL-NO-FLIP defect band, never a widening)"
+    - "apps/hub/src/app/api/ai/cla/route.ts, apps/hub/src/lib/core-topics.ts, apps/hub/src/app/api/core/questions/route.ts (B5's fence)"
+    - "syllabai-core / syllabai-hub repos (frozen, C1)"
+    - "prod writes of any class; authed POSTs to any live plane (LLM spend forbidden)"
+progress_log: []

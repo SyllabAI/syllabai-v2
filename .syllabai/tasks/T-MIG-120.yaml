@@ -1,0 +1,69 @@
+version: 1
+task:
+  id: T-MIG-120
+  title: "Decommission band B5 — the /api/core/questions proxy family re-point + the questions subtree flip"
+  owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)"
+  status: CLAIMED
+  claimed_at: "2026-10-12T12:41:46Z"
+  claimed_by_order: "operator trace 1a1301057de38aa5 'proceed with the unclaimed bands B3/B5/B6'"
+  priority: P1
+  wave: W7-CUTOVER
+  deps: [T-MIG-031, T-MIG-084, T-MIG-097]
+  execution_record: >
+    CLAIMED 2026-10-12T12:41Z (r0, fetch-first behind=0 @ ec880b3; claim-state fresh:
+    no prior card, no competing claim of record). CLAIM-TIME FINDINGS of record
+    (reframe the plan row): (1) the CLA ASK forwarding is ALREADY table-governed —
+    ai/cla/route.ts claAskFetch :226-231 consults
+    v2SurfaceBase("/api/v1/learners/me/cla/ask") (the 097 row) and rides v2 with the
+    core fallback — NO ask re-point owed; (2) the LIVE server-side core dependency
+    set is exactly: (a) core-topics.ts fetchCoreJson — /api/v1/curriculum/subjects
+    (the flipped Wave-1 row) + /api/v1/knowledge/nodes/{rootId}/tree
+    ?includeMisconceptions=false (the flipped 084 row) — consumed by BOTH the CLA
+    proxy (rootIdForCourseCode + topicNodeIdForCode) and the question bridge
+    (rootIdForCourseCode); (b) core/questions/route.ts familiesForRoot —
+    /api/v1/questions/families?rootId=... (the 4CH1 join, the census's annotated
+    under-counted family); (3) v2 implements ALL FIVE question surfaces
+    (routes/questions/index.ts, the T-MIG-031 parity: list/families/topics/:id/
+    mark-scheme) — the positive wires uncaptured of record (401 shells + the
+    unknown-404 law only, the w3 corpus). CAPTURE (two-plane, GET-only, the
+    shared-Neon direct-parity class per the 119 battery — both planes answer from
+    the SAME Neon main, so corpus-dependent bodies compare byte-honest with NO
+    fixture mapping): subjects + tree + families + list + detail + mark-scheme +
+    topics, ONE disclosed census-class probe register, the cross-plane token leg
+    (core-issued JWT accepted on v2? — a new fact of record, disclosed either way).
+    FLIP: the bare /api/v1/questions prefix row at the table tail (the 107
+    narrowest-legal subtree form — every hub-emitted path under the prefix is
+    v2-real and captured; the dormant client emitters list :1153 / detail :1834 /
+    mark-scheme :1842 come along lawfully) + the server re-points (fetchCoreJson +
+    familiesForRoot consult v2SurfaceBase per path; core fallback = the one-env-var
+    rollback law, the claAskFetch class) + the exact-set pin + the DUAL_RUN forms +
+    the B5 line test + no-regression needles. Exit gate: the CLA overlay + attempt
+    bridge ride v2 (the anchors + families resolve on v2); the census proxy-family
+    annotation retires; union green at the flip tip; post-merge owed: hub redeploy +
+    wire smoke + battery + union replay. DISCLOSED out-of-scope: lib/data/core-api.ts
+    (the demo data provider — mock-degrading demo lane by design, no pilot surface
+    strands, zero census rows).
+base:
+  repo: "syllabai-v2 @ ec880b3 (fetch-first behind=0 at claim); frozen refs: syllabai-core @ 6cad6ef"
+basis: >
+  Operator order trace 1a1301057de38aa5; docs/DECOMMISSION-BANDS-PLAN.md band table
+  B5 (exit gate law: "the CLA overlay + attempt bridge ride v2; the proxy's core URL
+  dependency retires"); the 107 narrowest-legal subtree-row law; the 119 two-plane
+  battery class; the claAskFetch precedent; the w3 question corpus.
+scope:
+  allowed:
+    - "apps/hub/src/lib/core-topics.ts (per-path v2SurfaceBase consultation + core fallback only)"
+    - "apps/hub/src/app/api/core/questions/route.ts (families fetch re-point only)"
+    - "apps/hub/src/lib/api.ts (the questions subtree flip row + row notes only)"
+    - "apps/hub/src/lib/api.v2-surface.test.ts (exact-set pin + DUAL_RUN forms + the B5 line test + needles only)"
+    - "golden/** (the two-plane capture fixtures if manufactured)"
+    - ".syllabai/tasks/T-MIG-120.yaml (status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-120/**"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "apps/api/** (the v2 questions impl is of record; any divergence = FAIL-NO-FLIP defect band)"
+    - "apps/hub/src/app/api/ai/chat/route.ts + apps/hub/src/lib/v2-proxy.ts (B3's fence)"
+    - "apps/hub/src/lib/data/core-api.ts (demo lane, disclosed out-of-scope)"
+    - "syllabai-core / syllabai-hub repos (frozen, C1)"
+    - "authed POSTs / any prod write (this band is GET-only by construction)"
+progress_log: []

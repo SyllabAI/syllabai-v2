@@ -1,0 +1,22 @@
+{
+ "task": "T-MIG-121",
+ "run": "run-000-claim-r0",
+ "lane": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "at": "2026-10-12T12:41:46Z",
+ "operator_order": "trace 1a1301057de38aa5 'proceed with the unclaimed bands B3/B5/B6'",
+ "claim_state_check": {
+  "fetch_first": "behind=0 @ ec880b3 (12:39Z + 12:41Z)",
+  "prior_card": "none (the plan law: cards land on claim)",
+  "competing_claim": "none of record"
+ },
+ "band_identity": "B6 of docs/DECOMMISSION-BANDS-PLAN.md (93d805c) — answer-input/transcribe (the GLM seam) capture+verify+flip",
+ "claim_time_findings": [
+  "the v2 impl EXISTS of record: routes/answer-input.ts (T-MIG-034 port, verified 2026-05) — the full wire-law set + the doctrine 'LLM-OUTPUT surface — NOT golden-gated (GOLDEN_MASTER §3); behavioural gates only'",
+  "so B6 is capture+verify+flip, NOT a port band; zero code change expected, FAIL-NO-FLIP for any divergence",
+  "the capture is keyless and exceeds 401-law-only: the service laws (400 absent-image / 400 bad-mime / 413 oversized / 422 non-base64) throw BEFORE the provider call — zero LLM spend, zero persistence on every leg",
+  "keyed live-prove UNAVAILABLE (ZERO-KEY posture); the positive 200 is LLM-output (excluded from golden gating by standing law) — the flip is STAGED pending the operator ruling (b), REQUESTED not self-granted (the 106/116 discipline)"
+ ],
+ "planned_row": "V2_SURFACE_PREFIXES tail + /api/v1/learners/me/answer-input (the bare subtree, the 107 form; the hub emits ONLY transcribeHandwriting api.ts :1889)",
+ "this_run": "claim only — zero prod contact, zero code contact",
+ "next": "run-001 keyless law battery both planes -> verify -> STAGED flip + the ruling request routed to the operator"
+}
