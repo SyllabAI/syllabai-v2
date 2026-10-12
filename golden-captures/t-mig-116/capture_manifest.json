@@ -1,0 +1,85 @@
+{
+ "legs": [
+  {
+   "leg": "setup-register-teacher",
+   "status": 201,
+   "verdict": "PASS"
+  },
+  {
+   "leg": "setup-register-student",
+   "status": 201,
+   "verdict": "PASS"
+  },
+  {
+   "leg": "setup-structured-submit",
+   "status": 201,
+   "verdict": "PASS"
+  },
+  {
+   "leg": "s01-smartmark-unknown-answer",
+   "status": 404,
+   "verdict": "PASS"
+  },
+  {
+   "leg": "s02-smartmark-no-scheme",
+   "status": 404,
+   "verdict": "PASS"
+  },
+  {
+   "leg": "s03-batch-no-scheme",
+   "status": 200,
+   "verdict": "PASS"
+  },
+  {
+   "leg": "s04-batch-empty",
+   "status": 400,
+   "verdict": "PASS"
+  },
+  {
+   "leg": "s05-batch-absent",
+   "status": 400,
+   "verdict": "PASS"
+  },
+  {
+   "leg": "s06-batch-51",
+   "status": 400,
+   "verdict": "PASS"
+  },
+  {
+   "leg": "s07-batch-dedup",
+   "status": 200,
+   "verdict": "PASS"
+  },
+  {
+   "leg": "s08-batch-wrong-type",
+   "status": 400,
+   "verdict": "PASS"
+  },
+  {
+   "leg": "s09-batch-bad-uuid",
+   "status": 400,
+   "verdict": "PASS"
+  },
+  {
+   "leg": "s10-detail-unknown",
+   "status": 404,
+   "verdict": "PASS"
+  },
+  {
+   "leg": "t01-smartmark-scheme-not-validated",
+   "status": 200,
+   "verdict": "PASS"
+  },
+  {
+   "leg": "t02-batch-scheme-not-validated",
+   "status": 200,
+   "verdict": "PASS"
+  }
+ ],
+ "attempt": "7097fd1f-015f-48d4-bd3c-d096f46e7820",
+ "answer_a": "8d4aff0c-6230-4b79-acf1-d40cebe9060c",
+ "answer_b": "21376005-092d-49f9-b23f-22034f158dd7",
+ "version": "45100000-0000-0000-0000-000000000001",
+ "teacher_email": "t116-teacher-5a97f69a@example.invalid",
+ "student_email": "t116-student-5a97f69a@example.invalid"
+}

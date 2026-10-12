@@ -1,9 +1,36 @@
 {
- "instrument": "preflight_zero_core_census.py",
- "generated_utc": "2026-10-11T17:57:12Z",
- "source_of_record": "apps/hub/src/lib/api.v2-surface.test.ts CORE_ONLY_PATHS (+ hardwires)",
+ "instrument": "preflight_zero_core_census.py (hardened: per-call-site wire-path resolution \u2014 the T-MIG-119 band, the plan \u00a7Z law)",
+ "generated_utc": "2026-10-12T12:39:51Z",
+ "source_of_record": "apps/hub/src/lib/api.v2-surface.test.ts CORE_ONLY_PATHS (+ manual additions + hardwires)",
  "core_only_pins_total": 10,
+ "manual_pin_additions": [
+  "/api/v1/learners/me/intervention-runs"
+ ],
  "live": [
+  {
+   "core_only_path": "/api/v1/learners/me/answer-input/transcribe",
+   "emitter_hints": [
+    "transcribe"
+   ],
+   "live_call_sites": [
+    "apps/hub/src/components/answer-ink-pad.tsx:194:      const result = await api.transcribeHandwriting(base64, \"image/jpeg\");",
+    "apps/hub/src/components/answer-ink-pad.tsx:246:      const result = await api.transcribeHandwriting(base64, \"image/png\");"
+   ],
+   "classification": "LIVE",
+   "dropped_comment_lines": 4
+  },
+  {
+   "core_only_path": "hub route /api/ai/chat (SSE -> coreStreamAuthorized)",
+   "emitter_hints": [
+    "api/ai/chat"
+   ],
+   "live_call_sites": [
+    "apps/hub/src/app/tutor/chat.tsx:320:        const res = await fetch(\"/api/ai/chat\", {"
+   ],
+   "classification": "HARDWIRE-LIVE"
+  }
+ ],
+ "rides_v2_wire_truth": [
   {
    "core_only_path": "/api/v1/teacher/marking/answers",
    "emitter_hints": [
@@ -12,69 +39,63 @@
     "smartMark",
     "smart-mark"
    ],
-   "live_call_sites": [
-    "apps/hub/src/app/teacher/marking/marking-client.tsx:234:        const view = await api.markingAnswer(answerId);",
-    "apps/hub/src/app/teacher/marking/marking-client.tsx:289:        const result = await api.smartMarkBatch(ids);",
-    "apps/hub/src/app/courses/[course]/exam-questions/[topicSlug]/question-player.tsx:1504:  const smartMark = async () => {",
-    "apps/hub/src/app/courses/[course]/exam-questions/[topicSlug]/question-player.tsx:1509:        attempts.map((a) => api.smartMarkAttempt(a.attemptId)),",
-    "apps/hub/src/app/courses/[course]/exam-questions/[topicSlug]/question-player.tsx:1586:          <Button size=\"sm\" variant=\"outline\" disabled={phase === \"marking\"} onClick={smartMark}>",
-    "apps/hub/src/app/teacher/marking/marking-client.tsx:15: * - smart-mark failures render their failure reason (e.g. PROVIDER_UNAVAILABLE),",
-    "apps/hub/src/app/teacher/marking/marking-client.tsx:17: * - per-point decisions are only offered when a smart-mark breakdown exists",
-    "apps/hub/src/app/teacher/marking/marking-client.tsx:239:        // seed per-point decisions from the smart-mark breakdown so \u03ba pairing"
+   "live_call_sites": [],
+   "classification": "RIDES-V2",
+   "rides_v2_wire_truth": [
+    {
+     "site": "apps/hub/src/app/teacher/marking/marking-client.tsx:234:        const view = await api.markingAnswer(answerId);",
+     "emitter": "markingAnswer",
+     "wire_path": "/api/v1/teacher/marking/answers/*",
+     "rides_row": "/api/v1/teacher/marking/answers/:uuid"
+    },
+    {
+     "site": "apps/hub/src/app/teacher/marking/marking-client.tsx:289:        const result = await api.smartMarkBatch(ids);",
+     "emitter": "smartMarkBatch",
+     "wire_path": "/api/v1/teacher/marking/smart-mark-batch",
+     "rides_row": "/api/v1/teacher/marking/smart-mark-batch"
+    },
+    {
+     "site": "apps/hub/src/app/courses/[course]/exam-questions/[topicSlug]/question-player.tsx:1504:  const smartMark = async () => {",
+     "emitter": "smartMark",
+     "wire_path": "/api/v1/teacher/marking/smart-mark-batch",
+     "rides_row": "/api/v1/teacher/marking/smart-mark-batch"
+    },
+    {
+     "site": "apps/hub/src/app/courses/[course]/exam-questions/[topicSlug]/question-player.tsx:1509:        attempts.map((a) => api.smartMarkAttempt(a.attemptId)),",
+     "emitter": "smartMarkAttempt",
+     "wire_path": "/api/v1/learners/me/attempts/*/smart-mark",
+     "rides_row": "/api/v1/learners/me/attempts"
+    },
+    {
+     "site": "apps/hub/src/app/courses/[course]/exam-questions/[topicSlug]/question-player.tsx:1586:          <Button size=\"sm\" variant=\"outline\" disabled={phase === \"marking\"} onClick={smartMark}>",
+     "emitter": "smartMark",
+     "wire_path": "/api/v1/teacher/marking/smart-mark-batch",
+     "rides_row": "/api/v1/teacher/marking/smart-mark-batch"
+    }
    ],
-   "classification": "LIVE"
-  },
-  {
-   "core_only_path": "/api/v1/teacher/assignments",
-   "emitter_hints": [
-    "teacherAssignments"
-   ],
-   "live_call_sites": [
-    "apps/hub/src/app/teacher/assignments/assignments-client.tsx:134:      setListRows(await api.teacherAssignments());"
-   ],
-   "classification": "LIVE"
-  },
-  {
-   "core_only_path": "/api/v1/learners/me/answer-input/transcribe",
-   "emitter_hints": [
-    "transcribe"
-   ],
-   "live_call_sites": [
-    "apps/hub/src/components/answer-ink-pad.tsx:12: * transcribes it to PLAIN TEXT. The result lands in an editable preview FIRST:",
-    "apps/hub/src/components/answer-ink-pad.tsx:87:  /** Called with the (possibly learner-edited) transcribed text; the parent",
-    "apps/hub/src/components/answer-ink-pad.tsx:194:      const result = await api.transcribeHandwriting(base64, \"image/jpeg\");",
-    "apps/hub/src/components/answer-ink-pad.tsx:206:   *  pick is still the trigger, nothing auto-transcribes on its own.",
-    "apps/hub/src/components/answer-ink-pad.tsx:246:      const result = await api.transcribeHandwriting(base64, \"image/png\");",
-    "apps/hub/src/components/answer-textarea.tsx:266:  /** SME's \"Upload\" pill \u2192 the EXISTING wave-3 photo\u2192core-transcribe"
-   ],
-   "classification": "LIVE"
+   "dropped_comment_lines": 3
   },
   {
    "core_only_path": "/api/v1/subjects",
    "emitter_hints": [
     "subjects("
    ],
-   "live_call_sites": [
-    "apps/hub/src/app/teacher/class/class-client.tsx:82:      .subjects()",
-    "apps/hub/src/app/teacher/classes/[id]/knowledge-graph/client.tsx:73:        const [d, s] = await Promise.all([api.teacherClassDetail(classId), api.subjects()]);"
-   ],
-   "classification": "LIVE"
-  },
-  {
-   "core_only_path": "hub route /api/ai/chat (SSE -> coreStreamAuthorized)",
-   "emitter_hints": [
-    "api/ai/chat"
-   ],
-   "live_call_sites": [
-    "apps/hub/src/app/api/ai/chat/route.ts:67: * POST /api/ai/chat \u2014 grounded tutor, PROXIED to syllabai-core (ADR-029 R3).",
-    "apps/hub/src/app/tutor/threads.ts:12: * /api/ai/chat, brief \u00a711).",
-    "apps/hub/src/app/tutor/chat.tsx:13: * Grounding contract is unchanged: the browser only talks to /api/ai/chat",
-    "apps/hub/src/app/tutor/chat.tsx:320:        const res = await fetch(\"/api/ai/chat\", {",
-    "apps/hub/src/app/tutor/composer.tsx:11: * (api/ai/chat zod) and mirrored here.",
-    "apps/hub/src/app/tutor/composer.tsx:24:/** Server body cap for `question` (api/ai/chat zod schema). */",
-    "apps/hub/src/lib/rate-limit.ts:6: * proxies (/api/ai/chat, /api/ai/cla) \u2014 promotion-plan Phase-1 item 6."
-   ],
-   "classification": "HARDWIRE-LIVE"
+   "live_call_sites": [],
+   "classification": "RIDES-V2",
+   "rides_v2_wire_truth": [
+    {
+     "site": "apps/hub/src/app/teacher/class/class-client.tsx:82:      .subjects()",
+     "emitter": "subjects",
+     "wire_path": "/api/v1/curriculum/subjects",
+     "rides_row": "/api/v1/curriculum"
+    },
+    {
+     "site": "apps/hub/src/app/teacher/classes/[id]/knowledge-graph/client.tsx:73:        const [d, s] = await Promise.all([api.teacherClassDetail(classId), api.subjects()]);",
+     "emitter": "teacherClassDetail",
+     "wire_path": "/api/v1/teacher/classes/*",
+     "rides_row": "/api/v1/teacher/classes"
+    }
+   ]
   }
  ],
  "dormant": [
@@ -123,6 +144,15 @@
    "core_only_path": "/api/v1/tree?includeMisconceptions=true",
    "emitter_hints": [
     "tree("
+   ],
+   "live_call_sites": [],
+   "classification": "DORMANT"
+  },
+  {
+   "core_only_path": "/api/v1/learners/me/intervention-runs",
+   "emitter_hints": [
+    "intervention-runs",
+    "interventionRuns"
    ],
    "live_call_sites": [],
    "classification": "DORMANT"

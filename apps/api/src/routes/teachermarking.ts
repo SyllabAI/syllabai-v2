@@ -51,6 +51,7 @@ import type { ZodError } from "zod";
 import {
   buildTeacherMarkingModule,
   parseMarkingState,
+  smartMarkResultView,
   type TeacherMarkingModule,
 } from "../services/teachermarking";
 import type { MarkingCandidateGenerator } from "../services/smartmark";
@@ -283,11 +284,18 @@ export function createTeacherMarkingRouter(
     return c.json(view);
   });
 
-  // POST /answers/{id}/smart-mark (:255-259) — append-only history
+  // POST /answers/{id}/smart-mark (:255-259) — append-only history.
+  // T-MIG-122 (B1-DEFECT-1 fix): the core serves the TeacherViews.SmartMarkView
+  // ENVELOPE (TeacherMarkingController :255-259 → TeacherViews.SmartMarkView
+  // .from, first-hand at 6cad6ef) — the controller mapping the 033 tranche-1
+  // never ported (the route returned the raw SmartMarkResult row, snake_case;
+  // the 116 run-002 t01 leg caught it). The envelope renders here; createdAt
+  // is the @PrePersist analog (the fresh wall-clock instant born at save —
+  // the comparator tolerates it BY NAME, the fleet law).
   r.post("/answers/:id/smart-mark", async (c) => {
     const id = parseUuid(c.req.param("id"));
-    const view = await module.teacherSmartMark.markAnswer(id);
-    return c.json(view);
+    const result = await module.teacherSmartMark.markAnswer(id);
+    return c.json(smartMarkResultView(result, new Date().toISOString()));
   });
 
   // POST /answers/{id}/human-mark (:261-270) — 201, @CurrentUserId from the

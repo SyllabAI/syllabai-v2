@@ -7365,3 +7365,22 @@ Work Log:
 
 Stage Summary:
 - All three remaining live bands are IN THE BOARD: B3 claimed (law-level witness class), B5 claimed (two-plane capture class, the widest server-side family), B6 claimed (keyless capture + the ruling gate). Post-band the census reaches the B7 tail (dormant rulings) -> the Z soak -> section 6.2. Next: run-001 batteries per band, then the re-points + PRs.
+
+---
+Task ID: trace 1a12ff5ac598546d (T-MIG-122 — the B1-DEFECT-1 fix band, operator order "B1-DEFECT-1 fix band")
+Agent: r7a (Super Z, zai-web session web-da4ab8b1)
+Task: fix B1-DEFECT-1 (the smart-mark tail serving the raw SmartMarkResult row where the core serves the TeacherViews.SmartMarkView envelope — the 116 run-002 t01 red), then land the staged B1 flip rows on the ALL-GREEN re-verify.
+
+Work Log:
+- Re-entry (the wipe-risk law): lane synced behind=0 @ ec880b3; creds intact. CLAIM-TIME FINDING of record: the 116 capture fixtures + the syllabai-core clone AND jar + node_modules were WIPED between sessions — the toolchain rig survived. T-MIG-122 filed (operator-ordered, the 114 pattern) with the re-derivation disclosed IN THE CARD before any work.
+- The frozen law re-established FIRST-HAND on the re-cloned 6cad6ef (remote HEAD verified equal pre-clone; jar rebuilt offline from the surviving m2 cache): TeacherMarkingController :255-259 → TeacherViews.SmartMarkView.from (9 camelCase fields, the fresh entity).
+- THE CAPTURE RE-DERIVED clean 15/15 in ONE pass. ROOT CAUSE of the of-record "SCHEME-PERSISTENCE artifact" FOUND + CLOSED: psql -At appends the RETURNING command tag on its own line → the seed VID carried "45100000-...\nINSERT 0 1" → every later uuid interpolation silently poisoned (the of-record psql() swallowed stderr). psql() now fails loudly + takes the first line; the mark_points seed uses the REAL ref/text columns; the scheme row asserted pre-band-T.
+- NONDETERMINISM LAW of record (s05, the absent batch body): @NotNull AND @NotEmpty both fire on null; the core's handler serves findFirst() over annotation-PROXY identity hashes → the string draw varies PER JVM BOOT (two clean boots drew BOTH strings first-hand; the of-record receipt's dual-string list is the same fact). v2 is deterministic ("must not be null"). The driver's s05 leg pins the TWO-DRAW LAW SET (the only accommodation; every other leg byte-tight).
+- THE FIX: services/teachermarking/index.ts smartMarkResultView (the from() analog; pipelineVersion = the just-stamped constant — the write-side echo; the N-2 stored-version law untouched) + routes/teachermarking.ts maps the tail through it (createdAt = the @PrePersist analog wall-clock instant) + the envelope-shape pin (the exact 9-key set, no snake_case leakage).
+- THE VERIFY: t116_verify.ts 12/12 ALL-GREEN vs the re-derived captures (the red leg t01 PASSES byte-equal). Substrate note: the fixed-uuid harness users are now PINNED in the verify seed (the middleware is fail-closed on users.findById R1/R2; attempts FKs learner_id).
+- THE FLIP: the staged rows landed per the 116 planned grammar — the mid-path /api/v1/teacher/marking/answers/:uuid (detail GET + the smart-mark SINGLE tail) + the batch leaf /api/v1/teacher/marking/smart-mark-batch; bare /answers STAYS CORE (zero emitters); the surface exact-sets +2, the 114/111/112-line assertions updated per the flip, the T-MIG-116/122 line test added (28/28).
+- THE CENSUS (§Z): LIVE 3 -> 2 (marking RIDES-V2). REAL INSTRUMENT FIND of record: midpath_covers joined segments with "".join — every mid-path row compiled to a slash-free pattern matching NOTHING (latent since the 119 hardening; the subjects case rode an EXACT row). Fixed ("/".join), the B4-class in-band hardening precedent, scope amended-in on the card.
+- Gates: typecheck x4 exit 0; suite 1896/0/13skip/7346 (main +1 test EXACT); hub 61/61; golden selftest OK. Drivers of record preserved in .syllabai/receipts/T-MIG-122/tools/. Zero prod contact, zero LLM, everything on 127.0.0.1.
+
+Stage Summary:
+- B1-DEFECT-1 FIXED and the B1 band UNBLOCKED: the marking answers/:uuid subtree rides v2 at the decision layer (the two rows landed); census LIVE 2 (transcribe=B6 + the ai/chat hardwire=B3 remain — both named plan bands). T-MIG-116 + T-MIG-122 → IN_REVIEW; the PR is the r0 desk's (authors never self-merge). Owed post-merge: the sanctioned hub redeploy (the marking page's :234/:289 emitters go v2-native) + the live battery + the union replay at the flip tip (CI-side on the PR).

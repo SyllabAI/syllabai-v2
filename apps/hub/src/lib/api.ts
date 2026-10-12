@@ -669,18 +669,40 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // posture. T-MIG-114 UPDATE
   // of record: the human-mark row WITHHELD by this block has LANDED (the
   // mid-path row below — the two findings fixed + the 44/44 re-verify of
-  // record discharged FAIL-NO-FLIP). STAY CORE with declared laws: bare
-  // /answers (its startsWith
-  // row would over-capture the detail + smart-mark + human-mark tails),
-  // the answers/:uuid detail (a mid-path row would over-capture BOTH POST
-  // tails — smart-mark UNVERIFIED), /smart-mark + /smart-mark-batch
-  // (LLM-adjacent, the 111 law stands), the bare /api/v1/teacher/marking
-  // base. Partial-segment capture classes DOCUMENTED INERT (no such routes
-  // or emitters exist on either side — pinned in the surface test).
+  // record discharged FAIL-NO-FLIP). T-MIG-116/122 UPDATE of record: the
+  // answers/:uuid DETAIL row + the smart-mark SINGLE tail (one mid-path row,
+  // below) + the smart-mark-batch LEAF row (the table tail) LANDED — the B1
+  // band's gate caught the smart-mark view-projection defect (B1-DEFECT-1,
+  // the raw row served where the core serves the TeacherViews.SmartMarkView
+  // envelope), the operator ordered the defect band T-MIG-122, the fix
+  // landed + the 12/12 re-verify is ALL-GREEN vs the re-derived frozen-core
+  // captures (receipts T-MIG-116/run-001-capture + run-002 + T-MIG-122/*).
+  // STAY CORE with declared laws: bare /answers (zero hub emitters — the
+  // planned B1 grammar keeps the bare row OUT even though every tail is now
+  // verified; the three-row grammar is the tighter posture), the bare
+  // /api/v1/teacher/marking base. The smart-mark SINGLE tail is LLM-adjacent:
+  // the keyless laws are golden-verified (the refusal fires BEFORE the
+  // generator seam); a VALIDATED-scheme call would reach the DORMANT v2
+  // generator (the stable refusal, the kappa/evaluate posture) — zero hub
+  // emitters hit that tail today (marking-client.tsx emits the detail GET
+  // :234 + the batch :289). Partial-segment capture classes DOCUMENTED INERT
+  // (no such routes or emitters exist on either side — pinned in the
+  // surface test).
   "/api/v1/teacher/marking/queue-v2",
   "/api/v1/teacher/marking/throughput",
   "/api/v1/teacher/marking/kappa/latest",
   "/api/v1/teacher/marking/kappa/evaluate",
+  // T-MIG-116 (r7a, the B1 decommission band) + T-MIG-122 (the B1-DEFECT-1
+  // fix band, operator order trace 1a12ff5ac598546d) — the smart-mark-batch
+  // LEAF row at the table tail (NOT under the :uuid mid-path row; a different
+  // literal tail). Golden-verified of record: the batch tail's keyless laws
+  // byte-honest vs the re-derived frozen-core captures (the TRUE no-scheme
+  // per-item UNEXPECTED_ERROR law, the verbatim jakarta validation strings,
+  // the SCHEME_NOT_VALIDATED per-item reasons, the dedup law — the t116
+  // driver 12/12 ALL-GREEN post-fix). The marking page's batch emitter
+  // (smartMarkBatch, marking-client.tsx :289) rides v2 with the hub
+  // redeploy.
+  "/api/v1/teacher/marking/smart-mark-batch",
   // T-MIG-117 (r7a, operator order trace 1a12e148cc3b93ad "Do it yourself")
   // — the B2 decommission band: the teacher/assignments SUBTREE row. The
   // band was PORT-FIRST (the claim finding: apps/api had ZERO
@@ -765,6 +787,22 @@ export const V2_SURFACE_MIDPATH_PREFIXES: readonly string[] = [
   // The marking page's human-mark emitter (submitHumanMark :1568) routes
   // v2-native with the hub redeploy.
   "/api/v1/teacher/marking/answers/:uuid/human-mark",
+  // T-MIG-116 + T-MIG-122 (the B1-DEFECT-1 fix band, operator order trace
+  // 1a12ff5ac598546d) — the answers/:uuid row: SIX segments (:uuid = exactly
+  // ONE well-formed uuid segment, the 086/087 grammar). It captures the
+  // detail GET (exactly 6 segments — the rich view, the 114-verified wire)
+  // AND the smart-mark SINGLE tail (7 segments — deeper tails ride the row,
+  // the same prefix-in-length semantics every row has): the tail's keyless
+  // laws are golden-verified of record (the 116/122 re-derive + the 12/12
+  // re-verify post-fix — the envelope law, the no-scheme 404, the unknown
+  // 404), the defect that withheld the row (B1-DEFECT-1) FIXED. The
+  // human-mark tail (a different literal at segment 7) matched here too —
+  // harmless: it has its OWN row and rides v2 since T-MIG-114. Bare /answers
+  // (5 segments < 6) and a malformed uuid stay core (the row-grammar law;
+  // the bare path has zero hub emitters). The smart-mark-batch tail NEVER
+  // matches this row (different literal at segment 5) — its own leaf row at
+  // the table tail.
+  "/api/v1/teacher/marking/answers/:uuid",
 ];
 
 const UUID_SEGMENT_RE = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;

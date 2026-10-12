@@ -212,6 +212,63 @@ test("/smart-mark-batch validation: empty, 51 ids, missing body → 400", async 
   expect(missing.status).toBe(400);
 });
 
+// ── POST /answers/{id}/smart-mark (:255-259) — the T-MIG-122 envelope law ───
+
+test("smart-mark tail serves the TeacherViews.SmartMarkView envelope (B1-DEFECT-1)", async () => {
+  // the 033 tranche-1 gap the 116 run-002 t01 leg caught: the route served
+  // the RAW SmartMarkResult persistence row (snake_case) where the core maps
+  // the fresh entity through TeacherViews.SmartMarkView.from (camelCase,
+  // first-hand at 6cad6ef). The pin: the exact 9-key camelCase envelope, no
+  // snake_case leakage, pipelineVersion = the just-stamped constant (the
+  // write-side echo — the N-2 stored-version law governs STORED reads only).
+  const { app } = boot({
+    roles: TEACHER,
+    module: {
+      teacherSmartMark: {
+        markAnswer: async () => ({
+          id: "c0000000-0000-4000-8000-000000000009",
+          answer_id: ANSWER_ID,
+          model_id: null,
+          marks_awarded: 0,
+          confidence: null,
+          validation_passed: false,
+          breakdown: [],
+          failure_reason: "SCHEME_NOT_VALIDATED",
+        }),
+      },
+    },
+  });
+  const res = await app.request(`/answers/${ANSWER_ID}/smart-mark`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({}),
+  });
+  expect(res.status).toBe(200);
+  const body = await res.json();
+  expect(Object.keys(body).sort()).toEqual([
+    "breakdown",
+    "confidence",
+    "createdAt",
+    "failureReason",
+    "id",
+    "marksAwarded",
+    "modelId",
+    "pipelineVersion",
+    "validationPassed",
+  ]);
+  expect(body).toEqual({
+    id: "c0000000-0000-4000-8000-000000000009",
+    pipelineVersion: "1.3.0",
+    modelId: null,
+    marksAwarded: 0,
+    confidence: null,
+    validationPassed: false,
+    failureReason: "SCHEME_NOT_VALIDATED",
+    breakdown: [],
+    createdAt: expect.any(String),
+  });
+});
+
 // ── GET /answers/{id} (:243-252) — rich view or NotFound("answer", id) ──────
 
 test("unknown answer → 404 with the NotFound detail message", async () => {

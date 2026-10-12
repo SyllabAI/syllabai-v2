@@ -1,0 +1,97 @@
+version: 1
+task:
+  id: T-MIG-122
+  title: "The marking smart-mark view-projection defect band (B1-DEFECT-1) — the SINGLE smart-mark tail serves the TeacherViews.SmartMarkView envelope, then the staged B1 flip rows land on the ALL-GREEN re-verify"
+  owner: "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)"
+  status: IN_REVIEW # the fix + the re-verify + the flip landed; the PR is the r0 desk's (authors never self-merge)
+  claimed_at: "2026-10-12T12:2xZ"
+  claimed_by_order: "operator trace 1a12ff5ac598546d 'B1-DEFECT-1 fix band'"
+  priority: P1
+  wave: defect-band # the 114 class: a verify red becomes its own operator-ordered band; the fix re-verifies before ANY flip lands
+  deps: [T-MIG-116, T-MIG-114]
+  execution_record: >
+    FILED+CLAIMED on the operator order (the 114 pattern: the defect band is
+    operator-ordered, never self-filed — the 116 run-002 gate caught the defect
+    and ROUTED it here). THE DEFECT OF RECORD (B1-DEFECT-1, the 116 run-002
+    receipt, leg t01-smartmark-scheme-not-validated): POST
+    /api/v1/teacher/marking/answers/:id/smart-mark serves the RAW
+    SmartMarkResult persistence row (snake_case: answer_id, marks_awarded,
+    confidence, validation_passed, breakdown, failure_reason) where the frozen
+    core serves the TeacherViews.SmartMarkView ENVELOPE (camelCase: id,
+    pipelineVersion, modelId, marksAwarded, confidence, validationPassed,
+    failureReason, breakdown, createdAt — TeacherMarkingController :255-259 →
+    TeacherViews.SmartMarkView.from, re-read FIRST-HAND at 6cad6ef on the
+    re-cloned frozen source). THE GAP: the 033 tranche-1 built the SmartMarkView
+    INTERFACE (services/teachermarking/index.ts :177) and the queue-view wiring
+    (:378 smartMarkView) but the SINGLE tail's controller mapping was not
+    ported — the route returns module.teacherSmartMark.markAnswer(id) raw
+    (routes/teachermarking.ts :287-291). THE FIX (the 116 recipe of record):
+    a smartMarkResultView builder in services/teachermarking/index.ts (the
+    TeacherViews.SmartMarkView.from analog — pipelineVersion from the module's
+    PIPELINE_VERSION constant, the just-stamped write-side law; the N-2
+    stored-version law governs STORED-run reads, not the fresh-entity echo) +
+    the route maps through it (createdAt: the fresh wall-clock ISO instant,
+    the @PrePersist analog — comparator-tolerant BY NAME). THE SANDBOX FACT
+    (first-hand 2026-10-12): the capture fixtures + the frozen-core clone +
+    the core jar were WIPED between sessions (the wipe-risk law struck the
+    scratch tiers; the toolchain rig survived) — the capture corpus is
+    RE-DERIVED from the rebuilt rig BEFORE the fix verifies (t116_capture.py
+    of record re-run against the re-cloned 6cad6ef; the re-derivation is the
+    same operation the B2 session performed, disclosed, never a silent
+    substitute). EXIT GATE: the t116_verify.ts driver 12/12 ALL-GREEN vs the
+    re-derived captures; THEN the staged B1 flip rows land (the mid-path
+    /api/v1/teacher/marking/answers/:uuid + the batch leaf
+    /api/v1/teacher/marking/smart-mark-batch — the 116 card's planned grammar,
+    re-decided at flip with the capture in hand); the envelope-shape pin joins
+    the route tests; the surface exact-sets +2 with the 116 line test; census
+    LIVE 3 -> 2 (marking leaves the core-routing list); typecheck x4 + the
+    suite + hub tests + golden selftest green. Bare /answers STAYS CORE (the
+    over-capture law stands). The detail tail's rich view is the 114-verified
+    wire (no re-verify owed beyond the driver's s10 leg).
+base:
+  repo: "syllabai-v2 @ ec880b3 (fetch-first behind=0 at claim); frozen refs: syllabai-core re-cloned @ 6cad6ef (HEAD-verified remote)"
+scope:
+  allowed:
+    - "apps/api/src/routes/teachermarking.ts (the ONE mapping: the smart-mark tail's controller projection)"
+    - "apps/api/src/services/teachermarking/index.ts (the ONE builder: smartMarkResultView — the route reads through it)"
+    - "apps/api/test/teachermarking/routes.test.ts (the envelope-shape pin)"
+    - "golden-captures/t-mig-116/** (the RE-DERIVED capture corpus — the wiped fixtures re-captured from the rebuilt rig)"
+    - "apps/hub/src/lib/api.ts (the TWO staged B1 flip rows + the 113-block note update ONLY — conditional on the 12/12 re-verify)"
+    - "apps/hub/src/lib/api.v2-surface.test.ts (the exact-sets +2, the moved-out notes, the 116 line test)"
+    - "scripts/preflight_zero_core_census.py (the §Z instrument mid-path matcher fix — the B4-class in-band hardening precedent, AMENDED-IN at flip: the answers/:uuid flip is the FIRST mid-path-dependent classification and it exposed the dead matcher)"
+    - ".syllabai/tasks/T-MIG-116.yaml (progress_log + status only)"
+    - ".syllabai/tasks/T-MIG-122.yaml; .syllabai/receipts/T-MIG-122/**; .syllabai/receipts/W7-CUTOVER/zero-core-census-2026-10-12-t122-r7a.json; .syllabai/worklog.md (append-only)"
+  forbidden:
+    - "any golden/cases/** edit (the corpus fence; the capture legs are fixtures, not cases)"
+    - "the bare /answers row; any row beyond the TWO planned (no widening)"
+    - "apps/api beyond the THREE files named above (no widening — the batch tail's queue view is byte-honest of record)"
+    - "syllabai-core / syllabai-hub repos (frozen, C1 — the re-clone is a read-only rig substrate)"
+    - "prod writes of any class; LLM calls (the ZERO-KEY law); force-push; self-merge"
+acceptance:
+  - "smartMarkResultView mirrors TeacherViews.SmartMarkView.from field-for-field (9 camelCase keys; the route returns the envelope, never the raw row) — DONE (the route pin asserts the exact key set)"
+  - "the t116_verify.ts driver replays 12/12 ALL-GREEN vs the re-derived capture corpus (deepEqualTolerant zero drift) — DONE (the of-record red leg t01 now PASSES; the s05 two-draw accommodation disclosed)"
+  - "the envelope-shape pin asserts the exact camelCase key set + no snake_case leakage — DONE"
+  - "the TWO flip rows land; the exact-sets +2; the 114/112-line stay-core assertions updated per the flip; the 116 line test pins the flip + the malformed-uuid + bare-/answers laws — DONE (surface test 28/28)"
+  - "census LIVE 3 -> 2 (the §Z instrument re-run of record); typecheck x4 exit 0; suite + hub tests green with the EXACT delta; golden selftest OK — DONE (the instrument's dead mid-path matcher found + fixed in-band, the B4 precedent)"
+execution_addendum: >
+  RUN-001 (re-derive, 12:07-12:25Z): the wiped capture corpus re-derived from
+  the rebuilt rig (core re-cloned @ 6cad6ef — the remote HEAD verified equal
+  to the frozen ref — jar rebuilt offline from the surviving m2 cache, PG
+  restarted); 15/15 clean capture in ONE pass. ROOT CAUSE of the of-record
+  'SCHEME-PERSISTENCE artifact' FOUND + CLOSED: psql -At appends the command
+  tag after RETURNING rows — the seed VID carried '45100000-...\nINSERT 0 1',
+  poisoning every later uuid interpolation (the of-record psql() swallowed
+  stderr). ALSO of record: the s05 absent-body law is JVM-run-NONDETERMINISTIC
+  on the core (@NotNull + @NotEmpty both fire; the handler's findFirst over
+  annotation-PROXY identity hashes) — two clean boots drew BOTH strings
+  first-hand; the driver's s05 leg pins the two-draw law set (v2 is
+  deterministic 'must not be null'). RUN-002 (fix+verify+flip, 12:26-13:0xZ):
+  the fix landed (route mapping + smartMarkResultView + the envelope pin);
+  t116_verify 12/12 ALL-GREEN (the red leg of record t01 PASSES); the TWO
+  staged flip rows landed (the :uuid mid-path + the batch leaf — the planned
+  grammar; bare /answers stays core); the §Z census re-run LIVE 3 -> 2 (the
+  instrument's dead mid-path matcher found + fixed in-band — the B4-class
+  hardening precedent, scope amended-in and recorded); typecheck x4 exit 0;
+  suite 1896/0/13skip (+1 exact); hub 61/61; golden selftest OK. Drivers of
+  record preserved in receipts/T-MIG-122/tools/. Hub redeploy OWED post-merge
+  (the 114 acceptance law).

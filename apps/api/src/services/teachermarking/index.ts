@@ -393,6 +393,44 @@ function smartMarkView(run: SmartRunRow | null): SmartMarkView | null {
   };
 }
 
+/**
+ * TeacherViews.SmartMarkView.from (T-MIG-122, the B1-DEFECT-1 fix): the
+ * SINGLE smart-mark tail's controller projection — the FRESH result row
+ * mapped field-for-field through the envelope, exactly the frozen
+ * TeacherMarkingController :255-259 → TeacherViews.SmartMarkView.from
+ * (first-hand at 6cad6ef: r.id(), r.pipelineVersion(), r.modelId(),
+ * r.marksAwarded(), r.confidence(), r.validationPassed(), r.failureReason(),
+ * r.breakdown(), r.createdAt()). The raw SmartMarkResult persistence row is
+ * NEVER the wire — the 116 run-002 t01 leg caught exactly that (the
+ * snake_case row served where the core serves the camelCase envelope).
+ *
+ * pipelineVersion: the constant — this is the WRITE-side echo of the row
+ * just stamped with PIPELINE_VERSION (the core's fresh entity defaults its
+ * pipelineVersion to SmartMarkResult.PIPELINE_VERSION at construction).
+ * The N-2 stored-version law governs the STORED-run reads (smartMarkView
+ * above), not the fresh-result echo — the two paths are different cores.
+ *
+ * createdAt: passed in by the caller — the core's value is the @PrePersist
+ * instant born at save (SmartMarkResult.java :134, the wall clock, not the
+ * injected clock); the route passes the analog wall-clock instant.
+ */
+export function smartMarkResultView(
+  row: SmartMarkResultRow,
+  createdAt: string,
+): SmartMarkView {
+  return {
+    id: row.id,
+    pipelineVersion: PIPELINE_VERSION,
+    modelId: row.model_id,
+    marksAwarded: row.marks_awarded,
+    confidence: row.confidence,
+    validationPassed: row.validation_passed,
+    failureReason: row.failure_reason,
+    breakdown: row.breakdown,
+    createdAt,
+  };
+}
+
 function humanMarkView(mark: HumanMarkRow | null): HumanMarkView | null {
   if (mark === null) return null;
   return {

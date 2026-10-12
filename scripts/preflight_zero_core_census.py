@@ -82,9 +82,16 @@ def row_covers(path: str) -> str | None:
 
 
 def midpath_covers(path: str, midpath: list[str]) -> str | None:
+    # T-MIG-122 disclosure: the segment join previously used "".join — the
+    # split delimiters were swallowed and EVERY mid-path row compiled to a
+    # slash-free pattern that matched nothing (latent since the 119
+    # hardening: the subjects wire-truth rode an EXACT row, so the mid-path
+    # branch was never exercised until the 116 answers/:uuid flip needed it).
+    # "/".join restores the literal separators; ":uuid" still compiles to
+    # [^/]+ and the trailing (/|$) keeps the deeper-tail semantics.
     for r in midpath:
-        pat = "^" + "".join("[^/]+" if seg == ":uuid" else re.escape(seg)
-                            for seg in r.split("/")) + "(/|$)"
+        pat = "^" + "/".join("[^/]+" if seg == ":uuid" else re.escape(seg)
+                             for seg in r.split("/")) + "(/|$)"
         if re.match(pat, path):
             return r
     return None

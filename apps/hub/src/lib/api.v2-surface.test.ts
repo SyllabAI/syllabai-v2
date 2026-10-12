@@ -152,10 +152,11 @@ const DUAL_RUN_PATHS: readonly string[] = [
   // marking-client call-sites: markingQueueV2Page :160, markingThroughput
   // :178, kappaLatest :196) + the dormant evaluateKappa form (:1547,
   // zero call-sites — the 084 posture). The bare markingQueue
-  // (request-plane, /answers?state=) STAYS CORE — its row would
-  // over-capture the detail + smart-mark + human-mark tails (the row
-  // grammar law); markingAnswer (:234, the detail read) stays core for
-  // the same over-capture law. The leaf row strings end before '?' so
+  // (request-plane, /answers?state=) STAYS CORE — the three-row B1 grammar
+  // keeps the bare row out (the T-MIG-116/122 detail/:uuid row below is the
+  // tighter posture). T-MIG-116/122 UPDATE: markingAnswer (:234, the detail
+  // read) LEFT the stay-core law — the mid-path :uuid row landed post-fix
+  // (the paths pinned below). The leaf row strings end before '?' so
   // the query variants ride the same row.
   "/api/v1/teacher/marking/queue-v2?state=PENDING&page=0&size=5",
   "/api/v1/teacher/marking/queue-v2?state=PENDING",
@@ -163,6 +164,15 @@ const DUAL_RUN_PATHS: readonly string[] = [
   "/api/v1/teacher/marking/kappa/latest",
   "/api/v1/teacher/marking/kappa/latest?paperId=3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
   "/api/v1/teacher/marking/kappa/evaluate",
+  // T-MIG-116/122 (r7a): the B1 subtree rows — the marking page's remaining
+  // LIVE emitters flip: markingAnswer (:234, the detail GET — the rich view,
+  // the 114-verified wire) + smartMarkBatch (:289, the batch POST — the
+  // keyless laws byte-honest post-fix). The smart-mark SINGLE tail has ZERO
+  // hub emitters (routing availability rides the :uuid row's deeper-tail
+  // semantics); the bare /answers STAYS CORE (the three-row grammar law).
+  "/api/v1/teacher/marking/answers/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
+  "/api/v1/teacher/marking/answers/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/smart-mark",
+  "/api/v1/teacher/marking/smart-mark-batch",
   // T-MIG-117 (r7a): the assignments family's FOUR hub-emitted wire forms —
   // the bare subtree row (table tail) captures all four; every form is
   // v2-REAL per the rig chain of record (the 88-leg capture + the 44/44
@@ -205,15 +215,13 @@ const CORE_ONLY_PATHS: readonly string[] = [
   // teacher/marking (T-MIG-113 UPDATE of record): the READ leaf rows
   // (queue-v2, throughput, kappa/latest, kappa/evaluate) FLIPPED at the
   // table tail (the local-rig 107-law capture 42/44 + the two findings
-  // filed T-MIG-114). STAYS CORE here: the BARE /answers path (its
-  // startsWith row would over-capture the detail + smart-mark +
-  // human-mark tails — the row-grammar law), smart-mark + smart-mark-batch
-  // (LLM-adjacent, the 111 law stands). T-MIG-114 UPDATE of record: the
-  // human-mark WRITE row LEFT this STAYS-CORE law — it LANDED as the
-  // mid-path row /api/v1/teacher/marking/answers/:uuid/human-mark (the
-  // two findings fixed + the 44/44 re-verify ALL-GREEN of record
-  // discharged FAIL-NO-FLIP; the 114 line test pins the flip and the
-  // malformed-uuid stay-core law).
+  // filed T-MIG-114). T-MIG-116/122 UPDATE of record: the answers/:uuid
+  // mid-path row (detail GET + smart-mark SINGLE tail) + the
+  // smart-mark-batch LEAF row LEFT this STAYS-CORE law — the B1-DEFECT-1
+  // withholding is FIXED (the envelope) and the 12/12 re-verify is
+  // ALL-GREEN of record. STAYS CORE here: the BARE /answers path (zero hub
+  // emitters; the planned B1 three-row grammar keeps it OUT) — the
+  // T-MIG-116 line test pins the flip and the stay-core laws.
   "/api/v1/teacher/marking/answers",
   // teacher/assignments LEFT this list in T-MIG-117 (r7a, the B2
   // decommission band, operator order trace 1a12e148cc3b93ad "Do it
@@ -326,6 +334,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/teacher/marking/throughput", // T-MIG-113: the deterministic counts read (the marking page's live read flips)
       "/api/v1/teacher/marking/kappa/latest", // T-MIG-113: the 404-empty/200-by-scope law (the marking page's live kappa read flips)
       "/api/v1/teacher/marking/kappa/evaluate", // T-MIG-113: the ZERO-KEY 409 no-pairs law (dormant emitter — routing availability, the 084 posture); the human-mark row WITHHELD (the 114 findings)
+      "/api/v1/teacher/marking/smart-mark-batch", // T-MIG-116/122: the B1 band's batch LEAF row (the keyless batch laws byte-honest vs the re-derived frozen-core captures; the 12/12 re-verify post-fix; the marking page's batch emitter :289 flips)
       "/api/v1/teacher/assignments", // T-MIG-117: the B2 port band (the 107 subtree-row law satisfied by the rig chain of record — the 88-leg capture + the 44/44 golden-verify)
     ]);
   });
@@ -338,6 +347,11 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       // per FAIL-NO-FLIP (the two findings fixed + the 44/44 re-verify of
       // record; the withheld ppd corpus case joined the union)
       "/api/v1/teacher/marking/answers/:uuid/human-mark",
+      // T-MIG-116/122: the answers/:uuid row — the detail GET + the smart-mark
+      // SINGLE tail (deeper tails ride the row); the B1-DEFECT-1 withholding
+      // is FIXED (the envelope law) and the 12/12 re-verify is ALL-GREEN of
+      // record; bare /answers (5 segs) + malformed uuids stay core
+      "/api/v1/teacher/marking/answers/:uuid",
     ]);
   });
 });
@@ -457,9 +471,9 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     // flipped them (the 112 line test pins the flip; the 111 exclusion law
     // is DISCHARGED of record).
     for (const p of [
-      "/api/v1/teacher/marking/answers", // T-MIG-113 UPDATE: the bare path STAYS (over-capture law) — but queue-v2 MOVED OUT (its leaf row flipped)
+      "/api/v1/teacher/marking/answers", // T-MIG-113/116 UPDATE: the bare path STAYS (zero emitters; the three-row grammar) — queue-v2 + the detail/:uuid row + the batch leaf MOVED OUT (their rows flipped)
       "/api/v1/teacher/marking/answers/a-1/human-mark", // T-MIG-114 UPDATE: the row LANDED but `a-1` fails the :uuid law — malformed uuids stay core (the captured 400-first law governs at the origin; the 112 class)
-      "/api/v1/teacher/marking/smart-mark-batch",
+      "/api/v1/teacher/marking/answers/a-1/smart-mark", // T-MIG-116/122: same malformed-uuid law on the new :uuid row
       "/api/v1/teacher/curriculum/versions",
       "/api/v1/teacher/curriculum/versions/v-1/nodes",
       "/api/v1/teacher/tests/preview",
@@ -525,7 +539,8 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     // the 111-excluded siblings KEEP their stay-core laws (unchanged):
     expect(v2SurfaceBase("/api/v1/teacher/curriculum/versions", V2)).toBeNull();
     expect(v2SurfaceBase("/api/v1/teacher/marking/answers", V2)).toBeNull();
-    expect(v2SurfaceBase("/api/v1/teacher/marking/smart-mark-batch", V2)).toBeNull();
+    // T-MIG-116/122 UPDATE: the batch leaf LEFT the stay-core law (its own
+    // row landed post-fix) — the assertion moved to the 116 line test.
   });
 
   test("the T-MIG-114 line: the human-mark write row FLIPS after the 44/44 re-verify (r7a, operator order 1a124e79487d6cb9 'take it')", () => {
@@ -547,12 +562,11 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     // malformed uuid: the :uuid law rejects -> stays core
     expect(v2SurfaceBase("/api/v1/teacher/marking/answers/a-1/human-mark", V2)).toBeNull();
     expect(v2SurfaceBase("/api/v1/teacher/marking/answers/not-even-uuid-ish/human-mark", V2)).toBeNull();
-    // the over-capture laws (unchanged): the detail GET (6 segments) and the
-    // smart-mark tails never match the human-mark row
-    expect(v2SurfaceBase("/api/v1/teacher/marking/answers/00000000-0000-4000-8000-0000000000ff", V2)).toBeNull();
+    // the over-capture laws (T-MIG-116/122 UPDATE: the detail GET + the
+    // smart-mark SINGLE tail + the batch LEAF now have their OWN verified
+    // rows — the assertions moved to the 116 line test; the bare /answers
+    // and the bare /teacher/marking STAY core):
     expect(v2SurfaceBase("/api/v1/teacher/marking/answers", V2)).toBeNull();
-    expect(v2SurfaceBase("/api/v1/teacher/marking/answers/00000000-0000-4000-8000-0000000000ff/smart-mark", V2)).toBeNull();
-    expect(v2SurfaceBase("/api/v1/teacher/marking/smart-mark-batch", V2)).toBeNull();
     expect(v2SurfaceBase("/api/v1/teacher/marking", V2)).toBeNull();
     // the prefix read rows keep flipping (no regression):
     expect(v2SurfaceBase("/api/v1/teacher/marking/queue-v2?state=PENDING&page=0&size=5", V2)).toBe(V2);
@@ -596,6 +610,47 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     expect(v2SurfaceBase("/api/v1/teacher/marking/answers", V2)).toBeNull();
     expect(v2SurfaceBase("/api/v1/teacher/classes", V2)).toBe(V2);
     expect(v2SurfaceBase("/api/v1/teacher/curriculum/versions", V2)).toBeNull();
+  });
+
+  test("the T-MIG-116/122 line: the B1 subtree rows flip after the defect fix + the 12/12 re-verify (r7a, operator order 1a12ff5ac598546d 'B1-DEFECT-1 fix band')", () => {
+    // the B1 band's gate caught B1-DEFECT-1 (the smart-mark tail served the
+    // RAW SmartMarkResult row, snake_case, where the core serves the
+    // TeacherViews.SmartMarkView camelCase envelope — routes/teachermarking
+    // :287); the operator ordered the defect band T-MIG-122, the fix landed
+    // (the smartMarkResultView projection) and the t116 driver re-verified
+    // 12/12 ALL-GREEN vs the re-derived frozen-core captures (the wiped
+    // fixtures re-captured from the rebuilt 6cad6ef rig — the re-derivation
+    // disclosed). FAIL-NO-FLIP discharged: the staged rows land.
+    // the mid-path :uuid row: the detail GET (6 segments) + the smart-mark
+    // SINGLE tail (7 segments, deeper tails ride the row):
+    expect(v2SurfaceBase("/api/v1/teacher/marking/answers/00000000-0000-4000-8000-0000000000ff", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/teacher/marking/answers/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/teacher/marking/answers/00000000-0000-4000-8000-0000000000ff/smart-mark", V2)).toBe(V2);
+    // the query string is stripped before segmentation (the matcher law):
+    expect(v2SurfaceBase("/api/v1/teacher/marking/answers/00000000-0000-4000-8000-0000000000ff?state=PENDING", V2)).toBe(V2);
+    // the batch LEAF row (a different literal tail — the prefix table):
+    expect(v2SurfaceBase("/api/v1/teacher/marking/smart-mark-batch", V2)).toBe(V2);
+    // the human-mark tail keeps flipping (its own row; also captured by the
+    // :uuid row's deeper-tail semantics — same plane, harmless):
+    expect(v2SurfaceBase("/api/v1/teacher/marking/answers/00000000-0000-4000-8000-0000000000ff/human-mark", V2)).toBe(V2);
+    // the row-grammar laws: bare /answers (5 segments < 6, zero emitters)
+    // and malformed uuids STAY core (the 112 malformed-uuid class; the
+    // captured 400-first laws govern at the origin):
+    expect(v2SurfaceBase("/api/v1/teacher/marking/answers", V2)).toBeNull();
+    expect(v2SurfaceBase("/api/v1/teacher/marking/answers/a-1", V2)).toBeNull();
+    expect(v2SurfaceBase("/api/v1/teacher/marking/answers/a-1/smart-mark", V2)).toBeNull();
+    expect(v2SurfaceBase("/api/v1/teacher/marking/answers/not-even-uuid-ish", V2)).toBeNull();
+    // the bare marking base stays core; the segment-safety law: the batch
+    // tail never rides the :uuid row (different literal at segment 5):
+    expect(v2SurfaceBase("/api/v1/teacher/marking", V2)).toBeNull();
+    // no-regression needles: the 113 read rows + the 114 write row stand:
+    expect(v2SurfaceBase("/api/v1/teacher/marking/queue-v2?state=PENDING&page=0&size=5", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/teacher/marking/throughput", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/teacher/marking/kappa/evaluate", V2)).toBe(V2);
+    // partial-segment capture (smart-mark-batchx) is a startsWith MECHANISM
+    // fact — DOCUMENTED INERT: no such route or emitter exists on either
+    // side (the 111 review-queuex pin convention; asserted mechanically):
+    expect("/api/v1/teacher/marking/smart-mark-batchx".startsWith("/api/v1/teacher/marking/smart-mark-batch")).toBe(true);
   });
 
   test("the T-MIG-097 line: the CLA ask flips after BOTH wires were proven live (r7a, chain order 1a119df7d930b609)", () => {

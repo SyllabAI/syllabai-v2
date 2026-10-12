@@ -1,0 +1,24 @@
+{
+  "task": "T-MIG-122",
+  "run": "run-001-rederive-capture-r7a",
+  "band": "B1-DEFECT-1 fix — the marking smart-mark view projection (the defect of record routed by the T-MIG-116 run-002 gate)",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1)",
+  "operator_order": "trace 1a12ff5ac598546d 'B1-DEFECT-1 fix band'",
+  "at": "2026-10-12T12:07-12:25Z",
+  "what": "the capture corpus of record RE-DERIVED from the rebuilt rig — the 116 fixtures were WIPED from the sandbox between sessions (the wipe-risk law struck the scratch tiers: golden-captures/t-mig-116/, the syllabai-core clone AND jar, node_modules; the toolchain rig survived) — disclosed in the T-MIG-122 card, never a silent substitute",
+  "rig_rebuild": [
+    "syllabai-core RE-CLONED @ 6cad6ef (the remote HEAD verified EQUAL to the frozen ref of record before clone; core.filemode=false re-set)",
+    "PG 17.11 + pgvector @ 127.0.0.1:5544 restarted (the cluster survived; the data-dir permissions law re-applied 0700)",
+    "core jar rebuilt OFFLINE from the surviving m2 cache (rig/maven + toolchain/build/m2, -o -DskipTests)",
+    "the TeacherViews.SmartMarkView.from law RE-READ FIRST-HAND on the fresh clone (TeacherMarkingController :255-259 + TeacherViews.java :59-73) — the fix recipe's frozen law re-established before any v2 edit"
+  ],
+  "capture": "t116_capture.py re-run clean: 15/15 legs at expected statuses, ONE pass (the s02b no-scheme 404 captured FIRST at true no-scheme state, then the scheme insert + the band-T refusal laws — cleaner than the of-record two-pass salvage, same laws)",
+  "ROOT_CAUSE_FOUND_of_record": {
+    "id": "the SCHEME-PERSISTENCE artifact of the 116 run-001 receipt, EXPLAINED + CLOSED",
+    "mechanism": "psql -At appends the command tag ('INSERT 0 1') on its own line AFTER RETURNING rows; the seed's VID carried '45100000-...\\nINSERT 0 1' and EVERY later uuid interpolation was silently poisoned (the mark_schemes seed got an invalid uuid -> silent error in the of-record psql() which swallowed stderr -> no scheme -> t01 404). The of-record operators fought exactly this (their 'second run's s02 404 expectation failure' disclosure) and salvaged the fixtures in two passes.",
+    "fix": "psql() now fails LOUDLY on rc!=0 and takes the FIRST output line (the row; the tag is never a row value); the mark_points seed uses the REAL columns (ref/text — the of-record receipt's own column disclosure); the scheme row is ASSERTED before the band-T legs"
+  },
+  "nondeterminism_law_of_record": "s05 (the ABSENT batch body): the core's draw is JVM-run-nondeterministic — @NotNull AND @NotEmpty BOTH fire on null and GlobalExceptionHandler.invalid serves findFirst() over Hibernate Validator's Set of annotation-PROXY violations (identity hashes differ per boot). FIRST-HAND: two clean boots of the same 6cad6ef jar drew BOTH strings ('answerIds: must not be null' @ 12:16Z, 'answerIds: must not be empty' @ 12:24Z); the of-record receipt's dual-string list is the same fact. v2 is deterministic ('must not be null', the classifier's @NotNull branch). The verify driver's s05 leg pins the LAW SET (disclosed in the driver; every other leg stays byte-tight).",
+  "write_ledger": "LOCAL ONLY (the scratch PG @5544, db syllabai_capture); zero prod contact; zero LLM calls (the refusal fires BEFORE the generator seam)",
+  "verdict": "PASS — the frozen law re-established; the corpus of record re-derived (14 fixtures + manifest, committed under golden-captures/t-mig-116/); the drivers of record preserved in receipts/T-MIG-122/tools/"
+}

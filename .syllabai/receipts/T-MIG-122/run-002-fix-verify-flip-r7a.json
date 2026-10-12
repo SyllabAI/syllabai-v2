@@ -1,0 +1,40 @@
+{
+  "task": "T-MIG-122",
+  "run": "run-002-fix-verify-flip-r7a",
+  "band": "B1-DEFECT-1 fix — the marking smart-mark view projection + the staged B1 flip rows landing on the ALL-GREEN re-verify",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1)",
+  "operator_order": "trace 1a12ff5ac598546d 'B1-DEFECT-1 fix band'",
+  "at": "2026-10-12T12:26-13:0xZ",
+  "the_fix": {
+    "site_of_record": "routes/teachermarking.ts :294-298 (was :287-291) + services/teachermarking/index.ts smartMarkResultView",
+    "what": "the SINGLE smart-mark tail now maps the markAnswer result through the TeacherViews.SmartMarkView envelope — the controller projection the 033 tranche-1 never ported (the route returned the raw SmartMarkResult persistence row, snake_case; the 116 run-002 t01 leg caught it)",
+    "mapping_law": "field-for-field the frozen TeacherViews.SmartMarkView.from (first-hand at 6cad6ef, re-read on the re-cloned source): id, pipelineVersion (the module's PIPELINE_VERSION constant '1.3.0' — the WRITE-side echo of the row just stamped with it; the core's fresh entity defaults pipelineVersion to SmartMarkResult.PIPELINE_VERSION at construction; the N-2 stored-version law governs STORED-run reads via smartMarkView, NOT the fresh echo), modelId, marksAwarded, confidence, validationPassed, failureReason, breakdown (the row's array — the refusal serves []), createdAt (the caller's fresh wall-clock ISO instant — the @PrePersist analog, SmartMarkResult.java :134; comparator-tolerant BY NAME)",
+    "pin": "apps/api/test/teachermarking/routes.test.ts — the envelope-shape pin: the exact 9-key camelCase set (sorted assert) + the full-body deep-equal, no snake_case leakage"
+  },
+  "verify": {
+    "driver": "scripts/t116_verify.ts (the of-record gate, ONE disclosed accommodation: the s05 leg pins the two-draw law set — see run-001's nondeterminism_law_of_record)",
+    "verdict": "12/12 legs PASS — ALL-GREEN. THE DEFECT LEG OF RECORD (t01-smartmark-scheme-not-validated) NOW PASSES: v2 serves the camelCase envelope byte-equal to the re-derived frozen-core capture (pipelineVersion '1.3.0', modelId null, marksAwarded 0, confidence null, validationPassed false, failureReason SCHEME_NOT_VALIDATED, breakdown [], createdAt tolerant). The of-record run was 11/12 with t01 RED.",
+    "substrate": "fresh syllabai_verify (drizzle push + the 113-class seed + the fixed-uuid harness users NOW PINNED in the verify seed — the auth middleware is fail-closed on users.findById R1/R2 and attempts FKs learner_id)"
+  },
+  "the_flip": {
+    "rows": [
+      "V2_SURFACE_MIDPATH_PREFIXES + '/api/v1/teacher/marking/answers/:uuid' — SIX segments; captures the detail GET (the 114-verified rich view) + the smart-mark SINGLE tail (deeper tails ride the row); bare /answers (5 segs, zero emitters) + malformed uuids STAY CORE",
+      "V2_SURFACE_PREFIXES + '/api/v1/teacher/marking/smart-mark-batch' — the batch LEAF row at the table tail (a different literal tail; NEVER matches the :uuid row)"
+    ],
+    "grammar": "exactly the T-MIG-116 card's planned rows, re-decided at flip with the capture in hand; the bare /answers row stays OUT (the three-row grammar is the tighter posture — the 116 plan note stands)",
+    "fail_no_flip_discharged": "the B1-DEFECT-1 withholding is FIXED + the 12/12 re-verify ALL-GREEN — the 114 lesson applied to the letter, then discharged"
+  },
+  "census": {
+    "instrument": "scripts/preflight_zero_core_census.py — REAL FIX of record (the B4-class in-band hardening): midpath_covers joined segments with ''.join — the split delimiters were swallowed and EVERY mid-path row compiled to a slash-free pattern matching NOTHING (latent since T-MIG-119; the subjects wire-truth rode an EXACT row so the branch was never exercised until the 116 answers/:uuid flip needed it). '/'.join restores the separators. Scope AMENDED-IN per the B4 precedent (the card records the amendment).",
+    "verdict": "LIVE 3 -> 2 (marking RIDES-V2: markingAnswer + runSmartMark wire paths covered by the :uuid row). Remaining LIVE: /api/v1/learners/me/answer-input/transcribe (B6, T-MIG-121) + the /api/ai/chat hub hardwire (B3, T-MIG-118). Receipt: .syllabai/receipts/W7-CUTOVER/zero-core-census-2026-10-12-t122-r7a.json"
+  },
+  "gates": {
+    "typecheck": "x4 exit 0 (contracts/shared/db/api)",
+    "suite": "bun test apps/api packages: 1896 pass / 0 fail / 13 skip / 7346 expect — the same-sandbox main baseline 1895/0/13/7343 +1 test (the envelope pin) EXACT",
+    "hub": "61 pass / 0 fail (the surface test 28/28 incl. the new T-MIG-116/122 line + the exact-sets +2)",
+    "golden_selftest": "OK",
+    "union_replay": "CI-side on the PR (the 114/117 precedent — the verify workflow replays the corpus at the flip tip)"
+  },
+  "write_ledger": "zero prod/Neon contact; zero LLM; everything on 127.0.0.1 (the local rigs only)",
+  "hub_redeploy_owed": "post-merge (the sanctioned recipe — the 114 acceptance law): the marking page's markingAnswer (:234) + smartMarkBatch (:289) emitters go v2-native with the redeploy; the battery + the flipped-sibling needles re-run live"
+}
