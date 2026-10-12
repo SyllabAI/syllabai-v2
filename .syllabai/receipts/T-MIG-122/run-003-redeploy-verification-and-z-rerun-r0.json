@@ -1,0 +1,46 @@
+{
+  "run": "run-003-redeploy-verification-and-z-rerun-r0",
+  "task": "T-MIG-122 + T-MIG-118 + T-MIG-120 + T-MIG-117 — the serialized B1/B2 redeploy leg: independent first-hand verification + the owed §Z census re-run + the union replay dispatch",
+  "actor": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e, chat 0283e086)",
+  "operator_trace": "1a1307f29ee52dc9 'take the B1/B2 redeploy leg'",
+  "arrival_finding": "THE LEG WAS ALREADY EXECUTED OF RECORD by the sibling r0 sessions (the fleet race): wave-1 dpl_59GMpYK1Zz6nRVYyfBxr READY (B1+B2, T-MIG-122 run-003-postpush-hubredeploy-acceptance, session web-1f157e25) then wave-2 dpl_2n5M3AKhG3i9xEMcd6kuHkneXGzo READY (B3+B5, T-MIG-118 run-002-postmerge-hubredeploy-acceptance, session web-752465e5; race-guard CLEAR; rollback anchor = the wave-1 dpl). Per the 099 desk law (another lane's live claim is not taken unverified) the directive is discharged as the INDEPENDENT verification battery + the acceptance's own residuals (the §Z re-run + the union replay), with zero duplicate redeploys fired.",
+  "independent_battery": {
+    "live_bundle_scan": {
+      "method": "credential-free scanner (scripts/redeploy_bundle_scan_r0.py, lane artifact + work/redeploy_bundle_scan_r0.json): 5 hub pages fetched 200, 23/23 referenced _next chunks fetched clean, flip-table literals counted first-hand against the served syllabai-hub-v2.vercel.app bundle",
+      "corroboration_exact": {
+        "/api/v1/questions": "6 occurrences in the api chunk (the sibling census 5->6 +1 EXACT for the B5 subtree row) — MATCH",
+        "/api/v1/teacher/marking/smart-mark-batch": "2 (stable per the sibling census) — MATCH",
+        "/api/v1/teacher/assignments": "5 (stable) — MATCH",
+        "/api/v1/tutor/ask/stream": "0 in client chunks (the stream path lives in the SERVER route — by construction, per the 118 sha-note law) — MATCH",
+        "B1 mid-path prefix": "/api/v1/teacher/marking/answers/ present x5 in the api chunk — the 122 rows bake",
+        "controls": "marking/queue-v2 x3, teacher/classes x15, curriculum/subjects x1 — the pre-existing rows intact, no regression"
+      }
+    },
+    "wire_smoke_zero_write_6_of_6": [
+      "hub GET /api/health -> 200 {status:ok, dataMode:core-api, coreConfigured:true}",
+      "hub POST /api/ai/chat {} unauth -> 400 invalid_body (zod parse-first live)",
+      "hub POST /api/ai/chat {question} unauth -> 401 unauthorized (the B3 route law)",
+      "hub GET /api/core/questions?course=x unauth -> 200 {available:false, reason:'unauthenticated'} (the B5 bridge contract)",
+      "v2 GET /api/v1/teacher/marking/answers/<uuid> unauth -> 401 Boot envelope (the B1 flip target's law layer)",
+      "v2 GET /api/v1/teacher/assignments unauth -> 401 Boot envelope (the B2 flip target's law layer)"
+    ],
+    "code_law_read": "apps/hub/src/app/api/ai/chat/route.ts at 4cb04ca read first-hand: the B3 upstream decision is TABLE-GOVERNED v2-first (v2SurfaceBase('/api/v1/tutor/ask/stream', ...) at :148-152; the v2 env unset = rollback to core per the 106 law; coreStreamAuthorized survives as the ROLLBACK FALLBACK, not the serving path)",
+    "ci_and_pr": "check-runs at 4cb04ca read first-hand: verify SUCCESS + hub SUCCESS 2/2; PR #181 read first-hand: closed merged=true head=3f34803 (corroborates the incident receipt's GitHub auto-detection; my battery also serves as the post-hoc substantive verification the incident's requested_disposition asked of the desk)"
+    },
+  "z_census_rerun_first_hand": {
+    "at": "tip 4cb04ca, instrument scripts/preflight_zero_core_census.py (the hardened-of-record build); tracked baseline receipt restored to HEAD after the run (the desk-disclosed overwrite caveat, third handling)",
+    "result": "pins=8 LIVE=2 dormant=5 unmapped=0",
+    "rows": {
+      "transcribe": "LIVE — the B6 flip is STAGED of record pending the operator ruling (b) (T-MIG-121 run-001 keyless capture: unauth/absent-image/bad-mime laws ALL PASS both planes) — the one true residual LIVE row",
+      "chat_sse": "LIVE ON THE INSTRUMENT but adjudicated STALE-RULE first-hand: the route is v2-first table-governed (the code_law_read above) — the instrument's chat classification predates the B3 re-point and needs the 122-class matcher hardening (left to the Z band claim per scope discipline; NOT self-filed)"
+    },
+    "adjudication": "the acceptance's LIVE->0 projection is thus ONE hardening + ONE operator ruling away: the census-of-record honest state = LIVE 2 rows (1 stale rule + 1 B6-staged), zero true serving core dependencies among the instrument's LIVE set beyond those two rows' dispositions"
+  },
+  "union_replay_dispatch": {
+    "act": "workflow_dispatch neon-replay.yml ref=main at head 4cb04ca — run #41 id 38263275006 (the T-MIG-042 run-29 dispatch precedent; the acceptance's 'rides the CI' held only at pin level since the replay is dispatch/schedule-only and had NOT run at this tip)",
+    "disposition": "ADJUDICATED FIRST-HAND: run #41 completed SUCCESS at head 4cb04ca; the union log seal read from the run artifacts verbatim: 'UNION VERDICT: 223/223 golden cases pass (seed 208/208 + prod 15/15) — 5 via the T-MIG-071 (R3-C) declared limiter-429 disposition' — the justified-ledger posture unchanged, zero non-justified divergences"
+  },
+  "verdict": "THE B1/B2 REDEPLOY LEG VERIFIED SERVING OF RECORD — the marking smart-mark tails + the assignments family (and the B3 tutor stream + B5 questions anchors) ride v2 live through the deployed hub bundle; every sibling acceptance claim reproduced exactly; the §Z re-run filed honest at LIVE 2 (1 stale rule + 1 B6-staged row). The 6.2 path remaining: the Z instrument hardening + the B6 operator ruling (b) + the B7 rulings -> LIVE 0 -> the CI gate + the 48h soak.",
+  "write_ledger": "1 GitHub Actions workflow dispatch (the replay; the run itself = disposable COW Neon branches, zero production contact per the workflow's own law); zero prod writes; zero authed POSTs (the battery is unauth law-layer + public bundle reads); zero LLM; zero Vercel API contact (credential-free verification posture — the dpl IDs stand on the sibling receipts' fingerprint law); zero Neon contact",
+  "boundaries": "read-only verification + the one disclosed dispatch; no force; no token persistence; the Z band + B7 + B6 ruling left to their claim/decision laws"
+}

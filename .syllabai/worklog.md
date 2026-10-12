@@ -7491,3 +7491,17 @@ Work Log:
 
 Stage Summary:
 - The operator's "proceed with the unclaimed bands B3/B5/B6" order is materially discharged: B3 MERGED+SERVING, B5 LANDED (GitHub-merged record; the desk's post-hoc ratification requested via incident-001), B6 captured+verified with the flip STAGED pending the ruling (b) REQUESTED. The board's live-core residue: transcribe (ruling-gated) + the B7 dormant rulings.
+
+---
+Task ID: R0-REDEPLOY-VERIFY-1 (operator trace 1a1307f29ee52dc9 "take the B1/B2 redeploy leg")
+Agent: r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+
+Work Log:
+- Arrival finding: the leg ALREADY executed of record by sibling r0 sessions (wave-1 dpl_59GMpYK1Zz6nRVYyfBxr B1+B2 via T-MIG-122 run-003; wave-2 dpl_2n5M3AKhG3i9xEMcd6kuHkneXGzo B3+B5 via T-MIG-118 run-002; race-guard CLEAR; rollback anchor chain intact) + the T-MIG-120 intake-bypass disclosed (content byte-identical to PR #181's reviewed head). Per the 099 law the order was discharged as the INDEPENDENT verification battery — zero duplicate redeploys fired.
+- Independent battery (credential-free, zero-write, zero LLM): (1) own bundle scanner 23/23 live chunks — literals exact: /api/v1/questions=6 (+1 B5 row), smart-mark-batch=2, assignments=5, stream=0 client (server-route by construction), controls intact — every sibling census claim reproduced; (2) wire smoke 6/6 (hub health 200 core-api; chat 400-parse-first + 401; B5 bridge 200 {available:false,unauthenticated}; v2 marking-detail 401 + assignments 401 Boot envelopes); (3) route code-law read first-hand: v2-first table-governed (v2SurfaceBase :148-152; coreStreamAuthorized = rollback fallback only); (4) CI at 4cb04ca verify+hub 2/2 SUCCESS; PR #181 merged:true first-hand — also the post-hoc substantive verification the incident's requested_disposition asked of the desk.
+- §Z census re-run at the tip FIRST-HAND: pins=8 LIVE=2 dormant=5 unmapped=0 (baseline restored post-run, third handling of the disclosed overwrite caveat) — chat row adjudicated STALE-RULE (the B3 re-point precedes the instrument's classification; the 122-class matcher hardening left to the Z band claim, NOT self-filed); transcribe = the one true LIVE row (B6 flip staged pending the operator ruling (b), laws ALL PASS of record T-MIG-121 run-001).
+- Union replay dispatched + adjudicated: run #41 (id 38263275006) workflow_dispatch ref=main at 4cb04ca — completed SUCCESS; seal verbatim "UNION VERDICT: 223/223 golden cases pass (seed 208/208 + prod 15/15) — 5 via the T-MIG-071 (R3-C) declared limiter-429 disposition"; zero non-justified.
+- Receipt run-003-redeploy-verification-and-z-rerun-r0.json + this entry; push direct-main (fetch-first); write ledger: 1 replay dispatch, zero prod/Neon/Vercel-API contact, zero LLM.
+
+Stage Summary:
+- B1/B2 redeploy leg VERIFIED SERVING of record (with B3/B5 riding the same waves): the marking tails + assignments + tutor stream + questions anchors ride v2 live. 6.2 path remaining: the Z instrument hardening (chat rule) + the B6 operator ruling (b) + the B7 rulings -> LIVE 0 -> CI gate + 48h soak. Lane IDLE.
