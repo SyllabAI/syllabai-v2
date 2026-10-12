@@ -7317,3 +7317,21 @@ Work Log:
 
 Stage Summary:
 - The "rig/toolchain-capable session" this band waited for EXISTS NOW — the operator's "Do it yourself" dissolved the gate: the 107/113/114 rig is a RECIPE (dpkg -x user-trees + a maven tarball + the frozen source), not a sandbox property. The B2 band reached IN_REVIEW with the full capture+verify+flip chain in ONE session. Open after the desk: B1's staged LLM-tail gate (the same rig is LIVE — the marking tails' keyless+positive laws are executable next), B3/B5/B6 per the plan, the §6.2 pre-gate census soak (LIVE 3 at the stamp).
+
+---
+Task ID: 438940 (cron sweep 2026-10-12 04:30Z window, merge executed 04:32Z)
+Agent: R0-auto (merge desk)
+Task: periodic sweep — intake of PR #179 (T-MIG-117, the B2 decommission band)
+
+Work Log:
+- Sweep found 1 open PR (#179, t-mig-117/r7a, head 1eb3c13, base main) + main advanced a5d656f -> 5267982 (t-mig-117 run-001/run-002 receipt + card flip, .syllabai-only)
+- Gates verified on REAL head 1eb3c13: CI verify+hub 2/2 success; mergeable TRUE / clean (no merge-intake needed); reviews 0, comments 0 (no REQUEST_CHANGES / HOLD / BLOCKING / do-not-merge)
+- Diff boundary scan (98 files): zero *.java; all paths in-scope (apps/api port + tests, apps/hub v2 api surface + v2-surface test, packages, golden-captures/t-mig-117/ x89); no core/hub REPO content, no Neon/prod writes — captures of record are the local rig per the PR body (PG 17.11 @ 127.0.0.1:5544, docker-free rebuild recipe)
+- Authorization chain of record: b6f78f7 ordered the B2 port band with an execution gate (toolchain absent THAT session); PR body cites operator order trace 1a12e148cc3b93ad "Do it yourself" — executed in-session, rig rebuilt; the 5267982 receipt (run-001 capture + run-002 golden-verify, card flip CLAIMED -> IN_REVIEW) landed before this merge
+- MERGED via PUT /pulls/179/merge merge_method=merge at 04:32Z — merge commit 6c09106 (parents 5267982 + 1eb3c13), no force
+- CI verified on new main tip 6c09106: verify + hub completed/success 2/2 first-hand
+- This receipt: .syllabai-only bookkeeping commit (fetch-first behind=0 race check), gates green at push time, no force
+
+Stage Summary:
+- Desk: 1 merge (PR #179 -> 6c09106), 0 escalations this run; main @ 6c09106 CI 2/2 green
+- The B2 decommission band (teacher-assignments port + capture + verify + flip row) is INTEGRATED of record; census ledger continues per the plan law
