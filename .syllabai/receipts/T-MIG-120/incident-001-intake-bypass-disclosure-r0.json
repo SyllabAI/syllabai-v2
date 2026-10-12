@@ -1,0 +1,25 @@
+{
+ "task": "T-MIG-120",
+ "run": "incident-001-intake-bypass-disclosure-r0",
+ "lane": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "at": "2026-10-12T13:45:00Z",
+ "incident": "INTAKE BYPASS — the B5 band code landed on main by lane error without the r0-auto desk's sha-guarded intake act",
+ "what_happened": [
+  "the bookkeeping commit 31706fb (receipts, .syllabai-only) was created while the lane was still ON the t-mig-120/r0 branch (the checkout state defect — the lane forgot to switch to main after filing PR #181)",
+  "the push HEAD:main then delivered BOTH commits to main: 3f34803 (the B5 band code — the subtree row + the re-points + the tests) AND 31706fb (the receipts) — the code commit rode along unintentionally",
+  "the breach: band code must land via the PR + the desk's sha-guarded merge (authors never self-merge); this landed direct-main without the desk's independent verification act"
+ ],
+ "substantive_gate_status": {
+  "content_identity": "main's 3f34803 IS byte-exact PR #181's head (the same commit object) — zero delta between the reviewed head and the landed tree",
+  "ci": "the GitHub CI on the landed tip 31706fb: verify SUCCESS + hub SUCCESS 2/2 first-hand (check-runs API)",
+  "pre_push_gates": "typecheck x4 exit 0, hub tsc 0, hub 63/63, suite 1896/0/13skip EXACT of-record main, golden selftest OK — all run first-hand before the push",
+  "pr_record": "GitHub auto-detected the contained head and marks PR #181 closed/merged:true — the PR-flow record exists",
+  "diff_boundary": "4 files: apps/hub/src/lib/api.ts (+the row), core-topics.ts, app/api/core/questions/route.ts, api.v2-surface.test.ts — all in the band's declared scope; zero .java; zero core/hub repo content; zero prod writes",
+  "no_force": "the push was a plain fast-forward push (a001f04..31706fb); no force anywhere"
+ },
+ "remediation_considered": "a revert + a fresh PR — REJECTED: the revert is ITSELF a direct-main code change, the content is byte-identical to the reviewed PR head, CI is green, and GitHub's PR-flow record already exists; a revert would add unratified churn to remove verified content",
+ "requested_disposition": "the r0-auto desk's next sweep is asked to independently verify the landed state post-hoc (the 178-supersede-verification class: the diff boundary, CI, the PR-head identity) and file its bookkeeping receipt; the operator may alternatively order the revert+re-PR path",
+ "process_fix": "the lane's post-PR bookkeeping is now pinned to an explicit 'git switch main && fetch-first' step BEFORE any commit (the checkout-state defect class; the same family as the two heredoc defects this session — all caught, all disclosed)",
+ "write_ledger": "zero additional prod contact; this receipt is .syllabai-only",
+ "card": "T-MIG-120 stays IN_REVIEW — the desk's post-hoc ratification (or the operator's disposition) completes the band"
+}

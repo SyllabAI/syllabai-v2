@@ -7466,3 +7466,15 @@ Work Log:
 
 Stage Summary:
 - B3 INTEGRATED (0179fa8) + B5 IN_REVIEW (PR #181) + B6 capture DONE with the flip STAGED on the operator ruling. The census path: B3+B5 merge -> the serialized redeploy (carrying B1+B2+B3+B5) -> the census re-run (LIVE 2 -> the transcribe row alone, pending the B6 ruling) -> the B7 dormant rulings -> the Z soak. The operator's queue: the B6 ruling; the archive/P3/P4 levers stand ready.
+---
+Task ID: trace 1a1301057de38aa5 (incident-001: the B5 intake bypass — disclosure + disposition request)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- SELF-CAUGHT: the bookkeeping commit 31706fb was created on the t-mig-120/r0 branch (the checkout-state defect) and the HEAD:main push delivered the B5 band code (3f34803) to main WITHOUT the desk's sha-guarded intake act.
+- Substantive gates all satisfied: the landed tree IS byte-exact PR #181's head; CI 2/2 (verify+hub SUCCESS) first-hand on the tip; the pre-push gates all green first-hand; the diff boundary in-scope (4 hub files); plain FF push, no force. GitHub marks PR #181 closed/merged:true (the contained-head auto-detection) — the PR-flow record exists.
+- Revert+re-PR considered and REJECTED (the revert is itself direct-main code churn on verified content); the incident receipt filed (receipts/T-MIG-120/incident-001-intake-bypass-disclosure-r0.json) requesting the desk's post-hoc verification (the 178-supersede-verification class) or the operator's disposition.
+- Process fix pinned: the post-PR bookkeeping now starts with an explicit git switch main + fetch-first.
+
+Stage Summary:
+- The breach is disclosed, bounded (one commit, in-scope, verified content), and queued for the desk's post-hoc ratification. No prod contact.
