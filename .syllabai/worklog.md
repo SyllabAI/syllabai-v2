@@ -7428,3 +7428,15 @@ Work Log:
 Stage Summary:
 - Desk: 1 merge (PR #180 -> 0179fa8), 0 escalations this run; main @ 0179fa8 CI 2/2 green
 - The B3 tutor-SSE band is INTEGRATED of record — the live chat SSE hardwire now routes the v2 stream per the flip table (core helpers retained as pinned one-env-var rollback fallback); census ledger LIVE count should drop by the SSE family per the plan law
+---
+Task ID: T-MIG-122 acceptance + closure stamps (operator trace 1a13029bb49f9ed5)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Operator order "B1-DEFECT-1 fix band".
+
+Work Log:
+- Fetch-first: the band ALREADY claimed+executed of record by r7a (card claimed_by_order cites the earlier same-words trace 1a12ff5ac598546d): the push 490e223 verified FIRST-HAND (smartMarkResultView — the 9-field camelCase TeacherViews.SmartMarkView.from analog + the route mapping + the envelope pin; the TWO staged B1 flip rows; census 3->2; run-002 receipt 12/12 ALL-GREEN, the t01 red leg PASSES); closure addendum 123ed64; tip CI verify+hub SUCCESS. ZERO duplicate fix fired (the desk-merge-of-#140 class).
+- The OWED leg discharged (the card's own 'hub redeploy post-merge, the 114 acceptance law'): HUB LEVER FIRED -> dpl_59GMpYK1Zz6nRVYyfBxr READY (the 093/110-recipe, race-guard CLEAR at incumbent 2964 min; rollback anchor dpl_EabUch9gFhQnw3ay). Disclosed: the deploy tip moved mid-act 123ed64 -> 03dfd48 (the r0 w7-cutover render-disable sweep, .syllabai-only 2-file, CI 2/2 at the deployed sha) — functionally identical bundle; the deploy DISCHARGES the serialized B1+B2 redeploy that receipt owed.
+- BAKED-TABLE EVIDENCE EXACT (15 chunks both sides): teacher/marking/answers/:uuid 1->2 (+1 the mid-path row), teacher/marking/smart-mark-batch 1->2 (+1 the leaf row), teacher/assignments 4->5 (+1 the B2 row); human-mark 1->1; no-regression needles STABLE (recommendations 2, knowledge-graph 2, classroom 4).
+- Battery 6/6 READ-ONLY zero-write: the flipped marking wires (detail GET / smart-mark POST / smart-mark-batch POST) + teacher/assignments = 401 Boot law all; no-regression recommendations 401 + health 200 UP.
+- Cards stamped of record: T-MIG-122 DONE, T-MIG-116 DONE (the staged gate discharged via the 122 chain), T-MIG-117 DONE (stale vs merged #179 + its redeploy leg discharged by THIS deploy). Receipt run-003-postpush-hubredeploy-acceptance-r0.json.
+- Standing disclosure: the api carrier dpl_4cKfWz1 (from 7ccbfc59) still serves the PRE-fix smart-mark envelope — the api redeploy lever stays OPERATOR-GATED (the fix is code-of-record + hub-baked; the authed positive wire serves at the lever's next fire). Zero prod-db contact, zero LLM, no force.

@@ -1,0 +1,38 @@
+{
+  "run": "run-003-postpush-hubredeploy-acceptance-r0",
+  "task": "T-MIG-122 (+116 +117 closure) \u2014 the B1-DEFECT-1 fix band acceptance leg",
+  "actor": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operator_trace": "1a13029bb49f9ed5 'B1-DEFECT-1 fix band'",
+  "verification_of_record": {
+    "the_push": "490e223 verified first-hand: smartMarkResultView (the 9-field camelCase TeacherViews.SmartMarkView.from analog) + the route mapping (createdAt = the @PrePersist analog) + the envelope pin + the TWO staged B1 flip rows + census 3->2; run-002 receipt 12/12 ALL-GREEN (the t01 red leg PASSES); closure addendum 123ed64; tip CI verify+hub SUCCESS first-hand",
+    "operator_order_arrival": "trace 1a13029bb49f9ed5 arrived with the band ALREADY claimed+executed by r7a (claimed_by_order cites the earlier same-words trace 1a12ff5ac598546d) \u2014 zero duplicate fix fired; the OWED leg (the card's own 'hub redeploy post-merge, the 114 acceptance law') discharged by this lane"
+  },
+  "the_lever": {
+    "deploy": "dpl_59GMpYK1Zz6nRVYyfBxr READY (the 093/110-recipe: bunx vercel@62.7.0 --prod from root; race-guard CLEAR \u2014 incumbent 2964 min old)",
+    "rollback_anchor": "dpl_EabUch9gFhQnw3ay",
+    "sha_note": "the deploy tip moved mid-act 123ed64 -> 03dfd48 (the r0 w7-cutover render-disable sweep receipt, .syllabai-only 2-file commit, CI verify+hub SUCCESS at the deployed sha first-hand) \u2014 functionally identical bundle, disclosed",
+    "serialized_leg": "the B1+B2 serialized redeploy owed by the 03dfd48 census receipt \u2014 DISCHARGED (the 122 marking rows + the 117 assignments row bake in ONE deploy)"
+  },
+  "baked_table_evidence": {
+    "method": "all 15 served chunks scanned pre + post (scripts/baked-census-t122-pre/post.json)",
+    "deltas_exact": {
+      "teacher/marking/answers/:uuid": "1 -> 2 (+1 the mid-path row)",
+      "teacher/marking/smart-mark-batch": "1 -> 2 (+1 the batch leaf row)",
+      "teacher/assignments": "4 -> 5 (+1 the B2 subtree row)",
+      "teacher/marking/answers/:uuid/human-mark": "1 -> 1 (stable)"
+    },
+    "no_regression": "learners/me/recommendations 2, learners/me/knowledge-graph 2, learners/me/classroom 4 \u2014 ALL STABLE; 15 chunks both sides"
+  },
+  "battery": "6/6 READ-ONLY zero-write (scripts/battery-t122-acceptance.json): GET+POST /teacher/marking/answers/:uuid(+/smart-mark) 401 Boot law, POST /teacher/marking/smart-mark-batch 401, GET /teacher/assignments 401, no-regression learners/me/recommendations 401 + /actuator/health 200 UP",
+  "card_stamps": {
+    "T-MIG-122": "DONE \u2014 fix + 12/12 re-verify + flip rows + hub redeploy + battery of record",
+    "T-MIG-116": "DONE \u2014 the staged B1 gate fully discharged via the 122 chain (capture 66+22, verify 11/12 -> the defect band, 12/12 post-fix, the flips landed)",
+    "T-MIG-117": "DONE \u2014 stale at IN_REVIEW vs merged #179 (6c09106, ancestor-proven); its owed redeploy leg discharged by THIS deploy (the assignments row baked +1)"
+  },
+  "write_ledger": "1 hub redeploy; 6 unauth probes (all 401/200 \u2014 nothing created); zero LLM; zero Neon/prod-db contact; zero api-carrier delta (the api redeploy lever stays operator-gated \u2014 the fix serves at its next fire)",
+  "disclosures": [
+    "the api carrier dpl_4cKfWz1 (from 7ccbfc59, Oct 10) still serves the PRE-fix smart-mark envelope \u2014 the fix is code-of-record + hub-baked but the LIVE api wire keeps the defect shape until the api redeploy lever fires (operator-gated; the hub flip means the marking emitters now route to v2 \u2014 the 401 laws hold, the authed positive wire awaits the lever)",
+    "local clone mode-bit churn (1925 files 100644->100755, 0 content delta \u2014 the sandbox-reset artifact) silenced via core.fileMode false, disclosed",
+    "no authed positive legs this acceptance (zero-write posture); the positive laws live in the re-derived captures + the 12/12 driver of record; live positive proof rides the scheduled replay"
+  ]
+}

@@ -3,7 +3,7 @@ task:
   id: T-MIG-116
   title: "Decommission band B1 — the marking answers/:uuid subtree (detail GET + smart-mark + smart-mark-batch POST tails) capture+verify+flip"
   owner: "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)"
-  status: IN_REVIEW # the gate law DISCHARGED via T-MIG-122 (the operator-ordered defect band) + the staged flips LANDED; the PR is the r0 desk's
+  status: 'DONE # closed end-to-end of record (run-003 crossref): capture 66+22 -> the 11/12 gate (B1-DEFECT-1 routed) -> the 122 fix chain -> 12/12 ALL-GREEN -> the staged flips landed -> hub redeploy dpl_59GMpYK1Zz6nRVYyfBxr + baked-table + battery of record; the marking family RIDES-V2 (census LIVE 3->2)'
   claimed_at: "2026-10-11T19:31:44Z"
   claimed_by_order: "operator trace 1a12c68dd42c7511 'claim the marking band, and B2/B4 for the small leaf bands in parallel'"
   priority: P1
