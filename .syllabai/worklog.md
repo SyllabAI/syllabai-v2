@@ -7384,3 +7384,15 @@ Work Log:
 
 Stage Summary:
 - B1-DEFECT-1 FIXED and the B1 band UNBLOCKED: the marking answers/:uuid subtree rides v2 at the decision layer (the two rows landed); census LIVE 2 (transcribe=B6 + the ai/chat hardwire=B3 remain — both named plan bands). T-MIG-116 + T-MIG-122 → IN_REVIEW; the PR is the r0 desk's (authors never self-merge). Owed post-merge: the sanctioned hub redeploy (the marking page's :234/:289 emitters go v2-native) + the live battery + the union replay at the flip tip (CI-side on the PR).
+---
+Task ID: trace 1a12ff5ac598546d ADDENDUM (T-MIG-122 closure)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1)
+Task: the fix band's push + CI verification of record.
+
+Work Log:
+- Push of record 490e223 (first-round clean after the append-conflict resolution: the remote gained the r0 B3/B5/B6 triple claim 01d9cac mid-band; rebase per protocol, BOTH worklog sections kept in order, zero force).
+- CI at tip verified FIRST-HAND via the check-runs API: verify SUCCESS + hub SUCCESS (2/2) — the verify workflow carries the corpus union replay at the flip tip (the 116 exit gate discharged).
+- The direct-main filing is the 093 defect-fix class precedent (fetch-first, first-round clean, .syllabai-only discipline).
+
+Stage Summary:
+- B1-DEFECT-1 CLOSED of record: the fix + the flips + the census LIVE 2 + CI 2/2 at 490e223. T-MIG-116 + T-MIG-122 IN_REVIEW for the r0 desk's sha-guarded review. OWED (the desk's riders): the sanctioned hub redeploy (the marking page's markingAnswer :234 + smartMarkBatch :289 emitters go v2-native) + the api redeploy from tip (the envelope fix live) + the post-deploy live battery. Lane IDLE.
