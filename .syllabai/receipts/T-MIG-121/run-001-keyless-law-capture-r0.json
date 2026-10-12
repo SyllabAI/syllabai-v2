@@ -1,0 +1,21 @@
+{
+ "task": "T-MIG-121",
+ "run": "run-001-keyless-law-capture-r0",
+ "lane": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "at": "2026-10-12T13:32:00Z",
+ "operator_order": "trace 1a1301057de38aa5 'proceed with the unclaimed bands B3/B5/B6'",
+ "band_identity": "B6 — answer-input/transcribe (the GLM seam) capture+verify+flip (the flip STAGED pending the operator ruling (b))",
+ "capture_class": "keyless, live two-plane, zero LLM spend, zero persistence — every leg throws BEFORE the provider call by the service law (the port of record: routes/answer-input.ts, T-MIG-034)",
+ "battery_verdicts": {
+  "unauth_401": "POST /api/v1/learners/me/answer-input/transcribe unauth: v2 401 vs core 401 — PASS-LAW (byte-equal modulo the volatile timestamp, the 116 class; the w3 Boot-envelope capture of record re-confirmed live)",
+  "absent_image": "POST {} authed: 400 transcription_bad_request 'image is required' BOTH planes — PASS-LAW (envelope byte-equal modulo timestamp)",
+  "bad_mime": "POST {imageBase64:valid-tiny, mimeType:'image/bmp'} authed: 400 'unsupported image type (allowed: png, jpeg, webp): image/bmp' BOTH planes — PASS-LAW (the mime allowlist law verbatim)",
+  "non_base64": "POST {imageBase64:'!!!not-base64!!!', mimeType:'image/jpeg'} authed: 400 'image payload is not valid base64' BOTH planes — PASS-LAW. CORRECTED LAW of record: the live class is 400 (a BadRequest service error), NOT the 422 NothingReadable mapping — the 422 is the [empty]-transcription case (the port's route mapping untouched; the expectation in the battery was wrong, the planes agree — parity held)",
+  "oversize_transport": "POST {imageBase64:'A'x6_000_000, mimeType:'image/jpeg'}: v2 413 {error:{code:'413',message:'Request Entity Too Large'}} vs core 413 {status:413,error:'payload_too_large',message:'request body exceeds the allowed size'} — TRANSPORT-CLASS DIVERGENCE DISCLOSED: the 6MB body hits the PLATFORM/transport body limits BEFORE either service (v2: the Vercel-class platform envelope; core: its body-limit layer). The SERVICE 413 law (decoded > 4MiB, MAX_DECODED_BYTES, the port's test-suite of record) is unreachable on the live carriers by any body that passes transport (encoded > ~5.6MB always trips transport first); the legal client input class (the ink pad's downscale-law JPEGs, ~100s of KB) never reaches either limit. NOT a flip blocker — a platform-class divergence outside the hub-emitted input envelope, disclosed."
+ },
+ "law_conclusion": "the deterministic wire-law set is byte-parity GREEN both planes (401 / 400 absent / 400 mime / 400 base64 — all equal modulo the volatile timestamp); the positive 200 is LLM-output (excluded from golden gating by the standing GOLDEN_MASTER §3 doctrine of record on this surface) and keyed live-prove is UNAVAILABLE (the ZERO-KEY posture)",
+ "flip_status": "STAGED — the planned row: V2_SURFACE_PREFIXES tail + '/api/v1/learners/me/answer-input' (the bare subtree, the 107 form; the hub emits ONLY transcribeHandwriting api.ts :1889-1891). Per the plan's B6 gate law ('keyed live-prove (the 097 class) or operator ruling (b) if the capture stays 401-law-only') — the capture EXCEEDS 401-law-only (the full deterministic set is live-captured) but the ruling-(b) receipt is OPERATOR-ORDERED, never self-granted (the 106/116 discipline): THE RULING IS HEREBY REQUESTED from the operator for the B6 flip class",
+ "ruling_request_to_operator": "Order the B6 flip: the deterministic law set is ALL-GREEN two-plane; the surface's own doctrine of record (T-MIG-034: 'LLM-OUTPUT surface — NOT golden-gated; behavioural gates only') covers the positive wire; the 106/097 declared-justified class is the precedent. On the ruling, the flip row + the surface pin land as a code PR (the row + the line test only) and the census transcribe row re-classifies (LIVE -> RIDES-V2).",
+ "write_ledger": "the shared b36 battery (ONE disclosed register + the follow-up register): the authed POST legs were validation-failure class ONLY (every leg throws before the provider by the service law) — zero LLM spend, zero persistence, zero prod writes; no valid-image leg anywhere (the keyed carrier would spend real GLM — forbidden by the band fence)",
+ "card": "T-MIG-121 stays CLAIMED — the capture+verify is DONE of record; the flip awaits the operator ruling (b)"
+}

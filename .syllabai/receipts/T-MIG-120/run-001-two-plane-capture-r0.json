@@ -1,0 +1,29 @@
+{
+ "task": "T-MIG-120",
+ "run": "run-001-two-plane-capture-r0",
+ "lane": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "at": "2026-10-12T13:30:00Z",
+ "operator_order": "trace 1a1301057de38aa5 'proceed with the unclaimed bands B3/B5/B6'",
+ "band_identity": "B5 — the questions subtree flip + the server-side proxy family re-point",
+ "capture_class": "two-plane GET-only, shared-Neon direct parity (the 119 battery class — both planes answer from the SAME Neon main, so corpus-dependent bodies compare byte-honest with NO fixture mapping); ONE disclosed census-class probe register",
+ "battery_verdicts": {
+  "subjects": "GET /api/v1/curriculum/subjects: PASS-BYTE (1695 bytes, sha 2068451d237f220a both planes)",
+  "tree": "GET /api/v1/knowledge/nodes/{4CH1-root}/tree?includeMisconceptions=false: PASS-BYTE (257315 bytes)",
+  "families": "GET /api/v1/questions/families?rootId={4CH1-root}: 200 both planes, same length (2661422), SET-EQUAL (canonical sorted-set equality proven in the follow-up) — the cross-plane element ORDER differs (the ORDER-CLASS DISCLOSURE below)",
+  "list": "GET /api/v1/questions?rootId={4CH1-root}: 200 both, same length (2525026), SET-EQUAL — same order class",
+  "topics": "GET /api/v1/questions/topics?rootId={4CH1-root}: PASS-BYTE (5526 bytes)",
+  "detail": "GET /api/v1/questions/{first-id}: PASS-BYTE (1064 bytes)",
+  "mark_scheme": "GET /api/v1/questions/{first-id}/mark-scheme: PASS-BYTE (542 bytes, 200-with-scheme on the shared corpus; the 204-withheld law rides the reveal policy — the port of record)"
+ },
+ "order_class_disclosure": {
+  "finding": "families/list: each plane is BYTE-SELF-STABLE across immediate re-fetches (v2 run1==run2, core run1==run2, PASS-BYTE both) and the SETS are equal cross-plane AND cross-run — the only divergence is the element ORDER (Jackson's query order vs the drizzle projection's)",
+  "consumers": "ZERO order-sensitive consumers: the 4CH1 bridge resolves families by find() (route.ts: 'families.find((f) => f.ref === ref || f.key === ref)'); the list/detail/mark-scheme client emitters are DORMANT with zero call-sites (the census + the plan's row); no test pins the order — the honest disclosed class, NOT a defect; FAIL-NO-FLIP not triggered (no wire law violated — no order law exists of record for these reads)"
+ },
+ "cross_plane_jwt_fact": "core-issued JWT on v2 = 200 ACCEPTED; v2-issued JWT on core = 200 ACCEPTED (the shared-Neon doctrine extends to token validation; disclosed, shared with the B3/B6 battery)",
+ "pilot_root_of_record": "4CH1 -> 297a8706-b957-40cb-8bb6-0bfed66980b7 (the bridge's rootIdForCourseCode law, resolved live)",
+ "flip_landed": "PR #181 (branch t-mig-120/r0, head 3f34803): the bare /api/v1/questions subtree row at the table tail (the 107 narrowest-legal form) + fetchCoreJson v2-first + familiesForRoot v2-first + the exact-set +1 + the DUAL_RUN forms + the 120 line test; lib/data/core-api.ts disclosed out-of-scope (mock-degrading demo lane, zero census rows)",
+ "gates": "typecheck x4 exit 0; hub tsc 0; hub 63/63 (+1); suite 1896/0/13skip EXACT of-record main; golden selftest OK",
+ "write_ledger": "TWO disclosed probe registers total (the b36 battery + the order-stability follow-up, both v2-registered census-class); GET-only — zero authed POSTs, zero prod writes, zero LLM; bodies in the lane artifact evidence_b36/ (no credentials)",
+ "post_merge_owed": "the SERIALIZED hub redeploy (the 092/093 recipe + LINK/PROJECT assertions + post-fire wire smoke) carrying B1+B2+B3+B5; battery + union replay + the census re-run (the proxy family leaves the LIVE list -> the instrument's questions rows re-classify)",
+ "card": "T-MIG-120 -> IN_REVIEW (PR #181 filed; authors never self-merge)"
+}

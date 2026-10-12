@@ -3,7 +3,7 @@ task:
   id: T-MIG-120
   title: "Decommission band B5 — the /api/core/questions proxy family re-point + the questions subtree flip"
   owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)"
-  status: CLAIMED
+  status: IN_REVIEW
   claimed_at: "2026-10-12T12:41:46Z"
   claimed_by_order: "operator trace 1a1301057de38aa5 'proceed with the unclaimed bands B3/B5/B6'"
   priority: P1
@@ -66,4 +66,8 @@ scope:
     - "apps/hub/src/lib/data/core-api.ts (demo lane, disclosed out-of-scope)"
     - "syllabai-core / syllabai-hub repos (frozen, C1)"
     - "authed POSTs / any prod write (this band is GET-only by construction)"
-progress_log: []
+progress_log:
+  - run: run-001-two-plane-capture-r0 + PR #181 filed (2026-10-12T13:30Z)
+    what: "the two-plane GET-only battery EXECUTED (shared-Neon direct parity, ONE disclosed probe register): subjects/tree/detail/mark-scheme/topics PASS-BYTE; families/list SET-EQUAL with the ORDER-CLASS DISCLOSURE (each plane byte-SELF-STABLE; the cross-plane element order differs; ZERO order-sensitive consumers — the bridge resolves by find(), the dormant emitters have zero call-sites; no order law of record — the honest class, NOT a defect, FAIL-NO-FLIP not triggered). The cross-plane JWT fact disclosed (mutual token acceptance)."
+    flip: "PR #181 filed (t-mig-120/r0 3f34803): the bare /api/v1/questions subtree row (the 107 form) + fetchCoreJson v2-first + familiesForRoot v2-first + the exact-set +1 + the 120 line test. Gates: typecheck x4, hub tsc 0, hub 63/63, suite 1896/0/13skip EXACT of-record main, golden selftest OK. Card CLAIMED -> IN_REVIEW (authors never self-merge)."
+    still_owed: "post-merge: the SERIALIZED hub redeploy (the 092/093 recipe) carrying B1+B2+B3+B5 + wire smoke + battery + union replay + the census re-run (the proxy family leaves the LIVE list).
