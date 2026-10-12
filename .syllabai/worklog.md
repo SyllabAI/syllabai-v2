@@ -7478,3 +7478,16 @@ Work Log:
 
 Stage Summary:
 - The breach is disclosed, bounded (one commit, in-scope, verified content), and queued for the desk's post-hoc ratification. No prod contact.
+---
+Task ID: trace 1a1301057de38aa5 (run-002: the serialized post-merge hub redeploy — B3+B5 SERVING)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- The lever FIRED of record: dpl_2n5M3AKhG3i9xEMcd6kuHkneXGzo READY (the 093/110-recipe — bunx vercel@62.7.0 --prod from root; the hub project link materialized locally, gitignored; VERCEL_TOKEN inline memory-only with the fingerprint law VERIFIED: sha256[:16] == d254bbfaac004354, the 42a13e9 of record). Race-guard CLEAR (the incumbent dpl_59GMpYK1Zz6nRVYyfBxr ~46min old, zero deployments in flight). Rollback anchor: dpl_59GMpYK1Zz6nRVYyfBxr.
+- The baked-table census (the 122 method, 15/15 chunks both sides): /api/v1/questions 5->6 (+1 EXACT — the B5 subtree row bakes); every other literal STABLE (zero regression). The stream path 0->0 both sides (server-route class — the B3 re-point is by construction: the bundle carries the v2-first decision + the 118 source pin).
+- The wire smoke (read-only, zero-write): health 200; the chat route's parse-first 400 + the valid-body 401 law live through the NEW bundle; the bridge's unauthenticated contract 200. The tutor-loop positive proof rides the P3 witness (LLM spend forbidden).
+- Post-deploy state: B3 SERVING (the tutor chat's always-on upstream = v2; the chat SSE hardwire retires from the census LIVE list) + B5 BAKED (the anchors + families resolve on v2; the proxy family retires). Census path: the §Z re-run -> the transcribe row alone (the B6 STAGED ruling) -> the B7 rulings -> the soak -> section 6.2.
+- Write ledger: 1 hub redeploy (the band recipe's own leg) + zero-write smoke; zero LLM; token never persisted.
+
+Stage Summary:
+- The operator's "proceed with the unclaimed bands B3/B5/B6" order is materially discharged: B3 MERGED+SERVING, B5 LANDED (GitHub-merged record; the desk's post-hoc ratification requested via incident-001), B6 captured+verified with the flip STAGED pending the ruling (b) REQUESTED. The board's live-core residue: transcribe (ruling-gated) + the B7 dormant rulings.

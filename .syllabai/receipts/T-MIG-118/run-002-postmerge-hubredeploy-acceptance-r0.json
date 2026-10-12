@@ -1,0 +1,34 @@
+{
+ "run": "run-002-postmerge-hubredeploy-acceptance-r0",
+ "task": "T-MIG-118 (B3) + T-MIG-120 (B5) closure — the serialized post-merge hub redeploy leg",
+ "actor": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "operator_trace": "1a1301057de38aa5 'proceed with the unclaimed bands B3/B5/B6' (the bands' own recipe: the post-merge redeploy is a band deliverable per the plan's §2 chain)",
+ "the_lever": {
+  "deploy": "dpl_2n5M3AKhG3i9xEMcd6kuHkneXGzo READY — the 093/110-recipe of record (bunx vercel@62.7.0 --prod from root; the .vercel/project.json link materialized locally for the hub project prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl, gitignored, never committed)",
+  "credential_law": "VERCEL_TOKEN inline env, memory-only — the VERCEL_PAT fingerprint law VERIFIED first-hand: sha256(token)[:16] == d254bbfaac004354 (the 42a13e9 fingerprint of record); the token never persisted to any file",
+  "race_guard": "CLEAR — the incumbent dpl_59GMpYK1Zz6nRVYyfBxr READY ~46min old, zero newer deployments in flight (the v6 API first-hand); serialization holds",
+  "rollback_anchor": "dpl_59GMpYK1Zz6nRVYyfBxr (the B1+B2 wave deployment of record, READY)",
+  "sha_note": "deployed from the local main checkout @ 4d22ad1 (.syllabai-only over the 31706fb tip — functionally identical bundle, the 122 sha_note law of record)"
+ },
+ "baked_table_census_of_record": {
+  "method": "the 122 acceptance class — ALL 15 served client chunks scanned pre (the incumbent dpl_59G... at syllabai-hub-v2-o8d4wxupv) + post (syllabai-hub-v2.vercel.app), the flip-table literals diffed (scripts/b36_baked_census.py, lane artifact)",
+  "deltas_exact": {
+    "/api/v1/questions": "5 -> 6 (+1 EXACT — the B5 subtree row bakes)",
+    "/api/v1/tutor/ask/stream": "0 -> 0 (stable — the stream path lives in the SERVER route (the serverless function), not the client chunks; the B3 re-point is proven by construction: the bundle bytes built from the checkout carrying routes' v2-first decision + the 118 source pin of record)"
+  },
+  "no_regression": "questions/topics 2, teacher/assignments 5, marking/answers/:uuid 2, smart-mark-batch 2, human-mark 1, learners/me/classroom 4 — ALL STABLE; 15 chunks both sides"
+ },
+ "wire_smoke": [
+  "GET /api/health -> 200 {status:ok, service:syllabai-hub, dataMode:core-api, coreConfigured:true}",
+  "POST /api/ai/chat {} unauth -> 400 invalid_body (the route's zod parse-first law, live through the NEW bundle)",
+  "POST /api/ai/chat {question:'probe'} unauth -> 401 unauthorized (the B3 route law, live)",
+  "GET /api/core/questions?course=x unauth -> 200 {available:false, reason:'unauthenticated'} (the B5 bridge contract, live)"
+ ],
+ "band_state_after": {
+  "T-MIG-118 (B3)": "the re-point SERVING — the tutor chat's always-on upstream is v2; the census's chat SSE hardwire retires from the LIVE list",
+  "T-MIG-120 (B5)": "the subtree row BAKED — the CLA overlay + attempt bridge resolve the anchors + families on v2; the census's questions proxy family retires",
+  "census_projection": "of-record LIVE 2 (post-122) -> 0 by the instrument's LIVE rows after the §Z re-run (transcribe is the B6 STAGED row — pending the operator ruling (b); the proxy family was instrument-annotated); the B7 dormant rulings + the Z soak (2 scheduled replays + 48h) then gate section 6.2"
+ },
+ "write_ledger": "1 hub redeploy (the band recipe's own leg); zero-write wire smoke (unauth 400/401/200-contract legs + health only); zero LLM; zero Neon contact; zero api-carrier delta (the api lever stays operator-gated); token memory-only, never persisted",
+ "union_replay_owed": "the next scheduled replay rides the CI (the flips' needles + the exact-set pins guard; the union corpus unchanged by these bands — no cases added)"
+}
