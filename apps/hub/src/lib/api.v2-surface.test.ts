@@ -163,6 +163,14 @@ const DUAL_RUN_PATHS: readonly string[] = [
   "/api/v1/teacher/marking/kappa/latest",
   "/api/v1/teacher/marking/kappa/latest?paperId=3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
   "/api/v1/teacher/marking/kappa/evaluate",
+  // T-MIG-117 (r7a): the assignments family's FOUR hub-emitted wire forms —
+  // the bare subtree row (table tail) captures all four; every form is
+  // v2-REAL per the rig chain of record (the 88-leg capture + the 44/44
+  // golden-verify; receipts T-MIG-117/run-001-capture + run-002-golden-verify).
+  "/api/v1/teacher/assignments",
+  "/api/v1/teacher/assignments?course=igcse-chemistry-19",
+  "/api/v1/teacher/assignments/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
+  "/api/v1/teacher/assignments/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/status",
 ];
 
 /** Hub-emitted (or hub-adjacent) paths that MUST stay on the core in the dual-run posture. */
@@ -207,7 +215,16 @@ const CORE_ONLY_PATHS: readonly string[] = [
   // discharged FAIL-NO-FLIP; the 114 line test pins the flip and the
   // malformed-uuid stay-core law).
   "/api/v1/teacher/marking/answers",
-  "/api/v1/teacher/assignments",
+  // teacher/assignments LEFT this list in T-MIG-117 (r7a, the B2
+  // decommission band, operator order trace 1a12e148cc3b93ad "Do it
+  // yourself"): the family was PORT-FIRST (apps/api had ZERO
+  // teacher-assignments implementation at claim) — the port landed
+  // line-against-line the frozen TeacherAssignmentController @ 6cad6ef and
+  // the 107 subtree-row law is satisfied by the rig chain of record (the
+  // 88-leg capture from the LOCAL frozen-core boot rebuilt docker-free +
+  // the 44/44 golden-verify of the port vs the captures). The bare
+  // subtree row is at the table tail; the line test pins the four-wire
+  // flip.
   // learner /questions + /exam-papers: the questions ROUTER is mounted and
   // corpus-proven on /topics (FLIPPED in T-MIG-111, the leaf row) but the
   // list/detail/mark-scheme positive wires are NOT captured (401 shells +
@@ -309,6 +326,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/teacher/marking/throughput", // T-MIG-113: the deterministic counts read (the marking page's live read flips)
       "/api/v1/teacher/marking/kappa/latest", // T-MIG-113: the 404-empty/200-by-scope law (the marking page's live kappa read flips)
       "/api/v1/teacher/marking/kappa/evaluate", // T-MIG-113: the ZERO-KEY 409 no-pairs law (dormant emitter — routing availability, the 084 posture); the human-mark row WITHHELD (the 114 findings)
+      "/api/v1/teacher/assignments", // T-MIG-117: the B2 port band (the 107 subtree-row law satisfied by the rig chain of record — the 88-leg capture + the 44/44 golden-verify)
     ]);
   });
   test("the mid-path table is exactly the ruled set — the mechanism-A amendment needs its own golden gate too", () => {
@@ -545,6 +563,39 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     // DOCUMENTED INERT: no such route or emitter exists on either side
     // (the 111 review-queuex pin convention):
     expect("/api/v1/teacher/marking/queue-v2x".startsWith("/api/v1/teacher/marking/queue-v2")).toBe(true);
+  });
+
+  test("the T-MIG-117 line: the assignments SUBTREE row flips after the rig capture + the 44/44 golden-verify (r7a, operator order 1a12e148cc3b93ad 'Do it yourself')", () => {
+    // the B2 band was PORT-FIRST (the claim finding: apps/api had ZERO
+    // teacher-assignments implementation) — the port landed
+    // line-against-line the frozen TeacherAssignmentController @ 6cad6ef
+    // and the 107 subtree-row law is satisfied: the 88-leg capture from
+    // the LOCAL frozen-core boot (the 107/113/114 rig recipe rebuilt
+    // docker-free) + the 44/44 golden-verify of the port vs the captures
+    // (deepEqualTolerant zero drift). The bare row captures EXACTLY the
+    // four verified wires (list GET :134, create POST :318, status POST
+    // :347, roster GET :202) — all four hub-emitted paths are v2-REAL.
+    // the four wire forms flip (the bare row's startsWith law):
+    expect(v2SurfaceBase("/api/v1/teacher/assignments", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/teacher/assignments/00000000-0000-4000-8000-0000000000ff", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/teacher/assignments/00000000-0000-4000-8000-0000000000ff/status", V2)).toBe(V2);
+    // the query string rides the same row (the matcher strips it):
+    expect(v2SurfaceBase("/api/v1/teacher/assignments?course=igcse-chemistry-19", V2)).toBe(V2);
+    // the family boundary law: the BARE /teacher base has no row (never
+    // captured — the sibling families have their own rows, unchanged).
+    expect(v2SurfaceBase("/api/v1/teacher", V2)).toBeNull();
+    // partial-segment capture (assignmentsx) is a startsWith MECHANISM
+    // fact — DOCUMENTED INERT: no such route or emitter exists on either
+    // side (the 111 review-queuex pin convention; asserted mechanically):
+    expect("/api/v1/teacher/assignmentsx".startsWith("/api/v1/teacher/assignments")).toBe(true);
+    // no-regression needles: the marking laws stand (the 113/114 rows), the
+    // classroom rows stand (the 112), the content-write subtree rows stand
+    // (the 107):
+    expect(v2SurfaceBase("/api/v1/teacher/marking/queue-v2?state=PENDING&page=0&size=5", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/teacher/marking/answers/00000000-0000-4000-8000-0000000000ff/human-mark", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/teacher/marking/answers", V2)).toBeNull();
+    expect(v2SurfaceBase("/api/v1/teacher/classes", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/teacher/curriculum/versions", V2)).toBeNull();
   });
 
   test("the T-MIG-097 line: the CLA ask flips after BOTH wires were proven live (r7a, chain order 1a119df7d930b609)", () => {
