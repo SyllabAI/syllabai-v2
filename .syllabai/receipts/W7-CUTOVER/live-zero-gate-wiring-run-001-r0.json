@@ -1,0 +1,19 @@
+{
+  "receipt": "live-zero-gate-wiring-run-001-r0",
+  "band": "W7-CUTOVER §Z/§6.2 — the LIVE=0 act (the plan §Z report->gate conversion, the CI wiring leg)",
+  "lane": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "created_at_utc": "2026-10-13T00:00:00Z",
+  "operator_lineage": "OPERATOR RETIREMENT ORDER trace 1a131d02c805602d (waive the 48h soak; retire Render + syllabai-core + syllabai-hub conditional on verified 100% migration; update the master doc repo) — the CI --gate wiring is the LIVE=0 act of the §6.2 path of record (T-MIG-123 run-001: 'the plan §Z report->gate conversion built (--gate; CI wiring stays the LIVE=0 act)'; T-MIG-121 run-003 owed-list: 'the CI --gate wiring (the LIVE=0 act)').",
+  "change": {
+    "file": ".github/workflows/ci.yml",
+    "what": "one new step in the verify job, after the golden selfcheck: 'python3 scripts/preflight_zero_core_census.py --gate' — the census GATE (exit 0 iff live=0 AND unmapped=0 AND stale-hints=0 AND unknown-route=0). Zero other lines touched.",
+    "law": "any regression that re-introduces a LIVE core-family call now fails CI instead of silently riding Render; the gate is the enforcement form of the LIVE=0 census of record"
+  },
+  "evidence_at_act": [
+    "census --gate GREEN exit 0 first-hand at 0bdc594 (LIVE=0, pins=7, unmapped=0, stale=0, unknown=0); snapshot zero-core-census-2026-10-13-b6-baked-r0.json",
+    "the B6 bake dpl_AfZZb5bBSY3qsQRSwZUfaHTnKGYo READY, both prod aliases attached, baked scan 9/9 GREEN (receipt T-MIG-121/run-004)",
+    "CI 2/2 SUCCESS at 0bdc594 (check-runs API first-hand)"
+  ],
+  "post_wiring_verification_owed": "CI green at the wiring tip first-hand via the check-runs API (recorded in the run-005 closing receipt)",
+  "disclosures": ["zero app-code changes; the diff = the one gate step + its comment block; no force; .syllabai + ci.yml only"]
+}

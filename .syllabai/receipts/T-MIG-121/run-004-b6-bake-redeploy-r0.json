@@ -1,0 +1,62 @@
+{
+  "card": "T-MIG-121 run-004 — the B6 BAKE (the serialized hub redeploy) + the live verification battery",
+  "receipt": "run-004-b6-bake-redeploy-r0",
+  "lane": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e, chat 0283e086-b297-4875-912b-a9f4fd722dc5)",
+  "created_at_utc": "2026-10-13T00:00:00Z",
+  "operator_lineage": "OPERATOR RETIREMENT ORDER trace 1a131d02c805602d: 'Dont have to wait 48 hours. If we have already 100% migrated to v2 without a single issue, then retire Render, syllabai-core, and syllabai-hub. Update the master doc repo, so all agents know about it' — the 48h soak WAIVED of record by the same order; the VERCEL_PAT arrived in the same message (fingerprint d254bbfaac004354 == the of-record operator census fingerprint, verified first-hand sha256-prefix match at act time, used inline only, never printed/committed/persisted).",
+  "pre_flight": {
+    "tip_of_record": "0bdc594 (origin/main, fetch-first; the B6-staged flip landed of record at run-003)",
+    "race_guard": "GET /v6/deployments (production, hub project prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl) -> latest = dpl_2n5M3AKhG3i9xEMcd6kuHkneXGzo READY (the wave-2 B3+B5 bake) — NO parallel deploy in flight; rollback anchors dpl_59GMpYK1Zz6nRVYyfBxr8DAUSvRW + dpl_EabUch9gFhQnw3ayu6NixQcwTthD intact of record",
+    "identity": "GET /v2/user -> username=syllabai-1403 (the run-003-r7a identity of record)",
+    "census_gate_at_tip": "GREEN exit 0 first-hand in a clean worktree at 0bdc594: pins=7 LIVE=0 rides-v2=2 rollback-fallback=1 dormant=5 unmapped=0 stale-hints=0 unknown-route=0",
+    "ci_at_tip": "check-runs API first-hand: hub SUCCESS + verify SUCCESS (2/2)"
+  },
+  "gates_at_tip_first_hand": [
+    "bun install --frozen-lockfile OK (930 packages)",
+    "bun run typecheck (root, 4 projects) exit 0",
+    "hub tsc --noEmit exit 0",
+    "bun test apps/hub -> 64 pass / 0 fail / 657 expect() / 3 files",
+    "bun test apps/api packages -> 1909 pass / 0 fail / 13 skip / 7346 expect() / 99 files (EXACT vs the clean-tip of-record figure)",
+    "bun golden/runner.ts --selftest OK"
+  ],
+  "deploy_act": {
+    "how": "the 093/110 recipe of record: .vercel/project.json {projectId: prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl, orgId: team_ULL54qkhzKBmnKrpO6BD4mYX} at the clean-worktree ROOT (gitignored) + vercel CLI 62.7.0 (pinned per the law, version captured in the log) 'deploy --prod --yes --token <inline>' FROM ROOT — the CLI-upload path, no /v13 gitSource POST, token never printed/committed/persisted",
+    "deployment": "dpl_AfZZb5bBSY3qsQRSwZUfaHTnKGYo READY (verified via GET /v6/deployments + the deployment API)",
+    "aliases": "GET /v2/deployments/dpl_AfZZb5bBSY3qsQRSwZUfaHTnKGYo/aliases -> ['syllabai-hub-v2.vercel.app', 'syllabai-hub-v2-syllab-ai.vercel.app'] BOTH attached (the production alias live)",
+    "source": "main 0bdc594 (clean detached worktree, fetch-first, FF-only, no force)"
+  },
+  "baked_census_and_wire_smoke": {
+    "method": "scripts/b6_baked_scan_smoke_r0.py (persisted lane-side; credential-free, zero-write, zero-LLM): live pages /, /login, /tutor, /teacher/marking, /teacher/assignments, /courses -> every referenced _next chunk fetched and literal-counted (the T-MIG-122/120 scanner law) + the wire probes",
+    "pages": "all 200",
+    "chunks_scanned": ">= 15 (threshold; actual reported in the run log)",
+    "B6_transcribe_literal": "PRESENT in the served bundle (/api/v1/learners/me/answer-input/transcribe — the baked row; the hub emits ONLY transcribeHandwriting per the flip law)",
+    "B1_B2_B5_controls": "B1 midpath + B1 batch leaf + B2 assignments + B5 questions literals all PRESENT (stable, the prior bakes hold)",
+    "B3_stream_client_expect0": "0 occurrences (the chat client law holds through the new bundle)",
+    "wire_smoke": {
+      "hub_health": "200 dataMode=core-api (the T-MIG-111 carrier)",
+      "chat_malformed_body": "400 (the parse-first law)",
+      "chat_noauth_valid_body": "401 (the auth law; the first probe used a schema-invalid body and correctly drew the parse-first 400 — probe defect corrected of record, not a system defect)",
+      "kg_learner_bridge_contract": "200",
+      "api_actuator": "200 status=UP",
+      "v2_transcribe_noauth": "401 (the ruling-(b) deterministic law-capture, LIVE on the api-of-record)",
+      "v2_transcribe_empty_body": "401"
+    },
+    "asserts": "9/9 GREEN (second run; first run 8/9 with the probe-defect chat leg, disclosed above)"
+  },
+  "migration_condition_of_record": {
+    "claim": "100% migrated to v2, zero open migration issues (the operator's retirement precondition)",
+    "evidence": [
+      "the §Z census --gate GREEN at the tip: LIVE=0 — every live family rides v2 or is dormant-ruled (B7: exam-papers, tree, curriculum/versions, intervention-runs; the 119/111/096/110 rulings)",
+      "the B6 bake verified live (this receipt): the last LIVE family's call-site serves through the v2 surface on the prod alias",
+      "CI 2/2 SUCCESS at the tip (check-runs API first-hand)",
+      "open-issue census: exactly ONE open issue (#147) = the zombie Vercel project prj_D7vf decommission lever (operator lever, decommission-cleanup class, NOT a migration defect)",
+      "the union golden replay of record 223/223 PASS at recent tips (receipt #41); a fresh replay dispatch at the post-wiring tip is the W7 closing leg"
+    ]
+  },
+  "soak_waiver": "the 48h census-soak WAIVED of record by the operator order (trace 1a131d02c805602d, 'Dont have to wait 48 hours') — the gate + the baked census + the wire laws stand as the replacement evidence",
+  "disclosures": [
+    "the local stale main checkout (384 behind) carries two MODE-ONLY chmod deltas on the workflow files (100644->100755, zero content delta) — disclosed, bypassed via the clean detached worktree, nothing of record touched",
+    "one probe-defect round (schema-invalid chat body drew the correct parse-first 400) — corrected, 9/9 GREEN on the corrected battery",
+    "zero prod/Neon/LLM-data contact beyond the disclosed credential-free GET/POST-law probes; zero authed writes anywhere; zero LLM spend; the Vercel API contact = identity + deployments read + THIS deploy act (the ordered act)"
+  ]
+}

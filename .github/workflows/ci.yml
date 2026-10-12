@@ -35,6 +35,14 @@ jobs:
       - name: Golden-master self-check (harness sanity, no live target)
         run: bun golden/runner.ts --selftest
 
+      # T-MIG-123 §Z conversion — the zero-core census GATE: the LIVE=0 act of
+      # record (operator retirement order trace 1a131d02c805602d; the 48h soak
+      # waived by the same order). Exit 0 iff live=0 AND unmapped=0 AND
+      # stale-hints=0 AND unknown-route=0. Any regression that re-introduces a
+      # LIVE core-family call fails CI here instead of silently riding Render.
+      - name: Zero-core census gate (LIVE=0 law, §Z)
+        run: python3 scripts/preflight_zero_core_census.py --gate
+
   # T-MIG-000: hub lane — the 153MB corpus + Next build live in their own
   # job so the fast verify lane stays fast. The prebuild corpus-verify
   # scripts (verify_corpus_23a.ts, verify_flashcard_sync_courses.ts) run as
