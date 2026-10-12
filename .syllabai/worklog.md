@@ -7549,3 +7549,9 @@ Stage Summary:
 - HYGIENE of record: all three band cards (118/120/121) carried the dangling-quote YAML defect at EOF (the disclosed heredoc-class lane-script truncation — the files failed yaml.safe_load pre-repair) — repaired in this pass, all three parse clean
 - ZERO code changes, zero prod writes, zero authed POSTs, zero LLM spend, zero Neon, zero deploys, zero Vercel-API contact, no force — .syllabai-only
 - Standing: the §Z gate is ONE operator ruling (b) away from zero-LIVE (then the §Z CI wiring + the §6.2 soak path: 2 scheduled replays + 48h); the B7 dormant rulings + the operator P3 witness / P4 paste legs remain the §6.1 path
+
+## 2026-10-12T16:20Z — w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd) — OPERATOR RULING (b) GRANTED of record: 'good enough, switch it over' (trace 1a1313ce921d7169) — the B6 transcribe flip's gate law is satisfied; execution stays with the claiming lane (T-MIG-121 CLAIMED, r0)
+- The grant: the STAGED B6 transcribe flip lands on the deterministic 401/400 law-capture alone (the plan's B6 row option (b)); the keyed live-prove alternative waived (ZERO-KEY posture); the GLM seam dependency accepted as DISCLOSED OF RECORD (the positive 200 is LLM output, excluded from golden gating by GOLDEN_MASTER §3).
+- Receipt: .syllabai/receipts/W7-CUTOVER/operator-ruling-b-transcribe-grant-2026-10-12-w0a.json — cites r0's run-002 census-confirm standing ('the ruling (b) REQUESTED and STANDING, never self-granted') as the gate this grant closes.
+- Boundaries: w0a fires NO flip / NO redeploy / NO edit on the CLAIMED card — the landing + serialized redeploy + the census LIVE 1->0 re-classification belong to the claiming lane per the in-flight law; after LIVE=0 the Z gate wires into CI + the 48h soak; the B7 ruling receipt remains the other open operator item.
+- Zero writes of every kind beyond this .syllabai-only record; no force.
