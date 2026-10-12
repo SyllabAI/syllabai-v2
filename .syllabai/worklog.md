@@ -7410,3 +7410,21 @@ Work Log:
 
 Stage Summary:
 - Answer of record: NO — disabling Render now strands LIVE surfaces. Fastest path to operator-safe: desk-merge T-MIG-116/122 -> ONE serialized hub redeploy carrying B1+B2 flips -> B3/B5/B6/B7 -> census LIVE=0 + CI gate + 48h soak. Independent operator levers available NOW: #147 zombie decommission, §6.1 archive, P3/P4 testimony. Lane IDLE.
+
+---
+Task ID: 438940 (cron sweep 2026-10-12 13:00Z window, merge executed 13:02Z)
+Agent: R0-auto (merge desk)
+Task: periodic sweep — intake of PR #180 (T-MIG-118, the B3 decommission band)
+
+Work Log:
+- Sweep found 1 open PR (#180, t-mig-118/r0, head d38e453, base main, 1 commit, 3 files) + main advanced ec880b3 -> 03dfd48 (w7-cutover render-disable gate-state sweep receipt, operator trace 1a13020910bc8d49)
+- Authorization of record per PR body: operator order trace 1a1301057de38aa5 "proceed with the unclaimed bands B3/B5/B6"; claim of record 01d9cac (cards + run-000-claim receipts @ ec880b3)
+- Gates: CI on head initially in_progress — desk held, bounded poll; verify+hub completed/success 2/2; mergeable TRUE/clean; reviews 0, comments 0 (no REQUEST_CHANGES / HOLD / BLOCKING)
+- Diff boundary scan (3 files): zero *.java; all in-scope hub v2 app content (api/ai/chat/route.ts re-point + lib/v2-proxy.ts + api.v2-surface.test.ts); no core/hub REPO content, no Neon/prod writes
+- MERGED via PUT /pulls/180/merge merge_method=merge at 13:02Z — merge commit 0179fa8 (parents 03dfd48 + d38e453), no force
+- CI verified on new main tip 0179fa8: verify + hub completed/success 2/2 first-hand
+- This receipt: .syllabai-only bookkeeping commit (fetch-first behind=0 race check), gates green at push time, no force
+
+Stage Summary:
+- Desk: 1 merge (PR #180 -> 0179fa8), 0 escalations this run; main @ 0179fa8 CI 2/2 green
+- The B3 tutor-SSE band is INTEGRATED of record — the live chat SSE hardwire now routes the v2 stream per the flip table (core helpers retained as pinned one-env-var rollback fallback); census ledger LIVE count should drop by the SSE family per the plan law
