@@ -7505,3 +7505,22 @@ Work Log:
 
 Stage Summary:
 - B1/B2 redeploy leg VERIFIED SERVING of record (with B3/B5 riding the same waves): the marking tails + assignments + tutor stream + questions anchors ride v2 live. 6.2 path remaining: the Z instrument hardening (chat rule) + the B6 operator ruling (b) + the B7 rulings -> LIVE 0 -> CI gate + 48h soak. Lane IDLE.
+
+---
+Task ID: T-MIG-123 (the Z instrument hardening; operator trace 1a130959c12030d5 "Z instrument hardening")
+Agent: r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+
+Work Log:
+- Claimed the Z band the 122 run-003 §Z re-run had scoped but NOT self-filed (scope discipline); zero-collision scan @ f8890e1 (no 123 card/file); card .syllabai/tasks/T-MIG-123-z-instrument-hardening.yaml filed of record.
+- The stale-rule class FIXED at the root: the census no longer trusts hardcoded rules — it READS the of-record code law. The chat hardwire classifies by route-source evidence (v2SurfaceBase consult + the v2 wire + the core arm -> RIDES-V2-ROLLBACK-FALLBACK, a new disclosed bucket NOT counted LIVE; arm-only -> HARDWIRE-LIVE; neither -> UNKNOWN-ROUTE-LAW gate-blocking). First-hand: the chat route's B3 decision block (v2-consult=True, rollback-arm=coreStreamAuthorized) — the STALE-RULE from the 122 re-run is retired by evidence, not by another hardcode.
+- Generalized proxy-upstream evidence (the 120 familiesForRoot class) with the B4 over-capture guards: exact-path-before-query equality, lib/api.ts + tests excluded, comment lines dropped, strongest-evidence-wins across ALL path-carrying files (the selftest fixture caught the mask-by-alphabetical-order failure mode mid-build and the law was fixed before landing).
+- Drift tripwire (the B4 lesson made structural): hint alive iff raw hit OR emitter resolution; dead hint on an unruled pin = STALE-HINT gate-blocking; on a ruled pin it CORROBORATES the ruling. Hint maintenance in-band: families -> questions/families fragment; tree -> knowledgeTree( (the current emitter name).
+- Rulings fold-in as evidence pointers (tree = the 119 B4 disposition; curriculum/versions = the 111 exclusion law; intervention-runs = the 096/110 law) — LIVE WINS over any ruling.
+- Zero-write default (--out refuses git-tracked targets without --overwrite-tracked) — retires the desk-disclosed baseline-overwrite caveat, third handling; the tracked baseline left byte-identical, proven first-hand (REFUSED exit 2).
+- The plan §Z report→gate conversion built + proven: --gate exits 0 iff live=0 AND unmapped=0 AND stale=0 AND unknown=0; CI wiring is the LIVE=0 act, not taken early.
+- Selftest 28/28 ALL PASS (the B4-class regression pin for the instrument itself — the 119/122 hardenings were both latent defects found after landing; the selftest pins the resolver laws including the 122 mid-path separator law and the exact-path over-capture guard).
+- Census of record first-hand at f8890e1: pins=8 LIVE=1 rides-v2=2 rollback-fallback=1 dormant=5 unmapped=0 stale=0 unknown=0. The B6-staged transcribe row = the one true LIVE residual. Pin-inventory delta disclosed: pins=8 not 10 — the B5 band moved the questions pins OUT of the stay-core array (flipped v2 rows now); the 122 receipt's pins=10 was the pre-B5 shape.
+- Gate honestly RED: exactly 1 blocker (transcribe, pending the operator ruling (b) — REQUESTED, never self-granted). Receipt run-001-z-hardening-r0.json + snapshot zero-core-census-2026-10-12-z-hardened-r0.json + card run-001; push direct-main (fetch-first); scope = the instrument file + .syllabai only; write ledger: zero prod/Neon/Vercel-API contact, zero LLM, zero dispatches, no force.
+
+Stage Summary:
+- The §Z instrument OWES NOTHING: every classification evidence-driven, inventory integrity self-pinned, gate conversion built. 6.2 path: the B6 operator ruling (b) -> the staged flip + redeploy -> the B7 rulings -> LIVE=0 -> wire --gate into CI + the census-soak (2 replays + 48h) -> the Render disable is OPERATOR-safe. Lane IDLE.

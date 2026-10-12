@@ -1,0 +1,102 @@
+version: 1
+task:
+  id: T-MIG-123
+  title: "Z instrument hardening — the census reads the of-record code law (evidence-driven chat/proxy upstream classification), rulings fold-in, drift tripwire, zero-write default, the report→gate conversion (the plan §Z law)"
+  owner: "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e, chat 0283e086)"
+  status: DONE
+  claimed_at: "2026-10-12T15:0xZ"
+  claimed_by_order: "operator trace 1a130959c12030d5 'Z instrument hardening'"
+  priority: P1
+  wave: W7-CUTOVER # the plan §Z band: the census-gate instrument itself
+  deps: [T-MIG-119, T-MIG-122]
+  execution_record: >
+    CLAIMED on the operator order (the Z band was left unclaimed by the run-003
+    §Z re-run scope discipline: 'the instrument's chat classification predates
+    the B3 re-point and needs the 122-class matcher hardening (left to the Z
+    band claim per scope discipline; NOT self-filed)'). THE BAND (instrument
+    hardening only — zero flip rows, zero app code):
+    (1) STALE-RULE FIX of record (the named item): the chat hardwire's
+    classification is no longer the hardcoded 'SSE -> coreStreamAuthorized'
+    rule (stale since the B3 re-point d38e453) — the instrument now READS the
+    route source (apps/hub/src/app/api/ai/chat/route.ts) and classifies by
+    evidence: v2SurfaceBase consult + the v2 stream literal = table-governed
+    v2-first; coreStreamAuthorized present = the pinned rollback arm; both =
+    RIDES-V2-ROLLBACK-FALLBACK (a new disclosed bucket, NOT counted LIVE);
+    rollback-arm-only = HARDWIRE-LIVE; neither = UNKNOWN-ROUTE-LAW
+    (gate-blocking: the route drifted from the instrument's model).
+    (2) THE SAME STALE-RULE CLASS FOUND+FIXED on the questions/families pin:
+    the proxy route /api/core/questions (familiesForRoot, T-MIG-120 re-point
+    3f34803) is table-governed v2-first with the coreFetchAuthorized rollback
+    arm — a generalized proxy-upstream evidence scan (exact-path guarded
+    against the B4 over-capture class: the found literal's path must EQUAL the
+    pin path before query; lib/api.ts + tests excluded from the scan) moves
+    the pin DORMANT -> RIDES-V2-ROLLBACK-FALLBACK with the evidence tuple.
+    (3) DRIFT TRIPEWIRE (the B4 lesson made structural): each emitter hint is
+    alive iff the raw string hits anywhere OR the identifier resolves in
+    lib/api.ts; a dead hint on an unruled pin = STALE-HINT (gate-blocking —
+    the inventory chain is broken and the pin is blind to future callers);
+    hint maintenance landed in-band: families -> questions/families (fragment),
+    tree -> knowledgeTree( (the current emitter name; the old tree( string is
+    dead since the B4 repoint); the dead tree( + curriculumVersions strings
+    corroborate the rulings below instead of blocking them.
+    (4) RULINGS FOLD-IN (the B7-class evidence pointers, never decisions):
+    tree = DORMANT-CORE per the T-MIG-119 run-001 ruling; curriculum/versions
+    = STAYS-CORE per the T-MIG-111 exclusion law (honest-501 stubs; the
+    family flip awaits its own port band); intervention-runs = the 096/110
+    STAYS-CORE law. A ruled pin with live sites re-opens (LIVE WINS — a
+    ruling never masks a live dependency).
+    (5) ZERO-WRITE DEFAULT (retires the desk-disclosed overwrite caveat,
+    third handling in the 122 run-003): the census writes NOTHING by default;
+    --out PATH writes (refusing a git-tracked target without
+    --overwrite-tracked); the tracked zero-core-census-baseline.json stays
+    frozen as the last formally filed baseline.
+    (6) THE REPORT→GATE CONVERSION (the plan §Z second half): --gate exits 0
+    iff live=0 AND unmapped=0 AND stale_hints=0 AND unknown_route_law=0 —
+    built and proven NOW; wiring into CI happens the moment the LIVE list
+    hits zero (post the B6 operator ruling (b) + the B7 rulings), one act,
+    per the plan's own conversion law. At this tip the gate is honestly RED
+    (LIVE=1: transcribe, B6 STAGED pending ruling (b) — REQUESTED, never
+    self-granted).
+    EXPECTED CENSUS at f8890e1 (the honest of-record state): pins=10,
+    LIVE=1 (transcribe), RIDES-V2=2 (marking, subjects),
+    RIDES-V2-ROLLBACK-FALLBACK=2 (chat route, families proxy), DORMANT=5
+    (curriculum/versions ruled, questions-list, exam-papers x2, tree ruled,
+    intervention-runs ruled), unmapped=0, stale_hints=0.
+    RUN-001 FIRST-HAND CORRECTION of the expectation (disclosed, the honest
+    law): pins=8, NOT 10 — the B5 band (3f34803) moved the two questions
+    pins OUT of CORE_ONLY_PATHS (they are flipped v2 rows now, outside the
+    stay-core inventory), so the of-record array is 7 literals + 1 manual
+    addition; the census-of-record honest state is LIVE=1 (transcribe),
+    RIDES-V2=2 (marking, subjects), RIDES-V2-ROLLBACK-FALLBACK=1 (the chat
+    route — the questions/families pin left the inventory at B5, so the
+    proxy-evidence capability is built + selftested but has no stay-core pin
+    to classify today), DORMANT=5, unmapped=0, stale_hints=0,
+    unknown_route_law=0. The T-MIG-122 run-003 receipt's pins=10 census was
+    taken against the pre-B5 array shape — a census-inventory delta
+    disclosure, not a verdict change (its rows' classifications stand).
+    The gate is honestly RED with exactly 1 blocker (transcribe, the B6
+    flip STAGED pending the operator ruling (b) — REQUESTED, never
+    self-granted); the tracked-baseline overwrite guard proven first-hand
+    (REFUSED, exit 2, file untouched).
+base:
+  repo: "syllabai-v2 @ f8890e1 (fetch-first, behind=0 at claim)"
+basis: >
+  Operator order trace 1a130959c12030d5 'Z instrument hardening'; the plan
+  docs/DECOMMISSION-BANDS-PLAN.md §Z row (hardened + converted from report to
+  CI gate the moment the LIVE list hits zero); the T-MIG-122 run-003 §Z
+  re-run adjudication (the chat STALE-RULE named for this band); the
+  T-MIG-119 per-call-site hardening precedent; the B4 over-capture finding
+  (the hint-drift defect class).
+scope:
+  allowed:
+    - "scripts/preflight_zero_core_census.py (the instrument itself — the only code file)"
+    - ".syllabai/tasks/T-MIG-123-z-instrument-hardening.yaml (status/execution_record only)"
+    - ".syllabai/receipts/T-MIG-123/** and .syllabai/receipts/W7-CUTOVER/** (the hardened census receipt + snapshot)"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "apps/** (zero flip rows, zero app code — the B6 flip is STAGED pending operator ruling (b), never self-granted)"
+    - "syllabai-core / syllabai-hub repos (frozen, C1)"
+    - "prod writes / LLM / force (read-only verification posture)"
+progress_log:
+  - run: run-001-z-hardening-r0 (2026-10-12T15:1xZ)
+    note: "the band landed at f8890e1: selftest 28/28 ALL PASS; census zero-write first-hand pins=8 LIVE=1 rides-v2=2 fallback=1 dormant=5 unmapped=0 stale=0 unknown=0; gate RED (1 blocker: transcribe, B6-staged); tracked-overwrite guard REFUSED exit 2; snapshot zero-core-census-2026-10-12-z-hardened-r0.json; band receipt T-MIG-123/run-001-z-hardening-r0.json"
