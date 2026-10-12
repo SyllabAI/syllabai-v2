@@ -7396,3 +7396,17 @@ Work Log:
 
 Stage Summary:
 - B1-DEFECT-1 CLOSED of record: the fix + the flips + the census LIVE 2 + CI 2/2 at 490e223. T-MIG-116 + T-MIG-122 IN_REVIEW for the r0 desk's sha-guarded review. OWED (the desk's riders): the sanctioned hub redeploy (the marking page's markingAnswer :234 + smartMarkBatch :289 emitters go v2-native) + the api redeploy from tip (the envelope fix live) + the post-deploy live battery. Lane IDLE.
+
+---
+Task ID: R0-RENDER-GATE-SWEEP-1 (operator trace 1a13020910bc8d49 "Can I disable render now? Check the current state?")
+Agent: r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+
+Work Log:
+- Fetch-first read-only sweep at base ec880b3: tip CI replay+hub+verify 3/3 SUCCESS first-hand; open PRs ZERO; PR #179 (B2) read MERGED first-hand (6c09106 04:32Z).
+- Live battery (12:41-12:48Z, unauth, zero writes, zero LLM): v2 api 200 UP + unauth 401 laws live on marking-queue-v2 and curriculum/subjects; v2 hub 200 {dataMode:core-api, coreConfigured:true}; frozen core syllabai-core.onrender.com UP (2 zero-byte cold-start timeouts then 200 in 1.46s — the disclosed wake law); zombie syllabai.vercel.app STILL 500 MIDDLEWARE_INVOCATION_FAILED (issue #147 reproduces fresh).
+- FIRST-HAND census re-run at base: pins=10 LIVE=3 dormant=7 unmapped=0; tracked baseline restored to HEAD post-run (the desk-disclosed overwrite caveat, handled again).
+- MID-FLIGHT DELTAS of record (read first-hand at the 123ed64 rebase, disclosed in the receipt): 490e223 T-MIG-122 FIXED B1-DEFECT-1 + LANDED the B1 flip rows (census LIVE 3 -> 2, T-MIG-116/122 IN_REVIEW); 01d9cac the sibling r0 session CLAIMED B3/B5/B6. One worklog tail conflict resolved theirs-verbatim-first (this append), zero markers.
+- VERDICT filed: §6.2 Render disable NOT YET SAFE — the Render core is UP and still carries the un-flipped live families (hub dataMode=core-api first-hand); of-record residual = B6 transcribe + B3 SSE (+ B5 proxy outside instrument scope) + the B1/B2 flips pending their serialized redeploy. Receipt: .syllabai/receipts/W7-CUTOVER/render-disable-gate-state-2026-10-12-r0.json.
+
+Stage Summary:
+- Answer of record: NO — disabling Render now strands LIVE surfaces. Fastest path to operator-safe: desk-merge T-MIG-116/122 -> ONE serialized hub redeploy carrying B1+B2 flips -> B3/B5/B6/B7 -> census LIVE=0 + CI gate + 48h soak. Independent operator levers available NOW: #147 zombie decommission, §6.1 archive, P3/P4 testimony. Lane IDLE.

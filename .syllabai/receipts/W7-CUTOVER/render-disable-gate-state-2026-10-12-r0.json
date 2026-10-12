@@ -1,0 +1,36 @@
+{
+  "task": "W7-CUTOVER §6.2 gate-state sweep — operator trace 1a13020910bc8d49 'Can I disable render now? Check the current state?'",
+  "agent": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e, chat 0283e086)",
+  "probed_utc": "2026-10-12T12:41..12:48Z",
+  "midflight_deltas_disclosed": "THE BOARD MOVED DURING THIS SWEEP (of-record, read first-hand at the 123ed64 rebase): 490e223 12:45:54Z = T-MIG-122 (r7a, operator order 1a12ff5ac598546d) FIXED B1-DEFECT-1 (the SmartMarkView envelope projection) — t116 driver 12/12 ALL-GREEN — and LANDED the staged B1 flip rows (mid-path /api/v1/teacher/marking/answers/:uuid + the batch leaf); the §Z census re-run of record: LIVE 3 -> 2 (marking RIDES-V2); T-MIG-116 + T-MIG-122 IN_REVIEW (desk merge owed, then the B1/B2 joint redeploy). 01d9cac 12:44:23Z = the sibling r0 session CLAIMED B3/B5/B6 (T-MIG-118/120/121, operator order 1a1301057de38aa5). The sweep numbers below are swept-at-base ec880b3 values, first-hand and unmodified; the of-record census is now LIVE=2 (the B6 transcribe seam + the B3 SSE hardwire, with the B5 proxy family outside the instrument scope).",
+  "method": "fetch-first, read-only: git show of the band cards + W7-CUTOVER receipts of record at tip; GitHub API (open PRs, tip check-runs); unauth HTTP probes of the four carriers. ZERO writes, ZERO authed POSTs, ZERO LLM calls, no force.",
+  "repo_state": "origin/main ec880b3 (the T-MIG-116 B1 receipt; B2 merged minutes before it: PR #179 -> 6c09106 04:32Z + the r0-auto bookkeeping 4f898e8); tip CI check-runs read first-hand: replay+hub+verify 3/3 SUCCESS; open PRs: ZERO (GitHub API first-hand 12:42Z; PR #179 read MERGED first-hand).",
+  "verdict": {
+    "render_disable": "NOT YET SAFE — §6.2 stays blocked. The Render core (syllabai-core.onrender.com) is UP (200 {status:UP} first-hand after the disclosed cold-start wake pattern: 2 zero-byte timeouts then 200 in 1.46s) and the v2 hub of record still serves dataMode=core-api coreConfigured=true — the un-flipped core-routed families still route live traffic to it. Disabling now strands them."
+  },
+  "live_battery": {
+    "v2_api_syllabai-v2.vercel.app": "UP — /actuator/health 200 {status:UP}; unauth 401 laws first-hand live on /api/v1/teacher/marking/queue-v2 and /api/v1/curriculum/subjects",
+    "v2_hub_syllabai-hub-v2.vercel.app": "UP — /api/health 200 {status:ok, dataMode:core-api, coreConfigured:true}",
+    "frozen_core_syllabai-core.onrender.com": "UP — /actuator/health 200 {status:UP} (cold-start wake law disclosed: attempts 1-2 zero-byte timeout at 55-60s, attempt 3 200 in 1.46s)",
+    "zombie_syllabai.vercel.app_prj_D7vf": "STILL 500 MIDDLEWARE_INVOCATION_FAILED (fresh first-hand 12:44Z; issue #147 reproduces; the zombie-decommission operator lever stands)"
+  },
+  "decommission_band_state_of_record": {
+    "B1_T-MIG-116_marking_answers_subtree": "FLIP ROWS LANDED of record at 490e223 (T-MIG-122, 12:45:54Z, mid-sweep): B1-DEFECT-1 FIXED (the TeacherViews.SmartMarkView camelCase envelope projection at routes/teachermarking.ts; the t116 driver 12/12 ALL-GREEN; FAIL-NO-FLIP DISCHARGED; the mid-path /answers/:uuid row + the batch leaf at the table tail; bare /answers STAYS CORE) — T-MIG-116 + T-MIG-122 IN_REVIEW; the marking page rides v2 pending the desk merge + the joint redeploy. (Swept-at-base state: STAGED-NOT-LANDED with the defect of record.)",
+    "B2_T-MIG-117_teacher_assignments": "MERGED of record — PR #179 merged 6c09106 2026-10-12T04:32Z (the port-first band: routes/assignments.ts + services/teacher-assignments + 44/44 golden-verify zero-drift; the FOUR flip forms pinned in the surface test). EXIT-GATE RESIDUAL of record: the post-merge hub REDEPLOY + wire smoke + census-soak are STILL OWED ('continue per the plan', the tip worklog) — the flip moves live traffic only at the redeploy.",
+    "B3_T-MIG-118_chat_SSE_repoint": "CLAIMED of record 01d9cac 12:44:23Z by the sibling r0 session (operator order 1a1301057de38aa5); no band work yet — the hub /api/ai/chat route remains coreStreamAuthorized-hardwired to the core carrier.",
+    "B4_T-MIG-119_subjects_wire_truth": "DONE + R0-DESK RATIFIED (2026-10-12, run-002) — subjects ALREADY rides v2 via the Wave-1-era /api/v1/curriculum prefix row (the baseline subjects LIVE entry was instrument over-capture); bare /api/v1/subjects + legacy /api/v1/tree ruled DORMANT-CORE; the desk ratification reproduced the byte-compare + 401 laws (one Render wake retry disclosed).",
+    "B5_T-MIG-120_questions_server_proxy": "CLAIMED of record 01d9cac 12:44:23Z (claim-time finding: the CLA ask is ALREADY table-governed; the live server-side set = core-topics subjects+tree anchors + familiesForRoot; v2 serves all five question surfaces per T-MIG-031) — no band work yet; the /api/core/questions proxy dependency still rides the core.",
+    "B6_T-MIG-121_transcribe_GLM_seam": "CLAIMED of record 01d9cac 12:44:23Z (claim-time finding: the v2 impl EXISTS of record T-MIG-034; keyless capture exceeds 401-law-only; the flip STAGED pending the operator ruling (b), requested not self-granted) — the seam still rides the core.",
+    "B7_ruling_band": "PENDING — intervention-runs (stay-core LAW), teacher/curriculum/versions honest-501 stub subtree, learner exam-papers dormant reads all await the operator ruling receipt.",
+    "Z_census_gate": "NOT MET — FIRST-HAND census re-run this sweep at base ec880b3: pins=10 LIVE=3 dormant=7 unmapped=0; the OF-RECORD census is now LIVE=2 (490e223's §Z re-run: marking RIDES-V2, the instrument's dead mid-path matcher fixed in-band); the tracked baseline receipt was restored to HEAD after my run (the desk-disclosed default-output-overwrite caveat, handled again). Residual LIVE of record = the B6 transcribe seam + the B3 SSE hardwire (+ the B5 proxy family outside the instrument's emitter scope per the plan's annotation). The census reaches zero after B1's desk merge + the B2/B1 redeploy + B3/B5/B6/B7; then the instrument converts to a CI gate and the soak runs (2 consecutive scheduled replays + 48h) before §6.2 becomes [OPERATOR]-safe."
+  },
+  "operator_levers_now": [
+    "1. Desk-merge T-MIG-116/122 (B1 fix + flips, IN_REVIEW of record) and T-MIG-117's owed redeploy: ONE serialized hub redeploy carries BOTH the B1 and B2 flips (the redeploy serialize law); then the wire smoke + union replay",
+    "2. B3/B5/B6 ride their sibling r0 claims (01d9cac); B6's flip awaits the operator ruling (b) — requested of record, not self-granted; B7 rulings land when the operator rules",
+    "3. §6.1 GitHub archive (syllabai-core + syllabai-hub, read-only never delete) — ELIGIBLE of record now, operator-only",
+    "4. Issue #147 zombie decommission (syllabai.vercel.app prj_D7vf) — INDEPENDENT of the Render gate, safe to execute now (still 500ing fresh)",
+    "5. P3 witness + P4 sign-off remain the runbook gate letters — PENDING, operator testimony",
+    "6. ONLY after census LIVE=0 + CI-gate + soak: §6.2 Render disable becomes [OPERATOR]-safe (disable = not delete; rollback lever = re-enable the Render service, bounded by the shared-Neon doctrine — the disable moves NO data)"
+  ],
+  "boundaries": "read-only probes only; zero writes to prod/Neon/frozen-core; zero authed POSTs; zero LLM; the legacy repos untouched; no force; token never persisted/printed"
+}
