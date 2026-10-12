@@ -681,6 +681,27 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   "/api/v1/teacher/marking/throughput",
   "/api/v1/teacher/marking/kappa/latest",
   "/api/v1/teacher/marking/kappa/evaluate",
+  // T-MIG-117 (r7a, operator order trace 1a12e148cc3b93ad "Do it yourself")
+  // — the B2 decommission band: the teacher/assignments SUBTREE row. The
+  // band was PORT-FIRST (the claim finding: apps/api had ZERO
+  // teacher-assignments implementation; the family is FOUR wires — list GET
+  // assignments-client.tsx:134, create POST :318, status POST :347, roster
+  // GET :202) — the port landed line-against-line the frozen
+  // TeacherAssignmentController @ 6cad6ef (routes/assignments.ts +
+  // services/teacher-assignments/** + the out-of-fence mount commit) and
+  // the 107 subtree-row law is satisfied by the rig chain of record: the
+  // 88-leg capture from the LOCAL boot of the frozen core 6cad6ef (the
+  // 107/113/114 rig recipe rebuilt docker-free — PG 17.11 + pgvector
+  // @127.0.0.1:5544, openjdk 25 + Maven 3.9.9 via dpkg -x, ZERO-KEY +
+  // SYLLABAI_LLM_MODE=test; zero prod contact) + the 44/44 golden-verify
+  // of the port vs the captures (deepEqualTolerant zero drift; receipts
+  // T-MIG-117/run-001-capture + run-002-golden-verify). The bare row
+  // captures EXACTLY the four verified wires (all four hub-emitted paths
+  // are v2-REAL per the T-MIG-037 bar); the family writes NO learner-model
+  // state (the V49/V51 honesty law) and touches no LLM path (§9). The
+  // 109-corpus law N/A (no corpus-dependent bodies — the family is
+  // teacher-authored state).
+  "/api/v1/teacher/assignments",
 ];
 
 /**

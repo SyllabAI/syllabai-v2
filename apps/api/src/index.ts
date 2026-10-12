@@ -56,6 +56,7 @@ import { buildSmeRouters } from "./routes/sme";
 import { buildInterventionRouters } from "./routes/intervention";
 import { buildLearnerRouters } from "./routes/learner";
 import { buildClassroomRouters } from "./routes/classroom";
+import { buildTeacherAssignmentsRouters } from "./routes/assignments";
 import { buildResearchRouters } from "./routes/research";
 import { buildIngestionRouters } from "./routes/ingestion";
 import { buildLlmAdminRouters } from "./routes/llmadmin";
@@ -88,6 +89,7 @@ const learnerKg = buildLearnerKgRouters();
 const sme = buildSmeRouters();
 const intervention = buildInterventionRouters();
 const classroom = buildClassroomRouters();
+const teacherAssignments = buildTeacherAssignmentsRouters();
 const revisionNotes = buildRevisionNotesRouters();
 const knowledge = buildKnowledgeRouters();
 const teacherKg = buildTeacherKgRouters();
@@ -475,6 +477,22 @@ app.route("/api/v1/learners/me/cla", cla.claRoute);
 app.route("/api/v1/teacher/classes", classroom.teacherClassesRoute);
 app.route("/api/v1/learners/me/classroom", classroom.learnerClassroomRoute);
 app.route("/api/v1/teacher/learners", classroom.teacherRosterRoute);
+
+// Teacher assignments router (T-MIG-117 — the B2 decommission band, r7a).
+// Path parity with the frozen core: TeacherAssignmentController under
+// /api/v1/teacher/assignments (the SecurityConfig.java:87
+// hasAnyRole('TEACHER','ADMIN') rule — the router owns its authz
+// internally). The /api/v1/* fallback below stays the 404-after-auth path
+// for NO router claimed.
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-117, R0 ratification requested):
+// T-MIG-117's scope.allowed covers routes/assignments.ts,
+// services/teacher-assignments/**, test/teacher-assignments/** — NOT this
+// file. The import + construction + one mount line + this comment are the
+// minimal app-level wiring the ported module needs, shipped as a separate
+// commit per the T-MIG-010/020/021/030/032/033/034/041t2/052t2 precedent so
+// R0 can ratify or lift them out at review.
+app.route("/api/v1/teacher/assignments", teacherAssignments.teacherAssignmentsRoute);
 
 // Revision-notes + knowledge + teacher-KG/coverage/concept-graph routers
 // (T-MIG-082 tranche-1 — the deferred-mount band, r4b). Path parity with the
