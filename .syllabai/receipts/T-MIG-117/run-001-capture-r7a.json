@@ -1,0 +1,29 @@
+{
+  "task": "T-MIG-117",
+  "run": "run-001-capture-r7a",
+  "band": "B2 — teacher/assignments (port-first)",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1)",
+  "operator_order": "trace 1a12e148cc3b93ad 'Do it yourself' (the port band executed in-session)",
+  "at": "2026-10-12T03:14-03:40Z",
+  "what": "the 88-leg main battery + 22 supplementary capture legs from the LIVE LOCAL boot of the frozen core 6cad6ef — the T-MIG-107/113 write-surface procedure of record",
+  "rig": {
+    "rebuild": "DOCKER-FREE (the sandbox has no docker/maven — the 107/113/114 recipe rebuilt from its own of-record law): PostgreSQL 17.11 + pgvector 0.8.0 user-tree (trixie debs dpkg -x, the T-MIG-100 recipe) @ 127.0.0.1:5544 db syllabai_capture (fresh per run); openjdk 25.0.4.1 user-tree via dpkg -x (the Debian conf/security symlink defect repaired by materializing the real files from the deb's /etc tree — the 113 disclosure's repair, refined); Maven 3.9.9 binary from repo.maven.apache.org; the core clone @ 6cad6ef built 'mvn -DskipTests package' BUILD SUCCESS; booted SERVER_PORT=8090, SYLLABAI_LLM_MODE=test, ZERO-KEY (no GROQ/GEMINI/OPENROUTER credentials), synthetic SYLLABAI_JWT_SECRET + SYLLABAI_TEACHER_JOIN_CODE; Flyway V1..V63 applied by the core at boot (63-row schema history verified)",
+    "seed": "the V6/V7 fixed-uuid knowledge-node seed (the 107 tools/v6v7-seed.sql — 15 nodes incl. the UNIT/TOPIC/SUBTOPIC structure targets + the SUBJECT root + MISCONCEPTION semantic-layer refusals)",
+    "identities": "probe teacher + teacher2 + 2 students registered via the core's own API (the synthetic join code); classes C1/C2/C3 created via the core's class API (C2 archived, C3 other-teacher's); S1 enrolled into C1/C2 via the enroll API; hand-in rows inserted by DIRECT SQL (the 113 rig-seed law: disposable substrate)"
+  },
+  "legs": {
+    "band_a_authz_shells": "a01-a08: 8/8 (401 anon / 403 student on all FOUR wires)",
+    "band_b_two_envelope": "b01-b17: 17/17 (the list-empty 200; blank/absent/201-char title, the courseSlug pattern + size, specRefs empty/61/element-pattern/element-size, marksTotal 0/1001/wrong-type, questionCount 0/201, dueAt absent/garbage — ALL verbatim jakarta strings)",
+    "band_c_malformed_targets": "c01-c07: 7/7 (malformed JSON, classId bad-format binding, unknown-ref 404, the subject-root + semantic-layer 404 refusals, the mixed-ref first-error law, the dueAt service 400s)",
+    "band_d_positives_gates": "d01-d09: 9/9 (the 201 positive + the dedup law + the past-due positive + the class-targeted 201 with the classId echo; unknown-class 404 / other-teacher 403 / archived 409 / course-mismatch 400 ALL verbatim; status-unknown 404)",
+    "band_e_stats_roster": "e01-e09: 9/9 (the list two-assignment shape, the whole-cohort roster, the hand-in inserts, the stats law incl. late/meanScore, the roster complete/late/missing states + the ordering law, the class-targeted roster, the unknown-id 404, the malformed-uuid 400, the dedup assignment roster)",
+    "band_f_lifecycle": "f01-f06: 6/6 (blank/invalid/absent status 400s verbatim, close 200, reopen 200, the tolerant '  CLOSED  ' form 200)",
+    "g_supplementary": "g01-g22: 22/22 (the @NotNull null laws 'must not be null' vs the @NotBlank 'must not be blank'; the JACKSON SCALAR-COERCION LAW: title 7 → 201 '7', title true → 201 'true', status 3 → the service parse of '3' verbatim 400, marksTotal 10.5 → 201 truncation, marksTotal '10' → 201, courseSlug 19 → 201, specRef 19 → 404 'unknown assignment target: 19', marksTotal boolean → malformed_body, specRefs string/nested-array → malformed_body, classId number → malformed_body)"
+  },
+  "capture_verdict": "66/66 main battery legs at expected statuses + 22/22 supplementary — failures: none",
+  "fixtures": "golden-captures/t-mig-117/ (89 files: raw response bytes UNSCRUBBED per the t114 law + uuid-map.json) — DISCLOSURE: the uuid-map redaction DEGENERATED (fake_of's per-role n%10 counter collapsed the four assignment fakes onto one value and the role labels collided); the fixtures stay consistent real→fake; the run-002 verify driver resolves identities from capture_manifest.json (the ground truth), not the map",
+  "write_ledger": {
+    "plane": "LOCAL ONLY (the scratch PG capture db) — ZERO writes against prod Neon, ZERO prod API writes, zero live-plane touches of any class",
+    "llm": "0 calls (the ZERO-KEY law; SYLLABAI_LLM_MODE=test)"
+  }
+}

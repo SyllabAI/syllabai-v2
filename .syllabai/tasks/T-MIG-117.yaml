@@ -3,7 +3,7 @@ task:
   id: T-MIG-117
   title: "Decommission band B2 — teacher/assignments (port-first: list GET + create POST + roster GET + status POST) capture+verify+flip"
   owner: "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)"
-  status: CLAIMED
+  status: IN_REVIEW
   claimed_at: "2026-10-11T19:31:44Z"
   claimed_by_order: "operator trace 1a12c68dd42c7511 'B2 for the small leaf bands in parallel'"
   priority: P1
@@ -57,6 +57,9 @@ scope:
     - "syllabai-core / syllabai-hub repos (frozen, C1 — the port READS the frozen source, never writes it)"
     - "prod writes of any class (the create/status POST legs are captured on the local rig, NEVER on the live planes)"
 progress_log:
+  - run: run-001-capture-r7a + run-002-golden-verify-r7a (2026-10-12T03:14-04:20Z)
+    what: "THE PORT EXECUTED IN-SESSION per the operator order trace 1a12e148cc3b93ad 'Do it yourself' — the 107/113/114 rig REBUILT DOCKER-FREE (PG 17.11+pgvector dpkg -x @5544, openjdk 25.0.4.1 + Maven 3.9.9 dpkg -x, the core 6cad6ef built + booted @8090 ZERO-KEY SYLLABAI_LLM_MODE=test, Flyway V1..V63); the 88-leg capture battery + 22 supplementary legs (66/66 + 22/22 at expected statuses) from the local frozen-core boot — ALL messages of record verbatim; the JACKSON SCALAR-COERCION LAW found and pinned (strings coerce number/boolean, ints coerce numeric strings/decimals not booleans, UUIDs strict — g07/g14-g22); the port landed line-against-line (services/teacher-assignments + routes/assignments + 35 stubbed-sql tests + the OUT-OF-FENCE-FLAGGED contracts module); the 44/44 GOLDEN-VERIFY of the port vs the captures (deepEqualTolerant zero drift, the t107 class; five defects found and fixed during verify, disclosed in the receipt); the FLIP: the bare subtree row at the table tail, the exact-set pin + the four-wire DUAL_RUN forms + the 117 line test; census LIVE 4 -> 3. Gates: typecheck chain 0, suite 1895/0/13skip/7343 = same-sandbox main +35 EXACT, golden selftest OK, hub 60/60 + tsc 0. Zero prod contact, zero LLM."
+    exit_gate: "PARTIALLY MET of record: the capture+verify+flip chain complete; PR #179 filed (port / out-of-fence mount / flip) — authors never self-merge, the r0-auto sha-guarded desk owns the merge + the union replay at the merge tip + the post-merge redeploy (the 092/093 recipe) + the wire smoke + the census-soak. The page-rides-v2 exit completes at the merge."
   - run: run-001-core-golden-r7a (2026-10-11T19:39Z)
     what: "core-plane golden of the list GET captured verbatim (200, 1309 bytes, cold-Render 47.9s leg disclosed); the v2 plane answers the NO-router 404-after-auth law (the honest port-owed evidence); unauth 401s green both planes. The corrected census lists the TRUE 4-wire family."
     still_owed: "the port itself (routes + services + tests + the out-of-fence mount ratification commit); the write-leg rig captures (STAGED); the row-form decision at flip."

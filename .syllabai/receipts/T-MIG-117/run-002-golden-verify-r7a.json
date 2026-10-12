@@ -1,0 +1,30 @@
+{
+  "task": "T-MIG-117",
+  "run": "run-002-golden-verify-r7a",
+  "band": "B2 — teacher/assignments (port-first)",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1)",
+  "at": "2026-10-12T04:05-04:20Z",
+  "what": "GOLDEN-VERIFY of the B2 port: the capture legs replayed against the booted v2 code (this branch's apps/api, in-process Bun.serve — the t107/t100 harness pattern, ZERO-KEY boot law asserted) — the driver scripts/t117_verify.ts, deepEqualTolerant imported from golden/runner.ts (zero comparator drift)",
+  "substrate": {
+    "db": "LOCAL PG 17.11 + pgvector @ 127.0.0.1:5544 db syllabai_verify (fresh: drizzle-kit push via the T-MIG-105 file-schema config + the V6/V7 fixed-uuid seed + the fixed-uuid harness users t117-*@verify.local + classes/members rows)",
+    "boot": "SYLLABAI_JWT_SECRET synthetic; ZERO-KEY law asserted (exit 4 on any LLM credential); /actuator/health poll before replay"
+  },
+  "substitution": "the capture real-uuids map to the verify fixed-uuid rows resolved from capture_manifest.json (the ground truth of the capture run) — the uuid-map's role labels DEGENERATED (the per-role fake-counter collision disclosed in run-001) so the manifest is the substitution authority; the four CREATED assignments resolve by replay order from the 201 responses",
+  "verdict": "44/44 legs PASS — deepEqualTolerant ZERO DRIFT vs the frozen-core captures; tolerate: createdAt/submittedAt/timestamp BY NAME (the fleet law); dueAt BYTE-HONEST via the javaInstant render law (the port strips the .000 trailing zeros the core's Instant serialization never emits — the d01 capture byte parity)",
+  "defects_found_and_fixed_during_verify": [
+    "the INSERT classId bind concatenated '::uuid' INTO the parameter value (the capture-time 500 on d04) — fixed to the fleet's ${classId}::uuid template form",
+    "the drizzle/postgres.js jsonb render (spec_refs arrives as the RAW JSON string) — fixed with the specRefsOf normalizer (the frozen row shape is the parsed array)",
+    "the class-cohort SQL used DISTINCT with ORDER BY on a non-selected column (the Postgres 42P10 law) — fixed to the fleet's group-by form (the classroom roster pattern)",
+    "the status route passed the request ENVELOPE instead of the field to the service — fixed (parsed.data.status)",
+    "the classifier treated the Jackson-binding sentinel refine issue as a constraint — fixed (the sentinel check precedes the custom-code rendering)"
+  ],
+  "gates_after": {
+    "typecheck_chain": "exit 0 (contracts/shared/db/api) + hub tsc 0",
+    "bun_test": "1895 pass / 0 fail / 13 skip / 7343 expect across 99 files = same-sandbox origin/main (1860/0/13/7202/97) +35 tests EXACT — the two new test files, zero incidental drift",
+    "golden_selftest": "OK",
+    "hub_surface": "60/60 + the exact-set pin + the 117 line test",
+    "census": "LIVE 4 -> 3 (assignments left the core-routing list; pins 11 -> 10) — the §Z instrument re-run of record (the baseline receipt restored after the in-place-write caveat, unchanged)"
+  },
+  "write_ledger": "zero prod/Neon contact; zero LLM; everything on 127.0.0.1",
+  "pr": "PR #179 (t-mig-117/r7a: port + out-of-fence mount + flip, three commits) — authors never self-merge; independent review + the r0-auto sha-guarded desk own the merge; the union replay is the desk's merge-time gate (the 114 precedent); the post-merge redeploy + wire smoke + census-soak continue per the plan"
+}
