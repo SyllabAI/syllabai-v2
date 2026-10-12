@@ -5,6 +5,8 @@ import {
   coreFetchAuthorized,
   coreErrorDetail,
 } from "@/lib/core-proxy";
+import { v2SurfaceBase } from "@/lib/api";
+import { v2StreamAuthorized, v2FetchAuthorized } from "@/lib/v2-proxy";
 import {
   surfaceForCourseRef,
   mapCitation,
@@ -64,29 +66,36 @@ const CHAT_LIMITS: RateLimitRule[] = [
 ];
 
 /**
- * POST /api/ai/chat — grounded tutor, PROXIED to syllabai-core (ADR-029 R3).
+ * POST /api/ai/chat — grounded tutor. B3 (T-MIG-118): the ALWAYS-ON upstream
+ * is the v2 api (`/api/v1/tutor/ask/stream`, the 106 flipped pair row) —
+ * the table-governed decision is v2SurfaceBase per path, with the core path
+ * surviving ONLY as the pinned one-env-var rollback fallback (MIGRATION_PLAN
+ * §7; the claAskFetch precedent). The browser contract is unchanged.
  *
- * Streaming contract (tutor SSE tranche): core's `/api/v1/tutor/ask/stream`
- * now generates token-incrementally with the signed-in learner's JWT
- * forwarded — this repo holds no LLM keys. The proxy pipes core's SSE
- * through in real time (citations → meta → delta → done), remapping only
- * the citation payloads into the hub's citation shape. The browser keeps
- * the exact same reader contract it always had; the difference is that the
- * deltas now arrive as the model writes them instead of re-chunked after a
- * blocking call.
+ * Streaming contract (tutor SSE tranche): the upstream generates
+ * token-incrementally with the signed-in learner's JWT forwarded — this repo
+ * holds no LLM keys. The proxy pipes the SSE through in real time
+ * (citations → meta → delta → done), remapping only the citation payloads
+ * into the hub's citation shape. v2's stream is the line-against-line port
+ * of core's (TutorController.askStream :208-256 — routes/tutor.ts :307-381),
+ * so the frames, the event vocabulary and the pre-flight error classes are
+ * the same contract (the 106 declared divergence — the DESIGNED 400/404
+ * where the frozen core's stream controller served 500 — is of record).
  *
  * Honest degradation paths:
- * - core answers JSON (deploy skew: an older core without the stream
- *   endpoint returns 404 → we retry the blocking `/ask` and re-chunk) —
- *   the tutor stays up through any deploy order;
- * - core errors before the stream opens → the same JSON error mapping as
- *   before (401/429/503 with client-safe guidance);
- * - core dies mid-stream → its `error` event passes through and the chat
- *   renders the honest error state on the partial answer.
+ * - the upstream answers JSON on the stream path (a pre-stream error class
+ *   delivered as a JSON body, or a legacy upstream) → the blocking
+ *   adaptation keeps the tutor up through any deploy order;
+ * - upstream errors before the stream opens → the same JSON error mapping
+ *   as before (401/429/503 with client-safe guidance);
+ * - the upstream dies mid-stream → its `error` event passes through and
+ *   the chat renders the honest error state on the partial answer;
+ * - the v2 env var unset (rollback) → every path reverts to core.
  *
- * Thread transcripts persist to core's §22 session store when the client
- * binds one (HUB-TUTOR-SESSIONS): the sessionId rides the ask, core appends
- * the completed exchange (stream: on the Completed event only; legacy
+ * Thread transcripts persist to the §22 session store when the client
+ * binds one (HUB-TUTOR-SESSIONS): the sessionId rides the ask, the
+ * upstream appends the completed exchange (stream: on the Completed event
+ * only; legacy
  * fallback: server-side inside /ask), and the conversations pane reads the
  * same store back. A thread without a binding asks unpersisted, exactly as
  * before.
@@ -133,16 +142,28 @@ export async function POST(req: NextRequest) {
   // (the bridge in citation-map decides per link — honest nulls otherwise)
   const surface = await surfaceForCourseRef(parsed.courseRef);
 
+  // B3 (T-MIG-118): the table-governed upstream decision — v2 first (the
+  // 106 pair row resolves the stream path), core only on rollback (env
+  // unset). The shapes are structural mirrors; the mapping below is shared.
+  const streamPath = "/api/v1/tutor/ask/stream";
+  const v2Base = v2SurfaceBase(streamPath, process.env.NEXT_PUBLIC_API_V2_BASE_URL);
   let result: Awaited<ReturnType<typeof coreStreamAuthorized>>;
   try {
-    result = await coreStreamAuthorized("/api/v1/tutor/ask/stream", {
-      method: "POST",
-      token,
-      body: coreBody,
-      // the learner's own abort (stop button, navigation) releases the
-      // upstream fetch — core stops generating for a gone reader
-      signal: req.signal,
-    });
+    result = v2Base
+      ? await v2StreamAuthorized(v2Base, streamPath, {
+          method: "POST",
+          token,
+          body: coreBody,
+          // the learner's own abort (stop button, navigation) releases the
+          // upstream fetch — the upstream stops generating for a gone reader
+          signal: req.signal,
+        })
+      : await coreStreamAuthorized(streamPath, {
+          method: "POST",
+          token,
+          body: coreBody,
+          signal: req.signal,
+        });
   } catch {
     return Response.json(
       { error: "core_unreachable", detail: "The SyllabAI backend is waking up — try again in a few seconds." },
@@ -318,11 +339,21 @@ async function legacyBlockingFallback(
   surface: CitationSurface,
 ): Promise<Response> {
   try {
-    const result = await coreFetchAuthorized<CoreTutorAnswer>("/api/v1/tutor/ask", {
-      method: "POST",
-      token,
-      body: coreBody,
-    });
+    // B3: the blocking twin rides the same table decision (the 106 pair row
+    // resolves both /ask and /ask/stream) — v2 first, core on rollback.
+    const askPath = "/api/v1/tutor/ask";
+    const askV2 = v2SurfaceBase(askPath, process.env.NEXT_PUBLIC_API_V2_BASE_URL);
+    const result = askV2
+      ? await v2FetchAuthorized<CoreTutorAnswer>(askV2, askPath, {
+          method: "POST",
+          token,
+          body: coreBody,
+        })
+      : await coreFetchAuthorized<CoreTutorAnswer>(askPath, {
+          method: "POST",
+          token,
+          body: coreBody,
+        });
     if (!result.ok || !result.data) {
       const status = result.status === 401 || result.status === 403 ? 401 : result.status;
       const detail =

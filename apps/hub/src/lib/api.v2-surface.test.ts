@@ -97,10 +97,12 @@ const DUAL_RUN_PATHS: readonly string[] = [
   // ask pair flipped declared-justified — the blocking-ask emitter (tutorAsk,
   // api.ts:1161) is LIVE-ROUTED to v2 (keyed generations, run-005 + the
   // TUTOR-VERIFY run-002/002b SSE law of record). The stream surface has NO
-  // apiPath-plane emitter (the chat UI rides /api/ai/chat ->
-  // coreStreamAuthorized, core-hardwired by design) — pinned in the 106 line
-  // test below.
+  // apiPath-plane emitter — T-MIG-118 UPDATE of record: the chat UI's
+  // /api/ai/chat route is RE-POINTED to the v2 stream (table-governed,
+  // v2SurfaceBase — the claAskFetch class); core survives only as the
+  // one-env-var rollback fallback (the 118 line test pins the source).
   "/api/v1/tutor/ask",
+  "/api/v1/tutor/ask/stream",
   // T-MIG-107 (r0, operator trace 1a11f7bc1d47fa31): the §7 review-workflow
   // write family the hub emits (lib/api.ts validate/place/reject/flag/unflag
   // x3 levels + validate-all + review/audit GETs + the topics GET/POST emitters)
@@ -1063,6 +1065,32 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     // INERT — no such routes or hub emitters exist on either side)
     expect(v2SurfaceBase("/api/v1/admin/revision-notesx", V2)).toBe(V2);
     expect(v2SurfaceBase("/api/v1/admin/revision-notes-other", V2)).toBe(V2);
+  });
+});
+
+describe("the T-MIG-118 line: the tutor SSE hardwire re-point (r0, operator order trace 1a1301057de38aa5)", () => {
+  test("the stream path resolves v2 under the 106 pair row; the route consults the table for BOTH arms", async () => {
+    // the decision law: the 106 prefix row captures /ask AND /ask/stream,
+    // so v2SurfaceBase resolves the stream path the chat route forwards to
+    expect(v2SurfaceBase("/api/v1/tutor/ask/stream", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/tutor/ask", V2)).toBe(V2);
+    // the retirement proof: the route's ALWAYS-ON upstream is the v2 arm
+    // (v2StreamAuthorized — the line-against-line port's SSE contract) and
+    // the core helpers appear ONLY as the pinned one-env-var rollback
+    // fallback (the claAskFetch class) — a source pin, because the table
+    // cannot see a route's hardwire
+    const fs = await import("node:fs");
+    const path = await import("node:path");
+    const src = fs.readFileSync(
+      path.join(import.meta.dir, "../app/api/ai/chat/route.ts"),
+      "utf8",
+    );
+    expect(src).toContain('const streamPath = "/api/v1/tutor/ask/stream";');
+    expect(src).toContain("v2SurfaceBase(streamPath");
+    expect(src).toContain('const askPath = "/api/v1/tutor/ask";');
+    expect(src).toContain("v2SurfaceBase(askPath");
+    expect(src).toContain("v2StreamAuthorized(");
+    expect(src).toContain("coreStreamAuthorized("); // the rollback arm stays
   });
 });
 
