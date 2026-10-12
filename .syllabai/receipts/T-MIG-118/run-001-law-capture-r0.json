@@ -1,0 +1,27 @@
+{
+ "task": "T-MIG-118",
+ "run": "run-001-law-capture-r0",
+ "lane": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "at": "2026-10-12T13:05:00Z",
+ "operator_order": "trace 1a1301057de38aa5 'proceed with the unclaimed bands B3/B5/B6'",
+ "band_identity": "B3 — the hub /api/ai/chat SSE re-point to the v2 tutor stream",
+ "capture_class": "law-level SSE contract parity per the plan's B3 row (LLM payloads excluded from golden gating by standing law); live keyless law legs + the code-law comparison of record",
+ "law_layer_live": {
+  "method": "ONE disclosed census-class probe register (r0-b36-probe-20261012-*, v2-registered, shared Neon) + two-plane logins; unauth POSTs only for this band (zero authed upstream calls, zero LLM spend)",
+  "b3_stream_unauth": "POST /api/v1/tutor/ask/stream unauth: v2 401 vs core 401 — PASS-LAW (bodies byte-equal modulo the volatile timestamp, the 116 'byte-identical modulo timestamp' class); Boot envelope {timestamp,status:401,error:Unauthorized,path} both planes",
+  "b3_ask_unauth": "POST /api/v1/tutor/ask unauth: v2 401 vs core 401 — PASS-LAW (same class)",
+  "bodies_of_record": "lane artifact evidence_b36/bodies/b3_*.json (error envelopes only, no credentials)",
+  "declared_divergence_rides": "the 106 corpus pins the stream pre-flight classes justified:true (the frozen core's stream controller serves 500 internal_error on blank-question/unknown-session where v2 serves the DESIGNED 400/404) — the re-point moves those classes onto the designed law under the standing ruling"
+ },
+ "code_law_of_record": {
+  "v2_stream": "routes/tutor.ts :307-381 — the line-against-line port of TutorController.askStream :208-256 (T-MIG-060 tranche-2): citations {citations,sufficient} -> meta {provider,model,refused,evidenceCount} -> delta {text} -> done {ok:true} / error {message fixed client-safe}; pre-stream errors = JSON (401/400/404/409/503); the §22 append on the completed event only + the append guard",
+  "hub_consumer": "apps/hub/src/app/api/ai/chat/route.ts pipeSse :194-304 — parses exactly that vocabulary ('core's shapes ARE the browser contract'); the citation remap + the terminal-handshake honesty + the 15s heartbeat unchanged",
+  "verdict": "the re-point is a pure upstream swap; the browser contract is untouched"
+ },
+ "cross_plane_jwt_fact_disclosed": "run-001 battery legs: core-issued JWT on v2 = 200 (ACCEPTED), v2-issued JWT on core = 200 (ACCEPTED) — the forwarded-bearer re-point is sound in both directions; the shared-Neon doctrine extends to token validation",
+ "flip_landed": "PR #180 (branch t-mig-118/r0, head d38e453): route.ts re-point (v2-first via v2SurfaceBase, core = the one-env-var rollback fallback per the claAskFetch precedent) + NEW lib/v2-proxy.ts (the structural-mirror arms) + the 118 line test (decision law + source pin)",
+ "gates": "typecheck x4 exit 0; hub tsc 0; hub 61/61 (+1); suite 1895/0/13skip/7343 EXACT same-sandbox main; golden selftest OK",
+ "write_ledger": "ONE disclosed probe register (shared with the B5/B6 battery, run-001 b36); zero authed POSTs to any plane; zero LLM calls; zero prod writes",
+ "post_merge_owed": "hub redeploy (the 092/093 recipe + LINK/PROJECT assertions + post-fire wire smoke: the tutor loop through v2) + battery + union replay + the census re-run (the chat SSE hardwire leaves the LIVE list)",
+ "card": "T-MIG-118 -> IN_REVIEW (PR #180 filed; authors never self-merge — the r0-auto sha-guarded desk owns intake)"
+}

@@ -7440,3 +7440,17 @@ Work Log:
 - Battery 6/6 READ-ONLY zero-write: the flipped marking wires (detail GET / smart-mark POST / smart-mark-batch POST) + teacher/assignments = 401 Boot law all; no-regression recommendations 401 + health 200 UP.
 - Cards stamped of record: T-MIG-122 DONE, T-MIG-116 DONE (the staged gate discharged via the 122 chain), T-MIG-117 DONE (stale vs merged #179 + its redeploy leg discharged by THIS deploy). Receipt run-003-postpush-hubredeploy-acceptance-r0.json.
 - Standing disclosure: the api carrier dpl_4cKfWz1 (from 7ccbfc59) still serves the PRE-fix smart-mark envelope — the api redeploy lever stays OPERATOR-GATED (the fix is code-of-record + hub-baked; the authed positive wire serves at the lever's next fire). Zero prod-db contact, zero LLM, no force.
+
+Task ID: trace 1a1301057de38aa5 (run-001: the B3 law capture + the re-point -> PR #180)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: execute B3 (T-MIG-118) — the law-level witness + the chat SSE re-point + PR.
+
+Work Log:
+- Run-001 law layer (shared with the B5/B6 battery, ONE disclosed probe register): unauth 401s on /api/v1/tutor/ask/stream + /api/v1/tutor/ask PASS-LAW both planes (byte-equal modulo the volatile timestamp, the 116 class). The code-law comparison: v2's stream = the line-against-line port whose event vocabulary IS pipeSse's browser contract. The 106 declared divergence rides of record. Cross-plane JWT fact (new, disclosed): core-issued and v2-issued tokens mutually ACCEPTED (200 both directions on the shared-Neon read models) — the forwarded-bearer re-point is sound.
+- The re-point LANDED on branch t-mig-118/r0 (d38e453): route.ts v2-first via v2SurfaceBase (the 106 pair row; the claAskFetch precedent) + NEW lib/v2-proxy.ts (structural-mirror arms — the browser contract untouched) + the 118 line test (decision law + source pin). NO apps/api contact, NO table row (the 106 row already resolves /ask/stream).
+- Gates: typecheck x4 exit 0; hub tsc 0; hub 61/61 (+1); suite 1895/0/13skip/7343 EXACT same-sandbox main; golden selftest OK.
+- PR #180 filed (authors never self-merge); card CLAIMED -> IN_REVIEW; receipt run-001-law-capture-r0 of record. Post-merge owed: hub redeploy + wire smoke + battery + union replay + census re-run.
+- Write ledger: zero authed POSTs, zero LLM, zero prod writes.
+
+Stage Summary:
+- B3 IN_REVIEW: the chat SSE hardwire — the census's one stream hardwire — is one desk merge away from riding v2 always-on, with the rollback law intact.
