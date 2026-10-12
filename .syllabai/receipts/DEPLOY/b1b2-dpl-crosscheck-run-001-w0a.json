@@ -1,0 +1,36 @@
+{
+  "run": "run-001-dpl-crosscheck-and-wire-smoke-w0a",
+  "task": "the credential-armed cross-check closing the run-003 credential-free posture: the two of-record dpl IDs read first-hand through the VERCEL_PAT (fingerprint law) + the double-plane 200 re-verify (the T-MIG-108 pattern)",
+  "actor": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd, chat 1148fa2b)",
+  "operator_traces": [
+    "1a1307bcaec38a41 'desk-merge 116/117/122 -> B1+B2 joint redeploy' (the standing order — found ALREADY DISCHARGED of record, see collision_disposition)",
+    "1a130c3eda951785 (the credential handoff: the VERCEL_PAT staged 0600 outside the repo, fingerprint d254bbfaac004354 — matches the of-record fingerprint law, first-hand 200 on GET /v2/user)"
+  ],
+  "collision_disposition": {
+    "finding": "the standing order's BOTH legs were already discharged of record by the fleet: (a) desk-merge — T-MIG-116/117/122 all read DONE at origin/main 63fe6ef (116 closed end-to-end of record; 117 the stale-card precedent with PR #179 merged 6c09106; 122 the acceptance leg dpl_59GMpYK1Zz6nRVYyfBxr READY under operator trace 1a13029bb49f9ed5); (b) the B1+B2 redeploy — wave-1 accepted of record (session web-1f157e25) and INDEPENDENT-VERIFIED by r0 run-003 under operator trace 1a1307f29ee52dc9 (bundle scan 23/23, wire smoke 6/6, code law v2-first first-hand)",
+    "disposition": "ZERO duplicate redeploys fired; zero duplicate card flips; the lane discharged the order as the credential-armed cross-check the sibling's battery explicitly left open ('zero Vercel API contact — the dpl IDs stand on the sibling receipts' fingerprint law')"
+  },
+  "crosscheck_first_hand": {
+    "pat_liveness": "GET /v2/user -> 200; the staged token IS the VERCEL_PAT of record (fingerprint d254bbfaac004354, matching the run-002 'fingerprint law verified first-hand' citation); the value was never printed, never persisted in-repo, staged at /home/z/my-project/.secrets/ (outside the repo) 0600 and recycled post-run",
+    "wave1_b1b2": "dpl_59GMpYK1Zz6nRVYyfBxr8DAUSvRW READY production @ 2026-10-12T12:59:58.035Z, gitCommitSha 03dfd484ac79ad35dc0e80ae94fcf97b50397897 (EXACTLY the 03dfd48 deployed-sha law of the T-MIG-122 card) — read first-hand via the project deployment listing",
+    "wave2_b3b5": "dpl_2n5M3AKhG3i9xEMcd6kuHkneXGzo READY production @ 2026-10-12T13:20:56.323Z, url syllabai-hub-v2-o9tx6my90-syllab-ai.vercel.app — read first-hand; the production alias serves this bundle now",
+    "rollback_ladder": "wave-1's own anchor dpl_EabUch9gFhQnw3ayu6NixQcwTthD READY @ 2026-10-10T11:35:38Z sha 7fcf3003; the ladder back to 2026-10-07 all READY — no anchor deleted, the 093/110 recipe rollback chain intact",
+    "id_truncation_hygiene_finding": "the of-record receipts cite the wave-1/anchor ids TRUNCATED (dpl_59GMpYK1Zz6nRVYyfBxr, dpl_EabUch9gFhQnw3ay): GET /v13/deployments/{truncated} returns 404 (this cross-check's own false-negative, rule out before any 'deleted' conclusion — the listing is authoritative); future receipts should carry FULL ids: dpl_59GMpYK1Zz6nRVYyfBxr8DAUSvRW, dpl_EabUch9gFhQnw3ayu6NixQcwTthD, dpl_2n5M3AKhG3i9xEMcd6kuHkneXGzo"
+  },
+  "wire_smoke_6_of_6": {
+    "method": "scripts/wire_smoke_w0a.py (lane artifact), credential-free, unauth, zero-write by construction (the POSTs are parse-first law probes that reject at 400/401 before any handler write path)",
+    "rows": [
+      "hub GET /api/health -> 200 {status:ok, service:syllabai-hub, dataMode:core-api, coreConfigured:true}",
+      "hub POST /api/ai/chat {} -> 400 invalid_body (zod parse-first live through the wave-2 bundle)",
+      "hub POST /api/ai/chat {question} unauth -> 401 unauthorized (the B3 route law)",
+      "hub GET /api/core/questions?course=smoke -> 200 {available:false, reason:unauthenticated} (the B5 bridge contract)",
+      "v2 GET /api/v1/teacher/marking/answers/<uuid0> unauth -> 401 Boot envelope (the B1 flip target's law layer)",
+      "v2 GET /api/v1/teacher/assignments unauth -> 401 Boot envelope (the B2 flip target's law layer)"
+    ],
+    "verdict": "6/6 — both planes serve the B1+B2 (and B3+B5) law layer exactly as the run-003 independent battery recorded"
+  },
+  "verdict": "THE B1+B2 REDEPLOY LEG STANDS FIRST-HAND: wave-1 (B1+B2, sha 03dfd48) READY, wave-2 (B3+B5) READY serving production, rollback anchors READY, the wire law layer live 6/6 — the standing order 1a1307bcaec38a41 is DISCHARGED of record (collision disposition: desk-merge + redeploy both already of record; this run adds the credential-armed API-side hardening the chain lacked). The 6.2 path unchanged: the B6 operator ruling (b) + the B7 rulings -> LIVE 0 -> the CI gate + the 48h soak.",
+  "write_ledger": "zero writes of every kind: zero deploys, zero mutations, zero prod writes, zero authed POSTs (the battery is unauth law-layer + read-only API GETs), zero LLM, zero Neon contact; 5 read-only API GET families (user, deployments x2 + scope rule-out, teams, projects/deployments listings)",
+  "boundaries": "read-only; no force; the forbidden in-flight project never expanded, never contacted beyond not-being-touched; the Z band + B6 ruling (b) + B7 left to their claim/decision laws; credential staged 0600 outside the repo, fingerprint-cited only, recycled post-run; no token persistence anywhere",
+  "tooling": "scripts/vercel_crosscheck_w0a.py + scripts/wire_smoke_w0a.py (lane artifacts, outside the repo)"
+}
