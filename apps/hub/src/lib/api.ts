@@ -724,6 +724,32 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // 109-corpus law N/A (no corpus-dependent bodies — the family is
   // teacher-authored state).
   "/api/v1/teacher/assignments",
+  // T-MIG-120 (r0, operator order trace 1a1301057de38aa5 "proceed with the
+  // unclaimed bands B3/B5/B6") — the B5 decommission band: the questions
+  // SUBTREE row, the 107 narrowest-legal form (every hub-emitted path under
+  // the prefix is v2-REAL and captured — the T-MIG-031 five-surface port:
+  // list / families / topics / :id / :id/mark-scheme, routes/questions/
+  // index.ts). The 111 leaf-row-only law is DISCHARGED: the positive wires
+  // were uncaptured of record (401 shells + the unknown-404 law only) and
+  // are now captured — the run-001 two-plane battery (shared-Neon direct
+  // parity, ONE disclosed probe register, GET-only): subjects/tree/detail/
+  // mark-scheme/topics PASS-BYTE; families/list SET-EQUAL with the
+  // ORDER-CLASS DISCLOSURE of record (each plane byte-SELF-STABLE across
+  // runs; the cross-plane element ORDER differs — Jackson's vs the drizzle
+  // projection's — and ZERO consumers observe order: the 4CH1 bridge
+  // resolves by find(), the list/detail/mark-scheme emitters are dormant
+  // with zero call-sites; no test pins the order — the honest class, not a
+  // defect). The mark-scheme live law pair: 200-with-scheme | 204-withheld
+  // | 404-unservable rides the reveal policy on both planes. Server-side
+  // consumers re-pointed in-band (the claAskFetch table-governed class):
+  // core-topics.ts fetchCoreJson (the subjects + tree anchors) and the 4CH1
+  // bridge's familiesForRoot — core survives as the one-env-var rollback
+  // fallback. Partial-segment capture (/api/v1/questionsx) DOCUMENTED INERT
+  // — no such route or hub emitter exists on either side (grep-verified at
+  // the band commit). The census: the questions rows leave the stay-core
+  // lists; /api/v1/learners/me/answer-input/transcribe remains pending the
+  // B6 ruling (the plan's B6 gate law — never self-granted).
+  "/api/v1/questions",
 ];
 
 /**

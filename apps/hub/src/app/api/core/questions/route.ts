@@ -2,6 +2,8 @@ import { NextRequest } from "next/server";
 import { loadHubCourse, pilotCourseSlug, listCourses } from "@/lib/courses";
 import { rootIdForCourseCode } from "@/lib/core-topics";
 import { coreBaseUrl, coreFetchAuthorized } from "@/lib/core-proxy";
+import { v2SurfaceBase } from "@/lib/api";
+import { v2FetchAuthorized } from "@/lib/v2-proxy";
 import type { QuestionFamilyView } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -58,10 +60,18 @@ async function familiesForRoot(
   if (familiesCache && familiesCache.rootId === rootId && Date.now() - familiesCache.at < FAMILIES_TTL_MS) {
     return familiesCache.families;
   }
-  const res = await coreFetchAuthorized<QuestionFamilyView[]>(
-    `/api/v1/questions/families?rootId=${encodeURIComponent(rootId)}`,
-    { method: "GET", token },
-  );
+  const res = await (async () => {
+    // T-MIG-120: the table-governed upstream — v2 first (the questions
+    // subtree row resolves; the run-001 two-plane capture is the parity
+    // record), core only on rollback (the one-env-var law, the claAskFetch
+    // class)
+    const famPath = `/api/v1/questions/families?rootId=${encodeURIComponent(rootId)}`;
+    const v2Base = v2SurfaceBase(famPath, process.env.NEXT_PUBLIC_API_V2_BASE_URL);
+    const init = { method: "GET" as const, token };
+    return v2Base
+      ? await v2FetchAuthorized<QuestionFamilyView[]>(v2Base, famPath, init)
+      : await coreFetchAuthorized<QuestionFamilyView[]>(famPath, init);
+  })();
   if (!res.ok || !Array.isArray(res.data)) return null;
   familiesCache = { at: Date.now(), rootId, families: res.data };
   return familiesCache.families;
@@ -174,7 +184,7 @@ export async function GET(req: NextRequest) {
   if (!token) {
     return Response.json({ available: false, reason: "unauthenticated" });
   }
-  if (!coreBaseUrl()) {
+  if (!coreBaseUrl() && !process.env.NEXT_PUBLIC_API_V2_BASE_URL) {
     return Response.json({ available: false, reason: "core_not_configured" });
   }
 

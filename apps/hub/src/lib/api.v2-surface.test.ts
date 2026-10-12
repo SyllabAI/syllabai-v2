@@ -147,6 +147,12 @@ const DUAL_RUN_PATHS: readonly string[] = [
   "/api/v1/learners/me/knowledge-graph?rootId=kn-1",
   "/api/v1/learners/me/smart-lesson?rootId=kn-1&topicNodeId=kn-11",
   "/api/v1/questions/topics?rootId=kn-1",
+  // T-MIG-120: the questions SUBTREE row — the five hub-emitted forms ride
+  // v2 (the run-001 two-plane capture of record; the order-class disclosed)
+  "/api/v1/questions?rootId=kn-1",
+  "/api/v1/questions/families?rootId=kn-1",
+  "/api/v1/questions/q-1",
+  "/api/v1/questions/q-1/mark-scheme",
   "/api/v1/teacher/content/review-queue",
   "/api/v1/teacher/content/review-queue-v2",
   "/api/v1/teacher/content/review-queue-v3",
@@ -235,14 +241,17 @@ const CORE_ONLY_PATHS: readonly string[] = [
   // the 44/44 golden-verify of the port vs the captures). The bare
   // subtree row is at the table tail; the line test pins the four-wire
   // flip.
-  // learner /questions + /exam-papers: the questions ROUTER is mounted and
-  // corpus-proven on /topics (FLIPPED in T-MIG-111, the leaf row) but the
-  // list/detail/mark-scheme positive wires are NOT captured (401 shells +
-  // the unknown-404 law only) and families is coreFetchAuthorized
-  // CORE-PINNED — they stay core per the 111 leaf-row-only law. The
-  // exam-papers learner reads stay unverified-positive (401/403 only).
-  "/api/v1/questions?q=photosynthesis",
-  "/api/v1/questions/families",
+  // learner /questions + /exam-papers: T-MIG-120 UPDATE of record — the
+  // questions SUBTREE row LANDED (the bare /api/v1/questions prefix row at
+  // the table tail): the list/detail/mark-scheme positive wires are
+  // CAPTURED (the run-001 two-plane battery, shared-Neon direct parity —
+  // subjects/tree/detail/mark-scheme/topics PASS-BYTE; families/list
+  // SET-EQUAL with the order-class disclosure, zero order-sensitive
+  // consumers) and the 111 leaf-row-only law is DISCHARGED. The 111
+  // comment's 'families is coreFetchAuthorized CORE-PINNED' is retired —
+  // the bridge's familiesForRoot re-pointed in-band (the claAskFetch
+  // class). STAYS CORE here: the exam-papers learner reads
+  // (unverified-positive, the B7 ruling class).
   "/api/v1/exam-papers?subjectId=sub-1",
   "/api/v1/exam-papers/ep-1",
   // non-attempts learner surfaces (W4) — agenda + state FLIPPED in T-MIG-096
@@ -338,6 +347,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/teacher/marking/kappa/evaluate", // T-MIG-113: the ZERO-KEY 409 no-pairs law (dormant emitter — routing availability, the 084 posture); the human-mark row WITHHELD (the 114 findings)
       "/api/v1/teacher/marking/smart-mark-batch", // T-MIG-116/122: the B1 band's batch LEAF row (the keyless batch laws byte-honest vs the re-derived frozen-core captures; the 12/12 re-verify post-fix; the marking page's batch emitter :289 flips)
       "/api/v1/teacher/assignments", // T-MIG-117: the B2 port band (the 107 subtree-row law satisfied by the rig chain of record — the 88-leg capture + the 44/44 golden-verify)
+      "/api/v1/questions", // T-MIG-120: the B5 band's questions SUBTREE row (the 107 narrowest-legal form — all five hub-emitted forms v2-REAL + captured; the 111 leaf-row-only law DISCHARGED; the order-class disclosure of record)
     ]);
   });
   test("the mid-path table is exactly the ruled set — the mechanism-A amendment needs its own golden gate too", () => {
@@ -482,10 +492,8 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
       "/api/v1/teacher/tests/weakness-options",
       "/api/v1/learners/me/answer-input/transcribe",
       "/api/v1/learners/me/intervention-runs",
-      "/api/v1/questions?q=photosynthesis",
-      "/api/v1/questions/families",
-      "/api/v1/questions/q-1",
-      "/api/v1/questions/q-1/mark-scheme",
+      // T-MIG-120 UPDATE: the questions forms LEFT this excluded list — the
+      // subtree row flipped (the 120 line test pins it); exam-papers stays
       "/api/v1/teacher/content/past-papers",
     ]) expect(v2SurfaceBase(p, V2)).toBeNull();
   });
@@ -1065,6 +1073,30 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     // INERT — no such routes or hub emitters exist on either side)
     expect(v2SurfaceBase("/api/v1/admin/revision-notesx", V2)).toBe(V2);
     expect(v2SurfaceBase("/api/v1/admin/revision-notes-other", V2)).toBe(V2);
+  });
+});
+
+describe("the T-MIG-120 line: the questions subtree flip (r0, operator order trace 1a1301057de38aa5)", () => {
+  test("the five hub-emitted questions forms resolve v2; the exam-papers + transcribe stay-core laws stand", () => {
+    for (const p of [
+      "/api/v1/questions?rootId=kn-1",
+      "/api/v1/questions/families?rootId=kn-1",
+      "/api/v1/questions/topics?rootId=kn-1",
+      "/api/v1/questions/00000000-0000-4000-8000-0000000000q1",
+      "/api/v1/questions/00000000-0000-4000-8000-0000000000q1/mark-scheme",
+    ]) expect(v2SurfaceBase(p, V2)).toBe(V2);
+    // the partial-segment property (shared string-matching semantics):
+    // DOCUMENTED INERT — no route or hub emitter named /api/v1/questionsx
+    // exists on either side (grep-verified at the band commit)
+    expect(v2SurfaceBase("/api/v1/questionsx", V2)).toBe(V2);
+    expect("/api/v1/questionsx".startsWith("/api/v1/questions")).toBe(true);
+    // the no-regression needles: the B7-class stays-core laws stand
+    for (const p of [
+      "/api/v1/exam-papers?subjectId=sub-1",
+      "/api/v1/exam-papers/ep-1",
+      "/api/v1/learners/me/answer-input/transcribe", // the B6 ruling gate
+      "/api/v1/teacher/marking/answers", // the bare path stays core (zero emitters)
+    ]) expect(v2SurfaceBase(p, V2)).toBeNull();
   });
 });
 

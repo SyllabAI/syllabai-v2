@@ -23,6 +23,7 @@ import "server-only";
  * they never hang.
  */
 import { coreBaseUrl } from "./core-proxy";
+import { v2SurfaceBase } from "./api";
 
 export interface SubjectView {
   id: string;
@@ -43,13 +44,20 @@ let subjectsCache: { at: number; subjects: SubjectView[] } | null = null;
 const subjectRootByCode = new Map<string, string | null>();
 const topicIdByCode = new Map<string, string>(); // `${rootId}:${code}` → nodeId
 
-/** Server-side core GET with the caller's token; null on any failure. */
+/** Server-side curriculum-read GET with the caller's token; null on any
+ *  failure. T-MIG-120: the decision is TABLE-GOVERNED — v2 first (the path's
+ *  flip row resolves: /api/v1/curriculum/subjects rides the Wave-1 row, the
+ *  knowledge tree rides the 084 row), core only on rollback (the v2 env var
+ *  unset — MIGRATION_PLAN §7, the claAskFetch class). The historical name is
+ *  kept as the lane anchor; the run-001 two-plane battery (shared-Neon
+ *  direct parity) is the capture of record for both paths it serves. */
 export async function fetchCoreJson<T>(
   path: string,
   token: string | null,
   timeoutMs = 30_000,
 ): Promise<T | null> {
-  const base = coreBaseUrl();
+  const v2Base = v2SurfaceBase(path, process.env.NEXT_PUBLIC_API_V2_BASE_URL);
+  const base = v2Base ?? coreBaseUrl();
   if (!base || !token) return null;
   try {
     const res = await fetch(`${base}${path}`, {
