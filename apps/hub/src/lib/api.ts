@@ -749,7 +749,43 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // the band commit). The census: the questions rows leave the stay-core
   // lists; /api/v1/learners/me/answer-input/transcribe remains pending the
   // B6 ruling (the plan's B6 gate law — never self-granted).
+  // T-MIG-121 UPDATE of record: the B6 ruling (b) GRANTED (08557d3, the
+  // operator's words 'Decision 1 - good enough, switch it over', trace
+  // 1a1313ce921d7169) and the answer-input subtree row LANDED at the table
+  // tail below — the pending-B6 clause above is retired.
   "/api/v1/questions",
+  // T-MIG-121 (r0 — the B6 decommission band; the claiming lane's staged flip
+  // LANDED under the operator ruling (b) of record 08557d3 + the operator
+  // staging order trace 1a13159abe2bfcc1) — the answer-input SUBTREE row at
+  // the table tail, the 107 narrowest-legal form. The subtree is EXACTLY one
+  // tail deep on both planes (the frozen TranscriptionController :27 base +
+  // :51 POST /transcribe; the v2 mount index.ts :340 base + transcribeRoute)
+  // and the hub emits ONLY transcribeHandwriting (api.ts :1953) with the two
+  // ink-pad call-sites (answer-ink-pad.tsx :194 image/jpeg, :246 image/png).
+  // The B6 gate law ('keyed live-prove (the 097 class) or operator ruling (b)
+  // if the capture stays 401-law-only') is satisfied by the GRANTED ruling:
+  // the run-001 keyless two-plane battery is byte-parity GREEN on the full
+  // deterministic law set (unauth 401; absent-image 400 'image is required';
+  // bad-mime 400 'unsupported image type (allowed: png, jpeg, webp)';
+  // non-base64 400 'image payload is not valid base64' — the live class
+  // corrected of record, 400 NOT 422; the 422 is the [empty]-transcription
+  // case) — every leg throws BEFORE the provider seam (zero LLM spend); the
+  // keyed live-prove is WAIVED (the ZERO-KEY posture); the transport-class
+  // 413 divergence (the platform envelopes vs the service 413 — unreachable
+  // by the legal ink-pad input class, the downscale-law JPEGs/PNGs) is
+  // DISCLOSED, not a flip blocker. The positive 200 is LLM output — excluded
+  // from golden gating by the surface's own doctrine (T-MIG-034 /
+  // GOLDEN_MASTER §3: LLM-OUTPUT surface, behavioural gates only) — and the
+  // GLM seam dependency is DISCLOSED OF RECORD as the accepted trade: a valid
+  // ink-pad image rides the v2 LLM chain (chainAsTranscriptionProvider) and
+  // the chain-down path serves the frozen 503 transcription_unavailable law
+  // (fail-closed, never a hang). Partial-segment capture (answer-inputx)
+  // DOCUMENTED INERT — no such route or hub emitter exists on either side
+  // (grep-verified at the band commit). The census: the transcribe pin
+  // re-classifies LIVE -> RIDES-V2 (the §Z gate's last blocker retires at
+  // the tip); core survives as the one-env-var rollback fallback
+  // (MIGRATION_PLAN §7).
+  "/api/v1/learners/me/answer-input",
 ];
 
 /**

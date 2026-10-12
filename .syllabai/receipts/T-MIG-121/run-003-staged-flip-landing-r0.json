@@ -1,0 +1,39 @@
+{
+  "task": "T-MIG-121",
+  "run": "run-003-staged-flip-landing-r0",
+  "lane": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e — THIS window; the claim owner of record is the sibling r0 session web-752465e5-2985-476b-86a3-0bf785493dc5, same lane — this window executes under the operator's direct order below, disclosed, no lane collision observed: origin/main moved only by the w0a ruling receipts between run-002 and this landing)",
+  "at": "2026-10-12T18:39:00Z",
+  "operator_order": "trace 1a13159abe2bfcc1 'stage the B6 flip package and what do i have to rule?'",
+  "gate_law_satisfied": "the plan's B6 gate law ('keyed live-prove (the 097 class) or operator ruling (b) if the capture stays 401-law-only') is satisfied by the OPERATOR RULING (b) GRANTED of record 08557d3 (receipt .syllabai/receipts/W7-CUTOVER/operator-ruling-b-transcribe-grant-2026-10-12-w0a.json, the operator's words 'Decision 1 - good enough, switch it over', trace 1a1313ce921d7169): the STAGED flip may land on the deterministic 401/400 law-capture alone (run-001), the keyed live-prove WAIVED (ZERO-KEY), the GLM seam dependency DISCLOSED OF RECORD accepted. The ruling receipt's execution_boundaries name the claiming lane (T-MIG-121, r0) as the executor — this window is that lane, operator-ordered.",
+  "what_landed": {
+    "apps/hub/src/lib/api.ts": "the B6 answer-input SUBTREE row at the table tail ('/api/v1/learners/me/answer-input', the 107 narrowest-legal form) with the full law comment block + the T-MIG-121 UPDATE clause retiring the B5 row's pending-B6 sentence (row notes only)",
+    "apps/hub/src/lib/api.v2-surface.test.ts": "the exact-set pin +1; the DUAL_RUN form +1 (the ONLY hub-emitted form, transcribeHandwriting api.ts :1953); the CORE_ONLY transcribe pin MOVED OUT (the 095/096/110/120 move-out class); the excluded-siblings needle retired; the ans-vs-att boundary test updated to the flipped law (the boundary PROPERTY retained); the 120 line test's transcribe needle retired (the exam-papers + bare-marking needles stand); the NEW T-MIG-121 line test (the subtree flip + the documented-inert partial segment + the stay-core needles: intervention-runs per the 096/110 law + the B7 ruling, exam-papers per the B7 ruling)",
+    ".syllabai/tasks/T-MIG-121.yaml": "status CLAIMED -> IN_REVIEW; the execution_record landing note; progress_log run-003",
+    ".syllabai/receipts/T-MIG-121/run-003-staged-flip-landing-r0.json": "this receipt",
+    ".syllabai/receipts/T-MIG-121/zero-core-census-2026-10-12-b6-staged-r0.json": "the post-stage census snapshot of record (--gate GREEN, exit 0)",
+    ".syllabai/worklog.md": "append-only union entry"
+  },
+  "flip_law_verification_first_hand": [
+    "the subtree is EXACTLY one tail deep on both planes: the frozen TranscriptionController @RequestMapping('/api/v1/learners/me/answer-input') :27 + @PostMapping('/transcribe') :51 (read first-hand in the core-readonly snapshot); the v2 mount app.route('/api/v1/learners/me/answer-input', answerInput.transcribeRoute) index.ts :340",
+    "the hub emits ONLY transcribeHandwriting (api.ts :1953) with EXACTLY the two ink-pad call-sites (answer-ink-pad.tsx :194 image/jpeg, :246 image/png) — grep-verified at the band worktree",
+    "partial-segment siblings: NONE on either plane (the only 'answer-input*' token set is {answer-input, answer-input/transcribe, answer-inputx-in-test-pins}) — the documented-inert property pinned in the 121 line test",
+    "the flip law is startsWith-satisfying: every prefix-captured path is hub-emitted + v2-REAL (the T-MIG-034 port of record, routes/answer-input.ts, verified 2026-10-05)"
+  ],
+  "census_of_record": "post-stage at the band worktree (source_of_record = the CORE_ONLY_PATHS pin inventory + hardwires): pins=8 -> 7 (the transcribe pin LEFT the inventory by the move-out — the B6-era pin-inventory delta, the B5 class, DISCLOSED); LIVE 1 -> 0 (the §Z gate's last blocker retires at the tip); rides-v2=2 (marking/answers + subjects), rollback-fallback=1 (the chat SSE hardwire), dormant=5, unmapped=0, stale-hints=0, unknown-route=0; --gate GREEN exit 0 ('the census-soak window starts here; the operator §6.2 disable remains the human act')",
+  "gates": {
+    "typecheck_x4": "exit 0 (contracts + shared + db + api)",
+    "suite_apps_api_packages": "1909 pass / 0 fail / 13 skip — EXACT vs the clean tip 7a6868a (verified by the stash round-trip first-hand: the clean tip runs the same 1909/0/13; the band's suite delta = 0; the of-record 1896 figure predates the post-B5 band additions)",
+    "hub_tests": "64/64 (63 of-record +1 EXACT: the T-MIG-121 line test)",
+    "hub_tsc": "exit 0",
+    "golden_selftest": "OK",
+    "census_gate": "GREEN, exit 0"
+  },
+  "mid_flight_deltas_disclosed": [
+    "f8890e1 -> 7a6868a landed while this window was opening: 0cf23fd (the sibling Z hardening — this window's run-002 baseline), 63fe6ef (the 123 lane-race disposition), 6759200 + 85998b8 (the redeploy/census-confirm bookkeeping), 08557d3 (the OPERATOR RULING (b) GRANT), 7a6868a (the OPERATOR B7 RULING) — all fetched first, the landing rebased on 7a6868a, zero collisions",
+    "the stale local checkout at work/syllabai-v2 (behind 377, dirty from a long-gone window) was left UNTOUCHED — this window worked in a separate worktree at the tip; no stash of foreign dirt, no resets",
+    "the claim-owner session vs this window disclosure (above)"
+  ],
+  "the_operators_ruling_question_answered": "NOTHING further is open to rule of record: BOTH operator rulings are GRANTED — (b) the B6 transcribe flip 08557d3 ('good enough, switch it over') and B7 the four-family disposition 7a6868a ('Leave all four on the old system'). The remaining path is EXECUTION + SOAK: the serialized hub redeploy (the 093/110 recipe, needs the VERCEL_PAT handoff per the 6759200 law) bakes the B6 row live -> the census LIVE=0 baked -> the Z gate wired into CI (the LIVE=0 act) -> the 48h soak (2 replays) -> then the Render disable is OPERATOR-safe (the console act is the operator's, per the instrument's own gate message)",
+  "write_ledger": "repo contact = the five files above + the worklog union ONLY (the card's allowed scope + the disclosed test move-outs — the 095/096/110/120 class, required for the exact-set coherence); local-only: the worktree at work/wt-b6 + bun install node_modules (frozen lockfile) + the gate runs; ZERO prod/Neon/Vercel-API/LLM contact, zero authed POSTs, zero deploys (the redeploy is the NEXT serialized act, credential-handoff-gated), no force, fetch-first FF push",
+  "card": "T-MIG-121 -> IN_REVIEW (the flip rows LANDED of record; the serialized redeploy + the LIVE=0 bake + the CI gate wiring + the soak remain on the 6.2 path)"
+}

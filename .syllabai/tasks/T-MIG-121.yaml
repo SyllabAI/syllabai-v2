@@ -2,8 +2,8 @@ version: 1
 task:
   id: T-MIG-121
   title: "Decommission band B6 — answer-input/transcribe (the GLM seam) capture+verify+flip"
-  owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)"
-  status: CLAIMED
+  owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5; the run-003 staging executed by the sibling r0 window web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e under the operator's direct order — disclosed in the run-003 receipt)"
+  status: IN_REVIEW
   claimed_at: "2026-10-12T12:41:46Z"
   claimed_by_order: "operator trace 1a1301057de38aa5 'proceed with the unclaimed bands B3/B5/B6'"
   priority: P2
@@ -62,3 +62,7 @@ progress_log:
   - run: run-002-census-confirm-r0 (2026-10-12T17:38Z, read-only)
     what: "the hardened census (the T-MIG-123 instrument, --gate) reproduced first-hand at tip 6759200: pins=8 LIVE=1 rides-v2=2 rollback-fallback=1 dormant=5 unmapped=0 stale=0 unknown=0 — EXACT of the f8890e1 census of record, no drift; the transcribe row is the SOLE §Z gate blocker (GATE RED, exactly 1 blocking row; emitters answer-ink-pad.tsx:194,246); CI 2/2 green at the tip (verify + hub success, the check-runs API first-hand); zero open PRs."
     ruling: "the OPERATOR RULING (b) remains REQUESTED (run-001) and STANDING — NOT granted of record as of this entry; the staged flip rows stay UN-LANDED (never self-granted, the 106/116 discipline). Status stays CLAIMED. Hygiene: the card's dangling-quote YAML defect (the disclosed heredoc-class lane-script truncation) repaired in this edit — the file parses clean. Receipt: run-002-census-confirm-r0."
+  - run: run-003-staged-flip-landing-r0 (2026-10-12T18:39Z)
+    what: "the STAGED B6 flip LANDED of record under the operator ruling (b) GRANTED (08557d3, 'Decision 1 - good enough, switch it over', trace 1a1313ce921d7169) + the operator staging order trace 1a13159abe2bfcc1: the answer-input SUBTREE row at the table tail (the 107 narrowest-legal form) + the exact-set pin +1 + the DUAL_RUN form +1 + the CORE_ONLY transcribe pin MOVED OUT + the boundary/120-line needles retired + the NEW 121 line test; the B5 row's pending-B6 clause retired (row notes only). Flip-law verified first-hand: the subtree is EXACTLY one tail deep both planes (the frozen controller :27/:51; the v2 mount index.ts :340); the hub emits ONLY transcribeHandwriting (:1953, call-sites :194/:246); zero partial-segment siblings."
+    gates: "typecheck x4 exit 0; suite 1909/0/13skip EXACT vs the clean tip (the stash round-trip proof, the band delta = 0); hub 64/64 (+1 the 121 line test); hub tsc 0; golden selftest OK; the §Z census --gate GREEN exit 0 — LIVE 1 -> 0, pins 8 -> 7 (the transcribe pin LEFT the CORE_ONLY inventory by the move-out — the B6-era delta, the B5 class, DISCLOSED); snapshot zero-core-census-2026-10-12-b6-staged-r0.json"
+    owed: "the serialized hub redeploy (the 093/110 recipe — VERCEL_PAT handoff per the 6759200 law) bakes the row live; then the CI --gate wiring + the 48h soak; the Render disable is OPERATOR-safe after the soak. BOTH operator rulings now of record — NOTHING further open to rule."

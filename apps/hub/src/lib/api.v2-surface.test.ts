@@ -189,6 +189,18 @@ const DUAL_RUN_PATHS: readonly string[] = [
   "/api/v1/teacher/assignments?course=igcse-chemistry-19",
   "/api/v1/teacher/assignments/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
   "/api/v1/teacher/assignments/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/status",
+  // T-MIG-121 (r0, the B6 band): the answer-input subtree row — the hub's
+  // ONLY emitter form under the subtree (transcribeHandwriting, api.ts
+  // :1953) with the two ink-pad call-sites (:194 image/jpeg, :246
+  // image/png) — flipped under the operator ruling (b) of record 08557d3
+  // ('Decision 1 - good enough, switch it over', trace 1a1313ce921d7169).
+  // The deterministic law set is ALL-GREEN two-plane (the run-001 keyless
+  // battery: unauth 401 + absent-image 400 + bad-mime 400 + non-base64 400,
+  // byte-equal modulo timestamp); the positive 200 is LLM output
+  // (GOLDEN_MASTER §3 excluded — behavioural gates only); the GLM seam
+  // dependency disclosed of record and accepted by the ruling; the
+  // chain-down path serves the frozen 503 transcription_unavailable law.
+  "/api/v1/learners/me/answer-input/transcribe",
 ];
 
 /** Hub-emitted (or hub-adjacent) paths that MUST stay on the core in the dual-run posture. */
@@ -268,7 +280,10 @@ const CORE_ONLY_PATHS: readonly string[] = [
   // 200 answer-envelope) and the exact-path row flipped under the chain
   // order 1a119df7d930b609; the emitter routes table-first with core as the
   // unset-base fallback.
-  "/api/v1/learners/me/answer-input/transcribe",
+  // T-MIG-121 UPDATE of record: the answer-input/transcribe pin LEFT this
+  // CORE_ONLY list — the B6 subtree row flipped under the operator ruling
+  // (b) 08557d3 (the 121 line test pins the flip; the GLM seam dependency
+  // disclosed-accepted of record).
   // T-MIG-082 (Wave S3, r3a): revision-notes FLIPPED after its golden gate —
   // run-002 frozen-core captures (d19289cc8) + run-003 verify 7/7 vs the
   // landed mounts; moved out of this CORE_ONLY list of record.
@@ -348,6 +363,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/teacher/marking/smart-mark-batch", // T-MIG-116/122: the B1 band's batch LEAF row (the keyless batch laws byte-honest vs the re-derived frozen-core captures; the 12/12 re-verify post-fix; the marking page's batch emitter :289 flips)
       "/api/v1/teacher/assignments", // T-MIG-117: the B2 port band (the 107 subtree-row law satisfied by the rig chain of record — the 88-leg capture + the 44/44 golden-verify)
       "/api/v1/questions", // T-MIG-120: the B5 band's questions SUBTREE row (the 107 narrowest-legal form — all five hub-emitted forms v2-REAL + captured; the 111 leaf-row-only law DISCHARGED; the order-class disclosure of record)
+      "/api/v1/learners/me/answer-input", // T-MIG-121: the B6 band's answer-input SUBTREE row (the GLM seam — the run-001 keyless law battery byte-parity GREEN both planes; the operator ruling (b) GRANTED of record 08557d3 'good enough, switch it over'; the keyed live-prove waived ZERO-KEY; the GLM seam dependency disclosed-accepted; the ink-pad emitters :194/:246 flip)
     ]);
   });
   test("the mid-path table is exactly the ruled set — the mechanism-A amendment needs its own golden gate too", () => {
@@ -490,7 +506,9 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
       "/api/v1/teacher/curriculum/versions/v-1/nodes",
       "/api/v1/teacher/tests/preview",
       "/api/v1/teacher/tests/weakness-options",
-      "/api/v1/learners/me/answer-input/transcribe",
+      // T-MIG-121 UPDATE: the answer-input/transcribe needle LEFT this
+      // excluded list — the B6 subtree row flipped (the 121 line test pins
+      // it)
       "/api/v1/learners/me/intervention-runs",
       // T-MIG-120 UPDATE: the questions forms LEFT this excluded list — the
       // subtree row flipped (the 120 line test pins it); exam-papers stays
@@ -1014,10 +1032,10 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     }
   });
 
-  test("the /learners/me boundary: attempts flips, answer-input does not (ans vs att)", () => {
+  test("the /learners/me boundary: ans vs att stay disjoint rows (T-MIG-121 UPDATE: answer-input flipped by its OWN subtree row, never under attempts)", () => {
     expect("/api/v1/learners/me/answer-input/transcribe".startsWith("/api/v1/learners/me/attempts")).toBe(false);
     expect(v2SurfaceBase("/api/v1/learners/me/attempts?limit=5", V2)).toBe(V2);
-    expect(v2SurfaceBase("/api/v1/learners/me/answer-input/transcribe", V2)).toBeNull();
+    expect(v2SurfaceBase("/api/v1/learners/me/answer-input/transcribe", V2)).toBe(V2); // the B6 subtree row (the ruling (b) 08557d3)
   });
 
   test("the T-MIG-090 line: the exact chain-health surface flips with zero live-page routing change (r0 rider)", () => {
@@ -1077,7 +1095,7 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
 });
 
 describe("the T-MIG-120 line: the questions subtree flip (r0, operator order trace 1a1301057de38aa5)", () => {
-  test("the five hub-emitted questions forms resolve v2; the exam-papers + transcribe stay-core laws stand", () => {
+  test("the five hub-emitted questions forms resolve v2; the exam-papers stay-core law stands (transcribe LEFT at the B6 flip — the 121 line test pins it)", () => {
     for (const p of [
       "/api/v1/questions?rootId=kn-1",
       "/api/v1/questions/families?rootId=kn-1",
@@ -1091,11 +1109,37 @@ describe("the T-MIG-120 line: the questions subtree flip (r0, operator order tra
     expect(v2SurfaceBase("/api/v1/questionsx", V2)).toBe(V2);
     expect("/api/v1/questionsx".startsWith("/api/v1/questions")).toBe(true);
     // the no-regression needles: the B7-class stays-core laws stand
+    // (T-MIG-121 UPDATE: the transcribe needle LEFT — the B6 row flipped)
     for (const p of [
       "/api/v1/exam-papers?subjectId=sub-1",
       "/api/v1/exam-papers/ep-1",
-      "/api/v1/learners/me/answer-input/transcribe", // the B6 ruling gate
       "/api/v1/teacher/marking/answers", // the bare path stays core (zero emitters)
+    ]) expect(v2SurfaceBase(p, V2)).toBeNull();
+  });
+});
+
+describe("the T-MIG-121 line: the answer-input subtree flip — B6, the GLM seam (r0; the operator ruling (b) of record 08557d3 + the staging order trace 1a13159abe2bfcc1)", () => {
+  test("the ink-pad transcribe form rides the B6 subtree row; the sibling + stay-core laws stand", () => {
+    // the ONLY hub-emitted form under the subtree (transcribeHandwriting,
+    // api.ts :1953; the call-sites answer-ink-pad.tsx :194 image/jpeg +
+    // :246 image/png) resolves v2 under the bare subtree row (the 107
+    // narrowest-legal form; the subtree is EXACTLY one tail deep on both
+    // planes — the frozen TranscriptionController :27/:51 and the v2 mount
+    // index.ts :340)
+    expect(v2SurfaceBase("/api/v1/learners/me/answer-input/transcribe", V2)).toBe(V2);
+    // the partial-segment property (shared string-matching semantics):
+    // DOCUMENTED INERT — no route or hub emitter named answer-inputx or
+    // answer-input-* exists on either side (grep-verified at the band commit)
+    expect(v2SurfaceBase("/api/v1/learners/me/answer-inputx", V2)).toBe(V2);
+    expect("/api/v1/learners/me/answer-inputx".startsWith("/api/v1/learners/me/answer-input")).toBe(true);
+    // the ans-vs-att boundary property is retained: the B6 row captures no
+    // attempts path; the bare /learners/me prefix stays FORBIDDEN (the 111
+    // zero-key law)
+    expect("/api/v1/learners/me/answer-input/transcribe".startsWith("/api/v1/learners/me/attempts")).toBe(false);
+    // the stay-core needles: the B7 ruling class stands (7a6868a)
+    for (const p of [
+      "/api/v1/learners/me/intervention-runs", // the 096/110 law + the B7 ruling: stay-core stands
+      "/api/v1/exam-papers?subjectId=sub-1", // the B7 ruling: dormant-core strand-in-place
     ]) expect(v2SurfaceBase(p, V2)).toBeNull();
   });
 });
