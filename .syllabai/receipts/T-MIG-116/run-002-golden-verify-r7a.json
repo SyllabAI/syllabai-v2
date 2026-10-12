@@ -1,0 +1,33 @@
+{
+  "task": "T-MIG-116",
+  "run": "run-002-golden-verify-r7a",
+  "band": "B1 — the marking answers/:uuid subtree",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1)",
+  "at": "2026-10-12T04:36-04:40Z",
+  "what": "the smart-mark tails' captured laws replayed against the v2 impl of record (in-process Bun.serve, ZERO-KEY boot law; the structured submit rode the API live so the servable law exercised on the verify side too) — the driver scripts/t116_verify.ts, deepEqualTolerant from golden/runner.ts",
+  "verdict": "11/12 legs PASS — ONE DEFECT FOUND. FAIL-NO-FLIP HOLDS: NO flip row lands on this evidence.",
+  "defect_of_record": {
+    "id": "B1-DEFECT-1 (the T-MIG-114 pattern: a filed defect band, never an in-band fix — apps/api is FORBIDDEN by the 116 fence)",
+    "leg": "t01-smartmark-scheme-not-validated",
+    "what": "POST /api/v1/teacher/marking/answers/:id/smart-mark serves the RAW SmartMarkResult persistence row (snake_case: answer_id, marks_awarded, confidence, validation_passed, breakdown, failure_reason) where the frozen core serves the TeacherViews.SmartMarkView ENVELOPE (camelCase: pipelineVersion, modelId, marksAwarded, confidence, validationPassed, failureReason, breakdown, createdAt — the captured t01 wire)",
+    "v2_site": "routes/teachermarking.ts :287-291 — module.teacherSmartMark.markAnswer(id) returns the raw row; the 033 tranche-1 built the SmartMarkView INTERFACE (services/teachermarking/index.ts :177) and the queue view wiring (:378 smartMarkView) but the SINGLE smart-mark tail's controller mapping (TeacherMarkingController :255-259 → TeacherViews) was not ported",
+    "scope": "ONE tail's response mapping; the batch tail's queue view (t02) PASSED byte-honest (requested/marked/skipped/failed/items with the SCHEME_NOT_VALIDATED reasons); the detail tail's rich view is the 114-verified wire",
+    "fix_recipe": "map the markAnswer result through the TeacherViews.SmartMarkView envelope (the 033 tranche-1's interface at services/teachermarking/index.ts :177; pipelineVersion from SmartMarkResult.PIPELINE_VERSION, modelId/marksAwarded/confidence/validationPassed/failureReason/breakdown from the row, createdAt ISO) — then re-run this driver (the capture is in hand)"
+  },
+  "passing_laws_of_record": [
+    "s01 unknown-answer 404 (the identity law byte-equal)",
+    "s02b the TRUE no-scheme 404 'mark scheme {versionId} not found' (refuseUnvalidatedScheme's orElseThrow)",
+    "s03b the no-scheme batch per-item FAILED/UNEXPECTED_ERROR (the 033 stable-law CONFIRMED both sides)",
+    "s04/s05/s06 the batch validation laws verbatim ('answerIds: must not be empty' / 'must not be null' / 'size must be between 0 and 50' — the @Size min-0 jakarta quirk)",
+    "s08/s09 the binding laws (wrong-type + the bad-uuid LIST ELEMENT → malformed_body)",
+    "s10 the detail-unknown 404 (the shared mid-path grammar)",
+    "t02 the SCHEME_NOT_VALIDATED batch view byte-honest",
+    "s07 the dedup law (requested=2 order-preserving)"
+  ],
+  "disposition": [
+    "T-MIG-116 STAYS OPEN with the gate law DISCHARGED (the rig capture exists; the verify ran) and the flip WITHHELD on the defect — the 114 lesson applied to the letter: a mid-path row whose capture includes an unverified wire shape never lands",
+    "the defect band for the smart-mark view mapping is ROUTED TO THE OPERATOR (not self-filed — the 114 band was operator-ordered; the fix recipe + the capture are in hand so the fixing lane starts at the frozen law)",
+    "the B1 flip rows (the mid-path /api/v1/teacher/marking/answers/:uuid + the batch leaf) are STAGED in the card's execution record, landing ONLY after the defect fix + this driver's ALL-GREEN re-run"
+  ],
+  "write_ledger": "zero prod/Neon contact; zero LLM; everything on 127.0.0.1"
+}

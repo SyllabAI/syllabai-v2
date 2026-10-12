@@ -1,0 +1,23 @@
+{
+  "task": "T-MIG-116",
+  "run": "run-001-capture-r7a",
+  "band": "B1 — the marking answers/:uuid subtree (detail GET + smart-mark + smart-mark-batch POST tails)",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1)",
+  "operator_order": "trace 1a12e148cc3b93ad 'Do it yourself' — the STAGED gate of the claim (the 107/113/114 rig) executed now that the rig is rebuilt docker-free",
+  "at": "2026-10-12T04:25-04:31Z",
+  "what": "the SMART-MARK TAILS' keyless laws captured from the LIVE LOCAL boot of the frozen core 6cad6ef — the law classes the 113 matrix never covered (the 48-leg matrix had no smart-mark legs; this band's gate is their first capture of record)",
+  "rig": "the run-003 B2 rig of record (the same session boot: PG 17.11+pgvector @5544, core 6cad6ef @8090 ZERO-KEY SYLLABAI_LLM_MODE=test) + the 113-class structured seed (question 45000000-...-0001 + version VALIDATED (the ServableQuestionSpec law) + parts (a):2/(b):1, the fake-uuid law) + probe identities; the SUGGESTED scheme 45300000-...-0001 for the band-T refusal law",
+  "legs": {
+    "band_S_no_scheme": "s01 unknown-answer 404 'answer {id} not found' (the identity law); s02b TRUE no-scheme smart-mark 404 'mark scheme {versionId} not found' (refuseUnvalidatedScheme's orElseThrow, SmartMarkService :306-309); s03b TRUE no-scheme batch 200 with per-item FAILED/UNEXPECTED_ERROR (the batch catches the NotFound per-item — the 033-receipt's stable UNEXPECTED_ERROR law CONFIRMED on the core)",
+    "band_S_validation": "s04 empty 400 'answerIds: must not be empty' (the @NotEmpty law); s05 absent 400 'answerIds: must not be null' (the @NotNull law); s06 51 entries 400 'answerIds: size must be between 0 and 50' (the @Size quirk — jakarta renders the min as 0); s08 wrong-type 400 malformed_body (binding); s09 bad-uuid ELEMENT 400 malformed_body (the Jackson UUID element binding — a LIST element type failure binds before constraints); s10 detail-unknown 404 (the shared mid-path grammar's 404 law)",
+    "band_T_refusal": "t01 smart-mark with a SUGGESTED newest scheme → 200 the SCHEME_NOT_VALIDATED refusal VIEW (TeacherViews.SmartMarkView: pipelineVersion 1.3.0, modelId null, marksAwarded 0, confidence null, validationPassed false, failureReason SCHEME_NOT_VALIDATED, breakdown [], createdAt — camelCase, the result persisted append-only); t02 batch with the scheme → 200 requested/marked/skipped/failed/items with the per-item reason SCHEME_NOT_VALIDATED (the queue view wire)",
+    "dedup": "s07 batch [A, A, B] → requested 2 (the order-preserving dedup law :237)"
+  },
+  "capture_verdict": "14/15 at expected statuses + the two no-scheme legs (s02b/s03b) captured under the FK-safe drop/restore discipline — the s02 404 expectation failure of the second run is the SCHEME-PERSISTENCE artifact (the first run's no-scheme 404 was overwritten by the second run's with-scheme 200); the TRUE no-scheme law is s02b of record",
+  "substrate_disclosures": [
+    "the mark_points seed columns differ from the receipt-guessed ones (ref/text, not code/description) — the points ABSENCE is inert for these law classes (the refusal fires before the points traverse); the scheme row itself inserted cleanly",
+    "the FK-safe drop discipline: smart_mark_results (the append-only trail's probe rows) dropped before the scheme; the trail rows are disposable probe evidence on the scratch db, recreated per run",
+    "the ServableQuestionSpec law hit live: a STRUCTURED question serves only when its CURRENT version is VALIDATED — the seed's validation_state='VALIDATED' is the 113 seed law confirmed"
+  ],
+  "write_ledger": "LOCAL ONLY (the scratch PG); zero prod contact; zero LLM calls (the SCHEME_NOT_VALIDATED refusal fires BEFORE the generator seam — the dormant generator is never reached)"
+}
