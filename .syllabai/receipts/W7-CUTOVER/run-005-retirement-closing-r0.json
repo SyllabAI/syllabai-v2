@@ -1,0 +1,28 @@
+{
+  "receipt": "run-005-retirement-closing-r0",
+  "band": "W7-CUTOVER — the closing receipt of the retirement act (runbook §4-waiver + §6 record)",
+  "lane": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e, chat 0283e086-b297-4875-912b-a9f4fd722dc5)",
+  "created_at_utc": "2026-10-13T01:00:00Z",
+  "operator_lineage": "OPERATOR RETIREMENT ORDER trace 1a131d02c805602d — 'Dont have to wait 48 hours. If we have already 100% migrated to v2 without a single issue, then retire Render, syllabai-core, and syllabai-hub. Update the master doc repo, so all agents know about it.' The 48h soak (runbook §4) WAIVED of record by the same order.",
+  "acts_of_record": [
+    "B6 BAKE (receipt T-MIG-121/run-004): dpl_AfZZb5bBSY3qsQRSwZUfaHTnKGYo READY at 0bdc594, both prod aliases attached; the baked-census + wire battery 9/9 GREEN",
+    "CI --gate wiring (receipt W7-CUTOVER/live-zero-gate-wiring-run-001): the census GATE enforced in ci.yml at 32272d2; CI verify+hub 2/2 SUCCESS at the wiring tip (check-runs API first-hand)",
+    "FRESH UNION REPLAY SEAL: workflow run 38307013191 (workflow_dispatch ref=main @ 32272d2) -> completed SUCCESS; artifact 11773107960 read first-hand: union verdict 223/223 PASS (seed 208/208 + prod 15/15, 10 via the declared T-MIG-071 R3-C disposition), zero non-justified divergences; one disclosed dispatch, zero manual fires",
+    "ARCHIVE ACT (runbook §6.1, admin scope verified first-hand before the act): SyllabAI/syllabai-core PATCH archived=true -> HTTP 200 (head of record 6cad6ef9463e8d21f1555456561a4caaf7e89395, 2026-10-04); SyllabAI/syllabai-hub PATCH archived=true -> HTTP 200 (head 93226a43edefafb3bfa9d0fddf119948da29fa9a, 2026-10-04); both verified archived=true first-hand post-act; NEVER deleted (read-only archive, the issues/receipts/blame stay resolvable)",
+    "MASTER DOC BULLETIN: SyllabAI/syllabai @ 7e75626be9 — CUTOVER_RETIREMENT_2026-10-13.md filed (the all-agents record: what retired, the evidence, the new laws of engagement: the frozen repos READ-ONLY, v2 the only system of record, no re-pointing without a new operator order)",
+    "REPORT FILL: docs/MIGRATION_REPORT.md §6 items 3-5 CLOSED/SUPERSEDED of record + §7 watch results (the waiver + the replacement-evidence table) + §8 archive record (the SHAs, the Render residual, this receipt chain)"
+  ],
+  "migration_condition": "VERIFIED of record: 100% of live families ride v2 (the §Z census gate GREEN LIVE=0 + the baked last family), zero open migration issues (the one open issue #147 = the zombie-prj_D7vf operator lever, decommission-cleanup class), CI 2/2, the replay 223/223 at the final tip",
+  "operator_residuals": [
+    "Render console: DISABLE (never delete) the Java core service — no Render credential is held lane-side; zero Render traffic of record since the flip",
+    "Issue #147: the zombie Vercel project prj_D7vf decommission (operator lever)",
+    "the standing items of the prior census (P3/P4 paste superseded by this order; §6.1 archive DONE this act; PAT rotation per the hygiene law — the handed PAT was used inline only and never persisted; rotation remains recommended of record)"
+  ],
+  "credential_hygiene": "the VERCEL_PAT (fingerprint-verified d254bbfaac004354 == the of-record fingerprint) used inline only (the CLI --token + the API bearer), never printed, never committed, never persisted to disk; the GitHub token lane-side (the remote-URL embedded law) used for the API reads/writes of record, never printed; zero secrets materialized in any artifact",
+  "disclosures": [
+    "the local stale main checkout carries two MODE-ONLY chmod deltas on the workflow files (zero content) — disclosed at run-004, bypassed via the clean detached worktree",
+    "one probe-defect round in the bake battery (schema-invalid chat body drew the correct parse-first 400) — corrected, 9/9 GREEN",
+    "zero authed writes to prod data planes; zero LLM spend; the Vercel contact = identity/deployments reads + the ordered deploy act; the GitHub contact = the CI/issue/repo reads + the two ordered archive PATCHes + the ordered master-doc PUT + one replay dispatch",
+    "no force anywhere; every write of record receipted; fetch-first FF pushes only"
+  ]
+}

@@ -120,20 +120,42 @@ report hash:
    non-justified divergence class.
 2. **~~T-MIG-073 owner flip~~ CLOSED**: the R0 desk flipped 073 DONE of record
    (`6227b6a`, merge-of-record verified) — convergent with this lane's census.
-3. **Fresh live replay** at the cutover candidate SHA (post-#117 aggregate
-   exists: 149/177 @ e9ef235; the cutover gate still requires a re-run at the
-   final candidate SHA; NEON_BRANCH_CAPACITY unblock is an operator action).
-4. **§7 P3/P4**: supervised dual-run loops + operator sign-off (runbook §7
-   template).
-5. **[POST-CUTOVER]** — watch window results, archive SHAs, final sign-off
-   (runbook §4/§6).
+3. **~~Fresh live replay~~ CLOSED**: the union golden replay at the final cutover/retirement tip
+   `32272d2` = **223/223 PASS** (seed 208/208 + prod 15/15, 10 via the declared T-MIG-071 R3-C
+   disposition) — workflow run `38307013191`, SUCCESS, artifact `11773107960` (§7 below).
+4. **~~§7 P3/P4~~ SUPERSEDED of record**: the operator's direct retirement order (trace
+   `1a131d02c805602d`, "Dont have to wait 48 hours … retire Render, syllabai-core, and
+   syllabai-hub. Update the master doc repo") constitutes the operator sign-off (P4) and
+   waives the human-witnessed dual-run formality (P3) in favor of the recorded live batteries
+   (the §Z census gate, the 9/9 bake battery, the TUTOR-VERIFY live series, the replay seal).
+5. **~~[POST-CUTOVER]~~ DONE** — watch results (§7, soak waived by the operator) and the archive
+   record (§8) are filed of record.
 
 ## 7. [POST-CUTOVER] Watch results
 
-_Pending runbook §4 execution. Record: replay-vs-live aggregate, error rates,
-decay rows, triage outcomes, rollback events (if any)._
+> **The 48-hour watch (runbook §4) was WAIVED of record** by the operator's direct
+> retirement order (trace `1a131d02c805602d`, 2026-10-13: "Dont have to wait 48
+> hours. If we have already 100% migrated to v2 without a single issue, then retire
+> Render, syllabai-core, and syllabai-hub. Update the master doc repo"). The
+> replacement evidence of record:
+
+| §4 metric | Result of record |
+|---|---|
+| Golden replay vs live | **Union 223/223 PASS at the final tip `32272d2`** (seed 208/208 + prod 15/15; 10 via the declared T-MIG-071 R3-C disposition) — run `38307013191`, SUCCESS; zero non-justified divergences |
+| Live bake battery | **9/9 GREEN** on the production alias (receipt `T-MIG-121/run-004`): all pages 200, the B6 transcribe needle baked, B1/B2/B5 rows stable, hub health `core-api` 200, chat 400/401 laws live, bridge 200, actuator UP, the ruling-(b) 401 law-capture live |
+| CI | **verify + hub 2/2 SUCCESS** at `0bdc594` and at the gate-wiring tip `32272d2`; the §Z census gate (`--gate`, LIVE=0 law) now **fails CI on any live-core regression** (the enforcement form) |
+| Nightly decay | The T-MIG-042 series of record stands GREEN (§3.3 cross-check replicated; self-fire vercel-cron rows verified; the decay-band source drift ZERO at the recent tips) — the overlap-era idempotency law held throughout |
+| Hub issue triage | Exactly one open issue (`#147`) = the zombie Vercel project `prj_D7vf` decommission lever (operator console residual; **not** a migration defect). Zero rollback events of record. |
 
 ## 8. [POST-CUTOVER] Archive record
 
-_Pending runbook §6 execution. Record: archived repo SHAs, Render service
-states, final W7 receipt that flips T-MIG-074 and the wave register to DONE._
+Executed 2026-10-13 under the operator's retirement order (trace `1a131d02c805602d`):
+
+| Act | Result of record |
+|---|---|
+| `SyllabAI/syllabai-core` | **ARCHIVED read-only** (PATCH `archived=true` → HTTP 200, verified first-hand) at head `6cad6ef9463e8d21f1555456561a4caaf7e89395` (2026-10-04). Never deleted — issues, receipts, blame stay resolvable. |
+| `SyllabAI/syllabai-hub` | **ARCHIVED read-only** (PATCH `archived=true` → HTTP 200, verified first-hand) at head `93226a43edefafb3bfa9d0fddf119948da29fa9a` (2026-10-04). Never deleted. |
+| Render (the Java core host) | **RETIREMENT ORDERED**; zero traffic of record since the flip; the console **disable (never delete)** is the enumerated operator residual — no Render credential is held lane-side. |
+| Master doc repo | `SyllabAI/syllabai @ 7e75626be9` — `CUTOVER_RETIREMENT_2026-10-13.md` filed of record (the all-agents bulletin: what retired, the evidence, the new laws of engagement). |
+| B6 bake | `dpl_AfZZb5bBSY3qsQRSwZUfaHTnKGYo` READY at `0bdc594`, both prod aliases attached; rollback anchors `dpl_59GMpYK1Zz6nRVYyfBxr8DAUSvRW` + `dpl_EabUch9gFhQnw3ayu6NixQcwTthD` intact of record. |
+| Closing receipt | `.syllabai/receipts/W7-CUTOVER/run-005-retirement-closing-r0.json` + the append-only worklog entry of the act. The standing law survives cutover unchanged: append-only worklog, receipts, no-force-push, authors-never-self-merge — the repo is the audit trail. |
