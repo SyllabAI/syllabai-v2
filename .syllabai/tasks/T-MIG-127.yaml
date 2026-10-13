@@ -1,0 +1,61 @@
+version: 1
+task:
+  id: T-MIG-127
+  title: "PdfPane gesture zoom (s144): a two-finger pinch on the pages region steps the PANE zoom ladder instead of the browser page zoom (iOS gesture* preventDefault + Android touch-action pan-x pan-y + pointer-based pinch → the existing zoomBy path), plus ctrl+wheel / Mac trackpad-pinch ladder stepping — e2e-pinned both ways; deliberately NO site-wide user-scalable=no"
+  owner: "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)"
+  status: IN_PROGRESS # branch t-mig-127/r0 built + validated lane-side; branch PUSH + PR open are credential-gated (operator handoff) — flip to IN_REVIEW at PR open
+  claimed_at: "2026-10-13T18:39:58Z"
+  claimed_by_order: "operator traces 1a1360d05c8bd7a5 ('audit the pdf viewer') + 1a13629f5c00b479 (the symptom: 'when we try to zoom using pinching, it zooms the whole website, instead of the pdf page') + 1a13677fbff57f09 ('Go + ctrl+wheel zoom as well')"
+  priority: P1
+  wave: hub-pastpapers-viewer
+  deps: []
+  execution_record: >
+    ROOT CAUSE (verified live first-hand before any conclusion): the pinch
+    symptom is a three-link chain — (1) apps/hub/src/app/layout.tsx exports
+    NO viewport, so Next injects the permissive default
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    (verified on the DEPLOYED hub syllabai-hub-v2.vercel.app, HTTP 200 root
+    and a 404 probe alike); (2) pdf-pane.tsx's zoom surface was toolbar
+    buttons + the +/−/0 keys ONLY — zero touch/gesture/wheel handlers
+    anywhere in the pane, the client wrapper, globals.css or the route;
+    (3) the pages scroller (overflow-y-auto overscroll-contain) therefore
+    fell through to the browser's default multi-touch behavior = whole-page
+    pinch zoom. THE FIX (pane-scoped, s144): the pages region gets
+    touch-action pan-x pan-y (Android/Chromium stop — one-finger scroll stays
+    native, the two-finger pinch is left unclaimed for the handlers), a
+    non-passive gesturestart/gesturechange/gestureend preventDefault (the
+    ONLY page-pinch stop iOS Safari honors — it ignores touch-action AND
+    viewport meta since iOS 10), and a uniform pointer-based pinch tracker
+    (two live touch pointers, distance ratio rebased per commit,
+    PINCH_STEP_RATIO 1.2) that steps through the SAME zoomBy path as the
+    toolbar, so the honest-ceiling clamp and the anchor-preserving refreeze
+    apply unchanged. ctrl+wheel (and a Mac trackpad pinch, which arrives as
+    the same ctrl+wheel stream) accumulates normalized deltaY into ladder
+    steps (WHEEL_STEP_PX 100 = one Chrome notch); plain wheel scroll is
+    untouched. NO user-scalable=no anywhere: the rest of the hub keeps native
+    zoom (a11y) and iOS would ignore it anyway. VALIDATION (lane-side, all
+    first-hand): tsc --noEmit clean; eslint clean on both changed files;
+    apps/hub production build (mock mode) green; the FULL pp-viewer.spec.ts
+    run 13/13 PASS (11 pre-existing — zero regression — + 2 new s144 pins:
+    ctrl+wheel steps the ladder with the layout viewport width unchanged,
+    pinch out reaches the pane's honest ceiling and pinch-in walks back to
+    100%, computed touch-action pan-x pan-y pinned). The e2e synthesis is
+    chromium CDP (Input.dispatchMouseEvent modifiers=2 / dispatchTouchEvent)
+    aimed INSIDE the scroller's visible box — page holders extend ~1600px
+    below the fold and viewport-past events are dropped. DISCLOSED v1
+    TRADEOFF: on a MIXED pan+pinch gesture the browser may claim the pan and
+    pointercancel the pinch (scroll wins); committing steps on
+    pinch-in-place is the contract — full gesture arbitration would mean
+    hand-rolling momentum scrolling, not worth it. The probe artifacts
+    (pointer/wheel stream logs) are summarized in the run receipt.
+  scope:
+    - "apps/hub/src/components/pastpapers/pdf-pane.tsx"
+    - "apps/hub/tests/e2e/pp-viewer.spec.ts"
+    - ".syllabai/** (this card + the receipt + the worklog line)"
+  not_touched:
+    - "apps/hub/src/app/layout.tsx (viewport meta left at the Next default — the fix is pane-scoped BY DESIGN, site-wide scaling stays native for a11y)"
+    - "apps/api/**, packages/** (zero contact)"
+    - "prod / Neon / Vercel / LLM (zero contact)"
+progress_log:
+  - run: run-001-gesture-zoom-r0 (2026-10-13T18:39:58Z)
+    note: "claim-in-first-commit; implementation + e2e validated lane-side 13/13; branch push + PR open pending credential handoff (the previous PAT did not survive the session continuation and must be rotated anyway — it transited chat)"
