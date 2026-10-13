@@ -1,0 +1,145 @@
+{
+ "band": "T-MIG-125",
+ "run": "run-003-canary-r0",
+ "operator_trace": "1a13621459f7dd49 'fire one fresh authed end-to-end canary'",
+ "agent": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "executed_utc": "2026-10-13T16:43:06Z",
+ "carrier": {
+  "serving_deploy": "dpl_BKyamqdxUeXcLmbK9sc8dodSkGPz READY @ 6bfbf00 (T-MIG-125 run-002 bake)",
+  "origin_tip_at_time_of_run": "28d3e58 (the bake's .syllabai-only bookkeeping; deployed sha 6bfbf00 ancestor TRUE)"
+ },
+ "purpose": "fresh authed end-to-end tutor canary on the live api-of-record: one LLM spend, deterministic assertions only (R-LLM), Phase-2 engagement row proven by read-back",
+ "disclosed_defect_rounds": [
+  {
+   "round": "run-001 (harness-only defect, zero product defect)",
+   "result": "6/7 PASS",
+   "defect": "session read-back asserted 1 turn per exchange; the of-record append law (services/tutor/session-store.ts:10) appends the USER turn and the ASSISTANT turn TOGETHER \u2014 got 2 turns [user ev=0, assistant ev=6] = the tutor behaving EXACTLY to spec",
+   "disposition": "harness law corrected (session-store.ts:10 read first-hand), run-002 re-fired",
+   "llm_spend": 1
+  }
+ ],
+ "run_002_result": "7/7 PASS",
+ "legs": [
+  {
+   "leg": "register",
+   "ok": true,
+   "detail": {
+    "status": 201
+   },
+   "ms": 769,
+   "x_vercel_id": "hkg1::iad1::7fgfd-1791909786712-0b5498936758",
+   "expect": 201,
+   "got": 201
+  },
+  {
+   "leg": "login",
+   "ok": true,
+   "detail": {
+    "status": 200,
+    "bearer": true
+   },
+   "ms": 647,
+   "x_vercel_id": "hkg1::iad1::bkw95-1791909787471-23dcd31ab3a8",
+   "expect": 200,
+   "got": 200
+  },
+  {
+   "leg": "session_create",
+   "ok": true,
+   "detail": {
+    "status": 201,
+    "sessionId_shape": "uuid"
+   },
+   "ms": 309,
+   "x_vercel_id": "hkg1::iad1::7fgfd-1791909788123-cfbfc969ccec",
+   "expect": 201,
+   "got": 201
+  },
+  {
+   "leg": "tutor_ask",
+   "ok": true,
+   "detail": {
+    "refused": false,
+    "evidenceCount": 6,
+    "citations_n": 6,
+    "topics_n": 5,
+    "topic_ids": [
+     null,
+     null,
+     null
+    ],
+    "model": "openai/gpt-oss-120b",
+    "provider": "groq",
+    "latencyMs": 2.094,
+    "wall_ms": 2504,
+    "answer_head": "Increasing the temperature gives the reacting particles **more kinetic energy**.  \nAccording to **collision theory**, a reaction occurs only when particles:\n\n* "
+   },
+   "ms": 2504,
+   "x_vercel_id": "hkg1::iad1::vjks8-1791909788432-879628b68a9f",
+   "expect": "200 grounded (refused=false, evidence>=1, citations>=1, topics>=1)",
+   "got": 200
+  },
+  {
+   "leg": "session_readback",
+   "ok": true,
+   "detail": {
+    "status": 200,
+    "turns_n": 2,
+    "roles": [
+     "user",
+     "assistant"
+    ],
+    "evidence_counts": [
+     0,
+     6
+    ]
+   },
+   "ms": 293,
+   "x_vercel_id": "hkg1::iad1::jgpjv-1791909790937-799374d453ed",
+   "expect": "200; 2 turns (user+assistant, one exchange), evidence>=1 on the answer turn",
+   "got": 200
+  },
+  {
+   "leg": "engagement_row_live",
+   "ok": true,
+   "detail": {
+    "status": 200,
+    "engagements_n": 5,
+    "matched_topic": null,
+    "hit": {
+     "nodeId": "a9ea76ff-9326-4121-8b4b-d4144d4b901f",
+     "nodeTitle": "Rates of reaction",
+     "asks": 1,
+     "signalCounts": {
+      "EXPLANATION_REQUEST": 1
+     }
+    },
+    "topic_id_corroborates": "n/a"
+   },
+   "ms": 363,
+   "x_vercel_id": "hkg1::iad1::jgpjv-1791909791226-e187862961bd",
+   "expect": 200,
+   "got": 200
+  },
+  {
+   "leg": "health",
+   "ok": true,
+   "detail": {
+    "status": 200
+   },
+   "ms": 5260,
+   "x_vercel_id": "hkg1::iad1::wnttt-1791909796596-4e8c1419ffa6",
+   "expect": 200,
+   "got": 200
+  }
+ ],
+ "evidence_highlights": {
+  "tutor_ask": "200 grounded: refused=false, evidenceCount=6, citations=6, topics=5, model=openai/gpt-oss-120b via groq, pipeline latencyMs=2.09s (wall 2.5s)",
+  "session_readback": "2 turns [user ev=0, assistant ev=6] \u2014 the s22 append-after-pipeline law verbatim",
+  "engagement_row_live": "learner-state read-back (fresh account, 30d surface): tutorEngagements carries nodeId=a9ea76ff-9326-4121-8b4b-d4144d4b901f 'Rates of reaction' asks=1 signalCounts={EXPLANATION_REQUEST:1} \u2014 the Phase-2 recorder classified (V25 deterministic classifier) and appended on the served ask, read back live"
+ },
+ "write_ledger_of_record": "2 probe accounts (1 per round, memory-only credentials) + 1 tutor session + 1 ask exchange + the recorder's engagement/signal rows; llm_spend total = 2 (1 per disclosed round)",
+ "hygiene": "no bearer/password/set-cookie in transcript or receipt; credentials memory-only, never persisted; zero Neon direct contact; zero Vercel-API contact; no force; fetch-first",
+ "race_note": "mid-run fetch-first: origin advanced 28d3e58 -> bd8b485 (parallel w0a audit lanes: learner-model audit 7ec0d0e ZERO DEFECTS + smart-mark audit bd8b485 ZERO DEFECTS incl. B1-DEFECT-1 serving fix) \u2014 receipt rebased onto bd8b485; both audits corroborate the T-MIG-124/125 learner-model laws under audit",
+ "generated_utc": "2026-10-13T16:45:11Z"
+}

@@ -7758,3 +7758,18 @@ Stage Summary:
 - GATES first-hand: suite 1919/0/13skip EXACT (7441 expects); the smartmark family subset 162/0; golden selftest 15/15; census --gate GREEN exit 0 LIVE=0 (pins=7 — the B6 flip retired the transcribe pin); CI 2/2 SUCCESS at tip.
 - SANDBOX DISCLOSURE (zero repo defect): the first suite run had 3 fails + 3 errors — 100% a stale full-repo root copy at /home/z/my-project (package.json 'syllabai-v2' Oct 9 + its node_modules/@syllabai/contracts symlink into a pre-assignments-band packages/) intercepting bun's upward resolution ('assignmentCreateRequestSchema not found'). Quarantined to /home/z/my-project/quarantine-stale-repo-root/ + bun install --frozen-lockfile in-repo (930 pkgs) -> the re-run is EXACT. Fleet note: lanes running the suite in sandboxes with stale parent roots must check the resolution chain before declaring defects.
 - Receipt: .syllabai/receipts/T-MIG-116/smartmark-audit-run-001-r0.json (the w0a audit-receipt precedent). .syllabai-only, no force.
+
+---
+Task ID: trace 1a13621459f7dd49 ("fire one fresh authed end-to-end canary")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- Fresh authed end-to-end tutor canary on the live api-of-record (carrier dpl_BKyamqdx @ 6bfbf00), harness rebuilt post-recycle from the wire-verified shape-matrix pattern + the contracts read first-hand (tutorAskRequestSchema / tutorAnswerViewSchema / session append law session-store.ts:10 / learner-state tutorEngagements 30d surface).
+- run-001 6/7 + ONE disclosed harness-only defect (read-back asserted 1 turn; the append law = user+assistant TOGETHER = 2 turns — the tutor behaved EXACTLY to spec); law corrected; run-002 re-fired: 7/7 PASS.
+- THE ASK: 200 grounded — refused=false, evidenceCount=6, citations=6, topics=5, model openai/gpt-oss-120b via groq, pipeline 2.09s; session read-back 2 turns [user ev=0 / assistant ev=6] = the s22 append-after-pipeline law verbatim.
+- PHASE-2 PROOF BY READ-BACK: fresh probe account's learner-state (30d surface) carries 'Rates of reaction' (a9ea76ff...) asks=1 signalCounts={EXPLANATION_REQUEST:1} — the V25 recorder classified + appended on the served ask, read back live; the full band (ask -> classify -> append -> read-back) exercised end-to-end.
+- Write ledger of record: 2 probe accounts (memory-only) + 1 session + 1 exchange + recorder rows; LLM spend total 2 (1 per disclosed round); zero Neon/Vercel-API direct contact; credentials/bearer never persisted, transcript + receipt scrub-checked clean.
+- Race: origin advanced 28d3e58 -> bd8b485 mid-run (parallel w0a audit lanes 7ec0d0e + bd8b485, both ZERO DEFECTS — independent corroboration of the learner-model laws this canary exercised); receipt rebased onto bd8b485, .syllabai-only push, no force, fetch-first.
+
+Stage Summary:
+- The tutor of record verified working END-TO-END on the live wire first-hand: grounded ask 200, session persistence to the append law, and the Phase-2 engagement band live (classification + append + read-back). Receipt .syllabai/receipts/T-MIG-125/run-003-canary-r0.json.
