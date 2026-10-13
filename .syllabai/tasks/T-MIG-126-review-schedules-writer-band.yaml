@@ -1,0 +1,47 @@
+version: 1
+task:
+  id: T-MIG-126
+  title: "The review-schedules WRITER BAND DORMANCY of record — review_schedules has ZERO v2 writers (the substrate census of record), so the tutor port's pendingReviews (PENDING-scoped, matched-topic) and its downstream consumers (the s140 digest's spaced-review line, the learnerBriefOf review rows) stay honest-empty BY LAW; the band stays DORMANT until an operator-ordered writer band lands — the read side needs NO change (the port IS the activation seam: a writer lands and every pendingReviews consumer goes live unmodified)"
+  owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)"
+  status: DONE # the deliverable IS the posture of record (the T-MIG-061 disclosure-card precedent) — filed with this card + the receipt; the BAND itself stays dormant (nothing to execute until an operator orders a writer)
+  claimed_at: "2026-10-13T09:4xZ"
+  claimed_by_order: "operator trace 1a1349f2f15356b1 'claim them' — the queued T-MIG-124 residual intake item 'review-schedules writer band dormant' (the item the operator had asked to hear explained plainly)"
+  priority: P2
+  wave: tutor-serving # posture-of-record card — dormant band, activation law pinned
+  deps: [T-MIG-124, T-MIG-061]
+  execution_record: >
+    CLAIMED+FILED under the operator's 'claim them' order. THE POSTURE
+    (first-hand at tip 523b17c): review_schedules appears in exactly one v2
+    read — services/tutor/learner-model.ts pendingReviews (select node_id
+    from review_schedules where learner_id = ? and status = 'PENDING' and
+    node_id = any(?), the frozen findByLearnerIdAndNodeIdInAndStatus(PENDING)
+    law, matched-topic scoped, empty topic set queries nothing) — and in
+    ZERO v2 writes (the repo-wide substrate census: skill_states +
+    misconception_states have live writers via services/learner-model/
+    model-update.ts; struggle_inferences got its V25-adjacent writer class
+    discussion; tutor_topic_engagements got the T-MIG-124 Phase-2
+    engagement recorder; review_schedules has NOBODY). THE FROZEN PROVENANCE:
+    the core wrote review schedules from its review-scheduling flow (the
+    forgetting-curve scheduler); v2 has no port of that flow yet — this card
+    does NOT invent one (a writer is a product-law decision: what schedules,
+    when, from which evidence — operator-gated). THE ACTIVATION LAW: the
+    port is the seam — the moment ANY v2 writer appends PENDING rows, the
+    s140 digest's 'due for a spaced review' line and the brief's review
+    rows go LIVE with ZERO read-side changes (test-pinned already: the
+    tutor-routes.test.ts E2E drives 'from review_schedules' with a row and
+    the prompt renders 'due for a spaced review'). THE HONEST-EMPTY LAW:
+    until then every read returns [] and every consumer degrades exactly as
+    disclosed in T-MIG-124 run-001. The sibling residual item '061 research
+    consumer dormant' stays T-MIG-061's own disclosed-dormant title (the
+    section-18 RESEARCH log consumer is NOT the engagement-row listener —
+    T-MIG-124 Phase 2 landed the listener; the research consumer remains
+    dormant by its own card's law) — no double-entry filed here. ZERO code,
+    zero prod, zero config — this card + the receipt ARE the deliverable.
+  scope:
+    - ".syllabai/** (this card + the receipt + the worklog line)"
+  not_touched:
+    - "apps/** (zero files — the read side is already correct of record)"
+    - "prod / Neon / Vercel / LLM (zero contact)"
+progress_log:
+  - run: run-001-writer-band-posture-r0 (2026-10-13T09:4xZ)
+    note: "the dormancy posture filed of record (this commit): receipt T-MIG-126/run-001-writer-band-posture-r0.json; the band stays dormant by law; activation = an operator-ordered writer band, zero read-side change"

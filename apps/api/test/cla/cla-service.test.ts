@@ -15,6 +15,9 @@ import { CLA_REFUSAL } from "../../src/services/cla/service";
 import { ArgumentError, TutorGenerationError } from "../../src/services/tutor/errors";
 import { claAnswerViewSchema } from "@syllabai/contracts";
 import { fakeSql, type Route } from "../assessment/helpers";
+import { buildSqlLearnerModel } from "../../src/services/tutor/learner-model";
+import type { ClaServiceDeps } from "../../src/services/cla/service";
+import type { SqlFn } from "../../src/services/tutor/sql";
 import { toErrorResponse } from "../../src/services/identity/errors";
 import { Hono } from "hono";
 
@@ -121,6 +124,10 @@ interface Overrides {
   answers?: Array<{ question_part_id: string; answer_text: string }>;
   /** VALIDATED scheme points for the CHECK feedback evidence */
   schemePoints?: Array<{ ref: string; marks: number; text: string; question_part_id: string | null; ordering: number }>;
+  /** T-MIG-125: inject the REAL shared tutor adapter (buildSqlLearnerModel
+   *  over its own substrate sql) in place of the empty stub — the reuse
+   *  band's serving reads ride through the full service pipeline. */
+  learnerModel?: ClaServiceDeps["learnerModel"];
 }
 
 function routes(o: Overrides = {}): Route[] {
@@ -307,7 +314,7 @@ function build(o: Overrides & Fakes = {}) {
     sql,
     clock: { newId: () => "id", now: () => new Date(0) },
   });
-  const learnerModel = {
+  const learnerModel = o.learnerModel ?? {
     skillStates: async () => [],
     misconceptionReadings: async () => [],
     activeStruggleInferences: async () => [],
@@ -640,6 +647,109 @@ describe("ClaService — the question-context lead evidence", () => {
 /* ------------------------------------------------------------------ */
 /* the route layer (ClaController :91-100 + the handler mappings)      */
 /* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+/* T-MIG-125 — the CLA learner-model reads ride the SHARED tutor       */
+/* adapter: the struggle-read reuse + the frozen effective-desc        */
+/* RE-SORT (the drift the pre-reuse inline relax map omitted). The     */
+/* adapter runs over its OWN substrate sql (the learner-model.test.ts  */
+/* substring dispatch style — decoupled from the service fixture's     */
+/* regex routes); the service fixture keeps answering the pipeline.    */
+/* ------------------------------------------------------------------ */
+
+type AdapterRow = Record<string, unknown>;
+function adapterSubstrate(responses: Record<string, AdapterRow[]>) {
+  const queries: string[] = [];
+  const fn = (async (strings: TemplateStringsArray, ...params: unknown[]) => {
+    const text = strings.join("?").replace(/\s+/g, " ").trim();
+    queries.push(text);
+    void params;
+    for (const key of Object.keys(responses)) {
+      if (text.includes(key)) return responses[key];
+    }
+    return [];
+  }) as unknown as SqlFn & { queries: string[] };
+  fn.queries = queries;
+  return fn;
+}
+
+describe("ClaService — the learner-model reads ride the shared tutor adapter (T-MIG-125)", () => {
+  const NOW = new Date("2026-10-13T09:00:00Z");
+  const NOW_ISO = "2026-10-13T09:00:00.000Z";
+  const STALE_ISO = "2025-08-29T09:00:00.000Z"; // 410d old — relaxes well below the fresh 0.6
+
+  it("the struggle read is the REAL frozen read: REJECTED rides the read and the T-026 policy filters it, teacher-CONFIRMED meets the threshold outright (0.4 < 0.65)", async () => {
+    const substrate = adapterSubstrate({
+      "from skill_states": [],
+      "from misconception_states": [],
+      "from struggle_inferences": [
+        { topic_node_id: TOPIC, probability: 0.9, teacher_override: "REJECTED", type: "PREREQUISITE_GAP", subtype: null },
+        { topic_node_id: TOPIC, probability: 0.4, teacher_override: "CONFIRMED", type: "METACOGNITIVE", subtype: null },
+      ],
+      "from tutor_topic_engagements": [],
+      "from review_schedules": [],
+    });
+    const { cla, telemetry, lastContext } = build({ learnerModel: buildSqlLearnerModel(substrate, { now: () => NOW }) });
+    await ask(cla);
+    // the read fired ONCE with the frozen contract in the query
+    expect(substrate.queries.filter((q) => q.includes("from struggle_inferences")).length).toBe(1);
+    expect(substrate.queries.join(" ")).toContain("superseded_at is null");
+    // the CONFIRMED 0.4 row meets the intervention threshold OUTRIGHT (the
+    // teacher law — 0.4 is below the 0.65 probability bar); the REJECTED 0.9
+    // row rode the read (NOT dropped at the read) and was policy-filtered —
+    // frozen parity, so the surviving plan is the METACOGNITIVE mapping
+    expect((telemetry[0] as { interventionType: string }).interventionType).toBe("METACOGNITIVE_CHECK");
+    const ctx = lastContext() as { interventionPlan: { type: string } };
+    expect(ctx.interventionPlan.type).toBe("METACOGNITIVE_CHECK");
+  });
+
+  it("the empty substrate degrades to the pre-reuse posture exactly (the no-signal EXPLANATION fall-through, honest empty reads)", async () => {
+    const substrate = adapterSubstrate({
+      "from skill_states": [],
+      "from misconception_states": [],
+      "from struggle_inferences": [],
+      "from tutor_topic_engagements": [],
+      "from review_schedules": [],
+    });
+    const { cla, lastContext, telemetry } = build({ learnerModel: buildSqlLearnerModel(substrate, { now: () => NOW }) });
+    const view = await ask(cla);
+    expect(view.refused).toBe(false);
+    expect(view.answer).toBe("grounded answer [1]");
+    expect((telemetry[0] as { interventionType: string }).interventionType).toBe("EXPLANATION");
+    const ctx = lastContext() as { interventionPlan: { rationale: string } };
+    expect(ctx.interventionPlan.rationale).toContain("no high-confidence diagnostic signal");
+    // the REAL adapter ran (the reads fired; the empty tables degraded).
+    // TWO misconception reads is the CLA's own law (the GET_LEARNER_STATE
+    // tool view + the policy's own full reading list — different questions,
+    // the M3 tranche-2 posture); the struggle read rides the policy alone.
+    expect(substrate.queries.filter((q) => q.includes("from struggle_inferences")).length).toBe(1);
+    expect(substrate.queries.filter((q) => q.includes("from misconception_states")).length).toBe(2);
+  });
+
+  it("the shared adapter's readings carry the frozen effective-desc RE-SORT: a fresh 0.6 outranks a stale 0.9 — and the adapter satisfies the CLA port shape", async () => {
+    const substrate = adapterSubstrate({
+      "from misconception_states": [
+        { misconception_node_id: "m-stale-uuid", probability: 0.9, evidence_count: 5, last_evidence_at: STALE_ISO },
+        { misconception_node_id: "m-fresh-uuid", probability: 0.6, evidence_count: 1, last_evidence_at: NOW_ISO },
+      ],
+    });
+    const port = buildSqlLearnerModel(substrate, { now: () => NOW });
+    // compile-time law: the 5-method adapter satisfies the service's
+    // 3-method Pick (the composition hands it over wholesale)
+    const claPort: ClaServiceDeps["learnerModel"] = port;
+    const readings = await claPort.misconceptionReadings("learner-x");
+    expect(readings.length).toBe(2);
+    const fresh = readings[0]!;
+    const stale = readings[1]!;
+    // the RE-SORT: raw-probability order (0.9 first) inverts under the
+    // staleness relax — a fresh 0.6 outranks a stale 0.9 (frozen
+    // LearnerModelService :225-246)
+    expect(fresh.misconceptionNodeId).toBe("m-fresh-uuid");
+    expect(fresh.effective).toBeGreaterThanOrEqual(0.5);
+    expect(stale.misconceptionNodeId).toBe("m-stale-uuid");
+    expect(stale.effective).toBeLessThan(0.5);
+  });
+});
 
 describe("cla route — POST /ask", () => {
   // the 060 route-test pattern: an in-memory Hono app injecting the auth

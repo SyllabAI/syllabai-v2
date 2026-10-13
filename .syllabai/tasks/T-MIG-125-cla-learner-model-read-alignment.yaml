@@ -1,0 +1,63 @@
+version: 1
+task:
+  id: T-MIG-125
+  title: "The CLA learner-model read-alignment band — (a) the STRUGGLE-READ REUSE: buildClaRouters swaps the honest-empty stub (async () => []) for the SHARED tutor Phase-1 adapter (buildSqlLearnerModel), so the frozen struggle read (expires_at > now AND superseded_at IS NULL, probability DESC + generatedAt DESC, teacher CONFIRMED/REJECTED mapping verbatim — REJECTED rides the read, the T-026 policy filters) serves the CLA surface too; (b) the EFFECTIVE-DESC RE-SORT DRIFT fix: the pre-band CLA inline relax map omitted the frozen LearnerModelService :225-246 re-sort (a fresh 0.6 outranks a stale 0.9) — the drift is extinct BY CONSTRUCTION now that both surfaces read through the one adapter"
+  owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)"
+  status: 'IN_REVIEW # the band commit is pushed; DONE flips on CI 2/2 (the T-MIG-124 law — the 741c352/34bf845 pattern)'
+  claimed_at: "2026-10-13T09:4xZ"
+  claimed_by_order: "operator trace 1a1349f2f15356b1 'claim them' — the queued T-MIG-124 residual intake items ('CLA struggle-read reuse, CLA re-sort drift, review-schedules writer band dormant, 061 research consumer dormant'); claim-and-run per the T-MIG-105 'claim it' precedent + the standing order 'Proceed with unclaimed'"
+  priority: P1
+  wave: tutor-serving # the post-cutover feature band, second tranche — v2 the only system of record (bulletin 7e75626be9)
+  deps: [T-MIG-124, T-MIG-061, T-MIG-121]
+  execution_record: >
+    CLAIMED+EXECUTED under the operator's 'claim them' order (the exact items
+    the operator had asked to hear explained plainly: the CLA struggle-read
+    reuse + re-sort drift; the review-schedules writer band went to T-MIG-126;
+    the 061 research consumer stays T-MIG-061's own dormant title — no
+    double-entry). THE DIFF: apps/api/src/routes/cla.ts — the hand-rolled
+    3-method learnerModel (skillStates reuse + the relax map WITHOUT the
+    re-sort + the honest-empty struggle stub) replaced by ONE construction,
+    buildSqlLearnerModel(sql, defaultClock) (the adapter's 5-method port
+    satisfies the service's 3-method Pick and the registry's 2-method Pick
+    structurally; SubmitClock satisfies Clock); the now-unused learner/state
+    imports dropped; the header disclosure corrected of record (the
+    'queued intake item' language replaced by the reuse law). Frozen laws
+    now serve the CLA UNCHANGED from the tutor's DONE-of-record adapter:
+    struggle read contract in the QUERY, order law in the QUERY, teacher
+    mapping CONFIRMED -> teacherConfirmed / REJECTED -> teacherRejected
+    (policy filters, not the read), misconception readings relax (prior 0.3
+    / tau 180d, MED-2/ADR-032) + the effective-desc RE-SORT. DEGRADATION
+    LAW UNTOUCHED: empty tables degrade to the honest empty lists exactly
+    as the stub did (the no-signal EXPLANATION fall-through is the frozen
+    law for zero signals) — test-pinned byte-equivalent. TESTS +3 (1916 ->
+    1919 pass, 0 fail, 13 skip — EXACT delta): cla-service.test.ts (a) the
+    struggle read is the REAL frozen read (REJECTED 0.9 rides the read,
+    policy filters; teacher-CONFIRMED 0.4 meets the threshold outright —
+    below the 0.65 bar, proving the teacher law, not the probability law;
+    plan METACOGNITIVE_CHECK via telemetry event + lastContext; the frozen
+    WHERE rides the query text); (b) the empty substrate degrades to the
+    pre-reuse posture (EXPLANATION + 'no high-confidence diagnostic
+    signal'; 1 struggle read [policy alone], 2 misconception reads [the
+    GET_LEARNER_STATE tool view + the policy's full list — the CLA's own M3
+    tranche-2 law, pre-existing]); (c) the re-sort parity through the
+    CLA-injected port shape (fresh 0.6 outranks stale 0.9 @ 410d; the
+    5-method adapter satisfies ClaServiceDeps['learnerModel'] at
+    compile time). One fixture-defect round DISCLOSED: the ask result view
+    carries no interventionType field (it rides the telemetry event + the
+    plan in the generator context) — the assertions were re-targeted, zero
+    production changes; noUncheckedIndexedAccess caught the indexed reads
+    (non-null assertions + a length pin). GATES: typecheck x4 exit 0; suite
+    1932 total / 0 fail / 13 skip (1919 pass = 1916 of-record + 3 EXACT);
+    golden selftest OK; census --gate GREEN exit 0 (LIVE=0 preserved, zero
+    route-family changes, hub lane untouched — apps/api only).
+  scope:
+    - "apps/api/src/routes/cla.ts (the composition swap + the header law)"
+    - "apps/api/test/cla/cla-service.test.ts (+3 tests, the build() learnerModel override seam)"
+    - ".syllabai/** (this card + the receipt + the worklog)"
+  not_touched:
+    - "apps/hub/** (zero hub files)"
+    - "the tutor module / the adapter itself (REUSED, not modified)"
+    - "prod / Neon / Vercel / LLM (zero contact; the api redeploy that bakes this LIVE stays the SERIALIZED operator-gated residual — never self-fired)"
+progress_log:
+  - run: run-001-cla-read-alignment-r0 (2026-10-13T09:4xZ)
+    note: "the band landed (this commit): the reuse + the re-sort drift fix + 3 tests; gates green first-hand; receipt T-MIG-125/run-001-cla-read-alignment-r0.json; DONE flips on CI 2/2"

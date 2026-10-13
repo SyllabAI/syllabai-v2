@@ -1,0 +1,20 @@
+{
+  "run": "run-001",
+  "band": "T-MIG-126",
+  "title": "the review-schedules writer band DORMANCY of record (the posture card — zero code, the read side already correct)",
+  "operator_orders": [
+    "trace 1a1349f2f15356b1 — 'claim them' (the queued T-MIG-124 residual intake item 'review-schedules writer band dormant')"
+  ],
+  "executed_by": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "posture_of_record": {
+    "reads": "review_schedules appears in exactly ONE v2 read: services/tutor/learner-model.ts pendingReviews — select node_id from review_schedules where learner_id = ? and status = 'PENDING' and node_id = any(?) (the frozen findByLearnerIdAndNodeIdInAndStatus(PENDING) law; matched-topic scoped; an empty topic set queries nothing)",
+    "writers": "review_schedules has ZERO v2 writers (the substrate census of record, re-confirmed first-hand at tip 523b17c): skill_states + misconception_states have live writers (services/learner-model/model-update.ts via the assessment-evidence path); tutor_topic_engagements got the T-MIG-124 Phase-2 engagement recorder; struggle_inferences + review_schedules have nobody",
+    "frozen_provenance": "the core wrote review schedules from its review-scheduling flow (the forgetting-curve scheduler); v2 has no port of that flow yet — this card does NOT invent one (a writer is a product-law decision: what schedules, when, from which evidence — operator-gated)",
+    "dormancy_law": "until a writer lands, every pendingReviews read returns [] and every consumer degrades exactly as disclosed in T-MIG-124 run-001 (the s140 digest's spaced-review line and the learnerBriefOf review rows stay absent)",
+    "activation_law": "the port IS the seam — the moment ANY v2 writer appends PENDING rows, the downstream consumers go LIVE with ZERO read-side changes (test-pinned already: the tutor-routes.test.ts E2E drives 'from review_schedules' with a row and the prompt renders 'due for a spaced review')",
+    "sibling_item": "the fourth T-MIG-124 residual item, the '061 research consumer dormant', stays T-MIG-061's own disclosed-dormant title (the section-18 RESEARCH log consumer is NOT the engagement-row listener — T-MIG-124 Phase 2 landed the listener; the research consumer remains dormant by its own card's law) — NO double-entry filed"
+  },
+  "gates": "not applicable (zero code, zero config, zero prod) — the card + this receipt ARE the deliverable (the T-MIG-061 disclosure-card precedent)",
+  "scope": [".syllabai/**"],
+  "not_touched": ["apps/**", "prod / Neon / Vercel / LLM (zero contact)"]
+}

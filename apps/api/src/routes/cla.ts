@@ -77,17 +77,12 @@ import { resolveEmbeddingProvider } from "../services/content/retrieval";
 import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "../services/identity/users";
 import { defaultClock } from "../services/selfmark";
-import {
-  LEARNER_BDT_PAPER_DEFAULTS,
-  misconceptionStatesByProbability,
-  relaxedToPrior,
-  skillStatesByRecency,
-} from "../services/learner/state";
 import { buildClaContextResolver } from "../services/cla/context-resolver";
 import { buildClaService } from "../services/cla/service";
 import { claInteractionTelemetrySink } from "../services/learner/engagement-recorder";
 import { ClaAttemptRequiredError } from "../services/cla/leakage-policy";
 import { buildLlmChain, chainAsLlmProvider, type FailoverLlmChain } from "../services/llmchain";
+import { buildSqlLearnerModel } from "../services/tutor/learner-model";
 import {
   ArgumentError,
   TUTOR_UNAVAILABLE_MESSAGE,
@@ -304,11 +299,27 @@ export function createClaRouter(cla: ClaService): Hono {
  * listener — per-topic appends over tutor_topic_engagements with the
  * surface identity triple; the §18 RESEARCH consumer stays the disclosed
  * T-MIG-061 dormant title — this sink is the engagement-row listener, not
- * the research consumer). activeStruggleInferences has NO landed v2 read
- * here (the tutor module's T-MIG-124 Phase 1 adapter carries the
- * struggle-inference read for the TUTOR surface; the CLA reuse is a queued
- * intake item, disclosed) — the port returns the honest empty list, the
- * policy falls through to the no-signal EXPLANATION plan, disclosed.
+ * the research consumer).
+ *
+ * LEARNER-MODEL READS (T-MIG-125, operator order trace 1a1349f2f15356b1
+ * "claim them"): this composition REUSES the tutor module's Phase-1 adapter
+ * (services/tutor/learner-model.ts buildSqlLearnerModel) — the SAME frozen
+ * read laws the TUTOR surface serves, by construction rather than by
+ * re-declaration: (a) the struggle-inference read (expires_at > now AND
+ * superseded_at IS NULL, probability DESC + generatedAt DESC, the teacher
+ * CONFIRMED/REJECTED mapping verbatim — REJECTED rows ride the read and are
+ * filtered by the T-026 policy, frozen parity) — the pre-T-MIG-125
+ * honest-empty stub `async () => []` is extinct of record; (b) the
+ * misconception readings carry the MED-2/ADR-032 relax AND the frozen
+ * effective-desc RE-SORT (LearnerModelService :225-246 — a fresh 0.6
+ * diagnosis outranks a stale 0.9), which the pre-T-MIG-125 inline relax map
+ * here omitted (the disclosed re-sort drift — the CLA's ranking could
+ * diverge from the frozen law and from the tutor surface; extinct by
+ * construction now that BOTH surfaces read through the one adapter). The
+ * registry's GET_LEARNER_STATE view inherits the same re-sorted rankings.
+ * EMPTY tables degrade to the honest empty lists exactly as before (the
+ * no-signal EXPLANATION fall-through is untouched — the degradation is
+ * byte-equivalent, test-pinned).
  *
  * LLM SEAM OF RECORD (ADR-MIG-0002, operator directive ①): the §26.1 chain
  * rides the chainAsLlmProvider bridge — zero-key/test boots keep the honest
@@ -324,28 +335,11 @@ export function buildClaRouters(
   const databaseUrl = requireDatabaseUrl(env as { DATABASE_URL?: string });
   const sql = createSql(databaseUrl);
   const resolver = buildClaContextResolver({ sql, clock: defaultClock });
-  const learnerModel = {
-    skillStates: (learnerId: string) => skillStatesByRecency(sql, learnerId),
-    misconceptionReadings: async (learnerId: string) => {
-      const rows = await misconceptionStatesByProbability(sql, learnerId);
-      // LearnerModelService.misconceptionReadings :225-235 — the
-      // staleness-relaxed probability per MED-2/ADR-032 (the SAME
-      // composition the learner-me state view runs)
-      return rows.map((m) => ({
-        misconceptionNodeId: m.misconceptionNodeId,
-        effective: relaxedToPrior(
-          m.probability,
-          LEARNER_BDT_PAPER_DEFAULTS.prior,
-          m.lastEvidenceAt,
-          defaultClock.now(),
-          LEARNER_BDT_PAPER_DEFAULTS.stalenessTauDays,
-        ),
-      }));
-    },
-    // no landed v2 read (disclosed — the honest empty list; the policy's
-    // no-signal fall-through is the frozen law for zero inferences)
-    activeStruggleInferences: async () => [],
-  };
+  // T-MIG-125: the CLA learner-model port IS the shared tutor Phase-1
+  // adapter — the struggle-read reuse + the effective-desc re-sort land by
+  // construction (see the header law). SubmitClock satisfies the adapter's
+  // Clock ({now(): Date}) structurally.
+  const learnerModel = buildSqlLearnerModel(sql, defaultClock);
   const dormantClaLlm: LlmProvider = {
     available: () => false,
     generate: async () => ({ text: "", model: "dormant", providerName: "dormant" }),

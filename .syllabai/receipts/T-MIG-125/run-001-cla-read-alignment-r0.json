@@ -1,0 +1,49 @@
+{
+  "run": "run-001",
+  "band": "T-MIG-125",
+  "title": "the CLA learner-model read-alignment band: the struggle-read REUSE (the shared tutor Phase-1 adapter) + the effective-desc RE-SORT drift fix",
+  "operator_orders": [
+    "trace 1a1349f2f15356b1 — 'claim them' (the queued T-MIG-124 residual intake items; the same items the operator asked to hear explained plainly: 'the CLA struggle-read reuse + re-sort drift and the review-schedules writer band')"
+  ],
+  "claim_discipline": "standing order re-check FIRST: fetch-first (origin tip 523b17c == local after FF), board census first-hand 118/118 DONE — zero unclaimed on the board; the 'them' resolved to the T-MIG-124 residual intake items (none were cards yet); claim-and-run per the T-MIG-105 'claim it' precedent + the standing order 'Proceed with unclaimed'",
+  "executed_by": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "changes": {
+    "struggle_read_reuse": {
+      "file": "apps/api/src/routes/cla.ts",
+      "before": "activeStruggleInferences: async () => [] — the honest-empty stub, disclosed as 'the tutor adapter carries the struggle read; the CLA reuse is a queued intake item'",
+      "after": "const learnerModel = buildSqlLearnerModel(sql, defaultClock) — ONE construction; the frozen read laws serve BOTH surfaces by construction: expires_at > now AND superseded_at IS NULL, probability DESC + generated_at DESC, teacher CONFIRMED -> teacherConfirmed / REJECTED -> teacherRejected (REJECTED rides the read, the T-026 policy filters — frozen parity)",
+      "import_hygiene": "the now-unused learner/state imports (skillStatesByRecency, misconceptionStatesByProbability, relaxedToPrior, LEARNER_BDT_PAPER_DEFAULTS) dropped; the header disclosure corrected of record",
+      "type_law": "the adapter's 5-method port satisfies ClaServiceDeps['learnerModel'] (3-method Pick) AND ClaToolRegistryDeps['learnerModel'] (2-method Pick) structurally; SubmitClock satisfies Clock"
+    },
+    "re_sort_drift_fix": {
+      "law": "frozen LearnerModelService.misconceptionReadings :225-246 — after the MED-2/ADR-032 relax (prior 0.3 / tau 180d), rows are RE-SORTED by effective desc: a fresh 0.6 diagnosis outranks a stale 0.9",
+      "before": "the CLA's inline relax map returned rows in the repository's raw-probability order — the re-sort was omitted (the disclosed drift: the CLA's ranking could diverge from the frozen law and from the tutor surface)",
+      "after": "the drift is extinct BY CONSTRUCTION — both surfaces read through the one adapter; the registry's GET_LEARNER_STATE view inherits the re-sorted rankings"
+    },
+    "degradation_law": "EMPTY tables degrade to the honest empty lists exactly as the stub did (the no-signal EXPLANATION fall-through untouched) — test-pinned"
+  },
+  "tests": {
+    "delta": "+3 (1916 -> 1919 pass, EXACT; 0 fail, 13 skip; bun reports 1932 total incl. skips)",
+    "file": "apps/api/test/cla/cla-service.test.ts",
+    "cases": [
+      "the struggle read is the REAL frozen read: REJECTED 0.9 rides the read and the T-026 policy filters it; teacher-CONFIRMED 0.4 meets the threshold outright (below the 0.65 bar — proving the teacher law, not the probability law); plan METACOGNITIVE_CHECK via the telemetry event + lastContext; the frozen WHERE rides the query text",
+      "the empty substrate degrades to the pre-reuse posture exactly: EXPLANATION + 'no high-confidence diagnostic signal'; 1 struggle read (policy alone), 2 misconception reads (the GET_LEARNER_STATE tool view + the policy's full list — the CLA's own M3 tranche-2 law, pre-existing)",
+      "the re-sort parity through the CLA-injected port shape: fresh 0.6 outranks stale 0.9 @ 410d (relaxed ~0.36); the 5-method adapter satisfies ClaServiceDeps['learnerModel'] at compile time"
+    ],
+    "seam": "build() gained the learnerModel override (the injected adapter runs over its OWN substring-routed substrate sql, decoupled from the service fixture's regex routes)"
+  },
+  "defect_rounds_disclosed": [
+    "assertion-target miss: the ask result view carries NO interventionType field (it rides the telemetry event + the plan in the generator context) — the assertions re-targeted, zero production changes",
+    "noUncheckedIndexedAccess TS2532 on the indexed reading rows — length pin + non-null assertions (test-side)"
+  ],
+  "gates": {
+    "typecheck_x4": "exit 0 (contracts, shared, db, api)",
+    "suite": "1932 total / 0 fail / 13 skip = 1919 pass = 1916 of-record + 3 EXACT",
+    "golden_selftest": "OK",
+    "census_gate": "GREEN exit 0 — LIVE=0 preserved, zero route-family changes, hub lane untouched"
+  },
+  "scope": ["apps/api/src/routes/cla.ts", "apps/api/test/cla/cla-service.test.ts", ".syllabai/**"],
+  "not_touched": ["apps/hub/**", "services/tutor/** (the adapter REUSED, not modified)", "prod / Neon / Vercel / LLM (zero contact)"],
+  "residual": "the api redeploy that bakes T-MIG-125 LIVE on the api-of-record stays the SERIALIZED operator-gated residual (the 093/110 class — never self-fired); the serving bundle currently carries the pre-T-MIG-125 CLA reads (the honest-empty struggle stub + the un-re-sorted rankings) until that bake",
+  "credentials": "PAT/vcp inline-only, memory-only, never persisted; zero credential contact this run (no deploys, no API writes)"
+}
