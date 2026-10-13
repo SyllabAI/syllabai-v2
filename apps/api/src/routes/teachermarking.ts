@@ -42,9 +42,14 @@
  * marksAwarded 0..99 + perPointDecisions ≤50 + comments ≤4000,
  * SmartMarkBatchRequest 1..50 answer ids deduplicated order-preserving).
  *
- * LLM seams: the live factory wires the DORMANT generator (refuses with
- * CANDIDATE_GENERATION_UNAVAILABLE) and a noop publisher — identical to the
- * 032 router posture; the κ gate and evidence contract are untouched.
+ * LLM seams: the live factory rides the ONE §26.1 chain (ADR-MIG-0002) —
+ * the ③ activation wave (operator trace 1a13690bae182079 "teachers get AI
+ * help now"): keyed boots generate for real with failover (the same
+ * chainAsCandidateGenerator bridge the student surface rides); zero-key and
+ * SYLLABAI_LLM_MODE=test boots stay fail-closed (the chain refuses → the
+ * pipeline's rejection decisions — the captured keyless laws never reach the
+ * generator, so the golden rig is byte-untouched); the noop publisher and
+ * the κ gate + evidence contract are untouched.
  */
 import { Hono, type Context } from "hono";
 import type { ZodError } from "zod";
@@ -71,7 +76,11 @@ import {
   smartMarkBatchRequestSchema,
   kappaScopeRequestSchema,
 } from "@syllabai/contracts";
-import { dormantCandidateGenerator } from "./smartmark";
+import {
+  buildLlmChain,
+  chainAsCandidateGenerator,
+  type FailoverLlmChain,
+} from "../services/llmchain";
 
 const UUID_RE = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
 
@@ -367,7 +376,10 @@ export function createTeacherMarkingRouter(
 }
 
 /**
- * Live factory — dormant LLM seams (disclosed, the 032 posture): the teacher
+ * Live factory — the LLM seam rides the ONE §26.1 chain (ADR-MIG-0002; the
+ * ③ activation wave, operator trace 1a13690bae182079 — the teacher factory
+ * now mirrors the student surface's posture: keyed boots mark for real with
+ * failover, zero-key/TEST stay fail-closed byte-identical): the teacher
  * per-answer pipeline composes the ONE shared SmartMarkService (never forks
  * it); the graded-evidence publisher stays noop until the evidence wave owns
  * it; clock defaults to the wall clock (queue waiting-age reads).
@@ -378,13 +390,15 @@ export function buildTeacherMarkingRouters(
     generator?: MarkingCandidateGenerator;
     publisher?: GradedEvidencePublisher;
     clock?: SubmitClock;
+    chain?: FailoverLlmChain;
   } = {},
 ) {
   const databaseUrl = requireDatabaseUrl(env as { DATABASE_URL?: string });
   const sql = createSql(databaseUrl);
+  const chain = seams.chain ?? buildLlmChain(env);
   const module = buildTeacherMarkingModule(
     sql,
-    seams.generator ?? dormantCandidateGenerator,
+    seams.generator ?? chainAsCandidateGenerator(chain),
     seams.publisher ?? { publishGraded: async () => true },
     seams.clock ?? { newId: () => crypto.randomUUID(), now: () => new Date() },
   );

@@ -1,0 +1,49 @@
+version: 1
+task:
+  id: T-MIG-124
+  title: "The teacher LLM generator activation wave (③) — the teacher marking factory rides the ONE §26.1 chain (chainAsCandidateGenerator), ending the dormant-by-design 032 posture so keyed boots mark teacher-side for real"
+  owner: "r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
+  status: 'IN_REVIEW # run-001 flip GREEN (gates first-hand: typecheck x4 exit 0, suite 1932/0/13skip, census --gate GREEN exit 0 LIVE=0 pins=7, golden selftest OK); the bake redeploy + keyed-boot verification = run-002 (the operator lever, pulled by trace 1a13690bae182079)'
+  claimed_at: "2026-10-14T0x:xxZ"
+  claimed_by_order: "operator trace 1a13690bae182079 'teachers get AI help now' (the ③ activation wave pulled)"
+  priority: P1
+  wave: activation # the ADR-MIG-0002 class: the env-keyed chain is of record; this card flips the LAST dormant seam onto it (the student surface flipped 2026-10-08)
+  deps: [T-MIG-032, T-MIG-116, T-MIG-122, ADR-MIG-0002]
+  execution_record: >
+    FILED+CLAIMED on the operator order. THE CRUX (verified first-hand
+    pre-act): the api project env ALREADY carries the keyed chain
+    (SYLLABAI_LLM_{GROQ,GEMINI,OPENROUTER}_API_KEY + the EMBEDDING seam set on
+    production, names-only read via the Vercel API; corroborated by the
+    T-MIG-125 run-003 tutor canary = real groq generation through the serving
+    carrier dpl_BKyamqdx) — the ONLY dormant seam left was the teacher
+    factory's hard-wired default: routes/teachermarking.ts wired
+    seams.generator ?? dormantCandidateGenerator (the 032 posture, disclosed
+    "by standing design" in the audit bd8b485). THE FLIP: the factory now
+    mirrors the student surface (routes/smartmark buildSmartMarkRouters)
+    exactly — const chain = seams.chain ?? buildLlmChain(env);
+    seams.generator ?? chainAsCandidateGenerator(chain) — keyed boots mark for
+    real with failover (Groq->Gemini->OpenRouter, budget/cooldown law); TEST
+    and zero-key boots stay fail-closed (the chain refuses ->
+    CandidateGenerationError -> the SmartMarkPipeline rejection decisions —
+    byte-identical observable behavior for every captured keyless law: the
+    T-MIG-116 band captured ONLY the deterministic pre-gates (404s +
+    SCHEME_NOT_VALIDATED refusal view), which fire BEFORE the generator is
+    reached (TeacherSmartMarkService :596-598 precedes pipeline.run :620), so
+    the golden rig is untouched; the dormant CANDIDATE_GENERATION_UNAVAILABLE
+    placeholder reason was never a captured law — the bridge's
+    PROVIDER_UNAVAILABLE is the frozen failure-classifier vocabulary).
+    STANDING LAWS UNTOUCHED: the kappa release gate (fail-closed, threshold
+    0.6, newest ALL/paper scope), the append-only smart_mark_results rows with
+    raw_output forensics, the guarded evidence flip, the noop publisher until
+    the evidence wave owns it, the two-envelope SmartMarkView serving law
+    (T-MIG-122), the explicit-seam win (ADR-MIG-0001 capture/replay proxy
+    rides seams.generator/chain unchanged; the dormant pair stays exported
+    from routes/smartmark for the directly-constructed dormant discipline
+    pin, test/smartmark/routes.test.ts :363). GATES (first-hand): typecheck
+    x4 exit 0 (contracts/db/shared/api); suite 1932/0/13skip (the audit's
+    1919 + the fleet's 125/126 tests; ZERO failures); census --gate GREEN
+    exit 0 LIVE=0 pins=7; golden selftest OK. SANDBOX DISCLOSURE (zero repo
+    defect, the audit's 17th-reset class recurred): the 18th reset restored
+    the stale /home/z/my-project repo-root node_modules (pre-#174 contracts
+    symlinks) — quarantined sandbox-local + bun install --frozen-lockfile
+    in-repo -> EXACT gates.
