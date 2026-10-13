@@ -91,7 +91,19 @@
  *     geometry, derived from pdf.js's own viewport transform);
  *   - the pages region is a focusable role=region (arrow keys scroll,
  *     +/−/0 zoom); each page holder is a labelled role=img; unpainted
- *     placeholders carry a "Page N" ghost (CSS .pp-holder:empty).
+ *     placeholders carry a "Page N" ghost (CSS .pp-holder:empty);
+ *   - GESTURE ZOOM (s144, operator: "pinching zooms the whole website"): a
+ *     two-finger pinch on the pages region steps the SAME ladder as the
+ *     toolbar instead of the browser's page zoom — the page pinch is stopped
+ *     where it must be per platform (touch-action pan-x pan-y on the scroller
+ *     for Android/Chromium; a non-passive gesture* preventDefault for iOS
+ *     Safari, which ignores touch-action AND viewport meta for page pinch),
+ *     and the zoom itself is uniform everywhere: pointer-based pinch →
+ *     zoomBy (honest ceiling + anchor-preserving refreeze apply). ctrl+wheel
+ *     — and a Mac trackpad pinch, which arrives as the same ctrl+wheel
+ *     stream — steps the ladder too; plain wheel scroll stays native.
+ *     Deliberately NO site-wide user-scalable=no: the rest of the hub keeps
+ *     native zoom (a11y), and iOS would ignore it anyway.
  *
  * PDFs stream straight from the syllabai-pastpapers corpus on
  * raw.githubusercontent.com (CORS-enabled); nothing is proxied or vendored
@@ -201,6 +213,17 @@ const FIT_LADDER_IDX = ZOOM_LADDER.indexOf(1);
 const MIN_ZOOM_PCT = Math.round(ZOOM_LADDER[0] * 100);
 /** pdf.js render-scale ceiling (canvas memory guard; also honesty cap). */
 const MAX_RENDER_SCALE = 4;
+/**
+ * s144 (operator: "pinching zooms the whole website") — gesture zoom tuning.
+ * PINCH_STEP_RATIO: the finger-distance growth since the last commit that
+ * earns one ladder step (the reference rebases on EVERY commit) — 1.2 makes
+ * one natural pinch-spread ≈ one step without thrashing the tightest ladder
+ * boundary (1.5→1.75 is 1.167). WHEEL_STEP_PX: ctrl+wheel deltaY per step —
+ * one Chrome wheel notch is exactly 100px, and a Mac trackpad pinch arrives
+ * as the same ctrl+wheel stream in smaller increments.
+ */
+const PINCH_STEP_RATIO = 1.2;
+const WHEEL_STEP_PX = 100;
 type Rot = 0 | 90 | 180 | 270;
 /** The fit base the zoom ladder multiplies: fill the pane's width, or frame
  *  the whole page (width AND height) inside the scroller (s142). */
@@ -402,6 +425,17 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
   const numPagesRef = useRef(0);
   const selfHostRef = useRef<FindHost | null>(null);
   const findInputRef = useRef<HTMLInputElement>(null);
+
+  // ── gesture zoom state (s144) ───────────────────────────────────────────
+  /** live touch pointers on the pages region (viewport coordinates) */
+  const pinchPtsRef = useRef(new Map<number, { x: number; y: number }>());
+  /** the two pointers participating in the active pinch (null = not pinching;
+   *  a third finger is ignored until one of the pair lifts) */
+  const pinchPairRef = useRef<[number, number] | null>(null);
+  /** finger distance at the last committed step (the rebase reference) */
+  const pinchDistRef = useRef(0);
+  /** ctrl+wheel / trackpad-pinch deltaY accumulator (clamped to ±2 steps) */
+  const wheelAccRef = useRef(0);
 
   // ── react state (kept minimal; layout itself is imperative) ──────────────
   const [reloadKey, setReloadKey] = useState(0);
@@ -1512,6 +1546,122 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
     return indexProgress ? `${base} · indexing…` : base;
   })();
 
+  // ── gesture zoom (s144): pinch = PANE zoom, not page zoom ───────────────
+  // The browser's page pinch must be stopped per platform: iOS Safari honors
+  // NEITHER touch-action NOR viewport meta for page pinch (user-scalable is
+  // ignored since iOS 10) — only a non-passive gesture* preventDefault does
+  // it; Android/Chromium never fires gesture* — the scroller's touch-action
+  // pan-x pan-y (in the JSX) keeps one-finger scroll native while leaving a
+  // two-finger pinch unclaimed, so the pointer handlers below receive it.
+  // The zoom itself is uniform on every platform: two live touch pointers on
+  // the pages region, distance ratio rebased per commit, stepped through the
+  // SAME zoomBy path as the toolbar (honest ceiling clamp + anchor-preserving
+  // refreeze apply). ctrl+wheel — and a Mac trackpad pinch, which arrives as
+  // ctrl+wheel — accumulates deltaY into ladder steps; plain wheel scroll is
+  // untouched. Known v1 tradeoff: on a MIXED pan+pinch gesture the browser
+  // may claim the pan and pointercancel the pinch (scroll wins) — committing
+  // steps on pinch-in-place is the contract; full gesture arbitration would
+  // mean hand-rolling momentum scrolling, which is not worth it.
+  useEffect(() => {
+    if (phase !== "ready" || !active) return;
+    const el = scrollRef.current;
+    if (!el) return;
+
+    // iOS page-pinch stop (gesture* events fire only in Safari; aborting
+    // them does not touch the pointer streams)
+    const stopGesture = (e: Event) => e.preventDefault();
+    el.addEventListener("gesturestart", stopGesture);
+    el.addEventListener("gesturechange", stopGesture);
+    el.addEventListener("gestureend", stopGesture);
+
+    const dist = (a: { x: number; y: number }, b: { x: number; y: number }) =>
+      Math.hypot(a.x - b.x, a.y - b.y);
+
+    /** commit at most one ladder step for the current pair distance */
+    const pinchStep = () => {
+      const pair = pinchPairRef.current;
+      if (!pair || pinchDistRef.current <= 0) return;
+      const a = pinchPtsRef.current.get(pair[0]);
+      const b = pinchPtsRef.current.get(pair[1]);
+      if (!a || !b) return;
+      const d = dist(a, b);
+      const ratio = d / pinchDistRef.current;
+      if (ratio >= PINCH_STEP_RATIO) {
+        zoomBy(1); // pinch out = zoom in
+        pinchDistRef.current = d; // rebase — the next step needs +20% again
+      } else if (ratio <= 1 / PINCH_STEP_RATIO) {
+        zoomBy(-1);
+        pinchDistRef.current = d;
+      }
+    };
+
+    const onPointerDown = (e: PointerEvent) => {
+      if (e.pointerType !== "touch") return;
+      pinchPtsRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (!pinchPairRef.current && pinchPtsRef.current.size >= 2) {
+        const ids = [...pinchPtsRef.current.keys()];
+        pinchPairRef.current = [ids[0], ids[1]];
+        const a = pinchPtsRef.current.get(ids[0])!;
+        const b = pinchPtsRef.current.get(ids[1])!;
+        pinchDistRef.current = dist(a, b);
+      }
+    };
+    const onPointerMove = (e: PointerEvent) => {
+      if (e.pointerType !== "touch" || !pinchPtsRef.current.has(e.pointerId)) return;
+      pinchPtsRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      pinchStep();
+    };
+    const endPointer = (e: PointerEvent) => {
+      if (!pinchPtsRef.current.delete(e.pointerId)) return;
+      const pair = pinchPairRef.current;
+      if (pair && (pair[0] === e.pointerId || pair[1] === e.pointerId)) {
+        pinchPairRef.current = null;
+        pinchDistRef.current = 0;
+      }
+    };
+
+    const onWheel = (e: WheelEvent) => {
+      if (!(e.ctrlKey || e.metaKey)) return; // plain wheel scroll stays native
+      e.preventDefault(); // stop the browser's ctrl+wheel page zoom
+      // normalise line/page-mode deltas to px, then accumulate into steps
+      const dy =
+        e.deltaMode === 1 ? e.deltaY * 16 : e.deltaMode === 2 ? e.deltaY * 100 : e.deltaY;
+      let acc = Math.max(
+        -2 * WHEEL_STEP_PX,
+        Math.min(2 * WHEEL_STEP_PX, wheelAccRef.current + dy),
+      );
+      while (acc <= -WHEEL_STEP_PX) {
+        zoomBy(1); // wheel up / trackpad pinch out = zoom in
+        acc += WHEEL_STEP_PX;
+      }
+      while (acc >= WHEEL_STEP_PX) {
+        zoomBy(-1);
+        acc -= WHEEL_STEP_PX;
+      }
+      wheelAccRef.current = acc;
+    };
+
+    el.addEventListener("pointerdown", onPointerDown);
+    el.addEventListener("pointermove", onPointerMove);
+    el.addEventListener("pointerup", endPointer);
+    el.addEventListener("pointercancel", endPointer);
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => {
+      el.removeEventListener("gesturestart", stopGesture);
+      el.removeEventListener("gesturechange", stopGesture);
+      el.removeEventListener("gestureend", stopGesture);
+      el.removeEventListener("pointerdown", onPointerDown);
+      el.removeEventListener("pointermove", onPointerMove);
+      el.removeEventListener("pointerup", endPointer);
+      el.removeEventListener("pointercancel", endPointer);
+      el.removeEventListener("wheel", onWheel);
+      pinchPtsRef.current.clear();
+      pinchPairRef.current = null;
+      pinchDistRef.current = 0;
+      wheelAccRef.current = 0;
+    };
+  }, [phase, active, zoomBy]);
+
   /** The zoom buttons' honest read-out — the base is named: fit width, fit
    *  page, or the halved spread width when pairs are on (s143). */
   const zoomTitle = `Zoom: ${zoomPct}% of ${
@@ -1814,9 +1964,12 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
           ref={scrollRef}
           tabIndex={0}
           role="region"
-          aria-label={`${label} — pages (arrow keys scroll, + − 0 zoom)`}
+          aria-label={`${label} — pages (arrow keys scroll, + − 0 or ctrl+scroll zoom)`}
           onKeyDown={onScrollerKeyDown}
-          className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 py-3 outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:ring-inset"
+          /* s144: pan-x pan-y keeps one-finger scroll native AND leaves the
+           * two-finger pinch unclaimed for the pointer handlers (Android/
+           * Chromium stop — iOS needs the gesture* preventDefault above) */
+          className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 py-3 outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:ring-inset [touch-action:pan-x_pan-y]"
         >
           {(() => {
             const holder = (n: number) => (

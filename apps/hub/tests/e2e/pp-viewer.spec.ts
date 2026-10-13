@@ -157,6 +157,112 @@ test("viewer: zoom ladder shows honest round steps and resets", async ({ page })
   await expect(zoomOut).toBeEnabled();
 });
 
+test.describe("gesture zoom (s144)", () => {
+  test.use({ hasTouch: true });
+
+  // chromium-only dispatch: page.mouse.wheel cannot carry the ctrl modifier,
+  // but a real ctrl+wheel (and a Mac trackpad pinch, which emits the same
+  // ctrl+wheel stream) must step the PANE ladder and never the browser page
+  // zoom — the non-passive preventDefault in the pane's wheel handler.
+  test("viewer: ctrl+wheel steps the ladder; plain wheel scroll is untouched", async ({ page }) => {
+    await readyViewer(page);
+    const zoomIn = page.getByRole("button", { name: "Zoom in" });
+    await expect(zoomIn).toHaveAttribute("title", "Zoom: 100% of fit width");
+    const vwBefore = await page.evaluate(() => document.documentElement.clientWidth);
+    // dispatch INSIDE the scroller's visible box — a page holder extends
+    // ~1600px below the fold on this viewport, and events aimed past the
+    // viewport are dropped before any element sees them
+    const box = (await page.locator(".pp-pane .overflow-y-auto").first().boundingBox())!;
+    const cdp = await page.context().newCDPSession(page);
+    // Input.dispatchMouseEvent modifiers bitmask: 2 = Ctrl
+    const ctrlWheel = (deltaY: number) =>
+      cdp.send("Input.dispatchMouseEvent", {
+        type: "mouseWheel",
+        x: Math.round(box.x + box.width / 2),
+        y: Math.round(box.y + box.height / 2),
+        deltaX: 0,
+        deltaY,
+        modifiers: 2,
+      });
+    await ctrlWheel(-100); // one wheel notch up = one ladder step in
+    await expect(zoomIn).toHaveAttribute("title", "Zoom: 125% of fit width");
+    await ctrlWheel(-100);
+    await expect(zoomIn).toHaveAttribute("title", "Zoom: 150% of fit width");
+    await ctrlWheel(100); // ctrl+wheel down steps back out
+    await expect(zoomIn).toHaveAttribute("title", "Zoom: 125% of fit width");
+    // the page itself never zoomed: the layout viewport width is unchanged
+    // (a leaked ctrl+wheel would zoom the BROWSER page, shrinking it)
+    await expect
+      .poll(() => page.evaluate(() => document.documentElement.clientWidth))
+      .toBe(vwBefore);
+    // plain wheel (no ctrl) never touches the ladder — it scrolls instead
+    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    await page.mouse.wheel(0, -240);
+    await expect(zoomIn).toHaveAttribute("title", "Zoom: 125% of fit width");
+  });
+
+  // The Android/Chromium pinch: the pages region's touch-action pan-x pan-y
+  // leaves a two-finger pinch unclaimed, so the pointer-based tracker receives
+  // it and steps the same ladder. Synthesized via CDP touch events (chromium
+  // translates them to touch PointerEvents).
+  test("viewer: two-finger pinch steps the ladder inside the pane", async ({ page }) => {
+    await readyViewer(page);
+    const zoomIn = page.getByRole("button", { name: "Zoom in" });
+    await expect(zoomIn).toHaveAttribute("title", "Zoom: 100% of fit width");
+    // the Android stop of record: the browser may not claim the pinch here
+    const touchAction = await page
+      .locator(".pp-pane .overflow-y-auto")
+      .first()
+      .evaluate((el) => getComputedStyle(el).touchAction);
+    expect(touchAction).toBe("pan-x pan-y");
+    // pinch inside the scroller's VISIBLE box (holders extend below the fold)
+    const box = (await page.locator(".pp-pane .overflow-y-auto").first().boundingBox())!;
+    const cx = box.x + box.width / 2;
+    const cy = box.y + box.height / 2;
+    const cdp = await page.context().newCDPSession(page);
+    const two = (type: "touchStart" | "touchMove" | "touchEnd", spread: number) =>
+      cdp.send("Input.dispatchTouchEvent", {
+        type,
+        touchPoints:
+          type === "touchEnd"
+            ? []
+            : [
+                { x: cx - spread / 2, y: cy, id: 0 },
+                { x: cx + spread / 2, y: cy, id: 1 },
+              ],
+      });
+    await two("touchStart", 20);
+    // dispatch 1 (20→50) emits one pointermove per finger: sub-events 35
+    // (1.75×) and 50 (1.43×) — both clear the 1.2 rebase threshold → 2
+    // commits: 100→125→150%. Assert BEFORE dispatching more (a real touch
+    // delivers the same per-finger stream, just slower).
+    await two("touchMove", 50);
+    await page.waitForTimeout(60);
+    await expect(zoomIn).toHaveAttribute("title", "Zoom: 150% of fit width");
+    // the rest keep clearing 1.2 per sub-event until the ladder clamps at
+    // this pane's honest ceiling (fit-width ≈1.9 base → MAX_RENDER_SCALE 4
+    // caps the ladder at 200%) — the readout pins there
+    for (const spread of [90, 130, 170]) {
+      await two("touchMove", spread);
+      await page.waitForTimeout(60);
+    }
+    await two("touchEnd", 0);
+    await expect(zoomIn).toHaveAttribute("title", "Zoom: 200% of fit width");
+    // pinch-in walks back down: 170→90 emits sub-events 130 (0.76×) and 90
+    // (0.69×), 90→50 emits 70 (0.78×) and 50 (0.71×) — all under 1/1.2, so
+    // 4 commits: 200→175→150→125→100 (the full way home)
+    await two("touchStart", 170);
+    for (const spread of [90, 50]) {
+      await two("touchMove", spread);
+      await page.waitForTimeout(60);
+    }
+    await two("touchEnd", 0);
+    await expect(zoomIn).toHaveAttribute("title", "Zoom: 100% of fit width");
+    // the canvas survived every refit (double-buffered — never blanked)
+    await expect(page.locator(".pp-pane canvas").first()).toBeVisible();
+  });
+});
+
 test("viewer: fit-page preset frames the whole page inside the scroller", async ({ page }) => {
   await readyViewer(page);
   const holder = page.getByRole("img", { name: "Page 1 of 3" });
