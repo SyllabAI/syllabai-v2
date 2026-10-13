@@ -7788,3 +7788,17 @@ Work Log:
 
 Stage Summary:
 - S144 LANDED ON BRANCH t-mig-127/r0 @ c198b1e base, validated 13/13; residuals: branch push + PR open are credential-gated (previous PAT didn't survive the session continuation; rotate it anyway — it transited chat); flip to IN_REVIEW at PR open; CI run ids append as run-002. Disclosed v1 tradeoff: mixed pan+pinch gestures may pointercancel (scroll wins; pinch-in-place is the contract).
+
+---
+Task ID: T-MIG-127 run-002 (operator credential handoff, session trace 1a136a0517772d1d)
+Agent: r0 (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: push t-mig-127/r0 + open the PR of record
+
+Work Log:
+- Credential received under the inline-only law (env inside single shell invocations; never written to disk, never printed into any record).
+- Race-guard fetch-first: origin/main had moved c198b1e→350487b while the branch was staged (T-MIG-124 PR #183, parallel lane) → rebased the 3 commits onto the new tip: ZERO file collisions (api-only delta: teachermarking.ts + T-MIG-124 .syllabai files), stat unchanged 5 files +384/−3, post-rebase tsc --noEmit exit 0.
+- ONE disclosed hiccup: the first push failed on an EMPTY credential — the sandbox runs a fresh shell per tool call, so the exported token did not survive between invocations (canary-proven first-hand); retried as one combined invocation: branch pushed (efdbe15 on origin) + PR #184 opened against main @ 350487b. No partial writes, no force.
+- Task flipped IN_REVIEW; receipts/T-MIG-127/run-002-pr-open.json filed.
+
+Stage Summary:
+- T-MIG-127 IN_REVIEW at PR #184 (head efdbe15, base 350487b). REMINDER OF RECORD: the handed PAT transited chat — rotate it after this PR's credential needs end. LANE R0: PR #184 awaiting review/merge.

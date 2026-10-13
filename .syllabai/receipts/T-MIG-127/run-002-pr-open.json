@@ -1,0 +1,26 @@
+{
+  "run": "run-002",
+  "band": "T-MIG-127",
+  "title": "PR open of record — branch pushed, PR #184 opened, task flipped IN_REVIEW",
+  "executed_by": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "pr": {
+    "number": 184,
+    "url": "https://github.com/SyllabAI/syllabai-v2/pull/184",
+    "head": "t-mig-127/r0 @ efdbe154fec98cb3e24bde5724b68c6921aa7ae6",
+    "base": "main @ 350487b54667f0d2cd017616ce54bed2d9d13e21",
+    "title": "T-MIG-127: PdfPane gesture zoom — pinch steps the PANE ladder instead of the whole page + ctrl+wheel zoom (s144)"
+  },
+  "credential_posture": "operator-handed PAT used INLINE ONLY (env var inside single shell invocations; never written to disk, never printed into any record); the token transited chat and MUST be rotated once this PR's credential needs end (standing law)",
+  "mid_flight_events": [
+    "race-guard fetch-first caught origin/main moved c198b1e -> 350487b while the branch was staged (T-MIG-124 PR #183 landed by the parallel lane) — DISCLOSED",
+    "rebased the 3 T-MIG-127 commits onto 350487b: ZERO file collisions (the main delta was api-only: teachermarking.ts + T-MIG-124 .syllabai files), stat unchanged 5 files +384/-3, merge-base == main tip",
+    "post-rebase insurance: bunx tsc --noEmit (apps/hub) exit 0",
+    "ONE disclosed push-auth hiccup: the first push attempt failed because the sandbox runs a fresh shell per tool call (the exported GH_TOKEN did not survive between invocations -> empty credential); diagnosed first-hand with an env canary, retried as one combined invocation, push + PR open succeeded — no partial writes, no force, no retry storm"
+  ],
+  "writes_ledger": [
+    "remote branch t-mig-127/r0 created on origin (efdbe15) — the ONLY remote write besides the PR object itself",
+    "PR #184 opened (base main)",
+    "this receipt + task yaml IN_REVIEW flip + .syllabai/worklog.md append ride the branch as the run-002 commit"
+  ],
+  "ci": "ids + conclusion append as run-003 when the PR CI concludes (babysat lane-side)"
+}

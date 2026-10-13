@@ -3,7 +3,7 @@ task:
   id: T-MIG-127
   title: "PdfPane gesture zoom (s144): a two-finger pinch on the pages region steps the PANE zoom ladder instead of the browser page zoom (iOS gesture* preventDefault + Android touch-action pan-x pan-y + pointer-based pinch → the existing zoomBy path), plus ctrl+wheel / Mac trackpad-pinch ladder stepping — e2e-pinned both ways; deliberately NO site-wide user-scalable=no"
   owner: "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)"
-  status: IN_PROGRESS # branch t-mig-127/r0 built + validated lane-side; branch PUSH + PR open are credential-gated (operator handoff) — flip to IN_REVIEW at PR open
+  status: IN_REVIEW # PR #184 open of record (branch t-mig-127/r0 @ efdbe15, base 350487b) — receipts attached; CI ids append as run-003
   claimed_at: "2026-10-13T18:39:58Z"
   claimed_by_order: "operator traces 1a1360d05c8bd7a5 ('audit the pdf viewer') + 1a13629f5c00b479 (the symptom: 'when we try to zoom using pinching, it zooms the whole website, instead of the pdf page') + 1a13677fbff57f09 ('Go + ctrl+wheel zoom as well')"
   priority: P1
@@ -59,3 +59,5 @@ task:
 progress_log:
   - run: run-001-gesture-zoom-r0 (2026-10-13T18:39:58Z)
     note: "claim-in-first-commit; implementation + e2e validated lane-side 13/13; branch push + PR open pending credential handoff (the previous PAT did not survive the session continuation and must be rotated anyway — it transited chat)"
+  - run: run-002-pr-open (2026-10-13T19:06:39Z)
+    note: "operator credential handoff received (inline-only law): fetch-first race-guard caught main moved c198b1e→350487b (T-MIG-124 PR #183 landed mid-flight) → rebased 3 commits, zero file collisions (api-only delta), post-rebase tsc exit 0, stat unchanged 5 files +384/−3; branch pushed + PR #184 opened (receipt run-002); ONE disclosed push-auth hiccup: fresh-shell-per-invocation reset the env token between tool calls — diagnosed, retried combined, succeeded; no partial/force writes; CI ids append as run-003"
