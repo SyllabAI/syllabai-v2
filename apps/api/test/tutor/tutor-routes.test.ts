@@ -746,14 +746,11 @@ describe("T-MIG-124 the wired learner model + engagement recorder", () => {
       identityParsed: false,
       identityLabel: null,
     });
+    // no sessionId in the ask body → no §22 pre-flight probes; no session
+    // routes needed (ownedRoute takes uuid STRINGS — the Row-shaped
+    // sessionRow() was a type defect, caught by CI, disclosed run-001)
     const { app } = makeApp(
-      {
-        "from tutor_sessions where id =": ownedRoute([sessionRow()]),
-        "update tutor_sessions set course_ref": [],
-        "select seq from tutor_session_turns": [],
-        "insert into tutor_session_turns": [],
-        "update tutor_sessions": [],
-      },
+      {},
       { resolver, llm: capturingLlm, learnerModel, kgGraph: topicGraph },
     );
     const res = await ask(app, { question: "explain mole calculations" });

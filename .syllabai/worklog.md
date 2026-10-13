@@ -7643,3 +7643,15 @@ Work Log:
 
 Stage Summary:
 - T-MIG-124 IN_REVIEW of record (DONE flips on CI 2/2): the tutor module now SERVES personalization — the T-026 policy + s140 digest + learner brief read real tables (honest-empty where no v2 writer exists: struggle_inferences/review_schedules disclosed), and every served ask/CLA interaction appends its deterministic engagement rows (feeding the digest + NBA + teacher analytics from the first baked ask). Residual: the api redeploy (the serialized operator-gated act) bakes it LIVE on the api-of-record. Zero prod/Neon/Vercel/LLM contact; no force; PAT inline-only.
+
+---
+Task ID: T-MIG-124-RUN-001-FIX-1 (CI verify red at 0818c9f -> the fix round)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- CI verify FAILED at typecheck on 0818c9f: test/tutor/tutor-routes.test.ts(751,55) TS2322 (ownedRoute([sessionRow()]) — a Row passed where the uuid-STRING id list is typed). The local pre-push typecheck had EXITED 0 — the incremental tsc state masked the fresh-check error; the CI fresh typecheck caught it (the gate worked as designed). Disclosed as the band's second defect round (both test-side, zero production-code defects).
+- The fix: the E2E personalization ask carries NO sessionId → the §22 pre-flight never probes sessions → the dead session routes dropped entirely ({} routes map), the type defect gone with them.
+- Re-verified with the cache cleaned: typecheck x4 exit 0 fresh; suite 1916/0/13skip (delta +20 unchanged); golden selftest OK; census --gate GREEN exit 0.
+
+Stage Summary:
+- Fix commit follows (test-side one-hunk); T-MIG-124 stays IN_REVIEW until CI 2/2 at the fix sha.
