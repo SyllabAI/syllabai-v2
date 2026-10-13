@@ -1,0 +1,36 @@
+{
+  "task": "T-MIG-124",
+  "run": "run-001-flip-r0",
+  "title": "THE ③ ACTIVATION WAVE — the teacher marking factory rides the ONE §26.1 chain (the dormant-by-design 032 posture ends; keyed boots mark teacher-side for real)",
+  "lane": "r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operator_order": "trace 1a13690bae182079 'teachers get AI help now' — the ③ lever pulled (the teacher LLM generator activation wave, the κ release path)",
+  "pre_act_fetch_first": {
+    "board": "behind=0 at c198b1e; 0 open PRs; CI 2/2 at tip; the smart-mark engine audit of record ZERO DEFECTS (bd8b485, operator trace 1a1360d693cd9c61) — the pre-activation gate was ALREADY satisfied",
+    "crux": "the teacher generator was the LAST dormant seam: routes/teachermarking.ts:387 wired seams.generator ?? dormantCandidateGenerator (the 032 posture) while the student surface rides the live chain (ADR-MIG-0002, 2026-10-08)",
+    "carrier_keys": "the api project env ALREADY carries SYLLABAI_LLM_GROQ_API_KEY + SYLLABAI_LLM_GEMINI_API_KEY + SYLLABAI_LLM_OPENROUTER_API_KEY + SYLLABAI_EMBEDDING_GEMINI_API_KEY on production (names-only read, GET /v9/projects/prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ/env?production=1; values NEVER printed); no SYLLABAI_LLM_MODE var -> production mode; corroborated by the T-MIG-125 run-003 tutor canary (real openai/gpt-oss-120b via groq through dpl_BKyamqdx)",
+    "keyless_equivalence_law": "the T-MIG-116 capture band pinned ONLY the keyless deterministic pre-gates (s-legs 404s + t01/t02 SCHEME_NOT_VALIDATED refusal view) — all fire BEFORE the generator (TeacherSmartMarkService :554-620: lock -> loads -> scheme gate -> pipeline.run LAST); the dormant CANDIDATE_GENERATION_UNAVAILABLE placeholder was never a captured law; the bridge's PROVIDER_UNAVAILABLE is the frozen LlmProviderFailureClassifier vocabulary",
+    "test_pins": "NO test references buildTeacherMarkingRouters (the factory default was unpinned); the dormant discipline stays pinned on directly-constructed members (test/smartmark/routes.test.ts:363, student-side, untouched); teachermarking tests construct buildTeacherMarkingModule with explicit stubs (seam-explicit, unaffected)"
+  },
+  "the_flip": {
+    "file": "apps/api/src/routes/teachermarking.ts",
+    "delta": "import { buildLlmChain, chainAsCandidateGenerator, type FailoverLlmChain } from '../services/llmchain' (the dormantCandidateGenerator import dropped); the factory seams gain 'chain?: FailoverLlmChain' (the ADR-MIG-0001 capture/replay proxy seam, mirroring the student factory); const chain = seams.chain ?? buildLlmChain(env); seams.generator ?? chainAsCandidateGenerator(chain); the header + factory doc comments re-stated to the live-seam disclosure citing this wave",
+    "standing_laws_untouched": [
+      "the kappa release gate (SmartMarkService.kappaGatePassed, fail-closed, KAPPA_DEFAULT_THRESHOLD 0.6, newest ALL-scope OR paper-scoped eval)",
+      "append-only smart_mark_results rows + raw_output self-forensics",
+      "the guarded graded-evidence flip (anyAccepted AND kappaGatePassed AND attempt COMPLETE)",
+      "the noop publisher default until the evidence wave owns it",
+      "the two-envelope SmartMarkView serving law (T-MIG-122 :287-299)",
+      "the explicit-seam win (the capture/replay proxy rides seams.generator/chain unchanged)",
+      "the dormant pair stays EXPORTED from routes/smartmark (the dormant-discipline pin class)"
+    ]
+  },
+  "gates_first_hand": {
+    "typecheck_x4": "packages/contracts exit 0; packages/db exit 0; packages/shared exit 0; apps/api exit 0",
+    "suite": "1932 tests / 0 fail / 13 skip across 101 files (the audit baseline 1919 + the fleet's T-MIG-125/126 additions; ZERO failures with the flip)",
+    "census_gate": "GREEN exit 0 — LIVE=0, pins=7, inventory complete (the flip changes no route paths)",
+    "golden_selftest": "OK (the tolerance engine law set verbatim)"
+  },
+  "sandbox_disclosure": "the 18th reset restored the stale /home/z/my-project repo-root node_modules (the pre-#174 contracts symlinks intercepting upward resolution — the audit's 17th-reset class recurred): parent node_modules quarantined sandbox-local (quarantine-stale-repo-root/node_modules-reset18) + bun install --frozen-lockfile in-repo -> EXACT gates; ZERO repo defect",
+  "credential_law": "secrets via restore-creds.sh after the 18th reset (GH 200 / Neon 200); LLM key values never printed, never persisted; the Vercel env read was names-only",
+  "next_leg": "run-002 = the api bake redeploy (the 092/093/107/124 bundle recipe of record, vercel CLI 62.7.0 from the 2-file stage) + the keyed-boot verification + the post-fire wire battery — the operator lever, ALREADY PULLED by this trace"
+}
