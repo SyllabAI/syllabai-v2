@@ -61,3 +61,5 @@ progress_log:
     note: "claim-in-first-commit; implementation + e2e validated lane-side 13/13; branch push + PR open pending credential handoff (the previous PAT did not survive the session continuation and must be rotated anyway — it transited chat)"
   - run: run-002-pr-open (2026-10-13T19:06:39Z)
     note: "operator credential handoff received (inline-only law): fetch-first race-guard caught main moved c198b1e→350487b (T-MIG-124 PR #183 landed mid-flight) → rebased 3 commits, zero file collisions (api-only delta), post-rebase tsc exit 0, stat unchanged 5 files +384/−3; branch pushed + PR #184 opened (receipt run-002); ONE disclosed push-auth hiccup: fresh-shell-per-invocation reset the env token between tool calls — diagnosed, retried combined, succeeded; no partial/force writes; CI ids append as run-003"
+  - run: run-003-ci-green (2026-10-13T19:24:00Z)
+    note: "PR #184 CI GREEN of record: ci.yml runs 38452143821 (head efdbe15) + 38452444514 (head f4f5af0, the run-002 tip) both completed/success; check-runs hub + verify both success on the PR head; mergeable=true"

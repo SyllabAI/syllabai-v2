@@ -1,0 +1,39 @@
+{
+  "run": "run-003",
+  "band": "T-MIG-127",
+  "title": "CI green of record — PR #184 fully green (both heads), mergeable",
+  "executed_by": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "ci_runs": [
+    {
+      "id": 38452143821,
+      "workflow": "ci",
+      "event": "pull_request",
+      "head_sha": "efdbe154fec98cb3e24bde5724b68c6921aa7ae6",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38452444514,
+      "workflow": "ci",
+      "event": "pull_request",
+      "head_sha": "f4f5af07b788a3fa8136fc898062111a1bbabbe0",
+      "status": "completed",
+      "conclusion": "success",
+      "check_runs": [
+        { "name": "hub", "status": "completed", "conclusion": "success" },
+        { "name": "verify", "status": "completed", "conclusion": "success" }
+      ]
+    }
+  ],
+  "pr_state_at_filing": {
+    "number": 184,
+    "state": "open",
+    "head": "f4f5af0",
+    "base": "350487b",
+    "mergeable": true,
+    "commits": 4,
+    "changed_files": 6
+  },
+  "credential_posture": "same inline-only PAT posture as run-002; token never on disk, never printed; ROTATION STILL OUTSTANDING (the token transited chat)",
+  "next": "IN_REVIEW -> DONE is R0's call at merge (this lane is R0; merge awaits the operator's word per the standing 'PR package' delivery contract)"
+}
