@@ -1,0 +1,37 @@
+{
+  "run": "smartmark-audit-run-001-r0",
+  "task": "AUDIT — the smart mark engine of record, operator order trace 1a1360d693cd9c61 'Audit the smart mark engine. Is it working perfectly?'",
+  "actor": "r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "at": "tip 7ec0d0e (code state == 28d3e58; 7ec0d0e is .syllabai-only) — fetch-first behind=0",
+  "verdict": "ZERO DEFECTS — the engine works perfectly AS SPECIFIED. Every deterministic law verified first-hand; the one-time open defect (B1-DEFECT-1) is FIXED and SERVING; the two dormant/live seams are the of-record disclosed postures, not defects.",
+  "surfaces_audited": {
+    "shared_engine": {
+      "law": "ONE SmartMarkService (teacher queue + student surface share it — the 032/033 cross-slice contract): markAttempt row-lock-first (for update of a, attempt-only lock surface), the V34 newest-VALIDATED-scheme law (no scheme -> honest per-part SCHEME_NOT_VALIDATED refusals, append-only rows, nothing marked, no evidence), the v4 batch topology (ONE provider call per attempt, deterministic short-circuits never reach the generator: NO_SCHEME_POINTS + the blank-answer zero-mark pass) + the per-part fallback ladder (a flaky batch degrades to per-part run, never guesses), the validator trio VERBATIM (bounds: no invented point ids, no duplicates; coverage: every in-scope point decided; mark-sum: per-point clamp FIRST then the part ceiling — an over-award on one point cannot eat the others' budget), kappaGatePassed fail-closed (absence of any evaluation = gated; newest ALL-scope OR paper-scope passed), the once-only guarded evidence flip (publishGraded claim + update where evidence_emitted = false, fires only when NO part is still PENDING), append-only smart_mark_results with pipeline_version + raw_output self-forensics",
+      "verified": "code read first-hand at tip; the law set pinned by the suite (see gates)"
+    },
+    "teacher_marking": {
+      "envelope": "B1-DEFECT-1 (the 116 run-002 t01 red leg: the raw snake_case SmartMarkResult row vs the camelCase TeacherViews.SmartMarkView envelope) — FIXED of record (the 122 chain, 490e223): the route renders smartMarkResultView(result, createdAt @PrePersist analog) at teachermarking.ts:287-299 with the fix annotation; 12/12 ALL-GREEN re-verify incl. the defect leg; the staged flips landed; the marking family RIDES-V2 (census LIVE 3->2->0)",
+      "serving": "the SERVING api carrier dpl_BKyamqdxUeXcLmbK9sc8dodSkGPz (READY, created 2026-10-13T09:27Z, @ 6bfbf00 — the 28d3e58 api bake) CONTAINS THE FIX: git merge-base --is-ancestor 490e223 6bfbf00 = TRUE first-hand — the old standing caveat ('api carrier serves the PRE-fix envelope') is DISCHARGED; the camelCase envelope IS SERVING",
+      "generator_seam": "DORMANT BY STANDING DESIGN (the 032 posture of record): the live factory wires dormantCandidateGenerator (refuses CANDIDATE_GENERATION_UNAVAILABLE -> the pipeline fail-closes with an honest rejected row; no marks, no state changes, no evidence); the kappa evaluate/latest endpoints are LIVE machinery; this is the disclosed κ-discipline posture, NOT a defect",
+      "batch": "smart-mark-batch: 1..50 ids deduplicated order-preserving, idempotent, each item its own transaction (partial success preserved), the two-envelope body law (R-1) + the T-MIG-114 ppd message law"
+    },
+    "student_smartmark": {
+      "llm_seam": "LIVE (ADR-MIG-0002, operator directive (1) trace 1a117913519cd141): when seams are absent the composition root rides the S26.1 chain (chainAsCandidateGenerator / chainAsFeedbackLlm) — Groq -> Gemini -> OpenRouter, real adapters in PRODUCTION mode, the frozen failover loop, per-provider cooldown health + daily budget; TEST mode / zero-key boot = EXACTLY the dormant-pair fail-closed behaviour (real ChatModels never constructed — the ADR-023 discipline); the keyed carrier was canaried of record at the 28d3e58 bake (one disclosed LLM canary)",
+      "surface_laws": "ownership re-verify (no existence leak), STRUCTURED-only, pre-settlement only (409 on any settled part), the reveal-policy mirror (REJECTED/FLAGGED never pass; SUGGESTED gated under the VALIDATED_ONLY default), kappa-gated authoritative honesty flag (authoritative=false until the kappa gate passes — the honest AI-graded flag), feedback explanation/improvement-plan: the LLM EXPLAINS the recorded per-point decisions, never makes them; 409 when no accepted result exists; prose is ephemeral (NEVER persisted)",
+      "unauth_law": "POST /api/v1/learners/me/attempts/:uuid/smart-mark unauth -> 401 Boot envelope VERBATIM (fresh probe)"
+    },
+    "selfmark": "the learner manual self-mark family (the 032/050/055/057/058/064/073 law set) — covered by the suite first-hand (0 fail); no smart-mark-engine regression surface"
+  },
+  "gates_first_hand": {
+    "suite": "bun test apps/api packages at tip: 1919 pass / 0 fail / 13 skip (7441 expect calls) — EXACTLY the of-record tally (the w0a audit's 1919/0/13skip at 28d3e58)",
+    "smartmark_family_subset": "bun test apps/api/test/{smartmark,teachermarking,llmchain}: 162 pass / 0 fail / 560 expect calls",
+    "golden_selftest": "bun golden/llm-shadow/selftest.ts: 15/15 passed",
+    "census_gate": "preflight_zero_core_census.py --gate: exit 0 GREEN — pins=7 LIVE=0 rides-v2=2 rollback-fallback=1 dormant=5 unmapped=0 stale-hints=0 unknown-route=0 (the SS 6.2 zero-live pre-gate condition MET; pins 8->7 = the B6 flip retired the transcribe pin)",
+    "ci": "tip 7ec0d0e check-runs first-hand: verify + hub SUCCESS 2/2",
+    "serving_probes": "5/5 through the prod alias syllabai-v2.vercel.app (zero auth, zero LLM, zero persistence): health 200 {status:UP}; teacher smart-mark unauth 401 Boot verbatim; smart-mark-batch unauth 401; marking queue unauth 401; student smart-mark unauth 401",
+    "of_record_tallies_cited": "116 run-002 golden-verify 12/12; 122 run-002 fix-verify-flip 12/12 ALL-GREEN incl. the t01 defect leg; 107 53/53 legs; the capture corpus 66+22 legs"
+  },
+  "sandbox_disclosure": "the suite FIRST RAN with 3 fails + 3 errors — 100% THIS SANDBOX's stale-workspace contamination, ZERO repo defect: a stale full-repo root copy at /home/z/my-project (package.json named 'syllabai-v2', dated Oct 9, its packages/contracts predating the assignments band) + bun walking UP to its node_modules/@syllabai/contracts symlink when the repo clone had no local node_modules -> 'Export assignmentCreateRequestSchema not found'. Resolution: the stale root artifacts QUARANTINED to /home/z/my-project/quarantine-stale-repo-root/ (sandbox-local hygiene, disclosed), the parent node_modules removed, bun install --frozen-lockfile inside the repo (930 packages, the repo's own lock) -> the re-run = 1919/0/13skip EXACT. No repo file touched by the fix.",
+  "doctrine_note": "LLM-output QUALITY is excluded from golden gating by standing law (GOLDEN_MASTER S3: lifecycle-gated behavioural gates only) — this audit covers the deterministic engine, its laws, its envelopes, its gates and its serving truth; it does not grade the LLM's marking quality (the kappa release gate is the designed quality instrument).",
+  "write_ledger": "READ-ONLY audit on the repo planes: zero app-code change, zero prod/Neon contact, zero authed POSTs, zero LLM spend, zero deploys; the only writes are sandbox-local (scripts + probes + the quarantine move) and this .syllabai-only receipt + worklog append (the w0a audit precedent). No force."
+}
