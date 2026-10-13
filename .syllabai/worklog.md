@@ -7733,3 +7733,18 @@ Work Log:
 
 Stage Summary:
 - The SERIALIZED operator-gated api bake DISCHARGED of record: the api-of-record now SERVES T-MIG-125 — the CLA struggle-read reuse + the effective-desc re-sort drift fix are LIVE (both surfaces read through the one frozen adapter; the honest-empty stub and the un-re-sorted rankings are extinct on the wire). The review-schedules writer band stays DORMANT disclose-only (T-MIG-126) — the port is the activation seam, the writer operator-gated. The board reads 120/120 DONE; the T-MIG-124 residual queue is fully dispositioned; zero rollback events.
+
+## worklog(w0a) — 2026-10-13 — operator order 1a13602c5f4ca3f1 'Audit the learner model' DISCHARGED of record: the audit run-001, ZERO defects
+- Fetch-first: tip 6bfbf00 -> 28d3e58 (T-MIG-125 run-002 API bake of record, operator trace 1a134d1fe7df7e05); audit executed AT the new tip; PAT staging re-secured 0600 (slipped 755 again), fingerprint a8ccee736aa8c75b == of-record.
+- Method: full source read (learner-model.ts, engagement-recorder.ts, both composition roots, karag assembleContext, context.ts policy, cla context-resolver, model-update.ts, schema.ts) + the ARCHIVED frozen core cloned read-only (tip verified == 6cad6ef before comparison) + the full gate battery locally.
+- VERDICT: CLEAN — zero defects. Every claimed law verified first-hand:
+  * read laws line-against-line vs frozen (misconception relax + effective-DESC re-sort == :225-246; struggle read contract; CONFIRMED/REJECTED verbatim == :131-137; policy filter == :70-75; BDT defaults EXACT 0.3/0.5/180d);
+  * M3 once-per-ask: exactly 5 reads, null-guarded, no caching;
+  * V25 classifier: precedence + pattern lists BYTE-IDENTICAL (12/12/10), 'tutor-signals/v2' stamped (column default v1 :943), 'what do you mean' -> CLARIFICATION;
+  * privacy: NO question/answer text in any INSERT column — raw question read-and-discarded; all anchors server-resolved; all six kind references uuid-shaped for the uuid column; zero LLM-invented entities possible;
+  * append-guard: the ONE disclosed divergence (frozen in-tx -> v2 fire-and-forget) matches the header law; classifier verified total (no sync throw);
+  * event parity: publish-once completion + eager refusals == frozen :228-237/:316-319; CLA clock skew disclosed;
+  * substrate: skill/misconception LIVE writers (model-update.ts), engagements writer = the recorder, review_schedules + struggle_inferences ZERO v2 writers (T-MIG-126 dormancy honest, the port the activation seam);
+  * T-MIG-125 re-sort drift fix verified in code (the CLA stub extinct by construction).
+- Gates first-hand at 28d3e58: typecheck x4 exit 0; suite 1919/0/13skip EXACT; hub 64/64; golden selftest OK; census --gate GREEN exit 0 LIVE=0.
+- Receipt: .syllabai/receipts/T-MIG-124/learner-model-audit-run-001-w0a.json — .syllabai-only, zero prod contact, no force.
