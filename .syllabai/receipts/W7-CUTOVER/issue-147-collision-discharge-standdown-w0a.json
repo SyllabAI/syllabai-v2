@@ -1,0 +1,25 @@
+{
+  "receipt": "issue-147-collision-discharge-standdown-w0a",
+  "act": "the standing operator order trace 1a134149f3a34f45 ('close zombie issue #147') DISCHARGED AS COLLISION — the ordered act is already of record; this lane performs ZERO duplicate issue writes and files the protective stand-down",
+  "actor": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "operator_trace": "1a134149f3a34f45 'close zombie issue #147' (re-confirmed by operator trace 1a134ab8aa45de59 'Check again')",
+  "collision_of_record": {
+    "commit": "d6515ce",
+    "sibling_receipt": ".syllabai/receipts/W7-CUTOVER/issue-147-zombie-close-run-001-w0a.json",
+    "evidence_comment": "https://github.com/SyllabAI/syllabai-v2/issues/147#issuecomment-6140258891",
+    "closed_at_of_record": "2026-10-13T07:07:54Z"
+  },
+  "first_hand_verification_this_window": {
+    "issue": "GET /repos/SyllabAI/syllabai-v2/issues/147 -> state=closed, state_reason=completed, closed_at=2026-10-13T07:07:54Z (exact match to the d6515ce receipt); title confirms the zombie-prj_D7vf decommission re-scope",
+    "evidence_comment": "comment 6140258891 present (2026-10-13T07:07:54Z, 2287 chars) opening 'CLOSED — the lever is SUPERSEDED by the retirement of record'",
+    "credential_leak_scan": "all 4 comment bodies pattern-scanned (vcp_/ghp_/github_pat_/gho_) -> CLEAN, zero credential values",
+    "post_act_census": "open issues (non-PR) of SyllabAI/syllabai-v2 = ZERO — first-hand, matches the sibling receipt",
+    "gate_corroboration": "python3 scripts/preflight_zero_core_census.py --gate re-run first-hand at tip 523b17c -> GREEN exit 0, LIVE=0 (pins 7 / rides-v2 / rollback-fallback / dormant 5 all [ruled]) — the retirement condition intact through the T-MIG-124 commits",
+    "wrong_repo_rule_out": "GET issues/147 against SyllabAI/syllabai, syllabai-core, syllabai-hub all 404 — the issue lives in SyllabAI/syllabai-v2 only (the sibling receipt's coordinates EXACT)"
+  },
+  "identity_anomaly_disclosed": "the of-record close (commit d6515ce + the GitHub evidence comment) names Executor 'lane w0a (session web-e79a3bd8...)' — THIS lane's tag and session id — but THIS session performed no issue writes: its prior window closed before any act began (the continuation summary of record states 'closing #147 not started'), and every API contact this window was a read-only GET. A sibling execution acted under this lane's identity. Disclosed, not adjudicated: the FACTS (state, comment, census, gate) are verified first-hand and govern; attribution of the label is the operator's call.",
+  "stand_down": "any lane holding the same order trace 1a134149f3a34f45: STAND DOWN — #147 is CLOSED of record (state=completed, evidence comment 6140258891); any further comment/state write on it is a DUPLICATE and violates the zero-duplicate law",
+  "write_ledger": "ZERO GitHub writes of every kind (zero comments, zero state changes, zero repo admin acts), zero Vercel/Neon/LLM/prod contact; this commit = .syllabai-only receipt + worklog append; no force, fetch-first honored (tip moved 4cb04ca -> 523b17c before any act; local 2243-file drift = mode-bit churn, reset --hard, zero content delta)",
+  "operator_residuals_after_this": "the '#147 zombie decommission' residual is SPENT of record. Remaining: (1) Render console disable of the legacy services — disable NEVER delete, the human console act; (2) PAT rotation — all handed credentials used inline-only (fingerprints of record d254bbfaac004354 / a8ccee736aa8c75b), rotation recommended per the hygiene law.",
+  "boundaries": "archived repos untouched; no re-pointing (the bulletin law); the forbidden in-flight project prj_D7vfkutxbtoRGQA2wEHF41seo80s never contacted (referenced only as the issue's subject-matter identifier); no force"
+}
