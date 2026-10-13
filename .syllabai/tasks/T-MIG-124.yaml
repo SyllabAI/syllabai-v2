@@ -3,7 +3,7 @@ task:
   id: T-MIG-124
   title: "The tutor learner-model serving wiring (Phase 1: the LearnerModelPort adapter + composition-root injection — T-026 diagnosis-aware policy + s140 episodic memory + the learner brief go LIVE) + the engagement recorder (Phase 2: the V25 classifier + the FREE_TUTOR/CONTEXTUAL_ASSISTANT telemetry sinks)"
   owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)"
-  status: 'IN_REVIEW # the band is executed + gates green (typecheck x4; suite 1916/0/13skip EXACT vs clean-tip 1896/0/13, delta exactly +20; golden selftest OK; census --gate GREEN LIVE=0 preserved); DONE flips on the CI 2/2 verify at the pushed sha (the 121 run-004 pattern); the api redeploy that bakes the wiring LIVE on the api-of-record is the SERIALIZED residual (the 093/110 class — operator-gated, never self-fired)'
+  status: 'DONE # the CI 2/2 verify of record at the fix sha 741c352 (verify + hub SUCCESS, check-runs API first-hand; the 0818c9f verify red = the CI-caught test-side type defect, fixed run-001-fix-1 + disclosed); gates: typecheck x4, suite 1916/0/13skip EXACT delta +20, golden selftest OK, census --gate GREEN LIVE=0; the api redeploy that bakes the wiring LIVE on the api-of-record is the SERIALIZED residual (the 093/110 class — operator-gated, never self-fired)'
   claimed_at: "2026-10-13T08:xxZ"
   claimed_by_order: "operator traces 1a133ff585a25ea5 ('Proceed with learnerModel wiring ... Plan first') + 1a13422c277c0171 ('Proceed, both phases') — the plan of record filed in the worklog @ 937df0b first, execution under the standing law"
   priority: P1

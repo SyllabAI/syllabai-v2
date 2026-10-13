@@ -7655,3 +7655,14 @@ Work Log:
 
 Stage Summary:
 - Fix commit follows (test-side one-hunk); T-MIG-124 stays IN_REVIEW until CI 2/2 at the fix sha.
+
+---
+Task ID: T-MIG-124-RUN-001-CLOSING (the CI 2/2 at 741c352 -> DONE of record)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- CI check-runs API first-hand at 741c352: verify SUCCESS + hub SUCCESS (2/2). The band delta stands EXACT (+20 tests, zero regression, the one CI-caught test-side type defect fixed and disclosed).
+- T-MIG-124 -> DONE of record (the 121 run-004 pattern). The card, the receipt run-001 and the two defect-round disclosures carry the full audit.
+
+Stage Summary:
+- The tutor module SERVES personalization of record: the T-026 diagnosis-aware policy + the s140 episodic digest + the learner brief are LIVE on the wired LearnerModelPort, and every served ask / CLA interaction appends its deterministic V25 engagement rows (feeding the digest, NBA signals and teacher analytics from the first baked ask onward). RESIDUAL (operator-gated, serialized): the api redeploy bakes the wiring LIVE on syllabai-v2.vercel.app (the 093/110 recipe class); queued intake items: the CLA struggle-read reuse, the CLA re-sort drift, the 061 research consumer (dormant), the review-schedules writer band.
