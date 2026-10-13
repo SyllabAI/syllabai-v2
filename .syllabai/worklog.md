@@ -7706,3 +7706,14 @@ Work Log:
 
 Stage Summary:
 - The two named intake items are CLAIMED AND RUN of record: the CLA now serves the SAME frozen learner-model reads as the tutor surface (struggle read + relax + re-sort) with the empty-table degradation byte-preserved, and the review-schedules writer band's dormancy is a pinned law with its activation seam documented — the T-MIG-124 residual queue is now fully dispositioned (2 run, 2 stay dormant under their own titles).
+
+---
+Task ID: T-MIG-125-RUN-001-CLOSING (the CI 2/2 at 72644a9 -> DONE of record)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- CI check-runs API first-hand at the band sha 72644a9: verify SUCCESS + hub SUCCESS (2/2) — no defect rounds this band (first-armed green; the 0818c9f CI-caught-type-defect class did NOT recur).
+- T-MIG-125 -> DONE of record (the 124 law); T-MIG-126 was DONE at filing (the disclosure-card precedent). The board reads 120/120 DONE.
+
+Stage Summary:
+- The operator's 'claim them' order is FULLY DISCHARGED: the two named intake items claimed AND run of record (the CLA read-alignment band landed + CI-proven; the review-schedules writer band's dormancy pinned as law with its activation seam), the two dormant siblings dispositioned under their own titles (T-MIG-061; no double-entry). Residual: the SERIALIZED operator-gated api bake (the 093/110/124-run-002 class) — the serving bundle carries the pre-band CLA reads until the operator orders it.
