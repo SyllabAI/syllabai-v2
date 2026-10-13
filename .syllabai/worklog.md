@@ -7631,3 +7631,15 @@ Stage Summary:
 - The operator's redeploy order: DISCHARGED AS COLLISION — the redeploy was already fired and is live; this lane adds the independent-verification leg only (4 Vercel GET reads, zero writes, zero deploys, zero prod mutations, zero LLM).
 - B6 DONE + the retirement of record now INDEPENDENT-VERIFIED by a second lane. Operator residuals unchanged: the Render console disable (the §6.2 lever), #147 zombie, PAT rotation (the fingerprint match proves rotation is still owed).
 - .syllabai-only commit (receipt + this worklog); fetch-first, no force.
+
+---
+Task ID: T-MIG-124-RUN-001 (operator traces 1a133ff585a25ea5 'Plan first' + 1a13422c277c0171 'Proceed, both phases')
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- Plan-first honored (the plan of record @ 937df0b, presented before any act). Execution: Phase 1 = NEW services/tutor/learner-model.ts (buildSqlLearnerModel: skillStates reuse; misconceptionReadings relax+effective-desc RE-SORT; activeStruggleInferences expiry/supersede/order law + teacher-override mapping; topicEngagements nodeId-IN scoped NO-window + TOPIC_ENGAGEMENT null-mapping; pendingReviews PENDING scoped) + the ONE composition-root line in buildTutorRouters. Phase 2 = NEW services/learner/engagement-recorder.ts (the frozen TutorEngagementRecorder: V25 classifier SIGNAL_POLICY_VERSION 'tutor-signals/v2' with the clarification-before-explanation precedence trap, per-topic pure appends, the hard boundaries verbatim, the append-guard never-throw law) wired into BOTH telemetry seams (tutor FREE_TUTOR + CLA CONTEXTUAL_ASSISTANT). CLA's stale 'no learner model' disclosure corrected of record; the 061 research consumer stays dormant.
+- Tests +20 (delta EXACT vs the clean-tip stash round-trip: 1896/0/13 -> 1916/0/13): new learner-model.test.ts (5) + engagement-recorder.test.ts (12) + tutor-routes.test.ts (3: the E2E personalization — five reads once per ask, the mastery/digest/plan prompt lines incl. MISCONCEPTION_REMEDIATION; the empty-substrate byte-identical degradation; the recorder through the composition seam). One test-fixture defect round disclosed ('what is a mole?' hits the frozen 'what is' pattern — classifier RIGHT, assertion fixed).
+- Gates: typecheck x4 exit 0; suite 1916/0/13skip; golden selftest OK; census --gate GREEN exit 0 (LIVE=0 preserved; zero hub files). Two push-races discharged fetch-first (e69e727, 2c271e07 — sibling .syllabai-only receipts).
+
+Stage Summary:
+- T-MIG-124 IN_REVIEW of record (DONE flips on CI 2/2): the tutor module now SERVES personalization — the T-026 policy + s140 digest + learner brief read real tables (honest-empty where no v2 writer exists: struggle_inferences/review_schedules disclosed), and every served ask/CLA interaction appends its deterministic engagement rows (feeding the digest + NBA + teacher analytics from the first baked ask). Residual: the api redeploy (the serialized operator-gated act) bakes it LIVE on the api-of-record. Zero prod/Neon/Vercel/LLM contact; no force; PAT inline-only.

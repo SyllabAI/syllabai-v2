@@ -85,6 +85,7 @@ import {
 } from "../services/learner/state";
 import { buildClaContextResolver } from "../services/cla/context-resolver";
 import { buildClaService } from "../services/cla/service";
+import { claInteractionTelemetrySink } from "../services/learner/engagement-recorder";
 import { ClaAttemptRequiredError } from "../services/cla/leakage-policy";
 import { buildLlmChain, chainAsLlmProvider, type FailoverLlmChain } from "../services/llmchain";
 import {
@@ -296,14 +297,18 @@ export function createClaRouter(cla: ClaService): Hono {
  * the resolver (the four dependency-served kinds), the tool registry over
  * the sql-backed learner-model reads (skillStates + the staleness-relaxed
  * misconception readings — the SAME composition the learner-me state view
- * uses, MED-2/ADR-032), the T-C32-compliant vector arm over the injected
- * embedding provider (honest empty when unkeyed), the grounded generator
- * over the LLM seam of record, and a no-op telemetry sink (the 061 posture
- * — zero tables, ADR-031 intact; disclosed). activeStruggleInferences has
- * NO landed v2 read (the struggle-inference table read is a later wave; the
- * tutor module itself runs with NO learner model at all) — the port returns
- * the honest empty list, the policy falls through to the no-signal
- * EXPLANATION plan, disclosed.
+ * uses, MED-2/ADR-032), the T-C32-compliant vector arm over the
+ * injected embedding provider (honest empty when unkeyed), the grounded
+ * generator over the LLM seam of record, and the engagement-recorder
+ * telemetry sink (T-MIG-124 Phase 2: the frozen ClaInteractionEvent
+ * listener — per-topic appends over tutor_topic_engagements with the
+ * surface identity triple; the §18 RESEARCH consumer stays the disclosed
+ * T-MIG-061 dormant title — this sink is the engagement-row listener, not
+ * the research consumer). activeStruggleInferences has NO landed v2 read
+ * here (the tutor module's T-MIG-124 Phase 1 adapter carries the
+ * struggle-inference read for the TUTOR surface; the CLA reuse is a queued
+ * intake item, disclosed) — the port returns the honest empty list, the
+ * policy falls through to the no-signal EXPLANATION plan, disclosed.
  *
  * LLM SEAM OF RECORD (ADR-MIG-0002, operator directive ①): the §26.1 chain
  * rides the chainAsLlmProvider bridge — zero-key/test boots keep the honest
@@ -355,7 +360,10 @@ export function buildClaRouters(
     learnerModel,
     vectorRetriever: buildSqlVectorArm(sql, resolveEmbeddingProvider(env)),
     generator: buildGroundedTutorGenerator(chain === null ? dormantClaLlm : chainAsLlmProvider(chain)),
-    telemetry: () => {},
+    // T-MIG-124 Phase 2: the frozen ClaInteractionEvent listener — per-topic
+    // engagement appends (V25 classifier, the surface identity triple);
+    // never throws into the ask (the append-guard law)
+    telemetry: claInteractionTelemetrySink(sql, defaultClock),
   });
   return {
     cla,

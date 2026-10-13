@@ -25,6 +25,8 @@ import { buildTutorRouters, createTutorRouter } from "../../src/routes/tutor";
 import { createTutorSessionsRouter } from "../../src/routes/tutorsessions";
 import { buildTutorModule } from "../../src/services/tutor";
 import { buildGroundedTutorGenerator, type PaperQuestionResolver } from "../../src/services/tutor";
+import { buildSqlLearnerModel } from "../../src/services/tutor/learner-model";
+import { tutorEngagementTelemetrySink } from "../../src/services/learner/engagement-recorder";
 import { TUTOR_REFUSAL, paperIdentityRefusal } from "../../src/services/tutor/prompt";
 import { evidenceFromChunk } from "../../src/services/tutor/evidence";
 import type { LlmProvider } from "../../src/services/tutor/karag";
@@ -136,16 +138,20 @@ function makeApp(
     resolver?: PaperQuestionResolver;
     llm?: LlmProvider;
     auth?: (c: Context) => AuthRow;
+    kgGraph?: unknown;
+    learnerModel?: unknown;
+    telemetry?: unknown;
   } = {},
 ) {
   const sql = fakeSql(routes);
   const module = buildTutorModule(sql, clock, {
-    kgGraph: emptyGraph,
+    kgGraph: (opts.kgGraph ?? emptyGraph) as never,
     scopes,
     vectorRetriever: async () => [],
     paperQuestionResolver: opts.resolver ?? notPaper,
     generator: buildGroundedTutorGenerator(opts.llm ?? dormantLlm),
-    telemetry: () => {},
+    telemetry: (opts.telemetry ?? (() => {})) as never,
+    learnerModel: opts.learnerModel as never,
   } as never);
   const auth = opts.auth ?? asLearner;
   const app = new Hono();
@@ -665,5 +671,169 @@ describe("buildTutorRouters composition root", () => {
     expect(built.module.sessionStore).toBeDefined();
     expect(built.module.ask).toBeDefined();
     expect(built.module.askStream).toBeDefined();
+  });
+});
+
+// ── T-MIG-124: the wired learner model + the engagement recorder (serving) ──
+
+describe("T-MIG-124 the wired learner model + engagement recorder", () => {
+  const NODE = "n1";
+  const MISCONCEPTION = "mm000000-0000-4000-8000-000000000001";
+  const topicGraph = {
+    async structureNodes() {
+      return [
+        {
+          id: NODE,
+          code: "T-MOLE",
+          title: "Mole calculations",
+          validation_status: "VALIDATED",
+        },
+      ];
+    },
+    async prerequisiteChains() {
+      return new Map();
+    },
+    async misconceptionsForTopics() {
+      return new Map([[NODE, [{ id: MISCONCEPTION, title: "Mole ratio inversion" }]]]);
+    },
+  };
+
+  // the learner substrate: mastery on the matched topic, a FRESH 0.7
+  // misconception attached to it (relaxed = raw at age 0 — the policy gate
+  // fires), one prior doubt-signal ask + one pending review on the topic,
+  // and an empty struggle-inference table (the honest-empty substrate).
+  const modelRoutes = () => ({
+    "from skill_states": [
+      {
+        node_id: NODE,
+        mastery: 0.4,
+        attempts: 2,
+        correct_count: 1,
+        last_practiced_at: NOW_ISO,
+        procedural_fluency_gap: null,
+      },
+    ],
+    "from misconception_states": [
+      {
+        misconception_node_id: MISCONCEPTION,
+        probability: 0.7,
+        evidence_count: 3,
+        last_evidence_at: NOW_ISO,
+      },
+    ],
+    "from struggle_inferences": [],
+    "from tutor_topic_engagements": [
+      { node_id: NODE, signal_type: "DOUBT_SIGNAL", occurred_at: NOW_ISO },
+    ],
+    "from review_schedules": [{ node_id: NODE }],
+  });
+
+  test("a served ask reads the learner model ONCE per ask and the prompt personalizes (brief + digest + intervention plan)", async () => {
+    const modelSql = fakeSql(modelRoutes());
+    const learnerModel = buildSqlLearnerModel(modelSql, clock);
+    const captured: { system?: string; user?: string } = {};
+    const capturingLlm: LlmProvider = {
+      available: () => true,
+      generate: async (req) => {
+        captured.system = req.system;
+        captured.user = req.user;
+        return { text: "The answer is [1].", model: "fake-model", providerName: "fake-provider" };
+      },
+      stream: async function* () {},
+    };
+    const resolver: PaperQuestionResolver = async () => ({
+      items: [oneEvidenceItem()],
+      identityParsed: false,
+      identityLabel: null,
+    });
+    const { app } = makeApp(
+      {
+        "from tutor_sessions where id =": ownedRoute([sessionRow()]),
+        "update tutor_sessions set course_ref": [],
+        "select seq from tutor_session_turns": [],
+        "insert into tutor_session_turns": [],
+        "update tutor_sessions": [],
+      },
+      { resolver, llm: capturingLlm, learnerModel, kgGraph: topicGraph },
+    );
+    const res = await ask(app, { question: "explain mole calculations" });
+    expect(res.status).toBe(200);
+    // M3: the five reads fire exactly once per ask
+    expect(modelSql.queries.filter((q) => q.includes("from skill_states")).length).toBe(1);
+    expect(modelSql.queries.filter((q) => q.includes("from misconception_states")).length).toBe(1);
+    expect(modelSql.queries.filter((q) => q.includes("from struggle_inferences")).length).toBe(1);
+    expect(modelSql.queries.filter((q) => q.includes("from tutor_topic_engagements")).length).toBe(1);
+    expect(modelSql.queries.filter((q) => q.includes("from review_schedules")).length).toBe(1);
+    // the prompt personalizes: the learner brief (mastery line), the s140
+    // episodic digest (the ask-history + spaced-review lines) and the T-026
+    // intervention plan (the fresh 0.7 misconception on a matched topic →
+    // MISCONCEPTION_REMEDIATION)
+    const prompt = `${captured.system ?? ""}\n${captured.user ?? ""}`;
+    expect(prompt).toContain("Learner state for this question:");
+    expect(prompt).toContain("mastery of 'Mole calculations'");
+    expect(prompt).toContain("1 earlier tutor ask(s)");
+    expect(prompt).toContain("due for a spaced review");
+    expect(prompt).toContain("MISCONCEPTION_REMEDIATION");
+    expect(prompt).toContain("Address the misconception explicitly.");
+  });
+
+  test("the empty substrate degrades to the pre-wiring behavior (honest empty, no personalization lines)", async () => {
+    const modelSql = fakeSql({
+      "from skill_states": [],
+      "from misconception_states": [],
+      "from struggle_inferences": [],
+      "from tutor_topic_engagements": [],
+      "from review_schedules": [],
+    });
+    const captured: { system?: string; user?: string } = {};
+    const capturingLlm: LlmProvider = {
+      available: () => true,
+      generate: async (req) => {
+        captured.system = req.system;
+        captured.user = req.user;
+        return { text: "The answer is [1].", model: "fake-model", providerName: "fake-provider" };
+      },
+      stream: async function* () {},
+    };
+    const resolver: PaperQuestionResolver = async () => ({
+      items: [oneEvidenceItem()],
+      identityParsed: false,
+      identityLabel: null,
+    });
+    const { app } = makeApp(
+      {},
+      { resolver, llm: capturingLlm, learnerModel: buildSqlLearnerModel(modelSql, clock), kgGraph: topicGraph },
+    );
+    const res = await ask(app, { question: "explain mole calculations" });
+    expect(res.status).toBe(200);
+    const prompt = `${captured.system ?? ""}\n${captured.user ?? ""}`;
+    expect(prompt).toContain("no prior evidence on the topics in this question");
+    expect(prompt).not.toContain("earlier tutor ask(s)");
+    expect(prompt).toContain("no high-confidence diagnostic signal"); // the EXPLANATION plan rationale
+  });
+
+  test("the engagement recorder rides the composition seam: a served ask appends one row per matched topic", async () => {
+    const resolver: PaperQuestionResolver = async () => ({
+      items: [oneEvidenceItem()],
+      identityParsed: false,
+      identityLabel: null,
+    });
+    const lazySink: Array<(event: never) => void> = [];
+    const { app, sql } = makeApp(
+      {},
+      {
+        resolver,
+        llm: liveLlm,
+        kgGraph: topicGraph,
+        // the recorder needs the rig's OWN sql (the insert must land in the
+        // captured queries) — wire it lazily around the construction TDZ
+        telemetry: (event: never) => lazySink[0]?.(event),
+      },
+    );
+    lazySink.push(tutorEngagementTelemetrySink(sql, clock) as never);
+    const res = await ask(app, { question: "explain mole calculations" });
+    expect(res.status).toBe(200);
+    const inserts = sql.queries.filter((q) => q.includes("insert into tutor_topic_engagements"));
+    expect(inserts.length).toBe(1); // one matched topic → one row (the param law is pinned in test/learner/engagement-recorder.test.ts)
   });
 });

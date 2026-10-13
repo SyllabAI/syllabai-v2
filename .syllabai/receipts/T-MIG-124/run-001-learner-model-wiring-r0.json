@@ -1,0 +1,54 @@
+{
+  "run": "run-001",
+  "band": "T-MIG-124",
+  "title": "the tutor learner-model serving wiring (Phase 1) + the engagement recorder (Phase 2)",
+  "operator_orders": [
+    "trace 1a133ff585a25ea5 — 'Proceed with \"learnerModel is NOT wired in buildTutorRouters ... Prime candidate.\" Plan first'",
+    "trace 1a13422c277c0171 — 'Proceed, both phases'"
+  ],
+  "plan_of_record": "worklog @ 937df0b (R0-LEARNERMODEL-PLAN-1) — presented to the operator BEFORE any act; frozen read laws pinned first-hand at core 6cad6ef READ-ONLY (the bulletin read-only law respected)",
+  "executed_by": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "changes": {
+    "phase1_learner_model": {
+      "new_file": "apps/api/src/services/tutor/learner-model.ts",
+      "composition_root": "apps/api/src/routes/tutor.ts — learnerModel: buildSqlLearnerModel(sql, defaultClock) (the ONE-line gap closed)",
+      "frozen_laws_pinned": [
+        "skillStates = skillStatesByRecency reuse (recency-ordered, shape-exact)",
+        "misconceptionReadings = MED-2/ADR-032 relax (prior 0.3, tau 180d) + effective-desc RE-SORT (LearnerModelService :225-246)",
+        "activeStruggleInferences = expires_at > now AND superseded_at IS NULL, probability DESC + generatedAt DESC; teacher CONFIRMED/REJECTED mapped verbatim, REJECTED NOT dropped here (the policy filters)",
+        "topicEngagements = nodeId-IN scoped, NO time window, null signal_type -> TOPIC_ENGAGEMENT",
+        "pendingReviews = PENDING + nodeId-IN scoped"
+      ]
+    },
+    "phase2_engagement_recorder": {
+      "new_file": "apps/api/src/services/learner/engagement-recorder.ts",
+      "wiring": "routes/tutor.ts + routes/cla.ts telemetry seams (the previously no-op sinks) — the frozen TutorEngagementRecorder listener",
+      "laws": [
+        "V25 classifier SIGNAL_POLICY_VERSION 'tutor-signals/v2' stamped explicitly (column default is v1)",
+        "precedence: intervention mappings > doubt > clarification BEFORE explanation > explanation vocabulary > TOPIC_ENGAGEMENT",
+        "hard boundaries verbatim: only deterministic anchors recorded, never raw chat text / LLM entities; null learner or empty topics write NOTHING",
+        "append-guard failure law: sinks never throw into the ask (frozen rode the request tx — deviation disclosed)",
+        "the section-18 RESEARCH consumer stays T-MIG-061 dormant — this is the engagement-row listener, NOT the research log"
+      ]
+    },
+    "cla_composition": "routes/cla.ts — telemetry swapped to the CLA twin; the stale 'tutor module runs with NO learner model' disclosure corrected of record; CLA struggle-read reuse + the inline re-sort drift queued as intake items (not silently fixed)"
+  },
+  "substrate_honesty": {
+    "live_writers": ["skill_states (model-update.ts via assessment)", "misconception_states (model-update.ts)"],
+    "no_v2_writers_disclosed": ["struggle_inferences (the diagnosis engine band not ported)", "tutor_topic_engagements (SUPPLIED BY THIS BAND's Phase 2)", "review_schedules (the flashcard/decay scheduler band not ported)"]
+  },
+  "gates": {
+    "typecheck_x4": "exit 0",
+    "suite": "1916 pass / 0 fail / 13 skip vs clean-tip stash-round-trip 1896 pass / 0 fail / 13 skip (1909 ran) — delta EXACTLY +20, zero regression",
+    "golden_selftest": "OK",
+    "census_gate": "GREEN exit 0 (LIVE=0 preserved — zero route-family/hub changes)"
+  },
+  "tests_added": 20,
+  "test_defect_round": "one disclosed: 'what is a mole?' hits the frozen 'what is' explanation pattern — the classifier was RIGHT, the test assertion was fixed, zero production changes",
+  "residuals": [
+    "the api redeploy baking the wiring LIVE on syllabai-v2.vercel.app = the serialized operator-gated act (the 093/110 class — NEVER self-fired)",
+    "CLA struggle-read reuse + CLA misconception re-sort drift = queued intake items",
+    "T-MIG-061 research consumer remains dormant (disclosed posture unchanged)"
+  ],
+  "discipline": "zero prod/Neon/Vercel/LLM contact; no force; fetch-first (two races discharged: e69e727 + 2c271e07 .syllabai-only); PAT inline-only never persisted; hub lane untouched"
+}

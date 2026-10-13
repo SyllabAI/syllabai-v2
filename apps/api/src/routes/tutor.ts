@@ -70,6 +70,8 @@ import { resolveEmbeddingProvider } from "../services/content/retrieval";
 import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "../services/identity/users";
 import { defaultClock } from "../services/selfmark";
+import { buildSqlLearnerModel } from "../services/tutor/learner-model";
+import { tutorEngagementTelemetrySink } from "../services/learner/engagement-recorder";
 import { buildLlmChain, chainAsLlmProvider, type FailoverLlmChain } from "../services/llmchain";
 import {
   ArgumentError,
@@ -405,8 +407,14 @@ export const dormantTutorLlm: LlmProvider = {
  * arm over the injected embedding provider (honest empty when unkeyed),
  * the tranche-1b paper-question resolver (the REQUIRED port — no
  * notPaperAsk default anywhere), the grounded generator over the LLM seam
- * of record, and a no-op telemetry sink (the §18 research consumer is
- * T-MIG-061's title — disclosed dormant).
+ * of record, the sql-backed learner model (T-MIG-124 Phase 1: the T-026
+ * diagnosis-aware policy + the s140 episodic digest + the learner brief are
+ * LIVE in serving — honest-empty on the not-yet-written substrate tables),
+ * and the engagement-recorder telemetry sink (T-MIG-124 Phase 2: the frozen
+ * TutorEngagementRecorder listener — per-topic appends over
+ * tutor_topic_engagements; the §18 RESEARCH consumer stays T-MIG-061's
+ * disclosed-dormant title — this sink is the engagement-row listener, not
+ * the research consumer).
  *
  * LLM SEAM OF RECORD (ADR-MIG-0002, operator directive ① trace
  * 1a117913519cd141): the §26.1 chain (groq → gemini → openrouter) rides the
@@ -431,7 +439,12 @@ export function buildTutorRouters(
     vectorRetriever: buildSqlVectorArm(sql, resolveEmbeddingProvider(env)),
     paperQuestionResolver: buildPaperQuestionResolver(sql),
     generator: buildGroundedTutorGenerator(llm),
-    telemetry: () => {},
+    // T-MIG-124: the learner model is WIRED (the ported T-026 policy + s140
+    // digest + brief read real tables; empty substrate degrades honestly to
+    // the pre-wiring behavior) and the telemetry seam records the frozen
+    // engagement rows (Phase 2) — never the research log (061 dormant).
+    learnerModel: buildSqlLearnerModel(sql, defaultClock),
+    telemetry: tutorEngagementTelemetrySink(sql, defaultClock),
   });
   return {
     module,

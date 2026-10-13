@@ -1,0 +1,101 @@
+version: 1
+task:
+  id: T-MIG-124
+  title: "The tutor learner-model serving wiring (Phase 1: the LearnerModelPort adapter + composition-root injection — T-026 diagnosis-aware policy + s140 episodic memory + the learner brief go LIVE) + the engagement recorder (Phase 2: the V25 classifier + the FREE_TUTOR/CONTEXTUAL_ASSISTANT telemetry sinks)"
+  owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)"
+  status: 'IN_REVIEW # the band is executed + gates green (typecheck x4; suite 1916/0/13skip EXACT vs clean-tip 1896/0/13, delta exactly +20; golden selftest OK; census --gate GREEN LIVE=0 preserved); DONE flips on the CI 2/2 verify at the pushed sha (the 121 run-004 pattern); the api redeploy that bakes the wiring LIVE on the api-of-record is the SERIALIZED residual (the 093/110 class — operator-gated, never self-fired)'
+  claimed_at: "2026-10-13T08:xxZ"
+  claimed_by_order: "operator traces 1a133ff585a25ea5 ('Proceed with learnerModel wiring ... Plan first') + 1a13422c277c0171 ('Proceed, both phases') — the plan of record filed in the worklog @ 937df0b first, execution under the standing law"
+  priority: P1
+  wave: tutor-serving # the retirement's first post-cutover feature band — v2 is the only system of record (bulletin 7e75626be9)
+  deps: [T-MIG-060, T-MIG-061, T-MIG-121]
+  execution_record: >
+    FILED+CLAIMED+EXECUTED under the operator's two orders (plan-first honored:
+    the full plan — frozen read laws pinned first-hand at core 6cad6ef
+    READ-ONLY, substrate-writer census, wire-impact analysis — was filed to
+    the worklog and presented before any act; the operator answered 'Proceed,
+    both phases'). THE GAP OF RECORD: buildTutorModule already accepted and
+    forwarded learnerModel (services/tutor/index.ts :260) and karag's
+    assembleContext already consumed it with null-guards
+    (karag.ts :392-426), but buildTutorRouters never constructed a port —
+    the CLA composition root disclosed the posture verbatim ('the tutor
+    module itself runs with NO learner model at all'). THE FULLY-PORTED-READ-
+    EMPTY SURFACE (the operator's own words): T-026 selectIntervention,
+    the s140 memoryDigest and learnerBriefOf (context.ts) read [] on every
+    ask. PHASE 1 (new services/tutor/learner-model.ts,
+    buildSqlLearnerModel(sql, clock): LearnerModelPort): skillStates reuses
+    skillStatesByRecency (REUSE-not-redeclare; shape-exact with
+    context.ts SkillState); misconceptionReadings = the anchored rows
+    relaxed per MED-2/ADR-032 (the tutor's OWN relaxedToPrior +
+    TUTOR_BDT_PAPER_DEFAULTS, prior 0.3 / tau 180d, per the per-module
+    structural-seam doctrine) AND re-sorted by effective desc (a fresh 0.6
+    outranks a stale 0.9 — frozen LearnerModelService.misconceptionReadings
+    :225-246; the CLA inline copy's missing re-sort DISCLOSED as a queued
+    intake item, not silently fixed); activeStruggleInferences = NEW scoped
+    read: expires_at > now AND superseded_at IS NULL, ordered probability
+    DESC then generatedAt DESC (ties by recency), teacher override mapped
+    CONFIRMED/REJECTED verbatim (StruggleInference.java :131-137) with
+    REJECTED rows NOT dropped here (the policy filters — frozen parity);
+    topicEngagements = matched-topic scoped (node_id = any, the house
+    array-binding idiom) with NO time window (the 30d TUTOR_WINDOW_DAYS is
+    the learner-me V21 law, a DIFFERENT surface), null signal_type reads
+    TOPIC_ENGAGEMENT, empty topics query nothing; pendingReviews = PENDING +
+    matched-topic scoped. Composition root: ONE line
+    (learnerModel: buildSqlLearnerModel(sql, defaultClock)) + header truth.
+    Zero wire/SSE/hub/census impact — personalization rides the prompt
+    (prompt.ts :287-298); meta/delta/done shapes untouched; the failure law
+    is the same-DB infra class (propagates like scopes/KG/vector reads; no
+    swallowing; empty substrate degrades byte-identically to pre-wiring).
+    PHASE 2 (new services/learner/engagement-recorder.ts): the frozen
+    TutorEngagementRecorder listener (V21/P7 + V24 + V25) rides the EXISTING
+    telemetry seam karag already emits into (karag.ts :472/:536/:608 — the
+    previously no-op sink): the V25 deterministic row classifier
+    (SIGNAL_POLICY_VERSION 'tutor-signals/v2' stamped EXPLICITLY — the
+    column default is the older v1) with the frozen precedence (intervention
+    mappings > doubt > clarification BEFORE explanation — 'what do you mean'
+    is a clarification despite containing 'what do' > explanation
+    vocabulary > TOPIC_ENGAGEMENT default), one pure-append row per matched
+    topic over tutor_topic_engagements, the hard boundaries verbatim (only
+    the deterministic anchors recorded — never the raw chat text, never
+    LLM-invented entities; null learnerId / empty topics write NOTHING), the
+    FREE_TUTOR sink (null context triple, occurredAt = event.at) + the
+    CONTEXTUAL_ASSISTANT twin (the surface identity triple mode/kind/
+    reference; occurredAt = the recorder clock — the v2 CLA event carries no
+    instant, sub-second skew DISCLOSED), and the append-guard failure law
+    (never throws into the ask — a lost row is the §22 append-guard class;
+    the frozen listener rode the request tx — deviation DISCLOSED in the
+    header). The §18 RESEARCH consumer stays T-MIG-061's disclosed-dormant
+    title — this band wires the engagement-row listener, NOT the research
+    log. CLA composition (routes/cla.ts) swaps its no-op for the CLA twin
+    and its stale 'tutor module runs with NO learner model' disclosure is
+    corrected of record. SUBSTRATE HONESTY (repo-wide census first-hand):
+    skill_states + misconception_states have live v2 writers
+    (model-update.ts via assessment) — the brief and the policy's
+    misconception precedence go LIVE on wiring; struggle_inferences and
+    review_schedules have NO v2 writers — their reads stay honest-empty
+    until those bands (disclosed, not blockers). TESTS (+20, delta EXACT):
+    new apps/api/test/tutor/learner-model.test.ts (5: delegation shape,
+    relax + effective-desc re-sort with the 0.6-fresh-vs-0.9-stale flip, the
+    read-contract query law + override mapping, the no-window law + the
+    TOPIC_ENGAGEMENT mapping + the empty-topic no-query guard, the
+    pendingReviews law); new apps/api/test/learner/engagement-recorder.test.ts
+    (12: the classifier precedence incl. the clarification-before-explanation
+    trap, the per-topic append column law with the explicit classifier
+    version, the refused-row honesty, the hard-boundary no-writes, the
+    append-guard never-throw, the policy→classifier coupling, the CLA triple
+    + its guard); tutor-routes.test.ts +3 (the E2E personalization: five
+    reads once per ask over the rig + the prompt contains the mastery line,
+    the '1 earlier tutor ask(s)' digest line, the spaced-review line and the
+    MISCONCEPTION_REMEDIATION plan; the empty-substrate byte-identical
+    degradation; the recorder riding the composition seam on a served ask).
+    One test-fixture defect round DISCLOSED: 'what is a mole?' hits the
+    frozen 'what is' explanation pattern (the classifier was RIGHT; the
+    assertion fixed, zero production changes). GATES: typecheck x4 exit 0;
+    suite 1916/0/13skip vs clean-tip stash-round-trip 1896/0/13skip (delta
+    exactly +20, zero regression); golden selftest OK; census --gate GREEN
+    exit 0 (LIVE=0, zero route-family changes); hub lane untouched (zero
+    hub files). RESIDUALS: the api redeploy that bakes the wiring LIVE on
+    syllabai-v2.vercel.app is the serialized operator-gated act (the
+    093/110 class — NEVER self-fired); the CLA struggle-read reuse + the
+    CLA re-sort drift = queued intake items; the 061 research consumer
+    stays dormant. Zero prod/Neon/Vercel/LLM contact, no force, fetch-first.
