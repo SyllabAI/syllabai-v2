@@ -1,0 +1,56 @@
+{
+  "run": "run-002",
+  "band": "T-MIG-124",
+  "title": "THE API BAKE REDEPLOY — the T-MIG-124 learner-model wiring + engagement recorder LIVE on the api-of-record (the serialized residual discharged)",
+  "lane": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5, chat dd7e60e9)",
+  "at": "2026-10-13T08:1x..08:2xZ",
+  "operator_order": "trace 1a134492fe94f395 'api redeploy: vcp_...' — the serialized operator-gated residual of run-001 (the 093/110 class, never self-fired)",
+  "credential_law": "the vcp credential fingerprint verified first-hand at act time: sha256-prefix d254bbfaac004354 == the of-record operator census fingerprint (the T-MIG-121 run-004 law); memory-only, inline usage only, never printed/committed/persisted; receipts and transcripts carry the fingerprint only",
+  "pre_flight": {
+    "race": "fetch-first: local HEAD == origin main == 34bf845 (0/0), tree clean, no force",
+    "ci_at_tip": "check-runs API first-hand: hub SUCCESS + verify SUCCESS (2/2)",
+    "pr_census": "zero open PRs",
+    "claim_census": "standing order re-check: zero claimed/open cards (the board reads all-DONE)",
+    "census_gate": "the hardened T-MIG-123 instrument --gate at tip: pins=7 LIVE=0 rides-v2=2 rollback-fallback=1 dormant=5 unmapped=0 stale-hints=0 unknown-route=0 — GREEN exit 0",
+    "vercel_identity": "GET /v2/user -> syllabai-1403 (the identity of record)",
+    "race_guard": "GET /v6/deployments (production, api project prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ): latest = dpl_4cKfWz1iuVXT8JN7YMifo33PjU5V READY (created 2026-10-10T15:47:15Z = the T-MIG-107 fix-forward of record) — NO parallel deploy in flight; every band merged after 2026-10-10 (T-MIG-109..124) sat PAST the serving bundle as disclosed",
+    "pre_act_probes": "health 200 {status:UP}; unauth self-mark 401; unauth transcribe 401 (the B6 law) — carrier healthy pre-act"
+  },
+  "build": {
+    "recipe": "the 092/093/107 bundle recipe of record (gitSource class EXTINCT of record — the api project has no git link): clean detached worktree at 34bf845, worktree-only shims (upstream untouched, git-restored post-build): the 6 concept-graph YAMLs inlined byte-verbatim via concept-assets.gen.ts (bun build cannot preserve runtime asset paths), Bun.CryptoHasher -> node:crypto, Bun.YAML.parse -> js-yaml v4 named-export load (the 107 fix), deploy-entry.ts = the path-preserving Hono->Vercel Node adapter",
+    "asset_sha_pins": "6/6 EXACT vs the 093 of-record figures: concepts 24fa91ac7149682b, concept_edges 8a651dd9e60bfefa, practicals e53e5f87606a2b5a, relationships b3b7529222d77d80, specification_points b1fea69953205077, topics a7b14cbdd34bb9fe",
+    "bundle": "327 modules, 3,147,414 bytes CJS (T-MIG-107-era: 321 modules / 3.13MB — the delta is the post-107 source drift incl. the T-MIG-124 modules)",
+    "bundle_byte_proof": "tutor-signals/v2 x1 (the V25 SIGNAL_POLICY_VERSION), 'superseded_at IS NULL' x1 (the struggle read law), buildSqlLearnerModel x2 (def + call-site), TOPIC_ENGAGEMENT x7, FREE_TUTOR x3, MISCONCEPTION_REMEDIATION x6 — the T-MIG-124 content is IN the deployed bundle",
+    "require_smoke": "node require OK under the zero-key law (synthetic SYLLABAI_JWT_SECRET + synthetic DATABASE_URL) — handler type function",
+    "worktree": "restored clean post-build, then removed; the stage (api/index.js + vercel.json 2 rewrites + .vercel/project.json prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ/team_ULL54qkhzKBmnKrpO6BD4mYX) is the lane-side deploy artifact of record (scripts/api-stage-t124/)"
+  },
+  "deploy_act": {
+    "how": "vercel CLI 62.7.0 (pinned per the law) 'deploy --prod --yes' FROM the 2-file stage; VERCEL_TOKEN env memory-only",
+    "deployment": "dpl_GvcuJnggbdtyjqFmVdAgqtuK214z READY (created 2026-10-13T08:17:47Z)",
+    "aliases": "GET /v2/deployments/dpl_GvcuJnggbdtyjqFmVdAgqtuK214z/aliases -> ['syllabai-v2.vercel.app', 'syllabai-v2-syllab-ai.vercel.app'] BOTH attached (production live)"
+  },
+  "post_fire_battery": {
+    "result": "11/11 PASS (scripts/tmig124_bake_battery.py, lane-side, token-free)",
+    "legs": [
+      "health 200 {groups:[liveness,readiness],status:UP}",
+      "register probe STUDENT 201 accessToken (THE 107 CANARY: the REAL implementation law, not an edge NOT_FOUND)",
+      "duplicate register 409",
+      "unauth self-mark 401",
+      "unauth transcribe 401 (the B6 ruling law intact through the new bundle)",
+      "login 200 accessToken",
+      "tutor session create 201",
+      "TUTOR ASK 200 in 3.8s — THE BAND CANARY: the wired LearnerModelPort (fresh probe learner -> the honest empty-substrate degradation path, byte-tested of record) + the V25 engagement recorder rode the served ask end-to-end; real grounded generation, 1639 bytes",
+      "sessions list 200",
+      "session delete 204"
+    ],
+    "probe_defect_rounds": "two disclosed battery-shape rounds BEFORE any 201: (1) register 400 'displayName: must not be blank', (2) register 400 'unknown role: learner' — both REAL implementation laws served (validation_failed / bad_request classes = extra canary evidence, zero system defects); corrected to the contract law (displayName 2..100, role STUDENT) and the battery went 11/11"
+  },
+  "write_ledger": "1 probe STUDENT (t124bake-...@probe.example.invalid) + tutor session create+delete (net-zero) + ONE real ask (LLM spend disclosed) whose V25 engagement row(s) over tutor_topic_engagements are the FIRST live engagement rows of record (law-implied from the served 200 + the E2E law; no Neon contact taken to introspect)",
+  "rollback": "dpl_4cKfWz1iuVXT8JN7YMifo33PjU5V (the T-MIG-107 fix-forward) stays READY and re-aliasable; zero env changes made by this lane",
+  "residuals_after_this_bake": [
+    "CLA struggle-read reuse + CLA misconception re-sort drift = queued intake items (disclosed, not silently fixed)",
+    "T-MIG-061 research consumer remains dormant (disclosed posture unchanged)",
+    "review_schedules writer band = dormant disclose-only (no v2 writer; decision point (b) stands)"
+  ],
+  "discipline": "zero Neon contact; zero LLM spend beyond the ONE disclosed canary ask; the Vercel API contact = identity + deployments/aliases reads + THIS ordered deploy act; no force; PAT and vcp credential never persisted (inline usage only, memory-only); scope: .syllabai-only bookkeeping (this receipt + the card residual annotation + the worklog entry)"
+}
