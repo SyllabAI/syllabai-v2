@@ -1,0 +1,19 @@
+{
+  "card": "T-MIG-121 run-005 — the collision-disposition INDEPENDENT VERIFICATION of the run-004 bake (no duplicate deploy fired)",
+  "receipt": "run-005-independent-verification-r7a",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)",
+  "created_at_utc": "2026-10-13T07:55:00Z",
+  "operator_lineage": "OPERATOR ORDER trace 1a1341039376d985: 'fire the redeploy' + the VERCEL_PAT in-message. Fetch-first DISCHARGED IT AS COLLISION of record: origin/main e69e727 already carries the w0a lane's run-004 bake (dpl_AfZZb5bBSY3qsQRSwZUfaHTnKGYo) + the completed retirement (the operator's own waiver order 1a131d02c805602d waiving the 48h soak; syllabai-core + syllabai-hub archived; the master bulletin present) — the e69e727 STAND-DOWN law held: ZERO duplicate deploys fired by this lane (zero Vercel writes; 4 API GET reads only).",
+  "credential_law": "the in-message PAT staged 0600 at .creds/b6_verify.env OUTSIDE the repo, used inline by scripts/b6_collision_verify_r7a.py, NEVER printed/committed/persisted; sha256-prefix fingerprint d254bbfaac004354 == the of-record fingerprint EXACT (the PAT is UNROTATED — the rotation residual STANDS for the operator); GET /v2/user 200 username=syllabai-1403 (the run-003/004 identity law); the staged file SHREDDED post-run.",
+  "verification_battery_first_hand": {
+    "deployment_law": "GET /v13/deployments/dpl_AfZZb5bBSY3qsQRSwZUfaHTnKGYo -> readyState=READY + projectId==prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl (the hub, no drift)",
+    "latest_production": "GET /v6/deployments (target=production) -> dpl_AfZ IS the latest (age ~625min at verify), NOTHING newer in flight — the board did not move under the verification",
+    "alias_law": "GET /v2/deployments/dpl_AfZ/aliases -> ['syllabai-hub-v2.vercel.app','syllabai-hub-v2-syllab-ai.vercel.app'] BOTH attached",
+    "wire_laws": "hub health 200 dataMode=core-api; api actuator 200 status=UP; chat malformed 400 (parse-first); chat VALID-body-noauth 401 unauthorized (the auth law — the first probe carried a schema-invalid {messages} body and correctly drew the parse-first 400, the run-004-disclosed probe-defect class, corrected of record); v2 transcribe noauth 401 (the ruling-(b) law LIVE)",
+    "baked_census": "15 chunks scanned on the live alias: B6 transcribe row PRESENT (1), B1 marking midpath 5, B2 assignments 5, B5 questions 6, B3 stream-client 0 (the client law holds)",
+    "census_gate": "scripts/preflight_zero_core_census.py --gate at the synced tip e69e727: exit 0, GATE GREEN, LIVE=0"
+  },
+  "verdict": "9/9 GREEN first-hand — the run-004 bake is REAL, READY, aliased, live-serving, and law-complete; the B6 band + the retirement of record stand INDEPENDENT-VERIFIED",
+  "operator_residuals_of_record": ["the Render console disable (the §6.2 lever — the census-soak gate letter remains the human act)", "issue #147 zombie (syllabai.vercel.app / prj_D7vf)", "PAT ROTATION — the fingerprint match proves the handed PAT is still d254bbfaac004354; rotate at leisure, the board no longer needs it"],
+  "card_delta": "NONE — T-MIG-121 already DONE of record; this receipt adds the independent-verification leg only"
+}

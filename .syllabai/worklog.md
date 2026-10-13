@@ -7615,3 +7615,19 @@ Stage Summary:
 - The act: evidence comment (issues/147#issuecomment-6140258891) + state=closed completed @ 2026-10-13T07:07:54Z. Basis: the zombie (prj_D7vf, permanent 500s, archived-system relic) has zero live dependents (census --gate GREEN LIVE=0 re-run first-hand), its CORS trust was pruned of record 2026-10-08, and the retirement (1c22a3a, bulletin 7e75626be9, replay 223/223, B6 bake 9/9) supersedes the lever — v2 the ONLY system of record.
 - Residual disclosed in the comment: the console-level disable/delete of prj_D7vf was NOT performed by the lane (zero Vercel contact; the disable-NEVER-delete hygiene law; PAT rotation recommended) — optional account cleanup, zero migration dependency.
 - Post-act census: open issues = ZERO. Receipt: .syllabai/receipts/W7-CUTOVER/issue-147-zombie-close-run-001-w0a.json. Zero writes beyond the ordered act + this .syllabai-only record; no force.
+
+---
+---
+Task ID: trace 1a1341039376d985 (the 'fire the redeploy' order — COLLISION DISPOSITION)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)
+Task: operator order 'fire the redeploy' + the VERCEL_PAT in-message — the serialized B6 hub redeploy (the 093/110 recipe, the 6759200 handoff law).
+
+Work Log:
+- Fetch-first collision check FIRST: origin/main moved f8890e1 -> e69e727 (ff-only synced). The tip carries the w0a lane's run-004 bake of record (dpl_AfZZb5bBSY3qsQRSwZUfaHTnKGYo, 9/9 battery, card 121 -> DONE) + the COMPLETED retirement under the operator's own waiver order (1a131d02c805602d: the 48h soak waived; syllabai-core + syllabai-hub archived; the master bulletin present) — the e69e727 STAND-DOWN law held: this lane fired ZERO duplicate deploys.
+- The order discharged per the 6759200 precedent as INDEPENDENT VERIFICATION of the sibling's deploy leg (scripts/b6_collision_verify_r7a.py, persisted lane-side): PAT staged 0600 outside the repo, fingerprint d254bbfaac004354 == of-record EXACT (UNROTATED — the rotation residual stands), /v2/user syllabai-1403, dpl_AfZ READY + projectId law OK + LATEST production (~625min, nothing newer in flight), aliases BOTH attached, wire laws: hub health 200 core-api / actuator 200 UP / chat malformed 400 parse-first / chat valid-noauth 401 (first probe schema-invalid {messages} correctly drew 400 — the run-004-disclosed probe-defect class, corrected of record) / v2 transcribe noauth 401, baked census 15 chunks (B6 transcribe row PRESENT, B1 5 / B2 5 / B5 6 stable, B3 stream-client 0), census --gate GREEN exit 0 at the tip. 9/9 GREEN.
+- Receipt T-MIG-121/run-005-independent-verification-r7a.json filed; the staged PAT SHREDDED post-run; evidence /home/z/my-project/evidence/b6_collision_verify_r7a.json lane-side.
+
+Stage Summary:
+- The operator's redeploy order: DISCHARGED AS COLLISION — the redeploy was already fired and is live; this lane adds the independent-verification leg only (4 Vercel GET reads, zero writes, zero deploys, zero prod mutations, zero LLM).
+- B6 DONE + the retirement of record now INDEPENDENT-VERIFIED by a second lane. Operator residuals unchanged: the Render console disable (the §6.2 lever), #147 zombie, PAT rotation (the fingerprint match proves rotation is still owed).
+- .syllabai-only commit (receipt + this worklog); fetch-first, no force.
