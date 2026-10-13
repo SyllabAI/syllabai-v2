@@ -7773,3 +7773,18 @@ Work Log:
 
 Stage Summary:
 - The tutor of record verified working END-TO-END on the live wire first-hand: grounded ask 200, session persistence to the append law, and the Phase-2 engagement band live (classification + append + read-back). Receipt .syllabai/receipts/T-MIG-125/run-003-canary-r0.json.
+
+---
+Task ID: T-MIG-127
+Agent: r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: PdfPane gesture zoom (s144) — pinch steps the PANE ladder instead of the whole page + ctrl+wheel zoom (operator: audit → pinch symptom → "Go + ctrl+wheel zoom as well")
+
+Work Log:
+- Root-caused the pinch symptom live first-hand (three-link chain: no viewport export in layout.tsx → Next's permissive default meta, verified on the DEPLOYED hub; zero touch/gesture/wheel handlers in the viewer surface; scroller falling through to browser default multi-touch = whole-page zoom).
+- Implemented the s144 fix in apps/hub/src/components/pastpapers/pdf-pane.tsx: touch-action pan-x pan-y on the pages region (Android/Chromium stop), non-passive gesture* preventDefault (the only iOS Safari stop), a uniform pointer-based pinch tracker (ratio rebased per commit, PINCH_STEP_RATIO 1.2) stepping through the existing zoomBy path (ceiling clamp + anchor-preserving refreeze unchanged), and a non-passive ctrl/meta+wheel accumulator (WHEEL_STEP_PX 100, also covers Mac trackpad pinch). Deliberately NO site-wide user-scalable=no (a11y; iOS ignores it anyway).
+- Added two e2e pins to tests/e2e/pp-viewer.spec.ts (chromium CDP synthesis: ctrl+wheel via Input.dispatchMouseEvent modifiers=2; pinch via Input.dispatchTouchEvent), aimed inside the scroller's visible box (holders extend ~1600px below the fold — viewport-past events are dropped) and modeling the per-finger pointermove stream a real touchscreen delivers.
+- Validated lane-side first-hand: tsc clean, eslint clean, production build green, FULL pp-viewer spec 13/13 PASS (11 pre-existing = zero regression + 2 new). Probe logs confirmed: wheel arrives ctrlKey=true; the touch stream is pointerdown×2 → per-finger pointermove pairs → pointerup×2 with ZERO pointercancel (pan-x pan-y holds).
+- Filed .syllabai/tasks/T-MIG-127.yaml (claim-in-first-commit) + receipts/T-MIG-127/run-001-gesture-zoom-r0.json.
+
+Stage Summary:
+- S144 LANDED ON BRANCH t-mig-127/r0 @ c198b1e base, validated 13/13; residuals: branch push + PR open are credential-gated (previous PAT didn't survive the session continuation; rotate it anyway — it transited chat); flip to IN_REVIEW at PR open; CI run ids append as run-002. Disclosed v1 tradeoff: mixed pan+pinch gestures may pointercancel (scroll wins; pinch-in-place is the contract).
