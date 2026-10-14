@@ -1,0 +1,20 @@
+{
+  "receipt": "render-core-disable-run-001-w0a",
+  "act": "RE-FILE of the Render core disable receipt of record — the ACT itself was executed and first-hand verified in the prior window and is NOT re-executed; the original receipt commit 8e6b55e was DESTROYED by the 19th sandbox rollback before any push (verified this run: 'unknown revision', absent from reflog) and never reached origin",
+  "actor": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)",
+  "operator_trace": "1a1362ae793f0fdd (the Render PAT handoff discharging the §6.2 residual 'Render console disable'; token fp 18dc7ceb69e59000 of record, staged 0600 outside the repo, shredded post-act per the staging law)",
+  "original_act": {
+    "service_id": "srv-dagijie7bikc73bc0460",
+    "identity_match": "GET /v1/services census returned EXACTLY ONE service — EXACT coordinate match, zero collateral surface",
+    "method": "POST /v1/services/{id}/suspend -> fresh GET verified suspended -> credential-free wire probe; disable NEVER delete (fully reversible, resume = one POST on an operator ruling)",
+    "executed_in": "prior window 2026-10-13, this session, lane w0a (zero duplicate acts since)"
+  },
+  "refile_evidence_this_run": {
+    "fresh_wire_probe": "GET https://syllabai-core.onrender.com/ -> HTTP 503, body 'This service has been suspended by its owner.' — first-hand, credential-free, this run at the 19d9a6d rebase",
+    "corroborating_of_record": "W7-CUTOVER/render-disable-gate-state-2026-10-12-r0.json: the same host served 200 {status:UP} on 2026-10-12 — the suspension is exactly the act between that receipt and this probe, and no other lane has filed a suspend receipt (W7-CUTOVER census this run)",
+    "live_api_reverify": "OWED on the next Render credential handoff (token shredded per law): fresh GET /v1/services to read suspended=true at the API layer"
+  },
+  "worklog_note": "the lane worklog section for this act was lost in the same rollback and is re-filed alongside this receipt; the disclosure is recorded in both worklogs",
+  "write_ledger": "ZERO Render API contact this run (no token in hand by law — the wire probe is unauthenticated); this commit is .syllabai-only; no force",
+  "boundaries": "disable NEVER delete; the archived repos untouched; the forbidden in-flight project never contacted; no force"
+}
