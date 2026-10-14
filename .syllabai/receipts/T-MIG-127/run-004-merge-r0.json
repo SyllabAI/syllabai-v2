@@ -1,0 +1,37 @@
+{
+  "run": "run-004",
+  "band": "T-MIG-127",
+  "title": "MERGED of record — PR #184 squash 60e2666 on main; task DONE; s144 live on main",
+  "executed_by": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "operator_order": "trace 1a138e5e7ba5dad5 ('merge')",
+  "merge_of_record": {
+    "pr": 184,
+    "state": "closed/merged",
+    "squash_commit_on_main": "60e2666d3eb6f1f93152925e5a48c70e1c9fe7d2",
+    "files_landed": [
+      "apps/hub/src/components/pastpapers/pdf-pane.tsx",
+      "apps/hub/tests/e2e/pp-viewer.spec.ts",
+      ".syllabai/tasks/T-MIG-127.yaml",
+      ".syllabai/receipts/T-MIG-127/run-001-gesture-zoom-r0.json",
+      ".syllabai/receipts/T-MIG-127/run-002-pr-open.json",
+      ".syllabai/receipts/T-MIG-127/run-003-ci-green.json",
+      ".syllabai/worklog.md"
+    ],
+    "branch_sha_chain_preserved_in_commit_body": [
+      "8daa021 claim (claim-in-first-commit)",
+      "7637b53 impl s144",
+      "efdbe15 run-001 receipt (validated 13/13 lane-side)",
+      "f4f5af0 run-002 PR open + IN_REVIEW",
+      "4dacb9e run-003 CI green",
+      "4165558 race-guard merge-in of main 19d9a6d"
+    ],
+    "post_merge_code_check": "main @ 60e2666: PINCH_STEP_RATIO x4 in pdf-pane.tsx — the s144 fix is live on the main of record"
+  },
+  "mid_flight_events": [
+    "SANDBOX ROLLBACK DISCLOSED: between the run-003 push and the merge order, the local sandbox rolled back to an Oct-13 ~07:00Z snapshot — the scratch-v2-audit clone AND the local session worklog tail (T-MIG-127 run-001..003 entries) were wiped. ZERO impact on the of-record state (branch, PR, receipts, in-repo worklog all lived on origin). Recovery: fresh clone of the pushed branch (all 5 commits verified), then the merge below. Local worklog rebuilt with full disclosure.",
+    "RACE-GUARD RE-RUN: main had moved 350487b -> 19d9a6d (T-MIG-124 worklog entry, .syllabai-only direct push) while PR #184 was open -> PR reported mergeable=dirty. Resolved law-compliantly: merged origin/main INTO the branch (4165558) — the ONLY move that needs no force; worklog append-conflict resolved theirs-first then ours (scripted, byte-exact, no entry text altered); hub code byte-identical to the 13/13-validated state (git diff 4dacb9e..4165558 -- apps/hub EMPTY); fast-forward push; CI 38517750596 (4165558) success.",
+    "MERGE-METHOD ADJUDICATION: GitHub refused rebase-merge ('This branch can't be rebased' — the branch carries the race-guard merge commit); force-push of a rebased branch is FORBIDDEN by the no-force law; merge_method=merge would put a merge commit on the linear main of record. SQUASH chosen: keeps main linear, lands all 7 of-record files, and the squash commit body carries the full branch SHA chain for the audit trail."
+  ],
+  "credential_posture": "same inline-only PAT posture as run-002/003 (env inside single shell invocations; never on disk, never printed). ROTATION STILL OUTSTANDING — the token has transited chat; rotate now that PR #184's credential needs are COMPLETE.",
+  "task_final_state": "DONE (R0 flip, this commit)"
+}

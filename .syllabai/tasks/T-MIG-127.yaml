@@ -3,7 +3,7 @@ task:
   id: T-MIG-127
   title: "PdfPane gesture zoom (s144): a two-finger pinch on the pages region steps the PANE zoom ladder instead of the browser page zoom (iOS gesture* preventDefault + Android touch-action pan-x pan-y + pointer-based pinch → the existing zoomBy path), plus ctrl+wheel / Mac trackpad-pinch ladder stepping — e2e-pinned both ways; deliberately NO site-wide user-scalable=no"
   owner: "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)"
-  status: IN_REVIEW # PR #184 open of record (branch t-mig-127/r0 @ efdbe15, base 350487b) — receipts attached; CI ids append as run-003
+  status: DONE # merged of record: squash 60e2666 on main (PR #184) — run-004 merge receipt attached
   claimed_at: "2026-10-13T18:39:58Z"
   claimed_by_order: "operator traces 1a1360d05c8bd7a5 ('audit the pdf viewer') + 1a13629f5c00b479 (the symptom: 'when we try to zoom using pinching, it zooms the whole website, instead of the pdf page') + 1a13677fbff57f09 ('Go + ctrl+wheel zoom as well')"
   priority: P1
@@ -63,3 +63,5 @@ progress_log:
     note: "operator credential handoff received (inline-only law): fetch-first race-guard caught main moved c198b1e→350487b (T-MIG-124 PR #183 landed mid-flight) → rebased 3 commits, zero file collisions (api-only delta), post-rebase tsc exit 0, stat unchanged 5 files +384/−3; branch pushed + PR #184 opened (receipt run-002); ONE disclosed push-auth hiccup: fresh-shell-per-invocation reset the env token between tool calls — diagnosed, retried combined, succeeded; no partial/force writes; CI ids append as run-003"
   - run: run-003-ci-green (2026-10-13T19:24:00Z)
     note: "PR #184 CI GREEN of record: ci.yml runs 38452143821 (head efdbe15) + 38452444514 (head f4f5af0, the run-002 tip) both completed/success; check-runs hub + verify both success on the PR head; mergeable=true"
+  - run: run-004-merge-r0 (2026-10-14T05:42:35Z)
+    note: "MERGED of record — operator merge order (trace 1a138e5e7ba5dad5). Race-guard re-run: main had moved 350487b→19d9a6d (T-MIG-124 worklog, .syllabai-only direct) mid-PR → merged main INTO the branch (4165558, worklog conflict resolved theirs-first then ours, hub bytes identical to the validated state, FF push, CI 38517750596 success). GitHub refused rebase-merge (branch carried the merge commit); force-push rebased = forbidden; merge-commit on main = breaks linear main → SQUASH 60e2666 with the full branch SHA chain (8daa021/7637b53/efdbe15/f4f5af0/4dacb9e/4165558) in the commit body. All 7 of-record files landed. Sandbox rollback disclosed in run-004 receipt."

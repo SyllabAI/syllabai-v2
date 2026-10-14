@@ -7818,3 +7818,17 @@ Work Log:
 Stage Summary:
 - T-MIG-127 IN_REVIEW at PR #184 (head efdbe15, base 350487b). REMINDER OF RECORD: the handed PAT transited chat — rotate it after this PR's credential needs end. LANE R0: PR #184 awaiting review/merge.
 
+---
+Task ID: T-MIG-127 run-004 (operator merge order, session trace 1a138e5e7ba5dad5 "merge")
+Agent: r0 (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: land PR #184 as R0
+
+Work Log:
+- SANDBOX ROLLBACK disclosed: the local sandbox rolled back to an Oct-13 ~07:00Z snapshot between run-003 and the merge order (clone + local worklog tail wiped; ZERO of-record impact — branch/PR/receipts/worklog all lived on origin). Fresh clone of the pushed branch recovered the full 5-commit chain first-hand.
+- Race-guard re-run: main had moved 350487b→19d9a6d (T-MIG-124's worklog, .syllabai-only direct) mid-PR → mergeable=dirty. Resolved with the only no-force move: merged origin/main INTO the branch (4165558); worklog append-conflict resolved theirs-first then ours (scripted byte-exact; no entry text altered); hub code byte-identical to the 13/13-validated state (git diff 4dacb9e..4165558 -- apps/hub EMPTY); FF push; CI 38517750596 success.
+- MERGE-METHOD ADJUDICATION: rebase-merge REFUSED by GitHub (branch carried the merge commit); force-push rebased = forbidden; merge-commit on main = breaks the linear main of record. SQUASH 60e2666 landed with the full branch SHA chain (8daa021/7637b53/efdbe15/f4f5af0/4dacb9e/4165558) in the commit body — all 7 of-record files on main.
+- Post-merge code check first-hand: main @ 60e2666 carries PINCH_STEP_RATIO x4 in pdf-pane.tsx. Card flipped DONE (this commit); receipt run-004-merge-r0.json.
+
+Stage Summary:
+- T-MIG-127 DONE of record: s144 (pinch = pane ladder + ctrl+wheel) is LIVE on main @ 60e2666 via PR #184, CI green end-to-end, receipts run-001..004 attached. PAT ROTATION: PR #184's credential needs are COMPLETE — the handed token must be rotated NOW (it transited chat). LANE R0: IDLE.
+
