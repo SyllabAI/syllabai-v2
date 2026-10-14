@@ -7775,6 +7775,21 @@ Stage Summary:
 - The tutor of record verified working END-TO-END on the live wire first-hand: grounded ask 200, session persistence to the append law, and the Phase-2 engagement band live (classification + append + read-back). Receipt .syllabai/receipts/T-MIG-125/run-003-canary-r0.json.
 
 ---
+Task ID: T-MIG-124 — the ③ teacher LLM generator activation wave (operator trace 1a13690bae182079 'teachers get AI help now')
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Pull the ③ lever — make teacher-side LLM marking live (the κ release path).
+
+Work Log:
+- Fetch-first (behind=0 @ c198b1e; 0 open PRs; CI 2/2): the pre-activation gate was ALREADY of record — the smart-mark engine audit (bd8b485, trace 1a1360d693cd9c61) VERDICT ZERO DEFECTS. The crux resolved first-hand: the teacher generator was the LAST dormant seam — routes/teachermarking.ts:387 wired seams.generator ?? dormantCandidateGenerator (the 032 standing posture) while the student surface rides the live §26.1 chain (ADR-MIG-0002). The carrier ALREADY keys the chain: SYLLABAI_LLM_{GROQ,GEMINI,OPENROUTER}_API_KEY + EMBEDDING on production (names-only Vercel read; corroborated by the 125 run-003 tutor canary = real groq generation through dpl_BKyamqdx) — so wave ③ = the code flip + the api bake redeploy, ZERO env writes.
+- Keyless-equivalence law verified BEFORE the flip: the T-MIG-116 capture band pinned ONLY the keyless deterministic pre-gates (404s + SCHEME_NOT_VALIDATED refusal view) which fire BEFORE the generator (TeacherSmartMarkService :554-620 — lock, loads, scheme gate, pipeline.run LAST); the dormant CANDIDATE_GENERATION_UNAVAILABLE placeholder was never a captured law (the bridge's PROVIDER_UNAVAILABLE is the frozen failure-classifier vocabulary); NO test pins the teacher factory default (the dormant-discipline pin is direct-construction, student-side, untouched).
+- THE FLIP (PR #183, CI 2/2, merged 350487b): the teacher factory mirrors the student surface — const chain = seams.chain ?? buildLlmChain(env); seams.generator ?? chainAsCandidateGenerator(chain); seams gain the chain seam (the ADR-MIG-0001 capture/replay proxy); the κ gate, append-only results + forensics, guarded evidence flip, noop publisher, two-envelope serving law ALL untouched; the dormant pair stays exported (the pin class). Gates first-hand: typecheck x4 exit 0; suite 1932/0/13skip (audit baseline 1919 + the fleet's 125/126 tests, ZERO fails); census --gate GREEN exit 0 LIVE=0; golden selftest OK. SANDBOX: the 18th reset restored the stale parent node_modules (the audit's 17th-reset class) — quarantined + bun install --frozen-lockfile in-repo -> EXACT gates.
+- RUN-002 BAKE LIVE (the 092/093/107/124 recipe of record): deploy sha 350487b via the TREE-IDENTITY law (d8fbf91db897 == the CI-verified PR head — the worktree class sandbox-blocked by the symlink ban; in-place build byte-faithful, shims git-restored, tree clean); asset SHA pins 6/6 EXACT; 327 modules / 3,145,961 bytes CJS; the ③ flip BYTE-PROOF in the bundle (chainAsCandidateGenerator x3 = bridge def + student + NEW teacher call-site; buildSqlLearnerModel x3 no-regression EXACT); require smoke OK under the zero-key law (one disclosed law round: the 32-byte jwt-secret law refused the short synthetic); dpl_haheqgnj6 READY + aliasAssigned TRUE; LIVE WIRE: prod alias health 200 UP on the new bundle; battery 7/7 unauth verbatim (the four teacher marking surfaces + student + tutor + health; zero auth/LLM/persistence).
+- ACTIVATION BY CONSTRUCTION (the 107 law, every link first-hand): keys present (1) + chain serves real generation on the carrier (2, of record) + the flipped factory in the serving bundle (3) + the bundle IS serving (4) + the unauth laws hold (5) => the first authed teacher smart-mark/batch generates for real through the failover chain. ZERO prod-db writes by the lane (no probe accounts, no LLM spend, no Neon contact) — the first REAL marking run belongs to the teachers. Rollback anchor dpl_BKyamqdx intact; the flip is fail-closed on zero-key boots by construction.
+
+Stage Summary:
+- The ③ teacher LLM generator activation wave is LIVE of record: T-MIG-124 DONE (run-001 flip + run-002 bake receipts), the teacher marking surface rides the ONE §26.1 chain with the κ release path (fail-closed 0.6 gate, provisional -> paired human decisions -> authoritative) as the untouched trust rail. The standing §6.2 posture is unchanged (LIVE=0, the operator disable remains the human act). Scripts persisted: t124_bake_build.py, t124-battery.json, t124-stage/ (asset-pins.json). The b2b residual: none — the wave is discharged.
+
+---
 Task ID: T-MIG-127
 Agent: r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
 Task: PdfPane gesture zoom (s144) — pinch steps the PANE ladder instead of the whole page + ctrl+wheel zoom (operator: audit → pinch symptom → "Go + ctrl+wheel zoom as well")
@@ -7802,3 +7817,4 @@ Work Log:
 
 Stage Summary:
 - T-MIG-127 IN_REVIEW at PR #184 (head efdbe15, base 350487b). REMINDER OF RECORD: the handed PAT transited chat — rotate it after this PR's credential needs end. LANE R0: PR #184 awaiting review/merge.
+

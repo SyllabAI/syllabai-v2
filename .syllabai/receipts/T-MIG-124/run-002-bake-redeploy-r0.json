@@ -1,56 +1,44 @@
 {
-  "run": "run-002",
-  "band": "T-MIG-124",
-  "title": "THE API BAKE REDEPLOY — the T-MIG-124 learner-model wiring + engagement recorder LIVE on the api-of-record (the serialized residual discharged)",
-  "lane": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5, chat dd7e60e9)",
-  "at": "2026-10-13T08:1x..08:2xZ",
-  "operator_order": "trace 1a134492fe94f395 'api redeploy: vcp_...' — the serialized operator-gated residual of run-001 (the 093/110 class, never self-fired)",
-  "credential_law": "the vcp credential fingerprint verified first-hand at act time: sha256-prefix d254bbfaac004354 == the of-record operator census fingerprint (the T-MIG-121 run-004 law); memory-only, inline usage only, never printed/committed/persisted; receipts and transcripts carry the fingerprint only",
-  "pre_flight": {
-    "race": "fetch-first: local HEAD == origin main == 34bf845 (0/0), tree clean, no force",
-    "ci_at_tip": "check-runs API first-hand: hub SUCCESS + verify SUCCESS (2/2)",
-    "pr_census": "zero open PRs",
-    "claim_census": "standing order re-check: zero claimed/open cards (the board reads all-DONE)",
-    "census_gate": "the hardened T-MIG-123 instrument --gate at tip: pins=7 LIVE=0 rides-v2=2 rollback-fallback=1 dormant=5 unmapped=0 stale-hints=0 unknown-route=0 — GREEN exit 0",
-    "vercel_identity": "GET /v2/user -> syllabai-1403 (the identity of record)",
-    "race_guard": "GET /v6/deployments (production, api project prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ): latest = dpl_4cKfWz1iuVXT8JN7YMifo33PjU5V READY (created 2026-10-10T15:47:15Z = the T-MIG-107 fix-forward of record) — NO parallel deploy in flight; every band merged after 2026-10-10 (T-MIG-109..124) sat PAST the serving bundle as disclosed",
-    "pre_act_probes": "health 200 {status:UP}; unauth self-mark 401; unauth transcribe 401 (the B6 law) — carrier healthy pre-act"
-  },
+  "task": "T-MIG-124",
+  "run": "run-002-bake-redeploy-r0",
+  "title": "THE ③ ACTIVATION DEPLOY — the flipped teacher factory LIVE on the api carrier (keyed chain rides; the teacher surface marks for real on first authed use)",
+  "lane": "r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operator_order": "trace 1a13690bae182079 'teachers get AI help now' — the deploy lever of the ③ wave",
+  "deploy_sha": "350487b54667 (the PR #183 merge; TREE d8fbf91db897 IDENTICAL to the CI-verified PR head ab39d95 — the worktree class was sandbox-blocked (symlink ban), so the build ran IN-PLACE in the main clone at the same tree; the tree-identity law made it byte-faithful; shims git-restored post-deploy, tree clean first-hand)",
+  "race_guard": "fetch-first: origin main == 350487b == local HEAD at act time; 0 open PRs; incumbent dpl_BKyamqdxUeXc (source=cli, READY) — ROLLBACK ANCHOR intact and re-aliasable",
   "build": {
-    "recipe": "the 092/093/107 bundle recipe of record (gitSource class EXTINCT of record — the api project has no git link): clean detached worktree at 34bf845, worktree-only shims (upstream untouched, git-restored post-build): the 6 concept-graph YAMLs inlined byte-verbatim via concept-assets.gen.ts (bun build cannot preserve runtime asset paths), Bun.CryptoHasher -> node:crypto, Bun.YAML.parse -> js-yaml v4 named-export load (the 107 fix), deploy-entry.ts = the path-preserving Hono->Vercel Node adapter",
+    "recipe": "the 092/093/107/124 bundle recipe of record (scripts/t124_bake_build.py, lane-side, adapted REPO/STAGE only — shim patterns byte-identical to the T-MIG-093 tools/deploy_bundle_build.py of record)",
     "asset_sha_pins": "6/6 EXACT vs the 093 of-record figures: concepts 24fa91ac7149682b, concept_edges 8a651dd9e60bfefa, practicals e53e5f87606a2b5a, relationships b3b7529222d77d80, specification_points b1fea69953205077, topics a7b14cbdd34bb9fe",
-    "bundle": "327 modules, 3,147,414 bytes CJS (T-MIG-107-era: 321 modules / 3.13MB — the delta is the post-107 source drift incl. the T-MIG-124 modules)",
-    "bundle_byte_proof": "tutor-signals/v2 x1 (the V25 SIGNAL_POLICY_VERSION), 'superseded_at IS NULL' x1 (the struggle read law), buildSqlLearnerModel x2 (def + call-site), TOPIC_ENGAGEMENT x7, FREE_TUTOR x3, MISCONCEPTION_REMEDIATION x6 — the T-MIG-124 content is IN the deployed bundle",
-    "require_smoke": "node require OK under the zero-key law (synthetic SYLLABAI_JWT_SECRET + synthetic DATABASE_URL) — handler type function",
-    "worktree": "restored clean post-build, then removed; the stage (api/index.js + vercel.json 2 rewrites + .vercel/project.json prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ/team_ULL54qkhzKBmnKrpO6BD4mYX) is the lane-side deploy artifact of record (scripts/api-stage-t124/)"
+    "bundle": "327 modules, 3,145,961 bytes CJS (the 124-era bake: 327 / 3,147,414 — the -1,453 byte delta is the ③ flip source drift)",
+    "bundle_byte_proof": "THE ③ FLIP IS IN THE DEPLOYED BUNDLE: chainAsCandidateGenerator x3 (the bridge def + the STUDENT call-site + the NEW TEACHER call-site), buildLlmChain x8, PROVIDER_UNAVAILABLE x9, SCHEME_NOT_VALIDATED x4, kappaGatePassed x4 (the gate law sites), buildSqlLearnerModel x3 (the T-MIG-125 CLA band persists — no-regression needle set EXACT); dormantCandidateGenerator x0 in the bundle = tree-shaken (unreferenced in the graph since the flip; the SOURCE export stays of record for the test/smartmark/routes.test.ts:363 direct-construction pin)",
+    "require_smoke": "node require OK under the zero-key law (synthetic 32-byte SYLLABAI_JWT_SECRET + synthetic DATABASE_URL) — handler type function; DISCLOSED LAW ROUND: the first smoke attempt with a 22-byte synthetic secret was REFUSED by the 32-byte jwt-secret law (the law lives; re-run compliant)"
   },
   "deploy_act": {
-    "how": "vercel CLI 62.7.0 (pinned per the law) 'deploy --prod --yes' FROM the 2-file stage; VERCEL_TOKEN env memory-only",
-    "deployment": "dpl_GvcuJnggbdtyjqFmVdAgqtuK214z READY (created 2026-10-13T08:17:47Z)",
-    "aliases": "GET /v2/deployments/dpl_GvcuJnggbdtyjqFmVdAgqtuK214z/aliases -> ['syllabai-v2.vercel.app', 'syllabai-v2-syllab-ai.vercel.app'] BOTH attached (production live)"
+    "how": "vercel CLI 62.7.0 (pinned per the law, bunx) 'deploy --prod --yes' FROM the 2-file stage (api/index.js + vercel.json 2 rewrites + .vercel/project.json); VERCEL_TOKEN env memory-only, never persisted",
+    "deployment": "dpl_haheqgnj6 (syllabai-v2-haheqgnj6-syllab-ai.vercel.app) READY ~18s after fire; target=production; aliasAssigned TRUE first-hand",
+    "aliases": "the prod aliases serve the new deployment (aliasAssigned TRUE; the /v2/.../aliases LIST endpoint returned [] — the known 107-era alias-API quirk, disclosed there too); THE LIVE WIRE IS THE TRUTH: https://syllabai-v2.vercel.app/actuator/health -> 200 {status:UP} on the new bundle"
   },
   "post_fire_battery": {
-    "result": "11/11 PASS (scripts/tmig124_bake_battery.py, lane-side, token-free)",
+    "result": "7/7 PASS (scripts/t124-battery.json, lane-side; ALL read-only unauth, zero auth/LLM/persistence)",
     "legs": [
       "health 200 {groups:[liveness,readiness],status:UP}",
-      "register probe STUDENT 201 accessToken (THE 107 CANARY: the REAL implementation law, not an edge NOT_FOUND)",
-      "duplicate register 409",
-      "unauth self-mark 401",
-      "unauth transcribe 401 (the B6 ruling law intact through the new bundle)",
-      "login 200 accessToken",
-      "tutor session create 201",
-      "TUTOR ASK 200 in 3.8s — THE BAND CANARY: the wired LearnerModelPort (fresh probe learner -> the honest empty-substrate degradation path, byte-tested of record) + the V25 engagement recorder rode the served ask end-to-end; real grounded generation, 1639 bytes",
-      "sessions list 200",
-      "session delete 204"
-    ],
-    "probe_defect_rounds": "two disclosed battery-shape rounds BEFORE any 201: (1) register 400 'displayName: must not be blank', (2) register 400 'unknown role: learner' — both REAL implementation laws served (validation_failed / bad_request classes = extra canary evidence, zero system defects); corrected to the contract law (displayName 2..100, role STUDENT) and the battery went 11/11"
+      "GET /teacher/marking/answers unauth -> 401 Boot",
+      "POST /teacher/marking/answers/:uuid/smart-mark unauth -> 401 Boot",
+      "POST /teacher/marking/smart-mark-batch unauth -> 401 Boot",
+      "GET /teacher/marking/kappa/latest unauth -> 401 Boot",
+      "POST /learners/me/attempts/:uuid/smart-mark unauth -> 401 Boot (student regression leg)",
+      "POST /tutor/ask unauth -> 401 Boot (the blocking-twin law)"
+    ]
   },
-  "write_ledger": "1 probe STUDENT (t124bake-...@probe.example.invalid) + tutor session create+delete (net-zero) + ONE real ask (LLM spend disclosed) whose V25 engagement row(s) over tutor_topic_engagements are the FIRST live engagement rows of record (law-implied from the served 200 + the E2E law; no Neon contact taken to introspect)",
-  "rollback": "dpl_4cKfWz1iuVXT8JN7YMifo33PjU5V (the T-MIG-107 fix-forward) stays READY and re-aliasable; zero env changes made by this lane",
-  "residuals_after_this_bake": [
-    "CLA struggle-read reuse + CLA misconception re-sort drift = queued intake items (disclosed, not silently fixed)",
-    "T-MIG-061 research consumer remains dormant (disclosed posture unchanged)",
-    "review_schedules writer band = dormant disclose-only (no v2 writer; decision point (b) stands)"
+  "activation_chain_of_proof": [
+    "1. the carrier env keys the chain (SYLLABAI_LLM_{GROQ,GEMINI,OPENROUTER}_API_KEY + EMBEDDING on production — names-only read, run-001)",
+    "2. the chain serves REAL generation on the carrier (T-MIG-125 run-003 tutor canary of record: openai/gpt-oss-120b via groq, 200 grounded)",
+    "3. the NEW serving bundle carries the flipped teacher factory (byte needle x3 + require smoke)",
+    "4. the NEW bundle IS the serving bundle (READY + aliasAssigned + health 200 via prod alias)",
+    "5. the unauth laws hold verbatim (7/7)",
+    "=> ACTIVATION BY CONSTRUCTION (the 107 law): the first authed teacher smart-mark/batch generates for real through the failover chain; zero prod-db writes were made by this lane (no probe accounts, no attempts, no schemes — the first REAL marking run belongs to the teachers)"
   ],
-  "discipline": "zero Neon contact; zero LLM spend beyond the ONE disclosed canary ask; the Vercel API contact = identity + deployments/aliases reads + THIS ordered deploy act; no force; PAT and vcp credential never persisted (inline usage only, memory-only); scope: .syllabai-only bookkeeping (this receipt + the card residual annotation + the worklog entry)"
+  "the_kappa_release_path_next": "the trust rail is LIVE and unchanged: every AI mark lands PROVISIONAL; teachers record per-point decisions alongside; kappaGatePassed (fail-closed, threshold 0.6, newest ALL-scope or paper-scoped evaluation) releases the batch to authoritative; the hub marking console is the instrument",
+  "write_ledger": "zero prod-db rows by this lane (read-only battery; no probe accounts, no LLM spend, no Neon contact); deploys: ONE (the ③ activation); Vercel API contact: read endpoints + the CLI deploy only",
+  "rollback": "dpl_BKyamqdxUeXc (the T-MIG-125 bake) stays READY and re-aliasable; the flip is fail-closed on zero-key boots by construction (a rollback env change alone reverts to honest refusals)"
 }
