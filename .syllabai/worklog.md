@@ -7788,3 +7788,33 @@ Work Log:
 
 Stage Summary:
 - The ③ teacher LLM generator activation wave is LIVE of record: T-MIG-124 DONE (run-001 flip + run-002 bake receipts), the teacher marking surface rides the ONE §26.1 chain with the κ release path (fail-closed 0.6 gate, provisional -> paired human decisions -> authoritative) as the untouched trust rail. The standing §6.2 posture is unchanged (LIVE=0, the operator disable remains the human act). Scripts persisted: t124_bake_build.py, t124-battery.json, t124-stage/ (asset-pins.json). The b2b residual: none — the wave is discharged.
+
+---
+Task ID: T-MIG-127
+Agent: r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: PdfPane gesture zoom (s144) — pinch steps the PANE ladder instead of the whole page + ctrl+wheel zoom (operator: audit → pinch symptom → "Go + ctrl+wheel zoom as well")
+
+Work Log:
+- Root-caused the pinch symptom live first-hand (three-link chain: no viewport export in layout.tsx → Next's permissive default meta, verified on the DEPLOYED hub; zero touch/gesture/wheel handlers in the viewer surface; scroller falling through to browser default multi-touch = whole-page zoom).
+- Implemented the s144 fix in apps/hub/src/components/pastpapers/pdf-pane.tsx: touch-action pan-x pan-y on the pages region (Android/Chromium stop), non-passive gesture* preventDefault (the only iOS Safari stop), a uniform pointer-based pinch tracker (ratio rebased per commit, PINCH_STEP_RATIO 1.2) stepping through the existing zoomBy path (ceiling clamp + anchor-preserving refreeze unchanged), and a non-passive ctrl/meta+wheel accumulator (WHEEL_STEP_PX 100, also covers Mac trackpad pinch). Deliberately NO site-wide user-scalable=no (a11y; iOS ignores it anyway).
+- Added two e2e pins to tests/e2e/pp-viewer.spec.ts (chromium CDP synthesis: ctrl+wheel via Input.dispatchMouseEvent modifiers=2; pinch via Input.dispatchTouchEvent), aimed inside the scroller's visible box (holders extend ~1600px below the fold — viewport-past events are dropped) and modeling the per-finger pointermove stream a real touchscreen delivers.
+- Validated lane-side first-hand: tsc clean, eslint clean, production build green, FULL pp-viewer spec 13/13 PASS (11 pre-existing = zero regression + 2 new). Probe logs confirmed: wheel arrives ctrlKey=true; the touch stream is pointerdown×2 → per-finger pointermove pairs → pointerup×2 with ZERO pointercancel (pan-x pan-y holds).
+- Filed .syllabai/tasks/T-MIG-127.yaml (claim-in-first-commit) + receipts/T-MIG-127/run-001-gesture-zoom-r0.json.
+
+Stage Summary:
+- S144 LANDED ON BRANCH t-mig-127/r0 @ c198b1e base, validated 13/13; residuals: branch push + PR open are credential-gated (previous PAT didn't survive the session continuation; rotate it anyway — it transited chat); flip to IN_REVIEW at PR open; CI run ids append as run-002. Disclosed v1 tradeoff: mixed pan+pinch gestures may pointercancel (scroll wins; pinch-in-place is the contract).
+
+---
+Task ID: T-MIG-127 run-002 (operator credential handoff, session trace 1a136a0517772d1d)
+Agent: r0 (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: push t-mig-127/r0 + open the PR of record
+
+Work Log:
+- Credential received under the inline-only law (env inside single shell invocations; never written to disk, never printed into any record).
+- Race-guard fetch-first: origin/main had moved c198b1e→350487b while the branch was staged (T-MIG-124 PR #183, parallel lane) → rebased the 3 commits onto the new tip: ZERO file collisions (api-only delta: teachermarking.ts + T-MIG-124 .syllabai files), stat unchanged 5 files +384/−3, post-rebase tsc --noEmit exit 0.
+- ONE disclosed hiccup: the first push failed on an EMPTY credential — the sandbox runs a fresh shell per tool call, so the exported token did not survive between invocations (canary-proven first-hand); retried as one combined invocation: branch pushed (efdbe15 on origin) + PR #184 opened against main @ 350487b. No partial writes, no force.
+- Task flipped IN_REVIEW; receipts/T-MIG-127/run-002-pr-open.json filed.
+
+Stage Summary:
+- T-MIG-127 IN_REVIEW at PR #184 (head efdbe15, base 350487b). REMINDER OF RECORD: the handed PAT transited chat — rotate it after this PR's credential needs end. LANE R0: PR #184 awaiting review/merge.
+
