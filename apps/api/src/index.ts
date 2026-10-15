@@ -66,6 +66,7 @@ import { buildRevisionNotesRouters } from "./routes/revision-notes";
 import { buildKnowledgeRouters } from "./routes/knowledge";
 import { buildTeacherKgRouters } from "./routes/teacher-kg";
 import { buildTutorRouters } from "./routes/tutor";
+import { buildTutorBankRouters } from "./routes/tutor-bank";
 import { buildClaRouters } from "./routes/cla";
 import { buildLlmChain } from "./services/llmchain";
 import { toErrorResponse, apiError } from "./services/identity/errors";
@@ -428,6 +429,23 @@ app.route("/api/v1/admin/llm", llmadmin.llmAdminRoute);
 // the /latest-never-captured-by-/:sessionId law reads top-down.
 app.route("/api/v1/tutor/sessions", tutor.tutorSessionsRoute);
 app.route("/api/v1/tutor", tutor.tutorRoute);
+
+// Tutor bank bands (T-MIG-128/129 — post-core v2-native deterministic read
+// surfaces, the operator's bands, trace 1a14080256278b41): band (1) the
+// question-listing census (topic | spec point | node → the bank under FETCH
+// semantics + the V20 paper gate) and band (2) the whole-paper one-view
+// fetch (QP + paired MS chunks + bank questions with marks). Zero LLM, zero
+// vector calls; T-C07 fail-closed scope; authed under the same
+// anyRequest().authenticated() shell as the tutor family.
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-MIG-128/129, R0 ratification requested): the
+// bands' scope.allowed covers routes/tutor-bank.ts, services/tutor/
+// bank-bands.ts, test/tutor/bank-bands.test.ts, packages/contracts/src/
+// tutor.ts — NOT this file. The import + construction + mount line + this
+// comment are the minimal app-level wiring, shipped as a separate commit
+// per the T-MIG-060 precedent so R0 can ratify or lift them out at review.
+const tutorBank = buildTutorBankRouters(process.env);
+app.route("/api/v1/tutor/bank", tutorBank.tutorBankRoute);
 
 // CLA ask surface (T-MIG-069 tranche 2 — Wave 6). Path parity with the
 // frozen core: ClaController under /api/v1/learners/me/cla (POST /ask —
