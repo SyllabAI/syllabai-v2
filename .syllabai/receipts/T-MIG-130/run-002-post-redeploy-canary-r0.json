@@ -1,0 +1,34 @@
+{
+  "task": "T-MIG-130",
+  "run": "run-002-post-redeploy-canary-r0",
+  "operator_trace": "1a140f3dea0b2afd",
+  "operator_order": "fire the post-redeploy live canary",
+  "when": "2026-10-15T19:17:10Z",
+  "agent": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "under_test": {
+    "redeploy": "hub dpl_4mhkojePxjviniUr8JwA2yFuDytE @ 4429186 (githubCommitSha, READY 2026-10-15T18:08:41Z, production aliases syllabai-hub-v2.vercel.app et al) — the hub bytes of the T-MIG-130 chat wiring + T-MIG-128 PdfPane/corpus-pdf (main tip at bake 8791bb0 = 4429186 + .syllabai-only receipts, identical hub bytes)",
+    "api_carrier_of_record": "syllabai-v2 dpl_haheqgnj6 (v6 list uid dpl_4PASL11jfnKfCopz8WeTGUo7i36v, url slug syllabai-v2-haheqgnj6) READY 2026-10-13T19:06:45Z @ 350487b (the PR #183 ③ teacher-activation merge commit — ancestry re-verified first-hand this run) — the learner-model + run-004-verified vector-arm carrier",
+    "carrier_lag": "the T-MIG-128/129 bank mounts (6633cb0) and Card A telemetry writers (e8c91bd) sit PAST the api carrier — no api redeploy since 2026-10-13T19:06:45Z"
+  },
+  "verdict": "12/12 PASS on the first firing — the redeployed hub serves the wired chat end-to-end (grounded v2 RAG chain, s22 append through the relay, Phase-2 recorder through the relay); the bank bands honestly fall through on the live wire exactly per the T-MIG-130 disclosure, the relay's band pre-flight proven firing and degrading silent — the band-serving pickup remains the operator-gated api redeploy lever, now wire-pinned",
+  "legs": {
+    "leg1_hub_health": "200 {status:ok, service:syllabai-hub, dataMode:core-api}",
+    "leg2_api_health": "200 UP (actuator)",
+    "leg3_relay_unauth_bodygate": "POST /api/ai/chat {} unauth -> 400 invalid_body (zod gate before the 401 — the BFF law of record)",
+    "leg4_served_bundle_marker": "/tutor 200; 19 chunk URLs extracted, 19 fetched, 'Past-paper bank' starter (the T-MIG-130 client string, the operator's example #1) found in served chunk 32aw8n_jn6ai0.js — the SERVED bundle IS the redeployed 4429186 client",
+    "leg5_api_bank_mounts_authed": "authed GET /api/v1/tutor/bank/questions?topic=rates+of+reaction&limit=25 -> 404 {error:'not_found', message:'resource not found'} = NOT_MOUNTED on the carrier (the unauth 401 is the Spring filter chain and is NOT mount evidence; the authed probe is the discriminator)",
+    "leg6_relay_band_leg": "bank-shaped 'List the questions on rates of reaction' through POST /api/ai/chat: the classifier fired, the relay probed v2, the 404 fell through SILENTLY to the grounded ask (citations -> meta(provider:groq) -> delta xN -> done; 365 answer chars) — zero crash, zero band frame, the disclosed honest-degrade law VERBATIM on the wire; llm_spend=1",
+    "leg7_relay_grounded_ask": "conceptual collision-theory question + sessionId through the relay: 200, refused=false, provider=groq model=openai/gpt-oss-120b, citations=6 (1 with the in-app /sources/ reader deep link = chunk-backed evidence through the F-022 mapped shape; the mapped hub citation frame does not carry the raw direct-api sourceType field — harness digest nuance, not a product defect), 916 answer chars, done{ok:true}, wall 2.095s; llm_spend=1",
+    "leg8_session_readback": "GET /api/v1/tutor/sessions/{id} -> 200, 2 turns [user ev=0 / assistant ev=6] — the s22 append law verified THROUGH the hub relay path for the first time of record (run-003 proved it direct-api)",
+    "leg9_engagement_row_live": "GET /api/v1/learners/me/state -> 200, 'Rates of reaction' (a9ea76ff) asks=2 signalCounts={EXPLANATION_REQUEST:1, TOPIC_ENGAGEMENT:1} — the Phase-2 recorder classified+appended+read back through the relay path"
+  },
+  "band_posture": {
+    "state": "FALLTHROUGH_SERVING — the wiring is live, the bands await the api redeploy",
+    "law": "the bands are an enhancement layer, never a gate (the T-MIG-130 receipt disclosure, now wire-proven)",
+    "pickup_lever": "the api redeploy from tip bakes 6633cb0 (bank mounts) + e8c91bd (Card A BKT_UPDATED/BDT_UPDATED telemetry writers) — operator-gated per the standing law, NOT self-fired by this lane"
+  },
+  "carrier_currency_side_probe": "hub /past-papers -> 404 live (b917adf's past-papers archive browser post-dates the hub bake 4429186) — hub re-bake lever, separate from the canary under test; /tutor 200",
+  "sandbox_disclosure": "worktree hygiene detour, zero repo defect: a premature partial 'git checkout FETCH_HEAD -- .syllabai' + a pipe-swallowed failed ff-merge briefly made this lane inspect the PRE-merge c198b1e state (transient false reading: the ③ teacher activation looked absent — FALSE, 350487b IS an ancestor of b917adf and teachermarking.ts:401 carries chainAsCandidateGenerator at the tip; re-verified first-hand). Worktree hard-reset to FETCH_HEAD; the stale artifacts were all remote-tip content, nothing unpushed, nothing lost",
+  "write_ledger": "1 probe account (memory-only) + 1 tutor session + 2 relay asks (1 band fall-through + 1 grounded; llm_spend=2 disclosed) + Phase-2 recorder rows; zero direct Neon contact; Vercel API read-only deployment-metadata queries only (vcp inline-only, never persisted); GitHub API read-only PR/commit metadata (PAT inline-only, never persisted)",
+  "scrub_assert": "no credential, token, URI, or Neon secret appears in this receipt, the transcript, the worklog entry, or the commit"
+}
