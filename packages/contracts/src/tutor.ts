@@ -187,3 +187,110 @@ export const tutorStreamEventSchema = z.discriminatedUnion("event", [
   tutorStreamErrorEventSchema,
 ]);
 export type TutorStreamEventWire = z.infer<typeof tutorStreamEventSchema>;
+
+// ── T-MIG-128/129: the tutor bank bands (post-core v2-native surfaces) ──────
+// Two DETERMINISTIC read bands the operator ordered (trace 1a14080256278b41):
+//   (1) question listing — "give me all questions related to 'organic
+//       chemistry' / a spec point" → a deterministic bank census (FETCH
+//       semantics: active-policy AGNOSTIC over paper-anchored rows, the
+//       V20 REJECTED/FLAGGED paper gate, T-C07 scope fail-closed). This is
+//       a LISTING surface, not the attempt-servable spec (ServableQuestions
+//       keeps that law untouched).
+//   (2) whole-paper fetch — "give me the full 2019 june paper 1" → ONE view
+//       carrying the resolved paper, its structured bank questions with
+//       marks, and the paired QP + MS chunks (top-version law, REJECTED
+//       documents excluded, chunk order = chunk_index).
+// Zero LLM, zero vector calls: metadata + bank rows only (the §7 FETCH
+// posture the paper-question resolver already proven on the live wire).
+
+export const tutorBankQuestionsParamsSchema = z
+  .object({
+    /** Topic name — exact (case-insensitive) then unique-substring match on
+     * knowledge_nodes.title within the active scope; the matched node's
+     * PART_OF subtree joins the mapping set (a UNIT resolves to its TOPIC
+     * children). */
+    topic: z.string().trim().min(1).max(200).optional(),
+    /** Spec-point code — exact (case-insensitive) then suffix match after
+     * the last '-' ("2.44" resolves "4CH1-2.44"). */
+    spec: z.string().trim().min(1).max(40).optional(),
+    /** Direct node pin — deterministic bypass of name resolution. */
+    nodeId: z.string().uuid().optional(),
+    paperCode: z.string().trim().min(1).max(30).optional(),
+    year: z.coerce.number().int().min(1900).max(2100).optional(),
+    series: z.enum(["JAN", "JUN", "NOV"]).optional(),
+    limit: z.coerce.number().int().min(1).max(500).default(200),
+  })
+  .refine((p) => p.topic != null || p.spec != null || p.nodeId != null, {
+    message: "one of topic | spec | nodeId is required",
+  });
+export type TutorBankQuestionsParams = z.infer<typeof tutorBankQuestionsParamsSchema>;
+
+export const tutorBankResolvedNodeSchema = z.object({
+  id: z.string().uuid(),
+  nodeType: z.string(),
+  title: z.string(),
+  code: z.string().nullable(),
+});
+export type TutorBankResolvedNode = z.infer<typeof tutorBankResolvedNodeSchema>;
+
+export const tutorBankPaperRefSchema = z.object({
+  paperId: z.string().uuid(),
+  title: z.string().nullable(),
+  paperCode: z.string().nullable(),
+  sessionLabel: z.string().nullable(),
+  series: z.string().nullable(),
+  year: z.number().int().nullable(),
+  validationState: z.string(),
+});
+export type TutorBankPaperRef = z.infer<typeof tutorBankPaperRefSchema>;
+
+export const tutorBankQuestionItemSchema = z.object({
+  questionId: z.string().uuid(),
+  externalRef: z.string().nullable(),
+  questionType: z.string().nullable(),
+  stem: z.string(),
+  marks: z.number().int(),
+  commandWord: z.string().nullable(),
+  specPointCodes: z.array(z.string()),
+  paper: tutorBankPaperRefSchema.nullable(),
+});
+export type TutorBankQuestionItem = z.infer<typeof tutorBankQuestionItemSchema>;
+
+export const tutorBankQuestionsViewSchema = z.object({
+  resolvedNodes: z.array(tutorBankResolvedNodeSchema),
+  /** Honest census BEFORE the limit cut. */
+  total: z.number().int(),
+  items: z.array(tutorBankQuestionItemSchema),
+});
+export type TutorBankQuestionsView = z.infer<typeof tutorBankQuestionsViewSchema>;
+
+export const tutorBankPaperChunkSchema = z.object({
+  chunkIndex: z.number().int(),
+  documentRowId: z.string().uuid(),
+  documentId: z.string(),
+  pageStart: z.number().int().nullable(),
+  pageEnd: z.number().int().nullable(),
+  content: z.string(),
+  atomNumber: z.string().nullable(),
+});
+export type TutorBankPaperChunk = z.infer<typeof tutorBankPaperChunkSchema>;
+
+export const tutorBankPaperDocumentViewSchema = z.object({
+  documentId: z.string().nullable(),
+  chunkCount: z.number().int(),
+  chunks: z.array(tutorBankPaperChunkSchema),
+});
+export type TutorBankPaperDocumentView = z.infer<typeof tutorBankPaperDocumentViewSchema>;
+
+export const tutorBankPaperFullViewSchema = z.object({
+  paper: tutorBankPaperRefSchema,
+  /** The structured bank rows of the bound paper, external_ref order, marks
+   * included — active-policy AGNOSTIC (the gold-v1 FETCH law). */
+  questions: z.array(tutorBankQuestionItemSchema),
+  questionPaper: tutorBankPaperDocumentViewSchema,
+  markScheme: tutorBankPaperDocumentViewSchema,
+  /** Same-session VALIDATED candidates NOT bound (the first-unit-match
+   * tiebreak discloses, never hides). */
+  siblings: z.array(tutorBankPaperRefSchema),
+});
+export type TutorBankPaperFullView = z.infer<typeof tutorBankPaperFullViewSchema>;
