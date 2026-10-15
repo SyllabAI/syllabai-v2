@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { ChevronRight, FileText, Puzzle, ScrollText } from "lucide-react";
 import { loadHubCourse } from "@/lib/courses";
 import { collectPastPapers, paperEstTime, type PastPaper } from "@/lib/past-papers";
+import { corpusViewerUrl } from "@/lib/pastpapers-shared";
+import { CorpusPdfLink } from "@/components/pastpapers/corpus-pdf-link";
 import {
   corpusPapersForCourse,
   corpusSpecsForCourse,
@@ -222,12 +224,16 @@ export default async function PastPapersPage({
                       </div>
                       <div className="flex flex-wrap items-center gap-1.5">
                         {p.qpBytes ? (
-                          <Button asChild size="sm" variant="secondary" className="h-7 text-xs">
-                            <Link href={`${base}/past-papers/view/${p.sessionId}/${p.dir}?doc=qp`}>
-                              <FileText className="size-3.5" aria-hidden />
-                              Question Paper
-                            </Link>
-                          </Button>
+                          <CorpusPdfLink
+                            size="sm"
+                            variant="secondary"
+                            className="h-7 text-xs"
+                            href={`${base}/past-papers/view/${p.sessionId}/${p.dir}?doc=qp`}
+                            pdfUrl={corpusViewerUrl(p.qpPath)}
+                          >
+                            <FileText className="size-3.5" aria-hidden />
+                            Question Paper
+                          </CorpusPdfLink>
                         ) : (
                           <span
                             className="inline-flex h-7 items-center rounded-md px-2 text-xs text-muted-foreground/50"
@@ -237,11 +243,15 @@ export default async function PastPapersPage({
                           </span>
                         )}
                         {p.msBytes ? (
-                          <Button asChild size="sm" variant="outline" className="h-7 text-xs">
-                            <Link href={`${base}/past-papers/view/${p.sessionId}/${p.dir}?doc=ms`}>
-                              Mark Scheme
-                            </Link>
-                          </Button>
+                          <CorpusPdfLink
+                            size="sm"
+                            variant="outline"
+                            className="h-7 text-xs"
+                            href={`${base}/past-papers/view/${p.sessionId}/${p.dir}?doc=ms`}
+                            pdfUrl={corpusViewerUrl(p.msPath)}
+                          >
+                            Mark Scheme
+                          </CorpusPdfLink>
                         ) : (
                           <span
                             className="inline-flex h-7 items-center rounded-md px-2 text-xs text-muted-foreground/50"
@@ -251,14 +261,16 @@ export default async function PastPapersPage({
                           </span>
                         )}
                         {p.qpBytes && p.msBytes && (
-                          <Button asChild size="sm" variant="outline" className="h-7 text-xs">
-                            <Link
-                              href={`${base}/past-papers/view/${p.sessionId}/${p.dir}?doc=split`}
-                              aria-label={`${p.ref} — split view (question paper and mark scheme)`}
-                            >
-                              Split
-                            </Link>
-                          </Button>
+                          <CorpusPdfLink
+                            size="sm"
+                            variant="outline"
+                            className="h-7 text-xs"
+                            href={`${base}/past-papers/view/${p.sessionId}/${p.dir}?doc=split`}
+                            pdfUrl={corpusViewerUrl(p.qpPath)}
+                            aria-label={`${p.ref} — split view (question paper and mark scheme)`}
+                          >
+                            Split
+                          </CorpusPdfLink>
                         )}
                         {p.qpBytes && (
                           <Button asChild size="sm" variant="outline" className="h-7 gap-1 text-xs">

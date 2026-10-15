@@ -76,6 +76,21 @@ export function corpusRawUrl(corpusPath: string): string {
   return `https://raw.githubusercontent.com/${PASTPAPERS_REPO}/main/${corpusPath}`;
 }
 
+/**
+ * T-MIG-128: same-origin delivery for the viewer PANE — streams through
+ * /api/corpus-pdf, which adds immutable browser + CDN caching on top of the
+ * archive (raw.githubusercontent only grants max-age=300, so every re-open
+ * after five minutes used to re-download). "Open raw PDF" links keep
+ * corpusRawUrl — the proxy is for viewing, the raw origin stays the
+ * download escape hatch and the pane's honest one-shot fallback.
+ */
+export function corpusViewerUrl(corpusPath: string): string {
+  return `/api/corpus-pdf/${corpusPath
+    .split("/")
+    .map(encodeURIComponent)
+    .join("/")}`;
+}
+
 export function corpusRawPath(specKey: string, sessionId: string, dir: string, file: string): string {
   // specKeys omit the corpus repo's "past-papers/" root — raw paths need it
   const infix = sessionId === "specimen" ? "specimen" : `past-papers/${sessionId}`;

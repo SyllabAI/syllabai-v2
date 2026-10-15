@@ -1,0 +1,41 @@
+version: 1
+task:
+  id: T-MIG-128
+  title: "PdfPane delivery + first-open/re-open performance: same-origin edge-cached immutable PDF proxy (browser+Vercel edge; raw.githubusercontent only grants max-age=300), pointer-intent prefetch on the papers list, honest one-shot raw fallback in the pane; e2e hermetic through the proxy path"
+  owner: "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)"
+  status: IN_REVIEW # implemented + validated on t-mig-128/r0 (rebased 5fd000d @ 1c30fba): gates tsc 0 / eslint 0 / build 0 / FULL e2e 32/32 incl. 14/14 pp-viewer with the new proxy pin; PR opened, NOT self-merged; adjudication = CI on the merged tree + operator ruling; post-merge hub prod re-bake owed
+  claimed_at: "2026-10-14T11:25:00Z"
+  claimed_by_order: "operator trace 1a1405bb2acd6d81 ('I want to improve the performance of the pdf viewer, I want it to feel snappy and lag free')"
+  priority: P1
+  wave: hub-pastpapers-viewer
+  deps: []
+  execution_record: >
+    AUDIT FIRST-HAND (zero assumptions): the s144 viewer architecture was
+    already reworked for smoothness (IO-driven tracking, virtualised nearest-
+    first rendering with hysteresis + sweep, double-buffered swaps, DPR cap 2,
+    vendored worker, per-pane doc survival across toggles, MS pane fetches
+    only when first active on mobile) — the REMAINING measured bottleneck is
+    DELIVERY: the pane streams PDFs straight from raw.githubusercontent.com
+    which sends cache-control: max-age=300 (5-minute browser cache), so every
+    re-open past five minutes re-downloaded and first opens raced raw's
+    origin. Corpus of record (bundled index): 10,361 PDFs / 5.86 GB, median
+    QP 0.53 MB, p90 1.77 MB, max 20.7 MB scanned papers (WCH04-01 2017-10).
+    Raw probe (sandbox): accept-ranges bytes, TTFB ~0.17 s, 20.7 MB @ ~7.2 MB/s
+    — the good case; mobile reality is the lag the operator feels. Server
+    side verified NOT the bottleneck: corpusIndex is statically bundled,
+    loadHubCourse is React cache() + module-bundle-cached, paper-link API is
+    in-memory. THE FIX (3 parts): (1) /api/corpus-pdf/[...path] route — strict
+    same-origin passthrough to the one archive host (segment-validated corpus
+    shape, qp/ms/er.pdf only, no open relay) streaming with
+    public, max-age=31536000, immutable, s-maxage=31536000,
+    stale-while-revalidate=604800 — the append-only-archive law makes
+    immutable sound; content-length passthrough keeps pdf.js onProgress
+    honest; CSP unchanged (connect-src 'self' already allows same-origin);
+    (2) viewer panes switch to the proxy URL (all 4 mounts; desktop split +
+    mobile single) while downloadUrl/open-raw keeps the raw origin and
+    PdfPane gains a one-shot effect-scoped fallback to it on proxy failure;
+    (3) papers-list QP/MS/Split buttons become CorpusPdfLink — pointer-intent
+    prefetch (warmed set + in-flight cap 2; keyboard focus deliberately NOT a
+    trigger) so the bytes are already in the browser cache when the viewer
+    mounts. e2e beforeEach now intercepts **/api/corpus-pdf/** to the same
+    fixture (suite stays hermetic; zero real upstream contact).

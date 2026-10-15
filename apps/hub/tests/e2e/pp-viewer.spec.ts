@@ -24,6 +24,12 @@ test.beforeEach(async ({ page }) => {
   await page.route("**/raw.githubusercontent.com/**", (route) =>
     route.fulfill({ path: FIXTURE, contentType: "application/pdf" }),
   );
+  // T-MIG-128: the pane now streams through the same-origin edge-cached
+  // proxy; intercept it to the same fixture so the suite stays hermetic
+  // (and so no test ever touches the real upstream through the route).
+  await page.route("**/api/corpus-pdf/**", (route) =>
+    route.fulfill({ path: FIXTURE, contentType: "application/pdf" }),
+  );
 });
 
 async function readyViewer(page: import("@playwright/test").Page) {
@@ -420,4 +426,24 @@ test("viewer: the loaded page has no serious or critical axe violations", async 
     console.error(`[axe:pp-viewer] ${v.id} (${v.impact}) x${v.nodes.length}: ${v.help}`);
   }
   expect(serious, "pp-viewer: serious/critical a11y violations").toEqual([]);
+});
+
+test("viewer: the pane streams through the same-origin edge-cached proxy (T-MIG-128)", async ({
+  page,
+}) => {
+  // the delivery path is OF RECORD: the pane must load the corpus PDF via
+  // /api/corpus-pdf (immutable browser + CDN caching) and never re-download
+  // straight from raw.githubusercontent (which only grants max-age=300).
+  // The raw origin stays legitimate for "Open raw PDF" clicks — this pin
+  // covers the LOADING path only.
+  const proxied: string[] = [];
+  const raw: string[] = [];
+  page.on("request", (r) => {
+    const u = r.url();
+    if (u.includes("/api/corpus-pdf/")) proxied.push(u);
+    if (u.includes("raw.githubusercontent.com")) raw.push(u);
+  });
+  await readyViewer(page);
+  expect(proxied.length, "the pane fetched through /api/corpus-pdf").toBeGreaterThan(0);
+  expect(raw, "no direct raw.githubusercontent fetch on the loading path").toEqual([]);
 });
