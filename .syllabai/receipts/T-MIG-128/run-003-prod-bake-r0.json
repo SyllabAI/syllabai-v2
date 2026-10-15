@@ -1,0 +1,27 @@
+{
+  "task": "T-MIG-128",
+  "run": "run-003-prod-bake-r0",
+  "ts": "2026-10-15T18:12:30Z",
+  "agent": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "operator_traces": {
+    "merge_order": "1a140be386287e9d ('merge') — the bake is the direct consequence: post-merge prod re-bake was the disclosed residual"
+  },
+  "verdict": "PASS — T-MIG-128 delivery performance LIVE ON PRODUCTION, served-bundle + live-route verified first-hand",
+  "bake": {
+    "project": "syllabai-hub-v2",
+    "project_id": "prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl",
+    "deployment_id": "dpl_4mhkojePxjviniUr8JwA2yFuDytE",
+    "method": "POST /v13/deployments (name syllabai-hub-v2, gitSource github SyllabAI/syllabai-v2 @ main, target production)",
+    "baked_main_tip": "8791bb0 (hub bytes = T-MIG-128 squash 5083c1d + PR #187/T-MIG-130 hub chat wiring 4429186 — both merged of record pre-bake, CI-green each)",
+    "timeline": "INITIALIZING 18:08:41Z -> BUILDING -> READY 18:10:26Z (~105s); prod alias syllabai-hub-v2.vercel.app",
+    "credential": "Vercel token vcp_… (syllabai-1403) used inline-only in single combined invocations, never persisted, never printed; rotation due now that the arc is closed"
+  },
+  "verification": {
+    "served_bundle": "scripts/probe-live-bundle.py: root PRERENDER age 0 (fresh epoch); 21/21 assets; gesturestart/gesturechange/gestureend/pan-x PRESENT in chunk 2-yfpr515yf26.js + css 3wgpkwt06hwsm.css — s144 ZERO regression on the new build",
+    "delivery_path": "scripts/probe-corpus-pdf.py (new, persisted): 33 assets served; chunk 2025_uy91ix6k.js contains corpus-pdf + corpusViewerUrl (raw.githubusercontent also present BY DESIGN — downloadUrl + one-shot fallback only)",
+    "live_proxy_route": "GET /api/corpus-pdf/past-papers/cambridge-international/ial/chemistry/9701/past-papers/2019-06/9701-S19-QP-11/qp.pdf -> HTTP 200, cache-control: public, max-age=31536000, immutable, content-type: application/pdf, content-length: 325015 (== raw size — honest onProgress), etag passthrough; x-vercel-cache MISS (first hit; s-maxage warms the edge per region from here)",
+    "behavioral_pin": "zero raw requests on the LOADING path is pinned in e2e (14/14 pp-viewer with the T-MIG-128 pin, run 38780661589) — greppable markers + live headers corroborate"
+  },
+  "operator_device_contract": "papers list: hovering/pressing QP/MS/Split pre-warms the PDF (intent prefetch); opening a paper: first open streams once then the bytes are browser+edge immutable; re-opens instant; 'Open raw PDF' still available; PdfPane one-shot raw fallback on proxy failure",
+  "writes_ledger": "zero repo writes for the bake itself; receipt lands in the .syllabai-only closure commit"
+}

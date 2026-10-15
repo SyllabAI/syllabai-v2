@@ -1,0 +1,35 @@
+{
+  "task": "T-MIG-128",
+  "run": "run-002-merge-r0",
+  "ts": "2026-10-15T18:05:00Z",
+  "agent": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "operator_traces": {
+    "impl_order": "1a1405bb2acd6d81 ('I want to improve the performance of the pdf viewer, I want it to feel snappy and lag free')",
+    "credential_handoff": "1a140a5e52448635 (fresh GitHub PAT + Vercel token, both inline-only, never persisted, never printed)",
+    "merge_order": "1a140be386287e9d ('merge')"
+  },
+  "verdict": "PASS — PR #186 squash-merged of record; T-MIG-128 DONE",
+  "merge": {
+    "pr": 186,
+    "url": "https://github.com/SyllabAI/syllabai-v2/pull/186",
+    "method": "squash",
+    "method_adjudication": "squash chosen per T-MIG-127/#184 + #185 precedent — keeps the linear main of record; full branch SHA chain preserved verbatim in the squash commit body",
+    "merge_commit_sha": "5083c1da30257e77a4cf8a8302e5fb11cd5f829d",
+    "merged_at": "2026-10-15T18:01:23Z",
+    "branch_chain": [
+      "6e3abb8 claim-in-first-commit + impl (staged @ e92fa28; re-verified intact post-rollback)",
+      "5fd000d same commit rebased onto 1c30fba (only conflict: append-only worklog, union theirs-first, ZERO markers, 7878+3=7881 lines exact; hub diff byte-identical 10 files +379/-39)",
+      "b6d4f8b IN_REVIEW flip (.syllabai-only)"
+    ]
+  },
+  "ci_of_record": {
+    "run_id": 38780661589,
+    "workflow": "ci",
+    "event": "pull_request",
+    "head_sha": "b6d4f8b648b228067e0da031780b53991d9849aa",
+    "conclusion": "success"
+  },
+  "fleet_race_disclosure": "mid-flight sibling landings on main observed and left intact: 054e81c (R0-AUTO receipt for this merge), 4429186 + 8791bb0 (PR #187 / T-MIG-130 hub chat bank-intent wiring, merged of record pre-bake) — no interference; my push raced nobody (new branch, collision-checked empty via ls-remote before plain push, no force)",
+  "id_namespace_disclosure": "PR #185's tutor band filed a receipt under receipts/T-MIG-128/run-001-impl-live-verify-r0.json with suffixed cards; this task holds the bare T-MIG-128.yaml claimed 2026-10-14T11:25:00Z (earlier) with distinct receipt filename run-001-delivery-perf-r0.json — zero file collisions (merge-tree proof); two work items share the numeric label, flagged for the ledger",
+  "writes_ledger": "branch push t-mig-128/r0 (5fd000d + b6d4f8b, plain, no force) + squash merge via GitHub PR channel; ZERO direct main contact pre-merge; closure commit (this receipt + run-003 + T-MIG-127 run-007 + card DONE + worklog) is .syllabai-only"
+}

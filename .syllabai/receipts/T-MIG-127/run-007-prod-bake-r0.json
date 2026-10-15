@@ -1,0 +1,27 @@
+{
+  "task": "T-MIG-127",
+  "run": "run-007-prod-bake-r0",
+  "ts": "2026-10-15T18:12:00Z",
+  "agent": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "operator_traces": {
+    "diagnosis": "1a139bef4800dd19 ('Pinch zoom issue is still not fixed in https://syllabai-hub-v2.vercel.app/')",
+    "credential_handoff": "1a139f2c2de5c6e9 (inline Vercel token 'here')"
+  },
+  "verdict": "PASS — DISCHARGES THE RUN-007 RECEIPT DEBT disclosed in lane worklog T-MIG-127 run-006 (the bake itself executed 2026-10-15 ~10:30Z; this receipt lands of record now that a repo credential is available)",
+  "bake": {
+    "project": "syllabai-hub-v2",
+    "project_id": "prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl",
+    "deployment_id": "dpl_JCVqGPmY7rwMH1UBTsodkVFCPcir",
+    "method": "POST /v13/deployments (name-based body; first attempt 400 'missing required property name' — body schema wants name, not project id; retry OK)",
+    "git_source": "github SyllabAI/syllabai-v2 @ main resolved to e92fa28 (hub bytes = T-MIG-127 squash 60e2666)",
+    "target": "production",
+    "timeline": "BUILDING 10:30:27Z -> READY 10:32:01Z (~90s); prod alias syllabai-hub-v2.vercel.app assigned"
+  },
+  "verification": {
+    "probe": "scripts/probe-live-bundle.py against the prod alias post-bake: root x-vercel-cache PRERENDER age 0 (fresh epoch); viewer route 21 assets; chunk 3hbx7rojmx94x.js contains gesturestart+gesturechange+gestureend+pan-x; css 2d5r8wzxl8765.css contains pan-x",
+    "conclusion": "s144 pinch fix LIVE ON PRODUCTION — first user-visible landing; operator device-test contract delivered (pinch ON pane = ladder w/ honest ceiling + commit-on-release; pinch elsewhere = native page zoom by design; desktop ctrl+wheel; pan+pinch simultaneity = disclosed v1 tradeoff; normal reload suffices)"
+  },
+  "root_cause_context": "the prod gap was NEVER a code defect: syllabai-hub-v2 is not git-connected (link=None) so merges never auto-deploy; prod moves by deliberate bake",
+  "notes": "receipt deferred in run-006 because the then-active GitHub credential was retired-pending-rotation; the 2026-10-15 18:0xZ bake (run-003 of T-MIG-128) re-covered s144 markers on the NEW build (2-yfpr515yf26.js) — s144 regression guard GREEN across both bakes",
+  "writes_ledger": "zero repo writes in run-006 (credential absence disclosed); THIS receipt is the of-record closure, .syllabai-only"
+}
