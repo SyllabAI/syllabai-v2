@@ -27,6 +27,7 @@ import {
   LogIn,
   LogOut,
   Network,
+  ScrollText,
   Sparkles,
   User,
   Waypoints,
@@ -63,6 +64,7 @@ const TOOLS = [
   { href: "/revision-notes", label: "Revision Notes", icon: BookOpen },
   { href: "/exam-questions", label: "Exam Questions", icon: FileQuestion },
   { href: "/flashcards", label: "Flashcards", icon: CircleHelp },
+  { href: "/past-papers", label: "Past Papers", icon: ScrollText, desc: "Every past paper" },
 ] as const;
 
 const MORE_TOOLS = [

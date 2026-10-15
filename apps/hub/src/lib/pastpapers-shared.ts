@@ -66,6 +66,8 @@ export interface CorpusPaperEntry {
   durationMin: number | null;
   qpPath: string;
   msPath: string;
+  /** corpus-relative examiner-report path; "" when not held */
+  erPath?: string;
 }
 
 // ── pure helpers ───────────────────────────────────────────────────────────

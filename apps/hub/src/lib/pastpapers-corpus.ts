@@ -333,6 +333,7 @@ function buildEntry(
     durationMin: officialDuration(ref),
     qpPath: p.qp != null ? corpusRawPath(specKey, sessionId, p.d, "qp.pdf") : "",
     msPath: p.ms != null ? corpusRawPath(specKey, sessionId, p.d, "ms.pdf") : "",
+    erPath: p.er != null ? corpusRawPath(specKey, sessionId, p.d, "er.pdf") : "",
   };
 }
 
@@ -387,4 +388,72 @@ export function findCorpusPaper(
   dir: string,
 ): CorpusPaperEntry | null {
   return corpusPapersForCourse(slug).find((p) => p.sessionId === sessionId && p.dir === dir) ?? null;
+}
+
+// ── corpus-wide archive (every spec, mapped or not) ────────────────────────
+/**
+ * The per-course map above is the primary IA, but the corpus holds far more
+ * specifications than the hub has courses for: ALL of Cambridge International,
+ * IAL accounting / business / economics / IT / law / psychology, legacy GCE
+ * modular maths, IGCSE commerce / computer science / human biology / English
+ * Language B — 3,232 of 5,281 papers across 44 specs were unreachable from
+ * the UI (operator report, trace 1a140bd78ea3e419). The archive browser
+ * (app/past-papers) surfaces every spec below, so nothing in the corpus is
+ * hidden behind the course catalog again.
+ */
+export interface CorpusArchiveSpec {
+  specKey: string;
+  spec: CorpusSpec;
+  /** first hub course (alphabetical) whose primary spec list includes this spec */
+  courseSlug: string | null;
+  /** paper dirs holding at least one of qp/ms (same drop rule as course pages) */
+  paperCount: number;
+  sessionCount: number;
+}
+
+const COURSE_FOR_SPEC: Map<string, string> = (() => {
+  const m = new Map<string, string>();
+  for (const [slug, map] of Object.entries(COURSE_SPECS)) {
+    for (const key of map.specs) if (!m.has(key)) m.set(key, slug);
+  }
+  return m;
+})();
+
+export function courseForSpec(specKey: string): string | null {
+  return COURSE_FOR_SPEC.get(specKey) ?? null;
+}
+
+export function allArchiveSpecs(): CorpusArchiveSpec[] {
+  return Object.entries(corpusIndex.specs)
+    .map(([specKey, spec]) => ({
+      specKey,
+      spec,
+      courseSlug: courseForSpec(specKey),
+      paperCount: spec.sessions.reduce(
+        (n, s) => n + s.papers.filter((p) => p.qp != null || p.ms != null).length,
+        0,
+      ),
+      sessionCount: spec.sessions.length,
+    }))
+    .sort((a, b) => a.specKey.localeCompare(b.specKey));
+}
+
+/** Flattened paper list for ONE spec — the archive browser's per-spec page. */
+export function archivePapersForSpec(specKey: string): CorpusPaperEntry[] {
+  const spec = corpusIndex.specs[specKey];
+  if (!spec) return [];
+  const out: CorpusPaperEntry[] = [];
+  for (const session of spec.sessions as CorpusSession[]) {
+    for (const p of session.papers as CorpusPaper[]) {
+      if (p.qp == null && p.ms == null) continue;
+      const entry = buildEntry(specKey, spec, session.id, p);
+      if (entry) out.push(entry);
+    }
+  }
+  return out.sort(
+    (a, b) =>
+      sessionRankOf(b.sessionId) - sessionRankOf(a.sessionId) ||
+      a.ref.localeCompare(b.ref) ||
+      a.dir.localeCompare(b.dir),
+  );
 }
