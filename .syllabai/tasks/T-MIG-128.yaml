@@ -3,7 +3,7 @@ task:
   id: T-MIG-128
   title: "PdfPane delivery + first-open/re-open performance: same-origin edge-cached immutable PDF proxy (browser+Vercel edge; raw.githubusercontent only grants max-age=300), pointer-intent prefetch on the papers list, honest one-shot raw fallback in the pane; e2e hermetic through the proxy path"
   owner: "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)"
-  status: IN_PROGRESS # lane-side implementation + validation; push/PR awaits a repo credential (the previous PAT is retired-pending-rotation)
+  status: IN_REVIEW # implemented + validated on t-mig-128/r0 (rebased 5fd000d @ 1c30fba): gates tsc 0 / eslint 0 / build 0 / FULL e2e 32/32 incl. 14/14 pp-viewer with the new proxy pin; PR opened, NOT self-merged; adjudication = CI on the merged tree + operator ruling; post-merge hub prod re-bake owed
   claimed_at: "2026-10-14T11:25:00Z"
   claimed_by_order: "operator trace 1a1405bb2acd6d81 ('I want to improve the performance of the pdf viewer, I want it to feel snappy and lag free')"
   priority: P1
