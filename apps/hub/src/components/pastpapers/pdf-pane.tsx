@@ -155,6 +155,9 @@ type PdfjsNamespace = typeof import("pdfjs-dist");
 
 export interface PdfPaneProps {
   url: string;
+  /** T-MIG-128: direct raw corpus URL — if the (edge-cached) primary url
+   *  fails, the load retries ONCE against this before the error state */
+  fallbackUrl?: string | null;
   /** download/open fallback link (the same raw corpus URL) */
   downloadUrl?: string;
   label: string;
@@ -364,7 +367,7 @@ function writePrefs(p: PpPrefs) {
 }
 
 export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
-  { url, downloadUrl, label, active, initialPage, className },
+  { url, fallbackUrl, downloadUrl, label, active, initialPage, className },
   ref,
 ) {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -1032,23 +1035,30 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
     /** destroy ONLY a task whose doc we never adopted — a plain `active`
      * toggle must never kill a loaded doc (it survives toggling by design) */
     let task: import("pdfjs-dist").PDFDocumentLoadingTask | null = null;
+    let timer: number | null = null;
     let timedOut = false;
-    const timer = window.setTimeout(() => {
-      timedOut = true;
-      task?.destroy().catch(() => undefined);
-    }, LOAD_TIMEOUT_MS);
-    (async () => {
+
+    /** one load attempt against `fromUrl`; the effect-scoped `task`/`timer`
+     *  always track the LIVE attempt so cleanup cancels whatever is running */
+    const run = async (fromUrl: string) => {
+      if (timer !== null) window.clearTimeout(timer);
+      timedOut = false;
+      timer = window.setTimeout(() => {
+        timedOut = true;
+        task?.destroy().catch(() => undefined);
+      }, LOAD_TIMEOUT_MS);
       try {
         const pdfjs = await import("pdfjs-dist");
         pdfjs.GlobalWorkerOptions.workerSrc = "/pdfjs/pdf.worker.min.mjs";
         pdfjsNsRef.current = pdfjs;
-        task = pdfjs.getDocument({ url });
+        task = pdfjs.getDocument({ url: fromUrl });
         // v4: progress is a property of the loading task, not getDocument params
         task.onProgress = (p: { loaded: number; total: number }) => {
           if (!cancelled) setLoadProg({ loaded: p.loaded, total: p.total });
         };
         const doc = await task.promise;
         window.clearTimeout(timer);
+        timer = null;
         setLoadProg(null);
         if (cancelled) {
           doc.destroy();
@@ -1069,9 +1079,18 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
         for (const fn of waiting) fn(true);
         syncWindow(); // holders may not exist yet — the ready-kick re-runs this
       } catch (err) {
-        window.clearTimeout(timer);
+        if (timer !== null) window.clearTimeout(timer);
+        timer = null;
         setLoadProg(null);
         if (cancelled) return;
+        // T-MIG-128: one-shot honest fallback — if the edge-cached same-origin
+        // url fails (proxy 5xx, network), retry ONCE against the direct raw
+        // corpus URL before showing the error state. run() is effect-scoped,
+        // so the fallback budget resets on every real reload (retry button).
+        if (fallbackUrl && fromUrl !== fallbackUrl && url !== fallbackUrl) {
+          void run(fallbackUrl);
+          return;
+        }
         setErrorMsg(
           timedOut
             ? "timed out — the archive took too long to respond"
@@ -1081,13 +1100,15 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
         const waiting = pendingReadyRef.current.splice(0);
         for (const fn of waiting) fn(false);
       }
-    })();
+    };
+
+    void run(url);
     return () => {
       cancelled = true;
-      window.clearTimeout(timer);
+      if (timer !== null) window.clearTimeout(timer);
       if (!adopted) task?.destroy().catch(() => undefined);
     };
-  }, [url, active, reloadKey, syncWindow]);
+  }, [url, fallbackUrl, active, reloadKey, syncWindow]);
 
   /** Hard teardown — only on url/retry change or unmount (NOT on toggles). */
   useEffect(() => {

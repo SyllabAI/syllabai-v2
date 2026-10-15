@@ -1,0 +1,41 @@
+{
+  "task": "T-MIG-128",
+  "run": "run-001-delivery-perf-r0",
+  "ts": "2026-10-14T12:05:00Z",
+  "agent": "r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "operator_trace": "1a1405bb2acd6d81 ('I want to improve the performance of the pdf viewer, I want it to feel snappy and lag free')",
+  "verdict": "PASS — lane-side implementation + validation complete; push/PR awaits a repo credential",
+  "audit_first_hand": {
+    "already_fast": "s144 architecture verified in code: IO-driven page tracking (zero per-scroll work), virtualised nearest-first rendering radius 3 / hysteresis 6 / sweep 350ms / MAX_CANVASES 9, double-buffered swaps, DPR cap 2, vendored worker /pdfjs/pdf.worker.min.mjs, per-pane doc survival across toggles, MS pane fetches only when first active on mobile, 45s honest load timeout with real onProgress",
+    "bottleneck_measured": "DELIVERY: pane streamed raw.githubusercontent.com directly; raw sends cache-control: max-age=300 (5-minute browser cache) so re-opens past 5 minutes re-downloaded; corpus of record (bundled pastpapers-index.json): 10,361 PDFs / 5.86 GB, QP median 0.53 MB p90 1.77 MB max 20.7 MB (WCH04-01 2017-10); raw probe: accept-ranges bytes, sandbox TTFB 0.168s, 20.7MB @ 7.2MB/s — the GOOD case vs mobile reality",
+    "server_side_cleared": "corpusIndex statically bundled (import @/data/pastpapers-index.json); loadHubCourse = React cache() + module bundleCache; paper-link API in-memory no-store; viewer route force-dynamic but request-deduped — NOT the felt bottleneck (honest note: PPR/left as-is)"
+  },
+  "fix": {
+    "proxy": "apps/hub/src/app/api/corpus-pdf/[...path]/route.ts — strict same-origin passthrough to the ONE archive host (segment-validated corpus shape, qp/ms/er.pdf only, no traversal — live probe: ../../etc/passwd -> 404), streaming Response with cache-control: public, max-age=31536000, immutable, s-maxage=31536000, stale-while-revalidate=604800; content-length passthrough keeps pdf.js onProgress honest; etag passthrough; upstream errors 502 no-store (never cached)",
+    "pane": "all 4 PdfPane mounts (desktop split + mobile single) switched to corpusViewerUrl(); downloadUrl/Open-raw keeps raw origin; PdfPane gains fallbackUrl + effect-scoped ONE-SHOT retry against raw on proxy failure (budget resets per real reload)",
+    "list": "papers-list QP/MS/Split buttons -> CorpusPdfLink (client): pointer-intent prefetch of the proxy URL, module warmed-set + in-flight cap 2; keyboard focus deliberately NOT a trigger; prefetch failure invisible by design",
+    "csp": "unchanged — same-origin fetch is connect-src 'self' (next.config); the stale 'intentionally UNCOMMITTED' comment above next.config's V2_ORIGIN noted: the Wave-A CSP fix IS of record (verified: 2 matches on origin/main)"
+  },
+  "gates": {
+    "tsc": "bunx tsc --noEmit exit 0",
+    "eslint": "exit 0 on all 7 touched files",
+    "build": "next build (mock mode) exit 0 — standalone output nested (apps/hub) in this sandbox; lane normalized flat + content/static copies (SANDBOX ARTIFACT, zero repo defect, disclosed)",
+    "e2e": "FULL suite 32/32 PASS (1.2m) including 14/14 pp-viewer.spec.ts with the NEW T-MIG-128 pin: pane fetches via /api/corpus-pdf, ZERO raw.githubusercontent requests on the loading path"
+  },
+  "evidence_live": {
+    "proxy_headers": "GET /api/corpus-pdf/past-papers/cambridge-international/ial/chemistry/9701/past-papers/2019-06/9701-S19-QP-11/qp.pdf -> 200, Cache-Control: public, max-age=31536000, immutable, s-maxage=31536000, stale-while-revalidate=604800, Content-Length: 325015 (== raw's exact size — honest progress), Content-Type: application/pdf, ETag passthrough",
+    "traversal": "/api/corpus-pdf/../../etc/passwd -> 404"
+  },
+  "disclosures": [
+    "sandbox: node_modules re-installed frozen (930 pkgs) after the rollback wipe; playwright chromium-1243 downloaded to match the fresh playwright; standalone layout normalized flat (server.js + .next + content + content-maps + static copies) — build artifacts only, NOTHING of record touched",
+    "e2e route mocks now cover BOTH **/raw.githubusercontent.com/** and **/api/corpus-pdf/** — suite stays hermetic, zero real upstream contact in tests",
+    "known tradeoff (honest): first open of a 20MB scanned paper still costs the bytes (physics); the win is progressive sharing (edge warm per region after ONE viewer), instant re-opens (immutable browser cache), and prefetch-on-intent; range/linearized streaming NOT in v1 (raw's ranges don't survive the cache-first posture; disclosed, revisit if the heavy tail complains)",
+    "immutable is sound by the append-only archive law; a re-published path would serve stale for up to a year — the corpus never rewrites history of record"
+  ],
+  "residual": [
+    "push + PR + IN_REVIEW flip await a fresh repo credential (previous PAT retired-pending-rotation; it transited chat twice)",
+    "post-merge: hub prod RE-BAKE required (project syllabai-hub-v2 is NOT git-connected — precedent dpl_JCVqGPmY7rwMH1UBTsodkVFCPcir bake)",
+    "receipt debt run-007 (T-MIG-127 prod bake receipt) can ride the same next credential"
+  ],
+  "writes_ledger": "branch t-mig-128/r0 @ e92fa28: 1 commit (claim-in-first-commit: card + receipt + repo worklog + 7 code files); ZERO main contact, zero force, fetch-first"
+}

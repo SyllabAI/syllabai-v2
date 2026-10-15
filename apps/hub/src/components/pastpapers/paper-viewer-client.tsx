@@ -44,7 +44,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { PdfPane, type PdfPaneHandle } from "@/components/pastpapers/pdf-pane";
-import { corpusRawUrl, type CorpusPaperEntry } from "@/lib/pastpapers-shared";
+import {
+  corpusRawUrl,
+  corpusViewerUrl,
+  type CorpusPaperEntry,
+} from "@/lib/pastpapers-shared";
 import { formatSpent, saveMockResult } from "@/lib/mock-results";
 import {
   detectMsStructure,
@@ -127,6 +131,11 @@ export function PaperViewerClient({
 
   const qpUrl = paper.qpPath ? corpusRawUrl(paper.qpPath) : null;
   const msUrl = paper.msPath ? corpusRawUrl(paper.msPath) : null;
+  // T-MIG-128: the PANE streams via the same-origin edge-cached proxy
+  // (immutable browser + CDN cache; raw only grants max-age=300). The raw
+  // URLs above stay the download link AND the pane's one-shot fallback.
+  const qpPaneUrl = paper.qpPath ? corpusViewerUrl(paper.qpPath) : null;
+  const msPaneUrl = paper.msPath ? corpusViewerUrl(paper.msPath) : null;
   const backHref = `/courses/${course}/past-papers`;
 
   // ── mock countdown ───────────────────────────────────────────────────────
@@ -363,10 +372,11 @@ export function PaperViewerClient({
           Exam conditions — solve in your physical notebook. The mark scheme stays hidden until you
           finish.
         </p>
-        {qpUrl ? (
+        {qpUrl && qpPaneUrl ? (
           <PdfPane
             ref={qpPaneRef}
-            url={qpUrl}
+            url={qpPaneUrl}
+            fallbackUrl={qpUrl}
             downloadUrl={qpUrl}
             label={`Question paper — ${paper.ref}`}
             active
@@ -546,10 +556,11 @@ export function PaperViewerClient({
           </CardContent>
         </Card>
 
-        {msUrl ? (
+        {msUrl && msPaneUrl ? (
           <PdfPane
             ref={msPaneRef}
-            url={msUrl}
+            url={msPaneUrl}
+            fallbackUrl={msUrl}
             downloadUrl={msUrl}
             label={`Mark scheme — ${paper.ref}`}
             active
@@ -770,9 +781,10 @@ export function PaperViewerClient({
             ))}
           </div>
         )}
-        {qpUrl && (
+        {qpUrl && qpPaneUrl && (
           <PdfPane
-            url={qpUrl}
+            url={qpPaneUrl}
+            fallbackUrl={qpUrl}
             downloadUrl={qpUrl}
             label={`Question paper — ${paper.ref}`}
             active={doc === "qp" || doc === "split"}
@@ -790,9 +802,10 @@ export function PaperViewerClient({
             )}
           />
         )}
-        {msUrl && (
+        {msUrl && msPaneUrl && (
           <PdfPane
-            url={msUrl}
+            url={msPaneUrl}
+            fallbackUrl={msUrl}
             downloadUrl={msUrl}
             label={`Mark scheme — ${paper.ref}`}
             active={doc === "ms" || doc === "split"}
