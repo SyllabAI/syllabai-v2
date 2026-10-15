@@ -1,0 +1,20 @@
+{
+  "task": "T-MIG-129",
+  "run": "run-001-impl-live-verify-r0",
+  "operator_trace": "1a14080256278b41",
+  "when": "2026-10-16T09:20:00+08:00",
+  "purpose": "band (2) whole-paper fetch — implement + verify the operator's example: 'give me the full 2019 june paper 1 question paper' rendered as ONE view (QP + paired MS, with marks)",
+  "implementation": {
+    "contracts": "tutorBankPaperFullViewSchema + chunk/document-view schemas (chunkIndex, documentRowId, documentId, pageStart/End, content, atomNumber)",
+    "service": "bank-bands.ts fetchPaper — parseFetchQuery identity (reuse verbatim) → buildTutorFetchBank (the frozen bank: REJECTED papers invisible, year minimum anchor, MAX_PAPERS) → VALIDATED-only candidates → first-unit-match binding (unitCandidates order: 'paper 1'→[1C,1CR]; explicit code exact; disclosed siblings) → branch-1 document law re-carried (paper VALIDATED gates; document SUGGESTED serves; REJECTED top version never serves; kind must match) → QP+MS chunks ordered by chunk_index with page bounds (MAX_PAPER_CHUNKS_PER_KIND=500 honest cap) → bank questions external_ref order with marks, active-agnostic",
+    "router": "GET /paper?q= — blank q → 400 malformed_request; unparseable/no-bind → 404 not_found 'exam paper {label} not found'; T-C07 null scope → 404 (never serve across curricula)"
+  },
+  "verification": {
+    "unit": "16/16 incl. the operator's exact example binding 1C with siblings [1CR,2C,2CR]; REJECTED QP top version → honest empty; kind-confected doc refused; SUGGESTED papers never bind; cap law",
+    "live": "REAL service modules over prod t0_readonly SELECT-only: 'give me the full 2019 june paper 1 question paper' → binds 4CH1/1C June 2019 VALIDATED (title '4CH1/1C June 2019'), siblings 4CH1/1CR,4CH1/2C,4CH1/2CR; 15 bank questions q01..q15 (4m..14m, total 110 marks, external_ref q01-cf68cf74..q15-cf68cf74); QP document 98622045-ab65-5c94-a571-e7a7cb76e593 18 chunks pages 4-26 (chunk header line 'International GCSE Chemistry 4CH1 | Jun 2019 | 4CH1/1C | Paper 1C | Q1 | p.4' — deep-link-ready documentId+page); MS document 02e4c38c-d477-52f9-b97c-32a173a04d59 12 chunks",
+    "grounding_probes": "r0_band_probe.mjs + r0_band_probe2.mjs (SELECT-only): JUN-2019 census = 4 VALIDATED (1C/1CR/2C/2CR) + 2 REJECTED (paper_code null); QP doc has a REJECTED 23-chunk twin AND a VALIDATED 18-chunk doc (the REJECTED-exclusion law is load-bearing live); bank rows active=false (the FETCH active-agnostic law is load-bearing live); topic mappings 1,717 over 977 questions on 37 TOPIC nodes; spec mappings 2,620 over 954 questions / 177 codes (SUBTOPIC nodes)"
+  },
+  "chat_render_boundary": "whole-paper inline dumps stay by-design OUT of chat text (the ask evidence pool caps at 6; run-004 canary law) — this band is the deterministic one-view payload; hub chat wiring (intent hook → render) is the disclosed follow-up",
+  "write_ledger": "ZERO writes of every kind — read-only probes only (t0_readonly, SELECT-only); no LLM spend; no deploys; no Vercel/Render contact",
+  "scrub_assert": "PASS (no credential markers anywhere; NEON_URI memory-only shell var, never printed/persisted)"
+}

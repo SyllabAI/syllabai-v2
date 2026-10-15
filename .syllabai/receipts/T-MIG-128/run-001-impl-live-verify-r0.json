@@ -1,0 +1,19 @@
+{
+  "task": "T-MIG-128",
+  "run": "run-001-impl-live-verify-r0",
+  "operator_trace": "1a14080256278b41",
+  "when": "2026-10-16T09:20:00+08:00",
+  "purpose": "band (1) deterministic question listing — implement + verify the operator's example: all questions related to a topic ('organic chemistry') or a spec point",
+  "implementation": {
+    "contracts": "packages/contracts/src/tutor.ts — tutorBankQuestionsParamsSchema (topic|spec|nodeId axes, paperCode/year/series filters, limit<=500, refine >=1 axis) + TutorBankResolvedNode/PaperRef/QuestionItem/QuestionsView wire types",
+    "service": "apps/api/src/services/tutor/bank-bands.ts listQuestions — axis precedence nodeId>spec>topic; exact-then-substring name resolution; PART_OF subtree expansion (scope.ts CTE shape verbatim); T-C07 surface filter in code; V20 REJECTED/FLAGGED paper gate in SQL; FETCH active-agnostic (no active filter — production bank rows are active=false, the gold-v1 law); batched code-ordered specPointCodes; deterministic order (paper-anchored first, year desc, paper_code, external_ref); honest total-then-limit census",
+    "router": "apps/api/src/routes/tutor-bank.ts GET /questions — auth shell, safeParse→400 malformed_request parity, T-C07 null-scope degrade = the honest empty census, mounted /api/v1/tutor/bank (index.ts out-of-fence wiring, T-MIG-060 precedent)"
+  },
+  "verification": {
+    "unit": "apps/api/test/tutor/bank-bands.test.ts — 16/16 (recording fakeSql pins the SQL-carried laws: V20 gate present, no active filter, isSpec param, subtree CTE, cap, census law)",
+    "gates": "typecheck x4 exit 0; full suite 1935 pass / 0 fail / 13 skip (was 1919 — +16 new); bun install --frozen-lockfile 930 pkgs (post-reset reinstall)",
+    "live": "REAL service modules (buildBankBands + CurriculumScopeResolver) driven over neon() against prod t0_readonly SELECT-only: scope 4CH1-2017 surface=394 nodes; topic 'Organic chemistry' resolves UNIT + subtree (1 UNIT + TOPIC children Crude oil/Alkanes/Alkenes/Alcohols/Carboxylic acids/Esters/... + CONCEPTs + SUBTOPICs) → total 248 questions, items carry paper refs (4CH1/1C November 2025 etc.), marks (15m/12m/...), spec codes (4CH1-4.17,4CH1-4.18...), stems; spec '2.44' resolves 4CH1-2.44 ('describe tests for these gases') → 46 questions"
+  },
+  "write_ledger": "ZERO writes of every kind — read-only probes only (t0_readonly, SELECT-only); no LLM spend; no deploys; no Vercel/Render contact",
+  "scrub_assert": "PASS (no credential markers anywhere; NEON_URI memory-only shell var, never printed/persisted)"
+}

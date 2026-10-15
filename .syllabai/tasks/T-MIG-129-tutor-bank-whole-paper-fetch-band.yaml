@@ -1,0 +1,21 @@
+version: 1
+task:
+  id: T-MIG-129
+  title: "Tutor bank band (2) — whole-paper fetch: 'give me the full 2019 june paper 1 question paper' → ONE view (resolved paper + structured bank questions with marks in external_ref order + the paired QP and MS chunks ordered by chunk_index with page bounds) at GET /api/v1/tutor/bank/paper?q=… — first-unit-match binding (1C outranks 1CR), VALIDATED-only serving, siblings disclosed, branch-1 document law (REJECTED top versions never serve)"
+  owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)"
+  status: DONE # live-verified: binds 4CH1/1C JUN-2019, 15 bank questions / 110 marks, QP 18 chunks p.4-26 + MS 12 chunks
+  claimed_at: "2026-10-16T09:05:00+08:00"
+  claimed_by_order: "operator trace 1a14080256278b41 (the same order as T-MIG-128)"
+  priority: P1
+  wave: tutor-bank-bands
+  deps: [T-MIG-060, T-MIG-031, T-MIG-125]
+  execution_record: >
+    Reuses the frozen Fetch bank verbatim (buildTutorFetchBank — parse,
+    ambiguity, REJECTED-invisible, year-minimum-anchor laws) + the resolver's
+    exported unitCandidates/unitFromPaperCode for the first-unit-match
+    binding + the branch-1 document posture re-carried (findTopByDocumentId/
+    chunksByRowId per the fetch-parser structural-seam doctrine). Honest
+    per-kind chunk cap MAX_PAPER_CHUNKS_PER_KIND=500 (live truth 18/12).
+    Chat-inline rendering stays BY-DESIGN out of chat text (the evidence
+    pool caps at 6; the full-paper UX is this one-view payload — hub wiring
+    is the follow-up band).

@@ -7859,3 +7859,20 @@ Corpus facts (read-only Neon probe, t0_readonly, SELECT-only; api.neon.tech DNS-
 Capability posture for the operator's render question: citations carry deepLink+documentId+page (6/6 in both legs); the hub CitationPaperLink (F-022) opens cited papers in the SAME PdfPane as the past-papers viewer, deep-linked to the cited page, with a Parsed-text honesty toggle — inside the tutor chat. Whole-paper inline dumps are by-design NOT chat text (evidence pool caps at 6); the full-paper UX is chip -> PdfPane / Past Papers surface. "List ALL questions by topic/spec-point" is NOT a tutor band today (retrieval is top-N); the deterministic bank (questions/question_topics/spec_codes GIN) makes it a small new resolver band, not new infrastructure.
 
 .syllabai-only, no force, fetch-first (origin e92fa28 == local).
+
+---
+
+## T-MIG-128/129 (r0) — the tutor bank bands: deterministic question listing + whole-paper fetch (operator trace 1a14080256278b41)
+
+Task: "Proceed with ① the question-listing band (your example #1, deterministic); ② a whole-paper fetch band (QP + paired MS in one view)" — the two post-core v2-native resolver bands the run-004 canary posture proposed.
+
+Work Log:
+- Standing-order claim check: no cards beyond T-MIG-127; both bands unclaimed → filed T-MIG-128 + T-MIG-129, claimed under this order.
+- Fetch-first: origin 80d44be == local (the run-004 source-tag canary commit); zero race.
+- Grounding (read-only Neon probes, t0_readonly SELECT-only, scripts/r0_band_probe*.mjs): JUN-2019 = 4 VALIDATED papers (1C/1CR/2C/2CR) + 2 REJECTED; the 4CH1/1C QP doc has a REJECTED 23-chunk twin AND a VALIDATED 18-chunk doc — the branch-1 REJECTED-exclusion law is load-bearing live; bank rows active=false — the FETCH active-agnostic law is load-bearing live; topic mappings 1,717/977 questions on TOPIC nodes; spec mappings 2,620/954 questions over 177 SUBTOPIC codes.
+- Implemented (PR #185, squash 6633cb0 on main): contracts (tutorBank* schemas in packages/contracts/src/tutor.ts), services/tutor/bank-bands.ts (band 1 listQuestions: axis precedence nodeId>spec>topic, exact-then-substring resolution, PART_OF subtree expansion, T-C07 surface filter, V20 paper gate in SQL, FETCH active-agnostic, honest total-then-limit; band 2 fetchPaper: frozen bank reuse + first-unit-match binding + disclosed siblings + branch-1 document law + chunk_index-ordered QP/MS chunks + bank questions with marks), routes/tutor-bank.ts (auth shell, 400/404 binding laws, T-C07 degrade), index.ts out-of-fence mount at /api/v1/tutor/bank (T-MIG-060 precedent). Every SQL statement is ONE flat parameterized template (the toQuery adapter carries $N params only).
+- Verified: unit tests 16/16 (recording fakeSql pins the SQL-carried laws); typecheck x4 exit 0; full suite 1935/0/13 (was 1919, +16); PR #185 CI 2/2 green pre-merge (first-hand check-runs).
+- LIVE verification through the REAL service modules over prod t0_readonly (SELECT-only, scripts/r0_band_live.ts): scope 4CH1-2017 surface 394; topic "Organic chemistry" → UNIT + subtree → 248 questions (limit-200 cut honest), items with paper+marks+spec codes; spec "2.44" → 46 questions; "give me the full 2019 june paper 1 question paper" → binds 4CH1/1C June 2019 VALIDATED, siblings 1CR/2C/2CR, 15 bank questions / 110 marks, QP 18 chunks p.4-26 + MS 12 chunks — the operator's both examples serve end-to-end pre-deploy. NOTE: the worklog section was first appended pre-branch and destroyed by the post-merge reset --hard; re-filed verbatim-in-substance post-merge (receipts/cards survived as untracked).
+
+Stage Summary:
+- Both bands DONE of record: PR #185 merged (squash 6633cb0), receipts T-MIG-128/129 run-001, cards filed. Chat-inline rendering stays by-design out of chat text (evidence pool cap 6); hub intent wiring is the disclosed follow-up. Serving pickup rides the operator's redeploy lever. Zero writes/prod mutations/LLM; PAT/vcp/Neon keys inline-only, never persisted.

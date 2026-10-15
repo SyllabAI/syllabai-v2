@@ -1,0 +1,20 @@
+version: 1
+task:
+  id: T-MIG-128
+  title: "Tutor bank band (1) — deterministic question listing: 'give me all questions related to <topic> / a spec point' → a bank census (topic|spec|nodeId axis precedence, exact-then-substring name resolution with PART_OF subtree expansion, T-C07 surface fail-closed, FETCH active-agnostic semantics + the V20 REJECTED/FLAGGED paper gate, honest total-then-limit census) at GET /api/v1/tutor/bank/questions"
+  owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)"
+  status: DONE # live-verified against prod t0_readonly through the real service modules (run-001)
+  claimed_at: "2026-10-16T09:05:00+08:00"
+  claimed_by_order: "operator trace 1a14080256278b41 'Proceed with ① the question-listing band (your example #1, deterministic); ② a whole-paper fetch band (QP + paired MS in one view)'"
+  priority: P1
+  wave: tutor-bank-bands
+  deps: [T-MIG-060, T-MIG-031, T-MIG-125]
+  execution_record: >
+    Post-core v2-native read surface (no frozen-core counterpart). Contracts
+    (tutorBankQuestionsParamsSchema + view schemas, packages/contracts/src/
+    tutor.ts), service apps/api/src/services/tutor/bank-bands.ts (listQuestions),
+    router apps/api/src/routes/tutor-bank.ts (auth shell + T-C07 degrade +
+    400/404 binding laws), mounted /api/v1/tutor/bank (index.ts out-of-fence
+    wiring per the T-MIG-060 precedent). Zero LLM, zero vector calls, zero
+    writes. SQL note: the createSql adapter (toQuery) serializes $N params
+    only — every statement is ONE flat template, fully parameterized.
