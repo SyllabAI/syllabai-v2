@@ -28,6 +28,7 @@ import {
   type SqlFn,
 } from "../../src/services/learner-model/model-update";
 import { fakeSql, type Route } from "./helpers";
+import { doubleValue, longValue } from "../../src/services/research";
 
 const LEARNER = "da30cee5-cb41-4565-9e8c-713894319ca8"; // the w4 capture identity
 const NODE = "20000000-0000-0000-0000-000000000012"; // primary topic (the capture's skill row)
@@ -54,6 +55,7 @@ const MISCONCEPTION_UPDATE = /update misconception_states set probability/;
 const FLUENCY_EXISTS = /select id from skill_states where learner_id = \? and node_id = \?/;
 const FLUENCY_AGGREGATE = /select a\.timed_condition as timed, count\(\*\) as total/;
 const FLUENCY_UPDATE = /update skill_states set procedural_fluency_gap/;
+const TELEMETRY_INSERT = /insert into telemetry_events/;
 
 /** Captures bound params per matched statement kind. */
 function listenerRoutes(opts: {
@@ -69,6 +71,7 @@ function listenerRoutes(opts: {
     misconceptionInsert: [] as unknown[][],
     misconceptionUpdate: [] as unknown[][],
     fluencyUpdate: [] as unknown[][],
+    telemetry: [] as unknown[][],
   };
   const routes: Array<Route & { kind: string }> = [
     {
@@ -145,6 +148,15 @@ function listenerRoutes(opts: {
       rows: [],
       rowsFor: (p) => {
         captured.fluencyUpdate.push(p);
+        return [];
+      },
+    },
+    {
+      kind: "telemetryInsert",
+      match: TELEMETRY_INSERT,
+      rows: [],
+      rowsFor: (p) => {
+        captured.telemetry.push(p);
         return [];
       },
     },
@@ -459,5 +471,163 @@ describe("T-MIG-102 — the learner-model write path (frozen vectors @ 6cad6ef)"
   test("guess clamp: the resolved guess never reaches 1 - slip (degrade, never invert)", () => {
     const absurd = { ...LEARNER_BKT_PAPER_DEFAULTS, guess: 0.9 };
     expect(resolveBktParams(null, 0, absurd).guess).toBeLessThan(1 - 0.1);
+  });
+
+  // ── Card A — research telemetry (the dormant seam activated) ────────────
+
+  /** telemetry params layout: [id, learner_id, event_type, payload(jsonb string), occurred_at] */
+  function telemetryRows(captured: { telemetry: unknown[][] }) {
+    return captured.telemetry.map((p) => ({
+      id: p[0],
+      learnerId: p[1],
+      eventType: p[2],
+      payload: JSON.parse(p[3] as string),
+      occurredAt: p[4],
+    }));
+  }
+
+  describe("Card A — BKT_UPDATED/BDT_UPDATED telemetry (the T-MIG-101 dormant seam)", () => {
+    test("the w4 capture: one BKT_UPDATED + one BDT_UPDATED, payloads per the row contract", async () => {
+      const { sql, captured } = listenerRoutes();
+      await updateOnAssessmentEvidence(sql, w4Event(), undefined, CLOCK);
+
+      const rows = telemetryRows(captured);
+      expect(rows.map((r) => r.eventType)).toEqual(["BKT_UPDATED", "BDT_UPDATED"]);
+      expect(rows[0]!.learnerId).toBe(LEARNER);
+      expect(rows[0]!.occurredAt).toBe("2026-10-05T15:48:32.549Z"); // the attempt instant (ms precision)
+      // the fresh-row BKT payload: decayedPrior IS l0 (the decay branch never
+      // fires), gapDays 0, and NO priorMastery (no independent anchor side)
+      expect(rows[0]!.payload).toEqual({
+        nodeId: NODE,
+        decayedPrior: 0.1,
+        correctness: false,
+        questionType: "MCQ_SINGLE",
+        optionCount: 4,
+        gapDays: 0,
+      });
+      // the BDT strengthen payload: the 0.3 -> 0.75 capture vector
+      expect(rows[1]!.payload).toEqual({
+        misconceptionNodeId: MISCONCEPTION,
+        prior: 0.3,
+        posterior: 0.75,
+        correctness: false,
+        updateKind: "TAGGED_DISTRACTOR",
+        questionType: "MCQ_SINGLE",
+        optionCount: 4,
+      });
+    });
+
+    test("C1 long gap: decayedPrior is the COMPUTED prior — 0.5496293150633604, gapDays 180, priorMastery 0.9", async () => {
+      const { sql, captured } = listenerRoutes({
+        skillRow: {
+          mastery: 0.9,
+          attempts: 3,
+          correct_count: 2,
+          last_practiced_at: "2026-04-08T15:48:32.549788Z", // WHEN - 180d
+        },
+      });
+      await updateOnAssessmentEvidence(
+        sql,
+        w4Event({ correct: true, expressedMisconceptionIds: [], observedMisconceptionIds: [] }),
+        undefined,
+        CLOCK,
+      );
+      const bkt = telemetryRows(captured).filter((r) => r.eventType === "BKT_UPDATED");
+      expect(bkt.length).toBe(1);
+      expect(bkt[0]!.payload.decayedPrior).toBe(0.5496293150633604); // 0.9·e^(−180/365) — NOT the 0.9 anchor
+      expect(bkt[0]!.payload.decayedPrior).not.toBe(bkt[0]!.payload.priorMastery); // the never-persisted law, on the wire
+      expect(bkt[0]!.payload.priorMastery).toBe(0.9);
+      expect(bkt[0]!.payload.gapDays).toBe(180);
+      expect(bkt[0]!.payload.correctness).toBe(true);
+    });
+
+    test("an untagged wrong answer writes mastery telemetry but emits NO BDT row", async () => {
+      const { sql, captured } = listenerRoutes();
+      await updateOnAssessmentEvidence(
+        sql,
+        w4Event({ expressedMisconceptionIds: [], observedMisconceptionIds: [MISCONCEPTION] }),
+        undefined,
+        CLOCK,
+      );
+      expect(telemetryRows(captured).map((r) => r.eventType)).toEqual(["BKT_UPDATED"]);
+    });
+
+    test("a correct answer weakens via BDT telemetry with updateKind CORRECT (0.75 -> 0.5)", async () => {
+      const { sql, captured } = listenerRoutes({
+        misconceptionRow: { probability: 0.75, evidence_count: 1 },
+      });
+      await updateOnAssessmentEvidence(
+        sql,
+        w4Event({ correct: true, expressedMisconceptionIds: [], observedMisconceptionIds: [MISCONCEPTION] }),
+        undefined,
+        CLOCK,
+      );
+      const bdt = telemetryRows(captured).filter((r) => r.eventType === "BDT_UPDATED");
+      expect(bdt.length).toBe(1);
+      expect(bdt[0]!.payload).toEqual({
+        misconceptionNodeId: MISCONCEPTION,
+        prior: 0.75,
+        posterior: 0.5,
+        correctness: true,
+        updateKind: "CORRECT",
+        questionType: "MCQ_SINGLE",
+        optionCount: 4,
+      });
+    });
+
+    test("one BKT_UPDATED per evidence node — NODE then SP1, SP2; no BDT without misconception updates", async () => {
+      const { sql, captured } = listenerRoutes();
+      await updateOnAssessmentEvidence(
+        sql,
+        w4Event({
+          correct: true,
+          expressedMisconceptionIds: [],
+          observedMisconceptionIds: [],
+          specPointNodeIds: [SP1, SP2],
+        }),
+        undefined,
+        CLOCK,
+      );
+      const bkt = telemetryRows(captured).filter((r) => r.eventType === "BKT_UPDATED");
+      expect(bkt.map((r) => r.payload.nodeId)).toEqual([NODE, SP1, SP2]);
+      for (const r of bkt) expect(r.payload.correctness).toBe(true);
+      expect(captured.telemetry.length).toBe(3);
+    });
+
+    test("every BKT_UPDATED payload satisfies the research ROW CONTRACT typing (writer -> reader pin)", async () => {
+      const { sql, captured } = listenerRoutes({
+        skillRow: {
+          mastery: 0.9,
+          attempts: 3,
+          correct_count: 2,
+          last_practiced_at: "2026-04-08T15:48:32.549788Z",
+        },
+      });
+      await updateOnAssessmentEvidence(sql, w4Event(), undefined, CLOCK);
+      const rows = telemetryRows(captured);
+      expect(rows.length).toBeGreaterThan(0);
+      for (const row of rows) {
+        if (row.eventType !== "BKT_UPDATED") continue;
+        const p = row.payload;
+        expect(typeof p.correctness).toBe("boolean"); // STRICT boolean
+        expect(doubleValue(p.decayedPrior)).not.toBeNull(); // parses as the latent
+        expect(longValue(p.gapDays)).not.toBeNull(); // parses as whole days
+        expect(p.decayedPrior).toBeGreaterThanOrEqual(0); // the [0,1] guard
+        expect(p.decayedPrior).toBeLessThanOrEqual(1);
+      }
+    });
+
+    test("the insert pins the wire shape: jsonb cast, no schema_version column (rides the default)", async () => {
+      const { sql } = listenerRoutes();
+      await updateOnAssessmentEvidence(sql, w4Event(), undefined, CLOCK);
+      const queries = (sql as unknown as { queries: string[] }).queries;
+      const inserts = queries.filter((q) => q.includes("insert into telemetry_events"));
+      expect(inserts.length).toBe(2);
+      expect(inserts[0]).toContain(
+        "insert into telemetry_events (id, learner_id, event_type, payload, occurred_at)",
+      );
+      expect(inserts[0]).toContain("::jsonb");
+      expect(inserts[0]).not.toContain("schema_version");
+    });
   });
 });

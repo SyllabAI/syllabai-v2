@@ -58,9 +58,30 @@
  *     maintained (+1 per write) but a concurrent submit race loses the
  *     version bump, not silently the evidence (both writes apply; the corpus
  *     and the golden surface are sequential).
- *   - MasteryUpdatedEvent / MisconceptionUpdatedEvent (:123-131/:158-160) are
- *     NOT ported — they feed BKT_UPDATED/BDT_UPDATED research telemetry, a
- *     separate band; v2 has no consumer for them (disclosed, zero wire effect).
+ *   - MasteryUpdatedEvent / MisconceptionUpdatedEvent (:123-131/:158-160): the
+ *     frozen events fed BKT_UPDATED/BDT_UPDATED research telemetry through a
+ *     listener-side observer. v2 has no event bus, so the seam writes the
+ *     telemetry rows DIRECTLY (Card A — the T-MIG-101 dormant-seam activation,
+ *     operator trace 1a1409875a8e9279): one BKT_UPDATED row per evidence node
+ *     and one BDT_UPDATED row per updated misconception, each AFTER its state
+ *     write (the frozen publish-after-save order). BKT_UPDATED payload = the
+ *     research ROW CONTRACT verbatim (services/research/index.ts header):
+ *     decayedPrior is the COMPUTED C1 prior (never the stored anchor),
+ *     correctness a STRICT boolean, questionType/optionCount verbatim (a null
+ *     type folds UNTYPED on read), gapDays = floor(elapsed days) computed
+ *     alongside the decay (0 on fresh rows and clock skew — the decay branch
+ *     consumed zero elapsed), priorMastery = the raw stored anchor on
+ *     EXISTING rows only (a fresh row's pre-attempt estimate is exactly
+ *     decayedPrior — no independent anchor side to report). BDT_UPDATED
+ *     carries prior/posterior/updateKind plus the emission context — it has
+ *     NO frozen reader; that payload is the v2 contract for the future BDT
+ *     calibration band (misconception states do not decay — relaxation is
+ *     read-time — so no gapDays/decayedPrior). occurred_at = the evidence
+ *     event's occurredAt (the attempt instant); schema_version rides the
+ *     column default 1. Posture: fail-loud — a telemetry failure fails the
+ *     evidence write exactly like any state write (the module's
+ *     no-silent-skip law; the frozen synchronous @Transactional listener
+ *     propagated the same way).
  *   - occurredAt: the frozen publisher stamps Instant.now() at emit
  *     (EvidencePublisher.java :88 — the capture's lastPracticedAt sits ~9ms
  *     after the attempt's submittedAt); the v2 seam (T-MIG-030 of record)
@@ -149,6 +170,70 @@ export function resolveBktParams(
 
 function clamp01(v: number): number {
   return Math.max(0.0, Math.min(1.0, v));
+}
+
+// ── research telemetry (the dormant seam — BKT_UPDATED/BDT_UPDATED) ─────────
+
+/** Whole-day floor for gapDays — the decay math's own day unit (decay.ts). */
+const DAY_MS = 86_400_000;
+
+/**
+ * The BKT_UPDATED payload — the research ROW CONTRACT (services/research
+ * header): the fields the calibration service's defensive parsers read
+ * (decayedPrior via doubleValue, gapDays via longValue, correctness as a
+ * STRICT boolean, questionType/optionCount through the SAME resolver).
+ */
+export interface BktTelemetryPayload {
+  nodeId: string;
+  /** the computed C1 prior the update consumed — NEVER the stored anchor */
+  decayedPrior: number;
+  correctness: boolean;
+  questionType: string | null;
+  optionCount: number;
+  /** whole elapsed days the decay branch consumed (0 = no decay applied) */
+  gapDays: number;
+  /** the raw stored anchor — existing rows only; omitted on fresh rows */
+  priorMastery?: number;
+}
+
+/**
+ * The BDT_UPDATED payload — NO frozen reader exists (the frozen
+ * MisconceptionUpdatedEvent consumer predates the telemetry contract); these
+ * fields are the v2 contract for the future BDT calibration band. Misconception
+ * states do not decay (relaxation is read-time) — so no gapDays/decayedPrior.
+ */
+export interface BdtTelemetryPayload {
+  misconceptionNodeId: string;
+  /** the pre-update probability the engine consumed (bdt.prior on fresh rows) */
+  prior: number;
+  /** the new anchor written to misconception_states */
+  posterior: number;
+  correctness: boolean;
+  updateKind: "CORRECT" | "TAGGED_DISTRACTOR";
+  questionType: string | null;
+  optionCount: number;
+}
+
+/**
+ * One telemetry_events row (schema_version rides the column default 1).
+ * The jsonb param follows the repo insert convention (JSON.stringify ::jsonb,
+ * review-writes.ts/concept-seed.ts). Fail-loud: the caller writes telemetry
+ * AFTER its state write on the same SqlFn — a failure propagates and fails
+ * the evidence write (the no-silent-skip law).
+ */
+async function writeTelemetry(
+  sql: SqlFn,
+  eventType: "BKT_UPDATED" | "BDT_UPDATED",
+  learnerId: string,
+  payload: BktTelemetryPayload | BdtTelemetryPayload,
+  occurredAt: Date,
+  clock: ModelUpdateClock,
+): Promise<void> {
+  await sql`
+    insert into telemetry_events (id, learner_id, event_type, payload, occurred_at)
+    values (${clock.newId()}, ${learnerId}, ${eventType}, ${JSON.stringify(payload)}::jsonb,
+            ${occurredAt.toISOString()})
+  `;
 }
 
 /**
@@ -303,10 +388,19 @@ async function updateMastery(
     // (:102-104): a fresh row's prior is l0 (its lastPracticedAt is the event
     // instant — the constructor sets it — so the C1 decay branch never fires).
     const stored = state ? Number(state.mastery) : resolved.l0;
-    const prior =
+    const lastPracticed =
       state && state.last_practiced_at !== null
-        ? decayedMastery(stored, new Date(state.last_practiced_at as string | Date), when, params.decay)
-        : stored;
+        ? new Date(state.last_practiced_at as string | Date)
+        : null;
+    // gapDays = the whole elapsed days the decay branch consumes, computed
+    // alongside the decay (the research gap segments are τ-aligned to these);
+    // 0 when no decay applies (fresh rows — the fresh anchor's lastPracticedAt
+    // is the event instant — and clock skew, where decayedMastery clamps).
+    const gapDays =
+      lastPracticed !== null && when.getTime() > lastPracticed.getTime()
+        ? Math.floor((when.getTime() - lastPracticed.getTime()) / DAY_MS)
+        : 0;
+    const prior = lastPracticed !== null ? decayedMastery(stored, lastPracticed, when, params.decay) : stored;
     const posterior = bktUpdate(prior, event.correct, resolved);
     if (!state) {
       // INSERT with recordAttempt already applied (:89-96 on the fresh entity:
@@ -332,6 +426,25 @@ async function updateMastery(
         where learner_id = ${event.learnerId} and node_id = ${node}
       `;
     }
+    // research telemetry AFTER the state write (frozen publish-after-save):
+    // decayedPrior is the COMPUTED C1 prior above; priorMastery (the raw
+    // anchor side) only when a prior row existed.
+    await writeTelemetry(
+      sql,
+      "BKT_UPDATED",
+      event.learnerId,
+      {
+        nodeId: node,
+        decayedPrior: prior,
+        correctness: event.correct,
+        questionType: event.questionType,
+        optionCount: event.optionCount,
+        gapDays,
+        ...(state ? { priorMastery: stored } : {}),
+      },
+      when,
+      clock,
+    );
   }
 }
 
@@ -386,6 +499,24 @@ async function updateMisconceptions(
         where learner_id = ${event.learnerId} and misconception_node_id = ${misconception}
       `;
     }
+    // research telemetry AFTER the state write (frozen publish-after-save):
+    // the v2 BDT_UPDATED contract — prior/posterior + the evidence polarity.
+    await writeTelemetry(
+      sql,
+      "BDT_UPDATED",
+      event.learnerId,
+      {
+        misconceptionNodeId: misconception,
+        prior,
+        posterior,
+        correctness: event.correct,
+        updateKind: event.correct ? "CORRECT" : "TAGGED_DISTRACTOR",
+        questionType: event.questionType,
+        optionCount: event.optionCount,
+      },
+      when,
+      clock,
+    );
   }
 }
 
