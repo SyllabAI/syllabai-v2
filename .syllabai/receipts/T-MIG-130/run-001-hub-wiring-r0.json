@@ -1,0 +1,29 @@
+{
+  "task": "T-MIG-130",
+  "run": "run-001-hub-wiring-r0",
+  "operator_trace": "1a140a3f4c796e11",
+  "operator_order": "wire the hub chat",
+  "when": "2026-10-16T11:05:00+08:00",
+  "purpose": "the disclosed follow-up band of T-MIG-128/129 — wire the tutor bank bands into the hub chat: a deterministic zero-LLM intent pre-flight on the /api/ai/chat relay, structured band rendering in the chat, silent fall-through to the grounded ask on every non-resolving path",
+  "implementation": {
+    "shared": "packages/shared/src/bank-intent.ts — classifyBankIntent (precision-first: PAPER gate = paper noun AND fullness | paired-QP+MS | fetch-verb+session-anchor; QUESTIONS gate = listing opener | all-questions | past-paper-questions phrase AND an extractable spec|topic axis; CONCEPTUAL_OPENER how/why/when/who/where never probes; topic cleanup trims quotes/filler/session/paper/spec refinements; the chat's four existing starters pinned never-probe in tests) + bankPaperLeadIn/bankQuestionsLeadIn/bankAxisLabel/seriesLabel — pure, deterministic, zero I/O (the package charter); 24-test suite packages/shared/src/bank-intent.test.ts in the CI suite of record",
+    "surface_row": "apps/hub/src/lib/api.ts V2_SURFACE_PREFIXES — NEW narrow family row '/api/v1/tutor/bank' (captures EXACTLY the 128/129 out-of-fence mounts /bank/questions + /bank/paper; ask pair + sessions keep their own rows; partial-segment capture bankx documented inert) — pinned by the T-MIG-130 line test + the exact-set test in apps/hub/src/lib/api.v2-surface.test.ts",
+    "relay": "apps/hub/src/app/api/ai/chat/route.ts tryBankBand — classify → table-governed base (v2SurfaceBase; env unset = rollback = bands skip) → v2FetchAuthorized GET with a 10s probe ceiling (NEW optional timeoutMs param on v2FetchAuthorized, default 120s unchanged for every existing caller) → on resolve a self-built SSE bankBandStream: band{band:payload} → meta(provider:'bank', model:null, refused:false) → delta(deterministic lead-in) → done; guarded sends; bank-1 empty census falls through (honest empty → the ask may still teach from the corpus); payload = the raw v2 view (wire truth, the CoreTutorAnswer trust posture)",
+    "client": "threads.ts Turn.band + TurnBand mirrors; chat.tsx consumes the band frame in the ask loop (band → patchTurn, meta → provider 'bank' badge, delta → the lead-in content) + courseSlug passed to MessageItem + a 'Past-paper bank' starter (the operator's example #1 verbatim); band-card.tsx — questions card (resolved-node chips, marks/spec/paper per item, honest total-then-shown cut) + paper card (VALIDATED badge, marks sum, siblings DISCLOSED per the 129 law, QP/MS DocRows through CitationPaperLink = the F-022 in-place PdfPane with the learner Bearer, readerHref /sources/{documentRowId}?page=N[&course=slug] — the citation deepLink law); provenance footer 'no AI model involved'"
+  },
+  "verification": {
+    "typecheck": "bun run typecheck (contracts/shared/db/api) exit 0; hub tsc --noEmit exit 0; eslint on the 8 touched hub files exit 0",
+    "suite": "bun test apps/api packages = 1959 pass / 0 fail / 13 skip (+24 vs the 1935 of record — the bank-intent suite)",
+    "hub_lane": "bun run build:hub (corpus prebuild + next build = the CI hub job) exit 0",
+    "gates": "preflight_zero_core_census.py --gate exit 0 (LIVE=0 law intact); golden/runner.ts --selftest OK",
+    "ci": "PR #187 head 6e106ee check-runs FIRST-HAND: verify:success + hub:success (2/2) before merge; squash 4429186 on main",
+    "disclosures": [
+      "band turns are deterministic lookups: they persist in the LOCAL thread transcript (localStorage Turn.band) and their lead-in rides future ask history, but they do NOT append to the §22 server session (the append happens upstream on ask Completed only) — the server copy of a thread records grounded asks only",
+      "serving pickup rides the operator redeploy lever (the 128/129 law): the bands are mounted on main; until the next v2 deploy the relay probe 404s and every bank-shaped question falls through to the grounded ask — zero behavior change",
+      "the classifier is precision-first, not exhaustive: false negatives degrade to the ask (zero cost); a false positive costs one indexed SQL probe and still degrades honestly (a non-binding identity 404s); the one guarded hijack class (a conceptual question hijacked by a paper fetch) is pinned in tests",
+      "v1 wiring carries topic|spec axes only (year/series/paperCode refinements are trimmed from the topic phrase and disclosed by the card's per-item paper labels)"
+    ]
+  },
+  "write_ledger": "zero DB writes, zero prod mutations, zero LLM spend (the bands and the classifier are zero-LLM; no canary fired — the serving vector-arm canary is T-MIG-125 run-004 of record at 80d44be); 1 branch + PR #187 + squash merge; PAT inline-URL/header usage only, never persisted (hygiene: 0 hits in .git/config)",
+  "scrub_assert": "no credential, token, URI, or Neon secret appears in this receipt, the commit, or the PR body"
+}

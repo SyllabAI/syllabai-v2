@@ -1,0 +1,43 @@
+version: 1
+task:
+  id: T-MIG-130
+  title: "Hub chat intent wiring — the tutor bank bands into the tutor chat: a deterministic (zero-LLM) intent pre-flight on the /api/ai/chat relay that probes band (1) question listing and band (2) whole-paper fetch (T-MIG-128/129) when the learner's question matches conservative paper/listing phrasings, serves the structured view as a `band` SSE frame + deterministic lead-in, renders a Question-bank / Whole-paper card in the chat (QP+MS deep links into the F-022 reader), and falls through to the grounded ask on EVERY non-resolving path"
+  owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)"
+  status: DONE # PR #187 merged (squash 4429186 on main), CI 2/2 green pre-merge FIRST-HAND (verify+hub); suite 1959/0/13 (+24); hub build + census gate + golden selftest green; band turns pre-deploy honest-degrade disclosed (serving pickup rides the operator redeploy lever, the 128/129 law)
+  claimed_at: "2026-10-16T10:20:00+08:00"
+  claimed_by_order: "operator trace 1a140a3f4c796e11 'wire the hub chat'"
+  priority: P1
+  wave: tutor-bank-bands
+  deps: [T-MIG-128, T-MIG-129, T-MIG-106, T-MIG-118]
+  execution_record: >
+    The disclosed follow-up band of the 128/129 leg ("hub intent wiring").
+    Classifier + lead-ins are PURE and shared: packages/shared/src/
+    bank-intent.ts (classifyBankIntent — precision-first: PAPER gate needs a
+    paper noun AND fullness/paired/fetch+session-anchor; QUESTIONS gate needs
+    a listing opener/all-questions/past-paper-questions phrase AND an
+    extractable spec|topic axis; false negatives degrade to the grounded ask,
+    false positives cost one fast SQL probe and still degrade honestly;
+    bankPaperLeadIn/bankQuestionsLeadIn) + suite-covered tests in
+    packages/shared/src/bank-intent.test.ts (CI `bun test apps/api packages`).
+    Relay: apps/hub/src/app/api/ai/chat/route.ts tryBankBand pre-flight —
+    table-governed via v2SurfaceBase (NEW NARROW row "/api/v1/tutor/bank" in
+    V2_SURFACE_PREFIXES — the bank family ONLY, pinned in api.v2-surface.test
+    .ts), v2FetchAuthorized with a 10s probe ceiling (optional timeoutMs param,
+    default 120s unchanged), 404/empty/error/env-unset → silent fall-through
+    to the ALWAYS-ON ask stream (zero behavior change for every non-bank
+    ask); on resolve → self-built SSE (band → meta(provider:"bank") → delta
+    deterministic lead-in → done), the band payload passed as the raw v2 view
+    (wire truth). Client: Turn.band (threads.ts), chat.tsx consumes `band`
+    frames (+ courseSlug passed for reader hints, + a Question-bank starter),
+    band-card.tsx renders the deterministic card (resolved nodes, marks,
+    spec codes, per-question paper labels, honest total-then-shown cut;
+    whole-paper: paper header + VALIDATED badge, question count/marks sum,
+    siblings DISCLOSED per the 129 law, QP/MS rows deep-linked into
+    /sources/{row}?page=N — documentRowId+pageStart, the F-022 reader, the
+    citation deepLink law). Band turns are deterministic lookups: they
+    persist in the local thread transcript (localStorage) and their lead-in
+    rides future ask history, but they do NOT append to the §22 server
+    session (the append happens upstream on ask Completed only) — disclosed.
+    v2 api: ZERO changes (the bands were landed and mounted at
+    /api/v1/tutor/bank by the 128/129 leg; serving pickup rides the operator
+    redeploy lever).
