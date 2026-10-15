@@ -30,3 +30,13 @@ export const SHARED_PACKAGE_VERSION = "0.1.0";
  * parity is an import statement instead of a gated cross-repo port.
  */
 export * from "./mathNormalize";
+
+/**
+ * T-MIG-130 (hub chat bank-intent wiring, operator trace
+ * 1a140a3f4c796e11): the deterministic zero-LLM classifier that decides
+ * whether the hub chat relay probes the tutor-bank bands (T-MIG-128/129)
+ * plus the band lead-in builders. Pure domain logic — the package's exact
+ * charter — and contract, not presentation: pinned first-hand in
+ * bank-intent.test.ts inside the suite of record.
+ */
+export * from "./bank-intent";

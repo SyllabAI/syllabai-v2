@@ -786,6 +786,22 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // the tip); core survives as the one-env-var rollback fallback
   // (MIGRATION_PLAN §7).
   "/api/v1/learners/me/answer-input",
+  // T-MIG-130 (r0, operator trace 1a140a3f4c796e11 'wire the hub chat') —
+  // the tutor BANK bands (T-MIG-128/129): the deterministic question
+  // listing + whole-paper fetch surfaces the chat relay probes pre-ask.
+  // NARROW family form: the prefix captures EXACTLY /api/v1/tutor/bank/
+  // questions + /api/v1/tutor/bank/paper — the two routes the v2 api mounts
+  // out-of-fence (index.ts, the T-MIG-060 precedent) and the only two paths
+  // the relay emits (pinned in the surface test); the ask pair keeps its
+  // own row, sessions keep theirs. Zero-LLM/zero-vector law: both bank
+  // surfaces are metadata + bank rows only (the 128/129 run-001 posture —
+  // SELECT-only census/fetch over VALIDATED papers), so the flip adds no
+  // generation dependency to the chat path; the relay's probe DEGRADES
+  // SILENTLY to the grounded ask on every non-resolving verdict (404 empty
+  // census, probe error, env unset — the one-env-var rollback, MIGRATION_PLAN
+  // §7). Partial-segment capture (bankx) DOCUMENTED INERT — no such route
+  // or hub emitter exists on either side.
+  "/api/v1/tutor/bank",
 ];
 
 /**

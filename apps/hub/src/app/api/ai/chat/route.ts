@@ -6,7 +6,14 @@ import {
   coreErrorDetail,
 } from "@/lib/core-proxy";
 import { v2SurfaceBase } from "@/lib/api";
-import { v2StreamAuthorized, v2FetchAuthorized } from "@/lib/v2-proxy";
+import { v2StreamAuthorized, v2FetchAuthorized, type V2FetchResult } from "@/lib/v2-proxy";
+import {
+  bankAxisLabel,
+  bankPaperLeadIn,
+  bankQuestionsLeadIn,
+  classifyBankIntent,
+  type BankIntent,
+} from "@syllabai/shared";
 import {
   surfaceForCourseRef,
   mapCitation,
@@ -46,6 +53,182 @@ interface CoreTutorAnswer {
   provider: string;
   refused: boolean;
   latencyMs: number;
+}
+
+// ── the tutor bank bands (T-MIG-130, the T-MIG-128/129 hub wiring) ─────
+//
+// Structural mirrors of the v2 contracts (packages/contracts/src/tutor.ts,
+// tutorBank*Schema) — the same trust posture as CoreTutorAnswer above: the
+// upstream is this repo's own typed surface, the payloads pass through to
+// the browser unreshaped (wire truth), and the renderer stays defensive.
+
+interface BankPaperRef {
+  paperId: string;
+  title: string | null;
+  paperCode: string | null;
+  sessionLabel: string | null;
+  series: string | null;
+  year: number | null;
+  validationState: string;
+}
+
+interface BankQuestionItem {
+  questionId: string;
+  externalRef: string | null;
+  questionType: string | null;
+  stem: string;
+  marks: number;
+  commandWord: string | null;
+  specPointCodes: string[];
+  paper: BankPaperRef | null;
+}
+
+interface BankQuestionsView {
+  resolvedNodes: { id: string; nodeType: string; title: string; code: string | null }[];
+  total: number;
+  items: BankQuestionItem[];
+}
+
+interface BankPaperDocumentView {
+  documentId: string | null;
+  chunkCount: number;
+  chunks: {
+    chunkIndex: number;
+    documentRowId: string;
+    documentId: string;
+    pageStart: number | null;
+    pageEnd: number | null;
+    content: string;
+    atomNumber: string | null;
+  }[];
+}
+
+interface BankPaperFullView {
+  paper: BankPaperRef;
+  questions: BankQuestionItem[];
+  questionPaper: BankPaperDocumentView;
+  markScheme: BankPaperDocumentView;
+  siblings: BankPaperRef[];
+}
+
+export type BankBandPayload =
+  | { kind: "questions"; view: BankQuestionsView }
+  | { kind: "paper"; view: BankPaperFullView };
+
+/** The bank probe ceiling (ms): a hung v2 must never delay the fall-through
+ *  to the grounded ask — the bands are an enhancement layer, never a gate. */
+const BANK_PROBE_TIMEOUT_MS = 10_000;
+
+/** The chat-render census cap for band (1): the view carries the honest
+ *  total; the items list is what the card scrolls. */
+const BANK_QUESTIONS_LIMIT = 25;
+
+/** The deterministic pre-flight: classify → probe → a self-built band SSE
+ *  (band → meta → delta lead-in → done). Returns null on EVERY
+ *  non-resolving path — no v2 base (the one-env-var rollback), a
+ *  non-matching question (the classifier is precision-first), a probe
+ *  error/timeout, a non-200, a non-binding identity (404) or an empty
+ *  census — and the caller serves the ALWAYS-ON grounded ask unchanged.
+ *  Zero LLM: the bands are metadata + bank rows only (the 128/129 law). */
+async function tryBankBand(question: string, token: string): Promise<Response | null> {
+  const intent: BankIntent = classifyBankIntent(question);
+  if (!intent) return null;
+
+  // the table-governed upstream decision — the bank family rides its own
+  // narrow row; an unset v2 base (rollback) skips the bands entirely
+  const bankBase = v2SurfaceBase("/api/v1/tutor/bank", process.env.NEXT_PUBLIC_API_V2_BASE_URL);
+  if (!bankBase) return null;
+
+  const path =
+    intent.kind === "paper"
+      ? `/api/v1/tutor/bank/paper?q=${encodeURIComponent(question.trim())}`
+      : `/api/v1/tutor/bank/questions?${new URLSearchParams({
+          ...(intent.spec ? { spec: intent.spec } : {}),
+          ...(intent.topic ? { topic: intent.topic } : {}),
+          limit: String(BANK_QUESTIONS_LIMIT),
+        })}`;
+
+  let probe: V2FetchResult<unknown>;
+  try {
+    probe = await v2FetchAuthorized<unknown>(bankBase, path, {
+      method: "GET",
+      token,
+      timeoutMs: BANK_PROBE_TIMEOUT_MS,
+    });
+  } catch {
+    return null; // probe never gates the tutor
+  }
+  if (!probe.ok || probe.data == null || typeof probe.data !== "object") return null;
+
+  let payload: BankBandPayload;
+  if (intent.kind === "paper") {
+    payload = { kind: "paper", view: probe.data as BankPaperFullView };
+  } else {
+    const view = probe.data as BankQuestionsView;
+    // an empty census is NOT a band answer — the grounded ask may still
+    // teach the topic from the corpus (honest empty → fall through)
+    if (!Array.isArray(view.items) || view.items.length === 0) return null;
+    payload = { kind: "questions", view };
+  }
+
+  return bankBandStream(payload, bandLeadIn(payload, intent));
+}
+
+/** The band turn's deterministic lead-in — the content string the transcript,
+ *  copy, export and future-ask history all read (the card renders below it). */
+function bandLeadIn(payload: BankBandPayload, intent: BankIntent): string {
+  if (payload.kind === "paper") {
+    const v = payload.view;
+    return bankPaperLeadIn(
+      v.paper,
+      v.questions.length,
+      v.questions.reduce((s, q) => s + (q.marks || 0), 0),
+      v.siblings.map((s) => s.paperCode).filter((c): c is string => c != null),
+    );
+  }
+  return bankQuestionsLeadIn(
+    payload.view.total,
+    payload.view.items.length,
+    bankAxisLabel(intent && intent.kind === "questions" ? intent : { kind: "questions" }),
+  );
+}
+
+/** The band SSE — the same frame vocabulary as the ask stream, with ONE new
+ *  event: `band` carries the structured view for the chat card; meta marks
+ *  the turn provider ("bank" — deterministic, no model involved); the
+ *  delta is the lead-in; done closes. Sends are guarded: a consumer gone
+ *  mid-probe must not crash the route. */
+function bankBandStream(payload: BankBandPayload, leadIn: string): Response {
+  const encoder = new TextEncoder();
+  const stream = new ReadableStream<Uint8Array>({
+    async start(controller) {
+      let closed = false;
+      const send = (event: string, data: unknown) => {
+        if (closed) return;
+        try {
+          controller.enqueue(encoder.encode(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`));
+        } catch {
+          closed = true;
+        }
+      };
+      try {
+        // the wrapped envelope (the citations frame's convention) — the
+        // structured view rides `.band`, room for probe metadata later
+        send("band", { band: payload });
+        send("meta", { provider: "bank", model: null, refused: false, evidenceCount: 0 });
+        send("delta", { text: leadIn });
+        send("done", { ok: true });
+      } finally {
+        closed = true;
+        try {
+          controller.close();
+        } catch {
+          /* the consumer vanished first — nothing to close */
+        }
+      }
+    },
+  });
+  return new Response(stream, { headers: SSE_HEADERS });
 }
 
 const SSE_HEADERS = {
@@ -126,6 +309,15 @@ export async function POST(req: NextRequest) {
       { status: 401 },
     );
   }
+
+  // T-MIG-130: the deterministic bank bands — a precision-first classifier
+  // decides whether this question is a whole-paper fetch or a question-
+  // listing census; a resolving probe serves the structured view + a
+  // deterministic lead-in with ZERO LLM involvement, and EVERY
+  // non-resolving path falls through to the grounded ask below (the bands
+  // are an enhancement layer, never a gate).
+  const band = await tryBankBand(parsed.question, token);
+  if (band) return band;
 
   const coreBody = {
     question: parsed.question,

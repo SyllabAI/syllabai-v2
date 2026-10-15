@@ -25,7 +25,83 @@ export interface Turn {
   stopped?: boolean;
   /** learner feedback on an assistant turn (local to this surface) */
   feedback?: "up" | "down" | null;
+  /** T-MIG-130: the tutor-bank band payload — a deterministic (zero-LLM)
+   *  question-bank census or whole-paper one-view served by the chat relay's
+   *  pre-ask probe (the T-MIG-128/129 bands). The card renders below the
+   *  content lead-in; band turns persist in the local transcript but do NOT
+   *  append to the §22 server session (the append happens upstream on ask
+   *  Completed only) — disclosed. */
+  band?: TurnBand;
 }
+
+/** Structural mirrors of the v2 bank-band contracts
+ *  (packages/contracts/src/tutor.ts tutorBank*Schema) — the relay passes
+ *  the upstream view through unreshaped (wire truth); the renderer stays
+ *  defensive. */
+export interface TurnBandPaperRef {
+  paperId: string;
+  title: string | null;
+  paperCode: string | null;
+  sessionLabel: string | null;
+  series: string | null;
+  year: number | null;
+  validationState: string;
+}
+
+export interface TurnBandQuestionItem {
+  questionId: string;
+  externalRef: string | null;
+  questionType: string | null;
+  stem: string;
+  marks: number;
+  commandWord: string | null;
+  specPointCodes: string[];
+  paper: TurnBandPaperRef | null;
+}
+
+export type TurnBand =
+  | {
+      kind: "questions";
+      view: {
+        resolvedNodes: { id: string; nodeType: string; title: string; code: string | null }[];
+        total: number;
+        items: TurnBandQuestionItem[];
+      };
+    }
+  | {
+      kind: "paper";
+      view: {
+        paper: TurnBandPaperRef;
+        questions: TurnBandQuestionItem[];
+        questionPaper: {
+          documentId: string | null;
+          chunkCount: number;
+          chunks: {
+            chunkIndex: number;
+            documentRowId: string;
+            documentId: string;
+            pageStart: number | null;
+            pageEnd: number | null;
+            content: string;
+            atomNumber: string | null;
+          }[];
+        };
+        markScheme: {
+          documentId: string | null;
+          chunkCount: number;
+          chunks: {
+            chunkIndex: number;
+            documentRowId: string;
+            documentId: string;
+            pageStart: number | null;
+            pageEnd: number | null;
+            content: string;
+            atomNumber: string | null;
+          }[];
+        };
+        siblings: TurnBandPaperRef[];
+      };
+    };
 
 export interface Thread {
   id: string;

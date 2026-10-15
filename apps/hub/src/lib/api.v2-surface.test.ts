@@ -364,6 +364,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/teacher/assignments", // T-MIG-117: the B2 port band (the 107 subtree-row law satisfied by the rig chain of record — the 88-leg capture + the 44/44 golden-verify)
       "/api/v1/questions", // T-MIG-120: the B5 band's questions SUBTREE row (the 107 narrowest-legal form — all five hub-emitted forms v2-REAL + captured; the 111 leaf-row-only law DISCHARGED; the order-class disclosure of record)
       "/api/v1/learners/me/answer-input", // T-MIG-121: the B6 band's answer-input SUBTREE row (the GLM seam — the run-001 keyless law battery byte-parity GREEN both planes; the operator ruling (b) GRANTED of record 08557d3 'good enough, switch it over'; the keyed live-prove waived ZERO-KEY; the GLM seam dependency disclosed-accepted; the ink-pad emitters :194/:246 flip)
+      "/api/v1/tutor/bank", // T-MIG-130: the tutor BANK bands (T-MIG-128/129 out-of-fence mounts; the chat relay's deterministic pre-ask probes) — NARROW family form: /bank/questions + /bank/paper ONLY (pinned in the 130 line test); zero-LLM/zero-vector, silent fall-through to the grounded ask on every non-resolving verdict (operator trace 1a140a3f4c796e11 'wire the hub chat')
     ]);
   });
   test("the mid-path table is exactly the ruled set — the mechanism-A amendment needs its own golden gate too", () => {
@@ -754,6 +755,31 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     // emitter named ask* beyond the pair exists on either side)
     expect(v2SurfaceBase("/api/v1/tutor/askx", V2)).toBe(V2);
     expect("/api/v1/tutor/askx".startsWith("/api/v1/tutor/ask")).toBe(true);
+  });
+
+  test("the T-MIG-130 line: the tutor bank family flips (r0, operator trace 1a140a3f4c796e11 'wire the hub chat')", () => {
+    // the two bank-band surfaces the chat relay probes pre-ask resolve to
+    // v2 (T-MIG-128/129 out-of-fence mounts; zero-LLM/zero-vector reads)
+    for (const p of [
+      "/api/v1/tutor/bank/questions", // band (1) — the deterministic listing
+      "/api/v1/tutor/bank/paper", // band (2) — the whole-paper one-view fetch
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBe(V2);
+    }
+    // the bank prefix captures NOTHING of the ask pair or the sessions tree
+    // (different segments; the 106/092 rows keep their own resolutions)
+    expect(v2SurfaceBase("/api/v1/tutor/ask", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/tutor/ask/stream", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/tutor/sessions", V2)).toBe(V2);
+    // the bare tutor root and the bare bank root (no route on either side)
+    // stay core — no hub emitter for either
+    expect(v2SurfaceBase("/api/v1/tutor", V2)).toBeNull();
+    // startsWith matching is prefix-string semantics (the same property every
+    // row of the table has): a non-existent partial-segment sibling IS
+    // captured by the string match — DOCUMENTED INERT (no route or hub
+    // emitter named bank* beyond the two band paths exists on either side)
+    expect(v2SurfaceBase("/api/v1/tutor/bankx", V2)).toBe(V2);
+    expect("/api/v1/tutor/bankx".startsWith("/api/v1/tutor/bank")).toBe(true);
   });
 
   test("the T-MIG-083 line: admin revision-notes (ingest + status) flips after its golden gate (r9-hubx rider)", () => {

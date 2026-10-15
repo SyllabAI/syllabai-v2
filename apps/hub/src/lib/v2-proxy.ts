@@ -30,11 +30,14 @@ export interface V2FetchResult<T> {
 }
 
 /** Authenticated server-side call against v2; never throws for HTTP
- *  verdicts — returns them so routes can map status → client guidance. */
+ *  verdicts — returns them so routes can map status → client guidance.
+ *  `timeoutMs` tightens the 120s default for the fast-fail probes (the
+ *  T-MIG-130 bank pre-flight: a hung upstream must never delay the
+ *  fall-through to the grounded ask). */
 export async function v2FetchAuthorized<T>(
   base: string,
   path: string,
-  init: { method: "GET" | "POST"; token: string | null; body?: unknown },
+  init: { method: "GET" | "POST"; token: string | null; body?: unknown; timeoutMs?: number },
 ): Promise<V2FetchResult<T>> {
   const headers: Record<string, string> = { Accept: "application/json" };
   if (init.body !== undefined) headers["Content-Type"] = "application/json";
@@ -44,7 +47,7 @@ export async function v2FetchAuthorized<T>(
     method: init.method,
     headers,
     body: init.body === undefined ? undefined : JSON.stringify(init.body),
-    signal: AbortSignal.timeout(120_000),
+    signal: AbortSignal.timeout(init.timeoutMs ?? 120_000),
     // server-side proxies must not be cached by Next's data cache
     cache: "no-store",
   });

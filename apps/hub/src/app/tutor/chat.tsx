@@ -48,7 +48,7 @@ import type { TutorSessionSummary, TutorSessionTurnView } from "@/lib/types";
 import { Composer, QUESTION_CAP } from "./composer";
 import { MessageItem } from "./message-item";
 import { SidebarBrand, ThreadSidebar } from "./thread-sidebar";
-import type { Thread, Turn } from "./threads";
+import type { Thread, Turn, TurnBand } from "./threads";
 import {
   appendMessages,
   bindSession,
@@ -95,6 +95,11 @@ const STARTERS: { icon: typeof BookOpen; label: string; prompt: string }[] = [
     icon: ListChecks,
     label: "Look up a spec point",
     prompt: "What does 4CH1-1.25 say about ionic bonding?",
+  },
+  {
+    icon: Database,
+    label: "Past-paper bank",
+    prompt: "Give me all questions related to 'organic chemistry'",
   },
   {
     icon: Target,
@@ -383,6 +388,7 @@ export function TutorChat({
               refused?: boolean;
               text?: string;
               message?: string;
+              band?: TurnBand;
             };
             try {
               data = JSON.parse(dataLine);
@@ -391,6 +397,10 @@ export function TutorChat({
             }
             if (event === "citations") {
               patchTurn({ citations: data.citations });
+            } else if (event === "band") {
+              // T-MIG-130: the deterministic tutor-bank card (the relay's
+              // pre-ask probe resolved — zero LLM behind this turn)
+              patchTurn({ band: data.band });
             } else if (event === "meta") {
               setMeta({ provider: data.provider, model: data.model });
               patchTurn({ provider: data.provider, refused: data.refused });
@@ -811,6 +821,7 @@ export function TutorChat({
                     onRegenerate={() => regenerateAt(i)}
                     onEditResend={(text) => editResend(i, text)}
                     onFeedback={(v) => setFeedback(i, v)}
+                    courseSlug={activeThread?.courseSlug ?? null}
                   />
                 ))}
               </div>
