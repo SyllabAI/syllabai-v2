@@ -26,6 +26,7 @@ import { Markdown } from "@/components/markdown";
 import { normalizeMathDelimiters } from "@/lib/mathNormalize";
 import { cn } from "@/lib/utils";
 import { CitationPaperLink } from "@/components/citations/citation-paper-link";
+import { BandCard } from "./band-card";
 import type { Turn } from "./threads";
 import {
   Check,
@@ -83,6 +84,7 @@ export function MessageItem({
   onRegenerate,
   onEditResend,
   onFeedback,
+  courseSlug,
 }: {
   message: Turn;
   /** this row is the turn currently receiving tokens */
@@ -94,6 +96,9 @@ export function MessageItem({
   onRegenerate: () => void;
   onEditResend: (text: string) => void;
   onFeedback: (v: "up" | "down") => void;
+  /** the thread's course hint — scopes the band card's paper-PDF reader
+   *  matches (the F-022 chip's course param, T-MIG-130) */
+  courseSlug?: string | null;
 }) {
   const isUser = message.role === "user";
   const [editing, setEditing] = useState(false);
@@ -233,6 +238,9 @@ export function MessageItem({
               ) : waiting ? (
                 <TypingDots />
               ) : null}
+              {message.band && !message.error && (
+                <BandCard band={message.band} courseSlug={courseSlug} />
+              )}
               {streaming && message.content && (
                 <span className="inline-block h-3.5 w-[2px] animate-pulse rounded-full bg-primary align-middle" aria-hidden />
               )}
