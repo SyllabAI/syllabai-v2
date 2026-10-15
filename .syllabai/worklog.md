@@ -7840,3 +7840,22 @@ Stage Summary:
 - GATES FIRST-HAND at 19d9a6d: typecheck x4 exit 0; suite 1919/0/13skip EXACT (1932 tests, 101 files); census --gate GREEN exit 0 LIVE=0; golden llm-shadow selftest 15/15 exit 0. Receipt: .syllabai/receipts/T-MIG-060/kg-rag-audit-run-001-w0a.json.
 - RENDER RECEIPT RE-FILED: the prior window executed the §6.2 Render core disable (srv-dagijie7bikc73bc0460 suspend, EXACT single-service census match, disable NEVER delete) and verified it first-hand, but its receipt commit 8e6b55e was DESTROYED by the 19th sandbox rollback pre-push (verified: unknown revision). Re-filed with THIS RUN's credential-free wire probe (syllabai-core.onrender.com -> HTTP 503 'This service has been suspended by its owner.') + the r0 10-12 gate-state receipt corroborating the service was UP before the act; live API re-verify owed on the next Render credential handoff. Receipt: .syllabai/receipts/W7-CUTOVER/render-core-disable-run-001-w0a.json. SANDBOX: the 19th reset also rolled the local repo to 6bfbf00 + 2272-file mode-bit churn (0 content delta) — reset --hard to 19d9a6d, node_modules reinstalled frozen (930 pkgs); the lane worklog's learner-audit/render sections re-filed lane-side.
 - ZERO prod/Neon/Vercel/LLM/Render contact; the archived core STRICTLY read-only; GITHUB_PAT staged 0600 outside the repo, fp verified == of-record; .syllabai-only, no force, fetch-first.
+
+---
+
+## T-MIG-125 run-004 (r0) — source-tag canary of record (operator trace 1a14075d532b7a49)
+
+Task: confirm which evidence sources serve at ask-time on the live deployment, after the read-only Neon probe corrected the corpus posture (4,740/4,740 chunks EMBEDDED — gemini-embedding-001, embed_rev=2, 0 pending; the prior "vector arm honest-empty" belief was WRONG on storage).
+
+Method: fresh learner account (memory-only), 1 session, 2 asks (2 LLM spends, disclosed). Two aborted starts were harness-only defects (register 400: role enum is STUDENT|TEACHER|ADMIN, not LEARNER; then session id key is sessionId) — zero LLM spend wasted, zero product defects. Receipt: .syllabai/receipts/T-MIG-125/run-004-source-tag-canary-r0.json (scrub-assert PASS).
+
+Result (2026-10-15T16:49Z, syllabai-v2.vercel.app, api UP):
+- Leg A topical (rate of reaction): 200, refused=false, 6 citations = 5 KNOWLEDGE_NODE + 1 NOTE chunk (documentId+page present) — THE VECTOR ARM SERVES; KG and chunk evidence fuse in one pool. 6/6 deepLinks.
+- Leg B paper-anchored ("question 3 from june 2024 paper 1" vs VALIDATED 4CH1/1C JUN-2024): 200, refused=false, 6 citations = 1 QUESTION_PAPER + 5 MARK_SCHEME, ALL chunk citations with documentId+page+deepLink, zero KG — the deterministic PaperQuestionResolver pins real paper chunks end-to-end (lead evidence outside RRF).
+- Session read-back: 4 turns (append law 2/exchange x 2). Health UP.
+
+Corpus facts (read-only Neon probe, t0_readonly, SELECT-only; api.neon.tech DNS-blocked in sandbox, console.neon.tech/api/v2 mirror used): 1,023 docs (877 VALIDATED/146 REJECTED); kinds MS 1,678 / QP 1,494 / EXT_Q 1,056 / EXT_N 350 / SYL 162 chunks; 100% 4CH1; TEXTBOOK=0 (student book pending); exam_papers 95 VALIDATED distinct spanning 2011-2026 — JUN-2019 4CH1/1C VALIDATED (the operator's example serves); KG 435 nodes + 730 edges (PART_OF 447, REQUIRES_PREREQUISITE 213, REMEDIATED_BY 25, WRONG_ANSWER_PATTERN 24, EXPLAINED_BY 11, MISCONCEPTION_OF 6); pgvector 0.8.6 + HNSW; DB 154 MB.
+
+Capability posture for the operator's render question: citations carry deepLink+documentId+page (6/6 in both legs); the hub CitationPaperLink (F-022) opens cited papers in the SAME PdfPane as the past-papers viewer, deep-linked to the cited page, with a Parsed-text honesty toggle — inside the tutor chat. Whole-paper inline dumps are by-design NOT chat text (evidence pool caps at 6); the full-paper UX is chip -> PdfPane / Past Papers surface. "List ALL questions by topic/spec-point" is NOT a tutor band today (retrieval is top-N); the deterministic bank (questions/question_topics/spec_codes GIN) makes it a small new resolver band, not new infrastructure.
+
+.syllabai-only, no force, fetch-first (origin e92fa28 == local).

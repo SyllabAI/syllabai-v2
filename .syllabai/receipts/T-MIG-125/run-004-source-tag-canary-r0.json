@@ -1,0 +1,66 @@
+{
+  "task": "T-MIG-125",
+  "run": "run-004-source-tag-canary-r0",
+  "operator_trace": "1a14075d532b7a49",
+  "when": "2026-10-15T16:50:44Z",
+  "purpose": "confirm which evidence sources serve at ask-time (KG vs vector-arm chunks vs paper band) on the live deployment; embeddings verified 4,740/4,740 in Neon earlier same day",
+  "method": "fresh learner account (memory-only creds), 1 session, 2 asks (2 LLM spends, disclosed), citation sourceType digest from tutorAnswerView; two aborted starts (register 400 role-enum harness defect, then sessionId key harness defect) \u2014 zero LLM spend wasted, zero product defects",
+  "leg_A_topical": {
+    "question_class": "why does rate of reaction increase with temperature",
+    "status": 200,
+    "refused": false,
+    "citations": {
+      "total": 6,
+      "sourceType_counts": {
+        "KNOWLEDGE_NODE": 5,
+        "NOTE": 1
+      },
+      "chunk_citations": 1,
+      "chunk_citations_have_documentId": true,
+      "chunk_citations_with_page": 1,
+      "deepLinks_present": 6,
+      "kg_citations": 5
+    },
+    "meaning": "5 KNOWLEDGE_NODE + 1 NOTE chunk with documentId+page \u2014 the VECTOR ARM SERVES (serving key present); KG and chunk evidence fuse together"
+  },
+  "leg_B_paper_anchored": {
+    "question_class": "explain how to answer question 3 from june 2024 paper 1 (VALIDATED 4CH1/1C JUN-2024)",
+    "status": 200,
+    "refused": false,
+    "citations": {
+      "total": 6,
+      "sourceType_counts": {
+        "QUESTION_PAPER": 1,
+        "MARK_SCHEME": 5
+      },
+      "chunk_citations": 6,
+      "chunk_citations_have_documentId": true,
+      "chunk_citations_with_page": 6,
+      "deepLinks_present": 6,
+      "kg_citations": 0
+    },
+    "meaning": "deterministic PaperQuestionResolver leads: 1 QUESTION_PAPER + 5 MARK_SCHEME chunk citations, ALL with documentId+page+deepLink, zero KG \u2014 the paper band pins real paper chunks end-to-end"
+  },
+  "session_readback": {
+    "turns": 4,
+    "append_law": "2 turns per exchange x 2 exchanges = 4 (session-store.ts:10)"
+  },
+  "health": "UP",
+  "verdict": {
+    "all_legs_ok": true,
+    "legA_chunk_evidence_serves": true,
+    "legA_kg_serves": true,
+    "legB_paper_band_serves": true,
+    "llm_spends": 2
+  },
+  "corpus_context": {
+    "probe": "read-only Neon probe (operator napi key, memory-only; api.neon.tech DNS-blocked in sandbox \u2014 console.neon.tech/api/v2 mirror; t0_readonly role; SELECT-only)",
+    "chunks": "4,740 / 4,740 embedded (100%), embed_rev=2, gemini-embedding-001, 0 pending",
+    "subject": "100% Edexcel IGCSE Chemistry 4CH1; TEXTBOOK kind = 0 (student book parse not yet ingested)",
+    "papers": "95 distinct VALIDATED exam_papers spanning 2011-2026; JUN-2019 4CH1/1C VALIDATED (operator's example serves)",
+    "kg": "435 nodes (200 SUBTOPIC/167 CONCEPT/31 TOPIC/30 MISCONCEPTION/5 UNIT/2 SUBJECT), 730 edges (PART_OF 447, REQUIRES_PREREQUISITE 213, REMEDIATED_BY 25, WRONG_ANSWER_PATTERN 24, EXPLAINED_BY 11, MISCONCEPTION_OF 6)",
+    "posture_correction": "prior 'vector arm honest-empty' belief CORRECTED: embeddings fully populated since 2026-09-20, last embed 2026-10-04 09:37; serving now confirmed live by this canary"
+  },
+  "hub_render_path": "CitationPaperLink (F-022): citation chips open in-place dialog -> paper-link matcher -> corpus PDF in the SAME PdfPane as the past-papers viewer, deep-linked to cited page, with Parsed-text honesty toggle; KG chips render as links",
+  "scrub_assert": "PASS (no credential markers of any kind in the transcript blob; this receipt likewise carries none)"
+}
