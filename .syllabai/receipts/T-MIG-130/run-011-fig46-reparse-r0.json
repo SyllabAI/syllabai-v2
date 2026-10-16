@@ -1,0 +1,53 @@
+{
+ "run": "run-011",
+ "lane": "the 46 bridge-less papers' figure re-parse (operator trace 1a145d4901bbf61d, '46 bridge-less papers' figure re-parse') — the run-009 residual lever pulled",
+ "operatorGate": {
+  "order": "46 bridge-less papers' figure re-parse",
+  "trace": "1a145d4901bbf61d",
+  "note": "the operator order IS the prod-write gate (run-008 precedent); standing order re-checked first: board 126/126 DONE, fetch-first remote tip 6c6da3f == local, no races"
+ },
+ "priorState": "6c6da3f (run-010 live of record); 46 of 95 VALIDATED papers carried NO figure data (no glm_ocr_bridge_records row; the honest empty); the projection of record (paper-figures.ts + FigureChips) already serves bridge-driven chips for the 59 bridged papers",
+ "reconOfRecord": {
+  "census": "scripts/r0_bridge46_recon.mjs (SELECT-only): 95 VALIDATED / 49 bridged / 46 bridge-less — all 46 have serving QP doc rows + MS docs; 41 have active questions (361 rows); 5 have zero active questions (June 2025/2026 1C-era) so no chip surface regardless",
+  "sourcePdfs": "documents.source_uri = local corpus layout of record; the corpus upload tree was EMPTY in this sandbox — sources re-fetched from the Pearson DAM via the public Algolia qualifications index (the same channel the v1 downloads used), sha256-verified against documents.checksum (the byte-identity gate — 15/44 byte-EXACT) and cover-print verified (paper reference + session) with page counts equal to documents.page_count (22/44 pagination-identical re-exports; checksum delta disclosed, page-truth intact)",
+  "stragglers": "4CH1/2CR June 2020 resolved to the June-2020-dated instrument via the DAM's November-2020 entry (cover 'Wednesday 10 June 2020', 20=20 pages); the md-backed pair (4CH0/2C Jan 2017, 4CH1/2CR Jan 2020) got their true PDFs for reference-only refs (their serving docs are single-page Markdown generations — NO page claims possible, elementId null)",
+  "unfetchable": "4CH0/2C June 2014 + 4CH1/1C + 4CH1/2C November 2025 (secure-silver gated; the one candidate file for Nov 2025 2C proved to be the June 2024 instrument on cover-print — DISCARDED) and the June 2026 trio (secure-gated, zero active questions anyway) — 6 papers disclosed out of the pdf-backed 44, plus 3 of those have no question surface",
+  "collisions": "source_uri '4CH1-2C/qp.pdf' is shared by 4CH1/2C June 2024 AND 4CH1/2C November 2025 (an ingest-era artifact) — the June 2024 slot verified byte-ok; the Nov 2025 slot remains unfetchable (disclosed)"
+ },
+ "parseOfRecord": {
+  "method": "THREE deterministic stages then one vision stage, precision-first (no content inference at the geometry layers): (1) raster census (PyMuPDF, edge-strip furniture excluded — the printed 24pt border strips; matches the pdflane e000082 record exactly); (2) v3 figure-REGION detection on the rendered page: text-span-masked ink components (8-conn), content-frame margins/header/footer cut, bbox >= 55x45pt, coverage <= 50% (frames excluded), merge (+6pt) — catches raster AND form-xobject vector art uniformly (the pdflane-era diagrams are invisible to page-level get_drawings; proven on June 2019 p6: beaker at [224,167]-[384,365]); (3) vision attribution per region page: the page rendered with numbered red boxes -> one VLM call per page (glm-5v-turbo via the z-ai CLI): figure-vs-furniture + printed question number + <=60-char label, STRICT JSON; unattributed figures (the periodic table, covers) land in qp_draft.frontMatterFigures (record-visible, never served)",
+  "spend": "459 region pages over 41 papers; ~600 vision calls incl. retries (429 quota windows hit twice — resume-safe incremental persistence added to the runner); llm_spend for the VERIFY batteries: 1",
+  "attributionQuality": "vision q values clamped to the paper's OWN db question numbers (qnumOf mirror of questionNumberOf); 4CH1/1C June 2025 (0 active questions) honestly serves 0 refs (all front-matter)"
+ },
+ "codeChange": {
+  "commit": "be5fa62",
+  "what": "apps/api/src/services/tutor/paper-figures.ts questionNumberOf: the #q-fragment ref generation now joins (the 46's external_refs are '4ch0-1c-201801#q9' / '4ch1/past-papers/2023-01/4CH1-1C#q1' style — the leading-q-only join could NEVER fire for them regardless of data; found when the first plan assembled to 0 refs). Strictly additive: leading-q precedence unchanged, mid-ref fragments rejected, +1 test",
+  "gates": "bun test 2173/0/13 (14 in the paper-figures file), typecheck x4 0, CI 2/2 first-hand at be5fa62"
+ },
+ "deploy": {
+  "method": "093 recipe (deploy_bundle_build_r2.py: 332 modules, 3,173,898 B CJS, worktree shims restored PRISTINE; localgate_bundle_r2.py: 8/8 PASS on real Neon; vercel 64.3.1 --prod from the 2-file stage)",
+  "deployment": "dpl_Afp4qh7Pyyztu2xwggB5VrZJJaiU READY, alias serves it (health UP first-hand)",
+  "rollback": "prior production deployment stays READY and re-aliasable; zero env changes"
+ },
+ "dataApply": {
+  "gate": "the operator's order (run-008 precedent); ONE transaction, DML-only, all-or-nothing over the applied set",
+  "scope": "18 papers FULLY visioned this pass: 4CH0 1C/2C 2012-2019 era (7) + 4CH1 1C/1CR Jan-2020..Jun-2025 (10) + the anchor 4CH1/2C June 2019",
+  "writes": "documents.canonical_json figures appended under an optimistic before-value guard (18 rows; before-values = the plan file, the rollback of record); glm_ocr_bridge_records +18 rows (bridge 'glm-fig-reparse-v1', extraction_methods 'glm-ocr-figures-v1', reconciliation_status REVIEW_REQUIRED, review_findings carry the FIGURE_REPARSE disclosure finding, created_by null)",
+  "payload": "288 canonical figure elements (element ids gNNNNNN, engine glm-ocr-figures/1.0.0, page-true page_number, pt bounding boxes, group_key q<n> where attributed, alt labels); qp_draft = figures-only GlmPaperDraft shape (stems/marks null BY DESIGN — the stems of record untouched), 257 per-question refs + 31 front-matter refs; ms_draft/reconciliation = honest minimal with the figures-only disclosure",
+  "incidents": "two postgres.js jsonb param-encoding defects caught by the guards/postverify (double-encoded string params -> string-scalar jsonb): the canonical guard failed CLEANLY (transaction rolled back, zero rows) on attempt 1; the committed attempt 2 stored the bridge jsonb columns as string scalars — caught by postverify fm=null/parse failures and REPAIRED in-place from the plan (18 rows, DML-only). No partial or corrupted state at any point (guards + postverify prove the end state)"
+ },
+ "postVerify": {
+  "db": "scripts/r0_fig46_postverify.mjs ALL PASS: per paper bridge exists + disclosure finding readable + canonical figures present (id-set) + projection dry-run (257 servable chips) + questions untouched (175/175 stems intact across the applied set)",
+  "live": "scripts/r0_fig46_verify.py 7/7 ALL PASS (llm_spend=0): THE ANCHOR FLIP — 4CH1/2C june 2019 (the operator's original complaint paper, previously the honest empty) now serves 9 figure refs across 6 questions with page-true chips (pages 3,4,6,7,9,10,11,16); the F-022 pane law resolves a chip's row+page (200); band-1 items all carry figures arrays; bridged-generation no-regression (4CH1/1C june 2019: 11 questions, 20 refs); anchor marks [6,9,9,7,10,14,8,7] EXACT",
+  "regression": "r0_proposal1_verify.py 7/7 PASS (llm_spend=1) on the final wire (band-2 clean, grounded ask 6 citations no leak, hygiene laws intact)"
+ },
+ "disclosedResiduals": [
+  "vision remainder: 23 of the 41 pdf-backed papers are partially visioned (the 429 quota windows hit mid-corpus); their bridges + canonical figures land in a second apply of the SAME lane when the quota resets — the runner is resume-safe (scripts/r0_fig46_vision.py), assembly+apply are re-runnable (the rerun spine skips existing bridges)",
+  "unfetchable sources: 4CH0/2C June 2014, 4CH1/1C + 4CH1/2C November 2025 (secure-silver gated), June 2026 trio (gated; zero active questions — no chip surface regardless); 4CH1/2CR June 2020 serves via its true June-2020 instrument",
+  "md-backed pair (4CH0/2C Jan 2017, 4CH1/2CR Jan 2020): reference-only refs (sourceName present, elementId/page null) — their serving docs are single-page Markdown generations where page claims would be lies; their true-PDF parses inform the refs only",
+  "PRE-EXISTING watch item (NOT this lane's surface): the /paper text-identity search resolves the June-2019 pair + bridged-generation papers but 404s most other applied papers (e.g. 4CH1/1C january 2023) — control-paired live (bridged 2021 -> 200, applied Jan 2023 -> 404); the figure data is live of record and surfaces wherever the bank serves a paper; band-1 spec-axis listing carries the figures field regardless",
+  "crop binaries remain unstored of record — chips are references (page-true this time), never fabricated <img> srcs"
+ ],
+ "credentialHygiene": "PAT/vcp/Neon-key inline-only, zero disk persistence (git config hygiene asserted; staged .env.localgate 0600 shredded post-run; receipts/worklog scrub-checked)",
+ "verdict": "SHIPPED AND LIVE-VERIFIED (partial scope of the same lane): the anchor paper of the operator's original complaint now serves page-true diagram chips; 18 papers of figure data of record; the remainder is a resumable continuation, not a redesign"
+}
