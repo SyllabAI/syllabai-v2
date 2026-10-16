@@ -1,0 +1,62 @@
+{
+ "run": "run-008",
+ "lane": "proposal #2 — operator-gated data repair (stem rebuild from clean QP chunks)",
+ "operatorGate": {
+  "order": "#2",
+  "trace": "1a14513386ed6fd9",
+  "note": "the operator order IS the gate (prod content writes = operator-only law)"
+ },
+ "diagnosisRef": "trace 1a144b08a0dbcf0d",
+ "priorState": "9607c84 (#1 stem-hygiene serve-side law shipped; DB rows of record untouched by #1)",
+ "scope": "361 active provenance=PAST_PAPER question rows attached to exam papers (the draft-built past-paper bank); the 593 unattached sme-eq-* rows are a different bank with no QP source — measured, out of scope",
+ "method": [
+  "top non-REJECTED QUESTION_PAPER doc per paper (bank-bands law) -> document_chunks by chunk_index",
+  "per-question chunk groups by header QN (atom_number cross-check: 0 disagreements)",
+  "rebuild-side measured furniture-line strip (63 lines) + printed-qnum strip + single-glyph display-formula collapse (content-preserving)",
+  "shipped hygienicStem() from commit cd8f73e applied at rebuild time",
+  "identity guard: draft text traceable (head OR tail) in rebuild"
+ ],
+ "planTotals": {
+  "FILL": 30,
+  "REPLACE": 316,
+  "SKIP_NO_SOURCE": 15,
+  "SKIP_ANOMALY": 0,
+  "SKIP_EMPTY_REBUILD": 0
+ },
+ "plannedWrites": 346,
+ "apply": {
+  "mode": "single transaction, guarded UPDATEs (WHERE id AND stem = live current), all-or-nothing",
+  "attempt1": "rolled back cleanly — Neon app role lacks CREATE on schema public (no DDL); zero rows written",
+  "attempt2": "DDL-free, COMMITTED",
+  "rowsUpdated": 346,
+  "rollbackRecord": ".syllabai/receipts/T-MIG-130/run-008-stem-rebuild-before-snapshot.json"
+ },
+ "verification": {
+  "postCensusWrittenIds": "empty 0 / furniture 0 / markup 0 over 346",
+  "marksDrift": 0,
+  "stemMismatchVsPlan": 0,
+  "serveLawIdempotencyViolations": 0,
+  "remainingEmptiesInScope": "1 (4CH1/2CR 2020 — inside the header-less-doc skip set)",
+  "furnitureRemaining": "8 rows, ALL inside the disclosed skip set (source-unavailable papers; still cleaned at serve time by law #1)",
+  "corpusAfter": "954 active PAST_PAPER rows: 366 empty (365 sme-eq-* out-of-scope + 1 skip), 8 furniture (skip set), 0 markup",
+  "liveProbe": "scripts/r0_proposal1_verify.py 7/7 PASS on the repaired wire — band2 marks [6,9,9,7,10,14,8,7] EXACT junk=0 markup=0, band1 clean, grounded 6 citations no leak, session 2 turns, llm_spend=1"
+ },
+ "disclosures": [
+  "SKIP_NO_SOURCE 15 rows (4CH0/2C 2017JAN 8 + 4CH1/2CR 2020JAN 7): their QP doc chunking is header-less and atom_number-null (11 fragment chunks, visibly degraded ingestion) — not rebuildable from corpus of record; future re-chunk lane",
+  "365 empty stems REMAIN corpus-wide: all sme-eq-* topic-bank rows (no QP source; different lane)",
+  "7 rebuilt stems start mid-sentence (all 4CH0 2012JAN): source-chunk artifact predating the rebuild (draft heads match rebuild heads)",
+  "displayed-formulae flattened by the digitizer are COLLAPSED to one compact line, not dropped (content-preserving; e.g. 4CH1/2C 2019 q5); cross-in-box icon renders as \"( )\" artifact in some 2012-era chunks — figures/tables pipeline = lane #3",
+  "marks, chunks, papers, documents: untouched; zero LLM in the rebuild (the only llm_spend=1 is the live verify probe)"
+ ],
+ "artifacts": {
+  "localPlan": "/home/z/my-project/api-stage/stem_rebuild_plan.json",
+  "localBeforeSnapshot": "/home/z/my-project/api-stage/stem_rebuild_before_snapshot.json",
+  "scripts": [
+   "r0_stem_rebuild_plan.mjs",
+   "r0_stem_rebuild_apply.mjs",
+   "r0_stem_rebuild_postverify.mjs",
+   "r0_rebuild_probe1-5.mjs"
+  ]
+ },
+ "generatedAt": "2026-10-16T14:51:58.288Z"
+}
