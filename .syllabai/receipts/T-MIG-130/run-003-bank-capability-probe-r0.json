@@ -1,0 +1,33 @@
+{
+  "tag": "T-MIG-130",
+  "run": "run-003-bank-capability-probe-r0",
+  "operator_trace": "1a1438223b051465 'Can now tutor return any chemistry past paper and mark scheme?'",
+  "date_utc": "2026-10-16T07:09:55Z",
+  "under_test": "api dpl_2cJt318tLHHJvrSHTawY5QxsEri7 @ e79be16 (api-of-record); hub dpl_4mhko @ 4429186",
+  "harness": "scripts/r0_bank_paper_probe.py (sandbox); transcript scripts/r0_bank_paper_probe_transcript.json (scrub-asserted: field-name strings only, zero secret values)",
+  "legs": { "total": 10, "pass": 10, "fail": 0 },
+  "findings": {
+    "census": {
+      "papers_total": 108,
+      "by_validationState": { "VALIDATED": 95, "REJECTED": 13 },
+      "validated_with_qp_and_ms_doc_ids": 95,
+      "units": { "1C": 33, "1CR": 14, "2C": 33, "2CR": 15 },
+      "year_range": [2011, 2026],
+      "note": "bank spans legacy 4CH0 AND 4CH1 papers; every VALIDATED paper carries BOTH questionPaperDocumentId and markSchemeDocumentId"
+    },
+    "band2_whole_paper_fetch": [
+      { "q": "2019 june paper 1", "served": "4CH1/1C June 2019 VALIDATED", "questions": 15, "marks_sum": 110, "qp_chunks": 18, "ms_chunks": 12 },
+      { "q": "2019 june paper 2", "served": "4CH1/2C June 2019 VALIDATED", "questions": 8, "marks_sum": 70, "qp_chunks": 11, "ms_chunks": 15 },
+      { "q": "4CH0/1C 2011", "served": "4CH0/1C June 2011 VALIDATED", "questions": 11, "marks_sum": 120, "qp_chunks": 14, "ms_chunks": 16 },
+      { "q": "4CH1/2CR 2026", "served": "4CH1/2CR June 2026 VALIDATED", "questions": 0, "marks_sum": 0, "qp_chunks": 9, "ms_chunks": 11, "note": "chunks serve; structured bank rows not yet ingested for this paper" }
+    ],
+    "band1_questions_listing": { "spec_axis": "spec=3.1", "total": 16, "first_item": { "marks": 13, "specPointCodes": ["4CH1-2.21", "4CH1-3.1"], "paper": "4CH1/2C" } },
+    "relay_whole_paper_band": {
+      "ask": "Show me the full June 2019 paper 1 with its mark scheme",
+      "served": "kind=paper provider=bank model=null; 4CH1/1C June 2019; 15 questions, 18 QP chunks, 12 MS chunks; siblings 4CH1/1CR, 4CH1/2C, 4CH1/2CR disclosed",
+      "lead_in": "**4CH1/1C · June 2019** — 15 questions · 110 marks, served with the paired mark scheme. Same-session papers also in the bank: 4CH1/1CR, 4CH1/2C, 4CH1/2CR."
+    }
+  },
+  "write_ledger": "2 probe learners (example.invalid, memory-only) + zero LLM spend (all legs deterministic band reads; relay leg provider=bank model=null); zero Neon/Vercel direct contact",
+  "verdict": "YES — the tutor serves any of the 95 VALIDATED chemistry past papers WITH the paired mark scheme in one deterministic view (zero LLM), 2011-2026, both units, through both REST (/tutor/bank/paper) and the hub chat relay (kind=paper band frames)."
+}

@@ -7946,3 +7946,21 @@ Stage Summary:
 - MECHANISM of record: the hub carrier is git-connected now (link.type=github, prod main, auto-deploy) — every main push re-bakes the hub; receipt pushes cost one no-code-delta hub build each (disclosed platform behavior; this push included).
 - Remaining levers: Render console disable (§6.2), PAT rotation (fingerprint-proven unrotated).
 - Receipt DEPLOY/hub-of-record-redeploy-run-005-independent-verification-r7a.json; evidence + scripts lane-side; .syllabai-only commit (fetch-first, no force).
+
+---
+Task ID: trace 1a1438223b051465 ("Can now tutor return any chemistry past paper and mark scheme?")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Answer the operator's capability question first-hand on the live wire — whole-paper + paired-mark-scheme serving breadth of the tutor bank bands (band 2 was mounted but never end-to-end-verified before this probe; run-003 of the redeploy canary only exercised band 1).
+
+Work Log:
+- Code read first (tutor-bank.ts + bank-bands.ts + fetch-parser.ts + unitCandidates + shared bank-intent.ts + hub relay chat route): both bands in the serving bundle; band 2 = GET /api/v1/tutor/bank/paper?q=… ONE view (paper ref + structured questions with marks in external_ref order + paired QP chunks + paired MS chunks + sibling VALIDATED candidates); VALIDATED-only serving law; hub relay classifier kind=paper rides /bank/paper and streams provider=bank frames.
+- Probe fired (scripts/r0_bank_paper_probe.py, persisted): 10/10 PASS, ZERO LLM spend. Census: 108 papers total (95 VALIDATED / 13 REJECTED); ALL 95 VALIDATED carry BOTH questionPaperDocumentId AND markSchemeDocumentId; units 1C×33, 1CR×14, 2C×33, 2CR×15; year range 2011–2026 (spans legacy 4CH0 AND 4CH1).
+- Band-2 live probes: "2019 june paper 1" → 4CH1/1C June 2019 (15 questions, Σ110 marks, 18 QP + 12 MS chunks, page anchors, MS content verbatim); "2019 june paper 2" → 4CH1/2C (8 q, Σ70, 11 QP + 15 MS); census-driven extremes with exact codes → 4CH0/1C June 2011 (11 q, Σ120, 14 QP + 16 MS) AND 4CH1/2CR June 2026 (9 QP + 11 MS chunks serve; structured bank rows 0 — disclosed, chunks are the paper content).
+- Band-1 REST re-confirm: spec=3.1 → total 16, first item marks=13 specPointCodes [4CH1-2.21, 4CH1-3.1] paper 4CH1/2C.
+- THE TUTOR EXPERIENCE leg: whole-paper ask THROUGH the hub relay ("Show me the full June 2019 paper 1 with its mark scheme") → kind=paper, provider=bank, model=null, 4CH1/1C June 2019 with 15 questions + 18 QP + 12 MS chunks + siblings 1CR/2C/2CR disclosed; lead-in verbatim "**4CH1/1C · June 2019** — 15 questions · 110 marks, served with the paired mark scheme…".
+- Corroboration of record: the parallel r7a lane (d3d2fe6) INDEPENDENTLY verified band-2 REST first-hand (bank paper 200/43858B — the 129 LIVE line) while this probe ran; zero duplicate deploys, reads only.
+- Bookkeeping: receipt .syllabai/receipts/T-MIG-130/run-003-bank-capability-probe-r0.json (transcript scrub-asserted: field-name strings only, zero secret values) + this worklog entry; .syllabai-only commit (fetch-first race check, no force).
+
+Stage Summary:
+- VERDICT: YES — the tutor serves ANY of the 95 VALIDATED chemistry past papers WITH its paired mark scheme in ONE deterministic view (zero LLM), 2011–2026, both units (1C/1CR/2C/2CR, legacy 4CH0 included), through REST AND the hub chat relay. Honest edges: 13 REJECTED papers never serve (V20 gate); the newest 2026 papers serve chunks but carry 0 structured bank rows yet.
+- Write ledger: 2 probe learners (example.invalid, memory-only); llm_spend=0; zero Neon/Vercel-API direct contact.
