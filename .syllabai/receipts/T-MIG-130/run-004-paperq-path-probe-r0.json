@@ -1,0 +1,31 @@
+{
+  "tag": "T-MIG-130",
+  "run": "run-004-paperq-path-probe-r0",
+  "operator_trace": "1a1439f1e2fa247d 'probe this path on the spot and suggest how we can improve the answer'",
+  "date_utc": "2026-10-16T07:42:30Z",
+  "under_test": "api-of-record dpl_2cJt318tLHHJvrSHTawY5QxsEri7 @ e79be16 content; hub production auto-bake bundle",
+  "harness": "scripts/r0_paperq_probe.py (sandbox); transcript scripts/r0_paperq_probe_transcript.json (scrub-asserted: no bearer/password/email/full answer text)",
+  "legs": { "total": 9, "pass": 7, "fail": 2, "fail_note": "both fails are FINDINGS, not harness defects: truth_crosscheck row-id set mismatch (page-level semantic match exact — band-view chunk rows vs evidence pin rows are different row sets), engagement_row_live absent (topic-keyed recorder does not capture paper-question asks)" },
+  "findings": {
+    "legA_hijack": {
+      "ask": "What was question 6 in June 2019 paper 1, and what does a full-credit answer require?",
+      "observed": "kind=paper band (provider=bank, zero LLM) — the whole-paper card answers a per-question ask",
+      "cause": "classifyBankIntent FULLNESS \\bfull\\b matches the hyphenated compound 'full-credit' (word boundary at the hyphen)",
+      "q6_in_card": "structured rows carry group-key externalRefs (q06-cf68cf74, marks=5) — the card shows stems+marks, never the MS content for Q6"
+    },
+    "legB_grounded_per_question": {
+      "ask": "What was question 6 in the June 2019 paper 1 and what does the mark scheme require for it?",
+      "served": "200 grounded SSE — no band frame; provider=groq model=openai/gpt-oss-120b refused=false; 6 citations; 3.4s; session read-back 2 turns [user ev=0 / assistant ev=6]",
+      "answer_quality": "CORRECT vs corpus truth: identifies Q6 (metals W/X/Y/Z reactivity), mark table P1+P2+P3+M1 = 5 marks == the structured row marks=5; order Z>X>Y>W, W=copper, X=magnesium, brown precipitate + colour fade",
+      "pins": "QP p11 (the Q6 page) + MS p9 (the Q6 mark scheme page) pinned — page-exact vs truth; noise: MS p1 x2 + 'Question card' p1 front-matter + 1 duplicate row (223b8c04 twice)"
+    },
+    "improvements": [
+      "1. classifier: FULLNESS must not match 'full-credit'/'full marks' (require paper-adjacency, e.g. 'full/whole/complete paper'); or qnum-guard — when the fetch-parser binds a question number, band 2 yields to the per-question path",
+      "2. evidence hygiene: dedupe citations by documentRowId; when a paper-question identity binds, lead with the resolver pins and cap vector/KG filler (3 of 6 were front-matter)",
+      "3. citation semantics: preserve QP-vs-MS doc role through the hub citation-map (today every chunk kind maps to SPEC_POINT; only the label carries the role)",
+      "4. engagement model: key the recorder row by the resolved question's spec-point nodes so paper-practice asks are not silently dropped (tutorEngagements stayed empty)",
+      "5. presentation: generation seam emitted $\\ce{H2SO4}$ mhchem markup the chat may not render — pin the generator to plain-text chemistry notation"
+    ]
+  },
+  "write_ledger": "2 probe learners (example.invalid, memory-only, incl. one 400 displayName sizing probe discarded before creation) + 1 tutor session + 1 grounded ask exchange + recorder rows (none appended — the finding); llm_spend=1; zero Neon/Vercel direct contact"
+}

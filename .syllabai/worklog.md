@@ -7964,3 +7964,20 @@ Work Log:
 Stage Summary:
 - VERDICT: YES — the tutor serves ANY of the 95 VALIDATED chemistry past papers WITH its paired mark scheme in ONE deterministic view (zero LLM), 2011–2026, both units (1C/1CR/2C/2CR, legacy 4CH0 included), through REST AND the hub chat relay. Honest edges: 13 REJECTED papers never serve (V20 gate); the newest 2026 papers serve chunks but carry 0 structured bank rows yet.
 - Write ledger: 2 probe learners (example.invalid, memory-only); llm_spend=0; zero Neon/Vercel-API direct contact.
+
+---
+Task ID: trace 1a1439f1e2fa247d ("probe this path on the spot and suggest how we can improve the answer")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Fire the per-question paper-ask path live (both phrasings), cross-check the answer against corpus truth, and deliver evidence-backed improvement proposals.
+
+Work Log:
+- Classifier pre-analysis first (bank-intent.ts regexes): FULLNESS \bfull\b matches "full-credit" (hyphen = word boundary) -> predicted the user's natural per-question phrasing HIJACKS to the whole-paper band; a dodged phrasing rides the grounded path. Probe built to measure both.
+- Probe scripts/r0_paperq_probe.py (persisted): 9 legs. LEG A (natural phrasing) -> HIJACK CONFIRMED live: kind=paper provider=bank zero-LLM card, no Q6 answer, MS text never rendered for Q6. LEG B (dodged phrasing, sessionId) -> GROUNDED: provider=groq openai/gpt-oss-120b refused=false, 6 citations, 3.4s, answer CORRECT vs corpus truth (Q6 metals W/X/Y/Z; mark table 1+1+1+2 = 5 == structured row q06-cf68cf74 marks=5; Z>X>Y>W, W=copper, X=magnesium); pins page-exact (QP p11 + MS p9) with noise (MS p1 x2 + Question card p1 + 1 duplicate row); session read-back 2 turns [user ev=0 / assistant ev=6]; engagement row ABSENT (topic-keyed recorder drops paper-question asks).
+- Truth cross-check note: band-view chunk row ids != evidence pin row ids (different row sets for the same pages) — page-level semantic match is EXACT for the Q6 rows; the leg-6 row-id overlap metric read 0 and was re-interpreted (finding, not defect).
+- externalRef format census: structured rows use group keys (q01-cf68cf74...q15-cf68cf74), Q6 marks=5 commandWord=null — my earlier externalRef=="6" check was the mismatch.
+- 5 improvement proposals delivered in-chat: (1) classifier FULLNESS tightening or qnum-guard, (2) citation dedupe + resolver-pins-first ordering, (3) QP/MS doc-role preserved through citation-map, (4) spec-keyed engagement rows for paper asks, (5) plain-text chemistry notation law for the generator (mhchem leaked into chat deltas).
+- Bookkeeping: receipt .syllabai/receipts/T-MIG-130/run-004-paperq-path-probe-r0.json + this worklog entry; .syllabai-only commit (fetch-first, no force).
+
+Stage Summary:
+- VERDICT: the per-question path WORKS end-to-end and answers CORRECTLY (grounded, citation-pinned to the exact Q6 pages, persisted) when it reaches the grounded arm — but the user's most natural phrasing is HIJACKED by the band classifier (full-credit -> FULLNESS -> whole-paper card) and never answers the question. 5 evidence-backed fixes proposed; none applied (r0 proposes, operator disposes).
+- Write ledger: 2 probe learners (memory-only) + 1 session + 1 exchange; llm_spend=1; residuals unchanged (Render disable, PAT rotation).
