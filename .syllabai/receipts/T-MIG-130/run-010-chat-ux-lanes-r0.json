@@ -1,0 +1,84 @@
+{
+ "run": "run-010-chat-ux-lanes-r0",
+ "operator_trace": "1a1458af5eed4b21 'Proceed with citation-kind flattening + hub math-render, and #4's copy-fidelity tweak. diagrams in chatbot is not immediate needed feature, we already link to the qp/ms pdf'",
+ "agent": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "date": "2026-10-16T17:23:35.419Z",
+ "standing_order_check": {
+  "board_census": "126 cards — all DONE (two benign variants: one folded-block status 'DONE #…', one mojibake-suffix 'DONE'); zero OPEN/CLAIMED/IN_REVIEW/IN_PROGRESS; no unclaimed to proceed with; this lane = the direct operator order",
+  "fetch_first": "remote main acb7dda == local tip at start (no race); re-checked at push",
+  "hygiene": "PAT/vcp/Neon inline-only, memory-only; 0 credential hits in .git/config; deploy worktree (with vercel-pulled .env.local) destroyed post-deploy per the r1c law"
+ },
+ "evidence_capture": {
+  "probe": "scripts/r0_chatum_lanes_probe.py — 7/7 PASS",
+  "llm_spend": 1,
+  "citations_census": {
+   "n": 6,
+   "wire_sourceType": {
+    "unknown": 6
+   },
+   "note": "sourceType null on the wire for ALL 6 citations — the hub map defaults every one to SPEC_POINT, so the old chip suffix '· {kind[:4]}' rendered uniform misleading noise ('· SPEC' even on 'Revision notes — p1')",
+   "url_classes": {
+    "none": 5,
+    "sources": 1
+   }
+  },
+  "answer_math_census": {
+   "harness": "scripts/r0_math_census.mjs (bun, zero network) — the captured answer through the EXACT chat chain: normalizeMathDelimiters -> normalizeCorpusMath/Emphasis -> sanitizeMathTex -> katex+mhchem renderToString",
+   "katex": "2 display \\ce{...} spans (\\[...\\] source) — 2 ok / 0 fail: the math-render chain already renders the prompt-pinned mhchem class",
+   "leak_class_found": "【4†L1-L3】-shaped groq/gpt-oss internal source markers — 6 spans rendered as raw CJK-bracket junk; the API's digit-only CITATION_MARKER law correctly leaves them (frozen port), the s22 record stays verbatim",
+   "band2_of_record": "June 2019 4CH1/2C: 8 questions, marks [6,9,9,7,10,14,8,7], stems 336-1385 chars (full, the #2 rebuild live)"
+  }
+ },
+ "implementation": {
+  "commit_7cef88d": {
+   "title": "feat(hub): tutor chat citations flatten + answer debris strip (run-010)",
+   "items": [
+    "citation-kind flattening: one uniform chip for every kind (index + FileText + label) — the kind[:4] suffix removed; the label already carries the human source description; the contract enum + citation-map stay (CLA surfaces + persisted turns untouched)",
+    "stripCitationDebris (packages/shared/answerDebris.ts): the chat answer-side render hygiene law — /\\s*【\\d{1,3}†[^】]*】/g; applied to assistant content BEFORE the math-delimiter normalizer in message-item (both render sites); the stored s22 turn stays verbatim; the API's digit-only marker law keeps its territory (frozen port untouched)"
+   ],
+   "pins": "+10 (answerDebris.test.ts: the measured wire shapes byte-exact + precision boundary + math pass-through + identity)"
+  },
+  "commit_6331e1e": {
+   "title": "feat(hub): band card copy fidelity — deterministic copy paths (run-004 proposal #4)",
+   "items": [
+    "per-question copy button (hover-gated like the chat action rail): serializes 'N. [M mks] {full stem}' from the VIEW DATA — the linear DOM copy that scrambled the [badge][stem] pairing (the operator's original paste symptom) is bypassed",
+    "card-level Copy all (both band kinds): every question the payload carries, FULL stems — never the line-clamp, never the scroll-container cut; band-2 header carries absolute QP/MS reader deep links; band-1 discloses the shown/total cut in the copied header",
+    "presentation unchanged: clamps/scroll stay visual-only; the FigureChips lane (#3) untouched; diagrams-in-chatbot NOT built (operator: not needed, the qp/ms pdf links serve)"
+   ],
+   "pins": "UI lane — verified by live-bundle discriminators + the 7/7 post-deploy battery (no unit-test harness change applies)"
+  }
+ },
+ "verification": {
+  "suite_of_record": "bun test = 2172 pass / 0 fail / 13 skip / 114 files (2162 + 10 new pins, EXACT delta); CI scope bun test apps/api packages = 2060/108 files (2050 baseline + 10)",
+  "typecheck": "x4 exit 0 (contracts, shared, db, api)",
+  "golden": "runner --selftest OK; census gate GREEN (LIVE=0 law)",
+  "hub_build": "next build OK; eslint (changed files) clean",
+  "ci": "2/2 GREEN at 6331e1e first-hand via check-runs API (verify + hub)"
+ },
+ "deploy": {
+  "recipe": "r1c (fresh clean worktree at HEAD 6331e1e, vercel link -> prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl, vercel 64.3.1 --prod); worktree incl. its vercel-pulled .env.local DESTROYED post-deploy",
+  "of_record": "dpl_DdTZdojBTce8MAH7PB2DXk3bhEpo (syllabai-hub-v2-r5y4j2jbv) READY 2026-10-16T16:58:14Z, aliased [syllabai-hub-v2.vercel.app, syllabai-hub-v2-syllab-ai.vercel.app, syllabai-hub-v2-git-main-syllab-ai.vercel.app]; deploy meta carries the 6331e1e commit message first-hand",
+  "incident_disclosed": "the first CLI call's tool result was lost (tool error, no output) but the call itself completed server-side (this IS the aliased READY deployment); two later CLI retries hit the plan's concurrent-build BLOCK and were DELETED from the deployment list (dpl_C2nqN9kPmViyrAitzPwVATxHdDQX, dpl_AEdPi1ZRdpWbnZ2654VRnpXBTHUm) — zero orphan prod aliases",
+  "bundle_proof": "live alias chunks fetched first-hand: 'Copy every listed question with its full text' (band-card) + the †/【 debris-regex literals (shared) both present in the served chunks",
+  "api_note": "api redeploy NOT fired: the shared change is included in the api bundle but sits on zero runtime api paths (pure hub-render function) — api behavior byte-identical; the next api redeploy picks the bundle up. disclosed."
+ },
+ "live_verify": {
+  "battery": "scripts/r010_postdeploy_verify.py — 7/7 PASS (health bookends, unauth relay body-gate law, authed band-1 questions, band-2 June 2019 4CH1/2C anchor marks [6,9,9,7,10,14,8,7] EXACT with full stems, served-bundle discriminators)",
+  "llm_spend": 0,
+  "transcripts": [
+   "scripts/r0_chatum_lanes_transcript.json",
+   "scripts/r010_postdeploy_verify_transcript.json"
+  ]
+ },
+ "ledger": {
+  "llm_spend_total": 1,
+  "writes": "1 probe account per probe battery (memory-only) + 1 grounded ask exchange + Phase-2 recorder rows; zero DB writes; zero content writes",
+  "credentials": "PAT/vcp/Neon never persisted — inline URLs/headers only; receipts scrub-asserted"
+ },
+ "residuals_open": [
+  "the model's answer-side math classes render (census 2/2) — deeper KaTeX-failure FALLBACK presentation (calm-fail instead of red source) intentionally NOT built: no failing class measured on the live wire",
+  "the 46 bridge-less VALIDATED papers still serve figures [] (re-parse lane, operator-gated) — unchanged from run-009",
+  "the citation-map KINDS vocabulary + hub contract enum stay of record (CLA surfaces use kind) — only the tutor chat chip UI is flattened",
+  "api bundle one shared-export behind tip (zero runtime delta) — rides the next api redeploy"
+ ]
+}

@@ -8051,3 +8051,22 @@ Work Log:
 
 Stage Summary:
 - Lane #3 SHIPPED AND LIVE-VERIFIED of record: the bank discloses the diagrams its stems gesture at (parser-own attribution chips, citably addressed), and the parser cleans after parsing (one hygiene law, write AND serve side). Residuals of record: 46 bridge-less papers serve figures [] (re-parse lane = operator lever), crop binaries unrecoverable (chips are references), pages claim only where the serving doc records the element.
+
+---
+Task ID: trace 1a1458af5eed4b21 ("Proceed with citation-kind flattening + hub math-render, and #4's copy-fidelity tweak")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Run-010 chat-UX lanes — flatten the citation kinds, harden the hub answer-side math render, land #4's copy-fidelity; diagrams-in-chatbot NOT built (operator: the qp/ms pdf links serve).
+
+Work Log:
+- Standing order + fetch-first: board census 126/126 DONE (zero open/claimed), remote main acb7dda == local tip, no races.
+- Evidence capture (scripts/r0_chatum_lanes_probe.py, 7/7 PASS, llm_spend=1): one math-heavy grounded ask through the hub relay — the wire's sourceType is NULL for ALL 6 citations (the hub map defaults every one to SPEC_POINT, so the old chip suffix "· {kind[:4]}" was uniform misleading noise even on "Revision notes — p1"); the answer emitted \ce{...} inside \[...\] display delimiters AND leaked 6 "【4†L1-L3】" groq/gpt-oss internal source markers (raw CJK-bracket junk in the chat); band-2 June 2019 4CH1/2C payload of record (marks 6,9,9,7,10,14,8,7, full stems).
+- Math census headless (r0_math_census.mjs, zero spend): the captured answer through the EXACT chat chain — both display \ce spans render OK (KaTeX+mhchem 2/2); the math-render chain was already sound — the REAL answer-side defect is the debris class. The API's digit-only CITATION_MARKER law correctly leaves the debris (frozen-port discipline), so the fix lands at the hub render boundary.
+- SHIPPED 7cef88d: citation-kind flattening (one uniform chip — index + label; the label carries the human source description) + stripCitationDebris (packages/shared/answerDebris.ts, /\s*【\d{1,3}†[^】]*】/g, applied to assistant content before the math normalizer; the stored s22 turn stays verbatim) + 10 pins.
+- SHIPPED 6331e1e: #4 copy fidelity — per-question copy button + card-level Copy all on BOTH band kinds, serializing the VIEW DATA (full stems, every payload question — never the line-clamp, never the scroll-container cut; the operator's original paste symptoms were badge-pairing scramble + scroll cut); band-2 copy header carries absolute QP/MS reader deep links; band-1 discloses shown/total in the copied header; presentation unchanged.
+- Verify: bun test 2172/0/114 files (2162+10 EXACT); typecheck x4 0; golden selftest OK; census gate GREEN; hub build OK; eslint clean; CI 2/2 GREEN at 6331e1e first-hand.
+- DEPLOYED (r1c recipe): the first CLI call's tool result was lost (tool error) but the call completed server-side — dpl_DdTZdojBTce8MAH7PB2DXk3bhEpo (r5y4j2jbv) READY 2026-10-16T16:58:14Z, ALIASED production, deploy meta carries the 6331e1e commit message first-hand; two later CLI retries hit the standing concurrent-build protection and were DELETED (dpl_C2nqN9kPmViyrAitzPwVATxHdDQX, dpl_AEdPi1ZRdpWbnZ2654VRnpXBTHUm); worktree incl. its CLI-pulled .env.local destroyed post-deploy.
+- LIVE: bundle discriminators verified in the served chunks first-hand ("Copy every listed question with its full text" + the †/【 debris-regex literals); r010_postdeploy_verify.py 7/7 PASS (llm_spend=0) — health bookends, unauth body-gate law, band-1, band-2 anchor marks EXACT, discriminators.
+- Bookkeeping: receipt run-010-chat-ux-lanes-r0.json (scrub-asserted CLEAN); zero credentials on disk (inline-only).
+
+Stage Summary:
+- Run-010 SHIPPED AND LIVE-VERIFIED: chat citations flattened to one honest chip; the model's internal source markers never display (render-side law, record verbatim); the band card copies faithfully (data-serialized, scroll- and DOM-independent); math renders where the model emits it (census-proven). Diagrams-in-chatbot deliberately NOT built per the operator's call. API bundle rides one shared-export behind tip (zero runtime delta — next api redeploy picks it up). Open of record: 46 bridge-less papers' figures (re-parse lane, operator-gated).
