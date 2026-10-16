@@ -7981,3 +7981,20 @@ Work Log:
 Stage Summary:
 - VERDICT: the per-question path WORKS end-to-end and answers CORRECTLY (grounded, citation-pinned to the exact Q6 pages, persisted) when it reaches the grounded arm — but the user's most natural phrasing is HIJACKED by the band classifier (full-credit -> FULLNESS -> whole-paper card) and never answers the question. 5 evidence-backed fixes proposed; none applied (r0 proposes, operator disposes).
 - Write ledger: 2 probe learners (memory-only) + 1 session + 1 exchange; llm_spend=1; residuals unchanged (Render disable, PAT rotation).
+
+---
+Task ID: trace 1a143c2ceec5eccd ("Proceed with 1" — apply run-004 proposal #1)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Implement run-004 receipt proposal #1 — the bank-intent classifier fix (qnum-guard + fullness paper-adjacency) so per-question paper asks stop being hijacked by the whole-paper band.
+
+Work Log:
+- Implemented in packages/shared/src/bank-intent.ts (single point: the hub relay's tryBankBand is the only consumer; apps/api does not import bank-intent — no api redeploy): (1) QUESTION_NUMBER guard "question 6"/"q6"/"q. 6"/"question no. 6"/"questions 3" returns null before every band gate; (2) FULLNESS -> FULLNESS_PAPER: the fullness word must size the paper noun itself, only session-ish gap tokens (year, series, "exam", unit code) allowed between — "a full-credit answer" / "full marks" no longer arm band 2 (the old \bfull\b matched the hyphenated compound at the word boundary).
+- Band-2 law preserved: of-record phrasings re-tested — "give me the full 2019 june paper 1", "the whole paper 1 june 2019 please", "explain the full paper making process" (of-record expectation kept), "Show me the complete June 2019 exam paper 1...", "get the full mark scheme...", paired-QP+MS, fetch-verb+anchor all still {kind:"paper"}; "question paper 1" NOT a qnum bind.
+- Tests: +6 regression cases (29/29 in file); suite of record 1971 pass / 0 fail / 13 skip across 103 files; typecheck x4 exit 0.
+- Code commit 82d20a0 pushed (fetch-first: one transient fetch blip, retried clean, remote == local, no force); CI 2/2 GREEN first-hand (hub + verify); hub auto-baked on the same push (r7a mechanism of record).
+- LIVE VERIFICATION (scripts/r0_proposal1_verify.py, 8/8 PASS, llm_spend=1): the run-004 LEG A hijack phrasing VERBATIM now rides GROUNDED — no band frame, groq/gpt-oss-120b refused=false, 6 in-app citations page-exact vs corpus truth (QP p11 + MS p9; residual: 1 dup QP row + MS p1 front-matter — proposals #2/#3/#5 re-observed open), answer CORRECT (mark table 1+1+1+2=5 == structured row q06-cf68cf74 marks=5, Z>X>Y>W, W=copper, X=magnesium); both band-2 regressions serve the of-record 4CH1/1C June 2019 card zero-LLM; session read-back 2 turns [ev=6].
+- Bookkeeping: receipt .syllabai/receipts/T-MIG-130/run-005-proposal1-classifier-fix-r0.json + this worklog entry; .syllabai-only follow-up commit (fetch-first, no force).
+
+Stage Summary:
+- VERDICT: proposal #1 SHIPPED AND LIVE-VERIFIED — a per-question paper ask (any phrasing, natural or terse) now reaches the resolver-pinned grounded answer instead of the whole-paper card; whole-paper asks unchanged. Proposals #2 (citation dedupe + resolver-first ordering), #3 (QP/MS doc-role through citation-map), #4 (spec-keyed engagement rows), #5 (plain-text chemistry law; mhchem leak re-observed live) remain OPEN for operator disposal.
+- Write ledger: 1 probe learner (memory-only) + 1 session + 1 exchange; llm_spend=1; residuals unchanged (Render disable, PAT rotation).

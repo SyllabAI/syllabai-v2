@@ -1,0 +1,44 @@
+{
+  "tag": "T-MIG-130",
+  "run": "run-005-proposal1-classifier-fix-r0",
+  "operator_trace": "1a143c2ceec5eccd 'Proceed with 1' — applying run-004 receipt proposal #1 (classifier: FULLNESS must not match 'full-credit'/'full marks'; qnum-guard yielding band 2 to the per-question path)",
+  "date_utc": "2026-10-16T08:27:26Z",
+  "code": {
+    "commit": "82d20a0",
+    "files": [
+      "packages/shared/src/bank-intent.ts",
+      "packages/shared/src/bank-intent.test.ts"
+    ],
+    "change": "FULLNESS -> FULLNESS_PAPER (the fullness word must size the paper noun itself; only session-ish gap tokens allowed between: year, series, 'exam', unit code) + QUESTION_NUMBER guard ('question 6', 'q6', 'q. 6', 'question no. 6', 'questions 3') returning null before every band gate; +6 regression tests",
+    "surface": "hub relay only — apps/api does not import bank-intent; the hub auto-bakes on every main push (r7a mechanism of record); api-of-record untouched, no api redeploy"
+  },
+  "gates": {
+    "unit": "packages/shared bank-intent.test.ts 29/29 (23 prior + 6 new regression cases, zero regressions)",
+    "suite_of_record": "bun test apps/api packages -> 1971 pass / 0 fail / 13 skip across 103 files",
+    "typecheck": "bun run typecheck (contracts/shared/db/api) exit 0",
+    "ci": "2/2 GREEN at 82d20a0 first-hand (hub success, verify success)"
+  },
+  "live_verification": {
+    "harness": "scripts/r0_proposal1_verify.py (sandbox); transcript scripts/r0_proposal1_verify_transcript.json (scrub-asserted CLEAN: no bearer/password/email; answer excerpt <=260 chars)",
+    "legs": { "total": 8, "pass": 8, "fail": 0 },
+    "the_fix": {
+      "ask_verbatim": "What was question 6 in June 2019 paper 1, and what does a full-credit answer require?",
+      "pre_fix_run004": "HIJACKED to kind=paper band (provider=bank, zero LLM, no Q6 answer)",
+      "post_fix": "GROUNDED — no band frame; provider=groq model=openai/gpt-oss-120b refused=false; 6 citations all in-app /sources/{row}?page=N deep links; 1375-char answer correct vs corpus truth (Q6 metals W/X/Y/Z; mark table P1+P2+P3+M1 = 5 == structured row q06-cf68cf74 marks=5; order Z X Y W, W=copper, X=magnesium, brown precipitate + colour fade); wall 6.45s",
+      "pins": "page-exact vs corpus truth: QP p11 (x1 + 1 dup row, proposal #2 pending) + MS p9 (the Q6 mark scheme page); residual noise: MS p1 front-matter + MS p11 + Question card p1 (resolver-first ordering, proposal #2)"
+    },
+    "band_regressions": [
+      { "q": "Show me the complete June 2019 exam paper 1 and its grading criteria", "observed": "kind=paper provider=bank model=null, 4CH1/1C June 2019 VALIDATED, 15 q, 18 QP + 12 MS chunks, of-record lead-in" },
+      { "q": "give me the full 2019 june paper 1", "observed": "kind=paper provider=bank model=null, 4CH1/1C June 2019 VALIDATED, 15 q, 18 QP + 12 MS chunks — FULLNESS_PAPER adjacency with session-ish gap tokens still arms band 2" }
+    ],
+    "session_readback": "2 turns [user ev=0 / assistant ev=6] — the grounded exchange persists with evidence",
+    "llm_spend": 1
+  },
+  "residuals": [
+    "proposal #2 open: citation dedupe by documentRowId + resolver-pins-first ordering (1 dup QP p11 row + 2 front-matter rows observed again in run-005)",
+    "proposal #3 open: QP/MS doc-role flattened to SPEC_POINT through hub citation-map",
+    "proposal #4 open: engagement rows still topic-keyed (paper asks dropped)",
+    "proposal #5 open (re-observed live): generator emitted $\\ce{H2SO4}$ mhchem markup into chat deltas"
+  ],
+  "write_ledger": "1 probe learner (example.invalid, memory-only) + 1 tutor session + 1 grounded ask exchange; llm_spend=1; zero Neon/Vercel-API direct contact; fetch-first race check (transient fetch blip retried once, then remote == local, no force)"
+}
