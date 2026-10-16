@@ -7912,3 +7912,19 @@ Work Log:
 Stage Summary:
 - VERDICT: the api redeploy lever is DISCHARGED — api-of-record = dpl_2cJt318tLHHJvrSHTawY5QxsEri7 @ e79be16; the instructed deterministic question-listing band SERVES LIVE through the hub relay with marks + spec tags at zero LLM spend; grounded v2 RAG arm (vector arm keyed + KG fusion + s22 persistence + Phase-2 recorder) unchanged and green.
 - Residual levers: hub re-bake (b917adf /past-papers archive) open, separate; Render disable + PAT rotation unchanged (operator-side).
+
+---
+Task ID: trace 1a1436d8f01019c9 (the 'API-carrier bake' order — COLLISION DISPOSITION)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1)
+Task: operator order 'API-carrier bake' — fire the api redeploy baking the T-MIG-128/129 bank mounts + Card A.
+
+Work Log:
+- Recipe of record loaded (the 092/093/107/124/125 chain: the in-repo 093 tool read verbatim; the freshest precedent T-MIG-125 run-002). Lane build staged: scripts/api_bake_build_r7a.py (path constants only), clean detached worktree at e79be16, bun frozen install + lane-side js-yaml@4.1.1, 6/6 asset SHA pins asserted pre-shim, bundle 3,163,284 B CJS, needles first-hand (bank x2 / BKT x3 / BDT x2 / buildSqlLearnerModel x3 / TOPIC_ENGAGEMENT x7 / extinct x0), zero-key require smoke OK.
+- Pre-flight race-guard found the 6-minute-old incumbent dpl_2cJt318tLHHJvrSHTawY5QxsEri7 + run-007 landing at 425534c — the r0 lane's bake of the SAME tip with the SAME recipe (operator trace 1a14363e5fff7ff9 'Proceed'). STAND-DOWN held: ZERO duplicate deploys (platform contact: reads only).
+- Discharged per the 6759200/B6-collision precedent as INDEPENDENT VERIFICATION (scripts/api_bake_verify_r7a.py): health UP / unauth 401 laws / THE MOUNT DISCRIMINATOR — authed bank questions ?topic= 200 with 200 entries (128 LIVE vs the pre-bake 404 of record) + bank paper 200/43,858 B (129 LIVE) / register+login 201/200 / session create+delete net-zero / CLA /ask blank 400 byte-exact. 2 probe-shape defects corrected on re-run (the run-004 disclosed class); EFFECTIVE 12/12 GREEN. Card A: composition-boot law + the byte needles. llm_spend=0. Write ledger: 2 disclosed probe accounts + net-zero session.
+- Receipt DEPLOY/api-of-record-redeploy-run-007-independent-verification-r7a.json; evidence + scripts lane-side; the re-staged credential SHREDDED post-run; worktree removed, main clone tree clean first-hand.
+
+Stage Summary:
+- The 'API-carrier bake' order: DISCHARGED AS COLLISION — the bake is LIVE and now INDEPENDENT-VERIFIED by a second lane; the 128/129 bank mounts serve (the chat bank bands pick up serving), Card A rides the same tree.
+- Remaining levers: the HUB re-bake (past-papers browser, /past-papers 404 of record) — operator-gated; the Render console disable (§6.2); PAT rotation (fingerprint-proven unrotated).
+- .syllabai-only commit (receipt + worklog); fetch-first, no force.

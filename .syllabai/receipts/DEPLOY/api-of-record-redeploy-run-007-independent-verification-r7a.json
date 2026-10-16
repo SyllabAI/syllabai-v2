@@ -1,0 +1,18 @@
+{
+  "receipt": "api-of-record-redeploy-run-007-independent-verification-r7a",
+  "card": "COLLISION DISPOSITION — the operator order trace 1a1436d8f01019c9 'API-carrier bake' (r7a lane) discharged as COLLISION against the r0 lane's run-007 (operator trace 1a14363e5fff7ff9 'Proceed'); this receipt = the INDEPENDENT VERIFICATION leg only. ZERO duplicate deploys fired by r7a (Vercel contact: identity/project/deployments reads + 4 GET reads this battery; zero writes to the platform).",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)",
+  "collision_finding": "fetch-first DURING pre-flight caught the 6-minute-old incumbent dpl_2cJt318tLHHJvrSHTawY5QxsEri7 (src=cli, projectId==prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ, READY) + the run-007 receipt landing at 425534c. Same tip (e79be16), same of-record recipe/tool, same 6/6 asset SHAs; the r7a lane-side build (scripts/api_bake_build_r7a.py, the 093 tool path-adapted) produced 3,163,284 bytes vs run-007's 3,163,283 — the 1-byte class; bundle needles first-hand r7a-side: bank mounts x2, BKT_UPDATED x3, BDT_UPDATED x2, buildSqlLearnerModel x3, TOPIC_ENGAGEMENT x7, 'superseded_at IS NULL' x1, transcribe x1, extinct needles x0/x0 — ALL EXACT vs the of-record figures.",
+  "credential_law": "the session vcp credential (operator handoff trace 1a1341039376d985) re-staged 0600 OUTSIDE the repo, fingerprint sha256-prefix d254bbfaac004354 == of-record EXACT (UNROTATED), /v2/user syllabai-1403, used inline only, NEVER printed/committed/persisted, SHREDDED post-run.",
+  "verification_battery_first_hand": {
+    "boot_laws": "health 200 UP; unauth transcribe 401 (B6 law); unauth bank 401 (filter chain)",
+    "mount_discriminator": "GET /api/v1/tutor/bank/questions?topic=organic+chemistry (authed probe) -> 200 with 200 entries (THE T-MIG-128 mount LIVE — the pre-bake carrier answered 404 not_found per the run-002 canary of record); GET /api/v1/tutor/bank/paper?q=2019+june+paper+1 -> 200, 43,858 bytes (the T-MIG-129 whole-paper one-view LIVE)",
+    "no_regression": "register probe 201 (the REAL implementation law); login 200 accessToken; tutor session create 201 + delete 204 (net-zero); CLA /ask blank -> 400 'question: must not be blank' byte-exact (the 125 law)",
+    "card_a_evidence": "composition-boot law: the deployment serves clean 200/400/401 laws (any composition-root runtime defect is excluded by construction, the run-002 class) + the BKT_UPDATED/BDT_UPDATED literals byte-present in the r7a-side build of the SAME tree",
+    "probe_hygiene_disclosure": "2 probe-shape defects corrected on re-run (the run-004 disclosed class): the first bank probe used ?query= (wrong axis) drawing 400 malformed — itself mount-positive vs the pre-bake 404; the corrected ?topic= probe passed 200/200; the first CLA probe hit the bare /cla path (404), corrected to /cla/ask 400 law; ONE additional disclosed probe account for the corrected round"
+  },
+  "write_ledger": "2 probe STUDENT accounts (@probe.example.invalid, disclosed) + 1 tutor-session create+delete (net-zero) + SELECT-only bank reads; llm_spend=0 (no ask — the deterministic bank leg is the canary)",
+  "verdict": "EFFECTIVE 12/12 GREEN first-hand — the run-007 bake is REAL, READY, and serves the T-MIG-128/129 bank mounts + the no-regression laws; Card A rides the same serving tree (composition-boot law + byte-level needles)",
+  "rollback_anchor": "dpl_4PASL11jfnKfCopz8WeTGUo7i36v (the pre-run-007 serving-of-record @ content-of-350487b) + dpl_2cJt318tLHHJvrSHTawY5QxsEri7 READY re-aliasable",
+  "operator_residuals": ["the HUB re-bake (b917adf past-papers, /past-papers 404 live of record)", "the Render console disable (§6.2)", "PAT rotation (the fingerprint match proves still unrotated)"]
+}
