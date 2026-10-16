@@ -7928,3 +7928,21 @@ Stage Summary:
 - The 'API-carrier bake' order: DISCHARGED AS COLLISION — the bake is LIVE and now INDEPENDENT-VERIFIED by a second lane; the 128/129 bank mounts serve (the chat bank bands pick up serving), Card A rides the same tree.
 - Remaining levers: the HUB re-bake (past-papers browser, /past-papers 404 of record) — operator-gated; the Render console disable (§6.2); PAT rotation (fingerprint-proven unrotated).
 - .syllabai-only commit (receipt + worklog); fetch-first, no force.
+
+---
+Task ID: trace 1a1437a7ecf080e9 (the 'hub re-bake' order — COLLISION/AUTO-BAKE DISPOSITION)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1)
+Task: operator order 'hub re-bake' — re-bake the hub carrier so b917adf (/past-papers archive) serves.
+
+Work Log:
+- Fetch-first: local == remote == d3d2fe6 (tip of record); the lever open per the d3d2fe6 receipt of record.
+- Precheck (scripts/hub_rebake_precheck_r7a.py -> evidence/hub_rebake_precheck_r7a.json): creds law fingerprint d254bbfaac004354 == of-record (unrotated), /v2/user syllabai-1403; STAND-DOWN discriminator FIRED — latest hub production dpl_EgR8SXyTsXaVaTjTeabvGFnTgFP8 @ d3d2fe6 READY (~13 min), b917adf ancestor of the live sha (merge-base --is-ancestor first-hand) => the lever already closed. Deploy chain: dpl_4mhko @ 4429186 (18:08Z Oct-15 CLI bake) -> dpl_B8TeLH5pGHfjdyrbG2ieZa8rHdAM @ 425534c (06:43:28Z Oct-16) -> dpl_EgR8SX @ d3d2fe6 (06:48:08Z Oct-16); NO deploy at b917adf/e79be16 => the git-integration went live between 18:10Z and 06:43Z (operator platform act, no lane receipt; the run-002 worklog of record still says NOT git-connected) and auto-baked the hub on the two receipt pushes (425534c r0's, d3d2fe6 r7a's own).
+- Per the 6759200/B6/run-007 collision law: ZERO duplicate deploys; discharged as INDEPENDENT VERIFICATION (scripts/hub_rebake_verify_r7a.py -> evidence/hub_rebake_verify_r7a.json) 10/10 GREEN: deployment law (READY + projectId == prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl + meta sha == d3d2fe6 + git-integration meta), alias law (syllabai-hub-v2.vercel.app + -syllab-ai + git-main), THE DISCRIMINATOR both-sides first-hand (OLD dpl_4mhko /past-papers 404 == the 404 of record; LIVE 200; deep spec page /past-papers/pearson-edexcel/international-gcse/accounting/4ac1 200), wire laws 5/5 (health 200 core-api / actuator 200 UP / chat {not-json 400 / chat {question} 401 corrected shape / transcribe 401), homepage census 15 chunks (B1=5 B2=5 B5=6 B6=1 retained, B3 stream client=0, new nav rows desc=1 href=3), /tutor census 19 chunks ('Past-paper bank' x1), census gate GREEN exit 0 at the synced tip.
+- 1 defect corrected of record (the run-004 probe-defect class): the first battery run scanned the HOMEPAGE window for the T-MIG-130 rows and false-negative'd (t130_bank_card=0, battery ABORT) — the of-record string is apps/hub/src/app/tutor/chat.tsx:101, /tutor is the right window; classifyBankIntent (packages/shared/bank-intent.ts + apps/hub/src/app/api/ai/chat/route.ts) is the server-side relay and never ships client-side (record-only).
+- Creds hygiene: .creds/{vercel,syllabai,teacher}.env found 0755 — fixed 0600 at staging (residual disclosed); tokens inline-only, never printed/committed; llm_spend=0; write ledger ZERO (all probes unauth/read-only).
+
+Stage Summary:
+- VERDICT: the hub re-bake lever is DISCHARGED — hub-of-record = dpl_EgR8SXyTsXaVaTjTeabvGFnTgFP8 @ d3d2fe6 serving b917adf (the corpus-wide /past-papers archive, 103 SSG spec pages) with every prior bake row retained; INDEPENDENT-VERIFIED at zero duplicate deploys.
+- MECHANISM of record: the hub carrier is git-connected now (link.type=github, prod main, auto-deploy) — every main push re-bakes the hub; receipt pushes cost one no-code-delta hub build each (disclosed platform behavior; this push included).
+- Remaining levers: Render console disable (§6.2), PAT rotation (fingerprint-proven unrotated).
+- Receipt DEPLOY/hub-of-record-redeploy-run-005-independent-verification-r7a.json; evidence + scripts lane-side; .syllabai-only commit (fetch-first, no force).
