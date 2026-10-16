@@ -655,14 +655,17 @@ export function PaperViewerClient({
   }
 
   // ── VIEW mode ────────────────────────────────────────────────────────────
-  // Layout discipline: the panes fill the viewport below the app header
-  // (56px) + this page's 12px top padding — on mobile the sticky course
-  // "Menu" bar (49px) is added. Everything else collapses into ONE compact
-  // toolbar row; the old breadcrumb + h1 hero + footer note (≈140px) are
-  // gone, and the mobile A/B pill floats over the pane instead of pushing it
-  // down. Height numbers must stay in sync with the viewer page's padding.
+  // Layout discipline (s146): the global header (56px) and the course mobile
+  // "Menu" bar (49px) stand down on this route (focus-routes.isViewerRoute),
+  // so the panes fill the viewport below this page's 12px top padding —
+  // calc(100dvh-1rem) = 12px pad + 4px slack, the same at every width.
+  // Everything else collapses into ONE compact toolbar row; the old
+  // breadcrumb + h1 hero + footer note (≈140px) are gone, and the mobile A/B
+  // pill floats over the pane instead of pushing it down. Height numbers
+  // must stay in sync with the viewer page's padding and the shell
+  // suppressions in app-shell.tsx / course-shell.tsx.
   return (
-    <div className="flex h-[calc(100dvh-7.5rem)] min-h-[420px] flex-col gap-2 lg:h-[calc(100dvh-4.5rem)]">
+    <div className="flex h-[calc(100dvh-1rem)] min-h-[420px] flex-col gap-2">
       <div className="flex shrink-0 flex-wrap items-center gap-2">
         <Button asChild size="sm" variant="ghost" className="h-8">
           <Link href={backHref}>

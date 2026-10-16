@@ -1840,8 +1840,12 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
       onPointerDownCapture={claimSelf}
       onFocusCapture={claimSelf}
     >
-      {/* toolbar */}
-      <div className="flex shrink-0 flex-wrap items-center gap-1.5 border-b bg-background/95 px-2 py-1.5 print:hidden">
+      {/* toolbar — s146: nowrap + horizontal scroll instead of flex-wrap.
+          This bar holds ~13 h-9 controls (≈590px min-content); on a ~366px
+          phone pane the wrap made it TWO rows (~91px) — the single largest
+          non-global chrome cost on the viewer route. Scrolling keeps every
+          control reachable at exactly one row (49px) at any pane width. */}
+      <div className="flex shrink-0 flex-nowrap items-center gap-1.5 overflow-x-auto border-b bg-background/95 px-2 py-1.5 print:hidden">
         <span className="mr-1 min-w-0 truncate text-xs font-semibold" title={label}>
           {label}
         </span>

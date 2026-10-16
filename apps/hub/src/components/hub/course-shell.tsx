@@ -37,7 +37,7 @@ import {
   type SidebarVariant,
 } from "@/components/hub/course-data-context";
 import { TopicTreeWithIndexAuto } from "@/components/hub/topic-tree";
-import { isDocumentFocusRoute } from "@/lib/focus-routes";
+import { isDocumentFocusRoute, isViewerRoute } from "@/lib/focus-routes";
 
 export type { SidebarData, SidebarVariant } from "@/components/hub/course-data-context";
 
@@ -51,7 +51,12 @@ export function CourseShell({
   const pathname = usePathname();
 
   const [open, setOpen] = useState(false); // mobile drawer
-  const [hidden, setHidden] = useState(false); // desktop collapse ("Hide menu")
+  // Desktop collapse ("Hide menu") — SSR-initialised to the document-focus
+  // auto-collapse (s146): previously `false` at first paint, so a deep link
+  // to the paper viewer rendered the 256px sidebar for one hydration frame
+  // before the effect collapsed it. The effect below keeps the leave-route
+  // restore contract (only undo a collapse WE performed).
+  const [hidden, setHidden] = useState(() => isDocumentFocusRoute(pathname));
   const menuBtnRef = useRef<HTMLButtonElement>(null);
   const drawerPanelRef = useRef<HTMLDivElement>(null);
 
@@ -61,6 +66,12 @@ export function CourseShell({
   // Leaving the route restores the prior state, but ONLY if we collapsed it
   // (a manual "Hide menu" by the user is never undone).
   const focusRoute = isDocumentFocusRoute(pathname);
+  // s146: the paper-viewer route suppresses the global header (56px) and the
+  // mobile Menu bar (49px) — the PDF is the screen there. The rail/sidebar
+  // sticky offsets and the row's min-height must re-derive from the viewport
+  // top on it, and the drawer trigger (which lives in the suppressed bar)
+  // never renders.
+  const viewerRoute = isViewerRoute(pathname);
   const autoCollapsedRef = useRef(false);
   useEffect(() => {
     if (focusRoute) {
@@ -173,7 +184,14 @@ export function CourseShell({
   // own re-open button, so the sidebar could never be toggled back open.
   const rail = (
     <aside
-      className="sticky top-14 hidden h-[calc(100dvh-3.5rem-1px)] w-11 shrink-0 flex-col items-center border-r bg-background pt-3 lg:flex"
+      className={cn(
+        "sticky hidden w-11 shrink-0 flex-col items-center border-r bg-background pt-3 lg:flex",
+        // s146: on the paper-viewer route the global header is suppressed —
+        // the rail pins to the viewport top and fills the full height
+        viewerRoute
+          ? "top-0 h-[calc(100dvh-1px)]"
+          : "top-14 h-[calc(100dvh-3.5rem-1px)]",
+      )}
       aria-label="Course navigation"
     >
       <Button
@@ -274,9 +292,18 @@ export function CourseShell({
       {/* course-shell-row: the CLA dock's physical-reflow hook (globals.css,
           HUB-CLA-SIDEBAR) — while a CLA panel is docked open on ≥1400px this
           row cedes 400px on the right, SME's expanded-chat behaviour */}
-      <div className="course-shell-row flex min-h-[calc(100dvh-3.5rem-1px)]">
-        {/* mobile drawer: nav groups + the resource topic tree */}
-        {open && (
+      <div
+        className={cn(
+          "course-shell-row flex",
+          viewerRoute
+            ? "min-h-[calc(100dvh-1px)]"
+            : "min-h-[calc(100dvh-3.5rem-1px)]",
+        )}
+      >
+        {/* mobile drawer: nav groups + the resource topic tree. Never on the
+            paper-viewer route — its trigger (the Menu bar) is suppressed
+            there, so a stale open state could never be dismissed. */}
+        {open && !viewerRoute && (
           <div className="fixed inset-0 z-40 lg:hidden" role="dialog" aria-modal="true" aria-label="Course menu">
             <button className="absolute inset-0 bg-black/40" aria-label="Close menu" onClick={() => setOpen(false)} />
             <div
@@ -301,7 +328,12 @@ export function CourseShell({
           rail
         ) : (
           <aside
-            className="sticky top-14 hidden h-[calc(100dvh-3.5rem-1px)] w-64 shrink-0 border-r bg-background lg:block"
+            className={cn(
+              "sticky hidden w-64 shrink-0 border-r bg-background lg:block",
+              viewerRoute
+                ? "top-0 h-[calc(100dvh-1px)]"
+                : "top-14 h-[calc(100dvh-3.5rem-1px)]",
+            )}
             aria-label="Course navigation"
           >
             {sidebar}
@@ -311,7 +343,12 @@ export function CourseShell({
         {/* content column */}
         <div className="min-w-0 flex-1">
           {/* mobile-only drawer trigger bar; the desktop sidebar is toggled
-              by the rail icon when collapsed */}
+              by the rail icon when collapsed. Stands down on the paper-viewer
+              route (s146): the global header above it is already suppressed
+              there, and a second sticky 49px bar over the PDF is exactly the
+              chrome the document-focus contract exists to remove. The
+              viewer's own back link is the escape hatch. */}
+          {!viewerRoute && (
           <div className="sticky top-14 z-30 flex items-center gap-2 border-b bg-background px-3 py-2 lg:hidden">
             <Button
               ref={menuBtnRef}
@@ -326,6 +363,7 @@ export function CourseShell({
             </Button>
             <span className="truncate text-sm font-medium">{data.course.label ?? data.course.subject}</span>
           </div>
+          )}
           {children}
         </div>
       </div>

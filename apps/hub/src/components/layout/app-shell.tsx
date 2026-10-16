@@ -8,6 +8,12 @@
  * resource detail pages add the topic panel (resource-panel). Demo-discipline
  * disclosures and provider badges live in the footer, out of the learner's
  * reading path.
+ *
+ * s146 exception — the paper-viewer route: the header itself stands down
+ * there (focus-routes.isViewerRoute). The paper PDF is the whole screen on
+ * that route (user-reported: the PDF viewport was drowning in chrome), the
+ * viewer row carries its own back link, and the footer is already omitted
+ * via the immersive contract.
  */
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -45,7 +51,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { clearIdentity, useIdentity } from "@/lib/identity";
-import { isImmersiveRoute } from "@/lib/focus-routes";
+import { isImmersiveRoute, isViewerRoute } from "@/lib/focus-routes";
 import { useLastOpened } from "@/lib/last-opened";
 import { cn } from "@/lib/utils";
 import type { PublicConfig } from "@/lib/config";
@@ -160,6 +166,7 @@ export function AppShell({
   const inExplorer =
     pathname.startsWith("/graph-explorer") || pathname.startsWith("/knowledge-graph");
   const inTutor = pathname.startsWith("/tutor");
+  const viewerRoute = isViewerRoute(pathname);
   const bare = inCourse || inExplorer || inTutor;
 
   // UX audit 2026-10-02 #22: Experiments is the developer area — it sat next
@@ -183,6 +190,10 @@ export function AppShell({
       >
         Skip to content
       </a>
+      {/* s146: the header stands down entirely on the paper-viewer route —
+          the PDF is the screen there; the skip link below still targets the
+          main landmark either way. */}
+      {!viewerRoute && (
       <header className="sticky top-0 z-40 border-b bg-background print:hidden">
         <div className="flex h-14 items-center gap-3 px-4 sm:px-6">
           <Link href="/" className="flex items-center gap-2">
@@ -327,6 +338,7 @@ export function AppShell({
           </div>
         </div>
       </header>
+      )}
 
       {/* content */}
       <main
