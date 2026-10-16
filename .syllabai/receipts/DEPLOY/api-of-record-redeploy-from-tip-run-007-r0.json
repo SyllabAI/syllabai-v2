@@ -1,0 +1,42 @@
+{
+ "receipt": "api-of-record-redeploy-from-tip-run-007-r0",
+ "card": "LEVER api-of-record redeploy from tip — EXECUTED (run-007; the band-serving pickup firing: bakes the T-MIG-128/129 bank mounts (6633cb0) + Card A BKT/BDT telemetry (e8c91bd) + the T-MIG-130 api surface row into the live api carrier; firing legality = direct operator order 'Proceed' trace 1a14363e5fff7ff9 on the r0 disclosure that the bands' serving pickup = this lever — the run-006 'direct operator order' lineage class)",
+ "lane": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "operator_trace": "1a14363e5fff7ff9 'Proceed' (direct operator order; continuation of the standing 'api redeploy from tip' order lineage — 5th operator-ordered firing class: 1 run-002-r9, 2 T-MIG-102, 3 T-MIG-104 amendment carry, 4 run-006 '4th firing', 5 THIS)",
+ "source_of_record": "main tip e79be16886f2487f67ccaabe12efc724f803fd7b (fetch-first: tip had NOT moved since the run-002 canary receipt commit; worktree clean at HEAD==FETCH_HEAD==e79be16)",
+ "delta_of_record": [
+  "serving-of-record pre-act: dpl_4PASL11jfnKfCopz8WeTGUo7i36v (2026-10-13T19:06:57Z, src=cli) @ content-of-350487b = the PR #183 era — predates the bank mounts",
+  "git diff 350487b..e79be16 over apps/api+packages = 10 files +1,832/-6: bank-bands.ts (+481), packages/shared bank-intent.ts (+224) + tests, packages/contracts tutor.ts (+107), the narrow /api/v1/tutor/bank surface row, learner model-update test — ALL intended payload (T-MIG-128/129 + T-MIG-130 api rows)",
+  "shim-target drift pre-check: diff over services/teacher/snapshot.ts + services/learner-me/nba-concept-graph.ts = EMPTY (zero shim-pattern drift)",
+  "6/6 asset SHAs == the of-record pins EXACT (concepts 24fa91ac7149682b, edges 8a651dd9e60bfefa, practicals e53e5f87606a2b5a, relationships b3b7529222d77d80, spec_points b1fea69953205077, topics a7b14cbdd34bb9fe)",
+  "b917adf/e79be16/receipts commits = hub-side + .syllabai-only — ride the HUB lever, not this one"
+ ],
+ "build_at_tip": [
+  "093 recipe verbatim via the in-repo of-record tool .syllabai/receipts/T-MIG-093/tools/deploy_bundle_build.py (lane copy scripts/deploy_bundle_build_r130.py = path constants only: REPO /home/z/my-project/ws/syllabai-v2, STAGE /home/z/my-project/scripts/r130-stage)",
+  "shims asserted-unique patch = clean apply (zero pattern drift at patch level)",
+  "bundle: 329 modules (of-record 321 + the 8 new bank-mount/contracts/shared modules = the payload census) / 3,163,283 bytes CJS vs run-006's 3,093,758 (+69.5 KB = the bank payload)",
+  "worktree restored post-build (git checkout of the 2 shimmed files, rm of deploy-entry.ts + concept-assets.gen.ts), git status clean at e79be16 — verified PRISTINE",
+  "bun install --frozen-lockfile: 930 packages == the run-006 of-record count EXACT (lock parity); bun 1.4.2"
+ ],
+ "localgate_8_8": "ALL PASS on the real Neon wire (ep-ancient-cake-a52e4kfd, the of-record single main; DATABASE_URL via sanctioned Vercel env-API read IN-MEMORY ONLY — zero secret material staged on disk, run-005/006 discipline; local-only 44-byte JWT key per the gate law; probe learner r0-r130gate-* example.invalid of the register class; tutor CRUD net-zero: health/login-malformed/register/tutor-create/list-nonempty/latest/delete/list-after-delete 200/400/201/201/200/200/204/200)",
+ "deploy_leg": {
+  "mechanism": "vercel CLI 62.7.0 deploy --prod --yes from the 2-file stage (api/index.js + vercel.json rewrites; .vercel/project.json linked prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ / team_ULL54qkhzKBmnKrpO6BD4mYX) — the 093 CLI-upload recipe; the gitSource deployments-API lever remains BANNED of record (run-005 empty-build alias-flip incident)",
+  "deployment": "dpl_2cJt318tLHHJvrSHTawY5QxsEri7 (syllabai-v2-5tzt07j9h-syllab-ai.vercel.app)",
+  "result": "READY 2026-10-16T06:37:18Z on first poll, target=production, BOTH production aliases attached (v13 detail alias field first-hand: syllabai-v2.vercel.app + syllabai-v2-syllab-ai.vercel.app); live /actuator/health 200 {groups:[liveness,readiness],status:UP} through the canonical alias"
+ },
+ "live_canary_run_003_12_12": {
+  "harness": "the run-002 of-record 12-leg post-redeploy canary, lane copy scripts/r0_postredeploy_canary_run003.py (transcript path + meta only; transcript scripts/r0_postredeploy_canary_run003_transcript.json)",
+  "verdict": "12/12 PASS — band_posture BAND_SERVED end-to-end (the run-002 'fall-through' posture FLIPPED)",
+  "the_flip": [
+   "leg 5 bank-mount discriminator: 404 not_found -> 200 MOUNTED — /api/v1/tutor/bank/questions?topic=rates-of-reaction total=56, items 25, resolvedNodes = KG anchors (Rates of reaction + marble-chips required practical)",
+   "leg 6 THE BAND leg through the hub relay: FALLTHROUGH_GROUNDED -> BAND_SERVED — events [band,meta,delta,done], kind=questions, provider=bank, total=56, items 25, first_item = real corpus stem (H2+I2->2HI, dH=+26 kJ/mol) with marks=10 and specPointCodes [4CH1-3.1, 4CH1-3.14C] — the deterministic question-listing band SERVING with marks + spec tags, ZERO LLM spend on the band turn",
+   "leg 7 grounded arm UNCHANGED: 200 groq/gpt-oss-120b refused=false, 6 citations, 1 in-app /sources/ chunk deep link (vector arm still keyed + serving), 750 chars, 3.9s",
+   "legs 1-4, 8-9: health bookends, relay body-gate 400, served-bundle marker, session read-back 2 turns, Phase-2 recorder read-back — all unchanged PASS"
+  ],
+  "llm_spend": 1
+ },
+ "rollback": "one-call re-alias to dpl_4PASL11jfnKfCopz8WeTGUo7i36v (READY, untouched, the pre-act serving of record)",
+ "write_ledger": "2 probe learners (localgate + canary register class, example.invalid synthetic identities) + net-zero tutor rows (create+delete legs); 1 canary tutor session + 1 grounded ask exchange + Phase-2 recorder rows (the canary write ledger of record); zero DDL; zero Neon schema/env writes; exactly ONE production deployment; zero PRs",
+ "hygiene": "vcp + PAT inline-only, never persisted/logged/committed; DATABASE_URL in-memory only (env var injection, zero staging files); transcripts scrub-asserted (statuses/shapes/latency/x-vercel-id only, no bearer/no password/no set-cookie)",
+ "verdict": "5TH FIRING EXECUTED CLEAN: api-of-record = dpl_2cJt318tLHHJvrSHTawY5QxsEri7 @ main tip e79be16 — the T-MIG-128/129 bank mounts SERVE LIVE end-to-end through the hub relay (deterministic question-listing band with marks + spec tags, provider=bank, zero LLM spend), grounded v2 RAG arm unchanged; run-002's disclosed serving pickup is DISCHARGED. Residual: the hub re-bake lever (b917adf /past-papers archive) remains open, separate."
+}
