@@ -41,6 +41,7 @@ import type { SqlFn } from "./sql";
 import { parseFetchQuery, parsedIsEmpty } from "./fetch-parser";
 import { buildTutorFetchBank } from "./fetch-bank";
 import { unitCandidates, unitFromPaperCode } from "./paper-question";
+import { hygienicStem } from "./stem-hygiene";
 import type {
   TutorBankPaperChunk,
   TutorBankPaperDocumentView,
@@ -235,7 +236,10 @@ const itemOf = (r: ListingRow, codes: string[]): TutorBankQuestionItem => ({
   questionId: String(r.id),
   externalRef: r.external_ref == null ? null : String(r.external_ref),
   questionType: r.question_type == null ? null : String(r.question_type),
-  stem: String(r.stem),
+  // run-004 proposal #1: the serve-side stem-hygiene projection — the stored
+  // row of record is untouched; the learner-facing stem never carries the
+  // extraction-furniture/math-markup classes (census-cited law).
+  stem: hygienicStem(String(r.stem)),
   marks: Number(r.marks),
   commandWord: r.command_word == null ? null : String(r.command_word),
   specPointCodes: codes,
@@ -325,7 +329,8 @@ const bankQuestionItemOf = (
   questionId: String(r.id),
   externalRef: r.external_ref == null ? null : String(r.external_ref),
   questionType: r.question_type == null ? null : String(r.question_type),
-  stem: String(r.stem),
+  // the same stem-hygiene projection as the listing (one law, both bands)
+  stem: hygienicStem(String(r.stem)),
   marks: Number(r.marks),
   commandWord: r.command_word == null ? null : String(r.command_word),
   specPointCodes: codes,

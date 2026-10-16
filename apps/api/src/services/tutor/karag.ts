@@ -57,6 +57,7 @@ import {
 } from "./prompt";
 import { retrievalQuery } from "./retrieval-query";
 import { fuseWithPlanWeights } from "./rrf";
+import { hygienicEvidenceText } from "./stem-hygiene";
 import {
   StreamSanitizer,
   sanitizeAnswer,
@@ -337,7 +338,19 @@ export async function prepare(
   }
   const seen = new Set<string>();
   const merged: EvidenceItem[] = [];
-  const admit = (item: EvidenceItem): boolean => {
+  // run-004 proposal #1 (+ #5 absorbed): the evidence projection unwraps the
+  // math-markup class from CHUNK-sourced content before it reaches the
+  // prompt — the model copies what its context shows (the operator-reported
+  // CH4/O2 leak class). KG nodes are curated and the learner's own words
+  // pass through untouched; dedup keys are row ids, so this cannot change
+  // the merge identity. Zero writes: the stored chunks of record are
+  // untouched (the /sources reader keeps its verbatim law).
+  const project = (item: EvidenceItem): EvidenceItem =>
+    item.source === "KNOWLEDGE_NODE" || item.source === "LEARNER_WORK"
+      ? item
+      : { ...item, content: hygienicEvidenceText(item.content) };
+  const admit = (rawItem: EvidenceItem): boolean => {
+    const item = project(rawItem);
     const key = mergeKey(item);
     if (seen.has(key)) return false;
     seen.add(key);

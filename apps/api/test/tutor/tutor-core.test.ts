@@ -849,3 +849,125 @@ describe("ka-rag merge laws — run-004 proposal #2 (dedup restored + rekeyed, p
     expect(prep.evidence.length).toBe(TUTOR_EVIDENCE_LIMIT);
   });
 });
+
+// ── run-004 proposal #1 — the evidence hygiene projection (operator trace
+// 1a144e5e55662125): chunk-sourced content is unwrapped of the math-markup
+// class before the prompt (the model copies what its context shows); KG
+// nodes and the learner's own words pass through untouched. ─────────────────
+
+describe("ka-rag evidence hygiene — run-004 proposal #1 (context math-unwrap)", () => {
+  const emptyGraph = {
+    async structureNodes() {
+      return [];
+    },
+    async prerequisiteChains() {
+      return new Map();
+    },
+    async misconceptionsForTopics() {
+      return new Map();
+    },
+  };
+  const scopes = {
+    async resolveActive() {
+      return { curriculumVersionId: "cv", code: "4CH1", surface: new Set(["n1"]) };
+    },
+    async resolveForCourse() {
+      return null;
+    },
+  };
+
+  const rawChunk = (kind: string, content: string): EvidenceItem =>
+    evidenceFromChunk({
+      documentRowId: "rowX",
+      documentId: "doc-rowX",
+      documentVersion: 1,
+      chunkId: "cX",
+      chunkIndex: 0,
+      kind,
+      content,
+      pageStart: 3,
+      pageEnd: null,
+      elementIds: [],
+      embeddingModel: "test",
+      cosine: 0.9,
+    });
+
+  const run = (vector: EvidenceItem[]) =>
+    prepare(
+      {
+        sql: fakeSql({}),
+        clock: fixedClock,
+        kgGraph: emptyGraph,
+        scopes,
+        vectorRetriever: async () => vector,
+        paperQuestionResolver: async () => ({
+          items: [],
+          identityParsed: false,
+          identityLabel: null,
+        }),
+      } as never,
+      "l1",
+      "explain the reaction",
+      [],
+      null,
+    );
+
+  test("CHUNK SOURCED: the math-markup class unwraps before the prompt", async () => {
+    const prep = await run([
+      rawChunk("QUESTION_PAPER", "sodium peroxide $ \\mathrm{(N a_{2} O_{2})} $ absorbs $ \\mathrm{C O_{2}} $"),
+    ]);
+    const content = prep.evidence[0]!.content;
+    expect(content).not.toContain("$");
+    expect(content).not.toContain("\\");
+    expect(content).toContain("(Na2O2)");
+    expect(content).toContain("CO2");
+  });
+
+  test("LEARNER WORK: the learner's own words pass through byte-for-byte", async () => {
+    const mine = "i think the answer is $ \\mathrm{H 2 S O 4} $ maybe?";
+    const mineItem: EvidenceItem = {
+      source: "LEARNER_WORK",
+      content: mine,
+      documentRowId: "rowMine",
+      documentId: "doc-rowMine",
+      documentVersion: 1,
+      chunkId: "mine-1",
+      chunkIndex: 0,
+      nodeId: null,
+      nodeCode: null,
+      nodeType: null,
+      nodeTitle: null,
+      pageStart: null,
+      pageEnd: null,
+      elementIds: [],
+      topicIds: [],
+      retrievalScore: 0.9,
+      fusedScore: 0.9,
+      rerankScore: null,
+    };
+    const prep = await run([mineItem]);
+    expect(prep.evidence[0]!.content).toBe(mine);
+  });
+
+  test("KG NODE: curated node content passes through byte-for-byte", async () => {
+    const node = evidenceFromNode({
+      nodeId: "n1",
+      code: "4CH1-2.20",
+      nodeType: "SUBTOPIC",
+      title: "Ionic bonding $ \\mathrm{N a C l} $",
+      description: null,
+      matchScore: 0.9,
+    });
+    const prep = await run([node]);
+    expect(prep.evidence[0]!.content).toContain("$ \\mathrm{N a C l} $");
+  });
+
+  test("DEDUP IDENTITY: hygiene cannot change the merge key (one page still one citation)", async () => {
+    const prep = await run([
+      rawChunk("QUESTION_PAPER", "before $ \\mathrm{A} $ after"),
+      rawChunk("QUESTION_PAPER", "before $ \\mathrm{B} $ after"),
+    ]);
+    // same row + page — one citation regardless of content projection
+    expect(prep.evidence.length).toBe(1);
+  });
+});

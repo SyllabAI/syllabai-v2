@@ -36,6 +36,7 @@
  *     as empty with the echo).
  */
 import type { SqlFn } from "./sql";
+import { hygienicStem } from "./stem-hygiene";
 import {
   parseFetchQuery,
   parsedIsEmpty,
@@ -179,7 +180,7 @@ async function resolveQuestion(
   return {
     questionId: String(row.id),
     externalRef: String(row.external_ref),
-    stem: row.stem == null ? null : String(row.stem),
+    stem: row.stem == null ? null : hygienicStem(String(row.stem)),
     marks: row.marks == null ? null : Number(row.marks),
     questionType: row.question_type == null ? null : String(row.question_type),
     commandWord: row.command_word == null ? null : String(row.command_word),
