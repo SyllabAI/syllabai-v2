@@ -13,11 +13,21 @@
  *
  * Zero LLM was involved in whatever this card shows — the footer says so,
  * because an honest surface labels its provenance.
+ *
+ * Copy fidelity (run-004 proposal #4, operator trace 1a1458af5eed4b21):
+ * linear DOM copy on this card scrambles the [badge][stem] pairing (a drag
+ * from stem_1 reads badge_2 under it) and cuts at the scroll container's
+ * boundary — the operator's original paste symptom. The card therefore
+ * carries its own deterministic copy path: a per-row copy button and a
+ * card-level "Copy all" that serialize the VIEW DATA (full stems, every
+ * question the payload carries — never the DOM clamp, never the scroll
+ * cut), with the band-1 shown/total cut disclosed in the copied header.
  */
+import { useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { seriesLabel } from "@syllabai/shared";
 import { CitationPaperLink } from "@/components/citations/citation-paper-link";
-import { BookOpenCheck, CheckSquare, ExternalLink, FileText, Image as ImageIcon, ListChecks } from "lucide-react";
+import { BookOpenCheck, Check, CheckSquare, Copy, ExternalLink, FileText, Image as ImageIcon, ListChecks } from "lucide-react";
 import type { TurnBand, TurnBandQuestionItem } from "./threads";
 
 /** The F-022 reader href — the same law the citation bridge applies:
@@ -45,15 +55,80 @@ function paperLabel(p: { series: string | null; year: number | null; paperCode: 
   return [sess || null, p.paperCode].filter((x): x is string => x != null && x !== "").join(" · ");
 }
 
+// ── copy fidelity (run-004 proposal #4) ───────────────────────────────
+
+/** clipboard + 1600ms feedback state — the chat action-rail pattern */
+function useCopyFeedback(): [boolean, (text: string) => Promise<void>] {
+  const [copied, setCopied] = useState(false);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const copy = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      if (timer.current) clearTimeout(timer.current);
+      timer.current = setTimeout(() => setCopied(false), 1600);
+    } catch {
+      // clipboard unavailable (permissions / insecure context) — stay silent
+    }
+  };
+  return [copied, copy];
+}
+
+function marksTag(marks: number): string {
+  return `[${marks} mk${marks === 1 ? "" : "s"}]`;
+}
+
+/** one serialized question row — the exact text both copy paths emit */
+function questionCopyLine(index: number, q: TurnBandQuestionItem): string {
+  return `${index + 1}. ${marksTag(q.marks)} ${q.stem}`;
+}
+
+/** the card's deterministic copy text — serialized from the VIEW DATA (full
+ *  stems, every question the payload carries), never from the DOM: the
+ *  line-clamp and the scroll containers are presentational and must not
+ *  shape what the learner pastes. */
+function bandCopyText(band: TurnBand, courseSlug?: string | null): string {
+  if (band.kind === "questions") {
+    const { view } = band;
+    const cutNote =
+      view.items.length < view.total
+        ? ` — showing the first ${view.items.length} of ${view.total} (refine the topic for the rest)`
+        : "";
+    const lines = view.items.map((q, i) => questionCopyLine(i, q));
+    return [`Question bank — ${view.total} matching question${view.total === 1 ? "" : "s"}${cutNote}`, "", ...lines].join(
+      "\n",
+    );
+  }
+  const { view } = band;
+  const marks = view.questions.reduce((s, q) => s + (q.marks || 0), 0);
+  const head = `${paperLabel(view.paper) || view.paper.title || "Exam paper"} — ${view.questions.length} questions · ${marks} marks`;
+  const origin = typeof window === "undefined" ? "" : window.location.origin;
+  const qp = view.questionPaper.chunks[0];
+  const ms = view.markScheme.chunks[0];
+  const docLines = [
+    qp ? `Question paper: ${origin}${readerHref(qp.documentRowId, qp.pageStart, courseSlug)}` : null,
+    ms ? `Mark scheme: ${origin}${readerHref(ms.documentRowId, ms.pageStart, courseSlug)}` : null,
+  ].filter((x): x is string => x != null);
+  const lines = view.questions.map((q, i) => questionCopyLine(i, q));
+  return [head, ...docLines, "", ...lines].join("\n");
+}
+
+const copyBtnClass =
+  "inline-flex size-6 shrink-0 items-center justify-center rounded text-muted-foreground transition-colors hover:bg-muted hover:text-foreground";
+
 function QuestionRow({
   q,
+  index,
   courseSlug,
 }: {
   q: TurnBandQuestionItem;
+  /** 0-based position in the card's data — the copy path's question number */
+  index: number;
   courseSlug?: string | null;
 }) {
+  const [copied, copy] = useCopyFeedback();
   return (
-    <li className="flex items-start gap-2 py-1.5">
+    <li className="group/q flex items-start gap-2 py-1.5">
       <Badge variant="outline" className="mt-0.5 h-5 shrink-0 px-1.5 text-[10px] tabular-nums">
         {q.marks}
         {q.marks === 1 ? "mk" : "mks"}
@@ -61,15 +136,26 @@ function QuestionRow({
       <div className="min-w-0 flex-1">
         <p className="line-clamp-2 text-xs leading-snug">{q.stem}</p>
         <FigureChips q={q} courseSlug={courseSlug} />
-        <p className="mt-0.5 truncate text-[10px] text-muted-foreground">
-          {[
-            q.paper ? paperLabel(q.paper) : null,
-            q.specPointCodes.length > 0 ? q.specPointCodes.join(", ") : null,
-            q.commandWord,
-          ]
-            .filter((x): x is string => x != null && x !== "")
-            .join(" · ")}
-        </p>
+        <div className="mt-0.5 flex items-center gap-1">
+          <p className="min-w-0 flex-1 truncate text-[10px] text-muted-foreground">
+            {[
+              q.paper ? paperLabel(q.paper) : null,
+              q.specPointCodes.length > 0 ? q.specPointCodes.join(", ") : null,
+              q.commandWord,
+            ]
+              .filter((x): x is string => x != null && x !== "")
+              .join(" · ")}
+          </p>
+          <button
+            type="button"
+            onClick={() => void copy(questionCopyLine(index, q))}
+            className={`${copyBtnClass} opacity-100 transition-opacity lg:opacity-0 lg:group-hover/q:opacity-100 lg:focus-visible:opacity-100`}
+            aria-label={`Copy question ${index + 1} (${q.marks} marks) with its full text`}
+            title="Copy the full question text"
+          >
+            {copied ? <Check className="size-3" aria-hidden /> : <Copy className="size-3" aria-hidden />}
+          </button>
+        </div>
       </div>
     </li>
   );
@@ -146,6 +232,7 @@ function QuestionsBand({
 }) {
   const { view } = band;
   const cut = view.items.length < view.total;
+  const [copied, copy] = useCopyFeedback();
   return (
     <div className="space-y-2 p-3">
       <div className="flex flex-wrap items-center gap-1.5">
@@ -159,10 +246,20 @@ function QuestionsBand({
             <span className="truncate">{n.code ? `${n.code} ${n.title}` : n.title}</span>
           </Badge>
         ))}
+        <button
+          type="button"
+          onClick={() => void copy(bandCopyText(band, courseSlug))}
+          className={`${copyBtnClass} ml-auto`}
+          aria-label="Copy all listed questions with their full text"
+          title="Copy every listed question with its full text (not just the visible lines)"
+        >
+          {copied ? <Check className="size-3" aria-hidden /> : <Copy className="size-3" aria-hidden />}
+          <span className="sr-only">Copy all</span>
+        </button>
       </div>
       <ul className="max-h-72 divide-y divide-border/60 overflow-y-auto pr-1">
-        {view.items.map((q) => (
-          <QuestionRow key={q.questionId} q={q} courseSlug={courseSlug} />
+        {view.items.map((q, i) => (
+          <QuestionRow key={q.questionId} q={q} index={i} courseSlug={courseSlug} />
         ))}
       </ul>
       {cut && (
@@ -181,6 +278,7 @@ function PaperBand({ band, courseSlug }: { band: Extract<TurnBand, { kind: "pape
   const ms = view.markScheme;
   const qpRow = firstChunkHref(qp, courseSlug);
   const msRow = firstChunkHref(ms, courseSlug);
+  const [copied, copy] = useCopyFeedback();
   return (
     <div className="space-y-2 p-3">
       <div className="flex flex-wrap items-center gap-1.5">
@@ -196,6 +294,16 @@ function PaperBand({ band, courseSlug }: { band: Extract<TurnBand, { kind: "pape
             <CheckSquare className="size-2.5" aria-hidden /> validated
           </Badge>
         )}
+        <button
+          type="button"
+          onClick={() => void copy(bandCopyText(band, courseSlug))}
+          className={`${copyBtnClass} ml-auto`}
+          aria-label="Copy the whole paper listing with every question's full text"
+          title="Copy every question with its full text (not just the visible lines)"
+        >
+          {copied ? <Check className="size-3" aria-hidden /> : <Copy className="size-3" aria-hidden />}
+          <span className="sr-only">Copy all</span>
+        </button>
       </div>
       {view.siblings.length > 0 && (
         <p className="text-[10px] text-muted-foreground">
@@ -219,8 +327,8 @@ function PaperBand({ band, courseSlug }: { band: Extract<TurnBand, { kind: "pape
       </ul>
       {view.questions.length > 0 && (
         <ul className="max-h-56 divide-y divide-border/60 overflow-y-auto pr-1">
-          {view.questions.slice(0, 12).map((q) => (
-            <QuestionRow key={q.questionId} q={q} courseSlug={courseSlug} />
+          {view.questions.slice(0, 12).map((q, i) => (
+            <QuestionRow key={q.questionId} q={q} index={i} courseSlug={courseSlug} />
           ))}
         </ul>
       )}
