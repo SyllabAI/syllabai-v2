@@ -1,0 +1,14 @@
+{
+  "name": "@golden/retrieval-eval",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Retrieval eval harness (Card C) — fusion-layer weights-vs-uniform ablation over recorded EMBED_REV 2 fixture vectors; labels free from question_topics anchoring. Provider-free by construction (no embedding provider, no database). Sibling of golden/llm-shadow.",
+  "scripts": {
+    "test": "bun test",
+    "selftest": "bun run selftest.ts --selftest"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.2"
+  }
+}

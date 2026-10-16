@@ -1,0 +1,187 @@
+{
+  "schema": "retrieval-eval/v1",
+  "embedRev": 2,
+  "notes": "Synthetic micro-corpus (Card C) — one IAL-Chemistry-flavoured scope, 5 nodes, 12 chunks, 6 questions. Vectors are 8-dim recorded fixtures with hand-derivable cosines (axis-aligned topics on dims 0-4). The corpus exercises: the dual-EXISTS gate (c5/c10 ride the paper leg while UNVALIDATED; c9 is gate-excluded despite an above-floor cosine), the MIN_COSINE floor, the KG specificity floor (q4's 0.4 match), the fused budget truncation (q2 carries 8 candidates), the deterministic tiebreak (q1/q4 uniform ties at 1/61), and the weights-vs-uniform ablation flip (q5: the MARK_SCHEME distractor leads under uniform, the NOTE anchor under plan-v2). Ground-truth topics are the LABEL surface; serving topicIds are query-level v0 shape and are attached by the harness, not stored here.",
+  "nodes": [
+    { "nodeId": "a1000000-0000-4000-8000-000000000001", "code": "IALCHEM2018-U1-T3", "title": "Rates of reaction" },
+    { "nodeId": "a1000000-0000-4000-8000-000000000002", "code": "IALCHEM2018-U2-T2", "title": "Enzymes" },
+    { "nodeId": "a1000000-0000-4000-8000-000000000003", "code": "IALCHEM2018-U1-T4", "title": "Titration" },
+    { "nodeId": "a1000000-0000-4000-8000-000000000004", "code": "IALCHEM2018-U3-T1", "title": "Electrolysis" },
+    { "nodeId": "a1000000-0000-4000-8000-000000000005", "code": "IALCHEM2018-U1-T5", "title": "Mole calculations" }
+  ],
+  "chunks": [
+    {
+      "chunkId": "b1000000-0000-4000-8000-000000000001",
+      "documentId": "doc-textbook-1", "documentRowId": "row-1", "documentVersion": 3,
+      "chunkIndex": 0, "kind": "TEXTBOOK",
+      "content": "Rates of reaction: collision theory and activation energy — powdered magnesium presents a greater surface area, so more collisions per second succeed.",
+      "pageStart": 12, "pageEnd": 13, "embeddingModel": "fixture-embed-v2", "embedRev": 2,
+      "validationState": "VALIDATED", "paperLinked": false,
+      "vector": [3, 0, 0, 0, 0, 0, 0, 0],
+      "groundTruthTopics": ["a1000000-0000-4000-8000-000000000001"]
+    },
+    {
+      "chunkId": "b1000000-0000-4000-8000-000000000002",
+      "documentId": "doc-notes-1", "documentRowId": "row-2", "documentVersion": 2,
+      "chunkIndex": 1, "kind": "EXTERNAL_NOTES",
+      "content": "Collision theory in plain terms: particles must collide with at least the activation energy and the right orientation.",
+      "pageStart": 3, "pageEnd": 3, "embeddingModel": "fixture-embed-v2", "embedRev": 2,
+      "validationState": "VALIDATED", "paperLinked": false,
+      "vector": [8, 6, 0, 0, 0, 0, 0, 0],
+      "groundTruthTopics": ["a1000000-0000-4000-8000-000000000001"]
+    },
+    {
+      "chunkId": "b1000000-0000-4000-8000-000000000003",
+      "documentId": "doc-textbook-1", "documentRowId": "row-1", "documentVersion": 3,
+      "chunkIndex": 2, "kind": "TEXTBOOK",
+      "content": "Enzymes are biological catalysts that lower the activation energy of reactions inside living organisms.",
+      "pageStart": 40, "pageEnd": 41, "embeddingModel": "fixture-embed-v2", "embedRev": 2,
+      "validationState": "VALIDATED", "paperLinked": false,
+      "vector": [0, 2, 0, 0, 0, 0, 0, 0],
+      "groundTruthTopics": ["a1000000-0000-4000-8000-000000000002"]
+    },
+    {
+      "chunkId": "b1000000-0000-4000-8000-000000000004",
+      "documentId": "doc-qp-1", "documentRowId": "row-4", "documentVersion": 1,
+      "chunkIndex": 3, "kind": "QUESTION_PAPER",
+      "content": "Question 6: calculate the number of moles of hydrogen produced when 0.65 g of zinc reacts fully with excess acid.",
+      "pageStart": 6, "pageEnd": 6, "embeddingModel": "fixture-embed-v2", "embedRev": 2,
+      "validationState": "VALIDATED", "paperLinked": true,
+      "vector": [0, 12, 5, 0, 0, 0, 0, 0],
+      "groundTruthTopics": ["a1000000-0000-4000-8000-000000000005"]
+    },
+    {
+      "chunkId": "b1000000-0000-4000-8000-000000000005",
+      "documentId": "doc-ms-1", "documentRowId": "row-5", "documentVersion": 1,
+      "chunkIndex": 4, "kind": "MARK_SCHEME",
+      "content": "Mark scheme: accept 0.010 mol; allow ecf from moles of zinc; reject mass ratio methods without conversion.",
+      "pageStart": 6, "pageEnd": 6, "embeddingModel": "fixture-embed-v2", "embedRev": 2,
+      "validationState": "UNVALIDATED", "paperLinked": true,
+      "vector": [0, 4, 3, 0, 0, 0, 0, 0],
+      "groundTruthTopics": []
+    },
+    {
+      "chunkId": "b1000000-0000-4000-8000-000000000006",
+      "documentId": "doc-notes-1", "documentRowId": "row-2", "documentVersion": 2,
+      "chunkIndex": 5, "kind": "EXTERNAL_NOTES",
+      "content": "Titration technique: rinse the burette with the solution, fill below the zero mark, read the bottom of the meniscus at eye level.",
+      "pageStart": 8, "pageEnd": 9, "embeddingModel": "fixture-embed-v2", "embedRev": 2,
+      "validationState": "VALIDATED", "paperLinked": false,
+      "vector": [0, 0, 4, 0, 0, 0, 0, 0],
+      "groundTruthTopics": ["a1000000-0000-4000-8000-000000000003"]
+    },
+    {
+      "chunkId": "b1000000-0000-4000-8000-000000000007",
+      "documentId": "doc-textbook-1", "documentRowId": "row-1", "documentVersion": 3,
+      "chunkIndex": 6, "kind": "TEXTBOOK",
+      "content": "Electrolysis of molten compounds: the cation migrates to the cathode and is reduced; the anion is oxidised at the anode.",
+      "pageStart": 55, "pageEnd": 56, "embeddingModel": "fixture-embed-v2", "embedRev": 2,
+      "validationState": "VALIDATED", "paperLinked": false,
+      "vector": [0, 0, 0, 6, 0, 0, 0, 0],
+      "groundTruthTopics": ["a1000000-0000-4000-8000-000000000004"]
+    },
+    {
+      "chunkId": "b1000000-0000-4000-8000-000000000008",
+      "documentId": "doc-cards-1", "documentRowId": "row-7", "documentVersion": 1,
+      "chunkIndex": 7, "kind": "EXTERNAL_QUESTIONS",
+      "content": "Flashcard: define electrolysis — the decomposition of an electrolyte by an electric current.",
+      "pageStart": null, "pageEnd": null, "embeddingModel": "fixture-embed-v2", "embedRev": 2,
+      "validationState": "VALIDATED", "paperLinked": false,
+      "vector": [5, 0, 0, 5, 0, 0, 0, 0],
+      "groundTruthTopics": []
+    },
+    {
+      "chunkId": "b1000000-0000-4000-8000-000000000009",
+      "documentId": "doc-textbook-draft", "documentRowId": "row-8", "documentVersion": 1,
+      "chunkIndex": 8, "kind": "TEXTBOOK",
+      "content": "Worked examples: enzyme kinetics and substrate concentration — NOT yet through content validation.",
+      "pageStart": 44, "pageEnd": 45, "embeddingModel": "fixture-embed-v2", "embedRev": 2,
+      "validationState": "UNVALIDATED", "paperLinked": false,
+      "vector": [0, 8, 6, 0, 0, 0, 0, 0],
+      "groundTruthTopics": ["a1000000-0000-4000-8000-000000000002"]
+    },
+    {
+      "chunkId": "b1000000-0000-4000-8000-000000000010",
+      "documentId": "doc-ms-1", "documentRowId": "row-5", "documentVersion": 1,
+      "chunkIndex": 9, "kind": "MARK_SCHEME",
+      "content": "Mark scheme: titration reading accept 24.10 cm3 ±0.05; the two marks sit on the rough run and the concordant pair.",
+      "pageStart": 7, "pageEnd": 7, "embeddingModel": "fixture-embed-v2", "embedRev": 2,
+      "validationState": "UNVALIDATED", "paperLinked": true,
+      "vector": [0, 0, 3, 3, 0, 0, 0, 0],
+      "groundTruthTopics": []
+    },
+    {
+      "chunkId": "b1000000-0000-4000-8000-000000000011",
+      "documentId": "doc-textbook-1", "documentRowId": "row-1", "documentVersion": 3,
+      "chunkIndex": 10, "kind": "TEXTBOOK",
+      "content": "Mole calculations from mass and Mr: n = m / Mr, with the Avogadro constant linking moles to particles.",
+      "pageStart": 20, "pageEnd": 21, "embeddingModel": "fixture-embed-v2", "embedRev": 2,
+      "validationState": "VALIDATED", "paperLinked": false,
+      "vector": [0, 7, 7, 0, 0, 0, 0, 0],
+      "groundTruthTopics": []
+    },
+    {
+      "chunkId": "b1000000-0000-4000-8000-000000000012",
+      "documentId": "doc-syllabus-1", "documentRowId": "row-11", "documentVersion": 2,
+      "chunkIndex": 11, "kind": "SYLLABUS",
+      "content": "Specification point: recall and use the mole calculation n = m / Mr in titration contexts.",
+      "pageStart": 5, "pageEnd": 5, "embeddingModel": "fixture-embed-v2", "embedRev": 2,
+      "validationState": "VALIDATED", "paperLinked": false,
+      "vector": [0, 3, 4, 0, 0, 0, 0, 0],
+      "groundTruthTopics": []
+    }
+  ],
+  "questions": [
+    {
+      "questionId": "c1000000-0000-4000-8000-000000000001",
+      "text": "Why does powdered magnesium react faster than a strip of magnesium?",
+      "anchors": [{ "nodeId": "a1000000-0000-4000-8000-000000000001", "isPrimary": true }],
+      "queryVector": [1, 0, 0, 0, 0, 0, 0, 0],
+      "kgMatches": [{ "nodeId": "a1000000-0000-4000-8000-000000000001", "matchScore": 0.9 }]
+    },
+    {
+      "questionId": "c1000000-0000-4000-8000-000000000002",
+      "text": "How do enzymes affect the rate of reaction, and how many moles of product form?",
+      "anchors": [
+        { "nodeId": "a1000000-0000-4000-8000-000000000002", "isPrimary": true },
+        { "nodeId": "a1000000-0000-4000-8000-000000000005", "isPrimary": false }
+      ],
+      "queryVector": [0, 1, 0, 0, 0, 0, 0, 0],
+      "kgMatches": [
+        { "nodeId": "a1000000-0000-4000-8000-000000000002", "matchScore": 0.85 },
+        { "nodeId": "a1000000-0000-4000-8000-000000000005", "matchScore": 0.7 }
+      ]
+    },
+    {
+      "questionId": "c1000000-0000-4000-8000-000000000003",
+      "text": "Describe the correct titration technique.",
+      "anchors": [{ "nodeId": "a1000000-0000-4000-8000-000000000003", "isPrimary": true }],
+      "queryVector": [0, 0, 1, 0, 0, 0, 0, 0],
+      "kgMatches": []
+    },
+    {
+      "questionId": "c1000000-0000-4000-8000-000000000004",
+      "text": "What happens at each electrode during the electrolysis of a molten compound?",
+      "anchors": [{ "nodeId": "a1000000-0000-4000-8000-000000000004", "isPrimary": true }],
+      "queryVector": [0, 0, 0, 1, 0, 0, 0, 0],
+      "kgMatches": [
+        { "nodeId": "a1000000-0000-4000-8000-000000000004", "matchScore": 0.75 },
+        { "nodeId": "a1000000-0000-4000-8000-000000000005", "matchScore": 0.4 }
+      ]
+    },
+    {
+      "questionId": "c1000000-0000-4000-8000-000000000005",
+      "text": "State the uncertainty when reading the burette in a titration.",
+      "anchors": [{ "nodeId": "a1000000-0000-4000-8000-000000000003", "isPrimary": true }],
+      "queryVector": [0, 0, 2, 3, 0, 0, 0, 0],
+      "kgMatches": []
+    },
+    {
+      "questionId": "c1000000-0000-4000-8000-000000000006",
+      "text": "Who discovered the electron?",
+      "anchors": [],
+      "queryVector": [0, 0, 0, 0, 1, 0, 0, 0],
+      "kgMatches": []
+    }
+  ]
+}

@@ -35,6 +35,13 @@ jobs:
       - name: Golden-master self-check (harness sanity, no live target)
         run: bun golden/runner.ts --selftest
 
+      # Card C (retrieval-eval): the fusion-layer eval harness — REAL rrf.ts
+      # fusion, recorded EMBED_REV 2 fixture vectors, labels from the
+      # question_topics anchoring, weights-vs-uniform ablation. Provider-free
+      # by construction (no embedding provider, no database).
+      - name: Retrieval eval harness (fusion ablation, provider-free)
+        run: bun test golden/retrieval-eval && bun run --cwd golden/retrieval-eval selftest
+
       # T-MIG-123 §Z conversion — the zero-core census GATE: the LIVE=0 act of
       # record (operator retirement order trace 1a131d02c805602d; the 48h soak
       # waived by the same order). Exit 0 iff live=0 AND unmapped=0 AND

@@ -81,6 +81,7 @@
  */
 
 import type { SqlFn } from "../assessment/sql";
+import { resolveActiveBktParams } from "../learner-model/registry";
 import {
   CALIBRATION_SEGMENT_ORDER,
   CALIBRATION_GAP_ORDER,
@@ -97,11 +98,18 @@ import {
  * versioned through the model_versions registry and configurable via
  * syllabai.learner.bkt.* in the frozen core; the compact constructor
  * normalizes any param <= 0 to the paper constant (a misconfigured knob
- * degrades, never inverts). The model_versions registry path is tranche-3
- * (the T-MIG-041 note stands): the calibration read consumes the PAPER
- * defaults until that band lands — the normalization is ported
- * (normalizedBkt) so the registry band can drop its config in without
- * touching this law.
+ * degrades, never inverts).
+ *
+ * Card B (the model_versions registry band, the tranche-3 path the T-MIG-041
+ * note pointed at): the calibration read now resolves its BKT base through
+ * resolveActiveBktParams (services/learner-model/registry.ts) — the SAME
+ * resolver the update path's publisher consumes (the same-resolver
+ * invariant). With no activation pointer of record the resolution IS the
+ * paper defaults (byte-identical to the pre-registry posture); an activated
+ * version flows through normalizedBkt's normalization law unchanged
+ * (per-field <= 0/missing -> the paper constant). PAPER_BKT stays the
+ * default `cfg` of toParams (the pinned pre-registry behaviour) and the
+ * fallback the resolution itself carries.
  */
 export interface BktConfig {
   l0: number;
@@ -142,8 +150,6 @@ export interface BktEmission {
   guess: number;
 }
 
-const SLIP = PAPER_BKT.slip;
-
 /**
  * LearnerProperties.Bkt.toParams(String questionType, int optionCount)
  * (:94-111), verbatim:
@@ -159,21 +165,33 @@ const SLIP = PAPER_BKT.slip;
  *   null/blank/unknown format → the paper default (legacy untyped evidence
  *     keeps its exact historical behaviour);
  *   then the clamp strictly below 1 − slip ("degrade, never invert") —
- *   see F-062-A: unreachable with the paper constants, ported verbatim.
+ *   see F-062-A: UNREACHABLE with the paper constants, but ARMED the moment
+ *   a registry-resolved cfg carries a slip near 0.5 (Card B made that path
+ *   live — the clamp is the degrade-never-invert law that bounds it).
+ *
+ * `cfg` (Card B): the registry-resolved BKT base the report was built with
+ * — the SAME resolution the update path consumed for the rows being read
+ * (the same-resolver invariant). Defaults to PAPER_BKT: the pre-registry
+ * pins keep their exact behaviour and the resolver's paper-defaults
+ * fallback is structurally this same constant.
  */
-export function toParams(questionType: string | null, optionCount: number): BktEmission {
+export function toParams(
+  questionType: string | null,
+  optionCount: number,
+  cfg: BktConfig = PAPER_BKT,
+): BktEmission {
   let resolved: number;
   if (questionType === "MCQ_SINGLE") {
-    resolved = optionCount >= 2 ? 1.0 / optionCount : PAPER_BKT.guess;
+    resolved = optionCount >= 2 ? 1.0 / optionCount : cfg.guess;
   } else if (questionType === "SHORT_ANSWER") {
-    resolved = PAPER_BKT.shortAnswerGuess;
+    resolved = cfg.shortAnswerGuess;
   } else if (questionType === "STRUCTURED") {
-    resolved = PAPER_BKT.structuredGuess;
+    resolved = cfg.structuredGuess;
   } else {
-    resolved = PAPER_BKT.guess;
+    resolved = cfg.guess;
   }
-  resolved = Math.min(resolved, 1.0 - SLIP - 1e-9);
-  return { slip: SLIP, guess: resolved };
+  resolved = Math.min(resolved, 1.0 - cfg.slip - 1e-9);
+  return { slip: cfg.slip, guess: resolved };
 }
 
 // ── the segment axes (service :143-181) ─────────────────────────────────────
@@ -417,6 +435,13 @@ export interface ResearchModule {
 export function buildResearchModule(sql: SqlFn): ResearchModule {
   return {
     async calibrationReport(nodeIdFilter: string | null): Promise<CalibrationReport> {
+      // Card B — the SAME resolver the update path's publisher consumes
+      // (the same-resolver invariant): one registry read per report, the
+      // resolved base prices EVERY row's emission below. No pointer of
+      // record -> the paper defaults (the pre-registry posture, byte-
+      // identical); a read failure propagates (fail-loud).
+      const bkt = await resolveActiveBktParams(sql);
+
       // findByTypeOrderByOccurredAtAsc(BKT_UPDATED) — one ordered fetch, one
       // pass (C4 §6); the FP accumulation order rides the fetch order.
       const rows = await sql`
@@ -451,7 +476,7 @@ export function buildResearchModule(sql: SqlFn): ResearchModule {
         }
         const type = typeof payload["questionType"] === "string" ? (payload["questionType"] as string) : null;
         const optionCount = intValue(payload["optionCount"]);
-        const emission = toParams(type, optionCount);
+        const emission = toParams(type, optionCount, bkt.params);
         const predicted = latent * (1.0 - emission.slip) + (1.0 - latent) * emission.guess;
         const outcome = correct ? 1.0 : 0.0;
         const brier = (predicted - outcome) * (predicted - outcome);

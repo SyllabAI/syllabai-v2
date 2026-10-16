@@ -55,6 +55,12 @@ const T0 = "2026-10-01T10:00:00Z";
 
 const FETCH = /select id, learner_id, payload, occurred_at from telemetry_events where event_type = \? order by occurred_at asc$/;
 
+// Card B — the calibration read resolves the registry FIRST (the same-resolver
+// invariant); the of-record posture has no activation pointer, so every
+// pre-registry pin here rides the paper-defaults fallback via this route.
+const REGISTRY_NO_POINTER =
+  /^select version, params from model_versions where registry_key = \? order by created_at desc, version desc$/;
+
 type Row = Record<string, unknown>;
 
 let evSeq = 0;
@@ -83,7 +89,10 @@ const mcq4 = (learnerId: string, nodeId: string = NODE_A): Row =>
   });
 
 function makeApp(auth: (c: Context) => Record<string, unknown> | null, rows: Row[]) {
-  const routes: Route[] = [{ match: FETCH, rows }];
+  const routes: Route[] = [
+    { match: REGISTRY_NO_POINTER, rows: [] },
+    { match: FETCH, rows },
+  ];
   const sql = fakeSql(routes);
   const module = buildResearchModule(sql);
   const app = new Hono();
@@ -216,7 +225,12 @@ describe("the honest-zero EMPTY report (fixed taxonomy render order)", () => {
     expect(parsed.bins.length).toBe(10);
     expect(parsed.bins[3]!.lowerBound).toBe(0.3);
     expect(parsed.bins[3]!.upperBound).toBe(0.4);
-    expect(sql.queries.length).toBe(1);
+    // Card B: ONE registry pointer read + the telemetry fetch (the C4 §6
+    // single-pass posture still binds the TELEMETRY side — exactly one
+    // ordered fetch, one walk; the registry lookup is a separate keyed read).
+    expect(sql.queries.length).toBe(2);
+    expect(sql.queries.filter((q) => q.includes("from telemetry_events")).length).toBe(1);
+    expect(sql.queries.filter((q) => q.includes("from model_versions")).length).toBe(1);
   });
 });
 

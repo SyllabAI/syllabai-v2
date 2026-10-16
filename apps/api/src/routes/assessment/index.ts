@@ -57,7 +57,11 @@ import {
   type AssessmentModule,
 } from "../../services/assessment";
 import type { EvidencePublisher } from "../../services/assessment/submit";
-import { updateOnAssessmentEvidence } from "../../services/learner-model/model-update";
+import {
+  LEARNER_MODEL_PAPER_DEFAULTS,
+  updateOnAssessmentEvidence,
+} from "../../services/learner-model/model-update";
+import { resolveActiveBktParams } from "../../services/learner-model/registry";
 import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "../../services/identity/users";
 import { apiError, BadRequestException } from "../../services/identity/errors";
@@ -327,7 +331,17 @@ export function createLearnerModelEvidencePublisher(
 ): EvidencePublisher {
   return {
     publishMcq: async (event) => {
-      await updateOnAssessmentEvidence(sql, event);
+      // Card B — the registry-resolved BKT base: ONE resolveActiveBktParams
+      // read per evidence event, the SAME resolver the calibration reporter
+      // consumes (the same-resolver invariant, services/learner-model/
+      // registry.ts header). No pointer of record -> paper defaults
+      // (byte-identical to the pre-registry posture); a read failure
+      // propagates (fail-loud, the module's no-silent-skip law).
+      const bkt = await resolveActiveBktParams(sql);
+      await updateOnAssessmentEvidence(sql, event, {
+        ...LEARNER_MODEL_PAPER_DEFAULTS,
+        bkt: bkt.params,
+      });
       return true;
     },
   };
