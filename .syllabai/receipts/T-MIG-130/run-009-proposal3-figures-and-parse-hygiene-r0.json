@@ -1,45 +1,80 @@
 {
  "run": "run-009",
- "lane": "proposal #3 — the figures lane + the parse-time stem-hygiene law (code lane, both surfaces)",
+ "lane": "proposal #3 \u2014 the figures lane + the parse-time stem-hygiene law (code lane, both surfaces)",
  "operatorGate": {
   "order": "#3, and we should also update the parser right? so it 'cleans' pdfs after parsing?",
   "trace": "1a14536e97f41425",
   "note": "the operator order dispatches lane #3 AND orders the parser-side clean; both delivered in this lane"
  },
  "diagnosisRef": "trace 1a144b08a0dbcf0d (P-c: no figures anywhere in the bank; every diagram reference dangles)",
- "priorState": "aa4fa7b (#1 serve-side hygiene law cd8f73e live; #2 stem rebuild 346 rows live; the serve law was the only hygiene — nothing at parse time, nothing for figures)",
+ "priorState": "aa4fa7b (#1 serve-side hygiene law cd8f73e live; #2 stem rebuild 346 rows live; the serve law was the only hygiene \u2014 nothing at parse time, nothing for figures)",
  "reconOfRecord": {
   "probe": "scripts/r0_figures_probe.mjs (SELECT-only, zero writes, zero LLM)",
   "figureRefs": "1,151 across 59 glm_ocr_bridge_records (1,134 availability=available, ALL url/assetId/sha256/width/height, format png; 17 unavailable-signed-url)",
   "canonicalFigures": "634 figure elements on 50/50 checked QP docs, ALL with page_number + source_name; group_key never fires (the draft ref is the only attribution spine)",
   "join": "draftRef.elementId -> canonicalFigure.element_id resolves 1,145 of 1,151 refs, every resolution carries its page",
-  "bridgeCoverage": "49 of 95 VALIDATED papers have bridge records; the other 46 (the pre-figureRefs ingest generation, June 2019 4CH1/2C among them) carry NO figure data of record — the honest empty",
-  "bytesOfRecord": "the crop binaries are NOT stored (question_asset holds 585 SME-corpus assets, zero crops) — references served, never a fabricated <img> src"
+  "bridgeCoverage": "49 of 95 VALIDATED papers have bridge records; the other 46 (the pre-figureRefs ingest generation, June 2019 4CH1/2C among them) carry NO figure data of record \u2014 the honest empty",
+  "bytesOfRecord": "the crop binaries are NOT stored (question_asset holds 585 SME-corpus assets, zero crops) \u2014 references served, never a fabricated <img> src"
  },
  "delivered": [
-  "contracts: tutorQuestionFigureSchema (documentRowId/page/sourceName/format/width/height/availability) + figures (default []) on tutorBankQuestionItemSchema — both bands one type",
-  "apps/api/src/services/tutor/paper-figures.ts: figuresByQuestionNumber — the parser's OWN attribution (glm_ocr_bridge_records.qp_draft refs) resolved to canonical pages; dedup by element; question-level before part-level; per-question cap 12; FAIL-OPEN everywhere (garbage draft/canonical JSON degrades to fewer figures, never a 500); no bridge record = the honest empty",
+  "contracts: tutorQuestionFigureSchema (documentRowId/page/sourceName/format/width/height/availability) + figures (default []) on tutorBankQuestionItemSchema \u2014 both bands one type",
+  "apps/api/src/services/tutor/paper-figures.ts: figuresByQuestionNumber \u2014 the parser's OWN attribution (glm_ocr_bridge_records.qp_draft refs) resolved to canonical pages; dedup by element; question-level before part-level; per-question cap 12; FAIL-OPEN everywhere (garbage draft/canonical JSON degrades to fewer figures, never a 500); no bridge record = the honest empty",
   "bank-bands: band-2 fetchPaper attaches the bound paper's figure map; band-1 listQuestions attaches for the SHOWN items' distinct papers after the limit cut (the census never pays for figures)",
-  "hub: band-card FigureChips — 'Diagram · QP p.N · W×H' chips deep-linking the F-022 reader at the figure's digitized page (readerHref law, CitationPaperLink pane); chips only where the parser's attribution resolved; no <img> (bytes of record absent — a broken src would be a lie)",
-  "PARSE-TIME STEM HYGIENE (the operator's parser directive, a DELIBERATE v2 deviation from the frozen byte-faithful port, documented in past-paper.ts): ingestPastPaperDraft applies the SHIPPED hygienicStem (cd8f73e law) to every draft stem at WRITE time (questions.stem + question_versions.stem + question_parts.prompt) — future parses land clean at birth; the measured junk entry point (census 1a144b08a0dbcf0d) is closed at the source",
-  "IN-LANE FIX (disclosed drive-by): bank-bands chunkOf carried document_chunks.id under TutorBankPaperChunk.documentRowId, but the F-022 reader law (/api/v1/content/documents/{id} -> existsCitable) resolves a DOCUMENTS.id row — every band-card QP/MS deep link pane'd 404. Now carries doc.id (the paper-question evidence() convention; the chunk's identity is the (documentRowId, chunkIndex) pair), pinned by test"
+  "hub: band-card FigureChips \u2014 'Diagram \u00b7 QP p.N \u00b7 W\u00d7H' chips deep-linking the F-022 reader at the figure's digitized page (readerHref law, CitationPaperLink pane); chips only where the parser's attribution resolved; no <img> (bytes of record absent \u2014 a broken src would be a lie)",
+  "PARSE-TIME STEM HYGIENE (the operator's parser directive, a DELIBERATE v2 deviation from the frozen byte-faithful port, documented in past-paper.ts): ingestPastPaperDraft applies the SHIPPED hygienicStem (cd8f73e law) to every draft stem at WRITE time (questions.stem + question_versions.stem + question_parts.prompt) \u2014 future parses land clean at birth; the measured junk entry point (census 1a144b08a0dbcf0d) is closed at the source",
+  "IN-LANE FIX (disclosed drive-by): bank-bands chunkOf carried document_chunks.id under TutorBankPaperChunk.documentRowId, but the F-022 reader law (/api/v1/content/documents/{id} -> existsCitable) resolves a DOCUMENTS.id row \u2014 every band-card QP/MS deep link pane'd 404. Now carries doc.id (the paper-question evidence() convention; the chunk's identity is the (documentRowId, chunkIndex) pair), pinned by test"
  ],
  "laws": [
-  "attribution = the parser's own (the draft refs) — zero inference, no page-range heuristics",
-  "46 figure-less papers map to the honest empty [] — nothing guessed, no <img> fabricated",
+  "attribution = the parser's own (the draft refs) \u2014 zero inference, no page-range heuristics",
+  "46 figure-less papers map to the honest empty [] \u2014 nothing guessed, no <img> fabricated",
   "figures are an enhancement layer: fail-open, never gate the band probe, zero LLM, zero writes (read-side projection like law #1)"
  ],
  "verification": {
-  "tests": "suite 2147 pass / 0 fail / 13 skip (was 2091-of-record + parallel lanes' additions) — +20 this lane: paper-figures.test.ts (11 pins: attribution, honest empty, fail-open x2, drop law, dedup, cap, coercion, availability verbatim, ref join), bank-bands.test.ts (+4: figures attach band-2, no-bridge honest empty band-2, F-022 row law pin, band-1 listing attach), past-paper-hygiene.test.ts (5 pins: furniture stripped at birth, versions row = questions row, part prompts unwrapped + empties stay empty, clean passthrough, null prompt)",
+  "tests": "suite 2147 pass / 0 fail / 13 skip (was 2091-of-record + parallel lanes' additions) \u2014 +20 this lane: paper-figures.test.ts (11 pins: attribution, honest empty, fail-open x2, drop law, dedup, cap, coercion, availability verbatim, ref join), bank-bands.test.ts (+4: figures attach band-2, no-bridge honest empty band-2, F-022 row law pin, band-1 listing attach), past-paper-hygiene.test.ts (5 pins: furniture stripped at birth, versions row = questions row, part prompts unwrapped + empties stay empty, clean passthrough, null prompt)",
   "typecheck": "x4 (contracts/shared/db/api) exit 0; hub tsc --noEmit exit 0",
-  "fixIteration": "2 dispatch-order test harness fixes (pre-keys before base keys; fixture null-safety) — implementation unchanged after first green of the touched files"
+  "fixIteration": "2 dispatch-order test harness fixes (pre-keys before base keys; fixture null-safety) \u2014 implementation unchanged after first green of the touched files"
  },
- "deploy": "pending in this receipt — API (093 recipe) + hub (r1c recipe prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl) redeployed post-commit; live verify appended below if the run continues",
+ "deploy": {
+  "api": [
+   {
+    "commit": "e9f65b2",
+    "deployment": "syllabai-v2-c1auv1rs8-syllab-ai.vercel.app",
+    "state": "READY 15:32:01Z",
+    "note": "superseded by the serving-row fix below (the live probe caught the addressing defect)"
+   },
+   {
+    "commit": "96a7196",
+    "deployment": "syllabai-v2-bozebjzit-syllab-ai.vercel.app",
+    "state": "READY, production alias live; /actuator/health 200 UP",
+    "recipe": "093 (bundle 332->332 modules 3,173,745 B, shims PRISTINE post-build, LOCALGATE 8/8 on real Neon x2, env staged 0600 SHREDDED post-run)"
+   }
+  ],
+  "hub": {
+   "commit": "e9f65b2 (the 96a7196 fix is API-only)",
+   "deployment": "syllabai-hub-v2-gdi1re9dq-syllab-ai.vercel.app",
+   "recipe": "r1c (clean worktree at HEAD, project prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl, vercel 64.3.1 --prod; worktree incl. its pulled .env.local destroyed post-deploy)",
+   "bundleProof": "the live alias chunk 2tk13kqra_htp.js carries the FigureChips discriminator ('figure's page' title string)"
+  },
+  "ci": {
+   "e9f65b2": "2/2 GREEN",
+   "96a7196": "2/2 GREEN"
+  }
+ },
  "residuals": [
-  "the 46 bridge-less VALIDATED papers (incl. June 2019 4CH1/2C) still serve figures: [] — recovering their figures needs a re-parse lane (operator-gated; the source PDFs are not stored of record either)",
-  "the crop binaries (1,134 'available' at parse time) are nowhere of record — chips are references, the F-022 parsed page is the truth served",
-  "the 17 unavailable-signed-url refs ride verbatim as provenance"
+  "the 46 bridge-less VALIDATED papers (incl. June 2019 4CH1/2C) still serve figures: [] \u2014 recovering their figures needs a re-parse lane (operator-gated; the source PDFs are not stored of record either)",
+  "the crop binaries (1,134 'available' at parse time) are nowhere of record \u2014 chips are references (source name + dims), the F-022 parsed page is the truth served; pages claim only where the serving doc's own canonical figures carry the element (rare \u2014 the cross-generation element join measured 0/39)",
+  "the 17 unavailable-signed-url refs ride verbatim as provenance",
+  "hub deployment URL is protection-gated (ls shows Blocked) while the production alias serves the new bundle \u2014 the standing posture (alias = what learners use)"
  ],
  "credentials": "zero on disk (staged DATABASE_URL 0600, shred pending post-verify); PAT inline-only in the fetch/push URL, absent from .git/config (checked); scrub-assert on the diff = 0 credential hits",
- "fetchFirst": "remote tip aa4fa7b == local tip at commit time — SAFE"
+ "fetchFirst": "remote tip aa4fa7b == local tip at commit time \u2014 SAFE",
+ "liveVerify": {
+  "lane3_battery": "scripts/r0_lane3_verify.py \u2014 5/5 ALL PASS (llm_spend=0): L2 band-2 figures LIVE on 4CH1/1C june 2019 (15 questions, 11 with figures, 20 refs, shape ok), L3 the F-022 pane law resolves the chip's serving row (200, full document header), L4 the anchor 4CH1/2C june 2019 honest-empty with marks [6,9,9,7,10,14,8,7] EXACT, L5 band-1 carries the figures field",
+  "regression_battery": "scripts/r0_proposal1_verify.py \u2014 7/7 PASS (llm_spend=1): health bookends, unauth 401, band-2 clean (junk=0 markup=0, qp=11 ms=15), band-1 clean, grounded ask 6 citations no leak, session read-back 2 turns",
+  "caught_by_live_probe": {
+   "defect": "the first deploy served figure chips addressed on the BRIDGE's parse-generation doc row: REJECTED + referenced by no paper for 48/49 bridged papers (F-022 pane 404), and every bridge-row page is the degenerate Markdown-generation 1",
+   "fix": "commit 96a7196 \u2014 the addressing law (serving row + serving-doc pages only); +2 pins; suite 2162/0/13; typecheck x4 0; CI 2/2",
+   "also_rejected": "the same-page attribution heuristic (figure page inside the question's chunk span) measured ~10 usable pages corpus-wide \u2014 inference debt, not taken"
+  }
+ }
 }

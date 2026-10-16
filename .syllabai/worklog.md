@@ -8036,3 +8036,18 @@ Work Log:
 
 Stage Summary:
 - Lane #3 SHIPPED (code): the bank now discloses the diagrams its stems gesture at — reference chips page-deep-linked into the F-022 reader on both band surfaces — and the parser cleans after parsing (one hygiene law, write side AND serve side). Deploy (API 093 + hub r1c recipes) + live verify follow in this run; disclosed residuals: 46 bridge-less papers serve figures [] (re-parse lane, operator-gated), crop binaries unrecoverable of record.
+
+---
+Task ID: trace 1a14536e97f41425 (follow-up — deploy + live verify + the serving-row addressing fix)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-473b-86a3-0bf785493dc5 [typo-guard: session web-752465e5-2985-476b-86a3-0bf785493dc5])
+Task: Land e9f65b2 (API 093 + hub r1c), run the live batteries, fix what the live probe caught.
+
+Work Log:
+- CI 2/2 GREEN on e9f65b2; API deploy (093 recipe: bundle 332 modules 3,173,523 B, shims restored PRISTINE, LOCALGATE 8/8 on real Neon, env 0600 SHREDDED post-run) -> c1auv1rs8 READY; hub deploy (r1c: clean worktree at HEAD, prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl, vercel 64.3.1 --prod) -> gdi1re9dq, alias serves the new bundle (discriminator 'figure's page' in live chunk 2tk13kqra_htp.js; the deployment-URL 'Blocked' ls state is the standing protection posture — the alias is what learners use); deploy worktree incl. its CLI-pulled .env.local destroyed post-deploy.
+- LIVE probe caught a REAL addressing defect (r0_lane3_verify.py L3 404): the bridge record's qp_document_row_id pins the ORIGINAL parse-generation doc — REJECTED and referenced by NO paper for 48 of 49 bridged papers (the F-022 existsCitable law 404s it), and the Markdown-generation docs are single-page (EVERY bridge-row figure page = 1 — a false address into a 32-page serving doc); cross-generation element joins resolve 0/39. Second measurement: the same-page attribution heuristic yields ~10 usable pages corpus-wide — REJECTED as inference debt.
+- FIX commit 96a7196 (pushed, CI 2/2, API redeployed via the 093 recipe: bundle 3,173,745 B, LOCALGATE 8/8, shims PRISTINE, env shredded): the ADDRESSING LAW — documentRowId = the SERVING QP doc row (exam_papers.question_paper_document_id -> top non-REJECTED, the row existsCitable resolves, the same address the card's QP DocRow opens); page claimed ONLY from the serving doc's own canonical figures; otherwise null (reference chip: source name + dims, entry-page link). +2 pins; suite 2162/0/13; typecheck x4 0.
+- LIVE on the final wire: r0_lane3_verify.py 5/5 ALL PASS (llm_spend=0) — band-2 figures LIVE on 4CH1/1C june 2019 (11 questions with figures, 20 refs, serving-row addressed), the F-022 pane law resolves the chip's row (200), the anchor 4CH1/2C june 2019 honest-empty with marks EXACT, band-1 shape ok; r0_proposal1_verify.py 7/7 PASS (llm_spend=1) — #1/#2 laws intact.
+- Bookkeeping: receipt run-009 finalized (deploy + liveVerify + residuals); staged env SHREDDED; bundle stage removed; probe scripts persisted in the home scripts dir (r0_figures_probe.mjs, r0_lane3_verify.py).
+
+Stage Summary:
+- Lane #3 SHIPPED AND LIVE-VERIFIED of record: the bank discloses the diagrams its stems gesture at (parser-own attribution chips, citably addressed), and the parser cleans after parsing (one hygiene law, write AND serve side). Residuals of record: 46 bridge-less papers serve figures [] (re-parse lane = operator lever), crop binaries unrecoverable (chips are references), pages claim only where the serving doc records the element.
