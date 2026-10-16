@@ -64,6 +64,48 @@ describe("classifyBankIntent — band (2) whole-paper fetch", () => {
   });
 });
 
+describe("classifyBankIntent — run-004 proposal #1 law (qnum-guard + fullness adjacency)", () => {
+  test("QNUM-GUARD: the run-004 LEG A hijack phrasing yields to the grounded arm", () => {
+    expect(
+      classifyBankIntent(
+        "What was question 6 in June 2019 paper 1, and what does a full-credit answer require?",
+      ),
+    ).toBeNull();
+  });
+
+  test("QNUM-GUARD: fetch verb + session anchor cannot override an explicit question number", () => {
+    expect(classifyBankIntent("show me question 6 of june 2019 paper 1")).toBeNull();
+    expect(classifyBankIntent("get q6 from june 2019 paper 1")).toBeNull();
+    expect(classifyBankIntent("open question no. 6 june 2019")).toBeNull();
+  });
+
+  test("QNUM-GUARD: 'question paper 1' is a paper noun, not a question number", () => {
+    expect(classifyBankIntent("show me the question paper 1 june 2019")).toEqual({
+      kind: "paper",
+    });
+  });
+
+  test("FULLNESS ADJACENCY: 'full marks'/'full-credit' without a qnum no longer hijacks", () => {
+    expect(classifyBankIntent("i want full marks in the june 2019 paper 1")).toBeNull();
+    expect(
+      classifyBankIntent(
+        "what does a full-credit answer to the june 2019 paper 1 electrolysis question need",
+      ),
+    ).toBeNull();
+  });
+
+  test("whole-paper asks keep riding band 2 (the operator's actual phrasings)", () => {
+    expect(
+      classifyBankIntent("Show me the complete June 2019 exam paper 1 and its grading criteria"),
+    ).toEqual({ kind: "paper" });
+    expect(classifyBankIntent("give me the full 2019 june paper 1")).toEqual({ kind: "paper" });
+    expect(classifyBankIntent("the whole paper 1 june 2019 please")).toEqual({ kind: "paper" });
+    expect(classifyBankIntent("get the full mark scheme for june 2019 paper 1")).toEqual({
+      kind: "paper",
+    });
+  });
+});
+
 describe("classifyBankIntent — band (1) question listing", () => {
   test("the operator's example #1: quoted topic", () => {
     expect(

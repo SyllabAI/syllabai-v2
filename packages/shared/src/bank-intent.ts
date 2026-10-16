@@ -17,6 +17,10 @@
  *   being answered by a paper fetch — hence the gates below require BOTH a
  *   bank-ish noun/phrase AND a fullness/fetch/listing signal, never one
  *   alone.
+ * - Run-004 law (proposal #1): an explicit question number ALWAYS yields
+ *   to the per-question grounded path, and a fullness word only counts
+ *   when it sizes the paper itself ("full 2019 june paper 1", not "a
+ *   full-credit answer").
  * - No regex list can be exhaustive; that is fine. The bands are an
  *   enhancement layer over the tutor, never a gate in front of it.
  */
@@ -45,8 +49,29 @@ export type BankIntent = BankPaperIntent | BankQuestionsIntent | null;
 const PAPER_NOUN = /\b(?:question\s+papers?|mark\s+schemes?|papers?)\b/i;
 
 /** Fullness — the learner wants the WHOLE paper (operator example #2:
- *  "give me the full 2019 june paper 1"). */
-const FULLNESS = /\b(?:full|whole|entire|complete)\b/i;
+ *  "give me the full 2019 june paper 1").
+ *
+ *  TIGHTENED (T-MIG-130 run-004 proposal #1): the fullness word must size
+ *  the paper noun ITSELF — only session-ish tokens (a year, a series word,
+ *  "exam", a unit code) may sit between. A fullness word that sizes a
+ *  DIFFERENT noun ("a full-credit answer", "full marks", "complete the
+ *  reaction") must NOT arm band 2: those are per-question/study asks the
+ *  grounded arm answers with page-pinned citations. The old bare-word
+ *  regex hijacked exactly those asks (run-004 LEG A: \bfull\b matched the
+ *  hyphenated compound "full-credit" — a word boundary at the hyphen). */
+const FULLNESS_PAPER =
+  /\b(?:full|whole|entire|complete)\b\s+(?:(?:(?:19|20)\d{2}|june|jan(?:uary)?|nov(?:ember)?|exam(?:ination)?|\d{1,2}[a-z]?)\s+){0,3}(?:question\s+papers?|exam(?:ination)?\s+papers?|mark\s+schemes?|papers?)\b/i;
+
+/** An explicit question number binds a PER-QUESTION ask — band 2 (and the
+ *  listing band) YIELD to it (run-004 proposal #1's qnum-guard): "question
+ *  6", "q6", "q. 6", "question no. 6", "questions 3". The grounded arm's
+ *  paper-question resolver pins the exact QP/MS pages for that question;
+ *  the whole-paper card cannot answer it. Runs before every band gate so
+ *  even fetch-verb + session-anchor phrasings ("show me question 6 of june
+ *  2019 paper 1") yield. "question paper 1" is NOT a question number (the
+ *  noun phrase never reaches the digit). */
+const QUESTION_NUMBER =
+  /\b(?:questions?|qs?)\s*(?:no\.?\s*)?(\d{1,2})\b/i;
 
 /** Fetch verbs — "open/show/pull up the june 2019 paper". */
 const FETCH_VERB =
@@ -89,10 +114,15 @@ export function classifyBankIntent(question: string): BankIntent {
   if (!q) return null;
   if (CONCEPTUAL_OPENER.test(q)) return null;
 
+  // A per-question ask yields the bands entirely (run-004 law): the
+  // resolver-pinned grounded answer is the right surface, the whole-paper
+  // card never carries the mark scheme for ONE question.
+  if (QUESTION_NUMBER.test(q)) return null;
+
   // Band (2): a paper noun AND a want-the-whole-paper signal.
   if (
     PAPER_NOUN.test(q) &&
-    (FULLNESS.test(q) ||
+    (FULLNESS_PAPER.test(q) ||
       (/\bquestion\s+papers?\b/i.test(q) && /\bmark\s+schemes?\b/i.test(q)) ||
       (FETCH_VERB.test(q) && SESSION_ANCHOR.test(q)))
   ) {
