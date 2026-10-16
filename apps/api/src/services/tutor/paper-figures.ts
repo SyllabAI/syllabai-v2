@@ -70,16 +70,24 @@ const int = (v: unknown): number | null => {
 };
 
 /**
- * "q06-cf68cf74" → "6" — the deterministic join between a structured bank
- * row's external_ref and the draft's question number (the draft numbers are
- * the printed question numbers; the external refs carry them zero-padded).
- * Null when the ref carries no leading q-number (the row then serves no
- * figures — honest).
+ * The deterministic join between a structured bank row's external_ref and
+ * the draft's question number (the draft numbers are the printed question
+ * numbers; the external refs carry them). TWO ref generations of record:
+ *   - "q06-cf68cf74" / "q1-x" — the bridged (glm-ocr pair) ingest era;
+ *   - "4ch0-1c-201801#q9" / "4ch1/past-papers/2023-01/4CH1-1C#q1" — the 46
+ *     bridge-less papers' era, where the printed number rides the "#q"
+ *     fragment (the figure re-parse lane, trace 1a145d4901bbf61d).
+ * Null when the ref carries neither (the row then serves no figures —
+ * honest).
  */
 export function questionNumberOf(externalRef: string | null): string | null {
   if (externalRef == null) return null;
-  const m = /^q\s*0*(\d+)/i.exec(externalRef.trim());
-  return m ? String(Number.parseInt(m[1]!, 10)) : null;
+  const trimmed = externalRef.trim();
+  const m = /^q\s*0*(\d+)/i.exec(trimmed);
+  if (m) return String(Number.parseInt(m[1]!, 10));
+  const frag = /#q\s*0*(\d+)\s*$/i.exec(trimmed);
+  if (frag) return String(Number.parseInt(frag[1]!, 10));
+  return null;
 }
 
 /**

@@ -102,6 +102,13 @@ describe("questionNumberOf — the external_ref join", () => {
     expect(questionNumberOf("q1-x")).toBe("1");
     expect(questionNumberOf("Q010-y")).toBe("10");
   });
+  test("the #q fragment generation joins too (4ch0-1c-201801#q9 → 9)", () => {
+    expect(questionNumberOf("4ch0-1c-201801#q9")).toBe("9");
+    expect(questionNumberOf("4ch1/past-papers/2023-01/4CH1-1C#q1")).toBe("1");
+    expect(questionNumberOf("4CH1-1CR-202001#Q010")).toBe("10");
+    // the fragment must TERMINATE the ref — a #q mid-ref is not the join
+    expect(questionNumberOf("4ch0-1c#q3-tail")).toBe(null);
+  });
   test("null/numberless refs join to nothing (the row serves no figures)", () => {
     expect(questionNumberOf(null)).toBe(null);
     expect(questionNumberOf("")).toBe(null);
