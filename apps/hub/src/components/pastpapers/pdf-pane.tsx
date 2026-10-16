@@ -104,6 +104,23 @@
  *     stream — steps the ladder too; plain wheel scroll stays native.
  *     Deliberately NO site-wide user-scalable=no: the rest of the hub keeps
  *     native zoom (a11y), and iOS would ignore it anyway.
+ *   - TWO-PHASE ZOOM (s145, operator: "the zoom in zoom out feels so laggy —
+ *     Chrome's built-in pdf viewer is so snappy"): every zoom step now splits
+ *     into an INSTANT live phase and a debounced quality phase — the same
+ *     contract Chrome's viewer uses. Live: all holders (painted or not)
+ *     restyle to the new geometry synchronously, already-painted bitmaps
+ *     stretch via CSS (compositor-only, zero rasterization), the text layer
+ *     scales with the same trick, and scrollTop re-anchors by the EXACT zoom
+ *     ratio — feedback lands the same frame. Quality: 180ms after the last
+ *     step, ONE refreeze re-rasterizes in-radius pages at the new scale
+ *     (double-buffered, atomic swap as before) — button mashing, pinch
+ *     ladders and ctrl+wheel bursts coalesce into a single render wave
+ *     instead of cancelling and restarting a wave per step. The canvas
+ *     ledger records the scale each page painted at, and syncWindow
+ *     re-renders stale-scale pages when they re-enter the radius (closing
+ *     the old hole where hysteresis-band canvases kept the previous zoom
+ *     forever). Rotation keeps a direct refreeze — the bitmap itself must
+ *     re-render.
  *
  * PDFs stream straight from the syllabai-pastpapers corpus on
  * raw.githubusercontent.com (CORS-enabled); nothing is proxied or vendored
@@ -227,6 +244,13 @@ const MAX_RENDER_SCALE = 4;
  */
 const PINCH_STEP_RATIO = 1.2;
 const WHEEL_STEP_PX = 100;
+/**
+ * s145 two-phase zoom: how long after the last zoom step the quality
+ * refreeze waits. Long enough to coalesce a button mash / pinch ladder /
+ * ctrl+wheel burst into ONE re-render wave, short enough that the crisp
+ * re-raster lands right after the eye settles on the stretched bitmap.
+ */
+const ZOOM_REFREEZE_DEBOUNCE_MS = 180;
 type Rot = 0 | 90 | 180 | 270;
 /** The fit base the zoom ladder multiplies: fill the pane's width, or frame
  *  the whole page (width AND height) inside the scroller (s142). */
@@ -382,6 +406,10 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
   const zoomRef = useRef(1);
   const anchorRef = useRef<{ top: number; pageH: number; at: number } | null>(null);
   const sweepTimerRef = useRef<number | null>(null);
+  /** s145: pending debounced quality refreeze (two-phase zoom) */
+  const refreezeTimerRef = useRef<number | null>(null);
+  /** s145: page → the scale its live canvas painted at (stale-scale guard) */
+  const canvasScaleRef = useRef(new Map<number, number>());
   const rafRef = useRef(0);
   /** user rotation offset (0/90/180/270, composes with each page's own rotate) */
   const rotRef = useRef<Rot>(0);
@@ -596,33 +624,6 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
     return Math.max(1, Math.min(ZOOM_LADDER[ZOOM_LADDER.length - 1], MAX_RENDER_SCALE / fit1));
   }, [availBox]);
 
-  /** Size every canvas-less holder from the container width + page aspect.
-   * (s140: uses the page's OWN indexed meta when available — mixed-size
-   * papers no longer all borrow page 1's aspect.) */
-  const applyPlaceholderStyles = useCallback(() => {
-    const scroller = scrollRef.current;
-    if (!scroller) return;
-    const avail = availBox();
-    const swapped = rotRef.current % 180 === 90;
-    const pageMode = fitModeRef.current === "page";
-    for (const [n, el] of holderRefs.current) {
-      if (canvasesRef.current.has(n)) continue;
-      const meta = pageMetaRef.current.get(n);
-      const ar = meta
-        ? swapped
-          ? meta.baseW / meta.baseH
-          : meta.baseH / meta.baseW
-        : swapped
-          ? 1 / aspectRef.current
-          : aspectRef.current;
-      const w = Math.round(
-        (pageMode ? Math.min(avail.w, avail.h / ar) : avail.w) * zoomRef.current,
-      );
-      el.style.width = `${w}px`;
-      el.style.height = `${Math.round(w * ar)}px`;
-    }
-  }, [availBox]);
-
   // ── line model (pure math over the cached text index) ────────────────────
   const linesFor = useCallback((n: number, scale: number): PdfLine[] => {
     const key = `${n}@${scale.toFixed(4)}`;
@@ -755,6 +756,102 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
     [linesFor, scaleFor, rotW, rotH, paintHighlights, scrollToMatch],
   );
 
+  // ── s145 live phase: instant geometry, zero rasterization ────────────────
+  /** Restyle the WHOLE document to the CURRENT geometry synchronously — the
+   *  half of two-phase zoom the user actually feels. Painted pages: the
+   *  holder box and its canvas's CSS box resize (the bitmap stretches —
+   *  compositor-only, exactly Chrome's instant feedback), the text layer
+   *  gets a transient scale(ratio) so selection geometry rides along, and
+   *  highlights repaint at the new scale. Unpainted holders use the aspect
+   *  math the old applyPlaceholderStyles had (the page's OWN indexed meta
+   *  when available — s140). With an exact `ratio` (a zoom step — heights ∝
+   *  the multiplier) scroll re-anchors arithmetically and painted pages
+   *  scale their existing boxes; with `ratio == null` (resize / fit swap —
+   *  the fit BASE moved) everything recomputes analytically from the current
+   *  base and the anchor re-measures the center holder. Zero rasterization;
+   *  the debounced refreeze restores true sharpness. */
+  const applyLiveStyles = useCallback(
+    (ratio?: number) => {
+      const doc = docRef.current;
+      const sc = scrollRef.current;
+      if (!doc || !sc) return;
+      const avail = availBox();
+      const swapped = rotRef.current % 180 === 90;
+      const pageMode = fitModeRef.current === "page";
+      // batch ALL painted-box reads before any write (one layout flush)
+      const painted: Array<[HTMLDivElement, number, number]> = [];
+      for (const [n, el] of holderRefs.current) {
+        if (!canvasesRef.current.has(n)) continue;
+        const w = el.offsetWidth;
+        const h = el.offsetHeight;
+        if (w === 0 && h === 0) continue; // hidden split pane — leave stale
+        painted.push([el, w, h]);
+      }
+      const centerOldH =
+        ratio == null
+          ? (holderRefs.current.get(centerRef.current)?.offsetHeight ?? 0)
+          : 0;
+      const boxFor = (meta: PageMeta | undefined) => {
+        const ar = meta
+          ? swapped
+            ? meta.baseW / meta.baseH
+            : meta.baseH / meta.baseW
+          : swapped
+            ? 1 / aspectRef.current
+            : aspectRef.current;
+        const w = Math.round(
+          (pageMode ? Math.min(avail.w, avail.h / ar) : avail.w) * zoomRef.current,
+        );
+        return { w, h: Math.round(w * ar) };
+      };
+      for (const [n, el] of holderRefs.current) {
+        if (canvasesRef.current.has(n)) {
+          const p = painted.find(([pel]) => pel === el);
+          if (!p) continue; // hidden pane — keep the old styles
+          const meta = pageMetaRef.current.get(n);
+          if (meta) {
+            const box = boxFor(meta);
+            el.style.width = `${box.w}px`;
+            el.style.height = `${box.h}px`;
+          } else if (ratio != null) {
+            el.style.width = `${Math.round(p[1] * ratio)}px`;
+            el.style.height = `${Math.round(p[2] * ratio)}px`;
+          } else {
+            continue; // base moved and no meta yet — the refreeze re-renders it
+          }
+          const cv = el.querySelector<HTMLCanvasElement>(":scope > canvas");
+          if (cv) {
+            cv.style.width = el.style.width;
+            cv.style.height = el.style.height;
+          }
+          if (ratio != null) {
+            const tl = el.querySelector<HTMLElement>(":scope > .pp-textLayer");
+            if (tl) tl.style.transform = `scale(${ratio})`;
+          }
+        } else {
+          const box = boxFor(pageMetaRef.current.get(n));
+          el.style.width = `${box.w}px`;
+          el.style.height = `${box.h}px`;
+        }
+      }
+      // scroll anchor: exact for zoom steps, measured for base changes
+      if (ratio != null) {
+        sc.scrollTop = Math.max(0, Math.round(sc.scrollTop * ratio));
+      } else if (centerOldH > 0) {
+        const centerNewH =
+          holderRefs.current.get(centerRef.current)?.offsetHeight ?? 0;
+        if (centerNewH > 0) {
+          sc.scrollTop = Math.max(
+            0,
+            Math.round((sc.scrollTop * centerNewH) / centerOldH),
+          );
+        }
+      }
+      paintHighlights();
+    },
+    [availBox, paintHighlights],
+  );
+
   // ── text layer overlay (selection) ───────────────────────────────────────
   const renderTextLayerInto = useCallback(
     (holder: HTMLDivElement, n: number, page: PdfPage, scale: number) => {
@@ -766,6 +863,7 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
       tl.replaceChildren();
       const tc = itemsRef.current.get(n);
       if (!tc) return; // indexer will attach it once the page is extracted
+      tl.style.transform = ""; // s145: drop the live-phase stretch — fresh build
       try {
         const layer = new ns.TextLayer({
           textContentSource: tc,
@@ -805,6 +903,7 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
         textLayersRef.current.get(n)?.cancel();
         textLayersRef.current.delete(n);
         canvasesRef.current.delete(n);
+        canvasScaleRef.current.delete(n);
         holderRefs.current.get(n)?.replaceChildren();
         live--;
       }
@@ -852,6 +951,7 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
       holder.replaceChildren(canvas);
       holder.style.width = `${cssW}px`;
       holder.style.height = `${cssH}px`;
+      canvasScaleRef.current.set(n, scale); // s145: painted-scale ledger
       // pdf.js TextLayer positions spans with calc(var(--scale-factor) * Npx)
       holder.style.setProperty("--scale-factor", String(scale));
       const hl = ensureAux(holder, "pp-hl-layer");
@@ -873,7 +973,10 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
     [fitFor, scheduleSweep, renderTextLayerInto, paintHighlights],
   );
 
-  /** Render wanted pages (center ± RENDER_RADIUS, nearest-first). */
+  /** Render wanted pages (center ± RENDER_RADIUS, nearest-first). s145: a
+   *  canvas painted at a DIFFERENT scale (a zoom happened while the page sat
+   *  in the hysteresis band) re-renders in place — stale bitmaps can no
+   *  longer pose as current when they scroll back into the radius. */
   const syncWindow = useCallback(() => {
     const doc = docRef.current;
     if (!doc) return;
@@ -881,19 +984,31 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
     for (let d = 0; d <= RENDER_RADIUS; d++) {
       for (const n of d === 0 ? [center] : [center - d, center + d]) {
         if (n < 1 || n > doc.numPages) continue;
-        if (canvasesRef.current.has(n) || tasksRef.current.has(n)) continue;
+        if (tasksRef.current.has(n)) continue;
+        if (canvasesRef.current.has(n)) {
+          const meta = pageMetaRef.current.get(n);
+          const painted = canvasScaleRef.current.get(n);
+          if (!meta || painted == null) continue;
+          if (Math.abs(scaleFor(rotW(meta), rotH(meta)) - painted) < 0.001)
+            continue;
+        }
         void renderPage(n);
       }
     }
     scheduleSweep();
-  }, [renderPage, scheduleSweep]);
+  }, [renderPage, scheduleSweep, scaleFor, rotW, rotH]);
 
-  /** Zoom/resize re-fit: re-render in-radius canvases at the new scale while
-   * the old ones stay visible (double buffering), re-style placeholders. */
+  /** Zoom/resize re-fit (the s145 QUALITY half): re-render in-radius canvases
+   *  at the new scale while the old ones stay visible (double buffering),
+   *  re-style everything. A direct call supersedes any pending debounced one. */
   const refreeze = useCallback(() => {
     const doc = docRef.current;
     const scroller = scrollRef.current;
     if (!doc || !scroller) return;
+    if (refreezeTimerRef.current !== null) {
+      window.clearTimeout(refreezeTimerRef.current);
+      refreezeTimerRef.current = null;
+    }
     const center = centerRef.current;
     const pageH = holderRefs.current.get(center)?.offsetHeight ?? 0;
     anchorRef.current = { top: scroller.scrollTop, pageH, at: Date.now() };
@@ -901,10 +1016,22 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
     for (const n of [...canvasesRef.current]) {
       if (Math.abs(n - center) <= RENDER_RADIUS) void renderPage(n);
     }
-    applyPlaceholderStyles();
+    applyLiveStyles();
     recomputeMatches(false);
     scheduleSweep();
-  }, [renderPage, applyPlaceholderStyles, recomputeMatches, scheduleSweep]);
+  }, [renderPage, applyLiveStyles, recomputeMatches, scheduleSweep]);
+
+  /** s145 two-phase zoom: schedule the quality half 180ms after the LAST
+   *  step — a fast step stream keeps rescheduling, so a burst costs one
+   *  re-render wave instead of one per step. */
+  const scheduleRefreeze = useCallback(() => {
+    if (refreezeTimerRef.current !== null)
+      window.clearTimeout(refreezeTimerRef.current);
+    refreezeTimerRef.current = window.setTimeout(() => {
+      refreezeTimerRef.current = null;
+      refreeze();
+    }, ZOOM_REFREEZE_DEBOUNCE_MS);
+  }, [refreeze]);
 
   // ── background text indexer (lazy — search/consumers pull it) ────────────
   const runIndexer = useCallback(
@@ -1124,6 +1251,10 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
         window.clearTimeout(sweepTimerRef.current);
         sweepTimerRef.current = null;
       }
+      if (refreezeTimerRef.current !== null) {
+        window.clearTimeout(refreezeTimerRef.current);
+        refreezeTimerRef.current = null;
+      }
       indexGenRef.current++;
       fullTextPromiseRef.current = null;
       const waiting = pendingReadyRef.current.splice(0);
@@ -1139,6 +1270,7 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
       }
       textLayersRef.current.clear();
       canvasesRef.current.clear();
+      canvasScaleRef.current.clear();
       holderRefs.current.clear();
       anchorRef.current = null;
       base1Ref.current = null;
@@ -1179,11 +1311,12 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
       for (const t of tasksRef.current.values()) t.cancel();
       tasksRef.current.clear();
       canvasesRef.current.clear(); // the old canvases died with the old rows
+      canvasScaleRef.current.clear();
     }
     if (zoomClamped) {
       refreeze(); // re-render in-radius canvases at the honest scale
     } else {
-      applyPlaceholderStyles();
+      applyLiveStyles();
     }
     if (spreadToggled) {
       const a = spreadAnchorRef.current;
@@ -1195,7 +1328,7 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
       }
     }
     syncWindow();
-  }, [phase, active, spread, applyPlaceholderStyles, syncWindow, maxZoomMult, refreeze]);
+  }, [phase, active, spread, applyLiveStyles, syncWindow, maxZoomMult, refreeze]);
 
   // ── near-zone tracking: IntersectionObserver (passive-scroll fallback) ───
   useEffect(() => {
@@ -1259,7 +1392,7 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
       if (Math.abs(w - lastW) < 8 && Math.abs(h - lastH) < 24) return;
       lastW = w;
       lastH = h;
-      applyPlaceholderStyles();
+      applyLiveStyles();
       if (t !== null) window.clearTimeout(t);
       t = window.setTimeout(() => {
         t = null;
@@ -1271,7 +1404,7 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
       ro.disconnect();
       if (t !== null) window.clearTimeout(t);
     };
-  }, [phase, active, applyPlaceholderStyles, refreeze]);
+  }, [phase, active, applyLiveStyles, refreeze]);
 
   // ── ref mirrors + find-bar registration ──────────────────────────────────
   useEffect(() => {
@@ -1422,21 +1555,26 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
       let idx = Math.min(ZOOM_LADDER.length - 1, Math.max(0, zoomIdxRef.current + dir));
       while (idx > 0 && ZOOM_LADDER[idx] > max) idx--;
       if (ZOOM_LADDER[idx] === zoomRef.current) return;
+      const prev = zoomRef.current;
       zoomIdxRef.current = idx;
       zoomRef.current = ZOOM_LADDER[idx];
       setZoomPct(Math.round(ZOOM_LADDER[idx] * 100));
-      refreeze();
+      // s145: instant stretched-bitmap feedback + ONE debounced re-raster
+      applyLiveStyles(ZOOM_LADDER[idx] / prev);
+      scheduleRefreeze();
     },
-    [refreeze, maxZoomMult],
+    [applyLiveStyles, scheduleRefreeze, maxZoomMult],
   );
 
   const resetFit = useCallback(() => {
     if (zoomRef.current === 1) return;
+    const prev = zoomRef.current;
     zoomIdxRef.current = FIT_LADDER_IDX;
     zoomRef.current = 1;
     setZoomPct(100);
-    refreeze();
-  }, [refreeze]);
+    applyLiveStyles(1 / prev); // s145
+    scheduleRefreeze();
+  }, [applyLiveStyles, scheduleRefreeze]);
 
   /** Switch the fit base the ladder multiplies (s142). The multiplier resets
    *  to 100% — a carried-over step would mean a DIFFERENT absolute scale on
@@ -1449,9 +1587,11 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
       zoomIdxRef.current = FIT_LADDER_IDX;
       zoomRef.current = 1;
       setZoomPct(100);
-      refreeze();
+      // s145: the fit BASE moved — no exact ratio; analytic restyle it is
+      applyLiveStyles();
+      scheduleRefreeze();
     },
-    [refreeze],
+    [applyLiveStyles, scheduleRefreeze],
   );
 
   /** Pair facing pages side by side (s143). Only the state flips here — the
