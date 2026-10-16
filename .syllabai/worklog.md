@@ -7998,3 +7998,23 @@ Work Log:
 Stage Summary:
 - VERDICT: proposal #1 SHIPPED AND LIVE-VERIFIED — a per-question paper ask (any phrasing, natural or terse) now reaches the resolver-pinned grounded answer instead of the whole-paper card; whole-paper asks unchanged. Proposals #2 (citation dedupe + resolver-first ordering), #3 (QP/MS doc-role through citation-map), #4 (spec-keyed engagement rows), #5 (plain-text chemistry law; mhchem leak re-observed live) remain OPEN for operator disposal.
 - Write ledger: 1 probe learner (memory-only) + 1 session + 1 exchange; llm_spend=1; residuals unchanged (Render disable, PAT rotation).
+
+---
+Task ID: trace 1a144e5e55662125 ("#1 proceed" — run-004 proposal #1, the stem-hygiene law)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Implement the serve-side deterministic stem-hygiene law (zero DB writes), absorbing proposal #5's source class.
+
+Work Log:
+- SANDBOX RE-PROVISIONED mid-conversation (disclosed): the clone rewound to e79be16 with remotes gone and /home/z/my-project lost the proposal-2-era scripts + worklog entry; recovered via the inline-URL fetch recipe (remote tip 4978c76 verified, worktree reset, 930 pkgs frozen-lockfile), the lost diagnosis entry + scripts re-filed from context.
+- Evidence census first-hand (SELECT-only, 1526 stems + 3172 QP/MS chunks): R1 write-in furniture 118 rows/201 hits; math-markup class 167 stems + 79 chunks (paired $...$, bare-command lines, $$ display delimiters); front matter 46 rows; dot leaders 1 row; "Total for Question" absent. REJECTED by census: the trailing letter-soup rule (its shape carries MCQ option lines — content). Also measured: 396 pre-existing empty stems; 2012-era mojibake chunks; 3 \begin{array} 2-D structures.
+- Implemented apps/api/src/services/tutor/stem-hygiene.ts: R1/R2/R3 (display-math first — the sequential-pairing blind spot "$$ $ ..." measured live and fixed — glyph map, inside-run de-space, residual-backslash drops) + R3b bare-markup lines (line-scoped, NEVER the glyph-join pass — prose can share a line) + R5 front matter + whitespace hygiene; FAIL-OPEN (empty → input verbatim). Two damage classes caught and rejected during law iteration: R4 tail-soup (MCQ options) and line-level de-spacing (word-boundary destruction).
+- Wired: bank-bands itemOf + bankQuestionItemOf (bands 1+2), fetch-bank resolveQuestion, karag admit() evidence projection (KNOWLEDGE_NODE + LEARNER_WORK byte-for-byte; merge keys are row ids — projection cannot change dedup identity).
+- Tests +25 (real-corpus fixtures incl. the display-math blind spot and the MCQ-option negative pin); suite of record 2091/0; typecheck x4 exit 0; corpus validation with the SHIPPED law: 463 stems changed, 0 emptied, 0 residual junk, 0 idempotency violations, 0 MCQ damage.
+- Code commit cd8f73e (fetch-first SAFE — the parallel ba2dbd5 hub lane landed mid-lane and was rebased over; CI 2/2 GREEN first-hand).
+- API REDEPLOY via the 093 recipe of record: shim v2 restored PRISTINE (verified), 6/6 asset SHA pins EXACT, bundle 330 modules / 3,166,860 B; LOCALGATE 8/8 on the real Neon wire (.env.localgate 0600 SHREDDED post-run); vercel 64.3.1 --prod -> api-of-record dpl_2vRNzzjPTAciy9kiEi1ffcsSXST3 READY @ cd8f73e content; rollback dpl_DsXzpcPiqS1FQDX4tmL9E3QyXBKu intact; health 200 UP.
+- LIVE VERIFICATION scripts/r0_proposal1_verify.py 7/7 PASS (llm_spend=1, probe learner memory-only, transcript scrub-asserted): the operator's exact paper (full june 2019 paper 2) now serves with marks [6,9,9,7,10,14,8,7] EXACT, ZERO write-in furniture, ZERO math markup, QP/MS deep links intact; band-1 listings clean; the grounded ask cites 6 sources with no markup leak; session read-back 2 turns.
+- Receipt .syllabai/receipts/T-MIG-130/run-007-proposal1-stem-hygiene-r0.json + this entry; .syllabai-only push (fetch-first race check clean, no force).
+
+Stage Summary:
+- Proposal #1 SHIPPED AND LIVE-VERIFIED; #5's source class absorbed at the evidence projection. Honest residuals: the answer-side model-leak residual (hub math-render = separate lever), 396 empty stems + mojibake chunks + \begin{array} structures + the formula-soup/figure classes = lane #2 (operator-gated stem rebuild from the clean per-question QP chunks) and #3 (figures) — still open with the operator; proposal #3 (citation-kind flattening) also still open.
+- Write ledger: 2 probe learners (example.invalid) + 2 sessions (net-zero) + 1 grounded exchange; llm_spend=1; zero direct Neon writes; zero prod content writes; PAT/vcp inline-only memory-only.

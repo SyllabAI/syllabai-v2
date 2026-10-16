@@ -1,0 +1,53 @@
+{
+  "card": "T-MIG-130",
+  "receipt": "run-007-proposal1-stem-hygiene-r0",
+  "lane": "r0",
+  "created_at_utc": "2026-10-16T14:20:00Z",
+  "operator_trace": "1a144e5e55662125 ('#1 proceed')",
+  "diagnosis_trace": "1a144b08a0dbcf0d (the 'full paper 2' finding; re-filed after the mid-conversation sandbox re-provision lost the original entry)",
+  "purpose": "run-004 proposal #1 SHIPPED AND LIVE-VERIFIED — the serve-side deterministic stem-hygiene law (zero DB writes), absorbing proposal #5's source class",
+  "law": {
+    "module": "apps/api/src/services/tutor/stem-hygiene.ts",
+    "rules": [
+      "R1 examiner write-in furniture (census: 118 rows / 201 hits corpus-wide; the June 2019 4CH1/2C card alone carried 22)",
+      "R2 dot-leader runs (1 row)",
+      "R3 math-mode unwrap, content-preserving: $$..$$ display delimiters FIRST (the sequential-pairing blind spot they cause — measured live on 4CH0/1C chunk 7ecf3cf9), adjacent empty-delimiter pairs, paired $...$ runs with the glyph map (rightleftharpoons-><U+21CC>, rightarrow->->, times, approx, Delta), inside-run glyph de-space, residual-backslash runs dropped wholesale",
+      "R3b bare markup lines (no delimiters; measured: '2 \\mathrm {C l} ^ {-} \\rightarrow ...') — line-scoped, glyph map + braces + scripts, NEVER the glyph-join pass (prose can share a line — measured damage 'a line with' -> 'alinewith' caught and rejected), residual-backslash lines fail open verbatim",
+      "R5 printed front matter (Answer ALL questions. / Write your answers... / the cross-in-a-box line; 27+1+18 rows)",
+      "whitespace hygiene always; FAIL-OPEN: an empty result returns the input verbatim (a stem is the row's identity)"
+    ],
+    "rejected_by_census": "the trailing letter-soup strip — its shape carries MCQ OPTION LINES ('A 1 B 3 C 9 D 37' = content, measured); pinned negatively in tests",
+    "wired": [
+      "bank-bands itemOf + bankQuestionItemOf (bands 1+2 — the learner card)",
+      "fetch-bank resolveQuestion (the fetch row)",
+      "karag merge admit() evidence projection (proposal #5's source class: the model copies what its context shows) — KNOWLEDGE_NODE and LEARNER_WORK pass through byte-for-byte; merge keys are row ids so the projection cannot change dedup identity"
+    ],
+    "untouched_by_law": "the /sources reader keeps its verbatim law; zero DB writes (the stored rows of record are untouched — their repair is the operator-gated lane #2); exam-papers detail + testbuilder + CLA surfaces are separate laws, disclosed as residuals"
+  },
+  "verification": {
+    "tests": "+25 (stem-hygiene 21 with real-corpus fixtures incl. the display-math blind spot and the MCQ-option negative pin; merge-projection 4 incl. learner-work and KG pass-through)",
+    "suite_of_record": "2091 pass / 0 fail / 109 files (bun test)",
+    "typecheck": "x4 exit 0 (apps/api, contracts, db, shared)",
+    "corpus_validation": "the SHIPPED law over all 1526 bank stems + 105 markup-carrying chunks (SELECT-only): 463 stems changed, 0 emptied, 0 residual junk classes, 0 idempotency violations, 0 MCQ damage",
+    "code_commit": "cd8f73e (fetch-first SAFE, rebased over the parallel ba2dbd5 hub lane; CI 2/2 GREEN first-hand via check-runs API)"
+  },
+  "deploy": {
+    "recipe": "T-MIG-093 of record: shim v2 worktree-only (restored PRISTINE post-build, verified), 6/6 concept-asset SHA pins EXACT, bundle 330 modules / 3,166,860 B",
+    "localgate": "8/8 ALL PASS on the real Neon wire (DATABASE_URL via the Vercel env list-carrier, IN-MEMORY, staged 0600, SHREDDED post-run; LOCAL-ONLY JWT key)",
+    "deployment": "dpl_2vRNzzjPTAciy9kiEi1ffcsSXST3 READY production (2026-10-16T14:09Z, vercel CLI 64.3.1 --prod)",
+    "rollback": "dpl_DsXzpcPiqS1FQDX4tmL9E3QyXBKu (the proposal-2 api-of-record) intact",
+    "health": "200 UP first-hand post-deploy"
+  },
+  "live_verify": {
+    "harness": "scripts/r0_proposal1_verify.py (7 legs, scrub-asserted transcript r0_proposal1_verify_transcript.json)",
+    "legs": "7/7 PASS: health bookends; unauth band probe = the 401 filter-chain law; register probe learner (example.invalid, memory-only); BAND-2 full june 2019 paper 2 -> 200 paper=4CH1/2C/2019, 8 questions, marks [6,9,9,7,10,14,8,7] EXACT, ZERO 'DO NOT WRITE' in any served stem, ZERO $/\\mathrm markup, QP 11 + MS 15 chunks serving (deep links intact); BAND-1 spec=2.6 listing -> 10 items zero junk/markup; GROUNDED ASK -> 200 refused=false 6 citations 579-char answer with NO markup leak (1 disclosed LLM spend); session read-back 2 turns (the s22 append law)"
+  },
+  "write_ledger": "2 probe learners (example.invalid, LOCALGATE + live verify) + 2 sessions (net-zero) + 1 grounded exchange; llm_spend=1; zero direct Neon writes; zero prod content writes; PAT and vcp inline-only memory-only, never persisted",
+  "disclosed_residuals": [
+    "396 pre-existing EMPTY stems in the bank (measured; a lane-#2 census finding — the card-bank rows whose text lives elsewhere)",
+    "3 \\begin{array} displayed-formula structures serve verbatim (the honest 2-D representation limit — lane #2/#3 territory; the law's fail-open keeps them un-mangled)",
+    "2012-era mojibake chunks (CP1251-style mis-decode, '$GG'='Add') — a corpus-repair finding, not a markup class; the law correctly leaves them alone",
+    "answer-side residual: the model can still emit markup it knows; the hub math-render lever (KaTeX-class) is a separate proposal",
+    "the formula-soup/diagram classes (q5 tails, missing figures) are lane #2 (stem rebuild from the clean per-question QP chunks) + #3 (figures) — still open with the operator"
+  ]
+}
