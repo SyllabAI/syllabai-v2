@@ -69,6 +69,11 @@ import type { Clock } from "./session-store";
 export const TUTOR_MAX_TOPICS = 5; // syllabai.tutor.max-topics
 export const TUTOR_VECTOR_CANDIDATES = 12; // syllabai.tutor.vector-candidates
 export const TUTOR_EVIDENCE_LIMIT = 6; // syllabai.tutor.evidence-limit
+/** Run-004 proposal #2 (operator trace 1a1446156b9d046d): once the
+ *  paper-question resolver pins evidence, the fused-retrieval filler is
+ *  capped at this many admitted items (run-004/005 live: 3 of 6 citations
+ *  were front-matter the learner never needs). A no-pin ask is untouched. */
+export const TUTOR_PIN_FILLER_CAP = 2;
 
 // ── ports (the module composes; no silent defaults for safety-critical laws) ─
 
@@ -305,18 +310,54 @@ export async function prepare(
   const fused = fuseWithPlanWeights([kgCandidates, vectorCandidatesList]);
 
   // 4. lead-first merge, dedup, rerank + cap (:493-515)
+  //    v2 run-004 proposal #2 (operator trace 1a1446156b9d046d) — TWO
+  //    deliberate corrections of the serving pipeline, disclosed of record:
+  //    (a) DEDUP RESTORED + REKEYED — the frozen Java putIfAbsent semantics
+  //        were lost in port: Set.prototype.add returns the SET (always
+  //        truthy), so the shipped `if (seen.add(key))` never filtered a
+  //        row and the same /sources/ deep link could surface twice (run-005
+  //        live: "Question paper — p11" cited two times in one answer). The
+  //        identity itself is also rekeyed from source|chunkId to DOCUMENT
+  //        ROW + page: two chunks of one document on one page render as ONE
+  //        citation (identical label, identical deep link); different pages
+  //        of the same document still both serve (different links/labels).
+  //    (b) PINS LEAD, CARDS FOLLOW, FILLER CAPPED — the resolver's card
+  //        anchors are metadata pointers (the content-store tier's own law:
+  //        "never answer-bearing"), so they are demoted behind the QP/MS
+  //        pins inside the pinned block, and once ANY pin exists the fused
+  //        retrieval filler is capped at TUTOR_PIN_FILLER_CAP (run-004: 3
+  //        of 6 citations were front-matter). A no-pin ask keeps the frozen
+  //        evidence-limit behaviour byte-for-byte.
   const reranker = deps.reranker ?? noReranker;
   const reranked = reranker(enriched, fused);
+  const contentPins: EvidenceItem[] = [];
+  const cardPins: EvidenceItem[] = [];
+  for (const item of pinned) {
+    (item.source === "CARD" ? cardPins : contentPins).push(item);
+  }
   const seen = new Set<string>();
   const merged: EvidenceItem[] = [];
-  for (const item of pinned) {
-    if (seen.add(identityKey(item))) merged.push(item);
-  }
+  const admit = (item: EvidenceItem): boolean => {
+    const key = mergeKey(item);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    merged.push(item);
+    return true;
+  };
+  for (const item of contentPins) admit(item);
+  for (const item of cardPins) admit(item);
+  const limit = deps.evidenceLimit ?? TUTOR_EVIDENCE_LIMIT;
+  const fillerCap =
+    pinned.length > 0
+      ? Math.min(TUTOR_PIN_FILLER_CAP, Math.max(0, limit - merged.length))
+      : limit;
+  let fillerAdmitted = 0;
   for (const item of reranked) {
-    if (seen.add(identityKey(item))) merged.push(item);
+    if (fillerAdmitted >= fillerCap) break;
+    if (admit(item)) fillerAdmitted += 1;
   }
   let evidence: EvidenceItem[] = merged
-    .slice(0, deps.evidenceLimit ?? TUTOR_EVIDENCE_LIMIT)
+    .slice(0, limit)
     .map((item) =>
       item.source === "KNOWLEDGE_NODE"
         ? item
@@ -342,9 +383,18 @@ export async function prepare(
   };
 }
 
-/** Pipeline identity: a chunk by its row, a KG node by its node id (:579-583). */
-function identityKey(item: EvidenceItem): string {
-  return `${item.source}|${item.chunkId != null ? item.chunkId : "node:" + item.nodeId}`;
+/** Merge identity (run-004 proposal #2): a KG node by its node id; a chunk
+ *  by its DOCUMENT ROW + page. Two chunks of the same document on the same
+ *  page are one citation (the label and the /sources/{row}?page=N deep link
+ *  are identical); the same document on DIFFERENT pages still yields two
+ *  citations (different links, different page suffixes). Replaces the
+ *  source|chunkId pipeline key (:579-583) whose Set.add-truthiness port
+ *  defect let duplicates through unfiltered. */
+function mergeKey(item: EvidenceItem): string {
+  if (item.documentRowId == null) {
+    return `node|${item.nodeId ?? item.content}`;
+  }
+  return `chunk|${item.documentRowId}|${item.pageStart ?? "*"}`;
 }
 
 // ── stream events (TutorStreamEvent.java :30-51) ────────────────────────────

@@ -19,8 +19,13 @@ import {
   streamThrough,
 } from "../../src/services/tutor/sanitize";
 import { fuse, fuseWithPlanWeights, PLAN_V2_WEIGHTS } from "../../src/services/tutor/rrf";
-import { evidenceFromChunk, evidenceFromNode } from "../../src/services/tutor/evidence";
-import { noReranker } from "../../src/services/tutor/karag";
+import { evidenceFromChunk, evidenceFromNode, type EvidenceItem } from "../../src/services/tutor/evidence";
+import {
+  noReranker,
+  prepare,
+  TUTOR_EVIDENCE_LIMIT,
+  TUTOR_PIN_FILLER_CAP,
+} from "../../src/services/tutor/karag";
 import { retrievalQuery } from "../../src/services/tutor/retrieval-query";
 import { resolveCitations } from "../../src/services/tutor/citations";
 import {
@@ -685,5 +690,162 @@ describe("ka-rag pipeline parity", () => {
     await expect(mod.ask("l1", "   ", [], null, null)).rejects.toThrow(
       "question must not be blank",
     );
+  });
+});
+
+// ── run-004 proposal #2 — the merge laws (operator trace 1a1446156b9d046d) ──
+
+describe("ka-rag merge laws — run-004 proposal #2 (dedup restored + rekeyed, pins lead, filler capped)", () => {
+  const emptyGraph = {
+    async structureNodes() {
+      return [];
+    },
+    async prerequisiteChains() {
+      return new Map();
+    },
+    async misconceptionsForTopics() {
+      return new Map();
+    },
+  };
+  const scopes = {
+    async resolveActive() {
+      return { curriculumVersionId: "cv", code: "4CH1", surface: new Set(["n1"]) };
+    },
+    async resolveForCourse() {
+      return null;
+    },
+  };
+
+  const chunkItem = (
+    row: string,
+    page: number | null,
+    chunkId: string,
+    kind: string,
+    cosine = 0.9,
+  ): EvidenceItem =>
+    evidenceFromChunk({
+      documentRowId: row,
+      documentId: "doc-" + row,
+      documentVersion: 1,
+      chunkId,
+      chunkIndex: 0,
+      kind,
+      content: `content-${chunkId}`,
+      pageStart: page,
+      pageEnd: null,
+      elementIds: [],
+      embeddingModel: "test",
+      cosine,
+    });
+
+  const nodeItem = (nodeId: string, title: string): EvidenceItem =>
+    evidenceFromNode({
+      nodeId,
+      code: "4CH1-T" + nodeId,
+      nodeType: "TOPIC",
+      title,
+      description: null,
+      matchScore: 0.9,
+    });
+
+  const run = (
+    pins: EvidenceItem[],
+    vector: EvidenceItem[],
+    opts?: { evidenceLimit?: number },
+  ) =>
+    prepare(
+      {
+        sql: fakeSql({}),
+        clock: fixedClock,
+        kgGraph: emptyGraph,
+        scopes,
+        vectorRetriever: async () => vector,
+        paperQuestionResolver: async () => ({
+          items: pins,
+          identityParsed: pins.length > 0,
+          identityLabel: null,
+        }),
+        ...(opts?.evidenceLimit != null ? { evidenceLimit: opts.evidenceLimit } : {}),
+      } as never,
+      "l1",
+      "what was question 6 in june 2019 paper 1?",
+      [],
+      null,
+    );
+
+  test("DEDUP RESTORED: two chunks of one document on one page cite once (the Set.add-truthiness port defect)", async () => {
+    // same documentRowId + page, DIFFERENT chunkIds — the shipped no-op
+    // dedup cited the identical /sources/ deep link twice (run-005 live)
+    const prep = await run(
+      [chunkItem("rowA", 11, "c1", "QUESTION_PAPER")],
+      [
+        chunkItem("rowA", 11, "c2", "QUESTION_PAPER", 0.8),
+        chunkItem("rowB", 9, "m1", "MARK_SCHEME", 0.7),
+      ],
+    );
+    expect(prep.evidence.map((i) => i.chunkId)).toEqual(["c1", "m1"]);
+    const links = resolveCitations(prep.evidence).map((c) => `${c.label}|${c.deepLink}`);
+    expect(new Set(links).size).toBe(links.length); // no duplicate citation
+  });
+
+  test("DEDUP REKEYED: the same document on DIFFERENT pages still serves both citations", async () => {
+    const prep = await run(
+      [chunkItem("rowA", 11, "c1", "QUESTION_PAPER")],
+      [chunkItem("rowA", 12, "c3", "QUESTION_PAPER", 0.8)],
+    );
+    expect(prep.evidence.map((i) => i.pageStart)).toEqual([11, 12]);
+  });
+
+  test("PINS LEAD: QP/MS pins precede the card anchor; filler follows capped", async () => {
+    const prep = await run(
+      [
+        chunkItem("rowCard", 1, "k1", "EXTERNAL_QUESTIONS"),
+        chunkItem("rowA", 11, "c1", "QUESTION_PAPER"),
+        chunkItem("rowB", 9, "m1", "MARK_SCHEME"),
+      ],
+      [
+        nodeItem("n1", "Reactivity"),
+        chunkItem("rowD", 1, "d1", "EXTERNAL_NOTES", 0.6),
+        chunkItem("rowE", 2, "d2", "EXTERNAL_NOTES", 0.5),
+        chunkItem("rowF", 3, "d3", "EXTERNAL_NOTES", 0.4),
+      ],
+    );
+    // pins: QP, MS, then the demoted card; filler capped at 2 (node + d1)
+    expect(prep.evidence.map((i) => i.chunkId ?? i.nodeId)).toEqual([
+      "c1",
+      "m1",
+      "k1",
+      "n1",
+      "d1",
+    ]);
+    expect(prep.evidence.length).toBe(3 + TUTOR_PIN_FILLER_CAP);
+  });
+
+  test("FILLER CAP: dup filler does not burn the budget; the cap counts admissions", async () => {
+    const prep = await run(
+      [chunkItem("rowA", 11, "c1", "QUESTION_PAPER")],
+      [
+        chunkItem("rowA", 11, "c2", "QUESTION_PAPER", 0.85), // dup — dropped, no budget
+        chunkItem("rowB", 9, "m1", "MARK_SCHEME", 0.7),
+        chunkItem("rowB", 10, "m2", "MARK_SCHEME", 0.65),
+        chunkItem("rowD", 1, "d1", "EXTERNAL_NOTES", 0.5),
+      ],
+    );
+    // order is the fusion's (per-kind plan weights) — assert the LAWS:
+    // the pin leads, exactly fillerCap admissions follow (a budget-burning
+    // cap would admit only 1 filler here: the dup would consume a slot),
+    // and no (row, page) pair appears twice.
+    expect(prep.evidence[0]!.chunkId).toBe("c1");
+    expect(prep.evidence.length).toBe(1 + TUTOR_PIN_FILLER_CAP);
+    const keys = prep.evidence.map((i) => `${i.documentRowId}|${i.pageStart}`);
+    expect(new Set(keys).size).toBe(keys.length);
+  });
+
+  test("NO PINS: the frozen evidence-limit behaviour is byte-for-byte unchanged", async () => {
+    const vector = Array.from({ length: 8 }, (_, k) =>
+      chunkItem(`row${k}`, k + 1, `v${k}`, "EXTERNAL_NOTES", 0.9 - k * 0.05),
+    );
+    const prep = await run([], vector);
+    expect(prep.evidence.length).toBe(TUTOR_EVIDENCE_LIMIT);
   });
 });
