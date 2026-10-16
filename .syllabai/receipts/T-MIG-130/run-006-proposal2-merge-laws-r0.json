@@ -1,0 +1,48 @@
+{
+  "tag": "T-MIG-130",
+  "run": "run-006-proposal2-merge-laws-r0",
+  "operator_trace": "1a1446156b9d046d 'proceed with 2' — applying run-004 receipt proposal #2 (citation dedupe + resolver-pins-first + filler cap); operator also reported additional mhchem leaks (e.g. '$\\mathrm {C H} _ {4} (\\mathrm {g}) + 2 \\mathrm {O} _ {2} (\\mathrm {g}) \\rightarrow \\mathrm {C O} _ {2} ...') — logged as proposal-#5 evidence, open",
+  "date_utc": "2026-10-16T11:27:31Z",
+  "code": {
+    "commit": "6f54cad",
+    "files": [
+      "apps/api/src/services/tutor/karag.ts",
+      "apps/api/test/tutor/tutor-core.test.ts"
+    ],
+    "change": "merge step 4 of the KA-RAG prepare(): (a) DEDUP RESTORED — port defect: Set.prototype.add returns the SET (always truthy) so the shipped 'if (seen.add(key))' never filtered anything (the run-005 'Question paper — p11' x2 root cause; the frozen Java putIfAbsent semantics lost in translation); (b) DEDUP REKEYED source|chunkId -> document row + page (two chunks of one document on one page = ONE citation; different pages still both serve); (c) card anchors demoted behind QP/MS pins (cards are 'metadata pointers … never answer-bearing' per the content-store tier's own law); (d) filler capped at TUTOR_PIN_FILLER_CAP=2 once any pin exists (no-pin asks byte-for-byte unchanged)",
+    "surface": "api-side serving change — the api redeploy lever (093 recipe) fired; hub auto-baked on the same push (no hub code delta)"
+  },
+  "gates": {
+    "unit": "tutor-core.test.ts 40/40 (+5 merge-law cases: dedup restored, rekey, pins-lead, budget-counting cap, no-pin regression guard)",
+    "suite_of_record": "bun test apps/api packages -> 1976 pass / 0 fail / 13 skip across 103 files (930 pkgs frozen-lockfile restored post-reprovision)",
+    "typecheck": "bun run typecheck (contracts/shared/db/api) exit 0",
+    "ci": "2/2 GREEN at 6f54cad first-hand (hub success, verify success)",
+    "asset_pins": "6/6 concept-asset SHA-256 prefixes == of-record pins EXACT",
+    "localgate": "8/8 ALL PASS on the real Neon wire (of-record DATABASE_URL via Vercel env API, IN-MEMORY ONLY, staged .env.localgate 0600 SHREDDED post-gate; local-only JWT key; 1 probe learner net-row, tutor sessions net-zero)"
+  },
+  "deploy": {
+    "recipe": "093 recipe of record (worktree-only shim v2 restored post-build, git-verified PRISTINE at 6f54cad; bun single-file CJS bundle 329 modules / 3,163,895 B; vercel CLI 62.7.0 --prod from the 2-file stage)",
+    "api_of_record": "dpl_DsXzpcPiqS1FQDX4tmL9E3QyXBKu READY (url slug syllabai-v2-8cu6fl1er) @ 6f54cad content",
+    "rollback": "prior dpl_2cJt318tLHHJvrSHTawY5QxsEri7 READY (the band-flip redeploy) — one-call re-alias lever intact",
+    "health": "live /actuator/health 200 UP post-deploy first-hand"
+  },
+  "live_verification": {
+    "harness": "scripts/r0_proposal2_verify.py (sandbox); transcript scripts/r0_proposal2_verify_transcript.json (scrub-asserted CLEAN)",
+    "legs": { "total": 7, "pass": 7, "fail": 0 },
+    "the_fix": {
+      "ask_verbatim": "What was question 6 in June 2019 paper 1, and what does a full-credit answer require?",
+      "citations_run005_pre": "[Question card p1, QP p11, MS p9, QP p11 DUP, MS p1, MS p11] — 6 citations, 1 duplicate, card led",
+      "citations_run006_post": "[QP p11, MS p9, Question card p1, MS p1, MS p11] — 5 citations, ZERO duplicate (row,page) pairs, the QP p11 pin LEADS, card demoted to slot 3, count within pins+filler cap",
+      "served": "200 grounded — provider=groq model=openai/gpt-oss-120b refused=false; 1097-char answer; 7.2s wall; session read-back 2 turns [user ev=0 / assistant ev=5]"
+    },
+    "regressions": [
+      { "leg": "band2_rest_regression", "q": "2019 june paper 1 (REST)", "observed": "200 4CH1/1C June 2019 VALIDATED, 15 questions, zero LLM — the bank surface rides the new bundle unchanged" }
+    ],
+    "honest_edges": [
+      "MS p1 front-matter remains in slot 4 — it is a RESOLVER PIN (matchQuestion matched the chunk), not retrieval filler; the filler cap does not touch resolver pins (out of proposal-#2 scope; a resolver-side front-matter filter is a future refinement)",
+      "citation kind still maps to SPEC_POINT through the hub citation-map (proposal #3 open); mhchem/LaTeX leak re-confirmed by the operator (proposal #5 open)"
+    ],
+    "llm_spend": 1
+  },
+  "write_ledger": "2 probe learners (localgate net-row of record + memory-only relay probe, both example.invalid) + 2 sessions (localgate net-zero + 1 relay probe session) + 1 grounded ask exchange; llm_spend=1; vcp token inline-only memory-only (env list + single-env GET 404 -> list-carried plain value; .env.localgate shredded post-gate); zero Neon direct contact (localgate rides the of-record DATABASE_URL over the real Neon wire, precedented by the 092/093/130 recipes)"
+}

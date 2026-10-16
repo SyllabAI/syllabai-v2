@@ -1,0 +1,17 @@
+{
+  "tag": "DEPLOY",
+  "run": "api-of-record-redeploy-run-008-r0",
+  "operator_trace": "1a1446156b9d046d 'proceed with 2' (run-004 proposal #2 needs the api redeploy lever)",
+  "date_utc": "2026-10-16T11:27:31Z",
+  "recipe": "093 recipe of record — fetch-first at 6f54cad (remote == local, no force); delta census karag.ts+tests only (shim-target diff EMPTY); worktree-only shim v2 (Bun.CryptoHasher/YAML -> node:crypto/js-yaml; 6 hash-pinned concept-graph YAMLs inlined byte-verbatim via generated asset module; explicit Node adapter entry) RESTORED post-build, git-verified PRISTINE at 6f54cad; 6/6 asset SHA-256 prefixes == of-record pins EXACT; bun single-file CJS bundle 329 modules / 3,163,895 B; LOCALGATE 8/8 ALL PASS on the real Neon wire (of-record DATABASE_URL via Vercel env API IN-MEMORY ONLY — single-env GET 404'd, list-carried plain value read without echo; staged .env.localgate 0600 SHREDDED post-gate; local-only JWT key; 1 probe learner net-row, tutor sessions net-zero); vercel CLI 62.7.0 --prod from the 2-file stage",
+  "api_of_record": "dpl_DsXzpcPiqS1FQDX4tmL9E3QyXBKu READY @ 6f54cad content (url slug syllabai-v2-8cu6fl1er-syllab-ai.vercel.app)",
+  "rollback": "prior dpl_2cJt318tLHHJvrSHTawY5QxsEri7 READY (band-flip redeploy) — one-call re-alias lever intact",
+  "post_deploy_verification": "live /actuator/health 200 UP first-hand; run-006 probe 7/7 PASS (scripts/r0_proposal2_verify.py): the Q6 grounded ask returns 5 citations ZERO duplicate (row,page) pairs, QP p11 pin leads, card demoted to slot 3 (pre: 6 citations with QP p11 twice and the card leading); band-2 REST regression 200 4CH1/1C VALIDATED 15 q zero-LLM; llm_spend=1",
+  "disclosures": [
+    "sandbox was RE-PROVISIONED between operator turns (local clone reflog ended Oct-15; node_modules partial — 930 pkgs frozen-lockfile restored; the clone was re-synced to the advanced remote tip 01e1a50 with my 82d20a0/90ac9e9 intact in ancestry — verified before any work)",
+    "env-api note: DATABASE_URL is type plain on the api project — the value rides the /v9 env LIST response; single-env GET 404s (the decrypt=1 query shape of the 092-era recipe no longer applies); the value was never echoed/stdout/logged",
+    "hub auto-baked on the 6f54cad push (no hub code delta; platform behavior of record)",
+    "write ledger: 2 probe learners (example.invalid) + 2 sessions (net-zero + 1 probe session) + 1 grounded exchange; llm_spend=1"
+  ],
+  "scrub": "receipt carries zero secret values; vcp/DATABASE_URL/JWT inline-or-memory-only"
+}
