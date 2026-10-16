@@ -163,6 +163,53 @@ test("viewer: zoom ladder shows honest round steps and resets", async ({ page })
   await expect(zoomOut).toBeEnabled();
 });
 
+test("viewer: s145 zoom is two-phase — instant geometry, then crisp re-raster", async ({ page }) => {
+  await readyViewer(page);
+  const zoomIn = page.getByRole("button", { name: "Zoom in" });
+  await expect(zoomIn).toHaveAttribute("title", "Zoom: 100% of fit width");
+  // park page 2's top edge 40px below the region's top so the scroll anchor
+  // is observable (the live phase re-anchors scrollTop by the exact ratio)
+  const parkTop = await page.evaluate(() => {
+    const region = document.querySelector(".pp-pane [role='region']") as HTMLElement;
+    const h2 = region.querySelector("[data-page='2']") as HTMLElement;
+    const rr = region.getBoundingClientRect();
+    const abs = h2.getBoundingClientRect().top - rr.top + region.scrollTop;
+    region.scrollTop = abs - 40;
+    const rr2 = region.getBoundingClientRect();
+    return h2.getBoundingClientRect().top - rr2.top;
+  });
+  const cv = page.locator(".pp-pane [data-page='2'] canvas");
+  await expect(cv).toHaveCount(1);
+  const before = await cv.evaluate((el) => ({ style: el.style.width, bitmap: el.width }));
+  // LIVE half: the click handler restyles synchronously — the CSS box moves
+  // to the new scale and the OLD bitmap stretches (compositor-only), while
+  // the bitmap itself has not re-rasterized yet
+  await zoomIn.click();
+  // (±5px: the live box rounds from the analytic fit box, the old style from
+  // the previous render — cross-rounding differs by ≤1px; a MISSED live phase
+  // would be ~194px off, so the tolerance still pins the contract hard)
+  expect(await cv.evaluate((el) => parseFloat(el.style.width))).toBeCloseTo(
+    parseFloat(before.style) * 1.25,
+    -1,
+  );
+  const anchoredTop = await page.evaluate(() => {
+    const region = document.querySelector(".pp-pane [role='region']") as HTMLElement;
+    const h2 = region.querySelector("[data-page='2']") as HTMLElement;
+    return h2.getBoundingClientRect().top - region.getBoundingClientRect().top;
+  });
+  expect(anchoredTop, "content holds its viewport position through the zoom").toBeCloseTo(parkTop, -1);
+  // QUALITY half: 180ms after the step the debounced refreeze re-rasterizes
+  // at the new scale — the bitmap catches up with the box it already has
+  await expect
+    .poll(async () => cv.evaluate((el) => el.width), { timeout: 10_000 })
+    .toBeCloseTo(before.bitmap * 1.25, -1);
+  // the swap keeps the live geometry (no second jump)
+  expect(await cv.evaluate((el) => parseFloat(el.style.width))).toBeCloseTo(
+    parseFloat(before.style) * 1.25,
+    -1,
+  );
+});
+
 test.describe("gesture zoom (s144)", () => {
   test.use({ hasTouch: true });
 
