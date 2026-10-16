@@ -4,6 +4,21 @@
  * teacher/ingestion/PastPaperIngestionService.java (359 lines) @ 6cad6ef,
  * verified line-against-line 2026-10-07.
  *
+ * DELIBERATE v2 DEVIATION (operator-ordered, trace 1a14536e97f41425: "we
+ * should also update the parser right? so it 'cleans' pdfs after parsing?"):
+ * the frozen port wrote the OCR draft prompts VERBATIM into questions.stem /
+ * question_versions.stem / question_parts.prompt — which is exactly how the
+ * draft bank filled with extraction furniture ("DO NOT WRITE IN THIS AREA"
+ * — 118 rows / 201 hits), math-markup leaks ($ \mathrm{…}$ — 167 stems) and
+ * printed front matter (46 rows): census trace 1a144b08a0dbcf0d, the junk
+ * entered at THIS boundary, not the document corpus. Post-cutover, every
+ * draft stem/part prompt now passes the SHIPPED stem-hygiene law
+ * (services/tutor/stem-hygiene.ts — run-004 proposal #1, census-cited,
+ * content-preserving, FAIL-OPEN: a result that would be empty returns the
+ * input unchanged) at WRITE time, so future parses land clean at birth and
+ * never need a rebuild lane again. Everything else stays the byte-faithful
+ * port.
+ *
  * Deterministic, whole-draft, single transaction: either the full paper
  * lands or nothing does (the CALLER owns the transaction — the frozen
  * @Transactional joins the glm-ocr pair's one transaction; this port takes
@@ -36,6 +51,7 @@
 import type { SqlFn } from "../identity/users";
 import { ConflictException } from "../identity/errors";
 import type { PastPaperDraft } from "@syllabai/contracts";
+import { hygienicStem } from "../tutor/stem-hygiene";
 
 type Row = Record<string, unknown>;
 
@@ -371,6 +387,11 @@ export async function ingestPastPaperDraft(
   const versionsByNumber = new Map<string, string>();
   for (const q of questions) {
     const questionId = crypto.randomUUID();
+    // v2 parse-time stem-hygiene law (operator trace 1a14536e97f41425): the
+    // draft prompt lands CLEAN at birth — the same census-cited, fail-open
+    // law the learner-facing serve applies (one law, write side AND serve
+    // side); empty prompts stay empty (hygienicStem fails open on "").
+    const stem = hygienicStem(q.prompt ?? "");
     await sql`
       insert into questions (
         id, external_ref, question_type, stem, marks, difficulty,
@@ -380,7 +401,7 @@ export async function ingestPastPaperDraft(
         ${questionId}::uuid,
         ${q.externalRef},
         'STRUCTURED',
-        ${nullSafe(q.prompt, "")},
+        ${stem},
         ${Math.max(q.marks, 1)},
         3,
         ${90 * Math.max(q.marks, 1)},
@@ -402,7 +423,7 @@ export async function ingestPastPaperDraft(
         ${versionId}::uuid,
         ${questionId}::uuid,
         1,
-        ${nullSafe(q.prompt, "")},
+        ${stem},
         ${Math.max(q.marks, 1)},
         3,
         ${90 * Math.max(q.marks, 1)},
@@ -428,7 +449,7 @@ export async function ingestPastPaperDraft(
           ${crypto.randomUUID()}::uuid,
           ${versionId}::uuid,
           ${label},
-          ${nullSafe(p.prompt, "")},
+          ${hygienicStem(p.prompt ?? "")},
           ${p.commandWord},
           ${Math.max(p.marks, 0)},
           ${order++},

@@ -42,6 +42,7 @@ import { parseFetchQuery, parsedIsEmpty } from "./fetch-parser";
 import { buildTutorFetchBank } from "./fetch-bank";
 import { unitCandidates, unitFromPaperCode } from "./paper-question";
 import { hygienicStem } from "./stem-hygiene";
+import { figuresByQuestionNumber, questionNumberOf } from "./paper-figures";
 import type {
   TutorBankPaperChunk,
   TutorBankPaperDocumentView,
@@ -51,6 +52,7 @@ import type {
   TutorBankQuestionsParams,
   TutorBankQuestionsView,
   TutorBankResolvedNode,
+  TutorQuestionFigure,
 } from "@syllabai/contracts";
 
 /** The scope the bands read (CurriculumScopeResolver satisfies structurally). */
@@ -232,7 +234,11 @@ async function specCodesByQuestion(sql: SqlFn, ids: string[]): Promise<Map<strin
   return map;
 }
 
-const itemOf = (r: ListingRow, codes: string[]): TutorBankQuestionItem => ({
+const itemOf = (
+  r: ListingRow,
+  codes: string[],
+  figures: TutorQuestionFigure[] = [],
+): TutorBankQuestionItem => ({
   questionId: String(r.id),
   externalRef: r.external_ref == null ? null : String(r.external_ref),
   questionType: r.question_type == null ? null : String(r.question_type),
@@ -244,6 +250,9 @@ const itemOf = (r: ListingRow, codes: string[]): TutorBankQuestionItem => ({
   commandWord: r.command_word == null ? null : String(r.command_word),
   specPointCodes: codes,
   paper: paperRefOf(r),
+  // lane #3: the parser's own figure attribution, page-resolved — the
+  // honest empty [] when the paper carries no figure data of record.
+  figures,
 });
 
 // ── the whole-paper fetch (band 2) ──────────────────────────────────────────
@@ -297,7 +306,11 @@ function acceptsDocument(doc: DocumentRow | null, expectedKind: string): boolean
 
 const chunkOf = (doc: DocumentRow, c: ChunkRow): TutorBankPaperChunk => ({
   chunkIndex: Number(c.chunk_index),
-  documentRowId: String(c.id),
+  // the F-022 reader law: /sources/{row} resolves a DOCUMENTS.id row
+  // (existsCitable) — the evidence chain carries doc.id under this field
+  // (paper-question.ts evidence()), and the band view now does too. The
+  // chunk's own identity is the (documentRowId, chunkIndex) pair.
+  documentRowId: String(doc.id),
   documentId: String(doc.document_id),
   pageStart: c.page_start == null ? null : Number(c.page_start),
   pageEnd: c.page_end == null ? null : Number(c.page_end),
@@ -325,6 +338,7 @@ const bankQuestionItemOf = (
   r: Pick<ListingRow, "id" | "external_ref" | "question_type" | "stem" | "marks" | "command_word">,
   codes: string[],
   paper: TutorBankPaperRef,
+  figures: TutorQuestionFigure[] = [],
 ): TutorBankQuestionItem => ({
   questionId: String(r.id),
   externalRef: r.external_ref == null ? null : String(r.external_ref),
@@ -335,6 +349,8 @@ const bankQuestionItemOf = (
   commandWord: r.command_word == null ? null : String(r.command_word),
   specPointCodes: codes,
   paper,
+  // lane #3: same projection as the listing (one law, both bands)
+  figures,
 });
 
 // ── the module ──────────────────────────────────────────────────────────────
@@ -395,10 +411,28 @@ export function buildBankBands(sql: SqlFn) {
       sql,
       rows.map((r) => String(r.id)),
     );
+    // lane #3: figure maps for the SHOWN items' distinct papers (after the
+    // limit cut — the census total never pays for figures). Each resolve is
+    // two small fail-open reads; a listing spans a handful of papers.
+    const shown = rows.slice(0, params.limit);
+    const figMaps = new Map<string, Map<string, TutorQuestionFigure[]>>();
+    for (const pid of [...new Set(shown.map((r) => r.paper_id).filter((p): p is string => p != null))]) {
+      figMaps.set(String(pid), await figuresByQuestionNumber(sql, String(pid)));
+    }
     return {
       resolvedNodes: resolved.nodes.map(nodeOf),
       total: rows.length,
-      items: rows.slice(0, params.limit).map((r) => itemOf(r, codes.get(String(r.id)) ?? [])),
+      items: shown.map((r) =>
+        itemOf(
+          r,
+          codes.get(String(r.id)) ?? [],
+          r.paper_id == null
+            ? []
+            : (figMaps.get(String(r.paper_id))?.get(
+                questionNumberOf(r.external_ref == null ? null : String(r.external_ref)) ?? "",
+              ) ?? []),
+        ),
+      ),
     };
   }
 
@@ -462,7 +496,19 @@ export function buildBankBands(sql: SqlFn) {
       sql,
       rows.map((r) => String(r.id)),
     );
-    const questions = rows.map((r) => bankQuestionItemOf(r, codes.get(String(r.id)) ?? [], paperRef));
+    // lane #3: the bound paper's figure map — the parser's own attribution
+    // (the GLM draft refs) resolved to canonical pages, fail-open.
+    const figMap = await figuresByQuestionNumber(sql, bound.paperId);
+    const questions = rows.map((r) =>
+      bankQuestionItemOf(
+        r,
+        codes.get(String(r.id)) ?? [],
+        paperRef,
+        figMap.get(
+          questionNumberOf(r.external_ref == null ? null : String(r.external_ref)) ?? "",
+        ) ?? [],
+      ),
+    );
 
     const siblings = candidates
       .filter((p) => p.paperId !== bound.paperId)

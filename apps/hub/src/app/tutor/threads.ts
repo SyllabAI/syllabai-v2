@@ -48,6 +48,20 @@ export interface TurnBandPaperRef {
   validationState: string;
 }
 
+export interface TurnBandQuestionFigure {
+  /** the QP document row the figure lives on (documents.id) — null = no link */
+  documentRowId: string | null;
+  /** the digitized page the figure sits on */
+  page: number | null;
+  /** the parser's crop asset name (reference metadata, not a fetchable src) */
+  sourceName: string | null;
+  format: string | null;
+  width: number | null;
+  height: number | null;
+  /** the parser's own availability claim at parse time (provenance) */
+  availability: string | null;
+}
+
 export interface TurnBandQuestionItem {
   questionId: string;
   externalRef: string | null;
@@ -57,6 +71,9 @@ export interface TurnBandQuestionItem {
   commandWord: string | null;
   specPointCodes: string[];
   paper: TurnBandPaperRef | null;
+  /** lane #3: the parser's own figure attribution, page-resolved (the F-022
+   *  reader deep link) — [] = the honest empty (no figure data of record) */
+  figures?: TurnBandQuestionFigure[];
 }
 
 export type TurnBand =

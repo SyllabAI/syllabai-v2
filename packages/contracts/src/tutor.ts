@@ -244,6 +244,33 @@ export const tutorBankPaperRefSchema = z.object({
 });
 export type TutorBankPaperRef = z.infer<typeof tutorBankPaperRefSchema>;
 
+/**
+ * A question's figure reference — lane #3 of the run-004 diagnosis (trace
+ * 1a14536e97f41425): the OCR parser's own figure attribution (the GLM draft's
+ * per-question figureRefs) resolved to the canonical figure element's
+ * digitized page. A REFERENCE, never a promise of bytes: the crop binaries
+ * are not stored in the corpus of record, so the surface deep-links the F-022
+ * reader at the figure's page instead of fabricating an <img> src.
+ */
+export const tutorQuestionFigureSchema = z.object({
+  /** the QP document row (documents.id) the figure lives on — the F-022
+   *  reader subject; null = the doc row is unresolvable (no link, honest). */
+  documentRowId: z.string().uuid().nullable(),
+  /** the digitized page the figure sits on (canonical figure page_number). */
+  page: z.number().int().nullable(),
+  /** the parser's crop asset name (e.g. "assets/crop_4_….png") — reference
+   *  metadata, not a fetchable URL of record. */
+  sourceName: z.string().nullable(),
+  format: z.string().nullable(),
+  width: z.number().int().nullable(),
+  height: z.number().int().nullable(),
+  /** the parser's own availability claim at parse time
+   *  ("available" | "unavailable-signed-url" | null) — provenance, not
+   *  current truth (the bytes of record are not stored). */
+  availability: z.string().nullable(),
+});
+export type TutorQuestionFigure = z.infer<typeof tutorQuestionFigureSchema>;
+
 export const tutorBankQuestionItemSchema = z.object({
   questionId: z.string().uuid(),
   externalRef: z.string().nullable(),
@@ -253,6 +280,10 @@ export const tutorBankQuestionItemSchema = z.object({
   commandWord: z.string().nullable(),
   specPointCodes: z.array(z.string()),
   paper: tutorBankPaperRefSchema.nullable(),
+  /** The question's figure references in the parser's own reading order
+   *  (question-level refs first, then part-level), deduped by element.
+   *  Default [] = the honest empty (no figure data of record). */
+  figures: z.array(tutorQuestionFigureSchema).default([]),
 });
 export type TutorBankQuestionItem = z.infer<typeof tutorBankQuestionItemSchema>;
 

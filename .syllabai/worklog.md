@@ -8018,3 +8018,21 @@ Work Log:
 Stage Summary:
 - Proposal #1 SHIPPED AND LIVE-VERIFIED; #5's source class absorbed at the evidence projection. Honest residuals: the answer-side model-leak residual (hub math-render = separate lever), 396 empty stems + mojibake chunks + \begin{array} structures + the formula-soup/figure classes = lane #2 (operator-gated stem rebuild from the clean per-question QP chunks) and #3 (figures) — still open with the operator; proposal #3 (citation-kind flattening) also still open.
 - Write ledger: 2 probe learners (example.invalid) + 2 sessions (net-zero) + 1 grounded exchange; llm_spend=1; zero direct Neon writes; zero prod content writes; PAT/vcp inline-only memory-only.
+
+---
+Task ID: trace 1a14536e97f41425 ("#3, and we should also update the parser right? so it 'cleans' pdfs after parsing?" — run-004 proposal #3 + the parse-time hygiene law)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Deliver lane #3 (the figures lever) AND the operator-ordered parser-side clean — code lane, both surfaces; zero prod content writes.
+
+Work Log:
+- State re-check first-hand (standing order): remote tip aa4fa7b == local tip — #1 (cd8f73e serve law) + #2 (346-stem rebuild) SHIPPED of record; the "#3" order therefore targets the figures lane the receipts name as the open residual.
+- RECON of record (scripts/r0_figures_probe.mjs, SELECT-only): 1,151 figureRefs in the 59 glm_ocr_bridge_records.qp_draft blobs (1,134 available, all content-addressed img:<sha256> with width/height); canonical_json carries 634 figure elements all with page_number (group_key never fires — the draft ref is the only attribution spine); the elementId join resolves 1,145/1,151 WITH pages; 49/95 VALIDATED papers have bridge records (the other 46 — June 2019 4CH1/2C among them — carry NO figure data of record); crop BINARIES nowhere of record (question_asset = 585 SME-only assets, zero crops).
+- Implemented the read-side projection (paper-figures.ts figuresByQuestionNumber): the parser's OWN attribution, page-resolved via the canonical element join, dedup, per-question cap 12, FAIL-OPEN, honest empty for bridge-less papers; attached in BOTH bands (band-2 bound paper; band-1 shown items' distinct papers after the limit cut).
+- Hub FigureChips: "Diagram · QP p.N" reference chips deep-linking the F-022 reader (readerHref/CitationPaperLink law); NO <img> — bytes of record absent, a broken src would be a lie; chips only where attribution resolved.
+- PARSE-TIME STEM HYGIENE (the operator's directive, documented as a DELIBERATE v2 deviation from the frozen byte-faithful port): ingestPastPaperDraft now runs the SHIPPED hygienicStem over every draft prompt at WRITE time (questions.stem + question_versions.stem + question_parts.prompt) — the census-measured junk entry point (trace 1a144b08a0dbcf0d) is closed at the source; future parses land clean at birth.
+- IN-LANE FIX (disclosed drive-by, pinned by test): bank-bands chunkOf carried document_chunks.id under TutorBankPaperChunk.documentRowId while the F-022 reader resolves DOCUMENTS.id (existsCitable) — every band QP/MS deep link pane'd 404; now carries doc.id (the paper-question evidence() convention).
+- Tests +20 (paper-figures 11, bank-bands +4 incl. the F-022 row pin, past-paper-hygiene 5 with the real measured junk classes); suite 2147 pass / 0 fail / 13 skip; typecheck x4 + hub exit 0.
+- Receipt .syllabai/receipts/T-MIG-130/run-009-proposal3-figures-and-parse-hygiene-r0.json; scrub-asserted; fetch-first SAFE.
+
+Stage Summary:
+- Lane #3 SHIPPED (code): the bank now discloses the diagrams its stems gesture at — reference chips page-deep-linked into the F-022 reader on both band surfaces — and the parser cleans after parsing (one hygiene law, write side AND serve side). Deploy (API 093 + hub r1c recipes) + live verify follow in this run; disclosed residuals: 46 bridge-less papers serve figures [] (re-parse lane, operator-gated), crop binaries unrecoverable of record.

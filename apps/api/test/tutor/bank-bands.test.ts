@@ -213,8 +213,12 @@ describe("bank band (1) — axis precedence + node resolution", () => {
 
 // ── band (2): the whole-paper one-view fetch ────────────────────────────────
 
-function bankHarness(over: Record<string, Responder> = {}) {
+function bankHarness(over: Record<string, Responder> = {}, pre: Record<string, Responder> = {}) {
+  // `pre` lands BEFORE the base keys: the figures lane's canonical-JSON read
+  // also contains the substring "from documents" — the more specific key
+  // must win the fakeSql dispatch (first match wins).
   return fakeSql({
+    ...pre,
     "from subjects s": [{ code: "4CH1" }],
     "from exam_papers ep join subjects s": [
       paperRow(),
@@ -346,5 +350,79 @@ describe("bank band (2) — binding + serving laws", () => {
     const result = await bands.fetchPaper("2019 june paper 1", SCOPE);
     const view = (result as { status: "FULL"; view: { questionPaper: { chunkCount: number } } }).view;
     expect(view.questionPaper.chunkCount).toBe(MAX_PAPER_CHUNKS_PER_KIND);
+  });
+
+  // ── lane #3 (trace 1a14536e97f41425): figures + the F-022 row law ─────────
+
+  test("lane #3: figure refs attach by external_ref number; the honest empty rides questions without refs", async () => {
+    const draft = {
+      questions: [
+        { number: 1, figures: [{ elementId: "e1", sourceName: "assets/crop_1.png", format: "png", width: 338, height: 337, availability: "available" }], parts: [] },
+        { number: 2, figures: [], parts: [] },
+      ],
+    };
+    const { sql } = bankHarness({
+      "select qp_document_row_id": [{ qp_document_row_id: "row-qp", qp_draft: JSON.stringify(draft) }],
+    }, {
+      "canonical_json::text as cj": (params) =>
+        params[0] === "row-qp"
+          ? [{ cj: JSON.stringify({ figures: [{ element_id: "e1", page_number: 4 }] }) }]
+          : [],
+    });
+    const bands = buildBankBands(sql);
+    const result = await bands.fetchPaper("2019 june paper 1", SCOPE);
+    const view = (result as { status: "FULL"; view: { questions: Array<{ externalRef: string; figures: Array<Row> }> } }).view;
+    expect(view.questions[0]!.figures).toHaveLength(1);
+    expect(view.questions[0]!.figures[0]).toMatchObject({ page: 4, documentRowId: "row-qp" });
+    expect(view.questions[1]!.figures).toEqual([]); // the honest empty, never a guess
+  });
+
+  test("lane #3: no bridge record → every question serves figures: [] (the honest empty)", async () => {
+    const { sql } = bankHarness({
+      "select qp_document_row_id": [],
+    });
+    const bands = buildBankBands(sql);
+    const result = await bands.fetchPaper("2019 june paper 1", SCOPE);
+    const view = (result as { status: "FULL"; view: { questions: Array<{ figures: unknown[] }> } }).view;
+    expect(view.questions.every((q) => Array.isArray(q.figures) && q.figures.length === 0)).toBe(true);
+  });
+
+  test("the F-022 row law: a band chunk's documentRowId is the DOCUMENTS.id row (existsCitable resolves it) — the chunk id is not", async () => {
+    const { sql } = bankHarness();
+    const bands = buildBankBands(sql);
+    const result = await bands.fetchPaper("2019 june paper 1", SCOPE);
+    const view = (result as { status: "FULL"; view: { questionPaper: { chunks: Array<{ documentRowId: string }> } } }).view;
+    // the fake chunks carry ids c1/c2 — the field of record must carry the
+    // doc row (row-qp), the law the /sources reader and the citation bridge
+    // both resolve (documents.id; paper-question evidence() convention)
+    expect(view.questionPaper.chunks.every((c) => c.documentRowId === "row-qp")).toBe(true);
+  });
+
+  test("lane #3: the band-1 listing attaches figures for the SHOWN items' papers", async () => {
+    const draft = {
+      questions: [
+        { number: 1, figures: [{ elementId: "e1", sourceName: "assets/crop_1.png", availability: "available" }], parts: [] },
+      ],
+    };
+    const rows = [
+      listingRow({ id: "q-1", external_ref: "q01-x", paper_id: "p-1c" }),
+      listingRow({ id: "q-2", external_ref: "q02-x", paper_id: "p-2c" }),
+    ];
+    const { sql } = fakeSql({
+      "lower(n.title) = lower": [{ id: "topic-1" }],
+      "SELECT id FROM subtree": [],
+      "n.id = any": [{ id: "topic-1", node_type: "TOPIC", title: "Crude oil", code: null }],
+      "left join exam_papers ep": rows,
+      "from question_spec_points qsp": [],
+      "select qp_document_row_id": (params) =>
+        params[0] === "p-1c" ? [{ qp_document_row_id: "row-qp", qp_draft: JSON.stringify(draft) }] : [],
+      "canonical_json::text as cj": (params) =>
+        params[0] === "row-qp" ? [{ cj: JSON.stringify({ figures: [{ element_id: "e1", page_number: 2 }] }) }] : [],
+    });
+    const bands = buildBankBands(sql);
+    const view = await bands.listQuestions({ topic: "Crude oil", limit: 10 }, SCOPE);
+    expect(view.items[0]!.figures).toHaveLength(1);
+    expect(view.items[0]!.figures[0]!.page).toBe(2);
+    expect(view.items[1]!.figures).toEqual([]); // p-2c has no bridge record
   });
 });

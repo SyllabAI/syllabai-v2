@@ -72,6 +72,16 @@ interface BankPaperRef {
   validationState: string;
 }
 
+interface BankQuestionFigure {
+  documentRowId: string | null;
+  page: number | null;
+  sourceName: string | null;
+  format: string | null;
+  width: number | null;
+  height: number | null;
+  availability: string | null;
+}
+
 interface BankQuestionItem {
   questionId: string;
   externalRef: string | null;
@@ -81,6 +91,10 @@ interface BankQuestionItem {
   commandWord: string | null;
   specPointCodes: string[];
   paper: BankPaperRef | null;
+  /** lane #3 (run-004): the parser's own figure refs, page-resolved — the
+   *  wire passes through unreshaped; optional here keeps older payloads
+   *  honest (absent = the renderer serves no chips). */
+  figures?: BankQuestionFigure[] | null;
 }
 
 interface BankQuestionsView {

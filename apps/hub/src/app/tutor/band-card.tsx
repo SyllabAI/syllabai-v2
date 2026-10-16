@@ -17,7 +17,7 @@
 import { Badge } from "@/components/ui/badge";
 import { seriesLabel } from "@syllabai/shared";
 import { CitationPaperLink } from "@/components/citations/citation-paper-link";
-import { BookOpenCheck, CheckSquare, ExternalLink, FileText, ListChecks } from "lucide-react";
+import { BookOpenCheck, CheckSquare, ExternalLink, FileText, Image as ImageIcon, ListChecks } from "lucide-react";
 import type { TurnBand, TurnBandQuestionItem } from "./threads";
 
 /** The F-022 reader href — the same law the citation bridge applies:
@@ -45,7 +45,13 @@ function paperLabel(p: { series: string | null; year: number | null; paperCode: 
   return [sess || null, p.paperCode].filter((x): x is string => x != null && x !== "").join(" · ");
 }
 
-function QuestionRow({ q }: { q: TurnBandQuestionItem }) {
+function QuestionRow({
+  q,
+  courseSlug,
+}: {
+  q: TurnBandQuestionItem;
+  courseSlug?: string | null;
+}) {
   return (
     <li className="flex items-start gap-2 py-1.5">
       <Badge variant="outline" className="mt-0.5 h-5 shrink-0 px-1.5 text-[10px] tabular-nums">
@@ -54,6 +60,7 @@ function QuestionRow({ q }: { q: TurnBandQuestionItem }) {
       </Badge>
       <div className="min-w-0 flex-1">
         <p className="line-clamp-2 text-xs leading-snug">{q.stem}</p>
+        <FigureChips q={q} courseSlug={courseSlug} />
         <p className="mt-0.5 truncate text-[10px] text-muted-foreground">
           {[
             q.paper ? paperLabel(q.paper) : null,
@@ -68,10 +75,61 @@ function QuestionRow({ q }: { q: TurnBandQuestionItem }) {
   );
 }
 
+/** lane #3 — the question's figure chips: the diagram EXISTENCE the stems
+ *  only gesture at ("The diagram shows…"), each chip a reference (page +
+ *  crop shape) that deep-links the F-022 reader at the figure's digitized
+ *  page. Never an <img>: the crop binaries are not stored of record, and a
+ *  broken src would be a lie — the reader's parsed page is the truth of
+ *  record. Chips render ONLY where the parser's own attribution resolved. */
+function FigureChips({ q, courseSlug }: { q: TurnBandQuestionItem; courseSlug?: string | null }) {
+  const figures = q.figures ?? [];
+  if (figures.length === 0) return null;
+  const shown = figures.slice(0, 4);
+  return (
+    <div className="mt-1 flex flex-wrap items-center gap-1">
+      {shown.map((f, i) => {
+        const dims = f.width != null && f.height != null ? `${f.width}×${f.height}` : null;
+        const label = [f.page != null ? `QP p.${f.page}` : "QP", dims].filter(Boolean).join(" · ");
+        const href = f.documentRowId ? readerHref(f.documentRowId, f.page, courseSlug) : null;
+        const body = (
+          <>
+            <ImageIcon className="size-2.5 shrink-0" aria-hidden />
+            <span>Diagram</span>
+            {label !== "" && <span className="text-muted-foreground">{label}</span>}
+          </>
+        );
+        const cls =
+          "inline-flex items-center gap-1 rounded border bg-background/70 px-1 py-px text-[9.5px] leading-4";
+        const title =
+          f.sourceName != null
+            ? `${f.sourceName} — open the question paper at this figure's page`
+            : "Open the question paper at this figure's page";
+        const key = `${f.documentRowId ?? "row"}-${f.page ?? "p"}-${i}`;
+        return href ? (
+          <CitationPaperLink key={key} href={href} className={`${cls} transition-colors hover:bg-muted/60`} title={title}>
+            {body}
+          </CitationPaperLink>
+        ) : (
+          <span key={key} className={cls} title={title}>
+            {body}
+          </span>
+        );
+      })}
+      {figures.length > shown.length && (
+        <span className="text-[9.5px] text-muted-foreground">+{figures.length - shown.length}</span>
+      )}
+    </div>
+  );
+}
+
 export function BandCard({ band, courseSlug }: { band: TurnBand; courseSlug?: string | null }) {
   return (
     <div className="overflow-hidden rounded-lg border bg-muted/30">
-      {band.kind === "questions" ? <QuestionsBand band={band} /> : <PaperBand band={band} courseSlug={courseSlug} />}
+      {band.kind === "questions" ? (
+        <QuestionsBand band={band} courseSlug={courseSlug} />
+      ) : (
+        <PaperBand band={band} courseSlug={courseSlug} />
+      )}
       <p className="border-t bg-background/60 px-3 py-1.5 text-[10px] text-muted-foreground">
         Deterministic result from the SyllabAI question bank — no AI model involved.
       </p>
@@ -79,7 +137,13 @@ export function BandCard({ band, courseSlug }: { band: TurnBand; courseSlug?: st
   );
 }
 
-function QuestionsBand({ band }: { band: Extract<TurnBand, { kind: "questions" }> }) {
+function QuestionsBand({
+  band,
+  courseSlug,
+}: {
+  band: Extract<TurnBand, { kind: "questions" }>;
+  courseSlug?: string | null;
+}) {
   const { view } = band;
   const cut = view.items.length < view.total;
   return (
@@ -98,7 +162,7 @@ function QuestionsBand({ band }: { band: Extract<TurnBand, { kind: "questions" }
       </div>
       <ul className="max-h-72 divide-y divide-border/60 overflow-y-auto pr-1">
         {view.items.map((q) => (
-          <QuestionRow key={q.questionId} q={q} />
+          <QuestionRow key={q.questionId} q={q} courseSlug={courseSlug} />
         ))}
       </ul>
       {cut && (
@@ -156,7 +220,7 @@ function PaperBand({ band, courseSlug }: { band: Extract<TurnBand, { kind: "pape
       {view.questions.length > 0 && (
         <ul className="max-h-56 divide-y divide-border/60 overflow-y-auto pr-1">
           {view.questions.slice(0, 12).map((q) => (
-            <QuestionRow key={q.questionId} q={q} />
+            <QuestionRow key={q.questionId} q={q} courseSlug={courseSlug} />
           ))}
         </ul>
       )}
