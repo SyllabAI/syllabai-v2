@@ -47,7 +47,8 @@ function fakeSql(responses: Record<string, Responder>) {
 // ── fixtures: real corpus shapes (probe 2026-10-16) ─────────────────────────
 
 const PAPER = "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa";
-const QP_ROW = "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb";
+const QP_ROW = "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"; // the bridge's parse-generation row (REJECTED/degenerate in the real corpus)
+const SERVE_ROW = "cccccccc-cccc-cccc-cccc-cccccccccccc"; // the SERVING doc row — the citable address
 
 const draftOf = (questions: Row[]): Row => ({ questions });
 
@@ -56,10 +57,11 @@ const bridgeResponse = (draft: unknown, qpRowId: string | null = QP_ROW): Row[] 
     ? []
     : [{ qp_document_row_id: qpRowId, qp_draft: typeof draft === "string" ? draft : JSON.stringify(draft) }];
 
-const canonicalResponse = (figures: Row[] | string, qpRowId: string = QP_ROW): Responder =>
+const canonicalResponse = (figures: Row[] | string): Responder =>
   (params: unknown[]) =>
-    params[0] === qpRowId
-      ? [{ cj: typeof figures === "string" ? figures : JSON.stringify({ figures }) }]
+    // the SERVING-row lookup is keyed by the PAPER id
+    params[0] === PAPER
+      ? [{ id: SERVE_ROW, cj: typeof figures === "string" ? figures : JSON.stringify({ figures }) }]
       : [];
 
 const ref = (elementId: string | null, over: Row = {}): Row => ({
@@ -110,7 +112,7 @@ describe("questionNumberOf — the external_ref join", () => {
 // ── the resolver laws ────────────────────────────────────────────────────────
 
 describe("figuresByQuestionNumber — the lane #3 projection", () => {
-  test("the parser's own attribution, page-resolved: question-level + part-level refs, parser order", async () => {
+  test("the parser's own attribution, SERVING-row addressed: question-level + part-level refs, parser order", async () => {
     const draft = draftOf([
       {
         number: 2,
@@ -121,7 +123,7 @@ describe("figuresByQuestionNumber — the lane #3 projection", () => {
     ]);
     const { sql } = fakeSql({
       "select qp_document_row_id": bridgeResponse(draft),
-      "canonical_json::text as cj": canonicalResponse([
+      "from exam_papers ep where ep.id": canonicalResponse([
         canonFig("e000038", 1),
         canonFig("e000041", 2),
         canonFig("e000044", 2),
@@ -131,7 +133,7 @@ describe("figuresByQuestionNumber — the lane #3 projection", () => {
     expect(map.get("2")).toHaveLength(3);
     expect(map.get("2")!.map((f) => f.page)).toEqual([1, 2, 2]);
     expect(map.get("2")![0]).toEqual({
-      documentRowId: QP_ROW,
+      documentRowId: SERVE_ROW, // the citable serving row — never the bridge row
       page: 1,
       sourceName: "assets/crop_e000038.png",
       format: "png",
@@ -162,19 +164,50 @@ describe("figuresByQuestionNumber — the lane #3 projection", () => {
     const draft = draftOf([{ number: 1, figures: [ref("e000038")], parts: [] }]);
     const { sql } = fakeSql({
       "select qp_document_row_id": bridgeResponse(draft),
-      "canonical_json::text as cj": canonicalResponse("{{not json"),
+      "from exam_papers ep where ep.id": canonicalResponse("{{not json"),
     });
     const map = await figuresByQuestionNumber(sql, PAPER);
     expect(map.get("1")!).toHaveLength(1);
     expect(map.get("1")![0]!.page).toBe(null);
+    expect(map.get("1")![0]!.documentRowId).toBe(SERVE_ROW);
     expect(map.get("1")![0]!.sourceName).toBe("assets/crop_e000038.png");
+  });
+
+  test("ADDRESSING LAW: the bridge row's own (degenerate Markdown-generation) pages are NEVER used", async () => {
+    // the measured real-corpus shape: the bridge row carries figures all on
+    // page 1 (single-page Markdown generation); the serving doc has no
+    // matching elements — the chip must NOT claim page 1. The fake has NO
+    // responder keyed to the bridge ROW id: any bridge-row canonical query
+    // would resolve [] and poison the expectation — the page law can only
+    // pass if the resolver reads the SERVING doc alone.
+    const draft = draftOf([{ number: 1, figures: [ref("e1"), ref("e2")], parts: [] }]);
+    const { sql } = fakeSql({
+      "select qp_document_row_id": bridgeResponse(draft, QP_ROW),
+      "from exam_papers ep where ep.id": canonicalResponse([]),
+    });
+    const map = await figuresByQuestionNumber(sql, PAPER);
+    expect(map.get("1")!.every((f) => f.page === null)).toBe(true);
+    expect(map.get("1")!.every((f) => f.documentRowId === SERVE_ROW)).toBe(true);
+  });
+
+  test("the serving row unresolvable → chips ride as unlinked references (documentRowId null, honest)", async () => {
+    const draft = draftOf([{ number: 1, figures: [ref("e1")], parts: [] }]);
+    const { sql } = fakeSql({
+      "select qp_document_row_id": bridgeResponse(draft),
+      "from exam_papers ep where ep.id": (params) =>
+        params[0] === PAPER ? [] : [], // no non-REJECTED serving version
+    });
+    const map = await figuresByQuestionNumber(sql, PAPER);
+    expect(map.get("1")!).toHaveLength(1);
+    expect(map.get("1")![0]!.documentRowId).toBe(null);
+    expect(map.get("1")![0]!.sourceName).toBe("assets/crop_e1.png");
   });
 
   test("unresolvable element AND no source name → dropped (nothing honest to show)", async () => {
     const draft = draftOf([{ number: 1, figures: [ref("e9", { sourceName: null, url: null })], parts: [] }]);
     const { sql } = fakeSql({
       "select qp_document_row_id": bridgeResponse(draft),
-      "canonical_json::text as cj": canonicalResponse([canonFig("e1", 1)]),
+      "from exam_papers ep where ep.id": canonicalResponse([canonFig("e1", 1)]),
     });
     const map = await figuresByQuestionNumber(sql, PAPER);
     expect(map.has("1")).toBe(false);
@@ -196,7 +229,7 @@ describe("figuresByQuestionNumber — the lane #3 projection", () => {
     ]);
     const { sql } = fakeSql({
       "select qp_document_row_id": bridgeResponse(draft),
-      "canonical_json::text as cj": canonicalResponse([canonFig("e1", 3), canonFig("e2", 4)]),
+      "from exam_papers ep where ep.id": canonicalResponse([canonFig("e1", 3), canonFig("e2", 4)]),
     });
     const map = await figuresByQuestionNumber(sql, PAPER);
     expect(map.get("4")!.map((f) => f.page)).toEqual([3, null, 4]);
@@ -207,7 +240,7 @@ describe("figuresByQuestionNumber — the lane #3 projection", () => {
     const draft = draftOf([{ number: 5, figures: refs, parts: [] }]);
     const { sql } = fakeSql({
       "select qp_document_row_id": bridgeResponse(draft),
-      "canonical_json::text as cj": canonicalResponse(refs.map((_, i) => canonFig(`e${String(i).padStart(3, "0")}`, i + 1))),
+      "from exam_papers ep where ep.id": canonicalResponse(refs.map((_, i) => canonFig(`e${String(i).padStart(3, "0")}`, i + 1))),
     });
     const map = await figuresByQuestionNumber(sql, PAPER);
     expect(map.get("5")).toHaveLength(MAX_FIGURES_PER_QUESTION);
@@ -217,7 +250,7 @@ describe("figuresByQuestionNumber — the lane #3 projection", () => {
     const draft = draftOf([{ number: 6, figures: [ref("e1", { width: "338", height: "337" })], parts: [] }]);
     const { sql } = fakeSql({
       "select qp_document_row_id": bridgeResponse(draft),
-      "canonical_json::text as cj": canonicalResponse([canonFig("e1", 7)]),
+      "from exam_papers ep where ep.id": canonicalResponse([canonFig("e1", 7)]),
     });
     const map = await figuresByQuestionNumber(sql, PAPER);
     expect(map.get("6")![0]!.page).toBe(7);
@@ -229,7 +262,7 @@ describe("figuresByQuestionNumber — the lane #3 projection", () => {
     const draft = draftOf([{ number: 1, figures: [ref("e1", { availability: "unavailable-signed-url" })], parts: [] }]);
     const { sql } = fakeSql({
       "select qp_document_row_id": bridgeResponse(draft),
-      "canonical_json::text as cj": canonicalResponse([canonFig("e1", 2)]),
+      "from exam_papers ep where ep.id": canonicalResponse([canonFig("e1", 2)]),
     });
     const map = await figuresByQuestionNumber(sql, PAPER);
     expect(map.get("1")![0]!.availability).toBe("unavailable-signed-url");

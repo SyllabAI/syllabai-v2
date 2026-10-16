@@ -364,9 +364,10 @@ describe("bank band (2) — binding + serving laws", () => {
     const { sql } = bankHarness({
       "select qp_document_row_id": [{ qp_document_row_id: "row-qp", qp_draft: JSON.stringify(draft) }],
     }, {
-      "canonical_json::text as cj": (params) =>
-        params[0] === "row-qp"
-          ? [{ cj: JSON.stringify({ figures: [{ element_id: "e1", page_number: 4 }] }) }]
+      // the SERVING-row lookup (keyed by paper id) — the citable address
+      "from exam_papers ep where ep.id": (params) =>
+        params[0] === "p-1c"
+          ? [{ id: "row-qp", cj: JSON.stringify({ figures: [{ element_id: "e1", page_number: 4 }] }) }]
           : [],
     });
     const bands = buildBankBands(sql);
@@ -416,8 +417,8 @@ describe("bank band (2) — binding + serving laws", () => {
       "from question_spec_points qsp": [],
       "select qp_document_row_id": (params) =>
         params[0] === "p-1c" ? [{ qp_document_row_id: "row-qp", qp_draft: JSON.stringify(draft) }] : [],
-      "canonical_json::text as cj": (params) =>
-        params[0] === "row-qp" ? [{ cj: JSON.stringify({ figures: [{ element_id: "e1", page_number: 2 }] }) }] : [],
+      "from exam_papers ep where ep.id": (params) =>
+        params[0] === "p-1c" ? [{ id: "row-qp", cj: JSON.stringify({ figures: [{ element_id: "e1", page_number: 2 }] }) }] : [],
     });
     const bands = buildBankBands(sql);
     const view = await bands.listQuestions({ topic: "Crude oil", limit: 10 }, SCOPE);

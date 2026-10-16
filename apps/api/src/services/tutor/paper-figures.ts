@@ -8,23 +8,34 @@
  * a stem says "The diagram shows…" and the learner is given no hint a figure
  * exists, let alone where.
  *
- * THE DATA OF RECORD (SELECT-only census 2026-10-16, scripts/r0_figures_probe.mjs):
+ * THE DATA OF RECORD (SELECT-only census 2026-10-16, scripts/r0_figures_probe.mjs
+ * + the serving-row re-measurement after the first live probe):
  *   - glm_ocr_bridge_records.qp_draft (the GLM-OCR pair's VERBATIM QP draft)
  *     carries the parser's OWN per-question figure attribution: 1,151
  *     figureRefs across 59 bridged papers (1,134 "available", every one with
  *     url/assetId/sha256/width/height, format png);
- *   - the QP canonical_json carries the figure ELEMENTS with page_number
- *     (634 elements on the 50 figure-bearing docs; group_key never fires —
- *     the draft ref is the only attribution spine);
- *   - the join draftRef.elementId -> canonicalFigure.element_id resolves
- *     1,145 of 1,151 refs AND every resolved ref carries its page;
  *   - the crop BINARIES are NOT stored of record (question_asset holds the
  *     585 SME-corpus assets, zero crops) — so this lane serves REFERENCES
- *     (page + source name + shape), never a fabricated <img> src.
+ *     (source name + shape), never a fabricated <img> src;
+ *   - ADDRESSING LAW (the serving-row fix, measured live 2026-10-16): for
+ *     48 of 49 bridged papers the bridge's QP row is a DIFFERENT, older
+ *     generation than the paper's serving QP doc (often REJECTED, and the
+ *     Markdown generation is single-page — every figure page_number is the
+ *     degenerate 1), and element ids NEVER match across generations (0/39
+ *     measured). The ONLY citable address is the SERVING row (bank-bands
+ *     law: exam_papers.question_paper_document_id -> top non-REJECTED
+ *     version) — the row the F-022 reader resolves (existsCitable). A
+ *     figure's page is therefore claimed ONLY from the SERVING doc's own
+ *     canonical figures (the rare same-element case); the bridge row's
+ *     degenerate pages are NEVER used; otherwise the chip links the
+ *     serving doc's entry page (the same address the card's QP DocRow
+ *     opens) and stays a REFERENCE chip (source name + dims).
  *
  * LAWS:
  *   - attribution is the PARSER'S OWN (the draft's figures/figureRefs) —
- *     zero inference, no page-range heuristics (precision-first);
+ *     zero content inference, no page-span heuristics (precision-first;
+ *     the same-page alternative measured ~10 usable pages corpus-wide and
+ *     was rejected as inference debt);
  *   - papers without a bridge record (46 of 95 VALIDATED — the older
  *     pre-figureRefs ingest generation, June 2019 4CH1/2C among them) map
  *     to the HONEST EMPTY: no figures served, nothing guessed;
@@ -73,8 +84,13 @@ export function questionNumberOf(externalRef: string | null): string | null {
 
 /**
  * The paper's per-question figure map: paperId -> (question number ->
- * TutorQuestionFigure[]). Two reads (the bridge record, the QP canonical
+ * TutorQuestionFigure[]). Two reads (the bridge record, the SERVING QP
  * row), both fail-open. No bridge record → an EMPTY map (the honest empty).
+ *
+ * Addressing law (see module header): documentRowId = the SERVING QP doc
+ * row (the row the F-022 reader resolves); page = the figure's page ONLY
+ * from the serving doc's own canonical figures — the bridge row's pages are
+ * the degenerate Markdown generation's (all 1) and are never used.
  */
 export async function figuresByQuestionNumber(
   sql: SqlFn,
@@ -90,28 +106,34 @@ export async function figuresByQuestionNumber(
   const bridge = bridges[0];
   if (bridge == null || bridge.qp_draft == null) return map;
 
-  // canonical figure elements: element_id -> page_number (the page spine)
-  const pages = new Map<string, number>();
-  if (bridge.qp_document_row_id != null) {
-    try {
-      const docRows = (await sql`
-        select canonical_json::text as cj
-        from documents
-        where id = ${bridge.qp_document_row_id}::uuid
-        limit 1`) as unknown as Array<{ cj: string | null }>;
-      const cj = docRows[0]?.cj;
-      if (cj != null) {
-        const doc = JSON.parse(cj) as { figures?: unknown };
+  // the SERVING QP doc row (bank-bands law verbatim posture: the paper's
+  // question_paper_document_id, top non-REJECTED version) — the citable
+  // address of record for every chip of this paper
+  let servingRowId: string | null = null;
+  const servingPages = new Map<string, number>();
+  try {
+    const serveRows = (await sql`
+      select d.id, d.canonical_json::text as cj
+      from documents d
+      where d.document_id = (select ep.question_paper_document_id from exam_papers ep where ep.id = ${paperId}::uuid)
+        and d.validation_state <> 'REJECTED'
+      order by d.doc_version desc
+      limit 1`) as unknown as Array<{ id: string; cj: string | null }>;
+    const serving = serveRows[0];
+    if (serving != null) {
+      servingRowId = String(serving.id);
+      if (serving.cj != null) {
+        const doc = JSON.parse(serving.cj) as { figures?: unknown };
         for (const f of Array.isArray(doc.figures) ? doc.figures : []) {
           if (f == null || typeof f !== "object") continue;
           const el = str((f as Record<string, unknown>).element_id);
           const page = int((f as Record<string, unknown>).page_number);
-          if (el != null && page != null) pages.set(el, page);
+          if (el != null && page != null) servingPages.set(el, page);
         }
       }
-    } catch {
-      // fail-open: figures keep page=null; the source-name chip still serves
     }
+  } catch {
+    // fail-open: chips stay unlinked references; never a 500
   }
 
   // the draft's per-question refs (question-level first, then parts)
@@ -156,11 +178,14 @@ export async function figuresByQuestionNumber(
         if (seen.has(dedupKey)) continue;
         seen.add(dedupKey);
       }
-      const page = elementId != null ? (pages.get(elementId) ?? null) : null;
+      const page = elementId != null ? (servingPages.get(elementId) ?? null) : null;
       // nothing honest to show: no page, no source name
       if (page == null && sourceName == null) continue;
       figures.push({
-        documentRowId: bridge.qp_document_row_id,
+        // the CITABLE address: the serving QP doc row the F-022 reader
+        // resolves — never the bridge's (often REJECTED, page-degenerate)
+        // parse-generation row
+        documentRowId: servingRowId,
         page,
         sourceName,
         format: str(ref.format),
