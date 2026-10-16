@@ -40,3 +40,12 @@ export * from "./mathNormalize";
  * bank-intent.test.ts inside the suite of record.
  */
 export * from "./bank-intent";
+
+/**
+ * T-MIG-130 run-010 (chat answer-side render hygiene, operator trace
+ * 1a1458af5eed4b21): the citation-debris strip. The hub chat renderer
+ * applies it to assistant content before the math-delimiter normalizer —
+ * the API's marker law keeps its digit-only territory, the s22 record
+ * stays verbatim; pinned first-hand in answerDebris.test.ts.
+ */
+export * from "./answerDebris";

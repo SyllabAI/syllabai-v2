@@ -13,6 +13,13 @@
  * edit-resend affordance. Refusals / aborts / transport errors keep their
  * distinct, honest states.
  *
+ * Run-010 (operator trace 1a1458af5eed4b21): citations render FLATTENED —
+ * every kind draws the same chip (index + label; the label already carries
+ * the human source description, and the wire's sourceType is null for most
+ * citations anyway, so the old kind[:4] suffix was uniform noise). Assistant
+ * content passes through stripCitationDebris first: the model's internal
+ * 【n†L..-L..】 source markers never display (the stored turn stays verbatim).
+ *
  * Look (HUB-TUTOR-CLA-LOOK, the itutor.study chat-home reference): assistant
  * turns render as gradient-avatar + name rows on the canvas — no bubble box —
  * with citation pills; user turns are muted gray bubbles with date-aware
@@ -24,6 +31,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Markdown } from "@/components/markdown";
 import { normalizeMathDelimiters } from "@/lib/mathNormalize";
+import { stripCitationDebris } from "@syllabai/shared";
 import { cn } from "@/lib/utils";
 import { CitationPaperLink } from "@/components/citations/citation-paper-link";
 import { BandCard } from "./band-card";
@@ -212,7 +220,7 @@ export function MessageItem({
         <div className="space-y-2 text-sm">
           {message.error ? (
             <div className="space-y-2">
-              {message.content && <Markdown className="text-sm [&_p]:text-sm">{normalizeMathDelimiters(message.content)}</Markdown>}
+              {message.content && <Markdown className="text-sm [&_p]:text-sm">{normalizeMathDelimiters(stripCitationDebris(message.content))}</Markdown>}
               <div className="flex items-center gap-2 rounded-md border border-destructive/30 bg-destructive/5 px-2.5 py-2 text-xs">
                 <TriangleAlert className="size-3.5 shrink-0 text-destructive" aria-hidden />
                 <span className="min-w-0 flex-1 text-destructive">
@@ -234,7 +242,7 @@ export function MessageItem({
           ) : (
             <>
               {message.content ? (
-                <Markdown className="text-sm [&_p]:text-sm">{normalizeMathDelimiters(message.content)}</Markdown>
+                <Markdown className="text-sm [&_p]:text-sm">{normalizeMathDelimiters(stripCitationDebris(message.content))}</Markdown>
               ) : waiting ? (
                 <TypingDots />
               ) : null}
@@ -297,15 +305,15 @@ export function MessageItem({
                 // a citation without an in-app surface renders as the CLA
                 // islands' read-only badge — never a focusable dead link
                 const chip = (
+                  // run-010 flattening: one chip for every kind — the label
+                  // ("Revision notes — p6", "Specification topic …") already
+                  // carries the human source description
                   <>
                     <span className="inline-flex size-4 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[10px] font-semibold text-primary">
                       {c.index}
                     </span>
                     <FileText className="size-3 shrink-0 text-muted-foreground" aria-hidden />
                     <span className="max-w-52 truncate font-medium">{c.label}</span>
-                    <span className="shrink-0 text-[10px] text-muted-foreground">
-                      · {c.kind.slice(0, 4)}
-                    </span>
                   </>
                 );
                 const chipClass =
