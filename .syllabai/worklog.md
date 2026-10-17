@@ -8106,3 +8106,5 @@ Work Log:
 
 Stage Summary:
 - T0 verified delivered of record; T1 shipped 3/4 on the hub (follow-ups, status shimmer, hover previews) with the CLA-stream residual disclosed as api-gated. No api/DB changes, no deploys fired. Residuals unchanged: fig46 run-012 vision wall (23 papers), hub redeploy lever, api redeploy lever, Render disable, PAT rotation.
+
+ADDENDUM (run-012, same lane): CI at b6b77ef failed the hub lane — Turbopack "Export CitationHover doesn't exist in target module" x2 (the hover preview rode the citation-paper-link module; the local .next cache masked it, the cold CI did not). Fix 1adb7e7: CitationHover extracted to components/citations/citation-hover.tsx (dependency-free, own href parse), cold Turbopack rebuild verified locally BEFORE the push. CI 2/2 SUCCESS at 1adb7e7 first-hand. Head of record = 1adb7e7.

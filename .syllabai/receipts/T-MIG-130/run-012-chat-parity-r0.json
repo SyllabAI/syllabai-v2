@@ -1,22 +1,22 @@
 {
   "run": "run-012-chat-parity-r0",
-  "operator_trace": "1a14af4dde23b471 'T0 → T1' (the tier selection closing the UI- Intelligence proposal of trace 1a14ad8c1d312cc9)",
+  "operator_trace": "1a14af4dde23b471 'T0 \u2192 T1' (the tier selection closing the UI- Intelligence proposal of trace 1a14ad8c1d312cc9)",
   "agent": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
   "date": "2026-10-17T15:20:00Z",
   "standing_order_check": {
-    "board_census": "126 cards — all DONE of record; zero OPEN/CLAIMED/IN_PROGRESS; this lane = the direct operator order",
+    "board_census": "126 cards \u2014 all DONE of record; zero OPEN/CLAIMED/IN_PROGRESS; this lane = the direct operator order",
     "fetch_first": "local e79be16 ff-ed to origin/main eddff1b BEFORE any edit; no races",
-    "state_correction": "the operator-facing 'T0 shelved' reading was STALE — run-010 (trace 1a1458af5eed4b21) had already shipped citation-kind flattening + answer debris strip + copy fidelity + the math-render census proof (receipt run-010-chat-ux-lanes-r0.json, deployed dpl_DdTZdoj, live-verified 7/7); T0 therefore needed NO new code and this run delivers T1 only",
+    "state_correction": "the operator-facing 'T0 shelved' reading was STALE \u2014 run-010 (trace 1a1458af5eed4b21) had already shipped citation-kind flattening + answer debris strip + copy fidelity + the math-render census proof (receipt run-010-chat-ux-lanes-r0.json, deployed dpl_DdTZdoj, live-verified 7/7); T0 therefore needed NO new code and this run delivers T1 only",
     "hygiene": "PAT/vcp/Neon inline-only, memory-only; 0 credential hits in .git/config"
   },
   "scope": {
     "t0": "VERIFIED DELIVERED OF RECORD (no code): run-010 flattening + debris strip + copy fidelity + math census; #2 stem rebuild (346 stems, run-008) and #3 figures projection (run-004/009/011) also already of record",
     "t1_implemented_here": [
-      "follow-up suggestion chips — threads.ts followUpsFor(): deterministic, ZERO-LLM chips derived only from the turn's own band/citation data; honesty gates (no chips on refused/error/aborted turns, none on the empty questions census); chat.tsx renders the row under the last settled assistant turn and a pick sends the ordinary ask (the Welcome path)",
-      "grounding status shimmer — message-item.tsx WaitingStatus(): the stage label derived ONLY from what the SSE stream already delivered (nothing = 'Grounding from your corpus…'; citations = 'Reading N sources…'; band = 'Loading the past-paper view…'), never a fabricated phase",
-      "citation hover preview — citation-paper-link.tsx CitationHover(): passive zero-network HoverCard (300ms) on every chip; the destination line derives from the href's own shape (/sources page-N, /knowledge-graph, other) and read-only citations say 'no in-app viewer is wired' honestly; the click pipeline is NOT pre-fired on hover"
+      "follow-up suggestion chips \u2014 threads.ts followUpsFor(): deterministic, ZERO-LLM chips derived only from the turn's own band/citation data; honesty gates (no chips on refused/error/aborted turns, none on the empty questions census); chat.tsx renders the row under the last settled assistant turn and a pick sends the ordinary ask (the Welcome path)",
+      "grounding status shimmer \u2014 message-item.tsx WaitingStatus(): the stage label derived ONLY from what the SSE stream already delivered (nothing = 'Grounding from your corpus\u2026'; citations = 'Reading N sources\u2026'; band = 'Loading the past-paper view\u2026'), never a fabricated phase",
+      "citation hover preview \u2014 citation-paper-link.tsx CitationHover(): passive zero-network HoverCard (300ms) on every chip; the destination line derives from the href's own shape (/sources page-N, /knowledge-graph, other) and read-only citations say 'no in-app viewer is wired' honestly; the click pipeline is NOT pre-fired on hover"
     ],
-    "t1_disclosed_gated": "CLA (/assistant) streaming — the cla route has NO api-side stream twin (apps/api routes/cla.ts POST /ask only, no stream seam of record; the tutor's /ask/stream twin was the T-MIG-118 band). Wiring the CLA onto SSE is an api band (cla askStream port + relay body extension + hub client), not hub-only as the tier promised; left out of this run, offered as its own lane"
+    "t1_disclosed_gated": "CLA (/assistant) streaming \u2014 the cla route has NO api-side stream twin (apps/api routes/cla.ts POST /ask only, no stream seam of record; the tutor's /ask/stream twin was the T-MIG-118 band). Wiring the CLA onto SSE is an api band (cla askStream port + relay body extension + hub client), not hub-only as the tier promised; left out of this run, offered as its own lane"
   },
   "implementation": {
     "files": [
@@ -25,7 +25,7 @@
       "apps/hub/src/app/tutor/message-item.tsx (WaitingStatus + read-only badge hover)",
       "apps/hub/src/components/citations/citation-paper-link.tsx (CitationHover, zero-network preview)"
     ],
-    "tests": "apps/hub/src/app/tutor/followups.test.ts — 6/6 PASS (honesty gates, band shapes, determinism)"
+    "tests": "apps/hub/src/app/tutor/followups.test.ts \u2014 6/6 PASS (honesty gates, band shapes, determinism)"
   },
   "gates": {
     "typecheck": "bun run typecheck (contracts/shared/db/api) exit 0 + apps/hub tsc --noEmit exit 0",
@@ -34,8 +34,13 @@
     "build": "bun run build:hub (prebuild corpus verifies + next build) exit 0"
   },
   "live_verification": {
-    "status": "PENDING DEPLOY — the hub production surface rides the operator-gated redeploy lever; this run changes hub-only client code (no api bundle delta, no DB writes, llm_spend=0 for the band itself; chips are zero-LLM by construction)",
-    "postdeploy_recipe": "the run-010 pattern (bundle discriminators 'Explain question 1' / 'Grounding from your corpus…' in served chunks + the 7/7 regression battery)"
+    "status": "PENDING DEPLOY \u2014 the hub production surface rides the operator-gated redeploy lever; this run changes hub-only client code (no api bundle delta, no DB writes, llm_spend=0 for the band itself; chips are zero-LLM by construction)",
+    "postdeploy_recipe": "the run-010 pattern (bundle discriminators 'Explain question 1' / 'Grounding from your corpus\u2026' in served chunks + the 7/7 regression battery)"
   },
-  "credentials": "PAT/vcp/Neon inline-only, memory-only; zero credentials in this receipt, the repo, or any artifact"
+  "credentials": "PAT/vcp/Neon inline-only, memory-only; zero credentials in this receipt, the repo, or any artifact",
+  "ci": {
+    "b6b77ef": "verify SUCCESS / hub FAILURE \u2014 Turbopack 'Export CitationHover doesn't exist in target module' x2 (the hover card rode the dynamic+multi-export citation-paper-link module; local webpack-era cache had masked it)",
+    "1adb7e7": "fix(hub): CitationHover extracted to its own dependency-free module (citation-hover.tsx, own /sources href parse); cold Turbopack rebuild clean BEFORE push; CI 2/2 SUCCESS first-hand (verify + hub)",
+    "final_head": "1adb7e7"
+  }
 }
