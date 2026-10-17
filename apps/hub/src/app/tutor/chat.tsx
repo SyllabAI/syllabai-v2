@@ -55,6 +55,7 @@ import {
   createThread,
   downloadThread,
   ensureActiveThread,
+  followUpsFor,
   getThreads,
   historyFor,
   patchLastMessage,
@@ -824,6 +825,33 @@ export function TutorChat({
                     courseSlug={activeThread?.courseSlug ?? null}
                   />
                 ))}
+                {/* run-012 chat-parity band (trace 1a14af4dde23b471): the
+                    ChatGPT-style follow-up row — deterministic, zero-LLM
+                    suggestions under the LAST settled assistant turn. Picking
+                    one sends it as the ordinary next ask (the Welcome path);
+                    refused/error/aborted/busy turns render nothing (the
+                    helper's honesty gates + the busyHere guard). */}
+                {(() => {
+                  const last = messages[messages.length - 1];
+                  if (!last || last.role !== "assistant" || busyHere) return null;
+                  const chips = followUpsFor(last);
+                  if (chips.length === 0) return null;
+                  return (
+                    <div className="flex flex-wrap gap-1.5 pl-9.5 pt-1">
+                      {chips.map((chip) => (
+                        <button
+                          key={chip}
+                          type="button"
+                          onClick={() => send(chip)}
+                          disabled={busyHere}
+                          className="rounded-full border bg-background px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground disabled:opacity-50"
+                        >
+                          {chip}
+                        </button>
+                      ))}
+                    </div>
+                  );
+                })()}
               </div>
             )}
           </div>

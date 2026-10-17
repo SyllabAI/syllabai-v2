@@ -33,7 +33,7 @@ import { Markdown } from "@/components/markdown";
 import { normalizeMathDelimiters } from "@/lib/mathNormalize";
 import { stripCitationDebris } from "@syllabai/shared";
 import { cn } from "@/lib/utils";
-import { CitationPaperLink } from "@/components/citations/citation-paper-link";
+import { CitationHover, CitationPaperLink } from "@/components/citations/citation-paper-link";
 import { BandCard } from "./band-card";
 import type { Turn } from "./threads";
 import {
@@ -78,6 +78,29 @@ function TypingDots() {
           style={{ animationDelay: `${d * 140 - 420}ms` }}
         />
       ))}
+    </span>
+  );
+}
+
+/**
+ * The run-012 chat-parity waiting status (trace 1a14af4dde23b471): the
+ * grounding stage, derived ONLY from what the stream has already delivered
+ * to this turn — never a fabricated phase. The SSE order is
+ * citations → band → meta → delta, so the label walks the REAL pipeline:
+ * nothing yet = retrieval still running; citations = evidence in, reading
+ * them; band = the bank probe resolved, the card is on its way.
+ */
+function WaitingStatus({ message }: { message: Turn }) {
+  const n = message.citations?.length ?? 0;
+  const label = message.band
+    ? "Loading the past-paper view…"
+    : n > 0
+      ? `Reading ${n} source${n === 1 ? "" : "s"}…`
+      : "Grounding from your corpus…";
+  return (
+    <span className="flex items-center gap-2 py-1" role="status" aria-live="polite">
+      <TypingDots />
+      <span className="text-xs text-muted-foreground">{label}</span>
     </span>
   );
 }
@@ -244,7 +267,7 @@ export function MessageItem({
               {message.content ? (
                 <Markdown className="text-sm [&_p]:text-sm">{normalizeMathDelimiters(stripCitationDebris(message.content))}</Markdown>
               ) : waiting ? (
-                <TypingDots />
+                <WaitingStatus message={message} />
               ) : null}
               {message.band && !message.error && (
                 <BandCard band={message.band} courseSlug={courseSlug} />
@@ -328,9 +351,11 @@ export function MessageItem({
                     {chip}
                   </CitationPaperLink>
                 ) : (
-                  <span key={c.index} className={chipClass} title={c.label}>
-                    {chip}
-                  </span>
+                  <CitationHover key={c.index} href={null} label={c.label}>
+                    <span className={chipClass} title={c.label}>
+                      {chip}
+                    </span>
+                  </CitationHover>
                 );
               })}
             </div>

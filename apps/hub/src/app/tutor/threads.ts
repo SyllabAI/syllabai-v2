@@ -261,6 +261,38 @@ export function titleFrom(text: string): string {
   return t.length > 52 ? `${t.slice(0, 52).trimEnd()}…` : t;
 }
 
+/**
+ * Deterministic follow-up suggestions for a finished assistant turn
+ * (the run-012 chat-parity band, operator trace 1a14af4dde23b471).
+ *
+ * Zero-LLM by law: the chips are derived ONLY from what the turn itself
+ * already carries (the bank band shape, the citations), so they cost no
+ * model spend, never delay the stream, and can never hallucinate — every
+ * chip is an ordinary ask the grounded pipeline can honestly serve. Picking
+ * one sends it as the next question (the Welcome chip path).
+ *
+ * Honesty gates: no chips for refused turns (the corpus just said the
+ * evidence is thin — pushing canned asks at a refusal fights the gate) and
+ * none for error/aborted turns (the Retry affordance owns those states).
+ */
+export function followUpsFor(turn: Turn): string[] {
+  if (turn.role !== "assistant" || turn.error || turn.stopped || turn.refused) return [];
+  const band = turn.band;
+  if (band?.kind === "paper") {
+    const out: string[] = [];
+    if (band.view.questions.length > 0) out.push("Explain question 1");
+    out.push("Give me a harder paper");
+    out.push("Quiz me on this paper");
+    return out;
+  }
+  if (band?.kind === "questions") {
+    if (band.view.items.length === 0) return [];
+    return ["Explain question 1", "Give me easier questions", "Show me a full past paper"];
+  }
+  // the plain grounded turn — teaching moves, not bank moves
+  return ["Give me a worked example", "Quiz me on this", "Explain it more simply"];
+}
+
 /** V53 course context for new threads: the /tutor?course=<slug> the chat
  *  was started under (label = the registry's display label). */
 export interface ThreadCourseContext {
