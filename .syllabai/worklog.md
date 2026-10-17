@@ -8090,3 +8090,19 @@ Work Log:
 
 Stage Summary:
 - Run-011 of record (partial scope, same lane): 18 of the 46 now carry figure data of record and the anchor serves page-true chips live; the join law covers BOTH ref generations. Residuals: 23 pdf-backed papers partially visioned (429 quota windows mid-corpus — resume-safe runner, second apply re-runnable), 6 papers unfetchable/secure-gated (3 of them question-less anyway), md-backed pair = reference-only chips by law, and the PRE-EXISTING /paper search boundary (applied-but-unbound papers 404 on text identity — control-paired live, watch item). Board unchanged; llm_spend total for the lane's verify batteries: 1.
+
+---
+Task ID: trace 1a14af4dde23b471 ("T0 → T1") — run-012 chat-parity band
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Execute the operator's tier selection — T0 (citation-kind flattening + hub math-render + #4 copy-fidelity) then T1 (follow-up chips, status shimmer, hover previews, CLA streaming).
+
+Work Log:
+- Standing order + fetch-first: board 126/126 DONE, zero claimed; local ff e79be16 -> eddff1b BEFORE edits; PAT/vcp/Neon inline-only (0 .git/config hits).
+- STATE CORRECTION of record: T0 was ALREADY DELIVERED by run-010 (trace 1a1458af5eed4b21; receipt run-010-chat-ux-lanes-r0.json, deploy dpl_DdTZdoj, 7/7 live) — flattening + debris strip + copy fidelity + math census; #2 (346-stem rebuild) and #3 (figures projection) also of record. The "shelved" reading the tiers were proposed under was stale. T0 = no new code.
+- T1 DELIVERED (hub-only): (1) threads.ts followUpsFor — deterministic ZERO-LLM follow-up chips from the turn's own band/citation data, gated off on refused/error/aborted and the empty census; chat.tsx renders the row under the last settled assistant turn, a pick sends the ordinary ask. (2) message-item WaitingStatus — the grounding stage label from what the stream ACTUALLY delivered (citations -> "Reading N sources…", band -> "Loading the past-paper view…", else "Grounding from your corpus…"), no fabricated phases. (3) citation-paper-link CitationHover — passive zero-network hover card on every chip (300ms), destination derived from the href shape, read-only citations state the missing viewer honestly, click pipeline NOT pre-fired.
+- T1 DISCLOSED GATED: CLA (/assistant) streaming — apps/api routes/cla.ts has POST /ask only, NO stream twin (unlike tutor /ask/stream T-MIG-118). Wiring it = an api band (cla askStream port + relay body extension + client), not hub-only; excluded from this run, offered as its own lane.
+- Gates first-hand: followups.test 6/6; typecheck x4 exit 0 + hub tsc 0; eslint 0; bun test apps/api packages 2048/13skip/0; bun test apps/hub 71/0; build:hub exit 0.
+- Bookkeeping: receipt run-012-chat-parity-r0.json (scrub-clean); llm_spend=0 (chips zero-LLM by construction, no probe fired); hub redeploy = the standing operator lever (postdeploy recipe: bundle discriminators + the 7/7 regression battery).
+
+Stage Summary:
+- T0 verified delivered of record; T1 shipped 3/4 on the hub (follow-ups, status shimmer, hover previews) with the CLA-stream residual disclosed as api-gated. No api/DB changes, no deploys fired. Residuals unchanged: fig46 run-012 vision wall (23 papers), hub redeploy lever, api redeploy lever, Render disable, PAT rotation.
