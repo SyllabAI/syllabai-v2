@@ -33,7 +33,8 @@ import { Markdown } from "@/components/markdown";
 import { normalizeMathDelimiters } from "@/lib/mathNormalize";
 import { stripCitationDebris } from "@syllabai/shared";
 import { cn } from "@/lib/utils";
-import { CitationHover, CitationPaperLink } from "@/components/citations/citation-paper-link";
+import { CitationPaperLink } from "@/components/citations/citation-paper-link";
+import { CitationHover } from "@/components/citations/citation-hover";
 import { BandCard } from "./band-card";
 import type { Turn } from "./threads";
 import {

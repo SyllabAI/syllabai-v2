@@ -43,6 +43,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { CitationHover } from "@/components/citations/citation-hover";
 import { corpusRawUrl } from "@/lib/pastpapers-shared";
 import { ApiError, api } from "@/lib/api";
 import type { CitationDocumentView } from "@/lib/types";
@@ -326,19 +327,21 @@ export function CitationPaperLink({
 
   return (
     <>
-      <a
-        href={href}
-        className={className}
-        title={title}
-        onClick={(e) => {
-          if (!parsed) return; // KG chips navigate normally
-          if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-          e.preventDefault();
-          setOpen(true);
-        }}
-      >
-        {children}
-      </a>
+      <CitationHover href={href} label={title}>
+        <a
+          href={href}
+          className={className}
+          title={title}
+          onClick={(e) => {
+            if (!parsed) return; // KG chips navigate normally
+            if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+            e.preventDefault();
+            setOpen(true);
+          }}
+        >
+          {children}
+        </a>
+      </CitationHover>
 
       <Dialog open={open} onOpenChange={(o) => !o && close()}>
         <DialogContent
