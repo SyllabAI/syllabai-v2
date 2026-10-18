@@ -1317,3 +1317,68 @@ export const teachingCoverage = pgTable("teaching_coverage", {
 	primaryKey({ columns: [table.classId, table.specPointNodeId], name: "teaching_coverage_pkey"}),
 	check("ck_tcov_status", sql`(status)::text = ANY ((ARRAY['TAUGHT'::character varying, 'NOT_TAUGHT'::character varying])::text[])`),
 ]);
+
+/**
+ * T-MIG-133 band 133a (r0) — book_chapters: the Student Books chapter
+ * registry AND the spec join of record. One row per (book docVersion,
+ * chapter); spec_codes carries the content-maps grammar
+ * {spineCode, officialCode, tier, score, lineage, method} per code.
+ *
+ * Provenance: documents.kind ALREADY enumerates 'TEXTBOOK' (the schema of
+ * record anticipated books) — this table adds the queryable chapter layer
+ * the documents canonical_json must not duplicate (single source: chapter
+ * identity/pages/LO text HERE, full TOC in documents.canonical_json).
+ * The composite FK pins each row to its documents (document_id, doc_version)
+ * identity (uq_documents_canonical_id). Soft references by law: course_id
+ * is the hub slug of record (no hub-table FK across the fence); spec codes
+ * join the graph-as-code spine via spine_code strings (the content-maps
+ * join law). Serving coordinates: pdf_page_* = the viewer's numbering
+ * (corpus-pdf/pdf.js), book_page_* = the citation numbering.
+ */
+export const bookChapters = pgTable(
+	"book_chapters",
+	{
+		id: uuid().primaryKey().notNull(),
+		documentId: varchar("document_id", { length: 80 }).notNull(),
+		docVersion: integer("doc_version").default(1).notNull(),
+		courseId: varchar("course_id", { length: 60 }).notNull(),
+		unitIndex: integer("unit_index"),
+		unitTitle: text("unit_title"),
+		chapterIndex: integer("chapter_index").notNull(),
+		chapterKey: varchar("chapter_key", { length: 120 }).notNull(),
+		title: text("title").notNull(),
+		bookPageStart: integer("book_page_start"),
+		bookPageEnd: integer("book_page_end"),
+		pdfPageStart: integer("pdf_page_start"),
+		pdfPageEnd: integer("pdf_page_end"),
+		learningObjective: text("learning_objective"),
+		specCodes: jsonb("spec_codes").notNull(),
+		validationState: varchar("validation_state", { length: 20 })
+			.default('SUGGESTED')
+			.notNull(),
+		createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' })
+			.notNull(),
+	},
+	(table) => [
+		foreignKey({
+			columns: [table.documentId, table.docVersion],
+			foreignColumns: [documents.documentId, documents.docVersion],
+			name: "book_chapters_document_fkey"
+		}),
+		uniqueIndex("uq_book_chapters_identity").using(
+			"btree",
+			table.documentId.asc().nullsLast().op("text_ops"),
+			table.docVersion.asc().nullsLast().op("int4_ops"),
+			table.chapterKey.asc().nullsLast().op("text_ops"),
+		),
+		index("ix_book_chapters_course").using(
+			"btree",
+			table.courseId.asc().nullsLast().op("text_ops"),
+		),
+		check(
+			"ck_book_chapters_validation_state",
+			sql`(validation_state)::text = ANY ((ARRAY['SUGGESTED'::character varying, 'VALIDATED'::character varying, 'REJECTED'::character varying, 'FLAGGED'::character varying])::text[])`,
+		),
+		check("ck_book_chapters_doc_version", sql`doc_version > 0`),
+	],
+);
