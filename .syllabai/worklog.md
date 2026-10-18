@@ -8462,3 +8462,22 @@ Work Log:
 
 Stage Summary:
 - Band 133c EXECUTED AND MERGED of record: the Student Books viewer band is live on hub-v2 (archive grammar + shelf + chapter mounts), the pilot book's archive home is served byte-exact, and the two remaining LIVE-VISIBILITY LEVERS are operator-gated: (1) api redeploy (CLI-only prj_FN5X) lights up /api/v1/content/books; (2) the validation flip on the pilot book (never auto-VALIDATED) puts it on the shelf. 133d (tutor arm + page-true citations — the per-page artifacts are hosted and grammar-served, not yet UI-consumed) and 133e (roll to remaining books) await their gates. Embeddings still NULL pending SYLLABAI_EMBEDDING_GEMINI_API_KEY. PAT rotation still advised (plaintext chat transit).
+
+---
+Task ID: trace 1a15107e52735b61 (the operator validation flip)
+Agent: main (Super Z, zai-web session web-6139ba42)
+Task: operator "Validation flip on the pilot book" — the T-C20 serving lever for the T-MIG-133 pilot TEXTBOOK
+
+Work Log:
+- Order + legality: the operator word IS the prod-DB write order per the 133b band contract; the T-C20 law names the flip as the serving lever (never auto-VALIDATED)
+- Creds handoff: Neon ORGANIZATION API key (napi_... masked, staged 0600 OUTSIDE all repos); control plane console.neon.tech/api/v2 (api.neon.tech DNS-dead, the fleet finding); project billowing-cherry-15418366 pg18; production branch br-muddy-bar-a5huwldd @ ep-ancient-cake-a52e4kfd POOLED; role syllabai_v2_app_w2r2 (the app write role, least privilege); password revealed in-memory only
+- Executor: bun + postgres@3 (the api's driver class), ssl require, script persisted OUTSIDE the repo (scripts/flip-exec/flip_book.mjs) per the packet (scripts/book_validation_flip_packet.sql)
+- PRE-FLIGHT: exactly 1 TEXTBOOK row — e6c0db50-0f84-55de-b50c-e4d49285cd6d v1 "Edexcel International GCSE (9-1) Chemistry Student Book", 383p / 823 chunks / 29 chapters, SUGGESTED
+- THE FLIP: UPDATE 1 — validation_state SUGGESTED -> VALIDATED
+- POST-VERIFY: state VALIDATED; the shelfForCourse JOIN gate of record now serves the book (29 course rows); zero other state touched (no updated_at column; embeddings NULL untouched; book_chapters + spec refs untouched)
+- Serving posture: hub shelf UI already auto-deployed (722e2f6); the api books route serves after the NEXT operator api redeploy (deployed bundle dpl_4uUmM6rX predates the route; the flip leaks nothing through the old bundle); tutor retrieval (V33) gate now satisfied pending the Gemini-key embeddings backfill
+- Rollback: single UPDATE back to SUGGESTED (operator recall lever, in the packet)
+- Receipt: .syllabai/receipts/T-MIG-133/band-133b-validation-flip-run-003-main.json; task-yaml status line updated; bookkeeping-only push (one no-code-delta hub auto-bake, mechanism of record)
+
+Stage Summary:
+- THE PILOT BOOK IS VALIDATED OF RECORD: the first Student Book is now the T-C20-served content family pending only the api redeploy (+ embeddings later); band 133b's open gate DISCHARGED; next operator levers: api redeploy, 133d, 133e

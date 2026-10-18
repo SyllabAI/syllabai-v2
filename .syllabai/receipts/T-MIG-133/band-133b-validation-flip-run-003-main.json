@@ -1,0 +1,31 @@
+{
+  "act": "the operator validation flip — documents.validation_state SUGGESTED -> VALIDATED, exactly 1 row (the pilot TEXTBOOK), via the T-C20 serving lever",
+  "order": "operator trace 1a15107e52735b61 'Validation flip on the pilot book' (2026-10-19, zai-web, session web-6139ba42)",
+  "legality": "the T-C20 law ('the operator validation flip is the serving lever; never auto-VALIDATED; this route merely reflects the flip') + the 133b band contract ('REQUIRES operator prod-DB write order') — the order supplies the prod-DB write legality; 133b data leg PROD-APPLIED state untouched (823 chunks / 29 chapters / 145 spec refs ride unchanged)",
+  "creds": "Neon ORGANIZATION API key handoff 2026-10-19 (napi_... masked, staged 0600 at .creds/ OUTSIDE every repo); control plane console.neon.tech/api/v2 (api.neon.tech DNS-dead, the fleet finding); project billowing-cherry-15418366 pg18; production branch br-muddy-bar-a5huwldd via endpoint ep-ancient-cake-a52e4kfd (POOLED host); role syllabai_v2_app_w2r2 (the app write role, least privilege); password revealed in-memory ONLY, pooled URI staged 0600, never printed/committed",
+  "executor": "main (Super Z, zai-web session web-6139ba42, trace 1a15107e52735b61)",
+  "instrument": "bun + postgres@3 (the api's own driver class) against the pooled endpoint, ssl require; executor script persisted OUTSIDE the repo at scripts/flip-exec/flip_book.mjs; packet of record scripts/book_validation_flip_packet.sql",
+  "pre": {
+    "row": "documents e6c0db50-0f84-55de-b50c-e4d49285cd6d v1",
+    "title": "Edexcel International GCSE (9-1) Chemistry Student Book",
+    "kind": "TEXTBOOK",
+    "validation_state": "SUGGESTED",
+    "pages": 383,
+    "chunks": 823,
+    "chapters": 29
+  },
+  "update": "UPDATE 1 (aborted-on-any-other-count guard armed, not needed)",
+  "post": {
+    "validation_state": "VALIDATED",
+    "shelf_query_of_record": "serves 29 joined rows for the course (the JOIN gate now yields the book)",
+    "course_id_source": "book_chapters (distinct course_id)"
+  },
+  "serving_posture": {
+    "hub": "shelf UI auto-deployed of record at 722e2f6 (the 08c6b17 law); card renders once the api serves",
+    "api": "GET /api/v1/content/books + /:documentId/chapters serve after the NEXT operator api redeploy (the deployed bundle dpl_4uUmM6rX predates the books route — CLI-only posture stands); the flip does NOT leak state through the old bundle (route absent = 404-shape parity)",
+    "tutor": "T-C20 retrieval gate (V33 subject branch) now satisfies the book's 823 chunks on the chunk's-own-document VALIDATED predicate — embeddings remain NULL pending the Gemini key, so retrieval participation waits on the backfill"
+  },
+  "rollback": "single statement: update documents set validation_state='SUGGESTED' where kind='TEXTBOOK' and validation_state='VALIDATED' (UPDATE 1) — operator recall lever, disclosed in the packet",
+  "no_other_state": "zero other rows/columns touched; documents carries no updated_at; the audit trail is this receipt + the packet; embeddings untouched (NULL); book_chapters untouched; spec refs untouched",
+  "bookkeeping": "this receipt + the task-yaml status line + the worklog entry — no code delta, the push costs one no-code-delta hub auto-bake (mechanism of record)"
+}
