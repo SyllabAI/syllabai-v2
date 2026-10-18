@@ -57,6 +57,12 @@ import {
 } from "./prompt";
 import { retrievalQuery } from "./retrieval-query";
 import { fuseWithPlanWeights } from "./rrf";
+import {
+  defaultSpecBoostIndex,
+  specBoostSet,
+  specBoostWeight,
+  type SpecBoostIndex,
+} from "./spec-boost";
 import { hygienicEvidenceText } from "./stem-hygiene";
 import {
   StreamSanitizer,
@@ -263,6 +269,12 @@ export interface KaragDeps {
   maxTopics?: number;
   vectorCandidates?: number;
   evidenceLimit?: number;
+  /** T-MIG-133 band 133d: the spec-scoped boost index (OPTIONAL — undefined
+   *  = the process default built from the frozen concept-graph snapshot;
+   *  null = explicitly disabled; tests inject their own). When the ask's
+   *  matched topic codes yield a non-empty boost set, TEXTBOOK evidence
+   *  whose chunk spec_codes intersect fuses at the anchor tier (1.0). */
+  specBoostIndex?: SpecBoostIndex | null;
 }
 
 /**
@@ -381,7 +393,20 @@ export async function prepare(
   }
 
   // 3. rank fusion (plan §7 per-kind weights — the P3 serving posture)
-  const fused = fuseWithPlanWeights([kgCandidates, vectorCandidatesList]);
+  //    T-MIG-133 band 133d: the spec-scoped boost rides the weightDecorator
+  //    seam — the ask's matched topic codes resolve to spine official-code
+  //    sets through the 133d index, and a TEXTBOOK item whose chunk
+  //    spec_codes intersect fuses at the anchor tier (1.0). No intent topics
+  //    ⇒ empty boost set ⇒ the decorator is an exact passthrough.
+  const boostIndex =
+    deps.specBoostIndex === undefined ? defaultSpecBoostIndex() : deps.specBoostIndex;
+  const boostSet = specBoostSet(
+    boostIndex,
+    knowledge.topics.map((t) => t.code),
+  );
+  const fused = fuseWithPlanWeights([kgCandidates, vectorCandidatesList], {
+    weightDecorator: (item, planWeight) => specBoostWeight(boostSet, item, planWeight),
+  });
 
   // 4. lead-first merge, dedup, rerank + cap (:493-515)
   //    v2 run-004 proposal #2 (operator trace 1a1446156b9d046d) — TWO

@@ -28,10 +28,38 @@
  * candidates, KG-only evidence (never a pipeline failure). Transport
  * failures PROPAGATE (the frozen arm catches only the provider-absent
  * IllegalStateException).
+ *
+ * T-MIG-133 band 133d (r0) — the Student Books serving extensions, additive
+ * to the frozen retrieval law (the SQL scope, cosine floor, limits and the
+ * document-version provenance are byte-identical):
+ *
+ *   1. `c.spec_codes` joins the projection (the corpus-wide column — books
+ *      carry the chapter-scoped overlay of record, papers their parse codes)
+ *      and rides the evidence as `specCodes` (the 133d fusion-boost input).
+ *
+ *   2. THE PAGE-TRUTH TRANSLATION (the intake decision of record: "viewer
+ *      coordinates: pdf_pages (corpus-pdf/pdf.js), citations: book_pages"):
+ *      a TEXTBOOK chunk's chunk pages are PDF-true (the 133b ingest law),
+ *      but the learner-facing citation label and the tutor prompt must cite
+ *      the PRINTED book page. After the frozen fetch, TEXTBOOK hits resolve
+ *      their book_chapters registry rows (ONE batched query for the batch's
+ *      document ids — never per-hit, the T-C32 law) and the page coords are
+ *      translated to the book numbering via the containing chapter's
+ *      constant offset (both ranges span the same page count per chapter —
+ *      verified of record on the pilot: u1:c1 book 3–13 / pdf 12–22). The
+ *      raw PDF coords ride `sourcePageStart/End` (the deep link's viewer
+ *      coordinate), the registry's course binding rides `bookCourseId`.
+ *      Chunks with no registry rows (front matter, index) stay PDF-true —
+ *      the honest fallback, never a fabricated page.
+ *
+ *      The lookup rides the 093 inList scalar-param law (session-store's
+ *      inList — a bound JS array is a single wire value and 500s the Neon
+ *      WebSocket wire).
  */
 import type { SqlFn } from "./sql";
+import { inList } from "./session-store";
 import { MIN_COSINE, type VectorRetriever } from "./karag";
-import { evidenceFromChunk } from "./evidence";
+import { evidenceFromChunk, type EvidenceItem } from "./evidence";
 import type { EmbeddingProvider } from "../content/retrieval";
 
 /** CURRENT_EMBED_REV = 2 (ChunkVectorRepository.java:64) — the
@@ -40,6 +68,18 @@ const EMBED_REV = 2;
 
 /** MAX_LIMIT = 50 with Math.clamp(limit, 1, MAX_LIMIT) (:17, :55). */
 const MAX_LIMIT = 50;
+
+/** One chapter's registry coords (the book_chapters projection the
+ *  translation reads — book_pages citation coords + pdf_pages viewer coords,
+ *  the intake decision of record). */
+interface BookChapterCoords {
+  document_id: string;
+  course_id: string;
+  book_page_start: number | null;
+  book_page_end: number | null;
+  pdf_page_start: number | null;
+  pdf_page_end: number | null;
+}
 
 export function buildSqlVectorArm(
   sql: SqlFn,
@@ -61,7 +101,7 @@ export function buildSqlVectorArm(
     const literal = `[${vector.join(",")}]`;
     const rows = (await sql`
     select c.id, c.document_row_id, d.doc_version, d.document_id, d.kind, c.chunk_index,
-           c.content, c.page_start, c.page_end, c.element_ids,
+           c.content, c.page_start, c.page_end, c.element_ids, c.spec_codes,
            c.embedding_model, 1 - (c.embedding <=> ${literal}::vector) as score
     from document_chunks c
     join documents d on d.id = c.document_row_id
@@ -82,7 +122,7 @@ export function buildSqlVectorArm(
                     and d.validation_state = 'VALIDATED'))
     order by c.embedding <=> ${literal}::vector
     limit ${clamped}`) as Array<Record<string, unknown>>;
-    return rows
+    const hits = rows
       .map((r) => ({
         chunkId: String(r.id),
         documentRowId: String(r.document_row_id),
@@ -94,12 +134,36 @@ export function buildSqlVectorArm(
         pageStart: r.page_start == null ? null : Number(r.page_start),
         pageEnd: r.page_end == null ? null : Number(r.page_end),
         elementIds: jsonbStringArray(r.element_ids),
+        specCodes: jsonbStringArray(r.spec_codes),
         embeddingModel: String(r.embedding_model),
         score: Number(r.score),
       }))
-      .filter((hit) => hit.score >= MIN_COSINE)
-      .map((hit) =>
-        evidenceFromChunk({
+      .filter((hit) => hit.score >= MIN_COSINE);
+
+    // the 133d page-truth translation — ONE batched registry read for the
+    // batch's TEXTBOOK document ids (never per-hit, the T-C32 law)
+    const bookDocIds = [
+      ...new Set(hits.filter((h) => h.kind === "TEXTBOOK").map((h) => h.documentId)),
+    ];
+    const registry = new Map<string, BookChapterCoords[]>();
+    if (bookDocIds.length > 0) {
+      const registryRows = (await sql(
+        ...inList(
+          "select document_id, course_id, book_page_start, book_page_end, pdf_page_start, pdf_page_end from book_chapters where document_id in (",
+          bookDocIds,
+          ") order by unit_index nulls first, chapter_index",
+        ),
+      )) as unknown as BookChapterCoords[];
+      for (const row of registryRows) {
+        const list = registry.get(row.document_id) ?? [];
+        list.push(row);
+        registry.set(row.document_id, list);
+      }
+    }
+
+    return hits.map((hit) => {
+      if (hit.kind !== "TEXTBOOK") {
+        return evidenceFromChunk({
           documentRowId: hit.documentRowId,
           documentId: hit.documentId,
           documentVersion: hit.documentVersion,
@@ -112,8 +176,70 @@ export function buildSqlVectorArm(
           elementIds: hit.elementIds,
           embeddingModel: hit.embeddingModel,
           cosine: hit.score,
-        }),
-      );
+          specCodes: hit.specCodes,
+        });
+      }
+      const chapters = registry.get(hit.documentId);
+      const coords =
+        hit.pageStart == null
+          ? null
+          : (chapters ?? []).find(
+                (c) =>
+                  c.pdf_page_start != null &&
+                  c.pdf_page_end != null &&
+                  hit.pageStart! >= c.pdf_page_start &&
+                  hit.pageStart! <= c.pdf_page_end,
+              ) ??
+            [...(chapters ?? [])]
+              .reverse()
+              .find((c) => c.pdf_page_start != null && c.pdf_page_start <= hit.pageStart!);
+      if (coords == null || coords.book_page_start == null || coords.pdf_page_start == null) {
+        // no registry row covers this chunk — the honest PDF-true fallback
+        return evidenceFromChunk({
+          documentRowId: hit.documentRowId,
+          documentId: hit.documentId,
+          documentVersion: hit.documentVersion,
+          chunkId: hit.chunkId,
+          chunkIndex: hit.chunkIndex,
+          kind: hit.kind,
+          content: hit.content,
+          pageStart: hit.pageStart,
+          pageEnd: hit.pageEnd,
+          elementIds: hit.elementIds,
+          embeddingModel: hit.embeddingModel,
+          cosine: hit.score,
+          specCodes: hit.specCodes,
+        });
+      }
+      // constant per-chapter offset (both ranges span the same page count
+      // per chapter — verified of record on the pilot); clamped into the
+      // chapter's book range
+      const offset = coords.book_page_start - coords.pdf_page_start;
+      const clamp = (v: number): number =>
+        coords.book_page_end != null
+          ? Math.min(Math.max(v, coords.book_page_start!), coords.book_page_end)
+          : Math.max(v, coords.book_page_start!);
+      const bookStart = clamp(hit.pageStart! + offset);
+      const bookEnd = hit.pageEnd == null ? null : clamp(hit.pageEnd + offset);
+      return evidenceFromChunk({
+        documentRowId: hit.documentRowId,
+        documentId: hit.documentId,
+        documentVersion: hit.documentVersion,
+        chunkId: hit.chunkId,
+        chunkIndex: hit.chunkIndex,
+        kind: hit.kind,
+        content: hit.content,
+        pageStart: bookStart,
+        pageEnd: bookEnd,
+        elementIds: hit.elementIds,
+        embeddingModel: hit.embeddingModel,
+        cosine: hit.score,
+        specCodes: hit.specCodes,
+        sourcePageStart: hit.pageStart,
+        sourcePageEnd: hit.pageEnd,
+        bookCourseId: coords.course_id,
+      });
+    });
   };
 }
 
@@ -129,3 +255,6 @@ function jsonbStringArray(raw: unknown): string[] {
   }
   return [];
 }
+
+/** Test seam — re-exported so the unit suite can build translated items. */
+export type { EvidenceItem };

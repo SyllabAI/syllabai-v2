@@ -218,3 +218,28 @@ export const bookArchiveRefSchema = z.object({
   bytes: z.number().int().min(1),
 });
 export type BookArchiveRef = z.infer<typeof bookArchiveRefSchema>;
+
+// ── 133d: the tutor citation target (strict serving) ─────────────────────────
+
+/**
+ * The page-true landing for a tutor book citation (band 133d): the book
+ * meta the deep link /api/v1/content/books/{documentId}?page=N resolves to,
+ * plus the chapter the page lands in under the F-022 nearest-chapter law
+ * (pdf-range containment, else the nearest chapter starting at or before
+ * the page, else null for front-matter pages — the 133c viewer's
+ * pickChapter, verbatim on both planes).
+ *
+ * T-C20 no-state-leak law: served through the same VALIDATED-only gate as
+ * the shelf/chapters (unknown == unvalidated == 404 upstream), so
+ * validationState is deliberately ABSENT here too.
+ */
+export const bookCitationTargetSchema = z.object({
+  documentId: z.string().min(1),
+  docVersion: z.number().int().min(1),
+  courseId: z.string().min(1),
+  /** the ?page request coordinate (pdf-true), null when absent */
+  page: z.number().int().min(1).nullable(),
+  /** the resolved landing chapter (null for front-matter pages / no page) */
+  chapter: bookChapterSchema.nullable(),
+});
+export type BookCitationTarget = z.infer<typeof bookCitationTargetSchema>;

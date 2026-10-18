@@ -32,7 +32,9 @@ import { requireDatabaseUrl } from "@syllabai/db";
 import {
   bookChapterSchema,
   bookShelfEntrySchema,
+  bookCitationTargetSchema,
   type BookChapter,
+  type BookCitationTarget,
   type BookShelfEntry,
 } from "@syllabai/contracts";
 
@@ -44,6 +46,11 @@ export interface BooksReadApp {
   /** Chapters of a book's latest version; empty when the book is unknown
    *  OR not VALIDATED (the caller cannot distinguish — no state leak). */
   chaptersForBook(documentId: string): Promise<BookChapter[]>;
+  /** T-MIG-133 band 133d: the citation-target resolution — the page-true
+   *  landing for a tutor book citation. Same T-C20 gate as chaptersForBook
+   *  (empty ⇒ unknown, the caller 404s). page=null skips the resolution
+   *  (the book meta only). */
+  citationTarget(documentId: string, page: number | null): Promise<BookCitationTarget | null>;
 }
 
 interface ShelfRow {
@@ -152,6 +159,43 @@ export class BooksReadRepository {
       order by bc.unit_index asc nulls first, bc.chapter_index asc`) as unknown as ChapterRow[];
     return rows.map(toChapter);
   }
+
+  /**
+   * T-MIG-133 band 133d — the citation-target resolution (the page-true
+   * landing for a tutor book citation). The F-022 nearest-chapter law
+   * VERBATIM (the 133c viewer's pickChapter): a page inside a chapter's pdf
+   * range resolves that chapter; otherwise the nearest chapter STARTING at
+   * or before the page; a page before every chapter (front matter) resolves
+   * null chapter honestly — the book meta still serves. Unknown/unvalidated
+   * book ⇒ null (the route 404s — the T-C20 no-state-leak law).
+   */
+  async citationTarget(
+    documentId: string,
+    page: number | null,
+  ): Promise<BookCitationTarget | null> {
+    const chapters = await this.chaptersForBook(documentId);
+    if (chapters.length === 0) return null;
+    let chapter: BookChapter | null = null;
+    if (page != null) {
+      chapter =
+        chapters.find(
+          (c) =>
+            c.pdfPageStart != null &&
+            c.pdfPageEnd != null &&
+            page >= c.pdfPageStart &&
+            page <= c.pdfPageEnd,
+        ) ??
+        [...chapters].reverse().find((c) => c.pdfPageStart != null && c.pdfPageStart <= page) ??
+        null;
+    }
+    return bookCitationTargetSchema.parse({
+      documentId: chapters[0]!.documentId,
+      docVersion: chapters[0]!.docVersion,
+      courseId: chapters[0]!.courseId,
+      page,
+      chapter,
+    });
+  }
 }
 
 /** Route-level factory dependency (mirrors buildContentApp's env law). */
@@ -164,4 +208,4 @@ export function buildBooksApp(env: Record<string, string | undefined> = process.
 }
 
 /** Zod re-export for route-level guards (typecheck convenience). */
-export const booksSchemas = { bookShelfEntrySchema, bookChapterSchema };
+export const booksSchemas = { bookShelfEntrySchema, bookChapterSchema, bookCitationTargetSchema };

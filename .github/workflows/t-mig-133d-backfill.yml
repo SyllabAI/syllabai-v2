@@ -1,0 +1,159 @@
+# T-MIG-133 band 133d — the Student Books embeddings backfill runner.
+#
+# THE DATA LEG of record (the 133b receipt law: "the vector arm joins when
+# the operator stages SYLLABAI_EMBEDDING_GEMINI_API_KEY and the existing
+# embed path backfills"). The executor is the FROZEN embed mechanism
+# (services/content/retrieval.embedDocument — the DocumentEmbeddingService
+# port: embed + validate EVERYTHING first, a provider outage stores nothing)
+# + the Gemini provider of record (gemini-embedding-001, 768-dim).
+#
+# REGION LAW (run-001 finding): the Gemini embedding API is IP-region-gated
+# (FAILED_PRECONDITION "User location is not supported" from the operator
+# sandbox egress) — the backfill runs HERE (GitHub Actions egress), never
+# from the sandbox.
+#
+# GUARD PROTOCOL (the 133b COW discipline, both legs in one run):
+#   job 1 (cow-proof): create a disposable COW branch off production with an
+#     in-line read_write endpoint (NEON_API_KEY = the CI write-capable key of
+#     record), reset the BRANCH-LOCAL owner password, run the frozen backfill
+#     against the COW, postverify, DROP the COW + 404-verify — even on
+#     failure (if: always(), the T-MIG-035 discipline). Production roles are
+#     never touched.
+#   job 2 (prod-apply, needs job 1 ALL GREEN): the same frozen mechanism
+#     against the production DATABASE_URL (the api's own role — the exact
+#     path the embed ENDPOINT executes under). Postverify + artifact.
+#
+# ROLLBACK (the receipt packet of record): a single UPDATE nulling
+# embedding, embedding_model, embedded_at for the pilot document row.
+#
+# OPERATOR GATE: workflow_dispatch ONLY — this runner is INERT until
+# dispatched. Secrets of record: NEON_API_KEY (exists), T133D_GEMINI_KEY +
+# T133D_PROD_DATABASE_URL (staged per-run, hygiene-deleted after).
+
+name: t-mig-133d-backfill
+
+on:
+  workflow_dispatch:
+    inputs:
+      note:
+        description: "Operator note for this backfill run"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: t-mig-133d-backfill
+  cancel-in-progress: false
+
+env:
+  PILOT_ROW_ID: acc573b0-868a-40aa-b430-303c04219eda
+
+jobs:
+  cow-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Create COW branch (in-line read_write endpoint)
+        id: cow
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PARENT_BRANCH_ID: ${{ vars.NEON_PARENT_BRANCH_ID }}
+        run: |
+          set -euo pipefail
+          NAME="t-mig-133d-cow-${GITHUB_RUN_ID}"
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" -H "Content-Type: application/json" \
+            -d "{\"branch\":{\"parent_id\":\"${NEON_PARENT_BRANCH_ID}\",\"name\":\"${NAME}\"},\"endpoints\":[{\"type\":\"read_write\"}]}")
+          BRANCH_ID=$(echo "$RESP" | jq -r '.branch.id')
+          echo "branch_id=${BRANCH_ID}" >> "$GITHUB_OUTPUT"
+          for i in $(seq 1 60); do
+            EP=$(curl -sf "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}/endpoints" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            HOST=$(echo "$EP" | jq -r '.endpoints[0].host // empty')
+            STATE=$(echo "$EP" | jq -r '.endpoints[0].current_state // empty')
+            if [ -n "$HOST" ] && [ "$STATE" = "ready" ]; then break; fi
+            sleep 3
+          done
+          [ -n "$HOST" ] || { echo "endpoint never ready"; exit 1; }
+          echo "host=${HOST}" >> "$GITHUB_OUTPUT"
+      - name: Reset BRANCH-LOCAL owner password (production roles untouched)
+        id: role
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${{ steps.cow.outputs.branch_id }}/roles/neondb_owner/reset_password" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          PW=$(echo "$RESP" | jq -r '.role.password')
+          [ -n "$PW" ] || { echo "no password in reset response"; exit 1; }
+          # URI-encode the password minimally for the pq string
+          ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
+          echo "cow_url=postgresql://neondb_owner:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
+      - name: Run the FROZEN backfill against the COW
+        env:
+          SYLLABAI_EMBEDDING_GEMINI_API_KEY: ${{ secrets.T133D_GEMINI_KEY }}
+          BACKFILL_RESULT_PATH: cow-backfill-result.json
+        run: |
+          bun scripts/t-mig-133d-backfill-exec.ts \
+            "${{ steps.role.outputs.cow_url }}" "$PILOT_ROW_ID"
+      - name: Upload the COW proof artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t133d-cow-proof
+          path: cow-backfill-result.json
+          if-no-files-found: ignore
+      - name: DROP the COW + 404-verify (zero residue, even on failure)
+        if: always()
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          BRANCH_ID="${{ steps.cow.outputs.branch_id }}"
+          [ -n "$BRANCH_ID" ] || { echo "no branch to drop"; exit 0; }
+          curl -sf -X DELETE "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" > /dev/null || true
+          sleep 5
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          echo "post-delete GET = ${CODE}"
+          [ "$CODE" = "404" ] || { echo "COW residue — 404 verification FAILED"; exit 1; }
+
+  prod-apply:
+    needs: cow-proof
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Run the FROZEN backfill against PRODUCTION
+        env:
+          SYLLABAI_EMBEDDING_GEMINI_API_KEY: ${{ secrets.T133D_GEMINI_KEY }}
+          T133D_PROD_DATABASE_URL: ${{ secrets.T133D_PROD_DATABASE_URL }}
+          BACKFILL_RESULT_PATH: prod-backfill-result.json
+        run: |
+          bun scripts/t-mig-133d-backfill-exec.ts \
+            "$T133D_PROD_DATABASE_URL" "$PILOT_ROW_ID"
+      - name: Upload the prod apply artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t133d-prod-apply
+          path: prod-backfill-result.json
+          if-no-files-found: ignore

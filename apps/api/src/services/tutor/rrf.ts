@@ -111,12 +111,28 @@ export function fuse(
 }
 
 /** The serving fusion posture (plan §7): weighted fuse with the canonical
- *  plan weights — exactly `fuse(rankedLists, planWeights())`. :84-86 */
+ *  plan weights — exactly `fuse(rankedLists, planWeights())`. :84-86
+ *
+ *  T-MIG-133 band 133d (r0): the optional `weightDecorator` — the plan
+ *  weight passes through the decorator before riding the fusion. Absent
+ *  decorator ⇒ byte-identical to the frozen wrapper (planWeightOf directly).
+ *  The 133d spec-scoped boost rides this seam (karag passes the book-boost
+ *  decorator) — the frozen RRF math, tiebreak order and weight MAP are
+ *  untouched; only a matching item's effective weight moves (0.7 → 1.0, the
+ *  anchor tier). */
 export function fuseWithPlanWeights(
   rankedLists: ReadonlyArray<ReadonlyArray<EvidenceItem>>,
-  opts: FuseOptions = {},
+  opts: FuseOptions & {
+    weightDecorator?: (item: EvidenceItem, planWeight: number) => number;
+  } = {},
 ): EvidenceItem[] {
-  return fuse(rankedLists, { ...opts, weightOf: planWeightOf });
+  const { weightDecorator, ...rest } = opts;
+  return fuse(rankedLists, {
+    ...rest,
+    weightOf: weightDecorator
+      ? (item) => weightDecorator(item, planWeightOf(item))
+      : planWeightOf,
+  });
 }
 
 /** ReciprocalRankFusion.stableKey :132-137 — nodeCode, else docId#chunkIndex,
