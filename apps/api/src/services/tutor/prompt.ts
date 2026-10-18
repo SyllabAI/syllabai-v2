@@ -5,8 +5,9 @@
  *   - prompt identity :23-39 + :530-536
  *   - fence fencing (v6 prompt-injection defence) :77-97 + :449-465
  *   - system prompt (v10 base; v11 adds the spec-is-a-map quiz law,
- *     run-014) :247-309, user prompt assembly :312-366,
- *     conversation block :378-427, source labels :429-442, bounds :444-447
+ *     run-014; v12 adds the QUIZ SCAFFOLD serving rule, run-015) :247-309,
+ *     user prompt assembly :312-366, conversation block :378-427,
+ *     source labels :429-442, bounds :444-447
  *
  * The LLM provider itself is the INJECTED seam (R-LLM doctrine: LLM outputs
  * are never golden-gated; the deterministic plumbing — prompt assembly,
@@ -14,6 +15,7 @@
  */
 import { MAX_TURN_CHARS, ROLE_ASSISTANT, isAssistantTurn, type ConversationTurn } from "./conversation";
 import type { EvidenceItem } from "./evidence";
+import { QUIZ_STEM_BOUND, type QuizScaffold } from "./quiz-scaffold";
 
 // ── refusal texts (KaRagService.java :48-83, byte-verbatim) ─────────────────
 
@@ -51,8 +53,11 @@ export const PROMPT_REGISTRY_KEY = "tutor-grounded";
  *  plus the rule that quiz/understanding-check items assess subject
  *  knowledge and never corpus metadata (the operator-measured defect: the
  *  improvised quiz asked "What is the specification code that covers …").
- *  The ACTIVE PAPER CONTEXT block (run-013) rides the same identity. */
-export const PROMPT_VERSION = "11";
+ *  v12 (run-015, trace 1a14f63469aea2e1): the QUIZ SCAFFOLD serving rule —
+ *  when the deterministic scaffold (#6c) is present the quiz is served from
+ *  its listed paper questions only. The ACTIVE PAPER CONTEXT block
+ *  (run-013) rides the same identity. */
+export const PROMPT_VERSION = "12";
 export function promptIdentity(): string {
   return `${PROMPT_REGISTRY_KEY}/v${PROMPT_VERSION}`;
 }
@@ -141,6 +146,10 @@ Rules:
   learner to recall or state a specification reference, topic code,
   page number or source label: the specification is a map the tutor
   reads, not content the learner memorises.
+- When a QUIZ SCAFFOLD block is present, the learner has asked to be
+  quizzed: serve ONLY the questions it lists, in its order, with their
+  own numbers and marks. Do not invent or substitute questions and do
+  not reveal the answers before the learner attempts each one.
 - Do not reveal internal probabilities, model names, diagnostic rules, or
   private learner-state details to the learner.
 - Be concise: at most 200 words plus citations.
@@ -191,6 +200,10 @@ export interface PromptContext {
    *  OUR scaffolding (corpus metadata, outside the fences like the source
    *  labels), rendered as the ACTIVE PAPER CONTEXT block. */
   activePaperLabel?: string | null;
+  /** run-015 #6c: the deterministic quiz scaffold (null = no quiz ask or no
+   *  scaffoldable pin) — OUR scaffolding, rendered as the QUIZ SCAFFOLD
+   *  block (outside the fences, like ACTIVE PAPER CONTEXT). */
+  quizScaffold?: QuizScaffold | null;
 }
 
 /** Paper evidence renders to the larger bound (:368-376). */
@@ -321,6 +334,25 @@ export function userPrompt(
         `"question N" in the QUESTION mean THIS paper; answer from the SOURCES ` +
         `below and say honestly when they do not carry what is asked.\n\n`,
     );
+  }
+  // run-015 #6c: the deterministic quiz scaffold — an unfenced scaffold block
+  // (the pinned paper's own bank questions, OUR metadata like the pin label).
+  // The data layer decides WHAT is asked; the model only formats and grades.
+  const quiz = context.quizScaffold;
+  if (quiz != null && quiz.questions.length > 0) {
+    sb.push(
+      `QUIZ SCAFFOLD:\nThe learner has asked to be quizzed. Serve the questions of ` +
+        `the pinned paper "${quiz.label}" — ONLY the ones listed below, in this ` +
+        `order, one at a time, keeping each question's own number and marks. Do ` +
+        `not invent, reword or substitute questions and do not drift to other ` +
+        `topics; do not reveal answers before the learner has attempted each ` +
+        `question, and grade attempts against the mark scheme in the SOURCES.\n`,
+    );
+    for (const q of quiz.questions) {
+      const marks = q.marks == null ? "" : ` (${q.marks} mark${q.marks === 1 ? "" : "s"})`;
+      sb.push(`- Question ${q.number}${marks}: ${bound(q.stem, QUIZ_STEM_BOUND)}\n`);
+    }
+    sb.push("\n");
   }
   const plan = context.interventionPlan;
   sb.push(`INTERVENTION PLAN:\n${plan.type} — ${plan.rationale}\n`);

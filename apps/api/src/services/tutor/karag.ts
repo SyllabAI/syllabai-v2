@@ -68,6 +68,7 @@ import {
   type PaperPinResolver,
   paperPinLabel,
 } from "./paper-question";
+import { isQuizAsk, loadQuizScaffold, type QuizScaffold } from "./quiz-scaffold";
 
 // ── budgets (:96-105) ───────────────────────────────────────────────────────
 
@@ -240,6 +241,9 @@ interface PreparedAsk {
   /** run-013: the resolved session paper pin's label (null = unpinned or
    *  unresolvable) — rendered as the ACTIVE PAPER CONTEXT prompt line */
   activePaperLabel: string | null;
+  /** run-015 #6c: the deterministic quiz scaffold (null = no quiz ask, no
+   *  pin, or no scaffoldable bank rows — the ask proceeds unpinned-scaffold) */
+  quizScaffold: QuizScaffold | null;
 }
 
 export interface KaragDeps {
@@ -344,6 +348,7 @@ export async function prepare(
   // ACTIVE PAPER CONTEXT line. Any failure degrades to the unpinned ask.
   let pinItems: EvidenceItem[] = [];
   let activePaperLabel: string | null = null;
+  let pinPaperId: string | null = null;
   if (
     paperPinId != null &&
     scope != null &&
@@ -354,9 +359,26 @@ export async function prepare(
     if (pin != null) {
       pinItems = pin.items;
       activePaperLabel = paperPinLabel(pin);
+      pinPaperId = pin.paperId;
     }
   }
   const pinned = [...resolution.items, ...pinItems];
+
+  // 2.7 the deterministic quiz scaffold (run-015 #6c): a quiz-shaped ask on
+  // a pinned paper serves the paper's OWN structured bank questions instead
+  // of improvised ones — the drift/spec-as-content classes die at the data
+  // layer. Advisory like the pin tier: no pin, no scaffoldable rows, or any
+  // loader failure = the ask proceeds exactly as before (the v11 law still
+  // governs an improvised quiz).
+  let quizScaffold: QuizScaffold | null = null;
+  if (pinPaperId != null && activePaperLabel != null && isQuizAsk(query)) {
+    quizScaffold = await loadQuizScaffold(
+      deps.sql,
+      pinPaperId,
+      activePaperLabel,
+      query,
+    ).catch(() => null);
+  }
 
   // 3. rank fusion (plan §7 per-kind weights — the P3 serving posture)
   const fused = fuseWithPlanWeights([kgCandidates, vectorCandidatesList]);
@@ -445,6 +467,7 @@ export async function prepare(
     courseRef: ref,
     unresolvedCourseRef,
     activePaperLabel,
+    quizScaffold,
   };
 }
 
@@ -542,6 +565,7 @@ async function assembleContext(
     pendingReviews: pending,
     activeInferences: inferences,
     activePaperLabel: prep.activePaperLabel,
+    quizScaffold: prep.quizScaffold,
     now: deps.clock.now(),
   });
 }

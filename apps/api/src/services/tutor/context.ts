@@ -17,6 +17,7 @@
  */
 
 import type { EvidenceItem } from "./evidence";
+import type { QuizScaffold } from "./quiz-scaffold";
 
 // ── KnowledgeRetriever.KnowledgeContext (:39-73) ────────────────────────────
 
@@ -360,6 +361,10 @@ export interface TutorContext {
   /** run-013: the resolved session paper pin's label (null = unpinned) —
    *  the prompt renders the ACTIVE PAPER CONTEXT line from it */
   activePaperLabel: string | null;
+  /** run-015 #6c: the deterministic quiz scaffold (null = no quiz ask, no
+   *  pin, or no scaffoldable bank rows) — the prompt renders the QUIZ
+   *  SCAFFOLD block from it */
+  quizScaffold: QuizScaffold | null;
 }
 
 /** Java String.format(Locale.ROOT, "%.2f", v) posture for the briefs. */
@@ -384,6 +389,8 @@ export interface AssembleInputs {
   activeInferences?: ReadonlyArray<StruggleInferenceRow>;
   /** run-013: the resolved session paper pin's label (null = unpinned) */
   activePaperLabel?: string | null;
+  /** run-015 #6c: the deterministic quiz scaffold (null = fail-open) */
+  quizScaffold?: QuizScaffold | null;
   now: Date;
 }
 
@@ -428,6 +435,7 @@ export function assembleTutorContext(inputs: AssembleInputs): TutorContext {
     evidence: [...evidence],
     interventionPlan,
     activePaperLabel: inputs.activePaperLabel ?? null,
+    quizScaffold: inputs.quizScaffold ?? null,
   };
 }
 

@@ -316,8 +316,8 @@ topic (e.g. "moles", "bonding", "equilibria") or ask your teacher to
 ingest the relevant material.`);
     expect(courseScopeRefusal("4CH1")).toContain('scoped to the course "4CH1"');
     expect(courseScopeRefusal("4CH1")).toContain("SyllabAI never answers across\ncourses");
-    // v11 (run-014): the spec-is-a-map quiz law rides the bumped identity
-    expect(promptIdentity()).toBe("tutor-grounded/v11");
+    // v12 (run-015): the QUIZ SCAFFOLD serving rule rides the bumped identity
+    expect(promptIdentity()).toBe("tutor-grounded/v12");
   });
 
   test("the v11 spec-is-a-map quiz law is in the system prompt", () => {
@@ -327,6 +327,13 @@ ingest the relevant material.`);
     );
     expect(prompt).toContain("Never ask the\n  learner to recall or state a specification reference");
     expect(prompt).toContain("the specification is a map the tutor\n  reads, not content the learner memorises");
+  });
+
+  test("the v12 QUIZ SCAFFOLD serving rule is in the system prompt", () => {
+    const prompt = systemPrompt();
+    expect(prompt).toContain("When a QUIZ SCAFFOLD block is present");
+    expect(prompt).toContain("serve ONLY the questions it lists, in its order");
+    expect(prompt).toContain("not reveal the answers before the learner attempts each one");
   });
 });
 
