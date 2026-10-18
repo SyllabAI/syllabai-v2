@@ -109,6 +109,21 @@ export function PaperViewerClient({
         ? "qp"
         : initialDoc,
   );
+  // s147 ISSUE-3: the doc tabs are real viewer state — keep the URL of record
+  // in lockstep (replaceState: no history spam per tab flip, no RSC refetch;
+  // Next ≥14.1 syncs useSearchParams). A copied link now carries the open
+  // document, a refresh restores the tab, and the URL can no longer contradict
+  // an on-screen MS. Other deep-link params (?page, ?src) ride along.
+  const switchDoc = useCallback(
+    (d: Doc) => {
+      setDoc(d);
+      const sp = new URLSearchParams(window.location.search);
+      sp.set("doc", d);
+      const base = `/courses/${course}/past-papers/view/${paper.sessionId}/${paper.dir}`;
+      window.history.replaceState(null, "", `${base}?${sp.toString()}`);
+    },
+    [course, paper.sessionId, paper.dir],
+  );
   const [mockPhase, setMockPhase] = useState<MockPhase>(mode === "mock" ? "intro" : "grading");
   const [durationMin, setDurationMin] = useState<number>(paper.durationMin ?? 90);
   const [remainingSec, setRemainingSec] = useState(0);
@@ -712,7 +727,7 @@ export function PaperViewerClient({
             role="tab"
             aria-selected={doc === "qp"}
             disabled={!qpUrl}
-            onClick={() => setDoc("qp")}
+            onClick={() => switchDoc("qp")}
           >
             Question paper
           </Button>
@@ -724,7 +739,7 @@ export function PaperViewerClient({
             aria-selected={doc === "ms"}
             disabled={!msUrl}
             title={msUrl ? undefined : "No mark scheme held for this paper"}
-            onClick={() => setDoc("ms")}
+            onClick={() => switchDoc("ms")}
           >
             Mark scheme
           </Button>
@@ -736,7 +751,7 @@ export function PaperViewerClient({
               role="tab"
               aria-selected={doc === "split"}
               aria-label="Split view: question paper and mark scheme side by side"
-              onClick={() => setDoc("split")}
+              onClick={() => switchDoc("split")}
             >
               Split
             </Button>
@@ -777,7 +792,7 @@ export function PaperViewerClient({
                     ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground",
                 )}
-                onClick={() => setDoc(d)}
+                onClick={() => switchDoc(d)}
               >
                 {d === "qp" ? "Question paper" : "Mark scheme"}
               </button>

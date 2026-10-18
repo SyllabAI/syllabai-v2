@@ -410,6 +410,9 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
   const refreezeTimerRef = useRef<number | null>(null);
   /** s145: page → the scale its live canvas painted at (stale-scale guard) */
   const canvasScaleRef = useRef(new Map<number, number>());
+  /** s147 ISSUE-4: page → the text-layer stretch composed so far in THIS
+   *  live burst (a SET would drop earlier steps; rebuilt layers reset it). */
+  const liveTextScaleRef = useRef(new Map<number, number>());
   const rafRef = useRef(0);
   /** user rotation offset (0/90/180/270, composes with each page's own rotate) */
   const rotRef = useRef<Rot>(0);
@@ -791,6 +794,18 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
         ratio == null
           ? (holderRefs.current.get(centerRef.current)?.offsetHeight ?? 0)
           : 0;
+      // s147: the center page's PRE-write viewport offset — the zoom-step
+      // anchor measures against THIS. scrollTop×ratio assumes everything
+      // above the viewport scales by the ratio, but the flex gaps between
+      // page boxes do NOT scale (a 12px gap drifts +3px per 125% step) and
+      // mixed analytic boxes add rounding on top — together they pushed the
+      // s145 anchor contract to its exact ±5px boundary. Holding the center
+      // page's viewport offset is exact for every geometry.
+      const centerEl = holderRefs.current.get(centerRef.current) ?? null;
+      const centerViewportTop =
+        ratio != null && centerEl && centerEl.offsetHeight > 0
+          ? centerEl.getBoundingClientRect().top - sc.getBoundingClientRect().top
+          : null;
       const boxFor = (meta: PageMeta | undefined) => {
         const ar = meta
           ? swapped
@@ -826,7 +841,23 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
           }
           if (ratio != null) {
             const tl = el.querySelector<HTMLElement>(":scope > .pp-textLayer");
-            if (tl) tl.style.transform = `scale(${ratio})`;
+            if (tl) {
+              // s147 ISSUE-4: COMPOSE with the stretch this live burst has
+              // already applied — a SET leaves step 2 of a burst reading
+              // scale(1.2) where the content (already stretched to 1.2)
+              // needs 1.5, so selection geometry drifts for the whole
+              // ≤180ms live window and through continuous pinches. The
+              // ledger resets when the layer is rebuilt (refreeze).
+              const next = (liveTextScaleRef.current.get(n) ?? 1) * ratio;
+              liveTextScaleRef.current.set(n, next);
+              tl.style.transform = `scale(${next})`;
+            }
+          } else {
+            // base moved (resize / fit swap) — any live stretch is stale
+            // geometry now; the debounced refreeze re-issues an exact layer
+            const tl = el.querySelector<HTMLElement>(":scope > .pp-textLayer");
+            if (tl) tl.style.transform = "";
+            liveTextScaleRef.current.delete(n);
           }
         } else {
           const box = boxFor(pageMetaRef.current.get(n));
@@ -836,7 +867,20 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
       }
       // scroll anchor: exact for zoom steps, measured for base changes
       if (ratio != null) {
-        sc.scrollTop = Math.max(0, Math.round(sc.scrollTop * ratio));
+        if (centerEl && centerViewportTop != null) {
+          // s147: hold the center page's viewport offset exactly — the
+          // holder's content-space top (post-restyle, pre-rescroll) is
+          // relTop + scrollTop; solving relTop' + scrollTop' = centerTop
+          // for the SAME viewport slot gives the exact new scrollTop.
+          const relTop =
+            centerEl.getBoundingClientRect().top - sc.getBoundingClientRect().top;
+          sc.scrollTop = Math.max(
+            0,
+            Math.round(relTop + sc.scrollTop - centerViewportTop),
+          );
+        } else {
+          sc.scrollTop = Math.max(0, Math.round(sc.scrollTop * ratio));
+        }
       } else if (centerOldH > 0) {
         const centerNewH =
           holderRefs.current.get(centerRef.current)?.offsetHeight ?? 0;
@@ -864,6 +908,7 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
       const tc = itemsRef.current.get(n);
       if (!tc) return; // indexer will attach it once the page is extracted
       tl.style.transform = ""; // s145: drop the live-phase stretch — fresh build
+      liveTextScaleRef.current.delete(n); // s147: the burst ledger resets with the layer
       try {
         const layer = new ns.TextLayer({
           textContentSource: tc,
@@ -924,6 +969,19 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
         return; // doc destroyed while unmounting
       }
       if (docRef.current !== doc || !holder.isConnected) return;
+      // s147 ISSUE-1: record the page's scale-1 geometry HERE, not only in the
+      // lazy text indexer — syncWindow's stale-bitmap guard reads pageMetaRef,
+      // and a pure-reading session (find never opened) never ran the indexer,
+      // so a page zoomed while parked in the hysteresis band kept its
+      // stretched bitmap FOREVER (the "find opens and it heals" telltale).
+      // Geometry is doc truth — safe to write even if this render is later
+      // superseded; idempotent per page.
+      const vp1 = page.getViewport({ scale: 1 });
+      pageMetaRef.current.set(n, {
+        vt: vp1.transform as number[],
+        baseW: vp1.width,
+        baseH: vp1.height,
+      });
       const rot = (page.rotate + rotRef.current) % 360;
       const { scale, cssW, cssH } = fitFor(page);
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -1276,6 +1334,7 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
       base1Ref.current = null;
       itemsRef.current.clear();
       pageMetaRef.current.clear();
+      liveTextScaleRef.current.clear(); // s147: the burst ledger dies with the doc
       linesCacheRef.current.clear();
       matchesRef.current = [];
       matchIdxRef.current = 0;
@@ -1380,6 +1439,16 @@ export const PdfPane = forwardRef<PdfPaneHandle, PdfPaneProps>(function PdfPane(
       }
     };
     setSpreadAvail(lastAvail);
+    // s147 ISSUE-2: discharge the auto-off at INSTALL when the pane is ALREADY
+    // narrow — the observer only acts on width TRANSITIONS, so a cold mobile
+    // load with a persisted spread:true (prefs v1) used to keep two-page rows
+    // in a ~350px scroller with the toggle hidden (no UI escape). The intent
+    // stays in spreadWantedRef exactly like the observer path (the prefs
+    // writer persists the intent, not the layout).
+    if (!lastAvail && spreadRef.current) {
+      spreadRef.current = false; // too narrow — layout off, intent kept
+      setSpread(false);
+    }
     let t: number | null = null;
     const ro = new ResizeObserver(() => {
       const w = scroller.clientWidth;
