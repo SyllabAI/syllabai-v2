@@ -21,7 +21,11 @@ import { writeFileSync } from "node:fs";
 
 import postgres from "postgres";
 
-import { embedDocument, GeminiEmbeddingProvider } from "../apps/api/src/services/content/retrieval";
+import {
+  embedDocument,
+  GeminiEmbeddingProvider,
+  type EmbeddingProvider,
+} from "../apps/api/src/services/content/retrieval";
 
 const [dbUrl, rowId] = process.argv.slice(2);
 if (!dbUrl || !rowId) {
@@ -34,6 +38,57 @@ if (!apiKey.trim()) {
   process.exit(2);
 }
 
+/**
+ * Lane-side rate-limit decorator (run-002 finding: the frozen port has no
+ * failover BY DESIGN — and the 429 is a RATE limit, not a model failure;
+ * the law bans MODEL failover, not same-model backoff). Wraps the frozen
+ * GeminiEmbeddingProvider at the EmbeddingProvider seam: a floor spacing
+ * between calls + exponential backoff on 429 (same model, same payload —
+ * retrying the SAME request is idempotent-safe: embedDocument stores
+ * nothing until every vector validates).
+ *
+ * Budget law: 823 chunks ≈ 9.2 min at 90 RPM (the free-tier embedding
+ * budget of record for gemini-embedding-001 is 100 RPM / 1000 RPD — one
+ * full pass + bounded retries fits; attempts are capped and the run fails
+ * honestly if the budget is exhausted).
+ */
+const RPM_FLOOR_MS = 667; // 90 RPM
+const MAX_429_RETRIES = 4;
+
+class RateLimitedProvider implements EmbeddingProvider {
+  private last = 0;
+  constructor(private readonly inner: EmbeddingProvider) {}
+  model(): string {
+    return this.inner.model();
+  }
+  dimension(): number {
+    return this.inner.dimension();
+  }
+  private async paced<T>(call: () => Promise<T>): Promise<T> {
+    for (let attempt = 0; ; attempt++) {
+      const wait = this.last + RPM_FLOOR_MS - Date.now();
+      if (wait > 0) await new Promise((r) => setTimeout(r, wait));
+      this.last = Date.now();
+      try {
+        return await call();
+      } catch (e) {
+        const msg = String(e);
+        const isRate = msg.includes("status 429");
+        if (!isRate || attempt >= MAX_429_RETRIES) throw e;
+        const backoff = 30_000 * 2 ** attempt;
+        console.log(`429 rate-limited — backoff ${backoff / 1000}s (attempt ${attempt + 1}/${MAX_429_RETRIES})`);
+        await new Promise((r) => setTimeout(r, backoff));
+      }
+    }
+  }
+  embedQuery(query: string): Promise<number[]> {
+    return this.paced(() => this.inner.embedQuery(query));
+  }
+  embedDocument(content: string): Promise<number[]> {
+    return this.paced(() => this.inner.embedDocument(content));
+  }
+}
+
 const sql = postgres(dbUrl, { ssl: "require", max: 1, prepare: false, idle_timeout: 30 });
 
 const pre = await sql`
@@ -43,7 +98,7 @@ const pre = await sql`
   from document_chunks where document_row_id = ${rowId}::uuid`;
 console.log("PRE:", JSON.stringify(pre[0]));
 
-const provider = new GeminiEmbeddingProvider(apiKey);
+const provider = new RateLimitedProvider(new GeminiEmbeddingProvider(apiKey));
 const t0 = Date.now();
 const result = await embedDocument(
   sql,
