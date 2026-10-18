@@ -73,10 +73,49 @@ function urlFor(deepLink: string | null | undefined, surface?: CitationSurface):
   if (deepLink.startsWith("/api/v1/content/documents/")) {
     return sourceHref(deepLink, surface?.courseSlug);
   }
+  if (deepLink.startsWith("/api/v1/content/books/")) {
+    return bookHref(deepLink, surface?.courseSlug);
+  }
   if (deepLink.startsWith("/api/v1/knowledge/nodes/")) {
     return surface?.kgHref ?? null;
   }
   return null;
+}
+
+/**
+ * T-MIG-133 band 133d — the tutor's TEXTBOOK citations deep-link the books
+ * serving surface of record:
+ *
+ *   /api/v1/content/books/{docId}?page={pdf}&course={courseId}
+ *     → /courses/{course}/books/{docId}?page={pdf}
+ *
+ * the 133c in-app viewer route, which resolves ?page via the F-022
+ * nearest-chapter law — the SAME law the API's own citation-target route
+ * serves, so the chip opens the book AT the cited page. The course path
+ * segment prefers the link's own binding (book_chapters.course_id, the
+ * 133c shelf binding) and falls back to the ask's course context; with
+ * neither, the honest null (never a fabricated path).
+ */
+function bookHref(
+  deepLink: string,
+  courseSlug: string | null | undefined,
+): string | null {
+  let url: URL;
+  try {
+    url = new URL(deepLink, "https://hub.internal");
+  } catch {
+    return null;
+  }
+  const match = /^\/api\/v1\/content\/books\/([^/]+)$/.exec(url.pathname);
+  if (!match) return null;
+  const docId = match[1]!;
+  const page = url.searchParams.get("page");
+  const course = url.searchParams.get("course") ?? courseSlug ?? null;
+  if (!course) return null;
+  const params = new URLSearchParams();
+  if (page) params.set("page", page);
+  const qs = params.toString();
+  return `/courses/${encodeURIComponent(course)}/books/${encodeURIComponent(docId)}${qs ? `?${qs}` : ""}`;
 }
 
 /**

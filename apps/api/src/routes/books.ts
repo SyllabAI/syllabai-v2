@@ -3,6 +3,11 @@
  *
  *   GET /api/v1/content/books?courseId=<hub-slug>       → BookShelfEntry[]
  *   GET /api/v1/content/books/:documentId/chapters      → BookChapter[]
+ *   GET /api/v1/content/books/:documentId?page=N        → BookCitationTarget
+ *     (T-MIG-133 band 133d: the tutor citation's page-true landing — the
+ *     F-022 nearest-chapter resolution on the API plane, the same law the
+ *     hub viewer applies; the deep link the tutor citations emit resolves
+ *     here honestly, and the hub maps the same link to its in-app viewer.)
  *
  * PUBLIC-READ corpus family (the full rationale lives in services/books.ts):
  * read-only, zero PII, student archive posture — and T-C20-gated instead of
@@ -45,5 +50,20 @@ export function createBooksRouter(app: BooksReadApp): Hono {
         throw new NotFoundException("Book", documentId);
       }
       return c.json(chapters);
+    })
+    .get("/:documentId", async (c) => {
+      // band 133d: the citation-target resolution. ?page parses to a positive
+      // integer or is ABSENT (a malformed value is treated as absent — the
+      // viewer's positiveInt law); anything else about the book is governed
+      // by the same T-C20 gate as the chapters route above.
+      const documentId = c.req.param("documentId");
+      const pageParam = c.req.query("page");
+      const parsed = pageParam == null ? NaN : Number.parseInt(pageParam, 10);
+      const page = Number.isInteger(parsed) && parsed > 0 ? parsed : null;
+      const target = await app.citationTarget(documentId, page);
+      if (target == null) {
+        throw new NotFoundException("Book", documentId);
+      }
+      return c.json(target);
     });
 }

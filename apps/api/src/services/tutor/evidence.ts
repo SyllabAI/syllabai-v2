@@ -13,6 +13,21 @@
  * so this union's member order must never be reordered (MARK_SCHEME first,
  * CARD last, NOTE/TEXTBOOK appended after the original members so existing
  * ordinals stay stable — EvidenceItem.java :72-75).
+ *
+ * T-MIG-133 band 133d (r0) — ADDITIVE fields only (the enum-extension
+ * precedent: NOTE/TEXTBOOK were appended of record; ordinals untouched):
+ *   - specCodes: the chunk's spine spec-point official codes (document_chunks
+ *     .spec_codes, the corpus-wide column — books carry the chapter-scoped
+ *     overlay, papers their parse codes). Feeds the 133d spec-scoped fusion
+ *     boost; [] when the column is null (never an untyped null).
+ *   - sourcePageStart/sourcePageEnd: the RAW document-page coordinates when
+ *     the serving coords were translated. Band 133d translation law: a
+ *     TEXTBOOK chunk's pageStart/pageEnd serve BOOK-page-true values (the
+ *     intake decision of record: "citations: book_pages") while the deep
+ *     link needs the PDF-page-true viewer coordinate — so the arm keeps the
+ *     raw PDF coords here. null for every non-translated item.
+ *   - bookCourseId: the book_chapters.course_id binding for TEXTBOOK items
+ *     (the books deep link's course hint). null otherwise.
  */
 
 export type EvidenceSource =
@@ -61,10 +76,19 @@ export interface EvidenceItem {
   nodeType: string | null;
   /** node title (null for chunks) */
   nodeTitle: string | null;
-  /** 1-based source page (null when unknown) */
+  /** 1-based source page (null when unknown) — BOOK-page-true for TEXTBOOK
+   *  items (the 133d translation law), document-page-true otherwise */
   pageStart: number | null;
   /** inclusive end page (null when single-page/unknown) */
   pageEnd: number | null;
+  /** spine spec-point official codes riding the chunk ([] when none — 133d) */
+  specCodes: string[];
+  /** raw PDF-page coordinates when pageStart/pageEnd were translated to the
+   *  book numbering (null when not translated — 133d) */
+  sourcePageStart: number | null;
+  sourcePageEnd: number | null;
+  /** book_chapters.course_id binding for TEXTBOOK items (null otherwise) */
+  bookCourseId: string | null;
   /** canonical elements backing this evidence (§17) */
   elementIds: string[];
   /** KG topics this evidence is associated with (v0: the intent-matched topics) */
@@ -103,6 +127,12 @@ export function evidenceFromChunk(args: {
   elementIds: string[] | null;
   embeddingModel: string | null;
   cosine: number;
+  /** 133d additive: spine spec codes riding the chunk (default []) */
+  specCodes?: string[] | null;
+  /** 133d additive: raw PDF coords + course binding for translated TEXTBOOK items */
+  sourcePageStart?: number | null;
+  sourcePageEnd?: number | null;
+  bookCourseId?: string | null;
 }): EvidenceItem {
   const source = kindToSource[args.kind == null ? "OTHER" : args.kind] ?? "OTHER";
   return {
@@ -119,6 +149,10 @@ export function evidenceFromChunk(args: {
     nodeTitle: null,
     pageStart: args.pageStart,
     pageEnd: args.pageEnd,
+    specCodes: args.specCodes == null ? [] : [...args.specCodes],
+    sourcePageStart: args.sourcePageStart == null ? null : args.sourcePageStart,
+    sourcePageEnd: args.sourcePageEnd == null ? null : args.sourcePageEnd,
+    bookCourseId: args.bookCourseId == null ? null : args.bookCourseId,
     elementIds: args.elementIds == null ? [] : [...args.elementIds],
     topicIds: [],
     retrievalScore: args.cosine,
@@ -160,6 +194,10 @@ export function evidenceFromNode(args: {
     nodeTitle: args.title,
     pageStart: null,
     pageEnd: null,
+    specCodes: [],
+    sourcePageStart: null,
+    sourcePageEnd: null,
+    bookCourseId: null,
     elementIds: [],
     topicIds: [args.nodeId],
     retrievalScore: args.matchScore,

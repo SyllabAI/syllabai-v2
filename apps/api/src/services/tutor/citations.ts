@@ -89,10 +89,38 @@ function pageSuffix(item: EvidenceItem): string {
  * the content API with the page param; an item with no content-store row
  * (e.g. the CLA's synthesized question-stem evidence) gets an honest null
  * link, never a fabricated path.
+ *
+ * T-MIG-133 band 133d (r0) — the TEXTBOOK branch: book evidence deep-links
+ * the books serving surface of record (the 133c books routes + the hub's
+ * in-app viewer mapping):
+ *
+ *   /api/v1/content/books/{documentId}?page={pdf}&course={courseId}
+ *
+ *   - page rides the PDF-page-true viewer coordinate (sourcePageStart, the
+ *     133d translation law: the label is book-true, the link is viewer-true
+ *     — the hub's books viewer resolves ?page via the F-022 nearest-chapter
+ *     law, and the API's own citation-target route serves the same
+ *     resolution so the link is honest on BOTH planes).
+ *   - course rides the book_chapters.course_id binding when the item carries
+ *     it (the hub viewer's path segment space — the 133c shelf binding of
+ *     record); the hub falls back to the ask's own course context, else the
+ *     honest null link (its existing law).
+ *   - the link is honest on the API plane too: the 133d citation-target
+ *     route (GET /api/v1/content/books/:documentId) resolves the page under
+ *     the same T-C20 gate — an unknown/unvalidated book is an honest 404,
+ *     never a fabricated path.
  */
 function deepLinkOf(item: EvidenceItem): string | null {
   if (item.source === "KNOWLEDGE_NODE") {
     return `/api/v1/knowledge/nodes/${item.nodeId}`;
+  }
+  if (item.source === "TEXTBOOK" && item.documentId != null) {
+    const params = new URLSearchParams();
+    const page = item.sourcePageStart ?? item.pageStart;
+    if (page != null) params.set("page", String(page));
+    if (item.bookCourseId != null) params.set("course", item.bookCourseId);
+    const qs = params.toString();
+    return `/api/v1/content/books/${item.documentId}${qs === "" ? "" : `?${qs}`}`;
   }
   if (item.documentRowId == null) return null;
   const link = `/api/v1/content/documents/${item.documentRowId}`;

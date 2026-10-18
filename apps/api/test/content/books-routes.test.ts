@@ -22,6 +22,7 @@ import type { BooksReadApp } from "../../src/services/books";
 import { toErrorResponse, apiError } from "../../src/services/identity/errors";
 import {
   bookChapterSchema,
+  bookCitationTargetSchema,
   bookShelfEntrySchema,
   type BookChapter,
   type BookShelfEntry,
@@ -75,6 +76,29 @@ function fakeApp(overrides: Partial<BooksReadApp> = {}): BooksReadApp {
       courseId === COURSE ? [SHELF_ENTRY] : [],
     chaptersForBook: async (documentId: string) =>
       documentId === PILOT_DOC ? [CHAPTER] : [],
+    citationTarget: async (documentId: string, page: number | null) => {
+      if (documentId !== PILOT_DOC) return null;
+      const chapters = [CHAPTER];
+      const chapter =
+        page == null
+          ? null
+          : (chapters.find(
+                (c) =>
+                  c.pdfPageStart != null &&
+                  c.pdfPageEnd != null &&
+                  page >= c.pdfPageStart &&
+                  page <= c.pdfPageEnd,
+              ) ??
+            [...chapters].reverse().find((c) => c.pdfPageStart != null && c.pdfPageStart <= page) ??
+            null);
+      return {
+        documentId: PILOT_DOC,
+        docVersion: 1,
+        courseId: CHAPTER.courseId,
+        page,
+        chapter,
+      };
+    },
     ...overrides,
   };
 }
@@ -256,5 +280,60 @@ describe("row mappers — the strict-contract wall (services/books)", () => {
     expect(() => booksRowMappers.toShelfEntry(base)).toThrow();
     const ok = booksRowMappers.toShelfEntry({ ...base, title: "Edexcel International GCSE (9-1) Chemistry Student Book" });
     expect(ok.author).toBe("");
+  });
+});
+
+// ── T-MIG-133 band 133d: the citation-target route (the page-true landing) ───
+
+describe("GET /api/v1/content/books/:documentId?page=N (133d citation target)", () => {
+  test("200 — a page inside a chapter's pdf range resolves THAT chapter (F-022)", async () => {
+    // u1:c1 spans pdf 12–22 (the fixture law); page 15 lands inside it
+    const res = await router(fakeApp()).request(
+      `/api/v1/content/books/${PILOT_DOC}?page=15`,
+    );
+    expect(res.status).toBe(200);
+    const body = bookCitationTargetSchema.parse(await res.json());
+    expect(body.documentId).toBe(PILOT_DOC);
+    expect(body.courseId).toBe(COURSE);
+    expect(body.page).toBe(15);
+    expect(body.chapter?.chapterKey).toBe("u1:c1");
+    // the T-C20 no-state-leak law rides this surface at the TARGET level —
+    // the embedded chapter is the 133c BookChapter contract of record
+    // (which carries the chapter's own validationState, exactly as the
+    // chapters route serves it)
+    expect(body).not.toHaveProperty("validationState");
+  });
+
+  test("200 — a page before every chapter resolves the honest null chapter", async () => {
+    // pdf 5 is before every chapter start (u1:c1 starts at pdf 12)
+    const res = await router(fakeApp()).request(
+      `/api/v1/content/books/${PILOT_DOC}?page=5`,
+    );
+    expect(res.status).toBe(200);
+    const body = bookCitationTargetSchema.parse(await res.json());
+    expect(body.page).toBe(5);
+    expect(body.chapter).toBeNull();
+  });
+
+  test("200 — absent/malformed ?page resolves the book meta only (positiveInt law)", async () => {
+    for (const qs of ["", "?page=abc", "?page=0", "?page=-3"]) {
+      const res = await router(fakeApp()).request(
+        `/api/v1/content/books/${PILOT_DOC}${qs}`,
+      );
+      expect(res.status).toBe(200);
+      const body = bookCitationTargetSchema.parse(await res.json());
+      expect(body.page).toBeNull();
+      expect(body.chapter).toBeNull();
+    }
+  });
+
+  test("404 — unknown book (the T-C20 no-state-leak law, same as chapters)", async () => {
+    const res = await router(fakeApp()).request(
+      `/api/v1/content/books/${UNKNOWN_DOC}?page=15`,
+    );
+    expect(res.status).toBe(404);
+    const body = (await res.json()) as Record<string, unknown>;
+    expect(body.status).toBe(404);
+    expect(body.error).toBe("not_found");
   });
 });
