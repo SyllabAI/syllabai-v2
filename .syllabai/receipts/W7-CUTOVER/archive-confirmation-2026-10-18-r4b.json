@@ -1,0 +1,20 @@
+{
+  "family": "W7-CUTOVER",
+  "run": "archive-confirmation-2026-10-18-r4b",
+  "act_type": "INDEPENDENT CONFIRMATION (replication, not re-execution) of the §6 archive act of record — the retirement was executed 2026-10-13 under operator trace 1a131d02c805602d and filed in docs/MIGRATION_REPORT.md §7/§8 + W7-CUTOVER/run-005-retirement-closing-r0.json; this run confirms each leg first-hand per the operator order trace 1a14f91edb7ce20d 'confirm the already-done state and file it'",
+  "lane": "r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "timestamp_utc": "2026-10-18T15:13Z - 15:2xZ",
+  "confirmations": {
+    "syllabai-core": {"github_archived": true, "head_sha": "6cad6ef9463e8d21f1555456561a4caaf7e89395", "sha_match_vs_report": true, "head_date": "2026-10-04T13:02:40Z"},
+    "syllabai-hub": {"github_archived": true, "head_sha": "93226a43edefafb3bfa9d0fddf119948da29fa9a", "sha_match_vs_report": true, "head_date": "2026-10-04T12:51:28Z"},
+    "master_doc_bulletin": {"repo": "SyllabAI/syllabai", "sha": "7e75626be913...", "files": ["CUTOVER_RETIREMENT_2026-10-13.md"], "file_match": true},
+    "render_core": {"probes": "2x GET https://syllabai-core.onrender.com/actuator/health 4s apart -> persistent HTTP 503 (credential-free)", "disable_receipt_of_record": "W7-CUTOVER/render-core-disable-run-001-w0a.json: POST /v1/services/{srv-dagijie7bikc73bc0460}/suspend, fresh GET verified suspended, re-filed after the original receipt commit was destroyed (workspace wipe) with a fresh wire probe reading the owner-suspension body", "never_deleted": true},
+    "migration_report": {"section7_watch_results": "FILED at tip — the 48h watch WAIVED by the operator's direct retirement order, replacement evidence table (union replay 223/223 @ 32272d2, bake 9/9, CI 2/2, decay series GREEN, issue #147 zombie-only)", "section8_archive_record": "FILED at tip — the table this receipt independently re-verifies"},
+    "closing_receipt": "W7-CUTOVER/run-005-retirement-closing-r0.json present in the tree",
+    "t_mig_074": "DONE of record (PR #118 -> 3c0bf08)"
+  },
+  "reconciliation_note": "the run-005 decay watch-close r4b (2026-10-18 morning, trace 1a14deefeeb50911) filed the §4 metric evidence as GREEN observational (11/11 vercel-cron days, 34/34 windows); the formal watch-close of record is the operator's WAIVER + replacement-evidence form (report §7, 2026-10-13) — the two are consistent: the waiver superseded the gate, and the metrics corroborate the waiver was sound",
+  "divergences": "ZERO — every leg of the 2026-10-13 filing matches first-hand today",
+  "write_ledger": {"prod_writes": 0, "github_writes": 0, "render_writes": 0, "repo": ".syllabai-only (this receipt + T-MIG-074 confirmation key + worklog Task-44) — zero code deltas, docs/MIGRATION_REPORT.md untouched (already of record)"},
+  "verdict": "§6 ARCHIVE ACT CONFIRMED OF RECORD — archived read-only x2 with SHA-matching heads, Render suspended (never deleted), bulletin filed, report §7/§8 + closing receipt + T-MIG-074 DONE; the cutover paperwork chain is COMPLETE; the only remaining operator item per the report is console hygiene (issue #147 zombie project prj_D7vf)"
+}

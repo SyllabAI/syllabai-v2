@@ -8227,3 +8227,16 @@ Work Log:
 
 Stage Summary:
 - SHIPPED of record: the #6 proposal set is COMPLETE — the quiz-drift and spec-as-content classes are now killed at the DATA layer for pinned papers (deterministic serving of the paper's own bank questions), double-gated at the prompt (v12) and the render (run-014's strip). Residuals of record: identity-named quiz asks and unpinned quiz asks stay on the improvised path under the v11 law (extensions proposed, not authorized); fig46 run-012 unchanged; PAT rotation + prj_D7vf operator-gated. .syllabai-only receipt commit; no force, fetch-first.
+
+---
+Task ID: Task-44 (§6 archive confirmation, operator order trace 1a14f91edb7ce20d)
+Agent: r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+
+Work Log:
+- Order: 'confirm the already-done state and file it'. Found the §6 filing ALREADY of record (2026-10-13, operator retirement order 1a131d02c805602d; report §7/§8 + run-005 closing receipt + T-MIG-074 DONE) — executed as an independent replication, not re-execution.
+- First-hand confirmations, ZERO divergences: syllabai-core archived=true head 6cad6ef byte-matches report §8 (2026-10-04); syllabai-hub archived=true head 93226a4 byte-match; master bulletin 7e75626 contains exactly CUTOVER_RETIREMENT_2026-10-13.md; Render core persistent 503 credential-free (disable receipt of record = API suspend with owner-suspension body, never deleted); report §7 (waiver + replacement evidence) and §8 present at tip.
+- Reconciliation: the morning run-005 decay watch-close (metrics GREEN observational) is consistent with the of-record waiver form — waiver superseded the 48h gate; metrics corroborate it.
+- Receipt W7-CUTOVER/archive-confirmation-2026-10-18-r4b.json + T-MIG-074 archive_confirmation_r4b key. Write ledger: 0 writes anywhere, docs untouched — .syllabai-only direct-main (fetch-first), no force.
+
+Stage Summary:
+- §6 archive act CONFIRMED of record — the cutover paperwork chain (P-gates -> flip -> decay takeover -> watch/waiver -> archive -> closing) is COMPLETE end-to-end. Remaining operator residual: issue #147 zombie project console hygiene.
