@@ -8108,3 +8108,22 @@ Stage Summary:
 - T0 verified delivered of record; T1 shipped 3/4 on the hub (follow-ups, status shimmer, hover previews) with the CLA-stream residual disclosed as api-gated. No api/DB changes, no deploys fired. Residuals unchanged: fig46 run-012 vision wall (23 papers), hub redeploy lever, api redeploy lever, Render disable, PAT rotation.
 
 ADDENDUM (run-012, same lane): CI at b6b77ef failed the hub lane — Turbopack "Export CitationHover doesn't exist in target module" x2 (the hover preview rode the citation-paper-link module; the local .next cache masked it, the cold CI did not). Fix 1adb7e7: CitationHover extracted to components/citations/citation-hover.tsx (dependency-free, own href parse), cold Turbopack rebuild verified locally BEFORE the push. CI 2/2 SUCCESS at 1adb7e7 first-hand. Head of record = 1adb7e7.
+
+---
+Task ID: 51
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, trace 1a14de61ab691ec5)
+Task: Operator "Check the current state" — post-retirement READ-ONLY state census + receipt W7-CUTOVER/state-census-2026-10-18-r1c.json.
+
+Work Log:
+- Fetch-first: local ff 05581d1 -> d6f2cc3 (210 commits closed; t-mig-124/127/128 r0 branches new). Worklog tail re-read first-hand: last entry = run-012 addendum; no lane has acted after it.
+- Board/API census: ALL task cards DONE of record (T-MIG-000..130; the multi-line T-MIG-105 status verified DONE); open PRs = 0; open issues = 0; CI 2/2 SUCCESS @ d6f2cc3 + neon-replay SUCCESS 2026-10-18T07:19Z (R0-AUTO cadence active).
+- Retirement re-verified first-hand (of record: operator trace 1a131d02c805602d, 48h WAIVED, 2026-10-13): SyllabAI/syllabai-core + syllabai-hub archived=true via API (pushed_at frozen 2026-10-04); Render core 503 "suspended by its owner" wire re-probe; issue #147 zombie closed completed 2026-10-13; master bulletin @ 7e75626be9.
+- Live wire (07:30-07:33Z, unauth, read-only): hub-v2 /api/health 200 {ok, dataMode=core-api, coreConfigured=true}; served /tutor chunks carry run-010 copy + T-MIG-128 corpus-pdf + run-012 T1 "Grounding from your corpus" (git log -S: first appearance = 9b8a2f2) => served hub build >= 9b8a2f2, T1 LIVE.
+- FINDING FLAGGED: T1 is live with NO deploy receipt after the addendum — the standing hub-redeploy lever self-discharged; most plausible = git-linked auto-deploy on push (consistent with run-010's concurrent-build protection), else an unlogged operator redeploy. If git-linked, the "hub redeploy = operator lever" card assumption is stale — desk to confirm on the next credential handoff.
+- Deploy posture: API of record current @ be5fa62 content (dpl_Afp4qh7, run-011 recipe); post-be5fa62 commits are hub/receipt-only (zero API runtime delta).
+- Deltas observed read-only (no act): legacy hub syllabai-hub.vercel.app now DEPLOYMENT_NOT_FOUND (was 200 dataMode=mock at the Task-47 census 2026-10-08) — post-retirement cleanup posture, operator plane; zombie syllabai.vercel.app still 500 (prj_D7vf console cleanup = optional operator residual).
+- Residuals of record unchanged: Render API-layer suspended=true reverify on next credential handoff; PAT rotation; fig46 23 partially-visioned + 6 unfetchable; CLA streaming api-gated (T1 3/4); struggle_inferences/tutor_topic_engagements zero v2 writers (T-MIG-126 writer band DORMANT pending operator order); /paper search boundary watch.
+- Write ledger: ZERO writes on every plane; zero LLM spend; zero credentials staged or printed.
+
+Stage Summary:
+- v2 is the sole system of record and is GREEN end-to-end of record; the only open posture question is the hub deploy pathway attribution (auto-deploy vs operator click) — zero lane action required. Next repo receipt = Task-52; next workspace ledger entry = Task-38.

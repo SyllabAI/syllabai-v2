@@ -1,0 +1,44 @@
+{
+  "receipt": "W7-CUTOVER/state-census-2026-10-18-r1c",
+  "band": "post-retirement state census (READ-ONLY) — operator trace 1a14de61ab691ec5 \"Check the current state\"",
+  "lane": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)",
+  "created_at_utc": "2026-10-18T07:40:00Z",
+  "method": "fetch-first (local ff 05581d1 -> d6f2cc3, behind-210 closed), repo worklog tail re-read first-hand, GitHub API reads on the lane token, unauthenticated wire probes; ZERO writes, zero LLM spend, zero deploys/env/DB contact",
+  "findings": {
+    "repo_board": {
+      "tip": "d6f2cc3 (run-012 addendum — the Turbopack export law + CI 2/2 at 1adb7e7)",
+      "ci": "ci SUCCESS @ d6f2cc3 (2026-10-17T18:04Z) + 1adb7e7; neon-replay SUCCESS @ d6f2cc3 (2026-10-18T07:19Z — R0-AUTO cadence ACTIVE)",
+      "board": "ALL cards DONE of record (T-MIG-000..130 incl. the multi-line T-MIG-105 status block verified DONE); zero open, zero claimed",
+      "open_prs": 0,
+      "open_issues": 0
+    },
+    "retirement_of_record": {
+      "order": "operator trace 1a131d02c805602d (2026-10-13, 48h soak WAIVED by the same order)",
+      "legacy_repos": "SyllabAI/syllabai-core archived=true + SyllabAI/syllabai-hub archived=true — RE-VERIFIED first-hand via API this run (pushed_at frozen 2026-10-04)",
+      "render_core": "SUSPENDED of record (srv-dagijie7bikc73bc0460, run-001-w0a receipt; wire re-probe this run: syllabai-core.onrender.com -> 503 'suspended by its owner' first-hand)",
+      "issue_147": "zombie prj_D7vf lever CLOSED completed 2026-10-13T07:07Z (receipt issue-147-zombie-close-run-001-w0a)",
+      "master_doc": "CUTOVER_RETIREMENT_2026-10-13.md @ SyllabAI/syllabai 7e75626be9 + docs/MIGRATION_REPORT.md fill (run-005-retirement-closing-r0)"
+    },
+    "live_wire_probes_2026_10_18_0730Z": {
+      "hub_v2": "GET syllabai-hub-v2.vercel.app/api/health -> 200 {status:ok, dataMode:core-api, coreConfigured:true}",
+      "hub_bundle_content": "served /tutor chunks carry ALL THREE discriminator classes: run-010 'Copy every listed question' + run-012 T1 'Grounding from your corpus' (first-appearance verified = 9b8a2f2 via git log -S) + T-MIG-128 corpus-pdf — the served build is >= 9b8a2f2, i.e. run-012 T1 (follow-up chips / honest grounding status / citation hover) IS LIVE",
+      "legacy_hub": "syllabai-hub.vercel.app -> x-vercel-error DEPLOYMENT_NOT_FOUND (was 200 dataMode=mock at the Task-47 census 2026-10-08) — frozen-legacy frontend no longer served; consistent with post-retirement operator-side cleanup; observed read-only, no act",
+      "zombie": "syllabai.vercel.app still 500 (prj_D7vf inert; console-level cleanup remains the optional operator residual)"
+    },
+    "deploy_posture_read": {
+      "api_of_record": "last 093-recipe deploy dpl_Afp4qh7 @ be5fa62 content (run-011: bundle 332 modules 3,173,898B, LOCALGATE 8/8, shims PRISTINE); every API-relevant commit <= be5fa62 is deployed; commits after be5fa62 are hub-only/receipt-only (zero API runtime delta) — API of record CURRENT of record",
+      "hub_v2": "T1 LIVE in the served bundle although NO worklog deploy receipt exists after the addendum d6f2cc3 — posture read: the standing hub-redeploy lever SELF-DISCHARGED (most plausibly the git-linked auto-deploy on push, consistent with the run-010 concurrent-build-protection observation; alternative = an unlogged operator/CLI redeploy). FLAGGED for the desk: if the hub-v2 project is git-linked to syllabai-v2 main, the 'hub redeploy = operator lever' assumption of the run-012 card is stale and every merge deploys the hub directly"
+    },
+    "residuals_of_record_unchanged": [
+      "Render API-layer suspended=true reverify on the next Render credential handoff (token shredded per law; wire 503 is the current evidence)",
+      "prj_D7vf console-level decommission — optional 1-minute operator cleanup, zero migration dependency",
+      "PAT rotation hygiene (GitHub + Vercel + Neon) — recommended of record across the retirement receipts",
+      "fig46: 23 pdf-backed papers partially visioned (429 quota windows; resume-safe runner re-runnable) + 6 unfetchable secure-gated (3 question-less)",
+      "CLA streaming residual (T1 3/4): cla askStream port = api-gated band, offered as its own lane",
+      "substrate: struggle_inferences + tutor_topic_engagements have ZERO v2 writers (reads honest-empty; T-MIG-126 review-schedules writer band DORMANT pending operator order)",
+      "/paper search boundary watch item (applied-but-unbound papers 404 on text identity)"
+    ]
+  },
+  "write_ledger": "ZERO writes of any plane: git fetch/ff only, GitHub API reads only, unauthenticated wire probes only; zero credentials staged; token never printed",
+  "boundaries": "no deploys, no env acts, no re-pointing, archived repos untouched, no force anywhere"
+}
