@@ -35,6 +35,7 @@ import {
   fenceOpen,
   nonce,
   promptIdentity,
+  systemPrompt,
   userPrompt,
 } from "../../src/services/tutor/prompt";
 import { kgRetrieve, tokensOf } from "../../src/services/tutor/kg-retriever";
@@ -315,7 +316,17 @@ topic (e.g. "moles", "bonding", "equilibria") or ask your teacher to
 ingest the relevant material.`);
     expect(courseScopeRefusal("4CH1")).toContain('scoped to the course "4CH1"');
     expect(courseScopeRefusal("4CH1")).toContain("SyllabAI never answers across\ncourses");
-    expect(promptIdentity()).toBe("tutor-grounded/v10");
+    // v11 (run-014): the spec-is-a-map quiz law rides the bumped identity
+    expect(promptIdentity()).toBe("tutor-grounded/v11");
+  });
+
+  test("the v11 spec-is-a-map quiz law is in the system prompt", () => {
+    const prompt = systemPrompt();
+    expect(prompt).toContain(
+      "Quiz and understanding-check questions assess the learner's subject",
+    );
+    expect(prompt).toContain("Never ask the\n  learner to recall or state a specification reference");
+    expect(prompt).toContain("the specification is a map the tutor\n  reads, not content the learner memorises");
   });
 });
 

@@ -49,3 +49,12 @@ export * from "./bank-intent";
  * stays verbatim; pinned first-hand in answerDebris.test.ts.
  */
 export * from "./answerDebris";
+
+/**
+ * T-MIG-130 run-014 (the spec-is-a-map quiz law, operator trace
+ * 1a14ee89eede4265 "Proceed"): the spec-quiz debris strip — the
+ * render-boundary companion to the API's v11 prompt law. The tutor chat
+ * never quizzes the learner on corpus metadata; the s22 record stays
+ * verbatim; pinned first-hand in specQuiz.test.ts.
+ */
+export * from "./specQuiz";

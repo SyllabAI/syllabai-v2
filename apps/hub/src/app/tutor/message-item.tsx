@@ -20,6 +20,12 @@
  * content passes through stripCitationDebris first: the model's internal
  * 【n†L..-L..】 source markers never display (the stored turn stays verbatim).
  *
+ * Run-014 (operator trace 1a14ee89eede4265): content also passes through
+ * stripSpecQuizDebris BEFORE the debris strip — the chat never quizzes the
+ * learner on corpus metadata (spec codes/topic codes), the render-boundary
+ * companion to the API's v11 "the specification is a map" prompt law; the
+ * stored turn stays verbatim of record.
+ *
  * Look (HUB-TUTOR-CLA-LOOK, the itutor.study chat-home reference): assistant
  * turns render as gradient-avatar + name rows on the canvas — no bubble box —
  * with citation pills; user turns are muted gray bubbles with date-aware
@@ -31,7 +37,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Markdown } from "@/components/markdown";
 import { normalizeMathDelimiters } from "@/lib/mathNormalize";
-import { stripCitationDebris } from "@syllabai/shared";
+import { stripCitationDebris, stripSpecQuizDebris } from "@syllabai/shared";
 import { cn } from "@/lib/utils";
 import { CitationPaperLink } from "@/components/citations/citation-paper-link";
 import { CitationHover } from "@/components/citations/citation-hover";
@@ -249,7 +255,7 @@ export function MessageItem({
         <div className="space-y-2 text-sm">
           {message.error ? (
             <div className="space-y-2">
-              {message.content && <Markdown className="text-sm [&_p]:text-sm">{normalizeMathDelimiters(stripCitationDebris(message.content))}</Markdown>}
+              {message.content && <Markdown className="text-sm [&_p]:text-sm">{normalizeMathDelimiters(stripCitationDebris(stripSpecQuizDebris(message.content)))}</Markdown>}
               <div className="flex items-center gap-2 rounded-md border border-destructive/30 bg-destructive/5 px-2.5 py-2 text-xs">
                 <TriangleAlert className="size-3.5 shrink-0 text-destructive" aria-hidden />
                 <span className="min-w-0 flex-1 text-destructive">
@@ -271,7 +277,7 @@ export function MessageItem({
           ) : (
             <>
               {message.content ? (
-                <Markdown className="text-sm [&_p]:text-sm">{normalizeMathDelimiters(stripCitationDebris(message.content))}</Markdown>
+                <Markdown className="text-sm [&_p]:text-sm">{normalizeMathDelimiters(stripCitationDebris(stripSpecQuizDebris(message.content)))}</Markdown>
               ) : waiting ? (
                 <WaitingStatus message={message} />
               ) : null}

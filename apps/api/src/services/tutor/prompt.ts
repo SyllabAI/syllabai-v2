@@ -4,7 +4,8 @@
  *   - refusal constants live in KaRagService.java :48-83 (byte-verbatim)
  *   - prompt identity :23-39 + :530-536
  *   - fence fencing (v6 prompt-injection defence) :77-97 + :449-465
- *   - system prompt (v10) :247-309, user prompt assembly :312-366,
+ *   - system prompt (v10 base; v11 adds the spec-is-a-map quiz law,
+ *     run-014) :247-309, user prompt assembly :312-366,
  *     conversation block :378-427, source labels :429-442, bounds :444-447
  *
  * The LLM provider itself is the INJECTED seam (R-LLM doctrine: LLM outputs
@@ -46,7 +47,12 @@ teacher to check the course's tutoring availability.`;
 // ── prompt identity (:23-39, :530-536) ──────────────────────────────────────
 
 export const PROMPT_REGISTRY_KEY = "tutor-grounded";
-export const PROMPT_VERSION = "10";
+/** v11 (run-014, trace 1a14ee89eede4265): the spec-is-a-map quiz law — v10
+ *  plus the rule that quiz/understanding-check items assess subject
+ *  knowledge and never corpus metadata (the operator-measured defect: the
+ *  improvised quiz asked "What is the specification code that covers …").
+ *  The ACTIVE PAPER CONTEXT block (run-013) rides the same identity. */
+export const PROMPT_VERSION = "11";
 export function promptIdentity(): string {
   return `${PROMPT_REGISTRY_KEY}/v${PROMPT_VERSION}`;
 }
@@ -130,6 +136,11 @@ Rules:
   row's content corresponds to it — unlabelled rows are a corpus shape,
   not missing evidence.
 - Never invent spec references, page numbers or topic codes.
+- Quiz and understanding-check questions assess the learner's subject
+  knowledge — concepts, facts, methods, calculations. Never ask the
+  learner to recall or state a specification reference, topic code,
+  page number or source label: the specification is a map the tutor
+  reads, not content the learner memorises.
 - Do not reveal internal probabilities, model names, diagnostic rules, or
   private learner-state details to the learner.
 - Be concise: at most 200 words plus citations.
