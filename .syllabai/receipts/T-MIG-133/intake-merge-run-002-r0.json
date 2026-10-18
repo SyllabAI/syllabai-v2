@@ -1,0 +1,34 @@
+{
+  "task": "T-MIG-133",
+  "run": "intake-merge-run-002-r0",
+  "agent": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operator_order": "trace 1a1508050601faa5 'Go 133b' + GH PAT + Neon PAT re-supplied (discharge of the queued chain; original go = trace 1a14fe8dc6a7bb4d)",
+  "date": "2026-10-18T20:05:00Z",
+  "scope": "Verification-of-record + lane-race integration + CI-green intake of bands 133a+133b (already executed of record by the prior lane run; NO duplicate band execution)",
+  "steps": [
+    "creds re-staged 0600 (/home/z/.secrets/secrets.env); GH PAT verified 200 (login SyllabAI, repo+workflow scopes); Neon PAT verified 200 via GET /projects (org API key class — /users/me 404 is expected for org keys)",
+    "sandbox wipe discovered and disclosed: local clone was 98 commits behind origin/main; t-mig-132/r0 ABSENT on remote (diff gone, re-derivable); books-intake/ wiped (needed again at the 133c archive-upload gate); FF'd local main d8acf73",
+    "state correction of record: origin/t-mig-133/r0 already carried the FULL chain — filing c36a884 + band 133a 925a64f + band 133b f818d92 (COW proof run-002 dropped+404-verified; PROD apply run-001 on br-muddy-bar-a5huwldd) — verified first-hand, zero duplicate discharge",
+    "Neon independent verification (read-only, disposable COW br-rapid-sunset-a5wfxs6e created off production + endpoint added + t0_readonly password reset BRANCH-LOCAL + dropped + 404-verified, census restored to 7): documents 1024 EXACT (+1), TEXTBOOK e6c0db50-0f84-55de-b50c-e4d49285cd6d v1 SUGGESTED, document_chunks 823 EXACT (embed_rev 2..2, embeddings 0 = the zero-API-keys law), book_chapters 29 EXACT all SUGGESTED, spec join refs 145 EXACT (verbatim/tier1 85, normalized/tier2 51, fuzzy/tier3 9), sample chapters sane (u1:c1 States of matter, book 3-13 / pdf 12-22 — both numberings)",
+    "lane-race disposition: PR #195 mergeable dirty — main moved (T-MIG-124..131 + 126 runs merged by the sibling lane); ONLY conflict = .syllabai/worklog.md append-only tail; resolved per the T-MIG-050 precedent (both blocks kept, zero loss, tail = chronologically-latest); merge commit 30fb8df pushed (NO force), migrations 0002 exclusively this branch's",
+    "FIRST CI run of the band (0 Actions runs ever existed on f818d92) surfaced 2 type-level defects in branch files: (1) canonical-doc.ts textBlocks literal omitted bounding_box — zod .default(null) makes it required in the OUTPUT type (TS2322); fixed explicit-null per the Dto 'null legitimate' law; (2) books.test.ts chunk() helper double-specified text (TS2783); fixed by dropping the explicit key (the spread carries it per the helper signature); commit 831a4ae",
+    "gates on head 831a4ae ALL GREEN first-hand: local — typecheck x4 exit 0, FULL 2157/0/13skip, books suites 21/0, golden selftest OK, retrieval-eval 22/0 + 19/19 vectors, census gate GREEN exit 0; CI — verify + hub + Vercel 3/3 success",
+    "intake checks: mergeable clean, 0 HOLD/BLOCK comments (vercel[bot] only), non-draft; MERGED under the operator pipeline orders (trace 1a14fe8dc6a7bb4d + trace 1a1508050601faa5; the authors-never-self-merge override pattern of record per #196) — merge commit b394017, merged_by SyllabAI",
+    "post-merge: local main FF'd to b394017; CI on main verify success (hub in_progress at check time); hub-v2 serving HTTP 200; api of record serving structured envelopes (health 401 auth-chain, /health 404, root 404 — zero 5xx; noted OBSERVED, not diagnosed, sibling lane's posture)"
+  ],
+  "residuals_and_operator_gates": [
+    "book SUGGESTED — the operator validation flip (documents.validation_state) is the SERVING lever (searchServingEligible requires the owning document VALIDATED); never auto-VALIDATED by the lane",
+    "embeddings NULL (embed_rev=2 join default) — backfill when SYLLABAI_EMBEDDING_GEMINI_API_KEY is staged; the existing embed path applies",
+    "133c (viewer band: corpus-pdf books/<specKey>/ grammar + book shelf + chapter page-range mounts + ARCHIVE-HOST upload of the PDF) — REQUIRES the books-intake package re-upload (wiped locally) + push creds; nft bundle-weight guard receipt after (main pushes auto-deploy hub-v2, the 08c6b17 law)",
+    "133d (tutor arm live + page-true citations run-010 law + regression battery); 133e (roll to remaining books + coverage receipts)",
+    "31 join review items recorded in the dry-run receipt (per-bullet near-misses) — REVIEW never-silent law held",
+    "hygiene: both PATs transited chat in plaintext AGAIN — rotate after the Student Books arc; Neon prod owner password was rotated once by the 133b prod apply (disclosed of record; console re-rotation available)",
+    "t-mig-132/r0 (CORS band) absent from remote — re-derivable as a small band on operator request"
+  ],
+  "write_ledger": {
+    "production_branch_contact": "ZERO (verification ran on a disposable COW; prod roles untouched by this run)",
+    "neon_cow_created": "br-rapid-sunset-a5wfxs6e (dropped + 404-verified, zero residue)",
+    "git_writes": "branch pushes t-mig-133/r0 (30fb8df, 831a4ae) + merge commit b394017 via PR #195 + this bookkeeping push",
+    "prod_deploys_fired": "hub-v2 auto-deploy(s) on main pushes (the 08c6b17 law; band touched no hub code — functionally identical bundle)"
+  }
+}

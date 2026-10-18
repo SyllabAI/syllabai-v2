@@ -8416,3 +8416,19 @@ Work Log:
 
 Stage Summary:
 - "Fire it earlier" DELIVERED of record: the manual lever is proven operator-gated (bearer not lane-readable, 4 fail-closed 401s, zero writes), today's window is terminal legacy-0/0 by law, and the hub cron schedule of record moves 02:00 -> 00:00 UTC via PR #196 so the FIRST REAL pass (window 2026-10-19: ~8 new PENDING rows, REAL ledger counts — the 042 zero-cell era ends — and all EIGHT consumer seams activating unmodified) fires ~2h earlier, tonight. Zero api code changes, zero DB writes, zero LLM. Post-merge: hub git-integration redeploy verified READY; tomorrow-morning ledger check is the closing read of record.
+
+---
+Task ID: trace 1a1508050601faa5 ("Go 133b" re-issued + creds re-supplied) — T-MIG-133 intake/merge run-002
+Agent: R0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- Fetch-first STATE CORRECTION: the queued chain had ALREADY run (prior lane, before the local sandbox wipe) — origin/t-mig-133/r0 carried filing c36a884 + 133a 925a64f + 133b f818d92; PR #195 open. Zero duplicate band execution; the discharge = verification + integration + intake.
+- Sandbox wipe census disclosed: local clone 98 behind origin/main; t-mig-132/r0 NOT on remote (diff gone); books-intake/ wiped (re-upload needed at the 133c gate). Creds re-staged 0600; GH 200 (SyllabAI) + Neon 200 (org key; 1 project billowing-cherry-15418366).
+- Neon verification-of-record on a DISPOSABLE COW (br-rapid-sunset-a5wfxs6e off production, endpoint added, t0_readonly password reset branch-local, then branch DROPPED + 404-verified, census restored 7): documents 1024 EXACT (+1 TEXTBOOK e6c0db50 v1 SUGGESTED), chunks 823 EXACT (embed_rev 2, embeddings 0 — the zero-API-keys law), book_chapters 29 EXACT all SUGGESTED, spec refs 145 EXACT (85 verbatim / 51 normalized / 9 fuzzy), both page numberings sane. ZERO production-branch contact.
+- Lane-race disposition (PR #195 dirty): main moved 98 commits (sibling lane: 124-131 + 126 runs); ONLY conflict = the append-only worklog tail — resolved per the T-MIG-050 precedent, both blocks kept, zero loss; merge commit 30fb8df (NO force); migrations 0002 exclusively this branch's.
+- FIRST CI run of the band (no Actions runs ever on f818d92) surfaced 2 type-level defects in branch files: canonical-doc.ts missing bounding_box (zod .default(null) => required in output type, TS2322 — fixed explicit-null per the Dto law) + books.test.ts chunk() double-specified text (TS2783 — spread carries it). Commit 831a4ae. Gates first-hand: typecheck x4 exit 0, FULL 2157/0/13skip, books 21/0, golden selftest OK, retrieval-eval 22/0 + 19/19, census GREEN; CI verify+hub+vercel 3/3.
+- MERGED under the operator pipeline orders (trace 1a14fe8dc6a7bb4d + trace 1a1508050601faa5; the #196 authority-override pattern): merge commit b394017; local main FF'd; CI on main verify success; hub-v2 HTTP 200; api serving structured envelopes (health 401 chain OBSERVED — sibling posture, not diagnosed). Bookkeeping: card status comment + receipt intake-merge-run-002-r0.json + this entry.
+- Hygiene: PATs inline/env-only in scripts, .secrets 0600; scrub: zero credential material in tracked files. Both PATs transited chat plaintext AGAIN — rotation advised after the Student Books arc.
+
+Stage Summary:
+- T-MIG-133 133a+133b INTEGRATED of record (b394017). The book is IN Neon, SUGGESTED — the operator validation flip is the serving lever (never auto-VALIDATED). Embeddings NULL pending the Gemini key. 133c-e await operator gates: (c) archive upload + viewer band (needs the books-intake zip re-uploaded), (d) tutor arm + citations, (e) roll to remaining books. t-mig-132/r0 re-derivable on request.
