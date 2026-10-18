@@ -102,6 +102,65 @@ describe("verification-evidence proof of concept (not wired to mastery writes)",
     ).level).toBe("INDEPENDENT_SUCCESS");
   });
 
+  test("an incorrect, exposed, or provenance-unknown prior can never ground transfer", () => {
+    const current = attempt({ isTransferAssessment: true });
+    const base = {
+      attemptId: "a-prior",
+      questionId: "q-prior",
+      occurredAt: "2026-10-08T12:00:00.000Z",
+    };
+    // the prior opportunity was itself wrong — no learning evidence
+    expect(classifyVerificationEvidence(
+      current,
+      [attempt({ ...base, correct: false })],
+      policy,
+    ).level).toBe("INDEPENDENT_SUCCESS");
+    // the prior's own assistance provenance is unknown (fail-closed there too)
+    expect(classifyVerificationEvidence(
+      current,
+      [attempt({ ...base, assistance: "UNKNOWN" })],
+      policy,
+    ).level).toBe("INDEPENDENT_SUCCESS");
+    // the prior only succeeded after answer exposure
+    expect(classifyVerificationEvidence(
+      current,
+      [attempt({ ...base, answerExposedBeforeAttempt: true })],
+      policy,
+    ).level).toBe("INDEPENDENT_SUCCESS");
+    expect(classifyVerificationEvidence(
+      current,
+      [attempt({ ...base, assistance: "ANSWER_EXPOSED" })],
+      policy,
+    ).level).toBe("INDEPENDENT_SUCCESS");
+  });
+
+  test("duplicate prior rows and reordering never change the label", () => {
+    const current = attempt({ isTransferAssessment: true });
+    const prior = attempt({
+      attemptId: "a-prior",
+      questionId: "q-prior",
+      occurredAt: "2026-10-08T12:00:00.000Z",
+    });
+    const laterPrior = attempt({
+      attemptId: "a-prior-2",
+      questionId: "q-prior-2",
+      occurredAt: "2026-10-09T12:00:00.000Z",
+    });
+    expect(classifyVerificationEvidence(current, [prior, prior], policy).level).toBe("TRANSFER_SUCCESS");
+    expect(classifyVerificationEvidence(current, [laterPrior, prior], policy).level).toBe("TRANSFER_SUCCESS");
+    expect(classifyVerificationEvidence(current, [prior, laterPrior], policy).level).toBe("TRANSFER_SUCCESS");
+  });
+
+  test("a prior with an unparseable timestamp is skipped, not trusted", () => {
+    const current = attempt({ isTransferAssessment: true });
+    const corrupt = attempt({
+      attemptId: "a-prior",
+      questionId: "q-prior",
+      occurredAt: "not-a-timestamp",
+    });
+    expect(classifyVerificationEvidence(current, [corrupt], policy).level).toBe("INDEPENDENT_SUCCESS");
+  });
+
   test("rejects invalid policy instead of silently weakening the gate", () => {
     expect(() => classifyVerificationEvidence(attempt(), [], { minimumTransferDelayMs: -1 }))
       .toThrow("minimumTransferDelayMs");

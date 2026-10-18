@@ -60,9 +60,14 @@ export interface VerificationResult {
  *
  * Transfer is intentionally conservative: current response must be correct,
  * explicitly independent, explicitly tagged as a transfer assessment, target
- * at least one canonical SpecificationPoint, and follow earlier evidence on
- * an overlapping SpecificationPoint using a different canonical question
- * after the configured delay. This is an evidence label, not a causal claim.
+ * at least one canonical SpecificationPoint, and follow earlier SUCCESS
+ * evidence on an overlapping SpecificationPoint using a different canonical
+ * question after the configured delay. The prior opportunity must itself be
+ * a success the classifier trusts — authoritatively graded correct, not
+ * answer-exposed, with known assistance provenance (fail-closed: an
+ * incorrect, exposed, or provenance-unknown prior is not learning evidence
+ * and can never ground a transfer claim). This is an evidence label, not a
+ * causal claim.
  */
 export function classifyVerificationEvidence(
   current: VerificationAttempt,
@@ -119,7 +124,14 @@ export function classifyVerificationEvidence(
     const currentPoints = new Set(current.specificationPointIds);
     const hasQualifyingPrior = priorAttempts.some((prior) => {
       if (prior.attemptId === current.attemptId || prior.questionId === current.questionId) return false;
-      if (prior.correct === null || prior.specificationPointIds.length === 0) return false;
+      // Fail-closed prior-evidence law: only a trusted earlier SUCCESS can
+      // ground transfer. `correct !== true` covers both ungraded (null) and
+      // incorrect priors; exposure and UNKNOWN assistance fail closed exactly
+      // like the current-attempt gates above.
+      if (prior.correct !== true) return false;
+      if (prior.specificationPointIds.length === 0) return false;
+      if (prior.answerExposedBeforeAttempt || prior.assistance === "ANSWER_EXPOSED") return false;
+      if (prior.assistance === "UNKNOWN") return false;
       const priorTime = Date.parse(prior.occurredAt);
       if (!Number.isFinite(priorTime) || priorTime >= currentTime) return false;
       if (currentTime - priorTime < policy.minimumTransferDelayMs) return false;
