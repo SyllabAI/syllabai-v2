@@ -8143,3 +8143,21 @@ Work Log:
 
 Stage Summary:
 - §4 watch CLOSED GREEN of record; decay band lane-side obligations FULLY discharged (§3.1 r1c / §3.3 + §4-open run-004 / §4-close run-005); §6 archive + decommission remain operator (evidence chain complete). Register 126/126 DONE, board clean.
+
+---
+Task ID: trace 1a14dee689aa7941 (proceed-sweep run-001)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1)
+Task: operator order "Proceed" — read-only posture sweep + board re-census + open-PR desk review.
+
+Work Log:
+- Fetch-first: local == origin/main == d6f2cc3 at start; origin/main MOVED to 426f3f1 during the sweep (3cdbfdd r1c post-retirement census + 426f3f1 r4b T-MIG-042 run-005 watch-close GREEN, both 2026-10-18) — ff-only synced post-sweep, no force.
+- Board census first-hand: 126/126 cards DONE (status-field sweep incl. the T-MIG-105 block-scalar), zero OPEN/CLAIMED/IN_REVIEW; 0 open issues; sole open item PR #190.
+- Read-only sweep (evidence: /home/z/my-project/evidence/proceed_sweep_r7a.json) GREEN 15/15: CI 3/3 at d6f2cc3 + ci SUCCESS at 426f3f1 + hub/verify SUCCESS at the 32af4ce PR head (the verify job carries the census-gate step, ci.yml:50-51); carriers READY (hub dpl_4TqsuzXK @ 426f3f1 auto-bake current; api actuator 200 UP); wire laws 7/7 (hub-health core-api / actuator UP / chat 400-parse / chat 401 / transcribe 401 / past-papers 200 / deep-spec 200); census --gate exit 0; /v2/user syllabai-1403 == of-record (PAT still unrotated).
+- PR #190 desk review ("PoC: add provenance-gated verification evidence labels", 32af4ce, org-authored, DRAFT): +317 (pure classifier 146 / 9 adversarial tests / research doc with promotion gates). First-hand: masteryMutation literally 'NONE' on every path; fail-closed unknown-assistance law; exposure blocks independence; conservative transfer gate (distinct question + canonical spec-point overlap + delay policy + explicit designation); invalid policy throws. CI at head hub+verify SUCCESS.
+- Residuals re-postured: Render console disable EVIDENTLY EXECUTED 10-13..14 (r1c 503 suspended + r4b CATCH_UP ceased, decayed=135) — CLOSED by sibling receipts; PAT rotation STANDS (unrotated again); prj_D7vf cleanup STANDS; hub-redeploy lever SELF-DISCHARGED (auto-bake confirmed twice).
+- Bookkeeping: receipt .syllabai/receipts/DESK-ROUND/proceed-sweep-run-001-r7a.json; creds perms re-fixed 0600 (recurring regression); write ledger zero prod writes (unauth probe class only), llm_spend=0. This push costs one no-code-delta hub auto-bake (mechanism of record).
+
+Stage Summary:
+- VERDICT GREEN: the board is fully converged — every card DONE, both carriers READY + serving, census gate GREEN, CI green at the tip. The only open thread is PR #190, held DRAFT/PROPOSED by its author with green CI: disposition REVIEWED-ACKNOWLEDGED / DO-NOT-MERGE (promotion operator-gated per its own gates doc).
+- All remaining levers are operator-gated: PAT rotation, prj_D7vf console cleanup, PR #190 promotion. Lane IDLE.
+- REBASE DISCLOSURE: the first push round was rejected non-FF — the receipt commit had landed on the STALE base d6f2cc3 (the mid-sweep remote move to 426f3f1 was fetched but the local branch was not ff-synced before committing — lane process defect disclosed); rebase onto origin/main, worklog tail conflict UNION-merged per the R35/R36 precedent (origin tail r1c+r4b verbatim, this entry re-appended on top), rebase --continue clean.

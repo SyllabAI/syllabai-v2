@@ -1,0 +1,57 @@
+{
+  "receipt": "proceed-sweep-run-001-r7a",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1)",
+  "operator_order": "trace 1a14dee689aa7941 'Proceed'",
+  "executed_at_utc": "2026-10-18T07:4xZ",
+  "scope": "read-only posture sweep + board re-census + open-PR desk review; zero prod writes, zero authed POSTs, zero LLM spend",
+  "legs": {
+    "fetch_first": {
+      "at_start": "local == origin/main == d6f2cc3 (57+ commits ahead of the prior snapshot; ff-only)",
+      "movement_during_sweep": "origin/main moved d6f2cc3 -> 426f3f1 while the sweep ran: 3cdbfdd (r1c post-retirement read-only census, trace 1a14de61ab691ec5) + 426f3f1 (r4b T-MIG-042 run-005 watch-close GREEN, trace 1a14deefeeb50911); ff-only synced post-sweep; no force"
+    },
+    "board_census": {
+      "cards": "126/126 DONE, zero OPEN/CLAIMED/IN_REVIEW (first-hand status-field sweep of .syllabai/tasks/*.yaml; T-MIG-105 block-scalar status starts DONE)",
+      "issues": "0 open (GitHub API; sole open item is PR #190 counted as issue but is a PR)",
+      "open_prs": [190]
+    },
+    "ci": {
+      "at_d6f2cc3": "replay/verify/hub 3/3 SUCCESS (check-runs API)",
+      "at_426f3f1": "ci completed SUCCESS; at 32af4ce (PR head) hub+verify SUCCESS",
+      "gate_wiring_of_record": ".github/workflows/ci.yml:50-51 'Zero-core census gate' runs scripts/preflight_zero_core_census.py --gate (landed 32272d2)"
+    },
+    "carriers": {
+      "hub": "syllabai-hub-v2 dpl_4TqsuzXK READY @ 426f3f1 (git-integration auto-bake current — the mechanism of record from the hub-rebake run-005 receipt); /api/health 200 dataMode=core-api coreConfigured=true",
+      "api": "syllabai-v2 actuator 200 {status:UP} (dpl_Afp4qh7Pyyzt era per r1c census, run-011 current @ be5fa62)"
+    },
+    "wire_laws": "hub-health 200 core-api / api-actuator 200 UP / chat parse-first 400 / chat {question} 401 / transcribe 401 / /past-papers 200 (560,538 B) / deep spec 4ac1 200 (351,396 B) — 7/7 live legs GREEN",
+    "census_gate": "exit 0 GREEN — zero live entries, inventory complete, at synced tip",
+    "identity_fingerprint": "/v2/user syllabai-1403 == of-record (PAT still UNROTATED — residual stands for the operator, Nth confirmation)"
+  },
+  "pr_190_desk_review": {
+    "title": "PoC: add provenance-gated verification evidence labels",
+    "head": "32af4ce poc/verification-evidence-gate -> main; mergeable true; author SyllabAI (org); created 2026-10-18T07:38:37Z",
+    "content": "3 files +317: apps/api/src/services/learner-model/verification-evidence.ts (146 B pure classifier), apps/api/test/learner/verification-evidence.test.ts (9 adversarial tests), docs/research/VERIFICATION_EVIDENCE_POC.md (audit + promotion gates)",
+    "review_findings": [
+      "Pure classifier verified first-hand: masteryMutation literally typed 'NONE' on every return path; no db/route/prompt/learner-state contact; nothing imported into production wiring",
+      "Fail-closed law verified: unknown assistance -> ATTEMPTED (never independent); answer exposure blocks independence even with assistance=NONE; ungraded/incorrect -> ATTEMPTED",
+      "Transfer gate conservative: distinct questionId + canonical SpecificationPoint overlap + prior.correct non-null + strictly-earlier timestamp + policy delay + explicit transfer designation; invalid policy throws RangeError",
+      "Tests: 9/9 cover the PR body's adversarial matrix; CI at head 32af4ce hub+verify SUCCESS (the verify job includes the census-gate step)",
+      "Author holds the PR DRAFT and the proposal PROPOSED by explicit statement in the body — no merge requested"
+    ],
+    "disposition": "REVIEWED-ACKNOWLEDGED / DO-NOT-MERGE — the authors-never-self-merge law is moot (this lane is not the author) but the author's own hold (DRAFT, PROPOSED) + the PR's promotion gates make merge operator-gated; no review-submission act needed (org-authored, desk-visible)"
+  },
+  "residuals_reposture": {
+    "render_console_disable": "EVIDENTLY EXECUTED by the operator 2026-10-13..14 of record (r1c: Render core 503 suspended; r4b: core CATCH_UP ceased after 2026-10-13T03:30Z, decayed=135) — residual CLOSED by sibling receipts",
+    "pat_rotation": "STANDS — fingerprint unrotated again this sweep (syllabai-1403)",
+    "prj_D7vf_console_cleanup": "STANDS — operator lever (Vercel console)",
+    "hub_redeploy_lever": "SELF-DISCHARGED of record — git-linked auto-deploy confirmed both by the dpl_EgR8SX receipt and tonight's dpl_4TqsuzXK @ 426f3f1 auto-bake",
+    "standing_watches": "fig46 23+6, CLA-stream api-gated, struggle/tutor-engagement writers dormant, /paper boundary watch — unchanged, of record"
+  },
+  "disclosures": [
+    "This push (receipt landing) costs one no-code-delta hub auto-bake per the git-integration mechanism of record",
+    "Write ledger: zero prod writes; one disclosed read-only probe register class (unauth HTTP legs + read APIs); zero LLM spend",
+    "creds perms found 0755 (recurring sandbox regression) — re-fixed 0600 pre-sweep"
+  ],
+  "evidence": "/home/z/my-project/evidence/proceed_sweep_r7a.json",
+  "verdict": "GREEN — board fully converged; the only open thread is the author-held DRAFT PR #190; every remaining lever is operator-gated"
+}
