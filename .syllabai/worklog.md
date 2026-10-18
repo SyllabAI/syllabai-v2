@@ -8240,3 +8240,16 @@ Work Log:
 
 Stage Summary:
 - §6 archive act CONFIRMED of record — the cutover paperwork chain (P-gates -> flip -> decay takeover -> watch/waiver -> archive -> closing) is COMPLETE end-to-end. Remaining operator residual: issue #147 zombie project console hygiene.
+
+---
+
+## R0-AUTO receipt — 2026-10-18 (UTC)
+
+- Task ID: 438940 (cron sweep 2026-10-18T16:00Z)
+- PR: #191 `fix(hub): s147 viewer stress-test fixes — stale-bitmap guard, cold spread discharge, doc-tab URL lockstep, exact zoom anchor`
+- Branch: `s147/viewer-stress-fixes` @ 7301d41 (real head SHA from PR JSON)
+- Merge: **ee2336d** via PUT /pulls/191/merge, merge_method=merge
+- Gates on head 7301d41: verify ✅ hub ✅ Vercel Preview Comments ✅ (3/3, combined=success)
+- Intake checks: mergeable=clean; 0 reviews (no REQUEST_CHANGES); comments = vercel[bot] only (no HOLD/BLOCKING/'do not merge'); diff = 3 files (apps/hub components + e2e spec) — inside syllabai-v2, zero *.java, zero core/hub-REPO content; patch scan: 0 Neon/prod-write pattern hits
+- Post-merge CI on new main tip ee2336d: verify ✅ hub ✅ (2/2 completed success; replay absent — noted, not blocking)
+- Notes: routine intake, no escalation. PR #190 (draft PoC) present, skipped as draft — not ready for review.
