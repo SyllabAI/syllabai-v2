@@ -51,7 +51,7 @@ const provider: EmbeddingProvider = {
   embedDocument: async () => Array.from({ length: 768 }, () => 0.1),
 };
 
-const SCOPE = { curriculumVersionId: "cv-1", subjectId: "sub-1" };
+const SCOPE = { surface: new Set<string>(["4CH1"]), curriculumVersionId: "cv-1" };
 
 const bookChunkRow = (over: Partial<Row> = {}): Row => ({
   id: "chunk-b1",
