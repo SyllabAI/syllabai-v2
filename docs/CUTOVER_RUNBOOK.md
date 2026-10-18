@@ -11,6 +11,27 @@
 > in-review cards plus Wave-7 cutover") → T-MIG-074 (r9-hubx). Source of law:
 > MIGRATION_PLAN.md §7 and the risk register (§6). Rollback law: **nothing gets
 > deleted until Wave 7 completes** (plan §7.5).
+>
+> **SUPERSESSION 2026-10-18 — the hub deploy pathway (receipt
+> `W7-CUTOVER/deploy-pathway-attribution-2026-10-18-r1c.json`, first-hand;
+> edit band claimed on operator order, trace `1a14e4e24834a3e5`).** hub-v2
+> (`prj_YhOJ…`) IS GIT-LINKED to `SyllabAI/syllabai-v2`: **every push to main
+> auto-deploys hub production** (chain of record: `b6b77ef` → ERROR build,
+> alias held; `1adb7e7` → READY, T1 live; then `d6f2cc3`/`3cdbfdd`/`426f3f1`/
+> `63604e9` all auto-baked READY, `dpl_Go7Effpj` current). The "hub redeploy =
+> a deliberate manual operator act" assumption embedded in §2.1/§2.5/§5/§7 is
+> **stale for content deploys** — a push IS the hub deploy. Unchanged and still
+> true: (a) alias switches only on READY (the `b6b77ef` ERROR build never
+> served — fail-safe for `.syllabai`-only receipt churn); (b) `NEXT_PUBLIC_*`
+> env values are build-time — an env flip still needs a deploy to bake (CLI
+> redeploy or the next push); (c) the §5 rollback lever = the one-call
+> re-alias to the prior READY `dpl_*` (the §2.5 preview-deployment proof
+> remains sound practice); (d) the API of record `prj_FN5X…` is link=null
+> CLI-only — the api redeploy stays the serialized operator-gated lever
+> (092/093 recipe), NOT covered by this supersession; (e) the Render core
+> stays disabled-not-deleted, untouched. Desk law: treat "hub deployed at
+> `<sha>`" as EQUALITY with "tip is `<sha>`" — receipt-push auto-bakes are
+> churn-only (content-identical builds), disclosed, no action.
 
 ---
 

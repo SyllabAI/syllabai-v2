@@ -8281,6 +8281,22 @@ Stage Summary:
 - Intake checks: mergeable=clean; 0 formal reviews; 2 comments (vercel[bot] + author law-declaration "Independent review requested" = authors-never-self-merge boilerplate + advisory review-focus disclosure — NO HOLD/BLOCKING/'do not merge'; consistent with desk precedent on this author's bands #185/#186/#187/#191); diff = 7 files (3× .syllabai receipt/task/worklog + 4× apps/api code/tests) — inside syllabai-v2, zero *.java (TS port of the frozen engine), zero core/hub-REPO content; patch scan: no direct Neon/prod-write statements — app-service SQL inserts via the service layer with mocked test rows, task yaml discloses "prod / Neon / Vercel / LLM (zero contact)"
 - Post-merge CI on new main tip 1384a09: verify ✅ hub ✅ (2/2 completed success; replay absent — noted, not blocking)
 - Notes: routine intake, no escalation. PR #190 (draft PoC) present, skipped as draft.
+
+---
+Task ID: w0a-runbook-supersession (operator trace 1a14e4e24834a3e5 "claim the available runbook-doc edit band")
+Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd, chat 1148fa2b)
+Task: Claim the runbook-doc edit band made available by the r1c deploy-pathway attribution — file the 'hub redeploy = operator lever' STALE supersession into docs/CUTOVER_RUNBOOK.md. Receipt W7-CUTOVER/runbook-supersession-edit-run-001-w0a.json.
+
+Work Log:
+- Band scope fixed from the basis receipt (deploy-pathway-attribution-2026-10-18-r1c): the supersession lands in the RUNBOOK as ONE dated addendum; §0-§8 body untouched (executed-procedure record stays verbatim).
+- docs/CUTOVER_RUNBOOK.md: SUPERSESSION 2026-10-18 addendum after the header provenance block — hub-v2 git-linked (push == hub deploy), stale-for-content-deploys declaration, the five still-true clauses (READY-only alias switch; build-time env flips; §5 one-call re-alias rollback; API prj_FN5X CLI-only lever UNCHANGED; Render core untouched), the desk law tip==served.
+- Scope discipline (no other carrier): AGENT_BRIEFING.md / README.md / docs/* grepped — no other living doc carries the stale law (DECOMMISSION-BANDS-PLAN redeploy lines = API 092/093 recipe + band serialization, still true; P3/P4 = env-flip mechanics, still true); task yamls = API lever + history only; receipts/worklogs immutable, untouched.
+- Gates: docs+receipts-only, zero code bytes (diff --stat verified); code gates not re-run per the receipt-only precedent class; CI at tip GREEN of record. Write ledger: zero env/DB/Vercel/GitHub-plane writes, zero LLM, zero credentials.
+- CONSEQUENCE DISCLOSED: this push auto-bakes the hub (git-linked law of record) — churn-only, fail-safe on ERROR.
+- RACE INTEGRATION of record (push leg, 2026-10-19): origin advanced 08c6b17→b6de792 (14 commits: run-013/014/015, archive-confirmation-r4b, T-MIG-131 via PRs #191/#192) during the credential-gated window; commit rebased onto b6de792 and this block refiled at EOF — zero other-lane content altered; docs/CUTOVER_RUNBOOK.md + the receipt path verified collision-free first-hand.
+
+Stage Summary:
+- The last open documentation thread from the deploy-pathway attribution is discharged: the runbook now carries the supersession law first-hand. The 'optional runbook-doc edit' lever is closed; remaining operator levers unchanged: PAT rotation (double-flagged), prj_D7vf console cleanup, #190 promotion ruling.
 ---
 Task ID: T-MIG-126 run-002 (operator trace 1a14ffc7cc82c179 "also spec the review_schedules writer band")
 Agent: R0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
