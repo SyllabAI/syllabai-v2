@@ -1,0 +1,36 @@
+{
+  "task": "T-MIG-126",
+  "run": "run-002-writer-band-spec-r0",
+  "operator_trace": "1a14ffc7cc82c179",
+  "operator_order": "also spec the review_schedules writer band",
+  "when": "2026-10-18T17:2xZ",
+  "purpose": "the WRITER-BAND SPEC of record for review_schedules — the run-001 dormancy posture's operator gate opening for the SPEC (the T-MIG-131 sibling-band precedent: the named-band order built, this order specs); the frozen NightlyDecayJob review-scheduling arm pinned line-against-line so the build is one operator word away",
+  "frozen_sources": {
+    "clone": "syllabai-core-frozen @ 6cad6ef (head SHA byte-matches the archive confirmation of record)",
+    "writer": "learner/NightlyDecayJob.java :1-191 — the SOLE frozen writer of review_schedules (Master Spec §11 / §31 APPLY_FORGETTING_DECAY, backlog F-159): repo-wide rg reviewSchedules.save at :175 only; LearnerStateController / SmartLessonService / LearnerAgendaController hold the repository READ-only",
+    "entity": "learner/ReviewSchedule.java :1-79 — row law (uuid id, learner_id, node_id, due_at, reason DECAY_CROSSED_THRESHOLD|TEACHER_ASSIGNED, mastery_at_trigger double nullable research-traceability, status PENDING|COMPLETED|CANCELLED, created_at PrePersist)",
+    "repo_laws": "learner/ReviewScheduleRepository.java :1-31 — existsByLearnerIdAndNodeIdAndStatus (the :14 dedup), agenda dueAt-asc (:10), class batch (:20-22), the s140 digest read findByLearnerIdAndNodeIdInAndStatus (:29-30) = the v2 pendingReviews law already ported",
+    "math": "learner/decay/EbbinghausDecayService.java :1-53 (P(t)=P0·e^(−t/τ), ns exponent, floor clamp, needsReview strict-<) + learner/decay/DecayParams.java :1-67 (paperDefaults 30/90/365, 0.45/0.8, floor 0.1, reviewBelow 0.6; tauFor bands ON THE PASSED P0)",
+    "config": "learner/LearnerProperties.java :159-198 — DecayJob(enabled=false, checkCron */15min, windowHourUtc 3, idleGracePeriod 2d)",
+    "event": "shared/events/ReviewScheduledEvent.java — sole frozen consumer TelemetryService (research §18) = the T-MIG-061 disclosed dormant posture",
+    "lanes": "TEACHER_ASSIGNED: enum lane + ck value with NO frozen writer (rg-verified); COMPLETED/CANCELLED: NO frozen transition writer — PENDING terminal in the frozen as-built"
+  },
+  "spec": {
+    "frozen_law": "checker cron runs the batch iff the windowHourUtc window lacks its V38 decay_job_runs row (SCHEDULED within 5-min grace else CATCH_UP; ledger PK fails a racer's whole transaction, C-4); pass pages skill_states idle > 2d (500/page, last_practiced_at ASC, id ASC); per state effective = decayed(P0, lastPracticed, now) NEVER written back (ADR-031 anchor law); reviewThresholdCrossed = effective < 0.6 STRICT; crossed AND no PENDING row for (learner,node) -> INSERT (dueAt=now, reason DECAY_CROSSED_THRESHOLD, masteryAtTrigger=effective); the job's ONLY writes are the ledger row + review inserts",
+    "v2_seam": "NO new cron, NO new env — the T-MIG-042 takeover route GET /api/v1/cron/nightly-decay (hub vercel.json 0 2 * * * -> bearer-forward, fail-closed CRON_SECRET, server-derived UTC-day window) gains the pass composed INTO its exactly-once transaction: pass first, then the ledger INSERT carries the REAL decayed/reviewsScheduled counts (the 042 hard-coded 0,0 zero-cell contract upgrades, disclosed), ONE sql.transaction (the createSql adapter exposes fn.transaction, users.ts :75) so a ledger window conflict rolls the loser's inserts back (C-4 verbatim); DECAY_CRON_ENABLED=1 on the hub stays the single OFF-switch (= the frozen enabled=false default)",
+    "math_reuse": "ZERO new math — services/learner-model/decay.ts decayedMastery() + LEARNER_DECAY_PAPER_DEFAULTS (T-MIG-066 canonical owner) = the frozen values EXACT",
+    "not_ported": "DecayAppliedEvent/ReviewScheduledEvent (T-MIG-061 dormant §18 consumer); TEACHER_ASSIGNED lane (write-ready under ck_review_reason; teacher assignment = separate band, T-029 surface); COMPLETED/CANCELLED transitions (no frozen writer; v2 readers read PENDING-only — byte-consistent); the run-if-missed 15-min checker (Vercel = one daily 02:00 UTC shot; a missed window stays honestly empty — the next pass re-evaluates EVERY idle state from the anchors, the frozen 'late run is exact' self-healing verbatim)",
+    "activation": "ZERO read-side change (the 126 law) — the first PENDING row lands on the next operator api redeploy with the hub gate on and all EIGHT consumer seams go live unmodified: tutor pendingReviews/policy review precedence; s140 digest spaced-review line; learnerBriefOf review rows (learner/state.ts :264-276); NBA overdue-first (learner-me/nba.ts :490-499); teacher class due-batch (teacher/analytics.ts :228-233); learner-me review rows (learner-me/index.ts :1105-1109); graph earliest-review markers (knowledge/graphs.ts :929-937); smart-lesson pendingReviews (learner/smart-lesson.ts :274-278)",
+    "schema": "FULL parity of record (packages/db/src/schema/schema.ts :579-598 — ck_review_reason/ck_review_status + ix_review_learner_status/ix_review_status_due) — ZERO migration",
+    "test_pins": "threshold crossing inserts (frozen IEEE effective EXACT); strict-< 0.6 boundary; PENDING dedup (no second insert, decayed still counts); 2d idle grace; 500-page pagination (601 -> 2 pages); ledger honesty (real counts on ok; already-run reports the FIRST row's counts); the C-4 transaction pin (window conflict rolls back the pass's inserts); 401 fail-closed",
+    "precision_disclosure": "v2 exponent in MILLISECONDS (JS Date) vs frozen nanoseconds — relative drift ~1e-11 at day scale, disclosed at the pins (the T-MIG-131 JS-Date convention)"
+  },
+  "verification": {
+    "run_class": "DOCS-ONLY spec run — zero code, zero schema, zero prod, zero LLM spend",
+    "census": "preflight_zero_core_census.py first-hand on the branch",
+    "ci": "verify + hub on the PR = the gate of record (yaml-only delta)"
+  },
+  "activation_gating": "the BUILD is gated on the operator's go — scope: services/cron/nightly-decay.ts pass module (or sibling) + routes/cron.ts composition + the test-pin battery; the T-MIG-131 flow applies verbatim",
+  "write_ledger": "zero DB writes, zero prod mutations, zero LLM spend; 1 branch + PR; PAT inline-URL usage only, never persisted",
+  "scrub_assert": "no credential, token, URI, or Neon secret appears in this receipt, the card, the commit, or the PR body"
+}
