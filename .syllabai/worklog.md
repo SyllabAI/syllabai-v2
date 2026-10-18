@@ -8339,3 +8339,16 @@ Work Log:
 
 Stage Summary:
 - The review_schedules writer band is BUILT AND GREEN awaiting review: the last dormant memory layer closes on the next operator api redeploy with the hub gate on — the nightly window schedules PENDING reviews off the recomputed effective mastery and all EIGHT consumer seams activate unmodified (tutor policy review precedence, s140 spaced-review line, brief rows, NBA overdue-first, teacher class due-batch, learner-me rows, graph markers, smart-lesson). Dormant siblings unchanged: the §18 research consumer, teacher-override writes.
+
+---
+
+## R0-AUTO receipt — 2026-10-19 (UTC, sweep 1800Z)
+
+- Task ID: 438940 (cron sweep 2026-10-19T02:00Z)
+- PR: #194 `feat(cron): T-MIG-126 the review-schedules WRITER BAND` — nightly-decay pass composed into the T-MIG-042 exactly-once transaction per the run-002 spec of record
+- Branch: `t-mig-126-build/r0` @ 0e3a96e (real head SHA from PR JSON)
+- Gates on head 0e3a96e: verify ✅ hub ✅ Vercel Preview Comments ✅ (3/3, combined=success); mergeable=clean (no intake needed)
+- Intake checks: 0 formal reviews; comments = vercel[bot] + author law-declaration (authors-never-self-merge boilerplate + reviewer-focus disclosure — NO HOLD/BLOCKING/'do not merge', desk precedent #192/#193); diff = 7 files (3× .syllabai + apps/api cron route, nightly-decay + review-scheduler services, review-scheduler tests) — inside syllabai-v2, zero *.java, zero core/hub-REPO content, patch scan 0 suspect lines (service-layer SQL per the specced law, test mocks; no direct Neon/prod statements)
+- Merge: **548edd7** via PUT /pulls/194/merge, merge_method=merge (clean first-try)
+- Post-merge CI on new main tip 548edd7: verify ✅ hub ✅ (2/2 completed success; replay absent — noted, not blocking)
+- Notes: 1 merge this run (cap 2). PR #190 (draft PoC) present, skipped as draft. No escalation.
