@@ -3,7 +3,7 @@
 **Status:** PROPOSED — research/engineering prototype only; not an accepted learner-model change.
 **Audit scope:** source-level review of learner-model writes/reads, assessment evidence publication, NBA recommendations, and InterventionRun in `SyllabAI/syllabai-v2`.
 **Source snapshot:** v2 main at `3cdbfddf4e2cfb389b2ff899b68ae38de17249c5` (read-only GitHub inspection, 2026-10-18).
-**Execution status:** source inspected. PoC tests authored but not executed in this environment; CI result required before any promotion.
+**Execution status:** PoC test suite, API typecheck, full API/package tests, golden self-check, retrieval eval harness, zero-core census gate, and Hub build all passed in GitHub Actions run [39108437035](https://github.com/SyllabAI/syllabai-v2/actions/runs/39108437035) on commit `ec671ea89d69340aa72a0933d0623af9e432f581`. This verifies the branch's CI gates, not educational outcomes or production integration.
 
 ## Executive result
 
