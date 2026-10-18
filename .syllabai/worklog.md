@@ -8194,3 +8194,20 @@ Work Log:
 
 Stage Summary:
 - The diagnosis's defects (1) and (2) are FIXED AND LIVE-VERIFIED of record: the bank serves the complete variant sets across the merged sessions, and follow-up asks anchor to the served paper instead of re-retrieving from scratch; defect (4)'s honest truncation disclosure is on the wire. Residuals: T1 4/4 assistant streaming stays api-gated; identity-keyed chunk generations mix for the merged papers (re-chunk lane candidate); legacy subject rows now empty of VALIDATED papers (cleanup candidate); PAT rotation + prj_D7vf operator-gated; fig46 run-012 vision wall unchanged.
+
+---
+Task ID: trace 1a14ee89eede4265 ("Proceed" — proposal set #6a+#6b: the spec-is-a-map quiz law) — run-014
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: Ship #6a (the v11 prompt law: quiz items assess subject knowledge, never spec metadata) + #6b (the deterministic spec-quiz debris strip) from the 1a14eb4561e56285 proposal set.
+
+Work Log:
+- Standing order re-checked: board 126/126 DONE zero unclaimed; the order lands on the delivered proposal set (#6c stays proposed).
+- #6a: prompt.ts system prompt v10 -> v11 — "Quiz and understanding-check questions assess the learner's subject knowledge … Never ask the learner to recall or state a specification reference, topic code, page number or source label: the specification is a map the tutor reads, not content the learner memorises." Both identity pins (tutor-core, cla-service) follow; a law-presence test pins the bytes.
+- #6b: packages/shared/src/specQuiz.ts stripSpecQuizDebris (precision-first line law R1 marker / R2 word-bounded vocab outside parens / R3 question shape incl. the measured truncated row / R4 provenance carve-out / FAIL-OPEN), wired in the hub tutor chat renderer before stripCitationDebris on both render sites; s22 record stays verbatim.
+- Gates: typecheck x4 0; bun test apps/api packages 2079/0/13 (15 new pins); apps/hub 71/0; eslint 0; hub cold build green; CI 2/2 SUCCESS at 319eacf first-hand.
+- Deploy: api 093 recipe (332 modules EXACT, 3,178,991 B, +320 B; LOCALGATE 8/8 on the real Neon wire; env 0600 shredded pre-upload; scrub-asserted) -> dpl_CvD6FrtUk7ynkaT1Ty1hz2LdtF9Z READY + alias-verified; hub auto-bake marker verified in served chunk 0k925urjzqa6l.js.
+- Live verify (llm_spend 1 TOTAL, disclosed): the quiz-provoking ask through the relay on the new carrier — 200, full SSE sequence, 836-char answer, truncated=false, ZERO spec-code quiz items, served quiz items are pure chemistry (colour change + balanced equation). Probe account memory-only; credentials inline-only throughout.
+- Bookkeeping: receipt T-MIG-130/run-014-spec-map-quiz-law-r0.json (scrub-asserted); scripts persisted (deploy_bundle_build.py re-pointed, r0_run014_stage_env.mjs, r0_run014_verify.py + transcript).
+
+Stage Summary:
+- SHIPPED of record: the spec-as-content class is double-gated (v11 prompt law + deterministic render guard) and live-verified on the wire. #6c (deterministic quiz scaffold, T1-sized) stays PROPOSED awaiting order. fig46 run-012 unchanged. .syllabai-only receipt commit next; no force, fetch-first.
