@@ -42,3 +42,4 @@ export * from "./revision-notes"; // T-MIG-053 (r3a) — Wave-5 revision-notes w
 export * from "./ingestion"; // T-MIG-082 tranche B (R0) — the Fetch/Enumerate + glm-ocr bridge + exam-series import wire (OUT-OF-FENCE-flagged one-liner, 010/034/043-t1/052/053/061/062/069/revision-notes precedent)
 export * from "./llm-admin"; // T-MIG-090 (R0) — the admin LLM chain-observability wire (ruling4 adopted-and-amended vehicle; barrel one-liner precedent 010/034/043-t1/052/053/061/062/069/revision-notes/ingestion)
 export * from "./assignments"; // T-MIG-117 (r7a) — the teacher-assignments B2 wire (OUT-OF-FENCE-flagged one-liner, 010/034/043-t1/052/053/061/062/069/revision-notes/ingestion/llm-admin precedent)
+export * from "./books"; // T-MIG-133 (r0) — the Student Books wire: corpus-package grammar + book-chapter registry/join shapes (OUT-OF-FENCE-flagged one-liner, 010/034/043-t1/052/053/061/062/069/revision-notes/ingestion/llm-admin/assignments precedent)

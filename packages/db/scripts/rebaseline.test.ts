@@ -240,22 +240,23 @@ describe("specialTypeMap", () => {
 // ---------------------------------------------------------------------------
 
 describe("verifyBaseline (checked-in baseline)", () => {
-  test("62/579/87/54/98 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  test("63/596/89/55/100 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 62/62");
-    expect(v.inventory).toContain("columns 579");
-    expect(v.inventory).toContain("indexes 87");
-    expect(v.inventory).toContain("fks 54");
-    expect(v.inventory).toContain("checks 98");
+    expect(v.inventory).toContain("tables 63/63");
+    expect(v.inventory).toContain("columns 596");
+    expect(v.inventory).toContain("indexes 89");
+    expect(v.inventory).toContain("fks 55");
+    expect(v.inventory).toContain("checks 100");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(62);
+    expect(run.size).toBe(63);
     expect(run.has("public.flyway_schema_history")).toBe(true);
     expect(run.has("public.document_chunks")).toBe(true);
+    expect(run.has("public.book_chapters")).toBe(true);
   });
 });
 

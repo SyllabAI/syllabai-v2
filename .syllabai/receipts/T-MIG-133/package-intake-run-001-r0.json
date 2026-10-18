@@ -1,0 +1,44 @@
+{
+  "task": "T-MIG-133 run-001 — package intake + join feasibility (r0)",
+  "generated_utc": "2026-10-18T15:25:00Z",
+  "operator_order": "trace 1a14f8bf97b983f1 ('I have rights on hosting' + package URL)",
+  "package": {
+    "url": "https://tmpfiles.org/dl/1792336196.6641b209ee0e972c/wDAwcEOqx7eD/edexcel_igcse_chemistry_rag_package.zip",
+    "zip_sha256": "9efdd9d61aa3e1ad249e9efbfc7b3dbb9462e4833c3a7396dd7cfaae5e849720",
+    "zip_bytes": 52650661,
+    "sandbox_path": "/home/z/my-project/books-intake/edexcel_igcse_chemistry_rag_package (OUTSIDE the repo tree — the T-MIG-131 x44 corpus law)",
+    "files": 824
+  },
+  "original_book": {
+    "file": "chemistry_book.pdf",
+    "sha256": "d48020e0cc0b5545b330bb59b242472198210e424525e4381cd5d2a58a58cc04",
+    "bytes": 54298792,
+    "pages": 383,
+    "meta": "Adobe Acrobat 20.6 Image Conversion Plug-in, created 2020-05-22 (scanned/rasterized source)"
+  },
+  "parse_of_record": {
+    "generation": "v3 (IBM Docling: layout model + TableFormer + RapidOCR + formula VLM)",
+    "file": "download/rag_chemistry/edexcel_igcse_chemistry_chunks_v3.jsonl",
+    "chunks": 1234,
+    "content_types_censused": {"body": 493, "key_point": 140, "table_data": 113, "exam_hint": 113, "answers": 83, "learning_objectives": 81, "chapter_questions": 50, "safety": 44, "appendix": 27, "unit_questions": 21, "glossary": 21, "did_you_know": 17, "front_matter": 12, "index": 11, "divider": 6, "skills": 1, "activity": 1},
+    "grammar": "15 keys censused across ALL rows (id, book_title, author, unit_no, unit_name, chapter_no, chapter_title, section, content_type, book_pages, pdf_pages, char_count, text + optional text_original/llm_repaired)",
+    "page_numberings": "BOTH carried per chunk: book_pages (citation coords) + pdf_pages (viewer coords)",
+    "llm_polish": "87 chunks, originals preserved (text_original + llm_repaired flag)",
+    "superseded": "v1/v2 Tesseract JSONL + full_book_clean*.md NOT ingested (disclosed noisy: garbled formulas, broken multi-column order)",
+    "per_page_artifacts": "data/ocr_pages 383 + data/docling_pages 383"
+  },
+  "join_feasibility_probe": {
+    "printed_spec_codes_in_book": "NONE (regex sweep over full_book_docling.md — numeric hits are atomic masses etc.)",
+    "lo_vs_spine": "LO-box bullet texts are verbatim-class matches of the 4CH1 spine's official_wording (probe: spec 1.2 interconversions wording == ch1 LO bullet; 1.8-classify == ch2 bullet; chromatogram == ch2 bullet)",
+    "spine_of_record": "apps/api/src/services/teacher/concept-graph/specification_points.yaml — 182 spec_points / 52 c_points / 4 topics / 28 subtopics / 12 practicals, each with official_code + official_wording (normalized, bullets flattened)",
+    "join_law_decided": "normalized-text match LO bullet vs official_wording (tiered, scored, lineage/method provenance per the content-maps grammar); weak/absent -> REVIEW_REQUIRED, never silent; book_chapters.spec_codes carries the joins"
+  },
+  "decisions": [
+    "book structure: documents (kind TEXTBOOK) canonical_json = book-toc-v1 + book_chapters rows (the queryable registry/join layer)",
+    "viewer coordinates: pdf_pages (corpus-pdf/pdf.js), citations: book_pages",
+    "chapterKey grammar u<unit>:c<chapter> (generalizes to sections without migration)",
+    "embedding generation: join EMBED_REV=2 by default (provider of record unchanged) — operator ruling open",
+    "archive-host upload (raw.githubusercontent books/<specKey>/) comes with 133c — push creds required"
+  ],
+  "rights": "operator of record: 'I have rights on hosting' (trace 1a14f8bf97b983f1) — the hosting-rights ruling GREEN; the receipt records it as the operator's representation"
+}
