@@ -400,7 +400,7 @@ describe("run-013 — the truncation disclosure", () => {
       scopes,
       vectorRetriever: async () => [],
       paperQuestionResolver: async () => ({ items: [], identityParsed: false, identityLabel: null }),
-      paperPin: async (paperId) => {
+      paperPin: async (paperId: string) => {
         seenPinId = paperId;
         return null;
       },
