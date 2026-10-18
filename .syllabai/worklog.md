@@ -8253,3 +8253,18 @@ Stage Summary:
 - Intake checks: mergeable=clean; 0 reviews (no REQUEST_CHANGES); comments = vercel[bot] only (no HOLD/BLOCKING/'do not merge'); diff = 3 files (apps/hub components + e2e spec) — inside syllabai-v2, zero *.java, zero core/hub-REPO content; patch scan: 0 Neon/prod-write pattern hits
 - Post-merge CI on new main tip ee2336d: verify ✅ hub ✅ (2/2 completed success; replay absent — noted, not blocking)
 - Notes: routine intake, no escalation. PR #190 (draft PoC) present, skipped as draft — not ready for review.
+
+---
+Task ID: trace 1a14f8bf97b983f1 ("I have rights on hosting" + rag package) — T-MIG-133 Student Books, band 133a
+Agent: r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Operator green-lit hosting rights + delivered the Edexcel IGCSE Chemistry RAG package (original book + parsed) — the pilot go for the Student Books feature refined at trace 1a14e51552d51b09.
+
+Work Log:
+- INTAKE (zero repo contamination — package lives in books-intake/, the x44 law): zip 9efdd9d6 (52.65MB, 824 files) -> chemistry_book.pdf 54.3MB sha d48020e0, 383 pages (Acrobat image-conversion = scanned source); parse of record v3 = IBM Docling JSONL 1234 chunks, 17 content types (81 learning_objectives), units 1-4, BOTH page numberings per chunk, 87 LLM-polished chunks with originals preserved; v1/v2 Tesseract superseded, NOT ingested.
+- JOIN LAW established: the book prints NO spec codes; LO-box bullets are verbatim-class matches of the 4CH1 spine's official_wording (probe: 1.2/1.8/chromatogram) — normalized-text match with tier/score/lineage/method provenance per the content-maps grammar; weak/absent -> REVIEW_REQUIRED.
+- T-MIG-133 filed (task YAML: bands 133a-133e with the gate map; intake receipt run-001 with checksums + the operator's rights representation of record).
+- BAND 133a DONE-local: contracts/books.ts (+13-test suite with REAL package fixtures; validationState reused from content.ts — the barrel caught the redeclare) + documents.kind TEXTBOOK already-legal + bookChapters table (composite FK to documents identity, uq (doc,ver,chapterKey)) + migration 0002 (ADDITIVE ONLY, drizzle-kit generate) + re-baseline of record: checked-in 0000_snapshot.json content advanced to the 0002 end-state per the rebaseline pull mechanic (pre-change snapshot preserved in receipts), verify PASS 63/596/89/55/100 zero drifts, pins updated.
+- Gates first-hand: contracts 345/0; FULL packages+api 2122/0 (13 pre-existing skips); typecheck x4 exit 0. STALE-WORKSPACE incident disclosed + root-caused via a clean detached worktree (tip green; the local contracts dist predated the run-015 tip; bun install fixed — law note: bun install after tip jumps, BEFORE gates). origin/main moved twice this turn (08c6b17 -> de7f192, run-015 quiz scaffold) — branch is ON de7f192.
+
+Stage Summary:
+- Band 133a of record on t-mig-133/r0 (local; push/CI blocked, no GH PAT). Next bands: 133b ingestion pilot (needs operator prod-DB write order per the 093 recipe + Neon COW creds for the integration proof; embedding rev = join 2 by default, ruling open), 133c viewer (needs archive upload + push creds; nft bundle guard after — main pushes auto-deploy hub-v2), 133d tutor arm + citations, 133e roll. The package's per-page artifacts (383 OCR + 383 docling JSONs) ride with the PDF to the archive host at 133c, not the repo.

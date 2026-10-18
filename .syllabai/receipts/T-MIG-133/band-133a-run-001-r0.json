@@ -1,0 +1,25 @@
+{
+  "task": "T-MIG-133 band 133a run-001 — contracts + schema + migration + re-baseline (r0)",
+  "generated_utc": "2026-10-18T15:40:00Z",
+  "branch": "t-mig-133/r0 (off origin/main de7f192)",
+  "change_surface": [
+    "packages/contracts/src/books.ts — NEW: pageRange, the 17-value content-type enum (censused), bookChunkSchema (v3 JSONL grammar, passthrough), specCodeRefSchema (content-maps grammar), bookTocCanonicalSchema (book-toc-v1), bookChapterSchema (strict serving shape); validationState REUSED from content.ts (the REUSE-not-redeclare law — first draft redeclared and the barrel caught it)",
+    "packages/contracts/src/books.test.ts — NEW: 13 tests, fixtures are REAL package rows (front-matter + LO chunk verbatim-class, polished chunk, content-maps code shape)",
+    "packages/contracts/src/index.ts — barrel one-liner (the OUT-OF-FENCE precedent line)",
+    "packages/db/src/schema/schema.ts — bookChapters pgTable: composite FK to documents(document_id, doc_version) via uq_documents_canonical_id; uq (document_id, doc_version, chapter_key); ix course; validation-state + doc-version checks",
+    "packages/db/drizzle/0002_tough_jean_grey.sql — drizzle-kit generate: ADDITIVE ONLY (CREATE TABLE + FK + 2 indexes; zero core tables touched)",
+    "packages/db/drizzle/meta/0000_snapshot.json — the checked-in baseline ADVANCED to the 0002 end-state per the rebaseline pull mechanic (pre-change snapshot preserved: .syllabai/receipts/T-MIG-133/0000_snapshot.pre-133a.json)",
+    "packages/db/scripts/rebaseline.test.ts — pins updated: 62/579/87/54/98 -> 63/596/89/55/100 (+ book_chapters presence pin)"
+  ],
+  "gates": {
+    "bun_test_packages_contracts": "345 pass / 0 fail",
+    "bun_test_packages_apps_api_full": "2122 tests across 112 files, 0 fail, 13 pre-existing skips",
+    "typecheck_x4": "exit 0 (after bun install — see disclosures)",
+    "rebaseline_verify": "PASS — 63/63 tables, 596 columns, 89 indexes, 55 FKs, 100 checks, 0 drifts"
+  },
+  "disclosures": [
+    "STALE-WORKSPACE incident of record: after branching to the new tip (de7f192, 3 sibling commits ahead of the last install), api typecheck failed with missing contracts members (assignments/tutor-bank routes); a clean detached worktree at the tip proved typecheck EXIT 0 there; bun install in the working tree fixed it — the contracts dist was built at the old lockfile. Law note: after any tip jump, bun install BEFORE the gates.",
+    "the re-baseline overwrote the checked-in 0000_snapshot.json CONTENT with the 0002 end-state (the rebaseline pull mechanic of record, minus the Neon part — creds LOST); the 0000-era snapshot survives as the receipt evidence file for diffing",
+    "push/PR/CI leg CREDENTIAL-BLOCKED (no GH PAT); band lands local-of-record on t-mig-133/r0"
+  ]
+}

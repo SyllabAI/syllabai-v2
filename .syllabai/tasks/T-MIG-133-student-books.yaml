@@ -1,0 +1,33 @@
+version: 1
+task:
+  id: T-MIG-133
+  title: "Student Books — Edexcel student books as a first-class content family: chapter registry + spec-point join (book_chapters), corpus→tutor chunks/embeddings via the existing documents/document_chunks pipeline (kind TEXTBOOK), part-based PDF viewing via the corpus-pdf law (chapter page-ranges, pdf_pages coordinates), LO→spine mapping under the content-maps tier/review law"
+  owner: "r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
+  status: IN_PROGRESS # band 133a DONE-local (this branch); 133b-e pending operator gates (prod-DB write, push/CI creds, archive upload)
+  claimed_at: "2026-10-18T15:20:00Z"
+  claimed_by_order: "operator trace 1a14f8bf97b983f1: 'I have rights on hosting' + the rag package delivery (rights ruling GREEN for hosting SB PDFs; pilot = Edexcel IGCSE Chemistry), following the refined-plan consult trace 1a14e51552d51b09"
+  priority: P1
+  wave: student-books
+  deps: []
+  execution_record: >
+    BANDS: (133a) contracts + schema + migration + re-baseline — DONE-local @
+    this branch; (133b) ingestion pilot ONE book: v3 JSONL -> canonical TOC
+    (documents TEXTBOOK row) + book_chapters rows + LO->spine join engine
+    (normalized-text match vs the spine's official_wording of record; the
+    book prints NO spec codes — probe of record in the intake receipt) +
+    chunk/embed via ChunkingService into document_chunks (EMBED_REV=2 join
+    default, ruling open) — REQUIRES operator prod-DB write order (093
+    recipe) + Neon COW creds for the integration proof (creds LOST this
+    session); (133c) viewer band: corpus-pdf path grammar books/<specKey>/,
+    book shelf per course, chapter->PdfPane page-range mounts + prefetch —
+    REQUIRES archive-host upload (push creds) + the T-MIG-131 nft bundle
+    guard receipt after (main pushes auto-deploy hub-v2 — the 08c6b17 law);
+    (133d) tutor arm live + page-true book citations (run-010 citation law)
+    + regression battery; (133e) roll to remaining books + coverage receipts.
+    INTAKE of record: package zip 9efdd9d6...720 (52.65MB, tmpfiles, 2026-10-18)
+    -> chemistry_book.pdf 54,298,792 B sha d48020e0...c04 383 pages; parse
+    of record = v3 Docling JSONL 1234 chunks (17 content types, 81
+    learning_objectives, units 1-4, BOTH page numberings per chunk,
+    text_original+llm_repaired on 87 polished chunks); v1/v2 Tesseract
+    generations superseded, NOT ingested. The package lives OUTSIDE the repo
+    (books-intake/, the T-MIG-131 x44 law: book bytes NEVER in the hub tree).
