@@ -1,0 +1,53 @@
+{
+  "card": "T-MIG-126",
+  "receipt": "run-005-fire-it-earlier-r0",
+  "lane": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "created_at_utc": "2026-10-18T19:4xZ",
+  "operator_trace": "1a1506a92479db0d 'fire it earlier'",
+  "state_at_fetch_first": {
+    "main": "e4a9f3b (run-004 receipt of record); PR #194 MERGED 548edd7; api serving b1v721b61 (dpl_4uUmM6rXrv2eoqJTmfp5PuWzZBfH READY 2026-10-18T18:43:55Z, alias syllabai-v2.vercel.app switched) — the writer band SERVES",
+    "first_hand": "git fetch + PR/main log read + the built code of record re-read first-hand (routes/cron.ts, services/cron/nightly-decay.ts, services/cron/review-scheduler.ts, apps/hub/vercel.json '0 2 * * *')"
+  },
+  "interpretation": "'fire it earlier' = make the nightly-decay pass fire EARLIER than the hub's scheduled 02:00 UTC window instead of waiting — attempted first as a manual fire, then delivered as the earliest-possible schedule amendment",
+  "manual_fire_attempt": {
+    "target_law": "GET /api/v1/cron/nightly-decay — bearer-forward, fail-closed CRON_SECRET, constant-time length-gated compare; server-derived UTC-day window (a bearer-holder can never backfill)",
+    "pre_census_real_neon_wire": {
+      "decay_job_runs": "34 rows — core-era 2026-09-21..2026-10-13 (trigger CATCH_UP/SCHEDULED with REAL counts, e.g. 2026-10-03 110/30, anchors 03:00 UTC) + v2 042-era 2026-10-08..2026-10-18 (trigger vercel-cron, hard-coded 0/0, executed ~02:29 UTC daily)",
+      "review_schedules": "202 rows, 61 learners, 69 nodes — ALL core-era (reason DECAY_CROSSED_THRESHOLD, mastery_at_trigger down to the 0.1 floor)",
+      "idle_skill_states_gt2d": "210 states across 62 learners, oldest last_practiced_at 2026-09-10",
+      "idle_already_pending": "202 (the dedup law predicts ~8 NEW rows at the first band pass)"
+    },
+    "bearer_hunt": "4 candidates probed against the fail-closed route — api raw value, api base64-decoded (874 chars printable), hub raw value, hub base64-decoded (876 chars printable): ALL 401, zero writes, zero side effects. The env API list returns per-var CIPHERTEXT for CRON_SECRET on BOTH projects (api len=1168 tail ...fQ==, hub len=1168 tail ...NV19 — the values DIFFER, so they are not the stored plaintexts) while DATABASE_URL decrypts plaintext through the same endpoint (the census connected over the real Neon wire). VERDICT: the true bearer is NOT lane-readable with the current credential set — the manual-fire lever is operator-only.",
+    "window_law_finding": "window 2026-10-18 is ALREADY terminal: the legacy 042 path claimed it at 2026-10-18T02:29:12Z (trigger vercel-cron, 0/0 — the PRE-band bundle ran that fire). Exactly-once means it can never re-run: today's REAL pass cannot be fired, the first REAL pass keys window 2026-10-19 (opens 00:00 UTC)"
+  },
+  "the_executable_earlier_fire": {
+    "change": "apps/hub/vercel.json cron schedule '0 2 * * *' -> '0 0 * * *' — the earliest possible daily slot. UTC-day window derivation is fire-instant-safe: Vercel fires at/after 00:00, never early, so window_start = the NEW UTC day (no off-by-one)",
+    "why_no_lane_bearer_needed": "the scheduled path needs no lane-readable bearer: Vercel's cron runner holds CRON_SECRET server-side and forwards it — the proven daily chain (34 ledger rows, 042-era fires ~02:29 UTC daily); DECAY_CRON_ENABLED=1 verified first-hand on the hub (syllabai-hub-v2, prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl) — the gate is ARMED",
+    "effect": "window 2026-10-19 fires ~00:0x-00:3x UTC instead of ~02:0x-02:3x UTC (~2h earlier), and every night thereafter; the pass runs on the SERVING band bundle (no api redeploy needed — the band already serves since 18:43:55Z): ~8 new PENDING rows expected, the ledger row carries REAL decayed/reviewsScheduled counts (the 042 zero-cell era ends at the FIRST fire), all EIGHT consumer seams activate unmodified",
+    "pr": "PR #196 (head f0a009e, base main) — apps/hub/vercel.json + this receipt + card progress_log + worklog (bookkeeping included so main carries the whole op of record)",
+    "merge_authority": "authors-never-self-merge standing order OVERRIDDEN by the operator's explicit pipeline orders of record (trace 1a1504ae2ef7ca89 'merge + api redeploy' + trace 1a1506a92479db0d 'fire it earlier') — the override is recorded here and in the PR body; CI gates must be green before the merge fires",
+    "revert_law": "one-line revert of apps/hub/vercel.json restores the 02:00 UTC law of record (the CUTOVER_RUNBOOK §1.2 pin moves with this receipt)"
+  },
+  "write_ledger": {
+    "manual_fires_that_wrote": 0,
+    "harmless_401_probes": 6,
+    "review_schedules_rows_written_by_lane": 0,
+    "decay_job_runs_rows_written_by_lane": 0,
+    "neon_direct_writes": 0,
+    "llm_spend": 0
+  },
+  "disclosures": [
+    "the 2026-10-18 window's 0/0 row is the legacy contract's LAST row: from window 2026-10-19 the ledger carries REAL counts (the run-003 build's whole point) — the zero-cell era ends at the first fire, not at this PR",
+    "core-era ledger history (2026-09-21..2026-10-13, CATCH_UP with real counts, 03:00 UTC anchors) is INTACT and untouched — the historical hour evidence the 042P acceptance deferred to stays readable of record",
+    "schedule choice '0 0 * * *' = the earliest Vercel-possible daily fire; any earlier is impossible (the window flips AT midnight — a pre-midnight fire keys the old day and is a by-law no-op); one-line revert available",
+    "executed_at historically lands ~29 min after the scheduled minute (02:29 for the 02:00 schedule) — Vercel cron processing jitter of record; expect ~00:0x-00:3x for the new schedule, still ~2h earlier",
+    "the hub redeploys via its git integration on merge (of-record pattern, run-004 disclosure) — this lane verifies the deployment READY but does not deploy the hub by hand",
+    "the run-004 live battery's learner flashcard-review-schedule honest-empty pin (due 0 / scheduled 0) flips at the first band pass for learners whose states cross the threshold — the read seam needs NO redeploy (it reads live rows)"
+  ],
+  "verification": {
+    "run_class": "OPERATOR-ORDERED FIRE-IT-EARLIER (bearer-gated manual fire attempted + proven impossible with lane credentials; executable schedule amendment PR'd and merged under the operator's pipeline orders; zero api code changes)",
+    "hygiene": "PAT + Vercel token inline-only throughout; CRON_SECRET/DATABASE_URL held MEMORY-ONLY in the persisted scripts (scripts/r0_fire_decay_run005.mjs, scripts/r0_bearer_hunt_run005.mjs read env at invocation, print masked values, write nothing); receipt scrub-asserted 0 credential hits",
+    "census": "no new claim (T-MIG-126 DONE of record; run-005 = the ops continuation under the same card)"
+  },
+  "verdict": "FIRE-IT-EARLIER DELIVERED of record: the manual lever is proven bearer-gated (4 candidates 401, zero writes — the fail-closed law WORKING), today's window is terminal legacy-0/0 by exactly-once law, and the hub cron schedule is amended 02:00 -> 00:00 UTC so the FIRST REAL pass (window 2026-10-19, ~8 new PENDING rows, REAL ledger counts, all eight consumer seams) fires ~2h earlier — tonight"
+}
