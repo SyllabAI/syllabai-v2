@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { PASTPAPERS_REPO } from "@/lib/pastpapers-shared";
+import { BOOKS_REPO, PASTPAPERS_REPO } from "@/lib/pastpapers-shared";
 
 /**
  * T-MIG-128 — same-origin, edge-cached corpus PDF delivery.
@@ -22,30 +22,48 @@ import { PASTPAPERS_REPO } from "@/lib/pastpapers-shared";
  * it for everyone). The corpus is an append-only archive by law, so
  * immutable caching is sound: a path's bytes never change once published.
  *
- * SAFETY: this is NOT an open relay. The path must be corpus-shaped —
- * `past-papers/<specKey>/(past-papers|specimen)/<dir>/(qp|ms|er).pdf` —
- * every segment is character-validated, `..` is impossible, and only the
- * one archive host is ever contacted. Non-200 upstreams are 502 with
- * `no-store` so a raw hiccup is never cached.
+ * SAFETY: this is NOT an open relay. The path must be archive-shaped —
+ * `past-papers/<specKey>/(past-papers|specimen)/<dir>/(qp|ms|er).pdf` (the
+ * T-MIG-128 corpus) or `books/<specKey>/student-book.pdf` plus its per-page
+ * artifacts `books/<specKey>/(ocr_pages/page_NNN.txt|docling_pages/page_NNN.json)`
+ * (T-MIG-133 band 133c) — every segment is character-validated, `..` is
+ * impossible, and only the two archive hosts are ever contacted (past-papers
+ * → syllabai-pastpapers, books → syllabai-resources; dispatch by root
+ * segment). Non-200 upstreams are 502 with `no-store` so a raw hiccup is
+ * never cached.
  *
  * CSP: the viewer fetches this SAME-ORIGIN, which `connect-src 'self'`
  * already allows (next.config) — no policy change. The "Open raw PDF"
  * download link keeps the direct raw.githubusercontent.com origin.
  */
 
-/** Corpus-relative path → validated absolute path, or null. */
-function validatedCorpusPath(segments: readonly string[]): string | null {
+/** Corpus-relative path → validated absolute path, or null.
+ *  Exported for the unit gates (the validator IS the relay wall). */
+export function validatedCorpusPath(segments: readonly string[]): string | null {
   if (segments.length < 5) return null;
   const path = segments.join("/");
-  // bounded length; must be corpus-shaped and end in a known material PDF
+  // bounded length; must be archive-shaped and end in a known material file
   if (path.length > 220) return null;
-  if (!path.startsWith("past-papers/")) return null;
-  if (!/(^|\/)(qp|ms|er)\.pdf$/.test(path)) return null;
   for (const seg of segments) {
     if (!seg || seg === "." || seg === "..") return null;
     if (!/^[A-Za-z0-9._-]+$/.test(seg)) return null;
   }
-  return path;
+  // T-MIG-128: the past-papers archive — question papers, mark schemes,
+  // examiner reports only
+  if (segments[0] === "past-papers") {
+    if (!/(^|\/)(qp|ms|er)\.pdf$/.test(path)) return null;
+    return path;
+  }
+  // T-MIG-133 band 133c: the books archive — the student-book PDF and its
+  // per-page parse artifacts, nothing else (append-only, by grammar)
+  if (segments[0] === "books") {
+    // books/<board>/<qual>/<subject>/<spec>/<file...>
+    if (segments.length === 6 && segments[5] === "student-book.pdf") return path;
+    if (segments.length === 7 && segments[5] === "ocr_pages" && /^page_\d{3}\.txt$/.test(segments[6])) return path;
+    if (segments.length === 7 && segments[5] === "docling_pages" && /^page_\d{3}\.json$/.test(segments[6])) return path;
+    return null;
+  }
+  return null;
 }
 
 /** Never prerender 10k+ PDF routes; every request is a live passthrough. */
@@ -65,14 +83,22 @@ export async function GET(
   }
 
   let upstream: Response;
+  // host dispatch by root segment (T-MIG-133c): the past-papers corpus and
+  // the books archive live on different repos — the validator has already
+  // pinned the root, so the dispatch is total over the accepted grammar
+  const archiveRepo = segments[0] === "books" ? BOOKS_REPO : PASTPAPERS_REPO;
   try {
     upstream = await fetch(
-      `https://raw.githubusercontent.com/${PASTPAPERS_REPO}/main/${corpusPath}`,
+      `https://raw.githubusercontent.com/${archiveRepo}/main/${corpusPath}`,
       {
         // the CDN cache below us is the share point; per-instance fetch
         // caching would only hide upstream hiccups behind stale locals
         cache: "no-store",
-        headers: { "user-agent": "syllabai-hub-corpus-proxy (T-MIG-128)" },
+        headers: {
+          "user-agent": archiveRepo === BOOKS_REPO
+            ? "syllabai-hub-corpus-proxy (T-MIG-133c books)"
+            : "syllabai-hub-corpus-proxy (T-MIG-128)",
+        },
       },
     );
   } catch {
@@ -90,7 +116,17 @@ export async function GET(
   }
 
   const headers = new Headers();
-  headers.set("content-type", "application/pdf");
+  // content-type by the validator-pinned grammar: PDFs for the panes, the
+  // per-page parse artifacts as their natural types (133d's citations and
+  // the 133b receipts consume them; the pane itself only ever asks .pdf)
+  headers.set(
+    "content-type",
+    corpusPath.endsWith(".pdf")
+      ? "application/pdf"
+      : corpusPath.endsWith(".json")
+        ? "application/json"
+        : "text/plain; charset=utf-8",
+  );
   // pass content-length through so pdf.js onProgress stays honest (the
   // loading state shows real download progress against the true total)
   const len = upstream.headers.get("content-length");

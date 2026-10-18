@@ -73,6 +73,20 @@ export interface CorpusPaperEntry {
 // ── pure helpers ───────────────────────────────────────────────────────────
 export const PASTPAPERS_REPO = "SyllabAI/syllabai-pastpapers";
 
+/**
+ * T-MIG-133 band 133c — the Student Books archive lives on the
+ * syllabai-resources repo under the corpus-pdf grammar books/<specKey>/
+ * (band-133c archive-upload receipt: student-book.pdf + ocr_pages/ +
+ * docling_pages/). Same append-only archive law as the past-papers corpus;
+ * a different repo, so the /api/corpus-pdf proxy dispatches by root segment.
+ */
+export const BOOKS_REPO = "SyllabAI/syllabai-resources";
+
+/** Public raw URL for any books-archive-relative path. */
+export function booksRawUrl(booksPath: string): string {
+  return `https://raw.githubusercontent.com/${BOOKS_REPO}/main/${booksPath}`;
+}
+
 /** Public raw URL for any corpus-relative path. */
 export function corpusRawUrl(corpusPath: string): string {
   return `https://raw.githubusercontent.com/${PASTPAPERS_REPO}/main/${corpusPath}`;

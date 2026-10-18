@@ -59,6 +59,8 @@ import { buildClassroomRouters } from "./routes/classroom";
 import { buildTeacherAssignmentsRouters } from "./routes/assignments";
 import { buildResearchRouters } from "./routes/research";
 import { buildIngestionRouters } from "./routes/ingestion";
+import { buildBooksApp } from "./services/books";
+import { createBooksRouter } from "./routes/books";
 import { buildLlmAdminRouters } from "./routes/llmadmin";
 import { buildLearnerMeRouters } from "./routes/learnerme";
 import { buildLearnerKgRouters } from "./routes/learnerkg";
@@ -75,6 +77,7 @@ import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
 
 const identity = buildIdentityApp();
 const content = buildContentApp();
+const books = buildBooksApp();
 const curriculum = buildCurriculumRouters();
 const assessment = buildAssessmentRouters();
 const learner = buildLearnerRouters();
@@ -192,6 +195,16 @@ app.route("/api/v1/auth", identity.bootstrapRoute);
 app.route("/api/v1/teacher/content", content.teacherRoute);
 app.route("/api/v1/content/documents", content.readerRoute);
 app.route("/api/v1/content/question-assets", content.assetRoute);
+
+// Student Books read surface (T-MIG-133 band 133c). PUBLIC-READ corpus
+// family (student archive posture — read-only, zero PII), gated by the
+// T-C20 validation law INSTEAD of auth: only VALIDATED books serve and
+// non-validated books are indistinguishable from unknown ones (404, no
+// state leak). The operator validation flip is the serving lever. The
+// same out-of-fence disclosure as the T-MIG-020 mounts above applies to
+// this one mount line (band 133c scope: the books module files; this file
+// carries the mount only).
+app.route("/api/v1/content/books", createBooksRouter(books.app));
 
 // Curriculum routers (T-MIG-021 — Wave 2). Path parity with the frozen
 // core: CurriculumController under /api/v1/curriculum (authenticated),
