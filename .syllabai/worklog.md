@@ -8161,3 +8161,20 @@ Stage Summary:
 - VERDICT GREEN: the board is fully converged — every card DONE, both carriers READY + serving, census gate GREEN, CI green at the tip. The only open thread is PR #190, held DRAFT/PROPOSED by its author with green CI: disposition REVIEWED-ACKNOWLEDGED / DO-NOT-MERGE (promotion operator-gated per its own gates doc).
 - All remaining levers are operator-gated: PAT rotation, prj_D7vf console cleanup, PR #190 promotion. Lane IDLE.
 - REBASE DISCLOSURE: the first push round was rejected non-FF — the receipt commit had landed on the STALE base d6f2cc3 (the mid-sweep remote move to 426f3f1 was fetched but the local branch was not ff-synced before committing — lane process defect disclosed); rebase onto origin/main, worklog tail conflict UNION-merged per the R35/R36 precedent (origin tail r1c+r4b verbatim, this entry re-appended on top), rebase --continue clean.
+
+---
+Task ID: 52
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, trace 1a14e319bdb87ab5)
+Task: Operator Vercel credential handoff answering the Task-51 census flag — verify the hub deploy-pathway attribution (GET-only). Receipt W7-CUTOVER/deploy-pathway-attribution-2026-10-18-r1c.json.
+
+Work Log:
+- Credential law: handed token used inline-only (single combined curl invocations, one session shell var), never printed/persisted; fp d254bbfaac004354 == the standing Task-25 PAT of record (syllabai-1403, team SyllabAI OWNER) — SAME credential re-handed, NOT a rotation; UNSET immediately post-act. Rotation = OPEN of record (r7a flagged the same hour; two lanes now).
+- FINDING (flag resolved): syllabai-hub-v2 prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl link.type=github -> SyllabAI/syllabai-v2 — GIT-LINKED; every push to main auto-deploys production. Chain of record: b6b77ef -> dpl_6kVCAmsm ERROR (the CI-caught Turbopack CitationHover failure; alias held, prod safe), 1adb7e7 -> dpl_3h5YBr1J READY (T1 live — the Task-51 no-receipt observation explained), then d6f2cc3/3cdbfdd/426f3f1/63604e9 auto-bakes all READY, dpl_Go7Effpj current.
+- CONSEQUENCE LAW filed: 'hub redeploy = operator lever' is STALE; tip==served from now on (alias switches only on READY — demonstrated by the b6b77ef ERROR never serving); receipt pushes bake prod hub deploys (churn-only, content-identical). Runbook-doc edit band available on operator order.
+- API of record: prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ link=null (CLI-only posture unchanged); latest prod = dpl_Afp4qh7Pyyztu2xwggB5VrZJJaiU READY 10-16T21:04Z, githubCommitSha=NONE (the run-011 be5fa62 deploy) — CURRENT.
+- Team census: 6 projects; NO legacy syllabai-hub, NO prj_D7vf zombie (out-of-token account — the of-record split-brain; syllabai-hub.vercel.app DEPLOYMENT_NOT_FOUND and the zombie 500 stay operator-plane).
+- Midflight fleet (read-only): r4b 426f3f1 §4 watch-close GREEN (11/11 cron rows, 34/34 windows/0 duplicates, core CATCH_UP ceased post-10-13); r7a 63604e9 sweep 15/15 + PR #190 open DRAFT PoC (head 32af4ce) dispositioned REVIEWED-ACKNOWLEDGED / DO-NOT-MERGE (promotion operator-gated) — re-census confirms #190 is the only non-closed PR.
+- Write ledger: GET-only on Vercel + GitHub; zero writes/deploys/env/DB/LLM; zero credentials at rest.
+
+Stage Summary:
+- Deploy pathway of record: hub = git-linked auto-deploy (push==prod), API = CLI 093-recipe; the Task-51 flag is closed. Operator levers remaining: PAT rotation (now double-flagged), prj_D7vf console cleanup, #190 promotion ruling, optional runbook-doc edit. Next repo receipt = Task-53; next workspace = Task-40.

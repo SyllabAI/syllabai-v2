@@ -1,0 +1,21 @@
+{
+  "receipt": "W7-CUTOVER/deploy-pathway-attribution-2026-10-18-r1c",
+  "band": "the deploy-pathway attribution act — operator trace 1a14e319bdb87ab5 (Vercel credential handoff answering the Task-51 census flag 'T1 live with no deploy receipt')",
+  "lane": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)",
+  "created_at_utc": "2026-10-18T08:05:00Z",
+  "credential_law": "the handed Vercel token used INLINE-ONLY in single combined curl invocations, held in one session shell variable, NEVER printed, NEVER persisted to disk or receipt, UNSET immediately after the final read; identity of record = fingerprint d254bbfaac004354 == the standing Task-25 PAT of record (user syllabai-1403, team SyllabAI team_ULL54qkhzKBmnKrpO6BD4mYX role OWNER) — i.e. the SAME unrotated credential re-handed, NOT a fresh rotation; rotation remains OPEN of record (r7a independently flagged 'PAT fingerprint unrotated again' at 63604e9 the same hour — two lanes now flag it)",
+  "verdict": "TASK-51 FLAG RESOLVED of record: the standing 'hub redeploy = operator lever' law is STALE — hub-v2 is GIT-LINKED and every push to main auto-deploys production",
+  "evidence_of_record": {
+    "project_link": "GET /v9/projects (team scope): syllabai-hub-v2 prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl link.type=github link.repo=SyllabAI/syllabai-v2 — FIRST-HAND; syllabai-v2 prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ link.type=null (CLI-only, the 093-recipe posture of record unchanged); team hosts exactly 6 projects — NO legacy syllabai-hub project, NO prj_D7vf zombie (out-of-token account, consistent with the of-record split-brain finding)",
+    "auto_deploy_chain": "hub-v2 production deployments ALL creator=syllabai-1403 via githubCommitRef=main: b6b77ef 10-17T17:54 -> dpl_6kVCAmsm ERROR (the same Turbopack CitationHover export failure CI caught — alias did NOT switch, prod held previous READY); 1adb7e7 18:01 -> dpl_3h5YBr1J READY (run-012 T1 went LIVE here, explaining the Task-51 no-receipt observation); d6f2cc3 18:04 -> dpl_H6bGAXz READY; 3cdbfdd 10-18T07:36 -> dpl_Db6eQ7TX READY; 426f3f1 07:38 -> dpl_4TqsuzXK READY; 63604e9 07:48 -> dpl_Go7Effpj READY (current carrier)",
+    "api_of_record": "latest production deployment = dpl_Afp4qh7Pyyztu2xwggB5VrZJJaiU READY 10-16T21:04Z creator=syllabai-1403 githubCommitSha=NONE — the run-011 CLI deploy at be5fa62 content; NO auto-deploys (no git link) — API of record CURRENT and CLI-governed",
+    "safety_property": "alias switches only on READY (demonstrated live: the b6b77ef ERROR build never served; prod held 1adb7e7's predecessor until the fix baked) — the auto-deploy posture is fail-safe for .syllabai-only receipt churn",
+    "consequence_law": "EVERY push to main — including .syllabai-only receipt/worklog commits — bakes a new hub production deployment (~1 per receipt push, several per day under R0-AUTO cadence); cost is churn-only (content-identical builds) but the desk should treat 'hub deployed at <sha>' as EQUALITY with 'tip is <sha>' from now on; runbook/card supersession filed with this receipt (a runbook-doc edit band is available on operator order)"
+  },
+  "midflight_fleet_state_read": {
+    "r4b": "426f3f1 T-MIG-042 run-005 §4 watch-close filed GREEN (window ended 2026-10-11, found unfiled, closed first-hand: 11/11 vercel-cron rows 10-08..10-18, 34 rows/34 windows/0 duplicates exactly-once across core+takeover eras; core CATCH_UP ceased after 10-13T03:30Z — corroborates the Render disable)",
+    "r7a": "63604e9 proceed-sweep 15/15 GREEN + PR #190 desk-reviewed -> REVIEWED-ACKNOWLEDGED / DO-NOT-MERGE (author-held DRAFT/PROPOSED PoC 'provenance-gated verification evidence labels' head 32af4ce, promotion operator-gated); re-census this run: #190 open draft=True — the only non-closed PR; #187/#188/#189 merged/closed of record"
+  },
+  "write_ledger": "ZERO writes on every plane: Vercel contact = GET-only (user/teams/projects/deployments), GitHub contact = GET-only, no deploys, no env acts, no DB, no LLM spend; token unset post-act",
+  "boundaries": "no project settings touched, no redeploy clicks, no alias moves, no zombie/legacy acts (operator-gated), no force"
+}
