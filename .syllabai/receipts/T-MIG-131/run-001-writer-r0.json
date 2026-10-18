@@ -1,0 +1,29 @@
+{
+  "task": "T-MIG-131",
+  "run": "run-001-writer-r0",
+  "operator_trace": "1a14fdd8f55cd3fd",
+  "operator_order": "struggle-inference writer band",
+  "when": "2026-10-18T16:52:00Z",
+  "purpose": "the dormant struggle-inferences WRITER band named of record (T-MIG-124 substrate census; the T-MIG-126 sibling posture gated the writer on an operator order) — the frozen StruggleInferenceService diagnosis engine (rules-v0.2) ported line-against-line, activating the tutor policy's struggle-inference precedence on the first post-deploy marked attempt",
+  "frozen_sources": {
+    "engine": "syllabai-core @ 6cad6ef diagnostic/StruggleInferenceService.java :1-117 (clone first-hand; the archived repo byte-serves the frozen ref — head SHA matches the archive-confirmation receipt)",
+    "entity": "diagnostic/StruggleInference.java :18-139 (row shape, supersede null-guard, teacher-override columns stay null)",
+    "event": "shared/events/AssessmentEvidenceRecordedEvent.java (selfDoubtFlag Paper B §3.5) + KnowledgeGraphService.prerequisiteChain :119-123 + PrerequisiteView (id/code/type/title/depth)",
+    "listener_order": "@Order(10) LearnerModelService applies the updates first; @Order(100) this engine reads the POST-update snapshot ('diagnosis never trails the evidence by one attempt', :25-28)"
+  },
+  "implementation": {
+    "module": "apps/api/src/services/learner-model/struggle-inference.ts (NEW) — inferStrugglesOnAssessmentEvidence: one post-update states read per event (skillStatesByRecency reuse = the frozen findByLearnerIdOrderByLastPracticedAtDesc port; first-seen map = the frozen toMap (a,b)->a law), then per tested TOPIC (primary first + secondary deduped, EvidencePublisher.topicNodeIds :111-120 parity; spec points NEVER fire — the frozen listener iterates topicNodeIds only): rule 1 PREREQUISITE_GAP 1a_weak_prerequisite_mastery p=clamp(0.55+(0.50-weakest),0.55,0.95) over the transitive REQUIRES_PREREQUISITE closure with an UNMEASURED prereq = no evidence never a crash (:71-72); rule 2 EXAM_LITERACY 3b_procedural_fluency p=clamp(0.50+gap,0.50,0.95) at gap>=0.15; rule 3 METACOGNITIVE 5a_self_efficacy fixed p=0.80 on the attempt's self-doubt flag with attempt_id evidence; save = supersede prior ACTIVE (expires_at > generated_at AND superseded_at IS NULL, guarded first-writer-kept UPDATE) + insert (jsonb evidence per the repo JSON.stringify::jsonb convention, model_version rules-v0.2, expires generated+7d EXACT); the per-module prerequisite closure read carries code (the ADR-032 seam doctrine precedent — the tutor kg-retriever's batched chains drop code; consolidation stays the queued R0 intake ruling)",
+    "wiring": "apps/api/src/services/assessment/submit.ts — the publishMcq observable core extends with selfDoubtFlag (the frozen event carried it; already bound from the request contract and the attempts row) and the assembly passes request.selfDoubtFlag; apps/api/src/routes/assessment/index.ts createLearnerModelEvidencePublisher.publishMcq — AFTER updateOnAssessmentEvidence (the @Order(10) analog) the engine awaits (the @Order(100) analog, sequential = post-update snapshot), same fail-loud class as the model phases",
+    "not_ported": "the StruggleInferredEvent downstream — the frozen event's ONLY consumer is DiagnosisTelemetryService (research §18), the T-MIG-061 disclosed dormant posture; teacher_override writes (T-029) and the publishGraded lanes (teachermarking/smartmark, still their disclosed dormant posture) are separate bands — the writer rides them automatically when their live learner-model wiring lands (the activation-seam law)"
+  },
+  "verification": {
+    "typecheck": "bun run typecheck (contracts/shared/db/api) exit 0 x4",
+    "suite": "bun test apps/api packages = 2111 pass / 0 fail / 13 skip (EXACT delta +14 vs the 2097 of record — the new test/learner/struggle-inference.test.ts pins: the rule matrix incl. the frozen double 0.55+(0.5-0.35)=0.7000000000000001 EXACT, clamp ceilings 0.95, the 0.15 fluency boundary firing at 0.65, the 0.50 strict-< non-firing, supersede + no-prior, expiry +7d EXACT, event-instant generated_at, topics dedup, zero-topic zero-read, the per-module chain read, and the publisher order pin — the struggle states read rides AFTER the model phases in the FULL live seam)",
+    "hub_lane": "bun test apps/hub 71/0 EXACT; eslint exit 0",
+    "gates": "golden/runner.ts --selftest OK; bun test golden/retrieval-eval 22/0 + selftest 19/19; preflight_zero_core_census.py exit 0 (LIVE=0 preserved — zero new core touches)",
+    "precision_disclosure": "JS Date = millisecond precision (generated_at 2026-10-05T15:48:32.549788Z -> .549Z pinned honestly; the frozen core kept Instant nanos — the same convention model-update passes event.occurredAt through)"
+  },
+  "activation": "on the next serialized operator api redeploy: every marked MCQ attempt fires the engine post-model-update; the tutor policy's struggle-inference precedence (PREREQUISITE_REVIEW / PROCEDURAL_FLUENCY / METACOGNITIVE_CHECK plans, the T-026 read of record) goes LIVE unmodified — the T-MIG-126 activation-seam law",
+  "write_ledger": "zero DB writes, zero prod mutations, zero LLM spend (the engine is deterministic rules, zero model calls); 1 branch + PR; PAT inline-URL usage only, never persisted",
+  "scrub_assert": "no credential, token, URI, or Neon secret appears in this receipt, the commit, or the PR body"
+}
