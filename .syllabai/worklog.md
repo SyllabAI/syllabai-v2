@@ -8481,3 +8481,21 @@ Work Log:
 
 Stage Summary:
 - THE PILOT BOOK IS VALIDATED OF RECORD: the first Student Book is now the T-C20-served content family pending only the api redeploy (+ embeddings later); band 133b's open gate DISCHARGED; next operator levers: api redeploy, 133d, 133e
+
+---
+Task ID: trace 1a15122b2549a845 (T-MIG-133 band 133c api redeploy — the last live-visibility lever)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: operator "api redeploy and also check current state" — fire the operator-gated api redeploy lever + the state census
+
+Work Log:
+- Fetch-first: clone 112 behind (63fe6ef -> 258f905 ff-synced, clean); CI 2/2 SUCCESS at 258f905 first-hand (verify + hub); /home/z/.secrets wiped AGAIN (recurring class) — tokens re-staged 0600 from the project-local Oct-4 stash, VERCEL_PAT fingerprint law VERIFIED d254bbfaac004354; GH 200.
+- Incumbent census: api carrier dpl_4uUmM6rXrv2eoqJTmfp5PuWzZBfH (T-MIG-126 run-004 @ f8cb963, 18:43:55Z) READY + aliased — predates the books route (merged tonight 722e2f6/08b80ea); hub-v2 auto-bake already at tip (dpl_H8yqQvU2Ap4bRYKXEuoZ @ 258f905, 22:18Z READY); 3 parallel-lane CLI deploys today disclosed (the run-004 disclosure[2] class); race-guard CLEAR (240 min).
+- BUILD of record: faithful re-run of .syllabai/receipts/T-MIG-093/tools/deploy_bundle_build.py (paths adapted only; shim v2 patterns byte-identical + asserted at this tip) — 338 modules / 3,199,307 bytes (prior 335 / 3,190,014; delta = the 133c books wire); all 6 concept-asset SHAs byte-identical to the pins; shims worktree-only, git-restored clean. DISCLOSED: first build attempt failed on the stale-workspace class (JACKSON_BINDING no-matching-export; the 831a4ae law — bun install after tip jumps BEFORE gates); bun install 930 pkgs, rebuild clean; zero repo contact during the failure.
+- LOCAL BOOT GATE 4/4 write-free (real Node http on the bundle; of-record DATABASE_URL via the env API decrypt, never printed; LOCAL-ONLY 44-byte JWT — prod secret not lane-readable): health UP, login-malformed 400 live-parity, cron fail-closed 401 STRICTER local branch (042), unknown-401 filter chain.
+- DEPLOY: race-guard -> vercel 62.7.0 --prod from the 2-file stage -> dpl_5VapkZhh9nSskGfGVdF9NPtpGULc READY 22:44Z; ALIAS SWITCHED proven (v13 get?url= syllabai-v2.vercel.app aliasAssigned=true + createdAt 1792363427568 byte-match vs the deployment detail; the endpoint omits the uid field in this revision — identity by createdAt + alias ownership).
+- LIVE BATTERY 8/8 (the run-004 6 legs byte-consistent — incl. the bank-mount discriminator a9ea76ff 'Rates of reaction' 4CH1-S3-b — PLUS the 2 NEW books legs): (7) GET /api/v1/content/books no-courseId -> 400 validation_failed 'missing required parameter: courseId' (route-existence law; the incumbent 401/404s it); (8) GET /api/v1/content/books/e6c0db50-...-e4d49285cd6d/chapters UNAUTH -> 200 EXACTLY 29 chapters with the serving shape (T-C20 DISCRIMINATOR: 200 iff route live AND book VALIDATED — the operator flip of record trace 1a15107e52735b61 now SERVES).
+- Receipt: .syllabai/receipts/T-MIG-133/band-133c-api-redeploy-run-004-r0.json. Write ledger: 1 probe learner (register 201), zero sessions/review rows/cron fires, zero LLM, zero Neon writes, boot gate zero-write. Bookkeeping push .syllabai-only (one no-code-delta hub auto-bake, mechanism of record).
+- STATE CENSUS delivered in-band: migration charter closed (126/126, LIVE=0); board = the operator feature wave (133d/133e gated, PR #190 DRAFT); Vercel storage ~6.2GB post-retirement (prune-v2 ~2GB lever staged); EMBEDDINGS precondition changed — SYLLABAI_EMBEDDING_GEMINI_API_KEY now PRESENT on the api project envs (census first-hand); PAT rotation still advised.
+
+Stage Summary:
+- THE API REDEPLOY LEVER IS FIRED OF RECORD: dpl_5VapkZhh9nSskGfGVdF9NPtpGULc serves main 258f905; the Student Books read routes LIVE end-to-end (archive syllabai-resources -> api shelf/chapters 29-chapter pilot -> hub viewer); band 133c FULLY LIVE (archive + viewer + api). Next operator levers: 133d (tutor arm + page-true citations), 133e (roll to remaining books), embeddings backfill (Gemini key now present on the env), PAT rotation.

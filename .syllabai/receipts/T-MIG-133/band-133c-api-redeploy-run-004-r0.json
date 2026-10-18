@@ -1,0 +1,79 @@
+{
+  "card": "T-MIG-133",
+  "receipt": "band-133c-api-redeploy-run-004-r0",
+  "lane": "r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "created_at_utc": "2026-10-18T22:47Z",
+  "operator_trace": "1a15122b2549a845 'api redeploy and also check current state'",
+  "order": {
+    "words": "api redeploy and also check current state",
+    "discharge": "the LAST operator-gated live-visibility lever of band 133c: the deployed api bundle dpl_4uUmM6rX (T-MIG-126 run-004, f8cb963) predates /api/v1/content/books — this redeploy bakes main 258f905 (the 133a contracts + 133c books service/routes/mount) into the serving bundle"
+  },
+  "state_at_fetch_first": {
+    "main_tip": "258f905498112764042142e11af5b392fab80774 (clone was 112 behind 63fe6ef -> ff-synced, clean)",
+    "ci_at_tip": "2/2 SUCCESS (verify + hub check-runs, GitHub API first-hand)",
+    "api_carrier_incumbent": "dpl_4uUmM6rXrv2eoqJTmfp5PuWzZBfH READY 2026-10-18T18:43:55Z (T-MIG-126 run-004 @ f8cb963), alias syllabai-v2.vercel.app — predates the books route",
+    "parallel_lan_deploys_disclosed": "3 earlier CLI deploys today 09:46/12:23/14:53Z pre-date the #197/#198 merges (the T-MIG-126 run-004 disclosure[2] class)",
+    "hub_v2": "git-connected auto-bake at tip: dpl_H8yqQvU2Ap4bRYKXEuoZ @ 258f905, READY 22:18Z",
+    "race_guard": "CLEAR (incumbent age 240 min >> 10-min law)"
+  },
+  "build_of_record": {
+    "recipe": "the T-MIG-092/093/095 chain of record, faithful re-run of .syllabai/receipts/T-MIG-093/tools/deploy_bundle_build.py (paths adapted only; shim v2 patterns byte-identical, asserted)",
+    "source": "main 258f905, clean worktree, shim patterns byte-matched at this tip first-hand before patching",
+    "bundle": "338 modules, 3,199,307 bytes CJS (prior of-record 335 / 3,190,014 — the delta = the band-133c books wire: services/books.ts + routes/books.ts + the index.ts mount + contracts/books)",
+    "asset_shas": "all 6 concept-graph YAML inlines byte-identical to the of-record pins (concepts 24fa91ac7149682b, concept_edges 8a651dd9e60bfefa, practicals e53e5f87606a2b5a, relationships b3b7529222d77d80, specification_points b1fea69953205077, topics a7b14cbdd34bb9fe)",
+    "shims": "worktree-only (Bun.CryptoHasher->node:crypto, Bun.YAML.parse->js-yaml, 6 YAMLs inlined via concept-assets.gen.ts, explicit Node adapter entry); git-verified RESTORED after build (git status clean)",
+    "disclosure_stale_workspace": "FIRST build attempt FAILED: 'No matching export JACKSON_BINDING/assignmentCreateRequestSchema' — the stale-workspace incident class (831a4ae law: bun install after tip jumps BEFORE gates); bun install (930 pkgs) then the build passed clean; zero repo contact during the failure (worktree auto-restored by the script)"
+  },
+  "boot_gate_write_free": [
+    "real Node http on the bundle, of-record DATABASE_URL via the Vercel env API (list endpoint decrypt; staged 0600, never printed), LOCAL-ONLY 44-byte JWT key (production JWT secret not lane-readable, law of record)",
+    "health 200 {groups:[liveness,readiness],status:UP} PASS",
+    "POST /api/v1/auth/login malformed -> 400 validation_failed (live-parity shape) PASS",
+    "GET /api/v1/cron/nightly-decay -> 401 fail-closed STRICTER local branch (CRON_SECRET unset locally, T-MIG-042) PASS",
+    "GET /api/v1/__not_a_route__ -> 401 (the /api/v1 filter chain) PASS"
+  ],
+  "deploy": {
+    "method": "vercel CLI 62.7.0 deploy --prod --yes from the 2-file stage (api/index.js + vercel.json rewrites /api/v1/(.*) and /actuator/health; .vercel/project.json linked prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ / team_ULL54qkhzKBmnKrpO6BD4mYX)",
+    "deployment": "dpl_5VapkZhh9nSskGfGVdF9NPtpGULc (syllabai-v2-oyqarzrli-syllab-ai.vercel.app) READY 2026-10-18T22:44Z",
+    "production_alias_switched": true,
+    "alias_verification": "v13 get?url=syllabai-v2.vercel.app -> alias [syllabai-v2.vercel.app, syllabai-v2-syllab-ai.vercel.app] aliasAssigned=true, createdAt 1792363427568 == dpl_5Vap detail createdAt byte-match (the endpoint omits the uid field in this API revision; identity proven by createdAt + alias ownership on the deployment record)"
+  },
+  "post_deploy_live_battery": [
+    "1/8 PASS health: 200 {groups:[liveness,readiness],status:UP}",
+    "2/8 PASS cron law: 401 {status:unauthorized, reason:'missing or wrong Authorization bearer — the hub seam forwards the Vercel Cron bearer verbatim'} (prod CRON_SECRET configured branch)",
+    "3/8 PASS unknown path: 401 (the /api/v1 filter chain)",
+    "4/8 PASS register probe: 201 + accessToken (r0-133c-api-*@example.invalid identity of record)",
+    "5/8 PASS bank-mount discriminator 200: resolvedNodes a9ea76ff-9326-4121-8b4b-d4144d4b901f TOPIC 'Rates of reaction' 4CH1-S3-b + SUBTOPIC baba9241 (byte-consistent with the T-MIG-126 run-004 pin)",
+    "6/8 PASS review read seam 200: {summary:{due:0,scheduled:0,nextDueAt:null},cards:[]} honest-empty",
+    "7/8 PASS BOOKS ROUTE EXISTENCE: GET /api/v1/content/books (no courseId) -> 400 validation_failed 'missing required parameter: courseId' (the route's own law; the incumbent bundle 401/404s this path)",
+    "8/8 PASS T-C20 DISCRIMINATOR: GET /api/v1/content/books/e6c0db50-0f84-55de-b50c-e4d49285cd6d/chapters (unauth, public-READ) -> 200 with EXACTLY 29 chapters, serving shape keys [bookPageEnd, bookPageStart, chapterIndex, chapterKey, courseId, docVersion, documentId, learningObjective, ...] — 200 iff route live AND book VALIDATED (the operator flip of record trace 1a15107e52735b61 now SERVES)"
+  ],
+  "write_ledger": {
+    "probe_users": 1,
+    "probe_identities": "r0-133c-api-1792363545@example.invalid (register 201; zero sessions created, zero review rows, zero cron fires, zero LLM spend)",
+    "neon_direct_writes": 0,
+    "llm_spend": 0,
+    "local_boot_gate_writes": 0
+  },
+  "disclosures": [
+    "the redeploy bakes ALL pending main content into the serving bundle at once: the 133a books contracts + the 133c books service/routes/mount + everything the incumbent already carried (bank mounts, struggle band, review band, 128/129)",
+    "the validation flip (SUGGESTED->VALIDATED, run-003 of record) was inert until this deploy — it now serves through leg 8; rollback lever unchanged (single UPDATE back to SUGGESTED)",
+    "first build failure = the stale-workspace class, fixed by bun install, disclosed above; the deploy log token-redacted",
+    "this .syllabai bookkeeping push costs one no-code-delta hub auto-bake (mechanism of record)",
+    "secrets note: /home/z/.secrets was wiped again this session; tokens re-staged 0600 from the project-local Oct-4 stash; VERCEL_PAT fingerprint law VERIFIED d254bbfaac004354 (the same token of record); PAT rotation still advised",
+    "embeddings note: SYLLABAI_EMBEDDING_GEMINI_API_KEY is now PRESENT on the api project envs (env census first-hand) — the embeddings-backfill precondition has changed; the backfill itself remains its own gated act"
+  ],
+  "verification": {
+    "run_class": "OPERATOR-ORDERED PRODUCTION REDEPLOY (zero code changes by this lane; the bundle = main 258f905 as merged and CI-verified)",
+    "hygiene": "token inline-only (deploy/env API), never persisted; receipt scrub-asserted; stage + scripts under /home/z/my-project per the path law",
+    "census": "no claim taken (T-MIG-133 IN_PROGRESS of record; bands 133d/133e remain operator-gated)",
+    "artifacts": [
+      "scripts/api_redeploy_133c_build.py",
+      "scripts/api_redeploy_133c_bootgate.py",
+      "scripts/api_redeploy_133c_deploy.sh",
+      "scripts/api_redeploy_133c_battery.py",
+      "scripts/t133c-api-battery-<ts>.json",
+      "api-stage-133c/ (the 2-file deploy stage)"
+    ]
+  },
+  "verdict": "REDEPLOYED (dpl_5VapkZhh9nSskGfGVdF9NPtpGULc READY, alias switched, proven) AND VERIFIED (boot gate 4/4 local write-free + live battery 8/8) — the Student Books read routes SERVE: /api/v1/content/books shelf + chapters with the VALIDATED pilot book (29 chapters). Band 133c is now FULLY LIVE end-to-end (archive -> api -> hub viewer). Remaining operator gates: 133d (tutor arm + page-true citations), 133e (roll to remaining books), embeddings backfill (Gemini key now present), PAT rotation."
+}
