@@ -3,9 +3,9 @@ task:
   id: T-MIG-133
   title: "Student Books — Edexcel student books as a first-class content family: chapter registry + spec-point join (book_chapters), corpus→tutor chunks/embeddings via the existing documents/document_chunks pipeline (kind TEXTBOOK), part-based PDF viewing via the corpus-pdf law (chapter page-ranges, pdf_pages coordinates), LO→spine mapping under the content-maps tier/review law"
   owner: "r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
-  status: IN_PROGRESS # band 133a DONE-local (this branch); 133b-e pending operator gates (prod-DB write, push/CI creds, archive upload)
+  status: IN_PROGRESS # bands 133a + 133b DONE of record (133b: COW proof run-002 + PROD apply run-001, receipts; book SUGGESTED pending the operator validation flip; embeddings NULL pending the Gemini key); 133c-e pending operator gates (archive upload, tutor band, roll)
   claimed_at: "2026-10-18T15:20:00Z"
-  claimed_by_order: "operator trace 1a14f8bf97b983f1: 'I have rights on hosting' + the rag package delivery (rights ruling GREEN for hosting SB PDFs; pilot = Edexcel IGCSE Chemistry), following the refined-plan consult trace 1a14e51552d51b09"
+  claimed_by_order: "operator trace 1a14f8bf97b983f1: 'I have rights on hosting' + the rag package delivery (rights ruling GREEN for hosting SB PDFs; pilot = Edexcel IGCSE Chemistry), following the refined-plan consult trace 1a14e51552d51b09; band 133b order = trace 1a14fe8dc6a7bb4d 'Go 133b' + the Neon PAT + GitHub PAT handoff (creds staged 0600)"
   priority: P1
   wave: student-books
   deps: []

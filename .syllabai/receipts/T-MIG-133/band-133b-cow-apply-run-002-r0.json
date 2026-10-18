@@ -1,0 +1,2121 @@
+{
+ "task": "T-MIG-133 band 133b run-002 \u2014 COW integration proof (r0)",
+ "generated_utc": "2026-10-19T18:10:00Z",
+ "operator_order": "trace 1a14fe8dc6a7bb4d 'Go 133b' + the Neon PAT + GitHub PAT handoff",
+ "branch": "t-mig-133/r0 @ 925a64f (rebased onto origin/main 2cfa42f)",
+ "cow": {
+  "recipe": "the of-record R-046-B/C flow (create w/ in-line read_write endpoint -> ready -> ops settle -> branch-local roles)",
+  "branch": "br-floral-star-a5zw0axo (t-mig-133b-proof-173612, parent br-muddy-bar-a5huwldd = production)",
+  "dropped": "DROPPED + 404-VERIFIED (zero residue, T-MIG-035 discipline)",
+  "roles": "t133b_apply (pg_write_all_data, data leg) + branch-local neondb_owner reset (DDL leg only; production role untouched)"
+ },
+ "gates": {
+  "before": "checksum-absent PASS; book_chapters ABSENT->DDL applied (4 statements, additive); subjects CHM present",
+  "tx": "ONE transaction (createSql.transaction): frozen ingestCanonicalDocument + 29 book_chapters + 646-chunk spec_codes overlay",
+  "after": {
+   "chunks": 823,
+   "chunksWithCodes_arrayTyped": 646,
+   "elementIds_arrayTyped": 823,
+   "embedRev2": 823,
+   "bookChapters": 29,
+   "chapterJoinRefs": 145,
+   "ftsSanity_electrolysis": 29,
+   "kind": "TEXTBOOK",
+   "docState": "SUGGESTED",
+   "declaredChunkCount": 823,
+   "sampleChapter": {
+    "key": "u1:c1",
+    "title": "States of matter",
+    "pdfPages": [
+     12,
+     22
+    ],
+    "codes": 5,
+    "firstCode": "1.1",
+    "firstMethod": "verbatim"
+   },
+   "sampleHeader": "Chemistry CHM | Edexcel IGCSE Student Book | Qu1:c1 | p.12 ..."
+  }
+ },
+ "ingest": {
+  "task": "T-MIG-133 band 133b run-001 \u2014 Student Books ingestion pilot (r0)",
+  "mode": "dry",
+  "book": {
+   "documentId": "e6c0db50-0f84-55de-b50c-e4d49285cd6d",
+   "title": "Edexcel International GCSE (9-1) Chemistry Student Book",
+   "author": "Jim Clark",
+   "checksum": "d48020e0cc0b5545b330bb59b242472198210e424525e4381cd5d2a58a58cc04",
+   "pages": 383,
+   "course": "igcse-chemistry-19",
+   "subjectCode": "CHM",
+   "parseRef": "download/rag_chemistry/edexcel_igcse_chemistry_chunks_v3.jsonl",
+   "engine": "ibm-docling@v3"
+  },
+  "parse": {
+   "rows": 1234,
+   "included": 1200,
+   "excluded": {
+    "byType": {
+     "front_matter": 12,
+     "index": 11
+    },
+    "byGroup": {
+     "Front matter (contents, about this book, assessment overview)": 5,
+     "Unit 1 divider and chapter map": 2,
+     "Unit 2 divider and chapter map": 2,
+     "Unit 3 divider and chapter map": 1,
+     "Unit 4 divider and chapter map": 1
+    }
+   }
+  },
+  "toc": {
+   "units": [
+    {
+     "index": 1,
+     "title": "Principles of Chemistry",
+     "chapters": 10
+    },
+    {
+     "index": 2,
+     "title": "Inorganic Chemistry",
+     "chapters": 8
+    },
+    {
+     "index": 3,
+     "title": "Physical Chemistry",
+     "chapters": 3
+    },
+    {
+     "index": 4,
+     "title": "Organic Chemistry",
+     "chapters": 8
+    }
+   ],
+   "chapters": [
+    {
+     "key": "u1:c1",
+     "title": "States of matter",
+     "pdfPages": [
+      12,
+      22
+     ],
+     "bookPages": [
+      3,
+      13
+     ],
+     "loChars": 1690,
+     "refs": [
+      {
+       "spineCode": "4CH1-1.1",
+       "officialCode": "1.1",
+       "officialId": "4CH1-1.1",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c1_pdf012_0023#b1",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.2",
+       "officialCode": "1.2",
+       "officialId": "4CH1-1.2",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c1_pdf012_0023#b2",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.3",
+       "officialCode": "1.3",
+       "officialId": "4CH1-1.3",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u1_c1_pdf012_0023#b5",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-1.4",
+       "officialCode": "1.4",
+       "officialId": "4CH1-1.4",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u1_c1_pdf012_0023#b3",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-1.5C",
+       "officialCode": "1.5C",
+       "officialId": "4CH1-1.5C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c1_pdf012_0023#b4",
+       "method": "verbatim"
+      }
+     ],
+     "matchedBullets": 5,
+     "droppedCaptions": 0,
+     "review": []
+    },
+    {
+     "key": "u1:c2",
+     "title": "Elements, compounds and mixtures",
+     "pdfPages": [
+      23,
+      32
+     ],
+     "bookPages": [
+      14,
+      23
+     ],
+     "loChars": 770,
+     "refs": [
+      {
+       "spineCode": "4CH1-1.8",
+       "officialCode": "1.8",
+       "officialId": "4CH1-1.8",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u1_c2_pdf023_0065#b1",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-1.9",
+       "officialCode": "1.9",
+       "officialId": "4CH1-1.9",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c2_pdf023_0065#b3",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.10",
+       "officialCode": "1.10",
+       "officialId": "4CH1-1.10",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u1_c2_pdf023_0065#b4",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-1.11",
+       "officialCode": "1.11",
+       "officialId": "4CH1-1.11",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c2_pdf023_0065#b2",
+       "method": "verbatim"
+      }
+     ],
+     "matchedBullets": 4,
+     "droppedCaptions": 0,
+     "review": []
+    },
+    {
+     "key": "u1:c3",
+     "title": "Atomic structure",
+     "pdfPages": [
+      33,
+      38
+     ],
+     "bookPages": [
+      24,
+      29
+     ],
+     "loChars": 868,
+     "refs": [
+      {
+       "spineCode": "4CH1-1.14",
+       "officialCode": "1.14",
+       "officialId": "4CH1-1.14",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c3_pdf033_0091#b1",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.15",
+       "officialCode": "1.15",
+       "officialId": "4CH1-1.15",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c3_pdf033_0091#b2",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.16",
+       "officialCode": "1.16",
+       "officialId": "4CH1-1.16",
+       "tier": "2",
+       "score": 0.9444,
+       "lineage": "chem_v3_u1_c3_pdf033_0091#b3",
+       "method": "normalized"
+      }
+     ],
+     "matchedBullets": 3,
+     "droppedCaptions": 0,
+     "review": [
+      {
+       "text": "Be able to calculate the relative atomic mass of an element (A\u1d63) from isotopic abundances Copper is an element. If you tried to cut it up into smaller and smaller pieces, the final result would be the smallest possible piece of copper. At that stage, you would have an individual copper atom.You can, of course, split that atom into smaller pieces (protons, neutrons and electrons), but you would no longer have copper. Therefore, an atom is the smallest piece of an element that can still be recognised as that element. Figure 3.1New atoms are produced in stars . ..",
+       "nearOfficialCode": "1.17",
+       "nearScore": 0.9375
+      }
+     ]
+    },
+    {
+     "key": "u1:c4",
+     "title": "The periodic table",
+     "pdfPages": [
+      39,
+      45
+     ],
+     "bookPages": [
+      30,
+      36
+     ],
+     "loChars": 1167,
+     "refs": [
+      {
+       "spineCode": "4CH1-1.19",
+       "officialCode": "1.19",
+       "officialId": "4CH1-1.19",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c4_pdf039_0113#b3",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.20",
+       "officialCode": "1.20",
+       "officialId": "4CH1-1.20",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c4_pdf039_0113#b4",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.21",
+       "officialCode": "1.21",
+       "officialId": "4CH1-1.21",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u1_c4_pdf039_0113#b2",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-1.22",
+       "officialCode": "1.22",
+       "officialId": "4CH1-1.22",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c4_pdf039_0113#b5",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.23",
+       "officialCode": "1.23",
+       "officialId": "4CH1-1.23",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c4_pdf039_0113#b6",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.24",
+       "officialCode": "1.24",
+       "officialId": "4CH1-1.24",
+       "tier": "2",
+       "score": 0.9,
+       "lineage": "chem_v3_u1_c4_pdf039_0113#b7",
+       "method": "normalized"
+      }
+     ],
+     "matchedBullets": 6,
+     "droppedCaptions": 0,
+     "review": [
+      {
+       "text": "Understand how elements are arranged in the Periodic Table: The Periodic Table shows all the elements in the universe and is one of the most important tools that a chemist has. The arrangement of the elements allows us to understand trends in properties and make predictions. The modern Periodic Table was first presented in 1869 by a famous Russian chemist, Dmitri Mendeleev (left). This chapter explores some of the features of the Periodic Table.",
+       "nearOfficialCode": "1.18",
+       "nearScore": 0.7222222222222222
+      }
+     ]
+    },
+    {
+     "key": "u1:c5",
+     "title": "Chemical formulae, equations and calculations - part 1 (chemistry only)",
+     "pdfPages": [
+      47,
+      72
+     ],
+     "bookPages": [
+      38,
+      63
+     ],
+     "loChars": 1072,
+     "refs": [
+      {
+       "spineCode": "4CH1-1.25",
+       "officialCode": "1.25",
+       "officialId": "4CH1-1.25",
+       "tier": "2",
+       "score": 0.9565,
+       "lineage": "chem_v3_u1_c5_pdf047_0145#b1",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-1.26",
+       "officialCode": "1.26",
+       "officialId": "4CH1-1.26",
+       "tier": "3",
+       "score": 0.875,
+       "lineage": "chem_v3_u1_c5_pdf047_0145#b2",
+       "method": "fuzzy"
+      },
+      {
+       "spineCode": "4CH1-1.27",
+       "officialCode": "1.27",
+       "officialId": "4CH1-1.27",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c5_pdf047_0145#b6",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.28",
+       "officialCode": "1.28",
+       "officialId": "4CH1-1.28",
+       "tier": "2",
+       "score": 0.9048,
+       "lineage": "chem_v3_u1_c5_pdf047_0145#b8",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-1.29",
+       "officialCode": "1.29",
+       "officialId": "4CH1-1.29",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c5_pdf047_0145#b10",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.30",
+       "officialCode": "1.30",
+       "officialId": "4CH1-1.30",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c5_pdf047_0145#b3",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.31",
+       "officialCode": "1.31",
+       "officialId": "4CH1-1.31",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c5_pdf047_0145#b4",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.32",
+       "officialCode": "1.32",
+       "officialId": "4CH1-1.32",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c5_pdf047_0145#b5",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.33",
+       "officialCode": "1.33",
+       "officialId": "4CH1-1.33",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c5_pdf047_0145#b7",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.36",
+       "officialCode": "1.36",
+       "officialId": "4CH1-1.36",
+       "tier": "2",
+       "score": 0.96,
+       "lineage": "chem_v3_u1_c5_pdf047_0145#b9",
+       "method": "normalized"
+      }
+     ],
+     "matchedBullets": 10,
+     "droppedCaptions": 0,
+     "review": []
+    },
+    {
+     "key": "u1:c6",
+     "title": "Chemical formulae, equations and calculations - part 2",
+     "pdfPages": [
+      73,
+      83
+     ],
+     "bookPages": [
+      64,
+      74
+     ],
+     "loChars": 303,
+     "refs": [
+      {
+       "spineCode": "4CH1-1.34C",
+       "officialCode": "1.34C",
+       "officialId": "4CH1-1.34C",
+       "tier": "2",
+       "score": 0.9444,
+       "lineage": "chem_v3_u1_c6_pdf073_0263#b1",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-1.35C",
+       "officialCode": "1.35C",
+       "officialId": "4CH1-1.35C",
+       "tier": "2",
+       "score": 0.9545,
+       "lineage": "chem_v3_u1_c6_pdf073_0263#b2",
+       "method": "normalized"
+      }
+     ],
+     "matchedBullets": 2,
+     "droppedCaptions": 0,
+     "review": []
+    },
+    {
+     "key": "u1:c7",
+     "title": "Ionic bonding",
+     "pdfPages": [
+      84,
+      92
+     ],
+     "bookPages": [
+      75,
+      83
+     ],
+     "loChars": 388,
+     "refs": [
+      {
+       "spineCode": "4CH1-1.37",
+       "officialCode": "1.37",
+       "officialId": "4CH1-1.37",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c7_pdf084_0302#b1",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.39",
+       "officialCode": "1.39",
+       "officialId": "4CH1-1.39",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c7_pdf084_0302#b4",
+       "method": "verbatim"
+      }
+     ],
+     "matchedBullets": 2,
+     "droppedCaptions": 0,
+     "review": [
+      {
+       "text": "Know the charges of these ions:",
+       "nearOfficialCode": "1.38",
+       "nearScore": 0.5384615384615384
+      },
+      {
+       "text": "Ag\u207a, Cu\u00b2\u207a, Fe\u00b2\u207a, Fe\u00b3\u207a, Pb\u00b2\u207a, Zn\u00b2\u207a",
+       "nearOfficialCode": "1.38",
+       "nearScore": 0.23076923076923078
+      }
+     ]
+    },
+    {
+     "key": "u1:c8",
+     "title": "Covalent bonding",
+     "pdfPages": [
+      94,
+      106
+     ],
+     "bookPages": [
+      85,
+      97
+     ],
+     "loChars": 1267,
+     "refs": [
+      {
+       "spineCode": "4CH1-1.44",
+       "officialCode": "1.44",
+       "officialId": "4CH1-1.44",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c8_pdf094_0349#b1",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.45",
+       "officialCode": "1.45",
+       "officialId": "4CH1-1.45",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c8_pdf094_0349#b2",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.46",
+       "officialCode": "1.46",
+       "officialId": "4CH1-1.46",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c8_pdf094_0349#b3",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.48",
+       "officialCode": "1.48",
+       "officialId": "4CH1-1.48",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c8_pdf094_0349#b6",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.49",
+       "officialCode": "1.49",
+       "officialId": "4CH1-1.49",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c8_pdf094_0349#b7",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.50",
+       "officialCode": "1.50",
+       "officialId": "4CH1-1.50",
+       "tier": "2",
+       "score": 0.9474,
+       "lineage": "chem_v3_u1_c8_pdf094_0349#b8",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-1.51",
+       "officialCode": "1.51",
+       "officialId": "4CH1-1.51",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c8_pdf094_0349#b9",
+       "method": "verbatim"
+      }
+     ],
+     "matchedBullets": 7,
+     "droppedCaptions": 0,
+     "review": [
+      {
+       "text": "Explain why substances with a simple molecular structure are gases or liquids, or solids with low melting and boiling points",
+       "nearOfficialCode": "1.49",
+       "nearScore": 0.7333333333333333
+      },
+      {
+       "text": "Understand that the term intermolecular forces of attraction can be used to represent all forces between molecules",
+       "nearOfficialCode": "1.47",
+       "nearScore": 0.42857142857142855
+      }
+     ]
+    },
+    {
+     "key": "u1:c9",
+     "title": "Metallic bonding (chemistry only)",
+     "pdfPages": [
+      107,
+      109
+     ],
+     "bookPages": [
+      98,
+      100
+     ],
+     "loChars": 249,
+     "refs": [
+      {
+       "spineCode": "4CH1-1.52C",
+       "officialCode": "1.52C",
+       "officialId": "4CH1-1.52C",
+       "tier": "3",
+       "score": 0.8333,
+       "lineage": "chem_v3_u1_c9_pdf107_0395#b1",
+       "method": "fuzzy"
+      },
+      {
+       "spineCode": "4CH1-1.53C",
+       "officialCode": "1.53C",
+       "officialId": "4CH1-1.53C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c9_pdf107_0395#b2",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.54C",
+       "officialCode": "1.54C",
+       "officialId": "4CH1-1.54C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c9_pdf107_0395#b3",
+       "method": "verbatim"
+      }
+     ],
+     "matchedBullets": 3,
+     "droppedCaptions": 0,
+     "review": []
+    },
+    {
+     "key": "u1:c10",
+     "title": "Electrolysis (chemistry only)",
+     "pdfPages": [
+      110,
+      121
+     ],
+     "bookPages": [
+      101,
+      112
+     ],
+     "loChars": 733,
+     "refs": [
+      {
+       "spineCode": "4CH1-1.55C",
+       "officialCode": "1.55C",
+       "officialId": "4CH1-1.55C",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u1_c10_pdf110_0405#b1",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-1.56C",
+       "officialCode": "1.56C",
+       "officialId": "4CH1-1.56C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c10_pdf110_0405#b2",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.57C",
+       "officialCode": "1.57C",
+       "officialId": "4CH1-1.57C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c10_pdf110_0405#b3",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.59C",
+       "officialCode": "1.59C",
+       "officialId": "4CH1-1.59C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c10_pdf110_0405#b5",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-1.60C",
+       "officialCode": "1.60C",
+       "officialId": "4CH1-1.60C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u1_c10_pdf110_0405#b6",
+       "method": "verbatim"
+      }
+     ],
+     "matchedBullets": 5,
+     "droppedCaptions": 0,
+     "review": [
+      {
+       "text": "Describe experiments to investigate electrolysis, using inert electrodes, of molten compounds (including lead sns s a ( (ading",
+       "nearOfficialCode": "1.58C",
+       "nearScore": 0.45454545454545453
+      }
+     ]
+    },
+    {
+     "key": "u2:c11",
+     "title": "The alkali metals",
+     "pdfPages": [
+      132,
+      138
+     ],
+     "bookPages": [
+      123,
+      129
+     ],
+     "loChars": 1146,
+     "refs": [
+      {
+       "spineCode": "4CH1-2.1",
+       "officialCode": "2.1",
+       "officialId": "4CH1-2.1",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c11_pdf132_0463#b1",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-2.2",
+       "officialCode": "2.2",
+       "officialId": "4CH1-2.2",
+       "tier": "2",
+       "score": 0.9565,
+       "lineage": "chem_v3_u2_c11_pdf132_0463#b2",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-2.3",
+       "officialCode": "2.3",
+       "officialId": "4CH1-2.3",
+       "tier": "2",
+       "score": 0.9286,
+       "lineage": "chem_v3_u2_c11_pdf132_0463#b4",
+       "method": "normalized"
+      }
+     ],
+     "matchedBullets": 3,
+     "droppedCaptions": 0,
+     "review": [
+      {
+       "text": "Explain the trend in reactivity in Group 1 in terms of electronic configurations. The elements in Group 1 of the Periodic Table are called the alkali metals. The group contains the elements shown in Figure 11.3. Francium (pronounced france-ee-um), at the bottom of the group, is radioactive. One of its isotopes is produced during the radioactive decay of uranium-235, but is extremely short-lived. At any one time scientists estimate that there is only about 20-30g of francium present in the whole of the Earth's crust and no one has ever seen a piece of francium. When you know about the rest of Group 1 you can predict what francium would be like. We will make those predictions later.",
+       "nearOfficialCode": "2.4C",
+       "nearScore": 0.9166666666666666
+      }
+     ]
+    },
+    {
+     "key": "u2:c12",
+     "title": "The halogens",
+     "pdfPages": [
+      139,
+      144
+     ],
+     "bookPages": [
+      130,
+      135
+     ],
+     "loChars": 402,
+     "refs": [
+      {
+       "spineCode": "4CH1-2.4C",
+       "officialCode": "2.4C",
+       "officialId": "4CH1-2.4C",
+       "tier": "2",
+       "score": 0.9167,
+       "lineage": "chem_v3_u2_c12_pdf139_0495#b5",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-2.5",
+       "officialCode": "2.5",
+       "officialId": "4CH1-2.5",
+       "tier": "3",
+       "score": 0.875,
+       "lineage": "chem_v3_u2_c12_pdf139_0495#b1",
+       "method": "fuzzy"
+      },
+      {
+       "spineCode": "4CH1-2.6",
+       "officialCode": "2.6",
+       "officialId": "4CH1-2.6",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c12_pdf139_0495#b2",
+       "method": "verbatim"
+      }
+     ],
+     "matchedBullets": 3,
+     "droppedCaptions": 0,
+     "review": []
+    },
+    {
+     "key": "u2:c13",
+     "title": "Gases in the atmosphere",
+     "pdfPages": [
+      146,
+      153
+     ],
+     "bookPages": [
+      137,
+      144
+     ],
+     "loChars": 739,
+     "refs": [
+      {
+       "spineCode": "4CH1-2.9",
+       "officialCode": "2.9",
+       "officialId": "4CH1-2.9",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c13_pdf146_0523#b1",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-2.10",
+       "officialCode": "2.10",
+       "officialId": "4CH1-2.10",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c13_pdf146_0523#b2",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-2.11",
+       "officialCode": "2.11",
+       "officialId": "4CH1-2.11",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c13_pdf146_0523#b3",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-2.12",
+       "officialCode": "2.12",
+       "officialId": "4CH1-2.12",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c13_pdf146_0523#b4",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-2.13",
+       "officialCode": "2.13",
+       "officialId": "4CH1-2.13",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c13_pdf146_0523#b5",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-2.14",
+       "officialCode": "2.14",
+       "officialId": "4CH1-2.14",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c13_pdf146_0523#b6",
+       "method": "verbatim"
+      }
+     ],
+     "matchedBullets": 6,
+     "droppedCaptions": 0,
+     "review": []
+    },
+    {
+     "key": "u2:c14",
+     "title": "Reactivity series",
+     "pdfPages": [
+      154,
+      168
+     ],
+     "bookPages": [
+      145,
+      159
+     ],
+     "loChars": 1560,
+     "refs": [
+      {
+       "spineCode": "4CH1-2.15",
+       "officialCode": "2.15",
+       "officialId": "4CH1-2.15",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u2_c14_pdf154_0559#b1",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-2.16",
+       "officialCode": "2.16",
+       "officialId": "4CH1-2.16",
+       "tier": "3",
+       "score": 0.8519,
+       "lineage": "chem_v3_u2_c14_pdf154_0559#b3",
+       "method": "fuzzy"
+      },
+      {
+       "spineCode": "4CH1-2.17",
+       "officialCode": "2.17",
+       "officialId": "4CH1-2.17",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c14_pdf154_0559#b5",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-2.18",
+       "officialCode": "2.18",
+       "officialId": "4CH1-2.18",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u2_c14_pdf154_0559#b6",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-2.19",
+       "officialCode": "2.19",
+       "officialId": "4CH1-2.19",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c14_pdf154_0559#b2",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-2.21",
+       "officialCode": "2.21",
+       "officialId": "4CH1-2.21",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u2_c14_pdf154_0559#b7",
+       "method": "normalized"
+      }
+     ],
+     "matchedBullets": 6,
+     "droppedCaptions": 0,
+     "review": [
+      {
+       "text": "Understand the terms:",
+       "nearOfficialCode": "1.60C",
+       "nearScore": 0.5714285714285714
+      }
+     ]
+    },
+    {
+     "key": "u2:c15",
+     "title": "Extraction and uses of metals (chemistry only)",
+     "pdfPages": [
+      169,
+      175
+     ],
+     "bookPages": [
+      160,
+      166
+     ],
+     "loChars": 521,
+     "refs": [
+      {
+       "spineCode": "4CH1-2.22C",
+       "officialCode": "2.22C",
+       "officialId": "4CH1-2.22C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c15_pdf169_0630#b1",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-2.23C",
+       "officialCode": "2.23C",
+       "officialId": "4CH1-2.23C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c15_pdf169_0630#b2",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-2.24C",
+       "officialCode": "2.24C",
+       "officialId": "4CH1-2.24C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c15_pdf169_0630#b3",
+       "method": "verbatim"
+      }
+     ],
+     "matchedBullets": 3,
+     "droppedCaptions": 0,
+     "review": []
+    },
+    {
+     "key": "u2:c16",
+     "title": "Acids, alkalis and titrations",
+     "pdfPages": [
+      176,
+      181
+     ],
+     "bookPages": [
+      167,
+      172
+     ],
+     "loChars": 1613,
+     "refs": [
+      {
+       "spineCode": "4CH1-2.28",
+       "officialCode": "2.28",
+       "officialId": "4CH1-2.28",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c16_pdf176_0655#b1",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-2.29",
+       "officialCode": "2.29",
+       "officialId": "4CH1-2.29",
+       "tier": "2",
+       "score": 0.9714,
+       "lineage": "chem_v3_u2_c16_pdf176_0655#b3",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-2.30",
+       "officialCode": "2.30",
+       "officialId": "4CH1-2.30",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c16_pdf176_0655#b4",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-2.31",
+       "officialCode": "2.31",
+       "officialId": "4CH1-2.31",
+       "tier": "3",
+       "score": 0.8696,
+       "lineage": "chem_v3_u2_c16_pdf176_0655#b2",
+       "method": "fuzzy"
+      },
+      {
+       "spineCode": "4CH1-2.32",
+       "officialCode": "2.32",
+       "officialId": "4CH1-2.32",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u2_c16_pdf176_0655#b5",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-2.33C",
+       "officialCode": "2.33C",
+       "officialId": "4CH1-2.33C",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u2_c16_pdf176_0655#b6",
+       "method": "normalized"
+      }
+     ],
+     "matchedBullets": 6,
+     "droppedCaptions": 0,
+     "review": [
+      {
+       "text": "State the colours of methyl orange, phenolphthalein and litmus in each of the following solutions:",
+       "nearOfficialCode": "2.28",
+       "nearScore": 0.75
+      },
+      {
+       "text": "Explain what type of reaction is occurring in 3. CHEMISTRY ONLY",
+       "nearOfficialCode": "2.33C",
+       "nearScore": 0.6666666666666666
+      }
+     ]
+    },
+    {
+     "key": "u2:c17",
+     "title": "Acids, bases and salt preparations",
+     "pdfPages": [
+      182,
+      198
+     ],
+     "bookPages": [
+      173,
+      189
+     ],
+     "loChars": 2266,
+     "refs": [
+      {
+       "spineCode": "4CH1-2.34",
+       "officialCode": "2.34",
+       "officialId": "4CH1-2.34",
+       "tier": "2",
+       "score": 0.9615,
+       "lineage": "chem_v3_u2_c17_pdf182_0687#b1",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-2.35",
+       "officialCode": "2.35",
+       "officialId": "4CH1-2.35",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c17_pdf182_0687#b2",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-2.36",
+       "officialCode": "2.36",
+       "officialId": "4CH1-2.36",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c17_pdf182_0687#b3",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-2.37",
+       "officialCode": "2.37",
+       "officialId": "4CH1-2.37",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u2_c17_pdf182_0687#b4",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-2.40C",
+       "officialCode": "2.40C",
+       "officialId": "4CH1-2.40C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c17_pdf182_0687#b5",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-2.41C",
+       "officialCode": "2.41C",
+       "officialId": "4CH1-2.41C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c17_pdf182_0687#b6",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-2.43C",
+       "officialCode": "2.43C",
+       "officialId": "4CH1-2.43C",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u2_c17_pdf182_0687#b7",
+       "method": "normalized"
+      }
+     ],
+     "matchedBullets": 7,
+     "droppedCaptions": 0,
+     "review": []
+    },
+    {
+     "key": "u2:c18",
+     "title": "Chemical tests",
+     "pdfPages": [
+      199,
+      207
+     ],
+     "bookPages": [
+      190,
+      198
+     ],
+     "loChars": 836,
+     "refs": [
+      {
+       "spineCode": "4CH1-2.44",
+       "officialCode": "2.44",
+       "officialId": "4CH1-2.44",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c18_pdf199_0754#b1",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-2.45",
+       "officialCode": "2.45",
+       "officialId": "4CH1-2.45",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u2_c18_pdf199_0754#b2",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-2.49",
+       "officialCode": "2.49",
+       "officialId": "4CH1-2.49",
+       "tier": "2",
+       "score": 0.9231,
+       "lineage": "chem_v3_u2_c18_pdf199_0754#b16",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-2.50",
+       "officialCode": "2.50",
+       "officialId": "4CH1-2.50",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u2_c18_pdf199_0754#b17",
+       "method": "normalized"
+      }
+     ],
+     "matchedBullets": 4,
+     "droppedCaptions": 0,
+     "review": [
+      {
+       "text": "Know the colours formed in flame tests for these cations:",
+       "nearOfficialCode": "4.19",
+       "nearScore": 0.5
+      },
+      {
+       "text": "Li+ (red)",
+       "nearOfficialCode": "2.46",
+       "nearScore": 0.10344827586206896
+      },
+      {
+       "text": "Na+ (yellow)",
+       "nearOfficialCode": "2.46",
+       "nearScore": 0.06896551724137931
+      },
+      {
+       "text": "K+ (lilac)",
+       "nearOfficialCode": "2.46",
+       "nearScore": 0.06896551724137931
+      },
+      {
+       "text": "Ca\u00b2+ (orange-red)",
+       "nearOfficialCode": "2.46",
+       "nearScore": 0.13793103448275862
+      },
+      {
+       "text": "Cu\u00b2+ (blue-green)",
+       "nearOfficialCode": "2.46",
+       "nearScore": 0.10344827586206896
+      },
+      {
+       "text": "Describe tests for these cations:",
+       "nearOfficialCode": "2.44",
+       "nearScore": 0.36363636363636365
+      },
+      {
+       "text": "NH4+ using sodium hydroxide solution and identifying the gas evolved",
+       "nearOfficialCode": "2.47",
+       "nearScore": 0.5185185185185185
+      },
+      {
+       "text": "Cu\u00b2+, Fe\u00b2+ and Fe\u00b3+ using sodium hydroxide solution",
+       "nearOfficialCode": "2.47",
+       "nearScore": 0.48148148148148145
+      },
+      {
+       "text": "Describe tests for these anions:",
+       "nearOfficialCode": "2.44",
+       "nearScore": 0.36363636363636365
+      },
+      {
+       "text": "Cl-, Br- and I- using acidified silver nitrate solution",
+       "nearOfficialCode": "2.48",
+       "nearScore": 0.42424242424242425
+      },
+      {
+       "text": "SO42- using acidified barium chloride solution",
+       "nearOfficialCode": "2.48",
+       "nearScore": 0.2727272727272727
+      },
+      {
+       "text": "CO32- using hydrochloric acid and identifying the gas evolved",
+       "nearOfficialCode": "2.37",
+       "nearScore": 0.35714285714285715
+      }
+     ]
+    },
+    {
+     "key": "u3:c19",
+     "title": "Energetics",
+     "pdfPages": [
+      216,
+      234
+     ],
+     "bookPages": [
+      207,
+      225
+     ],
+     "loChars": 4560,
+     "refs": [
+      {
+       "spineCode": "4CH1-3.1",
+       "officialCode": "3.1",
+       "officialId": "4CH1-3.1",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u3_c19_pdf216_0820#b1",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-3.2",
+       "officialCode": "3.2",
+       "officialId": "4CH1-3.2",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u3_c19_pdf216_0820#b2",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-3.3",
+       "officialCode": "3.3",
+       "officialId": "4CH1-3.3",
+       "tier": "2",
+       "score": 0.9412,
+       "lineage": "chem_v3_u3_c19_pdf216_0820#b3",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-3.4",
+       "officialCode": "3.4",
+       "officialId": "4CH1-3.4",
+       "tier": "2",
+       "score": 0.9231,
+       "lineage": "chem_v3_u3_c19_pdf216_0820#b4",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-3.5C",
+       "officialCode": "3.5C",
+       "officialId": "4CH1-3.5C",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u3_c19_pdf216_0820#b6",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-3.6C",
+       "officialCode": "3.6C",
+       "officialId": "4CH1-3.6C",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u3_c19_pdf216_0820#b7",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-3.8",
+       "officialCode": "3.8",
+       "officialId": "4CH1-3.8",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u3_c19_pdf216_0820#b5",
+       "method": "normalized"
+      }
+     ],
+     "matchedBullets": 8,
+     "droppedCaptions": 0,
+     "review": []
+    },
+    {
+     "key": "u3:c20",
+     "title": "Rates of reaction",
+     "pdfPages": [
+      236,
+      248
+     ],
+     "bookPages": [
+      227,
+      239
+     ],
+     "loChars": 5209,
+     "refs": [
+      {
+       "spineCode": "4CH1-3.9",
+       "officialCode": "3.9",
+       "officialId": "4CH1-3.9",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u3_c20_pdf236_0901#b1",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-3.10",
+       "officialCode": "3.10",
+       "officialId": "4CH1-3.10",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u3_c20_pdf236_0901#b2",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-3.11",
+       "officialCode": "3.11",
+       "officialId": "4CH1-3.11",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u3_c20_pdf236_0901#b3",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-3.12",
+       "officialCode": "3.12",
+       "officialId": "4CH1-3.12",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u3_c20_pdf236_0901#b4",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-3.13",
+       "officialCode": "3.13",
+       "officialId": "4CH1-3.13",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u3_c20_pdf236_0901#b6",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-3.14C",
+       "officialCode": "3.14C",
+       "officialId": "4CH1-3.14C",
+       "tier": "2",
+       "score": 0.9167,
+       "lineage": "chem_v3_u3_c20_pdf236_0901#b7",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-3.15",
+       "officialCode": "3.15",
+       "officialId": "4CH1-3.15",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u3_c20_pdf236_0901#b8",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-3.16",
+       "officialCode": "3.16",
+       "officialId": "4CH1-3.16",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u3_c20_pdf236_0901#b9",
+       "method": "normalized"
+      }
+     ],
+     "matchedBullets": 9,
+     "droppedCaptions": 0,
+     "review": [
+      {
+       "text": "Draw a diagram of the apparatus you would use for this experiment and label it.",
+       "nearOfficialCode": "3.11",
+       "nearScore": 0.7575757575757576
+      }
+     ]
+    },
+    {
+     "key": "u3:c21",
+     "title": "Reversible reactions and equilibria",
+     "pdfPages": [
+      249,
+      256
+     ],
+     "bookPages": [
+      240,
+      247
+     ],
+     "loChars": 3402,
+     "refs": [
+      {
+       "spineCode": "4CH1-3.17",
+       "officialCode": "3.17",
+       "officialId": "4CH1-3.17",
+       "tier": "2",
+       "score": 0.9375,
+       "lineage": "chem_v3_u3_c21_pdf249_0952#b1",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-3.18",
+       "officialCode": "3.18",
+       "officialId": "4CH1-3.18",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u3_c21_pdf249_0952#b2",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-3.19C",
+       "officialCode": "3.19C",
+       "officialId": "4CH1-3.19C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u3_c21_pdf249_0952#b3",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-3.20C",
+       "officialCode": "3.20C",
+       "officialId": "4CH1-3.20C",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u3_c21_pdf249_0952#b4",
+       "method": "normalized"
+      }
+     ],
+     "matchedBullets": 4,
+     "droppedCaptions": 0,
+     "review": []
+    },
+    {
+     "key": "u4:c22",
+     "title": "Introduction to organic chemistry",
+     "pdfPages": [
+      264,
+      276
+     ],
+     "bookPages": [
+      255,
+      267
+     ],
+     "loChars": 1417,
+     "refs": [
+      {
+       "spineCode": "4CH1-4.1",
+       "officialCode": "4.1",
+       "officialId": "4CH1-4.1",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u4_c22_pdf264_0994#b1",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-4.2",
+       "officialCode": "4.2",
+       "officialId": "4CH1-4.2",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c22_pdf264_0994#b2",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.3",
+       "officialCode": "4.3",
+       "officialId": "4CH1-4.3",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c22_pdf264_0994#b3",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.4",
+       "officialCode": "4.4",
+       "officialId": "4CH1-4.4",
+       "tier": "3",
+       "score": 0.8,
+       "lineage": "chem_v3_u4_c22_pdf264_0994#b4",
+       "method": "fuzzy"
+      },
+      {
+       "spineCode": "4CH1-4.5",
+       "officialCode": "4.5",
+       "officialId": "4CH1-4.5",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c22_pdf264_0994#b5",
+       "method": "verbatim"
+      }
+     ],
+     "matchedBullets": 5,
+     "droppedCaptions": 0,
+     "review": [
+      {
+       "text": "Understand how to classify reactions of organic compounds as substitution, addition and combustion In the next few chapters we will be looking at organic compounds. The term 'organic' was originally used because it was believed that organic compounds could only come from living things. Now it is used for any carbon compound except for the very simplest (carbon dioxide, carbon monoxide, the carbonates and the hydrogencarbonates). Organic compounds can exist as chains, branched chains or rings of carbon atoms with hydrogens attached. When you start doing organic chemistry, you are suddenly faced with a whole lot of new compounds with strange names and unfamiliar ways of drawing them. It can be quite scary! ethanol Figure 22.3 Organic chemistry involves a lot of new compounds.",
+       "nearOfficialCode": "4.1",
+       "nearScore": 0.75
+      }
+     ]
+    },
+    {
+     "key": "u4:c23",
+     "title": "Crude oil",
+     "pdfPages": [
+      277,
+      285
+     ],
+     "bookPages": [
+      268,
+      276
+     ],
+     "loChars": 1213,
+     "refs": [
+      {
+       "spineCode": "4CH1-4.7",
+       "officialCode": "4.7",
+       "officialId": "4CH1-4.7",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c23_pdf277_1050#b1",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.8",
+       "officialCode": "4.8",
+       "officialId": "4CH1-4.8",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c23_pdf277_1050#b2",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.9",
+       "officialCode": "4.9",
+       "officialId": "4CH1-4.9",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c23_pdf277_1050#b3",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.10",
+       "officialCode": "4.10",
+       "officialId": "4CH1-4.10",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c23_pdf277_1050#b4",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.11",
+       "officialCode": "4.11",
+       "officialId": "4CH1-4.11",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c23_pdf277_1050#b5",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.12",
+       "officialCode": "4.12",
+       "officialId": "4CH1-4.12",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c23_pdf277_1050#b6",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.14",
+       "officialCode": "4.14",
+       "officialId": "4CH1-4.14",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c23_pdf277_1050#b7",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.15",
+       "officialCode": "4.15",
+       "officialId": "4CH1-4.15",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c23_pdf277_1050#b8",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.16",
+       "officialCode": "4.16",
+       "officialId": "4CH1-4.16",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c23_pdf277_1050#b9",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.17",
+       "officialCode": "4.17",
+       "officialId": "4CH1-4.17",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u4_c23_pdf277_1050#b10",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-4.18",
+       "officialCode": "4.18",
+       "officialId": "4CH1-4.18",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c23_pdf277_1050#b11",
+       "method": "verbatim"
+      }
+     ],
+     "matchedBullets": 11,
+     "droppedCaptions": 0,
+     "review": []
+    },
+    {
+     "key": "u4:c24",
+     "title": "Alkanes",
+     "pdfPages": [
+      286,
+      290
+     ],
+     "bookPages": [
+      277,
+      281
+     ],
+     "loChars": 289,
+     "refs": [
+      {
+       "spineCode": "4CH1-4.19",
+       "officialCode": "4.19",
+       "officialId": "4CH1-4.19",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u4_c24_pdf286_1080#b1",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-4.20",
+       "officialCode": "4.20",
+       "officialId": "4CH1-4.20",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u4_c24_pdf286_1080#b2",
+       "method": "normalized"
+      }
+     ],
+     "matchedBullets": 2,
+     "droppedCaptions": 0,
+     "review": []
+    },
+    {
+     "key": "u4:c25",
+     "title": "Alkenes",
+     "pdfPages": [
+      291,
+      295
+     ],
+     "bookPages": [
+      282,
+      286
+     ],
+     "loChars": 566,
+     "refs": [
+      {
+       "spineCode": "4CH1-4.23",
+       "officialCode": "4.23",
+       "officialId": "4CH1-4.23",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c25_pdf291_1096#b1",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.24",
+       "officialCode": "4.24",
+       "officialId": "4CH1-4.24",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c25_pdf291_1096#b2",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.25",
+       "officialCode": "4.25",
+       "officialId": "4CH1-4.25",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c25_pdf291_1096#b3",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.27",
+       "officialCode": "4.27",
+       "officialId": "4CH1-4.27",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c25_pdf291_1096#b4",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.28",
+       "officialCode": "4.28",
+       "officialId": "4CH1-4.28",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u4_c25_pdf291_1096#b5",
+       "method": "normalized"
+      }
+     ],
+     "matchedBullets": 5,
+     "droppedCaptions": 0,
+     "review": []
+    },
+    {
+     "key": "u4:c26",
+     "title": "Alcohols (chemistry only)",
+     "pdfPages": [
+      296,
+      301
+     ],
+     "bookPages": [
+      287,
+      292
+     ],
+     "loChars": 1234,
+     "refs": [
+      {
+       "spineCode": "4CH1-4.29C",
+       "officialCode": "4.29C",
+       "officialId": "4CH1-4.29C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c26_pdf296_1118#b1",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.30C",
+       "officialCode": "4.30C",
+       "officialId": "4CH1-4.30C",
+       "tier": "3",
+       "score": 0.875,
+       "lineage": "chem_v3_u4_c26_pdf296_1118#b3",
+       "method": "fuzzy"
+      },
+      {
+       "spineCode": "4CH1-4.33C",
+       "officialCode": "4.33C",
+       "officialId": "4CH1-4.33C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c26_pdf296_1118#b5",
+       "method": "verbatim"
+      }
+     ],
+     "matchedBullets": 4,
+     "droppedCaptions": 0,
+     "review": [
+      {
+       "text": "Know that ethanol can be manufactured by:",
+       "nearOfficialCode": "2.32",
+       "nearScore": 0.5
+      }
+     ]
+    },
+    {
+     "key": "u4:c27",
+     "title": "Carboxylic acids (chemistry only)",
+     "pdfPages": [
+      302,
+      305
+     ],
+     "bookPages": [
+      293,
+      296
+     ],
+     "loChars": 923,
+     "refs": [
+      {
+       "spineCode": "4CH1-4.29C",
+       "officialCode": "4.29C",
+       "officialId": "4CH1-4.29C",
+       "tier": "3",
+       "score": 0.875,
+       "lineage": "chem_v3_u4_c27_pdf302_1143#b1",
+       "method": "fuzzy"
+      },
+      {
+       "spineCode": "4CH1-4.35C",
+       "officialCode": "4.35C",
+       "officialId": "4CH1-4.35C",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u4_c27_pdf302_1143#b2",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-4.36C",
+       "officialCode": "4.36C",
+       "officialId": "4CH1-4.36C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c27_pdf302_1143#b3",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.37C",
+       "officialCode": "4.37C",
+       "officialId": "4CH1-4.37C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c27_pdf302_1143#b4",
+       "method": "verbatim"
+      }
+     ],
+     "matchedBullets": 4,
+     "droppedCaptions": 0,
+     "review": []
+    },
+    {
+     "key": "u4:c28",
+     "title": "Esters (chemistry only)",
+     "pdfPages": [
+      306,
+      310
+     ],
+     "bookPages": [
+      297,
+      301
+     ],
+     "loChars": 808,
+     "refs": [
+      {
+       "spineCode": "4CH1-4.29C",
+       "officialCode": "4.29C",
+       "officialId": "4CH1-4.29C",
+       "tier": "3",
+       "score": 0.75,
+       "lineage": "chem_v3_u4_c28_pdf306_1158#b1",
+       "method": "fuzzy"
+      },
+      {
+       "spineCode": "4CH1-4.39C",
+       "officialCode": "4.39C",
+       "officialId": "4CH1-4.39C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c28_pdf306_1158#b2",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.40C",
+       "officialCode": "4.40C",
+       "officialId": "4CH1-4.40C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c28_pdf306_1158#b5",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.41C",
+       "officialCode": "4.41C",
+       "officialId": "4CH1-4.41C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c28_pdf306_1158#b3",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.42C",
+       "officialCode": "4.42C",
+       "officialId": "4CH1-4.42C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c28_pdf306_1158#b4",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.43C",
+       "officialCode": "4.43C",
+       "officialId": "4CH1-4.43C",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u4_c28_pdf306_1158#b6",
+       "method": "normalized"
+      }
+     ],
+     "matchedBullets": 6,
+     "droppedCaptions": 0,
+     "review": []
+    },
+    {
+     "key": "u4:c29",
+     "title": "Synthetic polymers",
+     "pdfPages": [
+      311,
+      321
+     ],
+     "bookPages": [
+      302,
+      312
+     ],
+     "loChars": 2800,
+     "refs": [
+      {
+       "spineCode": "4CH1-4.44",
+       "officialCode": "4.44",
+       "officialId": "4CH1-4.44",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c29_pdf311_1176#b1",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.45",
+       "officialCode": "4.45",
+       "officialId": "4CH1-4.45",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c29_pdf311_1176#b3",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.46",
+       "officialCode": "4.46",
+       "officialId": "4CH1-4.46",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u4_c29_pdf311_1176#b4",
+       "method": "normalized"
+      },
+      {
+       "spineCode": "4CH1-4.49C",
+       "officialCode": "4.49C",
+       "officialId": "4CH1-4.49C",
+       "tier": "1",
+       "score": 1,
+       "lineage": "chem_v3_u4_c29_pdf311_1176#b6",
+       "method": "verbatim"
+      },
+      {
+       "spineCode": "4CH1-4.50C",
+       "officialCode": "4.50C",
+       "officialId": "4CH1-4.50C",
+       "tier": "2",
+       "score": 1,
+       "lineage": "chem_v3_u4_c29_pdf311_1176#b7",
+       "method": "normalized"
+      }
+     ],
+     "matchedBullets": 5,
+     "droppedCaptions": 0,
+     "review": [
+      {
+       "text": "Explain problems in the disposal of addition polymers, including:",
+       "nearOfficialCode": "2.4C",
+       "nearScore": 0.5
+      },
+      {
+       "text": "Krn d a sd o a s w a e s o do wter.",
+       "nearOfficialCode": "1.52C",
+       "nearScore": 0.25
+      },
+      {
+       "text": "Explain what is meant by condensation polymerisation and how it differs from addition polymerisation.",
+       "nearOfficialCode": "1.14",
+       "nearScore": 0.5
+      },
+      {
+       "text": "How will a chain of nylon-6,10 differ from one of nylon-6,6? Refer to the diagram you drew in a ii.",
+       "nearOfficialCode": "1.12",
+       "nearScore": 0.47058823529411764
+      }
+     ]
+    }
+   ]
+  },
+  "join": {
+   "chapters": 29,
+   "refs": 145,
+   "tierCensus": {
+    "verbatim": 85,
+    "normalized": 51,
+    "fuzzy": 9
+   },
+   "reviewItems": 31
+  },
+  "chunks": {
+   "count": 823,
+   "overlaidWithCodes": 646
+  },
+  "headerSample": "Chemistry CHM | Edexcel IGCSE Student Book | Qu1:c1 | p.12"
+ },
+ "defects_of_record": [
+  "run-001 (br-crimson-wind-a5kndh1d): postgres.js double-encodes plain string params into ::jsonb (spec_codes/element_ids landed as jsonb STRINGS) \u2014 branch DROPPED+404-verified, zero residue; fix of record: the apply leg rides createSql (the api's own NeonWsClient serializer the frozen ingest law was written against) \u2014 run-002 all jsonb columns array-typed, verified",
+  "runner 600s timeout (this run): the ws client's ~1500 sequential round-trips exceed the bash cap \u2014 the tx had COMMITTED before the kill (single-tx law held; the kill hit postverify); postverify executed separately and is recorded here"
+ ],
+ "embeddings": "NOT written (zero-API-keys law): embed_rev=2, vectors NULL \u2014 book chunks serve via the FTS arm immediately; the vector arm joins once SYLLABAI_EMBEDDING_GEMINI_API_KEY is staged and the existing embed path backfills",
+ "join_quality": {
+  "refs": 145,
+  "verbatim": 85,
+  "normalized": 51,
+  "fuzzy": 9,
+  "reviewItems": 31,
+  "reviewDisposition": "chapters SUGGESTED (operator validation lane); per-bullet near-misses in the dry-run receipt"
+ }
+}
