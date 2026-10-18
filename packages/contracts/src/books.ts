@@ -177,3 +177,44 @@ export const bookChapterSchema = z.object({
   validationState: validationStateSchema,
 });
 export type BookChapter = z.infer<typeof bookChapterSchema>;
+
+// ── 133c: the shelf + archive coordinates (strict serving) ──────────────────
+
+/**
+ * One TEXTBOOK document as the /api/v1/content/books shelf serves it.
+ *
+ * T-C20 no-state-leak law: the student shelf serves VALIDATED books only,
+ * so validationState is deliberately ABSENT from this shape — a book that
+ * has not passed the human gate is simply not on the shelf (honest empty
+ * state), and its state never leaks through this surface. The operator's
+ * validation flip is the serving lever (never auto-VALIDATED).
+ *
+ * title/author derive from documents.canonical_json (book-toc-v1); pages =
+ * documents.page_count (the pdf.js document length of record);
+ * checksum = documents.checksum (the PDF bytes' sha-256 — the same digest
+ * the archive host's student-book.pdf carries, band-133c receipt).
+ */
+export const bookShelfEntrySchema = z.object({
+  documentId: z.string().min(1),
+  docVersion: z.number().int().min(1),
+  courseId: z.string().min(1),
+  title: z.string().min(1),
+  author: z.string(),
+  pages: z.number().int().min(1),
+  checksum: z.string().min(1),
+});
+export type BookShelfEntry = z.infer<typeof bookShelfEntrySchema>;
+
+/**
+ * The archive-host coordinates of a book (133c corpus-pdf grammar
+ * books/<specKey>/): the corpus-relative path of the PDF the viewer pane
+ * streams, plus the byte size for honest load hints. specKey is the
+ * course's primary corpus specKey (same grammar as the past-papers
+ * archive; the books root lives on the syllabai-resources archive host).
+ * Served by the client only as a path — bytes ride /api/corpus-pdf.
+ */
+export const bookArchiveRefSchema = z.object({
+  corpusPath: z.string().min(1),
+  bytes: z.number().int().min(1),
+});
+export type BookArchiveRef = z.infer<typeof bookArchiveRefSchema>;

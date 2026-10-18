@@ -1,0 +1,44 @@
+{
+  "task": "T-MIG-133 band 133c run-002 — viewer band: archive grammar + shelf + chapter mounts (r0)",
+  "generated_utc": "2026-10-18T22:20:00Z",
+  "operator_order": "trace 1a150dc573c4a2b9 'go 133c'",
+  "band_scope": {
+    "archive_leg": "books/pearson-edexcel/international-gcse/chemistry/4ch1/ on SyllabAI/syllabai-resources (run-001 receipt)",
+    "api_leg": "GET /api/v1/content/books?courseId= + GET /api/v1/content/books/:documentId/chapters",
+    "hub_leg": "corpus-pdf books grammar + host dispatch; lib/books.ts reader; /courses/[course]/books shelf; /courses/[course]/books/[docId] chapter mounts"
+  },
+  "decisions": [
+    "SERVING LAW: T-C20 verbatim — only VALIDATED books serve; validationState is ABSENT from the shelf payload (no state leak); unknown and unvalidated books are the SAME 404/empty. The operator validation flip is the serving lever (never auto-VALIDATED).",
+    "SECURITY POSTURE (documented deviation): books read routes are PUBLIC (no auth) — the student archive family, same posture as the past-papers corpus pages; read-only, zero PII, T-C20-gated instead of auth-gated. Disclosed in routes/books.ts + services/books.ts.",
+    "SCHEMA MIRROR: hub resolves zod v4 vs contracts v3 — parse trees do not compose across majors; lib/books.ts mirrors the strict shapes locally (lib/contracts.ts precedent) and imports the canonical shapes TYPE-ONLY.",
+    "ARCHIVE-HOST DISPATCH: the corpus-pdf proxy serves past-papers/ from syllabai-pastpapers (T-MIG-128 law) and books/ from syllabai-resources (133c) — one validator, two pinned hosts, append-only immutable caching kept.",
+    "PAGE-RANGE MOUNTS: pdf_pages is the viewer coordinate (pdf.js), book_pages the citation coordinate; ?chapter=<chapterKey> is the shelf mount shape, ?page=N the 133d citation drill-in (F-022 nearest-chapter law verbatim).",
+    "PREFETCH: chapter rows ride CorpusPdfLink (T-MIG-128 pointer-intent warm, in-flight cap 2) — one book = one pane URL, so the ~54MB is a once-per-browser cost warmed on first hover."
+  ],
+  "archive_leg_receipt": {
+    "receipt": "band-133c-archive-upload-run-001-r0.json",
+    "commit": "b5897450fc17e1768fa2f893a981448c7396d4e3",
+    "zero_pdf_bytes_moved": true,
+    "page_artifacts": 766
+  },
+  "gates_first_hand": {
+    "typecheck_chain": "0 errors (contracts + shared + db + api)",
+    "full_battery": "2154 pass / 13 skip / 0 fail (2167 tests incl. the 10 new books gates)",
+    "books_routes_tests": "10/0 (HTTP contract + T-C20 + strict-contract mappers)",
+    "golden_selftest": "OK",
+    "retrieval_eval": "22/0 + 19/19 selftest vectors",
+    "census_gate": "GREEN (zero live entries)",
+    "hub_build": "exit 0 (mock mode) — /api/corpus-pdf/[...path], /courses/[course]/books, /courses/[course]/books/[docId] all dynamic",
+    "eslint": "hub band files clean"
+  },
+  "deploy_posture": {
+    "hub_v2": "git-linked: merge to main auto-deploys (the 08c6b17 law) — shelf UI + proxy grammar go live",
+    "api": "CLI-only lever (prj_FN5X, NOT git-linked): the books read route goes live on the next operator api redeploy; until then hub-v2 renders the honest empty/unavailable shelf states",
+    "live_visibility": "operator flip lever: one validation flip (documents + book_chapters rows for e6c0db50-0f84-55de-b50c-e4d49285cd6d) puts the pilot book on the shelf"
+  },
+  "residuals": [
+    "133d: tutor arm + page-true citations (the per-page artifacts are hosted and grammar-served, not yet UI-consumed)",
+    "133e: roll to remaining books",
+    "api redeploy (operator lever) + validation flip (operator lever) light the surface up end-to-end"
+  ]
+}
