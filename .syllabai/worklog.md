@@ -8352,3 +8352,20 @@ Stage Summary:
 - Merge: **548edd7** via PUT /pulls/194/merge, merge_method=merge (clean first-try)
 - Post-merge CI on new main tip 548edd7: verify ✅ hub ✅ (2/2 completed success; replay absent — noted, not blocking)
 - Notes: 1 merge this run (cap 2). PR #190 (draft PoC) present, skipped as draft. No escalation.
+
+---
+
+Task ID: T-MIG-126 run-004 (trace 1a1504ae2ef7ca89, "merge + api redeploy")
+Agent: R0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- Fetch-first: PR #194 ALREADY MERGED of record (548edd7 2026-10-18T18:01:12Z, R0-auto intake; receipt f8cb963 on main; CI 3/3 head + 2/2 main first-hand via API) — the merge leg = verification only, no action (authors-never-self-merge honored). Production API serving was dpl_EDUx6mhX (14:53:12Z CLI, PRE-merge) — the lever was live to fire.
+- REDEPLOY per the T-MIG-092/093/095 recipe of record at main f8cb963 (clean worktree; shim v2 patterns byte-matched at this tip BEFORE patching): bundle 335 modules 3190014 bytes CJS; 6 concept-asset SHAs byte-identical to the pins; shims git-restored clean post-build.
+- WRITE-FREE boot gate on the real Neon wire (of-record DATABASE_URL via env API, LOCAL-ONLY 44-byte JWT key): health 200 UP; malformed login 400 malformed_body (stale-era expectation string resolved as LIVE-PARITY — the prod wire returns the identical shape); cron 401 fail-closed on UNCONFIGURED secret (the STRICTER 042 branch — local boot has no CRON_SECRET); unknown path 401 chain.
+- Fired: vercel CLI 62.7.0 deploy --prod from the 2-file stage -> dpl_4uUmM6rXrv2eoqJTmfp5PuWzZBfH (syllabai-v2-b1v721b61) READY 2026-10-18T18:43:55Z; production alias syllabai-v2.vercel.app switched (v13-verified).
+- LIVE BATTERY 6/6 PASS (scripts/r0_postredeploy_battery.py): health UP; cron 401 exact bearer-law body; unknown 401; register probe 201; BANK-MOUNT DISCRIMINATOR FLIPPED MOUNTED (tutor/bank/questions?topic= 'Rates of reaction' -> 200 resolvedNodes a9ea76ff 4CH1-S3-b — the T-MIG-130 canary's 404-not_mounted era ends); learner-me flashcard-review-schedule 200 honest-empty (due 0 / scheduled 0) — the review read seam LIVE pre-cron. Two earlier battery firings exposed lane-script defects only (body truncation broke token parse; wrong binding axis), fixed in place; zero serving-posture defects.
+- Bookkeeping: card T-MIG-126 IN_REVIEW -> DONE (progress_log run-004); receipt T-MIG-126/run-004-merge-and-api-redeploy-r0.json; this entry; commit pushed .syllabai-only.
+- Hygiene: PAT + Vercel token inline-only throughout (fetch/env API/CLI), zero persistence; .git/config + receipt scrub-asserted 0 credential hits.
+
+Stage Summary:
+- T-MIG-126 CLOSED DONE: the review_schedules writer band is SPECED (PR #193) -> BUILT (PR #194, 12 pins) -> MERGED (548edd7) -> SERVING (b1v721b61). The last dormant memory layer's first PENDING rows land at the next hub 02:00 UTC window (bearer-forward, DECAY_CRON_ENABLED gate) — the ledger then carries REAL decayed/reviewsScheduled counts (the 042 zero-cell era ends) and all EIGHT consumer seams (tutor review precedence, s140 digest line, brief rows, NBA overdue-first, teacher due-batch, learner-me rows, graph markers, smart-lesson) go live unmodified, zero read-side change, zero migration. Write ledger: 3 probe learners of record; zero review_schedules rows, zero cron fires, zero LLM. Rollback posture intact (all prior deployments READY + re-aliasable).

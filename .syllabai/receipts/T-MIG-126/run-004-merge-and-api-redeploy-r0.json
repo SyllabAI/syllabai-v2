@@ -1,0 +1,62 @@
+{
+  "card": "T-MIG-126",
+  "receipt": "run-004-merge-and-api-redeploy-r0",
+  "lane": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "created_at_utc": "2026-10-18T18:5xZ",
+  "operator_trace": "1a1504ae2ef7ca89 'merge + api redeploy'",
+  "merge_of_record": {
+    "found_state_at_fetch_first": "PR #194 ALREADY MERGED 2026-10-18T18:01:12Z (merge commit 548edd7d3e8fcef2972b3bb1bdbe43ef2df657d2, 'R0-auto intake'), receipt commit f8cb963ce557d2b84fa59120cd71f2c0baccb019 on main ('PR #194 merge of record — gates 3/3 head + 2/2 main, bookkeeping only')",
+    "this_lane_action": "first-hand VERIFICATION ONLY (GitHub API: state=closed, merged=true, merge_commit_sha=548edd7; main log read) — the merge itself was landed by the R0-auto intake lane, not this one; the authors-never-self-merge standing order is honored of record",
+    "main_tip_at_redeploy": "f8cb963 (0e3a96e run-003 build + the auto-intake receipt)"
+  },
+  "redeploy_of_record": {
+    "recipe": "the T-MIG-092/093/095 deploy chain of record (scripts/deploy_bundle_build.py + vercel CLI from the 2-file stage)",
+    "source_of_record": "main f8cb963, clean worktree (git status clean at build; shim v2 patterns byte-matched at this tip first-hand before patching)",
+    "bundle": "335 modules, 3,190,014 bytes CJS (bun build --target=node --format=cjs; prior of-record 318/3081705 — the delta = bank mounts + Card A + T-MIG-128/129 + struggle band #192 + review band #194)",
+    "asset_shas": "all 6 concept-graph YAML inlines byte-identical to the of-record pins (concepts 24fa91ac7149682b, concept_edges 8a651dd9e60bfefa, practicals e53e5f87606a2b5a, relationships b3b7529222d77d80, specification_points b1fea69953205077, topics a7b14cbdd34bb9fe)",
+    "shims": "worktree-only (Bun.CryptoHasher->node:crypto, Bun.YAML.parse->js-yaml, the 6 YAMLs inlined via concept-assets.gen.ts, explicit Node adapter entry); git-verified RESTORED after build (git status clean post-build)",
+    "boot_gate_write_free": [
+      "real Node http on the bundle, of-record DATABASE_URL via the Vercel env API (list endpoint decrypt; single-var endpoint 404s for this token), LOCAL-ONLY 44-byte JWT key, production JWT secret never lane-readable (law of record)",
+      "health 200 {groups,status:UP} PASS",
+      "POST /api/v1/auth/login malformed -> 400 {error:malformed_body} — first marked FAIL on a stale-era expectation string ('validation_failed'), resolved as LIVE-PARITY: the production wire returns the byte-identical malformed_body shape (probed first-hand)",
+      "GET /api/v1/cron/nightly-decay -> 401 {reason:'CRON_SECRET is not configured on this api — the decay takeover route fails closed'} — the T-MIG-042 fail-closed law proven on the STRICTER branch (local boot has no CRON_SECRET; production does) — first marked FAIL on expectation drift, resolved as the law working",
+      "GET /api/v1/__not_a_route__ -> 401 (the /api/v1 filter chain) PASS"
+    ],
+    "deploy": {
+      "method": "vercel CLI 62.7.0 deploy --prod --yes from the 2-file stage (api/index.js + vercel.json rewrites /api/v1/(.*) and /actuator/health; .vercel/project.json linked prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ / team_ULL54qkhzKBmnKrpO6BD4mYX)",
+      "deployment": "dpl_4uUmM6rXrv2eoqJTmfp5PuWzZBfH (syllabai-v2-b1v721b61-syllab-ai.vercel.app) READY 2026-10-18T18:43:55Z",
+      "production_alias_switched": true,
+      "alias_verification": "v13 deployments/get?url=syllabai-v2.vercel.app resolves syllabai-v2-b1v721b61-syllab-ai.vercel.app"
+    }
+  },
+  "post_deploy_live_battery": [
+    "1/6 PASS health: 200 {groups:[liveness,readiness],status:UP}",
+    "2/6 PASS cron law: 401 {status:unauthorized, reason:'missing or wrong Authorization bearer — the hub seam forwards the Vercel Cron bearer verbatim'} (CRON_SECRET configured in prod — the wrong/missing-bearer branch)",
+    "3/6 PASS unknown path: 401 (the /api/v1 filter chain)",
+    "4/6 PASS register probe: 201 + accessToken (example.invalid identity of record)",
+    "5/6 PASS BANK-MOUNT DISCRIMINATOR FLIPPED MOUNTED: GET /api/v1/tutor/bank/questions?topic=Rates%20of%20reaction&limit=5 -> 200 {resolvedNodes:[a9ea76ff-9326-4121-8b4b-d4144d4b901f TOPIC 'Rates of reaction' 4CH1-S3-b, baba9241...],...} — the T-MIG-130 canary proved 404-not_found = NOT_MOUNTED on the prior serving bundle; the 200 band response = the bank mounts SERVE",
+    "6/6 PASS review read seam LIVE pre-cron: GET /api/v1/learners/me/flashcard-review-schedule -> 200 {learnerId, generatedAt, summary:{due:0,scheduled:0,nextDueAt:null}, cards:[]} — the activation-law read surface of record, honestly empty until the first window",
+    "script: scripts/r0_postredeploy_battery.py (final leg-set); two earlier firings exposed lane-script defects only (400-char body truncation broke token parse; missing binding axis / wrong axis on the discriminator leg) — each fixed in place, no serving-posture defects"
+  ],
+  "write_ledger": {
+    "probe_users": 3,
+    "probe_identities": "r0-redeploy-run004-*@example.invalid (three firings of the battery during the script-fix loop; register 201 each; zero sessions created, zero review rows, zero cron fires, zero LLM spend)",
+    "review_schedules_rows": 0,
+    "decay_job_runs_rows": 0,
+    "neon_direct_writes": 0,
+    "llm_spend": 0
+  },
+  "disclosures": [
+    "the redeploy bakes ALL pending main content into the serving bundle at once: bank mounts (6633cb0), Card A telemetry (e8c91bd), T-MIG-128/129, the struggle-inference writer band (PR #192), and the review-schedules writer band (PR #194) — the operator-only prod-write law class (the T-MIG-107 content-write band) goes LIVE with this alias switch, per the operator's explicit order",
+    "the nightly window was NOT fired by this lane: the first PENDING review_schedules rows land via the hub's 02:00 UTC cron (bearer-forward, DECAY_CRON_ENABLED gate) or the operator's gated manual fire — the ledger row will then carry REAL decayed/reviewsScheduled counts for the first time (the 042 zero-cell era ends by law)",
+    "three earlier CLI api deploys today (09:46:48 / 12:23:41 / 14:53:12 UTC, dpl_CbfCFqVptFW55ZNCmUTzbDrCFZNo / dpl_CvD6FrtUk7ynkaT1Ty1hz2LdtF9Z / dpl_EDUx6mhX7g7eWAYLw7gYTgMrph9R) pre-date the #194 merge — parallel-lane staging; the alias history is superseded by b1v721b61; all prior deployments stay READY and re-aliasable (rollback posture intact)",
+    "the hub was already serving main f8cb963 (git-connected deploy dpl_CaZxk4tVrhVwDKv4v1Ws3a2KhU8p) — untouched by this lane",
+    "precursor state check at 18:40Z: unauth bank probe returned 401 (the filter chain, not evidence — the T-MIG-130 canary's law), which is why the authed discriminator leg is the content proof"
+  ],
+  "verification": {
+    "run_class": "OPERATOR-ORDERED MERGE + PRODUCTION REDEPLOY (the T-MIG-126 run-003 build serves as merged; zero code changes by this lane)",
+    "hygiene": "PAT + Vercel token inline-only (fetch/deploy/env API), never persisted; git config scrub-asserted 0 credential hits; receipt scrub-asserted 0 token-pattern hits (the three credential prefixes)",
+    "census": "no claim taken (T-MIG-126 already claimed of record; this run closes it DONE)"
+  },
+  "verdict": "MERGED (of record, verified first-hand) AND REDEPLOYED (b1v721b61 READY, alias switched) AND VERIFIED (live battery 6/6) — the review_schedules writer band SERVES; the last dormant memory layer closes at the next nightly window with all eight consumer seams going live unmodified"
+}
