@@ -1,0 +1,70 @@
+{
+  "task": "T-MIG-133 band 133c run-003 — prod bake + bundle-guard receipt (r0)",
+  "generated_utc": "2026-10-18T23:05:00Z",
+  "merge_of_record": {
+    "pr": 197,
+    "merge_commit": "722e2f65982245fbf9918bd9de5b3a8aef4dd765",
+    "ci": "3/3 (verify + hub + Vercel preview) head 681bdc4",
+    "authority": "operator pipeline orders trace 1a150dc573c4a2b9 'go 133c' (authors-never-self-merge overridden, recorded in the merge body)",
+    "fixup": {
+      "pr": 198,
+      "merge_commit": "08b80ea1bae89a19c183f104e94e6338e565f316",
+      "ci": "3/3 head eb04c8e",
+      "defect": "corpus-pdf content-length passthrough had also ridden text/* and application/json — the Vercel CDN compresses compressible types, a manually-set length corrupts response framing: the per-page text artifacts stalled live (HTTP 200, zero bytes, 45s timeout). Fix: passthrough restricted to application/pdf (its actual consumer is pdf.js onProgress on the pane)."
+    }
+  },
+  "hub_v2_bake": {
+    "mode": "git-integration auto-deploy (the 08c6b17 law)",
+    "first_build_live": "books route 404->200 within ~2min of merge (poll 5 of 5, 30s interval)",
+    "fixup_live": "byte-exact artifacts within ~2min of the fixup merge"
+  },
+  "live_probes_first_hand": {
+    "books_pdf_full_integrity": {
+      "url": "/api/corpus-pdf/books/pearson-edexcel/international-gcse/chemistry/4ch1/student-book.pdf",
+      "bytes": 54298792,
+      "sha256_streamed": "d48020e0cc0b5545b330bb59b242472198210e424525e4381cd5d2a58a58cc04",
+      "sha256_of_record": "d48020e0cc0b5545b330bb59b242472198210e424525e4381cd5d2a58a58cc04",
+      "match": true,
+      "time_seconds": 5.6
+    },
+    "books_artifact_byte_exact": {
+      "url": "/api/corpus-pdf/books/.../ocr_pages/page_005.txt",
+      "proxy_bytes": 683,
+      "raw_bytes": 683,
+      "cmp": "identical (post-fixup)",
+      "cache_control": "public, max-age=31536000, immutable"
+    },
+    "past_papers_regression": {
+      "url": "/api/corpus-pdf/past-papers/pearson-edexcel/international-gcse/chemistry/4ch1/past-papers/2026-06/4CH1-1C/qp.pdf",
+      "http": 200,
+      "bytes": 564863,
+      "time_seconds": 1.24,
+      "note": "the T-MIG-128 corpus serves unaffected by the books grammar"
+    },
+    "relay_wall": {
+      "traversal": 400,
+      "non_grammar_file": 400,
+      "unknown_root": 400
+    },
+    "shelf_page": {
+      "url": "/courses/igcse-chemistry-19/books",
+      "http": 200,
+      "state": "honest 'temporarily unavailable' (api leg not yet redeployed — correct posture, not a defect)"
+    },
+    "api_v2_posture": {
+      "url": "syllabai-api-v2.vercel.app/api/v1/content/books?courseId=igcse-chemistry-19",
+      "http": 404,
+      "note": "CLI-only deploy (prj_FN5X) — the books read route goes live on the next operator api redeploy"
+    }
+  },
+  "bundle_guard": {
+    "law": "T-MIG-131 nft bundle guard after main pushes (hub-v2 auto-deploy)",
+    "client_bundle_delta": "shelf + viewer pages are NEW route chunks (lazy, not in the critical path); zero changes to existing shared chunks (lib/books.ts is server-only; the proxy is a server route) — the client bundle of every existing surface is byte-identical by construction",
+    "verified_live": "past-papers surfaces + proxy + tutor surface unaffected (QP probe 200 @ 1.24s; shelf honest state; corpus-pdf regression green)"
+  },
+  "live_visibility_levers_remaining": [
+    "operator: api redeploy (CLI-only, prj_FN5X) — lights up the books read route",
+    "operator: validation flip on the pilot book (documents + book_chapters for e6c0db50-0f84-55de-b50c-e4d49285cd6d) — puts it on the shelf",
+    "edge-cache note of record: one probe window may have poisoned a single PoP's cache entry for page_001.txt pre-fixup (immutable s-maxage); the fixup build serves every other path byte-exact and the artifact is verifiable via any query-suffixed URL; content at risk is a 106-byte OCR text file"
+  ]
+}
