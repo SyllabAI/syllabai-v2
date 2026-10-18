@@ -8127,3 +8127,19 @@ Work Log:
 
 Stage Summary:
 - v2 is the sole system of record and is GREEN end-to-end of record; the only open posture question is the hub deploy pathway attribution (auto-deploy vs operator click) — zero lane action required. Next repo receipt = Task-52; next workspace ledger entry = Task-38.
+
+---
+Task ID: Task-43 (state census + §4 watch close, session trace 1a14deefeeb50911)
+Agent: r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+
+Work Log:
+- Opened 07:24Z 2026-10-18 after 9 idle days. Workspace survived; perms drift re-fixed; origin +154 ff-only to d6f2cc3 (new branches t-mig-124/127/128 in flight at fetch).
+- Census of record: register 126/126 cards DONE, 0 open PRs, main CI 3/3 green (replay joined verify+hub on the board). T-MIG-042 card tail was s33_crosscheck_r4b — the §4 watch-close (window ended 10-11) UNFILED by any lane.
+- Closed it first-hand: read-only full-table census — 34 rows / 34 distinct windows / 0 duplicates; vercel-cron 11/11 days 10-08..10-18 (executedAt 02:29:12.xZ every day — consistent ~29m12s stable offset, Vercel cron-slot behavior disclosed), all 0/0 literals; 48h watch window 10-09->10-11 GREEN zero alert conditions; green posture persisted through 10-18.
+- §3.2 evidence by absence: core CATCH_UP rows ceased after 10-13T03:30Z (decayed=135) — operator Render disable evidently executed 10-13..10-14; disclosed, operator-owned. (CORROBORATION: r1c census 1a14de61ab691ec5 filed the same morning reads Render core 503 suspended first-hand.)
+- Posture: hub unauth decay 401 fail-closed holds; hub health 200 core-api byte-law holds; api health unauth 401 wake law disclosed.
+- Receipt T-MIG-042/run-005-decay-s4-watch-close-r4b.json + card s4_watch_close_r4b key. Write ledger: zero prod writes (one read-only SELECT), 0 env writes, 0 deploys — .syllabai-only direct-main (fetch-first), no force.
+- REBASE DISCLOSURE: mid-act origin move d6f2cc3..3cdbfdd (r1c state census, disjoint receipts, same worklog tail) — UNION-merge resolved per the R35/R36 precedent (origin tail taken verbatim, this entry re-appended on top).
+
+Stage Summary:
+- §4 watch CLOSED GREEN of record; decay band lane-side obligations FULLY discharged (§3.1 r1c / §3.3 + §4-open run-004 / §4-close run-005); §6 archive + decommission remain operator (evidence chain complete). Register 126/126 DONE, board clean.

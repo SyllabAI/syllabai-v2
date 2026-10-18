@@ -1,0 +1,64 @@
+{
+  "family": "T-MIG-042",
+  "run": "run-005-decay-s4-watch-close-r4b",
+  "operator_order": "session trace 1a14deefeeb50911 'Check the current state' — state census round; the census found the §4 watch-close evidence UNFILED on the card tail (s33_crosscheck_r4b still last key) and closed it with first-hand evidence",
+  "lane": "r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)",
+  "timestamp_utc": "2026-10-18T07:24Z - 07:40Z",
+  "opening_census": {
+    "workspace": "survived (9 days idle since 3b6d664); perms drift re-fixed (chmod 600 + core.fileMode=false reaffirmed); credential helper restored",
+    "register": "126/126 cards DONE, 0 not-done, 0 unparseable; 0 open PRs; main d6f2cc3 CI 3/3 green (replay + verify + hub — a third check joined the board since 10-09)",
+    "origin_movement": "+154 commits over 9 days (new branches t-mig-124/r0, t-mig-127/r0, t-mig-128/r0 at fetch time); ff-only clean",
+    "card_tail": "T-MIG-042 s33_crosscheck_r4b (2026-10-09) still the last key — the §4 watch window ended 2026-10-11T07:40Z with NO watch-close filed by any lane"
+  },
+  "watch_census": {
+    "law": "runbook §4: decay metric = decay_job_runs (read-only SELECT permitted); alert = missing row at 02:00 UTC+epsilon or duplicate rows",
+    "method": "read-only SELECT * FROM decay_job_runs (pg driver 3.4.9, single connection); DATABASE_URL via the Vercel single-env decrypt path as of run-004, masked, never printed",
+    "row_count": 34,
+    "distinct_windows": 34,
+    "duplicates": 0,
+    "vercel_cron_rows": {
+      "total": 11,
+      "per_day": "one row per UTC day 2026-10-08 .. 2026-10-18 INCLUSIVE — zero gaps, zero duplicates",
+      "windows": "00:00Z daily; executedAt 02:29:12.xZ every single day (10-08 46.477, 10-09 12.335, 10-10 12.494, 10-11 12.427, 10-12 12.329, 10-13 12.485, 10-14 11.597, 10-15 12.735, 10-16 12.685, 10-17 13.044, 10-18 12.340)",
+      "jitter_pattern": "the execution offset is a CONSISTENT ~29m12s after the 00:00Z window boundary, stable across all 11 days — not random jitter; disclosed as Vercel's actual cron-slot firing behavior (the 02:00Z-ish latency narrative of run-004 refines to: the fire lands ~02:29Z consistently)",
+      "literals": "decayed=0 / reviews_scheduled=0 on every row (ADR-031 law holds)"
+    },
+    "watch_window_48h": {
+      "window": "2026-10-09T07:40Z -> 2026-10-11T07:40Z (opened by run-004)",
+      "verdict": "GREEN — vercel-cron rows present for 10-09 (02:29:12.335Z, pre-window-open), 10-10 (02:29:12.494Z), 10-11 (02:29:12.427Z); zero duplicates; zero missing; zero divergences filed by any lane during the window"
+    },
+    "post_window_continuation": "rows 10-12 .. 10-18 all present and unique — the green posture persisted beyond the 48h gate through census time",
+    "core_rows": {
+      "total": 23,
+      "cease_evidence": "CATCH_UP rows continue daily through 2026-10-13T03:30:00.176Z (decayed=135) and ABSENT from 10-14 through 10-18 — the operator's §3.2 Render disable evidently executed between 2026-10-13T03:30Z and 2026-10-14T02:29Z; evidence by absence, operator-owned act, disclosed not claimed",
+      "note": "core-era decayed counts peaked at 135 and plateaued 10-11..10-13 (135/135/135) before cessation"
+    }
+  },
+  "posture_probes_2026_10_18": {
+    "hub_unauth_decay": "401 — the CONFIGURED-law fail-closed wall holds on the live bundle",
+    "hub_health": "200 {status:ok, service:syllabai-hub, dataMode:core-api, coreConfigured:true} — the §2 flip discriminator byte-law holds",
+    "api_health_unauth": "401 (unauthenticated) — the api wake law posture; the run-002 receipt's leg4 api_health 200 shape was probed differently; disclosed as observed, not a decay-band item"
+  },
+  "verdicts": {
+    "s4_watch": "GREEN and CLOSEABLE — the 48h window passed with zero alert conditions; this receipt is the watch-close evidence of record; the §6 archive and any decommission remain [OPERATOR] acts per the runbook",
+    "exactly_once": "34/34 distinct windows, 0 duplicates across the entire table history (core era + takeover era)",
+    "s3_2": "the disable decision was executed operator-side (rows ceased post 10-13); the runbook §3 chain is now fully discharged including the idle verify",
+    "s6_1": "eligible since 2026-10-11T07:40Z; evidence complete (env act run-002, census run-003, cross-check run-004, watch-close run-005)"
+  },
+  "write_ledger": {
+    "prod_neon": "ZERO writes (one read-only full-table SELECT)",
+    "vercel_env": "0 adds / 0 edits (one decrypt read for the census connection)",
+    "deployments": 0,
+    "fires": 0,
+    "learners": 0,
+    "generations": 0,
+    "secrets_printed": 0,
+    "repo": ".syllabai-only (this receipt + card s4_watch_close_r4b key + worklog Task-43) — zero code deltas"
+  },
+  "residuals": [
+    "operator: §6 archive (48h watch passed; evidence chain run-002..run-005 complete)",
+    "observation: the daily 02:29:12.xZ fire offset is stable — if Vercel ever documents/bills cron slots, this is the measured behavior",
+    "api health unauth 401 posture delta vs the run-002 leg4 probe shape — disclosed for whoever owns the api-surface band"
+  ],
+  "verdict": "§4 48h WATCH CLOSES GREEN OF RECORD — 11/11 vercel-cron days (zero gaps/duplicates), exactly-once global 34/34, core scheduler disable observed operator-side post 10-13, fail-closed posture intact; the decay band's lane-side obligations are fully discharged; §6 archive is the operator's"
+}
