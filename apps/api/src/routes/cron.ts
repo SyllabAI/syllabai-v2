@@ -23,12 +23,24 @@
  * This is an INFRA-CLASS surface (cron ledger bookkeeping, no
  * learner/teacher domain data): no golden case pins it; the unit battery +
  * the §4 decay_job_runs watch govern it (disclosed in the T-MIG-042 card).
+ *
+ * T-MIG-126 ADDENDUM (operator trace 1a1501aea6c2b049 "build it"): the
+ * dispatch now runs the FULL nightly window law — runNightlyDecayWindow
+ * composes [ledger gate -> review-scheduler pass -> bare ledger INSERT
+ * with REAL counts] into ONE sql.transaction (the frozen C-4 posture:
+ * a window race fails the loser's transaction, review inserts roll back
+ * with it). The auth law below is UNCHANGED; the JSON result shape is
+ * unchanged (status ok/already-run + the ledger row — the row's
+ * decayed/reviewsScheduled are now the pass's honest counts, the 042
+ * zero-cell era ends by law). A quiet night still records its row
+ * (0/0 = zero idle states, never a silent skip).
  */
 import { Hono } from "hono";
 import { timingSafeEqual } from "node:crypto";
 import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "../services/identity/users";
-import { runNightlyDecayLedger } from "../services/cron/nightly-decay";
+import { runNightlyDecayWindow } from "../services/cron/nightly-decay";
+import { defaultModelUpdateClock } from "../services/learner-model/model-update";
 
 /** Constant-time bearer compare on the full "Bearer <secret>" payload,
  * length-gated before timingSafeEqual (the 042P R-2 law, mirrored). */
@@ -70,9 +82,14 @@ export function buildCronRouters(env: Record<string, string | undefined> = proce
     }
 
     // Server-derived window (UTC day, the 042P law) — client-supplied
-    // windows are ignored by design (no arbitrary-window backfill).
+    // windows are ignored by design (no arbitrary-window backfill). The
+    // T-MIG-126 window law composes the review-scheduler pass INTO the
+    // exactly-once transaction (gate -> pass -> bare ledger INSERT with
+    // the pass's real counts; a window race rolls the loser back, C-4).
     const windowStart = new Date().toISOString().slice(0, 10);
-    const result = await runNightlyDecayLedger(sql, windowStart);
+    const result = await runNightlyDecayWindow(sql, defaultModelUpdateClock, {
+      windowStart,
+    });
     return c.json(result, 200);
   });
 
