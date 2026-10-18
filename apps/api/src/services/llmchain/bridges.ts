@@ -57,7 +57,15 @@ export function chainAsLlmProvider(chain: FailoverLlmChain): LlmProvider {
     available: () => chain.available(),
     generate: async (req: { system: string; user: string; temperature: number; maxTokens: number }) => {
       const out = await chain.generate(req);
-      return { text: out.text, model: out.model, providerName: out.providerName };
+      return {
+        text: out.text,
+        model: out.model,
+        providerName: out.providerName,
+        // run-013: the finish reason rides through — the tutor's honest
+        // truncation disclosure consumes it (the marking bridge keeps its
+        // own refusal law unchanged)
+        finishReason: out.finishReason ?? null,
+      };
     },
     stream: (req: { system: string; user: string; temperature: number; maxTokens: number }) =>
       chain.stream(req),

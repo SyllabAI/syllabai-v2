@@ -357,6 +357,9 @@ export interface TutorContext {
   knowledgeBrief: string;
   evidence: EvidenceItem[];
   interventionPlan: InterventionPlan;
+  /** run-013: the resolved session paper pin's label (null = unpinned) —
+   *  the prompt renders the ACTIVE PAPER CONTEXT line from it */
+  activePaperLabel: string | null;
 }
 
 /** Java String.format(Locale.ROOT, "%.2f", v) posture for the briefs. */
@@ -379,6 +382,8 @@ export interface AssembleInputs {
   /** the learner's active struggle inferences (the policy's read contract:
    *  not expired, not superseded — enforced on read) */
   activeInferences?: ReadonlyArray<StruggleInferenceRow>;
+  /** run-013: the resolved session paper pin's label (null = unpinned) */
+  activePaperLabel?: string | null;
   now: Date;
 }
 
@@ -422,6 +427,7 @@ export function assembleTutorContext(inputs: AssembleInputs): TutorContext {
     knowledgeBrief: knowledgeBriefOf(knowledge),
     evidence: [...evidence],
     interventionPlan,
+    activePaperLabel: inputs.activePaperLabel ?? null,
   };
 }
 

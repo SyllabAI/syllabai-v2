@@ -138,6 +138,7 @@ function makeApp(
     resolver?: PaperQuestionResolver;
     llm?: LlmProvider;
     auth?: (c: Context) => AuthRow;
+    paperPin?: unknown;
     kgGraph?: unknown;
     learnerModel?: unknown;
     telemetry?: unknown;
@@ -149,6 +150,7 @@ function makeApp(
     scopes,
     vectorRetriever: async () => [],
     paperQuestionResolver: opts.resolver ?? notPaper,
+    paperPin: opts.paperPin as never,
     generator: buildGroundedTutorGenerator(opts.llm ?? dormantLlm),
     telemetry: (opts.telemetry ?? (() => {})) as never,
     learnerModel: opts.learnerModel as never,
@@ -832,5 +834,93 @@ describe("T-MIG-124 the wired learner model + engagement recorder", () => {
     expect(res.status).toBe(200);
     const inserts = sql.queries.filter((q) => q.includes("insert into tutor_topic_engagements"));
     expect(inserts.length).toBe(1); // one matched topic → one row (the param law is pinned in test/learner/engagement-recorder.test.ts)
+  });
+});
+
+// ── run-013 — the session paper pin + the truncation disclosure on the wire ──
+
+describe("run-013 route pins (trace 1a14e30a57a96385)", () => {
+  const PIN = "aa000000-0000-4000-8000-000000000013";
+
+  test("the ask body's paperId reaches the module's pin port; malformed uuids are malformed_body", async () => {
+    const seen: Array<string | null | undefined> = [];
+    const { app } = makeApp(
+      {},
+      {
+        paperPin: async (paperId: string) => {
+          seen.push(paperId);
+          return null;
+        },
+      },
+    );
+    // a malformed uuid fails Jackson's uuid binding → malformed_body
+    const bad = await ask(app, { question: "quiz me on this", paperId: "not-a-uuid" });
+    expect(bad.status).toBe(400);
+    expect(((await bad.json()) as Record<string, unknown>).error).toBe("malformed_body");
+    expect(seen).toEqual([]);
+    // a well-formed id rides to the pipeline (the pin resolves through it)
+    const res = await ask(app, { question: "quiz me on this", paperId: PIN });
+    expect(res.status).toBe(200);
+    expect(seen).toEqual([PIN]);
+  });
+
+  test("an absent paperId asks unpinned (pre-run-013 shape unchanged)", async () => {
+    const seen: Array<string | null | undefined> = [];
+    const { app } = makeApp(
+      {},
+      {
+        paperPin: async (paperId: string) => {
+          seen.push(paperId);
+          return null;
+        },
+      },
+    );
+    const res = await ask(app, { question: "why is the sky blue?" });
+    expect(res.status).toBe(200);
+    // the pin port is never even consulted without a pinId (no wasted read)
+    expect(seen).toEqual([]);
+  });
+
+  test("the stream's done event discloses the truncation law (refusal → false)", async () => {
+    // dormant LLM → the deterministic refusal → truncated:false on done
+    const { app } = makeApp({});
+    const refusal = await ask(app, { question: "why is that?" }, "/api/v1/tutor/ask/stream");
+    expect(refusal.status).toBe(200);
+    const refusalText = await refusal.text();
+    expect(refusalText).toContain("event: done");
+    expect(refusalText).toContain('"truncated":false');
+  });
+
+  test("a token-cap finish discloses truncated:true on the stream's done event", async () => {
+    const truncatingLlm: LlmProvider = {
+      available: () => true,
+      generate: async () => ({ text: "partial", model: "m", providerName: "p", finishReason: "length" }),
+      stream: async function* () {
+        yield { text: "partial", model: "m", providerName: "p", finishReason: "length" };
+      },
+    };
+    const resolver: PaperQuestionResolver = async () => ({
+      items: [oneEvidenceItem()],
+      identityParsed: false,
+      identityLabel: null,
+    });
+    const { app } = makeApp(
+      {
+        "from tutor_sessions where id =": ownedRoute([SESSION_A]),
+        "select seq from tutor_session_turns": [],
+        "insert into tutor_session_turns": [],
+        "update tutor_sessions": [],
+      },
+      { resolver, llm: truncatingLlm },
+    );
+    const res = await ask(
+      app,
+      { question: "quiz me on this", sessionId: SESSION_A },
+      "/api/v1/tutor/ask/stream",
+    );
+    expect(res.status).toBe(200);
+    const text = await res.text();
+    expect(text).toContain("event: done");
+    expect(text).toContain('"truncated":true');
   });
 });

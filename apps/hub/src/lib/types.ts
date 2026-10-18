@@ -619,6 +619,9 @@ export interface TutorAnswerView {
   model: string | null;
   provider: string;
   refused: boolean;
+  /** run-013: honest truncation disclosure (token-cap finish). Older
+   *  upstreams omit it — read as false via `=== true` on the wire. */
+  truncated?: boolean;
   latencyMs: number;
 }
 

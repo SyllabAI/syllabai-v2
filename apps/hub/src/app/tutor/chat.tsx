@@ -50,6 +50,7 @@ import { MessageItem } from "./message-item";
 import { SidebarBrand, ThreadSidebar } from "./thread-sidebar";
 import type { Thread, Turn, TurnBand } from "./threads";
 import {
+  activePaperIdOf,
   appendMessages,
   bindSession,
   createThread,
@@ -323,6 +324,15 @@ export function TutorChat({
 
       try {
         const token = getToken();
+        // run-013 session paper pin: the thread's LAST served band-2 paper
+        // card is the learner's working context — follow-up turns ("explain
+        // question 1", "quiz me on this") anchor to it instead of
+        // re-retrieving from scratch. Advisory upstream: core pins only
+        // VALIDATED in-scope papers, and an ask that names its own paper
+        // identity always wins over the pin.
+        const activePaperId = activePaperIdOf(
+          getThreads().find((t) => t.id === threadId)?.messages ?? [],
+        );
         const res = await fetch("/api/ai/chat", {
           method: "POST",
           headers: {
@@ -336,6 +346,7 @@ export function TutorChat({
             // V53: the course scope rides EVERY ask — core resolves it
             // fail-closed and refuses cross-course asks deterministically
             ...(courseRef ? { courseRef } : {}),
+            ...(activePaperId ? { paperId: activePaperId } : {}),
           }),
           signal: controller.signal,
         });
@@ -390,6 +401,7 @@ export function TutorChat({
               text?: string;
               message?: string;
               band?: TurnBand;
+              truncated?: boolean;
             };
             try {
               data = JSON.parse(dataLine);
@@ -417,6 +429,9 @@ export function TutorChat({
               throw new Error((data.message as string) || "provider error");
             } else if (event === "done") {
               sawDone = true;
+              // run-013: the upstream's honest truncation disclosure rides
+              // the terminal event — surface it on the turn
+              if (data.truncated === true) patchTurn({ truncated: true });
             }
           }
         }

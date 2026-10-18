@@ -237,6 +237,11 @@ export function MessageItem({
               stopped
             </Badge>
           )}
+          {message.truncated && (
+            <Badge variant="outline" className="h-4 w-fit border-warn/30 px-1.5 text-[9.5px] text-warn">
+              may be cut off
+            </Badge>
+          )}
         </div>
 
         {/* the answer renders on the canvas — the bubble box is retired
@@ -270,6 +275,14 @@ export function MessageItem({
               ) : waiting ? (
                 <WaitingStatus message={message} />
               ) : null}
+              {message.truncated && !message.error && !streaming && (
+                <div className="flex items-center gap-2 rounded-md border border-warn/30 bg-warn/5 px-2.5 py-1.5 text-xs text-warn">
+                  <TriangleAlert className="size-3.5 shrink-0" aria-hidden />
+                  <span>
+                    This response hit the length limit and may be cut off mid-sentence — ask me to continue.
+                  </span>
+                </div>
+              )}
               {message.band && !message.error && (
                 <BandCard band={message.band} courseSlug={courseSlug} />
               )}

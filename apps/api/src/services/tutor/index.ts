@@ -180,6 +180,13 @@ export {
   type ResolverScope,
 } from "./paper-question";
 export {
+  // run-013: the session paper pin (the advisory follow-up anchor)
+  buildPaperPinResolver,
+  paperPinLabel,
+  type PaperPinResolution,
+  type PaperPinResolver,
+} from "./paper-question";
+export {
   // the Fetch query parser (tranche-1b — the resolver's shared parser)
   parseFetchQuery,
   hasExplicitPaper,
@@ -224,6 +231,7 @@ export interface TutorModule {
     history: ReadonlyArray<ConversationTurn>,
     sessionId: string | null,
     courseRef: string | null,
+    paperPinId?: string | null,
   ) => ReturnType<typeof karagAsk>;
   askStream: (
     learnerId: string | null,
@@ -231,6 +239,7 @@ export interface TutorModule {
     history: ReadonlyArray<ConversationTurn>,
     sessionId: string | null,
     courseRef: string | null,
+    paperPinId?: string | null,
   ) => AsyncGenerator<TutorStreamEvent>;
 }
 
@@ -255,6 +264,7 @@ export function buildTutorModule(
     scopes: deps.scopes,
     vectorRetriever: deps.vectorRetriever,
     paperQuestionResolver: deps.paperQuestionResolver,
+    paperPin: deps.paperPin,
     generator: deps.generator,
     telemetry: deps.telemetry,
     learnerModel: deps.learnerModel,
@@ -265,9 +275,9 @@ export function buildTutorModule(
   };
   return {
     sessionStore: buildTutorSessionStore(sql, clock),
-    ask: (learnerId, question, history, sessionId, courseRef) =>
-      karagAsk(karag, learnerId, question, history, sessionId, courseRef),
-    askStream: (learnerId, question, history, sessionId, courseRef) =>
-      karagAskStream(karag, learnerId, question, history, sessionId, courseRef),
+    ask: (learnerId, question, history, sessionId, courseRef, paperPinId) =>
+      karagAsk(karag, learnerId, question, history, sessionId, courseRef, paperPinId ?? null),
+    askStream: (learnerId, question, history, sessionId, courseRef, paperPinId) =>
+      karagAskStream(karag, learnerId, question, history, sessionId, courseRef, paperPinId ?? null),
   };
 }

@@ -302,7 +302,7 @@ function routes(o: Overrides = {}): Route[] {
 
 interface Fakes {
   vector?: Array<Record<string, unknown>>;
-  generator?: (query: string, context: unknown) => Promise<{ answer: string; model: string | null; provider: string }>;
+  generator?: (query: string, context: unknown) => Promise<{ answer: string; model: string | null; provider: string; finishReason?: string | null }>;
 }
 
 function build(o: Overrides & Fakes = {}) {
@@ -330,8 +330,11 @@ function build(o: Overrides & Fakes = {}) {
       generate: async (query: string, _history, context) => {
         generatorCalled++;
         lastContext = context as unknown as Record<string, unknown>;
-        if (o.generator) return o.generator(query, context);
-        return { answer: "grounded answer [1]", model: "fake", provider: "fake" };
+        if (o.generator) {
+          const r = await o.generator(query, context);
+          return { finishReason: null as string | null, ...r };
+        }
+        return { answer: "grounded answer [1]", model: "fake", provider: "fake", finishReason: null };
       },
       streamGenerate: async function* () {},
     },

@@ -64,6 +64,10 @@ import {
 } from "./sanitize";
 import type { SqlFn } from "./sql";
 import type { Clock } from "./session-store";
+import {
+  type PaperPinResolver,
+  paperPinLabel,
+} from "./paper-question";
 
 // ── budgets (:96-105) ───────────────────────────────────────────────────────
 
@@ -75,6 +79,16 @@ export const TUTOR_EVIDENCE_LIMIT = 6; // syllabai.tutor.evidence-limit
  *  capped at this many admitted items (run-004/005 live: 3 of 6 citations
  *  were front-matter the learner never needs). A no-pin ask is untouched. */
 export const TUTOR_PIN_FILLER_CAP = 2;
+
+/** Run-013 honest truncation law — the tutor's own copy of the marking
+ *  pipeline's isTruncationFinish (services/llmchain/bridges.ts; per-module
+ *  doctrine — importing it would cycle bridges→tutor/karag). Normalized
+ *  lower-case; the provider vocabulary for a token-cap cut. */
+export function isTruncationFinish(finishReason: string | null | undefined): boolean {
+  if (finishReason == null) return false;
+  const normalized = finishReason.trim().toLowerCase();
+  return normalized === "length" || normalized === "max_tokens";
+}
 
 // ── ports (the module composes; no silent defaults for safety-critical laws) ─
 
@@ -148,12 +162,17 @@ export interface GeneratedAnswer {
   answer: string;
   model: string | null;
   provider: string;
+  /** the provider's finish reason when it sent one (run-013 truncation
+   *  disclosure law; null when absent/deterministic) */
+  finishReason: string | null;
 }
 
 export interface GeneratedDelta {
   answer: string;
   model: string | null;
   provider: string | null; // null on the sanitizer's tail-flush delta
+  /** per-chunk finish reason (non-null only on the provider's final chunk) */
+  finishReason: string | null;
 }
 
 /** The curriculum-scope port (services/content/scope.ts composition). */
@@ -218,6 +237,9 @@ interface PreparedAsk {
   identityParsed: boolean;
   courseRef: string | null;
   unresolvedCourseRef: boolean;
+  /** run-013: the resolved session paper pin's label (null = unpinned or
+   *  unresolvable) — rendered as the ACTIVE PAPER CONTEXT prompt line */
+  activePaperLabel: string | null;
 }
 
 export interface KaragDeps {
@@ -227,6 +249,9 @@ export interface KaragDeps {
   scopes: CurriculumScopes;
   vectorRetriever: VectorRetriever;
   paperQuestionResolver: PaperQuestionResolver;
+  /** run-013 session paper pin (OPTIONAL — advisory enhancement; absent =
+   *  every ask degrades to the unpinned path honestly) */
+  paperPin?: PaperPinResolver;
   generator: TutorGenerator;
   telemetry: TelemetrySink;
   reranker?: EvidenceReranker;
@@ -240,7 +265,10 @@ export interface KaragDeps {
  * prepare (:417-535) — the retrieval half of the pipeline (steps 0 → 4.5):
  * scope resolution, working-memory query enrichment, KG intent, hybrid
  * retrieval, paper lead pinning, rank fusion, dedup/cap and the fail-open
- * guard. SHARED by the blocking and streaming asks.
+ * guard. SHARED by the blocking and streaming asks. Run-013: an optional
+ * session paper pin (paperPinId — the hub's last served band-2 card)
+ * anchors the follow-up turns; advisory only, the resolver's verdict and
+ * the fail-open guard stay supreme.
  */
 export async function prepare(
   deps: KaragDeps,
@@ -248,6 +276,7 @@ export async function prepare(
   question: string,
   history: ReadonlyArray<ConversationTurn>,
   courseRef: string | null,
+  paperPinId: string | null = null,
 ): Promise<PreparedAsk> {
   if (question == null || question.trim().length === 0) {
     throw new ArgumentError("question must not be blank");
@@ -305,7 +334,29 @@ export async function prepare(
     scope == null
       ? { items: [], identityParsed: false, identityLabel: null }
       : await deps.paperQuestionResolver(enriched, scope);
-  const pinned = resolution.items;
+
+  // 2.6 the session paper pin (run-013): advisory UI state, fired ONLY when
+  // the ask named NO complete paper identity of its own — a named identity
+  // keeps the resolver's verdict and the fail-open guard supreme (a pin
+  // must never launder wrong-paper chunks past the guard). Pin chunks enter
+  // the SAME lead pool as resolver pins (contentPins — outside RRF, the
+  // filler cap follows), and the resolved label rides the prompt as the
+  // ACTIVE PAPER CONTEXT line. Any failure degrades to the unpinned ask.
+  let pinItems: EvidenceItem[] = [];
+  let activePaperLabel: string | null = null;
+  if (
+    paperPinId != null &&
+    scope != null &&
+    !resolution.identityParsed &&
+    deps.paperPin != null
+  ) {
+    const pin = await deps.paperPin(paperPinId, query, scope).catch(() => null);
+    if (pin != null) {
+      pinItems = pin.items;
+      activePaperLabel = paperPinLabel(pin);
+    }
+  }
+  const pinned = [...resolution.items, ...pinItems];
 
   // 3. rank fusion (plan §7 per-kind weights — the P3 serving posture)
   const fused = fuseWithPlanWeights([kgCandidates, vectorCandidatesList]);
@@ -393,6 +444,7 @@ export async function prepare(
     identityParsed: resolution.identityParsed,
     courseRef: ref,
     unresolvedCourseRef,
+    activePaperLabel,
   };
 }
 
@@ -425,6 +477,8 @@ export type TutorStreamEvent =
       evidenceCount: number;
       latencyMs: number;
       topics: Array<{ code: string; title: string; matchScore: number }>;
+      /** run-013: honest truncation disclosure (token-cap finish) */
+      truncated: boolean;
     };
 
 function matchedTopicIds(knowledge: KnowledgeContext): string[] {
@@ -449,6 +503,9 @@ export interface AskResult {
   model: string | null;
   provider: string;
   refused: boolean;
+  /** run-013: the generation ended on a token-cap finish — the wire
+   *  discloses it; the text itself is delivered verbatim */
+  truncated: boolean;
   latencyMs: number;
 }
 
@@ -484,6 +541,7 @@ async function assembleContext(
     engagements,
     pendingReviews: pending,
     activeInferences: inferences,
+    activePaperLabel: prep.activePaperLabel,
     now: deps.clock.now(),
   });
 }
@@ -496,9 +554,10 @@ export async function karagAsk(
   history: ReadonlyArray<ConversationTurn>,
   sessionId: string | null,
   courseRef: string | null,
+  paperPinId: string | null = null,
 ): Promise<AskResult> {
   const startedAt = Date.now();
-  const prep = await prepare(deps, learnerId, question, history, courseRef);
+  const prep = await prepare(deps, learnerId, question, history, courseRef, paperPinId);
   const refused = prep.evidence.length === 0;
 
   let generated: GeneratedAnswer;
@@ -509,15 +568,22 @@ export async function karagAsk(
         answer: courseScopeRefusal(prep.courseRef ?? ""),
         model: null,
         provider: "deterministic-course-refusal",
+        finishReason: null,
       };
     } else if (prep.identityBoundUnserved) {
       generated = {
         answer: paperIdentityRefusal(prep.identityLabel ?? "that paper question"),
         model: null,
         provider: "deterministic-paper-refusal",
+        finishReason: null,
       };
     } else {
-      generated = { answer: TUTOR_REFUSAL, model: null, provider: "deterministic-refusal" };
+      generated = {
+        answer: TUTOR_REFUSAL,
+        model: null,
+        provider: "deterministic-refusal",
+        finishReason: null,
+      };
     }
   } else {
     const context = await assembleContext(deps, prep, learnerId);
@@ -557,6 +623,7 @@ export async function karagAsk(
     model: generated.model,
     provider: generated.provider,
     refused,
+    truncated: isTruncationFinish(generated.finishReason),
     latencyMs,
   };
 }
@@ -574,9 +641,10 @@ export async function* karagAskStream(
   history: ReadonlyArray<ConversationTurn>,
   sessionId: string | null,
   courseRef: string | null,
+  paperPinId: string | null = null,
 ): AsyncGenerator<TutorStreamEvent> {
   const startedAt = Date.now();
-  const prep = await prepare(deps, learnerId, question, history, courseRef);
+  const prep = await prepare(deps, learnerId, question, history, courseRef, paperPinId);
   const citations = resolveCitations(prep.evidence);
   const topics = topicMatches(prep);
   const refused = prep.evidence.length === 0;
@@ -624,6 +692,7 @@ export async function* karagAskStream(
       evidenceCount: 0,
       latencyMs,
       topics,
+      truncated: false,
     };
     return;
   }
@@ -638,6 +707,9 @@ export async function* karagAskStream(
   let provider: string | null = null;
   let model: string | null = null;
   let metaSent = false;
+  // run-013: the provider's finish reason arrives on the final chunk —
+  // tracked across deltas, disclosed on the terminal event
+  let lastFinishReason: string | null = null;
 
   yield { kind: "citations", citations, sufficient: evidenceCount > 0 };
 
@@ -646,6 +718,7 @@ export async function* karagAskStream(
     full += delta.answer;
     if (provider == null && delta.provider != null) provider = delta.provider;
     if (model == null && delta.model != null) model = delta.model;
+    if (delta.finishReason != null) lastFinishReason = delta.finishReason;
     if (!metaSent) {
       metaSent = true;
       yield {
@@ -693,12 +766,16 @@ export async function* karagAskStream(
     evidenceCount,
     latencyMs,
     topics,
+    truncated: isTruncationFinish(lastFinishReason),
   };
 }
 
 // ── the GroundedTutorGenerator over an injected LLM provider (:117-245) ─────
 
-/** The LlmProvider port (infrastructure/llm) — the injected free-tier chain. */
+/** The LlmProvider port (infrastructure/llm) — the injected free-tier chain.
+ *  Run-013: the finish reason rides the response when the provider sends it
+ *  (the chain forwards member chunks verbatim; the truncation disclosure
+ *  law consumes it) — optional, so older adapters stay assignable. */
 export interface LlmProvider {
   available(): boolean;
   generate(req: {
@@ -706,13 +783,23 @@ export interface LlmProvider {
     user: string;
     temperature: number;
     maxTokens: number;
-  }): Promise<{ text: string; model: string; providerName: string }>;
+  }): Promise<{
+    text: string;
+    model: string;
+    providerName: string;
+    finishReason?: string | null;
+  }>;
   stream(req: {
     system: string;
     user: string;
     temperature: number;
     maxTokens: number;
-  }): AsyncIterable<{ text: string; model: string; providerName: string }>;
+  }): AsyncIterable<{
+    text: string;
+    model: string;
+    providerName: string;
+    finishReason?: string | null;
+  }>;
 }
 
 export interface GeneratorOptions {
@@ -767,6 +854,7 @@ export function buildGroundedTutorGenerator(
           answer: sanitized,
           model: response.model,
           provider: response.providerName,
+          finishReason: response.finishReason ?? null,
         };
       } catch (e) {
         if (e instanceof TutorGenerationError) throw e;
@@ -790,16 +878,28 @@ export function buildGroundedTutorGenerator(
         temperature,
         maxTokens,
       };
+      let lastFinishReason: string | null = null;
       try {
         for await (const delta of chain.stream(request)) {
           const text = sanitizer.push(delta.text == null ? "" : delta.text);
-          if (text.length === 0) continue;
-          yield { answer: text, model: delta.model, provider: delta.providerName };
+          if (text.length === 0) {
+            // a zero-text chunk can still carry the terminal finish reason
+            if (delta.finishReason != null) lastFinishReason = delta.finishReason;
+            continue;
+          }
+          if (delta.finishReason != null) lastFinishReason = delta.finishReason;
+          yield {
+            answer: text,
+            model: delta.model,
+            provider: delta.providerName,
+            finishReason: delta.finishReason ?? null,
+          };
         }
         // tail flush: the sanitizer's held-back remainder goes through the
         // exact blocking sanitizeAnswer; identity fields are null (:226-241)
         const tail = sanitizer.flush();
-        if (tail.length > 0) yield { answer: tail, model: null, provider: null };
+        if (tail.length > 0)
+          yield { answer: tail, model: null, provider: null, finishReason: lastFinishReason };
       } catch (e) {
         if (e instanceof TutorGenerationError) throw e;
         throw new TutorGenerationError();

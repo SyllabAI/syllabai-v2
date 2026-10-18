@@ -51,6 +51,13 @@ export const tutorAskRequestSchema = z.object({
   sessionId: z.string().uuid().optional(),
   // V53 (ADR-030) opaque hub course reference; @Size(max = 64)
   courseRef: z.string().max(64).optional(),
+  // Run-013 session paper pin: the bank band-2 card the learner is working
+  // from (the hub forwards the LAST served paper card's paperId of the
+  // thread). Advisory UI state, never a learner-typed identity: the pin
+  // anchors retrieval only when the ask itself names NO complete paper
+  // identity, and only VALIDATED in-scope papers pin. Absent = the
+  // unpinned ask (behavior unchanged).
+  paperId: z.string().uuid().optional(),
 });
 export type TutorAskRequest = z.infer<typeof tutorAskRequestSchema>;
 
@@ -94,6 +101,11 @@ export const tutorAnswerViewSchema = z.object({
   // provider identity ("deterministic-refusal" when refused)
   provider: z.string(),
   refused: z.boolean(),
+  // Run-013 honest truncation disclosure: true when the generation ended on
+  // a token-cap finish (the isTruncationFinish law: "length" | "max_tokens").
+  // Deterministic refusals are always false. The text itself is delivered
+  // verbatim — the flag is presentation truth, never surgery.
+  truncated: z.boolean(),
   latencyMs: z.number(),
 });
 export type TutorAnswerView = z.infer<typeof tutorAnswerViewSchema>;
@@ -171,6 +183,10 @@ export const tutorStreamDeltaEventSchema = z.object({
 export const tutorStreamDoneEventSchema = z.object({
   event: z.literal("done"),
   ok: z.literal(true),
+  // Run-013: the honest truncation flag rides the TERMINAL event (it is not
+  // knowable when meta commits with the first delta). Absent on older
+  // upstreams — the hub reads data.truncated === true only.
+  truncated: z.boolean().optional(),
 });
 
 export const tutorStreamErrorEventSchema = z.object({

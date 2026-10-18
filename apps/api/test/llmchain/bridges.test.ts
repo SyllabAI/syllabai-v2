@@ -110,7 +110,8 @@ describe("chainAsLlmProvider — the tutor/CLA bridge", () => {
     const provider = chainAsLlmProvider(chain);
     expect(provider.available()).toBe(true);
     const out = await provider.generate({ system: "s", user: "u", temperature: 0.2, maxTokens: 900 });
-    expect(out).toEqual({ text: "grounded", model: "groq-model", providerName: "groq" });
+    // run-013: the finish reason rides through (the honest truncation law)
+    expect(out).toEqual({ text: "grounded", model: "groq-model", providerName: "groq", finishReason: "stop" });
   });
 
   test("stream rides the chain's stream (deltas in order)", async () => {

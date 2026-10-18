@@ -176,6 +176,10 @@ export interface PromptContext {
     rationale: string;
     actions: string[];
   };
+  /** run-013: the resolved session paper pin's label (null = unpinned) —
+   *  OUR scaffolding (corpus metadata, outside the fences like the source
+   *  labels), rendered as the ACTIVE PAPER CONTEXT block. */
+  activePaperLabel?: string | null;
 }
 
 /** Paper evidence renders to the larger bound (:368-376). */
@@ -295,6 +299,18 @@ export function userPrompt(
     sb.push(context.memoryBrief + "\n\n");
   }
   sb.push(`CURRICULUM CONTEXT:\n${context.knowledgeBrief}\n\n`);
+  // run-013 session paper pin: an unfenced scaffold block (the label is
+  // corpus metadata read from the exam_papers row, never learner data) —
+  // the model must read "this paper"/"question N" against the pinned paper
+  // and still answer only from the SOURCES (the honesty laws are untouched)
+  if (context.activePaperLabel != null && context.activePaperLabel.trim() !== "") {
+    sb.push(
+      `ACTIVE PAPER CONTEXT:\nThe learner is currently working from the exam paper ` +
+        `"${context.activePaperLabel}". Unqualified references to "this paper" or ` +
+        `"question N" in the QUESTION mean THIS paper; answer from the SOURCES ` +
+        `below and say honestly when they do not carry what is asked.\n\n`,
+    );
+  }
   const plan = context.interventionPlan;
   sb.push(`INTERVENTION PLAN:\n${plan.type} — ${plan.rationale}\n`);
   for (const action of plan.actions) {

@@ -789,3 +789,144 @@ export function buildPaperQuestionResolver(sql: SqlFn) {
     scope: ResolverScope,
   ): Promise<PaperResolutionResult> => resolveWithVerdict(sql, bank, retrievalQueryText, scope);
 }
+
+// ── the session paper pin (run-013, trace 1a14e30a57a96385) ─────────────────
+
+/**
+ * The pinned-paper row the ask's retrieval anchors to. Advisory UI state:
+ * the hub forwards the LAST band-2 paper card the learner was served in the
+ * thread, so "explain question 1" / "quiz me on this" mean THIS paper
+ * instead of re-retrieving from scratch (the 1a14dbf9ab8d7eb1 diagnosis
+ * defect (2) — the follow-up that anchored to another variant's water-test
+ * chunk). Never a learner-typed identity: the resolver's verdict and the
+ * fail-open guard stay supreme.
+ */
+export interface PaperPinResolution {
+  paperId: string;
+  paperCode: string | null;
+  sessionLabel: string | null;
+  series: string | null;
+  year: number | null;
+  validationState: string;
+  /** Lead chunks: the asked question's own QP/MS chunks (a question-number
+   *  ref parses), else the paper's opening QP chunks by chunk_index (the
+   *  deterministic "this paper" anchor, disclosed in the prompt line). */
+  items: EvidenceItem[];
+}
+
+/** The optional KaragDeps seam — routes wire buildPaperPinResolver(sql);
+ *  tests may inject fakes; an absent port = the pin silently degrades to
+ *  the unpinned ask (advisory, never a gate). */
+export type PaperPinResolver = (
+  paperId: string,
+  question: string,
+  scope: { curriculumVersionId: string },
+) => Promise<PaperPinResolution | null>;
+
+/** The honest ACTIVE PAPER CONTEXT label: code + session label, trimmed. */
+export function paperPinLabel(pin: {
+  paperCode: string | null;
+  sessionLabel: string | null;
+}): string {
+  return [pin.paperCode, pin.sessionLabel]
+    .filter((s) => s != null && s.trim() !== "")
+    .join(" ")
+    .trim();
+}
+
+/** The pinned-paper row projection (exam_papers × subjects — the pin gate
+ *  reads VALIDATED + in-scope only). */
+interface PinPaperRow {
+  id: string;
+  paper_code: string | null;
+  session_label: string | null;
+  series: string | null;
+  year: number | null;
+  validation_state: string;
+  question_paper_document_id: string | null;
+  mark_scheme_document_id: string | null;
+}
+
+/**
+ * buildPaperPinResolver — the pin tier over the SAME chunk machinery the
+ * bank tier uses (findTopByDocumentId / chunksByRowId / evidence), so the
+ * serving laws hold identically: only a VALIDATED exam_papers row inside
+ * the ask's curriculum scope pins (REJECTED/SUGGESTED never serve), the
+ * document row's own SUGGESTED state does not block (branch-1 posture),
+ * and only a REJECTED document row is excluded. Caps reuse the bank tier's
+ * (QP 2; MS 2 on mark-scheme-seeking asks).
+ *
+ * Failure is honest and local: ANY error resolves null and the ask proceeds
+ * unpinned — the pin is enhancement, never a gate (the bank-band probe
+ * posture). A pin that resolves but binds zero chunks still carries the
+ * active-paper label into the prompt: the honesty laws (insufficient
+ * SOURCES → say what is missing) govern the answer, not a silent re-retrieval.
+ */
+export function buildPaperPinResolver(sql: SqlFn): PaperPinResolver {
+  return async (paperId, question, scope) => {
+    if (paperId == null || paperId.trim() === "" || scope == null) return null;
+    try {
+      const rows = (await sql`
+        select ep.id, ep.paper_code, ep.session_label, ep.series, ep.year,
+               ep.validation_state, ep.question_paper_document_id, ep.mark_scheme_document_id
+        from exam_papers ep
+        join subjects s on s.id = ep.subject_id
+        where ep.id = ${paperId}
+          and ep.validation_state = 'VALIDATED'
+          and s.curriculum_version_id = ${scope.curriculumVersionId}
+        limit 1`) as unknown as PinPaperRow[];
+      const paper = rows[0];
+      if (paper == null) return null;
+
+      const parsed = parseFetchQuery(question);
+      const items: EvidenceItem[] = [];
+      if (parsed.qnum != null) {
+        if (paper.question_paper_document_id != null) {
+          items.push(
+            ...(await documentQuestionChunksAsync(
+              sql,
+              paper.question_paper_document_id,
+              parsed.qnum,
+              partAtomOf(parsed),
+              KIND_QUESTION_PAPER,
+              MAX_QP_ITEMS,
+            )),
+          );
+        }
+        if (parsed.msSeeking && paper.mark_scheme_document_id != null) {
+          items.push(
+            ...(await documentQuestionChunksAsync(
+              sql,
+              paper.mark_scheme_document_id,
+              parsed.qnum,
+              partAtomOf(parsed),
+              KIND_MARK_SCHEME,
+              MAX_MS_ITEMS_SEEKING,
+            )),
+          );
+        }
+      } else if (paper.question_paper_document_id != null) {
+        // no question-number ref ("quiz me on this") — the paper's own
+        // opening QP chunks anchor deterministically by chunk_index
+        const top = await findTopByDocumentId(sql, paper.question_paper_document_id);
+        const doc = top != null && top.validation_state !== "REJECTED" ? top : null;
+        if (doc != null && doc.kind === KIND_QUESTION_PAPER) {
+          const chunks = await chunksByRowId(sql, doc.id);
+          items.push(...chunks.slice(0, MAX_QP_ITEMS).map((chunk) => evidence(doc, chunk)));
+        }
+      }
+      return {
+        paperId: String(paper.id),
+        paperCode: paper.paper_code,
+        sessionLabel: paper.session_label,
+        series: paper.series,
+        year: paper.year,
+        validationState: paper.validation_state,
+        items,
+      };
+    } catch {
+      // advisory resolution — never gate the ask on pin machinery
+      return null;
+    }
+  };
+}

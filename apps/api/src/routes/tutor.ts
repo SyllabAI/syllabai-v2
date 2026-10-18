@@ -71,6 +71,7 @@ import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "../services/identity/users";
 import { defaultClock } from "../services/selfmark";
 import { buildSqlLearnerModel } from "../services/tutor/learner-model";
+import { buildPaperPinResolver } from "../services/tutor/paper-question";
 import { tutorEngagementTelemetrySink } from "../services/learner/engagement-recorder";
 import { buildLlmChain, chainAsLlmProvider, type FailoverLlmChain } from "../services/llmchain";
 import {
@@ -214,6 +215,7 @@ interface ParsedAskBody {
   history?: Array<{ role: "user" | "assistant"; text: string }>;
   sessionId?: string;
   courseRef?: string;
+  paperId?: string;
 }
 
 /**
@@ -273,6 +275,7 @@ export function createTutorRouter(module: TutorModule): Hono {
         history,
         parsed.data.sessionId ?? null,
         courseRef,
+        parsed.data.paperId ?? null,
       );
       // §22 session append AFTER the pipeline (:177-191); the append guard:
       // a persistence failure must not 5xx an answer the learner already
@@ -321,9 +324,10 @@ export function createTutorRouter(module: TutorModule): Hono {
       const learnerId = auth.userId;
       const question = parsed.data.question;
       const sessionId = parsed.data.sessionId ?? null;
+      const paperPinId = parsed.data.paperId ?? null;
       return streamSSE(c, async (stream) => {
         try {
-          for await (const event of module.askStream(learnerId, question, history, sessionId, courseRef)) {
+          for await (const event of module.askStream(learnerId, question, history, sessionId, courseRef, paperPinId)) {
             if (event.kind === "citations") {
               await stream.writeSSE({
                 event: "citations",
@@ -363,7 +367,7 @@ export function createTutorRouter(module: TutorModule): Hono {
                   // the delivered answer (:314-318)
                 }
               }
-              await stream.writeSSE({ event: "done", data: JSON.stringify({ ok: true }) });
+              await stream.writeSSE({ event: "done", data: JSON.stringify({ ok: true, truncated: event.truncated }) });
             }
           }
         } catch {
@@ -438,6 +442,10 @@ export function buildTutorRouters(
     scopes: new CurriculumScopeResolver(sql),
     vectorRetriever: buildSqlVectorArm(sql, resolveEmbeddingProvider(env)),
     paperQuestionResolver: buildPaperQuestionResolver(sql),
+    // run-013: the session paper pin (advisory follow-up anchor) rides the
+    // same sql seam — a pin that cannot resolve a VALIDATED in-scope paper
+    // degrades to the unpinned ask honestly
+    paperPin: buildPaperPinResolver(sql),
     generator: buildGroundedTutorGenerator(llm),
     // T-MIG-124: the learner model is WIRED (the ported T-026 policy + s140
     // digest + brief read real tables; empty substrate degrades honestly to

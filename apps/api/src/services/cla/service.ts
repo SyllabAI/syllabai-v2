@@ -900,7 +900,12 @@ export function buildClaService(deps: ClaServiceDeps) {
       let interventionType: string | null = null;
       if (evidence.length === 0) {
         refused = true;
-        generated = { answer: CLA_REFUSAL, model: null, provider: "deterministic-refusal" };
+        generated = {
+          answer: CLA_REFUSAL,
+          model: null,
+          provider: "deterministic-refusal",
+          finishReason: null,
+        };
       } else {
         const scope = learnerStateScope(context.topicNodeId, related.prerequisites);
         const ownState = await trace(() => learnerState(registryDeps, learnerId, scope));
@@ -926,6 +931,7 @@ export function buildClaService(deps: ClaServiceDeps) {
           knowledgeBrief: knowledgeBrief(specContext, knowledge),
           evidence,
           interventionPlan: plan,
+          activePaperLabel: null, // the CLA surface pins no paper
         };
         generated = await deps.generator.generate(question.trim(), [], tutorContext);
       }

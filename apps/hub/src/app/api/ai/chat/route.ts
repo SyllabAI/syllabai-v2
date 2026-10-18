@@ -41,6 +41,12 @@ const Body = z.object({
    *  fail-closed against its own registry and refuses cross-course asks.
    *  Absent = the legacy course-less ask (pilot behavior unchanged). */
   courseRef: z.string().max(64).optional(),
+  /** run-013 session paper pin: the hub forwards the thread's LAST served
+   *  band-2 paper card id so follow-up turns ("explain question 1", "quiz
+   *  me on this") anchor to THAT paper. Advisory upstream — core pins only
+   *  VALIDATED in-scope papers and only when the ask names no complete
+   *  identity of its own. */
+  paperId: z.string().uuid().optional(),
 });
 
 /** Core TutorAnswerView (lib/types.ts mirror — kept local so this route
@@ -52,6 +58,8 @@ interface CoreTutorAnswer {
   model: string | null;
   provider: string;
   refused: boolean;
+  /** run-013: the honest truncation disclosure (optional on older upstreams) */
+  truncated?: boolean;
   latencyMs: number;
 }
 
@@ -341,6 +349,9 @@ export async function POST(req: NextRequest) {
     // the legacy blocking fallback below — so deploy skew between hub and
     // core can never strand the field
     ...(parsed.courseRef ? { courseRef: parsed.courseRef } : {}),
+    // run-013: the session paper pin rides both delivery paths too (an
+    // upstream without the field ignores it — the contract field is optional)
+    ...(parsed.paperId ? { paperId: parsed.paperId } : {}),
   };
 
   // the per-ask citation surface: when the ask is course-scoped and that
@@ -541,6 +552,7 @@ async function legacyBlockingFallback(
     history: { role: string; text: string }[];
     sessionId?: string;
     courseRef?: string;
+    paperId?: string;
   },
   surface: CitationSurface,
 ): Promise<Response> {
@@ -615,7 +627,7 @@ function chunkedStream(turn: CoreTutorAnswer, surface: CitationSurface): Respons
           send("delta", { text: c });
           await new Promise((r) => setTimeout(r, 12));
         }
-        send("done", { ok: true });
+        send("done", { ok: true, ...(turn.truncated === true ? { truncated: true } : {}) });
       } finally {
         controller.close();
       }

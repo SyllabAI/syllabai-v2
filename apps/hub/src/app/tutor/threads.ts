@@ -25,6 +25,9 @@ export interface Turn {
   stopped?: boolean;
   /** learner feedback on an assistant turn (local to this surface) */
   feedback?: "up" | "down" | null;
+  /** run-013: the upstream disclosed a token-cap truncation — the answer
+   *  may end mid-sentence; rendered as an honest inline notice. */
+  truncated?: boolean;
   /** T-MIG-130: the tutor-bank band payload — a deterministic (zero-LLM)
    *  question-bank census or whole-paper one-view served by the chat relay's
    *  pre-ask probe (the T-MIG-128/129 bands). The card renders below the
@@ -380,6 +383,19 @@ export function insertThread(thread: Thread, activeId: string | null) {
  *  (`MAX_TURN_CHARS`, the same bound the server's sanitizer enforces —
  *  truncating client-side lets the request pass @Size validation as-is;
  *  the hub's pre-session cap of 16 × 4000 would 400 any long chat). */
+/** run-013 session paper pin: the thread's active paper — the LAST band-2
+ *  paper card's paperId walking the transcript backwards, or null when the
+ *  thread has served none. Advisory ask context only: the upstream pins
+ *  retrieval to it just when the ask itself names no complete paper
+ *  identity, so an explicitly-named paper always wins over the UI state. */
+export function activePaperIdOf(messages: ReadonlyArray<Turn>): string | null {
+  for (let i = messages.length - 1; i >= 0; i--) {
+    const band = messages[i]?.band;
+    if (band?.kind === "paper") return band.view.paper.paperId;
+  }
+  return null;
+}
+
 export function historyFor(turns: Turn[], cap = 12) {
   return turns
     .filter((m) => m.content.trim().length > 0 && !m.error)

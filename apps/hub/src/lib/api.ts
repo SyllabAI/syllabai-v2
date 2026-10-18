@@ -1613,13 +1613,20 @@ export const api = {
   // empty behaves exactly like the pre-s139 single-turn ask. s140: an owned
   // sessionId persists the exchange to the §22 session store (omitted =
   // unpersisted ask, pre-s140 behavior).
-  tutorAsk: (question: string, history?: TutorHistoryTurn[], sessionId?: string | null) =>
+  tutorAsk: (
+    question: string,
+    history?: TutorHistoryTurn[],
+    sessionId?: string | null,
+    paperId?: string | null,
+  ) =>
     request<TutorAnswerView>("/api/v1/tutor/ask", {
       method: "POST",
       body: JSON.stringify({
         question,
         history: history ?? [],
         ...(sessionId ? { sessionId } : {}),
+        // run-013: the optional session paper pin (advisory retrieval anchor)
+        ...(paperId ? { paperId } : {}),
       }),
     }),
 
