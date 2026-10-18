@@ -54,6 +54,7 @@ export function buildCanonicalDocument(input: CanonicalBuildInput): CanonicalBui
       element_id: row.id,
       element_type: "text_block",
       page_number: row.pdf_pages[0],
+      bounding_box: null, // the Dto law: null legitimate; present explicitly (zod .default(null) => required in the output type)
       text: row.text,
       reading_order: i,
       confidence: null,

@@ -64,8 +64,7 @@ function chunk(partial: Partial<BookChunk> & { id: string; text: string }): Book
     book_pages: null,
     pdf_pages: [1, 1],
     char_count: partial.text.length,
-    text: partial.text,
-    ...partial,
+    ...partial, // carries id + text (both required by the helper signature); explicit keys dropped to avoid the TS2783 double-specification
   });
 }
 
