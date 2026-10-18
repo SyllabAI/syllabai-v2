@@ -3,7 +3,7 @@ task:
   id: T-MIG-126
   title: "The review-schedules WRITER BAND DORMANCY of record — review_schedules has ZERO v2 writers (the substrate census of record), so the tutor port's pendingReviews (PENDING-scoped, matched-topic) and its downstream consumers (the s140 digest's spaced-review line, the learnerBriefOf review rows) stay honest-empty BY LAW; the band stays DORMANT until an operator-ordered writer band lands — the read side needs NO change (the port IS the activation seam: a writer lands and every pendingReviews consumer goes live unmodified)"
   owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)"
-  status: DONE # the deliverable IS the posture of record (the T-MIG-061 disclosure-card precedent) — filed with this card + the receipt; the BAND itself stays dormant (nothing to execute until an operator orders a writer)
+  status: SPECED # run-001 filed the dormancy posture (DONE as a posture card, the T-MIG-061 precedent); run-002 files the WRITER-BAND SPEC of record under the operator order (trace 1a14ffc7cc82c179 "also spec the review_schedules writer band") — the BUILD stays gated on the operator's go (the T-MIG-131 precedent: the named-band order built; this order specs)
   claimed_at: "2026-10-13T09:4xZ"
   claimed_by_order: "operator trace 1a1349f2f15356b1 'claim them' — the queued T-MIG-124 residual intake item 'review-schedules writer band dormant' (the item the operator had asked to hear explained plainly)"
   priority: P2
@@ -37,11 +37,106 @@ task:
     T-MIG-124 Phase 2 landed the listener; the research consumer remains
     dormant by its own card's law) — no double-entry filed here. ZERO code,
     zero prod, zero config — this card + the receipt ARE the deliverable.
+  band_spec: >
+    FILED run-002 (2026-10-18T17:2xZ, operator trace 1a14ffc7cc82c179 "also spec
+    the review_schedules writer band"). THE FROZEN WRITER OF RECORD (syllabai-core
+    @ 6cad6ef, clone head SHA byte-matches the archive confirmation): the
+    NightlyDecayJob review-scheduling arm — Master Spec §11 / §31
+    APPLY_FORGETTING_DECAY, backlog F-159. NightlyDecayJob.java :1-191 is the SOLE
+    frozen writer of review_schedules (repo-wide rg: reviewSchedules.save at :175
+    only; LearnerStateController / SmartLessonService / LearnerAgendaController
+    hold the repository READ-only; TEACHER_ASSIGNED is an enum lane + a
+    ck_review_reason value with NO frozen writer; NO COMPLETED/CANCELLED
+    transition writer exists in the frozen as-built — a PENDING row is terminal
+    and the exists-dedup keeps ONE live schedule per (learner, node)).
+    THE FROZEN LAW, line-against-line: (1) TRIGGER — a checker cron (default
+    */15min) runs the batch iff the current windowHourUtc (default 03:00 UTC)
+    window has no decay_job_runs ledger row (V38; zero-cell runs recorded so a
+    quiet night is never mistaken for a missed one); trigger SCHEDULED within the
+    5-min SCHEDULED_GRACE else CATCH_UP; the ledger PK (window_start) fails the
+    loser of any instance race and its idempotent writes roll back (C-4).
+    (2) THE PASS — page skill_states with last_practiced_at < now −
+    idleGracePeriod (default 2d), page size 500, ORDER BY last_practiced_at ASC,
+    id ASC (stable/deterministic, defensive since ADR-031). (3) PER STATE —
+    effective = decayed(P0, lastPracticedAt, now, params) recomputed from the
+    STORED anchor, NEVER written back (ADR-031; the S1 compounding bug :149-159
+    is the anchor law's witness); decayed++ when effective < P0 (materially
+    decayed) + DecayAppliedEvent; reviewThresholdCrossed = effective <
+    params.reviewBelow() (STRICT <, paper default 0.6). (4) THE WRITE (this
+    band) — crossed AND NOT existsByLearnerIdAndNodeIdAndStatus(learner, node,
+    PENDING) (:172-182) -> INSERT ReviewSchedule(learnerId, nodeId, dueAt=now,
+    reason=DECAY_CROSSED_THRESHOLD, masteryAtTrigger=effective) +
+    ReviewScheduledEvent; reviewsScheduled++. (5) ROW SHAPE — ReviewSchedule.java
+    :18-84: uuid id, learner_id, node_id, due_at, reason enum,
+    mastery_at_trigger double nullable (research traceability), status default
+    PENDING, created_at; the frozen job's ONLY writes are the ledger row + review
+    inserts (C-4 narrowed by ADR-031) — it NEVER writes skill_states, so the port
+    touches NOTHING the v2 read-time decay architecture owns.
+    THE MATH (EbbinghausDecayService :29-48 + DecayParams.paperDefaults):
+    P(t) = P0 · e^(−t/τ), τ banded ON THE PASSED P0 (30/90/365d at 0.45/0.8),
+    floor 0.1 (= BKT L0), needsReview = strict < 0.6; v2's canonical owner is
+    ALREADY of record: services/learner-model/decay.ts decayedMastery() +
+    LEARNER_DECAY_PAPER_DEFAULTS = the frozen values EXACT (T-MIG-066) — the
+    band reuses it, ZERO new math.
+    THE V2 SEAM (no new cron, no new env): the T-MIG-042 takeover route GET
+    /api/v1/cron/nightly-decay (hub vercel.json "0 2 * * *" -> bearer-forward,
+    fail-closed CRON_SECRET, server-derived UTC-day window) gains the pass
+    composed INTO its existing exactly-once transaction: the pass runs first,
+    then the ledger INSERT carries the pass's REAL decayed/reviewsScheduled
+    counts (the 042 hard-coded 0,0 zero-cell contract upgrades — the columns
+    were built for exactly this), all inside ONE sql.transaction so a ledger
+    window conflict rolls the loser's review inserts back — the frozen C-4
+    posture verbatim. DECAY_CRON_ENABLED=1 on the hub stays the single
+    OFF-switch law (the route not called = the frozen enabled=false default).
+    RUN-IF-MISSED DISCLOSURE: the frozen 15-min checker/CATCH_UP is NOT ported
+    — Vercel cron is one daily 02:00 UTC shot; a missed night leaves that
+    UTC-day window honestly empty and reviews are NOT lost: the next window's
+    pass re-evaluates EVERY idle state from the anchors (the frozen
+    self-healing argument — "a late run is exact, not approximate").
+    NOT PORTED, DISCLOSED: DecayAppliedEvent / ReviewScheduledEvent (sole frozen
+    consumer = TelemetryService, research §18 = the T-MIG-061 dormant posture;
+    no telemetry rows); TEACHER_ASSIGNED (no frozen writer — the lane stays
+    write-ready under ck_review_reason; teacher assignment = a separate band,
+    the T-029 surface); COMPLETED/CANCELLED transitions (no frozen writer —
+    PENDING is terminal in the frozen as-built; the v2 readers read PENDING-only,
+    so the posture is byte-consistent).
+    THE ACTIVATION LAW (zero read-side change, the 126 law): the first PENDING
+    row lands on the next operator api redeploy with the hub gate on and EVERY
+    consumer goes live unmodified — (a) tutor pendingReviews -> the policy's
+    review precedence (tutor/learner-model.ts, matched-topic PENDING);
+    (b) the s140 digest "due for a spaced review" line (tutor-routes.test.ts
+    E2E already pins the render "from review_schedules"); (c) learnerBriefOf
+    pendingReviewScheduleRows (learner/state.ts :264-276, due_at asc);
+    (d) NBA overdue-first review actions (learner-me/nba.ts :490-499);
+    (e) teacher class due-reviews batch (teacher/analytics.ts :228-233);
+    (f) the learner-me review rows (learner-me/index.ts :1105-1109);
+    (g) the personalized graph's earliest-review markers (knowledge/graphs.ts
+    :929-937); (h) smart-lesson pendingReviews (learner/smart-lesson.ts
+    :274-278). SCHEMA: FULL parity of record (packages/db/src/schema/schema.ts
+    :579-598, ck_review_reason/ck_review_status + both btree indexes) — ZERO
+    migration.
+    TEST PINS (the build's gate list): threshold crossing inserts (due_at=now,
+    reason DECAY_CROSSED_THRESHOLD, mastery_at_trigger = the frozen IEEE
+    effective EXACT); strict-< boundary (effective = 0.6 exactly -> no row);
+    PENDING dedup (existing row -> no second insert, decayed still counts);
+    2d idle grace (fresh states untouched); 500-page pagination (601 states ->
+    2 pages, last_practiced_at/id order); ledger honesty (real counts on ok;
+    already-run reports the FIRST row's counts, no second pass); the C-4
+    transaction pin (window conflict rolls back the pass's inserts); 401
+    fail-closed (no bearer, no rows).
+    PRECISION DISCLOSURE: v2 decayedMastery computes the exponent in
+    MILLISECONDS (JS Date) where the frozen service used nanoseconds —
+    immaterial at day-scale elapsed times (relative drift ~1e-11), disclosed
+    at the pins like the T-MIG-131 JS-Date convention. BUILD GATED ON THE
+    OPERATOR'S GO: the spec is this run's deliverable; the build is one word
+    away (module + route composition + test pins, the T-MIG-131 flow).
   scope:
     - ".syllabai/** (this card + the receipt + the worklog line)"
   not_touched:
-    - "apps/** (zero files — the read side is already correct of record)"
+    - "apps/** (zero files in run-002 — the spec is docs-only; the BUILD's scope (cron pass module + route composition + test pins) lands only on the operator's go)"
     - "prod / Neon / Vercel / LLM (zero contact)"
 progress_log:
   - run: run-001-writer-band-posture-r0 (2026-10-13T09:4xZ)
     note: "the dormancy posture filed of record (this commit): receipt T-MIG-126/run-001-writer-band-posture-r0.json; the band stays dormant by law; activation = an operator-ordered writer band, zero read-side change"
+  - run: run-002-writer-band-spec-r0 (2026-10-18T17:2xZ)
+    note: "the WRITER-BAND SPEC of record filed under operator trace 1a14ffc7cc82c179 (this commit): receipt T-MIG-126/run-002-writer-band-spec-r0.json; frozen NightlyDecayJob review-scheduling arm pinned line-against-line (sole frozen writer, ADR-031-clean, C-4 transaction parity, ledger-count honesty flip, 8 consumer activation seams, zero migration); build gated on the operator's go"
