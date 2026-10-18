@@ -111,6 +111,10 @@ export interface EvidencePublisher {
     observedMisconceptionIds: string[];
     questionType: string;
     optionCount: number;
+    /** T-MIG-131: the frozen event's selfDoubtFlag (Paper B §3.5) — the
+     *  observable core extends with the field the diagnosis engine
+     *  consumes (StruggleInferenceService :62, METACOGNITIVE 5a). */
+    selfDoubtFlag: boolean;
     occurredAt: string;
   }): Promise<boolean>;
 }
@@ -253,6 +257,10 @@ export class AssessmentSubmitter {
       observedMisconceptionIds,
       questionType: question.question_type,
       optionCount: question.question_type === "MCQ_SINGLE" ? optionRows.length : 0,
+      // T-MIG-131: the flag rides the event exactly as the frozen publisher
+      // emitted it (AssessmentEvidenceRecordedEvent.selfDoubtFlag — the
+      // attempt row's self_doubt_flag, already bound from the request).
+      selfDoubtFlag: request.selfDoubtFlag,
       occurredAt: createdAt.toISOString(),
     });
     if (fired) {

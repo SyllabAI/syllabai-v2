@@ -1,0 +1,24 @@
+{
+  "receipt": "W7-CUTOVER/runbook-supersession-edit-run-001-w0a",
+  "band": "the runbook-doc edit band — the stale 'hub redeploy = operator lever' law superseded in docs/CUTOVER_RUNBOOK.md (band made available by the r1c deploy-pathway attribution 2026-10-18, claimed on operator order)",
+  "lane": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd, chat 1148fa2b)",
+  "created_at_utc": "2026-10-18T09:24:05Z",
+  "operator_order": "trace 1a14e4e24834a3e5 'claim the available runbook-doc edit band'",
+  "basis_of_record": "receipt W7-CUTOVER/deploy-pathway-attribution-2026-10-18-r1c.json — verdict: hub-v2 prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl link.type=github -> SyllabAI/syllabai-v2, every push to main auto-deploys hub production; consequence law: tip == served, receipt pushes bake churn-only deploys, alias switches only on READY (the b6b77ef ERROR build never served)",
+  "edit_of_record": "docs/CUTOVER_RUNBOOK.md — ONE dated SUPERSESSION addendum appended to the header provenance block; ZERO changes to the §0-§8 body text (the runbook stays the executed-procedure record; the addendum carries the supersession law)",
+  "addendum_carries": [
+    "hub-v2 git-linked: every push to main auto-deploys hub production (chain of record b6b77ef ERROR-held / 1adb7e7 READY-live / d6f2cc3, 3cdbfdd, 426f3f1, 63604e9 auto-baked READY; dpl_Go7Effpj current)",
+    "the 'hub redeploy = manual operator act' assumption in §2.1/§2.5/§5/§7 is stale FOR CONTENT DEPLOYS",
+    "still true: alias switches only on READY (fail-safe for .syllabai-only churn)",
+    "still true: NEXT_PUBLIC_* env values are build-time — an env flip still needs a deploy to bake (CLI redeploy or the next push)",
+    "still true: the §5 rollback lever = one-call re-alias to the prior READY dpl_*; the §2.5 preview-deployment proof remains sound",
+    "still true: API of record prj_FN5X link=null CLI-only — the serialized operator-gated api redeploy lever (092/093 recipe) UNCHANGED, not covered by this supersession",
+    "still true: Render core disabled-not-deleted, untouched",
+    "desk law: 'hub deployed at <sha>' == 'tip is <sha>'; receipt-push auto-bakes are churn-only, disclosed, no action"
+  ],
+  "scope_discipline": "living docs scanned for other carriers of the stale law — NONE found: AGENT_BRIEFING.md deploy mentions = one reference link only; README.md zero hits; docs/DECOMMISSION-BANDS-PLAN.md redeploy lines (44/72-74) = the API-side 092/093 recipe + the band-serialization law, both still true; docs/P3-WITNESS-CLICKPATH.md + P4-SIGNOFF-PREFILL.md rollback-lever lines = env-flip mechanics, still true; docs/MIGRATION_PLAN/REPORT mentions = historical planning. Task yamls carry only the API redeploy lever (prj_FN5X link=null, still true) + historical run notes. Receipts + worklogs are immutable history — untouched.",
+  "write_ledger": "repo: docs/CUTOVER_RUNBOOK.md + this receipt + .syllabai/worklog.md append — ZERO code bytes, zero schema, zero env/DB/Vercel/GitHub-plane writes, zero LLM spend, zero credentials staged or used",
+  "gates": "docs+receipts-only commit — zero code delta (diff --stat verified pre-commit); code gates not re-run per the receipt-only precedent class (3cdbfdd / 63604e9 / 08c6b17); CI at tip GREEN of record (r7a 3/3 at d6f2cc3, r1c census 2/2 @ tip)",
+  "consequence_disclosure": "this push auto-bakes a hub production deployment (git-linked consequence law) — churn-only, content-identical, fail-safe on ERROR; disclosed in the commit message",
+  "boundaries": "direct-main fetch-first, race guard = rev-list count re-check at push time, no force, no rebase-over-others"
+}

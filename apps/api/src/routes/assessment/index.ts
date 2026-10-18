@@ -60,7 +60,9 @@ import type { EvidencePublisher } from "../../services/assessment/submit";
 import {
   LEARNER_MODEL_PAPER_DEFAULTS,
   updateOnAssessmentEvidence,
+  defaultModelUpdateClock,
 } from "../../services/learner-model/model-update";
+import { inferStrugglesOnAssessmentEvidence } from "../../services/learner-model/struggle-inference";
 import { resolveActiveBktParams } from "../../services/learner-model/registry";
 import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "../../services/identity/users";
@@ -325,6 +327,15 @@ export const frozenParityEvidencePublisher: EvidencePublisher = {
  * the write IS the event firing; a failed write propagates (the frozen
  * synchronous @Transactional listener fails the submit the same way —
  * fail-loud on model-write defects, never a silently dropped update).
+ *
+ * T-MIG-131 — the Order(100) half of the frozen event now rides the same
+ * seam: the struggle-inference diagnosis engine (StruggleInferenceService
+ * @ 6cad6ef :53-65 port) runs AFTER the model phases, reading the POST-update
+ * snapshot ("diagnosis never trails the evidence by one attempt", :25-28).
+ * Same fail-loud class: a diagnosis-write failure fails the submit exactly
+ * like the frozen @Transactional listener did. The StruggleInferredEvent
+ * downstream (DiagnosisTelemetryService, research §18) stays in its T-MIG-061
+ * disclosed dormant posture — nothing is published past this seam.
  */
 export function createLearnerModelEvidencePublisher(
   sql: ReturnType<typeof createSql>,
@@ -338,10 +349,26 @@ export function createLearnerModelEvidencePublisher(
       // (byte-identical to the pre-registry posture); a read failure
       // propagates (fail-loud, the module's no-silent-skip law).
       const bkt = await resolveActiveBktParams(sql);
+      // @Order(10) analog — the learner-model phases first.
       await updateOnAssessmentEvidence(sql, event, {
         ...LEARNER_MODEL_PAPER_DEFAULTS,
         bkt: bkt.params,
       });
+      // @Order(100) analog — the diagnosis engine reads the POST-update
+      // state (sequential await = the frozen listener order; topicNodeIds
+      // derived inside from primary+secondary, spec points never fire).
+      await inferStrugglesOnAssessmentEvidence(
+        sql,
+        {
+          attemptId: event.attemptId,
+          learnerId: event.learnerId,
+          primaryTopicNodeId: event.primaryTopicNodeId,
+          secondaryTopicNodeIds: event.secondaryTopicNodeIds,
+          selfDoubtFlag: event.selfDoubtFlag,
+          occurredAt: event.occurredAt,
+        },
+        defaultModelUpdateClock,
+      );
       return true;
     },
   };
