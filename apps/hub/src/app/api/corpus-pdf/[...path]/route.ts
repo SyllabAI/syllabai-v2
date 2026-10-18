@@ -128,9 +128,16 @@ export async function GET(
         : "text/plain; charset=utf-8",
   );
   // pass content-length through so pdf.js onProgress stays honest (the
-  // loading state shows real download progress against the true total)
-  const len = upstream.headers.get("content-length");
-  if (len) headers.set("content-length", len);
+  // loading state shows real download progress against the true total).
+  // PDFs ONLY (the T-MIG-128 law's actual consumer): the live 133c probe
+  // caught the text artifacts stalling on the edge — the CDN compresses
+  // text/*, and a manually-set length corrupts the response framing. The
+  // platform frames every other type itself; artifacts have no
+  // progress-bar consumer.
+  if (corpusPath.endsWith(".pdf")) {
+    const len = upstream.headers.get("content-length");
+    if (len) headers.set("content-length", len);
+  }
   const etag = upstream.headers.get("etag");
   if (etag) headers.set("etag", etag);
   headers.set(
