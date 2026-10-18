@@ -8499,3 +8499,20 @@ Work Log:
 
 Stage Summary:
 - THE API REDEPLOY LEVER IS FIRED OF RECORD: dpl_5VapkZhh9nSskGfGVdF9NPtpGULc serves main 258f905; the Student Books read routes LIVE end-to-end (archive syllabai-resources -> api shelf/chapters 29-chapter pilot -> hub viewer); band 133c FULLY LIVE (archive + viewer + api). Next operator levers: 133d (tutor arm + page-true citations), 133e (roll to remaining books), embeddings backfill (Gemini key now present on the env), PAT rotation.
+
+---
+Task ID: 54
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, trace 1a1513c31e453279)
+Task: Operator "check the current state of the project" — READ-ONLY census run-003; receipt W7-CUTOVER/state-census-run-003-2026-10-19-r1c.json.
+
+Work Log:
+- Fetch-first: ff 08c6b17 -> e6bd85f (44 commits closed; the feature wave landed: #191-#198 all merged). Worklog tail re-read: 126/131/126-writer/133 bands of record.
+- Board state: REOPENED as the operator-directed feature wave (migration charter CLOSED 126/126, LIVE=0). T-MIG-126 review-schedules WRITER DONE + cron flipped 02:00->00:00 UTC (#196) — first real pass window 2026-10-19 ~00:00 UTC has elapsed; fleet credentialed census owed (~8 PENDING rows expected). T-MIG-131 struggle WRITER merged (#192). T-MIG-133 Student Books LIVE END-TO-END (archive + api + hub viewer; operator validation flip; api redeploy dpl_5VapkZhh @ 258f905, battery 8/8).
+- FIRST-HAND live probes 22:59Z (unauth, GET-only): hub-v2 health 200 {ok, core-api}; /api/v1/content/books?courseId=igcse-chemistry-19 -> 200 pilot book (Jim Clark, 383pp, checksum d48020e0...cc04 == of record); no-courseId -> 400 validation_failed (route-existence law PASS); chapters -> 200 array u1:c1 'States of matter' with pdfPage ranges (T-C20 VALIDATED discriminator SERVES); hub shelf /courses/igcse-chemistry-19/books -> 200 with Student Book + honest unavailable states.
+- PR/issue/CI: #191-#198 merged; #190 sole non-closed PR (author-held DRAFT PoC, promotion operator-gated); 0 open issues; CI SUCCESS @ e6bd85f (22:48Z).
+- Carriers of record: hub-v2 git-linked auto-bake at tip (Task-52 mechanism); api of record dpl_5VapkZhh @ 258f905 (the operator lever FIRED trace 1a15122b2549a845).
+- Open levers: 133d tutor arm + page-true citations, 133e remaining-books roll (operator gates); embeddings backfill (Gemini key PRESENT on api envs, DB NULL, backfill pending); PAT rotation (double-flagged); prj_D7vf cleanup; Vercel prune-v2 (~6.2GB staged); CLA streaming api-gated; fig46 23+6; /paper boundary watch.
+- Write ledger: ZERO writes on every plane; zero LLM; no credentials staged or touched.
+
+Stage Summary:
+- v2 = the sole live system of record, GREEN across every gate; the Student Books family is the newest live surface (first-hand verified end-to-end). Everything remaining is operator-gated or fleet-cadence. Next repo receipt = Task-55; next workspace = Task-41.

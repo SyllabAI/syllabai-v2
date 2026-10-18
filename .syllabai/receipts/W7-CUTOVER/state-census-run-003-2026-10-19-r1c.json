@@ -1,0 +1,33 @@
+{
+  "receipt": "W7-POST/state-census-run-003-2026-10-19-r1c",
+  "band": "post-retirement state census run-003 (READ-ONLY) — operator trace 1a1513c31e453279 \"check the current state of the project\"",
+  "lane": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)",
+  "created_at_utc": "2026-10-18T23:05:00Z",
+  "method": "fetch-first (ff 08c6b17 -> e6bd85f, 44 commits closed), worklog tail re-read, GitHub API reads, unauthenticated wire probes; ZERO writes, zero LLM spend",
+  "state_of_record": {
+    "board": "REOPENED post-retirement as the operator-directed FEATURE wave (not migration debt; migration charter CLOSED 126/126, LIVE=0): T-MIG-126 review-schedules WRITER DONE (spec PR #193 -> build #194 -> api redeploy -> #196 cron 02:00->00:00 UTC; FIRST REAL PASS window 2026-10-19 ~00:00 UTC, ~8 PENDING rows expected, consumer-census OWED); T-MIG-131 struggle-inference WRITER merged (PR #192); T-MIG-133 Student Books 133a+133b+133c ALL MERGED (#195/#197/#198) and LIVE END-TO-END",
+    "t_mig_133_e2e": "archive leg: 766 per-page artifacts + student-book.pdf (blob REUSE, sha256 d48020e0...cc04) on Syllabai-resources via the Git-DB tree-composition pattern (the ~4.9GB-repo push lesson, mechanism of record); api leg: dpl_5VapkZhh9nSskGfGVdF9NPtpGULc READY 22:44Z @ 258f905 (338 modules / 3,199,307 B, LOCAL BOOT 4/4, LIVE BATTERY 8/8); operator validation flip of record (trace 1a15107e52735b61, SUGGESTED->VALIDATED, single UPDATE); hub viewer band (shelf + chapter PdfPane mounts) auto-baked",
+    "live_probes_first_hand_2026_10_18T2259Z": {
+      "hub_health": "200 {ok, dataMode:core-api, coreConfigured:true}",
+      "books_listing": "GET /api/v1/content/books?courseId=igcse-chemistry-19 -> 200 [{Edexcel International GCSE (9-1) Chemistry Student Book, Jim Clark, 383pp, checksum d48020e0...cc04 == of record}]",
+      "books_route_law": "GET /api/v1/content/books (no courseId) -> 400 validation_failed 'missing required parameter: courseId' (route-existence law PASS)",
+      "chapters": "GET /api/v1/content/books/e6c0db50-.../chapters -> 200 ARRAY, u1:c1 'States of matter' with bookPage/pdfPage ranges + learning objectives (the T-C20 VALIDATED discriminator SERVES first-hand)",
+      "hub_shelf": "/courses/igcse-chemistry-19/books -> 200 (83KB, 'Student Book' + 'States of matter' + honest 'temporarily unavailable' states present)"
+    },
+    "pr_issue_ci": "PRs #191-#198 ALL closed/merged of record; #190 remains the ONLY non-closed PR (author-held DRAFT PoC, promotion operator-gated); 0 open issues; CI SUCCESS at e6bd85f (22:48Z) + 258f905 + 6c61263",
+    "carriers": "hub-v2 = git-linked auto-bake at tip (mechanism of record, Task-52); api of record = dpl_5VapkZhh @ 258f905 CLI (the operator lever FIRED of record trace 1a15122b2549a845)",
+    "open_levers_residuals": [
+      "133d: tutor arm + page-true citations (per-page artifacts hosted + grammar-served, not yet UI-consumed) — operator gate",
+      "133e: roll the books pipeline to the remaining books — operator gate",
+      "embeddings backfill: NULL in DB; SYLLABAI_EMBEDDING_GEMINI_API_KEY now PRESENT on the api project envs (fleet census first-hand) — backfill run pending",
+      "review-cron first-pass census: the 00:00 UTC 2026-10-19 window has elapsed (cron 02:00->00:00 per #196); expected ~8 PENDING review_schedules rows — credentialed census owed by the fleet",
+      "PR #190 promotion ruling (author-held DRAFT)",
+      "PAT rotation (fp d254bbfaac004354 unrotated; plaintext chat transit noted twice)",
+      "prj_D7vf console cleanup (optional, operator plane)",
+      "Vercel storage ~6.2GB post-retirement; prune-v2 ~2GB lever staged",
+      "CLA streaming api-gated; fig46 23+6; /paper search boundary watch"
+    ]
+  },
+  "write_ledger": "ZERO writes every plane: git fetch/ff, GitHub GET-only, unauth wire GET-only; no credentials staged; token never touched this run",
+  "boundaries": "no deploys, no env acts, no DB contact, archived repos untouched, no force"
+}
