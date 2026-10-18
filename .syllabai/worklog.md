@@ -8432,3 +8432,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-133 133a+133b INTEGRATED of record (b394017). The book is IN Neon, SUGGESTED — the operator validation flip is the serving lever (never auto-VALIDATED). Embeddings NULL pending the Gemini key. 133c-e await operator gates: (c) archive upload + viewer band (needs the books-intake zip re-uploaded), (d) tutor arm + citations, (e) roll to remaining books. t-mig-132/r0 re-derivable on request.
+
+---
+Task ID: trace 1a150f9070e91d35 (state-census run-002)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1)
+Task: operator "Check the current state of the project. How far are we from a finished product?" — read-only census + product-completeness assessment.
+
+Work Log:
+- SANDBOX REGRESSION DISCLOSED (recurring class): stale snapshot between turns — this session's sweep scripts + lane-side evidence gone; local clone back at 2c271e0; .creds 755. Remediated: perms 0600, ff-sync 2c271e0 -> 6eaeaa2 (25 new commits), nothing of record lost (receipts live on origin).
+- Read-only sweep (scripts/state_sweep_r7a.py -> /home/z/my-project/evidence/state_sweep_r7a_run002.json) GREEN 14/14: CI 2/2 at 6eaeaa2; 0 open issues; carriers READY (hub auto-bake dpl_DkRjkLq4 @ 6eaeaa2 current; api dpl_4uUmM6rX the T-MIG-126 run-004 redeploy); wire laws 7/7; census gate exit 0; /v2/user syllabai-1403 == of-record (PAT unrotated, stands).
+- The board REOPENED post-retirement (operator-directed feature wave, not migration debt): T-MIG-126 review-schedules WRITER DONE of record (spec PR #193 -> build PR #194 -> the 'merge + api redeploy' dpl_4uUmM6rX battery 6/6 -> 'fire it earlier' PR #196 cron 02:00->00:00 UTC; FIRST REAL pass = window 2026-10-19 ~00:00 UTC, ~8 PENDING rows expected, all eight consumer seams activate); T-MIG-131 struggle-inference WRITER IN_REVIEW (PR #192 merged, flips DONE on review); T-MIG-133 Student Books IN_PROGRESS (133a contracts/migration + 133b ingestion pilot MERGED via PR #195 — 823 chunks/29 chapters/145 spec joins PROD-APPLIED on Neon, book SUGGESTED, embeddings NULL pending the Gemini key; band 133c viewer PR #197 OPEN CI 3/3 head 681bdc4 awaiting desk; 133d-e pending operator gates); PR #190 (evidence-labels PoC) still author-held DRAFT clean.
+- Assessment delivered: migration charter 100% FINISHED (126/126, LIVE=0, Render retired+suspended, legacy archived); the product is the sole live system of record; distance to finished = the active Student Books band (133c-e) + operator-gated flips (book validation, PR #190 promotion, PAT rotation, prj_D7vf, Gemini-key embeddings backfill) + small disclosed residuals (CLA streaming api-gated, fig46 23+6, /paper watch).
+- Write ledger: zero prod writes, zero authed POSTs, zero LLM spend; llm_spend=0. This push costs one no-code-delta hub auto-bake (mechanism of record).
+
+Stage Summary:
+- Posture GREEN across every gate of record; the migration program is closed and the board now carries only operator-directed product-completion work. The single open engineering thread is PR #197 (Student Books viewer, CI 3/3, desk-merge pending); everything else left is operator-gated. Lane IDLE.
