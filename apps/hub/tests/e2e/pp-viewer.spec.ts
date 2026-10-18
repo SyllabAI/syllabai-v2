@@ -456,6 +456,58 @@ test("viewer: the viewing setup persists across papers", async ({ page }) => {
   await expect(page.locator("[data-spread-row]")).toHaveCount(2);
 });
 
+test("viewer: doc tabs keep the URL in lockstep (s147 ISSUE-3)", async ({ page }) => {
+  await readyViewer(page); // lands on ?doc=qp
+  const msTab = page.getByRole("tab", { name: "Mark scheme", exact: true });
+  await msTab.click();
+  // the URL of record now names the open document (replaceState — no nav,
+  // no RSC roundtrip). The old bug: the screen showed the MS while the URL
+  // still read ?doc=qp — a copied link silently restored the QP.
+  await expect(page).toHaveURL(/doc=ms/);
+  await expect(msTab).toHaveAttribute("aria-selected", "true");
+  // a refresh restores the tab from the URL
+  await page.reload({ waitUntil: "load" });
+  await expect(
+    page.getByRole("tab", { name: "Mark scheme", exact: true }),
+  ).toHaveAttribute("aria-selected", "true");
+  // deep-link params the user arrived with (?page) ride along, never dropped
+  await page.goto(`${PAPER_URL}?doc=qp&page=2`, { waitUntil: "load" });
+  await page
+    .getByRole("tab", { name: "Split view: question paper and mark scheme side by side" })
+    .click();
+  await expect(page).toHaveURL(/doc=split/);
+  await expect(page).toHaveURL(/page=2/);
+});
+
+test("viewer: a cold narrow pane discharges a persisted spread (s147 ISSUE-2)", async ({
+  page,
+}) => {
+  // a desktop session persisted the spread choice; the paper is then opened
+  // on a phone. No resize transition EVER fires (the pane was narrow from
+  // the first observation), so the install pass itself must auto-off the
+  // layout — the old bug kept two-page rows in a ~350px scroller with the
+  // toggle hidden: no UI escape.
+  await page.addInitScript(() => {
+    window.localStorage.setItem(
+      "pp-viewer-prefs-v1",
+      JSON.stringify({ fit: "width", zoom: 1, rot: 0, spread: true }),
+    );
+  });
+  await page.setViewportSize({ width: 375, height: 667 });
+  await page.goto(`${PAPER_URL}?doc=qp`, { waitUntil: "load" });
+  await expect(page.locator(".pp-pane canvas").first()).toBeVisible({ timeout: 20_000 });
+  // single column — not a spread sliver
+  await expect(page.locator("[data-spread-row]")).toHaveCount(0);
+  const p1 = (await page.getByRole("img", { name: "Page 1 of 3" }).boundingBox())!;
+  expect(p1.width, "full-width pages, not half-pane slivers").toBeGreaterThan(200);
+  // the INTENT survived the auto-off (the prefs writer keeps the wish, not
+  // the layout) — widening later re-pairs the pages
+  const prefs = await page.evaluate(() =>
+    JSON.parse(window.localStorage.getItem("pp-viewer-prefs-v1") ?? "{}"),
+  );
+  expect(prefs.spread, "spread intent preserved").toBe(true);
+});
+
 test("mock: 'Just view the paper' lands on the viewer (s140 B1 404 pin)", async ({ page }) => {
   await page.goto(`${PAPER_URL}?mode=mock`, { waitUntil: "load" });
   await page.getByRole("link", { name: "Just view the paper" }).click();
