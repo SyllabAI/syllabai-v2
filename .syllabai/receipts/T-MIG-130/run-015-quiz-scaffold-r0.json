@@ -1,0 +1,38 @@
+{
+  "run": "run-015",
+  "lane": "the deterministic quiz scaffold — proposal #6c (operator trace 1a14f63469aea2e1 'Proceed with #6c'; proposed 1a14eb4561e56285 after the spec-as-content adjudication; #6a+#6b of record as run-014)",
+  "operatorGate": {
+    "order": "Proceed with #6c",
+    "trace": "1a14f63469aea2e1",
+    "note": "the order completes the #6 proposal set; standing order re-checked of record (board 126/126 DONE, zero unclaimed; fetch-first ff aee7fd2 BEFORE edits — the run-014 tip; remote did not move mid-lane)"
+  },
+  "defect": "the improvised quiz: 'quiz me on this' was fully model-interpreted — no deterministic quiz feature of record, so the serving model invented quiz items that drifted across papers (the 1a14dbf9ab8d7eb1 diagnosis defect (2)) and, pre-v11, asked the learner to recall specification codes (the spec-as-content defect, 1a14eb4561e56285). #6a/#6b gate the model's OUTPUT; #6c removes the improvisation itself",
+  "code": {
+    "commit": "06017a7 (8 files: quiz-scaffold.ts [new], karag.ts, prompt.ts, context.ts, cla/service.ts, quiz-scaffold.test.ts [new], tutor-core.test.ts, cla-service.test.ts)",
+    "scaffold": "apps/api/src/services/tutor/quiz-scaffold.ts — (1) isQuizAsk: the precision-first intent law, 9 word-bounded pattern families; subject vocabulary never fires ('flame test', 'test for chloride ions'), grading asks never fire ('check my answer to question 2'), the resolver path never fires ('explain question 4 from june 2019 paper 2'); (2) loadQuizScaffold: the fetchPaper band's bank query VERBATIM (active-policy AGNOSTIC, gold-v1 FETCH semantics — the pin gate upstream guarantees a VALIDATED paper row), hygienicStem'd stems (one law, all three serve sides), the paper's own external_ref numbering + marks; a qnum ref in the ask scaffolds that question alone (leadingQuestionNumber accepts bare and q-prefixed refs); cap 5 in external_ref order; rows without the paper's own numbering are dropped (no label, no scaffold); zero scaffoldable rows = null (the honest fail-open)",
+    "wiring": "karag prepare() step 2.7 — fires ONLY on a resolved session pin (the run-013 law stands: a named identity keeps the resolver's verdict and the fail-open guard supreme); advisory posture (no pin / no rows / any loader failure = the ask proceeds exactly as before, the v11 law still governs an improvised quiz); the scaffold rides PreparedAsk -> assembleContext -> TutorContext -> the prompt block",
+    "promptLaw": "v11 -> v12: one added system rule — 'When a QUIZ SCAFFOLD block is present, the learner has asked to be quizzed: serve ONLY the questions it lists, in its order, with their own numbers and marks. Do not invent or substitute questions and do not reveal the answers before the learner attempts each one.' The unfenced QUIZ SCAFFOLD block renders after ACTIVE PAPER CONTEXT (corpus metadata outside the fences — the data layer decides WHAT is asked, the model only formats and grades); the two identity pins (tutor-core, cla-service) follow the bump to tutor-grounded/v12; the CLA surface passes quizScaffold null (it pins no paper)"
+  },
+  "gates": {
+    "typecheck": "x4 exit 0 (packages/contracts, packages/shared, packages/db, apps/api)",
+    "tests": "bun test apps/api packages 2097 pass / 0 fail / 13 skip — 18 new pins of record (the intent law 13 classes, the loader 6, the prepare tier 5, the prompt block 4, the v12 law-presence); apps/hub 71/0; hub eslint 0; golden selftest OK; retrieval-eval 0 fail; zero-core census GATE GREEN",
+    "ci": "2/2 SUCCESS at 06017a7 first-hand (hub + verify check-runs)"
+  },
+  "deploy": {
+    "api": "093 recipe verbatim: 6 asset SHA pins byte-intact, 333 modules 3,182,362 B CJS (+1 module = quiz-scaffold.ts, +3,371 B = the v12 rule + the scaffold module; run-014 of record was 332 / 3,178,991 B), shims restored PRISTINE (worktree clean verified), LOCALGATE 8/8 ALL PASS on the real Neon wire (the exact staged bundle booted behind the verbatim deploy-entry adapter: health UP / unauth 401 fail-closed / register 201 / login bearer / me round-trip / bank questions / bank paper FULL / sessions; probe account net-zero; credentials IN-PROCESS ONLY — a strengthening over the 0600-then-shred env file of record: zero disk, nothing to shred; scrub-asserted 0 credential hits in the staged bundle), vercel CLI --prod -> dpl_syllabai-v2-h90yy3f8z READY target=production aliases syllabai-v2.vercel.app + syllabai-v2-syllab-ai.vercel.app; health 200 on the alias",
+    "hub": "no hub source change (the scaffold renders inside the streamed answer text; the #6b render guard of run-014 already sits on both render sites); the receipt push auto-bakes the hub (git-linked, mechanism of record)"
+  },
+  "liveVerify": {
+    "verify_script": "scripts/r0_run015_verify.mjs (persisted; transcript /home/z/my-project/evidence/run015-verify.json; no bearer token or probe credentials persisted)",
+    "V2_data_source": "PASS (llm 0): /tutor/bank/paper?q=june 2016 chemistry paper 2 -> paperId dcba6a4a-75c2-4608-90aa-f965ca33385c '4CH0/2C June 2016' 8 bank questions — the deterministic expectation set",
+    "V3_the_wire": "PASS (llm_spend=1 TOTAL, disclosed): the quiz ask {question:'quiz me on this', paperId} through the pin on the NEW api carrier — 200, refused=false, provider=groq model=openai/gpt-oss-120b, ev=4, citations=4, truncated=false, 917 chars; S1 ZERO spec-code recall items (0 pattern hits across the spec-quiz family); S2 the served quiz IS the pinned paper's own content (20 stem-keyword hits of the bank's own vocabulary: diagram, apparatus, student, separate, mixture, beaker); S3 interrogative quiz shape present",
+    "honestNotes": "the blocking /ask path was verified of record (the SSE /ask/stream shares the SAME prepare() and assembleContext seam — the scaffold rides both by construction); a single clean ask proves the wire, not the law's universality — the universality rests on the 18 new deterministic pins + the v12 law-presence pins; the served answer's exact wording is the model's formatting of the scaffolded questions, as designed"
+  },
+  "credentials": "inline-only throughout (ghp_/vcp_/napi_ never persisted; LOCALGATE env in-process only; scrub-asserted 0 hits in the staged bundle, the receipt, and the transcript)",
+  "residuals": [
+    "a quiz ask that NAMES a paper identity ('quiz me on june 2019 paper 2') keeps the resolver supreme and does NOT scaffold (the run-013 pin law) — the improvised path + the v11 law govern it; a resolver-carries-paperId extension is the candidate follow-up",
+    "an unpinned quiz ask ('quiz me' with no served paper card) does not scaffold (advisory posture) — the v11 law governs; a KG-topic-scoped scaffold is a future proposal",
+    "session worklog ledger repair: the four entries (1a14dbf9, 1a14e30a, 1a14eb45, 1a14ee89) lost in the continuation cutover were re-appended to the workspace ledger before this run",
+    "fig46 run-012 unchanged (vision-quota wall); PAT rotation + prj_D7vf operator-gated residuals unchanged"
+  ]
+}
