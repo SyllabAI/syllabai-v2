@@ -8311,3 +8311,17 @@ Work Log:
 
 Stage Summary:
 - The review_schedules writer band is SPECED of record — the frozen NightlyDecayJob review-scheduling arm fully port-planned (sole frozen writer, ADR-031-clean, C-4 transaction parity, ledger-count honesty flip, 8 activation seams, zero migration). BUILD GATED on the operator's go: one word starts the T-MIG-131 flow (module + route composition + test-pin battery -> PR). With it live, the LAST dormant memory layer closes: tutor spaced-review line + brief review rows + NBA + teacher class due-batch all activate on the first PENDING row.
+
+---
+
+## R0-AUTO receipt — 2026-10-19 (UTC, sweep 1730Z)
+
+- Task ID: 438940 (cron sweep 2026-10-19T01:30Z)
+- PR: #193 `spec(learner): T-MIG-126 the review-schedules WRITER BAND SPEC` (docs-only: card band_spec + receipt + worklog)
+- Branch: `t-mig-126/r0` @ 71c8250 (real head SHA from PR JSON)
+- Intake: mergeable_state=dirty (main advanced 2f6b06f) → established merge-intake: git merge origin/main → SOLE conflict .syllabai/worklog.md → append-only chronological union via python resolver with byte checks (common prefix 1612147B == base exact; theirs w0a entry preserved verbatim as prefix; ours T-MIG-126 run-002 entry 4325B appended verbatim at EOF once; zero markers; union arithmetic 1614617+4325=1618942 exact). Zero CODE conflicts. Intake commit 58e162b.
+- Gates on intake head 58e162b: bun install --frozen-lockfile ✅ (930 pkgs) / bun run typecheck ✅ / bun test apps/api packages ✅ 2111 pass 0 fail / bun golden/runner.ts --selftest ✅; CI verify+hub+Vercel 3/3 success first-hand post-push
+- Merge: **71f5293** via PUT /pulls/193/merge, merge_method=merge (clean first-try)
+- Post-merge CI on new main tip 71f5293: verify ✅ hub ✅ (2/2 completed success; replay absent — noted, not blocking)
+- Boundaries: diff 3 files all .syllabai/** + docs-only PR (zero code delta); zero *.java, zero core/hub-REPO content, zero Neon/prod writes; comments: author law-declaration only (no HOLD/BLOCKING/'do not merge'); 0 formal reviews
+- Notes: 1 merge this run (cap 2). PR #190 (draft PoC) present, skipped as draft. No escalation.
