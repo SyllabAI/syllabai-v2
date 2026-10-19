@@ -8959,3 +8959,25 @@ Work Log:
 
 Stage Summary:
 - Course pages are complete within their own scope (100%); the 62% 'no course page' population is a deliberate two-surface architecture (course IA + universal archive browser), not an accessibility defect. The one true lever is catalog growth (CIE integration) + the index-regen cadence. Next repo receipt = Task-61.
+
+---
+Task ID: 62 (T-MIG-133 band 133i, trace 1a15557b74330e6d)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Operator go ("Proceed") on the staged 133i fix path — execute the boundary-corrected slice geometry end-to-end: re-cut, manifest v2, archive push, registry correction, hub acceptance, zero-LLM battery (census of record: trace 1a15534a152456f1).
+
+Work Log:
+- Re-cut lane (scripts/t133i_recut.py): 13 corrected slices cut from the sha-verified raw (d48020e0cc0b5545); 20 unchanged slices kept byte-for-byte (archive sha asserted); ownership census PASS (318 owned + 65 deferred = 383 exactly once, zero overlap); laws B1-B5 encoded.
+- CACHE-LAW DECISION: corrected bytes ship under r2 FILENAMES (u1_c1.r2.pdf, u1_practice.r2.pdf, ...) — corpus-pdf serves immutable per-path cache and the archive is append-only; overwriting v1 paths would leave wrong PDFs cached for a year and break the law.
+- OCR content law (scripts/t133i_ocr_assert.py, of-record 383-page OCR text): unit-exam runs open with the 'UNIT QUESTIONS' literal (it is also their running header, so absence-tests are meaningless — B1 checked against the NEXT unit's contents-listing signature instead); openers are contents listings (>=2 chapter titles + page numbers); the 5 stranded question pages (46/93/122/145/235) carry the owner chapter's running header. ALL PASS.
+- Hub (3a05332, FF over 5c2b06c): manifest mirror accepts book-slices-manifest-v2 alongside v1 + mirrors supersedes; corpus-pdf relay wall admits .r<n> names; tests v2 parse/mount/boundary-offset + r2 grammar. Gates: lint, 41/41 targeted, 118/118 full, build GREEN. Bake dpl_DPWcSAE9SWs5we8V6hsWadXEYfJH READY + aliased.
+- Archive (a4ce9f5 over 4add496): 13 r2 slices + manifest v2 (schema book-slices-manifest-v2, boundary laws, supersession); v1 paths byte-untouched and still resolving (append-only verified).
+- Registry (book_chapters, 9 rows): runner scripts/t133i_registry_apply.ts (postgres.js, 0600 URI, old-value-guarded UPDATE, rowCount==1 per row or tx aborts, pdf-9 offset law); preflight proved all 9 rows EXACTLY at v1; COW proof = RESET dead lane t-mig-002/r2 from production -> identical apply+verify PASS -> lane DELETED; prod apply 1-tx PASS + postverify; live chapters endpoint re-fetched: all 9 rows corrected, 20 untouched rows byte-equal.
+- Neon platform findings (first-hand): /connection_uri route GONE (404); POST /branches inline endpoint payload silently ignored; explicit POST /endpoints fails to provision at the 7-endpoint cap (2 creates returned then vanished); role reset 423-locks during branch reset (backoff); password nested under role.password.
+- Battery (scripts/t133i_battery.py, zero-LLM): 32/32 PASS — registry rows, manifest v2 + all-33 byte-sha + page counts + superseded paths, corpus-pdf edge, SSR mounts incl. the three boundary citations (131->u2:c11 opener law, 123->u1 exam span, 122->c10 last questions page), TOC unnumbered rows, honest degrade.
+- Hygiene: t-mig-002/r2 deleted (dead lane; rotates the stale credential fragment that leaked during the .neon-branch.env inspection this session — disclosed in receipt). Remaining stale branches (t-mig-014/r3a, t-mig-010/r3, t-mig-003/r6, preview/fix/tutor-math-mhchem) hold the endpoint slots = the COW-quota blocker; operator-gated.
+- Receipt: .syllabai/receipts/T-MIG-133/band-133i-boundary-correction-run-001-r0.json
+
+Stage Summary:
+- The operator's u1 report is fixed SYSTEMICALLY, not per-page: the v2 geometry + boundary laws are page-content-verified, machine-checked, and battery-asserted on live surfaces; all 4 unit-exam slices, 9 shifted chapter slices, and the u2 p207 / u4 p329 carryovers are corrected; 33 slices stream by sha-verified r2/v1 names through the immutable edge.
+- Ledger: archive a4ce9f5 · Neon 9 sanctioned rows (preflight-guarded, COW-proofed) · hub 3a05332 + bake · zero LLM, zero manual deploys, no credential values printed.
+- Open: hub notFound 200-status ticket (pre-existing); stale-branch cleanup lever; reference-area slicing (329-383) still deferred by law.

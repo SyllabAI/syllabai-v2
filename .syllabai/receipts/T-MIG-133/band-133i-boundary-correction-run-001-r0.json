@@ -1,0 +1,73 @@
+{
+  "receipt": "band-133i-boundary-correction-run-001-r0",
+  "band": "T-MIG-133 band 133i",
+  "date": "2026-10-20",
+  "operatorTrace": {
+    "census": "1a15534a152456f1 (page-level census — 13 of 33 v1 slices carried boundary-carryover pages)",
+    "go": "1a15557b74330e6d (operator: Proceed)"
+  },
+  "geometry": {
+    "unitExams": {
+      "u1": { "was": [122, 131], "now": [123, 130], "errors": ["p122 c10 chapter-questions continuation", "p131 unit-2 opener listing"] },
+      "u2": { "was": [208, 215], "now": [207, 214], "errors": ["p215 unit-3 opener listing"] },
+      "u3": { "was": [257, 263], "now": [257, 262], "errors": ["p263 unit-4 opener listing"] },
+      "u4": { "was": [322, 329], "now": [322, 328], "errors": ["p329 Appendix A (periodic table)"] }
+    },
+    "chaptersShifted": {
+      "u1:c1": [[12, 22], [11, 22]], "u1:c4": [[39, 45], [39, 46]], "u1:c7": [[84, 92], [84, 93]],
+      "u1:c10": [[110, 121], [110, 122]], "u2:c11": [[132, 138], [131, 138]], "u2:c12": [[139, 144], [139, 145]],
+      "u2:c18": [[199, 207], [199, 206]], "u3:c19": [[216, 234], [215, 235]], "u4:c22": [[264, 276], [263, 276]]
+    },
+    "strandedQuestionPagesRecovered": [46, 93, 122, 145, 235],
+    "ownershipLaw": "383/383 pages owned exactly once, zero overlap; unit openers 11/131/215/263 attach to first chapters; reference 329-383 + front 1-10 unsliced (raw-book fallback)",
+    "contentVerification": "of-record OCR text (383 pages): unit-exam runs open with 'UNIT QUESTIONS' literal and never carry the next unit's contents listing; stranded pages carry the owner chapter's running header"
+  },
+  "archive": {
+    "repo": "SyllabAI/syllabai-resources",
+    "commit": "a4ce9f5",
+    "parent": "4add496 (133g)",
+    "change": "13 r2 slice republishes (append-only law: NEW filenames, v1 paths byte-untouched) + manifest v2 (book-slices-manifest-v2, boundary laws + supersedes provenance)",
+    "r2Slices": {
+      "chapters/u1_c1.r2.pdf": "18bd4c7d6c7e", "chapters/u1_c4.r2.pdf": "8c287df04b3e",
+      "chapters/u1_c7.r2.pdf": "a0de5b2d4bc7", "chapters/u1_c10.r2.pdf": "1f75e0a8d5c9",
+      "chapters/u2_c11.r2.pdf": "071ececfdccc", "chapters/u2_c12.r2.pdf": "833fef4288f5",
+      "chapters/u2_c18.r2.pdf": "b23f1a8016fd", "chapters/u3_c19.r2.pdf": "419f9cac8161",
+      "chapters/u4_c22.r2.pdf": "92b4b6d66ea6", "units/u1_practice.r2.pdf": "9fddb979a979",
+      "units/u2_practice.r2.pdf": "25da1a1fd1e5", "units/u3_practice.r2.pdf": "012bcb3f5ab9",
+      "units/u4_practice.r2.pdf": "b4cfee835fdd"
+    },
+    "cacheLawNote": "corpus-pdf serves immutable per-path cache; overwriting bytes at a v1 path would leave wrong PDFs cached for a year AND violate the archive's append-only law — hence r2 names"
+  },
+  "registry": {
+    "table": "book_chapters (Neon billowing-cherry-15418366, production)",
+    "rowsUpdated": 9,
+    "guard": "one transaction; per-row UPDATE guarded on document_id + doc_version=1 + chapter_key + EXPECTED OLD pdf range (rowCount must be 1 or tx aborts); book pages follow the pdf-9 offset law",
+    "proof": "COW discipline via RESET of the dead task-lane branch t-mig-002/r2 from production (byte-copy on its existing endpoint) -> identical runner apply+verify PASS -> lane branch DELETED (hygiene)",
+    "connection": "the api deployment's own DATABASE_URL staged 0600 (host fingerprint ep-ancient-cake-a52e4kfd), zero rotations, zero redeploy risk",
+    "captures": ["data/t133i_cap_before.json", "data/t133i_cap_cow.json", "data/t133i_cap_cow_verify.json", "data/t133i_cap_after.json", "data/t133i_cap_verify.json"],
+    "receipt": "data/t133i_registry_receipt.json"
+  },
+  "hub": {
+    "commit": "3a05332 (FF over 5c2b06c)",
+    "change": "manifest mirror accepts book-slices-manifest-v2 alongside v1 + mirrors the supersedes field; corpus-pdf relay wall admits .r<n> republish names; tests: v2 parse/mount/boundary-offset law, r2 grammar positives/negatives",
+    "gates": "lint GREEN, books+validator 41/41, full suite 118/118, build GREEN",
+    "bake": "dpl_DPWcSAE9SWs5we8V6hsWadXEYfJH READY (3a05332), alias syllabai-hub-v2.vercel.app 200"
+  },
+  "battery": {
+    "script": "scripts/t133i_battery.py (lane) — zero-LLM, no credentials",
+    "result": "32/32 PASS",
+    "legs": "A registry (11) · B archive manifest+shas+page counts+append-only (10) · D corpus-pdf edge (3) · E SSR mounts incl. boundary citations 131->c11 / 123->u1 exam / 122->c10, TOC rows, honest degrade (8)",
+    "artifact": "data/t133i_battery_result.json"
+  },
+  "platformFindings": [
+    "Neon console API no longer serves /branches/{id}/connection_uri (404 'this route does not exist', verified) — URIs must be assembled from endpoint host + role; POST /branches inline endpoint payload is silently ignored; explicit POST /endpoints then failed to provision at the plan's endpoint cap (7 held by prod + 6 stale lanes; 2 creates returned then vanished)",
+    "branch role password reset answers HTTP 423 while a branch reset drains (needs backoff); reset_password response nests the password under role.password"
+  ],
+  "hygiene": {
+    "deleted": "t-mig-002/r2 (dead Oct-4 lane; also rotates the stale role-credential fragment that leaked to transcript during the .neon-branch.env inspection — disclosed)",
+    "remainingStaleBranches": ["t-mig-014/r3a", "t-mig-010/r3", "t-mig-003/r6", "preview/fix/tutor-math-mhchem"],
+    "note": "each holds a suspended-compute endpoint slot = the endpoint-cap blocker for future COW proofs; operator-gated cleanup lever"
+  },
+  "tickets": ["hub unknown-doc/not-found renders 404-UI with 200 status (FINDING-1 of 133h, pre-existing, untouched here)"],
+  "writeLedger": "archive push a4ce9f5 (13 r2 PDFs + manifest v2) · Neon 9-row sanctioned UPDATE (preflight-guarded, COW-proofed) · hub code push 3a05332 + git-integration bake · zero LLM, zero manual deploys, no values printed"
+}
