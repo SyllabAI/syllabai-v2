@@ -254,6 +254,11 @@ if (mode === "dry") {
 
 const dbUriFile = arg("db") ?? fail("--db required (0600 uri file)");
 const probeWord = arg("probe-word") ?? fail("--probe-word required in apply mode (the postverify ftsSanity token)");
+if (!/^[A-Za-z0-9][A-Za-z0-9'-]*$/.test(probeWord)) {
+  fail(
+    `--probe-word must be a single plain word (got "${probeWord}") — the ftsSanity probe law, fail-closed BEFORE any DB contact (a phrase or tsquery-syntax probe would crash the postverify after COMMIT and lose the apply receipt of record)`,
+  );
+}
 const uri = readFileSync(dbUriFile, "utf8").trim();
 // Driver of record: createSql (the api's own client — the frozen
 // ingestCanonicalDocument JSON.stringify::jsonb patterns are written for
@@ -305,20 +310,47 @@ try {
   console.log(`applied: document_row_id=${result.id} documentId=${result.documentId} chunks=${result.totalChunks}`);
 
   // ── postverify (read-only, same connection) ────────────────────────────────
+  // GUARDED per the receipt-chain law: every postverify leg is independently
+  // caught, so a postverify failure can NEVER abandon the receipt of record on
+  // an ALREADY-COMMITTED apply (the run-001 finding: this block sat uncaught
+  // between COMMIT and the receipt write, and the operator-supplied
+  // --probe-word rode raw into to_tsquery — a phrase probe crashed ftsSanity
+  // post-commit and lost the receipt). The probe now rides plainto_tsquery —
+  // the identical truth value for the law's single plain word, syntax-proof
+  // for any operator input — and --probe-word is pre-flighted to a single
+  // plain word above (fail-closed, pre-DB).
   const pv: Record<string, unknown> = {};
-  pv.documents = (await sql`select count(*)::int as n from documents where checksum = ${checksum}`)[0]?.n;
-  pv.chunks = (await sql`select count(*)::int as n from document_chunks where document_row_id = ${result.id}::uuid`)[0]?.n;
-  pv.chunksWithCodes = (await sql`select count(*)::int as n from document_chunks where document_row_id = ${result.id}::uuid and spec_codes is not null`)[0]?.n;
-  pv.bookChapters = (await sql`select count(*)::int as n from book_chapters where document_id = ${documentId}`)[0]?.n;
-  pv.joinRefs = (await sql`
-    select coalesce(sum(jsonb_array_length(spec_codes)), 0)::int as n
-    from book_chapters where document_id = ${documentId}`)[0]?.n;
-  pv.ftsSanity = (await sql`
-    select count(*)::int as n from document_chunks
-    where document_row_id = ${result.id}::uuid and content_tsv @@ to_tsquery('english', ${probeWord})`)[0]?.n;
-  pv.sampleHeader = (await sql`
-    select substring(content from 1 for 120) as h from document_chunks
-    where document_row_id = ${result.id}::uuid order by chunk_index limit 1`)[0]?.h;
+  let pvFailed = 0;
+  const pvLeg = async (name: string, q: () => Promise<unknown>): Promise<void> => {
+    try {
+      pv[name] = await q();
+    } catch (e) {
+      pv[name] = { error: e instanceof Error ? e.message : String(e) };
+      pvFailed += 1;
+    }
+  };
+  await pvLeg("documents", async () => (await sql`select count(*)::int as n from documents where checksum = ${checksum}`)[0]?.n);
+  await pvLeg("chunks", async () => (await sql`select count(*)::int as n from document_chunks where document_row_id = ${result.id}::uuid`)[0]?.n);
+  await pvLeg("chunksWithCodes", async () => (await sql`select count(*)::int as n from document_chunks where document_row_id = ${result.id}::uuid and spec_codes is not null`)[0]?.n);
+  await pvLeg("bookChapters", async () => (await sql`select count(*)::int as n from book_chapters where document_id = ${documentId}`)[0]?.n);
+  await pvLeg("joinRefs", async () =>
+    (
+      await sql`
+      select coalesce(sum(jsonb_array_length(spec_codes)), 0)::int as n
+      from book_chapters where document_id = ${documentId}`
+    )[0]?.n);
+  await pvLeg("ftsSanity", async () =>
+    (
+      await sql`
+      select count(*)::int as n from document_chunks
+      where document_row_id = ${result.id}::uuid and content_tsv @@ plainto_tsquery('english', ${probeWord})`
+    )[0]?.n);
+  await pvLeg("sampleHeader", async () =>
+    (
+      await sql`
+      select substring(content from 1 for 120) as h from document_chunks
+      where document_row_id = ${result.id}::uuid order by chunk_index limit 1`
+    )[0]?.h);
   console.log("postverify:", JSON.stringify(pv, null, 1));
 
   const receipt = {
@@ -329,6 +361,7 @@ try {
       duplicate: result.duplicate,
       chunks: result.totalChunks,
       postverify: pv,
+      postverifyStatus: pvFailed === 0 ? "PASS" : `FAILED(${pvFailed} leg(s))`,
       embeddings: "NOT written (zero-API-keys law; embed_rev=2 rows with NULL vectors — backfill via the book-agnostic 133d runner scripts/t-mig-133d-backfill-exec.ts on CI egress)",
       appliedAt: new Date().toISOString(),
     },
@@ -337,6 +370,11 @@ try {
   if (out) {
     writeFileSync(out, JSON.stringify(receipt, null, 1) + "\n");
     console.log(`receipt written: ${out}`);
+  }
+  if (pvFailed > 0) {
+    fail(
+      `postverify failed on ${pvFailed} leg(s) — the apply is COMMITTED and the receipt of record carries postverifyStatus; inspect the target DB before any re-run (a re-run is idempotent-safe: the same checksum rides the frozen dedupe law)`,
+    );
   }
 } finally {
   // createSql's ws client has no pooled end(); the process exit closes it
