@@ -72,6 +72,11 @@ export interface TocMeta {
   pdfSha256: string;
   pageCount: number;
   parseRef: string;
+  /** the qualification line of record in the TOC canonical (band 133e
+   *  parameterization — the 133b chemistry pilot rides the DEFAULT below,
+   *  byte-identical; second subjects pass their own, e.g. "Pearson
+   *  Edexcel International GCSE (9-1) Mathematics A"). */
+  qualification?: string;
 }
 
 function pageSpan(values: Array<[number, number] | null>): [number, number] | null {
@@ -159,7 +164,7 @@ export function deriveToc(rows: BookChunk[], meta: TocMeta): TocBuild {
     bookId: meta.bookId,
     title: rows[0]?.book_title ?? "",
     author: rows[0]?.author ?? "",
-    qualification: "Pearson Edexcel International GCSE (9-1) Chemistry",
+    qualification: meta.qualification ?? "Pearson Edexcel International GCSE (9-1) Chemistry",
     pdfSha256: meta.pdfSha256,
     pageCount: meta.pageCount,
     parseRef: meta.parseRef,

@@ -1,0 +1,67 @@
+{
+  "task": "T-MIG-133 band 133f (r7a) — second-subject books readiness: the Maths A (4MA1) slice of record",
+  "order": "operator trace 1a153aecff1b7661: 'Work on pilot being ready for another subject. Physics is ongoing by another agent. You go along with Maths A'",
+  "agent": "r7a (Super Z, zai-web session web-da4ab8b1)",
+  "date": "2026-10-19",
+  "scope_decision": {
+    "subject": "Edexcel IGCSE Mathematics A (4MA1) — the operator-named second subject for the books pilot",
+    "tier_note": "4MA1 is TIERED (unlike the single-tier 4CH1 pilot): the hub content bundles of record are igcse-maths-a-18-higher (the FULL spec — 188 statements = 108 Foundation-tier assumed-knowledge + 80 Higher-only) and igcse-maths-a-18-foundation (162 Foundation statements). The instrument is tier-generic: --spine-bundle selects the spine; the HIGHER book pairs with the higher bundle (full spec), the Foundation book with the foundation bundle. The readiness pin of record is the HIGHER pairing (the flagship book).",
+    "lane_split": "Physics books = the T-MIG-134 lane's band 134e (their operator gate, disclosed in their card). This band = the shared roll instrument + the Maths A slice. Zero file overlap: this band touches apps/api/scripts/books-ingest.ts + services/ingestion/books/* + their tests; 134a lives in services/curriculum/*."
+  },
+  "instrument_inventory": {
+    "already_generic_of_record (verified, zero change needed)": [
+      "spine-join.ts — the LO→spine join engine (spine-INJECTED; maths codes sort correctly: 1.1 < 1.1A < 1.2 < 1.10, the letter-suffix law pinned by test)",
+      "canonical-doc.ts — fully parameterized (uri/subject/label injected)",
+      "toc.ts group law — chapter_no/unit_no driven, book-generic",
+      "ChunkingService + ingestCanonicalDocument — the frozen corpus pipeline (kind TEXTBOOK)",
+      "packages/contracts books grammar — bookChunkSchema book-generic (.passthrough()); content_type enum = the 17-value chemistry census",
+      "t-mig-133d-backfill-exec.ts — the embeddings backfill (row-keyed, subject-blind, CI egress per the Gemini region law)",
+      "hub books read path (lib/books.ts + shelf/chapters/viewer routes) — course-slug generic; bookCorpusPathForCourse resolves the archive home from corpusSpecsForCourse: igcse-maths-a-18-higher -> books/pearson-edexcel/international-gcse/mathematics-a/4ma1/ — ZERO hub code change for the maths viewer",
+      "api content/books surfaces — courseId generic"
+    ],
+    "new_of_record (this band)": [
+      "services/ingestion/books/bundle-spine.ts — the bundle→spine adapter: hub content bundle curriculum.json (syllabai-demo.content-bundle/2.0) -> SpinePoint[] for the join engine. Grammar mirrors the chemistry snapshot law: code = '<specCode>-<officialCode>' (4MA1-1.1A), officialCode = node.code (letter suffixes preserved), wording = node.title VERBATIM, globalOrder = the 1-based nodes-array position (bundle order = the order of record). Fail-closed: blank/missing codes, duplicate official codes, blank wordings, zero spec points, empty nodes.",
+      "apps/api/scripts/books-ingest.ts — the MULTI-BOOK driver: the 133b pipeline with every subject constant a flag (--course --subject-code --subject-title --qualification --label --spine-bundle --spine-expected --parse-ref --probe-word). The 133b pilot runner stays FROZEN of record (the duplication is disclosed — same frozen services under both, zero forks).",
+      "toc.ts qualification parameter — TocMeta.qualification (optional); the chemistry DEFAULT is byte-identical to the 133b output (pinned by test), second subjects pass their own.",
+      "subject-code law enforced in the driver: --subject-code must match ^[A-Z0-9]+$ and be the OFFICIAL spec code (4MA1) — the 133d lesson of record (the CHM mnemonic binding was the defect 133d corrected: CHM/ARCHIVED -> 4CH1/ACTIVE, one pre-guarded UPDATE).",
+      "scripts/t-mig-133f-fixture.ts — the deterministic dry-run fixture generator (synthetic v3 JSONL + minimal valid 3-page PDF; LO bullets quote REAL 4MA1 statements pulled from the pinned bundle at runtime)."
+    ]
+  },
+  "pins_of_record": {
+    "higher_bundle_sha256": "9d4a42ca754f536477548f18058b535125937b486f3bca8edbd2a1624f8724e5 (apps/hub/content/igcse-maths-a-18-higher/curriculum.json — pinned by test, drift fails loud)",
+    "foundation_bundle_sha256": "29455da7d765b60cbaa3019230b085cbde868572186d80c1fe0d7cd03b031928 (tier-generic leg, unpinned-by-test but censused)",
+    "bundle_license": "manifest: 'Operator-authorized SME corpus — see LICENSE-DATA.md in syllabai-resources (Amendment 2026-09-17). Demo re-use only.' importSource SyllabAI/syllabai-resources main@75755855"
+  },
+  "dry_run_proof": {
+    "receipt": "band-133f-maths-a-dry-run-run-001-r7a.json (same directory — the driver's own output, machine-written)",
+    "result": "GREEN: 10 fixture rows -> 8 included (exclusions counted: front_matter 1, divider group 1) -> 1 unit / 2 chapters -> 3 LO joins ALL tier-1 VERBATIM against the REAL 188-point 4MA1 spine (0 review items) -> 4 chunks (group-boundary law) with 2 spec-code overlays -> header law 'Mathematics A 4MA1 | Edexcel IGCSE Student Book | Qu1:c1 | pp.14-16'",
+    "fail_fast_disclosure": "the FIRST dry attempt passed --pages 3 and the canonical page-boundary validation REJECTED it (textBlock page_number outside 1..3) — the fail-fast law fires exactly as designed; rerun with --pages 456. The fixture generator is committed (reproducible).",
+    "statement_quote_disclosure": "the fixture LO bullets quote SPEC STATEMENT wordings from the in-repo SME-licensed bundle (the same class the content bundles already ship) — NO book text is reproduced (the T-MIG-131 x44 law)."
+  },
+  "gates_of_record": {
+    "unit_tests": "bun test apps/api/test/ingestion/books-bundle-spine.test.ts apps/api/test/ingestion/books.test.ts = 26 pass / 0 fail (652 expect calls)",
+    "full_suite": "bun test apps/api packages = 2210 pass / 0 fail / 13 skip (2223 tests, 121 files) — up from the 134a-era 1745 record with the merged lanes",
+    "typecheck": "bun run typecheck (contracts/shared/db/api) = exit 0"
+  },
+  "remaining_operator_gated_levers (the actual Maths A roll — in order)": {
+    "1_package_delivery": "the Pearson Edexcel International GCSE (9-1) Mathematics A Student Book package: the PDF + its v3 Docling JSONL parse (the 52.65MB tmpfiles law; book bytes NEVER in the hub tree — T-MIG-131 x44). Naming grammar mirror: download/rag_maths_a/edexcel_igcse_maths_a_chunks_v3.jsonl. INTAKE GATE: the parse must census against bookChunkSchema — the content_type enum is the 17-value chemistry census; a maths parse with NEW types = an explicit contract delta filed first, NEVER a silent widen (the never-widen law). Tier decision rides the delivery: Higher book -> higher bundle (188), Foundation book -> foundation bundle (162).",
+    "2_dry_run": "books-ingest.ts --mode dry on the real package (the deterministic receipt; review-lane joins disclosed, never silent)",
+    "3_prod_apply": "OPERATOR ORDER required (the 093/133b law): COW-proof first, then the ONE-transaction apply; --subject-code 4MA1 (the 133d binding law); book lands SUGGESTED",
+    "4_validation_flip": "the T-C20 gate (the operator's UPDATE lever — never auto-VALIDATED)",
+    "5_embeddings": "the book-agnostic 133d runner on CI egress (scripts/t-mig-133d-backfill-exec.ts <DATABASE_URL> <row_id>) — the Gemini region law stands (sandbox cannot embed)",
+    "6_archive_upload": "books/pearson-edexcel/international-gcse/mathematics-a/4ma1/student-book.pdf + page artifacts on syllabai-resources (the 133c law: PDF blob reuse, zero PDF bytes moved) — the hub viewer then serves maths books with ZERO hub code change (bookCorpusPathForCourse resolves it)",
+    "note": "the tutor arm's spec-boost/citation layers are subject-generic of record (133d); the 4MA1 curriculum KG seed (the four-subsystem second subject) remains the T-MIG-134 instrument + operator gate — INDEPENDENT of the books roll (the books spine is bundle-injected, no DB dependency)."
+  },
+  "write_ledger": "zero prod writes, zero COW writes, zero LLM calls, zero credentials touched, zero book bytes in the tree — the only artifacts are in-repo code/tests/receipts + the scratch fixture (outside the repo)",
+  "files": [
+    "apps/api/src/services/ingestion/books/bundle-spine.ts (new)",
+    "apps/api/src/services/ingestion/books/toc.ts (qualification parameter — chemistry default byte-identical)",
+    "apps/api/scripts/books-ingest.ts (new — the multi-book driver; 133b runner untouched)",
+    "apps/api/test/ingestion/books-bundle-spine.test.ts (new)",
+    "apps/api/test/ingestion/books.test.ts (additive qualification-law block)",
+    "scripts/t-mig-133f-fixture.ts (new — the reproducible fixture generator)",
+    ".syllabai/receipts/T-MIG-133/band-133f-maths-a-dry-run-run-001-r7a.json (driver-written)",
+    ".syllabai/tasks/T-MIG-133-student-books.yaml (claim + status)",
+    ".syllabai/worklog.md (band entry)"
+  ]
+}
