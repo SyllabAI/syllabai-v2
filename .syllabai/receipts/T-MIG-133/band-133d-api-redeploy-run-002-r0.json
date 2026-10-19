@@ -1,0 +1,90 @@
+{
+  "card": "T-MIG-133",
+  "receipt": "band-133d-api-redeploy-run-002-r0",
+  "lane": "r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "created_at_utc": "2026-10-19T08:10Z",
+  "operator_trace": "1a1531b6e74ad0c1 'api redeploy'",
+  "order": {
+    "words": "api redeploy",
+    "discharge": "the ONE remaining lever named by band-133d-run-001-r0: the deployed api bundle dpl_5VapkZhh9nSskGfGVdF9NPtpGULc (serving main 258f905, READY 2026-10-18T22:43:47Z) predates the 133d code — this redeploy bakes main 6c84af6 (the 133d band: PR #199 e69e56a tutor arm + page-true book citations + PR #200 ce9b2e5 runner mode) into the serving carrier"
+  },
+  "state_at_fetch_first": {
+    "sandbox_rollback_disclosed": "the lane-local state from the 133c session was GONE (scripts/api_redeploy_133c_*, api-stage-133c/, api-stage-133c.env); the sandbox clone sat at 63fe6ef (a pre-133c snapshot) with /home/z/.secrets absent again — the recipe of record was re-derived from the IN-REPO receipts (band-133c-api-redeploy-run-004 + T-MIG-093 tools + run-008 env-API law), which is exactly the failure mode the in-repo receipt discipline exists for",
+    "main_tip": "6c84af6f36f50e7996e4de76beba4ea5b394c5c2 (origin/main had advanced 63fe6ef -> 6c84af6, +121 commits vs the stale clone: bands 124-131 + the full 133d band merged by the sibling lanes; clone ff-synced, worktree clean)",
+    "delta_over_incumbent": "EXACTLY the 133d band: 9 commits 258f905..6c84af6, 15 api/packages files, +851/-14 (tutor citations.ts NEW, spec-boost.ts +101, vector-arm.ts +145, karag/rrf/evidence, books route +20 / service +46, contracts/books +25 BookCitationTarget, tests)",
+    "ci_at_tip": "2/2 SUCCESS (verify + hub check-runs, GitHub API first-hand at 6c84af6)",
+    "api_carrier_incumbent": "dpl_5VapkZhh9nSskGfGVdF9NPtpGULc READY 2026-10-18T22:43:47Z, alias syllabai-v2.vercel.app",
+    "race_guard": "CLEAR (incumbent age 33343s >> 10-min law, asserted in-script)",
+    "secrets": "VERCEL_PAT fingerprint law VERIFIED d254bbfaac004354 first-hand (vercel_user syllabai-1403, github SyllabAI); tokens staged 0600 from the project-local Oct-4 stash; PAT rotation still advised",
+    "stale_workspace_law": "bun install honored (930 pkgs) BEFORE the build — no repeat of the 133c stale-workspace failure"
+  },
+  "build_of_record": {
+    "recipe": "the T-MIG-092/093/095 chain of record, faithful re-run of .syllabai/receipts/T-MIG-093/tools/deploy_bundle_build.py (paths adapted only; shim patterns byte-identical, asserted unique-before-replace)",
+    "source": "main 6c84af6, clean worktree, HEAD asserted pre-build",
+    "asset_shas": "all 6 concept-graph YAML inlines BYTE-EXACT to the of-record pins (concepts 24fa91ac7149682b, concept_edges 8a651dd9e60bfefa, practicals e53e5f87606a2b5a, relationships b3b7529222d77d80, specification_points b1fea69953205077, topics a7b14cbdd34bb9fe) — asserted BEFORE inlining",
+    "bundle": "339 modules, 3,206,232 bytes CJS (prior of-record 338 / 3,199,307 — the delta = the 133d wire: citations + spec-boost + the books citation-target route + the vector-arm book resolution)",
+    "shims": "worktree-only (Bun.CryptoHasher->node:crypto, Bun.YAML.parse->js-yaml, 6 YAMLs inlined via concept-assets.gen.ts, explicit Node adapter entry); git-verified PRISTINE at 6c84af6 after build",
+    "bun_api_sweep": "the new 133d tutor services carry zero Bun.* usage (grep first-hand) — Node-bundle safe"
+  },
+  "boot_gate_write_free_4_of_4": [
+    "env API: 9 envs on the api project (census of record agrees); of-record DATABASE_URL via the /v9 env LIST (decrypt=true; single-env GET 404s — run-008 law), in-memory only, staged 0600, SHREDDED post-gate, never printed",
+    "health 200 {groups:[liveness,readiness],status:UP} PASS",
+    "POST /api/v1/auth/login malformed -> 400 validation_failed PASS",
+    "GET /api/v1/cron/nightly-decay -> 401 fail-closed STRICTER local branch (CRON_SECRET unset locally, T-MIG-042) PASS",
+    "GET /api/v1/__not_a_route__ -> 401 (the /api/v1 filter chain) PASS"
+  ],
+  "deploy": {
+    "method": "vercel CLI 62.7.0 deploy --prod --yes from the 2-file stage (api/index.js + vercel.json rewrites /api/v1/(.*) and /actuator/health; .vercel/project.json linked prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ / team_ULL54qkhzKBmnKrpO6BD4mYX)",
+    "deployment": "dpl_Daps9E6ntWKt1xWaEpXWRReZkQgu (syllabai-v2-7laqw9z1d-syllab-ai.vercel.app) READY, createdAt 1792396782711 (~2026-10-19T07:59:42Z)",
+    "production_alias_switched": true,
+    "alias_verification": "3-WAY createdAt BYTE-MATCH (v6 LIST <-> v13 get?url alias-lookup <-> deployment detail) all carrying 1792396782711 + aliasAssigned=true. API-revision disclosure first-hand this run: v13/deployments/get?id= 404s outright ('Deployment not found') and the alias-lookup still omits uid — the PATH form /v13/deployments/{id} is the working detail endpoint (the 133c proof law adapted to the current API revision, patched into the persisted deploy script)"
+  },
+  "post_deploy_live_battery_12_of_12": {
+    "legs_of_record_1_to_8": [
+      "1/12 PASS health: 200 {groups:[liveness,readiness],status:UP}",
+      "2/12 PASS cron law: 401 {status:unauthorized, reason:'missing or wrong Authorization bearer — the hub seam forwards the Vercel Cron bearer verbatim'} (prod CRON_SECRET configured branch)",
+      "3/12 PASS unknown path: 401 (the /api/v1 filter chain)",
+      "4/12 PASS register probe: 201 + accessToken (r0-133d-api-*@example.invalid identity of record)",
+      "5/12 PASS bank-mount discriminator 200: resolvedNodes[0] TOPIC 'Rates of reaction' 4CH1-S3-b (a9ea76ff-9326-4121-8b4b-d4144d4b901f) + SUBTOPIC baba9241 (code 4CH1-3.15) — byte-consistent with the T-MIG-126 run-004 pin; resolved-node shape of record {id,nodeType,title,code}",
+      "6/12 PASS review read seam 200: {summary:{due:0,scheduled:0,nextDueAt:null},cards:[]} honest-empty",
+      "7/12 PASS books route law: GET /api/v1/content/books (no courseId) -> 400 validation_failed 'missing required parameter: courseId'",
+      "8/12 PASS T-C20 discriminator: GET /api/v1/content/books/e6c0db50-0f84-55de-b50c-e4d49285cd6d/chapters (unauth, public-READ) -> 200 with EXACTLY 29 chapters"
+    ],
+    "band_133d_discriminators_9_to_12": [
+      "9/12 PASS shelf: GET /api/v1/content/books?courseId=igcse-chemistry-19 -> 200 [1 entry] documentId e6c0db50…, author Jim Clark, 383pp, checksum d48020e0… (the r1c census pins byte-consistent)",
+      "10/12 PASS 133d ROUTE-EXISTENCE DISCRIMINATOR: GET /api/v1/content/books/{pilot}?page=abc -> 200 {documentId, docVersion:1, courseId:'igcse-chemistry-19', page:null, chapter:null} — the malformed-page=absent law; the INCUMBENT bundle (no GET /:documentId route) 401/404s this exact path, so this 200 is first-hand proof the 133d api wire SERVES",
+      "11/12 PASS F-022 nearest-chapter containment: page=12 (u1:c1 pdfPageStart) -> 200 with chapter.chapterKey == u1:c1 (the viewer's pickChapter law verbatim on the API plane)",
+      "12/12 PASS T-C20 no-state-leak: unknown book via citation-target -> 404 not_found 'Book 00000000-… not found'"
+    ]
+  },
+  "write_ledger": {
+    "probe_users": 2,
+    "probe_identities": "r0-133d-api-1792396880@example.invalid + r0-133d-api-1792396927@example.invalid (both register 201; zero sessions, zero review rows, zero cron fires, zero LLM spend)",
+    "neon_direct_writes": 0,
+    "llm_spend": 0,
+    "embedding_spend": 0,
+    "local_boot_gate_writes": 0
+  },
+  "disclosures": [
+    "the redeploy bakes EXACTLY the 133d band delta over the incumbent (9 commits, 15 files, +851/-14) — everything else was already serving at 258f905",
+    "first battery run 11/12: leg 5 asserted a wrong key (nodeId) against the resolved-node shape of record ({id,nodeType,title,code}) — the SERVING response was 200 throughout; battery fixed in place and re-run 12/12; the honest cost is the second probe learner in the write ledger",
+    "the 133d LLM-plane serving law (book-true 'Textbook — ppN–M' labels, spec-boost fused ranking, books deep links inside real asks) activates on the next real tutor ask — llm_spend 0 this run by the battery's zero-LLM law; the band receipt's own live probes (llm_spend 2) already covered the arm end-to-end",
+    "this .syllabai bookkeeping push costs one no-code-delta hub auto-bake (mechanism of record)",
+    "sandbox rollback disclosure: all lane-local 133c artifacts were lost; every step re-derived from in-repo receipts of record; the persisted scripts (build/bootgate/deploy/battery) are the new lane artifacts",
+    "deploy log token-redacted post-run (scripts/api_redeploy_133d_deploy.log)"
+  ],
+  "verification": {
+    "run_class": "OPERATOR-ORDERED PRODUCTION REDEPLOY (zero code changes by this lane; the bundle = main 6c84af6 as merged and CI-verified)",
+    "hygiene": "token inline-only, never persisted; receipt scrub-asserted (zero secret values); stage + scripts under /home/z/my-project per the path law",
+    "artifacts": [
+      "scripts/api_redeploy_133d_build.py",
+      "scripts/api_redeploy_133d_bootgate.py",
+      "scripts/api_redeploy_133d_deploy.sh (+ .log, token-redacted)",
+      "scripts/api_redeploy_133d_battery.py",
+      "scripts/t133d-api-battery-20261019T080126Z.json (first run 11/12, leg-5 key disclosure)",
+      "scripts/t133d-api-battery-20261019T080210Z.json (12/12 ALL PASS; committed in-repo alongside this receipt)",
+      "api-stage-133d/ (the 2-file deploy stage)"
+    ]
+  },
+  "verdict": "REDEPLOYED (dpl_Daps9E6ntWKt1xWaEpXWRReZkQgu READY, alias switched, 3-way proven) AND VERIFIED (boot gate 4/4 write-free + live battery 12/12 incl. the 4 band-133d discriminators) — BAND 133d IS NOW SERVING: the citation-target route + the tutor-arm book wire are live on the api carrier; T-MIG-133 bands 133a/133b/133c/133d ALL LIVE END-TO-END. Remaining operator gates: 133e (roll to remaining books), PR #190 promotion, PAT rotation, prune-v2."
+}

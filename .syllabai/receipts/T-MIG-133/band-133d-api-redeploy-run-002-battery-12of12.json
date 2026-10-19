@@ -1,0 +1,81 @@
+{
+  "battery": "t133d-api-redeploy",
+  "base": "https://syllabai-v2.vercel.app",
+  "at_utc": "2026-10-19T08:02:10Z",
+  "probe_identity": "r0-133d-api-1792396927@example.invalid",
+  "all_pass": true,
+  "legs": [
+    {
+      "leg": 1,
+      "name": "health 200 UP {liveness,readiness}",
+      "pass": true,
+      "detail": "200 b'{\"groups\":[\"liveness\",\"readiness\"],\"status\":\"UP\"}'"
+    },
+    {
+      "leg": 2,
+      "name": "cron law 401 (prod fail-closed branch)",
+      "pass": true,
+      "detail": "401 b'{\"status\":\"unauthorized\",\"reason\":\"missing or wrong Authorization bearer \\xe2\\x80\\x94 the hub seam forwards the Vercel Cron bearer verbatim\"}'"
+    },
+    {
+      "leg": 3,
+      "name": "unknown /api/v1 -> 401 (filter chain)",
+      "pass": true,
+      "detail": "401 b'{\"timestamp\":\"2026-10-19T08:02:07.082Z\",\"status\":401,\"error\":\"Unauthorized\",\"path\":\"/api/v1/__not_a_route__\"}'"
+    },
+    {
+      "leg": 4,
+      "name": "register probe 201 + accessToken",
+      "pass": true,
+      "detail": "201 b'{\"accessToken\":\"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyMC0xMzNkLWFwaS0xNzkyMzk2OTI3QGV'"
+    },
+    {
+      "leg": 5,
+      "name": "bank-mount discriminator 200 (a9ea76ff TOPIC 'Rates of reaction' 4CH1-S3-b + baba9241 SUBTOPIC)",
+      "pass": true,
+      "detail": "200 nodes=[('TOPIC', '4CH1-S3-b'), ('SUBTOPIC', '4CH1-3.15'), ('SUBTOPIC', '4CH1-PR-10')]"
+    },
+    {
+      "leg": 6,
+      "name": "review read seam 200 honest-empty",
+      "pass": true,
+      "detail": "200 b'{\"learnerId\":\"3742e0ae-6351-4762-a884-0009723b424a\",\"generatedAt\":\"2026-10-19T08:02:08.860Z\",\"summary\":{\"due\":0,\"scheduled\":0,\"nextDueAt\":nu'"
+    },
+    {
+      "leg": 7,
+      "name": "books route law: no courseId -> 400 validation_failed",
+      "pass": true,
+      "detail": "400 b'{\"status\":400,\"error\":\"validation_failed\",\"message\":\"missing required parameter: courseId\",\"timestamp\":\"2026-10-19T08:02:09.176Z\"}'"
+    },
+    {
+      "leg": 8,
+      "name": "T-C20 chapters 200 EXACTLY 29 (pilot VALIDATED serves)",
+      "pass": true,
+      "detail": "200 n=29"
+    },
+    {
+      "leg": 9,
+      "name": "shelf 200 w/ pilot (Jim Clark, 383pp, checksum d48020e0\u2026)",
+      "pass": true,
+      "detail": "200 n=1 entry=yes"
+    },
+    {
+      "leg": 10,
+      "name": "133d citation-target: malformed page=absent -> 200 {page:null,chapter:null}",
+      "pass": true,
+      "detail": "200 b'{\"documentId\":\"e6c0db50-0f84-55de-b50c-e4d49285cd6d\",\"docVersion\":1,\"courseId\":\"igcse-chemistry-19\",\"page\":null,\"chapter\":null}'"
+    },
+    {
+      "leg": 11,
+      "name": "133d citation-target: F-022 containment resolves the landing chapter",
+      "pass": true,
+      "detail": "200 page=12 -> u1:c1"
+    },
+    {
+      "leg": 12,
+      "name": "133d citation-target: unknown book -> 404 not_found (no state leak)",
+      "pass": true,
+      "detail": "404 b'{\"status\":404,\"error\":\"not_found\",\"message\":\"Book 00000000-0000-0000-0000-000000000000 not found\",\"timestamp\":\"2026-10-1'"
+    }
+  ]
+}
