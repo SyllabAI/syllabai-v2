@@ -31,6 +31,8 @@ import type { BookChapter, BookShelfEntry } from "@syllabai/contracts";
 
 import { coreBaseUrl } from "./core-proxy";
 import { corpusSpecsForCourse } from "./pastpapers-corpus";
+import { booksRawUrl } from "./pastpapers-shared";
+import { sliceManifestMirror, type BookSliceManifest } from "./books-slices";
 
 // ── the strict-shape mirrors (bookShelfEntrySchema / bookChapterSchema) ─────
 
@@ -142,4 +144,60 @@ export function bookPaneUrl(corpusPath: string): string {
     .split("/")
     .map(encodeURIComponent)
     .join("/")}`;
+}
+
+// ── 133e: the slice manifest (book-slices-manifest-v1) ──────────────────────
+// The pure slice law (zod mirrors, the mount map, mount resolution) lives in
+// lib/books-slices.ts (unit-testable, no server-only imports); this module
+// carries the server surface (the archive fetch + drift guards) on top.
+export {
+  bookSliceMapOf,
+  type BookChapterSlices,
+  type BookSliceEntry,
+  type BookSliceManifest,
+  type BookSliceMap,
+} from "./books-slices";
+
+/**
+ * The slice manifest of a course's primary book, resolved against the LIVE
+ * registry (drift-guarded). null = no manifest / any mismatch — callers
+ * fall back to the whole-book mount silently (honest degradation, no
+ * fabricated slices).
+ */
+export async function fetchBookSlices(
+  courseSlug: string,
+  documentId: string,
+  docVersion: number,
+): Promise<BookSliceManifest | null> {
+  const spec = corpusSpecsForCourse(courseSlug);
+  if (!spec || spec.specs.length === 0) return null;
+  const url = booksRawUrl(`books/${spec.specs[0]}/manifest.json`);
+  try {
+    const res = await fetch(url, {
+      headers: { Accept: "application/json" },
+      next: { revalidate: 900 },
+      signal: AbortSignal.timeout(15_000),
+    });
+    if (!res.ok) return null;
+    const parsed = sliceManifestMirror.safeParse(await res.json());
+    if (!parsed.success) return null;
+    const m = parsed.data;
+    if (
+      m.book.documentId !== documentId ||
+      m.book.docVersion !== docVersion ||
+      m.book.courseSlug !== courseSlug
+    ) {
+      return null;
+    }
+    return m;
+  } catch {
+    return null;
+  }
+}
+
+/** The corpus-relative path of one slice file (books/<specKey>/<rel>). */
+export function bookSlicePathForCourse(courseSlug: string, rel: string): string | null {
+  const spec = corpusSpecsForCourse(courseSlug);
+  if (!spec || spec.specs.length === 0) return null;
+  return `books/${spec.specs[0]}/${rel}`;
 }

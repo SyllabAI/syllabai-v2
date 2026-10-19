@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ClipboardList } from "lucide-react";
 
 import type { BookChapter } from "@syllabai/contracts";
 
@@ -9,7 +9,16 @@ import {
   fetchBookChapters,
   fetchBookShelf,
   bookCorpusPathForCourse,
+  bookPaneUrl,
+  bookSlicePathForCourse,
+  fetchBookSlices,
 } from "@/lib/books";
+import {
+  bookSliceMapOf,
+  resolveChapterMount,
+  resolveUnitExamMount,
+  type BookSliceEntry,
+} from "@/lib/books-slices";
 import { booksRawUrl, corpusViewerUrl } from "@/lib/pastpapers-shared";
 import { PdfPane } from "@/components/pastpapers/pdf-pane";
 import { Button } from "@/components/ui/button";
@@ -27,28 +36,32 @@ function PreconnectCorpus() {
 }
 
 /**
- * One student-book chapter — the page-range mount (T-MIG-133 band 133c).
+ * One student-book chapter — the slice mount (T-MIG-133 bands 133c + 133e).
  *
- * ?chapter=u1:c1 opens the chapter's pdf_pages range (the viewer coordinate
- * of record); ?page=N (citation drill-in, the 133d shape) lands on that
- * PDF page. Layout discipline inherited from the past-papers viewer (the
- * viewport-drowning lesson): NO breadcrumb row, NO h1 hero — one compact
- * toolbar row (back to shelf · book · chapter position · page-range chip)
- * and the pane filling the rest.
+ * 133c law (unchanged): ?chapter=u1:c1 opens the chapter's pdf_pages range
+ * (the viewer coordinate of record); ?page=N (citation drill-in, the 133d
+ * shape) lands on that PDF page; unknown OR not-yet-validated books 404
+ * identically (T-C20, no state leak).
  *
- * T-C20: an unknown OR not-yet-validated book 404s here identically (the
- * chapters registry is empty for both — no state leak, the same honest
- * not-found the shelf's empty state mirrors).
+ * 133e law (this band): the pane mounts the chapter's PAGE-EXACT SLICE
+ * (lesson / whole-range per the manifest of record) instead of the ~54MB
+ * whole book — the download fix. ?part=questions mounts the hard-split
+ * practice-questions slice (the anchor jump). Unit exam-practice rows
+ * (u<n>:xexam-practice from the slice manifest) mount the unit's exam
+ * slice; ?page=N inside a unit span resolves there BEFORE the chapter
+ * containment (the spans are disjoint from chapter ranges by construction).
+ * When the manifest is absent or drift-guarded out, EVERYTHING degrades to
+ * the whole-book mount — the 133c behavior, byte-for-byte.
  */
 export default async function BookViewerPage({
   params,
   searchParams,
 }: {
   params: Promise<{ course: string; docId: string }>;
-  searchParams: Promise<{ chapter?: string; page?: string }>;
+  searchParams: Promise<{ chapter?: string; page?: string; part?: string }>;
 }) {
   const { course: slug, docId } = await params;
-  const { chapter: chapterParam, page: pageParam } = await searchParams;
+  const { chapter: chapterParam, page: pageParam, part: partParam } = await searchParams;
   const hub = await loadHubCourse(slug);
   if (!hub) notFound();
   const { meta } = hub;
@@ -61,18 +74,47 @@ export default async function BookViewerPage({
   const shelf = await fetchBookShelf(slug);
   const book = shelf?.find((b) => b.documentId === docId) ?? null;
 
-  const pdfPath = bookCorpusPathForCourse(slug, "student-book.pdf");
-  if (!pdfPath) notFound(); // a course outside the corpus archive has no pane
+  const wholePdfPath = bookCorpusPathForCourse(slug, "student-book.pdf");
+  if (!wholePdfPath) notFound(); // a course outside the corpus archive has no pane
+
+  const slices = await fetchBookSlices(slug, docId, chapters[0].docVersion);
+  const sliceMap = slices ? bookSliceMapOf(slices) : null;
+
+  // ── unit exam-practice mounts (manifest rows, disjoint from chapters) ──────
+  const unitRow =
+    sliceMap?.unitExam.find((s) => chapterParam != null && s.chapterKey === chapterParam) ?? null;
+  if (unitRow) {
+    const unitResolved = resolveUnitExamMount(unitRow, positiveInt(pageParam));
+    return renderMount({
+      slug,
+      bookTitle: book?.title ?? "Student book",
+      mount: { entry: unitResolved.mount!, label: unitRow.title ?? "Exam practice" },
+      initialPage: unitResolved.initialPage,
+      wholePdfPath,
+    });
+  }
 
   const target = pickChapter(chapters, chapterParam, pageParam);
   const ordinal = chapters.indexOf(target) + 1;
   const prev = ordinal > 1 ? chapters[ordinal - 2] : null;
   const next = ordinal < chapters.length ? chapters[ordinal] : null;
-  const initialPage =
-    target.pdfPageStart ?? positiveInt(pageParam) ?? 1;
+  const row = sliceMap?.byChapter.get(target.chapterKey) ?? null;
 
-  const rangeLabel =
-    target.pdfPageEnd != null && target.pdfPageEnd !== target.pdfPageStart
+  const page = positiveInt(pageParam);
+  const resolved = resolveChapterMount(row, {
+    part: partParam,
+    page,
+    fallbackPage: target.pdfPageStart ?? page ?? 1,
+  });
+  const mountEntry: BookSliceEntry | null = resolved.mount;
+  const mountIsQuestions = resolved.isQuestions;
+  const initialPage = resolved.initialPage;
+
+  const rangeLabel = mountEntry
+    ? mountIsQuestions
+      ? `PDF pp. ${mountEntry.pdfRange[0]}–${mountEntry.pdfRange[1]} · practice questions`
+      : `PDF pp. ${mountEntry.pdfRange[0]}–${mountEntry.pdfRange[1]}`
+    : target.pdfPageEnd != null && target.pdfPageEnd !== target.pdfPageStart
       ? `PDF pp. ${target.pdfPageStart}–${target.pdfPageEnd}`
       : `PDF p. ${target.pdfPageStart}`;
   const bookRangeLabel =
@@ -81,6 +123,12 @@ export default async function BookViewerPage({
         ? ` · SB pp.${target.bookPageStart}–${target.bookPageEnd}`
         : ` · SB p.${target.bookPageStart}`
       : "";
+
+  // slice pane path; null → whole-book fallback (the 133c mount)
+  const sliceRel = mountEntry ? bookSlicePathForCourse(slug, mountEntry.file) : null;
+  const panePath = sliceRel ?? wholePdfPath;
+  const unitExam =
+    sliceMap?.unitExam.find((s) => s.chapterKey === `u${target.unitIndex}:xexam-practice`) ?? null;
 
   return (
     <div className="flex h-[calc(100dvh-3.5rem)] flex-col px-3 pt-2 sm:px-5">
@@ -101,6 +149,40 @@ export default async function BookViewerPage({
           {bookRangeLabel}
         </span>
         <div className="flex shrink-0 items-center gap-1">
+          {mountIsQuestions ? (
+            <Button asChild variant="outline" size="sm" className="h-7 px-2">
+              <Link
+                href={`/courses/${slug}/books/${docId}?chapter=${encodeURIComponent(target.chapterKey)}`}
+                aria-label={`Back to the lesson: ${target.title}`}
+              >
+                <ArrowLeft className="h-4 w-4" aria-hidden />
+                Lesson
+              </Link>
+            </Button>
+          ) : (
+            row?.questions && (
+              <Button asChild variant="outline" size="sm" className="h-7 px-2">
+                <Link
+                  href={`/courses/${slug}/books/${docId}?chapter=${encodeURIComponent(target.chapterKey)}&part=questions`}
+                  aria-label={`Practice questions: ${target.title}`}
+                >
+                  <ClipboardList className="h-4 w-4" aria-hidden />
+                  Practice questions
+                </Link>
+              </Button>
+            )
+          )}
+          {unitExam && (
+            <Button asChild variant="ghost" size="sm" className="h-7 px-2">
+              <Link
+                href={`/courses/${slug}/books/${docId}?chapter=${encodeURIComponent(unitExam.chapterKey)}`}
+                aria-label={unitExam.title ?? "Exam practice"}
+              >
+                <ClipboardList className="h-4 w-4" aria-hidden />
+                Unit {target.unitIndex} exam
+              </Link>
+            </Button>
+          )}
           {prev && (
             <Button asChild variant="ghost" size="sm" className="h-7 px-2">
               <Link
@@ -127,10 +209,64 @@ export default async function BookViewerPage({
       </div>
       <div className="min-h-0 flex-1">
         <PdfPane
-          url={corpusViewerUrl(pdfPath)}
-          fallbackUrl={booksRawUrl(pdfPath)}
-          downloadUrl={booksRawUrl(pdfPath)}
+          url={corpusViewerUrl(panePath)}
+          fallbackUrl={booksRawUrl(wholePdfPath)}
+          downloadUrl={booksRawUrl(wholePdfPath)}
           label={`${book?.title ?? "Student book"} — ${target.title}`}
+          active
+          initialPage={initialPage}
+          className="h-full"
+        />
+      </div>
+    </div>
+  );
+}
+
+/** The unit exam-practice mount's own layout (no chapter prev/next). */
+function renderMount({
+  slug,
+  bookTitle,
+  mount,
+  initialPage,
+  wholePdfPath,
+}: {
+  slug: string;
+  bookTitle: string;
+  mount: { entry: BookSliceEntry; label: string };
+  initialPage: number;
+  wholePdfPath: string;
+}) {
+  const { entry, label } = mount;
+  const sliceRel = bookSlicePathForCourse(slug, entry.file);
+  const panePath = sliceRel ?? wholePdfPath;
+  return (
+    <div className="flex h-[calc(100dvh-3.5rem)] flex-col px-3 pt-2 sm:px-5">
+      <PreconnectCorpus />
+      <div className="flex min-h-9 flex-wrap items-center gap-x-3 gap-y-1 pb-2 text-sm">
+        <Button asChild variant="ghost" size="sm" className="h-7 px-2">
+          <Link href={`/courses/${slug}/books`}>
+            <ArrowLeft className="h-4 w-4" aria-hidden />
+            Shelf
+          </Link>
+        </Button>
+        <span className="truncate font-medium">{bookTitle}</span>
+        <span className="text-muted-foreground">{label}</span>
+        <span className="ml-auto shrink-0 text-xs text-muted-foreground">
+          PDF pp. {entry.pdfRange[0]}–{entry.pdfRange[1]}
+        </span>
+        <Button asChild variant="outline" size="sm" className="ml-2 h-7 px-2">
+          <Link href={`/courses/${slug}/books`}>
+            <ArrowLeft className="h-4 w-4" aria-hidden />
+            All chapters
+          </Link>
+        </Button>
+      </div>
+      <div className="min-h-0 flex-1">
+        <PdfPane
+          url={corpusViewerUrl(panePath)}
+          fallbackUrl={booksRawUrl(wholePdfPath)}
+          downloadUrl={booksRawUrl(wholePdfPath)}
+          label={`${bookTitle} — ${label}`}
           active
           initialPage={initialPage}
           className="h-full"

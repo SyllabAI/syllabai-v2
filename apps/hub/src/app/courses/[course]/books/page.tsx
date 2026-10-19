@@ -10,6 +10,9 @@ import {
   fetchBookShelf,
   bookCorpusPathForCourse,
   bookPaneUrl,
+  bookSliceMapOf,
+  bookSlicePathForCourse,
+  fetchBookSlices,
 } from "@/lib/books";
 import { booksRawUrl } from "@/lib/pastpapers-shared";
 import { CourseHeader } from "@/components/hub/course-header";
@@ -103,6 +106,12 @@ async function BookCard({ slug, book }: { slug: string; book: BookShelfEntry }) 
   const pdfPath = bookCorpusPathForCourse(slug, "student-book.pdf");
   const paneUrl = pdfPath ? bookPaneUrl(pdfPath) : null;
 
+  // 133e: the slice map (drift-guarded) — chapter links warm their OWN
+  // slice (~0.1–3MB) instead of the whole book; unit headers link the
+  // exam-practice slices when the manifest carries them.
+  const slices = await fetchBookSlices(slug, book.documentId, book.docVersion);
+  const sliceMap = slices ? bookSliceMapOf(slices) : null;
+
   return (
     <Card>
       <CardContent className="space-y-4 p-4 sm:p-5">
@@ -139,20 +148,44 @@ async function BookCard({ slug, book }: { slug: string; book: BookShelfEntry }) 
             This book has no chapters registered yet.
           </p>
         ) : (
-          groupByUnit(chapters).map(([unitTitle, rows]) => (
+          groupByUnit(chapters).map(([unitTitle, rows]) => {
+            const unitExam = sliceMap?.unitExam.find(
+              (s) => s.chapterKey === `u${rows[0]?.unitIndex}:xexam-practice`,
+            );
+            return (
             <section key={unitTitle} className="space-y-1.5">
-              <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                {unitTitle}
-              </h3>
+              <div className="flex items-center justify-between gap-2">
+                <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  {unitTitle}
+                </h3>
+                {unitExam && paneUrl && (
+                  <CorpusPdfLink
+                    href={`/courses/${slug}/books/${book.documentId}?chapter=${encodeURIComponent(unitExam.chapterKey)}`}
+                    pdfUrl={bookPaneUrl(bookSlicePathForCourse(slug, unitExam.file)!)}
+                    variant="link"
+                    className="h-auto p-0 text-xs"
+                  >
+                    Exam practice
+                  </CorpusPdfLink>
+                )}
+              </div>
               <ul className="divide-y rounded-md border">
-                {rows.map((ch) => (
+                {rows.map((ch) => {
+                  const sliceRel = sliceMap?.byChapter.get(ch.chapterKey)
+                    ? bookSlicePathForCourse(
+                        slug,
+                        sliceMap.byChapter.get(ch.chapterKey)!.mount.file,
+                      )
+                    : null;
+                  const warmUrl = sliceRel ? bookPaneUrl(sliceRel) : paneUrl;
+                  return (
                   <li key={ch.chapterKey} className="flex items-center gap-2 px-3 py-2">
                     <FileText className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden />
                     <div className="min-w-0 flex-1">
-                      {paneUrl ? (
+                      {warmUrl ? (
                         <CorpusPdfLink
                           href={`/courses/${slug}/books/${book.documentId}?chapter=${encodeURIComponent(ch.chapterKey)}`}
-                          pdfUrl={paneUrl}
+                          pdfUrl={warmUrl}
                           variant="link"
                           className="h-auto justify-start p-0 text-left font-medium"
                         >
@@ -180,10 +213,12 @@ async function BookCard({ slug, book }: { slug: string; book: BookShelfEntry }) 
                     </div>
                     <PageRangeBadge ch={ch} />
                   </li>
-                ))}
+                  );
+                })}
               </ul>
             </section>
-          ))
+            );
+          })
         )}
       </CardContent>
     </Card>
