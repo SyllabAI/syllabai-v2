@@ -30,6 +30,22 @@
 import { useSyncExternalStore } from "react";
 import { api, getToken } from "./api";
 import { fetchPilotInfo, PILOT_COURSE_SLUG } from "./attempt-bridge";
+
+/** The roster read the selection law uses — the same localStorage the
+ *  useMySubjects store owns (read directly: this module is a plain async
+ *  store, not a hook tree). */
+function rosterSlugs(): string[] {
+  try {
+    const raw = window.localStorage.getItem("syllabai.mySubjects.v1");
+    if (!raw) return [];
+    const parsed: unknown = JSON.parse(raw);
+    return Array.isArray(parsed)
+      ? parsed.filter((s): s is string => typeof s === "string" && s.length > 0)
+      : [];
+  } catch {
+    return [];
+  }
+}
 import type {
   LearnerKnowledgeGraphView,
   LearnerStateView,
@@ -37,7 +53,11 @@ import type {
 } from "./types";
 
 export interface DashboardCoreModel {
-  /** the pilot's subject root — the join every core read model is scoped by */
+  /** the hub course the model resolved for (the selection law's winner —
+   *  T-MIG-135d: the learner's first core-bridge course, pilot-first so the
+   *  4CH1 behavior is byte-identical) */
+  course: string;
+  /** the course's subject root — the join every core read model is scoped by */
   rootId: string;
   state: LearnerStateView;
   /** T-033 read model; null when core is a contract behind (tolerant — the
@@ -71,9 +91,22 @@ async function readOnce(myGeneration: number): Promise<void> {
     if (myGeneration === generation) emit({ kind: "off" });
     return;
   }
-  const pilot = await fetchPilotInfo(PILOT_COURSE_SLUG);
-  if (myGeneration !== generation) return; // superseded — never emit stale state
-  if (!pilot) {
+  // T-MIG-135d the selection law: the pilot course FIRST (chemistry users
+  // see byte-identical behavior), then the learner's roster in insertion
+  // order — the first course whose core join resolves wins; none → off.
+  // One read model per dashboard (multi-course aggregation stays local to
+  // each surface's own derivation).
+  const candidates = [PILOT_COURSE_SLUG, ...rosterSlugs().filter((c) => c !== PILOT_COURSE_SLUG)];
+  let resolved: { course: string; rootId: string } | null = null;
+  for (const course of candidates) {
+    const info = await fetchPilotInfo(course);
+    if (myGeneration !== generation) return; // superseded
+    if (info) {
+      resolved = { course, rootId: info.rootId };
+      break;
+    }
+  }
+  if (!resolved) {
     emit({ kind: "off" });
     return;
   }
@@ -82,15 +115,18 @@ async function readOnce(myGeneration: number): Promise<void> {
     // recommendations and the KG tree degrade to null independently
     const [state, recommendations, kg] = await Promise.all([
       api.learnerState(),
-      api.recommendations(pilot.rootId).catch(() => null),
-      api.learnerKnowledgeGraph(pilot.rootId).catch(() => null),
+      api.recommendations(resolved.rootId).catch(() => null),
+      api.learnerKnowledgeGraph(resolved.rootId).catch(() => null),
     ]);
     if (myGeneration !== generation) return;
     if (!getToken()) {
       emit({ kind: "off" }); // signed out mid-read
       return;
     }
-    emit({ kind: "ready", model: { rootId: pilot.rootId, state, recommendations, kg } });
+    emit({
+      kind: "ready",
+      model: { course: resolved.course, rootId: resolved.rootId, state, recommendations, kg },
+    });
   } catch {
     if (myGeneration !== generation) return;
     emit({ kind: "off" }); // core unreachable — local derivation takes over silently
@@ -132,12 +168,14 @@ function subscribe(onChange: () => void): () => void {
   window.addEventListener("syllabai:core-evidence", handleCoreEvidence);
   window.addEventListener("syllabai:identity-changed", refresh);
   window.addEventListener("syllabai:session-expired", refresh);
+  window.addEventListener("syllabai:my-subjects-changed", refresh);
   return () => {
     listeners.delete(onChange);
     if (listeners.size === 0) {
       window.removeEventListener("syllabai:core-evidence", handleCoreEvidence);
       window.removeEventListener("syllabai:identity-changed", refresh);
       window.removeEventListener("syllabai:session-expired", refresh);
+      window.removeEventListener("syllabai:my-subjects-changed", refresh);
     }
   };
 }

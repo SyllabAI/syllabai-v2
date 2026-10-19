@@ -1,0 +1,125 @@
+version: 1
+task:
+  id: T-MIG-135
+  title: "Second-subject product-loop — Maths A (4MA1): make tutor, smart mark, CLA and the learner model WORK for Maths A (operator trace 1a153d5c9e5193e9 'We will tackle books later on. First make tutor, smart mark, cla, learner model working for maths A'); books corpus stays the 133f operator-gated roll (deferred by the same order)"
+  owner: "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)"
+  status: IN_REVIEW # bands 135a-d code of record on t-mig-135/r7a (gates: typecheck 0 x4, API 1797/0/13, shared 75/0, contracts 345/0, hub build+lint GREEN, census --gate GREEN); 135e COW/apply/battery next under the same operator order
+  claimed_at: "2026-10-19T12:00:00Z"
+  claimed_by_order: "operator trace 1a153d5c9e5193e9"
+  priority: P1
+  wave: second-subject
+  deps: ["T-MIG-134a (bundle-seed service)", "T-MIG-134c (4PH1 seed apply — the COW/apply precedent)", "T-MIG-128/129/130 (bank bands + relay wiring)", "T-MIG-125 (CLA learner-model read alignment)"]
+  fence: >
+    Lane split of record: Physics 4PH1 enablement (134b questions band, 134d
+    battery, 134e books) belongs to the T-MIG-134 lane — zero contact. This
+    band owns the MATHS A slice + the SHARED multi-subject gaps both lanes
+    hit: the resolveActive forcing function call sites, the chemistry-pinned
+    paper-identity grammar, the hub pilot gates, the tutor notation law.
+    Shared-code changes are bundle-generic (parameterized per subject) so
+    134b/134d can consume them for physics without rework — coordination
+    disclosed in the worklog, band IDs distinct.
+  scoping_record: >
+    CENSUS OF RECORD (2026-10-19, first-hand + two subagent censuses): the
+    four subsystems are node/question-keyed and subject-generic by
+    construction (T-MIG-134 premise holds at the DATA plane) — the real
+    gaps are: (1) resolveActive() is the deliberate single-owner forcing
+    function (scope.ts:123 owners!==1 -> null): after ANY second subject
+    gains surface every resolveActive call site degrades — runtime sites:
+    karag.ts:314 (unpinned ask), tutor-bank.ts:127 (BOTH bank bands, no
+    courseRef axis at all), content/index.ts:208, ingestion.ts:239;
+    resolveForCourse() is already multi-subject-safe (exact code match).
+    (2) The paper-identity grammar is chemistry-only: fetch-parser.ts:83-84
+    (4CH[01] + [12]CR? — twins in ingestion/fetch-parser.ts:44-45),
+    paper-question.ts:324/463-476 (hardcoded 4CH0 alias; unit lists
+    1C/2C/1CR/2CR), fetch-bank.ts:126 + ingestion/content-routing.ts:185
+    (4CH0 alias). Maths papers are 4MA1/[12][HF] (+ legacy 4MA0).
+    (3) prompt.ts:158-162 mandates mhchem chemistry notation on ALL asks.
+    (4) Hub pilot gates: PILOT_COURSE_SLUG (attempt-bridge.ts:33),
+    /api/core/questions pilot gate (:191-200), dashboard-core.ts:74,
+    learner/client.tsx, review-due-strip — all hard-scoped to
+    igcse-chemistry-19; the two 4MA1 registry rows lack curriculumCode so
+    /tutor?course=igcse-maths-a-18-* hits TutorCourseGate and CLA note/topic
+    asks 404. (5) DATA: prod has NO 4MA1 curriculum (subjects row / KG
+    tree) and NO 4MA1 questions/schemes — smart mark and the learner model
+    have nothing maths-shaped to serve. (6) The 134a bundle-seed SUBTOPIC
+    law regexes :SUB([a-z])$ (physics letter grammar) and REFUSES the maths
+    bundle grammar :SUB1.1 (dotted) — verified against the real bundle
+    bytes (igcse-maths-a-18-higher: SUBJECT 1 / TOPIC 6 / SUBTOPIC 39
+    T?:SUB<d.d> / SPEC_POINT 188 <d.d>[A-Z]). (7) The maths questions
+    envelope is sme-exam-questions/1.1 per-set (SUPPORTED_PACKAGE_VERSION
+    pins 1.0): sets carry topicSlug/section, questions carry style
+    exam_whole + difficulty words (easy|medium|hard|very_hard) + parts with
+    problemMd/solutionMd/specPointCodes bare ("1.6E")/sourcePaper — no
+    stem, no labels, no externalRef, no expectedTimeSeconds; F/H share 31
+    topicSlugs -> 156 externalRef collisions under the chemistry-era
+    sme-eq-<topicSlug>-q<order> law -> the maths ref law MUST be
+    tier-scoped. (8) Mark schemes land VALIDATED at ingest (frozen
+    saveVersionAndScheme law) so Smart Mark serves maths immediately after
+    the questions band; scheme marks = solutionMd per part.
+  bands: >
+    (135a) bundle-seed SUBTOPIC grammar extension: accept the maths dotted
+    suffix :SUB<d(.d)?>$ beside the physics letter suffix (dbCode
+    <spec>-S<order>-<suffix>), physics/chemistry byte-identical, collision
+    laws unchanged, pins on the REAL maths bundle map (1/6/39/188) +
+    physics fixture parity; (135b) the bundle-questions shim + driver:
+    services/sme/bundle-questions.ts (1.1 sets -> the 1.0 SmePackage tree
+    the frozen parse/validate already accepts — tier-scoped externalRefs
+    sme-eq-<courseSlug>-<topicSlug>-q<order> (<=80 enforced), labels a..z
+    by part order, difficulty word map easy2/medium3/hard4/very_hard5,
+    expectedTimeSeconds = max(60, marks*72) (the 4MA1 ~1.2 min/mark pace),
+    stem null (the exam_whole shape has no stem; the parts ARE the
+    question), specPoints = union of part codes with role
+    PRIMARY(first-part)/SECONDARY(rest) + provenance AI_VALIDATED (the
+    frozen role law), primaryTopicCode = the first part's first spec
+    code's parent TOPIC dbCode via the 135a map — the frozen
+    parsePackage/validate/replace are NEVER touched) +
+    apps/api/scripts/ingest-bundle-questions.ts (bundle slug arg, dry-run
+    = validate + census only, zero writes; ingest = the ADR-026
+    evidence-safe replace inside one transaction; fail-closed on ref
+    length/collisions/spec-code resolution) + pins (chemistry-package
+    fixture through the REAL parse/validate parity, maths fixture
+    round-trip, F/H ref disjointness, role/label laws); (135c) api
+    subject-generic tutor: tutor-bank gains an optional courseRef query
+    param (resolveForCourse fail-closed when present, resolveActive when
+    absent — chemistry behavior byte-identical today), the relay chat
+    forwards courseRef to the bank probes, fetch-parser twins get the
+    per-subject grammar table (4CH1 [12]CR? + 4MA1 [12][HF] with the
+    bare-unit adjacency law for H/F — "1 h" the hour abbreviation must
+    NOT bind, disclosed asymmetry vs chemistry), the 4CH0/4MA0 legacy
+    alias map replaces the hardcoded aliases, prompt.ts notation law
+    becomes per-subject (chemistry keeps the mhchem bullet verbatim;
+    maths/general gets the plain-LaTeX law); (135d) hub widening:
+    courses.json curriculumCode 4MA1-2016 on both maths rows + a
+    coreBridge registry field (the gate stays operator-declared, now
+    declared in DATA), /api/core/questions gate -> the pilot set (chemistry
+    + the two coreBridge maths rows) + the per-course join ref law
+    (chemistry keeps sme-eq-<topicSlug>-q<N> byte-identical; coreBridge
+    courses use sme-eq-<courseSlug>-<topicSlug>-q<N>), attempt-bridge +
+    dashboard-core + learner page + review strip widen from the slug
+    constant to the bridge-eligible set (roster-aware, chemistry-first so
+    existing users see byte-identical behavior), tutor chat chrome
+    (STARTERS/labels/composer SUBJECT_LABEL) derive from the resolved
+    course meta instead of hardcoded 4CH1 strings; FLASHCARD_SYNC_COURSES
+    intentionally unchanged (the verifier derives maths anchors
+    T1:SUB1.1/1.1A as not core-safe — charset ':'/'.' — so flashcard sync
+    stays chemistry-only; DISCLOSED residual, the T-C66 mechanism
+    guarantees the manifest cannot drift); (135e) gates + receipts + PR;
+    then the PROD sequence under the operator order: COW-proof the 4MA1
+    seed (higher bundle, curriculum 4MA1-2016, 234 nodes) -> COW-proof the
+    maths questions ingest (F 45 sets/275 q + H 58 sets/2703 q) -> apply
+    -> live four-subsystem battery (the 134d shape, zero-LLM probes).
+  execution_record: >
+    Band claimed 2026-10-19 on t-mig-135/r7a @ origin/main 755683d
+    (fetch-first; the r1 modular-24 wave-1 receipt moved main mid-census —
+    receipts+worklog only, zero file overlap with this band's fence).
+    No prod contact in the claim act. Physics lane untouched.
+    Bands 135a-d executed 2026-10-19 (run-001-gates-r7a.json): the seed
+    grammar extension, the versioned questions shim + shared ref law, the
+    tutor-bank courseRef axis + subject-generic paper grammar + per-subject
+    prompt notation, the hub pilot-set widening + per-course join law.
+    REAL-data findings of record: 156 F/H ref collisions (→ the tier-scoped
+    shared smeQuestionRef), 2 duplicate-order questions in the higher bundle
+    (upstream 1.1 corpus defect → first-occurrence law both sides), 9+1
+    spec-code-less questions (→ honest exclusion), 2 real >80-char slugs
+    (→ truncation+hash law). Physics lane untouched; 134b/134d can reuse
+    the shim + driver + shared ref law for 4PH1 verbatim.

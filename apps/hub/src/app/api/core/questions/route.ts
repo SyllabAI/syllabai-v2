@@ -4,6 +4,7 @@ import { rootIdForCourseCode } from "@/lib/core-topics";
 import { coreBaseUrl, coreFetchAuthorized } from "@/lib/core-proxy";
 import { v2SurfaceBase } from "@/lib/api";
 import { v2FetchAuthorized } from "@/lib/v2-proxy";
+import { smeQuestionRef } from "@syllabai/shared";
 import type { QuestionFamilyView } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -42,8 +43,10 @@ export const dynamic = "force-dynamic";
  * question is just local practice. IDs and marks only cross this boundary —
  * no question text, no answers.
  *
- * Availability: pilot course only (the ADR-029 boundary — the other 38
- * courses stay read-only), authenticated caller only, core reachable only.
+ * Availability: the bridge-eligible courses only (the ADR-029 boundary —
+ * the chemistry pilot row plus the operator-declared coreBridge registry
+ * rows, T-MIG-135d; the other courses stay read-only), authenticated caller
+ * only, core reachable only.
  * Every negative is { available: false, reason } — the client degrades to
  * the honest local experience, it never hangs.
  */
@@ -188,14 +191,19 @@ export async function GET(req: NextRequest) {
     return Response.json({ available: false, reason: "core_not_configured" });
   }
 
-  // pilot gate — the one course cleared for real learner-model writes
-  let pilotSlug: string | null = null;
+  // pilot gate — the courses cleared for real learner-model writes: the
+  // 4CH1 pilot row (status "pilot") plus the operator-declared coreBridge
+  // registry rows (T-MIG-135d: the 4MA1 lanes). Every other course stays
+  // read-only (the ADR-029 boundary), the negatives honest.
+  let eligible = false;
   try {
-    pilotSlug = await pilotCourseSlug();
+    const courses = await listCourses();
+    const row = courses.find((c) => c.slug === course);
+    eligible = row?.status === "pilot" || row?.coreBridge === true;
   } catch {
-    pilotSlug = null;
+    eligible = false;
   }
-  if (!pilotSlug || course !== pilotSlug) {
+  if (!eligible) {
     return Response.json({ available: false, reason: "not_pilot" });
   }
 
@@ -229,6 +237,23 @@ export async function GET(req: NextRequest) {
   const corpusTopicSlug =
     topic.topicSlug ?? topic.slug.replace(/--exam-questions$/, "");
 
+  // the ref law (T-MIG-135d, ONE shared function): the chemistry pilot's
+  // stored core refs keep the legacy `sme-eq-<topicSlug>-q<N>` law
+  // byte-identical (its ingest pre-dates the tier-scoped law); every other
+  // bridge-eligible course derives refs through the SHARED
+  // smeQuestionRef (packages/shared/src/smeRef.ts) — the same function the
+  // 135b ingest shim emits with, so the two sides cannot drift.
+  let legacyPilotSlug: string | null = null;
+  try {
+    legacyPilotSlug = await pilotCourseSlug();
+  } catch {
+    legacyPilotSlug = null;
+  }
+  const refFor = (order: number): string =>
+    course === legacyPilotSlug
+      ? `sme-eq-${corpusTopicSlug}-q${order}`
+      : smeQuestionRef(course, corpusTopicSlug, order);
+
   const families = await familiesForRoot(rootId, token);
   if (!families) {
     return Response.json({ available: false, reason: "core_unreachable" });
@@ -236,8 +261,18 @@ export async function GET(req: NextRequest) {
 
   const questions: Record<string, BridgeQuestion> = {};
   const skipped: string[] = [];
+  // the order-identity guard: a question repeating an order within its set
+  // (the upstream 1.1 corpus defect — higher: percentages q34 ×2,
+  // algebra-toolkit q28 ×2) has no unique ref; the SECOND occurrence stays
+  // honest local-only (the 135b ingest skips it symmetrically)
+  const seenOrders = new Set<number>();
   for (const q of topic.questions) {
-    const ref = `sme-eq-${corpusTopicSlug}-q${q.order}`;
+    if (seenOrders.has(q.order)) {
+      skipped.push(q.id);
+      continue;
+    }
+    seenOrders.add(q.order);
+    const ref = refFor(q.order);
     const family = families.find((f) => f.ref === ref || f.key === ref);
     if (!family) {
       skipped.push(q.id);

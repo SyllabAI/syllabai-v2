@@ -246,39 +246,54 @@ describe("identity helpers — completeIdentity, unit binding, subject code", ()
   });
 
   test("unitCandidates: code → exact; unit → exact; hint → home+regional; else all four", () => {
-    expect(unitCandidates(parseFetchQuery("4CH1/2C question 10"), "q")).toEqual(["2C"]);
-    expect(unitCandidates(parseFetchQuery("the 1CR paper question 10"), "q")).toEqual(["1CR"]);
-    expect(unitCandidates(parseFetchQuery("question 10 paper 1"), "question 10 paper 1")).toEqual([
+    expect(unitCandidates(parseFetchQuery("4CH1/2C question 10"), "q", "4CH1")).toEqual(["2C"]);
+    expect(unitCandidates(parseFetchQuery("the 1CR paper question 10"), "q", "4CH1")).toEqual(["1CR"]);
+    expect(unitCandidates(parseFetchQuery("question 10 paper 1"), "question 10 paper 1", "4CH1")).toEqual([
       "1C",
       "1CR",
     ]);
-    expect(unitCandidates(parseFetchQuery("question 10 paper number 2"), "question 10 paper number 2")).toEqual([
+    expect(unitCandidates(parseFetchQuery("question 10 paper number 2"), "question 10 paper number 2", "4CH1")).toEqual([
       "2C",
       "2CR",
     ]);
-    expect(unitCandidates(parseFetchQuery("question 10 june 2019"), "question 10 june 2019")).toEqual([
+    expect(unitCandidates(parseFetchQuery("question 10 june 2019"), "question 10 june 2019", "4CH1")).toEqual([
       "1C",
       "2C",
       "1CR",
       "2CR",
+    ]);
+    // T-MIG-135c: the maths vocabulary rides the same law
+    expect(unitCandidates(parseFetchQuery("4MA1/1H question 10"), "q", "4MA1")).toEqual(["1H"]);
+    expect(unitCandidates(parseFetchQuery("the 2F paper question 10"), "q", "4MA1")).toEqual(["2F"]);
+    expect(unitCandidates(parseFetchQuery("question 10 paper 1"), "question 10 paper 1", "4MA1")).toEqual([
+      "1H",
+      "1F",
+    ]);
+    expect(unitCandidates(parseFetchQuery("question 10 june 2019"), "question 10 june 2019", "4MA1")).toEqual([
+      "1H",
+      "2H",
+      "1F",
+      "2F",
     ]);
   });
 
-  test("unitFromPaperCode: separator + space tolerant, [12]CR? gated", () => {
+  test("unitFromPaperCode: separator + space tolerant, per-subject vocabulary gated", () => {
     expect(unitFromPaperCode("4CH1/2C")).toBe("2C");
     expect(unitFromPaperCode("4CH0-1CR")).toBe("1CR");
     expect(unitFromPaperCode("4CH1/2 C")).toBe("2C");
     expect(unitFromPaperCode("4CH1/2X")).toBe(null);
+    // T-MIG-135c: the maths units
+    expect(unitFromPaperCode("4MA1/1H")).toBe("1H");
+    expect(unitFromPaperCode("4MA0-2F")).toBe("2F");
+    expect(unitFromPaperCode("4MA1/1X")).toBe(null);
   });
 
   test("subjectCode: the dash-cut law", () => {
-    expect(subjectCode({ surface: new Set(), curriculumVersionId: "cv", code: "4CH1-2017" })).toBe(
-      "4CH1",
-    );
-    expect(subjectCode({ surface: new Set(), curriculumVersionId: "cv", code: "4CH1" })).toBe(
-      "4CH1",
-    );
-    expect(subjectCode({ surface: new Set(), curriculumVersionId: "cv", code: "" })).toBe(null);
+    // the param is the structural { code } projection (T-MIG-135c) — any
+    // scope shape satisfies it
+    expect(subjectCode({ code: "4CH1-2017" })).toBe("4CH1");
+    expect(subjectCode({ code: "4CH1" })).toBe("4CH1");
+    expect(subjectCode({ code: "" })).toBe(null);
   });
 });
 

@@ -80,8 +80,15 @@ export function partAtomOf(p: ParsedFetchQuery): string | null {
 
 // ── patterns (:100-107) ─────────────────────────────────────────────────────
 
-const PAPER_CODE = /\b(4CH[01])\s*[/-]\s*([12]\s*C\s*R?)\b/i;
-const BARE_UNIT = /(?<![A-Za-z0-9])([12])\s*(CR|C)(?![A-Za-z0-9])/i;
+// T-MIG-135c: the paper-identity grammar is TWO-SUBJECT. The full code
+// binds the chemistry family (4CH0/4CH1, units 1C/2C/1CR/2CR) AND the maths
+// family (4MA0/4MA1, units 1H/2H/1F/2F). The BARE unit keeps the
+// chemistry space-tolerant shape for C/CR but requires ADJACENCY for H/F —
+// "2H" binds, "2 h" (the hour abbreviation in prose) never does; the same
+// exposure class the chemistry law already accepted, narrowed where the
+// letters actually collide with words.
+const PAPER_CODE = /\b(4CH[01]|4MA[01])\s*[/-]\s*([12]\s*(?:C\s*R?|H|F))\b/i;
+const BARE_UNIT = /(?<![A-Za-z0-9])([12]\s*(?:CR|C)|[12](?:H|F))(?![A-Za-z0-9])/i;
 const SERIES_JUN = /\b(summer|june)\b/i;
 const SERIES_JAN = /\b(january|jan)\b/i;
 const SERIES_NOV = /\b(november|october)\b/i;
@@ -210,12 +217,14 @@ export function parseFetchQuery(query: string | null | undefined): ParsedFetchQu
       code[1]!.toUpperCase() + "/" + code[2]!.toUpperCase().replace(/ /g, "");
   }
 
-  // bare unit only when no full code was matched ("paper 2C", "the 1CR paper")
+  // bare unit only when no full code was matched ("paper 2C", "the 1CR
+  // paper", "paper 1H") — one capture group; spaces fold away (chemistry
+  // "2 C" → 2C; maths is adjacency-only so the group never carries a space)
   let unit: string | null = null;
   if (paperCode == null) {
     const bare = BARE_UNIT.exec(q);
     if (bare) {
-      unit = bare[1]! + bare[2]!.toUpperCase();
+      unit = bare[1]!.toUpperCase().replace(/\s+/g, "");
     }
   }
 

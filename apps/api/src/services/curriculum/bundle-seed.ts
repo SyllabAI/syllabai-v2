@@ -24,6 +24,12 @@
  *   - bundle SUBJECT  (code igcse-physics-19)  → SUBJECT  `4PH1`
  *   - bundle TOPIC    (8 sections, T1..T8)     → UNIT     `4PH1-S1`..
  *   - bundle SUBTOPIC (30, code T1:SUBa)       → TOPIC    `4PH1-S1-a`..
+ *     (T-MIG-135a: the grammar is TWO-SHAPED — the physics LETTER suffix
+ *     `:SUBa` and the maths DOTTED suffix `:SUB1.1` (igcse-maths-a-*:
+ *     official 4MA1 topic numbering). Both land as `<spec>-S<order>-<suffix>`
+ *     verbatim: `4PH1-S1-a`, `4MA1-S1-1.1`. The letter shape stays
+ *     byte-identical; the dotted shape is the maths bundle's own official
+ *     identity, never re-derived from order.)
  *   - bundle SPEC_POINT (195, code "1.1")      → SUBTOPIC `4PH1-1.1`,
  *     P-suffixed points verbatim (`4PH1-1.2P`) — the physics P-suffix law is
  *     the exact mirror of the chemistry C-suffix law (both = paper-2-only
@@ -277,12 +283,17 @@ export function mapBundleNodes(
       continue;
     }
     if (n.family === "SUBTOPIC") {
-      // topics land as TOPICs: S{section}-{letter} — the letter comes from
-      // the bundle code's own :SUBx suffix, never re-derived from order
-      const m = /:SUB([a-z])$/.exec(n.code);
+      // topics land as TOPICs: S{section}-{suffix} — the suffix comes from
+      // the bundle code's own :SUBx tail, never re-derived from order.
+      // T-MIG-135a two-shape grammar: the physics LETTER tail (`:SUBa`) and
+      // the maths DOTTED tail (`:SUB1.1`, the official 4MA1 topic number —
+      // optionally two-segment). Letter bundles keep byte-identical dbCodes;
+      // dotted bundles land `4MA1-S1-1.1` (the same shape, the official
+      // identity verbatim).
+      const m = /:SUB([a-z]|\d+(?:\.\d+)?)$/.exec(n.code);
       if (m == null) {
         throw new BundleSeedConflictError(
-          "bundle SUBTOPIC " + n.code + " does not carry the :SUBx letter suffix",
+          "bundle SUBTOPIC " + n.code + " does not carry the :SUBx letter or dotted suffix",
         );
       }
       const parentMapped = byCode.get(parent);

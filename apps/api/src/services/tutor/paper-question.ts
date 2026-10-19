@@ -58,6 +58,12 @@
  */
 import type { SqlFn } from "./sql";
 import { evidenceFromChunk, type EvidenceItem } from "./evidence";
+import {
+  defaultUnitCandidates,
+  identityCodesOf,
+  isValidUnitToken,
+  unitHintCandidates,
+} from "./subject-profile";
 import { partAtomOf, parseFetchQuery, type ParsedFetchQuery } from "./fetch-parser";
 import {
   buildTutorFetchBank,
@@ -317,12 +323,13 @@ async function cardAnchored(
     return []; // not a bindable paper-style ask
   }
   const subject = subjectCode(scope);
-  const units = unitCandidates(parsed, query);
+  const units = unitCandidates(parsed, query, subject);
   if (subject == null || units.length === 0) {
     return [];
   }
-  for (const code of [subject, "4CH0"]) {
-    // 4CH0 = legacy alias, second
+  for (const code of identityCodesOf(subject)) {
+    // the subject, then its legacy aliases (4CH1→4CH0, 4MA1→4MA0 — the
+    // per-subject alias map, subject-profile.ts)
     for (const unit of units) {
       const fileName = `qcard-${code}-${unit}-${parsed.series}-${parsed.year}.txt`;
       const top = await findTopByFileName(sql, fileName);
@@ -381,7 +388,7 @@ async function contentStoreAnchored(
   }
   try {
     const subject = subjectCode(scope);
-    const units = unitCandidates(parsed, query);
+    const units = unitCandidates(parsed, query, subject);
     if (subject == null || units.length === 0) {
       return [];
     }
@@ -460,11 +467,11 @@ async function contentStoreAnchored(
   }
 }
 
-/** Scope subject first, legacy alias second, units in candidate order
- *  (:466-478). */
+/** Scope subject first, its legacy aliases after, units in candidate order
+ *  (:466-478 — the alias list is now per-subject, subject-profile.ts). */
 function paperCodes(subjectCode: string, unitCandidates: string[]): string[] {
   const codes: string[] = [];
-  for (const code of [subjectCode, "4CH0"]) {
+  for (const code of identityCodesOf(subjectCode)) {
     for (const unit of unitCandidates) {
       const candidate = `${code}/${unit}`;
       if (!codes.includes(candidate)) {
@@ -516,7 +523,7 @@ function unitOf(paperCode: string): string {
 
 /** Scope code "4CH1-2017" → subject code "4CH1" (the card file-name
  *  prefix) (:511-520). */
-export function subjectCode(scope: ResolverScope): string | null {
+export function subjectCode(scope: { code: string | null }): string | null {
   const code = scope.code;
   if (code == null || code.trim() === "") {
     return null;
@@ -529,12 +536,14 @@ export function subjectCode(scope: ResolverScope): string | null {
 /**
  * Unit binding, deterministic (:522-545): explicit full code → exact unit;
  * explicit bare unit → exact unit; "paper N" phrasing → home unit then
- * regional variant; nothing → both home units then both regional variants
- * (only a single surviving card with a question match is pinned — first
- * match wins by construction, so a corpus holding exactly one session
- * paper resolves and a corpus holding several stays honest via the first).
+ * regional/tier variant; nothing → both home units then both variants (only
+ * a single surviving card with a question match is pinned — first match
+ * wins by construction, so a corpus holding exactly one session paper
+ * resolves and a corpus holding several stays honest via the first). The
+ * unit vocabulary is per subject (subject-profile.ts): chemistry
+ * 1C/2C/1CR/2CR, maths 1H/2H/1F/2F.
  */
-export function unitCandidates(parsed: ParsedFetchQuery, query: string): string[] {
+export function unitCandidates(parsed: ParsedFetchQuery, query: string, subjectCode: string | null): string[] {
   if (parsed.paperCode != null) {
     const unit = unitFromPaperCode(parsed.paperCode);
     if (unit != null) {
@@ -545,20 +554,21 @@ export function unitCandidates(parsed: ParsedFetchQuery, query: string): string[
     return [parsed.unit.trim().toUpperCase()];
   }
   const m = PAPER_HINT.exec(query ?? "");
-  if (m) {
-    return m[1] === "1" ? ["1C", "1CR"] : ["2C", "2CR"];
+  if (m && subjectCode != null) {
+    return unitHintCandidates(subjectCode, m[1]!);
   }
-  return ["1C", "2C", "1CR", "2CR"];
+  return subjectCode != null ? defaultUnitCandidates(subjectCode) : [];
 }
 
-/** "4CH1/2C" or "4CH0-1CR" → "2C" / "1CR" (separator and spaces tolerant)
- *  (:547-553). */
+/** "4CH1/2C", "4CH0-1CR", "4MA1/1H" or "4MA0-2F" → "2C" / "1CR" / "1H" /
+ *  "2F" (separator and spaces tolerant; the per-subject unit vocabulary,
+ *  subject-profile.ts) (:547-553). */
 export function unitFromPaperCode(paperCode: string): string | null {
   const cut = Math.max(paperCode.lastIndexOf("/"), paperCode.lastIndexOf("-"));
   const unit = (cut < 0 ? paperCode : paperCode.substring(cut + 1))
     .replace(/ /g, "")
     .toUpperCase();
-  return /^[12]CR?$/.test(unit) ? unit : null;
+  return isValidUnitToken(unit) ? unit : null;
 }
 
 // ── question-chunk selection (:555-628) ─────────────────────────────────────

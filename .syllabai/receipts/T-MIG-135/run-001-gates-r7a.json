@@ -1,0 +1,25 @@
+{
+  "receipt": "T-MIG-135 run-001-gates-r7a (bands 135a-d code of record)",
+  "base": "origin/main 755683d",
+  "branch": "t-mig-135/r7a",
+  "bands": {
+    "135a": "bundle-seed SUBTOPIC two-shape grammar (letter :SUBa byte-identical + dotted :SUB1.1 -> 4MA1-S1-1.1); physics fixture pins untouched and re-proven",
+    "135b": "services/sme/bundle-questions.ts (the versioned 1.1->1.0 shim, zero frozen-law edits) + scripts/ingest-bundle-questions.ts (dry-run = rollback-transaction proof, apply = the ADR-026 replace) + packages/shared/src/smeRef.ts (the ONE ref law both bridge sides import)",
+    "135c": "tutor-bank courseRef axis (contracts + route + composition; chemistry byte-identical), relay courseRef forwarding, fetch-parser x2 two-subject grammar (maths bare H/F adjacency-only), paper-question/fetch-bank/content-routing per-subject aliases+units via subject-profile.ts, prompt notation variant (chemistry v12 byte-verbatim; general plain-LaTeX) threaded scope->context->generator",
+    "135d": "hub: courses.json curriculumCode 4MA1-2016 + coreBridge on both maths rows, core/questions gate -> pilot-set + shared smeQuestionRef join law (chemistry legacy law preserved) + dup-order skip, relay forwarding, dashboard-core roster-aware selection (pilot-first, model.course exposed), review strip keyed on the resolved course, /learner ?course= + dynamic badge, tutor chrome per-course (starters/labels/placeholder/about), composer subjectLabel prop, QUICK_ADD widened"
+  },
+  "gates": {
+    "typecheck": "exit 0 x4 workspaces (contracts/shared/db/api)",
+    "api_suite": "1797 tests / 0 fail / 13 skip (18373 expects) — includes the extended bundle-seed (17), bundle-questions (15), paper-question (42, maths pins), smeRef (5) pins",
+    "shared_suite": "75/0; contracts_suite: 345/0",
+    "hub_build": "GREEN incl. prebuild verifiers (corpus-23a + flashcard-sync — the verifier derives maths anchors as NOT core-safe, so FLASHCARD_SYNC_COURSES honestly stays chemistry-only; disclosed residual)",
+    "hub_lint": "GREEN",
+    "census_gate": "preflight_zero_core_census.py --gate -> GREEN exit 0 (LIVE=0)"
+  },
+  "disclosed_data_findings": [
+    "the higher bundle carries 2 duplicate-order questions (percentages q34 x2, algebra-toolkit q28 x2) — an upstream 1.1 corpus defect; the shim ingests the FIRST occurrence and the hub join skips duplicates symmetrically (both copies stay honest local-only in the player)",
+    "9 higher + 1 foundation questions carry no spec codes on ANY part — excluded (unmapped) by the shim; they cannot anchor the learner model",
+    "foundation question codes close 100% against the higher spine (93/93) — ONE seed (4MA1-2016 from the 234-node higher bundle) serves both tiers"
+  ],
+  "write_ledger": "zero prod writes, zero LLM, zero probe learners, zero Neon contact — repo-only band"
+}

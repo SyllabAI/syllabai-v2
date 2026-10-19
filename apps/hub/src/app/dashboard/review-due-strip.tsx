@@ -67,20 +67,25 @@ export function ReviewDueStrip({ courses }: { courses: CourseMeta[] }) {
     };
   }, [slugsKey]);
 
-  const pilotInRoster = courses.some((c) => c.slug === PILOT_COURSE_SLUG);
-  // the strip stays hidden while the pilot's provenance is unresolved — it
+  // T-MIG-135d: the core read model carries its own course (the selection
+  // law's winner — pilot-first); the strip keys on THAT course, so a maths
+  // roster resolves its own dues when chemistry is absent
+  const coreCourse = core.kind === "ready" ? core.model.course : null;
+  const coreInRoster = coreCourse != null && courses.some((c) => c.slug === coreCourse);
+  // the strip stays hidden while the core's provenance is unresolved — it
   // must never flash a device-derived count and then swap to the account's
-  const coreUnresolved = pilotInRoster && core.kind === "loading";
+  const coreUnresolved = coreInRoster && core.kind === "loading";
 
   const dues = useMemo<CourseDue[] | null>(() => {
     if (coreUnresolved) return null;
     const out: CourseDue[] = [];
     for (const c of courses) {
-      const pilotCore =
-        c.slug === PILOT_COURSE_SLUG &&
+      const coreBacked =
+        coreCourse != null &&
+        c.slug === coreCourse &&
         core.kind === "ready" &&
-        pilotInRoster;
-      if (pilotCore && core.kind === "ready") {
+        coreInRoster;
+      if (coreBacked && core.kind === "ready") {
         const due = core.model.state.pendingReviews.filter(
           (r) => Date.parse(r.dueAt) <= now,
         ).length;
@@ -109,7 +114,7 @@ export function ReviewDueStrip({ courses }: { courses: CourseMeta[] }) {
       });
     }
     return out;
-  }, [courses, bridges, progressBySlug, core, coreUnresolved, pilotInRoster, now]);
+  }, [courses, bridges, progressBySlug, core, coreUnresolved, coreCourse, coreInRoster, now]);
 
   const total = dues?.reduce((a, d) => a + d.count, 0) ?? 0;
   if (!dues || total === 0 || courses.length === 0) return null;

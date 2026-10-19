@@ -221,6 +221,13 @@ export type TutorStreamEventWire = z.infer<typeof tutorStreamEventSchema>;
 
 export const tutorBankQuestionsParamsSchema = z
   .object({
+    /** T-MIG-135c: the per-course scope axis (V53/ADR-030) — an exact
+     * ACTIVE curriculum_versions.code. Present → resolveForCourse
+     * (fail-closed); absent → resolveActive (the single-owner forcing
+     * function, which refuses once a second curriculum owns surface). The
+     * hub relay forwards the chat's courseRef; chemistry behavior without
+     * it is byte-identical. */
+    courseRef: z.string().trim().min(1).max(64).optional(),
     /** Topic name — exact (case-insensitive) then unique-substring match on
      * knowledge_nodes.title within the active scope; the matched node's
      * PART_OF subtree joins the mapping set (a UNIT resolves to its TOPIC

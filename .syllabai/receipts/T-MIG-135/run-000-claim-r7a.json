@@ -1,0 +1,15 @@
+{
+  "receipt": "T-MIG-135 run-000-claim-r7a",
+  "task": "Second-subject product-loop — Maths A (4MA1): tutor / smart mark / CLA / learner model working for Maths A; books deferred by the same order",
+  "operator_order": "trace 1a153d5c9e5193e9 'We will tackle books later on. First make tutor, smart mark, cla, learner model working for maths A'",
+  "branch": "t-mig-135/r7a",
+  "base": "origin/main 755683d (fetch-first; r1 modular-24 wave-1 receipt landed mid-census — receipts+worklog only, zero overlap)",
+  "claim_act": [
+    "fetch-first sync + worklog tail read (board: 133f merged PR #201 d840835+d85603c; 134 in_progress by the physics lane; zero open PRs blocking)",
+    "two read-only subagent censuses (api subject-scoping + hub feature surfaces) + first-hand reads of scope.ts, sme/index.ts, sme/package.ts, bundle-seed.ts, tutor-bank.ts, fetch-parser.ts, prompt.ts, core/questions route, attempt-bridge, dashboard-core, flashcard-sync-eligibility + verifier",
+    "data census: maths bundles igcse-maths-a-18-{foundation,higher} — manifest curriculum {code 4MA1, syllabusVersion 2016} -> seeded version 4MA1-2016; H spine 1 SUBJECT/6 TOPIC/39 SUBTOPIC/188 SPEC_POINT (the 133f pinned 9d4a42ca spine); F is the 204-node subset; questions 1.1 envelope per set; F/H share 31 topicSlugs -> 156 ref collisions under the chemistry-era ref law",
+    "laws pinned first-hand: seed SUBTOPIC regex :SUB([a-z])$ REFUSES the maths dotted grammar (bundle-seed.ts:282); SME SUPPORTED_PACKAGE_VERSION 1.0 vs bundle 1.1; validate() requires labels/PRIMARY|SECONDARY roles/time>0; schemes land VALIDATED"
+  ],
+  "write_ledger": "zero prod writes, zero LLM, zero probe learners, zero Neon contact — repo-only claim",
+  "fence": "Physics 4PH1 = T-MIG-134 lane untouched; shared-code changes bundle-generic and disclosed for 134b/134d reuse"
+}

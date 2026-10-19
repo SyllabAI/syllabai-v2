@@ -152,7 +152,11 @@ const BANK_QUESTIONS_LIMIT = 25;
  *  error/timeout, a non-200, a non-binding identity (404) or an empty
  *  census — and the caller serves the ALWAYS-ON grounded ask unchanged.
  *  Zero LLM: the bands are metadata + bank rows only (the 128/129 law). */
-async function tryBankBand(question: string, token: string): Promise<Response | null> {
+async function tryBankBand(
+  question: string,
+  token: string,
+  courseRef: string | null,
+): Promise<Response | null> {
   const intent: BankIntent = classifyBankIntent(question);
   if (!intent) return null;
 
@@ -161,10 +165,16 @@ async function tryBankBand(question: string, token: string): Promise<Response | 
   const bankBase = v2SurfaceBase("/api/v1/tutor/bank", process.env.NEXT_PUBLIC_API_V2_BASE_URL);
   if (!bankBase) return null;
 
+  // T-MIG-135c: the per-course scope axis rides the probe — present
+  // courseRef → resolveForCourse (fail-closed, exact); absent → the
+  // single-owner ACTIVE resolution (chemistry today). Never cross-corpus.
   const path =
     intent.kind === "paper"
-      ? `/api/v1/tutor/bank/paper?q=${encodeURIComponent(question.trim())}`
+      ? `/api/v1/tutor/bank/paper?q=${encodeURIComponent(question.trim())}${
+          courseRef ? `&courseRef=${encodeURIComponent(courseRef)}` : ""
+        }`
       : `/api/v1/tutor/bank/questions?${new URLSearchParams({
+          ...(courseRef ? { courseRef } : {}),
           ...(intent.spec ? { spec: intent.spec } : {}),
           ...(intent.topic ? { topic: intent.topic } : {}),
           limit: String(BANK_QUESTIONS_LIMIT),
@@ -338,7 +348,7 @@ export async function POST(req: NextRequest) {
   // deterministic lead-in with ZERO LLM involvement, and EVERY
   // non-resolving path falls through to the grounded ask below (the bands
   // are an enhancement layer, never a gate).
-  const band = await tryBankBand(parsed.question, token);
+  const band = await tryBankBand(parsed.question, token, parsed.courseRef ?? null);
   if (band) return band;
 
   const coreBody = {
