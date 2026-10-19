@@ -1,5 +1,14 @@
 /**
  * T-MIG-133 band 133e — the pure slice-mapping law for the books viewer.
+ * Band 133g revision — the operator's corrected geometry of record
+ * (trace 1a15458e2e5bf235): practice questions are NOT a separate block in
+ * the source book — they start as soon as the study material ends, sometimes
+ * mid-page — so the hard-split `_q` slices are RETIRED: each chapter is ONE
+ * slice (study material + practice questions, the full registry range), and
+ * the anchor jump (`?part=questions`) lands INSIDE that slice at the parse
+ * derived `questionsStartPage` when the manifest of record anchored one.
+ * Chapter slices without an honest anchor (no parse-anchored question start)
+ * simply have no jump — never a fabricated one.
  *
  * Split out of lib/books.ts so the mount-resolution math is unit-testable
  * (books.ts carries the server-only fetch surface; this module is pure).
@@ -30,6 +39,13 @@ export const sliceEntryMirror = z.object({
   questionAnchor: z
     .object({ page: z.number().int().min(1), chunkIndex: z.number().int().min(1) })
     .optional(),
+  /**
+   * 133g — the merged-chapter anchor: the PDF page where the chapter's
+   * practice questions begin, parse-derived of record (the retired `_q`
+   * split's start). Absolute book coordinates (pdfRange space); null when
+   * the parse anchored no split for this chapter (honest no-jump).
+   */
+  questionsStartPage: z.number().int().min(1).nullable().optional(),
   groupSlugs: z.array(z.string().min(1)).optional(),
   note: z.string().optional(),
 });
@@ -105,10 +121,17 @@ export interface SliceMountResolution {
 
 /**
  * The chapter mount resolution (the viewer's law, pure):
- *   ?part=questions + a question slice  → the question slice (the anchor
- *     jump); a citation page inside the question range maps to its
+ *   ?part=questions + a legacy question slice → that slice (the 133e
+ *     hard-split anchor jump, kept for any manifest still carrying `_q`
+ *     rows); a citation page inside the question range maps to its
  *     slice-relative offset, anything else opens at its page 1.
- *   else a chapter slice row            → the lesson/whole slice; a citation
+ *   ?part=questions + a merged chapter slice with questionsStartPage →
+ *     the chapter slice opened at the questions offset (the 133g anchor:
+ *     same file, mid-slice landing); a citation page INSIDE the chapter
+ *     range takes precedence (a link that is both a citation and an anchor
+ *     request is a citation); a page outside the range is irrelevant to
+ *     this slice, so the anchor intent wins.
+ *   else a chapter slice row            → the chapter slice; a citation
  *     page inside the chapter range maps to its slice-relative offset,
  *     anything else opens at page 1 (the slice's first page IS the
  *     chapter's registry start).
@@ -128,7 +151,21 @@ export function resolveChapterMount(
   }
   if (row) {
     const [rs, re] = row.mount.pdfRange;
-    const initialPage = opts.page != null && opts.page >= rs && opts.page <= re ? opts.page - rs + 1 : 1;
+    const pageInSlice =
+      opts.page != null && opts.page >= rs && opts.page <= re
+        ? opts.page - rs + 1
+        : null;
+    if (opts.part === "questions" && row.mount.questionsStartPage != null) {
+      // the 133g merged anchor: same slice, mid-slice landing at the
+      // questions start; a real citation page inside the range wins
+      const anchorOffset = row.mount.questionsStartPage - rs + 1;
+      return {
+        mount: row.mount,
+        isQuestions: false,
+        initialPage: clampPage(pageInSlice ?? anchorOffset, row.mount.slicePages),
+      };
+    }
+    const initialPage = pageInSlice ?? 1;
     return { mount: row.mount, isQuestions: false, initialPage: clampPage(initialPage, row.mount.slicePages) };
   }
   return { mount: null, isQuestions: false, initialPage: Math.max(1, opts.fallbackPage) };
