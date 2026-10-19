@@ -8782,3 +8782,20 @@ Stage Summary:
 - The api redeploy lever is ARMED but unfired: CI green at tip, race-guard clear, recipe staged; ONE operator-gated firing remains. To fire: operator pastes VERCEL_PAT (briefing section-0) to any lane; the firing lane runs the staged recipe (bun install -> deploy_bundle_build.py chain -> boot gate 4/4 -> vercel CLI deploy --prod -> 3-way alias verify -> 12-leg battery with a T-MIG-135 discriminator set) and files the run receipt.
 - The T-MIG-135 DATA-plane gate (135e COW/apply/battery) is a separate operator lever — baking 135 code applies no 4MA1 seed; maths arms serve honestly-empty until 135e.
 - Receipt: .syllabai/receipts/T-MIG-135/api-redeploy-precheck-run-001-sz.json
+
+---
+Task ID: T-MIG-136 run-003 (separation ruling, trace 1a1547aad9e22efd)
+Agent: r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)
+Task: Operator asked "Cant we keep 4ma1 and 4mb1 seperate?" — the separation ruling recorded of record
+
+Work Log:
+- Fetch-first: origin/main at 4cc7dc9 (sz T-MIG-135 api-redeploy PRECHECK receipt — deploy NOT fired, VERCEL_PAT-gated); branch t-mig-136/r7a carried the 9619564 intake merge of main at record time — no rebase needed (bookkeeping-only, zero file collisions with the 133g hub/books + sz receipt deltas)
+- Ruling recorded: 4MA1 and 4MB1 stay FULLY SEPARATE — the run-001/run-002 "combined 4MA1+4MB1 Neon order is an operator option" notes are WITHDRAWN of record (historical receipts byte-untouched; the card amendment + receipt run-003-separation-ruling-r0.json supersede)
+- Separability re-proven from the substrate of record: keys disjoint (4MB1-S* / 4MB1-2016 vs 4MA1-S* / 4MA1-2016), corpus disjoint (Official-Specifications/igcse-maths-b/ vs igcse-maths-a*/ — re-verified at resources tip 4add4968, 78,009 paths), the seed apply per-course + idempotent + conflict-fail-closed (bundle-seed.ts), the shared 135 code already merged subject-generic — nothing needs to co-land
+- 136c shape fixed by the ruling: a 4MB1-ONLY Neon order (COW-proof first per the 093/134c law, then the operator order); T-MIG-135's maths-a apply proceeds in its own lane with its own gate/evidence/rollback — the two subjects can no longer batch, block, or entangle each other
+- Relanding disclosure: the first local record commit (c687d9d) was lost to a second mid-arc sandbox rollback BEFORE its push; records replayed byte-identical (plus the fetch_first/relanding notes) onto the intake-merge tip
+- Card amended (status comment + bands NOTE), receipt filed; zero code delta, zero prod writes, zero Neon contact
+
+Stage Summary:
+- The two subjects' prod applies are decoupled of record; the 136c gate for this lane is now a single-course 4MB1 order awaiting the operator lever
+- Queue otherwise unchanged: coreBridge declaration for igcse-maths-b-16 (moot until questions exist), Maths B book source handoff + the 4.75GB/5GB push-wall decision, the sz-staged api redeploy lever, standing PAT rotation

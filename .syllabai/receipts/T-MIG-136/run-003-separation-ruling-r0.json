@@ -1,0 +1,20 @@
+{
+  "receipt": "T-MIG-136 run-003-separation-ruling-r0 (operator ruling of record: the 4MA1 and 4MB1 lanes stay separate)",
+  "task": "T-MIG-136 — second-subject product-loop, Maths B (4MB1): tutor / smart mark / CLA / learner model",
+  "operator_order": "trace 1a1547aad9e22efd 'Cant we keep 4ma1 and 4mb1 seperate?' — ruled YES: the two subjects stay fully separate",
+  "fetch_first": "v2 origin/main at 4cc7dc9 (the sz T-MIG-135 api-redeploy PRECHECK of record; 19caf2a = 133g merged chapter slices); the branch carried the 9619564 intake merge of main at record time — no rebase needed (bookkeeping-only, zero file collisions with the 133g hub/books + sz receipt deltas)",
+  "ruling": {
+    "combined_order": "WITHDRAWN of record — the run-001/run-002 notes 'a combined 4MA1+4MB1 Neon order is an operator option' are superseded; those historical receipts stay byte-untouched (ledger is append-only); this receipt + the card amendment are the superseding records",
+    "136c_shape": "a 4MB1-ONLY Neon write order — the apply touches only 4MB1-keyed rows (SUBJECT root 4MB1, 4MB1-S1..S10, 4MB1-S<n>-_ placeholders, 4MB1-S<n>-<code> alnum points; curriculumCode 4MB1-2016); COW-proof first per the 093/134c law, then the operator order, unchanged otherwise",
+    "4ma1_shape": "T-MIG-135's still-pending maths-a prod apply (and the separate api-redeploy lever per the sz PRECHECK receipt) proceeds — or not — entirely within its own lane: its own gate, its own COW-proof, its own evidence, its own rollback; no ordering, bundling or coupling with 4MB1 of any kind"
+  },
+  "separability_grounds": [
+    "keys fully disjoint: SUBJECT roots 4MB1 vs 4MA1; dbCodes 4MB1-S* vs 4MA1-S*; curriculumCode 4MB1-2016 vs 4MA1-2016; courses.json rows igcse-maths-b-16 vs igcse-maths-a-18-foundation/higher",
+    "corpus fully disjoint: Official-Specifications/igcse-maths-b/ (+ parsed/_derived/graph/igcse-maths-b/) vs igcse-maths-a/ + igcse-maths-a-modular/ — re-verified at resources tip 4add4968 (78,009 paths, post-restore of record)",
+    "apply is per-course and idempotent by construction (apps/api/src/services/curriculum/bundle-seed.ts: fresh insert + no-op re-run + conflict-fail-closed) — a 4MB1-only order is the natural unit; the combined order was a gate-round-trip convenience, never a technical requirement",
+    "shared code needs no co-landing: the T-MIG-135 shim/driver/smeRef law is already merged subject-generic on main (PR #203, f9d49ae) and the 136a/136e grammar widenings are additive + dormant for every existing bundle — no band of either subject depends on a joint write"
+  ],
+  "relanding_disclosure": "the first of-record local commit (c687d9d, same records byte-identical minus this fetch_first/relanding disclosure) was lost to a second mid-arc sandbox rollback BEFORE its push could fire; the records were replayed from session context onto the intake-merge tip — nothing else changed",
+  "scope_of_this_record": "bookkeeping-only: card T-MIG-136-maths-b-enablement.yaml amended (status comment + bands NOTE), this receipt, repo worklog append; zero code delta, zero prod writes, zero Neon contact, zero LLM, zero probe learners",
+  "fence": "reaffirmed — this lane touches only 4MB1 paths; Physics 4PH1 = T-MIG-134 untouched; Maths A 4MA1 = T-MIG-135 untouched (the 135 lane's card/receipts on main are NOT edited from this lane); 133e chemistry root residue untouched"
+}
