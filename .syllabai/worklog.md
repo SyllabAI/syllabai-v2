@@ -8628,3 +8628,17 @@ Work Log:
 
 Stage Summary:
 - PR #190 PROMOTED of record: the verification-evidence PoC (classifier + adversarial pins + research doc, PROPOSED status preserved, zero production wiring) is on main at 7d19dbe with CI green. The board reads zero open PRs. Standing residuals: 133e (operator gate), PAT rotation, prj_D7vf (dossier filed, execution needs owning-account credentials), Vercel prune, CLA-stream/fig46/paper-watch.
+
+---
+Task ID: RESIDUALS-PRJD7VF run-002 (operator trace 1a1535eca275d87d — Vercel token handoff "here")
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: execute the prj_D7vf zombie deletion with the handed credential
+
+Work Log:
+- Credential law held: token inline-only in combined invocations, never persisted/printed; rotation recommended (transited chat).
+- Census-2 with the handed token (user syllabai-1403 / team syllab-ai — same scope class as run-006): 5 independent vectors ALL NEGATIVE — personal-scope projects 6/6, team-scope 6/6 (identical set: hub-v2, v2 api, demo, web, teacher-workbench x2), per-project domains 6/6 default-only, direct GET /v9/projects/syllabai -> 404 not_found, /v4/domains registry empty.
+- VERDICT: the zombie (project name 'syllabai', id prefix prj_D7vf, still serving 500s) is in a THIRD Vercel account — neither the syllab-ai team nor this user's personal scope. The r1c 'out-of-token account' split-brain is CONFIRMED with the strongest census to date.
+- ZERO destructive action (scope discipline: nothing in scope is the target). Dossier amended of record (addendum_2026-10-19_census_2) with the precise operator path: log into the account owning the project named 'syllabai' (likely an older/different email) and delete there, OR hand a token from that account for lane-side DELETE + closure receipt.
+
+Stage Summary:
+- prj_D7vf decommission remains credential-blocked — now with a definitive 5-vector census proving no syllab-ai-scope credential can ever reach it. Next artifact needed: token/console from the THIRD account. LANE R0: IDLE.
