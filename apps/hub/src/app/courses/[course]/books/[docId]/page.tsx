@@ -101,6 +101,33 @@ export default async function BookViewerPage({
   const row = sliceMap?.byChapter.get(target.chapterKey) ?? null;
 
   const page = positiveInt(pageParam);
+  // 133e citation precedence: a page citation that lands in NO chapter range
+  // but INSIDE a unit exam span mounts that unit slice (the gap pages the
+  // registry leaves uncovered — the unit slice contains them); only pages
+  // outside every first-class span ride the F-022 nearest-chapter law.
+  const pageInTargetRange =
+    page != null &&
+    target.pdfPageStart != null &&
+    target.pdfPageEnd != null &&
+    page >= target.pdfPageStart &&
+    page <= target.pdfPageEnd;
+  const unitSpanForPage =
+    page != null && !pageInTargetRange
+      ? sliceMap?.unitExam.find(
+          (s) => page >= s.pdfRange[0] && page <= s.pdfRange[1],
+        ) ?? null
+      : null;
+  if (unitSpanForPage) {
+    const unitResolved = resolveUnitExamMount(unitSpanForPage, page);
+    return renderMount({
+      slug,
+      bookTitle: book?.title ?? "Student book",
+      mount: { entry: unitResolved.mount!, label: unitSpanForPage.title ?? "Exam practice" },
+      initialPage: unitResolved.initialPage,
+      wholePdfPath,
+    });
+  }
+
   const resolved = resolveChapterMount(row, {
     part: partParam,
     page,
