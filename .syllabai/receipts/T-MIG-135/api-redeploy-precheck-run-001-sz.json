@@ -1,0 +1,66 @@
+{
+  "card": "T-MIG-135",
+  "receipt": "api-redeploy-precheck-run-001-sz",
+  "lane": "sz (Super Z, zai-web session web-9d2144ad-f8b8-4e63-9039-989f45cb596f)",
+  "created_at_utc": "2026-10-19T14:15Z",
+  "operator_trace": "1a15468ab530684d 'api redeploy, but check if already done'",
+  "order": {
+    "words": "api redeploy, but check if already done",
+    "discharge": "the operator-gated api redeploy lever with the pre-fire check first — same protocol as the T-MIG-133 first-check precedent (trace 1a1534d8a52dc0b5): check of record BEFORE any deploy action; a second firing over an already-discharged lever would double-deploy"
+  },
+  "check_verdict": "NOT ALREADY DONE — the api plane serves main 6c84af6 (band 133d); the T-MIG-135 band (PR #203 f9d49ae, merged 2026-10-19T12:31:47Z) and the 133f/134a/134c/PR-190 code legs are merged-but-unbaked",
+  "state_at_fetch_first": {
+    "sandbox_rollback_disclosed": "fresh sandbox this session (previous lane workspaces wiped); syllabai-v2 re-cloned blobless at main tip; gh tooling rebuilt from the lane remotes; per the in-repo receipt discipline the recipe of record was re-derived from the committed receipts (T-MIG-133/band-133d-api-redeploy-run-002-r0 + the T-MIG-092/093/095 chain) — the exact failure mode the in-repo receipts exist for",
+    "main_tip": "19caf2a4 (hub(books): 133g) — origin/main advanced 6c84af6 -> 19caf2a4 since the last bake, +40 commits, clone ff-synced, worktree clean",
+    "ci_at_tip": "2/2 SUCCESS (verify + hub check-runs, GitHub API first-hand at 19caf2a4)",
+    "api_carrier_incumbent": "dpl_Daps9E6ntWKt1xWaEpXWRReZkQgu READY createdAt ~2026-10-19T07:59:42Z, alias syllabai-v2.vercel.app, serving main 6c84af6 (of record: T-MIG-133/band-133d-api-redeploy-run-002-r0.json)",
+    "race_guard": "CLEAR (incumbent age ~6h >> the 10-min law)",
+    "api_auto_deploy_negative": "the api Vercel project has ZERO git-integration commit statuses on ANY main commit (checked 6c84af6, a61b4f73, 1b7d731e, f9d49ae5, 19caf2a4 — every status is the hub-v2 project); api bakes are manual lever firings by construction, hub auto-bakes on every push (mechanism of record)"
+  },
+  "no_redeploy_since_evidence": [
+    "receipts tree searched: no api-redeploy receipt after T-MIG-133/band-133d-api-redeploy-run-002-r0 (08:10Z); the run-003/run-004 entries are its second-lane and third-instrument verifies",
+    "R0-AUTO receipt for PR #203 (e75307c6) is 'bookkeeping-only' — the merge watcher consciously took no deploy action",
+    "v2 worklog tail (post-08:10Z sessions incl. T-MIG-136/INCIDENT-RESTORE-1) carries no bake receipt",
+    "PR #203's own card (T-MIG-135) sits IN_REVIEW with 135e COW/apply/battery named as the next gate under the same operator order"
+  ],
+  "live_probe_battery_7_of_7_unauth": {
+    "note": "first-hand this run against https://syllabai-v2.vercel.app; unauthenticated legs of the run-002 of-record battery",
+    "legs": [
+      "1/7 PASS health: 200 {groups:[liveness,readiness],status:UP}",
+      "2/7 PASS unknown path: 401 (the /api/v1 filter chain)",
+      "3/7 PASS books route law: GET /api/v1/content/books (no courseId) -> 400 validation_failed 'missing required parameter: courseId'",
+      "4/7 PASS T-C20 public-READ: GET /api/v1/content/books/e6c0db50-0f84-55de-b50c-e4d49285cd6d/chapters -> 200",
+      "5/7 PASS 133d ROUTE-EXISTENCE DISCRIMINATOR: GET /api/v1/content/books/{doc}?page=abc -> 200 {documentId,docVersion:1,courseId:'igcse-chemistry-19',page:null,chapter:null} (the malformed-page=absent law; a pre-133d incumbent 401/404s this path)",
+      "6/7 PASS F-022 nearest-chapter containment: page=12 -> 200 with chapter u1:c1 (Principles of Chemistry)",
+      "7/7 PASS shelf: GET /api/v1/content/books?courseId=igcse-chemistry-19 -> 200 [1 entry] Jim Clark 383pp checksum d48020e0"
+    ],
+    "reading": "the serving bundle is >= 133d; combined with the no-redeploy-since evidence the serving tip is 6c84af6 exactly"
+  },
+  "delta_over_incumbent": "6c84af6..19caf2a4 = 40 commits; api/packages 31 files +3637/-80 first-hand via the compare API: T-MIG-134a second-subject bundle-seed service (bundle-seed.ts +677), T-MIG-134c 4PH1 seed APPLIED to prod Neon (of record 6bc607a7), T-MIG-133f Maths A books readiness (PR #201 bundle-spine.ts +148), PR #203 T-MIG-135 bands 135a-d the four-subsystem Maths A product-loop (subject-profile.ts, sme/bundle-questions.ts +466, tutor arms), PR #190 learner-model verification-evidence (+148); hub-only work (133e/133g slices, favicon, modular-24) does not enter the api bundle",
+  "deploy_leg": {
+    "status": "NOT FIRED — VERCEL_PAT-GATED",
+    "why": "briefing section-0 paste absent this session; credential law forbids improvising or creating tokens; sandbox swept: no .secrets.env/.creds survivor anywhere (the /tmp/my-project survivor holds .neon_url/.gemini_key/.teacher_jwt/.teacher_pw only, no Vercel token; CI Actions hold NEON_API_KEY only per the t097 vehicle law)",
+    "staged_recipe": "the run-002 of-record recipe verbatim: bun install (stale-workspace law) -> the T-MIG-093 deploy_bundle_build.py chain (shims: Bun.CryptoHasher->node:crypto, Bun.YAML.parse->js-yaml, 6 YAMLs inlined via concept-assets.gen.ts, Node adapter entry; asset SHAs asserted pre-inline) -> boot gate write-free 4/4 -> vercel CLI 62.7.0 deploy --prod --yes from the 2-file stage (.vercel/project.json linked prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ / team_ULL54qkhzKBmnKrpO6BD4mYX) -> 3-way alias createdAt verify (v6 LIST <-> v13 alias-lookup <-> /v13/deployments/{id} path form) -> post-deploy battery 12 legs with a T-MIG-135 discriminator set -> receipt + worklog + FF bookkeeping push"
+  },
+  "write_ledger": {
+    "probe_users": 0,
+    "neon_direct_writes": 0,
+    "llm_spend": 0,
+    "embedding_spend": 0,
+    "local_boot_gate_writes": 0
+  },
+  "disclosures": [
+    "zero deploy action taken by this lane — the check converted to a precheck-of-record per the T-MIG-133 first-check precedent; the lever remains ONE operator-gated firing",
+    "honest caveat: an UNDOCUMENTED redeploy between 12:31Z and now cannot be 100%-excluded without Vercel API access (the live unauth discriminators cannot separate 6c84af6 from f9d49ae5 — every T-MIG-135 change sits behind the auth filter); of record, no such redeploy exists, and an undocumented prod bake would itself be a discipline violation",
+    "this bookkeeping push costs one no-code-delta hub auto-bake (mechanism of record, disclosed)",
+    "the T-MIG-135 data-plane gate (135e COW/apply/battery) is a SEPARATE operator lever — baking the 135 code does not apply any 4MA1 seed; the maths arms serve honestly-empty until 135e lands",
+    "secrets hygiene: GITHUB_PAT inline in the push URL only, never printed/committed; zero secret values in this receipt"
+  ],
+  "verification": {
+    "run_class": "OPERATOR-ORDERED PRE-FIRE CHECK (second-lane, zero writes, zero deploys)",
+    "artifacts": [
+      ".syllabai/receipts/T-MIG-135/api-redeploy-precheck-run-001-sz.json (this receipt)",
+      ".syllabai/worklog.md trace-1a15468ab530684d entry"
+    ]
+  }
+}
