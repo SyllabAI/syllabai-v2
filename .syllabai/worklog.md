@@ -8857,3 +8857,18 @@ Work Log:
 
 Stage Summary:
 - THE FLIP IS LIVE ON PROD: 14/16 modular-24 courses now serve real official June-2025 archives (publisher first-party provenance, AI-IDENTIFIED posture); bio/chem U2 honestly empty until Pearson's unlock; archive browser at 108 specs. The filed scope's "3.5-4.5 lane runs" compressed into ONE run end-to-end. Growth path: future unlock sweeps = corpus ingest + index regen only. Residuals: unlock sweeps, 4WPH2 QP-only, '01R' chip cosmetic, PAT/Vercel rotation, Render disable, prj_D7vf. LANE R0: IDLE.
+
+Task ID: SCOPE-PP-MOD24-sweep-1 (operator trace 1a15404c14c1d845 — the unlock-sweep residual ordered)
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: recurring secure-series unlock sweep, run 1 — corpus ingest + index regen IF anything flipped public (no remapping by design)
+
+Work Log:
+- Algolia census re-run (method of record): 272 hits, ZERO new rows vs the wave-1 baseline (snapshot kept for diff).
+- Direct CDN probe of ALL 141 in-scope secure URLs across every gated series (Nov-2025 x13, Jan-2026 x32, 2026-05-dated x12, June-2026 x20, 2026-08-dated x64).
+- GATE MECHANISM of record (new): Pearson silver-gated files do NOT 403 — they 200-redirect to the user portal (userportal.pqs.pearsonprd.tech -> edexcelonline login), text/html. Future sweeps classify UNLOCKED = 200 + %PDF magic only; a status-code check would false-positive every gated URL.
+- VERDICT: 0/141 unlocked — negative sweep. Corpus unchanged @ 3063c716, hub index still current, no PR, no prod mutation, bio/chem U2 keep the mapped-honest-empty state.
+- Re-run path persisted: scripts/unlock_sweep.py (re-census + baseline diff + magic probe, ~2min) — on any unlock the wave-1 pipeline (acquire/stage/land + index regen + PR) ingests with zero remapping. Cadence: monthly or per results-release.
+- RECEIPT: .syllabai/receipts/QA-SWEEP/modular-24-unlock-sweep-1-r1.json.
+
+Stage Summary:
+- Sweep run 1 of record: all secure modular-24 series remain login-gated as of 2026-10-19; zero placements, zero repo mutations beyond this receipt. LANE R0: IDLE (next sweep = operator go or scheduled cadence).

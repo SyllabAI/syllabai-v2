@@ -1,0 +1,41 @@
+{
+ "receipt": "modular-24-unlock-sweep-1-r1",
+ "family": "QA-SWEEP",
+ "task_id": "SCOPE-PP-MOD24-sweep-1",
+ "operatorTrace": "1a15404c14c1d845 (operator echo of the unlock-sweep residual — the sweep ordered)",
+ "agent": "R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+ "generatedUtc": "2026-10-19T14:20:00Z",
+ "mode": "RECURRING SWEEP RUN 1 — negative result (zero unlocks, zero placements, zero repo mutations)",
+ "method": {
+  "layers": [
+   "Algolia fresh census re-run (same public index/app-key method of record): 272 hits, ZERO new rows vs the wave-1 baseline (work/mod24_census_wave1_baseline.json diff)",
+   "Direct CDN probe of ALL 141 in-scope secure URLs (Algolia metadata can lag the CDN): GET with UA, classify by body magic"
+  ],
+  "gate_mechanism_of_record": "Pearson's silver-gated files DO NOT 403 — they 200-redirect to the user portal (userportal.pqs.pearsonprd.tech -> edexcelonline.pearson.com login), content-type text/html. Future sweeps must classify GATED = 200-HTML-redirect, UNLOCKED = 200 + %PDF magic. A naive status-code check would false-positive every gated URL.",
+  "verdict_rule": "UNLOCKED only when the final body starts %PDF-"
+ },
+ "result": {
+  "in_scope_secure_probed": 141,
+  "unlocked_pdfs": 0,
+  "series_coverage": {
+   "2025-11 (Nov 2025 series)": "13 probes, gated",
+   "2026-01 (Jan 2026 series)": "32 probes, gated",
+   "2026-05-dated (June 2026 QPs)": "12 probes, gated",
+   "2026-06 (June 2026 series)": "20 probes, gated",
+   "2026-08-dated (June 2026 MS/ER era)": "64 probes, gated"
+  },
+  "in_scope_families": "4wbi1/4wbi2, 4wch1/4wch2, 4wph1/4wph2, 4wm1f/1h/2f/2h, 4wsd1..6 — the 14 X-codes behind the 16 modular-24 courses; out-of-scope modular families (4WEA1, 4WHI1, 4WCM1) remain observed-only per scope discipline"
+ },
+ "consequence": {
+  "corpus": "no change (3063c716 remains tip of record); nothing to ingest",
+  "hub": "no index regen needed (index already @ 3063c716); no PR; no remapping — the bio/chem U2 courses keep rendering the mapped-honest-empty state, physics U2 stays QP-only",
+  "prod": "untouched; no deploy triggered"
+ },
+ "re_run_path": "scripts/unlock_sweep.py (persisted, checkpoint-free single pass, ~2min): re-census + baseline diff + 141-URL magic probe; on any UNLOCKED_PDF verdict the wave-1 pipeline (acquire/stage/land scripts + index regen + PR) ingests with zero remapping",
+ "cadence_recommendation": "run monthly or on Pearson results-release dates (Nov-2025 series expected public around its January 2026 results window; June-2026 around August 2026); one-off operator-authorized pull via Pearson credentials remains the faster alternative per the scope receipt",
+ "residuals": ["unlock sweeps continue (this was run 1)", "physics 4WPH2 QP-only", "maths '01R' Timezone-R chip cosmetic", "PAT rotation (consumed again this run for API checks), Vercel token rotation, Render disable, prj_D7vf"],
+ "consistencyNotes": [
+  "Consistent with modular-24-pastpapers-acquisition-scope-r0.json risk item: '2 of 3 existing series are login-gated today — recurring unlock sweeps needed'",
+  "Consistent with wave1-r1 + phase23-r1 receipts: corpus 3063c716 + hub main 7a34605 are the unchanged baselines this sweep verified"
+ ]
+}
