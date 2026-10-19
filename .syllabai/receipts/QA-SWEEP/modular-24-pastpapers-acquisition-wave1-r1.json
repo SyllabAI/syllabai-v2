@@ -1,0 +1,66 @@
+{
+ "receipt": "modular-24-pastpapers-acquisition-wave1-r1",
+ "family": "QA-SWEEP",
+ "task_id": "SCOPE-PP-MOD24-r1",
+ "operatorTrace": "1a153d2ed38a62fd ('go' — execution authorization on the filed scope modular-24-pastpapers-acquisition-scope-r0.json, whose own plan awaited the operator go)",
+ "agent": "R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+ "generatedUtc": "2026-10-19T12:30:00Z",
+ "mode": "PHASE 0 (census) + PHASE 1 (public-set acquisition + corpus landing) EXECUTED — Phases 2-3 (hub index regen + COURSE_SPECS mapping + QA battery) are the next runs per the filed plan",
+ "corpusLanding": {
+  "repo": "SyllabAI/syllabai-pastpapers",
+  "base_commit": "fe4d8513b19b591a1c57ae02324123830d9f0f53",
+  "landed_commit": "3063c7169c16a39204688749531a0c3608e56e7a",
+  "push": "plain fast-forward fe4d8513..3063c716 on main, zero force; race re-checked (ls-remote) immediately pre-push",
+  "mechanics": "blob-free surgical landing (hash-object new blobs only -> update-index onto read-tree(HEAD) -> write-tree -> commit-tree -> push) — zero existing blobs fetched, zero existing paths touched; 111 new index entries = 78 PDFs + 28 manifest.yaml + 5 specification.yaml",
+  "post_push_verification": [
+   "raw.githubusercontent manifest.yaml serves (4WSD5-1P probed: paper_id correct)",
+   "raw PDF serves with %PDF-1.7 magic (HTTP 206 range probe on 4WBI1-1B qp.pdf)",
+   "contents API lists physics/4xph1/past-papers/2025-06 = [4WPH1-1P, 4WPH1-1PR, 4WPH2-1P, 4WPH2-1PR]"
+  ]
+ },
+ "phase0_census": {
+  "method": "Pearson public Algolia browser index (app L639T95U5A, key f79c7a83…, index qualifications-uk_LIVE_master-content) — exactly the method the scope receipt prescribed; 12 queries, 272 hits, deduped + classified",
+  "discovery_of_record": [
+   "Maths A modular paper codes PINNED (the scope's Phase-0 deliverable): 4WM1F / 4WM1H / 4WM2F / 4WM2H, printed as 4WM1F/01 (paper 01 per unit-tier), R timezone variants print 'Paper 1FR/1HR/2FR/2HR' style on covers",
+   "4WSD1..6 RESOLVED: the Double Award modular has SIX paper codes — 4WSD1/4WSD2 = biology unit-1/unit-2, 4WSD3/4WSD4 = chemistry unit-1/unit-2, 4WSD5/4WSD6 = physics unit-1/unit-2 (covers print 4WSD1/1B, 4WSD2/1B, 4WSD3/1C, 4WSD4/1C, 4WSD5/1P, 4WSD6/1P)",
+   "June-2025 series PUBLIC for: bio U1 (1B/1BR), chem U1 (1C/1CR), phys U1 (1P/1PR) + phys U2 (1P/1PR, qp only), ALL FOUR maths unit-tiers, ALL SIX double-award papers",
+   "SECURE (login-gated, /secure/silver/): bio U2 + chem U2 June-2025, all Nov-2025, a January-2026 series (discovered: 4wbi1 rms/pef dated 2026-01-22), June-2026 — unlock sweeps needed per future results-release",
+   "Out-of-scope modular families also surfaced (4WEA1 English Lang A, 4WHI1 History — History June-2024 already public, 4WCM1 Commerce): recorded for future scope decisions, NOT touched (scope discipline)"
+  ],
+  "artifact": "sandbox census JSON work/mod24_census.json (numbers of record mirrored here)"
+ },
+ "phase1_acquisition": {
+  "downloaded": 80,
+  "placed": 78,
+  "total_bytes_placed": 60111493,
+  "paper_dirs": 28,
+  "specs_created": ["biology/4xbi1", "chemistry/4xch1", "physics/4xph1", "mathematics-a/4xmaf-4xmah", "science-double-award/4xsd1"],
+  "all_dirs_have_qp": true,
+  "dedup": "0 duplicate blobs among the 78 (sha256 cross-check)",
+  "verification": "80/80 PDF magic + pypdf page counts sane (QP 16-28pp, MS 11-18pp, ER 6-20pp); identity print-verified from covers: QP slash-refs authoritative (e.g. 4WSD5/1P, 4WM1F/01, 4WPH2/1P), MS/PEF covers corroborated by printed spec code + Unit/Paper token (44 corroborated)",
+  "omitted_with_disclosure": [
+   {"file": "4wsd2-1b-pef-20250821.pdf", "sha256": "48826a2b0acf8112e81ad7ba0756892b001854192a762610010fdcb6afd20f99", "reason": "Pearson 1-page 'no Examiner's Report will be published' notice (insufficient entries) — no learner value; sha disclosed here for provenance completeness"},
+   {"file": "4wsd4-1c-pef-20250821.pdf", "sha256": "48826a2b0acf8112e81ad7ba0756892b001854192a762610010fdcb6afd20f99", "reason": "same no-report notice class (identical boilerplate sha)"}
+  ],
+  "identity_disclosures": [
+   "Maths R-variant MS/PEF covers print 'Mathematics A (4WM1) Paper 1FR/1HR/2FR/2HR' — a different convention from the census filename (4wm1f-01r); dirs are QP-anchored so grouping is unaffected; disclosed per the no-silent-inference law",
+   "4wsd4-1cr-pef (953KB/20pp) vs 4wsd4-1c-pef (no-report notice): asymmetric publication by Pearson, not a pairing conflict"
+  ],
+  "provenance_law": "every manifest.yaml carries source_type: publisher, archive: Pearson qualifications site, full source_url, collected_by + sha256 + size + original_filename; identification block = pdf_text + publisher-listing, confidence_rank 0, verification_status AI-IDENTIFIED (operator ratification pending — same posture as the existing 5,281-paper corpus); specification.yaml per spec folder carries first-teaching/first-assessment notes and the dual-code maths law (4XMAF/4XMAH in ONE folder)"
+ },
+ "coverage_impact": {
+  "before": "16 modular-24 hub courses honest-empty; corpus holds ZERO X-series specs",
+  "after_corpus_landing": "5 X-series specs / 28 paper dirs / 78 files ARE in the corpus; hub still shows honest-empty until Phase 2 (index regen + COURSE_SPECS mapping) lands — by design, no half-mapped state",
+  "phase2_next": "bun scripts/build_pastpapers_index.ts (corpus tree fe4d8513 -> now 3063c716); add 5 COURSE_SPECS entries (sciences unit-1/unit-2 via variants filter incl. the no-MS 4WPH2 qp-only dirs; maths via tier filter F/H onto 4xmaf-4xmah; double-award split by science exactly like linear 4SD0); PR per code-change law; then Phase 3 QA battery scoped to the 16 courses"
+ },
+ "residuals": [
+  "Secure-series unlock sweeps (Nov-2025, Jan-2026, June-2026; bio/chem U2 June-2025 MS/ER) — recurring per results-release, or one-off via operator's Pearson account",
+  "Physics U2 (4WPH2) currently qp-only in the public set",
+  "PAT rotation STILL OPEN (this run consumed it again: corpus push + API), Vercel token rotation, Render disable, zombie prj_D7vf third-account delete"
+ ],
+ "consistencyNotes": [
+  "Consistent with modular-24-pastpapers-acquisition-scope-r0.json (the plan this run executes; its Phase-0 unknowns are all settled here)",
+  "Consistent with QA-SWEEP r0 (ab6ba58): the 16-course honest-empty state is preserved until Phase 2 flips it atomically",
+  "AGENT.md corpus laws honored: manifests + sha256 + provenance canonical, no silent identity inference (4 maths-R covers disclosed), task ID + base commit in the corpus commit message, dedup checked, no scope mixing (no 4W→4X mapping implied beyond qualification identity)"
+ ]
+}
