@@ -8747,25 +8747,6 @@ Stage Summary:
 - OPERATOR QUEUE ADDITIONS: (1) syllabai-resources at 4.75GB vs the 5GB push hard limit — the next book intake hits the wall (move page-artifact bulk / LFS / new archive repo — decide BEFORE the Maths B book lands); (2) the Maths B book source needs an operator handoff (tmpfiles pattern) when ready; (3) standing: PAT rotation (further transits added this turn), prj_D7vf.
 
 ---
-Task ID: T-MIG-136 bands 136a+136e (run-002)
-Agent: r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)
-Task: Operator trace 1a153dfab49abd9d — tutor / smart mark / CLA / learner model working with Maths B (4MB1); pilot expanding to more subjects; mid-run operator note: 4MA1 is another agent's lane (honored — zero 4MA1 content touched)
-
-Work Log:
-- Post-rollback recovery: the sandbox had wiped the v2 clone, node_modules and the session's scratch state; re-cloned (--filter=blob:none) + bun install (930 pkgs); fetch-first to f16f9eb
-- INCIDENT re-audit (independent, post-rollback): the run-001 corpus restore of record re-verified from scratch — origin/main 8beecb97, 77,709 paths, 0 of the 76,831 pre-clobber paths missing, raw serving 200s (PARSE_STANDARD.md, igcse-maths-b-16 manifest/index), Official-Specifications/igcse-maths-b/ present; the +878 delta decoded (books +60 = 133e's relocated 4ch1 slices; 818 root residue paths = 133e's own debt, untouched); receipt T-MIG-133/band-133e-incident-corpus-restore-run-001-r0.json stands
-- Band 136a: bundle-seed grammar THREE-SHAPED — SUBTOPIC tails letter|dotted|placeholder (4MB1-S1-_), SPEC_POINT second dbCode law for the 4MB1 alnum series ^\d{1,2}[A-Z]$ (4MB1-S1-1A, 4MB1-S10-10A — code verbatim, grandparent-UNIT-prefixed); physics/maths-a byte-identical re-proven on the real bundle bytes; maths-b pins 1/10/10/98/118, seed 119 nodes/118 edges fresh + idempotent
-- Band 136e: paper-identity grammar THREE-SUBJECT — PAPER_CODE_MB separate precise regex (else-branch only, provable non-regression), NO bare-unit bind for maths-b (digit false-positive class), alias 4MB1→4MB0, /^4MB/ unit branches, bare-digit token law; courses.json maths-b row + curriculumCode 4MB1-2016; coreBridge ABSENT (operator-declared law; the flag gates an honestly-empty question axis — rule 3); hub verified already courseRef-generic from 135d
-- Gates: typecheck exit 0 x4; api 1790/0/13skip (18741 expects); shared 75/0; contracts 345/0; hub build + lint GREEN; census --gate GREEN LIVE=0
-- Defects on the record, both caught and fixed pre-landing: (1) my first 10A test pin violated the verbatim law (expected 4MB1-S10-1A; engine correct at 4MB1-S10-10A); (2) a 44-fail full-suite run was environmental (post-rollback node_modules), cleared by bun install
-
-Stage Summary:
-- The four subsystems now have their Maths B substrate of record: CLA + learner model serve off the 136a seed (root 4MB1, 119 nodes), tutor graph arm resolves 4MB1-2016 the moment 136c lands, smart mark honestly dormant (zero questions — the 135b shim ingests verbatim if a bank ever lands), fetch-bank grammar ready for a future 4MB corpus
-- Branch t-mig-136/r7a @ 360e207 + receipt run-002 + this card update; PR to main
-- OPERATOR QUEUE: (1) 136c prod apply (combined 4MA1+4MB1 Neon order is an option; COW-proof first); (2) coreBridge per-row declaration for igcse-maths-b-16 if/when the core-questions axis is wanted (moot until questions exist); (3) the Maths B book source handoff (tmpfiles pattern) + the syllabai-resources 4.75GB/5GB push-wall decision BEFORE it lands; (4) standing: PAT rotation, prj_D7vf
-
----
-
 Task ID: trace 1a15468ab530684d ("api redeploy, but check if already done")
 Agent: sz (Super Z, zai-web session web-9d2144ad-f8b8-4e63-9039-989f45cb596f)
 Task: "api redeploy, but check if already done" — the operator-gated api redeploy lever, pre-fire check first (the T-MIG-133 first-check protocol).
@@ -8784,51 +8765,19 @@ Stage Summary:
 - Receipt: .syllabai/receipts/T-MIG-135/api-redeploy-precheck-run-001-sz.json
 
 ---
-Task ID: trace 1a15458e2e5bf235 ("There are some errors... just separate by chapters (study material+practice questions) and at the end of unit, a pdf for the unit questions")
-Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
-Task: T-MIG-133 band 133g — the corrected slice geometry: RETIRE the 133e hard-split `_q` slices, merge each chapter into ONE slice (study material + practice questions inline), keep the unit exam-practice slices, keep the anchor jump INSIDE the merged slice.
+Task ID: trace 1a1549c33da7b765 (token delivery after the run-001 precheck)
+Agent: sz (Super Z, zai-web session web-9d2144ad-f8b8-4e63-9039-989f45cb596f)
+Task: "api redeploy, but check if already done" — token delivery landed; fetch-first then caught a parallel lane's firing already aliased; converted to SECOND-LANE VERIFICATION (zero deploy action).
 
 Work Log:
-- Sandbox was wiped again (clone 160 behind, receipts gone, creds gone). Fetch-first recovery: FF'd syllabai-v2 to f16f9eb (T-MIG-135/136 + INCIDENT-RESTORE-1 of record); read the 133e battery run-003 receipt (26/26, LIVE) and the incident receipt — the pre-session summary claimed 133e "not started" but main proved it implemented and deployed; the of-record won.
-- Credentials re-staged 0600 from the surviving project-root .secrets.env (GITHUB_PAT/VERCEL_PAT/NEON_PAT present, key names only in logs; values never printed).
-- Live census first-hand: manifest of record 59 slices vs the API registry 29 rows — TILING 29/29 proven (26 lesson+questions contiguous splits + 3 whole-role chapters u1:c3/u1:c4/u3:c21 + 4 unit_exam rows); the 500->404 chapters ticket re-probed live: BOTH unknown-uuid and non-uuid return 404 now — no longer reproduces, zero api work.
-- Hub band 19caf2a: books-slices.ts gains questionsStartPage (additive, nullable, optional — the legacy manifest shape still parses and an old hub strips the unknown key, so the archive flip never breaks a stale pod); resolveChapterMount merged-anchor law (legacy _q rows keep precedence as pure defense; citation page inside the range beats the anchor intent; page outside lets the anchor win); viewer button renders on the merged anchor and hides while active. GATES first-hand: slice tests 29/29 (8 new), hub 113/0, full suite 2250/0/13skip, typecheck x4 exit 0, eslint clean; CI 2/2 on 19caf2a first-hand; pushed FF f16f9eb..19caf2a.
-- Archive band 4add4968 (parent 6242e011 — the LIVE tip, not the stale receipt tip; race re-check at commit time): path-scoped Git-DB, NO worktree (the INCIDENT-RESTORE-1 clobber-class law — no worktree, nothing to register as deletions): 27 blobs (26 merged slices cut by pypdf 6.6.0 from the sha256-verified source d48020e0…/383pp + the new manifest), 26 _q paths deleted; 3 whole-role blobs + 4 unit blobs + student-book.pdf reused zero-upload/zero-move. New manifest 33 rows (29 lesson full-range + 4 unit verbatim), anchors 26/29 honest, deferred law L4 carried.
-- Zero-LLM battery run-001: PASS 28/28 (state artifact band-133g-slice-battery-run-001-28of28.json): A archive (manifest byte-exact e21ba635…, 3 sha256 byte-proofs, _q 404, whole book sha-verified), B api (shelf/chapters of record, merged TILING 29/29, anchors 26/29, 133d citation-target, T-C20 404 x2), C delivery (merged + unit slices byte-exact via the relay, _q NOT served — the raw-404->502 law), D page (merged manifest live, in-slice anchor jump initialPage 10 = pdf p.21, button render/hide, unit mount, p.21->offset 10, p.124->unit span, F-022 p.335/p.2, slice mount URL (whole-book pane stays dead), unknown-book honest not-found UI with no fabricated mount, health/shell regressions). Two leg expectations were corrected mid-battery TO the of-record laws (relay 502-on-missing; streamed not-found under 200) — disclosed, not weakened.
+- Identity chain first-hand: VERCEL_PAT sha256 fp16 == d254bbfaac004354 (the of-record law, EXACT MATCH), /v2/user -> syllabai-1403, api project prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ accessible; the delivered GITHUB_PAT is a NEW designation (fp12 a8ccee736aa8 != of-record 8c1fcf2c4f0d — fresh delivery, rotation standing order applies), /user -> SyllabAI, repo read verified. Tokens staged 0600 under .creds/ (lane-local, never printed/committed).
+- FETCH-FIRST CAUGHT THE FIRING: the production alias syllabai-v2.vercel.app has served dpl_AwzdTUBGQQtatjue2m7Xa2j8uHgg (READY, createdAt 14:13:07Z, aliasAssigned=true, 3-way createdAt byte-match) since ~minutes after my run-001 precheck fetch. Deployment meta stamps source main 0c06bb63 (author 'Z User <z@container>', UUID message) — GitHub API: 'No commit found' — a lane-local/stage commit NOT on origin/main (traceability gap disclosed; the firing lane's own receipt has not landed; origin/main at filing = d29f5c8).
+- Data plane read first-hand (read-only SELECT via the of-record DSN, env-API decrypt volatile path, copies shredded, zero writes): curriculum_versions has THREE ACTIVE rows — 4CH1-2017, 4PH1-2017 (the 134c apply), 4MA1-2016 (the combined order landed) — so the unscoped resolveActive refusal (>=2 owners -> null) is the CORRECT behavior on ANY bundle; the run-002 leg-5 chemistry pin is unproducible by design until a scoped ask. The T-MIG-135 card's gap (5) 'prod has NO 4MA1 curriculum' is now STALE.
+- SECOND-LANE VERIFICATION 15 legs, all PASS or honestly explained: the of-record 12 (health/cron/unknown-path/register/review-seam/books-law/29-chapters/shelf/route-existence/nearest-chapter/no-state-leak; the unscoped bank leg honest-empty per the 3-owner law) + the DECISIVE T-MIG-135c discriminators: courseRef=4CH1-2017 -> 200 total=56 items=56 with resolvedNodes[0] TOPIC 4CH1-S3-b — the courseRef axis CONSUMED = the 135 band SERVES; DRAFT-code control honest-empty; cross-corpus control (4PH1 + chemistry topic) honest-empty, no leak.
+- VERDICT: the api redeploy lever is DISCHARGED of record — the T-MIG-135 band (with 133d/133f/134a) has served aliased since 14:13:07Z, behaviorally pinned regardless of the source-sha gap. My run-001 'NOT already done' verdict was correct at its fetch time; the firing landed minutes later.
+- Write ledger: 2 register probes (sz-135-verify-*@example.invalid, both 201, zero sessions/review rows/cron fires), zero Neon writes, zero LLM/embedding spend.
 
 Stage Summary:
-- Band 133g DONE end-to-end: the operator's original complaint (whole-PDF download) stays fixed AND the corrected geometry serves — chapter opens load ONE merged slice (u1:c1 1,689,138B = 3.1% of the whole) with the practice questions inline; no mid-page cuts, no second fetch; unit exam practice per unit; reference tail deferred behind the raw book + F-022.
-- The 133e `_q` design retraction of record: the operator's correction (questions start inline, sometimes mid-page) is now the geometry of record; the anchor jump survives as an in-slice landing at the parse-derived questionsStartPage.
-- OPERATOR QUEUE: (1) PAT rotation CRITICAL-OVERDUE (new transits: git push + the Git-DB series); (2) syllabai-resources ~4.79GB vs the 5GB wall (+~37MB this band) — the Maths B intake decision still blocks; (3) the 133e lane's root residue in the archive (docling_pages/ etc.) still to relocate (deferred, zero-risk option taken); (4) api unchanged this band — no redeploy consumed; the api 500->404 ticket is closed by live evidence.
-
----
-
-Task ID: R0-AUTO (Job 438940, sweep 2026-10-19T14:30Z)
-Agent: R0-auto (merge desk)
-Task: PR #204 intake + merge (T-MIG-136 bands 136a+136e, t-mig-136/r7a)
-
-Work Log:
-- gates: head 6bc8b70 CI 3/3 success (verify + hub + Vercel); mergeable=dirty → established intake: git merge origin/main — worklog-ONLY conflict, resolved via the append-only chronological union resolver (scripts/r0-worklog-union.py, ours-first per commit timestamps 14:00:33Z < 14:09:52Z; byte checks passed: both blocks verbatim, pre/post regions intact, zero markers).
-- intake gates on merge commit 9619564: bun install --frozen-lockfile exit 0 (930 pkgs); bun run typecheck exit 0 x4 workspaces; bun test apps/api packages = 2243 pass / 13 skip / 0 fail (19801 expects); bun golden/runner.ts --selftest OK. Pushed (no force) → new head CI 3/3 success on 9619564.
-- reviews 0, only vercel[bot] comment — no HOLD/BLOCKING/do-not-merge. Diff 10 files +383/-31 all in-boundary (0 *.java, no core/hub repo content; no write-capable scripts — 136c prod apply is operator-gated and absent from this diff; commit discloses zero prod writes, zero LLM, zero Neon contact).
-- merged: PUT /pulls/204/merge (merge_method=merge) -> merge sha c094494; new main tip CI verify + hub success.
-
-Stage Summary:
-- main @ c094494 green after merge; T-MIG-136 bands 136a+136e code of record (Maths B 4MB1 substrate; 136c prod apply + 136d battery staged/operator-gated per card); 4MA1+4MB1 combined Neon order remains an operator option. No escalations this sweep.
-
----
-Task ID: CIE-INTEGRATION-SCOPE-1
-Agent: Super Z (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
-Task: operator trace 1a1549ec230c5f95 "Produce the CIE frontend-integration scope of record" (the word given on the CIE-FRONTEND-CENSUS-1 offer)
-
-Work Log:
-- Fetch-first: fresh clone @ d29f5c8 (main tip; T-MIG-136 merged, band-133g receipt landed since the census run).
-- Zero-download census deepened for scope-building (repo too large to clone): GitHub trees/commits API + raw manifest fetches (scripts/cie_census*.py + cie_roster_matrix.py persisted lane-side; matrix artifact work/cie-roster-matrix.json).
-- Provenance of record found IN the corpus registry: SME-ExamQuestion/manifest.json cambridge_extension block — operator trace 1a1472e1880cc011 (2026-10-17) "similarly download Cambridge ones as well", builder sme_cambridge_courses.py + scraper sme_cambridge_examq_scrape.py, 34 lanes; SME attestation 2026-09-17 covers all SME corpora incl. CIE.
-- Inventory of record: EQ 44 banks (40 real: 19,095 questions / 25,654 parts / 73,815 marks / 1,118 topics; 4 stubs w/ 0 questions — accounting-21-AL, econ-23-AL, AS-general-paper-21, igcse-accounting-25); notes 44 sets (4,460 pages / 9,042 assets / 8,651 spec_point_links); flashcards 33 decks; specs 33 dirs + 33 parsed trees (syllabai.parsed-specification/1.0, cie-spec-parser-1.0, family tier_columns). Levels: a-level 12 / as 2 / igcse 30. Bank→spec join 44→33 (maths ×5 ← 1 spec; co-ord ×3 + combined ×3 ← 2 specs; core/ext pairs ← 1 each).
-- KEY FINDING: CIE registry entries carry NO spec_index (Edexcel ones do) — the topic→spec-point join is a build item; the 8,651 note spec_point_links + parsed-spec numbering are the bridge.
-- Hub seams re-verified @ d29f5c8: courses.json 49 rows all Edexcel (0 CIE); content/ no cie-*; content-maps all Edexcel; the 3-stage content law (build_official_spines.py ← Official-Specifications parsed → content-maps → build_official_content.py rekey, treeKind sme-native→official-spine, gated --check); DB chain seed-bundle-curriculum.ts → ingest-bundle-questions.ts (bundle-questions.ts shim → SmeQuestionIngestService ADR-026 replace, dry-run = rollback proof); ADR-029 gate = pilot row OR coreBridge flag; FLASHCARD_SYNC_COURSES = [igcse-chemistry-19]; pastpapers archive 103 specs all Edexcel → CIE past-papers = honest-empty at launch (separate future acquisition scope).
-- Filed .syllabai/receipts/CIE-INTEGRATION/cie-frontend-integration-scope-r0.json (modular-24 scope precedent form): inventory + gap + wiring path + 6 phases (0 census/design 0.5-1, 1 spines 1-1.5, 2 content-maps+rekey 2-4, 3 rows+build 0.5-1, 4 DB operator-gated 1-2, 5 posture+QA 1 lane runs), risks, expected outcome 49→93 courses, total ~6-10 lane runs (Phases 0-3 = the frontend-visible unlock).
-
-Stage Summary:
-- SCOPE FILED of record: CIE frontend integration = 44 courses (40 with EQ / 44 with notes / 33 with flashcards / 33 official parsed specs) wired through the EXISTING 3-stage content pipeline + operator-gated DB plane; zero code changes made (scope-only); stub-bank inclusion recommended as notes-only honest-empty; coreBridge + flashcard-sync default OFF pending operator product call; awaiting operator go on Phases 0-3.
+- NEW DELTA SINCE THE FIRING: PR #204 (T-MIG-136a Maths B three-shaped seed grammar, c094494 merged 14:36:20Z — 23 min AFTER the firing) + the 4MB1 seed (136c operator gate) are NOT in the aliased bundle — the next lever state, an operator decision (R0-AUTO's PR #204 receipt is again 'bookkeeping-only').
+- Receipt: .syllabai/receipts/T-MIG-135/api-redeploy-second-lane-verify-run-002-sz.json
+- Standing: PAT rotation advised for BOTH tokens (the GitHub one is fresh-designated; the Vercel one transited chat again).

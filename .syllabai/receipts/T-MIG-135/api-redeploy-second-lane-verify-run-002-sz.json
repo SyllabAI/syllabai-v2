@@ -1,0 +1,72 @@
+{
+  "card": "T-MIG-135",
+  "receipt": "api-redeploy-second-lane-verify-run-002-sz",
+  "lane": "sz (Super Z, zai-web session web-9d2144ad-f8b8-4e63-9039-989f45cb596f)",
+  "created_at_utc": "2026-10-19T15:05Z",
+  "operator_trace": "1a1549c33da7b765 (token delivery: GITHUB_PAT new designation fp12 a8ccee736aa8 + VERCEL_PAT fp16 d254bbfaac004354 == the of-record fingerprint, EXACT MATCH)",
+  "order": {
+    "words": "api redeploy, but check if already done -> tokens delivered",
+    "discharge": "the precheck (run-001-sz) found the lever VERCEL_PAT-gated; the tokens unblocked it; fetch-first then caught a PARALLEL LANE'S FIRING already aliased — this lane converted to SECOND-LANE VERIFICATION per the T-MIG-133 first-check precedent and took ZERO deploy action"
+  },
+  "the_firing_of_record": {
+    "deployment": "dpl_AwzdTUBGQQtatjue2m7Xa2j8uHgg (syllabai-v2-cvzqhljag-syllab-ai.vercel.app)",
+    "created": "2026-10-19T14:13:07Z", "readyState": "READY",
+    "alias": "syllabai-v2.vercel.app aliasAssigned=true (v13 alias-lookup first-hand, createdAt byte-match)",
+    "source_traceability_gap": "deployment meta stamps main 0c06bb63d958dd4afbc34d56af0e4c6506907734, author 'Z User <z@container>', message a UUID — GitHub API: 'No commit found for SHA' — the source commit is NOT on origin/main (a lane-local/stage commit); the served code is pinned BEHAVIORALLY below instead"
+  },
+  "identity_verification_first_hand": [
+    "VERCEL_PAT: /v2/user -> syllabai-1403 (of record); api project prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ = syllabai-v2 accessible under team_ULL54qkhzKBmnKrpO6BD4mYX; sha256 fp16 == d254bbfaac004354 (of-record law)",
+    "GITHUB_PAT (NEW designation, fp12 a8ccee736aa8 != of-record 8c1fcf2c4f0d — a fresh delivery, rotation advised standing): /user -> SyllabAI; repo read verified",
+    "env census first-hand: the api project holds EXACTLY the of-record 9 envs; DATABASE_URL host == ep-ancient-cake-a52e4kfd/neondb == the Oct-1 of-record .neon_url survivor host — NO branch repoint, production DB of record"
+  ],
+  "data_plane_state_first_hand": {
+    "method": "read-only SELECT via the of-record DSN (env-API decrypt volatile path; in-memory 0600; copies shredded post-read; zero writes; default_transaction_read_only=on)",
+    "curriculum_versions": "8 rows: ACTIVE 4CH1-2017 (356840e6), ACTIVE 4PH1-2017 (5a9cd8fe), ACTIVE 4MA1-2016 (41a6e49a), ARCHIVED IAL-CHEM-2018, DRAFT x4 (GEN-INGEST, IGCSECHEMISTRY-INGEST, 4CH1CHEMISTRY-INGEST, 4CH0CHEMISTRY-INGEST)",
+    "reading": "THREE ACTIVE curricula — the operator's second-subject data order (134c physics apply + the 4MA1 order) HAS LANDED in prod; consequences: (a) the unscoped resolveActive refusal (single-owner forcing law, >=2 owners -> null) is the CORRECT serving behavior on ANY bundle — it explains the honest-empty bank views on unscoped asks; (b) the T-MIG-135 card's gap (5) 'prod has NO 4MA1 curriculum' is now STALE"
+  },
+  "verification_battery": {
+    "of_record_legs_1_to_12": [
+      "1/12 PASS health 200 {groups:[liveness,readiness],status:UP}",
+      "2/12 PASS cron law 401 unauthorized (the hub-seam bearer reason string)",
+      "3/12 PASS unknown /api/v1 path 401",
+      "4/12 PASS register probe 201 + accessToken (sz-135-verify-1792421491@example.invalid identity of record)",
+      "5/12 HONEST-EMPTY (law, not failure): unscoped bank questions 200 {resolvedNodes:[],total:0} — the 3-ACTIVE-owner refusal; the run-002 leg-5 chemistry pin is unproducible by DESIGN until a per-learner/per-course selector is used (disclosed, environment-state change since 08:10Z)",
+      "6/12 PASS review read seam 200 {summary:{due:0,scheduled:0,nextDueAt:null},cards:[]} honest-empty",
+      "7/12 PASS books route law 400 validation_failed missing courseId",
+      "8/12 PASS T-C20 chapters 200 EXACTLY 29",
+      "9/12 PASS shelf 200 [1] Jim Clark 383pp checksum d48020e0",
+      "10/12 PASS 133d route-existence discriminator {page:null,chapter:null}",
+      "11/12 PASS F-022 nearest-chapter page=12 -> u1:c1",
+      "12/12 PASS T-C20 no-state-leak 404 not_found"
+    ],
+    "t_mig_135c_decisive_discriminators": [
+      "P1 PROOF: GET /api/v1/tutor/bank/questions?topic=Rates%20of%20reaction&courseRef=4CH1-2017 -> 200 total=56 items=56, resolvedNodes[0] TOPIC 'Rates of reaction' 4CH1-S3-b (+SUBTOPIC 4CH1-3.15, 4CH1-PR-10) — the courseRef axis is CONSUMED and resolves the chemistry scope: the T-MIG-135 band SERVES (a 133d bundle strips the param and stays empty under the 3-owner refusal)",
+      "P2 fail-closed control: courseRef=GEN-INGEST (DRAFT) -> 200 total=0 (DRAFT != ACTIVE, refuse) PASS",
+      "P3 cross-corpus control: courseRef=4PH1-2017 + chemistry topic -> 200 total=0 (no cross-corpus leak) PASS",
+      "probe identity of record #2: sz-135-verify-1792421756@example.invalid (register 201; zero sessions; zero LLM)"
+    ],
+    "write_ledger": {
+      "probe_users": 2,
+      "probe_identities": "sz-135-verify-1792421491@example.invalid + sz-135-verify-1792421756@example.invalid (both register 201; zero sessions, zero review rows, zero cron fires)",
+      "neon_direct_writes": 0,
+      "llm_spend": 0,
+      "embedding_spend": 0
+    }
+  },
+  "verdict": "THE API REDEPLOY LEVER IS DISCHARGED OF RECORD — dpl_AwzdTUBGQQtatjue2m7Xa2j8uHgg has served the T-MIG-135 band (and the 133d/133f/134a legs) aliased on syllabai-v2.vercel.app since 14:13:07Z, verified 15 legs incl. the decisive 135c courseRef consumption proof; the precheck run-001's 'NOT already done' verdict was CORRECT at its fetch time (the firing landed 14:13:07Z, minutes before the precheck receipt's 14:15Z stamp)",
+  "residuals": [
+    "NEW DELTA SINCE THE FIRING: PR #204 (T-MIG-136a Maths B three-shaped seed grammar, c094494 merged 14:36:20Z — 23 min AFTER the firing) + the 4MB1 seed (136c operator gate) are NOT in the aliased bundle — the NEXT lever state, an operator decision (R0-AUTO's PR #204 receipt is again 'bookkeeping-only')",
+    "the firing lane's source commit 0c06bb63 is not on origin/main — traceability gap disclosed; the firing lane's own receipt of record has NOT landed yet (fetch-first at filing time: origin/main d29f5c8); if it never lands, this receipt's behavioral pinning stands as the serving proof",
+    "PAT rotation: the delivered GITHUB_PAT is a new designation (fp12 a8ccee736aa8); the VERCEL_PAT is the same of-record secret (fp16 match) — rotation still advised for both",
+    "135e/136c data-plane battery + the hub 133e/133g work: separate lanes"
+  ],
+  "secrets_hygiene": "tokens staged 0600 under /home/z/my-project/.creds (never printed/committed); env-API DSN copy in-memory only, /tmp copies shredded; battery capture chmod 600 local-only; zero secret values in this receipt",
+  "verification": {
+    "run_class": "SECOND-LANE VERIFICATION (zero deploys, zero writes; the sole prod interaction = 2 register probes + read-only surfaces + a read-only SELECT census)",
+    "artifacts": [
+      ".syllabai/receipts/T-MIG-135/api-redeploy-second-lane-verify-run-002-sz.json (this receipt)",
+      ".syllabai/worklog.md trace-1a1549c33da7b765 entry",
+      "local battery captures: scripts/sz_secondlane_battery.py + sz_battery_1792421491.json (lane-local, never committed)"
+    ]
+  }
+}
