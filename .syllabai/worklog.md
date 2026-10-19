@@ -8728,3 +8728,18 @@ Work Log:
 
 Stage Summary:
 - Verdict of record: Exam-Questions -> original-paper mapping is deliberately partial (63.3% data-level; ~64% of those archived); the gap classes are enumerated and attributable (no-provenance IAL-maths suite / foreign-board maths citations / Nov-2020-era archive gaps). Consistent with run-001. Next repo receipt = Task-59.
+
+---
+Task ID: FAVICON-r0 + SCOPE-PP-MOD24-r0 (operator trace 1a153a054b0723bd — "(a) fix the favicon in one commit, (b) scope the modular-24 past-papers acquisition" — the word given on both)
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: close QA-SWEEP-F2 (favicon 404) and produce the acquisition scope for the 16 modular-24 courses
+
+Work Log:
+- (a) FAVICON: public/logo.svg reused per asset-reuse law (z-breathe animation stripped for static render); canvas-rasterised 16/32/48 frames -> src/app/favicon.ico (3,290B, transparency preserved) + src/app/icon.svg; NO code change (Next file conventions emit both <link rel=icon> tags). Lane-side: local prod build exit 0, /favicon.ico 200 image/x-icon + /icon.svg 200 image/svg+xml on the standalone server, root HTML carries both links. Committed fe08d58, CI verify+hub 2/2, and LIVE ON PROD — /favicon.ico 200 with exact committed bytes + regression battery all-200 (root, index, viewer, corpus-pdf stream, archive page).
+- (a) OPERATIONAL DISCOVERY of record: syllabai-hub-v2 is now GIT-CONNECTED — GET /v6/deployments shows dpl_7bR5korhxe @ fe08d58 READY with githubCommitSha meta (plus b1be955/ab6ba58 deployments); the favicon push AUTO-DEPLOYED (no manual bake); the run-006 manual-bake playbook is superseded while the git link stands (prod carrier = latest main, CI-gated).
+- (b) SCOPE: spec codes of record from courses.json (4XBI1/4XCH1/4XPH1, 4XMAF/4XMAH, 4XSD1); corpus holds ZERO X-series specs (verified vs pastpapers-index.json). Pearson research (browser + their public Algolia index qualifications-uk_LIVE_master-content): modular IGCSEs first assessed May/June 2025; THREE series exist (June 2025, Nov 2025, June 2026); paper-code convention DISCOVERED = W-infix (4WPH1-1P/1PR/2P/2PR, 4WCH1-1C/1CR, 4WBI1-1B/1BR, 4WSD1-1B/… + 4WSD3 TBD); June-2025 series PUBLIC today (/dam/pdf/…2024/Exam-materials/), Nov-2025 + June-2026 still secure/silver login-gated; maths modular unit codes unpinned (Phase-0 census deliverable).
+- (b) PLAN of record: Phase 0 census (1 run) -> Phase 1 acquisition of the public June-2025 set into syllabai-pastpapers under the canonical layout + manifest.yaml provenance law (1-2 runs) -> Phase 2 hub mapping: index regen + 5 COURSE_SPECS entries using the EXISTING variants/tier filters only, zero route/code changes (1 run) -> Phase 3 scoped QA battery re-run + receipt (0.5 run). Total 3.5-4.5 runs; recurring unlock sweeps per future series. Risks filed (gated series, maths codes, corpus write access, copyright posture unchanged).
+- Zero prod mutations beyond the favicon commit's own auto-deploy; zero destructive action; both receipts .syllabai-only, fetch-first (absorbed b1be955 PASTPAPERS census mid-flight, consistent with its ANALYTIC-only posture), no force.
+
+Stage Summary:
+- F2 CLOSED of record: favicon live end-to-end (commit fe08d58 -> CI 2/2 -> prod carrier dpl_7bR5korhxe, exact bytes served). Hub prod posture changed: git-connected, push-to-deploy. (b) Acquisition scope FILED: 3.5-4.5 lane runs to take all 16 modular-24 courses from honest-empty to real archives (June-2025 public set first); awaiting the operator go. Residuals unchanged: PAT rotation, Vercel token rotation, Render disable, prj_D7vf third-account delete. LANE R0: IDLE.

@@ -1,0 +1,36 @@
+{
+  "receipt": "favicon-f2-closure-r0",
+  "family": "QA-SWEEP",
+  "operatorTrace": "1a153a054b0723bd",
+  "operatorOrder": "(a) fix the favicon in one commit (operator echo of the QA-SWEEP-r0 offer — the word given)",
+  "agent": "R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "generatedUtc": "2026-10-19T10:45:00Z",
+  "closes": "QA-SWEEP-F2 (/favicon.ico 404 — no icon declared)",
+  "change": {
+    "commit": "fe08d58",
+    "files": [
+      "apps/hub/src/app/icon.svg (886B — public/logo.svg reused as-is per asset-reuse law; z-breathe animation class + keyframes stripped for static at-rest render)",
+      "apps/hub/src/app/favicon.ico (3,290B — 16/32/48px frames packed from canvas-rasterised brand mark, transparency preserved)"
+    ],
+    "code_delta": "NONE — pure asset addition; Next App Router file conventions emit the <link rel=icon> tags automatically"
+  },
+  "validation": {
+    "laneSide": [
+      "local prod build exit 0; /icon.svg listed as static route in build log",
+      "standalone server: /favicon.ico 200 image/x-icon 3,290B; /icon.svg 200 image/svg+xml; root HTML carries BOTH <link rel=icon> tags (ICO sizes=48x48 + SVG sizes=any)",
+      "ICO frame check: {(16,16),(32,32),(48,48)}; 32px preview visually verified (dark tile + white Z, transparent corners)"
+    ],
+    "ci": "verify + hub 2/2 success @ fe08d58"
+  },
+  "liveVerification": {
+    "prodFavicon": "/favicon.ico 200 image/vnd.microsoft.icon 3,290B (exact bytes of the committed file)",
+    "prodIconSvg": "/icon.svg 200 image/svg+xml",
+    "prodHtmlLinks": "<link rel=icon href=/favicon.ico sizes=48x48> + <link rel=icon type=image/svg+xml href=/icon.svg>",
+    "regressionBattery": "root /courses /courses/ial-chemistry-17/past-papers /courses/ial-chemistry-17/past-papers/view/2026-06/WCH11-01?doc=qp /api/corpus-pdf/…/WCH11-01/qp.pdf /past-papers/pearson-edexcel/international-gcse/chemistry/4ch1 — ALL 200 on the new carrier"
+  },
+  "operationalDiscovery": {
+    "what": "the syllabai-hub-v2 Vercel project is now GIT-CONNECTED to SyllabAI/syllabai-v2 — the run-006-era link=None posture is gone",
+    "evidence": "GET /v6/deployments?projectId=prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl&target=production shows dpl_7bR5korhxe @ fe08d58 READY (plus dpl_ES7oCg5T6w @ b1be955, dpl_zCznq9mGKs @ ab6ba58) with githubCommitSha meta — my favicon push auto-deployed and the prod alias serves it; NO manual bake was needed",
+    "implication": "hub prod now moves on every main push (CI-green gate = the hub check); the run-006 manual-bake playbook is superseded for as long as the git link stands; future prod carrier = latest main SHA, verifiable from deployment meta"
+  }
+}

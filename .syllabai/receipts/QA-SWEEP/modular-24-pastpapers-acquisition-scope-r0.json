@@ -1,0 +1,69 @@
+{
+  "receipt": "modular-24-pastpapers-acquisition-scope-r0",
+  "family": "QA-SWEEP",
+  "operatorTrace": "1a153a054b0723bd",
+  "operatorOrder": "(b) scope the past-papers acquisition that would let the 16 modular-24 courses carry official PDF archives (operator echo of the QA-SWEEP-r0 offer — the word given)",
+  "agent": "R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "generatedUtc": "2026-10-19T10:45:00Z",
+  "mode": "SCOPE ONLY — zero downloads, zero repo writes beyond this receipt; execution is a separate operator go",
+  "theGap": {
+    "courses": "16 modular-24 courses (courses.json slugs *modular-24*): biology/chemistry/physics unit-1+unit-2, maths-a foundation+higher unit-1+unit-2, science-double-award bio/chem/phys unit-1+unit-2",
+    "specCodesOfRecord": {
+      "source": "apps/hub/content/courses.json (the repo itself carries them)",
+      "biology": "4XBI1", "chemistry": "4XCH1", "physics": "4XPH1",
+      "mathsA": "4XMAF/4XMAH (F/H tiers; unit paper codes pinned in Phase 0)",
+      "doubleAward": "4XSD1"
+    },
+    "corpusState": "syllabai-pastpapers index (103 specs / 5,281 papers / 10,535 files, treeSha fe4d8513) holds ZERO X-series specs — verified against pastpapers-index.json",
+    "consequence": "COURSE_SPECS has no entries to map -> corpusPapersForCourse returns [] -> honest empty state (the current by-design behavior, live-verified in QA-SWEEP r0)"
+  },
+  "availabilityResearch": {
+    "method": "Pearson qualifications site (browser) + Pearson's public Algolia index qualifications-uk_LIVE_master-content (app L639T95U5A, browser search key) — queries 4wph1/4wch1/4wbi1/4wma1/4wsd1/4xma1",
+    "facts": [
+      "Modular International GCSEs: first teaching Sept 2024, FIRST ASSESSMENT May/June 2025 (Pearson modular guide) — so the archive starts small by nature; units can be sat in ANY series",
+      "Three exam series already exist for the sciences: June 2025, November 2025, June 2026 (Physics modular page shows Exam materials (33) across those series: Unit 1P (9) / Unit 1PR (6) / Unit 2P (9) / Unit 2PR (6), formats PDF 31 + ZIP 2)",
+      "PAPER-CODE CONVENTION DISCOVERED: modular papers use a W-infix — 4WPH1-1P / 4WPH1-1PR / 4WPH1-2P / 4WPH1-2PR, 4WCH1-1C/1CR (+2-series), 4WBI1-1B/1BR (+2-series), 4WSD1-1B/1BR/… (+ a 4WSD3 prefix seen — pin its meaning in Phase 0); file names 4wph1-1p-que-20250523.pdf / -rms-… / -pef-…",
+      "June 2025 series is PUBLIC today: QPs under /content/dam/pdf/International-GCSE/{Subject}/2024/Exam-materials/4w{x}1-…-que-202505xx.pdf",
+      "November 2025 + June 2026 series are currently under /content/dam/secure/silver/… (Pearson login-gated) — they unlock publicly on Pearson's own release schedule (recent-series lock window)",
+      "Maths A modular: QP/MS files did NOT surface under a 4wma1 prefix in the census queries — exact unit/tier paper codes (candidates 4WMA1-1F/1H/2F/2H or 4XMA1-*) are a Phase-0 census deliverable via the maths modular coursematerials listing",
+      "ERs (examiner reports) exist per paper but are also partially secure-gated"
+    ]
+  },
+  "executionPlan": [
+    {
+      "phase": "0 — census",
+      "what": "Enumerate the full X-series file inventory per subject per series from Algolia + the five coursematerials listings; classify public vs secure; pin the Maths A modular paper codes and the 4WSD3 meaning; output a manifest (path, session, unit, tier, variant, qp/ms/er, bytes, public?) of record.",
+      "effort": "1 lane run (~1h)"
+    },
+    {
+      "phase": "1 — acquisition (public set)",
+      "what": "Download every PUBLIC QP+MS (ER optional) for the 4XBI1/4XCH1/4XPH1/4XSD1 (+ maths once codes pinned) June-2025 series; verify PDF magic + page counts; commit to SyllabAI/syllabai-pastpapers under the canonical layout past-papers/pearson-edexcel/international-gcse/{subject}/4x{code}/past-papers/2025-06/{PAPER_DIR}/ with the per-dir manifest.yaml provenance law (AI-IDENTIFIED, operator ratification pending — same posture as the existing 5,281).",
+      "effort": "1-2 lane runs (~60-100 files expected)",
+      "note": "secure/silver series (Nov 2025, June 2026) are NOT acquirable until Pearson unlocks them — recurring sweep per future results-release, or one-off via operator's Pearson account if desired"
+    },
+    {
+      "phase": "2 — hub mapping",
+      "what": "Regenerate src/data/pastpapers-index.json (bun scripts/build_pastpapers_index.ts); add 5 COURSE_SPECS entries keyed by unit/tier via the EXISTING variants filter: unit-1 courses -> variants [1P,1PR] (sciences) / [1F,1FR]+tier F (maths), unit-2 -> [2P,2PR] / [2F,2FR]+tier F|H; double-award splits by science variants exactly like the linear 4SD0 handling; NO viewer/route/code changes (dir naming 4WPH1-1P already parses unit/variant via the last-dash law).",
+      "effort": "1 lane run + CI",
+      "decisionPoint": "optional cosmetic: a 'Unit N' chip on modular paper rows (title today renders 'Paper 1P' from the variant) — product call, tiny"
+    },
+    {
+      "phase": "3 — verify + file",
+      "what": "Re-run the QA-SWEEP battery scoped to the 16 courses (viewer routes content-asserted, corpus-pdf streams, browser end-to-end on one paper per family); receipt + worklog; the 16 honest-empty states flip to live archives automatically.",
+      "effort": "0.5 lane run"
+    }
+  ],
+  "expectedOutcome": "16/49 honest-empty courses -> 16 with real official archives carrying the June-2025 series at first unlock (~2 unit papers + timezone-R per subject family; maths F/H x2 units), growing as Pearson publishes/unlocks further series; /past-papers archive browser gains the 5 new specs automatically (allArchiveSpecs derives from the index).",
+  "risks": [
+    "2 of 3 existing series (Nov 2025, June 2026) are login-gated today — first-landing archive is June-2025-only; recurring unlock sweeps needed (small)",
+    "Maths A modular paper codes unpinned — Phase 0 settles; if Pearson gated the maths series entirely, maths courses stay honest-empty one more cycle",
+    "corpus repo is ~4GB and operator-owned — acquisition commits go through the corpus repo's own discipline (manifest.yaml, no vendor duplication); lane needs corpus write access or hands the operator a ready bundle",
+    "copyright posture unchanged: Pearson-published past papers mirrored with AI-IDENTIFIED provenance + ratification pending, identical to the existing corpus law",
+    "follow-on opportunity (OUT of this scope): the same pipeline can backfill the session gaps the sibling census run-002 proved for LINEAR specs (Nov-2020 4BI1/WBI1x/4EC1, Jan-2023 4EC1, geography 2017-2019)"
+  ],
+  "totalEffort": "3.5-4.5 lane runs end-to-end; Phase 0+1 (census + June-2025 public acquisition) is the minimum viable unlock",
+  "consistencyNotes": [
+    "Consistent with QA-SWEEP r0 (ab6ba58): 16-course honest empty state, Mode-2 reconstructions already live",
+    "Consistent with PASTPAPERS examq-provenance-census run-002 (b1be955): modular-24 legacy extension was left ANALYTIC-only there; this scope is the execution path it anticipated"
+  ]
+}
