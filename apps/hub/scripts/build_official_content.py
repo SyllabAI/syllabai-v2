@@ -67,11 +67,11 @@ def item_codes(entry: dict, spine_codes: set[str] | None = None) -> list[str]:
     return out
 
 
-def rekey_course(slug: str) -> dict:
+def rekey_course(slug: str, content_root: Path | None = None) -> dict:
     """Build the rekeyed bundle in memory and return it with stats."""
     spine = load_json(REPO / "spines" / f"{slug}.json")
     att = load_json(REPO / "content-maps" / f"{slug}.json")
-    cdir = REPO / "content" / slug
+    cdir = (content_root or REPO / "content") / slug
     src_manifest = load_json(cdir / "manifest.json")
 
     spine_codes = {n["code"] for n in spine["curriculum"]["nodes"] if n["family"] == "SPEC_POINT"}
@@ -205,14 +205,14 @@ def rekey_course(slug: str) -> dict:
     }
 
 
-def check_course(slug: str, bundle: dict) -> list[str]:
+def check_course(slug: str, bundle: dict, content_root: Path | None = None) -> list[str]:
     """Hard validations for one rekeyed bundle. Returns list of failures."""
     problems: list[str] = []
     stats = bundle["_stats"]
     spine = load_json(REPO / "spines" / f"{slug}.json")
     spine_codes = {n["code"] for n in spine["curriculum"]["nodes"] if n["family"] == "SPEC_POINT"}
     att = load_json(REPO / "content-maps" / f"{slug}.json")
-    cdir = REPO / "content" / slug
+    cdir = (content_root or REPO / "content") / slug
 
     # 1. every attached code exists in the spine (or is an honest outside row)
     for iid, entry in att["items"].items():
@@ -274,9 +274,14 @@ def main() -> int:
     ap.add_argument("--course")
     ap.add_argument("--out", type=Path, help="materialize rekeyed bundle for --course")
     ap.add_argument("--check", action="store_true", help="validate (all courses or --course), no writes")
+    ap.add_argument(
+        "--content-root", type=Path, default=None,
+        help="override the source content/ root (default REPO/content); used by lane "
+             "builds whose sme-native bundles are staged outside the repo")
     args = ap.parse_args()
 
-    courses = sorted(p.name for p in (REPO / "content").iterdir() if p.is_dir())
+    content_root = args.content_root or (REPO / "content")
+    courses = sorted(p.name for p in content_root.iterdir() if p.is_dir())
     if args.course:
         if args.course not in courses:
             print(f"unknown course {args.course!r}", file=sys.stderr)
@@ -287,7 +292,7 @@ def main() -> int:
         if not args.course:
             print("--out requires --course", file=sys.stderr)
             return 2
-        bundle = rekey_course(args.course)
+        bundle = rekey_course(args.course, content_root)
         stats = bundle.pop("_stats")
         args.out.mkdir(parents=True, exist_ok=True)
         for name, data in bundle.items():
@@ -305,8 +310,8 @@ def main() -> int:
     agg = []
     failed = 0
     for slug in courses:
-        bundle = rekey_course(slug)
-        problems = check_course(slug, bundle)
+        bundle = rekey_course(slug, content_root)
+        problems = check_course(slug, bundle, content_root)
         stats = bundle["_stats"]
         row = {"course": slug, **{k: v for k, v in stats.items()}}
         if problems:
