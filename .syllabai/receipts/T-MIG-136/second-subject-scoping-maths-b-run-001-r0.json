@@ -1,0 +1,41 @@
+{
+  "schema": "syllabai.scoping-receipt/1.0",
+  "task": "T-MIG-136",
+  "run": "second-subject-scoping-maths-b-run-001-r0",
+  "created_utc": "2026-10-19T13:10:00Z",
+  "lane": "r0 (Super Z, zai-web web-6139ba42-da3d-435b-8237-f8623816ae6c)",
+  "operator_traces": ["1a153af0615041a1", "1a153dfab49abd9d"],
+  "fetch_first": "ff to e75307c BEFORE reads; T-MIG-135 (Maths A, PR #203 merge f9d49ae) found merged mid-run — this lane mirrors its product-loop shape for 4MB1, honors the lane split verbatim",
+  "precondition_landed_this_turn": {
+    "incident": "syllabai-resources main was corpus-clobbered by b0677d26 (76,831 -> 879 files) mid-session; independent repair of record landed first-hand (receipt T-MIG-133/band-133e-incident-corpus-restore-run-001-r0.json); origin/main = 8beecb97, tree 069ab324, 77,709 paths, raw serving re-verified",
+    "why_precondition": "the Maths B scoping depends on clobbered-off-main materials: Official-Specifications/igcse-maths-b/ (spec.json + spec PDF), SME-ExamQuestion/igcse-maths-b-16/spec_point_index.json"
+  },
+  "census": {
+    "bundle": "apps/hub/content/igcse-maths-b-16 (syllabai-demo.content-bundle/2.0, importSource SyllabAI/syllabai-resources main@c2fcd88)",
+    "curriculum": "119 nodes: 1 SUBJECT + 10 TOPIC sections (T1..T10) + 10 SUBTOPIC placeholders (igcse-maths-b-T<n>:SUB_ — single-subtopic form) + 98 SPEC_POINT (alnum '1A'..'9I', applicability papers 4MB1/01 + 4MB1/02, RULE_DERIVED) + 118 PART_OF edges",
+    "notes_flashcards": "notes 199, flashcards 1082",
+    "questions": "0 — the SME Exam-Questions bank for maths-b-16 is EMPTY (the examq-provenance-census run-002 'fully-empty banks' class)",
+    "pastpapers_archive": "NO 4MB specs in pastpapers-index.json (103 specs, none 4MB1) — no archived 4MB1 papers to source questions from",
+    "courses_json": "slug igcse-maths-b-16, level IGCSE, subject Maths, label 'Maths B', code 4MB1, status full",
+    "db_of_record": "prod Neon remains single-subject-plus (the 134 scoping census: 1 ACTIVE 4CH1-2017; T-MIG-135 landed maths-a CODE, prod apply still operator-gated; no 4MB1 dimension yet)"
+  },
+  "code_grammar_verdict": {
+    "history": "134a refused non-numeric spec codes (fail-closed); 135a widened to the maths dotted tail :SUB1.1 (dbCode 4MA1-S1-1.1); physics letter tail :SUBa byte-identical",
+    "maths_b_need": "THIRD shape: SUBTOPIC tail '_' + SPEC_POINT alnum tails ('1A' -> dbCode 4MB1-S1-1A)",
+    "plan": "additive grammar widening in bundle-seed.ts, collision laws unchanged, refusal message widened, pinned against the REAL maths-b bundle bytes; physics + maths-a fixtures re-proven byte-identical (136a)"
+  },
+  "four_subsystem_readiness": {
+    "cla": "root-subject-keyed by contract — serves 4MB1 off the 136a seed (SUBJECT root resolve)",
+    "learner_model": "node-keyed — serves off the 136a seed (98 SUBTOPIC nodes)",
+    "tutor": "graph arm serves off the seed; fetch-bank arm honestly EMPTY for 4MB1 (no questions); vector arm honestly EMPTY (no ingested maths-b chunks — notes 199 live in the bundle, not the DB documents/chunks pipeline; a maths-b notes ingest is a separate decision)",
+    "smart_mark": "question-keyed — DORMANT for 4MB1 (zero questions; nothing manufactured per rule 3); the 135b shim + driver + shared smeRef law are bundle-generic and ingest verbatim IF a maths-b SME bank ever lands"
+  },
+  "gates_and_blockers": [
+    "136c prod apply = OPERATOR GATE (Neon write order; COW-proof first) — 135's maths-a prod apply is ALSO still pending; a combined 4MA1+4MB1 order is an operator option",
+    "136e coreBridge flag = OPERATOR-DECLARED input (135d law)",
+    "the Student-BOOKS roll for maths-b = separate operator gate under 133e/133f; NO 4MB1 book source has been handed off (chemistry + physics sources both arrived via operator tmpfiles handoffs; none for maths-b in any repo)",
+    "syllabai-resources at 4.75GB vs GitHub's 5GB push hard limit — the next book intake will hit the wall (operator decision queued in the incident receipt)"
+  ],
+  "next": "band 136a (the three-shaped seed grammar + tests) is the next executable unit; then 136e code-side (minus the operator flag); then the operator gates",
+  "write_ledger": "zero prod writes, zero LLM, zero probe learners, zero Neon contact; credentials inline-only; .syllabai-only repo changes"
+}

@@ -1,0 +1,69 @@
+version: 1
+task:
+  id: T-MIG-136
+  title: "Second subject enablement (Maths B 4MB1) — the T-MIG-135 product-loop instantiated for igcse-maths-b-16 so tutor, smart mark, CLA and the learner model serve Maths B; the seed grammar goes THREE-SHAPED (the 4MB1 alnum spec-code alphabet)"
+  owner: "r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)"
+  status: IN_PROGRESS # scoping run-001 DONE @ this commit (receipt + this card); bands 136a-d staged; 136c = the operator prod-apply gate
+  claimed_at: "2026-10-19T13:05:00Z"
+  claimed_by_order: "operator trace 1a153dfab49abd9d: 'continue. Basically I want tutor, smart mark, cla, learner model to work with Maths B from now. Pilot is being expanded to more subjects' (and the prior trace 1a153af0615041a1: 'Physics is ongoing by another agent. You go along with Maths B')"
+  priority: P1
+  wave: second-subject
+  deps: []
+  lane_split: >
+    Physics 4PH1 = T-MIG-134 (untouched); Maths A 4MA1 = T-MIG-135 (merged PR #203,
+    code-only, prod-apply still operator-gated — the 135 shim + driver + shared smeRef
+    law are bundle-generic for verbatim reuse); MATHS B 4MB1 = this task. The
+    Student-BOOKS roll for maths-b stays a separate operator gate under the 133e/133f
+    law (the book source has NOT been handed off — chemistry and physics sources both
+    arrived via operator tmpfiles handoffs; no 4MB1 book package exists in any repo).
+  scoping_record: >
+    CENSUS OF RECORD (2026-10-19, this commit; zero writes): the igcse-maths-b-16 hub
+    bundle (syllabai-demo.content-bundle/2.0, importSource SyllabAI/syllabai-resources
+    main@c2fcd88) carries curriculum 119 nodes = 1 SUBJECT (igcse-maths-b-16, title
+    'Maths') + 10 TOPIC sections (igcse-maths-b-T1..T10: Number..) + 10 SUBTOPIC
+    placeholders (code igcse-maths-b-T< n>:SUB_ — the SME exporter's single-subtopic
+    form: every section IS its topic) + 98 SPEC_POINT with ALNUM official codes
+    '1A'..'9I' (digit+letter series per section, applicability papers 4MB1/01 +
+    4MB1/02, provenanceTier RULE_DERIVED) + 118 PART_OF edges + notes 199 +
+    flashcards 1082 + QUESTIONS 0 (the SME Exam-Questions bank for maths-b-16 is
+    EMPTY — the examq-provenance-census run-002 class 'fully-empty banks') + the
+    pastpapers archive carries NO 4MB specs (4MB1 papers not archived). courses.json
+    registry row of record: slug igcse-maths-b-16, level IGCSE, subject Maths, label
+    'Maths B', code 4MB1, status full. CODE-GRAMMAR VERDICT: the 134a seed refused
+    non-numeric spec codes; 135a widened to the maths dotted tail (:SUB1.1, dbCode
+    4MA1-S1-1.1); the 4MB1 bundle needs a THIRD shape — SUBTOPIC tail '_' (dbCode
+    4MB1-S1_) and SPEC_POINT alnum tails (dbCode 4MB1-S1-1A) — an additive grammar
+    widening, collision laws unchanged, pinned against the REAL bundle bytes with the
+    physics + maths-a fixtures re-proven byte-identical.
+  bands: >
+    (136a) the seed grammar goes THREE-SHAPED — bundle-seed.ts: the '_' SUBTOPIC tail
+    + the alnum SPEC_POINT tail beside the physics ':SUBa' and maths ':SUB1.1' forms
+    (dbCode 4MB1-S1-1A; the refusal message widened again; maths-b pins 1 SUBJECT /
+    10 TOPIC / 10 SUBTOPIC / 98 SPEC_POINT / 118 edges; physics + maths-a fixtures
+    re-proven byte-identical); (136b) QUESTIONS = HONEST DORMANCY: the maths-b SME
+    bank is empty and 4MB1 is not in the pastpapers archive — the 135b shim is
+    bundle-generic and will ingest verbatim IF/WHEN a maths-b bank lands; smart mark
+    + the learner-model QUESTION axis stay dormant for 4MB1 until then (disclosed,
+    not worked around — nothing manufactured, rule 3); the tutor fetch-bank arm
+    likewise empty for 4MB1; the tutor GRAPH arm + CLA + the learner-model NODE axis
+    serve off the 136a seed; (136c) PROD APPLY — operator-gated Neon write order (the
+    093/134c law: COW-proof first, then the operator order; the seed is idempotent +
+    conflict-fail-closed by construction; includes the license confirmation line for
+    prod use); NOTE: 135 (maths A) prod apply is ALSO still pending — the operator
+    may want ONE combined prod-apply order covering 4MA1 + 4MB1; (136d) the
+    four-subsystem zero-LLM battery on 4MB1 (CLA root resolve + subject isolation,
+    tutor graph-arm scoping + honest empty fetch-bank, learner state reads, smartmark
+    law probes on the dormancy boundary) + golden cases; (136e) hub widening per the
+    135d pattern: courses.json curriculumCode 4MB1-2016 + the operator-declared
+    coreBridge flag (OPERATOR INPUT REQUIRED — the flag is operator-declared by 135d
+    law), tutor chrome de-chemistries, the paper-question fetch-parser maths-b shapes
+    (4MB1 [12] — TWO papers, no tier letter: a THIRD fetch-parser form beside
+    4CH[01] [12]C and 4MA[01] [12][HF]).
+  execution_record: >
+    Scoping executed 2026-10-19 (traces 1a153af0615041a1 + 1a153dfab49abd9d):
+    fetch-first ff to e75307c BEFORE reads (T-MIG-135 merge found mid-run — lane
+    split honored); the corpus-restore incident repair of record landed first-hand in
+    the same turn (receipt T-MIG-133/band-133e-incident-corpus-restore-run-001-r0.json
+    — the restore is a PRECONDITION of this lane: Official-Specifications/igcse-maths-b/
+    + the SME indexes it depends on were clobbered off main mid-session). Write ledger:
+    zero prod writes, zero LLM, zero probe learners, credentials inline-only.

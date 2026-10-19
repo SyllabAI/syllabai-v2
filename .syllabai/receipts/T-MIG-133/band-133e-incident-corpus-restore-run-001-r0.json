@@ -1,0 +1,32 @@
+{
+  "schema": "syllabai.incident-receipt/1.0",
+  "id": "INCIDENT-RESTORE-1",
+  "created_utc": "2026-10-19T12:55:00Z",
+  "lane": "independent repair (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, operator trace 1a153dfab49abd9d)",
+  "classification": "cross-lane corpus clobber at syllabai-resources main; repair additive, non-force, verified",
+  "what_happened": {
+    "clobber_commit": "b0677d26 (T-MIG-133 band 133e run-001 'chemistry 4ch1 chapter/question/unit slices + manifest', trace 1a1539a3e3730c15, 2026-10-19 16:20 +0600)",
+    "mechanism": "the 133e lane committed from a book-workspace-initialized clone whose worktree carried ONLY its own working files; every other path in the 76,831-file corpus registered as a deletion: main went 76,831 -> 879 files (top-level student-book.pdf, docling_pages/, ocr_pages/, parsed/, pipeline/ + the 4ch1 book dir)",
+    "follow_ups_on_gutted_tree": ["c384eb4b (slice relocation repair, did not restore the corpus)", "f4000dfe (student-book.pdf home; same blob sha, zero content re-upload)"],
+    "prod_impact": "NONE on the past-papers archive (that corpus lives in SyllabAI/syllabai-pastpapers, untouched; the 10,535 raw origins serve from the other repo). The Student-Book serving paths (books/pearson-edexcel/international-gcse/chemistry/4ch1/) survived at the tip. What broke at main: Official-Specifications/ (103 spec PDFs + parsed graphs), SME-ExamQuestion/ SME-Flashcards/ SME-RevisionNotes/, graph/ (T-C42 stores incl. R25/R26 records), spec-links/, books/.../physics/4ph1/ (the committed 4PH1 source of T-PARSE-4PH1-1) and PARSE_STANDARD.md — blocking all corpus lanes (Parse Agent, CIE spec-links consumers, the T-MIG-136 Maths B lane)."
+  },
+  "repair_of_record": {
+    "method": "pure tree-plumbing union: base 495d736d (last intact corpus commit, 76,831 paths) overlaid with the live tip's paths (tip wins on the single collision books/.../4ch1/student-book.pdf — same blob sha both sides, f4000dfe's relocation honored); built via git mktree --missing — zero blob materialization, zero worktree checkout; non-force push; fetch-first race re-checks",
+    "verified_union_tree": "069ab3245d5aa3ac439756842f5149bb0c4fac5d (77,709 paths = base 76,831 + 878 tip-only adds)",
+    "delivery": "the single-commit push tripped GitHub receive-pack HTTP 500 (server repo 4,75GB vs the 5GB hard limit) TWICE (with http.postBuffer + HTTP/1.1); delivered instead as an 6-batch split sequence + a 3-chunk corrective sequence",
+    "landed_commits": {
+      "split_run_1": ["d351fc63af9c (batch 1: books 2,384 paths)", "3700d1dfa83c (batch 2: Official-Specifications + spec-links + scripts 34,303 paths)"],
+      "split_run_2": ["d351fc63af9c (7,997)", "3700d1dfa83c (7,938)", "7d9e48731818 (7,683)", "27d75a0682d3 (6,855)", "a9b89305a162 (7,739)", "0bd139c1a90b (4,315)"],
+      "corrective_run_3": ["3faa25d8129c (+13,000)", "03829baf4f50 (+13,000)", "8beecb97b4a9 (+12,212; final tree == verified union)"]
+    },
+    "defect_on_my_own_record_honestly_disclosed": "split runs 1-2 built each batch tree from the RUN-START tip instead of the previous commit's tree, so intermediate pushes regressed earlier batches while batch counters reported progress; caught by the final-tree assertion (c3fee39b != 069ab324); fixed forward by the cumulative corrective sequence (each tree = live tree + chunk), final tree verified == the planned union; NO force push at any point; history carries the honest sequence",
+    "post_state": "origin/main = 8beecb97, tree 069ab324 (77,709 paths); raw serving re-verified 200/206: PARSE_STANDARD.md, Official-Specifications/igcse-maths-b/spec.json, books/.../physics/4ph1/source/student-book.pdf, books/.../4ch1/manifest.json, SME-ExamQuestion/igcse-maths-b-16/spec_point_index.json",
+    "left_as_is": "the 133e lane's root-level workspace residue (docling_pages/, ocr_pages/, parsed/, pipeline/ at repo root) — that lane's working files, to be relocated by its own intent (c384eb4b); untouched by this repair",
+    "note_for_the_133e_lane": "your workspace history is rooted in the clobbered tree: FETCH and merge onto the restored main BEFORE the next commit, and never 'git add .' from a workspace-initialized clone — the corpus must never register as deletions again"
+  },
+  "operator_queue_additions": [
+    "syllabai-resources is at 4.75GB vs GitHub's 5GB push hard limit — the next book intake (Maths B source + parse artifacts, ~100-300MB) will hit the wall; needs an operator decision (move page-artifact bulk to the pastpapers-style repo or LFS, or a fresh archive repo) BEFORE T-MIG-133 133e/133f and T-MIG-136 book bands",
+    "PAT rotation remains CRITICAL-OVERDUE (this lane added several transits)"
+  ],
+  "write_ledger": "repo commits only (restore of record); zero prod writes, zero Neon contact, zero LLM, zero probe learners; credentials inline-only, token never printed"
+}
