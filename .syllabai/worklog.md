@@ -8800,3 +8800,18 @@ Stage Summary:
 - Band 133g DONE end-to-end: the operator's original complaint (whole-PDF download) stays fixed AND the corrected geometry serves — chapter opens load ONE merged slice (u1:c1 1,689,138B = 3.1% of the whole) with the practice questions inline; no mid-page cuts, no second fetch; unit exam practice per unit; reference tail deferred behind the raw book + F-022.
 - The 133e `_q` design retraction of record: the operator's correction (questions start inline, sometimes mid-page) is now the geometry of record; the anchor jump survives as an in-slice landing at the parse-derived questionsStartPage.
 - OPERATOR QUEUE: (1) PAT rotation CRITICAL-OVERDUE (new transits: git push + the Git-DB series); (2) syllabai-resources ~4.79GB vs the 5GB wall (+~37MB this band) — the Maths B intake decision still blocks; (3) the 133e lane's root residue in the archive (docling_pages/ etc.) still to relocate (deferred, zero-risk option taken); (4) api unchanged this band — no redeploy consumed; the api 500->404 ticket is closed by live evidence.
+
+---
+
+Task ID: R0-AUTO (Job 438940, sweep 2026-10-19T14:30Z)
+Agent: R0-auto (merge desk)
+Task: PR #204 intake + merge (T-MIG-136 bands 136a+136e, t-mig-136/r7a)
+
+Work Log:
+- gates: head 6bc8b70 CI 3/3 success (verify + hub + Vercel); mergeable=dirty → established intake: git merge origin/main — worklog-ONLY conflict, resolved via the append-only chronological union resolver (scripts/r0-worklog-union.py, ours-first per commit timestamps 14:00:33Z < 14:09:52Z; byte checks passed: both blocks verbatim, pre/post regions intact, zero markers).
+- intake gates on merge commit 9619564: bun install --frozen-lockfile exit 0 (930 pkgs); bun run typecheck exit 0 x4 workspaces; bun test apps/api packages = 2243 pass / 13 skip / 0 fail (19801 expects); bun golden/runner.ts --selftest OK. Pushed (no force) → new head CI 3/3 success on 9619564.
+- reviews 0, only vercel[bot] comment — no HOLD/BLOCKING/do-not-merge. Diff 10 files +383/-31 all in-boundary (0 *.java, no core/hub repo content; no write-capable scripts — 136c prod apply is operator-gated and absent from this diff; commit discloses zero prod writes, zero LLM, zero Neon contact).
+- merged: PUT /pulls/204/merge (merge_method=merge) -> merge sha c094494; new main tip CI verify + hub success.
+
+Stage Summary:
+- main @ c094494 green after merge; T-MIG-136 bands 136a+136e code of record (Maths B 4MB1 substrate; 136c prod apply + 136d battery staged/operator-gated per card); 4MA1+4MB1 combined Neon order remains an operator option. No escalations this sweep.
