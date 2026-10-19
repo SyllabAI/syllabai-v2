@@ -8981,3 +8981,20 @@ Stage Summary:
 - The operator's u1 report is fixed SYSTEMICALLY, not per-page: the v2 geometry + boundary laws are page-content-verified, machine-checked, and battery-asserted on live surfaces; all 4 unit-exam slices, 9 shifted chapter slices, and the u2 p207 / u4 p329 carryovers are corrected; 33 slices stream by sha-verified r2/v1 names through the immutable edge.
 - Ledger: archive a4ce9f5 · Neon 9 sanctioned rows (preflight-guarded, COW-proofed) · hub 3a05332 + bake · zero LLM, zero manual deploys, no credential values printed.
 - Open: hub notFound 200-status ticket (pre-existing); stale-branch cleanup lever; reference-area slicing (329-383) still deferred by law.
+
+---
+Task ID: 61
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, trace 1a15588eb5f3df69)
+Task: Operator "draft the CIE course-catalog scope card next, so the 2,259 Cambridge papers get real course pages" — the card drafted and filed of record; receipt CIE-INTEGRATION/cie-course-catalog-pastpapers-scope-r0.json.
+
+Work Log:
+- Fetch-first: ff 5c2b06c -> f7f9404 (133i boundary-correction wave) BEFORE any read; worklog tail re-read; highest numeric Task ID 60.
+- Prior art absorbed first: the sibling scope receipt cie-frontend-integration-scope-r0 (trace 1a1549ec230c5f95) + the Phase-0 roster manifest (401a05e) — discovered its past-papers premise is STALE ('corpus holds ZERO CIE specs') vs census run-001's first-hand 2,259 papers; correction filed as premiseCorrectionOfRecord, scoped to that one point, all other sibling scopes respected.
+- Course set pinned from the verified Phase-0 join matrix: 11 roster slugs verbatim; per-component filters derived from index facts (9709 P1 67/P2 68/P3 68/P4 68/P5 68/P6 68/P7 27 reconciles to 434; 0580 core 134/extended 134 reconciles to 268); coverage 95.8% strict, 98.8% with the D1 pure-2 anticipation row.
+- Rendering gaps verified of record: G1 (buildEntry CIE branch — 'Unit P' title + wrong ref format), G2 (specTitle lowercase 'ial chemistry 9701' — LIVE-grepped from the archive browser SSR h1 today), G3 ('Edexcel' hardcode in the course past-papers title), G4 (durations -> honest editable estimate).
+- Skeleton-bundle law pinned as A0 (no empty-bundle precedent exists — smallest real bundle carries 7 notes; zod-contract derivation + build-green proof gate); content-map independence of the past-papers surface verified (surface reads registry + COURSE_SPECS + index only).
+- 4 operator decisions filed with recommendations + defaults (pure-2 row / P7 disposition / 2026 sessions / sequencing-vs-sibling).
+- Write ledger: THIS receipt only (scope-only mode); zero code/content/DB writes; zero LLM; zero Neon; no SME live-site contact; census scripts persisted lane-side.
+
+Stage Summary:
+- The card is of record: 11-12 CIE courses can launch paper-backed (2,164-2,232 of 2,259 papers) in ~2.5-3.5 hub-only lane runs; the sibling resource wave then attaches to live slugs (44-row wave shrinks to 33 + fills). Awaiting the operator go on D1-D4 (or 'fire it' on the defaults). Next repo receipt = Task-62.

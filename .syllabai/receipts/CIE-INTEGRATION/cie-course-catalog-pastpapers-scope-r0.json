@@ -1,0 +1,97 @@
+{
+ "receipt": "cie-course-catalog-pastpapers-scope-r0",
+ "family": "CIE-INTEGRATION",
+ "operatorTrace": "1a15588eb5f3df69",
+ "operatorOrder": "'draft the CIE course-catalog scope card next, so the 2,259 Cambridge papers get real course pages' — the word given on the paper-accessibility census run-001 offer (Task-60, 5c2b06c)",
+ "agent": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)",
+ "generatedUtc": "2026-10-19T19:08:53Z",
+ "dateConvention": "receipt filename carries the lane-local (Asia/Dhaka) date 2026-10-20, consistent with this lane's run-001 receipt of the same session",
+ "mode": "SCOPE ONLY — zero code changes, zero content writes, zero DB writes; execution is a separate operator go. This receipt IS the drafted card the operator ordered.",
+
+ "premiseCorrectionOfRecord": {
+  "supersedes": "cie-frontend-integration-scope-r0.json (operator trace 1a1549ec230c5f95) — two of its claims, on THIS one point only",
+  "staleClaim1": "theGap.pastPapers: 'syllabai-pastpapers archive = 103 specs ALL Pearson-Edexcel — ZERO CIE specs'",
+  "staleClaim2": "risks/expectedOutcome: 'CIE past papers are NOT in the archive — past papers tab honest-empty at launch; acquisition is a separate scope'",
+  "evidenceOfRecord": "paper-accessibility-census-run-001 (Task-60, 5c2b06c, scripts/paper_access_census.py) first-hand: the archive holds 6 cambridge-international specs / 2,259 paper dirs / 2,259 listable (every dir has BOTH qp and ms), present since before corpus fe4d8513 and current at corpus HEAD 3063c7169c16 ('modular-24 wave 1'); LIVE row-perfect probes on the archive browser (mathematics-2018 sibling pages verified; cambridge 9701 page badge 379 == index 379, 379/379 distinct rows, raw CIE QP HTTP 200)",
+  "consequence": "the CIE courses do NOT launch past-papers honest-empty — they can launch PAPER-BACKED, day one, with 2,259 official QP+MS pairs. The 2,259-paper acquisition the sibling receipt scoped as 'separate future work' is already DONE upstream; what remains is catalog + wiring.",
+  "siblingScopesRespected": "everything else in the sibling receipt (spines, content-maps, rekey, DB plane, 44-row resource integration) stands UNCHANGED — this card is the past-papers/catalog dimension it explicitly deferred."
+ },
+
+ "holdingsOfRecord": {
+  "source": "apps/hub/src/data/pastpapers-index.json @ hub tip (regen of corpus 3063c7169c16, PR #202 a61b4f7) — verified current against corpus HEAD at census run-001",
+  "specs": [
+   { "specKey": "cambridge-international/ial/chemistry/9701", "papers": 379, "sessions": 29, "span": "2016-2025", "qp": 379, "ms": 379, "er": 0, "components": "1-5 (tz variants; extra 3x variants incl. one-off 37/38)" },
+   { "specKey": "cambridge-international/ial/physics/9702", "papers": 379, "sessions": 29, "span": "2016-2025", "qp": 379, "ms": 379, "er": 0, "components": "1-5 (same shape as 9701)" },
+   { "specKey": "cambridge-international/ial/mathematics/9709", "papers": 434, "sessions": 29, "span": "2016-2025", "qp": 434, "ms": 434, "er": 0, "components": "P1 67 / P2 68 / P3 68 / P4 68 / P5 68 / P6 68 / P7-legacy 27 (reconciles to 434 exactly)" },
+   { "specKey": "cambridge-international/igcse/chemistry/0620", "papers": 398, "sessions": 29, "span": "2016-2025", "qp": 398, "ms": 398, "er": 0, "components": "1-6" },
+   { "specKey": "cambridge-international/igcse/physics/0625", "papers": 401, "sessions": 29, "span": "2016-2025", "qp": 401, "ms": 401, "er": 0, "components": "1-6" },
+   { "specKey": "cambridge-international/igcse/mathematics/0580", "papers": 268, "sessions": 29, "span": "2016-2025", "qp": 268, "ms": 268, "er": 0, "components": "P1+P2 core 134 / P3+P4 extended 134 (reconciles exactly)" }
+  ],
+  "totals": { "specs": 6, "papers": 2259, "listable": 2259, "qpMsPairs": 2259, "erReports": 0 },
+  "laws": "no specimen sessions for CIE (29 real sessions each); March/June/Nov sessions all present; no 2026 sessions yet (2026 CIE papers are a CORPUS-ACQUISITION scope, not a catalog item — same unlock pattern as the modular-24 wave); zero both-missing dirs; zero parse hazards (all dirs end -QP-<nn>)."
+ },
+
+ "courseSetOfRecord": {
+  "alignmentLaw": "course slugs follow the Phase-0 roster manifest (cie-phase0-roster-manifest-r0.json, deliverable1_bankSpecJoin, verified 44->33) — the resource-integration waves later attach notes/EQ to THESE EXACT slugs; zero split subjects, zero future renames",
+  "courses": [
+   { "slug": "cie-a-level-chemistry-25", "code": "9701", "level": "A-Level", "specFilter": null, "papers": 379 },
+   { "slug": "cie-a-level-physics-25", "code": "9702", "level": "A-Level", "specFilter": null, "papers": 379 },
+   { "slug": "cie-a-level-maths-20-pure-1", "code": "9709", "level": "A-Level", "specFilter": "component 1 (Paper 1 Pure)", "papers": 67 },
+   { "slug": "cie-a-level-maths-20-pure-3", "code": "9709", "level": "A-Level", "specFilter": "component 3 (Paper 3 Pure)", "papers": 68 },
+   { "slug": "cie-a-level-maths-20-mechanics", "code": "9709", "level": "A-Level", "specFilter": "component 4 (Paper 4 Mechanics)", "papers": 68 },
+   { "slug": "cie-a-level-maths-20-probability-and-statistics-1", "code": "9709", "level": "A-Level", "specFilter": "component 5 (Paper 5)", "papers": 68 },
+   { "slug": "cie-a-level-maths-20-probability-and-statistics-2", "code": "9709", "level": "A-Level", "specFilter": "component 6 (Paper 6)", "papers": 68 },
+   { "slug": "cie-igcse-chemistry-23", "code": "0620", "level": "IGCSE", "specFilter": null, "papers": 398 },
+   { "slug": "cie-igcse-physics-23", "code": "0625", "level": "IGCSE", "specFilter": null, "papers": 401 },
+   { "slug": "cie-igcse-maths-25-core", "code": "0580", "level": "IGCSE", "specFilter": "components 1-2 (core tier)", "papers": 134 },
+   { "slug": "cie-igcse-maths-25-extended", "code": "0580", "level": "IGCSE", "specFilter": "components 3-4 (extended tier)", "papers": 134 }
+  ],
+  "coverage": { "strictRoster11": "2,164 of 2,259 papers on course pages (95.8%)", "withPure2AnticipationRow": "2,232 of 2,259 (98.8%)", "unclaimed": "9709 Paper 2 (68, AS Pure 2 — roster has pure-1 and pure-3 but NO pure-2 bank) + 9709 component-7 (27, legacy 2016-2019 syllabus paper; title to be verified from a QP cover at build time — no modern SME bank can claim it)" }
+ },
+
+ "renderingGapsOfRecord": [
+  { "id": "G1", "what": "pastpapers-shared ialUnitTitle() on CIE A-level dirs: buildEntry's last-dash parse yields unit '9701-S25-QP' -> title falls to 'Unit P'; ref renders '9701-S25-QP/11' instead of '9701/11'", "evidence": "code-read of buildEntry/ialUnitTitle @ tip; CIE dirs all match '<syllabus>-S|W|M<yy>-QP-<nn>'", "fix": "CIE branch in buildEntry: parse syllabus code + component + variant, title 'Paper <n>', ref '<code>/<n>', variant chip for tz letters; add CIE component->paper-name map (9701/9702/9709/0620/0625/0580) built from the QP covers at build time" },
+  { "id": "G2", "what": "specTitle() renders CIE quals lowercase — LIVE on the archive browser today: h1 'ial chemistry 9701' (grep of /past-papers/cambridge-international/ial/chemistry/9701 SSR HTML)", "fix": "map qual 'ial'->'IAL' / 'igcse'->'IGCSE' (or board-aware 'Cambridge IAL') in specTitle; fixes 6 archive pages AND 6+ course pages" },
+  { "id": "G3", "what": "course past-papers page title hardcodes 'Edexcel': title={`Edexcel ${meta.level} ${meta.label} Past Papers`} — false for CIE courses", "fix": "board-aware title from the bundle curriculum.board ('Cambridge International'); CourseHeader default crumb 'Edexcel' likewise board-aware" },
+  { "id": "G4", "what": "OFFICIAL_DURATIONS holds no CIE entries -> every CIE mock shows the editable-estimate state", "fix": "acceptable at launch (honest estimate label is the designed state); optional follow-up pins CIE durations from QP covers" }
+ ],
+
+ "executionPlan": [
+  { "phase": "A0 — preflight", "what": "skeleton-bundle shape proof: derive minimal-but-valid 7-file bundles (manifest/curriculum/concept-graph/notes/questions/flashcards/learner-sim, counts 0) against the zod contracts — NO empty-bundle precedent exists (smallest real bundle = 7 notes), so this phase proves the honest-empty bundle renders before any fleet run; verify component-7 paper title from one QP cover", "effort": "0.5 lane run" },
+  { "phase": "A1 — rendering fixes", "what": "G1+G2+G3 in hub code + unit tests; tsc/eslint/next build green; archive browser h1 re-verified", "effort": "0.5 lane run" },
+  { "phase": "A2 — catalog + bundles", "what": "11 roster-aligned registry rows (+1 optional pure-2 anticipation row per operator decision D1) with board 'Cambridge International', status 'full', no coreBridge/curriculumCode (Phase-0 posture pins adopted verbatim); 11-12 skeleton bundles committed; per-course content-maps NOT required for this phase (past-papers surface is content-map-independent — verified: the surface reads only registry + COURSE_SPECS + index)", "effort": "0.5-1 lane run" },
+  { "phase": "A3 — COURSE_SPECS wiring", "what": "12 mapping entries (specFilter variants for 9709 components via the units-filter law keyed on component tens-digit; 0580 tier filter on component 1-2 vs 3-4; sciences unfiltered), build, deploy", "effort": "0.5 lane run" },
+  { "phase": "A4 — verification battery + file", "what": "the Task-60 method as the acceptance gate: computed corpusPapersForCourse() vs LIVE SSR unique-row diff per course, zero-tolerance exact equality; badge==computed; G1/G2/G3 regression probes; archive browser unchanged 108/108; receipt + worklog", "effort": "0.5 lane run" }
+ ],
+
+ "postureGates": {
+  "adoptedFromPhase0": "status 'full'; curriculumCode+coreBridge ABSENT; FLASHCARD_SYNC_COURSES unchanged; ADR-029 core questions gate OFF for CIE (identical to the sibling receipt's pins — one catalog, one posture)",
+  "honesty": "AI-IDENTIFIED provenance badge stays on every CIE surface (operator ratification pending, same as all corpus surfaces); CIE rows render no interactive-play promise (skeleton banks = honest 'not parsed yet' chips); Mock timer = editable estimate until G4 follow-up",
+  "levelVocabulary": "hub rows use 'A-Level'/'IGCSE' (free-string UI verified by Phase-0); the sibling receipt's 44-row wave pinned 'A-LEVEL' — reconcile to one string at whichever wave lands second (flagged, cosmetic)"
+ },
+
+ "operatorDecisions": [
+  { "id": "D1", "question": "create the 12th course cie-a-level-maths-20-pure-2 as a roster-anticipation row (name follows the roster law exactly; SME has pure-1/pure-3 banks but no pure-2 bank)?", "recommendation": "YES — +68 papers (coverage 95.8% -> 98.8%), zero collision risk (the resource wave would reuse the same slug when SME ships the bank), cost = one honest-empty-EQ course", "default_if_unanswered": "YES" },
+  { "id": "D2", "question": "9709 component-7 (27 legacy 2016-2019 papers) disposition?", "recommendation": "archive-browser-only with a 'Legacy syllabus' badge law where the surface allows; no modern bank can claim it; title verified from QP cover at A0", "default_if_unanswered": "as recommended" },
+  { "id": "D3", "question": "2026 CIE sessions (not yet in the corpus)?", "recommendation": "out of scope here — file a corpus-acquisition scope (the modular-24 SCOPE-PP pattern) as a separate operator go; the catalog wiring is acquisition-agnostic and picks new sessions up on the next index regen", "default_if_unanswered": "as recommended" },
+  { "id": "D4", "question": "sequencing vs the sibling 44-row resource wave?", "recommendation": "run this card first (4 phases A0-A4 are hub-only, zero DB, zero resources-repo contact); the sibling's Phases 1-3 then attach resources to ALREADY-LIVE courses — their Phase 3 (44 rows) reduces to 33 rows + bundle fills", "default_if_unanswered": "as recommended" }
+ ],
+
+ "expectedOutcome": "catalog 49 -> 61-62 courses; 11-12 CIE courses live with full official past-paper archives (2,164-2,232 QP+MS pairs on course pages, every row viewer/mock-ready, side-by-side split + timed mock + honest interactive chips); archive browser cross-links ('Open hub archive') light up on all 6 CIE spec pages; G1-G3 rendering debt retired; the sibling resource wave inherits live slugs and shrinks by 11 rows",
+ "risks": [
+  "skeleton bundles are a NEW shape (no empty-bundle precedent) — A0 exists precisely to fail fast on zod-contract surprises before any fleet run",
+  "CIE component->paper-name map (G1) must be built from QP covers, not assumed — one-off variants (9701 37/38) and the legacy 9709 component-7 need cover-verified titles",
+  "the stale-premise correction touches the sibling receipt of another lane — filed as premiseCorrectionOfRecord, scoped to the past-papers point ONLY; no other claim touched",
+  "index-regen cadence law (Task-60 standing dependency) applies to future CIE corpus commits exactly as to Pearson",
+  "volume: +12 registry rows / +12 skeleton bundles is small (text-only), but the 2,259-paper surfaces add ~3-4 MB of server-side index consumption per CIE course render — bounded, same class as the existing 108-spec browser"
+ ],
+ "totalEffort": "~2.5-3.5 lane runs end-to-end (A0 0.5 / A1 0.5 / A2 0.5-1 / A3 0.5 / A4 0.5); zero DB writes, zero Neon contact, zero resources-repo contact — hub-plane only",
+ "consistencyNotes": [
+  "Consistent with cie-frontend-integration-scope-r0 + cie-phase0-roster-manifest-r0: same family, same receipt form (modular-24 SCOPE-PP pattern), same posture pins; supersedes ONLY the two stale past-papers claims, with evidence",
+  "Consistent with paper-accessibility-census-run-001 (Task-60): this card operationalizes its CIE recommendation; all holdings numbers reconcile to that census (2,259 == 379+434+379+398+268+401)",
+  "Consistent with the modular-24 launch precedent: courses may go live past-papers-first with honest-empty other surfaces (the 14/16 modular pattern), bundles committed before any DB plane",
+  "Consistent with the honest-provenance law: no sourcePaper fabrication anywhere — CIE skeleton banks stay all-NULL until real parse work exists; AI-IDENTIFIED badge unchanged",
+  "Consistent with the double-award scope-purity ruling: out-of-scope components (P2/P7 under strict filters) stay reachable via the archive browser per-spec page rather than being force-fit onto a course"
+ ],
+ "writeLedger": "THIS receipt only (scope-card draft, .syllabai-only); zero code/content/DB writes; census scripts persisted lane-side (scripts/{paper_access_census,cie_corpus_facts}.py)"
+}
