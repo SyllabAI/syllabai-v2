@@ -1,0 +1,38 @@
+{
+  "card": "T-MIG-133",
+  "receipt": "band-133d-run-004-third-instrument-verify-r0",
+  "lane": "main (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)",
+  "created_at_utc": "2026-10-19T09:2xZ",
+  "operator_trace": "1a1535d19bbc2ccd 'Gemini-key embeddings backfill, but first check other agent's work'",
+  "order": {
+    "words": "Gemini-key embeddings backfill, but first check other agent's work",
+    "discharge": "the check-first clause found the backfill ALREADY EXECUTED OF RECORD (band-133d-run-001-r0: 823/823 via the frozen embed path on CI egress; the region law — Gemini embedding is IP-region-gated, the sandbox cannot embed) AND the 133d serving lever already discharged (band-133d-api-redeploy-run-002-r0: dpl_Daps9E6ntWKt1xWaEpXWRReZkQgu READY, 12/12 battery) AND a second-lane verification already of record (band-133d-run-003-second-lane-verify-r0). This lane's action class = THIRD-INSTRUMENT VERIFY-ONLY, adding the DB-side legs no prior receipt carried first-hand (runs 001/002 verified via CI + serving probes; run-003 via unauth GETs — none read the vector store)"
+  },
+  "sandbox_rollback_disclosure": "the recurring rollback class hit between turns again: gh_repos/syllabai-v2, .creds/ (neon_pat + derived URI) and the redeploy-exec lane tooling were wiped; recovery = fresh shallow clone at tip 7d19dbe (ghp_ remote-URL law), Neon org key re-staged 0600 from the handoff record, the of-record DATABASE_URL re-pulled via the Vercel env API list-endpoint decrypt (the run-004 precedent; vcp_ fingerprint d254bbfaac004354 verified first, inline-only, unset after, zero disk persistence of the token)",
+  "verification": {
+    "run_class": "zero-write: every probe a read-only SELECT or unauth GET; the cosine smoke re-uses one stored vector as its own query",
+    "credentials": "Neon access = the api's own of-record DATABASE_URL (role syllabai_v2_app_w2r2), staged 0600 outside every repo, never printed; Vercel token inline-only (fingerprint-verified == of-record d254bbfaac004354 — flagged AGAIN unrotated); the Gemini key read-only presence-confirmed on the env inventory (SYLLABAI_EMBEDDING_GEMINI_API_KEY present; never read, never staged — the backfill needs no embedding spend)",
+    "db_legs_7_of_7_PASS": [
+      "1 document of record: e6c0db50 v1 kind=TEXTBOOK state=VALIDATED (the flip held)",
+      "2 823/823 embedded: total=823 embedded=823 stamped=823 models=1(gemini-embedding-001) embed_rev=2..2 (== vector-arm.ts EMBED_REV=2, ChunkVectorRepository.java:64 law)",
+      "3 embedded_at stamped: window 2026-10-19 00:27:11Z .. 00:28:52Z (postdates CI run 39180126600 success 00:17:40Z — the prod-apply run of record)",
+      "4 vector_dims=768 (the gemini-embedding-001 law)",
+      "5 subject-binding correction held: all 823 chunks bound to subjects.code=4CH1, non-4CH1=0",
+      "6 the 4CH1/ACTIVE law: the bound subject's curriculum_version = 4CH1-2017 status=ACTIVE, the ONLY ACTIVE cv row",
+      "7 HNSW scope-law smoke: self-hit score 1.000000 through the vector-arm s2-branch scope (embed_rev=2 + subject-in-CV + document VALIDATED) — the retrieval substrate SERVES"
+    ],
+    "ci_legs": "runs of record 39177630691 (failure — COW-proof leg 1), 39178116970 (failure — COW-proof leg 2), 39180126600 (success — the prod apply, 00:17:40Z) read first-hand via the GitHub API; the two COW-leg failure conclusions are the protocol's throwaway-proof runs, the prod apply is run 3 (the yaml's 'COW-proofed then prod-applied' triple; the DB state is the ground truth of record and is GREEN)",
+    "live_legs_PASS": [
+      "health 200 {groups:[liveness,readiness],status:UP} on the 133d carrier",
+      "shelf GET /api/v1/content/books?courseId=igcse-chemistry-19 -> 200 with the pilot book entry (the flip still serves through the NEW bundle)",
+      "chapters GET /api/v1/content/books/e6c0db50-0f84-55de-b50c-e4d49285cd6d/chapters -> 200",
+      "T-C20 404 law: unknown book -> 404 not_found (no state leak)"
+    ]
+  },
+  "write_ledger": {
+    "data_plane": "zero writes, zero LLM spend, zero embedding spend, zero probe learners (all probes read-only SELECT or unauth GET)",
+    "repo": "this receipt + the worklog entry, .syllabai-only, fetch-first, no force",
+    "credentials": "vcp_ + napi_ inline/staged per the standing laws, never printed, never committed"
+  },
+  "verdict": "BAND 133d DATA LEG CONFIRMED GREEN BY THE THIRD INSTRUMENT, FIRST-HAND: 823/823 gemini-embedding-001 vectors at embed_rev=2 (== the code's EMBED_REV), 768 dims, 4CH1/ACTIVE binding, HNSW scope-law self-hit 1.0, the flip + shelf + T-C20 laws live through the 133d carrier dpl_Daps9E6ntWKt1xWaEpXWRReZkQgu. Bands 133a/133b/133c/133d stand LIVE END-TO-END of record. Remaining operator gates: 133e (roll to remaining books), PAT/Neon credential rotation (fingerprint STILL d254bbfaac004354 this hour)."
+}
