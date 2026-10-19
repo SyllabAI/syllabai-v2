@@ -8875,3 +8875,17 @@ Work Log:
 
 Stage Summary:
 - Books UX of record: chapters (study material + practice questions inline, the 133g geometry) open from the numbered TOC rows; each unit's list ends with its unnumbered "Unit N exam practice" row; the viewer carries no practice chrome. Register additions: the hub notFound-status lever (FINDING-1); standing: PAT rotation, archive 5GB wall.
+
+---
+
+Task ID: R0-AUTO (Job 438940, sweep 2026-10-19T17:00Z)
+Agent: R0-auto (merge desk)
+Task: PR #205 merge (fix t-mig-133 band 133f, books-ingest receipt-chain hardening)
+
+Work Log:
+- gates: head 9736700 CI 3/3 success (verify + hub + Vercel); mergeable_state=clean — no intake; 0 reviews, only vercel[bot] comment — no HOLD/BLOCKING/do-not-merge.
+- diff boundary: 1 file +51/-13 (apps/api/scripts/books-ingest.ts) — in-boundary; the patch HARDENS the operator-gated ingest driver (guarded postverify per the receipt-chain law so a postverify leg failure can never abandon the receipt of record after COMMIT; --probe-word pre-flighted fail-closed to a single plain word pre-DB; plainto_tsquery replaces raw to_tsquery); no new write surface, zero prod writes in the diff — apply remains operator-gated.
+- merged: PUT /pulls/205/merge (merge_method=merge) -> merge sha 97b3e33; new main tip CI verify + hub success.
+
+Stage Summary:
+- main @ 97b3e33 green after merge; band 133f ingest driver of record now receipt-chain-safe for the operator's 4MA1/4MB1/4PH1 roll. No escalations this sweep.
