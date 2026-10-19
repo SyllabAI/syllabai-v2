@@ -1,0 +1,91 @@
+{
+  "receipt": "T-MIG-136/prod-apply-run-004-r0.json",
+  "task": "T-MIG-136 band 136c — the 4MB1-ONLY seed PROD APPLY (the separation-ruling shape: Maths B enters by its own single-course lever, never bundled)",
+  "operator_order": "trace 1a15535a2a9c6319 'fire the 4MB1-only 136c lever. Also check if other agent has started doing the same work or not'",
+  "trace": "1a15535a2a9c6319",
+  "agent": "r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)",
+  "executed_at": "2026-10-19",
+  "base_of_record": "origin/main 89962a5 (fetch-first; local fast-forwarded 209cba4 -> 89962a5 before any action; bundle + seed runner read from this tree)",
+  "other_agent_check": {
+    "verdict": "NO other-agent activity on 136c — lane clear, first-mover",
+    "pushed_main": "209cba4..89962a5 = 5 commits, ALL T-MIG-133 chemistry-books (155e417+d64a0fb band 133h viewer TOC; 9736700 band 133f ingest-driver receipt-chain fix; 97b3e33 PR #205 merge; 89962a5 R0-AUTO receipt) — zero T-MIG-136 / 4MB1 / seed / bundle-seed / Neon files touched",
+    "prs": "0 open PRs (authed API sweep)",
+    "branches": "204 branches; the only 136-related branch is t-mig-136/r7a (this lane's own merged leftover from the #204 landing) — no other-agent 136/maths/4MB branch",
+    "workflows": "recent runs all 'ci' push/PR, all SUCCESS; no seed-related dispatch runs in the run history; CI at tip 89962a5 SUCCESS + Vercel hub status success",
+    "prod": "4MB1 presence ALL ZERO (cv rows / subject rows / nodes / edges) at 17:42:00.777Z pre-state AND re-verified 17:50:00.600Z immediately pre-apply (the race-guard)"
+  },
+  "cow_proof_law": {
+    "method_disclosure": "the 134c law's Neon-branch COW was UNAVAILABLE from this sandbox: api.neon.tech is DNS-unresolvable (curl exit 6; DoH google+cloudflare both NOERROR-empty — control-plane egress blocked) while the Neon DATA plane resolves. COW performed as a SCHEMA-FAITHFUL LOCAL REPLICA — a disposable byte-parity copy of the four seed-touched tables, written on, verified, then torn down. Zero prod contact during the proof.",
+    "replica": "PostgreSQL 18.4 embedded (user-space binaries + ICU 60.2 lib restore; prod server 18.6 — SAME major); schema rebuilt from the target's information_schema (columns / nullability / PKs / UNIQUEs / column defaults verbatim; FKs + extension objects intentionally omitted — the seed touches none); rows copied READ-ONLY from prod: curriculum_versions 8 / subjects 7 / knowledge_nodes 903 / knowledge_edges 1196 == the prod pre-state counts exactly; SSL enforced locally so the seed script runs BYTE-UNTOUCHED (the frozen ssl:'require' code path)",
+    "defect_caught_by_the_proof": "first replica DDL dropped non-literal column defaults (knowledge_nodes.version default 1, knowledge_edges.version default 1, validation_status 'UNVALIDATED'::character varying, curriculum_versions.status 'DRAFT'::character varying) -> NOT NULL violation 23502 on the first replica apply; replica DDL generator fixed to carry defaults verbatim; rebuilt + re-copied; ZERO prod exposure — the COW-proof served its purpose exactly as the 134c run-001 inverted-edges catch did",
+    "run_fresh": {
+      "apply_1": "nodesCreated 119 / edgesCreated 118 / applicabilityWrites 98 (units 10 / topics 10 / specPoints 98) — matches the run-002 real-bytes pins exactly",
+      "battery": "ALL GREEN: cv 4MB1-2016 ACTIVE (Edexcel / International GCSE (9-1)); subject linked; 119 nodes = SUBJECT 1 / UNIT 10 / TOPIC 10 / SUBTOPIC 98, all VALIDATED, single provenance line; edges SUBTOPIC->TOPIC 98 + TOPIC->UNIT 10 + UNIT->SUBJECT 10, subject_as_source 0, cross-subject 0; applicability {papers:[4MB1/01,4MB1/02], rule:'single tier: both papers contain questions from any part of the specification content (spec pp.5-6, 10)'} verbatim; bounds 0/0; delta +119/+118 with other cv rows byte-untouched and subtree counts 4CH1=438 / 4MA1=234 / 4PH1=234 unchanged",
+      "apply_2_idempotency": "CLEAN STRUCTURAL NO-OP: nodesCreated 0 / edgesCreated 0 / applicabilityWrites 0 / 119+118 reused / alreadyActive TRUE / same ids"
+    },
+    "disposition": "replica cluster STOPPED and data directory SHREDDED post-proof (disposable, evidence in this receipt + the saved probe JSONs)"
+  },
+  "prod_apply": {
+    "target": "production Neon default branch, pooled connection URI via the staged 0600 credential (the Oct 19 08:57 sz-lane staging predating this run; inline-env law — read into the environment per-command, never printed, no copies made; rotation standing)",
+    "race_guard": "pre-state re-probed 17:50:00.600Z immediately before the firing: 4MB1 presence all-zero; totals 903/1196/8/7; ACTIVE = 4CH1-2017, 4PH1-2017, 4MA1-2016",
+    "dry_run": "the EXACT statement sequence executed clean against the REAL prod state inside a transaction and rolled back by the sentinel — zero persistence (the runner's own zero-persistence mode)",
+    "mechanism": "apps/api/scripts/seed-bundle-curriculum.ts igcse-maths-b-16 --apply — ONE transaction (sql.begin; the frozen @Transactional law); bundle + manifest read from the repo tree of record 89962a5 (apps/hub/content/igcse-maths-b-16/, importSource SyllabAI/syllabai-resources main@c2fcd88)",
+    "license": "manifest license line of record: 'Operator-authorized SME corpus — see LICENSE-DATA.md in syllabai-resources (Amendment 2026-09-17). Demo re-use only.' — the operator's SME authorization governs; the firing order IS the operator authorization (the 134c law)",
+    "apply_1": {
+      "summary": "curriculumVersionId 7b7a23d5-bfd1-42d1-9e1d-3373f794142a (ACTIVE), subjectId 4970a241-4c04-4fb5-9d14-9f5eb97b0ee0, rootNodeId 7cb03087-1bc8-4175-9bf7-898d7dc89d48, nodesCreated 119, edgesCreated 118, applicabilityWrites 98, alreadyActive false",
+      "duration": "3m27.6s (RTT-bound: ~250 sequential statement round-trips, the 134c physics profile)"
+    },
+    "apply_2_idempotency": {
+      "summary": "nodesCreated 0, edgesCreated 0, applicabilityWrites 0, 119 reused / 118 reused, alreadyActive TRUE, same ids — THE CLEAN STRUCTURAL NO-OP PROOF OF RECORD"
+    }
+  },
+  "post_apply_verify_all_green": {
+    "takenAt": "2026-10-19T17:57:17.473Z",
+    "curriculum_versions": "4MB1-2016 ACTIVE (board Edexcel, qualification International GCSE (9-1)) — FOUR ACTIVE cv now coexist: 4CH1-2017 + 4PH1-2017 + 4MA1-2016 + 4MB1-2016",
+    "subject": "4MB1 'Maths (4MB1)' linked to its KG root",
+    "nodes": "119 (SUBJECT 1 / UNIT 10 / TOPIC 10 / SUBTOPIC 98), all VALIDATED, single provenance line bundle:igcse-maths-b-16|src:SyllabAI/syllabai-resources@c2fcd88…|schema:syllabai-demo.content-bundle/2.0|tier:RULE_DERIVED|gate:operator-git-PR",
+    "edges": "118 PART_OF, direction law exact (SUBTOPIC->TOPIC 98 / TOPIC->UNIT 10 / UNIT->SUBJECT 10, subject_as_source=0)",
+    "isolation": "0 cross-subject edges (4MB1 never joins any other subject)",
+    "applicability": "4MB1-S1-1A and 4MB1-S10-10A {papers:['4MB1/01','4MB1/02'], rule:'single tier: both papers contain questions from any part of the specification content (spec pp.5-6, 10)'} verbatim",
+    "bounds": "0 titles >200, 0 codes >40, 0 null required fields",
+    "untouched": "delta vs pre-state EXACTLY +119 nodes / +118 edges; other cv rows byte-identical (status/created/title/board/qualification); subtree counts 4CH1=438 / 4MA1=234 / 4PH1=234 unchanged; store totals 1022/1314/9/8"
+  },
+  "serving_battery_zero_llm": {
+    "auth": "1 probe learner registered of record (r0-136c-verify-1@example.invalid, 201; login reused for the authed reads; ZERO sessions, zero review rows, zero cron fires); the endpoints sit behind the auth shell (the deployed bundle's route law) — the sz 135c battery registered its probes the same way",
+    "subjects_list": "GET /api/v1/curriculum/subjects -> 8 subjects incl. 4MB1 'Maths (4MB1)' cv 4MB1-2016 — DB-live, NO redeploy needed (the 134d law)",
+    "decisive_136c_discriminator": "GET /api/v1/tutor/bank/questions?courseRef=4MB1-2016&topic=Number -> 200 total=0 items=0 (honest-empty bank — nothing manufactured) with resolvedNodes=13 led by UNIT 4MB1-S1 + TOPIC 4MB1-S1-_ — the courseRef axis CONSUMED: resolveForCourse('4MB1-2016') now resolves the live curriculum",
+    "draft_control": "courseRef=GEN-INGEST (DRAFT cv) + topic=Number -> resolvedNodes=0 — the fail-closed exact-ACTIVE law holds",
+    "chemistry_control": "courseRef=4CH1-2017&topic='Rates of reaction' -> 200 total=56 resolvedNodes[0] TOPIC 4CH1-S3-b — byte-identical to the sz 135c pin; ZERO regression",
+    "cross_corpus_control": "courseRef=4MB1-2016 + chemistry topic -> resolvedNodes=0 — no leak, subject isolation on the wire",
+    "unscoped_control": "topic=Number (no courseRef) -> resolvedNodes=0 — the multi-owner forcing function (now FOUR owners) refuses, honest-empty"
+  },
+  "four_subsystem_posture_update": {
+    "tutor": "graph arm NOW LIVE for 4MB1 (resolveForCourse '4MB1-2016' resolves; the bank leg proves the same scope resolver the tutor graph arm consumes); fetch-bank arm honestly empty (no corpus) — prompt variant general",
+    "smart_mark": "DORMANT for 4MB1 of record (zero questions — nothing manufactured, rule 3); the 135b shim ingests verbatim IF a maths-b SME bank ever lands",
+    "cla": "NOW LIVE for 4MB1 (SUBJECT root 4MB1 in the KG)",
+    "learner_model": "NOW LIVE for 4MB1 (node-keyed off the 119-node tree: 4MB1 root, 4MB1-S1..S10 UNITS, 4MB1-S<n>-_ TOPIC placeholders, 4MB1-S<n>-<code> ALNUM SUBTOPICs)"
+  },
+  "evidence_files": [
+    "/home/z/my-project/tool-results/mb1-prestate-prod.json (pre-state of record 17:42:00.777Z)",
+    "/home/z/my-project/tool-results/mb1-prestate-prod2.json (race-guard re-check 17:50:00.600Z)",
+    "/home/z/my-project/tool-results/mb1-prestate-cow.json (replica pre-state)",
+    "/home/z/my-project/tool-results/mb1-cow-verify.json (replica battery)",
+    "/home/z/my-project/tool-results/mb1-prod-verify.json (prod battery 17:57:17.473Z)",
+    "/home/z/my-project/scripts/pg-cow/ (the COW-replica method of record: schema-dump.ts / copy-rows.ts / setup-cluster.sh / replica-ddl.sql — no secrets; the embedded-PG + ICU-60 restore recipe)"
+  ],
+  "write_ledger": {
+    "prod_writes": "1 transactional seed (1 cv insert + 1 subject insert + 1 subject-link update + 1 cv-ACTIVE flip + 119 node inserts + 118 edge inserts + 98 applicability jsonb writes) + 1 clean no-op re-apply; one dry-run (zero persistence)",
+    "replica_writes": "the COW-proof on the disposable local replica (rebuilt once after the defaults-defect catch; torn down post-proof)",
+    "cow_branches": "0 Neon branches (control-plane DNS-blocked — method disclosure above); the replica is the COW substitute of record",
+    "probe_learners": 1,
+    "llm_spend": 0,
+    "credentials": "inline-env only; the staged 0600 files predate this run and were used in place; nothing printed, nothing copied, nothing committed"
+  },
+  "fence": "4CH1/4PH1/4MA1 rows byte-untouched (proven by the delta battery); Physics 4PH1 = T-MIG-134 untouched; Maths A 4MA1 = T-MIG-135's own apply (landed by its lane 14:24:36Z, before the separation ruling — decoupled going forward, nothing bundled here); 133e chemistry root residue untouched; the 133f/133h upstream work consumed read-only",
+  "next": [
+    "136d: the four-subsystem zero-LLM battery + golden cases on 4MB1 (staged per the 134 (ln) precedent) — now runs against the LIVE tree",
+    "coreBridge declaration for igcse-maths-b-16 (operator-declared per the 135d law; moot until questions exist)",
+    "Maths B book source handoff + the resources 4.75GB/5GB push-wall decision (operator)",
+    "standing: PAT rotation (further transits this run); Neon control-plane egress note for future COW laws (api.neon.tech DNS-blocked from this sandbox class)"
+  ]
+}
