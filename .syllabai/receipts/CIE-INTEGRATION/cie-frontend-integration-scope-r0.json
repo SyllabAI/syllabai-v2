@@ -1,0 +1,108 @@
+{
+  "receipt": "cie-frontend-integration-scope-r0",
+  "family": "CIE-INTEGRATION",
+  "operatorTrace": "1a1549ec230c5f95",
+  "operatorOrder": "'Produce the CIE frontend-integration scope of record' — the word given on the CIE-FRONTEND-CENSUS-1 offer (same form as the modular-24 past-papers acquisition scope r0)",
+  "agent": "Super Z (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "generatedUtc": "2026-10-19T14:50:52Z",
+  "mode": "SCOPE ONLY — zero code changes, zero DB writes, zero downloads beyond manifest/JSON fetches; execution is a separate operator go",
+  "provenanceOfTheHoldings": {
+    "where": "SyllabAI/syllabai-resources (corpus repo) — four SME families + Official-Specifications",
+    "operatorDirectiveOfRecord": "the registry's own cambridge_extension block: trace 1a1472e1880cc011 (2026-10-17) 'similarly download Cambridge ones as well. Push it in the repo' — builder scripts/sme_cambridge_courses.py, scraper scripts/sme_cambridge_examq_scrape.py, 34 lanes",
+    "license": "SME attestation 2026-09-17 covers ALL SME corpora in the repo including the CIE lanes (SME-ExamQuestion/manifest.json source.license); syllabus PDFs are public cambridgeinternational.org publications (board: 'cambridge-cie')",
+    "censusMethod": "GitHub trees/commits API + raw manifest fetches, zero clone (repo ~7.6GB+), scripts persisted at the sandbox lane (cie_census*.py, cie_roster_matrix.py); matrix artifact work/cie-roster-matrix.json"
+  },
+  "inventoryOfRecord": {
+    "examQuestions": {
+      "banks": 44,
+      "realBanks": 40,
+      "stubBanks": ["cie-a-level-accounting-21", "cie-a-level-economics-23", "cie-as-english-general-paper-21", "cie-igcse-accounting-25"],
+      "totals": { "questions": 19095, "parts": 25654, "marks": 73815, "topics": 1118 },
+      "onDisk": { "files": 13855, "MB": 2104 },
+      "registryShape": "syllabai.sme-exam-questions-registry/1.0 — CIE entries carry slug/level/subject/mid/landing_url/leaf_types/sections/status/totals; NOTE: no spec_index on CIE entries (Edexcel courses carry one) — the topic→spec-point join for CIE is a build item, not a free ride",
+      "levels": { "a-level": 10, "as": 1, "igcse": 29 }
+    },
+    "revisionNotes": {
+      "courseSets": 44,
+      "totals": { "pages": 4460, "assets": 9042, "specPointLinks": 8651 },
+      "shape": "syllabai.sme-revision-notes/1.0 — per course {notes/, assets/, canonical/, manifest.json}; notes already carry spec_point_links to the CIE parsed specs"
+    },
+    "flashcards": {
+      "decks": 33,
+      "onDisk": { "files": 2400, "MB": 73 },
+      "note": "33 of 44 banks have decks; no decks for the 4 stubs + 7 others (english-language-20, business-23, RS-23, combined-bio/phys, accounting-21-AL, econ-23-AL, AS-emp-20 … exact list from the manifest)"
+    },
+    "specifications": {
+      "specDirs": 33,
+      "parsedSpecs": 33,
+      "sources": "Official-Specifications/cie-* (public cambridgeinternational.org syllabus PDF + spec.json source metadata, edition windows 2023-2030) + Official-Specifications/parsed/cie-* (syllabai.parsed-specification/1.0, parser cie-spec-parser-1.0, family tier_columns: topics + subsections + spec_points; e.g. cie-igcse-chemistry-2023-2025 = 59pp, chemistry specimen codes inside)"
+    },
+    "levelSplit": { "a-level": 12, "as": 2, "igcse": 30 },
+    "bankToSpecJoin": "44 banks → 33 specs: maths-20 ×5 component banks ← 1 maths spec; co-ordinated ×3 + combined ×3 ← 2 science specs; igcse-maths-25 core/extended ← 1 spec; intl-maths-23 core/extended ← 1 spec; the full join matrix is a Phase-0 deliverable"
+  },
+  "theGap": {
+    "frontendState": "apps/hub @ main d29f5c8: content/courses.json = 49 courses ALL Edexcel (zero occurrences of cambridge/caie/cie); content/ = 49 dirs, no cie-*; content-maps/ = 50 files, all Edexcel; Exam-Questions DB plane = 49 SME bundles, all Edexcel (provenance census run-002 b1be955); FLASHCARD_SYNC_COURSES = [igcse-chemistry-19] (T-MIG-135 disclosed residual); ADR-029 pilot gate = status 'pilot' (4CH1) OR coreBridge flag (4MA1 rows) — no CIE course would clear it",
+    "pastPapers": "syllabai-pastpapers archive = 103 specs ALL Pearson-Edexcel (QA-SWEEP ab6ba58 of record) — ZERO CIE specs; CIE courses therefore launch with the SAME honest-empty past-papers state the modular-24 courses had before the X-series unlock; CIE past-paper acquisition is a SEPARATE future scope (Cambridge publishes its own public past-paper sets)",
+    "consequence": "every CIE resource is one hub-content pipeline away from the frontend; none of it is wired today"
+  },
+  "wiringPathOfRecord": {
+    "stage1Spines": "build_official_spines.py produces spines/<slug>.json official curriculum trees from Official-Specifications parsed specs — CIE parsed specs already exist in the parsed/cie-* trees (family tier_columns differs from the Edexcel layout: the spine adapter needs a Phase-0/1 pin, the parser itself is already of record)",
+    "stage2ContentMaps": "content-maps/<slug>.json attachment layer (SME ids → official spec-point codes; _report.json validates spineHitCodes/unmapped per course)",
+    "stage3Rekey": "build_official_content.py --course X rekeys notes/flashcards/questions specPointIds → official codes, swaps curriculum to the official spine (treeKind 'sme-native' → 'official-spine'), gated: --check validates before any flip; content/ is NEVER written by the generator itself",
+    "coursesJson": "rows {slug, level, subject, label, code, status} — slugs stay the registry's cie-* verbatim (zero collision with the 49); level vocabulary (a-level/as/igcse vs the hub's IAL/IGCSE strings) and the code column (CIE syllabus codes 0620-class, extractable from the parsed PDFs) are Phase-0 pins",
+    "dbPlane": "seed-bundle-curriculum.ts (bundle→KG knowledge_nodes; the T-MIG-134a frozen concept-seed law) THEN scripts/ingest-bundle-questions.ts <slug> (hub bundle → sme-question-package/1.0 shim bundle-questions.ts → SmeQuestionIngestService, ADR-026 evidence-safe replace; dry-run = the rollback-transaction proof, the T-MIG-135c pattern); requires the curriculum seed present per spec; PROD WRITES ARE OPERATOR-GATED (COW-proof-first protocol)",
+    "postureGates": "ADR-029 core questions gate (tutor/learner-model): default OFF for CIE courses (no coreBridge flags in the initial rows) — operator may widen per-course later exactly like the 4MA1 row; FLASHCARD_SYNC_COURSES: unchanged (sync stays chemistry-only until operator says otherwise); past-papers COURSE_SPECS: no CIE entries → honest empty by the existing by-design law"
+  },
+  "executionPlan": [
+    {
+      "phase": "0 — census & design pin",
+      "what": "Pin the bank↔spec join matrix (44→33); extract CIE syllabus codes from the parsed PDFs for the code column; pin the tier_columns→spine adapter contract against one real parsed spec end-to-end; decide the 4 stub banks (RECOMMENDATION: include all 44 courses — notes exist for every bank, EQ surfaces honestly empty where a bank is a stub, consistent with the hub's by-design honesty); pin level/label vocabulary; output the roster manifest of record.",
+      "effort": "0.5-1 lane run"
+    },
+    {
+      "phase": "1 — CIE spines",
+      "what": "Build the 33 CIE official spines from parsed/cie-* via the pinned adapter; validate topics/subsections/spec_points counts against the parsed trees; --check green.",
+      "effort": "1-1.5 lane runs"
+    },
+    {
+      "phase": "2 — content-maps + rekeyed bundles",
+      "what": "The big build: content-maps for 44 slugs (notes ride their existing 8,651 spec_point_links; flashcards attach via the same links; the 1,118 EQ topics need the topic→spec-point mapping — notes-links + parsed-spec section numbering make it tractable, but this is the main work item), then build_official_content.py per slug → 44 rekeyed content bundles.",
+      "effort": "2-4 lane runs"
+    },
+    {
+      "phase": "3 — courses.json rows + hub build",
+      "what": "Add the 44 rows (status 'full', no coreBridge), commit the bundles, CI hub build green; courses go live with notes/flashcards/exam-questions surfaces rendered from the committed corpus bundles — the interactive/DB-independent surfaces light up here.",
+      "effort": "0.5-1 lane run"
+    },
+    {
+      "phase": "4 — DB plane (operator-gated)",
+      "what": "Per CIE spec: seed-bundle-curriculum; per slug: ingest-bundle-questions dry-run (rollback proof) → COW-proof → prod apply under the ADR-026 evidence-safe replace; 40 real banks become SME-ingestable (19,095 questions / 25,654 parts).",
+      "effort": "1-2 lane runs"
+    },
+    {
+      "phase": "5 — posture + QA + file",
+      "what": "Scoped QA battery: 44 course pages render, per-surface content counts match the manifests, EQ player honest-empty exactly on the 4 stubs, past-papers honest-empty on all 44, browser end-to-end on one CIE course; posture gates recorded (coreBridge OFF, flashcard sync unchanged); receipt + worklog.",
+      "effort": "1 lane run"
+    }
+  ],
+  "expectedOutcome": "The hub catalog goes 49 → 93 courses: 44 CIE courses live with revision notes (4,460 pages), exam-question banks (40 real, 19,095 questions), flashcards (33 decks) and official parsed CIE spec curricula; the 4 stub banks surface notes-only with honest-empty EQ; past-papers stays honest-empty on CIE (no specs in the archive — separate future acquisition); the DB/tutor/learner-model plane waits on the operator's ADR-029 + ingest go.",
+  "risks": [
+    "CIE EQ banks carry NO spec_index in the registry (verified) — the topic→spec-point mapping is the main build item; the 8,651 revision-note spec_point_links + parsed-spec section numbering are the bridge, but EQ mapping quality needs per-family validation",
+    "parsed-spec family tier_columns differs from the Edexcel spine layout — the spine adapter is new code (parser itself already of record); Phase 0/1 pins it on one spec before the fleet run",
+    "4 stub banks (0 questions): included per recommendation as notes-only courses — if the operator prefers a 40-course first wave, the roster filter is a Phase-0 flip",
+    "DB writes are prod-Neon, operator-gated — Phase 4 needs the explicit go + COW-proof protocol (T-MIG-134c/135c precedent); Phase 3 alone already delivers the frontend-visible win",
+    "flashcard sync + core-bridge posture: default OFF for CIE — widening is an operator product call, disclosed residuals otherwise",
+    "volume: +44 courses / +25,654 parts in hub content/ — build/CI time and repo size grow; the bundles are text+asset-hash JSON (bounded image assets like the demo importer) so the delta is moderate but should be measured in Phase 2",
+    "CIE past papers are NOT in the archive — 'past papers' tab on CIE courses is honest-empty at launch; acquisition of Cambridge public past-paper sets is a separate scope (Cambridge publishes freely on its own site, unlike Pearson's silver-gated series)",
+    "copyright posture unchanged: SME attestation covers CIE lanes; syllabus PDFs are public Cambridge publications with sha1-pinned provenance in spec.json"
+  ],
+  "totalEffort": "~6-10 lane runs end-to-end; Phases 0-3 (spines → bundles → rows → build) are the minimum viable frontend unlock (~4-7 runs); Phase 4 flips the DB plane; Phase 5 files the battery",
+  "consistencyNotes": [
+    "Consistent with CIE-FRONTEND-CENSUS-1 (this session): holdings verified, frontend verified Edexcel-only",
+    "Consistent with the modular-24 scope precedent (08474c6): same receipt form, scope-only mode, phased plan awaiting operator go",
+    "Consistent with T-MIG-135 (4MA1 second-subject loop): the four-subsystem product loop (curriculum seed → bundle questions → tutor → hub widening) is the EXACT template CIE generalizes; the bundle-questions shim + smeRef law are bundle-generic and reuse verbatim",
+    "Consistent with T-MIG-136 (4MB1 substrate): same laws, Maths B proves the loop repeats per subject",
+    "Consistent with PASTPAPERS examq-provenance-census run-002 (b1be955): the student EQ player does not render sourcePaper — CIE banks inherit the same UI law",
+    "Consistent with QA-SWEEP r0 (ab6ba58): honest-empty is a supported, verified surface state — CIE past-papers and stub-EQ launch inside it by design"
+  ]
+}
