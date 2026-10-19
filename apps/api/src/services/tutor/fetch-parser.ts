@@ -87,7 +87,15 @@ export function partAtomOf(p: ParsedFetchQuery): string | null {
 // "2H" binds, "2 h" (the hour abbreviation in prose) never does; the same
 // exposure class the chemistry law already accepted, narrowed where the
 // letters actually collide with words.
+// T-MIG-136e: the grammar goes THREE-SUBJECT — the maths-b family
+// (4MB0/4MB1) carries BARE-DIGIT units ([12], two untiered papers, no
+// tier letter). Its full-code form is a SEPARATE PRECISE regex (this one
+// stays byte-identical — a provable non-regression for chemistry and
+// maths-a parses), and maths-b binds NO bare unit token: a standalone
+// "1"/"2" in prose is every number, question and year, so the bare-token
+// path must never fire for the digit-only vocabulary.
 const PAPER_CODE = /\b(4CH[01]|4MA[01])\s*[/-]\s*([12]\s*(?:C\s*R?|H|F))\b/i;
+const PAPER_CODE_MB = /\b(4MB[01])\s*[/-]\s*([12])\b/i;
 const BARE_UNIT = /(?<![A-Za-z0-9])([12]\s*(?:CR|C)|[12](?:H|F))(?![A-Za-z0-9])/i;
 const SERIES_JUN = /\b(summer|june)\b/i;
 const SERIES_JAN = /\b(january|jan)\b/i;
@@ -215,6 +223,14 @@ export function parseFetchQuery(query: string | null | undefined): ParsedFetchQu
   if (code) {
     paperCode =
       code[1]!.toUpperCase() + "/" + code[2]!.toUpperCase().replace(/ /g, "");
+  } else {
+    // T-MIG-136e: the maths-b bare-digit family ("4MB1/1", "4mb0-2") —
+    // checked only where the letter-form regex found nothing, so the
+    // chemistry/maths-a parse surface is untouched by construction
+    const mb = PAPER_CODE_MB.exec(q);
+    if (mb) {
+      paperCode = mb[1]!.toUpperCase() + "/" + mb[2]!;
+    }
   }
 
   // bare unit only when no full code was matched ("paper 2C", "the 1CR

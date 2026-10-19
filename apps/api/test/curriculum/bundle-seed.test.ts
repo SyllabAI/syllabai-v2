@@ -524,6 +524,153 @@ describe("T-MIG-135a maths bundle — the dotted :SUB grammar (igcse-maths-a-18-
         n.family === "SUBTOPIC" ? { ...n, code: "igcse-maths-a-T1:SUB" } : n,
       ),
     };
-    expect(() => mapBundleNodes(broken, "x")).toThrow(/does not carry the :SUBx letter or dotted suffix/);
+    expect(() => mapBundleNodes(broken, "x")).toThrow(
+      /does not carry the :SUBx letter, dotted, or placeholder suffix/,
+    );
+  });
+});
+
+// ── T-MIG-136a — the maths-b placeholder + alnum grammar (igcse-maths-b-16) ──
+
+const MATHS_B_BUNDLE_PATH = join(
+  import.meta.dir,
+  "../../../hub/content/igcse-maths-b-16/curriculum.json",
+);
+const mathsBBundle = JSON.parse(readFileSync(MATHS_B_BUNDLE_PATH, "utf8")) as BundleCurriculum;
+
+const MATHS_B_SOURCE = {
+  slug: "igcse-maths-b-16",
+  importRepo: "SyllabAI/syllabai-resources",
+  importRef: "main@c2fcd88aea3620b9190950930d0861890d4ee524",
+  schema: "syllabai-demo.content-bundle/2.0",
+};
+
+describe("T-MIG-136a maths-b bundle — the placeholder :SUB_ + alnum spec grammar (igcse-maths-b-16)", () => {
+  test("the count contract fail-closes at the exact maths-b bundle numbers", () => {
+    const fams = { SUBJECT: 0, TOPIC: 0, SUBTOPIC: 0, SPEC_POINT: 0 } as Record<string, number>;
+    for (const n of mathsBBundle.nodes) fams[n.family] = (fams[n.family] ?? 0) + 1;
+    expect(fams.SUBJECT).toBe(1);
+    expect(fams.TOPIC).toBe(10);
+    expect(fams.SUBTOPIC).toBe(10);
+    expect(fams.SPEC_POINT).toBe(98);
+    expect(mathsBBundle.edges.length).toBe(118);
+    expect(new Set(mathsBBundle.edges.map((e) => e.relation))).toEqual(new Set(["PART_OF"]));
+    expect(mathsBBundle.code).toBe("4MB1");
+    expect(mathsBBundle.subject).toBe("Maths");
+    expect(mathsBBundle.level).toBe("IGCSE");
+    expect(mathsBBundle.syllabusVersion).toBe("2016");
+  });
+
+  test("the code mapping: the placeholder lands 4MB1-S1-_ and the alnum point lands 4MB1-S1-1A", () => {
+    const mapped = mapBundleNodes(mathsBBundle, "4MB1 official specification structure");
+    expect(mapped.size).toBe(119);
+    // the root
+    const root = mapped.get("igcse-maths-b-16")!;
+    expect(root.nodeType).toBe("SUBJECT");
+    expect(root.dbCode).toBe("4MB1");
+    expect(root.title).toBe("Maths (4MB1)");
+    // the section → UNIT law (order-derived, identical to the physics law)
+    const unit = mapped.get("igcse-maths-b-T1")!;
+    expect(unit.nodeType).toBe("UNIT");
+    expect(unit.dbCode).toBe("4MB1-S1");
+    // the placeholder → TOPIC law (the bundle's own :SUB_ tail, verbatim —
+    // the tail separator is the law's own, the tail byte is the bundle's)
+    const placeholder = mapped.get("igcse-maths-b-T1:SUB_")!;
+    expect(placeholder.nodeType).toBe("TOPIC");
+    expect(placeholder.dbCode).toBe("4MB1-S1-_");
+    // the alnum spec point → SUBTOPIC law: {grandparent UNIT}-{code} verbatim
+    const sp = mapped.get("1A")!;
+    expect(sp.nodeType).toBe("SUBTOPIC");
+    expect(sp.dbCode).toBe("4MB1-S1-1A");
+    // the two-digit section alphabet rides its own UNIT — the code lands
+    // VERBATIM (the card law: 4MB1-S1-1A carries the section digit twice,
+    // S1 + 1A; 10A does the same at S10), nothing re-derived or stripped
+    expect(mapped.get("10A")!.dbCode).toBe("4MB1-S10-10A");
+    // the applicability passthrough (the 4MB1 papers, verbatim, T-C24 law)
+    expect(sp.applicability).toEqual({
+      papers: ["4MB1/01", "4MB1/02"],
+      rule: expect.stringContaining("both papers"),
+    });
+    // EVERY alnum point = its own grandparent UNIT's dbCode + its code — the
+    // join the four subsystems key on stays derivable from the tree itself
+    for (const m of mapped.values()) {
+      if (m.nodeType !== "SUBTOPIC") continue;
+      const placeholderTopic = mapped.get(m.parentBundleCode!)!;
+      expect(placeholderTopic.nodeType).toBe("TOPIC");
+      const spUnit = mapped.get(placeholderTopic.parentBundleCode!)!;
+      expect(spUnit.nodeType).toBe("UNIT");
+      expect(m.dbCode).toBe(spUnit.dbCode + "-" + m.bundleCode);
+    }
+    // all 119 DB codes unique (the uq_knowledge_node_code law)
+    const codes = [...mapped.values()].map((m) => m.dbCode);
+    expect(new Set(codes).size).toBe(119);
+  });
+
+  test("all three grammars re-proven in one breath — physics letter + maths-a dotted byte-identical beside the maths-b placeholder", () => {
+    const physics = mapBundleNodes(bundle, "4PH1 official specification structure");
+    expect(physics.get("igcse-physics-T1:SUBa")!.dbCode).toBe("4PH1-S1-a");
+    const maths = mapBundleNodes(mathsBundle, "4MA1 official specification structure");
+    expect(maths.get("igcse-maths-a-T1:SUB1.1")!.dbCode).toBe("4MA1-S1-1.1");
+    const mathsB = mapBundleNodes(mathsBBundle, "4MB1 official specification structure");
+    expect(mathsB.get("igcse-maths-b-T1:SUB_")!.dbCode).toBe("4MB1-S1-_");
+    // the alnum algebra is DORMANT for the pre-existing bundles — every live
+    // physics/chemistry/maths-a spec code carries a dot, so the dbCode laws
+    // they were pinned under stay byte-identical (the 136a widening is
+    // additive by construction, re-proven here on the real bytes)
+    expect(physics.get("1.1")!.dbCode).toBe("4PH1-1.1");
+    expect(physics.get("1.2P")!.dbCode).toBe("4PH1-1.2P");
+    expect(maths.get("1.6E")!.dbCode).toBe("4MA1-1.6E");
+    expect(maths.get("1.1A")!.dbCode).toBe("4MA1-1.1A");
+  });
+
+  test("the seed lands 119 nodes / 118 edges on a fresh store, the version ACTIVE, idempotent on re-run", async () => {
+    const store = newStore();
+    const summary = await seedBundleCurriculum(seedDeps(store), mathsBBundle, MATHS_B_SOURCE, ACTIVATOR);
+    // 1 root + 10 units + 10 placeholder topics + 98 alnum spec points
+    expect(summary.nodesCreated).toBe(119);
+    expect(summary.nodesReused).toBe(0);
+    expect(summary.edgesCreated).toBe(118);
+    expect(summary.edgesReused).toBe(0);
+    expect(summary.units).toBe(10);
+    expect(summary.topics).toBe(10);
+    expect(summary.specPoints).toBe(98);
+    expect(summary.alreadyActive).toBe(false);
+    expect(store.versionActivated.v).toBe(true);
+    // the root is the CLA/tutor subject-root join point (code 4MB1, SUBJECT)
+    const root = store.nodes.get("4MB1")!;
+    expect(root.node_type).toBe("SUBJECT");
+    expect(summary.rootNodeId).toBe(root.id);
+    expect(store.subject!.knowledge_node_id).toBe(root.id);
+    // the placeholder + the alnum point land with the mapped codes
+    expect(store.nodes.get("4MB1-S1-_")!.node_type).toBe("TOPIC");
+    const sp = store.nodes.get("4MB1-S1-1A")!;
+    expect(sp.node_type).toBe("SUBTOPIC");
+    expect(sp.validation_status).toBe("VALIDATED");
+    expect(sp.provenance).toBe(bundleProvenance(MATHS_B_SOURCE));
+    // the PART_OF direction law holds on the maths-b tree too (SP→TOPIC→UNIT→SUBJECT)
+    const placeholderTopic = store.nodes.get("4MB1-S1-_")!;
+    const unit = store.nodes.get("4MB1-S1")!;
+    expect(store.edges.has(sp.id + "->" + placeholderTopic.id)).toBe(true);
+    expect(store.edges.has(placeholderTopic.id + "->" + unit.id)).toBe(true);
+    expect(store.edges.has(unit.id + "->" + root.id)).toBe(true);
+    // idempotent re-run: the structural no-op
+    const second = await seedBundleCurriculum(seedDeps(store), mathsBBundle, MATHS_B_SOURCE, ACTIVATOR);
+    expect(second.nodesCreated).toBe(0);
+    expect(second.edgesCreated).toBe(0);
+    expect(second.nodesReused).toBe(119);
+    expect(second.edgesReused).toBe(118);
+    expect(second.alreadyActive).toBe(true);
+  });
+
+  test("a maths-b SUBTOPIC code carrying neither letter, dotted, nor placeholder suffix still refuses", () => {
+    const broken: BundleCurriculum = {
+      ...mathsBBundle,
+      nodes: mathsBBundle.nodes.map((n) =>
+        n.family === "SUBTOPIC" ? { ...n, code: "igcse-maths-b-T1:SUB" } : n,
+      ),
+    };
+    expect(() => mapBundleNodes(broken, "x")).toThrow(
+      /does not carry the :SUBx letter, dotted, or placeholder suffix/,
+    );
   });
 });
