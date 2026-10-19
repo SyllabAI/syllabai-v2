@@ -8781,3 +8781,23 @@ Stage Summary:
 - NEW DELTA SINCE THE FIRING: PR #204 (T-MIG-136a Maths B three-shaped seed grammar, c094494 merged 14:36:20Z — 23 min AFTER the firing) + the 4MB1 seed (136c operator gate) are NOT in the aliased bundle — the next lever state, an operator decision (R0-AUTO's PR #204 receipt is again 'bookkeeping-only').
 - Receipt: .syllabai/receipts/T-MIG-135/api-redeploy-second-lane-verify-run-002-sz.json
 - Standing: PAT rotation advised for BOTH tokens (the GitHub one is fresh-designated; the Vercel one transited chat again).
+
+---
+RESTORATION NOTE (sz lane, trace 1a1549c33da7b765 follow-up): my run-002 receipt rebase resolved the worklog conflict with --theirs and DROPPED the r0 CIE-INTEGRATION-SCOPE-1 entry that 7f251cd had appended (the rebase ours/theirs inversion — my own defect, caught by the post-push presence check, fixed forward within the same turn). The entry below is restored VERBATIM from 7f251cd; the r0 receipt file was never touched.
+
+---
+Task ID: CIE-INTEGRATION-SCOPE-1
+Agent: Super Z (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: operator trace 1a1549ec230c5f95 "Produce the CIE frontend-integration scope of record" (the word given on the CIE-FRONTEND-CENSUS-1 offer)
+
+Work Log:
+- Fetch-first: fresh clone @ d29f5c8 (main tip; T-MIG-136 merged, band-133g receipt landed since the census run).
+- Zero-download census deepened for scope-building (repo too large to clone): GitHub trees/commits API + raw manifest fetches (scripts/cie_census*.py + cie_roster_matrix.py persisted lane-side; matrix artifact work/cie-roster-matrix.json).
+- Provenance of record found IN the corpus registry: SME-ExamQuestion/manifest.json cambridge_extension block — operator trace 1a1472e1880cc011 (2026-10-17) "similarly download Cambridge ones as well", builder sme_cambridge_courses.py + scraper sme_cambridge_examq_scrape.py, 34 lanes; SME attestation 2026-09-17 covers all SME corpora incl. CIE.
+- Inventory of record: EQ 44 banks (40 real: 19,095 questions / 25,654 parts / 73,815 marks / 1,118 topics; 4 stubs w/ 0 questions — accounting-21-AL, econ-23-AL, AS-general-paper-21, igcse-accounting-25); notes 44 sets (4,460 pages / 9,042 assets / 8,651 spec_point_links); flashcards 33 decks; specs 33 dirs + 33 parsed trees (syllabai.parsed-specification/1.0, cie-spec-parser-1.0, family tier_columns). Levels: a-level 12 / as 2 / igcse 30. Bank→spec join 44→33 (maths ×5 ← 1 spec; co-ord ×3 + combined ×3 ← 2 specs; core/ext pairs ← 1 each).
+- KEY FINDING: CIE registry entries carry NO spec_index (Edexcel ones do) — the topic→spec-point join is a build item; the 8,651 note spec_point_links + parsed-spec numbering are the bridge.
+- Hub seams re-verified @ d29f5c8: courses.json 49 rows all Edexcel (0 CIE); content/ no cie-*; content-maps all Edexcel; the 3-stage content law (build_official_spines.py ← Official-Specifications parsed → content-maps → build_official_content.py rekey, treeKind sme-native→official-spine, gated --check); DB chain seed-bundle-curriculum.ts → ingest-bundle-questions.ts (bundle-questions.ts shim → SmeQuestionIngestService ADR-026 replace, dry-run = rollback proof); ADR-029 gate = pilot row OR coreBridge flag; FLASHCARD_SYNC_COURSES = [igcse-chemistry-19]; pastpapers archive 103 specs all Edexcel → CIE past-papers = honest-empty at launch (separate future acquisition scope).
+- Filed .syllabai/receipts/CIE-INTEGRATION/cie-frontend-integration-scope-r0.json (modular-24 scope precedent form): inventory + gap + wiring path + 6 phases (0 census/design 0.5-1, 1 spines 1-1.5, 2 content-maps+rekey 2-4, 3 rows+build 0.5-1, 4 DB operator-gated 1-2, 5 posture+QA 1 lane runs), risks, expected outcome 49→93 courses, total ~6-10 lane runs (Phases 0-3 = the frontend-visible unlock).
+
+Stage Summary:
+- SCOPE FILED of record: CIE frontend integration = 44 courses (40 with EQ / 44 with notes / 33 with flashcards / 33 official parsed specs) wired through the EXISTING 3-stage content pipeline + operator-gated DB plane; zero code changes made (scope-only); stub-bank inclusion recommended as notes-only honest-empty; coreBridge + flashcard-sync default OFF pending operator product call; awaiting operator go on Phases 0-3.
