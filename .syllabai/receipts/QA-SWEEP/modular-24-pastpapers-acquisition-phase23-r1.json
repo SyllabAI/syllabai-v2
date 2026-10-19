@@ -1,0 +1,46 @@
+{
+ "receipt": "modular-24-pastpapers-acquisition-phase23-r1",
+ "family": "QA-SWEEP",
+ "task_id": "SCOPE-PP-MOD24-r1 (phases 2+3)",
+ "operatorTrace": "1a153d2ed38a62fd ('go') — completing the filed plan whose Phase 0+1 landed of record in modular-24-pastpapers-acquisition-wave1-r1.json",
+ "agent": "R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+ "generatedUtc": "2026-10-19T13:40:00Z",
+ "phase2_hub_mapping": {
+  "pr": 202,
+  "branch": "scope-pp-mod24/phase2-hub-mapping",
+  "head_ci": "3/3 (verify + hub + Vercel Preview) @ f81f99e",
+  "merge": "squash a61b4f7 under the operator's standing go; merge body carries the authorization chain",
+  "main_ci": "verify + hub success @ a61b4f7",
+  "deploy": "hub prod is git-connected (FAVICON-r0 discovery) — auto-bake served the flip within ~100s of merge, no manual bake",
+  "diff": "pastpapers-index.json regenerated @ corpus 3063c716 (103 -> 108 specs, +28 June-2025 paper dirs) + pastpapers-corpus.ts COURSE_SPECS +16 entries; ZERO route/viewer changes (the existing last-dash dir law + units prefix filter carry everything); no legacySpecs (linear 4BI1/4CH1/4PH1/4MA1 are current sibling qualifications, not legacy)",
+  "gates": "bun verify:corpus PASS; tsc --noEmit 0; eslint 0; prod build exit 0; functional replication (buildEntry + filters) = 28 entries across the 16 courses"
+ },
+ "phase3_qa_battery": {
+  "target": "https://syllabai-hub-v2.vercel.app (prod, post-bake a61b4f7)",
+  "verdict": "PASS 48/48 probes, 0 fails (sandbox JSON work/mod24_phase3_qa.json; numbers of record here)",
+  "groups": {
+   "A_course_pages": "16/16: all modular-24 course past-papers pages 200; 14 live courses carry their exact 2 paper-dir refs each; igcse-biology/chemistry-modular-24-unit-2 render the mapped-honest-empty state (0 refs, by Pearson's public gating)",
+   "B_viewers": "8/8 (one per spec family, incl. QP-only 4WPH2-1P and Double Award 4WSD5/4WSD6 pair): 200 + viewer chrome (Question paper toolbar + printed ref) on force-dynamic streaming routes",
+   "C_pdf_proxy": "4/4 via /api/corpus-pdf with the of-record grammar past-papers/<specKey>/past-papers/<session>/<DIR>/qp.pdf: 200 + %PDF magic + real bytes (probe: 4WBI1-1B 1,200,187B, 4WM1F-01 1,888,977B, 4WSD5-1P 1,508,168B, 4WPH2-1P 837,296B); NOTE the T-MIG-133e grammar wall correctly 400'd the probe's first attempt missing the outer past-papers/ root — wall validated as a side effect",
+   "D_archive": "5/5 new spec pages on /past-papers archive browser: 200 + 4W-series content",
+   "E_mock": "mock chrome spot-check 200 OK"
+  },
+  "probe_defects_disclosed": "two initial FAILs were probe-side, not product-side: (1) proxy URLs missing the outer past-papers/ root (grammar wall 400 = wall working); (2) 4WSD6-1P viewer requested under the physics-unit-1 course = invalid pairing, the known F3 informational soft-200. Both fixed in the probe and re-run clean."
+ },
+ "coverage_flip_of_record": {
+  "before": "16/49 hub courses honest-empty (QA-SWEEP r0)",
+  "after": "14/16 modular-24 courses serve real official archives (June-2025 series, publisher first-party provenance); biology-U2 + chemistry-U2 map to real specs but honestly show empty until Pearson unlocks their June-2025 sets; physics-U2 serves QPs (MS/ER unpublished by Pearson); /past-papers archive browser carries 108 specs",
+  "growth_path": "unlock sweeps (Nov-2025, Jan-2026, June-2026 secure series + bio/chem U2 MS/ER) land in the corpus and need only an index regen on the hub to flow through — zero mapping changes"
+ },
+ "residuals": [
+  "Secure-series unlock sweeps (recurring): Nov-2025 + Jan-2026 + June-2026 series, bio/chem U2 June-2025 MS/ER",
+  "Physics 4WPH2 QP-only in the public set",
+  "Maths R-variant cosmetic: '01R' dirs render title 'Paper 01R' without the Timezone-R chip (chip regex expects letter-suffixed variants like 1BR) — disclosed v1 cosmetic",
+  "PAT rotation STILL OPEN (consumed again: corpus push, PR, merge, API), Vercel token rotation, Render disable, zombie prj_D7vf third-account delete"
+ ],
+ "consistencyNotes": [
+  "Consistent with modular-24-pastpapers-acquisition-scope-r0.json (plan) + modular-24-pastpapers-acquisition-wave1-r1.json (Phase 0+1): this receipt closes Phase 2+3 — the filed '3.5-4.5 lane runs' estimate compressed into one run end-to-end",
+  "Consistent with QA-SWEEP r0: honest-empty discipline preserved exactly where the publisher gates materials",
+  "Code-change law honored: Phase 2 went through PR #202 + CI 3/3 before merge (no direct code push to main)"
+ ]
+}

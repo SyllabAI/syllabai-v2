@@ -8845,3 +8845,15 @@ Work Log:
 
 Stage Summary:
 - Phase 2 code-of-record pending PR merge; on merge the 16-course honest-empty flip is atomic on prod (index + mapping in one deploy). Phase 3 (QA battery scoped to the 16 courses) follows on the baked alias.
+
+Task ID: SCOPE-PP-MOD24-r1 phases 2+3 (same operator trace 1a153d2ed38a62fd "go")
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: hub mapping PR + prod QA battery — completing the modular-24 acquisition plan end-to-end
+
+Work Log:
+- PHASE 2: index regenerated @ corpus 3063c716 (103 -> 108 specs, +28 June-2025 paper dirs) + COURSE_SPECS +16 entries via the EXISTING units prefix filter (sciences 4WBI1/2; maths dual-code folder 4xmaf-4xmah split 4WM1F/1H/2F/2H; double-award six-code split 4WSD1..6 per science, the linear-4SD0 law). Zero route/viewer changes; no legacySpecs (linear siblings are CURRENT quals). GATES: corpus gate PASS, tsc 0, eslint 0, build 0, functional replication 28 entries. PR #202 (branch scope-pp-mod24/phase2-hub-mapping): head CI 3/3, squash-merged a61b4f7 under the operator's standing go, main CI verify+hub success, prod auto-baked (git-connected) within ~100s — no manual bake.
+- PHASE 3 QA BATTERY on prod: PASS 48/48, 0 fails — (A) 16/16 course pages 200 with exact expected refs (14 live x2 papers; bio/chem U2 mapped-honest-empty); (B) 8/8 viewers across all families incl. QP-only 4WPH2-1P with chrome + printed refs; (C) 4/4 corpus-pdf proxy streams 200 + %PDF magic (1.2MB/1.9MB/1.5MB/0.8B probes) via the of-record double past-papers/ grammar — side effect: the T-MIG-133e grammar wall was independently re-validated (it 400'd the probe's wrong-root attempt); (D) 5/5 archive-browser spec pages; (E) mock chrome OK. Two initial FAILs were probe-side (wrong proxy root; 4WSD6 under wrong course = F3 informational pairing) — disclosed, fixed, re-run clean.
+- RECEIPT: .syllabai/receipts/QA-SWEEP/modular-24-pastpapers-acquisition-phase23-r1.json (PR/merge/CI facts, battery groups, coverage flip, residuals incl. the maths '01R' Timezone-R chip cosmetic).
+
+Stage Summary:
+- THE FLIP IS LIVE ON PROD: 14/16 modular-24 courses now serve real official June-2025 archives (publisher first-party provenance, AI-IDENTIFIED posture); bio/chem U2 honestly empty until Pearson's unlock; archive browser at 108 specs. The filed scope's "3.5-4.5 lane runs" compressed into ONE run end-to-end. Growth path: future unlock sweeps = corpus ingest + index regen only. Residuals: unlock sweeps, 4WPH2 QP-only, '01R' chip cosmetic, PAT/Vercel rotation, Render disable, prj_D7vf. LANE R0: IDLE.
