@@ -64,6 +64,11 @@ export interface CorpusPaperEntry {
   erBytes?: number;
   /** attested official duration in minutes, or null (editable estimate) */
   durationMin: number | null;
+  /** CIE papers only (G1): the official component number (the tens digit of
+   *  the two-digit component code — "9701-S25-QP-12" → 1). Courses filter on
+   *  it (the 9709 component banks, the 0580 core/extended tiers); null on
+   *  Pearson rows where no such filter exists. */
+  component: number | null;
   qpPath: string;
   msPath: string;
   /** corpus-relative examiner-report path; "" when not held */
@@ -144,11 +149,70 @@ export function ialUnitTitle(unit: string): string {
   return IAL_UNIT_TITLES[unit] ?? `Unit ${unit.slice(-1)}`;
 }
 
+/**
+ * CIE paper-dir grammar (G1, CIE-INTEGRATION course-catalog card):
+ * "<4-digit syllabus>-[SWM]<yy>-QP-<nn>" — e.g. "9701-S25-QP-11" (May/June
+ * 2025, Paper 1 variant 1), "9709-W19-QP-71" (the legacy component 7).
+ * Every dir in the six indexed CIE specs matches this (census run-001,
+ * zero parse hazards). null when the dir is not a CIE QP dir.
+ */
+export const CIE_DIR_RE = /^(\d{4})-([SWM]\d{2})-QP-(\d{2})$/;
+
+export function parseCieDir(dir: string): { syllabus: string; session: string; component: string } | null {
+  const m = dir.match(CIE_DIR_RE);
+  if (!m) return null;
+  return { syllabus: m[1], session: m[2], component: m[3] };
+}
+
+/**
+ * Cover-verified CIE component → paper-name map (G1). Keys are
+ * "<syllabus>/<component tens digit>"; values are the paper names as printed
+ * on the QP covers (verified from the corpus PDFs — see the Task-62 receipt;
+ * components NOT in the map render the plain "Paper <n>" title, never an
+ * assumed name). Session-dependent names (0580) are excluded by design.
+ */
+export const CIE_PAPER_TITLES: Record<string, string> = {
+  "9701/1": "Multiple Choice",
+  "9701/2": "AS Level Structured Questions",
+  "9701/3": "Advanced Practical Skills",
+  "9701/4": "A Level Structured Questions",
+  "9701/5": "Planning, Analysis and Evaluation",
+  "9702/1": "Multiple Choice",
+  "9702/2": "AS Level Structured Questions",
+  "9702/3": "Advanced Practical Skills",
+  "9702/4": "A Level Structured Questions",
+  "9702/5": "Planning, Analysis and Evaluation",
+  "9709/1": "Pure Mathematics 1",
+  "9709/2": "Pure Mathematics 2",
+  "9709/3": "Pure Mathematics 3",
+  "9709/4": "Mechanics",
+  "9709/5": "Probability & Statistics 1",
+  "9709/6": "Probability & Statistics 2",
+  "9709/7": "Probability & Statistics 2 (S2)",
+  "0620/1": "Multiple Choice (Core)",
+  "0620/2": "Multiple Choice (Extended)",
+  "0620/3": "Theory (Core)",
+  "0620/4": "Theory (Extended)",
+  "0620/5": "Practical Test",
+  "0620/6": "Alternative to Practical",
+  "0625/1": "Multiple Choice (Core)",
+  "0625/2": "Multiple Choice (Extended)",
+  "0625/3": "Theory (Core)",
+  "0625/4": "Theory (Extended)",
+  "0625/5": "Practical Test",
+  "0625/6": "Alternative to Practical",
+  // 0580 deliberately NOT in the map: the covers' paper titles changed across
+  // the archive (2019 "Paper 1 (Core)" vs 2025 "Paper 1 Non-calculator
+  // (Core)"), so no single per-tens name is truthful for every row — the
+  // plain "Paper <n>" title renders, and the tier lives in the course
+  // identity (cie-igcse-maths-25-core / -extended).
+};
+
 export function specTitle(spec: CorpusSpec): string {
   const qual =
-    spec.qual === "international-gcse"
+    spec.qual === "international-gcse" || spec.qual === "igcse"
       ? "IGCSE"
-      : spec.qual === "international-a-level"
+      : spec.qual === "international-a-level" || spec.qual === "ial"
         ? "IAL"
         : spec.qual;
   return `${qual} ${spec.subject} ${spec.spec.toUpperCase()}`;

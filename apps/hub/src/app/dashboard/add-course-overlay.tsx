@@ -8,8 +8,8 @@
  * and the empty-state CTA — all of which open this dialog).
  *
  * The cascade mirrors the registry's real shape rather than inventing a
- * taxonomy: every course in content/courses.json is a Pearson Edexcel lane
- * (same constant the subject cards' "Edexcel · {level}" eyebrow already
+ * taxonomy: class creation targets the Pearson Edexcel lanes (the CIE
+ * INTEGRATION wave is past-papers-first; the subject cards' "Edexcel · {level}" eyebrow
  * prints), levels are the distinct registry values, and the subject step
  * lists exact registry lanes (label, variant qualifier, exam code) — nothing
  * inferred. Adding is non-destructive to the dialog: several subjects can be
@@ -33,7 +33,7 @@ import { useExamTargets } from "@/lib/exam-series";
 import type { CourseMeta } from "@/lib/courses";
 import { ExamSeriesPicker } from "./exam-series-picker";
 
-/** The demo registry is Edexcel-only (see content/courses.json note). */
+/** Class creation targets the Edexcel lanes (see content/courses.json note). */
 const BOARD = "Edexcel";
 
 function StepLabel({ n, title, hint }: { n: number; title: string; hint?: string }) {
@@ -137,7 +137,7 @@ export function AddCourseOverlay({
                 {BOARD}
               </Button>
               <span className="text-xs text-muted-foreground">
-                The registry covers Pearson {BOARD} lanes only.
+                Class creation covers the Pearson {BOARD} lanes; the Cambridge International courses are past-papers-first launches.
               </span>
             </div>
           </div>

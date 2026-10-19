@@ -36,7 +36,8 @@ import { Input } from "@/components/ui/input";
 import { duplicateVariants } from "@/lib/course-variant";
 import type { TeacherCourseLite } from "./teacher-client";
 
-/** The demo registry is Edexcel-only (same constant the student overlay prints). */
+/** Class creation targets the Edexcel lanes; the CIE-INTEGRATION wave is
+ *  past-papers-first (no class tracking yet). */
 const BOARD = "Edexcel";
 
 function StepLabel({ n, title, hint }: { n: number; title: string; hint?: string }) {
@@ -154,7 +155,7 @@ function AddClassForm({
               {BOARD}
             </Button>
             <span className="text-xs text-muted-foreground">
-              The registry covers Pearson {BOARD} lanes only.
+              Class creation covers the Pearson {BOARD} lanes; the Cambridge International courses are past-papers-first launches.
             </span>
           </div>
         </div>

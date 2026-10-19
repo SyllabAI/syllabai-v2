@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronRight, FileText, Puzzle, ScrollText } from "lucide-react";
-import { loadHubCourse } from "@/lib/courses";
+import { boardOf, loadHubCourse } from "@/lib/courses";
 import { collectPastPapers, paperEstTime, type PastPaper } from "@/lib/past-papers";
 import { corpusViewerUrl } from "@/lib/pastpapers-shared";
 import { CorpusPdfLink } from "@/components/pastpapers/corpus-pdf-link";
@@ -116,7 +116,7 @@ export default async function PastPapersPage({
       <PreconnectCorpus />
       <CourseHeader
         meta={meta}
-        title={`Edexcel ${meta.level} ${meta.label} Past Papers`}
+        title={`${boardOf(meta)} ${meta.level} ${meta.label} Past Papers`}
         crumb="Past Papers"
         description="Official past papers grouped by session — view the question paper and mark scheme side by side, solve in your notebook, run a timed mock, or play a paper interactively where its questions are already parsed."
       >
@@ -167,7 +167,7 @@ export default async function PastPapersPage({
               official timer, then grade against the MS.
             </p>
             <p className="mt-1">
-              Official Pearson Edexcel documents streamed from the{" "}
+              Official {meta.board ?? "Pearson Edexcel"} documents streamed from the{" "}
               <span className="font-mono text-[11px]">syllabai-pastpapers</span> archive
               (AI-IDENTIFIED provenance, operator ratification pending · index generated{" "}
               {corpusIndex.meta.generatedAt.slice(0, 10)}).

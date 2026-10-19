@@ -17,13 +17,15 @@ export function CourseHeader({
   showTabs = false,
   children,
 }: {
-  meta: Pick<CourseMeta, "level" | "subject" | "label" | "code" | "slug">;
+  meta: Pick<CourseMeta, "level" | "subject" | "label" | "code" | "slug" | "board">;
   activeTab?: "resources" | "strengths";
   title: string;
   description?: string;
   /** Final breadcrumb label — the current page's name (SME trail, figure 14:
    *  "IGCSE / Chemistry / Edexcel / Exam Questions / {topic}"). Defaults to
-   *  "Edexcel", matching the hub-root trail. */
+   *  the row's board ("Edexcel" for the pre-CIE registry rows,
+   *  "Cambridge International" for the CIE wave), matching the hub-root
+   *  trail (G3 board-aware fix). */
   crumb?: string;
   /** SME anatomy: the Course Resources / Strengths & Weaknesses tab pair
    *  belongs to the course hub root only — resource pages render breadcrumb +
@@ -43,7 +45,7 @@ export function CourseHeader({
         items={[
           { label: meta.level, href: "/courses" },
           { label: meta.label, href: base },
-          { label: crumb ?? "Edexcel" },
+          { label: crumb ?? (meta.board ?? "Edexcel") },
         ]}
       />
       <div className="flex flex-wrap items-start justify-between gap-3">

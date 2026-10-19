@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { loadHubCourse } from "@/lib/courses";
+import { boardOf, loadHubCourse } from "@/lib/courses";
 import { collectPastPapers, findPastPaper, paperEstTime } from "@/lib/past-papers";
 import {
   matchReconstructions,
@@ -64,7 +64,7 @@ export default async function PastPaperPage({
             <h1 className="max-w-2xl text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
               {paper.number} — {paper.date}{" "}
               <span className="text-muted-foreground">
-                (Edexcel {meta.level} {meta.subject}): Past Paper
+                ({boardOf(meta)} {meta.level} {meta.subject}): Past Paper
               </span>
             </h1>
             <ExamCodePill code={meta.code} />

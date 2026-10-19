@@ -1,0 +1,168 @@
+/**
+ * validate_cie_bundles.ts — the CIE-INTEGRATION course-catalog card's validator.
+ *
+ * Carries the card's paper-count assertions of record (operator trace
+ * 1a15602e470f4d31 "extend validate_cie_bundles.ts with the card's paper-count
+ * assertions"). Run in the prebuild chain (package.json verify:cie) and in CI —
+ * a regression in the CIE corpus mapping, registry posture, or bundle shape
+ * fails the build before any deploy.
+ *
+ * Sources of truth:
+ *   - the card: .syllabai/receipts/CIE-INTEGRATION/cie-course-catalog-pastpapers-scope-r0.json
+ *     (commit bbf5e91) — course set, per-course paper counts, coverage, posture
+ *   - the committed index: src/data/pastpapers-index.json (treeSha 3063c7169c16)
+ *   - the cover-verified corrections made at execution (Task-62 receipt):
+ *       0580 tier law Core=[1,3] / Extended=[2,4] (the card's A3 said 1-2/3-4 —
+ *       the QP covers print Paper 1/3 (Core) and Paper 2/4 (Extended))
+ *   - re-verification census (cie_card_reverify.py): ALL GREEN
+ *
+ * Zero-tolerance: any FAIL exits 1.
+ */
+import { existsSync, readFileSync } from "node:fs";
+import path from "node:path";
+
+import {
+  allArchiveSpecs,
+  corpusIndex,
+  corpusPapersForCourse,
+} from "../src/lib/pastpapers-corpus";
+import { parseCieDir } from "../src/lib/pastpapers-shared";
+
+const HUB = process.cwd();
+const CONTENT = path.join(HUB, "content");
+
+let fails = 0;
+function check(name: string, ok: boolean, detail = ""): void {
+  const tag = ok ? "PASS" : "FAIL";
+  console.log(`${tag}  ${name}${detail ? `  ${detail}` : ""}`);
+  if (!ok) fails++;
+}
+
+// ── the card's course set + paper-count assertions ──────────────────────────
+const BOARD = "Cambridge International";
+const EXPECT: Array<{
+  slug: string; code: string; level: "A-Level" | "IGCSE"; papers: number;
+  subject: string; label?: string; components?: number[];
+}> = [
+  { slug: "cie-a-level-chemistry-25",  code: "9701", level: "A-Level", papers: 379, subject: "Chemistry" },
+  { slug: "cie-a-level-physics-25",    code: "9702", level: "A-Level", papers: 379, subject: "Physics" },
+  { slug: "cie-a-level-maths-20-pure-1", code: "9709", level: "A-Level", papers: 67, subject: "Mathematics", label: "Maths — Pure 1", components: [1] },
+  // D1 roster-anticipation row (operator default YES): no SME pure-2 bank yet
+  { slug: "cie-a-level-maths-20-pure-2", code: "9709", level: "A-Level", papers: 68, subject: "Mathematics", label: "Maths — Pure 2", components: [2] },
+  { slug: "cie-a-level-maths-20-pure-3", code: "9709", level: "A-Level", papers: 68, subject: "Mathematics", label: "Maths — Pure 3", components: [3] },
+  { slug: "cie-a-level-maths-20-mechanics", code: "9709", level: "A-Level", papers: 68, subject: "Mathematics", label: "Maths — Mechanics", components: [4] },
+  { slug: "cie-a-level-maths-20-probability-and-statistics-1", code: "9709", level: "A-Level", papers: 68, subject: "Mathematics", label: "Maths — Probability & Statistics 1", components: [5] },
+  { slug: "cie-a-level-maths-20-probability-and-statistics-2", code: "9709", level: "A-Level", papers: 68, subject: "Mathematics", label: "Maths — Probability & Statistics 2", components: [6] },
+  { slug: "cie-igcse-chemistry-23",    code: "0620", level: "IGCSE", papers: 398, subject: "Chemistry" },
+  { slug: "cie-igcse-physics-23",      code: "0625", level: "IGCSE", papers: 401, subject: "Physics" },
+  // 0580 tier law (cover-verified premise correction): Core=[1,3], Extended=[2,4]
+  { slug: "cie-igcse-maths-25-core",     code: "0580", level: "IGCSE", papers: 134, subject: "Mathematics", label: "Maths — Core", components: [1, 3] },
+  { slug: "cie-igcse-maths-25-extended", code: "0580", level: "IGCSE", papers: 134, subject: "Mathematics", label: "Maths — Extended", components: [2, 4] },
+];
+
+// ── 1. registry posture ───────────────────────────────────────────────────────
+type Row = {
+  slug: string; level: string; subject: string; label?: string; code: string;
+  status: string; board?: string; curriculumCode?: string; coreBridge?: boolean;
+};
+const reg = JSON.parse(readFileSync(path.join(CONTENT, "courses.json"), "utf8")) as {
+  courses: Row[];
+};
+check("registry carries 61 rows (49 Edexcel + 12 CIE)", reg.courses.length === 61, String(reg.courses.length));
+for (const exp of EXPECT) {
+  const row = reg.courses.find((c) => c.slug === exp.slug);
+  if (!row) { check(`registry row ${exp.slug}`, false, "MISSING"); continue; }
+  check(`registry ${exp.slug}`, row.code === exp.code && row.level === exp.level
+    && row.subject === exp.subject && row.status === "full" && row.board === BOARD,
+    `${row.code}/${row.level}/${row.status}/board=${row.board}`);
+  check(`registry ${exp.slug} posture pins (no curriculumCode/coreBridge)`,
+    row.curriculumCode === undefined && row.coreBridge === undefined);
+}
+
+// ── 2. skeleton-bundle shape (A0: the honest-empty 7-file form) ─────────────
+const SEVEN = ["manifest.json", "curriculum.json", "concept-graph.json", "notes.json",
+  "questions.json", "flashcards.json", "learner-sim.json"];
+for (const exp of EXPECT) {
+  const dir = path.join(CONTENT, exp.slug);
+  const missing = SEVEN.filter((f) => !existsSync(path.join(dir, f)));
+  check(`bundle ${exp.slug}: 7 files present`, missing.length === 0, missing.join(",") || "ok");
+  if (missing.length > 0) continue;
+  const manifest = JSON.parse(readFileSync(path.join(dir, "manifest.json"), "utf8")) as {
+    schema: string; counts: Record<string, number>; treeKind?: string;
+    curriculum?: { board?: string; code?: string };
+    importSource?: { repo?: string };
+  };
+  const curriculum = JSON.parse(readFileSync(path.join(dir, "curriculum.json"), "utf8")) as {
+    board?: string; nodes: unknown[]; edges: unknown[];
+  };
+  const countsZero = Object.values(manifest.counts ?? {}).every((n) => n === 0);
+  check(`bundle ${exp.slug}: honest-empty skeleton (all counts 0)`, countsZero,
+    JSON.stringify(manifest.counts));
+  check(`bundle ${exp.slug}: board/identity`,
+    manifest.curriculum?.board === BOARD && manifest.curriculum?.code === exp.code
+    && curriculum.board === BOARD && curriculum.nodes.length === 0 && curriculum.edges.length === 0);
+}
+
+// ── 3. THE CARD'S PAPER-COUNT ASSERTIONS ─────────────────────────────────────
+let strictTotal = 0;
+const withD1 = EXPECT.reduce((a, e) => a + e.papers, 0); // 2,232
+for (const exp of EXPECT) {
+  const papers = corpusPapersForCourse(exp.slug);
+  const isD1 = exp.slug === "cie-a-level-maths-20-pure-2";
+  if (!isD1) strictTotal += papers.length;
+  check(`count ${exp.slug} == ${exp.papers}`, papers.length === exp.papers, String(papers.length));
+  // listable law: every CIE row carries BOTH qp and ms (census run-001)
+  const notListable = papers.filter((p) => p.qpBytes == null || p.msBytes == null);
+  check(`listable ${exp.slug}: qp+ms on every row`, notListable.length === 0, String(notListable.length));
+  // G4 posture: no attested CIE durations — the honest editable-estimate state
+  const withDurations = papers.filter((p) => p.durationMin != null);
+  check(`G4 ${exp.slug}: durationMin null on every row`, withDurations.length === 0, String(withDurations.length));
+  // G1 law: ref "<syllabus>/<nn>", title "Paper <n>", component present
+  const badRows = papers.filter((p) => {
+    const cie = parseCieDir(p.dir);
+    if (!cie) return true;
+    if (p.ref !== `${cie.syllabus}/${cie.component}`) return true;
+    if (!p.title.startsWith(`Paper ${cie.component[0]}`)) return true;
+    if (p.component !== Number(cie.component[0])) return true;
+    // the cover-verified name map, when it holds this component, must surface
+    if (!p.title.includes("—") && p.title !== `Paper ${cie.component[0]}`) return true;
+    return false;
+  });
+  check(`G1 ${exp.slug}: ref/title/component law on every row`, badRows.length === 0,
+    badRows.slice(0, 3).map((p) => `${p.dir}:${p.ref}:${p.title}`).join(" ; "));
+  // G2 law: specTitle renders the uppercase qual, never the raw 'ial'/'igcse'
+  const badTitles = papers.filter((p) => !/^(IAL|IGCSE) /.test(p.specTitle) || p.specTitle.includes("Edexcel"));
+  check(`G2 ${exp.slug}: specTitle board-clean`, badTitles.length === 0,
+    [...new Set(badTitles.map((p) => p.specTitle))].slice(0, 3).join(" ; "));
+  // component-filter composition (9709 banks; 0580 tiers)
+  if (exp.components) {
+    const outOfScope = papers.filter((p) => p.component == null || !exp.components!.includes(p.component));
+    check(`components ${exp.slug} ⊆ {${exp.components.join(",")}}`, outOfScope.length === 0,
+      [...new Set(outOfScope.map((p) => p.component))].join(","));
+  }
+}
+check("strict-11 coverage == 2,164 (95.8% of the archive)", strictTotal === 2164, String(strictTotal));
+check("with-D1 coverage == 2,232 (98.8%)", withD1 === 2232, String(withD1));
+
+// ── 4. corpus-wide CIE holdings + D2 (component-7 stays archive-only) ────────
+const cieSpecs = Object.entries(corpusIndex.specs).filter(([k]) => k.startsWith("cambridge-international/"));
+check("6 CIE specs in the index", cieSpecs.length === 6, String(cieSpecs.length));
+const cieTotal = cieSpecs.reduce((a, [, s]) => a + s.sessions.reduce(
+  (n, ses) => n + ses.papers.filter((p) => p.qp != null || p.ms != null).length, 0), 0);
+check("CIE archive holdings == 2,259", cieTotal === 2259, String(cieTotal));
+check("archive browser still exposes 108 specs", allArchiveSpecs().length === 108, String(allArchiveSpecs().length));
+// D2: no course page claims component-7 — the 27 legacy rows are reachable
+// only through the archive browser's per-spec page
+const c7OnCourses = EXPECT.flatMap((e) => corpusPapersForCourse(e.slug))
+  .filter((p) => p.dir.startsWith("9709-") && p.component === 7);
+check("D2: component-7 (27 rows) claimed by NO course", c7OnCourses.length === 0, String(c7OnCourses.length));
+const c7 = corpusPapersForCourse("cie-a-level-maths-20-pure-1").length; // sanity: c1 course unaffected
+check("pure-1 bank size intact (67)", c7 === 67, String(c7));
+
+// ── verdict ──────────────────────────────────────────────────────────────────
+console.log("");
+if (fails > 0) {
+  console.error(`CIE VALIDATOR FAILED — ${fails} assertion(s)`);
+  process.exit(1);
+}
+console.log("CIE VALIDATOR PASSED — the card's paper-count assertions hold at this tree");
