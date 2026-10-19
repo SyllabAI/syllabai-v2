@@ -8691,3 +8691,22 @@ Work Log:
 
 Stage Summary:
 - The 7 implications are a buildable spec: P0 marking-context contract + two-tier disclosure law + history-parity law; P1 re-attempt entitlement + lens cards + rings/plan attribution; P2 alternatives materialisation + conformance lint + study-plan builder + teacher persona surfaces. Pass-4 closed the five unexplored surfaces and proved plan attribution first-hand. Account left as Student persona; free-tier caveat stands.
+
+---
+Task ID: QA-SWEEP r0 (operator trace 1a1536e021f40e49 "Can view past paper from all of the courses, check out. And also check if all links are working properly")
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: verify past papers are viewable from ALL courses on the live hub and check every link works
+
+Work Log:
+- Fetch-first: local main FF 5e47227 -> 26d98da -> f1e9e94 mid-run (r4-api-b spec lane landed between); zero collisions (.syllabai-only receipt + worklog append).
+- Phase A harvest (live prod, read-only): 214 pages (seeds, 49 course pages, 49 past-papers pages, 103 /past-papers archive-spec pages, 10 misc routes) -> 21,039 unique <a> hrefs; derived the /api/corpus-pdf delivery set 1:1 from the 10,535 raw corpus URLs (T-MIG-128: pane streams same-origin, no <a> hrefs to harvest).
+- Phase B probe: 31,574/31,574 unique links 200/206 — ZERO failures, ZERO redirects. Breakdown: 10,500 internal HTML routes (incl. 8,378 viewer routes + 1,627 reconstruction pages), 10,535 /api/corpus-pdf delivery URLs, 10,535 raw.githubusercontent origins, 4 external Pearson links.
+- Content re-verify beyond status codes: 60/60 sampled viewer links fully render (49 view-mode toolbar+badge asserts; 11 ?mode=mock asserted via mock markers — mock chrome intentionally differs). Headless-browser end-to-end on prod: WCH11-01 June-2026 QP renders page 1/24 with 4 pdf.js canvases + corpus-pdf stream 200 (611KB); igcse 4CH1-1C June-2019 same; index serves 908 viewer links.
+- Course coverage verdict of record: 33/49 courses carry the official PDF archive (8,378 viewer routes, all valid pairings by construction — harvested from served hrefs); the 16 modular-24 courses honestly serve "no specification mapped into the archive yet" (no corpus spec mapped, by design) and still carry Mode-2 interactive reconstructions where parsed; the corpus-wide /past-papers archive browser reaches ALL 103 specs / 10,535 files including the 44 specs with no hub course.
+- Diagnosis disclosures: two hand-made INVALID pairings (underscore dir; IGCSE paper under IAL course) correctly served the not-found boundary inside a soft-200 (force-dynamic + streaming commits status before notFound()) — misread first as a client defect, disproven by clean browser tests on genuinely-served links; "doesn't exist" string is present in every page's flight payload (boundary is in every layout) and is NOT a render discriminator.
+- Findings (non-blocking, receipt QA-SWEEP-F1..F3): /sources 404 (dead route, ZERO inbound links — no user path); /favicon.ico 404 (no icon declared — cosmetic, one-file fix); soft-200 on invalid viewer pairings (informational).
+- Zombie prj_D7vf: UNCHANGED — blocked at third account (census-2 of record @ 5e47227); noted in receipt.
+- Local prod-build reproduction attempt (bun install + next build + standalone server @ 26d98da) — used for the not-found discriminator ground truth; build green (exit 0); server stopped after tests.
+
+Stage Summary:
+- ANSWER OF RECORD: past papers are viewable end-to-end from every course with a mapped spec, every one of the 10,535 corpus files is reachable and streams 200, and ALL 31,574 probed links work — ZERO broken links on the live hub. The 16 modular-24 courses are an honest, by-design empty state (roadmap, not a bug); if the operator wants official PDF archives there, the corpus must acquire those specs first. Receipt: .syllabai/receipts/QA-SWEEP/qa-pastpapers-links-sweep-r0.json. Residuals unchanged: PAT rotation, Vercel token rotation, Render disable, prj_D7vf third-account delete. LANE R0: IDLE.

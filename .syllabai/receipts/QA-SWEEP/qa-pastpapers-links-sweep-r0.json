@@ -1,0 +1,88 @@
+{
+  "receipt": "qa-pastpapers-links-sweep-r0",
+  "family": "QA-SWEEP",
+  "operatorTrace": "1a1536e021f40e49",
+  "operatorOrder": "Can view past paper from all of the courses, check out. And also check if all links are working properly",
+  "generatedUtc": "2026-10-19T09:40:00Z",
+  "agent": "R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "scope": {
+    "target": "https://syllabai-hub-v2.vercel.app (prod alias; carrier = the band-133d bake dpl_Daps9E6… per T-MIG-133 run-002 of record)",
+    "mode": "read-only sweep; zero mutations; zero destructive action; .syllabai-only receipt"
+  },
+  "method": [
+    "Phase A harvest: 214 live pages fetched (root + /courses + /past-papers seeds; 49 course pages; 49 course past-papers pages; 103 archive-spec pages /past-papers/{spec}; 10 misc routes). Links extracted from served HTML <a href>.",
+    "Derivation: the viewer pane streams PDFs via /api/corpus-pdf/<path> (T-MIG-128) with no <a> hrefs in HTML, so the delivery set was derived 1:1 from every harvested raw.githubusercontent.com corpus URL (10,535).",
+    "Phase B probe: every unique link probed (concurrent, checkpointed). HTML routes status-asserted; PDF origins header-asserted (Range/HEAD).",
+    "Content re-verify: 60 sampled viewer links body-asserted (toolbar/chrome discriminators; ?mode=mock asserted via mock markers).",
+    "Browser end-to-end: headless chromium on prod — pdf.js canvas paint, toolbar, page indicator, network capture of the corpus-pdf stream."
+  ],
+  "numbers": {
+    "pagesFetched": 214,
+    "pages200": 213,
+    "uniqueLinksProbed": 31574,
+    "ok200or206": 31574,
+    "failures": 0,
+    "internalHtmlRoutes": 10500,
+    "viewerRoutesProbed": 8378,
+    "reconstructionPaperPages": 1627,
+    "pdfDeliveryProxyUrls": 10535,
+    "pdfRawOriginUrls": 10535,
+    "externalLinks": 4,
+    "redirects": 0
+  },
+  "contentVerification": {
+    "sampledViewerLinks": 60,
+    "fullyRendered": 60,
+    "note": "49 view-mode (toolbar 'Question paper' + AI-IDENTIFIED badge asserted) + 11 ?mode=mock (mock/timer markers asserted; mock chrome intentionally differs).",
+    "browserEndToEnd": [
+      "/courses/ial-chemistry-17/past-papers/view/2026-06/WCH11-01?doc=qp — h1 WCH11/01, 4 pdf.js canvases painted, toolbar [Question paper|Mark scheme|Split], network: /api/corpus-pdf/…/wch11/past-papers/2026-06/WCH11-01/qp.pdf 200 (611KB transferred)",
+      "/courses/igcse-chemistry-19/past-papers/view/2019-06/4CH1-1C?doc=qp — h1 4CH1/1C, 4 canvases, same toolbar",
+      "past-papers index — 908 viewer links served"
+    ],
+    "invalidPairingDiscriminator": "not-found boundary content verified ABSENT on all sampled valid pairings; present (correctly) on hand-made invalid pairings (wrong-course/wrong-dir probes during diagnosis — disclosed, not user-reachable)"
+  },
+  "courseCoverageVerdict": {
+    "coursesOfRecord": 49,
+    "withOfficialPdfArchive": 33,
+    "viewerRoutes": 8378,
+    "honestEmptyState": 16,
+    "emptyStateNote": "The 16 modular-24 courses (unit-1/unit-2 splits incl. science-double-award-modular-24) have no corpus spec mapped (COURSE_SPECS in apps/hub src/lib/pastpapers-corpus.ts); their past-papers pages serve 'This course has no specification mapped into the archive yet.' — by design, honest. They still carry Mode-2 interactive reconstructions where the parsed corpus attests (e.g. igcse-maths-a-modular-24-higher-unit-1: 229 reconstruction pages).",
+    "corpusWideArchive": "The /past-papers archive browser (103 spec pages, generateStaticParams + dynamicParams=false) covers ALL corpus specs — including the 44 with no hub course (Cambridge International, IAL accounting/business/economics/IT/law/psychology, legacy GCE maths, IGCSE commerce/CS/human-biology/ELB). All 10,535 corpus files (qp/ms/er) reachable from it; all 200.",
+    "answerOfRecord": "Past papers ARE viewable from every course that has a mapped spec (33/49, all 8,378 viewer routes render + stream), every corpus file is reachable through the archive browser (103/103 specs, 10,535/10,535 files), and the 16 unmapped modular-24 courses honestly declare the gap instead of faking it."
+  },
+  "findings": [
+    {
+      "id": "QA-SWEEP-F1",
+      "severity": "informational",
+      "what": "/sources returns 404",
+      "why": "dead route; ZERO pages link to it (verified against all 214 harvested pages) — no user path reaches it; probed proactively from the route tree",
+      "action": "none required; delete-or-implement at product discretion"
+    },
+    {
+      "id": "QA-SWEEP-F2",
+      "severity": "cosmetic",
+      "what": "/favicon.ico returns 404 on prod",
+      "why": "no favicon/icon declared in apps/hub (no src/app/favicon.ico, no icon.* , none in layout metadata); browsers request it on every visit",
+      "action": "one-file fix when convenient (add src/app/favicon.ico or icon.svg)"
+    },
+    {
+      "id": "QA-SWEEP-F3",
+      "severity": "informational",
+      "what": "viewer route returns soft-200 for INVALID course/session/paperDir pairings (not-found boundary streamed inside HTTP 200)",
+      "why": "export const dynamic = 'force-dynamic' + streaming commits 200 before notFound() throws; content is correct (not-found page renders), status code is non-standard",
+      "action": "none required; noted for any future status-code-sensitive consumer"
+    }
+  ],
+  "brokenLinks": [],
+  "zombieStatusNote": "prj_D7vf decommission remains BLOCKED at the third account (census-2 of record @ 5e47227: handed syllab-ai token swept 5 vectors ALL NEGATIVE); unchanged this run; operator path stands (third-account console delete or third-account token handoff).",
+  "artifacts": {
+    "probeState": "sandbox-local work/qa_pp_state.json (ephemeral; numbers + method of record in this receipt)",
+    "screenshot": "sandbox-local work/viewer_live.png (WCH11/01 June 2026 QP page 1/24 rendered)"
+  },
+  "residualReminders": [
+    "GitHub PAT rotation STILL OPEN (transited chat repeatedly; now used by many lanes)",
+    "Vercel token rotation (transited chat twice: run-006 bake + census-2)",
+    "Render console disable (CSP still references syllabai-core.onrender.com)",
+    "prj_D7vf third-account delete"
+  ]
+}
