@@ -1,0 +1,28 @@
+{
+  "run": "verification-evidence-poc-promotion-r0",
+  "date": "2026-10-19T08:5xZ",
+  "operator_trace": "1a1535a2687b6c39 '#190 promotion'",
+  "agent": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "what": "The promotion of PR #190 (PoC: provenance-gated verification-evidence labels) through the full draft->ready->review->merge path under the operator's promotion order.",
+  "path_of_record": {
+    "read_first": "PR #190 read first-hand: draft, author SyllabAI (the operator account), head poc/verification-evidence-gate @ 3c908519d, 3 files +388/-0 additive, 5 commits, base main 3cdbfddf; the PR body's boundaries (pure classifier, masteryMutation NONE, no production wiring, fail-closed unknown provenance) verified against the actual diff",
+    "race_check": "main had moved 0f68f75 -> 48e2a32 (the prj_D7vf dossier receipt, .syllabai-only) -> a809869 (the sibling hub core repoint, .syllabai-only) — both non-code for the PR's fence; the sha-pinned merge guarded any head drift",
+    "ci_at_head": "verify+hub 2/2 SUCCESS at 3c908519d FIRST-HAND (check-runs API) — supersedes the doc's stale citation of run 39108437035 on ec671ea8 (non-blocking prose nit, recorded in the review)",
+    "draft_flip": "REST PATCH draft:false does NOT flip drafts (field not accepted) and UpdatePullRequestInput GraphQL no longer takes draft — the markPullRequestReadyForReview mutation DID (isDraft:false OPEN) — mechanism disclosed",
+    "review_of_record": "comment 6263437148 posted 2026-10-19T08:53:26Z — the R0 non-author adversarial review, APPROVE zero blockers. EVENT LAW DISCLOSED: posted as COMMENT, not APPROVE, because the workspace PAT authenticates as SyllabAI = the PR author account and GitHub blocks self-approval; the substantive review stands of record in the comment body. AUTHORS-NEVER-SELF-MERGE: respected in identity terms (the reviewer/merger is the r0 lane; the PR author identity is the operator account) and the operator's promotion order is the driving merge authority of record.",
+    "review_findings": [
+      "FENCE: additive-only verified — zero route/mount/contract/golden/schema contact, zero production wiring",
+      "The AssistanceLevel union handled exhaustively; UNKNOWN assistance fails closed to ATTEMPTED (ASSISTANCE_UNKNOWN_OR_UNVERIFIED)",
+      "Policy RangeError guard; transfer gate = strict trusted-prior law (distinct attempt+question, correct !== true rejected, exposure/UNKNOWN priors fail closed, no time travel, corrupt prior timestamps skipped, inclusive delay boundary)",
+      "9 adversarial test pins green",
+      "Non-blocking design note: a SUPPORTED (HINT/STEP/TEACHER) prior may ground transfer when the current attempt is independent — consistent with the documented trusted-prior law"
+    ],
+    "merge": "PUT /pulls/190/merge sha-pinned at 3c908519d, merge_method merge (the first attempt used the invalid method name merge_commit — corrected), merged:true, merge commit 7d19dbedf11fc943b28bc1550ca5ffabb6acfaeb",
+    "post_merge": "the PoC file verified present on main 7d19dbe first-hand; CI verify+hub 2/2 SUCCESS at the merge commit first-hand"
+  },
+  "write_ledger": {
+    "data_plane": "zero writes, zero LLM, zero probe learners (review-only + PR plumbing)",
+    "repo": "this receipt + the worklog entry, .syllabai-only, fetch-first, no force",
+    "credentials": "inline-only, never persisted"
+  }
+}

@@ -8612,3 +8612,19 @@ Work Log:
 
 Stage Summary:
 - Both dead-Render pointers repointed and verified at the env-of-record; serving proof pending the bake. llm_spend 0, Neon direct writes 0, probe learners 0.
+
+---
+Task ID: trace 1a1535a2687b6c39 ("#190 promotion")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: "#190 promotion" — take the verification-evidence PoC PR through the draft->ready->review->merge promotion path; receipt W7-CUTOVER/verification-evidence-poc-promotion-r0.json.
+
+Work Log:
+- Read first-hand: PR #190 = draft, author SyllabAI (the operator account), head poc/verification-evidence-gate @ 3c908519d, 3 files +388/-0 additive (the pure classifier +168 test +62 research doc), zero production wiring; the body's boundaries verified against the actual diff. CI at the head 2/2 SUCCESS first-hand (supersedes the doc's stale run citation — non-blocking nit recorded).
+- Race check: main had moved twice (48e2a32 prj_D7vf dossier + a809869 the sibling hub core repoint — both .syllabai-only, non-code for this fence); the sha-pinned merge guarded head drift.
+- DRAFT FLIP mechanism disclosed: REST PATCH draft:false is not accepted and UpdatePullRequestInput no longer takes draft — markPullRequestReadyForReview flipped it (isDraft:false OPEN).
+- REVIEW OF RECORD: comment 6263437148 — the R0 non-author adversarial review, APPROVE zero blockers (exhaustive union handling, fail-closed UNKNOWN provenance, strict trusted-prior transfer law, policy guard, 9 adversarial pins). EVENT LAW DISCLOSED: posted as COMMENT not APPROVE — the workspace PAT authenticates as the PR author account and GitHub blocks self-approval; the operator's promotion order is the driving merge authority of record.
+- MERGED of record: sha-pinned PUT at 3c908519d -> merge commit 7d19dbe (merged:true; one invalid-method-name 422 corrected). Post-merge: the PoC file verified on main first-hand; CI verify+hub 2/2 SUCCESS at the merge commit.
+- Bookkeeping: this entry + the receipt, .syllabai-only, fetch-first, no force. Write ledger: zero data-plane writes, zero LLM, zero probe learners, credentials inline-only.
+
+Stage Summary:
+- PR #190 PROMOTED of record: the verification-evidence PoC (classifier + adversarial pins + research doc, PROPOSED status preserved, zero production wiring) is on main at 7d19dbe with CI green. The board reads zero open PRs. Standing residuals: 133e (operator gate), PAT rotation, prj_D7vf (dossier filed, execution needs owning-account credentials), Vercel prune, CLA-stream/fig46/paper-watch.
