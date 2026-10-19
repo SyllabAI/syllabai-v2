@@ -9050,3 +9050,17 @@ Work Log:
 
 Stage Summary:
 - The operator's statement is now WIRE-PROOF of record: the 136d battery + golden cases run green against the live tree, independently re-proven by this lane; the collision question is closed (other agent did the work of record; nothing duplicated); the branch's b4e1fd0 remains the one unmerged 136 commit for the next lane touch
+
+---
+Task ID: CIE-PHASE1-VERIFY-1 (operator trace 1a155e1fc25bf1d1 "Proceed")
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: continue from the Phase-1 order — of-record verification + worklog reconstruction after a second sandbox rollback
+
+Work Log:
+- SANDBOX DISCLOSURE (zero of-record impact): this sandbox rolled back again to an Oct-13/14 snapshot — the local worklog's CIE entries, the scratch-v2-cie-p0 clone, the work/cie-phase0 artifacts and the p0_* lane scripts were wiped (same class as the T-MIG-127 reconstruction disclosure). Of-record authority untouched on origin; this entry also restores the CIE lane trail here (Phase 0 = roster manifest 401a05e, Phase 1 = spines receipt 9d8a943 — both lanes filed receipts, the repo worklog entries were the rollback casualty).
+- Re-established first-hand from origin (fresh blob:none clone @ main cbc7835): the Phase-1 order (trace 1a155724b2d726dd) was ALREADY DISCHARGED by this session's prior incarnation — receipt CIE-INTEGRATION/cie-phase1-spines-r0.json @ 9d8a943; PR #206 (cie-phase1/spines-r0 @ f0144d9, base f7f9404) MERGED bed4ae4730a03868d10339e068cb11bcdbef12ed 2026-10-19T19:05:02Z.
+- Independent re-verification (no-duplicate-acts: nothing rebuilt, zero content writes): PR #206 state + check-runs via API — hub SUCCESS + verify SUCCESS at the merge commit (combined success; PR head f0144d9 also 3/3 incl. Vercel preview comments); validate_spines.py re-run first-hand at tip = 93/93 pass (49 Edexcel + 44 CIE), exit 0, chemistry golden code_set_equal true / 0 statement diffs, 11,146 total spec points; spot-check cie-igcse-chemistry-23 = 314 nodes (1 SUBJECT / 12 TOPIC / 49 SUBTOPIC / 252 SPEC_POINT) + 313 materialized PART_OF edges, meta.resourcesSha a4ce9f5 == the receipt pin, dupCodePolicy (synthetic ascending letters) documented in meta.
+- Local worklog reconstructed (CIE-PHASE0-1 + CIE-PHASE1-1 entries with the rollback disclosure); lane scripts persisted under scripts/ (p1_clone/p1_verify). .syllabai-only, fetch-first, no force.
+
+Stage Summary:
+- CIE-INTEGRATION Phase 1 CONFIRMED DONE OF RECORD (44 spines from 33 specs via PR #206, CI 2/2, gauntlet 93/93) — next main work item per the receipt: Phase 2 content-maps + rekeyed bundles for the 44 slugs (upstream spec_point_index.json join, NO-GUESS lineage), then Phase 3 registry rows. LANE R0: IDLE.
