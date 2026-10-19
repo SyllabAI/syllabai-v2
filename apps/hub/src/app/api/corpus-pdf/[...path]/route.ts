@@ -26,7 +26,9 @@ import { BOOKS_REPO, PASTPAPERS_REPO } from "@/lib/pastpapers-shared";
  * `past-papers/<specKey>/(past-papers|specimen)/<dir>/(qp|ms|er).pdf` (the
  * T-MIG-128 corpus) or `books/<specKey>/student-book.pdf` plus its per-page
  * artifacts `books/<specKey>/(ocr_pages/page_NNN.txt|docling_pages/page_NNN.json)`
- * (T-MIG-133 band 133c) — every segment is character-validated, `..` is
+ * (T-MIG-133 band 133c) and the 133e page-exact slices
+ * `books/<specKey>/(chapters/u<n>_c<n>[_q].pdf|units/u<n>_practice.pdf)` —
+ * every segment is character-validated, `..` is
  * impossible, and only the two archive hosts are ever contacted (past-papers
  * → syllabai-pastpapers, books → syllabai-resources; dispatch by root
  * segment). Non-200 upstreams are 502 with `no-store` so a raw hiccup is
@@ -59,6 +61,15 @@ export function validatedCorpusPath(segments: readonly string[]): string | null 
   if (segments[0] === "books") {
     // books/<board>/<qual>/<subject>/<spec>/<file...>
     if (segments.length === 6 && segments[5] === "student-book.pdf") return path;
+    // T-MIG-133 band 133e: the page-exact slices the viewer mounts instead
+    // of the ~54MB whole book — chapter lessons u<n>_c<n>.pdf, the hard-split
+    // practice-question slices u<n>_c<n>_q.pdf (the anchor jump), and the
+    // unit exam-practice slices u<n>_practice.pdf (the u<n>:xexam-practice
+    // mounts). Naming is fixed by the slice of record (book-slices-manifest-v1);
+    // the manifest drives WHICH files exist, this grammar only admits their
+    // shape — append-only, character-validated by the segment loop above.
+    if (segments.length === 7 && segments[5] === "chapters" && /^u\d+_c\d+(_q)?\.pdf$/.test(segments[6])) return path;
+    if (segments.length === 7 && segments[5] === "units" && /^u\d+_practice\.pdf$/.test(segments[6])) return path;
     if (segments.length === 7 && segments[5] === "ocr_pages" && /^page_\d{3}\.txt$/.test(segments[6])) return path;
     if (segments.length === 7 && segments[5] === "docling_pages" && /^page_\d{3}\.json$/.test(segments[6])) return path;
     return null;
