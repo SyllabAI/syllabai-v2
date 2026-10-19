@@ -8747,6 +8747,25 @@ Stage Summary:
 - OPERATOR QUEUE ADDITIONS: (1) syllabai-resources at 4.75GB vs the 5GB push hard limit — the next book intake hits the wall (move page-artifact bulk / LFS / new archive repo — decide BEFORE the Maths B book lands); (2) the Maths B book source needs an operator handoff (tmpfiles pattern) when ready; (3) standing: PAT rotation (further transits added this turn), prj_D7vf.
 
 ---
+Task ID: T-MIG-136 bands 136a+136e (run-002)
+Agent: r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)
+Task: Operator trace 1a153dfab49abd9d — tutor / smart mark / CLA / learner model working with Maths B (4MB1); pilot expanding to more subjects; mid-run operator note: 4MA1 is another agent's lane (honored — zero 4MA1 content touched)
+
+Work Log:
+- Post-rollback recovery: the sandbox had wiped the v2 clone, node_modules and the session's scratch state; re-cloned (--filter=blob:none) + bun install (930 pkgs); fetch-first to f16f9eb
+- INCIDENT re-audit (independent, post-rollback): the run-001 corpus restore of record re-verified from scratch — origin/main 8beecb97, 77,709 paths, 0 of the 76,831 pre-clobber paths missing, raw serving 200s (PARSE_STANDARD.md, igcse-maths-b-16 manifest/index), Official-Specifications/igcse-maths-b/ present; the +878 delta decoded (books +60 = 133e's relocated 4ch1 slices; 818 root residue paths = 133e's own debt, untouched); receipt T-MIG-133/band-133e-incident-corpus-restore-run-001-r0.json stands
+- Band 136a: bundle-seed grammar THREE-SHAPED — SUBTOPIC tails letter|dotted|placeholder (4MB1-S1-_), SPEC_POINT second dbCode law for the 4MB1 alnum series ^\d{1,2}[A-Z]$ (4MB1-S1-1A, 4MB1-S10-10A — code verbatim, grandparent-UNIT-prefixed); physics/maths-a byte-identical re-proven on the real bundle bytes; maths-b pins 1/10/10/98/118, seed 119 nodes/118 edges fresh + idempotent
+- Band 136e: paper-identity grammar THREE-SUBJECT — PAPER_CODE_MB separate precise regex (else-branch only, provable non-regression), NO bare-unit bind for maths-b (digit false-positive class), alias 4MB1→4MB0, /^4MB/ unit branches, bare-digit token law; courses.json maths-b row + curriculumCode 4MB1-2016; coreBridge ABSENT (operator-declared law; the flag gates an honestly-empty question axis — rule 3); hub verified already courseRef-generic from 135d
+- Gates: typecheck exit 0 x4; api 1790/0/13skip (18741 expects); shared 75/0; contracts 345/0; hub build + lint GREEN; census --gate GREEN LIVE=0
+- Defects on the record, both caught and fixed pre-landing: (1) my first 10A test pin violated the verbatim law (expected 4MB1-S10-1A; engine correct at 4MB1-S10-10A); (2) a 44-fail full-suite run was environmental (post-rollback node_modules), cleared by bun install
+
+Stage Summary:
+- The four subsystems now have their Maths B substrate of record: CLA + learner model serve off the 136a seed (root 4MB1, 119 nodes), tutor graph arm resolves 4MB1-2016 the moment 136c lands, smart mark honestly dormant (zero questions — the 135b shim ingests verbatim if a bank ever lands), fetch-bank grammar ready for a future 4MB corpus
+- Branch t-mig-136/r7a @ 360e207 + receipt run-002 + this card update; PR to main
+- OPERATOR QUEUE: (1) 136c prod apply (combined 4MA1+4MB1 Neon order is an option; COW-proof first); (2) coreBridge per-row declaration for igcse-maths-b-16 if/when the core-questions axis is wanted (moot until questions exist); (3) the Maths B book source handoff (tmpfiles pattern) + the syllabai-resources 4.75GB/5GB push-wall decision BEFORE it lands; (4) standing: PAT rotation, prj_D7vf
+
+---
+
 Task ID: trace 1a15468ab530684d ("api redeploy, but check if already done")
 Agent: sz (Super Z, zai-web session web-9d2144ad-f8b8-4e63-9039-989f45cb596f)
 Task: "api redeploy, but check if already done" — the operator-gated api redeploy lever, pre-fire check first (the T-MIG-133 first-check protocol).
