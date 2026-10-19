@@ -182,6 +182,33 @@ function requireSeedEdge(what: string, provenance: string, edgeProvenance: strin
 
 // ── the code mapping (the of-record 4CH1 scheme, mirrored) ───────────────────
 
+/**
+ * Canonical JSON form — key-order-INSENSITIVE and transport-form-INSENSITIVE.
+ * The T-C24 content-equality guard must compare jsonb CONTENT, not string
+ * forms: (a) real jsonb normalizes key order on read-back, and (b) the
+ * store may hand the column back as RAW TEXT (driver-dependent type parsing
+ * — prod-probe of record: typeof row.applicability === 'string' on the
+ * pooled syllabai_v2_app path). So: JSON-shaped strings are parsed before
+ * canonicalizing; object keys sort; arrays keep order (semantic). A raw
+ * comparison would re-write identical values on every re-run (prod-
+ * disclosed: applies 2-3 performed 195 content-neutral UPDATEs each before
+ * this law landed).
+ */
+function canonicalJson(value: unknown): string {
+  if (typeof value === "string") {
+    try {
+      return canonicalJson(JSON.parse(value) as unknown);
+    } catch {
+      return JSON.stringify(value) ?? "null";
+    }
+  }
+  if (value === null || typeof value !== "object") return JSON.stringify(value) ?? "null";
+  if (Array.isArray(value)) return "[" + value.map(canonicalJson).join(",") + "]";
+  const record = value as Record<string, unknown>;
+  const keys = Object.keys(record).sort();
+  return "{" + keys.map((k) => JSON.stringify(k) + ":" + canonicalJson(record[k])).join(",") + "}";
+}
+
 interface MappedNode {
   bundleCode: string;
   dbCode: string;
@@ -395,14 +422,45 @@ export async function seedBundleCurriculum(
     }
   }
 
-  // the PART_OF edges — from the bundle's own edge list (authoritative),
-  // endpoints mapped through the bundle-code → node resolution
+  // the PART_OF edges — THE STORE DIRECTION LAW OF RECORD: the frozen
+  // attach(child, parent) materializes source=DESCENDANT, target=ANCESTOR
+  // ("source PART_OF target" — the chemistry census: 4CH1-S1→4CH1,
+  // 4CH1-S1-a→4CH1-S1, 4CH1-1.1→4CH1-S1-a). The BUNDLE's own edge list
+  // carries the OPPOSITE (ancestor→descendant: source=root, target=child),
+  // so the endpoints are NORMALIZED on materialize: child = e.target,
+  // parent = e.source. The normalization is NOT assumed — it is
+  // CROSS-CHECKED against the mapping's own validated parent chain (every
+  // non-root node carries exactly one in-bundle parent with enforced
+  // family types); any disagreement between the bundle edge list and the
+  // parent chain fails closed as store drift, never a guessed direction.
+  const fromMapping = new Set<string>();
+  for (const m of mapped.values()) {
+    if (m.nodeType === "SUBJECT" || m.parentBundleCode == null) continue;
+    fromMapping.add(m.bundleCode + "<<<" + m.parentBundleCode);
+  }
+  const fromBundle = new Set<string>();
   for (const e of bundle.edges) {
-    const child = resolved.get(e.source);
-    const parent = resolved.get(e.target);
-    if (child == null || parent == null) {
+    if (!resolved.has(e.source) || !resolved.has(e.target)) {
       throw new BundleSeedConflictError(
         "bundle edge " + e.source + " -> " + e.target + " does not resolve — store drift",
+      );
+    }
+    fromBundle.add(e.target + "<<<" + e.source);
+  }
+  if (fromMapping.size !== fromBundle.size || [...fromMapping].some((k) => !fromBundle.has(k))) {
+    throw new BundleSeedConflictError(
+      "bundle edge list disagrees with the node parent chain (" +
+        fromMapping.size + " mapping pairs vs " + fromBundle.size +
+        " normalized bundle pairs) — store drift",
+    );
+  }
+  for (const key of fromMapping) {
+    const idx = key.indexOf("<<<");
+    const child = resolved.get(key.slice(0, idx));
+    const parent = resolved.get(key.slice(idx + 3));
+    if (child == null || parent == null) {
+      throw new BundleSeedConflictError(
+        "edge " + key + " does not resolve — store drift",
       );
     }
     await attach(deps, child, parent, "bundle structure (PART_OF)", provenance, activatedBy, counters, now);
@@ -548,7 +606,7 @@ async function resolveNode(
     requireSeedNode(existing, code, provenance);
     if (
       applicability != null &&
-      JSON.stringify(applicability) !== JSON.stringify(existing.applicability ?? null)
+      canonicalJson(applicability) !== canonicalJson(existing.applicability ?? null)
     ) {
       await deps.sql`
         update knowledge_nodes set applicability = ${JSON.stringify(applicability)}::jsonb

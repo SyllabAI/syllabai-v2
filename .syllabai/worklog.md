@@ -8755,3 +8755,18 @@ Work Log:
 
 Stage Summary:
 - Pass 5 of record: S&W = threshold-gated per-topic analytics; Flashcards = server-persisted tri-state mastery ledger; Mock Exams = authentic-exam simulation, strongest premium anchor observed (cover preview + live timer free; questions never rendered). Free-tier gate map now: downloads, guided-practice starts, re-marks, mock start/download/answers. No repo/register mutations — product research lane (consistent with Tasks 45-49 handling).
+Task ID: trace 1a15385375fcb3f5 ("apply the seed")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: T-MIG-134 band 134c — the operator prod-apply order for the second-subject (Physics 4PH1) curriculum seed.
+
+Work Log:
+- RACE RE-CHECK CLEAR at open (tip f3180ac both sides; zero 134c lanes); re-checked again before the push.
+- COW-PROOF (the 093/133b law): run001 (br-shiny-river, COW of production) — the apply SUCCEEDED but the verify CAUGHT A FATAL DEFECT: PART_OF edges INVERTED vs the store convention of record (chemistry: source=DESCENDANT→target=ANCESTOR; mine was ancestor→descendant) — every tree-walk consumer (graph.tree, taxonomy.subtreeIds, CLA isolation) would have missed the physics tree. Branch DELETED; the seed fixed with THE STORE DIRECTION LAW (bundle ancestor→descendant normalized to descendant→ancestor, CROSS-CHECKED against the mapping's parent chain, disagreement fails closed) + a direction unit law.
+- COW run002 (br-red-rain): apply 234/233; DIRECTION LAW VERIFIED (8 UNIT→SUBJECT + 30 TOPIC→UNIT + 195 SP→TOPIC, subject_as_source=0, isolation 0); all laws green. Branch DELETED post-proof.
+- PROD APPLY (the operator's order): one transaction (sql.begin, the frozen @Transactional law) via apps/api/scripts/seed-bundle-curriculum.ts — apply-1: cv 5a9cd8fe ACTIVE, subject 86265a33, root 4e845c30, 234 nodes / 233 edges / 195 applicability writes. POST-APPLY VERIFY ALL GREEN: two ACTIVE cv (4CH1-2017 + 4PH1-2017), subject linked, 234/234 VALIDATED, single provenance line, P-suffix applicability verbatim, isolation 0, direction exact, bounds hold, store totals 669 nodes / 6 subjects.
+- IDEMPOTENCY PROOF (re-applies): apply-2/3 = structural no-op (0 created, all reused, alreadyActive=true) but the T-C24 guard re-wrote 195 IDENTICAL applicability values (content-neutral) — jsonb key-order normalization + the driver returning the column as RAW TEXT defeated the raw stringify compare; fixed with canonicalJson (key-order- AND transport-form-insensitive) + 2 new unit laws; apply-4 = THE CLEAN NO-OP (0/0/0 writes, all reused). All four applies disclosed in the receipt.
+- Tests: 13/13 seed laws; full api suite 1761/0/13; typecheck clean. URIs staged 0600 outside every repo, SHREDDED post-gate, never printed; 2 COW branches deleted.
+- Bookkeeping: receipt T-MIG-134/prod-apply-run-001-r0.json + this entry + card status. Write ledger: the one transactional seed + the disclosed re-apply passes; zero LLM; zero probe learners.
+
+Stage Summary:
+- BAND 134c DONE OF RECORD: the second-subject DIMENSION is LIVE on prod Neon — Physics 4PH1 (195 official spec points) coexists with Chemistry 4CH1 under the store's direction law; the seed is idempotent + conflict-fail-closed + re-runnable for any IGCSE bundle (4BI1 next if ordered). 134b (questions via the SME ingest, 1.0-vs-1.1 gate) and 134d (four-subsystem zero-LLM battery) staged. Residuals unchanged: 133e, PAT rotation, prj_D7vf, Vercel prune.

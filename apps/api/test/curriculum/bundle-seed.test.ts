@@ -301,6 +301,36 @@ describe("second-subject seed — deterministic idempotent activation", () => {
     expect(sp.provenance).toBe(bundleProvenance(SOURCE));
   });
 
+  test("the PART_OF direction law of record: source=DESCENDANT, target=ANCESTOR", async () => {
+    // the store convention (chemistry census: 4CH1-S1→4CH1, 4CH1-S1-a→4CH1-S1,
+    // 4CH1-1.1→4CH1-S1-a — "source PART_OF target"); the bundle's edge list
+    // carries the opposite direction and MUST be normalized on materialize.
+    // The tree-walk consumers (graph.tree, taxonomy.subtreeIds, the CLA
+    // subject-isolation walk) key on this — an inverted edge is invisible
+    // to every subtree read.
+    const store = newStore();
+    await seedBundleCurriculum(seedDeps(store), bundle, SOURCE, ACTIVATOR);
+    const sp = store.nodes.get("4PH1-1.1")!;
+    const topic = store.nodes.get("4PH1-S1-a")!;
+    const unit = store.nodes.get("4PH1-S1")!;
+    const root = store.nodes.get("4PH1")!;
+    // SP PART_OF TOPIC: source=SP, target=TOPIC
+    expect(store.edges.has(sp.id + "->" + topic.id)).toBe(true);
+    expect(store.edges.has(topic.id + "->" + sp.id)).toBe(false);
+    // TOPIC PART_OF UNIT: source=TOPIC, target=UNIT
+    expect(store.edges.has(topic.id + "->" + unit.id)).toBe(true);
+    expect(store.edges.has(unit.id + "->" + topic.id)).toBe(false);
+    // UNIT PART_OF SUBJECT: source=UNIT, target=SUBJECT
+    expect(store.edges.has(unit.id + "->" + root.id)).toBe(true);
+    expect(store.edges.has(root.id + "->" + unit.id)).toBe(false);
+    // every one of the 233 edges runs descendant→ancestor, never the reverse
+    const byId = new Map([...store.nodes.values()].map((n) => [n.id, n]));
+    for (const key of store.edges.keys()) {
+      const [s, t] = key.split("->");
+      expect(byId.get(s!)!.code).not.toBe(root.code);
+    }
+  });
+
   test("idempotent re-run: the structural no-op — every row reused, alreadyActive=true", async () => {
     const store = newStore();
     const first = await seedBundleCurriculum(seedDeps(store), bundle, SOURCE, ACTIVATOR);
@@ -311,6 +341,40 @@ describe("second-subject seed — deterministic idempotent activation", () => {
     expect(second.nodesReused).toBe(234);
     expect(second.edgesReused).toBe(233);
     expect(second.alreadyActive).toBe(true);
+    expect(store.applicabilityUpdates.n).toBe(0);
+  });
+
+  test("the jsonb key-order law: the guard compares CONTENT, not string forms", async () => {
+    // real jsonb normalizes key order on read-back — a re-run against the
+    // store must be a structural no-op (applicabilityWrites=0) even though
+    // the read-back object carries keys in another order than the seed
+    const store = newStore();
+    await seedBundleCurriculum(seedDeps(store), bundle, SOURCE, ACTIVATOR);
+    // simulate the jsonb read-back: rebuild one SP's applicability with
+    // keys in a DIFFERENT order, identical content
+    const sp = store.nodes.get("4PH1-1.2P")!;
+    const a = sp.applicability as { papers?: string[]; double_award_shared?: boolean; rule?: string };
+    sp.applicability = { rule: a.rule, double_award_shared: a.double_award_shared, papers: a.papers };
+    const rerun = await seedBundleCurriculum(seedDeps(store), bundle, SOURCE, ACTIVATOR);
+    expect(rerun.applicabilityWrites).toBe(0);
+    expect(store.applicabilityUpdates.n).toBe(0);
+  });
+
+  test("the jsonb transport-form law: a RAW-TEXT read-back compares by content", async () => {
+    // prod-probe of record: the driver may return the jsonb column as raw
+    // text (typeof row.applicability === 'string') — the guard must parse
+    // before comparing, or every re-run re-writes identical values
+    const store = newStore();
+    await seedBundleCurriculum(seedDeps(store), bundle, SOURCE, ACTIVATOR);
+    const sp = store.nodes.get("4PH1-1.2P")!;
+    const a = sp.applicability as { papers?: string[]; double_award_shared?: boolean; rule?: string };
+    sp.applicability = JSON.stringify({
+      rule: a.rule,
+      double_award_shared: a.double_award_shared,
+      papers: a.papers,
+    }) as unknown as Record<string, unknown>;
+    const rerun = await seedBundleCurriculum(seedDeps(store), bundle, SOURCE, ACTIVATOR);
+    expect(rerun.applicabilityWrites).toBe(0);
     expect(store.applicabilityUpdates.n).toBe(0);
   });
 
