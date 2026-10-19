@@ -8581,3 +8581,18 @@ Work Log:
 
 Stage Summary:
 - BAND 133d LIVE END-TO-END — CONFIRMED BY THE SECOND LANE, FIRST-HAND: the api serving state has closed to the 6c84af6 code wire; the run-002 receipt stands corroborated. The T-MIG-133 card's remaining items: 133e (operator gate). Standing residuals: PAT rotation, prj_D7vf, Vercel prune, #190 promotion.
+
+---
+Task ID: RESIDUALS-PRJD7VF run-001 (operator trace 1a15354b26717251 "prj_D7vf zombie cleanup")
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: zombie decommission (syllabai.vercel.app / prj_D7vf) — executed to the lane-side boundary; final deletion credential-blocked
+
+Work Log:
+- Live probes 2026-10-19: zombie syllabai.vercel.app (prj_D7vf) STILL 500 MIDDLEWARE_INVOCATION_FAILED on /, /login, /actuator/health — unchanged since the Oct-8 filing. Frozen-core syllabai-hub.vercel.app now 404 DEPLOYMENT_NOT_FOUND (W7-cutover retirement, r1c of record) — the zombie serves nothing of record and its sibling legacy surface is gone.
+- Dependency proof ALL CLEAR: hub-v2 served bundle = ZERO syllabai.vercel.app references (full chunk sweep); api live env CORS entry pruned 2026-10-08 (#147 execution matrix ALL GREEN); api code default corrected + T-MIG-098 guard pin asserts the zombie apex is NOT allowlisted (config.test.ts). Decommission-safe.
+- LEVER BLOCKED lane-side: deletion requires a Vercel token from the OWNING account — the out-of-token split-brain (r1c census: 6 projects in the syllab-ai team, no prj_D7vf; full project id never of record, only the prj_D7vf prefix). No lane credential reaches it; the #147-era team token does not apply.
+- Filed the decommission dossier of record: .syllabai/receipts/RESIDUALS/prj-d7vf-zombie-decommission-dossier-r0.json (target identity, live probes, dependency proof, console + API runbooks, credential handoff request).
+- SANDBOX disclosure (rollbacks #5/#6/#7-class, recurring): local trail volatility continues; of-record documentation intentionally filed IN-REPO (durable) rather than the local worklog.
+
+Stage Summary:
+- Zombie decommission verified SAFE + fully staged; awaiting ONE artifact from the operator: a Vercel token from the account that owns syllabai.vercel.app (inline handoff, the #147/run-006 pattern) — on handoff the lane executes DELETE /v9/projects/{id}, verifies DEPLOYMENT_NOT_FOUND, files the closure receipt. Console path equally valid (runbook in the dossier). LANE R0: IDLE.

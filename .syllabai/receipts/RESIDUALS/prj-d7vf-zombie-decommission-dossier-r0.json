@@ -1,0 +1,37 @@
+{
+  "task": "RESIDUALS: prj_D7vf zombie decommission — dossier of record",
+  "order": "operator trace 1a15354b26717251 'prj_D7vf zombie cleanup'",
+  "date": "2026-10-19",
+  "lane": "R0-integrator",
+  "target": {
+    "project_prefix": "prj_D7vf",
+    "domain": "syllabai.vercel.app",
+    "class": "zombie — permanent 500 MIDDLEWARE_INVOCATION_FAILED (edge middleware crash, hkg1), stale baked env; lineage: issue #147 (closed 2026-10-13, lever SUPERSEDED by retirement of record)",
+    "owning_account": "OUT-OF-TOKEN split-brain of record (r1c census 2026-10-18: 6 projects in the syllab-ai team, prj_D7vf NOT among them)"
+  },
+  "verified_live_2026-10-19": {
+    "zombie_probes": {
+      "syllabai.vercel.app/": "500 MIDDLEWARE_INVOCATION_FAILED",
+      "syllabai.vercel.app/login": "500 MIDDLEWARE_INVOCATION_FAILED",
+      "syllabai.vercel.app/actuator/health": "500 MIDDLEWARE_INVOCATION_FAILED"
+    },
+    "frozen_core_hub": "syllabai-hub.vercel.app -> 404 DEPLOYMENT_NOT_FOUND (retired with the W7 cutover; r1c of record)",
+    "dependency_proof": {
+      "hub_v2_served_bundle": "ZERO references to syllabai.vercel.app across the full served chunk set (live sweep)",
+      "api_live_env": "SYLLABAI_CORS_ORIGINS zombie entry pruned 2026-10-08 (#147 execution, matrix ALL GREEN)",
+      "api_code_default": "corrected default + T-MIG-098 guard pin 'the zombie apex syllabai.vercel.app is not allowlisted by default' (apps/api/test/identity/config.test.ts)",
+      "verdict": "ZERO dependencies of record — decommission-safe"
+    }
+  },
+  "lever_status": "BLOCKED lane-side: deletion (DELETE /v9/projects/{id}) requires a Vercel token from the OWNING account — the split-brain credential never handed to any lane. Dossier + runbook = this receipt; execution on credential handoff.",
+  "runbook_console": [
+    "1. Log into the Vercel account that owns syllabai.vercel.app (NOT the syllab-ai team account)",
+    "2. Project (prj_D7vf...) -> Settings -> General -> Delete Project (type name to confirm)",
+    "3. Post-delete verify: https://syllabai.vercel.app must return 404 DEPLOYMENT_NOT_FOUND"
+  ],
+  "runbook_api": [
+    "1. GET /v9/projects — locate prj_D7vf (full id), confirm a domain syllabai.vercel.app",
+    "2. DELETE /v9/projects/{id}",
+    "3. Verify domain 404 DEPLOYMENT_NOT_FOUND; file closure receipt"
+  ]
+}
