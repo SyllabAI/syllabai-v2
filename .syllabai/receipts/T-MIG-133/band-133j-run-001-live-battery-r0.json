@@ -1,0 +1,45 @@
+{
+  "receipt": "band-133j-run-001-live-battery-r0",
+  "band": "T-MIG-133 band 133j — the notes↔books spec-join (both directions)",
+  "date": "2026-10-20",
+  "operatorTraces": {
+    "go": "1a156004911ee41d ('go mapping')",
+    "tokenStaged": "1a1560c1ab000591 (GitHub PAT transited chat in plaintext — staged 0600 at /home/z/.secrets/secrets.env + ~/.git-credentials 0600, value never printed by tooling; ROTATION ADVISED)"
+  },
+  "push": {
+    "form": "FF-only (t-mig-133j/r0 -> main)",
+    "range": "9b9684c..ee2af24",
+    "head": "ee2af2486ed87816f6606a1f7481757422a077bb",
+    "commits": [
+      "186219c-class (rebased lineage) t-mig-133j(r0): the notes<->books spec-join band",
+      "ee2af24 receipt(t-mig-133j): run-000 prepush of record"
+    ],
+    "raceGuard": "origin main still 9b9684c at push time (verified immediately before); no force"
+  },
+  "battery": {
+    "script": "scripts/t133j_battery_run001.py (sandbox of record; zero-LLM, read-only, token read from staged file never printed)",
+    "verdict": "PASS — 8 wire legs + 1 browser leg",
+    "legs": [
+      "A.ci: 1 workflow run concluded success for head ee2af2486ed8 (GitHub API, full-SHA query)",
+      "B.bake: SSR of ?chapter=u1:c1 carries the 'Revision notes (4)' trigger — count 4 MATCHES the pre-band census; matcher note of record: the RSC flight stream renders the interpolated count as the backslash-escaped node form (Revision notes (\\\",4,\\\")), the battery matches label + 16-char window",
+      "C.honest-absent: ?chapter=u4:c24 (Alkanes, the census's only 0-note chapter) carries NO trigger",
+      "D1.133i-geometry: the same SSR still cites 'PDF pp. 11-22' (the corrected 133i range — no regression)",
+      "D2.registry: 29 chapters, 145 specCode refs served",
+      "D3.manifest: units/u1_practice.r2.pdf sha 9fddb979a979 unchanged (no drift)",
+      "E1.shelf-200 + E2.chapters-200: both client-called books endpoints 200 (the flipped family)",
+      "F.note-page: the note reader SSR renders (the client join mounts on hydration)"
+    ],
+    "browserLeg": {
+      "tool": "agent-browser (headless)",
+      "url": "/courses/igcse-chemistry-19/revision-notes/rn_2VnK66PqbvFKdKYt",
+      "result": "after hydration the client-side join RENDERED the 'Student book' link with href /courses/igcse-chemistry-19/books/e6c0db50-0f84-55de-b50c-e4d49285cd6d?chapter=u1%3Ac1 — the exact chapter-level landing the join law predicts for spec 4CH1-1.1/1.2 (u1:c1 States of matter). The note->book direction is proven on the live surface end-to-end."
+    }
+  },
+  "disclosures": [
+    "the viewer-side dropdown menu ITEMS render client-side on open (Radix) — the SSR battery asserts the TRIGGER + count; the item list is type-safe over the same hub.notes the census joined",
+    "GH API rate limits hit mid-verify (secondary limits) — the CI leg was one-shot verified and the wire legs are hub/archive/api surfaces (no auth needed)",
+    "method notes of record: short-SHA head_sha returns an empty run list (full 40-char SHA required); the flight-node text-splitting of interpolated SSR labels"
+  ],
+  "writeLedger": "git push (2 commits, FF) · hub bake via git-integration (no manual deploy) · zero Neon writes · zero LLM · token staged 0600 (rotation advised)",
+  "bandState": "133j DISCHARGED of record: the mapping the operator ordered is LIVE — viewer chapters list their related revision notes; note readers deep-link the matching chapter slice; honest-absent everywhere the data does not support a link"
+}
