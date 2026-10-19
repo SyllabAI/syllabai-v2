@@ -197,6 +197,92 @@ describe("resolveUnitExamMount", () => {
   });
 });
 
+describe("the merged slice law (133g — the operator's corrected geometry)", () => {
+  // the merged manifest of record: ONE slice per chapter (study material +
+  // practice questions inline), the `_q` rows retired, the anchor carried by
+  // questionsStartPage; the whole-role chapter has no honest anchor.
+  const merged = sliceManifestMirror.parse({
+    schema: "book-slices-manifest-v1",
+    book: {
+      documentId: "e6c0db50-0f84-55de-b50c-e4d49285cd6d",
+      docVersion: 1,
+      courseSlug: "igcse-chemistry-19",
+      specKey: "pearson-edexcel/international-gcse/chemistry/4ch1",
+    },
+    slices: [
+      entry({
+        file: "chapters/u1_c1.pdf",
+        role: "lesson",
+        chapterKey: "u1:c1",
+        pdfRange: [12, 22],
+        questionsStartPage: 21,
+      }),
+      entry({
+        file: "chapters/u1_c3.pdf",
+        role: "lesson",
+        chapterKey: "u1:c3",
+        pdfRange: [33, 38],
+        questionsStartPage: null,
+      }),
+      entry({ file: "units/u1_practice.pdf", role: "unit_exam", chapterKey: "u1:xexam-practice", pdfRange: [122, 131] }),
+    ],
+  });
+  const mmap = bookSliceMapOf(merged);
+  const mc1 = mmap.byChapter.get("u1:c1")!;
+  const mc3 = mmap.byChapter.get("u1:c3")!;
+
+  it("parses questionsStartPage as an optional nullable field", () => {
+    expect(mc1.mount.questionsStartPage).toBe(21);
+    expect(mc3.mount.questionsStartPage).toBeNull();
+    expect(mc1.questions).toBeNull(); // no `_q` rows in the merged manifest
+  });
+
+  it("the legacy manifest shape (no questionsStartPage key) still parses", () => {
+    const legacy = sliceEntryMirror.safeParse({
+      file: "chapters/x.pdf",
+      role: "lesson",
+      chapterKey: "u1:c1",
+      pdfRange: [12, 20],
+      slicePages: 9,
+      bytes: 1000,
+      sha256: "a".repeat(64),
+    });
+    expect(legacy.success).toBe(true);
+  });
+
+  it("the anchor jump opens the SAME merged slice at the questions offset", () => {
+    const r = resolveChapterMount(mc1, { part: "questions", page: null, fallbackPage: 21 });
+    expect(r.mount?.file).toBe("chapters/u1_c1.pdf"); // one file, no `_q`
+    expect(r.initialPage).toBe(10); // 21 - 12 + 1
+    expect(r.isQuestions).toBe(false); // the whole chapter slice is the mount
+  });
+
+  it("a citation page inside the chapter range beats the anchor intent", () => {
+    const r = resolveChapterMount(mc1, { part: "questions", page: 15, fallbackPage: 15 });
+    expect(r.mount?.file).toBe("chapters/u1_c1.pdf");
+    expect(r.initialPage).toBe(4); // 15 - 12 + 1 — the citation wins
+  });
+
+  it("a page outside the chapter range lets the anchor intent win", () => {
+    const r = resolveChapterMount(mc1, { part: "questions", page: 40, fallbackPage: 40 });
+    expect(r.initialPage).toBe(10); // the anchor offset, not page 1
+  });
+
+  it("a merged chapter without an honest anchor has no jump", () => {
+    const r = resolveChapterMount(mc3, { part: "questions", page: null, fallbackPage: 33 });
+    expect(r.mount?.file).toBe("chapters/u1_c3.pdf");
+    expect(r.initialPage).toBe(1);
+    expect(r.isQuestions).toBe(false);
+  });
+
+  it("the plain chapter mount is unchanged (citation offsets, page-1 law)", () => {
+    const r = resolveChapterMount(mc1, { part: undefined, page: 15, fallbackPage: 15 });
+    expect(r.initialPage).toBe(4);
+    const r2 = resolveChapterMount(mc1, { part: undefined, page: null, fallbackPage: 12 });
+    expect(r2.initialPage).toBe(1);
+  });
+});
+
 describe("clampPage", () => {
   it("clamps both ends", () => {
     expect(clampPage(0, 5)).toBe(1);

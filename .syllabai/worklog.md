@@ -8763,3 +8763,22 @@ Stage Summary:
 - The four subsystems now have their Maths B substrate of record: CLA + learner model serve off the 136a seed (root 4MB1, 119 nodes), tutor graph arm resolves 4MB1-2016 the moment 136c lands, smart mark honestly dormant (zero questions — the 135b shim ingests verbatim if a bank ever lands), fetch-bank grammar ready for a future 4MB corpus
 - Branch t-mig-136/r7a @ 360e207 + receipt run-002 + this card update; PR to main
 - OPERATOR QUEUE: (1) 136c prod apply (combined 4MA1+4MB1 Neon order is an option; COW-proof first); (2) coreBridge per-row declaration for igcse-maths-b-16 if/when the core-questions axis is wanted (moot until questions exist); (3) the Maths B book source handoff (tmpfiles pattern) + the syllabai-resources 4.75GB/5GB push-wall decision BEFORE it lands; (4) standing: PAT rotation, prj_D7vf
+
+---
+
+Task ID: trace 1a15468ab530684d ("api redeploy, but check if already done")
+Agent: sz (Super Z, zai-web session web-9d2144ad-f8b8-4e63-9039-989f45cb596f)
+Task: "api redeploy, but check if already done" — the operator-gated api redeploy lever, pre-fire check first (the T-MIG-133 first-check protocol).
+
+Work Log:
+- CHECK VERDICT: NOT ALREADY DONE. The api plane serves main 6c84af6 (band 133d, dpl_Daps9E6ntWKt1xWaEpXWRReZkQgu READY ~07:59:42Z, receipt T-MIG-133/band-133d-api-redeploy-run-002-r0) — the T-MIG-135 band (PR #203 f9d49ae merged 12:31:47Z) is merged-but-unbaked.
+- No-redeploy-since evidence (all first-hand): receipts tree carries no api-redeploy receipt after run-002; R0-AUTO's PR #203 receipt (e75307c6) is 'bookkeeping-only'; the api Vercel project has ZERO git-integration statuses on ANY commit (6c84af6, a61b4f73, 1b7d731e, f9d49ae5, 19caf2a4 all checked — hub-v2 statuses only) so api bakes are manual lever firings by construction; the v2 worklog tail post-08:10Z carries no bake receipt.
+- Live probe battery 7/7 (unauth, of-record legs): health 200 UP; unknown /api/v1 path 401; books-no-courseId 400 validation_failed; T-C20 chapters 200; the 133d route-existence discriminator GET /api/v1/content/books/{doc}?page=abc -> 200 {page:null,chapter:null}; nearest-chapter page=12 -> u1:c1; shelf -> Jim Clark 383pp checksum d48020e0 — serving bundle >= 133d, i.e. 6c84af6 exactly.
+- Delta over incumbent computed first-hand: 6c84af6..19caf2a4 = 40 commits, api/packages 31 files +3637/-80 (T-MIG-134a bundle-seed +677; 134c 4PH1 seed prod-apply of record; 133f Maths A books readiness PR #201; PR #203 T-MIG-135 bands 135a-d the four-subsystem Maths A product-loop; PR #190 verification-evidence). CI at tip 2/2 (verify+hub) SUCCESS. Race-guard CLEAR (incumbent ~6h >> 10-min law).
+- DEPLOY NOT FIRED — VERCEL_PAT-GATED: briefing section-0 paste absent this session; credential law (no improvisation); fresh-sandbox sweep found no .secrets.env/.creds survivor (the /tmp/my-project survivor holds .neon_url/.gemini_key/.teacher_jwt only; CI Actions hold NEON only). Recipe of record re-derived from the in-repo receipts and staged verbatim in the receipt for the next credentialed lane.
+- Bookkeeping push disclosed: this receipt+worklog push costs one no-code-delta hub auto-bake (mechanism of record).
+
+Stage Summary:
+- The api redeploy lever is ARMED but unfired: CI green at tip, race-guard clear, recipe staged; ONE operator-gated firing remains. To fire: operator pastes VERCEL_PAT (briefing section-0) to any lane; the firing lane runs the staged recipe (bun install -> deploy_bundle_build.py chain -> boot gate 4/4 -> vercel CLI deploy --prod -> 3-way alias verify -> 12-leg battery with a T-MIG-135 discriminator set) and files the run receipt.
+- The T-MIG-135 DATA-plane gate (135e COW/apply/battery) is a separate operator lever — baking 135 code applies no 4MA1 seed; maths arms serve honestly-empty until 135e.
+- Receipt: .syllabai/receipts/T-MIG-135/api-redeploy-precheck-run-001-sz.json

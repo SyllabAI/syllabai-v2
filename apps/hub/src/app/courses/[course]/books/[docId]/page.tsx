@@ -43,15 +43,20 @@ function PreconnectCorpus() {
  * shape) lands on that PDF page; unknown OR not-yet-validated books 404
  * identically (T-C20, no state leak).
  *
- * 133e law (this band): the pane mounts the chapter's PAGE-EXACT SLICE
- * (lesson / whole-range per the manifest of record) instead of the ~54MB
- * whole book — the download fix. ?part=questions mounts the hard-split
- * practice-questions slice (the anchor jump). Unit exam-practice rows
- * (u<n>:xexam-practice from the slice manifest) mount the unit's exam
- * slice; ?page=N inside a unit span resolves there BEFORE the chapter
- * containment (the spans are disjoint from chapter ranges by construction).
- * When the manifest is absent or drift-guarded out, EVERYTHING degrades to
- * the whole-book mount — the 133c behavior, byte-for-byte.
+ * 133e law (unchanged in frame): the pane mounts the chapter's PAGE-EXACT
+ * SLICE instead of the ~54MB whole book — the download fix. Unit
+ * exam-practice rows (u<n>:xexam-practice from the slice manifest) mount the
+ * unit's exam slice; ?page=N inside a unit span resolves there BEFORE the
+ * chapter containment (the spans are disjoint from chapter ranges by
+ * construction). When the manifest is absent or drift-guarded out, EVERYTHING
+ * degrades to the whole-book mount — the 133c behavior, byte-for-byte.
+ *
+ * 133g law (the operator's corrected geometry, trace 1a15458e2e5bf235):
+ * practice questions live INLINE in the chapter slice (they start where the
+ * study material ends, sometimes mid-page), so the hard-split `_q` slices are
+ * retired — the "Practice questions" button now jumps INSIDE the same slice
+ * at the manifest's questionsStartPage anchor (a parse-derived coordinate;
+ * chapters without an honest anchor carry no jump).
  */
 export default async function BookViewerPage({
   params,
@@ -187,7 +192,8 @@ export default async function BookViewerPage({
               </Link>
             </Button>
           ) : (
-            row?.questions && (
+            (row?.questions ||
+              (row?.mount.questionsStartPage != null && partParam !== "questions")) && (
               <Button asChild variant="outline" size="sm" className="h-7 px-2">
                 <Link
                   href={`/courses/${slug}/books/${docId}?chapter=${encodeURIComponent(target.chapterKey)}&part=questions`}
