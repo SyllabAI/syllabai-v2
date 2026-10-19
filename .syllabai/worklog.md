@@ -9144,3 +9144,18 @@ Work Log:
 Stage Summary:
 - The graded-evidence→KG join is LIVE IN MAIN (PR #207, CI GREEN): every marked attempt — MCQ or structured, any subject — lands BKT/BDT/fluency on the curriculum KG nodes; the struggle engine rides the graded lanes.
 - 137d live-fire = ONE lever away: the api redeploy of 3dd3987 (recipe + VERCEL_PAT held). On the operator word: redeploy -> alias-serve check -> battery re-run -> evidenceFired=True + skillStates keyed on the KG nodes + KG posteriors + recommendations -> the Maths A smoke's learner-page arc (its tutor/CLA/smart-mark legs already proven on the 134d/136d batteries; the maths QUESTIONS data plane itself remains the 135e operator lever).
+
+---
+Task ID: CIE-PHASE2-1 (operator trace 1a155f22ee1c32a9 "Phase 2 proceed")
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: CIE-INTEGRATION Phase 2 — content-maps + rekeyed bundles for the 44 slugs (scope receipt executionPlan phase 2)
+
+Work Log:
+- Fetch-first @ 1bc92b9; resources pinned 0fe5f77 (2026-10-19T20:40Z) with a tree-sha pin-diff vs the Phase-1 pin a4ce9f5 — parsed + EQ + RN + FC subtrees ALL byte-SAME (Phase-1 spines stay valid); 6,704 corpus files fetched zero-clone (trees API + pinned raw), 18 workers, 0 errors 0 missing.
+- Sme-native bundles 44/44 staged from the corpus at the pin (curriculum fields read verbatim from the committed Phase-1 spines): notes 4,460 == Phase-0 census EXACT; questions 19,097 / parts 25,663 vs registry 19,095/25,654 — sole delta cie-a-level-computer-science-19 (+2/+9, upstream registry metadata drift, disclosed, corpus is ground truth); cards 28,718 == per-row exact; index 8,705 = 8,651 declared note links + upstream cross-lane resolutions merged first.
+- The reconciliation ladder pinned of record (receipt cie-phase2-content-maps-r0.json): R1-R4 leaf rules (numeric prefix == SP code; family-prefix letter; title equality; unique containment topic-scoped) + R5 subtopic-scope — NOTES only (the SME subtopic page teaches its spine subtopic's statements); parts/cards NEVER expanded (learner-analytics honesty). Lineage upstream_item_join > sme_declared_link_rekey > subtopic_title_scope; NO-GUESS: 6,745 of 8,705 spcpt ids honestly unmapped and listed. chem-23 leaf 153 == the Phase-0 bridgePin evidence (131 + 8 cross-lane) reproduced exactly. Placement risk retired first-hand: hub placement is corpus-derived (subtopicOf* + the SME-slug bridge) and the tree expander lists every note regardless — partial leaf coverage degrades tree richness, never content visibility.
+- Rekey gates: build_official_content.py --check over the 44 staged bundles = 44/44 failed:0 exit 0; determinism md5-identical on rebuild; Edexcel regression gate ial-chemistry-17 green with identical numbers (--content-root added, default path byte-identical); official-spine bundles 109.5MB STAGED for Phase 3 (deterministic re-run from the committed pipeline at the pin).
+- PR: 44 content-maps + _report_cie_maps.json (12.0MB, schema syllabai.official-attachment/1.0), scripts/build_official_content.py (--content-root), scripts/cie/{cie_fetch_corpus,cie_build_bundles,cie_attach_maps}.py (the deterministic pipeline of record, repo-portable, cross-checked byte-identical), receipt + this entry.
+
+Stage Summary:
+- Phase 2 DONE of record: the attachment layer exists for all 44 slugs with per-row lineage, all gates green, bundles staged and measured. Honest partial leaf coverage disclosed with the upstream T-SPEC-CIE validation round filed as the follow-up input. Next: Phase 3 — courses.json 44 rows + commit the bundles + hub build green. LANE R0: IDLE.

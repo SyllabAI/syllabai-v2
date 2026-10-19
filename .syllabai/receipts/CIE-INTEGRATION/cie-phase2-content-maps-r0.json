@@ -1,0 +1,65 @@
+{
+  "receipt": "cie-phase2-content-maps-r0",
+  "family": "CIE-INTEGRATION",
+  "operatorTrace": "1a155f22ee1c32a9",
+  "operatorOrder": "'Phase 2 proceed' (the go on the scope receipt executionPlan phase 2 — content-maps + rekeyed bundles for the 44 slugs)",
+  "agent": "Super Z (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "phase": "2 — content-maps + rekeyed bundles",
+  "mode": "ATTACHMENT LAYER + STAGED BUNDLES — content-maps/*.json committed; the 44 rekeyed bundles built+validated+measured and STAGED (work/) per the scope receipt phase split — content/ and courses.json untouched, bundles commit in Phase 3; zero DB writes",
+  "ofRecord": {
+    "branch": "cie-phase2/content-maps-r0",
+    "pr": "opened + CI green + merged (see commit history)",
+    "delta": "45 files under apps/hub/content-maps/ (44 cie-*.json + _report_cie_maps.json, 12.0MB), apps/hub/scripts/build_official_content.py (+--content-root override, Edexcel default path byte-identical, regression gate re-run), apps/hub/scripts/cie/{cie_fetch_corpus,cie_build_bundles,cie_attach_maps}.py (the deterministic pipeline of record, repo-portable, cross-checked byte-identical to the lane build)",
+    "edexcel": "49 content-maps + _report.json untouched; ial-chemistry-17 rekey --check re-run green with identical numbers"
+  },
+  "pinDiscipline": {
+    "resourcesSha": "0fe5f77210f74aaeb3f6c491dfe0263d12db738c (2026-10-19T20:40:04Z)",
+    "verification": "tree-sha pin-diff vs the Phase-1 pin a4ce9f5: Official-Specifications/parsed + SME-ExamQuestion + SME-RevisionNotes + SME-Flashcards ALL byte-SAME — the CIE-relevant corpus did not move; Phase-1 spines remain valid",
+    "transport": "6,704 files fetched zero-clone (git trees API file lists + pinned raw URLs), 18 workers, 0 errors 0 missing, disk-cached and resumable"
+  },
+  "buildResults": {
+    "smeNativeBundles": "44/44 staged (schema syllabai-demo.content-bundle/2.0, treeKind sme-native, board/level/subject/code/syllabusVersion read verbatim from the committed Phase-1 spines)",
+    "censusReconciliation": "notes 4,460 == Phase-0 census EXACT per course; questions 19,097 / parts 25,663 vs the registry rows 19,095 / 25,654 — the ONLY delta is cie-a-level-computer-science-19 (+2 q / +9 parts): actual topic.json corpus at the pin vs the upstream registry metadata (registry drift disclosed, corpus is ground truth); flashcard cards 28,718 == per-row deckCards exact; index entries 8,705 = 8,651 declared note links + cross-lane resolutions merged upstream-first",
+    "volumes": "sme-native staging 94MB; official-spine rekeyed bundles 109.5MB (questions 56.8 + notes 28.2 + flashcards 20.0 + curriculum 4.5) — the Phase-3 commit measurement; Edexcel committed content/ = 80MB for scale"
+  },
+  "attachmentResults": {
+    "ladderPinned": "R1 slug numeric prefix == spine SPEC_POINT code; R2 R1 + family prefix letter (code_prefix C/E, scope_eq strand initial B/C/P); R3 normalized name == normalized SP title; R4 normalized name+definition contains exactly one normalized SP title (topic-scoped); R5 unique subtopic-title match — NOTES attach to the subtopic's SPEC_POINT children (subtopic_title_scope), parts/cards NEVER expanded",
+    "lineageLaw": "upstream_item_join (ladder over the upstream spec_point_index, every row carries its rule id) > sme_declared_link_rekey (the item's own declared ids resolved through the map) > subtopic_title_scope (R5, notes only — the SME subtopic page IS the teaching page for its spine subtopic's statements); NO-GUESS: everything unresolved stays unmapped and is listed",
+    "totals": {
+      "indexEntries": 8705,
+      "leafMapped": 1449,
+      "subtopicScoped": 511,
+      "spcptUnmapped": 6745,
+      "spineHitCodes": 1970,
+      "spineSpecPoints": 6854,
+      "uncoveredSpineCodes": 4884,
+      "notesCoded": 1202,
+      "notesViaSubtopicScope": 306,
+      "questionPartsCoded": 4253,
+      "flashcardsCoded": 2314,
+      "inlineBodyRefs": 8573
+    },
+    "perFamily": "sciences/econ/emp old editions near-ceiling at leaf (physics-23 280/303, chemistry-23 153/183 == the Phase-0 131+cross-lane evidence reproduced exactly, biology-23 191/239, econ-20 126/126, emp-20 83/83); A-levels and all -25 editions are structurally title-slug corpus (zero numeric prefixes) — R5 carries their notes; english/history/further-maths genuinely thematic — honest unmapped",
+    "rationaleForHonesty": "the app's placement is corpus-derived by design (subtopicOfNote/Flashcard/QuestionSet + the SME-slug bridge in spec-tree.ts) and the tree expander lists every note unplaced or not — partial leaf coverage degrades tree richness, never content visibility; over-attachment was REJECTED because Phase 4 learner-model writes key on spec points"
+  },
+  "rekeyResults": {
+    "gates": "build_official_content.py --check over the 44 staged bundles: 44/44 failed:0 exit 0 (attached codes exist in spine; counts preserved; every linkage code spine-resolved (G4); zero spcpt tokens in linkage fields); curriculum swapped to the official spine verbatim (treeKind official-spine); manifest re-stamped with officialSpine{spine, resourcesSha, attachmentMap}",
+    "determinism": "rebuild byte-identical (md5 notes.json/curriculum.json cie-igcse-chemistry-23); the committed pipeline re-run at the pin reproduces the staged bundles exactly — Phase 3 is a pure deterministic commit step",
+    "spotChecks": "note rn_WC9DtB5BtZvR4jdx -> specPointIds [1.1.1] == spine 1.1.1 statement text, smeSpecPointIds preserved, bodyMd inline spcpt ref rewritten to the code; MCQ part carries 4 contract-shaped choices (label/isCorrect/textMd) — CIE captures options upstream (Edexcel never did); stub banks (economics-23 etc.) render honest 0-question bundles with full notes",
+    "edexcelRegression": "--check --course ial-chemistry-17 green, identical numbers (18 honest outside parts), default path untouched"
+  },
+  "disclosures": [
+    "HONEST PARTIAL LEAF COVERAGE of record: 1,449 leaf + 511 subtopic-scope of 8,705 spcpt ids; full leaf-level reconciliation needs an upstream T-SPEC-CIE validation round (the Edexcel spec_point_map.json/resolution chain was itself T-SPEC lane work) — filed as the follow-up input alongside Phase 3",
+    "inline body refs: 7,205 of 8,573 inline spcpt_* mentions stay verbatim in bodyMd (ids with no leaf row are not rewritten) — counted per course in notesInlineRefs; a body-level repair belongs to the upstream parser lane",
+    "non-contract upstream fields not carried: part_tier (null on sampled non-tier parts) and equations (latex/mathml blocks) — the bundle contract does not define them; carrying them would be a schema change outside this phase's scope",
+    "cie-a-level-computer-science-19 registry drift: +2 questions / +9 parts vs the upstream registry row (corpus at the pin carries more than the registry recorded) — disclosed, corpus counts used",
+    "statement text \x07 artifacts inherited from the upstream parse (Phase-1 disclosure stands; titles cleaned at spine build, statement text verbatim by law)",
+    "the 44 rekeyed bundles are STAGED (work/cie-content-official/) not committed — sandbox rollbacks wipe work/, Phase 3 rebuilds them deterministically from the committed pipeline + maps at the pin"
+  ],
+  "nextPhase": "Phase 3 — courses.json 44 rows (registry-sourced, status full, no coreBridge) + commit the 44 official-spine bundles (deterministic re-run of apps/hub/scripts/cie/* at pin 0fe5f77) + hub build green; optionally the upstream T-SPEC-CIE leaf-validation round to lift leaf coverage before the DB plane",
+  "consistencyNotes": [
+    "scope receipt cie-frontend-integration-scope-r0 phase 2 discharged (effort 2-4 lane runs -> one run; the topic->spec-point mapping risk realized exactly as predicted and answered with the pinned deterministic ladder + honest unmapped)",
+    "Phase-1 receipt nextPhase consumed verbatim (spec_point_index.json as the upstream substrate; Edexcel sidecars = the shape produced here as content-maps with embedded lineage)",
+    "Phase-0 bridgePin numbers reproduced exactly (chem-23 131 leaf hits of the 175 declared; +8 cross-lane resolutions = 183)"
+  ]
+}
