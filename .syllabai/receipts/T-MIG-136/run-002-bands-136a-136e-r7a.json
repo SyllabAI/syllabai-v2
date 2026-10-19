@@ -1,0 +1,36 @@
+{
+  "receipt": "T-MIG-136 run-002-bands-136a-136e-r7a (bands 136a + 136e code of record)",
+  "task": "T-MIG-136 — second-subject product-loop, Maths B (4MB1): tutor / smart mark / CLA / learner model serve Maths B",
+  "operator_order": "trace 1a153dfab49abd9d 'continue. Basically I want tutor, smart mark, cla, learner model to work with Maths B from now. Pilot is being expanded to more subjects' (prior trace 1a153af0615041a1 'Physics is ongoing by another agent. You go along with Maths B'; mid-run operator note: 4MA1 is ALSO another agent's lane — honored, zero 4MA1 content touched)",
+  "branch": "t-mig-136/r7a",
+  "base": "origin/main f16f9eb (fetch-first; the run-001 scoping receipt a8a0a18 + worklog dedupe f16f9eb already of record; T-MIG-135 merge f9d49ae = the pattern source)",
+  "precondition_reverified": {
+    "incident": "the syllabai-resources corpus-clobber restore of record (run-001, receipt T-MIG-133/band-133e-incident-corpus-restore-run-001-r0.json) was INDEPENDENTLY RE-AUDITED this run after the session's sandbox rollback: origin/main 8beecb97, tree 069ab324, 77,709 paths, comm-vs-base 0 MISSING (every one of the 76,831 pre-clobber paths present), raw serving 200s re-proven (PARSE_STANDARD.md, igcse-maths-b-16 manifest + spec_point_index), Official-Specifications/igcse-maths-b/ (spec.json + spec PDF) present; the +878 delta decoded: books +60 = the 133e lane's relocated 4ch1 slices, 818 root residue paths (ocr_pages/docling_pages/parsed/pipeline) = the 133e lane's own relocation debt, untouched by this lane",
+    "env": "sandbox rollback had wiped the v2 clone + node_modules; re-cloned (--filter=blob:none) + bun install (930 pkgs) before the gates"
+  },
+  "bands": {
+    "136a": "bundle-seed.ts grammar goes THREE-SHAPED: SUBTOPIC tails [a-z] | d+(.d)? | _ (dbCode 4MB1-S1-_ — the task card's prose '4MB1-S1_' resolved to the generic-law form parent+'-'+tail, DISCLOSED here as the of-record resolution) + the SPEC_POINT second dbCode law: the 4MB1 alnum series (^\\d{1,2}[A-Z]$, '1A'..'10N') lands {grandparent UNIT}-{code} verbatim (4MB1-S1-1A, 4MB1-S10-10A — the code never re-derived; a first-pass test expectation 4MB1-S10-1A was WRONG and fixed to the verbatim law before landing, disclosed); refusal message widened ('letter, dotted, or placeholder suffix'); maths-b real-bytes pins: counts 1/10/10/98/118, mapping 119 dbCodes all unique, seed 119 nodes/118 edges fresh + idempotent no-op, applicability {papers:[4MB1/01,4MB1/02]} verbatim, PART_OF direction law holds; physics letter + maths-a dotted byte-identical re-proven on the real bytes in one breath; the alnum branch DORMANT for every existing bundle (all live codes carry a dot) — additive by construction",
+    "136e": "paper-identity grammar goes THREE-SUBJECT: PAPER_CODE_MB separate precise regex (4MB[01] sep [12]) checked ONLY in the letter-form's else branch — PAPER_CODE + BARE_UNIT byte-identical (provable non-regression for chemistry/maths-a parses); maths-b binds NO bare unit token (a standalone '1'/'2' in prose is every number/question/year — the false-positive class the letter vocabularies do not have); subject-profile: alias 4MB1→4MB0, /^4MB/ unit branches (hint: paper N → [N]; default [1,2]), isValidUnitToken bare-digit form (reachable only through paper-identity parses); courses.json maths-b row + curriculumCode 4MB1-2016; coreBridge INTENTIONALLY ABSENT (operator-declared per the 135d law; the directive's 'pilot expansion' sentence is not a per-row declaration; the flag gates the core-questions axis which is honestly EMPTY for 4MB1 — zero questions — holding costs nothing, rule 3); hub chrome/relay/dashboard-core/review-strip//learner verified ALREADY courseRef-generic from 135d; FLASHCARD_SYNC_COURSES unchanged (maths-b anchors derive not core-safe — charset ':','_' — the disclosed residual); fetch-bank arm honestly EMPTY for 4MB1 (no 4MB specs in the pastpapers archive) — the grammar lands ready for a future corpus"
+  },
+  "four_subsystem_posture": {
+    "tutor": "graph arm serves 4MB1 off the 136a seed (resolveForCourse '4MB1-2016' fail-closed exact UNTIL the 136c prod apply lands the version — then live); fetch-bank arm honestly empty (no corpus); prompt variant general (plain-LaTeX law)",
+    "smart_mark": "DORMANT for 4MB1 of record (zero questions — nothing manufactured, rule 3); the 135b shim/driver/smeRef law bundle-generic, ingests verbatim IF a maths-b SME bank ever lands",
+    "cla": "root-subject-keyed — serves 4MB1 off the 136a seed (SUBJECT root 4MB1)",
+    "learner_model": "node-keyed — serves 4MB1 off the 136a seed (119 nodes: 4MB1 root, 4MB1-S1..S10 UNITS, 4MB1-S<n>-_ TOPIC placeholders, 4MB1-S<n>-<code> ALNUM SUBTOPICs)"
+  },
+  "gates": {
+    "typecheck": "exit 0 x4 workspaces (contracts/shared/db/api)",
+    "api_suite": "1790 tests / 0 fail / 13 skip (18741 expects) — 1803 total = the 135-era 1797 + exactly this branch's 6 new pins; includes bundle-seed 22 (5 new maths-b) + paper-question 43 (1 new maths-b identity block + extended unit pins)",
+    "shared_suite": "75/0; contracts_suite: 345/0",
+    "hub_build": "GREEN incl. prebuild verifiers (corpus-23a + flashcard-sync over the courses.json curriculumCode addition)",
+    "hub_lint": "GREEN",
+    "census_gate": "preflight_zero_core_census.py --gate -> GREEN exit 0 (LIVE=0, pins=7, rides-v2=2, dormant=5, unmapped=0)"
+  },
+  "defects_on_the_record": [
+    "the run's first maths-b mapping pin expected 4MB1-S10-1A for the '10A' code — WRONG (it stripped the code's own section digit, violating the verbatim law); the engine was correct (4MB1-S10-10A, the same verbatim law as the card's 4MB1-S1-1A example which carries the digit twice); fixed the TEST before landing, zero engine changes",
+    "the first full-suite run failed 44 tests with 'Cannot find package hono' — environmental (post-rollback fresh clone without node_modules), not code; bun install cleared it; zero test changes involved"
+  ],
+  "staged": "band 136d (the four-subsystem zero-LLM battery on 4MB1) staged per the 134 (ln) precedent (staged on the physics lane too — no battery harness of record exists yet); 136c prod apply = OPERATOR GATE (Neon write order, COW-proof first; NOTE: 135's maths-a prod apply is ALSO still pending — a combined 4MA1+4MB1 order is an operator option)",
+  "write_ledger": "zero prod writes, zero LLM, zero probe learners, zero Neon contact — repo-only band",
+  "fence": "Physics 4PH1 = T-MIG-134 untouched; Maths A 4MA1 = T-MIG-135 untouched; 133e chemistry lane's root residue untouched"
+}

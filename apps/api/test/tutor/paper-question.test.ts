@@ -35,6 +35,7 @@ import {
   unitCandidates,
   unitFromPaperCode,
 } from "../../src/services/tutor/paper-question";
+import { identityCodesOf, legacyAliasesOf } from "../../src/services/tutor/subject-profile";
 
 // ── fakeSql (whitespace-collapsed substring dispatch, the tutor-core style) ─
 
@@ -275,6 +276,16 @@ describe("identity helpers — completeIdentity, unit binding, subject code", ()
       "1F",
       "2F",
     ]);
+    // T-MIG-136e: the maths-b bare-digit vocabulary — the paper NUMBER is
+    // the unit (two untiered papers); the full code binds through the
+    // separate precise regex, the "paper N" hint lands the digit verbatim
+    expect(unitCandidates(parseFetchQuery("4MB1/1 question 10"), "q", "4MB1")).toEqual(["1"]);
+    expect(unitCandidates(parseFetchQuery("4MB0-2 question 10"), "q", "4MB1")).toEqual(["2"]);
+    expect(unitCandidates(parseFetchQuery("question 10 paper 2"), "question 10 paper 2", "4MB1")).toEqual(["2"]);
+    expect(unitCandidates(parseFetchQuery("question 10 june 2019"), "question 10 june 2019", "4MB1")).toEqual([
+      "1",
+      "2",
+    ]);
   });
 
   test("unitFromPaperCode: separator + space tolerant, per-subject vocabulary gated", () => {
@@ -286,6 +297,49 @@ describe("identity helpers — completeIdentity, unit binding, subject code", ()
     expect(unitFromPaperCode("4MA1/1H")).toBe("1H");
     expect(unitFromPaperCode("4MA0-2F")).toBe("2F");
     expect(unitFromPaperCode("4MA1/1X")).toBe(null);
+    // T-MIG-136e: the maths-b bare-digit units — in vocabulary, out verbatim;
+    // out-of-vocabulary digits and junk still refuse
+    expect(unitFromPaperCode("4MB1/1")).toBe("1");
+    expect(unitFromPaperCode("4MB0-2")).toBe("2");
+    expect(unitFromPaperCode("4MB1/3")).toBe(null);
+    expect(unitFromPaperCode("4MB1/1X")).toBe(null);
+  });
+
+  test("T-MIG-136e maths-b identity: the 4MB0 legacy alias joins the per-subject map", () => {
+    // the of-record law: subject first, legacy aliases after — maths-b now
+    // carries 4MB0 beside the 4CH0/4MA0 precedents (the pre-2016 spec whose
+    // paper archives still serve)
+    expect(identityCodesOf("4MB1")).toEqual(["4MB1", "4MB0"]);
+    expect(legacyAliasesOf("4MB1")).toEqual(["4MB0"]);
+    // the pre-existing subjects stay byte-identical
+    expect(identityCodesOf("4CH1")).toEqual(["4CH1", "4CH0"]);
+    expect(identityCodesOf("4MA1")).toEqual(["4MA1", "4MA0"]);
+    expect(identityCodesOf("4PH1")).toEqual(["4PH1"]);
+    // the parser binds the maths-b family — and a standalone digit NEVER
+    // binds as a bare unit (the false-positive class the letter vocabularies
+    // don't have: "question 2", "2019", "paper 1" must not become unit binds)
+    expect(parseFetchQuery("4MB1/1 summer 2019 question 10")).toMatchObject({
+      paperCode: "4MB1/1",
+      series: "JUN",
+      year: 2019,
+      qnum: 10,
+      unit: null,
+    });
+    expect(parseFetchQuery("4mb0-2 question 5b")).toMatchObject({
+      paperCode: "4MB0/2",
+      qnum: 5,
+      part: "b",
+    });
+    expect(parseFetchQuery("question 2 on the 2019 paper")).toMatchObject({
+      paperCode: null,
+      unit: null,
+      qnum: 2,
+      year: 2019,
+    });
+    // chemistry and maths-a parses stay byte-identical beside the third family
+    expect(parseFetchQuery("4CH1/2C question 10")).toMatchObject({ paperCode: "4CH1/2C" });
+    expect(parseFetchQuery("4MA1/1H question 10")).toMatchObject({ paperCode: "4MA1/1H" });
+    expect(parseFetchQuery("4CH1/2")).toMatchObject({ paperCode: null });
   });
 
   test("subjectCode: the dash-cut law", () => {

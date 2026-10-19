@@ -24,18 +24,31 @@
  *   - bundle SUBJECT  (code igcse-physics-19)  → SUBJECT  `4PH1`
  *   - bundle TOPIC    (8 sections, T1..T8)     → UNIT     `4PH1-S1`..
  *   - bundle SUBTOPIC (30, code T1:SUBa)       → TOPIC    `4PH1-S1-a`..
- *     (T-MIG-135a: the grammar is TWO-SHAPED — the physics LETTER suffix
- *     `:SUBa` and the maths DOTTED suffix `:SUB1.1` (igcse-maths-a-*:
- *     official 4MA1 topic numbering). Both land as `<spec>-S<order>-<suffix>`
- *     verbatim: `4PH1-S1-a`, `4MA1-S1-1.1`. The letter shape stays
- *     byte-identical; the dotted shape is the maths bundle's own official
- *     identity, never re-derived from order.)
+ *     (T-MIG-135a TWO-SHAPED + T-MIG-136a THREE-SHAPED — the physics LETTER
+ *     suffix `:SUBa`, the maths DOTTED suffix `:SUB1.1` (igcse-maths-a-*:
+ *     official 4MA1 topic numbering) and the maths-b PLACEHOLDER suffix
+ *     `:SUB_` (igcse-maths-b-16: the SME exporter's single-subtopic form —
+ *     every 4MB1 section IS its topic, so the exporter emits one unnamed
+ *     subtopic per section and the spec points hang directly off it). All
+ *     three land as `<spec>-S<order>-<suffix>` verbatim: `4PH1-S1-a`,
+ *     `4MA1-S1-1.1`, `4MB1-S1-_` — the separator is the law's own, the
+ *     suffix byte is the bundle's. The letter shape stays byte-identical;
+ *     the dotted/placeholder shapes are the maths bundles' own official
+ *     identities, never re-derived from order.)
  *   - bundle SPEC_POINT (195, code "1.1")      → SUBTOPIC `4PH1-1.1`,
  *     P-suffixed points verbatim (`4PH1-1.2P`) — the physics P-suffix law is
  *     the exact mirror of the chemistry C-suffix law (both = paper-2-only
  *     content, not shared with Science Double Award 4SD0); the bundle's
  *     applicability object ({papers, double_award_shared, rule}) is the
  *     verbatim passthrough (the T-C24 law, identical jsonb shape of record).
+ *     T-MIG-136a second code law beside it: the 4MB1 ALNUM series
+ *     ('1A'..'10N' — digit+letter, the section-scoped official alphabet,
+ *     algebra ^\d{1,2}[A-Z]$) lands `{grandparent-UNIT}-{code}` —
+ *     `4MB1-S1-1A` — because the section digit alone does not self-locate
+ *     the point in the DB tree the way a hierarchical number does; the
+ *     section is made explicit via the S-form. Dormant for every existing
+ *     bundle (no live spec code matches the algebra — all carry a dot),
+ *     provably byte-identical on physics/chemistry/maths-a.
  *
  * IDEMPOTENCE + CONFLICTS (the seed law, unchanged): node identity is the
  * store code (uq_knowledge_node_code) — same code + same provenance ⇒ reuse,
@@ -285,15 +298,20 @@ export function mapBundleNodes(
     if (n.family === "SUBTOPIC") {
       // topics land as TOPICs: S{section}-{suffix} — the suffix comes from
       // the bundle code's own :SUBx tail, never re-derived from order.
-      // T-MIG-135a two-shape grammar: the physics LETTER tail (`:SUBa`) and
-      // the maths DOTTED tail (`:SUB1.1`, the official 4MA1 topic number —
-      // optionally two-segment). Letter bundles keep byte-identical dbCodes;
-      // dotted bundles land `4MA1-S1-1.1` (the same shape, the official
-      // identity verbatim).
-      const m = /:SUB([a-z]|\d+(?:\.\d+)?)$/.exec(n.code);
+      // T-MIG-135a TWO-shape grammar (physics LETTER `:SUBa`, maths DOTTED
+      // `:SUB1.1` — the official 4MA1 topic number, optionally two-segment);
+      // T-MIG-136a THIRD shape: the maths-b PLACEHOLDER tail `:SUB_` (the
+      // SME exporter's single-subtopic form — every 4MB1 section IS its
+      // topic, so the exporter emits one unnamed subtopic per section and
+      // the spec points hang directly off it). All three land
+      // `<spec>-S<order>-<tail>` verbatim: `4PH1-S1-a`, `4MA1-S1-1.1`,
+      // `4MB1-S1-_` — the tail separator is the law's own, the tail byte is
+      // the bundle's. Letter bundles keep byte-identical dbCodes.
+      const m = /:SUB([a-z]|\d+(?:\.\d+)?|_)$/.exec(n.code);
       if (m == null) {
         throw new BundleSeedConflictError(
-          "bundle SUBTOPIC " + n.code + " does not carry the :SUBx letter or dotted suffix",
+          "bundle SUBTOPIC " + n.code +
+            " does not carry the :SUBx letter, dotted, or placeholder suffix",
         );
       }
       const parentMapped = byCode.get(parent);
@@ -313,9 +331,22 @@ export function mapBundleNodes(
       });
       continue;
     }
-    // SPEC_POINT lands as SUBTOPIC: {code}-{specNumber} — the official spec
-    // number verbatim (4PH1-1.1, 4PH1-1.2P), applicability verbatim (T-C24)
-    if (!/^[0-9]/.test(n.code)) {
+    // SPEC_POINT lands as SUBTOPIC — two dbCode laws, both "the official
+    // identity verbatim, never re-derived":
+    //   (a) hierarchical numbers (T-MIG-134a, unchanged): `{subject}-{code}`
+    //       (4PH1-1.1, 4PH1-1.2P, 4MA1-1.6E) — the official number is
+    //       globally unique per course and self-locating in the tree;
+    //       applicability verbatim (T-C24).
+    //   (b) T-MIG-136a: the 4MB1 ALNUM series ('1A'..'10N', digit+letter,
+    //       the section-scoped official alphabet, algebra ^\d{1,2}[A-Z]$) —
+    //       `{grandparent UNIT dbCode}-{code}` (4MB1-S1-1A): the section
+    //       digit alone does not self-locate the point in the DB tree, so
+    //       the section is made explicit via the parent UNIT's S-form. The
+    //       branch is dormant for every existing bundle (no live spec code
+    //       matches the algebra — all carry a dot) — physics/chemistry/
+    //       maths-a byte-identical by construction, re-proven by tests.
+    const alnum = /^\d{1,2}[A-Z]$/.test(n.code);
+    if (!/^[0-9]/.test(n.code) && !alnum) {
       throw new BundleSeedConflictError(
         "bundle SPEC_POINT " + n.code + " does not carry a numeric spec code",
       );
@@ -326,9 +357,23 @@ export function mapBundleNodes(
         "bundle SPEC_POINT " + n.code + " parent " + parent + " is not a mapped TOPIC",
       );
     }
+    let specDbCode = subjectCode + "-" + n.code;
+    if (alnum) {
+      const grandparent =
+        parentMapped.parentBundleCode == null
+          ? null
+          : byCode.get(parentMapped.parentBundleCode);
+      if (grandparent == null || grandparent.nodeType !== "UNIT") {
+        throw new BundleSeedConflictError(
+          "bundle SPEC_POINT " + n.code +
+            " alnum parent chain does not resolve to a mapped UNIT",
+        );
+      }
+      specDbCode = grandparent.dbCode + "-" + n.code;
+    }
     byCode.set(n.code, {
       bundleCode: n.code,
-      dbCode: subjectCode + "-" + n.code,
+      dbCode: specDbCode,
       nodeType: "SUBTOPIC",
       title: bound(n.title, 200),
       description: bound(descriptionPrefix + " (spec point): " + n.title, 1000),
