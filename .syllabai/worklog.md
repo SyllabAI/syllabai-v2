@@ -9083,3 +9083,35 @@ Work Log:
 
 Stage Summary:
 - CIE-INTEGRATION Phase 1 CONFIRMED DONE OF RECORD (44 spines from 33 specs via PR #206, CI 2/2, gauntlet 93/93) — next main work item per the receipt: Phase 2 content-maps + rekeyed bundles for the 44 slugs (upstream spec_point_index.json join, NO-GUESS lineage), then Phase 3 registry rows. LANE R0: IDLE.
+
+---
+Task ID: trace 1a155e3c060cea41 (band 134d)
+Agent: sz (Super Z, zai-web session web-9d2144ad-f8b8-4e63-9039-989f45cb596f)
+Task: "134d battery on 4PH1" — the four-subsystem ZERO-LLM battery on Physics 4PH1 (the 136d twin), executed against the LIVE serving carrier dpl_HphMddkuf2EK7dyYDTQMcjjMCLeX (main 89962a5).
+
+Work Log:
+- Shapes re-derived from source of record first-hand (cla/tutor/knowledge/learnerme/learnerkg/smartmark/curriculum/tutor-bank routes + context-resolver + scope.ts resolveForCourse exact-ACTIVE-CODE law + bank-bands topicNodeIds/specNodeIds/nodeRowsByIds laws) + the of-record 136d receipt; every UUID wire-derived (subjectView.knowledgeNodeId -> tree registry) — the battery self-bootstraps with zero DB credentials; served-kind resolving CLA asks deliberately NOT fired (vector arm = LLM-family) — zero-LLM held by construction
+- scripts/battery_134d.py: run-001 14/27 (harness mis-shapes disclosed: NodeView 'type' fold, subject bare codes, summary.due nesting, courseRef=hub-slug where the law is the CV code); run-002 27/28 (shapes healed; the single FAIL = the lane's own stale of-record expectation — expected 4PH1 honest-empty per the card, the wire SERVED 96 in S1); run-003 OF RECORD 29/29 PASS EXIT=0 (L14/L15 re-pinned to the wireform law with counts as disclosed data-plane state + L15b spec-axis leg)
+- Four-subsystem verdict: CLA root-resolve + hard PART_OF isolation 404s + UNIT-as-root/unknown-root no-oracle + SMART_LESSON deferral/binding laws LIVE over the 4PH1 root; tutor graph-arm substrate = the EXACT 234-node 4PH1 tree (1 SUBJECT + 8 UNIT 4PH1-S1..S8 + 30 TOPIC + 195 SUBTOPIC official spec codes) + 4CH1=438 regression; bank topic axis expands UNIT->TOPIC->SUBTOPIC over the live tree for ALL sections (S1 37 / S7 30 resolvedNodes), SPEC axis resolves 4PH1-1.4, cross-corpus no-leak 0, unscoped FOUR-owner 0, GEN-INGEST fail-closed 0, chemistry byte-pin 56/4CH1-S3-b unchanged, section-22 foreign-session 404 pre-pipeline; learner-model honest-empty + node-keyed KG/smart-lesson resolves incl. cross-subject 404; smartmark dormancy deterministic 404
+- DISCOVERY of record: the 4PH1 DATA PLANE is PARTIALLY IN — the tutor bank serves 148 questions (S1 Forces and motion 96 / S2 Electricity 52 / S3-S8 0), externalRef class sme-eq-…, MCQ_SINGLE, official 4PH1 spec joins, paperless; NO 134b receipt exists on origin and the worklog carries no 134b entry — data-plane state (operator Neon-lever class) that outran the card; the 134b band's envelope-gate ruling receipt (SUPPORTED_PACKAGE_VERSION 1.0 vs the bundle's sme-exam-questions/1.1) remains owed and should reconcile 148 vs the bundle's 489
+- Race-guard: origin MOVED mid-lane 6246611 -> cbc7835 (the T-MIG-137 scope card + the r7a 136d run-003 receipt — parallel lanes, zero file overlap); fetch-first honored, rebase-merge before push, no force; PUSH PENDING credential (no PAT post-shred) — lands with the next operator PAT delivery (fp12 a8ccee736aa8 of record)
+- Receipt: .syllabai/receipts/T-MIG-134/battery-134d-run-003-sz.json; wire-truth captures filed IN-REPO under tool-results/T-MIG-134/ (run-003 of record + run-001/002 disclosed) per the r7a golden-cases precedent; in-repo golden/cases filing NOT claimed (boot-replay needs a DSN boot) — the wire battery is the zero-LLM golden evidence of record
+
+Stage Summary:
+- 134d DISCHARGED of record: all four subsystems serve Physics 4PH1 lawfully on the live carrier — the SECOND-SUBJECT AXES are LIVE end-to-end (curriculum axis + CLA + tutor graph/bank + learner model + smartmark boundary); the smart mark question plane for 4PH1 is now PARTIALLY AWAKE (S1/S2 data in, S3-S8 pending — disclosed, receipt-pinned)
+- Write ledger: 3 probe learners (sz-134d-verify-*, sanctioned class), llm_spend 0, ZERO other prod writes
+- Open: receipt push (credential); 134b envelope-gate ruling receipt; 134e physics books (separate operator gate); 134a/c core status unchanged
+
+---
+Task ID: trace 1a155f99cb1ed289 (band 134d push)
+Agent: sz (Super Z, zai-web session web-9d2144ad-f8b8-4e63-9039-989f45cb596f)
+Task: the operator delivered the PAT of record (fp12 a8ccee736aa8, the same credential as the 8-b push lane) — push the pending 134d receipt to main
+
+Work Log:
+- Push lane: fetch-first caught the third mid-lane origin move 1bc92b9 -> 1917a7f (the b4e1fd0 r7a separation-ruling merge into main, worklog-only +19, zero file overlap with the 134d receipt/captures); rebased over it, no force
+- DISCLOSED correction (never landed on origin): the pre-push local 3431ce0 carried a spurious DUPLICATE of the 6246611 run-002 battery worklog block (a Task-10 rebase-union artifact) — dropped in this rebase; the landed worklog carries the run-002 block exactly once
+- Credential discipline: fp12 verified pre-use (sha256-12 == a8ccee736aa8, matches the 8-b of-record fingerprint); single-call export -> push -> shred; token never written to disk, never quoted in any file
+
+Stage Summary:
+- The 134d receipt commit landed of record on origin main (run-003 29/29 PASS + card amendment + three in-repo golden captures) — 134d CLOSED end-to-end on the durable record
+- Open: 134b envelope-gate ruling receipt (reconcile the 148 served vs the bundle's 489); 134e physics books (operator gate); PAT rotation advised (token now plaintext in chat three times)
