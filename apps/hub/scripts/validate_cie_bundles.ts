@@ -68,7 +68,7 @@ type Row = {
 const reg = JSON.parse(readFileSync(path.join(CONTENT, "courses.json"), "utf8")) as {
   courses: Row[];
 };
-check("registry carries 61 rows (49 Edexcel + 12 CIE)", reg.courses.length === 61, String(reg.courses.length));
+check("registry carries 94 rows (49 Edexcel + 45 CIE)", reg.courses.length === 94, String(reg.courses.length));
 for (const exp of EXPECT) {
   const row = reg.courses.find((c) => c.slug === exp.slug);
   if (!row) { check(`registry row ${exp.slug}`, false, "MISSING"); continue; }
@@ -79,29 +79,117 @@ for (const exp of EXPECT) {
     row.curriculumCode === undefined && row.coreBridge === undefined);
 }
 
-// ── 2. skeleton-bundle shape (A0: the honest-empty 7-file form) ─────────────
+// ── 2. bundle shape: D1 skeleton (pure-2) + real official-spine bundles ─────
+// CIE-INTEGRATION Phase 3: the sibling resource wave upgraded 11 of the 12
+// card bundles in place (official-spine trees via content-maps at the pin);
+// pure-2 (no SME bank yet) stays the honest-empty D1 skeleton.
 const SEVEN = ["manifest.json", "curriculum.json", "concept-graph.json", "notes.json",
   "questions.json", "flashcards.json", "learner-sim.json"];
-for (const exp of EXPECT) {
-  const dir = path.join(CONTENT, exp.slug);
+const CIE_PIN = "0fe5f77210f74aaeb3f6c491dfe0263d12db738c";
+const D1_SKELETON = "cie-a-level-maths-20-pure-2";
+
+function checkRealBundle(slug: string, code: string): void {
+  const dir = path.join(CONTENT, slug);
   const missing = SEVEN.filter((f) => !existsSync(path.join(dir, f)));
-  check(`bundle ${exp.slug}: 7 files present`, missing.length === 0, missing.join(",") || "ok");
-  if (missing.length > 0) continue;
+  check(`bundle ${slug}: 7 files present`, missing.length === 0, missing.join(",") || "ok");
+  if (missing.length > 0) return;
   const manifest = JSON.parse(readFileSync(path.join(dir, "manifest.json"), "utf8")) as {
     schema: string; counts: Record<string, number>; treeKind?: string;
     curriculum?: { board?: string; code?: string };
-    importSource?: { repo?: string };
+    officialSpine?: { resourcesSha?: string; spine?: string; attachmentMap?: string };
   };
-  const curriculum = JSON.parse(readFileSync(path.join(dir, "curriculum.json"), "utf8")) as {
-    board?: string; nodes: unknown[]; edges: unknown[];
-  };
-  const countsZero = Object.values(manifest.counts ?? {}).every((n) => n === 0);
-  check(`bundle ${exp.slug}: honest-empty skeleton (all counts 0)`, countsZero,
+  check(`bundle ${slug}: real corpus bundle (notes non-empty)`, (manifest.counts?.notes ?? 0) > 0,
     JSON.stringify(manifest.counts));
-  check(`bundle ${exp.slug}: board/identity`,
-    manifest.curriculum?.board === BOARD && manifest.curriculum?.code === exp.code
-    && curriculum.board === BOARD && curriculum.nodes.length === 0 && curriculum.edges.length === 0);
+  check(`bundle ${slug}: official-spine tree + resourcesSha pin + artifact links`,
+    manifest.treeKind === "official-spine" && manifest.officialSpine?.resourcesSha === CIE_PIN
+    && manifest.officialSpine?.spine === `spines/${slug}.json`
+    && manifest.officialSpine?.attachmentMap === `content-maps/${slug}.json`,
+    `${manifest.treeKind}/${String(manifest.officialSpine?.resourcesSha ?? "").slice(0, 7)}`);
+  check(`bundle ${slug}: board/identity`,
+    manifest.curriculum?.board === BOARD && manifest.curriculum?.code === code,
+    `${manifest.curriculum?.board}/${manifest.curriculum?.code}`);
+  const spine = JSON.parse(readFileSync(path.join(HUB, "spines", `${slug}.json`), "utf8")) as {
+    curriculum?: { nodes?: Array<{ family?: string }> };
+  };
+  const spCount = (spine.curriculum?.nodes ?? []).filter((n) => n.family === "SPEC_POINT").length;
+  check(`bundle ${slug}: specPoints == spine (${spCount})`,
+    manifest.counts?.specPoints === spCount, String(manifest.counts?.specPoints));
 }
+
+for (const exp of EXPECT) {
+  if (exp.slug === D1_SKELETON) {
+    const dir = path.join(CONTENT, exp.slug);
+    const missing = SEVEN.filter((f) => !existsSync(path.join(dir, f)));
+    check(`bundle ${exp.slug}: 7 files present`, missing.length === 0, missing.join(",") || "ok");
+    if (missing.length > 0) continue;
+    const manifest = JSON.parse(readFileSync(path.join(dir, "manifest.json"), "utf8")) as {
+      schema: string; counts: Record<string, number>; treeKind?: string;
+      curriculum?: { board?: string; code?: string };
+      importSource?: { repo?: string };
+    };
+    const curriculum = JSON.parse(readFileSync(path.join(dir, "curriculum.json"), "utf8")) as {
+      board?: string; nodes: unknown[]; edges: unknown[];
+    };
+    const countsZero = Object.values(manifest.counts ?? {}).every((n) => n === 0);
+    check(`bundle ${exp.slug}: honest-empty skeleton (all counts 0)`, countsZero,
+      JSON.stringify(manifest.counts));
+    check(`bundle ${exp.slug}: board/identity`,
+      manifest.curriculum?.board === BOARD && manifest.curriculum?.code === exp.code
+      && curriculum.board === BOARD && curriculum.nodes.length === 0 && curriculum.edges.length === 0);
+    continue;
+  }
+  checkRealBundle(exp.slug, exp.code);
+}
+
+// ── 2b. CIE-INTEGRATION Phase 3: the 33 resource-backed roster rows ──────────
+const PHASE3_ROSTER: Array<{ slug: string; code: string; level: string; subject: string }> = [
+{ slug: "cie-a-level-accounting-21", code: "9706", level: "A-Level", subject: "Accounting" },
+  { slug: "cie-a-level-biology-25", code: "9700", level: "A-Level", subject: "Biology" },
+  { slug: "cie-a-level-business-23", code: "9609", level: "A-Level", subject: "Business" },
+  { slug: "cie-a-level-computer-science-19", code: "9618", level: "A-Level", subject: "Computer Science" },
+  { slug: "cie-a-level-economics-23", code: "9708", level: "A-Level", subject: "Economics" },
+  { slug: "cie-as-english-general-paper-21", code: "8021", level: "AS", subject: "English" },
+  { slug: "cie-as-environmental-management-20", code: "8291", level: "AS", subject: "Environmental Management" },
+  { slug: "cie-igcse-accounting-21", code: "0452", level: "IGCSE", subject: "Accounting" },
+  { slug: "cie-igcse-accounting-25", code: "0452", level: "IGCSE", subject: "Accounting" },
+  { slug: "cie-igcse-biology-23", code: "0610", level: "IGCSE", subject: "Biology" },
+  { slug: "cie-igcse-business-23", code: "0450", level: "IGCSE", subject: "Business" },
+  { slug: "cie-igcse-business-25", code: "0264", level: "IGCSE", subject: "Business" },
+  { slug: "cie-igcse-computer-science-23", code: "0478", level: "IGCSE", subject: "Computer Science" },
+  { slug: "cie-igcse-economics-20", code: "0455", level: "IGCSE", subject: "Economics" },
+  { slug: "cie-igcse-economics-25", code: "0455", level: "IGCSE", subject: "Economics" },
+  { slug: "cie-igcse-english-language-20", code: "0500", level: "IGCSE", subject: "English Language" },
+  { slug: "cie-igcse-english-language-25", code: "0500", level: "IGCSE", subject: "English Language" },
+  { slug: "cie-igcse-english-literature-21", code: "0475", level: "IGCSE", subject: "English Literature" },
+  { slug: "cie-igcse-environmental-management-25", code: "0680", level: "IGCSE", subject: "Environmental Management" },
+  { slug: "cie-igcse-further-maths-additional-maths-25", code: "0606", level: "IGCSE", subject: "Further Maths" },
+  { slug: "cie-igcse-geography-20", code: "0460", level: "IGCSE", subject: "Geography" },
+  { slug: "cie-igcse-geography-25", code: "0460", level: "IGCSE", subject: "Geography" },
+  { slug: "cie-igcse-history-18", code: "0470", level: "IGCSE", subject: "History" },
+  { slug: "cie-igcse-ict-21", code: "0417", level: "IGCSE", subject: "ICT" },
+  { slug: "cie-igcse-maths-international-maths-23-core", code: "0607", level: "IGCSE", subject: "Maths" },
+  { slug: "cie-igcse-maths-international-maths-23-extended", code: "0607", level: "IGCSE", subject: "Maths" },
+  { slug: "cie-igcse-religious-studies-23", code: "0490", level: "IGCSE", subject: "Religious Studies" },
+  { slug: "cie-igcse-science-co-ordinated-sciences-double-award-23-biology", code: "0973", level: "IGCSE", subject: "Science" },
+  { slug: "cie-igcse-science-co-ordinated-sciences-double-award-23-chemistry", code: "0973", level: "IGCSE", subject: "Science" },
+  { slug: "cie-igcse-science-co-ordinated-sciences-double-award-23-physics", code: "0973", level: "IGCSE", subject: "Science" },
+  { slug: "cie-igcse-science-combined-science-23-biology", code: "0653", level: "IGCSE", subject: "Science" },
+  { slug: "cie-igcse-science-combined-science-23-chemistry", code: "0653", level: "IGCSE", subject: "Science" },
+  { slug: "cie-igcse-science-combined-science-23-physics", code: "0653", level: "IGCSE", subject: "Science" },
+];
+for (const exp of PHASE3_ROSTER) {
+  const row = reg.courses.find((c) => c.slug === exp.slug);
+  if (!row) { check(`registry row ${exp.slug}`, false, "MISSING"); continue; }
+  check(`registry ${exp.slug}`,
+    row.code === exp.code && row.level === exp.level && row.subject === exp.subject
+    && row.status === "full" && row.board === BOARD,
+    `${row.code}/${row.level}/${row.status}/board=${row.board}`);
+  check(`registry ${exp.slug} posture pins (no curriculumCode/coreBridge)`,
+    row.curriculumCode === undefined && row.coreBridge === undefined);
+  checkRealBundle(exp.slug, exp.code);
+}
+const cieRowCount = reg.courses.filter((c) => c.board === BOARD).length;
+check("registry carries 45 CIE rows (44-slug roster + D1 pure-2)", cieRowCount === 45, String(cieRowCount));
 
 // ── 3. THE CARD'S PAPER-COUNT ASSERTIONS ─────────────────────────────────────
 let strictTotal = 0;

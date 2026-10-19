@@ -1,0 +1,76 @@
+{
+ "receipt": "cie-phase3-registry-r0",
+ "family": "CIE-INTEGRATION",
+ "operatorTrace": "1a1561ff435f6951",
+ "operatorOrder": "'Phase 3 — 44 courses.json rows + commit the bundles + hub build green (one run), then the operator-gated DB plane'",
+ "agent": "R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+ "generatedUtc": "2026-10-19T23:27:05Z",
+ "phase": "3 of 6 — courses.json rows + committed bundles + hub build green (scope receipt cie-frontend-integration-scope-r0 executionPlan; Phase 2 of record f7f1903/PR #208)",
+ "fetchFirst": {
+  "hubMainAtBranchCut": "2c83116bfa0b7d449b9861f01685c145ba1df037",
+  "phase2VerifiedOfRecord": "PR #208 merged f7f1903 (2026-10-19T21:39:37Z) CI 2/2; receipt cie-phase2-content-maps-r0.json on main; 44 content-maps + scripts/cie present",
+  "siblingCatalogLane": "PR #209 (cie-catalog/pastpapers-r1c) had landed 12 past-papers-first rows + honest-empty skeleton bundles (11 of them inside the 44-slug roster); Phase 3 upgrades those 11 in place and adds the remaining 33",
+  "resourcesSha": {
+   "pin": "0fe5f77210f74aaeb3f6c491dfe0263d12db738c",
+   "reVerified": "resources tip a7ebcd9; the 4 CIE-relevant subtrees (Official-Specifications/parsed, SME-ExamQuestion, SME-RevisionNotes, SME-Flashcards) byte-SAME vs the pin (tree-sha comparison)"
+  }
+ },
+ "deliverables": {
+  "bundles": "44 official-spine content bundles committed under apps/hub/content/cie-*/ (7-file form; 11 catalog skeletons upgraded in place, 33 new; 108.0MB total; treeKind official-spine; officialSpine block links spines/<slug>.json + content-maps/<slug>.json at pin 0fe5f77)",
+  "counts": {
+   "notes": 4460,
+   "questionSets": null,
+   "questions": 19097,
+   "parts": 25663,
+   "flashcards": 28718,
+   "specPointsFromSpines": true
+  },
+  "registry": "courses.json 61 -> 94 rows: +33 Cambridge International rows (slug/level/subject/code verbatim from the committed spines; status full; board 'Cambridge International'; spine 'A-LEVEL' normalized to the registry vocabulary 'A-Level' for 5 rows) inserted after the catalog CIE block; registry note carries the Phase 3 amendment; NO curriculumCode/coreBridge anywhere (launch posture)",
+  "validator": "validate_cie_bundles.ts extended of record: registry 94 rows (49 Edexcel + 45 CIE); card-12 bundle section split into D1 skeleton (pure-2, honest-empty) vs 11 real official-spine bundles; NEW section 2b with the 33-slug roster (registry posture + real-bundle + officialSpine pin + specPoints==spine cross-checks); 45-CIE-row census; the card's paper-count assertions untouched",
+  "rekeyTool": "build_official_content.py: --board and --generated-utc overlays added (opt-in; Edexcel default path byte-identical; spine files never mutated). Board overlay resolves the registry 'Cambridge International' vs spine 'Cambridge CIE' vocabulary split; generatedUtc stamps bundles whose source manifest carries none (Zod ContentManifest requires a string)"
+ },
+ "mathRepair": {
+  "why": "the CIE banks predate the upstream aria-label->MathML->LaTeX extraction the Edexcel banks received: the corpus gate (verify_corpus_23a.ts, zero baseline) failed on the staged bundles with 16,766 polluted strings (15,834 code spans, 628 multiline spans, 220 baretext lines, 84 $..$ segments across 33/44 courses) plus 170 dangling relatedNoteIds — the gate did exactly what it was built for; the repair is the precedented lane-side 23a/23b treatment, not a baseline change",
+  "how": "scripts/cie/cie_fetch_math_23a.ts (688 live SME page dicts, ~11k aria-label->MathML->LaTeX pairs via mathml-to-latex, resumeable) + scripts/cie/cie_patch_math_23a.ts (the byte-faithful 23a/23b 6-level lookup chain, every $..$ replacement KaTeX-verified, unfixed stays untouched) + scripts/cie/cie_math_extras.ts (CIE grammar layer: ciePreMap token vocabulary incl. Greek/fonts/bars/vectors, cieTexRepair post-conversion TeX fixer incl. atom-scoped bare-over -> \\frac and dangling \\text{} removal, ciePlainCollapse last resort that eliminates the gate vocabulary by construction and renders as honest code spans) — committed as the deterministic pipeline of record",
+  "scale": {
+   "censusBefore": {
+    "span": 15834,
+    "multiline": 628,
+    "baretext": 220,
+    "dollar": 84
+   },
+   "censusAfter": "ALL ZERO (gate: 0/0/0/0/0/0 over 282 files in the full repo tree)"
+  },
+  "via": "extras 8,139, page-exact 3,959, speech-recon 2,647, global-exact 723, cie-plain 570, global-seg 154, strip-space 111, exact-formula 15 (cumulative across the deterministic re-runs; the tail rode the cie-plain last resort)",
+  "residualPolicy": "NO-GUESS held: strings the chain could not convert as LaTeX were plain-collapsed (boilerplate speech words removed, content tokens preserved, gate-vocabulary guard) or left verbatim — never machine-translated into unverified math"
+ },
+ "danglingRefs": {
+  "what": "170 question-set relatedNoteIds across 6 banks reference rn_* notes that do not exist in the sibling SME-RevisionNotes package NOR in the upstream RN manifests (older id generation / pages never scraped upstream)",
+  "fix": "scripts/cie/cie_prune_dangling_relatednotes.py — deterministic drop of unresolvable references (ids never rewritten or invented), full drop list in the run report",
+  "perCourse": {
+   "cie-a-level-computer-science-19": 2,
+   "cie-igcse-business-25": 65,
+   "cie-igcse-economics-20": 17,
+   "cie-igcse-economics-25": 84,
+   "cie-igcse-environmental-management-25": 1,
+   "cie-igcse-history-18": 1
+  }
+ },
+ "gates": {
+  "cieValidator": "390 PASS / 0 FAIL (paper-count assertions hold; 45 CIE rows; 44 official-spine bundles specPoints==spine)",
+  "corpusGate": "PASSED — 0/0/0/0/0/0 over 282 files (Edexcel + CIE), zero baseline intact, NOT refrozen",
+  "flashcardSync": "ok — committed manifest matches the derived set; CIE rows noted deck-bearing-but-no-curriculumCode (core sync unchanged by posture)",
+  "spines": "validate_spines.py 93 pass / 0 fail (untouched)",
+  "zeroCoreCensus": "GREEN",
+  "typecheck": "clean",
+  "hubBuild": "bun run build:hub GREEN (prebuild chain + next build, all routes generated) — the one-run law satisfied locally BEFORE push"
+ },
+ "posture": {
+  "curriculumCode": "ABSENT on all 45 CIE rows (launch pin)",
+  "coreBridge": "ABSENT (launch pin)",
+  "flashcardSync": "unchanged — no CIE course enters FLASHCARD_SYNC_COURSES",
+  "pastPapers": "the 12 card courses stay paper-backed (2,232 pairs asserted); the 33 new courses past-papers honest-empty (their specs are not in the 6-spec CIE archive)",
+  "phase3Boundary": "courses.json Phase-3 rows + bundles ONLY — apps/hub content surfaces light up from the committed bundles; NO DB writes in this phase"
+ },
+ "nextPhase": "4 — DB plane (OPERATOR-GATED): per CIE spec seed-bundle-curriculum; per slug ingest-bundle-questions dry-run (rollback proof) -> COW-proof -> prod apply under ADR-026 evidence-safe replace; 40 real banks become SME-ingestable (19,095 questions / 25,654 parts). NO DB credential was used and NO DB write was performed in Phase 3."
+}

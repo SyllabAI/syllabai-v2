@@ -1,1 +1,2342 @@
-[]
+[
+ {
+  "id": "fl_hJMYBFbq3qBPNGzP",
+  "cardType": "keyword_definition",
+  "front": "Define **null hypothesis** and **alternative hypothesis**.\n",
+  "back": "The **null hypothesis** $\\text{H}_{0}$ states the assumed value of the population parameter, taking it that nothing has changed.\n\nThe **alternative hypothesis** $\\text{H}_{1}$ states how that parameter may have changed.\n\nA test assumes $\\text{H}_{0}$ is true throughout, and ends by either **rejecting** it or not.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing",
+  "subtopicCode": "hypothesis-testing",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_FyrqXqf8PCg6CTb8"
+  ]
+ },
+ {
+  "id": "fl_qg63w3zHqy6BJCKJ",
+  "cardType": "keyword_definition",
+  "front": "Define **population parameter**.\n",
+  "back": "A numerical characteristic that helps define a **population**, such as the probability $p$ of an event happening, or the mean $μ$.\n\nA hypothesis test uses a **sample** to test a claim made about one of these values.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing",
+  "subtopicCode": "hypothesis-testing",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_FyrqXqf8PCg6CTb8"
+  ]
+ },
+ {
+  "id": "fl_rCgxDwHFssXfNQXY",
+  "cardType": "keyword_definition",
+  "front": "Define **significance level**.\n",
+  "back": "The probability threshold a test is judged against, setting how unlikely a result has to be before $\\text{H}_{0}$ is rejected.\n\nIt must be fixed **before** the test is carried out, and is usually 1%, 5% or 10%.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing",
+  "subtopicCode": "hypothesis-testing",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_FyrqXqf8PCg6CTb8"
+  ]
+ },
+ {
+  "id": "fl_xWg3s7GrZJXKgzRW",
+  "cardType": "fill_in_the_blanks",
+  "front": "Complete the **alternative hypothesis** in each case, for a population parameter $θ$.\n\nTesting for a **decrease**: `\\text{H}_1 : \\theta \\_\\_\\_\\_\\_\\_ \\dots`\n\nTesting for a **change**: `\\text{H}_1 : \\theta \\_\\_\\_\\_\\_\\_ \\dots`\n",
+  "back": "The completed hypotheses are:\n\nTesting for a **decrease**: $\\text{H}_{1} : θ < \\dots$\n\nTesting for a **change**: $\\text{H}_{1} : θ \\neq \\dots$\n\nA **one-tailed** test uses $>$ or $<$, and a **two-tailed** test uses $\\neq$.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing",
+  "subtopicCode": "hypothesis-testing",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_FyrqXqf8PCg6CTb8"
+  ]
+ },
+ {
+  "id": "fl_YsMxjgTpB6zMtzFP",
+  "cardType": "keyword_definition",
+  "front": "Define **critical region** and **critical value**.\n",
+  "back": "The **critical region** is the set of values the test statistic could take that would lead to $\\text{H}_{0}$ being **rejected**.\n\nThe **critical value** is its boundary, the least extreme value that still causes rejection.\n\nThe test statistic is also called the **observed value**, and the significance level fixes where the boundary sits.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing",
+  "subtopicCode": "hypothesis-testing",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_SXgS5mjTMgfKTPsD"
+  ]
+ },
+ {
+  "id": "fl_MBQTr8DjfJzbWZpW",
+  "cardType": "question_and_answer",
+  "front": "For a discrete distribution, why is the actual significance level usually below the stated one?\n",
+  "back": "The critical value has to be a **whole value** the variable can actually take, so the region cannot be trimmed to meet the stated level exactly.\n\nThe probability of landing inside it, assuming $\\text{H}_{0}$ is true, therefore comes out at or below the stated level.\n\nThat probability is the **actual significance level**.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing",
+  "subtopicCode": "hypothesis-testing",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_SXgS5mjTMgfKTPsD"
+  ]
+ },
+ {
+  "id": "fl_SW38bsSDpmcq4KKY",
+  "cardType": "question_and_answer",
+  "front": "What is compared with the significance level when a test is carried out without finding a critical region?\n",
+  "back": "The **p-value**: the probability, assuming $\\text{H}_{0}$ is true, of a value at least as extreme as the one observed.\n\nUse $\\text{P} ( X \\geq \\text{observed value} )$ when testing for an **increase**, and $\\text{P} ( X \\leq \\text{observed value} )$ when testing for a **decrease**.\n\nReject $\\text{H}_{0}$ if the p-value is **less than** the significance level.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing",
+  "subtopicCode": "hypothesis-testing",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_SXgS5mjTMgfKTPsD"
+  ]
+ },
+ {
+  "id": "fl_zDg8nM4YQG8DJrHT",
+  "cardType": "question_and_answer",
+  "front": "In a two-tailed test, what is a one-tail probability compared with?\n",
+  "back": "**Half** the significance level, because the level is shared between the two tails.\n\nAt 5% each tail holds 2.5%, and at 1% each tail holds 0.5%.\n\nComparing a one-tail probability with the full level would make rejection twice as easy as intended.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing",
+  "subtopicCode": "hypothesis-testing",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_SXgS5mjTMgfKTPsD"
+  ]
+ },
+ {
+  "id": "fl_sd7kvGnr3nvMKGGM",
+  "cardType": "true_or_false",
+  "front": "**True or False?**\n\nA p-value of 0.0429 in a one-tailed test gives the same conclusion at the 1% level as at the 5% level.\n",
+  "back": "**False.**\n\nAt 5% the p-value is below the significance level, so $\\text{H}_{0}$ is **rejected**; at 1% it is above, so $\\text{H}_{0}$ is **not rejected**.\n\nA conclusion is only ever a conclusion **at the stated significance level**.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing",
+  "subtopicCode": "hypothesis-testing",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_SXgS5mjTMgfKTPsD"
+  ]
+ },
+ {
+  "id": "fl_dyVjhThNpSjDrjBC",
+  "cardType": "question_and_answer",
+  "front": "How should the conclusion of a hypothesis test be worded?\n",
+  "back": "**In the context of the question**, reusing its own wording, and never definitively.\n\nRejecting $\\text{H}_{0}$ gives **sufficient evidence to suggest** the alternative hypothesis at that significance level.\n\nNot rejecting it gives **insufficient evidence** to suggest the alternative hypothesis.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing",
+  "subtopicCode": "hypothesis-testing",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_mPVJHc5CKHN5mQyS"
+  ]
+ },
+ {
+  "id": "fl_CDJMHvTBBJP9dgzr",
+  "cardType": "true_or_false",
+  "front": "**True or False?**\n\nA hypothesis test carried out correctly can still reach the wrong conclusion.\n",
+  "back": "**True.**\n\nThe test weighs the **probability** of what one sample showed, so an unusual sample can point the wrong way.\n\nThis is why a conclusion is written as **evidence** rather than as proof.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing",
+  "subtopicCode": "hypothesis-testing",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_mPVJHc5CKHN5mQyS"
+  ]
+ },
+ {
+  "id": "fl_nkM5ZGZWsxZFydVV",
+  "cardType": "question_and_answer",
+  "front": "What does a two-tailed test that rejects $\\text{H}_{0}$ show, and what does it not show?\n",
+  "back": "It shows there is evidence that the population parameter has **changed**.\n\nIt does not show **which direction** the change was in, so the conclusion must not say the parameter increased or decreased.\n\nOnly a **one-tailed** test provides evidence about direction.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing",
+  "subtopicCode": "hypothesis-testing",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_mPVJHc5CKHN5mQyS"
+  ]
+ },
+ {
+  "id": "fl_jMmvGc9MNCqDxM4F",
+  "cardType": "fill_in_the_blanks",
+  "front": "Complete each description, using **true** or **false**.\n\nA **Type I** error is rejecting a `\\_\\_\\_\\_\\_\\_` null hypothesis.\n\nA **Type II** error is accepting a `\\_\\_\\_\\_\\_\\_` null hypothesis.\n",
+  "back": "The completed descriptions are:\n\nA **Type I** error is rejecting a **true** null hypothesis.\n\nA **Type II** error is accepting a **false** null hypothesis.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing",
+  "subtopicCode": "hypothesis-testing",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_KCFcWTMfnmj3W3yc"
+  ]
+ },
+ {
+  "id": "fl_wggMZxNWhsrXNr6X",
+  "cardType": "question_and_answer",
+  "front": "How does the conclusion of a test tell you which error could have occurred?\n",
+  "back": "If $\\text{H}_{0}$ was **rejected**, only a **Type I** error is possible.\n\nIf $\\text{H}_{0}$ was **not rejected**, only a **Type II** error is possible.\n\nThe conclusion settles which of the two is available before anything is known about the truth.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing",
+  "subtopicCode": "hypothesis-testing",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_KCFcWTMfnmj3W3yc"
+  ]
+ },
+ {
+  "id": "fl_YJ3rhMVDCQ4VdN66",
+  "cardType": "question_and_answer",
+  "front": "What is the probability of a Type I error equal to?\n",
+  "back": "The probability of **rejecting** $\\text{H}_{0}$ given that $\\text{H}_{0}$ is in fact **true**.\n\nIn a completed test this is the **actual significance level**, so it does not have to be worked out separately.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing",
+  "subtopicCode": "hypothesis-testing",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_KCFcWTMfnmj3W3yc"
+  ]
+ },
+ {
+  "id": "fl_WyGFsZQdFCV2FBQ5",
+  "cardType": "question_and_answer",
+  "front": "What extra information is needed to find the probability of a Type II error?\n",
+  "back": "The **true value** of the population parameter, which the question has to supply.\n\nThe probability is then that of the observed value falling **outside** the critical region, worked out using that true value in place of the one in $\\text{H}_{0}$.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing",
+  "subtopicCode": "hypothesis-testing",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_KCFcWTMfnmj3W3yc"
+  ]
+ },
+ {
+  "id": "fl_CzJJytk3N58sp7wf",
+  "cardType": "true_or_false",
+  "front": "**True or False?**\n\nLowering the significance level reduces the probability of both types of error.\n",
+  "back": "**False.**\n\nA lower significance level **shrinks** the critical region, so $\\text{H}_{0}$ is rejected less often and a **Type I** error becomes less likely.\n\nThe same change makes $\\text{H}_{0}$ harder to reject, so a **Type II** error becomes more likely.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing",
+  "subtopicCode": "hypothesis-testing",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_KCFcWTMfnmj3W3yc"
+  ]
+ },
+ {
+  "id": "fl_k2PfgjZzQhJXvKdj",
+  "cardType": "question_and_answer",
+  "front": "In which two situations does a hypothesis test make no error?\n",
+  "back": "When $\\text{H}_{0}$ is **true** and the test does not reject it, and when $\\text{H}_{0}$ is **false** and the test rejects it.\n\nOnly the two mismatched pairings of reality and conclusion count as errors.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing",
+  "subtopicCode": "hypothesis-testing",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_KCFcWTMfnmj3W3yc"
+  ]
+ },
+ {
+  "id": "fl_FJX9xbt8F83WvctZ",
+  "cardType": "question_and_answer",
+  "front": "Why might two parties want the significance level set differently?\n",
+  "back": "Because they are exposed to different errors.\n\nSomeone defending a claim wants a **Type I** error to be unlikely, so a true claim is not rejected.\n\nSomeone challenging it wants a **Type II** error to be unlikely, so a real change is not missed.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing",
+  "subtopicCode": "hypothesis-testing",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_KCFcWTMfnmj3W3yc"
+  ]
+ },
+ {
+  "id": "fl_G2ySzcyPBFV5fgKK",
+  "cardType": "question_and_answer",
+  "front": "In a binomial hypothesis test, what is the population parameter and what does the random variable count?\n",
+  "back": "The parameter is the **probability of success**, $p$, in a binomial distribution $\\text{B} ( n , p )$.\n\nThe random variable counts the number of **successes** in a fixed number of trials $n$, and its value for the sample is the observed value.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "subtopicCode": "hypothesis-testing-binomial-and-poisson-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_mWctnbvnpcSVbDh5"
+  ]
+ },
+ {
+  "id": "fl_vKj4CNrCkfw2z7Gh",
+  "cardType": "question_and_answer",
+  "front": "Why is the distribution written as `X \\sim \\text{B}(12, p)` rather than `X \\sim \\text{B}(12, 0.6)`?\n",
+  "back": "Because $p$ is the quantity being **tested**, so it must stay as a letter when the distribution is first defined.\n\nThe assumed value 0.6 enters only through the null hypothesis, and is used from that point on to calculate probabilities assuming $\\text{H}_{0}$ is true.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "subtopicCode": "hypothesis-testing-binomial-and-poisson-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_mWctnbvnpcSVbDh5"
+  ]
+ },
+ {
+  "id": "fl_dpHNRnQcM7tXhy34",
+  "cardType": "fill_in_the_blanks",
+  "front": "Complete the conditions that make $c$ the critical value of an **upper-tailed** binomial test at the `\\alpha \\%` level.\n\n`\\text{P}(X \\geq c) \\_\\_\\_\\_\\_\\_ \\alpha \\%`\n\n`\\text{P}(X \\geq c - 1) \\_\\_\\_\\_\\_\\_ \\alpha \\%`\n",
+  "back": "The completed conditions are:\n\n`\\text{P}(X \\geq c) \\leq \\alpha \\%`\n\n`\\text{P}(X \\geq c - 1) > \\alpha \\%`\n\nThe critical value is the **first** value inside the region, so the value one step nearer the middle has to fall outside it.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "subtopicCode": "hypothesis-testing-binomial-and-poisson-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_mWctnbvnpcSVbDh5"
+  ]
+ },
+ {
+  "id": "fl_tzDGMt3SY9HFnzpF",
+  "cardType": "question_and_answer",
+  "front": "How do the critical value conditions change for a lower-tailed test?\n",
+  "back": "The tail is reversed, so the conditions become `\\text{P}(X \\leq c) \\leq \\alpha \\%` and `\\text{P}(X \\leq c + 1) > \\alpha \\%`.\n\nThe second condition still steps **towards** the middle of the distribution, which for a lower tail means going up rather than down.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "subtopicCode": "hypothesis-testing-binomial-and-poisson-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_mWctnbvnpcSVbDh5"
+  ]
+ },
+ {
+  "id": "fl_h6b36VPrWVzgkhbC",
+  "cardType": "true_or_false",
+  "front": "**True or False?**\n\nIn a two-tailed binomial test the two critical regions are the same size.\n",
+  "back": "**False.**\n\nThe binomial distribution is only symmetrical when $p = 0 . 5$, so in general one tail reaches its half of the significance level sooner than the other.\n\nOften one of the two regions is much larger than the other.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "subtopicCode": "hypothesis-testing-binomial-and-poisson-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_mWctnbvnpcSVbDh5"
+  ]
+ },
+ {
+  "id": "fl_CqMhCKvpDbW8jg6Y",
+  "cardType": "question_and_answer",
+  "front": "How is $\\text{P} ( X \\geq 10 )$ found for `X \\sim \\text{B}(12, 0.6)`?\n",
+  "back": "Either add the three individual probabilities for $X = 10$, $X = 11$ and $X = 12$, or subtract the cumulative probability from one as $1 - \\text{P} ( X \\leq 9 )$.\n\nBoth give $0 . 0834$ to three significant figures.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "subtopicCode": "hypothesis-testing-binomial-and-poisson-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_mWctnbvnpcSVbDh5"
+  ]
+ },
+ {
+  "id": "fl_RgBdJccjkkWtD9DK",
+  "cardType": "question_and_answer",
+  "front": "Which route through a binomial test usually needs fewer calculations?\n",
+  "back": "Finding the **probability** of a value at least as extreme as the observed one, which takes a single cumulative calculation.\n\nFinding the **critical region** means testing candidate values one at a time until the boundary is located, so it costs more unless the question asks for the region.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "subtopicCode": "hypothesis-testing-binomial-and-poisson-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_mWctnbvnpcSVbDh5"
+  ]
+ },
+ {
+  "id": "fl_pD9WDSPv5S8PR4Wq",
+  "cardType": "question_and_answer",
+  "front": "What must be done when the observed value covers a different time interval from the stated mean?\n",
+  "back": "Scale the mean in proportion so that it applies to the **same interval** as the observation.\n\nA mean of 8 per 24 hours becomes a mean of 2 per 6 hours, and the calculation then uses `X \\sim \\text{Po}(2)`.\n\nThe random variable counts occurrences in that interval, so the two have to match before any probability is worked out.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "subtopicCode": "hypothesis-testing-binomial-and-poisson-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_QmfvPPDFyty4DBtv"
+  ]
+ },
+ {
+  "id": "fl_7VJfszsd8FsRTR2y",
+  "cardType": "question_and_answer",
+  "front": "When the mean has been rescaled, which value of $λ$ do the hypotheses use?\n",
+  "back": "The value for the interval $λ$ was **defined** in, so a mean defined as likes per day keeps $\\text{H}_{0} : λ = 8$.\n\nThe rescaled mean of 2 belongs to the distribution used for the calculation, not to the hypotheses.\n\nDefining $λ$ with its interval in words is what keeps the two apart.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "subtopicCode": "hypothesis-testing-binomial-and-poisson-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_QmfvPPDFyty4DBtv"
+  ]
+ },
+ {
+  "id": "fl_3ZpjPfhpghqpvyHR",
+  "cardType": "question_and_answer",
+  "front": "Why is an upper-tail Poisson probability found by subtracting from one?\n",
+  "back": "A Poisson variable has no upper limit, so $\\text{P} ( X \\geq c )$ cannot be reached by adding terms.\n\nUse $\\text{P} ( X \\geq c ) = 1 - \\text{P} ( X \\leq c - 1 )$, which turns it into a finite cumulative sum.\n\nThe upper tail is where mistakes are most often made, usually by dropping or adding one to the limit.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "subtopicCode": "hypothesis-testing-binomial-and-poisson-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_QmfvPPDFyty4DBtv"
+  ]
+ },
+ {
+  "id": "fl_y9jgKZN83jHGyshc",
+  "cardType": "question_and_answer",
+  "front": "How is the rejection region found for an upper-tailed Poisson test at the 5% level?\n",
+  "back": "Work out $\\text{P} ( X \\geq c )$ for candidate values of $c$ until it first drops below 0.05.\n\nCheck the value one step lower is still above 0.05, which confirms $c$ is the boundary.\n\nWith $λ = 2$ this gives $\\text{P} ( X \\geq 5 ) = 0 . 0527$ and $\\text{P} ( X \\geq 6 ) = 0 . 0166$, so the region is $X \\geq 6$.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "subtopicCode": "hypothesis-testing-binomial-and-poisson-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_QmfvPPDFyty4DBtv"
+  ]
+ },
+ {
+  "id": "fl_3Y3jRN5ZT7sD2j8Q",
+  "cardType": "true_or_false",
+  "front": "**True or False?**\n\nFor `X \\sim \\text{Po}(2)` tested at the 5% level for an increase, an observed value of 5 is not enough to reject $\\text{H}_{0}$.\n",
+  "back": "**True.**\n\nThe rejection region is $X \\geq 6$, and 5 falls outside it.\n\nA Poisson distribution has a long right tail, so a value two and a half times the mean can still be unremarkable.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "subtopicCode": "hypothesis-testing-binomial-and-poisson-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_QmfvPPDFyty4DBtv"
+  ]
+ },
+ {
+  "id": "fl_6nZYPv7bs3qGhXpc",
+  "cardType": "question_and_answer",
+  "front": "What is different about finding the critical region for a two-tailed Poisson test?\n",
+  "back": "Two critical values are needed, one in each tail, each found against **half** the significance level.\n\nThe lower tail is a direct cumulative probability, while the upper tail still has to be reached by subtracting from one.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "subtopicCode": "hypothesis-testing-binomial-and-poisson-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_QmfvPPDFyty4DBtv"
+  ]
+ },
+ {
+  "id": "fl_K5JDCsGDT3Hm2q7p",
+  "cardType": "question_and_answer",
+  "front": "A test on `X \\sim \\text{Po}(2)` has rejection region $X \\geq 6$. What is the probability of a Type I error?\n",
+  "back": "It is $\\text{P} ( X \\geq 6 )$ worked out with $λ = 2$, since a Type I error means landing in the rejection region while $\\text{H}_{0}$ is true.\n\nThat gives $1 - \\text{P} ( X \\leq 5 ) = 1 - 0 . 9834 = 0 . 0166$ to three significant figures.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-binomial-and-poisson-distributions",
+  "subtopicCode": "hypothesis-testing-binomial-and-poisson-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_QmfvPPDFyty4DBtv"
+  ]
+ },
+ {
+  "id": "fl_9jNBXFpvhG7dMB2b",
+  "cardType": "question_and_answer",
+  "front": "In a test on a population mean, which distribution does the test actually work with?\n",
+  "back": "The distribution of the **sample mean** $\\overline{X}$, not the population distribution $X$ the question quotes.\n\nAssuming $\\text{H}_{0}$ is true, `\\bar{X} \\sim \\text{N} \\left(\\mu, \\frac{\\sigma^{2}}{n}\\right)`, and the observed sample mean is judged against that.\n\nUsing the population distribution instead treats a mean of $n$ readings as though it were a single reading.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-normal-distribution",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-normal-distribution",
+  "subtopicCode": "hypothesis-testing-normal-distribution",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_DBjZPz9tFvYW9SQs"
+  ]
+ },
+ {
+  "id": "fl_NH7SRqk2m9Sn8GMR",
+  "cardType": "fill_in_the_blanks",
+  "front": "Complete the test statistic for a hypothesis test on the mean of a normal distribution.\n\n`z = \\frac{\\bar{x} - \\mu}{\\frac{\\sigma}{\\_\\_\\_\\_\\_\\_}}`\n",
+  "back": "The completed test statistic is:\n\n$z = \\frac{\\overline{x}-μ}{\\frac{σ}{\\sqrt{n}}}$\n\nThe denominator is the standard deviation of $\\overline{X}$, so it carries $\\sqrt{n}$ rather than $n$.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-normal-distribution",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-normal-distribution",
+  "subtopicCode": "hypothesis-testing-normal-distribution",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_DBjZPz9tFvYW9SQs"
+  ]
+ },
+ {
+  "id": "fl_bWrJTwDRRSMW8T9Q",
+  "cardType": "question_and_answer",
+  "front": "For `X \\sim \\text{N} \\left(204, 81\\right)` and a sample of 12, what is the denominator of $z$?\n",
+  "back": "It is $\\frac{9}{\\sqrt{12}} = 2 . 598$ to three decimal places.\n\nThe 81 is the **variance**, so the standard deviation is $\\sqrt{81} = 9$, and it is the standard deviation that goes into the formula.\n\nPutting 81 in the numerator of the fraction is the commonest slip here.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-normal-distribution",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-normal-distribution",
+  "subtopicCode": "hypothesis-testing-normal-distribution",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_DBjZPz9tFvYW9SQs"
+  ]
+ },
+ {
+  "id": "fl_swbm9QV7fDqd83gp",
+  "cardType": "question_and_answer",
+  "front": "How is the critical $z$ value found for a 5% one-tailed test?\n",
+  "back": "Read it from the **table of critical values** for the standard normal distribution, which gives $z = 1 . 645$ at 5%.\n\nUse $- 1 . 645$ when the test is for a decrease, since the critical region is then in the lower tail.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-normal-distribution",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-normal-distribution",
+  "subtopicCode": "hypothesis-testing-normal-distribution",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_DBjZPz9tFvYW9SQs"
+  ]
+ },
+ {
+  "id": "fl_BrDQVjS45vFD7CPk",
+  "cardType": "true_or_false",
+  "front": "**True or False?**\n\nA test statistic of $z = - 1 . 15$ does not lie in the critical region of a 5% lower-tailed test.\n",
+  "back": "**True.**\n\nThe critical value is $- 1 . 645$, and $- 1 . 15$ is **closer to zero** than that, so it sits outside the region.\n\nCompare how far each value is from 0 rather than which is numerically larger, or the negative signs will reverse the decision.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-normal-distribution",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-normal-distribution",
+  "subtopicCode": "hypothesis-testing-normal-distribution",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_DBjZPz9tFvYW9SQs"
+  ]
+ },
+ {
+  "id": "fl_bTcCn3fyDvV3XW6r",
+  "cardType": "question_and_answer",
+  "front": "How is the critical value found as a value of $\\overline{x}$?\n",
+  "back": "Set the test statistic equal to the critical $z$ from the table, then solve for $\\overline{x}$.\n\nFor `\\text{N} \\left(204, 81\\right)` with $n = 12$ at 5% for a decrease, $- 1 . 645 = \\frac{\\overline{x}-204}{2.598}$ gives $\\overline{x} = 199 . 7$.\n\nThe observed sample mean can then be compared directly, in the units of the question.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-normal-distribution",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-normal-distribution",
+  "subtopicCode": "hypothesis-testing-normal-distribution",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_DBjZPz9tFvYW9SQs"
+  ]
+ },
+ {
+  "id": "fl_4BsbPTDSdq9qMWRc",
+  "cardType": "question_and_answer",
+  "front": "What are the two critical values in a two-tailed test on a normal mean?\n",
+  "back": "The positive and negative $z$ for **half** the significance level, which have the same size because the normal distribution is symmetrical.\n\nSolving with each in turn gives two values of $\\overline{x}$, and they should come out the same distance either side of the mean.\n\nThat symmetry is a useful check on the arithmetic.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "hypothesis-testing-normal-distribution",
+  "sectionSlug": "hypothesis-testing",
+  "topicSlug": "hypothesis-testing-normal-distribution",
+  "subtopicCode": "hypothesis-testing-normal-distribution",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_DBjZPz9tFvYW9SQs"
+  ]
+ },
+ {
+  "id": "fl_Krz7bcpTVPNFbThN",
+  "cardType": "keyword_definition",
+  "front": "Define **Poisson distribution**.\n",
+  "back": "The **Poisson distribution** models a discrete random variable that counts the number of events occurring at random in a given interval of time or space.\n\nIt is written `X \\sim \\text{Po}(\\lambda)`, where $λ$ is the mean number of occurrences in that interval.\n\nUnlike a binomial there is no fixed number of trials, so $X$ can in principle be any non-negative whole number.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "poisson-distribution",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "poisson-distribution",
+  "subtopicCode": "poisson-distribution",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_CbcjyRyGd65mXstM"
+  ]
+ },
+ {
+  "id": "fl_gnRzW8vTXdP7Gqm7",
+  "cardType": "fill_in_the_blanks",
+  "front": "Fill in the three conditions a Poisson model requires:\n\nevents occur `\\_\\_\\_\\_\\_\\_` and at random in the interval\n\nthe mean number of occurrences, $λ$, is known and `\\_\\_\\_\\_\\_\\_`\n\neach occurrence is `\\_\\_\\_\\_\\_\\_` of the others\n",
+  "back": "The completed conditions are:\n\nevents occur **singly** and at random in the interval\n\nthe mean number of occurrences, $λ$, is known and **finite**\n\neach occurrence is **independent** of the others\n\nSingly means two events cannot happen at exactly the same instant, and $λ$ must be positive but need not be a whole number.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "poisson-distribution",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "poisson-distribution",
+  "subtopicCode": "poisson-distribution",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_CbcjyRyGd65mXstM"
+  ]
+ },
+ {
+  "id": "fl_z4F9zK92GRBbx8qc",
+  "cardType": "question_and_answer",
+  "front": "For `X \\sim \\text{Po}(\\lambda)`, what are $\\text{E} ( X )$ and $\\text{Var} ( X )$?\n",
+  "back": "They are both **exactly** $λ$.\n\nThe mean and the variance of a Poisson distribution are equal, which no other distribution on this course does.\n\nThe standard deviation is therefore $\\sqrt{λ}$, and there is only ever one parameter to find.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "poisson-distribution",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "poisson-distribution",
+  "subtopicCode": "poisson-distribution",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_CbcjyRyGd65mXstM"
+  ]
+ },
+ {
+  "id": "fl_NM6XNvMbJTJfr7MN",
+  "cardType": "question_and_answer",
+  "front": "How does the shape of a Poisson distribution depend on $λ$?\n",
+  "back": "A small $λ$ gives a strong **tail to the right**, with most of the probability piled up at 0 and 1.\n\nAs $λ$ grows the distribution becomes steadily more **symmetrical**, and by about $λ = 5$ it is already roughly so.\n\nThat drift towards symmetry is exactly why a large $λ$ can be approximated by a normal distribution.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "poisson-distribution",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "poisson-distribution",
+  "subtopicCode": "poisson-distribution",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_CbcjyRyGd65mXstM"
+  ]
+ },
+ {
+  "id": "fl_TZYxPvZStb8DdtW6",
+  "cardType": "fill_in_the_blanks",
+  "front": "Complete the formula for the probability of exactly $r$ occurrences:\n\n`\\text{P}(X = r) = e^{-\\lambda} \\times \\frac{\\lambda^{r}}{\\_\\_\\_\\_\\_\\_}`\n",
+  "back": "The completed formula is:\n\n$\\text{P} ( X = r ) = e^{-λ} \\times \\frac{λ^{r}}{r!}$\n\nIt applies for $r = 0 , 1 , 2 , \\dots$ with no upper limit, which is what distinguishes it from a binomial.\n\nAny non-integer or negative value of $r$ has probability zero.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "poisson-distribution",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "poisson-distribution",
+  "subtopicCode": "poisson-distribution",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_F5rFq42MxcZZYVvp"
+  ]
+ },
+ {
+  "id": "fl_FCs9Dq7MC6zvZkcX",
+  "cardType": "question_and_answer",
+  "front": "Before choosing a Poisson model for some data, what quick check can you make?\n",
+  "back": "Work out the **mean** and the **variance** of the data and see whether they come out **roughly equal**.\n\nA Poisson distribution has them exactly equal, so data whose variance is far from its mean is telling you the model does not fit.\n\nIt is only a check, not a proof: the three conditions still have to be considered.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "poisson-distribution",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "poisson-distribution",
+  "subtopicCode": "poisson-distribution",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_w54vBS6Fm24wnJVB"
+  ]
+ },
+ {
+  "id": "fl_jRj65VRv2YV3rCjb",
+  "cardType": "question_and_answer",
+  "front": "What must you state before writing down a Poisson model?\n",
+  "back": "What your **random variable** is, in words, for example \"let $X$ be the number of typing errors per page\".\n\nThe interval matters as much as the count, since $λ$ is a mean **per interval** and is meaningless without one.\n\nOnly then write `X \\sim \\text{Po}(\\lambda)` with the value of $λ$ that belongs to that interval.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "poisson-distribution",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "poisson-distribution",
+  "subtopicCode": "poisson-distribution",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_w54vBS6Fm24wnJVB"
+  ]
+ },
+ {
+  "id": "fl_pBqzRHjTbcxdkcZ4",
+  "cardType": "question_and_answer",
+  "front": "A team scores a mean of 2 goals an hour. What distribution models the goals in a 90-minute game?\n",
+  "back": "It is $\\text{Po} ( 3 )$, because 90 minutes is $1 . 5$ hours and $λ$ scales with the interval.\n\nSo multiply the given mean by however many of the stated intervals the question asks about.\n\nThis is worth checking at every part of a question, because the interval often changes between parts.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "poisson-distribution",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "poisson-distribution",
+  "subtopicCode": "poisson-distribution",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_w54vBS6Fm24wnJVB"
+  ]
+ },
+ {
+  "id": "fl_sR9KBGNjB5FdYdpz",
+  "cardType": "question_and_answer",
+  "front": "How do you find $\\text{P} ( X \\leq 3 )$ for a Poisson distribution without typing four separate terms?\n",
+  "back": "Every term contains $e^{-λ}$, so factorise it out:\n\n`\\text{P}(X \\le 3) = e^{-\\lambda}\\left(1 + \\lambda + \\frac{\\lambda^{2}}{2!} + \\frac{\\lambda^{3}}{3!}\\right)`\n\nThe first two terms simplify because $λ^{0} = 1$ and $0 ! = 1 ! = 1$.\n\nThat single bracket is far quicker to type and much less prone to slips than four separate products.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "poisson-distribution",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "poisson-distribution",
+  "subtopicCode": "poisson-distribution",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_F5rFq42MxcZZYVvp"
+  ]
+ },
+ {
+  "id": "fl_Q5FDW4P5HFftRczx",
+  "cardType": "true_or_false",
+  "front": "**True or False?**\n\nFor a Poisson distribution, subtracting from 1 is merely a quicker way of finding $\\text{P} ( X > k )$.\n",
+  "back": "**False.**\n\nIt is the **only** way. A Poisson variable has no upper limit, so there are infinitely many values greater than $k$ and they cannot be added up directly.\n\nSo $\\text{P} ( X > k ) = 1 - \\text{P} ( X \\leq k )$ is a necessity here, where for a binomial it would only have been a convenience.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "poisson-distribution",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "poisson-distribution",
+  "subtopicCode": "poisson-distribution",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_F5rFq42MxcZZYVvp"
+  ]
+ },
+ {
+  "id": "fl_2V4pFG5bZyTyWdGH",
+  "cardType": "fill_in_the_blanks",
+  "front": "For constants $a$ and $b$, fill in the two results:\n\n`\\text{E}(aX + b) = \\_\\_\\_\\_\\_\\_`\n\n`\\text{Var}(aX + b) = \\_\\_\\_\\_\\_\\_`\n",
+  "back": "The completed results are:\n\n$\\text{E} ( a X + b ) = a \\text{E} ( X ) + b$\n\n$\\text{Var} ( a X + b ) = a^{2} \\text{Var} ( X )$\n\nThe mean is affected by both the multiplication and the addition, but the variance is affected only by the multiplication.\n\nThe $a$ is **squared** in the variance, because variance is built from squared deviations.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "linear-combinations-of-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "linear-combinations-of-random-variables",
+  "subtopicCode": "linear-combinations-of-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_ZKTsy2RrhrRGDxnH"
+  ]
+ },
+ {
+  "id": "fl_fBd3NDb6Pcw8P9vH",
+  "cardType": "question_and_answer",
+  "front": "Why does adding a constant leave the variance unchanged?\n",
+  "back": "Adding a constant slides every value along by the same amount, so the whole distribution shifts without being stretched.\n\nVariance measures **spread** about the mean, and shifting the values and the mean together leaves every deviation exactly as it was.\n\nSo $\\text{Var} ( X + 7 )$ and $\\text{Var} ( X )$ are the same number.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "linear-combinations-of-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "linear-combinations-of-random-variables",
+  "subtopicCode": "linear-combinations-of-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_ZKTsy2RrhrRGDxnH"
+  ]
+ },
+ {
+  "id": "fl_4HmwGHGMBrbw8JKz",
+  "cardType": "question_and_answer",
+  "front": "If $X$ is normal, is $a X + b$ normal? What if $X$ is Poisson?\n",
+  "back": "If $X$ is normal then $a X + b$ is **also normal**, specifically $\\text{N} ( a μ + b , a^{2} σ^{2} )$.\n\nA binomial, geometric or Poisson variable does **not** keep its type: doubling a Poisson count gives only even numbers, which no Poisson distribution does.\n\nThat closure under linear change is one of the things that makes the normal distribution so convenient.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "linear-combinations-of-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "linear-combinations-of-random-variables",
+  "subtopicCode": "linear-combinations-of-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_ZKTsy2RrhrRGDxnH"
+  ]
+ },
+ {
+  "id": "fl_86SJfYrrk6WRtbF7",
+  "cardType": "fill_in_the_blanks",
+  "front": "For independent $X$ and $Y$, fill in the two results:\n\n`\\text{E}(aX + bY) = \\_\\_\\_\\_\\_\\_`\n\n`\\text{Var}(aX + bY) = \\_\\_\\_\\_\\_\\_`\n",
+  "back": "The completed results are:\n\n$\\text{E} ( a X + b Y ) = a \\text{E} ( X ) + b \\text{E} ( Y )$\n\n$\\text{Var} ( a X + b Y ) = a^{2} \\text{Var} ( X ) + b^{2} \\text{Var} ( Y )$\n\nThe result for the expectation holds for **any** two random variables, but the one for the variance needs them to be **independent**.\n\nBoth constants are squared in the variance, exactly as in the single-variable case.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "linear-combinations-of-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "linear-combinations-of-random-variables",
+  "subtopicCode": "linear-combinations-of-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_Bjg5yWKMV4mBYjrW"
+  ]
+ },
+ {
+  "id": "fl_7SPjdWGkGsYVRCR4",
+  "cardType": "true_or_false",
+  "front": "**True or False?**\n\n$\\text{Var} ( X - Y )$ is the same as $\\text{Var} ( X + Y )$ for independent $X$ and $Y$.\n",
+  "back": "**True.**\n\nSubtracting $Y$ is adding $- Y$, and the coefficient is **squared** in the variance, so $( - 1 )^{2} = 1$ and nothing changes.\n\nVariances therefore **add** for a difference just as they do for a sum, which is the single most commonly lost mark in this topic.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "linear-combinations-of-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "linear-combinations-of-random-variables",
+  "subtopicCode": "linear-combinations-of-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_Bjg5yWKMV4mBYjrW"
+  ]
+ },
+ {
+  "id": "fl_DNdYgPSqQtfFmwJ4",
+  "cardType": "question_and_answer",
+  "front": "If $X$ and $Y$ are independent normal variables, what is the distribution of $a X + b Y$?\n",
+  "back": "It is **normal** as well, with mean $a μ_{1} + b μ_{2}$ and variance $a^{2} σ_{1}^{2} + b^{2} σ_{2}^{2}$.\n\nThis is what makes questions about differences and totals of normal variables tractable at all.\n\nIt holds for a difference too, with the means subtracting while the variances still add.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "linear-combinations-of-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "linear-combinations-of-random-variables",
+  "subtopicCode": "linear-combinations-of-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_Bjg5yWKMV4mBYjrW"
+  ]
+ },
+ {
+  "id": "fl_bZ8zBfnd95YxY6gf",
+  "cardType": "question_and_answer",
+  "front": "If $X$ and $Y$ are independent Poisson variables, when is a combination of them Poisson?\n",
+  "back": "Only for the plain **sum**: if `X \\sim \\text{Po}(\\lambda)` and `Y \\sim \\text{Po}(\\mu)` then `X + Y \\sim \\text{Po}(\\lambda + \\mu)`.\n\nOnce constants are involved it fails: $a X + b Y$ is **not** Poisson for values of $a$ and $b$ other than 0 and 1.\n\nThe normal is closed under any linear combination, but the Poisson is closed only under addition.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "linear-combinations-of-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "linear-combinations-of-random-variables",
+  "subtopicCode": "linear-combinations-of-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_Bjg5yWKMV4mBYjrW"
+  ]
+ },
+ {
+  "id": "fl_MvCzxgMZ7RvsjWyw",
+  "cardType": "question_and_answer",
+  "front": "$X$ and $Y$ are independent with $\\text{Var} ( X ) = 3$ and $\\text{Var} ( Y ) = 4$. What is $\\text{Var} ( 4 X - Y )$?\n",
+  "back": "It is $4^{2} \\times 3 + ( - 1 )^{2} \\times 4 = 48 + 4 = 52$.\n\nBoth coefficients are squared and the two terms are then **added**, however the original expression was signed.\n\nWriting the squares in explicitly, rather than doing them in your head, is what stops the minus sign getting through.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "linear-combinations-of-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "linear-combinations-of-random-variables",
+  "subtopicCode": "linear-combinations-of-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_Bjg5yWKMV4mBYjrW"
+  ]
+ },
+ {
+  "id": "fl_yHgsBpmNhF9b22jK",
+  "cardType": "question_and_answer",
+  "front": "What is the difference between $2 X$ and $X_{1} + X_{2}$?\n",
+  "back": "$2 X$ means **one** observation of $X$, doubled; $X_{1} + X_{2}$ means **two** separate observations added together.\n\nThey have the same expected value, $2 \\text{E} ( X )$, but different variances: $\\text{Var} ( 2 X ) = 4 \\text{Var} ( X )$ while $\\text{Var} ( X_{1} + X_{2} ) = 2 \\text{Var} ( X )$.\n\nIf $X$ could be 0 or 1 then $2 X$ can only be 0 or 2, whereas $X_{1} + X_{2}$ can also be 1, which shows they are genuinely different variables.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "linear-combinations-of-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "linear-combinations-of-random-variables",
+  "subtopicCode": "linear-combinations-of-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_44sx7ZCBmc2kxvPj"
+  ]
+ },
+ {
+  "id": "fl_THNckZBtqSH9sMZ7",
+  "cardType": "question_and_answer",
+  "front": "A carton holds six eggs. Why is the total mass not modelled by $C + 6 E$?\n",
+  "back": "Because the six eggs have six **different** masses, so the model must be $C + E_{1} + E_{2} + E_{3} + E_{4} + E_{5} + E_{6}$.\n\nWriting $6 E$ would mean weighing one egg and multiplying by six, which would give a larger variance than the real situation has.\n\nAsking whether the question means one thing repeated or several separate things is what decides between the two.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "linear-combinations-of-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "linear-combinations-of-random-variables",
+  "subtopicCode": "linear-combinations-of-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_44sx7ZCBmc2kxvPj"
+  ]
+ },
+ {
+  "id": "fl_h7cXMXt4t8Vc4Myx",
+  "cardType": "keyword_definition",
+  "front": "Define **probability density function**.\n",
+  "back": "A **probability density function**, written $\\text{f} ( x )$, is a function used to model the probabilities of a **continuous** random variable.\n\nProbability is represented by **area** under the graph of $y = \\text{f} ( x )$ rather than by the height of the curve.\n\nThat is why a density can exceed 1 while a probability never can.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_v7Mj9nd2MKFtYff7"
+  ]
+ },
+ {
+  "id": "fl_VZbjNhDF7Whbv2BY",
+  "cardType": "fill_in_the_blanks",
+  "front": "Fill in the two conditions a function must satisfy to be a probability density function:\n\n`\\text{f}(x) \\_\\_\\_\\_\\_\\_ 0` for all values of $x$\n\n`\\int_{-\\infty}^{\\infty} \\text{f}(x) \\text{ d}x = \\_\\_\\_\\_\\_\\_`\n",
+  "back": "The completed conditions are:\n\n$\\text{f} ( x ) \\geq 0$ for all values of $x$\n\n`\\int_{-\\infty}^{\\infty} \\text{f}(x) \\text{ d}x = 1`\n\nThese are the continuous versions of the two conditions on a discrete distribution, that no probability is negative and that they all total 1.\n\nA question asking you to show a function can be a density function is asking you to check both.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_v7Mj9nd2MKFtYff7"
+  ]
+ },
+ {
+  "id": "fl_Jm3v2jdnhncjfmRt",
+  "cardType": "true_or_false",
+  "front": "**True or False?**\n\nEvery probability from a probability density function has to be found by integrating.\n",
+  "back": "**False.**\n\nThe probability is the **area** under the graph, so whenever that area is a triangle or a rectangle you can simply work it out.\n\nA quick sketch is worth doing for that reason alone, and it may also reveal symmetry that saves further work.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_v7Mj9nd2MKFtYff7"
+  ]
+ },
+ {
+  "id": "fl_gt94mgbVjNWKsK4f",
+  "cardType": "question_and_answer",
+  "front": "For a continuous random variable, what is $\\text{P} ( X = n )$, and what follows?\n",
+  "back": "It is **zero** for every value of $n$, because the area under the graph between $n$ and itself is zero.\n\nIt follows that the endpoints contribute nothing, so $\\text{P} ( a \\leq X \\leq b ) = \\text{P} ( a < X < b )$.\n\nStrict and weak inequalities can therefore be used interchangeably throughout, which is never true of a discrete variable.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_v7Mj9nd2MKFtYff7"
+  ]
+ },
+ {
+  "id": "fl_z5hCwwX2y3ZxWFqc",
+  "cardType": "question_and_answer",
+  "front": "A question gives $\\text{P} ( 0 \\leq X \\leq a ) = 0 . 09$ and asks for $a$. How do you find it?\n",
+  "back": "Integrate the density from 0 to $a$, leaving $a$ as an unknown limit, then set the result equal to $0 . 09$ and solve.\n\nThe integral produces an expression in $a$, so the probability question turns into an ordinary equation.\n\nCheck at the end that the value you get actually lies in the range over which the density is defined.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_v7Mj9nd2MKFtYff7"
+  ]
+ },
+ {
+  "id": "fl_fw35kv2hpmm7JdqR",
+  "cardType": "fill_in_the_blanks",
+  "front": "Complete the equation defining the median $m$ of a continuous random variable:\n\n`\\int_{-\\infty}^{m} \\text{f}(x) \\text{ d}x = \\_\\_\\_\\_\\_\\_`\n",
+  "back": "The completed equation is:\n\n`\\int_{-\\infty}^{m} \\text{f}(x) \\text{ d}x = 0.5`\n\nThe median is the value with half the area to its left and half to its right, so $\\text{P} ( X < m ) = \\text{P} ( X > m ) = 0 . 5$.\n\nIntegrating from $m$ upwards and setting that equal to $0 . 5$ works equally well, and one of the two is usually easier.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_VdGVXD7z4VX9BsBs"
+  ]
+ },
+ {
+  "id": "fl_fRnXCbXBYDj8fqJj",
+  "cardType": "question_and_answer",
+  "front": "How do you find the lower quartile or the 15th percentile of a continuous random variable?\n",
+  "back": "Exactly as for the median, but with a different area: the lower quartile $L$ satisfies $\\text{P} ( X \\leq L ) = 0 . 25$.\n\nThe 15th percentile $k$ satisfies $\\text{P} ( X \\leq k ) = 0 . 15$, and any percentile works the same way.\n\nEach is an equation in one unknown limit, solved by integrating up to that limit.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_VdGVXD7z4VX9BsBs"
+  ]
+ },
+ {
+  "id": "fl_Cycrg22vwG6Cgs3X",
+  "cardType": "question_and_answer",
+  "front": "What is the mode of a continuous random variable, and how do you find it?\n",
+  "back": "The **mode** is the value of $x$ at which $\\text{f} ( x )$ is **greatest**.\n\nWhere the graph is a curve with a maximum, differentiate and solve $\\text{f} ' ( x ) = 0$.\n\nIf that gives more than one solution, use the second derivative or check the endpoints, and discard any value outside the range where the density is defined.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_VdGVXD7z4VX9BsBs"
+  ]
+ },
+ {
+  "id": "fl_dd6nQjZhkFkJjtnz",
+  "cardType": "question_and_answer",
+  "front": "When can the median be written down without any integration at all?\n",
+  "back": "When the graph of $y = \\text{f} ( x )$ is **symmetrical**.\n\nThe axis of symmetry then splits the area into two equal halves, so the median sits on it, halfway between the lower and upper limits.\n\nA sketch is what reveals this, and it turns a page of integration into one line.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_VdGVXD7z4VX9BsBs"
+  ]
+ },
+ {
+  "id": "fl_qwKM27K9MYBk2dgv",
+  "cardType": "fill_in_the_blanks",
+  "front": "Complete the mean of a continuous random variable with density $\\text{f} ( x )$:\n\n`\\text{E}(X) = \\int_{-\\infty}^{\\infty} \\_\\_\\_\\_\\_\\_ \\text{ d}x`\n",
+  "back": "The completed formula is:\n\n`\\text{E}(X) = \\int_{-\\infty}^{\\infty} x\\,\\text{f}(x) \\text{ d}x`\n\nEach value is weighted by the density at that value and then totalled, which is what an integral does.\n\nIt is the continuous version of $Σ x \\text{P} ( X = x )$, with the sum replaced by an integral.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_tQpsd6ts3DXRzHSR"
+  ]
+ },
+ {
+  "id": "fl_qGSvtQXKxmkSf2Qr",
+  "cardType": "question_and_answer",
+  "front": "How do you find $\\text{E} ( \\text{g} ( X ) )$ for a continuous random variable?\n",
+  "back": "Integrate $\\text{g} ( x )  \\text{f} ( x )$ over the whole range, so `\\text{E}(\\text{g}(X)) = \\int_{-\\infty}^{\\infty} \\text{g}(x)\\,\\text{f}(x) \\text{ d}x`.\n\nThe density is left untouched: it is only the quantity being averaged that the function is applied to.\n\nTaking $\\text{g} ( x ) = x^{2}$ gives $\\text{E} ( X^{2} )$, which is the case you need most often.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_tQpsd6ts3DXRzHSR"
+  ]
+ },
+ {
+  "id": "fl_Bq29DSXJ9b78zwXR",
+  "cardType": "fill_in_the_blanks",
+  "front": "Complete the variance of a continuous random variable:\n\n`\\text{Var}(X) = \\int_{-\\infty}^{\\infty} x^{2}\\,\\text{f}(x) \\text{ d}x - \\_\\_\\_\\_\\_\\_`\n",
+  "back": "The completed formula is:\n\n`\\text{Var}(X) = \\int_{-\\infty}^{\\infty} x^{2}\\,\\text{f}(x) \\text{ d}x - \\left[\\text{E}(X)\\right]^{2}`\n\nThe integral is $\\text{E} ( X^{2} )$, so this is the familiar mean of the squares minus the square of the mean.\n\nThe standard deviation is the square root of the result.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_tQpsd6ts3DXRzHSR"
+  ]
+ },
+ {
+  "id": "fl_QQmt2M89KSyCpMVB",
+  "cardType": "question_and_answer",
+  "front": "What is the difference between $\\text{E} ( X^{2} )$ and `\\left[\\text{E}(X)\\right]^{2}`?\n",
+  "back": "$\\text{E} ( X^{2} )$ is the **mean of the squares**: square the variable first, then integrate against the density.\n\n`\\left[\\text{E}(X)\\right]^{2}` is the **square of the mean**: integrate first, then square the single number you get.\n\nThe order is what separates them, and doing it the wrong way round is the usual reason a variance comes out negative.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_tQpsd6ts3DXRzHSR"
+  ]
+ },
+ {
+  "id": "fl_Pvj9DWnChX8QCRFF",
+  "cardType": "question_and_answer",
+  "front": "For $\\text{f} ( x ) = 1 . 5 x^{2} ( 1 - 0 . 5 x )$ on $0 \\leq x \\leq 2$, how do you get to the variance?\n",
+  "back": "Work out $\\text{E} ( X ) = 1 . 2$ by integrating $x  \\text{f} ( x )$, then $\\text{E} ( X^{2} ) = 1 . 6$ by integrating $x^{2}  \\text{f} ( x )$.\n\nSubtracting gives\n\n$\\text{Var} ( X ) = 1 . 6 - 1 . 2^{2} = 1 . 6 - 1 . 44 = 0 . 16$\n\nBoth integrals run only over the interval where the density is non-zero, since it contributes nothing elsewhere.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_tQpsd6ts3DXRzHSR"
+  ]
+ },
+ {
+  "id": "fl_XP96mz29q6wgtH9v",
+  "cardType": "true_or_false",
+  "front": "**True or False?**\n\nIf the graph of the density function is symmetrical about $x = a$, then $\\text{E} ( X ) = a$.\n",
+  "back": "**True.**\n\nThe weighting either side of the axis of symmetry balances exactly, so the mean sits on that axis.\n\nSpotting it saves the whole integration for the mean, and it gives the median at the same time, since the two coincide for a symmetrical density.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_tQpsd6ts3DXRzHSR"
+  ]
+ },
+ {
+  "id": "fl_s9NsK4rqJ5YpKnpp",
+  "cardType": "keyword_definition",
+  "front": "Define **continuous uniform distribution**.\n",
+  "back": "The **continuous uniform distribution**, also called the **rectangular** distribution, has a density that is **constant and non-zero** over one interval and zero everywhere else.\n\nSo every part of the interval is equally likely, and the graph of $\\text{f} ( x )$ is a horizontal line segment.\n\nIt is the simplest continuous distribution there is, and the one where no integration is ever needed.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_KybbZBNFjfVCQzYj"
+  ]
+ },
+ {
+  "id": "fl_bYDB6cTJNzrVvhxQ",
+  "cardType": "question_and_answer",
+  "front": "For a uniform distribution on $a \\leq x \\leq b$, what is the height of the density?\n",
+  "back": "It is $\\frac{1}{b-a}$.\n\nThe area under the graph has to be 1, and the shape is a rectangle of width $b - a$, so the height must be the reciprocal of that width.\n\nA narrow interval therefore gives a tall density, which is how a density can exceed 1 without anything being wrong.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_KybbZBNFjfVCQzYj"
+  ]
+ },
+ {
+  "id": "fl_smkVJNSckpYtTTjr",
+  "cardType": "question_and_answer",
+  "front": "How do you find a probability for a continuous uniform distribution?\n",
+  "back": "Sketch the rectangle and work out the **area** of the part you want, which is just width multiplied by height.\n\nSo $\\text{P} ( 2 . 5 \\leq X \\leq 3 )$ for a density of $0 . 4$ is $0 . 5 \\times 0 . 4 = 0 . 2$.\n\nIntegration would give the same answer, but there is never any reason to use it here.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_KybbZBNFjfVCQzYj"
+  ]
+ },
+ {
+  "id": "fl_y5Cx9KmRQrCwFH8x",
+  "cardType": "fill_in_the_blanks",
+  "front": "For a uniform distribution on $a \\leq x \\leq b$, fill in the mean and the variance:\n\n`\\text{E}(X) = \\_\\_\\_\\_\\_\\_`\n\n`\\text{Var}(X) = \\_\\_\\_\\_\\_\\_`\n",
+  "back": "The completed results are:\n\n$\\text{E} ( X ) = \\frac{1}{2} ( a + b )$\n\n$\\text{Var} ( X ) = \\frac{1}{12} ( b - a )^{2}$\n\nThe mean is simply the midpoint, which is the axis of symmetry of the rectangle, and the median is the same value.\n\nThe variance depends only on the **width** of the interval, not on where that interval sits.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_KybbZBNFjfVCQzYj"
+  ]
+ },
+ {
+  "id": "fl_MCpVsz4sxS64Qcjh",
+  "cardType": "true_or_false",
+  "front": "**True or False?**\n\nA continuous uniform distribution has no mode.\n",
+  "back": "**True.**\n\nThe mode is the value where the density is greatest, and here the density takes the **same** value everywhere on the interval.\n\nNo single value is more likely than any other, so there is nothing for the mode to be.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_KybbZBNFjfVCQzYj"
+  ]
+ },
+ {
+  "id": "fl_cq3B8p52RMnG5WWd",
+  "cardType": "question_and_answer",
+  "front": "A uniform density is $0 . 4$ on $a \\leq x \\leq 4$. How do you find $a$?\n",
+  "back": "The total area must be 1, so $0 . 4 \\times ( 4 - a ) = 1$, giving $4 - a = 2 . 5$ and $a = 1 . 5$.\n\nThe height and the width of the rectangle are reciprocals of one another, so knowing either one fixes the other.\n\nThat single equation is enough whenever one endpoint or the height is missing.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "continuous-random-variables",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "continuous-random-variables",
+  "subtopicCode": "continuous-random-variables",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_KybbZBNFjfVCQzYj"
+  ]
+ },
+ {
+  "id": "fl_t9nWBkySJMz57zkr",
+  "cardType": "question_and_answer",
+  "front": "What is the first question to ask when choosing a distribution to model something?\n",
+  "back": "Whether the variable **counts** something or **measures** something.\n\nCounting points to a discrete distribution, and measuring to a continuous one, which settles half the question immediately.\n\nAfter that it is a matter of which counting situation, or whether the measured data is symmetrical and bell-shaped.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "working-with-distributions",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "working-with-distributions",
+  "subtopicCode": "working-with-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_JctJy4spgKD9pRHB"
+  ]
+ },
+ {
+  "id": "fl_MfFhSVMfFxmQrfS4",
+  "cardType": "fill_in_the_blanks",
+  "front": "Fill in the three conditions for a Poisson model:\n\nthe mean number of occurrences, $λ$, is known and `\\_\\_\\_\\_\\_\\_`\n\nthe events occur at `\\_\\_\\_\\_\\_\\_`\n\nthe events occur singly and `\\_\\_\\_\\_\\_\\_`\n",
+  "back": "The completed conditions are:\n\nthe mean number of occurrences, $λ$, is known and **finite**\n\nthe events occur at **random**\n\nthe events occur singly and **independently**\n\nIndependence is the one worth checking hardest, because it is the condition a real context most often breaks.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "working-with-distributions",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "working-with-distributions",
+  "subtopicCode": "working-with-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_JctJy4spgKD9pRHB"
+  ]
+ },
+ {
+  "id": "fl_V5zr7JpDskqpWvxg",
+  "cardType": "question_and_answer",
+  "front": "Both a binomial and a Poisson variable count something. What decides between them?\n",
+  "back": "Whether there is a **fixed number of trials**.\n\nA binomial counts successes among a fixed number $n$ of trials, so it can never exceed $n$.\n\nA Poisson counts occurrences in an interval of time or space with no fixed number of trials at all, so it has no upper limit.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "working-with-distributions",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "working-with-distributions",
+  "subtopicCode": "working-with-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_JctJy4spgKD9pRHB"
+  ]
+ },
+ {
+  "id": "fl_kFfqGPWqvxGF7ybr",
+  "cardType": "question_and_answer",
+  "front": "What distinguishes a geometric model from a binomial one?\n",
+  "back": "A geometric variable counts the **trials up to and including the first success**, so the trials continue until that success happens.\n\nA binomial fixes the number of trials in advance and counts how many succeed.\n\nThe three other conditions are the same for both: independent trials, two outcomes, and a constant probability of success.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "working-with-distributions",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "working-with-distributions",
+  "subtopicCode": "working-with-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_JctJy4spgKD9pRHB"
+  ]
+ },
+ {
+  "id": "fl_SSvvfB6P4x8dKYsC",
+  "cardType": "true_or_false",
+  "front": "**True or False?**\n\nA histogram of real data can tell you whether a normal model is reasonable.\n",
+  "back": "**True.**\n\nIf the histogram is roughly symmetrical and bell-shaped, a normal model is worth using.\n\nAs more data is collected the outline should smooth out and come to resemble the normal curve itself, so a lopsided or two-peaked histogram is telling you to look elsewhere.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "working-with-distributions",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "working-with-distributions",
+  "subtopicCode": "working-with-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_JctJy4spgKD9pRHB"
+  ]
+ },
+ {
+  "id": "fl_cDPSgXq3N8GgdbSN",
+  "cardType": "question_and_answer",
+  "front": "Why must you always state what your variables and parameters represent?\n",
+  "back": "Because a question can involve more than one variable measuring quite different things, such as a mass and a count.\n\nWriting each one down in words is what stops a mass being fed into a distribution that counts, or a parameter from one model being used in another.\n\nIt also forces you to decide what is actually being modelled before choosing anything.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "working-with-distributions",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "working-with-distributions",
+  "subtopicCode": "working-with-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_JctJy4spgKD9pRHB"
+  ]
+ },
+ {
+  "id": "fl_D6H8KRyfvhnwQk8Z",
+  "cardType": "fill_in_the_blanks",
+  "front": "Fill in the condition for approximating a Poisson distribution by a normal one:\n\n$λ$ must be large, in practice greater than about `\\_\\_\\_\\_\\_\\_`\n",
+  "back": "The completed condition is:\n\n$λ$ must be large, in practice greater than about **15**\n\nThe larger $λ$ becomes, the more symmetrical the Poisson distribution is, and the better a bell-shaped curve fits it.\n\nBelow that the distribution still has a noticeable tail to the right, and a symmetrical curve fits it badly.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "working-with-distributions",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "working-with-distributions",
+  "subtopicCode": "working-with-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_H5hw3Xwrd5q3tMVf"
+  ]
+ },
+ {
+  "id": "fl_6kCBYmyvVqktP4jD",
+  "cardType": "question_and_answer",
+  "front": "Which normal distribution approximates `X \\sim \\text{Po}(\\lambda)`?\n",
+  "back": "It is $\\text{N} ( λ , λ )$: both the mean and the variance are $λ$.\n\nThat is because a Poisson distribution has its mean and variance **exactly** equal, so matching them to the normal puts the same number in both places.\n\nThe standard deviation you then standardise with is $\\sqrt{λ}$, not $λ$.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "working-with-distributions",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "working-with-distributions",
+  "subtopicCode": "working-with-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_H5hw3Xwrd5q3tMVf"
+  ]
+ },
+ {
+  "id": "fl_8QBxsn3dqZStwW2r",
+  "cardType": "question_and_answer",
+  "front": "For `X \\sim \\text{Po}(40)`, how do you approximate $\\text{P} ( X > 50 )$?\n",
+  "back": "$λ = 40$ is large, so use `X_{N} \\sim \\text{N}(40, 40)`.\n\nApply the continuity correction, which turns $X > 50$ into $X_{N} > 50 . 5$, then standardise with $\\sqrt{40}$:\n\n$z = \\frac{50.5-40}{\\sqrt{40}} = 1 . 660$\n\nThat gives $1 - Φ ( 1 . 660 ) = 0 . 0485$.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "working-with-distributions",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "working-with-distributions",
+  "subtopicCode": "working-with-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_H5hw3Xwrd5q3tMVf"
+  ]
+ },
+ {
+  "id": "fl_pkbsrgrrfNbV7xdy",
+  "cardType": "question_and_answer",
+  "front": "Which of the two approximations needs a continuity correction, and why only that one?\n",
+  "back": "Only the **normal** approximation to a Poisson, because it replaces a **discrete** variable with a **continuous** one.\n\nA Poisson approximation to a binomial needs none at all, since both distributions are discrete and whole numbers stay whole numbers.\n\nApplying a correction where none is needed is as much an error as leaving one out where it is.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "working-with-distributions",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "working-with-distributions",
+  "subtopicCode": "working-with-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_z3bqrJJTTNNyrnj2"
+  ]
+ },
+ {
+  "id": "fl_Vm2zZ6Pzd4VDf5JZ",
+  "cardType": "fill_in_the_blanks",
+  "front": "Fill in the two conditions for approximating a binomial distribution by a Poisson one:\n\n$n$ is large, in practice greater than about `\\_\\_\\_\\_\\_\\_`\n\n$p$ is small, so that $n p$ is less than about `\\_\\_\\_\\_\\_\\_`\n",
+  "back": "The completed conditions are:\n\n$n$ is large, in practice greater than about **50**\n\n$p$ is small, so that $n p$ is less than about **5**\n\nThe Poisson distribution arises from the binomial as $n$ grows and $p$ shrinks with their product staying finite, which is why those two pull in opposite directions.\n\nNotice this is the reverse of what a **normal** approximation to a binomial wants, where $n p$ has to be large.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "working-with-distributions",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "working-with-distributions",
+  "subtopicCode": "working-with-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_z3bqrJJTTNNyrnj2"
+  ]
+ },
+ {
+  "id": "fl_qvTd7jJ6BGGyn8ZN",
+  "cardType": "question_and_answer",
+  "front": "What is $λ$ when a binomial distribution is approximated by a Poisson one?\n",
+  "back": "It is $n p$, the mean of the binomial.\n\nThe approximating distribution is matched to the original by its **mean**, and a Poisson has only that one parameter to fix.\n\nSo 3000 trials with probability $0 . 001$ each give $\\text{Po} ( 3 )$.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "working-with-distributions",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "working-with-distributions",
+  "subtopicCode": "working-with-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_z3bqrJJTTNNyrnj2"
+  ]
+ },
+ {
+  "id": "fl_qtXk5Tn5KQ3Sd2Ny",
+  "cardType": "question_and_answer",
+  "front": "You cannot compute a probability from the original distribution. What do you decide first?\n",
+  "back": "**Which distribution you are approximating from**, since that limits what you can approximate to.\n\nA binomial can be approximated by either a Poisson or a normal distribution, depending on which conditions hold.\n\nA Poisson can only be approximated by a normal distribution.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "working-with-distributions",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "working-with-distributions",
+  "subtopicCode": "working-with-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_yJjTB6XVN77V49nJ"
+  ]
+ },
+ {
+  "id": "fl_W5XKsfnq5kBQPyDs",
+  "cardType": "true_or_false",
+  "front": "**True or False?**\n\nAn approximation is always second best, since the exact distribution would give a better answer.\n",
+  "back": "**False.**\n\nThe exact answer is better only if you can actually reach it, and a cumulative probability spanning dozens of values needs one term for each.\n\nWhen $n$ or $λ$ is large enough, the approximation is not a compromise but the only practical route, and the conditions exist precisely to keep it accurate.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "working-with-distributions",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "working-with-distributions",
+  "subtopicCode": "working-with-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_yJjTB6XVN77V49nJ"
+  ]
+ },
+ {
+  "id": "fl_3tDpHFQT9nTPZb3D",
+  "cardType": "question_and_answer",
+  "front": "A binomial has $n = 3000$ and $p = 0 . 001$. Which approximation fits, and why not the other one?\n",
+  "back": "A **Poisson** approximation, with $λ = n p = 3$, since $n$ is well over 50 and $n p$ is under 5.\n\nA normal approximation would fail here: it needs $n p$ to be greater than 5, and 3 is not.\n\nThe two sets of conditions are close to being opposites, so checking $n p$ almost always settles which one is meant.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "working-with-distributions",
+  "sectionSlug": "statistical-distributions",
+  "topicSlug": "working-with-distributions",
+  "subtopicCode": "working-with-distributions",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_yJjTB6XVN77V49nJ"
+  ]
+ },
+ {
+  "id": "fl_RZ9KtFVHDYh89jZ3",
+  "cardType": "keyword_definition",
+  "front": "Define **sampling frame**.\n",
+  "back": "A **sampling frame** is a list of all the members of the population, such as a company's list of its employees' names.\n\nIt is essential for a simple random sample, because you cannot give a unique number to members you cannot list.\n\nWhere no such list exists, a genuinely random sample is very hard to take.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-data-collection",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-data-collection",
+  "subtopicCode": "sampling-and-data-collection",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_ww33xZDjskWFJSKC"
+  ]
+ },
+ {
+  "id": "fl_nQgb82wjwgKdSvxm",
+  "cardType": "fill_in_the_blanks",
+  "front": "Fill in the three terms:\n\nthe whole set of things you are interested in: `\\_\\_\\_\\_\\_\\_`\n\na subset of it that you collect data from: `\\_\\_\\_\\_\\_\\_`\n\na collection of data from every single member: `\\_\\_\\_\\_\\_\\_`\n",
+  "back": "The completed terms are:\n\nthe whole set of things you are interested in: **population**\n\na subset of it that you collect data from: **sample**\n\na collection of data from every single member: **census**\n\nA census and a sample are two ways of getting at the same population, and the choice between them is a practical one.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-data-collection",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-data-collection",
+  "subtopicCode": "sampling-and-data-collection",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_ww33xZDjskWFJSKC"
+  ]
+ },
+ {
+  "id": "fl_4b3h5j4MhcXy3kpr",
+  "cardType": "question_and_answer",
+  "front": "What is the difference between a population parameter and a sample statistic?\n",
+  "back": "A **population parameter** is a numerical value describing a characteristic of the whole population, such as the mean height of all 16-year-olds, and it is usually unknown.\n\nA **sample statistic** is a value computed from the data in a sample.\n\nStatistics exist in order to estimate parameters, which is the whole reason for sampling at all.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-data-collection",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-data-collection",
+  "subtopicCode": "sampling-and-data-collection",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_ww33xZDjskWFJSKC"
+  ]
+ },
+ {
+  "id": "fl_CSrbsHFNPCbqkkk5",
+  "cardType": "fill_in_the_blanks",
+  "front": "Fill in the two probability conditions:\n\nIn a **random** sample, every member of the population has a `\\_\\_\\_\\_\\_\\_` probability of being selected.\n\nIn a **simple random** sample, every member has an `\\_\\_\\_\\_\\_\\_` probability of being selected.\n",
+  "back": "The completed conditions are:\n\nIn a **random** sample, every member has a **non-zero** probability of being selected.\n\nIn a **simple random** sample, every member has an **equal** probability of being selected.\n\nA simple random sample asks for more than that as well: every possible sample of that size must be equally likely.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-data-collection",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-data-collection",
+  "subtopicCode": "sampling-and-data-collection",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_ww33xZDjskWFJSKC"
+  ]
+ },
+ {
+  "id": "fl_R7HQQ35zWbD43mtD",
+  "cardType": "question_and_answer",
+  "front": "How do you use random numbers to take a simple random sample of 20 from a club of 50 members?\n",
+  "back": "Give each member on the register a unique number from 1 to 50, which is the sampling frame.\n\nRead the random digits in **pairs**, taking the member whose number comes up when the pair is between 01 and 50, and ignoring the pair otherwise.\n\nCarry on until 20 different members have been selected, ignoring any repeat.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-data-collection",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-data-collection",
+  "subtopicCode": "sampling-and-data-collection",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_ww33xZDjskWFJSKC"
+  ]
+ },
+ {
+  "id": "fl_TWVrFtHFrTXCdXzy",
+  "cardType": "question_and_answer",
+  "front": "Why is it more efficient to assign **two** numbers to each of 50 members rather than one?\n",
+  "back": "Two-digit random numbers run from 00 to 99, so with one number each, half of every set of digits generated is wasted.\n\nGiving each member two numbers uses all 100, so no draw ever has to be discarded.\n\nThe same reasoning gives five numbers each for 200 mice with three-digit numbers, since 1000 divided by 200 is 5.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-data-collection",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-data-collection",
+  "subtopicCode": "sampling-and-data-collection",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_ww33xZDjskWFJSKC"
+  ]
+ },
+ {
+  "id": "fl_GW9Jzf28SQFfXfCS",
+  "cardType": "question_and_answer",
+  "front": "Why would you take a sample instead of carrying out a census?\n",
+  "back": "A census is time-consuming and expensive, and it can be impossible when testing destroys what is tested, as with the lifetime of every lightbulb a factory makes.\n\nA sample is quicker and cheaper, and leaves far less data to analyse.\n\nThe price paid is that a sample might not represent the population, whereas a census is fully accurate.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-data-collection",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-data-collection",
+  "subtopicCode": "sampling-and-data-collection",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_d52YFcN4KDPwpSjv"
+  ]
+ },
+ {
+  "id": "fl_khytBQS7yGkBsZwQ",
+  "cardType": "true_or_false",
+  "front": "**True or False?**\n\nAsking people in a cinema is a good way to estimate what proportion of people enjoy watching films.\n",
+  "back": "**False.**\n\nPeople who are in a cinema are far more likely than average to enjoy films, so the sample is **biased** and the estimate will come out too high.\n\nA sample has to be **representative** of the population, and simply making it larger would not fix this one.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-data-collection",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-data-collection",
+  "subtopicCode": "sampling-and-data-collection",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_d52YFcN4KDPwpSjv"
+  ]
+ },
+ {
+  "id": "fl_N6gfmH8gFMWKpX5m",
+  "cardType": "question_and_answer",
+  "front": "A question describes a sampling method and asks you to criticise it. What should you look at?\n",
+  "back": "Look at how much data was collected, which means considering the **sampling fraction**, since most methods improve with a larger sample.\n\nThen look at whether the method could introduce **bias**, because randomness is what keeps bias down.\n\nA method that is not random in some respect is usually the thing worth challenging.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-data-collection",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-data-collection",
+  "subtopicCode": "sampling-and-data-collection",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_d52YFcN4KDPwpSjv"
+  ]
+ },
+ {
+  "id": "fl_FfY9Dd43vFXNprbG",
+  "cardType": "question_and_answer",
+  "front": "What does a sample strictly tell you about, and what follows for two different samples?\n",
+  "back": "Strictly a sample tells you only about the members that were actually selected, and its results are then **used as estimates** for the population.\n\nIt follows that two different samples from the same population can lead to different conclusions.\n\nThat is why a single sample is evidence rather than proof, and why the wording of a conclusion matters.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-data-collection",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-data-collection",
+  "subtopicCode": "sampling-and-data-collection",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_d52YFcN4KDPwpSjv"
+  ]
+ },
+ {
+  "id": "fl_Gk55YvbX33MHhQ3j",
+  "cardType": "keyword_definition",
+  "front": "Define **unbiased estimate**.\n",
+  "back": "An **unbiased estimate** is one produced by a statistic whose expected value is equal to the population parameter being estimated.\n\nIn plainer terms, individual estimates will vary from sample to sample, but the process gives an accurate result **on average**.\n\nSo the mean of many such estimates closes in on the true parameter as more samples are taken.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_fRD8dzP7gVHcXjn6"
+  ]
+ },
+ {
+  "id": "fl_BZfQpWK4x9m87ZRT",
+  "cardType": "fill_in_the_blanks",
+  "front": "Complete the unbiased estimate of a population variance from a sample of size $n$:\n\n`s^{2} = \\frac{1}{\\_\\_\\_\\_\\_\\_}\\left(\\Sigma x^{2} - \\frac{\\left(\\Sigma x\\right)^{2}}{n}\\right)`\n",
+  "back": "The completed formula is:\n\n`s^{2} = \\frac{1}{n - 1}\\left(\\Sigma x^{2} - \\frac{\\left(\\Sigma x\\right)^{2}}{n}\\right)`\n\nNotice that the $n$ inside the bracket is still $n$: only the divisor outside it changes.\n\nGetting those two the wrong way round is the commonest slip in the whole calculation.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_fRD8dzP7gVHcXjn6"
+  ]
+ },
+ {
+  "id": "fl_gyJKWJxWsNvWrRYm",
+  "cardType": "question_and_answer",
+  "front": "What is the one difference between the formula for a population variance and the unbiased estimate of it from a sample?\n",
+  "back": "The **divisor**.\n\nA population variance divides by $n$, while the unbiased estimate from a sample divides by $n - 1$; everything else is identical.\n\nSo one route to the estimate is to work out the sample's own variance and then multiply it by $\\frac{n}{n-1}$.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_fRD8dzP7gVHcXjn6"
+  ]
+ },
+ {
+  "id": "fl_8F2tNHDYg2fqD7Fv",
+  "cardType": "true_or_false",
+  "front": "**True or False?**\n\nThe unbiased estimate of a population mean is just the sample mean.\n",
+  "back": "**True.**\n\nIt is exactly the same formula, $\\overline{x} = \\frac{Σx}{n}$, with no adjustment of any kind.\n\nThe mean needs no correction; it is only the variance that does, which is what makes the two cases worth keeping apart in your head.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_fRD8dzP7gVHcXjn6"
+  ]
+ },
+ {
+  "id": "fl_PRT6PtFswNKcfd4r",
+  "cardType": "true_or_false",
+  "front": "**True or False?**\n\nSquare-rooting an unbiased estimate of the variance gives an unbiased estimate of the standard deviation.\n",
+  "back": "**False.**\n\nSquare-rooting does not preserve unbiasedness, and there is no formula that gives an unbiased estimate of the standard deviation for every population.\n\nThe square root of $s^{2}$ is still a perfectly good estimate and is what you would quote, but it is better to work with the variance wherever you can.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_fRD8dzP7gVHcXjn6"
+  ]
+ },
+ {
+  "id": "fl_G6KqRyCjwpXJWKs7",
+  "cardType": "question_and_answer",
+  "front": "From $n = 50$, $Σ t = 6174$ and $Σ t^{2} = 831581$, what are the unbiased estimates?\n",
+  "back": "The mean is $\\frac{6174}{50} = 123$ minutes to 3 significant figures.\n\nThe variance is\n\n`\\frac{1}{49}\\left(831581 - \\frac{6174^{2}}{50}\\right) = 1410 \\text{ min}^{2}`\n\nNote the units: a variance carries the **square** of the unit of the original data.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_fRD8dzP7gVHcXjn6"
+  ]
+ },
+ {
+  "id": "fl_J5QgdBBzyZN8n4fK",
+  "cardType": "question_and_answer",
+  "front": "A question gives you the raw data rather than the summary statistics. What is the first thing to do?\n",
+  "back": "Work out $Σ x$ and $Σ x^{2}$ from the data yourself, then use exactly the same formulae.\n\nThe formulae are written in terms of those two sums precisely so that raw data and summarised data can be handled the same way.\n\nIt is worth writing both sums down before substituting anything, because each is used more than once.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_fRD8dzP7gVHcXjn6"
+  ]
+ },
+ {
+  "id": "fl_zGD5R3wYGj9Vw4cX",
+  "cardType": "question_and_answer",
+  "front": "What does $\\overline{X}$ stand for, and why is it a random variable?\n",
+  "back": "$\\overline{X}$ is the mean of a sample of size $n$ taken from a population.\n\nIt is a **random variable** because a different sample gives a different value for it, so before the sample is taken its value is unknown.\n\nIts distribution is the distribution of all the values a sample mean could take.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_c4NPrDp59NSdW45n"
+  ]
+ },
+ {
+  "id": "fl_TsD5r4rmJ7ky9JHS",
+  "cardType": "fill_in_the_blanks",
+  "front": "For a sample of size $n$ from a population with mean $μ$ and variance $σ^{2}$, fill in the two results:\n\n`\\text{E}(\\bar{X}) = \\_\\_\\_\\_\\_\\_`\n\n`\\text{Var}(\\bar{X}) = \\_\\_\\_\\_\\_\\_`\n",
+  "back": "The completed results are:\n\n$\\text{E} ( \\overline{X} ) = μ$\n\n$\\text{Var} ( \\overline{X} ) = \\frac{σ^{2}}{n}$\n\nAveraging does not shift the centre, so the mean is unchanged; what it does is reduce the spread.\n\nThe variance is divided by $n$ itself, not by the square root of it.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_c4NPrDp59NSdW45n"
+  ]
+ },
+ {
+  "id": "fl_hStNJgwTB6HZSQm6",
+  "cardType": "question_and_answer",
+  "front": "What is the standard deviation of $\\overline{X}$, and what happens to it as $n$ grows?\n",
+  "back": "It is $\\frac{σ}{\\sqrt{n}}$, so it is inversely proportional to the **square root** of the sample size.\n\nA larger sample therefore makes the distribution of sample means narrower and taller.\n\nThe square root is what makes this expensive: quadrupling the sample only halves the spread.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_c4NPrDp59NSdW45n"
+  ]
+ },
+ {
+  "id": "fl_H7yrQCzSMyVtKwrm",
+  "cardType": "question_and_answer",
+  "front": "If `X \\sim \\text{N}(30, 25)` and a sample of 10 is taken, what is the distribution of $\\overline{X}$?\n",
+  "back": "It is `\\bar{X} \\sim \\text{N}(30, 2.5)`.\n\nThe mean stays at 30 and the variance becomes $\\frac{25}{10}$.\n\nBecause the population is normal, this is **exact**, with no approximation involved anywhere.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_c4NPrDp59NSdW45n"
+  ]
+ },
+ {
+  "id": "fl_thCfr55h6q86bpqC",
+  "cardType": "question_and_answer",
+  "front": "Why is the mean of a sample a more reliable estimate of $μ$ than a single observation?\n",
+  "back": "Taking a mean dilutes the effect of any one extreme value, since a high reading can be offset by a low one.\n\nThe distribution of sample means is correspondingly narrower than the population's, and the larger the sample the narrower it gets.\n\nSo a sample mean clusters much more tightly around $μ$ than a single reading ever does.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_c4NPrDp59NSdW45n"
+  ]
+ },
+ {
+  "id": "fl_TsCycFHZd8XNhMcb",
+  "cardType": "keyword_definition",
+  "front": "Define the **Central Limit Theorem**.\n",
+  "back": "For a random sample of size $n$ from **any** population with mean $μ$ and variance $σ^{2}$, the **Central Limit Theorem** says that $\\overline{X}$ can be approximated by `\\text{N}\\left(\\mu, \\frac{\\sigma^{2}}{n}\\right)`, provided $n$ is large enough.\n\nLarge enough is usually taken to mean at least 30.\n\nIts power is that it says nothing at all about the shape of the population.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_9GfWnqSpBjXwDKVj"
+  ]
+ },
+ {
+  "id": "fl_yJnCnKmtMCT3Wqkv",
+  "cardType": "true_or_false",
+  "front": "**True or False?**\n\nIf the population is normal, the sample mean is exactly normal however small the sample.\n",
+  "back": "**True.**\n\nA normal population gives an exactly normal distribution of sample means at any sample size, with no approximation at all.\n\nSo the Central Limit Theorem is **not needed** here: it is only for populations that are not normal, and then only when the sample is large.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_9GfWnqSpBjXwDKVj"
+  ]
+ },
+ {
+  "id": "fl_ZcScrvqPbrbwfW9D",
+  "cardType": "question_and_answer",
+  "front": "Susie's 40 numbers come from a population with mean 15 and variance 70. How do you find $\\text{P} ( \\overline{X} < 13 )$?\n",
+  "back": "The population is not normal, but 40 is a large sample, so the Central Limit Theorem gives `\\bar{X} \\approx \\text{N}\\left(15, \\frac{70}{40}\\right)`.\n\nStandardising 13 against that distribution gives $z = - 1 . 512$.\n\nThe probability is then $0 . 0653$, and the answer should say that the Central Limit Theorem was used and why.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_9GfWnqSpBjXwDKVj"
+  ]
+ },
+ {
+  "id": "fl_NNpD9TxRkqypb34B",
+  "cardType": "keyword_definition",
+  "front": "Define **confidence interval**.\n",
+  "back": "A **confidence interval** is an interval, calculated from a sample, within which a population parameter is likely to lie.\n\nIts **confidence level** is the probability that an interval constructed in that way contains the parameter.\n\nIt is the best that can be done when the exact value of a parameter cannot be found from a sample.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_4rg88C35yg494Krw"
+  ]
+ },
+ {
+  "id": "fl_JFtm9jGTxBX9ThVq",
+  "cardType": "question_and_answer",
+  "front": "Why is it wrong to say there is a 95% probability that $μ$ lies inside a particular confidence interval?\n",
+  "back": "Because $μ$ is a **fixed** number: it either is inside that particular interval or it is not, and there is no probability about it.\n\nThe 95% describes the **procedure** instead. If 100 samples were taken and an interval built from each, about 95 of those intervals would contain $μ$.\n\nThat is why the wording is always \"the interval contains the parameter\" rather than the other way round.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_4rg88C35yg494Krw"
+  ]
+ },
+ {
+  "id": "fl_g27yRrpj6PkdNfwr",
+  "cardType": "fill_in_the_blanks",
+  "front": "Fill in the $z$-values for these three confidence levels:\n\n90%: `z = \\_\\_\\_\\_\\_\\_`\n\n95%: `z = \\_\\_\\_\\_\\_\\_`\n\n99%: `z = \\_\\_\\_\\_\\_\\_`\n",
+  "back": "The completed values are:\n\n90%: $z = 1 . 645$\n\n95%: $z = 1 . 960$\n\n99%: $z = 2 . 576$\n\nThey are quoted to three decimal places because $z$ is multiplied by a standard deviation, so an error in it is magnified.\n\nAll three appear in the table of critical values, so they need not be memorised, but recognising them is a useful check.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_4rg88C35yg494Krw"
+  ]
+ },
+ {
+  "id": "fl_yrMBqpZPkhG3bv8F",
+  "cardType": "question_and_answer",
+  "front": "For a 90% confidence interval, why do you look up $0 . 95$ rather than $0 . 90$?\n",
+  "back": "The 90% sits in the **middle** of the distribution, so the remaining 10% is shared equally between the two tails, leaving 5% above $z$.\n\nThe probability below $z$ is therefore 95%, which is what the table needs.\n\nIn general you look up $\\frac{α+100}{2}$ per cent for a confidence level of $α$%.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_4rg88C35yg494Krw"
+  ]
+ },
+ {
+  "id": "fl_RgkvjQw6dc3b235N",
+  "cardType": "question_and_answer",
+  "front": "What two things affect the width of a confidence interval, and in which direction?\n",
+  "back": "A **higher confidence level** makes it wider, because catching the parameter more often requires casting a wider net.\n\nA **larger sample** makes it narrower, because $\\frac{σ}{\\sqrt{n}}$ shrinks as $n$ grows.\n\nThe two pull against each other, which is why more confidence is not simply better.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_4rg88C35yg494Krw"
+  ]
+ },
+ {
+  "id": "fl_9WbTrkmWn7HNq2hw",
+  "cardType": "true_or_false",
+  "front": "**True or False?**\n\nThe sample mean affects both where a confidence interval for $μ$ sits and how wide it is.\n",
+  "back": "**False.**\n\nThe sample mean is the **midpoint**, so it fixes where the interval sits, but the width is $2 z \\times \\frac{σ}{\\sqrt{n}}$ and does not contain $\\overline{x}$ at all.\n\nAn interval for a **proportion** behaves differently: there the sample proportion appears in the width as well as at the centre.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_4rg88C35yg494Krw"
+  ]
+ },
+ {
+  "id": "fl_bk9p4kzzphs2ppZr",
+  "cardType": "question_and_answer",
+  "front": "A 95% confidence interval for $μ$ is 18.5 to 22.1, and someone claims that $μ = 23$. What can you say?\n",
+  "back": "23 lies **outside** the interval, so there is **not enough evidence to support** the claim.\n\nA value lying inside the interval would be supported by it instead.\n\nThe wording matters either way: a confidence interval gives evidence rather than proof, so it never establishes a value or rules one out for certain.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_4rg88C35yg494Krw"
+  ]
+ },
+ {
+  "id": "fl_w8kH55T929tnWbzH",
+  "cardType": "question_and_answer",
+  "front": "What is the confidence interval for a population proportion?\n",
+  "back": "It is `\\hat{p} \\pm z \\times \\sqrt{\\frac{\\hat{p}(1 - \\hat{p})}{n}}`, where `\\hat{p}` is the proportion in the sample.\n\nIt may only be used when the sample is large enough for the Central Limit Theorem to apply.\n\nThe formula booklet gives the distribution of the sample proportion as `\\text{N}\\left(p, \\frac{p(1 - p)}{n}\\right)`, which is where the square root comes from.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_WrdZ9XXxJsS2Jrd3"
+  ]
+ },
+ {
+  "id": "fl_7kTPXCzBgd66DT9w",
+  "cardType": "question_and_answer",
+  "front": "How can a confidence interval for a proportion test whether a coin is fair?\n",
+  "back": "Work out the proportion of heads in a sample and build a confidence interval for the population proportion $p$.\n\nA fair coin would have $p = 0 . 5$, so check whether $0 . 5$ lies inside the interval.\n\nIf it lies outside there is evidence the coin is not fair; if it lies inside, there is not enough evidence to say so.\n",
+  "specPointCode": null,
+  "specPointIds": [],
+  "sourceNoteId": null,
+  "sourceTitle": null,
+  "deckSlug": "sampling-and-estimation",
+  "sectionSlug": "statistical-sampling-and-estimation",
+  "topicSlug": "sampling-and-estimation",
+  "subtopicCode": "sampling-and-estimation",
+  "provenanceTier": "RULE_DERIVED",
+  "smeSpecPointIds": [
+   "spcpt_WrdZ9XXxJsS2Jrd3"
+  ]
+ }
+]

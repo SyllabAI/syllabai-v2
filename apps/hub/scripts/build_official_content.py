@@ -67,8 +67,15 @@ def item_codes(entry: dict, spine_codes: set[str] | None = None) -> list[str]:
     return out
 
 
-def rekey_course(slug: str, content_root: Path | None = None) -> dict:
-    """Build the rekeyed bundle in memory and return it with stats."""
+def rekey_course(slug: str, content_root: Path | None = None, board: str | None = None,
+                 generated_utc: str | None = None) -> dict:
+    """Build the rekeyed bundle in memory and return it with stats.
+
+    board (optional): overlay the official registry board name onto the bundle's
+    curriculum + manifest (same pattern as the syllabusVersion overlay — the
+    spine files themselves are never touched). Used by the CIE-INTEGRATION
+    Phase 3 build whose registry/board of record is "Cambridge International"
+    while the committed spines carry their own "Cambridge CIE" form."""
     spine = load_json(REPO / "spines" / f"{slug}.json")
     att = load_json(REPO / "content-maps" / f"{slug}.json")
     cdir = (content_root or REPO / "content") / slug
@@ -97,6 +104,8 @@ def rekey_course(slug: str, content_root: Path | None = None) -> dict:
     _syll = (src_manifest.get("curriculum") or {}).get("syllabusVersion")
     if _syll:
         curriculum["syllabusVersion"] = _syll
+    if board:
+        curriculum["board"] = board
 
     # ---- notes -------------------------------------------------------------
     src_notes = load_json(cdir / "notes.json")
@@ -185,6 +194,10 @@ def rekey_course(slug: str, content_root: Path | None = None) -> dict:
             "specPoints": spec_points,
         },
     }
+    if board:
+        manifest["curriculum"] = {**(src_manifest.get("curriculum") or {}), "board": board}
+    if not isinstance(src_manifest.get("generatedUtc"), str) and generated_utc:
+        manifest["generatedUtc"] = generated_utc
 
     return {
         "curriculum.json": curriculum,
@@ -278,6 +291,14 @@ def main() -> int:
         "--content-root", type=Path, default=None,
         help="override the source content/ root (default REPO/content); used by lane "
              "builds whose sme-native bundles are staged outside the repo")
+    ap.add_argument(
+        "--board", default=None,
+        help="overlay the official registry board name onto the materialized bundle "
+             "(curriculum + manifest); never mutates the spine files")
+    ap.add_argument(
+        "--generated-utc", default=None,
+        help="deterministic generatedUtc stamp for bundles whose source manifest "
+             "carries none (lane builds; existing stamps are never overwritten)")
     args = ap.parse_args()
 
     content_root = args.content_root or (REPO / "content")
@@ -292,7 +313,7 @@ def main() -> int:
         if not args.course:
             print("--out requires --course", file=sys.stderr)
             return 2
-        bundle = rekey_course(args.course, content_root)
+        bundle = rekey_course(args.course, content_root, args.board, args.generated_utc)
         stats = bundle.pop("_stats")
         args.out.mkdir(parents=True, exist_ok=True)
         for name, data in bundle.items():

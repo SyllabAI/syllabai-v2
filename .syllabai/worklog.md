@@ -9211,3 +9211,20 @@ Work Log:
 
 Stage Summary:
 - The Task-62 receipt stands as pushed (9f51441); the misfire is disclosed and bounded — zero origin damage, zero foreign paths, token in-memory throughout.
+
+---
+Task ID: CIE-PHASE3-1 (operator trace 1a1561ff435f6951 "Phase 3 — 44 courses.json rows + commit the bundles + hub build green (one run), then the operator-gated DB plane")
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: CIE-INTEGRATION Phase 3 — registry rows + committed bundles + hub build green in one run
+
+Work Log:
+- Fetch-first: Phase 2 of record re-verified first-hand (PR #208 merged f7f1903, CI 2/2, receipt on main); sibling catalog lane PR #209 had landed 12 past-papers-first rows + honest-empty skeleton bundles (11 inside the 44-slug roster). Resources tip a7ebcd9 re-verified byte-SAME on all 4 CIE subtrees vs the pin 0fe5f77 — Phase 2 artifacts stayed valid. Main race-guarded at branch cut (2c83116).
+- The corpus gate did its job: the staged bundles failed verify_corpus_23a.ts with 16,766 polluted strings (15,834 code-span MathML speech texts, 628 multiline, 220 baretext, 84 $..$) + 170 dangling relatedNoteIds — the CIE banks predate the upstream aria-label->LaTeX extraction the Edexcel banks got. Baseline NOT refrozen; the precedented lane-side 23a/23b repair was run instead, extended for CIE.
+- Repair chain committed of record (scripts/cie/): cie_fetch_math_23a.ts (688 live SME page dicts, ~11k aria->MathML->LaTeX pairs), cie_patch_math_23a.ts (the byte-faithful 6-level chain + CIE layer: multiline spans unwrapped before the fence split, image-alt speech collapsed, bare-line last resort, gate-MARK acceptance), cie_math_extras.ts (ciePreMap Greek/font/bar/vector vocabulary, cieTexRepair incl. atom-scoped bare-over -> \frac + dangling \text{} removal, ciePlainCollapse gate-vocabulary-eliminating last resort), cie_prune_dangling_relatednotes.py (170 deterministic drops, 6 banks, none upstream-resolvable). Every $..$ replacement KaTeX-verified; unconvertible strings plain-collapsed or left verbatim — never machine-translated math. via: extras 8,139, page-exact 3,959, speech-recon 2,647, global-exact 723, cie-plain 570, global-seg 154, strip-space 111, exact-formula 15.
+- Bundles: 44 official-spine bundles (108.0MB, 7-file form) materialized via build_official_content.py (--content-root staging): 11 catalog skeletons upgraded in place + 33 new; officialSpine block pins spine + content-map + resourcesSha. Tool extended with opt-in --board (registry 'Cambridge International' vs spine 'Cambridge CIE') and --generated-utc (Zod ContentManifest requires the string) overlays — Edexcel default path byte-identical, spines untouched.
+- Registry: courses.json 61 -> 94 rows (+33, spine-verbatim fields, status full, board Cambridge International, level vocabulary normalized A-LEVEL->A-Level for 5 rows; posture pins absent); note carries the Phase 3 amendment. validate_cie_bundles.ts extended of record (94 rows, D1-skeleton-vs-real split, 33-slug roster section with specPoints==spine cross-checks, 45-CIE-row census; the card's paper-count assertions untouched).
+- ONE-RUN battery green locally BEFORE push: CIE validator 390/0; corpus gate 0/0/0/0/0/0 over 282 files (zero baseline intact); flashcard-sync ok (CIE noted deck-bearing-no-curriculumCode — core sync unchanged); validate_spines 93/0; zero-core census GREEN; typecheck clean; bun run build:hub GREEN (all routes generated).
+- Landed of record: PR (branch cie-phase3/registry-r0 from 2c83116) — receipt + worklog ride the branch. NO DB writes (Phase 4 is operator-gated).
+
+Stage Summary:
+- CIE-INTEGRATION Phase 3 DONE of record: 94-row registry, 44 real Cambridge course bundles committed, hub build green in one run, zero-baseline gates intact. Phase 4 (DB plane) handed to the operator GATED: per-spec seed-bundle-curriculum -> per-slug ingest dry-run -> COW-proof -> ADR-026 prod apply (19,095 questions / 25,654 parts across 40 real banks). LANE R0: IDLE at the gate.

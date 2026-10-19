@@ -1,0 +1,40 @@
+{
+ "schema": "syllabai-demo.content-bundle/2.0",
+ "generatedUtc": "2026-10-20T00:00:00Z",
+ "importSource": {
+  "repo": "SyllabAI/syllabai-resources",
+  "ref": "main@0fe5f77210f74aaeb3f6c491dfe0263d12db738c",
+  "upstreamSchemas": [
+   "syllabai.sme-revision-note/1.0",
+   "syllabai.sme-revision-notes-course/1.0",
+   "syllabai.sme-exam-questions/1.1",
+   "syllabai.sme-spec-point-index/1.0",
+   "syllabai.sme-flashcard-deck/1.0"
+  ]
+ },
+ "curriculum": {
+  "board": "Cambridge International",
+  "level": "IGCSE",
+  "subject": "Science",
+  "code": "0653",
+  "syllabusVersion": "2023-2024"
+ },
+ "license": "Operator-authorized SME corpus — see LICENSE-DATA.md in syllabai-resources (Amendment 2026-09-17). Demo re-use only.",
+ "counts": {
+  "sections": 6,
+  "topics": 24,
+  "specPoints": 86,
+  "notes": 84,
+  "questionSets": 14,
+  "questions": 41,
+  "parts": 48,
+  "marks": 106,
+  "flashcards": 0
+ },
+ "treeKind": "official-spine",
+ "officialSpine": {
+  "spine": "spines/cie-igcse-science-combined-science-23-physics.json",
+  "resourcesSha": "0fe5f77210f74aaeb3f6c491dfe0263d12db738c",
+  "attachmentMap": "content-maps/cie-igcse-science-combined-science-23-physics.json"
+ }
+}
