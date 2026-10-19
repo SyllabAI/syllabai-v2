@@ -8743,3 +8743,15 @@ Work Log:
 
 Stage Summary:
 - F2 CLOSED of record: favicon live end-to-end (commit fe08d58 -> CI 2/2 -> prod carrier dpl_7bR5korhxe, exact bytes served). Hub prod posture changed: git-connected, push-to-deploy. (b) Acquisition scope FILED: 3.5-4.5 lane runs to take all 16 modular-24 courses from honest-empty to real archives (June-2025 public set first); awaiting the operator go. Residuals unchanged: PAT rotation, Vercel token rotation, Render disable, prj_D7vf third-account delete. LANE R0: IDLE.
+Task ID: 50
+Agent: r4-api-b (Super Z, session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Trace 1a15397a74564191 — SME pass-5 product probes: mock exams, flashcards, strengths & weaknesses (product-research lane, no repo/register mutations).
+
+Work Log:
+- Opening checklist: .secrets verified 0600; fetch-first FF f1e9e94 -> ab6ba58. Sandbox regression again (scripts/sme/auth.json + dims.json wiped; evidence dir survived); re-authed from .secrets/sme-account (labels only, values never printed), auth state re-saved.
+- Pass-5 probes (agent-browser; 32 PNGs files 167-198; evidence dir 209 files): S&W course tool = threshold contract (>=10 questions/topic via EQ/TT/ME -> 1-5 score; legend 1/5/No score; two no-data states "not yet unlocked" vs "not available"; sort weakest-first default; filters Weaker/Improving/Stronger/No-score); threshold-unlock scripted attempt = disclosed negative (invisible CookieYes cky-modal interceptor + a11y virtualisation). Flashcards = tri-state hub chips (Still learning/Know/Revisit), deck 1.1 = 33 cards/5 lessons, flip+rate player (Flashcard_flipped DOM evidence), player filters card-state x lesson, PERSISTENCE PROVEN across reload (3/33 + bucket counts server-side). Mock Exams = Set A/B x 5 CIE papers; P1 front-cover reproduction (candidate fields, dated session, /40) + live 01:15:00 timer; FREE TIER hard gate on Start/Download/View answers, questions never rendered.
+- Deliverable: /home/z/my-project/download/SaveMyExams-Mocks-Flashcards-StrengthsWeaknesses-Addendum.docx (2.25MB, 9 sections, 16 figures, 6 tables, R1/WM-1 cover, Roman TOC/Arabic body, footer patch + pgNumType strip, add_toc_placeholders 21 entries exit 0, postcheck 8/9 — 0 errors, 1 informational warning). Scripts: scripts/sme/gen_mocks.js + mocks_sections1/2.js + patch_addendum.py.
+- SyllabAI implications DC-8..DC-12 filed (mastery ledger w/ resume; two-state no-data; authentic-simulation premium anchor; session-player filters; feeder-coverage vs gating tension) — design-spec candidates.
+
+Stage Summary:
+- Pass 5 of record: S&W = threshold-gated per-topic analytics; Flashcards = server-persisted tri-state mastery ledger; Mock Exams = authentic-exam simulation, strongest premium anchor observed (cover preview + live timer free; questions never rendered). Free-tier gate map now: downloads, guided-practice starts, re-marks, mock start/download/answers. No repo/register mutations — product research lane (consistent with Tasks 45-49 handling).
