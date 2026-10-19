@@ -12,7 +12,7 @@ import {
   NotFoundError,
   type GradedEvidencePublisher,
 } from "../../src/services/selfmark";
-import { fakeSql, FIXED_CLOCK, type Route } from "../assessment/helpers";
+import { fakeSql, FIXED_CLOCK, gradedEvidenceRoutes, type Route } from "../assessment/helpers";
 
 const ATTEMPT_ID = "9a000000-0000-4000-8000-000000000001";
 const LEARNER_ID = "aa645313-5930-4381-91ed-caff67a2f836";
@@ -61,6 +61,7 @@ function routes(opts: {
   return [
     { match: LOCK_MATCH, rows: [opts.attempt ?? ATTEMPT_ROW] },
     { match: QUESTION_MATCH, rows: [{ id: QUESTION_ID, question_type: "STRUCTURED", marks: 4 }] },
+    ...gradedEvidenceRoutes({ marks: 4 }),
     { match: ANSWERS_MATCH, rows: opts.answers ?? [answerRow(), answerRow({ id: ANSWER_B, question_part_id: PART_B, label: "(b)", marks: 1 })] },
     { match: ANSWER_UPDATE, rows: [] },
     { match: SELF_MARK_INSERT, rows: [] },

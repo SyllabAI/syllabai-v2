@@ -33,27 +33,156 @@ export class BadRequestError extends Error {}
 export class ConflictError extends Error {}
 
 /**
- * The graded-evidence seam — publishGraded parity (EvidencePublisher.java:53):
- * resolves the claim (true = the event fired; false = suppressed/already
- * fired). The 032/033 marking lanes bind to the SAME claim + guarded-flip
- * contract recorded in T-MIG-030's seam.
+ * The graded-evidence seam — publishGraded parity (EvidencePublisher.java:51-63).
+ * T-MIG-137: the payload carries the FULL frozen observable shape (the fields
+ * the learner-model listener (model-update.ts AssessmentEvidenceEvent) and the
+ * struggle engine (StruggleEvidenceEvent) consume):
+ *   - primaryTopicNodeId / secondaryTopicNodeIds / specPointNodeIds
+ *     (EvidencePublisher.java :100-120)
+ *   - questionType + optionCount (:86-87 — the LIVE MCQ_SINGLE count, else 0)
+ *   - expressed/observed misconception ids — the graded path's are honestly
+ *     EMPTY (:61 List.of(): a structured answer expresses no distractor, and
+ *     the untagged-wrong law means no misconception may be invented)
+ *   - selfDoubtFlag (the attempt row's column — the 5a METACOGNITIVE input,
+ *     AssessmentEvidenceRecordedEvent.selfDoubtFlag / StruggleInferenceService :62)
+ * marksAwarded/marksTotal/correct ride along as the frozen event's score
+ * fields (:56-60); the assembler derives them from the question row so the
+ * three lanes cannot drift.
+ * The claim is the return: true = this call emitted; false = suppressed
+ * (already fired — the frozen markEvidenceEmitted guard :53-55).
  */
+export interface GradedEvidenceEvent {
+  attemptId: string;
+  learnerId: string;
+  questionId: string;
+  marksAwarded: number;
+  marksTotal: number;
+  correct: boolean;
+  primaryTopicNodeId: string | null;
+  secondaryTopicNodeIds: string[];
+  specPointNodeIds: string[];
+  questionType: string | null;
+  optionCount: number;
+  expressedMisconceptionIds: string[];
+  observedMisconceptionIds: string[];
+  selfDoubtFlag: boolean;
+  occurredAt: string;
+}
+
 export interface GradedEvidencePublisher {
-  publishGraded(event: {
-    attemptId: string;
-    learnerId: string;
-    questionId: string;
-    marksAwarded: number;
-    marksTotal: number;
-    correct: boolean;
-    secondaryTopicNodeIds: string[];
-    occurredAt: string;
-  }): Promise<boolean>;
+  publishGraded(event: GradedEvidenceEvent): Promise<boolean>;
 }
 
 export const noopGradedEvidencePublisher: GradedEvidencePublisher = {
   publishGraded: async () => false,
 };
+
+/**
+ * The E-2 claim-law double for the route tests (the retired T-MIG-030
+ * claiming stub, named): claims true, emits NOTHING. The live default is
+ * createGradedEvidencePublisher (routes/assessment) — this double documents
+ * the pre-137 posture exactly as frozenParityEvidencePublisher does for the
+ * MCQ seam.
+ */
+export const frozenParityGradedEvidencePublisher: GradedEvidencePublisher = {
+  publishGraded: async () => true,
+};
+
+/** The lane-supplied base: everything the lanes hold at the fire site. */
+export interface GradedEvidenceEventBase {
+  attemptId: string;
+  learnerId: string;
+  questionId: string;
+  marksAwarded: number;
+  occurredAt: string;
+}
+
+/**
+ * The graded-lane event assembler (T-MIG-137a) — the frozen publisher's
+ * assembly laws in ONE place (EvidencePublisher.java:51-120), so the three
+ * marking lanes cannot drift:
+ *   - marksTotal = question.marks(); correct = marksTotal > 0 && marksAwarded
+ *     >= marksTotal (:56-60, the conservative full-marks-equals-correct rule)
+ *   - primary from questions.primary_topic_node_id; secondary from
+ *     question_topics with the primary-equal skip (:114-117); spec points
+ *     from question_spec_points, deduped, null-skipped (:100-109)
+ *   - questionType null-safe (:86); optionCount = the LIVE MCQ_SINGLE option
+ *     count, else 0 (:86-87 — non-MCQ formats carry 0)
+ *   - expressed/observed misconception ids EMPTY (:61 — the graded path is
+ *     the structured path; the MCQ distractor tags never ride publishGraded)
+ *   - selfDoubtFlag from the attempts row (the frozen event carries
+ *     attempt.selfDoubtFlag(), :79)
+ * Fail-loud (the no-silent-skip law): a missing question/attempt row throws.
+ */
+export async function assembleGradedEvidenceEvent(
+  sql: SqlFn,
+  base: GradedEvidenceEventBase,
+): Promise<GradedEvidenceEvent> {
+  const questionRows = (await sql`
+    select primary_topic_node_id, question_type, marks
+    from questions where id = ${base.questionId}
+  `) as unknown as Array<{
+    primary_topic_node_id: string | null;
+    question_type: string | null;
+    marks: number;
+  }>;
+  if (questionRows.length === 0) throw new NotFoundError("question", base.questionId);
+  const question = questionRows[0]!;
+
+  const topicRows = (await sql`
+    select node_id from question_topics where question_id = ${base.questionId}
+  `) as unknown as Array<{ node_id: string }>;
+  const primaryTopicNodeId =
+    question.primary_topic_node_id === null ? null : String(question.primary_topic_node_id);
+  // topicNodeIds (:111-120): primary first, secondary deduped against it
+  const secondaryTopicNodeIds = topicRows
+    .map((r) => String(r.node_id))
+    .filter((id) => id !== primaryTopicNodeId);
+
+  // specPointNodeIds (:100-109): deduped, null-skipped
+  const specPointRows = (await sql`
+    select spec_point_node_id from question_spec_points where question_id = ${base.questionId}
+  `) as unknown as Array<{ spec_point_node_id: string | null }>;
+  const specPointNodeIds = [
+    ...new Set(
+      specPointRows
+        .map((r) => (r.spec_point_node_id === null ? null : String(r.spec_point_node_id)))
+        .filter((id): id is string => id !== null),
+    ),
+  ];
+
+  const doubtRows = (await sql`
+    select self_doubt_flag from attempts where id = ${base.attemptId}
+  `) as unknown as Array<{ self_doubt_flag: boolean | null }>;
+  if (doubtRows.length === 0) throw new NotFoundError("attempt", base.attemptId);
+  const selfDoubtFlag = doubtRows[0]!.self_doubt_flag === true;
+
+  // optionCount (:86-87): the LIVE count for MCQ_SINGLE, 0 for every other
+  // format — the graded lanes mark structured/short-answer attempts, so the
+  // count query is unreachable in practice, but the law is ported, not assumed
+  let optionCount = 0;
+  if (question.question_type === "MCQ_SINGLE") {
+    const optionRows = (await sql`
+      select id from question_options where question_id = ${base.questionId}
+    `) as unknown as Array<{ id: string }>;
+    optionCount = optionRows.length;
+  }
+
+  const marksTotal = Number(question.marks);
+  return {
+    ...base,
+    marksTotal,
+    correct: marksTotal > 0 && base.marksAwarded >= marksTotal,
+    primaryTopicNodeId,
+    secondaryTopicNodeIds,
+    specPointNodeIds,
+    questionType: question.question_type === null ? null : String(question.question_type),
+    optionCount,
+    expressedMisconceptionIds: [],
+    observedMisconceptionIds: [],
+    selfDoubtFlag,
+  };
+}
 
 export interface SubmitClock {
   newId(): string;
@@ -244,19 +373,21 @@ export class SelfMarkService {
       where id = ${attemptId}
     `;
 
-    const secondary = (await this.sql`
-      select node_id from question_topics where question_id = ${attempt.question_id}
-    `) as unknown as Array<{ node_id: string }>;
-    const fired = await this.publisher.publishGraded({
-      attemptId,
-      learnerId,
-      questionId: attempt.question_id,
-      marksAwarded: totalAwarded,
-      marksTotal: question.marks,
-      correct,
-      secondaryTopicNodeIds: secondary.map((r) => String(r.node_id)),
-      occurredAt: now,
-    });
+    // T-MIG-137a: the event assembly moved to the shared assembler — the
+    // frozen publisher's own laws (marksTotal/correct :56-60, topicNodeIds
+    // :111-120, specPointNodeIds :100-109, empty misconception lists :61,
+    // the attempt's selfDoubtFlag :79) live in ONE place now. The local
+    // `correct` computation above remains the ATTEMPT row's settle law
+    // (Attempt.java:150-155), a different consumer of the same rule.
+    const fired = await this.publisher.publishGraded(
+      await assembleGradedEvidenceEvent(this.sql, {
+        attemptId,
+        learnerId,
+        questionId: attempt.question_id,
+        marksAwarded: totalAwarded,
+        occurredAt: now,
+      }),
+    );
     if (fired) {
       // E-1: once-only guarded flip (Attempt.java:159-161 parity) -- a second
       // publish is a no-op by the predicate

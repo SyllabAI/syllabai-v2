@@ -19,7 +19,7 @@ import {
 } from "../../src/services/teachermarking";
 import type { GradedEvidencePublisher, SubmitClock } from "../../src/services/selfmark";
 import type { MarkingContext, MarkingCandidateGenerator } from "../../src/services/smartmark";
-import { fakeSql, type Route } from "../assessment/helpers";
+import { fakeSql, gradedEvidenceRoutes, type Route } from "../assessment/helpers";
 
 // ── fixtures ────────────────────────────────────────────────────────────────
 
@@ -60,7 +60,7 @@ function spyPublisher(): GradedEvidencePublisher & {
   return {
     calls,
     publishGraded: async (event) => {
-      calls.push(event as Record<string, unknown>);
+      calls.push(event as unknown as Record<string, unknown>);
       return true;
     },
   };
@@ -195,6 +195,7 @@ function markAnswerRoutes(overrides: {
       rows: [{ passed: overrides.kappaPassed ?? true }],
     },
     { match: /select node_id from question_topics/, rows: [{ node_id: "n1" }, { node_id: "n2" }] },
+    ...gradedEvidenceRoutes({ marks: 5 }),
     { match: /update attempts set evidence_emitted/, rows: [] },
     { match: /insert into human_marks/, rows: [] },
   ];

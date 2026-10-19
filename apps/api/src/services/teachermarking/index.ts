@@ -39,6 +39,7 @@ import {
   NotFoundError,
   type GradedEvidencePublisher,
   type SubmitClock,
+  assembleGradedEvidenceEvent,
 } from "../selfmark";
 import {
   PIPELINE_VERSION,
@@ -729,22 +730,23 @@ export class TeacherSmartMarkService {
   /** E-1 claim + guarded flip (T-MIG-030's binding; Attempt.java:158-161). */
   private async fireEvidence(
     attempt: AttemptLockRow,
-    answer: MarkingAnswerRow,
+    _answer: MarkingAnswerRow,
     marksAwarded: number,
   ): Promise<void> {
-    const secondary = (await this.sql`
-      select node_id from question_topics where question_id = ${attempt.question_id}
-    `) as unknown as Array<{ node_id: string }>;
-    const fired = await this.publisher.publishGraded({
-      attemptId: attempt.id,
-      learnerId: attempt.learner_id,
-      questionId: attempt.question_id,
-      marksAwarded,
-      marksTotal: answer.question_marks,
-      correct: answer.question_marks > 0 && marksAwarded >= answer.question_marks,
-      secondaryTopicNodeIds: secondary.map((r) => String(r.node_id)),
-      occurredAt: this.clock.now().toISOString(),
-    });
+    // T-MIG-137a: the assembly is the shared assembler's — the frozen
+    // publisher's own laws (marksTotal/correct :56-60, topicNodeIds :111-120,
+    // specPointNodeIds :100-109, empty misconception lists :61, the attempt's
+    // selfDoubtFlag :79) in ONE place; the recomputed ATTEMPT total stays the
+    // marksAwarded source (:150, not the single answer's marks).
+    const fired = await this.publisher.publishGraded(
+      await assembleGradedEvidenceEvent(this.sql, {
+        attemptId: attempt.id,
+        learnerId: attempt.learner_id,
+        questionId: attempt.question_id,
+        marksAwarded,
+        occurredAt: this.clock.now().toISOString(),
+      }),
+    );
     if (fired) {
       await this.sql`
         update attempts set evidence_emitted = true
@@ -861,22 +863,23 @@ export class TeacherMarkingService {
   /** E-1 claim + guarded flip — the same seam contract as the smart path. */
   private async fireEvidence(
     attempt: AttemptLockRow,
-    answer: MarkingAnswerRow,
+    _answer: MarkingAnswerRow,
     marksAwarded: number,
   ): Promise<void> {
-    const secondary = (await this.sql`
-      select node_id from question_topics where question_id = ${attempt.question_id}
-    `) as unknown as Array<{ node_id: string }>;
-    const fired = await this.publisher.publishGraded({
-      attemptId: attempt.id,
-      learnerId: attempt.learner_id,
-      questionId: attempt.question_id,
-      marksAwarded,
-      marksTotal: answer.question_marks,
-      correct: answer.question_marks > 0 && marksAwarded >= answer.question_marks,
-      secondaryTopicNodeIds: secondary.map((r) => String(r.node_id)),
-      occurredAt: this.clock.now().toISOString(),
-    });
+    // T-MIG-137a: the assembly is the shared assembler's — the frozen
+    // publisher's own laws (marksTotal/correct :56-60, topicNodeIds :111-120,
+    // specPointNodeIds :100-109, empty misconception lists :61, the attempt's
+    // selfDoubtFlag :79) in ONE place; the recomputed ATTEMPT total stays the
+    // marksAwarded source (:150, not the single answer's marks).
+    const fired = await this.publisher.publishGraded(
+      await assembleGradedEvidenceEvent(this.sql, {
+        attemptId: attempt.id,
+        learnerId: attempt.learner_id,
+        questionId: attempt.question_id,
+        marksAwarded,
+        occurredAt: this.clock.now().toISOString(),
+      }),
+    );
     if (fired) {
       await this.sql`
         update attempts set evidence_emitted = true

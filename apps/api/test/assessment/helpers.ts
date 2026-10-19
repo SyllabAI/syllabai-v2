@@ -168,3 +168,61 @@ export function spyPublisher() {
     },
   };
 }
+
+// ── T-MIG-137a: the graded-evidence assembler's statement set ───────────────
+// The seam home (services/selfmark assembleGradedEvidenceEvent) resolves the
+// frozen publisher's join fields at publish time (EvidencePublisher.java
+// :51-120). Routes tests that exercise an EVIDENCE-FIRING flow stub these —
+// TOPICS (/select node_id from question_topics/) predates the band and is
+// already stubbed in firing rigs.
+
+export const GRADED_QUESTIONS =
+  /select primary_topic_node_id, question_type, marks from questions where id = \?/;
+export const GRADED_SPEC_POINTS =
+  /select spec_point_node_id from question_spec_points where question_id = \?/;
+export const GRADED_SELF_DOUBT =
+  /select self_doubt_flag from attempts where id = \?/;
+export const GRADED_OPTIONS =
+  /select id from question_options where question_id = \?/;
+
+/** The assembler's row fixtures (STRUCTURED by default — the graded lanes'
+ *  only reachable format; MCQ_SINGLE exercises the live option-count law). */
+export function gradedEvidenceRoutes(opts?: {
+  primaryTopicNodeId?: string | null;
+  questionType?: string;
+  marks?: number;
+  topics?: string[];
+  specPointNodeIds?: Array<string | null>;
+  selfDoubtFlag?: boolean;
+  optionIds?: string[];
+}): Route[] {
+  const o = opts ?? {};
+  const questionType = o.questionType ?? "STRUCTURED";
+  const routes: Route[] = [
+    {
+      match: GRADED_QUESTIONS,
+      rows: [
+        {
+          primary_topic_node_id: o.primaryTopicNodeId ?? null,
+          question_type: questionType,
+          marks: o.marks ?? 5,
+        },
+      ],
+    },
+    {
+      match: GRADED_SPEC_POINTS,
+      rows: (o.specPointNodeIds ?? []).map((spec_point_node_id) => ({ spec_point_node_id })),
+    },
+    {
+      match: GRADED_SELF_DOUBT,
+      rows: [{ self_doubt_flag: o.selfDoubtFlag ?? false }],
+    },
+  ];
+  if (questionType === "MCQ_SINGLE") {
+    routes.push({
+      match: GRADED_OPTIONS,
+      rows: (o.optionIds ?? ["o1", "o2", "o3", "o4"]).map((id) => ({ id })),
+    });
+  }
+  return routes;
+}

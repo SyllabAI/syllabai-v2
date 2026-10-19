@@ -1,0 +1,23 @@
+{
+  "receipt": "t-mig-137-bands-137a-137c-r7a",
+  "family": "T-MIG-137",
+  "operatorTrace": "1a155ef6c1c1be19",
+  "operatorOrder": "'fire 137' — the T-MIG-137 card executed on the filed D1-D4 defaults (D1 claim unification / D2 frozen-parity self-doubt / D3 all three lanes / D4 self-mark zero-LLM proof path)",
+  "agent": "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6, chat 1f3003b6)",
+  "generatedUtc": "2026-10-19T21:20:00Z",
+  "dateConvention": "lane-local (Asia/Dhaka) date 2026-10-20",
+  "branch": "t-mig-137/r7a @ main 1bc92b9 (fetch-first; the +2 CIE worklog commits carried zero file overlap with this band's fence)",
+  "bands": {
+    "137a": "the seam widened in its home (services/selfmark/index.ts): GradedEvidenceEvent carries the FULL frozen observable shape (primaryTopicNodeId/secondaryTopicNodeIds/specPointNodeIds/questionType/optionCount/expressed+observedMisconceptionIds/selfDoubtFlag beside the existing marks fields); assembleGradedEvidenceEvent = the frozen publisher's assembly laws in ONE place (EvidencePublisher.java :51-120): marksTotal/correct from the question row (:56-60), topicNodeIds primary-first + the primary-equal skip (:111-120), spec points deduped + null-skipped (:100-109), optionCount = the LIVE MCQ_SINGLE count else 0 (:86-87), EMPTY misconception lists (:61 — the graded path is the structured path), selfDoubtFlag from the attempts row (:79); the three lane call sites moved in lockstep (selfmark settle / smartmark markAttempt / teachermarking fireEvidence x2) — the smartmark batch's pre-wiring placeholder payload (marksTotal 0 / correct false: dead under the stub, load-bearing under the live publisher) retired by construction",
+    "137b": "createGradedEvidencePublisher (routes/assessment/index.ts, the sibling of createLearnerModelEvidencePublisher): the claim = the frozen markEvidenceEmitted guard (:53-55) read BEFORE any model write — an already-fired attempt is suppressed (a later authoritative mark revises marks for research, never re-runs BKT/BDT); the emission = the frozen listener pair in order (@Order(10) updateOnAssessmentEvidence over the registry-resolved BKT base, @Order(100) inferStrugglesOnAssessmentEvidence on the POST-update snapshot — bfe12c4's 'the writer rides them when their live wiring lands'); fail-loud (missing attempt row throws; a model-write failure propagates); the C-4 sequential residual disclosed in the header (the model-update module's existing posture, unchanged); composition binds it for ALL THREE lanes (buildSmartMarkRouters/buildTeacherMarkingRouters/buildSelfMarkRouters) — the claiming stub retired to the named frozenParityGradedEvidencePublisher double, the selfmark noop asymmetry retired (D1: self-marked attempts regain their E-1 flip + the learner-model write)",
+    "137c": "15 pins (apps/api/test/learner/graded-evidence-join.test.ts): the assembler laws (marksTotal/correct incl. the 0-mark guard, primary-first dedupe, spec-point dedupe + null-skip, STRUCTURED optionCount 0 with the options statement NEVER issued, the MCQ_SINGLE live count, empty misconception lists, the doubt-flag ride, fail-loud, the 4MA1/4MB1 key-agnostic parity) + the live publisher (the claim suppression BEFORE any model write, the missing-row fail-loud, the frozen pair ORDER pin, the 5a doubt rule per topic, ZERO misconception_states statements on the structured path, the honest-empty no-doubt case); the firing rigs carry the assembler's statement stubs via the shared gradedEvidenceRoutes helper (test/assessment/helpers.ts)"
+  },
+  "gates": {
+    "typecheck": "exit 0 x4 workspaces (contracts/shared/db/api)",
+    "apiSuite": "2258 pass / 0 fail / 13 skip (19834 expects, 2271 tests, 124 files) — EXACT +15 vs main 2243 (the 137c pins; zero pre-existing behavior changed)",
+    "hub": "build GREEN + lint GREEN",
+    "census": "--gate GREEN, LIVE=0"
+  },
+  "writeLedger": "code band on the branch only; zero prod writes, zero LLM spend, zero Neon contact, zero content writes; the 137d live battery (probe learners via the SELF-MARK deterministic lane) is the next receipt",
+  "next": "137d — merge + api redeploy (VERCEL_PAT present) + the live self-mark proof: probe learner maths/chemistry structured attempt -> deterministic settle -> the join fires -> skill_states + BKT_UPDATED land keyed on the KG nodes -> learner page / KG posteriors NON-EMPTY; folds the pending Maths A smoke learner-page arc (trace 1a154737518975e1)"
+}

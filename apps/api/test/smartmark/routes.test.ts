@@ -16,7 +16,7 @@ import { buildSelfMarkModule } from "../../src/services/selfmark";
 import { buildSmartMarkModule, CandidateGenerationError } from "../../src/services/smartmark";
 import { toErrorResponse } from "../../src/services/identity/errors";
 import { selfMarkViewSchema } from "@syllabai/contracts";
-import { fakeSql, FIXED_CLOCK, type Route } from "../assessment/helpers";
+import { fakeSql, FIXED_CLOCK, gradedEvidenceRoutes, type Route } from "../assessment/helpers";
 
 const ATTEMPT_ID = "9a000000-0000-4000-8000-000000000001";
 const LEARNER_ID = "aa645313-5930-4381-91ed-caff67a2f836";
@@ -60,6 +60,7 @@ function baseRoutes(): Route[] {
     { match: LOCK_SM, rows: [ATTEMPT] },
     { match: ATTEMPT_READ_SM, rows: [ATTEMPT] },
     { match: QUESTIONS, rows: [{ id: QUESTION_ID, question_type: "STRUCTURED", marks: 4 }] },
+    ...gradedEvidenceRoutes({ marks: 4 }),
     { match: ANSWERS_SELF, rows: [
         { id: ANSWER_A, question_part_id: PART_A, marks_awarded: null, marking_state: "PENDING", label: "(a)", marks: 3 },
       ] },

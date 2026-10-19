@@ -57,6 +57,7 @@ import {
   type AssessmentModule,
 } from "../../services/assessment";
 import type { EvidencePublisher } from "../../services/assessment/submit";
+import type { GradedEvidencePublisher } from "../../services/selfmark";
 import {
   LEARNER_MODEL_PAPER_DEFAULTS,
   updateOnAssessmentEvidence,
@@ -357,6 +358,86 @@ export function createLearnerModelEvidencePublisher(
       // @Order(100) analog — the diagnosis engine reads the POST-update
       // state (sequential await = the frozen listener order; topicNodeIds
       // derived inside from primary+secondary, spec points never fire).
+      await inferStrugglesOnAssessmentEvidence(
+        sql,
+        {
+          attemptId: event.attemptId,
+          learnerId: event.learnerId,
+          primaryTopicNodeId: event.primaryTopicNodeId,
+          secondaryTopicNodeIds: event.secondaryTopicNodeIds,
+          selfDoubtFlag: event.selfDoubtFlag,
+          occurredAt: event.occurredAt,
+        },
+        defaultModelUpdateClock,
+      );
+      return true;
+    },
+  };
+}
+
+/**
+ * T-MIG-137 — the LIVE graded-evidence publisher: the learner-model write
+ * path bound to the publishGraded seam (the selfmark / smartmark /
+ * teachermarking lanes — the T-MIG-102 wiring-only rider of record, filed as
+ * the T-MIG-137 card and fired on operator trace 1a155ef6c1c1be19).
+ *
+ * The claim is the frozen markEvidenceEmitted guard (EvidencePublisher.java
+ * :53-55): the attempt's evidence_emitted is read FIRST — true -> suppressed
+ * (a later authoritative mark revises marks for research, never re-runs
+ * BKT/BDT; the once-only law), false -> this call emits and returns true (the
+ * caller then issues the E-1 guarded flip, Attempt.java:159-161). The
+ * emission is the SAME frozen listener pair the MCQ publisher binds, in the
+ * frozen order: @Order(10) the learner-model phases (updateOnAssessmentEvidence
+ * — BKT mastery over primary+secondary topics then spec points, BDT
+ * misconceptions, fluency gaps) then @Order(100) the struggle engine reading
+ * the POST-update snapshot (bfe12c4: "the writer rides them when their live
+ * wiring lands"). Fail-loud: a model-write failure propagates exactly like
+ * the frozen synchronous @Transactional listener's would — never a silently
+ * dropped update (the module's no-silent-skip law).
+ *
+ * Disclosed residual (the model-update C-4 posture, unchanged): the claim
+ * read and the caller's guarded flip are two statements — the frozen
+ * guarantee is transactional-sequential (the entity flag flips inside the
+ * marking transaction); v2's corpus and golden surfaces are sequential, and
+ * a concurrent two-lane mark of ONE attempt can double-fire. The attempt-row
+ * lock each lane holds (select ... for update) serializes the marking flows
+ * themselves; the residual is the same disclosed class the 102 write path
+ * shipped with.
+ *
+ * D1-D4 of the T-MIG-137 card (operator defaults): the selfmark noop
+ * asymmetry retires (all three lanes bind THIS publisher — self-marked
+ * attempts regain their E-1 flip), and the struggle engine rides the graded
+ * lanes at activation; the structured lanes' selfDoubtFlag comes from the
+ * attempts row via the assembler (frozen-parity: AssessmentEvidenceRecordedEvent
+ * :79 carries attempt.selfDoubtFlag()).
+ */
+export function createGradedEvidencePublisher(
+  sql: ReturnType<typeof createSql>,
+): GradedEvidencePublisher {
+  return {
+    publishGraded: async (event) => {
+      // the claim (frozen :53-55): already-fired attempts are suppressed
+      // BEFORE any model write — the once-only law, not a best effort.
+      const claim = (await sql`
+        select evidence_emitted from attempts where id = ${event.attemptId}
+      `) as unknown as Array<{ evidence_emitted: boolean | null }>;
+      if (claim[0] === undefined) {
+        // the lanes locked this attempt rows earlier — a missing row is a
+        // data defect; fail loud, never a silent skip
+        throw new BadRequestException(`graded evidence: attempt ${event.attemptId} not found`);
+      }
+      if (claim[0]!.evidence_emitted === true) return false;
+
+      // Card B — the registry-resolved BKT base (the same-resolver invariant).
+      const bkt = await resolveActiveBktParams(sql);
+      // @Order(10) analog — the learner-model phases (the graded event is
+      // structurally the AssessmentEvidenceEvent the listener consumes).
+      await updateOnAssessmentEvidence(sql, event, {
+        ...LEARNER_MODEL_PAPER_DEFAULTS,
+        bkt: bkt.params,
+      });
+      // @Order(100) analog — the diagnosis engine reads the POST-update
+      // state (sequential await = the frozen listener order).
       await inferStrugglesOnAssessmentEvidence(
         sql,
         {
