@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, ClipboardList } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import type { BookChapter } from "@syllabai/contracts";
 
@@ -54,9 +54,14 @@ function PreconnectCorpus() {
  * 133g law (the operator's corrected geometry, trace 1a15458e2e5bf235):
  * practice questions live INLINE in the chapter slice (they start where the
  * study material ends, sometimes mid-page), so the hard-split `_q` slices are
- * retired — the "Practice questions" button now jumps INSIDE the same slice
- * at the manifest's questionsStartPage anchor (a parse-derived coordinate;
- * chapters without an honest anchor carry no jump).
+ * retired — the slice IS the lesson + its questions in one mount.
+ *
+ * 133h law (trace 1a154fdfa70ec415): the practice affordances LEFT the
+ * viewer — no "Practice questions" jump button, no "Unit N exam" button.
+ * The unit exam-practice slices are reached from the shelf's TOC list (the
+ * unnumbered row at the end of each unit). ?part=questions deep links still
+ * resolve through the unchanged pure mount law — the UI just no longer
+ * advertises them.
  */
 export default async function BookViewerPage({
   params,
@@ -139,6 +144,8 @@ export default async function BookViewerPage({
     fallbackPage: target.pdfPageStart ?? page ?? 1,
   });
   const mountEntry: BookSliceEntry | null = resolved.mount;
+  // 133h: isQuestions now only colors the legacy `_q` range label — the
+  // practice-questions button it used to gate is gone from the viewer.
   const mountIsQuestions = resolved.isQuestions;
   const initialPage = resolved.initialPage;
 
@@ -159,8 +166,6 @@ export default async function BookViewerPage({
   // slice pane path; null → whole-book fallback (the 133c mount)
   const sliceRel = mountEntry ? bookSlicePathForCourse(slug, mountEntry.file) : null;
   const panePath = sliceRel ?? wholePdfPath;
-  const unitExam =
-    sliceMap?.unitExam.find((s) => s.chapterKey === `u${target.unitIndex}:xexam-practice`) ?? null;
 
   return (
     <div className="flex h-[calc(100dvh-3.5rem)] flex-col px-3 pt-2 sm:px-5">
@@ -181,41 +186,6 @@ export default async function BookViewerPage({
           {bookRangeLabel}
         </span>
         <div className="flex shrink-0 items-center gap-1">
-          {mountIsQuestions ? (
-            <Button asChild variant="outline" size="sm" className="h-7 px-2">
-              <Link
-                href={`/courses/${slug}/books/${docId}?chapter=${encodeURIComponent(target.chapterKey)}`}
-                aria-label={`Back to the lesson: ${target.title}`}
-              >
-                <ArrowLeft className="h-4 w-4" aria-hidden />
-                Lesson
-              </Link>
-            </Button>
-          ) : (
-            (row?.questions ||
-              (row?.mount.questionsStartPage != null && partParam !== "questions")) && (
-              <Button asChild variant="outline" size="sm" className="h-7 px-2">
-                <Link
-                  href={`/courses/${slug}/books/${docId}?chapter=${encodeURIComponent(target.chapterKey)}&part=questions`}
-                  aria-label={`Practice questions: ${target.title}`}
-                >
-                  <ClipboardList className="h-4 w-4" aria-hidden />
-                  Practice questions
-                </Link>
-              </Button>
-            )
-          )}
-          {unitExam && (
-            <Button asChild variant="ghost" size="sm" className="h-7 px-2">
-              <Link
-                href={`/courses/${slug}/books/${docId}?chapter=${encodeURIComponent(unitExam.chapterKey)}`}
-                aria-label={unitExam.title ?? "Exam practice"}
-              >
-                <ClipboardList className="h-4 w-4" aria-hidden />
-                Unit {target.unitIndex} exam
-              </Link>
-            </Button>
-          )}
           {prev && (
             <Button asChild variant="ghost" size="sm" className="h-7 px-2">
               <Link

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BookOpen, FileText } from "lucide-react";
+import { BookOpen, ClipboardList, FileText } from "lucide-react";
 
 import type { BookChapter, BookShelfEntry } from "@syllabai/contracts";
 
@@ -107,8 +107,9 @@ async function BookCard({ slug, book }: { slug: string; book: BookShelfEntry }) 
   const paneUrl = pdfPath ? bookPaneUrl(pdfPath) : null;
 
   // 133e: the slice map (drift-guarded) — chapter links warm their OWN
-  // slice (~0.1–3MB) instead of the whole book; unit headers link the
-  // exam-practice slices when the manifest carries them.
+  // slice (~0.1–3MB) instead of the whole book; 133h: each unit's list
+  // ENDS with its unnumbered exam-practice row (the practice affordances
+  // left the viewer per trace 1a154fdfa70ec415 — the TOC is their home).
   const slices = await fetchBookSlices(slug, book.documentId, book.docVersion);
   const sliceMap = slices ? bookSliceMapOf(slices) : null;
 
@@ -152,23 +153,18 @@ async function BookCard({ slug, book }: { slug: string; book: BookShelfEntry }) 
             const unitExam = sliceMap?.unitExam.find(
               (s) => s.chapterKey === `u${rows[0]?.unitIndex}:xexam-practice`,
             );
+            const unitExamHref = unitExam
+              ? `/courses/${slug}/books/${book.documentId}?chapter=${encodeURIComponent(unitExam.chapterKey)}`
+              : null;
+            const unitExamSliceRel = unitExam
+              ? bookSlicePathForCourse(slug, unitExam.file)
+              : null;
+            const unitExamWarmUrl = unitExamSliceRel ? bookPaneUrl(unitExamSliceRel) : null;
             return (
             <section key={unitTitle} className="space-y-1.5">
-              <div className="flex items-center justify-between gap-2">
-                <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                  {unitTitle}
-                </h3>
-                {unitExam && paneUrl && (
-                  <CorpusPdfLink
-                    href={`/courses/${slug}/books/${book.documentId}?chapter=${encodeURIComponent(unitExam.chapterKey)}`}
-                    pdfUrl={bookPaneUrl(bookSlicePathForCourse(slug, unitExam.file)!)}
-                    variant="link"
-                    className="h-auto p-0 text-xs"
-                  >
-                    Exam practice
-                  </CorpusPdfLink>
-                )}
-              </div>
+              <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                {unitTitle}
+              </h3>
               <ul className="divide-y rounded-md border">
                 {rows.map((ch) => {
                   const sliceRel = sliceMap?.byChapter.get(ch.chapterKey)
@@ -215,6 +211,38 @@ async function BookCard({ slug, book }: { slug: string; book: BookShelfEntry }) 
                   </li>
                   );
                 })}
+                {unitExam && unitExamHref && (
+                  <li className="flex items-center gap-2 px-3 py-2">
+                    <ClipboardList className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden />
+                    <div className="min-w-0 flex-1">
+                      {unitExamWarmUrl ? (
+                        <CorpusPdfLink
+                          href={unitExamHref}
+                          pdfUrl={unitExamWarmUrl}
+                          variant="link"
+                          className="h-auto justify-start p-0 text-left font-medium"
+                        >
+                          {unitExam.title ?? "Exam practice"}
+                        </CorpusPdfLink>
+                      ) : (
+                        // no archive home for this unit's slice — the mount
+                        // still exists of record; the viewer renders its
+                        // honest state (never a dead link)
+                        <Link
+                          href={unitExamHref}
+                          className="text-sm font-medium underline-offset-2 hover:underline"
+                        >
+                          {unitExam.title ?? "Exam practice"}
+                        </Link>
+                      )}
+                    </div>
+                    <div className="shrink-0 text-right text-[11px] leading-tight text-muted-foreground">
+                      {unitExam.pdfRange[1] !== unitExam.pdfRange[0]
+                        ? `pp ${unitExam.pdfRange[0]}–${unitExam.pdfRange[1]}`
+                        : `p ${unitExam.pdfRange[0]}`}
+                    </div>
+                  </li>
+                )}
               </ul>
             </section>
             );
