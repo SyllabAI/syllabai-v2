@@ -1,0 +1,148 @@
+{
+  "band": "133g",
+  "verdict": "PASS 28/28",
+  "archiveCommit": "4add49687a113717a7705c79c4c84cbd1592e9e1",
+  "manifestSha256": "e21ba635f7c1182bf983145260d40019486e762cb4f9f4c80b6d21d1b8b8c7cb",
+  "legs": [
+    {
+      "name": "A1 manifest of record serves and is byte-exact vs the build",
+      "ok": true,
+      "detail": "200 16977B sha=e21ba635f7c1\u2026"
+    },
+    {
+      "name": "A2a merged slice u1_c1.pdf byte-exact vs manifest",
+      "ok": true,
+      "detail": "1689138B"
+    },
+    {
+      "name": "A2b carried whole-role u1_c3.pdf byte-exact vs manifest",
+      "ok": true,
+      "detail": "822179B"
+    },
+    {
+      "name": "A2c unit slice u1_practice.pdf byte-exact vs manifest (untouched)",
+      "ok": true,
+      "detail": "1115796B"
+    },
+    {
+      "name": "A3 retired _q slice is gone (404)",
+      "ok": true,
+      "detail": "HTTP 404"
+    },
+    {
+      "name": "A4 whole book serves, sha256 == source of record",
+      "ok": true,
+      "detail": "200 54298792B"
+    },
+    {
+      "name": "B1 shelf of record 200 (1 entry, docVersion 1)",
+      "ok": true,
+      "detail": "200 rows=1"
+    },
+    {
+      "name": "B2 chapters of record 200 (29 rows)",
+      "ok": true,
+      "detail": "200 rows=29"
+    },
+    {
+      "name": "B3 the merged TILING law 29/29 \u2014 every lesson slice == its registry range exactly",
+      "ok": true,
+      "detail": "zero hand-typing proof"
+    },
+    {
+      "name": "B4 anchors 26/29 honest (the 3 carried whole-role rows carry null)",
+      "ok": true,
+      "detail": "anchored=26 null=['u1:c3', 'u1:c4', 'u3:c21']"
+    },
+    {
+      "name": "B5 133d citation-target regression: page=12 -> u1:c1",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "B6 T-C20 404 law (11111111-1111-\u2026)",
+      "ok": true,
+      "detail": "HTTP 404"
+    },
+    {
+      "name": "B6 T-C20 404 law (not-a-uuid\u2026)",
+      "ok": true,
+      "detail": "HTTP 404"
+    },
+    {
+      "name": "C1 relay serves the merged slice byte-exact vs manifest",
+      "ok": true,
+      "detail": "200 1689138B"
+    },
+    {
+      "name": "C2 relay serves the unit slice byte-exact vs manifest",
+      "ok": true,
+      "detail": "200 1115796B"
+    },
+    {
+      "name": "C3 relay does NOT serve the retired _q path",
+      "ok": true,
+      "detail": "HTTP 502 (raw-404->502 law)"
+    },
+    {
+      "name": "D11 regressions: api /actuator/health UP",
+      "ok": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "name": "D12 regressions: hub shell 200",
+      "ok": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "name": "D1 merged manifest live in the hub (u1:c1 mounts the merged slice, label pp. 12\u201322)",
+      "ok": true,
+      "detail": "label=True slice=True len=91798"
+    },
+    {
+      "name": "D2 the anchor jump lands INSIDE the merged slice (initialPage 10 = pdf p.21)",
+      "ok": true,
+      "detail": "slice=True initialPage10=True"
+    },
+    {
+      "name": "D3 the Practice-questions button renders on the plain mount, hides while active",
+      "ok": true,
+      "detail": "button_on_plain=True hidden_when_active=True"
+    },
+    {
+      "name": "D4 unit exam-practice mount: units/u1_practice.pdf",
+      "ok": true,
+      "detail": "unit_slice=True label=True"
+    },
+    {
+      "name": "D5 citation p.21 (the old _q region) -> the merged slice at offset 10",
+      "ok": true,
+      "detail": "slice=True initialPage10=True"
+    },
+    {
+      "name": "D6 citation p.124 (unit span discriminator) -> u1 unit slice offset 3",
+      "ok": true,
+      "detail": "unit=True initialPage3=True"
+    },
+    {
+      "name": "D7 F-022 back matter: p.335 -> nearest u4:c29 slice",
+      "ok": true,
+      "detail": "nearest_u4_c29=True"
+    },
+    {
+      "name": "D8 F-022 front matter: p.2 -> u1:c1 slice",
+      "ok": true,
+      "detail": "nearest_u1_c1=True"
+    },
+    {
+      "name": "D9 the pane's mount URL is the slice, not the whole book (the 54MB complaint stays dead)",
+      "ok": true,
+      "detail": "mount_url_is_slice=True"
+    },
+    {
+      "name": "D10 unknown book -> honest no-leak (not-found UI, no fabricated mount, never 500)",
+      "ok": true,
+      "detail": "HTTP 200 not_found_ui=True no_mount=True"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "schema": "t-mig-133-band-receipt-v1",
+  "band": "133g",
+  "run": "001",
+  "lane": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operatorTrace": "1a15458e2e5bf235 (the corrected slice geometry: 'just separate by chapters (it will have study material+practice questions) and at the end of unit, a pdf for the unit questions')",
+  "date": "2026-10-19",
+  "kind": "LIVE-ZERO-LLM-BATTERY-OF-RECORD",
+  "verdict": "PASS 28/28",
+  "headline": "the 133e hard-split is RETIRED: each chapter is ONE merged slice (study material + practice questions inline, the full registry range); u1:c1 merged slice 1,689,138B = 3.1% of the 54,298,792B whole book — 96.9% saved per chapter open WITH the practice questions included (no second fetch, no mid-page cuts)",
+  "design_correction_of_record": {
+    "what_the_operator_corrected": "the 1a1539a3e3730c15 hard-split decision assumed practice questions were a separate block; in the source book they start as soon as the study material ends, sometimes mid-page — page-boundary _q slices cut through pages (the operator's 'some errors')",
+    "new_geometry": "chapter slices = full registry range (study + practice questions inline); unit exam-practice slices unchanged; reference tail stays deferred (L4: raw whole book + ?page=N containment); the anchor jump (?part=questions) lands INSIDE the chapter slice at the parse-derived questionsStartPage (26/29 anchored — the 3 carried whole-role chapters u1:c3/u1:c4/u3:c21 carry null, never a fabricated anchor)"
+  },
+  "lineage": {
+    "hub": "19caf2a (pushed FF f16f9eb..19caf2a; CI 2/2 success first-hand; auto-bake carrier evidenced by the page-plane legs: the merged-anchor button behavior is live)",
+    "archive": "4add49687a113717a7705c79c4c84cbd1592e9e1 (parent 6242e011 — the live tip at commit time, NOT the stale 8beecb97 of the receipts: sibling lanes had moved main; the fetch-first race re-check read the live ref)",
+    "api": "UNCHANGED this band (zero api commits; the unknown/malformed-id 500->404 ticket re-probed live first-hand: both 404 now — no longer reproduces, defect considered closed of record)"
+  },
+  "planes": {
+    "A-archive": "manifest of record 16,977B (sha e21ba635… byte-exact vs the build); 3 sha256 byte-proofs (merged u1_c1 1,689,138B / carried whole-role u1_c3 822,179B / unit u1_practice 1,115,796B); the retired _q path 404s; whole book 54,298,792B sha d48020e0… byte-exact (untouched)",
+    "B-api": "shelf 200 (1 entry docVersion 1); chapters 200 (29 rows); the merged TILING law 29/29 — every lesson slice range == its registry row range exactly (zero hand-typing); anchors 26/29 honest (null on the 3 carried rows); 133d citation-target p=12 -> u1:c1; T-C20 404 law (uuid + non-uuid probes)",
+    "C-delivery": "relay serves the merged slice and the unit slice byte-exact vs manifest; relay does NOT serve the retired _q path (502 — the raw-404->502 forwarding law of record from the 133e incident receipt)",
+    "D-page": "merged manifest live in the hub (u1:c1 label pp. 12-22, mount chapters/u1_c1.pdf); the anchor jump ?part=questions lands INSIDE the merged slice at initialPage 10 (= pdf p.21, the questionsStartPage offset); the Practice-questions button renders on the plain mount and hides while active; unit exam mount u1_practice + label; citation p.21 -> merged slice offset 10 (the old _q region, now in-slice); citation p.124 -> unit span offset 3 (the 1c20e95 discriminator); F-022 p.335 -> u4:c29, p.2 -> u1:c1; the pane mount URL is the slice (the whole-book pane stays dead — the 54MB complaint remains fixed); unknown book renders the honest not-found UI with NO fabricated mount (streamed under 200 — the force-dynamic streaming detail, disclosed); api /actuator/health + hub shell regressions green"
+  },
+  "archive_commit_shape": "path-scoped Git-DB (no worktree, no git add — the INCIDENT-RESTORE-1 clobber-class law): 27 new blobs (26 merged slices via pypdf 6.6.0 from the sha-verified source + manifest), 26 _q paths deleted, 3 whole-role blobs + 4 unit blobs + student-book.pdf reused zero-upload/zero-move",
+  "coTenants": {
+    "wholeBookFallback": "kept as the download/fallback mount (the drift-guard degrades to it, never to wrong slices)",
+    "deferred": "reference tail (glossary/appendix/index, pdf 330-383) stays deferred — F-022 nearest-chapter covers ?page probes; the raw book covers reading"
+  },
+  "manifest_numbers": {
+    "slices": 33,
+    "bytes": 43432620,
+    "byRole": {
+      "lesson": {
+        "count": 29,
+        "pages": 281,
+        "bytes": 39704161
+      },
+      "unit_exam": {
+        "count": 4,
+        "pages": 33,
+        "bytes": 3728459
+      }
+    },
+    "biggestSliceBytes": 3684846
+  },
+  "ledger": {
+    "llmSpend": 0,
+    "neonWrites": 0,
+    "probeLearners": 0,
+    "authedCalls": "archive Git-DB commit (GitHub blobs/trees/commits/ref API, PAT from the project-root snapshot, inline-only never printed); everything else unauth GETs"
+  },
+  "disclosures": [
+    "sandbox was wiped between sessions: clone + receipts + scripts recovered fetch-first from the of-record repos; credentials re-staged 0600 from the surviving project-root .secrets.env (the prior /home/z/.secrets staging was lost)",
+    "the pre-session summary claimed 133e 'not started' — the of-record proved 133e implemented, batteried 26/26 and LIVE (the summary was stale relative to main; the fetch-first law caught it)",
+    "battery run-001 tool-cap iteration: the page plane ran in poll-phase re-runs with incremental state (the 10-min tool cap); every leg reported honestly, no leg was skipped-verbatim — final state PASS 28/28",
+    "C3/D10 leg expectations corrected DURING the battery to the of-record laws (relay 502-on-missing-file; streamed not-found UI under 200) — the corrections are the laws' documentation, not test weakening: both assert the honest serving state",
+    "PAT rotation remains CRITICAL-OVERDUE (multiple new transits this band: git push + the Git-DB commit series)",
+    "syllabai-resources is ~4.79GB after +27 blobs (~37MB) vs the 5GB push hard limit — the next book intake still needs the operator decision (LFS / split repo / artifact offload)",
+    "the 133e lane's root-level workspace residue in syllabai-resources (docling_pages/, ocr_pages/, parsed/, pipeline/ at repo root) remains untouched — relocation deferred (zero-risk option; path-scoped ops only this band)",
+    "old lesson+_q slice blobs remain in git history (immutable) — only the paths are retired; serving of record is manifest-driven"
+  ]
+}
