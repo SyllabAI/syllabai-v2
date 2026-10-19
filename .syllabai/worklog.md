@@ -8998,3 +8998,20 @@ Work Log:
 
 Stage Summary:
 - The card is of record: 11-12 CIE courses can launch paper-backed (2,164-2,232 of 2,259 papers) in ~2.5-3.5 hub-only lane runs; the sibling resource wave then attaches to live slugs (44-row wave shrinks to 33 + fills). Awaiting the operator go on D1-D4 (or 'fire it' on the defaults). Next repo receipt = Task-62.
+
+---
+Task ID: trace 1a1557d64d75841d (band 136d)
+Agent: sz (Super Z, zai-web session web-9d2144ad-f8b8-4e63-9039-989f45cb596f)
+Task: "fire a 136d battery" — the four-subsystem ZERO-LLM battery on 4MB1 (staged per the 134d precedent), executed against the LIVE serving carrier dpl_HphMddkuf2EK7dyYDTQMcjjMCLeX (main 89962a5).
+
+Work Log:
+- Shapes re-derived from source of record first-hand (cla/tutor/knowledge/learnerme/learnerkg/smartmark/curriculum routes + the CLA resolver/service dispatch order) + the 136c/bake battery shapes of record; served-kind resolving CLA asks deliberately NOT fired (they reach the vector arm = embeddings) — zero-LLM held by construction
+- Battery scripts/battery_136d.py: run-001 26/27 (the FAIL was this lane's own mis-shape — /recommendations has a REQUIRED rootId, the session-56 law, first-hand 400); re-pinned; run-002 OF RECORD 28/28 PASS EXIT=0
+- Four-subsystem verdict: CLA root-resolve + hard PART_OF isolation 404s + deferral/binding laws LIVE; tutor graph-arm substrate = the EXACT 119-node 4MB1 tree on the wire + fetch-bank honest-empty (13 resolvedNodes led by 4MB1-S3 for Algebra, PLACEHOLDER tail + ALNUM forms live) + the four-owner unscoped refusal + chemistry byte-pin 56/4CH1-S3-b unchanged; learner-model state reads honest-empty AND node-keyed reads (KG view + smart-lesson) RESOLVE over the live 4MB1 tree incl. cross-subject isolation 404; smartmark dormancy boundary lawful (deterministic 404, no oracle)
+- Write ledger: 2 probe learners (sz-136d-verify-*, sanctioned class, disclosed); llm_spend 0; ZERO Neon writes / sessions / enrolments / engagement rows / attempt writes
+- Race-guard: origin MOVED mid-lane acf3ddb2 -> f7f9404 (133i + r1c parallel lanes, zero file overlap); fetch-first FF honored, receipt on top; PUSH PENDING credential (no PAT post-shred, remote token frame empty) — local main f7f9404+1, lands with the next PAT delivery
+- Receipt: .syllabai/receipts/T-MIG-136/battery-136d-run-002-sz.json; wire-truth captures at /home/z/my-project/tool-results/136d-battery-run-00{1,2}.json; in-repo golden/cases filing NOT claimed (boot-replay needs a DSN boot; the wire battery is the zero-LLM golden evidence of record) — disclosed
+
+Stage Summary:
+- 136d DISCHARGED of record: all four subsystems serve Maths B lawfully on the live carrier — CLA + tutor graph arm + learner-model node axis LIVE over the 119-node tree; fetch-bank + smart mark honestly dormant (zero questions, rule 3); FOUR ACTIVE curricula proven on the wire
+- Open: receipt push (credential); coreBridge operator declaration (moot); 136b auto-activates IF a maths-b SME bank lands
