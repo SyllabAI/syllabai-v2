@@ -49,6 +49,367 @@ DEFAULT_CACHE = Path("/home/z/my-project/work/spines-cache")
 BOARD = "Pearson Edexcel"
 
 
+# --------------------------------------------------------------------------
+# CIE (Cambridge) family — the parsed/cie-* trees are family tier_columns:
+# ONE <pdf>.parsed.json per qual (topics+subsections+spec_points arrays,
+# every point embedding its topic+subsection) vs the Edexcel 3-file split.
+# Adapter contract pinned of record in
+# .syllabai/receipts/CIE-INTEGRATION/cie-phase0-roster-manifest-r0.json
+# (deliverable3_adapterContract, dry-run validated on cie-igcse-chemistry-2023-2025).
+# The Edexcel path above is untouched: CIE builds run via --cie.
+# --------------------------------------------------------------------------
+CIE_BOARD = "Cambridge CIE"
+# resources main @ CIE-PHASE0-1/1: parse_report counts + pdf_sha1 verified identical
+# across 4add496..a4ce9f5 for all 7 multi-bank/representative specs before pinning
+CIE_RESOURCES_SHA = "a4ce9f5559990a97950355d8f4cc85d30a796301"
+CIE_RAW_BASE = f"https://raw.githubusercontent.com/SyllabAI/syllabai-resources/{CIE_RESOURCES_SHA}"
+CIE_RECEIPT = (REPO.parent.parent / ".syllabai" / "receipts" / "CIE-INTEGRATION"
+               / "cie-phase0-roster-manifest-r0.json")
+CIE_LEVEL_PIN = {"a-level": "A-LEVEL", "as": "AS", "igcse": "IGCSE"}
+CIE_SUBJECT_FIX = {
+    "ict": "ICT",
+    "computer-science": "Computer Science",
+    "english-language": "English Language",
+    "english-literature": "English Literature",
+    "religious-studies": "Religious Studies",
+    "environmental-management": "Environmental Management",
+    "further-maths": "Further Maths",
+}
+
+
+def cie_fetch_json(rel: str, cache: Path) -> dict | list:
+    """fetch_json against the CIE pin (separate base, Edexcel cache entries intact).
+    Retried: raw.githubusercontent flakes transiently (observed 404-on-200 during
+    the Phase-1 run)."""
+    dest = cache / rel.replace("/", "__")
+    if dest.exists():
+        return json.loads(dest.read_text(encoding="utf-8"))
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    url = f"{CIE_RAW_BASE}/{rel}"
+    last: Exception | None = None
+    for attempt in range(4):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "syllabai-spine-builder/1.0"})
+            with urllib.request.urlopen(req, timeout=60) as r:
+                data = r.read()
+            dest.write_bytes(data)
+            return json.loads(data.decode("utf-8"))
+        except Exception as exc:  # noqa: BLE001
+            last = exc
+            time.sleep(2 * (attempt + 1))
+    raise RuntimeError(f"cie_fetch_json failed after 4 attempts: {rel}: {last}")
+
+
+def cie_registry_rows() -> dict:
+    """CIE course registry from the Phase-0 roster manifest of record.
+    Phase 3 will fold these into content/courses.json; the spine build must
+    not depend on that landing first."""
+    manifest = json.loads(CIE_RECEIPT.read_text(encoding="utf-8"))
+    rows = manifest["deliverable1_bankSpecJoin"]["matrix"]
+    out = {}
+    for r in rows:
+        subj = CIE_SUBJECT_FIX.get(r["subject"],
+                                   str(r["subject"] or "").replace("-", " ").title())
+        out[r["slug"]] = {
+            "slug": r["slug"],
+            "level": CIE_LEVEL_PIN[r["level"]],
+            "subject": subj,
+            "label": subj,  # Phase 3 refines labels; spine header uses subject truth
+            "code": r["syllabusCode"] or "",
+            "syllabusVersion": r.get("edition") or None,
+            "qual": r["spec"],
+        }
+    return out
+
+
+def cie_scope_rule_for(slug: str, qual: str) -> dict:
+    """CIE scoping table. Shared-qual splits are evidence-cited:
+    - 9709 (2023-2025): parse topics 1-6 in component order (Pure 1 / Pure 2 /
+      Pure 3 / Mechanics / P&S 1 / P&S 2) — banks scope by topic number; the
+      Pure-2 topic has no bank and stays unused (honest pool remainder).
+    - 0580 / 0607 (2025-2027): the syllabus prints parallel Core (C*) and
+      Extended (E*) trees; the official codes themselves carry the tier prefix
+      (C1.1.1 / E1.1.1) — banks scope by code prefix.
+    - 0973 / 0653: scope field carries Biology/Chemistry/Physics (230/181/221
+      and 70/82/86 rows verified); codes carry B*/C*/P* prefixes.
+    - everything else: the spec serves exactly one bank (spec.json sme_courses)."""
+    if qual == "cie-a-level-maths-2023-2025":
+        for key, num in (("pure-1", "1"), ("pure-3", "3"), ("mechanics", "4"),
+                         ("probability-and-statistics-1", "5"),
+                         ("probability-and-statistics-2", "6")):
+            if slug.endswith(key):
+                return {"kind": "topic_numbers", "values": [num]}
+        raise ValueError(f"cannot scope CIE maths bank {slug}")
+    if qual in ("cie-igcse-maths-2025-2027", "cie-igcse-maths-international-maths-2025-2027"):
+        if slug.endswith("-core"):
+            return {"kind": "code_prefix", "value": "C"}
+        if slug.endswith("-extended"):
+            return {"kind": "code_prefix", "value": "E"}
+        raise ValueError(f"cannot scope CIE tiered maths bank {slug}")
+    if qual in ("cie-igcse-science-co-ordinated-sciences-double-award-2025-2027",
+                "cie-igcse-science-combined-science-2023-2024"):
+        for strand in ("Biology", "Chemistry", "Physics"):
+            if slug.endswith("-" + strand.lower()):
+                return {"kind": "scope_eq", "value": strand}
+        raise ValueError(f"cannot scope CIE science strand bank {slug}")
+    return {"kind": "all"}
+
+
+def cie_row_in_scope(row: dict, rule: dict) -> bool:
+    k = rule["kind"]
+    if k == "all":
+        return True
+    code = str(row.get("official_code") or "")
+    if k == "topic_numbers":
+        return code.split(".")[0] in set(rule["values"])
+    if k == "code_prefix":
+        return code.startswith(rule["value"])
+    if k == "scope_eq":
+        return str(row.get("scope")) == rule["value"]
+    raise ValueError(f"unknown CIE rule kind {k}")
+
+
+def _cie_clean_title(t: str) -> str:
+    """clean_title + CIE parse artifacts: dotted-leader TOC rows
+    ('Why choose this syllabus? ...... 4' — heading_bullets family), leading
+    \x07 control chars (PDF bullet glyph misextraction), and page-wrap
+    '(continued)' suffixes (0973 B10.1 class artifact)."""
+    t = (t or "").replace("\x07", " ")
+    t = clean_title(t)
+    t = re.sub(r"\s*\.{3,}\s*\d*$", "", t)
+    t = re.sub(r"\s*\(continued\)\s*$", "", t)
+    return re.sub(r"\s{2,}", " ", t).strip()
+
+
+def load_cie_parse(qual: str, cache: Path) -> tuple[dict, dict]:
+    rep = cie_fetch_json(f"Official-Specifications/parsed/{qual}/parse_report.json", cache)
+    if not isinstance(rep.get("family"), str) or not rep.get("family"):
+        raise ValueError(f"{qual}: parse_report missing family")
+    # naming convention (verified across families): <pdf minus .pdf>.parsed.json
+    pdf = str(rep.get("pdf") or "")
+    if not pdf:
+        raise ValueError(f"{qual}: parse_report missing pdf name")
+    parsed_name = pdf[:-len(".pdf")] + ".parsed.json" if pdf.endswith(".pdf") else pdf + ".parsed.json"
+    doc = cie_fetch_json(f"Official-Specifications/parsed/{qual}/{parsed_name}", cache)
+    if doc.get("id") != qual:
+        raise ValueError(f"{qual}: parsed.json id mismatch {doc.get('id')!r}")
+    return rep, doc
+
+
+def build_course_cie(slug: str, qual: str, reg: dict, cache: Path) -> dict:
+    """Stage-1 spine for one CIE course from the tier_columns parse.
+    Emits the SAME node/edge/meta contract as build_course (kg_export-compatible).
+    Ordering authority: the parse's `number` field = document sequence
+    (parse gates G1-G4 all-pass upstream); same-code multi-statement rows are
+    disambiguated deterministically in document order (see dupCodePolicy)."""
+    rep, doc = load_cie_parse(qual, cache)
+    rows_all = doc["spec_points"]
+    rule = cie_scope_rule_for(slug, qual)
+
+    scoped, orphans = [], []
+    orig_idx: dict[int, int] = {}
+    for i, r in enumerate(rows_all):
+        orig_idx[id(r)] = i
+        if not str(r.get("official_code") or ""):
+            orphans.append({"official_code": None, "text": (r.get("text") or "")[:80]})
+            continue
+        if cie_row_in_scope(r, rule):
+            scoped.append(r)
+    if not scoped:
+        raise ValueError(f"{slug}: no rows in scope for rule {rule}")
+
+    # document order = the parse array order (upstream gate G2; families differ
+    # in the `number` field — tier_columns/int_statements/ce_codes carry int
+    # doc sequence, heading_bullets/nmk_outcomes carry null, lettered_items
+    # carries letters) — array order is the universal authority; int-number
+    # drift is validated + warned below, never reordered away
+
+    # ---- dup-code policy (Phase-1 pin, REFINED by the kg_export ord gate):
+    # CIE syllabi print several statements under one official code (same tier,
+    # e.g. 0973 P1.5.1 x3 all Core) AND tier-variant pairs share codes
+    # (0620 7.2.2 Core + Supplement). Occurrence 1 keeps the code verbatim;
+    # occurrences 2..k carry a synthetic ascending letter ('7.2.2a', '7.2.2b',
+    # ...). Letters (not '@tier'/'#k') because export_course's per-section ord
+    # gate parses trailing letters natively — '@'/'#' would parse to 0.0 and
+    # read as descending. Tier/scope remain on the node fields, so nothing is
+    # lost: the letter is an identifier, not content.
+    assigned: dict[int, str] = {}
+    seen_node: set[str] = set()
+    warnings: list[str] = []
+    number_drift = False
+    dup_run: dict[str, int] = {}
+    for r in scoped:
+        n = r.get("number")
+        if isinstance(n, int) and n != orig_idx[id(r)] + 1:
+            number_drift = True
+        code = str(r["official_code"])
+        cand = code
+        if cand in seen_node:
+            k = dup_run.get(code, 1)  # occurrences so far of this base code
+            dup_run[code] = k + 1
+            cand = code + chr(ord("a") + k - 1)
+            j = k - 1
+            while cand in seen_node:  # >26 statements under one code: keep walking
+                j += 1
+                cand = code + chr(ord("a") + j)
+        else:
+            dup_run[code] = 1
+        seen_node.add(cand)
+        assigned[id(r)] = cand
+    if number_drift:
+        warnings.append("parse `number` field drifts from array order — array order used "
+                        "(document order authority; upstream gate G2)")
+    suffixed = [c for c in (assigned[id(r)] for r in scoped)
+                if re.search(r"[a-z]$", c) and c not in {str(r["official_code"]) for r in scoped}]
+
+    # ---- group into topics (code part 1) -> subtopics (parts 1-2) ----------
+    topics: dict[str, dict] = {}
+    for r in scoped:
+        code = str(r["official_code"])
+        t_key = code.split(".")[0]
+        t_title = _cie_clean_title(str((r.get("topic") or {}).get("title") or ""))
+        t = topics.setdefault(t_key, {"title": "", "rows": [], "drift": []})
+        if t_title and not t["title"]:
+            t["title"] = t_title
+        elif t_title and t_title != t["title"] and t_title not in t["drift"]:
+            t["drift"].append(t_title)
+        t["rows"].append(r)
+
+    for t_key, t in topics.items():
+        if t["drift"]:
+            warnings.append(
+                f"topic {t_key} title drift (page-wrap artifact): kept "
+                f"{t['title']!r}; also seen {sorted(t['drift'])[:3]}")
+        if not t["title"]:
+            warnings.append(f"topic {t_key} carries no embedded title — used key as title")
+            t["title"] = f"Topic {t_key}"
+
+    nodes, edges = [], []
+    subject_code = slug
+    nodes.append({"code": subject_code, "family": "SUBJECT",
+                  "title": reg.get("subject") or qual, "description": None,
+                  "parents": [], "provenanceTier": "RULE_DERIVED", "order": 0})
+
+    n_sub, n_pts, n_recovered = 0, 0, 0
+    seen_titles: dict[str, int] = {}
+    for t_idx, (t_key, t) in enumerate(topics.items(), start=1):
+        t_code = f"{qual}-T{t_key}"
+        nodes.append({"code": t_code, "family": "TOPIC", "title": t["title"],
+                      "description": None, "parents": [subject_code],
+                      "provenanceTier": "RULE_DERIVED", "order": t_idx})
+        edges.append({"source": subject_code, "relation": "PART_OF",
+                      "target": t_code, "provenanceTier": "RULE_DERIVED"})
+
+        # subtopics keyed by the subsection's own official code (parts 1-2);
+        # same-code rows are page-wrap collapses (B10.1 '(continued)' class):
+        # one node, first-seen title, all points kept
+        subs: dict[str, dict] = {}
+        for r in t["rows"]:
+            sub = r.get("subsection") or {}
+            code = str(r["official_code"])
+            # heading_bullets family: subsection layer ABSENT (null x163 on 0500)
+            # — Edexcel unnamed-sub convention: collapse to '_' (SUB_ node per topic)
+            s_key = str(sub.get("code") or "") if sub.get("code") else "_"
+            if not s_key or s_key == "None":
+                s_key = "_"
+            s_title = _cie_clean_title(str(sub.get("title") or ""))
+            s = subs.setdefault(s_key, {"title": "", "rows": [], "drift": []})
+            if s_title and not s["title"]:
+                s["title"] = s_title
+            elif s_title and s_title != s["title"] and s_title not in s["drift"]:
+                s["drift"].append(s_title)
+            s["rows"].append(r)
+        # subtopic order: code-canonical (natural key, '_' first) — the Edexcel
+        # rule; the parse document order can visit subsections out of code
+        # order (0610: 17.4 fully before 17.3), which export_course's
+        # section-level ord gate rejects
+        subs_ordered = sorted(subs, key=lambda k: [(-1, "")] if k == "_" else natural_key(k))
+        for s_idx, s_key in enumerate(subs_ordered, start=1):
+            s = subs[s_key]
+            if s["drift"]:
+                warnings.append(
+                    f"subtopic {s_key} title drift (page-wrap artifact): kept "
+                    f"{s['title']!r}; also seen {sorted(s['drift'])[:3]}")
+            if not s["title"]:
+                s["title"] = t["title"]
+            # duplicate subtopic titles inside a section break export_course's
+            # parent matching — same deterministic disambiguation as the
+            # Edexcel path: suffix with the official key (identifier, not content)
+            if s["title"] in seen_titles:
+                warnings.append(
+                    f"duplicate subtopic title '{s['title']}' in section '{t['title']}' "
+                    f"(official key {s_key}) — suffixed with key")
+                s["title"] = f"{s['title']} ({s_key})"
+            seen_titles[s["title"]] = 1
+            s_code = f"{t_code}:SUB{s_key}"
+            nodes.append({"code": s_code, "family": "SUBTOPIC", "title": s["title"],
+                          "description": None, "parents": [t_code],
+                          "provenanceTier": "RULE_DERIVED", "order": s_idx})
+            edges.append({"source": t_code, "relation": "PART_OF",
+                          "target": s_code, "provenanceTier": "RULE_DERIVED"})
+            n_sub += 1
+            # point order is code-canonical within the subtopic (the Edexcel
+            # rule, matching export_course's per-section ord gate): the parse
+            # document order is NOT code-ascending everywhere (0620 4.1.8
+            # before 4.1.3; 9709 second 1.3.1 statement after 1.3.2) — sort by
+            # the assigned code's ord tuple, stable for true ties
+            s["rows"].sort(key=lambda r: _ord_tuple(assigned[id(r)]))
+            for r in s["rows"]:
+                title = r.get("text") or ""
+                items = [str(x).strip() for x in (r.get("sub_items") or []) if str(x).strip()]
+                if items:
+                    lead = title if title.endswith(":") else title + ":"
+                    title = lead + " \u2022 " + " \u2022 ".join(items)
+                    n_recovered += 1
+                node = {"code": assigned[id(r)], "family": "SPEC_POINT",
+                        "title": title, "description": None,
+                        "parents": [s_code], "provenanceTier": "RULE_DERIVED",
+                        "order": n_pts + 1}
+                if r.get("tier"):
+                    node["tier"] = str(r["tier"])  # verbatim Core/Supplement/Extended
+                if r.get("scope"):
+                    node["scope"] = str(r["scope"])  # verbatim 'AS Level'/'A Level' (int_statements family)
+                nodes.append(node)
+                edges.append({"source": s_code, "relation": "PART_OF",
+                              "target": assigned[id(r)], "provenanceTier": "RULE_DERIVED"})
+                n_pts += 1
+
+    curriculum = {
+        "board": CIE_BOARD,
+        "level": reg.get("level") or "",
+        "subject": reg.get("subject") or qual,
+        "code": reg.get("code") or qual,
+        "syllabusVersion": reg.get("syllabusVersion"),
+        "nodes": nodes,
+        "edges": edges,
+    }
+    meta = {
+        "generator": "scripts/build_official_spines.py @ " + REPO.name + " (cie adapter)",
+        "family": "tier_columns",
+        "resourcesSha": CIE_RESOURCES_SHA,
+        "qual": qual,
+        "scopeRule": rule,
+        "dupCodePolicy": {
+            "rule": "verbatim first occurrence (document order); occurrences 2..k carry "
+                    "synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the "
+                    "kg_export per-section ord gate (letters parse natively; '@'/'#' do not); "
+                    "tier/scope stay on the node fields",
+            "suffixed": len(suffixed),
+            "examples": sorted(set(suffixed))[:8],
+        },
+        "counts": {"topics": len(topics), "subtopics": n_sub, "specPoints": n_pts,
+                   "parsePool": len(rows_all), "scopedPool": len(scoped), "orphans": len(orphans)},
+        "orphans": orphans,
+        "warnings": warnings,
+        "parseFlags": rep.get("counts", {}).get("flagged"),
+        "parseFamily": rep.get("family"),
+    }
+    if n_recovered:
+        meta["subItemRecovery"] = {"specPoints": n_recovered,
+                                   "rule": "text (+':') + ' \u2022 ' + sub_items inline"}
+    return {"meta": meta, "curriculum": curriculum}
+
+
 def fetch_json(rel: str, cache: Path) -> dict | list:
     dest = cache / rel.replace("/", "__")
     if dest.exists():
@@ -573,7 +934,46 @@ def main() -> int:
     ap.add_argument("--qual", action="append", default=[], help="course slug (repeatable)")
     ap.add_argument("--cache", type=Path, default=DEFAULT_CACHE)
     ap.add_argument("--out", type=Path, default=REPO / "spines")
+    ap.add_argument("--cie", action="store_true",
+                    help="build the CIE fleet from the Phase-0 roster manifest "
+                         "(writes spines/<slug>.json + spines/_report_cie.json; "
+                         "the Edexcel build/report are not touched)")
     args = ap.parse_args()
+
+    if args.cie:
+        registry = cie_registry_rows()
+        slugs = args.qual or sorted(registry)
+        args.out.mkdir(parents=True, exist_ok=True)
+        report = {"resourcesSha": CIE_RESOURCES_SHA, "board": CIE_BOARD,
+                  "generatedUtc": dt.datetime.now(dt.UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                  "courses": {}, "failures": []}
+        ok = 0
+        for slug in slugs:
+            reg = registry.get(slug)
+            if reg is None:
+                report["failures"].append({"slug": slug, "error": "not in the CIE roster manifest"})
+                print(f"FAIL  {slug}: not in roster manifest")
+                continue
+            try:
+                payload = build_course_cie(slug, reg["qual"], reg, args.cache)
+                (args.out / f"{slug}.json").write_text(
+                    json.dumps(payload, ensure_ascii=False, separators=(",", ":")),
+                    encoding="utf-8")
+                c = payload["meta"]["counts"]
+                report["courses"][slug] = {"qual": reg["qual"], "rule": payload["meta"]["scopeRule"],
+                                           "counts": c, "warnings": payload["meta"]["warnings"],
+                                           "dupCodePolicy": payload["meta"]["dupCodePolicy"]}
+                ok += 1
+                print(f"  ok  {slug:70s} {c['topics']:3d} sections {c['subtopics']:4d} subs "
+                      f"{c['specPoints']:4d} pts  (pool {c['parsePool']}/{c['scopedPool']}, "
+                      f"orphans {c['orphans']}, suffixed {payload['meta']['dupCodePolicy']['suffixed']})")
+            except Exception as exc:  # noqa: BLE001
+                report["failures"].append({"slug": slug, "error": str(exc)})
+                print(f"FAIL  {slug}: {exc}", file=sys.stderr)
+        (args.out / "_report_cie.json").write_text(
+            json.dumps(report, indent=1, ensure_ascii=False), encoding="utf-8")
+        print(f"\n{ok}/{len(slugs)} CIE spines -> {args.out} (_report_cie.json)")
+        return 0 if ok == len(slugs) else 1
 
     registry = {}
     reg_raw = json.loads((REPO / "content" / "courses.json").read_text(encoding="utf-8"))
