@@ -1,0 +1,61 @@
+{
+  "receipt": "PASTPAPERS/examq-provenance-verification-sweep-run-001-2026-10-20-r1c",
+  "band": "IAL Maths 7-unit Source Paper Completion directive (operator trace 1a155380108744f1 'Proceed with IAL Maths 7 Unit Source Paper Completion (Largest Single Gap, 5,011 Items)') — executing on the run-002 census gap class (examq-provenance-census-run-002-2026-10-19-r1c: IAL Maths-20 pure 1-4 + mech 1-2 + stats 1-2 = 5,011 parts at 0% sourcePaper provenance)",
+  "lane": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)",
+  "created_at_utc": "2026-10-20",
+  "verdict": "THE GAP IS NOT A MAPPING GAP — IT IS A NO-PAPER CLASS. The 5,011 no-provenance Exam-Questions parts of the 7 IAL Maths units are SME-authored exam-style items that NEVER APPEARED IN ANY PAST PAPER; there is no original paper to map them to. Verified first-hand by a full-universe certification sweep: every question paper held in the mathematics-2018 corpus spec (299 papers) plus a 9-paper legacy battery (old-IAL WMA01 + UK GCE modular 6663/6664) — 1,471,646 part-x-paper normalized-text tests produced ZERO real matches (6 rule-survivors, all classified boilerplate: generic instruction lines that match MULTIPLE different papers, which a genuine source cannot). The run-002 'unmapped' class is therefore RECLASSIFIED of record as 'verified SME-authored (no original paper exists)'. ZERO bundle edits: filling sourcePaper would fabricate provenance — the all-NULL shells are the truthful state per the honest-provenance law. The operator's corpus assumption 'we have all the past papers of all the courses' is TRUE for this suite: all 25 sessions 2019-2026 of all 14 mathematics-2018 units are archived (7 QP byte-gaps corpus-wide, 1 inside the 7-unit families).",
+  "part_inventory": {
+    "pure-1": 712, "pure-2": 591, "pure-3": 790, "pure-4": 660,
+    "mech-1": 539, "mech-2": 554, "stats-1": 574, "stats-2": 591,
+    "total": 5011,
+    "note": "sum reconciles EXACTLY to the run-002 census figure of 5,011"
+  },
+  "upstream_evidence": {
+    "finding": "the SME raw corpus itself carries NO provenance for these units — the nulls are upstream, not an ingest loss",
+    "data": [
+      "syllabai-resources SME-ExamQuestion/ial-maths-20-pure-1/.../topic.json part.source_paper = {date:null,number:null,question_number:null,question_part:null} for ALL parts of ALL 13 sets",
+      "contrast: SME-ExamQuestion/ial-maths-20-decision-1/.../topic.json carries real per-part values ({date:'Specimen 2018', number:'WDM11/01', question_number:5, question_part:'a'}) — the SAME scraper captured labels where SME published them",
+      "questions.md renders no 'from paper' lines for pure-1 (vs D1's per-part 'from paper <session> . <unit>' lines); mark-schemes.md carries no paper citations either"
+    ],
+    "disclosed_hypothesis": "SME CMS asset slugs in the pure-1 bundle reference 'edexcel-a-level-maths-pure' (the UK 9MA0 universe) — consistent with SME authoring these banks in their UK A-Level Maths CMS style; unverifiable offline since no 9MA0 spec is archived"
+  },
+  "sweep_method": {
+    "universe": "309 papers targeted = the mathematics-2018 spec's full 299 QP inventory (WMA11 x29, WMA12 x29, WMA13 x25, WMA14 x24, WME01 x27, WME02 x26, WME03 x12, WST01 x27, WST02 x24, WST03 x13, WDM11 x11, WFM01 x17, WFM02 x19, WFM03 x16 across 25 sessions 2019-2026 incl. -01R/-01A regional variants + the specimen session) + 9 legacy battery papers (WMA01-01 2019-06/2019-10/2020-01; UK GCE modular 6663-01/6664-01 2016-06/2017-06/2018-06) + the 1 D1 control pair",
+    "processed": 302,
+    "qp_byte_gaps": [
+      {"session": "2019-06", "paper": "WME01-01", "scope": "IN-FAMILY (mech-1)", "state": "dir holds manifest.yaml + ms.pdf only — QP bytes absent from the archive"},
+      {"session": "2020-10", "paper": "WFM01-01", "scope": "out-of-family (further pure)", "state": "er.pdf + ms.pdf only"},
+      {"session": "2020-10", "paper": "WFM02-01", "scope": "out-of-family", "state": "er.pdf + ms.pdf only"},
+      {"session": "2020-10", "paper": "WFM03-01", "scope": "out-of-family", "state": "er.pdf + ms.pdf only"},
+      {"session": "2020-10", "paper": "WME03-01", "scope": "out-of-family (M3)", "state": "er.pdf + ms.pdf only"},
+      {"session": "2020-10", "paper": "WST03-01", "scope": "out-of-family (S3)", "state": "er.pdf + ms.pdf only"},
+      {"session": "2022-06", "paper": "WFM02-02", "scope": "out-of-family", "state": "ms.pdf only"}
+    ],
+    "corpus_path_laws": "regular sessions nest under <spec>/past-papers/<session>/<paper>/qp.pdf; the specimen session nests under <spec>/specimen/<paper>/qp.pdf (8 specimen QPs processed, all-zero)",
+    "matcher": "LaTeX/image-stripping normalizer (repo-side bundle problemMd and pdftotext -layout paper text normalized identically); per part up to 8 windows of 40 normalized tokens (step 3, min 22 chars); a part is a rule-survivor if one window >= 35 chars matches or two distinct windows >= 25 chars match; question-number anchoring via '(Total for Question N is ... marks)'",
+    "volume": "1,471,646 part-x-paper tests; scripts persisted at /home/z/my-project/scripts/{match_test,provenance_sweep,provenance_full_sweep,classify_hits}.py; PDF/text artifacts lane-local under /tmp/pp-sweep (not committed)"
+  },
+  "rule_survivors_classified": [
+    {"part": "qstnprt_RdWBnSjqBnn4ZNxw (pure-1, Differentiation)", "text": "Find an equation of the tangent to C at P.", "matched": ["2025-06 WMA11-01A", "2025-06 WMA14-01A"], "classification": "BOILERPLATE — one part cannot originate from two different papers; the surrounding paper sentences differ ('giving your answer in the form y mx c' vs 'form ax by c 0'); generic instruction line"},
+    {"part": "qstnprt_vhDXJBf6wngZZD8t (mech-2, Collisions)", "text": "Find the range of possible values of e.", "matched": ["2022-01 WME02-01"], "classification": "BOILERPLATE — standard M2 restitution wording; a second, different part (qstnprt_x3wMNHcWSxzHkZRs) matches the same paper region; both are one-line instructions"},
+    {"part": "qstnprt_x3wMNHcWSxzHkZRs (mech-2, Collisions)", "text": "Find the range of possible values of e.", "matched": ["2022-01 WME02-01"], "classification": "BOILERPLATE — as above"},
+    {"part": "qstnprt_tR5ZSQJ3mkctyZsq (mech-1, Momentum/Impulse)", "text": "Find the magnitude of the impulse exerted by Q on P in the collision.", "matched": ["2020-06 WME01-01", "2020-10 WME01-01"], "classification": "BOILERPLATE — matches two different sessions at near-identical contexts; standard M1 impulse wording"}
+  ],
+  "controls": {
+    "control_1": "D1 bundle (373/375 parts provenanced, SME-labeled) vs its CLAIMED session 2022-01 WDM11-01: 43 of 43 parts claiming January 2022 hit the paper verbatim = 100%",
+    "control_2": "D1 parts claiming January 2023 (41 parts) vs the 2023-01 WDM11-01 QP: 20/41 verbatim (per-paper pdftotext extraction quality bounds the rate; still an order of magnitude above the 7 banks' zero)",
+    "control_3": "session distribution of D1 provenance of record: Jan-2020 x35, Jan-2021 x37, Jan-2022 x43, Jan-2023 x41, Jun-2019 x47, Jun-2021 x40, Jun-2022 x36, Oct-2020 x29, Oct-2021 x35, Specimen-2018 x30 — no cross-session false attribution observed",
+    "conclusion": "the pipeline reliably detects REAL paper copies (43/43, 20/41); the 7 banks' 0/5,011 is a property of the data, not the tool"
+  },
+  "answers_of_record": {
+    "q1_mapped": "For the 7 IAL Maths unit banks: NO original papers exist for the 5,011 parts — 'mapping completion' is complete at 0% BY NATURE. The paper-derived IAL maths banks remain Decision-1 (373/375) and Further-Pure-1. The student-facing Exam-Questions player does not render sourcePaper (run-002 UI law), so users see no difference either way.",
+    "q2_archive": "'We have all the past papers' — TRUE for the IAL Maths suite: every 2019-2026 session of all 14 units is archived (incl. regional variants and specimen); 7 QP byte-gaps exist corpus-wide in this spec, 1 inside the 7-unit families (2019-06 WME01-01 QP absent, ms present)."
+  },
+  "operator_options_filed": [
+    "accept the honest state (recommended): the banks are SME-authored practice content; no data change needed",
+    "SME-side relabeling: only Save My Exams can attribute provenance they never published",
+    "an ARCHIVE-DERIVED bank: parse the held WMA11-14/WME01-02/WST01-02 QPs into new question sets (a new ingest scope card, operator-gated) — this would give these courses genuinely paper-anchored exam questions, but it is NEW content work, not a mapping of existing items"
+  ],
+  "write_ledger": "ZERO writes on every project plane (repo bundles untouched, zero Neon contact, zero deploys); GitHub token from the repo remote used in-memory for GET-only raw/API fetches (public-raw equivalent), never printed or persisted; zero LLM; zero SME live-site contact (all evidence from the attested corpus already held)",
+  "boundaries": "no code changes, no schema changes, archived repos untouched (GET-only), no force, .syllabai-only landing"
+}

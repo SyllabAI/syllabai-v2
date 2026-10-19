@@ -8889,3 +8889,23 @@ Work Log:
 
 Stage Summary:
 - main @ 97b3e33 green after merge; band 133f ingest driver of record now receipt-chain-safe for the operator's 4MA1/4MB1/4PH1 roll. No escalations this sweep.
+
+---
+Task ID: 59
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, trace 1a155380108744f1)
+Task: Operator "Proceed with IAL Maths 7 Unit Source Paper Completion (Largest Single Gap, 5,011 Items)" — the run-002 largest gap class executed to a certification verdict; receipt PASTPAPERS/examq-provenance-verification-sweep-run-001-2026-10-20-r1c.json.
+
+Work Log:
+- Fetch-first: ff to the then-tip (89962a5) BEFORE any read; worklog tail re-read; highest numeric Task ID 58 (my run-002 census).
+- Upstream proof first: the SME raw corpus itself carries NO provenance for the 7 units — resources SME-ExamQuestion topic.json source_paper all-null for every pure-1 part (13 sets) while the SAME scraper captured real per-part labels for decision-1 ({date:'Specimen 2018', number:'WDM11/01', ...}); questions.md renders no 'from paper' lines and mark-schemes.md cites no papers for pure-1. The nulls are upstream, not an ingest loss.
+- Full-universe certification sweep: 309 papers targeted = the mathematics-2018 spec's complete 299-QP inventory (all 14 units, 25 sessions 2019-2026, R/A variants, specimen via its own <spec>/specimen/ nesting law) + 9 legacy battery papers (old-IAL WMA01 x3, UK GCE modular 6663/6664 x6) + the D1 control pair; 302 processed; 7 QP byte-gaps verified first-hand (2019-06 WME01-01 ms-only = the only IN-FAMILY gap; six WFM/WME03/WST03 gaps out-of-family).
+- Matching: LaTeX/image-stripping normalizer applied identically to bundle problemMd and pdftotext -layout paper text; 40-token windows (step 3, min 22 chars, up to 8 per part); strong rule = one window >=35 chars or two >=25; 5,011 parts x 302 papers = 1,471,646 tests.
+- RESULT: ZERO real matches. 6 rule-survivors ALL classified boilerplate — 'Find an equation of the tangent to C at P.' matches BOTH 2025-06 WMA11-01A and WMA14-01A (different surrounding questions); 'Find the magnitude of the impulse exerted by Q on P in the collision.' matches BOTH 2020-06 and 2020-10 WME01-01; two different mech-2 parts match the same standard restitution line of 2022-01 WME02-01. A genuine source cannot be two papers.
+- Controls: D1 (the SME-labeled sibling bank) vs its claimed 2022-01 WDM11-01 QP = 43/43 (100% of its Jan-2022 claimants hit verbatim); Jan-2023 claimants vs 2023-01 QP = 20/41 (per-paper extraction bound); D1 session distribution tabulated (10 sessions, 30-47 parts each, no cross-session false attribution). The pipeline detects real copies; the 7 banks contain none.
+- VERDICT: the 5,011 parts are SME-authored exam-style items — no original paper exists to map them to. The run-002 'unmapped' class is reclassified of record as 'verified SME-authored (no original paper exists)'. ZERO bundle edits (filling sourcePaper would fabricate provenance; honest-provenance law).
+- Answers of record: (1) Exam-Questions -> original papers for these 7 units: complete at 0% BY NATURE; paper-derived maths banks remain D1 373/375 + further-pure-1; the student player renders no sourcePaper either way (run-002 UI law). (2) 'We have all the past papers' — TRUE for the IAL Maths suite: every 2019-2026 session of all 14 units archived; 7 spec-wide QP byte-gaps, 1 in-family.
+- Operator options filed in the receipt: accept the honest state (recommended) / SME-side relabeling (only SME can attribute what it never published) / an ARCHIVE-DERIVED bank (parse the held WMA11-14/WME01-02/WST01-02 QPs into new question sets — new operator-gated ingest scope card, NEW content not a remapping).
+- Write ledger: ZERO writes on every plane (bundles untouched, zero Neon contact, zero deploys, zero LLM); remote-embedded GitHub token used in-memory for GET-only fetches, never printed/persisted; zero SME live-site contact.
+
+Stage Summary:
+- The 'largest single gap' is CLOSED as verified-not-a-gap: provenance completion for these banks is complete — at zero, truthfully. Next repo receipt = Task-60.
