@@ -365,6 +365,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/questions", // T-MIG-120: the B5 band's questions SUBTREE row (the 107 narrowest-legal form — all five hub-emitted forms v2-REAL + captured; the 111 leaf-row-only law DISCHARGED; the order-class disclosure of record)
       "/api/v1/learners/me/answer-input", // T-MIG-121: the B6 band's answer-input SUBTREE row (the GLM seam — the run-001 keyless law battery byte-parity GREEN both planes; the operator ruling (b) GRANTED of record 08557d3 'good enough, switch it over'; the keyed live-prove waived ZERO-KEY; the GLM seam dependency disclosed-accepted; the ink-pad emitters :194/:246 flip)
       "/api/v1/tutor/bank", // T-MIG-130: the tutor BANK bands (T-MIG-128/129 out-of-fence mounts; the chat relay's deterministic pre-ask probes) — NARROW family form: /bank/questions + /bank/paper ONLY (pinned in the 130 line test); zero-LLM/zero-vector, silent fall-through to the grounded ask on every non-resolving verdict (operator trace 1a140a3f4c796e11 'wire the hub chat')
+      "/api/v1/content/books", // T-MIG-133 band 133j: the books READ family flips for CLIENT-side joins (the note reader's student-book back-link) — v2-ONLY band (the core never served books); server reads stay coreBaseUrl-direct (lib/books.ts); live-verified 200s with populated specCodes (session 1a156004911ee41d)
     ]);
   });
   test("the mid-path table is exactly the ruled set — the mechanism-A amendment needs its own golden gate too", () => {
@@ -391,6 +392,23 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
       expect(v2SurfaceBase(p, V2)).toBe(V2);
       expect(apiPath(p).startsWith(`${V2}/api/v1/`)).toBe(true);
     }
+  });
+
+  test("the T-MIG-133j lines: the books read family flips for the client-side note joins (r0)", () => {
+    // both client-emitted books forms resolve to v2 — the shelf probe and
+    // the per-book chapters the note reader's back-link joins against
+    for (const p of [
+      "/api/v1/content/books?courseId=igcse-chemistry-19",
+      "/api/v1/content/books/e6c0db50-0f84-55de-b50c-e4d49285cd6d/chapters",
+    ]) {
+      expect(v2SurfaceBase(p, V2)).toBe(V2);
+      expect(apiPath(p).startsWith(`${V2}/api/v1/`)).toBe(true);
+    }
+    // startsWith-safety: sibling content families keep their own rows and
+    // the v2 row never captures the bare /api/v1/content parent (nothing
+    // mounts there on either plane — the prefix is the family)
+    expect(v2SurfaceBase("/api/v1/content/documents/abc", V2)).toBe(V2);
+    expect(v2SurfaceBase("/api/v1/content", V2)).toBe(null);
   });
 
   test("the T-MIG-096 lines: the learner-me heart flips per-exact-subpath with the write surfaces core-pinned (r0 rider)", () => {

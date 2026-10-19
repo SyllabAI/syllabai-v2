@@ -10,6 +10,7 @@ import { Breadcrumbs } from "@/components/hub/chrome";
 import { ResourcePanel } from "@/components/hub/resource-panel";
 import { NoteCla } from "@/components/cla/note-cla";
 import { NoteFootnote } from "./note-footnote";
+import { NoteBookLinks } from "./note-book-link";
 import { pilotNoteParams } from "@/lib/static-params";
 
 /**
@@ -140,6 +141,12 @@ export default async function NoteReaderPage({
               </div>
             </CardContent>
           </Card>
+
+          {/* T-MIG-133 band 133j — the student-book back-link. Client-side
+              join on the LIVE books surface (exact specCode intersection,
+              lib/books-notes.ts); renders NOTHING for courses without a
+              published book or orphan notes (honest-absent law). */}
+          <NoteBookLinks course={meta.slug} specPointCodes={note.specPointCodes} />
 
           {/* Mobile UX audit (2026-09-28) P1: the two 24-char titles inside
               whitespace-nowrap shrink-0 buttons overflowed the 343px article

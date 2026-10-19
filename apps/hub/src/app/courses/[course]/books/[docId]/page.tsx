@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen } from "lucide-react";
 
 import type { BookChapter } from "@syllabai/contracts";
 
 import { loadHubCourse } from "@/lib/courses";
+import { relatedNotesForChapter } from "@/lib/books-notes";
 import {
   fetchBookChapters,
   fetchBookShelf,
@@ -21,6 +22,12 @@ import {
 } from "@/lib/books-slices";
 import { booksRawUrl, corpusViewerUrl } from "@/lib/pastpapers-shared";
 import { PdfPane } from "@/components/pastpapers/pdf-pane";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 
 export const dynamic = "force-dynamic";
@@ -163,6 +170,15 @@ export default async function BookViewerPage({
         : ` · SB p.${target.bookPageStart}`
       : "";
 
+  // 133j — the notes↔books join, viewer direction: the hub course's revision
+  // notes (already in memory via loadHubCourse) joined against the mounted
+  // chapter's registry specCodes (exact spineCode intersection, the pure
+  // law in lib/books-notes.ts). Honest-absent: a chapter with no related
+  // notes (census of record: u4:c24 Alkanes is the only one, 1/29) renders
+  // NO trigger — and courses whose corpus carries no specPointCodes (non-4CH1
+  // pilots) render none either, since no note can intersect.
+  const relatedNotes = relatedNotesForChapter(target, hub.notes);
+
   // slice pane path; null → whole-book fallback (the 133c mount)
   const sliceRel = mountEntry ? bookSlicePathForCourse(slug, mountEntry.file) : null;
   const panePath = sliceRel ?? wholePdfPath;
@@ -185,6 +201,31 @@ export default async function BookViewerPage({
           {rangeLabel}
           {bookRangeLabel}
         </span>
+        {relatedNotes.length > 0 && (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="sm" className="h-7 shrink-0 px-2">
+                <BookOpen className="h-4 w-4" aria-hidden />
+                Revision notes ({relatedNotes.length})
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="max-h-80 w-80 overflow-y-auto">
+              {relatedNotes.map((n) => (
+                <DropdownMenuItem key={n.noteId} asChild>
+                  <Link
+                    href={`/courses/${slug}/revision-notes/${n.noteId}`}
+                    className="flex flex-col items-start gap-0.5"
+                  >
+                    <span className="line-clamp-2 text-[13px] font-medium leading-snug">{n.title}</span>
+                    {n.path ? (
+                      <span className="max-w-full truncate text-[11px] text-muted-foreground">{n.path}</span>
+                    ) : null}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        )}
         <div className="flex shrink-0 items-center gap-1">
           {prev && (
             <Button asChild variant="ghost" size="sm" className="h-7 px-2">

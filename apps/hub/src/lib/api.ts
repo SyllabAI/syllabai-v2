@@ -802,6 +802,17 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // §7). Partial-segment capture (bankx) DOCUMENTED INERT — no such route
   // or hub emitter exists on either side.
   "/api/v1/tutor/bank",
+  // T-MIG-133 band 133j — the books READ surface flips for CLIENT-side
+  // joins (the note reader's student-book back-link, the client-side join
+  // law of the /api/notes digest precedent). v2-ONLY family: the Java core
+  // never served books (the 133a+ corpus band); the hub's SERVER reads ride
+  // coreBaseUrl() directly (lib/books.ts, the 133c law) and are untouched
+  // by this row. LIVE-VERIFIED of record (operator session
+  // 1a156004911ee41d): shelf + chapters 200 with specCodes populated on all
+  // 29 chemistry chapters. startsWith-safe: captures only the
+  // /content/books paths (shelf + per-book chapters); /content/documents
+  // and /content/question-assets keep their own rows.
+  "/api/v1/content/books",
 ];
 
 /**
