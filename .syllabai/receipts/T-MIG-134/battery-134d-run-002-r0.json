@@ -1,0 +1,66 @@
+{
+  "card": "T-MIG-134",
+  "receipt": "battery-134d-run-002-r0",
+  "lane": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "created_at_utc": "2026-10-20T21:52Z",
+  "operator_trace": "1a155d97bdad44e1 '134b questions (489 via the SME ingest) → 134d zero-LLM battery on 4PH1' (re-dispatch of 1a153eb294a96e75, whose lane died mid-apply at 5/24 sets — this run RESUMED and COMPLETED 134b, then fired 134d)",
+  "order": {
+    "words": "134b questions (489 via the SME ingest) → 134d zero-LLM battery on 4PH1",
+    "discharge": "complete band 134b to the full 489-question bundle via the SME ingest of record (the local 134b runner: the 1.1→1.0 versioned shim driving the REAL frozen SmeQuestionIngestService, ADR-026 evidence-safe replace, per-set atomic, generation-1), then execute band 134d: the four-subsystem ZERO-LLM battery on 4PH1 (the 136d battery law of record mirrored) against the LIVE serving carrier"
+  },
+  "band_134b_completion": {
+    "resume_of_record": "run-001 lane (trace 1a153eb294a96e75) had applied 5/24 sets (120 store rows, all fresh) before its sandbox died mid-set-2-3; this run resumed per-set from the persisted state (resumable-by-design), 19 sets applied across 4 foreground chunks + the witness-free generation-1 law held (each set exactly once live)",
+    "baseline_resume": { "nonPhysicsActive": 3921, "physicsActive": 120, "assets": 585, "specJoins4ph1": 197, "questionsActive": 4041 },
+    "post": { "nonPhysicsActive": 3921, "physicsActive": 583, "assets": 585, "specJoins4ph1": 984, "questionsActive": 4504 },
+    "isolation": "PASS — non-physics active stable across the resume window (3921 unchanged)",
+    "asset_store_untouched": "PASS — 585 rows unchanged (the no-assets law)",
+    "all_fresh_applies": "PASS — every apply was fresh (sameSliceBefore 0, deactivated 0, no parallel lane, no collisions)",
+    "reconciliation_of_record": "489 BUNDLE questions -> 583 STORE rows (the frozen MIXED emission decomposition: option-part rows + the -s row; per-set expectedRows sums 583) — physics_active_matches PASS 583==583; 583 DISTINCT external_refs, ALL from source_document sme-eq-igcse-physics-19 (sme-corpus-import-v1, ADR-026), zero non-SME physics rows, question_topics join 0; spec joins delta +787 = 489 PRIMARY (exactly one anchoring part per bundle question) + 495 SECONDARY, ALL AI_VALIDATED",
+    "scratch_defect_disclosed": "the in-repo apps/api/scripts/ingest-bundle-questions.ts (the 135b committed driver) passes the postgres-js tx object where the frozen service calls .sql.transaction — TypeError on the apply path (dry-run path unaffected); the 134b runner of record is the LOCAL 134b runner (the createSql adapter seam, :425) staged uncommitted as ingest-bundle-questions-134b.ts and deleted post-gate — the repo driver defect is filed for the 135/136 owners"
+  },
+  "battery": {
+    "runs": {
+      "run_001": "28/30 — the two FAILs were this lane's own mis-shapes, disclosed per the battery discipline: C4 probed spec=4PH1-1.1 (the 'Units' spec point — zero questions BY NATURE, wire total 0 == DB expectation 0, so the positive-check was mis-aimed) and D1 pinned the flashcard envelope as flat {due,cards} while the wire truth is {summary:{due,scheduled,nextDueAt}, cards:[]}",
+      "run_002_of_record": "30/30 PASS, EXIT=0"
+    },
+    "zero_llm_posture": {
+      "hard_law": "every leg is a read or a deterministic pre-pipeline refusal",
+      "served_kind_asks_not_fired": "no resolving CLA ask fired (the resolve side proven by the post-root-resolve isolation 404s + the live tree reads); the vector arm is LLM-family — deliberately untouched",
+      "tutor_ask_leg": "fails at the section-22 foreign-session probe BEFORE the pipeline (requireOwned, zero retrieval, zero generation)",
+      "smartmark_leg": "the attempt-law boundary only (unknown attempt -> deterministic 404, no oracle)"
+    },
+    "carrier": "dpl_HphMddkuf2EK7dyYDTQMcjjMCLeX (main 89962a5, the 136d-of-record carrier) — re-verified first-hand pre-battery: latest production deployment on prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ, READY; the battery rode https://syllabai-v2.vercel.app",
+    "four_subsystem_verdict": {
+      "curriculum_axis": "A1 subjects list serves Chemistry (4CH1) + the four ACTIVE cvs {4CH1-2017, 4MA1-2016, 4MB1-2016, 4PH1-2017} among the 8 subjects incl. Physics (4PH1) — DB-live, no redeploy (the 134d law)",
+      "cla": "ROOT RESOLVE + ISOLATION LIVE for 4PH1: KG_TOPIC with the 4PH1 subject root + the 4CH1-S3-b topic -> indistinguishable 404 (hard PART_OF-subtree isolation, post-root-resolve); UNIT-as-root (4PH1-S1) -> 404 (the root-must-BE-a-subject-root contract); unknown root -> 404 (no existence oracle); SMART_LESSON deferral fixed 400 ('context kind not supported by this runtime step: SMART_LESSON'); missing-ref gate 400 verbatim ('SMART_LESSON context requires rootId and topicNodeId'); unknown kind -> malformed_body (two-envelope binding law)",
+      "tutor": "GRAPH-ARM SUBSTRATE + BANK SERVES 4PH1: the 4PH1 root tree read returns the EXACT 234-node shape of record (1 SUBJECT / 8 UNIT 4PH1-S1..S8 / 30 TOPIC 4PH1-S<n>-<letter> / 195 SUBTOPIC spec codes) and the 4CH1 root tree reads 438 (the 136d regression substrate); THE 4PH1-POSITIVE DELTA vs 136d: fetch-bank SERVES the SME bank — topic 'Movement and position' -> 200 total=22 == DB expectation, resolvedNodes led by TOPIC 4PH1-S1-b + its AI_VALIDATED SUBTOPIC spec nodes with 4PH1-* specPointCodes attached to items; spec-axis (top-count node 4PH1-3.10, n=21) -> total==21 via question_spec_points; nodeId-axis (4PH1-1.1) -> total==0 == DB (the primary_topic/question_topics predicate semantics proven: spec-node anchoring serves through the SPEC axis, honest 0 through nodeId); cross-corpus (physics scope + chemistry topic) -> 0; unscoped (FOUR owners) -> 0; draft (GEN-INGEST) -> 0; chemistry byte-pin total=56 / resolvedNodes[0]=4CH1-S3-b UNCHANGED; /paper 4PH1 -> 404 honest (the 134e dormancy boundary — no VALIDATED physics papers, never serve the wrong corpus); tutor ask foreign-session -> 404 fast-fail pre-pipeline",
+      "learner_model": "STATE READS LIVE + HONEST-EMPTY over the fresh probe: flashcard-review-schedule {summary:{due:0,scheduled:0,nextDueAt:null}, cards:[]}; agenda/recommendations/exam-series read clean over the 4PH1 root (recommendations WITHOUT rootId -> the pinned 400 'missing required parameter: rootId'); the learner KG view + smart-lesson RESOLVE over the LIVE 4PH1 tree (node-keyed reads serve the new subject); smart-lesson cross-subject (4PH1 root, 4CH1 topic) -> hard-isolation 404",
+      "smart_mark": "DORMANCY BOUNDARY LAWFUL: unknown attempt -> deterministic 404 (no attempt/existence oracle); positive-path smart-mark requires an attempt write — out of the zero-write battery posture, the boundary is the provable law on the wire"
+    }
+  },
+  "write_ledger": {
+    "probe_learners": "2 across the band (1 per battery run, the sanctioned register-probe class per the 135c/136c/136d precedents; run-001's probe registered 201 + run-002's registered 201; disclosed)",
+    "llm_spend": 0,
+    "prod_writes": "the 134b SME-ingest resume ONLY (19 per-set atomic transactions of record, generation-1: each of the 24 sets applied exactly once live) — the battery itself: ZERO writes (no sessions, no enrolments, no flashcard ratings, no completed CLA asks, no attempt writes, no cron fires, zero Neon writes)",
+    "repo_writes": "this receipt + worklog + card status amendment (bookkeeping, receipt discipline)"
+  },
+  "evidence_files": [
+    "/home/z/my-project/tool-results/134d-precensus-run001.json (pre-resume prod state: 5/24 sets, 120 rows, no parallel lane)",
+    "/home/z/my-project/tool-results/134b-prod-resume-run003.log (the per-set apply log of record)",
+    "/home/z/my-project/tool-results/134d-battery-run-001.json (28/30, mis-shapes disclosed)",
+    "/home/z/my-project/tool-results/134d-battery-run-002.json (30/30 of record — every leg's status + full body)",
+    "scripts/r0_134d_precensus.mjs / r0_134d_reconcile.mjs / r0_134d_battery.mjs / r0_134b_prod.mjs (persisted lane scripts, NEON_KEY env-only)"
+  ],
+  "race_guard": "pre-resume census proved NO parallel 134b/134d lane (5/24 sets static, zero collisions, zero inactive rows); remote main re-fetched at bookkeeping push time (fetch-first, FF-only, no force); the order was double-dispatched by the operator (1a153eb294a96e75 + 1a155d97bdad44e1) — the first dispatch died at 5/24 sets leaving no bookkeeping, so this lane resumed its OWN interrupted work, not a sibling's",
+  "claims": {
+    "VERIFIED": [
+      "all 30 run-002 legs first-hand (wire-truth capture, full bodies)",
+      "134b completion: 24/24 sets, 583 store rows, isolation + assets + freshness all PASS (SELECT-only verify + per-set state)",
+      "carrier pin via the Vercel deployments API first-hand"
+    ],
+    "NOT_CLAIMED": [
+      "134e (physics books/papers corpus) — the separate operator gate",
+      "in-repo golden/cases filing (the boot-replay golden harness needs a DSN boot; the wire battery is the zero-LLM golden evidence of record, per the 136d disposition)"
+    ]
+  }
+}
