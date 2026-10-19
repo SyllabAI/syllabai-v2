@@ -1,0 +1,58 @@
+{
+  "receipt": "band-133j-run-000-prepush-r0",
+  "band": "T-MIG-133 band 133j — the notes↔books spec-join (both directions)",
+  "date": "2026-10-20",
+  "operatorTraces": {
+    "feasibilityConsult": "1a155f168121d2cd (verdict: possible; the seam already exists of record)",
+    "go": "1a156004911ee41d (operator: 'go mapping', after ruling 'fix boundaries first' discharged the 133i verification)"
+  },
+  "preBandCensus": {
+    "script": "scripts/t133j_join_census.py (sandbox of record)",
+    "sides": {
+      "chapters": "LIVE api registry, 29 rows, specCodes[].spineCode populated (4CH1-x.y grammar, C-suffixes verbatim)",
+      "notes": "hub committed corpus content/igcse-chemistry-19/notes.json @ origin/main, 112 notes, specPointCodes in the SAME grammar (112/112 carry codes)"
+    },
+    "numbers": {
+      "chaptersWithNotes": "28/29 (only u4:c24 Alkanes: 0)",
+      "notesMappedToExactlyOneChapter": "87/112",
+      "notesSpanningMultipleChapters": 0,
+      "orphanNotes": "25/112 (35 note codes in no chapter LO box)",
+      "uncoveredChapterCodes": "23 (LO-box completeness nuance — DISCLOSED, widening is its own validation band)"
+    },
+    "verdict": "the join is an EXACT spineCode intersection — zero normalizer needed (grammars verbatim-identical incl. C-suffix)"
+  },
+  "implementation": {
+    "branch": "t-mig-133j/r0",
+    "based": "origin/main 9b9684c (rebased cleanly over 1bc92b9 mid-band — sibling lanes T-MIG-134/134d + 137 landed)",
+    "commit": "6d410f9 (pre-rebase hash; rebased lineage is the push candidate)",
+    "files": [
+      "apps/hub/src/lib/books-notes.ts (NEW — the pure two-directional join law; ChapterLike structural minimum; C-suffix exactness pinned; deterministic orders; honest-absent)",
+      "apps/hub/src/lib/books-notes.test.ts (NEW — 9/9)",
+      "apps/hub/src/app/courses/[course]/books/[docId]/page.tsx (viewer toolbar: server-side 'Revision notes (n)' dropdown joined against hub.notes already in memory via loadHubCourse)",
+      "apps/hub/src/app/courses/[course]/revision-notes/[noteId]/note-book-link.tsx (NEW client component — live-surface join, up to 3 chapter links or NOTHING; static-prerender law preserved)",
+      "apps/hub/src/app/courses/[course]/revision-notes/[noteId]/page.tsx (mount after the build-on-this-topic card)",
+      "apps/hub/src/lib/api.ts (V2_SURFACE_PREFIXES flip row /api/v1/content/books — v2-ONLY family; server reads stay coreBaseUrl-direct per the 133c law)",
+      "apps/hub/src/lib/api.v2-surface.test.ts (exact-set pin + the 133j dual-run positive line + startsWith-safety pins)"
+    ],
+    "designLaws": [
+      "exact spineCode intersection only — never a fuzzy title match, never a nearest-guess, never a unit-level fallback",
+      "honest-absent: orphan notes (25/112), the zero-note chapter (u4:c24), fetch hiccups, and bookless courses render NO affordance",
+      "client-side join on the note page BY DESIGN (static-prerender law: a server fetch would bake stale registry rows into SSG HTML or force every note page dynamic; the /api/notes digest precedent 'joins locally by design')",
+      "chapter-level ?chapter= landing — a spec-level join makes no honest page claim inside the chapter",
+      "server-side join on the viewer BY DESIGN (hub.notes already in memory via loadHubCourse — zero extra loading)",
+      "SSR-stable deterministic orderings (path→title→noteId; unit→chapter→key)"
+    ],
+    "gates": {
+      "lint": "GREEN",
+      "tests": "128/128 (8 files; incl. the new 9 join-law tests + the extended surface pins)",
+      "build": "GREEN (next build; standalone)"
+    }
+  },
+  "pushBlocker": {
+    "finding": "NO GitHub push credentials exist in this sandbox state (remote URL token-less; no credential helper; no ~/.netrc; no gh hosts; no GH_/GITHUB env; /home/z/.secrets/ absent — the earlier sandbox wipe took the staged tokens)",
+    "state": "band COMPLETE locally, rebased onto origin/main 9b9684c, all gates green — awaiting operator-staged GitHub token (the session's staged-PAT precedent: 0600, value never printed) or an operator-side pull/merge of t-mig-133j/r0",
+    "afterPush": ["git-integration hub bake", "band-133j run-001 live battery (SSR trigger legs + flip-row live resolution + registry/manifest regression guards)", "receipt run-001"]
+  },
+  "writeLedger": "zero prod writes, zero LLM, zero deploys — a local branch only",
+  "raceGuard": "origin moved 1bc92b9 -> 9b9684c mid-band (T-MIG-134 band 134d receipts + t-mig-137/r7a branch — sibling r7a lanes); rebased cleanly; no overlap with the books surfaces this band touches"
+}
