@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { loadHubCourse } from "@/lib/courses";
+import { boardOf, loadHubCourse } from "@/lib/courses";
 import { CourseHeader } from "@/components/hub/course-header";
 import { NotesIndex, type NoteListItem } from "./notes-index";
 import type { RevisionNote } from "@/lib/contracts";
@@ -34,7 +34,7 @@ export default async function CourseRevisionNotesPage({
     <div className="px-4 py-6 sm:px-6 lg:px-8">
       <CourseHeader
         meta={meta}
-        title={`Edexcel ${meta.level} ${meta.label} Revision Notes`}
+        title={`${boardOf(meta)} ${meta.level} ${meta.label} Revision Notes`}
         crumb="Revision Notes"
         description={`Revision notes mapped to the official ${meta.code} specification — ${stats.notes} note${stats.notes === 1 ? "" : "s"} across ${Object.keys(hub.counts).filter((c) => (hub.counts[c]?.notes ?? 0) > 0).length} subtopics, with examiner tips and worked examples.`}
       />

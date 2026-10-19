@@ -3,7 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { ArrowRight, FileQuestion, Filter } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { getCourseBundle, loadHubCourse } from "@/lib/courses";
+import { boardOf, getCourseBundle, loadHubCourse } from "@/lib/courses";
 import { getDataProvider } from "@/lib/data";
 import { CourseHeader } from "@/components/hub/course-header";
 import { NumberedLabel } from "@/components/hub/chrome";
@@ -115,7 +115,7 @@ export default async function ExamQuestionsIndexPage({
     <div className="px-4 py-6 sm:px-6 lg:px-8">
       <CourseHeader
         meta={meta}
-        title={`Edexcel ${meta.level} ${meta.label} Exam Questions By Topic`}
+        title={`${boardOf(meta)} ${meta.level} ${meta.label} Exam Questions By Topic`}
         crumb="Exam Questions"
         description={`Exam-style questions organised by topic — ${stats.questions} questions across ${stats.questionSets} sets, with parts, command words, mark schemes and self-marking.`}
       />

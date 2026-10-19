@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { loadHubCourse } from "@/lib/courses";
+import { boardOf, loadHubCourse } from "@/lib/courses";
 import { CourseHeader } from "@/components/hub/course-header";
 import { StrengthsPanel, type StrengthsDatum } from "./strengths-panel";
 import { allCourseParams } from "@/lib/static-params";
@@ -37,7 +37,7 @@ export default async function StrengthsPage({
       <CourseHeader
         meta={meta}
         activeTab="strengths"
-        title={`Edexcel ${meta.level} ${meta.label} Strengths & Weaknesses`}
+        title={`${boardOf(meta)} ${meta.level} ${meta.label} Strengths & Weaknesses`}
         crumb="Strengths & Weaknesses"
         description="Per-topic analytics over your answers — the demo prototype of the production analytics layer."
       />

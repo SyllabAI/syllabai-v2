@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowRight, CircleHelp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { loadHubCourse } from "@/lib/courses";
+import { boardOf, loadHubCourse } from "@/lib/courses";
 import { CourseHeader } from "@/components/hub/course-header";
 import { NumberedLabel } from "@/components/hub/chrome";
 import { DeckDueBadge } from "./deck-due-badge";
@@ -39,7 +39,7 @@ export default async function FlashcardsIndexPage({
     <div className="px-4 py-6 sm:px-6 lg:px-8">
       <CourseHeader
         meta={meta}
-        title={`Edexcel ${meta.level} ${meta.label} Flashcards`}
+        title={`${boardOf(meta)} ${meta.level} ${meta.label} Flashcards`}
         crumb="Flashcards"
         description={`Per-subtopic recall decks — ${stats.flashcards} cards. Rating a card (Still learning / Know) feeds your subtopic rings in the local overlay; rated cards return on an expanding review schedule, and on the pilot course signed-in learners also record ratings to their account as self-report evidence (never mastery).`}
       />

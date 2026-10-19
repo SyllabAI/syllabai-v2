@@ -26,7 +26,9 @@ import indexJson from "@/data/pastpapers-index.json";
 import { parseReconstruction } from "@/lib/pastpapers-reconstruction";
 import {
   corpusRawPath,
+  CIE_PAPER_TITLES,
   ialUnitTitle,
+  parseCieDir,
   sessionRankOf,
   specTitle,
   type CorpusIndexMeta,
@@ -65,6 +67,12 @@ interface CourseSpecMap {
   units?: string[];
   /** 4MA1 tier filter: "F" (foundation) or "H" (higher). */
   tier?: "F" | "H";
+  /** CIE component filter (G1, CIE-INTEGRATION card A3): the paper number =
+   *  the tens digit of the two-digit component code. The 9709 component banks
+   *  (Pure 1 = [1], Pure 3 = [3], Mechanics = [4], PS 1 = [5], PS 2 = [6],
+   *  the D1 Pure 2 anticipation row = [2]) and the 0580 tier split (core =
+   *  [1, 2], extended = [3, 4]) share one component folder per syllabus. */
+  components?: number[];
   /** Per-science split of one corpus spec — 4SD0's three sciences share the
    *  spec folder (1B/1C/1P + R variants; the qualification has no Paper 2s),
    *  so each demo course filters to its own science's variants. Also used for
@@ -75,6 +83,7 @@ interface CourseSpecMap {
 
 const IG = "pearson-edexcel/international-gcse";
 const IA = "pearson-edexcel/international-a-level";
+const CI = "cambridge-international";
 
 const COURSE_SPECS: Record<string, CourseSpecMap> = {
   "igcse-chemistry-19": {
@@ -211,6 +220,39 @@ const COURSE_SPECS: Record<string, CourseSpecMap> = {
     specs: [`${IA}/mathematics/mathematics-2018`],
     units: ["WFM01"],
   },
+
+  // ── Cambridge International (CIE-INTEGRATION course-catalog card, A3) ────
+  // Six indexed specs (2,259 QP+MS pairs, every dir listable — census run-001
+  // + the card's re-verification); one spec folder per syllabus, so the maths
+  // component banks and the 0580 tier split filter on the component tens
+  // digit (G1's parse). Sciences map their spec unfiltered. All sessions are
+  // real (no specimen); 2026 sessions are a separate corpus-acquisition scope
+  // (card decision D3). The 9709 component-7 rows (27 legacy 2016-2019
+  // papers) belong to NO course (D2: archive-browser-only, badged
+  // "Legacy syllabus" in buildEntry).
+  // 0580 TIER LAW — COVER-VERIFIED PREMISE CORRECTION to the card's A3:
+  // the card wrote "components 1-2 (core tier) / 3-4 (extended tier)", but
+  // the QP covers print Paper 1 (Core) / Paper 3 (Core) / Paper 2 (Extended)
+  // / Paper 4 (Extended) — stable 2019→2025 — so Core = [1, 3] and Extended
+  // = [2, 4]. Totals unchanged (134 + 134); composition per the covers.
+  "cie-a-level-chemistry-25": { specs: [`${CI}/ial/chemistry/9701`] },
+  "cie-a-level-physics-25": { specs: [`${CI}/ial/physics/9702`] },
+  "cie-a-level-maths-20-pure-1": { specs: [`${CI}/ial/mathematics/9709`], components: [1] },
+  "cie-a-level-maths-20-pure-2": { specs: [`${CI}/ial/mathematics/9709`], components: [2] },
+  "cie-a-level-maths-20-pure-3": { specs: [`${CI}/ial/mathematics/9709`], components: [3] },
+  "cie-a-level-maths-20-mechanics": { specs: [`${CI}/ial/mathematics/9709`], components: [4] },
+  "cie-a-level-maths-20-probability-and-statistics-1": {
+    specs: [`${CI}/ial/mathematics/9709`],
+    components: [5],
+  },
+  "cie-a-level-maths-20-probability-and-statistics-2": {
+    specs: [`${CI}/ial/mathematics/9709`],
+    components: [6],
+  },
+  "cie-igcse-chemistry-23": { specs: [`${CI}/igcse/chemistry/0620`] },
+  "cie-igcse-physics-23": { specs: [`${CI}/igcse/physics/0625`] },
+  "cie-igcse-maths-25-core": { specs: [`${CI}/igcse/mathematics/0580`], components: [1, 3] },
+  "cie-igcse-maths-25-extended": { specs: [`${CI}/igcse/mathematics/0580`], components: [2, 4] },
 };
 
 export function corpusSpecsForCourse(slug: string): CourseSpecMap | null {
@@ -329,6 +371,45 @@ function buildEntry(
   const ref = `${unit}/${variant}`;
   const isIGCSE = spec.qual === "international-gcse";
 
+  // G1 (CIE-INTEGRATION card): CIE QP dirs ("9701-S25-QP-11") need their own
+  // parse — the generic last-dash cut yields unit "9701-S25-QP" → title falls
+  // to ialUnitTitle's "Unit P" and ref "9701-S25-QP/11". The CIE grammar gives
+  // ref "<syllabus>/<component>", title "Paper <n>" (+ the cover-verified
+  // paper name when the map holds one), and the variant digit as a chip —
+  // matching how the covers themselves name the papers.
+  const cie = parseCieDir(p.d);
+  if (cie) {
+    const tens = Number(cie.component[0]);
+    const units = Number(cie.component[1]);
+    const paperName = CIE_PAPER_TITLES[`${cie.syllabus}/${tens}`];
+    return {
+      specKey,
+      specTitle: specTitle(spec),
+      qual: spec.qual,
+      sessionId,
+      dir: p.d,
+      unit: cie.syllabus,
+      variant: cie.component,
+      ref: `${cie.syllabus}/${cie.component}`,
+      title: paperName ? `Paper ${tens} — ${paperName}` : `Paper ${tens}`,
+      // D2 (card): the 9709 component-7 rows are the legacy 2016-2019
+      // syllabus paper — no modern course claims them (archive-browser-only)
+      specBadge:
+        cie.syllabus === "9709" && tens === 7 ? "Legacy syllabus" : legacy ? "Legacy spec" : null,
+      variantChip: units !== 1 ? `Variant ${units}` : null,
+      qpBytes: p.qp,
+      msBytes: p.ms,
+      erBytes: p.er,
+      // G4 posture: no CIE durations are attested in OFFICIAL_DURATIONS —
+      // every CIE mock renders the honest editable-estimate state
+      durationMin: officialDuration(ref),
+      component: tens,
+      qpPath: p.qp != null ? corpusRawPath(specKey, sessionId, p.d, "qp.pdf") : "",
+      msPath: p.ms != null ? corpusRawPath(specKey, sessionId, p.d, "ms.pdf") : "",
+      erPath: p.er != null ? corpusRawPath(specKey, sessionId, p.d, "er.pdf") : "",
+    };
+  }
+
   let title: string;
   let variantChip: string | null = null;
   if (isIGCSE) {
@@ -361,6 +442,7 @@ function buildEntry(
     msBytes: p.ms,
     erBytes: p.er,
     durationMin: officialDuration(ref),
+    component: null,
     qpPath: p.qp != null ? corpusRawPath(specKey, sessionId, p.d, "qp.pdf") : "",
     msPath: p.ms != null ? corpusRawPath(specKey, sessionId, p.d, "ms.pdf") : "",
     erPath: p.er != null ? corpusRawPath(specKey, sessionId, p.d, "er.pdf") : "",
@@ -388,6 +470,13 @@ export function corpusPapersForCourse(slug: string): CorpusPaperEntry[] {
         if (!entry) continue;
         if (map.units && !map.units.includes(entry.unit)) continue;
         if (map.variants && !map.variants.includes(entry.variant)) continue;
+        if (map.components) {
+          // CIE component filter (card A3): CIE entries always carry their
+          // component (the tens digit); non-CIE entries are null and can
+          // never match a components-filtered course (none exists — the
+          // filter is CIE-only by construction).
+          if (entry.component == null || !map.components.includes(entry.component)) continue;
+        }
         if (map.tier) {
           // 4MA1 variants: 1F/2F (foundation), 1H/2H (higher), optional R suffix
           const isH = entry.variant.includes("H");

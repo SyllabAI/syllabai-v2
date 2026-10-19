@@ -1,7 +1,111 @@
 {
   "schema": "syllabai-demo.course-registry/1.1",
-  "note": "Operator-maintained registry mirroring the 49 Edexcel IAL/IGCSE course variants scraped in SyllabAI/syllabai-resources (authoritative source). Every course has a content bundle under content/<slug>/ imported from the corpus: 'pilot' = official-tree course with the 4CH1 concept graph and learner overlay; 'full' = complete SME-native corpus import (notes, exam questions, flashcards; official-spec mapping pending upstream for all non-4CH1 courses). Slugs, levels, subjects and exam codes come from the upstream manifests — never invented. T-SME-11 (2026-09-20) added the 10 missing-subject lanes: English Language A 4EA1 (3 paper lanes), Maths B 4MB1, Science Double Award Modular 2024 4XSD1 (6 unit lanes); 8 of them carry no SME topic questions (honest upstream census), all have revision notes and spec indexes.",
+  "note": "Operator-maintained registry mirroring the 49 Edexcel IAL/IGCSE course variants scraped in SyllabAI/syllabai-resources (authoritative source). Every course has a content bundle under content/<slug>/ imported from the corpus: 'pilot' = official-tree course with the 4CH1 concept graph and learner overlay; 'full' = complete SME-native corpus import (notes, exam questions, flashcards; official-spec mapping pending upstream for all non-4CH1 courses). Slugs, levels, subjects and exam codes come from the upstream manifests — never invented. T-SME-11 (2026-09-20) added the 10 missing-subject lanes: English Language A 4EA1 (3 paper lanes), Maths B 4MB1, Science Double Award Modular 2024 4XSD1 (6 unit lanes); 8 of them carry no SME topic questions (honest upstream census), all have revision notes and spec indexes. CIE-INTEGRATION amendment (course-catalog card A2, 2026-10-20): +12 Cambridge International rows (board field set, status full, no coreBridge/curriculumCode) — past-papers-first launches over the official QP+MS archive (2,232 pairs claimed; the 9709 Pure 2 row is the D1 roster-anticipation row, no SME bank yet); their teaching banks stay honestly empty (skeleton bundles) until the sibling resource wave lands.",
   "courses": [
+    {
+      "slug": "cie-a-level-chemistry-25",
+      "level": "A-Level",
+      "subject": "Chemistry",
+      "code": "9701",
+      "status": "full",
+      "board": "Cambridge International"
+    },
+    {
+      "slug": "cie-a-level-maths-20-mechanics",
+      "level": "A-Level",
+      "subject": "Mathematics",
+      "code": "9709",
+      "status": "full",
+      "board": "Cambridge International",
+      "label": "Maths — Mechanics"
+    },
+    {
+      "slug": "cie-a-level-maths-20-probability-and-statistics-1",
+      "level": "A-Level",
+      "subject": "Mathematics",
+      "code": "9709",
+      "status": "full",
+      "board": "Cambridge International",
+      "label": "Maths — Probability & Statistics 1"
+    },
+    {
+      "slug": "cie-a-level-maths-20-probability-and-statistics-2",
+      "level": "A-Level",
+      "subject": "Mathematics",
+      "code": "9709",
+      "status": "full",
+      "board": "Cambridge International",
+      "label": "Maths — Probability & Statistics 2"
+    },
+    {
+      "slug": "cie-a-level-maths-20-pure-1",
+      "level": "A-Level",
+      "subject": "Mathematics",
+      "code": "9709",
+      "status": "full",
+      "board": "Cambridge International",
+      "label": "Maths — Pure 1"
+    },
+    {
+      "slug": "cie-a-level-maths-20-pure-2",
+      "level": "A-Level",
+      "subject": "Mathematics",
+      "code": "9709",
+      "status": "full",
+      "board": "Cambridge International",
+      "label": "Maths — Pure 2"
+    },
+    {
+      "slug": "cie-a-level-maths-20-pure-3",
+      "level": "A-Level",
+      "subject": "Mathematics",
+      "code": "9709",
+      "status": "full",
+      "board": "Cambridge International",
+      "label": "Maths — Pure 3"
+    },
+    {
+      "slug": "cie-a-level-physics-25",
+      "level": "A-Level",
+      "subject": "Physics",
+      "code": "9702",
+      "status": "full",
+      "board": "Cambridge International"
+    },
+    {
+      "slug": "cie-igcse-chemistry-23",
+      "level": "IGCSE",
+      "subject": "Chemistry",
+      "code": "0620",
+      "status": "full",
+      "board": "Cambridge International"
+    },
+    {
+      "slug": "cie-igcse-maths-25-core",
+      "level": "IGCSE",
+      "subject": "Mathematics",
+      "code": "0580",
+      "status": "full",
+      "board": "Cambridge International",
+      "label": "Maths — Core"
+    },
+    {
+      "slug": "cie-igcse-maths-25-extended",
+      "level": "IGCSE",
+      "subject": "Mathematics",
+      "code": "0580",
+      "status": "full",
+      "board": "Cambridge International",
+      "label": "Maths — Extended"
+    },
+    {
+      "slug": "cie-igcse-physics-23",
+      "level": "IGCSE",
+      "subject": "Physics",
+      "code": "0625",
+      "status": "full",
+      "board": "Cambridge International"
+    },
     {
       "slug": "ial-biology-18",
       "level": "IAL",

@@ -61,6 +61,12 @@ const CourseRegistry = z.object({
        *  gate's operator-declared DATA form; the chemistry pilot row is
        *  eligible via status:"pilot"). Absent = read-only course. */
       coreBridge: z.boolean().optional(),
+      /** CIE-INTEGRATION course-catalog card (A2): the awarding board the
+       *  row's surfaces render ("Cambridge International" for the CIE wave).
+       *  EXPLICIT hub-maintained data, never derived — same discipline as
+       *  curriculumCode. Absent = the pre-CIE Edexcel-only registry
+       *  (boardOf() renders "Edexcel"). */
+      board: z.string().optional(),
     }),
   ),
 });
@@ -80,8 +86,21 @@ export interface CourseMeta {
    *  DATA form of the pilot gate; the chemistry pilot row is eligible via
    *  status:"pilot". Absent = read-only course. */
   coreBridge?: boolean;
+  /** CIE-INTEGRATION course-catalog card (A2): awarding board for the row's
+   *  surfaces ("Cambridge International" for the CIE wave). Absent = Edexcel. */
+  board?: string;
   /** true when a validated content bundle is committed under content/<slug>/ */
   hasBundle: boolean;
+}
+
+/**
+ * Board label for course-level copy (titles, crumbs, provenance lines).
+ * Registry-explicit when the row carries one (the CIE wave), else "Edexcel" —
+ * every pre-CIE registry row is a Pearson Edexcel lane. G3's board-aware fix:
+ * the hardcoded "Edexcel ${level} ${label}" titles were false for CIE rows.
+ */
+export function boardOf(meta: Pick<CourseMeta, "board">): string {
+  return meta.board ?? "Edexcel";
 }
 
 export interface CourseBundle {

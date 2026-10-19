@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { listCourses, loadHubCourse, pilotCourseSlug } from "@/lib/courses";
+import { boardOf, listCourses, loadHubCourse, pilotCourseSlug } from "@/lib/courses";
 import { publicConfig } from "@/lib/config";
 import { collectPastPapers } from "@/lib/past-papers";
 import { buildPracticePapers } from "@/lib/practice-papers";
@@ -63,7 +63,7 @@ export default async function CourseHubPage({
   const cfg = publicConfig();
   const { meta, stats } = hub;
   const base = `/courses/${meta.slug}`;
-  const qual = `Edexcel ${meta.level} ${meta.subject}`;
+  const qual = `${boardOf(meta)} ${meta.level} ${meta.subject}`;
   // Task 22: real past-paper archive (sourcePaper provenance) + deterministic
   // practice papers assembled from the same banks
   const pastPapers = collectPastPapers(hub.questionTopics);
@@ -99,7 +99,7 @@ export default async function CourseHubPage({
         {
           icon: ScrollText,
           title: "Past Papers",
-          desc: "The questions we hold from real Edexcel past papers, grouped by session and played back in paper order — partial reconstructions, not the full official papers.",
+          desc: "The questions we hold from real past papers, grouped by session and played back in paper order — partial reconstructions, not the full official papers.",
           tags: ["Practice", "Diagnose"],
           ready: pastPapers.length > 0,
           href: pastPapers.length > 0 ? `${base}/past-papers` : undefined,
@@ -192,7 +192,7 @@ export default async function CourseHubPage({
         {/* SME hero anatomy: "Edexcel | IGCSE | 4CH1" + course switcher */}
         <div className="flex flex-wrap items-center justify-between gap-3">
           <p className="text-sm text-muted-foreground">
-            <span className="font-medium text-foreground">Edexcel</span>
+            <span className="font-medium text-foreground">{boardOf(meta)}</span>
             <span className="mx-2 text-muted-foreground/50">|</span>
             {meta.level}
             <span className="mx-2 text-muted-foreground/50">|</span>
