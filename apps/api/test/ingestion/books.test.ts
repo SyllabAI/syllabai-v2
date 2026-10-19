@@ -266,3 +266,39 @@ describe("t-mig-133 books — buildCanonicalDocument", () => {
     }
   });
 });
+
+describe("t-mig-133 band 133f — the qualification parameter (second-subject TOC law)", () => {
+  const rows: BookChunk[] = [
+    chunk({
+      id: "r_q_1", text: "LEARNING OBJECTIVES\n\n• Understand and use integers (positive, negative and zero)",
+      content_type: "learning_objectives", unit_no: 1, unit_name: "Numbers and the number system",
+      chapter_no: 1, chapter_title: "Integers", book_pages: [2, 2], pdf_pages: [14, 14],
+    }),
+    chunk({
+      id: "r_q_2", text: "Place value decides what each digit is worth.",
+      content_type: "body", unit_no: 1, unit_name: "Numbers and the number system",
+      chapter_no: 1, chapter_title: "Integers", book_pages: [3, 3], pdf_pages: [15, 15],
+    }),
+  ];
+
+  it("DEFAULT preserves the 133b chemistry qualification byte-identically", () => {
+    const build = deriveToc(rows, {
+      bookId: derivedDocumentId("e".repeat(64), "ibm-docling", "v3"),
+      pdfSha256: "e".repeat(64),
+      pageCount: 383,
+      parseRef: "edexcel_igcse_chemistry_chunks_v3.jsonl",
+    });
+    expect(build.toc.qualification).toBe("Pearson Edexcel International GCSE (9-1) Chemistry");
+  });
+
+  it("EXPLICIT qualification rides through for a second subject (4MA1 mirror)", () => {
+    const build = deriveToc(rows, {
+      bookId: derivedDocumentId("f".repeat(64), "ibm-docling", "v3"),
+      pdfSha256: "f".repeat(64),
+      pageCount: 383,
+      parseRef: "fixture:maths-a-dry-run",
+      qualification: "Pearson Edexcel International GCSE (9-1) Mathematics A",
+    });
+    expect(build.toc.qualification).toBe("Pearson Edexcel International GCSE (9-1) Mathematics A");
+  });
+});

@@ -1,0 +1,133 @@
+{
+ "task": "T-MIG-133 band 133f (r7a) — multi-book ingestion driver (second-subject roll)",
+ "mode": "dry",
+ "driver": "apps/api/scripts/books-ingest.ts (band 133f; the 133b pilot runner stays frozen of record)",
+ "book": {
+  "documentId": "0b99e1c2-24fc-5388-a92d-eceb8a1a8e26",
+  "title": "Edexcel International GCSE (9-1) Mathematics A Student Book 2 (synthetic dry-run fixture)",
+  "author": "Synthetic fixture author (band 133f)",
+  "checksum": "c0cddba8a80a4828b088bea6988572370f771f526f70713839f33259472a0a65",
+  "pages": 456,
+  "course": "igcse-maths-a-18-higher",
+  "subjectCode": "4MA1",
+  "subjectTitle": "Mathematics A",
+  "qualification": "Pearson Edexcel International GCSE (9-1) Mathematics A",
+  "parseRef": "fixture:t-mig-133f-dry-run (synthetic; real package operator-delivered per the tmpfiles law)",
+  "engine": "ibm-docling@v3"
+ },
+ "spine": {
+  "source": "apps/hub/content/igcse-maths-a-18-higher/curriculum.json",
+  "law": "bundle-injected via bundle-spine.ts (the second-subject source of record; the 133b pinned-snapshot spine stays the chemistry pilot's)",
+  "census": {
+   "specCode": "4MA1",
+   "nodes": 234,
+   "topics": 6,
+   "subtopics": 39,
+   "specPoints": 188,
+   "byTier": {
+    "Foundation": 108,
+    "Higher": 80
+   }
+  },
+  "expected": 188
+ },
+ "parse": {
+  "rows": 10,
+  "included": 8,
+  "excluded": {
+   "byType": {
+    "front_matter": 1
+   },
+   "byGroup": {
+    "Unit 1 divider and chapter map": 1
+   }
+  }
+ },
+ "toc": {
+  "units": [
+   {
+    "index": 1,
+    "title": "Numbers and the number system",
+    "chapters": 2
+   }
+  ],
+  "chapters": [
+   {
+    "key": "u1:c1",
+    "title": "Integers and place value",
+    "pdfPages": [
+     14,
+     16
+    ],
+    "bookPages": [
+     2,
+     4
+    ],
+    "loChars": 106,
+    "refs": [
+     {
+      "spineCode": "4MA1-1.1A",
+      "officialCode": "1.1A",
+      "officialId": "4MA1-1.1A",
+      "tier": "1",
+      "score": 1,
+      "lineage": "fx_maths_0010#b1",
+      "method": "verbatim"
+     },
+     {
+      "spineCode": "4MA1-1.1B",
+      "officialCode": "1.1B",
+      "officialId": "4MA1-1.1B",
+      "tier": "1",
+      "score": 1,
+      "lineage": "fx_maths_0010#b2",
+      "method": "verbatim"
+     }
+    ],
+    "matchedBullets": 2,
+    "droppedCaptions": 0,
+    "review": []
+   },
+   {
+    "key": "u1:c2",
+    "title": "Fractions and decimals",
+    "pdfPages": [
+     30,
+     32
+    ],
+    "bookPages": [
+     18,
+     20
+    ],
+    "loChars": 64,
+    "refs": [
+     {
+      "spineCode": "4MA1-1.3A",
+      "officialCode": "1.3A",
+      "officialId": "4MA1-1.3A",
+      "tier": "1",
+      "score": 1,
+      "lineage": "fx_maths_0020#b1",
+      "method": "verbatim"
+     }
+    ],
+    "matchedBullets": 1,
+    "droppedCaptions": 0,
+    "review": []
+   }
+  ]
+ },
+ "join": {
+  "chapters": 2,
+  "refs": 3,
+  "tierCensus": {
+   "verbatim": 3
+  },
+  "reviewItems": 0
+ },
+ "chunks": {
+  "count": 4,
+  "overlaidWithCodes": 2
+ },
+ "headerSample": "Mathematics A 4MA1 | Edexcel IGCSE Student Book | Qu1:c1 | pp.14–16"
+}
