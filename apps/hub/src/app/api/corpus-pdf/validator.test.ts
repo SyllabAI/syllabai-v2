@@ -44,10 +44,23 @@ describe("validatedCorpusPath — books grammar (133c + 133e)", () => {
     ).not.toBeNull();
   });
 
+  it("accepts the 133i r2 republishes (append-only revision names)", () => {
+    expect(
+      validatedCorpusPath(s("books/pearson-edexcel/international-gcse/chemistry/4ch1/chapters/u1_c1.r2.pdf")),
+    ).not.toBeNull();
+    expect(
+      validatedCorpusPath(s("books/pearson-edexcel/international-gcse/chemistry/4ch1/units/u1_practice.r2.pdf")),
+    ).not.toBeNull();
+    expect(
+      validatedCorpusPath(s("books/pearson-edexcel/international-gcse/chemistry/4ch1/chapters/u3_c19.r2.pdf")),
+    ).not.toBeNull();
+  });
+
   it("rejects slice-shape escapes (wrong dir, wrong name, wrong depth)", () => {
     expect(validatedCorpusPath(s("books/pearson-edexcel/international-gcse/chemistry/4ch1/chapters/evil.pdf"))).toBeNull();
     expect(validatedCorpusPath(s("books/pearson-edexcel/international-gcse/chemistry/4ch1/chapters/u1_c1.txt"))).toBeNull();
     expect(validatedCorpusPath(s("books/pearson-edexcel/international-gcse/chemistry/4ch1/units/u1_extra.pdf"))).toBeNull();
+    expect(validatedCorpusPath(s("books/pearson-edexcel/international-gcse/chemistry/4ch1/units/u1_practice.r.pdf"))).toBeNull();
     expect(validatedCorpusPath(s("books/pearson-edexcel/international-gcse/chemistry/4ch1/u1_c1.pdf"))).toBeNull();
     expect(
       validatedCorpusPath(s("books/pearson-edexcel/international-gcse/chemistry/4ch1/chapters/sub/u1_c1.pdf")),

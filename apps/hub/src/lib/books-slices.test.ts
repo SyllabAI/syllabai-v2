@@ -290,3 +290,65 @@ describe("clampPage", () => {
     expect(clampPage(3, 5)).toBe(3);
   });
 });
+
+describe("the v2 manifest law (133i — the boundary-corrected geometry)", () => {
+  // the v2 of-record shape: corrected ranges, r2 republish names for the
+  // re-cut slices, `supersedes` provenance; the v1 schema still parses above.
+  const v2 = sliceManifestMirror.parse({
+    schema: "book-slices-manifest-v2",
+    book: {
+      documentId: "e6c0db50-0f84-55de-b50c-e4d49285cd6d",
+      docVersion: 1,
+      courseSlug: "igcse-chemistry-19",
+      specKey: "pearson-edexcel/international-gcse/chemistry/4ch1",
+    },
+    slices: [
+      entry({
+        file: "chapters/u2_c11.r2.pdf",
+        role: "lesson",
+        chapterKey: "u2:c11",
+        pdfRange: [131, 138],
+        questionsStartPage: 138,
+        supersedes: "chapters/u2_c11.pdf",
+      }),
+      entry({
+        file: "units/u1_practice.r2.pdf",
+        role: "unit_exam",
+        chapterKey: "u1:xexam-practice",
+        pdfRange: [123, 130],
+        supersedes: "units/u1_practice.pdf",
+      }),
+    ],
+  });
+  const v2map = bookSliceMapOf(v2);
+
+  it("parses the v2 schema literal", () => {
+    expect(v2.slices).toHaveLength(2);
+    expect(manifestMatchesBook(v2, {
+      documentId: "e6c0db50-0f84-55de-b50c-e4d49285cd6d",
+      docVersion: 1,
+      courseSlug: "igcse-chemistry-19",
+    })).toBe(true);
+  });
+
+  it("mounts the r2 republish files (manifest-driven, no hub constant)", () => {
+    expect(v2map.byChapter.get("u2:c11")?.mount.file).toBe("chapters/u2_c11.r2.pdf");
+    expect(v2map.unitExam[0]!.file).toBe("units/u1_practice.r2.pdf");
+  });
+
+  it("the boundary-corrected unit span maps citations to the true offset", () => {
+    // v1 span was [122,131] — p131 was the unit-2 opener carryover; v2 is
+    // [123,130], so a p131 citation must NOT land in the unit slice
+    const u1 = v2map.unitExam[0]!;
+    expect(resolveUnitExamMount(u1, 123).initialPage).toBe(1);
+    expect(resolveUnitExamMount(u1, 130).initialPage).toBe(u1.slicePages);
+    expect(resolveUnitExamMount(u1, 131).initialPage).toBe(1); // outside span
+    expect(resolveUnitExamMount(u1, 122).initialPage).toBe(1); // outside span
+  });
+
+  it("rejects a v3 schema (no silent forward drift)", () => {
+    expect(
+      sliceManifestMirror.safeParse({ ...v2, schema: "book-slices-manifest-v3" }).success,
+    ).toBe(false);
+  });
+});

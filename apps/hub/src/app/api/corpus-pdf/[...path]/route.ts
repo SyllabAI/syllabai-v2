@@ -26,8 +26,10 @@ import { BOOKS_REPO, PASTPAPERS_REPO } from "@/lib/pastpapers-shared";
  * `past-papers/<specKey>/(past-papers|specimen)/<dir>/(qp|ms|er).pdf` (the
  * T-MIG-128 corpus) or `books/<specKey>/student-book.pdf` plus its per-page
  * artifacts `books/<specKey>/(ocr_pages/page_NNN.txt|docling_pages/page_NNN.json)`
- * (T-MIG-133 band 133c) and the 133e page-exact slices
- * `books/<specKey>/(chapters/u<n>_c<n>[_q].pdf|units/u<n>_practice.pdf)` —
+ * (T-MIG-133 band 133c) and the page-exact slices — 133e's originals plus
+ * 133i's r2 republishes (the boundary-corrected slices; the archive is
+ * append-only, so corrected bytes ship under a NEW name, never over the old
+ * path) `books/<specKey>/(chapters/u<n>_c<n>[_q][.r<n>].pdf|units/u<n>_practice[.r<n>].pdf)` —
  * every segment is character-validated, `..` is
  * impossible, and only the two archive hosts are ever contacted (past-papers
  * → syllabai-pastpapers, books → syllabai-resources; dispatch by root
@@ -62,14 +64,16 @@ export function validatedCorpusPath(segments: readonly string[]): string | null 
     // books/<board>/<qual>/<subject>/<spec>/<file...>
     if (segments.length === 6 && segments[5] === "student-book.pdf") return path;
     // T-MIG-133 band 133e: the page-exact slices the viewer mounts instead
-    // of the ~54MB whole book — chapter lessons u<n>_c<n>.pdf, the hard-split
-    // practice-question slices u<n>_c<n>_q.pdf (the anchor jump), and the
-    // unit exam-practice slices u<n>_practice.pdf (the u<n>:xexam-practice
-    // mounts). Naming is fixed by the slice of record (book-slices-manifest-v1);
-    // the manifest drives WHICH files exist, this grammar only admits their
-    // shape — append-only, character-validated by the segment loop above.
-    if (segments.length === 7 && segments[5] === "chapters" && /^u\d+_c\d+(_q)?\.pdf$/.test(segments[6])) return path;
-    if (segments.length === 7 && segments[5] === "units" && /^u\d+_practice\.pdf$/.test(segments[6])) return path;
+    // of the ~54MB whole book — chapter lessons u<n>_c<n>.pdf, the retired
+    // hard-split practice-question slices u<n>_c<n>_q.pdf, and the unit
+    // exam-practice slices u<n>_practice.pdf. Band 133i adds the `.r<n>`
+    // revision suffix (u1_c1.r2.pdf, u1_practice.r2.pdf): the boundary-
+    // corrected republishes, fresh names because the corpus-pdf cache is
+    // immutable per path. The manifest drives WHICH files exist, this
+    // grammar only admits their shape — append-only, character-validated by
+    // the segment loop above.
+    if (segments.length === 7 && segments[5] === "chapters" && /^u\d+_c\d+(_q)?(\.r\d+)?\.pdf$/.test(segments[6])) return path;
+    if (segments.length === 7 && segments[5] === "units" && /^u\d+_practice(\.r\d+)?\.pdf$/.test(segments[6])) return path;
     if (segments.length === 7 && segments[5] === "ocr_pages" && /^page_\d{3}\.txt$/.test(segments[6])) return path;
     if (segments.length === 7 && segments[5] === "docling_pages" && /^page_\d{3}\.json$/.test(segments[6])) return path;
     return null;

@@ -13,8 +13,18 @@
  * Split out of lib/books.ts so the mount-resolution math is unit-testable
  * (books.ts carries the server-only fetch surface; this module is pure).
  * The shapes mirror the archive manifest of record
- * (books/<specKey>/manifest.json, book-slices-manifest-v1) — the mirror is
- * structural, never behavioral: any drift fails THIS parse first, loudly.
+ * (books/<specKey>/manifest.json) — the mirror is structural, never
+ * behavioral: any drift fails THIS parse first, loudly.
+ *
+ * 133i — manifest v2 (census trace 1a15534a152456f1, operator "Proceed"):
+ * the page-content census found 13 of the 33 v1 slices carrying boundary-
+ * carryover pages (next-unit opener pages inside unit-exam slices, stranded
+ * chapter-question pages). v2 carries the corrected ranges and republishes
+ * the corrected slices under r2 FILENAMES — the archive and the corpus-pdf
+ * edge cache are append-only (a path's bytes never change), so the v1 paths
+ * stay untouched. The mirror accepts BOTH schema versions (v1 keeps parsing
+ * for any book not yet re-cut); the drift guard below still binds the
+ * manifest to the live registry documentId/docVersion/courseSlug.
  *
  * DRIFT GUARDS (the registry-shift law): a manifest is only honored when it
  * names the SAME documentId AND docVersion as the live chapter registry —
@@ -47,11 +57,16 @@ export const sliceEntryMirror = z.object({
    */
   questionsStartPage: z.number().int().min(1).nullable().optional(),
   groupSlugs: z.array(z.string().min(1)).optional(),
+  /** 133i — the v1 path this r2 republish supersedes (append-only provenance). */
+  supersedes: z.string().min(1).optional(),
   note: z.string().optional(),
 });
 
 export const sliceManifestMirror = z.object({
-  schema: z.literal("book-slices-manifest-v1"),
+  schema: z.union([
+    z.literal("book-slices-manifest-v1"),
+    z.literal("book-slices-manifest-v2"),
+  ]),
   book: z.object({
     documentId: z.string().min(1),
     docVersion: z.number().int().min(1),
