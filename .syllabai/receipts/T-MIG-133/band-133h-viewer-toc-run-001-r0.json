@@ -1,0 +1,74 @@
+{
+  "schema": "t-mig-133-band-receipt-v1",
+  "band": "133h",
+  "run": "001",
+  "lane": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operatorTrace": "1a154fdfa70ec415 — 'Dont need the Practice questions or Unit exam practice buttons in the viewer. Just in the \"TOC\" page, at the last of each unit list, add the Unit exam practice pdf or something (will not have number like chapters)'",
+  "date": "2026-10-20",
+  "kind": "LIVE-ZERO-LLM-BATTERY-OF-RECORD",
+  "verdict": "PASS 24/24",
+  "headline": "the practice affordances LEFT the viewer: the 133g 'Practice questions' jump button and the 'Unit N exam' button are removed — the viewer chrome is shelf/back + title + range + prev/next arrows only; the unit exam-practice PDFs now live in the TOC (shelf) page as the UNNUMBERED last row of each unit's chapter list ('Unit N exam practice', manifest titles of record); ?part=questions deep links still resolve mid-slice (initialPage=10 for u1:c1, parse-derived) — the UI just no longer advertises them",
+  "code_of_record": {
+    "hubCommit": "155e417",
+    "hubDeployment": "dpl_98XfSSsYKsoYHEeAjTADzMFFQrGR",
+    "hubAliases": ["syllabai-hub-v2.vercel.app", "syllabai-hub-v2-syllab-ai.vercel.app", "syllabai-hub-v2-git-main-syllab-ai.vercel.app"],
+    "ci": "verify=success hub=success (2/2, first-hand via GitHub checks API)",
+    "files": [
+      "apps/hub/src/app/courses/[course]/books/[docId]/page.tsx",
+      "apps/hub/src/app/courses/[course]/books/page.tsx"
+    ],
+    "gates": "hub lint GREEN; books-slices + citation-books 35/35; hub build GREEN (prebuild verifiers green)"
+  },
+  "api_archive_contracts": "ALL UNTOUCHED: the api plane still serves 0c06bb63 (T-MIG-135 band) — no redeploy; the 33-slice archive manifest of record is byte-identical to the 133g of record (sha256 e21ba635f7c1182b…, archive 4add4968); chapter slices still carry the practice questions inline (the 133g merged geometry); mount targets ?chapter=u<n>:xexam-practice are the 133g shapes",
+  "pre_state_pins": {
+    "captured": "pre-push, live alias, this lane",
+    "viewer_chapter_u1_c1": {"Practice questions": 4, "Unit 1 exam": 2},
+    "shelf": {"bare 'Exam practice' header links": 8, "full 'Unit N exam practice' titles in list rows": 0}
+  },
+  "post_state": {
+    "viewer_chapter_u1_c1": {"Practice questions": 0, "Unit N exam": 0, "prev/next arrows": "intact", "range label": "PDF pp. 12–22 intact"},
+    "shelf": {"unit titles in list": "all 4 present", "last-row order": "verified per unit against the live chapter registry (A3)", "bare 'Exam practice'": 0},
+    "deep_link_part_questions": {"status": 200, "slice": "chapters/u1_c1.pdf", "initialPage": 10, "derived": "questionsStartPage 21 − rangeStart 12 + 1 = 10"}
+  },
+  "battery": {
+    "artifact": "band-133h-viewer-toc-battery-run-001-r0.json",
+    "legs": 24,
+    "passed": 24,
+    "leg_expectations_corrected_mid_battery": [
+      "A4: leg arithmetic subtracted the (lowercase) manifest titles from the capital-E count — the correct expectation is simply count('Exam practice')==0",
+      "B6: flight payloads embed client props inside JS strings (escaped closing quote) — regex widened to initialPage\\\\?\":\\d+",
+      "C1: React SSR interleaves <!-- --> between adjacent JSX text expressions — separators stripped before matching the composed 'PDF pp. 122–131' label",
+      "D3: RE-ADJUDICATED, see finding-1",
+      "E4: manifest source.pages is a PAGE COUNT (383), not bytes — pinned to the of-record 54,298,792B instead"
+    ],
+    "verdict_note": "all corrections are leg-side instrumentation fixes; zero product code changed mid-battery"
+  },
+  "findings": [
+    {
+      "id": "FINDING-1",
+      "severity": "ticket-candidate (pre-existing, NOT a 133h delta)",
+      "what": "the hub viewer's notFound() path (unknown/malformed docId) renders the honest 404 UI ('404 · not found' / 'This page doesn't exist', zero book-state leak) but the HTTP STATUS is 200 — the streaming response commits the status before the not-found boundary resolves",
+      "proof": "A/B byte-identical (75928B) against the PRE-133h deployment 53cc40a = dpl_2a9mi94anq5U5J3UeiXQJ1bd5xUf; the 133g battery's 'T-C20 404 law' legs pinned the API surface (404 first-hand, re-confirmed D5) — the hub surface was never status-pinned before",
+      "next": "hub band lever: make unknown-docId a true 404 (generateMetadata-time fetch, buffered rendering, or middleware classification)"
+    }
+  ],
+  "ledger": {
+    "prod_writes": "hub bake only (git push 155e417 → Vercel git integration; no manual deploy fired)",
+    "api_redeploys": 0,
+    "llm_spend": 0,
+    "neon_contact": 0,
+    "archive_writes": 0,
+    "probes": "~40 read-only HTTP GETs (public surfaces, no credentials in the battery itself)"
+  },
+  "lineage": {
+    "previous_band": "133g (hub 19caf2a, receipts dfcab04, archive 4add4968) — executed by the parallel lane of record; this lane's pre-session summary was STALE vs the of-record (see disclosures)",
+    "push_race": "first push rejected non-FF (sibling 209cba4 T-MIG-136 bookkeeping landed mid-arc); rebased 8b8c33c → 155e417 (no conflicts, zero hub overlap), pushed FF"
+  },
+  "disclosures": [
+    "SANDBOX-STATE MISMATCH: the pre-session summary described 133x-era local state (clone tip 5e47227, T-MIG-133 receipts, archive clone, raw PDF, hub_repoint_battery.py) — NONE of it existed locally: the sandbox held the T-MIG-123-era state (clone at 63fe6ef, 171 commits behind origin/main, zero 133x worklog/receipts). Re-verified everything fetch-first against origin/main + live surfaces; nothing was trusted from the summary",
+    "worklog BACKFILL: three 133x-era traces (1a1539a3e3730c15 hard-split decision — RETIRED; 1a153ce1a7bb7d69 'continue 133e battery'; 1a15458e2e5bf235 the geometry correction — executed as band 133g by the parallel lane) are backfilled below from the summary + the of-record receipts, marked as backfills",
+    "credentials: /home/z/.secrets was absent again; re-staged 0600 via restore-creds.sh from /tmp/my-project/.secrets.env (HTTP-code probes 200/200, values never printed); a secrets.env PARSING artifact (quoted values kept literal → false 401/403) was found in-lane and fixed in the lane scripts only",
+    "one no-code-delta hub auto-bake fires with this receipts/worklog push (the dfcab04 precedent)",
+    "inherited standings: PAT rotation overdue; archive ~4.79GB vs the 5GB push wall (unchanged by 133h — zero archive writes); the D3 not-found-status lever is NEW in the register"
+  ]
+}

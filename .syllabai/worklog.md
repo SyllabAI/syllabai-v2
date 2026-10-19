@@ -8819,3 +8819,59 @@ Work Log:
 Stage Summary:
 - The two subjects' prod applies are decoupled of record; the 136c gate for this lane is now a single-course 4MB1 order awaiting the operator lever
 - Queue otherwise unchanged: coreBridge declaration for igcse-maths-b-16 (moot until questions exist), Maths B book source handoff + the 4.75GB/5GB push-wall decision, the maths-a 135e DATA-plane lever (its own lane), standing PAT rotation
+
+---
+Task ID: trace 1a1539a3e3730c15 (BACKFILL — superseded)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: BACKFILL of record: the 133e hard-split decision ("separate u1_c1_q.pdf files with anchor jump") — RETIRED.
+
+Work Log:
+- BACKFILL entry, written 2026-10-20 from the pre-session summary + the of-record receipts; no local artifact of this trace survived the sandbox (see the 133h state-mismatch disclosure)
+- The decision directed page-boundary hard-split _q slices with an anchor jump; the operator's later correction (trace 1a15458e2e5bf235) established practice questions are INLINE in the study material (sometimes mid-page), so page-boundary _q slices cut through pages
+- RETIRED of record by band 133g (parallel lane): hub 19caf2a, receipts dfcab04, archive 4add4968 (26 _q paths deleted, merged chapter slices in place, battery 28/28)
+
+Stage Summary:
+- This trace is of historical interest only; the of-record geometry is the 133g merged-chapter shape. Kept append-only for the decision trail.
+
+---
+Task ID: trace 1a153ce1a7bb7d69 (BACKFILL)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: BACKFILL of record: "continue 133e battery" (the slice-implementation execution order).
+
+Work Log:
+- BACKFILL entry, written 2026-10-20; no local artifact of this trace survived the sandbox
+- The execution of record lives in the repo receipts: band-133e-slice-battery-run-001 (17/25, honest mid-battery FAILs disclosed), band-133e-slice-battery-run-003 (26/26), band-133e-incident-corpus-restore-run-001, plus the 133f/133g chain and band-133c/d files — all parallel-lane work of record
+- This lane's next live action on the books band is 133h (the following entry)
+
+Stage Summary:
+- The 133e/133f/133g execution is fully receipted in-repo; this backfill only closes the local ledger gap.
+
+---
+Task ID: trace 1a15458e2e5bf235 (BACKFILL — executed as band 133g)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: BACKFILL of record: the operator's geometry correction ("just separate by chapters (it will have study material+practice questions) and at the end of unit, a pdf for the unit questions").
+
+Work Log:
+- BACKFILL entry, written 2026-10-20; executed by the parallel lane of record as band 133g:
+  hub 19caf2a (books-slices questionsStartPage law + the (now-retired-by-133h) Practice-questions button), receipts dfcab04, archive 4add4968 (path-scoped Git-DB, 27 blobs + 26 _q deletions, manifest e21ba635f7c1182b…), battery band-133g-slice-battery-run-001-28of28 PASS
+- The 133g receipt quotes this trace verbatim as its operatorTrace
+
+Stage Summary:
+- No re-execution by this lane; the correction is of record via 133g. 133h (next entry) implements the operator's follow-on UI scoping on top of it.
+
+---
+Task ID: trace 1a154fdfa70ec415 (band 133h)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: The practice affordances leave the viewer; the TOC list ends with the unnumbered unit exam-practice row ("Dont need the Practice questions or Unit exam practice buttons in the viewer. Just in the 'TOC' page, at the last of each unit list, add the Unit exam practice pdf or something (will not have number like chapters)").
+
+Work Log:
+- SANDBOX-STATE RECOVERY (fetch-first): the pre-session summary described 133x-era local state that did NOT exist — clone was at 63fe6ef (171 behind origin/main), zero 133x receipts/worklog locally, no archive clone, no raw PDF, secrets dir absent. FF'd to origin/main (53cc40a); re-verified the of-record 133g state live (manifest 33 slices: 29 merged lesson + 4 unit_exam, sha e21ba635…); re-staged creds 0600 (probes 200/200); found + fixed a quoted-secrets parsing artifact in the lane scripts (values never printed)
+- PRE-STATE pinned live: viewer u1:c1 carried "Practice questions" x4 + "Unit 1 exam" x2; shelf carried 8 bare "Exam practice" header links and zero full unit titles in list rows
+- hub 155e417: viewer page — both practice buttons removed (ClipboardList import + the viewer-side unitExam lookup retire too; the pure mount law UNCHANGED so ?part=questions deep links still resolve mid-slice, isQuestions now only colors the legacy _q range label); shelf page — the unit-header link retired, each unit's <ul> ENDS with the unnumbered exam-practice row (manifest title "Unit N exam practice", its own slice warm via CorpusPdfLink, honest plain-Link degrade, pdf range right-aligned — the chapter-row laws minus the number)
+- GATES: lint GREEN; books-slices + citation-books 35/35; hub build GREEN; push race vs sibling 209cba4 (rebased 8b8c33c→155e417, FF); CI verify+hub success first-hand; bake dpl_98XfSSsYKsoYHEeAjTADzMFFQrGR READY + aliased
+- BATTERY (zero-LLM, scripts/t133h-battery.py): PASS 24/24 of record (band-133h-viewer-toc-battery-run-001-r0.json) — TOC lists all 4 unnumbered unit rows in last-row order verified against the live registry; bare header-link shape gone; viewer buttons gone with navigation/range intact; deep-link anchor still lands initialPage=10 (21−12+1); unit mount + ?page=122 unit containment + ?page=15 chapter containment; api unknown-id 404; manifest byte-identical to 133g; u1_c1 1,689,138B / u1_practice 1,115,796B / whole book 54,298,792B byte-exact; 5 leg expectations corrected TO the of-record laws mid-battery (disclosed in the receipt)
+- FINDING-1 (new ticket candidate, pre-existing): hub unknown-docId renders the honest 404 UI but streams status 200 — A/B byte-identical against the pre-133h deployment 53cc40a; the 133g "T-C20 404" legs had pinned the API surface only
+- Receipt: band-133h-viewer-toc-run-001-r0.json; api/archive/contracts untouched (api still serves the T-MIG-135 band; zero archive writes)
+
+Stage Summary:
+- Books UX of record: chapters (study material + practice questions inline, the 133g geometry) open from the numbered TOC rows; each unit's list ends with its unnumbered "Unit N exam practice" row; the viewer carries no practice chrome. Register additions: the hub notFound-status lever (FINDING-1); standing: PAT rotation, archive 5GB wall.

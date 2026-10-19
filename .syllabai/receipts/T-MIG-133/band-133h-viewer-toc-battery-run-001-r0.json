@@ -1,0 +1,139 @@
+{
+  "band": "133h",
+  "verdict": "PASS 24/24",
+  "hubCommit": "155e417",
+  "hubDeployment": "dpl_98XfSSsYKsoYHEeAjTADzMFFQrGR",
+  "archiveManifestSha256": "e21ba635f7c1182bf983145260d40019486e762cb4f9f4c80b6d21d1b8b8c7cb",
+  "preStatePins": {
+    "viewer_chapter": {
+      "Practice questions": 4,
+      "Unit 1 exam": 2
+    },
+    "shelf": {
+      "bare 'Exam practice' header links": 8,
+      "full unit titles in list": 0
+    }
+  },
+  "legs": [
+    {
+      "name": "A1 shelf 200",
+      "ok": true,
+      "detail": "200 357583B"
+    },
+    {
+      "name": "A2.u1 TOC lists 'Unit 1 exam practice'",
+      "ok": true,
+      "detail": "x2"
+    },
+    {
+      "name": "A2.u2 TOC lists 'Unit 2 exam practice'",
+      "ok": true,
+      "detail": "x2"
+    },
+    {
+      "name": "A2.u3 TOC lists 'Unit 3 exam practice'",
+      "ok": true,
+      "detail": "x2"
+    },
+    {
+      "name": "A2.u4 TOC lists 'Unit 4 exam practice'",
+      "ok": true,
+      "detail": "x2"
+    },
+    {
+      "name": "A3 exam row is the LAST row of each unit list",
+      "ok": true,
+      "detail": "u1: ch@114671 < exam@117901 True; u2: ch@41953 < exam@220794 True; u3: ch@42727 < exam@242857 True; u4: ch@44453 < exam@271182 True"
+    },
+    {
+      "name": "A4 retired header-link shape gone (bare 'Exam practice' = 0)",
+      "ok": true,
+      "detail": "bare=0"
+    },
+    {
+      "name": "A5 all 4 unit mounts linked from the TOC",
+      "ok": true,
+      "detail": "4/4"
+    },
+    {
+      "name": "B1 viewer chapter 200",
+      "ok": true,
+      "detail": "200 85764B"
+    },
+    {
+      "name": "B2 'Practice questions' button REMOVED",
+      "ok": true,
+      "detail": "x0 (pre-state: 4)"
+    },
+    {
+      "name": "B3 'Unit N exam' button REMOVED",
+      "ok": true,
+      "detail": "unit1exam x0 (pre-state: 2)"
+    },
+    {
+      "name": "B4 prev/next chapter arrows intact",
+      "ok": true,
+      "detail": "aria-label present"
+    },
+    {
+      "name": "B5 merged-slice range label intact",
+      "ok": true,
+      "detail": "pp 12\u201322"
+    },
+    {
+      "name": "B6 ?part=questions deep link still resolves mid-slice (law unchanged, UI gone)",
+      "ok": true,
+      "detail": "200=True slice=True initialPage=10 expected=10"
+    },
+    {
+      "name": "C1 unit exam mount 200 + honest label",
+      "ok": true,
+      "detail": "200 label=True"
+    },
+    {
+      "name": "D1 ?page=122 (u1 gap) mounts the unit slice",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "D2 ?page=15 mounts the chapter slice",
+      "ok": true,
+      "detail": "200"
+    },
+    {
+      "name": "D3 unknown book renders the not-found UI, zero book-state leak (status 200 = pre-existing streaming artifact, disclosed)",
+      "ok": true,
+      "detail": "200 notFoundUI=True leakFree=True"
+    },
+    {
+      "name": "D4 chapters api of record 200 x29 rows, docVersion 1",
+      "ok": true,
+      "detail": "200 rows=29"
+    },
+    {
+      "name": "D5 unknown book chapters 404 (ticket closed re-pin)",
+      "ok": true,
+      "detail": "404"
+    },
+    {
+      "name": "E1 manifest byte-identical to the 133g of record",
+      "ok": true,
+      "detail": "sha=e21ba635f7c1182b\u2026 vs 133g=e21ba635f7c1182b\u2026"
+    },
+    {
+      "name": "E2 merged slice u1_c1 byte-exact vs manifest",
+      "ok": true,
+      "detail": "1689138 vs 1689138"
+    },
+    {
+      "name": "E3 unit slice u1_practice byte-exact vs manifest",
+      "ok": true,
+      "detail": "1115796 vs 1115796"
+    },
+    {
+      "name": "E4 whole-book raw still serves (fallback/download intact)",
+      "ok": true,
+      "detail": "54298792B (of-record 54,298,792B) pages=383"
+    }
+  ]
+}
