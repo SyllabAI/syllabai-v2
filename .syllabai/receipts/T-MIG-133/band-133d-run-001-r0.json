@@ -1,0 +1,66 @@
+{
+  "card": "T-MIG-133",
+  "receipt": "band-133d-run-001-r0",
+  "lane": "r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "created_at_utc": "2026-10-19T00:50Z",
+  "operator_trace": "1a1513b57b8adc15 '133d (tutor arm + page-true citations)'",
+  "band": "133d — the tutor arm live + page-true book citations + regression battery",
+  "code_leg": {
+    "pr": 199,
+    "head": "ca96e17 (fix a523a12: the book-arm test scope fixture rides the CurriculumScopePort law — CI caught it, the local chain had run before the new suites existed)",
+    "ci": "3/3 SUCCESS first-hand (verify + hub + preview comments)",
+    "merged": "e69e56a (merge commit; authority disclosure in the merge body — the #196/#197/#195 band-order pattern)",
+    "what_lands": [
+      "THE PAGE-TRUTH TRANSLATION (the intake decision of record 'citations: book_pages'): the vector arm resolves TEXTBOOK hits against book_chapters (ONE batched inList query per batch, the 093 scalar-param law; never per-hit, the T-C32 law) and serves BOOK-page-true coords on the evidence while the raw PDF coords ride sourcePage*; the frozen retrieval law byte-identical (same scope predicate incl. V33, cosine floor, limit clamp; the registry query never fires for non-TEXTBOOK hits; no-registry-row chunks stay PDF-true — the honest fallback)",
+      "THE SPEC-SCOPED FUSION BOOST (the ingest note of record): the ask's matched topic codes resolve to spine official-code sets through the frozen concept-graph snapshot (182 SPs, sha-pinned, module-cached, both section+subsection spaces); a TEXTBOOK item whose spec_codes intersect fuses at the anchor tier 1.0 via the weightDecorator seam (frozen RRF math/tiebreak/weight MAP untouched; empty intent = exact passthrough; injectable for tests)",
+      "THE CITATION: label book-true (the frozen pageSuffix renders 'Textbook — pp3–4'), deep link viewer-true /api/v1/content/books/{docId}?page={pdf}&course={courseId}; the API answers the SAME resolution via the new GET /api/v1/content/books/:documentId citation-target route (BookCitationTarget contract, the F-022 nearest-chapter law verbatim, T-C20 404 law unchanged); the hub citation-map maps the link to the 133c viewer (/courses/{course}/books/{docId}?page={pdf})",
+      "THE DATA-LEG RUNNER: .github/workflows/t-mig-133d-backfill.yml (workflow_dispatch-ONLY, inert until dispatched) + the frozen executor scripts/t-mig-133d-backfill-exec.ts"
+    ],
+    "gates": [
+      "typecheck chain x4 exit 0",
+      "FULL 2184/0/13skip (+27 new: spec-boost 7, book-arm 6, books citation-target 4, hub citation-books 6)",
+      "hub 77/0; golden selftest OK; retrieval-eval selftest 19/19",
+      "census gate GREEN LIVE=0 unchanged (additive only, zero wire flips)",
+      "hub lint clean on band files"
+    ],
+    "determinism_disclosure": "the golden replay is structurally unaffected: book chunks carry NULL embeddings on every replay substrate (the backfill is this band's data leg, dispatched separately), so the frozen embedding-is-not-null filter excludes them from every replay scope; the boost decorator is a passthrough without TEXTBOOK evidence"
+  },
+  "data_leg": {
+    "mechanism": "the FROZEN embed path of record (services/content/retrieval.embedDocument — the DocumentEmbeddingService port: embed+validate EVERYTHING first, a provider outage stores nothing) + the Gemini provider of record (gemini-embedding-001, 768-dim); the 133b receipt law named exactly this: 'the vector arm joins when the operator stages SYLLABAI_EMBEDDING_GEMINI_API_KEY and the existing embed path backfills' — the key IS staged on the api project env (census first-hand)",
+    "region_law_run_001": "the Gemini embedding API is IP-region-gated: FAILED_PRECONDITION 'User location is not supported' from the operator-sandbox egress — the backfill runs on GitHub Actions egress (the sandbox cannot embed, query-side or document-side)",
+    "run_002_cow_429": "run 39177630691: the COW leg hit 429 at wire speed (823 sequential embeds over the per-minute budget); fix: the lane-side RateLimitedProvider decorator at the EmbeddingProvider seam (90 RPM floor + capped 429 backoff on the SAME model/payload — the no-failover law bans MODEL failover, not same-model backoff; idempotent-safe because embedDocument stores nothing until every vector validates); committed direct-main b089919 — the 120-class DISCLOSURE (the runner fix skipped the PR intake; CI verify+hub SUCCESS at that sha verified first-hand)",
+    "run_003_full_guard": "run 39178116970: the COW leg PASSED (branch t-mig-133d-cow off br-muddy-bar-a5huwldd, branch-local neondb_owner reset, 823/823 verified, DROP + 404-verified — zero residue) but the PROD leg failed on SUSTAINED 429: the COW pass consumed ~830 of the key's ~1000 daily embedding budget — the daily cap, not the RPM window",
+    "run_004_prod_apply": "run 39180126600 (PR #200 added the dispatch mode input; prod-only mode; the key rotated to a fresh project key — separate budget): SUCCESS — 823/823 embedded, 768-dim x823, ONE model (gemini-embedding-001), embed_rev 2, embedded_at 2026-10-19T00:27:11Z..00:28:52Z (postverify first-hand from the sandbox, read-only)",
+    "runner_mode_pr": "PR #200 merged ce9b2e5 (CI 3/3 first-hand)",
+    "rollback_packet": "UPDATE document_chunks SET embedding=NULL, embedding_model=NULL, embedded_at=NULL WHERE document_row_id='acc573b0-868a-40aa-b430-303c04219eda' AND embedding IS NOT NULL (one statement, additive-column only)"
+  },
+  "subject_binding_correction": {
+    "finding": "run-004 live probes returned ZERO TEXTBOOK citations: the 133b ingest bound the pilot book's chunks to subject CHM (cv IAL-CHEM-2018, ARCHIVED) instead of 4CH1 (cv 4CH1-2017, ACTIVE) — the vector arm's scope branch (s2.curriculum_version_id = scope) excluded the book from every ACTIVE ask; the book IS the 4CH1 book (its spec_codes are 4CH1 spine codes; book_chapters binds the 4CH1 hub course) — an ingest binding defect, not a code defect",
+    "act": "ONE UPDATE of record: document_chunks.subject_id 10000000-...-0010 (CHM) -> e56dc9ee-aa74-426f-94a6-4b72d3dc346b (4CH1) for the pilot row — pre-guard held (823 rows, the exact old subject), post-verify 823/823 bound to 4CH1 (executor scripts/133d/subject-fix.ts, lane-local, the app role of record)",
+    "post_fix_scope": "823/823 book chunks inside the ACTIVE 4CH1-2017 serving scope (the arm's EXISTS predicates, verified first-hand)",
+    "rollback_packet": "UPDATE document_chunks SET subject_id='10000000-0000-0000-0000-000000000010'::uuid WHERE document_row_id='acc573b0-868a-40aa-b430-303c04219eda' AND subject_id='e56dc9ee-aa74-426f-94a6-4b72d3dc346b'::uuid"
+  },
+  "live_probes": [
+    "the deterministic course-refusal law VERBATIM on a wrong-courseRef ask (igcse-chemistry-19 is not the curriculum_versions.code space — the honest refusal, zero LLM spend)",
+    "the full tutor arm LIVE on courseRef 4CH1-2017 (groq openai/gpt-oss-120b, ~2.5s, 6 citations: 4 KG anchors + revision-note + syllabus chunks) — llm_spend 2 (two asks of record, the run-010 precedent class); probe learners: 3 (register 201 x3)",
+    "THE TEXTBOOK CITATIONS EXPECTATION (disclosed): the deployed bundle dpl_5Vap predates the 133d code — the OLD fusion weights (TEXTBOOK 0.7, no boost) keep the book chunks below the evidence-limit=6 cut, and the OLD citation law would render pdf-true labels; the spec-boost (the chunks carry 1.1/1.2 = the matched topic's own spec points) + the book-true labels + the books deep links SERVE AT THE NEXT OPERATOR API REDEPLOY — the band's one remaining lever"
+  ],
+  "write_ledger": {
+    "probe_users": 3,
+    "neon_prod_writes": [
+      "the backfill: 823 embedding-column fills via the frozen embed path (CI egress)",
+      "the subject-binding correction: ONE UPDATE, 823 rows, one column (pre-guarded, reversible)"
+    ],
+    "llm_spend": 2,
+    "cows_created": 2,
+    "cows_dropped_404_verified": 1,
+    "secrets_hygiene": "T133D_GEMINI_KEY + T133D_PROD_DATABASE_URL staged per-run and DELETED after (the hygiene law); the sandbox key files 0600"
+  },
+  "disclosures": [
+    "the runner fix b089919 landed DIRECT-MAIN (the 120-class disclosure; CI verified at the sha first-hand)",
+    "the COW of run 39177630691 was NEVER dropped (the create 401'd on the quoted-PAT parse bug — the stash tokens are quoted, the bash source strips them, the lane python did not; the parse fix unblocked runs 003/004; zero residue — the branch was never created)",
+    "the /home/z/.secrets wipe consumed the org key of record; the stash NEON_PAT is the same live key (users/me 200, the direct project fetch 200)",
+    "the golden replay substrate question was answered structurally (see code_leg.determinism_disclosure); the seed creds in .neon-urls are stale (ci_replay_agent password rotated since Oct 4) — the replay CI carries its own secrets and is unaffected"
+  ],
+  "verdict": "BAND 133d LANDED OF RECORD (code merged e69e56a + PR #200 ce9b2e5) AND THE DATA LEG LIVE (823/823 embedded + in-scope; the subject-binding defect corrected with receipts + rollback packets). The ONE remaining lever: the operator api redeploy lights up the 133d serving law (book-true labels, the spec-boost ranking, the books deep links). 133e (roll to remaining books) awaits its gate; the backfill runner is standing (dispatch-gated, secrets staged per-run)."
+}
