@@ -1,0 +1,42 @@
+{
+  "card": "T-MIG-133",
+  "receipt": "band-133d-hub-core-repoint-run-001-r0",
+  "lane": "r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "created_at_utc": "2026-10-19T08:48Z",
+  "operator_trace": "1a153541a16d5931 'repoint'",
+  "order": {
+    "words": "repoint",
+    "discharge": "the one-lever fix offered with the books-viewer census (trace 1a15349879180139): hub-v2 prod still pointed its core envs at the DEAD legacy host syllabai-core.onrender.com, so the deployed-and-current books UI rendered its honest fallback ('temporarily unavailable' shelf / streamed not-found viewer) while the api plane of record serves the full chapter registry"
+  },
+  "census_at_fetch_first": {
+    "main_tip": "0f68f75 (bookkeeping-only second-lane verify by the sibling lane, trace 1a1534d8a52dc0b5, CI 2/2; ff-synced, worktree clean)",
+    "api_carrier": "dpl_Daps9E6ntWKt1xWaEpXWRReZkQgu @ 6c84af6 (band 133d LIVE, sibling run-003 re-confirmed)",
+    "hub_carrier": "auto-bake at 0f68f75 READY 2026-10-19T08:39:47Z aliasAssigned — code current, config stale",
+    "dead_pointer_proof": "syllabai-core.onrender.com 503 on ALL probed paths first-hand (actuator/health, books shelf, root); same books path on syllabai-v2.vercel.app 200",
+    "why_invisible_until_books": "the hub's demo content rides the static bundle/corpus index (HUB_DATA_MODE=core-api forced, provider null-tolerant per-slice); books are the first LIVE family through coreBaseUrl() at request time"
+  },
+  "code_census": {
+    "SYLLABAI_CORE_BASE_URL": "consumed by lib/core-proxy.ts (coreBaseUrl: books lib + /api/ai proxies) and lib/data/{index,core-api}.ts (read-only provider, null on any failure) — LIVE breakage",
+    "NEXT_PUBLIC_API_BASE_URL": "single consumer lib/api.ts:929 as the FALLBACK after v2SurfaceBase — dormant but the same dead host (landmine)",
+    "NEXT_PUBLIC_API_V2_BASE_URL": "already https://syllabai-v2.vercel.app — the ai/decay/topics seams never moved (disclosure: the census reply's 'AI proxy side effect' caveat was moot)",
+    "blast_radius": "every affected fetch is null-tolerant or already v2-bound; flip moves slices from 'always 503-null' to '200-or-honest-null' only"
+  },
+  "env_change_of_record": {
+    "method": "Vercel env API PATCH /v9/projects/syllabai-hub-v2/env/{id} (team_ULL54qkhzKBmnKrpO6BD4mYX), minimal body {value,target} — the API revision REJECTS gitBranchEnabled as an additional property (schema quirk disclosed)",
+    "records": [
+      {"key": "SYLLABAI_CORE_BASE_URL", "id": "QfyADwyfzZoFkQAl", "targets": ["production", "preview"]},
+      {"key": "NEXT_PUBLIC_API_BASE_URL", "id": "8z3Sns9Id2MjrxSW", "targets": ["production", "preview"]}
+    ],
+    "new_value": "https://syllabai-v2.vercel.app (books lib strips a trailing /api/v1; none present)",
+    "pre_state_hosts": "both -> syllabai-core.onrender.com (values-discipline honored: host-level fingerprints only, no credential-class values touched)",
+    "post_state_hosts": "both -> syllabai-v2.vercel.app, re-fetched from the env detail API after PATCH",
+    "values_discipline": "env names + host-level fingerprints only; no DATABASE_URL-class value read or printed"
+  },
+  "trigger": {
+    "method": "this bookkeeping push (no-code-delta) fires the hub GitHub auto-bake, which bakes the new env values (NEXT_PUBLIC_* inlined at build; SYLLABAI_CORE_BASE_URL read at runtime)",
+    "race_guard": "hub incumbent (0f68f75 bake, READY 08:39:47Z) >= 10 min old at push; sibling lane closed (0f68f75 is a verify receipt, CI 2/2, no in-flight band)",
+    "battery": "live zero-LLM battery against the baked hub follows as run-002 (chicken-and-egg: the battery needs the bake, the bake needs this push)"
+  },
+  "write_ledger": {"llm_spend": 0, "neon_direct_writes": 0, "probe_learners": 0, "env_value_prints": 0},
+  "verdict": "ENV REPOINT APPLIED AND VERIFIED AT THE API OF RECORD — serving proof pending the auto-bake (run-002 battery)"
+}

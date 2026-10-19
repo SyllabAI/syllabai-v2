@@ -8596,3 +8596,19 @@ Work Log:
 
 Stage Summary:
 - Zombie decommission verified SAFE + fully staged; awaiting ONE artifact from the operator: a Vercel token from the account that owns syllabai.vercel.app (inline handoff, the #147/run-006 pattern) — on handoff the lane executes DELETE /v9/projects/{id}, verifies DEPLOYMENT_NOT_FOUND, files the closure receipt. Console path equally valid (runbook in the dossier). LANE R0: IDLE.
+
+---
+Task ID: trace 1a153541a16d5931 (T-MIG-133 band 133d hub core repoint run-001 — the env lever)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Operator order "repoint" — discharge the one-lever fix from the books-viewer census: hub-v2 core envs off the dead legacy Render host onto the api of record.
+
+Work Log:
+- Fetch-first: sandbox intact; ff-synced to 0f68f75 (sibling bookkeeping-only second-lane verify, CI 2/2); api carrier dpl_Daps9… @ 6c84af6 re-confirmed of record; hub incumbent auto-bake 08:39:47Z (race guard honored at push).
+- Push-collision disclosure: sibling 48e2a32 (RESIDUALS prj_D7vf dossier, trace 1a15354b26717251) landed mid-flight; first push rejected non-FF; receipt re-stacked on the new tip with zero content change (union preserved, both lanes' entries intact).
+- Code census: SYLLABAI_CORE_BASE_URL = live breakage (books lib + core proxy); NEXT_PUBLIC_API_BASE_URL = dormant fallback (lib/api.ts:929) same dead host; NEXT_PUBLIC_API_V2_BASE_URL ALREADY syllabai-v2.vercel.app (ai/decay seams never moved — census reply caveat moot); data provider null-tolerant per-slice ⇒ flip moves fetches from always-503-null to 200-or-honest-null only.
+- ENV CHANGE: PATCH both records (QfyADwyfzZoFkQAl, 8z3Sns9Id2MjrxSW, prod+preview) -> https://syllabai-v2.vercel.app; API-revision quirk disclosed (gitBranchEnabled rejected as additional property; minimal body {value,target} accepted); post-write re-fetch verified both hosts.
+- Values discipline: host-level fingerprints only; no credential-class env value read or printed.
+- Trigger: this bookkeeping push (no-code-delta) fires the hub auto-bake with the new env values; live battery follows as run-002 (battery needs the bake; the bake needs this push).
+
+Stage Summary:
+- Both dead-Render pointers repointed and verified at the env-of-record; serving proof pending the bake. llm_spend 0, Neon direct writes 0, probe learners 0.
