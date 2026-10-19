@@ -1,0 +1,40 @@
+{
+ "schema": "syllabai-demo.content-bundle/2.0",
+ "generatedUtc": "2026-10-20T00:00:00Z",
+ "importSource": {
+  "repo": "SyllabAI/syllabai-resources",
+  "ref": "main@0fe5f77210f74aaeb3f6c491dfe0263d12db738c",
+  "upstreamSchemas": [
+   "syllabai.sme-revision-note/1.0",
+   "syllabai.sme-revision-notes-course/1.0",
+   "syllabai.sme-exam-questions/1.1",
+   "syllabai.sme-spec-point-index/1.0",
+   "syllabai.sme-flashcard-deck/1.0"
+  ]
+ },
+ "curriculum": {
+  "board": "Cambridge International",
+  "level": "IGCSE",
+  "subject": "Geography",
+  "code": "0460",
+  "syllabusVersion": "2025-2026"
+ },
+ "license": "Operator-authorized SME corpus — see LICENSE-DATA.md in syllabai-resources (Amendment 2026-09-17). Demo re-use only.",
+ "counts": {
+  "sections": 3,
+  "topics": 19,
+  "specPoints": 113,
+  "notes": 69,
+  "questionSets": 21,
+  "questions": 483,
+  "parts": 734,
+  "marks": 3440,
+  "flashcards": 676
+ },
+ "treeKind": "official-spine",
+ "officialSpine": {
+  "spine": "spines/cie-igcse-geography-20.json",
+  "resourcesSha": "0fe5f77210f74aaeb3f6c491dfe0263d12db738c",
+  "attachmentMap": "content-maps/cie-igcse-geography-20.json"
+ }
+}
