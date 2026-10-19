@@ -47,6 +47,7 @@ import {
   systemPrompt,
   userPrompt,
 } from "./prompt";
+import { promptVariantFor } from "./subject-profile";
 import { evidenceFromNode, withRerankScore, type EvidenceItem } from "./evidence";
 import { kgRetrieve } from "./kg-retriever";
 import {
@@ -244,6 +245,10 @@ interface PreparedAsk {
   identityParsed: boolean;
   courseRef: string | null;
   unresolvedCourseRef: boolean;
+  /** T-MIG-135c: the RESOLVED scope's curriculum code ("4CH1-2017" /
+   *  "4MA1-2016"; null = unscoped) — rides the context so the generator
+   *  serves the per-subject notation law. */
+  scopeCode: string | null;
   /** run-013: the resolved session paper pin's label (null = unpinned or
    *  unresolvable) — rendered as the ACTIVE PAPER CONTEXT prompt line */
   activePaperLabel: string | null;
@@ -491,6 +496,7 @@ export async function prepare(
     identityParsed: resolution.identityParsed,
     courseRef: ref,
     unresolvedCourseRef,
+    scopeCode: scope?.code ?? null,
     activePaperLabel,
     quizScaffold,
   };
@@ -591,6 +597,7 @@ async function assembleContext(
     activeInferences: inferences,
     activePaperLabel: prep.activePaperLabel,
     quizScaffold: prep.quizScaffold,
+    courseCode: prep.scopeCode,
     now: deps.clock.now(),
   });
 }
@@ -885,7 +892,7 @@ export function buildGroundedTutorGenerator(
       try {
         const nonceValue = nonce(opts.nonceRandom ?? Math.random);
         const response = await chain.generate({
-          system: systemPrompt(),
+          system: systemPrompt(promptVariantFor(context.courseCode)),
           user: userPrompt(query, history, context, nonceValue),
           temperature,
           maxTokens,
@@ -922,7 +929,7 @@ export function buildGroundedTutorGenerator(
         fenceClose(nonceValue),
       );
       const request = {
-        system: systemPrompt(),
+        system: systemPrompt(promptVariantFor(context.courseCode)),
         user: userPrompt(query, history, context, nonceValue),
         temperature,
         maxTokens,

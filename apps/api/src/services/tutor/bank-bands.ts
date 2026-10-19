@@ -40,7 +40,7 @@
 import type { SqlFn } from "./sql";
 import { parseFetchQuery, parsedIsEmpty } from "./fetch-parser";
 import { buildTutorFetchBank } from "./fetch-bank";
-import { unitCandidates, unitFromPaperCode } from "./paper-question";
+import { subjectCode, unitCandidates, unitFromPaperCode } from "./paper-question";
 import { hygienicStem } from "./stem-hygiene";
 import { figuresByQuestionNumber, questionNumberOf } from "./paper-figures";
 import type {
@@ -449,11 +449,12 @@ export function buildBankBands(sql: SqlFn) {
     if (candidates.length === 0) {
       return { status: "NOT_FOUND", label };
     }
-    // First-unit-match binding (unitCandidates order — "paper 1" → 1C
-    // outranks 1CR; explicit code binds exactly; no hint → home units
-    // first). Deterministic, disclosed: the unbound candidates ride the
-    // view as siblings.
-    const units = unitCandidates(fetch.parsed, query);
+    // First-unit-match binding (unitCandidates order — "paper 1" → the
+    // home unit first, regional/tier variant after; explicit code binds
+    // exactly; no hint → home units first). Per-subject vocabulary (the
+    // scope's own code), deterministic, disclosed: the unbound candidates
+    // ride the view as siblings.
+    const units = unitCandidates(fetch.parsed, query, subjectCode({ code: scope.code }));
     let bound = candidates[0]!;
     for (const unit of units) {
       const hit = candidates.find(

@@ -82,7 +82,15 @@ import {
   Target,
 } from "lucide-react";
 
-const STARTERS: { icon: typeof BookOpen; label: string; prompt: string }[] = [
+/**
+ * The starter prompts, per course (T-MIG-135d): the chemistry default (and
+ * the legacy no-course entry, which resolves to the chemistry pilot) keeps
+ * the of-record texts byte-identical; every other course gets subject-neutral
+ * starters that cannot cite a spec code the course may not carry.
+ */
+function startersFor(courseRef: string | null): { icon: typeof BookOpen; label: string; prompt: string }[] {
+  const chemistry = courseRef == null || courseRef.trim() === "" || /^4CH/.test(courseRef);
+  if (chemistry) return [
   {
     icon: BookOpen,
     label: "Explain a concept",
@@ -108,7 +116,37 @@ const STARTERS: { icon: typeof BookOpen; label: string; prompt: string }[] = [
     label: "Exam technique",
     prompt: "Give me a mark-scheme style answer for a separation techniques question",
   },
-];
+  ];
+  return [
+  {
+    icon: BookOpen,
+    label: "Explain a concept",
+    prompt: "Explain a topic from this course's specification, step by step",
+  },
+  {
+    icon: Calculator,
+    label: "Work a calculation",
+    prompt: "Walk me through a worked example from this course, showing every step",
+  },
+  {
+    icon: ListChecks,
+    label: "Look up a spec point",
+    prompt: "What does a spec point in this course require? Use one from the sources",
+  },
+  {
+    icon: Database,
+    label: "Past-paper bank",
+    prompt: "Give me all questions related to a topic in this course",
+  },
+  {
+    icon: Target,
+    label: "Exam technique",
+    prompt: "Give me a mark-scheme style answer for one of this course's exam questions",
+  },
+  ];
+}
+
+const STARTERS: { icon: typeof BookOpen; label: string; prompt: string }[] = startersFor(null);
 
 /** "near the bottom" tolerance (px) for auto-follow + jump-button visibility. */
 const NEAR_BOTTOM_PX = 96;
@@ -776,8 +814,10 @@ export function TutorChat({
                   thin it says so instead of guessing — accuracy before confidence.
                 </li>
                 <li>
-                  <strong className="text-foreground">Coverage.</strong> Pearson Edexcel
-                  International GCSE Chemistry (4CH1).{" "}
+                  <strong className="text-foreground">Coverage.</strong>{" "}
+                  {courseRef != null && !/^4CH/.test(courseRef)
+                    ? "This course's Pearson Edexcel specification."
+                    : "Pearson Edexcel International GCSE Chemistry (4CH1)."}{" "}
                   {identity
                     ? "Conversations sync to your SyllabAI account — resume them on any device."
                     : "Conversations stay in this browser."}
@@ -822,6 +862,7 @@ export function TutorChat({
                   identity ? identity.name.trim().split(/\s+/)[0] || null : null
                 }
                 onPick={(p) => send(p)}
+                courseRef={courseRef}
               />
             ) : (
               <div className="mx-auto w-full max-w-3xl space-y-5 px-3 py-5 sm:px-4">
@@ -903,9 +944,16 @@ export function TutorChat({
               onChange={setInput}
               busy={busyHere}
               maxLen={maxLen}
+              subjectLabel={
+                courseLabel
+                  ? `${courseLabel}${courseRef ? ` · ${courseRef.split("-")[0]}` : ""}`
+                  : null
+              }
               placeholder={
                 messages.length === 0
-                  ? "Ask about states of matter, bonding, moles, exam technique…"
+                  ? courseRef != null && !/^4CH/.test(courseRef)
+                    ? "Ask about a topic, a spec point, or exam technique…"
+                    : "Ask about states of matter, bonding, moles, exam technique…"
                   : "Reply to SyllabAI Tutor…"
               }
               // () => send(): the composer's Send button calls onSend with the
@@ -969,9 +1017,13 @@ function greetingFor(at: Date): string {
 function Welcome({
   firstName,
   onPick,
+  courseRef = null,
 }: {
   firstName: string | null;
   onPick: (prompt: string) => void;
+  /** T-MIG-135d: the active course scope — null keeps the chemistry legacy
+   *  chrome (the no-course entry resolves to the chemistry pilot) */
+  courseRef?: string | null;
 }) {
   return (
     <div className="mx-auto flex min-h-full w-full max-w-3xl flex-col justify-center px-4 py-8">
@@ -990,14 +1042,14 @@ function Welcome({
             {firstName ? `, ${firstName}` : ""}
           </h1>
           <p className="mx-auto max-w-md text-sm leading-relaxed text-muted-foreground">
-            Your grounded study companion for Pearson Edexcel IGCSE Chemistry.
-            Every answer cites the spec points and notes it draws on — and tells
-            you honestly when the evidence runs thin.
+            {courseRef != null && !/^4CH/.test(courseRef)
+              ? "Your grounded study companion for this course's Edexcel specification. Every answer cites the spec points and notes it draws on — and tells you honestly when the evidence runs thin."
+              : "Your grounded study companion for Pearson Edexcel IGCSE Chemistry. Every answer cites the spec points and notes it draws on — and tells you honestly when the evidence runs thin."}
           </p>
         </div>
       </div>
       <div className="mt-7 flex flex-wrap justify-center gap-2">
-        {STARTERS.map((s) => (
+        {startersFor(courseRef).map((s) => (
           <button
             key={s.label}
             type="button"
@@ -1012,8 +1064,10 @@ function Welcome({
       </div>
       <p className="mt-6 text-center text-[11px] text-muted-foreground">
         Paste a question, a spec code like{" "}
-        <code className="rounded bg-muted px-1 py-px font-mono">4CH1-1.38</code>, or tap a starter
-        above.
+        <code className="rounded bg-muted px-1 py-px font-mono">
+          {courseRef != null && !/^4CH/.test(courseRef) ? `${courseRef.split("-")[0]}-1.1` : "4CH1-1.38"}
+        </code>
+        , or tap a starter above.
       </p>
     </div>
   );

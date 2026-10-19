@@ -24,8 +24,9 @@ import { Mic, MicOff, Paperclip, ArrowUp, Square } from "lucide-react";
 /** Server body cap for `question` (api/ai/chat zod schema). */
 export const QUESTION_CAP = 2000;
 
-/** The subject context pill's label — the tutor's honest single-corpus scope
- *  (the itutor.study "Chemistry" affordance, HUB-TUTOR-CLA-LOOK). */
+/** The subject context pill's DEFAULT label — the legacy no-course entry
+ *  resolves to the chemistry pilot, so the default stays chemistry; the
+ *  scoped entry passes the active course's label (T-MIG-135d). */
 const SUBJECT_LABEL = "Chemistry (4CH1)";
 
 interface SpeechRecognitionLike {
@@ -47,6 +48,7 @@ export function Composer({
   placeholder,
   onSend,
   onStop,
+  subjectLabel,
 }: {
   value: string;
   onChange: (v: string) => void;
@@ -55,6 +57,9 @@ export function Composer({
   placeholder: string;
   onSend: () => void;
   onStop: () => void;
+  /** T-MIG-135d: the active course's pill label ("Maths (Higher) · 4MA1");
+   *  absent keeps the chemistry default (the legacy entry's pilot course). */
+  subjectLabel?: string | null;
 }) {
   const { toast } = useToast();
   const taRef = useRef<HTMLTextAreaElement>(null);
@@ -122,7 +127,7 @@ export function Composer({
       <div className="flex items-center px-3.5 pt-3">
         <span className="inline-flex items-center gap-1.5 rounded-full bg-muted px-2.5 py-1 text-[11px] font-medium">
           <span className="size-1.5 rounded-full bg-success" aria-hidden="true" />
-          {SUBJECT_LABEL}
+          {subjectLabel ?? SUBJECT_LABEL}
         </span>
       </div>
       <div className="flex items-end gap-1.5 p-1.5">

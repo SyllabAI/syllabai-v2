@@ -78,7 +78,14 @@ interface CourseStat {
   flashcards: number;
 }
 
-const QUICK_ADD = ["igcse-chemistry-19", "igcse-physics-19", "igcse-biology-19", "ial-maths-20-pure-1"];
+const QUICK_ADD = [
+  "igcse-chemistry-19",
+  "igcse-maths-a-18-foundation",
+  "igcse-maths-a-18-higher",
+  "igcse-physics-19",
+  "igcse-biology-19",
+  "ial-maths-20-pure-1",
+];
 
 function rowValue(value: number | undefined, unit: string) {
   if (value === undefined) return <Skeleton className="h-3 w-10" />;

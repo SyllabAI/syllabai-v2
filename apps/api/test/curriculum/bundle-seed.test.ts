@@ -440,3 +440,90 @@ describe("second-subject seed — the fail-closed laws", () => {
     expect(longest).toBeGreaterThan(200);
   });
 });
+
+// ── T-MIG-135a — the maths dotted grammar (igcse-maths-a-18-higher) ─────────
+
+const MATHS_BUNDLE_PATH = join(
+  import.meta.dir,
+  "../../../hub/content/igcse-maths-a-18-higher/curriculum.json",
+);
+const mathsBundle = JSON.parse(readFileSync(MATHS_BUNDLE_PATH, "utf8")) as BundleCurriculum;
+
+describe("T-MIG-135a maths bundle — the dotted :SUB grammar (igcse-maths-a-18-higher)", () => {
+  test("the count contract fail-closes at the exact maths bundle numbers", () => {
+    const fams = { SUBJECT: 0, TOPIC: 0, SUBTOPIC: 0, SPEC_POINT: 0 } as Record<string, number>;
+    for (const n of mathsBundle.nodes) fams[n.family] = (fams[n.family] ?? 0) + 1;
+    expect(fams.SUBJECT).toBe(1);
+    expect(fams.TOPIC).toBe(6);
+    expect(fams.SUBTOPIC).toBe(39);
+    expect(fams.SPEC_POINT).toBe(188);
+    expect(mathsBundle.edges.length).toBe(233);
+    expect(new Set(mathsBundle.edges.map((e) => e.relation))).toEqual(new Set(["PART_OF"]));
+    expect(mathsBundle.code).toBe("4MA1");
+    expect(mathsBundle.subject).toBe("Maths");
+    expect(mathsBundle.level).toBe("IGCSE");
+    expect(mathsBundle.syllabusVersion).toBe("2016");
+  });
+
+  test("the code mapping: the dotted suffix lands 4MA1-S1-1.1 (the official topic number verbatim)", () => {
+    const mapped = mapBundleNodes(mathsBundle, "4MA1 official specification structure");
+    expect(mapped.size).toBe(234);
+    // the root
+    const root = mapped.get("igcse-maths-a-18-higher")!;
+    expect(root.nodeType).toBe("SUBJECT");
+    expect(root.dbCode).toBe("4MA1");
+    expect(root.title).toBe("Maths (4MA1)");
+    // the section → UNIT law (order-derived, identical to the physics law)
+    const unit = mapped.get("igcse-maths-a-T1")!;
+    expect(unit.nodeType).toBe("UNIT");
+    expect(unit.dbCode).toBe("4MA1-S1");
+    // the topic → TOPIC law (the bundle's own :SUB<d.d> dotted suffix)
+    const topic = mapped.get("igcse-maths-a-T1:SUB1.1")!;
+    expect(topic.nodeType).toBe("TOPIC");
+    expect(topic.dbCode).toBe("4MA1-S1-1.1");
+    // a second-section topic proves the section order rides the parent UNIT
+    const t2 = [...mapped.values()].find(
+      (m) => m.nodeType === "TOPIC" && m.bundleCode.includes("T2:SUB"),
+    )!;
+    expect(t2.dbCode.startsWith("4MA1-S2-")).toBe(true);
+    // the spec point → SUBTOPIC law: the official code verbatim, LETTER
+    // suffixes and all (4MA1-1.6E, 4MA1-1.6G — the maths tier letters)
+    const sp = mapped.get("1.6E")!;
+    expect(sp.nodeType).toBe("SUBTOPIC");
+    expect(sp.dbCode).toBe("4MA1-1.6E");
+    expect(mapped.get("1.1A")!.dbCode).toBe("4MA1-1.1A");
+    expect(mapped.get("1.1H")!.dbCode).toBe("4MA1-1.1H");
+    // every maths spec point resolves to its parent TOPIC's dbCode as a
+    // prefix (the join the questions shim depends on)
+    for (const m of mapped.values()) {
+      if (m.nodeType !== "SUBTOPIC") continue;
+      const parentTopic = mapped.get(m.parentBundleCode!)!;
+      expect(parentTopic.nodeType).toBe("TOPIC");
+      expect(m.dbCode.startsWith(parentTopic.dbCode)).toBe(false); // spec codes are NOT topic-suffixed
+      expect(parentTopic.dbCode.startsWith("4MA1-S")).toBe(true);
+    }
+    // all 234 DB codes unique (the uq_knowledge_node_code law)
+    const codes = [...mapped.values()].map((m) => m.dbCode);
+    expect(new Set(codes).size).toBe(234);
+  });
+
+  test("the physics letter grammar stays byte-identical beside the dotted law", () => {
+    // the pre-existing physics pins above already lock 4PH1-S1-a; this pin
+    // re-derives BOTH bundles in one breath so a grammar regression on
+    // either side fails here first
+    const physics = mapBundleNodes(bundle, "4PH1 official specification structure");
+    expect(physics.get("igcse-physics-T1:SUBa")!.dbCode).toBe("4PH1-S1-a");
+    const maths = mapBundleNodes(mathsBundle, "4MA1 official specification structure");
+    expect(maths.get("igcse-maths-a-T1:SUB1.1")!.dbCode).toBe("4MA1-S1-1.1");
+  });
+
+  test("a SUBTOPIC code carrying neither the letter nor the dotted suffix still refuses", () => {
+    const broken: BundleCurriculum = {
+      ...mathsBundle,
+      nodes: mathsBundle.nodes.map((n) =>
+        n.family === "SUBTOPIC" ? { ...n, code: "igcse-maths-a-T1:SUB" } : n,
+      ),
+    };
+    expect(() => mapBundleNodes(broken, "x")).toThrow(/does not carry the :SUBx letter or dotted suffix/);
+  });
+});

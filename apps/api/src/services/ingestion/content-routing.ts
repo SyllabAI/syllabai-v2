@@ -30,6 +30,7 @@
  */
 import type { SqlFn } from "../identity/users";
 import type { CurriculumScope } from "../content/scope";
+import { withLegacyAliases } from "../tutor/subject-profile";
 import { parseFetchQuery, type ParsedFetchQuery } from "./fetch-parser";
 
 type Row = Record<string, unknown>;
@@ -180,10 +181,11 @@ async function candidateCodes(
     select distinct s.code from subjects s
     where s.curriculum_version_id = ${scope.curriculumVersionId}::uuid and s.code is not null
     order by s.code`;
-  const codes = rows
-    .map((r) => `${String(r.code)}/${parsed.unit}`)
-    .concat(`4CH0/${parsed.unit}`);
-  return [...new Set(codes)];
+  // the per-subject legacy alias map (4CH1→4CH0, 4MA1→4MA0) replaces the
+  // hardcoded chemistry alias (T-MIG-135c, subject-profile.ts): subject
+  // codes first (alphabetical), aliases after
+  const subjectCodes = [...new Set(rows.map((r) => String(r.code)))];
+  return [...new Set(withLegacyAliases(subjectCodes).map((c) => `${c}/${parsed.unit}`))];
 }
 
 async function resolvePapers(

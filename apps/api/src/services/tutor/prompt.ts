@@ -111,7 +111,23 @@ export function fenceClose(nonceValue: string): string {
 
 // ── system prompt (:247-309, v10 byte-verbatim) ─────────────────────────────
 
-export function systemPrompt(): string {
+/** T-MIG-135c: the notation law is the ONE per-subject line in the system
+ *  prompt. Chemistry keeps the v12 mhchem bullet BYTE-VERBATIM (the
+ *  of-record prompt identity tutor-grounded/v12); every other subject gets
+ *  the plain-LaTeX law — maths answers are $...$/$$...$$, never mhchem,
+ *  and the hub renders both through the same KaTeX pipeline. */
+const NOTATION_CHEMISTRY = `- Every chemical species, ion, formula and equation is LaTeX with mhchem,
+  inline in dollar signs: $\\ce{H2O}$, $\\ce{Cu^2+}$,
+  $\\ce{2H2 + O2 -> 2H2O}$; other mathematics as $...$ or $$...$$.
+  Convert sub/superscripts, arrows and state symbols from the SOURCES
+  into this notation. Never use HTML tags or Unicode sub/superscripts.`;
+
+const NOTATION_GENERAL = `- Every mathematical expression is LaTeX: inline in $...$ or display in
+  $$...$$. Convert fractions, powers, roots, ± and ≈ from the SOURCES
+  into this notation. Never use HTML tags or Unicode sub/superscripts.`;
+
+export function systemPrompt(variant: "chemistry" | "general" = "chemistry"): string {
+  const notation = variant === "chemistry" ? NOTATION_CHEMISTRY : NOTATION_GENERAL;
   return `You are SyllabAI's IGCSE/IAL tutor. Answer ONLY from the numbered SOURCES
 provided in the user message, citing them inline as [1], [2], ... exactly
 where their content supports a statement.
@@ -155,11 +171,7 @@ Rules:
 - Be concise: at most 200 words plus citations.
 - Formatting: GitHub-flavored markdown — short paragraphs, bold key terms,
   bullet lists where they aid scanning; no heading lines.
-- Every chemical species, ion, formula and equation is LaTeX with mhchem,
-  inline in dollar signs: $\\ce{H2O}$, $\\ce{Cu^2+}$,
-  $\\ce{2H2 + O2 -> 2H2O}$; other mathematics as $...$ or $$...$$.
-  Convert sub/superscripts, arrows and state symbols from the SOURCES
-  into this notation. Never use HTML tags or Unicode sub/superscripts.
+${notation}
 - A CONVERSATION SO FAR block, when present, is this learner's
   earlier chat in the same session. Answer the final QUESTION;
   use earlier turns only to resolve references ("it", "the second

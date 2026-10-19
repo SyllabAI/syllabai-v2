@@ -37,6 +37,7 @@
  */
 import type { SqlFn } from "./sql";
 import { hygienicStem } from "./stem-hygiene";
+import { withLegacyAliases } from "./subject-profile";
 import {
   parseFetchQuery,
   parsedIsEmpty,
@@ -105,7 +106,8 @@ interface PaperRow {
  * resolves against every subject code in the scope plus the 4CH0 legacy
  * alias (pre-2016 papers are 4CH0-coded while the pilot subject is 4CH1 —
  * prod truth, bridge alias decision Task 31). Deterministic: subject codes
- * first (alphabetical), legacy alias last.
+ * first (alphabetical), legacy aliases last (the per-subject map,
+ * subject-profile.ts: 4CH1→4CH0, 4MA1→4MA0).
  */
 async function candidateCodes(
   sql: SqlFn,
@@ -122,8 +124,9 @@ async function candidateCodes(
     select distinct s.code from subjects s
     where s.curriculum_version_id = ${scope.curriculumVersionId} and s.code is not null
     order by s.code`) as Array<{ code: string }>;
-  const codes = rows.map((r) => `${String(r.code)}/${parsed.unit}`);
-  codes.push(`4CH0/${parsed.unit}`);
+  const codes = withLegacyAliases(rows.map((r) => String(r.code))).map(
+    (c) => `${c}/${parsed.unit}`,
+  );
   return [...new Set(codes)];
 }
 

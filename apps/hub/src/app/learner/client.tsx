@@ -12,21 +12,37 @@
  */
 
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { GraduationCap, User } from "lucide-react";
 import { ProvenanceBadge } from "@/components/provenance";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { api } from "@/lib/api";
-import { PILOT_COURSE_SLUG } from "@/lib/attempt-bridge";
+import { fetchPilotInfo, PILOT_COURSE_SLUG } from "@/lib/attempt-bridge";
 import { useLearnerState } from "@/lib/kg-learner-state";
 import { HistoryTab, StateTab } from "../knowledge-graph/state-drawer";
 import { AssignmentsTab } from "./assignments-tab";
 import { ClassroomTab } from "./classroom-tab";
 
 export function LearnerClient() {
-  // the 4CH1 pilot — the only course with a core-backed learner model today
-  const { overlay, drawer, source } = useLearnerState(PILOT_COURSE_SLUG);
+  // T-MIG-135d: the page rides ?course= (any bridge-eligible course — the
+  // core path lights where the join resolves) and defaults to the 4CH1
+  // pilot, whose behavior is byte-identical to the pre-widening page
+  const course = useSearchParams().get("course") ?? PILOT_COURSE_SLUG;
+  const { overlay, drawer, source } = useLearnerState(course);
   const live = source === "core";
+  const [courseCode, setCourseCode] = useState<string | null>(null);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- course-switch reset reads the prop and settles synchronously by design; the probe result lands in .then (same class as the f041237 chat-boot disable)
+    setCourseCode(null);
+    let cancelled = false;
+    fetchPilotInfo(course).then((info) => {
+      if (!cancelled) setCourseCode(info?.code ?? null);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [course]);
 
   // the classroom overlay probe: null = still asking; [] = no membership
   // (the independent case — the tab disappears); non-empty = class-enrolled
@@ -54,7 +70,7 @@ export function LearnerClient() {
   if (overlay?.bridgeError) {
     return (
       <div className="space-y-4">
-        <Header live={false} />
+        <Header live={false} courseCode={courseCode} />
         <div className="rounded-lg border border-dashed px-6 py-10 text-center">
           <p className="text-sm font-medium">Learner state unavailable right now</p>
           <p className="mx-auto mt-1 max-w-md text-xs leading-relaxed text-muted-foreground">
@@ -70,7 +86,7 @@ export function LearnerClient() {
   if (!drawer) {
     return (
       <div className="space-y-4">
-        <Header live={live} />
+        <Header live={live} courseCode={courseCode} />
         <div className="flex min-h-[40vh] items-center justify-center">
           <div
             className="h-6 w-6 animate-spin rounded-full border-2 border-muted-foreground/25 border-t-primary"
@@ -84,7 +100,7 @@ export function LearnerClient() {
 
   return (
     <div className="space-y-4">
-      <Header live={live} />
+      <Header live={live} courseCode={courseCode} />
       <Tabs defaultValue="state">
         <TabsList>
           <TabsTrigger value="state">My state</TabsTrigger>
@@ -99,7 +115,7 @@ export function LearnerClient() {
         </TabsList>
         <div className="mt-3">
           <TabsContent value="state" className="mt-0">
-            <StateTab drawer={drawer} live={live} course={PILOT_COURSE_SLUG} />
+            <StateTab drawer={drawer} live={live} course={course} />
           </TabsContent>
           <TabsContent value="history" className="mt-0">
             <HistoryTab drawer={drawer} />
@@ -118,7 +134,7 @@ export function LearnerClient() {
   );
 }
 
-function Header({ live }: { live: boolean }) {
+function Header({ live, courseCode }: { live: boolean; courseCode: string | null }) {
   return (
     <div>
       <h1 className="flex flex-wrap items-center gap-2 text-2xl font-bold tracking-tight">
@@ -126,13 +142,13 @@ function Header({ live }: { live: boolean }) {
         My Progress
         <ProvenanceBadge tier={live ? "CORE_MEASURED" : "SIMULATED"} />
         <Badge variant="outline" className="font-mono text-[10px]">
-          4CH1 · pilot
+          {courseCode ?? "4CH1"} · pilot
         </Badge>
       </h1>
       <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
         {live
           ? "Measured live from your SyllabAI account — real attempts, Smart Mark evidence, Ebbinghaus decay and review scheduling computed on the backend. The same model paints the Knowledge Graph."
-          : "Derived from this browser's practice on the 4CH1 pilot — a simulated, browser-local overlay that never writes to course data. Sign in on the pilot course to switch to the measured model."}
+          : "Derived from this browser's practice on the pilot course — a simulated, browser-local overlay that never writes to course data. Sign in on a bridge-eligible course to switch to the measured model."}
       </p>
     </div>
   );

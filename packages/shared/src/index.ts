@@ -58,3 +58,4 @@ export * from "./answerDebris";
  * verbatim; pinned first-hand in specQuiz.test.ts.
  */
 export * from "./specQuiz";
+export * from "./smeRef";

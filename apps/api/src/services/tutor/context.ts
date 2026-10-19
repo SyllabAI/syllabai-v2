@@ -365,6 +365,11 @@ export interface TutorContext {
    *  pin, or no scaffoldable bank rows) — the prompt renders the QUIZ
    *  SCAFFOLD block from it */
   quizScaffold: QuizScaffold | null;
+  /** T-MIG-135c: the resolved scope's curriculum code ("4CH1-2017" /
+   *  "4MA1-2016"; null = unscoped) — selects the prompt's per-subject
+   *  notation law (chemistry mhchem byte-verbatim; everything else the
+   *  plain-LaTeX law). */
+  courseCode: string | null;
 }
 
 /** Java String.format(Locale.ROOT, "%.2f", v) posture for the briefs. */
@@ -391,6 +396,10 @@ export interface AssembleInputs {
   activePaperLabel?: string | null;
   /** run-015 #6c: the deterministic quiz scaffold (null = fail-open) */
   quizScaffold?: QuizScaffold | null;
+  /** T-MIG-135c: the resolved scope's curriculum code (null = unscoped) —
+   *  the per-subject notation law selector (optional for call-site
+   *  compatibility; absent → the general law). */
+  courseCode?: string | null;
   now: Date;
 }
 
@@ -436,6 +445,7 @@ export function assembleTutorContext(inputs: AssembleInputs): TutorContext {
     interventionPlan,
     activePaperLabel: inputs.activePaperLabel ?? null,
     quizScaffold: inputs.quizScaffold ?? null,
+    courseCode: inputs.courseCode ?? null,
   };
 }
 

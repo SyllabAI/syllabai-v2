@@ -41,8 +41,11 @@ export interface ParsedFetchQuery {
   partRoman: string | null;
 }
 
-const PAPER_CODE = /\b(4CH[01])\s*[/-]\s*([12]\s*C\s*R?)\b/i;
-const BARE_UNIT = /(?<![A-Za-z0-9])([12])\s*(CR|C)(?![A-Za-z0-9])/i;
+// T-MIG-135c: the two-subject grammar (the tutor twin, byte-identical):
+// chemistry 4CH[01] units [12]C R?, maths 4MA[01] units [12][HF]; the bare
+// H/F unit binds ADJACENT-only ("2 h" never binds — the hour word).
+const PAPER_CODE = /\b(4CH[01]|4MA[01])\s*[/-]\s*([12]\s*(?:C\s*R?|H|F))\b/i;
+const BARE_UNIT = /(?<![A-Za-z0-9])([12]\s*(?:CR|C)|[12](?:H|F))(?![A-Za-z0-9])/i;
 const SERIES_JUN = /\b(summer|june)\b/i;
 const SERIES_JAN = /\b(january|jan)\b/i;
 const SERIES_NOV = /\b(november|october)\b/i;
@@ -149,12 +152,13 @@ export function parseFetchQuery(rawQuery: string | null | undefined): ParsedFetc
     paperCode = `${code[1]!.toUpperCase()}/${code[2]!.toUpperCase().replace(/\s+/g, "")}`;
   }
 
-  // bare unit only when no full code was matched ("paper 2C", "the 1CR paper")
+  // bare unit only when no full code was matched ("paper 2C", "the 1CR
+  // paper", "paper 1H") — one capture group, spaces fold away
   let unit: string | null = null;
   if (paperCode === null) {
     const bare = BARE_UNIT.exec(q);
     if (bare) {
-      unit = `${bare[1]}${bare[2]!.toUpperCase()}`;
+      unit = bare[1]!.toUpperCase().replace(/\s+/g, "");
     }
   }
 

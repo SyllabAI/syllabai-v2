@@ -937,6 +937,7 @@ export function buildClaService(deps: ClaServiceDeps) {
           interventionPlan: plan,
           activePaperLabel: null, // the CLA surface pins no paper
           quizScaffold: null, // run-015 #6c rides the tutor session pin — the CLA surface scaffolds no quiz
+          courseCode: null, // T-MIG-135c: the CLA surface carries no tutor scope — its own prompts, not the notation variant
         };
         generated = await deps.generator.generate(question.trim(), [], tutorContext);
       }
