@@ -1,0 +1,68 @@
+{
+  "card": "T-MIG-136",
+  "receipt": "api-bake-136a-136e-run-001-sz",
+  "lane": "sz (Super Z, zai-web session web-9d2144ad-f8b8-4e63-9039-989f45cb596f)",
+  "created_at_utc": "2026-10-19T18:20Z",
+  "operator_trace": "1a1553513660c8c9 'fire that bake' -> 1a155540cb0bf2fd (token delivery: VERCEL_PAT fp16 d254bbfaac004354 == of-record law EXACT MATCH; GITHUB_PAT fp12 a8ccee736aa8 == the of-record new designation)",
+  "order": {
+    "words": "fire that bake",
+    "discharge": "the api manual lever redeploy named by the T-MIG-135 second-lane verify's NEW-DELTA disclosure: main had advanced past the serving carrier with the Maths B band (PR #204 136a+136e) + the 133f ingest-driver fix (PR #205) merged-but-unbaked; this firing bakes main 89962a5 into the serving carrier and heals the incumbent's source-traceability gap (dpl_AwzdTUBG served lane-local sha 0c06bb63, not on origin)"
+  },
+  "preflight_of_record": {
+    "recipe_source": "re-derived from the IN-REPO receipts per the sandbox-rollback discipline (band-133d-api-redeploy-run-002-r0 + T-MIG-093/tools/deploy_bundle_build.py \u2014 paths adapted only, shim patterns asserted unique-before-replace by the script itself)",
+    "main_tip": "89962a5d5443a0fcdcc5a098122b7474072a4d69, fetch-first at 17:38Z and re-asserted pre-build; worktree clean; HEAD asserted pre-build",
+    "ci_at_tip": "2/2 SUCCESS (verify + hub check-runs, GitHub API first-hand at 89962a5)",
+    "race_guard": "CLEAR twice \u2014 at preflight (incumbent age 3.84h) and at fire time (fresh /v6 list: newest = dpl_AwzdTUBG 14:13:07Z, no parallel-lane firing)",
+    "delta_over_last_baked_band_head": "f9d49ae..89962a5 = 20 commits, apps/api+packages 7 files +377/-42 (bundle-seed 136a grammar, fetch-parser x2 136e paper-identity, subject-profile 4MB1 profile/alias, books-ingest 133f, tests); the incumbent carried the 135 band from a lane-local sha, so the bake re-bases the carrier onto origin main",
+    "asset_sha_pins": "all 6 concept-graph YAML inlines BYTE-EXACT to the of-record pins (concepts 24fa91ac7149682b, concept_edges 8a651dd9e60bfefa, practicals e53e5f87606a2b5a, relationships b3b7529222d77d80, specification_points b1fea69953205077, topics a7b14cbdd34bb9fe) \u2014 asserted at inline time",
+    "build": "bun install 930 pkgs (the of-record count) -> bundle 341 modules / 3,209,191 bytes CJS (prior of-record 339 / 3,206,232 \u2014 the band delta); stage = the 2-file shape (api/index.js + vercel.json rewrites /api/v1/(.*) and /actuator/health; .vercel/project.json prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ / team_ULL54qkhzKBmnKrpO6BD4mYX); node --check OK; Maths B markers grep-verified in the bundle (4MB1, PAPER_CODE_MB x4, 4MB0 legacy alias); worktree restored PRISTINE after build (git-verified)"
+  },
+  "boot_gate_write_free_4_of_4": [
+    "env API: /v9 LIST decrypt=true -> EXACTLY the of-record 9 envs (names census match); DATABASE_URL host ep-ancient-cake-a52e4kfd.us-east-2.aws.neon.tech == the of-record production DB (no branch repoint); staged 0600, value never printed, SHREDDED post-gate",
+    "1/4 PASS health 200 {groups:[liveness,readiness],status:UP}",
+    "2/4 PASS POST /api/v1/auth/login malformed -> 400 validation_failed",
+    "3/4 PASS GET /api/v1/cron/nightly-decay -> 401 fail-closed STRICTER local branch (CRON_SECRET unset locally, T-MIG-042)",
+    "4/4 PASS GET /api/v1/__not_a_route__ -> 401 (the /api/v1 filter chain)"
+  ],
+  "deploy": {
+    "method": "vercel CLI 64.5.0 deploy --prod --yes from the 2-file stage; ADDITIVE deviation disclosed: --meta sourceCommit/bakeBand/operatorTrace set at firing time so the deployment carries the true source sha \u2014 the incumbent's traceability gap (meta stamped only a stage-local UUID-message sha) is healed for this and future firings without changing the deploy shape",
+    "deployment": "dpl_HphMddkuf2EK7dyYDTQMcjjMCLeX (syllabai-v2-ihmz0muo7-syllab-ai.vercel.app) READY, createdAt 1792433107448 (~2026-10-19T18:05:07Z), ready in 12s",
+    "production_alias_switched": true,
+    "alias_verification": "3-WAY createdAt BYTE-MATCH 1792433107448 (v6 LIST <-> v13 get?url= alias-lookup <-> /v13/deployments/{id} detail) + aliasAssigned=true; alias list [syllabai-v2.vercel.app, syllabai-v2-syllab-ai.vercel.app]; the known API-revision quirk (alias-lookup omits uid) as documented in band-133d",
+    "meta_of_record": {
+      "sourceCommit": "89962a5d5443a0fcdcc5a098122b7474072a4d69",
+      "bakeBand": "T-MIG-136-136a-136e+T-MIG-133f",
+      "operatorTrace": "1a155540cb0bf2fd",
+      "cli_stamped_disclosure": "the CLI also auto-stamped its own git* meta (gitCommitSha 1a3d26e\u2026, gitRootDirectory scripts/api-stage, author Z User) \u2014 same class of stage-local artifact as the incumbent; the TRUE source is the sourceCommit meta + the build's HEAD assertion"
+    }
+  },
+  "post_deploy_live_battery": {
+    "shape": "the T-MIG-135 second-lane 12-leg battery + the 135c decisive discriminators + NEW T-MIG-136a/136e pins (scripts/bake_battery_136.py, zero-LLM)",
+    "runs": "run-001 10/16 (six legs mis-shaped by this lane \u2014 the contracts refine demands one of topic|spec|nodeId and the books DTO fields are author/pages/checksum + chapterKey; re-derived from source and re-pinned, disclosed), run-002 15/16 (the C15 'FAIL' = a discovery, re-pinned to the discovered of-record state), run-003 (of record) 16/16 PASS EXIT=0",
+    "discovery_of_record": "C15 found 4MB1-2016 ALREADY SERVING its structure: resolveForCourse (EXACT ACTIVE-code match semantics, scope.ts :146) resolved 14 nodes under UNIT 4MB1-S3 Algebra with the 136a grammar forms on the wire \u2014 TOPIC 4MB1-S3-_ (the PLACEHOLDER tail law) and SUBTOPICs 4MB1-S3-3A..3L (the ALNUM dbCode law); bank total=0 (the honest-empty core-questions axis \u2014 coreBridge intentionally absent, 136a law). CROSS-CONFIRMED OF RECORD: the parallel lane's T-MIG-136 run-004-prod-apply-r0 (cv 7b7a23d5-\u2026-ACTIVE, 119 nodes/118 edges/98 applicability, battery ALL GREEN 17:57:17Z, operator trace 1a15535a2a9c6319 'fire the 4MB1-only 136c lever') \u2014 this lane's battery re-proves the serving state on the NEW carrier post-bake (their serving battery ran on dpl_AwzdTUBG pre-bake). ZERO Neon writes by this lane (no DATABASE_URL retained); the apply receipt is the DB-side authority.",
+    "of_record_legs": "1-12 all PASS (health UP; cron 401 hub-seam reason; unknown 401; register probe 201; unscoped bank honest-empty = the >=2-ACTIVE-owner refusal, now four owners strong; review read seam honest-empty; books route law 400; T-C20 chapters == 29; shelf Jim Clark 383pp checksum d48020e0; 133d route-existence {page:null,chapter:null}; F-022 page=12 -> u1:c1; T-C20 no-state-leak 404)",
+    "t_mig_135c_discriminators": "P1 PASS (topic=Rates of reaction&courseRef=4CH1-2017 -> total=56, resolvedNodes[0] TOPIC 4CH1-S3-b \u2014 the 135 band still serves); P2 PASS (courseRef=GEN-INGEST draft control honest-empty)",
+    "t_mig_136a_pins": "C15 PASS (above, the discovery leg); C16 PASS (books?courseId=igcse-maths-b-16 -> [] honest-empty shelf, route resolves the new course slug)"
+  },
+  "claims": {
+    "VERIFIED": [
+      "fingerprints, identities (GitHub /user -> SyllabAI; Vercel /v2/user -> syllabai-1403), CI 2/2 at tip, race-guard x2, env census 9/9, boot gate 4/4, deploy + 3-way alias, battery run-003 16/16 \u2014 all first-hand this run",
+      "the 6 asset SHA pins and the bundle module/byte counts \u2014 first-hand at build time"
+    ],
+    "REPORTED": [
+      "the 4MB1-2016 ACTIVE state (wire-proof via resolveForCourse semantics; no DB re-probe \u2014 zero-write posture)",
+      "the 133f driver legs are script-side (books-ingest.ts, operator-gated ingest apply) \u2014 not wire-probeable; carried by the bake unexercised"
+    ],
+    "UNVERIFIED": []
+  },
+  "disclosures": [
+    "register probe rows: 4 of the established probe class (sz-bake-136-* x3 across battery runs 001-003, sz-c15-probe-* x1) \u2014 prod users-table rows of the sanctioned class, disclosed per the T-MIG-092/135 precedent",
+    "sandbox rollback: this lane re-derived the recipe from the in-repo receipts after the earlier-considered workspace was wiped \u2014 the receipt discipline worked as designed",
+    "no Neon writes, no DDL, no corpus writes, no archived-repo writes; hub untouched (auto-bakes on push, last of-record bake dpl_98XfSSsYKsoYHEeAjTADzMFFQrGR for 155e417; receipt/bookkeeping pushes since are no-code-delta hub bakes)"
+  ],
+  "next_safe_actions": [
+    "operator: the 4MA1 data-plane apply + any further seed orders remain the operator's Neon levers (this bake ships CODE only)",
+    "lane: T-MIG-136 band 136d (the four-subsystem zero-LLM battery) still staged per the 134 (ln) precedent \u2014 a serving carrier now exists for it",
+    "lane: consider pinning the FOUR-ACTIVE-owner census into the next receipt that reads the unscoped refusal (the 3-owner wording is now stale)"
+  ]
+}

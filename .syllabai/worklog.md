@@ -8928,3 +8928,17 @@ Work Log:
 Stage Summary:
 - 136c DISCHARGED of record: Maths B (4MB1-2016) is LIVE in prod — the tutor graph arm + CLA + the learner-model node axis serve the 119-node tree; smart mark + the tutor fetch-bank arm honestly dormant (zero questions — rule 3, nothing manufactured); FOUR ACTIVE curricula; the separation ruling honored — the 4MB1-only single-course shape, zero 4MA1/4PH1/4CH1 rows touched (delta-proven)
 - Queue: 136d (the four-subsystem zero-LLM battery + golden cases — now runs against the LIVE tree); coreBridge declaration for igcse-maths-b-16 (operator-declared, moot until questions exist); Maths B book source handoff + the resources 4.75GB/5GB push-wall decision (operator); standing PAT rotation; NEW NOTE for future COW laws: Neon control-plane (api.neon.tech) egress is DNS-blocked from this sandbox class — the schema-faithful local-replica substitute is the of-record method
+Task ID: trace 1a1553513660c8c9 (band: api bake 136a+136e+133f)
+Agent: R0-integrator (Super Z, zai-web session web-9d2144ad-f8b8-4e63-9039-989f45cb596f)
+Task: "fire that bake" — the api manual-lever redeploy: bake main 89962a5 (PR #204 Maths B band 136a+136e + PR #205 133f ingest-driver fix) into the serving carrier; heal the incumbent's source-traceability gap (dpl_AwzdTUBG served lane-local sha 0c06bb63).
+
+Work Log:
+- Recipe re-derived from the in-repo receipts (band-133d-api-redeploy-run-002-r0 + T-MIG-093/tools) per the sandbox-rollback discipline; preflight first-hand: CI 2/2 at tip, race-guard CLEAR x2, delta f9d49ae..89962a5 = 20 commits / 7 files / +377-42, all 6 asset SHA pins MATCH, bun install 930 pkgs, bundle 341 modules / 3,209,191 B CJS, stage 2-file shape, worktree restored PRISTINE
+- Boot gate write-free 4/4 PASS on the of-record DSN (env-API census 9/9, host ep-ancient-cake… of-record, staged 0600, SHREDDED post-gate)
+- FIRED: dpl_HphMddkuf2EK7dyYDTQMcjjMCLeX READY 18:05:07Z; --meta sourceCommit=89962a5… + bakeBand + operatorTrace set at firing (ADDITIVE — the traceability gap healed going forward); alias 3-WAY createdAt byte-match 1792433107448 + aliasAssigned=true
+- Battery (scripts/bake_battery_136.py, zero-LLM): run-003 of record 16/16 PASS = the 135-lane 12 legs + 135c P1/P2 discriminators + 136a pins. DISCOVERY: 4MB1-2016 ALREADY ACTIVE in prod (resolveForCourse resolved 14 nodes under UNIT 4MB1-S3 with the 136a PLACEHOLDER-tail 4MB1-S3-_ and ALNUM 4MB1-S3-3A..3L forms on the wire; bank total=0 by the coreBridge-absent law) — the 136c operator lever landed since the 15:05Z three-active census; read as wire-proof only, zero Neon writes by this lane
+- Receipt: .syllabai/receipts/T-MIG-136/api-bake-136a-136e-run-001-sz.json (4 probe-register rows disclosed; mis-shaped-leg runs 001-002 disclosed; no force, fetch-first)
+
+Stage Summary:
+- The serving carrier = origin main 89962a5: Maths B grammar + the 135 band + the 133d books posture all verified live; four ACTIVE curricula now serve (4CH1/4PH1/4MA1/4MB1)
+- Standing after: 136d four-subsystem zero-LLM battery (staged, carrier now exists); the unscoped-refusal owner-count wording is stale at three; 4MA1/4MB1 seed levers stay the operator's
