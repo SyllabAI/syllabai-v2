@@ -1,0 +1,61 @@
+{
+  "receipt": "cie-phase1-spines-r0",
+  "family": "CIE-INTEGRATION",
+  "operatorTrace": "1a155724b2d726dd",
+  "operatorOrder": "'Phase 1 — build the 33 CIE spines via the pinned adapter' (the go on the scope receipt cie-frontend-integration-scope-r0 executionPlan phase 1)",
+  "agent": "Super Z (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "phase": "1 — CIE spines",
+  "mode": "SPINE BUILD — adapter code + staging spines only; spines/ is not imported by the hub build; the content flip is Stage 3 (gated); zero content/, courses.json, or DB changes",
+  "ofRecord": {
+    "branch": "cie-phase1/spines-r0 @ f0144d9 (from main f7f9404)",
+    "pr": "#206 opened + CI green + MERGED (merge commit bed4ae4730a03868d10339e068cb11bcdbef12ed)",
+    "mainCi": "verify SUCCESS + hub SUCCESS 2/2 at bed4ae4 (check-runs API verified first-hand)",
+    "delta": "47 files: scripts/build_official_spines.py (+400 lines, Edexcel path untouched), 44 spines/cie-*.json, spines/_report_cie.json (new), spines/_validation.json (gauntlet refresh)",
+    "edexcel": "49 Edexcel spines + _report.json byte-untouched (git status clean of them)"
+  },
+  "adapterOfRecord": {
+    "families": {
+      "discovered": "the corpus parses carry SIX families, not the one Phase-0 sampled: tier_columns x5 (0610/0620/0625/0973 + bio), ce_codes x2 (0580/0607 — C*/E* tier prefixes ARE the official codes), int_statements x12 (A-levels incl. 9709), heading_bullets x5 (English lang/lit + AS GP — subsection layer ABSENT, codes S<n>.<seq>), nmk_outcomes x8 (business/econ/accounting — bullets inline in text, number null), lettered_items x1 (RS 0490 — official letter-suffixed codes C1.1a)",
+      "unifiedSkeleton": "all six share topics/subsections/spec_points arrays with per-point embedded topic+subsection dicts — one reader + per-family deltas",
+      "deltasHandled": "subsection-null collapse to SUB_ (Edexcel unnamed-sub convention); dotted-leader TOC junk + \\x07 control chars + '(continued)' page-wraps cleaned from TITLES (statement text stays verbatim); number null/letter -> array order is the document authority with int-drift warning"
+    },
+    "scopeRules": "evidence-cited per qual: 9709 topic_numbers (parse topics 1-6; Pure-2 = 17-pt honest remainder, no bank); 0580/0607 code_prefix C/E (the syllabus prints parallel Core/Extended trees); 0973/0653 scope_eq Biology/Chemistry/Physics (230/181/221 and 70/82/86 verified); 0460 kind=all x2 banks; singles kind=all",
+    "dupCodePolicy": "REFINED by the gauntlet: occurrences 2..k of an official code carry synthetic ascending letters ('7.2.2a','P1.5.1b',...) — export_course's per-section ord gate parses trailing letters natively while '@tier'/'#k' read as 0.0 and fail; tier/scope stay verbatim on node fields; letter is an identifier, not content (Phase-0 manifest explicitly deferred this choice to --check)",
+    "orderingRules": "points code-canonical within subtopics + subtopics code-canonical within sections (the Edexcel rules; parse document order violates export_course's section ord gate: 0620 4.1.8 before 4.1.3, 0610 17.4 before 17.3, 9709 second 1.3.1 statement after 1.3.2)",
+    "registry": "CIE rows sourced from the Phase-0 roster manifest receipt (level A-LEVEL/AS/IGCSE pin, subject title-cased, code = syllabus cover_code, syllabusVersion = edition window) — Phase 3 folds them into courses.json; the spine build does not depend on that landing first",
+    "board": "Cambridge CIE"
+  },
+  "pinDiscipline": {
+    "resourcesSha": "a4ce9f5559990a97950355d8f4cc85d30a796301 (CIE path, separate from the Edexcel 888bca4 pin — zero perturbation)",
+    "verification": "parse_report counts + pdf_sha1 verified identical across 4add496..a4ce9f5 for all 7 multi-bank/representative specs BEFORE pinning; the band-133i sibling work then archived resources of record at exactly a4ce9f5 (independent corroboration)",
+    "transport": "raw.githubusercontent flaked twice mid-run (404-on-200) — cie_fetch_json hardened with 4-attempt retry; parsed filename convention <pdf minus .pdf>.parsed.json verified across families"
+  },
+  "buildResults": {
+    "spines": "44/44 (33 specs -> 44 courses)",
+    "specPoints": 6854,
+    "orphans": 0,
+    "poolMath": "EXACT: 0580 112+178=290; 0607 109+165=274; 0973 230+181+221=632; 0653 70+82+86=238; 9709 33+39+22+17+18=129/146 (Pure-2 remainder); 0460 113x2 kind=all; singles pool==points 27/27",
+    "suffixCounts": "physics-23 106, co-ordinated-physics 74, physics-25 12, ICT-21 6, CS-23 5, intl-maths-ext 7, maths-ext 4, ... (per-spine meta.dupCodePolicy)",
+    "subItemRecovery": "71 points on chem-23 carry the parse's structured bullets inlined (T-KG-11 rule, identical to Edexcel)"
+  },
+  "qaBattery": {
+    "structural": "44/44 zero fails (scripts/p1_validate.py: families, node keys, unique codes, parent resolution, edge consistency nodes-1, Edexcel order semantics, tier/scope vocab, suffix shape)",
+    "gauntlet": "validate_spines.py 93/93 pass (49 Edexcel + 44 CIE) — kg_export compatibility incl. the per-section ord gate and duplicate-title gates",
+    "golden": "chemistry golden byte-stable (code_set_equal True, 0 statement diffs) — Edexcel path untouched",
+    "determinism": "rebuild byte-identical (md5-verified on cie-igcse-chemistry-23)",
+    "verbatim": "spot-check vs parse: base text verbatim on all sampled points; the 71 'diffs' are exactly the pinned sub_items inlining"
+  },
+  "disclosures": [
+    "statement text carries upstream parse artifacts verbatim (\\x07 bullet-glyph chars in some families' text/bullets) — the builder cleans TITLES only; a text-level repair belongs to the upstream cie-spec-parser and would flow through a pin bump",
+    "heading_bullets parses (English families) include the syllabus front-matter sections (e.g. 'Why choose this syllabus?') as topics with their official statements — kept honestly (the parse is the ratified upstream artifact); Phase 2 content-mapping will simply leave them unmapped unless the operator curates",
+    "9709 Pure-2 topic (17 points) has no SME bank — present in no spine by design (disclosed in the scope rule)",
+    "kg_export gates (ord + duplicate-title) REJECTED the first two emission policies — the shipped rules are the gate-chosen ones, documented above; the rejected '@tier' idea from the Phase-0 dry run is superseded",
+    "mid-flight main movement f7f9404 (band 133i hub change) — branch carried cleanly, zero file collisions; CI green on the rebase"
+  ],
+  "nextPhase": "Phase 2 — content-maps + rekeyed bundles for the 44 slugs: the spcpt->official reconciliation maps (CIE banks carry spec_point_index.json upstream; Edexcel's spec_point_map.json/resolution sidecars are the shape to produce), then build_official_content.py per slug; 2-4 lane runs, the main work item",
+  "consistencyNotes": [
+    "scope receipt cie-frontend-integration-scope-r0 phase 1 discharged (effort 1-1.5 lane runs -> one run)",
+    "Phase-0 roster manifest deliverables consumed as pinned (registry, join, tier policy refinement)",
+    "band-133i archive pin a4ce9f5 == the CIE build pin (independent sibling corroboration)"
+  ]
+}
