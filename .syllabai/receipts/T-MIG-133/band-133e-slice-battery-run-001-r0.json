@@ -1,0 +1,37 @@
+{
+  "schema": "t-mig-133-band-receipt-v1",
+  "band": "133e",
+  "run": "001",
+  "lane": "R0-integrator",
+  "operatorTrace": "1a153ce1a7bb7d69 (continue 133e battery)",
+  "date": "2026-10-19",
+  "kind": "LIVE-ZERO-LLM-BATTERY-CATCHER",
+  "verdict": "FAIL 17/25 — by design: the battery caught 2 REAL serving defects, both repaired this trace",
+  "context": "Band 133e (slice mounts a971a38 + follow-up 1c20e95, trace 1a1539a3e3730c15) was merged and auto-baked; this is the first live battery over the slice-serving surface.",
+  "lineage": {
+    "aliasHolder": "d85603c (dpl_FrQ2bMiuschayyVxszs3raC38Qzb) pre / post identical during run",
+    "carries133e": true
+  },
+  "legs": { "passed": 17, "total": 25, "artifact": "band-133e-slice-battery-run-001-17of25.json" },
+  "defectsCaught": [
+    {
+      "id": "133e-D1-relay-wall-gap",
+      "severity": "SERVING-BLOCKER",
+      "finding": "C1-C4 FAIL: every slice delivery URL (/api/corpus-pdf/books/<specKey>/chapters/u<n>_c<n>[_q].pdf, /units/u<n>_practice.pdf) returned 400 'corpus path rejected' — validatedCorpusPath (the relay wall) still admitted only the 133c grammar (whole book + per-page artifacts). The page plane (D2-D9) passed because it probes the RSC props; the defect was delivery-only, i.e. every chapter/anchor/unit mount would have failed to load its PDF in the browser.",
+      "fix": "hub efbe1be (rebased c2f5f5a): the books grammar extended with the two slice families exactly as named by the manifest of record; validator.test.ts pins the wall (slices accepted, escapes/depths/hostile rejected, past-papers verbatim) — 7 new gates, 29/29 local with books-slices.",
+      "unblocks": "the pending 133f maths-a archive upload rides the same generic wall (zero hub code change was the 133f premise; the wall now actually admits slices)"
+    },
+    {
+      "id": "133e-D2-whole-book-displaced",
+      "severity": "DATA-LOSS-CLASS",
+      "finding": "C5 FAIL (502): raw origin 404s books/<specKey>/student-book.pdf — the 133e slice-upload flow (b0677d26 + relocation c384eb4) left the book dir WITHOUT the whole book and parked the SAME blob at the repo ROOT. The relay's 502 was the documented upstream-404 shape; the whole-book fallback mount + the raw download link were both dead.",
+      "fix": "archive f4000dfe: ONE tree-API commit moving the blob home (root stray deleted, book-dir entry added, SAME blob sha referenced — zero content re-upload); post-verify: raw serves 54,298,792B, sha256 d48020e0cc0b… == the manifest source sha of record, byte-exact."
+    }
+  ],
+  "probeShapeDisclosures": [
+    "B4: the citation-target response is {documentId, docVersion, courseId, page, chapter:{...chapterKey}} — the probe originally asserted a flat chapterKey",
+    "D10: the unknown-book honest not-found card renders as a soft-200 (the QA-SWEEP F3 informational class); the law pinned is honest-marker + zero state leak, not the status code",
+    "D12: the health of record is /actuator/health (Java-core path parity), not /api/v1/health (which 401s behind the auth middleware)"
+  ],
+  "ledger": { "llmSpend": 0, "neonWrites": 0, "authedCalls": "read-only GitHub/Vercel API lineage + tree walk; PAT never printed" }
+}

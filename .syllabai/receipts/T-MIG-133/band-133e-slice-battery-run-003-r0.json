@@ -1,0 +1,29 @@
+{
+  "schema": "t-mig-133-band-receipt-v1",
+  "band": "133e",
+  "run": "003",
+  "lane": "R0-integrator",
+  "operatorTrace": "1a153ce1a7bb7d69 (continue 133e battery)",
+  "date": "2026-10-19",
+  "kind": "LIVE-ZERO-LLM-BATTERY-OF-RECORD",
+  "verdict": "PASS 26/26",
+  "headline": "per-open payload law: u1:c1 lesson slice 1,442,811B = 2.7% of the 54,298,792B whole book — 97.3% saved per chapter open (the operator's original complaint, discharged)",
+  "lineage": {
+    "aliasHolder": "c2f5f5a (dpl_3dq7rk6XxUfMUJZn6jXcCu6Gk3Ro) PRE and POST identical",
+    "carries133e": true,
+    "carrier": "hub auto-bake of the relay-wall fix (hub is GIT-CONNECTED; no manual bake)"
+  },
+  "legs": { "passed": 26, "total": 26, "artifact": "band-133e-slice-battery-run-003-26of26.json" },
+  "planes": {
+    "A-archive": "manifest of record serves (59 slices, source sha d48020e0…/383pp); 3 sha256 byte-proofs (lesson u1_c1, questions u1_c1_q, unit u1_practice) byte-exact vs manifest",
+    "B-api": "shelf of record 200 (1 entry, docVersion 1); chapters 200 (29 rows); the manifest<->registry TILING law 29/29 — every row's lesson/whole/questions slices tile [pdfPageStart..pdfPageEnd] exactly (zero hand-typing proof); 133d citation-target regression page=12 -> u1:c1",
+    "C-delivery": "4 slice deliveries byte-exact vs manifest (1,442,811 / 247,446 / 1,115,796 / 822,179 — the whole-role chapter u1:c3 included); whole book restored and serving 200, content-length 54,298,792 (relay does not forward Range — documented 133c law, disclosed in run-001)",
+    "D-page": "shelf renders slice-exact warm links + 4 unit exam links; lesson mount; anchor jump (?part=questions) at page 1 and citation p21; citation p15 in-range; unit exam row u1:xexam-practice; citation p124 -> unit span (the 1c20e95 discriminator); p335 outside every span -> F-022 nearest u4:c29; front matter p2 -> F-022 nearest u1:c1 — ALL mount slices with the whole-book pane ABSENT; unknown-book honest no-leak; hub shell + api /actuator/health regressions green"
+  },
+  "coTenants": {
+    "wholeBookFallback": "kept as the download/fallback mount (drift-guarded: manifest mismatch degrades to it, never to wrong slices)",
+    "deferred": "reference slice (glossary/appendix/index, pdf 330-383) stays deferred — F-022 nearest-chapter covers ?page probes in that region (leg D8), the raw book covers reading"
+  },
+  "ledger": { "llmSpend": 0, "neonWrites": 0, "probeLearners": 0, "authedCalls": "read-only lineage checks; unauth GETs for every leg" },
+  "repairedThisTrace": ["relay-wall grammar gap (hub c2f5f5a + validator gates)", "whole-book displacement (archive f4000dfe, sha256-verified restore)"]
+}

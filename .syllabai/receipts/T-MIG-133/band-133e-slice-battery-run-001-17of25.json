@@ -1,0 +1,176 @@
+{
+  "schema": "t133e-slice-battery-r0",
+  "band": "133e",
+  "trace": "1a153ce1a7bb7d69",
+  "generatedAt": "2026-10-19T11:08:48Z",
+  "lineage": {
+    "pre": {
+      "sha": "d85603c4b9d067b9d35b91f919c9d97d4c9b1ddb",
+      "deployment": "dpl_FrQ2bMiuschayyVxszs3raC38Qzb",
+      "carries133e": true
+    },
+    "post": {
+      "sha": "d85603c4b9d067b9d35b91f919c9d97d4c9b1ddb",
+      "deployment": "dpl_FrQ2bMiuschayyVxszs3raC38Qzb",
+      "carries133e": true
+    }
+  },
+  "llmSpend": 0,
+  "neonWrites": 0,
+  "authedCalls": 0,
+  "legs": [
+    {
+      "id": "A1",
+      "name": "manifest of record serves",
+      "ok": true,
+      "detail": "HTTP 200, schema=book-slices-manifest-v1, slices=59, source=d48020e0cc0b/383pp"
+    },
+    {
+      "id": "A2",
+      "name": "archive sha256 byte-proof u1_c1.pdf",
+      "ok": true,
+      "detail": "HTTP 200, 1,442,811B, sha fec4cf21341b == manifest fec4cf21341b: True"
+    },
+    {
+      "id": "A3",
+      "name": "archive sha256 byte-proof u1_c1_q.pdf",
+      "ok": true,
+      "detail": "HTTP 200, 247,446B, sha 600c640559a0 == manifest 600c640559a0: True"
+    },
+    {
+      "id": "A4",
+      "name": "archive sha256 byte-proof u1_practice.pdf",
+      "ok": true,
+      "detail": "HTTP 200, 1,115,796B, sha dd7c6a82571f == manifest dd7c6a82571f: True"
+    },
+    {
+      "id": "B1",
+      "name": "shelf of record",
+      "ok": true,
+      "detail": "HTTP 200, entries=1, doc=e6c0db50\u2026, docVersion=1, pages=383"
+    },
+    {
+      "id": "B2",
+      "name": "chapters of record (29 rows)",
+      "ok": true,
+      "detail": "HTTP 200, rows=29"
+    },
+    {
+      "id": "B3",
+      "name": "manifest\u2194registry tiling law",
+      "ok": true,
+      "detail": "29/29 rows tile exactly; bad=none"
+    },
+    {
+      "id": "B4",
+      "name": "133d citation-target regression",
+      "ok": false,
+      "detail": "HTTP 200, page=12 -> None"
+    },
+    {
+      "id": "C1",
+      "name": "slice delivery u1_c1.pdf",
+      "ok": false,
+      "detail": "HTTP 400, 20B (manifest 1,442,811), text/plain"
+    },
+    {
+      "id": "C2",
+      "name": "slice delivery u1_c1_q.pdf",
+      "ok": false,
+      "detail": "HTTP 400, 20B (manifest 247,446), text/plain"
+    },
+    {
+      "id": "C3",
+      "name": "slice delivery u1_practice.pdf",
+      "ok": false,
+      "detail": "HTTP 400, 20B (manifest 1,115,796), text/plain"
+    },
+    {
+      "id": "C4",
+      "name": "slice delivery u1_c3.pdf",
+      "ok": false,
+      "detail": "HTTP 400, 20B (manifest 822,179), text/plain"
+    },
+    {
+      "id": "C5",
+      "name": "whole book still serves (fallback/download)",
+      "ok": false,
+      "detail": "HTTP 502, no content-range"
+    },
+    {
+      "id": "D1",
+      "name": "shelf renders slice-exact mounts",
+      "ok": true,
+      "detail": "HTTP 200, chapter links>=66, exam links>=8, warm u1_c1=True"
+    },
+    {
+      "id": "D2",
+      "name": "lesson mount",
+      "ok": true,
+      "detail": "HTTP 200, mounts chapters/u1_c1.pdf: True, whole-book pane: False"
+    },
+    {
+      "id": "D3",
+      "name": "anchor jump",
+      "ok": true,
+      "detail": "HTTP 200, mounts chapters/u1_c1_q.pdf: True, whole-book pane: False"
+    },
+    {
+      "id": "D4",
+      "name": "anchor jump at citation p21",
+      "ok": true,
+      "detail": "HTTP 200, mounts chapters/u1_c1_q.pdf: True, whole-book pane: False"
+    },
+    {
+      "id": "D5",
+      "name": "citation p15 in-range",
+      "ok": true,
+      "detail": "HTTP 200, mounts chapters/u1_c1.pdf: True, whole-book pane: False"
+    },
+    {
+      "id": "D6",
+      "name": "unit exam row",
+      "ok": true,
+      "detail": "HTTP 200, mounts units/u1_practice.pdf: True, whole-book pane: False"
+    },
+    {
+      "id": "D7",
+      "name": "citation p124 -> unit span (1c20e95)",
+      "ok": true,
+      "detail": "HTTP 200, mounts units/u1_practice.pdf: True, whole-book pane: False"
+    },
+    {
+      "id": "D8",
+      "name": "p335 outside spans -> F-022 nearest (u4:c29)",
+      "ok": true,
+      "detail": "HTTP 200, mounts chapters/u4_c29.pdf: True, whole-book pane: False"
+    },
+    {
+      "id": "D9",
+      "name": "front matter p2 -> F-022 nearest (u1:c1)",
+      "ok": true,
+      "detail": "HTTP 200, mounts chapters/u1_c1.pdf: True, whole-book pane: False"
+    },
+    {
+      "id": "D10",
+      "name": "unknown book 404, no state leak",
+      "ok": false,
+      "detail": "HTTP 200, leak=False, bytes=75,851"
+    },
+    {
+      "id": "D11",
+      "name": "hub shell regression",
+      "ok": true,
+      "detail": "HTTP 200, 85,051B"
+    },
+    {
+      "id": "D12",
+      "name": "api health regression",
+      "ok": false,
+      "detail": "HTTP 401, {\"timestamp\":\"2026-10-19T11:08:47.624Z\",\"status\":401,\"error\":\"Unauthorized\",\"pat"
+    }
+  ],
+  "passed": 17,
+  "total": 25,
+  "verdict": "FAIL"
+}
