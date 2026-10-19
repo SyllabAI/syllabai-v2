@@ -39,6 +39,10 @@ on:
         description: "Operator note for this backfill run"
         required: false
         default: ""
+      mode:
+        description: "cow+prod (default, the full guard protocol) | prod-only (the COW proof already of record — saves the daily embedding budget for the prod pass)"
+        required: false
+        default: "cow+prod"
 
 permissions:
   contents: read
@@ -52,6 +56,7 @@ env:
 
 jobs:
   cow-proof:
+    if: ${{ inputs.mode != 'prod-only' }}
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
@@ -133,6 +138,7 @@ jobs:
 
   prod-apply:
     needs: cow-proof
+    if: ${{ !failure() && !cancelled() }}
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
