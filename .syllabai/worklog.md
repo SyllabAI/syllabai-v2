@@ -8647,3 +8647,18 @@ Stage Summary:
 - NEW information this instrument: the DB-side legs no prior receipt carried first-hand — 7/7 PASS read-only: 823/823 gemini-embedding-001 @ embed_rev=2 (== vector-arm EMBED_REV=2), dims 768, embedded_at window 00:27–00:28Z (postdates prod-apply run 39180126600 success 00:17:40Z), 4CH1 binding on all 823 (correction held), the bound subject's cv = 4CH1-2017 status=ACTIVE (the ONLY ACTIVE cv — the 4CH1/ACTIVE law lives on curriculum_versions.status), HNSW scope-law self-hit 1.000000. CI runs read first-hand (2 COW-proof failure legs + the prod-apply success). Live: health UP, shelf 200 @ slug igcse-chemistry-19, chapters 200, T-C20 404 law — all through the 133d carrier.
 - Rollback class hit again between turns (clone + .creds + lane tooling wiped) — recovered per the standing laws (fresh shallow clone at 7d19dbe; creds re-staged 0600; the of-record DATABASE_URL re-pulled via the Vercel env API decrypt with the fingerprint-verified inline token, unset after, never persisted). The Gemini key presence-confirmed on the env inventory (SYLLABAI_EMBEDDING_GEMINI_API_KEY) — never read, zero embedding spend (the sandbox cannot embed: the region law).
 - Credentials flagged AGAIN: vcp_ fingerprint d254bbfaac004354 unrotated this hour; rotation remains open of record.
+
+---
+Task ID: 57
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, trace 1a15374db6ad172d)
+Task: Operator "confirm if all the interactive questions are mapped to their past papers for all subjects" — READ-ONLY mapping census (repo law + prod Neon + live probes); receipt PASTPAPERS/interactive-mapping-census-run-001-r1c.json.
+
+Work Log:
+- Law read first-hand: Mode 2 exists ONLY where part.sourcePaper attests; partial-reconstruction + never-a-fake-player laws; interactive pages are PRERENDERED on the committed corpus bundles (bundle branch fires before the provider seam — two data planes by the demo discipline).
+- DB census (prod Neon, SELECT-only, sanctioned env-API volatile path; VERCEL_PAT fp d254bbfa == of-record unrotated; URL never printed/persisted; script copy shredded): subjects = 5 chemistry-variant rows ONLY; exam_papers 108 (95 VALIDATED w/ QP docs + 13 REJECTED); questions 1526 (1518 PAST_PAPER: 925 FK-mapped / 593 exam_paper_id-NULL + 8 SEED_DEMO); VALIDATED serve 361 active questions across 41 papers, FK-integral, zero orphans; REJECTED serve 0 (T-C20 holds); 54 VALIDATED papers have zero questions = honest-roadmap class.
+- Live probes: per-session 'N interactive' bands verified on the prerendered pages (chemistry 21, IAL-chem 24, physics 29, biology 12, maths-A-H 38, double-award-chem 12) + the disabled-chip honesty state; bundle bank counts (chemistry 50 distinct provenanced papers/241q, physics 107/375, IAL 24/368, maths-H 281/2560) explain the matched-vs-bank gap (provenance-shape + PDF-counterpart matching).
+- Sandbox: bun install 930 pkgs post-ff (831a4ae law; recurring fresh-container class, disclosed); zero repo mutations beyond the shredded script copy.
+- Write ledger: ZERO writes on every plane; zero LLM; no credentials at rest.
+
+Stage Summary:
+- Answer of record: mapping is BY-CONSTRUCTION sound inside the interactive surface and deliberately partial across subjects/papers (disclosed honesty laws, no fake players); the DB-side relational gap (593 sourcePaper-mapped-only questions + 54 zero-question VALIDATED papers + chemistry-only subjects) is the quantitative map of what a full roll (133e-analogue for papers / the parse roadmap) would need. Next repo receipt = Task-58; next workspace = Task-42.

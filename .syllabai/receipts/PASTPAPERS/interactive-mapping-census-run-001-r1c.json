@@ -1,0 +1,24 @@
+{
+  "receipt": "PASTPAPERS/interactive-mapping-census-run-001-r1c",
+  "band": "the interactive-question -> past-paper mapping census (READ-ONLY) — operator trace 1a15374db6ad172d \"confirm if all the interactive questions are mapped to their past papers for all subjects\"",
+  "lane": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)",
+  "created_at_utc": "2026-10-19T00:20:00Z",
+  "method": "repo law read first-hand (pastpapers-corpus.ts / past-papers.ts / interactive-chip.tsx / courses.ts) + prod Neon SELECT-only census via the sanctioned env-API volatile path (VERCEL_PAT fp d254bbfaac004354 == of-record, URL never printed/persisted, script copy shredded post-run) + unauth live probes of the prerendered past-papers pages; ZERO writes, zero LLM",
+  "the_law_of_record": [
+    "Mode 2 (Interactive) papers exist ONLY where the parsed question corpus attests them via part.sourcePaper provenance (date + paper ref + question number); everything else renders the honest 'parsing roadmap' chip — never a fake player (apps/hub/src/lib/pastpapers-corpus.ts, lib/past-papers.ts)",
+    "a paper page is a PARTIAL RECONSTRUCTION by disclosed law: 'the questions the corpus holds from that paper, never the full official paper. Every surface says so'",
+    "the interactive past-papers pages are PRERENDERED at build and ride the committed corpus bundles (loadHubCourse: bundle branch fires first; only a bundle-less pilot would ride the provider seam) — the interactive UI plane and the v2 DB plane are two data planes by the demo discipline"
+  ],
+  "verdict": "WITHIN the interactive surface: YES — every interactive question is mapped to its past paper BY CONSTRUCTION (sourcePaper is the grouping key; papers exist only where it attests). ACROSS subjects/papers: NO by honest design — interactive coverage is deliberately partial and non-uniform: chemistry 21 matched papers on the live page (bank holds 50 distinct papers, 241/524 questions provenanced), physics 29 (bank 107), IAL chemistry 24 (bank 24), maths-A higher 38 (bank 281 pre-tier-filter), double-award chemistry 12; the v2 DB carries CHEMISTRY ONLY and even there 54 of 95 VALIDATED papers have ZERO parsed questions (Mode 1 PDFs + roadmap chip, never a player)",
+  "db_census_prod_neon": {
+    "subjects": "5 rows — ALL chemistry variants (4CH0CHEMISTRY, 4CH1, 4CH1CHEMISTRY, CHM, IGCSECHEMISTRY); NO physics/biology/maths subject rows exist in the DB of record",
+    "papers": "4CH1: 105 papers = 95 VALIDATED (all with QP docs) + 10 REJECTED; IGCSECHEMISTRY: 3 REJECTED — 108 total == the of-record bank",
+    "questions": "PAST_PAPER 1518 (925 paper-mapped, 593 exam_paper_id-NULL) + SEED_DEMO 8 (0 mapped)",
+    "serving": "VALIDATED papers carry 361 active questions (all on 4CH1, 41 papers); REJECTED papers carry 0 active questions (the T-C20 gate holds); the F-contradiction class (PAST_PAPER provenance with no relational mapping) = 593 — these surface via part.sourcePaper strings, not FK rows (the UI law), a disclosed port posture",
+    "zero_question_validated_papers": "54 papers (the 4CH0-era 1C/1CR/2C long tail 2011-2018 among them) — Mode 1 PDFs serve, interactive shows the honest roadmap chip"
+  },
+  "integrity": "FK-integral: every active question on a VALIDATED paper resolves to exactly one paper (361/361); zero orphans served; the unique paper identity index (paper_code+session_label) held; no duplicate-paper anomalies surfaced",
+  "live_probes": "prerendered pages carry the per-session 'N interactive' bands (chemistry 21, IAL chem 24, physics 29, biology 12, maths-A-H 38, double-award-chem 12) + InteractiveChip with the disabled 'isn't interactive yet' state — the honesty UI verified live",
+  "write_ledger": "ZERO writes: SELECT-only SQL, GET-only HTTP, env-API decrypt volatile-only (URL in one shell substitution, never printed, never at rest); bun install 930 pkgs was the only sandbox mutation (831a4ae law, post-ff); census script copy shredded post-run",
+  "boundaries": "no deploys, no env acts, no DB writes, archived repos untouched, no force"
+}
