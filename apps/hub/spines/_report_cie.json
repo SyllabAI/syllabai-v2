@@ -1,0 +1,36 @@
+{
+ "resourcesSha": "a4ce9f5559990a97950355d8f4cc85d30a796301",
+ "board": "Cambridge CIE",
+ "generatedUtc": "2026-10-19T19:02:22Z",
+ "courses": {
+  "cie-igcse-chemistry-23": {
+   "qual": "cie-igcse-chemistry-2023-2025",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 12,
+    "subtopics": 49,
+    "specPoints": 252,
+    "parsePool": 252,
+    "scopedPool": 252,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "subtopic 4.1 title drift (page-wrap artifact): kept 'Electrolysis'; also seen ['Electrolysis continued']",
+    "subtopic 10.3 title drift (page-wrap artifact): kept 'Air quality and climate'; also seen ['Air quality and climate continued']",
+    "subtopic 11.1 title drift (page-wrap artifact): kept 'Formulae, functional groups and terminology'; also seen ['Formulae, functional groups and terminology continued']",
+    "subtopic 12.5 title drift (page-wrap artifact): kept 'Identification of ions and gases'; also seen ['Identification of ions and gases continued']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 1,
+    "examples": [
+     "7.2.2a"
+    ]
+   }
+  }
+ },
+ "failures": []
+}
