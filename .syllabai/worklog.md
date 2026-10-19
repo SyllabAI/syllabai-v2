@@ -8801,3 +8801,21 @@ Work Log:
 
 Stage Summary:
 - SCOPE FILED of record: CIE frontend integration = 44 courses (40 with EQ / 44 with notes / 33 with flashcards / 33 official parsed specs) wired through the EXISTING 3-stage content pipeline + operator-gated DB plane; zero code changes made (scope-only); stub-bank inclusion recommended as notes-only honest-empty; coreBridge + flashcard-sync default OFF pending operator product call; awaiting operator go on Phases 0-3.
+
+---
+Task ID: T-MIG-136 run-003 (separation ruling, trace 1a1547aad9e22efd)
+Agent: r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)
+Task: Operator asked "Cant we keep 4ma1 and 4mb1 seperate?" — the separation ruling recorded of record (direct-main bookkeeping landing)
+
+Work Log:
+- Fetch-first at record time: origin/main at 53cc40a (T-MIG-136 merged via PR #204, R0-AUTO receipt d29f5c8; sz SECOND-LANE VERIFY 0b26c5f — the api-CODE redeploy lever DISCHARGED, data plane THREE ACTIVE curricula 4CH1/4PH1/4MA1; r0 CIE scope 7f251cd; sz worklog restoration 53cc40a)
+- Ruling recorded: 4MA1 and 4MB1 stay FULLY SEPARATE — the run-001/run-002 "combined 4MA1+4MB1 Neon order is an operator option" notes are WITHDRAWN of record (historical receipts byte-untouched; the card amendment + receipt run-003-separation-ruling-r0.json supersede)
+- Separability re-proven from the substrate of record: keys disjoint (4MB1-S* / 4MB1-2016 vs 4MA1-S* / 4MA1-2016), corpus disjoint (Official-Specifications/igcse-maths-b/ vs igcse-maths-a*/ — re-verified at resources tip 4add4968, 78,009 paths), the seed apply per-course + idempotent + conflict-fail-closed (bundle-seed.ts), the shared 135 code merged subject-generic — nothing needs to co-land
+- 136c shape fixed by the ruling: a 4MB1-ONLY Neon order (COW-proof first per the 093/134c law, then the operator order); the maths-a DATA-plane gate (135e) proceeds in its own lane with its own gate/evidence/rollback — with three curricula already live, Maths B enters only by its own single-course lever, never bundled
+- Landing path disclosed (three hops, same record): c687d9d lost to a mid-arc sandbox rollback pre-push -> replay b4e1fd0 pushed to t-mig-136/r7a AFTER the #204 merge (stranded on the closed PR branch) -> THIS direct-main re-landing per the bookkeeping precedent, fetch-first + race-guarded + non-forced; disclosed cost: one no-code-delta hub auto-bake
+- Credential law held: GITHUB_PAT inline-only, never printed/persisted, unset post-push; fp16 a8ccee736aa8c75b == the sz-designated fp12 a8ccee736aa8 (0b26c5f); rotation standing
+- Card amended (status comment + bands NOTE), receipt filed; zero code delta, zero prod writes, zero Neon contact
+
+Stage Summary:
+- The two subjects' prod applies are decoupled of record; the 136c gate for this lane is now a single-course 4MB1 order awaiting the operator lever
+- Queue otherwise unchanged: coreBridge declaration for igcse-maths-b-16 (moot until questions exist), Maths B book source handoff + the 4.75GB/5GB push-wall decision, the maths-a 135e DATA-plane lever (its own lane), standing PAT rotation
