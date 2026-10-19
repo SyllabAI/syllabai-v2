@@ -9198,3 +9198,16 @@ Stage Summary:
 - The card is EXECUTED of record: 12 Cambridge International courses LIVE past-papers-first on the hub of record (2,232 QP+MS pairs claimed = 98.8% of the 2,259-paper archive; component-7's 27 rows archive-only per D2), catalog 49→61, the G1/G2/G3 rendering debts retired with cover-verified names, the 0580 tier law corrected of record, and the card's paper-count assertions now CI-enforced (validate_cie_bundles.ts in prebuild).
 - Decisions applied: D1 YES (pure-2 anticipation row), D2 archive-only + badge, D3 out of scope, D4 this card first (the sibling #208 resource wave attaches to these live slugs, shrinking its roster 44→33 as filed).
 - Rollback anchor: revert 251e22e (single-PR revert) + the validator fails closed in prebuild. Next repo receipt = Task-63; next workspace = Task-46.
+
+---
+Task ID: 62-addendum (guard-chain disclosure, same act)
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)
+Task: disclosure rider to the Task-62 receipt commit 9f51441.
+
+Work Log:
+- The receipt push's guard script misfired of record: its `git checkout main` silently failed (dirty .syllabai paths at loop entry), so the first receipt commit (2ccfcc8) landed on the PR branch and `git push origin main` raced/failed against local main 9b9684c; the loop's `reset --hard` then dropped that commit from the branch. NO foreign content was touched and origin was never written by the misfire (push rejected).
+- Recovery first-hand: the dropped commit was recovered from the reflog (2ccfcc8), local main ff'd to 251e22e, cherry-picked as 9f51441, fetch-first re-checked, pushed clean — origin/main 251e22e..9f51441, 2 .syllabai files only (receipt + worklog).
+- Lesson filed: guard scripts must check the checkout's exit code before committing (the same rc-discipline as the 44-guard's renumber fix); the lane-side script (scripts/task62_push_receipt.py) is kept as the misfired artifact of record.
+
+Stage Summary:
+- The Task-62 receipt stands as pushed (9f51441); the misfire is disclosed and bounded — zero origin damage, zero foreign paths, token in-memory throughout.
