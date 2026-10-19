@@ -8710,3 +8710,21 @@ Work Log:
 
 Stage Summary:
 - ANSWER OF RECORD: past papers are viewable end-to-end from every course with a mapped spec, every one of the 10,535 corpus files is reachable and streams 200, and ALL 31,574 probed links work — ZERO broken links on the live hub. The 16 modular-24 courses are an honest, by-design empty state (roadmap, not a bug); if the operator wants official PDF archives there, the corpus must acquire those specs first. Receipt: .syllabai/receipts/QA-SWEEP/qa-pastpapers-links-sweep-r0.json. Residuals unchanged: PAT rotation, Vercel token rotation, Render disable, prj_D7vf third-account delete. LANE R0: IDLE.
+
+---
+Task ID: 58
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, trace 1a15395976051145)
+Task: Operator "are all the questions in the 'Exam questions' of the courses mapped to their original papers?" — READ-ONLY census run-002 of the Exam-Questions bank; receipt PASTPAPERS/examq-provenance-census-run-002-2026-10-19-r1c.json.
+
+Work Log:
+- Fetch-first: ff e068b49 -> ab6ba58 (25 commits: interactive census run-001 99e49bc already of record by the parallel lane, QA-SWEEP ab6ba58, T-MIG-133/134 bands, PR #190 promotion) BEFORE any read. Worklog tail re-read: highest numeric Task ID 57.
+- Surface pinned: /courses/[course]/exam-questions = SME-licensed topic banks (schema syllabai.sme-exam-questions/1.1, 894 sets, source.pageUrl provenance, set-level), riding committed bundles.
+- Corpus walk (49 bundles, 27,865 parts): 17,643 parts (63.3%) with REAL sourcePaper provenance (date/number filled), 10,222 (36.7%) all-NULL shells. Unmapped is concentrated: IAL Maths-20 pure 1-4 + M1-2 + S1-2 = 5,011 parts at 0% (Decision-1 373/375 mapped); 8 courses have fully EMPTY banks.
+- Resolution census (faithful Python port of the repo's parseReconstruction + COURSE_SPECS vs pastpapers-index.json 103 specs): 11,007 direct RESOLVED + 347 RESOLVED-SIBLING (double-award banks citing single-award papers, per the 2-series scope law) = 11,354 = 64.4% of provenanced point at papers physically archived; 4,540 FOREIGN-SPEC (maths banks citing UK-Edexcel 1MA1/1MA0, OCR J560, AQA 8300 — real papers, other boards); 1,296 ARCHIVE-GAP (Nov-2020 series 4BI1/WBI1x/4EC1, Jan-2023 4EC1, geography 2017-2019 vs 4ge1 archive starting 2022-06); 357 SME-CODE-UNPARSABLE (mostly Specimen) + 96 NO-NUMBER ('Pre2017').
+- UI law verified in code: the student Exam-Questions player never renders sourcePaper; provenance surfaces only on past-papers reconstruction pages + teacher test-builder ('scheme from <paper>').
+- Live probes (unauth GET-only, all 200): chemistry-19 / maths-a-18-higher / ial-maths-20-pure-1 / maths-b-16 exam-questions + biology-19 past-papers ('12 interactive' bands + 'Partial reconstruction' chips live); maths-b-16 renders the honest empty state.
+- Analytical extension disclosed: modular-24 courses have NO repo corpus mapping (honest-empty by design); this census mapped them to the same 4xx1/4xx0 specs ANALYTICALLY only (physics modular refs resolve via legacy 4PH0) — zero repo changes.
+- Write ledger: ZERO writes on every plane; zero credentials; zero LLM.
+
+Stage Summary:
+- Verdict of record: Exam-Questions -> original-paper mapping is deliberately partial (63.3% data-level; ~64% of those archived); the gap classes are enumerated and attributable (no-provenance IAL-maths suite / foreign-board maths citations / Nov-2020-era archive gaps). Consistent with run-001. Next repo receipt = Task-59.
