@@ -39,6 +39,7 @@ import {
   NotFoundError,
   type GradedEvidencePublisher,
   type SubmitClock,
+  assembleGradedEvidenceEvent,
 } from "../selfmark";
 
 export type { GradedEvidencePublisher, SubmitClock } from "../selfmark";
@@ -618,19 +619,21 @@ export class SmartMarkService {
           return !r.validation_passed && a.marking_state === "PENDING";
         });
         if (!stillPending) {
-          const secondary = (await this.sql`
-            select node_id from question_topics where question_id = ${attempt.question_id}
-          `) as unknown as Array<{ node_id: string }>;
-          const fired = await this.publisher.publishGraded({
-            attemptId,
-            learnerId: attempt.learner_id,
-            questionId: attempt.question_id,
-            marksAwarded: total,
-            marksTotal: 0,
-            correct: false,
-            secondaryTopicNodeIds: secondary.map((r) => String(r.node_id)),
-            occurredAt: this.clock.now().toISOString(),
-          });
+          // T-MIG-137a: the assembly is the shared assembler's (the frozen
+          // publisher's own laws — EvidencePublisher.java:51-120). This also
+          // retires the pre-wiring placeholder payload (marksTotal 0 / correct
+          // false — dead fields under the claiming stub, load-bearing under
+          // the live 137b publisher): marksTotal/correct now derive from the
+          // question row per the frozen :56-60 rule, like selfmark/teachermark.
+          const fired = await this.publisher.publishGraded(
+            await assembleGradedEvidenceEvent(this.sql, {
+              attemptId,
+              learnerId: attempt.learner_id,
+              questionId: attempt.question_id,
+              marksAwarded: total,
+              occurredAt: this.clock.now().toISOString(),
+            }),
+          );
           if (fired) {
             await this.sql`
               update attempts set evidence_emitted = true

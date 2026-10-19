@@ -41,6 +41,7 @@ import {
 } from "../../services/selfmark";
 import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "../../services/identity/users";
+import { createGradedEvidencePublisher } from "../assessment";
 import { apiError } from "../../services/identity/errors";
 import { requireAuth, getAuth } from "../../middleware/auth";
 import { buildLlmChain, chainAsCandidateGenerator, chainAsFeedbackLlm, type FailoverLlmChain } from "../../services/llmchain";
@@ -170,11 +171,18 @@ export function buildSmartMarkRouters(
   const databaseUrl = requireDatabaseUrl(env as { DATABASE_URL?: string });
   const sql = createSql(databaseUrl);
   const chain = seams.chain ?? buildLlmChain(env);
-  const selfMarkModule = buildSelfMarkModule(sql, seams.publisher, seams.clock);
+  // T-MIG-137 (D1/D3): the LIVE graded-evidence publisher is the default for
+  // BOTH the smart-mark module and the self-mark module — the claiming stub
+  // retires to the frozenParityGradedEvidencePublisher test double (the
+  // pre-137 posture, claims true and emits nothing); the selfmark noop
+  // asymmetry retires with it (self-marked attempts regain their E-1 flip).
+  const gradedPublisher =
+    seams.publisher ?? createGradedEvidencePublisher(sql);
+  const selfMarkModule = buildSelfMarkModule(sql, gradedPublisher, seams.clock);
   const module = buildSmartMarkModule(
     sql,
     seams.generator ?? chainAsCandidateGenerator(chain),
-    seams.publisher ?? { publishGraded: async () => true },
+    gradedPublisher,
     seams.clock ?? { newId: () => crypto.randomUUID(), now: () => new Date() },
     seams.llm ?? chainAsFeedbackLlm(chain),
   );

@@ -41,6 +41,7 @@ import type { ZodError } from "zod";
 import { buildSelfMarkModule, NotFoundError, BadRequestError, ConflictError } from "../../services/selfmark";
 import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "../../services/identity/users";
+import { createGradedEvidencePublisher } from "../assessment";
 import { apiError } from "../../services/identity/errors";
 import { requireAuth, getAuth } from "../../middleware/auth";
 import { selfMarkRequestSchema } from "@syllabai/contracts";
@@ -222,7 +223,10 @@ export function createLearnerSelfMarkRouter(module: ReturnType<typeof buildSelfM
 export function buildSelfMarkRouters(env: Record<string, string | undefined> = process.env) {
   const databaseUrl = requireDatabaseUrl(env as { DATABASE_URL?: string });
   const sql = createSql(databaseUrl);
-  const module = buildSelfMarkModule(sql);
+  // T-MIG-137 (D1): the LIVE publisher replaces the noop default — self-marked
+  // attempts regain their E-1 flip + the learner-model write (the retired
+  // noopGradedEvidencePublisher stays the claims-false test double).
+  const module = buildSelfMarkModule(sql, createGradedEvidencePublisher(sql));
   return { module, selfMarkRoute: createLearnerSelfMarkRouter(module) };
 }
 

@@ -69,6 +69,7 @@ import {
 } from "../services/selfmark";
 import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "../services/identity/users";
+import { createGradedEvidencePublisher } from "./assessment";
 import { apiError } from "../services/identity/errors";
 import { requireRole, getAuth } from "../middleware/auth";
 import {
@@ -396,10 +397,13 @@ export function buildTeacherMarkingRouters(
   const databaseUrl = requireDatabaseUrl(env as { DATABASE_URL?: string });
   const sql = createSql(databaseUrl);
   const chain = seams.chain ?? buildLlmChain(env);
+  // T-MIG-137 (D1/D3): the LIVE graded-evidence publisher is the default —
+  // the claiming stub retires to the frozenParityGradedEvidencePublisher
+  // test double (the pre-137 posture).
   const module = buildTeacherMarkingModule(
     sql,
     seams.generator ?? chainAsCandidateGenerator(chain),
-    seams.publisher ?? { publishGraded: async () => true },
+    seams.publisher ?? createGradedEvidencePublisher(sql),
     seams.clock ?? { newId: () => crypto.randomUUID(), now: () => new Date() },
   );
   // kappa/latest read (:282-293) — newest evaluation per scope, straight read

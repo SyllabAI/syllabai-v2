@@ -9115,3 +9115,18 @@ Work Log:
 Stage Summary:
 - The 134d receipt commit landed of record on origin main (run-003 29/29 PASS + card amendment + three in-repo golden captures) — 134d CLOSED end-to-end on the durable record
 - Open: 134b envelope-gate ruling receipt (reconcile the 148 served vs the bundle's 489); 134e physics books (operator gate); PAT rotation advised (token now plaintext in chat three times)
+---
+Task ID: trace 1a155ef6c1c1be19 (T-MIG-137 bands 137a-c)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6, chat 1f3003b6)
+Task: "fire 137" — the graded-evidence→KG join executed on the filed D1-D4 defaults; bands 137a-c on branch t-mig-137/r7a.
+
+Work Log:
+- Fetch-first: branch off main 1bc92b9 (the +2 CIE-INTEGRATION worklog commits carried zero file overlap); the frozen core re-verified FIRST-HAND at 6cad6ef (local clone): EvidencePublisher.publishGraded :51-63 (the claim IS the markEvidenceEmitted entity guard; structured emits EMPTY misconception lists :61; correct = marksTotal > 0 && marksAwarded >= marksTotal :58-60), the event record :55-73 (selfDoubtFlag :79 — D2 answered by the frozen source: the graded event CARRIES the flag), StruggleInferenceService :53-65 (@Order(100), 5a per topic on event.selfDoubtFlag :62), the three callers (smart fires on κ+completing :139-158/:270-286, teacher on !revising+completing :127-141, self always at settle :135-139).
+- 137a: the seam widened in its home (services/selfmark/index.ts) — GradedEvidenceEvent (the full frozen observable shape) + assembleGradedEvidenceEvent (the frozen publisher's assembly laws in ONE place: marksTotal/correct from the question row, topicNodeIds primary-first + primary-equal skip, spec points deduped + null-skipped, optionCount = LIVE MCQ_SINGLE count else 0, empty misconception lists, selfDoubtFlag from the attempts row); the three lane call sites in lockstep — the smartmark batch's marksTotal:0/correct:false pre-wiring placeholder (dead under the stub, load-bearing under the live publisher) retired by construction.
+- 137b: createGradedEvidencePublisher (routes/assessment, the MCQ publisher's sibling) — claim read BEFORE any model write (suppressed = frozen :53-55), then the Order(10)+Order(100) pair over the registry-resolved BKT base, fail-loud; composition binds it for all three lanes (buildSmartMarkRouters/buildTeacherMarkingRouters/buildSelfMarkRouters) — the claiming stub retired to the named frozenParityGradedEvidencePublisher double, the selfmark noop asymmetry retired (D1: self-marked attempts regain their E-1 flip).
+- 137c: 15 pins (test/learner/graded-evidence-join.test.ts) + the shared gradedEvidenceRoutes rig helper; the firing rigs (selfmark/smartmark/teachermarking service+routes) carry the assembler's statement stubs.
+- GATES: typecheck x4 exit 0; api suite 2258/0/13skip EXACT +15 vs main 2243 (19834 expects); hub build+lint GREEN; census --gate GREEN LIVE=0. Zero prod writes, zero LLM, zero Neon contact; PR t-mig-137/r7a -> main.
+
+Stage Summary:
+- The join is LIVE in code of record: every marked attempt — MCQ (since #163) and NOW structured (self/smart/teacher, any subject) — lands BKT/BDT/fluency evidence keyed on the curriculum KG nodes + the struggle engine reads the post-update snapshot; the 4MA1/4MB1 maths joins (landed at ingest via the shared smeRef law) have a live consumer.
+- 137d next: merge + api redeploy (VERCEL_PAT present) + the live self-mark proof battery (zero-LLM deterministic lane) — the learner-page arc of the pending Maths A smoke.
