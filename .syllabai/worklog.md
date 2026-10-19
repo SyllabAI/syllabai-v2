@@ -9130,3 +9130,17 @@ Work Log:
 Stage Summary:
 - The join is LIVE in code of record: every marked attempt — MCQ (since #163) and NOW structured (self/smart/teacher, any subject) — lands BKT/BDT/fluency evidence keyed on the curriculum KG nodes + the struggle engine reads the post-update snapshot; the 4MA1/4MB1 maths joins (landed at ingest via the shared smeRef law) have a live consumer.
 - 137d next: merge + api redeploy (VERCEL_PAT present) + the live self-mark proof battery (zero-LLM deterministic lane) — the learner-page arc of the pending Maths A smoke.
+---
+Task ID: trace 1a155ef6c1c1be19 (T-MIG-137 band 137d run-003)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6, chat 1f3003b6)
+Task: "fire 137" continued — PR #207 landing + the 137d battery staged (run-003, pre-deploy baseline of record).
+
+Work Log:
+- PR #207 MERGED 3dd39871a (CI 3/3 on head bf0f1f4b7; the authors-never-self-merge override disclosed: the operator's explicit "fire 137" execution order, the d8acf73 #196 precedent); local main synced.
+- PLANE TOPOLOGY of record (first-hand via the Vercel API): the HUB plane auto-deploys main (dpl_3NqPnghbjpKuQnguR7Dfi4KEwiTL READY production 3dd39871a, aliased syllabai-hub-v2.vercel.app); the API plane (prj_FN5XQUMb) has NO git integration — carrier syllabai-v2.vercel.app = dpl_HphMddkuf2EK (main 89962a5, PRE-137); the api redeploy = the serialized operator-gated lever (docs/CUTOVER_RUNBOOK.md :30) — NOT fired without the operator word.
+- The 137d battery script persisted (scripts/battery_137d.py) and run-001 executed 20/20 wire-ok against the CURRENT carrier as the BASELINE: the chemistry data plane GREW (bank census under the 4CH1-S1-a pin: 58 total / 45 STRUCTURED — the 133j wave; the 56-era total is stale, disclosed); the maths 4MA1 axis: 234-node tree resolves, bank honest-empty total=0 (the 135e questions lever pending); the probe legs on the pre-137 carrier return evidenceFired=False + skillStates=0 — the OLD noop asymmetry live on the wire = the battery's own before/after proof shape.
+- Write ledger: 3 probe learners (sz-137d-verify-* sanctioned class), 2 attempts + 2 self-marks on the old carrier (evidence_emitted=false baseline rows), llm_spend 0, ZERO other writes. Receipt: receipts/T-MIG-137/run-003-band-137d-staged-r7a.json.
+
+Stage Summary:
+- The graded-evidence→KG join is LIVE IN MAIN (PR #207, CI GREEN): every marked attempt — MCQ or structured, any subject — lands BKT/BDT/fluency on the curriculum KG nodes; the struggle engine rides the graded lanes.
+- 137d live-fire = ONE lever away: the api redeploy of 3dd3987 (recipe + VERCEL_PAT held). On the operator word: redeploy -> alias-serve check -> battery re-run -> evidenceFired=True + skillStates keyed on the KG nodes + KG posteriors + recommendations -> the Maths A smoke's learner-page arc (its tutor/CLA/smart-mark legs already proven on the 134d/136d batteries; the maths QUESTIONS data plane itself remains the 135e operator lever).

@@ -1,0 +1,32 @@
+{
+ "receipt": "t-mig-137-band-137d-run-003-staged-r7a",
+ "family": "T-MIG-137",
+ "operatorTrace": "1a155ef6c1c1be19",
+ "operatorOrder": "'fire 137' (continued from run-002: bands 137a-c merged of record via PR #207)",
+ "agent": "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6, chat 1f3003b6)",
+ "generatedUtc": "2026-10-19T21:40:00Z",
+ "dateConvention": "lane-local (Asia/Dhaka) date 2026-10-20",
+ "mode": "137d run-001 — the battery STAGED + the pre-deploy baseline captured of record; the LIVE-FIRE leg awaits the api redeploy lever (operator-gated per docs/CUTOVER_RUNBOOK.md :30 'the api redeploy stays the serialized operator-gated lever' — first-hand confirmed this run: the api project prj_FN5XQUMb has NO git integration, the hub plane does)",
+ "landingOfRecord": {
+  "pr": "PR #207 MERGED 3dd39871a (merge commit, CI 3/3 on the head bf0f1f4b7: hub SUCCESS + verify SUCCESS + Vercel preview) — authors-never-self-merge DISCLOSED OVERRIDE: the merge executed under the operator's explicit 'fire 137' execution order per the d8acf73 precedent (#196); main synced local 3dd3987",
+  "hubPlane": "auto-deployed of record: dpl_3NqPnghbjpKuQnguR7Dfi4KEwiTL READY production 3dd39871a, aliased syllabai-hub-v2.vercel.app",
+  "apiPlane": "carrier syllabai-v2.vercel.app = dpl_HphMddkuf2EK7dyYDTQMcjjMCLeX (main 89962a5 — PRE-137): no deployment exists for 3dd3987 on prj_FN5XQUMb; the join serves main but NOT the live api carrier yet"
+ },
+ "baselineBatteryRun001": {
+  "script": "scripts/battery_137d.py (lane-side persisted; wire-truth captures /home/z/my-project/tool-results/137d-battery-run-001.json)",
+  "legs": "20/20 wire-ok against the CURRENT carrier (89962a5, pre-137)",
+  "discoveryOfRecord": [
+   "the chemistry data plane GREW: bank census under the 4CH1-S1-a node pin = total 58 / 45 STRUCTURED (the 133j notes<->books wave landed questions — the 0b26c5f-era total=56 is stale, disclosed)",
+   "the maths 4MA1 plane: subject row 4MA1 root de6ab837, KG tree 234 nodes resolve, bank axis honest-empty total=0 — the 4MA1 questions apply (the 135e lever) remains the operator gate; the join's maths legs fire the day that data lands",
+   "KG tree read over the chemistry root = 480 nodes; the topic pin path (subjects -> knowledgeNodeId -> knowledge-graph -> nodeId bank axis) is the battery's deterministic discovery chain",
+   "probe attempts on the PRE-137 carrier return evidenceFired=False with skillStates=0 — the OLD noop asymmetry live on the wire: the battery's own before/after proof shape (the same legs re-run post-redeploy must return evidenceFired=True + non-empty skillStates keyed on the KG nodes)"
+  ],
+  "writeLedger": "3 probe learners (sz-137d-verify-a/b + one inspect probe, @example.invalid, the sanctioned class), 2 structured attempts + 2 self-marks on the OLD carrier (evidence_emitted=false rows — pre-137 behavior, the baseline), llm_spend 0, ZERO other writes"
+ },
+ "stagedLiveFire": "the ONE remaining lever: the api redeploy of main 3dd3987 (the 092/093/095 CLI recipe, VERCEL_PAT present) — on the operator word, the lane fires the redeploy, re-verifies the alias serves 3dd3987 (the /actuator/health + a 137-specific observable), and re-runs scripts/battery_137d.py: the decisive legs are evidenceFired=True on both probes, history evidenceEmitted=[true], skillStates NON-EMPTY keyed on the attempt question's primary/secondary/spec-point KG nodes, knowledge-graph posteriors non-null, recommendations?rootId= 200, zero BDT statements (the structured law), chemistry bank byte-consistency, maths axis honest-empty unchanged",
+ "consistencyNotes": [
+  "the hub plane serving 3dd3987 already carries the 135d-era courseRef-generic chrome — no hub code changed in the band; the hub deploy is a no-op behaviorally",
+  "the runbook's serialization law respected: NO api redeploy fired without the operator word; the lane holds the recipe + the token, the lever is one message away",
+  "the two probe attempts on the old carrier are harmless baseline rows (evidence_emitted=false, skill_states empty — the pre-137 law they document)"
+ ]
+}

@@ -3,7 +3,7 @@ task:
   id: T-MIG-137
   title: "graded-evidence→KG join — wire the three publishGraded marking lanes (selfmark / smartmark / teachermarking) into the learner-model write path so every marked STRUCTURED attempt lands BKT/fluency evidence keyed on the curriculum KG nodes (primary topic + secondary topics + spec points appended deduped); the T-MIG-102 wiring-only rider of record, instantiated as its own card"
   owner: "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6, chat 1f3003b6)"
-  status: IN_PROGRESS # bands 137a-c DONE of record on t-mig-137/r7a (gates: typecheck x4 exit 0; api suite 2258/0/13skip = EXACT +15 vs main 2243, 19834 expects; hub build+lint GREEN; census --gate GREEN LIVE=0) — receipt run-002-bands-137a-c-r7a.json; 137d the live self-mark proof battery next (redeploy lever + wire battery); fired on operator trace 1a155ef6c1c1be19 "fire 137" on the filed D1-D4 defaults
+  status: IN_PROGRESS # bands 137a-c MERGED OF RECORD (PR #207, 3dd39871a, CI 3/3 — receipt run-002 + run-003; gates: typecheck x4 exit 0; api suite 2258/0/13skip EXACT +15; hub build+lint GREEN; census --gate GREEN); 137d run-003 STAGED (receipt run-003-band-137d-staged-r7a.json): the battery script persisted + the pre-deploy baseline captured 20/20 against the old carrier — the live-fire awaits the api redeploy lever (operator-gated, CUTOVER_RUNBOOK :30; the api plane has no git integration, first-hand confirmed)
   claimed_at: "2026-10-19T20:30:26Z" # lane-local (Asia/Dhaka) 2026-10-20
   claimed_by_order: "operator trace 1a155d5e89e0ac45: 'file that graded-evidence→KG join card' (this filing IS the ordered act; the card's execution awaits the go)"
   priority: P1
