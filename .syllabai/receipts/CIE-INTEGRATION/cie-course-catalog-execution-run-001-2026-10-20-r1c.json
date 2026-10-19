@@ -1,0 +1,71 @@
+{
+  "receipt": "cie-course-catalog-execution-run-001-2026-10-20-r1c",
+  "family": "CIE-INTEGRATION",
+  "taskOfRecord": "Task-62 (r1c lane receipt numbering: 60 = paper-accessibility census run-001 5c2b06c, 61 = the course-catalog scope card bbf5e91)",
+  "operatorTrace": "1a15602e470f4d31",
+  "operatorOrder": "re-verify the last edit, extend validate_cie_bundles.ts with the card's paper-count assertions, run bun run build:hub, PR -> CI -> merge -> deploy, A4 live acceptance battery (Task-60 method), receipt Task-62 + workspace Task-45",
+  "agent": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)",
+  "generatedUtc": "2026-10-20T03:55:00Z",
+  "dateConvention": "receipt filename carries the lane-local (Asia/Dhaka) date 2026-10-20, consistent with the lane's run-001 receipts",
+  "scope": "EXECUTION of the card (bands A0-A4, the operator go the card's scope-only mode held for) + the operator-named validator, end to end on the live wire",
+  "step1_reVerifyTheLastEdit": {
+    "verdict": "ALL GREEN (scripts/cie_card_reverify.py, persisted lane-side)",
+    "R1_corpusCounts": "6 CIE spec keys in the committed index (pastpapers-index.json), counts EXACT: 9701=379, 9702=379, 9709=434, 0620=398, 0625=401, 0580=268 = 2,259",
+    "R2_freshness": "index treeSha 3063c7169c16 == the corpus HEAD of record (census run-001 law)",
+    "R3_grammar": "every CIE dir matches <syllabus>-[SWM]<yy>-QP-<nn> (G1 premise; zero parse hazards)",
+    "R4_splits": "9709 tens-digit census {1:67, 2:68, 3:68, 4:68, 5:68, 6:68, 7:27}; 0580 {1:67, 2:67, 3:67, 4:67} -> core 134 / extended 134; strict-11 total 2,164; with-D1 2,232 — ALL EXACT to the card",
+    "R5_listable": "all 2,259 dirs carry BOTH qp and ms; er == 0 everywhere",
+    "R6_roster": "the 11 strict slugs verbatim in the Phase-0 bank<->spec join matrix; pure-2 ABSENT (D1's premise verified by absence); name law anchored by pure-1/pure-3 rows",
+    "R7_spines": "11/11 spines committed at card-style slugs; pure-2 spine absent (sibling-wave scope)",
+    "gaps_g1_g3": "G1 buildEntry has no CIE branch (Unit P fallback LIVE in code), G2 specTitle has no ial/igcse mapping, G3 'Edexcel' hardcode at past-papers/page.tsx:119 + 6 sibling title sites — all confirmed first-hand pre-fix"
+  },
+  "premiseCorrectionOfRecord": {
+    "supersedes": "the card's A3 wording '0580 core = components 1-2 / extended = components 3-4' — on the filter composition ONLY",
+    "evidence": "QP covers fetched first-hand from the archive: 0580-S19-QP-11 'Paper 1 (Core)', 0580-S19-QP-31 'Paper 3 (Core)', 0580-S19-QP-21 'Paper 2 (Extended)', 0580-S19-QP-41 'Paper 4 (Extended)', stable through 2025 ('Paper 1 Non-calculator (Core)' / 'Paper 3 Calculator (Core)')",
+    "trueLaw": "Core = components [1,3], Extended = [2,4] — baked into COURSE_SPECS and validate_cie_bundles.ts; the card's totals (134 + 134) and coverage claims are UNCHANGED, the composition flips",
+    "bonusPins": "9701/9702 Paper 4 = 'A Level Structured Questions' (not 'A2 Level') verified 2019+2021+2025; 9709 component-7 cover-verified 'Paper 7 Probability & Statistics 2 (S2)' (2016+2018) — the title the card's A0 asked to verify; 0580 EXCLUDED from CIE_PAPER_TITLES by design (covers changed across the archive — no single per-tens name is truthful for every row)"
+  },
+  "a0_shapeProof": "12 minimal-but-valid 7-file skeleton bundles (manifest/curriculum/concept-graph/notes/questions/flashcards/learner-sim; ALL counts 0; board 'Cambridge International'; treeKind sme-native; importSource.ref points at the card receipt; honest learner-sim disclaimer) — NO empty-bundle precedent existed; prerendered clean: 61 course pages incl. 12 CIE with the honest import-pending overview card + live past-papers surfaces",
+  "a1_fixes": {
+    "G1": "buildEntry CIE branch via parseCieDir: ref '<syllabus>/<component>', title 'Paper <n>' + the cover-verified CIE_PAPER_TITLES map (31 cover fetches across 9701/9702/9709/0620/0625; unverified components stay 'Paper <n>'), variant-digit chip, CorpusPaperEntry.component (tens digit) + CourseSpecMap.components filter",
+    "G2": "specTitle qual map ('ial'/'igcse' -> 'IAL'/'IGCSE') — fixes the 6 archive h1s AND every CIE course row's specTitle",
+    "G3": "registry rows carry an EXPLICIT board field ('Cambridge International', never-derived discipline); boardOf() default 'Edexcel' = ZERO copy delta for the 49 pre-CIE rows; board-aware now: past-papers/exam-questions/revision-notes/flashcards/practice-papers/strengths titles, paperKey h1, overview qual + identity line, CourseHeader crumb default, both class-overlay footnotes, catalog intro; overview past-papers card desc 'real Edexcel past papers' -> 'real past papers'",
+    "D2": "'Legacy syllabus' badge on the 27 archive-only 9709 component-7 rows; the archive per-spec renderer now shows specBadge (it never did — 3-line addition)",
+    "G4": "posture kept: no CIE durations attested -> every CIE mock renders the honest editable-estimate state (validator pins durationMin == null on every CIE row)"
+  },
+  "a2_catalogAndBundles": "12 roster-aligned registry rows: the 11 strict slugs verbatim + the D1 cie-a-level-maths-20-pure-2 ANTICIPATION row (card operator decision D1 default YES, default_if_unanswered==YES applied of record; no SME bank, spine-less by design); all status 'full', board 'Cambridge International', NO coreBridge/curriculumCode (Phase-0 posture pins); catalog 49 -> 61; registry note amended honestly; content-maps NOT required (past-papers surface is content-map-independent — verified; the sibling phase-2 wave #208 owns that layer)",
+  "a3_wiring": "COURSE_SPECS +12: sciences unfiltered; 9709 component banks keyed on the tens digit ([1]/[2]/[3]/[4]/[5]/[6]); 0580 core [1,3] / extended [2,4] per the cover-verified tier law",
+  "validatorOfRecord": {
+    "file": "apps/hub/scripts/validate_cie_bundles.ts",
+    "disclosure": "the file did NOT exist at tip (no hub script, no git history on any branch) — CREATED at this act per the operator's order; 'extend' executed as create+wire",
+    "wiring": "package.json verify:cie + the prebuild chain (verify_corpus_23a -> verify_flashcard_sync_courses -> validate_cie_bundles) = CI-enforced via build:hub",
+    "assertions": "the card's paper-count assertions ZERO-TOLERANCE: per-course counts 379/379/67/68x5/398/401/134/134; strict-11 2,164 (95.8%) / with-D1 2,232 (98.8%); holdings 2,259; archive 108/108; listable qp+ms on EVERY CIE row; G4 durationMin null everywhere; G1 ref/title/component law + G2 specTitle law on every row; component composition (9709 banks + 0580 tiers); registry posture (12 rows, board, status full, no bridge fields); skeleton shape (7 files, counts 0); D2 component-7 claimed by NO course",
+    "result": "ALL GREEN locally AND inside bun run build:hub at the merged tree"
+  },
+  "build": {
+    "command": "bun run build:hub (root script; prebuild chain incl. the new validator)",
+    "result": "GREEN; 61 course pages prerendered (12 CIE x 6 subroutes); archive 108 spec pages prerendered; zero type errors"
+  },
+  "pr_ci_merge": {
+    "pr": 209,
+    "branch": "cie-catalog/pastpapers-r1c (rebased over origin's move 9b9684c->dce1567 mid-act: #207 137a-c + #208 CIE phase-2 content-maps + the 134b/134d receipts — zero file overlap; validator re-run green post-rebase)",
+    "ci": "3/3 GREEN (verify, hub, Vercel Preview Comments) at head ed4fab2",
+    "merge": "True @ 251e22e6e30d861f378b51b29ecc22175ed95e3b (merge commit; house method)",
+    "deploy": "hub git-linked auto-deploy — LIVE observed (probe 200 + board-aware title)"
+  },
+  "a4_liveAcceptance": {
+    "method": "Task-60 method: computed-vs-LIVE-SSR unique view-row diff, ZERO-TOLERANCE per course, against the hub of record syllabai-hub-v2.vercel.app (GET-only)",
+    "result": "ALL GREEN — 82/82 PASS (scripts/task62_a4_battery.py + task62_a4_results.json)",
+    "rowDiffs": "all 12 courses: local(computed) == LIVE unique view rows, diff 0 (379/379/67/68x5/398/401/134/134 EXACT); badges == computed incl. session counts (pure-1 28 sessions, others 29)",
+    "gProbes": "G1 live (no 'Unit P', no raw dir refs, syllabus/component refs on every course); G2 live (IAL/IGCSE h1s, lowercase gone); G3 live (board-aware titles, zero Edexcel strings above the fold); G4 live (zero attested-duration strings on CIE rows)",
+    "d2_live": "'Legacy syllabus' badge LIVE on the 9709 archive page (54 chip renders = 27 rows x 2 mentions), component-7 reachable ONLY there (0 rows on any course page)",
+    "archive": "108/108 spec links LIVE on /past-papers; catalog intro renders '49 Edexcel IAL/IGCSE course variants and 12 Cambridge International courses — 61 Learning Hubs'",
+    "proxy": "/api/corpus-pdf streams a CIE QP (%PDF-1.6, 200)",
+    "regression": "igcse-chemistry-19 LIVE badge 96 papers · 33 sessions + 'Legacy spec' chips + Edexcel titles byte-identical (Task-60 numbers reproduced)",
+    "disclosure": "first battery run showed 18 FAILs — ALL probe bugs in the battery script itself (static-banner 'official timer' copy false-positive for G4; 9[67] regex missing 06xx IGCSE codes; c7 distinct-ref threshold; findall-with-capture-group counting boards not paths) — product defects ZERO; probes fixed and the battery re-run clean; script diffs disclosed lane-side"
+  },
+  "decisionsApplied": "D1 pure-2 anticipation row = YES (card default); D2 component-7 archive-only + Legacy-syllabus badge; D3 2026 sessions OUT of scope (corpus-acquisition scope stays open); D4 this card first — the sibling resource wave (#208 landed mid-act) attaches to these slugs and shrinks 44->33 rows as filed",
+  "writeLedger": "hub-plane only: 12 skeleton bundles + registry rows + lib/page code + validator; PR #209 merge on main; ZERO DB/Neon writes, zero core deploys (api carrier untouched), zero LLM, zero resources-repo contact; corpus GETs: 35 cover/verification fetches (public raw archive) + the live battery GETs; credentials: the remote's embedded token in-memory only, never echoed, never written",
+  "rollbackAnchors": "revert 251e22e (single-PR revert restores the 49-course catalog + pre-G1/G2/G3 rendering); the validator fails closed in prebuild if the CIE mapping drifts",
+  "consistency": "all census numbers reconcile to run-001 and the card; honest-provenance law untouched (skeleton banks all-empty, AI-IDENTIFIED badge live); the sibling scopes (#208 phase-2, phase-1 spines) respected — zero file overlap with my PR"
+}
