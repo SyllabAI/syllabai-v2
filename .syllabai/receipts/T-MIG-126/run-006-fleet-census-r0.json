@@ -1,0 +1,71 @@
+{
+  "run": "run-006-fleet-census-r0",
+  "date": "2026-10-19T07:5xZ",
+  "operator_trace": "1a1531373a65f691 'check the ledger'",
+  "agent": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "what": "The fleet census of the T-MIG-126 review_schedules writer band (the item the r1c state-census run-003 marked OWED: 'first pass window 10-19 00:00 UTC elapsed, fleet census owed') + the full ledger/board/serving sweep. SELECT-only on the data plane; zero writes of any kind.",
+  "method": "Neon prod via the console control plane (key inline-only, never persisted); bun + postgres@3 (the api's driver class); every query SELECT-only; output scrub-asserted (0 hits for napi_/ghp_/vcp_/uri). Live-wire probes unauth GET-only.",
+  "findings": {
+    "decay_job_runs": {
+      "window_2026_10_19": {
+        "fired": true,
+        "trigger_kind": "vercel-cron",
+        "executed_at_utc": "2026-10-19T00:32:22Z",
+        "decayed": 135,
+        "reviews_scheduled": 0
+      },
+      "reading": "THE T-MIG-126 WRITER BAND IS LIVE OF RECORD: the new 00:00 UTC schedule fired and the ledger-honesty upgrade serves REAL counts (135 decayed) — vs the 042-era 0/0 hardcoded rows (windows 10-14..10-18) and the core-era CATCH_UP row (window 10-13, 135/0 real).",
+      "recent_rows": [
+        { "window": "2026-10-19", "executed": "00:32:22Z", "trigger": "vercel-cron", "decayed": 135, "scheduled": 0 },
+        { "window": "2026-10-18", "executed": "02:29:12Z", "trigger": "vercel-cron", "decayed": 0, "scheduled": 0 },
+        { "window": "2026-10-17", "executed": "02:29:13Z", "trigger": "vercel-cron", "decayed": 0, "scheduled": 0 },
+        { "window": "2026-10-13T03:00", "executed": "03:30:00Z", "trigger": "CATCH_UP", "decayed": 135, "scheduled": 0 }
+      ]
+    },
+    "review_schedules": {
+      "total_rows": 202,
+      "by_status": { "PENDING": 202 },
+      "by_reason": { "DECAY_CROSSED_THRESHOLD": 202 },
+      "distinct_learners": 61,
+      "distinct_nodes": 69,
+      "latest_row_created": "2026-10-11T04:00:23Z (core-era)",
+      "band_era_rows": 0,
+      "reading": "ZERO new rows at the first real pass — the run-005 '~8 NEW rows' prediction was an UPPER BOUND; the actual 0 is THE EXISTS-DEDUP LAW HOLDING: every threshold-crossing (learner,node) pair already carries a terminal PENDING row (core wrote 202; PENDING is terminal in the frozen as-built — no transition writer). New rows require NEW (learner,node) crossings. Not a miss; the law verbatim."
+    },
+    "idle_population": { "skill_states_gt2d": 210, "learners": 62, "note": "EXACT match of the run-005 pre-census input population" },
+    "struggle_inferences": {
+      "total": 14,
+      "by_generated_date": { "2026-09-20": 6, "2026-09-17": 5, "2026-09-10": 3 },
+      "by_type": { "METACOGNITIVE": 11, "PREREQUISITE_GAP": 3 },
+      "reading": "ALL core-era — the merged T-MIG-131 writer has fired 0 post-bake rows: it is event-driven (rides marked-attempt evidence events) and no marked attempts have occurred since the band's bake. The honest posture, writer-backed."
+    },
+    "live_wire_unauth_get_only": {
+      "api_health": "200 {status:UP}",
+      "hub_health": "200 {ok, dataMode core-api}",
+      "cron_nightly_decay_unauth": "401 exact bearer law body ('the hub seam forwards the Vercel Cron bearer verbatim')",
+      "books_listing_unauth": "400 route-existence law — the 133c route SERVES on the deployed bundle",
+      "books_citation_target_unauth": "401 (filter chain; the 133d route rides past the serving bundle — discriminator inert unauth)",
+      "tutor_bank_questions_unauth": "401",
+      "hub_past_papers": "200 (regression green)"
+    },
+    "cron_schedule_of_record": "apps/hub/vercel.json '0 0 * * *' at tip 6c84af6; firing PROVEN by the decay_job_runs ledger row (trigger_kind=vercel-cron at 00:32:22Z)",
+    "carriers": {
+      "hub": "dpl_27NAt3rD1GGMRjCATTpp3zbvNk5s @ 6c84af6 (tip) READY — git auto-bake",
+      "api": "dpl_5VapkZhh9nSskGfGVdF9NPtpGULc @ 258f905 (the 133c bake) READY 2026-10-18T22:44Z — the 133d code (PR #199 e69e56a + runner #200 ce9b2e5) rides PAST it"
+    },
+    "board": {
+      "cards": 128,
+      "done": 126,
+      "lagging": "T-MIG-131 was IN_REVIEW (merge of record PR #192 1384a09 2026-10-18T17:02:46Z under the operator's explicit merge order; CI verify+hub 2/2 SUCCESS at the merge commit first-hand via check-runs API) — DESK FLIP -> DONE executed this run per the round-21 census precedent (missed-flip catch-up, comment-only)",
+      "in_progress": "T-MIG-133: 133a/b/c/d ALL merged of record, data leg 823/823 embedded, subject-binding corrected (4CH1/ACTIVE); remaining lever = the operator api redeploy; 133e operator-gated"
+    },
+    "prs": "zero open except #190 (DRAFT PoC, operator-gated)",
+    "ci_at_tip": "verify+hub 2/2 success at 6c84af6"
+  },
+  "write_ledger": {
+    "data_plane": "zero writes (SELECT-only census)",
+    "repo": ".syllabai-only bookkeeping (this receipt + the 131 desk flip + the worklog entry)",
+    "llm_spend": 0,
+    "credentials": "inline-only, never persisted (hygiene note: a remote-add momentarily wrote the PAT to .git/config; scrubbed to 0 hits same minute)"
+  }
+}
