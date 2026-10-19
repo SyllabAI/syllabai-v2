@@ -8676,3 +8676,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-134 IN_PROGRESS: band 134a DONE-local (merge = this push); 134b questions band staged (gate: SME SUPPORTED_PACKAGE_VERSION 1.0 vs the bundle's 1.1 envelope — faithful acceptance or versioned shim, never a silent rewrite); 134c = the OPERATOR prod-apply gate (COW-proof first) + the license confirmation line ('Demo re-use only' in the manifest — the operator's SME authorization governs); 134d four-subsystem zero-LLM battery on 4PH1; 134e physics books (133 pipeline re-run, separate gate). Standing residuals unchanged: 133e, PAT rotation, prj_D7vf (owning-account credential), Vercel prune.
+
+---
+Task ID: 49
+Agent: r4-api-b (Super Z, zai-web session web-77b6eb1d-5d09-4958-852b-ea9f8f7a9c8a)
+Task: Operator trace 1a15368746160a7d — turn the 7 filed implications (Task-47) into a SyllabAI Smart-Chat/Mark design spec; explore SME progress rings (notes + questions), the answer box and all features, the dashboard, the study plan, and teacher mode (profile/settings).
+
+Work Log:
+- Opening checklist: .secrets re-verified (found 755 post-restore -> tightened to 0600); local main FF 4e415f7 -> 26d98da; fetch-first clean.
+- Pass-4 SME exploration (agent-browser, auth restored, no login wall): 42 PNGs (125-166). Dashboard (125-127); study plan 3-step builder + generated week (128-133); progress rings 3-level tree (134-139: lesson binary check, subtopic/topic fraction arcs, EQ tree a SEPARATE dimension, count prefixes tick); answer box full stack (140-158: toolbar + 5-tab scientific equation keyboard + Write/Upload; part chip icons STATIC metadata — probe negative disclosed; self-score; Question help Related notes/Hint/Stepped breakdown; View answer full-screen scheme modal; MCQ flow with praise card, nav badge, set row 3%); teacher mode via Profile "I am a..." (159-166: full brand flip to For Teachers/purple/Start teaching/Resources/Test Builder; S&W strength-score 10-Q threshold 1-5; persona RESTORED to Student, revert verified); ATTRIBUTION LOOP PROVEN: note check auto-completed the matching plan Revise task (state "Mark as incomplete"), single MCQ did not flip the 45-min Practise task (threshold implied).
+- Deliverable of record: SyllabAI-SmartChat-Mark-Design-Spec.docx (download lane; 825KB; 9 sections; 7 figures; 4 tables; R1/WM-1 cover; Roman TOC/Arabic body; add_toc_placeholders 19 entries exit 0; footer patch; postcheck 9/9 — 0 errors 0 warnings). Scripts scripts/sme/gen_spec.js + add_dims.js.
+- Spec: 7 implications -> DC-1..DC-7 (observed / decision-law / mechanics / acceptance), mapped onto v2 machinery — smartmark MarkingPoint/MarkingContext/Allocation, karag prepare() step 2.8 + TutorContext.markContext, prompt v13 DISCLOSURE LAW, session-store parity, GradedEvidencePublisher -> engagement rollup -> ring tree + plan projection, lens table generalising the quiz-scaffold intent law; P0 (DC-1, DC-2, DC-6) / P1 (DC-3, DC-4, DC-7) / P2 (DC-5, study plan, teacher surfaces) roadmap; evidence index files 125-166.
+- No register/card mutations — product research + spec lane (consistent with Tasks 45-47); worklog mirror only; .syllabai-only direct-main, fetch-first, no force.
+
+Stage Summary:
+- The 7 implications are a buildable spec: P0 marking-context contract + two-tier disclosure law + history-parity law; P1 re-attempt entitlement + lens cards + rings/plan attribution; P2 alternatives materialisation + conformance lint + study-plan builder + teacher persona surfaces. Pass-4 closed the five unexplored surfaces and proved plan attribution first-hand. Account left as Student persona; free-tier caveat stands.
