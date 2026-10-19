@@ -8567,3 +8567,17 @@ Work Log:
 
 Stage Summary:
 - THE OPERATOR REDEPLOY LEVER FIRED OF RECORD: dpl_Daps9E6ntWKt1xWaEpXWRReZkQgu serves main 6c84af6; BAND 133d IS LIVE ON THE API PLANE (citation-target route + the tutor-arm book wire); T-MIG-133 bands 133a/133b/133c/133d ALL LIVE END-TO-END. Remaining gates: 133e (remaining books), PR #190 promotion, PAT rotation, prune-v2. Receipt: .syllabai/receipts/T-MIG-133/band-133d-api-redeploy-run-002-r0.json.
+
+---
+Task ID: trace 1a1534d8a52dc0b5 ("api redeploy, first check")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: "api redeploy, first check" — the operator-gated api redeploy lever, with the pre-fire check first.
+
+Work Log:
+- THE FIRST CHECK DID ITS JOB: fetch-first caught remote tip moved 5fa4acd -> 086dc32 — a parallel r0 lane (trace 1a1531b6e74ad0c1) had ALREADY FIRED the redeploy and filed run-002 of record (dpl_Daps9E6ntWKt1xWaEpXWRReZkQgu READY @ 6c84af6, 12/12 battery, alias switched, 'BAND 133d LIVE END-TO-END'). This lane took NO deploy action (a second firing would double-deploy) and converted to the SECOND-LANE VERIFICATION per the T-MIG-126 run-004 precedent.
+- Carrier verified first-hand (Vercel API, vcp inline-only): dpl_Daps9E6ntWKt1xWaEpXWRReZkQgu READY, latest on the api project, holding the production aliases [syllabai-v2.vercel.app, syllabai-v2-syllab-ai.vercel.app]; the incumbent dpl_5VapkZhh (133c bake @ 258f905) demoted one below.
+- Wire battery 6/6 ZERO-LLM (all unauth GET): api health 200 UP; cron 401 exact bearer law body; books listing 400 route-existence law (the 133c wire still serving); bank questions 401; THE CITATION-TARGET DISCRIMINATOR — GET books/{pilot}?page=12 -> 200 UNAUTH, FLIPPED vs the incumbent's 401 an hour prior: body = BookCitationTarget EXACT (u1:c1 'States of matter', bookPage 3-13, pdfPage 12-22) = the run-002 F-022 containment record reproduced on the SERVED bundle; T-C20 404 no-state-leak law verbatim on a bogus doc.
+- Receipt: .syllabai/receipts/T-MIG-133/band-133d-run-003-second-lane-verify-r0.json. .syllabai-only, fetch-first, no force. Write ledger: zero writes / zero LLM / zero probe learners / credentials inline-only.
+
+Stage Summary:
+- BAND 133d LIVE END-TO-END — CONFIRMED BY THE SECOND LANE, FIRST-HAND: the api serving state has closed to the 6c84af6 code wire; the run-002 receipt stands corroborated. The T-MIG-133 card's remaining items: 133e (operator gate). Standing residuals: PAT rotation, prj_D7vf, Vercel prune, #190 promotion.

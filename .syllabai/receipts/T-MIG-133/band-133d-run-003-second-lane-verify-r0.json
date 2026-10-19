@@ -1,0 +1,30 @@
+{
+  "run": "band-133d-run-003-second-lane-verify-r0",
+  "date": "2026-10-19T08:4xZ",
+  "operator_trace": "1a1534d8a52dc0b5 'api redeploy, first check'",
+  "agent": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "what": "The operator's api-redeploy order, first-check leg. THE RACE FINDING: fetch-first caught the lever ALREADY FIRED by the parallel r0 lane (trace 1a1531b6e74ad0c1, run-002 of record at 086dc32, dpl_Daps9E6ntWKt1xWaEpXWRReZkQgu @ 6c84af6) BEFORE this lane could double-fire. Per the T-MIG-126 run-004 precedent ('already merged of record — this lane's leg = first-hand verification, no action'), this lane re-derived zero actions and executed the SECOND-LANE VERIFICATION of the carrier + wire. Zero redeploys, zero LLM.",
+  "carrier_verification": {
+    "dpl_Daps9E6ntWKt1xWaEpXWRReZkQgu": {
+      "state": "READY",
+      "production_alias_held": ["syllabai-v2.vercel.app", "syllabai-v2-syllab-ai.vercel.app"],
+      "latest_on_project": true,
+      "incumbent_demoted": "dpl_5VapkZhh (the 133c bake @ 258f905) sits one below, still READY, alias removed",
+      "method": "Vercel API v6 list + v13 detail first-hand (vcp inline-only)"
+    }
+  },
+  "wire_battery_6_of_6_zero_llm": {
+    "1_api_health": "200 {status:UP}",
+    "2_cron_bearer_law": "401 exact body ('the hub seam forwards the Vercel Cron bearer verbatim')",
+    "3_books_listing_route_existence": "400 law — the 133c wire still serving",
+    "4_tutor_bank_questions": "401 auth law",
+    "5_CITATION_TARGET_DISCRIMINATOR": "GET /api/v1/content/books/{pilot e6c0db50}?page=12 -> 200 UNAUTH — FLIPPED vs the incumbent bundle (401 in the ledger-check sweep ~1h prior): the 133d route SERVES on the production alias; body = the BookCitationTarget contract EXACT (docVersion 1, courseId igcse-chemistry-19, chapter u1:c1 'States of matter', bookPage 3-13, pdfPage 12-22) = the run-002 F-022 containment record reproduced byte-for-byte on the served bundle",
+    "6_tc20_404_law": "bogus doc -> 404 {error:not_found, message:'Book 000... not found'} — the no-state-leak law body of record"
+  },
+  "verdict": "BAND 133d LIVE END-TO-END — CONFIRMED BY THE SECOND LANE, FIRST-HAND: the run-002 receipt's 12/12 stands corroborated (6/6 zero-LLM legs here incl. the 2 decisive 133d discriminators). The api serving state has closed the gap to main's code wire at 6c84af6 (+ the .syllabai-only bookkeeping commits 5fa4acd/086dc32 ride harmlessly past — zero code delta).",
+  "write_ledger": {
+    "data_plane": "zero writes, zero LLM spend, zero probe learners (all probes unauth GET)",
+    "repo": "this receipt + the worklog entry, .syllabai-only, fetch-first, no force",
+    "credentials": "inline-only, never persisted"
+  }
+}
