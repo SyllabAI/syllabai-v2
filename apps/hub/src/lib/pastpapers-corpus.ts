@@ -168,6 +168,36 @@ const COURSE_SPECS: Record<string, CourseSpecMap> = {
     // retired 2008-spec units (WBI01–06)
     legacySpecs: [`${IA}/biology/wbi01`, `${IA}/biology/wbi02`, `${IA}/biology/wbi03`, `${IA}/biology/wbi04`, `${IA}/biology/wbi05`, `${IA}/biology/wbi06`],
   },
+  // ── Modular 2024 (X-series) — first teaching Sept 2024, first assessment
+  // June 2025. Corpus specs landed in syllabai-pastpapers 3063c716 (June-2025
+  // public set, publisher first-party). One corpus spec per subject; the
+  // units prefix filter disambiguates unit courses (4WBI1 = unit 1 vs
+  // 4WBI2 = unit 2 — modular papers carry a W-infix, printed 4WBI1/1B style).
+  // Unit-2 biology/chemistry still map even though Pearson has not unlocked
+  // their June-2025 MS/ER publicly (and unit-2 physics is QP-only) — those
+  // courses render the honest empty state until the secure-series unlock
+  // sweeps land materials in the corpus. Maths A modular is ONE spec folder
+  // (dual qualification codes 4XMAF/4XMAH) with unit-tier prefixes
+  // 4WM1F/4WM1H/4WM2F/4WM2H (covers print 4WM1F/01). The Double Award modular
+  // splits its SIX paper codes per science exactly like the linear 4SD0
+  // handling: 4WSD1/2 = biology U1/U2, 4WSD3/4 = chemistry U1/U2,
+  // 4WSD5/6 = physics U1/U2.
+  "igcse-biology-modular-24-unit-1": { specs: [`${IG}/biology/4xbi1`], units: ["4WBI1"] },
+  "igcse-biology-modular-24-unit-2": { specs: [`${IG}/biology/4xbi1`], units: ["4WBI2"] },
+  "igcse-chemistry-modular-24-unit-1": { specs: [`${IG}/chemistry/4xch1`], units: ["4WCH1"] },
+  "igcse-chemistry-modular-24-unit-2": { specs: [`${IG}/chemistry/4xch1`], units: ["4WCH2"] },
+  "igcse-physics-modular-24-unit-1": { specs: [`${IG}/physics/4xph1`], units: ["4WPH1"] },
+  "igcse-physics-modular-24-unit-2": { specs: [`${IG}/physics/4xph1`], units: ["4WPH2"] },
+  "igcse-maths-a-modular-24-foundation-unit-1": { specs: [`${IG}/mathematics-a/4xmaf-4xmah`], units: ["4WM1F"] },
+  "igcse-maths-a-modular-24-foundation-unit-2": { specs: [`${IG}/mathematics-a/4xmaf-4xmah`], units: ["4WM2F"] },
+  "igcse-maths-a-modular-24-higher-unit-1": { specs: [`${IG}/mathematics-a/4xmaf-4xmah`], units: ["4WM1H"] },
+  "igcse-maths-a-modular-24-higher-unit-2": { specs: [`${IG}/mathematics-a/4xmaf-4xmah`], units: ["4WM2H"] },
+  "igcse-science-double-award-modular-24-biology-unit-1": { specs: [`${IG}/science-double-award/4xsd1`], units: ["4WSD1"] },
+  "igcse-science-double-award-modular-24-biology-unit-2": { specs: [`${IG}/science-double-award/4xsd1`], units: ["4WSD2"] },
+  "igcse-science-double-award-modular-24-chemistry-unit-1": { specs: [`${IG}/science-double-award/4xsd1`], units: ["4WSD3"] },
+  "igcse-science-double-award-modular-24-chemistry-unit-2": { specs: [`${IG}/science-double-award/4xsd1`], units: ["4WSD4"] },
+  "igcse-science-double-award-modular-24-physics-unit-1": { specs: [`${IG}/science-double-award/4xsd1`], units: ["4WSD5"] },
+  "igcse-science-double-award-modular-24-physics-unit-2": { specs: [`${IG}/science-double-award/4xsd1`], units: ["4WSD6"] },
   "ial-maths-20-pure-1": { specs: [`${IA}/mathematics/mathematics-2018`], units: ["WMA11"] },
   "ial-maths-20-pure-2": { specs: [`${IA}/mathematics/mathematics-2018`], units: ["WMA12"] },
   "ial-maths-20-pure-3": { specs: [`${IA}/mathematics/mathematics-2018`], units: ["WMA13"] },

@@ -8832,3 +8832,16 @@ Work Log:
 
 Stage Summary:
 - The corpus now HOLDS the first modular-2024 (X-series) materials: June-2025 public set complete (78 files / 28 dirs / 5 specs). HUB STILL SHOWS HONEST-EMPTY for the 16 courses by design — Phase 2 (bun index regen @ 3063c716 + 5 COURSE_SPECS entries + PR per code-change law) flips them atomically, then Phase 3 QA battery. Residuals: secure-series unlock sweeps (incl. the newly-discovered Jan-2026 class), physics 4WPH2 qp-only, PAT rotation (consumed again this run), Vercel token rotation, Render disable, prj_D7vf. LANE R0: IDLE (Phase 2 next on operator go or lane pickup).
+
+Task ID: SCOPE-PP-MOD24-r1 phase 2 (same operator trace 1a153d2ed38a62fd "go")
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: hub mapping — regenerate pastpapers-index.json @ corpus 3063c716 + add the 16 modular-24 COURSE_SPECS entries (Phase 2 of the filed plan)
+
+Work Log:
+- Index regenerated against corpus landing 3063c716: 108 specs (103 + 5 X-series: 4xbi1, 4xch1, 4xph1, 4xmaf-4xmah, 4xsd1), 5,309 paper dirs, treeSha pinned; 28 new paper dirs total.
+- COURSE_SPECS + 16 entries via the EXISTING units prefix filter (4WBI1 vs 4WBI2; maths dual-code folder 4xmaf-4xmah split by unit-tier prefixes 4WM1F/1H/2F/2H; double-award six-code split 4WSD1..6 per science exactly like the linear 4SD0 law). NO route/viewer/code changes — modular dir naming parses via the existing last-dash law (4WBI1-1BR renders "Paper 1B + Timezone R" natively); no legacySpecs (linear 4BI1/4CH1/4PH1/4MA1 are CURRENT sibling qualifications, not legacy — badging them would misrepresent).
+- Coverage outcome (functional replication of buildEntry + filters): 14/16 modular-24 courses LIVE with 2 June-2025 papers each (28 entries); igcse-biology-modular-24-unit-2 + igcse-chemistry-modular-24-unit-2 map but return 0 (Pearson has not unlocked their June-2025 set publicly) — they render the honest empty state until the unlock sweeps; igcse-physics-modular-24-unit-2 is live QP-only (2 QPs, MS/ER unpublished).
+- GATES: bun verify:corpus PASS, tsc --noEmit 0, eslint 0, prod build exit 0 (prebuild verify chain green). Branch scope-pp-mod24/phase2-hub-mapping; PR next; prod is git-connected (auto-deploy on merge — dpl carrier law per FAVICON-r0 discovery).
+
+Stage Summary:
+- Phase 2 code-of-record pending PR merge; on merge the 16-course honest-empty flip is atomic on prod (index + mapping in one deploy). Phase 3 (QA battery scoped to the 16 courses) follows on the baked alias.
