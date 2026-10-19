@@ -1,0 +1,2103 @@
+{
+ "run": "136d-battery-run-003",
+ "task": "T-MIG-136",
+ "band": "136d",
+ "lane": "r7a continuation (session web-6139ba42, trace 1a155d6503fa6c5d '136d zero-LLM battery + golden cases now runs against the live tree'",
+ "base": "https://syllabai-v2.vercel.app",
+ "carrier_of_record": "dpl_HphMddkuf2EK7dyYDTQMcjjMCLeX (main 89962a5; api plane zero commits after 89962a5 on origin/main at fire time = the carrier IS the live tree)",
+ "started": "2026-10-19T20:40:53Z",
+ "ended": "2026-10-19T20:41:08Z",
+ "operator_trace": "1a155d6503fa6c5d '136d zero-LLM battery + golden cases now runs against the live tree'",
+ "zero_llm_posture": {
+  "hard_law": "every leg is a read or a deterministic pre-pipeline refusal",
+  "served_kind_asks_not_fired": "resolving CLA asks reach the vector arm (LLM-family) \u2014 deliberately NOT fired; all CLA legs are 404/400 refusals before the vector arm",
+  "tutor_ask_leg": "dies at the section-22 foreign-session probe (requireOwned) before the pipeline",
+  "smartmark_leg": "the attempt-law dormancy boundary only"
+ },
+ "write_ledger": {
+  "probe_learners": 1,
+  "probe_identity": "sz-136d-run3-1792442453@example.invalid",
+  "llm_spend": 0,
+  "prod_writes": "ZERO \u2014 no Neon writes, no sessions, no enrolments, no flashcard ratings, no engagement rows, no attempts"
+ },
+ "legs_total": 28,
+ "legs_passed": 28,
+ "result": "PASS",
+ "legs": [
+  {
+   "leg": "L01",
+   "subsystem": "CURRICULUM_AXIS",
+   "method": "GET",
+   "path": "/api/v1/curriculum/subjects",
+   "requestBody": null,
+   "status": 200,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=200 want=200"
+    },
+    {
+     "name": "subjects_of_record",
+     "pass": true,
+     "detail": "got=8 want=8"
+    },
+    {
+     "name": "4MB1_present",
+     "pass": true,
+     "detail": "subjects carry 4MB1"
+    },
+    {
+     "name": "4MB1_name",
+     "pass": true,
+     "detail": "got='Maths (4MB1)' want='Maths (4MB1)'"
+    },
+    {
+     "name": "4MB1_cv_code",
+     "pass": true,
+     "detail": "got='4MB1-2016' want='4MB1-2016'"
+    },
+    {
+     "name": "4MB1_cv_status",
+     "pass": true,
+     "detail": "got='ACTIVE' want='ACTIVE'"
+    },
+    {
+     "name": "4MB1_knowledgeNodeId",
+     "pass": true,
+     "detail": "7cb03087-1bc8-4175-9bf7-898d7dc89d48"
+    },
+    {
+     "name": "4CH1_present",
+     "pass": true,
+     "detail": "subjects carry 4CH1"
+    }
+   ],
+   "pass": true,
+   "response": [
+    {
+     "id": "de18dcbb-c4c4-49e9-9132-8e7fbd7ef9f4",
+     "code": "4CH0CHEMISTRY",
+     "name": "Chemistry",
+     "knowledgeNodeId": null,
+     "curriculumVersion": {
+      "id": "9cf15786-dbb9-4dda-9ff3-e88ef241795f",
+      "board": "Edexcel",
+      "qualification": "4CH0",
+      "code": "4CH0CHEMISTRY-INGEST",
+      "title": "4CH0 Chemistry (ingested, pending review)",
+      "status": "DRAFT"
+     }
+    },
+    {
+     "id": "e56dc9ee-aa74-426f-94a6-4b72d3dc346b",
+     "code": "4CH1",
+     "name": "Chemistry (4CH1)",
+     "knowledgeNodeId": "297a8706-b957-40cb-8bb6-0bfed66980b7",
+     "curriculumVersion": {
+      "id": "356840e6-81e2-49df-8182-93ab6504d591",
+      "board": "Edexcel",
+      "qualification": "International GCSE (9-1)",
+      "code": "4CH1-2017",
+      "title": "Pearson Edexcel International GCSE (9-1) Chemistry (4CH1, Issue 3)",
+      "status": "ACTIVE"
+     }
+    },
+    {
+     "id": "0f3cc8ba-d8b6-464c-b915-77b29abd64af",
+     "code": "4CH1CHEMISTRY",
+     "name": "Chemistry",
+     "knowledgeNodeId": null,
+     "curriculumVersion": {
+      "id": "62a73141-ba4e-4ad9-9847-1d53e6f4ab2e",
+      "board": "Edexcel",
+      "qualification": "4CH1",
+      "code": "4CH1CHEMISTRY-INGEST",
+      "title": "4CH1 Chemistry (ingested, pending review)",
+      "status": "DRAFT"
+     }
+    },
+    {
+     "id": "763dfe2d-d2b5-48fb-ba4c-2f708c637b26",
+     "code": "4MA1",
+     "name": "Maths (4MA1)",
+     "knowledgeNodeId": "de6ab837-b86a-4395-8564-6df50e80b23e",
+     "curriculumVersion": {
+      "id": "41a6e49a-bb41-459e-ae2b-14bbf77c819a",
+      "board": "Edexcel",
+      "qualification": "International GCSE (9-1)",
+      "code": "4MA1-2016",
+      "title": "Pearson Edexcel International GCSE (9-1) Maths (4MA1, 2016 specification)",
+      "status": "ACTIVE"
+     }
+    },
+    {
+     "id": "4970a241-4c04-4fb5-9d14-9f5eb97b0ee0",
+     "code": "4MB1",
+     "name": "Maths (4MB1)",
+     "knowledgeNodeId": "7cb03087-1bc8-4175-9bf7-898d7dc89d48",
+     "curriculumVersion": {
+      "id": "7b7a23d5-bfd1-42d1-9e1d-3373f794142a",
+      "board": "Edexcel",
+      "qualification": "International GCSE (9-1)",
+      "code": "4MB1-2016",
+      "title": "Pearson Edexcel International GCSE (9-1) Maths (4MB1, 2016 specification)",
+      "status": "ACTIVE"
+     }
+    },
+    {
+     "id": "86265a33-01a8-498c-b034-eb1a1eac9b2d",
+     "code": "4PH1",
+     "name": "Physics (4PH1)",
+     "knowledgeNodeId": "4e845c30-8ae5-4404-b59a-70adf7c3bf4f",
+     "curriculumVersion": {
+      "id": "5a9cd8fe-0a31-4ee6-87e0-be5ad1d8cddf",
+      "board": "Edexcel",
+      "qualification": "International GCSE (9-1)",
+      "code": "4PH1-2017",
+      "title": "Pearson Edexcel International GCSE (9-1) Physics (4PH1, 2017 specification)",
+      "status": "ACTIVE"
+     }
+    },
+    {
+     "id": "10000000-0000-0000-0000-000000000010",
+     "code": "CHM",
+     "name": "Chemistry",
+     "knowledgeNodeId": "20000000-0000-0000-0000-000000000001",
+     "curriculumVersion": {
+      "id": "10000000-0000-0000-0000-000000000001",
+      "board": "Edexcel",
+      "qualification": "IAL",
+      "code": "IAL-CHEM-2018",
+      "title": "Edexcel International A Level Chemistry (2018 specification)",
+      "status": "ARCHIVED"
+     }
+    },
+    {
+     "id": "83a6a815-19fc-47c3-8d7a-c3e101dc311a",
+     "code": "IGCSECHEMISTRY",
+     "name": "Chemistry",
+     "knowledgeNodeId": null,
+     "curriculumVersion": {
+      "id": "07ab0595-d7e4-4883-821a-3a1d1dad0dfa",
+      "board": "Edexcel",
+      "qualification": "IGCSE",
+      "code": "IGCSECHEMISTRY-INGEST",
+      "title": "IGCSE Chemistry (ingested, pending review)",
+      "status": "DRAFT"
+     }
+    }
+   ]
+  },
+  {
+   "leg": "L02",
+   "subsystem": "CURRICULUM_AXIS",
+   "method": "GET",
+   "path": "/api/v1/curriculum/versions",
+   "requestBody": null,
+   "status": 200,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=200 want=200"
+    },
+    {
+     "name": "four_active_curricula",
+     "pass": true,
+     "detail": "got=['4CH1-2017', '4MA1-2016', '4MB1-2016', '4PH1-2017'] want=['4CH1-2017', '4MA1-2016', '4MB1-2016', '4PH1-2017']"
+    },
+    {
+     "name": "all_ACTIVE",
+     "pass": true,
+     "detail": "['ACTIVE', 'ACTIVE', 'ACTIVE', 'ACTIVE']"
+    }
+   ],
+   "pass": true,
+   "response": [
+    {
+     "id": "7b7a23d5-bfd1-42d1-9e1d-3373f794142a",
+     "board": "Edexcel",
+     "qualification": "International GCSE (9-1)",
+     "code": "4MB1-2016",
+     "title": "Pearson Edexcel International GCSE (9-1) Maths (4MB1, 2016 specification)",
+     "status": "ACTIVE"
+    },
+    {
+     "id": "41a6e49a-bb41-459e-ae2b-14bbf77c819a",
+     "board": "Edexcel",
+     "qualification": "International GCSE (9-1)",
+     "code": "4MA1-2016",
+     "title": "Pearson Edexcel International GCSE (9-1) Maths (4MA1, 2016 specification)",
+     "status": "ACTIVE"
+    },
+    {
+     "id": "5a9cd8fe-0a31-4ee6-87e0-be5ad1d8cddf",
+     "board": "Edexcel",
+     "qualification": "International GCSE (9-1)",
+     "code": "4PH1-2017",
+     "title": "Pearson Edexcel International GCSE (9-1) Physics (4PH1, 2017 specification)",
+     "status": "ACTIVE"
+    },
+    {
+     "id": "356840e6-81e2-49df-8182-93ab6504d591",
+     "board": "Edexcel",
+     "qualification": "International GCSE (9-1)",
+     "code": "4CH1-2017",
+     "title": "Pearson Edexcel International GCSE (9-1) Chemistry (4CH1, Issue 3)",
+     "status": "ACTIVE"
+    }
+   ]
+  },
+  {
+   "leg": "L03",
+   "subsystem": "TUTOR",
+   "method": "GET",
+   "path": "/api/v1/knowledge/nodes/7cb03087-1bc8-4175-9bf7-898d7dc89d48/tree",
+   "requestBody": null,
+   "status": 200,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=200 want=200"
+    },
+    {
+     "name": "tree_node_count",
+     "pass": true,
+     "detail": "got=119 want=119"
+    },
+    {
+     "name": "type_census",
+     "pass": true,
+     "detail": "got={'SUBJECT': 1, 'UNIT': 10, 'TOPIC': 10, 'SUBTOPIC': 98} want={'SUBJECT': 1, 'UNIT': 10, 'TOPIC': 10, 'SUBTOPIC': 98}"
+    },
+    {
+     "name": "root_code",
+     "pass": true,
+     "detail": "got='4MB1' want='4MB1'"
+    },
+    {
+     "name": "unit_codes",
+     "pass": true,
+     "detail": "got={'4MB1-S2', '4MB1-S3', '4MB1-S7', '4MB1-S1', '4MB1-S10', '4MB1-S9', '4MB1-S5', '4MB1-S8', '4MB1-S4', '4MB1-S6'} want={'4MB1-S2', '4MB1-S3', '4MB1-S7', '4MB1-S1', '4MB1-S9', '4MB1-S10', '4MB1-S5', '4MB1-S8', '4MB1-S4', '4MB1-S6'}"
+    },
+    {
+     "name": "placeholder_topic_codes",
+     "pass": true,
+     "detail": "got={'4MB1-S6-_', '4MB1-S4-_', '4MB1-S8-_', '4MB1-S5-_', '4MB1-S9-_', '4MB1-S1-_', '4MB1-S2-_', '4MB1-S3-_', '4MB1-S10-_', '4MB1-S7-_'} want={'4MB1-S6-_', '4MB1-S4-_', '4MB1-S8-_', '4MB1-S5-_', '4MB1-S9-_', '4MB1-S1-_', '4MB1-S2-_', '4MB1-S3-_', '4MB1-S10-_', '4MB1-S7-_'}"
+    },
+    {
+     "name": "alnum_subtopic_count",
+     "pass": true,
+     "detail": "got=98 want=98"
+    },
+    {
+     "name": "S3-3A_on_wire",
+     "pass": true,
+     "detail": "ALNUM sample"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "nodeCount": 119,
+    "typeCensus": {
+     "SUBJECT": 1,
+     "UNIT": 10,
+     "TOPIC": 10,
+     "SUBTOPIC": 98
+    },
+    "rootCode": "4MB1",
+    "codes": [
+     "4MB1",
+     "4MB1-S1",
+     "4MB1-S1-_",
+     "4MB1-S1-1A",
+     "4MB1-S1-1B",
+     "4MB1-S1-1C",
+     "4MB1-S1-1D",
+     "4MB1-S1-1E",
+     "4MB1-S1-1F",
+     "4MB1-S1-1G",
+     "4MB1-S1-1H",
+     "4MB1-S1-1I",
+     "4MB1-S1-1J",
+     "4MB1-S1-1K",
+     "4MB1-S10",
+     "4MB1-S10-_",
+     "4MB1-S10-10A",
+     "4MB1-S10-10B",
+     "4MB1-S10-10C",
+     "4MB1-S10-10D",
+     "4MB1-S10-10E",
+     "4MB1-S10-10F",
+     "4MB1-S10-10G",
+     "4MB1-S10-10H",
+     "4MB1-S10-10I",
+     "4MB1-S10-10J",
+     "4MB1-S10-10K",
+     "4MB1-S2",
+     "4MB1-S2-_",
+     "4MB1-S2-2A",
+     "4MB1-S2-2B",
+     "4MB1-S2-2C",
+     "4MB1-S2-2D",
+     "4MB1-S2-2E",
+     "4MB1-S2-2F",
+     "4MB1-S2-2G",
+     "4MB1-S2-2H",
+     "4MB1-S2-2I",
+     "4MB1-S3",
+     "4MB1-S3-_",
+     "4MB1-S3-3A",
+     "4MB1-S3-3B",
+     "4MB1-S3-3C",
+     "4MB1-S3-3D",
+     "4MB1-S3-3E",
+     "4MB1-S3-3F",
+     "4MB1-S3-3G",
+     "4MB1-S3-3H",
+     "4MB1-S3-3I",
+     "4MB1-S3-3J",
+     "4MB1-S3-3K",
+     "4MB1-S3-3L",
+     "4MB1-S4",
+     "4MB1-S4-_",
+     "4MB1-S4-4A",
+     "4MB1-S4-4B",
+     "4MB1-S4-4C",
+     "4MB1-S4-4D",
+     "4MB1-S4-4E",
+     "4MB1-S4-4F",
+     "4MB1-S4-4G",
+     "4MB1-S4-4H",
+     "4MB1-S4-4I",
+     "4MB1-S4-4J",
+     "4MB1-S4-4K",
+     "4MB1-S4-4L",
+     "4MB1-S4-4M",
+     "4MB1-S4-4N",
+     "4MB1-S5",
+     "4MB1-S5-_",
+     "4MB1-S5-5A",
+     "4MB1-S5-5B",
+     "4MB1-S5-5C",
+     "4MB1-S5-5D",
+     "4MB1-S5-5E",
+     "4MB1-S5-5F",
+     "4MB1-S5-5G",
+     "4MB1-S6",
+     "4MB1-S6-_",
+     "4MB1-S6-6A",
+     "4MB1-S6-6B",
+     "4MB1-S6-6C",
+     "4MB1-S6-6D",
+     "4MB1-S6-6E",
+     "4MB1-S6-6F",
+     "4MB1-S6-6G",
+     "4MB1-S6-6H",
+     "4MB1-S6-6I",
+     "4MB1-S6-6J",
+     "4MB1-S6-6K",
+     "4MB1-S6-6L",
+     "4MB1-S6-6M",
+     "4MB1-S6-6N",
+     "4MB1-S7",
+     "4MB1-S7-_",
+     "4MB1-S7-7A",
+     "4MB1-S7-7B",
+     "4MB1-S7-7C",
+     "4MB1-S7-7D",
+     "4MB1-S8",
+     "4MB1-S8-_",
+     "4MB1-S8-8A",
+     "4MB1-S8-8B",
+     "4MB1-S8-8C",
+     "4MB1-S8-8D",
+     "4MB1-S8-8E",
+     "4MB1-S8-8F",
+     "4MB1-S8-8G",
+     "4MB1-S8-8H",
+     "4MB1-S8-8I",
+     "4MB1-S8-8J",
+     "4MB1-S8-8K",
+     "4MB1-S8-8L",
+     "4MB1-S9",
+     "4MB1-S9-_",
+     "4MB1-S9-9A",
+     "4MB1-S9-9B",
+     "4MB1-S9-9C",
+     "4MB1-S9-9D"
+    ]
+   }
+  },
+  {
+   "leg": "L04",
+   "subsystem": "TUTOR",
+   "method": "GET",
+   "path": "/api/v1/knowledge/nodes/297a8706-b957-40cb-8bb6-0bfed66980b7/tree",
+   "requestBody": null,
+   "status": 200,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=200 want=200"
+    },
+    {
+     "name": "tree_node_count",
+     "pass": true,
+     "detail": "got=438 want=438"
+    },
+    {
+     "name": "root_code",
+     "pass": true,
+     "detail": "got='4CH1' want='4CH1'"
+    },
+    {
+     "name": "ch1_S3b_topic_found",
+     "pass": true,
+     "detail": "4CH1-S3-b TOPIC id derived"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "nodeCount": 438,
+    "typeCensus": {
+     "SUBJECT": 1,
+     "UNIT": 4,
+     "TOPIC": 28,
+     "SUBTOPIC": 194,
+     "CONCEPT": 211
+    },
+    "rootCode": "4CH1",
+    "codes": [
+     "4CH1",
+     "4CH1-S1",
+     "4CH1-S1-a",
+     "4CH1-1.1",
+     "4CH1-CON-STATE-PARTICLE-MODEL",
+     "4CH1-CON-STATES-THREE",
+     "4CH1-1.2",
+     "4CH1-CON-EVAPORATION-BOILING",
+     "4CH1-CON-STATE-CHANGES",
+     "4CH1-1.3",
+     "4CH1-CON-DIFFUSION",
+     "4CH1-CON-DILUTION",
+     "4CH1-CON-STATE-PARTICLE-MODEL",
+     "4CH1-1.4",
+     "4CH1-CON-SATURATED-SOLUTION",
+     "4CH1-CON-SOLUTION",
+     "4CH1-1.5C",
+     "4CH1-CON-SOLUBILITY",
+     "4CH1-1.6C",
+     "4CH1-CON-SOLUBILITY-CURVE",
+     "4CH1-1.7C",
+     "4CH1-CON-HEATING-CONSTANT-MASS",
+     "4CH1-PR-01",
+     "4CH1-S1-b",
+     "4CH1-1.10",
+     "4CH1-CON-CHROMATOGRAPHY",
+     "4CH1-CON-CRYSTALLISATION",
+     "4CH1-CON-FILTRATION",
+     "4CH1-CON-FRACTIONAL-DISTILLATION",
+     "4CH1-CON-SATURATED-SOLUTION",
+     "4CH1-CON-SIMPLE-DISTILLATION",
+     "4CH1-1.11",
+     "4CH1-CON-CHROMATOGRAM-INTERPRETATION",
+     "4CH1-1.12",
+     "4CH1-CON-RF-VALUE",
+     "4CH1-1.13",
+     "4CH1-PR-02",
+     "4CH1-1.8",
+     "4CH1-CON-COMPOUND",
+     "4CH1-CON-ELEMENT",
+     "4CH1-CON-MIXTURE",
+     "4CH1-1.9",
+     "4CH1-CON-PURE-SUBSTANCE",
+     "4CH1-S1-c",
+     "4CH1-1.14",
+     "4CH1-CON-ATOM",
+     "4CH1-CON-MOLECULE",
+     "4CH1-1.15",
+     "4CH1-CON-SUBATOMIC-PARTICLES",
+     "4CH1-1.16",
+     "4CH1-CON-ATOMIC-NUMBER",
+     "4CH1-CON-ISOTOPES",
+     "4CH1-CON-MASS-NUMBER",
+     "4CH1-1.17",
+     "4CH1-CON-ISOTOPES",
+     "4CH1-S1-d",
+     "4CH1-1.18",
+     "4CH1-CON-PERIODIC-TABLE",
+     "4CH1-1.19",
+     "4CH1-CON-ELECTRONIC-CONFIGURATION",
+     "4CH1-1.20",
+     "4CH1-CON-METAL-NONMETAL",
+     "4CH1-1.21",
+     "4CH1-CON-METAL-NONMETAL",
+     "4CH1-CON-METALLOID",
+     "4CH1-1.22",
+     "4CH1-CON-ELECTRONIC-CONFIGURATION",
+     "4CH1-1.23",
+     "4CH1-CON-GROUP-SIMILARITY",
+     "4CH1-1.24",
+     "4CH1-CON-NOBLE-GAS-INERTNESS",
+     "4CH1-S1-e",
+     "4CH1-1.25",
+     "4CH1-CON-CONSERVATION-MASS",
+     "4CH1-CON-EQ-STATE-SYM",
+     "4CH1-CON-EQ-SYMBOL",
+     "4CH1-CON-EQ-WORD",
+     "4CH1-1.26",
+     "4CH1-CON-AR",
+     "4CH1-CON-CONSERVATION-MASS",
+     "4CH1-CON-MR",
+     "4CH1-1.27",
+     "4CH1-CON-AVOGADRO-CONST",
+     "4CH1-CON-MOLE",
+     "4CH1-1.28",
+     "4CH1-CON-AR",
+     "4CH1-CON-MOLAR-MASS",
+     "4CH1-CON-MOLE-MASS-CONV",
+     "4CH1-CON-MR",
+     "4CH1-1.29",
+     "4CH1-CON-MOLAR-RATIO",
+     "4CH1-CON-REACTING-MASS",
+     "4CH1-1.30",
+     "4CH1-CON-PERCENT-YIELD",
+     "4CH1-CON-THEOR-YIELD",
+     "4CH1-CON-YIELD",
+     "4CH1-CON-YIELD-FACTORS",
+     "4CH1-1.31",
+     "4CH1-CON-EXP-FORMULA-DEDUCTION",
+     "4CH1-CON-WATER-CRYST",
+     "4CH1-1.32",
+     "4CH1-CON-EMPIRICAL-FORMULA",
+     "4CH1-CON-MOLECULAR-FORMULA",
+     "4CH1-1.33",
+     "4CH1-CON-EMP-MOL-CALC",
+     "4CH1-CON-EMPIRICAL-FORMULA",
+     "4CH1-CON-MOLECULAR-FORMULA",
+     "4CH1-1.34C",
+     "4CH1-CON-CONC-CALC",
+     "4CH1-CON-CONCENTRATION",
+     "4CH1-CON-VOL-CONVERSION",
+     "4CH1-1.35C",
+     "4CH1-CON-AVOGADRO-LAW",
+     "4CH1-CON-GAS-VOL-CALC",
+     "4CH1-CON-MOLAR-GAS-VOL",
+     "4CH1-1.36",
+     "4CH1-CON-EXP-FORMULA-DEDUCTION",
+     "4CH1-PR-03",
+     "4CH1-S1-f",
+     "4CH1-1.37",
+     "4CH1-CON-ION",
+     "4CH1-1.38",
+     "4CH1-CON-ION-CHARGE-RULES",
+     "4CH1-1.39",
+     "4CH1-CON-IONIC-FORMULA",
+     "4CH1-1.40",
+     "4CH1-CON-DOT-CROSS-IONIC",
+     "4CH1-1.41",
+     "4CH1-CON-IONIC-BOND",
+     "4CH1-1.42",
+     "4CH1-CON-IONIC-LATTICE",
+     "4CH1-1.43",
+     "4CH1-CON-IONIC-CONDUCTION",
+     "4CH1-S1-g",
+     "4CH1-1.44",
+     "4CH1-CON-COVALENT-BOND",
+     "4CH1-1.45",
+     "4CH1-CON-COVALENT-BOND",
+     "4CH1-1.46",
+     "4CH1-CON-DOT-CROSS-COVALENT",
+     "4CH1-1.47",
+     "4CH1-CON-SIMPLE-MOLECULAR",
+     "4CH1-1.48",
+     "4CH1-CON-SIMPLE-MOLECULAR",
+     "4CH1-1.49",
+     "4CH1-CON-GIANT-COVALENT",
+     "4CH1-1.50",
+     "4CH1-CON-DIAMOND-GRAPHITE",
+     "4CH1-1.51",
+     "4CH1-CON-COVALENT-CONDUCTION",
+     "4CH1-S1-h",
+     "4CH1-1.52C",
+     "4CH1-CON-METALLIC-BOND",
+     "4CH1-1.53C",
+     "4CH1-CON-METALLIC-BOND",
+     "4CH1-1.54C",
+     "4CH1-CON-METAL-PROPERTIES",
+     "4CH1-S1-i",
+     "4CH1-1.55C",
+     "4CH1-CON-COVALENT-CONDUCTION",
+     "4CH1-1.56C",
+     "4CH1-CON-IONIC-CONDUCTION",
+     "4CH1-1.57C",
+     "4CH1-CON-ANODE-CATHODE",
+     "4CH1-1.58C",
+     "4CH1-CON-AQUEOUS-DISCHARGE",
+     "4CH1-CON-ELECTROLYSIS",
+     "4CH1-1.59C",
+     "4CH1-CON-ELECTRODE-HALF-EQUATIONS",
+     "4CH1-CON-REDOX-ELECTRONS",
+     "4CH1-1.60C",
+     "4CH1-PR-04",
+     "4CH1-S2",
+     "4CH1-S2-a",
+     "4CH1-2.1",
+     "4CH1-CON-G1-FAMILY-EVIDENCE",
+     "4CH1-2.2",
+     "4CH1-CON-G1-TREND",
+     "4CH1-2.3",
+     "4CH1-CON-G1-PREDICTION",
+     "4CH1-2.4C",
+     "4CH1-CON-G1-REACTIVITY-ECONFIG",
+     "4CH1-S2-b",
+     "4CH1-2.5",
+     "4CH1-CON-G7-PROPERTIES",
+     "4CH1-2.6",
+     "4CH1-CON-G7-PREDICTION",
+     "4CH1-2.7",
+     "4CH1-CON-G7-DISPLACEMENT",
+     "4CH1-2.8C",
+     "4CH1-CON-G7-REACTIVITY-ECONFIG",
+     "4CH1-S2-c",
+     "4CH1-2.10",
+     "4CH1-CON-O2-PERCENT-DETERMINATION",
+     "4CH1-2.11",
+     "4CH1-CON-COMBUSTION-O2",
+     "4CH1-2.12",
+     "4CH1-CON-CO2-FROM-CARBONATES",
+     "4CH1-2.13",
+     "4CH1-CON-CO2-GREENHOUSE",
+     "4CH1-2.14",
+     "4CH1-PR-05",
+     "4CH1-2.9",
+     "4CH1-CON-AIR-COMPOSITION",
+     "4CH1-S2-d",
+     "4CH1-2.15",
+     "4CH1-CON-REACT-ARRANGE",
+     "4CH1-2.16",
+     "4CH1-CON-METAL-DISPLACEMENT",
+     "4CH1-2.17",
+     "4CH1-CON-REACT-ORDER",
+     "4CH1-2.18",
+     "4CH1-CON-RUSTING",
+     "4CH1-2.19",
+     "4CH1-CON-RUST-PREVENTION",
+     "4CH1-2.20",
+     "4CH1-CON-OX-RED-AGENTS",
+     "4CH1-2.21",
+     "4CH1-PR-06",
+     "4CH1-S2-e",
+     "4CH1-2.22C",
+     "4CH1-CON-ORES",
+     "4CH1-2.23C",
+     "4CH1-CON-EXTRACTION-METHOD",
+     "4CH1-2.24C",
+     "4CH1-CON-EXTRACTION-EVALUATION",
+     "4CH1-2.25C",
+     "4CH1-CON-METAL-USES",
+     "4CH1-2.26C",
+     "4CH1-CON-ALLOYS",
+     "4CH1-2.27C",
+     "4CH1-CON-ALLOY-HARDNESS",
+     "4CH1-S2-f",
+     "4CH1-2.28",
+     "4CH1-CON-INDICATORS",
+     "4CH1-2.29",
+     "4CH1-CON-PH-SCALE",
+     "4CH1-2.30",
+     "4CH1-CON-UNIVERSAL-INDICATOR",
+     "4CH1-2.31",
+     "4CH1-CON-ACID-ALKALI-IONS",
+     "4CH1-2.32",
+     "4CH1-CON-NEUTRALISATION",
+     "4CH1-2.33C",
+     "4CH1-CON-TITRATION",
+     "4CH1-S2-g",
+     "4CH1-2.34",
+     "4CH1-CON-SOLUBILITY-RULES",
+     "4CH1-2.35",
+     "4CH1-CON-PROTON-TRANSFER",
+     "4CH1-2.36",
+     "4CH1-CON-PROTON-TRANSFER",
+     "4CH1-2.37",
+     "4CH1-CON-ACID-REACTIONS",
+     "4CH1-2.38",
+     "4CH1-CON-BASES-ALKALIS",
+     "4CH1-2.39",
+     "4CH1-CON-SALT-INSOLUBLE-REACTANT",
+     "4CH1-2.40C",
+     "4CH1-CON-SALT-TITRATION-ROUTE",
+     "4CH1-2.41C",
+     "4CH1-CON-SALT-PRECIPITATION",
+     "4CH1-2.42",
+     "4CH1-PR-07",
+     "4CH1-2.43C",
+     "4CH1-PR-08",
+     "4CH1-S2-h",
+     "4CH1-2.44",
+     "4CH1-CON-GAS-TESTS",
+     "4CH1-2.45",
+     "4CH1-CON-FLAME-TEST",
+     "4CH1-2.46",
+     "4CH1-CON-FLAME-TEST",
+     "4CH1-2.47",
+     "4CH1-CON-CATION-TESTS",
+     "4CH1-2.48",
+     "4CH1-CON-ANION-TESTS",
+     "4CH1-2.49",
+     "4CH1-CON-WATER-CUSO4-TEST",
+     "4CH1-2.50",
+     "4CH1-CON-WATER-PURITY-TEST",
+     "4CH1-S3",
+     "4CH1-S3-a",
+     "4CH1-3.1",
+     "4CH1-CON-EXO-ENDO",
+     "4CH1-3.2",
+     "4CH1-CON-CALORIMETRY",
+     "4CH1-3.3",
+     "4CH1-CON-HEAT-CALC",
+     "4CH1-3.4",
+     "4CH1-CON-MOLAR-ENTHALPY",
+     "4CH1-3.5C",
+     "4CH1-CON-ENERGY-LEVEL-DIAGRAM",
+     "4CH1-3.6C",
+     "4CH1-CON-BOND-BREAKING-MAKING",
+     "4CH1-3.7C",
+     "4CH1-CON-BOND-ENERGY-CALC",
+     "4CH1-3.8",
+     "4CH1-PR-09",
+     "4CH1-S3-b",
+     "4CH1-3.10",
+     "4CH1-CON-RATE-FACTORS",
+     "4CH1-3.11",
+     "4CH1-CON-COLLISION-THEORY",
+     "4CH1-3.12",
+     "4CH1-CON-CATALYST",
+     "4CH1-3.13",
+     "4CH1-CON-CATALYST",
+     "4CH1-3.14C",
+     "4CH1-CON-ACTIVATION-ENERGY",
+     "4CH1-CON-REACTION-PROFILE",
+     "4CH1-3.15",
+     "4CH1-PR-10",
+     "4CH1-3.16",
+     "4CH1-PR-11",
+     "4CH1-3.9",
+     "4CH1-CON-RATE-EXPERIMENTS",
+     "4CH1-S3-c",
+     "4CH1-3.17",
+     "4CH1-CON-REVERSIBLE",
+     "4CH1-3.18",
+     "4CH1-CON-REVERSIBLE-EXAMPLES",
+     "4CH1-3.19C",
+     "4CH1-CON-DYNAMIC-EQUILIBRIUM",
+     "4CH1-3.20C",
+     "4CH1-CON-DYNAMIC-EQUILIBRIUM",
+     "4CH1-3.21C",
+     "4CH1-CON-EQ-POSITION",
+     "4CH1-3.22C",
+     "4CH1-CON-EQ-POSITION",
+     "4CH1-S4",
+     "4CH1-S4-a",
+     "4CH1-4.1",
+     "4CH1-CON-HYDROCARBON",
+     "4CH1-4.2",
+     "4CH1-CON-ORGANIC-FORMULAE",
+     "4CH1-4.3",
+     "4CH1-CON-HOMOLOGOUS-SERIES",
+     "4CH1-4.4",
+     "4CH1-CON-IUPAC-NAMING",
+     "4CH1-4.5",
+     "4CH1-CON-ISOMERS",
+     "4CH1-4.6",
+     "4CH1-CON-ORGANIC-REACTION-CLASSES",
+     "4CH1-S4-b",
+     "4CH1-4.10",
+     "4CH1-CON-CRUDE-OIL-FRACTIONS",
+     "4CH1-4.11",
+     "4CH1-CON-FUELS-COMBUSTION",
+     "4CH1-4.12",
+     "4CH1-CON-FUELS-COMBUSTION",
+     "4CH1-4.13",
+     "4CH1-CON-CO-POISONING",
+     "4CH1-4.14",
+     "4CH1-CON-ACID-RAIN-CAUSES",
+     "4CH1-4.15",
+     "4CH1-4.16",
+     "4CH1-CON-ACID-RAIN-CAUSES",
+     "4CH1-4.17",
+     "4CH1-CON-CRACKING",
+     "4CH1-4.18",
+     "4CH1-CON-CRACKING",
+     "4CH1-4.7",
+     "4CH1-CON-CRUDE-OIL",
+     "4CH1-4.8",
+     "4CH1-CON-CRUDE-OIL-FRACTIONS",
+     "4CH1-4.9",
+     "4CH1-CON-CRUDE-OIL-FRACTIONS",
+     "4CH1-S4-c",
+     "4CH1-4.19",
+     "4CH1-CON-ALKANES",
+     "4CH1-4.20",
+     "4CH1-CON-ALKANES",
+     "4CH1-4.21",
+     "4CH1-CON-ALKANES",
+     "4CH1-4.22",
+     "4CH1-CON-ALKANE-HALOGEN-SUBSTITUTION",
+     "4CH1-S4-d",
+     "4CH1-4.23",
+     "4CH1-CON-ALKENES",
+     "4CH1-4.24",
+     "4CH1-CON-ALKENES",
+     "4CH1-4.25",
+     "4CH1-CON-ALKENES",
+     "4CH1-4.26",
+     "4CH1-CON-ALKENES",
+     "4CH1-4.27",
+     "4CH1-CON-BROMINE-WATER-TEST",
+     "4CH1-4.28",
+     "4CH1-CON-BROMINE-WATER-TEST",
+     "4CH1-S4-e",
+     "4CH1-4.29C",
+     "4CH1-CON-ALCOHOLS",
+     "4CH1-4.30C",
+     "4CH1-CON-ALCOHOLS",
+     "4CH1-4.31C",
+     "4CH1-CON-ETHANOL-OXIDATION",
+     "4CH1-4.32C",
+     "4CH1-CON-ETHANOL-MANUFACTURE",
+     "4CH1-4.33C",
+     "4CH1-CON-ETHANOL-MANUFACTURE",
+     "4CH1-S4-f",
+     "4CH1-4.34C",
+     "4CH1-CON-CARBOXYLIC-ACIDS",
+     "4CH1-4.35C",
+     "4CH1-CON-CARBOXYLIC-ACIDS",
+     "4CH1-4.36C",
+     "4CH1-CON-CARBOXYLIC-ACID-REACTIONS",
+     "4CH1-4.37C",
+     "4CH1-CON-CARBOXYLIC-ACIDS",
+     "4CH1-S4-g",
+     "4CH1-4.38C",
+     "4CH1-CON-ESTERS",
+     "4CH1-4.39C",
+     "4CH1-CON-ESTERS",
+     "4CH1-4.40C",
+     "4CH1-CON-ESTERS",
+     "4CH1-4.41C",
+     "4CH1-CON-ESTERS",
+     "4CH1-4.42C",
+     "4CH1-CON-ESTERS",
+     "4CH1-4.43C",
+     "4CH1-PR-12",
+     "4CH1-S4-h",
+     "4CH1-4.44",
+     "4CH1-CON-ADDITION-POLYMERS",
+     "4CH1-4.45",
+     "4CH1-CON-ADDITION-POLYMERS",
+     "4CH1-4.46",
+     "4CH1-CON-ADDITION-POLYMERS",
+     "4CH1-4.47",
+     "4CH1-CON-POLYMER-DISPOSAL",
+     "4CH1-4.48C",
+     "4CH1-CON-CONDENSATION-POLYMERS",
+     "4CH1-4.49C",
+     "4CH1-CON-CONDENSATION-POLYMERS",
+     "4CH1-4.50C",
+     "4CH1-CON-CONDENSATION-POLYMERS"
+    ]
+   }
+  },
+  {
+   "leg": "L05",
+   "subsystem": "CLA",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "requestBody": {
+    "kind": "KG_TOPIC",
+    "rootId": "7cb03087-1bc8-4175-9bf7-898d7dc89d48",
+    "topicNodeId": "a9ea76ff-9326-4121-8b4b-d4144d4b901f",
+    "mode": "EXPLAIN",
+    "question": "136d isolation probe (deterministic 404 expected)"
+   },
+   "status": 404,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=404 want=404"
+    },
+    {
+     "name": "error",
+     "pass": true,
+     "detail": "got='not_found' want='not_found'"
+    },
+    {
+     "name": "topic_side_isolation_404",
+     "pass": true,
+     "detail": "got='curriculum topic in this subject a9ea76ff-9326-4121-8b4b-d4144d4b901f not found' want='curriculum topic in this subject a9ea76ff-9326-4121-8b4b-d4144d4b901f not found'"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "status": 404,
+    "error": "not_found",
+    "message": "curriculum topic in this subject a9ea76ff-9326-4121-8b4b-d4144d4b901f not found",
+    "timestamp": "2026-10-19T20:40:56.625Z"
+   }
+  },
+  {
+   "leg": "L06",
+   "subsystem": "CLA",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "requestBody": {
+    "kind": "KG_TOPIC",
+    "rootId": "fd0a5455-50a1-4a21-b55c-46a3e65f0f88",
+    "topicNodeId": "9e11bb83-3107-442d-a188-751ccf4648c4",
+    "mode": "EXPLAIN",
+    "question": "136d unit-as-root probe (404 expected)"
+   },
+   "status": 404,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=404 want=404"
+    },
+    {
+     "name": "root_must_be_subject_root",
+     "pass": true,
+     "detail": "got='curriculum subject root fd0a5455-50a1-4a21-b55c-46a3e65f0f88 not found' want='curriculum subject root fd0a5455-50a1-4a21-b55c-46a3e65f0f88 not found'"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "status": 404,
+    "error": "not_found",
+    "message": "curriculum subject root fd0a5455-50a1-4a21-b55c-46a3e65f0f88 not found",
+    "timestamp": "2026-10-19T20:40:56.898Z"
+   }
+  },
+  {
+   "leg": "L07",
+   "subsystem": "CLA",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "requestBody": {
+    "kind": "KG_TOPIC",
+    "rootId": "51e123f7-f482-4182-ad04-dac8dad16640",
+    "topicNodeId": "9e11bb83-3107-442d-a188-751ccf4648c4",
+    "mode": "EXPLAIN",
+    "question": "136d unknown-root probe (no existence oracle)"
+   },
+   "status": 404,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=404 want=404"
+    },
+    {
+     "name": "error",
+     "pass": true,
+     "detail": "got='not_found' want='not_found'"
+    },
+    {
+     "name": "indistinguishable_shape",
+     "pass": true,
+     "detail": "curriculum subject root 51e123f7-f482-4182-ad04-dac8dad16640 not found"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "status": 404,
+    "error": "not_found",
+    "message": "curriculum subject root 51e123f7-f482-4182-ad04-dac8dad16640 not found",
+    "timestamp": "2026-10-19T20:40:57.166Z"
+   }
+  },
+  {
+   "leg": "L08",
+   "subsystem": "CLA",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "requestBody": {
+    "kind": "KG_TOPIC",
+    "mode": "EXPLAIN",
+    "question": "136d missing-ref probe"
+   },
+   "status": 400,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=400 want=400"
+    },
+    {
+     "name": "kg_topic_ref_gate",
+     "pass": true,
+     "detail": "got='KG_TOPIC context requires rootId and topicNodeId' want='KG_TOPIC context requires rootId and topicNodeId'"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "status": 400,
+    "error": "bad_request",
+    "message": "KG_TOPIC context requires rootId and topicNodeId",
+    "timestamp": "2026-10-19T20:40:57.433Z"
+   }
+  },
+  {
+   "leg": "L09",
+   "subsystem": "CLA",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "requestBody": {
+    "kind": "SMART_LESSON",
+    "rootId": "7cb03087-1bc8-4175-9bf7-898d7dc89d48",
+    "topicNodeId": "9e11bb83-3107-442d-a188-751ccf4648c4",
+    "mode": "EXPLAIN",
+    "question": "136d deferral probe (refs present)"
+   },
+   "status": 400,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=400 want=400"
+    },
+    {
+     "name": "smart_lesson_deferral",
+     "pass": true,
+     "detail": "got='context kind not supported by this runtime step: SMART_LESSON' want='context kind not supported by this runtime step: SMART_LESSON'"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "status": 400,
+    "error": "bad_request",
+    "message": "context kind not supported by this runtime step: SMART_LESSON",
+    "timestamp": "2026-10-19T20:40:57.715Z"
+   }
+  },
+  {
+   "leg": "L10",
+   "subsystem": "CLA",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "requestBody": {
+    "kind": "SMART_LESSON",
+    "mode": "EXPLAIN",
+    "question": "136d smart-lesson missing-ref probe"
+   },
+   "status": 400,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=400 want=400"
+    },
+    {
+     "name": "smart_lesson_ref_gate",
+     "pass": true,
+     "detail": "got='SMART_LESSON context requires rootId and topicNodeId' want='SMART_LESSON context requires rootId and topicNodeId'"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "status": 400,
+    "error": "bad_request",
+    "message": "SMART_LESSON context requires rootId and topicNodeId",
+    "timestamp": "2026-10-19T20:40:57.974Z"
+   }
+  },
+  {
+   "leg": "L11",
+   "subsystem": "CLA",
+   "method": "POST",
+   "path": "/api/v1/learners/me/cla/ask",
+   "requestBody": {
+    "kind": "BOGUS_KIND",
+    "mode": "EXPLAIN",
+    "question": "136d unknown-kind probe"
+   },
+   "status": 400,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=400 want=400"
+    },
+    {
+     "name": "error",
+     "pass": true,
+     "detail": "got='malformed_body' want='malformed_body'"
+    },
+    {
+     "name": "two_envelope_binding",
+     "pass": true,
+     "detail": "got='request body is not readable (check field types and enum values)' want='request body is not readable (check field types and enum values)'"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "status": 400,
+    "error": "malformed_body",
+    "message": "request body is not readable (check field types and enum values)",
+    "timestamp": "2026-10-19T20:40:58.224Z"
+   }
+  },
+  {
+   "leg": "L12",
+   "subsystem": "TUTOR",
+   "method": "GET",
+   "path": "/api/v1/tutor/bank/questions?courseRef=4MB1-2016&topic=Number",
+   "requestBody": null,
+   "status": 200,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=200 want=200"
+    },
+    {
+     "name": "total",
+     "pass": true,
+     "detail": "got=0 want=0"
+    },
+    {
+     "name": "items",
+     "pass": true,
+     "detail": "got=[] want=[]"
+    },
+    {
+     "name": "resolvedNodes_count",
+     "pass": true,
+     "detail": "got=13 want=13"
+    },
+    {
+     "name": "led_by_UNIT_4MB1-S1",
+     "pass": true,
+     "detail": "['UNIT', 'Number', '4MB1-S1']"
+    },
+    {
+     "name": "led_by_TOPIC_4MB1-S1-_",
+     "pass": true,
+     "detail": "['35df111f-7fb3-4783-aefd-8888b21187d1', 'TOPIC', 'Number', '4MB1-S1-_']"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "total": 0,
+    "items_len": 0,
+    "resolvedNodes": [
+     {
+      "id": "fd0a5455-50a1-4a21-b55c-46a3e65f0f88",
+      "nodeType": "UNIT",
+      "title": "Number",
+      "code": "4MB1-S1"
+     },
+     {
+      "id": "35df111f-7fb3-4783-aefd-8888b21187d1",
+      "nodeType": "TOPIC",
+      "title": "Number",
+      "code": "4MB1-S1-_"
+     },
+     {
+      "id": "a50cf7f1-7707-4740-a0be-7c238cb73260",
+      "nodeType": "SUBTOPIC",
+      "title": "The ordinary processes of number manipulation",
+      "code": "4MB1-S1-1A"
+     },
+     {
+      "id": "082e374a-04b8-4d23-bf5f-b597a6fc8687",
+      "nodeType": "SUBTOPIC",
+      "title": "Prime numbers, factors, multiples",
+      "code": "4MB1-S1-1B"
+     },
+     {
+      "id": "be52c90a-d6de-45e2-b7c0-c76d0736fe70",
+      "nodeType": "SUBTOPIC",
+      "title": "Indices, powers and roots",
+      "code": "4MB1-S1-1C"
+     },
+     {
+      "id": "4f9af628-1436-4e6f-bcda-f5126065f38e",
+      "nodeType": "SUBTOPIC",
+      "title": "Simple manipulation of surds",
+      "code": "4MB1-S1-1D"
+     },
+     {
+      "id": "eb8dcb73-9e6c-4c13-940b-8dc10b77d707",
+      "nodeType": "SUBTOPIC",
+      "title": "Rationalising the denominator",
+      "code": "4MB1-S1-1E"
+     },
+     {
+      "id": "3728aeb0-1416-4bad-8efb-d7bf76d47039",
+      "nodeType": "SUBTOPIC",
+      "title": "Natural numbers, integers and rational and irrational numbers",
+      "code": "4MB1-S1-1F"
+     },
+     {
+      "id": "75cbe694-4819-4c50-ba62-c42379cf08a8",
+      "nodeType": "SUBTOPIC",
+      "title": "Weights, measures and money",
+      "code": "4MB1-S1-1G"
+     },
+     {
+      "id": "9b100e7e-d2e7-4f05-be2c-f583bfac0ba2",
+      "nodeType": "SUBTOPIC",
+      "title": "Fractions, decimals, ratio, proportion and percentage",
+      "code": "4MB1-S1-1H"
+     },
+     {
+      "id": "63994918-e0be-4871-ad65-fd597917b805",
+      "nodeType": "SUBTOPIC",
+      "title": "Expressing numbers to a given degree of accuracy",
+      "code": "4MB1-S1-1I"
+     },
+     {
+      "id": "42182073-ba63-4df9-865a-aa5a50c36fa1",
+      "nodeType": "SUBTOPIC",
+      "title": "Solve problems using upper and lower bounds where values are given to a degree of accuracy",
+      "code": "4MB1-S1-1J"
+     },
+     {
+      "id": "b539e4a1-c9fe-4036-9adb-446960b935f5",
+      "nodeType": "SUBTOPIC",
+      "title": "Numbers in standard form",
+      "code": "4MB1-S1-1K"
+     }
+    ]
+   }
+  },
+  {
+   "leg": "L13",
+   "subsystem": "TUTOR",
+   "method": "GET",
+   "path": "/api/v1/tutor/bank/questions?courseRef=4MB1-2016&topic=Algebra",
+   "requestBody": null,
+   "status": 200,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=200 want=200"
+    },
+    {
+     "name": "total",
+     "pass": true,
+     "detail": "got=0 want=0"
+    },
+    {
+     "name": "resolvedNodes_count",
+     "pass": true,
+     "detail": "got=14 want=14"
+    },
+    {
+     "name": "run002_delta_disclosure",
+     "pass": true,
+     "detail": "run-002 receipt says 13 for Algebra; tree census corroborates 14 (S3=12 subtopics) \u2014 transcription artifact in the run-002 text, disclosed not repeated"
+    },
+    {
+     "name": "led_by_UNIT_4MB1-S3",
+     "pass": true,
+     "detail": "['109ab269-a7dc-49c0-8558-00bcf978a87d', 'UNIT', 'Algebra', '4MB1-S3']"
+    },
+    {
+     "name": "placeholder_tail_on_wire",
+     "pass": true,
+     "detail": "4MB1-S3-_ present among resolvedNodes"
+    },
+    {
+     "name": "alnum_on_wire",
+     "pass": true,
+     "detail": "4MB1-S3-3A present among resolvedNodes"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "total": 0,
+    "items_len": 0,
+    "resolvedNodes": [
+     {
+      "id": "109ab269-a7dc-49c0-8558-00bcf978a87d",
+      "nodeType": "UNIT",
+      "title": "Algebra",
+      "code": "4MB1-S3"
+     },
+     {
+      "id": "9e11bb83-3107-442d-a188-751ccf4648c4",
+      "nodeType": "TOPIC",
+      "title": "Algebra",
+      "code": "4MB1-S3-_"
+     },
+     {
+      "id": "8c95e244-754f-4bc5-848b-fa0e080474ce",
+      "nodeType": "SUBTOPIC",
+      "title": "The basic processes of algebra",
+      "code": "4MB1-S3-3A"
+     },
+     {
+      "id": "ef87de66-7c34-47f3-90d9-1170b1912ce5",
+      "nodeType": "SUBTOPIC",
+      "title": "The construction, interpretation and use of formulae and their manipulation",
+      "code": "4MB1-S3-3B"
+     },
+     {
+      "id": "19e42f67-7df7-4149-88ec-298cc29a9705",
+      "nodeType": "SUBTOPIC",
+      "title": "The factorisation of simple algebraic expressions",
+      "code": "4MB1-S3-3C"
+     },
+     {
+      "id": "faee95f7-def1-41fd-84fd-a0c06981cda3",
+      "nodeType": "SUBTOPIC",
+      "title": "Use of the factor theorem",
+      "code": "4MB1-S3-3D"
+     },
+     {
+      "id": "f93bf454-ca8d-4ba2-b0c6-526f113e5397",
+      "nodeType": "SUBTOPIC",
+      "title": "Algebraic division of a cubic by a linear factor",
+      "code": "4MB1-S3-3E"
+     },
+     {
+      "id": "58370362-8a03-473a-811a-f9a8ca03274e",
+      "nodeType": "SUBTOPIC",
+      "title": "The manipulation of simple algebraic fractions, the denominators being numerical, linear or quadratic",
+      "code": "4MB1-S3-3F"
+     },
+     {
+      "id": "284dbbbf-cd00-4b92-95e3-75f8afd4d5ea",
+      "nodeType": "SUBTOPIC",
+      "title": "Solution of equations of 1st, 2nd and 3rd degree containing one unknown quantity",
+      "code": "4MB1-S3-3G"
+     },
+     {
+      "id": "9fdadb0f-57ee-408e-879f-56f55ce05748",
+      "nodeType": "SUBTOPIC",
+      "title": "Solution of linear simultaneous equations in two unknowns",
+      "code": "4MB1-S3-3H"
+     },
+     {
+      "id": "5ac854b0-b7ef-4b62-a125-48b9771e9ca3",
+      "nodeType": "SUBTOPIC",
+      "title": "Solve simultaneous equations in two unknowns, one equation being linear and the other being quadratic",
+      "code": "4MB1-S3-3I"
+     },
+     {
+      "id": "b680b8c0-2672-4ac0-9a74-2133fa90b40f",
+      "nodeType": "SUBTOPIC",
+      "title": "Solution of linear inequalities, and the representations of solutions on the number line and two-dimensional space",
+      "code": "4MB1-S3-3J"
+     },
+     {
+      "id": "4b9d19ad-089b-4dc0-b711-b3cb08442689",
+      "nodeType": "SUBTOPIC",
+      "title": "Solve quadratic inequalities in one unknown and represent the solution set on a number line",
+      "code": "4MB1-S3-3K"
+     },
+     {
+      "id": "dd21cb85-5cd7-426a-bc23-40d46596d8ad",
+      "nodeType": "SUBTOPIC",
+      "title": "The idea of a sequence",
+      "code": "4MB1-S3-3L"
+     }
+    ]
+   }
+  },
+  {
+   "leg": "L14",
+   "subsystem": "TUTOR",
+   "method": "GET",
+   "path": "/api/v1/tutor/bank/questions?courseRef=4MB1-2016&topic=Rates%20of%20reaction",
+   "requestBody": null,
+   "status": 200,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=200 want=200"
+    },
+    {
+     "name": "cross_corpus_no_leak_total",
+     "pass": true,
+     "detail": "got=0 want=0"
+    },
+    {
+     "name": "cross_corpus_no_leak_nodes",
+     "pass": true,
+     "detail": "got=[] want=[]"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "total": 0,
+    "items_len": 0,
+    "resolvedNodes": []
+   }
+  },
+  {
+   "leg": "L15",
+   "subsystem": "TUTOR",
+   "method": "GET",
+   "path": "/api/v1/tutor/bank/questions?topic=Number",
+   "requestBody": null,
+   "status": 200,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=200 want=200"
+    },
+    {
+     "name": "unscoped_four_owner_total",
+     "pass": true,
+     "detail": "got=0 want=0"
+    },
+    {
+     "name": "unscoped_four_owner_nodes",
+     "pass": true,
+     "detail": "got=[] want=[]"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "total": 0,
+    "items_len": 0,
+    "resolvedNodes": []
+   }
+  },
+  {
+   "leg": "L16",
+   "subsystem": "TUTOR",
+   "method": "GET",
+   "path": "/api/v1/tutor/bank/questions?courseRef=GEN-INGEST&topic=Number",
+   "requestBody": null,
+   "status": 200,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=200 want=200"
+    },
+    {
+     "name": "draft_fail_closed_total",
+     "pass": true,
+     "detail": "got=0 want=0"
+    },
+    {
+     "name": "draft_fail_closed_nodes",
+     "pass": true,
+     "detail": "got=[] want=[]"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "total": 0,
+    "items_len": 0,
+    "resolvedNodes": []
+   }
+  },
+  {
+   "leg": "L17",
+   "subsystem": "TUTOR",
+   "method": "GET",
+   "path": "/api/v1/tutor/bank/questions?courseRef=4CH1-2017&topic=Rates%20of%20reaction",
+   "requestBody": null,
+   "status": 200,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=200 want=200"
+    },
+    {
+     "name": "chemistry_byte_pin_total",
+     "pass": true,
+     "detail": "got=56 want=56"
+    },
+    {
+     "name": "chemistry_pin_4CH1-S3-b",
+     "pass": true,
+     "detail": "['TOPIC', '4CH1-S3-b']"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "total": 56,
+    "items_len": 56,
+    "resolvedNodes": [
+     {
+      "id": "a9ea76ff-9326-4121-8b4b-d4144d4b901f",
+      "nodeType": "TOPIC",
+      "title": "Rates of reaction",
+      "code": "4CH1-S3-b"
+     },
+     {
+      "id": "baba9241-8e9d-4b7f-aec9-ca4dad0d847a",
+      "nodeType": "SUBTOPIC",
+      "title": "practical: investigate the effect of changing the surface area of marble chips and of changing the concentration of hydrochloric acid on the rate of reaction between marble chips and dilute hydrochlor",
+      "code": "4CH1-3.15"
+     },
+     {
+      "id": "55fd783e-553f-403a-bbdb-8b9bed34f949",
+      "nodeType": "SUBTOPIC",
+      "title": "Required practical: investigate the effect of changing the surface area of marble chips and of changing the concentration of hydrochloric acid on the rate of reaction between marbl",
+      "code": "4CH1-PR-10"
+     },
+     {
+      "id": "df8a2581-4f7b-4021-bb0f-50651c9ea9a1",
+      "nodeType": "SUBTOPIC",
+      "title": "Required practical: investigate the effect of different solids on the catalytic decomposition of hydrogen peroxide solution",
+      "code": "4CH1-PR-11"
+     },
+     {
+      "id": "3d51146e-1a80-4d50-b13b-da18735eeccc",
+      "nodeType": "CONCEPT",
+      "title": "Activation energy (minimum energy for reaction; Ea)",
+      "code": "4CH1-CON-ACTIVATION-ENERGY"
+     },
+     {
+      "id": "961763e3-f70a-4dd1-843a-532d2c583ea8",
+      "nodeType": "CONCEPT",
+      "title": "Catalysts (increase rate, chemically unchanged; alternative pathway at lower activation energy)",
+      "code": "4CH1-CON-CATALYST"
+     },
+     {
+      "id": "6f0c5549-4c8e-42cc-beb5-8241e9f73742",
+      "nodeType": "CONCEPT",
+      "title": "Collision-theory explanations of rate changes (frequency and success of collisions)",
+      "code": "4CH1-CON-COLLISION-THEORY"
+     },
+     {
+      "id": "436c7140-0ea9-4ba2-b84a-ea5370dbd6dd",
+      "nodeType": "CONCEPT",
+      "title": "Rate-of-reaction experiments (gas collection, disappearing cross, timing methods)",
+      "code": "4CH1-CON-RATE-EXPERIMENTS"
+     },
+     {
+      "id": "ae0b359c-abf9-403e-8ccc-906e44cdd609",
+      "nodeType": "CONCEPT",
+      "title": "Factors affecting the rate of reaction (surface area, concentration and pressure, temperature, catalyst)",
+      "code": "4CH1-CON-RATE-FACTORS"
+     },
+     {
+      "id": "a164d5a4-aab5-4111-a8c0-c5cba3eaff98",
+      "nodeType": "CONCEPT",
+      "title": "Reaction profile diagrams (showing \u0394H and activation energy)",
+      "code": "4CH1-CON-REACTION-PROFILE"
+     },
+     {
+      "id": "9285bda3-b89c-4d0e-9bc3-9dd808ba3240",
+      "nodeType": "SUBTOPIC",
+      "title": "describe experiments to investigate the effects of changes in surface area of a solid, concentration of a solution, temperature and the use of a catalyst on the rate of a reaction",
+      "code": "4CH1-3.9"
+     },
+     {
+      "id": "6cfa689d-2618-46bd-a905-427f96bc98ea",
+      "nodeType": "SUBTOPIC",
+      "title": "describe the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas, temperature and the use of a catalyst on the rate of a reaction",
+      "code": "4CH1-3.10"
+     },
+     {
+      "id": "09598df0-8d10-4cd7-ac21-4afed0847977",
+      "nodeType": "SUBTOPIC",
+      "title": "explain the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas and temperature on the rate of a reaction in terms of particle collision theory",
+      "code": "4CH1-3.11"
+     },
+     {
+      "id": "b07c6a5e-a238-4d17-b7b8-1fade66fea54",
+      "nodeType": "SUBTOPIC",
+      "title": "know that a catalyst is a substance that increases the rate of a reaction, but is chemically unchanged at the end of the reaction",
+      "code": "4CH1-3.12"
+     },
+     {
+      "id": "76e4df7a-c030-49f2-8c47-293c9deeeb6d",
+      "nodeType": "SUBTOPIC",
+      "title": "know that a catalyst works by providing an alternative pathway with lower activation energy",
+      "code": "4CH1-3.13"
+     },
+     {
+      "id": "8b33a9d8-90d4-4474-9136-a2643fbd0527",
+      "nodeType": "SUBTOPIC",
+      "title": "draw and explain reaction profile diagrams showing $\\Delta H$ and activation energy",
+      "code": "4CH1-3.14C"
+     },
+     {
+      "id": "c5d18844-0fed-4337-95fe-78626cfeab49",
+      "nodeType": "SUBTOPIC",
+      "title": "practical: investigate the effect of different solids on the catalytic decomposition of hydrogen peroxide solution",
+      "code": "4CH1-3.16"
+     }
+    ]
+   }
+  },
+  {
+   "leg": "L18",
+   "subsystem": "TUTOR",
+   "method": "POST",
+   "path": "/api/v1/tutor/ask",
+   "requestBody": {
+    "question": "136d foreign-session probe (dies before the pipeline)",
+    "sessionId": "454ee932-b311-4647-a5c5-c049ad2f54d5"
+   },
+   "status": 404,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=404 want=404"
+    },
+    {
+     "name": "foreign_session_404",
+     "pass": true,
+     "detail": "tutor session 454ee932-b311-4647-a5c5-c049ad2f54d5 not found"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "status": 404,
+    "error": "not_found",
+    "message": "tutor session 454ee932-b311-4647-a5c5-c049ad2f54d5 not found",
+    "timestamp": "2026-10-19T20:41:01.410Z"
+   }
+  },
+  {
+   "leg": "L19",
+   "subsystem": "LEARNER_MODEL",
+   "method": "GET",
+   "path": "/api/v1/learners/me/flashcard-review-schedule",
+   "requestBody": null,
+   "status": 200,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=200 want=200"
+    },
+    {
+     "name": "honest_empty_due",
+     "pass": true,
+     "detail": "got=0 want=0"
+    },
+    {
+     "name": "honest_empty_cards",
+     "pass": true,
+     "detail": "got=[] want=[]"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "learnerId": "4f22ccc5-1cf8-4908-9a4d-ff7a08ef758a",
+    "generatedAt": "2026-10-19T20:41:01.667Z",
+    "summary": {
+     "due": 0,
+     "scheduled": 0,
+     "nextDueAt": null
+    },
+    "cards": []
+   }
+  },
+  {
+   "leg": "L20",
+   "subsystem": "LEARNER_MODEL",
+   "method": "GET",
+   "path": "/api/v1/learners/me/agenda?rootId=7cb03087-1bc8-4175-9bf7-898d7dc89d48",
+   "requestBody": null,
+   "status": 200,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=200 want=200"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "learnerId": "4f22ccc5-1cf8-4908-9a4d-ff7a08ef758a",
+    "asOf": "2026-10-19T20:41:01.940Z",
+    "dueReviews": [],
+    "assignments": [
+     {
+      "assignment": {
+       "id": "50c9c01e-27ec-46a0-b7fe-7a9955a12da1",
+       "title": "probe late asprobe_1790628651",
+       "courseSlug": "igcse-chemistry-19",
+       "courseLabel": "IGCSE Chemistry",
+       "specRefs": [
+        "4CH1-S1-a"
+       ],
+       "marksTotal": 10,
+       "questionCount": 5,
+       "dueAt": "1970-01-01T00:00:00.000Z",
+       "status": "open",
+       "classId": null,
+       "createdAt": "2026-09-28T20:51:40.207Z"
+      },
+      "mySubmission": null
+     },
+     {
+      "assignment": {
+       "id": "a79a8959-79a5-4d7e-8e3a-2db569eb58c5",
+       "title": "Chemistry - Targeted Practice",
+       "courseSlug": "igcse-chemistry-19",
+       "courseLabel": "Chemistry",
+       "specRefs": [
+        "4CH1-S1-h",
+        "4CH1-S2-d",
+        "4CH1-S4-g"
+       ],
+       "marksTotal": 44,
+       "questionCount": 21,
+       "dueAt": "2026-10-05T17:59:00.000Z",
+       "status": "open",
+       "classId": null,
+       "createdAt": "2026-09-28T21:07:33.079Z"
+      },
+      "mySubmission": null
+     },
+     {
+      "assignment": {
+       "id": "d9c37935-332d-4732-a9cb-0f2d74442adc",
+       "title": "probe assignment asprobe_1790628651",
+       "courseSlug": "igcse-chemistry-19",
+       "courseLabel": "IGCSE Chemistry",
+       "specRefs": [
+        "4CH1-S1-a",
+        "4CH1-S2-a"
+       ],
+       "marksTotal": 10,
+       "questionCount": 5,
+       "dueAt": "2026-10-05T20:51:03.000Z",
+       "status": "open",
+       "classId": null,
+       "createdAt": "2026-09-28T20:51:04.304Z"
+      },
+      "mySubmission": null
+     }
+    ],
+    "actions": {
+     "learnerId": "4f22ccc5-1cf8-4908-9a4d-ff7a08ef758a",
+     "rootId": "7cb03087-1bc8-4175-9bf7-898d7dc89d48",
+     "asOf": "2026-10-19T20:41:01.986Z",
+     "policy": "nba-rules/v1.3",
+     "actions": []
+    },
+    "examTargets": []
+   }
+  },
+  {
+   "leg": "L21",
+   "subsystem": "LEARNER_MODEL",
+   "method": "GET",
+   "path": "/api/v1/learners/me/recommendations?rootId=7cb03087-1bc8-4175-9bf7-898d7dc89d48",
+   "requestBody": null,
+   "status": 200,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=200 want=200"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "learnerId": "4f22ccc5-1cf8-4908-9a4d-ff7a08ef758a",
+    "rootId": "7cb03087-1bc8-4175-9bf7-898d7dc89d48",
+    "asOf": "2026-10-19T20:41:04.286Z",
+    "policy": "nba-rules/v1.3",
+    "actions": []
+   }
+  },
+  {
+   "leg": "L22",
+   "subsystem": "LEARNER_MODEL",
+   "method": "GET",
+   "path": "/api/v1/learners/me/recommendations",
+   "requestBody": null,
+   "status": 400,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=400 want=400"
+    },
+    {
+     "name": "required_rootId_law",
+     "pass": true,
+     "detail": "got='missing required parameter: rootId' want='missing required parameter: rootId'"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "status": 400,
+    "error": "validation_failed",
+    "message": "missing required parameter: rootId",
+    "timestamp": "2026-10-19T20:41:06.588Z"
+   }
+  },
+  {
+   "leg": "L23",
+   "subsystem": "LEARNER_MODEL",
+   "method": "GET",
+   "path": "/api/v1/learners/me/exam-series",
+   "requestBody": null,
+   "status": 200,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=200 want=200"
+    }
+   ],
+   "pass": true,
+   "response": [
+    {
+     "id": "0a000000-0000-0000-0000-000000000001",
+     "board": "PEARSON_EDEXCEL",
+     "qualification": "IAL",
+     "seriesCode": "2026-october-november",
+     "label": "October/November 2026",
+     "windowStart": "2026-10-08",
+     "windowEnd": "2026-10-30",
+     "entryDeadline": "2026-08-28",
+     "resultsDate": "2027-01-21",
+     "estimated": false,
+     "sourceUrl": "https://qualifications.pearson.com/content/dam/pdf/Support/Examination-timetables-for-International-Advanced-Levels/ial-october2026-final.pdf",
+     "retrievedAt": "2026-10-04T00:00:00.000Z"
+    },
+    {
+     "id": "0a000000-0000-0000-0000-000000000002",
+     "board": "PEARSON_EDEXCEL",
+     "qualification": "INTERNATIONAL_GCSE",
+     "seriesCode": "2026-november",
+     "label": "November 2026",
+     "windowStart": "2026-10-27",
+     "windowEnd": "2026-11-19",
+     "entryDeadline": "2026-09-12",
+     "resultsDate": "2027-01-21",
+     "estimated": false,
+     "sourceUrl": "https://qualifications.pearson.com/content/dam/pdf/Support/Examination-timetables-for-Edexcel-International-GCSE/intgcse-nov-2026-final.pdf",
+     "retrievedAt": "2026-10-04T00:00:00.000Z"
+    },
+    {
+     "id": "0a000000-0000-0000-0000-000000000003",
+     "board": "PEARSON_EDEXCEL",
+     "qualification": "IAL",
+     "seriesCode": "2027-january",
+     "label": "January 2027",
+     "windowStart": "2027-01-08",
+     "windowEnd": "2027-01-25",
+     "entryDeadline": "2026-10-16",
+     "resultsDate": "2027-03-04",
+     "estimated": false,
+     "sourceUrl": "https://qualifications.pearson.com/content/dam/pdf/Support/Examination-timetables-for-International-Advanced-Levels/ial-january-2027-final.pdf",
+     "retrievedAt": "2026-10-04T00:00:00.000Z"
+    },
+    {
+     "id": "0a000000-0000-0000-0000-000000000004",
+     "board": "PEARSON_EDEXCEL",
+     "qualification": "IAL",
+     "seriesCode": "2027-may-june",
+     "label": "May/June 2027",
+     "windowStart": "2027-05-04",
+     "windowEnd": "2027-06-10",
+     "entryDeadline": "2027-03-21",
+     "resultsDate": "2027-08-12",
+     "estimated": false,
+     "sourceUrl": "https://qualifications.pearson.com/content/dam/pdf/Support/Examination-timetables-for-International-Advanced-Levels/ial-summer-2027-final.pdf",
+     "retrievedAt": "2026-10-04T00:00:00.000Z"
+    },
+    {
+     "id": "0a000000-0000-0000-0000-000000000005",
+     "board": "PEARSON_EDEXCEL",
+     "qualification": "INTERNATIONAL_GCSE",
+     "seriesCode": "2027-may-june",
+     "label": "May/June 2027",
+     "windowStart": "2027-05-10",
+     "windowEnd": "2027-06-18",
+     "entryDeadline": "2027-03-21",
+     "resultsDate": "2027-08-19",
+     "estimated": false,
+     "sourceUrl": "https://qualifications.pearson.com/content/dam/pdf/Support/Examination-timetables-for-Edexcel-International-GCSE/int-gcse-summer-2027-final.pdf",
+     "retrievedAt": "2026-10-04T00:00:00.000Z"
+    }
+   ]
+  },
+  {
+   "leg": "L24",
+   "subsystem": "LEARNER_MODEL",
+   "method": "GET",
+   "path": "/api/v1/learners/me/knowledge-graph?rootId=7cb03087-1bc8-4175-9bf7-898d7dc89d48",
+   "requestBody": null,
+   "status": 200,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=200 want=200"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "_truncated": "{\"learnerId\": \"4f22ccc5-1cf8-4908-9a4d-ff7a08ef758a\", \"rootId\": \"7cb03087-1bc8-4175-9bf7-898d7dc89d48\", \"rootCode\": \"4MB1\", \"rootTitle\": \"Maths (4MB1)\", \"asOf\": \"2026-10-19T20:41:07.115Z\", \"nodes\": [{\"id\": \"7cb03087-1bc8-4175-9bf7-898d7dc89d48\", \"code\": \"4MB1\", \"type\": \"SUBJECT\", \"title\": \"Maths (4MB1)\", \"description\": \"Pearson Edexcel International GCSE (9-1) Maths (4MB1, 2016 specification)\", \"childIds\": [\"fd0a5455-50a1-4a21-b55c-46a3e65f0f88\", \"676a3936-899c-46d5-9db2-5723532a9b9b\", \"97a1ae75-893b-4ac0-8cc1-267fcab52ee7\", \"109ab269-a7dc-49c0-8558-00bcf978a87d\", \"97d98d6d-5c40-458c-837a-4e465f45b947\", \"2bf21491-95f7-4bdf-97db-c5713442e20f\", \"dd8ec94f-487c-4695-ab2b-3ea86ca48eac\", \"08ff049d-842d-4f67-9724-527b460174d3\", \"1c44feca-7856-4552-a4f1-fc8d10764cab\", \"ec464605-2453-4d0c-b468-47b128cee97f\"], \"mastery\": null, \"effectiveMastery\": null, \"band\": null, \"attempts\": null, \"correctCount\": null, \"lastPracticedAt\": null, \"proceduralFluencyGap\": null, \"reviewDueAt\": null, \"reviewReason\": null, \"misconceptionProbability\": null, \"misconceptionActive\": null, \"applicability\": null}, {\"id\": \"fd0a5455-50a1-4a21-b55c-46a3e65f0f88\", \"code\": \"4MB1-S1\", \"type\": \"UNIT\", \"title\": \"Number\", \"description\": \"4MB1 official specification structure (section): Number\", \"childIds\": [\"35df111f-7fb3-4783-aefd-8888b21187d1\"], \"mastery\": null, \"effectiveMastery\": null, \"band\": null, \"attempts\": null, \"correctCount\": null, \"lastPracticedAt\": null, \"proceduralFluencyGap\": null, \"reviewDueAt\": null, \"reviewReason\": null, \"misconceptionProbability\": null, \"misconceptionActive\": null, \"applicability\": null}, {\"id\": \"35df111f-7fb3-4783-aefd-8888b21187d1\", \"code\": \"4MB1-S1-_\", \"type\": \"TOPIC\", \"title\": \"Number\", \"description\": \"4MB1 official specification structure (subsection): Number\", \"childIds\": [\"a50cf7f1-7707-4740-a0be-7c238cb73260\", \"082e374a-04b8-4d23-bf5f-b597a6fc8687\", \"be52c90a-d6de-45e2-b7c0-c76d0736fe70\", \"4f9af628-1436-4e6f-bcda-f5126065f38e\", \"eb8dcb73-9e6c-4c13-940b-8dc10b77d707\", \"3728aeb0-1416-4bad-8efb-d7bf76d47039\", \"75cbe694-4819-4c50-ba62-c42379cf08a8\", \"9b100e7e-d2e7-4f05-be2c-f583bfac0ba2\", \"63994918-e0be-4871-ad65-fd597917b805\", \"42182073-ba63-4df9-865a-aa5a50c36fa1\", \"b539e4a1-c9fe-4036-9adb-446960b935f5\"], \"mastery\": null, \"effectiveMastery\": null, \"band\": null, \"attempts\": null, \"correctCount\": null, \"lastPracticedAt\": null, \"proceduralFluencyGap\": null, \"reviewDueAt\": null, \"reviewReason\": null, \"misconceptionProbability\": null, \"misconceptionActive\": null, \"applicability\": null}, {\"id\": \"a50cf7f1-7707-4740-a0be-7c238cb73260\", \"code\": \"4MB1-S1-1A\", \"type\": \"SUBTOPIC\", \"title\": \"The ordinary processes of number manipulation\", \"description\": \"4MB1 official specification structure (spec point): The ordinary processes of number manipulation\", \"childIds\": [], \"mastery\": null, \"effectiveMastery\": null, \"band\": null, \"attempts\": null, \"correctCount\": null, \"lastPracticedAt\": null, \"proceduralFluencyGap\": null, \"reviewDueAt\": null, \"reviewReason\": null, \"misconceptionProbability\": null, \"misconceptionActive\": null, \"applicability\": \"{\\\"papers\\\":[\\\"4MB1/01\\\",\\\"4MB1/02\\\"],\\\"rule\\\":\\\"single tier: both papers contain questions from any part of the specification content (spec pp.5-6, 10)\\\"}\"}, {\"id\": \"082e374a-04b8-4d23-bf5f-b597a6fc8687\", \"code\": \"4MB1-S1-1B\", \"type\": \"SUBTOPIC\", \"title\": \"Prime numbers, factors, multiples\", \"description\": \"4MB1 official specification structure (spec point): Prime numbers, factors, multiples\", \"childIds\": [], \"mastery\": null, \"effectiveMastery\": null, \"band\": null, \"attempts\": null, \"correctCount\": null, \"lastPracticedAt\": null, \"proceduralFluencyGap\": null, \"reviewDueAt\": null, \"reviewReason\": null, \"misconceptionProbability\": null, \"misconceptionActive\": null, \"applicability\": \"{\\\"papers\\\":[\\\"4MB1/01\\\",\\\"4MB1/02\\\"],\\\"rule\\\":\\\"single tier: both papers contain questions from any part of the specification content (spec pp.5-6, 10)\\\"}\"}, {\"id\": \"be52c90a-d6de-45e2-b7c0-c76d0736fe70\", \"code\": \"4MB1-S1-1C\", \"type"
+   }
+  },
+  {
+   "leg": "L25",
+   "subsystem": "LEARNER_MODEL",
+   "method": "GET",
+   "path": "/api/v1/learners/me/smart-lesson?rootId=7cb03087-1bc8-4175-9bf7-898d7dc89d48&topicNodeId=9e11bb83-3107-442d-a188-751ccf4648c4",
+   "requestBody": null,
+   "status": 200,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=200 want=200"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "learnerId": "4f22ccc5-1cf8-4908-9a4d-ff7a08ef758a",
+    "rootId": "7cb03087-1bc8-4175-9bf7-898d7dc89d48",
+    "topicNodeId": "9e11bb83-3107-442d-a188-751ccf4648c4",
+    "topicCode": "4MB1-S3-_",
+    "topicTitle": "Algebra",
+    "asOf": "2026-10-19T20:41:07.569Z",
+    "policy": "smart-lesson/v2",
+    "action": {
+     "actionType": "PRACTISE_QUESTIONS",
+     "reasonCode": "INSUFFICIENT_COVERAGE",
+     "targetNodeId": "9e11bb83-3107-442d-a188-751ccf4648c4",
+     "targetCode": "4MB1-S3-_",
+     "targetTitle": "Algebra",
+     "questionId": null,
+     "servableQuestionCount": 0,
+     "reasonDetail": "No attempt evidence on 4MB1-S3-_ yet \u2014 start with the first validated question to find your level (diagnostic practice)"
+    },
+    "topicStatus": {
+     "coverage": "UNMEASURED",
+     "attempts": 0,
+     "mastery": null,
+     "effectiveMastery": null,
+     "reviewDue": false,
+     "strongestMisconceptionProbability": null,
+     "fluencyGap": null,
+     "tutorAsks": 0,
+     "servableQuestions": 0
+    },
+    "prerequisites": [],
+    "misconceptions": [],
+    "evidence": [
+     {
+      "key": "topic",
+      "value": "4MB1-S3-_ \u2014 Algebra"
+     },
+     {
+      "key": "attempts",
+      "value": "0 (no attempt evidence on this topic)"
+     }
+    ]
+   }
+  },
+  {
+   "leg": "L26",
+   "subsystem": "LEARNER_MODEL",
+   "method": "GET",
+   "path": "/api/v1/learners/me/smart-lesson?rootId=7cb03087-1bc8-4175-9bf7-898d7dc89d48&topicNodeId=a9ea76ff-9326-4121-8b4b-d4144d4b901f",
+   "requestBody": null,
+   "status": 404,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=404 want=404"
+    },
+    {
+     "name": "service_owned_isolation",
+     "pass": true,
+     "detail": "got='curriculum topic in this subject a9ea76ff-9326-4121-8b4b-d4144d4b901f not found' want='curriculum topic in this subject a9ea76ff-9326-4121-8b4b-d4144d4b901f not found'"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "status": 404,
+    "error": "not_found",
+    "message": "curriculum topic in this subject a9ea76ff-9326-4121-8b4b-d4144d4b901f not found",
+    "timestamp": "2026-10-19T20:41:08.117Z"
+   }
+  },
+  {
+   "leg": "L27",
+   "subsystem": "LEARNER_MODEL",
+   "method": "GET",
+   "path": "/api/v1/learners/me/smart-lesson?rootId=7cb03087-1bc8-4175-9bf7-898d7dc89d48",
+   "requestBody": null,
+   "status": 400,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=400 want=400"
+    },
+    {
+     "name": "missing_topicNodeId",
+     "pass": true,
+     "detail": "got='missing required parameter: topicNodeId' want='missing required parameter: topicNodeId'"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "status": 400,
+    "error": "validation_failed",
+    "message": "missing required parameter: topicNodeId",
+    "timestamp": "2026-10-19T20:41:08.370Z"
+   }
+  },
+  {
+   "leg": "L28",
+   "subsystem": "SMART_MARK",
+   "method": "POST",
+   "path": "/api/v1/learners/me/attempts/59960c83-31d7-405d-84d6-5dc366f3070f/smart-mark",
+   "requestBody": {},
+   "status": 404,
+   "checks": [
+    {
+     "name": "status",
+     "pass": true,
+     "detail": "got=404 want=404"
+    },
+    {
+     "name": "no_existence_oracle",
+     "pass": true,
+     "detail": "attempt 59960c83-31d7-405d-84d6-5dc366f3070f not found"
+    }
+   ],
+   "pass": true,
+   "response": {
+    "status": 404,
+    "error": "not_found",
+    "message": "attempt 59960c83-31d7-405d-84d6-5dc366f3070f not found",
+    "timestamp": "2026-10-19T20:41:08.642Z"
+   }
+  }
+ ],
+ "derived_anchors": {
+  "mb1_root": "7cb03087-1bc8-4175-9bf7-898d7dc89d48",
+  "ch1_root": "297a8706-b957-40cb-8bb6-0bfed66980b7",
+  "unit_s1": "fd0a5455-50a1-4a21-b55c-46a3e65f0f88",
+  "unit_s3": "109ab269-a7dc-49c0-8558-00bcf978a87d",
+  "mb1_topic_s3": "9e11bb83-3107-442d-a188-751ccf4648c4",
+  "ch1_topic_s3b": "a9ea76ff-9326-4121-8b4b-d4144d4b901f"
+ }
+}

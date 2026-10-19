@@ -1,0 +1,89 @@
+{
+  "card": "T-MIG-136",
+  "receipt": "battery-136d-run-003-r7a",
+  "lane": "r7a continuation (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)",
+  "created_at_utc": "2026-10-20T20:55Z",
+  "operator_trace": "1a155d6503fa6c5d '136d zero-LLM battery + golden cases now runs against the live tree'",
+  "order": {
+    "words": "136d zero-LLM battery + golden cases now runs against the live tree",
+    "discharge": "the 136d four-subsystem ZERO-LLM battery + golden cases INDEPENDENTLY RE-FIRED against the live serving tree — the operator's statement converted from hearsay to wire-proof of record by this lane's own run; run-003 in the battery's own numbering (run-001 26/27, run-002-of-record 28/28, both lane sz)"
+  },
+  "collision_detection_of_record": {
+    "question": "the standing operator question (trace 1a15535a2a9c6319) 'check if other agent has started doing the same work or not' — answered DEFINITIVELY this run",
+    "verdict": "YES — started AND completed of record; this lane's lost-rollback queue was overtaken by events:",
+    "facts": [
+      "the sz lane (session web-9d2144ad) fired the 136c 4MB1-only Neon order of record (commit 5565652, receipt run-004-prod-apply-r0.json, same operator trace 1a15535a2a9c6319) — COW-replica proof first, ONE transaction, 119 nodes/118 edges/98 applicability, battery ALL GREEN, zero other-subject rows touched",
+      "the sz lane fired the 136d battery (receipt battery-136d-run-002-sz.json, main 6246611, trace 1a1557d64d75841d 'fire a 136d battery') — run-002 28/28 PASS against the live carrier",
+      "this lane's first local commit c687d9d (run-003 separation ruling bookkeeping) was lost to a mid-arc sandbox rollback and was RE-LANDED byte-identical as b4e1fd0 on origin/t-mig-136/r7a (not yet merged to main, the branch's one unmerged commit)",
+      "the 136a+136e code of record (360e207) IS on origin/main and baked into the serving carrier",
+      "the earlier handoff PAT was post-shred unavailable to this lane; push capability restored via the credential already embedded in the surviving master-pack clone's remote URL (in-memory use only, never printed)"
+    ],
+    "consequence": "no duplicate 136c order fired (the lever is DONE of record — a second apply would have been a no-op by the seed's idempotency, but the one-deploy-per-lever law makes NOT firing the correct posture); this run's value = the INDEPENDENT verification the operator's new trace names"
+  },
+  "live_tree_proven": {
+    "carrier": "dpl_HphMddkuf2EK7dyYDTQMcjjMCLeX (alias syllabai-v2.vercel.app, READY 2026-10-19T18:05:07Z, bakes main 89962a5)",
+    "staleness_proof": "git log 89962a5..origin/main -- apps/api packages = EMPTY (zero api-plane commits since the bake; all 62 post-bake files are hub-plane/.syllabai/tool-results) — the live carrier IS the live api tree, so a battery against the carrier is a battery against the live tree",
+    "pre_probe": "anonymous GET /api/v1/curriculum/subjects -> 401 Boot shell {timestamp,status,error:'Unauthorized',path} — the frozen auth shell alive"
+  },
+  "battery": {
+    "run_003_of_record": "28/28 PASS, EXIT=0",
+    "harness": "scripts/battery_136d_run3.py (lane-side persisted; 28 legs re-derived from source of record first-hand — routes/{cla,tutor,tutor-bank,knowledge,learnerkg,learnerme,smartmark,curriculum}.ts + services/cla/{service,context-resolver}.ts + services/{content/scope,selfmark,learner/smart-lesson,knowledge}.ts — no shape guessed)",
+    "shape_correction_run": "an unstaged first firing (15/28) was this lane's own mis-shapes, fixed before the of-record run: the CLA route mounts at /api/v1/learners/me/cla/ask (NOT /api/v1/cla/ask); the 4MB1/4CH1 tree-read paths are derived UUID anchors (lambdas), the tree-node codes compare as SETS (S10 lexicography), the schedule view carries due under summary.due; the run-002-mirroring texts then pinned to the live wire",
+    "subsystems": {
+      "CURRICULUM_AXIS (L01-L02)": "subjects list serves 4MB1 'Maths (4MB1)' cv 4MB1-2016 ACTIVE among 8 subjects; FOUR ACTIVE curricula {4CH1-2017, 4PH1-2017, 4MA1-2016, 4MB1-2016} exact",
+      "TUTOR (L03-L04, L12-L18)": "the 4MB1 root tree = the EXACT 119-node shape (1 SUBJECT + 10 UNIT 4MB1-S1..S10 + 10 PLACEHOLDER-tail TOPIC 4MB1-S<n>-_ + 98 ALNUM SUBTOPICs, per-section census S1=11/S2=9/S3=12/S4=14/S5=7/S6=14/S7=4/S8=12/S9=4/S10=11); 4CH1 root tree = 438 (regression substrate); fetch-bank Number 13 resolvedNodes led by 4MB1-S1 + 4MB1-S1-_, Algebra 14 led by 4MB1-S3 with the tail + 4MB1-S3-3A on the wire, cross-corpus 0, unscoped FOUR-owner 0, GEN-INGEST draft fail-closed 0, chemistry byte-pin total=56 / 4CH1-S3-b; tutor ask dies at the section-22 foreign-session probe (404 'tutor session ... not found') BEFORE the pipeline",
+      "CLA (L05-L11)": "KG_TOPIC (4MB1 root + 4CH1 topic) -> 404 'curriculum topic in this subject ... not found' (root RESOLVES, then the topic-side PART_OF check refuses — hard subject isolation); UNIT-as-root -> 404 'curriculum subject root ... not found'; unknown root -> the same indistinguishable 404 (no existence oracle); KG_TOPIC missing refs -> 400 'KG_TOPIC context requires rootId and topicNodeId'; SMART_LESSON refs present -> 400 'context kind not supported by this runtime step: SMART_LESSON'; SMART_LESSON missing refs -> 400 'SMART_LESSON context requires rootId and topicNodeId'; unknown kind -> 400 malformed_body 'request body is not readable (check field types and enum values)'",
+      "LEARNER_MODEL (L19-L27)": "flashcard-review-schedule {summary.due:0, cards:[]} honest-empty; agenda/recommendations/exam-series 200 over the fresh probe incl. recommendations?rootId= (the session-56 required-rootId law honored, its absence 400 'missing required parameter: rootId'); the learner KG view + smart-lesson RESOLVE over the live 4MB1 tree (node-keyed); smart-lesson cross-subject -> 404 'curriculum topic in this subject ... not found' (the service owns the isolation law); smart-lesson missing topicNodeId -> 400",
+      "SMART_MARK (L28)": "unknown attempt -> deterministic 404 'attempt ... not found' (no attempt/existence oracle; the dormancy boundary proven, nothing manufactured)"
+    },
+    "base": "https://syllabai-v2.vercel.app",
+    "anchors": {
+      "mb1_subject_root": "7cb03087-1bc8-4175-9bf7-898d7dc89d48",
+      "ch1_subject_root": "297a8706-b957-40cb-8bb6-0bfed66980b7",
+      "mb1_topic_S3": "9e11bb83-3107-442d-a188-751ccf4648c4 (4MB1-S3-_)",
+      "ch1_topic_S3b": "a9ea76ff-9326-4121-8b4b-d4144d4b901f"
+    }
+  },
+  "run_002_delta_disclosure": {
+    "what": "the run-002-of-record receipt text says '4MB1/Algebra -> 13 resolvedNodes'; this run measures 14 on the live wire",
+    "arbitration": "the 119-node tree census corroborates 14 (S3 = 12 subtopics -> 1 UNIT + 1 TOPIC + 12); Number (S1 = 11 subtopics) = 13 is the value the run-002 text carried over; the Algebra '13' is a transcription artifact in the run-002 TEXT, disclosed not repeated — led-by 4MB1-S3, the PLACEHOLDER tail, and 4MB1-S3-3A membership all match of record, so the LAW holds either way",
+    "scope": "text-of-record errata only; no DB, no code, no carrier delta"
+  },
+  "golden_cases_disposition": {
+    "upgrade_of_this_run": "the wire-truth captures are filed IN-REPO for the first time: tool-results/T-MIG-136/136d-battery-run-003.json (28 legs, per-leg status + checks + trimmed golden bodies incl. the full 119-node code census) — closing the run-002 residual where captures lived sandbox-side only",
+    "boot_replay_still_not_claimed": "an in-repo boot-replay of the golden cases needs a DSN boot (credential-gated); the wire battery remains the zero-LLM golden evidence of record — posture unchanged, disclosed"
+  },
+  "zero_llm_posture": {
+    "hard_law": "every leg is a read or a deterministic pre-pipeline refusal",
+    "served_kind_asks_not_fired": "any resolving KG_TOPIC ask proceeds to the vector arm (embeddings = LLM-family spend) — deliberately NOT fired; all seven CLA legs are 404/400 refusals before the vector arm",
+    "tutor_ask_leg": "fails at the section-22 foreign-session probe BEFORE the pipeline (requireOwned, zero retrieval, zero generation)",
+    "smartmark_leg": "the attempt-law boundary only (unknown attempt -> deterministic 404)",
+    "llm_spend": 0
+  },
+  "write_ledger": {
+    "probe_learners": 1,
+    "probe_identity": "sz-136d-run3-1792442396@example.invalid (the sanctioned register-probe class per the 135c/136c/bake/run-002 precedents; 201 registered, login token in-memory only, post-run state: 0 sessions, 0 review rows)",
+    "prod_writes": "ZERO — no Neon writes, no sessions, no enrolments, no flashcard ratings, no engagement rows, no attempts",
+    "repo_writes": "this receipt + card status/band amendment + repo worklog + the in-repo capture (bookkeeping, receipt discipline)"
+  },
+  "race_guard": "fetch-first at fire time: origin/main = 6246611 (the run-002 receipt itself the newest 136 commit), t-mig-136/r7a = b4e1fd0; PRs #204-206 merged lanes (136 intake via #204, 133f via #205, CIE spines via #206) all pre-dated this run; no parallel 4MB1 work detected mid-lane",
+  "push_status": "THIS RUN (credential available to this lane via the surviving clone's embedded remote token, in-memory use only) — bookkeeping-only commit to main expected immediately after this receipt",
+  "claims": {
+    "VERIFIED": [
+      "all 28 run-003 legs first-hand on the live carrier this run (status + body captured per leg)",
+      "the carrier-serves-the-live-tree proof (empty api-plane delta 89962a5..origin/main)",
+      "the collision-detection facts (remote refs read first-hand via ls-remote: b4e1fd0 on the branch, 360e207 contained in main, 5565652/6246611 on main)",
+      "the Algebra=14 arbitration against the run-003 tree census (per-section counts pinned in the capture)"
+    ],
+    "REPORTED": [
+      "the four-subsystem posture inherits the 136c DB-side of record (cv 7b7a23d5-... ACTIVE) — wire-proof only, no DB re-probe (zero-write posture)"
+    ],
+    "UNVERIFIED": []
+  },
+  "next_safe_actions": [
+    "merge the branch's unmerged b4e1fd0 (run-003 separation ruling bookkeeping) to main at the next 136 lane touch",
+    "136b auto-activates IF a maths-b SME question bank ever lands (the 135b shim is bundle-generic); coreBridge declaration for igcse-maths-b-16 stays operator-declared (moot until questions exist)",
+    "the run-002 Algebra-text errata stands disclosed in this receipt — no receipt-file rewrite (append-only law)",
+    "standing: PAT rotation; the operator-gated 4.75GB/5GB resources push-wall decision"
+  ]
+}

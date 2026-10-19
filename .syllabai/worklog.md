@@ -9031,3 +9031,22 @@ Work Log:
 Stage Summary:
 - T-MIG-137 is of record: the graded-evidence→KG join scoped end-to-end with file:line census pins and receipt-cited frozen semantics (EvidencePublisher.java :53/:86-88/:100-120, Attempt.java:159-161, the BDT untagged-wrong law, STRUCTURED 0.01 guess pricing). Awaiting the operator go (or "fire it on the defaults" — D1-D4 all carry defaults). ~1.5-2.5 lane runs; the four-subsystem loop closes with it.
 - PR #205 merge order: DISCHARGED-AS-COLLISION of record (R0-auto intake landed it at 97b3e33/89962a5 before this lane's fetch) — the strengthened roll path is main's 133f/133h state; the Maths A smoke rides 137d when the go lands.
+
+---
+Task ID: trace 1a155d6503fa6c5d (band 136d re-verification)
+Agent: r7a continuation (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)
+Task: "136d zero-LLM battery + golden cases now runs against the live tree" — the battery + golden cases independently re-fired against the live serving tree; the standing other-agent collision question (trace 1a15535a2a9c6319) answered of record.
+
+Work Log:
+- Sandbox rollback recovery: the lane's clone was gone (gh_repos/syllabai-v2 absent, shared worklog rolled back to 2026-10-04); re-cloned from origin and re-derived the lane state from remote refs + receipts (no lane-side restore script existed)
+- COLLISION DETECTION of record: the other agent (sz lane) ALREADY fired BOTH this lane's queued orders — 136c 4MB1-only prod apply of record (5565652, run-004 receipt, COW-replica proof first) AND the 136d battery run-002 28/28 (6246611 receipt); this lane's lost c687d9d was re-landed byte-identical as b4e1fd0 on origin/t-mig-136/r7a (one unmerged commit); consequence: NO duplicate 136c order (one-deploy-per-lever), this run = the independent verification the new trace names
+- LIVE-TREE PROOF: git log 89962a5..origin/main -- apps/api packages = EMPTY — the live carrier dpl_HphMddkuf2EK7dyYDTQMcjjMCLeX (alias syllabai-v2.vercel.app) IS the live api tree; a battery against the carrier is a battery against the live tree
+- Harness scripts/battery_136d_run3.py: 28 legs re-derived from source first-hand (routes/* + services/* — no shape guessed); one honest mis-shape run disclosed (15/28: CLA mounts at /api/v1/learners/me/cla/ask; tree-read paths are derived UUID lambdas; node-code SET comparison for S10; schedule due under summary.due), then pinned to the wire
+- RUN-003 OF RECORD: 28/28 PASS EXIT=0 — subjects/versions axis (8 subjects, FOUR ACTIVE curricula), the EXACT 119-node 4MB1 tree with the full per-section census (S1=11/S2=9/S3=12/S4=14/S5=7/S6=14/S7=4/S8=12/S9=4/S10=11), 4CH1=438 substrate, fetch-bank laws (Number 13 led S1+S1-_, Algebra 14 led S3 + tail + 3A, cross-corpus 0, unscoped FOUR-owner 0, GEN-INGEST 0, chemistry byte-pin 56/4CH1-S3-b), CLA isolation/deferral/binding laws, learner-model honest-empty state + node-keyed resolves + cross-subject 404, smartmark dormancy 404
+- RUN-002 TEXT ERRATA disclosed of record: the run-002 receipt's 'Algebra -> 13 resolvedNodes' is a transcription artifact — live wire AND the 119-tree census say 14 (S3=12 subtopics); Number=13 stands; append-only honored (no receipt rewrite)
+- GOLDEN CASES upgraded: wire-truth captures filed IN-REPO for the first time (tool-results/T-MIG-136/136d-battery-run-003.json, 28 legs with golden bodies); boot-replay still DSN-gated, posture unchanged
+- Card amended (status RE-VERIFIED clause + band VERIFIED OF RECORD clause, YAML parse OK); receipt battery-136d-run-003-r7a.json; bookkeeping-only commit + push to main
+- Write ledger: 1 probe learner (sz-136d-run3-1792442396@example.invalid, sanctioned class), llm_spend 0, ZERO Neon/session/enrolment/engagement/attempt writes; race-guard fetch-first clean at fire time
+
+Stage Summary:
+- The operator's statement is now WIRE-PROOF of record: the 136d battery + golden cases run green against the live tree, independently re-proven by this lane; the collision question is closed (other agent did the work of record; nothing duplicated); the branch's b4e1fd0 remains the one unmerged 136 commit for the next lane touch
