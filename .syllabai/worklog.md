@@ -9015,3 +9015,19 @@ Work Log:
 Stage Summary:
 - 136d DISCHARGED of record: all four subsystems serve Maths B lawfully on the live carrier — CLA + tutor graph arm + learner-model node axis LIVE over the 119-node tree; fetch-bank + smart mark honestly dormant (zero questions, rule 3); FOUR ACTIVE curricula proven on the wire
 - Open: receipt push (credential); coreBridge operator declaration (moot); 136b auto-activates IF a maths-b SME bank lands
+---
+Task ID: trace 1a155d5e89e0ac45 (T-MIG-137 filing)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6, chat 1f3003b6)
+Task: "file that graded-evidence→KG join card" — the scope card filed of record; receipts T-MIG-137/run-001-scope-card-r7a.json + tasks/T-MIG-137-graded-evidence-kg-join.yaml.
+
+Work Log:
+- Fetch-first: ff 8339720 -> 6246611 (83 commits: 133f/133h via PR #205 R0-auto-merged 97b3e33 — this lane STOOD DOWN on the pending "merge #205 via intake" order per the no-duplicate-acts law, receipt 89962a5; CIE spines #206; the r1c CIE scope card bbf5e91; the 136d 4MB1 battery 6246611).
+- First-hand census at 6246611: the learner-model write path is LIVE for the MCQ lane only (createLearnerModelEvidencePublisher); the three graded lanes publish the NARROW seam (selfmark/index.ts:41-52, no primaryTopicNodeId/specPointNodeIds/questionType/optionCount/misconception ids) into the claiming stub (smartmark:177 / teachermarking:402) or the noop (selfmark default, claims FALSE — the E-1 asymmetry); the listener consumes the FULL AssessmentEvidenceEvent (model-update.ts:280-293, evidence nodes primary+secondary+spec-points :369-378); join sources all exist (questions.primary_topic_node_id, question_topics, question_spec_points — servable.ts readers; maths joins land at ingest via the shared smeRef law).
+- Rider of record confirmed outstanding: T-MIG-102 card/receipts ("graded-lane wiring is a wiring-only rider for the next band") + bfe12c4 (T-MIG-131: "the writer rides them when their live wiring lands"). Net effect: every STRUCTURED attempt (the whole exam loop) writes NOTHING to skill_states/misconception_states — the 136d honest-empty learner reads are structural, not incidental.
+- Card drafted in the house form (T-MIG-135/136 yaml shape + the r1c scope-receipt mode): T-MIG-137 (id free; highest prior 136), SCOPED status, bands 137a seam widening / 137b createGradedEvidencePublisher + composition / 137c claim law + parity pins / 137d the live proof via the SELF-MARK deterministic lane (zero-LLM lawful; smart-mark oracle stays behind its dormancy boundary), folding the pending Maths A smoke learner-page arc (trace 1a154737518975e1).
+- 4 operator decisions filed with recommendations: D1 claim unification (retire the selfmark noop asymmetry in-band), D2 structured self-doubt source (frozen-parity first), D3 all-three-lanes activation, D4 self-mark proof path.
+- Write ledger: THIS filing only (card yaml + receipt + worklog, .syllabai-only); zero code/content/DB writes; zero LLM; zero Neon; fetch-first honored; no force.
+
+Stage Summary:
+- T-MIG-137 is of record: the graded-evidence→KG join scoped end-to-end with file:line census pins and receipt-cited frozen semantics (EvidencePublisher.java :53/:86-88/:100-120, Attempt.java:159-161, the BDT untagged-wrong law, STRUCTURED 0.01 guess pricing). Awaiting the operator go (or "fire it on the defaults" — D1-D4 all carry defaults). ~1.5-2.5 lane runs; the four-subsystem loop closes with it.
+- PR #205 merge order: DISCHARGED-AS-COLLISION of record (R0-auto intake landed it at 97b3e33/89962a5 before this lane's fetch) — the strengthened roll path is main's 133f/133h state; the Maths A smoke rides 137d when the go lands.

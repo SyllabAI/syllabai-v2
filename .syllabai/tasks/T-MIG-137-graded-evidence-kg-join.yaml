@@ -1,0 +1,122 @@
+version: 1
+task:
+  id: T-MIG-137
+  title: "graded-evidence→KG join — wire the three publishGraded marking lanes (selfmark / smartmark / teachermarking) into the learner-model write path so every marked STRUCTURED attempt lands BKT/fluency evidence keyed on the curriculum KG nodes (primary topic + secondary topics + spec points appended deduped); the T-MIG-102 wiring-only rider of record, instantiated as its own card"
+  owner: "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6, chat 1f3003b6)"
+  status: SCOPED # scope-only card filed on operator trace 1a155d5e89e0ac45 'file that graded-evidence→KG join card' — zero code changes in this filing; execution = separate operator go
+  claimed_at: "2026-10-19T20:30:26Z" # lane-local (Asia/Dhaka) 2026-10-20
+  claimed_by_order: "operator trace 1a155d5e89e0ac45: 'file that graded-evidence→KG join card' (this filing IS the ordered act; the card's execution awaits the go)"
+  priority: P1
+  wave: product-loop / learner-model
+  deps:
+    - "T-MIG-102 (the write path of record, PR #163 — updateOnAssessmentEvidence + model-update.ts)"
+    - "T-MIG-030 (the evidence seam: publishGraded claim contract + the E-1 once-only guarded flip, Attempt.java:159-161 parity)"
+    - "T-MIG-131 (the Order(100) struggle-inference rider — bfe12c4 pins 'the writer rides them when their live wiring lands')"
+    - "T-MIG-135/136 (the second-subject product loop — maths spec-point joins exist at ingest via the shared smeRef law, which makes this join product-critical NOW)"
+  fence: >
+    The band owns the graded-evidence seam and its wiring ONLY: the
+    GradedEvidencePublisher payload shape (services/selfmark/index.ts — the
+    seam's home), the three lane call sites (selfmark/smartmark/
+    teachermarking), ONE new live graded publisher (the sibling of
+    createLearnerModelEvidencePublisher in routes/assessment/index.ts), the
+    composition-root binding (src/index.ts), and tests/receipts. The listener
+    modules (learner-model/model-update.ts, struggle-inference.ts) are
+    CONSUMED verbatim — zero math edits, zero new learner-model phases, zero
+    prompt/LLM-surface contact (the join is deterministic DB-side assembly).
+    Frozen-law edits are forbidden; contracts/** only if a wire shape
+    demands it (not expected — the seam is server-internal). Golden corpus
+    stays honest: any newly-lit surface pins land as ADD cases, never
+    edits. Physics lane (T-MIG-134) and books lane (T-MIG-133) untouched.
+  scoping_record: >
+    CENSUS OF RECORD (first-hand at main 6246611, 2026-10-20):
+    (1) The learner-model write path is LIVE for the MCQ lane ONLY —
+    routes/assessment/index.ts createLearnerModelEvidencePublisher binds
+    publishMcq -> resolveActiveBktParams -> updateOnAssessmentEvidence ->
+    inferStrugglesOnAssessmentEvidence (the frozen @Order(10)+@Order(100)
+    pair) and claims true per E-2 (T-MIG-102 #163 + T-MIG-131 bfe12c4).
+    (2) The listener consumes the FULL frozen event shape
+    AssessmentEvidenceEvent (model-update.ts:280-293): primaryTopicNodeId,
+    secondaryTopicNodeIds, specPointNodeIds, correct,
+    expressedMisconceptionIds, observedMisconceptionIds, questionType,
+    optionCount, occurredAt; evidence nodes = primary first, secondary
+    deduped, spec points appended deduped (:369-378); fluency stays
+    TOPIC-scoped (:539-547).
+    (3) The three graded lanes publish a NARROW payload into a STUB:
+    the GradedEvidencePublisher seam (selfmark/index.ts:41-52) carries only
+    attemptId/learnerId/questionId/marksAwarded/marksTotal/correct/
+    secondaryTopicNodeIds/occurredAt — no primary topic, no spec points, no
+    questionType/optionCount, no misconception ids (exactly the T-MIG-102
+    rider's disclosure); the call site resolves secondary from
+    question_topics only (:247-259) and performs the E-1 guarded flip
+    (:260-267); the composition root (src/index.ts:85/:90) passes NO seams,
+    so smartmark/teachermarking bind the claiming stub
+    `publishGraded: async () => true` (smartmark/index.ts:177,
+    teachermarking.ts:402) while buildSelfMarkModule's default is the
+    noopGradedEvidencePublisher (claims FALSE — self-marked attempts
+    currently never flip evidence_emitted, an asymmetry vs the frozen E-1
+    law this band must unify).
+    (4) Net effect of record: every STRUCTURED attempt — the ONLY kind the
+    exam loop produces (smart mark serves exam_whole parts) — settles
+    through the graded lanes, so skill_states / misconception_states /
+    BKT_UPDATED telemetry get NOTHING from the real product loop; the 136d
+    battery proved the node-keyed reads RESOLVE over the live 4MA1/4MB1
+    trees while learner-model state reads stay honest-empty.
+    (5) The join SOURCES all exist and are already read elsewhere:
+    questions.primary_topic_node_id (servable.ts:47/:321/:339),
+    question_spec_points (servable.ts:241), question_topics
+    (selfmark/index.ts:247-249); the 135b/136a ingest laws land maths
+    spec-point joins via the SHARED smeQuestionRef law, so maths evidence
+    has KG targets from day one — the join is assembly, not acquisition.
+    (6) Frozen semantics that bind the design (receipt-cited pins):
+    EvidencePublisher.java :53 (claim), :86-87 (optionCount = the LIVE MCQ
+    count or 0), :88 (occurredAt), :100-109 (specPointNodeIds deduped),
+    :111-120 (topicNodeIds primary-first + secondary deduped);
+    Attempt.java:159-161 (once-only flip); BDT law (:138-167): correct
+    weakens every monitored misconception, wrong strengthens only the
+    chosen distractor's, untagged wrong = ambiguous -> updates nothing —
+    STRUCTURED lanes carry no distractor, so their misconception targets
+    are honestly EMPTY and the BDT phase no-ops (no misconception
+    inference may be invented for structured wrongs); BKT pricing
+    (resolveBktParams): STRUCTURED -> structuredGuess 0.01, optionCount 0
+    lawful.
+  bands: >
+    (137a) the seam widening: the publishGraded event gains the frozen
+    observable fields (primaryTopicNodeId, specPointNodeIds, questionType,
+    optionCount, expressedMisconceptionIds, observedMisconceptionIds),
+    each resolved at publish time from the join sources above (the frozen
+    assembles-at-emit shape); the three lane call sites move in lockstep;
+    chemistry/physics/maths-agnostic, zero listener edits.
+    (137b) the live graded publisher: createGradedEvidencePublisher
+    (the sibling of createLearnerModelEvidencePublisher) — one
+    resolveActiveBktParams read (the Card B same-resolver invariant),
+    updateOnAssessmentEvidence, then inferStrugglesOnAssessmentEvidence
+    (the Order(10)+Order(100) frozen pair, POST-update read), E-1 claim +
+    guarded-flip semantics preserved (the claim resolves at FIRST
+    authoritative marking; fail-loud, the no-silent-skip law); the
+    composition root binds it for all three lanes and the claiming stubs
+    retire to test doubles (the frozenParity-double pattern,
+    assessment/index.ts:307-318).
+    (137c) claim law + parity pins: the once-only law across lane
+    orderings under the attempt-row lock (self/smart/teacher — whichever
+    settles first claims, the rest no-op), structured-semantics pins
+    (questionType STRUCTURED -> 0.01 guess; empty misconception targets ->
+    zero BDT rows; optionCount 0), subject parity pins (4CH1/4PH1/4MA1/
+    4MB1 KG nodes all resolve; MCQ chemistry behavior byte-identical),
+    gates per the house law (typecheck x4, api suite EXACT delta, shared +
+    contracts, hub build+lint, census --gate).
+    (137d) the live proof on the strengthened roll path: a probe learner
+    attempts a maths question -> deterministic settle (the SELF-MARK lane
+    is the zero-LLM-compatible proof path; smart-mark's LLM oracle stays
+    behind its dormancy boundary unless the operator keys the window) ->
+    publishGraded fires the REAL join -> skill_states + BKT_UPDATED rows
+    land keyed on 4MA1 KG nodes -> learner page / KG posteriors /
+    recommendations read NON-EMPTY; chemistry regression byte-pins; this
+    band IS the learner-page arc of the pending Maths A live smoke
+    (tutor ask -> smart mark -> CLA -> learner page, operator trace
+    1a154737518975e1); probe-learner write ledger disclosed.
+  execution_record: >
+    Scope-only filing 2026-10-20 (Asia/Dhaka) at main 6246611: this yaml +
+    receipts/T-MIG-137/run-001-scope-card-r7a.json + the worklog entries.
+    Zero code, zero content, zero DB, zero LLM, zero Neon contact. The
+    census is first-hand (file:line pins above read at 6246611); the frozen
+    line pins are receipt-cited from T-MIG-032/033/102/131 of record.

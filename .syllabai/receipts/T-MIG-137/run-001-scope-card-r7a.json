@@ -1,0 +1,60 @@
+{
+  "receipt": "t-mig-137-graded-evidence-kg-join-scope-r0",
+  "family": "T-MIG-137",
+  "operatorTrace": "1a155d5e89e0ac45",
+  "operatorOrder": "'file that graded-evidence→KG join card' — the card filed of record; receipt T-MIG-137/run-001-scope-card-r7a.json + tasks/T-MIG-137-graded-evidence-kg-join.yaml. Fetch-first disclosure: PR #205 (t-mig-133 133f/133h ingest-driver fix) was already merged by the R0-auto intake lane of record (receipt 89962a5, merge 97b3e33) — this lane stood down on that order per the no-duplicate-acts law and proceeded to the card.",
+  "agent": "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6, chat 1f3003b6)",
+  "generatedUtc": "2026-10-19T20:30:26Z",
+  "dateConvention": "lane-local (Asia/Dhaka) date 2026-10-20",
+  "mode": "SCOPE ONLY — zero code changes, zero content writes, zero DB writes, zero LLM; execution is a separate operator go. This receipt + the task yaml ARE the drafted card the operator ordered.",
+  "currentCensusOfRecord": {
+    "writePathLiveFor": "MCQ lane only — routes/assessment/index.ts createLearnerModelEvidencePublisher (publishMcq -> resolveActiveBktParams -> updateOnAssessmentEvidence -> inferStrugglesOnAssessmentEvidence, claims true per E-2; T-MIG-102 #163 + T-MIG-131 bfe12c4)",
+    "listenerConsumes": "the FULL AssessmentEvidenceEvent (model-update.ts:280-293) — primaryTopicNodeId / secondaryTopicNodeIds / specPointNodeIds / correct / expressed+observedMisconceptionIds / questionType / optionCount / occurredAt; evidence nodes = primary first, secondary deduped, spec points appended deduped (:369-378); fluency TOPIC-scoped only (:539-547)",
+    "gradedLanesPublish": "the NARROW seam (selfmark/index.ts:41-52) — attemptId/learnerId/questionId/marksAwarded/marksTotal/correct/secondaryTopicNodeIds/occurredAt ONLY (no primary topic, no spec points, no questionType/optionCount, no misconception ids) — exactly the T-MIG-102 wiring-only rider's disclosure",
+    "gradedLanesBoundTo": "claiming stub `publishGraded: async () => true` for smartmark/teachermarking (smartmark/index.ts:177, teachermarking.ts:402; composition src/index.ts:85/:90 passes no seams) and the noopGradedEvidencePublisher (claims FALSE) for the selfmark module default (selfmark/index.ts:285-291) — the E-1 asymmetry: self-marked attempts never flip evidence_emitted today, smart/teacher-marked attempts flip but write nothing",
+    "netEffect": "every STRUCTURED attempt (the only kind the exam loop produces) settles through the graded lanes, so skill_states / misconception_states / BKT_UPDATED telemetry receive NOTHING from the real product loop — the 136d battery proved node-keyed reads RESOLVE over the live 4MA1/4MB1 trees while learner-model state reads stay honest-empty",
+    "joinSourcesExist": "questions.primary_topic_node_id (servable.ts:47/:321/:339), question_spec_points (servable.ts:241), question_topics (selfmark/index.ts:247-249); maths spec-point joins land at ingest via the shared smeQuestionRef law (135b/136a) — the join is assembly, not acquisition"
+  },
+  "riderOfRecord": "T-MIG-102 card + receipts run-001/002: 'the three graded lanes fire the same frozen evidence contract at first authoritative marking; their seam payloads lack the event fields (primaryTopicNodeId/specPointNodeIds/questionType/optionCount) … the graded-lane wiring is a wiring-only rider for the next band'; bfe12c4 (T-MIG-131) adds: 'the publishGraded lanes (still their disclosed dormant posture — the writer rides them when their live wiring lands, the activation-seam law)'. This card IS that next band.",
+  "frozenSemanticsOfRecord": [
+    "EvidencePublisher.java :53 claim contract; :86-87 optionCount = the LIVE MCQ count or 0; :88 occurredAt; :100-109 specPointNodeIds deduped; :111-120 topicNodeIds primary-first + secondary deduped (receipt-cited from T-MIG-032/033 of record)",
+    "Attempt.java:159-161 — the E-1 once-only guarded flip (publishGraded resolves the claim; fired -> evidence_emitted=true where false)",
+    "BDT law (LearnerModelService.java:138-167, model-update.ts:466-467): correct weakens every monitored misconception, wrong strengthens only the chosen distractor's, untagged wrong = ambiguous evidence -> updates nothing — STRUCTURED lanes carry no distractor, so their misconception targets are honestly EMPTY and the BDT phase no-ops (no misconception inference may be invented for structured wrongs)",
+    "BKT pricing (resolveBktParams, model-update.ts:150-167): STRUCTURED -> structuredGuess 0.01; optionCount 0 lawful for structured; guess clamped strictly below 1 - slip",
+    "struggle inference (bfe12c4): per tested TOPIC (primary+secondary deduped; spec points never fire), reads the POST-update snapshot, Order(100) after the model phases"
+  ],
+  "productStakes": "the four-subsystem loop (tutor -> smart mark -> CLA -> learner page) is missing its last arc: marking is live for maths (135b/136a questions + schemes, smart mark serves) but the learner model, KG posteriors, recommendations/NBA, struggle surfaces and teacher analytics stay empty for the real loop; the pending Maths A live smoke (trace 1a154737518975e1) reads honest emptiness at the learner page for exactly this reason; the join closes the loop for chemistry AND maths AND physics on one deterministic seam",
+  "executionPlan": [
+    "137a seam widening — the publishGraded event gains the frozen observable fields, resolved at publish time from the join sources; three lane call sites in lockstep; zero listener edits (~0.5 lane run)",
+    "137b the live graded publisher — createGradedEvidencePublisher (sibling of the MCQ publisher): one resolveActiveBktParams read, updateOnAssessmentEvidence, inferStrugglesOnAssessmentEvidence, E-1 claim + guarded-flip preserved, fail-loud; composition binds all three lanes; stubs retire to test doubles (~0.5-1 lane run)",
+    "137c claim law + parity pins — once-only across lane orderings under the attempt-row lock; structured-semantics pins (0.01 guess, empty BDT targets, optionCount 0); 4CH1/4PH1/4MA1/4MB1 node-resolution pins; chemistry MCQ byte-identical; house gates (~0.5 lane run)",
+    "137d the live proof — probe learner maths attempt -> deterministic SELF-MARK settle (the zero-LLM-compatible proof path; smart-mark's LLM oracle stays behind its dormancy boundary unless the operator keys a window) -> publishGraded fires the REAL join -> skill_states + BKT_UPDATED land keyed on 4MA1 KG nodes -> learner page / KG posteriors / recommendations NON-EMPTY; chemistry byte-pins; folds the pending Maths A smoke learner-page arc (~0.5-1 lane run)"
+  ],
+  "postureGates": {
+    "code": "typecheck x4 exit 0; api suite EXACT delta pins; shared + contracts suites; hub build+lint; census --gate GREEN LIVE=0",
+    "data": "zero Neon contact in 137a-c; 137d writes only the disclosed probe-learner class (the sz-probe sanctioned pattern); no backfill, no migration",
+    "llm": "zero-LLM held by construction in 137a-d (self-mark proof path); any keyed window is a separate operator decision",
+    "frozen": "zero frozen-law edits; the listener modules consumed verbatim; contracts/** only if a wire shape demands it (not expected)"
+  },
+  "operatorDecisions": [
+    {"id": "D1", "decision": "claim unification across the three lanes", "recommendation": "one live publisher resolves the claim at FIRST authoritative marking per the frozen law; the selfmark noop asymmetry retires in-band (self-marked attempts regain their E-1 flip); default if unanswered: do it in-band"},
+    {"id": "D2", "decision": "self-doubt source for structured attempts (the 5a METACOGNITIVE rule input)", "recommendation": "frozen-parity first — port exactly what the frozen graded event carried (first-hand analysis of StruggleInferenceService inputs at execution); if the frozen graded event carried no flag, bind false and disclose; default if unanswered: frozen-parity"},
+    {"id": "D3", "decision": "activation scope", "recommendation": "all three lanes in one band (one seam binding, lane-local assembly only); default if unanswered: all three"},
+    {"id": "D4", "decision": "137d proof lane", "recommendation": "self-mark deterministic proof path (zero-LLM lawful); chemistry regression byte-pins ride the same battery; default if unanswered: self-mark path"}
+  ],
+  "expectedOutcome": "the four-subsystem loop CLOSES of record: every marked attempt — MCQ or structured, any subject — lands learner-model evidence keyed on the curriculum KG; learner page rings, KG explorer posteriors, recommendations, struggle surfaces and teacher analytics light up from real marking activity; the Maths A smoke completes with a non-empty learner-model leg",
+  "risks": [
+    "claim race: two lanes marking one attempt concurrently — mitigated by the attempt-row lock (select ... for update, selfmark/index.ts:131-134) + the guarded flip; the claim resolution analysis (D1) must be first-hand at execution — a wrong claim double-fires BKT evidence",
+    "spec-point coverage: the 9+1 spec-code-less maths questions were honestly excluded at ingest — their evidence still lands on topic nodes (the join degrades, never silently skips; disclosed at 135b)",
+    "optionCount resolution for MCQ-typed rows reaching the graded lanes (teacher-marked MCQ): the frozen live-count law (:86-87) must be ported, not assumed 0",
+    "the selfmark E-1 flip change (noop -> claim) alters fluency-aggregate membership for self-marked attempts (evidence_emitted false -> true going forward) — disclose as an intended correction toward the frozen law, never a silent behavior change"
+  ],
+  "totalEffort": "~1.5-2.5 lane runs end-to-end (137a 0.5 / 137b 0.5-1 / 137c 0.5 / 137d 0.5-1); zero content writes; DB writes only the 137d probe-learner class",
+  "consistencyNotes": [
+    "T-MIG-102's rider is the seed — this card instantiates it as T-MIG-137 (the 'next band' the rider named); no contradiction, the rider text stays of record on that card",
+    "bfe12c4's disclosure ('the writer rides them when their live wiring lands') is satisfied by 137b — struggle inference rides the graded lanes at activation, no separate band",
+    "the 136d battery posture (smartmark dormancy boundary lawful, deterministic 404, no oracle) is respected: 137d proves through the self-mark lane; smart-mark's live-fire stays operator-keyed",
+    "ADR-031 untouched: posteriors persist, decay is computed at read — the join writes P0 anchors through the existing listener only"
+  ],
+  "writeLedger": "THIS receipt + tasks/T-MIG-137-graded-evidence-kg-join.yaml + the worklog entry (.syllabai-only); zero code/content/DB writes; zero LLM; zero Neon; fetch-first ff 8339720 -> 6246611 honored; no force"
+}
