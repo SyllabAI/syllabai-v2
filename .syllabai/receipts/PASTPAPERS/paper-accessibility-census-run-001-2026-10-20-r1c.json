@@ -1,0 +1,74 @@
+{
+  "receipt": "PASTPAPERS/paper-accessibility-census-run-001-2026-10-20-r1c",
+  "operator_trace": "1a1556864da72d1d",
+  "question": "Are all papers accessible from their respective course pages in the frontend? Check please",
+  "lane": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)",
+  "checked_at": "2026-10-20",
+  "method": {
+    "static": "apps/hub/src/lib/pastpapers-corpus.ts corpusPapersForCourse() ported verbatim to Python (scripts/paper_access_census.py) and run over the committed index src/data/pastpapers-index.json for all 49 registry courses; drop rules (qp==null && ms==null), dir-parse (last-dash), units/variants/tier filters all replicated",
+    "live": "GET-only probes against the hub of record https://syllabai-hub-v2.vercel.app — SSR HTML badge text and unique view/raw href sets diffed against the computed mapping, row-level, zero-tolerance",
+    "freshness": "GitHub API GET repos/SyllabAI/syllabai-pastpapers/branches/main compared to index meta.treeSha"
+  },
+  "index_freshness": {
+    "index_treeSha": "3063c7169c16a39204688749531a0c3608e56e7a",
+    "corpus_HEAD_commit": "3063c7169c16 (tree 179e6b248032, 'modular-24 wave 1 (SCOPE-PP-MOD24-r1)', 2026-10-19T12:00:00Z)",
+    "verdict": "CURRENT — the index's treeSha field stores the corpus COMMIT sha; index == HEAD, zero corpus commits after. Index regenerated in-repo by PR #202 (a61b4f7, SCOPE-PP-MOD24-r1 phase 2, merged 2026-10-19T11:46:32Z) and the live serving carrier includes #202 (modular-24 course pages 200 first-hand)."
+  },
+  "scope_math": {
+    "index_specs": 108,
+    "paper_dirs_total": 5309,
+    "listable_dirs_qp_or_ms": 5308,
+    "parse_failures_corpus_wide": 0,
+    "both_missing_dirs_corpus_wide": 1,
+    "both_missing_detail": "pearson-edexcel/international-a-level/mathematics/mathematics-2018 2020-10 WME03-01 holds er.pdf ONLY — dropped from every listing (course pages AND archive browser share the both-missing drop rule); nothing viewable exists, so the invisibility is honest",
+    "on_course_pages_deduped": 2017,
+    "no_course_page_anywhere": 3291,
+    "no_course_page_breakdown": {
+      "specs_with_no_course": { "spec_count": 44, "papers": 3232 },
+      "units_without_course_inside_mapped_spec": { "spec": "mathematics-2018", "papers": 59, "units": { "WFM02": 19, "WFM03": 16, "WST03": 13, "WME03": 11 } }
+    }
+  },
+  "course_page_coverage": {
+    "registry_courses": 49,
+    "courses_with_bundle": 49,
+    "COURSE_SPECS_keys": 49,
+    "orphan_mappings": 0,
+    "mapped_specs": 64,
+    "all_mapped_specs_100pct_except": {
+      "spec": "mathematics-2018",
+      "on_course_pages": 239,
+      "listable": 298,
+      "pct": 80.2,
+      "cause": "59 papers belong to units WFM02/WFM03/WST03/WME03 for which the hub has NO course (Further Maths 2/3, Statistics 3, Mechanics 3) — a catalog absence, not a listing defect"
+    },
+    "drop_rule_counts_pre_dedup_across_courses": { "both_missing": 10, "dir_parse": 0, "unit_filter": 2833, "variant_filter": 186, "tier_filter": 232, "note": "the 10 both-missing = the single WME03-01 dir counted once per each of the 10 mathematics-2018 courses; unit/variant/tier filters are the documented per-course scoping (every filtered paper surfaces on its owning course)" },
+    "mapped_spec_absent_from_index": "NONE",
+    "honest_empty_states": ["igcse-biology-modular-24-unit-2 (0 papers, June-2025 unit-2 materials not yet public)", "igcse-chemistry-modular-24-unit-2 (0 papers, same)"]
+  },
+  "live_verification": {
+    "hub": "https://syllabai-hub-v2.vercel.app",
+    "probes": [
+      { "path": "/api/health", "status": 200 },
+      { "path": "/courses/igcse-biology-modular-24-unit-1/past-papers", "status": 200, "note": "modular-24 course renders => serving carrier includes PR #202" },
+      { "path": "/courses/igcse-biology-modular-24-unit-2/past-papers", "status": 200, "note": "honest empty state LIVE (2 'No past papers mapped' markers)" },
+      { "path": "/courses/ial-maths-20-pure-1/past-papers", "status": 200, "note": "SSR badge '29 papers' == computed 29; unique view rows 29/29 EXACT (28 session + 1 specimen)" },
+      { "path": "/courses/igcse-chemistry-19/past-papers", "status": 200, "note": "SSR badge '96 papers' == computed 96; unique view rows 96/96 EXACT (4CH1 56 + legacy 4CH0 40)" },
+      { "path": "/past-papers", "status": 200, "note": "archive browser: 108 spec links == 108 indexed specs — nothing hidden" },
+      { "path": "/past-papers/pearson-edexcel/international-a-level/mathematics/mathematics-2018", "status": 200, "note": "badge '298 papers' == index 298; distinct (session,dir) rows 298/298 EXACT incl. specimen; 24 sessions 2019-01..2026-06 all present" },
+      { "path": "/past-papers/cambridge-international/ial/chemistry/9701", "status": 200, "note": "badge '379 papers' == index 379; distinct rows 379/379 EXACT" },
+      { "path": "/api/corpus-pdf/past-papers/pearson-edexcel/international-a-level/mathematics/mathematics-2018/past-papers/2019-06/WMA11-01/qp.pdf", "status": 200, "note": "same-origin proxy streams %PDF-1.6" },
+      { "path": "raw.githubusercontent.com CIE 9701 S25-QP-11 qp.pdf", "status": 200, "note": "raw origin fallback reachable" }
+    ],
+    "row_level_diffs": { "igcse-chemistry-19": "served==computed, 0 delta either direction", "ial-maths-20-pure-1": "served==computed, 0 delta either direction", "mathematics-2018_archive_page": "served==index, 0 delta either direction", "cambridge_9701_archive_page": "served==index, 0 delta either direction" }
+  },
+  "answers_of_record": [
+    "WITHIN each course's mapped scope: YES — 100%. Every paper the archive holds for a course's specs (current + legacy + filters) renders on that course's /past-papers page; verified row-perfect against the LIVE SSR HTML, not just the code. Zero parse failures corpus-wide; the sole invisible dir (WME03-01 2020-10) holds only an examiner report — nothing to view, honestly dropped everywhere.",
+    "GLOBALLY: NO — 3,291 of 5,308 listable papers (62.0%) have NO respective course page, because the hub's 49 courses map only 64 of the corpus's 108 specs. The 3,232-paper block (44 specs: ALL Cambridge International 2,259 — IAL 9701/9709/9702 + IGCSE 0620/0580/0625; Pearson GCE A-level legacy maths/physics 323; IAL accounting/economics/business/IT/law/psychology + legacy WMA01-02; IGCSE bangla/commerce/CS/English-B/human-biology/4wet/4wge long tail) plus 59 papers of 4 course-less maths units (WFM02/WFM03/WST03/WME03) are reachable ONLY via the global /past-papers archive browser (built b917adf after the operator's trace 1a140bd78ea3e419 report) — which verified 108/108 specs surfaced and row-perfect on both probed spec pages.",
+    "ACCESS PATHS OF RECORD: course page (49 courses, full mapped scope, viewer/mocks/interactive) -> global archive browser (108 specs, direct QP/MS/ER PDF links, 'Open hub archive' cross-link where a course exists, official-source deep-links for gap families) -> official Pearson page (per-spec deep-link where held). Nothing is unreachable: 5,307 of 5,308 listable dirs render somewhere in the UI; the 1 exception has no viewable content.",
+    "FRESHNESS: index == corpus HEAD at check time (3063c71, 'modular-24 wave 1'); the serving carrier bakes PR #202. Any FUTURE corpus commit will lag the UI until the next index regen (bun scripts/build_pastpapers_index.ts + hub redeploy) — that regeneration cadence is the one standing dependency of 'all papers accessible'.",
+    "CAMBRIDGE PATH TO COURSE PAGES: the CIE-INTEGRATION Phase-0 roster manifest (parallel lane, 401a05e, trace 1a155375c62ebca9) is the operator-gated route that would give the 2,259 Cambridge papers their own course pages; until courses exist, the archive browser is their access surface of record."
+  ],
+  "write_ledger": "ZERO writes on every plane — zero bundle/repo content edits, zero Neon, zero deploys, zero LLM spend, zero SME live-site contact; remote-embedded GitHub token in-memory GET-only (10 GETs total), never printed/persisted",
+  "scripts": ["scripts/paper_access_census.py", "scripts/paper_access_delta.py", "scripts/paper_access_livediff.py", "scripts/paper_access_archivediff.py"],
+  "next": { "repo_receipt": "Task-61", "workspace_task": "Task-44" }
+}
