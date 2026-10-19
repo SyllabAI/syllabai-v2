@@ -1,0 +1,85 @@
+version: 1
+task:
+  id: T-MIG-134
+  title: "Second subject enablement (Physics 4PH1) — seed the subject dimension from the hub content bundles of record so smart mark, CLA, tutor and the learner model serve a second subject without code changes (the subsystems are node/question-keyed by construction)"
+  owner: "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)"
+  status: IN_PROGRESS # band 134a DONE-local of record (bundle→KG seed + 10 laws, full api suite 1745/0/13); 134b/c/d staged; 134c = the operator prod-apply gate
+  claimed_at: "2026-10-19T09:40:00Z"
+  claimed_by_order: "operator trace 1a15365796ce1e75: 'We should start working on second subject. So that smart mark, cla, tutor, learner model works with that'"
+  priority: P1
+  wave: second-subject
+  deps: []
+  scoping_record: >
+    CENSUS OF RECORD (trace 1a15365796ce1e75, SELECT-only, prod Neon): the
+    platform is SINGLE-SUBJECT Chemistry end-to-end — curriculum_versions 6
+    (1 ACTIVE 4CH1-2017 + 5 DRAFT/ARCHIVED ingest leftovers), subjects 5
+    (all Chemistry; ACTIVE 4CH1 with KG root 297a8706), knowledge_nodes 435
+    (200 SUBTOPIC / 167 CONCEPT / 31 TOPIC / 30 MISCONCEPTION / 5 UNIT /
+    2 SUBJECT — all in the 4CH1 tree; tree nodes predominantly VALIDATED),
+    questions 1526 (1518 PAST_PAPER + 8 SEED_DEMO), mark_schemes 1504,
+    mark_points 5883, documents 1024 (379 EXTERNAL_QUESTIONS / 191
+    QUESTION_PAPER / 179 MARK_SCHEME / 162 SYLLABUS / 112 EXTERNAL_NOTES /
+    1 TEXTBOOK), exam_series 5, exam_papers 108, skill_states 210 across
+    62 learners / 69 nodes, tutor_sessions 55 / turns 142,
+    learner_course_enrolments 0 (the enrolment surface of record: PUT
+    /learners/me/courses/{courseSlug}/target-series, multi-course ready).
+    SUBSYSTEM COUPLING (code census): CLA is root-subject-keyed BY CONTRACT
+    (cla/context-resolver.ts — subject root must BE a subject root,
+    cross-subject = indistinguishable 404, curriculum identity from the
+    owning subject's version); tutor retrieval/bank are node/question-keyed
+    (vector-arm + fetch-bank scope via spec joins); the learner model is
+    node-keyed (decay/review/struggle writers iterate nodes); smart mark is
+    question-keyed (mark_schemes per question). NO code change is needed in
+    the four subsystems — the second subject needs the SUBJECT DIMENSION in
+    the DB of record.
+    SECOND-SUBJECT SOURCE OF RECORD: apps/hub/content/igcse-physics-19/
+    (manifest syllabai-demo.content-bundle/2.0, importSource
+    SyllabAI/syllabai-resources main@75755855, operator-authorized SME
+    corpus license line, Amendment 2026-09-17): curriculum.json 234 nodes
+    (1 SUBJECT / 8 TOPIC sections / 30 SUBTOPIC topics / 195 SPEC_POINT
+    with OFFICIAL spec codes 1.1/1.2P... — the P-suffix law mirroring the
+    chemistry C-suffix law) + 233 PART_OF edges + questions.json 489
+    questions / 24 sets (SME 1.1 envelope, specPointCodes joins, paper
+    provenance) + notes 127 + flashcards. Code mapping of record (the 4CH1
+    scheme mirrored): SUBJECT igcse-physics-19 → 4PH1; TOPIC sections →
+    UNIT 4PH1-S1..S8; SUBTOPIC topics → TOPIC 4PH1-S1-a..; SPEC_POINT →
+    SUBTOPIC 4PH1-1.1 (applicability verbatim T-C24 passthrough).
+  bands: >
+    (134a) bundle→KG curriculum seed — services/curriculum/bundle-seed.ts:
+    the frozen concept-seed law mirrored statement-for-statement (idempotent
+    resolve-by-code, provenance-conflict fail-closed, EXACT-edge identity,
+    applicability one-time backfill, version lands ACTIVE, tree VALIDATED =
+    the 4CH1 serving posture) + 10 laws pinned against the REAL pinned
+    bundle bytes (fresh 234/233, structural no-op re-run, conflict,
+    backfill, fail-closed relations/level/title bound) — DONE-local @ this
+    commit, full api suite 1745/0/13, typecheck clean;
+    (134b) questions band: feed the EXISTING SmeQuestionIngestService
+    (ADR-026 evidence-safe replace, spec-point AI_VALIDATED mappings) from
+    the bundle questions.json — GATE to check first: the SME
+    SUPPORTED_PACKAGE_VERSION 1.0 vs the bundle's sme-exam-questions/1.1
+    envelope (parse tree inspect; a faithful 1.1 acceptance or a versioned
+    shim, never a silent rewrite); spec joins ride the 134a SUBTOPIC codes;
+    (134c) PROD APPLY — operator-gated Neon write order (the 093/133b law:
+    COW-proof first, then the operator order; the seed is idempotent +
+    conflict-fail-closed by construction); includes the license
+    confirmation line for prod use (the manifest carries 'Demo re-use only'
+    — the operator's SME authorization governs);
+    (134d) four-subsystem verify battery on 4PH1 (ZERO-LLM wire probes:
+    CLA root resolve + subject isolation, tutor bank/spec scoping, learner
+    state reads, smartmark law probes) + golden cases;
+    (134e) corpus/books for physics (the 133 pipeline re-run) — separate
+    operator gate, NOT required for the four subsystems' core function.
+  execution_record: >
+    Band 134a executed 2026-10-19 (trace 1a15365796ce1e75): fetch-first race
+    re-check CLEAR (zero second-subject lanes; the pending #190 promotion
+    order was found ALREADY EXECUTED of record by the parallel lane under
+    trace 1a1535a2687b6c39 and SECOND-LANE-VERIFIED first-hand: merged=True
+    2026-10-19T08:53:48Z, merge commit 7d19dbe, CI verify+hub 2/2 SUCCESS at
+    the merge commit; main tip advanced 0f68f75 → 5e47227 with two sibling
+    bookkeeping commits). Subject choice Physics 4PH1 = the evidence-backed
+    default (the only second subject with a complete in-repo bundle carrying
+    OFFICIAL spec codes + the operator-authorized license class); alternative
+    candidates (4BI1 igcse-biology-19 complete bundle; others) untouched —
+    the seed is bundle-generic, re-runnable for any IGCSE bundle. Write
+    ledger: zero prod writes, zero LLM, zero probe learners, credentials
+    inline-only.

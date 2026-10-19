@@ -43,3 +43,17 @@ export function buildCurriculumModule(sql: SqlFn): CurriculumModule {
     review: new CurriculumReviewReader(sql, versions, subjects),
   };
 }
+export {
+  BundleSeedConflictError,
+  bundleProvenance,
+  mapBundleNodes,
+  seedBundleCurriculum,
+} from "./bundle-seed";
+export type {
+  BundleCurriculum,
+  BundleEdge,
+  BundleNode,
+  BundleSeedDeps,
+  BundleSeedSummary,
+  BundleSourceDescriptor,
+} from "./bundle-seed";
