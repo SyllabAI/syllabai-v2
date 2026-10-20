@@ -26,6 +26,11 @@
     "action": "NO duplicate filed (anti-duplication law); the debt closes as FOUND-DISCHARGED. Zero other outstanding receipt debts in the of-record sweep (CIE phases 0-3 receipts landed via PRs #206-#215; 134c/134d/135/136c receipts of record)."
   },
   "wave2_amendment": "the T-MIG-138 yaml execution_record amendment rides this same PR (.syllabai/tasks/T-MIG-138-4ma1-past-paper-intake.yaml) — the bands' of-record state, the third apply firing, and this receipt pointer.",
-  "verification_addendum": "PENDING at filing — run 39438132654 was queued behind the sibling backfill shards; its conclusion pins via a follow-up .syllabai-only commit on this PR BEFORE merge (the merge holds for it; honest red = no merge, operator informed).",
+  "verification_addendum": {
+    "pin": "CONCLUDED GREEN — run 39438132654 (t-mig-138-intake run_number 9, mode=cow+prod, head e5bf8b7): conclusion SUCCESS; job cow-proof success (14:38:55Z->14:44:27Z) gated job prod-apply success (14:44:29Z->14:48:20Z); backfill job correctly skipped for mode=cow+prod",
+    "pinned_by": "r1c desk act on operator trace 1a159b771dabef15 'intake merging' — the author lane's follow-up pin had not landed when the desk picked the queue; this commit IS the addendum's own 'follow-up .syllabai-only commit on this PR BEFORE merge'",
+    "sibling_note": "sibling run 39437476094 (mode=backfill, 4-key pool) concluded failure — shards 1/2/3 success, shard 4 failure non-rate class per the e5bf8b7 RPD-wall law; the r0/r7a fence held: disclosed, NOT touched, out of this PR's scope; the gate run itself is GREEN",
+    "merged_gate": "honest-red law not triggered; merge proceeds on this GREEN pin"
+  },
   "fence": ".syllabai/** only; zero code, zero content, zero DB/Neon/LLM contact from the sandbox (the dispatch is the only prod-reaching act, via the sanctioned CI gate)"
 }
