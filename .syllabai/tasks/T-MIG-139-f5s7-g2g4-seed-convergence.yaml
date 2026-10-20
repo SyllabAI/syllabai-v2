@@ -1,0 +1,65 @@
+version: 1
+task:
+  id: T-MIG-139
+  title: "F.5 §7 gates G2+G4 — seed-path convergence (both seeders emit SPEC_POINT) + the anchor-type companion check artifact"
+  owner: "w0a (Super Z, session web-e79a3bd8, operator GH-PAT handoff trace 1a15a1c5a6be10c9)"
+  status: CLAIMED
+  priority: P1
+  wave: post-migration S3
+  deps: [T-MIG-134, T-MIG-135, T-MIG-136]
+  execution_record: >
+    SCOPE AMENDMENT (pre-code, disclosed): the G2 convergence is not
+    producer-only — four consumers keyed on the SUBTOPIC landing
+    (contracts enum, tutor structure walk, knowledge misconception
+    branch, sme topic-code resolver). All four converge in this band;
+    each is a byte-equivalent serving restoration of the pre-G-round
+    row set under the new name. No schema is widened to make a test
+    pass — the enum joins the authority-approved 7-value law of record.
+    Claimed per the F.5 §7 G-round plan of record (operator "go" trace
+    1a159c4febff6695; execution receipt G1_G3_G5_EXECUTION_RECEIPT_20261020,
+    fp16 7a655924ed01740a): G1/G3/G5 executed on production 2026-10-20
+    (constraint 7-value live, 565+98 receipt-keyed retypes, batteries 6/6
+    twice). This band lands the two remaining gates as REPO ARTIFACTS:
+    G2 = both seed paths emit SPEC_POINT for spec-derived rows (chemistry
+    concept-seed + the three-subject bundle-seed; practicals and section
+    topics stay SUBTOPIC per the ruling) plus the schema-of-record catch-up
+    (ck_node_type 6->7 values, the repo-side companion of the live G1 DDL)
+    with its drizzle migration; G4 = the anchor-type companion check
+    (trigger SQL) STAGED of record, never auto-applied — drift discipline
+    ("live trigger NOT installed"), enable-preconditions verified live
+    2026-10-21: teaching_coverage=0, teaching_coverage_events=0,
+    anchors_not_spec=0, SPEC_POINT=663. Reuse-path drift guard added to
+    both seeders: a pre-convergence row (SUBTOPIC where the law now maps
+    SPEC_POINT) REFUSES with a pointer to the receipt-keyed backfill —
+    never silently re-typed, never re-seeded over. Scope: packages/db
+    schema + migration, the two seeders, their tests, receipts, worklog.
+base:
+  repo: "syllabai-v2 @ origin/main 7323b0a at claim time"
+basis: >
+  Authority ruling F.5 §7 (trace 1a1582488a8c61ed) qualification: "verify
+  ... loader behavior, both seed paths ..." — the S3 battery gate table
+  (docs/research/S3_F5S7_REPO_SIDE_VERIFICATION.md §4): G2 "Deploy seed-path
+  convergence (both seeders emit SPEC_POINT)", G4 "Close the anchor-type
+  hole: companion check node_type='SPEC_POINT' on question_spec_points
+  (+ empty teaching_coverage_*)". Census of record
+  F5_S7_DB_CENSUS_20261020 (V-3 shapes pinned, V-4 re-baselined 116->18
+  keep-SUBTOPIC residuals of which 12 practicals + 6 WCH11).
+scope:
+  allowed:
+    - "packages/db/src/schema/schema.ts (ck_node_type 7-value law)"
+    - "packages/contracts/src/curriculum.ts + curriculum.test.ts (knowledgeNodeTypeSchema + SPEC_POINT — the typecheck-proved consumer convergence: every NodeView-style schema embeds this enum)"
+    - "apps/api/src/services/tutor/kg-retriever.ts + test/tutor/kg-retriever-wire.test.ts (structureNodes IN-list + pin — restores the exact pre-G-round row set under the new name)"
+    - "apps/api/src/services/knowledge/index.ts (topicLike += SPEC_POINT — misconception-attachment branch)"
+    - "apps/api/src/services/sme/bundle-questions.ts (topicCodeResolver filter — typecheck TS2367 proved the necessity, disclosed per the 136a card-amendment precedent)"
+    - "packages/db/drizzle/** (new migration only)"
+    - "apps/api/src/services/teacher/concept-seed.ts (spec-point landing + guard)"
+    - "apps/api/src/services/curriculum/bundle-seed.ts (spec-point landing + guard)"
+    - "apps/api/test/curriculum/bundle-seed.test.ts (pin updates)"
+    - "apps/api/test/teacher/concept-graph.test.ts (pin updates)"
+    - ".syllabai/tasks/T-MIG-139-f5s7-g2g4-seed-convergence.yaml"
+    - ".syllabai/receipts/T-MIG-139/**"
+    - ".syllabai/worklog.md (append)"
+  forbidden:
+    - "production Neon main branch (zero DDL, zero writes — §0 briefing law; the G1/G3/G5 writes were a separate operator-ordered execution, receipts of record)"
+    - "live trigger installation (G4 SQL staged of record only)"
+    - "everything else (no other files touched)"

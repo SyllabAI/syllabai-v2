@@ -133,7 +133,7 @@ describe("T-MIG-094 construction pins — kg-retriever IN lists ride scalar para
     const rows = await port.structureNodes();
     expect(rows).toHaveLength(1);
     const leg = sql.seen[0]!;
-    expect(leg.text).toContain("node_type in ('SUBJECT', 'UNIT', 'TOPIC', 'SUBTOPIC')");
+    expect(leg.text).toContain("node_type in ('SUBJECT', 'UNIT', 'TOPIC', 'SUBTOPIC', 'SPEC_POINT')"); // T-MIG-139: SPEC_POINT rejoins the structure walk (F.5 §7 G2 — the pre-G-round row set, renamed)
     expect(leg.params).toHaveLength(0);
   });
 });

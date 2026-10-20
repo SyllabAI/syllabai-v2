@@ -158,7 +158,8 @@ function topicCodeResolver(curriculum: BundleCurriculum): (specCode: string) => 
   const mapped = mapBundleNodes(curriculum, "official specification structure");
   const specToTopic = new Map<string, string>();
   for (const node of mapped.values()) {
-    if (node.nodeType !== "SUBTOPIC") continue;
+    // T-MIG-139: spec points land SPEC_POINT post-G2 (was SUBTOPIC pre-139)
+    if (node.nodeType !== "SPEC_POINT") continue;
     const parent = mapped.get(node.parentBundleCode ?? "");
     if (parent == null || parent.nodeType !== "TOPIC") {
       throw new BundleQuestionsError(

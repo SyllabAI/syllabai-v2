@@ -1,0 +1,2 @@
+ALTER TABLE "knowledge_nodes" DROP CONSTRAINT "ck_node_type";--> statement-breakpoint
+ALTER TABLE "knowledge_nodes" ADD CONSTRAINT "ck_node_type" CHECK ((node_type)::text = ANY ((ARRAY['SUBJECT'::character varying, 'UNIT'::character varying, 'TOPIC'::character varying, 'SUBTOPIC'::character varying, 'MISCONCEPTION'::character varying, 'CONCEPT'::character varying, 'SPEC_POINT'::character varying])::text[]));

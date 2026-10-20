@@ -52,6 +52,11 @@ export const knowledgeNodeTypeSchema = z.enum([
   "SUBTOPIC",
   "MISCONCEPTION",
   "CONCEPT",
+  // T-MIG-139 (F.5 §7 gate G2): SPEC_POINT joins the knowledge node-type
+  // contract — the schema-of-record catch-up of the live 7-value ck_node_type
+  // (G1 executed 2026-10-20, receipt G1_G3_G5_EXECUTION_RECEIPT_20261020).
+  // Both seed paths now land spec-derived rows as SPEC_POINT.
+  "SPEC_POINT",
 ]);
 export type KnowledgeNodeType = z.infer<typeof knowledgeNodeTypeSchema>;
 
