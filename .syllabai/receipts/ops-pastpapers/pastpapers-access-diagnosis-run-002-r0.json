@@ -1,0 +1,20 @@
+{
+  "task": "ops-pastpapers-access-diagnosis",
+  "run": "run-002 post-storage-restore re-verify",
+  "operator_trace": "1a15a036230e1065",
+  "agent": "r0 (zai-web session web-752465e5, chat dd7e60e9)",
+  "date": "2026-10-20T15:54Z",
+  "operator_statement": "Vercel deployment storage was full, now storage is back",
+  "adjudication_of_record": "ROOT CAUSE CONFIRMED at infra level: the operator's report resolves run-001's ranked probable causes — the failure window was Vercel deployment storage saturation (deploys could not build/land correctly), NOT an app-level defect; the restore act of record is the perf-hub-bundle-offload run-002 meter purge (f7b7969: stored 23 -> 7, ~8GB class freed). The app-side surface was verified green both before (run-001) and after (this run) — consistent with a deploy-pipeline outage, not serving corruption.",
+  "zero_llm": true,
+  "zero_db_write": true,
+  "reverify_evidence": {
+    "wire_battery": "5/5 x 200: / (85KB), course page (129KB), past-papers index (1395KB), view/2026-06/4MB1-01?doc=qp (49KB), /past-papers archive (613KB)",
+    "proxy": "200 both legs: 2011-06/4MB0-01 qp 114059B, 2026-06/4MB1-01 qp 1040657B",
+    "index_integrity": "117 paper dirs on live index — unchanged vs run-001 (EXACT match with repo tree stands)",
+    "browser_walk": "index -> QP click -> pdf.js viewer mounts, /api/corpus-pdf fetch 200 x2, 24-page pager rendered, zero page errors, zero console errors",
+    "deployment_freshness": "NEW build live post-restore: 2/16 fresh chunk names vs the pre-report build (14 shared); edge HIT age:91"
+  },
+  "conclusion": "Past papers on igcse-maths-b-16 (and the global archive) fully operational after the storage restore; T-MIG/ops surface CLOSED — no code change needed at any point. Residual standing items unchanged (PAT rotation, Vercel prune).",
+  "bookkeeping": "receipt + worklog append only (.syllabai); fetch-first, no force; zero Neon/LLM/prod-db contact"
+}

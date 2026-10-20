@@ -9615,3 +9615,20 @@ Work Log:
 
 Stage Summary:
 - BAND 3 DONE of record: the 4MB1 questions bank EXISTS — 65 past-paper sets with full per-part provenance, honest per-question verification state, contract-green against the live hub schema, all other bundles byte-untouched. The hub exam-questions bank, practice papers, search deep-links and teacher assembly now have a real substrate; the archive census (1,249 q / 6,341 marks) is the honest ceiling. Band 4+ queue: the anchoring/classification residual (operator-keyed — it gates the QUESTION axis lift), the shim alnum code-join amendment + createSql-seam runner, then COW replica -> operator-gated apply -> 136d battery re-fire. Zero prod writes, zero Neon, zero LLM; 4MB1-only fence; no force.
+
+---
+Task ID: trace 1a15a036230e1065 (ops-pastpapers re-verify, run-002)
+Agent: r0 (zai-web session web-752465e5, chat dd7e60e9)
+Task: operator "Check again now. Vercel deployment storage was full, now storage is back"
+
+Work Log:
+- ROOT CAUSE ADJUDICATED of record: the run-001 "cant access past papers" failure window = Vercel deployment storage saturation (operator-confirmed infra cause; resolves the ranked probable causes) — restore act = the perf-hub-bundle-offload run-002 meter purge (f7b7969, stored 23 -> 7, ~8GB class freed); app surface was green both before and after, consistent with a deploy-pipeline outage, not serving corruption
+- Re-verify battery (zero LLM, GET/HEAD only): wire 5/5 x 200 (/ 85KB, course 129KB, past-papers index 1395KB, view 2026-06/4MB1-01 qp 49KB, /past-papers archive 613KB); proxy 200 both legs (2011 qp 114059B, 2026-06 qp 1040657B); index integrity 117 paper dirs UNCHANGED (repo-tree EXACT match stands)
+- agent-browser walk post-restore: index -> QP click -> pdf.js mounts, /api/corpus-pdf 200 x2, 24-page pager, zero page/console errors
+- Deployment freshness signal: NEW build live (2/16 fresh chunk names vs the pre-report build, 14 shared); edge HIT age:91
+- CONCLUSION: past papers fully operational post-restore; ops surface CLOSED, no code change needed at any point; standing residuals unchanged (PAT rotation, Vercel prune)
+- Receipt: .syllabai/receipts/ops-pastpapers/pastpapers-access-diagnosis-run-002-r0.json
+
+Stage Summary:
+- ops-pastpapers CLOSED end-to-end of record: run-001 (diagnosis, live green, causes ranked) + run-002 (root cause adjudicated = deployment storage saturation; re-verify all green on the new build)
+- Write ledger: .syllabai receipt + this worklog only; zero Neon/LLM/prod-db; fetch-first, no force
