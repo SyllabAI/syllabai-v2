@@ -10219,3 +10219,16 @@ Work Log:
 
 Stage Summary:
 - Orphan lane review of record staged: 45-row draft pending operator green-light (apply set = 61 appends / 31 parts) + 12 NEEDS_MANUAL rulings + 2 EXCLUDE strikes; coverage arithmetic unaffected (residual stays 0).
+
+---
+Task ID: trace 1a15b16a0a41a325 (orphan-parts apply of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- Operator green-light on staged orphan draft (run-007 @ e6d60d2); turn-open: HEAD==origin/main, both live planes whole-file IN-SYNC, token fingerprints of-record (0600).
+- Fail-closed apply per kill-list DRAFT-r0 (sha256[:16] b22fddb529759a62): gates 45/45 (partId hard-anchor + orphan-drift + 182-universe + intra-row dedupe), structural proof 61 appends / 0 replaces across 31 parts; 12 NEEDS_MANUAL + 2 EXCLUDE guarded untouched post-apply; independently re-proved via --verify from git HEAD pre-state (gates 45/45 again).
+- Post census: codes+ids 1358, codes-only 1->32, ids-only 0, both-empty 45->14 — codes/ids pairing law intact (run-007 reconciliation); coverage notes 166 / questions 171 / both-axes residual 0 UNCHANGED (per-part tagging lane, not coverage arithmetic).
+- Receipts run-008-orphan-apply-r0 + run-008-orphan-apply-VERIFY-r0 filed; zero force; no other files touched.
+
+Stage Summary:
+- Orphan-parts attachment APPLIED of record: orphans 45 -> 14 (12 NEEDS_MANUAL rulings + 2 EXCLUDE strikes still pending operator adjudication); ship verification next (run-009).
