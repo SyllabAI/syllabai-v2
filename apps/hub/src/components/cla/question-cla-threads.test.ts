@@ -246,3 +246,138 @@ describe("question-cla thread store (DC-6 phase 2a)", () => {
     expect(newThreadId()).not.toBe(newThreadId());
   });
 });
+
+// ── DC-6 phase 3 sync-tier pins (docs/DC6-CLA-SYNC-TIER-PLAN.md §6) ────────
+// The store's ENTIRE sync surface is bind/unbind/hydrate — the sync loop
+// lives in question-cla-sync.ts (component layer, network; not imported
+// here). Pinned: bind's cross-question refusal + idempotence, unbind's
+// no-ops, hydration's dedup-by-sessionId / local-wins / never-move-the-
+// active-pointer / malformed-filter / count return. The 40-cap eviction law
+// is the SAME code path commit() pins above — not re-pinned here.
+
+import {
+  bindQuestionClaSession,
+  hydrateQuestionClaThreads,
+  unbindQuestionClaSession,
+  type HydratedClaThread,
+} from "./question-cla-threads";
+
+const SYNC_Q = "sync-tier-question-1";
+
+function hydratedThread(over: Partial<HydratedClaThread> = {}): HydratedClaThread {
+  const now = Date.now();
+  return {
+    sessionId: `srv-${Math.random().toString(36).slice(2, 10)}`,
+    title: "a synced chat",
+    questionNumber: 3,
+    courseSlug: "biology",
+    createdAt: now - 5000,
+    // RECENT on purpose: hydration additions must sort NEWEST so the
+    // 40-cap eviction law (oldest-updated first) evicts stale test
+    // leftovers, never the just-hydrated threads
+    updatedAt: now,
+    messages: [{ kind: "user", text: "asked on another device", at: 1500 }],
+    ...over,
+  };
+}
+
+describe("question cla threads — the sync tier (phase 3)", () => {
+  test("bind: attaches the server anchor; refuses cross-question binds; idempotent", () => {
+    commitQuestionClaMessages(SYNC_Q, [userTurn("the bind pin")]);
+    const t = getActiveThreadFor(SYNC_Q)!;
+    expect(t.sessionId).toBeNull();
+
+    bindQuestionClaSession("another-question", t.id, "srv-x"); // wrong question → no-op
+    expect(getActiveThreadFor(SYNC_Q)!.sessionId).toBeNull();
+
+    bindQuestionClaSession(SYNC_Q, t.id, "srv-abc");
+    expect(getActiveThreadFor(SYNC_Q)!.sessionId).toBe("srv-abc");
+
+    bindQuestionClaSession(SYNC_Q, t.id, "srv-other"); // rebind is idempotent (first wins)
+    expect(getActiveThreadFor(SYNC_Q)!.sessionId).toBe("srv-abc");
+  });
+
+  test("unbind: drops the binding (deletion respected); no-ops on unbound/unknown", () => {
+    commitQuestionClaMessages(SYNC_Q, [userTurn("the unbind pin")]);
+    const t = getActiveThreadFor(SYNC_Q)!;
+    unbindQuestionClaSession(t.id); // already unbound → no-op, no throw
+    expect(getActiveThreadFor(SYNC_Q)!.sessionId).toBeNull();
+
+    bindQuestionClaSession(SYNC_Q, t.id, "srv-gone");
+    expect(getActiveThreadFor(SYNC_Q)!.sessionId).toBe("srv-gone");
+    unbindQuestionClaSession("no-such-thread"); // unknown id → no-op
+    unbindQuestionClaSession(t.id);
+    expect(getActiveThreadFor(SYNC_Q)!.sessionId).toBeNull();
+    // the thread itself survives (local stays the source of truth)
+    expect(getActiveThreadFor(SYNC_Q)!.messages).toHaveLength(1);
+  });
+
+  test("hydrate: server-only threads land bound to their sessionId; local wins; pointer never moves", () => {
+    commitQuestionClaMessages(SYNC_Q, [userTurn("the hydrate pin")]);
+    const local = getActiveThreadFor(SYNC_Q)!;
+    bindQuestionClaSession(SYNC_Q, local.id, "srv-local");
+    const pointerBefore = getActiveThreadFor(SYNC_Q)!.id;
+
+    const added = hydrateQuestionClaThreads(SYNC_Q, [
+      hydratedThread({ sessionId: "srv-from-device-b" }),
+      hydratedThread({ sessionId: "srv-local" }), // already bound locally → skipped (local wins)
+      hydratedThread({ sessionId: "srv-empty", messages: [] }), // empty → skipped
+      hydratedThread({
+        sessionId: "srv-malformed",
+        messages: [
+          { kind: "assistant", result: null, at: 1 } as unknown as QuestionClaStoredMessage, // invalid → filtered
+          { kind: "user", text: "the one survivor", at: 2 },
+        ],
+      }),
+    ]);
+    const all = threadsForQuestion(SYNC_Q);
+    const hydratedCount = all.filter((t) => t.sessionId?.startsWith("srv-")).length;
+    // the return count = how many additions SURVIVED (the 40-cap law can
+    // drop additions under full-store pressure — hydration never evicts
+    // in-use threads; same eviction path commit() pins above)
+    expect(added).toBe(hydratedCount - 1); // minus the pre-bound srv-local
+    expect(added).toBeLessThanOrEqual(3);
+
+    // local-wins: exactly ONE thread carries srv-local and it is the LOCAL one
+    const localCopies = all.filter((t) => t.sessionId === "srv-local");
+    expect(localCopies).toHaveLength(1);
+    expect(localCopies[0]!.id).toBe(local.id);
+    expect(localCopies[0]!.messages[0]?.kind).toBe("user");
+
+    // the empty thread never landed
+    expect(all.some((t) => t.sessionId === "srv-empty")).toBe(false);
+
+    // every landed thread obeys the shape laws (question-locked, valid messages)
+    for (const t of all) {
+      expect(t.questionId).toBe(SYNC_Q);
+      if (t.sessionId === "srv-malformed") {
+        expect(t.messages).toHaveLength(1); // the invalid entry was dropped
+        expect(t.messages[0]?.kind).toBe("user");
+      }
+      if (t.sessionId === "srv-from-device-b") {
+        expect(t.title).toBe("a synced chat");
+        expect(t.messages.map((m) => m.kind)).toEqual(["user"]);
+      }
+    }
+
+    // the pointer never moved (restore stays an explicit user act)
+    expect(getActiveThreadFor(SYNC_Q)!.id).toBe(pointerBefore);
+
+    // dedup law (pressure-independent): a re-hydrated sessionId NEVER
+    // duplicates — either it landed in call 1 (idempotent 0) or it was
+    // dropped under cap pressure and lands now (1); never two copies
+    hydrateQuestionClaThreads(SYNC_Q, [hydratedThread({ sessionId: "srv-from-device-b" })]);
+    expect(threadsForQuestion(SYNC_Q).filter((t) => t.sessionId === "srv-from-device-b")).toHaveLength(
+      Math.min(1, threadsForQuestion(SYNC_Q).filter((t) => t.sessionId === "srv-from-device-b").length),
+    );
+    expect(
+      new Set(
+        threadsForQuestion(SYNC_Q)
+          .map((t) => t.sessionId)
+          .filter((s): s is string => s != null),
+      ).size,
+    ).toBe(
+      threadsForQuestion(SYNC_Q).filter((t) => t.sessionId != null).length, // no duplicate bindings, ever
+    );
+  });
+});

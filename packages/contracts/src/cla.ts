@@ -152,3 +152,148 @@ export const claAnswerViewSchema = z
   })
   .strict();
 export type ClaAnswerView = z.infer<typeof claAnswerViewSchema>;
+
+// ── CLA thread sync tier (DC-6 phase 3; docs/DC6-CLA-SYNC-TIER-PLAN.md §3) ──
+// ADDITIVE tail of record — the frozen ask family above is byte-untouched.
+// The sync tier is v2-NATIVE (no frozen-core counterpart — feasibility path
+// (iii) of record), so these schemas pin the DETERMINISTIC shapes only:
+// admission caps (mirroring the local store's 40x100 family law + the ask
+// contract's 2000-char text law), the 4-kind message union (a structural
+// mirror of the hub's QuestionClaStoredMessage; the assistant leg reuses
+// the ALREADY-ratified claAnswerViewSchema — zero new shape invention),
+// and the view shapes the route defensively re-parses (the cla.ts:282
+// wire law). Thread-level view stamps are ISO strings (tutor-view style);
+// message `at` rides epoch ms — the hub render vocabulary (plan §5.3).
+
+/** Thread surfaces of record. 'assistant' is RESERVED (the DB CHECK carries
+ *  it; the API admits only 'question_cla' until the sequenced follow-up). */
+export const claThreadSurfaceSchema = z.enum(["question_cla", "assistant"]);
+export type ClaThreadSurface = z.infer<typeof claThreadSurfaceSchema>;
+
+/** POST /api/v1/learners/me/cla/threads — the mirror anchor creation. */
+export const claThreadCreateSchema = z
+  .object({
+    surface: claThreadSurfaceSchema,
+    questionId: z.string().min(1).max(120),
+    questionNumber: z.number().int().min(1).max(999).nullable(),
+    courseSlug: z.string().min(1).max(64).nullable(),
+    title: z.string().min(1).max(120),
+  })
+  .strict();
+export type ClaThreadCreate = z.infer<typeof claThreadCreateSchema>;
+
+/** One mirrored transcript message (the client's union, validated). */
+export const claThreadSyncMessageSchema = z.discriminatedUnion("kind", [
+  z
+    .object({
+      kind: z.literal("user"),
+      at: z.number().int().nonnegative(),
+      text: z.string().min(1).max(2000),
+    })
+    .strict(),
+  z
+    .object({
+      kind: z.literal("assistant"),
+      at: z.number().int().nonnegative(),
+      payload: claAnswerViewSchema,
+    })
+    .strict(),
+  z
+    .object({
+      kind: z.literal("gate"),
+      at: z.number().int().nonnegative(),
+      text: z.string().min(1).max(2000),
+    })
+    .strict(),
+  z
+    .object({
+      kind: z.literal("error"),
+      at: z.number().int().nonnegative(),
+      text: z.string().min(1).max(2000),
+      question: z.string().min(1).max(2000),
+    })
+    .strict(),
+]);
+export type ClaThreadSyncMessage = z.infer<typeof claThreadSyncMessageSchema>;
+
+/** PUT /api/v1/learners/me/cla/threads/:id — the full-state mirror write.
+ *  questionId is ABSENT on purpose: a thread never crosses questions, and
+ *  .strict() rejects any attempt to move it. */
+export const claThreadSyncSchema = z
+  .object({
+    title: z.string().min(1).max(120),
+    questionNumber: z.number().int().min(1).max(999).nullable(),
+    courseSlug: z.string().min(1).max(64).nullable(),
+    messages: z.array(claThreadSyncMessageSchema).max(100),
+  })
+  .strict();
+export type ClaThreadSync = z.infer<typeof claThreadSyncSchema>;
+
+/** GET list row — summaries only, never transcript bodies (the s143 law). */
+export const claThreadSummarySchema = z
+  .object({
+    threadId: z.string().uuid(),
+    surface: claThreadSurfaceSchema,
+    questionId: z.string().max(120).nullable(),
+    questionNumber: z.number().int().min(1).max(999).nullable(),
+    courseSlug: z.string().max(64).nullable(),
+    title: z.string().max(120),
+    createdAt: z.string(),
+    lastActiveAt: z.string(),
+    messageCount: z.number().int().nonnegative(),
+  })
+  .strict();
+export type ClaThreadSummary = z.infer<typeof claThreadSummarySchema>;
+
+/** GET /:id — the full transcript, seq-ordered. Message `at` is epoch ms
+ *  (the client render vocabulary; plan §5.3). */
+export const claThreadViewMessageSchema = z.discriminatedUnion("kind", [
+  z
+    .object({ kind: z.literal("user"), at: z.number().int().nonnegative(), text: z.string() })
+    .strict(),
+  z
+    .object({
+      kind: z.literal("assistant"),
+      at: z.number().int().nonnegative(),
+      payload: claAnswerViewSchema,
+    })
+    .strict(),
+  z
+    .object({ kind: z.literal("gate"), at: z.number().int().nonnegative(), text: z.string() })
+    .strict(),
+  z
+    .object({
+      kind: z.literal("error"),
+      at: z.number().int().nonnegative(),
+      text: z.string(),
+      question: z.string(),
+    })
+    .strict(),
+]);
+export type ClaThreadViewMessage = z.infer<typeof claThreadViewMessageSchema>;
+
+export const claThreadViewSchema = z
+  .object({
+    threadId: z.string().uuid(),
+    surface: claThreadSurfaceSchema,
+    questionId: z.string().max(120).nullable(),
+    questionNumber: z.number().int().min(1).max(999).nullable(),
+    courseSlug: z.string().max(64).nullable(),
+    title: z.string().max(120),
+    createdAt: z.string(),
+    lastActiveAt: z.string(),
+    messages: z.array(claThreadViewMessageSchema),
+  })
+  .strict();
+export type ClaThreadView = z.infer<typeof claThreadViewSchema>;
+
+/** POST / 201 body and PUT /:id 200 body. */
+export const claThreadCreatedSchema = z
+  .object({ threadId: z.string().uuid(), createdAt: z.string() })
+  .strict();
+export type ClaThreadCreated = z.infer<typeof claThreadCreatedSchema>;
+
+export const claThreadSyncedSchema = z
+  .object({ threadId: z.string().uuid(), lastActiveAt: z.string() })
+  .strict();
+export type ClaThreadSynced = z.infer<typeof claThreadSyncedSchema>;

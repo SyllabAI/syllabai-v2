@@ -56,6 +56,8 @@ import {
   commitQuestionClaMessages,
   useQuestionClaSnapshot,
 } from "@/components/cla/question-cla-threads";
+// DC-6 phase 3: the sync tier — mirrors the committed transcript (best-effort)
+import { scheduleQuestionClaSync } from "@/components/cla/question-cla-sync";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -489,6 +491,10 @@ export function QuestionPlayer({
               questionNumber: claFor.index + 1,
               courseSlug: course,
             });
+            // DC-6 phase 3: the sync tier mirrors the committed transcript
+            // (debounced, best-effort, silent — plan §4; a logged-out or
+            // failing sync degrades to exactly the phase-2a local behavior)
+            scheduleQuestionClaSync(claFor.q.id);
           }}
         />
       )}

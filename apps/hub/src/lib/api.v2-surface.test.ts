@@ -336,6 +336,12 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/admin/revision-notes", // T-MIG-083: golden-verified (run-001 8/8, r9-hubx rider) — NARROW: ingest+status ONLY, rest of /api/v1/admin/** stays core
       "/api/v1/knowledge/nodes", // T-MIG-084: golden-verified (run-002 8/8, r4b rider) — NARROWEST: the /nodes segment family ONLY, siblings outside /nodes stay core
       "/api/v1/learners/me/cla/ask", // T-MIG-097: BOTH wires live-proven (run-003 10/10 refusal dual-live + run-004 generation probe 200, r7a) — NARROWEST: the exact ask path
+      // DC-6 phase 3 (docs/DC6-CLA-SYNC-TIER-PLAN.md) — the CLA thread sync
+      // tier: V2-NATIVE additive family (NO frozen-core counterpart — the
+      // feasibility path (iii) of record), so the row needs NO capture/verify
+      // band; prefix-row class = the tutor-sessions precedent. Disjoint from
+      // the ask row above (threads/ never captures ask).
+      "/api/v1/learners/me/cla/threads",
       "/api/v1/teacher/concept-graph", // T-MIG-085: golden-verified (run-002, r3a) — family-exact: activate+edges own the base exclusively
       "/api/v1/teacher/content/glm-ocr", // T-MIG-089: golden-verified (run-002 6/6, r4b band rider) — NARROWEST: the /glm-ocr segment family ONLY, the /teacher/content parent stays core (T-MIG-020/023 + T-MIG-100)
       "/api/v1/teacher/content/fetch", // T-MIG-100: repaired + golden-verified (22-leg replay, r0 repair band) — per-exact-endpoint rows, the parent STAYS core
@@ -745,6 +751,26 @@ describe("dual-run posture (NEXT_PUBLIC_API_V2_BASE_URL set)", () => {
     // emitter named sessions* beyond the verified tree exists on either side)
     expect(v2SurfaceBase("/api/v1/tutor/sessionsxyz", V2)).toBe(V2);
     expect("/api/v1/tutor/sessionsxyz".startsWith("/api/v1/tutor/sessions")).toBe(true);
+  });
+
+  test("the DC-6 phase 3 line: the cla thread sync tier routes v2 (v2-native, no frozen counterpart)", () => {
+    // the sync family rides ONE prefix row (the tutor-sessions row class):
+    // the base, the parametrized :id paths and the query forms all resolve v2
+    expect(v2SurfaceBase("/api/v1/learners/me/cla/threads", V2)).toBe(V2);
+    expect(
+      v2SurfaceBase("/api/v1/learners/me/cla/threads/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab", V2),
+    ).toBe(V2);
+    expect(
+      v2SurfaceBase("/api/v1/learners/me/cla/threads?surface=question_cla&questionId=q-7", V2),
+    ).toBe(V2);
+    // the frozen ask row is untouched and the rows are segment-disjoint
+    expect(v2SurfaceBase("/api/v1/learners/me/cla/ask", V2)).toBe(V2);
+    expect("/api/v1/learners/me/cla/threads".startsWith("/api/v1/learners/me/cla/ask")).toBe(false);
+    // startsWith partial-segment capture (threadsxyz) is DOCUMENTED INERT —
+    // no route or hub emitter named threads* beyond the sync family exists
+    expect(v2SurfaceBase("/api/v1/learners/me/cla/threadsxyz", V2)).toBe(V2);
+    // the bare cla family root stays core-routed (no row claims it)
+    expect(v2SurfaceBase("/api/v1/learners/me/cla", V2)).toBeNull();
   });
 
   test("the T-MIG-106 line: the tutor ask pair flips declared-justified (r4b, operator ruling (b) trace 1a11c4b762f6043d)", () => {

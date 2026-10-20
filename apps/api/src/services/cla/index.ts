@@ -13,3 +13,4 @@ export * from "./context-resolver";
 export * from "./leakage-policy";
 export * from "./tool-registry";
 export * from "./service";
+export * from "./threads-store"; // DC-6 phase 3 — the sync tier (v2-native additive family)
