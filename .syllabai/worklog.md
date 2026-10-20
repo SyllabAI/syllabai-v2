@@ -10018,3 +10018,13 @@ Work Log:
 
 Stage Summary:
 - The drain is ARMED of record: window 07:05Z Oct 21 (midnight Pacific RPD roll), rows = the 216-doc residual byte-exact from prod, machinery + fallback persisted, expected outcome per the run-003 projection (~3 healthy shards; shard-4 honest red possible while op#4 stays 403-dead — operator-keyed). The firing + run-005 receipt belong to the next act (or the operator fallback). Next repo receipt = Task-66; next workspace = Task-46.
+---
+Task ID: Task-65 (addendum 1 — same-act fix-forward)
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, trace 1a15ac054f484b0d)
+Task: CORRECTION of record on the run-004 drain arm: the waiter is CONFIRMED DEAD — the arm is a STAGED RECIPE; the drain fires on the first re-key after the 07:05Z Oct 21 window; receipt run-004-addendum-1-waiter-dead-r1c.json.
+
+Work Log:
+- The pid-1099 waiter died when the arming tool-call's shell exited (reaped; the nohup did not detach far enough). First-hand probe: a setsid+nohup 30s logger wrote ONE line across a 45s multi-tool-call window; the initial pgrep 'survival' was a self-match artifact (corrected on the same probe). No crond/atd/systemd in the sandbox; tool calls cap at 10 min — autonomous 11.6h scheduling IMPOSSIBLE from this plane.
+- The honesty law applied: the known-false 'waiter live' claim corrected in the same act (addendum receipt + this entry). The of-record state: STAGED RECIPE (rows 216 byte-exact from the run #9 prod artifact + mode + note + no-duplicate-acts rule) — the dispatch fires on the FIRST re-key after the window (operator message / any lane's next act / the r7a cadence).
+- Operator-gated option filed: a guarded schedule trigger (derive-and-backfill, exit-0-on-empty) would make the drain self-resuming — gate-law surgery + code plane: own order + PR + review, not smuggled here.
+- Write ledger: .syllabai-only addendum; zero dispatch, zero prod contact; fetch-first, no force.
