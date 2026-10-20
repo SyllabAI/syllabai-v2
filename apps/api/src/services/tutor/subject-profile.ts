@@ -18,7 +18,9 @@
  *     pre-2017/2016 specs whose paper archives still serve); unknown
  *     subjects have none.
  *   - unit vocabulary: chemistry [12]C R? (home + regional variant),
- *     maths-a [12][HF] (Higher / Foundation), maths-b [12] (bare — two
+ *     maths-a [12][HF] R? (Higher / Foundation + regional variant —
+ *     T-MIG-138a widened the vocabulary for the 4MA1 paper intake; the
+ *     home+variant ORDER is unchanged), maths-b [12] (bare — two
  *     untiered papers). The bare-unit BOUND differs by design: chemistry
  *     keeps its space-tolerant shape ("2 C"), maths-a requires adjacency
  *     ("2H" ✓, "2 h" the hour abbreviation ✗ — the H/F letters collide
@@ -63,24 +65,29 @@ export function withLegacyAliases(codes: readonly string[]): string[] {
 
 /** "paper N" phrasing → the home units then the regional/tier variants.
  *  T-MIG-136e: maths-b has no tier/variant axis — the paper number IS the
- *  unit ("1"/"2" verbatim). */
+ *  unit ("1"/"2" verbatim). T-MIG-138a: maths-a joins the regional-variant
+ *  axis like chemistry (the archive carries 1FR/1HR/2FR/2HR) — home units
+ *  first, variants after, per tier. */
 export function unitHintCandidates(subjectCode: string, paperNumber: string): string[] {
   if (/^4MB/.test(subjectCode)) {
     return paperNumber === "1" ? ["1"] : paperNumber === "2" ? ["2"] : [];
   }
   if (/^4MA/.test(subjectCode)) {
-    return paperNumber === "1" ? ["1H", "1F"] : ["2H", "2F"];
+    return paperNumber === "1"
+      ? ["1H", "1F", "1HR", "1FR"]
+      : ["2H", "2F", "2HR", "2FR"];
   }
   return paperNumber === "1" ? ["1C", "1CR"] : ["2C", "2CR"];
 }
 
-/** Nothing → both home units then both variants, per subject. */
+/** Nothing → both home units then both variants, per subject. T-MIG-138a:
+ *  maths-a gains the R variants after the home units (chemistry shape). */
 export function defaultUnitCandidates(subjectCode: string): string[] {
   if (/^4MB/.test(subjectCode)) {
     return ["1", "2"];
   }
   if (/^4MA/.test(subjectCode)) {
-    return ["1H", "2H", "1F", "2F"];
+    return ["1H", "2H", "1F", "2F", "1HR", "2HR", "1FR", "2FR"];
   }
   return ["1C", "2C", "1CR", "2CR"];
 }
@@ -91,7 +98,7 @@ export function defaultUnitCandidates(subjectCode: string): string[] {
  *  parser-extracted units), so a bare digit here is always an explicit
  *  paper reference, never prose. */
 export function isValidUnitToken(unit: string): boolean {
-  return /^[12](?:CR?|[HF])$/.test(unit) || /^[12]$/.test(unit);
+  return /^[12](?:CR?|[HF]R?)$/.test(unit) || /^[12]$/.test(unit);
 }
 
 export type PromptSubjectVariant = "chemistry" | "general";

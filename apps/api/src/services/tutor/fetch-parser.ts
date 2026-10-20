@@ -94,9 +94,13 @@ export function partAtomOf(p: ParsedFetchQuery): string | null {
 // maths-a parses), and maths-b binds NO bare unit token: a standalone
 // "1"/"2" in prose is every number, question and year, so the bare-token
 // path must never fire for the digit-only vocabulary.
-const PAPER_CODE = /\b(4CH[01]|4MA[01])\s*[/-]\s*([12]\s*(?:C\s*R?|H|F))\b/i;
+const PAPER_CODE = /\b(4CH[01]|4MA[01])\s*[/-]\s*([12]\s*(?:C\s*R?|[HF]R?))\b/i;
 const PAPER_CODE_MB = /\b(4MB[01])\s*[/-]\s*([12])\b/i;
-const BARE_UNIT = /(?<![A-Za-z0-9])([12]\s*(?:CR|C)|[12](?:H|F))(?![A-Za-z0-9])/i;
+// T-MIG-138a: the maths-a family joins the regional-variant axis (the
+// archive carries 1FR/1HR/2FR/2HR) — [12][HF]R? beside the chemistry
+// [12]\s*CR? form; the adjacency law is unchanged (chemistry prose
+// collision class only, the H/F letters still require adjacency).
+const BARE_UNIT = /(?<![A-Za-z0-9])([12]\s*(?:CR|C)|[12](?:[HF]R?))(?![A-Za-z0-9])/i;
 const SERIES_JUN = /\b(summer|june)\b/i;
 const SERIES_JAN = /\b(january|jan)\b/i;
 const SERIES_NOV = /\b(november|october)\b/i;
