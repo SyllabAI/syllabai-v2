@@ -1,0 +1,54 @@
+{
+  "receipt": "R0-4CH1-RESIDUAL-CENSUS/run-005-wave2-attach-r0",
+  "task": "operator green-light trace 1a15af8cb94819d5 -> APPLY wave-2 kill-list DRAFT-r0 (staged ba3dee4): 12 appends, 11 grade-B codes",
+  "greenlightTrace": "1a15af8cb94819d5",
+  "killlistOfRecord": "download/wave2-killlist-4ch1-notes-DRAFT-r0.json — 12 rows: 10 note appends (11 codes; Crude Oil note carries 4.7+4.10) + 1 OPTIONAL part append (4.29C -> energetics q8p3 orphan) — OPTIONAL INCLUDED: no strike issued on green-light",
+  "preApplyGates": "12/12 pass, 0 faults (NOTE MISSING / TITLE MISMATCH / SNAPSHOT DRIFT / CODE ALREADY PRESENT / SET|QUESTION|PART MISSING all armed, fail-closed abort-before-write)",
+  "structuralDiffProof": {
+    "appends": 12,
+    "replaces": 0,
+    "detail": [
+      "notes[35].specPointCodes <- 4CH1-1.52C",
+      "notes[63].specPointCodes <- 4CH1-2.35",
+      "notes[75].specPointCodes <- 4CH1-2.50",
+      "notes[91].specPointCodes <- 4CH1-4.1",
+      "notes[94].specPointCodes <- 4CH1-4.7",
+      "notes[94].specPointCodes <- 4CH1-4.10",
+      "notes[95].specPointCodes <- 4CH1-4.11",
+      "notes[98].specPointCodes <- 4CH1-4.20",
+      "notes[100].specPointCodes <- 4CH1-4.24",
+      "notes[102].specPointCodes <- 4CH1-4.29C",
+      "notes[107].specPointCodes <- 4CH1-4.42C",
+      "questions[17].questions[8].parts[3].specPointCodes <- 4CH1-4.29C"
+    ],
+    "statement": "full-tree walker vs git HEAD pre-state: exactly 12 specPointCodes tail appends, every other node byte-equal (compact-roundtrip law held pre+post on both planes)"
+  },
+  "coverage": {
+    "before": "notes 155/182, questions 170/182, both-axes residual 11",
+    "after": "notes 166/182, questions 171/182, both-axes residual 0",
+    "ofRecordMatch": true,
+    "universe": 182
+  },
+  "fileHashes": {
+    "notes.json": {
+      "pre": "d6e69341c1d1f459",
+      "post": "046a9756da50402a"
+    },
+    "questions.json": {
+      "pre": "35d2a942d6fe0176",
+      "post": "6d8b1be95eb5fa0e"
+    }
+  },
+  "changedFiles": [
+    "apps/hub/content/igcse-chemistry-19/notes.json",
+    "apps/hub/content/igcse-chemistry-19/questions.json"
+  ],
+  "disclosure": "first-pass structural walker flagged root REPLACE (walker lacked list-element recursion); script fixed and state re-proved via --verify from git HEAD pre-state; content state never in doubt (constructed-expected equality held on first pass); no silent patch — disclosed in worklog + receipt",
+  "writeLedger": "notes.json (10 appends) + questions.json (1 append) + receipts run-005 + worklog append + download/wave2-apply-verification-r0.json; zero prod/DB/Neon/LLM at apply time; no force",
+  "followups": [
+    "ship verification run-006: deploy watch (GitHub auto-deploy on push) + live 12/12 content probes + wire battery 11/11",
+    "46-orphan-parts lane (separate, NOT bundled)",
+    "PAT rotation overdue x2",
+    "CORS identity/config.ts:60 parked"
+  ]
+}

@@ -10164,3 +10164,18 @@ Work Log:
 Stage Summary:
 - The run-002 repair program is CODED + PINNED + GATED: all five defect classes addressed, the Edexcel laws byte-identical, the fleet ready for run #3. Next: PR + self-merge on green, dispatch mode=cow+prod (the operator's standing order), then on green the CIE fill audit (45 rows, curriculumCode = <spec>-<syllabusVersion> per the seed's cv law).
 - Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-phase4-repair-program-r0.json; residuals: the hub-side EQ asset rendering (phase-5 QA lane), coreBridge stays operator-keyed.
+
+---
+Task ID: trace 1a15af8cb94819d5 (wave-2 apply of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- Staging re-verified (GITHUB_PAT fp a8ccee736aa8c75b, VERCEL_TOKEN fp d254bbfaac004354, 0600, credential.helper store); fetch-first: wave-2 review already of-record (run-004 ba3dee4, grade-B 11 all ATTACH, draft kill-list 12 rows staged pending green-light) -> operator 'green-light' (1a15af8cb94819d5) = apply authorization; FF-synced 4 sibling commits to 467081e, zero 4CH1 content conflicts (notes.json untouched since seed, questions.json since 89b4105, verified by git log + snapshot gates).
+- Fail-closed apply per DRAFT-r0: pre-apply gates 12/12 pass 0 faults; serialization law probed pre+post (compact-roundtrip byte-identical, notes 453,413B class + questions 2.29MB class); append-only rewrite via constructed-expected equality.
+- Structural proof re-done from git HEAD pre-state (--verify mode): exactly 12 appends / 0 replaces — 10 note-side (Metallic Bonding +1.52C, Acids Bases & Protons +2.35, Tests for Water +2.50, Organic Compounds +4.1, Crude Oil +4.7/+4.10, Combustion +4.11, Alkanes +4.20, Alkenes +4.24, Alcohols +4.29C, Esters +4.42C) + 1 part-side (4.29C -> energetics q8p3 orphan, OPTIONAL row INCLUDED — no strike issued on green-light); every other node byte-equal.
+- Coverage recompute (domain-fixed bare->prefixed): notes 155->166/182, questions 170->171, both-axes residual 11->0 — 4CH1 spec-point coverage now 182/182 both-axes; matches DRAFT-r0 expectation exactly.
+- DISCLOSURE: first-pass structural walker flagged root REPLACE (walker lacked list-element recursion — false positive at root, not a content fault); script fixed, state re-proved from git HEAD pre-state; constructed-expected equality had already held on first pass. No silent patch — disclosed here + receipt.
+- Receipt run-005-wave2-attach-r0 filed; ship verification (deploy watch + live 12/12 + battery 11/11) -> run-006 next.
+
+Stage Summary:
+- Wave-2 APPLIED of record: 12 appends, 4CH1 coverage 182/182 both-axes (residual ZERO); 2 content files changed; receipt run-005 + verification JSON of record; ship verification next.
