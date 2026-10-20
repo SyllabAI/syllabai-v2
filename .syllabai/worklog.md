@@ -10028,3 +10028,18 @@ Work Log:
 - The honesty law applied: the known-false 'waiter live' claim corrected in the same act (addendum receipt + this entry). The of-record state: STAGED RECIPE (rows 216 byte-exact from the run #9 prod artifact + mode + note + no-duplicate-acts rule) — the dispatch fires on the FIRST re-key after the window (operator message / any lane's next act / the r7a cadence).
 - Operator-gated option filed: a guarded schedule trigger (derive-and-backfill, exit-0-on-empty) would make the drain self-resuming — gate-law surgery + code plane: own order + PR + review, not smuggled here.
 - Write ledger: .syllabai-only addendum; zero dispatch, zero prod contact; fetch-first, no force.
+Task ID: trace 1a15acea6bb9a589 (wave-1 APPLY of record — first content write since seed)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: operator 'green-light' — apply wave-1 kill-list r0 (16 grade-A codes, 54 specPointCodes appends, questions.json only).
+
+Work Log:
+- fetch-first pre-apply: content identical local-HEAD-vs-origin/main; untouched since seed 3a92153.
+- Pre-apply verification fail-closed gate: 54/54 snapshot-match + 54/54 absence-proof PASS (scripts/wave1_apply_4ch1.py; abort-before-write on any drift).
+- APPLY: 54 union-appends at array end across 51 parts / 28 sets; compact serialization byte-format preserved (roundtrip probe first).
+- Post-apply structural diff proof: 54 added, 0 removed, 0 reordered, 0 meta changes — deep JSON compare vs pre-apply.
+- Coverage cross-check vs git HEAD (domain-fix: bare KG id -> '4CH1-'+id; buggy in-apply print disclosed and superseded): notes 155/182 UNCHANGED (matches census), questions 154/182 -> 170/182, both-axes residual 27 -> 11 (= exactly the 11 grade-B).
+- Battery: t215b-wire-battery REBUILT r1 (t215 original lost in ROLLBACK #5 — disclosed); initial firing 8/11 with 3 CALIBRATION faults (header-case x2, chunk-vs-corpus-plane needles) — diagnosed live, corrected r1a, re-fired 11/11 PASS. No service fault at any point.
+- Receipt: R0-4CH1-RESIDUAL-CENSUS/run-002-wave1-attach-r0.json (first content write since seed of record).
+
+Stage Summary:
+- Wave-1 of record: 16 grade-A codes closed on the questions axis; grade-B 11 + notes axis untouched; deploy to hub NOT fired (VERCEL_TOKEN staging absent since rollback) — content ships at next redeploy; followups: wave-2 review, VERCEL_TOKEN re-stage, PAT rotation, CORS cleanup.
