@@ -9632,3 +9632,22 @@ Work Log:
 Stage Summary:
 - ops-pastpapers CLOSED end-to-end of record: run-001 (diagnosis, live green, causes ranked) + run-002 (root cause adjudicated = deployment storage saturation; re-verify all green on the new build)
 - Write ledger: .syllabai receipt + this worklog only; zero Neon/LLM/prod-db; fetch-first, no force
+
+---
+Task ID: trace 1a15a0c18fa70d15 (T-PARSE-4PH1 parse verify, run-001)
+Agent: r0 (zai-web session web-752465e5, chat dd7e60e9)
+Task: operator "check in syllabai-resources if the igcse physics book has been parsed properly"
+
+Work Log:
+- Read-only independent verification battery of books/pearson-edexcel/international-gcse/physics/4ph1/ — every headline claim re-derived from the raw deliverables, zero trust in lane self-reports (GET/HEAD only, zero LLM/Neon/prod-db, zero writes to syllabai-resources)
+- SOURCE INTEGRITY of record: student-book.pdf re-downloaded in full (30,915,167 B) and re-hashed -> 9b0783d9...313a EXACT match to the sha256 pinned in 3 docs; pypdf ground truth: 308 pages, producer RICOH MP C4503, page 51 text layer = 0 chars (image-only-scan claim verified first-hand)
+- CHUNKS GREEN: 736/736 valid JSON lines, 0 bad; IDs unique + phys_v1_ prefixed; 13-key core grammar 0 missing; content-type distribution EXACT-matches parse_report_v1.json (17 types); char_count==len(text) 736/736; size 44/2299/843 EXACT; 28/28 chapters, 8/8 units; offset book=pdf-10 0 violations; 47/47 question chunks page-anchored (serving-critical MET); body order breaks 0 under start<previous-start (26 same-page overlaps = packing artifact, not regressions); LaTeX remnants 0; 232 polished chunks all carry text_original
+- POST-POLISH AUDIT REPRODUCED: polished-subset 18+ lowercase runs = 3, exactly the three disclosed legit words (pearsonschoolsandfecolleges URL-line, telecommunications, thermoluminescence); delta found: 1 polished chunk keeps camel-glue 'TotalforQuestion2' (audit claimed 0 — regex-class boundary, cosmetic, round-2 candidate)
+- COVERAGE 304/308 explained: 242/280 full-page picture items (documented text-only limitation), 287 APPENDICES divider header produced no chunk (minor), 307 blank (documented pixel-verified); docling_pages 308 files contiguous 1..308 no extras (hybrid-stack evidence in checkpoints: tesseract fallback p14, 2.133 splice p16-17); full_book_docling.md 635,914 B exact + 388 headings
+- SERVING STATUS disclosed: 4PH1 parse NOT yet ingested — 0 'phys_v1' refs in syllabai-v2 main; hub books read path (133c) serves operator-gated Neon rows; ingestion = the 134e-adjacent operator-keyed step; round 2 (68/300 selected chunks, LLM quota) remains the lane's own open protocol
+- Race recheck on session open: tip moved a00b96f..5b7eb6b — sibling run-002 ops-pastpapers receipt already at tip, NOT duplicated
+
+Stage Summary:
+- VERDICT: 4PH1 physics book parse is PROPER — source hash-exact, all checkable claims reproduce exactly, serving-critical anchors verified; ready for RAG ingestion as-is; the one open quality item is the lane's own documented polish round 2 (68 selected chunks pending, LLM quota)
+- Receipt: .syllabai/receipts/T-PARSE-4PH1/parse-verify-run-001-r0.json (new receipt dir for the 4PH1 parse lane)
+- Write ledger: .syllabai receipt + worklogs only; no force
