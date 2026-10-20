@@ -97,6 +97,7 @@ import {
 
 import { useClaPanelForm, useClaDock, useIsDesktop, useIsWide, claHeaderCircleBtn } from "./cla-panel-mode";
 import { relativeTime, setActiveQuestionThread, useQuestionClaSnapshot } from "./question-cla-threads";
+import { hydrateQuestionClaFromServer } from "./question-cla-sync";
 
 /** Question-surface free-input modes — the two that mean anything here. */
 type QuestionMode = "EXPLAIN" | "HINT";
@@ -249,7 +250,11 @@ export function QuestionClaOverlay({
   // the part lightbulb pre-aims Approach; every other open resets to the
   // first target (the overlay's target is per-open, the transcript per-question)
   useEffect(() => {
-    if (!open) return;
+    if (!open || !question) return;
+    // DC-6 phase 3: pull this question's server-side threads into the
+    // "Past chats" list (best-effort, silent, once per question per
+    // session; never moves the active pointer — plan §4)
+    void hydrateQuestionClaFromServer(question.id);
     setTargetId(
       initialTargetId && targets.some((t) => t.hubPartId === initialTargetId)
         ? initialTargetId

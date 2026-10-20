@@ -299,3 +299,122 @@ export function commitQuestionClaMessages(
     activeByQuestion: { ...state.activeByQuestion, [questionId]: updated.id },
   });
 }
+
+// ── sync-tier functions (DC-6 phase 3; docs/DC6-CLA-SYNC-TIER-PLAN.md §4) ──
+// The local store stays the source of truth; the server is a best-effort
+// full-state mirror. These three functions are the store's ENTIRE sync
+// surface — the sync loop lives in question-cla-sync.ts (component layer),
+// so this module keeps its zero-imports decoupling law.
+
+/** Bind a local thread to its server anchor (the lazy-bind moment, the
+ *  tutor's bindSession law). A thread never crosses questions; the FIRST
+ *  binding wins (recovery goes through unbind — a stale-server rebinding is
+ *  never silent). */
+export function bindQuestionClaSession(
+  questionId: string,
+  localThreadId: string,
+  serverThreadId: string,
+) {
+  const t = state.threads.find((th) => th.id === localThreadId);
+  if (!t || t.questionId !== questionId) return; // a thread never crosses questions
+  if (t.sessionId != null) return; // first binding wins (monotonic, idempotent)
+  commit({
+    threads: state.threads.map((th) =>
+      th.id === localThreadId ? { ...th, sessionId: serverThreadId } : th,
+    ),
+  });
+}
+
+/** Drop the binding: a 404 said the server thread is gone. Deletion is
+ *  respected — the thread stays local-only and is NOT re-created for the
+ *  rest of the session (the sync module owns the drop marker). */
+export function unbindQuestionClaSession(localThreadId: string) {
+  const t = state.threads.find((th) => th.id === localThreadId);
+  if (!t || t.sessionId == null) return;
+  commit({
+    threads: state.threads.map((th) =>
+      th.id === localThreadId ? { ...th, sessionId: null } : th,
+    ),
+  });
+}
+
+/** One hydrated server thread (the sync module maps the wire view to this
+ *  shape — messages are the LOCAL union; `result` not `payload`). */
+export interface HydratedClaThread {
+  sessionId: string;
+  title: string;
+  questionNumber: number | null;
+  courseSlug: string | null;
+  createdAt: number;
+  updatedAt: number;
+  messages: QuestionClaStoredMessage[];
+}
+
+/**
+ * Upsert server threads that are NOT already bound locally (local wins — a
+ * bound thread is never clobbered; plan §4). Hydration NEVER moves the
+ * active pointer (restore stays an explicit user act) and respects the
+ * family caps. Returns how many threads were added.
+ */
+export function hydrateQuestionClaThreads(
+  questionId: string,
+  incoming: HydratedClaThread[],
+): number {
+  const bound = new Set(
+    state.threads
+      .filter((t) => t.questionId === questionId && t.sessionId != null)
+      .map((t) => t.sessionId as string),
+  );
+  const fresh = incoming.filter(
+    (s) => !bound.has(s.sessionId) && s.messages.length > 0,
+  );
+  if (fresh.length === 0) return 0;
+  const now = Date.now();
+  const additions: QuestionClaThread[] = fresh.map((s) => ({
+    id: newThreadId(),
+    questionId,
+    questionNumber: s.questionNumber,
+    courseSlug: s.courseSlug,
+    title: s.title,
+    createdAt: s.createdAt || now,
+    updatedAt: s.updatedAt || now,
+    messages: s.messages.filter(validMessage).slice(-MAX_MESSAGES_PER_THREAD),
+    seq: seqCounter++,
+    sessionId: s.sessionId,
+  }));
+  // stale pointers (a thread evicted earlier without a pointer cleanup)
+  // protect nothing — only pointers to LIVE threads count (family law)
+  const liveIds = new Set(state.threads.map((t) => t.id));
+  const activeIds = new Set(
+    Object.values(state.activeByQuestion).filter(
+      (v): v is string => v != null && liveIds.has(v),
+    ),
+  );
+  let threads = [...state.threads, ...additions];
+  if (threads.length > MAX_THREADS) {
+    // cap: evict oldest-updated among the non-active, non-addition threads;
+    // hydration NEVER evicts a just-fetched thread in favor of nothing —
+    // under full pressure the OLDEST ADDITIONS yield (and the return count
+    // discloses exactly how many landed). The rail follow-up (delete
+    // wiring) is the pressure relief valve.
+    const additionIds = new Set(additions.map((a) => a.id));
+    const overflow = threads.length - MAX_THREADS;
+    const evictable = threads
+      .filter((t) => !activeIds.has(t.id) && !additionIds.has(t.id))
+      .sort((a, b) => a.updatedAt - b.updatedAt || (a.seq ?? 0) - (b.seq ?? 0));
+    const evict = new Set(evictable.slice(0, Math.max(0, overflow)).map((t) => t.id));
+    if (evict.size < overflow) {
+      const oldestAdditions = additions
+        .filter((a) => !evict.has(a.id))
+        .sort((a, b) => a.updatedAt - b.updatedAt || (a.seq ?? 0) - (b.seq ?? 0));
+      for (const t of oldestAdditions) {
+        if (evict.size >= overflow) break;
+        evict.add(t.id);
+      }
+    }
+    threads = threads.filter((t) => !evict.has(t.id));
+  }
+  commit({ threads });
+  const survivorIds = new Set(threads.map((t) => t.id));
+  return additions.filter((a) => survivorIds.has(a.id)).length;
+}

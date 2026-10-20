@@ -1,0 +1,1275 @@
+{
+  "killlist": "orphan-4ch1-part-attachment/DRAFT-r0",
+  "trace": "1a15b07cdd3aa565 operator pick \"46-orphan-parts lane\"",
+  "treeOfRecord": "main 918e0e3 (wave-2 shipped; notes 166/182, questions 171/182, both-axes residual 0)",
+  "reviewMethod": "read-only sweep (45 orphans = 46 of-record minus wave-2 q8p3 fix, reconciled) + first-hand per-part read of problemMd/solutionMd + KG spec-text cross-check + sibling-code grammar; keyword candidates advisory only (4.20-class misfires avoided, e.g. 3.22C rejected on q19p0, 2.12 rejected on LiOH)",
+  "attachRule": "PROPOSE only where a spec statement or the item governing investigation squarely matches the tested content; data-handling sub-parts inherit the governing set; NEEDS_MANUAL = operator adjudication required; EXCLUDE = recommend no attach",
+  "guard": "DRAFT ONLY — apply ONLY on operator green-light; NEEDS_MANUAL/EXCLUDE rows are NOT in the apply set unless the operator rules them; absence proof trivial (all targets empty) but re-asserted at apply time",
+  "totals": {
+    "orphans": 45,
+    "propose": 31,
+    "proposedAppends": 61,
+    "needsManual": 12,
+    "exclude": 2
+  },
+  "coverageNote": "all 31 proposed codes already covered course-wide (both-axes residual stays 0) — this lane enriches per-part tagging for study routing/filtering, NOT coverage arithmetic",
+  "paperConsistencyNote": "C-suffix proposals (1.58C, 4.30C, 4.35C) all land on paper-2-sourced items (Jan2C/Ju2C/Ja2C lineage) — paper-consistent by provenance",
+  "rows": [
+    {
+      "set": "1-1-states-of-matter--exam-questions",
+      "questionOrder": 18,
+      "partOrder": 1,
+      "partId": "qstnprt_gwPsCgCxxhdbxTWW",
+      "marks": 3,
+      "commandWord": "explain",
+      "sourcePaper": {
+        "date": "2021",
+        "number": "Ja1C",
+        "questionNumber": 3,
+        "questionPart": "b"
+      },
+      "axis": "part",
+      "append": null,
+      "verdict": "NEEDS_MANUAL",
+      "evidenceFirstHand": "MS: 'crystals dissolve faster' — dissolution-kinetics reasoning; no 4CH1 statement covers dissolution rate",
+      "siblingCodes": [
+        "4CH1-1.25",
+        "4CH1-1.3",
+        "4CH1-1.38"
+      ],
+      "candidates": [
+        "inherit item grammar {1.25,1.3,1.38}",
+        "3.11 temperature-rate analogy (misfire-prone: not a chemical reaction)"
+      ]
+    },
+    {
+      "set": "1-2-elements-compounds-and-mixtures--exam-questions",
+      "questionOrder": 19,
+      "partOrder": 1,
+      "partId": "qstnprt_rv6SWRNbmxQQrwGn",
+      "marks": 1,
+      "commandWord": "state",
+      "sourcePaper": {
+        "date": "2019",
+        "number": "Ju1C",
+        "questionNumber": 14,
+        "questionPart": "b"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-2.42"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: 'State how the student would know that the copper(II) oxide is in excess in stage 4' — MS: '(CuO) stops disappearing/dissolving OR mixture turns cloudy (black)' — the excess-insoluble-base step of exactly the 2.42 practical (CuO -> CuSO4)",
+      "siblingCodes": [
+        "4CH1-1.10",
+        "4CH1-1.29",
+        "4CH1-1.30",
+        "4CH1-3.9"
+      ],
+      "specTexts": {
+        "4CH1-2.42": "practical: prepare a sample of pure, dry hydrated copper(II) sulfate crystals starting from copper(II) oxide"
+      }
+    },
+    {
+      "set": "1-2-elements-compounds-and-mixtures--exam-questions",
+      "questionOrder": 19,
+      "partOrder": 3,
+      "partId": "qstnprt_VrdbSRGv5vdFSxCf",
+      "marks": 1,
+      "commandWord": "state",
+      "sourcePaper": {
+        "date": "2019",
+        "number": "Ju1C",
+        "questionNumber": 14,
+        "questionPart": "d"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-2.42"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: 'State the colour of the filtrate obtained in stage 5' — MS: 'Blue' — the copper(II) sulfate solution formed in the 2.42 practical, same investigation",
+      "siblingCodes": [
+        "4CH1-1.10",
+        "4CH1-1.29",
+        "4CH1-1.30",
+        "4CH1-3.9"
+      ],
+      "specTexts": {
+        "4CH1-2.42": "practical: prepare a sample of pure, dry hydrated copper(II) sulfate crystals starting from copper(II) oxide"
+      }
+    },
+    {
+      "set": "1-3-atomic-structure--exam-questions",
+      "questionOrder": 14,
+      "partOrder": 1,
+      "partId": "qstnprt_YMKV5Ms6xJkZPQX2",
+      "marks": 3,
+      "commandWord": "multiple",
+      "sourcePaper": {
+        "date": "2022",
+        "number": "Jan1CR",
+        "questionNumber": 4,
+        "questionPart": "b"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-1.16",
+        "4CH1-1.22"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: atom X 14p/14e/15n — i) mass number (29 = p+n -> 1.16 verbatim) ii) 'Explain which group ... belongs to' (Group 4 via 4 outer electrons -> 1.22 verbatim)",
+      "siblingCodes": [
+        "4CH1-1.16",
+        "4CH1-1.17"
+      ],
+      "specTexts": {
+        "4CH1-1.16": "know what is meant by the terms atomic number, mass number, isotopes and relative atomic mass (Ar)",
+        "4CH1-1.22": "understand how the electronic configuration of a main group element is related to its position in the Periodic Table"
+      }
+    },
+    {
+      "set": "1-4-the-periodic-table--exam-questions",
+      "questionOrder": 13,
+      "partOrder": 0,
+      "partId": "qstnprt_6zkwnfDh72wDRdZK",
+      "marks": 1,
+      "commandWord": null,
+      "sourcePaper": {
+        "date": "2019",
+        "number": "Ju1C",
+        "questionNumber": 5,
+        "questionPart": "a"
+      },
+      "axis": "part",
+      "append": null,
+      "verdict": "NEEDS_MANUAL",
+      "evidenceFirstHand": "Q: 'Which property of hydrogen...' MC answer 'low density' — no 4CH1 statement states H2 low-density property",
+      "siblingCodes": [
+        "4CH1-1.24",
+        "4CH1-1.25",
+        "4CH1-3.12",
+        "4CH1-3.13"
+      ],
+      "candidates": [
+        "none clean; siblings {1.24,1.25,3.12,3.13} not content-matched"
+      ]
+    },
+    {
+      "set": "1-5-chemical-formulae-equations-calculations--exam-questions",
+      "questionOrder": 16,
+      "partOrder": 0,
+      "partId": "qstnprt_MQd4XqDYPRzKNxrX",
+      "marks": 2,
+      "commandWord": "explain",
+      "sourcePaper": {
+        "date": "2019",
+        "number": "Ju2C",
+        "questionNumber": 8,
+        "questionPart": "a"
+      },
+      "axis": "part",
+      "append": null,
+      "verdict": "NEEDS_MANUAL",
+      "evidenceFirstHand": "MS: 'fume cupboard; chlorine is toxic' — safety-precaution reasoning; 4CH1 has no safety-equipment spec statement",
+      "siblingCodes": [
+        "4CH1-1.34C",
+        "4CH1-1.35C"
+      ],
+      "candidates": [
+        "none clean"
+      ]
+    },
+    {
+      "set": "1-5-chemical-formulae-equations-calculations--exam-questions",
+      "questionOrder": 21,
+      "partOrder": 1,
+      "partId": "qstnprt_TJQp83784Pn8cJ2W",
+      "marks": 3,
+      "commandWord": "multiple",
+      "sourcePaper": {
+        "date": "2020",
+        "number": "Nov1C",
+        "questionNumber": 9,
+        "questionPart": "b"
+      },
+      "axis": "part",
+      "append": null,
+      "verdict": "NEEDS_MANUAL",
+      "evidenceFirstHand": "MS: 'To get a constant mass OR ensure the reaction is complete' — heat-to-constant-mass reasoning",
+      "siblingCodes": [
+        "4CH1-1.29",
+        "4CH1-1.30",
+        "4CH1-2.12"
+      ],
+      "candidates": [
+        "1.31 experimental-formula-determination grammar (arguable, not deterministic)"
+      ]
+    },
+    {
+      "set": "1-6-ionic-bonding--exam-questions",
+      "questionOrder": 13,
+      "partOrder": 2,
+      "partId": "qstnprt_ByQnMtc69yvP6NQr",
+      "marks": 5,
+      "commandWord": "multiple",
+      "sourcePaper": {
+        "date": "2020",
+        "number": "Ja1CR",
+        "questionNumber": 8,
+        "questionPart": "c"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-1.43"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: conductivity of CaCl2 solution as it dissolves (solid doesn't conduct, aqueous does) — 1.43 verbatim 'ionic compounds do not conduct electricity when solid, but do conduct ... in aqueous solution'; kw hits=6, sibling-carried",
+      "siblingCodes": [
+        "4CH1-1.40",
+        "4CH1-1.43",
+        "4CH1-2.45",
+        "4CH1-2.47",
+        "4CH1-2.48"
+      ],
+      "specTexts": {
+        "4CH1-1.43": "know that ionic compounds do not conduct electricity when solid, but do conduct electricity when molten and in aqueous solution"
+      }
+    },
+    {
+      "set": "1-8-metallic-bonding--exam-questions",
+      "questionOrder": 4,
+      "partOrder": 3,
+      "partId": "qstnprt_djssqPMVz8NKfcJC",
+      "marks": 1,
+      "commandWord": "calculate",
+      "sourcePaper": {
+        "date": null,
+        "number": null,
+        "questionNumber": null,
+        "questionPart": null
+      },
+      "axis": "part",
+      "append": null,
+      "verdict": "NEEDS_MANUAL",
+      "evidenceFirstHand": "Q: '17% aluminium ... calculate percentage of substances other than aluminium' — pure percentage arithmetic in extraction context",
+      "siblingCodes": [
+        "4CH1-1.16",
+        "4CH1-1.54C",
+        "4CH1-2.26C",
+        "4CH1-2.27C"
+      ],
+      "candidates": [
+        "inherit 2.26C extraction context (sub-part does not test extraction knowledge)"
+      ]
+    },
+    {
+      "set": "1-9-electrolysis--exam-questions",
+      "questionOrder": 3,
+      "partOrder": 0,
+      "partId": "qstnprt_zhh6rhp4WyWBNHzT",
+      "marks": 1,
+      "commandWord": "state",
+      "sourcePaper": {
+        "date": "2018",
+        "number": "Ju1F",
+        "questionNumber": 5,
+        "questionPart": "a"
+      },
+      "axis": "part",
+      "append": null,
+      "verdict": "NEEDS_MANUAL",
+      "evidenceFirstHand": "MS: 'Flammable / inflammable' — hazard-symbol meaning; 4CH1 universe has no hazard-symbol statement",
+      "siblingCodes": [
+        "4CH1-1.56C",
+        "4CH1-1.58C",
+        "4CH1-2.48"
+      ],
+      "candidates": [
+        "none clean"
+      ]
+    },
+    {
+      "set": "1-9-electrolysis--exam-questions",
+      "questionOrder": 3,
+      "partOrder": 1,
+      "partId": "qstnprt_GF2R3d2ch5C5QFWX",
+      "marks": 1,
+      "commandWord": "give",
+      "sourcePaper": {
+        "date": "2018",
+        "number": "Ju1F",
+        "questionNumber": 5,
+        "questionPart": "b"
+      },
+      "axis": "part",
+      "append": null,
+      "verdict": "NEEDS_MANUAL",
+      "evidenceFirstHand": "Q: 'Give the names of the elements combined in barium sulfide' — MS: 'Barium AND Sulfur' — foundational compound-reading",
+      "siblingCodes": [
+        "4CH1-1.56C",
+        "4CH1-1.58C",
+        "4CH1-2.48"
+      ],
+      "candidates": [
+        "1.39 formulae-from-ions grammar (thin)"
+      ]
+    },
+    {
+      "set": "1-9-electrolysis--exam-questions",
+      "questionOrder": 3,
+      "partOrder": 2,
+      "partId": "qstnprt_BfxHQHMvVfywgh7d",
+      "marks": 2,
+      "commandWord": "explain",
+      "sourcePaper": {
+        "date": "2018",
+        "number": "Ju1F",
+        "questionNumber": 5,
+        "questionPart": "c"
+      },
+      "axis": "part",
+      "append": null,
+      "verdict": "NEEDS_MANUAL",
+      "evidenceFirstHand": "MS: 'Wear gloves; so it does not contact your skin' — safety-precaution reasoning; no spec statement",
+      "siblingCodes": [
+        "4CH1-1.56C",
+        "4CH1-1.58C",
+        "4CH1-2.48"
+      ],
+      "candidates": [
+        "none clean"
+      ]
+    },
+    {
+      "set": "1-9-electrolysis--exam-questions",
+      "questionOrder": 8,
+      "partOrder": 0,
+      "partId": "qstnprt_hP4Sn5R97ynYCNg5",
+      "marks": 4,
+      "commandWord": "multiple",
+      "sourcePaper": {
+        "date": "2022",
+        "number": "Jan2C",
+        "questionNumber": 6,
+        "questionPart": "a"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-1.58C"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: 'electrolysis of copper(II) sulfate solution ... apparatus ... plot results' — 1.58C verbatim 'describe experiments to investigate electrolysis, using inert electrodes, of ... aqueous solutions (including copper(II) sulfate)'",
+      "siblingCodes": [
+        "4CH1-1.54C",
+        "4CH1-1.59C",
+        "4CH1-1.60C"
+      ],
+      "specTexts": {
+        "4CH1-1.58C": "describe experiments to investigate electrolysis, using inert electrodes, of molten compounds (including lead(II) bromide) and aqueous solutions (including sodium chlorid"
+      }
+    },
+    {
+      "set": "2-1-group-1-alkali-metals--exam-questions",
+      "questionOrder": 12,
+      "partOrder": 2,
+      "partId": "qstnprt_hpDWjgVXR7mx8C7r",
+      "marks": 3,
+      "commandWord": "multiple",
+      "sourcePaper": {
+        "date": "2021",
+        "number": "Ja1CR",
+        "questionNumber": 9,
+        "questionPart": "c"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-3.8"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: temperature-change apparatus for acid + Group-1 hydroxide; MS: 'A lid/cover ... improve accuracy' — apparatus-technique sub-part of the 3.8 thermometric (neutralisation) practical",
+      "siblingCodes": [
+        "4CH1-2.1",
+        "4CH1-3.3",
+        "4CH1-3.4"
+      ],
+      "specTexts": {
+        "4CH1-3.8": "practical: investigate temperature changes accompanying some of the following types of change: • salts dissolving in water • neutralisation reactions • displacement react"
+      }
+    },
+    {
+      "set": "2-1-group-1-alkali-metals--exam-questions",
+      "questionOrder": 16,
+      "partOrder": 1,
+      "partId": "qstnprt_xCN2dZ9GVYwM8wPb",
+      "marks": 1,
+      "commandWord": "state",
+      "sourcePaper": {
+        "date": null,
+        "number": null,
+        "questionNumber": null,
+        "questionPart": null
+      },
+      "axis": "part",
+      "append": null,
+      "verdict": "NEEDS_MANUAL",
+      "evidenceFirstHand": "MS: '(Thermal) decomposition OR dehydration' for 2LiOH -> Li2O + H2O — reaction-type classification; 2.12 is metal-carbonates-only (misfire risk for hydroxide)",
+      "siblingCodes": [
+        "4CH1-1.25",
+        "4CH1-1.29",
+        "4CH1-2.2",
+        "4CH1-2.20",
+        "4CH1-4.12"
+      ],
+      "candidates": [
+        "none clean"
+      ]
+    },
+    {
+      "set": "2-3-gases-in-the-atmosphere--exam-questions",
+      "questionOrder": 7,
+      "partOrder": 0,
+      "partId": "qstnprt_M6MqQBTBMTFNS8Jg",
+      "marks": 2,
+      "commandWord": "complete",
+      "sourcePaper": {
+        "date": "2017",
+        "number": "Specimen1C",
+        "questionNumber": 4,
+        "questionPart": "a"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-2.10",
+        "4CH1-2.14"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: rusting experiment, complete syringe readings + volume O2 used — data handling of exactly the 2.14 practical / 2.10 'determine the percentage by volume of oxygen in air using ... metals (e.g. iron)'; sibling carries 2.14",
+      "siblingCodes": [
+        "4CH1-2.14",
+        "4CH1-2.18"
+      ],
+      "specTexts": {
+        "4CH1-2.10": "understand how to determine the percentage by volume of oxygen in air using experiments involving the reactions of metals (e.g. iron) and non-metals (e.g. phosphorus) wit",
+        "4CH1-2.14": "practical: determine the approximate percentage by volume of oxygen in air using a metal or a non-metal"
+      }
+    },
+    {
+      "set": "2-3-gases-in-the-atmosphere--exam-questions",
+      "questionOrder": 9,
+      "partOrder": 1,
+      "partId": "qstnprt_6SrYcjxkXdzFrtsb",
+      "marks": 1,
+      "commandWord": "give",
+      "sourcePaper": {
+        "date": "2020",
+        "number": "Ja1CR",
+        "questionNumber": 5,
+        "questionPart": "b"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-2.14"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: 'Give one change to this experiment that would make the results more accurate' — accuracy reasoning inside the 2.14 %O2 practical; sibling carries 2.10 but NOT 2.14",
+      "siblingCodes": [
+        "4CH1-2.10",
+        "4CH1-3.9"
+      ],
+      "specTexts": {
+        "4CH1-2.14": "practical: determine the approximate percentage by volume of oxygen in air using a metal or a non-metal"
+      }
+    },
+    {
+      "set": "2-4-reactivity-series--exam-questions",
+      "questionOrder": 10,
+      "partOrder": 1,
+      "partId": "qstnprt_VB886JQHFTWQrJqK",
+      "marks": 3,
+      "commandWord": "complete",
+      "sourcePaper": {
+        "date": "2013",
+        "number": "Ja1C",
+        "questionNumber": 6,
+        "questionPart": "b"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-3.8"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: complete temperature readings table for zinc addition — ΔT data handling of the 3.8 temperature-change practical (displacement class); sibling carries 3.8",
+      "siblingCodes": [
+        "4CH1-2.15",
+        "4CH1-3.8"
+      ],
+      "specTexts": {
+        "4CH1-3.8": "practical: investigate temperature changes accompanying some of the following types of change: • salts dissolving in water • neutralisation reactions • displacement react"
+      }
+    },
+    {
+      "set": "2-4-reactivity-series--exam-questions",
+      "questionOrder": 11,
+      "partOrder": 2,
+      "partId": "qstnprt_5CZpqZsr3N6DsrFD",
+      "marks": 3,
+      "commandWord": "calculate",
+      "sourcePaper": {
+        "date": "2021",
+        "number": "Ja1CR",
+        "questionNumber": 4,
+        "questionPart": "c"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-2.10",
+        "4CH1-2.14"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: 'calculate the percentage by volume of oxygen in air' from second-experiment volumes (19.4%) — 2.10 verbatim; same 2.14 practical grammar",
+      "siblingCodes": [
+        "4CH1-2.18"
+      ],
+      "specTexts": {
+        "4CH1-2.10": "understand how to determine the percentage by volume of oxygen in air using experiments involving the reactions of metals (e.g. iron) and non-metals (e.g. phosphorus) wit",
+        "4CH1-2.14": "practical: determine the approximate percentage by volume of oxygen in air using a metal or a non-metal"
+      }
+    },
+    {
+      "set": "2-5-extraction-and-uses-of-metals--exam-questions",
+      "questionOrder": 14,
+      "partOrder": 1,
+      "partId": "qstnprt_JdygcmDr3XYTVJq2",
+      "marks": 3,
+      "commandWord": "calculate",
+      "sourcePaper": {
+        "date": null,
+        "number": null,
+        "questionNumber": null,
+        "questionPart": null
+      },
+      "axis": "part",
+      "append": null,
+      "verdict": "NEEDS_MANUAL",
+      "evidenceFirstHand": "Q: 'Calculate how many times more iron is produced per hour' — unit-conversion arithmetic; no spec statement",
+      "siblingCodes": [
+        "4CH1-2.16",
+        "4CH1-2.23C"
+      ],
+      "candidates": [
+        "inherit 2.23C extraction context (thin)"
+      ]
+    },
+    {
+      "set": "2-6-acids-alkalis-and-titrations--exam-questions",
+      "questionOrder": 12,
+      "partOrder": 1,
+      "partId": "qstnprt_6QP7CsqZdYX6xDkD",
+      "marks": 3,
+      "commandWord": "complete",
+      "sourcePaper": {
+        "date": "2019",
+        "number": "Ju2CR",
+        "questionNumber": 6,
+        "questionPart": "b"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-2.33C"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: 'burette readings at the start and end ... complete the table' — titration data handling; 2.33C verbatim 'describe how to carry out an acid-alkali titration'",
+      "siblingCodes": [
+        "4CH1-1.34C",
+        "4CH1-2.33C",
+        "4CH1-4.34C",
+        "4CH1-4.37C"
+      ],
+      "specTexts": {
+        "4CH1-2.33C": "describe how to carry out an acid-alkali titration"
+      }
+    },
+    {
+      "set": "2-7-acids-bases-and-salt-preparations--exam-questions",
+      "questionOrder": 3,
+      "partOrder": 0,
+      "partId": "qstnprt_tH4zFWZqzy8MyXZS",
+      "marks": 4,
+      "commandWord": "complete",
+      "sourcePaper": {
+        "date": "2020",
+        "number": "N2CR",
+        "questionNumber": 1,
+        "questionPart": "a"
+      },
+      "axis": "part",
+      "append": null,
+      "verdict": "EXCLUDE",
+      "evidenceFirstHand": "Q: name apparatus A-D (test tube, evaporating basin, measuring cylinder, balance) — no 4CH1 spec statement covers apparatus identification",
+      "siblingCodes": []
+    },
+    {
+      "set": "2-7-acids-bases-and-salt-preparations--exam-questions",
+      "questionOrder": 3,
+      "partOrder": 1,
+      "partId": "qstnprt_zdnRyQhzpZY5n5Y6",
+      "marks": 1,
+      "commandWord": null,
+      "sourcePaper": {
+        "date": "2020",
+        "number": "N2CR",
+        "questionNumber": 1,
+        "questionPart": "b"
+      },
+      "axis": "part",
+      "append": null,
+      "verdict": "EXCLUDE",
+      "evidenceFirstHand": "Q: 'Which piece of apparatus can be used to measure the volume of a liquid?' — apparatus selection; no 4CH1 spec statement",
+      "siblingCodes": []
+    },
+    {
+      "set": "2-7-acids-bases-and-salt-preparations--exam-questions",
+      "questionOrder": 6,
+      "partOrder": 1,
+      "partId": "qstnprt_XFv58yz65dwgk4KD",
+      "marks": 5,
+      "commandWord": "multiple",
+      "sourcePaper": {
+        "date": "2019",
+        "number": "Ju1CR",
+        "questionNumber": 8,
+        "questionPart": "b"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-2.32",
+        "4CH1-3.8"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: plot temperature vs volume of acid, lines of best fit, neutralisation point — thermometric titration = 3.8 practical (temperature changes incl. neutralisation); sibling carries 2.32 (alkalis neutralise acids)",
+      "siblingCodes": [
+        "4CH1-2.32"
+      ],
+      "specTexts": {
+        "4CH1-2.32": "know that alkalis can neutralise acids",
+        "4CH1-3.8": "practical: investigate temperature changes accompanying some of the following types of change: • salts dissolving in water • neutralisation reactions • displacement react"
+      }
+    },
+    {
+      "set": "3-1-energetics--exam-questions",
+      "questionOrder": 19,
+      "partOrder": 0,
+      "partId": "qstnprt_src5QMtmNbxBmh7F",
+      "marks": 2,
+      "commandWord": "suggest",
+      "sourcePaper": {
+        "date": "2017",
+        "number": "Specimen1C",
+        "questionNumber": 10,
+        "questionPart": "a"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-3.2",
+        "4CH1-3.8"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "MS: 'burette is better: increment smaller/more precise; avoids refilling' — calorimetry-technique reasoning inside the KOH+HNO3 temperature experiment = 3.2 calorimetry description (neutralisation) / 3.8 practical",
+      "siblingCodes": [
+        "4CH1-3.3",
+        "4CH1-3.4"
+      ],
+      "specTexts": {
+        "4CH1-3.2": "describe simple calorimetry experiments for reactions such as combustion, displacement, dissolving and neutralisation",
+        "4CH1-3.8": "practical: investigate temperature changes accompanying some of the following types of change: • salts dissolving in water • neutralisation reactions • displacement react"
+      }
+    },
+    {
+      "set": "3-1-energetics--exam-questions",
+      "questionOrder": 19,
+      "partOrder": 1,
+      "partId": "qstnprt_6mtkgsSS7dVkwzTm",
+      "marks": 2,
+      "commandWord": "complete",
+      "sourcePaper": {
+        "date": "2017",
+        "number": "Specimen1C",
+        "questionNumber": 10,
+        "questionPart": "b"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-3.2",
+        "4CH1-3.8"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: complete thermometer readings table (ΔT 8.1 °C) — data handling of the same 3.2/3.8 calorimetry experiment",
+      "siblingCodes": [
+        "4CH1-3.3",
+        "4CH1-3.4"
+      ],
+      "specTexts": {
+        "4CH1-3.2": "describe simple calorimetry experiments for reactions such as combustion, displacement, dissolving and neutralisation",
+        "4CH1-3.8": "practical: investigate temperature changes accompanying some of the following types of change: • salts dissolving in water • neutralisation reactions • displacement react"
+      }
+    },
+    {
+      "set": "3-1-energetics--exam-questions",
+      "questionOrder": 19,
+      "partOrder": 2,
+      "partId": "qstnprt_jRKgJbMsMjhXgbx9",
+      "marks": 2,
+      "commandWord": "identify",
+      "sourcePaper": {
+        "date": "2017",
+        "number": "Specimen1C",
+        "questionNumber": 10,
+        "questionPart": "c"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-3.2",
+        "4CH1-3.8"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: identify max temperature (29.5 °C) + volume of acid that exactly neutralises — interpretation of the 3.2/3.8 thermometric-neutralisation experiment",
+      "siblingCodes": [
+        "4CH1-3.3",
+        "4CH1-3.4"
+      ],
+      "specTexts": {
+        "4CH1-3.2": "describe simple calorimetry experiments for reactions such as combustion, displacement, dissolving and neutralisation",
+        "4CH1-3.8": "practical: investigate temperature changes accompanying some of the following types of change: • salts dissolving in water • neutralisation reactions • displacement react"
+      }
+    },
+    {
+      "set": "3-1-energetics--exam-questions",
+      "questionOrder": 22,
+      "partOrder": 1,
+      "partId": "qstnprt_vyKFQSpmtYzKnvP6",
+      "marks": 2,
+      "commandWord": "calculate",
+      "sourcePaper": {
+        "date": "2020",
+        "number": "Nov1CR",
+        "questionNumber": 10,
+        "questionPart": "b"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-3.2"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: 'Calculate the mean (average) temperature of the two solutions' — initial-temperature data handling feeding the ΔT of the 3.2 calorimetry experiment; sibling carries 3.2",
+      "siblingCodes": [
+        "4CH1-3.2",
+        "4CH1-3.3",
+        "4CH1-3.4"
+      ],
+      "specTexts": {
+        "4CH1-3.2": "describe simple calorimetry experiments for reactions such as combustion, displacement, dissolving and neutralisation"
+      }
+    },
+    {
+      "set": "3-2-rates-of-reaction--exam-questions",
+      "questionOrder": 9,
+      "partOrder": 3,
+      "partId": "qstnprt_2MmscdDWtxj4FdpZ",
+      "marks": 6,
+      "commandWord": "multiple",
+      "sourcePaper": {
+        "date": "2020",
+        "number": "Nov1CR",
+        "questionNumber": 4,
+        "questionPart": "d"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-3.9",
+        "4CH1-3.10",
+        "4CH1-3.11"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: H2O2 concentration-rate investigation — complete graph + interpret — 3.9 'experiments to investigate the effects of changes in ... concentration ... on rate' verbatim; 3.10/3.11 the concentration effect (sibling carries 3.10)",
+      "siblingCodes": [
+        "4CH1-1.25",
+        "4CH1-2.44",
+        "4CH1-3.10"
+      ],
+      "specTexts": {
+        "4CH1-3.9": "describe experiments to investigate the effects of changes in surface area of a solid, concentration of a solution, temperature and the use of a catalyst on the rate of a",
+        "4CH1-3.10": "describe the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas, temperature and the use of a catalyst on the rate of a reactio",
+        "4CH1-3.11": "explain the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas and temperature on the rate of a reaction in terms of particle c"
+      }
+    },
+    {
+      "set": "3-2-rates-of-reaction--exam-questions",
+      "questionOrder": 17,
+      "partOrder": 0,
+      "partId": "qstnprt_2yfw7QKzdDhxhXGQ",
+      "marks": 2,
+      "commandWord": "multiple",
+      "sourcePaper": {
+        "date": "2019",
+        "number": "Ju1C",
+        "questionNumber": 13,
+        "questionPart": "a"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-2.21",
+        "4CH1-3.9",
+        "4CH1-3.11"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: Mg + excess dilute HCl gas-syringe investigation — complete plotted graph — 2.21 practical verbatim ('reactions between dilute hydrochloric ... acids and metals (e.g. magnesium...)'); 3.9 rate-experiment grammar; sibling carries 3.11",
+      "siblingCodes": [
+        "4CH1-3.11"
+      ],
+      "specTexts": {
+        "4CH1-2.21": "practical: investigate reactions between dilute hydrochloric and sulfuric acids and metals (e.g. magnesium, zinc and iron)",
+        "4CH1-3.9": "describe experiments to investigate the effects of changes in surface area of a solid, concentration of a solution, temperature and the use of a catalyst on the rate of a",
+        "4CH1-3.11": "explain the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas and temperature on the rate of a reaction in terms of particle c"
+      }
+    },
+    {
+      "set": "3-2-rates-of-reaction--exam-questions",
+      "questionOrder": 17,
+      "partOrder": 2,
+      "partId": "qstnprt_qpTDF7TNmYk8kg9R",
+      "marks": 1,
+      "commandWord": "suggest",
+      "sourcePaper": {
+        "date": "2019",
+        "number": "Ju1C",
+        "questionNumber": 13,
+        "questionPart": "c"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-2.21",
+        "4CH1-3.9",
+        "4CH1-3.11"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "MS: 'Some gas escapes before the bung is replaced' — experimental-technique reasoning inside the same 2.21/3.9 investigation",
+      "siblingCodes": [
+        "4CH1-3.11"
+      ],
+      "specTexts": {
+        "4CH1-2.21": "practical: investigate reactions between dilute hydrochloric and sulfuric acids and metals (e.g. magnesium, zinc and iron)",
+        "4CH1-3.9": "describe experiments to investigate the effects of changes in surface area of a solid, concentration of a solution, temperature and the use of a catalyst on the rate of a",
+        "4CH1-3.11": "explain the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas and temperature on the rate of a reaction in terms of particle c"
+      }
+    },
+    {
+      "set": "3-2-rates-of-reaction--exam-questions",
+      "questionOrder": 17,
+      "partOrder": 3,
+      "partId": "qstnprt_kbhyXwSmDYfRXqp7",
+      "marks": 2,
+      "commandWord": "explain",
+      "sourcePaper": {
+        "date": "2019",
+        "number": "Ju1C",
+        "questionNumber": 13,
+        "questionPart": "d"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-2.21",
+        "4CH1-3.9",
+        "4CH1-3.11"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "MS: 'The acid is in excess; a precise/accurate volume is not needed' — technique reasoning inside the same 2.21/3.9 investigation",
+      "siblingCodes": [
+        "4CH1-3.11"
+      ],
+      "specTexts": {
+        "4CH1-2.21": "practical: investigate reactions between dilute hydrochloric and sulfuric acids and metals (e.g. magnesium, zinc and iron)",
+        "4CH1-3.9": "describe experiments to investigate the effects of changes in surface area of a solid, concentration of a solution, temperature and the use of a catalyst on the rate of a",
+        "4CH1-3.11": "explain the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas and temperature on the rate of a reaction in terms of particle c"
+      }
+    },
+    {
+      "set": "3-2-rates-of-reaction--exam-questions",
+      "questionOrder": 18,
+      "partOrder": 0,
+      "partId": "qstnprt_9BSrjKFdCc4YCcBs",
+      "marks": 1,
+      "commandWord": "state",
+      "sourcePaper": {
+        "date": "2020",
+        "number": "Nov1C",
+        "questionNumber": 7,
+        "questionPart": "a"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-3.9",
+        "4CH1-3.11"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: 'State the name of the precipitate that forms' (sulfur) — observation sub-part of the sodium-thiosulfate rate experiment = 3.9 grammar; siblings carry 3.11",
+      "siblingCodes": [
+        "4CH1-3.11",
+        "4CH1-3.9"
+      ],
+      "specTexts": {
+        "4CH1-3.9": "describe experiments to investigate the effects of changes in surface area of a solid, concentration of a solution, temperature and the use of a catalyst on the rate of a",
+        "4CH1-3.11": "explain the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas and temperature on the rate of a reaction in terms of particle c"
+      }
+    },
+    {
+      "set": "3-2-rates-of-reaction--exam-questions",
+      "questionOrder": 18,
+      "partOrder": 2,
+      "partId": "qstnprt_2RYBTY6d6rbH2sR9",
+      "marks": 1,
+      "commandWord": "suggest",
+      "sourcePaper": {
+        "date": "2020",
+        "number": "Nov1C",
+        "questionNumber": 7,
+        "questionPart": "c"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-3.9",
+        "4CH1-3.11"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "MS: 'results might not be as accurate above 60 °C — solution would cool down / not remain at required temperature' — technique reasoning in the same 3.9 rate experiment",
+      "siblingCodes": [
+        "4CH1-3.11",
+        "4CH1-3.9"
+      ],
+      "specTexts": {
+        "4CH1-3.9": "describe experiments to investigate the effects of changes in surface area of a solid, concentration of a solution, temperature and the use of a catalyst on the rate of a",
+        "4CH1-3.11": "explain the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas and temperature on the rate of a reaction in terms of particle c"
+      }
+    },
+    {
+      "set": "3-2-rates-of-reaction--exam-questions",
+      "questionOrder": 18,
+      "partOrder": 3,
+      "partId": "qstnprt_Rw9H9YwNcMtJmXmn",
+      "marks": 2,
+      "commandWord": "plot",
+      "sourcePaper": {
+        "date": "2020",
+        "number": "Nov1C",
+        "questionNumber": 7,
+        "questionPart": "d"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-3.9",
+        "4CH1-3.10",
+        "4CH1-3.11"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: plot rate=1/time vs temperature — temperature-rate data of the 3.9 experiment; 3.10 lists temperature among rate factors; sibling carries 3.11",
+      "siblingCodes": [
+        "4CH1-3.11",
+        "4CH1-3.9"
+      ],
+      "specTexts": {
+        "4CH1-3.9": "describe experiments to investigate the effects of changes in surface area of a solid, concentration of a solution, temperature and the use of a catalyst on the rate of a",
+        "4CH1-3.10": "describe the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas, temperature and the use of a catalyst on the rate of a reactio",
+        "4CH1-3.11": "explain the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas and temperature on the rate of a reaction in terms of particle c"
+      }
+    },
+    {
+      "set": "3-2-rates-of-reaction--exam-questions",
+      "questionOrder": 18,
+      "partOrder": 4,
+      "partId": "qstnprt_gtntQ6NB4bRTvQQT",
+      "marks": 5,
+      "commandWord": "multiple",
+      "sourcePaper": {
+        "date": "2020",
+        "number": "Nov1C",
+        "questionNumber": 7,
+        "questionPart": "e"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-3.9",
+        "4CH1-3.10",
+        "4CH1-3.11"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: 'Use the graph to determine a value for the rate of the reaction at 45 °C' — temperature-rate interpretation of the 3.9 experiment",
+      "siblingCodes": [
+        "4CH1-3.11",
+        "4CH1-3.9"
+      ],
+      "specTexts": {
+        "4CH1-3.9": "describe experiments to investigate the effects of changes in surface area of a solid, concentration of a solution, temperature and the use of a catalyst on the rate of a",
+        "4CH1-3.10": "describe the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas, temperature and the use of a catalyst on the rate of a reactio",
+        "4CH1-3.11": "explain the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas and temperature on the rate of a reaction in terms of particle c"
+      }
+    },
+    {
+      "set": "3-2-rates-of-reaction--exam-questions",
+      "questionOrder": 21,
+      "partOrder": 0,
+      "partId": "qstnprt_Z2PQkvjnsFm7vTqy",
+      "marks": 2,
+      "commandWord": "explain",
+      "sourcePaper": {
+        "date": "2022",
+        "number": "Jan1C",
+        "questionNumber": 9,
+        "questionPart": "a"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-3.9",
+        "4CH1-3.15",
+        "4CH1-3.11"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: CaCO3 chips + dilute HCl, cotton-wool plug accuracy — MS: 'prevents acid splashing out / allows only gas to leave' — 3.15 practical verbatim (marble chips + HCl) + 3.9 rate-experiment grammar; sibling carries 3.11",
+      "siblingCodes": [
+        "4CH1-1.25",
+        "4CH1-1.28",
+        "4CH1-3.11"
+      ],
+      "specTexts": {
+        "4CH1-3.9": "describe experiments to investigate the effects of changes in surface area of a solid, concentration of a solution, temperature and the use of a catalyst on the rate of a",
+        "4CH1-3.15": "practical: investigate the effect of changing the surface area of marble chips and of changing the concentration of hydrochloric acid on the rate of reaction between marb",
+        "4CH1-3.11": "explain the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas and temperature on the rate of a reaction in terms of particle c"
+      }
+    },
+    {
+      "set": "3-2-rates-of-reaction--exam-questions",
+      "questionOrder": 22,
+      "partOrder": 1,
+      "partId": "qstnprt_j2g85BvZfGhpGX7F",
+      "marks": 5,
+      "commandWord": "multiple",
+      "sourcePaper": {
+        "date": "2022",
+        "number": "Jan1CR",
+        "questionNumber": 8,
+        "questionPart": "b"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-2.21",
+        "4CH1-3.9",
+        "4CH1-3.10",
+        "4CH1-3.11"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: Zn + acid, plot mass-of-hydrogen vs time graph — 2.21 practical verbatim (metals e.g. zinc) + 3.9 rate-experiment grammar; siblings carry 3.10/3.11",
+      "siblingCodes": [
+        "4CH1-1.25",
+        "4CH1-2.34",
+        "4CH1-3.10",
+        "4CH1-3.11"
+      ],
+      "specTexts": {
+        "4CH1-2.21": "practical: investigate reactions between dilute hydrochloric and sulfuric acids and metals (e.g. magnesium, zinc and iron)",
+        "4CH1-3.9": "describe experiments to investigate the effects of changes in surface area of a solid, concentration of a solution, temperature and the use of a catalyst on the rate of a",
+        "4CH1-3.10": "describe the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas, temperature and the use of a catalyst on the rate of a reactio",
+        "4CH1-3.11": "explain the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas and temperature on the rate of a reaction in terms of particle c"
+      }
+    },
+    {
+      "set": "3-3-reversible-reactions-and-equilibria--exam-questions",
+      "questionOrder": 2,
+      "partOrder": 3,
+      "partId": "qstnprt_yBXvqVdxr8yYtdpV",
+      "marks": 2,
+      "commandWord": "calculate",
+      "sourcePaper": {
+        "date": null,
+        "number": null,
+        "questionNumber": null,
+        "questionPart": null
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-3.18"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: '5.2 g of hydrated copper sulfate was heated ... calculate mass of water given off' — calculation inside the 3.18 dehydration-of-hydrated-copper(II)-sulfate grammar; sibling carries 3.18",
+      "siblingCodes": [
+        "4CH1-3.18"
+      ],
+      "specTexts": {
+        "4CH1-3.18": "describe reversible reactions such as the dehydration of hydrated copper(II) sulfate and the effect of heat on ammonium chloride"
+      }
+    },
+    {
+      "set": "3-3-reversible-reactions-and-equilibria--exam-questions",
+      "questionOrder": 15,
+      "partOrder": 0,
+      "partId": "qstnprt_TQxbHrNqtkRWqshZ",
+      "marks": 1,
+      "commandWord": "which",
+      "sourcePaper": {
+        "date": null,
+        "number": null,
+        "questionNumber": null,
+        "questionPart": null
+      },
+      "axis": "part",
+      "append": null,
+      "verdict": "NEEDS_MANUAL",
+      "evidenceFirstHand": "MS: '(aq) state symbol indicates dissolved in water' — state-symbol reading; no dedicated statement",
+      "siblingCodes": [
+        "4CH1-3.22C"
+      ],
+      "candidates": [
+        "1.25 state-symbol grammar (thin: 1.25 says WRITE equations)",
+        "inherit 3.22C item context"
+      ]
+    },
+    {
+      "set": "4-3-alkanes--exam-questions",
+      "questionOrder": 9,
+      "partOrder": 1,
+      "partId": "qstnprt_9NGn8ycp9Zggjcgh",
+      "marks": 1,
+      "commandWord": "estimate",
+      "sourcePaper": {
+        "date": "2018",
+        "number": "Specimen 2F",
+        "questionNumber": 9,
+        "questionPart": "b"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-1.48"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: estimate pentane bp from alkanes' bp-vs-carbon-count graph (36 °C via best-fit line) — 1.48 'melting and boiling points of substances with simple molecular structures increase with increasing relative molecular mass' grammar (alkanes are simple molecular)",
+      "siblingCodes": [
+        "4CH1-1.32",
+        "4CH1-4.2",
+        "4CH1-4.22",
+        "4CH1-4.3"
+      ],
+      "specTexts": {
+        "4CH1-1.48": "explain why the melting and boiling points of substances with simple molecular structures increase, in general, with increasing relative molecular mass"
+      }
+    },
+    {
+      "set": "4-5-alcohols--exam-questions",
+      "questionOrder": 7,
+      "partOrder": 0,
+      "partId": "qstnprt_H3FtDC6k5xF5z8qb",
+      "marks": 2,
+      "commandWord": "state",
+      "sourcePaper": {
+        "date": "2019",
+        "number": "Ju2C",
+        "questionNumber": 3,
+        "questionPart": "a"
+      },
+      "axis": "part",
+      "append": null,
+      "verdict": "NEEDS_MANUAL",
+      "evidenceFirstHand": "MS: 'volume of liquid kept the same; temperature kept the same' — fair-test variable control; no 4CH1 statement on experimental design",
+      "siblingCodes": [
+        "4CH1-4.32C"
+      ],
+      "candidates": [
+        "inherit 4.30C family context (sub-part does not test formulae)"
+      ]
+    },
+    {
+      "set": "4-5-alcohols--exam-questions",
+      "questionOrder": 7,
+      "partOrder": 2,
+      "partId": "qstnprt_NXHjhmPD56FH27hn",
+      "marks": 6,
+      "commandWord": "multiple",
+      "sourcePaper": {
+        "date": "2019",
+        "number": "Ju2C",
+        "questionNumber": 3,
+        "questionPart": "c"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-1.48",
+        "4CH1-4.30C"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: mean evaporation times methanol->butanol; MS: 'which alcohol evaporates most easily' — 1.48 trend grammar (evaporation ease vs relative molecular mass); item governed by the four 4.30C alcohols (methanol, ethanol, propanol, butanol named in table)",
+      "siblingCodes": [
+        "4CH1-4.32C"
+      ],
+      "specTexts": {
+        "4CH1-1.48": "explain why the melting and boiling points of substances with simple molecular structures increase, in general, with increasing relative molecular mass",
+        "4CH1-4.30C": "understand how to draw structural and displayed formulae for methanol, ethanol, propanol (propan-1-ol only) and butanol (butan-1-ol only), and name each compound the name"
+      }
+    },
+    {
+      "set": "4-6-carboxylic-acids--exam-questions",
+      "questionOrder": 11,
+      "partOrder": 0,
+      "partId": "qstnprt_J4sFJdtKmPnhWHd7",
+      "marks": 3,
+      "commandWord": "give",
+      "sourcePaper": {
+        "date": "2021",
+        "number": "Ja2C",
+        "questionNumber": 3,
+        "questionPart": "a"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-3.9",
+        "4CH1-3.10",
+        "4CH1-3.11"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "MS: control 'volume of acid; temperature; mass/moles of magnesium; surface area' — the rate factors of 3.10/3.11 within a 3.9 rate-experiment design (carboxylic acid + Mg, time to 10 cm3 H2)",
+      "siblingCodes": [
+        "4CH1-4.41C"
+      ],
+      "specTexts": {
+        "4CH1-3.9": "describe experiments to investigate the effects of changes in surface area of a solid, concentration of a solution, temperature and the use of a catalyst on the rate of a",
+        "4CH1-3.10": "describe the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas, temperature and the use of a catalyst on the rate of a reactio",
+        "4CH1-3.11": "explain the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas and temperature on the rate of a reaction in terms of particle c"
+      }
+    },
+    {
+      "set": "4-6-carboxylic-acids--exam-questions",
+      "questionOrder": 11,
+      "partOrder": 1,
+      "partId": "qstnprt_RS3jQZQQb4yk8nHt",
+      "marks": 3,
+      "commandWord": "multiple",
+      "sourcePaper": {
+        "date": "2021",
+        "number": "Ja2C",
+        "questionNumber": 3,
+        "questionPart": "b"
+      },
+      "axis": "part",
+      "append": [
+        "4CH1-3.9",
+        "4CH1-4.35C"
+      ],
+      "verdict": "PROPOSE",
+      "evidenceFirstHand": "Q: mean time for propanoic acid + relationship between carbon count and rate — 3.9 rate-experiment data handling; propanoic acid named/drawn under 4.35C (unbranched-chain carboxylic acids up to four carbons)",
+      "siblingCodes": [
+        "4CH1-4.41C"
+      ],
+      "specTexts": {
+        "4CH1-3.9": "describe experiments to investigate the effects of changes in surface area of a solid, concentration of a solution, temperature and the use of a catalyst on the rate of a",
+        "4CH1-4.35C": "understand how to draw structural and displayed formulae for unbranched-chain carboxylic acids with up to four carbon atoms in the molecule, and name each compound"
+      }
+    }
+  ]
+}

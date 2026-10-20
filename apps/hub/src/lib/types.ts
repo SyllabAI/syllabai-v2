@@ -1908,3 +1908,71 @@ export interface LearnerClassroomView {
   classes: LearnerClassView[];
   unreadAnnouncements: number;
 }
+
+// ── CLA thread sync tier (DC-6 phase 3; docs/DC6-CLA-SYNC-TIER-PLAN.md) ──
+// The hub mirrors the ratified contracts shapes by hand (the TutorSession*
+// style — the hub does not import @syllabai/contracts). The message union
+// mirrors the local QuestionClaStoredMessage plus the contracts admission
+// laws; the assistant leg is the ClaAnswerView above.
+
+/** POST /api/v1/learners/me/cla/threads — the mirror anchor creation. */
+export interface ClaThreadCreate {
+  surface: "question_cla";
+  questionId: string;
+  questionNumber: number | null;
+  courseSlug: string | null;
+  title: string;
+}
+
+export interface ClaThreadCreated {
+  threadId: string;
+  createdAt: string;
+}
+
+/** PUT /api/v1/learners/me/cla/threads/:id — the full-state mirror write. */
+export type ClaThreadSyncMessage =
+  | { kind: "user"; at: number; text: string }
+  | { kind: "assistant"; at: number; payload: ClaAnswerView }
+  | { kind: "gate"; at: number; text: string }
+  | { kind: "error"; at: number; text: string; question: string };
+
+export interface ClaThreadSync {
+  title: string;
+  questionNumber: number | null;
+  courseSlug: string | null;
+  messages: ClaThreadSyncMessage[];
+}
+
+export interface ClaThreadSynced {
+  threadId: string;
+  lastActiveAt: string;
+}
+
+/** GET list row — summaries only, never transcript bodies (the s143 law). */
+export interface ClaThreadSummary {
+  threadId: string;
+  surface: string;
+  questionId: string | null;
+  questionNumber: number | null;
+  courseSlug: string | null;
+  title: string;
+  createdAt: string;
+  lastActiveAt: string;
+  messageCount: number;
+}
+
+/** GET /:id — the full transcript, seq-ordered; message `at` is epoch ms
+ *  (the render vocabulary), thread stamps are ISO strings. */
+export type ClaThreadViewMessage = ClaThreadSyncMessage;
+
+export interface ClaThreadView {
+  threadId: string;
+  surface: string;
+  questionId: string | null;
+  questionNumber: number | null;
+  courseSlug: string | null;
+  title: string;
+  createdAt: string;
+  lastActiveAt: string;
+  messages: ClaThreadViewMessage[];
+}

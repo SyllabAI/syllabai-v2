@@ -1322,6 +1322,277 @@
       },
       "isRLSEnabled": false
     },
+    "public.cla_thread_messages": {
+      "name": "cla_thread_messages",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "thread_id": {
+          "name": "thread_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "seq": {
+          "name": "seq",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kind": {
+          "name": "kind",
+          "type": "varchar(16)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "text": {
+          "name": "text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "question": {
+          "name": "question",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "payload": {
+          "name": "payload",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "payload_version": {
+          "name": "payload_version",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 1
+        },
+        "occurred_at": {
+          "name": "occurred_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "ix_cla_thread_messages_thread": {
+          "name": "ix_cla_thread_messages_thread",
+          "columns": [
+            {
+              "expression": "thread_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            },
+            {
+              "expression": "seq",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "int4_ops"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "cla_thread_messages_thread_id_fkey": {
+          "name": "cla_thread_messages_thread_id_fkey",
+          "tableFrom": "cla_thread_messages",
+          "tableTo": "cla_threads",
+          "columnsFrom": [
+            "thread_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "uq_cla_thread_message_seq": {
+          "name": "uq_cla_thread_message_seq",
+          "nullsNotDistinct": false,
+          "columns": [
+            "thread_id",
+            "seq"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "ck_cla_thread_message_kind": {
+          "name": "ck_cla_thread_message_kind",
+          "value": "(kind)::text = ANY ((ARRAY['user'::character varying, 'assistant'::character varying, 'gate'::character varying, 'error'::character varying])::text[])"
+        },
+        "ck_cla_thread_message_shape": {
+          "name": "ck_cla_thread_message_shape",
+          "value": "((kind)::text = 'assistant' AND payload IS NOT NULL AND text IS NULL AND question IS NULL) OR ((kind)::text <> 'assistant' AND text IS NOT NULL AND payload IS NULL)"
+        },
+        "ck_cla_thread_message_question": {
+          "name": "ck_cla_thread_message_question",
+          "value": "((kind)::text = 'error') = (question IS NOT NULL)"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.cla_threads": {
+      "name": "cla_threads",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "learner_id": {
+          "name": "learner_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "surface": {
+          "name": "surface",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "question_id": {
+          "name": "question_id",
+          "type": "varchar(120)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "question_number": {
+          "name": "question_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "course_slug": {
+          "name": "course_slug",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "title": {
+          "name": "title",
+          "type": "varchar(120)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "last_active_at": {
+          "name": "last_active_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "ix_cla_threads_learner_active": {
+          "name": "ix_cla_threads_learner_active",
+          "columns": [
+            {
+              "expression": "learner_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            },
+            {
+              "expression": "last_active_at",
+              "isExpression": false,
+              "asc": false,
+              "nulls": "first",
+              "opclass": "timestamptz_ops"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "ix_cla_threads_learner_question": {
+          "name": "ix_cla_threads_learner_question",
+          "columns": [
+            {
+              "expression": "learner_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            },
+            {
+              "expression": "question_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "text_ops"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "cla_threads_learner_id_fkey": {
+          "name": "cla_threads_learner_id_fkey",
+          "tableFrom": "cla_threads",
+          "tableTo": "users",
+          "columnsFrom": [
+            "learner_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "ck_cla_threads_surface": {
+          "name": "ck_cla_threads_surface",
+          "value": "(surface)::text = ANY ((ARRAY['question_cla'::character varying, 'assistant'::character varying])::text[])"
+        },
+        "ck_cla_threads_question_scope": {
+          "name": "ck_cla_threads_question_scope",
+          "value": "((surface)::text = 'question_cla') = ((\"question_id\")::text IS NOT NULL)"
+        }
+      },
+      "isRLSEnabled": false
+    },
     "public.class_members": {
       "name": "class_members",
       "schema": "",
@@ -3985,7 +4256,7 @@
       "checkConstraints": {
         "ck_node_type": {
           "name": "ck_node_type",
-          "value": "(node_type)::text = ANY ((ARRAY['SUBJECT'::character varying, 'UNIT'::character varying, 'TOPIC'::character varying, 'SUBTOPIC'::character varying, 'MISCONCEPTION'::character varying, 'CONCEPT'::character varying])::text[])"
+          "value": "(node_type)::text = ANY ((ARRAY['SUBJECT'::character varying, 'UNIT'::character varying, 'TOPIC'::character varying, 'SUBTOPIC'::character varying, 'MISCONCEPTION'::character varying, 'CONCEPT'::character varying, 'SPEC_POINT'::character varying])::text[])"
         },
         "ck_node_validation": {
           "name": "ck_node_validation",
