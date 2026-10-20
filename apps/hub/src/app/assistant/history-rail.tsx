@@ -35,6 +35,7 @@ import {
   setActiveThread,
   type AssistantCourseContext,
 } from "./assistant-threads";
+import { notifyAssistantThreadDeleted, scheduleAssistantSync } from "./assistant-sync";
 
 export function AssistantRailBrand() {
   return (
@@ -92,7 +93,18 @@ export function AssistantHistoryRail({
   );
   const groups = useMemo(() => groupThreads(filtered), [filtered]);
 
+  const commitRename = (id: string) => {
+    renameThread(id, renameDraft);
+    setRenamingId(null);
+    // phase 3b: the mirror carries the title — schedule for THIS thread
+    // (a renamed thread need not be the active one)
+    scheduleAssistantSync(id);
+  };
+
   const remove = (t: AssistantThread) => {
+    // phase 3b: the drop marker + the server DELETE go up BEFORE the local
+    // removal — an unwired delete would resurrect on every hydration
+    notifyAssistantThreadDeleted(t);
     deleteThread(t.id);
     toast({
       title: "Conversation deleted",
@@ -174,8 +186,7 @@ export function AssistantHistoryRail({
                             onChange={(e) => setRenameDraft(e.target.value)}
                             onKeyDown={(e) => {
                               if (e.key === "Enter") {
-                                renameThread(t.id, renameDraft);
-                                setRenamingId(null);
+                                commitRename(t.id);
                               }
                               if (e.key === "Escape") setRenamingId(null);
                             }}
@@ -188,8 +199,7 @@ export function AssistantHistoryRail({
                             className="size-8 shrink-0"
                             aria-label="Save title"
                             onClick={() => {
-                              renameThread(t.id, renameDraft);
-                              setRenamingId(null);
+                              commitRename(t.id);
                             }}
                           >
                             <Check className="size-3.5" aria-hidden />

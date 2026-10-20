@@ -1976,3 +1976,59 @@ export interface ClaThreadView {
   lastActiveAt: string;
   messages: ClaThreadViewMessage[];
 }
+
+// ── the assistant surface (DC-6 phase 3b; docs/DC6-ASSISTANT-SURFACE-SYNC-PLAN.md) ──
+// The hand-declared mirror of the contracts' additive tail: the assistant
+// rail's projection VERBATIM (no fabrication of the ratified view's
+// server-resolved fields), 2-kind union (the rail never stores gate/error
+// legs — they are transient setError state).
+
+export interface ClaAssistantContext {
+  kind: string;
+  anchor: string;
+  attempted?: boolean | null;
+}
+
+export interface ClaAssistantAnswerPayload {
+  answer: string;
+  citations: unknown[];
+  mode?: string;
+  provider?: string;
+  model?: string | null;
+  refused?: boolean;
+  evidenceCount?: number;
+  latencyMs?: number;
+  context?: ClaAssistantContext | null;
+}
+
+/** POST / — the assistant mirror anchor (no question fields, .strict()). */
+export interface ClaAssistantThreadCreate {
+  surface: "assistant";
+  courseSlug: string | null;
+  title: string;
+}
+
+export type ClaAssistantThreadSyncMessage =
+  | { kind: "user"; at: number; text: string }
+  | { kind: "assistant"; at: number; payload: ClaAssistantAnswerPayload };
+
+/** PUT /:id (assistant rows) — questionNumber ABSENT (the store records NULL). */
+export interface ClaAssistantThreadSync {
+  title: string;
+  courseSlug: string | null;
+  messages: ClaAssistantThreadSyncMessage[];
+}
+
+export type ClaAssistantThreadViewMessage = ClaAssistantThreadSyncMessage;
+
+export interface ClaAssistantThreadView {
+  threadId: string;
+  surface: "assistant";
+  questionId: null;
+  questionNumber: null;
+  courseSlug: string | null;
+  title: string;
+  createdAt: string;
+  lastActiveAt: string;
+  messages: ClaAssistantThreadViewMessage[];
+}

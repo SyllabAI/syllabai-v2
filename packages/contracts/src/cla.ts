@@ -297,3 +297,116 @@ export const claThreadSyncedSchema = z
   .object({ threadId: z.string().uuid(), lastActiveAt: z.string() })
   .strict();
 export type ClaThreadSynced = z.infer<typeof claThreadSyncedSchema>;
+
+// ── the assistant surface (DC-6 phase 3b; docs/DC6-ASSISTANT-SURFACE-SYNC-PLAN.md) ──
+// The surface the phase-3 DB CHECK reserved (plan §5.4) now gets its API
+// writer. ADDITIVE tail — every phase-3 export above stays byte-identical;
+// each surface's wire law stays EXACT (plan §5.1: per-surface schemas, not a
+// payload union). The assistant rail's transcript is the hub /api/ai/cla
+// projection (content + citations + mode/provider/model/refused/evidenceCount
+// + a coarse {kind, anchor, attempted?} context) — pinned VERBATIM, zero
+// fabrication of the ratified view's server-resolved fields. Gate/error kinds
+// are deliberately ABSENT: the rail never stores them (transient setError
+// state only), so its union is 2-kind.
+
+/** The rail's coarse context projection (AssistantMessage.context verbatim). */
+export const claAssistantContextSchema = z
+  .object({
+    kind: z.string().min(1),
+    anchor: z.string(),
+    attempted: z.boolean().nullable().optional(),
+  })
+  .strict();
+export type ClaAssistantContext = z.infer<typeof claAssistantContextSchema>;
+
+/** The assistant answer leg's payload — the projection as the rail stores
+ *  it; every field optional exactly when the rail's field is optional
+ *  (JSON round-trip honesty: absent stays absent). */
+export const claAssistantAnswerPayloadSchema = z
+  .object({
+    answer: z.string(),
+    citations: z.array(z.unknown()),
+    mode: z.string().optional(),
+    provider: z.string().optional(),
+    model: z.string().nullable().optional(),
+    refused: z.boolean().optional(),
+    evidenceCount: z.number().int().optional(),
+    latencyMs: z.number().optional(),
+    context: claAssistantContextSchema.nullable().optional(),
+  })
+  .strict();
+export type ClaAssistantAnswerPayload = z.infer<typeof claAssistantAnswerPayloadSchema>;
+
+/** POST /api/v1/learners/me/cla/threads — the assistant mirror anchor.
+ *  questionId/questionNumber ABSENT on purpose: an assistant thread has no
+ *  question; .strict() rejects the smuggle (the DB scope CHECK's mirror). */
+export const claAssistantThreadCreateSchema = z
+  .object({
+    surface: z.literal("assistant"),
+    courseSlug: z.string().min(1).max(64).nullable(),
+    title: z.string().min(1).max(120),
+  })
+  .strict();
+export type ClaAssistantThreadCreate = z.infer<typeof claAssistantThreadCreateSchema>;
+
+/** The assistant surface's 2-kind message union (the rail's role union). */
+export const claAssistantThreadSyncMessageSchema = z.discriminatedUnion("kind", [
+  z
+    .object({
+      kind: z.literal("user"),
+      at: z.number().int().nonnegative(),
+      text: z.string().min(1).max(2000),
+    })
+    .strict(),
+  z
+    .object({
+      kind: z.literal("assistant"),
+      at: z.number().int().nonnegative(),
+      payload: claAssistantAnswerPayloadSchema,
+    })
+    .strict(),
+]);
+export type ClaAssistantThreadSyncMessage = z.infer<typeof claAssistantThreadSyncMessageSchema>;
+
+/** PUT /:id (assistant rows) — the full-state mirror write. questionNumber
+ *  ABSENT (an assistant thread never has one); the store records it NULL. */
+export const claAssistantThreadSyncSchema = z
+  .object({
+    title: z.string().min(1).max(120),
+    courseSlug: z.string().min(1).max(64).nullable(),
+    messages: z.array(claAssistantThreadSyncMessageSchema).max(100),
+  })
+  .strict();
+export type ClaAssistantThreadSync = z.infer<typeof claAssistantThreadSyncSchema>;
+
+/** GET /:id (assistant rows) — the 2-kind view (message `at` epoch ms, the
+ *  family view law). surface/questionId/questionNumber pin the literal
+ *  assistant shape so a question row can never parse as an assistant view. */
+export const claAssistantThreadViewMessageSchema = z.discriminatedUnion("kind", [
+  z
+    .object({ kind: z.literal("user"), at: z.number().int().nonnegative(), text: z.string() })
+    .strict(),
+  z
+    .object({
+      kind: z.literal("assistant"),
+      at: z.number().int().nonnegative(),
+      payload: claAssistantAnswerPayloadSchema,
+    })
+    .strict(),
+]);
+export type ClaAssistantThreadViewMessage = z.infer<typeof claAssistantThreadViewMessageSchema>;
+
+export const claAssistantThreadViewSchema = z
+  .object({
+    threadId: z.string().uuid(),
+    surface: z.literal("assistant"),
+    questionId: z.null(),
+    questionNumber: z.null(),
+    courseSlug: z.string().max(64).nullable(),
+    title: z.string().max(120),
+    createdAt: z.string(),
+    lastActiveAt: z.string(),
+    messages: z.array(claAssistantThreadViewMessageSchema),
+  })
+  .strict();
+export type ClaAssistantThreadView = z.infer<typeof claAssistantThreadViewSchema>;

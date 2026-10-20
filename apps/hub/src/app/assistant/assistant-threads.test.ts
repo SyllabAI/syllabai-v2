@@ -14,17 +14,29 @@ import { describe, expect, test } from "bun:test";
 
 import {
   appendMessages,
+  bindAssistantSession,
   createThread,
   deleteThread,
+  getAssistantThread,
   groupThreads,
+  hydrateAssistantThreads,
   insertThread,
   renameThread,
+  setActiveThread,
   titleFrom,
+  unbindAssistantSession,
   updateThread,
   getActiveThread,
-  setActiveThread,
+  getAssistantThreads,
+  type AssistantMessage,
   type AssistantThread,
+  type HydratedAssistantThread,
 } from "./assistant-threads";
+import {
+  fromWireAssistantMessage,
+  MIRROR_TRANSCRIPT_CAP,
+  toWireAssistantMessage,
+} from "./assistant-sync-wire";
 // cross-surface isolation probe — the tutor store must stay blind to
 // assistant threads (import is read-only; nothing here writes to it)
 import { getThreads as getTutorThreads } from "../tutor/threads";
@@ -144,5 +156,189 @@ describe("cross-surface isolation (plan §4 pin c)", () => {
       expect(tt.messages.some((m) => m.content === "isolation probe")).toBe(false);
     }
     deleteThread(t.id);
+  });
+});
+
+describe("assistant threads — the sync tier (phase 3b)", () => {
+  /** A hydrated server view (the sync module maps the wire view to this). */
+  const hydrated = (sessionId: string, over: Partial<HydratedAssistantThread> = {}): HydratedAssistantThread => ({
+    sessionId,
+    title: `server ${sessionId}`,
+    courseSlug: "test-course-a",
+    createdAt: 1000,
+    updatedAt: 2000,
+    messages: [
+      { role: "user", content: "server question", at: 1 },
+      { role: "assistant", content: "server answer", at: 2, citations: [] },
+    ],
+    ...over,
+  });
+
+  test("bind: attaches the server anchor; FIRST binding wins; recovery goes through unbind", () => {
+    const t = createThread("Bind me");
+    expect(t.sessionId ?? null).toBeNull(); // created local-only
+    bindAssistantSession(t.id, "srv-bind-1");
+    expect(getAssistantThread(t.id)?.sessionId).toBe("srv-bind-1");
+    bindAssistantSession(t.id, "srv-bind-2"); // a rebinding is never silent
+    expect(getAssistantThread(t.id)?.sessionId).toBe("srv-bind-1");
+    unbindAssistantSession(t.id);
+    expect(getAssistantThread(t.id)?.sessionId).toBeNull();
+    bindAssistantSession(t.id, "srv-bind-3"); // recovery path rebinds
+    expect(getAssistantThread(t.id)?.sessionId).toBe("srv-bind-3");
+    bindAssistantSession("no-such-thread", "srv-x"); // unknown no-op
+    deleteThread(t.id);
+  });
+
+  test("unbind: no-ops on unbound and unknown threads; a bind never moves updatedAt", () => {
+    const t = createThread("Unbind probe");
+    appendMessages(t.id, [{ role: "user", content: "probe", at: 1 }]);
+    const before = getAssistantThread(t.id)?.updatedAt;
+    unbindAssistantSession(t.id); // unbound — no-op
+    expect(getAssistantThread(t.id)?.sessionId ?? null).toBeNull();
+    bindAssistantSession(t.id, "srv-ub");
+    const after = getAssistantThread(t.id)?.updatedAt;
+    expect(after).toBe(before); // a bind is not a conversation update
+    unbindAssistantSession("no-such-thread"); // unknown — no-op
+    deleteThread(t.id);
+  });
+
+  test("hydrate: server-only threads land bound; local wins; the active pointer NEVER moves", () => {
+    const local = createThread("Local thread", { slug: "test-course-a", label: "T" });
+    appendMessages(local.id, [{ role: "user", content: "local ask", at: 1 }]);
+    bindAssistantSession(local.id, "srv-shared");
+    setActiveThread(local.id);
+    const landed = hydrateAssistantThreads([
+      hydrated("srv-shared"), // already bound locally — the server copy NEVER clobbers
+      hydrated("srv-fresh-1"),
+      hydrated("srv-fresh-2", { messages: [] }), // empty transcripts skip
+    ]);
+    expect(landed).toBe(1);
+    // the addition landed, bound to its sessionId, messages validated through
+    const addition = getAssistantThreads().find((t) => t.sessionId === "srv-fresh-1");
+    expect(addition).not.toBeNull();
+    expect(addition?.messages.length).toBe(2);
+    expect(addition?.title).toBe("server srv-fresh-1");
+    expect(addition?.courseSlug).toBe("test-course-a");
+    // the bound local thread was NEVER clobbered by its server copy
+    const shared = getAssistantThreads().filter((t) => t.sessionId === "srv-shared");
+    expect(shared).toHaveLength(1);
+    expect(shared[0]?.id).toBe(local.id);
+    // the phase-1 title law derived "local ask" from the first user turn —
+    // the hydrated title ("server srv-shared") would show if it clobbered
+    expect(shared[0]?.title).toBe("local ask");
+    expect(getActiveThread()?.id).toBe(local.id); // pointer never moved
+    // cleanup
+    deleteThread(local.id);
+    if (addition) deleteThread(addition.id);
+  });
+
+  test("hydrate under a full store: the active thread is protected, evictables go first, the count discloses", () => {
+    for (let i = 0; i < 40; i++) createThread(`filler ${i}`); // active = filler 39
+    const activeBefore = getActiveThread()?.id;
+    const landed = hydrateAssistantThreads([hydrated("srv-pressure-1"), hydrated("srv-pressure-2")]);
+    expect(landed).toBe(2); // both additions land — eviction covers the overflow
+    expect(getAssistantThreads().length).toBe(40); // the cap held
+    expect(getActiveThread()?.id).toBe(activeBefore); // the active thread survived
+    // the OLDEST fillers evicted first (the survivor law's first arm)
+    expect(getAssistantThreads().some((t) => t.title === "filler 0")).toBe(false);
+    expect(getAssistantThreads().some((t) => t.title === "filler 1")).toBe(false);
+    expect(getAssistantThreads().some((t) => t.title === "filler 39")).toBe(true);
+    for (const t of [...getAssistantThreads()]) deleteThread(t.id);
+    setActiveThread(null);
+  });
+
+  test("hydrate skips malformed messages, never throws", () => {
+    const t = createThread("Malformed host");
+    const landed = hydrateAssistantThreads([
+      hydrated("srv-malformed", {
+        messages: [
+          { role: "user", content: "good", at: 1 },
+          { role: "system", content: "bad role", at: 2 } as unknown as AssistantMessage,
+          { content: "no at", at: 3 } as unknown as AssistantMessage,
+        ],
+      }),
+    ]);
+    expect(landed).toBe(1);
+    // leave NO residue: the other surfaces' isolation pins run in this same
+    // bun process and must see an empty assistant store
+    const addition = getAssistantThreads().find((th) => th.sessionId === "srv-malformed");
+    if (addition) deleteThread(addition.id);
+    deleteThread(t.id);
+    setActiveThread(null);
+  });
+
+  test("the wire construction contract: local -> wire -> local round-trips byte-honest", () => {
+    expect(MIRROR_TRANSCRIPT_CAP).toBe(100);
+    const user: AssistantMessage = { role: "user", content: "Why is the sky blue?", at: 5 };
+    const wUser = toWireAssistantMessage(user);
+    expect(wUser).toEqual({ kind: "user", at: 5, text: "Why is the sky blue?" });
+    expect(fromWireAssistantMessage(wUser)).toEqual(user);
+
+    const assistant: AssistantMessage = {
+      role: "assistant",
+      content: "Rayleigh scattering.",
+      at: 6,
+      citations: [
+        {
+          index: 1,
+          label: "Note 3",
+          kind: "NOTE",
+          ref: "note-3",
+          specPointCode: null,
+          url: null,
+          score: 0.9,
+        },
+      ],
+      mode: "EXPLAIN",
+      provider: "p",
+      model: null,
+      refused: false,
+      evidenceCount: 3,
+      latencyMs: 42,
+      context: { kind: "SPEC_TOPIC", anchor: "9.1 — Respiration" },
+    };
+    const wAssistant = toWireAssistantMessage(assistant);
+    expect(wAssistant.kind).toBe("assistant");
+    if (wAssistant.kind === "assistant") {
+      // absent stays absent; present stays present (the projection verbatim)
+      expect(wAssistant.payload).toEqual({
+        answer: "Rayleigh scattering.",
+        citations: [
+          {
+            index: 1,
+            label: "Note 3",
+            kind: "NOTE",
+            ref: "note-3",
+            specPointCode: null,
+            url: null,
+            score: 0.9,
+          },
+        ],
+        mode: "EXPLAIN",
+        provider: "p",
+        model: null,
+        refused: false,
+        evidenceCount: 3,
+        latencyMs: 42,
+        context: { kind: "SPEC_TOPIC", anchor: "9.1 — Respiration" },
+      });
+    }
+    expect(fromWireAssistantMessage(wAssistant)).toEqual(assistant);
+
+    // a minimal assistant message: citations defaults to [], optionals stay absent
+    const minimal = toWireAssistantMessage({ role: "assistant", content: "hi", at: 1 });
+    expect(minimal.kind === "assistant" && minimal.payload).toEqual({
+      answer: "hi",
+      citations: [],
+    });
+  });
+
+  test("the wire contract skips gate/error legs — they cannot exist on assistant rows", () => {
+    expect(
+      fromWireAssistantMessage({ kind: "gate", at: 1, text: "x" }),
+    ).toBeNull();
+    expect(
+      fromWireAssistantMessage({ kind: "error", at: 1, text: "x", question: "y" }),
+    ).toBeNull();
   });
 });
