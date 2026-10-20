@@ -10374,3 +10374,18 @@ Work Log:
 
 Stage Summary:
 - The graft class is structurally gone of record: the identity spine is a function of the official vocabulary + the bundle generation, never of arrival order; every future bank addition that disagrees lands as an honest red, never a silent graft. Production still carried ZERO CIE nodes at dispatch. Hygiene: credential env-only (never printed/persisted; rotation reminder stands), zero prod/db writes outside the gate's own COW, fetch-first, no force.
+
+---
+Task ID: CIE-INTEGRATION run-005 gate-breach + hardening of record + run-006 dispatch (traces 1a15b161bf960249 standing)
+Agent: r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: the ruling-A discharge's gate cycle — run-005 exposed two latent gate defects; both hardened of record; the gate re-dispatched clean.
+
+Work Log:
+- RUN-005 (39500034511, main @ 4234cde, dispatched 21:24:01Z): job 1 (cow-proof) hit the 60-min JOB TIMEOUT at 22:24:27Z mid-fleet (the HEALTHY fleet needs >60 min on the COW — the ceiling was never exercised while the fleet failed fast on the run-002 classes); job 2 (prod-apply) STARTED UNGATED at 22:24:29Z — the pre-231 guard `!failure() && !cancelled()` does not catch a JOB-LEVEL timeout cancel (needs.result 'cancelled' trips neither).
+- ACT OF RECORD: run-005 cancelled 202-accepted by this desk at 22:28:28Z (~4 min in flight) per the 134c law (job 2 needs job 1 ALL GREEN) — no unreviewed bypass sets precedent, and the gate gap does not survive the record.
+- PROD-STATE EVIDENCE OF RECORD (the job-2 log, fetched post-cancel): the map-law census pre-flight PASSED before any DB contact (GREEN 44 bundles / 8,850 nodes / max dbCode 25/40 / zero reds); exactly 5 slugs committed (each ok=true + postverify): cie-a-level-chemistry-25 (484 nodes / 229 q) + the four real 9709 banks; THE OPTIONA JOIN SEMANTICS PROVEN ON THE LIVE STORE: the 9709 siblings reused ONLY the shared version-scoped root (nodes +29/=0, +23/=1, +24/=1, +42/=1) and created their own tail-based UNITs — the graft class is ABSENT; the in-flight slug at cancel rolled back (per-slug tx isolation); the 5 committed slugs are the idempotency law's own no-op set on the gated re-run.
+- GATE HARDENING OF RECORD (PR #233, merged 0f43907): job 1 timeout 60->180 (the proof gets room to finish), job 2 timeout 60->120, and the ADMISSION LAW verbatim: `needs.cow-proof.result == 'success'` — a job-level cancel can never admit the prod-apply again.
+- RUN-006 DISPATCHED (39508967101, mode=cow+prod, main @ 0f43907, 22:33:19Z): job 1 the FULL 134c COW-proof on the clean laws, job 2 under the all-green admission law. Watch in progress at entry close.
+
+Stage Summary:
+- The gate now fails closed on every path: census pre-flight (zero-DB, exit 3) -> 180-min COW proof -> all-green admission -> prod-apply. Production carries the 5 clean slugs of record (receipted above) and nothing else; the gated re-run completes the tree idempotently. Hygiene: credential env-only, never printed/persisted; rotation reminder stands; fetch-first, no force.
