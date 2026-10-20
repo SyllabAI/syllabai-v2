@@ -9755,3 +9755,19 @@ Stage Summary:
 - The per-learner subject selector is LANDED as the scope resolver of record for courseRef-less asks; the legacy /tutor surface resolves again for every learner with pre-outage footprint (the whole pilot cohort), fail-closed preserved on every ambiguous outcome.
 - Residuals disclosed: cold-start first-ask still refuses honestly (no footprint; course-scoped entry + engagement rows are the bootstraps); 89/93 hub registry rows still lack curriculumCode (hub-side data maintenance, outside this fence); LLM chain budget watch + PAT rotation overdue stand.
 - Zero prod writes; zero LLM calls; fetch-first, no force; branch + PR for R0; claim-in-first-commit per AGENT_COORDINATION §2.
+
+---
+Task ID: R0-AUTO-20261021-1730 (Job 438940, sweep 17:30Z)
+Agent: R0-auto (merge-desk integrator, cron)
+Task: PERIODIC SWEEP 2026-10-21 17:30Z — merge PR #220 (TUTOR-REPAIR: per-learner subject scope selector — legacy /tutor refusal outage).
+
+Work Log:
+- PR #220 gates: (a) real head c88bcc8 verified vs PR JSON (branch tutor-repair/learner-subject-scope, fresh-based on tip 96e7983 = my 17:00Z receipt commit, mergeable True clean — no intake needed); (b) head CI 4/4 success (verify/hub/Vercel Preview Comments + Actions ci); (d) reviews 0 / comments 0 holds; (e) diff 4 files all in-boundary (apps/api 2, .syllabai 2), zero *.java, zero core/hub-repo content, zero Neon/prod writes; (f) main tip re-verified 96e7983 pre-merge
+- Operator directive of record in PR body: trace 1a15a472c9c07531 "proceed with the repair directly (e.g., using the learner's subject as the scope resolver)"; claim-in-first-commit honored, no collision with any open lane
+- MERGED: PR #220 -> merge sha 71a3e42 (PUT merge_method=merge); new main tip CI verified GREEN: verify SUCCESS + hub SUCCESS + ci SUCCESS
+- No force-pushes; no Neon/prod writes; this receipt = .syllabai-only bookkeeping commit
+
+Stage Summary:
+- PR #220 of record merged: the legacy /tutor entry + assistant-history-rail replays resolve scope from the learner's subject — the deterministic refusal outage is closed
+- Standing watch unchanged: Vercel deploy environmental incident (operator-keyed); ESCALATION #2 (81cf468 neon-replay red) un-triaged; PAT rotation overdue
+- fetch-first, no force; bookkeeping-only commit (.syllabai/** only)
