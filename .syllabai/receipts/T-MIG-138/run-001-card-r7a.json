@@ -1,0 +1,27 @@
+{
+  "lane": "T-MIG-138",
+  "run": "run-001-card-r7a",
+  "operator_trace": "1a1587563228b7a5",
+  "operator_order": "card and fire that intake (answering the PP-CORPUS run-001 absence verdict @ a4d848c)",
+  "date": "2026-10-20",
+  "agent": "r7a (Super Z, zai-web session web-da4ab8b1)",
+  "act": "T-MIG-138 card filed: 4MA1 past-paper intake (parse + chunk + embed ALL 4MA1 past papers like chemistry). Bands 138a (dry driver + maths unit-vocabulary R-variant widening, zero prod writes) -> 138b (COW-proof + prod apply via a new t-mig-138-intake.yml workflow, the 133d guard protocol; deterministic bank/card/store anchors make paper asks resolve with ZERO embeddings) -> 138c (gemini-embedding-001 backfill tranches on CI egress per the region law, RPD-bounded recency-first; vector arm fills progressively).",
+  "scoping_pins": [
+    "corpus tables exam_papers/documents/document_chunks pinned first-hand (schema.ts :239/:775/:837; embed read filter embed_rev=2, vector-arm.ts:67)",
+    "frozen writer ingestCanonicalDocument lands documents+chunks WITH the Embedding-v2 identity mirror from canonical retrieval meta (canonical.ts header) — the driver feeds canonical JSON, never raw SQL for chunks",
+    "resolver three-anchor law pinned (paper-question.ts): bank tier (paper VALIDATED, doc SUGGESTED ok), card tier (file_name qcard-{code}-{unit}-{SERIES}-{year}.txt, doc VALIDATED), store tier (chunk mirror series+year+paper_code + doc VALIDATED + top docVersion) — ALL THREE NEED ZERO EMBEDDINGS",
+    "unit vocabulary gap found: maths 1H/2H/1F/2F has NO R variants (chemistry has 1CR/2CR) while the archive carries 1FR/1HR/2FR/2HR -> 138a-code widens maths only",
+    "atom laws pinned: normalizeAtom strips leading q (chunking.ts:103), partAtomOf '9-b[-ii]' (fetch-parser.ts:76), matchQuestion atomMatches + contentMarks fallback (paper-question.ts:591)",
+    "archive probe: 2025-06 4MA1-1H qp+ms download byte-exact vs manifest sha256 (affac772/1f7c6638), pdftotext 25.03.0 extracts clean born-digital text (evidence/t138-probe)",
+    "embedding path of record: retrieval.embedDocument + GeminiEmbeddingProvider gemini-embedding-001 768-dim, executor t-mig-133d-backfill-exec.ts (row-keyed subject-blind), CI-egress region law, workflow pattern t-mig-133d-backfill.yml (NEON_API_KEY secret + Neon vars exist; T133D_ secrets hygiene-deleted — T138_ re-staged from Vercel env API memory-only)",
+    "budget law: ~150 papers = 3-4k chunks at 1000 RPD free tier = multi-day RPD-bounded tranches, recency-first, disclosed"
+  ],
+  "fence_laws": [
+    "4MA1 only; chemistry corpus byte-untouched (read-only golden master)",
+    "frozen services untouched except subject-profile.ts maths vocabulary widening",
+    "NAPI_TOKEN zero-touch; zero LLM generation spend; embeddings only, operator-ordered",
+    "all prod writes ride the CI workflow gate (COW-proof first, workflow_dispatch); sandbox stays DRY",
+    "listener module, smart mark, learner model untouched"
+  ],
+  "write_ledger": "zero prod writes in the claim act; archive probe read-only (2 PDFs via raw.githubusercontent, checksums verified)"
+}

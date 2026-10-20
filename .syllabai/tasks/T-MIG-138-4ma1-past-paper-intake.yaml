@@ -1,0 +1,142 @@
+version: 1
+task:
+  id: T-MIG-138
+  title: "4MA1 past-paper intake — parse + chunk + embed ALL 4MA1 past papers from the SyllabAI/syllabai-pastpapers archive into the core retrieval corpus (exam_papers + documents + document_chunks + qcards), like chemistry (operator trace 1a1587563228b7a5 'card and fire that intake', answering 1a158559a5c64259 'Did you parse and then chunk/embed all the 4ma1 past papers? Like we did for chemistry' — verdict PP-CORPUS run-001 @ a4d848c: NOT ingested)"
+  owner: "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)"
+  status: IN_PROGRESS # bands 138a (driver dry + unit vocabulary) then 138b (COW+apply) then 138c (backfill tranches + battery)
+  claimed_at: "2026-10-20T08:55:00Z"
+  claimed_by_order: "operator trace 1a1587563228b7a5 'card and fire that intake'"
+  priority: P1
+  wave: second-subject
+  deps: ["T-MIG-135 (subject-generic tutor grammar + 4MA1-2016 curriculum + 2967-question bank)", "T-MIG-133b/d (the canonical→chunks→backfill instrument of record)", "PP-CORPUS run-001 (the absence verdict this band closes)"]
+  fence: >
+    4MA1 ONLY — zero 4MB1/4PH1/4MB0/4MA0 corpus rows (4MB1 is the T-MIG-136
+    lane's keyed next step; 4MA0 legacy is alias-only). Chemistry corpus
+    byte-untouched (95 bank rows + its documents/chunks/cards are READ-ONLY
+    golden masters). Frozen services untouched EXCEPT the one maths-only
+    subject-profile.ts unit-vocabulary widening (138a-code, chemistry
+    byte-identical, pinned). Listener module untouched. Smart mark + learner
+    model untouched. NAPI_TOKEN zero-touch. Zero LLM GENERATION spend — the
+    only provider spend is gemini-embedding-001 chunk embeddings, explicitly
+    covered by the operator's fire order (the 093/133b prod-DB write order =
+    trace 1a1587563228b7a5). All prod writes ride the CI workflow gate
+    (workflow_dispatch, COW-proof first, the 133d discipline); the sandbox
+    stays DRY (the Gemini region law + the receipt culture).
+  scoping_record: >
+    CENSUS OF RECORD (2026-10-20, all first-hand):
+    (1) ABSENCE VERDICT (PP-CORPUS run-001 @ a4d848c): bank census 108 rows =
+    40x4CH0 + 55x4CH1 VALIDATED + 13 REJECTED, ZERO 4MA1; course-pinned
+    4MA1-2016 paper ask = deterministic-paper-refusal evidenceCount=0 while
+    the 4CH1-2017 control = real grounded generation (5 citations).
+    (2) CORPUS TABLES (packages/db/src/schema/schema.ts): exam_papers :239
+    (uq paper_code+session_label where paper_code not null; series
+    JAN/JUN/NOV; provenance PAST_PAPER; VALIDATED serves), documents :775
+    (uq (document_id, doc_version) + uq checksum; kind
+    QUESTION_PAPER/MARK_SCHEME/OTHER/...; canonical_json jsonb; page_count>0),
+    document_chunks :837 (vector 768, embed_rev default 1 — the READ filter
+    is embed_rev=2 CURRENT_EMBED_REV, vector-arm.ts:67; identity mirror
+    columns subject_id/series/year/paper_code/atom_number/spec_codes;
+    content_tsv generated; uq (document_row_id, chunk_index)).
+    (3) THE FROZEN WRITER: services/ingestion/canonical.ts
+    ingestCanonicalDocument (byte-faithful ContentIngestionService port) —
+    validate (canonicalDocumentViolations) → dedup by checksum (409 on kind
+    mismatch) → document row → chunkCanonicalDocument (frozen ChunkingService
+    port: target 300 / max 800 tokens, block boundaries respected) → chunks
+    WITH the Embedding-v2 identity mirror (subject/series/year/paperCode/
+    atomNumber/specCodes/embedRev=2) derived from the canonical retrieval
+    meta + group_key atoms. Embedding NEVER part of the operation (zero
+    API keys). Landing state = SUGGESTED default; the intake decision of
+    record (this band) lands exam_papers + the QP/MS/card documents
+    VALIDATED — the chemistry corpus posture is exactly exam_papers
+    VALIDATED + serving-anchor documents VALIDATED (paper-question.ts:290-296
+    'every documents row is SUGGESTED while 11 exam_papers rows are VALIDATED,
+    and the vector arm serves exactly those docs' + TUTOR-VERIFY-1's tiered
+    CARD+QP+MS anchors prove serving-anchor docs/cards VALIDATED).
+    (4) THE RESOLVER (paper-question.ts, zero edits): tier-1 BANK (exam_papers
+    VALIDATED → question_paper_document_id/mark_scheme_document_id →
+    findTopByDocumentId; document SUGGESTED does not block — branch-1);
+    tier-2 CARD (documents by file_name qcard-{code}-{unit}-{SERIES}-{year}.txt
+    e.g. qcard-4MA1-1H-JUN-2025.txt; servesUnderServingLaw = doc VALIDATED
+    :646-648); tier-2b STORE (chunks by series+year+paper_code=any(['4MA1/1H',
+    '4MA1/2H','4MA1/1F','4MA1/2F', aliases…]) + doc VALIDATED + top docVersion,
+    QP before MS, per-question matchQuestion by atom_number (atomMatches
+    'q?0*N') with part-atom exact match + contentMarks fallback, caps
+    MAX_STORE_QP/MS_ITEMS). DECISIVE: all three deterministic anchors need
+    ZERO embeddings — paper asks resolve the moment rows land; only the
+    generic-ask vector arm (searchServingEligible: embed_rev=2 + scope EXISTS
+    paper-or-document VALIDATED, retrieval.ts:286-330) needs the backfill.
+    (5) UNIT VOCABULARY: subject-profile.ts maths = 1H/2H/1F/2F (:83; home
+    units per paper number :72) — NO R variants; chemistry = 1C/2C/1CR/2CR
+    (:544 comment). The archive carries 1FR/1HR/2FR/2HR regional variants
+    (specification.yaml papers_present 8 variants) → 138a-code widens the
+    maths vocabulary + home-unit mapping with the R variants (maths entry
+    only; chemistry byte-identical; the resolver needs zero edits — it is
+    vocabulary-driven).
+    (6) EMBEDDINGS OF RECORD: retrieval.embedDocument (the
+    DocumentEmbeddingService port — embed+validate EVERYTHING first, provider
+    outage stores nothing) + GeminiEmbeddingProvider gemini-embedding-001
+    768-dim; executor scripts/t-mig-133d-backfill-exec.ts (row-keyed,
+    subject-blind, 90 RPM floor, 429 backoff); REGION LAW: Gemini embedding
+    API is IP-region-gated — runs ONLY on GitHub Actions egress
+    (.github/workflows/t-mig-133d-backfill.yml is the pattern of record:
+    workflow_dispatch, COW-proof job → prod-apply job, NEON_API_KEY secret +
+    NEON_PROJECT_ID/NEON_PARENT_BRANCH_ID vars exist of record; the T133D_
+    secrets were hygiene-deleted after the 133d runs — re-staged as T138_
+    from the Vercel env API, memory-only, hygiene-deleted after).
+    Budget law: gemini-embedding-001 free tier 1000 RPD / 100 RPM →
+    ~150 papers ≈ 3-4k chunks = multi-day backfill in RPD-bounded tranches,
+    recency-first (the deterministic anchors serve the full corpus from the
+    moment rows land; the vector arm fills progressively — disclosed).
+    (7) ARCHIVE OF RECORD (SyllabAI/syllabai-pastpapers main, the hub index
+    pins tree 3063c716): 4ma1/ = specification.yaml (8 paper variants, 19
+    sessions 2018-06..2026-06) + past-papers/<session>/<4MA1-<unit>>/ +
+    specimen/<4MA1-<unit>>/; each paper dir = manifest.yaml (paper_id
+    'pearson-edexcel:international-gcse:mathematics-a:4ma1:2025-06:4MA1/1H',
+    series.normalized/year/session_month, paper.official_reference '4MA1/1H'
+    — the EXACT V33 mirror format, materials qp.pdf/ms.pdf with sha256 +
+    source provenance) + qp.pdf + ms.pdf. PROBE (evidence/t138-probe): the
+    2025-06 1H pair downloads byte-exact vs manifest sha256 (affac772…
+    qp 1039495B 28pp, 1f7c6638… ms 626263B); pdftotext 25.03.0 (in-sandbox)
+    extracts clean born-digital text (line-start question numbers '5  In a
+    sale…'; math glyphs partially non-inline — the known born-digital maths
+    limitation, retrieval-sufficient, same class as the chemistry corpus).
+    (8) DSN LAW: prod DATABASE_URL via the Vercel env API (VERCEL_PAT, the
+    redeploy run-009 memory-only precedent) → 0600 uri file, never printed;
+    CI-side the same value staged as a hygiene-deleted Actions secret.
+  bands: >
+    (138a) THE DRIVER + VOCABULARY: apps/api/scripts/papers-ingest-138.ts —
+    per paper dir: fetch manifest → download qp/ms (sha256-verify vs
+    manifest, fail-closed) → pdftotext -layout → build CanonicalDocument
+    (pages + textBlocks, element_id/group_key per §8, atoms from the
+    deterministic question-start/part grammar compatible with normalizeAtom +
+    matchQuestion; retrieval meta subjectCode 4MA1 / series JAN|JUN|NOV /
+    year / paperCode '4MA1/1H' / unit) → chunkCanonicalDocument → DRY census
+    + receipt (zero writes; no DB in dry mode) + the CARD synthesis
+    (qcard-4MA1-<unit>-<SERIES>-<year>.txt content: per-question marks +
+    truncated stem, never answer-bearing — the card tier law) + subject-
+    profile.ts maths vocabulary widening (R variants; chemistry
+    byte-identical; bun pins) + commit + CI GREEN; (138b) THE APPLY: a new
+    .github/workflows/t-mig-138-intake.yml (the 133d guard protocol verbatim
+    shape: job 1 COW-proof — Neon COW branch, driver apply against the COW,
+    postverify counts, DROP + 404-verify, always(); job 2 prod-apply — the
+    driver against T138_PROD_DATABASE_URL; per-paper ONE transaction:
+    documents + chunks + qcard + exam_papers row VALIDATED, idempotent by
+    checksum dedup + paper-identity guard) + golden-master READ-ONLY peek at
+    the chemistry 4CH1/2C JUN 2019 rows (the exact documentId/file_name/
+    session_label conventions mirrored, never guessed) + dispatch (the
+    operator's fire order rides this dispatch) → bank census shows 4MA1 rows
+    → course-pinned maths paper asks RESOLVE via the deterministic anchors;
+    (138c) BACKFILL + BATTERY: staged T138_GEMINI_KEY + T138_PROD_DATABASE_URL
+    secrets (hygiene-deleted after), the backfill job parametrized by
+    document row ids from the 138b receipt, RPD-bounded tranches
+    (recency-first), until embed_rev=2 vectors cover the 4MA1 corpus; the
+    live battery: course-pinned 4MA1 paper asks (QP/MS/card tiered anchors),
+    per-question sweeps + honest out-of-range refusals, R-variant binding
+    after 138a-code, chemistry control byte-stable, bank census delta,
+    generic maths ask rides the vector arm as tranches land; receipts per
+    band + worklogs.
+  execution_record: >
+    Band claimed 2026-10-20 on main @ a4d848c+ (fetch-first; PR #212 hub
+    teacher lane merged in parallel — zero overlap). No prod contact in the
+    claim act. Archive probe read-only (2 PDFs, byte-verified vs manifests).
+    The 138a dry driver: pending. Physics/Books-B lanes untouched.
