@@ -9651,3 +9651,20 @@ Stage Summary:
 - VERDICT: 4PH1 physics book parse is PROPER — source hash-exact, all checkable claims reproduce exactly, serving-critical anchors verified; ready for RAG ingestion as-is; the one open quality item is the lane's own documented polish round 2 (68 selected chunks pending, LLM quota)
 - Receipt: .syllabai/receipts/T-PARSE-4PH1/parse-verify-run-001-r0.json (new receipt dir for the 4PH1 parse lane)
 - Write ledger: .syllabai receipt + worklogs only; no force
+
+---
+Task ID: trace 1a15a1a5938d99a5 (T-PARSE-4PH1 round-2 polish execution DRAFT)
+Agent: r0 (zai-web session web-752465e5, chat dd7e60e9)
+Task: operator "draft the round-2 polish execution"
+
+Work Log:
+- DRAFT ONLY — zero LLM calls, zero repo-data writes; grounded in the lane's own committed kit + scripts read in full (select/repair/merge/audit/validate + pipeline/worklog T-PARSE-4PH1-4-R2 entry)
+- Pending derivation reproduced independently from committed evidence: 300 selected - 232 unique-ok = 68 todo; composition EXACT-matches the lane record (30 body / 10 worked_example / 7 LO / 5 table_data / 5 extension / 4 unit_questions serving-critical / 3 key_point / 2 exam_hint / 1 appendix / 1 front_matter; 58,428 chars)
+- Evidence nuance of record: 7 ids carry 2 differing ok-records (merge law = latest-wins, already round-1 behavior, do not fix); stubborn id phys_v1_u4_c0_pdf178_0398 = 3x 429 casualty (error != done, retries naturally); 0 rejected records (19 re-queues consistent)
+- FALSE ALARM resolved: committed select_noisy_physics.py line 68 looked like a syntax error in fetched text display; hexdump proved valid list comprehension len([m for m ...]) — compiler right, no P0 fix needed
+- Draft phases: A workspace reconstruction from repo state (kit is self-sufficient; pristine-snapshot deterministic reconstruction + audit crosscheck vs round-1 numbers of record 1008->3 / camel 121->0); B quota-gated repair grind (~78-85 calls, PROBE_MAX=1 CONC=1 batches, 429 backoff + 2-consec stop, no-hammer cadence); C OPTIONAL +1 targeted re-repair of the camel-glue residual chunk phys_v1_u1_c0_pdf066_0136 (audit camel pattern blind to capital-initial glue); D merge gated on anchor PASS 0 drift; E audit+validate gates with expected numbers; F push set = parsed corpus/md/report/README + evidence + pipeline worklog ONLY (source/docling_pages untouched); bookkeeping receipt + dual worklog
+- Success/abort law: quota wall persists after 3 probe sessions -> clean abort, push nothing, file quota-timeline receipt; rollback = single-commit revert, no force
+
+Stage Summary:
+- Draft filed: .syllabai/receipts/T-PARSE-4PH1/round2-execution-draft-r0.md — awaiting operator GO (LLM quota = operator resource; round-2 lane diagnosed absolute account-level 429 wall 2026-10-19 23:26 -> 2026-10-20 15:33, ~1 day elapsed)
+- End-state promise: 300/300 polished (or 299 + 1 disclosed cosmetic), anchor 0 drift, validate ALL CHECKS PASSED, corpus-wide glue at legit-word floor; serving ingestion stays the separate 134e-adjacent operator-keyed step
