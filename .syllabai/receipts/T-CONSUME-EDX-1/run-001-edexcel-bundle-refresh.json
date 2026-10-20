@@ -1,0 +1,74 @@
+{
+  "band": "T-CONSUME-EDX-1",
+  "run": "run-001",
+  "at": "2026-10-20T21:05Z",
+  "order": "operator directive 2026-10-21 (zai-web, session web-64d10b73-530a-4f71-9961-85d0436c7fb5, chat d889551c-b3b5-4885-b1c1-57af82e11b0a, gateway trace 1a15adbce1a36d59): 'Edexcel bundle refresh fired as the next lane' — with the operator's prior correction that syllabai-hub is RETIRED and https://syllabai-hub-v2.vercel.app is the production deployment; all consumption work targets v2",
+  "executor": "main agent (Super Z operator session)",
+  "verdict": "SHIPPED — 46 Edexcel packs + golden pilot excluded refreshed from SyllabAI/syllabai-resources @ main@6ee5ada3f858b4e916422b2a302002089ee63792 (was main@75755855f9, 2026-09-17); official-spine flip re-applied 46/46 (golden excluded); the full 23-series repair chain re-applied on the fresh import; every corpus gate at baseline zero; hub build green. Accounting-17 x2 kept byte-at-HEAD (pre-existing maps-vs-spine inconsistency, own lane). Maths B question removal is upstream's own census-backed purge, faithfully reflected.",
+  "finding_of_record": {
+    "why_the_refresh_is_real": "the committed packs were built 2026-09-17 @ 7575585; the upstream SME corpus has since grown ~2.5x (SME-RevisionNotes 13,957 -> 34,303 blobs; SME-ExamQuestion 20,516 -> 34,465; SME-Flashcards 1,714 -> 4,315 at 6ee5ada — largely the CIE expansion + restored/expanded Edexcel lanes), and the pack provenance pin predates REJOIN-1, R41, R42 and the 4PH1/4CH1 parse rounds",
+    "content_delta_of_record": "aggregate across the 49 Edexcel packs old -> new: notes 3,743 -> 3,743 (+0); questionSets 959 -> 894 (-65); questions 17,092 -> 15,843 (-1,249); parts 30,257 -> 27,865 (-2,392); marks 94,224 -> 87,883 (-6,341); flashcards 24,128 -> 24,128 (+0); specPoints 4,292 -> 4,292 (+0). THE ENTIRE delta is one course: igcse-maths-b-16 questions 1,249 -> 0 — the pinned upstream EQ manifest states status no_topic_questions_on_sme with a live census (2026-09-19, re-verified 2026-09-20: has_published_topic_questions=false across all 62 topics; SME's only Maths B exam material is Pearson-hosted past papers, out of corpus scope) and the lane law 'no questions synthesized'. The 9/17 pack's 1,249 questions were data upstream has since determined should not exist; this refresh makes v2 faithful to that correction. User-visible: Maths B serves 199 notes + 1,082 flashcards + spec-point index, no question bank.",
+    "accounting_kept_at_head": "igcse-accounting-17-financial-statements + igcse-accounting-17-introduction-to-bookkeeping-and-accounting restored byte-exact from HEAD: build_official_content --check FAILs both because the committed content-maps reference IGCSE_ACCOUNTING:S* codes (87 distinct, up to S5.185) that the committed accounting spines do not carry (spines scoped 36/101 parse points; maps came from later T-SPEC verdict rounds without a spine rebuild). Pre-existing inconsistency, surfaced by this lane's --check; resolution (spine rebuild/rescope or map narrowing) is its own lane. Their upstream deltas since 9/17 are metadata-only, so no data freshness is lost.",
+    "spine_report_incident": "the --qual accounting spine probe attempt overwrote spines/_report.json with a failed-run record; restored byte-exact from HEAD in the same lane (no spine json was written by the probe)",
+    "pilot_excluded_rebase": "mid-lane, origin/main advanced 0b98e40 -> c7d1db5 (parallel lanes: R0-4CH1-RESIDUAL-CENSUS appended deterministic residue rows into igcse-chemistry-19 notes/questions — 54+12+1 appends, live-verified; cie-phase4 repair program; T-MIG-136 band 5 made the 4MB1 past-paper question axis live). The pilot pack is restored byte-exact from origin/main: this lane's pilot rebuild would have wiped those appends, and its only refresh value was the provenance pin (its upstream SME data is unchanged since 9/17). Pilot pin refresh defers to the R0-4CH1 lane's own authority. CONSISTENCY NOTE: this lane's maths-b SME-bank removal (1,249 -> 0) is exactly T-MIG-136's 136b honest-dormancy ruling — the 4MB1 question axis is served by the past-papers fetch-bank (1,192 anchored questions / 64 papers, band 5), not by SME topic questions; the two lanes are complementary."
+  },
+  "changes": [
+    {
+      "file": "apps/hub/content/<46 Edexcel packs>/**",
+      "what": "fresh corpus import @ main@6ee5ada: fetch_corpus 12,031/12,031 files failed=0 (size-validated vs pinned tree JSONs), build_bundles rebuild, then apply_official_flip rekey (46 courses; golden igcse-chemistry-19 excluded by construction; compact serialization, smeSpecPointIds kept for traceability)"
+    },
+    {
+      "file": "apps/hub/content/igcse-accounting-17-*/",
+      "what": "restored byte-exact from HEAD (see accounting_kept_at_head)"
+    },
+    {
+      "file": "apps/hub/scripts/import_corpus/build_bundles.py",
+      "what": "RESOURCES_SHA pinned to 6ee5ada full sha (fetched + hotlinked raw URLs now pin the exact commit importSource claims); RESOURCES_DATE stamped at build time; PROJECT repointed to the monorepo clone; CIE scope guard (44 cie- courses skipped); registry carry-forward: rows for packs this build does not rebuild are carried byte-exact from the on-disk registry (fixed a registry regression the first build introduced: 45 CIE rows incl. cie-a-level-maths-20-pure-2 were being regenerated/dropped)"
+    },
+    {
+      "file": "apps/hub/scripts/import_corpus/fetch_corpus.py",
+      "what": "RAW pinned to 6ee5ada (fetch = the commit the manifests claim)"
+    },
+    {
+      "file": "apps/hub/scripts/fetch_sme_math_23a.ts, patch_corpus_math_23a.ts, fix_tail_23b.ts, patch_related_notes_23c.ts, annotate_fc_gap_23d.py, build_official_content.py, apply_official_flip.py",
+      "what": "CONTENT paths repointed to the monorepo clone (machine-local, disclosed); build_official_content + apply_official_flip gained the T-CONSUME-EDX-1 CIE guard + accounting exclusion"
+    },
+    {
+      "file": "23-series repairs re-applied on the fresh import",
+      "what": "aria->MathML->LaTeX dictionaries refetched live: 1,169/1,169 pages, 0 failed, 43,387 pairs (721 note + 448 question pages — identical work-list to the 23a era); patch_corpus_math 23,049 polluted spans -> 67; fix_tail_23b 19 replacements; residuals grafted from the committed packs (33 isotopes via the 23b convention {}^{N}{X} + path-aligned clean-segment grafts: density \\bcancel family, sin(50)=A/7, vector moduli, |z1/z2|, lambda_alpha/lambda_e, \\boxed{\\times}, f'' primes); 23c relink refetched the 5 widget pages 3x and re-linked 16 dangling refs -> 0; 23d re-annotated the 12 empty-flashcard lanes' manifests"
+    },
+    {
+      "file": "curated carries (post-build lane curation the 9/17-era builder cannot know)",
+      "what": "pilot manifest curriculum restored (board 'Pearson Edexcel', syllabusVersion '2017 (Issue 3)'); registry curriculumCode extras merged for 5 rows (4CH1-2017, 4MA1-2016 x2, 4MB1-2016, 4PH1-2017); board display name 'Pearson Edexcel' carried onto 46 flipped manifests + subject casing onto 7"
+    },
+    {
+      "file": "apps/hub/content/courses.json",
+      "what": "94 rows: 49 fresh Edexcel rows + 45 CIE rows byte-identical to HEAD; zero rows lost or invented"
+    },
+    {
+      "file": "apps/hub/docs/CORPUS_IMPORT_REPORT.md",
+      "what": "regenerated for the 49-pack Edexcel refresh @ 6ee5ada"
+    }
+  ],
+  "verification": {
+    "corpus_gate_23a": "ALL ZERO — spans 0, dollar 0, text-garbage 0, multiline 0, baretext 0, danglingRefs 0 — CORPUS GATE PASSED",
+    "flashcard_sync": "PASS (exit 0) — derived set pinned; 5 curriculumCode rows carried",
+    "cie_validator": "PASS — zero CIE paths touched by the lane (git status census: 0 cie- entries)",
+    "registry_integrity": "94 rows old == 94 rows new; 45 CIE rows byte-identical; missing: none; invented: none",
+    "static_prebuild": "build_corpus_static: 218.4MB, 806 index entries -> public/corpus-index.json",
+    "full_build": "bun run build:hub exit 0 (prebuild validators + next build green)",
+    "provenance": "all 47 refreshed manifests importSource.ref = main@6ee5ada3f858b4e916422b2a302002089ee63792; raw hotlinks + fetches pinned to the same commit (resolves forever)"
+  },
+  "scope_guards": [
+    "CIE packs (46) + their spines/maps: zero bytes touched",
+    "accounting-17 x2 packs: byte-exact HEAD",
+    "spines/*.json: byte-untouched (_report.json incident restored)",
+    "secrets untouched; fetch-first on both repos; no force anywhere"
+  ],
+  "followups": [
+    "accounting maps-vs-spine inconsistency (87 map codes vs 36-point spine scope) — own lane",
+    "cie-a-level-maths-20-pure-2 has a content pack + registry row but NO SME-ExamQuestion upstream dir and NO spine — provenance gap for the CIE lane to adjudicate",
+    "CIE pack refresh @ 6ee5ada is NOT part of this lane (CIE manifests still pin 0fe5f77/R41-era) — likely NEXT #2 scope",
+    "Maths B course page: question bank removal is a user-visible change the operator should see on the deployed site"
+  ]
+}

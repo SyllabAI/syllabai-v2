@@ -8,7 +8,7 @@
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "fs";
 import katex from "katex";
 
-const CONTENT = "/home/z/my-project/content";
+const CONTENT = "/home/z/my-project/syllabai-v2/apps/hub/content";
 
 const katexOk = (t: string) => {
   try {

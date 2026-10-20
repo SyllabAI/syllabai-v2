@@ -9,7 +9,7 @@ import json
 import time
 import urllib.request
 
-CONTENT = "/home/z/my-project/content"
+CONTENT = "/home/z/my-project/syllabai-v2/apps/hub/content"
 UA = "syllabai-demo-corpus-audit"
 
 LANES = {

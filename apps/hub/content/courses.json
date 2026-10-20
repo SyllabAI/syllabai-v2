@@ -1,6 +1,6 @@
 {
   "schema": "syllabai-demo.course-registry/1.1",
-  "note": "Operator-maintained registry mirroring the 49 Edexcel IAL/IGCSE course variants scraped in SyllabAI/syllabai-resources (authoritative source). Every course has a content bundle under content/<slug>/ imported from the corpus: 'pilot' = official-tree course with the 4CH1 concept graph and learner overlay; 'full' = complete SME-native corpus import (notes, exam questions, flashcards; official-spec mapping pending upstream for all non-4CH1 courses). Slugs, levels, subjects and exam codes come from the upstream manifests — never invented. T-SME-11 (2026-09-20) added the 10 missing-subject lanes: English Language A 4EA1 (3 paper lanes), Maths B 4MB1, Science Double Award Modular 2024 4XSD1 (6 unit lanes); 8 of them carry no SME topic questions (honest upstream census), all have revision notes and spec indexes. CIE-INTEGRATION amendment (course-catalog card A2, 2026-10-20): +12 Cambridge International rows (board field set, status full, no coreBridge/curriculumCode) — past-papers-first launches over the official QP+MS archive (2,232 pairs claimed; the 9709 Pure 2 row is the D1 roster-anticipation row, no SME bank yet); their teaching banks stay honestly empty (skeleton bundles) until the sibling resource wave lands. CIE-INTEGRATION Phase 3 amendment (resource wave, 2026-10-20): +33 Cambridge rows with full official-spine corpus bundles (the 44-slug roster from cie-phase0-roster-manifest-r0 minus the 11 the catalog card already carried), and the 11 catalog skeleton bundles upgraded in place to the same official-spine form (notes/exam-questions/flashcards rekeyed to the committed CIE spines via content-maps, math repaired through the T-SME-23a/23b chain). 9709 Pure 2 stays the D1 skeleton row (no SME bank). Flashcard core-sync unchanged: CIE rows carry no curriculumCode by launch posture.",
+  "note": "Operator-maintained registry mirroring the 39 Edexcel IAL/IGCSE course variants scraped in SyllabAI/syllabai-resources (authoritative source). Every course has a content bundle under content/<slug>/ imported from the corpus: 'pilot' = official-tree course with the 4CH1 concept graph and learner overlay; 'full' = complete SME-native corpus import (notes, exam questions, flashcards; official-spec mapping pending upstream for all non-4CH1 courses). Slugs, levels, subjects and exam codes come from the upstream manifests — never invented.",
   "courses": [
     {
       "slug": "cie-a-level-chemistry-25",
@@ -556,6 +556,30 @@
       "status": "full"
     },
     {
+      "slug": "igcse-english-language-a-16-paper-1-non-fiction-texts-and-transactional-writing",
+      "level": "IGCSE",
+      "subject": "English Language",
+      "label": "English Language A — Paper 1",
+      "code": "4EA1",
+      "status": "full"
+    },
+    {
+      "slug": "igcse-english-language-a-16-paper-2-poetry-and-prose-texts-and-imaginative-writing",
+      "level": "IGCSE",
+      "subject": "English Language",
+      "label": "English Language A — Paper 2",
+      "code": "4EA1",
+      "status": "full"
+    },
+    {
+      "slug": "igcse-english-language-a-16-paper-3-coursework",
+      "level": "IGCSE",
+      "subject": "English Language",
+      "label": "English Language A — Paper 3 (Coursework)",
+      "code": "4EA1",
+      "status": "full"
+    },
+    {
       "slug": "igcse-english-literature-16",
       "level": "IGCSE",
       "subject": "English Literature",
@@ -582,8 +606,8 @@
     {
       "slug": "igcse-ict-17",
       "level": "IGCSE",
-      "subject": "ICT",
-      "label": "ICT",
+      "subject": "Ict",
+      "label": "Ict",
       "code": "4IT1",
       "status": "full"
     },
@@ -640,6 +664,15 @@
       "status": "full"
     },
     {
+      "slug": "igcse-maths-b-16",
+      "level": "IGCSE",
+      "subject": "Maths",
+      "label": "Maths B",
+      "code": "4MB1",
+      "status": "full",
+      "curriculumCode": "4MB1-2016"
+    },
+    {
       "slug": "igcse-physics-19",
       "level": "IGCSE",
       "subject": "Physics",
@@ -687,39 +720,6 @@
       "label": "Science (Double Award) — Physics",
       "code": "4SD0",
       "status": "full"
-    },
-    {
-      "slug": "igcse-english-language-a-16-paper-1-non-fiction-texts-and-transactional-writing",
-      "level": "IGCSE",
-      "subject": "English Language",
-      "label": "English Language A — Paper 1",
-      "code": "4EA1",
-      "status": "full"
-    },
-    {
-      "slug": "igcse-english-language-a-16-paper-2-poetry-and-prose-texts-and-imaginative-writing",
-      "level": "IGCSE",
-      "subject": "English Language",
-      "label": "English Language A — Paper 2",
-      "code": "4EA1",
-      "status": "full"
-    },
-    {
-      "slug": "igcse-english-language-a-16-paper-3-coursework",
-      "level": "IGCSE",
-      "subject": "English Language",
-      "label": "English Language A — Paper 3 (Coursework)",
-      "code": "4EA1",
-      "status": "full"
-    },
-    {
-      "slug": "igcse-maths-b-16",
-      "level": "IGCSE",
-      "subject": "Maths",
-      "label": "Maths B",
-      "code": "4MB1",
-      "status": "full",
-      "curriculumCode": "4MB1-2016"
     },
     {
       "slug": "igcse-science-double-award-modular-24-biology-unit-1",

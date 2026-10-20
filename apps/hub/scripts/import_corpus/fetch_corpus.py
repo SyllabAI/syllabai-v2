@@ -26,7 +26,10 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 WORK = "/home/z/my-project/work"
 CACHE = os.path.join(WORK, "corpus-cache")
-RAW = "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main"
+RAW = (
+    "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/"
+    "6ee5ada3f858b4e916422b2a302002089ee63792"  # T-CONSUME-EDX-1: fetch pinned to the exact commit the manifests will claim
+)
 
 MAX_WORKERS = 20
 RETRIES = 4

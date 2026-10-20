@@ -303,6 +303,7 @@ def main() -> int:
 
     content_root = args.content_root or (REPO / "content")
     courses = sorted(p.name for p in content_root.iterdir() if p.is_dir())
+    courses = [c for c in courses if not c.startswith("cie-")]  # T-CONSUME-EDX-1 scope guard: Edexcel check only
     if args.course:
         if args.course not in courses:
             print(f"unknown course {args.course!r}", file=sys.stderr)

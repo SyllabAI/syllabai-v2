@@ -29,17 +29,21 @@ import os
 import re
 import shutil
 import sys
+import time
 from collections import OrderedDict, defaultdict
 
 WORK = "/home/z/my-project/work"
 CACHE = os.path.join(WORK, "corpus-cache")
-PROJECT = "/home/z/my-project"
+PROJECT = "/home/z/my-project/syllabai-v2/apps/hub"
 CONTENT = os.path.join(PROJECT, "content")
 DOCS = os.path.join(PROJECT, "docs")
 
-RAW_BASE = "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main"
-RESOURCES_SHA = "c2fcd88aea3620b9190950930d0861890d4ee524"
-RESOURCES_DATE = "2026-09-20T06:48:02Z"
+# T-CONSUME-EDX-1: pin every fetch + hotlink to the exact resources commit the
+# bundles claim in importSource.ref — provenance must resolve forever, and raw
+# CDN serves any sha permanently.
+RESOURCES_SHA = "6ee5ada3f858b4e916422b2a302002089ee63792"
+RESOURCES_DATE = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())  # stamped at each build
+RAW_BASE = f"https://raw.githubusercontent.com/SyllabAI/syllabai-resources/{RESOURCES_SHA}"
 
 PILOT_SLUG = "igcse-chemistry-19"  # official 4CH1 tree + KG port
 
@@ -176,8 +180,12 @@ def main():
 
     report_courses = []
     totals = defaultdict(int)
+    skipped_cie = 0
 
     for slug in slugs:
+        if slug.startswith("cie-"):
+            skipped_cie += 1
+            continue  # T-CONSUME-EDX-1 scope guard: Edexcel bundles only — CIE packs are another lane's authority and stay byte-untouched
         # ── upstream inputs ──────────────────────────────────────────────
         eqm = eq_courses.get(slug, {})
         level = eqm.get("level", "igcse")
@@ -600,7 +608,17 @@ def main():
             f" questions={manifest['counts']['questions']} parts={part_total} cards={len(cards)}"
         )
 
+    print(f"scope: {len(report_courses)} Edexcel bundles rebuilt, {skipped_cie} CIE courses skipped (T-CONSUME-EDX-1 guard)")
+
     # ── registry ─────────────────────────────────────────────────────────
+    # T-CONSUME-EDX-1: rows for packs this Edexcel-scoped build does NOT
+    # rebuild (CIE et al.) are the owning lanes' authority — carried forward
+    # byte-exact from the on-disk registry, never regenerated here.
+    try:
+        with open(os.path.join(CONTENT, "courses.json"), encoding="utf8") as f:
+            _old_registry_rows = json.load(f).get("courses", [])
+    except Exception:
+        _old_registry_rows = []
     registry = OrderedDict(
         schema="syllabai-demo.course-registry/1.1",
         note=(
@@ -637,6 +655,8 @@ def main():
         return " ".join(w[:1].upper() + w[1:] if w else w for w in out.split(" "))
 
     for slug in slugs:
+        if slug.startswith("cie-"):
+            continue  # T-CONSUME-EDX-1 guard: CIE rows are carried from the on-disk registry below, never regenerated
         eqm = eq_courses.get(slug, {})
         level = "IAL" if eqm.get("level") == "international-a-level" else "IGCSE"
         subject = display_subject(eqm.get("subject"), slug)
@@ -684,6 +704,8 @@ def main():
                 status="pilot" if slug == PILOT_SLUG else "full",
             )
         )
+    _rebuilt = {r["slug"] for r in registry["courses"]}
+    registry["courses"] = [c for c in _old_registry_rows if c.get("slug") not in _rebuilt] + registry["courses"]
     with open(os.path.join(CONTENT, "courses.json"), "w", encoding="utf8") as f:
         json.dump(registry, f, ensure_ascii=False, indent=2)
         f.write("\n")
@@ -794,7 +816,7 @@ def write_report(report_courses, eq_manifest, totals):
     lines = [
         "# Corpus Import & Mapping Integrity Report",
         "",
-        f"Imported from `SyllabAI/syllabai-resources` @ `main` (`7575585`, {RESOURCES_DATE}) — ",
+        f"Imported from `SyllabAI/syllabai-resources` @ `main` (`{RESOURCES_SHA[:7]}`, {RESOURCES_DATE}) — ",
         "the operator-authorized Save My Exams corpus (see `LICENSE-DATA.md` upstream).",
         "",
         "Every course is imported with its **own corpus-native navigation tree**:",

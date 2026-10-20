@@ -15,7 +15,7 @@
  */
 import fs from "node:fs";
 
-const CONTENT = "/home/z/my-project/content";
+const CONTENT = "/home/z/my-project/syllabai-v2/apps/hub/content";
 const DIR = "/home/z/my-project/work/relink_23c";
 
 type Qset = { topicId?: string; slug?: string; relatedNoteIds?: string[]; [k: string]: unknown };

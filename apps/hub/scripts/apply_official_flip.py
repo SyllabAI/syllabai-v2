@@ -185,6 +185,8 @@ def main() -> int:
     args = ap.parse_args()
 
     slugs = sorted(p.name for p in CONTENT.iterdir() if p.is_dir())
+    slugs = [s for s in slugs if not s.startswith("cie-")]  # T-CONSUME-EDX-1 scope guard: Edexcel flip only — CIE packs are another lane's authority
+    slugs = [s for s in slugs if not s.startswith("igcse-accounting-17-")]  # T-CONSUME-EDX-1: accounting stays at its committed flip — the committed content-maps reference spine codes outside the committed accounting spine scope (pre-existing maps-vs-spine inconsistency, own lane); their upstream data deltas are metadata-only
     if args.course:
         unknown = [c for c in args.course if c not in slugs]
         if unknown:
