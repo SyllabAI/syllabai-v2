@@ -10112,3 +10112,17 @@ Stage Summary:
 - Band 5 fires instantly on URI staging: rebuild pg-cow from the run-004 method -> COW-replica proof (zero prod writes) -> operator-gated --apply -> 136d battery re-fire.
 - T-MIG-138 drain unchanged: STAGED, window 07:05Z Oct 21 future at this act's close; the first re-key after the window fires it per the armed plan (any lane; rows byte-exact of record).
 - Write ledger: this worklog entry ONLY; zero prod/DB/Neon/LLM contact; zero code/content changes; fetch-first, no force.
+
+---
+Task ID: trace 1a15aecf63c4ac7d (wave-2 review of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- FF re-ground to 8ee371e (RESET #6 artifacts+scripts wiped; recipes re-derived from git history + receipts).
+- Per-code first-hand review of grade-B 11: read note bodies around keyword hits, verified verbatim spec-text presence programmatically, captured current arrays, swept 46 orphan parts.
+- HEADLINE: all 11 flip to ATTACH on notes-axis verbatim evidence; ZERO exceptions. 2.50 resolved by 'Tests for Water' note (full physical test verbatim, carries 2.49); 4.20 note-side clean DIRECT (false-positive was question-side only) — no manual pardon needed; 4.24 'Alkenes' blockquote verbatim; 4.29C 'Alcohols' + energetics q8p3 orphan verified.
+- Draft kill-list DRAFT-r0: 12 rows (10 note appends + 1 optional part append), absenceProof 12/12; expected coverage notes 155->166/182, both-axes residual 11->0. APPLY ONLY ON OPERATOR GREEN-LIGHT.
+- Receipt run-004-wave2-review-r0 filed; zero content writes; no force.
+
+Stage Summary:
+- Wave-2 review of record: 11/11 ATTACH verdicts with first-hand verbatim evidence; draft kill-list staged for operator green-light; 46-orphan-parts lane flagged separate.

@@ -1,0 +1,18 @@
+{
+  "receipt": "R0-4CH1-RESIDUAL-CENSUS/run-004-wave2-review-r0",
+  "task": "operator trace 1a15aecf63c4ac7d 'wave-2 review' — per-code first-hand review of the grade-B 11, verdicts + draft kill-list; READ-ONLY, nothing applied",
+  "lane": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, chat 9e9f3d7a)",
+  "method": "re-derived evidence in-repo (RESET #6 wiped download/ artifacts + census scripts; recipes + grades of-record survived in git history + receipts); per code: note bodyMd read around keyword hits, verbatim spec-text presence verified programmatically, current specPointCodes arrays captured, orphan-part universe (46) swept",
+  "headlineFinding": "ALL 11 grade-B verdicts flip to ATTACH on the notes axis — every spec statement sits VERBATIM in its dedicated note's own 'Spec point' blockquote or body (the blockquote grammar captured only SOME quoted codes = the layout-parse failure class, now proven on the notes axis). ZERO exception verdicts needed.",
+  "keyFirstHandEvidence": [
+    "2.50: 'Tests for Water' note (carries 2.49) contains the FULL physical test verbatim: boiling point exactly 100C, impurities raise b.p. — a dedicated note the thread-level review never surfaced",
+    "4.20: 'Alkanes' note verbatim 'explain why alkanes are classified as saturated hydrocarbons' — the disclosed keyword false-positive was QUESTION-side only; note-side is clean DIRECT, so 4.20 attaches deterministically (no manual pardon needed)",
+    "4.24: 'Alkenes' note blockquote verbatim 'know the general formula for alkenes'",
+    "4.29C: 'Alcohols' note 'All alcohols contain the hydroxyl (-OH) functional group' + the energetics q8p3 orphan part (alcohols combustion enthalpy table) verified live"
+  ],
+  "draftKilllist": "download/wave2-killlist-4ch1-notes-DRAFT-r0.json — 12 rows: 10 note appends (11 codes; Crude Oil note gets 4.7+4.10) + 1 OPTIONAL part append (4.29C -> energetics q8p3 orphan, strikable); absenceProof 12/12; every target carries sibling codes",
+  "expectedCoverage": "notes 155->166/182; both-axes residual 11->0",
+  "orphanDisclosure": "46 orphan parts (empty specPointCodes) swept universe-wide — a separate lane, NOT bundled into wave-2",
+  "write_ledger": "repo: this receipt + worklog append; automation: scripts/wave2_review_4ch1.py + scripts/wave2_killlist_build.py + download/wave2-review-gradeB11-r0.json + draft killlist; zero content writes; zero prod/DB/Vercel/LLM; no force",
+  "followups": ["operator green-light -> wave-2 apply (12 appends, fail-closed gate, battery, receipt)", "46-orphan-parts lane (separate)", "PAT rotation overdue x2", "CORS identity/config.ts:60 parked"]
+}
