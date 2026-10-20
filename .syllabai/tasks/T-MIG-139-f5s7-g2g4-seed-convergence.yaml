@@ -3,7 +3,7 @@ task:
   id: T-MIG-139
   title: "F.5 §7 gates G2+G4 — seed-path convergence (both seeders emit SPEC_POINT) + the anchor-type companion check artifact"
   owner: "w0a (Super Z, session web-e79a3bd8, operator GH-PAT handoff trace 1a15a1c5a6be10c9)"
-  status: CLAIMED
+  status: CLAIMED # G4 addendum run-002 (r7a, operator order trace 1a15a68f77ec7da9 'Go Install the G4 database guard'): the trigger verified LIVE-INSTALLED on production — byte-identical to the staged artifact (function body 477/477) and enforcing on BOTH paths (INSERT/UPDATE fail-closed probes + positive control, all rolled back); install act DISCHARGED-AS-ALREADY-INSTALLED, provenance operator-keyed (no repo disclosure of the install) — receipt run-002-g4-verified-installed-r7a.json
   priority: P1
   wave: post-migration S3
   deps: [T-MIG-134, T-MIG-135, T-MIG-136]

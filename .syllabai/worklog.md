@@ -9859,3 +9859,23 @@ Work Log:
 
 Stage Summary:
 - Push of record = b512d95. Bookkeeping-only, .syllabai/** in-boundary; zero code/content/DB/Vercel/LLM contact; no force.
+
+---
+Task ID: T-MIG-139 run-002 (g4-verified-installed)
+Agent: r7a (Super Z, session web-da4ab8b1, chat 1f3003b6)
+Task: operator trace 1a15a68f77ec7da9 "Go Install the G4 database guard" — the operator-order install authorized by the staged artifact's own law (run-001: installs on OPERATOR ORDER only).
+
+Work Log:
+- Fetch-first: synced 29d710a -> 2a9227b (PR #221); read the staged artifact + run-001 receipt first-hand.
+- Prod URI resolved via the VERCEL_PAT lever (Vercel env API, memory-only, value never printed/logged); egress to the Neon data plane OK.
+- PRE-CENSUS first-hand: ALL FIVE staged enable-time preconditions reproduce EXACTLY (teaching_coverage=0, events=0, anchors_not_spec=0, SPEC_POINT=663, anchors=8138, ck_node_type 7-value incl SPEC_POINT).
+- INSTALL attempt: the script's idempotence gate found trigger_already_present=1 and ABORTED honest, pre-DDL — zero CREATE executed.
+- Forensics: the live trigger (public.question_spec_points, tgenabled='O') is BYTE-IDENTICAL to the staged artifact — trigger def equal; function body 477/477 whitespace-normalized identical (pg prosrc vs the staged $body$ block).
+- Enforcement proven on BOTH paths, every probe txn ROLLED BACK: INSERT-negative PASS (real CONCEPT-type anchor rejected with the artifact's exact exception), UPDATE-negative PASS (anchor retarget to non-SPEC_POINT rejected), positive control PASS (in-place SPEC_POINT update accepted, rowcount=1); post-census anchors 8138 unchanged.
+- Provenance NOT determinable: no receipt/worklog/commit discloses an install (searched .syllabai/** at tip); pg carries no trigger timestamp; w0a's run-001 preconditions never asserted trigger ABSENCE (the 'NOT installed' line was the drift-discipline ruling language, not a live pg_trigger observation). Candidates: the operator G-round production lane (G1/G3/G5, 2026-10-20, DDL authority), the operator console, or an undisclosed post-run-001 act — OPERATOR-KEYED residual.
+- Disposition per the 134b collision-discharge precedent: converted to independent verification; NO drop/recreate churn (no force); rollback law unchanged (DROP TRIGGER + DROP FUNCTION).
+
+Stage Summary:
+- VERDICT of record: DISCHARGED-AS-ALREADY-INSTALLED — the G4 guard the operator ordered is LIVE and ENFORCING, byte-identical to the artifact of record; F.5 §7's five gates now ALL LIVE/VERIFIED (G1 live, G2 merged PR #219, G3 live receipt, G4 LIVE+proven this run, G5 live receipt).
+- Write ledger: zero DB DDL/data writes by this lane (install aborted pre-DDL; probes rolled back); scripts t139_g4_{install,probe,identity,twopath}.py landed in scripts/; receipt .syllabai/receipts/T-MIG-139/run-002-g4-verified-installed-r7a.json; card status addendum.
+- Secrets discipline: DATABASE_URL memory-only via the Vercel env API; never printed/logged/persisted.

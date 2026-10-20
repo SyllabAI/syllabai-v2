@@ -1,0 +1,60 @@
+{
+  "task": "T-MIG-139",
+  "run": "run-002-g4-verified-installed",
+  "owner_lane": "r7a (Super Z, session web-da4ab8b1, chat 1f3003b6)",
+  "operator_order": "trace 1a15a68f77ec7da9 'Go Install the G4 database guard' — the operator-order install authorized by the staged artifact's own law (run-001: 'installs on OPERATOR ORDER only')",
+  "generated_utc": "2026-10-21T18:20:00Z",
+  "verdict": "DISCHARGED-AS-ALREADY-INSTALLED — the G4 anchor-type guard IS live on production, byte-identical to the staged artifact of record, and ENFORCING on both trigger paths. No install was performed by this lane (the idempotence gate aborted pre-DDL). The of-record belief 'staged, NOT installed' (run-001 + worklog) is STALE relative to the live database.",
+  "method": "VERCEL_PAT lever -> api project production DATABASE_URL (memory-only, value never printed/logged) -> live census -> staged-SQL install attempt gated on trigger-absence -> forensic identity checks -> two-path enforcement probes (every probe txn ROLLED BACK)",
+  "artifact_of_record": {
+    "path": ".syllabai/receipts/T-MIG-139/g4-anchor-type-trigger.sql",
+    "sha256": "4d631828ce35db2613c34656dee0213281739198bbf04a486e5ee0590f8b5562"
+  },
+  "pre_census_first_hand": {
+    "teaching_coverage": 0,
+    "teaching_coverage_events": 0,
+    "anchors_not_spec": 0,
+    "spec_point_rows": 663,
+    "anchors_total": 8138,
+    "ck_node_type": "7-value CHECK incl SPEC_POINT (live G1) — verified via pg_get_constraintdef",
+    "note": "ALL FIVE staged enable-time preconditions reproduce EXACTLY at their run-001 values"
+  },
+  "identity_proof": {
+    "live_trigger_def": "CREATE TRIGGER ck_qsp_anchor_is_spec_point BEFORE INSERT OR UPDATE OF spec_point_node_id ON public.question_spec_points FOR EACH ROW EXECUTE FUNCTION assert_spec_point_anchor() — byte-equal to the staged CREATE TRIGGER (name, table, events, function)",
+    "live_function_body": "477 chars, whitespace-normalized BYTE-IDENTICAL to the staged $body$ block (pg_get_functiondef prosrc vs artifact)",
+    "trigger_state": "tgenabled='O' (enabled), public.question_spec_points, NOT tgisinternal"
+  },
+  "enforcement_proofs": {
+    "insert_negative": "PASS fail-closed — fresh INSERT with a real CONCEPT-type node id raised the artifact's exact exception ('ck_qsp_anchor_is_spec_point: ... not SPEC_POINT (node_type=CONCEPT)'); txn rolled back",
+    "update_negative": "PASS fail-closed — retargeting an existing anchor's spec_point_node_id at a non-SPEC_POINT node raised; txn rolled back",
+    "positive_control": "PASS open-path — in-place UPDATE (spec_point_node_id = same SPEC_POINT value) fired the trigger and was accepted (rowcount=1); txn rolled back",
+    "post_census": "anchors_total 8138 unchanged; anchors_not_spec still 0"
+  },
+  "write_ledger": {
+    "ddl_writes_by_this_lane": 0,
+    "data_writes_by_this_lane": 0,
+    "note": "install aborted at the trigger_already_present gate BEFORE any CREATE; every probe ran inside a rolled-back txn; the only durable artifacts are repo-side (receipt/worklog/card/scripts)"
+  },
+  "provenance_disclosure": {
+    "finding": "NO repo disclosure of the install exists: zero receipts/worklog/commit entries mention an applied G4 (searched .syllabai/** at tip 2a9227b); pg catalogs carry no trigger creation timestamp; w0a's run-001 enable-preconditions verified DATA state only and never asserted trigger ABSENCE, so the run-001 'live trigger NOT installed' line is the drift-discipline ruling language, not a live pg_trigger observation",
+    "candidate_installers": [
+      "the operator's G-round production lane (executed G1/G3/G5 live 2026-10-20 with production DDL authority — receipt fp16 7a655924ed01740a, not in this repo)",
+      "the operator directly via the Neon console",
+      "a session act after run-001 (2026-10-21T05:20Z) that did not file a receipt"
+    ],
+    "disposition": "OPERATOR-KEYED RESIDUAL — provenance unknown to this lane and not determinable from available evidence (Neon SQL history needs NEON_API_KEY, value not locally held). No force applied: the guard is the artifact of record and enforcing; drop/recreate churn would be destructive with zero benefit (the 134b collision-discharge precedent: convert to independent verification)."
+  },
+  "rollback_law_unchanged": "DROP TRIGGER ck_qsp_anchor_is_spec_point ON question_spec_points; DROP FUNCTION assert_spec_point_anchor(); — zero data impact",
+  "scripts": [
+    "scripts/t139_g4_install.py (census+gated install, aborted honest)",
+    "scripts/t139_g4_probe.py (trigger identity + insert-path probe)",
+    "scripts/t139_g4_identity.py (byte-identity live vs staged)",
+    "scripts/t139_g4_twopath.py (update-path negative + positive control)"
+  ],
+  "evidence_scratch": [
+    "/home/z/my-project/scratch/t139_g4_install_evidence.json",
+    "/home/z/my-project/scratch/t139_g4_twopath_evidence.json"
+  ],
+  "secrets_discipline": "DATABASE_URL resolved via the Vercel env API in memory only; never printed, never logged, never persisted; zero key material in repo/tree",
+  "law": "fetch-first (synced 29d710a -> 2a9227b mid-act), no force, .syllabai-only receipt/worklog + scripts, frozen executor files byte-untouched"
+}
