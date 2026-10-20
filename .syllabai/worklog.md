@@ -9701,3 +9701,24 @@ Stage Summary:
 - ANSWER of record: NO cross-course problem — all 61 courses + all 44 served spec families green end-to-end (wire + one full browser walk); only residuals: 2 honest-empty unit-2 courses (corpus gap), 1 self-healed transient 502, index treeSha freshness lag (regen operator-keyed)
 - Receipt: .syllabai/receipts/ops-pastpapers/pastpapers-cross-course-audit-run-001-r0.json
 - Write ledger: .syllabai receipt + worklogs only; zero writes to any data repo; zero LLM/Neon/prod-db; fetch-first, no force
+
+
+
+---
+Task ID: T-MIG-139
+Agent: w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
+Task: F.5 §7 gates G2+G4 — seed-path convergence (both seeders emit SPEC_POINT) + the anchor-type companion artifact (operator GH-PAT handoff trace 1a15a1c5a6be10c9).
+
+Work Log:
+- Basis: the F.5 §7 G-round executed on production 2026-10-20 under the operator "go" (receipt G1_G3_G5_EXECUTION_RECEIPT_20261020, fp16 7a655924ed01740a): G1 constraint 7-value live, G3 565 receipt-keyed retypes, G5 98 4MB1 retypes, batteries 6/6 twice. This band lands the two remaining gates as repo artifacts (the standing plan of record: "seeder convergence + anchor companion check as repo artifacts when GH PAT re-delivered").
+- STATE CHECK first-hand: origin/main had moved +187 past the local Oct-18 tip (fleet-active). bf37ed8 (the parked runbook commit) is CONTENT-IDENTICAL of record at origin/main via 2f6b06f (t-mig-133 lane-race integration 30fb8df) — push duty discharged, hub auto-bake already rode it. Local mode-churn (2,349 files, 0 bytes) handled via core.fileMode false, no reset (preserved the parked commit until equivalence was proven).
+- G2 PRODUCERS: concept-seed.ts spec-point loop -> SPEC_POINT (practicals stay SUBTOPIC, the ruling); bundle-seed.ts SPEC_POINT family -> SPEC_POINT (three dbCode laws untouched — codes verbatim); BOTH resolveNode reuse paths gained the drift guard: a pre-convergence row REFUSES with a pointer to the receipt-keyed backfill (G3/G5 stay the only retyping authority; never silently absorbed, never re-seeded over).
+- G2 SCHEMA OF RECORD: schema.ts ck_node_type 6->7 values (the repo-side companion of the live G1) + generated migration 0003_f5s7-g2-spec-point-constraint.sql (byte-equivalent to the live G1 DDL; fresh envs 0000..0003 land at the live end-state).
+- G2 CONSUMERS (scope amended pre-code, disclosed): contracts knowledgeNodeTypeSchema + SPEC_POINT (the enum learner/teacher/knowledge NodeViews embed); tutor kg-retriever structureNodes IN-list + SPEC_POINT; knowledge/index.ts topicLike += SPEC_POINT; sme bundle-questions topicCodeResolver filter — necessity for the last proven by typecheck TS2367, all four are byte-equivalent serving restorations of the pre-G-round row set under the new name.
+- G4: the anchor-type companion check STAGED of record at .syllabai/receipts/T-MIG-139/g4-anchor-type-trigger.sql (BEFORE-trigger asserting node_type='SPEC_POINT', fail-closed) — deliberately OUTSIDE packages/db/drizzle so no migrate path can auto-apply it (the drift-discipline ruling: "live trigger NOT installed"); installs on operator order only. Enable preconditions verified LIVE 2026-10-21 (read-only probe): teaching_coverage=0, teaching_coverage_events=0, anchors_not_spec=0, SPEC_POINT=663, ck 7-value.
+- INCIDENTAL FINDING of record: the drizzle meta chain was CORRUPTED (0000_snapshot.id == 0002_snapshot.id = fb2e9ae1; 0000.prevId pointed at 0001's id) — no migration could generate (collision, first-hand repro). Repaired to the intended linear chain (0000 genesis -> 0001 -> 0002 fresh id); ids are opaque chain pointers — SQL files, journal tags, applied-migration tracking untouched.
+- GATES: bun install --frozen-lockfile (930); typecheck exit 0 x4; contracts+shared+db 455/0 (incl. the 7-value enum loop + rebaseline suite); api suite 1807 pass / 13 skip / 0 fail (18,783 expects) incl. bundle-seed physics/maths-a/maths-b pins, concept-graph applicability guard, kg-retriever-wire IN-list pin.
+- Receipts: .syllabai/receipts/T-MIG-139/run-001.json + g4-anchor-type-trigger.sql. Zero prod writes this band (read-only precondition probe only). Fetch-first, no force, PR for R0.
+
+Stage Summary:
+- G2 landed: both seed paths emit SPEC_POINT (schema of record + migration + consumers converged; drift guard fail-closed). G4 staged: the anchor-type trigger of record with green live preconditions, operator-order install. F.5 §7's five gates now stand: G1 ✓(live), G2 ✓(this band), G3 ✓(live receipt), G4 ✓(staged artifact), G5 ✓(live receipt). Residual: deploy windows operator-gated as of record.

@@ -464,7 +464,7 @@ export async function knowledgeTree(
       }
     }
     if (includeMisconceptions) {
-      const topicLike = node.node_type === "TOPIC" || node.node_type === "SUBTOPIC";
+      const topicLike = node.node_type === "TOPIC" || node.node_type === "SUBTOPIC" || node.node_type === "SPEC_POINT"; // T-MIG-139: spec points are topic-like post-G2
       if (topicLike || node.node_type === "CONCEPT") {
         const attached = new Set<string>();
         const list = [...(attachmentsByTarget.get(node.id) ?? [])].sort(byCode);

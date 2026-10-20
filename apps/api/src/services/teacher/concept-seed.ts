@@ -206,7 +206,12 @@ export async function activateConceptGraph(
   }
   const specPointNodes = new Map<string, NodeRow>();
   for (const sp of snapshot.specPoints) {
-    const node = await resolveNode(deps, byCode, sp.code, "SUBTOPIC", bound(sp.wording, 200), spDescription(sp), "VALIDATED", STRUCTURE_PROVENANCE, activatedBy, counters, sp.applicability, now);
+    // T-MIG-139 (F.5 §7 gate G2): spec points land SPEC_POINT — the converged
+    // landing of record. Practicals below STAY SUBTOPIC (the ruling: preserve
+    // the 12 chemistry practicals as SUBTOPIC). Pre-convergence rows reuse-
+    // refuse via the resolveNode guard (receipt-keyed backfill is the only
+    // retyping authority — the G3 receipt law).
+    const node = await resolveNode(deps, byCode, sp.code, "SPEC_POINT", bound(sp.wording, 200), spDescription(sp), "VALIDATED", STRUCTURE_PROVENANCE, activatedBy, counters, sp.applicability, now);
     specPointNodes.set(sp.code, node);
     await attach(deps, node, subsectionNodes.get(sp.subsectionCode)!, "spec structure (spec point)", STRUCTURE_PROVENANCE, "VALIDATED", activatedBy, counters, now);
   }
@@ -373,6 +378,16 @@ async function resolveNode(
   if (existing == null) existing = (await findByCode(deps, code))[0] ?? null;
   if (existing != null) {
     requireSeedNode(existing, code, provenance);
+    // T-MIG-139 drift guard: the seed's identity contract is (code → node_type).
+    // A row landed under the pre-convergence law (SUBTOPIC where this seed now
+    // maps SPEC_POINT) is a G3/G5-protected state — refuse, never absorb.
+    if (existing.node_type !== nodeType) {
+      throw new SeedConflictError(
+        "knowledge node " + code + " landed node_type '" + existing.node_type +
+          "' but the seed law maps '" + nodeType +
+          "' — pre-convergence row: apply the F.5 §7 receipt-keyed backfill or rebaseline the branch; never re-seed over it",
+      );
+    }
     if (
       applicability != null &&
       JSON.stringify(applicability) !== JSON.stringify(existing.applicability ?? null)

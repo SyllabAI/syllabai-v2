@@ -1,0 +1,57 @@
+{
+  "task": "T-MIG-139",
+  "run": "run-001",
+  "owner": "w0a (Super Z, session web-e79a3bd8)",
+  "generated_at": "2026-10-21T05:20:00Z",
+  "operator_enabler": "GH PAT handoff trace 1a15a1c5a6be10c9 (fp16 a8ccee736aa8c75b = the standing Task-25 PAT of record, verified live as user SyllabAI, repo scope)",
+  "basis": "F.5 §7 G-round plan of record (operator go trace 1a159c4febff6695): G1/G3/G5 executed on production 2026-10-20 (receipt G1_G3_G5_EXECUTION_RECEIPT_20261020, fp16 7a655924ed01740a); this band lands the two remaining gates as repo artifacts per the S3 battery gate table (S3_F5S7_REPO_SIDE_VERIFICATION.md §4)",
+  "g2_seed_path_convergence": {
+    "producers": {
+      "concept-seed.ts": "spec-point loop now resolves SPEC_POINT (was SUBTOPIC); practicals STAY SUBTOPIC (the ruling)",
+      "bundle-seed.ts": "SPEC_POINT family maps nodeType SPEC_POINT (was SUBTOPIC); three dbCode laws unchanged (4PH1-1.1 dotted, 4MA1-1.1H tier-letter, 4MB1-S1-1A alnum — codes verbatim, never re-derived)",
+      "drift_guard": "both resolveNode reuse paths REFUSE a pre-convergence row (node_type SUBTOPIC where the law maps SPEC_POINT) with a pointer to the receipt-keyed backfill — the G3/G5 receipts stay the only retyping authority"
+    },
+    "schema_of_record_catchup": {
+      "file": "packages/db/src/schema/schema.ts",
+      "change": "ck_node_type 6 -> 7 values (SPEC_POINT joins) — the repo-side companion of the LIVE G1 swap",
+      "migration": "drizzle/0003_f5s7-g2-spec-point-constraint.sql — generated, byte-equivalent to the live G1 DDL (drop + re-add, 7 values)",
+      "fresh_env_path": "0000..0003 lands at the live end-state"
+    },
+    "consumer_convergence (scope amendment, disclosed pre-code)": {
+      "contracts/curriculum.ts": "knowledgeNodeTypeSchema + SPEC_POINT (7-value law; shared by learner/teacher/knowledge NodeView schemas — widening it is the schema-of-record catch-up, NOT a widen-to-pass)",
+      "tutor/kg-retriever.ts:92": "structureNodes IN-list + 'SPEC_POINT' — restores the EXACT pre-G-round row set under the new name",
+      "knowledge/index.ts:467": "topicLike += SPEC_POINT — the misconception-attachment branch keeps spec-point attachments",
+      "sme/bundle-questions.ts:161": "topicCodeResolver filter SPEC_POINT — necessity proven by typecheck TS2367 (the 136a card-amendment precedent)"
+    }
+  },
+  "g4_anchor_type_companion": {
+    "artifact": ".syllabai/receipts/T-MIG-139/g4-anchor-type-trigger.sql (staged of record, OUTSIDE drizzle/ — no migrate path can auto-apply it; installs on operator order only)",
+    "mechanism": "BEFORE INSERT OR UPDATE OF spec_point_node_id trigger asserting node_type='SPEC_POINT', fail-closed",
+    "enable_preconditions_verified_live_20261021": {
+      "teaching_coverage": 0,
+      "teaching_coverage_events": 0,
+      "anchors_not_spec": 0,
+      "spec_point_rows": 663,
+      "ck_has_spec_point": true,
+      "probe": "scripts/g4-precond.js (read-only, production, .creds/neon-ro-uri)"
+    },
+    "rollback": "DROP TRIGGER + DROP FUNCTION — zero data impact (the gate table's own law)"
+  },
+  "incidental_finding_of_record": {
+    "drizzle_snapshot_chain_corrupted": "0000_snapshot.id == 0002_snapshot.id (fb2e9ae1) AND 0000.prevId pointed at 0001's id — no migration could generate (collision error, first-hand). REPAIRED to the intended linear chain (0000 genesis -> 0001 -> 0002 fresh id a101e978); ids are opaque chain pointers — SQL files, journal tags, and applied-migration tracking untouched",
+    "bf37ed8_equivalence": "the parked local runbook commit bf37ed8 is CONTENT-IDENTICAL of record at origin/main via 2f6b06f (integrated by the t-mig-133 lane-race merge 30fb8df: docs/CUTOVER_RUNBOOK.md + receipt JSON byte-identical; worklog section re-merged per the append-only law) — the parked branch is discharged, hub auto-bake already rode that merge"
+  },
+  "gates": {
+    "typecheck": "exit 0 x4 workspaces (contracts, shared, db, api)",
+    "contracts_shared_db": "455 pass / 0 fail (incl. the 7-value enum loop + rebaseline suite)",
+    "api_suite": "1807 pass / 13 skip / 0 fail (18,783 expects) — incl. bundle-seed physics/maths-a/maths-b pins, concept-graph applicability guard, kg-retriever-wire IN-list pin",
+    "bun_install": "--frozen-lockfile, 930 packages"
+  },
+  "credential_hygiene": "GH PAT .creds/gh-pat 0600 inline-push pattern only (briefing §0); zero token copies outside .creds; zero prod writes this band (read-only precond probe only)",
+  "open_items": [
+    "PR to main (R0 merges; hub auto-bake discloses per the git-linked law — this PR's hub churn: none, hub untouched)",
+    "migration 0003 applies on the next operator-ordered deploy window (prod is ALREADY at this end-state via live G1 — the migration is the fresh-env companion)",
+    "G4 trigger installs on operator order after precondition re-verify",
+    "prod API redeploy remains operator-gated CLI (the deployed API predates the convergence; consumers here land with the next build)"
+  ]
+}

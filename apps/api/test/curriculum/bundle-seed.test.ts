@@ -7,7 +7,9 @@
  *     curriculum.json, the pinned bytes of record): 1 SUBJECT / 8 TOPIC /
  *     30 SUBTOPIC / 195 SPEC_POINT / 233 PART_OF edges; the code mapping
  *     (4PH1 root, 4PH1-S1 UNIT, 4PH1-S1-a TOPIC, 4PH1-1.1 / 4PH1-1.2P
- *     SUBTOPIC spec codes) + the T-C24 applicability verbatim passthrough;
+ *     SPEC_POINT spec codes — the T-MIG-139 F.5 §7 gate-G2 CONVERGED
+ *     landing, was SUBTOPIC pre-139) + the T-C24 applicability verbatim
+ *     passthrough;
  *   - the SEED: fresh store → 234 nodes / 233 edges created, the curriculum
  *     version lands ACTIVE, alreadyActive=false; idempotent re-run →
  *     everything reused, created=0, alreadyActive=true (the structural
@@ -93,9 +95,10 @@ describe("second-subject bundle — the pinned content contract (igcse-physics-1
     const topic = mapped.get("igcse-physics-T1:SUBa")!;
     expect(topic.nodeType).toBe("TOPIC");
     expect(topic.dbCode).toBe("4PH1-S1-a");
-    // the spec point → SUBTOPIC law (official numbers verbatim)
+    // the spec point → SPEC_POINT law (T-MIG-139 G2 convergence; official
+    // numbers verbatim)
     const sp = mapped.get("1.1")!;
-    expect(sp.nodeType).toBe("SUBTOPIC");
+    expect(sp.nodeType).toBe("SPEC_POINT");
     expect(sp.dbCode).toBe("4PH1-1.1");
     // the P-suffix law: physics-only content, Paper 2P only — the C-suffix mirror
     const spP = mapped.get("1.2P")!;
@@ -296,7 +299,7 @@ describe("second-subject seed — deterministic idempotent activation", () => {
     // the serving posture of record: the tree lands VALIDATED
     expect(root.validation_status).toBe("VALIDATED");
     const sp = store.nodes.get("4PH1-1.1")!;
-    expect(sp.node_type).toBe("SUBTOPIC");
+    expect(sp.node_type).toBe("SPEC_POINT");
     expect(sp.validation_status).toBe("VALIDATED");
     // all node provenance = the bundle line of record
     expect(sp.provenance).toBe(bundleProvenance(SOURCE));
@@ -487,17 +490,17 @@ describe("T-MIG-135a maths bundle — the dotted :SUB grammar (igcse-maths-a-18-
       (m) => m.nodeType === "TOPIC" && m.bundleCode.includes("T2:SUB"),
     )!;
     expect(t2.dbCode.startsWith("4MA1-S2-")).toBe(true);
-    // the spec point → SUBTOPIC law: the official code verbatim, LETTER
+    // the spec point → SPEC_POINT law: the official code verbatim, LETTER
     // suffixes and all (4MA1-1.6E, 4MA1-1.6G — the maths tier letters)
     const sp = mapped.get("1.6E")!;
-    expect(sp.nodeType).toBe("SUBTOPIC");
+    expect(sp.nodeType).toBe("SPEC_POINT");
     expect(sp.dbCode).toBe("4MA1-1.6E");
     expect(mapped.get("1.1A")!.dbCode).toBe("4MA1-1.1A");
     expect(mapped.get("1.1H")!.dbCode).toBe("4MA1-1.1H");
     // every maths spec point resolves to its parent TOPIC's dbCode as a
     // prefix (the join the questions shim depends on)
     for (const m of mapped.values()) {
-      if (m.nodeType !== "SUBTOPIC") continue;
+      if (m.nodeType !== "SPEC_POINT") continue;
       const parentTopic = mapped.get(m.parentBundleCode!)!;
       expect(parentTopic.nodeType).toBe("TOPIC");
       expect(m.dbCode.startsWith(parentTopic.dbCode)).toBe(false); // spec codes are NOT topic-suffixed
@@ -579,9 +582,9 @@ describe("T-MIG-136a maths-b bundle — the placeholder :SUB_ + alnum spec gramm
     const placeholder = mapped.get("igcse-maths-b-T1:SUB_")!;
     expect(placeholder.nodeType).toBe("TOPIC");
     expect(placeholder.dbCode).toBe("4MB1-S1-_");
-    // the alnum spec point → SUBTOPIC law: {grandparent UNIT}-{code} verbatim
+    // the alnum spec point → SPEC_POINT law (T-MIG-139 G2 convergence): {grandparent UNIT}-{code} verbatim
     const sp = mapped.get("1A")!;
-    expect(sp.nodeType).toBe("SUBTOPIC");
+    expect(sp.nodeType).toBe("SPEC_POINT");
     expect(sp.dbCode).toBe("4MB1-S1-1A");
     // the two-digit section alphabet rides its own UNIT — the code lands
     // VERBATIM (the card law: 4MB1-S1-1A carries the section digit twice,
@@ -595,7 +598,7 @@ describe("T-MIG-136a maths-b bundle — the placeholder :SUB_ + alnum spec gramm
     // EVERY alnum point = its own grandparent UNIT's dbCode + its code — the
     // join the four subsystems key on stays derivable from the tree itself
     for (const m of mapped.values()) {
-      if (m.nodeType !== "SUBTOPIC") continue;
+      if (m.nodeType !== "SPEC_POINT") continue;
       const placeholderTopic = mapped.get(m.parentBundleCode!)!;
       expect(placeholderTopic.nodeType).toBe("TOPIC");
       const spUnit = mapped.get(placeholderTopic.parentBundleCode!)!;
@@ -645,7 +648,7 @@ describe("T-MIG-136a maths-b bundle — the placeholder :SUB_ + alnum spec gramm
     // the placeholder + the alnum point land with the mapped codes
     expect(store.nodes.get("4MB1-S1-_")!.node_type).toBe("TOPIC");
     const sp = store.nodes.get("4MB1-S1-1A")!;
-    expect(sp.node_type).toBe("SUBTOPIC");
+    expect(sp.node_type).toBe("SPEC_POINT");
     expect(sp.validation_status).toBe("VALIDATED");
     expect(sp.provenance).toBe(bundleProvenance(MATHS_B_SOURCE));
     // the PART_OF direction law holds on the maths-b tree too (SP→TOPIC→UNIT→SUBJECT)

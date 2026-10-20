@@ -8,6 +8,13 @@ task:
   wave: post-migration S3
   deps: [T-MIG-134, T-MIG-135, T-MIG-136]
   execution_record: >
+    SCOPE AMENDMENT (pre-code, disclosed): the G2 convergence is not
+    producer-only — four consumers keyed on the SUBTOPIC landing
+    (contracts enum, tutor structure walk, knowledge misconception
+    branch, sme topic-code resolver). All four converge in this band;
+    each is a byte-equivalent serving restoration of the pre-G-round
+    row set under the new name. No schema is widened to make a test
+    pass — the enum joins the authority-approved 7-value law of record.
     Claimed per the F.5 §7 G-round plan of record (operator "go" trace
     1a159c4febff6695; execution receipt G1_G3_G5_EXECUTION_RECEIPT_20261020,
     fp16 7a655924ed01740a): G1/G3/G5 executed on production 2026-10-20
@@ -40,6 +47,10 @@ basis: >
 scope:
   allowed:
     - "packages/db/src/schema/schema.ts (ck_node_type 7-value law)"
+    - "packages/contracts/src/curriculum.ts + curriculum.test.ts (knowledgeNodeTypeSchema + SPEC_POINT — the typecheck-proved consumer convergence: every NodeView-style schema embeds this enum)"
+    - "apps/api/src/services/tutor/kg-retriever.ts + test/tutor/kg-retriever-wire.test.ts (structureNodes IN-list + pin — restores the exact pre-G-round row set under the new name)"
+    - "apps/api/src/services/knowledge/index.ts (topicLike += SPEC_POINT — misconception-attachment branch)"
+    - "apps/api/src/services/sme/bundle-questions.ts (topicCodeResolver filter — typecheck TS2367 proved the necessity, disclosed per the 136a card-amendment precedent)"
     - "packages/db/drizzle/** (new migration only)"
     - "apps/api/src/services/teacher/concept-seed.ts (spec-point landing + guard)"
     - "apps/api/src/services/curriculum/bundle-seed.ts (spec-point landing + guard)"

@@ -285,7 +285,7 @@ function canonicalJson(value: unknown): string {
 interface MappedNode {
   bundleCode: string;
   dbCode: string;
-  nodeType: "SUBJECT" | "UNIT" | "TOPIC" | "SUBTOPIC";
+  nodeType: "SUBJECT" | "UNIT" | "TOPIC" | "SPEC_POINT";
   title: string;
   description: string;
   applicability: Record<string, unknown> | null;
@@ -385,7 +385,9 @@ export function mapBundleNodes(
       });
       continue;
     }
-    // SPEC_POINT lands as SUBTOPIC — two dbCode laws, both "the official
+    // SPEC_POINT lands as SPEC_POINT — the F.5 §7 gate-G2 CONVERGED landing
+    // (T-MIG-139; pre-139 both paths collapsed it to SUBTOPIC by the of-record
+    // 4CH1 scheme). Two dbCode laws, both "the official
     // identity verbatim, never re-derived":
     //   (a) hierarchical numbers (T-MIG-134a, unchanged): `{subject}-{code}`
     //       (4PH1-1.1, 4PH1-1.2P, 4MA1-1.6E) — the official number is
@@ -428,7 +430,7 @@ export function mapBundleNodes(
     byCode.set(n.code, {
       bundleCode: n.code,
       dbCode: specDbCode,
-      nodeType: "SUBTOPIC",
+      nodeType: "SPEC_POINT",
       title: bound(n.title, 200),
       description: bound(descriptionPrefix + " (spec point): " + n.title, 1000),
       applicability: (n.applicability ?? null) as Record<string, unknown> | null,
@@ -525,8 +527,11 @@ export async function seedBundleCurriculum(
     }
   }
   for (const m of mapped.values()) {
-    if (m.nodeType === "SUBTOPIC") {
-      await resolveNode(deps, resolved, m.bundleCode, m.dbCode, "SUBTOPIC", m.title, m.description, "VALIDATED", provenance, activatedBy, counters, m.applicability, now);
+    if (m.nodeType === "SPEC_POINT") {
+      // T-MIG-139 (F.5 §7 gate G2): the spec-point pass resolves with the node's
+      // OWN converged type. Pre-convergence rows reuse-refuse via the guard
+      // (the G3/G5 receipt-keyed backfill is the only retyping authority).
+      await resolveNode(deps, resolved, m.bundleCode, m.dbCode, "SPEC_POINT", m.title, m.description, "VALIDATED", provenance, activatedBy, counters, m.applicability, now);
     }
   }
 
@@ -586,7 +591,7 @@ export async function seedBundleCurriculum(
     rootNodeId: root.id,
     units: unitNodes.size,
     topics: topicNodes.size,
-    specPoints: [...mapped.values()].filter((m) => m.nodeType === "SUBTOPIC").length,
+    specPoints: [...mapped.values()].filter((m) => m.nodeType === "SPEC_POINT").length,
     nodesCreated: counters.nodesCreated,
     nodesReused: counters.nodesReused,
     edgesCreated: counters.edgeCreated,
@@ -714,6 +719,16 @@ async function resolveNode(
   if (existing == null) existing = (await findByCode(deps, code))[0] ?? null;
   if (existing != null) {
     requireSeedNode(existing, code, provenance);
+    // T-MIG-139 drift guard: the seed's identity contract is (code → node_type).
+    // A row landed under the pre-convergence law (SUBTOPIC where this seed now
+    // maps SPEC_POINT) is a G3/G5-protected state — refuse, never absorb.
+    if (existing.node_type !== nodeType) {
+      throw new BundleSeedConflictError(
+        "knowledge node " + code + " landed node_type '" + existing.node_type +
+          "' but the seed law maps '" + nodeType +
+          "' — pre-convergence row: apply the F.5 §7 receipt-keyed backfill or rebaseline the branch; never re-seed over it",
+      );
+    }
     if (
       applicability != null &&
       canonicalJson(applicability) !== canonicalJson(existing.applicability ?? null)

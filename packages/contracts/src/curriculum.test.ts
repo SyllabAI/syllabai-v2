@@ -42,8 +42,8 @@ describe("knowledgeNodeValidationStatusSchema — KnowledgeNode.java:28", () => 
 });
 
 describe("knowledgeNodeTypeSchema — NodeType.java full domain", () => {
-  test("accepts all six values incl. MISCONCEPTION and CONCEPT (T-C11, V15)", () => {
-    for (const t of ["SUBJECT", "UNIT", "TOPIC", "SUBTOPIC", "MISCONCEPTION", "CONCEPT"]) {
+  test("accepts all seven values incl. MISCONCEPTION, CONCEPT, SPEC_POINT (T-C11, V15; T-MIG-139 G2)", () => {
+    for (const t of ["SUBJECT", "UNIT", "TOPIC", "SUBTOPIC", "MISCONCEPTION", "CONCEPT", "SPEC_POINT"]) {
       expect(knowledgeNodeTypeSchema.safeParse(t).success).toBe(true);
     }
     expect(knowledgeNodeTypeSchema.safeParse("SPECIFICATION_POINT").success).toBe(false);

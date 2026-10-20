@@ -422,8 +422,10 @@ describe("concept-graph seed — deterministic idempotent activation", () => {
     const d = seedDeps(store);
     await activateConceptGraph(d as never, ACTIVATOR);
     // strip one SP's applicability, re-run: the guard must write it back
+    // (T-MIG-139: spec points land SPEC_POINT now — the practicals, the only
+    // SUBTOPIC rows, carry no applicability)
     const spCode = [...store.nodes.values()].find(
-      (n) => n.node_type === "SUBTOPIC" && n.applicability != null,
+      (n) => n.node_type === "SPEC_POINT" && n.applicability != null,
     )!;
     const before = JSON.stringify(spCode.applicability);
     spCode.applicability = null;

@@ -89,7 +89,7 @@ export function buildSqlKgGraph(sql: SqlFn): KgGraphPort {
       return (await sql`
         select id, code, title, validation_status
         from knowledge_nodes
-        where node_type in ('SUBJECT', 'UNIT', 'TOPIC', 'SUBTOPIC')
+        where node_type in ('SUBJECT', 'UNIT', 'TOPIC', 'SUBTOPIC', 'SPEC_POINT')
           and validation_status = 'VALIDATED'`) as unknown as StructureNodeRow[];
     },
     async prerequisiteChains(topicIds) {
