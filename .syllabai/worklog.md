@@ -10043,3 +10043,24 @@ Work Log:
 
 Stage Summary:
 - Wave-1 of record: 16 grade-A codes closed on the questions axis; grade-B 11 + notes axis untouched; deploy to hub NOT fired (VERCEL_TOKEN staging absent since rollback) — content ships at next redeploy; followups: wave-2 review, VERCEL_TOKEN re-stage, PAT rotation, CORS cleanup.
+
+---
+Task ID: T-MIG-140 run-001 (books-course-page-option)
+Agent: r7a (Super Z, operator session trace 1a15ad0b613c7381)
+Task: "We have decided to add books to each courses. ALready did for edexcel igcse chemistry, but there is no option in course page, quickly add that" — put the Student Book option on the course page; plus answer the IAL-physics-two-books / CIE-books planning question.
+
+Work Log:
+- fetch-first (feaf7ac -> 26e11d8 ff)
+- first-hand read: books wire = contracts/books.ts (BookShelfEntry[] shelf, T-C20 VALIDATED-only) + api routes/books.ts + hub lib/books.ts + band-133k landing card gated on lib/books-registry.ts (BOOKS_ARCHIVE_COURSES = {igcse-chemistry-19})
+- production evidence: fetched https://syllabai-hub-v2.vercel.app/courses/igcse-chemistry-19 — 'Student Book'/'Open the book' card ALREADY in served HTML; the PERSISTENT nav (CourseShell navGroups, desktop sidebar + mobile drawer) had NO books row on any course surface = the operator-reported gap
+- read-only prod census (psycopg2, Vercel env API lever, rollback txn, zero net writes, app name t140-books-census-r7a): exactly ONE TEXTBOOK doc live — Jim Clark 'Edexcel International GCSE (9-1) Chemistry Student Book', 383pp, VALIDATED, 29 unit-bound chapters, course_id igcse-chemistry-19; scratch evidence /home/z/my-project/scratch/t140_books_census_evidence.json
+- CHANGE 1 course-shell.tsx: 'Student Book' row (BookMarked, ${base}/books) in the Revision group between Revision Notes and Flashcards; desktop + mobile mirrored; gate = courseHasBookArchive (SAME committed registry as the 133k card; disabled + roadmap badge until the course's books/<specKey>/ home lands; the shelf stays the live T-C20 gate)
+- CHANGE 2 books/page.tsx: shelf title hardcode 'Edexcel ...' -> boardOf (registry row's own board — CIE rows print 'Cambridge International')
+- verify: apps/hub eslint exit 0; bun run build:hub exit 0 (corpus prebuilds + next build green)
+
+Stage Summary:
+- books option now on EVERY course surface (sidebar + drawer + landing card); chemistry's option already live in prod before this act — the nav was the gap
+- multi-book of record: serving shape already N books/course (BookShelfEntry[] -> N BookCards); the ONE real gap is the archive's one-pdf-per-course law (bookCorpusPathForCourse hardcodes student-book.pdf — a two-book course's SB2 would mount SB1's pdf); per-book file naming = deliberate follow-up lane BEFORE the IAL physics package stages
+- receipt: .syllabai/receipts/T-MIG-140/run-001-books-course-page-option.json
+- zero DB writes, no data-lane touch, secrets untouched, fetch-first, no force
+- WORKLOG DEFECT DISCLOSED: the first rebase union naively concatenated the two full staged versions and DOUBLED the 149 shared base entries (301 vs the honest 151); caught pre-push by the T-MIG-SEED duplicate count (2 vs 1) and repaired in this same commit to the protocol's intended union — origin/main's full version byte-exact + this one new entry; no pre-existing entry text altered

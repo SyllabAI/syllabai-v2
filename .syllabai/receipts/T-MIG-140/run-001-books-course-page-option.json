@@ -1,0 +1,50 @@
+{
+  "band": "140a",
+  "run": "run-001",
+  "at": "2026-10-20T19:55Z",
+  "order": "operator trace 1a15a87407daa94d: 'We have decided to add books to each courses. ALready did for edexcel igcse chemistry, but there is no option in course page, quickly add that, then we will plan something' + the follow-up question (trace 1a15ad0b613c7381) on IAL physics' two books and CIE books",
+  "executor": "r7a (Super Z, session web-da4ab8b1)",
+  "verdict": "SHIPPED — the Student Book option now lives in the persistent course chrome (sidebar + mobile drawer), gated exactly like the band-133k landing card; the shelf title loses its hardcoded 'Edexcel' prefix (boardOf) so CIE/IAL lanes render their own board",
+  "finding_of_record": {
+    "the_card_was_already_live": "production HTML of /courses/igcse-chemistry-19 (https://syllabai-hub-v2.vercel.app, fetched 2026-10-20 ~19:40Z) already contains 'Student Book' + 'Open the book' (the band-133k Revision-band card, ready via courseHasBookArchive). What had NO books option anywhere was the persistent course nav (CourseShell navGroups — desktop sidebar AND mobile drawer share it): no 'Student Book' row on ANY course surface. That is the operator's 'no option in course page'.",
+    "db_census_read_only": {
+      "method": "psycopg2 -> Neon production via the Vercel env API lever (DATABASE_URL, production target), sslmode=require, application_name=t140-books-census-r7a, every probe inside ONE txn ROLLED BACK (zero net writes), URI memory-only never printed",
+      "textbook_documents": 1,
+      "the_book": "e6c0db50-0f84-55de-b50c-e4d49285cd6d v1 — 'Edexcel International GCSE (9-1) Chemistry Student Book', Jim Clark, 383 pages, checksum present, validation_state=VALIDATED, 29 book_chapters rows all unit-bound (u1 Principles of Chemistry x10, u2 Inorganic x8, u3 Physical x3, u4 Organic x8), bound to course_id 'igcse-chemistry-19'",
+      "books_gate_summary": "textbook_docs=1, validated=1 — chemistry is the only live book; the T-C20 shelf gate serves it",
+      "evidence": "/home/z/my-project/scratch/t140_books_census_evidence.json (local, not committed)"
+    }
+  },
+  "changes": [
+    {
+      "file": "apps/hub/src/components/hub/course-shell.tsx",
+      "what": "Revision navGroup gains a 'Student Book' row (BookMarked icon, ${base}/books) between Revision Notes and Flashcards — mirrored automatically in the mobile drawer (same navGroups). Gate: courseHasBookArchive(data.course.slug) — the SAME committed-registry gate as the band-133k landing card; disabled + 'roadmap' badge until the course's books/<specKey>/ archive home lands. The link's target (the /books shelf) stays the LIVE T-C20 gate — an entry can only ever lead to an honest shelf.",
+      "why": "the operator's gap: the persistent course chrome had no books option on any course surface"
+    },
+    {
+      "file": "apps/hub/src/app/courses/[course]/books/page.tsx",
+      "what": "shelf title 'Edexcel ${level} ${label} Student Books' -> '${boardOf(meta)} ${level} ${label} Student Books' (boardOf = registry row's own board, 'Cambridge International' on CIE rows, else 'Edexcel')",
+      "why": "the books rollout reaches CIE/IAL lanes next; the hardcoded board would have mislabeled every non-Edexcel shelf"
+    }
+  ],
+  "verification": {
+    "lint": "bun run lint (apps/hub, eslint .) exit 0",
+    "build": "bun run build:hub (verify_corpus_23a + verify_flashcard_sync_courses + validate_cie_bundles prebuilds + next build) exit 0",
+    "ci": "post-push check-runs observed on the pushed commit (see run addendum)"
+  },
+  "multibook_disclosure": {
+    "already_multi_book_ready": "the serving shape is an ARRAY (BookShelfEntry[]; api shelfForCourse joins book_chapters by course_id, VALIDATED only) and the shelf page maps one BookCard per entry — N books render as N cards with zero UI change. IAL Physics' two books (SB1 Units 1&2, SB2 Units 4&5) fit the model as two TEXTBOOK documents bound to the same course_id 'ial-physics-19'.",
+    "the_one_real_gap": "the archive home is ONE pdf per course: bookCorpusPathForCourse(slug, 'student-book.pdf') hardcodes the filename under books/<specKey>/ — the shelf BookCard AND the viewer's whole-book mount use it for EVERY book of the course. With two books registered, book 2's card would mount book 1's pdf. Per-book file naming (e.g. books/<specKey>/<documentId>/student-book.pdf, or a per-book archive ref in canonical_json) is a deliberate follow-up lane BEFORE the IAL physics book package is staged — data/pipeline decision, not a UI one."
+  },
+  "operator_question_answered_separately_in_chat": "IAL physics two-book recommendation + CIE endorsed-coursebook mapping (CUP coursebook series as the de-facto standard; 9702 = ONE coursebook covering the whole A Level, unlike Edexcel IAL's per-year split)",
+  "secrets_discipline": "no secrets printed, staged, or committed; the DB URI lived in process memory only; the probe wrote nothing (rollback txn); no data lane touched (the books data of record stays T-MIG-133's)",
+  "write_ledger": {
+    "repo": "2 source files + this receipt + worklog entry",
+    "db": "zero net writes (census in rollback txn)",
+    "api": "no route changes (books read surface untouched)"
+  },
+  "provenance": {
+    "fetch_first": "git fetch origin main before any act; local main fast-forwarded feaf7ac -> 26e11d8",
+    "head_before_commit": "26e11d8"
+  }
+}
