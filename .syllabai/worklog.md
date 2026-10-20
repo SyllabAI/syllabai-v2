@@ -10248,3 +10248,16 @@ Work Log:
 Stage Summary:
 - Tranche 2 = the run-003 classes fixed + the phase-4 contract honestly re-based on what the frozen ingest can serve. Next: PR + self-merge on green, DISPATCH run #4 mode=cow+prod, then on green the CIE fill audit.
 - Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-phase4-repair-program-r1-tranche2.json.
+
+Task ID: CIE-INTEGRATION prod-apply ruling A of record (trace 1a15b161bf960249)
+Agent: r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: operator 'ruling "A"' — the prod-apply HOLD's staged decision resolves to optionA: adopt the identity-stable namespace/UNIT/title laws, re-land, re-gate, re-dispatch.
+
+Work Log:
+- RULING RECORDED: optionA adopted of record — receipt CIE-INTEGRATION/cie-phase4-prod-apply-ruling-a-r0.json (the adopted design verbatim: points 1/2/3/5 of the hold receipt's optionA; point 4 stays superseded by PR #228's asset-map externalization — take theirs). The landed one-tree-per-code graft semantics are superseded as the of-record CIE design.
+- ROUTING DEVIATION DISCLOSED: the hold receipt's nextAct named the parallel lane for the re-dispatch; the operator landed the ruling directly in THIS session — operator sovereignty overrides the suggested routing; claim taken here per the claim-in-first-commit law, zero-collision verified (fetch-first @ e6d60d2; the repair-program branch carries bookkeeping only; no identity-law branch on origin; PRs #228/#229 merged).
+- GRAMMAR OF RECORD READ OFF THE COMMITTED FLEET (first-hand, all 45 bundles): CIE TOPIC codes carry the official -T tail — 9709 T1..T6 (six banks, one TOPIC each), 0653/0973 TB/TC/TP, 0580/0607 TC/TE (core/extended disjoint), 0500 TS1..TS6, 0452 plain T1..T6 — the tail law lands <spec>-S<rest> fail-closed; the CIE node namespace is version-scoped <code>-<syllabusVersion> (curriculumCode symmetry), splitting 0452 (2023-2025 vs 2027-2029), 0455/0500/0460 (20 vs 25 generations).
+- NEXT: branch cie-phase4/identity-laws-r0 — the three law changes in bundle-seed.ts + the orchestrator map-law census (pre-flight before any DB contact) + the test re-landing; gates; PR; on green self-merge and dispatch mode=cow+prod (the 134c gate); receipts end-to-end.
+
+Stage Summary:
+- The hold lifts AGAINST THE OPTIONA DESIGN ONLY — run #3 stays cancelled of record; no prod-apply dispatch until the identity-laws branch is green of record. Production still carries ZERO CIE nodes (the correction stays drift-free). Hygiene: .syllabai/** only, zero secrets, zero prod/db/Neon/LLM contact, fetch-first, no force.
