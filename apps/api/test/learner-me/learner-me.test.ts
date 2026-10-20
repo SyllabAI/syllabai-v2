@@ -670,6 +670,43 @@ describe("examSeriesCalendar (LearnerExamSeriesController :59-69)", () => {
     expect(sql.queries[0]).toContain("qualification = ?");
   });
 
+  test("widened vocabulary: the qualification resolves its OWNING board (trace 1a1589078364b76d)", async () => {
+    const seen: unknown[][] = [];
+    const sql = fakeSql([
+      {
+        match: /board = \? and qualification = \? and published = true/,
+        rows: [],
+        rowsFor: (params) => {
+          seen.push(params);
+          return [];
+        },
+      },
+    ]);
+    await examSeriesCalendar({ sql, clock }, "CAMBRIDGE_IGCSE");
+    await examSeriesCalendar({ sql, clock }, "CAMBRIDGE_INTL_AS_A_LEVEL");
+    await examSeriesCalendar({ sql, clock }, "IAL");
+    await examSeriesCalendar({ sql, clock }, "INTERNATIONAL_GCSE");
+    await examSeriesCalendar({ sql, clock }, "NOT_A_QUALIFICATION");
+    // the Cambridge widening owns board CAMBRIDGE_INTERNATIONAL; the
+    // founding values keep the frozen PEARSON_EDEXCEL pin; unknown strings
+    // fall back to the founding pin → an honest empty list (the
+    // pre-widening behavior)
+    expect(seen.map((p) => p[0])).toEqual([
+      "CAMBRIDGE_INTERNATIONAL",
+      "CAMBRIDGE_INTERNATIONAL",
+      "PEARSON_EDEXCEL",
+      "PEARSON_EDEXCEL",
+      "PEARSON_EDEXCEL",
+    ]);
+    expect(seen.map((p) => p[1])).toEqual([
+      "CAMBRIDGE_IGCSE",
+      "CAMBRIDGE_INTL_AS_A_LEVEL",
+      "IAL",
+      "INTERNATIONAL_GCSE",
+      "NOT_A_QUALIFICATION",
+    ]);
+  });
+
   test("view mapping: LocalDate passthrough, nullable dates honest, instant rendered", async () => {
     const sql = fakeSql([
       { match: /where published = true order by window_start asc$/, rows: [seriesRow({})] },

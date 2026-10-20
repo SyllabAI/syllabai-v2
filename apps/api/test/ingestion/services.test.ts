@@ -476,6 +476,30 @@ describe("exam-series — the fail-closed calendar gates (frozen :102-132, in or
     expect(() => validateExamSeriesRow(row({ windowEnd: null }))).toThrow("NPE parity");
     expect(() => validateExamSeriesRow(row({ published: null }))).toThrow("NPE parity");
   });
+
+  test("widened vocabulary: Cambridge qualifications import under their dataset board (trace 1a1589078364b76d)", () => {
+    // the CIE widening (CAMBRIDGE_IGCSE / CAMBRIDGE_INTL_AS_A_LEVEL) binds
+    // through the SAME gates — the board rides the dataset envelope, the
+    // citation law is board-blind
+    expect(() =>
+      validateExamSeriesRow(
+        row({
+          qualification: "CAMBRIDGE_IGCSE",
+          sourceUrl: "https://www.cambridgeinternational.org/key-times",
+        }),
+      ),
+    ).not.toThrow();
+    expect(() =>
+      validateExamSeriesRow(
+        row({
+          qualification: "CAMBRIDGE_INTL_AS_A_LEVEL",
+          sourceUrl: "https://www.cambridgeinternational.org/key-times",
+        }),
+      ),
+    ).not.toThrow();
+    // the governed vocabulary still refuses non-vocabulary values
+    expect(() => examSeriesRowSchema.parse({ ...row(), qualification: "O_LEVEL" })).toThrow();
+  });
 });
 
 // ── canonical validator reuse + dataset binding shapes ──────────────────────

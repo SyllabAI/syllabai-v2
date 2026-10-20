@@ -9,6 +9,7 @@
  */
 import { describe, expect, it } from "bun:test";
 import {
+  EXAM_SERIES_BOARD_CIE,
   EXAM_SERIES_BOARD_PEARSON_EDEXCEL,
   assignmentSubmissionRequestSchema,
   examSeriesViewSchema,
@@ -59,6 +60,17 @@ describe("examSeriesViewSchema", () => {
 describe("EXAM_SERIES_BOARD_PEARSON_EDEXCEL", () => {
   it("pins the frozen board constant verbatim (ExamSeriesView :26)", () => {
     expect(EXAM_SERIES_BOARD_PEARSON_EDEXCEL).toBe("PEARSON_EDEXCEL");
+  });
+});
+
+describe("EXAM_SERIES_BOARD_CIE", () => {
+  it("pins the second imported board key verbatim (trace 1a1589078364b76d)", () => {
+    expect(EXAM_SERIES_BOARD_CIE).toBe("CAMBRIDGE_INTERNATIONAL");
+  });
+
+  it("rides the unchanged ExamSeriesView wire (board is a free string)", () => {
+    const v = examSeriesViewSchema.parse({ ...VALID_SERIES, board: "CAMBRIDGE_INTERNATIONAL" });
+    expect(v.board).toBe("CAMBRIDGE_INTERNATIONAL");
   });
 });
 

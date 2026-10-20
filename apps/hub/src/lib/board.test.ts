@@ -58,8 +58,21 @@ describe("distinctBoards", () => {
 });
 
 describe("hasExamSeriesCalendar", () => {
-  it("gates the Pearson calendar to Edexcel lanes", () => {
+  it("carries the founding Edexcel lanes (unchanged)", () => {
     expect(hasExamSeriesCalendar(EDEXCEL_ROW)).toBe(true);
-    expect(hasExamSeriesCalendar(CIE_ROW)).toBe(false);
+  });
+
+  it("FLIPPED of record: Cambridge lanes now carry the calendar (trace 1a1589078364b76d)", () => {
+    // the founding Pearson-only gate refused them (no Cambridge vocabulary
+    // existed — a Pearson list on a Cambridge lane would have been a lie);
+    // the widened vocabulary + board-aware qualForLevel make the CAMBRIDGE_*
+    // calendar the lane's own (honestly empty until data is imported)
+    expect(hasExamSeriesCalendar(CIE_ROW)).toBe(true);
+  });
+
+  it("still fails closed for a board outside the calendar vocabulary", () => {
+    expect(hasExamSeriesCalendar({ board: "AQA" })).toBe(false);
+    expect(hasExamSeriesCalendar({ board: "OCR" })).toBe(false);
+    expect(hasExamSeriesCalendar({})).toBe(true); // board absent = the founding Edexcel rows
   });
 });
