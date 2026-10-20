@@ -9942,3 +9942,20 @@ Work Log:
 Stage Summary:
 - Band 133k landed: the books ENTRY is on the course page — data-driven, build-safe, honest by construction. Receipt: .syllabai/receipts/T-MIG-133/band-133k-course-entry-run-001-r7a.json.
 - Write ledger: 3 hub files only; zero api/core/db/Neon/LLM/resources contact; fetch-first, no force. PR for the R0-auto desk.
+
+---
+Task ID: R0-AUTO-20261021-1830 (Job 438940, sweep 18:30Z)
+Agent: R0-auto (merge-desk integrator, cron)
+Task: PERIODIC SWEEP 2026-10-21 18:30Z — merge PR #225 (dc6-p2a question-surface CLA history revisit wire) + PR #226 (T-MIG-133 band 133k course-page books ENTRY).
+
+Work Log:
+- PR #225 (2 intake rounds — main advanced mid-flight, the fast-lane day pattern): (a) head 1dce3a0 verified; round-1 merge 17d4e2e -> 95f8941 CLEAN; main advanced to 19378ab (PR #227 self-merged by its lane) -> round-2 merge -> 4937029 CLEAN (zero conflicts both rounds, no resolver needed); gates: install 930 pkgs, typecheck clean, bun test apps/api packages 2284 pass / 13 skip / 0 fail, golden selftest OK; head CI hub+verify SUCCESS; MERGED -> c70981f
+- PR #226: head 9f08935 (fresh-based on 19378ab by its lane), head CI 3/3 check-runs SUCCESS, reviews 0 / holds 0, diff 5 files in-boundary (apps/hub 3, .syllabai 2); MERGED -> 727ffe4
+- New main tip 727ffe4 CI verified GREEN: verify SUCCESS + hub SUCCESS + ci SUCCESS
+- No worklog conflicts this sweep; no *.java; no core/hub-repo content; zero Neon/prod writes; no force-pushes; 2 merges = the per-run cap
+
+Stage Summary:
+- dc6-p2a: the question-anchored CLA overlay transcript now survives panel close/reload (the revisit wire)
+- 133k: the course-page books ENTRY of record (operator trace 1a15a87407daa94d) — books per course is now on the course page
+- Standing watch unchanged: Vercel deploy environmental incident (operator-keyed); ESCALATION #2 (81cf468 neon-replay red) un-triaged; PAT rotation overdue
+- fetch-first, no force; bookkeeping-only commit (.syllabai/** only)
