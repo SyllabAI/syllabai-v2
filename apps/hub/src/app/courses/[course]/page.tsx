@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   ArrowRight,
+  BookMarked,
   BookOpen,
   CircleHelp,
   FileQuestion,
@@ -22,6 +23,7 @@ import { CourseHeader } from "@/components/hub/course-header";
 import { CourseSwitcher } from "@/components/hub/course-switcher";
 import { TagChip } from "@/components/hub/chrome";
 import { allCourseParams } from "@/lib/static-params";
+import { courseHasBookArchive } from "@/lib/books-registry";
 
 type FrameworkTag = "Study" | "Practice" | "Diagnose";
 
@@ -32,6 +34,7 @@ interface ResourceItem {
   tags: FrameworkTag[];
   href?: string;
   countLabel?: string;
+  ctaLabel?: string;
   ready: boolean;
 }
 
@@ -146,6 +149,21 @@ export default async function CourseHubPage({
           ready: stats.notes > 0,
         },
         {
+          // T-MIG-133 band 133k — the books ENTRY (the shelf page is the
+          // live T-C20 gate; this card gates on the committed books archive
+          // of record, per lib/books-registry.ts — an entry can only ever
+          // lead to an honest shelf, never a fabricated book).
+          icon: BookMarked,
+          title: "Student Book",
+          desc: courseHasBookArchive(meta.slug)
+            ? "The full student book, chapter by chapter — every chapter opens the book at its own page range, with the same spec joins the tutor grounds in."
+            : "The full student book for this course — planned next in the books rollout.",
+          tags: ["Study"],
+          href: courseHasBookArchive(meta.slug) ? `${base}/books` : undefined,
+          ctaLabel: "Open the book",
+          ready: courseHasBookArchive(meta.slug),
+        },
+        {
           icon: CircleHelp,
           title: "Flashcards",
           desc: "Interactive digital flashcards that reinforce facts and definitions, imported per subtopic.",
@@ -187,7 +205,7 @@ export default async function CourseHubPage({
         activeTab="resources"
         showTabs
         title={meta.subject}
-        description={`Tools designed specifically for the ${qual} syllabus (${meta.code}): revision notes, exam-style questions and flashcards organised around the ${officialTree ? "official specification tree" : "corpus specification tree"} — with provenance kept visible on every item.`}
+        description={`Tools designed specifically for the ${qual} syllabus (${meta.code}): revision notes, the student book, exam-style questions and flashcards organised around the ${officialTree ? "official specification tree" : "corpus specification tree"} — with provenance kept visible on every item.`}
       >
         {/* SME hero anatomy: "Edexcel | IGCSE | 4CH1" + course switcher */}
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -313,7 +331,7 @@ export default async function CourseHubPage({
                           <p className="text-xs font-medium text-foreground">
                             {r.countLabel}
                             <span className="ml-2 inline-flex items-center gap-1 text-primary">
-                              All topics <ArrowRight className="size-3.5" aria-hidden />
+                              {r.ctaLabel ?? "All topics"} <ArrowRight className="size-3.5" aria-hidden />
                             </span>
                           </p>
                         ) : (
