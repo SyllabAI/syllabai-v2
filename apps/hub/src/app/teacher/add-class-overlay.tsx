@@ -4,13 +4,26 @@
  * Add-class overlay — HUB-TEACHER-DASH wave 1 (operator trace
  * 1a0ec61d5612aa6d: "Teacher will add class, then select subjects").
  *
- * The student dashboard's AddCourseOverlay cascade (board → level →
- * subject), re-used verbatim where the registry is the same and changed
- * where the flow differs: step 1 is the CLASS NAME, step 3 MULTI-selects
- * subject lanes into a pending set (click toggles, nothing commits until
- * "Create class"), and the same dialog doubles as the EDIT flow for an
- * existing class (name pre-filled, current subjects pre-selected, footer
- * becomes "Save changes").
+ * The student dashboard's AddCourseOverlay cascade, re-used verbatim where
+ * the registry is the same and changed where the flow differs: step 1 is
+ * the CLASS NAME, step 3 MULTI-selects subject lanes into a pending set
+ * (click toggles, nothing commits until "Create class"), and the same
+ * dialog doubles as the EDIT flow for an existing class (name pre-filled,
+ * current subjects pre-selected, footer becomes "Save changes").
+ *
+ * The board step used to be a static always-pressed "Edexcel" button with
+ * a caption claiming the Cambridge International courses are
+ * past-papers-first launches — the same false fingerprint the add-course
+ * overlay carried before its fix (operator trace 1a1580a42635b8d9); the
+ * teacher ruling was declared in-file and survived that act. Since the
+ * phase 3 registry (49 Edexcel + 45 Cambridge International rows, all
+ * status full/pilot) the claim is false here too — and worse, the level
+ * step aggregated BOTH boards' shared "IGCSE" value while the header
+ * asserted one board. Operator trace 1a158596b1569079 ("want CIE lanes
+ * selectable in the teacher class-creation picker") opens the gate: the
+ * board step now derives from the registry (distinctBoards), levels and
+ * lanes are board-scoped, and a class may mix boards — the pending set
+ * spans board switches and stays visible (chips), never a hidden state.
  *
  * Form seeding without effects: the inner form mounts FRESH each time the
  * dialog opens (Radix mounts DialogContent only while open, and the form
@@ -33,12 +46,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { boardOf, distinctBoards } from "@/lib/board";
 import { duplicateVariants } from "@/lib/course-variant";
 import type { TeacherCourseLite } from "./teacher-client";
-
-/** Class creation targets the Edexcel lanes; the CIE-INTEGRATION wave is
- *  past-papers-first (no class tracking yet). */
-const BOARD = "Edexcel";
 
 function StepLabel({ n, title, hint }: { n: number; title: string; hint?: string }) {
   return (
@@ -73,20 +83,33 @@ function AddClassForm({
   // per-mount initializers — no reseed effects
   const [name, setName] = useState(editClass?.name ?? "");
   const [selected, setSelected] = useState<string[]>(editClass?.subjectSlugs ?? []);
+  const [board, setBoard] = useState<string | null>(null);
   const [level, setLevel] = useState<string | null>(null);
   const [q, setQ] = useState("");
 
   const subtitles = useMemo(() => duplicateVariants(courses), [courses]);
 
+  // the registry's distinct boards, busiest first — the honest cascade
+  // step 2 (same derivation as the add-course overlay's step 1)
+  const boards = useMemo(() => distinctBoards(courses), [courses]);
+
+  // the selected board's distinct levels, busiest first — both boards
+  // share the "IGCSE" value, so the board dimension must gate the level
+  // step explicitly (the pre-fix aggregate counted 66 IGCSE lanes under
+  // an "Edexcel" header)
   const levels = useMemo(() => {
     const counts = new Map<string, number>();
-    for (const c of courses) counts.set(c.level, (counts.get(c.level) ?? 0) + 1);
+    for (const c of courses) {
+      if (board && boardOf(c) !== board) continue;
+      counts.set(c.level, (counts.get(c.level) ?? 0) + 1);
+    }
     return [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
-  }, [courses]);
+  }, [courses, board]);
 
   const list = useMemo(() => {
     const needle = q.trim().toLowerCase();
     return courses
+      .filter((c) => !board || boardOf(c) === board)
       .filter((c) => !level || c.level === level)
       .filter(
         (c) =>
@@ -101,7 +124,7 @@ function AddClassForm({
           a.label.localeCompare(b.label) ||
           a.slug.localeCompare(b.slug),
       );
-  }, [courses, level, q]);
+  }, [courses, board, level, q]);
 
   const toggle = (slug: string) =>
     setSelected((cur) => (cur.includes(slug) ? cur.filter((s) => s !== slug) : [...cur, slug]));
@@ -141,23 +164,38 @@ function AddClassForm({
           />
         </div>
 
-        {/* step 2 — board (the registry's single honest value) */}
+        {/* step 2 — board (the registry's distinct values, busiest first;
+            switching boards resets the level, never the pending set) */}
         <div className="space-y-2">
-          <StepLabel n={2} title="Board" />
-          <div className="flex flex-wrap items-center gap-2">
-            <Button
-              type="button"
-              size="sm"
-              variant="outline"
-              aria-pressed
-              className="border-primary/60 bg-primary/5 font-medium"
-            >
-              {BOARD}
-            </Button>
-            <span className="text-xs text-muted-foreground">
-              Class creation covers the Pearson {BOARD} lanes; the Cambridge International courses are past-papers-first launches.
-            </span>
+          <StepLabel n={2} title="Board" hint={board ? undefined : "pick one"} />
+          <div className="flex flex-wrap gap-2">
+            {boards.map(([bname, count]) => (
+              <Button
+                key={bname}
+                type="button"
+                size="sm"
+                variant="outline"
+                aria-pressed={board === bname}
+                onClick={() => {
+                  setBoard(board === bname ? null : bname);
+                  setLevel(null);
+                }}
+                className={
+                  "gap-1.5 " +
+                  (board === bname ? "border-primary/60 bg-primary/5 font-medium" : "")
+                }
+              >
+                {bname}
+                <Badge variant="secondary" className="px-1.5 text-[10px]">
+                  {count}
+                </Badge>
+              </Button>
+            ))}
           </div>
+          <p className="text-xs text-muted-foreground">
+            The registry covers {boards.map(([b]) => b).join(" and ")} lanes. Subjects from both
+            boards can share one class.
+          </p>
         </div>
 
         {/* step 3 — subject lanes, multi-select */}
@@ -167,26 +205,33 @@ function AddClassForm({
             title="Subjects"
             hint={selected.length > 0 ? `${selected.length} selected` : "pick at least one"}
           />
-          <div className="flex flex-wrap gap-2">
-            {levels.map(([lname, count]) => (
-              <Button
-                key={lname}
-                type="button"
-                size="sm"
-                variant="outline"
-                aria-pressed={level === lname}
-                onClick={() => setLevel(level === lname ? null : lname)}
-                className={
-                  "gap-1.5 " + (level === lname ? "border-primary/60 bg-primary/5 font-medium" : "")
-                }
-              >
-                {lname}
-                <Badge variant="secondary" className="px-1.5 text-[10px]">
-                  {count}
-                </Badge>
-              </Button>
-            ))}
-          </div>
+          {!board ? (
+            <p className="py-2 text-center text-sm text-muted-foreground">
+              Pick a board to see its levels.
+            </p>
+          ) : (
+            <div className="flex flex-wrap gap-2">
+              {levels.map(([lname, count]) => (
+                <Button
+                  key={lname}
+                  type="button"
+                  size="sm"
+                  variant="outline"
+                  aria-pressed={level === lname}
+                  onClick={() => setLevel(level === lname ? null : lname)}
+                  className={
+                    "gap-1.5 " +
+                    (level === lname ? "border-primary/60 bg-primary/5 font-medium" : "")
+                  }
+                >
+                  {lname}
+                  <Badge variant="secondary" className="px-1.5 text-[10px]">
+                    {count}
+                  </Badge>
+                </Button>
+              ))}
+            </div>
+          )}
           <Input
             value={q}
             onChange={(e) => setQ(e.target.value)}
@@ -204,7 +249,7 @@ function AddClassForm({
               </p>
             ) : list.length === 0 ? (
               <p className="py-6 text-center text-sm text-muted-foreground">
-                No {level} course matches “{q}”.
+                No {board} {level} course matches “{q}”.
               </p>
             ) : (
               list.map((c) => {
