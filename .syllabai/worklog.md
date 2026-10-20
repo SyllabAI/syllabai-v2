@@ -9518,3 +9518,19 @@ Stage Summary:
 - Pool ledger: op#2 + op#3 = the workhorses (~1000 RPD each, proven on the live wire); op#1 anomaly + op#4 403 are operator-keyed; the original app key is back as shard-1's key (fresh at reset).
 - Next dispatch (after the midnight-Pacific reset): mode=backfill-sharded, rows = the 216 residual, expect ~115 docs with 3 healthy shards; final tranche(s) after; hygiene-delete of all T138_* secrets stays keyed to the LAST tranche.
 - Secrets discipline: values sealed via the Actions API, never printed, never logged; zero key material in the repo/tree; zero sandbox DB writes (all prod writes ride the CI gate); NAPI_TOKEN zero-touch; chemistry corpus untouched.
+
+---
+Task ID: trace 1a1598b26f1f148d (band 134b collision-discharge + verify)
+Agent: sz (Super Z, zai-web session web-9d2144ad-f8b8-4e63-9039-989f45cb596f)
+Task: operator order "Proceed with remaining 341" — the 134b remaining-question ingest (Physics 4PH1 SME bank)
+
+Work Log:
+- COLLISION DISCHARGED of record: the remaining 341 were ALREADY IN — the r0 lane's 134b resume (battery-134d-run-002-r0.json, commit dce1567, operator orders 1a153eb294a96e75 + 1a155d97bdad44e1, double-dispatched before the sz 134d order) completed ALL 24 sets (489 bundle questions -> 583 store rows) before this order was given; the order's premise (148 live / 341 pending) came from the sz run-003 MID-APPLY wire snapshot (this lane's own DISCOVERY, premise-corrected by the r0 card amendment); no duplicate act (one-deploy-per-lever); lane converted to independent verification per the cbc7835 precedent
+- Independent wire census (scripts/134b-push/wire_census_134b.mjs): run-001 12 legs with 2 mis-shapes disclosed (subjects versionId takes the UUID not the code; tree node-type key 'type' vs 'nodeType'), run-002 20 legs OF RECORD — FIRST battery-shape verification against the NEW api-of-record carrier dpl_ENEw3fhfz2NXdXfVP73DmZJpd8pd (post redeploy run-009; the r0 battery rode dpl_HphMddkuf2EK7dyYDTQMcjjMCLeX); FOUR ACTIVE cvs (4PH1-2017 uuid 5a9cd8fe == the 134c cv of record); KG root pin 4e845c30; tree EXACT 234 nodes + the 8 UNIT official titles on the wire; per-UNIT nodeId axis honest-0 x8 == the r0 predicate-semantics law (SPEC-node anchoring); S1 topic-name 96 (sz pin held); Movement and position 22 (r0 pin held); spec 3.10 = 21 (r0 pin held — an S3 point, THE collision-delta leg, was 0 mid-apply); spec 1.4 = 5 vs sz pin 4 — GROWTH DELTA disclosed (5/24 vs 24/24, lawful); chemistry byte-pin 56/4CH1-S3-b UNCHANGED; cross-corpus 0; unscoped four-owner 0; /paper 4PH1 404 (134e dormancy)
+- DB census NOT re-run: api.neon.tech DNS-blocked in this sandbox (npmjs/vercel resolve — sandbox network restriction, disclosed); the r0 SELECT-verified DB claims (583/3921/4504/984/585) stand of record; the operator-delivered NEON_KEY (fp12 4c2e12da872b) NEVER consumed — zero successful Neon API calls
+- SANDBOX ROLLBACK #3 disclosed: audit/v2 + scripts wiped mid-session after the 134d push; re-derived from origin (tip e5bf8b7); zero of-record loss (9b9684c durable); sandbox worklog Task 10/11 entries not re-created (of-record in the repo worklog at 9b9684c)
+- Envelope gate CLOSED of record: the r0 lane took the versioned-shim path (1.1 -> 1.0 shim -> the REAL frozen SmeQuestionIngestService) — a lawful option per the 134a scoping receipt; SUPPORTED_PACKAGE_VERSION stays '1.0' at tip; the sz interim interpretation ('1.1 canonical') satisfied and superseded
+
+Stage Summary:
+- 134b CLOSED-VERIFIED of record: the full 489-question Physics SME bank serves lawfully on the current carrier; the collision is reconciled and the card's parallel-race amalgam stands — T-MIG-134's one open item is 134e (physics books, operator gate)
+- Write ledger: 2 probe learners (sz-134b-coll-verify-*, sanctioned class), llm_spend 0, ZERO Neon writes, ZERO Neon API calls; receipt collision-discharge-134b-run-001-sz.json + this worklog only; fetch-first, no force

@@ -1,0 +1,61 @@
+{
+  "card": "T-MIG-134",
+  "receipt": "collision-discharge-134b-run-001-sz",
+  "lane": "sz (Super Z, zai-web session web-9d2144ad-f8b8-4e63-9039-989f45cb596f)",
+  "operator_order": {
+    "words": "Proceed with remaining 341",
+    "trace": "1a1598b26f1f148d",
+    "premise": "the sz lane's own reports (148 live S1 96 / S2 52, S3-S8 0; 489 bundle census) — a TRUE but MID-APPLY wire snapshot"
+  },
+  "disposition": {
+    "verdict": "DISCHARGED-AS-COLLISION — no duplicate act (the one-deploy-per-lever law); lane converted to independent verification per the cbc7835 precedent",
+    "collision_of_record": "the remaining 341 were ALREADY IN: the r0 lane's 134b resume (receipt battery-134d-run-002-r0.json, commit dce1567, operator orders 1a153eb294a96e75 + 1a155d97bdad44e1 — double-dispatched before the sz 134d order) completed ALL 24 sets: 489 bundle questions -> 583 store rows, 583 distinct sme-eq-* refs, spec joins +787 = 489 PRIMARY + 495 SECONDARY AI_VALIDATED, isolation PASS (non-physics 3921 stable), assets PASS (585 unchanged)",
+    "premise_correction": "the sz run-003 DISCOVERY ('data plane PARTIALLY IN, wire outran the card, no 134b receipt') captured the r0 lane's apply IN FLIGHT (its first dispatch died at 5/24 sets = the 148-question snapshot); the r0 card amendment already discloses the parallel-race amalgam and corrects the premise ('PREMISE CORRECTED by (ii)')",
+    "envelope_gate_closed_of_record": "the r0 lane took the versioned-shim path (1.1 -> 1.0 shim driving the REAL frozen SmeQuestionIngestService) — one of the two lawful options the 134a scoping receipt staged ('faithful acceptance or versioned shim, never a silent rewrite'); SUPPORTED_PACKAGE_VERSION stays '1.0' in the frozen service (verified at tip); the sz lane's interim interpretation ('1.1 canonical') is thereby satisfied and superseded by the of-record shim mechanic"
+  },
+  "independent_verification": {
+    "run_001": "12 legs — 2 mis-shapes disclosed per the battery discipline: (1) subjects?versionId takes the version UUID, not the code (400 malformed); (2) the tree read's node-type key is 'type', not 'nodeType' (walker found 0 units, section legs skipped); all fired pins already green in this run",
+    "run_002_of_record": "20 legs, ZERO-LLM, authed read-only via 1 sanctioned probe register — FIRST battery-shape verification against the NEW api-of-record carrier dpl_ENEw3fhfz2NXdXfVP73DmZJpd8pd (post redeploy run-009; the r0 battery rode the prior carrier dpl_HphMddkuf2EK7dyYDTQMcjjMCLeX); alias syllabai-v2.vercel.app, x-vercel-id hkg1::iad1::tddwh-1792507521844-5976503614f9",
+    "legs_green": [
+      "FOUR ACTIVE cvs census 200 — 4CH1-2017 / 4MA1-2016 / 4MB1-2016 / 4PH1-2017; the 4PH1-2017 version UUID 5a9cd8fe-0a31-4ee6-87e0-be5ad1d8cddf == the 134c cv of record",
+      "subjects?versionId=<uuid> -> subject row + KG root 4e845c30-8ae5-4404-b59a-70adf7c3bf4f (the run-003 root pin held)",
+      "4PH1 tree read = EXACT 234 nodes; the 8 UNIT official titles derived on the wire (S1 Forces and motion / S2 Electricity / S3 Waves / S4 Energy resources and energy transfers / S5 Solids, liquids and gases / S6 Magnetism and electromagnetism / S7 Radioactivity and particles / S8 Astrophysics)",
+      "per-UNIT nodeId axis: honest 0 x8 == the r0 predicate-semantics law (questions anchor on SPEC nodes; the UNIT nodeId axis serves empty BY SEMANTICS, not defect)",
+      "topic-name axis S1 'Forces and motion' = 96 (the sz run-003 pin HELD)",
+      "nodeId Movement and position (4PH1-S1-b) = 22 (the r0 run-002 pin HELD)",
+      "spec axis 3.10 = 21 (the r0 pin HELD — an S3 spec point: THE collision-delta leg, served 0 in the sz mid-apply snapshot)",
+      "spec axis 1.4 = 5 vs the sz run-003 pin 4 — GROWTH DELTA disclosed (mid-apply 5/24 sets vs completed 24/24; lawful under the r0 reconciliation)",
+      "chemistry byte-pin 4CH1-S3-b = 56 UNCHANGED",
+      "cross-corpus (4PH1-2017 x 4CH1-S3-b) = 0; unscoped (FOUR owners, no courseRef) = 0 honest-empty; /paper 4PH1 = 404 honest (the 134e dormancy boundary)"
+    ]
+  },
+  "db_census_disposition": {
+    "not_re_run": "api.neon.tech is DNS-blocked in this sandbox (getent fails x2 while registry.npmjs.org + api.vercel.com resolve — sandbox network restriction, disclosed)",
+    "standing_record": "the r0 receipt's SELECT-verified DB claims stand of record: physicsActive 583 / nonPhysicsActive 3921 / questionsActive 4504 / specJoins4ph1 984 (489 PRIMARY + 495 SECONDARY) / assets 585 / 24/24 sets generation-1",
+    "credential_disposition": "the operator-delivered NEON_KEY (fp12 4c2e12da872b) was NEVER consumed — zero successful Neon API calls from this lane (the DNS block hit on the first call); single-call discipline held; token not written to disk"
+  },
+  "sandbox_rollback_disclosure": "rollback #3 of this saga hit mid-session (audit/v2 + scripts wiped after the 134d push); re-derived from origin (fresh clone at tip e5bf8b7); zero of-record loss (9b9684c durable on origin); the sandbox worklog Task 10/11 entries are not re-created (of-record copies landed in the repo worklog at 9b9684c)",
+  "write_ledger": {
+    "probe_learners": "2 (sz-134b-coll-verify-1792507414 + -1792507513 @example.invalid — the sanctioned register-probe class, one per census run, disclosed)",
+    "llm_spend": 0,
+    "neon_writes": 0,
+    "neon_api_calls": 0,
+    "repo_writes": "this receipt + worklog block only; card untouched (the r0 amendment stands); fetch-first, no force"
+  },
+  "evidence_files": [
+    "/home/z/my-project/scripts/134b-push/wire_census_134b.mjs (persisted census script)",
+    "/home/z/my-project/scripts/134b-push/134b-wire-census-2026-10-20T14-43-33-*.json (run-001, mis-shapes)",
+    "/home/z/my-project/scripts/134b-push/134b-wire-census-2026-10-20T14-45-13-558Z.json (run-002 of record, 20 legs with full bodies)",
+    "/home/z/my-project/scripts/134b-push/db_census_134b.mjs (written, DNS-blocked, unrun)"
+  ],
+  "claims": {
+    "VERIFIED": [
+      "all 20 run-002 legs first-hand (wire-truth capture, full bodies)",
+      "the collision facts from the of-record receipts (dce1567 + its receipt JSON read first-hand at tip e5bf8b7)"
+    ],
+    "NOT_CLAIMED": [
+      "any fresh DB-side re-verification (DNS-blocked; the r0 SELECT-verified numbers cited, not re-proven)",
+      "134e (physics books) — the separate operator gate, still staged"
+    ]
+  }
+}
