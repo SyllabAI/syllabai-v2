@@ -263,18 +263,29 @@ describe("identity helpers — completeIdentity, unit binding, subject code", ()
       "1CR",
       "2CR",
     ]);
-    // T-MIG-135c: the maths vocabulary rides the same law
+    // T-MIG-135c: the maths vocabulary rides the same law; T-MIG-138a: the
+    // maths-a family joins the regional-variant axis — home units first,
+    // variants after (the chemistry shape), chemistry expectations above
+    // byte-identical
     expect(unitCandidates(parseFetchQuery("4MA1/1H question 10"), "q", "4MA1")).toEqual(["1H"]);
+    expect(unitCandidates(parseFetchQuery("4MA1/1HR question 10"), "q", "4MA1")).toEqual(["1HR"]);
     expect(unitCandidates(parseFetchQuery("the 2F paper question 10"), "q", "4MA1")).toEqual(["2F"]);
+    expect(unitCandidates(parseFetchQuery("the 1HR paper question 10"), "q", "4MA1")).toEqual(["1HR"]);
     expect(unitCandidates(parseFetchQuery("question 10 paper 1"), "question 10 paper 1", "4MA1")).toEqual([
       "1H",
       "1F",
+      "1HR",
+      "1FR",
     ]);
     expect(unitCandidates(parseFetchQuery("question 10 june 2019"), "question 10 june 2019", "4MA1")).toEqual([
       "1H",
       "2H",
       "1F",
       "2F",
+      "1HR",
+      "2HR",
+      "1FR",
+      "2FR",
     ]);
     // T-MIG-136e: the maths-b bare-digit vocabulary — the paper NUMBER is
     // the unit (two untiered papers); the full code binds through the
@@ -293,9 +304,11 @@ describe("identity helpers — completeIdentity, unit binding, subject code", ()
     expect(unitFromPaperCode("4CH0-1CR")).toBe("1CR");
     expect(unitFromPaperCode("4CH1/2 C")).toBe("2C");
     expect(unitFromPaperCode("4CH1/2X")).toBe(null);
-    // T-MIG-135c: the maths units
+    // T-MIG-135c: the maths units; T-MIG-138a: the R variants join
     expect(unitFromPaperCode("4MA1/1H")).toBe("1H");
     expect(unitFromPaperCode("4MA0-2F")).toBe("2F");
+    expect(unitFromPaperCode("4MA1/1HR")).toBe("1HR");
+    expect(unitFromPaperCode("4MA1/2FR")).toBe("2FR");
     expect(unitFromPaperCode("4MA1/1X")).toBe(null);
     // T-MIG-136e: the maths-b bare-digit units — in vocabulary, out verbatim;
     // out-of-vocabulary digits and junk still refuse
