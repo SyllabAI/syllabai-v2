@@ -1,47 +1,60 @@
 {
-  "receipt": "cie-consume-r9-run-001",
-  "family": "CIE-INTEGRATION",
-  "lane": "T-SPECS-CIE-CONSUME-1",
-  "operatorTrace": "1a1585c244ccd141",
-  "operatorOrder": "'Start' — the explicit ignition of REJOIN-1 record NEXT #2 (== GATE-1 record NEXT #1): learner-UI consumption of the ACCEPTED rejoin entries",
-  "agent": "r9-hubx (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
-  "generatedUtc": "2026-10-20T14:00:00Z",
-  "pinDiscipline": {
-    "resourcesSha": "75981cad0b08c190fb70902eb6cdca1f76b9cd68",
-    "verification": "the four CIE-relevant subtrees (Official-Specifications/parsed, SME-ExamQuestion, SME-RevisionNotes, SME-Flashcards) verified tree-sha-IDENTICAL to the Phase-2/3 pin 0fe5f772; the ONLY input delta is spec-links/ — this lane's input (the rejoin-gate-promoted sidecars)",
-    "incidentNote": "a sandbox rollback was discovered at lane ignition (local repo refs reverted to the Task-22 era while origin held the full line incl. the R42 pair a7ebcd90); reconciled by fetch-first + CAS update-ref (fork tip preserved as tag pre-reland-r41-3) + Task-24-style index bookkeeping; zero objects lost, zero lazy fetches"
-  },
-  "consumptionLaw": "REJOIN-1 NEXT #2 verbatim: verdict semantics (operator-verdict V* authoritative) + T2_near non-authoritative hint + the rejoin's J*-tier entries post-gate. T2_near carried as items[].t2HintCodes ONLY — never in items[].codes, never in bundle linkage, never learner-facing as authoritative.",
-  "engine": "apps/hub/scripts/cie/cie_consume_spec_links.py (deterministic, fixed stamp 2026-10-20T14:00:00Z, staging-hash-verified byte-identical across two clean runs: 53b9c9301263fe2d70921bf9d6d5db92ac6c15c8cd76fde84b8c13fb1bd91e30)",
-  "inputs": {
-    "sidecars": "44 CIE spec-links sidecars (all review_state ACCEPTED; 22 with rejoin ACCEPTED) at pin 75981cad",
-    "sheet": "scripts/cie_rejoin_resolutions.yaml — 634 resolves + 166 ambiguous (cross-footed)",
-    "mapsAndBundles": "the 44 committed content-maps + official-spine bundles at Phase-3 state (math-repair 23a/23b + dangling-refs prune preserved verbatim — the rekey refresh sources the COMMITTED bundles, never the corpus cache)"
-  },
-  "results": {
-    "coursesChanged": 44,
-    "codesAttachedFromSidecar": 9241,
-    "codeCrossFoot": "9241 attached (V1 317 + V2 2520 + V3 82 + V4 4 + T1 3547 + J1 883 + J2 101 + J3 76 + J4 1711) + 584 T2 hints == 9825 sidecar codes EXACT (independent sidecar survey cross-foot)",
-    "t2Hints": 584,
-    "sheet634": "added 264 new spcptToOfficial rows + upgraded 81 same-code rows (lineage spec_links_sidecar_accepted) + 289 conflicts KEPT at their ladder rows and disclosed (NO-GUESS: the ladder's inline links are not silently rewritten against identity-grade disagreements — filed as the open reconciliation item)",
-    "inlineRewrites": 261,
-    "lineage": "sidecar class ranks: operator_verdict > T1_verbatim > J* > upstream_item_join > sme_declared_link_rekey > subtopic_title_scope; strongest-wins dedup per (item, code); pre-merge code sets verified subsets of post-merge (zero loss) in every course"
-  },
-  "gates": {
-    "inEngineBattery": "M1 no-loss/kind-pins + M2 T2-never-authoritative + M3 sheet/sidecar cross-foot + R1 counts preserved + R2 smeSpecPointIds byte-equal + R3 bodyMd exact-substitution reconstruction + R4 manifest diff == exactly officialSpine.resourcesSha + curriculum byte-equal + R5 G4 linkage-spine resolution + R6 no spcpt tokens in staged linkage — 44/44 PASS",
-    "bocCheck": "build_official_content.py --check --course x44: 44/44 exit 0",
-    "cieValidator": "bun run verify:cie PASSED (CIE_PIN advanced 0fe5f772 -> 75981cad of record, documented in-file)",
-    "corpusGate": "verify_corpus_23a.ts PASSED (math zero-baseline intact — the rekey preserved the 23a/23b repair byte-exactly)",
-    "flashcardSync": "verify_flashcard_sync_courses.ts PASSED",
-    "hubBuild": "bun run build:hub GREEN (prebuild chain + next build, all routes; bun install re-run first — the sandbox rollback had wiped node_modules, disclosed)"
-  },
-  "disclosures": [
-    "289 sheet-vs-ladder sid->code conflicts kept at ladder rows (disclosed, not dropped) — the upstream T-SPECS chain should adjudicate; the map's sources.specLinks.sheetUpgrades.conflictsKept carries the count",
-    "22 CIE sidecar courses with rejoin ACCEPTED + 22 with top-level ACCEPTED only; 44/44 consumed; the 17 CIE courses without sidecars are untouched (no sidecar = no consumption, honest)",
-    "the consumed sidecars' V2-heavy lanes (maths-25-core/extended, international-maths-23, sdv-biology) attach name-phrase-identity codes — tier fields carried verbatim so downstream consumers can filter by tier",
-    "sandbox rollback at ignition + missing node_modules post-install — both handled, neither touched origin",
-    "T2_near (584 hints) deliberately NOT surfaced to learners this lane — surfacing them is a UI-lane decision; the data is in the maps under t2HintCodes"
-  ],
-  "learnerUIEffect": "CIE learners now see spec-point links on notes/question-parts/flashcards for all 44 consumed courses (the 634 gate-promoted rejoin resolutions + the operator-verdict + T1 entries), incl. 261 inline note-body references upgraded from raw spcpt_* ids to real spec codes",
-  "nextPhase": "Phase 4 DB plane stays OPERATOR-GATED (unchanged posture: zero DB writes, zero coreBridge, zero curriculumCode); hub auto-deploys on merge"
+ "receipt": "cie-consume-r9-run-001",
+ "family": "CIE-INTEGRATION",
+ "lane": "T-SPECS-CIE-CONSUME-1",
+ "operatorTrace": "1a1585c244ccd141",
+ "operatorOrder": "'Start' \u2014 the explicit ignition of REJOIN-1 record NEXT #2 (== GATE-1 record NEXT #1): learner-UI consumption of the ACCEPTED rejoin entries",
+ "agent": "r9-hubx (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+ "generatedUtc": "2026-10-20T14:00:00Z",
+ "pinDiscipline": {
+  "resourcesSha": "75981cad0b08c190fb70902eb6cdca1f76b9cd68",
+  "verification": "the four CIE-relevant subtrees (Official-Specifications/parsed, SME-ExamQuestion, SME-RevisionNotes, SME-Flashcards) verified tree-sha-IDENTICAL to the Phase-2/3 pin 0fe5f772; the ONLY input delta is spec-links/ \u2014 this lane's input (the rejoin-gate-promoted sidecars)",
+  "incidentNote": "a sandbox rollback was discovered at lane ignition (local repo refs reverted to the Task-22 era while origin held the full line incl. the R42 pair a7ebcd90); reconciled by fetch-first + CAS update-ref (fork tip preserved as tag pre-reland-r41-3) + Task-24-style index bookkeeping; zero objects lost, zero lazy fetches"
+ },
+ "consumptionLaw": "REJOIN-1 NEXT #2 verbatim: verdict semantics (operator-verdict V* authoritative) + T2_near non-authoritative hint + the rejoin's J*-tier entries post-gate. T2_near carried as items[].t2HintCodes ONLY \u2014 never in items[].codes, never in bundle linkage, never learner-facing as authoritative.",
+ "engine": "apps/hub/scripts/cie/cie_consume_spec_links.py (deterministic, fixed stamp 2026-10-20T14:00:00Z, staging-hash-verified byte-identical across two clean runs: 53b9c9301263fe2d70921bf9d6d5db92ac6c15c8cd76fde84b8c13fb1bd91e30)",
+ "inputs": {
+  "sidecars": "44 CIE spec-links sidecars (all review_state ACCEPTED; 22 with rejoin ACCEPTED) at pin 75981cad",
+  "sheet": "scripts/cie_rejoin_resolutions.yaml \u2014 634 resolves + 166 ambiguous (cross-footed)",
+  "mapsAndBundles": "the 44 committed content-maps + official-spine bundles at Phase-3 state (math-repair 23a/23b + dangling-refs prune preserved verbatim \u2014 the rekey refresh sources the COMMITTED bundles, never the corpus cache)"
+ },
+ "results": {
+  "coursesChanged": 44,
+  "codesAttachedFromSidecar": 9241,
+  "codeCrossFoot": "9241 attached (V1 317 + V2 2520 + V3 82 + V4 4 + T1 3547 + J1 883 + J2 101 + J3 76 + J4 1711) + 584 T2 hints == 9825 sidecar codes EXACT (independent sidecar survey cross-foot)",
+  "t2Hints": 584,
+  "sheet634": "added 264 new spcptToOfficial rows + upgraded 81 same-code rows (lineage spec_links_sidecar_accepted) + 289 conflicts KEPT at their ladder rows and disclosed (NO-GUESS: the ladder's inline links are not silently rewritten against identity-grade disagreements \u2014 filed as the open reconciliation item)",
+  "inlineRewrites": 261,
+  "lineage": "sidecar class ranks: operator_verdict > T1_verbatim > J* > upstream_item_join > sme_declared_link_rekey > subtopic_title_scope; strongest-wins dedup per (item, code); pre-merge code sets verified subsets of post-merge (zero loss) in every course"
+ },
+ "gates": {
+  "inEngineBattery": "M1 no-loss/kind-pins + M2 T2-never-authoritative + M3 sheet/sidecar cross-foot + R1 counts preserved + R2 smeSpecPointIds byte-equal + R3 bodyMd exact-substitution reconstruction + R4 manifest diff == exactly officialSpine.resourcesSha + curriculum byte-equal + R5 G4 linkage-spine resolution + R6 no spcpt tokens in staged linkage \u2014 44/44 PASS",
+  "bocCheck": "build_official_content.py --check --course x44: 44/44 exit 0",
+  "cieValidator": "bun run verify:cie PASSED (CIE_PIN advanced 0fe5f772 -> 75981cad of record, documented in-file)",
+  "corpusGate": "verify_corpus_23a.ts PASSED (math zero-baseline intact \u2014 the rekey preserved the 23a/23b repair byte-exactly)",
+  "flashcardSync": "verify_flashcard_sync_courses.ts PASSED",
+  "hubBuild": "bun run build:hub GREEN (prebuild chain + next build, all routes; bun install re-run first \u2014 the sandbox rollback had wiped node_modules, disclosed)"
+ },
+ "disclosures": [
+  "289 sheet-vs-ladder sid->code conflicts kept at ladder rows (disclosed, not dropped) \u2014 the upstream T-SPECS chain should adjudicate; the map's sources.specLinks.sheetUpgrades.conflictsKept carries the count",
+  "22 CIE sidecar courses with rejoin ACCEPTED + 22 with top-level ACCEPTED only; 44/44 consumed; the 17 CIE courses without sidecars are untouched (no sidecar = no consumption, honest)",
+  "the consumed sidecars' V2-heavy lanes (maths-25-core/extended, international-maths-23, sdv-biology) attach name-phrase-identity codes \u2014 tier fields carried verbatim so downstream consumers can filter by tier",
+  "sandbox rollback at ignition + missing node_modules post-install \u2014 both handled, neither touched origin",
+  "T2_near (584 hints) deliberately NOT surfaced to learners this lane \u2014 surfacing them is a UI-lane decision; the data is in the maps under t2HintCodes"
+ ],
+ "learnerUIEffect": "CIE learners now see spec-point links on notes/question-parts/flashcards for all 44 consumed courses (the 634 gate-promoted rejoin resolutions + the operator-verdict + T1 entries), incl. 261 inline note-body references upgraded from raw spcpt_* ids to real spec codes",
+ "nextPhase": "Phase 4 DB plane stays OPERATOR-GATED (unchanged posture: zero DB writes, zero coreBridge, zero curriculumCode); hub auto-deploys on merge",
+ "deployWitness": {
+  "merged": "PR #213 merged 4e90c45f (CI completed success on the merge sha e1d71473; mergeable clean after the worklog append-union)",
+  "hubAutoDeploy": "FAILED x3 of record (preview a7a9a953 + preview e1d71473 + production 4e90c45f -> Vercel dpl_FvKG94CwfYF6642KPpGwxEyv1Vn9 'Deployment has failed'); the deployment URLs serve Vercel's error shell (HTTP 200 HTML), not the app",
+  "diagnosis": "LOCAL build:hub exit 0 (full log captured, no size warnings, all routes) + CI hub job success on the SAME tree \u2014 the failure is Vercel-environment-side (their install/build wrapper, builder resources, or a platform incident); the predecessor production deploy 16c40fb0 succeeded, so the trigger is this lane's diff OR a Vercel-side change \u2014 indistinguishable without build logs",
+  "logAccess": "needs the operator's Vercel token (VT, session-inline per the Task-11/12 pattern \u2014 the sandbox rollback consumed it); the of-record read path: vercel_recon.py / vercel_poll_deploy.py with VT; the target: npx vercel inspect dpl_FvKG94CwfYF6642KPpGwxEyv1Vn9 --logs",
+  "servingState": "production STILL SERVES 16c40fb0 (pre-lane) \u2014 ZERO learner-facing regression; the lane's data is merged but NOT yet learner-visible",
+  "posture": "no retry-by-empty-commit on main (history hygiene); no force anywhere; the deploy fix is the lane's open incident, operator-keyed"
+ },
+ "processDisclosures": [
+  "the lane's first 'ff_exit=0' measured tail's exit, not the merge's \u2014 the FF never fired (dirty-worklog abort); caught by the PR dirty state + reflog adjudication; resolved per AGENT_COORDINATION section 5 (worklog append-union merge e1d7147); PIPESTATUS discipline adopted",
+  "PR flow per AGENT_COORDINATION: branch t-specs-cie-consume/r9 -> PR #213 -> CI success -> merged under the operator's explicit 'Start' order (the d8acf73/137d + Task-62/63 self-merge-override precedent, disclosed in the PR body)",
+  "transit ledger: +2 branch pushes +1 merge-commit push +1 push (this receipt) + PR/API verifies \u2014 fingerprint a8ccee736aa8c75b; PAT rotation STILL CRITICAL OVERDUE"
+ ]
 }

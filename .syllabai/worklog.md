@@ -9364,3 +9364,19 @@ Stage Summary:
 - The 634 gate-promoted rejoin resolutions + the operator-verdict + T1 entries are now IN the hub's attachment layer and bundles for all 44 CIE courses — the learner-UI consumption surface of record; hub auto-deploys on merge
 - Open items filed: (1) the 289 sheet-vs-ladder sid->code conflicts need upstream adjudication (kept, disclosed, never silently rewritten); (2) T2 hint surfacing is a UI-lane decision; (3) PAT rotation still CRITICAL overdue (25 transits on fingerprint a8ccee736aa8c75b + this lane's push/API transits); (4) Phase 4 DB plane explicit-instruction-only
 - fetch-first, no force; branch t-specs-cie-consume/r9, PR flow per AGENT_COORDINATION
+
+---
+Task ID: T-SPECS-CIE-CONSUME-1 (r9-hubx, run-001 ADDENDUM — deploy witness)
+Agent: r9-hubx (zai-web, trace 1a1585c244ccd141)
+Task: PR #213 lifecycle + the hub auto-deploy witness.
+
+Work Log:
+- PR #213 opened (head a7a9a953) -> GitHub mergeable=dirty -> adjudicated LOCALLY: the earlier 'ff_exit=0' measured tail's exit (PIPESTATUS defect, disclosed) so the origin/main FF never fired; the branch predated origin's 16c40fb0 -> the REAL conflict was the worklog tail (sibling lanes appended too)
+- Resolution per AGENT_COORDINATION section 5: merge origin/main into the branch, worklog append-union (my entry re-appended on top of the siblings'), merge commit e1d7147 pushed (normal push, no force) -> mergeable True -> CI (Actions) completed SUCCESS on e1d71473 -> PR #213 merged 4e90c45f (the disclosed self-merge-override precedent under the operator's explicit 'Start')
+- Hub auto-deploy witness: Production 4e90c45f = FAILURE (dpl_FvKG94CwfYF6642KPpGwxEyv1Vn9) + both previews failed; deployment URLs serve Vercel's error shell (HTTP 200 HTML, not the app); the predecessor prod deploy 16c40fb0 = SUCCESS
+- Diagnosis boundary reached: local build:hub exit 0 (full log, no warnings) + CI hub job success on the same tree -> the failure is Vercel-environment-side; build logs need the operator's VT (session-inline, consumed by the sandbox rollback); read path of record: vercel_recon.py / vercel_poll_deploy.py + 'npx vercel inspect dpl_FvKG94CwfYF6642KPpGwxEyv1Vn9 --logs'
+- Serving state: production still serves 16c40fb0 (pre-lane) — ZERO learner-facing regression; the lane's data is merged but NOT yet learner-visible; no retry-by-empty-commit on main (history hygiene), no force anywhere
+
+Stage Summary:
+- The data lane is of record merged; the serving advance is BLOCKED on the Vercel deploy failure — open incident, operator-keyed (VT supply -> log read -> fix or rule)
+- fetch-first, no force; this addendum lands as the .syllabai-only receipt commit
