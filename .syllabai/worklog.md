@@ -9876,3 +9876,18 @@ Work Log:
 
 Stage Summary:
 - Wave-1 kill-list of record: 16 codes -> 54 verified specPointCodes appends across questions.json, ready for operator review/green-light; nothing written to content; zero code/DB/Vercel/LLM contact; no force.
+
+---
+Task ID: pp-maths-b-mode2-erratum-002
+Agent: r0
+Task: Correct run-001's Mode-2 claim; answer operator question on what 4mb1 interactive shows (trace 1a15a7fc24200c1d)
+
+Work Log:
+- Re-extracted live page: badge reads '117 papers · 35 sessions · 64 interactive' — run-001's 'locked pending 134e' claim was wrong (probe grep missed the badge)
+- Census of bundle questions.json: 1,249 questions, 2,392 sourcePaper parts {date,number,questionNumber,questionPart} pinning 4MB0/4MB1 papers
+- Bundle updated by a00b96f 2026-10-20 t-mig-136 'parse lane BAND 3 bank assembly discharged' (seed 3a92153 10-04)
+- Interactive = 64 rows, all 4MB1 (gap list: 2019-01/02R, 2019-06/02R, specimen 4MB1-01); 2020-06 01/01R under may-2020 slugs; 53 chips = 50 legacy 4MB0 + 3 gaps
+- Player route probe: january-2019-4mb1-01 -> 200, 308KB SSR, totalMark x23, MS modals; Smart Mark client-side
+
+Stage Summary:
+- ERRATUM filed: pastpapers-maths-b-mode2-erratum-run-002-r0.json; interactive maths-b is LIVE (64 papers) via t-mig-136 bundle bands; corpus wave = upstream feedstock for remaining gaps
