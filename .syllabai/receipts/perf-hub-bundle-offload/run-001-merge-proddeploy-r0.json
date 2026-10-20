@@ -1,0 +1,58 @@
+{
+  "task": "perf-hub-bundle-offload",
+  "run": "run-001-merge-proddeploy-r0",
+  "operatorOrders": {
+    "band": "trace 1a158d679caa9df9 — offload the ~102MB corpus from hub function bundles + drop the dead mock.ts import + trim per-push preview builds",
+    "mergeAndDeploy": "trace 1a159949037408d1 — merge + first prod deploy"
+  },
+  "auth": {
+    "sandboxReset": "secrets envelope + git credential store were wiped mid-session; operator re-supplied both tokens in chat; staged 0600 /home/z/.secrets/secrets.env (values never printed by tooling)",
+    "fingerprints": { "GITHUB_PAT": "a8ccee736aa8c75b", "VERCEL_TOKEN": "d254bbfaac004354" },
+    "identityVerified": { "github": "SyllabAI (200)", "vercel": "syllabai-1403 (v2/user 200, fingerprint matches the worklog precedent law exactly)" }
+  },
+  "merge": {
+    "pr": 215,
+    "head": "perf/hub-bundle-offload-r0 @ eec37c7",
+    "base": "main @ 0d5f211",
+    "mergeSha": "94dd75f7883d850a1796355007ea315bee3038e9",
+    "method": "merge commit, operator-gated (authors never self-merge satisfied by the explicit operator merge order)",
+    "ci": "verify SUCCESS + hub SUCCESS + Vercel status SUCCESS (hub lane = corpus-verify prebuild + next build, the same script chain Vercel runs)",
+    "testMergePrecheck": "eec37c7 + 0d5f211 clean (a177ea9, zero file overlap — main's 240-commit advance touched dashboard/board/exam-series lanes only)"
+  },
+  "deploy": {
+    "project": "syllabai-hub-v2 (prj_YhOJ..., team syllab-ai)",
+    "deployment": "dpl_36G7i4E71A1ip1wsti9CauiKtpZa",
+    "readyState": "READY",
+    "url": "syllabai-hub-v2-5x2yb370x-syllab-ai.vercel.app",
+    "aliases": ["syllabai-hub-v2.vercel.app", "syllabai-hub-v2-syllab-ai.vercel.app", "syllabai-hub-v2-git-main-syllab-ai.vercel.app"],
+    "buildDuration": "~2.5 min (13:55:41 BUILDING -> 13:57:49 READY)",
+    "trigger": "git integration on the merge push; vercel.json deploymentEnabled main:true (the FIRST production deployment of the slimmed bundle)"
+  },
+  "wireBattery": {
+    "mode": "GET-only zero-write, through the NEW bundle via the prod alias",
+    "results": "11/11 PASS",
+    "legs": [
+      "GET / 200 85KB",
+      "GET /revision-notes 200 156KB",
+      "GET /exam-questions 200 344KB",
+      "GET /knowledge-graph 200 42KB",
+      "GET /practice 200 2.58MB",
+      "GET /api/course-stats 200 {stats} (the fs-plane cwd reader, now fetch-plane healed)",
+      "GET /api/kg-learner-bridge?course=igcse-chemistry-19 200 271KB (course/codePrefix/totalPoints/pointIds/noteCodes/questionCodes — the 4CH1 bridge live)",
+      "GET /corpus-index.json 200 list[807] (the fetch-plane existence index SERVED — build_corpus_static.mjs ran on the Vercel build)",
+      "GET /corpus/cie-a-level-accounting-21/curriculum.json 200 (corpus served once as CDN assets)",
+      "GET /corpus/igcse-chemistry-19/notes.json 200 list[112]",
+      "GET /kg/data/igcse-chemistry-19.json 200 151KB"
+    ]
+  },
+  "bandVerificationOfRecord": {
+    "tracedBytes": "10379.8MB -> 335.2MB (-96.8%), corpus 0.0MB (-100%), heaviest route 226.4MB -> 7.9MB, 0 sweep warnings",
+    "artifactProof": ".next/standalone/apps/hub contains NO content/ NO content-maps/ (standalone = what lambda zips package)",
+    "fetchPlaneArtifacts": "public/corpus 185M + public/corpus-maps 36M + corpus-index.json 48K (807 entries)",
+    "vercelBuildLaw": "live docs 'Configuring a Build': for Next.js Vercel checks the package.json build command FIRST -> the corpus-static prebuild runs on Vercel -> fetch-plane assets present in prod deployments (PROVEN live by the battery's /corpus-index.json + /corpus/* 200s)"
+  },
+  "expectedMeterEffect": "~2.04GB/deploy -> sub-300MB deployment weight; byte sizes NOT exposed by the Vercel API (standing disclosure) — dashboard Usage is authoritative for the weight receipt. Secondary lever now live: per-push preview builds STOPPED for non-main branches (deploymentEnabled '*':false) — takes effect from main now carrying the setting; note the PR's own preview DID build (pre-merge semantics, disclosed, harmless).",
+  "rollback": "revert 94dd75f or Vercel instant rollback to the incumbent prod deployment",
+  "hygiene": "PAT rotation OVERDUE — both tokens transited chat in plaintext again; stage/rotate after use",
+  "zeroWriteStatement": "zero writes beyond the ordered merge/deploy: no prod-db/Neon contact, no LLM calls, no force, battery GET-only"
+}

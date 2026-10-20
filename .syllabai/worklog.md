@@ -9479,3 +9479,19 @@ Work Log:
 
 Stage Summary:
 - BAND 2 DONE of record: the six pilot flags CLOSE with byte-proof, the legacy 2018-06 dialect closes both papers, and the corpus wave has placed deterministic products for 65/66 papers with honest per-question verification — the archive is now the substrate Band 3 (bank assembly to sme-exam-questions/1.1 + bundle questions.json) parses from. Band 3+ queue unchanged (bank assembly; shim alnum code-join amendment + createSql-seam runner; COW replica -> operator-gated apply -> 136d battery re-fire). parse_ms.py byte-unchanged across all three parser commits (chemistry regression impossible); 4MB1-only fence; zero prod writes, zero Neon, zero LLM; fetch-first, no force.
+
+---
+Task ID: trace 1a159949037408d1 (perf-hub-bundle-offload run-001: merge + first prod deploy)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Operator orders — band (trace 1a158d679caa9df9 "offload the ~102MB corpus from hub function bundles + drop the dead mock.ts import + trim per-push preview builds", already of record as perf/hub-bundle-offload-r0 @ eec37c7) + "merge + first prod deploy" (this trace).
+
+Work Log:
+- Fetch-first: local main 240 behind -> ff'd to 0d5f211; band verified end-to-end BEFORE any write: test-merge eec37c7+0d5f211 CLEAN (a177ea9, zero file overlap); bun run build EXIT 0 with 0 sweep warnings; corpus exclusion PROVEN at the artifact level (.next/standalone/apps/hub has NO content/ NO content-maps/); fetch-plane artifacts 807-entry corpus-index.json; Vercel build-law verified against live docs (package.json build command runs on Vercel for Next.js).
+- Sandbox-reset disclosure: secrets envelope + credential store WIPED mid-session (push fatal "could not read Username"); pre-merge run reported the blocker; operator re-supplied both tokens -> staged 0600 (fingerprints a8ccee736aa8c75b / d254bbfaac004354 — the Vercel fingerprint matches the worklog precedent law exactly), credential store re-wired (x-access-token form), identities verified first-hand (GH SyllabAI 200 / Vercel syllabai-1403).
+- PR #215 filed (head perf/hub-bundle-offload-r0, base main) -> CI GREEN (verify + hub SUCCESS, the hub lane = corpus-verify prebuild + next build) -> MERGED on the operator's explicit order (merge commit 94dd75f7883d850a1796355007ea315bee3038e9).
+- FIRST PROD DEPLOY of the slimmed hub: git integration fired on the merge push -> dpl_36G7i4E71A1ip1wsti9CauiKtpZa READY in ~2.5 min, aliased syllabai-hub-v2.vercel.app (+ the 2 project aliases).
+- Wire battery 11/11 PASS zero-write through the NEW bundle: home + revision-notes + exam-questions + knowledge-graph + practice SSR 200; /api/course-stats 200; /api/kg-learner-bridge 200 (the 4CH1 bridge, 271KB payload); /corpus-index.json 200 list[807] + /corpus/* static 200s (the fetch plane PROVEN live — the corpus serves ONCE as CDN assets) + /kg/data 200.
+- Receipt: .syllabai/receipts/perf-hub-bundle-offload/run-001-merge-proddeploy-r0.json; scripts persisted: t215-ci-poll.py, t215-prod-poll.py, t215-wire-battery.py, offload-build-verify.log.
+
+Stage Summary:
+- The three-part slimming order is LIVE OF RECORD: corpus off the function bundles (traced 10379.8MB -> 335.2MB, corpus 0.0MB; expected ~2.04GB/deploy -> sub-300MB — dashboard Usage authoritative, API exposes no byte sizes), the dead mock.ts bake cut, per-push previews trimmed (deploymentEnabled '*':false effective from main now; the PR's own preview DID build pre-merge — disclosed, harmless). Rollback: revert 94dd75f or Vercel instant rollback. Hygiene: PAT rotation OVERDUE (both tokens transited chat plaintext again). Zero prod-db/Neon/LLM contact, no force.
