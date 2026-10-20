@@ -9738,3 +9738,20 @@ Stage Summary:
 - PR #219 of record merged: F.5 §7 gates G2+G4 land as repo artifacts — both seeders now emit SPEC_POINT (seed-path convergence) + the anchor-type companion artifact; claim-in-first-commit 449fe29 honored (w0a, no collision)
 - Standing watch: Vercel deploy incident open operator-keyed; ESCALATION #2 replay red un-triaged; PAT rotation overdue
 - fetch-first, no force; bookkeeping-only commit (.syllabai/** only)
+
+---
+Task ID: TUTOR-REPAIR (trace 1a15a472c9c07531)
+Agent: operator-delegated repair agent (IM session web-1d6277aa; operator directive "proceed with the repair directly (e.g., using the learner's subject as the scope resolver)")
+Task: Repair the live tutor refusal outage — land the per-learner subject scope selector the frozen CurriculumScopeResolver header reserved learnerId for.
+
+Work Log:
+- Diagnosis of record: the T-MIG-136/138 4MA1/4MB1 paper-bank wave made >=2 ACTIVE curricula own serving surface, so the global single-owner test in resolveActive returns null for EVERY courseRef-less ask; the legacy /tutor entry (and history-rail replays) then serve the deterministic TUTOR_REFUSAL (karag prepare(): scope==null short-circuits KG/vector/paper evidence to empty -> refused). Hub registry carries curriculumCode for only 4/93 courses, so the course-scoped path cannot absorb the traffic. The broken state writes no engagement anchors (recorder law: unmatched-topic asks write NOTHING) — footprint reads must target the pre-outage tables.
+- Repair (fail-closed preserved): resolveActive now runs the global single-owner test byte-identical FIRST; only on its null outcome AND a present learnerId, the learner's own subject footprint nominates candidates — tutor_topic_engagements.node_id + skill_states.node_id + struggle_inferences.topic_node_id (batched, capped 400/table, most-recent-first) walked UP the PART_OF graph to subjects.knowledge_node_id joined to ACTIVE versions — then the SAME singleOwnerScope ownership test decides (exactly one owner serves; zero or >=2 refuse). Explicit FK paths only; never slug parsing; never derived hub-registry data (the ADR-030 law).
+- Files: apps/api/src/services/content/scope.ts (+3 private methods, resolveActive body only); apps/api/test/content/scope-learner.test.ts (8 pins: stage-1-wins zero-footprint-reads, the repair path, any-one-table-suffices, split-footprint fail-closed, cold-start null, null-learnerId legacy, no-ancestry null, lost-surface candidate filtered).
+- Verify: tsc --noEmit clean; full battery SYLLABAI_JWT_SECRET=<dev> bun test apps/api packages -> 2283 pass / 13 skip / 0 FAIL (2296 tests / 126 files; up from the 2275 baseline with the 8 new pins). db.integration.test.ts is env-gated (JwtService fail-fast) — verified failing identically on a PRISTINE checkout via stash-run-pop; not a regression.
+- Receipt: .syllabai/receipts/TUTOR-REPAIR/run-001-learner-scope-selector-r0.json (diagnosis chain, repair law, verify battery, 8/8 asserts, residuals).
+
+Stage Summary:
+- The per-learner subject selector is LANDED as the scope resolver of record for courseRef-less asks; the legacy /tutor surface resolves again for every learner with pre-outage footprint (the whole pilot cohort), fail-closed preserved on every ambiguous outcome.
+- Residuals disclosed: cold-start first-ask still refuses honestly (no footprint; course-scoped entry + engagement rows are the bootstraps); 89/93 hub registry rows still lack curriculumCode (hub-side data maintenance, outside this fence); LLM chain budget watch + PAT rotation overdue stand.
+- Zero prod writes; zero LLM calls; fetch-first, no force; branch + PR for R0; claim-in-first-commit per AGENT_COORDINATION §2.

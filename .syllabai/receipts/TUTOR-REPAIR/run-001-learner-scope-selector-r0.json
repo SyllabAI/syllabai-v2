@@ -1,0 +1,48 @@
+{
+  "run": "run-001-learner-scope-selector-r0",
+  "lane": "TUTOR-REPAIR",
+  "trace": "1a15a472c9c07531",
+  "date": "2026-10-20T17:27:25Z",
+  "base_sha": "96e79834b2f67a530e6142bcb4ca3267fb4c8d22",
+  "operator_directive": "proceed with the repair directly (e.g., using the learner's subject as the scope resolver)",
+  "diagnosis": {
+    "symptom": "live tutor refuses every courseRef-less ask (legacy /tutor entry, assistant history rail replays) with the deterministic TUTOR_REFUSAL text",
+    "root_cause": "the frozen forcing function in CurriculumScopeResolver.resolveActive fired: the T-MIG-136/138 4MA1/4MB1 paper-bank wave made >=2 ACTIVE curricula own serving surface (4CH1-2017 KG+papers, 4MA1-2016 papers, 4MB1-2016 papers), so singleOwnerScope returns null for EVERY ask without a courseRef; hub registry carries curriculumCode for only 4 of 93 courses, so the course-scoped path does not absorb the traffic",
+    "evidence": [
+      "apps/api/src/services/content/scope.ts resolveActive header: 'when a second curriculum gains surface the resolver stops resolving until a per-learner selector lands' — learnerId was accepted and IGNORED (reserved for this selector)",
+      "karag.ts prepare(): scope == null short-circuits KG retrieval, vector arm and paper resolver to empty -> evidence.length === 0 -> refused=true (deterministic, no LLM call)",
+      "hub apps/hub/content/courses.json: 93 rows, curriculumCode present on exactly 4 (4CH1-2017, 4MA1-2016 x2, 4MB1-2016)",
+      "engagement-recorder law: 'asks with no deterministically-matched topic write NOTHING' — the broken state itself accumulates zero anchor rows, so footprint-based repairs must read the PRE-OUTAGE tables"
+    ]
+  },
+  "repair": {
+    "law": "stage-2 per-learner subject selector inside resolveActive(learnerId) — the global single-owner test runs byte-identical FIRST; only its null outcome consults the learner's own subject footprint (explicit FK paths only, never slug parsing, never derived hub-registry data): tutor_topic_engagements.node_id + skill_states.node_id + struggle_inferences.topic_node_id walked UP the PART_OF graph to subjects.knowledge_node_id joined to ACTIVE versions; the SAME singleOwnerScope ownership test then decides — exactly one owner serves, zero or >=2 refuse (fail-closed preserved)",
+    "files": [
+      "apps/api/src/services/content/scope.ts (resolveActive + learnerSubjectScope + learnerCandidateVersions + learnerAnchorNodeIds, anchor cap 400/table)",
+      "apps/api/test/content/scope-learner.test.ts (8 new pins)"
+    ]
+  },
+  "verify": {
+    "typecheck": "bun run --cwd apps/api typecheck -> tsc --noEmit clean",
+    "battery": "SYLLABAI_JWT_SECRET=<dev-verify-secret> bun test apps/api packages -> 2283 pass / 13 skip / 0 fail (2296 tests, 126 files)",
+    "note": "db.integration.test.ts fails on a PRISTINE checkout without SYLLABAI_JWT_SECRET set (env-gated integration test, fails at JwtService construction before any scope logic) — pre-existing, verified by stash-run-pop; with the env var set the full battery is 0-fail",
+    "asserts": [
+      { "id": "A1", "assert": "stage 1 wins: single global owner resolves learner-independent with ZERO footprint reads", "pass": true },
+      { "id": "A2", "assert": "the repair: >=2 global owners + learner anchored to one subject -> that subject's scope", "pass": true },
+      { "id": "A3", "assert": "any one footprint table suffices (skill_states alone nominates)", "pass": true },
+      { "id": "A4", "assert": "split footprint (two subjects) still fails closed -> null, never cross-corpus", "pass": true },
+      { "id": "A5", "assert": "no footprint -> no nomination -> null (cold-start refusal unchanged), ancestry never queried", "pass": true },
+      { "id": "A6", "assert": "null learnerId keeps pre-selector behavior exactly (anonymous previews, bank-bands surface)", "pass": true },
+      { "id": "A7", "assert": "anchors with no subject-root ancestry nominate nothing -> null", "pass": true },
+      { "id": "A8", "assert": "a learner candidate that lost its surface is filtered by the SAME ownership test", "pass": true }
+    ]
+  },
+  "residuals": [
+    "cold-start law: a brand-new learner's FIRST ask still refuses honestly (no footprint to nominate) — the course-scoped /tutor?course= entry and the tutor's own engagement rows are the intended bootstraps; no regression vs today",
+    "hub registry: 89 of 93 courses still lack curriculumCode (hub data maintenance, outside this repair's fence)",
+    "LLM chain budget watch stands (T-MIG-138 run-003: all 4 Gemini keys exhausted; Groq carrying all serving traffic)",
+    "PAT rotation still overdue (standing watch item)"
+  ],
+  "zero_prod_writes": true,
+  "discipline": "fetch-first, no force; branch + PR for R0; claim-in-first-commit per AGENT_COORDINATION §2"
+}
