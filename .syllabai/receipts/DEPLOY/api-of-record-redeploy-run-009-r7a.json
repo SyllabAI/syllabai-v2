@@ -1,0 +1,45 @@
+{
+  "tag": "DEPLOY/api-of-record-redeploy",
+  "run": "run-009-r7a",
+  "operator_trace": "1a158054bb7d75b5 (\"redeploy\")",
+  "date_utc": "2026-10-20T06:5xZ",
+  "agent": "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)",
+  "recipe": "T-MIG-093 CLI-upload recipe of record (gitSource lever FORBIDDEN — the empty-build trap law, incident 16:36:33Z): worktree-only shims (Bun.CryptoHasher -> node:crypto, Bun.YAML.parse -> js-yaml, 6 hash-pinned concept-graph YAMLs inlined byte-verbatim into concept-assets.gen.ts) + deploy-entry.ts (path-preserving Vercel Node adapter) -> bun build --target=node --format=cjs -> vercel --prod --yes from the stage (.vercel/project.json asserted == prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ = syllabai-v2, the API carrier, BEFORE firing; post-fire projectId assertion AFTER)",
+  "bundle_source": {
+    "commit": "aef295d (origin/main tip at act time; local ff-synced from 6eaeaa2, 104 commits)",
+    "ci_at_source": "verify success + hub success (check-runs API, first-hand)",
+    "carries": "apps/api delta 89962a5..aef295d = 13 files +632/-77 = exactly the T-MIG-137 bands 137a-c (PR #207 merge 3dd3987): the graded-evidence->KG join seam widening + createGradedEvidencePublisher + three-lane composition + the retired claiming stub/noop asymmetry + 15 graded-evidence-join pins — the T-MIG-102 wiring-only rider now LIVE on the carrier",
+    "bundle": "341 modules, 3,211,177 bytes, sha256 3a74c1a58871bd12...(evidence/redeploy_bundle_build.json); prior generation 321 modules — +20 with the 137 band",
+    "dsn": "DATABASE_URL of record pulled via the Vercel env API (decryptable per the 8411 law), memory-only stage/.env.localgate 0600, fingerprint sha256:16 b289a2298e707904, value never printed"
+  },
+  "api_of_record": {
+    "deploy": "dpl_ENEw3fhfz2NXdXfVP73DmZJpd8pd",
+    "readyState": "READY (Ready in 14s)",
+    "aliases": ["syllabai-v2.vercel.app", "syllabai-v2-syllab-ai.vercel.app"],
+    "projectId_assertion": "OK — no directory-name-fallback drift (the 113 incident law)",
+    "prior_carrier": "dpl_HphMddkuf2EK7dyYDTQMcjjMCLeX (main 89962a5, the 134d/136d/137-run-003 carrier of record)",
+    "hub_plane": "UNTOUCHED — already current at aef295d via git auto-bake (dpl_49gXxFSG6YV2fisBAA3uQg5MWWNH READY 2026-10-19T23:29:16Z); a hub redeploy would be a duplicate act, DISCHARGED-AS-CURRENT"
+  },
+  "rollback": {
+    "anchor": "dpl_HphMddkuf2EK7dyYDTQMcjjMCLeX",
+    "shape": "one-call re-alias POST /v2/deployments/{anchor}/aliases {alias syllabai-v2.vercel.app} — the proven restore shape of the 16:36Z incident"
+  },
+  "localgate": {
+    "verdict": "8/8 ALL PASS on the real Neon wire (evidence/redeploy_localgate.json)",
+    "legs": "health 200 UP; login malformed 400 validation_failed; register 201 (real Neon INSERT); tutor session create 201 / list-nonempty 200 (L06 fix) / latest 200 / delete 204 / list-empty 200",
+    "probe_learner": "r7a-redeploy-1792478958@example.invalid (1 census-class register, of record)"
+  },
+  "post_deploy_verification": {
+    "actuator": "GET /actuator/health -> 200 {groups:[liveness,readiness],status:UP}",
+    "auth_law": "POST /api/v1/auth/login {} -> 400 validation_failed",
+    "decay_law": "GET /api/v1/cron/nightly-decay -> 401 unauthorized 'missing or wrong Authorization bearer' (the fail-closed CONFIGURED-law reason string)",
+    "hub_sanity": "GET hub /api/health -> 200 {status:ok,service:syllabai-hub,dataMode:core-api,coreConfigured:true} (the byte-law holds; hub untouched)"
+  },
+  "disclosures": [
+    "CLI OUTPUT-FORMAT FINDING (of record): vercel CLI 62.7.0's deploy output no longer carries a dpl_ id (Inspect URL + deployment URL only); the fire script's no-dpl_-abort fired POST-alias — the deploy was already LIVE and aliased; NO second deploy fired (no-duplicate-acts); the uid resolved via API (dpl_ENEw3fhf...) and the full assertion chain completed post-hoc (redeploy_verify.py); the fire script's resolution law patched for future runs",
+    "137d STAGED-GOODS LOSS (sandbox-wipe recurring class): the staged 137d battery (scripts/battery_137d.py lane-side) and its run-001 baseline captures (tool-results/137d-battery-run-001.json) are GONE from the workspace — 137d remains STAGED, re-derivation OWED and filed, not silently skipped; the carrier now carries 137a-c LIVE, so the before-shape of record (evidenceFired=False + skillStates=0, run-001 baseline 20/20 wire-ok) stands preserved in T-MIG-137/run-003-band-137d-staged-r7a.json",
+    "worktree hygiene: shims are worktree-only (upstream repo untouched; restored clean post-build, git status empty), vercel CLI 62.7.0 reinstalled globally (sandbox wipe lost it), bun install refreshed (930 packages) — no repo-file deltas beyond .syllabai in this commit",
+    "race-guard: prior production deploy dpl_HphMddku ~24h old at fire time — clear; zero parallel-lane deploys observed through verification"
+  ],
+  "scrub": "zero credential material printed/committed (token/DSN memory-or-0600-only); zero env writes, zero DDL, zero LLM spend, zero Neon writes beyond the one disclosed probe-learner register; fetch-first honored, no force"
+}
