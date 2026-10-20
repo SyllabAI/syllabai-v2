@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { existsSync } from "node:fs";
-import path from "node:path";
 import { Suspense } from "react";
 import { listCourses } from "@/lib/courses";
+import { hasKgDataFile } from "@/lib/corpus";
 import { KnowledgeGraphClient } from "./client";
 
 export const metadata: Metadata = {
@@ -24,19 +23,24 @@ export const metadata: Metadata = {
  */
 export default async function KnowledgeGraphPage() {
   const courses = await listCourses();
-  const dataDir = path.join(process.cwd(), "public", "kg", "data");
+  const withGraph = await Promise.all(
+    courses.map(async (c) => ({
+      c,
+      hasGraph: await hasKgDataFile(`${c.slug}.json`),
+    })),
+  );
   return (
     <Suspense fallback={null}>
       <KnowledgeGraphClient
-        courses={courses.map((c) => ({
+        courses={withGraph.map(({ c, hasGraph }) => ({
           slug: c.slug,
           label: c.label,
           subject: c.subject,
           code: c.code,
           level: c.level,
-          // the picker lists exactly what will load — an fs check, not a
+          // the picker lists exactly what will load — a corpus probe, not a
           // registry promise (hasBundle is about content, not kg data)
-          hasGraph: existsSync(path.join(dataDir, `${c.slug}.json`)),
+          hasGraph,
         }))}
       />
     </Suspense>

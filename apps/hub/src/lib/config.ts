@@ -8,8 +8,11 @@
  * The badge set therefore shrinks to the data mode + core wiring.
  */
 import "server-only";
-import { resolveDataMode } from "@/lib/data";
-import { isCoreApiConfigured } from "@/lib/data/core-api";
+// Bundle-offload note (perf band): import the mode module DIRECTLY — going
+// through @/lib/data would drag the provider factory (and data/mock.ts's
+// ~3.4MB compile-baked corpus) into every serverless function via the root
+// layout, for a value that is five lines of env checks.
+import { resolveDataMode, isCoreApiConfigured } from "@/lib/data/mode";
 
 export interface PublicConfig {
   dataMode: "mock" | "core-api";

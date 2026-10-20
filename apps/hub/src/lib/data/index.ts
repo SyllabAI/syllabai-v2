@@ -8,20 +8,21 @@
  * The neon provider was removed at promotion (ADR-029): a production
  * frontend must not bypass the core domain layer and touch a database
  * directly. mock | core-api are the only two modes.
+ *
+ * Bundle-offload note (perf band): mode RESOLUTION lives in ./mode.ts —
+ * an import-free module — so mode-only consumers (lib/config.ts ← root
+ * layout) never reach this factory, and the mock.ts corpus bake stays
+ * confined to call sites that actually resolve a provider. Import the
+ * mode module directly when you only need resolveDataMode.
  */
 import "server-only";
 import type { DemoDataProvider } from "./types";
 import { mockProvider } from "./mock";
-import { coreApiProvider, isCoreApiConfigured } from "./core-api";
+import { coreApiProvider } from "./core-api";
+import { resolveDataMode } from "./mode";
 
-export type DataMode = "mock" | "core-api";
-
-export function resolveDataMode(): DataMode {
-  const forced = process.env.HUB_DATA_MODE as DataMode | undefined;
-  if (forced === "mock" || forced === "core-api") return forced;
-  if (isCoreApiConfigured()) return "core-api";
-  return "mock";
-}
+export type { DataMode } from "./mode";
+export { resolveDataMode, isCoreApiConfigured } from "./mode";
 
 export function getDataProvider(): DemoDataProvider {
   switch (resolveDataMode()) {

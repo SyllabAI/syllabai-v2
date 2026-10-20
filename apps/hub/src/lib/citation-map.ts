@@ -1,9 +1,7 @@
 import "server-only";
 
-import { existsSync } from "node:fs";
-import path from "node:path";
-
 import { listCourses } from "@/lib/courses";
+import { hasKgDataFile } from "@/lib/corpus";
 
 /**
  * Citation mapping — core DTOs (TutorCitation/ClaCitation:
@@ -169,10 +167,13 @@ async function safeCourses() {
   }
 }
 
-function surfaceFor(course: { slug: string } | undefined): CitationSurface {
+// Bundle-offload note (perf band): the graph gate moved from a direct
+// existsSync against cwd/public/kg/data (a traced fs literal) to the
+// lib/corpus.ts probe (fs at build/dev, index-backed static probe at
+// runtime). Same honesty contract: null unless the graph bundle ships.
+async function surfaceFor(course: { slug: string } | undefined): Promise<CitationSurface> {
   if (!course) return {};
-  const dataDir = path.join(process.cwd(), "public", "kg", "data");
-  const hasGraph = existsSync(path.join(dataDir, `${course.slug}.json`));
+  const hasGraph = await hasKgDataFile(`${course.slug}.json`);
   return {
     kgHref: hasGraph
       ? `/knowledge-graph?course=${encodeURIComponent(course.slug)}`
