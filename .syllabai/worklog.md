@@ -10002,3 +10002,19 @@ Work Log:
 
 Stage Summary:
 - BAND 4 DONE of record: the maths-b bank is INGEST-READY through the unmodified frozen ADR-026 laws — 1,192 anchored, law-clean questions across 65 past-paper sets. Band 5 = the apply, operator-gated on the credential re-staging. Zero prod writes, zero Neon; 4MB1-only fence; fetch-first, no force.
+---
+Task ID: Task-65
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, trace 1a15ac054f484b0d)
+Task: Operator "the backfill drain resumes at RPD reset" — the run-003 standing plan ARMED of record: mode=backfill-sharded over the 216-doc residual, dispatch staged and waiter live for the midnight-Pacific window (07:05Z Oct 21); receipt T-MIG-138/run-004-drain-arm-r1c.json.
+
+Work Log:
+- Fetch-first: local main ff -> 45ca5b6 (the T-MIG-136 parse-lane bands 3b/4, PR #225/#226 merges, the 133k addendum). Server-authoritative time pinned (GitHub Date header 19:20Z Oct 20) — the R0-AUTO-20261021-1830 receipt name on main is a lane-side labeling artifact (commit 18:43Z Oct 20), disclosed not touched.
+- The plan of record re-read first-hand (run-003 receipt feaf7ac): 'the drain resumes on the next RPD reset (midnight Pacific) via mode=backfill-sharded with rows = the 216 residual' — the operator order executes exactly this.
+- ROWS provenance strengthened: run #9's (39438132654, cow+prod) prod-apply artifact backfill-row-ids.txt was written by the workflow's own postverify at 14:48Z DIRECTLY FROM PRODUCTION (embedding-null rows, created_at desc = recency-first), i.e. the post-run-#8 live residual — 7,991 bytes = exactly 216 ids, 216/216 unique + uuid-shaped, byte-consistent with the 295-79=216 cross-check of record. Persisted lane-side for the dispatch input.
+- Machinery armed (lane-side, persisted): t138-drain-waiter.sh (nohup pid 1099, log t138-drain-waiter.log) sleeps to 2026-10-21T07:05:00Z (+5 min past the midnight-Pacific roll), then (1) no-duplicate-acts pre-fire check (stand-down if any t-mig-138-intake run created after 06:00Z), (2) fires mode=backfill-sharded rows=the 216 with the operator trace in the note, (3) polls to conclusion and logs the shard outcomes. t138-drain-fire.sh = immediate-fire fallback on operator re-key.
+- FRAGILITY DISCLOSED: the waiter lives in the agent sandbox — the documented reset/rollback class kills it silently; the receipt carries the detection rule (waiter state file absent AND no run after 07:00Z => fire the fallback) and the rows are fully of record in the run #9 artifact, so any lane can re-fire byte-exact.
+- Gate law untouched: the runner stays INERT until dispatched (workflow_dispatch-only operator gate); the FROZEN executor, dispatch-gate and COW protocol byte-untouched; secrets verified metadata-only (T138_GEMINI_KEY + _2/_3/_4 staged, updated 14:09-14:44Z Oct 20), values never printed.
+- Write ledger: .syllabai-only (this receipt + entry) + lane-side scripts; ZERO dispatch fired this act, zero prod/DB/Neon/LLM contact; fetch-first, no force.
+
+Stage Summary:
+- The drain is ARMED of record: window 07:05Z Oct 21 (midnight Pacific RPD roll), rows = the 216-doc residual byte-exact from prod, machinery + fallback persisted, expected outcome per the run-003 projection (~3 healthy shards; shard-4 honest red possible while op#4 stays 403-dead — operator-keyed). The firing + run-005 receipt belong to the next act (or the operator fallback). Next repo receipt = Task-66; next workspace = Task-46.

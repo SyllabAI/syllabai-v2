@@ -1,0 +1,32 @@
+{
+  "receipt": "T-MIG-138/run-004-drain-arm-r1c.json",
+  "lane": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, trace 1a15ac054f484b0d)",
+  "operator_order": "trace 1a15ac054f484b0d 'the backfill drain resumes at RPD reset' — execute the run-003 standing plan of record (feaf7ac: 'the drain resumes on the next RPD reset (midnight Pacific) via mode=backfill-sharded with rows = the 216 residual')",
+  "executed_at_utc": "2026-10-20T19:24:00Z",
+  "state": "ARMED-PENDING-WINDOW — the dispatch is staged and the waiter is live; NO dispatch fired in this act (the runner is INERT until dispatched per the workflow's own operator-gate law; the fire happens at the window or on the operator fallback)",
+  "the_window_of_record": {
+    "reset_law": "gemini-embedding-001 free-tier RPD resets at midnight Pacific (the run-003 receipt's own pin; PDT = UTC-7 in October)",
+    "computed": "2026-10-21T07:00:00Z",
+    "fire_at": "2026-10-21T07:05:00Z (+5 min buffer past the roll)",
+    "server_time_at_armed": "2026-10-20T19:24Z (GitHub server Date header authoritative; the R0-AUTO-20261021-1830 receipt name on main is a lane-side labeling artifact — its commit landed 18:43Z Oct 20)"
+  },
+  "rows_provenance": {
+    "source": "run 39438132654 (run #9, cow+prod @ e5bf8b7) prod-apply artifact backfill-row-ids.txt — written by the workflow's own postverify at 14:48Z DIRECTLY FROM PRODUCTION (rows where embedding is null among the 4MA1 docs, order created_at desc = recency-first), i.e. post-run-#8 (79 embedded) live state",
+    "verification": "7,991 bytes = exactly 216 comma-separated ids; 216/216 unique; 216/216 uuid-shaped; 0 malformed; byte-consistent with the run-003 residual of record (295 - 79 = 216)",
+    "persistence": "the list rides lane-side at scripts/t138-drain-rows.txt (values of record already public in the artifact); the dispatch passes it verbatim as the rows input — recency-first order preserved through the round-robin shard law"
+  },
+  "machinery": {
+    "waiter": "scripts/t138-drain-waiter.sh (lane-side, nohup, pid of record 1099, log t138-drain-waiter.log) — sleeps to the window, then: (1) no-duplicate-acts pre-fire check (stand down if any t-mig-138-intake run was created after 06:00Z Oct 21); (2) fires mode=backfill-sharded, rows=the 216, note carries this trace; (3) polls the new run to conclusion and logs the shard outcomes",
+    "fallback": "scripts/t138-drain-fire.sh — immediate-fire on operator re-key (any lane/operator can execute it after 07:00Z without re-deriving the rows)",
+    "executor": "the FROZEN 133d executor byte-untouched; dispatch-gate + COW protocol untouched; the shard law + RPD-wall honesty as landed at e5bf8b7/feaf7ac"
+  },
+  "fragility_disclosure": "the waiter lives in the agent sandbox — the documented container-reset/rollback class (3 resets + 3 rollbacks of record) kills it SILENTLY. If the next census finds t138-drain-waiter.state absent AND no run created after 07:00Z Oct 21, the drain did NOT fire: execute the fallback (scripts/t138-drain-fire.sh) or any lane re-fires mode=backfill-sharded with the same rows — the list is fully of record in the run #9 artifact and this receipt",
+  "expected_outcome": "per the run-003 receipt projection: pool [original(T138_GEMINI_KEY re-staged app key), op#2, op#3] healthy after reset, op#4 403-dead + op#1 anomaly operator-keyed unless replaced — expect a sharded run with a possible shard-4 honest red (non-rate class, disclosed precedent run #8); success = the 216-doc queue drains or walls honestly at the RPD boundary with skipped-rows artifacts of record",
+  "no_duplicate_acts": "latest t-mig-138-intake run at arming = #9 (14:19Z) — the queue idle since; the waiter's own pre-fire check re-verifies at the window",
+  "write_ledger": "LANE-SIDE ONLY: two scripts + the rows file + this receipt + the worklog entry; ZERO dispatch fired, zero prod/DB/Neon/LLM contact, zero code/content, secrets never printed (metadata-only verification of the 4-key staging: T138_GEMINI_KEY + _2/_3/_4 present, updated 14:09-14:44Z Oct 20); fetch-first, no force",
+  "residuals_of_record_unchanged": [
+    "op#4 403-dead and op#1 walled-at-26-vectors — operator-keyed (replace/enable for the full 4-shard throughput)",
+    "secrets hygiene-delete stays keyed to the LAST tranche (the 138c receipt law)",
+    "PAT rotation standing CRITICAL overdue (unchanged)"
+  ]
+}
