@@ -49,18 +49,25 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { TeacherNav } from "@/components/teacher/teacher-nav";
 import { useIdentity } from "@/lib/identity";
 import { useMyClasses, type TeacherClass } from "@/lib/teacher/my-classes";
+import { boardOf } from "@/lib/board";
 import { ApiError, api } from "@/lib/api";
 import type { TeacherClassView } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { AddClassOverlay } from "./add-class-overlay";
 
-/** The page passes the registry subset this dashboard renders. */
+/** The page passes the registry subset this dashboard renders. The board
+ *  rides along (absent = the pre-CIE Edexcel rows) so class cards and the
+ *  picker print the row's real awarding board — operator trace
+ *  1a158596b1569079 opened the class-creation picker to both boards, and
+ *  the pre-fix hard-coded "Edexcel" eyebrow would have been false for
+ *  every Cambridge lane a class covers. */
 export interface TeacherCourseLite {
   slug: string;
   label: string;
   subject: string;
   code: string;
   level: string;
+  board?: string;
 }
 
 /** Same shape the student dashboard reads from /api/course-stats. */
@@ -194,6 +201,18 @@ function ClassCard({
     .map((s) => bySlug.get(s))
     .filter((c): c is TeacherCourseLite => !!c);
 
+  // the class's real boards from the registry rows — one board prints its
+  // name, several print honestly "Mixed boards" (classes may span boards
+  // since the class-creation picker went two-board); zero valid subjects
+  // prints the bare count (the body already explains the edit path)
+  const classBoards = [...new Set(subjects.map((c) => boardOf(c)))];
+  const eyebrowBoard =
+    subjects.length === 0
+      ? null
+      : classBoards.length === 1
+        ? classBoards[0]
+        : "Mixed boards";
+
   return (
     <Card className="relative h-full border-primary/25 transition-colors hover:border-primary/60">
       <Button
@@ -206,9 +225,10 @@ function ClassCard({
         <X className="size-4" aria-hidden />
       </Button>
       <CardContent className="flex h-full flex-col gap-1 p-4 pr-11">
-        {/* eyebrow (SubjectCard parity) */}
+        {/* eyebrow (SubjectCard parity) — the row's real board(s) */}
         <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-          Edexcel · {subjects.length} {subjects.length === 1 ? "subject" : "subjects"}
+          {eyebrowBoard ? `${eyebrowBoard} · ` : ""}
+          {subjects.length} {subjects.length === 1 ? "subject" : "subjects"}
         </p>
 
         {/* class name */}
