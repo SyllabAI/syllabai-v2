@@ -1,0 +1,84 @@
+{
+ "task": "operator order (trace 1a15afa0f3987c45): (a) difficulty-classification pass onto the 1,249 maths-b questions, (b) 4MB1 blueprint rows + the coverage gate over the drifted papers",
+ "agent": "r0 (zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "bandA": {
+  "deliverable": "difficulty classified 1249/1249 (was 100% null) \u2014 PERSISTED AS OF-RECORD ARTIFACTS in this directory (difficulty-map-1249.json), NOT into the bundle (2ece53b emptied the bundle question axis mid-lane; the refresh law is respected)",
+  "method": "z-ai CLI chat pass (glm-4-plus family, same tool class as the T-MIG-136 band-3b anchoring), alphabet-restricted easy|medium|hard, strict line-count contract, per-line salvage, per-miss individual retry",
+  "distribution": {
+   "easy": 308,
+   "medium": 754,
+   "hard": 187
+  },
+  "positionSanity": {
+   "easyMeanQ": 6.19,
+   "mediumMeanQ": 13.45,
+   "hardMeanQ": 14.95,
+   "law": "Edexcel paper ramp holds"
+  },
+  "verification": {
+   "reAskN": 80,
+   "exactAgree": 51,
+   "exactRate": "63.8%",
+   "withinOneBand": 79,
+   "withinOneBandRate": "98.8%",
+   "twoBandFlips": 1,
+   "disagreementCharacter": "28/29 flips adjacent (easy<->medium, medium<->hard); artifact is refinable per the band-3b law"
+  },
+  "llmSpend": {
+   "calls": 97,
+   "promptTokens": 97625,
+   "completionTokens": 14736,
+   "totalTokens": 112361,
+   "note": "includes 429-throttled retries; sequential+resumable runner after the burst throttling"
+  },
+  "rateLimitEncounter": "z-ai gateway 429 bursts after ~5-6 calls; ~10min penalty window; runner made resumable (difficulty-map.json state), no data loss"
+ },
+ "bandB": {
+  "deliverable": "apps/hub/src/data/pastpapers-blueprints.json regenerated: 249 -> 320 rows (63 new 4MB1 + 8 other courses' late-landing reconstructions); generator scripts/build_paper_blueprints.ts re-run twice (no-op guard held on second run)",
+  "coverage4MB1": {
+   "interactiveReconstructions": 64,
+   "withBlueprint": 63,
+   "noBlueprint": [
+    "2019-01:4MB1-01 \u2014 Q8/Q9 footer text items absent from the QP text layer (2-gap + no printed paper total; the generator's multi-gap honesty refusal; MS PDF carries no footers)"
+   ]
+  },
+  "gateStates": {
+   "complete": 59,
+   "partial": 4,
+   "noBp": 1,
+   "censusMethod": "the shipped computeCoverage via per-reconstruction matching exactly as the player page does (bulk matching has the pre-existing 'May 2020' multi-session first-match quirk, disclosed, player unaffected)"
+  },
+  "caught": [
+   "January 2019 4MB1/01R \u2014 held 92/96, missing Q18",
+   "January 2023 4MB1/02 \u2014 held 85/87, missing Q12",
+   "June 2019 4MB1/01R \u2014 held 89/100, missing Q19,Q28",
+   "June 2022 4MB1/02R \u2014 held 89/100, missing Q6"
+  ],
+  "corrections": "the audit's assumed 'official 100' was wrong for some sessions (Jan-2023 /02 official 87, Jan-2019 /01R official 96) \u2014 official totals now of record from the QP footers",
+  "note": "blueprints remain correct of-record official data (row-driven QP-footer extraction, serving-surface-agnostic); the pre-refresh census (59 complete / 4 partial / 1 no-bp) described the bundle-fed interactive surface which the refresh retired \u2014 the gate auto-activates for any reconstruction-bearing surface"
+ },
+ "gates": {
+  "verify_corpus_23a": "PASSED",
+  "verify_flashcard_sync": "PASSED",
+  "validate_cie_bundles": "PASSED",
+  "buildHub": "OK",
+  "typecheck4": "OK",
+  "bunTest": "2288 pass / 0 fail / 13 skip"
+ },
+ "testAmendment": "the maths-b shim block rewritten for the empty-bundle reality (2ece53b law) with synthetic in-spine sets pinning the deterministic mapping laws; the two 135b pins re-pinned to the refresh census (options 4 -> 0, MCQ part absence) \u2014 collision cleanup",
+ "notDone": [
+  "2019-01:4MB1-01 stays 'unverified' (honest)",
+  "57 totalMark!=sumParts questions untouched (filed follow-up: totalMark reconciliation)",
+  "34% MS parse flags untouched (filed follow-up: MS notation cleanup)"
+ ],
+ "provenance": {
+  "repo": "SyllabAI/syllabai-v2",
+  "base": "ba3dee4",
+  "pastPapersRepo": "SyllabAI/syllabai-pastpapers (raw QP/MS fetches, public raw)"
+ },
+ "collisionOfRecord": {
+  "event": "mid-lane, 2ece53b (T-CONSUME-EDX-1, the Edexcel bundle refresh) landed on main and EMPTIED the maths-b bundle question axis (1,249 -> 0, the no_topic_questions_on_sme ruling) while moving the question axis to the band-5 DB fetch-bank (1,192 anchored rows, rank 3/DEFAULT); it also re-imported maths-a bundles (options 4 -> 0) leaving two 135b test pins stale of record (its gates did not include bun test)",
+  "resolution": "bundle stays EMPTY (the refresh law respected \u2014 no difficulty written into it); the difficulty census persists as of-record artifacts (difficulty-map-1249.json + verification-reask-n80.json in this directory); the maths-b shim test block rewritten for the empty-bundle reality with the mapping laws pinned synthetically (worded ranks 2/3/4, DEFAULT 3, refusal, dbCode joins, frozen validate); the two stale 135b pins re-pinned to the refresh census (options 0, MCQ absence); band B blueprints kept (correct of-record data, serving-surface-agnostic)",
+  "followUpForOperator": "the difficulty application target is now the DB rows (1,192 live, difficulty=3/DEFAULT): a deterministic external_ref-joined UPDATE (easy->2/medium->3/hard->4) awaits an operator-gated DB lane; the hub's 64-interactive-papers surface itself is retired at the new of-record (reconstructions came from the now-empty bundle)"
+ }
+}

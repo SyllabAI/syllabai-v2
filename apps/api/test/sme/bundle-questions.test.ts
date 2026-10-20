@@ -70,7 +70,8 @@ describe("T-MIG-135b the real bundles through the shim + the frozen gates", () =
     expect(pkg.packageVersion).toBe("1.0");
     expect(pkg.source).toBe("sme-eq-igcse-maths-a-18-higher");
     expect(pkg.corpusVersion).toContain("syllabai.sme-exam-questions/1.1");
-    expect(pkg.counts).toEqual({ questions: 2692, parts: 3538, options: 4, sets: 58, unmapped: 9, badSum: 0, dupOrder: 2 });
+    // 2ece53b re-import: the corpus no longer carries option-bearing parts
+    expect(pkg.counts).toEqual({ questions: 2692, parts: 3538, options: 0, sets: 58, unmapped: 9, badSum: 0, dupOrder: 2 });
   });
 
   test("the foundation bundle builds at the exact manifest numbers", () => {
@@ -166,13 +167,12 @@ describe("T-MIG-135b the real bundles through the shim + the frozen gates", () =
     const multi = pkg.questions!.find((x) => (x.parts?.length ?? 0) > 1)!;
     const primaryFirst = multi.specPoints!.filter((sp) => sp.role === "PRIMARY");
     expect(primaryFirst.length).toBeGreaterThanOrEqual(1);
-    // the corpus's one MCQ part lands as option-bearing part options with
-    // exactly one correct (the frozen MIXED emission handles it at ingest)
+    // 2ece53b re-import: the corpus's MCQ part is gone (options 0) — the
+    // option-bearing emission law stays covered by the sme.test.ts fixtures
     const mcqPart = pkg.questions!
       .flatMap((x) => x.parts ?? [])
       .find((p) => p.options != null);
-    expect(mcqPart).toBeDefined();
-    expect(mcqPart!.options!.filter((o) => o.isCorrect).length).toBe(1);
+    expect(mcqPart).toBeUndefined();
     // difficulty word map spot-pins
     const byWord = (w: string) => pkg.questions!.find((x) => x.smeDifficulty === w)!;
     expect(byWord("easy").difficulty).toBe(2);
@@ -268,7 +268,14 @@ describe("T-MIG-135b the fail-closed shim laws", () => {
   });
 });
 
-// ── T-MIG-136 bands 3b+4: the ANCHORED maths-b past-paper corpus ────────────
+// ── T-MIG-136 bands 3b+4 -> T-CONSUME-EDX-1: the maths-b past-paper corpus ──
+// The 2ece53b Edexcel bundle refresh EMPTIED the hub bundle's question axis
+// (igcse-maths-b-16 questions 1,249 -> 0, the upstream SME manifest's
+// census-backed no_topic_questions_on_sme ruling) and moved the question axis
+// to the band-5 DB fetch-bank (1,192 anchored rows). The bundle-side pinned
+// laws (1,192-count census, 91-of-98 anchor codes, whole-corpus null
+// difficulty) therefore died with the refresh; the shim's deterministic
+// mapping laws survive and are pinned here through synthetic 1.1 sets.
 const mathsB = {
   slug: "igcse-maths-b-16",
   sets: JSON.parse(readFileSync(join(HUB, "igcse-maths-b-16/questions.json"), "utf8")) as BundleQuestionSet[],
@@ -289,60 +296,130 @@ function buildMathsB() {
   });
 }
 
-describe("T-MIG-136 bands 3b+4: the anchored maths-b corpus through the shim", () => {
-  test("the anchored bundle builds with the badSum exclusions at the exact numbers", () => {
-    const pkg = buildMathsB();
-    // 1249 anchored - 57 arithmetic-flag exclusions (the parse lane's
-    // disclosed population, counted NOT rewritten) = 1192; their 286 parts
-    // drop with them (2392 -> 2106)
-    expect(pkg.counts).toEqual({ questions: 1192, parts: 2106, options: 0, sets: 65, unmapped: 0, badSum: 57, dupOrder: 0 });
+/** one minimal in-spine 1.1 set: Q1 (2 marks, one part, spec 1A) */
+function oneSyntheticSet(difficulty: string | null, code = "1A"): BundleQuestionSet[] {
+  return [
+    {
+      topicId: "top_synth--tqst_synth",
+      slug: "2026-06-4mb1-01--exam-questions",
+      name: "June 2026 · Paper 1 (4MB1/01)",
+      topicSlug: "2026-06-4mb1-01",
+      section: "Past papers",
+      sectionSlug: "past-papers",
+      curriculum: {
+        board: "Pearson Edexcel",
+        level: "IGCSE",
+        subject: "Maths",
+        code: "4MB1",
+        syllabusVersion: "2016",
+      },
+      source: { provider: "synthetic law probe", license: "n/a" },
+      schema: "syllabai.sme-exam-questions/1.1",
+      relatedNoteIds: [],
+      questions: [
+        {
+          id: "qstn_synth01",
+          order: 0,
+          difficulty,
+          style: "exam_whole",
+          totalMarks: 2,
+          parts: [
+            {
+              id: "qstnprt_synth01",
+              order: 0,
+              questionType: "open",
+              marks: 2,
+              commandWord: "Find",
+              specPointIds: [code],
+              specPointCodes: [code],
+              problemMd: "Work out 2 + 2.\n\n............",
+              solutionMd: "**P1** (2 marks) 4",
+              choices: null,
+              sourcePaper: { date: "June 2026", number: "4MB1/01", questionNumber: 1, questionPart: null },
+            },
+          ],
+        },
+      ],
+    },
+  ] as unknown as BundleQuestionSet[];
+}
+
+describe("T-MIG-136 bands 3b+4 through T-CONSUME-EDX-1: the maths-b corpus laws", () => {
+  test("the emptied-bundle reality: the shim refuses a question-less bundle (the 2ece53b law)", () => {
+    // the refresh emptied the bundle question axis; the questions serve from
+    // the band-5 DB fetch-bank (1,192 anchored rows) — the shim says so
+    expect(mathsB.sets).toEqual([]);
+    expect(() => buildMathsB()).toThrow(/carries no question sets/);
   });
 
-  test("the alnum codes land at the seed-side dbCodes (the band-4 code-join amendment)", () => {
-    const pkg = buildMathsB();
-    const codes = new Set<string>();
-    for (const q of pkg.questions ?? []) {
-      // the maths-b topic placeholder is the SUBTOPIC dbCode 4MB1-S<n>-_
-      expect(q.primaryTopicCode).toMatch(/^4MB1-S\d+-_$/);
-      for (const sp of q.specPoints ?? []) {
-        // the T-MIG-136a seed law's dbCode — the live KG identity the frozen
-        // replace resolves against (NOT the pre-band-4 '4MB1-1A' concat)
-        expect(sp.code).toMatch(/^4MB1-S\d+-\d{1,2}[A-Z]$/);
-        expect(sp.provenance).toBe("AI_VALIDATED");
-        if (sp.code != null) codes.add(sp.code);
-      }
-    }
-    // the anchors of record use 91 of the 98 official points
-    expect(codes.size).toBe(91);
+  test("the deterministic mapping laws on a synthetic in-spine set: difficulty word ranks, dbCode joins, provenance", () => {
+    const pkg = buildSmePackage({
+      courseSlug: mathsB.slug,
+      curriculum: mathsB.curriculum,
+      sets: oneSyntheticSet("easy"),
+      generatedUtc: mathsB.manifest.generatedUtc,
+      importRef: "x",
+    });
+    const q = pkg.questions?.[0]!;
+    // the worded difficulty law (easy 2 / medium 3 / hard 4), source "SME"
+    expect(q.difficulty).toBe(2);
+    expect(q.difficultySource).toBe("SME");
+    expect(q.smeDifficulty).toBe("easy");
+    // the seed-side dbCode join survives: spec 1A -> SUBTOPIC placeholder topic + 4MB1-S1-1A
+    expect(q.primaryTopicCode).toBe("4MB1-S1-_");
+    expect(q.specPoints?.[0]?.code).toBe("4MB1-S1-1A");
+    expect(q.specPoints?.[0]?.provenance).toBe("AI_VALIDATED");
   });
 
-  test("the past-paper null-difficulty default law: 3 / DEFAULT, unknown words still refuse", () => {
-    const pkg = buildMathsB();
-    for (const q of pkg.questions ?? []) {
-      expect(q.difficulty).toBe(3);
-      expect(q.difficultySource).toBe("DEFAULT");
-      break; // the whole corpus is null-difficulty (census of record)
+  test("the difficulty rank pins across the word alphabet (medium 3, hard 4)", () => {
+    for (const [word, rank] of [["medium", 3], ["hard", 4]] as const) {
+      const pkg = buildSmePackage({
+        courseSlug: mathsB.slug,
+        curriculum: mathsB.curriculum,
+        sets: oneSyntheticSet(word),
+        generatedUtc: mathsB.manifest.generatedUtc,
+        importRef: "x",
+      });
+      expect(pkg.questions?.[0]?.difficulty).toBe(rank);
+      expect(pkg.questions?.[0]?.difficultySource).toBe("SME");
     }
-    expect(pkg.questions?.every((q) => q.difficulty === 3 && q.difficultySource === "DEFAULT")).toBe(true);
-    expect(pkg.questions?.every((q) => q.smeDifficulty === null)).toBe(true);
-    // an unknown NON-null word still refuses (the worded-bundle law survives)
-    const sets = structuredClone(mathsB.sets.slice(0, 1)) as BundleQuestionSet[];
-    sets[0]!.questions[0]!.difficulty = "brutal";
+  });
+
+  test("the past-paper null-difficulty default law: 3 / DEFAULT for a residual null", () => {
+    const pkg = buildSmePackage({
+      courseSlug: mathsB.slug,
+      curriculum: mathsB.curriculum,
+      sets: oneSyntheticSet(null),
+      generatedUtc: mathsB.manifest.generatedUtc,
+      importRef: "x",
+    });
+    expect(pkg.questions?.[0]?.difficulty).toBe(3);
+    expect(pkg.questions?.[0]?.difficultySource).toBe("DEFAULT");
+    expect(pkg.questions?.[0]?.smeDifficulty).toBe(null);
+  });
+
+  test("an unknown NON-null difficulty word still refuses (the worded-bundle law)", () => {
     expect(() =>
       buildSmePackage({
         courseSlug: mathsB.slug,
         curriculum: mathsB.curriculum,
-        sets,
+        sets: oneSyntheticSet("brutal"),
         generatedUtc: mathsB.manifest.generatedUtc,
         importRef: "x",
       }),
     ).toThrow(/unknown difficulty word/);
   });
 
-  test("the REAL parsePackage + the REAL validate accept the maths-b package", () => {
-    const pkg = buildMathsB();
+  test("the REAL parsePackage + the REAL validate accept the synthetic maths-b package", () => {
+    const pkg = buildSmePackage({
+      courseSlug: mathsB.slug,
+      curriculum: mathsB.curriculum,
+      sets: oneSyntheticSet("easy"),
+      generatedUtc: mathsB.manifest.generatedUtc,
+      importRef: "x",
+    });
     const parsed = parsePackage(JSON.stringify(pkg));
-    expect(parsed.questions?.length).toBe(1192);
+    expect(parsed.questions?.length).toBe(1);
     const service = new SmeQuestionIngestService(THROWING_SQL, CLOCK);
     expect(() => service.validate(parsed, new Map())).not.toThrow();
   });

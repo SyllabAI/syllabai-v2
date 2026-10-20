@@ -35,7 +35,8 @@ const FOUNDATION_BUNDLE = join(
 );
 
 /** sha256 of record — the pinned-bundle law (see module header). */
-const HIGHER_SHA256 = "9d4a42ca754f536477548f18058b535125937b486f3bca8edbd2a1624f8724e5";
+// re-pinned after 2ece53b (T-CONSUME-EDX-1 re-import changed the curriculum bytes; its gates did not include bun test)
+const HIGHER_SHA256 = "d1059c0a7e8f6f7b76464fb39c53633dcc848bde33699fc29acad899bdd47c6d";
 
 const higherBytes = readFileSync(HIGHER_BUNDLE, "utf8");
 const higherBundle = JSON.parse(higherBytes) as BundleCurriculumLike;
