@@ -23,7 +23,11 @@
 import type { SqlFn } from "../assessment/sql";
 import type { Clock } from "../tutor/session-store";
 import { ConflictError, NotFoundError } from "../tutor/errors";
-import type { ClaThreadSyncMessage, ClaThreadViewMessage } from "@syllabai/contracts";
+import type {
+  ClaAnswerView,
+  ClaThreadSyncMessage,
+  ClaThreadViewMessage,
+} from "@syllabai/contracts";
 
 /** list cap (the tutor MAX_LISTED_SESSIONS law — an unbounded list must
  *  never become a transcript dump by accident). */
@@ -136,7 +140,11 @@ export function buildClaThreadStore(sql: SqlFn, clock: Clock) {
       const at = new Date(m.occurred_at).getTime();
       switch (m.kind) {
         case "assistant":
-          return { kind: "assistant", at, payload: m.payload };
+          // the row rides the wire shape; the route's defensive
+          // claThreadViewSchema.parse re-validates the WHOLE view (the wire
+          // law) — this cast is the store's construction contract, not a
+          // bypass
+          return { kind: "assistant", at, payload: m.payload as ClaAnswerView };
         case "error":
           return { kind: "error", at, text: m.text ?? "", question: m.question ?? "" };
         case "gate":
