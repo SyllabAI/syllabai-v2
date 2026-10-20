@@ -1,0 +1,47 @@
+{
+  "task": "Operator follow-up (trace 1a15a65da50d83c5): 'check right now whether maths-b (4mb0/4mb1) is actually missing from the 108-spec index vs. present-but-broken'",
+  "agent": "r0",
+  "date": "2026-10-21",
+  "surface": "read-only: v2 main (tip 29d710a at check time), SyllabAI/syllabai-pastpapers via git-trees/contents API, live prod alias syllabai-hub-v2.vercel.app",
+  "verdict": "PRESENT AND FULLY WIRED — maths-b is NOT missing from the index and is NOT broken at any listing layer. Live regression on the correct prod alias is green (117/117 paper rows, 35 sessions + specimen). The only genuine gap is the Mode-2 interactive layer, which is the documented honest 'not parsed yet' state pending operator-keyed ingestion (134e), not a malfunction.",
+  "method": "GET/HEAD only, zero LLM/Neon/prod-db, zero writes to syllabai-resources/syllabai-pastpapers; committed index parsed and diffed against live corpus repo dirs; repo registry + COURSE_SPECS read from main; live page fetched and link-counted",
+  "evidence": {
+    "index_layer": {
+      "committed_index": "apps/hub/src/data/pastpapers-index.json (generatedAt 2026-10-19T11:37:07.616Z, treeSha 3063c716, 108 specs)",
+      "4mb0": "pearson-edexcel/international-gcse/mathematics-b/4mb0 — 15 sessions / 50 papers (mapped as legacySpecs)",
+      "4mb1": "pearson-edexcel/international-gcse/mathematics-b/4mb1 — 21 sessions / 67 papers incl. specimen (mapped as primary spec)",
+      "repo_vs_index": "4mb0 session list 15/15 exact match; 4mb1 20 real sessions exact + 'specimen' which lives at 4mb1/specimen/ (confirmed on disk, holds 4MB1-01) — zero drift"
+    },
+    "wiring_layer": {
+      "registry": "content/courses.json: igcse-maths-b-16 | code 4MB1 | status full | label 'Maths B' (94-course registry)",
+      "course_specs": "pastpapers-corpus.ts COURSE_SPECS['igcse-maths-b-16'] = {specs:[mathematics-b/4mb1], legacySpecs:[mathematics-b/4mb0]}",
+      "durations": "OFFICIAL_DURATIONS attests 4MB1/01+02 = 120min, 4MB0/01+02(+R) = 150min"
+    },
+    "live_layer": {
+      "url": "https://syllabai-hub-v2.vercel.app/courses/igcse-maths-b-16/past-papers",
+      "http": 200,
+      "page_bytes": 1395522,
+      "viewer_links": 117,
+      "expected": "50 (4mb0) + 67 (4mb1) = 117 — EXACT",
+      "sessions_linked": "35 unique ids (15 4mb0 + 20 4mb1, 2019-01 shared) + specimen — EXACT",
+      "badges": "100 'Legacy spec' rows (4mb0), 53 honest 'not parsed yet' interactive chips",
+      "home": 200
+    },
+    "corpus_drift": {
+      "post_pin_commits": [
+        "4eb7b54 2026-10-20T09:41Z parse(4mb1): pilot parsed products — 4MB1-01 2024-06 questions.json + qp.md + ms.md",
+        "87b6b98 2026-10-20T12:34Z parse(4mb1): band 2 corpus wave — 65/66 papers parsed under round-2/2b grammar"
+      ],
+      "impact": "both commits add PARSE PRODUCTS (questions.json/qp.md/ms.md), zero new PDF paper dirs — a corpus-index regeneration today would only bump treeSha/generatedAt (cosmetic); Mode-1 listing already complete",
+      "mode2": "hub interactive papers derive from course-bundle question banks (sourcePaper provenance, lib/past-papers.ts), NOT directly from corpus parse products — the 65/66 wave surfaces as playable only after the operator-keyed bundle ingestion step (134e scope)"
+    }
+  },
+  "self_disclosed_probe_error": "During this check r0 first probed https://syllabai-v2.vercel.app (home, /past-papers, 5 course pages) — all returned Vercel edge NOT_FOUND (text/plain, x-vercel-error: NOT_FOUND). That host is the API/core origin, not the hub; r0 briefly mis-concluded a site-wide production outage. Corrected by re-reading cross-course-audit-run-001's surface field (syllabai-hub-v2.vercel.app) and re-running the battery there: all green. No outage exists; the wrong-domain 404s are an r0 artifact, not a platform incident.",
+  "answer_to_operator": "maths-b is present-but-NOT-broken: index rows, registry row, spec mapping, durations and the live page all check out exactly (117/117). If a student report said 'could not access past papers', the data layer is exonerated; the plausible sources are (a) the interactive 'not parsed yet' chips read as inaccessibility (fix = 134e ingestion of the 2026-10-20 parse wave, operator-gated), (b) a transient network blip, or (c) a wrong/stale bookmark hitting the API origin. Regenerating the corpus index is NOT needed for maths-b visibility and would not change any maths-b row today.",
+  "recommended_followups": [
+    "Optional: run bun scripts/build_pastpapers_index.ts to refresh treeSha 3063c716 -> 6479e0b2 for provenance hygiene (cosmetic; no listing change)",
+    "If interactive maths-b is the goal: execute the operator-keyed 134e ingestion of the 65/66-paper 4mb1 parse wave into the course bundle",
+    "Consider a canonical-domain doc note so probes never hit the API origin by mistake (r0's own miss today)"
+  ],
+  "write_ledger": "receipt + worklog append only (.syllabai/**); no source, index, corpus, hub or db changes"
+}

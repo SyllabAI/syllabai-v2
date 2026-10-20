@@ -9788,3 +9788,21 @@ Stage Summary:
 - The two operator-gated acts are EXECUTED BY THE LANE on the operator's explicit delegation (the firing order IS the authorization, the 134c law): act 1 = the credential path landed as the gate amendment (name-level fallback, value never transits); act 2 = the dispatch fires on merge at the merged sha.
 - Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-phase4-prod-order-r0.json (follow-up run receipt to land per the follow-up-commit law).
 - fetch-first, no force; PR for the desk (self-merge on green per lane precedent #216/#217); zero prod writes by this commit itself (the ONLY production writes are the gate's own prod-apply job under the COW-proof guard).
+
+---
+Task ID: pp-maths-b-presence-001
+Agent: r0
+Task: Verify maths-b (4mb0/4mb1) presence in the 108-spec index vs present-but-broken (trace 1a15a65da50d83c5)
+
+Work Log:
+- Parsed committed pastpapers-index.json: 4mb0 = 15 sessions/50 papers, 4mb1 = 21 sessions/67 papers (incl. specimen) — both present
+- Diffed session lists against live corpus repo dirs: 4mb0 15/15 exact; 4mb1 20 real + specimen exact (specimen lives at 4mb1/specimen/4MB1-01, confirmed)
+- Verified wiring: registry row igcse-maths-b-16 (4MB1, full, "Maths B"); COURSE_SPECS maps 4mb1+legacy 4mb0; durations attested (120/150min)
+- Corpus drift since index pin 3063c71: only two parse(4mb1) product commits (4eb7b54, 87b6b98) — zero new PDF dirs, so index regen would be cosmetic-only
+- Live regression on syllabai-hub-v2.vercel.app: maths-b past-papers 200, 117 viewer links (= 50+67 EXACT), 35 sessions + specimen, 100 Legacy-spec badges, 53 honest not-parsed-yet chips; home 200
+- Self-disclosed: first probed wrong host syllabai-v2.vercel.app (API/core origin) → edge 404s; briefly mis-read as site-wide outage; corrected via audit-run-001 surface field; no outage exists
+
+Stage Summary:
+- VERDICT: maths-b PRESENT AND FULLY WIRED, live-healthy; only gap = Mode-2 interactive (not-parsed-yet pending 134e ingestion of the 65/66 parse wave)
+- Receipt: .syllabai/receipts/ops-pastpapers/pastpapers-maths-b-index-presence-run-001-r0.json
+- Read-only diagnostic (GET only), zero LLM/Neon/prod-db, no corpus/resources writes; PAT inline one-time only
