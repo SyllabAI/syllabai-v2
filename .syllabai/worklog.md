@@ -10064,3 +10064,17 @@ Stage Summary:
 - receipt: .syllabai/receipts/T-MIG-140/run-001-books-course-page-option.json
 - zero DB writes, no data-lane touch, secrets untouched, fetch-first, no force
 - WORKLOG DEFECT DISCLOSED: the first rebase union naively concatenated the two full staged versions and DOUBLED the 149 shared base entries (301 vs the honest 151); caught pre-push by the T-MIG-SEED duplicate count (2 vs 1) and repaired in this same commit to the protocol's intended union — origin/main's full version byte-exact + this one new entry; no pre-existing entry text altered
+
+---
+Task ID: trace 1a15adf87e74fa39 (wave-1 SHIP live-verification of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- RESET #6 disclosed: repo rolled back to 63fe6ef (behind 301), secrets staging + download/ artifacts + new scripts wiped between turns. FF-only re-ground; both tokens re-staged 0600 (fingerprints MATCH of-record: a8ccee736aa8c75b / d254bbfaac004354 — re-stages, NOT rotations; rotation overdue x2).
+- Vercel API verified 200 (user syllabai-1403, team_ULL54qkhzKBmnKrpO6BD4mYX). False-OK verify practice (parsing error body) disclosed and corrected with status checks.
+- SHIP DISCOVERY: GitHub integration already auto-deployed 89b4105 as dpl_8JMJGRGXtZZXM17UoxUjmogV9xVF (READY, production) — zero manual deploys fired this run; INFLIGHT-GUARD clean (top-3 prod all READY).
+- LIVE PROOF: 54/54 wave-1 appends verified live at exact kill-list coordinates (reconstructed from the 89b4105 commit diff — git history is the of-record after artifact wipe); whole-file live corpus == 89b4105 content; corpus +4,168 bytes.
+- Battery t215b r1a re-fired post-ship: 11/11 PASS.
+
+Stage Summary:
+- Wave-1 is SHIPPED and verified live on https://syllabai-hub-v2.vercel.app — 16 grade-A codes now live on the questions axis; coverage of record 170/182 questions, residual 11 (grade-B, wave-2 pending). Receipt run-003-wave1-ship-live-r0.
