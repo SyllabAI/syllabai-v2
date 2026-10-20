@@ -1,0 +1,29 @@
+{
+  "receipt": "cie-phase4-prod-apply-run-001-r0",
+  "family": "CIE-INTEGRATION",
+  "operatorTrace": "1a15993047a40809 + 1a15a5bb18840ac5",
+  "operatorOrder": "the two-act prod apply (act 2 = dispatch cie-phase4-db-plane mode=cow+prod), executed by the lane per the operator delegation 'can you do the 2 acts yourself?'",
+  "agent": "r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "generatedUtc": "2026-10-20T18:20:00Z",
+  "phase": "4 of 6 — the DB-plane gate FIRED (run 001 of the dispatch series)",
+  "runOfRecord": {
+    "runId": 39470460696,
+    "workflow": "cie-phase4-db-plane.yml @ main 2a9227b (the PR #221 amendment merge)",
+    "mode": "cow+prod",
+    "dispatchedAt": "2026-10-20T17:56:48Z",
+    "conclusion": "FAILURE — and the failure is the PLANE'S OWN ARG-PARSE DEFECT, caught by the gate's guard protocol exactly as designed: cow-proof job red at the fleet step, prod-apply job correctly SKIPPED (needs: cow-proof), ZERO writes anywhere",
+    "timeline": "17:56:52Z checkout+bun install ok; 17:57:09Z COW branch br-green-frost-a54vy67f created (in-line read_write endpoint, project billowing-cherry-15418366, parent br-muddy-bar-a5huwldd); ~18:00:16Z endpoint ready + BRANCH-LOCAL neondb_owner password reset (production roles untouched); 18:00:17.58Z the fleet step exits 2 on the orchestrator's usage line; the always() DROP step ran: COW deleted + post-delete GET = 404 (zero residue, the T-MIG-035 discipline)"
+  },
+  "rootCauseOfRecord": {
+    "defect": "cie-phase4-apply.ts main() mode detection matched the JOINED literal args.includes('--mode apply') — but the gate's shell invocation argv-splits into TWO tokens ['--mode','apply'] (word-splitting), so mode resolved null -> usage + exit 2 BEFORE any DB contact",
+    "class": "build-time integration gap: the build validation exercised --census and the test battery, never the EXACT CI invocation shape of the gate's own fleet step (the joined forms are the sandbox shapes)",
+    "guardVerdict": "the 134c guard protocol held verbatim: honest red before any write; COW dropped + 404-verified even on failure; prod-apply skipped; production untouched"
+  },
+  "fixOfRecord": {
+    "code": "apps/api/scripts/cie-phase4-apply.ts — the mode resolution extracted to the exported pure resolveMode(args): the CI two-token form (--mode apply / --mode dry), the equals forms (--mode=apply / --mode=dry), the joined literals, and the bare --apply flag ALL resolve; garbage/empty -> null (usage + exit 2 unchanged)",
+    "pin": "apps/api/test/sme/cie-phase4-roster.test.ts — the run-39470460696 regression pin: 7 assertions over every accepted spelling + the null law",
+    "validation": "roster suite 9 pass / 0 fail (incl. the new pin); --census clean over all 45 slugs; the usage-refusal path re-verified; tsc --noEmit exit 0"
+  },
+  "writeLedger": "ZERO prod-db writes, ZERO COW-persistent writes (the COW never received a statement — the failure predates the fleet's first query), zero LLM, zero Neon mutation beyond the disposable COW create+drop pair the gate itself owns; the only repo writes are the fix + this receipt + worklog",
+  "nextAct": "run-002: re-dispatch the gate at the fix's merged main sha (same mode=cow+prod); its outcome lands as cie-phase4-prod-apply-run-002-r0.json per the follow-up-commit law"
+}

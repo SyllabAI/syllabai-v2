@@ -341,14 +341,26 @@ async function postverifySlug(entry: RosterEntry, sql: postgres.Sql): Promise<{ 
   return { subjectNodes: Number(subjectNodes[0]?.n ?? 0), activeQuestions: Number(activeQuestions[0]?.n ?? 0) };
 }
 
+export function resolveMode(args: string[]): "apply" | "dry" | null {
+  // The CI gate (cie-phase4-db-plane.yml) invokes `--mode apply` / `--mode dry`
+  // as TWO argv tokens (shell word-splitting); the equals/joined forms are the
+  // sandbox shapes. All five spellings resolve; anything else is null (the
+  // usage + exit-2 honest refusal, BEFORE any DB contact).
+  const modeFlagIdx = args.indexOf("--mode");
+  const modeValue = modeFlagIdx >= 0 ? args[modeFlagIdx + 1] : undefined;
+  if (args.includes("--apply") || args.includes("--mode=apply") || args.includes("--mode apply") || modeValue === "apply") {
+    return "apply";
+  }
+  if (args.includes("--mode=dry") || args.includes("--mode dry") || modeValue === "dry") {
+    return "dry";
+  }
+  return null;
+}
+
 async function main(): Promise<void> {
   const args = process.argv.slice(2);
   const census = args.includes("--census");
-  const mode = census ? null : args.includes("--apply") || args.includes("--mode=apply") || args.includes("--mode apply")
-    ? "apply"
-    : args.includes("--mode=dry") || args.includes("--mode dry")
-      ? "dry"
-      : null;
+  const mode = census ? null : resolveMode(args);
   const slugsIdx = args.indexOf("--slugs");
   const slugFilter = slugsIdx >= 0 ? (args[slugsIdx + 1] ?? "all") : "all";
   const receiptIdx = args.indexOf("--receipt");

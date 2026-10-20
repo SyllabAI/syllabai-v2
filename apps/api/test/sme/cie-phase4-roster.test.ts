@@ -12,7 +12,7 @@
  */
 import { describe, expect, test } from "bun:test";
 
-import { loadRoster, resolveSlugFilter, CIE_BOARD } from "../../scripts/cie-phase4-apply";
+import { loadRoster, resolveSlugFilter, resolveMode, CIE_BOARD } from "../../scripts/cie-phase4-apply";
 
 const roster = loadRoster();
 
@@ -94,5 +94,20 @@ describe("cie-phase4 roster law", () => {
     expect(one.length).toBe(1);
     expect(one[0]?.code).toBe("0620");
     expect(() => resolveSlugFilter(roster, "not-a-cie-slug")).toThrow(/never invented/);
+  });
+
+  // The run-39470460696 regression pin: the gate invokes `--mode apply` as TWO
+  // argv tokens (shell word-splitting); the original parser only matched the
+  // joined "--mode apply" literal -> usage + exit 2 BEFORE any DB contact
+  // (honest red, COW dropped 404-clean, zero writes — the guard held). Every
+  // spelling the gate or the sandbox emits must resolve.
+  test("mode resolution law: the CI two-token form, the equals form, the joined form, and the bare --apply flag all resolve; garbage is null", () => {
+    expect(resolveMode(["--mode", "apply", "--receipt", "cie4-cow-receipt.json"])).toBe("apply");
+    expect(resolveMode(["--mode", "dry"])).toBe("dry");
+    expect(resolveMode(["--mode=apply"])).toBe("apply");
+    expect(resolveMode(["--mode=dry"])).toBe("dry");
+    expect(resolveMode(["--apply"])).toBe("apply");
+    expect(resolveMode(["--receipt", "p.json"])).toBe(null);
+    expect(resolveMode([])).toBe(null);
   });
 });
