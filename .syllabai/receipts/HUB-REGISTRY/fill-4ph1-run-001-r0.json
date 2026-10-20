@@ -1,0 +1,46 @@
+{
+  "receipt": "HUB-REGISTRY/fill-4ph1-run-001-r0",
+  "family": "HUB-REGISTRY",
+  "operatorTrace": "1a15a77a20dbbcb1 ('Okay proceed with filling') + 1a15a6ff916e513d ('merge #220' + 'what do you mean by then consider filling curriculumCode for the other 89 hub registry rows')",
+  "operatorOrder": "'Okay proceed with filling' — the fill-where-served registry act, the disclosed follow-up of the TUTOR-REPAIR program (PR #220 merged of record 71a3e42, 2026-10-20T17:31:35Z): audit the 90 curriculumCode-less rows of apps/hub/content/courses.json and fill ONLY where a serving curriculum of record exists on core, never inventing a mapping (ADR-030: the honest gate beats the broken ask).",
+  "agent": "main lane (Super Z, zai-web session web-1d6277aa-1024-41a4-9261-bcf1411250b5, chat 9b73c181)",
+  "generatedUtc": "2026-10-20T18:07Z",
+  "dateConvention": "lane-local (Asia/Dhaka) date 2026-10-21 == UTC 2026-10-20 evening",
+  "mandate": {
+    "scope": "apps/hub/content/courses.json (schema syllabai-demo.course-registry/1.1) — the hub-maintained slug → core curriculum_versions.code mapping consumed by /tutor?course=<slug> (tutor-page.tsx resolves meta.curriculumCode → the ask's courseRef; an unmapped row renders TutorCourseGate reason=unmapped by the V53/ADR-030 law).",
+    "fillWhereServedLaw": "a row earns curriculumCode iff an ACTIVE curriculum_versions row with a serving corpus exists on the DB of record, evidenced by receipts; the mapping must be the EXACT of-record code (resolveForCourse is exact-ACTIVE-CODE, scope.ts :146-149)."
+  },
+  "auditOfRecord": {
+    "registryState": "94 rows total; 5 mapped after this act (4CH1-2017, 4MA1-2016 x2, 4MB1-2016, 4PH1-2017); 90 unmapped before it (45 CIE + 13 IAL + 32 Edexcel-IGCSE 4xxx) — the 'other 89' of the earlier statement was the pre-#221 count (93 rows / 89 unmapped; the CIE phase-3/4 catalog merges grew it to 90).",
+    "cie45": "NOT FILLED — no CIE curriculum exists on the DB of record: the cie-phase4-db-plane gate run #1 (39470460696, 2026-10-20T17:56:48Z) FAILED at the cow-proof job ('Run the phase-4 fleet against the COW'), prod-apply SKIPPED, and the gate's own fail-closed law DROPs + 404-verifies the COW — zero persistence by construction (cie-phase4-db-plane-build-r0.json firedAtBuild=NO; cie-phase4-prod-order-r0.json dispatchOfRecord=TO_BE_COMPLETED_BY_FOLLOWUP_RECEIPT). Unlock is receipt-gated on a green phase-4 run, not a registry edit.",
+    "ial13": "NOT FILLED — no curriculum_versions row of record for any Y-code (YBI11/YCH11/YFM01/YMA01/YPH11): the DB census of record (T-MIG-134 prod-apply store_totals: 669 knowledge_nodes = 435 chemistry + 234 physics, 6 subjects) leaves no IAL tree or paper bank.",
+    "edexcel32": "31 NOT FILLED — no seeded curriculum of record for 4AC1/4BI1/4XBI1/4BS1/4XCH1/4EC1/4ET1/4PM1/4GE1/4IT1/4XMAF-4XMAH/4XPH1/4SD0/4EA1/4XSD1 (store census above; the 4SD0 mentions of record are applicability-law context only). 1 FILLED: 4PH1 (below)."
+  },
+  "fillOfRecord": {
+    "row": "igcse-physics-19 (level IGCSE, subject Physics, code 4PH1, status full) += \"curriculumCode\": \"4PH1-2017\"",
+    "evidenceChain": [
+      "T-MIG-134/prod-apply-run-001-r0.json — the second-subject seed PROD APPLY of record (2026-10-19): cv 4PH1-2017 ACTIVE (board Edexcel, International GCSE (9-1)), 234 nodes / 233 PART_OF edges all VALIDATED, direction law exact (8 UNIT→SUBJECT + 30 TOPIC→UNIT + 195 SP→TOPIC, subject_as_source=0), 0 cross-subject edges, apply_4 clean structural no-op proof, idempotent re-apply, bounds hold",
+      "T-MIG-134/battery-134d-run-003-sz.json — the four-subsystem ZERO-LLM battery on 4PH1 (operator trace 1a155e3c060cea41): resolve/isolation laws proven live; the vector arm deliberately not fired (zero-LLM posture) — honest-empty by design, not a defect",
+      "apps/api/src/services/curriculum/bundle-seed.ts — the serving posture of record: tree nodes + structure edges land VALIDATED; the CLA/tutor validation gate serves only VALIDATED nodes — the 4PH1 KG arm serves",
+      "apps/api/src/services/tutor/karag.ts — hybrid retrieval: KG evidence (serves on the 234-node tree) + vector evidence (MIN_COSINE floor, honest empty on unavailable embeddings) — a 4PH1-2017 courseRef ask degrades honestly on the vector arm, never cross-corpus"
+    ],
+    "coreBridge": "INTENTIONALLY ABSENT — mirror of the T-MIG-136 maths-b law (courses.json maths-b row + curriculumCode 4MB1-2016, coreBridge intentionally absent): the core-questions axis for 4PH1 is honestly empty of record (the 134b questions band's 489-question 1.1 envelope was refused by the then-SUPPORTED_PACKAGE_VERSION 1.0 gate; no physics ingest receipt exists), and the flag gates that axis — holding it closed costs nothing and keeps the row honest. Flashcard sync unchanged (FLASHCARD_SYNC_COURSES untouched).",
+    "notTouched": "no other row, no note-field rewrite (the registry 'note' self-description 'official-spec mapping pending upstream for all non-4CH1 courses' is now stale-by-one — disclosed here, left byte-identical, minimal-diff mirror of the 136 fill), no coreBridge, no FLASHCARD_SYNC_COURSES, no API code"
+  },
+  "validation": {
+    "diff": "apps/hub/content/courses.json: 2 insertions(+), 1 deletion(-) — exactly the physics row's status line + the curriculumCode line",
+    "verifiers": "hub prebuild all exit 0: verify_corpus_23a.ts (CORPUS GATE PASSED), verify_flashcard_sync_courses.ts (exit 0), validate_cie_bundles.ts (CIE VALIDATOR PASSED) — the same three the hub build runs over a curriculumCode addition (the T-MIG-136 fill precedent)",
+    "json": "courses.json parses; registry row order and 6-space field indent preserved"
+  },
+  "hygiene": "zero credentials transited or staged; no postgres://, neon.tech, ghp_, vcp_, napi_ literals in this branch; zero DB writes (the fill is hub-maintained data only; the API resolves the code against the production DB of record where 4PH1-2017 is already ACTIVE)",
+  "fence": "apps/hub/content/courses.json + .syllabai/receipts/HUB-REGISTRY/** + .syllabai/worklog.md — nothing else",
+  "residuals": [
+    "89 rows stay honestly gated (45 CIE unlock only on a GREEN cie-phase4-db-plane prod-apply receipt; 13 IAL and 31 Edexcel rows unlock on their own curriculum-seeding lanes, none of record today)",
+    "cold-start first-ask on a courseRef-less entry still refuses honestly (the TUTOR-REPAIR residual, unchanged)",
+    "LLM chain budget watch + PAT rotation remain the standing live-ops residuals of the repair program"
+  ],
+  "nextAct": {
+    "lane": "open the PR, hold for the three check lanes (Vercel Preview Comments / hub / verify), merge on green",
+    "operator": "on the next CIE phase-4 dispatch success, re-run this audit for the 45 CIE rows against the run receipt's seeded cv codes"
+  }
+}

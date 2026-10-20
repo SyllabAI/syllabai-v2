@@ -9788,3 +9788,19 @@ Stage Summary:
 - The two operator-gated acts are EXECUTED BY THE LANE on the operator's explicit delegation (the firing order IS the authorization, the 134c law): act 1 = the credential path landed as the gate amendment (name-level fallback, value never transits); act 2 = the dispatch fires on merge at the merged sha.
 - Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-phase4-prod-order-r0.json (follow-up run receipt to land per the follow-up-commit law).
 - fetch-first, no force; PR for the desk (self-merge on green per lane precedent #216/#217); zero prod writes by this commit itself (the ONLY production writes are the gate's own prod-apply job under the COW-proof guard).
+
+---
+Task ID: HUB-REGISTRY fill-4ph1 (traces 1a15a77a20dbbcb1 + 1a15a6ff916e513d)
+Agent: main lane (Super Z, zai-web session web-1d6277aa-1024-41a4-9261-bcf1411250b5, chat 9b73c181)
+Task: operator "Okay proceed with filling" (trace 1a15a77a20dbbcb1) — the fill-where-served registry act disclosed as the TUTOR-REPAIR follow-up: audit the 90 curriculumCode-less rows of courses.json and fill ONLY where an ACTIVE serving curriculum of record exists on core, never inventing a mapping (ADR-030).
+
+Work Log:
+- AUDIT FIRST, evidence-gated per row class (receipt auditOfRecord): 90 unmapped = 45 CIE + 13 IAL + 32 Edexcel-IGCSE 4xxx. CIE 45 NOT FILLED — the cie-phase4-db-plane gate run #1 (39470460696) FAILED at cow-proof, prod-apply SKIPPED, fail-closed DROP law = zero CIE persistence of record. IAL 13 NOT FILLED — no Y-code curriculum_versions row of record (store census 669 nodes = 435 chem + 234 physics, 6 subjects). Edexcel 31 of 32 NOT FILLED for the same census; exactly ONE row earns a mapping.
+- FILL of record: igcse-physics-19 += "curriculumCode": "4PH1-2017" — evidence chain: T-MIG-134 prod-apply-run-001-r0 (cv 4PH1-2017 ACTIVE, 234/233 KG all VALIDATED, direction law exact, isolation 0 cross-subject, apply_4 clean no-op), 134d zero-LLM battery run-003 (resolve/isolation proven live, vector arm honest-empty by design), bundle-seed serving posture (VALIDATED nodes serve the KG arm), karag hybrid retrieval (KG arm serves; vector arm degrades honestly — never cross-corpus). coreBridge INTENTIONALLY ABSENT per the T-MIG-136 maths-b fill law (the 4PH1 core-questions axis is honestly empty of record — the 134b 1.1-envelope refusal stands, no physics ingest receipt).
+- NOT touched: all other 93 rows, the (now stale-by-one) registry note field, coreBridge flags, FLASHCARD_SYNC_COURSES, all API/hub code. Minimal diff: 2 insertions(+), 1 deletion(-) on courses.json.
+- Verifiers (the hub prebuild trio, exit 0 x3): verify_corpus_23a PASSED, verify_flashcard_sync_courses exit 0, validate_cie_bundles PASSED.
+- Hygiene: zero credentials/uris/PATs in any file or log; zero DB writes by this act (the API resolves the code against the production DB where 4PH1-2017 is already ACTIVE of record); fetch-first branch cut at origin/main 2a9227b.
+
+Stage Summary:
+- The registry fill of record: 5/94 rows now mapped (4CH1-2017, 4MA1-2016 x2, 4MB1-2016, 4PH1-2017); the tutor page lights for Physics (4PH1) deterministically for ALL learners — no footprint dependency, the exact-ACTIVE-CODE path (scope.ts resolveForCourse) — while the 89 remaining rows keep the honest gate with their unlock conditions receipt-named (CIE: a GREEN phase-4 prod-apply run; IAL/Edexcel: their own seeding lanes, none of record today).
+- Receipt: .syllabai/receipts/HUB-REGISTRY/fill-4ph1-run-001-r0.json; PR + self-merge on green per lane precedent; standing residuals unchanged (LLM chain budget watch, PAT rotation overdue).
