@@ -10261,3 +10261,15 @@ Work Log:
 
 Stage Summary:
 - The hold lifts AGAINST THE OPTIONA DESIGN ONLY — run #3 stays cancelled of record; no prod-apply dispatch until the identity-laws branch is green of record. Production still carries ZERO CIE nodes (the correction stays drift-free). Hygiene: .syllabai/** only, zero secrets, zero prod/db/Neon/LLM contact, fetch-first, no force.
+---
+Task ID: trace 1a15b16a0a41a325 (orphan-parts ship live-verification of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- INFLIGHT-GUARD watched GitHub-integration auto-deploy of 656b67d (run-008 orphan apply commit) -> READY (no manual deploy fired).
+- Live content plane probed: whole-file equality live==repo for notes.json + questions.json; 61/61 PROPOSE appends verified live parsed from live bytes; 14 hold-parts (12 NEEDS_MANUAL + 2 EXCLUDE) still empty; wave-2 q8p3 4.29C no regression.
+- Wire battery re-fired: 11/11 PASS (zero-write, public surfaces).
+- Receipt run-009-orphan-ship-live-r0 filed.
+
+Stage Summary:
+- Orphan-parts lane LIVE of record: 61 appends across 31 parts shipped and verified on prod; orphans 45->14; coverage arithmetic unchanged (166/171/residual 0). Remaining lane residue: 12 NEEDS_MANUAL rulings + 2 EXCLUDE strikes pending operator adjudication.

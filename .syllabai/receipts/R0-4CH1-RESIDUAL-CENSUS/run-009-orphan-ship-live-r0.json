@@ -1,0 +1,62 @@
+{
+  "receipt": "R0-4CH1-RESIDUAL-CENSUS/run-009-orphan-ship-live-r0",
+  "task": "orphan-parts ship live-verification — trace 1a15b16a0a41a325 green-light apply chain closed",
+  "lane": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, chat 9e9f3d7a)",
+  "shipOfRecord": {
+    "mechanism": "Vercel GitHub integration auto-deploy — NO manual deploy fired",
+    "deployment": "dpl_DWSaUGo3ybMutZAkSLANoCxdwy74 state=READY target=production sha=656b67d (the run-008 orphan apply commit)",
+    "inflightGuardObservations": [
+      "dpl_DWSaUGo3ybMutZAkSLANoCxdwy74:BUILDING:?; dpl_H5ciSooGTc4AZiQgbCxovxKFmeY6:READY:?; dpl_CSHLm5z3fdQ5CJ2o2yCmzZTfEV1x:READY:?",
+      "dpl_DWSaUGo3ybMutZAkSLANoCxdwy74:BUILDING:?; dpl_H5ciSooGTc4AZiQgbCxovxKFmeY6:READY:?; dpl_CSHLm5z3fdQ5CJ2o2yCmzZTfEV1x:READY:?",
+      "dpl_DWSaUGo3ybMutZAkSLANoCxdwy74:READY:?; dpl_H5ciSooGTc4AZiQgbCxovxKFmeY6:READY:?; dpl_CSHLm5z3fdQ5CJ2o2yCmzZTfEV1x:READY:?"
+    ]
+  },
+  "liveVerification": {
+    "contentPlane": "https://syllabai-hub-v2.vercel.app/corpus/igcse-chemistry-19/",
+    "wholeFileEquality": "live bytes == repo bytes (notes.json + questions.json)",
+    "coordinateChecks": "61/61 PROPOSE appends present, parsed from LIVE bytes",
+    "guards": "12 NEEDS_MANUAL + 2 EXCLUDE parts still empty on live; wave-2 energetics q8p3 4.29C intact",
+    "rawChecks": [
+      {
+        "probe": "/corpus/igcse-chemistry-19/notes.json",
+        "http": 200,
+        "liveBytes": 453546,
+        "localBytes": 453546,
+        "wholeFileEquality": true
+      },
+      {
+        "probe": "/corpus/igcse-chemistry-19/questions.json",
+        "http": 200,
+        "liveBytes": 2293111,
+        "localBytes": 2293111,
+        "wholeFileEquality": true
+      },
+      {
+        "probe": "propose-coordinates",
+        "live": 61,
+        "expected": 61
+      },
+      {
+        "probe": "hold-parts-still-empty",
+        "live": true
+      },
+      {
+        "probe": "wave2-q8p3-no-regression",
+        "live": true
+      }
+    ]
+  },
+  "battery": {
+    "legs": 11,
+    "script": "scripts/t215b-wire-battery-r1.py",
+    "result": "11/11 PASS"
+  },
+  "coverageOfRecord": "notes 166/182, questions 171/182, both-axes residual 0 — UNCHANGED (orphan lane = per-part tagging enrichment); orphans 45->14 (12 NEEDS_MANUAL + 2 EXCLUDE pending operator ruling)",
+  "writeLedger": "receipt run-009 + worklog append only; zero prod writes beyond the auto-deploy itself; zero DB/Neon/LLM; no force",
+  "followups": [
+    "12 NEEDS_MANUAL + 2 EXCLUDE await operator ruling (candidates disclosed in run-007 draft)",
+    "PAT rotation overdue x2",
+    "CORS identity/config.ts:60 parked",
+    "specPointIds backfill needs DB-side spcpt_* mapping (separate)"
+  ]
+}
