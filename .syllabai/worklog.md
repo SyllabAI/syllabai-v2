@@ -10106,3 +10106,240 @@ Stage Summary:
 - receipt: .syllabai/receipts/T-CONSUME-EDX-1/run-001-edexcel-bundle-refresh.json
 - followups of record: accounting maps-vs-spine (own lane); cie-a-level-maths-20-pure-2 provenance gap (CIE lane); CIE pack refresh @ 6ee5ada (likely NEXT #2); Maths B question-bank removal is user-visible on deploy (SME axis) while the past-papers axis serves 1,192 questions
 - fetch-first, no force, secrets untouched, PAT rotation still CRITICAL overdue on the operator side
+---
+- Receipt ops-pastpapers/pastpapers-content-provenance-verify-run-003-r0.json; corrected model: chemistry=import SME banks, maths-b=manufacture bank from parsed papers; RAG-over-parsed-papers = new scope if wanted
+
+---
+Task ID: Task-66 (trace 1a15adada876bd01 — the Neon PAT re-stage act: state recovery + Band-5 blocker pinned of record)
+Agent: r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)
+Task: operator delivered 'Here is neon PAT: napi_jy4y…sapok' (trace 1a15adada876bd01) — the response to band-4 'remaining' (the apply requires the operator to re-stage SEED_DATABASE_URL). This act: stage per the 0600 law, re-establish the rolled-back plane, test the PAT's consumability, verify Band-5 static readiness, pin the precise blocker.
+
+Work Log:
+- Sandbox recovery of record: v2 re-cloned fresh (89b4105 at open; fetch-first caught origin advancing to e305d71/325410e mid-act — ff-only to 325410e, clean; T-MIG-140 books-nav lane + 4CH1 wave-1 ship-verify + pastpapers provenance run-003 observed as origin neighbors, never touched; provenance receipt CONFIRMS the 4mb1 band-4 INGEST-READY consumption chain, RAG not fired — consistent with this lane).
+- T-MIG-136 of-record state re-read: bands 3b+4 receipts (operator-authorized anchoring under trace 1a15a45dca86c409; bank INGEST-READY 1,192 questions / 2,106 parts, 57 badSum excluded). Band-3b bundle artifacts byte-present at HEAD: spec-anchors.json (schema syllabai.spec-anchors/1.0, 1,249 anchors); questions.json deep count re-derived independently of the band-3b gate: 65 sets / 1,249 questions / 2,392 parts — 2,392/2,392 parts anchored, 0 unanchored.
+- PAT staging: /home/z/my-project/.credentials/neon-pat (file 0600, dir 0700); value never printed, no copies; sandbox .gitignore extended (.credentials/ + .env); workspace repo has no remote (no leak path).
+- CONSUMABILITY TEST — decisive negative, re-confirmed LIVE: api.neon.tech DNS-UNRESOLVABLE from this sandbox (getent fail; curl exit 6 / http 000), the same control-plane egress block class of record since run-004 (cow_proof_law.method_disclosure); control: data-plane DNS path alive (*.aws.neon.tech queries propagate — NXDOMAIN for a fake endpoint, not a resolver blackhole). A Neon PAT is control-plane ONLY — it cannot derive the pooled connection URI from this plane. The Oct-19 staging shape (run-004 prod_apply.target) was the POOLED CONNECTION URI itself; SEED_DATABASE_URL (the shim's inline env — ingest-bundle-questions.ts:91,116) consumes that URI.
+- Band-5 static readiness verified at HEAD (zero prod, zero LLM): bundle + anchors + shim present (ingest-bundle-questions.ts --dry-run/--apply, ADR-026 evidence-safe replace); curriculum prerequisite LIVE (4MB1-2016 ACTIVE, 119 nodes — run-004); pg-cow tooling WIPED by the rollback as the band-4 receipt predicted — rebuilds from the run-004 evidence_files method disclosure (embedded PG + ICU restore, information_schema DDL with defaults verbatim, read-only row copy, SSL enforced) at apply time.
+- T-MIG-138 window check: GitHub-authoritative server time 19:55Z Oct 20 at act open — the 07:05Z Oct 21 window is ~11h FUTURE; this act does NOT fire the drain (fire path (a) keys on the operator's next message AFTER 07:00Z Oct 21; the current message predates the window). Drain stays STAGED RECIPE per addendum-1.
+- Ask of record to operator: paste the POOLED CONNECTION URI (Neon console -> branch -> Connection Details -> pooled, sslmode=require), staged 0600 same law — the PAT stays staged and unused.
+
+Stage Summary:
+- The Band-5 blocker is now precise of record: not the credential's existence but its SHAPE/PLANE — PAT staged (napi_jy4y…sapok, 0600) but unconsumable sandbox-side (control-plane DNS-blocked, re-confirmed live 19:55Z Oct 20); the pooled URI is the single missing input; everything else green at HEAD.
+- Band 5 fires instantly on URI staging: rebuild pg-cow from the run-004 method -> COW-replica proof (zero prod writes) -> operator-gated --apply -> 136d battery re-fire.
+- T-MIG-138 drain unchanged: STAGED, window 07:05Z Oct 21 future at this act's close; the first re-key after the window fires it per the armed plan (any lane; rows byte-exact of record).
+- Write ledger: this worklog entry ONLY; zero prod/DB/Neon/LLM contact; zero code/content changes; fetch-first, no force.
+
+---
+Task ID: trace 1a15aecf63c4ac7d (wave-2 review of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- FF re-ground to 8ee371e (RESET #6 artifacts+scripts wiped; recipes re-derived from git history + receipts).
+- Per-code first-hand review of grade-B 11: read note bodies around keyword hits, verified verbatim spec-text presence programmatically, captured current arrays, swept 46 orphan parts.
+- HEADLINE: all 11 flip to ATTACH on notes-axis verbatim evidence; ZERO exceptions. 2.50 resolved by 'Tests for Water' note (full physical test verbatim, carries 2.49); 4.20 note-side clean DIRECT (false-positive was question-side only) — no manual pardon needed; 4.24 'Alkenes' blockquote verbatim; 4.29C 'Alcohols' + energetics q8p3 orphan verified.
+- Draft kill-list DRAFT-r0: 12 rows (10 note appends + 1 optional part append), absenceProof 12/12; expected coverage notes 155->166/182, both-axes residual 11->0. APPLY ONLY ON OPERATOR GREEN-LIGHT.
+- Receipt run-004-wave2-review-r0 filed; zero content writes; no force.
+
+Stage Summary:
+- Wave-2 review of record: 11/11 ATTACH verdicts with first-hand verbatim evidence; draft kill-list staged for operator green-light; 46-orphan-parts lane flagged separate.
+Task ID: pp-4mb1-quality-audit-004 (trace 1a15aea188ef229d, "The 64 exam papers, are they on par with SME ExamQuestions quality? topic tagging, Mark scheme etc stuff?")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: First-hand quality audit of the 64 interactive 4MB1 papers vs SME ExamQuestions axes (topic tagging, mark schemes, metadata), answered to the operator.
+
+Work Log:
+- Read-only audit at main 8ee371e (fetch-first, FF; no code/db changes): apps/hub/content/igcse-maths-b-16 bundle + player + pastpapers-blueprints.json.
+- Schema: the 65 sets ARE syallabai.sme-exam-questions/1.1 (same schema family as the real SME chemistry/physics banks) — 1,249 questions / 2,392 parts / 6,341 marks, sessions 2018-2026 incl R variants, both papers.
+- Topic tagging: specPointCodes 2,392/2,392 parts (100%) onto the official 98-code 4MB1 alphabet, 0 unknown codes, 1,718 parts multi-code (72%); spread across all 10 spec topics (Functions 907 / Algebra 820 / Number 703 / Geometry 565 / Stats 532 / Vectors 491 / Sets 414 / Matrices 323 / Mensuration 278 / Trig 78); anchoring = T-MIG-136 band-3b glm-4-plus pass + n=80 re-ask verification (72/72 agree).
+- Mark schemes: solutionMd 2,331/2,392 parts (97%), 94% carry Edexcel P/M/A/B process markers; median 294 chars (terse official MS style, NOT worked solutions).
+- Fidelity: 59/64 non-empty papers parse to exactly the official 100 marks; 5 undercount (Jan-2019 /01 86, /01R 92, Jun-2019 /01R 89, Jan-2023 /02 85, Jun-2022 /02R 89); 1 empty set (2019-06 /02R, 0 q).
+- Deltas vs real SME bundles disclosed: difficulty labels 0% (chemistry SME bank = 100% Easy/Med/Hard); relatedNoteIds 0 (chemistry 112; hub compensates via client-side spec-code Q-note join); commandWord 45% (chemistry 83%); 57 questions where totalMark != sum(parts); 61 parts missing MS (2.5%); 810/2,331 MS (34%) carry the deterministic parse flag "printed total != parsed point-sum"; fraction/notation artifacts from the PDF parse visible in long MS.
+- No topic-organized question bank for maths-b (all 65 sets section=past-papers) — matches SME itself having no 4MB1 banks (T-SME-12); pastpapers-blueprints.json has ZERO 4MB1 rows so no official-per-question blueprint coverage check exists for these papers.
+- Player surface verified: per-part MS modal, Smart Mark, CLA part help, spec-code QuestionHelpPanel note join, totalMark badges; 4MB1/01 = 1,207 parts, /02 = 1,185.
+
+Stage Summary:
+- Verdict delivered: structural parity-or-better (schema, 100% per-part spec tagging, 97% MS coverage, provenance, interactive player) with content-polish deltas honestly enumerated (no difficulty taxonomy, no topic-bank view, 34% MS parse flags, 57 mark-total mismatches, 5 drifted papers, 1 empty set). Follow-up candidates filed for any owner: per-question difficulty pass, blueprint rows for 4MB1 + coverage gate, totalMark reconciliation, MS notation cleanup. Bookkeeping-only, .syllabai/** only, zero prod/DB/LLM, fetch-first, no force.
+
+---
+
+
+---
+Task ID: CIE-INTEGRATION phase-4 repair program (trace 1a15ac4e986d06c5 're-run')
+Agent: main lane (Super Z, zai-web session web-1d6277aa-1024-41a4-9261-bcf1411250b5, chat 9b73c181)
+Task: operator "re-run" — with the run-002 receipt's nextAct framing (authorize the repair program or re-route), the order discharges as: execute the five-class repair program, then re-run the gate, then (on green) the CIE registry fill audit.
+
+Work Log:
+- AUDIT FIRST: re-ran the fill-where-served census on current main (94 rows / 5 mapped / 89 unmapped — unchanged); triaged run #2 (39472595952) from its receipt: 42 slug failures / 5 defect classes, gate+guard PROVEN, zero prod exposure.
+- Asset class re-measured with first-hand evidence before fixing: the phase-2 corpus carries question-image refs mostly as full raw.githubusercontent hotlink URLs (the hub's https rendering law) with exactly 29 BARE `(assets/<file>)` targets on 3 slugs (chemistry-25 x23, cs-19 x3, cs-23 x3); the upstream corpus is 9,951 files / ~1.9GB and the frozen question_asset store is GLOBAL wholesale-replace (ADR-026) — the receipt's "land the asset" candidate would have wiped the 4CH1 pilot's assets and blown the storage class. REJECTED on evidence; fixed at the shim layer instead: per-slug asset-map.json of record (importRef == the manifest pin) + an orchestrator pre-pass completing the corpus's own hotlink form, fail-closed before any DB contact. Package ships zero assets; the layer-3 note of record holds.
+- tx-seam (16): flattenTxForFrozenServices — the frozen ingest's full Sql seam over the bare slug tx, .transaction flattened recursively, statements join the slug tx, zero frozen-service edits.
+- dbCode widenings (frozen seed, byte-identical Edexcel paths): FOURTH SUBTOPIC tail shape (letter-prefixed :SUBE1.1/:SUBC1.1 — 0580/0973/0653), FIFTH SPEC_POINT shape (letter-prefixed unit.seq 'S1.001' — 0500/0475/0470/8021).
+- provenance conflicts (7): the shared-code reuse law sameSeedExceptBundle — a bundle:<slug>-only provenance delta REUSES the first bank's shared rows (nodes + edges); src/schema/tier/gate deltas still the loud conflict. Pinned on the REAL 9709 pair (mechanics then pure-1 on one store: 2 nodes + 1 edge reused, the bank trees component-scoped, idempotent both banks).
+- Rider disclosed + fixed: the frozen Pearson-branded bundlesTitle rode onto Cambridge qualifications; now board-aware (material under the reuse law — the first bank's rows stick).
+- Gates: tsc clean x4; bun test apps/api packages = 2323 pass / 0 fail / 13 skip; sme 98/0 incl. the roster gate; hub prebuild trio exit 0 (the 3 map files law-clean).
+- Hygiene: zero credentials/DB writes/LLM; fetch-first at 45ca5b6; no force.
+
+Stage Summary:
+- The run-002 repair program is CODED + PINNED + GATED: all five defect classes addressed, the Edexcel laws byte-identical, the fleet ready for run #3. Next: PR + self-merge on green, dispatch mode=cow+prod (the operator's standing order), then on green the CIE fill audit (45 rows, curriculumCode = <spec>-<syllabusVersion> per the seed's cv law).
+- Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-phase4-repair-program-r0.json; residuals: the hub-side EQ asset rendering (phase-5 QA lane), coreBridge stays operator-keyed.
+
+---
+Task ID: trace 1a15af8cb94819d5 (wave-2 apply of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- Staging re-verified (GITHUB_PAT fp a8ccee736aa8c75b, VERCEL_TOKEN fp d254bbfaac004354, 0600, credential.helper store); fetch-first: wave-2 review already of-record (run-004 ba3dee4, grade-B 11 all ATTACH, draft kill-list 12 rows staged pending green-light) -> operator 'green-light' (1a15af8cb94819d5) = apply authorization; FF-synced 4 sibling commits to 467081e, zero 4CH1 content conflicts (notes.json untouched since seed, questions.json since 89b4105, verified by git log + snapshot gates).
+- Fail-closed apply per DRAFT-r0: pre-apply gates 12/12 pass 0 faults; serialization law probed pre+post (compact-roundtrip byte-identical, notes 453,413B class + questions 2.29MB class); append-only rewrite via constructed-expected equality.
+- Structural proof re-done from git HEAD pre-state (--verify mode): exactly 12 appends / 0 replaces — 10 note-side (Metallic Bonding +1.52C, Acids Bases & Protons +2.35, Tests for Water +2.50, Organic Compounds +4.1, Crude Oil +4.7/+4.10, Combustion +4.11, Alkanes +4.20, Alkenes +4.24, Alcohols +4.29C, Esters +4.42C) + 1 part-side (4.29C -> energetics q8p3 orphan, OPTIONAL row INCLUDED — no strike issued on green-light); every other node byte-equal.
+- Coverage recompute (domain-fixed bare->prefixed): notes 155->166/182, questions 170->171, both-axes residual 11->0 — 4CH1 spec-point coverage now 182/182 both-axes; matches DRAFT-r0 expectation exactly.
+- DISCLOSURE: first-pass structural walker flagged root REPLACE (walker lacked list-element recursion — false positive at root, not a content fault); script fixed, state re-proved from git HEAD pre-state; constructed-expected equality had already held on first pass. No silent patch — disclosed here + receipt.
+- Receipt run-005-wave2-attach-r0 filed; ship verification (deploy watch + live 12/12 + battery 11/11) -> run-006 next.
+
+Stage Summary:
+- Wave-2 APPLIED of record: 12 appends, 4CH1 coverage 182/182 both-axes (residual ZERO); 2 content files changed; receipt run-005 + verification JSON of record; ship verification next.
+
+---
+Task ID: trace 1a15af8cb94819d5 (wave-2 ship live-verification of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- INFLIGHT-GUARD watched GitHub-integration auto-deploy of 349e901 (wave-2 apply commit) -> READY (no manual deploy fired).
+- Live content plane probed: whole-file equality live==repo for notes.json + questions.json; 12/12 wave-2 appends verified live (10 note-side across 9 notes incl. Crude Oil dual 4.7+4.10 + 1 part-side energetics q8p3 4.29C).
+- Wire battery re-fired: 11/11 PASS (zero-write, public surfaces).
+- Receipt run-006-wave2-ship-live-r0 filed.
+
+Stage Summary:
+- Wave-2 LIVE of record: 4CH1 spec-point coverage 182/182 both-axes (residual ZERO) shipped and verified on prod; residual-census lane CLOSED end-to-end (census -> recommendation -> wave-1 -> wave-2 -> complete coverage).
+
+---
+Task ID: CIE-INTEGRATION prod-apply HOLD + reconciliation (traces 1a15acee432d9eb9 + 1a15ac4e986d06c5, r0)
+Agent: r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: operator "Go" — reconcile the parallel lane's landed repair program (PR #228) first-hand, then rule on the prod apply; a store-integrity finding forced a HOLD.
+
+Work Log:
+- RECONCILIATION first (fetch-first): the run-002 repair program was ALREADY LANDED of record by the parallel main lane (PR #228, e24d2a2, the operator's 're-run' trace 1a15ac4e986d06c5) while this session was independently implementing the same scope — theirs-verbatim-first: my divergent implementation (version-scoped namespaces, tail-based UNITs, title-drift guard, landed asset bytes) is DISCARDED unpushed, zero repo writes from it; its validated design is recorded in the hold receipt as the fix option.
+- FIRST-HAND FINDING (the hold's basis): the landed shared-code reuse law (sameSeedExceptBundle) absorbs cross-bank dbCode collisions SILENTLY and the landed UNIT law stays order-based (-S<order>) — their own 9709 cross-bank pin proves the graft ('2 nodes + 1 edge reused': pure-1's Pure Mathematics 1 section reuses mechanics' 9709-S1 'Mechanics' node); the census of record: 229 CIE TOPICs carry tail != order — 9709 x6 banks, 0653/0973 trios (three different official section vocabularies colliding by order), 0580/0607 core/extended (benign, titles coincide), and the cross-version pairs 0452/0455/0500 whose spec-code STRINGS overlap with different tree positions (0452: 142 of 144).
+- ACT: run #3 (39490683060, mode=cow+prod, head 467081e) CANCELLED at 20:40:13Z while job 1 was still on the COW and job 2 (prod-apply) had NOT started — zero prod contact; the COW dropped 404-verified in the always() step (post-delete GET = 404, job log of record); production carries ZERO CIE nodes — the correction stays drift-free until a prod apply lands.
+- Receipt of record: .syllabai/receipts/CIE-INTEGRATION/cie-phase4-prod-apply-hold-escalation-r0.json (the finding, the evidence, act A of the hold, and the operator decision: optionA = the identity-stable namespace/UNIT/title laws (this desk's validated design: tsc x4 clean, battery 2319/0/13, offline fleet map-law census GREEN over 44 bundles, max dbCode 25/40) or optionB = the operator rules the one-tree-per-code graft the design and lifts the hold).
+
+Stage Summary:
+- PROD-APPLY ON HOLD of record (zero prod-db writes this session; the only Neon mutations were the gate's own COW pair, dropped + 404-verified). The 134c guard + credential path remain proven; the fleet's floors cannot catch this defect class (the reuse law defines it as correct) — only the offline identity census does. The gate re-dispatches on the operator's ruling; this desk IDLES on the CIE gate until then. Hygiene: no secret value in any file/log/receipt; fetch-first, no force.
+Task ID: trace 1a15b07cdd3aa565 (orphan-parts review of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- Staging re-verified (fingerprints of-record, 0600); fetch-first clean at 918e0e3.
+- Read-only sweep of the orphan universe: 45 orphans (of-record 46 at ba3dee4 minus wave-2's q8p3 fix — exact reconciliation); four-way census 1358/1/0/45 (codes+ids/codes-only/ids-only/both-empty); zero specPointIds conflicts.
+- First-hand per-part review of all 45 (problemMd + solutionMd + provenance + sibling codes), KG spec-text cross-check for every proposed code; keyword candidates advisory only — 4.20-class misfires avoided (3.22C on q19p0, 2.12 on LiOH, 1.46/1.47 graph-point misfires).
+- Verdicts: 31 PROPOSE (61 appends) + 12 NEEDS_MANUAL (candidates disclosed) + 2 EXCLUDE (apparatus-naming, no spec statement exists); completeness gate: every orphan covered exactly once.
+- Draft kill-list DRAFT-r0 filed BOTH in receipts (reset-proof) and download/: 45 rows with first-hand evidence + spec texts + sibling codes; apply set = PROPOSE rows only, NEEDS_MANUAL/EXCLUDE rows require operator ruling.
+- Receipt run-007-orphan-review-r0 filed; zero content writes; no force.
+
+Stage Summary:
+- Orphan lane review of record staged: 45-row draft pending operator green-light (apply set = 61 appends / 31 parts) + 12 NEEDS_MANUAL rulings + 2 EXCLUDE strikes; coverage arithmetic unaffected (residual stays 0).
+
+---
+Task ID: trace 1a15b16a0a41a325 (orphan-parts apply of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- Operator green-light on staged orphan draft (run-007 @ e6d60d2); turn-open: HEAD==origin/main, both live planes whole-file IN-SYNC, token fingerprints of-record (0600).
+- Fail-closed apply per kill-list DRAFT-r0 (sha256[:16] b22fddb529759a62): gates 45/45 (partId hard-anchor + orphan-drift + 182-universe + intra-row dedupe), structural proof 61 appends / 0 replaces across 31 parts; 12 NEEDS_MANUAL + 2 EXCLUDE guarded untouched post-apply; independently re-proved via --verify from git HEAD pre-state (gates 45/45 again).
+- Post census: codes+ids 1358, codes-only 1->32, ids-only 0, both-empty 45->14 — codes/ids pairing law intact (run-007 reconciliation); coverage notes 166 / questions 171 / both-axes residual 0 UNCHANGED (per-part tagging lane, not coverage arithmetic).
+- Receipts run-008-orphan-apply-r0 + run-008-orphan-apply-VERIFY-r0 filed; zero force; no other files touched.
+
+Stage Summary:
+- Orphan-parts attachment APPLIED of record: orphans 45 -> 14 (12 NEEDS_MANUAL rulings + 2 EXCLUDE strikes still pending operator adjudication); ship verification next (run-009).
+
+---
+
+Task ID: CIE-INTEGRATION phase-4 tranche 2 (trace 1a15ac4e986d06c5, standing 're-run')
+Agent: main lane (Super Z, zai-web session web-1d6277aa-1024-41a4-9261-bcf1411250b5, chat 9b73c181)
+Task: run #3 (39490683060, the repair-program merge 467081e) was CANCELLED externally 20:40:13Z mid-cow-proof (unattributed, no CIE-lane counter-move of record); its fleet logs carried the tranche-1 live proof (ZERO tx-seam/dbCode/provenance/asset errors — slugs reached ingest+post-apply) AND the next defect layer. This tranche fixes that layer and re-dispatches.
+
+Work Log:
+- varchar(80) class pinned by the offline package probe: MIXED-emission member refs ('-p<idx>'/'-s') append past the base ref which fills the 80 bound exactly on the hash path (biology-23 83 chars). FIX (shared law): smeMemberSuffixReserve (the EXACT emittedRowRefs mirror) + smeQuestionRef(.., reserved) — wired on BOTH bridge sides (shim emit + hub join derive); byte-identical for every ref of record (reserve=0 choice-less; the one stored mixed question math-a-higher q28 derives IDENTICALLY under reserve).
+- count-drift class pinned by the anchor census: 6,618 of 19,097 questions (35%) carry spec-point anchors (the frozen validate REQUIRES primaryTopicCode; the shim's anchor law excludes the rest) — the phase-4 floors were derived from the raw phase-3 census bytes, a contract mis-derivation. FIX (the floors re-based on the servable truth): the roster census measures anchored expectedQuestions/expectedParts (6618/9158), the raw bytes stay disclosed per entry (rawQuestions/rawParts = 19097/25663), zero-anchored real banks (economics-25, english-language-20/25) go seed-only with a per-slug honest disclosure naming the phase-2 anchor gap, the fleet summary gains realSeedOnly.
+- Gates: tsc clean x4; bun test apps/api packages = 2328 pass / 0 fail / 13 skip; smeRef 10/0 (the overflow regression + injectivity pins); roster gate 9/0 re-based; census probe 45/0.
+- Hygiene: zero credentials/DB writes/LLM; the run-003 cancellation disclosed unattributed; no force.
+
+Stage Summary:
+- Tranche 2 = the run-003 classes fixed + the phase-4 contract honestly re-based on what the frozen ingest can serve. Next: PR + self-merge on green, DISPATCH run #4 mode=cow+prod, then on green the CIE fill audit.
+- Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-phase4-repair-program-r1-tranche2.json.
+
+Task ID: CIE-INTEGRATION prod-apply ruling A of record (trace 1a15b161bf960249)
+Agent: r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: operator 'ruling "A"' — the prod-apply HOLD's staged decision resolves to optionA: adopt the identity-stable namespace/UNIT/title laws, re-land, re-gate, re-dispatch.
+
+Work Log:
+- RULING RECORDED: optionA adopted of record — receipt CIE-INTEGRATION/cie-phase4-prod-apply-ruling-a-r0.json (the adopted design verbatim: points 1/2/3/5 of the hold receipt's optionA; point 4 stays superseded by PR #228's asset-map externalization — take theirs). The landed one-tree-per-code graft semantics are superseded as the of-record CIE design.
+- ROUTING DEVIATION DISCLOSED: the hold receipt's nextAct named the parallel lane for the re-dispatch; the operator landed the ruling directly in THIS session — operator sovereignty overrides the suggested routing; claim taken here per the claim-in-first-commit law, zero-collision verified (fetch-first @ e6d60d2; the repair-program branch carries bookkeeping only; no identity-law branch on origin; PRs #228/#229 merged).
+- GRAMMAR OF RECORD READ OFF THE COMMITTED FLEET (first-hand, all 45 bundles): CIE TOPIC codes carry the official -T tail — 9709 T1..T6 (six banks, one TOPIC each), 0653/0973 TB/TC/TP, 0580/0607 TC/TE (core/extended disjoint), 0500 TS1..TS6, 0452 plain T1..T6 — the tail law lands <spec>-S<rest> fail-closed; the CIE node namespace is version-scoped <code>-<syllabusVersion> (curriculumCode symmetry), splitting 0452 (2023-2025 vs 2027-2029), 0455/0500/0460 (20 vs 25 generations).
+- NEXT: branch cie-phase4/identity-laws-r0 — the three law changes in bundle-seed.ts + the orchestrator map-law census (pre-flight before any DB contact) + the test re-landing; gates; PR; on green self-merge and dispatch mode=cow+prod (the 134c gate); receipts end-to-end.
+
+Stage Summary:
+- The hold lifts AGAINST THE OPTIONA DESIGN ONLY — run #3 stays cancelled of record; no prod-apply dispatch until the identity-laws branch is green of record. Production still carries ZERO CIE nodes (the correction stays drift-free). Hygiene: .syllabai/** only, zero secrets, zero prod/db/Neon/LLM contact, fetch-first, no force.
+---
+Task ID: trace 1a15b16a0a41a325 (orphan-parts ship live-verification of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- INFLIGHT-GUARD watched GitHub-integration auto-deploy of 656b67d (run-008 orphan apply commit) -> READY (no manual deploy fired).
+- Live content plane probed: whole-file equality live==repo for notes.json + questions.json; 61/61 PROPOSE appends verified live parsed from live bytes; 14 hold-parts (12 NEEDS_MANUAL + 2 EXCLUDE) still empty; wave-2 q8p3 4.29C no regression.
+- Wire battery re-fired: 11/11 PASS (zero-write, public surfaces).
+- Receipt run-009-orphan-ship-live-r0 filed.
+
+Stage Summary:
+- Orphan-parts lane LIVE of record: 61 appends across 31 parts shipped and verified on prod; orphans 45->14; coverage arithmetic unchanged (166/171/residual 0). Remaining lane residue: 12 NEEDS_MANUAL rulings + 2 EXCLUDE strikes pending operator adjudication.
+
+---
+Task ID: trace 1a15b2c7c83e9aad (residue ruling draft of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- Operator directive 'Decision on the 14 remaining lines'; turn-open: HEAD==origin/main 1149646, live planes IN-SYNC, fingerprints of-record.
+- First-hand re-review of all 14 residue rows (problemMd/solutionMd/siblings/provenance) + deterministic 182-universe concept-keyword scan per tested content (densit/safety/hazard/apparatus/variables/state symbol/decompos/constant mass/dissol/diffus).
+- Rulings: 1 ATTACH (1.3 -> 1-1-states-of-matter q18p1, grade-B: governing item grammar inheritance — sibling p0 coded 1.3 of-record — + mechanism square-match; run-007's 3.11 misfire rejection upheld) + 13 KEEP_EMPTY (incl. 2 EXCLUDE strikes ratified), each with zero-square-statement grounding.
+- Receipt run-010-orphan-residue-ruling-r0 staged; zero content writes; no force.
+
+Stage Summary:
+- Residue ruling draft pending operator green-light: apply set = single append (4CH1-1.3); 13 strikes stay empty of-record with documented no-statement grounding; coverage arithmetic unchanged.
+
+---
+Task ID: trace 1a15b3b56e0c09a5 (residue apply of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- Operator 'green-light' on run-010 residue ruling (1 ATTACH + 13 KEEP_EMPTY strikes); turn-open: live planes IN-SYNC (whole-file equality), fetch-first found origin/main f94084d->4234cde (CIE phase-4 identity-laws bookkeeping, apps/api only, zero content-plane touch) — FF-synced before any write.
+- Fail-closed apply (run-011): gates 14/14 (partId hard-anchor, orphan-drift, 182-universe, strikes pre-asserted empty), structural proof 1 append/0 replaces (4CH1-1.3 -> 1-1-states-of-matter q18p1), 13 KEEP_EMPTY strikes untouched pre AND post.
+- Census post: codes+ids 1358 / codes-only 32->33 / ids-only 0 / both-empty 14->13 (=1404 parts; appended orphan part carries no specPointIds -> joins codes-only axis; ids backfill = separate DB-side lane of record); coverage notes 166 / questions 171 / residual 0 UNCHANGED.
+- DISCLOSURE: first apply pass was structurally green but my census EXPECTATION constant was wrong (expected codes+ids 1359); corrected from run-008 of-record arithmetic, uncommitted single-file write reverted, re-applied clean; independent --verify re-proof from git HEAD pre-state: APPLIED.
+- Commit + union-resolve push; ship live-verification (run-012) follows.
+
+Stage Summary:
+- Residue ruling APPLIED of record: orphans 14->13; sole upgraded part now 4CH1-1.3-tagged; 13 strikes stay empty of-record with documented no-statement grounding; ship pending.
+
+---
+Task ID: trace 1a15b3b56e0c09a5 (residue ship live-verification of record — orphan lane CLOSED)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- INFLIGHT-GUARD watched GitHub-integration auto-deploy of bb058fc (run-011 residue apply commit) -> READY (no manual deploy fired).
+- Live content plane probed: whole-file equality live==repo for notes.json + questions.json; 1/1 residue coordinate (4CH1-1.3 -> states-of-matter q18p1) verified parsed from live bytes; run-008 regression 61/61 prior appends still present; 13 KEEP_EMPTY strikes still empty; wave-2 q8p3 4.29C no regression.
+- Wire battery re-fired: 11/11 PASS (zero-write, public surfaces).
+- Receipt run-012-orphan-residue-ship-live-r0 filed.
+
+Stage Summary:
+- ORPHAN LANE CLOSED of record: 45 orphans -> 31 parts enriched (61 appends, run-008) + 1 ruling attach (4CH1-1.3, run-011) + 13 justified-empty strikes (run-010); coverage arithmetic unchanged throughout (166/171/residual 0). Remaining followups: specPointIds DB-side backfill, PAT rotation x2, CORS config.ts:60.
+
+---
+Task ID: trace 1a15b4646f012945 (spcpt backfill followup ruling of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- Operator directive 'address follow-up registers— DB backfilling (code axes currently only have 33)'; turn-open IN-SYNC; fetch-first clean (HEAD 081165a == origin/main).
+- Discovery: the 33 codes-only parts = exactly the lane-appended orphans (31 run-008 + 1 wave-2 + 1 run-011) — codes-only by design, ids never existed.
+- Evidence pass: (1) positional-zip exposed as artifact — specPointIds are sets; (2) global code->id function REFUTED by hard conflict at 4CH1-1.10 (4 pins, 3 co-present in one topic) — deterministic backfill impossible; (3) production DB (read-only probes, DATABASE_URL fp b289a229 staged 0600) holds ZERO chemistry-corpus rows and zero join rows — the legacy spcpt id-space belongs to the retired SME generation; DB knowledge_nodes 4CH1 SPEC_POINT 182/182 bijective healthy; (4) consumer law: DB pipeline joins on CODES (T-MIG-135b/135a), hub runtime ids reads are unreachable fallbacks (28/28 sets carry topicSlug; index keyed by corpus-native codes).
+- RULING run-013: backfill CLOSED NOT-APPLICABLE-OBSOLETE; pairing law amended of-record — codes = authoritative join axis, specPointIds = frozen legacy artifact census (codes-only 33 is the permanent posture, not a defect); alternatives disclosed (B partial legacy backfill not recommended; C true ingestion lane available on order).
+- Housekeeping: .core-db-env staged 0600 (probe credential); stale .neon-branch.env flagged; 755->600 perm fix; zero content writes; zero DB writes.
+
+Stage Summary:
+- Followup register: specPointIds backfill CLOSED with evidence of record (run-013). Remaining register: PAT rotation overdue x2; CORS identity/config.ts:60 parked; stale .neon-branch.env cleanup; optional lane C (corpus DB ingestion) on operator order.

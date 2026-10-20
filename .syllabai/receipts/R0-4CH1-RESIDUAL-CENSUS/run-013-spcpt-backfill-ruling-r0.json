@@ -1,0 +1,30 @@
+{
+  "receipt": "R0-4CH1-RESIDUAL-CENSUS/run-013-spcpt-backfill-ruling-r0",
+  "task": "operator trace 1a15b4646f012945 \"address follow-up registers— DB backfilling (code axes currently only have 33)\" — evidence-grounded resolution of the run-009/012 followup \"specPointIds backfill needs DB-side spcpt_* mapping (separate)\"",
+  "lane": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, chat 9e9f3d7a)",
+  "discovery": {
+    "codesOnlyAxis": "33 parts = exactly the lane-appended orphans (31 run-008 + 1 wave-2 q8p3 + 1 run-011 residue) — the lane appends were content-plane codes-only by design; their DB-era ids never existed",
+    "corpusIdSpace": "specPointIds values are spcpt_* ids of the RETIRED legacy SME ingestion generation (content-map inputs: SME-ExamQuestion spec_point_map.json of-record); qstnprt_/spcpt_ ids appear NOWHERE in the current production DB",
+    "positionalZipArtifact": "specPointIds arrays are SETS, not positionally aligned to specPointCodes (57 parts carry len mismatch; ordering varies within parts)",
+    "globalFunctionFRefuted": "constraint solve of a global code->id function CONFICTED at 4CH1-1.10 (4 distinct single-code pins: spcpt_j872rw/JkcwTs/p598W9/kXdX76, three co-present INSIDE topic 1-2-elements-compounds-and-mixtures); census: 145 codes uniquely pinned, 3 hard-conflicted, 34 unpinned -> deterministic per-code backfill IMPOSSIBLE; any choice would be an arbitrary guess",
+    "dbState": "production Neon (core API project env, DATABASE_URL fp b289a2298e707904, accessed strictly read-only): questions rows for the chemistry corpus = 0 (external_ref sme-eq-igcse-chemistry-19% -> 0), question_spec_points join rows for it = 0; knowledge_nodes SPEC_POINT 4CH1-% = 182/182 bijective code->uuid, validation_status VALIDATED — the DB spec-point space is complete and healthy but holds no corpus rows to join",
+    "consumerLaw": "DB ingestion pipeline (T-MIG-135b bundle shim + frozen SmeQuestionIngestService) emits specPoints from parts specPointCodes resolved via T-MIG-135a mapBundleNodes to live KG dbCodes — specPointIds are NOT consumed by the DB join law; hub runtime reads specPointIds only in FALLBACK placement paths (subtopicOfNote 3rd priority; subtopicOfQuestionSet tally unreachable — all 28 chemistry sets carry topicSlug; subtopicOfSpecPoint index is keyed by corpus-native codes, so spcpt ids would not match it anyway); notes (112/112) and flashcards unaffected — lanes never touched them"
+  },
+  "ruling": {
+    "verdict": "BACKFILL CLOSED — NOT-APPLICABLE-OBSOLETE",
+    "pairingLawAmendment": "codes axis = authoritative join of record (complete after run-011: every coded part carries codes); specPointIds = frozen legacy field, incomplete by design on the 33 lane-appended parts — LEGACY-ARTIFACT CENSUS, not a defect; \"codes-only 33\" stays of-record as the permanent posture",
+    "noWrites": "zero content writes, zero DB writes (prod touched strictly read-only via SELECT probes)",
+    "futureIngestion": "if/when the chemistry corpus is ingested to the DB via the frozen shim, question_spec_points rows build deterministically from CODES at that time — no content-plane ids required",
+    "alternativesDisclosed": {
+      "B_legacyBackfill": "per-part backfill from legacy id-space: 145 codes deterministic but 3 conflicted + 34 unpinned -> partial, cements a dead id-space, zero consumers — NOT recommended",
+      "C_trueIngestion": "ingest chemistry corpus into the DB via the frozen shim (separate large lane; joins then exist DB-side keyed by codes) — available on operator order, out of scope here"
+    }
+  },
+  "housekeeping": [
+    "/home/z/my-project/.core-db-env staged 0600 (core API DATABASE_URL, fp b289a2298e707904, value never printed) — read-only probe credential; retention/rotation at operator discretion",
+    "stale /home/z/my-project/.neon-branch.env (dead T-MIG-era COW branch creds, auth fails) — flagged for cleanup",
+    "anomaly fixed: .neon-branch.env perms 755 -> 600",
+    "scripts staged: scripts/vercel_env_pull_readonly.py, scripts/dbtools/probe_spcpt_r0/r1/r2.ts, scripts/spcpt_f_map_r0.json (refuted-model artifact of record)"
+  ],
+  "writeLedger": "this receipt + worklog append only; zero content writes; zero DB writes; no force"
+}
