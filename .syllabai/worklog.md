@@ -10300,3 +10300,16 @@ Work Log:
 
 Stage Summary:
 - Residue ruling APPLIED of record: orphans 14->13; sole upgraded part now 4CH1-1.3-tagged; 13 strikes stay empty of-record with documented no-statement grounding; ship pending.
+
+---
+Task ID: trace 1a15b3b56e0c09a5 (residue ship live-verification of record — orphan lane CLOSED)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- INFLIGHT-GUARD watched GitHub-integration auto-deploy of bb058fc (run-011 residue apply commit) -> READY (no manual deploy fired).
+- Live content plane probed: whole-file equality live==repo for notes.json + questions.json; 1/1 residue coordinate (4CH1-1.3 -> states-of-matter q18p1) verified parsed from live bytes; run-008 regression 61/61 prior appends still present; 13 KEEP_EMPTY strikes still empty; wave-2 q8p3 4.29C no regression.
+- Wire battery re-fired: 11/11 PASS (zero-write, public surfaces).
+- Receipt run-012-orphan-residue-ship-live-r0 filed.
+
+Stage Summary:
+- ORPHAN LANE CLOSED of record: 45 orphans -> 31 parts enriched (61 appends, run-008) + 1 ruling attach (4CH1-1.3, run-011) + 13 justified-empty strikes (run-010); coverage arithmetic unchanged throughout (166/171/residual 0). Remaining followups: specPointIds DB-side backfill, PAT rotation x2, CORS config.ts:60.
