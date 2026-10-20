@@ -876,4 +876,6 @@ console.log(
   `\nreceipt -> ${RECEIPT_PATH}\n` +
     `totals: ${JSON.stringify(receipt.totals)}`,
 );
-if (sql != null) await (sql as unknown as { end: () => Promise<void> }).end();
+if (sql != null && typeof (sql as unknown as { end?: () => Promise<void> }).end === "function") {
+  await (sql as unknown as { end: () => Promise<void> }).end();
+}
