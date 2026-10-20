@@ -10092,3 +10092,23 @@ Work Log:
 
 Stage Summary:
 - Receipt ops-pastpapers/pastpapers-content-provenance-verify-run-003-r0.json; corrected model: chemistry=import SME banks, maths-b=manufacture bank from parsed papers; RAG-over-parsed-papers = new scope if wanted
+
+---
+Task ID: Task-66 (trace 1a15adada876bd01 — the Neon PAT re-stage act: state recovery + Band-5 blocker pinned of record)
+Agent: r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)
+Task: operator delivered 'Here is neon PAT: napi_jy4y…sapok' (trace 1a15adada876bd01) — the response to band-4 'remaining' (the apply requires the operator to re-stage SEED_DATABASE_URL). This act: stage per the 0600 law, re-establish the rolled-back plane, test the PAT's consumability, verify Band-5 static readiness, pin the precise blocker.
+
+Work Log:
+- Sandbox recovery of record: v2 re-cloned fresh (89b4105 at open; fetch-first caught origin advancing to e305d71/325410e mid-act — ff-only to 325410e, clean; T-MIG-140 books-nav lane + 4CH1 wave-1 ship-verify + pastpapers provenance run-003 observed as origin neighbors, never touched; provenance receipt CONFIRMS the 4mb1 band-4 INGEST-READY consumption chain, RAG not fired — consistent with this lane).
+- T-MIG-136 of-record state re-read: bands 3b+4 receipts (operator-authorized anchoring under trace 1a15a45dca86c409; bank INGEST-READY 1,192 questions / 2,106 parts, 57 badSum excluded). Band-3b bundle artifacts byte-present at HEAD: spec-anchors.json (schema syllabai.spec-anchors/1.0, 1,249 anchors); questions.json deep count re-derived independently of the band-3b gate: 65 sets / 1,249 questions / 2,392 parts — 2,392/2,392 parts anchored, 0 unanchored.
+- PAT staging: /home/z/my-project/.credentials/neon-pat (file 0600, dir 0700); value never printed, no copies; sandbox .gitignore extended (.credentials/ + .env); workspace repo has no remote (no leak path).
+- CONSUMABILITY TEST — decisive negative, re-confirmed LIVE: api.neon.tech DNS-UNRESOLVABLE from this sandbox (getent fail; curl exit 6 / http 000), the same control-plane egress block class of record since run-004 (cow_proof_law.method_disclosure); control: data-plane DNS path alive (*.aws.neon.tech queries propagate — NXDOMAIN for a fake endpoint, not a resolver blackhole). A Neon PAT is control-plane ONLY — it cannot derive the pooled connection URI from this plane. The Oct-19 staging shape (run-004 prod_apply.target) was the POOLED CONNECTION URI itself; SEED_DATABASE_URL (the shim's inline env — ingest-bundle-questions.ts:91,116) consumes that URI.
+- Band-5 static readiness verified at HEAD (zero prod, zero LLM): bundle + anchors + shim present (ingest-bundle-questions.ts --dry-run/--apply, ADR-026 evidence-safe replace); curriculum prerequisite LIVE (4MB1-2016 ACTIVE, 119 nodes — run-004); pg-cow tooling WIPED by the rollback as the band-4 receipt predicted — rebuilds from the run-004 evidence_files method disclosure (embedded PG + ICU restore, information_schema DDL with defaults verbatim, read-only row copy, SSL enforced) at apply time.
+- T-MIG-138 window check: GitHub-authoritative server time 19:55Z Oct 20 at act open — the 07:05Z Oct 21 window is ~11h FUTURE; this act does NOT fire the drain (fire path (a) keys on the operator's next message AFTER 07:00Z Oct 21; the current message predates the window). Drain stays STAGED RECIPE per addendum-1.
+- Ask of record to operator: paste the POOLED CONNECTION URI (Neon console -> branch -> Connection Details -> pooled, sslmode=require), staged 0600 same law — the PAT stays staged and unused.
+
+Stage Summary:
+- The Band-5 blocker is now precise of record: not the credential's existence but its SHAPE/PLANE — PAT staged (napi_jy4y…sapok, 0600) but unconsumable sandbox-side (control-plane DNS-blocked, re-confirmed live 19:55Z Oct 20); the pooled URI is the single missing input; everything else green at HEAD.
+- Band 5 fires instantly on URI staging: rebuild pg-cow from the run-004 method -> COW-replica proof (zero prod writes) -> operator-gated --apply -> 136d battery re-fire.
+- T-MIG-138 drain unchanged: STAGED, window 07:05Z Oct 21 future at this act's close; the first re-key after the window fires it per the armed plan (any lane; rows byte-exact of record).
+- Write ledger: this worklog entry ONLY; zero prod/DB/Neon/LLM contact; zero code/content changes; fetch-first, no force.
