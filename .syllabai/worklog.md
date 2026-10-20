@@ -9312,3 +9312,23 @@ Work Log:
 
 Stage Summary:
 - CORRECTION of record: 4MB1 papers EXIST in SyllabAI/syllabai-pastpapers (20 sessions, 67/66 qp/ms, manifested, pre-dating the census) — the standing 'not archived' verdict was a wrong-repo census error; the Maths B questions-axis gate is now PARSING+INGESTION of the existing archive, and the lane's next actionable item changed accordingly; bookkeeping-only, zero code delta, zero prod writes, zero Neon, zero LLM; fetch-first, no force
+
+---
+Task ID: T-SPECS-CIE-CONSUME-1 (r9-hubx, run-001)
+Agent: r9-hubx (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, gateway trace 1a1585c244ccd141)
+Task: Operator 'Start' — REJOIN-1 record NEXT #2 / GATE-1 record NEXT #1: learner-UI consumption of the ACCEPTED spec-links sidecars (verdict semantics + T2_near hint + J* post-gate).
+
+Work Log:
+- Ignition incident handled: sandbox rollback found (local syllabai-resources refs reverted to the Task-22 era while origin held the full line incl. the R42 pair a7ebcd90); reconciled fetch-first (origin/main == 75981cad, one new commit T-PARSE-4PH1-4 beyond a7ebcd90, R42 verified ancestor), CAS update-ref + fork tag pre-reland-r41-3 + Task-24-style index bookkeeping (26 phantoms force-removed, 36 R42/REJOIN-GATE-1/sidecar paths materialized — all blobs local, zero lazy fetch); worktree 0 dirty
+- Pin discipline: the four CIE-relevant subtrees tree-sha-IDENTICAL 0fe5f772 -> 75981cad; the only input delta = spec-links/ (the lane's input)
+- Engine of record: apps/hub/scripts/cie/cie_consume_spec_links.py (deterministic, fixed stamp, staging-hash byte-identical across two clean runs 53b9c9301263fe2d70921bf9d6d5db92ac6c15c8cd76fde84b8c13fb1bd91e30); consumption law verbatim: V* authoritative > T1 > J* > ladder lineages; T2_near (584) carried ONLY as items[].t2HintCodes, never in codes/linkage
+- Merge results (44/44 courses changed): 9,241 sidecar codes attached (cross-foot EXACT vs the independent sidecar survey: 9,241 + 584 T2 == 9,825), sheet 634 = 264 spcptToOfficial adds + 81 same-code upgrades + 289 conflicts KEPT at ladder rows and disclosed (NO-GUESS), 261 inline bodyMd spcpt refs upgraded to real codes
+- Rekey refresh sources the COMMITTED bundles (never the corpus cache) — the phase-3 math-repair 23a/23b + dangling-refs prune preserved verbatim; smeSpecPointIds sourced from the committed already-rekeyed form (the BOC fallback would corrupt them); manifest diff == exactly officialSpine.resourcesSha
+- Gates ALL PASS: in-engine battery (M1 no-loss/R2 sme byte-equal/R3 bodyMd exact-substitution/R4 manifest+curriculum/R5 G4/R6) 44/44; BOC --check x44; verify:cie (CIE_PIN advanced 0fe5f772 -> 75981cad of record, documented in-file); corpus zero-baseline; flashcard sync; bun run build:hub GREEN (bun install re-run first — the rollback wiped node_modules, disclosed)
+- Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-consume-r9-run-001.json; report: content-maps/_report_cie_consume.json
+- Zero DB writes, zero coreBridge/curriculumCode posture changes, zero LLM, zero Neon; Phase 4 DB plane stays operator-gated
+
+Stage Summary:
+- The 634 gate-promoted rejoin resolutions + the operator-verdict + T1 entries are now IN the hub's attachment layer and bundles for all 44 CIE courses — the learner-UI consumption surface of record; hub auto-deploys on merge
+- Open items filed: (1) the 289 sheet-vs-ladder sid->code conflicts need upstream adjudication (kept, disclosed, never silently rewritten); (2) T2 hint surfacing is a UI-lane decision; (3) PAT rotation still CRITICAL overdue (25 transits on fingerprint a8ccee736aa8c75b + this lane's push/API transits); (4) Phase 4 DB plane explicit-instruction-only
+- fetch-first, no force; branch t-specs-cie-consume/r9, PR flow per AGENT_COORDINATION

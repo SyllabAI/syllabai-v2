@@ -20,10 +20,16 @@
   }
  },
  "course": "cie-igcse-economics-20",
- "generatedUtc": null,
+ "generatedUtc": "2026-10-20T14:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-igcse-economics-20/spec_point_index.json": {
    "sha256": "40f3b4d19b1ea01f6ecc5dff242340315520c507f9ac71f870990a80a1899fd2"
+  },
+  "scripts/cie_rejoin_resolutions.yaml": {
+   "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
+  },
+  "spec-links/cie-igcse-economics-20.json": {
+   "sha256": "d82aaf26d9b0fea8921603b1544b60561408b7d1f715f071c1fda60a70b08c9a"
   },
   "spine": {
    "file": "spines/cie-igcse-economics-20.json"
@@ -4218,6 +4224,16 @@
   "qstnprt_24sKWSzKyGn9Cb9N": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.7.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.7.4",
+     "score": null,
+     "spineCode": "4.7.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "4.7.3",
@@ -4249,6 +4265,16 @@
   },
   "qstnprt_25YbFcvzHVj446Kr": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "6.2.5",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:6.2.5",
+     "score": null,
+     "spineCode": "6.2.5",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -4425,6 +4451,16 @@
   "qstnprt_2s9TNCh9vszKpThR": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.6.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.6.4",
+     "score": null,
+     "spineCode": "4.6.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "4.6.2",
@@ -4461,6 +4497,16 @@
   },
   "qstnprt_3FSd9Y5PysHcn7Jh": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "3.7.5",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:3.7.5",
+     "score": null,
+     "spineCode": "3.7.5",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -4569,7 +4615,16 @@
      "viaSpcpt": "spcpt_2ncRDHWZDSxTKPVx"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "1.3.1",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.3.1",
+     "spineCode": "1.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_3WRhNN9HfFG3XWZK": {
    "codes": [
@@ -4610,6 +4665,16 @@
   },
   "qstnprt_3fQQR4mzBqmHQbFY": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "2.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:2.5.2",
+     "score": null,
+     "spineCode": "2.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -4704,6 +4769,16 @@
   "qstnprt_4DXG3X7dwZvm3HVS": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "5.2.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:5.2.2",
+     "score": null,
+     "spineCode": "5.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "5.2.1",
@@ -4757,6 +4832,16 @@
   "qstnprt_4jywWBNzyHW8t86q": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "4.5.1",
@@ -4781,15 +4866,14 @@
   "qstnprt_4tgw3Df2Rq732TKp": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.7.2",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "3.7.5",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:3.7.5",
      "score": null,
-     "spineCode": "3.7.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_F38FdzTKyFskTXkP"
+     "spineCode": "3.7.5",
+     "tier": "J3_name_text_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -4801,6 +4885,17 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_nS9RxWthxNHnwBtY"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "3.7.2",
+     "officialId": null,
+     "score": null,
+     "spineCode": "3.7.2",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_F38FdzTKyFskTXkP"
     }
    ],
    "kind": "question_part"
@@ -4830,17 +4925,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_rGpZ5R2K5ZhZYXJy"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.2.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_s9GmFVS9cqbWGS5q"
     }
    ],
    "kind": "question_part"
@@ -4931,15 +5015,14 @@
   "qstnprt_5s9MckW4MFX2wXxN": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "1.1.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.1.1",
      "score": null,
      "spineCode": "1.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_xDqvKZX9TyDBmhm4"
+     "tier": "J3_name_text_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -4978,6 +5061,16 @@
   },
   "qstnprt_65b4R8RYMM2chjvh": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -5240,6 +5333,16 @@
   "qstnprt_7T8xDyPS7sSPmQTc": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "1.1.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.1.2",
+     "score": null,
+     "spineCode": "1.1.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "1.1.1",
@@ -5313,17 +5416,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_4hTdfQ6kq2q3Y7y2"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.7.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.7.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_nS9RxWthxNHnwBtY"
     }
    ],
    "kind": "question_part"
@@ -5368,6 +5460,16 @@
   "qstnprt_8PpWNrmpDpzRYPWr": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "4.5.1",
@@ -5384,21 +5486,30 @@
   "qstnprt_8XrM9nYbM5dcv8mp": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "1.1.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.1.1",
      "score": null,
      "spineCode": "1.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_xDqvKZX9TyDBmhm4"
+     "tier": "J3_name_text_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
   },
   "qstnprt_8swWmnDPxYv2m2yr": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.7.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.7.4",
+     "score": null,
+     "spineCode": "4.7.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -5812,15 +5923,14 @@
   "qstnprt_ByYZwM63Y52CJSTF": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.6.2",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.6.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.6.4",
      "score": null,
-     "spineCode": "4.6.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_BB9vb8njBwsdYRxs"
+     "spineCode": "4.6.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -5832,12 +5942,33 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_wvCtX8bHrntHWkDz"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "4.6.2",
+     "officialId": null,
+     "score": null,
+     "spineCode": "4.6.2",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_BB9vb8njBwsdYRxs"
     }
    ],
    "kind": "question_part"
   },
   "qstnprt_Bzytb5CtHNDGgFGZ": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -5903,6 +6034,16 @@
   "qstnprt_CYJmMq7twWVPyRbR": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "6.2.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:6.2.4",
+     "score": null,
+     "spineCode": "6.2.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "6.2.3",
@@ -5951,7 +6092,16 @@
      "viaSpcpt": "spcpt_hmHfmJPcF2fwKBQS"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "3.3.1",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:3.3.1",
+     "spineCode": "3.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_Ck5GmXsFsVzDXrhw": {
    "codes": [
@@ -6036,6 +6186,16 @@
   "qstnprt_DCy83yzJ5hMHKQqb": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "6.2.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:6.2.4",
+     "score": null,
+     "spineCode": "6.2.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "6.2.3",
@@ -6083,6 +6243,16 @@
   },
   "qstnprt_DGKfMx7vdbCpm2PY": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -6196,15 +6366,14 @@
   "qstnprt_FKJ6Z7bNdd8FKnwG": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "3.2.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:3.2.1",
      "score": null,
      "spineCode": "3.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_jfrPs4J4Fn9f7Cbw"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -6223,20 +6392,28 @@
      "viaSpcpt": "spcpt_2ncRDHWZDSxTKPVx"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "1.3.1",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.3.1",
+     "spineCode": "1.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_FZ9cKJQCyKKpYmvf": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.5.1",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.5.2",
      "score": null,
-     "spineCode": "4.5.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_bQyRPPwyznxwFxzB"
+     "spineCode": "4.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -6247,13 +6424,23 @@
      "spineCode": "4.5.1",
      "tier": null,
      "unit": null,
-     "viaSpcpt": "spcpt_sxxCRd5x4sxXzFJn"
+     "viaSpcpt": "spcpt_bQyRPPwyznxwFxzB"
     }
    ],
    "kind": "question_part"
   },
   "qstnprt_FrCZGZGgxcFHpYJP": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.7.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.7.4",
+     "score": null,
+     "spineCode": "4.7.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -6329,6 +6516,16 @@
   "qstnprt_GXMCjG6z6FXGdFgQ": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "1.4.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.4.4",
+     "score": null,
+     "spineCode": "1.4.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "1.4.1",
@@ -6385,15 +6582,14 @@
   "qstnprt_H8KWXKXSBZ9Xjm3J": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_definition_text_join",
      "officialCode": "6.3.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:6.3.1",
      "score": null,
      "spineCode": "6.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_76yWbkQ87xDWsZkH"
+     "tier": "T1_verbatim",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -6412,15 +6608,14 @@
   "qstnprt_HFBBjS2D3k29zJnN": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "5.3.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:5.3.1",
      "score": null,
      "spineCode": "5.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_rJH6k8RDY4cHb9fC"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -6453,17 +6648,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_TPmsyF94VwDtYzr9"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.10.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.10.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_gJCWVSz967s7C4sQ"
     }
    ],
    "kind": "question_part"
@@ -6575,21 +6759,30 @@
   "qstnprt_JHss3knQJ5Xdzbds": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "5.3.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:5.3.1",
      "score": null,
      "spineCode": "5.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_rJH6k8RDY4cHb9fC"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
   },
   "qstnprt_JJsdtf53hXQGqcfW": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "2.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:2.5.2",
+     "score": null,
+     "spineCode": "2.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -6769,6 +6962,16 @@
   "qstnprt_JrfznzhJVVTkKWWM": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "1.4.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.4.4",
+     "score": null,
+     "spineCode": "1.4.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "1.4.1",
@@ -6801,7 +7004,16 @@
      "viaSpcpt": "spcpt_2ncRDHWZDSxTKPVx"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "1.3.1",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.3.1",
+     "spineCode": "1.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_JtP8TPGMyQJN6DQv": {
    "codes": [
@@ -6854,7 +7066,16 @@
      "viaSpcpt": "spcpt_2ncRDHWZDSxTKPVx"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "1.3.1",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.3.1",
+     "spineCode": "1.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_KGZSgHh9b69x5jCD": {
    "codes": [],
@@ -6900,17 +7121,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_2c6hfFKVNHv54zX3"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.7.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.7.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_nS9RxWthxNHnwBtY"
     }
    ],
    "kind": "question_part"
@@ -6918,15 +7128,14 @@
   "qstnprt_KhNxVVHVGYs25nQZ": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_definition_text_join",
      "officialCode": "4.3.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.3.1",
      "score": null,
      "spineCode": "4.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_B5jVmQGfzZ98QWCD"
+     "tier": "T1_verbatim",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -6949,6 +7158,16 @@
   },
   "qstnprt_M4xWjh9wjBM9kt4P": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -7132,15 +7351,14 @@
   "qstnprt_MpG83ZSJhkmM7sSb": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "5.3.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:5.3.1",
      "score": null,
      "spineCode": "5.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_rJH6k8RDY4cHb9fC"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -7188,15 +7406,14 @@
   "qstnprt_MvnRyfHMztjMgYWw": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.7.2",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "3.7.5",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:3.7.5",
      "score": null,
-     "spineCode": "3.7.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_F38FdzTKyFskTXkP"
+     "spineCode": "3.7.5",
+     "tier": "J3_name_text_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -7208,6 +7425,17 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_nS9RxWthxNHnwBtY"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "3.7.2",
+     "officialId": null,
+     "score": null,
+     "spineCode": "3.7.2",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_F38FdzTKyFskTXkP"
     }
    ],
    "kind": "question_part"
@@ -7367,17 +7595,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_24xWC7Cf4ywkkrSQ"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.3.4",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.3.4",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_kG2g3BRz457k3Gwq"
     }
    ],
    "kind": "question_part"
@@ -7443,15 +7660,14 @@
   "qstnprt_NzRKTzppGMNVTq44": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "1.1.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.1.1",
      "score": null,
      "spineCode": "1.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_xDqvKZX9TyDBmhm4"
+     "tier": "J3_name_text_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -7459,21 +7675,30 @@
   "qstnprt_PCr7q46K8y8mCbyG": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_definition_text_join",
      "officialCode": "6.3.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:6.3.1",
      "score": null,
      "spineCode": "6.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_76yWbkQ87xDWsZkH"
+     "tier": "T1_verbatim",
+     "unit": null
     }
    ],
    "kind": "question_part"
   },
   "qstnprt_Pq2hzg2GZRzVfjDr": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -7587,15 +7812,14 @@
   "qstnprt_QK7G2DKQnf9wJ2k4": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_definition_text_join",
      "officialCode": "6.3.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:6.3.1",
      "score": null,
      "spineCode": "6.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_76yWbkQ87xDWsZkH"
+     "tier": "T1_verbatim",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -7682,15 +7906,14 @@
   "qstnprt_R5DdmGC763fRvfSs": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.6.2",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.6.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.6.4",
      "score": null,
-     "spineCode": "4.6.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_BB9vb8njBwsdYRxs"
+     "spineCode": "4.6.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -7702,6 +7925,17 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_wvCtX8bHrntHWkDz"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "4.6.2",
+     "officialId": null,
+     "score": null,
+     "spineCode": "4.6.2",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_BB9vb8njBwsdYRxs"
     }
    ],
    "kind": "question_part"
@@ -7772,6 +8006,16 @@
   "qstnprt_RQw3zjsjBxXwrkZg": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "6.2.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:6.2.4",
+     "score": null,
+     "spineCode": "6.2.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "6.2.3",
@@ -7828,6 +8072,16 @@
   "qstnprt_RfD6tfnMG273sNgp": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "6.2.5",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:6.2.5",
+     "score": null,
+     "spineCode": "6.2.5",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "6.2.3",
@@ -7849,15 +8103,14 @@
   "qstnprt_RgVXSkYBqNF25rYV": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.6.2",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.6.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.6.4",
      "score": null,
-     "spineCode": "4.6.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_BB9vb8njBwsdYRxs"
+     "spineCode": "4.6.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -7868,7 +8121,7 @@
      "spineCode": "4.6.2",
      "tier": null,
      "unit": null,
-     "viaSpcpt": "spcpt_qB6MKM4CynHnMDvh"
+     "viaSpcpt": "spcpt_BB9vb8njBwsdYRxs"
     }
    ],
    "kind": "question_part"
@@ -7876,15 +8129,14 @@
   "qstnprt_RjMGyhS4RyN964Tt": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "1.1.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.1.1",
      "score": null,
      "spineCode": "1.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_xDqvKZX9TyDBmhm4"
+     "tier": "J3_name_text_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -7917,17 +8169,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_3q6c2bHRXRPvk9zF"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.1.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.1.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_QSqgdkRphMhbBV8n"
     }
    ],
    "kind": "question_part"
@@ -7940,15 +8181,14 @@
   "qstnprt_S5zn6nfTGQQKF6WG": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.2.3",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "6.2.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:6.2.4",
      "score": null,
-     "spineCode": "6.2.3",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_nqVbNZpzYm6Bj7tK"
+     "spineCode": "6.2.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -7959,13 +8199,23 @@
      "spineCode": "6.2.3",
      "tier": null,
      "unit": null,
-     "viaSpcpt": "spcpt_zjPFj9QmpVfmCxj6"
+     "viaSpcpt": "spcpt_nqVbNZpzYm6Bj7tK"
     }
    ],
    "kind": "question_part"
   },
   "qstnprt_SF6pCpQZFx9hYqpG": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.7.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.7.4",
+     "score": null,
+     "spineCode": "4.7.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -7983,15 +8233,14 @@
   "qstnprt_SKRwvD9fkXhbScS2": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "3.2.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:3.2.1",
      "score": null,
      "spineCode": "3.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_jfrPs4J4Fn9f7Cbw"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -8118,6 +8367,16 @@
   "qstnprt_TcKtXSHqxqwYVfRV": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "6.2.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:6.2.4",
+     "score": null,
+     "spineCode": "6.2.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "6.2.3",
@@ -8145,20 +8404,28 @@
      "viaSpcpt": "spcpt_hmHfmJPcF2fwKBQS"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "3.3.1",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:3.3.1",
+     "spineCode": "3.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_Tfd6pPMwyHsyZYds": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "5.2.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:5.2.1",
      "score": null,
      "spineCode": "5.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_6y2w4Zd5sVnwjKJ3"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -8189,6 +8456,16 @@
   },
   "qstnprt_TyGyR5HTKDgMGrnG": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "2.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:2.5.2",
+     "score": null,
+     "spineCode": "2.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -8312,6 +8589,16 @@
   "qstnprt_Vck2mnD5N5CXDNTS": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "1.1.1",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.1.1",
+     "score": null,
+     "spineCode": "1.1.1",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "1.3.1",
@@ -8321,20 +8608,18 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_2ncRDHWZDSxTKPVx"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "1.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_xDqvKZX9TyDBmhm4"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "1.3.1",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.3.1",
+     "spineCode": "1.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_Vghrc7RmNtsCHPY6": {
    "codes": [],
@@ -8400,6 +8685,16 @@
   "qstnprt_WHxk8vd8fwMfV9wG": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.6.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.6.4",
+     "score": null,
+     "spineCode": "4.6.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "4.6.2",
@@ -8426,6 +8721,16 @@
   "qstnprt_WXYNnZ2zqN3F3CBq": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "2.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:2.5.2",
+     "score": null,
+     "spineCode": "2.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "2.5.1",
@@ -8447,15 +8752,14 @@
   "qstnprt_WhxPRhshb7RjHcG2": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_definition_text_join",
      "officialCode": "6.3.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:6.3.1",
      "score": null,
      "spineCode": "6.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_76yWbkQ87xDWsZkH"
+     "tier": "T1_verbatim",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -8484,15 +8788,14 @@
   "qstnprt_WvmmNdCpfCn6v4ZK": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.6.2",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.6.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.6.4",
      "score": null,
-     "spineCode": "4.6.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_BB9vb8njBwsdYRxs"
+     "spineCode": "4.6.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -8504,6 +8807,17 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_wvCtX8bHrntHWkDz"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "4.6.2",
+     "officialId": null,
+     "score": null,
+     "spineCode": "4.6.2",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_BB9vb8njBwsdYRxs"
     }
    ],
    "kind": "question_part"
@@ -8532,6 +8846,16 @@
   "qstnprt_XFprRTYRRt8kvqRh": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "3.7.5",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:3.7.5",
+     "score": null,
+     "spineCode": "3.7.5",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "3.7.2",
@@ -8548,6 +8872,16 @@
   "qstnprt_XQwPcjmqmkk5GRMp": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "2.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:2.5.2",
+     "score": null,
+     "spineCode": "2.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "2.5.1",
@@ -8563,6 +8897,16 @@
   },
   "qstnprt_XSjjyzQR2xw663dK": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "2.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:2.5.2",
+     "score": null,
+     "spineCode": "2.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -8612,15 +8956,14 @@
   "qstnprt_Xhf9C6XGxP3wCM4G": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_definition_text_join",
      "officialCode": "4.3.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.3.1",
      "score": null,
      "spineCode": "4.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_B5jVmQGfzZ98QWCD"
+     "tier": "T1_verbatim",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -8775,17 +9118,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_NDP5FNrzKwFY36mZ"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.6.3",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.6.3",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_qzZpRsZxpS3p8Ywb"
     }
    ],
    "kind": "question_part"
@@ -8820,7 +9152,16 @@
      "viaSpcpt": "spcpt_GVyDVX2GGkwx23N4"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "4.7.1",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.7.1",
+     "spineCode": "4.7.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_Z2vW6CYC7W82kSFg": {
    "codes": [
@@ -8841,15 +9182,14 @@
   "qstnprt_Z6Gh98Dqy6TSGXjT": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "1.1.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.1.1",
      "score": null,
      "spineCode": "1.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_xDqvKZX9TyDBmhm4"
+     "tier": "J3_name_text_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -9055,6 +9395,16 @@
   "qstnprt_bYvR9QvS3sd8jky3": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "4.5.1",
@@ -9071,6 +9421,16 @@
   "qstnprt_bcbrjYYRx5SNVDt7": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "1.1.1",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.1.1",
+     "score": null,
+     "spineCode": "1.1.1",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "1.3.1",
@@ -9080,20 +9440,18 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_2ncRDHWZDSxTKPVx"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "1.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_xDqvKZX9TyDBmhm4"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "1.3.1",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.3.1",
+     "spineCode": "1.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_bh8Y3zt2xY4xRnmT": {
    "codes": [],
@@ -9186,15 +9544,14 @@
   "qstnprt_cFmZ7bPhpF2k9B2W": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "2.5.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:2.5.1",
      "score": null,
      "spineCode": "2.5.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_SDsydYYvr66mjGxJ"
+     "tier": "J3_name_text_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -9286,6 +9643,16 @@
   },
   "qstnprt_cZ8GpCKxk7DqSJmm": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "2.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:2.5.2",
+     "score": null,
+     "spineCode": "2.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -9419,6 +9786,16 @@
   "qstnprt_d5HjSzdgx2PHYGJQ": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.3.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.3.2",
+     "score": null,
+     "spineCode": "4.3.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "4.3.1",
@@ -9491,15 +9868,14 @@
   "qstnprt_dGh8qkH43xzb63MX": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "3.2.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:3.2.1",
      "score": null,
      "spineCode": "3.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_jfrPs4J4Fn9f7Cbw"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -9547,15 +9923,14 @@
   "qstnprt_dSZq5xf8BzhpKTbp": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.3.1",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.3.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.3.2",
      "score": null,
-     "spineCode": "4.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_JTzMwpwzGjV8Tbzv"
+     "spineCode": "4.3.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -9567,6 +9942,17 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_dsmf7Rn9pYCY3TVb"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "4.3.1",
+     "officialId": null,
+     "score": null,
+     "spineCode": "4.3.1",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_JTzMwpwzGjV8Tbzv"
     }
    ],
    "kind": "question_part"
@@ -9599,20 +9985,18 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_GVyDVX2GGkwx23N4"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.7.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.7.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_wRr2GdfmCbqQpRZV"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "4.7.1",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.7.1",
+     "spineCode": "4.7.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_dqCSpT9D8jGD4PWw": {
    "codes": [],
@@ -9638,15 +10022,14 @@
   "qstnprt_f774FJBdRc2nZNp2": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "3.2.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:3.2.1",
      "score": null,
      "spineCode": "3.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_jfrPs4J4Fn9f7Cbw"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -9699,15 +10082,14 @@
   "qstnprt_fwwKVgC6xxTJsvJn": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "2.5.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:2.5.1",
      "score": null,
      "spineCode": "2.5.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_SDsydYYvr66mjGxJ"
+     "tier": "J3_name_text_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -9730,15 +10112,14 @@
   "qstnprt_gPbg7TJsMhk3gstK": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "1.1.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.1.1",
      "score": null,
      "spineCode": "1.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_xDqvKZX9TyDBmhm4"
+     "tier": "J3_name_text_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -9784,17 +10165,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_29mSKgVpDYhvnGyY"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_GCMQwVhMh35q5z6v"
     }
    ],
    "kind": "question_part"
@@ -9870,6 +10240,16 @@
   },
   "qstnprt_hS65nvyb5v48vKKX": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "6.2.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:6.2.4",
+     "score": null,
+     "spineCode": "6.2.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -10071,17 +10451,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_2c6hfFKVNHv54zX3"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.7.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.7.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_4hTdfQ6kq2q3Y7y2"
     }
    ],
    "kind": "question_part"
@@ -10184,6 +10553,16 @@
   "qstnprt_kKzk8Ck4gtw8mjSw": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "2.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:2.5.2",
+     "score": null,
+     "spineCode": "2.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "2.5.1",
@@ -10215,6 +10594,16 @@
   },
   "qstnprt_kVBz3Cg9pbCq7Wwv": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -10298,7 +10687,16 @@
      "viaSpcpt": "spcpt_GVyDVX2GGkwx23N4"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "4.7.1",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.7.1",
+     "spineCode": "4.7.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_kxjVHYH4xRfd2d4y": {
    "codes": [
@@ -10366,6 +10764,16 @@
   },
   "qstnprt_mDdKqbfhFrmmwhMJ": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "1.4.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.4.4",
+     "score": null,
+     "spineCode": "1.4.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -10523,6 +10931,16 @@
   "qstnprt_nJWswjWRVZMHdJky": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "2.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:2.5.2",
+     "score": null,
+     "spineCode": "2.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "2.5.1",
@@ -10666,6 +11084,16 @@
   "qstnprt_nxbQbwW9RDh5SKgT": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "2.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:2.5.2",
+     "score": null,
+     "spineCode": "2.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "2.5.1",
@@ -10714,15 +11142,14 @@
   "qstnprt_pCt8cDGNPg7CG5Q7": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_definition_text_join",
      "officialCode": "6.2.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:6.2.1",
      "score": null,
      "spineCode": "6.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_d7qymdpfzBgQpWF3"
+     "tier": "T1_verbatim",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -10745,6 +11172,16 @@
   },
   "qstnprt_pR2H5YNdgFqtSKkw": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "2.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:2.5.2",
+     "score": null,
+     "spineCode": "2.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -10866,15 +11303,14 @@
   "qstnprt_q3zjshMWgC5kS9fc": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "5.3.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:5.3.1",
      "score": null,
      "spineCode": "5.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_rJH6k8RDY4cHb9fC"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -10955,6 +11391,16 @@
   },
   "qstnprt_qkWRyzdYGGBdgDZN": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.6.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.6.4",
+     "score": null,
+     "spineCode": "4.6.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -11188,6 +11634,16 @@
   "qstnprt_rx4gfTRsDHgVPjSy": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.7.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.7.4",
+     "score": null,
+     "spineCode": "4.7.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "4.7.3",
@@ -11406,6 +11862,16 @@
   "qstnprt_tkSNC7BtHYyKYfCP": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "3.7.5",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:3.7.5",
+     "score": null,
+     "spineCode": "3.7.5",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "3.7.2",
@@ -11438,6 +11904,16 @@
   "qstnprt_tmgrV83J32THCkkx": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.6.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.6.4",
+     "score": null,
+     "spineCode": "4.6.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "4.6.2",
@@ -11454,15 +11930,14 @@
   "qstnprt_twHQcnxVPP7BPqRw": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "3.2.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:3.2.1",
      "score": null,
      "spineCode": "3.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_jfrPs4J4Fn9f7Cbw"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -11494,7 +11969,16 @@
      "viaSpcpt": "spcpt_2ncRDHWZDSxTKPVx"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "1.3.1",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.3.1",
+     "spineCode": "1.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_v4ndb39v6vVckZDk": {
    "codes": [
@@ -11581,6 +12065,16 @@
   },
   "qstnprt_vNH5hVf3nJSmmTZn": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.7.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.7.4",
+     "score": null,
+     "spineCode": "4.7.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -11825,15 +12319,14 @@
   "qstnprt_wVzxcpjmjYxk5tf7": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "3.2.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:3.2.1",
      "score": null,
      "spineCode": "3.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_jfrPs4J4Fn9f7Cbw"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -12038,15 +12531,14 @@
   "qstnprt_xkzB7mKH7VyvnWf6": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.7.2",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "3.7.5",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:3.7.5",
      "score": null,
-     "spineCode": "3.7.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_F38FdzTKyFskTXkP"
+     "spineCode": "3.7.5",
+     "tier": "J3_name_text_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -12058,6 +12550,17 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_nS9RxWthxNHnwBtY"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "3.7.2",
+     "officialId": null,
+     "score": null,
+     "spineCode": "3.7.2",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_F38FdzTKyFskTXkP"
     }
    ],
    "kind": "question_part"
@@ -12065,15 +12568,14 @@
   "qstnprt_xpvWj6xvkHXb5mKS": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "2.5.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:2.5.1",
      "score": null,
      "spineCode": "2.5.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_SDsydYYvr66mjGxJ"
+     "tier": "J3_name_text_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -12174,15 +12676,14 @@
   "qstnprt_yV2Q5fHh5zQVdsVb": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "5.3.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:5.3.1",
      "score": null,
      "spineCode": "5.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_rJH6k8RDY4cHb9fC"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -12308,17 +12809,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_MMPYJghg2JrGSHsb"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_kdmvC9JCHKwc5QQy"
     }
    ],
    "kind": "question_part"
@@ -12425,17 +12915,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_JPrt8dKzZS5SbggF"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.5.3",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.5.3",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_rjpyqWNGKWBW8K6J"
     }
    ],
    "kind": "note"
@@ -12468,28 +12947,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_f2bpXmfF7h8vJSh3"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "5.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "5.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_s8pzQnyYhMT4GT27"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "5.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "5.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_tzTnGn7VdKWfbjvv"
     }
    ],
    "kind": "note"
@@ -12497,26 +12954,14 @@
   "rn_53tP2rzBtZP3h7T6": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_definition_text_join",
      "officialCode": "6.3.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:6.3.1",
      "score": null,
      "spineCode": "6.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_76yWbkQ87xDWsZkH"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_PWXxw3ddQZ9Svrj4"
+     "tier": "T1_verbatim",
+     "unit": null
     }
    ],
    "kind": "note"
@@ -12533,17 +12978,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_24xWC7Cf4ywkkrSQ"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.3.4",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.3.4",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_kG2g3BRz457k3Gwq"
     }
    ],
    "kind": "note"
@@ -12560,17 +12994,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_4pp6trz4JWmWn33b"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.7.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.7.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_668ZcW2t8Hv73FPW"
     }
    ],
    "kind": "note"
@@ -12603,17 +13026,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_5DG9WK8xqGm5w66s"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_Mq37kFNJvyV2Rt6t"
     }
    ],
    "kind": "note"
@@ -12630,28 +13042,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_29mSKgVpDYhvnGyY"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_GCMQwVhMh35q5z6v"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_VNFZjgjTQxJpXPyb"
     }
    ],
    "kind": "note"
@@ -12668,44 +13058,40 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_2ncRDHWZDSxTKPVx"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "1.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_8dzmQBr896tq5pQH"
     }
    ],
-   "kind": "note"
+   "kind": "note",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "1.3.1",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.3.1",
+     "spineCode": "1.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "rn_99ym9dT7PG6wVMMD": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "1.1.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.1.1",
      "score": null,
      "spineCode": "1.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_HTWCKhjtTnmP5qrz"
+     "tier": "J3_name_text_identity",
+     "unit": null
     },
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.1.1",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "1.1.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.1.2",
      "score": null,
-     "spineCode": "1.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_xDqvKZX9TyDBmhm4"
+     "spineCode": "1.1.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
     }
    ],
    "kind": "note"
@@ -12713,26 +13099,24 @@
   "rn_9KdfFhfqjC5g8m6H": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "5.2.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:5.2.1",
      "score": null,
      "spineCode": "5.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_6y2w4Zd5sVnwjKJ3"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     },
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "5.2.1",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "5.2.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:5.2.2",
      "score": null,
-     "spineCode": "5.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_smdjywH48H5H9nG8"
+     "spineCode": "5.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "note"
@@ -12749,17 +13133,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_BRSBmkKWX4QP9f47"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.2.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "1.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_vJRrS5TjzSJBwtzZ"
     }
    ],
    "kind": "note"
@@ -12767,37 +13140,24 @@
   "rn_BQWZrXkjTrZVKBQx": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "2.5.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:2.5.1",
      "score": null,
      "spineCode": "2.5.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_5KcG9H3QS8sZNrc8"
+     "tier": "J3_name_text_identity",
+     "unit": null
     },
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.5.1",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "2.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:2.5.2",
      "score": null,
-     "spineCode": "2.5.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_SDsydYYvr66mjGxJ"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.5.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.5.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_hP4SMwGX3PdzGj3r"
+     "spineCode": "2.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
     }
    ],
    "kind": "note"
@@ -12814,20 +13174,18 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_GVyDVX2GGkwx23N4"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.7.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.7.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_wRr2GdfmCbqQpRZV"
     }
    ],
-   "kind": "note"
+   "kind": "note",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "4.7.1",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.7.1",
+     "spineCode": "4.7.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "rn_FmKTsxWPp5y7WMdW": {
    "codes": [
@@ -12841,17 +13199,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_NDP5FNrzKwFY36mZ"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.6.3",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.6.3",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_qzZpRsZxpS3p8Ywb"
     }
    ],
    "kind": "note"
@@ -12859,37 +13206,34 @@
   "rn_GQt2qgNsYVbB7ym2": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_definition_text_join",
      "officialCode": "4.3.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.3.1",
      "score": null,
      "spineCode": "4.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_B5jVmQGfzZ98QWCD"
+     "tier": "T1_verbatim",
+     "unit": null
     },
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.3.1",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.3.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.3.2",
      "score": null,
-     "spineCode": "4.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_JTzMwpwzGjV8Tbzv"
+     "spineCode": "4.3.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
     },
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.3.1",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.3.3",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.3.3",
      "score": null,
-     "spineCode": "4.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_mDZ4pY2m79tB5WVw"
+     "spineCode": "4.3.3",
+     "tier": "J3_name_text_identity",
+     "unit": null
     }
    ],
    "kind": "note"
@@ -12906,17 +13250,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_FtjwQKmpHqn6F65m"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_Gv3wQKWJ9DZm77Cd"
     }
    ],
    "kind": "note"
@@ -12933,50 +13266,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_5m4X7GK2kgmNcdM7"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.2.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_SMKZtXfvJNzpwFcK"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.2.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_YgQdC63Fvc3Tqh8D"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.2.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_bSy3hbRp7wHxXnt9"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.2.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_kWmkQzj2DSCNQjB6"
     }
    ],
    "kind": "note"
@@ -12993,28 +13282,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_W2bDp2cDrcNKSqKT"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.2.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_WkP9hkTns4nRYYRJ"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.2.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_yqNr8ZVZP4qrfPKd"
     }
    ],
    "kind": "note"
@@ -13031,61 +13298,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_5V4myQxDbTSPVk9s"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_9QXcyBDKyh7X4Bmn"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_MMPYJghg2JrGSHsb"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_QHj64WKpX2wgtTTQ"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_kdmvC9JCHKwc5QQy"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_msTHbgcBMzwDxhNx"
     }
    ],
    "kind": "note"
@@ -13102,17 +13314,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_5YpckvgtkTKhrj3h"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_BjK2N8p2Ss3XBKhV"
     }
    ],
    "kind": "note"
@@ -13136,6 +13337,16 @@
   "rn_Kr9HqrHwQtSBGPqN": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "1.4.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:1.4.4",
+     "score": null,
+     "spineCode": "1.4.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "1.4.1",
@@ -13145,17 +13356,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_MDMw8fckjxbcGdDM"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.4.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "1.4.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_gDhgN29HB3ZwdSTH"
     }
    ],
    "kind": "note"
@@ -13163,26 +13363,14 @@
   "rn_NG8dt7KZbrYs5yJs": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "5.3.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:5.3.1",
      "score": null,
      "spineCode": "5.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_rJH6k8RDY4cHb9fC"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "5.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "5.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_rYSZgBk5RQf7QTrj"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "note"
@@ -13215,39 +13403,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_2c6hfFKVNHv54zX3"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.7.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.7.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_4hTdfQ6kq2q3Y7y2"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.7.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.7.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_nJN2FnfSNMHwKGyB"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.7.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.7.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_nS9RxWthxNHnwBtY"
     }
    ],
    "kind": "note"
@@ -13255,37 +13410,14 @@
   "rn_QP2wq4GzyvWZB8XF": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "3.2.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:3.2.1",
      "score": null,
      "spineCode": "3.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_jfrPs4J4Fn9f7Cbw"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.2.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_rGpZ5R2K5ZhZYXJy"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.2.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_s9GmFVS9cqbWGS5q"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "note"
@@ -13318,17 +13450,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_YmfnjN44mMgMvyFH"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "5.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "5.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_sKJBhjzdfn6wf85t"
     }
    ],
    "kind": "note"
@@ -13345,17 +13466,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_ZTmcBF5XDSdjRGms"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.9.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.9.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_sGmH2zQZv9mkpNyG"
     }
    ],
    "kind": "note"
@@ -13372,17 +13482,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_3q6c2bHRXRPvk9zF"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.1.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.1.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_QSqgdkRphMhbBV8n"
     }
    ],
    "kind": "note"
@@ -13390,26 +13489,14 @@
   "rn_VcxHpWsdQM8vb5Vm": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_definition_text_join",
      "officialCode": "6.2.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:6.2.1",
      "score": null,
      "spineCode": "6.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_d7qymdpfzBgQpWF3"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.2.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_kYSBSd9pmvKsXffs"
+     "tier": "T1_verbatim",
+     "unit": null
     }
    ],
    "kind": "note"
@@ -13442,17 +13529,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_W2VqjcTDjpfP4pSF"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.4.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.4.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_kNSpHbrHGdzp6TXp"
     }
    ],
    "kind": "note"
@@ -13485,17 +13561,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_F42pjqh5nphcvyr3"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.4.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.4.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_tMQ5kQ4YGGwppcz8"
     }
    ],
    "kind": "note"
@@ -13512,28 +13577,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_QcFfMSKQYXcw46qf"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.8.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.8.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_z6p6PbtjjYcMtCkt"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.8.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.8.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_zD8qPfw4bK6qzNvx"
     }
    ],
    "kind": "note"
@@ -13550,17 +13593,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_2CGKWVJJXPpsDns9"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_jbSyv8hNBsdVM97p"
     }
    ],
    "kind": "note"
@@ -13577,17 +13609,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_4WWRRFZBNdRrY65t"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.6.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.6.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_SjXdG6jVcCj7dcY5"
     }
    ],
    "kind": "note"
@@ -13620,20 +13641,18 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_hmHfmJPcF2fwKBQS"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_r2MX62wB7CmX2f4V"
     }
    ],
-   "kind": "note"
+   "kind": "note",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "3.3.1",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:3.3.1",
+     "spineCode": "3.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "rn_fyzmDc98F4M6cQGM": {
    "codes": [
@@ -13647,23 +13666,22 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_7Cwcg34n7qQNz99Z"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.5.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.5.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_JYV5Dq2yFqz4MVZr"
     }
    ],
    "kind": "note"
   },
   "rn_gjwWsxnnTT6fHm9j": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "3.7.5",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:3.7.5",
+     "score": null,
+     "spineCode": "3.7.5",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -13681,15 +13699,14 @@
   "rn_jVWD7ZP4SPf82gQD": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.5.1",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.5.2",
      "score": null,
-     "spineCode": "4.5.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_bQyRPPwyznxwFxzB"
+     "spineCode": "4.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -13700,7 +13717,7 @@
      "spineCode": "4.5.1",
      "tier": null,
      "unit": null,
-     "viaSpcpt": "spcpt_sxxCRd5x4sxXzFJn"
+     "viaSpcpt": "spcpt_bQyRPPwyznxwFxzB"
     }
    ],
    "kind": "note"
@@ -13717,23 +13734,22 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_KCqd9WgfCHw2grQ3"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.4.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.4.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_cWX49Ykc9DYh4RjT"
     }
    ],
    "kind": "note"
   },
   "rn_jgjXWNgYm7z4HQd5": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.6.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.6.4",
+     "score": null,
+     "spineCode": "4.6.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -13744,17 +13760,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_BB9vb8njBwsdYRxs"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.6.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.6.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_qB6MKM4CynHnMDvh"
     }
    ],
    "kind": "note"
@@ -13787,23 +13792,32 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_8cV7kGzVB7MrMrBB"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.7.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.7.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_NzBP5C2sKxNhvDVZ"
     }
    ],
    "kind": "note"
   },
   "rn_nZWpWChrYTJ5DckY": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "6.2.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:6.2.4",
+     "score": null,
+     "spineCode": "6.2.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "6.2.5",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:6.2.5",
+     "score": null,
+     "spineCode": "6.2.5",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -13814,28 +13828,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_bQgRkxKCdr2V8V8w"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.2.3",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.2.3",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_nqVbNZpzYm6Bj7tK"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.2.3",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.2.3",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_zjPFj9QmpVfmCxj6"
     }
    ],
    "kind": "note"
@@ -13884,17 +13876,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_C3HpkM5NH5zwP64n"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.4.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.4.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_Hp6HH67ywyxyhTgF"
     }
    ],
    "kind": "note"
@@ -13943,34 +13924,22 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_Sd2fgXbGqh5BwqSR"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.6.3",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.6.3",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_rpvvTZtfzkMv5qvB"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.6.3",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.6.3",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_y7js6MK5GzTkV7c5"
     }
    ],
    "kind": "note"
   },
   "rn_xKHY5gzDmT86KFNz": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "6.2.3",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:6.2.3",
+     "score": null,
+     "spineCode": "6.2.3",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -13997,28 +13966,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_M4ZYR9wm4N4ckKd7"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.6.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.6.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_j292tGmqW5tDV3gC"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.6.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.6.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_wvCtX8bHrntHWkDz"
     }
    ],
    "kind": "note"
@@ -14041,6 +13988,16 @@
   },
   "rn_y3k4KvWmj5kTBGzY": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.7.4",
+     "officialId": "CIE_IGCSE_ECONOMICS_2023_2025:4.7.4",
+     "score": null,
+     "spineCode": "4.7.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -14083,28 +14040,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_TPmsyF94VwDtYzr9"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.10.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.10.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_gJCWVSz967s7C4sQ"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.10.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.10.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_nT7qSk9m8jx7kgjx"
     }
    ],
    "kind": "note"
@@ -14117,18 +14052,16 @@
  "qual": "cie-igcse-economics-2023-2025",
  "reconciliation": {
   "codesOutsideSpine": [],
-  "distinctCodesAttached": 62,
+  "distinctCodesAttached": 73,
   "itemsOutsideSpine": 0,
-  "spineHitCodes": 62,
+  "spineHitCodes": 73,
   "spineSpecPoints": 129,
   "uncoveredSpineCodeList": [
-   "1.1.2",
    "1.2.2",
    "1.2.3",
    "1.3.2",
    "1.4.2",
    "1.4.3",
-   "1.4.4",
    "2.1.2",
    "2.10.2",
    "2.11.1",
@@ -14139,7 +14072,6 @@
    "2.3.4",
    "2.4.3",
    "2.4.4",
-   "2.5.2",
    "2.6.2",
    "2.7.2",
    "2.7.3",
@@ -14153,11 +14085,8 @@
    "3.5.5",
    "3.7.3",
    "3.7.4",
-   "3.7.5",
    "3.8.1",
    "3.8.2",
-   "4.3.2",
-   "4.3.3",
    "4.3.4",
    "4.3.5",
    "4.3.6",
@@ -14166,12 +14095,9 @@
    "4.3.9",
    "4.4.2",
    "4.4.3",
-   "4.5.2",
    "4.5.3",
-   "4.6.4",
    "4.6.5",
    "4.6.6",
-   "4.7.4",
    "4.7.5",
    "4.7.6",
    "4.8.1",
@@ -14182,22 +14108,52 @@
    "5.2.3",
    "5.3.3",
    "6.1.2",
-   "6.2.4",
-   "6.2.5",
    "6.2.6",
    "6.3.3",
    "6.3.4",
    "6.3.5",
    "6.4.4"
   ],
-  "uncoveredSpineCodes": 67
+  "uncoveredSpineCodes": 56
  },
- "resourcesSha": "0fe5f77210f74aaeb3f6c491dfe0263d12db738c",
+ "resourcesSha": "75981cad0b08c190fb70902eb6cdca1f76b9cd68",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
   "resolution": null,
-  "specLinks": null,
+  "specLinks": {
+   "census": {
+    "codesAttachedFromSidecar": 107,
+    "codesByMethod": {
+     "cie_definition_text_join": 10,
+     "cie_index_rejoin": 97
+    },
+    "codesByTier": {
+     "J3_name_text_identity": 73,
+     "J4_name_phrase_identity": 24,
+     "T1_verbatim": 10
+    },
+    "itemsWithCodes": 114,
+    "ladderCodesRetained": 455,
+    "sidecarCodes": 122,
+    "sidecarItems": 555,
+    "sidecarOnlyItems": 0,
+    "t2Hints": 15
+   },
+   "derivation": "ACCEPTED spec-links sidecar (T-SPECS-CIE join/verdict/gate/rejoin chain) merged item-level: operator-verdict authoritative, T1 gate-verified, J* post-gate identity-grade; T2_near carried as non-authoritative items[].t2HintCodes only; REJOIN sheet sid->code rows upgrade/add spcptToOfficial (conflicts kept, disclosed)",
+   "regime": "spec_links_sidecar_accepted",
+   "reviewState": {
+    "rejoin": "ACCEPTED",
+    "state": "ACCEPTED"
+   },
+   "sheetUpgrades": {
+    "added": 0,
+    "conflictsKept": 13,
+    "upgraded": 5
+   },
+   "sidecar": "spec-links/cie-igcse-economics-20.json",
+   "t2Policy": "T2_near is a non-authoritative hint (GATE-1 tier_policy); never in codes/linkage"
+  },
   "specPointMap": {
    "crossLaneResolved": 0,
    "derivation": "deterministic ladder R1-R4 (leaf) + R5 (subtopic scope, notes only) over the upstream spec_point_index incl. cross_lane_join resolutions; every row carries its rule id",
@@ -14206,6 +14162,7 @@
    "ruleCounts": {
     "R1": 126
    },
+   "sidecarConsumed": true,
    "smeEntries": 126,
    "subtopicScoped": 0,
    "unmapped": 0
@@ -14435,17 +14392,17 @@
    "via": "R1"
   },
   "spcpt_6y2w4Zd5sVnwjKJ3": {
-   "lineage": "upstream_item_join",
-   "method": null,
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
    "officialCode": "5.2.1",
    "officialCodes": [
     "5.2.1"
    ],
    "officialId": null,
    "score": null,
-   "tier": null,
+   "tier": "J4_name_phrase_identity",
    "unit": null,
-   "via": "R1"
+   "via": "REJOIN-1:gate-1"
   },
   "spcpt_76yWbkQ87xDWsZkH": {
    "lineage": "upstream_item_join",
@@ -14942,17 +14899,17 @@
    "via": "R1"
   },
   "spcpt_SDsydYYvr66mjGxJ": {
-   "lineage": "upstream_item_join",
-   "method": null,
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
    "officialCode": "2.5.1",
    "officialCodes": [
     "2.5.1"
    ],
    "officialId": null,
    "score": null,
-   "tier": null,
+   "tier": "J3_name_text_identity",
    "unit": null,
-   "via": "R1"
+   "via": "REJOIN-1:gate-1"
   },
   "spcpt_SMKZtXfvJNzpwFcK": {
    "lineage": "upstream_item_join",
@@ -15319,17 +15276,17 @@
    "via": "R1"
   },
   "spcpt_jfrPs4J4Fn9f7Cbw": {
-   "lineage": "upstream_item_join",
-   "method": null,
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
    "officialCode": "3.2.1",
    "officialCodes": [
     "3.2.1"
    ],
    "officialId": null,
    "score": null,
-   "tier": null,
+   "tier": "J4_name_phrase_identity",
    "unit": null,
-   "via": "R1"
+   "via": "REJOIN-1:gate-1"
   },
   "spcpt_kG2g3BRz457k3Gwq": {
    "lineage": "upstream_item_join",
@@ -15553,17 +15510,17 @@
    "via": "R1"
   },
   "spcpt_rJH6k8RDY4cHb9fC": {
-   "lineage": "upstream_item_join",
-   "method": null,
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
    "officialCode": "5.3.1",
    "officialCodes": [
     "5.3.1"
    ],
    "officialId": null,
    "score": null,
-   "tier": null,
+   "tier": "J4_name_phrase_identity",
    "unit": null,
-   "via": "R1"
+   "via": "REJOIN-1:gate-1"
   },
   "spcpt_rYSZgBk5RQf7QTrj": {
    "lineage": "upstream_item_join",
@@ -15774,17 +15731,17 @@
    "via": "R1"
   },
   "spcpt_xDqvKZX9TyDBmhm4": {
-   "lineage": "upstream_item_join",
-   "method": null,
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
    "officialCode": "1.1.1",
    "officialCodes": [
     "1.1.1"
    ],
    "officialId": null,
    "score": null,
-   "tier": null,
+   "tier": "J3_name_text_identity",
    "unit": null,
-   "via": "R1"
+   "via": "REJOIN-1:gate-1"
   },
   "spcpt_y7js6MK5GzTkV7c5": {
    "lineage": "upstream_item_join",

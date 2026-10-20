@@ -24,12 +24,12 @@
   "title": "Compression",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/1-data-representation/data-storage-and-compression/compression",
   "specPointIds": [
-   "1.3.3",
-   "1.3.4"
+   "1.3.4",
+   "1.3.3"
   ],
   "specPointCodes": [
-   "1.3.3",
-   "1.3.4"
+   "1.3.4",
+   "1.3.3"
   ],
   "guidedStudy": false,
   "path": "1-data-representation/data-storage-and-compression/compression.md",
@@ -124,8 +124,12 @@
   "noteId": "rn_DzzVjDCzxdB7r6ky",
   "title": "Converting Between Binary & Denary",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/1-data-representation/number-systems/converting-between-binary-and-denary",
-  "specPointIds": [],
-  "specPointCodes": [],
+  "specPointIds": [
+   "1.1.2"
+  ],
+  "specPointCodes": [
+   "1.1.2"
+  ],
   "guidedStudy": false,
   "path": "1-data-representation/number-systems/converting-between-binary-and-denary.md",
   "sectionSlug": "1-data-representation",
@@ -141,8 +145,12 @@
   "noteId": "rn_smNP7xpYBRzcDfMY",
   "title": "Converting Between Hexadecimal & Binary",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/1-data-representation/number-systems/converting-between-hexadecimal-and-binary",
-  "specPointIds": [],
-  "specPointCodes": [],
+  "specPointIds": [
+   "1.1.2"
+  ],
+  "specPointCodes": [
+   "1.1.2"
+  ],
   "guidedStudy": false,
   "path": "1-data-representation/number-systems/converting-between-hexadecimal-and-binary.md",
   "sectionSlug": "1-data-representation",
@@ -158,8 +166,12 @@
   "noteId": "rn_384NpCXbr4q38bXJ",
   "title": "Converting Between Hexadecimal & Denary",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/1-data-representation/number-systems/converting-between-hexadecimal-and-denary",
-  "specPointIds": [],
-  "specPointCodes": [],
+  "specPointIds": [
+   "1.1.2"
+  ],
+  "specPointCodes": [
+   "1.1.2"
+  ],
   "guidedStudy": false,
   "path": "1-data-representation/number-systems/converting-between-hexadecimal-and-denary.md",
   "sectionSlug": "1-data-representation",
@@ -176,16 +188,16 @@
   "title": "Number Systems",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/1-data-representation/number-systems/number-systems",
   "specPointIds": [
-   "1.1.1",
    "1.1.2",
+   "1.1.1",
    "1.1.3",
    "1.1.4",
    "1.1.5",
    "1.1.6"
   ],
   "specPointCodes": [
-   "1.1.1",
    "1.1.2",
+   "1.1.1",
    "1.1.3",
    "1.1.4",
    "1.1.5",
@@ -196,7 +208,7 @@
   "sectionSlug": "1-data-representation",
   "topicSlug": "number-systems",
   "updatedAt": "2025-05-06T13:37:28.623Z",
-  "bodyMd": "\n# Number Systems\n\n## The Denary, Binary & Hexadecimal Number Systems\n\n> **Spec point** — `spcpt_7zRFHH6R7bQSwk2j` · 2 (a) Understand the denary, binary and hexadecimal number systems\n\n## The Denary, Binary & Hexadecimal Number Systems\n\n> **Exam Hint**\n> *All conversions here are capped at 16 bits because that’s Cambridge’s limit. No distractions, just the format you’ll see in Paper 1.*\n\n### What is denary?\n\n- Denary is a number system that is made up of **10 digits (0-9)**\n- Denary is referred to as a **base-10** number system\n- Each digit has a weight factor of **10 raised to a power**, the rightmost digit is 1s (10<sup>0</sup>), the next digit to the left 10s (10<sup>1</sup>) and so on\n- Humans use the denary system for **counting**, **measuring **and **performing maths calculations**\n- Using combinations of the 10 digits we can represent any number\n\n![Diagram showing denary number 3268 with column headings](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/0fe5f77210f74aaeb3f6c491dfe0263d12db738c/SME-RevisionNotes/cie-igcse-computer-science-23/assets/238337de4a3a-1-1-number-systems-number-systems-1-ib-computer-.webp)\n\n- In this example, (3 x 1000) + (2 x 100) + (6 x 10) + (8 x 1) = 3268\n- To represent a bigger number we **add more digits**\n\n### What is binary?\n\n- Binary is a number system that is made up of **two digits (1 and 0) **\n- Binary is referred to as a **base-2** number system\n- Each digit has a weight factor of **2 raised to a power**, the rightmost digit is 1s (2<sup>0</sup>), the next digit to the left 2s (2<sup>1</sup>) and so on\n- Each time a new digit is added, the **column value is multiplied by 2**\n- Using **combinations of the 2 digits** we can represent any number\n\n![Diagram showing binary 1101 using binary column headings](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/0fe5f77210f74aaeb3f6c491dfe0263d12db738c/SME-RevisionNotes/cie-igcse-computer-science-23/assets/00b3873a5486-ucirlnb9-1-1-number-systems-number-systems-2-ib-.webp)\n\n- In this example, **Binary 1100** = **(1 x 8) + (1 x 4) = 12**\n- To represent bigger numbers we add more **b**inary dig**its** (bits)\n\n| 32,768 | 16,384 | 8,192 | 4,096 | 2,048 | 1,024 | 512 | 256 | **128** | **64** | **32** | **16** | **8** | **4** | **2** | **1** |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| 2<sup>15</sup> | 2<sup>14</sup> | 2<sup>13</sup> | 2<sup>12</sup> | 2<sup>11</sup> | 2<sup>10</sup> | 2<sup>9</sup> | 2<sup>8</sup> | 2<sup>7</sup> | 2<sup>6</sup> | 2<sup>5</sup> | 2<sup>4</sup> | 2<sup>3</sup> | 2<sup>2</sup> | 2<sup>1</sup> | 2<sup>0</sup> |\n\n> **Exam Hint**\n> *The largest denary number that can be represented using 16 bits is:*\n> \n> - *  65,535 (Binary 1111111111111111)*\n\n### What is hexadecimal?\n\n- Hexadecimal is a number system that is made up of **16 digits**, 10 numbers (**0-9**) and 6 letters (**A-F**)\n\n| **0** | **1** | **2** | **3** | **4** | **5** | **6** | **7** | **8** | **9** | **10** | **11** | **12** | **13** | **14** | **15** |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| **0** | **1** | **2** | **3** | **4** | **5** | **6** | **7** | **8** | **9** | **A** | **B** | **C** | **D** | **E** | **F** |\n\n- Hexadecimal is referred to as a **base-16** number system\n- Each digit has a weight factor of **16 raised to a power**, the rightmost digit is 1s (16^0), the next digit to the left 16s (16^1)\n- In GCSE you are required to work with up to and including** 2 digit hexadecimal** values\n\n| **16s** | **1s** |   |\n|---|---|---|\n| **1** | **3** |   |\n| 1 x16 | 3 x 1 | = 19 |\n\n- A quick comparison table demonstrates a **relationship **between **hexadecimal and a binary *****nibble***\n- One hexadecimal digit can represent **four bits** of binary data\n\n> **Exam Hint**\n> *You must be able to convert binary to hex and back using nibbles. Write out the hex digits (0–F) during the exam to avoid confusion—it’s a top tip that examiners mention every year.*\n\n| **Denary** | **Binary** | **Hexadecimal** |\n|---|---|---|\n| 0 | *0000* | **0** |\n| 1 | *0001* | **1** |\n| 2 | *0010* | **2** |\n| 3 | *0011* | **3** |\n| 4 | *0100* | **4** |\n| 5 | *0101* | **5** |\n| 6 | *0110* | **6** |\n| 7 | *0111* | **7** |\n| 8 | *1000* | **8** |\n| 9 | *1001* | **9** |\n| 10 | *1010* | **A** |\n| 11 | *1011* | **B** |\n| 12 | *1100* | **C** |\n| 13 | *1101* | **D** |\n| 14 | *1110* | **E** |\n| 15 | *1111* | **F** |\n",
+  "bodyMd": "\n# Number Systems\n\n## The Denary, Binary & Hexadecimal Number Systems\n\n> **Spec point** — `1.1.2` · 2 (a) Understand the denary, binary and hexadecimal number systems\n\n## The Denary, Binary & Hexadecimal Number Systems\n\n> **Exam Hint**\n> *All conversions here are capped at 16 bits because that’s Cambridge’s limit. No distractions, just the format you’ll see in Paper 1.*\n\n### What is denary?\n\n- Denary is a number system that is made up of **10 digits (0-9)**\n- Denary is referred to as a **base-10** number system\n- Each digit has a weight factor of **10 raised to a power**, the rightmost digit is 1s (10<sup>0</sup>), the next digit to the left 10s (10<sup>1</sup>) and so on\n- Humans use the denary system for **counting**, **measuring **and **performing maths calculations**\n- Using combinations of the 10 digits we can represent any number\n\n![Diagram showing denary number 3268 with column headings](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/0fe5f77210f74aaeb3f6c491dfe0263d12db738c/SME-RevisionNotes/cie-igcse-computer-science-23/assets/238337de4a3a-1-1-number-systems-number-systems-1-ib-computer-.webp)\n\n- In this example, (3 x 1000) + (2 x 100) + (6 x 10) + (8 x 1) = 3268\n- To represent a bigger number we **add more digits**\n\n### What is binary?\n\n- Binary is a number system that is made up of **two digits (1 and 0) **\n- Binary is referred to as a **base-2** number system\n- Each digit has a weight factor of **2 raised to a power**, the rightmost digit is 1s (2<sup>0</sup>), the next digit to the left 2s (2<sup>1</sup>) and so on\n- Each time a new digit is added, the **column value is multiplied by 2**\n- Using **combinations of the 2 digits** we can represent any number\n\n![Diagram showing binary 1101 using binary column headings](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/0fe5f77210f74aaeb3f6c491dfe0263d12db738c/SME-RevisionNotes/cie-igcse-computer-science-23/assets/00b3873a5486-ucirlnb9-1-1-number-systems-number-systems-2-ib-.webp)\n\n- In this example, **Binary 1100** = **(1 x 8) + (1 x 4) = 12**\n- To represent bigger numbers we add more **b**inary dig**its** (bits)\n\n| 32,768 | 16,384 | 8,192 | 4,096 | 2,048 | 1,024 | 512 | 256 | **128** | **64** | **32** | **16** | **8** | **4** | **2** | **1** |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| 2<sup>15</sup> | 2<sup>14</sup> | 2<sup>13</sup> | 2<sup>12</sup> | 2<sup>11</sup> | 2<sup>10</sup> | 2<sup>9</sup> | 2<sup>8</sup> | 2<sup>7</sup> | 2<sup>6</sup> | 2<sup>5</sup> | 2<sup>4</sup> | 2<sup>3</sup> | 2<sup>2</sup> | 2<sup>1</sup> | 2<sup>0</sup> |\n\n> **Exam Hint**\n> *The largest denary number that can be represented using 16 bits is:*\n> \n> - *  65,535 (Binary 1111111111111111)*\n\n### What is hexadecimal?\n\n- Hexadecimal is a number system that is made up of **16 digits**, 10 numbers (**0-9**) and 6 letters (**A-F**)\n\n| **0** | **1** | **2** | **3** | **4** | **5** | **6** | **7** | **8** | **9** | **10** | **11** | **12** | **13** | **14** | **15** |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| **0** | **1** | **2** | **3** | **4** | **5** | **6** | **7** | **8** | **9** | **A** | **B** | **C** | **D** | **E** | **F** |\n\n- Hexadecimal is referred to as a **base-16** number system\n- Each digit has a weight factor of **16 raised to a power**, the rightmost digit is 1s (16^0), the next digit to the left 16s (16^1)\n- In GCSE you are required to work with up to and including** 2 digit hexadecimal** values\n\n| **16s** | **1s** |   |\n|---|---|---|\n| **1** | **3** |   |\n| 1 x16 | 3 x 1 | = 19 |\n\n- A quick comparison table demonstrates a **relationship **between **hexadecimal and a binary *****nibble***\n- One hexadecimal digit can represent **four bits** of binary data\n\n> **Exam Hint**\n> *You must be able to convert binary to hex and back using nibbles. Write out the hex digits (0–F) during the exam to avoid confusion—it’s a top tip that examiners mention every year.*\n\n| **Denary** | **Binary** | **Hexadecimal** |\n|---|---|---|\n| 0 | *0000* | **0** |\n| 1 | *0001* | **1** |\n| 2 | *0010* | **2** |\n| 3 | *0011* | **3** |\n| 4 | *0100* | **4** |\n| 5 | *0101* | **5** |\n| 6 | *0110* | **6** |\n| 7 | *0111* | **7** |\n| 8 | *1000* | **8** |\n| 9 | *1001* | **9** |\n| 10 | *1010* | **A** |\n| 11 | *1011* | **B** |\n| 12 | *1100* | **C** |\n| 13 | *1101* | **D** |\n| 14 | *1110* | **E** |\n| 15 | *1111* | **F** |\n",
   "smeSpecPointIds": [
    "spcpt_7zRFHH6R7bQSwk2j"
   ]
@@ -431,8 +443,12 @@
   "noteId": "rn_Qvg8vXCv28MMmp3k",
   "title": "Data Transmission",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/2-data-transmission/types-and-methods-of-data-transmission/data-transmission",
-  "specPointIds": [],
-  "specPointCodes": [],
+  "specPointIds": [
+   "2.1.2"
+  ],
+  "specPointCodes": [
+   "2.1.2"
+  ],
   "guidedStudy": false,
   "path": "2-data-transmission/types-and-methods-of-data-transmission/data-transmission.md",
   "sectionSlug": "2-data-transmission",
@@ -576,14 +592,18 @@
   "noteId": "rn_F2WzJFdxKvCD4YRm",
   "title": "Von Neumann Architecture",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/3-hardware/computer-architecture/von-neumann-architecture",
-  "specPointIds": [],
-  "specPointCodes": [],
+  "specPointIds": [
+   "3.1.2"
+  ],
+  "specPointCodes": [
+   "3.1.2"
+  ],
   "guidedStudy": false,
   "path": "3-hardware/computer-architecture/von-neumann-architecture.md",
   "sectionSlug": "3-hardware",
   "topicSlug": "computer-architecture",
   "updatedAt": "2025-11-28T06:08:34.389Z",
-  "bodyMd": "\n# Von Neumann Architecture\n\n## Von Neumann Architecture\n\n> **Spec point** — `spcpt_5M6QcjK4xvy9R62Y` · \"2 (a) Understand the purpose of the components\nin a CPU, in a computer that has a\nVon Neumann architecture\"\n\n## Von Neumann Architecture\n\n### What is the Von Neumann architecture?\n\n> **Exam Hint**\n> Cambridge IGCSE 0478 regularly tests your ability to describe the purpose of CPU components and registers in the Von Neumann architecture. Every explanation on this page is written in the format examiners expect—no waffle, no brand names, just mark-ready definitions.\n\n- The Von Neumann Architecture is a design of the CPU which was proposed by Mathematician John Von Neumann in the 1940s, which most general-purpose computers are built upon\n- The Von Neumann Architecture outlines how the computer memory, input/output devices and processor all work together\n\n![The Von-Neumann-architecture](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/0fe5f77210f74aaeb3f6c491dfe0263d12db738c/SME-RevisionNotes/cie-igcse-computer-science-23/assets/4636334e5658-von-neumann-architecture.png)\n\n*The Von-Neumann architecture*\n\n- The Von Neumann architecture consists of:\n\n  - **Control unit (CU)**\n  - **Arithmetic logic unit (ALU)**\n  - **Registers**\n  - **Buses**\n\n### What is the function of each component?\n\n#### Arithmetic logic unit (ALU)\n\n- Performs ***arithmetic*** operations\n- Performs ***logical*** decisions\n\n  - IF X > 5 THEN\n        DO ……….\n\n#### Control unit (CU)\n\n- **Coordinates how data moves around the CPU** by sending a signal to control the movement of the data\n- **Decodes the instructions** fetched from memory\n\n#### Registers\n\n- Extremely **small**, extremely **fast memory **located **in the CPU**\n- Hold small amounts of data **needed as part of the fetch-execute cycle**\n- Each register has its own specific purpose\n- It consists of 5 main registers\n\n  - **The Program Counter (PC)**\n  - **The Memory Address Register (MAR)**\n  - **The Memory Data Register (MDR)**\n  - **The Accumulator (ACC)**\n  - **Current Instruction Register (CIR)**\n- For each of the registers you must know\n\n  - **The name of the register**\n  - **Its acronym**\n  - **The purpose of the register**\n\n> **Exam Hint**\n> *When describing registers like the ****PC****, ****MAR****, or ****MDR****, don’t just name what they “store”, you must also explain ****why**** they store it and ****how it’s used in the fetch-execute cycle****. The how is where marks are gained or lost.*\n\n| **Name** | Acronym | **Purpose** |\n|---|---|---|\n| **Program Counter ** | **PC** | - **Holds the** **memory address** of the **next instructions** to be executed<br>- **Increments** **by 1 **as the fetch-decode-execute cycle runs |\n| **Memory Address  Register** | **MAR** | - **Holds the memory address** of where data or instructions are **to be fetched from** **memory** |\n| **Memory Data Register** | **MDR** | - **Stores the data or instruction** which has been fetched from memory |\n| **Current Instruction Register** | **CIR** | - **Stores the instruction** the CPU is currently decoding or executing |\n| **Accumulator** | **ACC** | - **Stores the** **results** of any calculations that have taken place in the Arithmetic Logic Unit (ALU) |\n\n> **Exam Hint**\n> *To earn both marks for a register question, use this structure:*\n> \n> *“[****Register****] holds [****what****], which is used to [****why/how it's used****].”*\n> \n> *Example: “The MAR holds the memory address of data to be fetched, which is sent via the address bus.”*\n\n#### Buses\n\n- Components within the CPU and wider computer system are connected by buses\n- A bus is **a set of parallel wires **through which **data/signals are transmitted** from one component to another\n- There are 3 types of bus:\n\n  - **Address **- ***unidirectional***, carries **location data** (addresses), data is written to/read from\n  - **Data **- ***bidirectional***, carries** data or instructions**\n  - **Control **- bidirectional, carries **commands **and **control signals** to tell components when they should be receiving reads or writes etc.**.**\n\n![3-1-computer-architecture--von-neumann-architecture-1](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/0fe5f77210f74aaeb3f6c491dfe0263d12db738c/SME-RevisionNotes/cie-igcse-computer-science-23/assets/e6607eb2bc67-3-1-computer-architecture-von-neumann-architectu.png)\n\n> **Exam Hint**\n> *Students often confuse the ****data**** and ****address**** bus. Remember: the ****address bus**** only carries memory locations (it’s ****unidirectional****), while the ****data bus**** carries actual data or instructions (it’s ****bidirectional****).*\n\n> **Worked Example**\n> Describe the role of the control unit, the control bus, the data bus and the address bus when fetching an instruction from memory **[4]**\n> \n> **Answer**\n> \n> - **The address of memory (holding instruction) is placed on the address bus ****(1)**\n> - **The control unit sends a signal ****(1)**** on the control bus (to start a read operation)**** (1)**\n> - **The instruction is/the contents of the memory are placed on the data bus ****(1)**\n",
+  "bodyMd": "\n# Von Neumann Architecture\n\n## Von Neumann Architecture\n\n> **Spec point** — `3.1.2` · \"2 (a) Understand the purpose of the components\nin a CPU, in a computer that has a\nVon Neumann architecture\"\n\n## Von Neumann Architecture\n\n### What is the Von Neumann architecture?\n\n> **Exam Hint**\n> Cambridge IGCSE 0478 regularly tests your ability to describe the purpose of CPU components and registers in the Von Neumann architecture. Every explanation on this page is written in the format examiners expect—no waffle, no brand names, just mark-ready definitions.\n\n- The Von Neumann Architecture is a design of the CPU which was proposed by Mathematician John Von Neumann in the 1940s, which most general-purpose computers are built upon\n- The Von Neumann Architecture outlines how the computer memory, input/output devices and processor all work together\n\n![The Von-Neumann-architecture](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/0fe5f77210f74aaeb3f6c491dfe0263d12db738c/SME-RevisionNotes/cie-igcse-computer-science-23/assets/4636334e5658-von-neumann-architecture.png)\n\n*The Von-Neumann architecture*\n\n- The Von Neumann architecture consists of:\n\n  - **Control unit (CU)**\n  - **Arithmetic logic unit (ALU)**\n  - **Registers**\n  - **Buses**\n\n### What is the function of each component?\n\n#### Arithmetic logic unit (ALU)\n\n- Performs ***arithmetic*** operations\n- Performs ***logical*** decisions\n\n  - IF X > 5 THEN\n        DO ……….\n\n#### Control unit (CU)\n\n- **Coordinates how data moves around the CPU** by sending a signal to control the movement of the data\n- **Decodes the instructions** fetched from memory\n\n#### Registers\n\n- Extremely **small**, extremely **fast memory **located **in the CPU**\n- Hold small amounts of data **needed as part of the fetch-execute cycle**\n- Each register has its own specific purpose\n- It consists of 5 main registers\n\n  - **The Program Counter (PC)**\n  - **The Memory Address Register (MAR)**\n  - **The Memory Data Register (MDR)**\n  - **The Accumulator (ACC)**\n  - **Current Instruction Register (CIR)**\n- For each of the registers you must know\n\n  - **The name of the register**\n  - **Its acronym**\n  - **The purpose of the register**\n\n> **Exam Hint**\n> *When describing registers like the ****PC****, ****MAR****, or ****MDR****, don’t just name what they “store”, you must also explain ****why**** they store it and ****how it’s used in the fetch-execute cycle****. The how is where marks are gained or lost.*\n\n| **Name** | Acronym | **Purpose** |\n|---|---|---|\n| **Program Counter ** | **PC** | - **Holds the** **memory address** of the **next instructions** to be executed<br>- **Increments** **by 1 **as the fetch-decode-execute cycle runs |\n| **Memory Address  Register** | **MAR** | - **Holds the memory address** of where data or instructions are **to be fetched from** **memory** |\n| **Memory Data Register** | **MDR** | - **Stores the data or instruction** which has been fetched from memory |\n| **Current Instruction Register** | **CIR** | - **Stores the instruction** the CPU is currently decoding or executing |\n| **Accumulator** | **ACC** | - **Stores the** **results** of any calculations that have taken place in the Arithmetic Logic Unit (ALU) |\n\n> **Exam Hint**\n> *To earn both marks for a register question, use this structure:*\n> \n> *“[****Register****] holds [****what****], which is used to [****why/how it's used****].”*\n> \n> *Example: “The MAR holds the memory address of data to be fetched, which is sent via the address bus.”*\n\n#### Buses\n\n- Components within the CPU and wider computer system are connected by buses\n- A bus is **a set of parallel wires **through which **data/signals are transmitted** from one component to another\n- There are 3 types of bus:\n\n  - **Address **- ***unidirectional***, carries **location data** (addresses), data is written to/read from\n  - **Data **- ***bidirectional***, carries** data or instructions**\n  - **Control **- bidirectional, carries **commands **and **control signals** to tell components when they should be receiving reads or writes etc.**.**\n\n![3-1-computer-architecture--von-neumann-architecture-1](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/0fe5f77210f74aaeb3f6c491dfe0263d12db738c/SME-RevisionNotes/cie-igcse-computer-science-23/assets/e6607eb2bc67-3-1-computer-architecture-von-neumann-architectu.png)\n\n> **Exam Hint**\n> *Students often confuse the ****data**** and ****address**** bus. Remember: the ****address bus**** only carries memory locations (it’s ****unidirectional****), while the ****data bus**** carries actual data or instructions (it’s ****bidirectional****).*\n\n> **Worked Example**\n> Describe the role of the control unit, the control bus, the data bus and the address bus when fetching an instruction from memory **[4]**\n> \n> **Answer**\n> \n> - **The address of memory (holding instruction) is placed on the address bus ****(1)**\n> - **The control unit sends a signal ****(1)**** on the control bus (to start a read operation)**** (1)**\n> - **The instruction is/the contents of the memory are placed on the data bus ****(1)**\n",
   "smeSpecPointIds": [
    "spcpt_5M6QcjK4xvy9R62Y"
   ]
@@ -593,12 +613,12 @@
   "title": "Cloud Storage",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/3-hardware/data-storage/cloud-storage",
   "specPointIds": [
-   "3.3.5",
-   "3.3.6"
+   "3.3.6",
+   "3.3.5"
   ],
   "specPointCodes": [
-   "3.3.5",
-   "3.3.6"
+   "3.3.6",
+   "3.3.5"
   ],
   "guidedStudy": false,
   "path": "3-hardware/data-storage/cloud-storage.md",
@@ -638,12 +658,12 @@
   "title": "Secondary Storage",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/3-hardware/data-storage/secondary-storage",
   "specPointIds": [
-   "3.3.3",
-   "3.3.2"
+   "3.3.2",
+   "3.3.3"
   ],
   "specPointCodes": [
-   "3.3.3",
-   "3.3.2"
+   "3.3.2",
+   "3.3.3"
   ],
   "guidedStudy": false,
   "path": "3-hardware/data-storage/secondary-storage.md",
@@ -722,8 +742,12 @@
   "noteId": "rn_gb4kBtpCFMYhnsng",
   "title": "Sensors",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/3-hardware/input-and-output-devices/sensors",
-  "specPointIds": [],
-  "specPointCodes": [],
+  "specPointIds": [
+   "3.2.3"
+  ],
+  "specPointCodes": [
+   "3.2.3"
+  ],
   "guidedStudy": false,
   "path": "3-hardware/input-and-output-devices/sensors.md",
   "sectionSlug": "3-hardware",
@@ -739,9 +763,11 @@
   "title": "MAC Addresses & IP Addresses",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/3-hardware/network-hardware/mac-addresses-and-ip-addresses",
   "specPointIds": [
+   "3.4.3",
    "3.4.2"
   ],
   "specPointCodes": [
+   "3.4.3",
    "3.4.2"
   ],
   "guidedStudy": false,
@@ -860,8 +886,12 @@
   "noteId": "rn_tMWTqWNMZxb3kHdp",
   "title": "Translators, Compilers & Interpreters",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/4-software/types-of-programming-language-translators-and-ides/translators-compilers-and-interpreters",
-  "specPointIds": [],
-  "specPointCodes": [],
+  "specPointIds": [
+   "4.2.3"
+  ],
+  "specPointCodes": [
+   "4.2.3"
+  ],
   "guidedStudy": false,
   "path": "4-software/types-of-programming-language-translators-and-ides/translators-compilers-and-interpreters.md",
   "sectionSlug": "4-software",
@@ -1020,12 +1050,12 @@
   "title": "Digital Currency",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/5-the-internet-and-its-uses/digital-currency/digital-currency",
   "specPointIds": [
-   "5.2.1",
-   "5.2.2"
+   "5.2.2",
+   "5.2.1"
   ],
   "specPointCodes": [
-   "5.2.1",
-   "5.2.2"
+   "5.2.2",
+   "5.2.1"
   ],
   "guidedStudy": false,
   "path": "5-the-internet-and-its-uses/digital-currency/digital-currency.md",
@@ -1102,8 +1132,12 @@
   "noteId": "rn_m7xkCmR7CxHhs3nT",
   "title": "Web Browser",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/5-the-internet-and-its-uses/the-internet-and-the-world-wide-web/web-browser",
-  "specPointIds": [],
-  "specPointCodes": [],
+  "specPointIds": [
+   "5.1.5"
+  ],
+  "specPointCodes": [
+   "5.1.5"
+  ],
   "guidedStudy": false,
   "path": "5-the-internet-and-its-uses/the-internet-and-the-world-wide-web/web-browser.md",
   "sectionSlug": "5-the-internet-and-its-uses",
@@ -1119,10 +1153,12 @@
   "title": "Web Pages",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/5-the-internet-and-its-uses/the-internet-and-the-world-wide-web/web-pages",
   "specPointIds": [
-   "5.1.2"
+   "5.1.2",
+   "5.1.5"
   ],
   "specPointCodes": [
-   "5.1.2"
+   "5.1.2",
+   "5.1.5"
   ],
   "guidedStudy": false,
   "path": "5-the-internet-and-its-uses/the-internet-and-the-world-wide-web/web-pages.md",
@@ -1143,14 +1179,14 @@
   "title": "Artificial Intelligence (AI)",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/6-automated-and-emerging-technologies/artificial-intelligence/artificial-intelligence-ai",
   "specPointIds": [
-   "6.3.3",
    "6.3.1",
-   "6.3.2"
+   "6.3.2",
+   "6.3.3"
   ],
   "specPointCodes": [
-   "6.3.3",
    "6.3.1",
-   "6.3.2"
+   "6.3.2",
+   "6.3.3"
   ],
   "guidedStudy": false,
   "path": "6-automated-and-emerging-technologies/artificial-intelligence/artificial-intelligence-ai.md",
@@ -1170,12 +1206,12 @@
   "title": "Automated Systems",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/6-automated-and-emerging-technologies/automated-systems/automated-systems",
   "specPointIds": [
-   "6.1.2",
-   "6.1.1"
+   "6.1.1",
+   "6.1.2"
   ],
   "specPointCodes": [
-   "6.1.2",
-   "6.1.1"
+   "6.1.1",
+   "6.1.2"
   ],
   "guidedStudy": false,
   "path": "6-automated-and-emerging-technologies/automated-systems/automated-systems.md",
@@ -1193,19 +1229,21 @@
   "title": "Robotics",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/6-automated-and-emerging-technologies/robotics/robotics",
   "specPointIds": [
-   "6.2.3",
-   "6.2.2"
+   "6.2.1",
+   "6.2.2",
+   "6.2.3"
   ],
   "specPointCodes": [
-   "6.2.3",
-   "6.2.2"
+   "6.2.1",
+   "6.2.2",
+   "6.2.3"
   ],
   "guidedStudy": false,
   "path": "6-automated-and-emerging-technologies/robotics/robotics.md",
   "sectionSlug": "6-automated-and-emerging-technologies",
   "topicSlug": "robotics",
   "updatedAt": "2025-11-13T09:11:06.449Z",
-  "bodyMd": "\n# Robotics\n\n## Robotics\n\n> **Spec point** — `spcpt_2H3W7jyVbp8DhMCW` · 1 Understand what is meant by robotic\n\n## Robotics\n\n## What is robotics?\n\n- Robotics is the principle of a robot **carrying out a task** by **following a precise set of programmed instructions**\n- Robots can be categorised into **two **groups:\n\n| **Dumb robots** | **Smart robots** |\n|---|---|\n| Repeat the same programmed instructions over and over again (**no AI**) | Carries out more complex tasks and can adapt and learn (**AI**) |\n| E.g. Car assembly line | E.g. Assisting surgeons in delicate procedures |\n\n- The development of artificial intelligence, including the increased use of machine learning and robotics raises **ethical **and **legal **issues such as:\n\n  - **Accountability**\n  - **Safety**\n  - **Algorithmic bias**\n  - **Legal liability**\n\n## Characteristics of a Robot\n\n> **Spec point** — `6.2.2` · 2 Describe the characteristics of a robot\n\n## Characteristics of a Robot\n\n### What are the characteristics of a robot?\n\n- Robots share **three **common characteristics:\n\n  - **Mechanical structure**\n  - **Electrical components**\n  - **Programmable**\n\n| **Mechanical structure** | **Electrical components** | **Programmable** |\n|---|---|---|\n| A physical body that can move and interact with the environment | Sensors, microprocessors and actuators | Designed to follow a precise set of instructions |\n\n## The Role of Robots\n\n> **Spec point** — `6.2.3` · \"3 Understand the roles that robots can perform\nand describe the advantages and disadvantages\nof their use\"\n\n## The Role of Robots\n\n### What is the role of robots?\n\n- Robots play a crucial role in many areas such as:\n\n| **Scenario** | **Role** | **Advantages** | **Disadvantages** |\n|---|---|---|---|\n| **Industry** | Quality inspector | Advanced vision to inspect products for defects, improving quality control | May not work on defects that might require human judgement |\n| **Transport** | Warehouse worker | Efficiency in finding, moving and packing, less reliable on manual labour | High infrastructure costs and potential safety concerns for human workers sharing the same space |\n| **Agriculture** | Planting & seeding machine | Precise planting (optimum depths and distances) | High upfront costs, may struggle with uneven terrain and changing weather conditions |\n| **Medicine** | Rehabilitation therapist | Personalised physical therapy exercises to aid recovery | Doesn't provide emotional support |\n| **Domestic** | Sous chef | Assists with meal prep by doing basic duties (chopping, measuring and following basic recipes) | Limited ability and capabilities |\n| **Entertainment** | Educational robot | Interactive learning experiences for children, increased engagement | High cost, cannot replace the guidance of human teachers |\n\n> **Worked Example**\n> A company uses robots in its factory to manufacture restaurant tables and chairs\n> \n> (i) One characteristic of a robot is that they contain electrical components.\n> \n> **State **two other characteristics of a robot.\n> \n> **[2] **\n> \n> (ii) Give **two advantages **to company **employees **of using robots to manufacture tables and chairs.\n> \n> **[2] **\n> \n> (ii) Give **one disadvantage** to the company’s owners of using robots to manufacture table and chairs\n> \n> **[1]**\n> \n> **Answers**\n> \n> (i)\n> \n> - **Mechanical structure**\n> - **Programmable**\n> \n> (ii)\n> \n> - **Employees don't need to lift heavy items**\n> - **Employees can be protected from dangerous tasks**\n> - **Employees can utilise their skills in other tasks**\n> - **Employees don’t need to perform repetitive/mundane tasks**\n> \n> (iii)\n> \n> - **Expensive to install/purchase/setup**\n> - **High ongoing costs/maintenance costs**\n> - **May deskill the workforce**\n> - **If they malfunction, production may stop**\n",
+  "bodyMd": "\n# Robotics\n\n## Robotics\n\n> **Spec point** — `6.2.1` · 1 Understand what is meant by robotic\n\n## Robotics\n\n## What is robotics?\n\n- Robotics is the principle of a robot **carrying out a task** by **following a precise set of programmed instructions**\n- Robots can be categorised into **two **groups:\n\n| **Dumb robots** | **Smart robots** |\n|---|---|\n| Repeat the same programmed instructions over and over again (**no AI**) | Carries out more complex tasks and can adapt and learn (**AI**) |\n| E.g. Car assembly line | E.g. Assisting surgeons in delicate procedures |\n\n- The development of artificial intelligence, including the increased use of machine learning and robotics raises **ethical **and **legal **issues such as:\n\n  - **Accountability**\n  - **Safety**\n  - **Algorithmic bias**\n  - **Legal liability**\n\n## Characteristics of a Robot\n\n> **Spec point** — `6.2.2` · 2 Describe the characteristics of a robot\n\n## Characteristics of a Robot\n\n### What are the characteristics of a robot?\n\n- Robots share **three **common characteristics:\n\n  - **Mechanical structure**\n  - **Electrical components**\n  - **Programmable**\n\n| **Mechanical structure** | **Electrical components** | **Programmable** |\n|---|---|---|\n| A physical body that can move and interact with the environment | Sensors, microprocessors and actuators | Designed to follow a precise set of instructions |\n\n## The Role of Robots\n\n> **Spec point** — `6.2.3` · \"3 Understand the roles that robots can perform\nand describe the advantages and disadvantages\nof their use\"\n\n## The Role of Robots\n\n### What is the role of robots?\n\n- Robots play a crucial role in many areas such as:\n\n| **Scenario** | **Role** | **Advantages** | **Disadvantages** |\n|---|---|---|---|\n| **Industry** | Quality inspector | Advanced vision to inspect products for defects, improving quality control | May not work on defects that might require human judgement |\n| **Transport** | Warehouse worker | Efficiency in finding, moving and packing, less reliable on manual labour | High infrastructure costs and potential safety concerns for human workers sharing the same space |\n| **Agriculture** | Planting & seeding machine | Precise planting (optimum depths and distances) | High upfront costs, may struggle with uneven terrain and changing weather conditions |\n| **Medicine** | Rehabilitation therapist | Personalised physical therapy exercises to aid recovery | Doesn't provide emotional support |\n| **Domestic** | Sous chef | Assists with meal prep by doing basic duties (chopping, measuring and following basic recipes) | Limited ability and capabilities |\n| **Entertainment** | Educational robot | Interactive learning experiences for children, increased engagement | High cost, cannot replace the guidance of human teachers |\n\n> **Worked Example**\n> A company uses robots in its factory to manufacture restaurant tables and chairs\n> \n> (i) One characteristic of a robot is that they contain electrical components.\n> \n> **State **two other characteristics of a robot.\n> \n> **[2] **\n> \n> (ii) Give **two advantages **to company **employees **of using robots to manufacture tables and chairs.\n> \n> **[2] **\n> \n> (ii) Give **one disadvantage** to the company’s owners of using robots to manufacture table and chairs\n> \n> **[1]**\n> \n> **Answers**\n> \n> (i)\n> \n> - **Mechanical structure**\n> - **Programmable**\n> \n> (ii)\n> \n> - **Employees don't need to lift heavy items**\n> - **Employees can be protected from dangerous tasks**\n> - **Employees can utilise their skills in other tasks**\n> - **Employees don’t need to perform repetitive/mundane tasks**\n> \n> (iii)\n> \n> - **Expensive to install/purchase/setup**\n> - **High ongoing costs/maintenance costs**\n> - **May deskill the workforce**\n> - **If they malfunction, production may stop**\n",
   "smeSpecPointIds": [
    "spcpt_2H3W7jyVbp8DhMCW",
    "spcpt_hrtqX2Fmm5xRVbS8",
@@ -1425,8 +1463,12 @@
   "noteId": "rn_73mKxFyPvcjk2zKw",
   "title": "Validation & Verification",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/7-algorithm-design-and-problem-solving/validation-and-verification/validation-and-verification",
-  "specPointIds": [],
-  "specPointCodes": [],
+  "specPointIds": [
+   "6.3.5"
+  ],
+  "specPointCodes": [
+   "6.3.5"
+  ],
   "guidedStudy": false,
   "path": "7-algorithm-design-and-problem-solving/validation-and-verification/validation-and-verification.md",
   "sectionSlug": "7-algorithm-design-and-problem-solving",
@@ -1468,12 +1510,12 @@
   "title": "File Handling",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/8-programming/file-handling/file-handling",
   "specPointIds": [
-   "8.3.1",
-   "8.3.2"
+   "8.3.2",
+   "8.3.1"
   ],
   "specPointCodes": [
-   "8.3.1",
-   "8.3.2"
+   "8.3.2",
+   "8.3.1"
   ],
   "guidedStudy": true,
   "path": "8-programming/file-handling/file-handling.md",
@@ -1489,14 +1531,18 @@
   "noteId": "rn_qhDM88tHBkXGsMP5",
   "title": "Arithmetic, Logical & Boolean Operators",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/8-programming/programming-concepts/arithmetic-logical-and-boolean-operators",
-  "specPointIds": [],
-  "specPointCodes": [],
+  "specPointIds": [
+   "8.1.1"
+  ],
+  "specPointCodes": [
+   "8.1.1"
+  ],
   "guidedStudy": true,
   "path": "8-programming/programming-concepts/arithmetic-logical-and-boolean-operators.md",
   "sectionSlug": "8-programming",
   "topicSlug": "programming-concepts",
   "updatedAt": "2024-11-28T11:14:26.322Z",
-  "bodyMd": "\n# Arithmetic, Logical & Boolean Operators\n\n## What is an operator?\n\n- An operator is **a symbol used to instruct a computer to perform a specific operation** on one or more values\n- Examples of common operators include:\n\n  - **Arithmetic**\n  - **Logical**\n  - **Boolean**\n\n## Arithmetic Operators\n\n> **Spec point** — `spcpt_H8K8hghQB646dd3J` · \"(f) Understand and use arithmetic, logical and\nBoolean operators\"\n\n## Arithmetic Operators\n\n| **Operator** | Pseudocode | **Python** |\n|---|---|---|\n| **Addition** | `+` | `+` |\n| **Subtraction** | `-` | `-` |\n| **Multiplication** | `*` | `*` |\n| **Division** | `/` | `/` |\n| **Modulus (remainder after division)** | `MOD` | `%` |\n| **Quotient (whole number division)** | `DIV` | `//` |\n| **Exponentiation (to the power of)** | `^` | `**` |\n\n- To demonstrate the use of common arithmetic operators, three sample programs written in Python are given below\n- Comments have been included to help understand how the arithmetic operators are being used\n\n  - **Arithmetic operators #1** - a simple program to calculate if a user entered number is odd or even\n  - **Arithmetic operators #2** - a simple program to calculate the area of a circle from a user inputted radius\n  - **Arithmetic operators #3** - a simple program that generates 5 maths questions based on user inputs and gives a score of how many were correctly answered at the end\n\n| Python code |\n|---|\n|   |\n\n## Logical Operators\n\n> **Spec point** — `spcpt_2dkChvghYGRw5dXj` · \"(f) Understand and use arithmetic, logical and\nBoolean operators\"\n\n## Logical Operators\n\n| **Operator** | Pseudocode | **Python** |\n|---|---|---|\n| **Equal to** | `==` | `==` |\n| **Not equal to** | `<>` | `!=` |\n| **Less than** | `<` | `<` |\n| **Less than or equal to** | `<=` | `<=` |\n| **Greater than** | `>` | `>` |\n| **Greater than or equal to** | `>=` | `>=` |\n\n## Boolean Operators\n\n> **Spec point** — `spcpt_2q2rGgx6CfTzxnPh` · \"(f) Understand and use arithmetic, logical and\nBoolean operators\"\n\n## Boolean Operators\n\n- A Boolean operators is a logical operator that can be used to **compare two or more values** and **return a Boolean value** (True or False) based on the comparison\n- There are 3 main Boolean values:\n\n  - **AND**: Returns True if both conditions are True\n  - **OR**: Returns True if one or both conditions are True\n  - **NOT**: Returns the opposite of the condition (True if False, False if True)\n\n- To demonstrate the use of common Boolean operators, three sample programs written in Python are given below\n- Comments have been included to help understand how the Boolean operators are being used\n\n  - **Common Boolean operators #1** - a simple program that assigns Boolean values to two variables and outputs basic comparisons\n  - **Common Boolean operators #2** - a simple program to output a grade based on a users score\n  - **Common Boolean operators #3** - a simple program reads a text files and searches for an inputted score\n\n| Python code |\n|---|\n|   |\n\n> **Exam Hint**\n> - Boolean operators are often used in conditional statements such as if, while, and for loops\n> - Boolean operators can be combined with comparison operators\n> - Be careful when using the NOT operator, as it can sometimes lead to unexpected results\n> - It is always a good idea to test your code with different inputs to ensure that it works as expected\n",
+  "bodyMd": "\n# Arithmetic, Logical & Boolean Operators\n\n## What is an operator?\n\n- An operator is **a symbol used to instruct a computer to perform a specific operation** on one or more values\n- Examples of common operators include:\n\n  - **Arithmetic**\n  - **Logical**\n  - **Boolean**\n\n## Arithmetic Operators\n\n> **Spec point** — `8.1.1` · \"(f) Understand and use arithmetic, logical and\nBoolean operators\"\n\n## Arithmetic Operators\n\n| **Operator** | Pseudocode | **Python** |\n|---|---|---|\n| **Addition** | `+` | `+` |\n| **Subtraction** | `-` | `-` |\n| **Multiplication** | `*` | `*` |\n| **Division** | `/` | `/` |\n| **Modulus (remainder after division)** | `MOD` | `%` |\n| **Quotient (whole number division)** | `DIV` | `//` |\n| **Exponentiation (to the power of)** | `^` | `**` |\n\n- To demonstrate the use of common arithmetic operators, three sample programs written in Python are given below\n- Comments have been included to help understand how the arithmetic operators are being used\n\n  - **Arithmetic operators #1** - a simple program to calculate if a user entered number is odd or even\n  - **Arithmetic operators #2** - a simple program to calculate the area of a circle from a user inputted radius\n  - **Arithmetic operators #3** - a simple program that generates 5 maths questions based on user inputs and gives a score of how many were correctly answered at the end\n\n| Python code |\n|---|\n|   |\n\n## Logical Operators\n\n> **Spec point** — `8.1.1` · \"(f) Understand and use arithmetic, logical and\nBoolean operators\"\n\n## Logical Operators\n\n| **Operator** | Pseudocode | **Python** |\n|---|---|---|\n| **Equal to** | `==` | `==` |\n| **Not equal to** | `<>` | `!=` |\n| **Less than** | `<` | `<` |\n| **Less than or equal to** | `<=` | `<=` |\n| **Greater than** | `>` | `>` |\n| **Greater than or equal to** | `>=` | `>=` |\n\n## Boolean Operators\n\n> **Spec point** — `8.1.1` · \"(f) Understand and use arithmetic, logical and\nBoolean operators\"\n\n## Boolean Operators\n\n- A Boolean operators is a logical operator that can be used to **compare two or more values** and **return a Boolean value** (True or False) based on the comparison\n- There are 3 main Boolean values:\n\n  - **AND**: Returns True if both conditions are True\n  - **OR**: Returns True if one or both conditions are True\n  - **NOT**: Returns the opposite of the condition (True if False, False if True)\n\n- To demonstrate the use of common Boolean operators, three sample programs written in Python are given below\n- Comments have been included to help understand how the Boolean operators are being used\n\n  - **Common Boolean operators #1** - a simple program that assigns Boolean values to two variables and outputs basic comparisons\n  - **Common Boolean operators #2** - a simple program to output a grade based on a users score\n  - **Common Boolean operators #3** - a simple program reads a text files and searches for an inputted score\n\n| Python code |\n|---|\n|   |\n\n> **Exam Hint**\n> - Boolean operators are often used in conditional statements such as if, while, and for loops\n> - Boolean operators can be combined with comparison operators\n> - Be careful when using the NOT operator, as it can sometimes lead to unexpected results\n> - It is always a good idea to test your code with different inputs to ensure that it works as expected\n",
   "smeSpecPointIds": [
    "spcpt_H8K8hghQB646dd3J",
    "spcpt_2dkChvghYGRw5dXj",
@@ -1547,8 +1593,12 @@
   "noteId": "rn_776JXcS9NmXDrqdd",
   "title": "Iteration",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/8-programming/programming-concepts/iteration",
-  "specPointIds": [],
-  "specPointCodes": [],
+  "specPointIds": [
+   "8.1.4"
+  ],
+  "specPointCodes": [
+   "8.1.4"
+  ],
   "guidedStudy": true,
   "path": "8-programming/programming-concepts/iteration.md",
   "sectionSlug": "8-programming",
@@ -1565,14 +1615,18 @@
   "noteId": "rn_H5BQgcB2M8CBVzJm",
   "title": "Library Routines",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/8-programming/programming-concepts/library-routines",
-  "specPointIds": [],
-  "specPointCodes": [],
+  "specPointIds": [
+   "8.1.1"
+  ],
+  "specPointCodes": [
+   "8.1.1"
+  ],
   "guidedStudy": true,
   "path": "8-programming/programming-concepts/library-routines.md",
   "sectionSlug": "8-programming",
   "topicSlug": "programming-concepts",
   "updatedAt": "2026-01-14T09:04:27.696Z",
-  "bodyMd": "\n# Library Routines\n\n## Library Routines\n\n> **Spec point** — `spcpt_7MsH9h9SPYYpmrn9` · 7 Understand and use library routines \n\n## Library Routines\n\n### What are library routines?\n\n- A library routine is **reusable code** that can be used throughout a program\n- The code has been made public through **reusable modules or functions**\n- Using library routines **saves programmers time** by using working code that has **already been** **tested**\n- Some examples of pre-existing libraries are:\n\n  - **Random**\n  - **Round**\n\n### Random\n\n- The random library is a library of code which allows users to make use of '**random**' in their programs\n- Examples of random that are most common are:\n\n  - **Random choices**\n  - **Random numbers**\n- Random number generation is a programming concept that involves** a computer generating a random number** to be used within a program to add an element of **unpredictability**\n- Examples of where this concept could be used include:\n\n  - **Simulating the roll of a dice**\n  - **Selecting a random question (from a numbered list)**\n  - **National lottery**\n  - **Cryptography **\n\n| **Concept** | Pseudocode | **Python** |\n|---|---|---|\n| **Random numbers** | `RANDOM(1,6)` | `import random`<br><br>`number = random.randint(1,10)`<br><br>`number = random.randint(-1.0,10.0)` |\n| **Random choice** |   | `import random`<br><br>`choice = random.choice()` |\n\n#### Examples\n\n- Random number\n\n| Pseudocode | Python |\n|---|---|\n|   |   |\n\n- National lottery\n\n| Pseudocode | Python |\n|---|---|\n|   |   |\n\n### Round\n\n- The round library is a library of code which allows users to **round numerical values to a set amount of decimal places**\n- An example of rounding is using **REAL **values and rounding to 2 decimal places\n- The round library can be written as: **ROUND(<identifier>, <places>)**\n\n| **Concept** | Pseudocode | **Python** |\n|---|---|---|\n| Round |   |   |\n\n#### Example\n\nSo if the variable `Price` was `12.6789`, the output would be:\n",
+  "bodyMd": "\n# Library Routines\n\n## Library Routines\n\n> **Spec point** — `8.1.1` · 7 Understand and use library routines \n\n## Library Routines\n\n### What are library routines?\n\n- A library routine is **reusable code** that can be used throughout a program\n- The code has been made public through **reusable modules or functions**\n- Using library routines **saves programmers time** by using working code that has **already been** **tested**\n- Some examples of pre-existing libraries are:\n\n  - **Random**\n  - **Round**\n\n### Random\n\n- The random library is a library of code which allows users to make use of '**random**' in their programs\n- Examples of random that are most common are:\n\n  - **Random choices**\n  - **Random numbers**\n- Random number generation is a programming concept that involves** a computer generating a random number** to be used within a program to add an element of **unpredictability**\n- Examples of where this concept could be used include:\n\n  - **Simulating the roll of a dice**\n  - **Selecting a random question (from a numbered list)**\n  - **National lottery**\n  - **Cryptography **\n\n| **Concept** | Pseudocode | **Python** |\n|---|---|---|\n| **Random numbers** | `RANDOM(1,6)` | `import random`<br><br>`number = random.randint(1,10)`<br><br>`number = random.randint(-1.0,10.0)` |\n| **Random choice** |   | `import random`<br><br>`choice = random.choice()` |\n\n#### Examples\n\n- Random number\n\n| Pseudocode | Python |\n|---|---|\n|   |   |\n\n- National lottery\n\n| Pseudocode | Python |\n|---|---|\n|   |   |\n\n### Round\n\n- The round library is a library of code which allows users to **round numerical values to a set amount of decimal places**\n- An example of rounding is using **REAL **values and rounding to 2 decimal places\n- The round library can be written as: **ROUND(<identifier>, <places>)**\n\n| **Concept** | Pseudocode | **Python** |\n|---|---|---|\n| Round |   |   |\n\n#### Example\n\nSo if the variable `Price` was `12.6789`, the output would be:\n",
   "smeSpecPointIds": [
    "spcpt_7MsH9h9SPYYpmrn9"
   ]
@@ -1618,8 +1672,12 @@
   "noteId": "rn_kqRBGvjZfcfxbn7b",
   "title": "Procedures & Functions",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/8-programming/programming-concepts/procedures-and-functions",
-  "specPointIds": [],
-  "specPointCodes": [],
+  "specPointIds": [
+   "8.1.1"
+  ],
+  "specPointCodes": [
+   "8.1.1"
+  ],
   "guidedStudy": true,
   "path": "8-programming/programming-concepts/procedures-and-functions.md",
   "sectionSlug": "8-programming",
@@ -1635,8 +1693,12 @@
   "noteId": "rn_9G94M2YCSJPvxnmH",
   "title": "Selection",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/8-programming/programming-concepts/selection",
-  "specPointIds": [],
-  "specPointCodes": [],
+  "specPointIds": [
+   "8.1.4"
+  ],
+  "specPointCodes": [
+   "8.1.4"
+  ],
   "guidedStudy": true,
   "path": "8-programming/programming-concepts/selection.md",
   "sectionSlug": "8-programming",
@@ -1653,14 +1715,18 @@
   "noteId": "rn_WW44KmG5sRbNDDK9",
   "title": "Sequence",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/8-programming/programming-concepts/sequence",
-  "specPointIds": [],
-  "specPointCodes": [],
+  "specPointIds": [
+   "8.1.4"
+  ],
+  "specPointCodes": [
+   "8.1.4"
+  ],
   "guidedStudy": true,
   "path": "8-programming/programming-concepts/sequence.md",
   "sectionSlug": "8-programming",
   "topicSlug": "programming-concepts",
   "updatedAt": "2025-09-24T13:16:24.315Z",
-  "bodyMd": "\n# Sequence\n\n## Sequence\n\n> **Spec point** — `spcpt_KcCh8pWNfC8QQsRF` · 4 (a) Understand and use the concept of sequence\n\n## Sequence\n\n### What is sequence?\n\n- Sequence refers to lines of code which are run **one line at a time**\n- The lines of code are run in the **order** that they written from the first line of code to the last line of code\n- Sequence is **crucial to the flow** of a program, any instructions out of sequence can lead to **unexpected behaviour or errors**\n\n#### Example 1\n\n- A simple program to ask a user to input two numbers, number two is subtracted from number one and the result is outputted\n\n| **Line** | **Pseudocode** |\n|---|---|\n| **01** | `OUTPUT \"Enter the first number\"` |\n| **02** | `INPUT Num1` |\n| **03** | `OUTPUT \"Enter the second number\"` |\n| **04** | `INPUT Num2` |\n| **05** | `Result ← Num1 - Num2` |\n| **06** | `OUTPUT Result` |\n\n- A simple swap of line 01 and line 02 would lead to an unexpected behaviour, the user would be prompted to input information without knowing what they should enter\n\n#### Example 2\n\n- This function calculates the area of a rectangle\n- **Inputs**:\n\n  - length: The length of the rectangle\n  - width: The width of the rectangle\n- **Returns**:\n\n  - The area of the rectangle\n\n| Pseudocode |\n|---|\n|   |\n| **Python example** |\n|   |\n\n- In the example, the** sequence of instructions** is wrong and would cause a runtime error\n- In the `calculate_area()` function a value is **returned before it is assigned **\n- The correct sequence is:\n\n`area ← length * width`\n`RETURN area`\n\n`OR`\n\n`area = length * width`\n`return area`\n",
+  "bodyMd": "\n# Sequence\n\n## Sequence\n\n> **Spec point** — `8.1.4` · 4 (a) Understand and use the concept of sequence\n\n## Sequence\n\n### What is sequence?\n\n- Sequence refers to lines of code which are run **one line at a time**\n- The lines of code are run in the **order** that they written from the first line of code to the last line of code\n- Sequence is **crucial to the flow** of a program, any instructions out of sequence can lead to **unexpected behaviour or errors**\n\n#### Example 1\n\n- A simple program to ask a user to input two numbers, number two is subtracted from number one and the result is outputted\n\n| **Line** | **Pseudocode** |\n|---|---|\n| **01** | `OUTPUT \"Enter the first number\"` |\n| **02** | `INPUT Num1` |\n| **03** | `OUTPUT \"Enter the second number\"` |\n| **04** | `INPUT Num2` |\n| **05** | `Result ← Num1 - Num2` |\n| **06** | `OUTPUT Result` |\n\n- A simple swap of line 01 and line 02 would lead to an unexpected behaviour, the user would be prompted to input information without knowing what they should enter\n\n#### Example 2\n\n- This function calculates the area of a rectangle\n- **Inputs**:\n\n  - length: The length of the rectangle\n  - width: The width of the rectangle\n- **Returns**:\n\n  - The area of the rectangle\n\n| Pseudocode |\n|---|\n|   |\n| **Python example** |\n|   |\n\n- In the example, the** sequence of instructions** is wrong and would cause a runtime error\n- In the `calculate_area()` function a value is **returned before it is assigned **\n- The correct sequence is:\n\n`area ← length * width`\n`RETURN area`\n\n`OR`\n\n`area = length * width`\n`return area`\n",
   "smeSpecPointIds": [
    "spcpt_KcCh8pWNfC8QQsRF"
   ]
@@ -1669,8 +1735,12 @@
   "noteId": "rn_4YCPw5grTQQp6GcJ",
   "title": "String Handling",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/8-programming/programming-concepts/string-handling",
-  "specPointIds": [],
-  "specPointCodes": [],
+  "specPointIds": [
+   "8.1.4"
+  ],
+  "specPointCodes": [
+   "8.1.4"
+  ],
   "guidedStudy": true,
   "path": "8-programming/programming-concepts/string-handling.md",
   "sectionSlug": "8-programming",
@@ -1685,8 +1755,12 @@
   "noteId": "rn_WdhHqPBnhQ2TYwPT",
   "title": "Totalling & Counting",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/8-programming/programming-concepts/totalling-and-counting",
-  "specPointIds": [],
-  "specPointCodes": [],
+  "specPointIds": [
+   "8.1.4"
+  ],
+  "specPointCodes": [
+   "8.1.4"
+  ],
   "guidedStudy": true,
   "path": "8-programming/programming-concepts/totalling-and-counting.md",
   "sectionSlug": "8-programming",
@@ -1737,14 +1811,20 @@
   "noteId": "rn_pzFQ4MZnDWbnY6rf",
   "title": "Single Table Databases",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/9-databases/databases/single-table-databases",
-  "specPointIds": [],
-  "specPointCodes": [],
+  "specPointIds": [
+   "6.3.5",
+   "8.1.2"
+  ],
+  "specPointCodes": [
+   "6.3.5",
+   "8.1.2"
+  ],
   "guidedStudy": false,
   "path": "9-databases/databases/single-table-databases.md",
   "sectionSlug": "9-databases",
   "topicSlug": "databases",
   "updatedAt": "2024-09-17T10:36:22.272Z",
-  "bodyMd": "\n# Single Table Databases\n\n### What is a database?\n\n- A** Database **is an organised collection of data\n- A database is made up of either **one or multiple tables** which are made up of **fields **and **records **to organise how it stores data\n- It allows **easy storage, retrieval, and management** of information\n- A database is useful when working with l**arge amounts of data**, databases are stored on **secondary storage**\n- A database is often stored on remote servers so **multiple users** can access it at the same time, useful for online systems\n- Data can be **sorted and searched efficiently**, making use of more advanced structures\n- They are** more secure** than text files\n\n## Fields & Records\n\n> **Spec point** — `spcpt_3hpC7gNs8YZ6t7kd` · \"1 Define a single-table database from given data\nstorage requirements\"\n\n## Fields & records\n\n### What are fields & records?\n\n- A field is** one piece** of information relating to one person, item or object\n- A field is represented in a database by a **column**,\n- A record is a **collection of fields** relating to one person, item or object\n- A record is represented in a database by a **row**\n\n### Text files\n\n- A text file is useful when working with **small amounts of data**, text files are stored on s**econdary storage** and 'read' into a program when being used\n- They are used to store information **when the application is closed**\n- Each entry is stored on a new line or separated with a special identifier, for example, a comma (',')\n- It can be difficult in text files to know where a record begins and ends\n\n![8-records-to-store-data](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/0fe5f77210f74aaeb3f6c491dfe0263d12db738c/SME-RevisionNotes/cie-igcse-computer-science-23/assets/49a6fddddcd2-8-records-to-store-data.png)\n\n## Validation\n\n> **Spec point** — `spcpt_pSBSvFNDkZT5RKdY` · \"1 Define a single-table database from given data\nstorage requirements\"\n\n## Validation\n\n- When a table is created, **validation rules** can be assigned to the different fields\n\n  - A validation rule **controls what data** can be entered into that field\n  - There are different types of validation checks used to limit what data can be entered into each field\n  - The validation checks that are used are the same as those that appear in section 7: Algorithm Design & Problem-Solving\n\n| **Type** | **Description** |\n|---|---|\n| **Length Check** | This type of validation checks the number of ***characters*** that have been entered into a field. For example, you might make phone numbers entered have to be eleven characters long |\n| **Format Check** | This type of validation checks data entered meets an exact format. For example, a product code might have to be two letters followed by five numbers |\n| **Range Check** | A range check will check the number entered is within a specific range. For example, the age of a dog would be between 0 - 40. Any other number would be disallowed |\n| **Presence Check** | A presence check can be added to fields which cannot be left blank |\n| **Type Check** | A type check will allow data with a specific data type to be entered into a field. For example, if text was entered into a field which is supposed to contain the date of birth of a person it would not be allowed |\n| **Check Digits** | Check digit validation is a process used to verify the accuracy of numbers such as credit card numbers. A check digit is a single digit added to the end of the number, which is calculated based on a specific algorithm applied to the other digits in the number. When the data is re-entered the same algorithm can be applied, and if it produces a different result the code is incorrect |\n\n> **Exam Hint**\n> You will likely be presented with an example database table and identify either how many fields there are or how many records there are so make sure you remember a record is a row and a field is a column.\n\n> **Worked Example**\n> **A Database Table Containing Student Grades**\n> \n> | **StudentID** | **FirstName** | **LastName** | **MarkSubmitted** | **Percentage** |\n> |---|---|---|---|---|\n> | 1483792 | Shanay | Giles | Y | 55 |\n> | 1498378 | Poppy | Petit | N | 20 |\n> | 1500121 | Diya | Dinesh | Y | 74 |\n> | 1382972 | Joe | Swaile | Y | 68 |\n> | 1598264 | Anton | Smith | Y | 34 |\n> | 1548282 | Felicity | Hall | N | 47 |\n> \n> Describe **two validation checks** that could be used to check data being inputted into the table above [**4**]\n> \n> How to answer this question\n> This\n> \n> **Final answer:** **Answer**\n> \n> StudentID could have a **length check** to ensure 7 characters are entered** [2]**\n> \n> FirstName and LastName could have a **presence check** to make a record cannot be entered without entering the name of the student** [2]**\n> \n> A **type check** of boolean could be applied to the Mark Submitted field so that only Y or N are entered** [2]**\n> \n> A **range check** could be assigned to the Mark column to ensure only numbers between 0 and 100 are entered** [2]**\n\n## Data types\n\n> **Spec point** — `spcpt_7JRKzsBqqdfPqf5t` · 2 Suggest suitable basic data types \n\n## Data types\n\n### What is a data type?\n\n- A data type is the **type of data** that can be held **in a field** and is defined when designing a table\n- Examples of common datatypes are:\n\n  - **Integer **- whole number\n  - **Real **- decimal number\n  - **Text/alphanumeric **- text data\n  - **Character **- single\n  - **Date/Time **\n  - **Boolean **- true or false values\n- In the table ***cars*** below, the following datatypes would be used:\n\n  - **car_id**: integer\n  - **make**: text/alphanumeric\n  - **model**: text/alphanumeric\n  - **colour**: text/alphanumeric\n  - **price**: real\n\n***cars***\n\n| **car_id** | **make** | **model** | **colour** | **price** |\n|---|---|---|---|---|\n| 1 | Peugeot | 2008 | Red | 24950 |\n| 2 | Mazda | MX5 | Blue | 17995 |\n| 3 | Citroen | DS4 | Black | 21450 |\n| 4 | Ford | Puma | White | 19500 |\n",
+  "bodyMd": "\n# Single Table Databases\n\n### What is a database?\n\n- A** Database **is an organised collection of data\n- A database is made up of either **one or multiple tables** which are made up of **fields **and **records **to organise how it stores data\n- It allows **easy storage, retrieval, and management** of information\n- A database is useful when working with l**arge amounts of data**, databases are stored on **secondary storage**\n- A database is often stored on remote servers so **multiple users** can access it at the same time, useful for online systems\n- Data can be **sorted and searched efficiently**, making use of more advanced structures\n- They are** more secure** than text files\n\n## Fields & Records\n\n> **Spec point** — `spcpt_3hpC7gNs8YZ6t7kd` · \"1 Define a single-table database from given data\nstorage requirements\"\n\n## Fields & records\n\n### What are fields & records?\n\n- A field is** one piece** of information relating to one person, item or object\n- A field is represented in a database by a **column**,\n- A record is a **collection of fields** relating to one person, item or object\n- A record is represented in a database by a **row**\n\n### Text files\n\n- A text file is useful when working with **small amounts of data**, text files are stored on s**econdary storage** and 'read' into a program when being used\n- They are used to store information **when the application is closed**\n- Each entry is stored on a new line or separated with a special identifier, for example, a comma (',')\n- It can be difficult in text files to know where a record begins and ends\n\n![8-records-to-store-data](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/0fe5f77210f74aaeb3f6c491dfe0263d12db738c/SME-RevisionNotes/cie-igcse-computer-science-23/assets/49a6fddddcd2-8-records-to-store-data.png)\n\n## Validation\n\n> **Spec point** — `6.3.5` · \"1 Define a single-table database from given data\nstorage requirements\"\n\n## Validation\n\n- When a table is created, **validation rules** can be assigned to the different fields\n\n  - A validation rule **controls what data** can be entered into that field\n  - There are different types of validation checks used to limit what data can be entered into each field\n  - The validation checks that are used are the same as those that appear in section 7: Algorithm Design & Problem-Solving\n\n| **Type** | **Description** |\n|---|---|\n| **Length Check** | This type of validation checks the number of ***characters*** that have been entered into a field. For example, you might make phone numbers entered have to be eleven characters long |\n| **Format Check** | This type of validation checks data entered meets an exact format. For example, a product code might have to be two letters followed by five numbers |\n| **Range Check** | A range check will check the number entered is within a specific range. For example, the age of a dog would be between 0 - 40. Any other number would be disallowed |\n| **Presence Check** | A presence check can be added to fields which cannot be left blank |\n| **Type Check** | A type check will allow data with a specific data type to be entered into a field. For example, if text was entered into a field which is supposed to contain the date of birth of a person it would not be allowed |\n| **Check Digits** | Check digit validation is a process used to verify the accuracy of numbers such as credit card numbers. A check digit is a single digit added to the end of the number, which is calculated based on a specific algorithm applied to the other digits in the number. When the data is re-entered the same algorithm can be applied, and if it produces a different result the code is incorrect |\n\n> **Exam Hint**\n> You will likely be presented with an example database table and identify either how many fields there are or how many records there are so make sure you remember a record is a row and a field is a column.\n\n> **Worked Example**\n> **A Database Table Containing Student Grades**\n> \n> | **StudentID** | **FirstName** | **LastName** | **MarkSubmitted** | **Percentage** |\n> |---|---|---|---|---|\n> | 1483792 | Shanay | Giles | Y | 55 |\n> | 1498378 | Poppy | Petit | N | 20 |\n> | 1500121 | Diya | Dinesh | Y | 74 |\n> | 1382972 | Joe | Swaile | Y | 68 |\n> | 1598264 | Anton | Smith | Y | 34 |\n> | 1548282 | Felicity | Hall | N | 47 |\n> \n> Describe **two validation checks** that could be used to check data being inputted into the table above [**4**]\n> \n> How to answer this question\n> This\n> \n> **Final answer:** **Answer**\n> \n> StudentID could have a **length check** to ensure 7 characters are entered** [2]**\n> \n> FirstName and LastName could have a **presence check** to make a record cannot be entered without entering the name of the student** [2]**\n> \n> A **type check** of boolean could be applied to the Mark Submitted field so that only Y or N are entered** [2]**\n> \n> A **range check** could be assigned to the Mark column to ensure only numbers between 0 and 100 are entered** [2]**\n\n## Data types\n\n> **Spec point** — `8.1.2` · 2 Suggest suitable basic data types \n\n## Data types\n\n### What is a data type?\n\n- A data type is the **type of data** that can be held **in a field** and is defined when designing a table\n- Examples of common datatypes are:\n\n  - **Integer **- whole number\n  - **Real **- decimal number\n  - **Text/alphanumeric **- text data\n  - **Character **- single\n  - **Date/Time **\n  - **Boolean **- true or false values\n- In the table ***cars*** below, the following datatypes would be used:\n\n  - **car_id**: integer\n  - **make**: text/alphanumeric\n  - **model**: text/alphanumeric\n  - **colour**: text/alphanumeric\n  - **price**: real\n\n***cars***\n\n| **car_id** | **make** | **model** | **colour** | **price** |\n|---|---|---|---|---|\n| 1 | Peugeot | 2008 | Red | 24950 |\n| 2 | Mazda | MX5 | Blue | 17995 |\n| 3 | Citroen | DS4 | Black | 21450 |\n| 4 | Ford | Puma | White | 19500 |\n",
   "smeSpecPointIds": [
    "spcpt_3hpC7gNs8YZ6t7kd",
    "spcpt_pSBSvFNDkZT5RKdY",
@@ -1771,14 +1851,18 @@
   "noteId": "rn_hbxj8Phd5VK273zy",
   "title": "Logic Circuits",
   "sourceUrl": "https://www.savemyexams.com/igcse/computer-science/cie/23/revision-notes/10-boolean-logic/boolean-logic/logic-circuits",
-  "specPointIds": [],
-  "specPointCodes": [],
+  "specPointIds": [
+   "6.3.2"
+  ],
+  "specPointCodes": [
+   "6.3.2"
+  ],
   "guidedStudy": false,
   "path": "10-boolean-logic/boolean-logic/logic-circuits.md",
   "sectionSlug": "10-boolean-logic",
   "topicSlug": "boolean-logic",
   "updatedAt": "2024-06-27T15:03:28.943Z",
-  "bodyMd": "\n# Logic Circuits\n\n## Logic Circuits\n\n> **Spec point** — `spcpt_HY2mCJxGw3T58Q6D` · \"3 (a) Use logic gates to create given logic circuits\nfrom a:\n (i) problem statement\n (ii) logic expression\n (iii) truth table\"\n\n## Logic Circuits\n\n### What is a logic circuit?\n\n- A logic circuit **performs logical operations** on binary information\n- Logic gates are **core components** of logic circuits\n- Based on the** arrangement of logic gates** and the** input signals**, the circuit performs a specific function\n- A logic diagram is a **visual representation** of a combinations of logic gates within a logic circuit\n- **Brackets **are used to clarify the **order **of operations\n- An example logic diagram for the *Boolean expression* **Q =** **NOT(A OR B) **would be:\n\n![logic circuit1](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/0fe5f77210f74aaeb3f6c491dfe0263d12db738c/SME-RevisionNotes/cie-igcse-computer-science-23/assets/7cae4b772242-screenshot-2023-05-30-at-08-31-16.png)\n\n- In the logic diagram above, the **inputs **are represented by **A and B**\n- **P** is the **output **of the OR gate on the left and becomes the input of the NOT gate\n- **Q** is the **final output **of the logic circuit\n\n> **Exam Hint**\n> You may be asked to draw a logic circuit from a logic statement or a Boolean expression **OR **write the logical expression that is expressed in the logic diagram using Boolean expression operators\n> \n> Logic circuits will be limited to a **maximum of three inputs and one output**\n\n#### Example of combining logic gates\n\n![10-boolean-logic](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/0fe5f77210f74aaeb3f6c491dfe0263d12db738c/SME-RevisionNotes/cie-igcse-computer-science-23/assets/54753df62cf6-10-boolean-logic.png)\n\n- **P = (A OR B) AND NOT C **\n\n> **Worked Example**\n> A sprinkler system switches on if it is not daytime (input A) and the temperature is greater than 40 (input B)\n> \n> Draw a logic circuit to represent the problem statement above\n> \n> **[2]**\n> \n> ![screenshot-2023-05-30-at-08-34-38](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/0fe5f77210f74aaeb3f6c491dfe0263d12db738c/SME-RevisionNotes/cie-igcse-computer-science-23/assets/b2a4b60e28b3-screenshot-2023-05-30-at-08-34-38.png)\n",
+  "bodyMd": "\n# Logic Circuits\n\n## Logic Circuits\n\n> **Spec point** — `6.3.2` · \"3 (a) Use logic gates to create given logic circuits\nfrom a:\n (i) problem statement\n (ii) logic expression\n (iii) truth table\"\n\n## Logic Circuits\n\n### What is a logic circuit?\n\n- A logic circuit **performs logical operations** on binary information\n- Logic gates are **core components** of logic circuits\n- Based on the** arrangement of logic gates** and the** input signals**, the circuit performs a specific function\n- A logic diagram is a **visual representation** of a combinations of logic gates within a logic circuit\n- **Brackets **are used to clarify the **order **of operations\n- An example logic diagram for the *Boolean expression* **Q =** **NOT(A OR B) **would be:\n\n![logic circuit1](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/0fe5f77210f74aaeb3f6c491dfe0263d12db738c/SME-RevisionNotes/cie-igcse-computer-science-23/assets/7cae4b772242-screenshot-2023-05-30-at-08-31-16.png)\n\n- In the logic diagram above, the **inputs **are represented by **A and B**\n- **P** is the **output **of the OR gate on the left and becomes the input of the NOT gate\n- **Q** is the **final output **of the logic circuit\n\n> **Exam Hint**\n> You may be asked to draw a logic circuit from a logic statement or a Boolean expression **OR **write the logical expression that is expressed in the logic diagram using Boolean expression operators\n> \n> Logic circuits will be limited to a **maximum of three inputs and one output**\n\n#### Example of combining logic gates\n\n![10-boolean-logic](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/0fe5f77210f74aaeb3f6c491dfe0263d12db738c/SME-RevisionNotes/cie-igcse-computer-science-23/assets/54753df62cf6-10-boolean-logic.png)\n\n- **P = (A OR B) AND NOT C **\n\n> **Worked Example**\n> A sprinkler system switches on if it is not daytime (input A) and the temperature is greater than 40 (input B)\n> \n> Draw a logic circuit to represent the problem statement above\n> \n> **[2]**\n> \n> ![screenshot-2023-05-30-at-08-34-38](https://raw.githubusercontent.com/SyllabAI/syllabai-resources/0fe5f77210f74aaeb3f6c491dfe0263d12db738c/SME-RevisionNotes/cie-igcse-computer-science-23/assets/b2a4b60e28b3-screenshot-2023-05-30-at-08-34-38.png)\n",
   "smeSpecPointIds": [
    "spcpt_HY2mCJxGw3T58Q6D"
   ]

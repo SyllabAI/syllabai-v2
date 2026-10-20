@@ -7,23 +7,26 @@
    "viaSubtopicScope": 0
   },
   "notes": {
-   "coded": 0,
+   "coded": 1,
    "total": 167,
-   "unmapped": 167,
+   "unmapped": 166,
    "viaSubtopicScope": 0
   },
   "questionParts": {
-   "coded": 0,
+   "coded": 1,
    "total": 95,
-   "unmapped": 95,
+   "unmapped": 94,
    "viaSubtopicScope": 0
   }
  },
  "course": "cie-igcse-english-literature-21",
- "generatedUtc": null,
+ "generatedUtc": "2026-10-20T14:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-igcse-english-literature-21/spec_point_index.json": {
    "sha256": "7e9087cdfc8ad834e20464f688f4ef9d06599537c4c2349599f17040231509ac"
+  },
+  "spec-links/cie-igcse-english-literature-21.json": {
+   "sha256": "6ea793b8b6637bc3d7fbef93e158ec2df0046037f15979b86050d0ed1d0bc6a5"
   },
   "spine": {
    "file": "spines/cie-igcse-english-literature-21.json"
@@ -2999,12 +3002,22 @@
    "unmapped": true
   },
   "qstnprt_6RST96sdq3vQRTn6": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "S21.016",
+     "officialId": "CIE_IGCSE_ENGLISH_LITERATURE_2023_2025:S21.016",
+     "score": null,
+     "spineCode": "S21.016",
+     "tier": "V4_settext_title_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_JhD3GDXtPMSHtYrC"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_6ssxgsVWjPzR7BZz": {
    "codes": [],
@@ -4658,14 +4671,24 @@
    "unmapped": true
   },
   "rn_X7Q4FHBjwgR48kT5": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "S21.016",
+     "officialId": "CIE_IGCSE_ENGLISH_LITERATURE_2023_2025:S21.016",
+     "score": null,
+     "spineCode": "S21.016",
+     "tier": "V4_settext_title_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_JhD3GDXtPMSHtYrC",
     "spcpt_pWx9CGnM3CCYFvMd",
     "spcpt_zsqwhM9JxmbV8NMB"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_XGtwgGNxhgfRB2TC": {
    "codes": [],
@@ -6232,9 +6255,9 @@
  "qual": "cie-igcse-english-literature-2023-2025",
  "reconciliation": {
   "codesOutsideSpine": [],
-  "distinctCodesAttached": 0,
+  "distinctCodesAttached": 1,
   "itemsOutsideSpine": 0,
-  "spineHitCodes": 0,
+  "spineHitCodes": 1,
   "spineSpecPoints": 203,
   "uncoveredSpineCodeList": [
    "S11.001",
@@ -6335,7 +6358,6 @@
    "S21.013",
    "S21.014",
    "S21.015",
-   "S21.016",
    "S21.017",
    "S21.018",
    "S21.019",
@@ -6441,20 +6463,46 @@
    "S9.005",
    "S9.006"
   ],
-  "uncoveredSpineCodes": 203
+  "uncoveredSpineCodes": 202
  },
- "resourcesSha": "0fe5f77210f74aaeb3f6c491dfe0263d12db738c",
+ "resourcesSha": "75981cad0b08c190fb70902eb6cdca1f76b9cd68",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
   "resolution": null,
-  "specLinks": null,
+  "specLinks": {
+   "census": {
+    "codesAttachedFromSidecar": 2,
+    "codesByMethod": {
+     "operator_verdict": 4
+    },
+    "codesByTier": {
+     "V4_settext_title_identity": 4
+    },
+    "itemsWithCodes": 2,
+    "ladderCodesRetained": 0,
+    "sidecarCodes": 4,
+    "sidecarItems": 255,
+    "sidecarOnlyItems": 0,
+    "t2Hints": 0
+   },
+   "derivation": "ACCEPTED spec-links sidecar (T-SPECS-CIE join/verdict/gate/rejoin chain) merged item-level: operator-verdict authoritative, T1 gate-verified, J* post-gate identity-grade; T2_near carried as non-authoritative items[].t2HintCodes only; REJOIN sheet sid->code rows upgrade/add spcptToOfficial (conflicts kept, disclosed)",
+   "regime": "spec_links_sidecar_accepted",
+   "reviewState": {
+    "rejoin": null,
+    "state": "ACCEPTED"
+   },
+   "sheetUpgrades": null,
+   "sidecar": "spec-links/cie-igcse-english-literature-21.json",
+   "t2Policy": "T2_near is a non-authoritative hint (GATE-1 tier_policy); never in codes/linkage"
+  },
   "specPointMap": {
    "crossLaneResolved": 0,
    "derivation": "deterministic ladder R1-R4 (leaf) + R5 (subtopic scope, notes only) over the upstream spec_point_index incl. cross_lane_join resolutions; every row carries its rule id",
    "leafMapped": 0,
    "regime": "cie_reconciliation_derived",
    "ruleCounts": {},
+   "sidecarConsumed": true,
    "smeEntries": 686,
    "subtopicScoped": 0,
    "unmapped": 686

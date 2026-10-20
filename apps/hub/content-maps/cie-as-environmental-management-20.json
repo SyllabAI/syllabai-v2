@@ -20,10 +20,16 @@
   }
  },
  "course": "cie-as-environmental-management-20",
- "generatedUtc": null,
+ "generatedUtc": "2026-10-20T14:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-as-environmental-management-20/spec_point_index.json": {
    "sha256": "4689922c322ead95527574fdfd2953f9a2c6d102d4722403f24f8dae17af6640"
+  },
+  "scripts/cie_rejoin_resolutions.yaml": {
+   "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
+  },
+  "spec-links/cie-as-environmental-management-20.json": {
+   "sha256": "800bd5a70da62fcb9ba4b96d73b485d30e08527e2aefb58c6a6eedf22fdecb03"
   },
   "spine": {
    "file": "spines/cie-as-environmental-management-20.json"
@@ -32,17 +38,6 @@
  "items": {
   "qstnprt_22kstRqDrgf5dFVt": {
    "codes": [
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.1.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.1.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_fnMtdNmSNFtqNqFy"
-    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -57,13 +52,13 @@
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
-     "officialCode": "2.4.1",
+     "officialCode": "2.1.2",
      "officialId": null,
      "score": null,
-     "spineCode": "2.4.1",
+     "spineCode": "2.1.2",
      "tier": null,
      "unit": null,
-     "viaSpcpt": "spcpt_xRYdRtZR8nGTCTQk"
+     "viaSpcpt": "spcpt_fnMtdNmSNFtqNqFy"
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -75,6 +70,17 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_xSQM79sbYnjQ2fMd"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "2.4.1",
+     "officialId": null,
+     "score": null,
+     "spineCode": "2.4.1",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_xRYdRtZR8nGTCTQk"
     }
    ],
    "kind": "question_part"
@@ -98,15 +104,14 @@
   "qstnprt_2y6ZYgFYwfdDVBVX": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.1.4",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "1.6.15",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:1.6.15",
      "score": null,
-     "spineCode": "4.1.4",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_By9JzkbZGrhbjSJg"
+     "spineCode": "1.6.15",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -122,13 +127,13 @@
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
-     "officialCode": "1.6.4",
+     "officialCode": "4.1.4",
      "officialId": null,
      "score": null,
-     "spineCode": "1.6.4",
+     "spineCode": "4.1.4",
      "tier": null,
      "unit": null,
-     "viaSpcpt": "spcpt_s8Fc5Jr5NbQ5M2jq"
+     "viaSpcpt": "spcpt_By9JzkbZGrhbjSJg"
     }
    ],
    "kind": "question_part"
@@ -195,15 +200,14 @@
   "qstnprt_4SmKM88PqKXh3YBG": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.1.1",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "8.1.3",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:8.1.3",
      "score": null,
-     "spineCode": "8.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_DGgCX9d66j82PfvD"
+     "spineCode": "8.1.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -215,6 +219,17 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_MDJn3xgR8QrgkT2B"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "8.1.1",
+     "officialId": null,
+     "score": null,
+     "spineCode": "8.1.1",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_DGgCX9d66j82PfvD"
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -249,15 +264,25 @@
   "qstnprt_59hxjnb9htB2BBBx": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "5.3.2",
-     "officialId": null,
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:5.3.2",
      "score": null,
      "spineCode": "5.3.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "2.1.2",
+     "officialId": null,
+     "score": null,
+     "spineCode": "2.1.2",
      "tier": null,
      "unit": null,
-     "viaSpcpt": "spcpt_FNS8FrKwcq4Jh5v5"
+     "viaSpcpt": "spcpt_fnMtdNmSNFtqNqFy"
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -280,28 +305,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_TYxbWj9DfQDSKHPp"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "5.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "5.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_bSs2cZmyCVQtDwxK"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.1.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.1.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_fnMtdNmSNFtqNqFy"
     }
    ],
    "kind": "question_part"
@@ -373,6 +376,16 @@
   "qstnprt_6Qnh8PvJhQ4dMYqJ": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "7.4.5",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:7.4.5",
+     "score": null,
+     "spineCode": "7.4.5",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "7.3.1",
@@ -395,10 +408,29 @@
      "viaSpcpt": "spcpt_J6nvQqxTM75GF5sR"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "7.3.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:7.3.1",
+     "spineCode": "7.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_6sCnvKBj7xn2tyf8": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.1.3",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:4.1.3",
+     "score": null,
+     "spineCode": "4.1.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -413,24 +445,13 @@
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
-     "officialCode": "4.1.3",
+     "officialCode": "4.3.1",
      "officialId": null,
      "score": null,
-     "spineCode": "4.1.3",
+     "spineCode": "4.3.1",
      "tier": null,
      "unit": null,
-     "viaSpcpt": "spcpt_J6p9nGFzKcSwzqPd"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_S3skn5w6MgBkTY8m"
+     "viaSpcpt": "spcpt_rkXq7ZF7HvwwXDHW"
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -446,29 +467,37 @@
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
-     "officialCode": "4.3.1",
+     "officialCode": "8.3.1",
      "officialId": null,
      "score": null,
-     "spineCode": "4.3.1",
+     "spineCode": "8.3.1",
      "tier": null,
      "unit": null,
-     "viaSpcpt": "spcpt_rkXq7ZF7HvwwXDHW"
+     "viaSpcpt": "spcpt_S3skn5w6MgBkTY8m"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "8.3.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:8.3.1",
+     "spineCode": "8.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_7vdfHZf2NVmBjgDg": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "5.2.2",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "5.2.4",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:5.2.4",
      "score": null,
-     "spineCode": "5.2.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_bDHJqRjcgMQSWJrK"
+     "spineCode": "5.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -479,7 +508,7 @@
      "spineCode": "5.2.2",
      "tier": null,
      "unit": null,
-     "viaSpcpt": "spcpt_wSH562csXJ8JHgs8"
+     "viaSpcpt": "spcpt_bDHJqRjcgMQSWJrK"
     }
    ],
    "kind": "question_part"
@@ -512,17 +541,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_G8GDYggtJwkZSnXV"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_dRb7vBx3mTwv8JgB"
     }
    ],
    "kind": "question_part"
@@ -564,6 +582,17 @@
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
+     "officialCode": "2.1.2",
+     "officialId": null,
+     "score": null,
+     "spineCode": "2.1.2",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_fnMtdNmSNFtqNqFy"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
      "officialCode": "2.2.1",
      "officialId": null,
      "score": null,
@@ -582,23 +611,23 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_KZRkhw4ZyPvbJgmp"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.1.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.1.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_fnMtdNmSNFtqNqFy"
     }
    ],
    "kind": "question_part"
   },
   "qstnprt_CgCzYxNkbDrQRSXY": {
    "codes": [
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "2.1.1",
+     "officialId": null,
+     "score": null,
+     "spineCode": "2.1.1",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_wYJsR7ZndGpWm5Jk"
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -620,17 +649,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_wSH562csXJ8JHgs8"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_wYJsR7ZndGpWm5Jk"
     }
    ],
    "kind": "question_part"
@@ -697,15 +715,14 @@
   "qstnprt_G9rNJwHHNqMxsZfD": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "5.3.2",
-     "officialId": null,
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:5.3.2",
      "score": null,
      "spineCode": "5.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_FNS8FrKwcq4Jh5v5"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -723,6 +740,16 @@
   },
   "qstnprt_GXJ6RWfjyndRzHvY": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "5.1.2",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:5.1.2",
+     "score": null,
+     "spineCode": "5.1.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -753,17 +780,6 @@
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
-     "officialCode": "8.1.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.1.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_8pkZBTTnqJwrvSgy"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
      "officialCode": "2.1.2",
      "officialId": null,
      "score": null,
@@ -771,6 +787,17 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_fnMtdNmSNFtqNqFy"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "8.1.2",
+     "officialId": null,
+     "score": null,
+     "spineCode": "8.1.2",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_8pkZBTTnqJwrvSgy"
     }
    ],
    "kind": "question_part"
@@ -783,15 +810,14 @@
   "qstnprt_HjkZcs7NRyy6m32Q": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "5.3.2",
-     "officialId": null,
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:5.3.2",
      "score": null,
      "spineCode": "5.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_FNS8FrKwcq4Jh5v5"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -880,7 +906,16 @@
      "viaSpcpt": "spcpt_S3skn5w6MgBkTY8m"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "8.3.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:8.3.1",
+     "spineCode": "8.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_KxsQs7kG9mdDfrZG": {
    "codes": [
@@ -912,7 +947,16 @@
      "viaSpcpt": "spcpt_6WwhH6vpj4DxvSP4"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "7.4.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:7.4.1",
+     "spineCode": "7.4.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_PYhPxfCQ5CSrmWC7": {
    "codes": [
@@ -933,15 +977,14 @@
   "qstnprt_QjBDRNV9VGXZCr3P": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "5.3.2",
-     "officialId": null,
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:5.3.2",
      "score": null,
      "spineCode": "5.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_FNS8FrKwcq4Jh5v5"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -953,17 +996,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_TYxbWj9DfQDSKHPp"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "5.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "5.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_bSs2cZmyCVQtDwxK"
     }
    ],
    "kind": "question_part"
@@ -986,6 +1018,16 @@
   },
   "qstnprt_R4gfgQSh8BMt5jW4": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "7.4.5",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:7.4.5",
+     "score": null,
+     "spineCode": "7.4.5",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -1030,7 +1072,16 @@
      "viaSpcpt": "spcpt_CMF3zwJzDdYdVWDN"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "3.3.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:3.3.1",
+     "spineCode": "3.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_St5gGW7nbx3vpRZC": {
    "codes": [
@@ -1046,7 +1097,16 @@
      "viaSpcpt": "spcpt_6WwhH6vpj4DxvSP4"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "7.4.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:7.4.1",
+     "spineCode": "7.4.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_T3gwSctpN3czYQP9": {
    "codes": [
@@ -1112,17 +1172,6 @@
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
-     "officialCode": "7.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "7.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_BwzjjjprWt7gjbpJ"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
      "officialCode": "7.1.1",
      "officialId": null,
      "score": null,
@@ -1130,12 +1179,49 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_kVw5878xZsg6H34g"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "7.3.1",
+     "officialId": null,
+     "score": null,
+     "spineCode": "7.3.1",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_BwzjjjprWt7gjbpJ"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "7.1.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:7.1.1",
+     "spineCode": "7.1.1",
+     "tier": "T2_near"
+    },
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "7.3.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:7.3.1",
+     "spineCode": "7.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_VVZqv2YqsFy5cMzQ": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "7.4.5",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:7.4.5",
+     "score": null,
+     "spineCode": "7.4.5",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -1152,6 +1238,16 @@
   },
   "qstnprt_Vdnk5CH9wCd2Kx7P": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "8.1.3",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:8.1.3",
+     "score": null,
+     "spineCode": "8.1.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -1175,7 +1271,16 @@
      "viaSpcpt": "spcpt_S3skn5w6MgBkTY8m"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "8.3.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:8.3.1",
+     "spineCode": "8.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_WjSbzyJ9brXtDv5C": {
    "codes": [
@@ -1189,23 +1294,22 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_G8GDYggtJwkZSnXV"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_dRb7vBx3mTwv8JgB"
     }
    ],
    "kind": "question_part"
   },
   "qstnprt_XYtM4D9B9CY3hst5": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "6.1.3",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:6.1.3",
+     "score": null,
+     "spineCode": "6.1.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -1234,21 +1338,19 @@
      "viaSpcpt": "spcpt_S3skn5w6MgBkTY8m"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "8.3.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:8.3.1",
+     "spineCode": "8.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_YV5D5K6N4j3TVBYn": {
    "codes": [
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.1.4",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.1.4",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_By9JzkbZGrhbjSJg"
-    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -1259,6 +1361,17 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_s8Fc5Jr5NbQ5M2jq"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "4.1.4",
+     "officialId": null,
+     "score": null,
+     "spineCode": "4.1.4",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_By9JzkbZGrhbjSJg"
     }
    ],
    "kind": "question_part"
@@ -1330,6 +1443,16 @@
   "qstnprt_ch4fJnKkdKWv8dHZ": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "6.1.4",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:6.1.4",
+     "score": null,
+     "spineCode": "6.1.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "6.1.2",
@@ -1362,26 +1485,24 @@
   "qstnprt_dvh9xzxHCYwGTM7f": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.1.3",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.1.3",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_J6p9nGFzKcSwzqPd"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "4.1.1",
-     "officialId": null,
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:4.1.1",
      "score": null,
      "spineCode": "4.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_dgqsYdhZVVcd7wJQ"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.1.3",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:4.1.3",
+     "score": null,
+     "spineCode": "4.1.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "question_part"
@@ -1405,15 +1526,14 @@
   "qstnprt_f32SzdpQ3ZMzZZsT": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.1.4",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "1.6.15",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:1.6.15",
      "score": null,
-     "spineCode": "4.1.4",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_By9JzkbZGrhbjSJg"
+     "spineCode": "1.6.15",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -1429,13 +1549,13 @@
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
-     "officialCode": "1.6.4",
+     "officialCode": "4.1.4",
      "officialId": null,
      "score": null,
-     "spineCode": "1.6.4",
+     "spineCode": "4.1.4",
      "tier": null,
      "unit": null,
-     "viaSpcpt": "spcpt_s8Fc5Jr5NbQ5M2jq"
+     "viaSpcpt": "spcpt_By9JzkbZGrhbjSJg"
     }
    ],
    "kind": "question_part"
@@ -1479,17 +1599,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_G8GDYggtJwkZSnXV"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_dRb7vBx3mTwv8JgB"
     }
    ],
    "kind": "question_part"
@@ -1531,6 +1640,39 @@
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
+     "officialCode": "2.1.2",
+     "officialId": null,
+     "score": null,
+     "spineCode": "2.1.2",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_fnMtdNmSNFtqNqFy"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "2.3.1",
+     "officialId": null,
+     "score": null,
+     "spineCode": "2.3.1",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_XV7JfbSRQvprvsqk"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "2.4.1",
+     "officialId": null,
+     "score": null,
+     "spineCode": "2.4.1",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_xRYdRtZR8nGTCTQk"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
      "officialCode": "2.4.2",
      "officialId": null,
      "score": null,
@@ -1549,67 +1691,12 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_QCgcTSTNcZjRSWfw"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_XV7JfbSRQvprvsqk"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.1.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.1.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_fnMtdNmSNFtqNqFy"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.4.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.4.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_xRYdRtZR8nGTCTQk"
     }
    ],
    "kind": "question_part"
   },
   "qstnprt_hmKj7xymdVtVpjs5": {
    "codes": [
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_Js6Ssmf8bcm3bfcY"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.1.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.1.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_fnMtdNmSNFtqNqFy"
-    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -1620,12 +1707,44 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_wYJsR7ZndGpWm5Jk"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "2.1.2",
+     "officialId": null,
+     "score": null,
+     "spineCode": "2.1.2",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_fnMtdNmSNFtqNqFy"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "4.3.1",
+     "officialId": null,
+     "score": null,
+     "spineCode": "4.3.1",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_Js6Ssmf8bcm3bfcY"
     }
    ],
    "kind": "question_part"
   },
   "qstnprt_jDVdYzcdccBxcv9N": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "5.3.2",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:5.3.2",
+     "score": null,
+     "spineCode": "5.3.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -1656,17 +1775,6 @@
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
-     "officialCode": "5.2.3",
-     "officialId": null,
-     "score": null,
-     "spineCode": "5.2.3",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_MYDpqDbtS4jfgGnD"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
      "officialCode": "2.1.1",
      "officialId": null,
      "score": null,
@@ -1674,6 +1782,17 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_wYJsR7ZndGpWm5Jk"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "5.2.3",
+     "officialId": null,
+     "score": null,
+     "spineCode": "5.2.3",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_MYDpqDbtS4jfgGnD"
     }
    ],
    "kind": "question_part"
@@ -1765,34 +1884,12 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_FNS8FrKwcq4Jh5v5"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "5.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "5.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_bSs2cZmyCVQtDwxK"
     }
    ],
    "kind": "question_part"
   },
   "qstnprt_mH96zxhHH572qkGb": {
    "codes": [
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.1.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.1.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_6JPtdnKN8wn5nN2v"
-    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -1813,13 +1910,23 @@
      "spineCode": "3.1.2",
      "tier": null,
      "unit": null,
-     "viaSpcpt": "spcpt_w4T8vzhXVw9DgknT"
+     "viaSpcpt": "spcpt_6JPtdnKN8wn5nN2v"
     }
    ],
    "kind": "question_part"
   },
   "qstnprt_mKh8v4zSTsxCKYZX": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "6.1.3",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:6.1.3",
+     "score": null,
+     "spineCode": "6.1.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -1873,17 +1980,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_G8GDYggtJwkZSnXV"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_dRb7vBx3mTwv8JgB"
     }
    ],
    "kind": "question_part"
@@ -1939,6 +2035,16 @@
   "qstnprt_pZRZ7FTQrgTYDxp6": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "6.1.3",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:6.1.3",
+     "score": null,
+     "spineCode": "6.1.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "6.1.2",
@@ -1955,26 +2061,14 @@
   "qstnprt_px6Gw96BbBWxvRsp": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.1.1",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "8.1.3",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:8.1.3",
      "score": null,
-     "spineCode": "8.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_7CvWRNDZvd8Mg3nK"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_DGgCX9d66j82PfvD"
+     "spineCode": "8.1.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -2001,6 +2095,17 @@
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
+     "officialCode": "8.1.1",
+     "officialId": null,
+     "score": null,
+     "spineCode": "8.1.1",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_7CvWRNDZvd8Mg3nK"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
      "officialCode": "8.3.1",
      "officialId": null,
      "score": null,
@@ -2010,7 +2115,16 @@
      "viaSpcpt": "spcpt_S3skn5w6MgBkTY8m"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "8.3.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:8.3.1",
+     "spineCode": "8.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_pynNDhCYNcyPPQ2z": {
    "codes": [
@@ -2058,15 +2172,14 @@
   "qstnprt_qMY3QZH9nKvKT4p7": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "7.2.1",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "7.2.2",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:7.2.2",
      "score": null,
-     "spineCode": "7.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_QZNcPBs8YwdPP5XW"
+     "spineCode": "7.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -2077,23 +2190,31 @@
      "spineCode": "7.2.1",
      "tier": null,
      "unit": null,
-     "viaSpcpt": "spcpt_v6CfwNYJCVSWKRnD"
+     "viaSpcpt": "spcpt_QZNcPBs8YwdPP5XW"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "7.2.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:7.2.1",
+     "spineCode": "7.2.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_qrMDsZrTnPxWGRdj": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "3.2.1",
-     "officialId": null,
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:3.2.1",
      "score": null,
      "spineCode": "3.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_5MYdW6X9gtxYBCxf"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -2105,17 +2226,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_6JPtdnKN8wn5nN2v"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.1.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.1.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_w4T8vzhXVw9DgknT"
     }
    ],
    "kind": "question_part"
@@ -2193,20 +2303,38 @@
      "viaSpcpt": "spcpt_BwzjjjprWt7gjbpJ"
     }
    ],
-   "kind": "question_part"
+   "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "7.3.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:7.3.1",
+     "spineCode": "7.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "qstnprt_wqQ7JKDpXkw2fbZC": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.1.2",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "5.2.4",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:5.2.4",
      "score": null,
-     "spineCode": "6.1.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_NWd745VHpHBJJvDW"
+     "spineCode": "5.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "6.1.4",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:6.1.4",
+     "score": null,
+     "spineCode": "6.1.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -2218,12 +2346,33 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_bDHJqRjcgMQSWJrK"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "6.1.2",
+     "officialId": null,
+     "score": null,
+     "spineCode": "6.1.2",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_NWd745VHpHBJJvDW"
     }
    ],
    "kind": "question_part"
   },
   "qstnprt_x7yRQC6mDdPW2kbj": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "5.1.2",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:5.1.2",
+     "score": null,
+     "spineCode": "5.1.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -2270,17 +2419,6 @@
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
-     "officialCode": "5.2.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "5.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_SNG6q27n2BhDJnTw"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
      "officialCode": "5.2.2",
      "officialId": null,
      "score": null,
@@ -2297,17 +2435,6 @@
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
-     "officialCode": "3.1.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.1.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_6JPtdnKN8wn5nN2v"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
      "officialCode": "2.4.2",
      "officialId": null,
      "score": null,
@@ -2315,6 +2442,17 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_KZRkhw4ZyPvbJgmp"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "3.1.2",
+     "officialId": null,
+     "score": null,
+     "spineCode": "3.1.2",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_6JPtdnKN8wn5nN2v"
     }
    ],
    "kind": "question_part"
@@ -2331,17 +2469,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_5CmmJhhfgpyS7sP4"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.2.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_ZBR7nWQ6325d98rP"
     }
    ],
    "kind": "question_part"
@@ -2349,15 +2476,14 @@
   "qstnprt_zh6dKmd2WKtCsT2S": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "5.3.2",
-     "officialId": null,
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:5.3.2",
      "score": null,
      "spineCode": "5.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_FNS8FrKwcq4Jh5v5"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -2440,15 +2566,14 @@
   "rn_8dpN7S6hZngX4FKS": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.6.2",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "1.6.3",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:1.6.3",
      "score": null,
-     "spineCode": "1.6.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_7vF4YNWkYMjrtwQ9"
+     "spineCode": "1.6.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -2459,7 +2584,7 @@
      "spineCode": "1.6.2",
      "tier": null,
      "unit": null,
-     "viaSpcpt": "spcpt_dSTnqf6MvkZx42kT"
+     "viaSpcpt": "spcpt_7vF4YNWkYMjrtwQ9"
     }
    ],
    "kind": "note"
@@ -2483,15 +2608,14 @@
   "rn_9Z4G6cw4yNnGn29y": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "4.1.1",
-     "officialId": null,
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:4.1.1",
      "score": null,
      "spineCode": "4.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_dgqsYdhZVVcd7wJQ"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "note"
@@ -2508,23 +2632,22 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_8FTVdxmmD9BvjyBN"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.6.3",
-     "officialId": null,
-     "score": null,
-     "spineCode": "1.6.3",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_MDJn3xgR8QrgkT2B"
     }
    ],
    "kind": "note"
   },
   "rn_DvQ7CBdJSSmbYx2h": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "1.5.5",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:1.5.5",
+     "score": null,
+     "spineCode": "1.5.5",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -2558,15 +2681,24 @@
   "rn_HzHcqH9Qb5MBm67B": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.1.2",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "6.1.3",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:6.1.3",
      "score": null,
-     "spineCode": "6.1.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_NWd745VHpHBJJvDW"
+     "spineCode": "6.1.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "6.1.4",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:6.1.4",
+     "score": null,
+     "spineCode": "6.1.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -2577,7 +2709,7 @@
      "spineCode": "6.1.2",
      "tier": null,
      "unit": null,
-     "viaSpcpt": "spcpt_hjJTyxSKRncC9Ybb"
+     "viaSpcpt": "spcpt_NWd745VHpHBJJvDW"
     }
    ],
    "kind": "note"
@@ -2596,7 +2728,16 @@
      "viaSpcpt": "spcpt_5prxzJV8Wcxgcm5p"
     }
    ],
-   "kind": "note"
+   "kind": "note",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "6.1.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:6.1.1",
+     "spineCode": "6.1.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "rn_MbqChxF3VSCD4VSz": {
    "codes": [
@@ -2633,15 +2774,14 @@
   "rn_MwwCdRkYz7FsDmnb": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "3.2.1",
-     "officialId": null,
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:3.2.1",
      "score": null,
      "spineCode": "3.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_5MYdW6X9gtxYBCxf"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "note"
@@ -2658,17 +2798,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_6JPtdnKN8wn5nN2v"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.1.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.1.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_w4T8vzhXVw9DgknT"
     }
    ],
    "kind": "note"
@@ -2685,17 +2814,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_wYJsR7ZndGpWm5Jk"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_yKthmPbd9FSY4vmV"
     }
    ],
    "kind": "note"
@@ -2719,15 +2837,14 @@
   "rn_TCkG334cFJ25NbWH": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "7.2.1",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "7.2.2",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:7.2.2",
      "score": null,
-     "spineCode": "7.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_QZNcPBs8YwdPP5XW"
+     "spineCode": "7.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -2738,13 +2855,32 @@
      "spineCode": "7.2.1",
      "tier": null,
      "unit": null,
-     "viaSpcpt": "spcpt_v6CfwNYJCVSWKRnD"
+     "viaSpcpt": "spcpt_QZNcPBs8YwdPP5XW"
     }
    ],
-   "kind": "note"
+   "kind": "note",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "7.2.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:7.2.1",
+     "spineCode": "7.2.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "rn_WWNfmgcN33y3DjTv": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "5.2.4",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:5.2.4",
+     "score": null,
+     "spineCode": "5.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -2755,17 +2891,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_bDHJqRjcgMQSWJrK"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "5.2.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "5.2.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_wSH562csXJ8JHgs8"
     }
    ],
    "kind": "note"
@@ -2784,7 +2909,16 @@
      "viaSpcpt": "spcpt_CMF3zwJzDdYdVWDN"
     }
    ],
-   "kind": "note"
+   "kind": "note",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "3.3.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:3.3.1",
+     "spineCode": "3.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "rn_Ybh2NGrt6WGKYGJ9": {
    "codes": [
@@ -2798,23 +2932,22 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_5CmmJhhfgpyS7sP4"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.2.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_ZBR7nWQ6325d98rP"
     }
    ],
    "kind": "note"
   },
   "rn_Z5Dxs4CY48NbskcR": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "1.6.9",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:1.6.9",
+     "score": null,
+     "spineCode": "1.6.9",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -2825,17 +2958,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_YCCKFbMQHKCrdh3d"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.6.5",
-     "officialId": null,
-     "score": null,
-     "spineCode": "1.6.5",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_rsHz7rMw6X3kRMdb"
     }
    ],
    "kind": "note"
@@ -2843,26 +2965,14 @@
   "rn_bRZZm5q76pVkKrcM": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "1.1.1",
-     "officialId": null,
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:1.1.1",
      "score": null,
      "spineCode": "1.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_CpSf2ZkzrP9cc2NH"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "1.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_KzQmBm57bXbxPvr8"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "note"
@@ -2879,17 +2989,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_FNS8FrKwcq4Jh5v5"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "5.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "5.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_bSs2cZmyCVQtDwxK"
     }
    ],
    "kind": "note"
@@ -2906,17 +3005,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_BqFPw6M4fJFRYDy9"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.2.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_mCy5kMZFQH8SgwMh"
     }
    ],
    "kind": "note"
@@ -2940,15 +3028,14 @@
   "rn_f7QM2mtTnkysCk4Z": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "7.1.1",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "7.1.4",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:7.1.4",
      "score": null,
-     "spineCode": "7.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_J3qSgMRj9Kb4SJcQ"
+     "spineCode": "7.1.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -2959,10 +3046,19 @@
      "spineCode": "7.1.1",
      "tier": null,
      "unit": null,
-     "viaSpcpt": "spcpt_kVw5878xZsg6H34g"
+     "viaSpcpt": "spcpt_J3qSgMRj9Kb4SJcQ"
     }
    ],
-   "kind": "note"
+   "kind": "note",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "7.1.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:7.1.1",
+     "spineCode": "7.1.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "rn_fnK3R6fCZHdrY36G": {
    "codes": [
@@ -2982,6 +3078,16 @@
   },
   "rn_g7zgXrcfbjgpQxB9": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "5.3.2",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:5.3.2",
+     "score": null,
+     "spineCode": "5.3.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -3040,17 +3146,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_XV7JfbSRQvprvsqk"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_xSQM79sbYnjQ2fMd"
     }
    ],
    "kind": "note"
@@ -3067,23 +3162,32 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_KP4GbTCD96FBxt38"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "5.2.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "5.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_SNG6q27n2BhDJnTw"
     }
    ],
    "kind": "note"
   },
   "rn_kphbFZSr9wjh6X5G": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.2.5",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:4.2.5",
+     "score": null,
+     "spineCode": "4.2.5",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "4.2.6",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:4.2.6",
+     "score": null,
+     "spineCode": "4.2.6",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -3094,17 +3198,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_9jdtG4qKGj6vHwCT"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.2.3",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.2.3",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_b8J7VmDth23QQDjT"
     }
    ],
    "kind": "note"
@@ -3128,15 +3221,14 @@
   "rn_mvXSTr7xjdGmzB6T": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.2.2",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "8.1.4",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:8.1.4",
      "score": null,
-     "spineCode": "2.2.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_XTYY4PgC72Ykpx44"
+     "spineCode": "8.1.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -3147,13 +3239,33 @@
      "spineCode": "2.2.2",
      "tier": null,
      "unit": null,
-     "viaSpcpt": "spcpt_cbCDFGTFW47kH7wp"
+     "viaSpcpt": "spcpt_XTYY4PgC72Ykpx44"
     }
    ],
    "kind": "note"
   },
   "rn_nhJqXw8VDFQZbG83": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "5.1.2",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:5.1.2",
+     "score": null,
+     "spineCode": "5.1.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "5.1.3",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:5.1.3",
+     "score": null,
+     "spineCode": "5.1.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -3164,17 +3276,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_BfsP7Gsc4qfRBftY"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "5.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "5.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_GdYVcGYQzBHXJ4Kt"
     }
    ],
    "kind": "note"
@@ -3191,17 +3292,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_G8GDYggtJwkZSnXV"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_dRb7vBx3mTwv8JgB"
     }
    ],
    "kind": "note"
@@ -3218,34 +3308,22 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_2yJ34Xd6fMHF33Dr"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.5.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "1.5.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_4M2fc7gnRtpDTNjN"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.5.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "1.5.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_mQfwgZvHjKVmVPCn"
     }
    ],
    "kind": "note"
   },
   "rn_pbnhxNfVHmHBtXF5": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "1.3.2",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:1.3.2",
+     "score": null,
+     "spineCode": "1.3.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -3256,20 +3334,18 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_hTD33DS6WjWZ4Hkz"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "1.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_wxxRTCv68jqWGyRX"
     }
    ],
-   "kind": "note"
+   "kind": "note",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "1.3.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:1.3.1",
+     "spineCode": "1.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "rn_rQt7KdXtY4KXNRmG": {
    "codes": [
@@ -3283,17 +3359,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_Js6Ssmf8bcm3bfcY"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_rkXq7ZF7HvwwXDHW"
     }
    ],
    "kind": "note"
@@ -3310,17 +3375,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_BQHrfYVJ7F6NYsN4"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.5.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.5.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_SdSxhmXwh53prGjj"
     }
    ],
    "kind": "note"
@@ -3339,7 +3393,16 @@
      "viaSpcpt": "spcpt_6WwhH6vpj4DxvSP4"
     }
    ],
-   "kind": "note"
+   "kind": "note",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "7.4.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:7.4.1",
+     "spineCode": "7.4.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "rn_tCqcTnWxb9qtnKV6": {
    "codes": [
@@ -3360,15 +3423,14 @@
   "rn_tPjCvbPdG499bGqr": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.1.1",
-     "officialId": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "8.1.3",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:8.1.3",
      "score": null,
-     "spineCode": "8.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_7CvWRNDZvd8Mg3nK"
+     "spineCode": "8.1.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -3379,7 +3441,7 @@
      "spineCode": "8.1.1",
      "tier": null,
      "unit": null,
-     "viaSpcpt": "spcpt_DGgCX9d66j82PfvD"
+     "viaSpcpt": "spcpt_7CvWRNDZvd8Mg3nK"
     }
    ],
    "kind": "note"
@@ -3398,10 +3460,29 @@
      "viaSpcpt": "spcpt_BwzjjjprWt7gjbpJ"
     }
    ],
-   "kind": "note"
+   "kind": "note",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "7.3.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:7.3.1",
+     "spineCode": "7.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "rn_tkvH36XK3j6TpTxf": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "7.4.5",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:7.4.5",
+     "score": null,
+     "spineCode": "7.4.5",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -3412,28 +3493,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_BFxQcND5hhcxjZCv"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "7.4.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "7.4.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_ChjQd4n696YwgsYX"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "7.4.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "7.4.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_J6nvQqxTM75GF5sR"
     }
    ],
    "kind": "note"
@@ -3450,23 +3509,22 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_C4BJb5MjSHRXhXcH"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.2.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_x63hYy4vwSV7BsbQ"
     }
    ],
    "kind": "note"
   },
   "rn_xGFr5xD4nB9tgKyk": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "1.6.15",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:1.6.15",
+     "score": null,
+     "spineCode": "1.6.15",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -3477,17 +3535,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_C9ckCfYrhwgKxqKc"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.6.4",
-     "officialId": null,
-     "score": null,
-     "spineCode": "1.6.4",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_s8Fc5Jr5NbQ5M2jq"
     }
    ],
    "kind": "note"
@@ -3520,44 +3567,30 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_S3skn5w6MgBkTY8m"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_hFqgYxXsDf3W9RBn"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_yKkCffmzmZwXFXHk"
     }
    ],
-   "kind": "note"
+   "kind": "note",
+   "t2HintCodes": [
+    {
+     "method": "cie_definition_text_join",
+     "officialCode": "8.3.1",
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:8.3.1",
+     "spineCode": "8.3.1",
+     "tier": "T2_near"
+    }
+   ]
   },
   "rn_zmB3Y2DtnPgrMwCm": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "4.1.3",
-     "officialId": null,
+     "officialId": "CIE_AS_ENVIRONMENTAL_MANAGEMENT_2025_2027:4.1.3",
      "score": null,
      "spineCode": "4.1.3",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_J6p9nGFzKcSwzqPd"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "note"
@@ -3570,22 +3603,19 @@
  "qual": "cie-as-environmental-management-2025-2027",
  "reconciliation": {
   "codesOutsideSpine": [],
-  "distinctCodesAttached": 52,
+  "distinctCodesAttached": 66,
   "itemsOutsideSpine": 0,
-  "spineHitCodes": 52,
+  "spineHitCodes": 66,
   "spineSpecPoints": 131,
   "uncoveredSpineCodeList": [
-   "1.3.2",
    "1.4.2",
    "1.5.3",
    "1.5.4",
-   "1.5.5",
    "1.6.10",
    "1.6.11",
    "1.6.12",
    "1.6.13",
    "1.6.14",
-   "1.6.15",
    "1.6.16",
    "1.6.17",
    "1.6.18",
@@ -3593,7 +3623,6 @@
    "1.6.6",
    "1.6.7",
    "1.6.8",
-   "1.6.9",
    "2.1.3",
    "2.1.4",
    "2.1.5",
@@ -3622,47 +3651,66 @@
    "4.1.5",
    "4.1.6",
    "4.1.7",
-   "4.2.5",
-   "4.2.6",
    "4.2.7",
    "4.3.3",
    "4.3.4",
    "4.3.5",
-   "5.1.3",
    "5.1.4",
-   "5.2.4",
    "5.2.5",
    "5.3.3",
    "5.3.4",
-   "6.1.4",
    "6.1.5",
    "6.1.6",
    "7.1.2",
    "7.1.3",
-   "7.1.4",
-   "7.2.2",
    "7.4.3",
    "7.4.4",
-   "7.4.5",
    "7.4.6",
    "7.4.7",
    "7.4.8",
    "7.4.9",
-   "8.1.3",
-   "8.1.4",
    "8.2.2",
    "8.3.2",
    "8.3.3",
    "8.3.4"
   ],
-  "uncoveredSpineCodes": 79
+  "uncoveredSpineCodes": 65
  },
- "resourcesSha": "0fe5f77210f74aaeb3f6c491dfe0263d12db738c",
+ "resourcesSha": "75981cad0b08c190fb70902eb6cdca1f76b9cd68",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
   "resolution": null,
-  "specLinks": null,
+  "specLinks": {
+   "census": {
+    "codesAttachedFromSidecar": 50,
+    "codesByMethod": {
+     "cie_index_rejoin": 50
+    },
+    "codesByTier": {
+     "J4_name_phrase_identity": 50
+    },
+    "itemsWithCodes": 57,
+    "ladderCodesRetained": 192,
+    "sidecarCodes": 71,
+    "sidecarItems": 151,
+    "sidecarOnlyItems": 0,
+    "t2Hints": 21
+   },
+   "derivation": "ACCEPTED spec-links sidecar (T-SPECS-CIE join/verdict/gate/rejoin chain) merged item-level: operator-verdict authoritative, T1 gate-verified, J* post-gate identity-grade; T2_near carried as non-authoritative items[].t2HintCodes only; REJOIN sheet sid->code rows upgrade/add spcptToOfficial (conflicts kept, disclosed)",
+   "regime": "spec_links_sidecar_accepted",
+   "reviewState": {
+    "rejoin": "ACCEPTED",
+    "state": "ACCEPTED"
+   },
+   "sheetUpgrades": {
+    "added": 0,
+    "conflictsKept": 18,
+    "upgraded": 4
+   },
+   "sidecar": "spec-links/cie-as-environmental-management-20.json",
+   "t2Policy": "T2_near is a non-authoritative hint (GATE-1 tier_policy); never in codes/linkage"
+  },
   "specPointMap": {
    "crossLaneResolved": 0,
    "derivation": "deterministic ladder R1-R4 (leaf) + R5 (subtopic scope, notes only) over the upstream spec_point_index incl. cross_lane_join resolutions; every row carries its rule id",
@@ -3671,6 +3719,7 @@
    "ruleCounts": {
     "R1": 83
    },
+   "sidecarConsumed": true,
    "smeEntries": 83,
    "subtopicScoped": 0,
    "unmapped": 0
@@ -3731,17 +3780,17 @@
    "via": "R1"
   },
   "spcpt_5MYdW6X9gtxYBCxf": {
-   "lineage": "upstream_item_join",
-   "method": null,
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
    "officialCode": "3.2.1",
    "officialCodes": [
     "3.2.1"
    ],
    "officialId": null,
    "score": null,
-   "tier": null,
+   "tier": "J4_name_phrase_identity",
    "unit": null,
-   "via": "R1"
+   "via": "REJOIN-1:gate-1"
   },
   "spcpt_5prxzJV8Wcxgcm5p": {
    "lineage": "upstream_item_join",
@@ -4082,17 +4131,17 @@
    "via": "R1"
   },
   "spcpt_J6p9nGFzKcSwzqPd": {
-   "lineage": "upstream_item_join",
-   "method": null,
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
    "officialCode": "4.1.3",
    "officialCodes": [
     "4.1.3"
    ],
    "officialId": null,
    "score": null,
-   "tier": null,
+   "tier": "J4_name_phrase_identity",
    "unit": null,
-   "via": "R1"
+   "via": "REJOIN-1:gate-1"
   },
   "spcpt_Js6Ssmf8bcm3bfcY": {
    "lineage": "upstream_item_join",
@@ -4134,17 +4183,17 @@
    "via": "R1"
   },
   "spcpt_KzQmBm57bXbxPvr8": {
-   "lineage": "upstream_item_join",
-   "method": null,
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
    "officialCode": "1.1.1",
    "officialCodes": [
     "1.1.1"
    ],
    "officialId": null,
    "score": null,
-   "tier": null,
+   "tier": "J4_name_phrase_identity",
    "unit": null,
-   "via": "R1"
+   "via": "REJOIN-1:gate-1"
   },
   "spcpt_MDJn3xgR8QrgkT2B": {
    "lineage": "upstream_item_join",
@@ -4446,17 +4495,17 @@
    "via": "R1"
   },
   "spcpt_dgqsYdhZVVcd7wJQ": {
-   "lineage": "upstream_item_join",
-   "method": null,
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
    "officialCode": "4.1.1",
    "officialCodes": [
     "4.1.1"
    ],
    "officialId": null,
    "score": null,
-   "tier": null,
+   "tier": "J4_name_phrase_identity",
    "unit": null,
-   "via": "R1"
+   "via": "REJOIN-1:gate-1"
   },
   "spcpt_fnMtdNmSNFtqNqFy": {
    "lineage": "upstream_item_join",

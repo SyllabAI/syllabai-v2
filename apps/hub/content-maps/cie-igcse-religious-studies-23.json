@@ -7,23 +7,26 @@
    "viaSubtopicScope": 0
   },
   "notes": {
-   "coded": 36,
+   "coded": 57,
    "total": 97,
-   "unmapped": 61,
+   "unmapped": 40,
    "viaSubtopicScope": 21
   },
   "questionParts": {
-   "coded": 16,
+   "coded": 57,
    "total": 145,
-   "unmapped": 129,
+   "unmapped": 88,
    "viaSubtopicScope": 0
   }
  },
  "course": "cie-igcse-religious-studies-23",
- "generatedUtc": null,
+ "generatedUtc": "2026-10-20T14:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-igcse-religious-studies-23/spec_point_index.json": {
    "sha256": "8eef6378efdaa0c750fdfc7f95a5f1d03a5a5310db34511e98549b59a7a8dd80"
+  },
+  "spec-links/cie-igcse-religious-studies-23.json": {
+   "sha256": "1536bc2853f21a70e2c0036742e36a6a6332827a617d85de47df7352361ecd6b"
   },
   "spine": {
    "file": "spines/cie-igcse-religious-studies-23.json"
@@ -52,15 +55,14 @@
   "qstnprt_2QYYWFjKjBgDM7Dh": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "C1.4d",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C1.4d",
      "score": null,
      "spineCode": "C1.4d",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_fRNdrjNgs3GngmbZ"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -84,26 +86,24 @@
   "qstnprt_2ZBq8wzhTWzK74c3": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "I2.2b",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I2.2b",
      "score": null,
      "spineCode": "I2.2b",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_4B9zbkgmCy3vPvdM"
+     "tier": "V1_name_text_identity",
+     "unit": null
     },
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "I2.2d",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I2.2d",
      "score": null,
      "spineCode": "I2.2d",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_r2rY4NKHsMKVbhXd"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -113,12 +113,22 @@
    "kind": "question_part"
   },
   "qstnprt_2bMFkK7yyJx88t2B": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I5.3c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I5.3c",
+     "score": null,
+     "spineCode": "I5.3c",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_JZnp3kgFS8zGzRMY"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_3TNpCjDKq3ZfKJYG": {
    "codes": [],
@@ -166,15 +176,25 @@
    "unmapped": true
   },
   "qstnprt_4vZ2R7TQvtFNrDDf": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.2e",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.2e",
+     "score": null,
+     "spineCode": "J4.2e",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_8wSbtJdyJZvKdRj2",
     "spcpt_Sm3cZbDtPYsXbPnf",
     "spcpt_pwPHcbXFh6gBXsc2",
     "spcpt_zvq8c2hy5MYRbk7m"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_53bGDQNhCxBfkX3N": {
    "codes": [],
@@ -194,22 +214,62 @@
    "unmapped": true
   },
   "qstnprt_5THS7ZBNBGwZQ643": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.1d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.1d",
+     "score": null,
+     "spineCode": "C4.1d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.1e",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.1e",
+     "score": null,
+     "spineCode": "C4.1e",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.1f",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.1f",
+     "score": null,
+     "spineCode": "C4.1f",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Rjk5bhKfS2T6YRgJ",
     "spcpt_ndZzfkHfQT5VZZgB",
     "spcpt_vb2qyvr3499tTKSZ"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_5pSSkdMGvtrcFjyY": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.5d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.5d",
+     "score": null,
+     "spineCode": "C4.5d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_5ymyKGshG57drkxz"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_5wv4h35hBPcBxcNT": {
    "codes": [],
@@ -256,15 +316,14 @@
   "qstnprt_7prz43tQ6ZVfjD7D": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "I3.2e",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I3.2e",
      "score": null,
      "spineCode": "I3.2e",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_95MjRy38mmfhKKz4"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -280,14 +339,34 @@
    "unmapped": true
   },
   "qstnprt_8VC955smgXSCYTqb": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C2.1a",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C2.1a",
+     "score": null,
+     "spineCode": "C2.1a",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C2.2b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C2.2b",
+     "score": null,
+     "spineCode": "C2.2b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3BYq2rkTrm5X4pwm",
     "spcpt_59j9XxM32vY4w4Hq",
     "spcpt_dgv5rMjB9GpXS9HW"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_8XWpCns97rG6dDQn": {
    "codes": [],
@@ -320,15 +399,14 @@
   "qstnprt_8vP9DHZvF3MFvkTG": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "I2.1e",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I2.1e",
      "score": null,
      "spineCode": "I2.1e",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_gHbJfXKk6DYJxVXD"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -337,14 +415,24 @@
    "kind": "question_part"
   },
   "qstnprt_9SbqpXv6hzckMj8J": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I1.1b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I1.1b",
+     "score": null,
+     "spineCode": "I1.1b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_PcdfNZ4ZzgrYjxmY",
     "spcpt_n5PYvNHkTnJ5G6hD",
     "spcpt_xzdfhpwYZSdKPWQf"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_9VzYzpFnQZdv49nB": {
    "codes": [],
@@ -376,24 +464,44 @@
    "unmapped": true
   },
   "qstnprt_9zbvJTFyskHGZVZw": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I4.1d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I4.1d",
+     "score": null,
+     "spineCode": "I4.1d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3FJHpWfPqQBNnWvs",
     "spcpt_6dFNV5XNyZGFwcKp",
     "spcpt_vygtHRwDB2RMcG3H",
     "spcpt_wNsHt2k8KPBwV6wC"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_Bk7tKCWpFXjBCdYB": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I5.1b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I5.1b",
+     "score": null,
+     "spineCode": "I5.1b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_YXCX4NpxDXDjbdmk",
     "spcpt_fS23ncbXZ3p6BHX4"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_BppBSp7ZsJWZ45xN": {
    "codes": [],
@@ -406,14 +514,24 @@
    "unmapped": true
   },
   "qstnprt_BxyHJb3knK3KQZDH": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J5.2b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J5.2b",
+     "score": null,
+     "spineCode": "J5.2b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Dfqg2ZFz6sfRgwsj",
     "spcpt_nwmRqy5jzzGrThJs",
     "spcpt_vw87vZ4j4MzDYt7s"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_CMtHHxm2dGg8qvkG": {
    "codes": [],
@@ -434,13 +552,23 @@
    "unmapped": true
   },
   "qstnprt_D3jpzf88TXkJJXbc": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C2.2d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C2.2d",
+     "score": null,
+     "spineCode": "C2.2d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_BgJbHvTrKHR4Wm5y",
     "spcpt_ZcxVJxkpfTc7tJsP"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_DFc5TnTVx67tPH5g": {
    "codes": [],
@@ -452,14 +580,24 @@
    "unmapped": true
   },
   "qstnprt_DdYyypCmsBMrTWMR": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.1a",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.1a",
+     "score": null,
+     "spineCode": "J4.1a",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_7GrF6TsKRrpXW3yZ",
     "spcpt_F4vbC2BWc7RvDnYn",
     "spcpt_vYkJXZVPtCYrhxnW"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_DgWQ5WBQQ4WTpv4V": {
    "codes": [],
@@ -474,6 +612,16 @@
   "qstnprt_DnshwxwbQQFs6TRV": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C1.4d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C1.4d",
+     "score": null,
+     "spineCode": "C1.4d",
+     "tier": "V1_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "J3.3a",
@@ -483,28 +631,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_Q6Dbdw3yyWqDFTj7"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "J3.3a",
-     "officialId": null,
-     "score": null,
-     "spineCode": "J3.3a",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_XBZ8dsz6cMmvdnMD"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "C1.4d",
-     "officialId": null,
-     "score": null,
-     "spineCode": "C1.4d",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_fRNdrjNgs3GngmbZ"
     }
    ],
    "kind": "question_part"
@@ -512,15 +638,14 @@
   "qstnprt_DpK8BVQxktMQbjpb": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "C2.3b",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C2.3b",
      "score": null,
      "spineCode": "C2.3b",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_9YdbKrjTv8f7jSnF"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -530,15 +655,25 @@
    "kind": "question_part"
   },
   "qstnprt_FgMHK83W84TQyPBW": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J1.6b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J1.6b",
+     "score": null,
+     "spineCode": "J1.6b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_QXzR6QNCtnjHwZGQ",
     "spcpt_SRbDX5B34Ysz2JhX",
     "spcpt_c6KTBFhF8Rm8zhXj",
     "spcpt_hKYTQKZ3yR3Qr7QK"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_FyJBK7kzFbCjh35p": {
    "codes": [],
@@ -558,15 +693,35 @@
    "unmapped": true
   },
   "qstnprt_GwhXygVbvW6c6Y8b": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.1a",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.1a",
+     "score": null,
+     "spineCode": "J4.1a",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.1c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.1c",
+     "score": null,
+     "spineCode": "J4.1c",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_CPQW8pPjQKJ8nwd9",
     "spcpt_F4vbC2BWc7RvDnYn",
     "spcpt_PXRHvX7CVqwDQJJN",
     "spcpt_qQJzt5FnCpkD5Jsw"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_HkDs8gcsfyvdH2NQ": {
    "codes": [],
@@ -587,13 +742,23 @@
    "unmapped": true
   },
   "qstnprt_Hw7NwqmYG5n2cnf7": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.2c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.2c",
+     "score": null,
+     "spineCode": "C4.2c",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3Z8Yjx7cFmqhPCZt",
     "spcpt_d7cfNGcfPTPpDCgV"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_J4gvzkjWbtDbGnJm": {
    "codes": [],
@@ -644,15 +809,14 @@
   "qstnprt_KQkPrHRCgwKyR8HH": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "I2.1c",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I2.1c",
      "score": null,
      "spineCode": "I2.1c",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_K9NB8wxj6qQ5QdXF"
+     "tier": "V1_name_text_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -682,15 +846,25 @@
    "unmapped": true
   },
   "qstnprt_KYtks7qZHtNsrhgD": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J2.2b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J2.2b",
+     "score": null,
+     "spineCode": "J2.2b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_8x2WXxNXZXXJWXcK",
     "spcpt_fmZXZZ4S4z6qdSjY",
     "spcpt_kTS27Ys4XV5gc3vj",
     "spcpt_t5DCZWDBBfjRhJQf"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_KwpKc6zG6YbdVDRG": {
    "codes": [],
@@ -710,14 +884,24 @@
    "unmapped": true
   },
   "qstnprt_M8zfNb4M236gBqrn": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I4.3b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I4.3b",
+     "score": null,
+     "spineCode": "I4.3b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_kHqNFXWnWDFN2GNr",
     "spcpt_sVd2xKjCQNx7fNsX",
     "spcpt_vxyDnFThNQmJ3hbt"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_MJyZS9N2tt48zmkg": {
    "codes": [],
@@ -747,15 +931,55 @@
    "unmapped": true
   },
   "qstnprt_N5x2d2ymSkWKSyQN": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.1f",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.1f",
+     "score": null,
+     "spineCode": "J4.1f",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.2e",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.2e",
+     "score": null,
+     "spineCode": "J4.2e",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.3c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.3c",
+     "score": null,
+     "spineCode": "J4.3c",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.4d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.4d",
+     "score": null,
+     "spineCode": "J4.4d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_BgxnjrhYmyfmc6Q8",
     "spcpt_sBHSnr7qhBSXn7Kd",
     "spcpt_vzM3tZJFx4Mbj89D",
     "spcpt_zvq8c2hy5MYRbk7m"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_N7rRNBCDDwxmCQhM": {
    "codes": [],
@@ -767,13 +991,23 @@
    "unmapped": true
   },
   "qstnprt_NFg5JQJfS5f6RD3T": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I5.1b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I5.1b",
+     "score": null,
+     "spineCode": "I5.1b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_YXCX4NpxDXDjbdmk",
     "spcpt_fS23ncbXZ3p6BHX4"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_Nkt826b3MGKQQRyN": {
    "codes": [],
@@ -787,20 +1021,40 @@
    "unmapped": true
   },
   "qstnprt_NwZ6pPd7fCNDWCKC": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.2c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.2c",
+     "score": null,
+     "spineCode": "C4.2c",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3Z8Yjx7cFmqhPCZt"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_PbwctwzN5QrxHb2Q": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I1.4d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I1.4d",
+     "score": null,
+     "spineCode": "I1.4d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_PDQPvcDpshSSTM8R"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_Q73HcQhGKFDzcb2J": {
    "codes": [],
@@ -877,7 +1131,18 @@
    "unmapped": true
   },
   "qstnprt_VhqRpN6S22HjwPmV": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J1.6b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J1.6b",
+     "score": null,
+     "spineCode": "J1.6b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2vBZ5kd3RYxmQ8Jx",
     "spcpt_DbGycqqxtYBbStq8",
@@ -886,8 +1151,7 @@
     "spcpt_SRbDX5B34Ysz2JhX",
     "spcpt_tpsr8Vr3G35ygsB3"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_W3F8f8869MsrXBQW": {
    "codes": [],
@@ -910,13 +1174,23 @@
    "unmapped": true
   },
   "qstnprt_WbwKjJPKY4HCMxhV": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.1e",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.1e",
+     "score": null,
+     "spineCode": "C4.1e",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_P4Wdd4k2fmxK6CPc",
     "spcpt_ndZzfkHfQT5VZZgB"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_Y8w6DS4WdvsCy5rt": {
    "codes": [],
@@ -932,26 +1206,24 @@
   "qstnprt_ZBXSmQtyQKFf4vw2": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "I2.1c",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I2.1c",
      "score": null,
      "spineCode": "I2.1c",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_K9NB8wxj6qQ5QdXF"
+     "tier": "V1_name_text_identity",
+     "unit": null
     },
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "I2.1e",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I2.1e",
      "score": null,
      "spineCode": "I2.1e",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_gHbJfXKk6DYJxVXD"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -1068,28 +1340,67 @@
    "unmapped": true
   },
   "qstnprt_gKxgWTdRDZbYHc9C": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.1f",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.1f",
+     "score": null,
+     "spineCode": "J4.1f",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.2e",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.2e",
+     "score": null,
+     "spineCode": "J4.2e",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.3c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.3c",
+     "score": null,
+     "spineCode": "J4.3c",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.4d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.4d",
+     "score": null,
+     "spineCode": "J4.4d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_BgxnjrhYmyfmc6Q8",
     "spcpt_sBHSnr7qhBSXn7Kd",
     "spcpt_vzM3tZJFx4Mbj89D",
     "spcpt_zvq8c2hy5MYRbk7m"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_gX5GBwPmsGxhT64k": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "I4.2b",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I4.2b",
      "score": null,
      "spineCode": "I4.2b",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_GtxYkTYVJz2DmXsC"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -1109,14 +1420,24 @@
    "unmapped": true
   },
   "qstnprt_h8gcyKk7zHDwHJCs": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J1.6b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J1.6b",
+     "score": null,
+     "spineCode": "J1.6b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_QXzR6QNCtnjHwZGQ",
     "spcpt_SRbDX5B34Ysz2JhX",
     "spcpt_ZF2d2QNnk6Cxm7YB"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_hBRNW6bDjQj6JzZw": {
    "codes": [
@@ -1139,24 +1460,54 @@
    "kind": "question_part"
   },
   "qstnprt_hSFpv4zJbFtmX5vs": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I6.2a",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I6.2a",
+     "score": null,
+     "spineCode": "I6.2a",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_X6gjNQDRhMwm4PMF",
     "spcpt_hqxmk6w6dfSKTK3Q"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_j8mwBz3yVwGM28PN": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I2.4e",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I2.4e",
+     "score": null,
+     "spineCode": "I2.4e",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I4.3c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I4.3c",
+     "score": null,
+     "spineCode": "I4.3c",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_6r7w56b6zVC7rSMZ",
     "spcpt_7Q2zydsFwXGnZ5mt",
     "spcpt_gqKDxTBPfcdq7X37",
     "spcpt_qRsmH9fQK9JGQrKq"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_jGcHBDkjCzBww9Qg": {
    "codes": [],
@@ -1241,25 +1592,44 @@
    "unmapped": true
   },
   "qstnprt_m5nJQwpPm7rntMcW": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C2.2f",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C2.2f",
+     "score": null,
+     "spineCode": "C2.2f",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qrn9N93mrX6W3kdc"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_mmmhQZR8QfGFFXnv": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "J4.2c",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.2c",
      "score": null,
      "spineCode": "J4.2c",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_h9vQb3HgJd2fyRYw"
+     "tier": "V1_name_text_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.2e",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.2e",
+     "score": null,
+     "spineCode": "J4.2e",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -1293,23 +1663,53 @@
    "unmapped": true
   },
   "qstnprt_nVq7KZ2ycRdyVbWz": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.1e",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.1e",
+     "score": null,
+     "spineCode": "C4.1e",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.1f",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.1f",
+     "score": null,
+     "spineCode": "C4.1f",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Rjk5bhKfS2T6YRgJ",
     "spcpt_ndZzfkHfQT5VZZgB"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_nvGPQXV4QDFTfChQ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.3c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.3c",
+     "score": null,
+     "spineCode": "J4.3c",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_7GrF6TsKRrpXW3yZ",
     "spcpt_9zW28YtRv7CRfJDW",
     "spcpt_sBHSnr7qhBSXn7Kd"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_nw2TF9B2YqtQqy3J": {
    "codes": [],
@@ -1322,14 +1722,24 @@
    "unmapped": true
   },
   "qstnprt_pJbv33nB6GJTz9Qr": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J1.5e",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J1.5e",
+     "score": null,
+     "spineCode": "J1.5e",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_JSvNcRb6bpQgQxnV",
     "spcpt_SRbDX5B34Ysz2JhX",
     "spcpt_XZj6PkYS63758K4N"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_pdPMBhffCK6Scd8J": {
    "codes": [],
@@ -1363,36 +1773,65 @@
    "unmapped": true
   },
   "qstnprt_r6xtm8bKVwqQGSr5": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I5.4d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I5.4d",
+     "score": null,
+     "spineCode": "I5.4d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_sGHgKyHgkNpQrygD"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_rG7yqWt82r7QJgg3": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J2.2a",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J2.2a",
+     "score": null,
+     "spineCode": "J2.2a",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J2.2b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J2.2b",
+     "score": null,
+     "spineCode": "J2.2b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_7sdnpn9yxY3yK2SV",
     "spcpt_8x2WXxNXZXXJWXcK",
     "spcpt_ZF2d2QNnk6Cxm7YB",
     "spcpt_t5DCZWDBBfjRhJQf"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_rVdtM6PwYcn7S37Q": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "C1.4i",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C1.4i",
      "score": null,
      "spineCode": "C1.4i",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_jxrs7T6F7tGVN9M9"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -1410,12 +1849,22 @@
    "unmapped": true
   },
   "qstnprt_rdG3sTy9xgFBWHPz": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C2.1a",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C2.1a",
+     "score": null,
+     "spineCode": "C2.1a",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_59j9XxM32vY4w4Hq"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_rkDzGPxFv9TQSZQr": {
    "codes": [],
@@ -1436,23 +1885,53 @@
    "unmapped": true
   },
   "qstnprt_rvRJcHhv3DNjZNnZ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I4.3b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I4.3b",
+     "score": null,
+     "spineCode": "I4.3b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I4.3c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I4.3c",
+     "score": null,
+     "spineCode": "I4.3c",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_6r7w56b6zVC7rSMZ",
     "spcpt_PT6F7dvs86Q5GZfy",
     "spcpt_gqKDxTBPfcdq7X37",
     "spcpt_vxyDnFThNQmJ3hbt"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_sZpcGgWHrq6qY3J4": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C2.2b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C2.2b",
+     "score": null,
+     "spineCode": "C2.2b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3BYq2rkTrm5X4pwm"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_tGJK4Px2yDcqxS2j": {
    "codes": [],
@@ -1474,45 +1953,105 @@
    "unmapped": true
   },
   "qstnprt_tq465mmXXtm3tPFM": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J2.2b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J2.2b",
+     "score": null,
+     "spineCode": "J2.2b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_fmZXZZ4S4z6qdSjY",
     "spcpt_t5DCZWDBBfjRhJQf"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_vTNgknmZf9Vc62Qv": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.1c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.1c",
+     "score": null,
+     "spineCode": "J4.1c",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.2d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.2d",
+     "score": null,
+     "spineCode": "J4.2d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_CPQW8pPjQKJ8nwd9",
     "spcpt_CWGkG4WcrcpH7FRy",
     "spcpt_fc4hBBpRwkddZZJR",
     "spcpt_gcpZpZkbPrfG9Fbk"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_vyvZ3SYfmHv6WkWr": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I4.3b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I4.3b",
+     "score": null,
+     "spineCode": "I4.3b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I4.3c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I4.3c",
+     "score": null,
+     "spineCode": "I4.3c",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3gGVN4zNZgYzs6Ky",
     "spcpt_6r7w56b6zVC7rSMZ",
     "spcpt_gqKDxTBPfcdq7X37",
     "spcpt_vxyDnFThNQmJ3hbt"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_wcbDSMNwYswJSgBz": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I4.1d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I4.1d",
+     "score": null,
+     "spineCode": "I4.1d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3FJHpWfPqQBNnWvs",
     "spcpt_6dFNV5XNyZGFwcKp",
     "spcpt_kh2XN4kgsX9VMmZb"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_xctr2wBJGctM9dzD": {
    "codes": [],
@@ -1532,14 +2071,34 @@
    "unmapped": true
   },
   "qstnprt_z5bbnqGhvbZXXH7k": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J2.2a",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J2.2a",
+     "score": null,
+     "spineCode": "J2.2a",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J2.2b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J2.2b",
+     "score": null,
+     "spineCode": "J2.2b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_7sdnpn9yxY3yK2SV",
     "spcpt_8x2WXxNXZXXJWXcK",
     "spcpt_t5DCZWDBBfjRhJQf"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_z6nCyNgf4vzYrBdm": {
    "codes": [],
@@ -1551,15 +2110,35 @@
    "unmapped": true
   },
   "qstnprt_zTyP2hMDwfRkGKZh": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C2.2b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C2.2b",
+     "score": null,
+     "spineCode": "C2.2b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C2.2f",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C2.2f",
+     "score": null,
+     "spineCode": "C2.2f",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3BYq2rkTrm5X4pwm",
     "spcpt_6mgppzJPVZJrGJ2c",
     "spcpt_dgv5rMjB9GpXS9HW",
     "spcpt_qrn9N93mrX6W3kdc"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_zsbwNH4fvqyBvP4B": {
    "codes": [
@@ -1583,15 +2162,24 @@
   "qstnprt_zwBj6pfwCvdTXgw8": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "I2.1f",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I2.1f",
      "score": null,
      "spineCode": "I2.1f",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_PwV4Y4zqBr5nQzMr"
+     "tier": "V1_name_text_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I2.4e",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I2.4e",
+     "score": null,
+     "spineCode": "I2.4e",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -1602,6 +2190,16 @@
   },
   "rn_2GTsNq8RZ2sPZGjV": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J6.2c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J6.2c",
+     "score": null,
+     "spineCode": "J6.2c",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "subtopic_title_scope",
      "method": null,
@@ -1623,17 +2221,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_5jTHv2jdq2GD6Sbg"
-    },
-    {
-     "lineage": "subtopic_title_scope",
-     "method": null,
-     "officialCode": "J6.2c",
-     "officialId": null,
-     "score": null,
-     "spineCode": "J6.2c",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_5jTHv2jdq2GD6Sbg"
     }
    ],
    "kind": "note",
@@ -1645,6 +2232,16 @@
   },
   "rn_2KGMv7MrxtcQnXG9": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J1.2h",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J1.2h",
+     "score": null,
+     "spineCode": "J1.2h",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "subtopic_title_scope",
      "method": null,
@@ -1725,17 +2322,6 @@
     {
      "lineage": "subtopic_title_scope",
      "method": null,
-     "officialCode": "J1.2h",
-     "officialId": null,
-     "score": null,
-     "spineCode": "J1.2h",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_2vBZ5kd3RYxmQ8Jx"
-    },
-    {
-     "lineage": "subtopic_title_scope",
-     "method": null,
      "officialCode": "J1.2i",
      "officialId": null,
      "score": null,
@@ -1787,7 +2373,28 @@
    "unmapped": true
   },
   "rn_2zvKxx8qKXyZbxB5": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.4a",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.4a",
+     "score": null,
+     "spineCode": "C4.4a",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.4c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.4c",
+     "score": null,
+     "spineCode": "C4.4c",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2kGtHDgFrX72S3Fb",
     "spcpt_7wSRrgMDgvPCh2Bk",
@@ -1795,8 +2402,7 @@
     "spcpt_dfnxGDdW6c8CDy92",
     "spcpt_yPRBFX37BCSMKhCw"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_3CrNw2Nhks449zWn": {
    "codes": [],
@@ -1813,37 +2419,34 @@
   "rn_6g5rW5VMjMYRhghj": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "I2.2e",
-     "officialId": null,
-     "score": null,
-     "spineCode": "I2.2e",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_2Vg8vW7xc5GNTHy5"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "I2.2b",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I2.2b",
      "score": null,
      "spineCode": "I2.2b",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_4B9zbkgmCy3vPvdM"
+     "tier": "V1_name_text_identity",
+     "unit": null
     },
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "I2.2d",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I2.2d",
      "score": null,
      "spineCode": "I2.2d",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_r2rY4NKHsMKVbhXd"
+     "tier": "V1_name_text_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I2.2e",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I2.2e",
+     "score": null,
+     "spineCode": "I2.2e",
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "kind": "note",
@@ -1871,17 +2474,37 @@
    "unmapped": true
   },
   "rn_7CqmKSkM9HNchYSP": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C5.1b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C5.1b",
+     "score": null,
+     "spineCode": "C5.1b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_QpBp8z4kCJ8T6pqG",
     "spcpt_ShxrVj5Zpw9SvFk7",
     "spcpt_j3wqFjdQSmz3mWQC"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_7GyTdWrsVn2wTwfM": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.2e",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.2e",
+     "score": null,
+     "spineCode": "J4.2e",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -2007,15 +2630,14 @@
   "rn_DQKNF5KWt6rs4QsC": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "I4.2j",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I4.2j",
      "score": null,
      "spineCode": "I4.2j",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_9zpPc6HHp924H67m"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -2027,15 +2649,14 @@
   "rn_FN7vQCzhqM3fvF9H": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "J6.3a",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J6.3a",
      "score": null,
      "spineCode": "J6.3a",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_Y7n747rtsF9znScC"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -2048,15 +2669,14 @@
   "rn_FnVPHmtFCVdHnz2R": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "C2.3b",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C2.3b",
      "score": null,
      "spineCode": "C2.3b",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_9YdbKrjTv8f7jSnF"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "kind": "note",
@@ -2075,14 +2695,34 @@
    "unmapped": true
   },
   "rn_G8KRqzptjFtzM3BY": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.1f",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.1f",
+     "score": null,
+     "spineCode": "C4.1f",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.1g",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.1g",
+     "score": null,
+     "spineCode": "C4.1g",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_5N8yqTyn3xQy2wNH",
     "spcpt_P4Wdd4k2fmxK6CPc",
     "spcpt_Rjk5bhKfS2T6YRgJ"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_GSHPrScW3XSq9D8S": {
    "codes": [],
@@ -2096,15 +2736,24 @@
   "rn_Gkf2cBntQXdBQRXm": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "J4.2c",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.2c",
      "score": null,
      "spineCode": "J4.2c",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_h9vQb3HgJd2fyRYw"
+     "tier": "V1_name_text_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.2d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.2d",
+     "score": null,
+     "spineCode": "J4.2d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "note",
@@ -2117,15 +2766,14 @@
   "rn_GzS6NWjhFfTpgWTV": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "I4.2b",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I4.2b",
      "score": null,
      "spineCode": "I4.2b",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_GtxYkTYVJz2DmXsC"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -2193,13 +2841,23 @@
    ]
   },
   "rn_HW8Q5VPY9RsYC3wh": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I5.1b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I5.1b",
+     "score": null,
+     "spineCode": "I5.1b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_YXCX4NpxDXDjbdmk",
     "spcpt_fS23ncbXZ3p6BHX4"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_JbPyBQBp3hN2bKjN": {
    "codes": [],
@@ -2213,37 +2871,34 @@
   "rn_JgxcCFZCnpKqYXrn": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "I2.1c",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I2.1c",
      "score": null,
      "spineCode": "I2.1c",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_K9NB8wxj6qQ5QdXF"
+     "tier": "V1_name_text_identity",
+     "unit": null
     },
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "I2.1f",
-     "officialId": null,
-     "score": null,
-     "spineCode": "I2.1f",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_PwV4Y4zqBr5nQzMr"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "I2.1e",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I2.1e",
      "score": null,
      "spineCode": "I2.1e",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_gHbJfXKk6DYJxVXD"
+     "tier": "V1_name_text_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I2.1f",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I2.1f",
+     "score": null,
+     "spineCode": "I2.1f",
+     "tier": "V1_name_text_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -2264,27 +2919,78 @@
    ]
   },
   "rn_JsQrHCd782M8Xrnx": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J1.5e",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J1.5e",
+     "score": null,
+     "spineCode": "J1.5e",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J1.5g",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J1.5g",
+     "score": null,
+     "spineCode": "J1.5g",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_XZj6PkYS63758K4N",
     "spcpt_Ydwjtfk73WBg8pMS",
     "spcpt_tQqx5K5RfKsRTTQF"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_KP2Q7tFPsNsPgSdB": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I5.3c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I5.3c",
+     "score": null,
+     "spineCode": "I5.3c",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_JZnp3kgFS8zGzRMY",
     "spcpt_K65QJWqg78jTWGQW",
     "spcpt_kSQz8t9JyMtWMQwr"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_KSbMVXvdVd5Xy24W": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.6d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.6d",
+     "score": null,
+     "spineCode": "C4.6d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.6e",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.6e",
+     "score": null,
+     "spineCode": "C4.6e",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2dVDH6Mjf6Y6zhMK",
     "spcpt_4gvNbHj2d3SDyghZ",
@@ -2293,20 +2999,40 @@
     "spcpt_VSpy3R7zbvPbzHj8",
     "spcpt_zCZjKbrWVqgbHJMP"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_KYfMJjD29YKkhh97": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J1.1b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J1.1b",
+     "score": null,
+     "spineCode": "J1.1b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_BCgPMY9X2CdF4ymH",
     "spcpt_z7C4sKmh5VMjkx3q"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_MWtz4m4DnhTmWTNg": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I6.2a",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I6.2a",
+     "score": null,
+     "spineCode": "I6.2a",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_R86tjW7jSrDzpR9V",
     "spcpt_TCTJjjfhQS2ccSVX",
@@ -2315,8 +3041,7 @@
     "spcpt_hqxmk6w6dfSKTK3Q",
     "spcpt_kNhwfnJZvRMBbvT9"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_NH5YbPGTZbwxqPFD": {
    "codes": [],
@@ -2390,7 +3115,18 @@
    ]
   },
   "rn_Pj5r8p7KrQfctvxB": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I5.4d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I5.4d",
+     "score": null,
+     "spineCode": "I5.4d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_6Sq23JG5F427b492",
     "spcpt_K6BBPjMJ5fdFKTwj",
@@ -2399,11 +3135,31 @@
     "spcpt_s4h8P2QFNT3Qc6mV",
     "spcpt_sGHgKyHgkNpQrygD"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_PsNB7qJSnJ8R9wj7": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I1.4d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I1.4d",
+     "score": null,
+     "spineCode": "I1.4d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I1.4h",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I1.4h",
+     "score": null,
+     "spineCode": "I1.4h",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2X6p8WVBp52ymTHM",
     "spcpt_3hTjrTBYzx22gw3V",
@@ -2414,8 +3170,7 @@
     "spcpt_tNgBnCzm9W6xrSkT",
     "spcpt_xzdfhpwYZSdKPWQf"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_Q3dzs7bJVyyfnHBf": {
    "codes": [
@@ -2449,15 +3204,14 @@
   "rn_Rv8RS6Ws9qyjcCyR": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "C1.4i",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C1.4i",
      "score": null,
      "spineCode": "C1.4i",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_jxrs7T6F7tGVN9M9"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -2596,23 +3350,42 @@
   "rn_V5kCNF7d7fXx7JBP": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C2.2b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C2.2b",
+     "score": null,
+     "spineCode": "C2.2b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C2.2d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C2.2d",
+     "score": null,
+     "spineCode": "C2.2d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C2.2f",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C2.2f",
+     "score": null,
+     "spineCode": "C2.2f",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
      "lineage": "subtopic_title_scope",
      "method": null,
      "officialCode": "C2.2a",
      "officialId": null,
      "score": null,
      "spineCode": "C2.2a",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_3BYq2rkTrm5X4pwm"
-    },
-    {
-     "lineage": "subtopic_title_scope",
-     "method": null,
-     "officialCode": "C2.2b",
-     "officialId": null,
-     "score": null,
-     "spineCode": "C2.2b",
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_3BYq2rkTrm5X4pwm"
@@ -2631,32 +3404,10 @@
     {
      "lineage": "subtopic_title_scope",
      "method": null,
-     "officialCode": "C2.2d",
-     "officialId": null,
-     "score": null,
-     "spineCode": "C2.2d",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_3BYq2rkTrm5X4pwm"
-    },
-    {
-     "lineage": "subtopic_title_scope",
-     "method": null,
      "officialCode": "C2.2e",
      "officialId": null,
      "score": null,
      "spineCode": "C2.2e",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_3BYq2rkTrm5X4pwm"
-    },
-    {
-     "lineage": "subtopic_title_scope",
-     "method": null,
-     "officialCode": "C2.2f",
-     "officialId": null,
-     "score": null,
-     "spineCode": "C2.2f",
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_3BYq2rkTrm5X4pwm"
@@ -2696,6 +3447,16 @@
   },
   "rn_VXVJrP83P3pcBP7T": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.3c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.3c",
+     "score": null,
+     "spineCode": "J4.3c",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -2828,7 +3589,28 @@
    "unmapped": true
   },
   "rn_Yn5SD8tnYBbVMBZ3": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.7d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.7d",
+     "score": null,
+     "spineCode": "C4.7d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.7e",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.7e",
+     "score": null,
+     "spineCode": "C4.7e",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_6cm5KCbH23vq5Cp5",
     "spcpt_JpMkmmSJ4TrBtFkS",
@@ -2837,11 +3619,31 @@
     "spcpt_cP73mRnFCMbrHKSQ",
     "spcpt_ryqg5qC3ZQTpTwGT"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_YpGW4NrTvDczFsZ3": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.2c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.2c",
+     "score": null,
+     "spineCode": "C4.2c",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.2d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.2d",
+     "score": null,
+     "spineCode": "C4.2d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3Z8Yjx7cFmqhPCZt",
     "spcpt_QQfd9pJ2DWG4dJGg",
@@ -2849,8 +3651,7 @@
     "spcpt_vFgMc6kjStqD54C6",
     "spcpt_z8w9sHKMtFrBQXpZ"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_Yw9JSpYmKYpbTV3c": {
    "codes": [],
@@ -2862,7 +3663,28 @@
    "unmapped": true
   },
   "rn_ZGsCn5KTV3mmT623": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.5d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.5d",
+     "score": null,
+     "spineCode": "C4.5d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.5e",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.5e",
+     "score": null,
+     "spineCode": "C4.5e",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_5ymyKGshG57drkxz",
     "spcpt_R5VSvk3GMJNv7ZMx",
@@ -2871,18 +3693,27 @@
     "spcpt_kqMBWBz2rqxyk4GF",
     "spcpt_rXvGmrrgPrYMYKc6"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_ZZQsWwwb2gbD2PDP": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C5.2b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C5.2b",
+     "score": null,
+     "spineCode": "C5.2b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_FD7kN7sMqgvXy45P",
     "spcpt_ktS4sNvSk5S2Ppnm",
     "spcpt_zVtFVn9xvz7jd2Zy"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_b3pkxpGtQq9rGwrH": {
    "codes": [],
@@ -2937,6 +3768,16 @@
   "rn_dcdYk4RgrTKKvxxX": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.4d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.4d",
+     "score": null,
+     "spineCode": "J4.4d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "J4.4f",
@@ -2989,6 +3830,16 @@
   "rn_gBYVwgdVXGYqzT98": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.1f",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.1f",
+     "score": null,
+     "spineCode": "J4.1f",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "J4.1h",
@@ -3017,7 +3868,28 @@
    "unmapped": true
   },
   "rn_jX5jTvHzB5PfRzjX": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J2.2a",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J2.2a",
+     "score": null,
+     "spineCode": "J2.2a",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J2.2b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J2.2b",
+     "score": null,
+     "spineCode": "J2.2b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_7sdnpn9yxY3yK2SV",
     "spcpt_8x2WXxNXZXXJWXcK",
@@ -3025,8 +3897,7 @@
     "spcpt_kTS27Ys4XV5gc3vj",
     "spcpt_t5DCZWDBBfjRhJQf"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_jq8YY29824Z25VmV": {
    "codes": [],
@@ -3038,7 +3909,48 @@
    "unmapped": true
   },
   "rn_kT4FbJpfP2zCKR8Y": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.3a",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.3a",
+     "score": null,
+     "spineCode": "C4.3a",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.3b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.3b",
+     "score": null,
+     "spineCode": "C4.3b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.3d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.3d",
+     "score": null,
+     "spineCode": "C4.3d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.3e",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.3e",
+     "score": null,
+     "spineCode": "C4.3e",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3yVqhX22GNC564ft",
     "spcpt_PzmgDTBK44tDXWyc",
@@ -3047,8 +3959,7 @@
     "spcpt_XtRrZF6GYntwyFww",
     "spcpt_d6Y2gQpnZ9TRMYWW"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_kYkSVF2KhJQg6BvF": {
    "codes": [
@@ -3101,15 +4012,44 @@
   "rn_m4qC7GhWsDphxx4D": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I2.5a",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I2.5a",
+     "score": null,
+     "spineCode": "I2.5a",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I2.5b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I2.5b",
+     "score": null,
+     "spineCode": "I2.5b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I2.5c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I2.5c",
+     "score": null,
+     "spineCode": "I2.5c",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "I2.5d",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I2.5d",
      "score": null,
      "spineCode": "I2.5d",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_27Vvgd6gZrCQ6SJ4"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "kind": "note",
@@ -3123,15 +4063,24 @@
   "rn_nY3vtxn7mMFf3GvH": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I4.1d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I4.1d",
+     "score": null,
+     "spineCode": "I4.1d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "I4.1f",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I4.1f",
      "score": null,
      "spineCode": "I4.1f",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_bWZg7VSCPHFtc6HF"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -3164,23 +4113,22 @@
   "rn_pcdM8B65QJkz7y3c": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J1.6b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J1.6b",
+     "score": null,
+     "spineCode": "J1.6b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
      "lineage": "subtopic_title_scope",
      "method": null,
      "officialCode": "J1.6a",
      "officialId": null,
      "score": null,
      "spineCode": "J1.6a",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_QXzR6QNCtnjHwZGQ"
-    },
-    {
-     "lineage": "subtopic_title_scope",
-     "method": null,
-     "officialCode": "J1.6b",
-     "officialId": null,
-     "score": null,
-     "spineCode": "J1.6b",
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_QXzR6QNCtnjHwZGQ"
@@ -3225,26 +4173,24 @@
   "rn_qTzsSJcWh5Xh2nPh": {
    "codes": [
     {
-     "lineage": "subtopic_title_scope",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "C2.1a",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C2.1a",
      "score": null,
      "spineCode": "C2.1a",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_59j9XxM32vY4w4Hq"
+     "tier": "V2_name_phrase_identity",
+     "unit": null
     },
     {
-     "lineage": "subtopic_title_scope",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "C2.1b",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C2.1b",
      "score": null,
      "spineCode": "C2.1b",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_59j9XxM32vY4w4Hq"
+     "tier": "V2_name_phrase_identity",
+     "unit": null
     },
     {
      "lineage": "subtopic_title_scope",
@@ -3290,15 +4236,24 @@
   "rn_qcJBxdxpQ55tgrgr": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C1.4d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C1.4d",
+     "score": null,
+     "spineCode": "C1.4d",
+     "tier": "V1_name_text_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "C1.4f",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C1.4f",
      "score": null,
      "spineCode": "C1.4f",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_5wNcfD286HjQTDhm"
+     "tier": "V1_name_text_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -3310,17 +4265,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_bMc7w7dQ5jBjf4d8"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "C1.4d",
-     "officialId": null,
-     "score": null,
-     "spineCode": "C1.4d",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_fRNdrjNgs3GngmbZ"
     }
    ],
    "declaredUnresolved": [
@@ -3333,23 +4277,22 @@
   "rn_rDXxkdWCNz6sRT8n": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I1.1b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I1.1b",
+     "score": null,
+     "spineCode": "I1.1b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
      "lineage": "subtopic_title_scope",
      "method": null,
      "officialCode": "I1.1a",
      "officialId": null,
      "score": null,
      "spineCode": "I1.1a",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_kQwYDdWMSZK64TNR"
-    },
-    {
-     "lineage": "subtopic_title_scope",
-     "method": null,
-     "officialCode": "I1.1b",
-     "officialId": null,
-     "score": null,
-     "spineCode": "I1.1b",
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_kQwYDdWMSZK64TNR"
@@ -3362,7 +4305,18 @@
    ]
   },
   "rn_rqX3QRHZfQkMPTV5": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I2.4e",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I2.4e",
+     "score": null,
+     "spineCode": "I2.4e",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_6GFSvF8wTYCkKS83",
     "spcpt_7Q2zydsFwXGnZ5mt",
@@ -3370,21 +4324,39 @@
     "spcpt_jdTqr6mnSQyw4XCR",
     "spcpt_vXcz73pmxySKbXBY"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_ryT57qFz3qp4Mrhw": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I4.3b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I4.3b",
+     "score": null,
+     "spineCode": "I4.3b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I4.3c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I4.3c",
+     "score": null,
+     "spineCode": "I4.3c",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "I4.3e",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I4.3e",
      "score": null,
      "spineCode": "I4.3e",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_XrDvvWh8YSxcW2yJ"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "kind": "note",
@@ -3406,14 +4378,24 @@
    "unmapped": true
   },
   "rn_whPn2BKPTJXdxwYS": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J5.2b",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J5.2b",
+     "score": null,
+     "spineCode": "J5.2b",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Dfqg2ZFz6sfRgwsj",
     "spcpt_nwmRqy5jzzGrThJs",
     "spcpt_vw87vZ4j4MzDYt7s"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_wrdP9K8Fw9dhQKMR": {
    "codes": [
@@ -3449,15 +4431,14 @@
   "rn_xR72tMvP89Ztgvpd": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "J1.3a",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J1.3a",
      "score": null,
      "spineCode": "J1.3a",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_Hybsxb4b6SBS3Vs8"
+     "tier": "V1_name_text_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -3482,6 +4463,46 @@
   "rn_xXcHt34bC4CMJJk6": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I3.2c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I3.2c",
+     "score": null,
+     "spineCode": "I3.2c",
+     "tier": "V1_name_text_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I3.2d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I3.2d",
+     "score": null,
+     "spineCode": "I3.2d",
+     "tier": "V1_name_text_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I3.2e",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I3.2e",
+     "score": null,
+     "spineCode": "I3.2e",
+     "tier": "V1_name_text_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "I3.2g",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:I3.2g",
+     "score": null,
+     "spineCode": "I3.2g",
+     "tier": "V1_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "I3.2h",
@@ -3491,50 +4512,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_42nHGNxGw4q4kFsQ"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "I3.2e",
-     "officialId": null,
-     "score": null,
-     "spineCode": "I3.2e",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_95MjRy38mmfhKKz4"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "I3.2c",
-     "officialId": null,
-     "score": null,
-     "spineCode": "I3.2c",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_BCWKZGDXrMJBjktK"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "I3.2d",
-     "officialId": null,
-     "score": null,
-     "spineCode": "I3.2d",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_d5594YtkvfcpFtKj"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "I3.2g",
-     "officialId": null,
-     "score": null,
-     "spineCode": "I3.2g",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_sK8KfvW3BvfHtSKX"
     }
    ],
    "declaredUnresolved": [
@@ -3600,7 +4577,28 @@
    ]
   },
   "rn_z7wjKVmKnmmKjkBZ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.1a",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.1a",
+     "score": null,
+     "spineCode": "J4.1a",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "J4.1c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:J4.1c",
+     "score": null,
+     "spineCode": "J4.1c",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_CPQW8pPjQKJ8nwd9",
     "spcpt_DxkVwFVPF5HPhYsd",
@@ -3608,11 +4606,51 @@
     "spcpt_PXRHvX7CVqwDQJJN",
     "spcpt_qQJzt5FnCpkD5Jsw"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_z9mbS43vqjTKc5pk": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.1a",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.1a",
+     "score": null,
+     "spineCode": "C4.1a",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.1c",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.1c",
+     "score": null,
+     "spineCode": "C4.1c",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.1d",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.1d",
+     "score": null,
+     "spineCode": "C4.1d",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C4.1e",
+     "officialId": "CIE_IGCSE_RELIGIOUS_STUDIES_2025_2027:C4.1e",
+     "score": null,
+     "spineCode": "C4.1e",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_DcbTH2373tMxGq55",
     "spcpt_N3V3vZsT2bjPBZyq",
@@ -3620,8 +4658,7 @@
     "spcpt_ndZzfkHfQT5VZZgB",
     "spcpt_vb2qyvr3499tTKSZ"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_zX55NM6R7jMSFbSY": {
    "codes": [],
@@ -3971,9 +5008,9 @@
  "qual": "cie-igcse-religious-studies-2025-2027",
  "reconciliation": {
   "codesOutsideSpine": [],
-  "distinctCodesAttached": 94,
+  "distinctCodesAttached": 142,
   "itemsOutsideSpine": 0,
-  "spineHitCodes": 94,
+  "spineHitCodes": 142,
   "spineSpecPoints": 364,
   "uncoveredSpineCodeList": [
    "C1.2a",
@@ -4003,56 +5040,34 @@
    "C2.3f",
    "C3.1a",
    "C3.1b",
-   "C4.1a",
    "C4.1b",
-   "C4.1c",
-   "C4.1d",
-   "C4.1e",
-   "C4.1f",
-   "C4.1g",
    "C4.1h",
    "C4.2a",
    "C4.2b",
-   "C4.2c",
-   "C4.2d",
    "C4.2e",
-   "C4.3a",
-   "C4.3b",
    "C4.3c",
-   "C4.3d",
-   "C4.3e",
    "C4.3f",
-   "C4.4a",
    "C4.4b",
-   "C4.4c",
    "C4.4d",
    "C4.4e",
    "C4.5a",
    "C4.5b",
    "C4.5c",
-   "C4.5d",
-   "C4.5e",
    "C4.5f",
    "C4.6a",
    "C4.6b",
    "C4.6c",
-   "C4.6d",
-   "C4.6e",
    "C4.6f",
    "C4.7a",
    "C4.7b",
    "C4.7c",
-   "C4.7d",
-   "C4.7e",
    "C4.7f",
    "C4.8a",
    "C4.8b",
    "C4.8c",
    "C5.1a",
-   "C5.1b",
    "C5.1c",
    "C5.2a",
-   "C5.2b",
    "C5.2c",
    "C5.2d",
    "C5.3a",
@@ -4082,11 +5097,9 @@
    "I1.4a",
    "I1.4b",
    "I1.4c",
-   "I1.4d",
    "I1.4e",
    "I1.4f",
    "I1.4g",
-   "I1.4h",
    "I1.4i",
    "I1.5a",
    "I1.5b",
@@ -4102,10 +5115,6 @@
    "I2.4b",
    "I2.4c",
    "I2.4d",
-   "I2.4e",
-   "I2.5a",
-   "I2.5b",
-   "I2.5c",
    "I2.6a",
    "I2.6b",
    "I2.6c",
@@ -4120,7 +5129,6 @@
    "I4.1a",
    "I4.1b",
    "I4.1c",
-   "I4.1d",
    "I4.1e",
    "I4.2a",
    "I4.2c",
@@ -4131,26 +5139,20 @@
    "I4.2h",
    "I4.2i",
    "I4.3a",
-   "I4.3b",
-   "I4.3c",
    "I4.3d",
    "I4.4a",
    "I4.4b",
    "I5.1a",
-   "I5.1b",
    "I5.2a",
    "I5.2b",
    "I5.3a",
    "I5.3b",
-   "I5.3c",
    "I5.4a",
    "I5.4b",
    "I5.4c",
-   "I5.4d",
    "I5.5a",
    "I5.5b",
    "I5.5c",
-   "I6.2a",
    "I6.2b",
    "I6.2c",
    "I6.2d",
@@ -4163,7 +5165,6 @@
    "I6.5c",
    "I6.5d",
    "J1.1a",
-   "J1.1b",
    "J1.3c",
    "J1.3d",
    "J1.3e",
@@ -4176,9 +5177,7 @@
    "J1.5b",
    "J1.5c",
    "J1.5d",
-   "J1.5e",
    "J1.5f",
-   "J1.5g",
    "J1.7a",
    "J1.7b",
    "J2.1a",
@@ -4188,8 +5187,6 @@
    "J2.1e",
    "J2.1f",
    "J2.1g",
-   "J2.2a",
-   "J2.2b",
    "J2.2c",
    "J2.2d",
    "J2.2e",
@@ -4202,33 +5199,25 @@
    "J3.2b",
    "J3.3b",
    "J3.3c",
-   "J4.1a",
    "J4.1b",
-   "J4.1c",
    "J4.1d",
    "J4.1e",
-   "J4.1f",
    "J4.1g",
    "J4.2a",
    "J4.2b",
-   "J4.2d",
-   "J4.2e",
    "J4.2f",
    "J4.3a",
    "J4.3b",
-   "J4.3c",
    "J4.3d",
    "J4.4a",
    "J4.4b",
    "J4.4c",
-   "J4.4d",
    "J4.4e",
    "J4.5a",
    "J4.5b",
    "J5.1a",
    "J5.1b",
    "J5.2a",
-   "J5.2b",
    "J5.3a",
    "J5.3b",
    "J5.4a",
@@ -4247,14 +5236,40 @@
    "J6.3c",
    "J6.3d"
   ],
-  "uncoveredSpineCodes": 270
+  "uncoveredSpineCodes": 222
  },
- "resourcesSha": "0fe5f77210f74aaeb3f6c491dfe0263d12db738c",
+ "resourcesSha": "75981cad0b08c190fb70902eb6cdca1f76b9cd68",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
   "resolution": null,
-  "specLinks": null,
+  "specLinks": {
+   "census": {
+    "codesAttachedFromSidecar": 154,
+    "codesByMethod": {
+     "operator_verdict": 154
+    },
+    "codesByTier": {
+     "V1_name_text_identity": 36,
+     "V2_name_phrase_identity": 118
+    },
+    "itemsWithCodes": 98,
+    "ladderCodesRetained": 70,
+    "sidecarCodes": 154,
+    "sidecarItems": 238,
+    "sidecarOnlyItems": 0,
+    "t2Hints": 0
+   },
+   "derivation": "ACCEPTED spec-links sidecar (T-SPECS-CIE join/verdict/gate/rejoin chain) merged item-level: operator-verdict authoritative, T1 gate-verified, J* post-gate identity-grade; T2_near carried as non-authoritative items[].t2HintCodes only; REJOIN sheet sid->code rows upgrade/add spcptToOfficial (conflicts kept, disclosed)",
+   "regime": "spec_links_sidecar_accepted",
+   "reviewState": {
+    "rejoin": null,
+    "state": "ACCEPTED"
+   },
+   "sheetUpgrades": null,
+   "sidecar": "spec-links/cie-igcse-religious-studies-23.json",
+   "t2Policy": "T2_near is a non-authoritative hint (GATE-1 tier_policy); never in codes/linkage"
+  },
   "specPointMap": {
    "crossLaneResolved": 0,
    "derivation": "deterministic ladder R1-R4 (leaf) + R5 (subtopic scope, notes only) over the upstream spec_point_index incl. cross_lane_join resolutions; every row carries its rule id",
@@ -4266,6 +5281,7 @@
     "R5": 72,
     "r4_amb": 8
    },
+   "sidecarConsumed": true,
    "smeEntries": 354,
    "subtopicScoped": 72,
    "unmapped": 248
