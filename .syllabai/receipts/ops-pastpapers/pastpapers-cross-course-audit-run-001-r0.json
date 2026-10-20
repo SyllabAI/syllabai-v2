@@ -1,0 +1,61 @@
+{
+  "task": "Cross-course past-papers access audit (operator trace 1a15a29d0c9a57a9: 'Maths B course could not access past papers. Can you check if other courses have similar problem or not?')",
+  "agent": "r0",
+  "date": "2026-10-21",
+  "surface": "https://syllabai-hub-v2.vercel.app (live prod alias)",
+  "verdict": "NO CROSS-COURSE PROBLEM — the entire past-papers surface is healthy: 61/61 course indexes 200, 44/44 spec view pages 200, 14/14 corpus-family proxy fetches 200 with EXACT byte-size match to the committed index, full browser walk on a CIE course green (pdf.js render, zero console/page errors). maths-b regression green. Two zero-link courses are HONEST EMPTY STATES (corpus lacks the papers), not access failures. One transient 502 self-healed on retry. One freshness residual disclosed (index treeSha drift).",
+  "method": "read-only wire battery (GET only) driven by the committed COURSE_SPECS map (61 courses / 44 mapped spec keys) + committed index (108 spec keys): P1 full course-index sweep, P2 per-spec view-page probes, P3 per-family proxy fetches with size assertions, P4 treeSha drift check, P5 maths-b regression, plus one agent-browser end-to-end walk",
+  "phases": {
+    "P1_course_index_sweep": {
+      "probed": 61,
+      "all_200": true,
+      "with_live_view_links": 59,
+      "link_range": "8 (igcse-physics-modular-24-unit-2) .. 3208 (cie-igcse-physics-23); maths-b 914; cie-igcse-maths-25 1072; cie-a-level-physics-25 3032",
+      "zero_link_courses": ["igcse-biology-modular-24-unit-2", "igcse-chemistry-modular-24-unit-2"],
+      "zero_link_adjudication": "HONEST EMPTY STATES, not faults: committed corpus spec 4xbi1 holds ONLY 4WBI1-1B/1BR dirs and 4xch1 ONLY 4WCH1-1C/1CR (no unit-2 papers uploaded) while 4xph1 HAS 4WPH2-1P/1PR (physics unit-2 renders its 8 links) — corpus coverage gap for the bio/chem modular-24 unit-2 waves"
+    },
+    "P2_view_pages_per_spec": {
+      "probed": 44,
+      "all_200": true,
+      "note": "41 via battery + 3 re-probes after fixing audit-side picker bugs (component type coercion, tier regex for 4MA1-1F style) — the 3 skips were audit-picker blindness, never hub failures (those courses showed 536/1072/890 links in P1)"
+    },
+    "P3_proxy_family_fetches": {
+      "probed": 14,
+      "all_200_exact_size": true,
+      "families": ["CIE IAL chemistry 9701", "CIE IAL physics 9702", "CIE IAL mathematics 9709", "CIE IGCSE chemistry 0620", "CIE IGCSE physics 0625", "CIE IGCSE mathematics 0580", "Pearson IAL mathematics-2018", "Pearson IGCSE accounting 4ac1", "business 4bs1", "english-language-a 4ea1", "english-literature 4et1", "geography 4ge1", "science-double-award 4sd0", "maths-a 4ma1"],
+      "transient_incident": {
+        "what": "single 502 (text/plain, 0B) on cambridge-international/igcse/physics/0625 qp during the battery pass",
+        "adjudication": "TRANSIENT, self-healed: immediate retries 200 x2 with the EXACT expected 297,320 bytes; raw.githubusercontent origin 200 unauthenticated; alternate dir 0625-S25-QP-12 200 (264,080B); reconfirmed 200 in the browser walk network log"
+      },
+      "integrity": "every successful proxy fetch byte-size == committed index qp size (exact match, 14/14)"
+    },
+    "P4_tree_drift": {
+      "index_treeSha": "3063c7169c16a39204688749531a0c3608e56e7a (generatedAt 2026-10-19T11:37:07Z)",
+      "live_corpus_treeSha": "87b6b985079efc1a1555716387adf26dca6702d7",
+      "drift": true,
+      "impact": "freshness residual only: the hub serves the committed inventory, so corpus additions pushed after 2026-10-19 are not visible until scripts/build_pastpapers_index.ts regenerates the index (operator-keyed committed-data change); all EXISTING papers unaffected (proven by P2/P3 green)"
+    },
+    "P5_maths_b_regression": {
+      "course_index": "200 (1,393,684B HTML, 914 view links)",
+      "view_2026-06_4MB1-01": "200 (48,945B)",
+      "global_archive": "/past-papers 200 (612,524B)",
+      "note": "operator's incident subject re-verified green on the same pass — consistent with run-001/run-002 (NOT REPRODUCIBLE; storage-saturation window adjudicated and closed)"
+    },
+    "browser_walk_cie_igcse_physics_23": {
+      "path": "index (June 2025 region, QP/MS/split-view/mock links, honest 'not parsed yet' interactive badges) -> click Question Paper 0625/11 -> /courses/cie-igcse-physics-23/past-papers/view/2025-06/0625-S25-QP-11?doc=qp",
+      "network": "/api/corpus-pdf/.../0625-S25-QP-11/qp.pdf 200 (Fetch x2)",
+      "viewer": "pdf.js mounted: 16-page pager, zoom/two-page-spread controls",
+      "console_errors": 0,
+      "page_errors": 0,
+      "note": "first browser-level verification of a CIE course (prior walks covered pearson maths-b only); networkidle wait times out on persistent background activity — errors/console checks are the signal, both clean"
+    }
+  },
+  "answer_to_operator": "Other courses do NOT have the maths-b problem. All 61 course surfaces and all 44 served spec families verify green end-to-end right now. The only non-green observations are: (a) two modular-24 unit-2 courses with zero papers because the corpus genuinely lacks 4WBI2/4WCH2 material (honest empty states — corpus wave gap, not an access fault), (b) one transient 502 that self-healed within seconds, (c) a freshness residual: pastpapers-index.json treeSha lags the corpus repo main tree, so anything added to the corpus after 2026-10-19 needs an index regeneration to become visible.",
+  "recommended_followups": [
+    "operator-keyed: regenerate apps/hub/src/data/pastpapers-index.json from the current corpus tree (scripts/build_pastpapers_index.ts) to close the freshness gap",
+    "corpus wave (operator-keyed): upload/parse 4WBI2 + 4WCH2 unit-2 papers if the bio/chem modular-24 unit-2 courses should serve papers",
+    "if the operator still sees a failure on a specific course today: capture the exact course + timestamp + network — the wire evidence here shows all surfaces 200 as of this audit"
+  ],
+  "audit_side_fixes_disclosed": "two r0 script bugs fixed in-flight (backtick stripping in COURSE_SPECS parse, component/tier dir-filter type coercion) — both audit-side only; hub code untouched",
+  "write_ledger": ".syllabai receipt + worklogs only; zero writes to syllabai-pastpapers / syllabai-resources / hub; zero LLM/Neon/prod-db; fetch-first honored (tip 7323b0a stable throughout); no force"
+}

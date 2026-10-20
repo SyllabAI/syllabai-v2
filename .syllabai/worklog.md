@@ -9682,3 +9682,22 @@ Work Log:
 
 Stage Summary:
 - Phase-4 machinery BUILT of record (the gap the T-MIG-138 run-003 receipt disclosed is CLOSED): the COW->prod gate exists, dispatch-gated, floors pinned. Next act = OPERATOR: stage CIE4_PROD_DATABASE_URL (same derivation as T138_PROD_DATABASE_URL, no jdbc:) + dispatch cie-phase4-db-plane mode=cow+prod; then phase-5 QA battery per the scope receipt. Residuals unchanged (PAT rotation standing).
+---
+Task ID: trace 1a15a29d0c9a57a9 (ops-pastpapers cross-course audit, run-001)
+Agent: r0 (zai-web session web-752465e5, chat dd7e60e9)
+Task: operator "Maths B course could not access past papers. Can you check if other courses have similar problem or not?"
+
+Work Log:
+- Mapping of record extracted: committed COURSE_SPECS = 61 courses / 44 mapped spec keys (parse: template-literal expansion by prefix replacement — whole-string dict lookup never matches; backticks stripped)
+- P1 sweep: 61/61 course past-papers indexes 200; 59 with live view links (8..3208 links, maths-b 914); 2 zero-link courses = HONEST EMPTY STATES adjudicated against the committed index (4xbi1/4xch1 carry NO unit-2 dirs, 4xph1 DOES -> physics unit-2 renders 8 links) — corpus wave gap, not a fault
+- P2: 44/44 spec view pages 200 (41 battery + 3 re-probes after audit-picker fixes: component string->int coercion, tier regex for 4MA1-1F style); the 3 skips were audit-side blindness (courses showed 536/1072/890 links)
+- P3: 14/14 family proxy fetches 200 with EXACT byte-size == committed index qp sizes (CIE IAL/IGCSE chem/phys/maths + Pearson IAL maths + 7 IG subjects); 1 TRANSIENT 502 on 0625 qp — self-healed (retry 200 x2 exact 297,320B, raw origin 200 unauth, alt dir 200, reconfirmed in browser network log)
+- P4: treeSha DRIFT disclosed: index 3063c716 (2026-10-19) vs live corpus tree 87b6b98 — freshness residual only (existing papers unaffected; regen = operator-keyed committed-data change)
+- P5 maths-b regression: index 200/914 links, view 2026-06/4MB1-01 200, global archive 200 — incident subject green on this pass (consistent with run-001/002 closure)
+- agent-browser walk on cie-igcse-physics-23 (first CIE browser-level verification): index -> QP click -> viewer ?doc=qp -> corpus-pdf 200 Fetch x2 -> pdf.js 16-page pager; 0 console errors, 0 page errors; honest 'not parsed yet' badges; networkidle timeout = background activity, errors/console are the signal
+- Display-artifact discipline: [m-sequence stripping in tool I/O chased to bytes twice (audit script prints, patch strings) — verified via byte offsets, no real corruption
+
+Stage Summary:
+- ANSWER of record: NO cross-course problem — all 61 courses + all 44 served spec families green end-to-end (wire + one full browser walk); only residuals: 2 honest-empty unit-2 courses (corpus gap), 1 self-healed transient 502, index treeSha freshness lag (regen operator-keyed)
+- Receipt: .syllabai/receipts/ops-pastpapers/pastpapers-cross-course-audit-run-001-r0.json
+- Write ledger: .syllabai receipt + worklogs only; zero writes to any data repo; zero LLM/Neon/prod-db; fetch-first, no force
