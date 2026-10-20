@@ -1,0 +1,52 @@
+{
+  "receipt": "parse-4mb1-band2-corpus-r0",
+  "task": "T-MIG-136",
+  "class": "PARSE LANE BAND 2 — grammar round 2 + dialect-B parser + corpus wave, discharged",
+  "operator_trace": "1a158ecf8097f83d 'fire Band 2' — the bands as filed in parse-4mb1-band1-pilot-r0",
+  "agent": "r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)",
+  "executed_at": "2026-10-21T02:30+06:00",
+  "sandbox_note": "the session opened on a ROLLED-BACK sandbox (the syllabai-v2 clone, the 136-era scripts and the sandbox worklog 136 entries were gone; syllabai-pastpapers/syllabai-parser worktrees survived stale); both worktrees were re-synced fetch-first to origin (v2 re-cloned at the 138-lane tip c455906) before any write; origin remained the sole of-record source",
+  "band_2_discharge": {
+    "grammar_round_2": {
+      "commits": "syllabai-parser 380e5bd (five laws, fixtures) + c1828ba (round 2b headerless-page persistence)",
+      "reproduction_first": "the pilot re-run BEFORE any edit reproduced Band 1 byte-identically (archived product == fresh product, sha-equal) and isolated the six flags: q9/q18/q19/q20/q22/q24, all MS-POINTS-DONT-CLOSE, 21/27 marks-exact",
+      "laws": [
+        "L1 big-bracket partial-award blocks: Symbol extensible-paren pieces (LEFT E6/E7/E8, RIGHT F6/F7/F8, counts pair 24/39/24) — a code whose immediately-preceding glyph is a LEFT-family piece is the partial award of the annotated route, never additive to the merged cell (q9 'M1 for TAB=10' under M2; q24); the carry state is a piece-transition model (right closes, left-top opens, bottom ends, extender-only spine rows continue) banded from the Answer column so Working-column matrices (same family, q4/q11/q25) never participate",
+        "L2 ordinal cross-references: a code whose preceding token is an ordinal ('the 4th M1' in 'May be implied by award of the 4th M1') is a reference to another mark, never an award; recorded MS-CODE-XREF-SKIPPED",
+        "L3 glued code tokens: MARK_CODE_RE suffix widened 2..6 letters ('A1allow', q22)",
+        "L4 Alt-section restart lookahead: the Alt row prints its code on the row's FIRST line while 'Alt' prints on the vertically-centred line below (q18) — a col-0 re-print of the open question with an 'Alt' line ahead (bounded scan, before the section's Total) arms the Alt route before the codes",
+        "L5 pending-opener staging: after a Total closes a question, code rows before the next opener are STAGED, never attached to the closed question (q20's number prints vertically-centred on a later line — v0 leaked its first M1 backward into q19); flush at the opener, honest MS-STAGED-POINT-UNATTRIBUTED if no number ever arrives",
+        "L6 round 2b: headerless grid-continuation pages keep the previous page's column geometry — 2020-06-era MSs do not repeat the header per page and v0 dropped every row of such pages (2020-06 4MB1-01 p7: q4-q6 lost)"
+      ],
+      "tooling_lesson": "PUA literals must be written as escape sequences: a literal-PUA write shifted U+F0E6->U+F026 and silently re-keyed the bracket law (caught by a codepoint assertion, fixed in-place)",
+      "fixture_amendment": "the Alt fixture was rewritten order-faithful to page 17 — the v0 fixture had ENCODED the leak it was testing (its condensed main section carried 3 marks but asserted 4, reachable only via the leak)"
+    },
+    "dialect_b_parser": {
+      "commit": "syllabai-parser d26c60e — tools/pdflane/parse_ms_maths_b.py + run_paper dialect-B route (both lanes) + tests_maths_grid_b.py",
+      "census_correction": "the band-1 census '6x 2018-06 legacy dialect B' is corrected of record: 2x dialect B (2018-06 4MB1-01, 4MB1-02) + 4x ABBREVIATED dialect A (first column prints 'Ques'/'Qu': 2018-06 4MB1-02R, 2021-11 4MB1-02, 2022-01 4MB1-02R, 2023-06 4MB1-02R — same column order, alias accepted, x-map uses the printed alias position)",
+      "laws": [
+        "mark codes print PER ROW in the Mark column (no vertical merge); the Mark x-window is [Mark-7, Sub+18) (coordinate study -3..+7; the wider first attempt let Notes-text code mentions score — 'Two terms correct for M1', q25)",
+        "Notes-column code mentions ('M1 for ...', 'B1 for each coordinate', 'SC B1B0') are never awards — the x-window is the discriminator",
+        "alternative routes open at a standalone indented 'OR' line (dialect B has no 'Alt' sections); codes below are route reprints, OR-ROUTE-CODE-SKIPPED, never re-scored (q23 2018-06: two full routes, v0 summed 8 on a 4-mark question)",
+        "the 2018-06 MS 'Total' column prints PART totals, not question totals (q7 4MB1-02: part totals 1/2/2/3/2/3, no 13 anywhere) — the QP printed total is authoritative (the lane's pinned law), Total-column max is the fallback, disagreement recorded MS-TOTAL-COLUMN-DISAGREEMENT",
+        "'1(b)'-style re-prints of the OPEN question are part continuations (4MB1-02 prints every part as '4(a)','4(b)',...)"
+      ]
+    },
+    "corpus_wave": {
+      "commit": "syllabai-pastpapers 87b6b98 — 65/66 papers × parsed/{questions.json,qp.md,ms.md} placed in the archive paper dirs (lane placement per be3b661); _meta review queues stay uncommitted (products only, per the band-1 placement)",
+      "coverage": "20 sessions, 66 papers, 64 dialect-A (4 abbreviated headers) + 2 dialect-B; 65 products emitted; 59 with totalMarks 100; resume-safe wave driver + census persisted at scripts/b2_wave.py / b2_wave_census.py",
+      "fully_verified": ["2018-06/4MB1-01 (28/28)", "2018-06/4MB1-02 (11/11)", "2024-06/4MB1-01 (27/27)"],
+      "per_question_verification": "emit_atoms already validates every question's point-sum against the effective total and stamps verifiedAgainst ('ms-total-row' | 'qp-printed') — the honest per-question state rides in every product; doc-level marksVerified is TRUE only when every question verifies"
+    }
+  },
+  "known_residuals_round_3": [
+    "the 02-paper alternative-route over-score variant: the A-grammar papers of 2019-06..2026-06 4MB1-02 overscore specific questions (e.g. 2021-11 q8 sum 25 on 10 printed; 2022-06 q8 27 on 11) — an alternative-route form the A grammar does not yet model (dialect B's OR law is the template); evidence per question rides in the products' flags",
+    "QP-total gaps on text-layer-incomplete QPs: 2019-01 4MB1-01 carries an image-only page 5 — questions 8/9 are absent from the text layer entirely; the product emitted 23q/86 marks with the gap disclosed (deterministic lane cannot transcribe image pages; the probe's SCANNED escalation does not fire because the PDF as a whole has a text layer)",
+    "fail-closed emit withhold: 2019-01/4MB1-02R emitted NO product — q5 has no deterministic total on either side (partially-scanned QP; EmitError 'no QP total and no MS total row' is the designed fail-closed); 62 partial products carry per-question unverified rows with printed=None classes needing the same QP-total recovery study",
+    "the sub-question merged-cell span law (dialect A): 11 pilot questions carry MS-SPAN-MARKS-MISMATCH rows (identical set v0->round-2, question-level closure unaffected) — the span window law needs its own coordinate round",
+    "the G2 label census counts raw code tokens (96 on the pilot) vs scored points (93) — the 3 delta are the by-design partial/reference skips, each individually recorded; the gate stays FAIL by design and the receipt is the interpretation of record"
+  ],
+  "gate_posture": "pilot + both dialect-B papers: G3/G4/G5/G6 PASS, G1/G2 FAIL carried by the disclosed span-law/census residuals; the wave products carry the same posture per paper — overall gate FAILs are honest review posture, never silent",
+  "fence": "4MB1-only; 4MB0 legacy rows out of scope; 4MA1/4PH1/4CH1 untouched (parse_ms.py byte-unchanged across all three commits; chemistry 15/15 modules green 216 passed + 1 pre-existing ODL skip at round 2, 228+17 passed at round 2b); zero prod writes, zero Neon, zero LLM, zero probe learners; the T-MIG-138 (4MA1) lane's commits observed as origin neighbors and never touched",
+  "write_ledger": "parser: 380e5bd + d26c60e + c1828ba (pushed e39fdd5..c1828ba); pastpapers: 87b6b98 (pushed 4eb7b54..87b6b98, +384968 lines, 194 files); v2: this receipt + worklog; fetch-first before every commit; no force; local worktree noise stashed not reverted (parser stash 'b2-pre: pre-existing local mods', pastpapers stash 'b2-pre: gitignore mode noise')"
+}
