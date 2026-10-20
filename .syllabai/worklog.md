@@ -9562,3 +9562,18 @@ Work Log:
 
 Stage Summary:
 - "intake merging" executed of record: the one open PR (#217) merged through its own pinned GREEN gate with the desk pin inside the merged history; desk queue DRAINED (0 open); standing residuals unchanged (PAT rotation CRITICAL overdue, hub deploy incident operator-keyed, 216-doc backfill residual). Next repo receipt = Task-65; next workspace = Task-45.
+Task ID: trace 1a159cb37d8fb519 (perf-hub-bundle-offload run-002: meter purge APPLIED, serving intact)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Operator Go "Go, and nothing will break right?" -> apply the staged 16-uid hub-v2 prune manifest (staged + dry-run green in trace 1a159bdb28f30891).
+
+Work Log:
+- Pre-apply: fingerprints re-verified (a8ccee736aa8c75b / d254bbfaac004354, precedent-law match); dry-run re-run against FRESH state — 16/16 targets passed ALIAS-GUARD (syllabai-hub-v2.vercel.app) + INFLIGHT-GUARD. Drift of record: stored 18 -> 23 (5 new post-band sibling-lane deploys, all outside the manifest = untouched by design); the prod alias had MOVED to feaf7ac (dpl_3cFV22FQ...) — caught dynamically by the alias guard.
+- APPLY: 16/16 DELETED, 0 skipped, 0 errors — 3 fat ~2GB pre-band READY prod (c14e375 08:23, 82f708a 08:41, 16c40fb 08:52) + fat preview 720fc01 + 8 pre-band ERRORs + band-branch preview eec37c7 + 3 superseded slimmed (94dd75f, 77413a0, 0244118). Applied record: download/hubv2-prune-applied.json.
+- Post-census: 23 -> 7 stored — 3 slimmed READY prod (feaf7ac alias holder + bf5dd4c + e5bf8b7 rollbacks), 2 slimmed previews, 2 inflight sibling deploys (2c28a42 QUEUED, 666e11a BUILDING — both later pulled as main tip).
+- NOTHING-BROKEN PROOF: wire battery 11/11 PASS zero-write through syllabai-hub-v2.vercel.app (SSR 200s; course-stats; kg-learner-bridge 4CH1 271KB; /corpus-index.json list[807]; /corpus/* + /kg/data static 200s).
+- Expected meter: ~8GB class freed (the 4 fat artifacts dominated); hub-v2 -> ~0.6GB class (3 slimmed prod). Dashboard Usage LAGS deletions — allow hours.
+- SANDBOX ROLLBACK #4 of record: the automation workspace repo (/home/z/my-project/.git) lost its remote and holds a divergent UUID-snapshot lineage (no 94dd75f/77413a0); REAL repo verified at /home/z/my-project/syllabai-v2 (origin github.com/SyllabAI/syllabai-v2, main 77413a0 -> ff 666e11a); credential helper + 0600 store intact.
+- Trade-off stands: pre-band instant-rollback retired; pre-band rollback = git revert + ~2.5min slim rebuild. Recommendation staged: lower Dashboard Deployment Retention so old deployments auto-expire.
+
+Stage Summary:
+- STORAGE PURGE DISCHARGED of record: 16/16 guarded manifest deletions, alias holder + rollback depth preserved (3 slimmed prod), battery 11/11. Standing: PAT rotation OVERDUE; stale CORS entry (identity/config.ts:60) cleanup candidate; Smart Mark audit + wave-3 parked. Zero prod-db/Neon/LLM contact, no force.

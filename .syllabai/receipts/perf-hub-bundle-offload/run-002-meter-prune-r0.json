@@ -1,0 +1,48 @@
+{
+  "trace": "1a159cb37d8fb519",
+  "run": "run-002-meter-prune-r0",
+  "workstream": "perf-hub-bundle-offload",
+  "task": "Deployment-storage meter fix: apply the staged 16-uid hub-v2 prune manifest (staged in trace 1a159bdb28f30891, dry-run green, awaiting operator Go)",
+  "operator_go": "Go, and nothing will break right?",
+  "pre_apply_verification": {
+    "fingerprints_matched_precedent": true,
+    "dry_run_against_fresh_state": "16/16 targets passed ALIAS-GUARD (prod domain syllabai-hub-v2.vercel.app) + INFLIGHT-GUARD (BUILDING/QUEUED/INITIALIZING/PENDING/CANCELING)",
+    "drift_of_record": {
+      "stored_count": "18 -> 23 (5 new post-band sibling-lane deployments since the morning census; all outside the manifest = untouched by design)",
+      "alias_moved": "prod alias had moved from bf5dd4c-era to feaf7ac (dpl_3cFV22FQ...) — caught dynamically by the alias guard; manifest unchanged, still safe"
+    }
+  },
+  "applied": {
+    "deleted": 16,
+    "skipped": 0,
+    "errors": 0,
+    "breakdown": {
+      "fat_preband_production_READY": ["c14e375 @ 08:23", "82f708a @ 08:41", "16c40fb @ 08:52"],
+      "fat_preband_preview_READY": ["720fc01 @ 09:41"],
+      "preband_production_errors": ["c455906", "246572d", "c58c6f5", "4c50bd0", "41f9bcd", "0d5f211"],
+      "preband_preview_errors": ["1512fd4", "fc87d27"],
+      "band_branch_preview": ["eec37c7 @ 11:32"],
+      "superseded_slimmed_production": ["94dd75f @ 13:55", "77413a0 @ 14:01"],
+      "superseded_slimmed_preview": ["0244118 @ 14:24"]
+    },
+    "applied_record": "download/hubv2-prune-applied.json (automation-workspace copy; uid-exact)"
+  },
+  "kept": {
+    "production": ["feaf7ac (current alias holder, slimmed)", "bf5dd4c (rollback-2, slimmed)", "e5bf8b7 (rollback-1, slimmed)"],
+    "previews_slimmed": ["d7cb207", "8ba5624"],
+    "inflight_untouched": ["2c28a42 (QUEUED — T-MIG-134b receipts commit, later main tip)", "666e11a (BUILDING — PR #217 merge, later main tip)"]
+  },
+  "post_state": {
+    "stored_deployments_hub_v2": 7,
+    "all_remaining_post_band_slimmed_or_inflight": true
+  },
+  "nothing_broken_proof": {
+    "wire_battery": "11/11 PASS zero-write through syllabai-hub-v2.vercel.app",
+    "legs": ["/ 85KB", "/revision-notes 156KB", "/exam-questions 344KB", "/knowledge-graph 42KB", "/practice 2.58MB", "/api/course-stats 200", "/api/kg-learner-bridge?course=igcse-chemistry-19 271KB (4CH1)", "/corpus-index.json list[807]", "/corpus/cie-a-level-accounting-21/curriculum.json 200", "/corpus/igcse-chemistry-19/notes.json list[112]", "/kg/data/igcse-chemistry-19.json 151KB"]
+  },
+  "expected_meter_effect": "~8GB class freed (the 4 fat ~2GB-class artifacts dominated the stored inventory); expected hub-v2 storage ~0.6GB total (3 slimmed prod) + MB-scale strays elsewhere. NOTE: the Vercel dashboard Usage meter LAGS deletions — allow hours before it reflects.",
+  "tradeoffs_disclosed": "Pre-band instant-rollback path retired (last pre-band serving state c14e375 deleted); pre-band rollback = git revert + ~2.5min slim rebuild. Per-push previews already disabled (vercel.json git.deploymentEnabled {main:true,'*':false}).",
+  "recommendation": "Dashboard: lower Project Deployment Retention (previews short, production moderate) so old deployments expire automatically instead of accumulating ~2GB-class artifacts again on any future fat regression.",
+  "sandbox_anomaly_of_record": "SANDBOX ROLLBACK #4: the automation workspace repo (/home/z/my-project/.git) lost its remote config and holds a divergent UUID-snapshot lineage lacking 94dd75f/77413a0; the REAL repo verified at /home/z/my-project/syllabai-v2 (origin https://github.com/SyllabAI/syllabai-v2.git, local main 77413a0 -> ff 666e11a). Credential helper + 0600 store intact; fingerprints re-verified pre-use.",
+  "write_ledger": "16 Vercel deployment deletions (operator-ordered, manifest-exact, guarded); ZERO prod-db/Neon/LLM contact; no force-push; .syllabai-only receipt push"
+}
