@@ -56,6 +56,7 @@ import { useCourseProgress } from "@/lib/progress";
 import { formatPercent } from "@/lib/format";
 import { api, getToken } from "@/lib/api";
 import { fetchPilotInfo, PILOT_COURSE_SLUG } from "@/lib/attempt-bridge";
+import { boardOf, hasExamSeriesCalendar } from "@/lib/board";
 import { useDashboardCore } from "@/lib/dashboard-core";
 import { fetchBridge, type LearnerBridge } from "@/lib/learner-state";
 import { useExamTargets } from "@/lib/exam-series";
@@ -283,9 +284,11 @@ function SubjectCard({
         <X className="size-4" aria-hidden />
       </Button>
       <CardContent className="flex h-full flex-col gap-1 p-4 pr-11">
-        {/* eyebrow: board · level (SME: "IGCSE · Edexcel") */}
+        {/* eyebrow: board · level (SME: "IGCSE · Edexcel") — the row's real
+            board via lib/board ("Edexcel" for the pre-CIE rows, the row's
+            registry value for the CIE wave) */}
         <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-          Edexcel · {meta.level}
+          {boardOf(meta)} · {meta.level}
         </p>
 
         {/* subject name + Last viewed badge */}
@@ -308,7 +311,11 @@ function SubjectCard({
             chip renders "≈" for estimated sittings and the entries-closed
             fact; unavailable states render nothing at all */}
         <div className="pt-0.5">
-          <ExamSeriesPicker slug={meta.slug} level={meta.level} target={examTarget} compact />
+          {/* the Pearson calendar is Edexcel-only — CIE lanes present no
+              series surface (honest absence, not a Pearson list) */}
+          {hasExamSeriesCalendar(meta) && (
+            <ExamSeriesPicker slug={meta.slug} level={meta.level} target={examTarget} compact />
+          )}
         </div>
 
         <Link
@@ -637,7 +644,7 @@ export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
                 </Badge>
                 <span className="text-sm font-semibold">{jumpBack.course.subject}</span>
                 <span className="text-sm text-muted-foreground">
-                  Edexcel · {jumpBack.course.level} · {jumpBack.course.code}
+                  {boardOf(jumpBack.course)} · {jumpBack.course.level} · {jumpBack.course.code}
                 </span>
                 <ChevronRight className="ml-auto size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" aria-hidden />
               </CardContent>
@@ -666,7 +673,7 @@ export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
                 </Badge>
                 <span className="text-sm font-semibold">{coreJumpBack.title}</span>
                 <span className="text-sm text-muted-foreground">
-                  Edexcel · {coreJumpBack.meta.level} · {coreJumpBack.meta.code}
+                  {boardOf(coreJumpBack.meta)} · {coreJumpBack.meta.level} · {coreJumpBack.meta.code}
                 </span>
                 <Badge
                   variant="outline"

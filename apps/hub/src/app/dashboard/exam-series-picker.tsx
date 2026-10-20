@@ -36,7 +36,9 @@ export function ExamSeriesPicker({
   compact = false,
 }: {
   slug: string;
-  /** the hub registry level (content/courses.json — Edexcel lanes only) */
+  /** the hub registry level; callers gate the board first
+   *  (hasExamSeriesCalendar) — only Edexcel lanes present the picker, the
+   *  imported calendar's provenance is Pearson-only */
   level: string;
   /** undefined = availability unknown → no surface; null = nothing declared */
   target: CourseExamTargetView | null | undefined;
