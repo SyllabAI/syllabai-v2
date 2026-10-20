@@ -41,10 +41,12 @@
  * the assistant cannot be pointed anywhere else, so it is absent rather
  * than broken.
  *
- * Transcripts live in React state lifted to the player, keyed by the hub
- * question id (one transcript per whole question — switching questions
- * switches transcripts, and answers anchored to one question never read as
- * anchored to another).
+ * Transcripts live in the device-local cla thread store, lifted through the
+ * player (DC-6 phase 2a — ./question-cla-threads.ts): one ACTIVE thread per
+ * whole question — switching questions switches transcripts, reloads keep
+ * them, and answers anchored to one question never read as anchored to
+ * another. "New chat" archives to the question's restorable history (the
+ * empty state's "Past chats on this question" list).
  *
  * SME chat-widget dual form (HUB-CLA-POPUP + HUB-CLA-SIDEBAR): popup
  * (floating, bottom-right) or sidebar — a PHYSICALLY DOCKED right column,
@@ -79,6 +81,7 @@ import {
   AlertTriangle,
   Compass,
   FileText,
+  History,
   Info,
   Lightbulb,
   Loader2,
@@ -93,6 +96,7 @@ import {
 } from "lucide-react";
 
 import { useClaPanelForm, useClaDock, useIsDesktop, useIsWide, claHeaderCircleBtn } from "./cla-panel-mode";
+import { relativeTime, setActiveQuestionThread, useQuestionClaSnapshot } from "./question-cla-threads";
 
 /** Question-surface free-input modes — the two that mean anything here. */
 type QuestionMode = "EXPLAIN" | "HINT";
@@ -229,6 +233,18 @@ export function QuestionClaOverlay({
     () => (question ? claTargetsOf(question, join) : []),
     [question, join],
   );
+
+  // DC-6 phase 2a history: the device-local threads for THIS question — the
+  // active one renders as the transcript, the rest is the restorable past
+  // (derived from the store snapshot; re-renders ride the store)
+  const claSnapshot = useQuestionClaSnapshot();
+  const pastThreads = useMemo(() => {
+    if (!question) return [];
+    const activeId = claSnapshot.activeByQuestion[question.id] ?? null;
+    return claSnapshot.threads
+      .filter((t) => t.questionId === question.id && t.messages.length > 0 && t.id !== activeId)
+      .slice(0, 8);
+  }, [claSnapshot, question]);
 
   // the part lightbulb pre-aims Approach; every other open resets to the
   // first target (the overlay's target is per-open, the transcript per-question)
@@ -396,6 +412,7 @@ export function QuestionClaOverlay({
             conversation starts, like SME's suggestions */}
         <div className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-3">
           {messages.length === 0 && !busy && (
+            <>
             <div className="grid grid-cols-1 gap-2 pt-1">
               <button
                 type="button"
@@ -433,6 +450,29 @@ export function QuestionClaOverlay({
                 </span>
               </button>
             </div>
+            {question && pastThreads.length > 0 && (
+              <div className="space-y-1 pt-1">
+                <p className="flex items-center gap-1.5 px-1 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                  <History className="size-3" aria-hidden />
+                  Past chats on this question
+                </p>
+                {pastThreads.map((t) => (
+                  <button
+                    key={t.id}
+                    type="button"
+                    onClick={() => setActiveQuestionThread(question.id, t.id)}
+                    className="w-full rounded-lg border bg-background/60 px-2.5 py-1.5 text-left transition-colors hover:border-primary/40 hover:bg-primary/5"
+                  >
+                    <span className="block truncate text-[12px] font-medium">{t.title}</span>
+                    <span className="text-[10px] text-muted-foreground">
+                      {t.messages.length} turn{t.messages.length === 1 ? "" : "s"} ·{" "}
+                      {relativeTime(t.updatedAt)}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            )}
+            </>
           )}
           {messages.map((m, i) =>
             m.kind === "user" ? (
@@ -616,12 +656,12 @@ export function QuestionClaOverlay({
 
   // SME's New chat header action, now ported (the last honest-absent
   // circle button): their edit-square glyph, their order — New chat sits
-  // before Collapse/Close. Semantics on this surface: reset THIS question's
-  // transcript (lifted to the player, keyed by question id — the reset rides
-  // the same setter, so it lands in the right slot and survives nothing —
-  // a fresh slate brings the quick chips back). Disabled while a turn is
-  // in-flight; the draft is KEPT — destroying typed text is never the
-  // button's job.
+  // before Collapse/Close. Semantics on this surface (DC-6 phase 2a):
+  // archive THIS question's transcript to the device-local history — the
+  // empty state lists it under "Past chats on this question" and a tap
+  // restores it (the archive rides the same setter, so it lands in the
+  // right slot). Disabled while a turn is in-flight; the draft is KEPT —
+  // destroying typed text is never the button's job.
   const newChat = () => {
     setMessages(EMPTY_CLA_MESSAGES);
   };

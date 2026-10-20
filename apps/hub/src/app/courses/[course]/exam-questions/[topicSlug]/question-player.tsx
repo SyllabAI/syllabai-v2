@@ -51,11 +51,11 @@ import {
   X,
   XCircle,
 } from "lucide-react";
+import { EMPTY_CLA_MESSAGES, QuestionClaOverlay } from "@/components/cla/question-cla-overlay";
 import {
-  EMPTY_CLA_MESSAGES,
-  QuestionClaOverlay,
-  type QuestionClaMessage,
-} from "@/components/cla/question-cla-overlay";
+  commitQuestionClaMessages,
+  useQuestionClaSnapshot,
+} from "@/components/cla/question-cla-threads";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -154,10 +154,13 @@ export function QuestionPlayer({
   const [fullFor, setFullFor] = useState<{ q: ExamQuestion; index: number } | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   // question-anchored CLA (web s129 parity): which question's panel is open
-  // and which Approach target it pre-aims at; transcripts lifted here, one
-  // per whole question, surviving tab switches and full-screen round trips
+  // and which Approach target it pre-aims at; transcripts live in the
+  // device-local cla thread store (DC-6 phase 2a — components/cla/
+  // question-cla-threads.ts): one ACTIVE thread per whole question,
+  // surviving tab switches, full-screen round trips AND reloads; "New chat"
+  // archives to the question's restorable history
   const [claFor, setClaFor] = useState<{ q: ExamQuestion; index: number; targetId: string | null } | null>(null);
-  const [claTranscripts, setClaTranscripts] = useState<Record<string, QuestionClaMessage[]>>({});
+  const claSnapshot = useQuestionClaSnapshot();
   // 4CH1 bridge — resolves this set's corpus questions to core identity when
   // the course is the pilot and the learner is signed in (ADR-029 tranche 4)
   const bridge = useAttemptBridge(course, topicSlug);
@@ -471,14 +474,20 @@ export function QuestionPlayer({
           join={claFor ? (bridge.data.questions[claFor.q.id] ?? null) : null}
           questionNumber={claFor ? claFor.index + 1 : null}
           initialTargetId={claFor?.targetId ?? null}
-          messages={claFor ? (claTranscripts[claFor.q.id] ?? EMPTY_CLA_MESSAGES) : EMPTY_CLA_MESSAGES}
+          messages={
+            claFor
+              ? (claSnapshot.threads.find(
+                  (t) => t.id === claSnapshot.activeByQuestion[claFor.q.id],
+                )?.messages ?? EMPTY_CLA_MESSAGES)
+              : EMPTY_CLA_MESSAGES
+          }
           setMessages={(update) => {
             if (!claFor) return;
-            const key = claFor.q.id;
-            setClaTranscripts((prev) => {
-              const current = prev[key] ?? [];
-              const next = typeof update === "function" ? update(current) : update;
-              return { ...prev, [key]: next };
+            // forwarded untouched — the store resolves updaters against its
+            // own state (fresh-prev race law) and owns the archive law
+            commitQuestionClaMessages(claFor.q.id, update, {
+              questionNumber: claFor.index + 1,
+              courseSlug: course,
             });
           }}
         />
