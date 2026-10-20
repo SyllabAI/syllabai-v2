@@ -1,0 +1,69 @@
+{
+  "receipt": "cie-class-picker-run-001-2026-10-20-r1c",
+  "family": "HUB-TEACH",
+  "taskOfRecord": "Task-64 (r1c lane receipt numbering: 60 = paper-accessibility census 5c2b06c, 61 = scope card bbf5e91, 62 = catalog execution 9f51441, 63 = dashboard add-course CIE board ad64753)",
+  "operatorTrace": "1a158596b1569079",
+  "operatorOrder": "want CIE lanes selectable in the teacher class-creation picker",
+  "agent": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)",
+  "generatedUtc": "2026-10-20T08:55:00Z",
+  "dateConvention": "receipt filename carries the lane-local (Asia/Dhaka) date 2026-10-20, consistent with the lane's run-001 receipts",
+  "scope": "the teacher add-class overlay's board dimension (class-creation picker) + the surfaces the fix directly falsifies (TeacherCourseLite, class-card eyebrows, the page's registry mapping); hub-plane only",
+  "defectOfRecord": {
+    "surface": "apps/hub/src/app/teacher/add-class-overlay.tsx (teacher /teacher, Add class / Edit class dialog)",
+    "fingerprint": "step 2 = STATIC always-pressed 'Edexcel' button (const BOARD = 'Edexcel' declared in-file) + caption 'the Cambridge International courses are past-papers-first launches' — the same false fingerprint the dashboard add-course overlay carried before #211 (trace 1a1580a42635b8d9); the teacher surface was deliberately untouched by that act under its own declared in-file ruling",
+    "aggravation": "the subjects step aggregated BOTH boards' shared 'IGCSE' level value while the header asserted one board (the mixed-aggregation class #211 killed on the dashboard), and the ClassCard eyebrow hard-coded 'Edexcel · N subjects' — false for every Cambridge lane the moment CIE became selectable",
+    "registryAtFix": "94 rows = 49 Edexcel (board absent) + 45 Cambridge International (board explicit), all status full/pilot"
+  },
+  "fix": {
+    "method": "registry-mirroring, lib/board.ts of record reused (#211), nothing invented",
+    "files": [
+      "apps/hub/src/app/teacher/add-class-overlay.tsx — step 2 = real board picker (distinctBoards(), busiest first, count badges, aria-pressed toggles; board switch resets level, NEVER the pending subject set — chips keep cross-board selections visible per the never-a-hidden-state law); levels/lane list/filter/empty-states board-scoped; false caption replaced by the registry-derived two-board line + the mixed-class disclosure; docblock carries the before/after + trace chain; no exam-series control exists on this surface (nothing to gate by hasExamSeriesCalendar)",
+      "apps/hub/src/app/teacher/teacher-client.tsx — TeacherCourseLite gains board? (absent = the pre-CIE Edexcel rows); ClassCard eyebrow derives the class's real board(s) via boardOf(): one board prints its name, several print 'Mixed boards', zero valid subjects prints the bare count",
+      "apps/hub/src/app/teacher/page.tsx — the registry's board field rides into the Lite rows (hasBundle filter unchanged)"
+    ],
+    "deliberateUntouched": [
+      "the dashboard add-course overlay (#211 of record, byte-untouched)",
+      "lib/board.ts + its tests (consumed as-is)",
+      "my-classes store (board-agnostic by design: slugs validated against the registry at read, no board logic)",
+      "the live core roster surface /teacher/classes (separate database-backed concept)"
+    ]
+  },
+  "verification": {
+    "bunTest": "2439 pass / 0 fail (13 skip by design, 136 files)",
+    "eslint": "clean (apps/hub, 0 findings)",
+    "buildHub": "GREEN incl. the prebuild validator chain (verify_corpus_23a + verify_flashcard_sync_courses + validate_cie_bundles)"
+  },
+  "landing": {
+    "branch": "hub-teach/cie-class-picker-r1",
+    "commit": "d01760f",
+    "pr": "#212 (opened via API, payload persisted lane-side scripts/pr-payload-cie-class-picker.json)",
+    "ci": "3/3 GREEN at d01760f (Vercel Preview Comments + verify + hub, all success)",
+    "merged": "True -> merge commit c14e375 (house merge-commit method), push attempt 1, no guard races",
+    "deploy": "hub git-linked auto-deploy; new bundle witnessed by served-chunk fingerprint ('both boards' marker in /_next/static/chunks/03ctj3ke6-1l8.js); Vercel-API deploy probe NOT used of record (PAT lacks that project's scope — 'Project not found' on prj_exbZqpggkNkgO62hfuuDqYA9rxaA, the Task-25-era account split-brain still standing)"
+  },
+  "liveBattery": {
+    "method": "agent-browser on syllabai-hub-v2.vercel.app, GET-only UI clicks; synthetic local identity DISCLOSED: localStorage-seeded (roles:['TEACHER'], email class-picker-probe@lane.local) — RequireAuth is a client-side UX affordance per its own docblock ('never authorization'), and the class plane is browser-local demo truth; network route ABORTS **/api/** in-browser so ZERO core contact occurred (the seeded bearer never reached core); honest degraded states rendered as designed (stats skeletons; live-class banner 'core did not answer')",
+    "legs": [
+      "L1 route: /teacher renders the teacher workspace under the local identity ('My classes · 0 live · 0 this browser')",
+      "L2 picker step 2: board buttons 'Edexcel 49' + 'Cambridge International 45' with count badges; filter input disabled (level gate); caption 'The registry covers Edexcel and Cambridge International lanes. Subjects from both boards can share one class.'; 'Pick a board to see its levels.' — the false 'past-papers-first launches' caption ABSENT",
+      "L3 CIE board toggle: levels IGCSE 30 / A-Level 13 / AS 2 — byte-identical to the dashboard CIE cascade of record (#211 battery), no IAL on CIE, no mixed aggregate",
+      "L4 CIE A-Level: 13 lanes listed (Accounting 9706, Biology 9700, Business 9609, Chemistry 9701, Computer Science 9618, Economics 9708, Maths—Mechanics 9709 among them); Chemistry 9701 picked -> pending chip 'Chemistry ×' + hint '1 selected'",
+      "L5 THE HEART: board switch to Edexcel -> levels re-derive board-scoped (IGCSE 36 / IAL 13, zero CIE values, zero mixed 66) AND the CIE chip PERSISTS across the switch",
+      "L6 mixed pending set: IAL -> 'Maths — Pure Mathematics 1' (YMA01) picked -> chips [Chemistry ×, Maths — Pure Mathematics 1 ×]",
+      "L7 mixed class of record: 'CIE battery class' created -> card eyebrow 'MIXED BOARDS · 2 SUBJECTS' with rows Chemistry 9701 + Maths YMA01 (the hard-coded 'Edexcel · N' would have been false here)",
+      "L8 CIE-only class: 'CIE only class' (CIE -> IGCSE -> Chemistry 0620) -> eyebrow 'CAMBRIDGE INTERNATIONAL · 1 SUBJECT'",
+      "L9 Edexcel regression: 'Edexcel regression class' (Edexcel -> IGCSE -> Chemistry 4CH1) -> eyebrow 'EDEXCEL · 1 SUBJECT' (first create attempt raced the disabled button — retried with verified state, disclosed)",
+      "L10 edit flow: 'Edit subjects' on the CIE-only class -> title 'Edit class', pending set seeded with the class's CIE lane, both board buttons available for adding lanes"
+    ],
+    "cleanup": "all 3 demo classes removed, syllabai.token + syllabai.user + syllabai-hub:teacher-classes.v1 + probe keys wiped, network route unrouted, browser session closed — zero origin residue",
+    "writeLedger": "hub-plane UI only; ZERO DB/Neon/core/LLM writes; zero account rows (localStorage demo state only, wiped at end); synthetic local identity disclosed above"
+  },
+  "disclosures": [
+    "the Vercel deployments API probe returned 'Project not found' for the Task-25-era hub project id — deploy witnessing fell back to the served-chunk fingerprint (first-hand, sufficient)",
+    "the teacher page's hasBundle filter passes all 45 CIE rows at tip (45 CIE bundles of record post Task-62 A0/waves) — the badge reads 45, not phase 3's 44; registry-derived, nothing asserted from memory",
+    "leg-9 first create attempt was a no-op (clicked while canCommit false) — disclosed, retried with verified state"
+  ],
+  "rollbackAnchor": "revert c14e375",
+  "nextRepoReceipt": "Task-65",
+  "nextWorkspace": "Task-45"
+}
