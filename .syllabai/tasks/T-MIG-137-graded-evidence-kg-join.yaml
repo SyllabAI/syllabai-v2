@@ -3,7 +3,7 @@ task:
   id: T-MIG-137
   title: "graded-evidence→KG join — wire the three publishGraded marking lanes (selfmark / smartmark / teachermarking) into the learner-model write path so every marked STRUCTURED attempt lands BKT/fluency evidence keyed on the curriculum KG nodes (primary topic + secondary topics + spec points appended deduped); the T-MIG-102 wiring-only rider of record, instantiated as its own card"
   owner: "r7a (Super Z, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6, chat 1f3003b6)"
-  status: IN_PROGRESS # bands 137a-c MERGED OF RECORD (PR #207, 3dd39871a, CI 3/3 — receipt run-002 + run-003; gates: typecheck x4 exit 0; api suite 2258/0/13skip EXACT +15; hub build+lint GREEN; census --gate GREEN); 137d run-003 STAGED (receipt run-003-band-137d-staged-r7a.json): the battery script persisted + the pre-deploy baseline captured 20/20 against the old carrier — the live-fire awaits the api redeploy lever (operator-gated, CUTOVER_RUNBOOK :30; the api plane has no git integration, first-hand confirmed)
+  status: DONE # ALL FOUR BANDS of record: 137a-c MERGED (PR #207, 3dd39871a, CI 3/3 — receipt run-002; gates: typecheck x4 exit 0; api suite 2258/0/13skip EXACT +15; hub build+lint GREEN; census --gate GREEN) and carried LIVE by the run-009 redeploy (carrier dpl_ENEw3f @ aef295d ⊇ 3dd3987, verified ancestor; zero api delta since); 137d LIVE-FIRED (receipt run-004, operator trace 1a1583269a438979): battery 20/20 + maths leg 9/9 — evidenceFired=True on every structured settle, skill_states NON-EMPTY keyed on 4CH1/4MA1 KG nodes, learner-graph posteriors 0.918/0.999, misconceptionStates EMPTY (zero-BDT), MCQ byte-pin GREEN, recommendations 200; the T-MIG-102 wiring-only rider is CLOSED
   claimed_at: "2026-10-19T20:30:26Z" # lane-local (Asia/Dhaka) 2026-10-20
   claimed_by_order: "operator trace 1a155d5e89e0ac45: 'file that graded-evidence→KG join card' (this filing IS the ordered act; the card's execution awaits the go)"
   priority: P1
@@ -144,3 +144,29 @@ task:
     2258/0/13skip EXACT +15 (19834 expects); hub build+lint GREEN; census
     --gate GREEN LIVE=0. Zero prod writes, zero LLM, zero Neon contact,
     fetch-first, no force.
+    Band 137d LIVE-FIRED 2026-10-20 on operator trace 1a1583269a438979
+    "fire 137d" (receipt run-004): the run-003 staged battery re-derived
+    (the sandbox wipe lost the artifact; before-shape honored) and fired
+    against the run-009 carrier — NO new deploy needed (3dd3987 verified
+    ancestor of aef295d; aef295d..ad64753 api delta EMPTY). Main battery
+    20/20: evidenceFired=True on both probes (the run-001 pre-137 baseline's
+    evidenceFired=False before-shape is CLOSED), history evidenceEmitted
+    =true, skillStates NON-EMPTY keyed on the attempts' primary KG nodes,
+    learner-graph posteriors 0.918 (4CH1) with recommendations 200,
+    misconceptionStates EMPTY on every structured settle (zero-BDT), MCQ
+    byte-pin evidenceEmitted=true (the 102 law byte-unchanged), unauth KG
+    401 shell. MATHS SUPPLEMENT 9/9 (fired mid-run: the 4MA1 bank returned
+    total=2967 vs the run-003-era honest-empty 0 — the 135e data lever has
+    fired, so the card's literal maths legs became wire-possible and
+    fired): maths structured settle evidenceFired=True, skillStates keyed
+    on 4MA1 nodes, posterior 0.999, recommendations 200; the learner-page
+    arc of the pending Maths A live smoke is WIRE-PROVEN for the
+    learner-model plane. Disclosures: maths-leg pass 1 M8 was a SCRIPT-side
+    collector bug (the learner-graph view carries a FLAT nodes list; the
+    join legs were unaffected), fixed + re-run under a login-first
+    no-new-probe discipline; chemistry census at the 4CH1-S1-a pin moved
+    58/45 → 56/43/13 (content-wave movement, disclosed not asserted).
+    Write ledger (the sanctioned sz-probe class, disclosed): 3 probe
+    learners, 4 structured attempts + 4 self-marks + 1 MCQ attempt,
+    llm_spend 0, zero other writes. Zero code edits this run —
+    .syllabai-only receipt commit, fetch-first, no force.
