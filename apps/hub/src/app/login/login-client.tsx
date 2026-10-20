@@ -48,7 +48,7 @@ const ROLE_STORY: Record<
     heading: "Revision that knows the spec.",
     sub: "Every note, question and hint is grounded in the Edexcel syllabus.",
     bullets: [
-      { icon: BookOpen, text: "Spec-grounded revision notes for 49 courses" },
+      { icon: BookOpen, text: "Spec-grounded revision notes for 94 course lanes" },
       { icon: FileQuestion, text: "Exam-style questions with self-marking" },
       { icon: Sparkles, text: "A tutor that cites the syllabus, not vibes" },
     ],
@@ -178,7 +178,9 @@ export function LoginClient() {
         </div>
 
         <div className="space-y-1 text-xs text-primary-foreground">
-          <p className="font-medium">Edexcel IGCSE &amp; IAL · 4CH1 pilot corpus · 49 courses</p>
+          <p className="font-medium">
+            Pearson Edexcel &amp; Cambridge International (CIE) · 4CH1 pilot corpus · 94 lanes
+          </p>
           <p>Grounded AI, honest citations, spec-anchored everything.</p>
         </div>
       </div>

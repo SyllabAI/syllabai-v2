@@ -28,14 +28,43 @@ import type { CourseExamTargetView, ExamSeriesView } from "@/lib/types";
 export const EXAM_TARGETS_EVENT = "syllabai:exam-targets-changed";
 
 /**
- * The hub registry level → the core calendar's qualification vocabulary.
- * The imported calendar is Pearson-only (provenance: official Pearson
- * key-dates documents), so callers gate Cambridge International lanes OUT
- * of the series surface first (lib/board hasExamSeriesCalendar) — this
- * mapping only ever sees the Edexcel lanes' levels.
+ * The hub registry level + the lane's board (boardOf's value) → the core
+ * calendar's qualification vocabulary. WIDENED of record 2026-10-20
+ * (operator trace 1a1589078364b76d "CIE lanes to also carry an
+ * exam-series calendar"): the founding mapping only ever saw the Edexcel
+ * lanes' levels because the Cambridge lanes were gated out of the series
+ * surface entirely (the Pearson-only vocabulary). The vocabulary now
+ * carries both boards (contracts ingestion.ts widening of record):
+ *   - Edexcel (board absent)  → "IAL" | "INTERNATIONAL_GCSE" (founding,
+ *     byte-identical)
+ *   - Cambridge International → "IGCSE" → CAMBRIDGE_IGCSE; "A-Level"/"AS" →
+ *     CAMBRIDGE_INTL_AS_A_LEVEL (ONE Cambridge family, one key-times
+ *     timetable — the contracts widening note pins it); any other level
+ *     falls back to CAMBRIDGE_IGCSE so the mapping is total and a
+ *     Cambridge lane can never render a Pearson list.
+ * The API pins each qualification to its OWNING board server-side, so a
+ * Cambridge lane's calendar is honestly EMPTY until a measured Cambridge
+ * key-times dataset is imported.
  */
-export function qualForLevel(level: string): string {
+export function qualForLevel(level: string, board?: string): string {
+  if (board === "Cambridge International") {
+    if (level === "A-Level" || level === "AS") return "CAMBRIDGE_INTL_AS_A_LEVEL";
+    return "CAMBRIDGE_IGCSE";
+  }
   return level === "IAL" ? "IAL" : "INTERNATIONAL_GCSE";
+}
+
+/**
+ * The picker's provenance wording, board-aware: every row's citation rides
+ * the row itself (sourceUrl + retrievedAt, the CORE_MEASURED posture) —
+ * this only names the document family the board publishes its timetables
+ * as (Pearson "key dates", Cambridge "key times"). Absent board = the
+ * founding Edexcel wording.
+ */
+export function calendarProvenanceNote(board?: string): string {
+  return board === "Cambridge International"
+    ? "the official Cambridge International key times documents"
+    : "the official Pearson key-dates documents";
 }
 
 // the targets store (the my-subjects pattern: module cache +

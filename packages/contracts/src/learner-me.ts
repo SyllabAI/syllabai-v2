@@ -32,8 +32,20 @@
  */
 import { z } from "zod";
 
-/** ExamSeriesView.BOARD_PEARSON_EDEXCEL (:26) — the only imported board. */
+/** ExamSeriesView.BOARD_PEARSON_EDEXCEL (:26) — the founding imported board. */
 export const EXAM_SERIES_BOARD_PEARSON_EDEXCEL = "PEARSON_EDEXCEL";
+
+/**
+ * The second imported board key (operator trace 1a1589078364b76d "CIE lanes
+ * to also carry an exam-series calendar"): Cambridge International calendar
+ * rows file under this DB key — same upper-snake grammar as the founding
+ * PEARSON_EDEXCEL key (which itself renders as the display value "Edexcel"
+ * on the hub's surfaces). The registry's board display value is "Cambridge
+ * International" (lib/board boardOf); the two vocabularies are joined by
+ * this constant + the hub's qualForLevel(level, board) mapping. The wire
+ * shape is unchanged — board has always been a free string on the view.
+ */
+export const EXAM_SERIES_BOARD_CIE = "CAMBRIDGE_INTERNATIONAL";
 
 /** LocalDate wire — plain ISO local date string (see learner.ts posture). */
 export const javaLocalDateSchema = z.string();

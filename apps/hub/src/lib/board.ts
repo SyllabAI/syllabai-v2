@@ -45,12 +45,24 @@ export function distinctBoards(courses: BoardKeyable[]): [string, number][] {
 }
 
 /**
- * True when the lane may present the imported exam-series calendar: the
- * core calendar's vocabulary and provenance are Pearson-only (official
- * Pearson key-dates documents), so Cambridge International lanes gate OUT
- * of the series surface — an honest absence (there is no Cambridge
- * calendar of record), never a Pearson list on a Cambridge lane.
+ * True when the lane may present the imported exam-series calendar.
+ *
+ * FLIPPED of record 2026-10-20 (operator trace 1a1589078364b76d "CIE lanes
+ * to also carry an exam-series calendar"): the founding gate refused
+ * Cambridge International lanes because the calendar's vocabulary was
+ * Pearson-only — presenting a Pearson list on a Cambridge lane would have
+ * been a lie. The vocabulary is now WIDENED with the two Cambridge
+ * families (CAMBRIDGE_IGCSE / CAMBRIDGE_INTL_AS_A_LEVEL, contracts
+ * ingestion.ts widening of record) and the qualification mapping is
+ * board-aware (lib/exam-series qualForLevel(level, board)), so a Cambridge
+ * lane reads the CAMBRIDGE_* calendar — honestly EMPTY until a measured
+ * Cambridge key-times dataset is imported (the disabled hint, never a
+ * Pearson list, never a fabricated window). The gate now only refuses
+ * boards OUTSIDE the calendar vocabulary entirely (an unknown future board
+ * has no qualification mapping to speak of — fail-closed honest absence).
+ * The flip is inseparable from the mapping: gate and mapping move together.
  */
 export function hasExamSeriesCalendar(meta: BoardKeyable): boolean {
-  return boardOf(meta) === "Edexcel";
+  const b = boardOf(meta);
+  return b === "Edexcel" || b === "Cambridge International";
 }

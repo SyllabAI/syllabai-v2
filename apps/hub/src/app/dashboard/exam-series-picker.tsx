@@ -14,13 +14,20 @@
  *  - a declared target shows its derived countdown with the "≈" mark when
  *    the sitting is estimated, plus the "entries closed" fact — both are
  *    core-computed at read (ADR-031), never invented client-side;
- *  - provenance rides every row (Pearson source document + retrieved-at):
- *    the select's tooltip states the CORE_MEASURED posture.
+ *  - provenance rides every row (board source document + retrieved-at):
+ *    the select's tooltip states the CORE_MEASURED posture, worded for the
+ *    lane's board (Pearson key dates vs Cambridge key times).
+ *
+ * Board-aware of record (trace 1a1589078364b76d): the qualification
+ * resolves from the lane's (level, board) — a Cambridge International lane
+ * reads the CAMBRIDGE_* calendar, honestly empty until a measured dataset
+ * is imported, never a Pearson list.
  */
 import { useState } from "react";
 import { CalendarClock } from "lucide-react";
 import { api } from "@/lib/api";
 import {
+  calendarProvenanceNote,
   countdownText,
   fetchExamCalendar,
   notifyExamTargetsChanged,
@@ -32,20 +39,24 @@ import type { CourseExamTargetView } from "@/lib/types";
 export function ExamSeriesPicker({
   slug,
   level,
+  board,
   target,
   compact = false,
 }: {
   slug: string;
-  /** the hub registry level; callers gate the board first
-   *  (hasExamSeriesCalendar) — only Edexcel lanes present the picker, the
-   *  imported calendar's provenance is Pearson-only */
+  /** the hub registry level */
   level: string;
+  /** the lane's board (boardOf's value — absent = the founding Edexcel
+   *  rows). Keys the qualification resolution together with the level;
+   *  callers still gate via hasExamSeriesCalendar (now true for both
+   *  calendar-carrying boards). */
+  board?: string;
   /** undefined = availability unknown → no surface; null = nothing declared */
   target: CourseExamTargetView | null | undefined;
   /** compact = inline on subject cards; full = the add-course overlay row */
   compact?: boolean;
 }) {
-  const calendar = useExamCalendar(qualForLevel(level));
+  const calendar = useExamCalendar(qualForLevel(level, board));
   const [busy, setBusy] = useState(false);
 
   if (calendar === null) return null;
@@ -92,7 +103,7 @@ export function ExamSeriesPicker({
       />
       <select
         aria-label={`Exam series for ${slug}`}
-        title="Measured from the official Pearson key-dates documents — estimated windows are marked ≈"
+        title={`Measured from ${calendarProvenanceNote(board)} — estimated windows are marked ≈`}
         value={target ? target.seriesId : ""}
         disabled={busy}
         onChange={(e) => set(e.target.value)}
@@ -120,7 +131,7 @@ export function ExamSeriesPicker({
           title={
             target.entryDeadlinePassed
               ? "The entry deadline for this sitting has passed"
-              : "From the official Pearson timetable (measured)"
+              : `From ${calendarProvenanceNote(board)} (measured)`
           }
         >
           {countdownText(target)}

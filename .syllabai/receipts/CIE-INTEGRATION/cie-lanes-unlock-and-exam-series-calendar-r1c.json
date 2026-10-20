@@ -1,0 +1,43 @@
+{
+  "receipt": "cie-lanes-unlock-and-exam-series-calendar-r1c",
+  "family": "CIE-INTEGRATION",
+  "operatorTrace": "1a1589078364b76d",
+  "operatorOrder": "CIE lanes to also carry an exam-series calendar",
+  "agent": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)",
+  "runOfRecord": "run-002 (RECONCILED REPLAY — run-001 superseded, see the race disclosure)",
+  "raceDisclosure": {
+    "what": "run-001 built the whole band on a STALE local tip (4f32113) and re-implemented work parallel lanes had already merged of record earlier the same morning: PR #211 (07:00Z, hub-dash/cie-board-addcourse-r1, trace 1a1580a42635b8d9 board cascade + lib/board.ts + 45-lane registry), PR #212 (08:23Z, hub-teach/cie-class-picker-r1, trace 1a158596b1569079 teacher cascade), PR #213 (09:10Z, t-specs-cie-consume/r9, the 45 CIE content bundles + spec-links consumption at resources pin 75981cad). The stale tip was not detected until post-push (the PR-event CI listing surfaced the sibling branches).",
+    "staleArtifactOfRecord": "the run-001 branch commit 720fc0152bda6c248133c8582ab987a1e3b0c4e1 (kept on the remote reflog + the PR's history until the force-push; disclosed here because the receipt/worklog inside it claimed the registry/overlays as this band's work — they were NOT; the parallel receipts #211/#212/#213 are the of-record implementations)",
+    "reconciliation": "run-002 fetch-first onto the true tip edeb6be: EVERY run-001 duplicate of merged work DISCARDED (registry rows, lib/courses board field, both overlay cascades, teacher page/client, dashboard eyebrows, course-header/crumbs — all the parallel lanes', byte-untouched); the run-001 Novel delta SURVIVES re-keyed to the of-record vocabulary (board display 'Cambridge International', levels 'A-Level'/'AS'/'IGCSE', 94 lanes / 45 Cambridge)"
+  },
+  "theNovelDeltaOfRecord": {
+    "reading": "the of-record state this trace answers: lib/board.ts hasExamSeriesCalendar gated Cambridge lanes OUT of the series surface ('the core calendar's vocabulary and provenance are Pearson-only — there is no Cambridge calendar of record'); the operator's trace flips exactly that",
+    "1_contracts_widening": "examSeriesQualificationSchema ['INTERNATIONAL_GCSE','IAL'] → + 'CAMBRIDGE_IGCSE' + 'CAMBRIDGE_INTL_AS_A_LEVEL' (A-Level and AS resolve to ONE Cambridge family — one key-times timetable). Additive; founding values byte-identical; the widening is the code-change-with-tests the schema comment itself prescribes. EXAM_SERIES_BOARD_CIE = 'CAMBRIDGE_INTERNATIONAL' pinned beside the byte-identical PEARSON_EDEXCEL (upper-snake DB-key grammar; the registry display value 'Cambridge International' maps to it via qualForLevel — the founding key already had the same two-vocabulary shape: PEARSON_EDEXCEL ↔ 'Edexcel').",
+    "2_api_ownership": "examSeriesCalendar's filtered read resolves the qualification's OWNING board via EXAM_SERIES_QUALIFICATION_BOARD (founding values → PEARSON_EDEXCEL, Cambridge values → CAMBRIDGE_INTERNATIONAL, unknown → the founding pin = the pre-widening honest-empty behavior). SQL shape unchanged; golden w4-exam-series-* wire untouched; import path untouched (board rides the dataset envelope; the widened enum now binds Cambridge rows).",
+    "3_hub_gate_flip": "hasExamSeriesCalendar: Edexcel + Cambridge International now BOTH carry the calendar surface; unknown future boards still fail closed (honest absence). The flip is INSEPARABLE from the mapping (lib/exam-series qualForLevel(level, board)): a Cambridge lane reads CAMBRIDGE_* — never a Pearson list. Call sites unchanged (add-course overlay + dashboard my-subjects cards); both now pass board={boardOf(lane)}.",
+    "4_hub_mapping": "qualForLevel(level, board?) — founding mapping byte-identical for absent/Edexcel; Cambridge International: 'IGCSE' → CAMBRIDGE_IGCSE, 'A-Level'/'AS' → CAMBRIDGE_INTL_AS_A_LEVEL, unknown Cambridge level → CAMBRIDGE_IGCSE (total mapping, pinned). calendarProvenanceNote(board) names the Pearson key-dates vs Cambridge key-times document family.",
+    "5_picker": "ExamSeriesPicker gains board?; its provenance tooltip + countdown title word per board; header honesty posture updated (the lane reads its OWN board's calendar, honestly empty until a measured dataset is imported).",
+    "6_login_census": "the login copy's stale '49 courses' corrected to the 94-lane registry (Edexcel + Cambridge International) — collateral honesty fix, disclosed"
+  },
+  "tests": [
+    "packages/contracts/src/learner-me.test.ts — EXAM_SERIES_BOARD_CIE verbatim pin ('CAMBRIDGE_INTERNATIONAL') + the CIE board rides the unchanged ExamSeriesView wire",
+    "apps/api/test/learner-me/learner-me.test.ts — the widened vocabulary resolves its OWNING board (CAMBRIDGE_INTERNATIONAL x2 / PEARSON_EDEXCEL x2 + the unknown-qualification honest-empty fallback, bind-order pinned)",
+    "apps/api/test/ingestion/services.test.ts — Cambridge qualifications import through the SAME fail-closed gates; non-vocabulary values still rejected",
+    "apps/hub/src/lib/board.test.ts — the gate law FLIPPED: Edexcel true (unchanged), Cambridge International TRUE (was false of record), AQA/OCR fail closed",
+    "apps/hub/src/lib/exam-series.test.ts — NEW: qualForLevel founding-mapping byte-pins + the Cambridge mapping + the total-mapping fallback; calendarProvenanceNote board pins"
+  ],
+  "gates": {
+    "root_test": "bun test apps/api packages → 2262 pass / 13 skip / 0 fail (124 files, reconciled tree)",
+    "hub_unit": "bun test apps/hub (lib + app/tutor + app/api surfaces) → 143 pass / 0 fail (10 files, reconciled tree)",
+    "typecheck": "bun run typecheck (contracts/shared/db/api) clean; apps/hub tsc --noEmit clean",
+    "of_record_in_main": "the reconciled band touches NO file the parallel receipts own (registry, cascades, bundles, spec-links all byte-untouched); `git diff origin/main --stat` on the branch is the boundary of record"
+  },
+  "disclosures": [
+    "The CIE exam-series calendar is honestly EMPTY at ship: no measured Cambridge key-times dataset exists lane-side, and fabricating windows would violate the honest-provenance law. The import path is LIVE (POST /api/v1/teacher/curriculum/exam-series, dataset.board='CAMBRIDGE_INTERNATIONAL', qualifications CAMBRIDGE_IGCSE / CAMBRIDGE_INTL_AS_A_LEVEL, one https citation + retrievedAt per row, chronology gates fail closed). Operator-gated follow-up: transcribe a measured Cambridge key-times dataset with citations and import it.",
+    "The user-visible behavior change is exactly the operator's ask: Cambridge lanes now PRESENT the exam-series picker (founding gate refused them); it renders the honest disabled 'No exam series imported yet' state until data lands. Before the flip a Cambridge lane showed no series surface at all.",
+    "The Vercel hub auto-deploy is FAILING on main since the #213 merge (dpl_FvKG94CwfYF6642KPpGwxEyv1Vn9 et al., environmental/platform-side per the T-SPEC-CIE-CONSUME-1 addenda; production serves 16c40fb0 pre-lane; incident operator-keyed). This band does NOT merge itself and does NOT touch the deploy; intake owns both.",
+    "Data-plane note: exam_series rows for the Cambridge board do not exist yet anywhere (prod included) — the flip ships a surface over an honestly empty calendar; the API's ownership map guarantees a Cambridge qualification can never return Pearson rows even after Cambridge data lands.",
+    "Run-001's lane-side script scripts/cie-registry-rows.py (registry row generation) is SUPERSEDED — the parallel lanes' registry of record stands; the script stays lane-side only, never committed."
+  ],
+  "writeLedger": "repo carrier files (the reconciled branch diff of record) + receipt + repo worklog Task-61 + lane worklog; zero DB writes, zero Neon, zero deploys, zero LLM calls, zero SME live-site contact; the remote-embedded GitHub token used in-memory for push + PR update only, never printed or persisted"
+}

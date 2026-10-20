@@ -426,10 +426,32 @@ export type GlmPairResultView = z.infer<typeof glmPairResultViewSchema>;
 // ── Exam-series import (ExamSeriesDatasetDto + ImportSummary) ───────────────
 
 /**
- * The governed qualification vocabulary (SeriesRow enum, :66-70): frozen in
- * the importer, not in the DB column — widening is a code change with tests.
+ * The governed qualification vocabulary (SeriesRow enum, :66-70). FROZEN in
+ * the importer, not in the DB column — widening is a code change with tests,
+ * by this contract's own law.
+ *
+ * Widened of record 2026-10-20 (operator trace 1a1589078364b76d "CIE lanes
+ * to also carry an exam-series calendar"): the two Cambridge International
+ * families mirror the CIE-INTEGRATION registry (45 Cambridge lanes, board
+ * "Cambridge International"; levels A-Level / AS / IGCSE):
+ *   - CAMBRIDGE_IGCSE           ← hub level "IGCSE", board "Cambridge
+ *     International"
+ *   - CAMBRIDGE_INTL_AS_A_LEVEL ← hub levels "A-Level" and "AS" — Cambridge
+ *     International AS & A Level is ONE qualification family with one
+ *     key-times timetable, so both hub levels resolve to the same calendar
+ *     rows rather than duplicating them.
+ * The founding values keep their exact spelling and Edexcel ownership; a
+ * future CAMBRIDGE_O_LEVEL widening follows the same additive path. Board
+ * ownership of the vocabulary is pinned in the learner-me reader
+ * (qualification → owning DB board key), not here — the importer takes the
+ * board from the dataset envelope, exactly as before.
  */
-export const examSeriesQualificationSchema = z.enum(["INTERNATIONAL_GCSE", "IAL"]);
+export const examSeriesQualificationSchema = z.enum([
+  "INTERNATIONAL_GCSE",
+  "IAL",
+  "CAMBRIDGE_IGCSE",
+  "CAMBRIDGE_INTL_AS_A_LEVEL",
+]);
 export type ExamSeriesQualification = z.infer<typeof examSeriesQualificationSchema>;
 
 const localDateSchema = z

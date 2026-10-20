@@ -156,8 +156,30 @@ export const SUBMISSION_LOOKUP_WINDOW = 2000;
 /** FlashcardRatingTrailController (:94-95, contracts TRAIL_* of record). */
 export const TRAIL_DEFAULT_LIMIT = 200;
 export const TRAIL_MAX_LIMIT = 500;
-/** ExamSeriesView.BOARD_PEARSON_EDEXCEL (:26) — the only imported board. */
+/** ExamSeriesView.BOARD_PEARSON_EDEXCEL (:26) — the founding imported board. */
 export const EXAM_SERIES_BOARD_PEARSON_EDEXCEL = "PEARSON_EDEXCEL";
+/**
+ * The second imported board key (operator trace 1a1589078364b76d): Cambridge
+ * International calendar rows file under this DB key — mirrored contracts-side
+ * (EXAM_SERIES_BOARD_CIE in @syllabai/contracts learner-me; the registry's
+ * board display value "Cambridge International" maps to it hub-side via
+ * qualForLevel).
+ */
+export const EXAM_SERIES_BOARD_CIE = "CAMBRIDGE_INTERNATIONAL";
+/**
+ * The qualification vocabulary's board ownership (the widening of record on
+ * examSeriesQualificationSchema, contracts ingestion.ts): the founding two
+ * values are Edexcel's, the Cambridge widening owns the CIE board. The
+ * filtered calendar read resolves the owning board from the requested
+ * qualification — unknown strings keep the founding behavior (Edexcel
+ * board pin → an honest empty list), so the wire never changes shape.
+ */
+const EXAM_SERIES_QUALIFICATION_BOARD: Record<string, string> = {
+  INTERNATIONAL_GCSE: EXAM_SERIES_BOARD_PEARSON_EDEXCEL,
+  IAL: EXAM_SERIES_BOARD_PEARSON_EDEXCEL,
+  CAMBRIDGE_IGCSE: EXAM_SERIES_BOARD_CIE,
+  CAMBRIDGE_INTL_AS_A_LEVEL: EXAM_SERIES_BOARD_CIE,
+};
 /** Assignment.status column values (db check) — the wire form is lowercase. */
 export const ASSIGNMENT_STATUS_OPEN = "OPEN";
 export const ASSIGNMENT_STATUS_CLOSED = "CLOSED";
@@ -768,9 +790,14 @@ const toExamSeriesView = (s: ExamSeriesRow) => ({
  * GET /api/v1/learners/me/exam-series (LearnerExamSeriesController :59-69)
  * — the published calendar powering the hub add-course picker: no
  * qualification filter → the whole published calendar; a blank filter is
- * treated as absent; with a filter → the board-scoped qualification list.
- * Both reads order window_start ASC (soonest window first). An empty
- * calendar is the honest empty state, never a fake list.
+ * treated as absent; with a filter → the qualification's list, scoped to
+ * the OWNING board (the widened vocabulary's board-ownership map: Edexcel
+ * values keep the frozen PEARSON_EDEXCEL pin, the Cambridge widening pins
+ * CAMBRIDGE_INTERNATIONAL — unknown strings fall back to the founding
+ * board, an honest empty list, exactly the pre-widening behavior for a
+ * qualification with no rows). Both reads order window_start ASC (soonest
+ * window first). An empty calendar is the honest empty state, never a
+ * fake list.
  */
 export async function examSeriesCalendar(
   deps: FlashcardRatingRecordDeps,
@@ -791,7 +818,7 @@ export async function examSeriesCalendar(
            window_end, entry_deadline, results_date, estimated,
            source_url, retrieved_at
     from exam_series
-    where board = ${EXAM_SERIES_BOARD_PEARSON_EDEXCEL}
+    where board = ${EXAM_SERIES_QUALIFICATION_BOARD[qualification] ?? EXAM_SERIES_BOARD_PEARSON_EDEXCEL}
       and qualification = ${qualification}
       and published = true
     order by window_start asc`) as unknown as ExamSeriesRow[];

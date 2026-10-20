@@ -311,10 +311,18 @@ function SubjectCard({
             chip renders "≈" for estimated sittings and the entries-closed
             fact; unavailable states render nothing at all */}
         <div className="pt-0.5">
-          {/* the Pearson calendar is Edexcel-only — CIE lanes present no
-              series surface (honest absence, not a Pearson list) */}
+          {/* the calendar surface carries both boards of record (trace
+              1a1589078364b76d): each lane reads its OWN board's calendar —
+              a Cambridge lane's is honestly empty until its measured
+              key-times dataset is imported, never a Pearson list */}
           {hasExamSeriesCalendar(meta) && (
-            <ExamSeriesPicker slug={meta.slug} level={meta.level} target={examTarget} compact />
+            <ExamSeriesPicker
+              slug={meta.slug}
+              level={meta.level}
+              board={boardOf(meta)}
+              target={examTarget}
+              compact
+            />
           )}
         </div>
 

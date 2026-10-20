@@ -14,11 +14,13 @@
  * which left CIE lanes unreachable — operator trace 1a1580a42635b8d9),
  * levels are the selected board's distinct registry values, and the
  * subject step lists exact registry lanes (label, variant qualifier, exam
- * code) — nothing inferred. The exam-series picker rides Edexcel lanes
- * only (hasExamSeriesCalendar): the imported calendar is Pearson-
- * provenance, so CIE lanes honestly present no series surface. Adding is
- * non-destructive to the dialog: several subjects can be added in one
- * pass before "Done".
+ * code) — nothing inferred. The exam-series picker rides BOTH
+ * calendar-carrying boards of record (hasExamSeriesCalendar; trace
+ * 1a1589078364b76d flipped the founding Pearson-only gate): each lane
+ * reads its OWN board's calendar via the board-aware qualification
+ * mapping — a Cambridge lane's is honestly empty until its measured
+ * key-times dataset is imported. Adding is non-destructive to the dialog:
+ * several subjects can be added in one pass before "Done".
  */
 import { useMemo, useState } from "react";
 import { Check, Plus } from "lucide-react";
@@ -271,6 +273,7 @@ export function AddCourseOverlay({
                         <ExamSeriesPicker
                           slug={c.slug}
                           level={c.level}
+                          board={boardOf(c)}
                           target={laneTarget}
                         />
                       )}
