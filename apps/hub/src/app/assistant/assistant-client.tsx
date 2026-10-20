@@ -35,9 +35,22 @@ import {
   ListChecks,
   Loader2,
   Lock,
+  PanelLeft,
   Sparkles,
   TriangleAlert,
 } from "lucide-react";
+import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
+import { AssistantHistoryRail } from "./history-rail";
+import {
+  appendMessages,
+  createThread,
+  ensureActiveThread,
+  useAssistantSnapshot,
+  type AssistantMessage,
+} from "./assistant-threads";
+
+/** Stable empty transcript — a fresh array per render would defeat memoization. */
+const EMPTY_THREAD: AssistantMessage[] = [];
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -50,7 +63,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Markdown } from "@/components/markdown";
 import { normalizeMathDelimiters } from "@/lib/mathNormalize";
 import { useCourseProgress } from "@/lib/progress";
-import type { TutorCitation } from "@/lib/contracts";
 import { cn } from "@/lib/utils";
 import { getToken } from "@/lib/api";
 
@@ -86,22 +98,9 @@ interface CatalogQuestion {
   specPointCodes: string[];
 }
 
-interface ClaMessage {
-  role: "user" | "assistant";
-  content: string;
-  mode?: Mode;
-  citations?: TutorCitation[];
-  provider?: string;
-  model?: string | null;
-  refused?: boolean;
-  evidenceCount?: number;
-  latencyMs?: number;
-  context?: {
-    kind: string;
-    anchor: string;
-    attempted?: boolean;
-  };
-}
+// The transcript message shape is the store's AssistantMessage (field-identical
+// to the previous local ClaMessage) — DC-6 phase 1 moved WHERE messages live,
+// not what they carry.
 
 const MAX_QUESTION_CHARS = 600; // mirrors the API contract (note island parity)
 
@@ -135,7 +134,15 @@ export function AssistantClient({
   const [draft, setDraft] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<{ text: string; code?: string } | null>(null);
-  const [thread, setThread] = useState<ClaMessage[]>([]);
+  // DC-6 phase 1 (docs/DC6-ASSISTANT-HISTORY-PLAN.md): the transcript lives in
+  // the assistant thread store (device-local, tutor-architecture mirror). The
+  // render below keeps the same `thread` shape — only where messages are
+  // stored changed; the ask flow's request body and error law are untouched.
+  const { threads, activeId } = useAssistantSnapshot();
+  const activeThread = threads.find((t) => t.id === activeId) ?? null;
+  const thread = activeThread?.messages ?? EMPTY_THREAD;
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [mobileNav, setMobileNav] = useState(false);
   const threadRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -173,6 +180,11 @@ export function AssistantClient({
     setError(null);
   }
 
+  /** DC-6: start a fresh conversation (the store activates it on create). */
+  function newChat() {
+    createThread("New chat", { slug: course.slug, label: course.label });
+  }
+
   async function ask() {
     const text = draft.trim();
     if (!text || busy) return;
@@ -184,7 +196,11 @@ export function AssistantClient({
       kind === "SPEC_TOPIC"
         ? (topics.find((t) => t.code === topicCode)?.title ?? topicCode)
         : (question?.label ?? questionId);
-    setThread((t) => [...t, { role: "user", content: text }]);
+    // the thread is ensured at ask time (created on first ask, not on page
+    // load — tutor parity); the id is captured so a mid-flight thread switch
+    // can never append this exchange to the wrong conversation
+    const threadId = ensureActiveThread({ slug: course.slug, label: course.label }).id;
+    appendMessages(threadId, [{ role: "user", content: text, at: Date.now() }]);
     setDraft("");
     setBusy(true);
     setError(null);
@@ -225,11 +241,11 @@ export function AssistantClient({
         });
         return;
       }
-      setThread((t) => [
-        ...t,
+      appendMessages(threadId, [
         {
           role: "assistant",
           content: data.answer,
+          at: Date.now(),
           mode: data.mode,
           citations: data.citations,
           provider: data.provider,
@@ -274,13 +290,47 @@ export function AssistantClient({
         : "No question picked yet";
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-6">
+    <div className="mx-auto flex w-full max-w-6xl px-4 py-6">
+      {/* DC-6 phase 1: the conversation rail — desktop column (toggleable)
+          and a mobile Sheet below. The chat canvas itself is unchanged. */}
+      <aside
+        className={sidebarOpen ? "hidden w-72 shrink-0 border-r lg:block" : "hidden"}
+        aria-label="Assistant conversation history"
+      >
+        <AssistantHistoryRail
+          threads={threads}
+          activeId={activeId}
+          activeCourse={{ slug: course.slug, label: course.label }}
+          onNewChat={newChat}
+        />
+      </aside>
+      <div className="mx-auto w-full max-w-3xl min-w-0 flex-1">
       {/* the SME explain-panel reference (HUB-TUTOR-CLA-LOOK): one chat
           canvas — identity strip, amber honesty banner, anchor bar,
           transcript, composer card */}
       <div className="flex min-h-[34rem] flex-col overflow-hidden rounded-xl border bg-background">
-        {/* identity strip — the shared chat-canvas header */}
+        {/* identity strip — the shared chat-canvas header, now with the
+            history toggles (desktop toggles the rail column; below lg it
+            opens the Sheet) */}
         <div className="flex items-center gap-2.5 border-b px-4 py-3">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="hidden size-8 lg:inline-flex"
+            aria-label="Toggle conversation history"
+            onClick={() => setSidebarOpen((v) => !v)}
+          >
+            <PanelLeft className="size-4" aria-hidden />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="size-8 lg:hidden"
+            aria-label="Open conversation history"
+            onClick={() => setMobileNav(true)}
+          >
+            <PanelLeft className="size-4" aria-hidden />
+          </Button>
           <span
             className="flex size-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/70 text-primary-foreground"
             aria-hidden="true"
@@ -674,6 +724,26 @@ export function AssistantClient({
           </div>
         </div>
       </div>
+      </div>
+
+      {/* mobile history Sheet — the same rail, closed on selection */}
+      <Sheet open={mobileNav} onOpenChange={setMobileNav}>
+        <SheetContent side="left" className="w-80 gap-0 p-0">
+          <SheetTitle className="sr-only">Assistant conversations</SheetTitle>
+          <div className="min-h-0 flex-1">
+            <AssistantHistoryRail
+              threads={threads}
+              activeId={activeId}
+              activeCourse={{ slug: course.slug, label: course.label }}
+              onNewChat={() => {
+                newChat();
+                setMobileNav(false);
+              }}
+              onNavigate={() => setMobileNav(false)}
+            />
+          </div>
+        </SheetContent>
+      </Sheet>
     </div>
   );
 }
