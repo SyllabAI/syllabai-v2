@@ -59,13 +59,35 @@ describe("cie-phase4 roster law", () => {
     for (const e of real) {
       expect(e.questionSets).toBeGreaterThan(0);
       expect(e.nodes).toBeGreaterThan(0);
-      expect(e.expectedQuestions).toBeGreaterThan(0);
+      // the anchored floor: zero is legal ONLY for the three seed-only banks
+      // (the anchor gap disclosure); every other real bank serves > 0
+      if (!["cie-igcse-economics-25", "cie-igcse-english-language-20", "cie-igcse-english-language-25"].includes(e.slug)) {
+        expect(e.expectedQuestions).toBeGreaterThan(0);
+      }
     }
     const questions = real.reduce((s, e) => s + e.expectedQuestions, 0);
     const parts = real.reduce((s, e) => s + e.expectedParts, 0);
-    // the phase-3 receipt counts of record: 19,097 questions / 25,663 parts
-    expect(questions).toBe(19097);
-    expect(parts).toBe(25663);
+    // the SERVABLE census of record (the run-003 anchor re-base): the frozen
+    // ingest's anchor law excludes spec-unanchored questions (the learner-
+    // model join requires primaryTopicCode) — the fleet floors measure the
+    // anchored subset: 6,618 questions / 9,158 parts. The RAW phase-3 census
+    // bytes (19,097 / 25,663) stay disclosed on every entry (rawQuestions/
+    // rawParts) — the anchor gap is the CIE lane's phase-2 follow-up, made
+    // measurable, never hidden.
+    expect(questions).toBe(6618);
+    expect(parts).toBe(9158);
+    const rawQ = real.reduce((s, e) => s + e.rawQuestions, 0);
+    const rawP = real.reduce((s, e) => s + e.rawParts, 0);
+    expect(rawQ).toBe(19097);
+    expect(rawP).toBe(25663);
+    // the zero-anchored real banks of record: seed-only by the fleet's
+    // ingest-skip law (EQ axis honestly empty of record)
+    const zeroAnchored = real.filter((e) => e.expectedQuestions === 0).map((e) => e.slug).sort();
+    expect(zeroAnchored).toEqual([
+      "cie-igcse-economics-25",
+      "cie-igcse-english-language-20",
+      "cie-igcse-english-language-25",
+    ]);
   });
 
   test("every real bank carries a syllabus code + version (the seed's curriculumCode law)", () => {

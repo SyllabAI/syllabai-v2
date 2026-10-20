@@ -1,0 +1,47 @@
+{
+  "receipt": "CIE-INTEGRATION/cie-phase4-repair-program-r1-tranche2",
+  "family": "CIE-INTEGRATION",
+  "operatorTrace": "1a15ac4e986d06c5 ('re-run', standing)",
+  "operatorOrder": "the standing 're-run' order — run #3 (39490683060, dispatched 20:17:19Z at the repair-program merge 467081e) was CANCELLED externally at 20:40:13Z mid-cow-proof (unattributed; no CIE-lane counter-move on main or in the PR queue); its fleet logs nonetheless carried the repair's live proof AND the next defect layer — this tranche fixes that layer and re-dispatches.",
+  "agent": "main lane (Super Z, zai-web session web-1d6277aa-1024-41a4-9261-bcf1411250b5, chat 9b73c181)",
+  "generatedUtc": "2026-10-20T20:53Z",
+  "phase": "4 of 6 — tranche 2 (the run-003 classes) + the phase-4 floors re-based on the servable truth",
+  "run003Evidence": {
+    "repairProof": "the run-002 defect classes were GONE in the fleet logs: the tx-seam class fired ZERO times (slugs reached the ingest leg and post-apply), the dbCode/provenance/asset classes fired ZERO times — the tranche-1 repair is COW-proven by run #3's own partial fleet",
+    "newClasses": [
+      {
+        "class": "varchar(80) member-ref overflow",
+        "evidence": "accounting-21 / biology-23 / computer-science-23 ok=false 'value too long for type character varying(80)' at the ingest; the offline package probe (apps/api/scripts/probe-ref-lengths.ts, sandbox-side) pinned it: MIXED-emission member refs ('-p<idx>' / '-s') append past the base ref, which fills the 80 bound exactly on the hash path (biology-23: 83 chars)",
+        "fix": "the shared ref law gains the member-suffix reserve: smeMemberSuffixReserve(parts) (packages/shared/src/smeRef.ts — the EXACT mirror of the frozen emittedRowRefs derivation) + smeQuestionRef(.., reserved); wired on BOTH bridge sides (the shim's emit, the hub join's derive) — same corpus bytes, same reserve, no drift",
+        "safety": "byte-identical for every ref of record: reserve=0 for choice-less questions; the one stored mixed question (maths-a-higher order 28, graphs-of-functions) derives IDENTICALLY under reserve=4 (short topic, no hash path); any base that WOULD have overflowed never stored (the ingest refused it)"
+      },
+      {
+        "class": "post-apply count drift (business-23 55/478, business-25 11/576)",
+        "evidence": "the fleet's census counted RAW bundle questions; the frozen ingest's anchor law excludes questions whose parts carry no spec-point codes (primaryTopicCode is REQUIRED by validate — the learner-model join); the anchor census: 6,618 of 19,097 questions (35%) are anchored across the 40 real banks (geography-20 95% .. economics-25 0%)",
+        "fix": "the floors + census RE-BASED on the servable truth: expectedQuestions/expectedParts measure the anchored subset (the fleet's drift check now compares like-for-like); the raw bytes stay disclosed on every roster entry (rawQuestions/rawParts) and in the fleet receipt (rawCensusOfRecord); zero-anchored real banks (economics-25, english-language-20/25) go seed-only with an honest per-slug disclosure naming the phase-2 anchor gap",
+        "anchorGap": "the phase-2 build's EQ->spec-point mapping was the scoped 'main work item' and landed only partially — the per-slug anchor rates are now MEASURABLE in every fleet receipt; completing them is the CIE lane's follow-up (NOT a fleet defect)"
+      }
+    ]
+  },
+  "deliverables": {
+    "shared": "packages/shared/src/smeRef.ts: the reserved param + smeMemberSuffixReserve (the emittedRowRefs mirror) + smeRef.test.ts +5 pins (the mirror laws, the END-TO-END biology-23 overflow regression, hash-path injectivity)",
+    "shim": "apps/api/src/services/sme/bundle-questions.ts: the emit side wires the reserve",
+    "hub": "apps/hub/src/app/api/core/questions/route.ts: the join side wires the same reserve from the same corpus parts",
+    "orchestrator": "apps/api/scripts/cie-phase4-apply.ts: the anchored census (expectedQuestions/expectedParts re-based; rawQuestions/rawParts disclosed), the zero-anchored seed-only law, realSeedOnly in the fleet summary, the floors re-based {realBanks 40, questionsFloor 6618, partsFloor 9158, rawCensusOfRecord 19097/25663}",
+    "rosterGate": "apps/api/test/sme/cie-phase4-roster.test.ts: the pinned totals re-based (6618/9158 + the raw 19097/25663 disclosure pins + the three zero-anchored banks pinned by slug)"
+  },
+  "validation": {
+    "typecheck": "tsc --noEmit clean x4 workspaces",
+    "battery": "bun test apps/api packages = 2328 pass / 0 fail / 13 skip (127 files)",
+    "shared": "smeRef 10/0 (the reserve pins green)",
+    "rosterGate": "9/0 on the re-based census",
+    "census_probe": "bun cie-phase4-apply.ts --census = 45 selected / 0 failures, the re-based floors in the receipt shape"
+  },
+  "hygiene": "zero credentials; zero DB writes; zero LLM; probe-ref-lengths.ts committed under apps/api/scripts (the sandbox copy mirrored) as the offline evidence tool",
+  "fence": "packages/shared/src/smeRef.ts + smeRef.test.ts + apps/api/src/services/sme/bundle-questions.ts + apps/hub/src/app/api/core/questions/route.ts + apps/api/scripts/cie-phase4-apply.ts + apps/api/test/sme/cie-phase4-roster.test.ts + apps/api/scripts/probe-ref-lengths.ts + .syllabai/** — nothing else",
+  "nextAct": {
+    "lane": "PR + self-merge on green, then DISPATCH run #4 (mode=cow+prod) at the merged sha; poll to completion; file the run receipt per the follow-up-commit law",
+    "onGreen": "the CIE registry fill audit (the HUB-REGISTRY fill-where-served law, 45 rows, curriculumCode = <spec>-<syllabusVersion>)",
+    "residuals": "the run-003 external cancellation (20:40:13Z, unattributed) disclosed; the anchor gap (13,479 raw questions unanchored) is the CIE lane's phase-2 completion work — measurable per slug in every fleet receipt from now on"
+  }
+}

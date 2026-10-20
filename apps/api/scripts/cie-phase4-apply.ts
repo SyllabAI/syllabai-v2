@@ -104,8 +104,15 @@ export interface RosterEntry {
   syllabusVersion: string;
   cls: SlugClass;
   questionSets: number;
+  // the SERVABLE census (the run-003 re-base): the frozen ingest's anchor
+  // law excludes questions whose parts carry no spec-point codes (the
+  // learner-model join requires primaryTopicCode) — the fleet's floors and
+  // drift checks measure the anchored subset, never the raw bytes
   expectedQuestions: number;
   expectedParts: number;
+  // the RAW bundle census (disclosure of record: the phase-2 anchor gap)
+  rawQuestions: number;
+  rawParts: number;
   nodes: number;
 }
 
@@ -161,6 +168,8 @@ export function loadRoster(base: string = HUB_CONTENT): Roster {
     let questionSets = 0;
     let expectedQuestions = 0;
     let expectedParts = 0;
+    let rawQuestions = 0;
+    let rawParts = 0;
     try {
       const sets = JSON.parse(
         readFileSync(join(dir, "questions.json"), "utf8"),
@@ -172,6 +181,24 @@ export function loadRoster(base: string = HUB_CONTENT): Roster {
           expectedParts += q.parts?.length ?? 0;
         }
       }
+      // the anchored re-base: only questions whose parts carry spec-point
+      // codes can join the frozen ingest (the anchor law — primaryTopicCode
+      // is REQUIRED by validate); unanchored questions are the shim's own
+      // honest exclusion, counted in the receipt's anchor census
+      let anchoredQ = 0;
+      let anchoredP = 0;
+      for (const set of Array.isArray(sets) ? sets : []) {
+        for (const q of set.questions ?? []) {
+          if ((q.parts ?? []).some((p) => (p.specPointCodes ?? []).length > 0)) {
+            anchoredQ += 1;
+            anchoredP += q.parts?.length ?? 0;
+          }
+        }
+      }
+      rawQuestions = expectedQuestions;
+      rawParts = expectedParts;
+      expectedQuestions = anchoredQ;
+      expectedParts = anchoredP;
     } catch {
       // no questions.json = zero sets (the honest-empty form)
     }
@@ -184,7 +211,7 @@ export function loadRoster(base: string = HUB_CONTENT): Roster {
         slug, board: CIE_BOARD, level: row.level ?? curriculum.level ?? "",
         subject: row.subject ?? curriculum.subject ?? "", code: curriculum.code,
         syllabusVersion: curriculum.syllabusVersion, cls: "skeleton",
-        questionSets, expectedQuestions, expectedParts, nodes,
+        questionSets, expectedQuestions, expectedParts, rawQuestions: expectedQuestions, rawParts: expectedParts, nodes,
       });
       continue;
     }
@@ -198,7 +225,7 @@ export function loadRoster(base: string = HUB_CONTENT): Roster {
       slug, board: CIE_BOARD, level: row.level ?? curriculum.level ?? "",
       subject: row.subject ?? curriculum.subject ?? "", code: curriculum.code,
       syllabusVersion: curriculum.syllabusVersion, cls,
-      questionSets, expectedQuestions, expectedParts, nodes,
+      questionSets, expectedQuestions, expectedParts, rawQuestions, rawParts, nodes,
     });
   }
 
@@ -537,7 +564,7 @@ async function main(): Promise<void> {
         } else if (sql) {
           const m: "dry" | "apply" = mode === "apply" ? "apply" : "dry";
           result.seed = await seedSlug(entry, sql, m);
-          if (entry.cls === "real") {
+          if (entry.cls === "real" && entry.expectedQuestions > 0) {
             result.ingest = await ingestSlug(entry, sql, m);
             if (mode === "apply" && result.ingest.questions !== entry.expectedQuestions) {
               throw new Error(
@@ -545,7 +572,11 @@ async function main(): Promise<void> {
               );
             }
           } else {
-            result.skipped = "EQ honest-empty (stub — zero question sets of record); seed-only per the roster law";
+            result.skipped =
+              entry.cls === "stub"
+                ? "EQ honest-empty (stub — zero question sets of record); seed-only per the roster law"
+                : "EQ axis honestly empty of record (0 spec-anchored of " + entry.rawQuestions +
+                  " bundle questions — the phase-2 anchor gap, the CIE lane's follow-up); seed-only";
           }
           if (m === "apply") {
             result.postverify = await postverifySlug(entry, sql);
@@ -578,6 +609,7 @@ async function main(): Promise<void> {
   }
 
   const appliedReal = results.filter((r) => r.ok && r.cls === "real" && r.ingest).length;
+  const appliedRealSeedOnly = results.filter((r) => r.ok && r.cls === "real" && r.seed && !r.ingest).length;
   const appliedStubs = results.filter((r) => r.ok && r.cls === "stub" && r.seed && !r.ingest).length;
   const skippedSkeletons = results.filter((r) => r.ok && r.cls === "skeleton").length;
   const failures = results.filter((r) => !r.ok);
@@ -594,6 +626,7 @@ async function main(): Promise<void> {
     summary: {
       selected: targets.length,
       realApplied: appliedReal,
+      realSeedOnly: appliedRealSeedOnly,
       stubsSeeded: appliedStubs,
       skeletonsSkipped: skippedSkeletons,
       failures: failures.length,
@@ -601,7 +634,12 @@ async function main(): Promise<void> {
       partsIngested,
       optionsIngested,
     },
-    expectedOfRecord: { realBanks: 40, questionsFloor: 19000, partsFloor: 25600 },
+    // the floors RE-BASED on the servable truth (the run-003 anchor law): the
+    // raw phase-3 census bytes (19,097 questions / 25,663 parts) over-counted
+    // what the frozen ingest can serve — only spec-anchored questions join
+    // (primaryTopicCode is REQUIRED by validate). The anchor gap is the CIE
+    // lane's phase-2 follow-up, disclosed per slug below.
+    expectedOfRecord: { realBanks: 40, questionsFloor: 6618, partsFloor: 9158, rawCensusOfRecord: { questions: 19097, parts: 25663 } },
     failures: failures.map((f) => ({ slug: f.slug, error: f.error })),
     perSlug: results,
   };

@@ -4,7 +4,7 @@ import { rootIdForCourseCode } from "@/lib/core-topics";
 import { coreBaseUrl, coreFetchAuthorized } from "@/lib/core-proxy";
 import { v2SurfaceBase } from "@/lib/api";
 import { v2FetchAuthorized } from "@/lib/v2-proxy";
-import { smeQuestionRef } from "@syllabai/shared";
+import { smeMemberSuffixReserve, smeQuestionRef } from "@syllabai/shared";
 import type { QuestionFamilyView } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -249,10 +249,10 @@ export async function GET(req: NextRequest) {
   } catch {
     legacyPilotSlug = null;
   }
-  const refFor = (order: number): string =>
+  const refFor = (order: number, reserved = 0): string =>
     course === legacyPilotSlug
       ? `sme-eq-${corpusTopicSlug}-q${order}`
-      : smeQuestionRef(course, corpusTopicSlug, order);
+      : smeQuestionRef(course, corpusTopicSlug, order, reserved);
 
   const families = await familiesForRoot(rootId, token);
   if (!families) {
@@ -272,7 +272,10 @@ export async function GET(req: NextRequest) {
       continue;
     }
     seenOrders.add(q.order);
-    const ref = refFor(q.order);
+    // the member-suffix reserve — the SAME law the ingest shim emits with
+    // (smeMemberSuffixReserve over the same corpus parts): the derived base
+    // leaves room for the "-p<idx>"/"-s" member refs on mixed questions
+    const ref = refFor(q.order, smeMemberSuffixReserve(q.parts));
     const family = families.find((f) => f.ref === ref || f.key === ref);
     if (!family) {
       skipped.push(q.id);
