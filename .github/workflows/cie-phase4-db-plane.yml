@@ -53,8 +53,20 @@
 #                           postgresql://<user>:<password>@ep-….neon.tech/
 #                           syllabai?sslmode=require, NO jdbc: prefix;
 #                           inline-only credential law — never printed, never
-#                           persisted). Until staged, prod dispatches red at
-#                           the precondition step (honest red, zero writes).
+#                           persisted).
+#   CREDENTIAL RESOLUTION AMENDMENT (r0, the operator two-act order — trace
+#     1a15993047a40809 "order the prod apply (COW → production, the 134c
+#     gate)" + trace 1a15a5bb18840ac5 "can you do the 2 acts yourself"):
+#     the prod credential resolves as CIE4_PROD_DATABASE_URL when staged,
+#     ELSE the already-staged T138_PROD_DATABASE_URL of record (staged
+#     2026-10-20T09:52:39Z; proven on production writes by t-mig-138-intake
+#     run 39438132654 mode=cow+prod SUCCESS 2026-10-20) — the SAME
+#     production postgres uri (the api's own role, same Neon project,
+#     same production branch; the gate's own header pins T138 as the
+#     derivation path of record). Only the secret NAME falls back — the
+#     value never transits chat/logs/repo and is handled exclusively as a
+#     masked Actions secret. If BOTH names are unstaged, prod dispatches
+#     red at the precondition step (honest red, zero writes).
 
 name: cie-phase4-db-plane
 
@@ -202,17 +214,20 @@ jobs:
         run: bun install --frozen-lockfile
       - name: Precondition (the operator-staged prod credential of record)
         env:
-          CIE4_PROD_DATABASE_URL: ${{ secrets.CIE4_PROD_DATABASE_URL }}
+          # r0 amendment: the CIE4 name preferred, the staged T138 production
+          # uri of record as fallback (same value class — see the header law).
+          CIE4_PROD_DATABASE_URL: ${{ secrets.CIE4_PROD_DATABASE_URL || secrets.T138_PROD_DATABASE_URL }}
         run: |
           if [ -z "$CIE4_PROD_DATABASE_URL" ]; then
-            echo "::error::CIE4_PROD_DATABASE_URL is not staged — stage the production uri (same derivation as T138_PROD_DATABASE_URL, see the workflow header) before the prod dispatch"; exit 1
+            echo "::error::no production uri staged under CIE4_PROD_DATABASE_URL or the T138_PROD_DATABASE_URL fallback — stage the production uri (same derivation as T138_PROD_DATABASE_URL, see the workflow header) before the prod dispatch"; exit 1
           fi
           case "$CIE4_PROD_DATABASE_URL" in
             jdbc:*) echo "::error::jdbc: prefix refused (packages/db law — plain postgresql:// only)"; exit 1 ;;
           esac
       - name: Run the phase-4 fleet against PRODUCTION
         env:
-          SEED_DATABASE_URL: ${{ secrets.CIE4_PROD_DATABASE_URL }}
+          # r0 amendment: same fallback law as the precondition (header).
+          SEED_DATABASE_URL: ${{ secrets.CIE4_PROD_DATABASE_URL || secrets.T138_PROD_DATABASE_URL }}
           SLUGS: ${{ inputs.slugs || '' }}
         run: |
           set -euo pipefail
