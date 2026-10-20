@@ -9312,3 +9312,20 @@ Work Log:
 
 Stage Summary:
 - CORRECTION of record: 4MB1 papers EXIST in SyllabAI/syllabai-pastpapers (20 sessions, 67/66 qp/ms, manifested, pre-dating the census) — the standing 'not archived' verdict was a wrong-repo census error; the Maths B questions-axis gate is now PARSING+INGESTION of the existing archive, and the lane's next actionable item changed accordingly; bookkeeping-only, zero code delta, zero prod writes, zero Neon, zero LLM; fetch-first, no force
+---
+Task ID: PP-CORPUS-1
+Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)
+Task: Operator trace 1a158559a5c64259 "Did you parse and then chunk/embed all the 4ma1 past papers? Like we did for chemistry" — first-hand status verdict on the 4MA1 past-paper chunk/embed corpus.
+
+Work Log:
+- Read the record first-hand: TUTOR-VERIFY-1 (corpus of record = 93 VALIDATED chemistry papers as cards + QP/MS store chunks), T-MIG-135 card + execution_record (135c made the tutor grammar/courseRef/notation subject-generic; 135e fired the BUNDLE-QUESTIONS data lever -> 2967 store rows; NO past-paper intake band anywhere in the card), T-MIG-136 worklog (4MB1: "fetch-bank + vector arms honestly empty — no questions, no ingested chunks").
+- Hub pastpapers-index.json (source SyllabAI/syllabai-pastpapers tree 3063c716, regenerated 2026-10-19): 4MA1 inventoried — 20 sessions / 134 paper dirs (2018-06..2026-06 + specimen; 1F/1FR/1H/1HR/2F/2FR/2H/2HR shapes) with QP+MS — but that is the hub PDF-streaming surface (PDFs fetched raw from raw.githubusercontent.com), NOT the chunk/embed store.
+- LIVE census on the api-of-record (scripts/pp_corpus_census.py, capture /home/z/my-project/evidence/pp_corpus_census_run001.json): 1 probe learner register (sz-ppcensus-…@example.invalid) -> GET /api/v1/exam-papers = 108 rows: 4CH0 40 VALIDATED + 4CH1 55 VALIDATED + 13 REJECTED chemistry-era; ZERO 4MA1/4MA0/4MB1/4PH1 rows.
+- Unpinned-ask finding: POST /api/v1/tutor/ask WITHOUT courseRef refused BOTH subjects (provider=deterministic-refusal) — the karag.ts:319 resolveActive() single-owner forcing function degrades once >1 subject is active (the T-MIG-135 scoping record's flagged shared-gap call site). FILED, never auto-fixed.
+- Course-scoped discrimination legs (scripts/pp_corpus_course_ref.py, capture /home/z/my-project/evidence/pp_corpus_course_ref_run001.json, login reuse of the disclosed probe): 4CH1-2017 "question no. 1(c) from june 2019 paper 2" -> 200 refused=false evidenceCount=5 citations=5 provider=groq (REAL grounded generation — the chemistry corpus is LIVE); 4MA1-2016 "question no. 1 from june 2025 paper 1H" -> 200 refused=true evidenceCount=0 provider=deterministic-paper-refusal (identity PARSED per the 135c grammar, honest refusal — no maths paper corpus behind it).
+- Receipt filed: .syllabai/receipts/PP-CORPUS/run-001-census-r7a.json (verdict + evidence + doing-it-like-chemistry path: the T-MIG-100 exam-series intake lane over the syllabai-pastpapers 4MA1 inventory, with R-variant/specimen grammar coverage as an execution-time check).
+
+Stage Summary:
+- VERDICT of record: NO — the 4MA1 past papers are NOT parsed/chunked/embedded like chemistry. 4MA1 today = 234-node KG + 2967 authored bank questions + subject-generic tutor wiring + hub PDF index; the core paper corpus (exam_papers rows, QP/MS documents, qcards, pgvector chunks) is ZERO-4MA1, and a course-pinned maths paper ask honestly refuses. Chemistry control re-proven LIVE same-day (5-citation grounded answer).
+- Write ledger: 1 probe register + 1 login reuse + 4 tutor asks (1 real LLM generation, 3 deterministic refusals); zero other writes, zero env/DDL/Neon contact, NAPI_TOKEN untouched.
+- The 4MA1 paper intake is an unclaimed band (no card filed) — operator-keyed next step, rides the T-MIG-100 ingestion machinery that is already 4MA1-grammar-ready.

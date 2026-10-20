@@ -1,0 +1,69 @@
+{
+  "lane": "PP-CORPUS",
+  "run": "run-001-census-r7a",
+  "operator_trace": "1a158559a5c64259",
+  "operator_question": "Did you parse and then chunk/embed all the 4ma1 past papers? Like we did for chemistry",
+  "date": "2026-10-20",
+  "agent": "r7a (Super Z, zai-web session web-da4ab8b1)",
+  "verdict": {
+    "four_ma1_past_paper_chunk_embed_corpus": "ABSENT — 4MA1 papers have NOT been parsed/chunked/embedded into the core retrieval store",
+    "chemistry_corpus_of_record": "LIVE — re-proven same-day by course-scoped control ask (grounded generation, 5 citations)",
+    "what_4ma1_has_today": [
+      "curriculum KG 4MA1-2016: 234 nodes (the 135e seed) — LIVE",
+      "authored question bank: 2967 store questions from the igcse-maths-a bundles (135e ingest), keyed on KG nodes, sourcePaper provenance — LIVE",
+      "tutor subject-generic wiring (135c): paper-identity grammar parses 4MA1 [12][HF], courseRef axis resolves 4MA1-2016 — LIVE",
+      "hub past-papers PDF index: 4MA1 inventoried (20 sessions / 134 paper dirs, QP+MS) — PDF-streaming surface ONLY, never chunked/embedded"
+    ],
+    "what_4ma1_lacks": [
+      "exam_papers bank rows: 0 (live census 2026-10-20: 108 rows = 40x4CH0 + 55x4CH1 VALIDATED + 13 REJECTED chemistry-era; zero 4MA1/4MA0/4MB1/4PH1 rows)",
+      "QP/MS document rows + qcards + document_chunks (pgvector) for any 4MA1 paper: none of record",
+      "course-pinned maths paper ask: deterministic-paper-refusal evidenceCount=0 (honest guard, no corpus behind it)"
+    ]
+  },
+  "evidence": {
+    "bank_census_live": {
+      "route": "GET /api/v1/exam-papers (probe learner bearer)",
+      "total_rows": 108,
+      "groups": {"4CH0": {"total": 40, "status": {"VALIDATED": 40}}, "4CH1": {"total": 55, "status": {"VALIDATED": 55}}, "OTHER": {"total": 13, "status": {"REJECTED": 13}}},
+      "four_ma1_rows": 0,
+      "capture": "/home/z/my-project/evidence/pp_corpus_census_run001.json"
+    },
+    "course_scoped_asks_live": {
+      "chem_control": {"courseRef": "4CH1-2017", "question": "question no. 1(c) from june 2019 paper 2", "status": 200, "refused": false, "evidenceCount": 5, "citations": 5, "provider": "groq", "verdict": "REAL grounded generation from the embedded chemistry corpus"},
+      "maths_paper_ask": {"courseRef": "4MA1-2016", "question": "question no. 1 from june 2025 paper 1H", "status": 200, "refused": true, "evidenceCount": 0, "provider": "deterministic-paper-refusal", "verdict": "identity PARSED (grammar knows 4MA1 since 135c), honest refusal — no paper corpus"},
+      "capture": "/home/z/my-project/evidence/pp_corpus_course_ref_run001.json"
+    },
+    "unpinned_ask_finding": {
+      "shape": "POST /api/v1/tutor/ask WITHOUT courseRef refused BOTH subjects (provider=deterministic-refusal)",
+      "cause_of_record": "karag.ts:319 unpinned ask path uses resolveActive(); the deliberate single-owner forcing function (owners!==1 -> null) degrades once >1 subject is active — flagged as shared-gap call site in the T-MIG-135 scoping record, never in the 135c fence",
+      "disposition": "FILED, never auto-fixed — operator-keyed shared-gap (affects chemistry UX too: the pre-135 unpinned ask used to resolve)"
+    },
+    "hub_pdf_index": {
+      "file": "apps/hub/src/data/pastpapers-index.json",
+      "meta": {"source": "SyllabAI/syllabai-pastpapers", "treeSha": "3063c7169c16a39204688749531a0c3608e56e7a", "generatedAt": "2026-10-19T11:37:07.616Z"},
+      "four_ma1": {"sessions": 20, "paper_dirs": 134, "sessions_list": ["2026-06", "2025-11", "2025-06", "2024-11", "2024-06", "2023-11", "2023-06", "2023-01", "2022-06", "2022-01", "2021-11", "2021-06", "2021-01", "2020-11", "2020-06", "2020-01", "2019-06", "2019-01", "2018-06", "specimen"]},
+      "nature": "hub PDF-streaming/mock surface (PDFs fetched raw from raw.githubusercontent.com) — NOT the chunk/embed store"
+    },
+    "record_refs": [
+      "TUTOR-VERIFY-1 (worklog): corpus of record = 93 VALIDATED chemistry papers 2011-2026 as cards + QP/MS store chunks",
+      "T-MIG-135 execution_record: 135e fired the bundle-questions data lever (F 45 sets/275 q + H 58 sets/2703 q -> 2967 store rows); NO past-paper intake band in the card",
+      "T-MIG-136 worklog (4MB1): 'tutor graph arm serves off the seed (fetch-bank + vector arms honestly empty — no questions, no ingested chunks)' — same shape, Maths A bank arm now live but vector arm still empty"
+    ]
+  },
+  "write_ledger": {
+    "probe_registers": 1,
+    "probe_logins_reuse": 1,
+    "tutor_asks": 4,
+    "llm_generations": 1,
+    "deterministic_refusals": 3,
+    "other_writes": "ZERO — no env, no DDL, no Neon writes beyond the disclosed register"
+  },
+  "doing_it_like_chemistry_would_involve": {
+    "path_of_record": "the exam-series intake lane (T-MIG-100 ingestion port: fetch-parser/fetch/enumerate + chunking/canonical/past-paper/glm-ocr + exam-series) — the frozen 4MA1 grammar is already 135c-ready",
+    "inputs": "4MA1 QP/MS PDFs already inventoried in SyllabAI/syllabai-pastpapers (20 sessions / 134 dirs incl. R variants + specimen)",
+    "outputs_owed": "exam_papers bank rows + document rows + qcards + chunked/embedded store rows keyed to 4MA1 KG nodes -> the three resolver anchors (bank/card/content-store) serve maths papers",
+    "gates_owed": "the chemistry-parity pins (paper asks resolve per-question, honest out-of-range refusals, R-variant + specimen handling), census --gate, house suites",
+    "note": "R-variant (1FR/2HR) + specimen grammar coverage needs an execution-time check against fetch-parser's [12][HF] table"
+  },
+  "operator_keyed_next": "the 4MA1 paper intake is an unclaimed band — no card filed; awaiting operator order"
+}
