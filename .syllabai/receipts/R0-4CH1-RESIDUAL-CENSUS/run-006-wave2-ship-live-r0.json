@@ -1,0 +1,106 @@
+{
+  "receipt": "R0-4CH1-RESIDUAL-CENSUS/run-006-wave2-ship-live-r0",
+  "task": "wave-2 ship live-verification — trace 1a15af8cb94819d5 green-light apply chain closed",
+  "lane": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, chat 9e9f3d7a)",
+  "shipOfRecord": {
+    "mechanism": "Vercel GitHub integration auto-deploy — NO manual deploy fired",
+    "deployment": "dpl_CSHLm5z3fdQ5CJ2o2yCmzZTfEV1x state=READY target=production sha=349e901 (the wave-2 apply commit)",
+    "inflightGuardObservations": [
+      "dpl_CSHLm5z3fdQ5CJ2o2yCmzZTfEV1x:READY:?; dpl_DsZkms4THtyEnY6vqv8X9hfWNMFx:READY:?; dpl_8JMJGRGXtZZXM17UoxUjmogV9xVF:READY:?"
+    ]
+  },
+  "liveVerification": {
+    "contentPlane": "https://syllabai-hub-v2.vercel.app/corpus/igcse-chemistry-19/",
+    "wholeFileEquality": "live bytes == repo bytes (notes.json + questions.json)",
+    "coordinateChecks": [
+      {
+        "probe": "/corpus/igcse-chemistry-19/notes.json",
+        "http": 200,
+        "liveBytes": 453546,
+        "localBytes": 453546,
+        "wholeFileEquality": true
+      },
+      {
+        "probe": "/corpus/igcse-chemistry-19/questions.json",
+        "http": 200,
+        "liveBytes": 2292428,
+        "localBytes": 2292428,
+        "wholeFileEquality": true
+      },
+      {
+        "probe": "note:rn_Hp2nK8XpN2SmjdQc",
+        "code": "4CH1-1.52C",
+        "live": true
+      },
+      {
+        "probe": "note:rn_by5FDNfkqdBCkmXb",
+        "code": "4CH1-2.35",
+        "live": true
+      },
+      {
+        "probe": "note:rn_YWDXCCmjfjkJcs6c",
+        "code": "4CH1-2.50",
+        "live": true
+      },
+      {
+        "probe": "note:rn_wDdXr5k7gknQ7xJp",
+        "code": "4CH1-4.1",
+        "live": true
+      },
+      {
+        "probe": "note:rn_H9chr9BWCfXYW472",
+        "code": "4CH1-4.7",
+        "live": true
+      },
+      {
+        "probe": "note:rn_H9chr9BWCfXYW472",
+        "code": "4CH1-4.10",
+        "live": true
+      },
+      {
+        "probe": "note:rn_V3hNWh6QWrbCRHrX",
+        "code": "4CH1-4.11",
+        "live": true
+      },
+      {
+        "probe": "note:rn_6c2G8nJpFSnQnbcP",
+        "code": "4CH1-4.20",
+        "live": true
+      },
+      {
+        "probe": "note:rn_H2zGfgH76qYV5cmr",
+        "code": "4CH1-4.24",
+        "live": true
+      },
+      {
+        "probe": "note:rn_2MpXPtNXvn8pQm3r",
+        "code": "4CH1-4.29C",
+        "live": true
+      },
+      {
+        "probe": "note:rn_BDkhS5vQpRd4hvwf",
+        "code": "4CH1-4.42C",
+        "live": true
+      },
+      {
+        "probe": "part:3-1-energetics--exam-questions:q8p3",
+        "code": "4CH1-4.29C",
+        "live": true
+      }
+    ],
+    "appendsLive": "12/12"
+  },
+  "battery": {
+    "legs": 11,
+    "script": "scripts/t215b-wire-battery-r1.py",
+    "result": "11/11 PASS"
+  },
+  "coverageOfRecord": "notes 166/182, questions 171/182, both-axes residual 0 (182/182) — 4CH1 spec-point coverage complete",
+  "writeLedger": "receipt run-006 + worklog append only; zero prod writes beyond the auto-deploy itself; zero DB/Neon/LLM; no force",
+  "followups": [
+    "46-orphan-parts lane (separate)",
+    "PAT rotation overdue x2",
+    "CORS identity/config.ts:60 parked",
+    "T-MIG-138 drain staged (window passed; fires on first re-key)"
+  ]
+}

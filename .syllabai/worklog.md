@@ -10179,3 +10179,16 @@ Work Log:
 
 Stage Summary:
 - Wave-2 APPLIED of record: 12 appends, 4CH1 coverage 182/182 both-axes (residual ZERO); 2 content files changed; receipt run-005 + verification JSON of record; ship verification next.
+
+---
+Task ID: trace 1a15af8cb94819d5 (wave-2 ship live-verification of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- INFLIGHT-GUARD watched GitHub-integration auto-deploy of 349e901 (wave-2 apply commit) -> READY (no manual deploy fired).
+- Live content plane probed: whole-file equality live==repo for notes.json + questions.json; 12/12 wave-2 appends verified live (10 note-side across 9 notes incl. Crude Oil dual 4.7+4.10 + 1 part-side energetics q8p3 4.29C).
+- Wire battery re-fired: 11/11 PASS (zero-write, public surfaces).
+- Receipt run-006-wave2-ship-live-r0 filed.
+
+Stage Summary:
+- Wave-2 LIVE of record: 4CH1 spec-point coverage 182/182 both-axes (residual ZERO) shipped and verified on prod; residual-census lane CLOSED end-to-end (census -> recommendation -> wave-1 -> wave-2 -> complete coverage).
