@@ -1,0 +1,54 @@
+{
+  "band": "T-MIG-133 band 133k — apply + battery receipt (run-005-r0, the credentials-unblock run)",
+  "date": "2026-10-20",
+  "trace": "band trace 1a158196c86610bd; this run trace 1a15856c6250c351",
+  "operatorOrder": "widen chapter LO-box coverage (the 23 uncovered codes); unblocked by 'Here is PATs' (Neon API key + GitHub PAT)",
+  "credentialsOfRecord": {
+    "provenance": "operator-supplied in chat (plaintext transit disclosed; rotation advised)",
+    "staging": "/home/z/.secrets/secrets.env 0600 + /home/z/.secrets/neon_dsn.txt 0600; values never printed by tooling",
+    "fingerprints": {
+      "github": "HTTP 200, login SyllabAI (id 309817640), repo+workflow scopes",
+      "neon": "HTTP 200, project billowing-cherry-15418366 (name SyllabAI, org org-withered-mud-59985156), branch production br-muddy-bar-a5huwldd (primary), db neondb, role syllabai_v2_app_w2r2, endpoint ep-ancient-cake-a52e4kfd (pooled, sslmode require)"
+    },
+    "note": "api.neon.tech is NODATA from this sandbox; the Neon API of record is console.neon.tech/api/v2 (verified 200 on /projects, /branches, /connection_uri)"
+  },
+  "preApplyProbes": {
+    "dbIdentity": "current_user syllabai_v2_app_w2r2 | neondb | PostgreSQL 18.6 aarch64 | book_chapters 29 rows | documents 1 row | UPDATE privilege on book_chapters + document_chunks TRUE",
+    "shapeAudit": "DB spec_codes == endpoint specCodes EXACTLY: 29 chapters, 145 elements, 0 per-chapter deltas, 7-key ref schema census 145/145 keys; ref payload sample u1:c1 verbatim",
+    "falseAlarmDisclosed": "first dbprobe printed join refs 867 — MY probe's LATERAL aggregation bug (sum(jsonb_array_length) evaluated per joined row = sum len^2), NOT a DB anomaly; corrected audit is authoritative at 145",
+    "attributionCensus": "document_chunks: 823 chunks, kind TEXTBOOK all, atom_number 0 nulls / 39 distinct values (29 chapters + 10 unit-practice); 15 affected chapters 357 chunks, all already carrying spec_codes; chunk spec_codes shape = array of plain officialCode strings; 15/15 existing arrays matched the registry EXACTLY (zero mismatches)",
+    "grammarNote": "the frozen header grammar lives in chunk content line 1 ('Chemistry CHM | Edexcel IGCSE Student Book | Qu1:c1 | p.N'); the structured seam of record is atom_number"
+  },
+  "applyRecord": {
+    "attempt1": "ABORTED inside the transaction: 42703 UndefinedColumn 'header' (the staged overlay law built 'header like %| Q<key> |%' — live document_chunks has NO header column). Rollback verified first-hand: registry still 145 refs, zero residue.",
+    "attempt2": "ABORTED inside the transaction at postverify: runner bug pv={} + attribute assignment (AttributeError). Both updates had executed for all 15 rows; transaction context rolled back. Zero residue (baseline re-verified 145 by attempt-3's own guard).",
+    "runnerCorrections": "(1) overlay seam corrected to atom_number EQUALITY (structured, grammar- and prefix-collision-safe by construction; disclosed in the runner docstring); (2) postverify dict assignments fixed; (3) receipt gains overlayLaw field",
+    "attempt3": "LANDED. One transaction: book_chapters.spec_codes 15 rows (145->172 refs, additive-only) + document_chunks.spec_codes overlay rebuild by atom_number equality (357 chunks across the 15 chapters) + same-session postverify: joinRefs 172, bookChapters 29, chunksWithCodes 646",
+    "receipt": "download/133k_apply_receipt.json"
+  },
+  "batteryResults": {
+    "censusRun003PostApply": {
+      "artifact": "download/133k_census_run003_postapply.json (census engine of record re-run unmodified against the live endpoint)",
+      "spine": 182,
+      "liveCovered": "143 -> 170 (+27; set-equal to the 27 run-004 promotions: TRUE)",
+      "uncovered": "39 -> 12",
+      "foreignRefsOnLive": [],
+      "driftVs133bReceipt": "+27/-0 (pure additive)",
+      "notesSide": "112 notes unchanged; orphanNotes 25 -> 7 (the band's promised end-state, machine-exact); noteCodesNotInChapterLo 35 -> 9; uncovered carried by notes: 4CH1-1.18, 2.42, 2.47, 3.22C, 4.13, 4.22, 4.26, 4.47, 4.6"
+    },
+    "chunkOverlay": "15/15 affected chapters: every chunk's spec_codes == the widened registry array EXACTLY (357 chunks); unaffected chapter u1:c5 untouched (pre-state array intact). Artifact: scripts/133k_overlay_verify.py output, ALL PASS",
+    "endpoint": "syllabai-v2.vercel.app chapters endpoint serves the widened state live: 29ch/172refs/170 covered; u1:c7 2->7 (1.37..1.43)"
+  },
+  "additiveOnlyEvidenceChain": [
+    "merge code law: merge_chapter copies existing ref dicts UNCHANGED (dict(r)) and raises FATAL if any promotion spineCode is already covered — additive by construction",
+    "two independent byte-identical dry runs against the LIVE pre-state (fresh dry output == of-record staged artifact, diff empty) — zero drift across the sandbox wipe",
+    "pre-apply shape audit: DB == endpoint byte-shape, 0 per-chapter deltas",
+    "post-apply census: +27/-0 drift vs the 133b receipt of record; foreignRefsOnLive [] (all refs on the 182-point spine)"
+  ],
+  "residuals": [
+    "12 LO-box-uncovered codes remain of record (3 non-note-carried + 9 note-carried incl. the 2 disclosed OCR-verified box contents 4.22 + 3.22C blocked by wording delta / chunk scatter) — operator-exception candidates per run-004 disclosures",
+    "serving code for the books band is not on syllabai-v2 main (no book_chapters/content-books refs in the clone at 63fe6ef) — the endpoint serves Neon directly; noted for the desk, not a defect of this band"
+  ],
+  "writeLedger": "Neon production write: the single apply transaction (15 chapter rows + 357 chunk rows). Zero other writes anywhere. Repo writes: the recovery branch only. No force pushes. No LLM calls. Vercel untouched.",
+  "sandboxWipeDisclosure": "the original band branch t-mig-133k/r0 @ ad4a2a4 (base origin/main 81cf468) is UNRECOVERABLE — the sandbox wipe ate its git objects (neither commit exists in any surviving local store). The band artifacts survived as files (staged in /tmp snapshot, restored). This branch is the artifact-level recovery of record: band scripts + receipts re-committed verbatim plus the apply/battery run of this receipt."
+}

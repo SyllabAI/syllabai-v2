@@ -9329,3 +9329,17 @@ Stage Summary:
 - VERDICT of record: NO — the 4MA1 past papers are NOT parsed/chunked/embedded like chemistry. 4MA1 today = 234-node KG + 2967 authored bank questions + subject-generic tutor wiring + hub PDF index; the core paper corpus (exam_papers rows, QP/MS documents, qcards, pgvector chunks) is ZERO-4MA1, and a course-pinned maths paper ask honestly refuses. Chemistry control re-proven LIVE same-day (5-citation grounded answer).
 - Write ledger: 1 probe register + 1 login reuse + 4 tutor asks (1 real LLM generation, 3 deterministic refusals); zero other writes, zero env/DDL/Neon contact, NAPI_TOKEN untouched.
 - The 4MA1 paper intake is an unclaimed band (no card filed) — operator-keyed next step, rides the T-MIG-100 ingestion machinery that is already 4MA1-grammar-ready.
+
+---
+Task ID: T-MIG-133k (band trace 1a158196c86610bd; this run trace 1a15856c6250c351)
+Agent: r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- Credentials unblocked by the operator ('Here is PATs'): GitHub PAT (fingerprint login SyllabAI, 200) + Neon API key (200, project billowing-cherry-15418366 / SyllabAI / production br-muddy-bar-a5huwldd / neondb / role syllabai_v2_app_w2r2). Staged 0600; values never printed; rotation advised. Note: Neon API base of record = console.neon.tech/api/v2 (api.neon.tech NODATA in-sandbox).
+- Pre-apply probes (read-only): DB == endpoint byte-shape (29ch/145refs, 0 per-chapter deltas); atom_number = the chapter seam (823/823 chunks, 0 nulls, 39 distinct); 15 affected chapters' existing chunk arrays matched the registry 15/15 exactly. One false alarm owned: the first probe's 867 was my own LATERAL aggregation bug, not DB drift.
+- Apply: 2 disclosed in-transaction aborts (42703 UndefinedColumn 'header'; then a postverify dict bug) — both rolled back clean, baseline re-verified. Seam corrected to atom_number EQUALITY (disclosed in the runner). Attempt 3 LANDED: one transaction — book_chapters 15 rows 145->172 + chunk overlay 357 rows + postverify 172/29/646.
+- Battery (machine-exact): census engine re-run unmodified — liveCovered 143->170 (+27 set-equal to the 27 promotions), uncovered 39->12, foreignRefsOnLive [], drift vs 133b +27/-0 (pure additive); orphanNotes 25->7 (the band's promised end-state); chunk overlay 15/15 ALL PASS; unaffected chapters untouched.
+- SANDBOX WIPE DISCLOSURE: the original band branch (ad4a2a4, base 81cf468) is unrecoverable (wipe ate the git objects); artifacts survived as files. This branch = the artifact-level recovery of record: band instruments + receipts re-committed verbatim + run-005 apply/battery. Cut off current origin/main fetch-first; no force.
+
+Stage Summary:
+- Band 133k APPLIED of record: the chapter LO boxes now carry 172 refs / 170 of 182 spine codes; the notes<->books join widens automatically (orphanNotes 7). Residual: 12 uncovered codes (9 note-carried, incl. the 2 disclosed OCR-verified operator-exception candidates 4.22 + 3.22C). Receipts under .syllabai/receipts/T-MIG-133/band-133k/. Branch t-mig-133k/r0 pushed for the desk.

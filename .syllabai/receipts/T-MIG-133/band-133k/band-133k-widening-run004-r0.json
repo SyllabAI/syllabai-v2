@@ -1,0 +1,1280 @@
+{
+ "band": "T-MIG-133 band 133k run-004 \u2014 widened LO-box matcher (span sweep)",
+ "date": "2026-10-20",
+ "law": {
+  "corpus": "chapter LO chunks + included chunks intersecting the chapter's LO pages of record",
+  "match": "best contiguous token span, span_len <= official_len*1.8+8",
+  "promote": "containment >= 0.90, tier 2, method widened, additive-only",
+  "regression": "the of-record 145 refs stay byte-identical; no covered code touched"
+ },
+ "guard": {
+  "promotions": 27,
+  "allWereUncovered": true,
+  "chaptersAffected": [
+   "u1:c1",
+   "u1:c2",
+   "u1:c3",
+   "u1:c7",
+   "u1:c8",
+   "u1:c10",
+   "u2:c12",
+   "u2:c14",
+   "u2:c15",
+   "u2:c17",
+   "u2:c18",
+   "u3:c19",
+   "u3:c21",
+   "u4:c24",
+   "u4:c26"
+  ]
+ },
+ "censusBefore": {
+  "uncovered": 39,
+  "covered": 143,
+  "spine": 182
+ },
+ "censusAfter": {
+  "uncovered": 12,
+  "uncoveredCodes": [
+   "4CH1-1.18",
+   "4CH1-2.42",
+   "4CH1-2.47",
+   "4CH1-3.22C",
+   "4CH1-4.13",
+   "4CH1-4.22",
+   "4CH1-4.26",
+   "4CH1-4.34C",
+   "4CH1-4.38C",
+   "4CH1-4.47",
+   "4CH1-4.48C",
+   "4CH1-4.6"
+  ],
+  "promoted": 27,
+  "orphanNotesBefore": 25,
+  "orphanNotesAfter": 7
+ },
+ "promotions": [
+  {
+   "chapterKey": "u1:c1",
+   "spineCode": "4CH1-1.6C",
+   "officialCode": "1.6C",
+   "officialId": "4CH1-1.6C",
+   "tier": "2",
+   "score": 1.0,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u1_c1_pdf012_0026#263",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u1_c1_pdf012_0026",
+     "chem_v3_u1_c1_pdf012_0026"
+    ],
+    "spanTokens": 8,
+    "officialTokens": 8,
+    "spanText": "understand how to plot and interpret solubility curves",
+    "wording": "understand how to plot and interpret solubility curves",
+    "loPages": [
+     12,
+     17,
+     18,
+     22
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "body"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u1:c1",
+   "spineCode": "4CH1-1.7C",
+   "officialCode": "1.7C",
+   "officialId": "4CH1-1.7C",
+   "tier": "2",
+   "score": 1.0,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u1_c1_pdf012_0026#b6",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u1_c1_pdf012_0026",
+     "chem_v3_u1_c1_pdf012_0026"
+    ],
+    "spanTokens": 13,
+    "officialTokens": 13,
+    "spanText": "practical investigate the solubility of a solid in water at a specific temperature",
+    "wording": "practical: investigate the solubility of a solid in water at a specific temperature",
+    "loPages": [
+     12,
+     17,
+     18,
+     22
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "body"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u1:c2",
+   "spineCode": "4CH1-1.12",
+   "officialCode": "1.12",
+   "officialId": "4CH1-1.12",
+   "tier": "2",
+   "score": 0.9412,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u1_c2_pdf023_0066#b2",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u1_c2_pdf023_0066",
+     "chem_v3_u1_c2_pdf023_0066"
+    ],
+    "spanTokens": 16,
+    "officialTokens": 17,
+    "spanText": "understand how to use the calculation of r values to identify the components of a mixture",
+    "wording": "understand how to use the calculation of $ R_{f} $ values to identify the components of a mixture",
+    "loPages": [
+     23
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "body"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u1:c2",
+   "spineCode": "4CH1-1.13",
+   "officialCode": "1.13",
+   "officialId": "4CH1-1.13",
+   "tier": "2",
+   "score": 1.0,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u1_c2_pdf023_0066#299",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u1_c2_pdf023_0066",
+     "chem_v3_u1_c2_pdf023_0066"
+    ],
+    "spanTokens": 8,
+    "officialTokens": 8,
+    "spanText": "practical investigate paper chromatography using inks food colourings",
+    "wording": "practical: investigate paper chromatography using inks/food colourings",
+    "loPages": [
+     23
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "body"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u1:c3",
+   "spineCode": "4CH1-1.17",
+   "officialCode": "1.17",
+   "officialId": "4CH1-1.17",
+   "tier": "2",
+   "score": 0.9375,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u1_c3_pdf033_0091#73",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u1_c3_pdf033_0091",
+     "chem_v3_u1_c3_pdf033_0091"
+    ],
+    "spanTokens": 36,
+    "officialTokens": 16,
+    "spanText": "of sub atomic particles know what is meant by the terms atomic number mass number isotopes and relative atomic mass a be able to calculate the relative atomic mass of an element a from isotopic abundances",
+    "wording": "be able to calculate the relative atomic mass of an element $ A_{r} $ from isotopic abundances",
+    "loPages": [
+     33
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "learning_objectives"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u1:c7",
+   "spineCode": "4CH1-1.38",
+   "officialCode": "1.38",
+   "officialId": "4CH1-1.38",
+   "tier": "2",
+   "score": 0.9375,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u1_c7_pdf084_0301#90",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u1_c7_pdf084_0301",
+     "chem_v3_u1_c7_pdf084_0302"
+    ],
+    "spanTokens": 54,
+    "officialTokens": 48,
+    "spanText": "in small quantities learning objectives understand how ions are formed by electron loss or gain know the charges of these ions metals in groups 1 2 and 3 non metals in groups 5 6 and 7 ag cu fe fe pb zn hydrogen h hydroxide oh ammonium nh carbonate co nitrate no sulfate so",
+    "wording": "know the charges of these ions: \u2022metals in Groups 1,2 and 3 \u2022non-metals in Groups 5,6 and 7 \u2022Ag+\uff0cCu2+\uff0cFe2+\uff0cFe3+\uff0cPb2+\uff0cZn2+ \u2022hydrogen\uff08H+\uff09\uff0chydroxide\uff08OH-\uff09\uff0cammonium\uff08NH4+\uff09\uff0ccarbonate\uff08CO32-\uff09\uff0cnitrate\uff08NO3-\uff09\uff0csulfate\uff08SO42-\uff09",
+    "loPages": [
+     84
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "body",
+     "learning_objectives"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u1:c7",
+   "spineCode": "4CH1-1.40",
+   "officialCode": "1.40",
+   "officialId": "4CH1-1.40",
+   "tier": "2",
+   "score": 1.0,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u1_c7_pdf084_0304#b2",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u1_c7_pdf084_0304",
+     "chem_v3_u1_c7_pdf084_0304"
+    ],
+    "spanTokens": 35,
+    "officialTokens": 34,
+    "spanText": "draw dot and cross diagrams to show the formation of ionic compounds by electron transfer limited to combinations of elements from groups 1 2 3 5 6 and 7 only outer electrons need be shown",
+    "wording": "draw dot-and-cross diagrams to show the formation of ionic compounds by electron transfer\uff0climited to combinations of elements from Groups1\uff0c2\uff0c3\u548c5\uff0c6\uff0c7only outer electrons need be shown",
+    "loPages": [
+     84
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "exam_hint"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u1:c7",
+   "spineCode": "4CH1-1.41",
+   "officialCode": "1.41",
+   "officialId": "4CH1-1.41",
+   "tier": "2",
+   "score": 1.0,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u1_c7_pdf084_0304#291",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u1_c7_pdf084_0304",
+     "chem_v3_u1_c7_pdf084_0304"
+    ],
+    "spanTokens": 8,
+    "officialTokens": 8,
+    "spanText": "understand ionic bonding in terms of electrostatic attractions",
+    "wording": "understand ionic bonding in terms of electrostatic attractions",
+    "loPages": [
+     84
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "exam_hint"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u1:c7",
+   "spineCode": "4CH1-1.42",
+   "officialCode": "1.42",
+   "officialId": "4CH1-1.42",
+   "tier": "2",
+   "score": 1.0,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u1_c7_pdf084_0304#b4",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u1_c7_pdf084_0304",
+     "chem_v3_u1_c7_pdf084_0304"
+    ],
+    "spanTokens": 13,
+    "officialTokens": 13,
+    "spanText": "understand why compounds with giant ionic lattices have high melting and boiling points",
+    "wording": "understand why compounds with giant ionic lattices have high melting and boiling points",
+    "loPages": [
+     84
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "exam_hint"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u1:c7",
+   "spineCode": "4CH1-1.43",
+   "officialCode": "1.43",
+   "officialId": "4CH1-1.43",
+   "tier": "2",
+   "score": 1.0,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u1_c7_pdf084_0304#b5",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u1_c7_pdf084_0304",
+     "chem_v3_u1_c7_pdf084_0304"
+    ],
+    "spanTokens": 20,
+    "officialTokens": 20,
+    "spanText": "know that ionic compounds do not conduct electricity when solid but do conduct electricity when molten and in aqueous solution",
+    "wording": "know that ionic compounds do not conduct electricity when solid\uff0cbut do conduct electricity when molten and in aqueous solution",
+    "loPages": [
+     84
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "exam_hint"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u1:c8",
+   "spineCode": "4CH1-1.47",
+   "officialCode": "1.47",
+   "officialId": "4CH1-1.47",
+   "tier": "2",
+   "score": 1.0,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u1_c8_pdf094_0349#116",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u1_c8_pdf094_0349",
+     "chem_v3_u1_c8_pdf094_0349"
+    ],
+    "spanTokens": 70,
+    "officialTokens": 35,
+    "spanText": "and carbon dioxide organic molecules containing up to two carbon atoms including methane ethane ethene and those containing halogen atoms explain why substances with a simple molecular structure are gases or liquids or solids with low melting and boiling points understand that the term intermolecular forces of attraction can be used to represent all forces between molecules explain why the melting",
+    "wording": "explain why substances with a simple molecular structures are gases or liquids, or solids with low melting and boiling points the term intermolecular forces of attraction can be used to represent all forces between molecules",
+    "loPages": [
+     94
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "learning_objectives"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u1:c10",
+   "spineCode": "4CH1-1.58C",
+   "officialCode": "1.58C",
+   "officialId": "4CH1-1.58C",
+   "tier": "2",
+   "score": 0.9394,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u1_c10_pdf110_0405#211",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u1_c10_pdf110_0405",
+     "chem_v3_u1_c10_pdf110_0405"
+    ],
+    "spanTokens": 61,
+    "officialTokens": 33,
+    "spanText": "compounds do not conduct electricity sodium chloride dilute sulfuric acid and copper ii sulfate and to predict the products understand why ionic compounds conduct electricity only when molten or in aqueous solution know that anion and cation are terms used to refer to negative and positive ions respectively describe experiments to investigate electrolysis using inert electrodes of molten compounds",
+    "wording": "describe experiments to investigate electrolysis, using inert electrodes, of molten compounds (including lead(II) bromide) and aqueous solutions (including sodium chloride, dilute sulfuric acid and copper(II) sulfate) and to predict the products",
+    "loPages": [
+     110
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "learning_objectives"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u2:c12",
+   "spineCode": "4CH1-2.7",
+   "officialCode": "2.7",
+   "officialId": "4CH1-2.7",
+   "tier": "2",
+   "score": 1.0,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u2_c12_pdf139_0498#278",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u2_c12_pdf139_0498",
+     "chem_v3_u2_c12_pdf139_0498"
+    ],
+    "spanTokens": 18,
+    "officialTokens": 18,
+    "spanText": "understand how displacement reactions involving halogens and halides provide evidence for the trend in reactivity in group 7",
+    "wording": "understand how displacement reactions involving halogens and halides provide evidence for the trend in reactivity in Group 7",
+    "loPages": [
+     139
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "body"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u2:c12",
+   "spineCode": "4CH1-2.8C",
+   "officialCode": "2.8C",
+   "officialId": "4CH1-2.8C",
+   "tier": "2",
+   "score": 1.0,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u2_c12_pdf139_0499#b2",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u2_c12_pdf139_0499",
+     "chem_v3_u2_c12_pdf139_0499"
+    ],
+    "spanTokens": 13,
+    "officialTokens": 13,
+    "spanText": "explain the trend in reactivity in group 7 in terms of electronic configurations",
+    "wording": "explain the trend in reactivity in Group 7in terms of electronic configurations",
+    "loPages": [
+     139
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "learning_objectives"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u2:c14",
+   "spineCode": "4CH1-2.20",
+   "officialCode": "2.20",
+   "officialId": "4CH1-2.20",
+   "tier": "2",
+   "score": 0.9583,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u2_c14_pdf154_0559#110",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u2_c14_pdf154_0559",
+     "chem_v3_u2_c14_pdf154_0559"
+    ],
+    "spanTokens": 51,
+    "officialTokens": 24,
+    "spanText": "understand the terms oxidation reduction metals and aqueous solutions of metal salts redox know the order of reactivity of these metals potassium sodium lithium calcium magnesium aluminium zinc iron copper silver gold know the conditions under which iron rusts oxidising agent reducing agent in terms of gain or loss of oxygen",
+    "wording": "understand the terms: \u2022oxidation \u2022reduction \u2022redox \u2022oxidising agent \u2022reducing agent in terms of gain or loss of oxygen and loss or gain of electrons.",
+    "loPages": [
+     154,
+     156
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "learning_objectives"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u2:c15",
+   "spineCode": "4CH1-2.25C",
+   "officialCode": "2.25C",
+   "officialId": "4CH1-2.25C",
+   "tier": "2",
+   "score": 1.0,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u2_c15_pdf169_0634#b2",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u2_c15_pdf169_0634",
+     "chem_v3_u2_c15_pdf169_0634"
+    ],
+    "spanTokens": 29,
+    "officialTokens": 29,
+    "spanText": "explain the uses of aluminium copper iron and steel in terms of their properties the types of steel will be limited to low carbon mild high carbon and stainless",
+    "wording": "explain the uses of aluminium, copper, iron and steel in terms of their properties the types of steel will be limited to low-carbon (mild), high-carbon and stainless",
+    "loPages": [
+     169
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "body"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u2:c15",
+   "spineCode": "4CH1-2.26C",
+   "officialCode": "2.26C",
+   "officialId": "4CH1-2.26C",
+   "tier": "2",
+   "score": 1.0,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u2_c15_pdf169_0634#b3",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u2_c15_pdf169_0634",
+     "chem_v3_u2_c15_pdf169_0634"
+    ],
+    "spanTokens": 20,
+    "officialTokens": 20,
+    "spanText": "know that an alloy is a mixture of a metal and one or more elements usually other metals or carbon",
+    "wording": "know that an alloy is a mixture of a metal and one or more elements, usually other metals or carbon",
+    "loPages": [
+     169
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "body"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u2:c15",
+   "spineCode": "4CH1-2.27C",
+   "officialCode": "2.27C",
+   "officialId": "4CH1-2.27C",
+   "tier": "2",
+   "score": 1.0,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u2_c15_pdf169_0634#405",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u2_c15_pdf169_0634",
+     "chem_v3_u2_c15_pdf169_0634"
+    ],
+    "spanTokens": 10,
+    "officialTokens": 8,
+    "spanText": "metals or carbon explain why alloys are harder than pure",
+    "wording": "explain why alloys are harder than pure metals",
+    "loPages": [
+     169
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "body"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u2:c17",
+   "spineCode": "4CH1-2.38",
+   "officialCode": "2.38",
+   "officialId": "4CH1-2.38",
+   "tier": "2",
+   "score": 1.0,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u2_c17_pdf182_0688#b2",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u2_c17_pdf182_0688",
+     "chem_v3_u2_c17_pdf182_0688"
+    ],
+    "spanTokens": 22,
+    "officialTokens": 22,
+    "spanText": "know that metal oxides metal hydroxides and ammonia can act as bases and that alkalis are bases that are soluble in water",
+    "wording": "know that metal oxides, metal hydroxides and ammonia can act as bases,and that alkalis are bases that are soluble in water",
+    "loPages": [
+     182,
+     197,
+     198
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "body"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u2:c17",
+   "spineCode": "4CH1-2.39",
+   "officialCode": "2.39",
+   "officialId": "4CH1-2.39",
+   "tier": "2",
+   "score": 1.0,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u2_c17_pdf182_0688#b3",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u2_c17_pdf182_0688",
+     "chem_v3_u2_c17_pdf182_0688"
+    ],
+    "spanTokens": 18,
+    "officialTokens": 18,
+    "spanText": "describe an experiment to prepare a pure dry sample of a soluble salt starting from an insoluble reactant",
+    "wording": "describe an experiment to prepare a pure,dry sample of a soluble salt,starting from an insoluble reactant",
+    "loPages": [
+     182,
+     197,
+     198
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "body"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u2:c18",
+   "spineCode": "4CH1-2.46",
+   "officialCode": "2.46",
+   "officialId": "4CH1-2.46",
+   "tier": "2",
+   "score": 0.931,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u2_c18_pdf199_0753#46",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u2_c18_pdf199_0753",
+     "chem_v3_u2_c18_pdf199_0754"
+    ],
+    "spanTokens": 51,
+    "officialTokens": 29,
+    "spanText": "is now routinely carried out using sophisticated machines learning objectives describe tests for these gases hydrogen oxygen carbon dioxide ammonia chlorine describe how to carry out a flame test know the colours formed in flame tests for these cations li red na yellow k lilac ca orange red cu blue green",
+    "wording": "know the colours formed in flame tests for these cations: \u00b7 Li$^{+}$ is red \u00b7 Na$^{+}$ is yellow \u00b7 K$^{+}$ is lilac \u00b7 Ca$^{2+}$ is orange-red \u00b7 Cu$^{2+}$ is blue-green.",
+    "loPages": [
+     199
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "body",
+     "learning_objectives"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u2:c18",
+   "spineCode": "4CH1-2.48",
+   "officialCode": "2.48",
+   "officialId": "4CH1-2.48",
+   "tier": "2",
+   "score": 0.9091,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u2_c18_pdf199_0754#81",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u2_c18_pdf199_0754",
+     "chem_v3_u2_c18_pdf199_0754"
+    ],
+    "spanTokens": 66,
+    "officialTokens": 33,
+    "spanText": "tests for these cations li red na yellow k lilac ca orange red cu blue green describe tests for these cations nh 4 using sodium hydroxide solution and identifying the gas evolved cu fe and fe using sodium hydroxide solution describe tests for these anions cl br and i using acidified silver nitrate solution so 42 using acidified barium chloride solution co 32 using hydrochloric acid",
+    "wording": "describe tests for these anions: \u00b7 Cl$^{-}$, Br$^{-}$ and I$^{-}$ using acidified silver nitrate solution \u00b7 SO$_{4}^{2-}$ using acidified barium chloride solution \u00b7 CO$_{3}^{2-}$ using hydrochloric acid and identifying the gas evolved.",
+    "loPages": [
+     199
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "learning_objectives"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u3:c19",
+   "spineCode": "4CH1-3.7C",
+   "officialCode": "3.7C",
+   "officialId": "4CH1-3.7C",
+   "tier": "2",
+   "score": 1.0,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u3_c19_pdf216_0821#b4",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u3_c19_pdf216_0821",
+     "chem_v3_u3_c19_pdf216_0821"
+    ],
+    "spanTokens": 20,
+    "officialTokens": 12,
+    "spanText": "use bond energies to calculate the enthalpy change use bond energies to calculate the enthalpy change during a chemical reaction",
+    "wording": "use bond energies to calculate the enthalpy change during a chemical reaction",
+    "loPages": [
+     216,
+     228,
+     233,
+     234
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "learning_objectives"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u3:c21",
+   "spineCode": "4CH1-3.21C",
+   "officialCode": "3.21C",
+   "officialId": "4CH1-3.21C",
+   "tier": "2",
+   "score": 1.0,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u3_c21_pdf249_0956#283",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u3_c21_pdf249_0956",
+     "chem_v3_u3_c21_pdf249_0956"
+    ],
+    "spanTokens": 15,
+    "officialTokens": 15,
+    "spanText": "understand why a catalyst does not affect the position of equilibrium in a reversible reaction",
+    "wording": "understand why a catalyst does not affect the position of equilibrium in a reversible reaction",
+    "loPages": [
+     249,
+     255,
+     256
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "body"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u4:c24",
+   "spineCode": "4CH1-4.21",
+   "officialCode": "4.21",
+   "officialId": "4CH1-4.21",
+   "tier": "2",
+   "score": 1.0,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u4_c24_pdf286_1081#b2",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u4_c24_pdf286_1081",
+     "chem_v3_u4_c24_pdf286_1081"
+    ],
+    "spanTokens": 27,
+    "officialTokens": 27,
+    "spanText": "understand how to draw the structural and displayed formulae for alkanes with up to five carbon atoms in the molecule and to name the unbranched chain isomers",
+    "wording": "understand how to draw the structural and displayed formulae for alkanes with up to five carbon atoms in the molecule,and to name the unbranched-chain isomers",
+    "loPages": [
+     286
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "key_point"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u4:c26",
+   "spineCode": "4CH1-4.31C",
+   "officialCode": "4.31C",
+   "officialId": "4CH1-4.31C",
+   "tier": "2",
+   "score": 0.9744,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u4_c26_pdf296_1118#22",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u4_c26_pdf296_1118",
+     "chem_v3_u4_c26_pdf296_1118"
+    ],
+    "spanTokens": 75,
+    "officialTokens": 39,
+    "spanText": "know that alcohols contain the functional group oh know that ethanol can be manufactured by understand how to draw structural and displayed formulae for methanol ethanol propanol propan 1 ol only and butanol butan 1 ol only and name each compound know that ethanol can be oxidised by burning in air or oxygen complete combustion reaction with oxygen in the air to form ethanoic acid microbial oxidati",
+    "wording": "know that ethanol can be oxidised by: burning in air or oxygen(complete combustion) reaction with oxygen in the air to form ethanoic acid(microbial oxidation) heating with potassium dichromate(VI)in dilute sulfuric acid to form ethanoic acid",
+    "loPages": [
+     296
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "learning_objectives"
+    ]
+   }
+  },
+  {
+   "chapterKey": "u4:c26",
+   "spineCode": "4CH1-4.32C",
+   "officialCode": "4.32C",
+   "officialId": "4CH1-4.32C",
+   "tier": "2",
+   "score": 0.963,
+   "method": "widened",
+   "lineage": "widen:chem_v3_u4_c26_pdf296_1118#b4",
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u4_c26_pdf296_1118",
+     "chem_v3_u4_c26_pdf296_1118"
+    ],
+    "spanTokens": 149,
+    "officialTokens": 54,
+    "spanText": "know that ethanol can be oxidised by burning in air or oxygen complete combustion reaction with oxygen in the air to form ethanoic acid microbial oxidation heating with potassium dichromate vl in dilute sulfuric acid to form ethanoic acid what we commonly refer to as alcohol is just one member of a large family homologous series of similar compounds alcohols all contain the functional group oh cov",
+    "wording": "know that ethanol can be manufactured by: reacting ethene with steam in the presence of a phosphoric acid catalyst at a temperature of about300\u2103and a pressure of about60-70atmthe fermentation of glucose,in the absence of air,at an optimum temperature of about30\u2103and using the enzymes in yeast",
+    "loPages": [
+     296
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": true,
+    "chunkTypes": [
+     "learning_objectives"
+    ]
+   }
+  }
+ ],
+ "audit": [
+  {
+   "code": "4CH1-1.6C",
+   "chapter": "u1:c1",
+   "score": 1.0,
+   "wording": "understand how to plot and interpret solubility curves",
+   "spanText": "understand how to plot and interpret solubility curves",
+   "spanChunks": [
+    "chem_v3_u1_c1_pdf012_0026",
+    "chem_v3_u1_c1_pdf012_0026"
+   ]
+  },
+  {
+   "code": "4CH1-1.7C",
+   "chapter": "u1:c1",
+   "score": 1.0,
+   "wording": "practical: investigate the solubility of a solid in water at a specific temperature",
+   "spanText": "practical investigate the solubility of a solid in water at a specific temperature",
+   "spanChunks": [
+    "chem_v3_u1_c1_pdf012_0026",
+    "chem_v3_u1_c1_pdf012_0026"
+   ]
+  },
+  {
+   "code": "4CH1-1.12",
+   "chapter": "u1:c2",
+   "score": 0.9412,
+   "wording": "understand how to use the calculation of $ R_{f} $ values to identify the components of a mixture",
+   "spanText": "understand how to use the calculation of r values to identify the components of a mixture",
+   "spanChunks": [
+    "chem_v3_u1_c2_pdf023_0066",
+    "chem_v3_u1_c2_pdf023_0066"
+   ]
+  },
+  {
+   "code": "4CH1-1.13",
+   "chapter": "u1:c2",
+   "score": 1.0,
+   "wording": "practical: investigate paper chromatography using inks/food colourings",
+   "spanText": "practical investigate paper chromatography using inks food colourings",
+   "spanChunks": [
+    "chem_v3_u1_c2_pdf023_0066",
+    "chem_v3_u1_c2_pdf023_0066"
+   ]
+  },
+  {
+   "code": "4CH1-1.17",
+   "chapter": "u1:c3",
+   "score": 0.9375,
+   "wording": "be able to calculate the relative atomic mass of an element $ A_{r} $ from isotopic abundances",
+   "spanText": "of sub atomic particles know what is meant by the terms atomic number mass number isotopes and relative atomic mass a be able to calculate the relative atomic mass of an element a from isotopic abundances",
+   "spanChunks": [
+    "chem_v3_u1_c3_pdf033_0091",
+    "chem_v3_u1_c3_pdf033_0091"
+   ]
+  },
+  {
+   "code": "4CH1-1.38",
+   "chapter": "u1:c7",
+   "score": 0.9375,
+   "wording": "know the charges of these ions: \u2022metals in Groups 1,2 and 3 \u2022non-metals in Groups 5,6 and 7 \u2022Ag+\uff0cCu2+\uff0cFe2+\uff0cFe3+\uff0cPb2+\uff0cZn2+ \u2022hydrogen\uff08H+\uff09\uff0chydroxide\uff08OH-\uff09\uff0cammonium\uff08NH4+\uff09\uff0ccarbonate\uff08CO32-\uff09\uff0cnitrate\uff08NO3-\uff09\uff0csulfate\uff08SO42-\uff09",
+   "spanText": "in small quantities learning objectives understand how ions are formed by electron loss or gain know the charges of these ions metals in groups 1 2 and 3 non metals in groups 5 6 and 7 ag cu fe fe pb zn hydrogen h hydroxide oh ammonium nh carbonate co nitrate no sulfate so",
+   "spanChunks": [
+    "chem_v3_u1_c7_pdf084_0301",
+    "chem_v3_u1_c7_pdf084_0302"
+   ]
+  },
+  {
+   "code": "4CH1-1.40",
+   "chapter": "u1:c7",
+   "score": 1.0,
+   "wording": "draw dot-and-cross diagrams to show the formation of ionic compounds by electron transfer\uff0climited to combinations of elements from Groups1\uff0c2\uff0c3\u548c5\uff0c6\uff0c7only outer electrons need be shown",
+   "spanText": "draw dot and cross diagrams to show the formation of ionic compounds by electron transfer limited to combinations of elements from groups 1 2 3 5 6 and 7 only outer electrons need be shown",
+   "spanChunks": [
+    "chem_v3_u1_c7_pdf084_0304",
+    "chem_v3_u1_c7_pdf084_0304"
+   ]
+  },
+  {
+   "code": "4CH1-1.41",
+   "chapter": "u1:c7",
+   "score": 1.0,
+   "wording": "understand ionic bonding in terms of electrostatic attractions",
+   "spanText": "understand ionic bonding in terms of electrostatic attractions",
+   "spanChunks": [
+    "chem_v3_u1_c7_pdf084_0304",
+    "chem_v3_u1_c7_pdf084_0304"
+   ]
+  },
+  {
+   "code": "4CH1-1.42",
+   "chapter": "u1:c7",
+   "score": 1.0,
+   "wording": "understand why compounds with giant ionic lattices have high melting and boiling points",
+   "spanText": "understand why compounds with giant ionic lattices have high melting and boiling points",
+   "spanChunks": [
+    "chem_v3_u1_c7_pdf084_0304",
+    "chem_v3_u1_c7_pdf084_0304"
+   ]
+  },
+  {
+   "code": "4CH1-1.43",
+   "chapter": "u1:c7",
+   "score": 1.0,
+   "wording": "know that ionic compounds do not conduct electricity when solid\uff0cbut do conduct electricity when molten and in aqueous solution",
+   "spanText": "know that ionic compounds do not conduct electricity when solid but do conduct electricity when molten and in aqueous solution",
+   "spanChunks": [
+    "chem_v3_u1_c7_pdf084_0304",
+    "chem_v3_u1_c7_pdf084_0304"
+   ]
+  },
+  {
+   "code": "4CH1-1.47",
+   "chapter": "u1:c8",
+   "score": 1.0,
+   "wording": "explain why substances with a simple molecular structures are gases or liquids, or solids with low melting and boiling points the term intermolecular forces of attraction can be used to represent all forces between molecules",
+   "spanText": "and carbon dioxide organic molecules containing up to two carbon atoms including methane ethane ethene and those containing halogen atoms explain why substances with a simple molecular structure are gases or liquids or solids with low melting and boiling points understand that the term intermolecular forces of attraction can be used to represent all forces between molecules explain why the melting",
+   "spanChunks": [
+    "chem_v3_u1_c8_pdf094_0349",
+    "chem_v3_u1_c8_pdf094_0349"
+   ]
+  },
+  {
+   "code": "4CH1-1.58C",
+   "chapter": "u1:c10",
+   "score": 0.9394,
+   "wording": "describe experiments to investigate electrolysis, using inert electrodes, of molten compounds (including lead(II) bromide) and aqueous solutions (including sodium chloride, dilute sulfuric acid and copper(II) sulfate) and to predict the products",
+   "spanText": "compounds do not conduct electricity sodium chloride dilute sulfuric acid and copper ii sulfate and to predict the products understand why ionic compounds conduct electricity only when molten or in aqueous solution know that anion and cation are terms used to refer to negative and positive ions respectively describe experiments to investigate electrolysis using inert electrodes of molten compounds",
+   "spanChunks": [
+    "chem_v3_u1_c10_pdf110_0405",
+    "chem_v3_u1_c10_pdf110_0405"
+   ]
+  },
+  {
+   "code": "4CH1-2.7",
+   "chapter": "u2:c12",
+   "score": 1.0,
+   "wording": "understand how displacement reactions involving halogens and halides provide evidence for the trend in reactivity in Group 7",
+   "spanText": "understand how displacement reactions involving halogens and halides provide evidence for the trend in reactivity in group 7",
+   "spanChunks": [
+    "chem_v3_u2_c12_pdf139_0498",
+    "chem_v3_u2_c12_pdf139_0498"
+   ]
+  },
+  {
+   "code": "4CH1-2.8C",
+   "chapter": "u2:c12",
+   "score": 1.0,
+   "wording": "explain the trend in reactivity in Group 7in terms of electronic configurations",
+   "spanText": "explain the trend in reactivity in group 7 in terms of electronic configurations",
+   "spanChunks": [
+    "chem_v3_u2_c12_pdf139_0499",
+    "chem_v3_u2_c12_pdf139_0499"
+   ]
+  },
+  {
+   "code": "4CH1-2.20",
+   "chapter": "u2:c14",
+   "score": 0.9583,
+   "wording": "understand the terms: \u2022oxidation \u2022reduction \u2022redox \u2022oxidising agent \u2022reducing agent in terms of gain or loss of oxygen and loss or gain of electrons.",
+   "spanText": "understand the terms oxidation reduction metals and aqueous solutions of metal salts redox know the order of reactivity of these metals potassium sodium lithium calcium magnesium aluminium zinc iron copper silver gold know the conditions under which iron rusts oxidising agent reducing agent in terms of gain or loss of oxygen",
+   "spanChunks": [
+    "chem_v3_u2_c14_pdf154_0559",
+    "chem_v3_u2_c14_pdf154_0559"
+   ]
+  },
+  {
+   "code": "4CH1-2.25C",
+   "chapter": "u2:c15",
+   "score": 1.0,
+   "wording": "explain the uses of aluminium, copper, iron and steel in terms of their properties the types of steel will be limited to low-carbon (mild), high-carbon and stainless",
+   "spanText": "explain the uses of aluminium copper iron and steel in terms of their properties the types of steel will be limited to low carbon mild high carbon and stainless",
+   "spanChunks": [
+    "chem_v3_u2_c15_pdf169_0634",
+    "chem_v3_u2_c15_pdf169_0634"
+   ]
+  },
+  {
+   "code": "4CH1-2.26C",
+   "chapter": "u2:c15",
+   "score": 1.0,
+   "wording": "know that an alloy is a mixture of a metal and one or more elements, usually other metals or carbon",
+   "spanText": "know that an alloy is a mixture of a metal and one or more elements usually other metals or carbon",
+   "spanChunks": [
+    "chem_v3_u2_c15_pdf169_0634",
+    "chem_v3_u2_c15_pdf169_0634"
+   ]
+  },
+  {
+   "code": "4CH1-2.27C",
+   "chapter": "u2:c15",
+   "score": 1.0,
+   "wording": "explain why alloys are harder than pure metals",
+   "spanText": "metals or carbon explain why alloys are harder than pure",
+   "spanChunks": [
+    "chem_v3_u2_c15_pdf169_0634",
+    "chem_v3_u2_c15_pdf169_0634"
+   ]
+  },
+  {
+   "code": "4CH1-2.38",
+   "chapter": "u2:c17",
+   "score": 1.0,
+   "wording": "know that metal oxides, metal hydroxides and ammonia can act as bases,and that alkalis are bases that are soluble in water",
+   "spanText": "know that metal oxides metal hydroxides and ammonia can act as bases and that alkalis are bases that are soluble in water",
+   "spanChunks": [
+    "chem_v3_u2_c17_pdf182_0688",
+    "chem_v3_u2_c17_pdf182_0688"
+   ]
+  },
+  {
+   "code": "4CH1-2.39",
+   "chapter": "u2:c17",
+   "score": 1.0,
+   "wording": "describe an experiment to prepare a pure,dry sample of a soluble salt,starting from an insoluble reactant",
+   "spanText": "describe an experiment to prepare a pure dry sample of a soluble salt starting from an insoluble reactant",
+   "spanChunks": [
+    "chem_v3_u2_c17_pdf182_0688",
+    "chem_v3_u2_c17_pdf182_0688"
+   ]
+  },
+  {
+   "code": "4CH1-2.46",
+   "chapter": "u2:c18",
+   "score": 0.931,
+   "wording": "know the colours formed in flame tests for these cations: \u00b7 Li$^{+}$ is red \u00b7 Na$^{+}$ is yellow \u00b7 K$^{+}$ is lilac \u00b7 Ca$^{2+}$ is orange-red \u00b7 Cu$^{2+}$ is blue-green.",
+   "spanText": "is now routinely carried out using sophisticated machines learning objectives describe tests for these gases hydrogen oxygen carbon dioxide ammonia chlorine describe how to carry out a flame test know the colours formed in flame tests for these cations li red na yellow k lilac ca orange red cu blue green",
+   "spanChunks": [
+    "chem_v3_u2_c18_pdf199_0753",
+    "chem_v3_u2_c18_pdf199_0754"
+   ]
+  },
+  {
+   "code": "4CH1-2.48",
+   "chapter": "u2:c18",
+   "score": 0.9091,
+   "wording": "describe tests for these anions: \u00b7 Cl$^{-}$, Br$^{-}$ and I$^{-}$ using acidified silver nitrate solution \u00b7 SO$_{4}^{2-}$ using acidified barium chloride solution \u00b7 CO$_{3}^{2-}$ using hydrochloric acid and identifying the gas evolved.",
+   "spanText": "tests for these cations li red na yellow k lilac ca orange red cu blue green describe tests for these cations nh 4 using sodium hydroxide solution and identifying the gas evolved cu fe and fe using sodium hydroxide solution describe tests for these anions cl br and i using acidified silver nitrate solution so 42 using acidified barium chloride solution co 32 using hydrochloric acid",
+   "spanChunks": [
+    "chem_v3_u2_c18_pdf199_0754",
+    "chem_v3_u2_c18_pdf199_0754"
+   ]
+  },
+  {
+   "code": "4CH1-3.7C",
+   "chapter": "u3:c19",
+   "score": 1.0,
+   "wording": "use bond energies to calculate the enthalpy change during a chemical reaction",
+   "spanText": "use bond energies to calculate the enthalpy change use bond energies to calculate the enthalpy change during a chemical reaction",
+   "spanChunks": [
+    "chem_v3_u3_c19_pdf216_0821",
+    "chem_v3_u3_c19_pdf216_0821"
+   ]
+  },
+  {
+   "code": "4CH1-3.21C",
+   "chapter": "u3:c21",
+   "score": 1.0,
+   "wording": "understand why a catalyst does not affect the position of equilibrium in a reversible reaction",
+   "spanText": "understand why a catalyst does not affect the position of equilibrium in a reversible reaction",
+   "spanChunks": [
+    "chem_v3_u3_c21_pdf249_0956",
+    "chem_v3_u3_c21_pdf249_0956"
+   ]
+  },
+  {
+   "code": "4CH1-4.21",
+   "chapter": "u4:c24",
+   "score": 1.0,
+   "wording": "understand how to draw the structural and displayed formulae for alkanes with up to five carbon atoms in the molecule,and to name the unbranched-chain isomers",
+   "spanText": "understand how to draw the structural and displayed formulae for alkanes with up to five carbon atoms in the molecule and to name the unbranched chain isomers",
+   "spanChunks": [
+    "chem_v3_u4_c24_pdf286_1081",
+    "chem_v3_u4_c24_pdf286_1081"
+   ]
+  },
+  {
+   "code": "4CH1-4.31C",
+   "chapter": "u4:c26",
+   "score": 0.9744,
+   "wording": "know that ethanol can be oxidised by: burning in air or oxygen(complete combustion) reaction with oxygen in the air to form ethanoic acid(microbial oxidation) heating with potassium dichromate(VI)in dilute sulfuric acid to form ethanoic acid",
+   "spanText": "know that alcohols contain the functional group oh know that ethanol can be manufactured by understand how to draw structural and displayed formulae for methanol ethanol propanol propan 1 ol only and butanol butan 1 ol only and name each compound know that ethanol can be oxidised by burning in air or oxygen complete combustion reaction with oxygen in the air to form ethanoic acid microbial oxidati",
+   "spanChunks": [
+    "chem_v3_u4_c26_pdf296_1118",
+    "chem_v3_u4_c26_pdf296_1118"
+   ]
+  },
+  {
+   "code": "4CH1-4.32C",
+   "chapter": "u4:c26",
+   "score": 0.963,
+   "wording": "know that ethanol can be manufactured by: reacting ethene with steam in the presence of a phosphoric acid catalyst at a temperature of about300\u2103and a pressure of about60-70atmthe fermentation of glucose,in the absence of air,at an optimum temperature of about30\u2103and using the enzymes in yeast",
+   "spanText": "know that ethanol can be oxidised by burning in air or oxygen complete combustion reaction with oxygen in the air to form ethanoic acid microbial oxidation heating with potassium dichromate vl in dilute sulfuric acid to form ethanoic acid what we commonly refer to as alcohol is just one member of a large family homologous series of similar compounds alcohols all contain the functional group oh cov",
+   "spanChunks": [
+    "chem_v3_u4_c26_pdf296_1118",
+    "chem_v3_u4_c26_pdf296_1118"
+   ]
+  }
+ ],
+ "disclosures": [
+  {
+   "code": "4CH1-1.18",
+   "disposition": "below-floor",
+   "reason": "best LO-corpus containment below the 0.90 promotion floor",
+   "bestScore": 0.8889,
+   "evidence": {
+    "chapterKey": "u1:c4",
+    "spanText": "table identify an element as a metal or a non metal according to its position in the periodic table in order of atomic number in groups and periods understand how to deduce the electronic configurations of the first 20 e"
+   },
+   "wording": "understand how elements are arranged in the Periodic Table\uff1a \u2022in order of atomic number \u2022in groups and periods."
+  },
+  {
+   "code": "4CH1-2.42",
+   "disposition": "below-floor",
+   "reason": "best LO-corpus containment below the 0.90 promotion floor",
+   "bestScore": 0.8824,
+   "evidence": {
+    "chapterKey": "u2:c17",
+    "spanText": "prepare a pure dry sample of a soluble salt starting from an insoluble reactant practical prepare a sample of pure dry hydrated copper il sulfate crystals starting from copper il oxide"
+   },
+   "wording": "practical:prepare a sample of pure,dry hydrated copper(II)sulfate crystals starting from copper(II)oxide"
+  },
+  {
+   "code": "4CH1-2.47",
+   "disposition": "below-floor",
+   "reason": "best LO-corpus containment below the 0.90 promotion floor",
+   "bestScore": 0.8889,
+   "evidence": {
+    "chapterKey": "u2:c18",
+    "spanText": "these gases hydrogen oxygen carbon dioxide ammonia chlorine describe how to carry out a flame test know the colours formed in flame tests for these cations li red na yellow k lilac ca orange red cu blue green describe te"
+   },
+   "wording": "describe tests for these cations: \u00b7 NH$_{4}^{+}$ using sodium hydroxide solution and identifying the gas evolved \u00b7 Cu$^{2+}$, Fe$^{2+}$ and Fe$^{3+}$ using sodium hydroxide solution."
+  },
+  {
+   "code": "4CH1-3.22C",
+   "disposition": "invalid-span",
+   "reason": "best candidate crosses excised pages or non-LO-page chunks",
+   "bestScore": 0.913,
+   "evidence": {
+    "spanChunks": [
+     "chem_v3_u3_c21_pdf249_0954",
+     "chem_v3_u3_c21_pdf254_0973"
+    ],
+    "spanTokens": 127,
+    "officialTokens": 69,
+    "spanText": "the white crystals disappear from the bottom of the tube and reappear further up heating ammonium chloride splits it into the colourless gases ammonia and hydrogen chloride two reversible reactions figure 21 1 copper ll sulfate crystals are split into anhydrous copper il sulfate and water on gentle heating understand why a catalyst does not affect the position of equilibrium in a reversible reacti",
+    "wording": "know the effect of changing either temperature or pressure on the position of equilibrium in a reversible reaction: \u2022 an increase (or decrease) in temperature shifts the position of equilibrium in the direction of the endothermic (or exothermic) reaction \u2022 an increase (or decrease) in pressure shifts the position of equilibrium in the direction that produces fewer (or more) moles of gas References to Le Chatelier's principle are not required",
+    "loPages": [
+     249,
+     255,
+     256
+    ],
+    "allChunksOnLoPages": true,
+    "pageContiguous": false,
+    "chunkTypes": [
+     "body"
+    ]
+   }
+  },
+  {
+   "code": "4CH1-4.13",
+   "disposition": "no-trace",
+   "reason": "no LO-corpus span reaches the 0.75 evidence floor \u2014 honest-absent",
+   "bestScore": 0.52,
+   "evidence": {
+    "chapterKey": "u2:c15",
+    "spanText": "to its position in the reactivity series illustrated by carbon extraction for iron and electrolysis for aluminium be able to comment on a metal extraction process given appropriate information detailed knowledge of the p"
+   },
+   "wording": "understand why carbon monoxide is poisonous, in terms of its effect on the capacity of blood to transport oxygen references to haemoglobin are not required"
+  },
+  {
+   "code": "4CH1-4.22",
+   "disposition": "below-floor",
+   "reason": "best LO-corpus containment below the 0.90 promotion floor",
+   "bestScore": 0.7917,
+   "evidence": {
+    "chapterKey": "u4:c24",
+    "spanText": "to name the unbranched chain isomers describe the reactions of alkanes with halogens in the presence of ultraviolet radiation limited to mono substitution the alkanes are the simplest family of hydrocarbons hydrocarbons "
+   },
+   "wording": "describe the reactions of alkanes with halogens in the presence of ultraviolet radiation,limited to mono-substitution knowledge of reaction mechanisms is not required"
+  },
+  {
+   "code": "4CH1-4.26",
+   "disposition": "below-floor",
+   "reason": "best LO-corpus containment below the 0.90 promotion floor",
+   "bestScore": 0.7568,
+   "evidence": {
+    "chapterKey": "u4:c24",
+    "spanText": "or triple c c bonds a way of thinking about this is that the alkanes are saturated with hydrogen in other words they have the maximum number of hydrogen atoms possible for that number of carbon atoms but do not write thi"
+   },
+   "wording": "understand how to draw the structural and displayed formulae for alkenes with up to four carbon atoms in the molecule,and name the unbranched-chain isomers knowledge of cis/trans or E/Z notation is not required"
+  },
+  {
+   "code": "4CH1-4.34C",
+   "disposition": "no-trace",
+   "reason": "no LO-corpus span reaches the 0.75 evidence floor \u2014 honest-absent",
+   "bestScore": 0.6923,
+   "evidence": {
+    "chapterKey": "u4:c27",
+    "spanText": "know that carboxylic acids contain the functional group oh"
+   },
+   "wording": "know that carboxylic acids contain the functional group C=O -CH2OH"
+  },
+  {
+   "code": "4CH1-4.38C",
+   "disposition": "below-floor",
+   "reason": "best LO-corpus containment below the 0.90 promotion floor",
+   "bestScore": 0.8,
+   "evidence": {
+    "chapterKey": "u4:c25",
+    "spanText": "the alkanes figure 25 1 sunflower oil is polyunsaturated and contains lots of c c groups learning objectives know that alkenes contain the functional group"
+   },
+   "wording": "know that esters contain the functional group C - C - O -"
+  },
+  {
+   "code": "4CH1-4.47",
+   "disposition": "no-trace",
+   "reason": "no LO-corpus span reaches the 0.75 evidence floor \u2014 honest-absent",
+   "bestScore": 0.5833,
+   "evidence": {
+    "chapterKey": "u4:c29",
+    "spanText": "polymers are extremely useful for making a variety of products from the coating for electrical wires to plastic botties and intelligent label chips learning objectives know that an addition polymer is formed by joining u"
+   },
+   "wording": "explain problems in the disposal of addition polymers, including: \u2022 their inertness and inability to biodegrade \u2022 the production of toxic gases when they are burned."
+  },
+  {
+   "code": "4CH1-4.48C",
+   "disposition": "no-trace",
+   "reason": "no LO-corpus span reaches the 0.75 evidence floor \u2014 honest-absent",
+   "bestScore": 0.5556,
+   "evidence": {
+    "chapterKey": "u4:c29",
+    "spanText": "and displayed formula of a polyester showing the repeat unit given the formulae of the monomers from which it is formed including the reaction of ethanedioic acid and ethanediol know that some polyesters known as biopoly"
+   },
+   "wording": "know that condensation polymerisation, in which a dicarboxylic acid reacts with a diol, produces a polyester and water"
+  },
+  {
+   "code": "4CH1-4.6",
+   "disposition": "no-trace",
+   "reason": "no LO-corpus span reaches the 0.75 evidence floor \u2014 honest-absent",
+   "bestScore": 0.7,
+   "evidence": {
+    "chapterKey": "u4:c22",
+    "spanText": "of international union of pure and applied chemistry iupac nomenclature understand how to write the possible structural and displayed formulae of an organic molecule given its molecular formula understand how to classify"
+   },
+   "wording": "understand how to classify reactions of organic compounds as substitution, addition and combustion knowledge of reaction mechanisms is not required"
+  }
+ ]
+}

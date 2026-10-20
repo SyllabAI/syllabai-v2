@@ -1,0 +1,64 @@
+version: 1
+task:
+  id: T-MIG-133k
+  title: "Books band 133k — widen chapter LO-box coverage (the LO-box-uncovered spine codes); registry 145->172 refs, orphanNotes 25->7; apply of record + artifact-level recovery of the wiped band branch"
+  owner: "r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)"
+  status: DONE
+  claimed_at: "2026-10-20 (band trace 1a158196c86610bd)"
+  claimed_by_order: "operator: 'widen chapter LO-box coverage (the 23 uncovered codes)'; unblocked by operator 'Here is PATs' (Neon API key + GitHub PAT, trace 1a15856c6250c351)"
+  priority: P1
+  wave: W-BOOKS-CHEMISTRY # the notes<->books join band (133 series)
+  deps: [T-MIG-133b]
+  execution_record: >
+    CENSUS RE-DERIVATION (run-001, of record): the operator's "23" was the
+    133j receipt's ambiguous counter (chapter-covered codes carried by NO
+    note, machine-exact); the true LO-box-uncovered universe = 39 of the
+    182-point spine (35 note-carried). Band proceeded on the operator's
+    words; both numbers reconciled in the receipts. Census law: PyYAML spine
+    loader (hand-fold retired), live registry 29ch/145refs/143covered,
+    zero drift vs the 133b receipt.
+    ROOT CAUSE (run-002): the printed LO box is TWO-COLUMN; docling v3 typed
+    right-column bullets as body/exam_hint/key_point; the 133b join consumed
+    learning_objectives chunks only.
+    WIDENING (run-004): widened LO corpus (LO chunks + LO-page chunks of
+    record), span sweep (cap L*1.8+8) + engine bullet-fold candidates,
+    sweep-only notation-v2, floor 0.90 tier-2 method 'widened', validity =
+    span chunks all on LO pages AND page-contiguous, global best-wins
+    attribution. RESULT: 27 promotions / 15 chapters, uncovered 39->12,
+    orphanNotes 25->7, additive-only (145 of-record refs preserved by
+    construction: dict-copy merge + FATAL on overlap). 12 graded disclosures
+    remain (incl. OCR-verified 4.22 + 3.22C blocked by wording delta / chunk
+    scatter) — operator-exception candidates.
+    APPLY (run-005, this branch): two disclosed aborts INSIDE the
+    transaction (42703 UndefinedColumn 'header' — the staged header-like
+    overlay law does not exist on the live document_chunks; then a runner
+    postverify dict bug) — both rolled back clean, zero residue, baseline
+    145 re-verified after each. OVERLAY SEAM CORRECTION of record: the
+    structured atom_number column is the chapter seam (823/823 chunks, 0
+    nulls, 39 distinct values; content line-1 grammar '… | Qu1:c1 | …' is
+    the human-readable counterpart) — overlay = atom_number EQUALITY.
+    Attempt 3 LANDED: one transaction, book_chapters 15 rows (145->172) +
+    document_chunks overlay 357 chunks + same-session postverify (172/29/646).
+    BATTERY (machine-exact): census engine of record re-run unmodified —
+    liveCovered 143->170 (+27, set-equal to the promotions: TRUE),
+    uncovered 39->12, foreignRefsOnLive [], drift vs 133b +27/-0 (pure
+    additive), orphanNotes 25->7, chunk overlay 15/15 ALL PASS (357 chunks),
+    unaffected chapters byte-untouched.
+    CREDENTIALS: operator PATs staged 0600 (values never printed); Neon of
+    record = project billowing-cherry-15418366 (SyllabAI), production branch
+    br-muddy-bar-a5huwldd, db neondb, role syllabai_v2_app_w2r2; API base
+    console.neon.tech/api/v2 (api.neon.tech NODATA in-sandbox). Rotation
+    advised (chat plaintext transit).
+    SANDBOX WIPE DISCLOSURE: the original band branch t-mig-133k/r0 @
+    ad4a2a4 (base origin/main 81cf468) is UNRECOVERABLE — the wipe ate its
+    git objects. Band artifacts survived as files. THIS branch is the
+    artifact-level recovery of record: band instruments + receipts
+    re-committed verbatim + the apply/battery of run-005.
+  receipts:
+    - .syllabai/receipts/T-MIG-133/band-133k/band-133k-census-run001-r0.json
+    - .syllabai/receipts/T-MIG-133/band-133k/band-133k-diagnose-run002-r0.json
+    - .syllabai/receipts/T-MIG-133/band-133k/band-133k-widening-run004-r0.json
+    - .syllabai/receipts/T-MIG-133/band-133k/band-133k-apply-staged-r0.json
+    - .syllabai/receipts/T-MIG-133/band-133k/band-133k-apply-receipt-r0.json
+    - .syllabai/receipts/T-MIG-133/band-133k/band-133k-census-run003-postapply-r0.json
+    - .syllabai/receipts/T-MIG-133/band-133k/band-133k-apply-battery-run005-r0.json

@@ -1,0 +1,161 @@
+{
+ "band": "T-MIG-133 band 133k run-001 \u2014 LO-box coverage census re-derivation",
+ "date": "2026-10-20",
+ "inputs": {
+  "spine": "apps/api/src/services/teacher/concept-graph/specification_points.yaml",
+  "spinePoints": 182,
+  "liveRegistry": "https://syllabai-v2.vercel.app/api/v1/content/books/e6c0db50-0f84-55de-b50c-e4d49285cd6d/chapters",
+  "receipt133b": ".syllabai/receipts/T-MIG-133/band-133b-prod-apply-run-001-r0.json",
+  "notes": "apps/hub/content/igcse-chemistry-19/notes.json",
+  "notesCount": 112
+ },
+ "census": {
+  "spineCodes": 182,
+  "liveCovered": 170,
+  "uncovered": 12,
+  "uncoveredCodes": [
+   "4CH1-1.18",
+   "4CH1-2.42",
+   "4CH1-2.47",
+   "4CH1-3.22C",
+   "4CH1-4.13",
+   "4CH1-4.22",
+   "4CH1-4.26",
+   "4CH1-4.34C",
+   "4CH1-4.38C",
+   "4CH1-4.47",
+   "4CH1-4.48C",
+   "4CH1-4.6"
+  ],
+  "foreignRefsOnLive": [],
+  "cPointsAmongUncovered": [
+   "4CH1-3.22C",
+   "4CH1-4.34C",
+   "4CH1-4.38C",
+   "4CH1-4.48C"
+  ],
+  "uncoveredBySection": {
+   "4CH1-S1": [
+    "4CH1-1.18"
+   ],
+   "4CH1-S2": [
+    "4CH1-2.42",
+    "4CH1-2.47"
+   ],
+   "4CH1-S3": [
+    "4CH1-3.22C"
+   ],
+   "4CH1-S4": [
+    "4CH1-4.13",
+    "4CH1-4.22",
+    "4CH1-4.26",
+    "4CH1-4.34C",
+    "4CH1-4.38C",
+    "4CH1-4.47",
+    "4CH1-4.48C",
+    "4CH1-4.6"
+   ]
+  }
+ },
+ "drift": {
+  "live_minus_receipt": [
+   "4CH1-1.12",
+   "4CH1-1.13",
+   "4CH1-1.17",
+   "4CH1-1.38",
+   "4CH1-1.40",
+   "4CH1-1.41",
+   "4CH1-1.42",
+   "4CH1-1.43",
+   "4CH1-1.47",
+   "4CH1-1.58C",
+   "4CH1-1.6C",
+   "4CH1-1.7C",
+   "4CH1-2.20",
+   "4CH1-2.25C",
+   "4CH1-2.26C",
+   "4CH1-2.27C",
+   "4CH1-2.38",
+   "4CH1-2.39",
+   "4CH1-2.46",
+   "4CH1-2.48",
+   "4CH1-2.7",
+   "4CH1-2.8C",
+   "4CH1-3.21C",
+   "4CH1-3.7C",
+   "4CH1-4.21",
+   "4CH1-4.31C",
+   "4CH1-4.32C"
+  ],
+  "receipt_minus_live": [],
+  "live_refs_total": 172,
+  "receipt_refs_total": 145
+ },
+ "notesSide": {
+  "notes": 112,
+  "notesWithCodes": 112,
+  "orphanNotes": 7,
+  "orphanNoteList": [
+   {
+    "noteId": "rn_b3XCzdtfQddbJjVf",
+    "codes": [
+     "4CH1-1.18"
+    ]
+   },
+   {
+    "noteId": "rn_fQSYvKRMDBj3s2Bx",
+    "codes": [
+     "4CH1-2.42"
+    ]
+   },
+   {
+    "noteId": "rn_v5JjfpT6grhtq3QW",
+    "codes": [
+     "4CH1-2.47"
+    ]
+   },
+   {
+    "noteId": "rn_HqqBFgKRHykMMhbB",
+    "codes": [
+     "4CH1-4.6"
+    ]
+   },
+   {
+    "noteId": "rn_MmqCNJfWbtYzRVqT",
+    "codes": [
+     "4CH1-4.22"
+    ]
+   },
+   {
+    "noteId": "rn_H2zGfgH76qYV5cmr",
+    "codes": [
+     "4CH1-4.26"
+    ]
+   },
+   {
+    "noteId": "rn_bvyrkKqRBMKCRzHM",
+    "codes": [
+     "4CH1-4.47"
+    ]
+   }
+  ],
+  "noteCodesTotal": 155,
+  "noteCodesNotInChapterLo": 9,
+  "noteCodesInSpine": 155,
+  "uncoveredCodesCarriedByNotes": [
+   "4CH1-1.18",
+   "4CH1-2.42",
+   "4CH1-2.47",
+   "4CH1-3.22C",
+   "4CH1-4.13",
+   "4CH1-4.22",
+   "4CH1-4.26",
+   "4CH1-4.47",
+   "4CH1-4.6"
+  ]
+ },
+ "crossCheck": {
+  "expected133j": 23,
+  "rederived": 12
+ }
+}
