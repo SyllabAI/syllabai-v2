@@ -10286,3 +10286,17 @@ Work Log:
 
 Stage Summary:
 - Residue ruling draft pending operator green-light: apply set = single append (4CH1-1.3); 13 strikes stay empty of-record with documented no-statement grounding; coverage arithmetic unchanged.
+
+---
+Task ID: trace 1a15b3b56e0c09a5 (residue apply of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- Operator 'green-light' on run-010 residue ruling (1 ATTACH + 13 KEEP_EMPTY strikes); turn-open: live planes IN-SYNC (whole-file equality), fetch-first found origin/main f94084d->4234cde (CIE phase-4 identity-laws bookkeeping, apps/api only, zero content-plane touch) — FF-synced before any write.
+- Fail-closed apply (run-011): gates 14/14 (partId hard-anchor, orphan-drift, 182-universe, strikes pre-asserted empty), structural proof 1 append/0 replaces (4CH1-1.3 -> 1-1-states-of-matter q18p1), 13 KEEP_EMPTY strikes untouched pre AND post.
+- Census post: codes+ids 1358 / codes-only 32->33 / ids-only 0 / both-empty 14->13 (=1404 parts; appended orphan part carries no specPointIds -> joins codes-only axis; ids backfill = separate DB-side lane of record); coverage notes 166 / questions 171 / residual 0 UNCHANGED.
+- DISCLOSURE: first apply pass was structurally green but my census EXPECTATION constant was wrong (expected codes+ids 1359); corrected from run-008 of-record arithmetic, uncommitted single-file write reverted, re-applied clean; independent --verify re-proof from git HEAD pre-state: APPLIED.
+- Commit + union-resolve push; ship live-verification (run-012) follows.
+
+Stage Summary:
+- Residue ruling APPLIED of record: orphans 14->13; sole upgraded part now 4CH1-1.3-tagged; 13 strikes stay empty of-record with documented no-statement grounding; ship pending.

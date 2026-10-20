@@ -1,0 +1,81 @@
+{
+  "verification": "R0-4CH1-RESIDUAL-CENSUS/run-011-orphan-residue-apply-r0",
+  "mode": "apply",
+  "greenlightTrace": "1a15b3b56e0c09a5",
+  "rulingOfRecord": ".syllabai/receipts/R0-4CH1-RESIDUAL-CENSUS/run-010-orphan-residue-ruling-r0.json (staged f94084d)",
+  "draftOfRecord": "orphan-killlist-DRAFT-r0.json (staged e6d60d2, sha256[:16] b22fddb529759a62)",
+  "applySet": {
+    "rows": 1,
+    "appends": 1,
+    "codes": [
+      "4CH1-1.3"
+    ],
+    "untouched": "13 KEEP_EMPTY strikes NOT written (guard re-asserted pre AND post)"
+  },
+  "preApplyGates": {
+    "passed": 14,
+    "faults": [],
+    "log": [
+      "row1 part 1-1-states-of-matter--exam-questions q18p1: OK orphan [] +['4CH1-1.3'] (prior NEEDS_MANUAL)",
+      "row2 [KEEP_EMPTY] 1-4-the-periodic-table--exam-questions q13p0: STRIKE not written (re-asserted empty post-apply)",
+      "row3 [KEEP_EMPTY] 1-5-chemical-formulae-equations-calculations--exam-questions q16p0: STRIKE not written (re-asserted empty post-apply)",
+      "row4 [KEEP_EMPTY] 1-5-chemical-formulae-equations-calculations--exam-questions q21p1: STRIKE not written (re-asserted empty post-apply)",
+      "row5 [KEEP_EMPTY] 1-8-metallic-bonding--exam-questions q4p3: STRIKE not written (re-asserted empty post-apply)",
+      "row6 [KEEP_EMPTY] 1-9-electrolysis--exam-questions q3p0: STRIKE not written (re-asserted empty post-apply)",
+      "row7 [KEEP_EMPTY] 1-9-electrolysis--exam-questions q3p1: STRIKE not written (re-asserted empty post-apply)",
+      "row8 [KEEP_EMPTY] 1-9-electrolysis--exam-questions q3p2: STRIKE not written (re-asserted empty post-apply)",
+      "row9 [KEEP_EMPTY] 2-1-group-1-alkali-metals--exam-questions q16p1: STRIKE not written (re-asserted empty post-apply)",
+      "row10 [KEEP_EMPTY] 2-5-extraction-and-uses-of-metals--exam-questions q14p1: STRIKE not written (re-asserted empty post-apply)",
+      "row11 [KEEP_EMPTY] 2-7-acids-bases-and-salt-preparations--exam-questions q3p0: STRIKE not written (re-asserted empty post-apply)",
+      "row12 [KEEP_EMPTY] 2-7-acids-bases-and-salt-preparations--exam-questions q3p1: STRIKE not written (re-asserted empty post-apply)",
+      "row13 [KEEP_EMPTY] 3-3-reversible-reactions-and-equilibria--exam-questions q15p0: STRIKE not written (re-asserted empty post-apply)",
+      "row14 [KEEP_EMPTY] 4-5-alcohols--exam-questions q7p0: STRIKE not written (re-asserted empty post-apply)"
+    ]
+  },
+  "serializationLaw": {
+    "questions.json": "compact-roundtrip byte-identical",
+    "notes.json": "untouched (byte-identical pre==post)"
+  },
+  "fileHashes": {
+    "questions.json": {
+      "pre": "6032bdf6918dcd53",
+      "post": "013e9e32ca11b343"
+    },
+    "notes.json": {
+      "pre": "046a9756da50402a",
+      "post": "046a9756da50402a",
+      "untouched": true
+    }
+  },
+  "structuralDiffProof": {
+    "appends": 1,
+    "replaces": 0,
+    "detail": [
+      "questions[0].questions[18].parts[1].specPointCodes <- 4CH1-1.3"
+    ]
+  },
+  "postApplyCensus": {
+    "codesPlusIds": 1358,
+    "codesOnly": 33,
+    "codesOnlyBefore": 32,
+    "idsOnly": 0,
+    "bothEmpty": 13,
+    "orphansBefore": 14,
+    "orphansAfter": 13,
+    "pairingLaw": "appended orphan part carries codes only (no specPointIds) -> joins codes-only axis per run-008 baseline arithmetic (1358/33/0/13 = 1404 parts); ids-only stays 0; specPointIds backfill = separate DB-side lane (run-009 followup of record)"
+  },
+  "coverage": {
+    "universe": 182,
+    "notes": 166,
+    "questions": 171,
+    "bothAxesResidual": 0,
+    "residualCodes": [],
+    "ofRecordExpectation": "notes 166, questions 171, residual 0 — UNCHANGED (4CH1-1.3 already covered course-wide both-axes; lane = per-part tagging enrichment)",
+    "matchesOfRecord": true
+  },
+  "changedFiles": [
+    "apps/hub/content/igcse-chemistry-19/questions.json"
+  ],
+  "posture": "APPLIED",
+  "writeLedger": "questions.json (1 append: 4CH1-1.3 -> states-of-matter q18p1) + this receipt; no other files; no force"
+}
