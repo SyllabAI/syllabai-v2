@@ -10078,3 +10078,17 @@ Work Log:
 
 Stage Summary:
 - Wave-1 is SHIPPED and verified live on https://syllabai-hub-v2.vercel.app — 16 grade-A codes now live on the questions axis; coverage of record 170/182 questions, residual 11 (grade-B, wave-2 pending). Receipt run-003-wave1-ship-live-r0.
+
+---
+Task ID: pp-provenance-verify-003
+Agent: r0
+Task: Verify chemistry interactive source (resources SME ExamQuestions) + 4mb1 parse purpose (operator trace 1a15ade9c67cf469)
+
+Work Log:
+- P1 TRUE: import_content.py fetches SME-ExamQuestion/igcse-chemistry-19 topics from syllabai-resources -> bundle questions.json (1,404 sourcePaper parts) -> interactive+SmartMark
+- P2 NOT OF RECORD: band-3 receipt documents 4mb1 parse -> atoms_to_bank.py -> sme-exam-questions/1.1 records -> hub bundle (seed stub 2B -> 2.8MB); purpose = manufacture interactive bank BECAUSE SME has no maths-b banks (T-SME-12 no_topic_questions_on_sme; resources maths-b SME dir = 4 metadata files only)
+- RAG: sole embeddings mention in 13 T-MIG-136 receipts is 'deliberately NOT fired'; no chunk/embed pipeline of record for parsed papers
+- Band-4 shim (2026-10-21): bank INGEST-READY, apply operator-gated; 136c prod apply seeded 4MB1-only KG
+
+Stage Summary:
+- Receipt ops-pastpapers/pastpapers-content-provenance-verify-run-003-r0.json; corrected model: chemistry=import SME banks, maths-b=manufacture bank from parsed papers; RAG-over-parsed-papers = new scope if wanted
