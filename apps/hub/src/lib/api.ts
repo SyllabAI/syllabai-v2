@@ -98,6 +98,12 @@ import type {
   TutorSessionCreated,
   TutorSessionSummary,
   TutorSessionView,
+  ClaThreadCreate,
+  ClaThreadCreated,
+  ClaThreadSummary,
+  ClaThreadSync,
+  ClaThreadSynced,
+  ClaThreadView,
   RevisionNoteBodyView,
   RevisionNotesIndexView,
   MarkSchemeRevealView,
@@ -327,6 +333,14 @@ export const V2_SURFACE_PREFIXES: readonly string[] = [
   // test). The hub emitter rides claAskFetch: table-governed, core fallback
   // whenever the v2 base is unset.
   "/api/v1/learners/me/cla/ask",
+  // DC-6 phase 3 (docs/DC6-CLA-SYNC-TIER-PLAN.md) — the CLA thread sync
+  // tier: v2-NATIVE additive family (NO frozen-core counterpart — the
+  // feasibility path (iii) of record), so this row needs NO capture/verify
+  // band; the frozen cla/ask row above is untouched (prefix rows are
+  // disjoint: threads/ never captures ask). Prefix-row class = the
+  // tutor-sessions precedent (startsWith, segment-capture class
+  // documented on that row).
+  "/api/v1/learners/me/cla/threads",
   // Wave S4 (T-MIG-085, r3a; reconciled onto the r4b 084 rider of record) —
   // teacher concept-graph: golden-verified of record (run-002-golden-verify-r3a,
   // PASS with ONE filed message-format class — non-blocking per the 081-class
@@ -1659,6 +1673,42 @@ export const api = {
 
   tutorSessionDelete: (sessionId: string) =>
     request<void>(`/api/v1/tutor/sessions/${encodeURIComponent(sessionId)}`, {
+      method: "DELETE",
+    }),
+
+  // DC-6 phase 3 — the CLA thread sync tier (the question-cla-sync module
+  // is the only caller): the local thread stores stay the source of truth;
+  // the server is a best-effort full-state mirror. create binds a local
+  // thread to its server anchor (lazily, on the first logged-in ask); sync
+  // PUTs the full transcript (idempotent on retry — same seq = same row);
+  // list hydrates the question-scoped history on another device; get
+  // fetches one transcript; delete is the data-minimization right (no call
+  // site v1 — the rail follow-up owns it).
+  claThreadCreate: (body: ClaThreadCreate) =>
+    request<ClaThreadCreated>("/api/v1/learners/me/cla/threads", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
+
+  claThreadList: (params: { surface?: string; questionId?: string }) => {
+    const q = new URLSearchParams();
+    if (params.surface) q.set("surface", params.surface);
+    if (params.questionId) q.set("questionId", params.questionId);
+    const qs = q.toString();
+    return request<ClaThreadSummary[]>(`/api/v1/learners/me/cla/threads${qs ? `?${qs}` : ""}`);
+  },
+
+  claThreadGet: (threadId: string) =>
+    request<ClaThreadView>(`/api/v1/learners/me/cla/threads/${encodeURIComponent(threadId)}`),
+
+  claThreadSync: (threadId: string, body: ClaThreadSync) =>
+    request<ClaThreadSynced>(`/api/v1/learners/me/cla/threads/${encodeURIComponent(threadId)}`, {
+      method: "PUT",
+      body: JSON.stringify(body),
+    }),
+
+  claThreadDelete: (threadId: string) =>
+    request<void>(`/api/v1/learners/me/cla/threads/${encodeURIComponent(threadId)}`, {
       method: "DELETE",
     }),
 

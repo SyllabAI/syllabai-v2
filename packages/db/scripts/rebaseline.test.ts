@@ -4,8 +4,10 @@
  * These tests are the standing regression gate for the T-MIG-002 baseline:
  *   - fixer: exactly the documented F3 renderer-defect shapes are repaired,
  *     site-for-site, idempotently, byte-identically on re-run;
- *   - verifier: the CHECKED-IN schema is snapshot-faithful — 62 tables /
- *     579 columns / 87 indexes / 54 FKs / 98 checks, 0 drifts (the re-proof
+ *   - verifier: the CHECKED-IN schema is snapshot-faithful — 63 tables at the T-MIG-002
+ *     baseline (579 columns / 87 indexes / 54 FKs / 98 checks), advanced band-by-band
+ *     as additive migrations land (T-MIG-133 band 133a mechanic; DC-6 phase 3 adds
+ *     cla_threads + cla_thread_messages) — 0 drifts (the re-proof
  *     of run-001's "579/579 columns parity" claim, now executed on every
  *     test run);
  *   - differ: identical snapshots → no drift; structural mutations are caught;
@@ -240,20 +242,20 @@ describe("specialTypeMap", () => {
 // ---------------------------------------------------------------------------
 
 describe("verifyBaseline (checked-in baseline)", () => {
-  test("63/596/89/55/100 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  test("65/615/92/57/105 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 63/63");
-    expect(v.inventory).toContain("columns 596");
-    expect(v.inventory).toContain("indexes 89");
-    expect(v.inventory).toContain("fks 55");
-    expect(v.inventory).toContain("checks 100");
+    expect(v.inventory).toContain("tables 65/65");
+    expect(v.inventory).toContain("columns 615");
+    expect(v.inventory).toContain("indexes 92");
+    expect(v.inventory).toContain("fks 57");
+    expect(v.inventory).toContain("checks 105");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(63);
+    expect(run.size).toBe(65);
     expect(run.has("public.flyway_schema_history")).toBe(true);
     expect(run.has("public.document_chunks")).toBe(true);
     expect(run.has("public.book_chapters")).toBe(true);

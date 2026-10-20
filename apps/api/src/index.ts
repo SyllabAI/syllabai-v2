@@ -70,6 +70,7 @@ import { buildTeacherKgRouters } from "./routes/teacher-kg";
 import { buildTutorRouters } from "./routes/tutor";
 import { buildTutorBankRouters } from "./routes/tutor-bank";
 import { buildClaRouters } from "./routes/cla";
+import { buildClaThreadsRouters } from "./routes/cla-threads";
 import { buildLlmChain } from "./services/llmchain";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
@@ -112,6 +113,7 @@ const ingestion = buildIngestionRouters();
 const llmChain = buildLlmChain();
 const tutor = buildTutorRouters(process.env, { chain: llmChain });
 const cla = buildClaRouters(process.env, { chain: llmChain });
+const claThreads = buildClaThreadsRouters(process.env);
 const answerInput = buildAnswerInputRouters(process.env, { chain: llmChain });
 const llmadmin = buildLlmAdminRouters(process.env, llmChain);
 
@@ -482,6 +484,20 @@ app.route("/api/v1/tutor/bank", tutorBank.tutorBankRoute);
 // wiring, shipped as a separate commit per the
 // T-MIG-010/020/031/043/052/061/060 precedent.
 app.route("/api/v1/learners/me/cla", cla.claRoute);
+
+// CLA thread sync tier (DC-6 phase 3, docs/DC6-CLA-SYNC-TIER-PLAN.md).
+// V2-NATIVE additive family — NO frozen-core counterpart (feasibility path
+// (iii) of record); the frozen cla/ask route above is byte-untouched and
+// this mount does not alter it (deeper path, own router).
+//
+// ⚠️ OUT-OF-FENCE COMMIT (DC-6 phase 3, R0 ratification requested):
+// the plan's scope.allowed covers routes/cla-threads.ts,
+// services/cla/threads-store.ts, test/cla/threads.test.ts,
+// packages/contracts/src/cla.ts (additive tail), packages/db schema +
+// migration 0004 — NOT this file. The import + construction + one mount
+// line + this comment are the minimal app-level wiring per the
+// T-MIG-010/020/031/043/052/060/069 precedent.
+app.route("/api/v1/learners/me/cla/threads", claThreads.claThreadsRoute);
 
 // Classroom/teacher foundation routers (T-MIG-052 tranche 2 — Wave 5). Path
 // parity with the frozen core: TeacherClassController under /api/v1/teacher

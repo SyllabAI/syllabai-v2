@@ -1390,3 +1390,56 @@ export const bookChapters = pgTable(
                 check("ck_book_chapters_doc_version", sql`doc_version > 0`),
         ],
 );
+
+// ── CLA thread sync tier (DC-6 phase 3, docs/DC6-CLA-SYNC-TIER-PLAN.md) ──
+// v2-native additive family (no frozen-core counterpart; path (iii) of the
+// feasibility of record). The local thread stores (assistant-threads.ts /
+// question-cla-threads.ts) are the source of truth; these tables are the
+// best-effort full-state mirror that makes history follow the learner
+// across devices (operator ruling, trace 1a15a73da1a77c05). The
+// 'assistant' surface value is RESERVED for the sequenced follow-up.
+export const claThreads = pgTable("cla_threads", {
+        id: uuid().primaryKey().notNull(),
+        learnerId: uuid("learner_id").notNull(),
+        surface: varchar({ length: 20 }).notNull(),
+        questionId: varchar("question_id", { length: 120 }),
+        questionNumber: integer("question_number"),
+        courseSlug: varchar("course_slug", { length: 64 }),
+        title: varchar({ length: 120 }).notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
+        lastActiveAt: timestamp("last_active_at", { withTimezone: true, mode: 'string' }).notNull(),
+}, (table) => [
+        index("ix_cla_threads_learner_active").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.lastActiveAt.desc().nullsFirst().op("timestamptz_ops")),
+        index("ix_cla_threads_learner_question").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.questionId.asc().nullsLast().op("text_ops")),
+        foreignKey({
+                        columns: [table.learnerId],
+                        foreignColumns: [users.id],
+                        name: "cla_threads_learner_id_fkey"
+                }).onDelete("cascade"),
+        check("ck_cla_threads_surface", sql`(surface)::text = ANY ((ARRAY['question_cla'::character varying, 'assistant'::character varying])::text[])`),
+        check("ck_cla_threads_question_scope", sql`((surface)::text = 'question_cla') = (("question_id")::text IS NOT NULL)`),
+]);
+
+export const claThreadMessages = pgTable("cla_thread_messages", {
+        id: uuid().primaryKey().notNull(),
+        threadId: uuid("thread_id").notNull(),
+        seq: integer().notNull(),
+        kind: varchar({ length: 16 }).notNull(),
+        text: text(),
+        question: text(),
+        payload: jsonb(),
+        payloadVersion: integer("payload_version").default(1).notNull(),
+        occurredAt: timestamp("occurred_at", { withTimezone: true, mode: 'string' }).notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
+}, (table) => [
+        index("ix_cla_thread_messages_thread").using("btree", table.threadId.asc().nullsLast().op("uuid_ops"), table.seq.asc().nullsLast().op("int4_ops")),
+        foreignKey({
+                        columns: [table.threadId],
+                        foreignColumns: [claThreads.id],
+                        name: "cla_thread_messages_thread_id_fkey"
+                }).onDelete("cascade"),
+        unique("uq_cla_thread_message_seq").on(table.threadId, table.seq),
+        check("ck_cla_thread_message_kind", sql`(kind)::text = ANY ((ARRAY['user'::character varying, 'assistant'::character varying, 'gate'::character varying, 'error'::character varying])::text[])`),
+        check("ck_cla_thread_message_shape", sql`((kind)::text = 'assistant' AND payload IS NOT NULL AND text IS NULL AND question IS NULL) OR ((kind)::text <> 'assistant' AND text IS NOT NULL AND payload IS NULL)`),
+        check("ck_cla_thread_message_question", sql`((kind)::text = 'error') = (question IS NOT NULL)`),
+]);
