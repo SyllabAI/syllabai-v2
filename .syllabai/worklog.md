@@ -9507,3 +9507,25 @@ Work Log:
 
 Stage Summary:
 - The prod apply is FIRED of record through the guarded gate (run 39438132654); the Wave-2 amendment + the receipt-debt disposition land as the PR; the handed credential used for push/PR/dispatch/merge only, inline-env law, never persisted to disk, rotation standing. Watch items: sibling backfill (4) failure (r7a fence), Vercel deploy incident (operator-keyed), neon-replay ESCALATION #2 un-triaged, PAT rotation CRITICAL overdue.
+Task ID: T-MIG-138 (run-003 — the 4-key pool)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)
+Task: operator trace 1a1599bc2ebd45a9 handed 4 Gemini API keys (AQ.*, no prose) — read as the 138c backfill acceleration pool; stage + shard + fire the pending 295-doc queue.
+
+Work Log:
+- First-hand re-verify of the landed corpus (evidence/t138_verify_run003.json): bank census 218 = 110x4MA1 VALIDATED + 55x4CH1 + 40x4CH0 (+13 REJECTED by state delta); the morning's refusing ask (courseRef 4MA1-2016, "question no. 1 from june 2025 paper 1H maths") RESOLVES 200 refused=false evidenceCount=4 provider=groq with QP p3 + MS p5/p6 + KNOWLEDGE_NODE citations; chemistry control refused=false 6 citations. 1 probe register + 2 asks.
+- Keys staged via the Actions secrets API (libsodium sealed with the repo key, values never printed): T138_GEMINI_KEY=op#1 (replaced the Vercel-env key), _2/_3/_4 added.
+- Workflow e5bf8b7: backfill job -> 4-way matrix (round-robin row slices, order preserved; each shard its own key; RPD-wall honesty: a 429-class row failure records the row + every not-attempted row into the shard's skipped-rows artifact and exits 0; non-rate failure exits 1 honest red; fail-fast:false; shard-scoped artifacts).
+- Queue of record derived from the prod-apply artifact (330 rows) minus tranche-1's 35 (verified = artifact rows[0..34]; 35 unique ids extracted from run #7's job log, 35x VERIFY ALL GREEN) = 295 — byte-exact vs the run-002 receipt.
+- FIRE run 39437476094 (run #8, 14:14:54Z): shards 1-3 success, shard 4 failure. Embedded 79 docs (shard1: 1 — key#1 429-walled after 26 vectors through the full 4-retry chain; shard2: 39; shard3: 39 — keys #2/#3 carried the full ~1000-request class each; shard4: 0 — key#4 403 from the first request, non-rate honest red). Wall rows + not-attempted rows recorded in the shard artifacts.
+- Residual queue of record: 216 docs (73+35+35+73; 216+79=295 cross-checked; per-slice first-N subset-of-embedded verified) — evidence/t138_run003_outcome.json.
+- EMPIRICAL KEY-CLASS FINDING: the AQ.* operator pool does not uniformly carry the legacy 1000-RPD embedding class — #2/#3 do (~1000 requests each before the wall), #1 walled at 26 vectors (pre-spent today or a lower class — operator-keyed), #4 is 403-dead (operator-keyed).
+- Workflow 2nd edit (this commit): dual-mode law — mode=backfill restored (single-key sequential, the proven tranche shape) + mode=backfill-sharded (the 4-key matrix) for when the pool carries real quota; T138_GEMINI_KEY re-staged to the ORIGINAL app key (via the Vercel env API, memory-only, values never printed) so the next sharded dispatch rides original + op#2 + op#3 (+ op#4 when replaced).
+- Vector-arm probe (+1 ask, login reuse): course-scoped GENERIC ask (no paper identity) -> 200 refused=false evidenceCount=6 provider=groq, QP pages 3/16/17/18 + KNOWLEDGE_NODEs — the corpus now serves generic topical asks beyond paper identity.
+- No further embedding today: every pool key's budget is spent or dead; a single-key tranche-2 today would honest-red at doc ~4 — the drain resumes on the next RPD reset via mode=backfill-sharded with rows = the 216 residual.
+- Receipt: .syllabai/receipts/T-MIG-138/run-003-4key-pool-r7a.json.
+
+Stage Summary:
+- Run-003 landed 79/295 docs (~2k vectors) in one 25-minute dispatch — ~2.2 days of the single-key discipline compressed; queue residual = 216 docs.
+- Pool ledger: op#2 + op#3 = the workhorses (~1000 RPD each, proven on the live wire); op#1 anomaly + op#4 403 are operator-keyed; the original app key is back as shard-1's key (fresh at reset).
+- Next dispatch (after the midnight-Pacific reset): mode=backfill-sharded, rows = the 216 residual, expect ~115 docs with 3 healthy shards; final tranche(s) after; hygiene-delete of all T138_* secrets stays keyed to the LAST tranche.
+- Secrets discipline: values sealed via the Actions API, never printed, never logged; zero key material in the repo/tree; zero sandbox DB writes (all prod writes ride the CI gate); NAPI_TOKEN zero-touch; chemistry corpus untouched.

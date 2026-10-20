@@ -31,6 +31,13 @@
 #     T138_GEMINI_KEY is now operator key #1 — the app's own Vercel-env
 #     Gemini key no longer spends its RPD on backfills. Hygiene-delete of
 #     all four stays keyed to the LAST tranche (the 138c receipt law).
+#     RUN-003 EMPIRICAL FINDING OF RECORD: the operator AQ.* pool keys do NOT
+#     carry the legacy 1000-RPD embedding class (shard 1 walled at 1 doc /
+#     26 vectors with 429s surviving the full 4-retry chain; shard 4 = 403
+#     from the first request) — so mode=backfill (single-key sequential, the
+#     proven tranche-1 shape) is RESTORED as the drain path of record, and
+#     mode=backfill-sharded stays available for when the pool keys carry
+#     real embedding quota.
 #
 # The deterministic resolver anchors (bank/card/store) need ZERO embeddings —
 # the corpus serves paper asks the moment the rows land; the backfill fills
@@ -52,7 +59,7 @@ on:
         required: false
         default: ""
       mode:
-        description: "cow+prod (default, full guard protocol) | prod-only (COW proof already of record) | backfill (embed the given row ids on prod)"
+        description: "cow+prod (default, full guard protocol) | prod-only (COW proof already of record) | backfill (single-key sequential tranches — the proven 1000-RPD key class) | backfill-sharded (the 4-key pool matrix — only when the pool keys carry real embedding quota)"
         required: false
         default: "cow+prod"
       session:
@@ -232,6 +239,38 @@ jobs:
 
   backfill:
     if: ${{ inputs.mode == 'backfill' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Run the FROZEN backfill for the given rows (single-key sequential — the of-record tranche shape)
+        env:
+          SYLLABAI_EMBEDDING_GEMINI_API_KEY: ${{ secrets.T138_GEMINI_KEY }}
+          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+        run: |
+          ROWS="${{ inputs.rows }}"
+          [ -n "$ROWS" ] || { echo "no rows given"; exit 1; }
+          echo "$ROWS" | tr "," "\n" | while read -r ROW; do
+            [ -n "$ROW" ] || continue
+            echo "embedding row $ROW"
+            bun scripts/t-mig-133d-backfill-exec.ts "$T138_PROD_DATABASE_URL" "$ROW" \
+              || { echo "row $ROW failed"; exit 1; }
+          done
+      - name: Upload the backfill artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t138-backfill
+          path: backfill-last-result.json
+          if-no-files-found: ignore
+
+  backfill-sharded:
+    if: ${{ inputs.mode == 'backfill-sharded' }}
     runs-on: ubuntu-latest
     timeout-minutes: 55
     strategy:

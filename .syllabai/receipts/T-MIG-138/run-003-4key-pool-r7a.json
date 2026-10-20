@@ -1,0 +1,32 @@
+{
+  "lane": "T-MIG-138",
+  "run": "run-003-4key-pool-r7a",
+  "operator_trace": "1a1599bc2ebd45a9",
+  "date": "2026-10-20",
+  "agent": "r7a (Super Z, zai-web session web-da4ab8b1)",
+  "trigger": "operator message contained exactly 4 Gemini API keys (AQ.*), no prose — read as the 138c backfill acceleration pool (the run-002 receipt had just disclosed the 295-doc RPD-bounded queue)",
+  "bands": {
+    "first_hand_reverify": "evidence/t138_verify_run003.json — bank census 218 = 110x4MA1 VALIDATED + 55x4CH1 + 40x4CH0 (+13 REJECTED by state delta); the morning's refusing ask (courseRef 4MA1-2016 'question no. 1 from june 2025 paper 1H maths') RESOLVES 200 refused=false evidenceCount=4 provider=groq (QP p3 + MS p5/p6 + KNOWLEDGE_NODE); chemistry control refused=false 6 citations; 1 probe register + 2 asks",
+    "key_staging": "T138_GEMINI_KEY=op#1 (replaced the Vercel-env key), T138_GEMINI_KEY_2/3/4 added — all via the Actions secrets API, libsodium sealed with the repo key, values never printed, never logged",
+    "workflow_shard": "e5bf8b7 — backfill job as a 4-way matrix: round-robin row slices (order preserved, recency-first holds globally), each shard its own key, RPD-wall honesty (429-class row failure records the row + every not-attempted row into the shard's skipped-rows artifact and exits 0; non-rate failure exits 1 honest red), fail-fast:false, shard-scoped artifacts",
+    "queue_derivation": "prod-apply artifact backfill-row-ids.txt = 330 rows; tranche-1 = exactly rows[0..34] (verified: 35 unique ids from run #7's job log, all 35 VERIFY ALL GREEN, indices 0..34 of the artifact order); pending = 295 — byte-exact vs the run-002 receipt",
+    "fire": "run 39437476094 (run #8, dispatched 14:14:54Z on e5bf8b7): shards 1-3 SUCCESS, shard 4 FAILURE — embedded 79 docs total (shard1: 1, shard2: 39, shard3: 39, shard4: 0)",
+    "residual": "216 docs = 73+35+35+73, reconstructed from the 4 shard artifacts + the round-robin slices (216+79=295 cross-checked; per-slice first-N subset-of-embedded verified); evidence/t138_run003_outcome.json + t138_residual_rows_run003.txt",
+    "key_class_finding": "the operator AQ.* pool does NOT uniformly carry the legacy 1000-RPD embedding class: op#2 and op#3 DO (~1000 requests each before the 429 wall survived the full 4-retry backoff chain); op#1 walled after 26 vectors (pre-spent today or a lower class — operator-keyed); op#4 = 403 from the FIRST request (dead/disabled — operator-keyed, non-rate honest red)",
+    "vector_arm_probe": "evidence/t138_vector_arm_run003.json — course-scoped GENERIC ask (no paper identity) 'explain how to estimate the mean from a grouped frequency table' (4MA1-2016) → 200 refused=false evidenceCount=6 provider=groq (QP pages 3/16/17/18 + KNOWLEDGE_NODEs); +1 ask, login reuse (no new register)"
+  },
+  "workflow_dual_mode": "2nd edit (this commit): mode=backfill RESTORED as the single-key sequential tranche shape of record; mode=backfill-sharded carries the 4-key matrix; T138_GEMINI_KEY re-staged to the ORIGINAL app key via the Vercel env API (memory-only, values never printed) — pool of record for the next sharded dispatch = original + op#2 + op#3 (+ op#4 when the operator replaces it)",
+  "why_no_more_dispatch_today": "every pool key's budget is spent or dead (op#1 walled at 26 vectors, op#2/op#3 at ~1000 requests each, op#4 403; the original key spent ~900 on tranche-1 at 11:43Z) — a single-key tranche-2 today would honest-red at doc ~4; the drain resumes on the next RPD reset (midnight Pacific) via mode=backfill-sharded with rows = the 216 residual",
+  "write_ledger": {
+    "api": "1 probe register + 3 asks (2 verify + 1 vector-arm probe; 3 LLM generations, 0 refusals)",
+    "prod_rows": "79 documents embedded via the CI-gated FROZEN executor (provider spend operator-ordered by the key handoff); zero direct DB writes from the sandbox",
+    "secrets": "T138_GEMINI_KEY (op#1 then re-staged to the original app key) + T138_GEMINI_KEY_2/3/4 staged — values never printed; hygiene-delete stays keyed to the LAST tranche (the 138c receipt law)",
+    "zero": "zero env/DDL writes, zero frozen-law edits (the FROZEN executor byte-untouched — only the workflow file changed), zero NAPI_TOKEN contact, chemistry corpus untouched"
+  },
+  "residuals_of_record": [
+    "216-doc backfill queue (evidence/t138_residual_rows_run003.txt) — next dispatch after the RPD reset, pool [original, op#2, op#3, op#4?], expect ~115 docs with 3 healthy shards",
+    "op#4 = 403 from the first request (dead/disabled) — operator-keyed: replace or enable",
+    "op#1 walled after 26 vectors (429s survived the full 4-retry chain) — pre-spent today or a lower quota class — operator-keyed",
+    "run #8 conclusion = failure (shard-4 honest red; shards 1-3 green; fail-fast:false let them finish) — disclosed, no rerun needed"
+  ]
+}
