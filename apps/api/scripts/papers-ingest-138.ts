@@ -879,3 +879,7 @@ console.log(
 if (sql != null && typeof (sql as unknown as { end?: () => Promise<void> }).end === "function") {
   await (sql as unknown as { end: () => Promise<void> }).end();
 }
+// the deterministic end (the run-39407429712 finding): the createSql seam may
+// keep a Neon serverless socket whose close-error fires AFTER the receipt —
+// every per-paper transaction is already committed, so exit cleanly
+process.exit(0);
