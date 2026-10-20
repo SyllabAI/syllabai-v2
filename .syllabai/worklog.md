@@ -469,7 +469,6 @@ Work Log:
 Stage Summary:
 - T-MIG-004 status IN_REVIEW: 38 cases committed under golden/cases/ (flat, T-MIG-003 convention), receipts at .syllabai/receipts/capture/2026-10-05/{run-001-render-core,run-002-local-boot}.json + .syllabai/receipts/T-MIG-004/run-001.json. W2 authz shell + empty states + error shapes + curriculum real-data happy paths are DONE; the document-bearing real-data tranche is gated on the F-5 unblock. Zero production writes, zero Neon connections, zero upstream writes, zero PII/secrets committed.
 
-
 ---
 
 Task ID: UNBLOCK-SEQUENCE-PHASE2 (R0)
@@ -814,7 +813,6 @@ Stage Summary:
 - (b) THREE CORRECTNESS MECHANISMS OBSERVED: 1) RECEIPTS — every claim carries machine-checkable evidence; concrete example: T-C42.yaml's execution_record pins the production probe (PRB-01 pct_above_050 = 59.5%, 1,745/2,935, VALIDATED pool n=2,935) with CI run ids and merge SHAs, and the tc75 postverify receipt asserts "audit total 2829 -> 2835 (+6 exactly)" with SHA256SUMS alongside — the same discipline this repo's .syllabai/receipts/ continues. 2) FAIL-FAST — services refuse to boot or serve in a misconfigured state; concrete example: render.yaml + core README — blank SYLLABAI_JWT_SECRET refuses startup, R2 secrets missing is a boot WARN whose operations then fail loudly naming the missing setting (no silent local-disk fallback), and v2's packages/db client refuses blank or jdbc:-prefixed DATABASE_URLs; the extension I just ported: ContentRetrievalService throws a loud IllegalStateException when no embedding provider is keyed rather than silently returning empty hits. 3) PREREGISTRATION + HONEST VERDICTS — decisions and their gates are written before evidence, and negative results stay recorded; concrete example: ADR-036 stays Status: Proposed with the operator's ACCEPT flip named as the ratification step ("this ADR does not self-accept"), ADR-033 keeps shortAnswerGuess=0.05 labelled provisional with "an empty bin is no evidence, never good evidence", and the T-MIG-004 capture committed the blank-query 500 and the nodes-by-version 200-[] oddities as-is instead of smoothing them.
 - (c) UNCLEAR / QUESTIONS FOR THE OPERATOR: 1) golden/cases/content-docs-embed-unknown-404.json captures a 500 internal_error (Java checks the embedding provider BEFORE the document row, so unknown-id cannot 404 unkeyed) — the FILENAME says 404 but the EXPECT says 500; I port to the expect and flag the name/expect mismatch for R6 (rename is R6's call, never mine). 2) T-MIG-004 F-2's mechanism hypothesis ("@NotBlank does not trigger method validation") does not fully explain the 500 on the same boot that also captured SCOPE_UNRESOLVED empties — my port reproduces the captured 500 verbatim without committing to a mechanism; if R6 ever re-probes the core and pins a different mechanism the case stays the law. 3) The search empty-cause header (X-Search-Empty-Cause) is captured in case descriptions only because the runner compares status+body — T-MIG-013 named "runner header comparison" a harness gap in R6's fence; until it lands, my receipt classifies header parity separately. 4) REFERENCE_DOCS.md still cites master-pack ADRs under docs/adr/ though they sit at the repo root (doc-fix candidate, docs shepherd).
 
-
 ---
 
 Task ID: T-MIG-020
@@ -1117,7 +1115,6 @@ Work Log:
 Stage Summary:
 - Board after sweep-2: T-MIG-007/018/022 DONE this session; Wave-1 fully closed (T-MIG-011 via operator-reassigned PR #32/#33); open PRs: none known at commit time; t-mig-030/r7a branched (Wave-3 ports starting). Escalations standing: single-R0 authority reaffirmation (two breach-pattern merges: #25, #26 — operator merge-authority trace now disclosed on #33, pattern reframed as likely operator action; bookkeeping stands either way); PAT rotation (chat-transit); flaky unit test on main (one occurrence, identity uncaptured); CI-side Neon integration runner; T-MIG-002 baseline-SQL repair.
 
-
 ---
 Task ID: T-MIG-023
 Agent: R1-contracts session (Super Z, zai-web session web-ab7a0483-4415-4f31-ad16-b00a0e10053e)
@@ -1189,8 +1186,6 @@ Work Log:
 
 Stage Summary:
 - T-MIG-031 CLAIMED (branch t-mig-031/r3a pushed; commit e57a393 + this intake). Deps T-MIG-018/007/014 all merged — slice immediately portable. Tranche-1 (services/questions + services/exam-papers, stubbed-sql tests) next; tranche-2 (zod-wired route factories + flagged OUT-OF-FENCE mounts) follows. Golden replay posture: env-blocked follow-up per T-MIG-020/021 precedent, no case weakened.
-
-
 
 ---
 Task ID: T-MIG-024 (claim — operator drain-cycle queue item W2-F3)
@@ -1320,8 +1315,6 @@ Work Log:
 
 Stage Summary:
 - Sweep-4 merged two PRs (#34, #35), audited the third (#36) post-merge under a disclosed operator delegation, and filed E-2 with a fix sketch instead of re-litigating the merge. Wave-1 fully closed incl. the live-flow escalation (T-MIG-035 DONE). Wave-3 train: 030 DONE (conditions), 031 claimed, 032..034 seeds open. Standing register: E-2 (r7a, blocks 1 replay case), F-1/F-2 content fixes (sketches in receipts/T-MIG-022/), F-3 re-pin -> THIS lane now executing as T-MIG-036, H-2 apply-reset divergence (r7a), CI-side Neon replay runner (operator), T-MIG-002 baseline-SQL repair, PAT rotation, flaky unit test watch (one occurrence, identity uncaptured).
-
-
 
 ---
 Task ID: T-MIG-031
@@ -1845,7 +1838,6 @@ Work Log:
 Stage Summary:
 - Round-6 cycle CLOSED from this lane: T-MIG-034 implemented (test-builder deterministic golden path + transcription LLM-OUTPUT shell, behavioural gates), intake-merged, pushed, PR #56 open and clean, independent review requested. Author recusal: no self-merge, no self-review. STOPPING per the round-6 directive (no self-reported wave work); next action belongs to the reviewer/R0 merge-intake.
 
-
 ---
 Task ID: T-MIG-031 tranche 2
 Agent: R3-api-a / r3-c continuation (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
@@ -2111,7 +2103,6 @@ Work Log:
 Stage Summary:
 - T-MIG-041 is FEATURE-COMPLETE (tranche-1 services + tranche-2 routes/zod/mounts) pending R0 review of the tranche-2 PR; 041 then flips DONE. T-MIG-043 = w0a's lane (claim db87a9a) — operator awareness requested. Register: none new.
 
-
 Task ID: R0-ROUND-10 (review+merge sweep: #63/#64 reviewed+merged with intake fixes, #65 verified; card flips)
 Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
 Task: Operator directive (trace 1a10d2b406e813f9): "Check which lane is unclaimed and start working" — executed as R0: drain the open PR queue, then surface what remains unclaimed.
@@ -2360,7 +2351,6 @@ Work Log:
 Stage Summary:
 - T-MIG-033 tranche-3 IN_REVIEW: the SME admin surface is the last ratified 033 scope item; with its landing the card's code scope is COMPLETE (t1 services + t2 teacher routes/mounts + t3 SME admin), N-4 rich-200 capture still with the golden-capture lane's register. PR opened requesting INDEPENDENT review (authors never self-merge — this lane is also R0; the merge needs the reviewer verdict first). Fence: services/sme/** + test/sme/** + routes/sme.ts + .syllabai bookkeeping; index.ts mount is the only OUT-OF-FENCE commit. LANE IDLE after push — awaiting reviewer + R0 merge-intake (independent session per protocol).
 
-
 ---
 Task ID: 15
 Agent: Super Z (operator-directed independent lane, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
@@ -2547,7 +2537,6 @@ Stage Summary:
 - N-4 CLOSED: the w3-teacher-marking + w3-sme surfaces now carry rich-200 golden gates alongside the auth-boundary postures; the T-MIG-033 capture condition is discharged with a ported comparator, not a disclosure. Card T-MIG-051 DONE. The capture environment recipe is fully reproducible from the receipts (no-root; no Neon; nothing writes to production).
 - Register for R0: (1) the unpaged /answers list stays order-unspecified in the frozen source (root-array unordered declaration, T-MIG-024 doctrine); (2) w4-readiness' "flyway-equivalent v2 migrations" note is now partially addressable — files/t51-seed.sql is a per-family seed posture, not a corpus-wide v2 seed; a corpus seed decision stays with the replay lane/operator.
 
-
 ---
 Task ID: R0-AUTO (cron job 438940, sweep 2026-10-06 02:30 UTC)
 Agent: R0-auto merge desk (Super Z scheduled integrator)
@@ -2564,7 +2553,6 @@ Work Log:
 Stage Summary:
 - N-4 register item (W3 marking + SME surfaces lacked populated-200 golden gates) is CLOSED by capture. Board: W5 band delivering (052 t1 landed 39fa554 last cycle; 051 landed this cycle), remaining claimable = 052 remaining tranches / 053 / 043 tranche-2 (NBA engine + routes) / hub scoped-test-runner hygiene.
 - Queue at sweep end: 0 open PRs. No escalations. LANE DONE for this cycle.
-
 
 ---
 
@@ -2585,7 +2573,6 @@ Stage Summary:
 - Directive resolved with evidence: R0 (and R0-AUTO cron + parallel delegated lanes) merged the entire queue including this lane's #75/#81 — no self-merge anywhere this round.
 - T-MIG-053 claimed with the fleet's biggest remaining ratified band; claim-first discipline held (scan -> branch -> card+receipt+worklog commit pushed before implementation starts).
 - Next for this lane: tranche-1 contracts-first implementation (packages/contracts/src/knowledge.ts + services/knowledge + fakeSql pins), gates, tranche PR.
-
 
 ---
 
@@ -3059,7 +3046,6 @@ Stage Summary:
 
 ---
 
-
 Task ID: T-MIG-059 (claim)
 Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
 Task: Claim the register-open F-0/F-1 binding-law divergences (the #89 REQUEST_CHANGES findings of record; operator directive trace 1a10f743c93c27b9 "F-0/F-1 binding-law") — the #90 routes-classifier adoption pass the #89 ratification verdict explicitly left unregistered.
@@ -3339,7 +3325,6 @@ Work Log:
 Stage Summary:
 - T-MIG-066 IN_REVIEW: the drift cost the card records (the F-2 three-site hand-propagation) can never recur — the law has ONE owner. Next: PR with disclosure -> NOT self-merged -> merge desk (R0 ratifies the proposed home at review).
 
-
 Task ID: 7 (round: trace 1a10f9232658e9a5, agent r9-hubx, zai-web)
 Task: "Check if R0 has merged or not. If not, review+merge yourself and continue working" (round 14)
 
@@ -3354,7 +3339,6 @@ Work Log:
 
 Stage Summary:
 - Round-14: R0 active (our #98 landed via R0-AUTO); this lane reviewed+merged the F-B band #99 with exact arithmetic at both intake and merged tips; lane continues per the standing directive.
-
 
 ---
 Task ID: R3a-ROUND-15 (operator directive trace 1a10f7345efcba35: "the F-072 class-KG heatmap trio")
@@ -3477,7 +3461,6 @@ Work Log:
 
 Stage Summary:
 - T-MIG-062 implemented + gated (+19/+480/+2 EXACT, selftest OK): the research calibration surface is ported at frozen fidelity — the plan's ADR-036 binding (k-anonymity) is ENFORCED code with the learner-unit law, both segment axes render in fixed order, and the suppression posture (counts stay, outcomes go) is pinned at cell and bin granularity. Wave-6 progress: 060 (w0a, in flight) / 061-t1 (landed) / 062 (this band, IN_REVIEW). LANE IDLE after the PR opens.
-
 
 ---
 Task ID: T-MIG-062 (run-003 intake addendum)
@@ -3759,7 +3742,6 @@ Stage Summary:
 - RICH-200-D CLOSED of record: port fix merged + live-proven + union-receipted; no open port work in the finding. The case-owner lane now owns the RICH-200-C/E corpus family (one amendment decision covers both). Lane IDLE; suggestion: next claims = T-MIG-068 umbrella (7 divergences) or T-MIG-069 (w0a's CLA refile) per the operator's routing.
 
 ---
-
 
 ---
 
@@ -4206,7 +4188,6 @@ Stage Summary:
 
 ---
 
-
 Task ID: R0-REPLAY-FILING-1 (operator trace 1a1107f16bd8d041 "Check current status again")
 Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
 Task: Status census + the first of-record filing of the standing neon-replay scheduled run's union verdict (the instrument red on main).
@@ -4277,7 +4258,6 @@ Work Log:
 Stage Summary:
 - Round-22: desk merged #119 (64782f6) — T-MIG-071 (the operator-ruling case-amendment band, R3-C/D3/D4 per receipts/R0-arbitration/ruling3-operator-four-rulings.json) is ON MAIN: 8 class-C cases justified + Retry-After pattern pins with the disclosed declared limiter-429 posture (limiter STAYS per Option B), R3-D3 wall-clock tolerates (Option (a)), R3-D4 Option A identity tolerates (accessToken/learnerId/email+displayName; staged-identity tranche SHELVED). Live union of record 157/177 (+15 vs the 068 baseline), C-class closed 8/8. Register 66/66 — every filed card DONE. Residual disclosures for case-owner lanes: the history-after-submit count residual + the 20 named standing reds per the R0-REPLAY-FILING-1 taxonomy. Operator-side standing items unchanged: NEON_BRANCH_CAPACITY (scheduled run #8 watch), PAT rotation, cron cadence.
 
-
 ---
 
 Task ID: T-MIG-071 post-merge review + register sweep (operator trace 1a110c50451452a5 "Review R4-api-b's 071 PR and Proceed with whatever is left and unclaimed")
@@ -4293,7 +4273,6 @@ Work Log:
 
 Stage Summary:
 - The 071 merge is ratified of record; the post-#119 residue is fully OWNED for the first time (no unowned reds): every remaining union red maps to a named card. This desk proceeds with 075 immediately.
-
 
 ---
 
@@ -4482,8 +4461,6 @@ Stage Summary:
 
 ---
 
-
-
 ---
 
 Task ID: R0-CLASS-B-VERDICT-1 (operator trace 1a110f45897dcdfd "take the Class B auth investigation")
@@ -4531,7 +4508,6 @@ Stage Summary:
 - Round-25: desk merged #124 (94393d2) and #125 (89b966d) — the post-#119 corpus disposition band (071 review F-3..F-6) and the composed-instrument posture residues (071 review F-1/F-2) are LIVE on main; the 071 run-002 filing is now fully dispositioned of record (075 #121, 076 BLOCKED operator-side, 077 #124, 078 #125, 079 #122). Both merges zero-race; both gates +0 EXACT against the round-24 baseline (1569/1556/0/13skip/6143/83f). Operator-side standing items unchanged: T-MIG-076's one-line ci.yml patch, PAT rotation, NEON_BRANCH_CAPACITY watch, cron cadence.
 
 ---
-
 
 Task ID: R0-VERIFY-124 (operator trace 1a111a1831e9d851 "reviewing/merging #124 nex")
 Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
@@ -4875,7 +4851,6 @@ Stage Summary:
 - The §2.4 smoke is UNBLOCKED of record (hub-v2 serves; core warm); P3's lane-executable leg now has live evidence; formal P3 closure (operator-witnessed dual-run) + a sanctioned W5 teacher identity remain operator-side, as do P2 formal closure and P4 sign-off.
 - .syllabai-only, fetch-first direct-main (Task-20 precedent).
 
-
 ---
 
 Task ID: ROUND-32 repo receipt (operator PAT order trace 1a114fc6736523a1)
@@ -4936,7 +4911,6 @@ Work Log:
 
 Stage Summary:
 - PR #134 (branch t-mig-082-091/r1c @ 937ed62) delivers the operator's "Fix the 30 endpoints": every mountable census endpoint is mounted or honestly seamed; gates green first-hand; zero hub prefix widening (flip law honored); zero prod contact. Remaining to make them LIVE on syllabai-hub-v2: PR merge (R0) -> Wave-A api deployment + Neon (operator) -> per-family capture + golden-verify + prefix widening (lane, ordered). Decay: three-gate answer of record; enablement is the operator's §3 takeover lever, correctly fail-closed until then.
-
 
 ---
 Task ID: capture-pass T-MIG-083..091 execution (trace 1a1151442250feb1, operator order "start the capture pass")
@@ -5518,7 +5492,6 @@ Work Log:
 Stage Summary:
 - 084 band: verify+widen DONE of record, awaiting desk merge. Remaining CAPTURED band after 084: 085-089, 091 (same rider shape, same scratch-PG method now proven twice); 094 (kg-retriever, IN_REVIEW r0) rides the family verifies; 095/097 operator-side bands. Register moves to ~80 DONE-flippable on merge.
 
-
 - 2026-10-08T05:20Z w0a LLM-CHAIN run-004 (trace 1a119d20237149b1): intake-3 onto b062cc1 — T-MIG-099 ID YIELDED to main a289818 (operator-ordered pre-draft band card; this lane duplicate withdrawn, renumber precedent); ghost fix stays on #144 per the band card law; worklog union x3; CI-dirty root cause identified of record: pull_request workflows run on the merge ref — a conflicted PR gets ZERO runs (the integrator gate-1 and gate-3 are one gate: clean merge fires CI); gates on this tree then immediate push
 ---
 Task ID: r9-hubx Task-20 (local ledger 20)
@@ -5877,7 +5850,6 @@ Work Log:
 Stage Summary:
 - Operator question answered of record: retire = YES in ARCHIVE form (never delete), gated on the §4 48h watch passing; watch not yet open. Recommended order: P3 dual-run + P4 sign-off + §1 freeze + §3 decay (operator levers) -> watch opens -> 48h green -> §6.1 archive clicks [OPERATOR] + §6.3 SHA record -> §6.2 Render disable ONLY after a posture ruling (core-api hazard). Legacy surfaces verified UP at census; zero writes this act.
 - Next repo receipt = Task-48; next workspace = Task-36.
-
 
 ---
 Task ID: T-MIG-102 (operator IM trace 1a11a06f8663438d)
@@ -6910,8 +6882,6 @@ Work Log:
 
 Stage Summary:
 - T-MIG-112 LANDED of record (8907daa): the classroom-foundation band — the 111 exclusion discharged, 3 tail rows widened (both tables now agree v2 for every class path), 17 corpus cases join the union (186 -> 203 planned). Post-merge legs owed per the 093/110/111 recipe: hub redeploy + double-plane battery + union replay (r7a re_verify_plan). Board empty at run end; main CI 2/2 green at 8907daa.
-
-
 
 ---
 
@@ -9702,8 +9672,6 @@ Stage Summary:
 - Receipt: .syllabai/receipts/ops-pastpapers/pastpapers-cross-course-audit-run-001-r0.json
 - Write ledger: .syllabai receipt + worklogs only; zero writes to any data repo; zero LLM/Neon/prod-db; fetch-first, no force
 
-
-
 ---
 Task ID: T-MIG-139
 Agent: w0a (Super Z, session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd)
@@ -9788,6 +9756,142 @@ Stage Summary:
 - The two operator-gated acts are EXECUTED BY THE LANE on the operator's explicit delegation (the firing order IS the authorization, the 134c law): act 1 = the credential path landed as the gate amendment (name-level fallback, value never transits); act 2 = the dispatch fires on merge at the merged sha.
 - Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-phase4-prod-order-r0.json (follow-up run receipt to land per the follow-up-commit law).
 - fetch-first, no force; PR for the desk (self-merge on green per lane precedent #216/#217); zero prod writes by this commit itself (the ONLY production writes are the gate's own prod-apply job under the COW-proof guard).
+
+---
+---
+Task ID: pp-maths-b-presence-001
+Agent: r0
+Task: Verify maths-b (4mb0/4mb1) presence in the 108-spec index vs present-but-broken (trace 1a15a65da50d83c5)
+
+Work Log:
+- Parsed committed pastpapers-index.json: 4mb0 = 15 sessions/50 papers, 4mb1 = 21 sessions/67 papers (incl. specimen) — both present
+- Diffed session lists against live corpus repo dirs: 4mb0 15/15 exact; 4mb1 20 real + specimen exact (specimen lives at 4mb1/specimen/4MB1-01, confirmed)
+- Verified wiring: registry row igcse-maths-b-16 (4MB1, full, "Maths B"); COURSE_SPECS maps 4mb1+legacy 4mb0; durations attested (120/150min)
+- Corpus drift since index pin 3063c71: only two parse(4mb1) product commits (4eb7b54, 87b6b98) — zero new PDF dirs, so index regen would be cosmetic-only
+- Live regression on syllabai-hub-v2.vercel.app: maths-b past-papers 200, 117 viewer links (= 50+67 EXACT), 35 sessions + specimen, 100 Legacy-spec badges, 53 honest not-parsed-yet chips; home 200
+- Self-disclosed: first probed wrong host syllabai-v2.vercel.app (API/core origin) → edge 404s; briefly mis-read as site-wide outage; corrected via audit-run-001 surface field; no outage exists
+
+Stage Summary:
+- VERDICT: maths-b PRESENT AND FULLY WIRED, live-healthy; only gap = Mode-2 interactive (not-parsed-yet pending 134e ingestion of the 65/66 parse wave)
+- Receipt: .syllabai/receipts/ops-pastpapers/pastpapers-maths-b-index-presence-run-001-r0.json
+- Read-only diagnostic (GET only), zero LLM/Neon/prod-db, no corpus/resources writes; PAT inline one-time only
+Task ID: trace 1a15a4d1f3fcb391 (census 'Authorize' — the 4CH1 residual-codes census r0)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: operator trace 1a15a1dc151e5dbd 'run that census now and bring back the 12 with evidence', re-fired by 'Authorize' — read-only census of the residual uncovered 4CH1 spec-point codes with per-code evidence, to ground the a/b/c ruling.
+
+Work Log:
+- SANDBOX ROLLBACK #5 disclosed of-record: local repo was a T-MIG-era snapshot (63fe6ef; 77413a0/666e11a/f7b7969 absent locally; all mtimes Oct 9 15:07); /home/z/.secrets + /home/z/.git-credentials WIPED (fingerprint-only discipline held); wt-offload worktree gone; automation worklog lost post-1a1408 entries. Fetch-first re-ground: origin/main had advanced 63fe6ef -> 96e7983 (PR #219 merged 2026-10-21); f7b7969 verified ANCESTOR of origin/main first-hand — the run-002 receipt lineage survived on GitHub; local main FF'd, zero force.
+- Census of record at main 96e7983: universe 182 (130 no-suffix + 52 C-suffix, applicability rules verified verbatim from the KG); notes axis 155/182 (112 notes); questions axis 154/182 (28 SME sets, part-level codes); BOTH-AXES RESIDUAL = 27 codes (list in receipt). 4CH1-2.43C = notes-covered/questions-uncovered extra.
+- THE THREAD'S 12 IS NOT REPRODUCIBLE OF RECORD: zero .syllabai/ hits for 3.22C/4.22 anywhere; the 12-list + OCR dossier were chat-only and working-tree residue died with the rollback. THE TWO NAMED EXCEPTION CANDIDATES ARE RESOLVED: 4CH1-4.22 covered (note 'Halogens & Alkanes' + 17 paper-provenanced qparts incl. 2020 Nov1C Q5b, 2021 Ja1C Q9e) and 4CH1-3.22C covered (note 'The Position of Equilibrium' + 19 qparts incl. 2022 Ja2CR Q5b) on BOTH axes.
+- Evidence pass (concept-keyword over notes bodyMd + part problemMd/solutionMd with carried-code capture): ALL 27 carry in-tree content signals; grade A = 16 (DIRECT question instantiation of the spec statement anchored to sibling codes — e.g. 4.48C's statement verbatim under 4.49C 'Butanedioic acid and ethanediol react together to form a polyester and water'; 3.17's NH4Cl \u21c7 Qs under 3.18; 2.27C alloy-hardness under 2.26C; ester cluster 4.38C/4.40C/4.43C under 3.22C/3.5C/4.41C; wine->ethanoic-acid 4.34C/4.37C under 2.33C); grade B = 11 (dedicated concept note exists, question-side indirect; 4.20 keyword false-positive disclosed — 'saturated' hit solubility, wrong sense); ZERO source-absent at the notes level — the thread's '~15 genuine source-absent' NOT corroborated. One ZERO-CODE orphan part found (energetics q8p3, alcohols-combustion table).
+- Write ledger: census scripts persisted (scripts/census_4ch1_{residuals,evidence_pass,dossier}.py — automation workspace); artifacts download/census-4ch1-residual12-{r0,evidence-r0,dossier-r0}.json; this receipt + worklog append UNCOMMITTED — push BLOCKED (credential staging wiped by the rollback; PAT rotation overdue). Zero code/content/DB/Neon/Vercel/LLM contact; no force.
+
+Stage Summary:
+- Of-record answer to 'bring back the 12': the of-record residual is 27, not 12; 4.22/3.22C already closed; 16 grade-A + 11 grade-B exception candidates, all with in-tree content — ruling options (a) document-27 / (b) pardon-graded-subset / (c) grammar round 3 = deterministic code-attachment widening (proposedAttachmentTargets per code filed in the dossier; a CONTENT WRITE requiring the operator ruling + kill-list first). Receipt R0-4CH1-RESIDUAL-CENSUS/run-001 filed uncommitted pending PAT re-staging.
+
+---
+Task ID: trace 1a15a676e2d48e05 (operator 'What do you recommend?' — ruling recommendation r0)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: answer the operator's ruling question on the residual-27 options a/b/c, grounded in the census of record (R0-4CH1-RESIDUAL-CENSUS/run-001).
+
+Work Log:
+- Read back of-record census artifacts (receipt run-001-r0.json + download/census-4ch1-residual12-{r0,evidence-r0}.json) — all intact post-session; evidence table re-derived: nLiteral=0 for all 27, question-side qpart matches range 3 (2.35) to 123 (4.23), every code has >=1 notes concept note; zero source-absent corroborated.
+- DISCREPANCY DISCLOSED of-record: census worklog entry claims 'proposedAttachmentTargets per code filed in the dossier' — FALSE. No artifact contains proposedAttachmentTargets (checked r0.json, evidence-r0.json, dossier-r0.json; dossier.dossier is the label string '4ch1-residual-census/r0-final'). The option-c kill-list must be DERIVED from the evidence pass per-code matches before any apply. Correction recorded here; no silent patch of the prior entry.
+- Recommendation issued to operator: (c) deterministic attachment widening in two waves (wave 1 = grade-A 16; wave 2 = grade-B 11 pending per-code review, 4CH1-4.20 excluded from auto-attach per disclosed keyword false-positive, 2.35 thin at 3 qparts), with (a) document-as-exceptions as interim posture and (b) rejected (deterministic targets derivable; no missing-source cases remain). Precondition: PAT re-stage + rotation (push still BLOCKED since ROLLBACK #5).
+- Zero writes beyond this worklog append; no code/content/DB/Vercel/LLM contact; no force.
+
+Stage Summary:
+- Ruling recommendation of record: (c) wave-scoped, (a) interim, (b) rejected; option-c kill-list NOT yet filed (over-claim corrected); census artifacts verified intact; push remains BLOCKED pending credential re-staging.
+
+---
+Task ID: trace 1a15a711df5cafa9 (operator PAT re-staging + of-record landing)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: operator re-staged the GitHub PAT post-ROLLBACK #5 wipe; unblock the push of the census of record (receipt + worklog) per run-001 write ledger.
+
+Work Log:
+- Fingerprint check: sha256[:16] = a8ccee736aa8c75b — EXACT MATCH to the of-record GITHUB_PAT fingerprint. This is a RE-STAGE, not a rotation; the same token has now transited chat twice; rotation remains OVERDUE (standing item).
+- Staging: /home/z/.secrets/secrets.env (0600, GITHUB_PAT only) + /home/z/.git-credentials (0600, x-access-token format). No values printed anywhere; fingerprint-only discipline held.
+- Authenticated API verify: login SyllabAI (id 309817640); repo SyllabAI/syllabai-v2 push perm True. VERCEL_TOKEN remains UNSTAGED (wipe not yet remediated) — Vercel-side ops stay blocked.
+- Landing sequence: fetch-first, bookkeeping-only commit (.syllabai/** only: census receipt R0-4CH1-RESIDUAL-CENSUS/run-001-r0.json + worklog census/recommendation entries), then push per AGENT_COORDINATION (no force; rebase + worklog union-resolve if sibling lanes advanced main).
+
+Stage Summary:
+- Push of record: <see receipt(R0-4CH1-RESIDUAL-CENSUS) landing commit on origin/main>; rotation of both PATs still open; VERCEL_TOKEN staging still absent.
+
+---
+Task ID: trace 1a15a711df5cafa9 (addendum: landing of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- Landing verified of-record: rebase onto cc0eae2 (6 sibling commits: PR #221 prod-cred amendment, pastpapers maths-b index check, tutor-repair receipt) + worklog union-resolve (0 markers left) -> PUSH b512d95 (cc0eae2..b512d95, main->main, no force). The census receipt R0-4CH1-RESIDUAL-CENSUS/run-001-r0.json + census/recommendation/PAT entries all landed in b512d95 itself.
+- credential.helper store restored repo-local (config was lost in ROLLBACK #5 wipe) — root cause of the first push's 'could not read Username'.
+- Standing: PAT rotation OVERDUE (same token re-staged, transited chat twice); VERCEL_TOKEN staging still absent.
+
+Stage Summary:
+- Push of record = b512d95. Bookkeeping-only, .syllabai/** in-boundary; zero code/content/DB/Vercel/LLM contact; no force.
+
+---
+Task ID: T-MIG-139 run-002 (g4-verified-installed)
+Agent: r7a (Super Z, session web-da4ab8b1, chat 1f3003b6)
+Task: operator trace 1a15a68f77ec7da9 "Go Install the G4 database guard" — the operator-order install authorized by the staged artifact's own law (run-001: installs on OPERATOR ORDER only).
+
+Work Log:
+- Fetch-first: synced 29d710a -> 2a9227b (PR #221); read the staged artifact + run-001 receipt first-hand.
+- Prod URI resolved via the VERCEL_PAT lever (Vercel env API, memory-only, value never printed/logged); egress to the Neon data plane OK.
+- PRE-CENSUS first-hand: ALL FIVE staged enable-time preconditions reproduce EXACTLY (teaching_coverage=0, events=0, anchors_not_spec=0, SPEC_POINT=663, anchors=8138, ck_node_type 7-value incl SPEC_POINT).
+- INSTALL attempt: the script's idempotence gate found trigger_already_present=1 and ABORTED honest, pre-DDL — zero CREATE executed.
+- Forensics: the live trigger (public.question_spec_points, tgenabled='O') is BYTE-IDENTICAL to the staged artifact — trigger def equal; function body 477/477 whitespace-normalized identical (pg prosrc vs the staged $body$ block).
+- Enforcement proven on BOTH paths, every probe txn ROLLED BACK: INSERT-negative PASS (real CONCEPT-type anchor rejected with the artifact's exact exception), UPDATE-negative PASS (anchor retarget to non-SPEC_POINT rejected), positive control PASS (in-place SPEC_POINT update accepted, rowcount=1); post-census anchors 8138 unchanged.
+- Provenance NOT determinable: no receipt/worklog/commit discloses an install (searched .syllabai/** at tip); pg carries no trigger timestamp; w0a's run-001 preconditions never asserted trigger ABSENCE (the 'NOT installed' line was the drift-discipline ruling language, not a live pg_trigger observation). Candidates: the operator G-round production lane (G1/G3/G5, 2026-10-20, DDL authority), the operator console, or an undisclosed post-run-001 act — OPERATOR-KEYED residual.
+- Disposition per the 134b collision-discharge precedent: converted to independent verification; NO drop/recreate churn (no force); rollback law unchanged (DROP TRIGGER + DROP FUNCTION).
+
+Stage Summary:
+- VERDICT of record: DISCHARGED-AS-ALREADY-INSTALLED — the G4 guard the operator ordered is LIVE and ENFORCING, byte-identical to the artifact of record; F.5 §7's five gates now ALL LIVE/VERIFIED (G1 live, G2 merged PR #219, G3 live receipt, G4 LIVE+proven this run, G5 live receipt).
+- Write ledger: zero DB DDL/data writes by this lane (install aborted pre-DDL; probes rolled back); scripts t139_g4_{install,probe,identity,twopath}.py landed in scripts/; receipt .syllabai/receipts/T-MIG-139/run-002-g4-verified-installed-r7a.json; card status addendum.
+- Secrets discipline: DATABASE_URL memory-only via the Vercel env API; never printed/logged/persisted.
+Task ID: CIE-INTEGRATION phase-4 prod-apply run-001 (follow-up to trace 1a15a5bb18840ac5, r0)
+Agent: r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: the two-act prod apply — run 001 of the gate dispatch (follow-up-commit law: the run of record for cie-phase4-prod-order-r0.json dispatchOfRecord).
+
+Work Log:
+- PR #221 merged of record (2a9227b, head CI 4/4 green, self-merge per lane precedent); main tip CI verified GREEN (ci + verify + hub success at 2a9227b).
+- ACT 2 FIRED: dispatched cie-phase4-db-plane mode=cow+prod at main (HTTP 204; run 39470460696, 17:56:48Z).
+- Run 001 = FAILURE with the guard protocol holding verbatim: COW br-green-frost-a54vy67f created + endpoint ready + BRANCH-LOCAL password reset (production roles untouched) -> the fleet step exit 2 on the orchestrator's usage line -> prod-apply SKIPPED (needs cow-proof) -> the always() DROP ran: COW deleted, post-delete GET = 404, zero residue, ZERO writes anywhere.
+- ROOT CAUSE (the plane's own defect, honestly): cie-phase4-apply.ts matched the JOINED literal args.includes('--mode apply') but the gate's shell argv-splits to two tokens ['--mode','apply'] -> mode null -> usage+exit 2 BEFORE any DB contact. Build-time integration gap: the exact CI invocation shape was never exercised at build (census + battery only).
+- FIX: the mode resolution extracted to the exported pure resolveMode() — every spelling the gate or sandbox emits resolves (two-token, equals, joined, bare --apply); garbage -> null. Regression pin added to the roster suite (the run-39470460696 law, 7 assertions). Gates: roster suite 9/0, --census clean 45 slugs, usage-refusal re-verified, tsc --noEmit exit 0.
+- Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-phase4-prod-apply-run-001-r0.json.
+
+Stage Summary:
+- Run 001 of record = honest red, guard held, zero writes; the defect is FIXED + PINNED; run-002 re-dispatch fires at the fix's merged sha (outcome lands as run-002 receipt).
+- fetch-first, no force; PR for the desk; zero prod writes by this commit (the ONLY production writes remain the gate's own prod-apply job under the green COW-proof).
+Task ID: trace 1a15a80a2ade5075 (wave-1 kill-list filed — 4CH1 attachment r0)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: operator 'draft the actual list now' — file the wave-1 kill-list (grade-A 16, exact array additions) for operator green-light. READ-ONLY drafting; nothing applied.
+
+Work Log:
+- fetch-first: main behind 3 (sibling lanes); content files apps/hub/content/igcse-chemistry-19/ + KG json verified IDENTICAL local-HEAD-vs-origin/main (git diff empty) and untouched since seed 3a92153 — tree safe for read-only derivation.
+- CORRECTION-OF-CORRECTION of-record: the 1a15a676e2d48e05 entry's 'over-claim' disclosure was itself WRONG — proposedAttachmentTargets IS filed in dossier-r0.json under residual27[] (probed only 2 of 3 artifacts then). No silent patch of the prior entry; both stand.
+- Kill-list derivation rule (deterministic, stated in manifest): grade-A code -> evidence-pass qparts whose codesCarried intersect the anchor-sibling set hand-extracted from the dossier GRADE evidence; every target verified in-tree (exists + target code ABSENT + current array captured verbatim).
+- Script persisted scripts/wave1_killlist_4ch1.py; manifest -> download/wave1-killlist-4ch1-attachment-r0.json. RESULT: 16/16 READY, 54 part-additions, 0 ANCHOR-MISS, 0 absence-proof violations; 3 parts receive two codes each (union-append on apply).
+- Scope: question-axis parts ONLY (grade A = direct question instantiation); note-axis deferred to wave-2; grade-B 11 untouched; 4.20 excluded from any auto-attach (disclosed false-positive).
+- Guard in manifest: APPEND-ONLY, arrays otherwise byte-identical, no other files, apply ONLY on operator green-light, wire battery 11-leg post-apply before receipt.
+
+Stage Summary:
+- Wave-1 kill-list of record: 16 codes -> 54 verified specPointCodes appends across questions.json, ready for operator review/green-light; nothing written to content; zero code/DB/Vercel/LLM contact; no force.
+
+---
+Task ID: pp-maths-b-mode2-erratum-002
+Agent: r0
+Task: Correct run-001's Mode-2 claim; answer operator question on what 4mb1 interactive shows (trace 1a15a7fc24200c1d)
+
+Work Log:
+- Re-extracted live page: badge reads '117 papers · 35 sessions · 64 interactive' — run-001's 'locked pending 134e' claim was wrong (probe grep missed the badge)
+- Census of bundle questions.json: 1,249 questions, 2,392 sourcePaper parts {date,number,questionNumber,questionPart} pinning 4MB0/4MB1 papers
+- Bundle updated by a00b96f 2026-10-20 t-mig-136 'parse lane BAND 3 bank assembly discharged' (seed 3a92153 10-04)
+- Interactive = 64 rows, all 4MB1 (gap list: 2019-01/02R, 2019-06/02R, specimen 4MB1-01); 2020-06 01/01R under may-2020 slugs; 53 chips = 50 legacy 4MB0 + 3 gaps
+- Player route probe: january-2019-4mb1-01 -> 200, 308KB SSR, totalMark x23, MS modals; Smart Mark client-side
+
+Stage Summary:
+- ERRATUM filed: pastpapers-maths-b-mode2-erratum-run-002-r0.json; interactive maths-b is LIVE (64 papers) via t-mig-136 bundle bands; corpus wave = upstream feedstock for remaining gaps
 
 ---
 Task ID: HUB-REGISTRY fill-4ph1 (traces 1a15a77a20dbbcb1 + 1a15a6ff916e513d)

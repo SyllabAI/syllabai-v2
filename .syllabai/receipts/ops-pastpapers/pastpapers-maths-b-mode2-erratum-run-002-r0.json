@@ -1,0 +1,15 @@
+{
+  "task": "ERRATUM to pastpapers-maths-b-index-presence-run-001-r0 + operator question (trace 1a15a7fc24200c1d): 'what does the interactive papers show in 4mb1? Parsed output?'",
+  "agent": "r0",
+  "date": "2026-10-21",
+  "erratum": "Run-001 wrongly stated maths-b Mode-2 interactive was 'not parsed yet' pending 134e ingestion. WRONG: r0's probe only greped roadmap chips and missed the badge. Actual live badge: '117 papers · 35 sessions · 64 interactive'. 64 of 117 rows are LIVE interactive reconstructions right now.",
+  "corrected_picture": {
+    "interactive_rows": "64/117 — ALL on current 4MB1: every session 2018-06..2026-06 papers 01/01R/02/02R except 2019-01 4MB1-02R, 2019-06 4MB1-02R, specimen 4MB1-01 (3 gaps). The 2020-06 sitting's 01/01R surface under may-2020 player slugs (manifest exam dates). 2020-06 4MB1-02/02R verified under june-2020.",
+    "not_parsed_chips": "53 = all 50 legacy 4MB0 rows (PDF+Mock only) + the 3 4MB1 gaps. 117 = 64 + 53 EXACT.",
+    "player": "/courses/igcse-maths-b-16/past-papers/<session>-<paper> — probe january-2019-4mb1-01: HTTP 200, 308KB SSR, Question 1 x11, totalMark x23, mark-scheme modals; MCQ auto-mark + self-mark/Smart Mark client-side; coverage chips vs official totals where blueprints exist.",
+    "content_source": "NOT the corpus repo's raw parse products. Chain: syllabai-pastpapers parse -> t-mig-136 bank assembly -> SME-format bundle content/igcse-maths-b-16/questions.json (1,249 questions, 2,392 sourcePaper parts {date,number,questionNumber,questionPart} e.g. June 2018 - 4MB1/01) -> hub matchReconstructions pins bundle provenance to corpus index rows -> interactive links. Bundle last updated by commit a00b96f 2026-10-20T15:27Z 'receipt(t-mig-136): parse lane BAND 3 of record — bank assembly discharged' (file history: seed 3a92153 2026-10-04 -> a00b96f).",
+    "operator_premise_update": "'4mb1 does not have SME exam questions' is OUTDATED as of the band-3 discharge (2026-10-20): the bank exists and lights 64 papers. Remaining: 3 4MB1 gaps + all 4MB0 legacy (roadmap chips) close as further bank bands land; the 2026-10-20 corpus wave (65/66 papers, round-2/2b grammar, commits 4eb7b54+87b6b98) is the upstream feedstock for those bands."
+  },
+  "method": "same read-only battery as run-001 plus: bundle questions.json provenance census (download + walk), live page full chip/badge extraction, player-route probe, session-slug diff vs corpus index; GET only, zero LLM/Neon/prod-db",
+  "write_ledger": "receipt + worklog append only (.syllabai/**); no source, index, corpus, hub or db changes"
+}
