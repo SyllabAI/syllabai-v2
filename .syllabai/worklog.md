@@ -10206,3 +10206,16 @@ Work Log:
 
 Stage Summary:
 - PROD-APPLY ON HOLD of record (zero prod-db writes this session; the only Neon mutations were the gate's own COW pair, dropped + 404-verified). The 134c guard + credential path remain proven; the fleet's floors cannot catch this defect class (the reuse law defines it as correct) — only the offline identity census does. The gate re-dispatches on the operator's ruling; this desk IDLES on the CIE gate until then. Hygiene: no secret value in any file/log/receipt; fetch-first, no force.
+Task ID: trace 1a15b07cdd3aa565 (orphan-parts review of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- Staging re-verified (fingerprints of-record, 0600); fetch-first clean at 918e0e3.
+- Read-only sweep of the orphan universe: 45 orphans (of-record 46 at ba3dee4 minus wave-2's q8p3 fix — exact reconciliation); four-way census 1358/1/0/45 (codes+ids/codes-only/ids-only/both-empty); zero specPointIds conflicts.
+- First-hand per-part review of all 45 (problemMd + solutionMd + provenance + sibling codes), KG spec-text cross-check for every proposed code; keyword candidates advisory only — 4.20-class misfires avoided (3.22C on q19p0, 2.12 on LiOH, 1.46/1.47 graph-point misfires).
+- Verdicts: 31 PROPOSE (61 appends) + 12 NEEDS_MANUAL (candidates disclosed) + 2 EXCLUDE (apparatus-naming, no spec statement exists); completeness gate: every orphan covered exactly once.
+- Draft kill-list DRAFT-r0 filed BOTH in receipts (reset-proof) and download/: 45 rows with first-hand evidence + spec texts + sibling codes; apply set = PROPOSE rows only, NEEDS_MANUAL/EXCLUDE rows require operator ruling.
+- Receipt run-007-orphan-review-r0 filed; zero content writes; no force.
+
+Stage Summary:
+- Orphan lane review of record staged: 45-row draft pending operator green-light (apply set = 61 appends / 31 parts) + 12 NEEDS_MANUAL rulings + 2 EXCLUDE strikes; coverage arithmetic unaffected (residual stays 0).

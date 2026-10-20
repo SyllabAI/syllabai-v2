@@ -1,0 +1,20 @@
+{
+  "receipt": "R0-4CH1-RESIDUAL-CENSUS/run-007-orphan-review-r0",
+  "task": "operator trace 1a15b07cdd3aa565 pick '46-orphan-parts lane' — per-part first-hand review of the orphan universe (parts with empty specPointCodes); verdicts + draft kill-list; READ-ONLY, nothing applied",
+  "lane": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, chat 9e9f3d7a)",
+  "reconciliation": "of-record 46 orphans at ba3dee4; wave-2 fixed exactly 1 (energetics q8p3, 4.29C) -> sweep finds 45 at 918e0e3 (exact); four-way census: 1358 codes+ids, 1 codes-only (no ids), 0 ids-only, 45 both-empty; all orphans both-empty so codes-only appends keep the codes/ids pairing law intact",
+  "method": "read-only sweep of problemMd/solutionMd + provenance + sibling codes (scripts/orphan_sweep_4ch1.py -> scripts/orphan-sweep-r0.json); first-hand per-part adjudication with KG spec-text cross-check; keyword candidates advisory only — 4.20-class misfires avoided (3.22C rejected on q19p0 exothermic keyword; 2.12 rejected on LiOH hydroxide; 1.46/1.47 graph 'points' misfires rejected on rates parts)",
+  "attachRule": "PROPOSE only where a spec statement or the item governing investigation squarely matches the tested content; data-handling sub-parts inherit the governing set; NEEDS_MANUAL = operator adjudication; EXCLUDE = recommend no attach",
+  "headline": "45 orphans: 31 PROPOSE (61 appends) + 12 NEEDS_MANUAL + 2 EXCLUDE; zero exception-free force — every PROPOSE row carries first-hand MS/problem evidence + spec text",
+  "draftKilllist": ".syllabai/receipts/R0-4CH1-RESIDUAL-CENSUS/orphan-killlist-DRAFT-r0.json (mirror: download/orphan-killlist-4ch1-DRAFT-r0.json) — 45 rows embedded, completeness-gated (every orphan covered exactly once)",
+  "coverageNote": "all 31 proposed codes already covered course-wide (both-axes residual stays 0/182) — lane enriches per-part tagging for study routing/filtering, NOT coverage arithmetic",
+  "paperConsistencyNote": "C-suffix proposals (1.58C, 4.30C, 4.35C) all land on paper-2-sourced items (Jan2C/Ju2C/Ja2C lineage)",
+  "writeLedger": "this receipt + draft mirror + worklog append; zero content writes; zero prod/DB/Neon/LLM; no force",
+  "followups": [
+    "operator green-light -> orphan apply (61 appends across 31 parts, fail-closed gate, battery, receipt)",
+    "12 NEEDS_MANUAL rows await operator ruling (candidates disclosed per row)",
+    "PAT rotation overdue x2",
+    "CORS identity/config.ts:60 parked",
+    "specPointIds backfill needs DB-side spcpt_* mapping (separate)"
+  ]
+}
