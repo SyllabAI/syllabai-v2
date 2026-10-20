@@ -85,7 +85,10 @@ for (const exp of EXPECT) {
 // pure-2 (no SME bank yet) stays the honest-empty D1 skeleton.
 const SEVEN = ["manifest.json", "curriculum.json", "concept-graph.json", "notes.json",
   "questions.json", "flashcards.json", "learner-sim.json"];
-const CIE_PIN = "0fe5f77210f74aaeb3f6c491dfe0263d12db738c";
+// T-SPECS-CIE-CONSUME-1 (r9, trace 1a1585c244ccd141): pin advanced 0fe5f772 ->
+// 75981cad — the four CIE-relevant subtrees verified tree-sha-identical between
+// the two pins; the only corpus delta is spec-links/ (the consumed sidecars).
+const CIE_PIN = "75981cad0b08c190fb70902eb6cdca1f76b9cd68";
 const D1_SKELETON = "cie-a-level-maths-20-pure-2";
 
 function checkRealBundle(slug: string, code: string): void {

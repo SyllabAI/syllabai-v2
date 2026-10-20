@@ -20,10 +20,13 @@
   }
  },
  "course": "cie-igcse-english-language-25",
- "generatedUtc": null,
+ "generatedUtc": "2026-10-20T14:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-igcse-english-language-25/spec_point_index.json": {
    "sha256": "669ddfbcb2f20f1afbac132e1c9018778d778fc4d69bd13fdcf633dad8c9bfaf"
+  },
+  "spec-links/cie-igcse-english-language-25.json": {
+   "sha256": "dc84e2ef4f207fd862d496bb79caea49b6da846b3162a5b6c49863983e4fa81a"
   },
   "spine": {
    "file": "spines/cie-igcse-english-language-25.json"
@@ -2913,18 +2916,40 @@
   ],
   "uncoveredSpineCodes": 209
  },
- "resourcesSha": "0fe5f77210f74aaeb3f6c491dfe0263d12db738c",
+ "resourcesSha": "75981cad0b08c190fb70902eb6cdca1f76b9cd68",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
   "resolution": null,
-  "specLinks": null,
+  "specLinks": {
+   "census": {
+    "codesAttachedFromSidecar": 0,
+    "codesByMethod": {},
+    "codesByTier": {},
+    "itemsWithCodes": 0,
+    "ladderCodesRetained": 0,
+    "sidecarCodes": 0,
+    "sidecarItems": 174,
+    "sidecarOnlyItems": 0,
+    "t2Hints": 0
+   },
+   "derivation": "ACCEPTED spec-links sidecar (T-SPECS-CIE join/verdict/gate/rejoin chain) merged item-level: operator-verdict authoritative, T1 gate-verified, J* post-gate identity-grade; T2_near carried as non-authoritative items[].t2HintCodes only; REJOIN sheet sid->code rows upgrade/add spcptToOfficial (conflicts kept, disclosed)",
+   "regime": "spec_links_sidecar_accepted",
+   "reviewState": {
+    "rejoin": null,
+    "state": "ACCEPTED"
+   },
+   "sheetUpgrades": null,
+   "sidecar": "spec-links/cie-igcse-english-language-25.json",
+   "t2Policy": "T2_near is a non-authoritative hint (GATE-1 tier_policy); never in codes/linkage"
+  },
   "specPointMap": {
    "crossLaneResolved": 0,
    "derivation": "deterministic ladder R1-R4 (leaf) + R5 (subtopic scope, notes only) over the upstream spec_point_index incl. cross_lane_join resolutions; every row carries its rule id",
    "leafMapped": 0,
    "regime": "cie_reconciliation_derived",
    "ruleCounts": {},
+   "sidecarConsumed": true,
    "smeEntries": 183,
    "subtopicScoped": 0,
    "unmapped": 183

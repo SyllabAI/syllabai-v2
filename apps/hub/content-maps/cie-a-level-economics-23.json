@@ -7,9 +7,9 @@
    "viaSubtopicScope": 0
   },
   "notes": {
-   "coded": 31,
+   "coded": 64,
    "total": 159,
-   "unmapped": 128,
+   "unmapped": 95,
    "viaSubtopicScope": 6
   },
   "questionParts": {
@@ -20,10 +20,16 @@
   }
  },
  "course": "cie-a-level-economics-23",
- "generatedUtc": null,
+ "generatedUtc": "2026-10-20T14:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-a-level-economics-23/spec_point_index.json": {
    "sha256": "d537aba1f596b6b4849c61ac18925c90f35e24cbc6c1ebc96073a1b12eb35f8a"
+  },
+  "scripts/cie_rejoin_resolutions.yaml": {
+   "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
+  },
+  "spec-links/cie-a-level-economics-23.json": {
+   "sha256": "a72f40db6a191d2671459e0c8ce694a33fd906ac5a7767dd259c50fe689d2037"
   },
   "spine": {
    "file": "spines/cie-a-level-economics-23.json"
@@ -88,14 +94,24 @@
    "unmapped": true
   },
   "rn_39MCBv8h54yKjZPJ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "3.2.4",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:3.2.4",
+     "score": null,
+     "spineCode": "3.2.4",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_5Mt9VVZ54F3kHtBz",
     "spcpt_jKzhTpnrmDK9D3vc",
     "spcpt_vTQvPfzxrvXHyyvB"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_3c2JhCXqfVHTfkT5": {
    "codes": [],
@@ -108,15 +124,35 @@
    "unmapped": true
   },
   "rn_3vygXPWmzZSBcKgF": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "11.5.4",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:11.5.4",
+     "score": null,
+     "spineCode": "11.5.4",
+     "tier": "V1_name_text_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "11.5.5",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:11.5.5",
+     "score": null,
+     "spineCode": "11.5.5",
+     "tier": "V1_name_text_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2FYrRJt5DYVjjyfr",
     "spcpt_49hCrsxTqSXCHrPN",
     "spcpt_FWrs6YjCz9Z4b46B",
     "spcpt_Vxyw2fV2rXQ2cW8v"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_4GnNSvFZVyRBQqBx": {
    "codes": [],
@@ -150,6 +186,16 @@
   },
   "rn_53jFxVwD8HDhypp4": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "9.4.8",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:9.4.8",
+     "score": null,
+     "spineCode": "9.4.8",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -213,26 +259,14 @@
   "rn_63h5MvCWjX3M2Fty": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "2.1.4",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:2.1.4",
      "score": null,
      "spineCode": "2.1.4",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_CpKz8kvTR83hs7FD"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.1.4",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.1.4",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_mPc9HRGkSJbCVdp4"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -242,15 +276,25 @@
    "kind": "note"
   },
   "rn_77ywWb2xvKdKvdCC": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_43jPKVM7QFD6SpYt",
     "spcpt_5n2rrVGWZzMBTdnm",
     "spcpt_K24dX63ZvPbmg5YF",
     "spcpt_myxdDd6XD3tfzmrN"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_8RMDYwrsb7xbfy2t": {
    "codes": [],
@@ -303,13 +347,23 @@
    "unmapped": true
   },
   "rn_9nD9wPmh3xgs6Mwp": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "7.3.4",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:7.3.4",
+     "score": null,
+     "spineCode": "7.3.4",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2N8gfHKdVVVhHk5m",
     "spcpt_8vkG7Nfy2DYJZyZX"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_9vKw5GkBPtCwQKVz": {
    "codes": [],
@@ -322,15 +376,35 @@
    "unmapped": true
   },
   "rn_BSYfbfTGRP2n8x6d": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "3.3.1",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:3.3.1",
+     "score": null,
+     "spineCode": "3.3.1",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "3.3.3",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:3.3.3",
+     "score": null,
+     "spineCode": "3.3.3",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_DZMRpFSZhGfNBFTC",
     "spcpt_NRqhnWk3hmTT4msn",
     "spcpt_YHqgnq4J8ZQhWX8R",
     "spcpt_gmCTXWW8JwZ7V58j"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_BkGBkzFNj2yyZJkh": {
    "codes": [],
@@ -343,15 +417,24 @@
   "rn_BvBCkgcxszP8nyPr": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "9.3.2",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:9.3.2",
+     "score": null,
+     "spineCode": "9.3.2",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "9.3.3",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:9.3.3",
      "score": null,
      "spineCode": "9.3.3",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_sGQqfCMc7cshVs2J"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -372,13 +455,23 @@
    "unmapped": true
   },
   "rn_CM7Yp9XdkmSfbkYg": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "3.1.2",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:3.1.2",
+     "score": null,
+     "spineCode": "3.1.2",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_ZPdyK9hqP99FYby4",
     "spcpt_c2SVhCR7X5RKdQNP"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_CPR2qCNmDxWN6JBM": {
    "codes": [],
@@ -393,13 +486,23 @@
    "unmapped": true
   },
   "rn_DVCr28gPNDkdZwXt": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "6.3.1",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:6.3.1",
+     "score": null,
+     "spineCode": "6.3.1",
+     "tier": "V1_name_text_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_XRxxdfFF2j26rSgT",
     "spcpt_xs4HKnwx4nNHW92W"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_Drf87XqbjZHY9sny": {
    "codes": [],
@@ -423,23 +526,43 @@
    "unmapped": true
   },
   "rn_Fqg8Ntk6dDyrSwrY": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "7.7.2",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:7.7.2",
+     "score": null,
+     "spineCode": "7.7.2",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_B8pM49CgMzZY5NDJ",
     "spcpt_JHPGSHYsRssbs5Kv",
     "spcpt_RvG6FpPG9p23MjQZ"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_Fvj3J7TVk7WwNw5D": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "7.5.3",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:7.5.3",
+     "score": null,
+     "spineCode": "7.5.3",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_387NKpFYZgSscxjK",
     "spcpt_kfY7vQgSt4HwTVxz"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_GNWjPVXSQJG383Fj": {
    "codes": [],
@@ -451,14 +574,24 @@
    "unmapped": true
   },
   "rn_GQf4wV6zwzFcMkZg": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "5.4.3",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:5.4.3",
+     "score": null,
+     "spineCode": "5.4.3",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_SkCSSbbrtgGMjcNj",
     "spcpt_fGnF25kVjPKKQnKc",
     "spcpt_ztF9mh947rDKZ9hq"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_H4DCm4BswWwSYZbT": {
    "codes": [],
@@ -471,12 +604,22 @@
    "unmapped": true
   },
   "rn_H8JZGd88XXkMfkbS": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "8.3.10",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:8.3.10",
+     "score": null,
+     "spineCode": "8.3.10",
+     "tier": "V1_name_text_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_FSxqYTPFjs7HD7mF"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_HQxhPvXNfx4pQ25m": {
    "codes": [],
@@ -558,6 +701,16 @@
   "rn_JDpYmBhn4pvsK5dR": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "7.2.4",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:7.2.4",
+     "score": null,
+     "spineCode": "7.2.4",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
      "lineage": "subtopic_title_scope",
      "method": null,
      "officialCode": "7.2.1",
@@ -589,17 +742,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_P7WZRhmq8jSktkFw"
-    },
-    {
-     "lineage": "subtopic_title_scope",
-     "method": null,
-     "officialCode": "7.2.4",
-     "officialId": null,
-     "score": null,
-     "spineCode": "7.2.4",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_P7WZRhmq8jSktkFw"
     }
    ],
    "kind": "note",
@@ -611,14 +753,24 @@
    ]
   },
   "rn_K2MGtCZsM792Wns2": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "9.4.1",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:9.4.1",
+     "score": null,
+     "spineCode": "9.4.1",
+     "tier": "J2_definition_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_47CmK8YKd7xRP9Gm",
     "spcpt_6dKzk3nPX5G4hk6z",
     "spcpt_BPyk2JhDBfgt68vC"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_KC8xh7nT8ZZStyW5": {
    "codes": [],
@@ -634,7 +786,28 @@
    "unmapped": true
   },
   "rn_Mn4sW9vQX2sxHC3k": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "3.2.2",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:3.2.2",
+     "score": null,
+     "spineCode": "3.2.2",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "3.2.3",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:3.2.3",
+     "score": null,
+     "spineCode": "3.2.3",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_4rYpWwky8X7BfQGz",
     "spcpt_G52wQ5JDYwdFzSSF",
@@ -642,28 +815,47 @@
     "spcpt_mmjT6bc7hX9ps3VK",
     "spcpt_stKtMdGNPwMyv3rP"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_MtFBKpDQTdYfKTGM": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "6.1.2",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:6.1.2",
+     "score": null,
+     "spineCode": "6.1.2",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_8vFTn8YGTkK7CyrC",
     "spcpt_KCrJVTvrZ3tkrFMq",
     "spcpt_vj5WGpZr9P2SNnfm"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_Mtz2VNwRCbsT4k44": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "7.7.3",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:7.7.3",
+     "score": null,
+     "spineCode": "7.7.3",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2FM3Y32jbzVygksD",
     "spcpt_9n243RkTcTXRrzgz",
     "spcpt_PBx4pFTJzMjQ53gf"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_MyVPr5ttVkMxS4tG": {
    "codes": [],
@@ -683,14 +875,24 @@
    "unmapped": true
   },
   "rn_Pdfs75yDF7BzNR9x": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "2.4.1",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:2.4.1",
+     "score": null,
+     "spineCode": "2.4.1",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_4XFKd76PzBhctw9w",
     "spcpt_mDRCdVNds8JnZbqZ",
     "spcpt_wZWDCNR3swpXt5W4"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_PjtYT87y37G5pSPP": {
    "codes": [
@@ -749,13 +951,23 @@
    ]
   },
   "rn_Q5G27Ft2jdWCfxC2": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "5.3.2",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:5.3.2",
+     "score": null,
+     "spineCode": "5.3.2",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_PsQTykXYzMw5y7hM",
     "spcpt_dVqcSH2K6n97KbdW"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_QDrqRPMj7fVzYVvf": {
    "codes": [
@@ -769,17 +981,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_3x63NKysNyWPvX8z"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.2.6",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.2.6",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_rDcYx9t2vvtQD6Xp"
     }
    ],
    "declaredUnresolved": [
@@ -819,13 +1020,23 @@
    "unmapped": true
   },
   "rn_RZ9XMrsjmQNmPYpp": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "5.2.3",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:5.2.3",
+     "score": null,
+     "spineCode": "5.2.3",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_TmRvRCqK25YGv5SB",
     "spcpt_XKmj2tM5vVxJDVrK"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_SJ9bp7BV5CbzZ6xd": {
    "codes": [],
@@ -839,15 +1050,14 @@
   "rn_SJZPgQsvJPyFVkBR": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "8.3.1",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:8.3.1",
      "score": null,
      "spineCode": "8.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_fH9q7kTHxzGHRWXD"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -878,15 +1088,14 @@
   "rn_Sk8cWypW8dp2gpFB": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "11.5.7",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:11.5.7",
      "score": null,
      "spineCode": "11.5.7",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_8k3KSxQ4BJzz7DDJ"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -897,12 +1106,22 @@
    "kind": "note"
   },
   "rn_SzD4w69vY5smJGvt": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "11.1.1",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:11.1.1",
+     "score": null,
+     "spineCode": "11.1.1",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_fQXq6wd4hGcbvfF6"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_TGVC9TmBqzx2BNzP": {
    "codes": [],
@@ -927,15 +1146,14 @@
   "rn_VpgpvsQsTJ5pmHkZ": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.5.1",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:6.5.1",
      "score": null,
      "spineCode": "6.5.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_nzFnpByCRfKHqprG"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -998,17 +1216,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_5pDctTptzD5hTYB3"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "2.1.3",
-     "officialId": null,
-     "score": null,
-     "spineCode": "2.1.3",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_Jn8hscYDgpfmZSJB"
     }
    ],
    "declaredUnresolved": [
@@ -1029,7 +1236,18 @@
    "unmapped": true
   },
   "rn_X5jzSyH34pbgHtpP": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "7.5.7",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:7.5.7",
+     "score": null,
+     "spineCode": "7.5.7",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2sJRMMQtmC8rK5VK",
     "spcpt_DYFfHjGN5Cs4FjR9",
@@ -1037,21 +1255,19 @@
     "spcpt_bv8T94gtRrQ26HF6",
     "spcpt_kFFvMnfBgyzTSYFd"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_XPXKfY4GmQKWZZvH": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "8.2.4",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:8.2.4",
      "score": null,
      "spineCode": "8.2.4",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_kykRb5x6FFT52QWq"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -1072,23 +1288,22 @@
   "rn_XsrYRKDf7bcTqJ5q": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "10.2.2",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:10.2.2",
+     "score": null,
+     "spineCode": "10.2.2",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
      "lineage": "subtopic_title_scope",
      "method": null,
      "officialCode": "10.2.1",
      "officialId": null,
      "score": null,
      "spineCode": "10.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_PSShmwGJQnGYjjR4"
-    },
-    {
-     "lineage": "subtopic_title_scope",
-     "method": null,
-     "officialCode": "10.2.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "10.2.2",
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_PSShmwGJQnGYjjR4"
@@ -1181,13 +1396,23 @@
    "unmapped": true
   },
   "rn_ZZKkG5S92xj2nDQ9": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "7.6.1",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:7.6.1",
+     "score": null,
+     "spineCode": "7.6.1",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_jJQ3WYS7TRMvb54f",
     "spcpt_whDzVjzvXmqd6T92"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_ZZvRQgQymXxhgYrj": {
    "codes": [],
@@ -1201,13 +1426,23 @@
    "unmapped": true
   },
   "rn_Zk2yrDg32KbhMcTV": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "9.4.5",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:9.4.5",
+     "score": null,
+     "spineCode": "9.4.5",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_5JgzfvBt5c42sZb7",
     "spcpt_XvdKF72YJnjsMd8Z"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_b8ZkhWKnycS6YXqn": {
    "codes": [],
@@ -1219,15 +1454,25 @@
    "unmapped": true
   },
   "rn_bYx3HJvW44C8D5gr": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "5.1.1",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:5.1.1",
+     "score": null,
+     "spineCode": "5.1.1",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_RVmHJkmR8NCQftzv",
     "spcpt_hrJsqyQbn5HXW6tN",
     "spcpt_xzkn477XQvR2JTj7",
     "spcpt_zWdHm6CsQsRjF6CW"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_bbbR9WMYjHXf6j7M": {
    "codes": [],
@@ -1239,13 +1484,23 @@
    "unmapped": true
   },
   "rn_bwsZNH9jVF9zJnrN": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "7.5.1",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:7.5.1",
+     "score": null,
+     "spineCode": "7.5.1",
+     "tier": "V1_name_text_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_jr8YJWS3pHyPCv76",
     "spcpt_v4JJYSkv3Q322CXn"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_bxfpXKk2xqg6vTTW": {
    "codes": [],
@@ -1260,16 +1515,36 @@
    "unmapped": true
   },
   "rn_cFkdfVSwf7BJhDJ3": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "11.1.3",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:11.1.3",
+     "score": null,
+     "spineCode": "11.1.3",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_5zwJrCQ8B2gPKwwW",
     "spcpt_6szpNTFtjc8CSrZf"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_cPxQx5frNGrwmdQn": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "4.1.2",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:4.1.2",
+     "score": null,
+     "spineCode": "4.1.2",
+     "tier": "V1_name_text_identity",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -1315,15 +1590,14 @@
   "rn_cqFFNVdZrJbbT86S": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "8.3.9",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:8.3.9",
      "score": null,
      "spineCode": "8.3.9",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_bJgGwTntyd6K6Hyz"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "kind": "note"
@@ -1340,15 +1614,24 @@
   "rn_dDbD4qrQm8TxdyxF": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.4.2",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:6.4.2",
      "score": null,
      "spineCode": "6.4.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_9KDMbRdYqMcnRcZc"
+     "tier": "V1_name_text_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "6.4.3",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:6.4.3",
+     "score": null,
+     "spineCode": "6.4.3",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -1372,15 +1655,14 @@
   "rn_dh5kf64VQhxmVpjx": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "4.4.2",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:4.4.2",
      "score": null,
      "spineCode": "4.4.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_32qVtp3YXzQvGtVg"
+     "tier": "V1_name_text_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -1430,15 +1712,24 @@
   "rn_f2Dbx6qd2bM3zVsS": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "1.2.1",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:1.2.1",
      "score": null,
      "spineCode": "1.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_FFrmqDJRbmxs6yXD"
+     "tier": "V1_name_text_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "1.2.2",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:1.2.2",
+     "score": null,
+     "spineCode": "1.2.2",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -1474,6 +1765,26 @@
   },
   "rn_fdx49y2dFzgHH8D5": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "10.1.1",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:10.1.1",
+     "score": null,
+     "spineCode": "10.1.1",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "5.1.1",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:5.1.1",
+     "score": null,
+     "spineCode": "5.1.1",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
     {
      "lineage": "subtopic_title_scope",
      "method": null,
@@ -1546,26 +1857,14 @@
   "rn_gH5m2XN6JF27sJk7": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "3.2.5",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:3.2.5",
      "score": null,
      "spineCode": "3.2.5",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_CJjYWS2JXPbhMRB6"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.2.5",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.2.5",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_zhwyS6qhXJgC2Cfx"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -1577,15 +1876,14 @@
   "rn_gTSQhSgJJfzVsGWP": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "9.3.5",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:9.3.5",
      "score": null,
      "spineCode": "9.3.5",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_s24wJ8K5Czp35KZq"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "kind": "note"
@@ -1634,6 +1932,26 @@
   "rn_jxXn27wDN6CsPTQ7": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "4.6.1",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:4.6.1",
+     "score": null,
+     "spineCode": "4.6.1",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "4.6.4",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:4.6.4",
+     "score": null,
+     "spineCode": "4.6.4",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "4.6.5",
@@ -1675,15 +1993,24 @@
   "rn_kmsvFmZ7h7g2Pxq9": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "9.2.1",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:9.2.1",
+     "score": null,
+     "spineCode": "9.2.1",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "9.2.2",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:9.2.2",
      "score": null,
      "spineCode": "9.2.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_c6NxmDh97TTgNTm2"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -1874,15 +2201,34 @@
   "rn_mkMJcvbghjQ4yj8Z": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "4.5.3",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:4.5.3",
+     "score": null,
+     "spineCode": "4.5.3",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "4.5.4",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:4.5.4",
      "score": null,
      "spineCode": "4.5.4",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_SddXh9hHkm8xGn7G"
+     "tier": "V1_name_text_identity",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -1942,17 +2288,38 @@
    "unmapped": true
   },
   "rn_pwVxdTPS6KC5Khks": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "3.2.2",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:3.2.2",
+     "score": null,
+     "spineCode": "3.2.2",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_4cs65dpfR8prtKGq",
     "spcpt_nKZVXPqVsXd3KXr5",
     "spcpt_rsGRMXNhZyhJB32b"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_q7M65nGDBmCJ7nFs": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "10.3.3",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:10.3.3",
+     "score": null,
+     "spineCode": "10.3.3",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_BbRmqrzdBRx9z4w9",
     "spcpt_VFWQvrshrsKvQFVD",
@@ -1961,8 +2328,7 @@
     "spcpt_v8yq6fKkfKzdbd9N",
     "spcpt_vY69rSv86X5r7hPj"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_qfJ7txNS7VDB3ZD2": {
    "codes": [],
@@ -1976,26 +2342,24 @@
   "rn_qnKTVhFjVNFtftfX": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.4.5",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.4.5",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_hTXQv4hSgxJztyT3"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "4.4.4",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:4.4.4",
      "score": null,
      "spineCode": "4.4.4",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_jtcgXv6jW9qxd6b7"
+     "tier": "V1_name_text_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "4.4.5",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:4.4.5",
+     "score": null,
+     "spineCode": "4.4.5",
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "kind": "note"
@@ -2023,15 +2387,14 @@
   "rn_rQwQSYP4CfmpRyH3": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "1.3.4",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:1.3.4",
      "score": null,
      "spineCode": "1.3.4",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_J64YHq4g9rXJyFkY"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -2104,14 +2467,24 @@
    "unmapped": true
   },
   "rn_vCZsKYsVsDxNjhZm": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "11.6.1",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:11.6.1",
+     "score": null,
+     "spineCode": "11.6.1",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_57zHqfnsyM34XqHQ",
     "spcpt_9rq2S4gJsNCx9nWt",
     "spcpt_qjC8jHPsWmfc5Hb8"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_vHNJJjCJKT7dC6NP": {
    "codes": [],
@@ -2134,14 +2507,24 @@
    "unmapped": true
   },
   "rn_vmHCwrQJHzG9ZJBZ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "11.2.3",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:11.2.3",
+     "score": null,
+     "spineCode": "11.2.3",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_H8XhJcjm3dSxBPxc",
     "spcpt_cSK3SWsd8Wq5CPmM",
     "spcpt_ktvBd7RkFHhw2HW6"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_vpHMXvQqs5QQYMCd": {
    "codes": [],
@@ -2162,12 +2545,22 @@
    "unmapped": true
   },
   "rn_x4WYNQNJkgPbqb2k": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "2.4.3",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:2.4.3",
+     "score": null,
+     "spineCode": "2.4.3",
+     "tier": "V1_name_text_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_bWy37Gq4ffHpFXyM"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_y44kx4Ms9kDMzn5z": {
    "codes": [
@@ -2181,17 +2574,6 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_5v4shDYX257XGSx9"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "11.5.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "11.5.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_KwQTSvpdjXJ5PZ8b"
     }
    ],
    "declaredUnresolved": [
@@ -2215,17 +2597,6 @@
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
-     "officialCode": "7.1.3",
-     "officialId": null,
-     "score": null,
-     "spineCode": "7.1.3",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_9ryvphcrvY2DtzQw"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
      "officialCode": "7.1.2",
      "officialId": null,
      "score": null,
@@ -2233,6 +2604,17 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_yFYgNm3BnNCQfZ2V"
+    },
+    {
+     "lineage": "sme_declared_link_rekey",
+     "method": null,
+     "officialCode": "7.1.3",
+     "officialId": null,
+     "score": null,
+     "spineCode": "7.1.3",
+     "tier": null,
+     "unit": null,
+     "viaSpcpt": "spcpt_9ryvphcrvY2DtzQw"
     }
    ],
    "declaredUnresolved": [
@@ -2241,13 +2623,33 @@
    "kind": "note"
   },
   "rn_yhxTzZbgkx9tWMwJ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "6.3.3",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:6.3.3",
+     "score": null,
+     "spineCode": "6.3.3",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "6.3.4",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:6.3.4",
+     "score": null,
+     "spineCode": "6.3.4",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_gyGx4rpbHFz9zB9P",
     "spcpt_vPRMyZkDcmqDCNxW"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_yqn7wZ6V6f3gJRTp": {
    "codes": [],
@@ -2293,7 +2695,18 @@
    "unmapped": true
   },
   "rn_zPvVNpS2wK7KtJvs": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "11.6.2",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:11.6.2",
+     "score": null,
+     "spineCode": "11.6.2",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3wqZzdzjvRvkWmrj",
     "spcpt_43Vhg9MWsmkQCjtc",
@@ -2302,17 +2715,36 @@
     "spcpt_gnqRzkywHx7sB6nN",
     "spcpt_tMG2kRTxpWZ6VYtK"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_zY9BcjYTwtpg9jKv": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "6.4.4",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:6.4.4",
+     "score": null,
+     "spineCode": "6.4.4",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "6.4.5",
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:6.4.5",
+     "score": null,
+     "spineCode": "6.4.5",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_SHrvZxmxZmHPW99b",
     "spcpt_d4vbvqM9NMR9TdZJ"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_zdBWH46fTNqrYcCK": {
    "codes": [],
@@ -2337,26 +2769,24 @@
   "rn_zv2kmXg65PY2Qf52": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "11.3.1",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:11.3.1",
      "score": null,
      "spineCode": "11.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_CbH76DWt3sXhZ52Y"
+     "tier": "V1_name_text_identity",
+     "unit": null
     },
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "11.3.2",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:11.3.2",
      "score": null,
      "spineCode": "11.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_CbyBZ3hxXZqXrQr9"
+     "tier": "V1_name_text_identity",
+     "unit": null
     }
    ],
    "kind": "note"
@@ -2853,16 +3283,15 @@
  "qual": "cie-a-level-economics-2023-2025",
  "reconciliation": {
   "codesOutsideSpine": [],
-  "distinctCodesAttached": 59,
+  "distinctCodesAttached": 104,
   "itemsOutsideSpine": 0,
-  "spineHitCodes": 59,
+  "spineHitCodes": 104,
   "spineSpecPoints": 253,
   "uncoveredSpineCodeList": [
    "1.1.1",
    "1.1.2",
    "1.1.3",
    "1.1.4",
-   "1.2.2",
    "1.2.3",
    "1.2.4",
    "1.3.1",
@@ -2879,16 +3308,11 @@
    "1.6.2",
    "1.6.3",
    "1.6.4",
-   "10.1.1",
    "10.3.1",
    "10.3.2",
-   "10.3.3",
-   "11.1.1",
    "11.1.2",
-   "11.1.3",
    "11.2.1",
    "11.2.2",
-   "11.2.3",
    "11.2.4",
    "11.2.5",
    "11.3.3",
@@ -2898,11 +3322,7 @@
    "11.4.3",
    "11.5.1",
    "11.5.3",
-   "11.5.4",
-   "11.5.5",
    "11.5.6",
-   "11.6.1",
-   "11.6.2",
    "2.1.1",
    "2.1.2",
    "2.1.5",
@@ -2921,61 +3341,39 @@
    "2.3.3",
    "2.3.4",
    "2.3.5",
-   "2.4.1",
    "2.4.2",
-   "2.4.3",
    "2.4.4",
    "2.5.1",
    "2.5.2",
    "2.5.3",
    "2.5.4",
    "3.1.1",
-   "3.1.2",
    "3.1.3",
    "3.2.1",
-   "3.2.2",
-   "3.2.3",
-   "3.2.4",
-   "3.3.1",
    "3.3.2",
-   "3.3.3",
    "3.3.4",
-   "4.1.2",
    "4.1.3",
    "4.1.4",
    "4.2.1",
-   "4.2.2",
    "4.2.3",
    "4.4.3",
-   "4.5.2",
-   "4.5.3",
-   "5.1.1",
    "5.2.1",
    "5.2.2",
-   "5.2.3",
    "5.2.4",
    "5.2.5",
    "5.2.6",
    "5.2.7",
    "5.3.1",
-   "5.3.2",
    "5.3.3",
    "5.3.4",
    "6.1.1",
-   "6.1.2",
    "6.1.3",
    "6.1.4",
    "6.2.1",
    "6.2.2",
    "6.2.3",
-   "6.3.1",
    "6.3.2",
-   "6.3.3",
-   "6.3.4",
    "6.4.1",
-   "6.4.3",
-   "6.4.4",
-   "6.4.5",
    "6.5.2",
    "7.1.1",
    "7.1.4",
@@ -2983,7 +3381,6 @@
    "7.3.1",
    "7.3.2",
    "7.3.3",
-   "7.3.4",
    "7.3.5",
    "7.3.6",
    "7.4.1",
@@ -2993,24 +3390,18 @@
    "7.4.5",
    "7.4.6",
    "7.4.7",
-   "7.5.1",
    "7.5.10",
    "7.5.2",
-   "7.5.3",
    "7.5.4",
    "7.5.5",
    "7.5.6",
-   "7.5.7",
    "7.5.8",
    "7.5.9",
-   "7.6.1",
    "7.6.2",
    "7.6.3",
    "7.6.4",
    "7.6.5",
    "7.7.1",
-   "7.7.2",
-   "7.7.3",
    "7.7.4",
    "7.7.5",
    "7.8.1",
@@ -3024,7 +3415,6 @@
    "8.2.2",
    "8.2.3",
    "8.2.5",
-   "8.3.10",
    "8.3.2",
    "8.3.3",
    "8.3.4",
@@ -3035,32 +3425,59 @@
    "9.1.1",
    "9.1.2",
    "9.1.3",
-   "9.2.1",
    "9.2.3",
    "9.2.4",
    "9.2.5",
    "9.2.6",
    "9.3.1",
-   "9.3.2",
    "9.3.4",
    "9.3.6",
    "9.3.7",
-   "9.4.1",
    "9.4.2",
    "9.4.3",
    "9.4.4",
-   "9.4.5",
-   "9.4.6",
-   "9.4.8"
+   "9.4.6"
   ],
-  "uncoveredSpineCodes": 194
+  "uncoveredSpineCodes": 149
  },
- "resourcesSha": "0fe5f77210f74aaeb3f6c491dfe0263d12db738c",
+ "resourcesSha": "75981cad0b08c190fb70902eb6cdca1f76b9cd68",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
   "resolution": null,
-  "specLinks": null,
+  "specLinks": {
+   "census": {
+    "codesAttachedFromSidecar": 71,
+    "codesByMethod": {
+     "cie_index_rejoin": 1,
+     "operator_verdict": 78
+    },
+    "codesByTier": {
+     "J2_definition_phrase_identity": 1,
+     "V1_name_text_identity": 26,
+     "V2_name_phrase_identity": 52
+    },
+    "itemsWithCodes": 56,
+    "ladderCodesRetained": 43,
+    "sidecarCodes": 79,
+    "sidecarItems": 159,
+    "sidecarOnlyItems": 0,
+    "t2Hints": 0
+   },
+   "derivation": "ACCEPTED spec-links sidecar (T-SPECS-CIE join/verdict/gate/rejoin chain) merged item-level: operator-verdict authoritative, T1 gate-verified, J* post-gate identity-grade; T2_near carried as non-authoritative items[].t2HintCodes only; REJOIN sheet sid->code rows upgrade/add spcptToOfficial (conflicts kept, disclosed)",
+   "regime": "spec_links_sidecar_accepted",
+   "reviewState": {
+    "rejoin": "ACCEPTED",
+    "state": "ACCEPTED"
+   },
+   "sheetUpgrades": {
+    "added": 1,
+    "conflictsKept": 0,
+    "upgraded": 0
+   },
+   "sidecar": "spec-links/cie-a-level-economics-23.json",
+   "t2Policy": "T2_near is a non-authoritative hint (GATE-1 tier_policy); never in codes/linkage"
+  },
   "specPointMap": {
    "crossLaneResolved": 0,
    "derivation": "deterministic ladder R1-R4 (leaf) + R5 (subtopic scope, notes only) over the upstream spec_point_index incl. cross_lane_join resolutions; every row carries its rule id",
@@ -3072,6 +3489,7 @@
     "R5": 16,
     "r5_amb": 2
    },
+   "sidecarConsumed": true,
    "smeEntries": 507,
    "subtopicScoped": 16,
    "unmapped": 456
@@ -3306,6 +3724,19 @@
    "tier": null,
    "unit": null,
    "via": "R4"
+  },
+  "spcpt_6dKzk3nPX5G4hk6z": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "9.4.1",
+   "officialCodes": [
+    "9.4.1"
+   ],
+   "officialId": "CIE_A_LEVEL_ECONOMICS_2023_2025:9.4.1",
+   "score": null,
+   "tier": "J2_definition_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-1:gate-1"
   },
   "spcpt_8k3KSxQ4BJzz7DDJ": {
    "lineage": "upstream_item_join",

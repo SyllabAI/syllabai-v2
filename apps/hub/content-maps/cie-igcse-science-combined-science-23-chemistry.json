@@ -7,23 +7,29 @@
    "viaSubtopicScope": 0
   },
   "notes": {
-   "coded": 17,
+   "coded": 26,
    "total": 66,
-   "unmapped": 49,
+   "unmapped": 40,
    "viaSubtopicScope": 14
   },
   "questionParts": {
-   "coded": 1,
+   "coded": 10,
    "total": 51,
-   "unmapped": 50,
+   "unmapped": 41,
    "viaSubtopicScope": 0
   }
  },
  "course": "cie-igcse-science-combined-science-23-chemistry",
- "generatedUtc": null,
+ "generatedUtc": "2026-10-20T14:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-igcse-science-combined-science-23-chemistry/spec_point_index.json": {
    "sha256": "f673b0dbe183d7a20b2cc34171714c179e909cf0d129b977dd24b385dbc6fc21"
+  },
+  "scripts/cie_rejoin_resolutions.yaml": {
+   "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
+  },
+  "spec-links/cie-igcse-science-combined-science-23-chemistry.json": {
+   "sha256": "d718bf4a7082b4a19c77e9daf08843088a5fc328516d890cc9639f61205f3641"
   },
   "spine": {
    "file": "spines/cie-igcse-science-combined-science-23-chemistry.json"
@@ -4894,12 +4900,22 @@
    "unmapped": true
   },
   "qstnprt_5HrjgM8VK54hJQ8f": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "C7.2.1",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C7.2.1",
+     "score": null,
+     "spineCode": "C7.2.1",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_tmrhJ5z9CqkXNRSn"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_6PJ5Rp9jw282VhqK": {
    "codes": [],
@@ -4915,16 +4931,35 @@
     "spcpt_XfJMyKV6CYwKKW85"
    ],
    "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_text_join",
+     "officialCode": "C3.4.4",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C3.4.4",
+     "spineCode": "C3.4.4",
+     "tier": "T2_near"
+    }
+   ],
    "unmapped": true
   },
   "qstnprt_8hWV7m2C6mNzz5Bw": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "C3.1.1",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C3.1.1",
+     "score": null,
+     "spineCode": "C3.1.1",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_56GF6btDhMxgMh3m",
     "spcpt_SQ73kHsS4dxX6WDb"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_8m2tz2zypfZXMSDG": {
    "codes": [],
@@ -4943,13 +4978,23 @@
    "unmapped": true
   },
   "qstnprt_BXxr4WPJnFfXCfNn": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "C7.1.1",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C7.1.1",
+     "score": null,
+     "spineCode": "C7.1.1",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_8MbZ3g4Jmr6KwZQ6",
     "spcpt_YhdmdyyKJ6R2cYCs"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_BqYRM38NMJtRQtgF": {
    "codes": [],
@@ -4967,6 +5012,15 @@
     "spcpt_sbNW998wPv8xBzwp"
    ],
    "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_text_join",
+     "officialCode": "C5.1.1",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C5.1.1",
+     "spineCode": "C5.1.1",
+     "tier": "T2_near"
+    }
+   ],
    "unmapped": true
   },
   "qstnprt_H4xjr9b7F7KmskT4": {
@@ -5050,39 +5104,79 @@
    "unmapped": true
   },
   "qstnprt_YhjKXJwBmMphG39f": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "C3.4.1",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C3.4.1",
+     "score": null,
+     "spineCode": "C3.4.1",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_94Jnrp4wTrg8Z9j5",
     "spcpt_FVWXC4rNywfsjCN8"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_ZBz6Jgn6tshnGJZx": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "C8.1.2",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C8.1.2",
+     "score": null,
+     "spineCode": "C8.1.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_25RrSysHYv9VP5z3"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_ZVk8Z5PVcwHRKDxR": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "C7.1.1",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C7.1.1",
+     "score": null,
+     "spineCode": "C7.1.1",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_8MbZ3g4Jmr6KwZQ6",
     "spcpt_YhdmdyyKJ6R2cYCs"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_bzQGk7mHNh3DRFQf": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "C8.1.2",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C8.1.2",
+     "score": null,
+     "spineCode": "C8.1.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_25RrSysHYv9VP5z3",
     "spcpt_tvQYBfT9qnbrKZph"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_cJNzCcCMHwHXWxBD": {
    "codes": [],
@@ -5090,6 +5184,15 @@
     "spcpt_sbNW998wPv8xBzwp"
    ],
    "kind": "question_part",
+   "t2HintCodes": [
+    {
+     "method": "cie_text_join",
+     "officialCode": "C5.1.1",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C5.1.1",
+     "spineCode": "C5.1.1",
+     "tier": "T2_near"
+    }
+   ],
    "unmapped": true
   },
   "qstnprt_cJfCrjwCxvwXZD85": {
@@ -5101,12 +5204,22 @@
    "unmapped": true
   },
   "qstnprt_cQpsd7CGS6nsZbYn": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "C9.4.1",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C9.4.1",
+     "score": null,
+     "spineCode": "C9.4.1",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_tDtpbcY8Nf3ZQX56"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_ddNjZjBXBS5r7Z9w": {
    "codes": [],
@@ -5164,15 +5277,14 @@
   "qstnprt_jTrht8hPr5rVyGBy": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
      "officialCode": "C10.1.4",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C10.1.4",
      "score": null,
      "spineCode": "C10.1.4",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_7VGSZyJwzfCXWVWR"
+     "tier": "T1_verbatim",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -5295,12 +5407,22 @@
    "unmapped": true
   },
   "qstnprt_ycgVHw5YCw8s89NK": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "C3.3.3",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C3.3.3",
+     "score": null,
+     "spineCode": "C3.3.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Qfv9fnKFNhbhb52F"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_zDcNfCS7c75wBYrC": {
    "codes": [],
@@ -5329,6 +5451,26 @@
   "rn_2rdwVjRFN5Jxf48Y": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "C3.3.3",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C3.3.3",
+     "score": null,
+     "spineCode": "C3.3.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "C3.3.5",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C3.3.5",
+     "score": null,
+     "spineCode": "C3.3.5",
+     "tier": "T1_verbatim",
+     "unit": null
+    },
+    {
      "lineage": "subtopic_title_scope",
      "method": null,
      "officialCode": "C3.3.1",
@@ -5353,32 +5495,10 @@
     {
      "lineage": "subtopic_title_scope",
      "method": null,
-     "officialCode": "C3.3.3",
-     "officialId": null,
-     "score": null,
-     "spineCode": "C3.3.3",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_8yBhgnGwpmZbT9CZ"
-    },
-    {
-     "lineage": "subtopic_title_scope",
-     "method": null,
      "officialCode": "C3.3.4",
      "officialId": null,
      "score": null,
      "spineCode": "C3.3.4",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_8yBhgnGwpmZbT9CZ"
-    },
-    {
-     "lineage": "subtopic_title_scope",
-     "method": null,
-     "officialCode": "C3.3.5",
-     "officialId": null,
-     "score": null,
-     "spineCode": "C3.3.5",
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_8yBhgnGwpmZbT9CZ"
@@ -5467,12 +5587,22 @@
    ]
   },
   "rn_94Nk2HcWB3hTPFny": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "C2.1.1",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C2.1.1",
+     "score": null,
+     "spineCode": "C2.1.1",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_BrGBnpw9qgKXQ2fy"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_96SXcrCqPZSCDcpX": {
    "codes": [],
@@ -5483,12 +5613,22 @@
    "unmapped": true
   },
   "rn_9jg3s73gzKdk9JKP": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "C7.1.1",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C7.1.1",
+     "score": null,
+     "spineCode": "C7.1.1",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_YhdmdyyKJ6R2cYCs"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_BJnnxpPrqXR2KW54": {
    "codes": [
@@ -5537,13 +5677,32 @@
    "unmapped": true
   },
   "rn_BwJqVzMJpc5SZ8fP": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "C3.4.3",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C3.4.3",
+     "score": null,
+     "spineCode": "C3.4.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_XfJMyKV6CYwKKW85",
     "spcpt_zprbZ3WzDvmTdWdm"
    ],
    "kind": "note",
-   "unmapped": true
+   "t2HintCodes": [
+    {
+     "method": "cie_text_join",
+     "officialCode": "C3.4.4",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C3.4.4",
+     "spineCode": "C3.4.4",
+     "tier": "T2_near"
+    }
+   ]
   },
   "rn_C2hGtPtHSNx8DyhK": {
    "codes": [
@@ -5631,15 +5790,14 @@
   "rn_DmB8DH4yzRfCVJNq": {
    "codes": [
     {
-     "lineage": "subtopic_title_scope",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "C3.1.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C3.1.1",
      "score": null,
      "spineCode": "C3.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_56GF6btDhMxgMh3m"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "note",
@@ -5674,13 +5832,23 @@
    "unmapped": true
   },
   "rn_GCsZvT4Sm3pdXG6W": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "C10.3.2",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C10.3.2",
+     "score": null,
+     "spineCode": "C10.3.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_d2qx3YtRd5wwg8JJ",
     "spcpt_mdSMmzpPxX7y4H75"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_GQ4PyCgBxKmSsFVC": {
    "codes": [],
@@ -5724,15 +5892,14 @@
   "rn_HV9xW9nmV2SkqnT7": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
      "officialCode": "C2.3.2",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C2.3.2",
      "score": null,
      "spineCode": "C2.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_T8XnMZyQx2jMSyCg"
+     "tier": "T1_verbatim",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -5813,15 +5980,14 @@
   "rn_Qx8t6ftdySytwBQy": {
    "codes": [
     {
-     "lineage": "subtopic_title_scope",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "C12.2.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C12.2.1",
      "score": null,
      "spineCode": "C12.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_8RfvdhCPDR2XxGTK"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "note",
@@ -5853,6 +6019,15 @@
     "spcpt_sbNW998wPv8xBzwp"
    ],
    "kind": "note",
+   "t2HintCodes": [
+    {
+     "method": "cie_text_join",
+     "officialCode": "C5.1.1",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C5.1.1",
+     "spineCode": "C5.1.1",
+     "tier": "T2_near"
+    }
+   ],
    "unmapped": true
   },
   "rn_SJbK6Bbrwqnzr4SJ": {
@@ -5933,12 +6108,32 @@
    ]
   },
   "rn_WC9DtB5BtZvR4jdx": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "C1.1.1",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C1.1.1",
+     "score": null,
+     "spineCode": "C1.1.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "C1.1.2",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C1.1.2",
+     "score": null,
+     "spineCode": "C1.1.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_WHgJskhP8PJbgDbt"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_YzggzrwSD7q6fFZV": {
    "codes": [],
@@ -5993,15 +6188,14 @@
   "rn_ZjchnvYpkNt7Rfwz": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
      "officialCode": "C10.1.4",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C10.1.4",
      "score": null,
      "spineCode": "C10.1.4",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_7VGSZyJwzfCXWVWR"
+     "tier": "T1_verbatim",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -6010,12 +6204,22 @@
    "kind": "note"
   },
   "rn_bqNDc9m7znT86ndQ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "C7.2.1",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C7.2.1",
+     "score": null,
+     "spineCode": "C7.2.1",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_tmrhJ5z9CqkXNRSn"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_cGXBjC5YtnQhWgMW": {
    "codes": [],
@@ -6170,44 +6374,92 @@
    "unmapped": true
   },
   "rn_jB5dK87NJftHsyS4": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "C3.4.1",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C3.4.1",
+     "score": null,
+     "spineCode": "C3.4.1",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Cv54SzSKvnxKKyBQ",
     "spcpt_FVWXC4rNywfsjCN8",
     "spcpt_n4Qb7DYqQc2qGJj3"
    ],
    "kind": "note",
-   "unmapped": true
+   "t2HintCodes": [
+    {
+     "method": "cie_text_join",
+     "officialCode": "C3.4.2",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C3.4.2",
+     "spineCode": "C3.4.2",
+     "tier": "T2_near"
+    }
+   ]
   },
   "rn_jCZc9ZhKMJSNsVCd": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "C11.2.4",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C11.2.4",
+     "score": null,
+     "spineCode": "C11.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_DCVGP2B8XHRfvn7g"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_jwpJqnR83jTw5SPm": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "C8.1.2",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C8.1.2",
+     "score": null,
+     "spineCode": "C8.1.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_25RrSysHYv9VP5z3",
     "spcpt_ZycbmTTS6gsGmKfK"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_k37YxPxzgfjRgXMR": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "C2.2.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C2.2.1",
      "score": null,
      "spineCode": "C2.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_FKHGbMkzqQvCw6v4"
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "C2.3.1",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C2.3.1",
+     "score": null,
+     "spineCode": "C2.3.1",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -6268,15 +6520,14 @@
   "rn_yNtnqgDRG7DTGCz9": {
    "codes": [
     {
-     "lineage": "subtopic_title_scope",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
      "officialCode": "C9.4.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C9.4.1",
      "score": null,
      "spineCode": "C9.4.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_tDtpbcY8Nf3ZQX56"
+     "tier": "J4_name_phrase_identity",
+     "unit": null
     }
    ],
    "kind": "note",
@@ -6395,13 +6646,11 @@
  "qual": "cie-igcse-science-combined-science-2023-2024",
  "reconciliation": {
   "codesOutsideSpine": [],
-  "distinctCodesAttached": 37,
+  "distinctCodesAttached": 46,
   "itemsOutsideSpine": 0,
-  "spineHitCodes": 37,
+  "spineHitCodes": 46,
   "spineSpecPoints": 82,
   "uncoveredSpineCodeList": [
-   "C1.1.1",
-   "C1.1.2",
    "C1.1.3",
    "C1.1.4",
    "C11.1.1",
@@ -6413,12 +6662,8 @@
    "C12.1.2",
    "C12.1.3",
    "C12.1.4",
-   "C2.1.1",
    "C2.2.2",
-   "C2.3.1",
-   "C3.4.1",
    "C3.4.2",
-   "C3.4.3",
    "C3.4.4",
    "C3.5.1",
    "C3.5.2",
@@ -6432,13 +6677,10 @@
    "C6.1.2",
    "C6.1.3",
    "C6.1.4",
-   "C7.1.1",
    "C7.1.2",
    "C7.1.3",
-   "C7.2.1",
    "C7.2.2",
    "C8.1.1",
-   "C8.1.2",
    "C8.1.3",
    "C8.2.1",
    "C8.2.2",
@@ -6446,14 +6688,46 @@
    "C9.3.1",
    "C9.3.2"
   ],
-  "uncoveredSpineCodes": 45
+  "uncoveredSpineCodes": 36
  },
- "resourcesSha": "0fe5f77210f74aaeb3f6c491dfe0263d12db738c",
+ "resourcesSha": "75981cad0b08c190fb70902eb6cdca1f76b9cd68",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
   "resolution": null,
-  "specLinks": null,
+  "specLinks": {
+   "census": {
+    "codesAttachedFromSidecar": 29,
+    "codesByMethod": {
+     "cie_index_rejoin": 23,
+     "cie_text_join": 6
+    },
+    "codesByTier": {
+     "J3_name_text_identity": 1,
+     "J4_name_phrase_identity": 22,
+     "T1_verbatim": 6
+    },
+    "itemsWithCodes": 30,
+    "ladderCodesRetained": 30,
+    "sidecarCodes": 35,
+    "sidecarItems": 117,
+    "sidecarOnlyItems": 0,
+    "t2Hints": 6
+   },
+   "derivation": "ACCEPTED spec-links sidecar (T-SPECS-CIE join/verdict/gate/rejoin chain) merged item-level: operator-verdict authoritative, T1 gate-verified, J* post-gate identity-grade; T2_near carried as non-authoritative items[].t2HintCodes only; REJOIN sheet sid->code rows upgrade/add spcptToOfficial (conflicts kept, disclosed)",
+   "regime": "spec_links_sidecar_accepted",
+   "reviewState": {
+    "rejoin": "ACCEPTED",
+    "state": "ACCEPTED"
+   },
+   "sheetUpgrades": {
+    "added": 13,
+    "conflictsKept": 0,
+    "upgraded": 1
+   },
+   "sidecar": "spec-links/cie-igcse-science-combined-science-23-chemistry.json",
+   "t2Policy": "T2_near is a non-authoritative hint (GATE-1 tier_policy); never in codes/linkage"
+  },
   "specPointMap": {
    "crossLaneResolved": 0,
    "derivation": "deterministic ladder R1-R4 (leaf) + R5 (subtopic scope, notes only) over the upstream spec_point_index incl. cross_lane_join resolutions; every row carries its rule id",
@@ -6465,6 +6739,7 @@
     "R5": 21,
     "r4_amb": 1
    },
+   "sidecarConsumed": true,
    "smeEntries": 97,
    "subtopicScoped": 21,
    "unmapped": 73
@@ -6645,6 +6920,32 @@
   }
  },
  "spcptToOfficial": {
+  "spcpt_25RrSysHYv9VP5z3": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "C8.1.2",
+   "officialCodes": [
+    "C8.1.2"
+   ],
+   "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C8.1.2",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-1:gate-1"
+  },
+  "spcpt_56GF6btDhMxgMh3m": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "C3.1.1",
+   "officialCodes": [
+    "C3.1.1"
+   ],
+   "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C3.1.1",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-1:gate-1"
+  },
   "spcpt_7VGSZyJwzfCXWVWR": {
    "lineage": "upstream_item_join",
    "method": null,
@@ -6658,18 +6959,96 @@
    "unit": null,
    "via": "R4"
   },
+  "spcpt_8RfvdhCPDR2XxGTK": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "C12.2.1",
+   "officialCodes": [
+    "C12.2.1"
+   ],
+   "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C12.2.1",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-1:gate-1"
+  },
+  "spcpt_BrGBnpw9qgKXQ2fy": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "C2.1.1",
+   "officialCodes": [
+    "C2.1.1"
+   ],
+   "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C2.1.1",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-1:gate-1"
+  },
+  "spcpt_DCVGP2B8XHRfvn7g": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "C11.2.4",
+   "officialCodes": [
+    "C11.2.4"
+   ],
+   "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C11.2.4",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-1:gate-1"
+  },
   "spcpt_FKHGbMkzqQvCw6v4": {
-   "lineage": "upstream_item_join",
-   "method": null,
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
    "officialCode": "C2.2.1",
    "officialCodes": [
     "C2.2.1"
    ],
    "officialId": null,
    "score": null,
-   "tier": null,
+   "tier": "J3_name_text_identity",
    "unit": null,
-   "via": "R3"
+   "via": "REJOIN-1:gate-1"
+  },
+  "spcpt_FVWXC4rNywfsjCN8": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "C3.4.1",
+   "officialCodes": [
+    "C3.4.1"
+   ],
+   "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C3.4.1",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-1:gate-1"
+  },
+  "spcpt_MVWqykYw7gj7Pwnb": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "C2.3.1",
+   "officialCodes": [
+    "C2.3.1"
+   ],
+   "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C2.3.1",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-1:gate-1"
+  },
+  "spcpt_Qfv9fnKFNhbhb52F": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "C3.3.3",
+   "officialCodes": [
+    "C3.3.3"
+   ],
+   "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C3.3.3",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-1:gate-1"
   },
   "spcpt_T8XnMZyQx2jMSyCg": {
    "lineage": "upstream_item_join",
@@ -6683,6 +7062,71 @@
    "tier": null,
    "unit": null,
    "via": "R4"
+  },
+  "spcpt_YhdmdyyKJ6R2cYCs": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "C7.1.1",
+   "officialCodes": [
+    "C7.1.1"
+   ],
+   "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C7.1.1",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-1:gate-1"
+  },
+  "spcpt_d2qx3YtRd5wwg8JJ": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "C10.3.2",
+   "officialCodes": [
+    "C10.3.2"
+   ],
+   "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C10.3.2",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-1:gate-1"
+  },
+  "spcpt_tDtpbcY8Nf3ZQX56": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "C9.4.1",
+   "officialCodes": [
+    "C9.4.1"
+   ],
+   "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C9.4.1",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-1:gate-1"
+  },
+  "spcpt_tmrhJ5z9CqkXNRSn": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "C7.2.1",
+   "officialCodes": [
+    "C7.2.1"
+   ],
+   "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C7.2.1",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-1:gate-1"
+  },
+  "spcpt_zprbZ3WzDvmTdWdm": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "C3.4.3",
+   "officialCodes": [
+    "C3.4.3"
+   ],
+   "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C3.4.3",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-1:gate-1"
   }
  },
  "spcptUnmapped": [

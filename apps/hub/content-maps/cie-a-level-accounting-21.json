@@ -7,9 +7,9 @@
    "viaSubtopicScope": 0
   },
   "notes": {
-   "coded": 5,
+   "coded": 86,
    "total": 159,
-   "unmapped": 154,
+   "unmapped": 73,
    "viaSubtopicScope": 1
   },
   "questionParts": {
@@ -20,10 +20,16 @@
   }
  },
  "course": "cie-a-level-accounting-21",
- "generatedUtc": null,
+ "generatedUtc": "2026-10-20T14:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-a-level-accounting-21/spec_point_index.json": {
    "sha256": "d26a91c29a77e80c26e5ef744d3a4ab610c06e32916db90c32089579efdbe805"
+  },
+  "scripts/cie_rejoin_resolutions.yaml": {
+   "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
+  },
+  "spec-links/cie-a-level-accounting-21.json": {
+   "sha256": "a425741d6847a424faafede74bab3ea527b608546d252c05d370c90bc9c2fd8a"
   },
   "spine": {
    "file": "spines/cie-a-level-accounting-21.json"
@@ -39,45 +45,95 @@
    "unmapped": true
   },
   "rn_2Zv5pv5jJywjsGX4": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "3.1.4",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.1.4",
+     "score": null,
+     "spineCode": "3.1.4",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_ckM82Bsqbv89cg9q"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_2qm76sCqmTtFmHNS": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "4.4.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:4.4.1",
+     "score": null,
+     "spineCode": "4.4.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2Y5q584ncnKXc3RZ"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_38NgmwDSJRWc7c6y": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.5.4",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.5.4",
+     "score": null,
+     "spineCode": "1.5.4",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_FS6nmgBkdBDw3fKM",
     "spcpt_ZNN8Yn5mwgbCmdtx"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_3qCxpd8R3Yj8PBp7": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "3.1.3",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.1.3",
+     "score": null,
+     "spineCode": "3.1.3",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_f87fMWCvNyNbfgF5"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_3ytBpDQ2HDfMcDdv": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.4.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.4.2",
+     "score": null,
+     "spineCode": "1.4.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_XRwRNHcWg2wkhj2N"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_4ByGg6DcWtCphYWj": {
    "codes": [],
@@ -88,12 +144,22 @@
    "unmapped": true
   },
   "rn_4rw9DKd77Kzw5ddC": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.3.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.3.2",
+     "score": null,
+     "spineCode": "1.3.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_vPQ4ZRTM7htxnvkD"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_5T5GDXWXjKR29BJ4": {
    "codes": [],
@@ -112,12 +178,32 @@
    "unmapped": true
   },
   "rn_6Dzb7xjh5m8bwmcY": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.3.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.3.2",
+     "score": null,
+     "spineCode": "1.3.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "3.3.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.3.1",
+     "score": null,
+     "spineCode": "3.3.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_TZwyJM57dGcHsPzP"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_6YJjCVPmsRVgKszB": {
    "codes": [],
@@ -137,32 +223,62 @@
    "unmapped": true
   },
   "rn_7hsthkhZBYXDTy7z": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "3.1.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.1.2",
+     "score": null,
+     "spineCode": "3.1.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_QfS7Xc9Jc3BNdfkB"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_7nM3zzvTdQFnV7DK": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "3.1.4",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.1.4",
+     "score": null,
+     "spineCode": "3.1.4",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_TDTX8DBMthWqXDtV",
     "spcpt_sKCQYyntTSXsHS9Q"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_7qYYS8hH32cTydXY": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.6.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.6.2",
+     "score": null,
+     "spineCode": "1.6.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_JK5dhgVN3Rx96ZTB",
     "spcpt_j9G3qvQbvRFgpwW6",
     "spcpt_rj79tYGhWr8ZhbXD",
     "spcpt_xb9dvCZrPNZqpNXr"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_87X4s4KwZ7dRz3C4": {
    "codes": [],
@@ -183,12 +299,22 @@
    "unmapped": true
   },
   "rn_8pPdyq6Yr4Bhcn39": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "3.1.3",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.1.3",
+     "score": null,
+     "spineCode": "3.1.3",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_VZfMnskZb9GbNxpC"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_9GVmTKGZhHFj4NTg": {
    "codes": [],
@@ -209,12 +335,22 @@
    "unmapped": true
   },
   "rn_BpTXF8gBHZ22XkJz": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.5.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.5.1",
+     "score": null,
+     "spineCode": "1.5.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_6QD2sxW2r6kNWgzS"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_CT2kWPbbkfCC8wxz": {
    "codes": [],
@@ -225,20 +361,40 @@
    "unmapped": true
   },
   "rn_Cf2PjqXgznnbNZxc": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "4.4.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:4.4.1",
+     "score": null,
+     "spineCode": "4.4.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_HRhHHQbbtfnHbXJ5"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_CjD6p4T8Rgsns4Bt": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.5.3",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.5.3",
+     "score": null,
+     "spineCode": "1.5.3",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_QdrtPgV8Kg5jD8TS"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_CyHBg7qMrMsRgBG7": {
    "codes": [],
@@ -249,61 +405,131 @@
    "unmapped": true
   },
   "rn_DpR9dP6hXgQbt62Q": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.2.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.2.1",
+     "score": null,
+     "spineCode": "1.2.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_fRpgQD4yChknQx4s"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_F8CHQ6ZS3nh3PYK6": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "3.2.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.2.2",
+     "score": null,
+     "spineCode": "3.2.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_DxX9QBDzyPJrshx5"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_FQhYyDwpJptzw6Ss": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "3.5.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.5.1",
+     "score": null,
+     "spineCode": "3.5.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_vnGHXsby6xchWMhs"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_FXnWmYJGHnvj6JzG": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "3.1.3",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.1.3",
+     "score": null,
+     "spineCode": "3.1.3",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_FyFqxtnNGGCqht4x"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_FqKmczxHSv2kVw9g": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "2.2.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:2.2.2",
+     "score": null,
+     "spineCode": "2.2.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_CxpJxYTzd7dPbzYf"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_FqdtFmvmCN9gxrft": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "3.2.3",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.2.3",
+     "score": null,
+     "spineCode": "3.2.3",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2bWBVjfZ3WJdRSYy",
     "spcpt_6GtYY8TtgSrHWNnq"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_Ft3XxvSFrNKpXpdG": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "3.3.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.3.1",
+     "score": null,
+     "spineCode": "3.3.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_tWtngVjfxxfdWwkC"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_GGrQ75CNsHVqZ2kJ": {
    "codes": [],
@@ -314,12 +540,22 @@
    "unmapped": true
   },
   "rn_GcwkVWfFrtNt7tpZ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.5.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.5.1",
+     "score": null,
+     "spineCode": "1.5.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_FRJdKG8NszSSTX8p"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_GhsRKTX6qxscDFSs": {
    "codes": [],
@@ -331,21 +567,41 @@
    "unmapped": true
   },
   "rn_GpFSz5RJJXxZBYR4": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "3.3.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.3.1",
+     "score": null,
+     "spineCode": "3.3.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Kbm3dcnznXgm8v5d"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_Gsf8fxFmpKbYmSMJ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.6.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.6.2",
+     "score": null,
+     "spineCode": "1.6.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_MMn7R7SnD9M6mRVh",
     "spcpt_SzTC3t5Wzhf6RkMD"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_GtfQHdpvr7qb98Tz": {
    "codes": [],
@@ -356,20 +612,60 @@
    "unmapped": true
   },
   "rn_HmC4By4KkJZKwhCN": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.6.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.6.1",
+     "score": null,
+     "spineCode": "1.6.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_D45r4PPr3ZtWvRMK"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_JB2TnQZnmxjd3yYz": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "T1_verbatim",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "4.2.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:4.2.1",
+     "score": null,
+     "spineCode": "4.2.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "4.3.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:4.3.1",
+     "score": null,
+     "spineCode": "4.3.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_cTJVhMFHzVbwg28w"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_JF965v3tXSPhzY79": {
    "codes": [],
@@ -397,20 +693,40 @@
    "unmapped": true
   },
   "rn_JqW2sY34rW8CWYYK": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "3.1.3",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.1.3",
+     "score": null,
+     "spineCode": "3.1.3",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_HbqHC7CSqrgNyWjJ"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_KQJwMDjRBdXyBN83": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "2.1.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:2.1.1",
+     "score": null,
+     "spineCode": "2.1.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_s4BZHRdqKZwR7Mky"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_KdmHfxMdqbnMvvN5": {
    "codes": [],
@@ -421,12 +737,22 @@
    "unmapped": true
   },
   "rn_KynwvCV9kpbZ82Hv": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.1.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.1.1",
+     "score": null,
+     "spineCode": "1.1.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_wh2frjNWrbZy2ddy"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_MDC7RPJ5MMDbbp9C": {
    "codes": [],
@@ -438,21 +764,41 @@
    "unmapped": true
   },
   "rn_MTj79WXgB7WvjswM": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.3.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.3.2",
+     "score": null,
+     "spineCode": "1.3.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_ptsjkH67JMfvmfzF"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_MwvSp46GmZF7rzJY": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "3.1.3",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.1.3",
+     "score": null,
+     "spineCode": "3.1.3",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_85CYYpf44hV9mGDw",
     "spcpt_dYDKCPtW5bNQp2vr"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_My8kZbrYwbtBgF6s": {
    "codes": [],
@@ -481,13 +827,23 @@
    "unmapped": true
   },
   "rn_Nz2d4BqnNXKZGwvK": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.3.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.3.1",
+     "score": null,
+     "spineCode": "1.3.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_FMCWGpRSbh3x3pQD",
     "spcpt_gTKKsxSDjgXSmcRj"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_PCpNYTvys9VHQWwK": {
    "codes": [],
@@ -498,7 +854,18 @@
    "unmapped": true
   },
   "rn_PMjsbHkhhr4Tghrc": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.6.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.6.2",
+     "score": null,
+     "spineCode": "1.6.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_HvKrwMYcyKHnRb7K",
     "spcpt_bQ68dnQ4xqPTXyHY",
@@ -506,8 +873,7 @@
     "spcpt_hbZtW4r2HwjJgZ9V",
     "spcpt_yh62RHbkzPXd72wG"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_PppTx9fpx7zKHgFG": {
    "codes": [],
@@ -519,13 +885,23 @@
    "unmapped": true
   },
   "rn_Q2Q4YnxsbtnRKXvy": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "2.1.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:2.1.1",
+     "score": null,
+     "spineCode": "2.1.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_FGX8GpmbP84NyCRp",
     "spcpt_pwpZfdjgbHRXxpPy"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_Q5mkzcWSfPPc3Bfm": {
    "codes": [],
@@ -552,16 +928,37 @@
    "unmapped": true
   },
   "rn_QtSYzJBrCHVtrqHt": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "4.3.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:4.3.1",
+     "score": null,
+     "spineCode": "4.3.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_554yBjSHsMSYGBhX",
     "spcpt_Z7DDR5xFhpM6rbtn"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_RHdqW9jmQjPy94Z6": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.4.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.4.2",
+     "score": null,
+     "spineCode": "1.4.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Nvhk7JXv6nQnDntC",
     "spcpt_QpXWqXTPXCjDCcqD",
@@ -570,8 +967,7 @@
     "spcpt_Xn9zSPskjj8GczT6",
     "spcpt_dfc63t4RcnhGMPJB"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_RTXrVrbgsW3Y8zYz": {
    "codes": [],
@@ -583,20 +979,50 @@
    "unmapped": true
   },
   "rn_Rmg7wwzdQZMPT6FV": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.4.4",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.4.4",
+     "score": null,
+     "spineCode": "1.4.4",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_MTx5m8XNYKHb8J7c"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_Rr8Wx5C7RmKmwN89": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.3.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.3.2",
+     "score": null,
+     "spineCode": "1.3.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "3.3.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.3.1",
+     "score": null,
+     "spineCode": "3.3.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_JrJQCR7fx3t3gCcD"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_Rv5rVFkQqMBJfrJd": {
    "codes": [],
@@ -609,13 +1035,23 @@
    "unmapped": true
   },
   "rn_RzHYxWgMg3shBPdh": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "3.1.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.1.1",
+     "score": null,
+     "spineCode": "3.1.1",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_M7XmDFyDsCQ7dd57",
     "spcpt_jgFzgHYbFt7qxVg9"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_RzdB79gZYmVrcnJF": {
    "codes": [],
@@ -626,31 +1062,81 @@
    "unmapped": true
   },
   "rn_S4vssx2jZNkqcGky": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.4.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.4.1",
+     "score": null,
+     "spineCode": "1.4.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.4.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.4.2",
+     "score": null,
+     "spineCode": "1.4.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.4.3",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.4.3",
+     "score": null,
+     "spineCode": "1.4.3",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_TV7G7ZcF5WmP3nQ5",
     "spcpt_nq9RMKvYvfhV7xGN"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_SbGVzXTkVwwVY5NJ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin",
+     "officialCode": "3.1.4",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.1.4",
+     "score": null,
+     "spineCode": "3.1.4",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_FbgdWMy4Kxxfgfxj",
     "spcpt_TkxXHvNW7TWWBHBd",
     "spcpt_YvW5ngFsx4nNBszy"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_T2d6yzgXGyHQSk7p": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "3.3.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.3.1",
+     "score": null,
+     "spineCode": "3.3.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_kW8mz53BdnGKgY28"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_TBD2d5tfQYfvd24Y": {
    "codes": [],
@@ -665,13 +1151,23 @@
    "unmapped": true
   },
   "rn_TDmXzbVyMjdCZGsw": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "2.2.3",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:2.2.3",
+     "score": null,
+     "spineCode": "2.2.3",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_MDdJ65q7q84xnbF8",
     "spcpt_N8ptD5gtGYddDW2S"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_TRKTDTDw8FqrcsGj": {
    "codes": [],
@@ -682,7 +1178,18 @@
    "unmapped": true
   },
   "rn_TT7jdNgM8VYpdgDF": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.6.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.6.2",
+     "score": null,
+     "spineCode": "1.6.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_NNXYvNb7dbzc9znQ",
     "spcpt_q6NRTvDV8W3m7jBw",
@@ -690,27 +1197,46 @@
     "spcpt_tB5X6GrjNxmBz6s5",
     "spcpt_xVgFSp28yDYSnqD4"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_TVsd6N6BMhWWzSy9": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "2.2.3",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:2.2.3",
+     "score": null,
+     "spineCode": "2.2.3",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_MYp5ZDVTCKrRRZnW",
     "spcpt_kdz6fchghWVQr3FB",
     "spcpt_mQdHw2DVQmHR2cZm"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_TsRwj7kTK4dCjX4b": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "3.1.3",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.1.3",
+     "score": null,
+     "spineCode": "3.1.3",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_DJcYJR9YyzVS7cVj",
     "spcpt_xKHwpBSWfcvVgps7"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_TybBGwwRm3tjHngr": {
    "codes": [],
@@ -721,12 +1247,32 @@
    "unmapped": true
   },
   "rn_Vkz4vj3BPB8JwPs7": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "2.2.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:2.2.2",
+     "score": null,
+     "spineCode": "2.2.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "2.2.3",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:2.2.3",
+     "score": null,
+     "spineCode": "2.2.3",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_b6JBSYmqFBB83ZNm"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_W7FvN2qSm2KWVJ9c": {
    "codes": [],
@@ -745,12 +1291,32 @@
    "unmapped": true
   },
   "rn_WVFDYcGR98kP8fKP": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.5.3",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.5.3",
+     "score": null,
+     "spineCode": "1.5.3",
+     "tier": "T1_verbatim",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "3.1.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.1.2",
+     "score": null,
+     "spineCode": "3.1.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_DxHbPR9Pg5yjpD2n"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_XDjgMxPspsS6xVh6": {
    "codes": [],
@@ -786,44 +1352,94 @@
    "kind": "note"
   },
   "rn_YHyj6pPn3VYnZDgD": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "4.4.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:4.4.1",
+     "score": null,
+     "spineCode": "4.4.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_PcFc9YXbDYhm6d7d"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_YJK3nVTbSZyB8MSY": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.5.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.5.1",
+     "score": null,
+     "spineCode": "1.5.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_gJhH9SSH3y8zfWjd"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_YRHtnhKVX2bzYwqx": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "4.4.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:4.4.1",
+     "score": null,
+     "spineCode": "4.4.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_4J8dcZ47Pbyh8YH5"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_YjDpJYwz6BW4rwhW": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.3.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.3.2",
+     "score": null,
+     "spineCode": "1.3.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_kZncXqFVkwspDW82"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_Z58GqJF69xtvV7Dm": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "2.2.3",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:2.2.3",
+     "score": null,
+     "spineCode": "2.2.3",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_VkNSqKMq76X73PQh"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_ZMVJG4CmJtSTBmcD": {
    "codes": [],
@@ -834,20 +1450,40 @@
    "unmapped": true
   },
   "rn_ZMcBCQfJND3fzfqs": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "2.2.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:2.2.2",
+     "score": null,
+     "spineCode": "2.2.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_nfyrzBZnsdR56tFb"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_ZVbFdJHdThxFXzhY": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.3.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.3.2",
+     "score": null,
+     "spineCode": "1.3.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_mR2jdSXvxvSxTT5x"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_Zf4h26VRd5gRHCNP": {
    "codes": [],
@@ -896,13 +1532,23 @@
    "unmapped": true
   },
   "rn_cCjm3ddZsKZf7tyq": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.5.4",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.5.4",
+     "score": null,
+     "spineCode": "1.5.4",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_7jzfqjsjch87hSqg",
     "spcpt_GTKK2hTbfNZqTXK9"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_cwf2WQcHC6Zs66wF": {
    "codes": [],
@@ -913,20 +1559,50 @@
    "unmapped": true
   },
   "rn_cy5JQvc6q8nnnTdh": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "4.1.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:4.1.1",
+     "score": null,
+     "spineCode": "4.1.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_t2qDs8fYmkRX7Fc2"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_dP4RGC2MyTmQSgM5": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "2.2.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:2.2.2",
+     "score": null,
+     "spineCode": "2.2.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "2.2.3",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:2.2.3",
+     "score": null,
+     "spineCode": "2.2.3",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_WMsNX3rKNn2M8dT2"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_dskG5xjPxD3hSqF6": {
    "codes": [],
@@ -945,21 +1621,41 @@
    "unmapped": true
   },
   "rn_g27FtbTNthXkPDTk": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.5.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.5.1",
+     "score": null,
+     "spineCode": "1.5.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qDgZ6rXP9Nts9jGX"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_gbQtMz7SYDQfkSHY": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.2.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.2.1",
+     "score": null,
+     "spineCode": "1.2.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2mwdybdPxKGqK68k",
     "spcpt_CDQBWX2rX5p9mcrR"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_gpyZwKn7ShH6cSdN": {
    "codes": [],
@@ -991,12 +1687,22 @@
    "unmapped": true
   },
   "rn_hfb9CqpWXbt5Fcx6": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.5.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.5.1",
+     "score": null,
+     "spineCode": "1.5.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_q3KvsJnqbvNfWtfG"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_jKzWwz9SwG6WSJyt": {
    "codes": [],
@@ -1013,6 +1719,16 @@
   },
   "rn_kD5htgbThQgfrbSM": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.2.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.2.1",
+     "score": null,
+     "spineCode": "1.2.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    },
     {
      "lineage": "subtopic_title_scope",
      "method": null,
@@ -1032,25 +1748,34 @@
    ]
   },
   "rn_kPQRDDMmyQcRGBYh": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "4.4.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:4.4.1",
+     "score": null,
+     "spineCode": "4.4.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2vhyWzvyWHCSVmVx"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_kk6HpqpS6qcd7qS8": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
      "officialCode": "3.2.1",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.2.1",
      "score": null,
      "spineCode": "3.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_zgNTkNXbC2RFrgM4"
+     "tier": "T1_verbatim",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -1067,12 +1792,22 @@
    "kind": "note"
   },
   "rn_kkrMYQKBHmN36CCY": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "4.2.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:4.2.1",
+     "score": null,
+     "spineCode": "4.2.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_ny6kXv45Fh7SCZYG"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_kmR3rtSxDswkc7Tg": {
    "codes": [],
@@ -1080,12 +1815,22 @@
    "unmapped": true
   },
   "rn_krhTrMm2fTQKRf3n": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "3.4.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.4.1",
+     "score": null,
+     "spineCode": "3.4.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_XJf7kW4rfdXGdQp4"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_mFWcqMRbQD7BD3R7": {
    "codes": [],
@@ -1093,39 +1838,79 @@
    "unmapped": true
   },
   "rn_mYwBxqjRtNKQWF8Y": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.3.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.3.1",
+     "score": null,
+     "spineCode": "1.3.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_B6gKVbgvKwYsDY4X"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_mvzKcfCtz4BH39wf": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.1.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.1.1",
+     "score": null,
+     "spineCode": "1.1.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Qz669hjfv3kjphxQ",
     "spcpt_VMYMjj3fVBh3qRMY",
     "spcpt_pbKKSWcgqWgYjjSX",
     "spcpt_wPX4fHJmc97tN9GT"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_nFK7p2VbkKPJJTFn": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "4.4.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:4.4.1",
+     "score": null,
+     "spineCode": "4.4.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_DqQKBGgf5khrKmBf"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_nGkt2xjFj5TzhpyF": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.4.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.4.2",
+     "score": null,
+     "spineCode": "1.4.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_BtWdKc5kZHR69n99"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_nWNNtPzMQzrM5X3M": {
    "codes": [],
@@ -1155,13 +1940,23 @@
    "unmapped": true
   },
   "rn_nt2qmmv9SvdpzsG9": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.4.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.4.2",
+     "score": null,
+     "spineCode": "1.4.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_rC48txS2TvzYRW3c",
     "spcpt_ytMmqCjbk26Vvj5D"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_pFNxkNCj9GXDz9CC": {
    "codes": [],
@@ -1172,36 +1967,76 @@
    "unmapped": true
   },
   "rn_pqcnV83grgs3rMMH": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "4.3.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:4.3.1",
+     "score": null,
+     "spineCode": "4.3.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_sKSWDYsMBZXkmmHx"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_pzRbQ3VdKmSZhvpc": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "2.2.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:2.2.2",
+     "score": null,
+     "spineCode": "2.2.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Czxp96XVmm3cVD3s"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_qJvTVktz7vzVTTTC": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.3.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.3.2",
+     "score": null,
+     "spineCode": "1.3.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_v4gC64kBzYPFmtZn"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_qgtHCnMRB3ZgD8fq": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "4.2.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:4.2.1",
+     "score": null,
+     "spineCode": "4.2.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_fH4Z38STf4pPt9DK"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_qrV6CR33VzZY6gq9": {
    "codes": [
@@ -1232,21 +2067,41 @@
    "unmapped": true
   },
   "rn_qzwJsn6ZFMz9kq9D": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "3.1.3",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.1.3",
+     "score": null,
+     "spineCode": "3.1.3",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_GhKyhtdTg8H8J9DN"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_r53mb2DBfdk6x5x3": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.2.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.2.1",
+     "score": null,
+     "spineCode": "1.2.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_B2D4f2BcGT6pTHjC",
     "spcpt_XpKK94dSD3mMmKNR"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_rPygg3ffD7fNqkVW": {
    "codes": [],
@@ -1261,12 +2116,22 @@
    "unmapped": true
   },
   "rn_rvFySdydbPSB8Zg7": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.3.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.3.2",
+     "score": null,
+     "spineCode": "1.3.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_cbdTnBfshxMVtKYm"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_s5RxyRcgQKhdHj9n": {
    "codes": [],
@@ -1306,13 +2171,23 @@
    "unmapped": true
   },
   "rn_tGDQKjNwTpSxC4sb": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "2.2.2",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:2.2.2",
+     "score": null,
+     "spineCode": "2.2.2",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_9Wv8j3sqKHtFPvjR",
     "spcpt_Sw8VqF3cVkrtQQNd"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_tp5D5wSS8wstHqgw": {
    "codes": [],
@@ -1331,13 +2206,23 @@
    "unmapped": true
   },
   "rn_vTtXDg4m6t9kZ3Zq": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "2.2.3",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:2.2.3",
+     "score": null,
+     "spineCode": "2.2.3",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_FmmVhs8WHtRK379Y",
     "spcpt_kXnQCWhH7rqtrDyp"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_vxnD3cC3YVKfcCH7": {
    "codes": [],
@@ -1373,25 +2258,34 @@
    "unmapped": true
   },
   "rn_y5dNJnzspzXNjcFc": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.3.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.3.1",
+     "score": null,
+     "spineCode": "1.3.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3Xh6h2Z3p8ShnH3r"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_yNg6dYJ3RXwpv6f6": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
      "officialCode": "2.2.4",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:2.2.4",
      "score": null,
      "spineCode": "2.2.4",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_3Yd7nynPSm9ZZGqk"
+     "tier": "T1_verbatim",
+     "unit": null
     }
    ],
    "kind": "note"
@@ -1414,20 +2308,40 @@
    "unmapped": true
   },
   "rn_ypPwHpj2T3ct88Sm": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.5.4",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.5.4",
+     "score": null,
+     "spineCode": "1.5.4",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Y7s2S539cxNsmwtC"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_ysPJpCw5FCYrkV85": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_text_join",
+     "officialCode": "1.5.1",
+     "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:1.5.1",
+     "score": null,
+     "spineCode": "1.5.1",
+     "tier": "T1_verbatim",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_YJ2G9cZV4Trnc8ST"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   }
  },
  "notesInlineRefs": {
@@ -1681,50 +2595,53 @@
  "qual": "cie-a-level-accounting-2023-2025",
  "reconciliation": {
   "codesOutsideSpine": [],
-  "distinctCodesAttached": 4,
+  "distinctCodesAttached": 32,
   "itemsOutsideSpine": 0,
-  "spineHitCodes": 4,
+  "spineHitCodes": 32,
   "spineSpecPoints": 34,
   "uncoveredSpineCodeList": [
-   "1.1.1",
-   "1.2.1",
-   "1.3.1",
-   "1.3.2",
-   "1.4.1",
-   "1.4.2",
-   "1.4.3",
-   "1.4.4",
-   "1.5.1",
-   "1.5.3",
-   "1.5.4",
-   "1.6.1",
-   "1.6.2",
-   "2.1.1",
    "2.2.1",
-   "2.2.2",
-   "2.2.3",
-   "3.1.1",
-   "3.1.2",
-   "3.1.3",
-   "3.1.4",
-   "3.1.5",
-   "3.2.2",
-   "3.2.3",
-   "3.3.1",
-   "3.5.1",
-   "4.1.1",
-   "4.2.1",
-   "4.3.1",
-   "4.4.1"
+   "3.1.5"
   ],
-  "uncoveredSpineCodes": 30
+  "uncoveredSpineCodes": 2
  },
- "resourcesSha": "0fe5f77210f74aaeb3f6c491dfe0263d12db738c",
+ "resourcesSha": "75981cad0b08c190fb70902eb6cdca1f76b9cd68",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
   "resolution": null,
-  "specLinks": null,
+  "specLinks": {
+   "census": {
+    "codesAttachedFromSidecar": 93,
+    "codesByMethod": {
+     "cie_index_rejoin": 2,
+     "cie_text_join": 91
+    },
+    "codesByTier": {
+     "J3_name_text_identity": 2,
+     "T1_verbatim": 91
+    },
+    "itemsWithCodes": 84,
+    "ladderCodesRetained": 3,
+    "sidecarCodes": 93,
+    "sidecarItems": 155,
+    "sidecarOnlyItems": 0,
+    "t2Hints": 0
+   },
+   "derivation": "ACCEPTED spec-links sidecar (T-SPECS-CIE join/verdict/gate/rejoin chain) merged item-level: operator-verdict authoritative, T1 gate-verified, J* post-gate identity-grade; T2_near carried as non-authoritative items[].t2HintCodes only; REJOIN sheet sid->code rows upgrade/add spcptToOfficial (conflicts kept, disclosed)",
+   "regime": "spec_links_sidecar_accepted",
+   "reviewState": {
+    "rejoin": "ACCEPTED",
+    "state": "ACCEPTED"
+   },
+   "sheetUpgrades": {
+    "added": 2,
+    "conflictsKept": 0,
+    "upgraded": 0
+   },
+   "sidecar": "spec-links/cie-a-level-accounting-21.json",
+   "t2Policy": "T2_near is a non-authoritative hint (GATE-1 tier_policy); never in codes/linkage"
+  },
   "specPointMap": {
    "crossLaneResolved": 0,
    "derivation": "deterministic ladder R1-R4 (leaf) + R5 (subtopic scope, notes only) over the upstream spec_point_index incl. cross_lane_join resolutions; every row carries its rule id",
@@ -1734,6 +2651,7 @@
     "R4": 4,
     "R5": 2
    },
+   "sidecarConsumed": true,
    "smeEntries": 247,
    "subtopicScoped": 2,
    "unmapped": 241
@@ -1780,6 +2698,19 @@
    "unit": null,
    "via": "R4"
   },
+  "spcpt_TkxXHvNW7TWWBHBd": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "3.1.4",
+   "officialCodes": [
+    "3.1.4"
+   ],
+   "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.1.4",
+   "score": null,
+   "tier": "J3_name_text_identity",
+   "unit": null,
+   "via": "REJOIN-1:gate-1"
+  },
   "spcpt_Z9vV4zXCXzZpB7YC": {
    "lineage": "upstream_item_join",
    "method": null,
@@ -1792,6 +2723,19 @@
    "tier": null,
    "unit": null,
    "via": "R4"
+  },
+  "spcpt_jgFzgHYbFt7qxVg9": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "3.1.1",
+   "officialCodes": [
+    "3.1.1"
+   ],
+   "officialId": "CIE_A_LEVEL_ACCOUNTING_2023_2025:3.1.1",
+   "score": null,
+   "tier": "J3_name_text_identity",
+   "unit": null,
+   "via": "REJOIN-1:gate-1"
   },
   "spcpt_zgNTkNXbC2RFrgM4": {
    "lineage": "upstream_item_join",

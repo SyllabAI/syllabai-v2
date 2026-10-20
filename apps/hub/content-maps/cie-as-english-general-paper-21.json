@@ -7,9 +7,9 @@
    "viaSubtopicScope": 0
   },
   "notes": {
-   "coded": 0,
+   "coded": 1,
    "total": 22,
-   "unmapped": 22,
+   "unmapped": 21,
    "viaSubtopicScope": 0
   },
   "questionParts": {
@@ -20,10 +20,13 @@
   }
  },
  "course": "cie-as-english-general-paper-21",
- "generatedUtc": null,
+ "generatedUtc": "2026-10-20T14:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-as-english-general-paper-21/spec_point_index.json": {
    "sha256": "744d2eee0e405ad9ba200bcff99ed49978150cf81dc5666472acd948cc123997"
+  },
+  "spec-links/cie-as-english-general-paper-21.json": {
+   "sha256": "bdca2eab42648f263103f46916ac9ebb1f69b88764cf3cf6fb60e7c460e061fd"
   },
   "spine": {
    "file": "spines/cie-as-english-general-paper-21.json"
@@ -31,14 +34,24 @@
  },
  "items": {
   "rn_2RmfNHHTpQ5fGZV8": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "S1.058",
+     "officialId": "CIE_AS_ENGLISH_GENERAL_PAPER_2028_2030:S1.058",
+     "score": null,
+     "spineCode": "S1.058",
+     "tier": "V2_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_PhpMq3ZdVWSzFdry",
     "spcpt_Qrsdxv39VrT5wdS9",
     "spcpt_cJgTPbJCXvyYhjKB"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_2tJykx2kb7rYs6np": {
    "codes": [],
@@ -353,9 +366,9 @@
  "qual": "cie-as-english-general-paper-2028-2030",
  "reconciliation": {
   "codesOutsideSpine": [],
-  "distinctCodesAttached": 0,
+  "distinctCodesAttached": 1,
   "itemsOutsideSpine": 0,
-  "spineHitCodes": 0,
+  "spineHitCodes": 1,
   "spineSpecPoints": 73,
   "uncoveredSpineCodeList": [
    "S1.001",
@@ -415,7 +428,6 @@
    "S1.055",
    "S1.056",
    "S1.057",
-   "S1.058",
    "S1.059",
    "S1.060",
    "S1.061",
@@ -432,20 +444,46 @@
    "S1.072",
    "S1.073"
   ],
-  "uncoveredSpineCodes": 73
+  "uncoveredSpineCodes": 72
  },
- "resourcesSha": "0fe5f77210f74aaeb3f6c491dfe0263d12db738c",
+ "resourcesSha": "75981cad0b08c190fb70902eb6cdca1f76b9cd68",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
   "resolution": null,
-  "specLinks": null,
+  "specLinks": {
+   "census": {
+    "codesAttachedFromSidecar": 1,
+    "codesByMethod": {
+     "operator_verdict": 1
+    },
+    "codesByTier": {
+     "V2_name_phrase_identity": 1
+    },
+    "itemsWithCodes": 1,
+    "ladderCodesRetained": 0,
+    "sidecarCodes": 1,
+    "sidecarItems": 22,
+    "sidecarOnlyItems": 0,
+    "t2Hints": 0
+   },
+   "derivation": "ACCEPTED spec-links sidecar (T-SPECS-CIE join/verdict/gate/rejoin chain) merged item-level: operator-verdict authoritative, T1 gate-verified, J* post-gate identity-grade; T2_near carried as non-authoritative items[].t2HintCodes only; REJOIN sheet sid->code rows upgrade/add spcptToOfficial (conflicts kept, disclosed)",
+   "regime": "spec_links_sidecar_accepted",
+   "reviewState": {
+    "rejoin": null,
+    "state": "ACCEPTED"
+   },
+   "sheetUpgrades": null,
+   "sidecar": "spec-links/cie-as-english-general-paper-21.json",
+   "t2Policy": "T2_near is a non-authoritative hint (GATE-1 tier_policy); never in codes/linkage"
+  },
   "specPointMap": {
    "crossLaneResolved": 0,
    "derivation": "deterministic ladder R1-R4 (leaf) + R5 (subtopic scope, notes only) over the upstream spec_point_index incl. cross_lane_join resolutions; every row carries its rule id",
    "leafMapped": 0,
    "regime": "cie_reconciliation_derived",
    "ruleCounts": {},
+   "sidecarConsumed": true,
    "smeEntries": 80,
    "subtopicScoped": 0,
    "unmapped": 80
