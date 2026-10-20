@@ -139,4 +139,23 @@ task:
     Band claimed 2026-10-20 on main @ a4d848c+ (fetch-first; PR #212 hub
     teacher lane merged in parallel — zero overlap). No prod contact in the
     claim act. Archive probe read-only (2 PDFs, byte-verified vs manifests).
-    The 138a dry driver: pending. Physics/Books-B lanes untouched.
+    The 138a dry driver: DONE of record (band commits + CI green).
+    Physics/Books-B lanes untouched.
+    WAVE-2 AMENDMENT OF RECORD (2026-10-20, operator trace
+    1a15993047a40809 'order the prod apply (COW -> production, the 134c
+    gate), (b) hand a repo credential so the Wave-2 amendment + receipt
+    debt land as a PR'): 138a DONE of record (driver + unit vocabulary);
+    138b DONE of record — the guarded COW->production apply fired THREE
+    times (10:52:38Z + 11:42:56Z settle/confirmation, then the 14:19:12Z
+    trace-1a15993047a40809 order re-apply run 39438132654, queued behind
+    the sibling 4-key backfill run 39437476094 under the serial
+    concurrency law cancel-in-progress:false), landing 110 papers into
+    production (8,202 chunks embed_rev=2 / 330 documents VALIDATED / 110
+    exam_papers VALIDATED; paper asks RESOLVE live via the deterministic
+    anchors); 138c IN PROGRESS — tranche-1 GREEN (35 rows recency-first),
+    the 4-key shard pool landed (e5bf8b7, ~2 dispatch days drain the
+    295-doc queue); T138_* secrets stay staged until the LAST tranche
+    (hygiene-delete law). Receipt: T-MIG-138/run-003-prod-apply-order-r0.json
+    (the order-interpretation ledger + race disclosure + the receipt-debt
+    disposition: the T-MIG-127 run-007 bake receipt debt was found ALREADY
+    DISCHARGED of record on origin/main — no duplicate filed).
