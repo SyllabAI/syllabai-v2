@@ -1,20 +1,23 @@
 import { expect, test } from "@playwright/test";
 
 /**
- * Guard spec for the course-scoped tutor rail (V53, ADR-030, PR #5).
+ * Guard spec for the per-course tutor rail (V53 origin, ADR-030, PR #5;
+ * STRICT SEPARATION law since the operator instruction of 2026-10-21,
+ * trace 1a15b45224c4e3f5 — "each subject/course must have separate tutors,
+ * separate history, conversations").
  *
- * The review of PR #5 live-reproduced a defect the existing specs missed:
- * ThreadSidebar filtered the local rail with `t.courseSlug ===
- * activeCourseLabel` — registry slug vs display label, never equal — so a
- * scoped tutor's own threads vanished from its rail ("No conversations
- * yet" while the chat runs detached). The fix filters slug-to-slug
- * (activeCourseSlug). This spec pins that contract so neither the original
- * bug nor the tempting-but-wrong label-matching "fix" can come back.
+ * The current contract, pinned here:
+ *   - a course-scoped tutor's rail shows ONLY threads created under the
+ *     SAME registry slug (threadInScope, slug-to-slug);
+ *   - the legacy /tutor rail shows ONLY course-less threads;
+ *   - no cross-course bleed in either direction — including the legacy
+ *     pilot history, which the earlier V53 posture kept visible inside
+ *     scoped rails and which the strict law retires.
  *
- * The label-collision case is the load-bearing assertion: ial-chemistry-17
- * and igcse-chemistry-19 are BOTH "Chemistry" in the registry. A filter
- * that compares courseLabel would show the IAL thread inside the IGCSE
- * tutor (cross-course bleed) — thread B2 asserts it stays hidden.
+ * The label-collision case stays load-bearing: ial-chemistry-17 and
+ * igcse-chemistry-19 are BOTH "Chemistry" in the registry. A filter that
+ * compares courseLabel would show the IAL thread inside the IGCSE tutor
+ * (cross-course bleed) — thread B2 asserts it stays hidden.
  *
  * Seeding follows the established harness pattern (deck-flow/a11y): the
  * session lands in localStorage via addInitScript before the app boots
@@ -98,7 +101,7 @@ test.beforeEach(({ context }) => {
   }, seedPayload());
 });
 
-test("scoped tutor rail: own + course-less threads visible, other course (same label) hidden", async ({
+test("scoped tutor rail: ONLY its own course's threads — other course AND course-less hidden", async ({
   page,
 }) => {
   await page.goto(`/tutor?course=${PILOT}`);
@@ -114,12 +117,13 @@ test("scoped tutor rail: own + course-less threads visible, other course (same l
   await expect(page.getByText("Scoped to Chemistry", { exact: false })).toBeVisible();
   await expect(page.getByText("(4CH1-2017)", { exact: true })).toBeVisible();
 
-  // B1 — the defect this spec guards: the scoped tutor's OWN thread is in
-  // its own rail (the buggy filter hid it behind "No conversations yet")
+  // B1 — the scoped tutor's OWN thread is in its own rail
   await expect(rail.getByText(OWN_TITLE, { exact: true })).toBeVisible();
 
-  // legacy course-less history stays visible (it is the pilot history)
-  await expect(rail.getByText(LEGACY_TITLE, { exact: true })).toBeVisible();
+  // strict separation (operator instruction 2026-10-21): the legacy
+  // course-less pilot history does NOT leak into a course's tutor —
+  // each tutor owns its history alone
+  await expect(rail.getByText(LEGACY_TITLE, { exact: true })).toHaveCount(0);
 
   // B2 — the label-collision guard: another course's thread — whose
   // courseLabel is ALSO "Chemistry" — must NOT leak into this rail
@@ -129,17 +133,21 @@ test("scoped tutor rail: own + course-less threads visible, other course (same l
   await expect(rail.getByText("No conversations yet", { exact: true })).toHaveCount(0);
 });
 
-test("legacy /tutor rail: no scope filter — every course's threads visible", async ({ page }) => {
+test("legacy /tutor rail: ONLY course-less threads — every course's history stays in its own tutor", async ({
+  page,
+}) => {
   await page.goto("/tutor");
   await expect(page.locator("textarea")).toBeVisible({ timeout: 20_000 });
 
   const rail = page.locator('nav[aria-label="Conversation history"]');
 
-  // no scope line on the course-less entry
+  // the legacy honesty line renders (no course scope above it)
+  await expect(page.getByText("Pilot tutor", { exact: false })).toBeVisible();
   await expect(page.getByText("Scoped to Chemistry", { exact: false })).toHaveCount(0);
 
-  // all three seeded threads — the filter is off outside a scoped tutor
-  await expect(rail.getByText(OWN_TITLE, { exact: true })).toBeVisible();
-  await expect(rail.getByText(OTHER_TITLE, { exact: true })).toBeVisible();
+  // strict separation: the legacy entry sees ONLY course-less threads —
+  // course-created history lives in its own course's tutor
   await expect(rail.getByText(LEGACY_TITLE, { exact: true })).toBeVisible();
+  await expect(rail.getByText(OWN_TITLE, { exact: true })).toHaveCount(0);
+  await expect(rail.getByText(OTHER_TITLE, { exact: true })).toHaveCount(0);
 });

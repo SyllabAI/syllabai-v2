@@ -1,0 +1,53 @@
+{
+  "receipt": "HUB-TUTOR/course-tutors-r0",
+  "family": "HUB-TUTOR",
+  "operatorTrace": "1a15b45224c4e3f5",
+  "operatorOrder": "Each subject/course must have separate tutors (separate history, conversations etc). And there is no Tutor card in the course page, also add that.",
+  "agent": "main agent (Z.ai)",
+  "generatedUtc": "2026-10-21T00:00:00Z",
+  "dateConvention": "UTC, ISO-8601",
+  "mandate": {
+    "base": "main @ 4234cde (PR #231 merge tip)",
+    "branch": "hub-tutor/course-tutors-r0",
+    "scope": "hub-only: apps/hub/src/app/tutor/* + apps/hub/src/app/courses/[course]/page.tsx + tests; zero api delta, zero db/Neon writes, zero LLM spend, zero env changes"
+  },
+  "lawOfRecord": {
+    "name": "per-course tutor isolation (STRICT SEPARATION)",
+    "supersedes": "the V53 posture that kept course-less threads visible inside scoped rails",
+    "statement": [
+      "A course-scoped tutor (/tutor?course=<slug>) sees ONLY threads created under the SAME registry slug — its rail, its active thread, its synced pane, its fresh-device restore and its clear-all.",
+      "The legacy /tutor entry sees ONLY course-less threads (the pilot history).",
+      "Scope keys on the registry SLUG, never the display label (ial-chemistry-17 and igcse-chemistry-19 are both 'Chemistry' — label matching bleeds threads across courses).",
+      "Server-side parity already of record: tutor_sessions.course_ref is write-once with a cross-course switch refusal (session-store.ts :308-338) — this change makes the HUB client obey the same law it already serves.",
+      "A thread created inside a course tutor (including a server-pane restore) always carries the course context, so it can never fall out of its rail.",
+      "Cross-course transcript mixing bug retired: the global active thread could previously be adopted by a foreign course's instance via send()/boot (ensureActiveThread) — the scoped active makes that unreachable."
+    ]
+  },
+  "filesOfRecord": [
+    "apps/hub/src/app/tutor/threads.ts (+threadInScope, +clearThreadsWhere; docs)",
+    "apps/hub/src/app/tutor/chat.tsx (scopedThreads/scopedActive/scopedConversations; scoped send/boot/restore/open/clear/busy/stop/streaming; both sidebars get scoped props + onClearAll)",
+    "apps/hub/src/app/tutor/thread-sidebar.tsx (internal course filter REMOVED — caller owns scoping; +onClearAll prop; honest legacy scope line; scoped clear toast)",
+    "apps/hub/src/app/courses/[course]/page.tsx (+the 'Ask the tutor' band with the Course Tutor card; ready keys on registry curriculumCode per ADR-030; +notReadyLabel honest badge 'not yet connected' for unmapped rows)",
+    "apps/hub/tests/e2e/tutor-rail.spec.ts (rewritten to the strict law: scoped rail = own-only; legacy rail = course-less-only; label-collision guard B2 retained)",
+    "apps/hub/src/app/tutor/threads-scope.test.ts (new: the isolation law + per-scope clear + scoped creation, bun)"
+  ],
+  "validation": {
+    "bunTests": "12/12 PASS (threads-scope 8 + followups 4 no-regression) — bun test apps/hub/src/app/tutor/threads-scope.test.ts apps/hub/src/app/tutor/followups.test.ts",
+    "typecheck": "bunx tsc --noEmit (apps/hub) exit 0",
+    "hubBuild": "bun run build:hub exit 0 (corpus prebuild verifiers verify_corpus_23a + verify_flashcard_sync_courses + validate_cie_bundles + build_corpus_static + next build)",
+    "e2e": "2/2 PASS against the production standalone build (HUB_DATA_MODE=mock): scoped rail own-only incl. course-less hidden; legacy rail course-less-only — bunx playwright test tests/e2e/tutor-rail.spec.ts",
+    "prerenderCensus": "igcse-chemistry-19.html: Course Tutor card + /tutor?course=igcse-chemistry-19 link present; cie-a-level-chemistry-25.html: Course Tutor card with 'not yet connected' badge, NO tutor link — both SSG artifacts inspected post-build"
+  },
+  "hygiene": {
+    "writes": "zero prod/db/Neon/LLM writes; local-only build + test artifacts",
+    "credentials": "none used, none persisted (push deferred — see residuals)",
+    "sandbox": "wiped between turns; fresh clone at 4234cde; bun install 930 packages"
+  },
+  "fence": "hub surface only; no registry/courses.json delta; no curriculumCode semantics changed; the /tutor page gates unchanged (V53/ADR-030); TutorCourseGate untouched",
+  "residuals": [
+    "PUSH/PR deferred: no GitHub PAT in the sandbox (the persisted /home/z/.ghtoken was consumed by the workspace wipe; the chat-exposed ghp_h4DJyVq... is rotation-overdue and must NOT be reused) — branch committed locally, push + PR + CI + merge on the operator's fresh token",
+    "LLM chain budget watch (standing)",
+    "PAT rotation (standing, CRITICAL overdue)"
+  ],
+  "nextAct": "operator hands a fresh PAT -> push branch, open PR (hub-only delta), CI hub job green, merge; hub bake then serves the cards + separation"
+}
