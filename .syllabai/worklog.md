@@ -10126,3 +10126,19 @@ Work Log:
 
 Stage Summary:
 - Wave-2 review of record: 11/11 ATTACH verdicts with first-hand verbatim evidence; draft kill-list staged for operator green-light; 46-orphan-parts lane flagged separate.
+Task ID: pp-4mb1-quality-audit-004 (trace 1a15aea188ef229d, "The 64 exam papers, are they on par with SME ExamQuestions quality? topic tagging, Mark scheme etc stuff?")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: First-hand quality audit of the 64 interactive 4MB1 papers vs SME ExamQuestions axes (topic tagging, mark schemes, metadata), answered to the operator.
+
+Work Log:
+- Read-only audit at main 8ee371e (fetch-first, FF; no code/db changes): apps/hub/content/igcse-maths-b-16 bundle + player + pastpapers-blueprints.json.
+- Schema: the 65 sets ARE syallabai.sme-exam-questions/1.1 (same schema family as the real SME chemistry/physics banks) — 1,249 questions / 2,392 parts / 6,341 marks, sessions 2018-2026 incl R variants, both papers.
+- Topic tagging: specPointCodes 2,392/2,392 parts (100%) onto the official 98-code 4MB1 alphabet, 0 unknown codes, 1,718 parts multi-code (72%); spread across all 10 spec topics (Functions 907 / Algebra 820 / Number 703 / Geometry 565 / Stats 532 / Vectors 491 / Sets 414 / Matrices 323 / Mensuration 278 / Trig 78); anchoring = T-MIG-136 band-3b glm-4-plus pass + n=80 re-ask verification (72/72 agree).
+- Mark schemes: solutionMd 2,331/2,392 parts (97%), 94% carry Edexcel P/M/A/B process markers; median 294 chars (terse official MS style, NOT worked solutions).
+- Fidelity: 59/64 non-empty papers parse to exactly the official 100 marks; 5 undercount (Jan-2019 /01 86, /01R 92, Jun-2019 /01R 89, Jan-2023 /02 85, Jun-2022 /02R 89); 1 empty set (2019-06 /02R, 0 q).
+- Deltas vs real SME bundles disclosed: difficulty labels 0% (chemistry SME bank = 100% Easy/Med/Hard); relatedNoteIds 0 (chemistry 112; hub compensates via client-side spec-code Q-note join); commandWord 45% (chemistry 83%); 57 questions where totalMark != sum(parts); 61 parts missing MS (2.5%); 810/2,331 MS (34%) carry the deterministic parse flag "printed total != parsed point-sum"; fraction/notation artifacts from the PDF parse visible in long MS.
+- No topic-organized question bank for maths-b (all 65 sets section=past-papers) — matches SME itself having no 4MB1 banks (T-SME-12); pastpapers-blueprints.json has ZERO 4MB1 rows so no official-per-question blueprint coverage check exists for these papers.
+- Player surface verified: per-part MS modal, Smart Mark, CLA part help, spec-code QuestionHelpPanel note join, totalMark badges; 4MB1/01 = 1,207 parts, /02 = 1,185.
+
+Stage Summary:
+- Verdict delivered: structural parity-or-better (schema, 100% per-part spec tagging, 97% MS coverage, provenance, interactive player) with content-polish deltas honestly enumerated (no difficulty taxonomy, no topic-bank view, 34% MS parse flags, 57 mark-total mismatches, 5 drifted papers, 1 empty set). Follow-up candidates filed for any owner: per-question difficulty pass, blueprint rows for 4MB1 + coverage gate, totalMark reconciliation, MS notation cleanup. Bookkeeping-only, .syllabai/** only, zero prod/DB/LLM, fetch-first, no force.
