@@ -1,0 +1,31 @@
+{
+  "receipt": "T-MIG-138/run-003-prod-apply-order-r0.json",
+  "task": "T-MIG-138 (wave: second-subject) — the wave-2 prod-apply ORDER + verification of record",
+  "operator_order": "trace 1a15993047a40809 'order the prod apply (COW -> production, the 134c gate), (b) hand a repo credential so the Wave-2 amendment + receipt debt land as a PR'; repo credential handed inline same trace (GitHub PAT ghp_…, transited chat once, rotation standing CRITICAL-overdue of record)",
+  "agent": "r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "executed_at": "2026-10-20T14:19:12Z",
+  "order_interpretation_ledger": {
+    "the_134c_gate": "the guarded CI protocol of record: t-mig-138-intake job 1 COW-proof -> job 2 prod-apply (the yaml's own law 'All prod writes ride the CI workflow gate (workflow_dispatch, COW-proof first, the 133d discipline)'; the 136c receipt names it 'the 134c law's Neon-branch COW'; the CIE scope receipt 'T-MIG-134c/135c precedent'). The sandbox is DNS-blocked from api.neon.tech of record, so the dispatch is the only sanctioned COW->production path.",
+    "fireable_plane": "t-mig-138-intake is the only of-record COW->production apply machinery that is BUILT, dispatch-gated, and secrets-staged (T138_PROD_DATABASE_URL + T138_GEMINI_KEY/_2/_3/_4 all updated 2026-10-20). Fired mode=cow+prod: idempotent by the frozen checksum-dedup + paper-identity guard law.",
+    "alternatives_disclosed_not_fired": [
+      "4MB1 (T-MIG-136) band-3+ apply — blocked upstream: bank assembly (Band 3) not of record; the parse lane owns the band queue.",
+      "CIE phase-4 DB plane (40 banks) — THIS order reads as its explicit go, but no phase-4 machinery exists of record (no per-slug seed/ingest workflow; no phase-4 receipts); build = the next lane act on operator re-key.",
+      "backfill tranche-2 — the r7a lane's standing rhythm; fired in parallel by the sibling run this very window (see race_disclosure)."
+    ]
+  },
+  "race_disclosure": "sibling run 39437476094 (mode=backfill, the 4-key shard pool @ e5bf8b7, actor SyllabAI, started 14:14:54Z) was in_progress at my dispatch (14:19:12Z); concurrency group t-mig-138-intake serializes (cancel-in-progress:false) so run 39438132654 queued pending; zero double-write risk under serialization + the dedup law. Honest sibling note: shard backfill (4) FAILURE (non-rate class per the e5bf8b7 RPD-wall law) — disclosed, NOT touched (the r7a lane's fence).",
+  "dispatch": {
+    "call": "POST /repos/SyllabAI/syllabai-v2/actions/workflows/t-mig-138-intake.yml/dispatches {ref: main (=e5bf8b7), inputs: {mode: 'cow+prod', note: 'operator trace 1a15993047a40809 … the wave-2 (second-subject) guarded apply of record; idempotent re-apply per the frozen dedup law'}}",
+    "http": "204",
+    "run_id": 39438132654,
+    "run_url": "https://github.com/SyllabAI/syllabai-v2/actions/runs/39438132654"
+  },
+  "receipt_debt_disposition": {
+    "the_debt": "T-MIG-127 run-007 bake receipt (disclosed in lane worklog run-006: 'file bake receipt on the next repo credential/PR')",
+    "finding": "ALREADY DISCHARGED OF RECORD — .syllabai/receipts/T-MIG-127/run-007-prod-bake-r0.json on origin/main, verified first-hand this run: same deployment dpl_JCVqGPmY7rwMH1UBTsodkVFCPcir @ e92fa28, verdict 'PASS — DISCHARGES THE RUN-007 RECEIPT DEBT'.",
+    "action": "NO duplicate filed (anti-duplication law); the debt closes as FOUND-DISCHARGED. Zero other outstanding receipt debts in the of-record sweep (CIE phases 0-3 receipts landed via PRs #206-#215; 134c/134d/135/136c receipts of record)."
+  },
+  "wave2_amendment": "the T-MIG-138 yaml execution_record amendment rides this same PR (.syllabai/tasks/T-MIG-138-4ma1-past-paper-intake.yaml) — the bands' of-record state, the third apply firing, and this receipt pointer.",
+  "verification_addendum": "PENDING at filing — run 39438132654 was queued behind the sibling backfill shards; its conclusion pins via a follow-up .syllabai-only commit on this PR BEFORE merge (the merge holds for it; honest red = no merge, operator informed).",
+  "fence": ".syllabai/** only; zero code, zero content, zero DB/Neon/LLM contact from the sandbox (the dispatch is the only prod-reaching act, via the sanctioned CI gate)"
+}
