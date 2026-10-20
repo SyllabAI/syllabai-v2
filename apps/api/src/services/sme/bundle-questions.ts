@@ -34,7 +34,13 @@
  *                          labels; the 1.1 shape has none; max parts = 5).
  *     difficulty           easy→2 medium→3 hard→4 very_hard→5 (1 = reserved
  *                          trivial, unused by the corpus); smeDifficulty
- *                          keeps the word verbatim.
+ *                          keeps the word verbatim. T-MIG-136 band 4: the
+ *                          past-paper 1.1 shape carries NO difficulty word
+ *                          (4MB1: 1249× null) — the deterministic default
+ *                          law lands difficulty 3 (neutral middle) with
+ *                          difficultySource "DEFAULT" (never "SME" — no SME
+ *                          word exists to source from); an unknown NON-null
+ *                          word still refuses.
  *     expectedTimeSeconds  max(60, round(totalMarks × 72)) — the 4MA1 pace
  *                          of record (~1.2 min/mark: 100 marks / 120 min);
  *                          the 1.1 shape carries no timing.
@@ -45,16 +51,31 @@
  *                          SPEC_POINT "1.6E" → "4MA1-1.6E" → parent TOPIC
  *                          "4MA1-S1-1.6").
  *     specPoints           the ordered dedupe union of the parts'
- *                          specPointCodes ("4MA1-" prefixed, the 135a
- *                          SPEC_POINT law); role PRIMARY for the anchoring
- *                          part's codes, SECONDARY for the rest (the frozen
- *                          role law); provenance AI_VALIDATED (the frozen
+ *                          specPointCodes, emitted at the SEED-SIDE dbCodes
+ *                          resolved through the 135a mapBundleNodes (the
+ *                          T-MIG-136 band-4 code-join amendment): dotted
+ *                          courses (4CH1/4PH1/4MA1) land `{subject}-{code}`
+ *                          — BYTE-IDENTICAL to the pre-band-4 concat by
+ *                          the map's own dotted law — and the 4MB1 alnum
+ *                          codes ('1A'..'10N', the T-MIG-136a seed law)
+ *                          land `4MB1-S<n>-<code>` — the live KG dbCode
+ *                          the frozen replace resolves against; role
+ *                          PRIMARY for the anchoring part's codes,
+ *                          SECONDARY for the rest (the frozen role law);
+ *                          provenance AI_VALIDATED (the frozen
  *                          default). Questions with NO spec codes on ANY
  *                          part are EXCLUDED (unmapped — they cannot anchor
  *                          and validate() refuses them; higher: 9 of 2703,
  *                          foundation: 1 of 275) and counted in counts.
- *                          Questions repeating an order WITHIN their set
- *                          (an upstream corpus defect — higher:
+ *                          T-MIG-136 band 4: questions whose parts do not
+ *                          close on their printed total are likewise
+ *                          EXCLUDED (badSum — the parse lane's disclosed
+ *                          arithmetic-flag population, 4MB1: 57 of 1249;
+ *                          the frozen part-sum law would refuse the whole
+ *                          package; nothing is rewritten — the flags ride
+ *                          the archive for the filed QP-total recovery
+ *                          round). Questions repeating an order WITHIN
+ *                          their set (an upstream corpus defect — higher:
  *                          percentages q34 ×2, algebra-toolkit q28 ×2) are
  *                          skipped past the first occurrence (dupOrder).
  *     sourcePaper          the first part's sourcePaper object verbatim.
@@ -112,7 +133,7 @@ interface BundlePart {
 interface BundleQuestion {
   id: string;
   order: number;
-  difficulty: string;
+  difficulty: string | null; // the past-paper 1.1 shape carries null (T-MIG-136 band 4)
   style: string;
   totalMarks: number;
   parts: BundlePart[];
@@ -154,8 +175,9 @@ function partLabel(order: number): string {
 }
 
 /** spec code → the parent TOPIC dbCode (the 135a map; SPEC_POINT → TOPIC). */
-function topicCodeResolver(curriculum: BundleCurriculum): (specCode: string) => string {
-  const mapped = mapBundleNodes(curriculum, "official specification structure");
+function topicCodeResolver(
+  mapped: ReturnType<typeof mapBundleNodes>,
+): (specCode: string) => string {
   const specToTopic = new Map<string, string>();
   for (const node of mapped.values()) {
     // T-MIG-139: spec points land SPEC_POINT post-G2 (was SUBTOPIC pre-139)
@@ -193,13 +215,30 @@ export interface BundleQuestionsInput {
 export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
   const { courseSlug, curriculum, sets } = input;
   if (sets.length === 0) throw new BundleQuestionsError("bundle carries no question sets");
-  const resolveTopic = topicCodeResolver(curriculum);
+  // the 135a node map, computed ONCE: the topic resolver and the spec-code
+  // dbCode emission (the T-MIG-136 band-4 code-join amendment) share it, so
+  // the two sides cannot drift
+  const mapped = mapBundleNodes(curriculum, "official specification structure");
+  const resolveTopic = topicCodeResolver(mapped);
+  // spec code → the seed-side dbCode the frozen replace resolves against
+  // knowledge_nodes.code with (fail-closed): dotted courses byte-identical
+  // to the pre-band-4 concat; 4MB1 alnum codes land 4MB1-S<n>-<code>
+  const specDbCode = (code: string): string => {
+    const node = mapped.get(code);
+    if (node == null || node.nodeType !== "SPEC_POINT") {
+      throw new BundleQuestionsError(
+        "spec code not in the bundle spine: " + code + " (seed the curriculum first)",
+      );
+    }
+    return node.dbCode;
+  };
 
   const questions: SmeQuestion[] = [];
   const seenRefs = new Set<string>();
   let partCount = 0;
   let optionCount = 0;
   let unmapped = 0;
+  let badSum = 0;
   let dupOrder = 0;
 
   for (const set of sets) {
@@ -223,6 +262,19 @@ export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
       );
       if (anchorPartIdx === -1) {
         unmapped++;
+        continue;
+      }
+      // the part-sum law (T-MIG-136 band 4): the frozen validate refuses any
+      // package containing a question whose parts do not close on its
+      // printed total — the past-paper corpus carries the parse lane's
+      // disclosed arithmetic-flag population (4MB1: 57 of 1249), so the
+      // honest shim EXCLUDES + COUNTS them (badSum) exactly like unmapped:
+      // the bank ingests only questions that pass every frozen law; nothing
+      // is rewritten (the flags ride the archive for the QP-total recovery
+      // round filed in the band-2 receipt)
+      const sum = q.parts.reduce((s, p) => s + p.marks, 0);
+      if (sum !== q.totalMarks) {
+        badSum++;
         continue;
       }
       // the order-identity law: the ref namespace is (topicSlug, order) — a
@@ -252,18 +304,18 @@ export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
       if (q.parts.length === 0) {
         throw new BundleQuestionsError("question " + externalRef + " carries no parts");
       }
-      const sum = q.parts.reduce((s, p) => s + p.marks, 0);
-      if (sum !== q.totalMarks) {
-        throw new BundleQuestionsError(
-          `part marks sum ${sum} != question marks ${q.totalMarks} on ${externalRef}`,
-        );
-      }
-      const difficultyInt = DIFFICULTY_TO_INT[q.difficulty];
-      if (difficultyInt == null) {
+      // T-MIG-136 band 4: the past-paper 1.1 shape has no difficulty word
+      // (4MB1: 1249× null) — deterministic default: 3 (neutral middle) with
+      // difficultySource "DEFAULT"; an unknown NON-null word still refuses
+      // (the worded bundles 4CH1/4PH1/4MA1 keep the verbatim SME law)
+      const hasSmeDifficulty =
+        q.difficulty != null && q.difficulty in DIFFICULTY_TO_INT;
+      if (!hasSmeDifficulty && q.difficulty != null) {
         throw new BundleQuestionsError(
           "unknown difficulty word on " + externalRef + ": " + q.difficulty,
         );
       }
+      const difficultyInt = hasSmeDifficulty ? DIFFICULTY_TO_INT[q.difficulty as string]! : 3;
 
       // labels a..z by part order; option parts ride the frozen MIXED emission
       const parts: SmePart[] = q.parts.map((p, idx) => {
@@ -312,7 +364,7 @@ export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
           if (seenSpec.has(code)) continue;
           seenSpec.add(code);
           specPoints.push({
-            code: curriculum.code + "-" + code,
+            code: specDbCode(code),
             role: pIdx === anchorPartIdx ? "PRIMARY" : "SECONDARY",
             provenance: "AI_VALIDATED",
           });
@@ -325,7 +377,7 @@ export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
         stem: null,
         marks: q.totalMarks,
         difficulty: difficultyInt,
-        difficultySource: "SME",
+        difficultySource: hasSmeDifficulty ? "SME" : "DEFAULT",
         expectedTimeSeconds: Math.max(MIN_TIME_SECONDS, Math.round(q.totalMarks * SECONDS_PER_MARK)),
         commandWord: q.parts[0]!.commandWord,
         primaryTopicCode,
@@ -352,6 +404,7 @@ export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
       options: optionCount,
       sets: sets.length,
       unmapped: unmapped,
+      badSum: badSum,
       dupOrder: dupOrder,
     },
     questions,

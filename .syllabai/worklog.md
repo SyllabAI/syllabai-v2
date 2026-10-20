@@ -9987,3 +9987,18 @@ Work Log:
 Stage Summary:
 - BAND 3b DONE of record: the band-3 residual (empty specPointCodes -> zero ingestables) is LIFTED — every 4MB1 question carries official spec-point anchors under the operator's fetch-past-papers authorization. Smart mark stays descoped (nothing spent certifying it). Anchors are refinable without re-parsing. 4MB1-only fence; zero prod writes, zero Neon; fetch-first, no force.
 
+---
+Task ID: trace 1a15a45dca86c409 (T-MIG-136 parse lane BAND 4 — the shim amendment, ingest-ready)
+Agent: r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)
+Task: the band-1 filing's band 4 — the shim alnum code-join amendment + the ingest readiness, under the same operator authorization.
+
+Work Log:
+- CODE-JOIN AMENDMENT: the shim emitted '4MB1-1A' while the live KG dbCode is '4MB1-S<n>-<code>' (the T-MIG-136a seed law, run-004-pinned) — the frozen replace resolves against knowledge_nodes.code and would have died 'unknown KG code' on question one. The specPoints emission now resolves through the SAME 135a mapBundleNodes the topic resolver uses (one shared map, no drift): dotted courses land '{subject}-{code}' — BYTE-IDENTICAL to the pre-band-4 concat (pinned by the unchanged maths-a real-bundle tests) — and 4MB1 alnum codes land the live identity. Spine validation now covers EVERY emitted code (fail-closed moved earlier, same KG law).
+- NULL-DIFFICULTY LAW (found while gating): the past-paper 1.1 shape carries NO difficulty word (4MB1: 1,249x null) — deterministic default: difficulty 3 + difficultySource 'DEFAULT' (never 'SME'; smeDifficulty stays null verbatim); unknown NON-null words still refuse (test-pinned).
+- BADSUM LAW (found while gating): 57/1,249 questions do not close on their printed totals (the band-1/2 disclosed arithmetic-flag population); the frozen part-sum law refuses the whole package for one bad question — the shim now EXCLUDES + COUNTS them (badSum, like unmapped/dupOrder), never rewrites; the flags ride the archive for the band-2-filed QP-total recovery round. Ingest-ready: 1,192 questions / 2,106 parts.
+- GATES ALL GREEN: typecheck x4 exit 0; bun test apps/api packages 2,279/13 skip/0 fail; bundle-questions.test.ts 19/19 (maths-a byte-identity + maths-b laws incl. the REAL parsePackage + REAL validate accepting the package); hub verify:corpus + flashcard-sync + cie PASS; hub eslint 0; full hub build 0; verify-bank-1-1 anchors gate GREEN.
+- BAND 5 POSTURE OF RECORD: COW-replica proof -> operator-gated apply -> 136d battery re-fire. The apply requires SEED_DATABASE_URL re-staging (the Oct-19 staged credential did not survive the rollback; inline 0600 law); the pg-cow replica recipe (run-004 evidence_files) rebuilds from it at apply time with a fresh pre-state + race-guard per the 134c law.
+- Receipt: .syllabai/receipts/T-MIG-136/parse-4mb1-band4-shim-r0.json
+
+Stage Summary:
+- BAND 4 DONE of record: the maths-b bank is INGEST-READY through the unmodified frozen ADR-026 laws — 1,192 anchored, law-clean questions across 65 past-paper sets. Band 5 = the apply, operator-gated on the credential re-staging. Zero prod writes, zero Neon; 4MB1-only fence; fetch-first, no force.

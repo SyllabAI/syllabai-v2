@@ -70,12 +70,12 @@ describe("T-MIG-135b the real bundles through the shim + the frozen gates", () =
     expect(pkg.packageVersion).toBe("1.0");
     expect(pkg.source).toBe("sme-eq-igcse-maths-a-18-higher");
     expect(pkg.corpusVersion).toContain("syllabai.sme-exam-questions/1.1");
-    expect(pkg.counts).toEqual({ questions: 2692, parts: 3538, options: 4, sets: 58, unmapped: 9, dupOrder: 2 });
+    expect(pkg.counts).toEqual({ questions: 2692, parts: 3538, options: 4, sets: 58, unmapped: 9, badSum: 0, dupOrder: 2 });
   });
 
   test("the foundation bundle builds at the exact manifest numbers", () => {
     const pkg = buildFoundation();
-    expect(pkg.counts).toEqual({ questions: 274, parts: 430, options: 0, sets: 45, unmapped: 1, dupOrder: 0 });
+    expect(pkg.counts).toEqual({ questions: 274, parts: 430, options: 0, sets: 45, unmapped: 1, badSum: 0, dupOrder: 0 });
   });
 
   test("the REAL parsePackage + the REAL validate accept both packages", () => {
@@ -212,10 +212,16 @@ describe("T-MIG-135b the fail-closed shim laws", () => {
     expect(new Set(refs).size).toBe(refs.length);
   });
 
-  test("part-sum mismatch refuses", () => {
+  test("part-sum mismatch questions are EXCLUDED and counted (the band-4 badSum law)", () => {
+    // the frozen part-sum law refuses the whole PACKAGE for one bad
+    // question — the honest shim excludes + counts instead (never rewrites;
+    // the 4MB1 real-corpus exclusion is pinned at 57 in the counts test)
     const sets = structuredClone(foundation.sets.slice(0, 1)) as BundleQuestionSet[];
+    const n = sets[0]!.questions.length;
     sets[0]!.questions[0]!.totalMarks += 1;
-    expect(() => oneSet(foundation.slug, foundation.curriculum, sets)).toThrow(/part marks sum/);
+    const pkg = oneSet(foundation.slug, foundation.curriculum, sets);
+    expect(pkg.questions?.length).toBe(n - 1);
+    expect(pkg.counts?.badSum).toBe(1);
   });
 
   test("unknown difficulty words refuse", () => {
@@ -259,5 +265,85 @@ describe("T-MIG-135b the fail-closed shim laws", () => {
     })) as never;
     q.totalMarks = 27;
     expect(() => oneSet(foundation.slug, foundation.curriculum, sets)).toThrow(/a\.\.z label range/);
+  });
+});
+
+// ── T-MIG-136 bands 3b+4: the ANCHORED maths-b past-paper corpus ────────────
+const mathsB = {
+  slug: "igcse-maths-b-16",
+  sets: JSON.parse(readFileSync(join(HUB, "igcse-maths-b-16/questions.json"), "utf8")) as BundleQuestionSet[],
+  curriculum: JSON.parse(readFileSync(join(HUB, "igcse-maths-b-16/curriculum.json"), "utf8")) as BundleCurriculum,
+  manifest: JSON.parse(readFileSync(join(HUB, "igcse-maths-b-16/manifest.json"), "utf8")) as {
+    generatedUtc: string;
+    importSource: { ref: string };
+  },
+};
+
+function buildMathsB() {
+  return buildSmePackage({
+    courseSlug: mathsB.slug,
+    curriculum: mathsB.curriculum,
+    sets: mathsB.sets,
+    generatedUtc: mathsB.manifest.generatedUtc,
+    importRef: mathsB.manifest.importSource.ref.replace(/^main@/, ""),
+  });
+}
+
+describe("T-MIG-136 bands 3b+4: the anchored maths-b corpus through the shim", () => {
+  test("the anchored bundle builds with the badSum exclusions at the exact numbers", () => {
+    const pkg = buildMathsB();
+    // 1249 anchored - 57 arithmetic-flag exclusions (the parse lane's
+    // disclosed population, counted NOT rewritten) = 1192; their 286 parts
+    // drop with them (2392 -> 2106)
+    expect(pkg.counts).toEqual({ questions: 1192, parts: 2106, options: 0, sets: 65, unmapped: 0, badSum: 57, dupOrder: 0 });
+  });
+
+  test("the alnum codes land at the seed-side dbCodes (the band-4 code-join amendment)", () => {
+    const pkg = buildMathsB();
+    const codes = new Set<string>();
+    for (const q of pkg.questions ?? []) {
+      // the maths-b topic placeholder is the SUBTOPIC dbCode 4MB1-S<n>-_
+      expect(q.primaryTopicCode).toMatch(/^4MB1-S\d+-_$/);
+      for (const sp of q.specPoints ?? []) {
+        // the T-MIG-136a seed law's dbCode — the live KG identity the frozen
+        // replace resolves against (NOT the pre-band-4 '4MB1-1A' concat)
+        expect(sp.code).toMatch(/^4MB1-S\d+-\d{1,2}[A-Z]$/);
+        expect(sp.provenance).toBe("AI_VALIDATED");
+        if (sp.code != null) codes.add(sp.code);
+      }
+    }
+    // the anchors of record use 91 of the 98 official points
+    expect(codes.size).toBe(91);
+  });
+
+  test("the past-paper null-difficulty default law: 3 / DEFAULT, unknown words still refuse", () => {
+    const pkg = buildMathsB();
+    for (const q of pkg.questions ?? []) {
+      expect(q.difficulty).toBe(3);
+      expect(q.difficultySource).toBe("DEFAULT");
+      break; // the whole corpus is null-difficulty (census of record)
+    }
+    expect(pkg.questions?.every((q) => q.difficulty === 3 && q.difficultySource === "DEFAULT")).toBe(true);
+    expect(pkg.questions?.every((q) => q.smeDifficulty === null)).toBe(true);
+    // an unknown NON-null word still refuses (the worded-bundle law survives)
+    const sets = structuredClone(mathsB.sets.slice(0, 1)) as BundleQuestionSet[];
+    sets[0]!.questions[0]!.difficulty = "brutal";
+    expect(() =>
+      buildSmePackage({
+        courseSlug: mathsB.slug,
+        curriculum: mathsB.curriculum,
+        sets,
+        generatedUtc: mathsB.manifest.generatedUtc,
+        importRef: "x",
+      }),
+    ).toThrow(/unknown difficulty word/);
+  });
+
+  test("the REAL parsePackage + the REAL validate accept the maths-b package", () => {
+    const pkg = buildMathsB();
+    const parsed = parsePackage(JSON.stringify(pkg));
+    expect(parsed.questions?.length).toBe(1192);
+    const service = new SmeQuestionIngestService(THROWING_SQL, CLOCK);
+    expect(() => service.validate(parsed, new Map())).not.toThrow();
   });
 });

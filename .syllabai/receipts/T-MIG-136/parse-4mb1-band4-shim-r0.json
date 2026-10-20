@@ -1,0 +1,40 @@
+{
+  "receipt": "parse-4mb1-band4-shim-r0",
+  "task": "T-MIG-136",
+  "class": "PARSE LANE BAND 4 — the shim amendment of record (the bank is INGEST-READY; the apply stays operator-gated)",
+  "operator_trace": "1a15a45dca86c409 (the band-3b authorization trace; the fetch-past-papers capability is the operator's stated requirement) under the standing parse-lane order 1a15874ec638c2f9",
+  "agent": "r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)",
+  "executed_at": "2026-10-21T20:10+06:00",
+  "band_4_deltas": {
+    "code_join_amendment": {
+      "delta": "the shim emitted spec codes as curriculum.code + '-' + code ('4MB1-1A') while the live KG dbCode is the T-MIG-136a seed law's '4MB1-S<n>-<code>' (run-004 post-apply verify pins 4MB1-S1-1A verbatim) — the frozen replace resolves spec points against knowledge_nodes.code and would have died 'unknown KG code' on the first question",
+      "fix": "the specPoints emission now resolves through the SAME 135a mapBundleNodes the topic resolver uses (one shared map — the two sides cannot drift): dotted courses (4CH1/4PH1/4MA1) land '{subject}-{code}' which is BYTE-IDENTICAL to the pre-band-4 concat by the map's own dotted law (pinned: the maths-a higher/foundation real-bundle tests pass unchanged with their exact counts and code shapes), and the 4MB1 alnum codes land '4MB1-S<n>-<code>' — the live identity",
+      "bonus_law": "spine validation now covers EVERY emitted code (pre-band-4 only the anchoring part's first code hit resolveTopic) — fail-closed moved earlier, same ingest-time KG law"
+    },
+    "null_difficulty_default": {
+      "delta": "the past-paper 1.1 shape carries NO difficulty word (4MB1 census: 1,249x null) — the shim threw 'unknown difficulty word' on the first question",
+      "fix": "deterministic default law: difficulty 3 (neutral middle) + difficultySource 'DEFAULT' (never 'SME' — no SME word exists to source from; smeDifficulty stays null verbatim); an unknown NON-null word still refuses (the worded-bundle law survives, test-pinned)"
+    },
+    "badSum_exclusion": {
+      "delta": "the frozen part-sum law refuses any PACKAGE containing a question whose parts do not close on the printed total; the corpus carries 57 such questions (4.6%) — the parse lane's disclosed arithmetic-flag population (band-1: 6 pilot flags; band-2: the 02-paper alternative-route over-score variant + QP-total gaps, '62 partial products carry per-question unverified rows')",
+      "fix": "the honest shim EXCLUDES + COUNTS them (badSum, exactly like unmapped/dupOrder) — the bank ingests only questions that pass every frozen law; NOTHING is rewritten (the flags ride the archive for the QP-total recovery round filed in the band-2 receipt)",
+      "numbers": "1,249 anchored - 57 badSum = 1,192 questions / 2,106 parts ingest-ready (their 286 parts drop with them)"
+    }
+  },
+  "ingest_readiness": {
+    "package": "buildSmePackage(igcse-maths-b-16): counts {questions 1192, parts 2106, options 0, sets 65, unmapped 0, badSum 57, dupOrder 0}; primaryTopicCode = the parent SUBTOPIC placeholder '4MB1-S<n>-_' (a live KG node, run-004 battery pin); specPoints all-PRIMARY at '4MB1-S<n>-<code>' dbCodes; refs sme-eq-igcse-maths-b-16-<paper-slug>-q<order> collision-free; externalRef max < 80",
+    "frozen_gates": "the REAL parsePackage + the REAL validate (never edited) accept the maths-b package — test-pinned",
+    "remaining": "BAND 5 = COW-replica proof -> operator-gated apply -> 136d battery re-fire. The Oct-19 staged Neon credential did NOT survive the sandbox rollback (DATABASE_URL here is a 37-byte stub) — the apply requires the operator to re-stage SEED_DATABASE_URL (inline 0600 law); the pg-cow replica recipe (run-004 evidence_files) is the COW method of record and rebuilds from it at apply time (fresh pre-state + race-guard per the 134c law)"
+  },
+  "gates_all_green": [
+    "bun run typecheck x4 exit 0",
+    "bun test apps/api packages: 2,279 pass / 13 skip / 0 fail (22,500 expects)",
+    "apps/api/test/sme/bundle-questions.test.ts: 19/19 — maths-a higher/foundation REAL-bundle pins UNCHANGED (the amendment byte-identical for dotted courses) + the maths-b laws (counts 1192/2106/57, alnum dbCodes, null-difficulty law, REAL parse+validate)",
+    "hub prebuild gates (verify:corpus 23a + verify:flashcard-sync + verify:cie): PASS",
+    "hub eslint: exit 0",
+    "full hub build (build_corpus_static + next build): exit 0",
+    "verify-bank-1-1.ts igcse-maths-b-16: GREEN with anchors 1,249/1,249 (the band-3b gate)"
+  ],
+  "smart_mark_posture": "operator-descoped of record (trace 1a15a45dca86c409): smart mark is NOT a requirement for Maths B and nothing is spent certifying it; the ingest would make the QUESTION axis capable as a side effect (the same rows serve fetch-bank and smart mark) — dormancy language in older receipts describes the pre-anchoring state and is superseded by this receipt (append-only honored)",
+  "fence": "code+test+receipt+worklog writes only (the shim, its tests, the band-3b bundle artifacts); the frozen parsePackage/validate/replace and parse_ms*.py never edited; the T-MIG-139 G-round / cie-phase4 / 4MA1 / 4PH1 / 4CH1 neighbors untouched; zero prod writes, zero Neon; fetch-first before every commit, no force"
+}
