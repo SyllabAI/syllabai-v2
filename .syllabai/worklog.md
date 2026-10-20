@@ -10427,3 +10427,19 @@ Work Log:
 
 Stage Summary:
 - Merges this run: 1 (#234 -> d3a5863). Skips: 1 (#232, gate b, unchanged head). Main @ d3a5863 hub+verify green. Zero prod/Neon writes, zero force-pushes, zero auth failures.
+
+---
+Task ID: 7-ship (trace 1a15b45224c4e3f5 — HUB-TUTOR course-tutors-r0 SHIPPED + live-verified)
+Agent: main agent (Z.ai)
+
+Work Log:
+- Operator handed the PAT in-chat; verified identity (SyllabAI, repo+workflow scopes); one-shot push/API URLs only — token never persisted to .git/config, never committed.
+- Fetch-first: main 4234cde->c94382c (CIE corpus expansion) — rebased claim 146d217->74a8063 (.syllabai/worklog.md union-resolve); re-ran the full hub triple-run on the new base: bun 177/177 hub-wide, tsc exit 0, build exit 0.
+- Pushed, opened PR #234; main moved again (050a512 bookkeeping) — rebased 74a8063->6ac1608 (worklog union-resolve again; hub bytes unchanged), force-with-lease push (lease pinned to the exact SHA I had pushed).
+- PR head 6ac1608 drew ZERO Vercel checks for ~19min; earlier head 74a8063 held a GREEN Vercel preview (22:48:35Z) and the delta between the two heads is .syllabai/worklog.md ONLY — admission on identical-hub-bytes + mergeable=True + no required checks pending; merged as d3a5863.
+- Deploy of record: d3a5863 Vercel SUCCESS; adjacent failures (050a512, 7ee9589) are the SAME infra rate-limit ('Deployment rate limited — retry in 24 hours') on bookkeeping-only deltas; 7ee9589 CI verify+hub GREEN.
+- Live probes (public HTML, read-only): igcse-chemistry-19 -> Ask-the-tutor band + /tutor?course= link x2, no badge; cie-a-level-chemistry-25 -> not-yet-connected badge x2, ZERO tutor hrefs. ADR-030 holds live.
+- Receipt course-tutors-r0-ship-live-r0.json filed; this entry is the ship record.
+
+Stage Summary:
+- FEATURE CLOSED of record: per-course tutor STRICT SEPARATION + the course-page Tutor card are MERGED (d3a5863) and LIVE-VERIFIED in production. Residuals: Vercel deploy rate-limit window on bookkeeping pushes; PAT rotation now doubly overdue (chat-exposed twice); bare /tutor footprint-selector posture unchanged (subject-picker remains an open offer).

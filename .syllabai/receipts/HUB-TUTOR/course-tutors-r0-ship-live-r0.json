@@ -1,0 +1,44 @@
+{
+  "receipt": "HUB-TUTOR/course-tutors-r0-ship-live-r0",
+  "family": "HUB-TUTOR",
+  "operatorTrace": "1a15b45224c4e3f5",
+  "agent": "main agent (Z.ai)",
+  "generatedUtc": "2026-10-21T07:40:00Z",
+  "dateConvention": "UTC, ISO-8601",
+  "kind": "ship live-verification (bookkeeping-only, .syllabai/** only)",
+  "shipOfRecord": {
+    "branch": "hub-tutor/course-tutors-r0",
+    "rebaseLineage": "146d217 -> 74a8063 (rebased c94382c, worklog union-resolve) -> 6ac1608 (rebased 050a512, worklog union-resolve; hub bytes unchanged in the second rebase — delta .syllabai/worklog.md only)",
+    "pr": "https://github.com/SyllabAI/syllabai-v2/pull/234",
+    "mergedSha": "d3a5863 (merge commit, merge method: merge)",
+    "auth": "operator-handed PAT in-chat; used one-shot push URLs and API calls only — token never persisted to .git/config, never committed"
+  },
+  "admissionRationale": "PR head 6ac1608 held ZERO Vercel checks for ~19min while the earlier head 74a8063 carried a green Vercel preview (completed 2026-10-20T22:48:35Z); the 74a8063->6ac1608 delta is .syllabai/worklog.md ONLY (verified git diff --name-only), so hub bytes were identical to a green-built commit. Merged with: local triple-run on identical hub content (bun 177/177 hub-wide, tsc exit 0, build exit 0 incl. 3 corpus prebuild verifiers), PR mergeable=True with no required checks pending, and main-side CI subsequently green on 7ee9589 (verify: success, hub: success).",
+  "deployOfRecord": {
+    "d3a5863": "Vercel SUCCESS — 'Deployment has completed' (production serves the merged hub)",
+    "050a512": "Vercel failure 'Deployment rate limited — retry in 24 hours' — pre-merge CIE bookkeeping commit, infra-only, not code",
+    "7ee9589": "Vercel failure of the SAME rate-limit class on a .syllabai-only delta (bookkeeping); GitHub Actions CI on this sha: verify success + hub success — hub code identical to the deployed d3a5863"
+  },
+  "liveProbes": [
+    {
+      "surface": "https://syllabai-hub-v2.vercel.app/courses/igcse-chemistry-19 (mapped row)",
+      "observed": "'Ask the tutor' band present; /tutor?course=igcse-chemistry-19 link x2; zero 'not yet connected' badges",
+      "verdict": "PASS — ready Course Tutor card with the deep link"
+    },
+    {
+      "surface": "https://syllabai-hub-v2.vercel.app/courses/cie-a-level-chemistry-25 (unmapped row)",
+      "observed": "'Ask the tutor' band present; 'not yet connected' badge x2; ZERO /tutor hrefs of any form",
+      "verdict": "PASS — honest ADR-030 gate; availability not invented; no dead link"
+    }
+  ],
+  "hygiene": {
+    "writes": "zero prod/db/Neon/LLM writes; public read-only HTML probes only",
+    "mainLane": "fetch-first, no force; bookkeeping commit touches .syllabai/** only"
+  },
+  "residuals": [
+    "Vercel deployment rate limit active on main bookkeeping pushes (24h window) — code deploy already DONE via d3a5863; next content/code merge may need the window reset",
+    "PAT ghp_h4DJyVq... used for ship per operator hand-off; rotation remains CRITICAL overdue (token now chat-exposed twice)",
+    "LLM chain budget watch (standing)"
+  ],
+  "nextAct": "feature closed of record; operator may opt into a subject-picker bootstrap later — bare /tutor still resolves via the per-learner footprint selector"
+}
