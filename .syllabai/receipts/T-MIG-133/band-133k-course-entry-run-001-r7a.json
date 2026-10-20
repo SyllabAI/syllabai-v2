@@ -1,0 +1,24 @@
+{
+  "task": "T-MIG-133",
+  "band": "133k — the course-page books ENTRY (r7a)",
+  "operator_order": "trace 1a15a87407daa94d 'We have decided to add books to each courses. Already did for edexcel igcse chemistry, but there is no option in course page, quickly add that, then we will plan something'",
+  "executor": "r7a (Super Z, session web-da4ab8b1, chat 1f3003b6)",
+  "generated_utc": "2026-10-21T19:40:00Z",
+  "finding_of_record": {
+    "orphaned_surface": "the books shelf (/courses/<slug>/books, force-dynamic, bands 133c/133h built; live probe 200 on https://syllabai-hub-v2.vercel.app) had ZERO inbound links from the course hub page — the shelf api serves the VALIDATED 4CH1 book live (documentId e6c0db50, 'Edexcel International GCSE (9-1) Chemistry Student Book', Jim Clark, 383pp) but no learner could navigate to it. This band is the entry, nothing else.",
+    "slug_of_record": "igcse-chemistry-19 = pearson-edexcel/international-gcse/chemistry/4ch1 (COURSE_SPECS pin, pastpapers-corpus.ts:89)"
+  },
+  "implementation": {
+    "books_registry": "apps/hub/src/lib/books-registry.ts (NEW, pure, build-safe) — BOOKS_ARCHIVE_COURSES committed set + courseHasBookArchive(): the entry gate rides the COMMITTED books archive of record (a course joins when its books/<specKey>/ home lands on the books repo, the 133c upload law; chemistry first per b589745). The SHELF page stays the LIVE gate (the T-C20 validation flip at the api) — an entry card can only ever lead to an honest shelf, never a fabricated book. No snapshot is baked over the flip lever.",
+    "course_page": "apps/hub/src/app/courses/[course]/page.tsx — Revision band grows the Student Book card (BookMarked icon, Study tag): ready+linked (/books, cta 'Open the book') when courseHasBookArchive(slug); honest roadmap variant ('planned next in the books rollout', no link) otherwise — truthful for the operator's stated rollout intent; ResourceItem grew optional ctaLabel (renderer default 'All topics' byte-unchanged for all pre-existing cards); the CourseHeader description mentions the student book.",
+    "test": "apps/hub/src/lib/books-registry.test.ts (3 tests / 7 expects): 4CH1 admitted, other courses + junk honest-false."
+  },
+  "gates": {
+    "typecheck": "tsc --noEmit exit 0 (apps/hub)",
+    "unit": "books-registry.test.ts 3 pass / 0 fail; full src/lib suite 127 pass / 5 fail — the 5 are the PRE-EXISTING api.v2-surface dual-run block on whole-dir runs (baseline stash-verified: same 5 fail on the pre-change tree; file-isolated run 0 fail) — not a regression of this band",
+    "build": "bun run build exit 0; prerender verified in .next/server/app HTML: igcse-chemistry-19 carries 'Student Book' + href /courses/igcse-chemistry-19/books + 'Open the book'; igcse-physics-19 (control) carries the roadmap variant with ZERO book links"
+  },
+  "rollout_lever": "the operator's 'then we will plan something' = scaling books to each course. The entry scales by ONE committed line per course in BOOKS_ARCHIVE_COURSES as each books/<specKey>/ archive home lands (133f maths-a readiness is already dry-run green — its line lands when the package rolls). Deriving the set from the archive index instead of hand-maintenance is the operator-keyed follow-up.",
+  "write_ledger": "hub-plane only (3 files: lib/books-registry.ts + test + course page); zero api/core/db changes, zero Neon, zero LLM, zero resources-repo contact; fetch-first (synced to aef77e2 before work), no force",
+  "verification_plan": "PR CI green -> merge -> hub auto-bake (the 08c6b17 law) -> live probes: course page HTML carries the books href; shelf 200 with the Jim Clark book"
+}

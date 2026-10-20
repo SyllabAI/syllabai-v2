@@ -9927,3 +9927,18 @@ Stage Summary:
 - The operator's two acts are EXECUTED OF RECORD: (1) the prod-credential path landed (PR #221, proven on the live gate); (2) the gate fired twice (runs 39470460696 + 39472595952) with production untouched and the guard holding verbatim.
 - The phase-4 FLEET itself is honest-red on 5 real defect classes the offline build validation could not see — exactly what the COW-proof stage exists to catch. Repair program scoped in the run-002 receipt; prod apply stays blocked until the fleet is green on the COW. Operator decision: authorize the repair program or re-route.
 - fetch-first, no force; receipts PR (.syllabai-only); zero prod writes.
+
+---
+Task ID: T-MIG-133 band 133k (course-page books entry)
+Agent: r7a (Super Z, session web-da4ab8b1, chat 1f3003b6)
+Task: operator trace 1a15a87407daa94d — books decision taken per course; chemistry done but "there is no option in course page, quickly add that".
+
+Work Log:
+- Fetch-first to aef77e2. FINDING of record: the books shelf (/courses/<slug>/books, force-dynamic, built by bands 133c/133h) was an ORPHANED SURFACE — live 200, shelf api serves the VALIDATED 4CH1 book (e6c0db50, Jim Clark, 383pp), yet the course hub page had ZERO inbound links. Slug of record: igcse-chemistry-19 = pearson-edexcel/international-gcse/chemistry/4ch1.
+- IMPLEMENTED: lib/books-registry.ts (NEW pure build-safe registry — BOOKS_ARCHIVE_COURSES committed set + courseHasBookArchive(); the entry gate rides the COMMITTED books archive of record, the shelf page stays the LIVE T-C20 gate — an entry can only lead to an honest shelf, never a fabricated book; no snapshot baked over the flip lever) + the course page Revision band grew the Student Book card (BookMarked/Study; ready+linked for chemistry with cta 'Open the book', honest roadmap variant 'planned next in the books rollout' for the others — truthful for the operator's stated rollout; ResourceItem grew optional ctaLabel, pre-existing cards byte-unchanged) + the header description mentions the student book.
+- GATES: tsc exit 0; books-registry.test.ts 3/0; full src/lib suite 127 pass / 5 fail with the 5 STASH-VERIFIED PRE-EXISTING (api.v2-surface dual-run block on whole-dir runs; file-isolated 0 fail); bun run build exit 0 with the prerender HTML verified BOTH ways: chemistry carries 'Student Book' + /books href + 'Open the book', physics control carries the roadmap variant with ZERO book links.
+- Rollout lever for the operator's 'then we will plan something': one committed line per course as its books/<specKey>/ home lands (133f maths-a is dry-run green — its line lands when the package rolls); deriving the set from the archive index is the operator-keyed follow-up.
+
+Stage Summary:
+- Band 133k landed: the books ENTRY is on the course page — data-driven, build-safe, honest by construction. Receipt: .syllabai/receipts/T-MIG-133/band-133k-course-entry-run-001-r7a.json.
+- Write ledger: 3 hub files only; zero api/core/db/Neon/LLM/resources contact; fetch-first, no force. PR for the R0-auto desk.
