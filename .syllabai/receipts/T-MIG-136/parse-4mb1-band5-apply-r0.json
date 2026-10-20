@@ -1,0 +1,63 @@
+{
+  "receipt": "parse-4mb1-band5-apply-r0",
+  "task": "T-MIG-136",
+  "class": "PARSE LANE BAND 5 — the operator-gated PROD APPLY of record (the anchored bank is LIVE in production; the QUESTION axis for 4MB1 is no longer dormant)",
+  "operator_trace": "1a15b09841a8df7d — the operator delivered the POOLED CONNECTION URI (staged 0600, never printed), answering the band-4 'remaining' ask verbatim ('the apply requires the operator to re-stage SEED_DATABASE_URL (inline 0600 law)'). The URI delivery IS the gate-open act of record; the parse lane runs under the standing order 1a15874ec638c2f9 with the capability root 1a15a45dca86c409 ('tutor needs to be able to answer maths B related questions, fetch past papers, know the curriculum')",
+  "agent": "r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)",
+  "executed_at_utc": "2026-10-20T21:06:10Z .. 21:5xZ",
+  "gate_reading_disclosure": "the band-4 receipt named the operator re-staging the credential as THE remaining dependency of the apply leg; the operator's URI message (trace above) followed the lane's explicit statement of what fires on receipt (COW proof -> gated apply -> battery re-fire). No other operator text accompanied the URI. The COW-proof-first law was honored in full before any prod write.",
+  "credential_law": "the pooled URI staged at /home/z/my-project/.credentials/seed-database-url (0600, dir 0700; gitignored); consumed inline-env per-command only; never printed, no copies, nothing committed; rotation standing. The earlier Neon PAT (napi_jy4y…sapok, Task-66) remains staged and UNUSED (control-plane DNS-blocked from this sandbox class — re-confirmed live 19:55Z Oct 20)",
+  "plane_finding_of_record": "serial RTT to the pooled endpoint measured 408ms (20-probe bun probe; connect 1.7s; prod server = PostgreSQL 18.6 aarch64 — the run-004 SAME-major pin). The FULL-package apply (~7,785 statements) would be ~53-68 min serial — INFEASIBLE from this sandbox (10-min tool cap; spawned processes reaped — the t138 addendum-1 evidence). The apply therefore ran PER-SET (the 134b method of record: '19 sets across 4 foreground chunks; the per-set atomic transaction rolled it back, zero partial state'), 64 sets across 7 foreground chunks (~32s/set measured), each set = its own atomic ADR-026 replace, resume-from-persisted-state between calls (b5_state_prod.json). Zero background processes, zero scheduling, every chunk completed inside its tool call.",
+  "runner_of_record": "the 134b shape rebuilt: createSql adapter seam (apps/api/src/services/identity/users.ts — T-MIG-014 driver dispatch: Neon URL -> NeonWsClient; local URL -> PostgresJsClient) + the FROZEN SmeQuestionIngestService + buildSmePackage/bundleQuestionsZip verbatim. The in-repo ingest-bundle-questions.ts apply-path TypeError (the 134b-filed defect: raw postgres-js tx lacks .transaction) STILL STANDS at HEAD — this act did NOT edit the frozen runner or service; the local runner staged UNCOMMITTED under gitignored node_modules/.lane/b5_apply.ts per the 134b law ('staged uncommitted, deleted post-gate; defect filed for the 135/136 owners' — this lane IS the 136 owner; the fix remains a code-plane act needing its own gates, not smuggled into an apply act)",
+  "cow_proof": {
+    "law": "the 093/134c/run-004 COW-proof-first law; the pg-cow LOCAL-REPLICA substitute of record (api.neon.tech control-plane DNS-blocked from this sandbox class — re-confirmed live this run via getent/curl exit 6)",
+    "rebuild": "embedded PostgreSQL 18.4 user-space binaries (npm @embedded-postgres/linux-x64@18.4.0-beta.17 — the run-004 version pin; prod 18.6 = SAME major), trust-auth cluster on 127.0.0.1:55433, db 'cow'",
+    "schema": "replica DDL generated from PROD information_schema (schema-dump.mjs): 10 tables / 90 columns / 0 enums / 16 PK+UNIQUE constraints / 12 plain indexes, defaults VERBATIM, FKs+extensions omitted (the run-004 law); the tables = the replace's read+write set: questions, question_versions, mark_schemes, mark_points, question_parts, question_options, question_spec_points, question_topics, question_asset, knowledge_nodes",
+    "rows": "READ-ONLY copy from prod, batched, count-equal per table: 5,076 + 5,076 + 5,054 + 10,986 + 12,096 + 1,704 + 8,138 + 1,717 + 585 + 1,022 = 50,754 rows (copy-rows.mjs, 20:55:12Z); ZERO prod writes during the proof",
+    "replica_result": "per-set apply all 64 non-empty sets (localhost, sub-ms RTT) -> verify battery 13/13 ALL GREEN -> idempotency probe set 33 (deactivated 10 / inserted 10 / active total unchanged 1,192) -> post-idem verify deltas EXACTLY the retained gen-1 rows (set 33: 10q/27p/30s — the ADR-026 evidence-safe retention law)",
+    "verify_legs": "V1 slice rows=pkg 1,192; V2 active=rows generation-1, 0 deactivated; V3 no dup active refs; V4 versions VALIDATED=1,192; V5 mark_schemes=1,192; V6 mark_points=2,106; V7 parts=2,106; V8 spec rows=2,101 all PRIMARY all AI_VALIDATED; V9 primary nodes 0 outside the 4MB1 subtree (119 nodes); V10 spec nodes 0 outside; V11 topics=0 (no secondaries of record); V12 asset store untouched 585; V13 bank active pre+rows exactly",
+    "disposition": "replica cluster STOPPED and data directory SHREDDED post-proof (rm -rf data pg.log)"
+  },
+  "prod_apply": {
+    "target": "production Neon default branch via the staged pooled URI (inline-env law; the of-record driver path createSql -> NeonWsClient)",
+    "race_guard": "pre-state of record 20:52:53Z census (mathsB 0/0; totals questions 5,076 / versions 5,076 / schemes 5,054 / mark_points 10,986 / parts 12,096 / options 1,704 / spec_points 8,138 / topics 1,717 / assets 585 / nodes 1,022 — the run-004 + 134b pins intact) + the runner's own pre-anchor at 21:06:10Z (activeQuestions 4,504) taken immediately before the first chunk",
+    "method": "per-set ADR-026 evidence-safe replace, 64 sets / 7 chunks (sets 0-4, 5-14, 15-24, 25-34, 35-44, 45-54, 55-64), each set ONE atomic transaction, slice-scoped deactivation of exactly that set's emitted refs (all fresh: deactivated=0 every set, generation-1)",
+    "empty_set_skip": "set 10 (2019-06-4mb1-02r--exam-questions) SKIPPED EMPTY-SET-OF-RECORD — 0 questions in the bundle (the quality-audit run-004's '1 empty' paper, receipt ecdda44); the frozen service would fail-closed 'package carries no questions'; nothing manufactured",
+    "per_set_summaries": "every set: mcq 0 / structured n / parts / markPoints=parts / specPointMappings / topicMappings 0 / assets 0 / deactivated 0; corpusVersion syllabai.sme-exam-questions/1.1@c2fcd88aea3620b9190950930d0861890d4ee524 (the resources import ref, band-2 of record); full ledger b5_state_prod.json (scripts/pg-cow/)",
+    "totals": "1,192 questions / 1,192 versions / 1,192 schemes / 2,106 parts / 2,106 mark_points / 2,101 spec joins (all PRIMARY, all AI_VALIDATED) / 0 topics / 0 options / 0 assets"
+  },
+  "post_apply_verify_all_green": {
+    "db_battery": "13/13 ALL GREEN on prod (prod-verify.json) — the COW-proof legs re-proven against production: slice rows 1,192 = pkg; generation-1 (0 deactivated); no dup refs; versions/schemes VALIDATED x1,192; mark_points=parts=2,106; spec rows 2,101 PRIMARY+AI_VALIDATED; isolation 0 outside the 4MB1 119-node subtree (both primary and spec nodes); topics 0; asset store untouched 585; bank active 4,504 -> 5,696 = pre + 1,192 exactly",
+    "idempotency": "prod idem probe set 33: deactivated 10 / inserted 10 / active total unchanged 1,192 — the ADR-026 evidence-safe replace is idempotent ON PRODUCTION (prod-idem.json); post-state census 21:5xZ: questions 6,278 total / 5,696 active / mathsB 1,202 total (1,192 gen-1 active + 10 retained gen-1 rows of the idem probe) / spec_points 10,269 = 8,138 + 2,101 + 30 — arithmetic exact",
+    "wire_battery": "8/8 ALL GREEN (prod-battery.json, zero-LLM, 1 sanctioned sz-probe learner sz-b5-verify-3ac9acb1@example.invalid, live carrier syllabai-v2.vercel.app): B1 unauth bank 401 (authz shell); B2 probe registered 201; B3 subjects DB-live incl 4MB1 (8 subjects); B4 DECISIVE courseRef=4MB1-2016&topic=Number -> 200 total=252 resolvedNodes=13 led by 4MB1-S1-1A (the 136c-era honest-empty total=0 -> LIVE growth); B5 chemistry control courseRef=4CH1-2017&topic='Rates of reaction' -> 200 total=56 (the 137d-era pin EXACT — zero regression); B6 unscoped topic refusal resolvedNodes=0 (multi-owner forcing function, now four active owners); B7 cross-corpus 4MB1+chemistry-topic -> 0 (no leak); B8 draft cv GEN-INGEST -> 0 (fail-closed exact-ACTIVE law)"
+  },
+  "four_subsystem_posture_update": {
+    "tutor": "fetch-bank arm NOW SERVES REAL DATA for 4MB1 (1,192 anchored past-paper questions across 64 papers, 2018-2026) — the operator's 'fetch past papers' capability is LIVE of record; graph arm LIVE since run-004",
+    "smart_mark": "CAPABLE as a side effect (the same rows serve both arms — the band-4 posture statement, now fact) but operator-DESCOPED of record (trace 1a15a45dca86c409: 'Maths B does not have Exam Questions yet so we there is no need of smart mark'); nothing spent certifying it; dormancy language in older receipts is superseded by this receipt for the QUESTION axis (append-only honored)",
+    "cla": "LIVE since run-004 (unchanged)",
+    "learner_model": "LIVE since run-004 (unchanged); the bank rows are KG-keyed on the same 119-node tree the learner model consumes"
+  },
+  "write_ledger": {
+    "prod_writes": "64 per-set atomic ADR-026 replaces (1,192 questions + 1,192 versions + 1,192 schemes + 2,106 parts + 2,106 mark_points + 2,101 spec joins) + 1 idem-probe replace (10-row slice, gen-2 retained rows by law); ONE pre-anchor read + battery/idem/status reads; NO other prod contact",
+    "replica_writes": "the COW-proof on the disposable local replica (rebuilt from scratch; shredded post-proof)",
+    "cow_branches": 0,
+    "probe_learners": 1,
+    "llm_spend": 0,
+    "credentials": "inline-env only; never printed; nothing copied beyond the 0600 staging; nothing committed"
+  },
+  "fence": "zero rows outside the maths-b slice touched (proven: V12 assets 585 unchanged, V9/V10 isolation 0 outside, chemistry control 56 byte-pin, bank delta exactly +1,192); the in-repo runner + frozen service byte-untouched (the 134b defect note stands for its owners); T-MIG-138 drain window NOT crossed by this act's writes (07:05Z Oct 21 is future; the drain's own rows are the embeddings queue, disjoint from this slice); 4MA1/4PH1/4CH1/133e neighbors untouched; fetch-first before the receipt commit, no force",
+  "evidence_files": [
+    "/home/z/my-project/scripts/pg-cow/post-state-census.json (post-state of record: mathsB 1,202/1,192, spec_points 10,269)",
+    "/home/z/my-project/scripts/pg-cow/prod-verify.json (prod DB battery 13/13)",
+    "/home/z/my-project/scripts/pg-cow/prod-idem.json (prod idempotency probe)",
+    "/home/z/my-project/scripts/pg-cow/prod-battery.json (wire battery 8/8 incl. the decisive B4 leg)",
+    "/home/z/my-project/scripts/pg-cow/b5_state_prod.json (the per-set apply ledger: 64 summaries + the empty-set skip + the pre-anchor)",
+    "/home/z/my-project/scripts/pg-cow/replica-idem.json + replica-verify-postidem.json (the COW-proof artifacts; replica DDL/copy tooling = schema-dump.mjs / copy-rows.mjs / setup-cluster.sh / census.mjs, no secrets)"
+  ],
+  "next": [
+    "the in-repo ingest-bundle-questions.ts apply-path TypeError: this lane (the filed '135/136 owner') owes the code-plane fix through its own gates (PR + review) — NOT smuggled; until then the 134b runner shape stays the apply runner of record",
+    "hub serving surfaces pick the bank up DB-live (no redeploy law); the hub '/exam-questions' surfaces for Maths B now have data — operator may request a UI check lane",
+    "T-MIG-138 drain: window 07:05Z Oct 21 still future at this act's close; the armed plan fires on the first re-key after the window",
+    "coreBridge declaration for igcse-maths-b-16 (operator-declared per the 135d law) — NOW NON-MOOT (questions exist); standing: PAT rotation"
+  ]
+}
