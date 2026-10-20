@@ -1,0 +1,46 @@
+{
+  "receipt": "parse-4mb1-band1-pilot-r0",
+  "task": "T-MIG-136",
+  "class": "PARSE LANE BAND 1 — pilot of record (the 4MB1 past-paper parse lane fired)",
+  "operator_trace": "1a15874ec638c2f9 'fire the 4MB1 parse lane now, but check how chemistry was parsed'",
+  "agent": "r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)",
+  "executed_at": "2026-10-20T23:55+06:00",
+  "chemistry_e2e_map_of_record": {
+    "two_planes": [
+      "QUESTIONS-BANK plane (lights smart mark / tutor fetch-bank / learner QUESTION axis): sme-exam-questions/1.1 records -> bundle apps/hub/content/<slug>/questions.json -> 135b shim (bundle-questions.ts) -> frozen SmeQuestionIngestService (ADR-026) -> questions/question_parts/question_options/mark_schemes/mark_points/question_spec_points",
+      "DOCUMENTS-CHUNKS plane (the vector arm): pdflane atoms -> atoms_to_canonical -> POST /api/v1/teacher/content/documents + embeddings (the T-C75 W2 route)"
+    ],
+    "parse_engine_of_record": "SyllabAI/syllabai-parser tools/pdflane (deterministic phase-1: pdftotext base layer + PyMuPDF + OpenDataLoader second opinion (optional, absence recorded); gates G1-G6; validation V1-V5; products committed back into the archive paper dir per commit be3b661 'lane placement')",
+    "chemistry_bank_provenance": "the SME banks (incl. chemistry 4CH1 and maths-a 4MA1 = the 2967 in prod) came from Save My Exams topic-question scrapes, NOT from past-paper PDFs; SME carries ZERO maths-b topic questions (manifest status no_topic_questions_on_sme) — for 4MB1 the past-paper PDFs are the ONLY question source, so the parse lane IS the bank lane for 4MB1"
+  },
+  "band_1_discharge": {
+    "sync": "syllabai-pastpapers + syllabai-parser worktrees synced to origin/main (3063c71 / c507ff1); sparse-checkout widened to the 4mb1 subtree (137 PDFs, 82MB); env: pdftotext 25.03.0 + PyMuPDF 1.26.7 (the chemistry-run versions); OpenDataLoader CLI absent — recorded as ODL-SECOND-OPINION-UNAVAILABLE escalations (optional second opinion by design)",
+    "dialect_census": "66 4MB1 ms.pdf headers: 60x dialect A 'Question Working Answer Mark Notes'; 6x 2018-06 legacy 7-column dialect B (Question Working Answer Notes Mark Sub-Total Total) — detected, routed to review, never guessed",
+    "grammar_built": "tools/pdflane/parse_ms_maths.py (deterministic, parse_ms output contract) + run_paper.py dialect route (parse_ms byte-unchanged — chemistry regression impossible, 15/15 test modules green) + tests_maths_grid.py (12 page-verbatim fixtures); committed syllabai-parser e39fdd5",
+    "laws_proven": [
+      "the Mark column cell is VERTICALLY MERGED — its value prints on the first row of the span it covers (per part: q4 (a)->1 (b)->2; per question when unparted: q5->3; across parts: q1 one cell '2' over (a)+(b)) and validates the SUM of the M/A/B code-marks of its span",
+      "row marks come from the mark-type codes (B1/M1/A1/B2...) in Notes",
+      "dep-reference law: a code inside 'dep on / dependent on ...' phrasing references another mark ('M1 dependent on 1st M1 for ...' = ONE mark)",
+      "parenthesised split-award notes ('(B1 for an expression ...)') are not scored points",
+      "SC special-case codes ('SC B1 for awrt 3.6') never count toward totals",
+      "Alt alternative-method blocks repeat the main route's codes — recorded honestly as ALT-ROUTE-CODE-SKIPPED, never re-scored",
+      "decimal-safe mark cells ('0.04' does not tokenize as cell 4); col-0 x-guard + sequential question openers (working math like '3 - 2 7 2' cannot hijack a question boundary); closed questions never reopen"
+    ],
+    "pilot_of_record": {
+      "paper": "past-papers/pearson-edexcel/international-gcse/mathematics-b/4mb1/past-papers/2024-06/4MB1-01 (qp.pdf + ms.pdf, sha256 per the paper manifest)",
+      "qp_side": "27/27 questions, 100/100 marks, identity G6 PASS — the UNTOUCHED chemistry QP grammar handles the maths B QP dialect as-is ('Total for Question N is X marks' closers exist in maths B)",
+      "ms_side": "27/27 questions, 96 mark points, 21/27 marks-exact closure, 6 honest per-question arithmetic flags (G1 FAIL carries them); zero unaccounted content (G5 PASS, buckets unclassified=0); zero furniture leaks; product marksVerified=false (honest — the 6 flags)",
+      "gates": "G2 QP-closure PASS, G3 MS/QP census PASS, G4 assets PASS, G5 row-accounting PASS, G6 identity PASS, G1 FAIL (the 6 flags), overall FAIL = honest review posture, nothing silent",
+      "products": "parsed/{questions.json,qp.md,ms.md} placed in the archive paper dir; committed syllabai-pastpapers 4eb7b54"
+    }
+  },
+  "known_gaps_next_bands": [
+    "band 2 — grammar round 2 on the 6 flagged questions (q9/q18/q19/q20/q22/q24: Alt-block variants, one undercount class) + the dialect-B (2018-06, 4 papers) parser + the corpus wave (remaining 65 papers)",
+    "band 3 — bank assembly: atoms -> sme-exam-questions/1.1 records (topic slugs from the 10 spec sections; source_paper provenance per part: session/paper/qnum/part) -> bundle apps/hub/content/igcse-maths-b-16/questions.json",
+    "band 4 — the shim alnum code-join amendment (bundle-questions.ts emits '4MB1-1A' but the live KG dbCode is '4MB1-S<n>-<code>' — the one code delta the 136b 'verbatim IF/WHEN' claim does not cover; filed for the lane) + the ingest driver apply-path TypeError (use the createSql-seam runner per the 134b of-record method)",
+    "band 5 — COW-replica proof (local schema-faithful PG18 substitute; api.neon.tech control-plane DNS-blocked) -> operator-gated apply -> 136d battery re-fire to prove dormancy lift",
+    "license posture: Pearson exam material is NOT covered by the SME attestation — this lane records the operator's firing order as the authorization (the 134c law: the firing order IS the operator authorization), ADR-013 non-commercial pilot posture, no redistribution claims, per-part source_paper provenance + per-paper sha256 pinned"
+  ],
+  "fence": "4MB1-only; 4MB0 legacy rows out of scope; 4MA1/4PH1/4CH1 untouched (chemistry grammar byte-unchanged proves it); zero prod writes, zero Neon, zero LLM, zero probe learners",
+  "write_ledger": "code + fixtures + pilot products only; three repos advanced (parser e39fdd5, pastpapers 4eb7b54, v2 this commit); fetch-first each; no force"
+}

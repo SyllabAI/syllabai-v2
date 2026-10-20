@@ -9392,3 +9392,20 @@ Work Log:
 
 Stage Summary:
 - fetch-first, no force; .syllabai-only receipt commit
+
+---
+Task ID: trace 1a15874ec638c2f9 (T-MIG-136 parse lane BAND 1 — the 4MB1 past-paper parse lane fired; pilot of record)
+Agent: r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)
+Task: operator: "fire the 4MB1 parse lane now, but check how chemistry was parsed etc" — map the chemistry E2E, then fire the 4MB1 lane on the same rails.
+
+Work Log:
+- Chemistry E2E mapped of record (two planes): the QUESTIONS-BANK plane (sme-exam-questions/1.1 -> bundle questions.json -> 135b shim -> ADR-026 SmeQuestionIngestService -> DB; the SME banks incl. 4MA1's 2967 came from Save My Exams scrapes — SME carries ZERO maths-b topic questions, so for 4MB1 the past-paper PDFs ARE the only question source) and the DOCUMENTS-CHUNKS plane (pdflane atoms -> canonical docs -> teacher/documents + embeddings, T-C75 W2). Parse engine of record: syllabai-parser tools/pdflane (deterministic, gates G1-G6, V1-V5, products committed into the archive paper dir per be3b661).
+- Tooling synced: pastpapers + parser worktrees to origin/main (3063c71/c507ff1); sparse-checkout widened to the 4mb1 subtree (137 PDFs 82MB); pdftotext 25.03.0 + PyMuPDF 1.26.7 (chemistry-run versions); OpenDataLoader absent -> ODL-SECOND-OPINION-UNAVAILABLE escalation (optional by design).
+- 66-file MS header census: 60x dialect A ('Question Working Answer Mark Notes'), 6x 2018-06 legacy dialect B (7-column) — detected and routed to review, never guessed.
+- Word-coordinate study (4MB1-01 2024-06 pages 6/8) proved the dialect: the Mark column cell is VERTICALLY MERGED over the span it covers (per part / per question / across parts — q1 one cell '2' over (a)+(b)) while row marks come from the M/A/B codes.
+- BUILT tools/pdflane/parse_ms_maths.py (deterministic, parse_ms output contract) + the run_paper dialect route (parse_ms BYTE-UNCHANGED — chemistry 15/15 test modules green, regression impossible) + tests_maths_grid.py (12 page-verbatim fixtures). Laws proven and tested: merged-cell span validation; dep-reference skip ('M1 dependent on 1st M1' = one mark); parenthesised split-award notes not scored; SC codes never counted; Alt blocks recorded as ALT-ROUTE-CODE-SKIPPED, never re-scored; decimal-safe cells; col-0 x-guard + sequential openers; closed questions never reopen.
+- PILOT of record 4MB1-01 2024-06: QP side 27/27 questions 100/100 marks with the UNTOUCHED chemistry grammar ('Total for Question N is X marks' closers exist in maths B); MS side 27/27 questions / 96 points / 21 of 27 marks-exact closure, 6 honest per-question arithmetic flags (G1), ZERO unaccounted content (G5 PASS), G3/G4/G6 PASS — overall FAIL = honest review posture, nothing silent. Products parsed/{questions.json,qp.md,ms.md} placed in the archive paper dir.
+- Pushed: syllabai-parser e39fdd5 (grammar), syllabai-pastpapers 4eb7b54 (products), this commit (receipt + worklog).
+
+Stage Summary:
+- BAND 1 DONE of record: the 4MB1 parse lane is FIRED and PROVEN end-to-end on the pilot paper — engine built, dialect laws pinned by tests, pilot products filed; chemistry untouched. Next bands filed in receipt parse-4mb1-band1-pilot-r0.json: (2) grammar round 2 on the 6 flagged questions + dialect-B + the 65-paper corpus wave; (3) bank assembly to sme-exam-questions/1.1 + bundle questions.json; (4) the shim alnum code-join amendment (bundle '4MB1-1A' vs live KG '4MB1-S<n>-<code>' — the one code delta 136b's 'verbatim IF/WHEN' does not cover) + the createSql-seam apply runner; (5) COW replica proof -> operator-gated apply -> 136d battery re-fire. License posture recorded: Pearson exam material outside the SME attestation; the operator's firing order IS the authorization (134c law); ADR-013 pilot posture; per-part provenance + sha256 pinned. Bookkeeping+lane-code only; zero prod writes, zero Neon, zero LLM; fetch-first, no force; 4MB1-only fence.
