@@ -50,7 +50,8 @@
   "diagnosis": "LOCAL build:hub exit 0 (full log captured, no size warnings, all routes) + CI hub job success on the SAME tree \u2014 the failure is Vercel-environment-side (their install/build wrapper, builder resources, or a platform incident); the predecessor production deploy 16c40fb0 succeeded, so the trigger is this lane's diff OR a Vercel-side change \u2014 indistinguishable without build logs",
   "logAccess": "needs the operator's Vercel token (VT, session-inline per the Task-11/12 pattern \u2014 the sandbox rollback consumed it); the of-record read path: vercel_recon.py / vercel_poll_deploy.py with VT; the target: npx vercel inspect dpl_FvKG94CwfYF6642KPpGwxEyv1Vn9 --logs",
   "servingState": "production STILL SERVES 16c40fb0 (pre-lane) \u2014 ZERO learner-facing regression; the lane's data is merged but NOT yet learner-visible",
-  "posture": "no retry-by-empty-commit on main (history hygiene); no force anywhere; the deploy fix is the lane's open incident, operator-keyed"
+  "posture": "no retry-by-empty-commit on main (history hygiene); no force anywhere; the deploy fix is the lane's open incident, operator-keyed",
+  "decisive datapoint": "the .syllabai-only receipt commit fc617e7 (ZERO content delta, 2 small JSON files) ALSO failed its production deploy (dpl_BFyrLuqb2FDs54) \u2014 the failure is NOT content-dependent; environmental/platform-side (started between 09:12Z and 09:26Z 2026-10-20, or a project-state/quota condition); a content revert would not fix it; operator-keyed via VT stands"
  },
  "processDisclosures": [
   "the lane's first 'ff_exit=0' measured tail's exit, not the merge's \u2014 the FF never fired (dirty-worklog abort); caught by the PR dirty state + reflog adjudication; resolved per AGENT_COORDINATION section 5 (worklog append-union merge e1d7147); PIPESTATUS discipline adopted",

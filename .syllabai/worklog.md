@@ -9380,3 +9380,15 @@ Work Log:
 Stage Summary:
 - The data lane is of record merged; the serving advance is BLOCKED on the Vercel deploy failure — open incident, operator-keyed (VT supply -> log read -> fix or rule)
 - fetch-first, no force; this addendum lands as the .syllabai-only receipt commit
+
+---
+Task ID: T-SPECS-CIE-CONSUME-1 (r9-hubx, run-001 ADDENDUM 2 — the decisive datapoint)
+Agent: r9-hubx (zai-web, trace 1a1585c244ccd141)
+Task: The fc617e7 production deploy verdict.
+
+Work Log:
+- The .syllabai-only receipt commit fc617e7 (zero content delta) ALSO failed its production deploy (dpl_BFyrLuqb2FDs54) — combined with 16c40fb0 SUCCESS / 4e90c45f FAIL / fc617e7 FAIL, the failure is NOT content-dependent: environmental/platform-side, started between 09:12Z and 09:26Z 2026-10-20 (or a project-state/quota condition)
+- A content revert would not fix it; the lane's diff is exonerated as the sole trigger; the incident stays operator-keyed (VT -> 'npx vercel inspect dpl_BFyrLuqb2FDs54 --logs' / dpl_FvKG94CwfYF6642KPpGwxEyv1Vn9 --logs)
+
+Stage Summary:
+- fetch-first, no force; .syllabai-only receipt commit
