@@ -9847,3 +9847,15 @@ Work Log:
 
 Stage Summary:
 - Push of record: <see receipt(R0-4CH1-RESIDUAL-CENSUS) landing commit on origin/main>; rotation of both PATs still open; VERCEL_TOKEN staging still absent.
+
+---
+Task ID: trace 1a15a711df5cafa9 (addendum: landing of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- Landing verified of-record: rebase onto cc0eae2 (6 sibling commits: PR #221 prod-cred amendment, pastpapers maths-b index check, tutor-repair receipt) + worklog union-resolve (0 markers left) -> PUSH b512d95 (cc0eae2..b512d95, main->main, no force). The census receipt R0-4CH1-RESIDUAL-CENSUS/run-001-r0.json + census/recommendation/PAT entries all landed in b512d95 itself.
+- credential.helper store restored repo-local (config was lost in ROLLBACK #5 wipe) — root cause of the first push's 'could not read Username'.
+- Standing: PAT rotation OVERDUE (same token re-staged, transited chat twice); VERCEL_TOKEN staging still absent.
+
+Stage Summary:
+- Push of record = b512d95. Bookkeeping-only, .syllabai/** in-boundary; zero code/content/DB/Vercel/LLM contact; no force.
