@@ -10066,47 +10066,31 @@ Stage Summary:
 - WORKLOG DEFECT DISCLOSED: the first rebase union naively concatenated the two full staged versions and DOUBLED the 149 shared base entries (301 vs the honest 151); caught pre-push by the T-MIG-SEED duplicate count (2 vs 1) and repaired in this same commit to the protocol's intended union — origin/main's full version byte-exact + this one new entry; no pre-existing entry text altered
 
 ---
-Task ID: T-CONSUME-EDX-1 run-001 (edexcel-bundle-refresh)
-Agent: main agent (Super Z, operator session web-64d10b73-530a-4f71-9961-85d0436c7fb5, trace 1a15adbce1a36d59)
-Task: "Edexcel bundle refresh fired as the next lane" (2026-10-21, zai-web) — refresh the hub's Edexcel content packs from syllabai-resources at the current tip; hub is RETIRED, v2 is production (operator correction).
+Task ID: trace 1a15adf87e74fa39 (wave-1 SHIP live-verification of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
 
 Work Log:
-- fetch-first: resources origin/main drifted a645faf4 -> 6ee5ada (T-PARSE-4PH1-4-R2 final + T-BOOKS-README-1); local clone FF-synced; local heal+R41 fork identified as superseded duplicate (origin landed the same work as INCIDENT-RESTORE-1 batches + 52d807f/0fe5f77) — tagged superseded-local-heal-r41-line, local main re-pointed to origin tip, no force
-- recon: 95 content packs in v2 (49 Edexcel @ 7575585/2026-09-17 pin, 46 CIE @ 0fe5f77); upstream SME corpus grew ~2.5x since the Edexcel pin (RN 13,957 -> 34,303 blobs; EQ 20,516 -> 34,465; FC 1,714 -> 4,315)
-- pipeline pinned to 6ee5ada: tree JSONs generated from the pinned commit via API (local clone is blob:none partial — ls-tree -l would lazily fetch 50k blobs); fetch_corpus 12,031/12,031 failed=0; build_bundles rebuild with CIE guard
-- REGRESSIONS CAUGHT AND FIXED pre-push: (1) registry rebuild dropped/regenerated CIE rows — carry-forward added, 45 CIE rows byte-identical incl. cie-a-level-maths-20-pure-2; (2) rebuild skipped the entire post-build repair+curation stack — re-applied in full: 23a dict refetch 1,169/1,169 (43,387 pairs), math patch 23,049 -> 67 spans, fix_tail 19, residual graft (33 isotopes {}^{N}{X} + path-aligned grafts), 23c 16 dangling -> 0, 23d 12-lane annotations, pilot curriculum + 5 registry curriculumCode rows + 46 board/7 subject display-name carries
-- accounting-17 x2 kept byte-at-HEAD: committed content-maps reference IGCSE_ACCOUNTING codes outside the committed spine scope (pre-existing maps-vs-spine inconsistency surfaced by --check) — own lane; their upstream deltas are metadata-only
-- gates: corpus 23a ALL ZERO; flashcard sync PASS; CIE validator PASS; build_corpus_static 218.4MB/806 entries; build:hub (next build) exit 0
-- content delta of record: ONLY igcse-maths-b-16 questions 1,249 -> 0 — upstream's own no_topic_questions_on_sme census (live-verified 2026-09-19/20, 'no questions synthesized' law); notes/flashcards/specPoints byte-stable in aggregate
+- RESET #6 disclosed: repo rolled back to 63fe6ef (behind 301), secrets staging + download/ artifacts + new scripts wiped between turns. FF-only re-ground; both tokens re-staged 0600 (fingerprints MATCH of-record: a8ccee736aa8c75b / d254bbfaac004354 — re-stages, NOT rotations; rotation overdue x2).
+- Vercel API verified 200 (user syllabai-1403, team_ULL54qkhzKBmnKrpO6BD4mYX). False-OK verify practice (parsing error body) disclosed and corrected with status checks.
+- SHIP DISCOVERY: GitHub integration already auto-deployed 89b4105 as dpl_8JMJGRGXtZZXM17UoxUjmogV9xVF (READY, production) — zero manual deploys fired this run; INFLIGHT-GUARD clean (top-3 prod all READY).
+- LIVE PROOF: 54/54 wave-1 appends verified live at exact kill-list coordinates (reconstructed from the 89b4105 commit diff — git history is the of-record after artifact wipe); whole-file live corpus == 89b4105 content; corpus +4,168 bytes.
+- Battery t215b r1a re-fired post-ship: 11/11 PASS.
 
 Stage Summary:
-- 47 Edexcel packs now pin main@6ee5ada (was 7575585/2026-09-17); CIE untouched (0 paths); accounting at HEAD; every gate at baseline zero; full build green
-- receipt: .syllabai/receipts/T-CONSUME-EDX-1/run-001-edexcel-bundle-refresh.json
-- followups of record: accounting maps-vs-spine (own lane); cie-a-level-maths-20-pure-2 provenance gap (CIE lane); CIE pack refresh @ 6ee5ada (likely NEXT #2); Maths B question-bank removal is user-visible on deploy
-- fetch-first, no force, secrets untouched, PAT rotation still CRITICAL overdue on the operator side
-  - MID-LANE REBASE AMENDMENT (pre-push): origin advanced 0b98e40 -> c7d1db5 (R0-4CH1-RESIDUAL-CENSUS appends in igcse-chemistry-19 notes/questions, cie-phase4 repair tranches, T-MIG-136 band 5 4MB1 past-paper axis live). Pilot restored byte-exact from origin/main (its rebuild would have wiped the residue appends; pin refresh defers to the R0 lane). Maths B SME-bank removal == T-MIG-136 136b honest dormancy — complementary to the live past-papers axis. 46 packs shipped + golden excluded.
+- Wave-1 is SHIPPED and verified live on https://syllabai-hub-v2.vercel.app — 16 grade-A codes now live on the questions axis; coverage of record 170/182 questions, residual 11 (grade-B, wave-2 pending). Receipt run-003-wave1-ship-live-r0.
 
 ---
-Task ID: T-CONSUME-EDX-1 run-001 (edexcel-bundle-refresh)
-Agent: main agent (Super Z, operator session web-64d10b73-530a-4f71-9961-85d0436c7fb5, trace 1a15adbce1a36d59)
-Task: "Edexcel bundle refresh fired as the next lane" (2026-10-21, zai-web) — refresh the hub's Edexcel content packs from syllabai-resources at the current tip; hub is RETIRED, v2 is production (operator correction).
+Task ID: pp-provenance-verify-003
+Agent: r0
+Task: Verify chemistry interactive source (resources SME ExamQuestions) + 4mb1 parse purpose (operator trace 1a15ade9c67cf469)
 
 Work Log:
-- fetch-first: resources origin/main drifted a645faf4 -> 6ee5ada (T-PARSE-4PH1-4-R2 final + T-BOOKS-README-1); local clone FF-synced; local heal+R41 fork identified as superseded duplicate (origin landed the same work as INCIDENT-RESTORE-1 batches + 52d807f/0fe5f77) — tagged superseded-local-heal-r41-line, local main re-pointed to origin tip, no force
-- recon: 95 content packs in v2 (49 Edexcel @ 7575585/2026-09-17 pin, 46 CIE @ 0fe5f77); upstream SME corpus grew ~2.5x since the Edexcel pin (RN 13,957 -> 34,303 blobs; EQ 20,516 -> 34,465; FC 1,714 -> 4,315)
-- pipeline pinned to 6ee5ada: tree JSONs generated from the pinned commit via API (local clone is blob:none partial — ls-tree -l would lazily fetch 50k blobs); fetch_corpus 12,031/12,031 failed=0; build_bundles rebuild with CIE guard
-- REGRESSIONS CAUGHT AND FIXED pre-push: (1) registry rebuild dropped/regenerated CIE rows — carry-forward added, 45 CIE rows byte-identical incl. cie-a-level-maths-20-pure-2; (2) rebuild skipped the entire post-build repair+curation stack — re-applied in full: 23a dict refetch 1,169/1,169 (43,387 pairs), math patch 23,049 -> 67 spans, fix_tail 19, residual graft (33 isotopes {}^{N}{X} + path-aligned grafts), 23c 16 dangling -> 0, 23d 12-lane annotations, 5 registry curriculumCode rows + 46 board/7 subject display-name carries
-- accounting-17 x2 kept byte-at-HEAD: committed content-maps reference IGCSE_ACCOUNTING codes outside the committed spine scope (pre-existing maps-vs-spine inconsistency surfaced by --check) — own lane; their upstream deltas are metadata-only
-- gates: corpus 23a ALL ZERO; flashcard sync PASS; CIE validator PASS; build_corpus_static 218.4MB/806 entries; build:hub (next build) exit 0
-- content delta of record: ONLY igcse-maths-b-16 questions 1,249 -> 0 — upstream's own no_topic_questions_on_sme census (live-verified 2026-09-19/20, 'no questions synthesized' law); notes/flashcards/specPoints byte-stable in aggregate
-  - MID-LANE REBASE AMENDMENT (pre-push): origin advanced 0b98e40 -> c7d1db5 (R0-4CH1-RESIDUAL-CENSUS appends in igcse-chemistry-19 notes/questions, cie-phase4 repair tranches, T-MIG-136 band 5 4MB1 past-paper axis live). Pilot restored byte-exact from origin/main (its rebuild would have wiped the residue appends; pin refresh defers to the R0 lane). Maths B SME-bank removal == T-MIG-136 136b honest dormancy — complementary to the live past-papers axis. igcse-maths-b-16/spec-anchors.json (T-MIG-136 artifact) restored from origin after the rebuild dropped it. 46 packs shipped + golden excluded.
+- P1 TRUE: import_content.py fetches SME-ExamQuestion/igcse-chemistry-19 topics from syllabai-resources -> bundle questions.json (1,404 sourcePaper parts) -> interactive+SmartMark
+- P2 NOT OF RECORD: band-3 receipt documents 4mb1 parse -> atoms_to_bank.py -> sme-exam-questions/1.1 records -> hub bundle (seed stub 2B -> 2.8MB); purpose = manufacture interactive bank BECAUSE SME has no maths-b banks (T-SME-12 no_topic_questions_on_sme; resources maths-b SME dir = 4 metadata files only)
+- RAG: sole embeddings mention in 13 T-MIG-136 receipts is 'deliberately NOT fired'; no chunk/embed pipeline of record for parsed papers
+- Band-4 shim (2026-10-21): bank INGEST-READY, apply operator-gated; 136c prod apply seeded 4MB1-only KG
 
 Stage Summary:
-- 46 Edexcel packs now pin main@6ee5ada (was 7575585/2026-09-17); CIE untouched (0 paths); accounting + pilot at origin state; every gate at baseline zero; full build green
-- receipt: .syllabai/receipts/T-CONSUME-EDX-1/run-001-edexcel-bundle-refresh.json
-- followups of record: accounting maps-vs-spine (own lane); cie-a-level-maths-20-pure-2 provenance gap (CIE lane); CIE pack refresh @ 6ee5ada (likely NEXT #2); Maths B question-bank removal is user-visible on deploy (SME axis) while the past-papers axis serves 1,192 questions
-- fetch-first, no force, secrets untouched, PAT rotation still CRITICAL overdue on the operator side
----
 - Receipt ops-pastpapers/pastpapers-content-provenance-verify-run-003-r0.json; corrected model: chemistry=import SME banks, maths-b=manufacture bank from parsed papers; RAG-over-parsed-papers = new scope if wanted
 
 ---
@@ -10329,17 +10313,35 @@ Work Log:
 
 Stage Summary:
 - ORPHAN LANE CLOSED of record: 45 orphans -> 31 parts enriched (61 appends, run-008) + 1 ruling attach (4CH1-1.3, run-011) + 13 justified-empty strikes (run-010); coverage arithmetic unchanged throughout (166/171/residual 0). Remaining followups: specPointIds DB-side backfill, PAT rotation x2, CORS config.ts:60.
-
----
-Task ID: trace 1a15b4646f012945 (spcpt backfill followup ruling of record)
-Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task ID: Task-67 (trace 1a15b09841a8df7d — Band 5: the operator-gated PROD APPLY of record)
+Agent: r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)
+Task: the operator delivered the pooled connection URI (the band-4 'remaining' named re-stage) — execute Band 5 of record: COW-replica proof -> per-set prod apply -> verify + idempotency -> 136d battery re-fire.
 
 Work Log:
-- Operator directive 'address follow-up registers— DB backfilling (code axes currently only have 33)'; turn-open IN-SYNC; fetch-first clean (HEAD 081165a == origin/main).
-- Discovery: the 33 codes-only parts = exactly the lane-appended orphans (31 run-008 + 1 wave-2 + 1 run-011) — codes-only by design, ids never existed.
-- Evidence pass: (1) positional-zip exposed as artifact — specPointIds are sets; (2) global code->id function REFUTED by hard conflict at 4CH1-1.10 (4 pins, 3 co-present in one topic) — deterministic backfill impossible; (3) production DB (read-only probes, DATABASE_URL fp b289a229 staged 0600) holds ZERO chemistry-corpus rows and zero join rows — the legacy spcpt id-space belongs to the retired SME generation; DB knowledge_nodes 4CH1 SPEC_POINT 182/182 bijective healthy; (4) consumer law: DB pipeline joins on CODES (T-MIG-135b/135a), hub runtime ids reads are unreachable fallbacks (28/28 sets carry topicSlug; index keyed by corpus-native codes).
-- RULING run-013: backfill CLOSED NOT-APPLICABLE-OBSOLETE; pairing law amended of-record — codes = authoritative join axis, specPointIds = frozen legacy artifact census (codes-only 33 is the permanent posture, not a defect); alternatives disclosed (B partial legacy backfill not recommended; C true ingestion lane available on order).
-- Housekeeping: .core-db-env staged 0600 (probe credential); stale .neon-branch.env flagged; 755->600 perm fix; zero content writes; zero DB writes.
+- Plane findings of record: serial RTT 408ms measured (prod = PostgreSQL 18.6 aarch64); the ~7,785-statement full-package apply infeasible sandbox-side (10-min cap, reaper) — the apply ran PER-SET, the 134b method of record ('19 sets across 4 foreground chunks'), 64 sets across 7 chunks (~32s/set), state-file resume, zero background processes.
+- Runner: the 134b shape rebuilt (createSql adapter seam + FROZEN SmeQuestionIngestService; NeonWsClient on prod, PostgresJsClient on the replica); the in-repo runner's apply-path TypeError (the 134b-filed defect) stands at HEAD — untouched, the fix stays with this lane as the named owner (own gates, not smuggled).
+- COW proof: pg-cow rebuilt from the run-004 method — embedded PG 18.4 (npm @embedded-postgres/linux-x64@18.4.0-beta.17, the version pin), schema-dump from prod information_schema (10 tables / 90 cols / 16 constraints / 12 indexes, defaults verbatim, FKs omitted), 50,754 rows READ-ONLY count-equal, per-set replica apply -> verify 13/13 ALL GREEN -> idem probe pass -> teardown (stop + data dir shredded). Defect caught by the proof this time: none (the run-004 defaults law carried verbatim); one runner-side law learned: `<> any` is not "not in" — the verify isolation legs use `<> all` (the service's own `= any` membership shape untouched).
+- Prod apply: race-guard pre-state 20:52:53Z (mathsB 0/0, all store pins intact) + pre-anchor 21:06:10Z (active 4,504); per-set atomic replaces, all fresh (deactivated=0 every set, generation-1); set 10 (2019-06-4mb1-02r) SKIPPED EMPTY-SET-OF-RECORD (the quality-audit '1 empty' paper — nothing manufactured); every set summary mcq 0 / topicMappings 0 / assets 0 / corpusVersion @c2fcd88.
+- Post-verify: prod DB battery 13/13 ALL GREEN (1,192 rows / 2,106 parts / 2,106 mark_points / 1,192 versions+schemes / 2,101 spec joins all PRIMARY+AI_VALIDATED / isolation 0 outside the 119-node subtree / assets 585 untouched / bank 4,504 -> 5,696 exactly); prod idem probe PASS (deactivated 10 / inserted 10 / total unchanged 1,192); post-state census arithmetic exact (mathsB 1,202 total incl. the 10 idem-retained gen-1 rows; spec_points 10,269 = 8,138 + 2,101 + 30).
+- Wire battery (136d re-fire shape, zero-LLM, 1 sz-probe learner): 8/8 ALL GREEN — DECISIVE: courseRef=4MB1-2016&topic=Number -> 200 total=252 resolvedNodes=13 led by 4MB1-S1-1A (the 136c honest-empty 0 -> LIVE); chemistry control 56 byte-pin; unscoped/draft/cross-corpus refusals all hold.
+- Write ledger: 64 per-set replaces + 1 idem replace (slice-scoped, each atomic) on prod; the COW-proof on the disposable replica; probe learners 1; llm_spend 0; the pooled URI + the PAT staged 0600, never printed, nothing committed; fetch-first before this commit, no force.
 
 Stage Summary:
-- Followup register: specPointIds backfill CLOSED with evidence of record (run-013). Remaining register: PAT rotation overdue x2; CORS identity/config.ts:60 parked; stale .neon-branch.env cleanup; optional lane C (corpus DB ingestion) on operator order.
+- THE QUESTION AXIS FOR 4MB1 IS LIVE OF RECORD: the tutor fetch-bank arm serves 1,192 anchored past-paper questions across 64 papers (2018-2026) with 2,101 PRIMARY AI_VALIDATED spec joins on the 119-node tree — the operator's 'fetch past papers' capability (trace 1a15a45dca86c409) is DELIVERED; smart-mark capable-by-side-effect but descoped per the same trace.
+- T-MIG-136 parse lane bands 1-5 COMPLETE of record. Open: the in-repo runner TypeError fix (code-plane, own gates); T-MIG-138 drain window 07:05Z Oct 21 future at close; coreBridge declaration now non-moot (operator-keyed).
+- Receipt: parse-4mb1-band5-apply-r0.json; evidence: post-state census + prod verify/idem/battery + the per-set ledger + the replica artifacts (scripts/pg-cow/, no secrets).
+
+---
+Task ID: Task-68 (trace 1a15b4b3831d57a1 — operator "Some agent created interactive version of 4mb1 past papers. Check it out")
+Agent: r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)
+Task: first-hand live check of the interactive 4MB1 past-paper player the operator was pointed at; attribute it and report its state.
+
+Work Log:
+- Attribution of record: the interactive 4MB1 bank = the T-MIG-136 parse lane's manufactured sme-exam-questions/1.1 bundle (SME has no maths-b banks, T-SME-12) served by the hub player at /courses/igcse-maths-b-16/exam-questions — bands 1-3 corpus parse + bank assembly (4eb7b54/87b6b98/a00b96f parse-lane sessions), band 3b anchoring + band 4 shim (this lane), band 5 DB apply (this lane, c7d1db5). Prior R0-auto passes of record: pp-maths-b-mode2-erratum-002 (64-interactive badge census) + pp-4mb1-quality-audit-004 (parity verdict at 8ee371e).
+- LIVE first-hand probes (syllabai-hub-v2.vercel.app, GET only): index 66 set links + "1,249 questions" badge; 2018-06 4MB1/01 renders 37 questions with real text (5n-7 nth-term verified) + 28 totalMark fields; 2026-06 4MB1/01 renders 38; 2020-06 4MB1/02R renders 41; empty set 2019-06 4MB1/02R renders the honest banner "no questions parsed from the text layer (0/100 marks)" at 200; past-papers page badge "117 papers · 35 sessions · 64 interactive" + exactly 53 "not parsed yet" chips (50 legacy 4MB0 + 3 gaps: 2019-01/02R, 2019-06/02R, specimen 4MB1-01) — ALL match the of-record audit state, zero drift since 8ee371e.
+- Plane clarification: the interactive player is BUNDLE-fed (static hub content questions.json 2.8MB); the Band-5 DB bank (1,192 q / 2,106 parts / 2,101 PRIMARY joins, live since c7d1db5) serves the tutor/API axis — two planes, one parse origin. Smart Mark stays client-side and in-scope-descoped per 1a15a45dca86c409.
+- Write ledger: this worklog entry ONLY; GET probes; zero prod/DB/Neon/LLM writes; fetch-first (origin/main at c7d1db5 = this lane's own Band-5 receipt commit; no sibling advance), no force.
+
+Stage Summary:
+- Verdict delivered to operator: the "interactive version" is LIVE and healthy on the hub — 64 interactive 4MB1 papers with MS modals/Smart Mark/CLA/spec-joins, honest empty-state + honest not-parsed chips; quality posture = the audit-004 parity-or-better verdict stands (100% per-part spec tagging, 97% MS coverage; open deltas: difficulty labels, topic-bank view, 57 totalMark mismatches, 5 drifted papers, MS notation cleanup). The 3-paper gap list is corpus feedstock, not a player defect.
+- ADDENDUM (same act, post-push-attempt fetch-first): origin/main advanced c7d1db5 -> 2ece53b/8894a8c mid-act — the T-CONSUME-EDX-1 Edexcel bundle refresh (operator order trace 1a15adbce1a36d59, other session) landed with CONTENT DELTA igcse-maths-b-16 questions.json 1,249 -> 0, and the live auto-deploy caught up DURING this act: the maths-b exam-questions index went 66 set links -> 1 while the probes ran. The receipt frames the wipe as "data upstream has since determined should not exist" == 136b dormancy. OF-RECORD CONTRADICTION filed: upstream NEVER had maths-b topic questions (T-SME-12/no_topic_questions_on_sme was known at band-3 time — provenance run-003 P2 documents the bank was MANUFACTURED 4mb1-parse -> atoms_to_bank.py -> hub bundle precisely BECAUSE SME has none, under the operator's anchoring authorization trace 1a15a45dca86c409); the band-5 DB fetch-bank serves the tutor/API axis, NOT the hub interactive player — the two planes are not interchangeable for the learner. Only questions.json was zeroed (spec-anchors/curriculum/notes byte-present; manifest counts 0) — restore = one file from the of-record band-3 chain (recoverable at 8ee371e/a00b96f). No revert taken (theirs-verbatim-first, no force): the restore-vs-ratify ruling is OPERATOR-KEYED.
