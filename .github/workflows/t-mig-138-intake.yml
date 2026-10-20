@@ -1,0 +1,243 @@
+# T-MIG-138 band 138b/138c — the 4MA1 past-paper intake runner.
+#
+# The corpus-rows apply + the embeddings backfill, behind the 133d guard
+# protocol of record:
+#   job 1 (cow-proof): a disposable Neon COW branch off production (in-line
+#     read_write endpoint, NEON_API_KEY = the CI write-capable key of record),
+#     branch-local owner password reset, the FROZEN intake driver
+#     (apps/api/scripts/papers-ingest-138.ts, tranche-1 strict gate) applies
+#     the 4MA1 corpus rows against the COW, postverify counts, DROP the COW +
+#     404-verify — even on failure (if: always(), the T-MIG-035 discipline).
+#     Production roles are never touched.
+#   job 2 (prod-apply, needs job 1 ALL GREEN): the same driver against the
+#     production DATABASE_URL (the api's own role), postverify + artifact.
+#   job 3 (backfill, dispatch-gated separately — mode=backfill): the FROZEN
+#     133d executor (retrieval.embedDocument + GeminiEmbeddingProvider,
+#     gemini-embedding-001 768-dim) against PRODUCTION for the given document
+#     row ids (from the prod-apply receipt artifact). REGION LAW: Gemini
+#     embedding egress works from GitHub Actions, never the sandbox.
+#
+# The deterministic resolver anchors (bank/card/store) need ZERO embeddings —
+# the corpus serves paper asks the moment the rows land; the backfill fills
+# the vector arm progressively (RPD-bounded tranches, recency-first).
+#
+# OPERATOR GATE: workflow_dispatch ONLY — this runner is INERT until
+# dispatched (the dispatch = the operator's fire order per the 093/133b law).
+# Secrets of record: NEON_API_KEY (exists), T138_PROD_DATABASE_URL +
+# T138_GEMINI_KEY (staged per-run from the Vercel env API, hygiene-deleted
+# after the run completes). Vars of record: NEON_PROJECT_ID,
+# NEON_PARENT_BRANCH_ID (exist).
+
+name: t-mig-138-intake
+
+on:
+  workflow_dispatch:
+    inputs:
+      note:
+        description: "Operator note for this intake run"
+        required: false
+        default: ""
+      mode:
+        description: "cow+prod (default, full guard protocol) | prod-only (COW proof already of record) | backfill (embed the given row ids on prod)"
+        required: false
+        default: "cow+prod"
+      session:
+        description: "Optional session filter (e.g. 2025-06 or comma-separated list)"
+        required: false
+        default: ""
+      rows:
+        description: "backfill mode only: comma-separated document row ids to embed"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: t-mig-138-intake
+  cancel-in-progress: false
+
+env:
+  SESSION_FILTER: ${{ inputs.session || '' }}
+
+jobs:
+  cow-proof:
+    if: ${{ inputs.mode == 'cow+prod' || inputs.mode == '' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Create COW branch (in-line read_write endpoint)
+        id: cow
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PARENT_BRANCH_ID: ${{ vars.NEON_PARENT_BRANCH_ID }}
+        run: |
+          set -euo pipefail
+          NAME="t-mig-138-cow-${GITHUB_RUN_ID}"
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" -H "Content-Type: application/json" \
+            -d "{\"branch\":{\"parent_id\":\"${NEON_PARENT_BRANCH_ID}\",\"name\":\"${NAME}\"},\"endpoints\":[{\"type\":\"read_write\"}]}")
+          BRANCH_ID=$(echo "$RESP" | jq -r '.branch.id')
+          echo "branch_id=${BRANCH_ID}" >> "$GITHUB_OUTPUT"
+          for i in $(seq 1 60); do
+            EP=$(curl -sf "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}/endpoints" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            HOST=$(echo "$EP" | jq -r '.endpoints[0].host // empty')
+            STATE=$(echo "$EP" | jq -r '.endpoints[0].current_state // empty')
+            if [ -n "$HOST" ] && [ "$STATE" = "ready" ]; then break; fi
+            sleep 3
+          done
+          [ -n "$HOST" ] || { echo "endpoint never ready"; exit 1; }
+          echo "host=${HOST}" >> "$GITHUB_OUTPUT"
+      - name: Reset BRANCH-LOCAL owner password (production roles untouched)
+        id: role
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${{ steps.cow.outputs.branch_id }}/roles/neondb_owner/reset_password" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          PW=$(echo "$RESP" | jq -r '.role.password')
+          [ -n "$PW" ] || { echo "no password in reset response"; exit 1; }
+          ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
+          echo "cow_url=postgresql://neondb_owner:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
+      - name: Run the intake driver against the COW
+        env:
+          T138_GH_TOKEN: ${{ github.token }}
+        run: |
+          ARGS=""
+          if [ -n "$SESSION_FILTER" ]; then ARGS="--session $SESSION_FILTER"; fi
+          printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/t138-cow.uri
+          chmod 600 /tmp/t138-cow.uri
+          bun apps/api/scripts/papers-ingest-138.ts --mode apply \
+            --db /tmp/t138-cow.uri $ARGS \
+            --receipt cow-apply-receipt.json
+      - name: Postverify the COW counts
+        env:
+          COW_URL: ${{ steps.role.outputs.cow_url }}
+        run: |
+          bun -e '
+            import postgres from "postgres";
+            const sql = postgres(process.env.COW_URL, { max: 1, prepare: false });
+            const chunks = await sql`select count(*)::int as n from document_chunks where paper_code like ${"4MA1/%"}`;
+            const papers = await sql`select count(*)::int as n from exam_papers where paper_code like ${"4MA1/%"}`;
+            const docs = await sql`select count(*)::int as n from documents where validation_state = ${"VALIDATED"} and kind = any(${["QUESTION_PAPER","MARK_SCHEME","EXTERNAL_QUESTIONS"]}::text[]) and id in (select document_row_id from document_chunks where paper_code like ${"4MA1/%"})`;
+            console.log("COW postverify: 4MA1 chunks =", chunks[0].n, "| exam_papers =", papers[0].n, "| validated intake docs =", docs[0].n);
+            if (Number(chunks[0].n) < 1000) { console.error("chunk count below the tranche floor"); process.exit(1); }
+            if (Number(papers[0].n) < 100) { console.error("paper count below the tranche floor"); process.exit(1); }
+            await sql.end();
+          '
+      - name: Upload the COW proof artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t138-cow-proof
+          path: cow-apply-receipt.json
+          if-no-files-found: ignore
+      - name: DROP the COW + 404-verify (zero residue, even on failure)
+        if: always()
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          BRANCH_ID="${{ steps.cow.outputs.branch_id }}"
+          [ -n "$BRANCH_ID" ] || { echo "no branch to drop"; exit 0; }
+          curl -sf -X DELETE "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" > /dev/null || true
+          sleep 5
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          echo "post-delete GET = ${CODE}"
+          [ "$CODE" = "404" ] || { echo "COW residue — 404 verification FAILED"; exit 1; }
+
+  prod-apply:
+    needs: cow-proof
+    if: ${{ !failure() && !cancelled() && (inputs.mode == 'cow+prod' || inputs.mode == '' || inputs.mode == 'prod-only') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Run the intake driver against PRODUCTION
+        env:
+          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+          T138_GH_TOKEN: ${{ github.token }}
+        run: |
+          ARGS=""
+          if [ -n "$SESSION_FILTER" ]; then ARGS="--session $SESSION_FILTER"; fi
+          printf '%s' "$T138_PROD_DATABASE_URL" > /tmp/t138-prod.uri
+          chmod 600 /tmp/t138-prod.uri
+          bun apps/api/scripts/papers-ingest-138.ts --mode apply \
+            --db /tmp/t138-prod.uri $ARGS \
+            --receipt prod-apply-receipt.json
+      - name: Postverify the PROD counts
+        env:
+          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+        run: |
+          bun -e '
+            import postgres from "postgres";
+            const sql = postgres(process.env.T138_PROD_DATABASE_URL, { max: 1, prepare: false });
+            const chunks = await sql`select count(*)::int as n from document_chunks where paper_code like ${"4MA1/%"}`;
+            const papers = await sql`select validation_state, count(*)::int as n from exam_papers where paper_code like ${"4MA1/%"} group by 1`;
+            console.log("PROD postverify: 4MA1 chunks =", chunks[0].n, "| exam_papers by state =", JSON.stringify(papers));
+            if (Number(chunks[0].n) < 1000) { console.error("chunk count below the tranche floor"); process.exit(1); }
+            const rowIds = await sql`select id from documents where id in (select document_row_id from document_chunks where paper_code like ${"4MA1/%"} and embedding is null) order by created_at desc`;
+            require("fs").writeFileSync("backfill-row-ids.txt", rowIds.map((r) => r.id).join(","));
+            console.log("backfill queue: ", rowIds.length, "documents (recency-first order)");
+            await sql.end();
+          '
+      - name: Upload the prod apply artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t138-prod-apply
+          path: |
+            prod-apply-receipt.json
+            backfill-row-ids.txt
+          if-no-files-found: ignore
+
+  backfill:
+    if: ${{ inputs.mode == 'backfill' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Run the FROZEN backfill for the given rows
+        env:
+          SYLLABAI_EMBEDDING_GEMINI_API_KEY: ${{ secrets.T138_GEMINI_KEY }}
+          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+        run: |
+          ROWS="${{ inputs.rows }}"
+          [ -n "$ROWS" ] || { echo "no rows given"; exit 1; }
+          echo "$ROWS" | tr "," "\n" | while read -r ROW; do
+            [ -n "$ROW" ] || continue
+            echo "embedding row $ROW"
+            bun scripts/t-mig-133d-backfill-exec.ts "$T138_PROD_DATABASE_URL" "$ROW" \
+              || { echo "row $ROW failed"; exit 1; }
+          done
+      - name: Upload the backfill artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t138-backfill
+          path: backfill-last-result.json
+          if-no-files-found: ignore
