@@ -13,7 +13,17 @@ export const metadata: Metadata = {
 export default async function TeacherPage() {
   const courses = (await listCourses())
     .filter((c) => c.hasBundle)
-    .map((c) => ({ slug: c.slug, label: c.label, subject: c.subject, code: c.code, level: c.level }));
+    .map((c) => ({
+      slug: c.slug,
+      label: c.label,
+      subject: c.subject,
+      code: c.code,
+      level: c.level,
+      // board rides along (absent = the pre-CIE Edexcel rows) — the
+      // class-creation picker's board cascade and the class-card eyebrows
+      // print the row's real awarding board (trace 1a158596b1569079)
+      board: c.board,
+    }));
 
   return <TeacherClient courses={courses} />;
 }
