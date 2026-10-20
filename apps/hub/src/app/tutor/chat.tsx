@@ -16,7 +16,7 @@
  * text never mutates canonical data (brief §6/§27) — threads persist in
  * localStorage only.
  */
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
@@ -53,14 +53,15 @@ import {
   activePaperIdOf,
   appendMessages,
   bindSession,
+  clearThreadsWhere,
   createThread,
   downloadThread,
-  ensureActiveThread,
   followUpsFor,
   getThreads,
   historyFor,
   patchLastMessage,
   setActiveThread,
+  threadInScope,
   unbindSession,
   updateThread,
   useThreadsSnapshot,
@@ -245,8 +246,6 @@ export function TutorChat({
   courseRef?: string | null;
 } = {}) {
   const { threads, activeId } = useThreadsSnapshot();
-  const activeThread = threads.find((t) => t.id === activeId) ?? null;
-  const messages = activeThread?.messages ?? [];
   const identity = useIdentity();
 
   const [input, setInput] = useState("");
@@ -276,6 +275,29 @@ export function TutorChat({
   /** V53: threads created inside this tutor instance carry the course. */
   const courseContext =
     courseSlug && courseLabel ? { slug: courseSlug, label: courseLabel } : null;
+
+  // ── per-course tutor isolation (operator instruction 2026-10-21) ──
+  // Each course's tutor is a SEPARATE tutor: its rail, its active thread,
+  // its synced pane and its restores see ONLY this course's history; the
+  // legacy /tutor entry sees only course-less threads. The global store
+  // stays shared (one localStorage, one server session list) — the SCOPE
+  // is applied at the component boundary, slug-to-slug (never the label).
+  // `activeThread` from here on is the scoped active — every downstream
+  // use (send/ask/clear/export/busy) can never reach another course's
+  // transcript, which is the mixing bug this law retires.
+  const scopedThreads = useMemo(
+    () => threads.filter((t) => threadInScope(t, courseSlug)),
+    [threads, courseSlug],
+  );
+  const activeThread = scopedThreads.find((t) => t.id === activeId) ?? null;
+  const messages = activeThread?.messages ?? [];
+  const scopedConversations = useMemo(
+    () =>
+      conversations === null
+        ? null
+        : conversations.filter((c) => (courseSlug ? c.courseRef === courseRef : !c.courseRef)),
+    [conversations, courseSlug, courseRef],
+  );
 
   // anchored entry points: /tutor?q=…&spec=4CH1-1.1 ("Ask about this" and
   // "Question help" across the Learning Hub). The spec code is appended to
@@ -508,7 +530,9 @@ export function TutorChat({
   useEffect(() => {
     if (bootQuestion && !bootedRef.current) {
       bootedRef.current = true;
-      const thread = ensureActiveThread(courseContext);
+      // scoped: this course's active thread, else a fresh thread of THIS
+      // course (ensureActiveThread's global active could be another course's)
+      const thread = activeThread ?? createThread("New chat", courseContext);
       void ask(thread.id, bootQuestion);
     }
     // one-shot deep-link boot: `ask` is deliberately absent — the guard ref
@@ -533,11 +557,18 @@ export function TutorChat({
       try {
         const list = await api.tutorSessionList();
         if (cancelled || list.length === 0) return;
+        // per-course isolation: only restore into THIS scope — a course
+        // instance recovers its own courseRef's latest session (server
+        // truth); the legacy entry recovers the latest course-less one.
         const existing = getThreads();
-        if (existing.length > 0) return; // local history present — nothing to recover
-        const session = await api.tutorSessionGet(list[0].sessionId);
+        if (existing.some((t) => threadInScope(t, courseSlug))) return; // this scope's local history present
+        const summary = list.find((s) =>
+          courseSlug ? s.courseRef === courseRef : !s.courseRef,
+        );
+        if (!summary) return;
+        const session = await api.tutorSessionGet(summary.sessionId);
         if (cancelled || session.turns.length === 0) return;
-        const thread = createThread(list[0].title?.trim() || "Restored conversation");
+        const thread = createThread(summary.title?.trim() || "Restored conversation", courseContext);
         bindSession(thread.id, session.sessionId);
         updateThread(thread.id, (t) => ({ ...t, messages: session.turns.map(restoredTurn) }));
         setActiveThread(thread.id);
@@ -566,7 +597,9 @@ export function TutorChat({
         return;
       }
       const session = await api.tutorSessionGet(summary.sessionId);
-      const thread = createThread(summary.title?.trim() || "Restored conversation");
+      // the pane only ever offers this scope's sessions — carry the course
+      // so the restored thread STAYS in this tutor's rail
+      const thread = createThread(summary.title?.trim() || "Restored conversation", courseContext);
       bindSession(thread.id, session.sessionId);
       updateThread(thread.id, (t) => ({ ...t, messages: session.turns.map(restoredTurn) }));
       setActiveThread(thread.id);
@@ -606,11 +639,13 @@ export function TutorChat({
     }
   };
 
-  const busyHere = streamingId !== null && streamingId === activeId;
+  const busyHere = streamingId !== null && streamingId === activeThread?.id;
 
   const send = (override?: string) => {
     const q = (override ?? input).trim();
     if (!q) return;
+    // scoped active or a fresh thread OF THIS COURSE — never a foreign
+    // course's active thread (the cross-course transcript mixing bug)
     const thread = activeThread ?? createThread("New chat", courseContext);
     // one in-flight turn per thread: a second ask() while streaming orphans
     // the first controller (Stop goes blind) and both streams patch the same
@@ -662,8 +697,15 @@ export function TutorChat({
     });
   };
 
+  /** Per-scope clear (the rail's "Clear all conversations"): this tutor's
+   *  local threads only — other courses' histories are untouched. */
+  const clearScopedThreads = () => {
+    clearThreadsWhere((t) => threadInScope(t, courseSlug));
+    setMeta({});
+  };
+
   const clearConversation = () => {
-    abortsRef.current.get(activeId ?? "")?.abort();
+    abortsRef.current.get(activeThread?.id ?? "")?.abort();
     if (activeThread) {
       updateThread(activeThread.id, (t) => ({ ...t, messages: [], title: "New chat" }));
     }
@@ -688,18 +730,18 @@ export function TutorChat({
         }
       >
         <ThreadSidebar
-          threads={threads}
-          activeId={activeId}
+          threads={scopedThreads}
+          activeId={activeThread?.id ?? null}
           onNewChat={newChat}
-          conversations={conversations}
+          conversations={scopedConversations}
           conversationsError={conversationsError}
           activeSessionId={activeThread?.sessionId ?? null}
-          activeCourseSlug={courseSlug}
           activeCourseLabel={courseLabel}
           activeCourseRef={courseRef}
           openingId={openingId}
           onOpenConversation={openServerConversation}
           onDeleteConversation={setDeleteTarget}
+          onClearAll={clearScopedThreads}
         />
       </aside>
 
@@ -710,14 +752,13 @@ export function TutorChat({
           <SidebarBrand />
           <div className="min-h-0 flex-1">
             <ThreadSidebar
-              threads={threads}
-              activeId={activeId}
+              threads={scopedThreads}
+              activeId={activeThread?.id ?? null}
               onNewChat={newChat}
               onNavigate={() => setMobileNav(false)}
-              conversations={conversations}
+              conversations={scopedConversations}
               conversationsError={conversationsError}
               activeSessionId={activeThread?.sessionId ?? null}
-              activeCourseSlug={courseSlug}
               activeCourseLabel={courseLabel}
               activeCourseRef={courseRef}
               openingId={openingId}
@@ -725,6 +766,7 @@ export function TutorChat({
                 void openServerConversation(s);
               }}
               onDeleteConversation={setDeleteTarget}
+              onClearAll={clearScopedThreads}
             />
           </div>
         </SheetContent>
@@ -870,7 +912,7 @@ export function TutorChat({
                   <MessageItem
                     key={i}
                     message={m}
-                    streaming={streamingId === activeId && i === messages.length - 1}
+                    streaming={streamingId === activeThread?.id && i === messages.length - 1}
                     busy={busyHere}
                     canRegenerate={i === messages.length - 1 && !busyHere}
                     copied={copiedIdx === i}
@@ -961,7 +1003,7 @@ export function TutorChat({
               // that event the `override` question and crash on .trim() (a
               // real-click-only bug; Enter-to-send masked it in verification).
               onSend={() => send()}
-              onStop={() => abortsRef.current.get(activeId ?? "")?.abort()}
+              onStop={() => abortsRef.current.get(activeThread?.id ?? "")?.abort()}
             />
             <p className="text-center text-[10px] leading-relaxed text-muted-foreground">
               Answers cite the {courseLabel ? `${courseLabel} corpus` : "4CH1 corpus"} and can make

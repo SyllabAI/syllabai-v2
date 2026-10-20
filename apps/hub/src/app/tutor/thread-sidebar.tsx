@@ -8,6 +8,13 @@
  * menus (rename inline / delete with undo toast), an identity chip at the
  * rail's foot, and a collapse toggle. On <lg screens it renders inside the
  * parent's Sheet instead of inline.
+ *
+ * Per-course isolation (operator instruction 2026-10-21): the caller owns
+ * the scope — `threads` arrives ALREADY filtered to the active tutor's own
+ * history (threadInScope in chat.tsx), so this component never filters by
+ * course itself. It renders the honest scope line (course name + served
+ * courseRef for a scoped tutor; the pilot-tutor line for the legacy entry)
+ * and clears via `onClearAll`, which the caller binds to the same scope.
  */
 import { useMemo, useState } from "react";
 import Link from "next/link";
@@ -21,7 +28,6 @@ import type { TutorSessionSummary } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import type { Thread } from "./threads";
 import {
-  clearAllThreads,
   deleteThread,
   groupThreads,
   insertThread,
@@ -54,12 +60,12 @@ export function ThreadSidebar({
   conversations,
   conversationsError,
   activeSessionId,
-  activeCourseSlug = null,
   activeCourseLabel = null,
   activeCourseRef = null,
   openingId,
   onOpenConversation,
   onDeleteConversation,
+  onClearAll,
 }: {
   threads: Thread[];
   activeId: string | null;
@@ -69,21 +75,18 @@ export function ThreadSidebar({
   conversationsError?: string | null;
   /** the §22 session the OPEN thread is bound to (drives the active row) */
   activeSessionId?: string | null;
-  /** V53 (ADR-030): the course this tutor instance is scoped to — the
-   *  local rail hides OTHER courses' threads and shows the scope line; the
-   *  synced pane renders the SERVER's courseRef chip (what was actually
-   *  served).
-   *
-   *  Discipline: the rail filter keys on the SLUG (the registry's machine
-   *  key) and NEVER on the label — ial-chemistry-17 and igcse-chemistry-19
-   * are BOTH "Chemistry", so label-matching would leak threads across
-   * courses. Labels are display-only (the scope line, the row chip). */
-  activeCourseSlug?: string | null;
+  /** V53 (ADR-030): the course this tutor instance is scoped to — display
+   *  ONLY (the scope line below). The scoping itself lives in the caller
+   *  (threadInScope, slug-to-slug — the label-collision law: ial-chemistry-17
+   *  and igcse-chemistry-19 are BOTH "Chemistry", so labels never filter). */
   activeCourseLabel?: string | null;
   activeCourseRef?: string | null;
   openingId?: string | null;
   onOpenConversation?: (summary: TutorSessionSummary) => void;
   onDeleteConversation?: (summary: TutorSessionSummary) => void;
+  /** per-scope clear — the caller binds it to the same predicate that
+   *  filtered `threads`, so other courses' histories are never touched */
+  onClearAll: () => void;
 }) {
   const { toast } = useToast();
   const identity = useIdentity();
@@ -93,26 +96,15 @@ export function ThreadSidebar({
 
   const q = query.trim().toLowerCase();
   const filtered = useMemo(
-    () => {
-      const base = q
+    () =>
+      q
         ? threads.filter(
             (t) =>
               t.title.toLowerCase().includes(q) ||
               t.messages.some((m) => m.content.toLowerCase().includes(q)),
           )
-        : threads;
-      // V53: inside a course-scoped tutor, threads of OTHER courses are
-      // hidden from the local rail — course-less chats stay visible (they
-      // are the legacy pilot history), and the scope is labeled by the
-      // scope line below, never silent. Slug-to-slug only (see the prop
-      // comment): the seeded defect this corrects compared
-      // t.courseSlug against the display LABEL, which never matches — so
-      // a scoped tutor's own threads vanished from its rail.
-      return activeCourseSlug
-        ? base.filter((t) => !t.courseSlug || t.courseSlug === activeCourseSlug)
-        : base;
-    },
-    [threads, q, activeCourseSlug],
+        : threads,
+    [threads, q],
   );
   const groups = useMemo(() => groupThreads(filtered), [filtered]);
   const synced = useMemo(
@@ -261,13 +253,17 @@ export function ThreadSidebar({
           </p>
         )}
 
-        {activeCourseLabel && (
+        {activeCourseLabel ? (
           <p className="mx-2 mb-1 rounded-md bg-muted/60 px-2 py-1 text-[10px] leading-relaxed text-muted-foreground">
             Scoped to <span className="font-medium text-foreground">{activeCourseLabel}</span>
             {activeCourseRef ? (
               <span className="ml-1 font-mono">({activeCourseRef})</span>
             ) : null}
-            — other courses’ chats are hidden
+            — this tutor keeps its own conversations, separate from every other course
+          </p>
+        ) : (
+          <p className="mx-2 mb-1 rounded-md bg-muted/60 px-2 py-1 text-[10px] leading-relaxed text-muted-foreground">
+            Pilot tutor — each course&apos;s tutor keeps its own conversations separately
           </p>
         )}
 
@@ -414,8 +410,11 @@ export function ThreadSidebar({
             size="sm"
             className="h-7 w-full justify-start gap-1.5 px-2 text-[11px] text-muted-foreground hover:text-destructive"
             onClick={() => {
-              clearAllThreads();
-              toast({ title: "All conversations cleared" });
+              onClearAll();
+              toast({
+                title: "Conversations cleared",
+                description: "This tutor's conversations were cleared from this browser. Other courses are untouched.",
+              });
             }}
           >
             <Trash2 className="size-3" aria-hidden /> Clear all conversations

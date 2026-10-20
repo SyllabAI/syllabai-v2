@@ -366,8 +366,36 @@ export function deleteThread(id: string) {
   });
 }
 
+/**
+ * The per-course tutor isolation law (operator instruction 2026-10-21,
+ * trace 1a15b45224c4e3f5 — supersedes the V53 "course-less visible in
+ * scoped rails" posture): each course's tutor owns its history ALONE.
+ * A scoped instance (courseSlug set) sees only threads created under the
+ * SAME registry slug; the legacy /tutor entry sees only course-less
+ * threads. Slug-to-slug only, NEVER the label — ial-chemistry-17 and
+ * igcse-chemistry-19 are both "Chemistry", so label-matching would bleed
+ * threads across courses (the defect the rail spec exists to guard).
+ */
+export function threadInScope(t: Thread, courseSlug: string | null | undefined): boolean {
+  return courseSlug ? t.courseSlug === courseSlug : !t.courseSlug;
+}
+
 export function clearAllThreads() {
   commit({ threads: [], activeId: null });
+}
+
+/** Per-scope clear (the sidebar's "Clear all conversations" inside one
+ *  tutor): remove only the threads matching the predicate and re-pin the
+ *  active id to the newest survivor — other courses' histories are
+ *  untouched, which is the point of the separation. */
+export function clearThreadsWhere(pred: (t: Thread) => boolean) {
+  const threads = state.threads.filter((t) => !pred(t));
+  commit({
+    threads,
+    activeId: threads.some((t) => t.id === state.activeId)
+      ? state.activeId
+      : (threads[0]?.id ?? null),
+  });
 }
 
 /** Snapshot a thread before deletion (undo support). */

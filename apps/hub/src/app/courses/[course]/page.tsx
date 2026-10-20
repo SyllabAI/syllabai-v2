@@ -11,6 +11,7 @@ import {
   Lightbulb,
   ListTree,
   ScrollText,
+  Sparkles,
   Target,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -36,6 +37,10 @@ interface ResourceItem {
   countLabel?: string;
   ctaLabel?: string;
   ready: boolean;
+  /** the honest not-ready badge — defaults to "roadmap" (a planned build
+   *  phase); the tutor card overrides it ("not yet connected") because the
+   *  tutor is BUILT — it gates on the course's serving corpus, ADR-030. */
+  notReadyLabel?: string;
 }
 
 /**
@@ -78,6 +83,34 @@ export default async function CourseHubPage({
   const officialTree = hub.treeKind !== "sme-native";
 
   const bands: { id: string; title: string; tagline: string; items: ResourceItem[] }[] = [
+    {
+      id: "ask",
+      title: "Ask the tutor",
+      tagline:
+        "Stuck on a topic? Ask — answers come only from this course's validated material, with citations.",
+      items: [
+        {
+          // The per-course tutor entry (operator instruction 2026-10-21):
+          // every course gets a visible Tutor card. `ready` keys on the
+          // registry's curriculumCode — the SAME law the /tutor page gates
+          // by (ADR-030) — so a mapped course deep-links straight into its
+          // own scoped tutor, and an unmapped one shows the honest
+          // "not yet connected" state instead of a dead end. Each course's
+          // tutor keeps its own history and conversations separately.
+          icon: Sparkles,
+          title: "Course Tutor",
+          desc: meta.curriculumCode
+            ? "A chat grounded in this course's specification, revision notes and past papers — every answer cites its sources and says so honestly when the evidence runs thin. Conversations stay separate per course."
+            : "Connects once this course has a validated serving corpus — the tutor never answers across courses, so there is no cross-course fallback.",
+          tags: ["Study", "Practice"],
+          href: meta.curriculumCode ? `/tutor?course=${meta.slug}` : undefined,
+          countLabel: meta.curriculumCode ?? undefined,
+          ctaLabel: "Ask the tutor",
+          ready: !!meta.curriculumCode,
+          notReadyLabel: "not yet connected",
+        },
+      ],
+    },
     {
       id: "exam-practice",
       title: "Exam Practice",
@@ -337,7 +370,7 @@ export default async function CourseHubPage({
                         ) : (
                           <p>
                             <span className="rounded bg-muted px-1.5 py-0.5 text-[10px] uppercase tracking-wide text-muted-foreground">
-                              roadmap
+                              {r.notReadyLabel ?? "roadmap"}
                             </span>
                           </p>
                         )}
