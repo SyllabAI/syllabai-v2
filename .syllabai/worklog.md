@@ -10192,3 +10192,17 @@ Work Log:
 
 Stage Summary:
 - Wave-2 LIVE of record: 4CH1 spec-point coverage 182/182 both-axes (residual ZERO) shipped and verified on prod; residual-census lane CLOSED end-to-end (census -> recommendation -> wave-1 -> wave-2 -> complete coverage).
+
+---
+Task ID: CIE-INTEGRATION prod-apply HOLD + reconciliation (traces 1a15acee432d9eb9 + 1a15ac4e986d06c5, r0)
+Agent: r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: operator "Go" — reconcile the parallel lane's landed repair program (PR #228) first-hand, then rule on the prod apply; a store-integrity finding forced a HOLD.
+
+Work Log:
+- RECONCILIATION first (fetch-first): the run-002 repair program was ALREADY LANDED of record by the parallel main lane (PR #228, e24d2a2, the operator's 're-run' trace 1a15ac4e986d06c5) while this session was independently implementing the same scope — theirs-verbatim-first: my divergent implementation (version-scoped namespaces, tail-based UNITs, title-drift guard, landed asset bytes) is DISCARDED unpushed, zero repo writes from it; its validated design is recorded in the hold receipt as the fix option.
+- FIRST-HAND FINDING (the hold's basis): the landed shared-code reuse law (sameSeedExceptBundle) absorbs cross-bank dbCode collisions SILENTLY and the landed UNIT law stays order-based (-S<order>) — their own 9709 cross-bank pin proves the graft ('2 nodes + 1 edge reused': pure-1's Pure Mathematics 1 section reuses mechanics' 9709-S1 'Mechanics' node); the census of record: 229 CIE TOPICs carry tail != order — 9709 x6 banks, 0653/0973 trios (three different official section vocabularies colliding by order), 0580/0607 core/extended (benign, titles coincide), and the cross-version pairs 0452/0455/0500 whose spec-code STRINGS overlap with different tree positions (0452: 142 of 144).
+- ACT: run #3 (39490683060, mode=cow+prod, head 467081e) CANCELLED at 20:40:13Z while job 1 was still on the COW and job 2 (prod-apply) had NOT started — zero prod contact; the COW dropped 404-verified in the always() step (post-delete GET = 404, job log of record); production carries ZERO CIE nodes — the correction stays drift-free until a prod apply lands.
+- Receipt of record: .syllabai/receipts/CIE-INTEGRATION/cie-phase4-prod-apply-hold-escalation-r0.json (the finding, the evidence, act A of the hold, and the operator decision: optionA = the identity-stable namespace/UNIT/title laws (this desk's validated design: tsc x4 clean, battery 2319/0/13, offline fleet map-law census GREEN over 44 bundles, max dbCode 25/40) or optionB = the operator rules the one-tree-per-code graft the design and lifts the hold).
+
+Stage Summary:
+- PROD-APPLY ON HOLD of record (zero prod-db writes this session; the only Neon mutations were the gate's own COW pair, dropped + 404-verified). The 134c guard + credential path remain proven; the fleet's floors cannot catch this defect class (the reuse law defines it as correct) — only the offline identity census does. The gate re-dispatches on the operator's ruling; this desk IDLES on the CIE gate until then. Hygiene: no secret value in any file/log/receipt; fetch-first, no force.
