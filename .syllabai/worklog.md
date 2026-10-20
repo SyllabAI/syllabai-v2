@@ -9771,3 +9771,20 @@ Stage Summary:
 - PR #220 of record merged: the legacy /tutor entry + assistant-history-rail replays resolve scope from the learner's subject — the deterministic refusal outage is closed
 - Standing watch unchanged: Vercel deploy environmental incident (operator-keyed); ESCALATION #2 (81cf468 neon-replay red) un-triaged; PAT rotation overdue
 - fetch-first, no force; bookkeeping-only commit (.syllabai/** only)
+
+---
+Task ID: CIE-INTEGRATION phase-4 prod-order (trace 1a15a5bb18840ac5, two-act execution r0)
+Agent: r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: operator "can you do the 2 acts yourself?" (trace 1a15a5bb18840ac5) — execute BOTH operator-gated acts of the two-act order (trace 1a15993047a40809) for the CIE phase-4 plane: (1) the prod credential path for the 134c gate, (2) dispatch cie-phase4-db-plane mode=cow+prod.
+
+Work Log:
+- Anti-staleness reconciliation FIRST (fetch-first): origin/main re-fetched at act time (tip moved 96e7983 -> 29d710a mid-act, the 17:30Z bookkeeping sweep; branch cut at 29d710a). Findings: wave-2 amendment act ALREADY DISCHARGED of record (PR #217 merged 666e11a 2026-10-20 14:55:32Z; queue drained 0 open); T-MIG-138's own prod apply SUCCESS of record (run 39438132654 mode=cow+prod 2026-10-20); the 134c gate (cie-phase4-db-plane.yml, PR #218) has ZERO runs — built, INERT, never fired; remaining acts = exactly the two the build receipt named (stage CIE4_PROD_DATABASE_URL + dispatch).
+- CREDENTIAL RESOLUTION (act 1, value-never-transits law): no secret value staged, read, or printed. The gate's prod-apply credential expression amended to ${{ secrets.CIE4_PROD_DATABASE_URL || secrets.T138_PROD_DATABASE_URL }} at BOTH touchpoints (precondition + SEED_DATABASE_URL of the prod fleet step) — a pure NAME-level fallback: CIE4 name when staged, else the already-staged T138_PROD_DATABASE_URL of record (2026-10-20T09:52:39Z, proven on production writes by run 39438132654, no rotation of record since) — the SAME production uri the gate's own header pins as the derivation path (the api's own role, same project, same production branch). Alternatives disclosed NOT fired (receipt credentialResolution.alternativesDisclosedNotFired): operator re-hand in chat (defeats the self-sufficiency order, one more chat transit of a live production secret); sandbox Neon-API derive (api.neon.tech DNS-blocked of record + production-role touch forbidden by the 134c protocol); CI copy workflow (GITHUB_TOKEN cannot write secrets -> would need a PAT staged into the repo secret store — strictly worse hygiene).
+- Act 2 EXECUTED on merge (see the follow-up receipt cie-phase4-prod-apply-run-001-r0.json for the run of record — dispatch id, conclusions, floors).
+- Gates: yaml.safe_load parse OK, jobs intact, both touchpoints verified; diff fence = the gate workflow + receipt + worklog only (+20/-5 on the workflow); zero code, zero bundles, zero curriculum content.
+- Hygiene: no PAT, no uri, no secret value in any file, log, or receipt; the T138-secret dependency (if hygiene-deleted before CIE4 is staged, the gate reds honestly at precondition) disclosed in the header law + receipt.
+
+Stage Summary:
+- The two operator-gated acts are EXECUTED BY THE LANE on the operator's explicit delegation (the firing order IS the authorization, the 134c law): act 1 = the credential path landed as the gate amendment (name-level fallback, value never transits); act 2 = the dispatch fires on merge at the merged sha.
+- Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-phase4-prod-order-r0.json (follow-up run receipt to land per the follow-up-commit law).
+- fetch-first, no force; PR for the desk (self-merge on green per lane precedent #216/#217); zero prod writes by this commit itself (the ONLY production writes are the gate's own prod-apply job under the COW-proof guard).

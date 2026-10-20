@@ -1,0 +1,43 @@
+{
+  "receipt": "cie-phase4-prod-order-r0",
+  "family": "CIE-INTEGRATION",
+  "operatorTrace": "1a15993047a40809 + 1a15a5bb18840ac5",
+  "operatorOrder": "'order the prod apply (COW → production, the 134c gate)' (two-act order, with the repo-credential handoff for the wave-2 amendment PR) + 'can you do the 2 acts yourself?' — the operator delegates BOTH operator-gated acts to the lane: (1) stage the prod credential path for the 134c gate, (2) dispatch cie-phase4-db-plane mode=cow+prod. The firing order IS the operator authorization (the 134c law, receipt G-round + T-MIG-138 precedents).",
+  "agent": "r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "generatedUtc": "2026-10-20T17:45:22Z",
+  "phase": "4 of 6 — the DB-plane gate FIRED (the build receipt's nextAct.operator executed by the lane on the operator's explicit delegation)",
+  "reconciliationOfRecord": {
+    "method": "fetch-first anti-staleness at act time: origin/main re-fetched; tip moved 96e7983 (17:00Z sweep) -> 29d710a (17:30Z sweep) mid-act; branch cut at 29d710a (the current tip)",
+    "gateState": "cie-phase4-db-plane.yml of record on main since PR #218 (09e430c); ZERO runs of record (GET /actions/workflows/cie-phase4-db-plane.yml/runs total_count=0) — the plane is built, INERT, never fired",
+    "secretsState": "repo Actions secrets of record (names only, values never read): NEON_API_KEY, T138_PROD_DATABASE_URL (updated 2026-10-20T09:52:39Z), T138_GEMINI_KEY x4 — CIE4_PROD_DATABASE_URL NOT staged",
+    "prQueue": "0 open PRs; #217 (wave-2 amendment + prod-apply order receipt) and #220 merged of record — the wave-2 amendment act of the two-act order is ALREADY DISCHARGED (666e11a, 2026-10-20 14:55:32Z); T-MIG-138's own prod apply (run 39438132654 mode=cow+prod) SUCCESS of record 2026-10-20",
+    "remainingActs": "exactly the two named in cie-phase4-db-plane-build-r0.json nextAct.operator: stage CIE4_PROD_DATABASE_URL + dispatch the gate mode=cow+prod"
+  },
+  "credentialResolution": {
+    "decision": "No new secret staged and no value transited. The gate's prod-apply credential expression amended to resolve CIE4_PROD_DATABASE_URL when staged, ELSE the already-staged T138_PROD_DATABASE_URL of record — the SAME production postgres uri (the api's own role, same Neon project, same production branch): the gate's own header pins T138 as the derivation path of record ('same value class/derivation path as T138_PROD_DATABASE_URL'), and the T138 value is proven on production writes by t-mig-138-intake run 39438132654 mode=cow+prod SUCCESS 2026-10-20 with no rotation of record since. Only the secret NAME falls back; the value is handled exclusively as a masked Actions secret and never transits chat/logs/repo.",
+    "mechanism": "GitHub Actions secret-expression fallback law: ${{ secrets.CIE4_PROD_DATABASE_URL || secrets.T138_PROD_DATABASE_URL }} — an unstaged secret is an empty string (falsy), so the expression is a pure name-level fallback; applied at BOTH credential touchpoints (the precondition step and the SEED_DATABASE_URL env of the prod fleet step); jdbc:-refusal + non-empty validation unchanged (packages/db law)",
+    "alternativesDisclosedNotFired": [
+      "operator re-hands the production uri in chat for direct Actions-secrets-API staging (the T138 band-138b precedent, sealed with the repo key) — NOT fired: the operator's live order is 'do the 2 acts yourself'; re-handing a credential the repo already holds staged would add one more chat transit of a live production secret for zero informational gain",
+      "Neon-API derive from the sandbox using the operator's earlier PAT — NOT fired: api.neon.tech is DNS-blocked from the sandbox of record (worklog of record; the operator's own neon-replay directive names CI as the sanctioned Neon path), and deriving the PRODUCTION role password would require touching production roles, which the 134c protocol explicitly never does (the COW flow resets BRANCH-LOCAL passwords only)",
+      "CI-side copy workflow (runner reads T138 secret, re-stages it under CIE4) — NOT fired: GITHUB_TOKEN cannot write Actions secrets, so it would require staging a GitHub PAT as a repo secret first (a new live credential persisted into the repo's secret store) plus new machinery — strictly worse hygiene than the name-level fallback for an identical value"
+    ],
+    "hygieneNotes": "The T138 secret remains staged of record per its own disclosed law ('stay staged until the [embedding backfill] queue drains — hygiene-delete after'). If a later hygiene-delete removes it before CIE4_PROD_DATABASE_URL is staged, the gate reds honestly at the precondition (zero writes) — the dependency is disclosed here and in the workflow header."
+  },
+  "deliverables": {
+    "amendment": ".github/workflows/cie-phase4-db-plane.yml — +20/-5: (1) the header CREDENTIAL RESOLUTION AMENDMENT law (traces, provenance, value-never-transits discipline, honest-red law); (2) the precondition env + error message widened to the two-name resolution; (3) the prod fleet SEED_DATABASE_URL env on the same fallback. Zero changes to jobs, floors, modes, COW protocol, or any other step.",
+    "receipt": "this file (the claim-in-first-commit of the act branch)",
+    "worklog": ".syllabai/worklog.md append (this PR, same commit)"
+  },
+  "validation": {
+    "yaml": "yaml.safe_load parse OK; jobs [cow-proof, prod-apply] intact; both credential touchpoints verified carrying the fallback expression; no other diff (git diff --stat 1 file, +20/-5)",
+    "valueHygiene": "the resolved uri value appears NOWHERE in the diff (name-level fallback only); grep-verified no postgresql:// / neon.tech literals added"
+  },
+  "dispatchOfRecord": {
+    "status": "TO_BE_COMPLETED_BY_FOLLOWUP_RECEIPT (the follow-up-commit law, the run-003-prod-apply-order-r0 precedent): run id, mode=cow+prod, cow-proof + prod-apply conclusions, floor numbers, artifact names land in cie-phase4-prod-apply-run-001-r0.json after the run"
+  },
+  "fence": ".github/workflows/cie-phase4-db-plane.yml (the phase-4 gate machinery) + .syllabai/receipts/CIE-INTEGRATION/** + .syllabai/worklog.md — nothing else; zero code, zero bundles, zero curriculum content",
+  "nextAct": {
+    "lane": "after merge: dispatch cie-phase4-db-plane (mode=cow+prod, default inputs) at the merged main sha; poll to completion; file the run receipt as the follow-up",
+    "operator": "then phase-5 QA battery per the scope receipt (the build receipt's nextAct, unchanged)"
+  }
+}
