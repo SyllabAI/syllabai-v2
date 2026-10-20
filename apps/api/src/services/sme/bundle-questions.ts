@@ -96,7 +96,7 @@
 import type { BundleCurriculum } from "../curriculum/bundle-seed";
 import { mapBundleNodes } from "../curriculum/bundle-seed";
 import type { SmeOption, SmePackage, SmePart, SmeQuestion, SmeSpecPoint } from "./package";
-import { smeQuestionRef } from "@syllabai/shared";
+import { smeMemberSuffixReserve, smeQuestionRef } from "@syllabai/shared";
 
 export class BundleQuestionsError extends Error {}
 
@@ -288,7 +288,15 @@ export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
         continue;
       }
       setOrders.add(q.order);
-      const externalRef = smeQuestionRef(courseSlug, set.topicSlug, q.order);
+      // the member-suffix reserve (the run-003 varchar(80) law): a question
+      // carrying MCQ parts derives "-p<idx>"/"-s" member rows — the base
+      // leaves room for the longest suffix on BOTH bridge sides
+      const externalRef = smeQuestionRef(
+        courseSlug,
+        set.topicSlug,
+        q.order,
+        smeMemberSuffixReserve(q.parts),
+      );
       if (externalRef.length > MAX_REF) {
         // unreachable — the shared law enforces the bound by construction;
         // kept as the shim's own belt-and-braces pin

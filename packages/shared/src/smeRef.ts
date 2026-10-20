@@ -32,6 +32,34 @@
  */
 
 export const SME_REF_MAX = 80;
+
+/**
+ * The mixed-emission member-suffix reserve — the EXACT mirror of the frozen
+ * ingest's emittedRowRefs derivation (services/sme/index.ts): one "-p<idx>"
+ * member per OPTION part (idx counts option parts only), plus "-s" when the
+ * question also carries plain parts. Pure structured questions reserve 0
+ * (byte-identical legacy). Both bridge sides call this with their own corpus
+ * parts — the same bytes, the same reserve.
+ */
+export function smeMemberSuffixReserve(
+  parts: ReadonlyArray<{ choices?: { length: number } | null } | null> | null | undefined,
+): number {
+  if (!parts || parts.length === 0) return 0;
+  let optionParts = 0;
+  let plainParts = 0;
+  for (const p of parts) {
+    if (p != null && p.choices != null && p.choices.length > 0) optionParts++;
+    else plainParts++;
+  }
+  if (optionParts === 0) return 0;
+  let max = 0;
+  for (let i = 1; i <= optionParts; i++) {
+    const len = ("-p" + i).length;
+    if (len > max) max = len;
+  }
+  if (plainParts > 0) max = Math.max(max, 2);
+  return max;
+}
 const FNV_OFFSET = 0x811c9dc5;
 const FNV_PRIME = 0x01000193;
 
@@ -44,10 +72,25 @@ function fnv1aHex8(text: string): string {
   return h.toString(16).padStart(8, "0");
 }
 
-export function smeQuestionRef(courseSlug: string, topicSlug: string, order: number): string {
+export function smeQuestionRef(
+  courseSlug: string,
+  topicSlug: string,
+  order: number,
+  reserved = 0,
+): string {
   const head = `sme-eq-${courseSlug}-`;
   const tail = `-q${order}`;
-  const room = SME_REF_MAX - head.length - tail.length;
+  // the member-suffix reserve (the phase-4 run-003 varchar(80) class): a
+  // question carrying MCQ parts derives MIXED-EMISSION member rows whose
+  // external refs append "-p<idx>" (and "-s" for the structured member) to
+  // the base — the base must leave room for the LONGEST suffix or the member
+  // insert overflows the frozen questions.external_ref varchar(80). Reserve
+  // = smeMemberSuffixReserve(parts) on BOTH sides of the bridge (the shim
+  // emits, the hub join derives) — same corpus bytes, same reserve, no
+  // drift. Byte-identical for every ref of record: reserve is 0 for
+  // choice-less questions and binds only on the hash path (never stored —
+  // such members failed to ingest by construction).
+  const room = SME_REF_MAX - head.length - tail.length - reserved;
   if (room < 10) {
     throw new Error(`smeQuestionRef: course slug "${courseSlug}" leaves no ref room`);
   }
@@ -57,7 +100,7 @@ export function smeQuestionRef(courseSlug: string, topicSlug: string, order: num
     slugPart = topicSlug.slice(0, room - hashRoom) + "-" + fnv1aHex8(topicSlug);
   }
   const ref = head + slugPart + tail;
-  if (ref.length > SME_REF_MAX) {
+  if (ref.length > SME_REF_MAX - reserved) {
     // arithmetic guarantee — this throw is unreachable by construction
     throw new Error(`smeQuestionRef: ref exceeds ${SME_REF_MAX} (${ref.length})`);
   }

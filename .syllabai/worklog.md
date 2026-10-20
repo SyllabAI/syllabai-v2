@@ -10164,3 +10164,18 @@ Work Log:
 Stage Summary:
 - The run-002 repair program is CODED + PINNED + GATED: all five defect classes addressed, the Edexcel laws byte-identical, the fleet ready for run #3. Next: PR + self-merge on green, dispatch mode=cow+prod (the operator's standing order), then on green the CIE fill audit (45 rows, curriculumCode = <spec>-<syllabusVersion> per the seed's cv law).
 - Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-phase4-repair-program-r0.json; residuals: the hub-side EQ asset rendering (phase-5 QA lane), coreBridge stays operator-keyed.
+
+---
+Task ID: CIE-INTEGRATION phase-4 tranche 2 (trace 1a15ac4e986d06c5, standing 're-run')
+Agent: main lane (Super Z, zai-web session web-1d6277aa-1024-41a4-9261-bcf1411250b5, chat 9b73c181)
+Task: run #3 (39490683060, the repair-program merge 467081e) was CANCELLED externally 20:40:13Z mid-cow-proof (unattributed, no CIE-lane counter-move of record); its fleet logs carried the tranche-1 live proof (ZERO tx-seam/dbCode/provenance/asset errors — slugs reached ingest+post-apply) AND the next defect layer. This tranche fixes that layer and re-dispatches.
+
+Work Log:
+- varchar(80) class pinned by the offline package probe: MIXED-emission member refs ('-p<idx>'/'-s') append past the base ref which fills the 80 bound exactly on the hash path (biology-23 83 chars). FIX (shared law): smeMemberSuffixReserve (the EXACT emittedRowRefs mirror) + smeQuestionRef(.., reserved) — wired on BOTH bridge sides (shim emit + hub join derive); byte-identical for every ref of record (reserve=0 choice-less; the one stored mixed question math-a-higher q28 derives IDENTICALLY under reserve).
+- count-drift class pinned by the anchor census: 6,618 of 19,097 questions (35%) carry spec-point anchors (the frozen validate REQUIRES primaryTopicCode; the shim's anchor law excludes the rest) — the phase-4 floors were derived from the raw phase-3 census bytes, a contract mis-derivation. FIX (the floors re-based on the servable truth): the roster census measures anchored expectedQuestions/expectedParts (6618/9158), the raw bytes stay disclosed per entry (rawQuestions/rawParts = 19097/25663), zero-anchored real banks (economics-25, english-language-20/25) go seed-only with a per-slug honest disclosure naming the phase-2 anchor gap, the fleet summary gains realSeedOnly.
+- Gates: tsc clean x4; bun test apps/api packages = 2328 pass / 0 fail / 13 skip; smeRef 10/0 (the overflow regression + injectivity pins); roster gate 9/0 re-based; census probe 45/0.
+- Hygiene: zero credentials/DB writes/LLM; the run-003 cancellation disclosed unattributed; no force.
+
+Stage Summary:
+- Tranche 2 = the run-003 classes fixed + the phase-4 contract honestly re-based on what the frozen ingest can serve. Next: PR + self-merge on green, DISPATCH run #4 mode=cow+prod, then on green the CIE fill audit.
+- Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-phase4-repair-program-r1-tranche2.json.
