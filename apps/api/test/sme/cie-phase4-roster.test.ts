@@ -1,0 +1,98 @@
+/**
+ * CIE-INTEGRATION phase 4 — the roster/coherence gate for the DB-plane fleet
+ * runner (apps/api/scripts/cie-phase4-apply.ts), riding the CI verify lane.
+ *
+ * Zero-DB by construction: the pins below are the of-record census of the
+ * committed bundles + registry (scope receipt
+ * CIE-INTEGRATION/cie-frontend-integration-scope-r0.json phase-4 text; the
+ * phase-3 receipt counts 19,097 questions / 25,663 parts; the T-MIG-138
+ * run-003 receipt's "40 banks" alternative disclosure). A regression in the
+ * roster, a broken bundle, or a classification drift fails CI here instead
+ * of mid-fleet on a Neon COW.
+ */
+import { describe, expect, test } from "bun:test";
+
+import { loadRoster, resolveSlugFilter, CIE_BOARD } from "../../scripts/cie-phase4-apply";
+
+const roster = loadRoster();
+
+// the 4 honest-empty stub banks of record (scope receipt stubBanks)
+const STUBS_OF_RECORD = [
+  "cie-a-level-accounting-21",
+  "cie-a-level-economics-23",
+  "cie-as-english-general-paper-21",
+  "cie-igcse-accounting-25",
+];
+
+// the single catalog-lane skeleton of record (0 nodes + 0 sets, no spine)
+const SKELETON_OF_RECORD = ["cie-a-level-maths-20-pure-2"];
+
+// the shared-subject-code join matrix of record (this census): the component
+// banks that seed into ONE subject tree via the seed's resolve-or-create
+const SHARED_CODES_OF_RECORD: Record<string, number> = {
+  "9709": 5, "0973": 3, "0653": 3, "0580": 2, "0455": 2, "0500": 2, "0460": 2, "0607": 2,
+};
+
+describe("cie-phase4 roster law", () => {
+  test("registry carries the 45 " + CIE_BOARD + " rows of record", () => {
+    expect(roster.cieRows).toBe(45);
+  });
+
+  test("classification of record: 40 real banks / 4 stubs / 1 skeleton", () => {
+    expect(roster.real).toBe(40);
+    expect(roster.stubs).toBe(4);
+    expect(roster.skeletons).toBe(1);
+  });
+
+  test("stubs are exactly the of-record four", () => {
+    const stubs = roster.entries.filter((e) => e.cls === "stub").map((e) => e.slug).sort();
+    expect(stubs).toEqual([...STUBS_OF_RECORD].sort());
+  });
+
+  test("the skeleton is exactly the of-record catalog form", () => {
+    const skel = roster.entries.filter((e) => e.cls === "skeleton").map((e) => e.slug).sort();
+    expect(skel).toEqual([...SKELETON_OF_RECORD].sort());
+  });
+
+  test("every real bank is coherent: sets >= 1, nodes > 0, questions/parts floors of record", () => {
+    const real = roster.entries.filter((e) => e.cls === "real");
+    for (const e of real) {
+      expect(e.questionSets).toBeGreaterThan(0);
+      expect(e.nodes).toBeGreaterThan(0);
+      expect(e.expectedQuestions).toBeGreaterThan(0);
+    }
+    const questions = real.reduce((s, e) => s + e.expectedQuestions, 0);
+    const parts = real.reduce((s, e) => s + e.expectedParts, 0);
+    // the phase-3 receipt counts of record: 19,097 questions / 25,663 parts
+    expect(questions).toBe(19097);
+    expect(parts).toBe(25663);
+  });
+
+  test("every real bank carries a syllabus code + version (the seed's curriculumCode law)", () => {
+    for (const e of roster.entries) {
+      expect(e.code).toMatch(/^[0-9]{4}$/);
+      expect(e.syllabusVersion.length).toBeGreaterThan(0);
+    }
+  });
+
+  test("the shared-code join matrix matches the census of record", () => {
+    const counts = new Map<string, number>();
+    for (const e of roster.entries.filter((x) => x.cls === "real")) {
+      counts.set(e.code, (counts.get(e.code) ?? 0) + 1);
+    }
+    for (const [code, n] of Object.entries(SHARED_CODES_OF_RECORD)) {
+      expect(counts.get(code)).toBe(n);
+    }
+    // 40 real banks over 27 distinct syllabus codes of record
+    expect(counts.size).toBe(27);
+  });
+
+  test("slug filter law: 'all' selects everything; unknown slugs are refused (never invented)", () => {
+    expect(resolveSlugFilter(roster, "all").length).toBe(45);
+    expect(resolveSlugFilter(roster, undefined).length).toBe(45);
+    const one = resolveSlugFilter(roster, "cie-igcse-chemistry-23");
+    expect(one.length).toBe(1);
+    expect(one[0]?.code).toBe("0620");
+    expect(() => resolveSlugFilter(roster, "not-a-cie-slug")).toThrow(/never invented/);
+  });
+});

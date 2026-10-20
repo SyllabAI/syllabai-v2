@@ -1,0 +1,39 @@
+{
+  "receipt": "cie-phase4-db-plane-build-r0",
+  "family": "CIE-INTEGRATION",
+  "operatorTrace": "1a15a0a3e414f9d5",
+  "operatorOrder": "'build the phase-4 plane'",
+  "agent": "r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "generatedUtc": "2026-10-20T17:05:00Z",
+  "phase": "4 of 6 — the DB-plane MACHINERY built (scope receipt cie-frontend-integration-scope-r0 executionPlan phase 4; phases 0-3 of record via PRs #206-#210)",
+  "mandate": {
+    "scopeReceipt": "CIE-INTEGRATION/cie-frontend-integration-scope-r0.json executionPlan phase '4 — DB plane (operator-gated)': per CIE spec seed-bundle-curriculum; per slug ingest-bundle-questions dry-run (rollback proof) -> COW-proof -> prod apply under the ADR-026 evidence-safe replace; 40 real banks become SME-ingestable",
+    "gapOfRecord": "T-MIG-138 run-003-prod-apply-order-r0.json alternatives_disclosed_not_fired: 'CIE phase-4 DB plane (40 banks) — no phase-4 machinery exists of record (no per-slug seed/ingest workflow; no phase-4 receipts); build = the next lane act on operator re-key' — THIS receipt closes that gap",
+    "firedAtBuild": "NO — the plane is BUILT and dispatch-gated, INERT until dispatched (the workflow_dispatch = the operator's fire order, the BASELINE_DB operator-gate discipline); the prod apply is NOT fired by this build act"
+  },
+  "deliverables": {
+    "orchestrator": "apps/api/scripts/cie-phase4-apply.ts — the per-slug fleet runner: registry-driven roster (board 'Cambridge International', registry order, never-invented slugs law), fail-closed classification (real/stub/skeleton per bundle content), modes --census (zero-DB) / --mode dry (the 134c rollback sentinel per slug) / --mode apply (per-slug seed tx + ingest tx + postverify; per-slug isolation, honest fleet exit 1 iff any slug failed); post-apply count-drift assertion (ingested questions == bundle census per slug); scrub-asserted receipts (postgres://, neon.tech, napi_, ghp_, vcp_ patterns); SEED_DATABASE_URL inline-only credential law",
+    "workflow": ".github/workflows/cie-phase4-db-plane.yml — the 134c gate (the t-mig-138-intake guard protocol shape verbatim): job 1 cow-proof (disposable Neon COW off production, branch-local owner password reset + ::add-mask:: hygiene, fleet apply or cow-dry rollback-proof, receipt floors verified, DROP + 404-verify even on failure) gates job 2 prod-apply (CIE4_PROD_DATABASE_URL secret, jdbc:-prefix refusal precondition, floors + artifact); dispatch-only, concurrency-serialized (cancel-in-progress: false)",
+    "rosterGate": "apps/api/test/sme/cie-phase4-roster.test.ts — the CI verify-lane gate pinning the roster of record: 45 CIE rows / 40 real banks / the 4 of-record stubs / the pure-2 skeleton; fleet totals EXACT (19,097 questions / 25,663 parts — the phase-3 receipt bytes); the shared-code join matrix (9709:5, 0973:3, 0653:3, 0580/0455/0500/0460/0607:2 each, 27 distinct codes); the slug-filter never-invented refusal",
+    "widening": "services/curriculum/bundle-seed.ts + its test pins — the board/qualification vocabulary of record (the 138a unit-vocabulary-widening precedent class): bundleBoardAndQualification maps Edexcel IGCSE -> (Edexcel, 'International GCSE (9-1)') BYTE-IDENTICAL (the chemistry/physics control law — same version keys resolve) and CIE IGCSE -> (Cambridge International, 'Cambridge IGCSE'), CIE A-LEVEL/A-Level/AS -> (Cambridge International, 'Cambridge International AS & A Level'); anything outside the pinned map refuses rather than inventing (fail-closed preserved); resolveVersion parameterized over (board, qualification, code)"
+  },
+  "censusOfRecord": {
+    "method": "zero-DB offline census via the orchestrator --census over all 45 registry rows (first-hand, this run)",
+    "rows": { "cieRows": 45, "real": 40, "stubs": 4, "skeletons": 1 },
+    "stubs": ["cie-a-level-accounting-21", "cie-a-level-economics-23", "cie-as-english-general-paper-21", "cie-igcse-accounting-25"],
+    "skeleton": "cie-a-level-maths-20-pure-2 (0 nodes + 0 sets, no spine, no content-map — the catalog honest-empty form; the seed's own SUBJECT-root law would refuse it, so the plane skips it honestly)",
+    "fleetTotals": { "questions": 19097, "parts": 25663, "floors": { "questions": 19000, "parts": 25600 } },
+    "wideningWhy": "the frozen seed refused every non-'IGCSE' level (14 of 44 roster bundles are A-Level/AS) AND pinned board 'Edexcel' — without the widening even CIE IGCSE would seed under the wrong board; the widening is the minimal vocabulary-driven generalization with the Edexcel path byte-identical"
+  },
+  "validation": {
+    "typecheck": "bun run --cwd apps/api typecheck CLEAN (the orchestrator is import-graphed by the roster test, so it typechecks under tsc — unlike the frozen drivers which sit outside the tsconfig graph; the tx-as-SqlFn seam cast is explicit and disclosed)",
+    "tests": "FULL verify-lane battery 2275 pass / 0 fail / 13 skip (bun test apps/api packages) — includes the 5 new widening pins (Edexcel byte-identical control, CIE vocabulary pins, hostile board/level refusals, a REAL cie-a-level-chemistry-25 seed through the store law with version-key capture + idempotent re-run, a REAL cie-igcse-chemistry-23 seed) + the 8 roster-gate tests",
+    "yaml": "cie-phase4-db-plane.yml parsed + job/step structure verified",
+    "census": "the fleet census ran clean over all 45 slugs (failures=0; all three classes exercised incl. the filtered-subset path)"
+  },
+  "fence": "zero LLM spend; zero Neon contact from the sandbox (DNS-blocked of record — CI is the sanctioned path); zero prod-db writes (the plane is INERT until dispatched); hub untouched; content bundles byte-untouched (read-only census); the Edexcel seed path byte-identical (the pinned chemistry/physics tests are the control law)",
+  "nextAct": {
+    "operator": "stage CIE4_PROD_DATABASE_URL (the production uri, same derivation as T138_PROD_DATABASE_URL — postgresql://…?sslmode=require, NO jdbc:) then dispatch cie-phase4-db-plane (mode=cow+prod; the dispatch IS the fire order)",
+    "lane": "phase-4 receipts file per dispatch; phase 5 (posture + QA battery + filing) follows the scope receipt"
+  }
+}

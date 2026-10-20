@@ -1,0 +1,246 @@
+# CIE-INTEGRATION phase 4 — the per-slug DB-plane gate (the 134c COW-proof
+# protocol, built per the operator re-key "build the phase-4 plane",
+# trace 1a15a0a3e414f9d5).
+#
+# Mandate of record:
+#   - scope receipt CIE-INTEGRATION/cie-frontend-integration-scope-r0.json,
+#     executionPlan phase "4 — DB plane (operator-gated)": "Per CIE spec:
+#     seed-bundle-curriculum; per slug: ingest-bundle-questions dry-run
+#     (rollback proof) -> COW-proof -> prod apply under the ADR-026
+#     evidence-safe replace; 40 real banks become SME-ingestable (19,095
+#     questions / 25,654 parts)".
+#   - T-MIG-138 run-003 receipt (alternatives_disclosed_not_fired): "CIE
+#     phase-4 DB plane (40 banks) — no phase-4 machinery exists of record
+#     (no per-slug seed/ingest workflow; no phase-4 receipts)".
+#
+# The machinery (all of record on main with this workflow):
+#   - the FROZEN curriculum seed  services/curriculum/bundle-seed.ts
+#     (the 134a concept-seed law + the phase-4 board/qualification vocabulary
+#     widening — the Edexcel path byte-identical, chemistry control intact);
+#   - the FROZEN questions ingest services/sme/* (the 1.1->1.0 versioned shim
+#     driving the REAL SmeQuestionIngestService, ADR-026 evidence-safe
+#     replace, idempotent);
+#   - the fleet orchestrator apps/api/scripts/cie-phase4-apply.ts
+#     (registry-driven roster: 40 real banks + 4 honest-empty stubs
+#     (seed-only) + 1 catalog skeleton (skipped honestly); per-slug
+#     isolation, honest per-slug failures, scrub-asserted receipts;
+#     post-apply count-drift assertion vs the bundle census).
+#
+# Guard protocol (the 134c law, the t-mig-138-intake shape verbatim):
+#   job 1 (cow-proof): a disposable Neon COW branch off production (in-line
+#     read_write endpoint, NEON_API_KEY = the CI write-capable key of record),
+#     branch-local owner password reset (masked), the fleet orchestrator
+#     applies the CIE curriculum seed + question banks against the COW,
+#     receipt floors verified, DROP the COW + 404-verify — even on failure
+#     (if: always(), the T-MIG-035 discipline). Production roles untouched.
+#   job 2 (prod-apply, needs job 1 ALL GREEN): the same orchestrator against
+#     the production DATABASE_URL (the api's own role), floors + artifact.
+#   mode=cow-dry: the rollback-proof variant — the exact statement sequence
+#     against the COW, every slug transaction discarded (zero persistence
+#     even on the disposable branch).
+#
+# OPERATOR GATE: workflow_dispatch ONLY — this runner is INERT until
+# dispatched (the dispatch = the operator's fire order; the prod apply is
+# operator-gated per the BASELINE_DB discipline).
+#
+# Secrets/vars of record:
+#   NEON_API_KEY           (exists of record — the CI write-capable Neon key)
+#   NEON_PROJECT_ID        (var, exists)
+#   NEON_PARENT_BRANCH_ID  (var, exists — the production branch, the COW parent)
+#   CIE4_PROD_DATABASE_URL (operator stages ONCE before the first prod
+#                           dispatch — the production postgres uri, same value
+#                           class/derivation path as T138_PROD_DATABASE_URL:
+#                           postgresql://<user>:<password>@ep-….neon.tech/
+#                           syllabai?sslmode=require, NO jdbc: prefix;
+#                           inline-only credential law — never printed, never
+#                           persisted). Until staged, prod dispatches red at
+#                           the precondition step (honest red, zero writes).
+
+name: cie-phase4-db-plane
+
+on:
+  workflow_dispatch:
+    inputs:
+      note:
+        description: "Operator note for this phase-4 run"
+        required: false
+        default: ""
+      mode:
+        description: "cow+prod (default, full guard protocol) | prod-only (COW proof already of record) | cow-dry (rollback proof against the COW, zero persistence)"
+        required: false
+        default: "cow+prod"
+      slugs:
+        description: "Optional comma-separated CIE slug subset (default: all 45 registry rows)"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cie-phase4-db-plane
+  cancel-in-progress: false
+
+jobs:
+  cow-proof:
+    if: ${{ inputs.mode == 'cow+prod' || inputs.mode == '' || inputs.mode == 'cow-dry' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Create COW branch (in-line read_write endpoint)
+        id: cow
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PARENT_BRANCH_ID: ${{ vars.NEON_PARENT_BRANCH_ID }}
+        run: |
+          set -euo pipefail
+          NAME="cie-phase4-cow-${GITHUB_RUN_ID}"
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" -H "Content-Type: application/json" \
+            -d "{\"branch\":{\"parent_id\":\"${NEON_PARENT_BRANCH_ID}\",\"name\":\"${NAME}\"},\"endpoints\":[{\"type\":\"read_write\"}]}")
+          BRANCH_ID=$(echo "$RESP" | jq -r '.branch.id')
+          echo "branch_id=${BRANCH_ID}" >> "$GITHUB_OUTPUT"
+          HOST=""
+          for i in $(seq 1 60); do
+            EP=$(curl -sf "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}/endpoints" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            HOST=$(echo "$EP" | jq -r '.endpoints[0].host // empty')
+            STATE=$(echo "$EP" | jq -r '.endpoints[0].current_state // empty')
+            if [ -n "$HOST" ] && [ "$STATE" = "ready" ]; then break; fi
+            sleep 3
+          done
+          [ -n "$HOST" ] || { echo "endpoint never ready"; exit 1; }
+          echo "host=${HOST}" >> "$GITHUB_OUTPUT"
+      - name: Reset BRANCH-LOCAL owner password (production roles untouched)
+        id: role
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${{ steps.cow.outputs.branch_id }}/roles/neondb_owner/reset_password" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          PW=$(echo "$RESP" | jq -r '.role.password')
+          [ -n "$PW" ] || { echo "no password in reset response"; exit 1; }
+          echo "::add-mask::${PW}"
+          ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
+          echo "cow_url=postgresql://neondb_owner:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
+      - name: Run the phase-4 fleet against the COW
+        env:
+          SEED_DATABASE_URL: ${{ steps.role.outputs.cow_url }}
+          SLUGS: ${{ inputs.slugs || '' }}
+        run: |
+          set -euo pipefail
+          ARGS=""
+          if [ -n "$SLUGS" ]; then ARGS="--slugs $SLUGS"; fi
+          if [ "${{ inputs.mode || 'cow+prod' }}" = "cow-dry" ]; then
+            bun apps/api/scripts/cie-phase4-apply.ts --mode dry $ARGS --receipt cie4-cow-receipt.json
+          else
+            bun apps/api/scripts/cie-phase4-apply.ts --mode apply $ARGS --receipt cie4-cow-receipt.json
+          fi
+      - name: Verify the COW receipt floors (the phase-4 census of record)
+        env:
+          SLUGS: ${{ inputs.slugs || '' }}
+        run: |
+          set -euo pipefail
+          FAIL=$(jq -r '.summary.failures' cie4-cow-receipt.json)
+          [ "$FAIL" = "0" ] || { echo "::error::fleet failures = ${FAIL}"; jq -r '.failures' cie4-cow-receipt.json; exit 1; }
+          EXPECTED_REAL=$(jq '[.perSlug[] | select(.cls == "real")] | length' cie4-cow-receipt.json)
+          APPLIED=$(jq -r '.summary.realApplied' cie4-cow-receipt.json)
+          [ "$APPLIED" = "$EXPECTED_REAL" ] || { echo "::error::real banks applied ${APPLIED} != expected ${EXPECTED_REAL}"; exit 1; }
+          if [ -z "$SLUGS" ]; then
+            Q=$(jq -r '.summary.questionsIngested' cie4-cow-receipt.json)
+            P=$(jq -r '.summary.partsIngested' cie4-cow-receipt.json)
+            echo "fleet floors: questions=${Q} parts=${P} (floors of record 19000 / 25600)"
+            [ "$Q" -ge 19000 ] || { echo "::error::questions below the fleet floor"; exit 1; }
+            [ "$P" -ge 25600 ] || { echo "::error::parts below the fleet floor"; exit 1; }
+          fi
+          echo "COW receipt floors GREEN"
+      - name: Upload the COW proof artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cie4-cow-proof
+          path: cie4-cow-receipt.json
+          if-no-files-found: ignore
+      - name: DROP the COW + 404-verify (zero residue, even on failure)
+        if: always()
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          BRANCH_ID="${{ steps.cow.outputs.branch_id }}"
+          [ -n "$BRANCH_ID" ] || { echo "no branch to drop"; exit 0; }
+          curl -sf -X DELETE "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" > /dev/null || true
+          sleep 5
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          echo "post-delete GET = ${CODE}"
+          [ "$CODE" = "404" ] || { echo "COW residue — 404 verification FAILED"; exit 1; }
+
+  prod-apply:
+    needs: cow-proof
+    if: ${{ !failure() && !cancelled() && (inputs.mode == 'cow+prod' || inputs.mode == '' || inputs.mode == 'prod-only') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Precondition (the operator-staged prod credential of record)
+        env:
+          CIE4_PROD_DATABASE_URL: ${{ secrets.CIE4_PROD_DATABASE_URL }}
+        run: |
+          if [ -z "$CIE4_PROD_DATABASE_URL" ]; then
+            echo "::error::CIE4_PROD_DATABASE_URL is not staged — stage the production uri (same derivation as T138_PROD_DATABASE_URL, see the workflow header) before the prod dispatch"; exit 1
+          fi
+          case "$CIE4_PROD_DATABASE_URL" in
+            jdbc:*) echo "::error::jdbc: prefix refused (packages/db law — plain postgresql:// only)"; exit 1 ;;
+          esac
+      - name: Run the phase-4 fleet against PRODUCTION
+        env:
+          SEED_DATABASE_URL: ${{ secrets.CIE4_PROD_DATABASE_URL }}
+          SLUGS: ${{ inputs.slugs || '' }}
+        run: |
+          set -euo pipefail
+          ARGS=""
+          if [ -n "$SLUGS" ]; then ARGS="--slugs $SLUGS"; fi
+          bun apps/api/scripts/cie-phase4-apply.ts --mode apply $ARGS --receipt cie4-prod-receipt.json
+      - name: Verify the PROD receipt floors (the phase-4 census of record)
+        env:
+          SLUGS: ${{ inputs.slugs || '' }}
+        run: |
+          set -euo pipefail
+          FAIL=$(jq -r '.summary.failures' cie4-prod-receipt.json)
+          [ "$FAIL" = "0" ] || { echo "::error::fleet failures = ${FAIL}"; jq -r '.failures' cie4-prod-receipt.json; exit 1; }
+          EXPECTED_REAL=$(jq '[.perSlug[] | select(.cls == "real")] | length' cie4-prod-receipt.json)
+          APPLIED=$(jq -r '.summary.realApplied' cie4-prod-receipt.json)
+          [ "$APPLIED" = "$EXPECTED_REAL" ] || { echo "::error::real banks applied ${APPLIED} != expected ${EXPECTED_REAL}"; exit 1; }
+          if [ -z "$SLUGS" ]; then
+            Q=$(jq -r '.summary.questionsIngested' cie4-prod-receipt.json)
+            P=$(jq -r '.summary.partsIngested' cie4-prod-receipt.json)
+            echo "fleet floors: questions=${Q} parts=${P} (floors of record 19000 / 25600)"
+            [ "$Q" -ge 19000 ] || { echo "::error::questions below the fleet floor"; exit 1; }
+            [ "$P" -ge 25600 ] || { echo "::error::parts below the fleet floor"; exit 1; }
+          fi
+          echo "PROD receipt floors GREEN"
+      - name: Upload the prod apply artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cie4-prod-apply
+          path: cie4-prod-receipt.json
+          if-no-files-found: ignore

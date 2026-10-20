@@ -145,6 +145,60 @@ export class BundleSeedConflictError extends Error {}
 export const BUNDLE_QUALIFICATION = "International GCSE (9-1)";
 export const BUNDLE_BOARD_OF_RECORD = "Edexcel";
 
+// ── the board/qualification vocabulary of record (the phase-4 CIE widening) ──
+//
+// The 134a seed was built for the Edexcel International GCSE family of record;
+// CIE-INTEGRATION phase 4 (scope receipt cie-frontend-integration-scope-r0,
+// executionPlan phase "4 — DB plane"; the 138a unit-vocabulary-widening
+// precedent class) generalizes the seed to the committed CIE spine vocabulary
+// — VOCABULARY-DRIVEN and FAIL-CLOSED: anything outside the pinned map refuses
+// rather than inventing a board/qualification string. The Edexcel path is
+// BYTE-IDENTICAL (the same constants, so existing (board, qualification, code)
+// version keys resolve unchanged — the chemistry/physics control law).
+// Cambridge qualification strings follow the board's own family names of
+// record (the bundles carry level IGCSE / A-LEVEL / A-Level / AS; the registry
+// normalized the spine's 'A-LEVEL' to 'A-Level', phase-3 receipt).
+
+export const CIE_BOARD_OF_RECORD = "Cambridge International";
+export const CIE_QUALIFICATION_IGCSE = "Cambridge IGCSE";
+export const CIE_QUALIFICATION_AS_A_LEVEL = "Cambridge International AS & A Level";
+
+const BUNDLE_BOARD_BY_UPSTREAM: Record<string, string> = {
+  // the Edexcel bundles carry 'Pearson Edexcel' upstream; the store board of
+  // record (the 134a constant, mirrored from the 4CH1 rows) is 'Edexcel'
+  "Pearson Edexcel": BUNDLE_BOARD_OF_RECORD,
+  "Edexcel": BUNDLE_BOARD_OF_RECORD,
+  [CIE_BOARD_OF_RECORD]: CIE_BOARD_OF_RECORD,
+};
+
+export function bundleBoardAndQualification(
+  bundle: Pick<BundleCurriculum, "board" | "level">,
+): { board: string; qualification: string } {
+  const board = BUNDLE_BOARD_BY_UPSTREAM[bundle.board];
+  if (!board) {
+    throw new BundleSeedConflictError(
+      "bundle board '" + bundle.board + "' is outside the board vocabulary of record — refusing to guess",
+    );
+  }
+  if (bundle.level === "IGCSE") {
+    return {
+      board,
+      qualification: board === BUNDLE_BOARD_OF_RECORD ? BUNDLE_QUALIFICATION : CIE_QUALIFICATION_IGCSE,
+    };
+  }
+  if (
+    board === CIE_BOARD_OF_RECORD &&
+    (bundle.level === "A-LEVEL" || bundle.level === "A-Level" || bundle.level === "AS")
+  ) {
+    return { board, qualification: CIE_QUALIFICATION_AS_A_LEVEL };
+  }
+  throw new BundleSeedConflictError(
+    board === CIE_BOARD_OF_RECORD
+      ? "bundle level '" + bundle.level + "' is outside the Cambridge International family of record (IGCSE / AS / A-Level) — refusing to guess"
+      : "bundle level '" + bundle.level + "' is outside the International GCSE family of record — refusing to guess",
+  );
+}
+
 // ── bound laws (concept-seed :414-439) ───────────────────────────────────────
 
 function bound(text: string | null, max: number): string {
@@ -420,11 +474,9 @@ export async function seedBundleCurriculum(
   source: BundleSourceDescriptor,
   activatedBy: string | null,
 ): Promise<BundleSeedSummary> {
-  if (bundle.level !== "IGCSE") {
-    throw new BundleSeedConflictError(
-      "bundle level '" + bundle.level + "' is outside the International GCSE family of record — refusing to guess",
-    );
-  }
+  // the board/qualification vocabulary gate (the phase-4 CIE widening; the
+  // Edexcel IGCSE path byte-identical — see bundleBoardAndQualification)
+  const { board, qualification } = bundleBoardAndQualification(bundle);
   const relations = new Set(bundle.edges.map((e) => e.relation));
   if (relations.size > 1 || (relations.size === 1 && !relations.has("PART_OF"))) {
     throw new BundleSeedConflictError(
@@ -446,7 +498,7 @@ export async function seedBundleCurriculum(
     applicabilityWrites: 0,
   };
 
-  const version = await resolveVersion(deps, curriculumCode, curriculumTitle, now);
+  const version = await resolveVersion(deps, board, qualification, curriculumCode, curriculumTitle, now);
   const subject = await resolveSubject(deps, version.id, subjectCode, subjectName, now);
 
   const mapped = mapBundleNodes(bundle, subjectCode + " official specification structure");
@@ -548,18 +600,20 @@ export async function seedBundleCurriculum(
 
 async function resolveVersion(
   deps: BundleSeedDeps,
+  board: string,
+  qualification: string,
   code: string,
   title: string,
   now: string,
 ): Promise<VersionRow> {
   const existing = (await deps.sql`
     select id, status from curriculum_versions
-    where board = ${BUNDLE_BOARD_OF_RECORD} and qualification = ${BUNDLE_QUALIFICATION} and code = ${code}`) as VersionRow[];
+    where board = ${board} and qualification = ${qualification} and code = ${code}`) as VersionRow[];
   if (existing[0] != null) return existing[0];
   const id = randomUUID();
   await deps.sql`
     insert into curriculum_versions (id, board, qualification, code, title, status, created_at)
-    values (${id}::uuid, ${BUNDLE_BOARD_OF_RECORD}, ${BUNDLE_QUALIFICATION}, ${code}, ${title}, 'DRAFT', ${now}::timestamptz)`;
+    values (${id}::uuid, ${board}, ${qualification}, ${code}, ${title}, 'DRAFT', ${now}::timestamptz)`;
   return { id, status: "DRAFT" };
 }
 
