@@ -262,11 +262,24 @@ export function sameSeedExceptBundle(existing: string | null, seed: string): boo
   return true;
 }
 
-function requireSeedNode(node: NodeRow, code: string, provenance: string): void {
+function requireSeedNode(node: NodeRow, code: string, provenance: string, expectedTitle: string | null): void {
   if (node.provenance !== provenance && !sameSeedExceptBundle(node.provenance, provenance)) {
     throw new BundleSeedConflictError(
       "knowledge node " + code + " already exists with different provenance ('" +
         node.provenance + "' vs seed '" + provenance + "') — resolve manually, never re-seed over it",
+    );
+  }
+  // the optionA title-drift refusal (the operator ruling A, trace
+  // 1a15b161bf960249): a shared dbCode whose stored title disagrees with the
+  // seed's mapped title is cross-bank tree drift — the sibling-reuse law
+  // alone absorbed such collisions SILENTLY (the 9709 graft class: the
+  // second bank's section resolved onto the first bank's node under the
+  // first bank's title). Honest red, resolve manually, never re-seed over it.
+  if (expectedTitle != null && node.title !== expectedTitle) {
+    throw new BundleSeedConflictError(
+      "knowledge node " + code + " carries title '" + node.title +
+        "' but the seed maps '" + expectedTitle +
+        "' — tree drift on a shared code; resolve manually, never re-seed over it",
     );
   }
 }
@@ -320,6 +333,23 @@ interface MappedNode {
 }
 
 /**
+ * The optionA identity namespace (the operator ruling A, trace
+ * 1a15b161bf960249): the CIE node namespace is VERSION-SCOPED — every node
+ * dbCode hangs under <code>-<syllabusVersion> (the curriculumCode symmetry,
+ * :539), which splits the cross-version pairs (0452 2023-2025 vs 2027-2029;
+ * 0455/0500/0460 the 20-vs-25 generations — their spec-code STRINGS overlap
+ * with different tree positions) while the same-version component families
+ * join exactly per the build receipt's join matrix. The Edexcel namespace is
+ * BYTE-IDENTICAL (the 134a law, the chemistry control).
+ */
+function identityNamespaceCode(bundle: BundleCurriculum): string {
+  if (BUNDLE_BOARD_BY_UPSTREAM[bundle.board] === CIE_BOARD_OF_RECORD) {
+    return bundle.code + "-" + bundle.syllabusVersion;
+  }
+  return bundle.code;
+}
+
+/**
  * Maps the bundle's four node families onto the of-record DB hierarchy.
  * Deterministic order: SUBJECT first, then UNIT/TOPIC/SUBTOPIC by
  * (order, code) — the insert sequence is stable across runs.
@@ -329,6 +359,7 @@ export function mapBundleNodes(
   descriptionPrefix: string,
 ): Map<string, MappedNode> {
   const subjectCode = bundle.code;
+  const nsCode = identityNamespaceCode(bundle);
   const byCode = new Map<string, MappedNode>();
   const nodes = [...bundle.nodes].sort((a, b) =>
     a.family === b.family
@@ -343,11 +374,12 @@ export function mapBundleNodes(
       // the SUBJECT node's bundle code is the COURSE SLUG (igcse-physics-19),
       // not the spec code — the slug gate is the seed's own rootMapped
       // lookup (mapped.get(source.slug)), which fail-closes on a mismatch;
-      // the DB code is the of-record subject code (4PH1)
+      // the DB code is the of-record subject code (4PH1) — version-scoped
+      // for CIE (the optionA namespace law)
       const subjectName = bundle.subject + " (" + subjectCode + ")";
       byCode.set(n.code, {
         bundleCode: n.code,
-        dbCode: subjectCode,
+        dbCode: nsCode,
         nodeType: "SUBJECT",
         title: bound(subjectName, 200),
         description: bound(bundlesTitle(bundle), 1000),
@@ -363,11 +395,32 @@ export function mapBundleNodes(
       );
     }
     if (n.family === "TOPIC") {
-      // sections land as UNITs: S{order}
       if (n.order < 1) throw new BundleSeedConflictError("bundle TOPIC " + n.code + " order < 1");
+      // the optionA UNIT law: for CIE the UNIT identity is the TOPIC code's
+      // own official -T tail, FAIL-CLOSED — the order digit is NOT an
+      // identity (the 9709 census of record: six banks, every bank's one
+      // TOPIC at order 1, official sections T1..T6 — the order law grafted
+      // them all onto 9709-S1 under the first bank's title). The tail is the
+      // syllabus's own section vocabulary: T<n> -> S<n> (9709 S1..S6
+      // disjoint, 0452 plain digits), TB/TC/TP -> SB/SC/SP (0653/0973),
+      // TC/TE -> SC/SE (0580/0607 core-extended), TS -> SS (0500). Edexcel
+      // stays byte-identical on the order law (S{order}).
+      let unitDbCode: string;
+      if (BUNDLE_BOARD_BY_UPSTREAM[bundle.board] === CIE_BOARD_OF_RECORD) {
+        const m = /-T([A-Z]?[0-9]+)$/.exec(n.code);
+        if (m == null) {
+          throw new BundleSeedConflictError(
+            "bundle TOPIC " + n.code +
+              " does not carry the official -T tail — refusing to derive a CIE UNIT identity from order",
+          );
+        }
+        unitDbCode = nsCode + "-S" + m[1];
+      } else {
+        unitDbCode = subjectCode + "-S" + n.order;
+      }
       byCode.set(n.code, {
         bundleCode: n.code,
-        dbCode: subjectCode + "-S" + n.order,
+        dbCode: unitDbCode,
         nodeType: "UNIT",
         title: bound(n.title, 200),
         description: bound(descriptionPrefix + " (section): " + n.title, 1000),
@@ -440,7 +493,13 @@ export function mapBundleNodes(
     // official identity verbatim: `{subject}-{code}` (0500-S1.001),
     // self-locating via the embedded unit number. Disjoint from the numeric,
     // ALNUM, and SUBTOPIC-tail vocabularies by construction.
-    const letterPrefixed = /^[A-Z]\d+(?:\.\d+)*$/.test(n.code);
+    // SIXTH shape (the optionA re-land census catch — the run-003 fleet would
+    // have fail-closed mid-seed on 462 points across 7 banks): the
+    // letter-prefixed code with the official trailing VARIANT letter
+    // ('C4.1.1a', 'P1.5.1b' — 0580/0607 maths, 0490 RS, 0653/0973 sciences).
+    // The suffix is part of the official identity: `{ns}-{code}` verbatim,
+    // disjoint from the unsuffixed vocabulary by the trailing [a-z].
+    const letterPrefixed = /^[A-Z]\d+(?:\.\d+)*[a-z]?$/.test(n.code);
     if (!/^[0-9]/.test(n.code) && !alnum && !letterPrefixed) {
       throw new BundleSeedConflictError(
         "bundle SPEC_POINT " + n.code + " does not carry a numeric or letter-prefixed spec code",
@@ -452,7 +511,7 @@ export function mapBundleNodes(
         "bundle SPEC_POINT " + n.code + " parent " + parent + " is not a mapped TOPIC",
       );
     }
-    let specDbCode = subjectCode + "-" + n.code;
+    let specDbCode = nsCode + "-" + n.code;
     if (alnum) {
       const grandparent =
         parentMapped.parentBundleCode == null
@@ -713,7 +772,7 @@ async function resolveRoot(
     }
   }
   if (root != null) {
-    requireSeedNode(root, rootMapped.dbCode, provenance);
+    requireSeedNode(root, rootMapped.dbCode, provenance, rootMapped.title);
     counters.nodesReused++;
   } else {
     const id = randomUUID();
@@ -768,7 +827,7 @@ async function resolveNode(
   let existing = byBundleCode.get(bundleCode) ?? null;
   if (existing == null) existing = (await findByCode(deps, code))[0] ?? null;
   if (existing != null) {
-    requireSeedNode(existing, code, provenance);
+    requireSeedNode(existing, code, provenance, title);
     // T-MIG-139 drift guard: the seed's identity contract is (code → node_type).
     // A row landed under the pre-convergence law (SUBTOPIC where this seed now
     // maps SPEC_POINT) is a G3/G5-protected state — refuse, never absorb.
