@@ -1,0 +1,26 @@
+{
+  "lane": "T-MIG-138",
+  "run": "run-002-intake-r7a",
+  "operator_trace": "1a1587563228b7a5",
+  "date": "2026-10-20",
+  "agent": "r7a (Super Z, zai-web session web-da4ab8b1)",
+  "bands": {
+    "138a": "driver + vocabulary of record @ 661f02f (papers-ingest-138.ts: totals-bounded QP law + explicit-start MS grid law + card synthesis + strict tranche gate; subject-profile/fetch-parser maths R variants, chemistry byte-identical; suite 1805/0). FULL DRY of record: 130 archive dirs -> 122 ingested / 8 archive-side skips, ~8.6k chunks, marks 100 exact on every landed paper.",
+    "138b": "t-mig-138-intake.yml @ 127f853 (the 133d guard protocol: COW-proof -> prod-apply -> dispatch-gated backfill). Four fires of record: run 39403935923 (pdftotext missing on runners — the COW applied empty and dropped 404-clean, guard held), run 39405066536 (the apply WORKED — failed only on the createSql sql.end trailing call), run 39407429712 (the apply COMPLETED 110 papers/8202 chunks/marks 11000=110x100 EXACT — failed 5min later on the Neon-serverless socket close-error), run 39411005218 (GREEN: cow-proof PASS -> prod-apply PASS). PROD state: 8202 4MA1 chunks, exam_papers 110 VALIDATED (titles '4MA1 Maths 4MA1/1H June 2025' per the golden master), 330-doc backfill queue.",
+    "138b-battery": "LIVE WIRE (evidence/t138_battery_run001.json): the morning's refusing ask 'question no. 1 from june 2025 paper 1H maths' (courseRef 4MA1-2016) now RESOLVES — 200 refused=false evidenceCount=3 provider=groq, citation[0] = 'Question paper — p3' sourceType QUESTION_PAPER with a page-level deepLink (the deterministic STORE tier, ZERO embeddings); MS-seeking ask resolves (evidenceCount=2); question 99 honestly refuses; chemistry control byte-stable (5 citations, groq). Bank census: 218 rows = 110x4MA1 + 56x4CH1 + 39x4CH0 + 13 REJECTED.",
+    "138c-tranche1": "backfill dispatch mode=backfill (35 rows, recency-first from the prod-apply artifact) — run GREEN (gemini-embedding-001 768-dim, the 133d executor, CI egress per the region law). Remaining queue: 295 docs = ~8-9 RPD-bounded daily tranches (1000 RPD free tier)."
+  },
+  "write_ledger": {
+    "prod_rows": "110 exam_papers VALIDATED + 330 documents VALIDATED + 8202 document_chunks (embed_rev=2, embeddings NULL until the backfill lands their doc) — all via the FROZEN ingestCanonicalDocument inside per-paper ONE transactions",
+    "embeddings": "tranche 1 = 35 documents embedded (~900 chunk vectors, provider spend operator-ordered)",
+    "secrets": "T138_PROD_DATABASE_URL + T138_GEMINI_KEY staged via the Actions secrets API (libsodium sealed, values never printed); KEPT until the backfill queue drains (the multi-day tranche discipline — hygiene-delete after the LAST tranche, disclosed)",
+    "probe_writes": "2 sz-probe learners (census + battery class), 5 tutor asks (3 LLM generations, 2 deterministic refusals)",
+    "zero": "zero env writes, zero DDL, zero frozen-law edits, zero NAPI_TOKEN contact, zero code edits to frozen services beyond the carded 138a widening"
+  },
+  "residuals_of_record": [
+    "20 withheld papers: 4 archive-incomplete manifests (2020-06, no ms material), 3 pre-2020 QPs without totals prose (2019-01 1F / 2019-06 2F/2FR), 1 MS segment miss (2024-11 1H), 12 strict-gate count/mark divergences (incl. the 2018-06/2019-01 mislabeled-QP archive defects) — a later pass revisits with the parallel 4MB1 parse-lane grammar findings",
+    "backfill queue: 295 documents pending (RPD-bounded daily tranches, recency-first)",
+    "13 QP-vs-MS print discrepancies (e.g. 1H Q14 QP=4 vs MS row=3) — QP totals authoritative, disclosed",
+    "spec_codes NULL on maths chunks (the honest absence — no spec-resolution lane in this band's fence)"
+  ]
+}
