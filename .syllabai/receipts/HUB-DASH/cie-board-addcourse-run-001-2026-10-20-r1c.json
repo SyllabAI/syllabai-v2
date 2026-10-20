@@ -1,0 +1,47 @@
+{
+  "receipt": "cie-board-addcourse-run-001-2026-10-20-r1c",
+  "family": "HUB-DASH",
+  "taskOfRecord": "Task-63 (r1c lane receipt numbering: 60 = paper-accessibility census 5c2b06c, 61 = scope card bbf5e91, 62 = catalog execution 9f51441)",
+  "operatorTrace": "1a1580a42635b8d9",
+  "operatorOrder": "In dashboard, when we add course, there is no option to choose CIE board",
+  "agent": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)",
+  "generatedUtc": "2026-10-20T05:30:00Z",
+  "dateConvention": "receipt filename carries the lane-local (Asia/Dhaka) date 2026-10-20, consistent with the lane's run-001 receipts",
+  "scope": "the dashboard add-course flow's board dimension + the surfaces it directly falsifies once CIE lanes become addable; hub-plane only",
+  "defectOfRecord": {
+    "site": "apps/hub/src/app/dashboard/add-course-overlay.tsx step 1 (Board)",
+    "shape": "a STATIC non-interactive Edexcel button + caption 'Class creation covers the Pearson Edexcel lanes; the Cambridge International courses are past-papers-first launches' — true when written (pre-CIE registry), FALSE since CIE-INTEGRATION phase 3 landed 45 Cambridge rows + full bundles (#210, aef295d)",
+    "consequence1": "CIE lanes unreachable through the overlay's documented cascade — the operator's report",
+    "consequence2": "the level step aggregated BOTH boards' 94 rows; both registries share the 'IGCSE' level value (Edexcel 36 + CIE 30 = the old bundle's 'IGCSE 66' mixed picker), so the cascade's board->level contract was silently broken",
+    "adjacent": "the my-subjects card eyebrow + both jump-back rows hard-coded 'Edexcel · level' — false for CIE rows the moment they became addable (the G3 bug class G3 fixed for course titles); the exam-series picker offered the PEARSON calendar (qualForLevel) on any added lane incl. CIE"
+  },
+  "fixOfRecord": {
+    "bandA_libBoard": "NEW apps/hub/src/lib/board.ts (client-safe): boardOf() MOVED here from lib/courses (which now re-exports it — one source of truth, both planes; the 9 server consumers unchanged), distinctBoards() (derived boards with row counts, busiest first, alpha tie-break), hasExamSeriesCalendar() (the Pearson-calendar gate); bun unit tests in src/lib/board.test.ts",
+    "bandB_overlay": "add-course-overlay.tsx: step 1 = real board picker (aria-pressed toggles + count badges; board switch resets level); step 2 = the SELECTED BOARD's levels; step 3 unchanged; empty-state strings board-scoped; stale captions/docblock replaced with the two-board law",
+    "bandC_examSeries": "the imported calendar's provenance is Pearson-only (official Pearson key-dates documents) — the picker now rides Edexcel lanes ONLY (hasExamSeriesCalendar at BOTH call sites: overlay rows + dashboard subject cards); CIE lanes present no series surface (honest absence), never a Pearson list on a Cambridge lane; qualForLevel doc updated (it only ever sees Edexcel levels now)",
+    "bandD_labels": "dashboard-client.tsx: subject-card eyebrow + both jump-back rows print the row's real board via boardOf()",
+    "untouched_disclosed": "teacher add-class-overlay (its Edexcel-only scope is a separate declared surface — the CIE class-creation ruling is not this trace's ask); course-header/chrome (already board-aware post-G3); zero DB/Neon/core/LLM"
+  },
+  "verification": {
+    "unit": "bun test (src scope, bunfig law): 134/134 pass 0 fail 0 errors — DISCLOSED: the first run showed 3 fails + 3 errors that were the reset container's missing node_modules (bun install restored, suite went green) + ONE tie-break expectation bug in this act's own test (distinctBoards ties break alphabetically: Cambridge International sorts before Edexcel), fixed before push",
+    "lint": "eslint clean on all 7 touched files",
+    "buildGate": "bun run build:hub GREEN incl. the prebuild chain (verify_corpus_23a + verify_flashcard_sync_courses + validate_cie_bundles 94-row census)"
+  },
+  "pr_ci_merge": {
+    "pr": 211,
+    "branch": "hub-dash/cie-board-addcourse-r1 (cut from aef295d; origin moved to e7a6977 mid-act — an r7a .syllabai-only receipt commit, zero file overlap)",
+    "ci": "3/3 GREEN (Vercel Preview Comments, hub, verify) at head 5927085",
+    "merge": "True @ 0210b7d8285873241413ccb30d837881e132b628 (merge commit; house method)"
+  },
+  "liveBattery": {
+    "method": "agent-browser on the hub of record syllabai-hub-v2.vercel.app, signed-out demo dashboard, GET-only, zero account writes",
+    "fingerprint": "pre-deploy reload showed the OLD bundle ('Edexcel' static + 'IGCSE 66' mixed level counts) — then post-deploy the NEW shape; the mixed-count fingerprint directly evidences the fixed defect",
+    "boardStep": "buttons 'Edexcel 49' + 'Cambridge International 45' both render and toggle (counts exact to the registry census)",
+    "ciePath": "Cambridge International -> levels IGCSE 30 / A-Level 13 / AS 2 (no IAL) -> A-Level lists exactly the 13 CIE A-Level lanes (Accounting, Biology, Business, Chemistry, Computer Science, Economics, Maths Mechanics/PS1/PS2/Pure 1/Pure 2/Pure 3, Physics) -> Add Chemistry lands 'My subjects · 1'",
+    "cardLaw": "the added card's eyebrow prints 'CAMBRIDGE INTERNATIONAL · A-LEVEL' (boardOf live), code 9701, real bundle counts (239 notes / 1003 questions), and NO exam-series control (honest absence)",
+    "edexcelRegression": "Edexcel -> levels IGCSE 36 / IAL 13 only (no A-Level/AS) — exact counts, board-scoped"
+  },
+  "writeLedger": "hub-plane only: lib/board.ts + board.test.ts + 5 edited files; PR #211 merged 0210b7d (hub git-linked auto-deploy LIVE observed); ZERO DB/Neon writes, zero core deploys (api carrier untouched), zero LLM, zero resources-repo contact; live battery GET-only with zero account rows (signed-out demo state, localStorage only); credentials: the remote's embedded token in-memory only, never echoed, never written",
+  "rollbackAnchors": "revert 0210b7d (single-PR revert restores the pre-fix overlay); no env/DB anchors exist — nothing but the hub bundle changed",
+  "consistency": "board counts (49/45) reconcile to the phase-3 registry census; CIE level counts (30/13/2) and Edexcel (36/13) reconcile to the same 94-row registry; the honest-absence law matches the exam-series module's documented posture"
+}

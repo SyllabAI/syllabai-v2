@@ -9260,3 +9260,21 @@ Work Log:
 
 Stage Summary:
 - The T-MIG-136/r7a lane substrate is fully consolidated of record: b4e1fd0 merged (1917a7f), the run-002 worklog entry restored, the branch ref deleted; T-MIG-136 open queue unchanged (coreBridge declaration moot until questions exist; Maths B book source handoff + resources 4.75GB/5GB wall; standing PAT rotation)
+
+---
+
+Task ID: 63
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, trace 1a1580a42635b8d9)
+Task: Operator "In dashboard, when we add course, there is no option to choose CIE board" — the add-course overlay's board step made real (the registry's two-board cascade); PR #211 merged 0210b7d + live battery; receipt HUB-DASH/cie-board-addcourse-run-001-2026-10-20-r1c.
+
+Work Log:
+- Fetch-first: local main 4f32113 -> ff aef295d (31 behind: the CIE wave #209/#210 landed of record — 94-row registry, 44 Cambridge bundles). Defect located first-hand: add-course-overlay.tsx step 1 rendered a STATIC Edexcel-only button with the caption "the Cambridge International courses are past-papers-first launches" — false since phase 3; consequence two: the level step aggregated BOTH boards (both registries share "IGCSE" — the old picker's "IGCSE 66" was 36 Edexcel + 30 CIE mixed).
+- Fix (registry-mirroring, nothing invented): NEW client-safe lib/board.ts — boardOf() moved from lib/courses (re-exported there; 9 server consumers unchanged), distinctBoards() (derived, busiest-first, alpha tie-break), hasExamSeriesCalendar() (Pearson-calendar gate) + bun unit tests; overlay step 1 = real board picker (Edexcel 49 / Cambridge International 45, toggles + count badges, board switch resets level), step 2 board-scoped, empty-states board-scoped; exam-series picker gated to Edexcel lanes at BOTH call sites (the imported calendar's provenance is Pearson-only — CIE lanes present honest absence, never a Pearson list); dashboard eyebrow + both jump-back rows print the row's real board (G3 bug class).
+- Untouched, disclosed: teacher add-class-overlay (Edexcel-only by its own declared ruling — the CIE class-creation decision is not this trace's ask); course-header/chrome already board-aware post-G3.
+- Verification: bun test (src scope) 134/134 0 fail — first run's 3 fails + 3 errors were the reset container's missing node_modules (bun install restored) plus ONE tie-break expectation bug in this act's own test, fixed pre-push (disclosed); eslint clean x7; bun run build:hub GREEN incl. validate_cie_bundles prebuild census.
+- Landed: branch hub-dash/cie-board-addcourse-r1 from aef295d (origin moved to e7a6977 mid-act — r7a .syllabai-only receipt commit, zero overlap); PR #211, CI 3/3 GREEN at 5927085, merged True @ 0210b7d (house merge-commit method).
+- Live battery (agent-browser on syllabai-hub-v2.vercel.app, signed-out, GET-only): pre-deploy reload showed the OLD bundle (static "Edexcel" + "IGCSE 66" — the defect's own fingerprint); post-deploy: board buttons "Edexcel 49" + "Cambridge International 45" both live and toggle; CIE -> IGCSE 30 / A-Level 13 / AS 2 (no IAL); A-Level lists exactly the 13 CIE lanes; Add Chemistry lands "My subjects · 1" with eyebrow "CAMBRIDGE INTERNATIONAL · A-LEVEL", code 9701, real counts (239 notes / 1003 questions), NO exam-series control; Edexcel regression -> IGCSE 36 / IAL 13 only.
+- Write ledger: hub-plane only (lib/board + board.test + 5 edits); ZERO DB/Neon writes, zero core deploys, zero LLM, zero resources-repo contact; remote token in-memory only.
+
+Stage Summary:
+- The operator-reported gap is CLOSED of record: the add-course cascade now derives its boards from the registry (Edexcel 49 + Cambridge International 45), levels are board-scoped, and every surface the fix falsifies (eyebrows, jump-backs, Pearson series picker) follows the row's real board. Rollback anchor = revert 0210b7d. Next repo receipt = Task-64; next workspace = Task-44.
