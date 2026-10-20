@@ -86,6 +86,13 @@ export const CIE_BOARD = "Cambridge International";
 const HUB_CONTENT = join(import.meta.dir, "../../../apps/hub/content");
 const SCRUB_PATTERNS = ["postgres://", "postgresql://", "neon.tech", "napi_", "ghp_", "vcp_"];
 
+/**
+ * The markdown asset-ref law — the FROZEN ingest's own ASSET_REF
+ * (services/sme/index.ts :68) mirrored byte-for-byte: the repair pre-pass and
+ * the validator must never disagree about what an asset ref is.
+ */
+const ASSET_REF: RegExp = /\(assets\/([^)\s]+)\)/g;
+
 export type SlugClass = "real" | "stub" | "skeleton";
 
 export interface RosterEntry {
@@ -235,6 +242,128 @@ function scrubAssert(text: string, what: string): void {
   }
 }
 
+/**
+ * The tx-flatten seam (the run-002 repair program, defect class "tx-seam" —
+ * 16 slugs): the frozen ingest service expects a full Sql seam (tagged
+ * template + .transaction, services/sme/index.ts :50-52); the fleet runs each
+ * slug's leg inside ONE orchestrator-level sql.begin transaction, and a
+ * postgres.js transaction object carries no .transaction (no nesting).
+ * The shim forwards the tagged template to the slug tx and flattens
+ * .transaction(body) to body(shim) — every statement JOINS the slug tx,
+ * per-slug isolation is preserved (no nested BEGIN), zero frozen-service
+ * edits. Nested .transaction calls flatten recursively to the same tx.
+ */
+export type FlattenedTxSeam = SqlFn & {
+  transaction: <T>(body: (tx: FlattenedTxSeam) => Promise<T>) => Promise<T>;
+};
+
+export function flattenTxForFrozenServices(tx: SqlFn): FlattenedTxSeam {
+  const shim = ((strings: TemplateStringsArray, ...params: unknown[]) =>
+    (tx as unknown as (s: TemplateStringsArray, ...p: unknown[]) => Promise<Array<Record<string, unknown>>>)(
+      strings,
+      ...params,
+    )) as FlattenedTxSeam;
+  shim.transaction = <T>(body: (inner: FlattenedTxSeam) => Promise<T>): Promise<T> => body(shim);
+  return shim;
+}
+
+// ── the bare-asset-ref externalization (the run-002 repair program, asset class) ──
+//
+// The phase-2 corpus build emitted QUESTION-IMAGE refs in two forms: full
+// hotlink URLs (raw.githubusercontent.com/SyllabAI/syllabai-resources@<ref>/
+// SME-ExamQuestion/<slug>/.../assets/<file> — the hub's https rendering law)
+// and, for a minority (29 refs on 3 slugs — the committed per-slug
+// asset-map.json files of record), BARE relative `(assets/<file>)` targets.
+// The frozen ingest fail-closes on any bare ref (validate :640-642: the
+// package must carry the bytes) and the frozen question_asset store is a
+// GLOBAL wholesale-replace table (ADR-026 :325-333) — carrying ~1.9GB of CIE
+// images through it would wipe the 4CH1 pilot's assets on the first
+// asset-bearing package and blow the store's storage class. The repair: the
+// orchestrator completes the corpus's OWN hotlink form for the bare refs
+// (the same pinned importSource ref the provenance line carries), so the
+// package ships ZERO assets, the frozen validation passes on its own law,
+// the serving store is untouched (the layer-3 note of record), and the hub's
+// existing https hotlink branch renders every image.
+
+interface AssetMapFile {
+  schema: string;
+  slug: string;
+  importRef: string;
+  upstreamRepo: string;
+  refs: Record<string, string>;
+}
+
+/** Read + law-check the per-slug asset-map of record (null = none committed). */
+export function loadAssetMap(dir: string, manifest: { slug: string; importRef: string }): AssetMapFile | null {
+  let raw: string;
+  try {
+    raw = readFileSync(join(dir, "asset-map.json"), "utf8");
+  } catch {
+    return null; // no map committed — the corpus carries no bare refs
+  }
+  const map = JSON.parse(raw) as AssetMapFile;
+  if (map.schema !== "syllabai-demo.asset-map/1.0") {
+    throw new Error("asset-map law violation: unexpected schema " + map.schema + " for " + manifest.slug);
+  }
+  if (map.slug !== manifest.slug) {
+    throw new Error("asset-map law violation: map slug " + map.slug + " != bundle slug " + manifest.slug);
+  }
+  if (map.importRef !== manifest.importRef) {
+    throw new Error(
+      "asset-map law violation: map importRef " + map.importRef + " != manifest pin " + manifest.importRef +
+        " for " + manifest.slug,
+    );
+  }
+  if (map.upstreamRepo !== "SyllabAI/syllabai-resources") {
+    throw new Error("asset-map law violation: unexpected upstream repo " + map.upstreamRepo);
+  }
+  return map;
+}
+
+/** Deep in-place rewrite of the bundle sets' markdown strings (freshly
+ *  JSON.parse'd per slug — the input is owned by this call). Fail-closed:
+ *  a bare ref absent from the map throws BEFORE any DB contact. */
+export function externalizeBareAssetRefs(value: unknown, map: AssetMapFile): void {
+  if (typeof value === "string") {
+    return;
+  }
+  if (Array.isArray(value)) {
+    for (let i = 0; i < value.length; i++) {
+      const v = value[i];
+      if (typeof v === "string") {
+        value[i] = rewriteMd(v, map, JSON.stringify(v).slice(0, 80));
+      } else if (v != null && typeof v === "object") {
+        externalizeBareAssetRefs(v, map);
+      }
+    }
+    return;
+  }
+  if (value != null && typeof value === "object") {
+    const record = value as Record<string, unknown>;
+    for (const k of Object.keys(record)) {
+      const v = record[k];
+      if (typeof v === "string") {
+        record[k] = rewriteMd(v, map, JSON.stringify(k));
+      } else if (v != null && typeof v === "object") {
+        externalizeBareAssetRefs(v, map);
+      }
+    }
+  }
+}
+
+function rewriteMd(md: string, map: AssetMapFile, label: string): string {
+  if (!md.includes("(assets/")) return md;
+  return md.replace(ASSET_REF, (whole, name: string) => {
+    const upstream = map.refs[name];
+    if (upstream == null) {
+      throw new Error(
+        "asset-map law violation: bare asset ref not in the map of record: " + name + " (context " + label + ")",
+      );
+    }
+    return "(https://raw.githubusercontent.com/" + map.upstreamRepo + "/" + map.importRef + "/" + upstream + ")";
+  });
+}
+
 async function seedSlug(entry: RosterEntry, sql: postgres.Sql, mode: "dry" | "apply"): Promise<BundleSeedSummary> {
   const dir = join(HUB_CONTENT, entry.slug);
   const bundle = JSON.parse(readFileSync(join(dir, "curriculum.json"), "utf8")) as BundleCurriculum;
@@ -284,6 +413,13 @@ async function ingestSlug(entry: RosterEntry, sql: postgres.Sql, mode: "dry" | "
   };
   let pkg;
   try {
+    // the bare-ref externalization pre-pass (the run-002 asset class): the
+    // manifest pins the map's own ref — the loader law-checks it fail-closed
+    const assetMap = loadAssetMap(dir, {
+      slug: entry.slug,
+      importRef: manifest.importSource.ref.replace(/^main@/, ""),
+    });
+    if (assetMap != null) externalizeBareAssetRefs(sets, assetMap);
     pkg = buildSmePackage({
       courseSlug: entry.slug,
       curriculum,
@@ -303,7 +439,9 @@ async function ingestSlug(entry: RosterEntry, sql: postgres.Sql, mode: "dry" | "
     specPointMappings: number; topicMappings: number;
   }> => {
     const runner = async (db: unknown) => {
-      const service = new SmeQuestionIngestService(db as never, clock);
+      // the tx-flatten seam: the frozen service gets a full Sql seam whose
+      // .transaction flattens onto this slug's tx (per-slug isolation kept)
+      const service = new SmeQuestionIngestService(flattenTxForFrozenServices(db as SqlFn) as never, clock);
       const summary = await service.ingest(zip);
       return {
         questions: summary.questions, parts: summary.parts, options: summary.options,
