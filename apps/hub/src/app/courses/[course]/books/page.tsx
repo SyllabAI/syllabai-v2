@@ -4,7 +4,7 @@ import { BookOpen, ClipboardList, FileText } from "lucide-react";
 
 import type { BookChapter, BookShelfEntry } from "@syllabai/contracts";
 
-import { loadHubCourse } from "@/lib/courses";
+import { boardOf, loadHubCourse } from "@/lib/courses";
 import {
   fetchBookChapters,
   fetchBookShelf,
@@ -62,7 +62,10 @@ export default async function BooksShelfPage({
       <PreconnectCorpus />
       <CourseHeader
         meta={meta}
-        title={`Edexcel ${meta.level} ${meta.label} Student Books`}
+        // T-MIG-140: the board is the registry row's own (boardOf — explicit
+        // "Cambridge International" on the CIE wave rows, else "Edexcel"),
+        // not a hardcode — the books rollout now reaches CIE/IAL lanes.
+        title={`${boardOf(meta)} ${meta.level} ${meta.label} Student Books`}
         crumb="Student Books"
         description="The course's student books as first-class content: every chapter opens the book PDF at its own page range — the same pages, citations and spec joins the tutor grounds in."
       />

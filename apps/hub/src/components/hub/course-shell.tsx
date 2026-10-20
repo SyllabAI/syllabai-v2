@@ -14,6 +14,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  BookMarked,
   BookOpen,
   Bookmark,
   CircleHelp,
@@ -38,6 +39,7 @@ import {
 } from "@/components/hub/course-data-context";
 import { TopicTreeWithIndexAuto } from "@/components/hub/topic-tree";
 import { isDocumentFocusRoute, isViewerRoute } from "@/lib/focus-routes";
+import { courseHasBookArchive } from "@/lib/books-registry";
 
 export type { SidebarData, SidebarVariant } from "@/components/hub/course-data-context";
 
@@ -163,6 +165,20 @@ export function CourseShell({
       label: "Revision",
       items: [
         { href: `${base}/revision-notes`, label: "Revision Notes", icon: BookOpen },
+        // T-MIG-140 — the books option in the persistent course chrome (the
+        // band-133k landing card was the only entry; the sidebar/drawer nav
+        // — the thing every course surface shows — had none, which is the
+        // operator's "no option in course page"). Same committed-registry
+        // gate as the card (courseHasBookArchive): a disabled row with the
+        // roadmap badge until the course's books/<specKey>/ archive home
+        // lands; the shelf behind the link stays the live T-C20 gate.
+        {
+          href: `${base}/books`,
+          label: "Student Book",
+          icon: BookMarked,
+          disabled: !courseHasBookArchive(data.course.slug),
+          badge: courseHasBookArchive(data.course.slug) ? undefined : "roadmap",
+        },
         { href: `${base}/flashcards`, label: "Flashcards", icon: CircleHelp },
       ],
     },

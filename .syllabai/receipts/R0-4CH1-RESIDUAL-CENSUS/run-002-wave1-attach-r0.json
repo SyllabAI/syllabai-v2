@@ -1,0 +1,32 @@
+{
+  "receipt": "R0-4CH1-RESIDUAL-CENSUS/run-002-wave1-attach-r0",
+  "task": "operator trace 1a15acea6bb9a589 'green-light' — apply wave-1 kill-list (grade-A 16, 54 specPointCodes appends) — FIRST CONTENT WRITE since seed 3a92153",
+  "lane": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, chat 9e9f3d7a)",
+  "killlist_of_record": "download/wave1-killlist-4ch1-attachment-r0.json (filed r0, worklog @ c0c6f6e); derivation rule + per-target verification embedded",
+  "pre_apply_verification": {
+    "targets": 54, "distinctParts": 51, "snapshotMatch": "54/54 (manifest currentSpecPointCodes == tree arrays)",
+    "absenceProof": "54/54 (target code absent from every listed array)",
+    "fetchFirst": "content identical local-HEAD-vs-origin/main (git diff empty); content untouched since seed 3a92153",
+    "failClosed": false
+  },
+  "applied": {
+    "file": "apps/hub/content/igcse-chemistry-19/questions.json",
+    "appends": 54, "partsMutated": 51, "codes": 16,
+    "method": "union append at array end; scripts/wave1_apply_4ch1.py persisted; serialization compact separators ensure_ascii=False — byte-format preserved (roundtrip probe first)",
+    "structuralDiffProof": "deep JSON diff vs pre-apply: 54 added codes, 0 removals, 0 reorders, 0 meta/field changes, 0 set/question/part additions"
+  },
+  "kept": {
+    "gradeB": "11 codes untouched (wave-2 pending per-code review; 4CH1-4.20 excluded from ANY auto-attach per disclosed keyword false-positive)",
+    "notesAxis": "notes.json untouched by design (wave-1 = question-axis only)",
+    "everythingElse": "no other file in the diff"
+  },
+  "nothing_broken_proof": {
+    "battery": "t215b-wire-battery-r1a (REBUILT post-ROLLBACK-#5 — t215 original lost; disclosed) — 11/11 PASS vs https://syllabai-hub-v2.vercel.app",
+    "batteryCalibrationDisclosure": "initial r1 firing 8/11: 3 calibration faults (header-dict case sensitivity x2; content needles aimed at JS chunks instead of the /corpus/ runtime-JSON plane) — diagnosed against live surfaces, corrected, re-fired 11/11; no service fault at any point",
+    "coverageCrossCheck": "post-apply coverage recomputed vs git HEAD pre-apply state, domain-fix applied (bare KG ids mapped to prefixed codes): notes 155/182 unchanged (matches census of record), questions 154/182 -> 170/182, both-axes residual 27 -> 11 (= exactly the 11 grade-B codes)"
+  },
+  "expected_effect": "hub spec-point tracker gains 16/182 spec points on the questions axis at next deploy; /corpus/igcse-chemistry-19/questions.json will carry the appends after redeploy (VERCEL_TOKEN staging still ABSENT since ROLLBACK #5 — deploy not operator-fired this run)",
+  "sandbox_anomaly_of_record": "none new this run",
+  "write_ledger": "content: questions.json only; .syllabai: this receipt + worklog append; automation workspace: scripts/wave1_apply_4ch1.py, scripts/wave1_verify_coverage.py, scripts/t215b-wire-battery-r1.py, download/wave1-apply-verification-r0.json, download/wave1-killlist-4ch1-attachment-r0.json; zero DB/Neon/Vercel/LLM writes; no force",
+  "followups": ["wave-2: grade-B 11 per-code review (notes-axis additions in scope there)", "VERCEL_TOKEN re-stage to fire the redeploy that ships this content", "PAT rotation overdue (same token re-staged)", "CORS identity/config.ts:60 still parked"]
+}

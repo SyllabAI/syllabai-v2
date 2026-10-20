@@ -1,0 +1,15 @@
+{
+  "addendum_to": "T-MIG-138/run-004-drain-arm-r1c.json",
+  "correction_class": "SAME-ACT FIX-FORWARD (the honesty law: a known-false claim must not stand)",
+  "the_correction": "the run-004 receipt's 'waiter live, pid 1099' is CONFIRMED FALSE of record — the sandbox reaps ALL spawned processes when the tool-call shell exits (nohup AND setsid-detached alike)",
+  "first_hand_evidence": "heartbeat probe: a setsid+nohup 30s-interval logger wrote exactly ONE line across a 45s+ observation window spanning separate tool calls; an initial pgrep 'survival' result was a SELF-MATCH artifact (the probing shell's own cmdline contains the pattern) — corrected on the same probe; no crond/atd/systemd in the sandbox; tool calls cap at 10 min — autonomous 11.6h scheduling is IMPOSSIBLE from this lane's plane",
+  "the_state_of_record": "the arm is a STAGED RECIPE, not a live timer: rows (216, byte-exact from the run #9 prod artifact) + mode + note + the no-duplicate-acts rule are all of record; the dispatch fires on the FIRST re-key after the window",
+  "fire_paths": [
+    "(a) the operator's next message after 07:00Z Oct 21 ('fire the drain' or any wording) — any lane executes the immediate-fire recipe (scripts/t138-drain-fire.sh lane-side, or re-fires the dispatch from the run #9 artifact rows)",
+    "(b) any lane's next act/census that lands after the window — the receipt + rows are on record, re-derivation is one artifact download",
+    "(c) the r7a cadence picking up its own standing residual"
+  ],
+  "operator_gated_option_filed": "a self-resuming drain needs a guarded schedule trigger on t-mig-138-intake (derive-and-backfill at fire time, exit-0-on-empty guard) — that is gate-law surgery (the runner's own 'INERT until dispatched' law) and a code-plane change: it takes its own operator order + PR + review, NOT smuggled into this act",
+  "window_of_record_unchanged": "07:05Z Oct 21 (midnight Pacific roll + 5 min)",
+  "write_ledger": "this addendum + the worklog addendum, .syllabai-only; zero dispatch, zero prod contact"
+}

@@ -1,0 +1,22 @@
+{
+  "receipt": "R0-4CH1-RESIDUAL-CENSUS/run-003-wave1-ship-live-r0",
+  "task": "operator trace 1a15adf87e74fa39 Vercel token re-stage -> verify staging -> confirm wave-1 ship; live-verification of record",
+  "lane": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, chat 9e9f3d7a)",
+  "sandbox_anomaly_of_record": "RESET #6 — between turns the sandbox rolled back: repo to 63fe6ef (T-MIG-123 era, behind 301), /home/z/.secrets + ~/.git-credentials wiped AGAIN, download/ artifacts (killlist+apply-verification JSONs) and the new wave1/battery scripts wiped. All of-record survived on GitHub. Re-ground: FF-only to origin tip; both tokens re-staged 0600 with fingerprint matches (GITHUB a8ccee736aa8c75b, VERCEL d254bbfaac004354) + status-checked 200 verifies (first Vercel verify printed a false OK off an error body — corrected practice disclosed).",
+  "ship_of_record": {
+    "mechanism": "Vercel GitHub integration auto-deploy — NO manual deploy fired",
+    "deployment": "dpl_8JMJGRGXtZZXM17UoxUjmogV9xVF state=READY target=production sha=89b4105 (the wave-1 apply commit)",
+    "inflightGuard": "top-3 prod deployments all READY (89b4105 / 26e11d8 / f4752e4); zero BUILDING/QUEUED/INITIALIZING/PENDING/CANCELING at check time"
+  },
+  "live_proof": {
+    "corpus": "/corpus/igcse-chemistry-19/questions.json grew 2,288,248 -> 2,292,416 bytes (+4,168 = the 54 appends)",
+    "appendsVerifiedLive": "54/54 at exact kill-list coordinates (reconstructed from commit 89b4105 diff after download/ artifacts were wiped — git history IS the of-record)",
+    "wholeFileEquality": "live corpus JSON == git 89b4105 content of record: TRUE; questions.json untouched by any commit after 89b4105"
+  },
+  "nothing_broken_proof": {
+    "battery": "t215b-wire-battery-r1a re-fired post-ship — 11/11 PASS",
+    "coverageOfRecord": "questions 154->170/182, both-axes residual 27->11 (from run-002 receipt, unchanged)"
+  },
+  "write_ledger": "repo: this receipt + worklog append (.syllabai-only); staging: secrets.env + .git-credentials re-staged 0600 (fingerprint-only discipline held); scripts/t215b-wire-battery-r1.py re-persisted; zero code/content/DB/Neon/LLM writes; no force",
+  "followups": ["wave-2: grade-B 11 per-code review (notes axis in scope)", "PAT rotation overdue x2 (same tokens re-staged twice)", "CORS identity/config.ts:60 parked", "Deployment Retention lowering operator-side pending"]
+}

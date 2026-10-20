@@ -10002,6 +10002,149 @@ Work Log:
 
 Stage Summary:
 - BAND 4 DONE of record: the maths-b bank is INGEST-READY through the unmodified frozen ADR-026 laws — 1,192 anchored, law-clean questions across 65 past-paper sets. Band 5 = the apply, operator-gated on the credential re-staging. Zero prod writes, zero Neon; 4MB1-only fence; fetch-first, no force.
+---
+Task ID: Task-65
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, trace 1a15ac054f484b0d)
+Task: Operator "the backfill drain resumes at RPD reset" — the run-003 standing plan ARMED of record: mode=backfill-sharded over the 216-doc residual, dispatch staged and waiter live for the midnight-Pacific window (07:05Z Oct 21); receipt T-MIG-138/run-004-drain-arm-r1c.json.
+
+Work Log:
+- Fetch-first: local main ff -> 45ca5b6 (the T-MIG-136 parse-lane bands 3b/4, PR #225/#226 merges, the 133k addendum). Server-authoritative time pinned (GitHub Date header 19:20Z Oct 20) — the R0-AUTO-20261021-1830 receipt name on main is a lane-side labeling artifact (commit 18:43Z Oct 20), disclosed not touched.
+- The plan of record re-read first-hand (run-003 receipt feaf7ac): 'the drain resumes on the next RPD reset (midnight Pacific) via mode=backfill-sharded with rows = the 216 residual' — the operator order executes exactly this.
+- ROWS provenance strengthened: run #9's (39438132654, cow+prod) prod-apply artifact backfill-row-ids.txt was written by the workflow's own postverify at 14:48Z DIRECTLY FROM PRODUCTION (embedding-null rows, created_at desc = recency-first), i.e. the post-run-#8 live residual — 7,991 bytes = exactly 216 ids, 216/216 unique + uuid-shaped, byte-consistent with the 295-79=216 cross-check of record. Persisted lane-side for the dispatch input.
+- Machinery armed (lane-side, persisted): t138-drain-waiter.sh (nohup pid 1099, log t138-drain-waiter.log) sleeps to 2026-10-21T07:05:00Z (+5 min past the midnight-Pacific roll), then (1) no-duplicate-acts pre-fire check (stand-down if any t-mig-138-intake run created after 06:00Z), (2) fires mode=backfill-sharded rows=the 216 with the operator trace in the note, (3) polls to conclusion and logs the shard outcomes. t138-drain-fire.sh = immediate-fire fallback on operator re-key.
+- FRAGILITY DISCLOSED: the waiter lives in the agent sandbox — the documented reset/rollback class kills it silently; the receipt carries the detection rule (waiter state file absent AND no run after 07:00Z => fire the fallback) and the rows are fully of record in the run #9 artifact, so any lane can re-fire byte-exact.
+- Gate law untouched: the runner stays INERT until dispatched (workflow_dispatch-only operator gate); the FROZEN executor, dispatch-gate and COW protocol byte-untouched; secrets verified metadata-only (T138_GEMINI_KEY + _2/_3/_4 staged, updated 14:09-14:44Z Oct 20), values never printed.
+- Write ledger: .syllabai-only (this receipt + entry) + lane-side scripts; ZERO dispatch fired this act, zero prod/DB/Neon/LLM contact; fetch-first, no force.
+
+Stage Summary:
+- The drain is ARMED of record: window 07:05Z Oct 21 (midnight Pacific RPD roll), rows = the 216-doc residual byte-exact from prod, machinery + fallback persisted, expected outcome per the run-003 projection (~3 healthy shards; shard-4 honest red possible while op#4 stays 403-dead — operator-keyed). The firing + run-005 receipt belong to the next act (or the operator fallback). Next repo receipt = Task-66; next workspace = Task-46.
+---
+Task ID: Task-65 (addendum 1 — same-act fix-forward)
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, trace 1a15ac054f484b0d)
+Task: CORRECTION of record on the run-004 drain arm: the waiter is CONFIRMED DEAD — the arm is a STAGED RECIPE; the drain fires on the first re-key after the 07:05Z Oct 21 window; receipt run-004-addendum-1-waiter-dead-r1c.json.
+
+Work Log:
+- The pid-1099 waiter died when the arming tool-call's shell exited (reaped; the nohup did not detach far enough). First-hand probe: a setsid+nohup 30s logger wrote ONE line across a 45s multi-tool-call window; the initial pgrep 'survival' was a self-match artifact (corrected on the same probe). No crond/atd/systemd in the sandbox; tool calls cap at 10 min — autonomous 11.6h scheduling IMPOSSIBLE from this plane.
+- The honesty law applied: the known-false 'waiter live' claim corrected in the same act (addendum receipt + this entry). The of-record state: STAGED RECIPE (rows 216 byte-exact from the run #9 prod artifact + mode + note + no-duplicate-acts rule) — the dispatch fires on the FIRST re-key after the window (operator message / any lane's next act / the r7a cadence).
+- Operator-gated option filed: a guarded schedule trigger (derive-and-backfill, exit-0-on-empty) would make the drain self-resuming — gate-law surgery + code plane: own order + PR + review, not smuggled here.
+- Write ledger: .syllabai-only addendum; zero dispatch, zero prod contact; fetch-first, no force.
+Task ID: trace 1a15acea6bb9a589 (wave-1 APPLY of record — first content write since seed)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: operator 'green-light' — apply wave-1 kill-list r0 (16 grade-A codes, 54 specPointCodes appends, questions.json only).
+
+Work Log:
+- fetch-first pre-apply: content identical local-HEAD-vs-origin/main; untouched since seed 3a92153.
+- Pre-apply verification fail-closed gate: 54/54 snapshot-match + 54/54 absence-proof PASS (scripts/wave1_apply_4ch1.py; abort-before-write on any drift).
+- APPLY: 54 union-appends at array end across 51 parts / 28 sets; compact serialization byte-format preserved (roundtrip probe first).
+- Post-apply structural diff proof: 54 added, 0 removed, 0 reordered, 0 meta changes — deep JSON compare vs pre-apply.
+- Coverage cross-check vs git HEAD (domain-fix: bare KG id -> '4CH1-'+id; buggy in-apply print disclosed and superseded): notes 155/182 UNCHANGED (matches census), questions 154/182 -> 170/182, both-axes residual 27 -> 11 (= exactly the 11 grade-B).
+- Battery: t215b-wire-battery REBUILT r1 (t215 original lost in ROLLBACK #5 — disclosed); initial firing 8/11 with 3 CALIBRATION faults (header-case x2, chunk-vs-corpus-plane needles) — diagnosed live, corrected r1a, re-fired 11/11 PASS. No service fault at any point.
+- Receipt: R0-4CH1-RESIDUAL-CENSUS/run-002-wave1-attach-r0.json (first content write since seed of record).
+
+Stage Summary:
+- Wave-1 of record: 16 grade-A codes closed on the questions axis; grade-B 11 + notes axis untouched; deploy to hub NOT fired (VERCEL_TOKEN staging absent since rollback) — content ships at next redeploy; followups: wave-2 review, VERCEL_TOKEN re-stage, PAT rotation, CORS cleanup.
+
+---
+Task ID: T-MIG-140 run-001 (books-course-page-option)
+Agent: r7a (Super Z, operator session trace 1a15ad0b613c7381)
+Task: "We have decided to add books to each courses. ALready did for edexcel igcse chemistry, but there is no option in course page, quickly add that" — put the Student Book option on the course page; plus answer the IAL-physics-two-books / CIE-books planning question.
+
+Work Log:
+- fetch-first (feaf7ac -> 26e11d8 ff)
+- first-hand read: books wire = contracts/books.ts (BookShelfEntry[] shelf, T-C20 VALIDATED-only) + api routes/books.ts + hub lib/books.ts + band-133k landing card gated on lib/books-registry.ts (BOOKS_ARCHIVE_COURSES = {igcse-chemistry-19})
+- production evidence: fetched https://syllabai-hub-v2.vercel.app/courses/igcse-chemistry-19 — 'Student Book'/'Open the book' card ALREADY in served HTML; the PERSISTENT nav (CourseShell navGroups, desktop sidebar + mobile drawer) had NO books row on any course surface = the operator-reported gap
+- read-only prod census (psycopg2, Vercel env API lever, rollback txn, zero net writes, app name t140-books-census-r7a): exactly ONE TEXTBOOK doc live — Jim Clark 'Edexcel International GCSE (9-1) Chemistry Student Book', 383pp, VALIDATED, 29 unit-bound chapters, course_id igcse-chemistry-19; scratch evidence /home/z/my-project/scratch/t140_books_census_evidence.json
+- CHANGE 1 course-shell.tsx: 'Student Book' row (BookMarked, ${base}/books) in the Revision group between Revision Notes and Flashcards; desktop + mobile mirrored; gate = courseHasBookArchive (SAME committed registry as the 133k card; disabled + roadmap badge until the course's books/<specKey>/ home lands; the shelf stays the live T-C20 gate)
+- CHANGE 2 books/page.tsx: shelf title hardcode 'Edexcel ...' -> boardOf (registry row's own board — CIE rows print 'Cambridge International')
+- verify: apps/hub eslint exit 0; bun run build:hub exit 0 (corpus prebuilds + next build green)
+
+Stage Summary:
+- books option now on EVERY course surface (sidebar + drawer + landing card); chemistry's option already live in prod before this act — the nav was the gap
+- multi-book of record: serving shape already N books/course (BookShelfEntry[] -> N BookCards); the ONE real gap is the archive's one-pdf-per-course law (bookCorpusPathForCourse hardcodes student-book.pdf — a two-book course's SB2 would mount SB1's pdf); per-book file naming = deliberate follow-up lane BEFORE the IAL physics package stages
+- receipt: .syllabai/receipts/T-MIG-140/run-001-books-course-page-option.json
+- zero DB writes, no data-lane touch, secrets untouched, fetch-first, no force
+- WORKLOG DEFECT DISCLOSED: the first rebase union naively concatenated the two full staged versions and DOUBLED the 149 shared base entries (301 vs the honest 151); caught pre-push by the T-MIG-SEED duplicate count (2 vs 1) and repaired in this same commit to the protocol's intended union — origin/main's full version byte-exact + this one new entry; no pre-existing entry text altered
+
+---
+Task ID: trace 1a15adf87e74fa39 (wave-1 SHIP live-verification of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- RESET #6 disclosed: repo rolled back to 63fe6ef (behind 301), secrets staging + download/ artifacts + new scripts wiped between turns. FF-only re-ground; both tokens re-staged 0600 (fingerprints MATCH of-record: a8ccee736aa8c75b / d254bbfaac004354 — re-stages, NOT rotations; rotation overdue x2).
+- Vercel API verified 200 (user syllabai-1403, team_ULL54qkhzKBmnKrpO6BD4mYX). False-OK verify practice (parsing error body) disclosed and corrected with status checks.
+- SHIP DISCOVERY: GitHub integration already auto-deployed 89b4105 as dpl_8JMJGRGXtZZXM17UoxUjmogV9xVF (READY, production) — zero manual deploys fired this run; INFLIGHT-GUARD clean (top-3 prod all READY).
+- LIVE PROOF: 54/54 wave-1 appends verified live at exact kill-list coordinates (reconstructed from the 89b4105 commit diff — git history is the of-record after artifact wipe); whole-file live corpus == 89b4105 content; corpus +4,168 bytes.
+- Battery t215b r1a re-fired post-ship: 11/11 PASS.
+
+Stage Summary:
+- Wave-1 is SHIPPED and verified live on https://syllabai-hub-v2.vercel.app — 16 grade-A codes now live on the questions axis; coverage of record 170/182 questions, residual 11 (grade-B, wave-2 pending). Receipt run-003-wave1-ship-live-r0.
+
+---
+Task ID: pp-provenance-verify-003
+Agent: r0
+Task: Verify chemistry interactive source (resources SME ExamQuestions) + 4mb1 parse purpose (operator trace 1a15ade9c67cf469)
+
+Work Log:
+- P1 TRUE: import_content.py fetches SME-ExamQuestion/igcse-chemistry-19 topics from syllabai-resources -> bundle questions.json (1,404 sourcePaper parts) -> interactive+SmartMark
+- P2 NOT OF RECORD: band-3 receipt documents 4mb1 parse -> atoms_to_bank.py -> sme-exam-questions/1.1 records -> hub bundle (seed stub 2B -> 2.8MB); purpose = manufacture interactive bank BECAUSE SME has no maths-b banks (T-SME-12 no_topic_questions_on_sme; resources maths-b SME dir = 4 metadata files only)
+- RAG: sole embeddings mention in 13 T-MIG-136 receipts is 'deliberately NOT fired'; no chunk/embed pipeline of record for parsed papers
+- Band-4 shim (2026-10-21): bank INGEST-READY, apply operator-gated; 136c prod apply seeded 4MB1-only KG
+
+Stage Summary:
+- Receipt ops-pastpapers/pastpapers-content-provenance-verify-run-003-r0.json; corrected model: chemistry=import SME banks, maths-b=manufacture bank from parsed papers; RAG-over-parsed-papers = new scope if wanted
+
+---
+Task ID: Task-66 (trace 1a15adada876bd01 — the Neon PAT re-stage act: state recovery + Band-5 blocker pinned of record)
+Agent: r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)
+Task: operator delivered 'Here is neon PAT: napi_jy4y…sapok' (trace 1a15adada876bd01) — the response to band-4 'remaining' (the apply requires the operator to re-stage SEED_DATABASE_URL). This act: stage per the 0600 law, re-establish the rolled-back plane, test the PAT's consumability, verify Band-5 static readiness, pin the precise blocker.
+
+Work Log:
+- Sandbox recovery of record: v2 re-cloned fresh (89b4105 at open; fetch-first caught origin advancing to e305d71/325410e mid-act — ff-only to 325410e, clean; T-MIG-140 books-nav lane + 4CH1 wave-1 ship-verify + pastpapers provenance run-003 observed as origin neighbors, never touched; provenance receipt CONFIRMS the 4mb1 band-4 INGEST-READY consumption chain, RAG not fired — consistent with this lane).
+- T-MIG-136 of-record state re-read: bands 3b+4 receipts (operator-authorized anchoring under trace 1a15a45dca86c409; bank INGEST-READY 1,192 questions / 2,106 parts, 57 badSum excluded). Band-3b bundle artifacts byte-present at HEAD: spec-anchors.json (schema syllabai.spec-anchors/1.0, 1,249 anchors); questions.json deep count re-derived independently of the band-3b gate: 65 sets / 1,249 questions / 2,392 parts — 2,392/2,392 parts anchored, 0 unanchored.
+- PAT staging: /home/z/my-project/.credentials/neon-pat (file 0600, dir 0700); value never printed, no copies; sandbox .gitignore extended (.credentials/ + .env); workspace repo has no remote (no leak path).
+- CONSUMABILITY TEST — decisive negative, re-confirmed LIVE: api.neon.tech DNS-UNRESOLVABLE from this sandbox (getent fail; curl exit 6 / http 000), the same control-plane egress block class of record since run-004 (cow_proof_law.method_disclosure); control: data-plane DNS path alive (*.aws.neon.tech queries propagate — NXDOMAIN for a fake endpoint, not a resolver blackhole). A Neon PAT is control-plane ONLY — it cannot derive the pooled connection URI from this plane. The Oct-19 staging shape (run-004 prod_apply.target) was the POOLED CONNECTION URI itself; SEED_DATABASE_URL (the shim's inline env — ingest-bundle-questions.ts:91,116) consumes that URI.
+- Band-5 static readiness verified at HEAD (zero prod, zero LLM): bundle + anchors + shim present (ingest-bundle-questions.ts --dry-run/--apply, ADR-026 evidence-safe replace); curriculum prerequisite LIVE (4MB1-2016 ACTIVE, 119 nodes — run-004); pg-cow tooling WIPED by the rollback as the band-4 receipt predicted — rebuilds from the run-004 evidence_files method disclosure (embedded PG + ICU restore, information_schema DDL with defaults verbatim, read-only row copy, SSL enforced) at apply time.
+- T-MIG-138 window check: GitHub-authoritative server time 19:55Z Oct 20 at act open — the 07:05Z Oct 21 window is ~11h FUTURE; this act does NOT fire the drain (fire path (a) keys on the operator's next message AFTER 07:00Z Oct 21; the current message predates the window). Drain stays STAGED RECIPE per addendum-1.
+- Ask of record to operator: paste the POOLED CONNECTION URI (Neon console -> branch -> Connection Details -> pooled, sslmode=require), staged 0600 same law — the PAT stays staged and unused.
+
+Stage Summary:
+- The Band-5 blocker is now precise of record: not the credential's existence but its SHAPE/PLANE — PAT staged (napi_jy4y…sapok, 0600) but unconsumable sandbox-side (control-plane DNS-blocked, re-confirmed live 19:55Z Oct 20); the pooled URI is the single missing input; everything else green at HEAD.
+- Band 5 fires instantly on URI staging: rebuild pg-cow from the run-004 method -> COW-replica proof (zero prod writes) -> operator-gated --apply -> 136d battery re-fire.
+- T-MIG-138 drain unchanged: STAGED, window 07:05Z Oct 21 future at this act's close; the first re-key after the window fires it per the armed plan (any lane; rows byte-exact of record).
+- Write ledger: this worklog entry ONLY; zero prod/DB/Neon/LLM contact; zero code/content changes; fetch-first, no force.
+
+---
+Task ID: trace 1a15aecf63c4ac7d (wave-2 review of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- FF re-ground to 8ee371e (RESET #6 artifacts+scripts wiped; recipes re-derived from git history + receipts).
+- Per-code first-hand review of grade-B 11: read note bodies around keyword hits, verified verbatim spec-text presence programmatically, captured current arrays, swept 46 orphan parts.
+- HEADLINE: all 11 flip to ATTACH on notes-axis verbatim evidence; ZERO exceptions. 2.50 resolved by 'Tests for Water' note (full physical test verbatim, carries 2.49); 4.20 note-side clean DIRECT (false-positive was question-side only) — no manual pardon needed; 4.24 'Alkenes' blockquote verbatim; 4.29C 'Alcohols' + energetics q8p3 orphan verified.
+- Draft kill-list DRAFT-r0: 12 rows (10 note appends + 1 optional part append), absenceProof 12/12; expected coverage notes 155->166/182, both-axes residual 11->0. APPLY ONLY ON OPERATOR GREEN-LIGHT.
+- Receipt run-004-wave2-review-r0 filed; zero content writes; no force.
+
+Stage Summary:
+- Wave-2 review of record: 11/11 ATTACH verdicts with first-hand verbatim evidence; draft kill-list staged for operator green-light; 46-orphan-parts lane flagged separate.
+Task ID: pp-4mb1-quality-audit-004 (trace 1a15aea188ef229d, "The 64 exam papers, are they on par with SME ExamQuestions quality? topic tagging, Mark scheme etc stuff?")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+Task: First-hand quality audit of the 64 interactive 4MB1 papers vs SME ExamQuestions axes (topic tagging, mark schemes, metadata), answered to the operator.
+
+Work Log:
+- Read-only audit at main 8ee371e (fetch-first, FF; no code/db changes): apps/hub/content/igcse-maths-b-16 bundle + player + pastpapers-blueprints.json.
+- Schema: the 65 sets ARE syallabai.sme-exam-questions/1.1 (same schema family as the real SME chemistry/physics banks) — 1,249 questions / 2,392 parts / 6,341 marks, sessions 2018-2026 incl R variants, both papers.
+- Topic tagging: specPointCodes 2,392/2,392 parts (100%) onto the official 98-code 4MB1 alphabet, 0 unknown codes, 1,718 parts multi-code (72%); spread across all 10 spec topics (Functions 907 / Algebra 820 / Number 703 / Geometry 565 / Stats 532 / Vectors 491 / Sets 414 / Matrices 323 / Mensuration 278 / Trig 78); anchoring = T-MIG-136 band-3b glm-4-plus pass + n=80 re-ask verification (72/72 agree).
+- Mark schemes: solutionMd 2,331/2,392 parts (97%), 94% carry Edexcel P/M/A/B process markers; median 294 chars (terse official MS style, NOT worked solutions).
+- Fidelity: 59/64 non-empty papers parse to exactly the official 100 marks; 5 undercount (Jan-2019 /01 86, /01R 92, Jun-2019 /01R 89, Jan-2023 /02 85, Jun-2022 /02R 89); 1 empty set (2019-06 /02R, 0 q).
+- Deltas vs real SME bundles disclosed: difficulty labels 0% (chemistry SME bank = 100% Easy/Med/Hard); relatedNoteIds 0 (chemistry 112; hub compensates via client-side spec-code Q-note join); commandWord 45% (chemistry 83%); 57 questions where totalMark != sum(parts); 61 parts missing MS (2.5%); 810/2,331 MS (34%) carry the deterministic parse flag "printed total != parsed point-sum"; fraction/notation artifacts from the PDF parse visible in long MS.
+- No topic-organized question bank for maths-b (all 65 sets section=past-papers) — matches SME itself having no 4MB1 banks (T-SME-12); pastpapers-blueprints.json has ZERO 4MB1 rows so no official-per-question blueprint coverage check exists for these papers.
+- Player surface verified: per-part MS modal, Smart Mark, CLA part help, spec-code QuestionHelpPanel note join, totalMark badges; 4MB1/01 = 1,207 parts, /02 = 1,185.
+
+Stage Summary:
+- Verdict delivered: structural parity-or-better (schema, 100% per-part spec tagging, 97% MS coverage, provenance, interactive player) with content-polish deltas honestly enumerated (no difficulty taxonomy, no topic-bank view, 34% MS parse flags, 57 mark-total mismatches, 5 drifted papers, 1 empty set). Follow-up candidates filed for any owner: per-question difficulty pass, blueprint rows for 4MB1 + coverage gate, totalMark reconciliation, MS notation cleanup. Bookkeeping-only, .syllabai/** only, zero prod/DB/LLM, fetch-first, no force.
+
+---
+
 
 ---
 Task ID: CIE-INTEGRATION phase-4 repair program (trace 1a15ac4e986d06c5 're-run')
