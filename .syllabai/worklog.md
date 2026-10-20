@@ -10002,3 +10002,22 @@ Work Log:
 
 Stage Summary:
 - BAND 4 DONE of record: the maths-b bank is INGEST-READY through the unmodified frozen ADR-026 laws — 1,192 anchored, law-clean questions across 65 past-paper sets. Band 5 = the apply, operator-gated on the credential re-staging. Zero prod writes, zero Neon; 4MB1-only fence; fetch-first, no force.
+
+---
+Task ID: CIE-INTEGRATION phase-4 repair program (trace 1a15ac4e986d06c5 're-run')
+Agent: main lane (Super Z, zai-web session web-1d6277aa-1024-41a4-9261-bcf1411250b5, chat 9b73c181)
+Task: operator "re-run" — with the run-002 receipt's nextAct framing (authorize the repair program or re-route), the order discharges as: execute the five-class repair program, then re-run the gate, then (on green) the CIE registry fill audit.
+
+Work Log:
+- AUDIT FIRST: re-ran the fill-where-served census on current main (94 rows / 5 mapped / 89 unmapped — unchanged); triaged run #2 (39472595952) from its receipt: 42 slug failures / 5 defect classes, gate+guard PROVEN, zero prod exposure.
+- Asset class re-measured with first-hand evidence before fixing: the phase-2 corpus carries question-image refs mostly as full raw.githubusercontent hotlink URLs (the hub's https rendering law) with exactly 29 BARE `(assets/<file>)` targets on 3 slugs (chemistry-25 x23, cs-19 x3, cs-23 x3); the upstream corpus is 9,951 files / ~1.9GB and the frozen question_asset store is GLOBAL wholesale-replace (ADR-026) — the receipt's "land the asset" candidate would have wiped the 4CH1 pilot's assets and blown the storage class. REJECTED on evidence; fixed at the shim layer instead: per-slug asset-map.json of record (importRef == the manifest pin) + an orchestrator pre-pass completing the corpus's own hotlink form, fail-closed before any DB contact. Package ships zero assets; the layer-3 note of record holds.
+- tx-seam (16): flattenTxForFrozenServices — the frozen ingest's full Sql seam over the bare slug tx, .transaction flattened recursively, statements join the slug tx, zero frozen-service edits.
+- dbCode widenings (frozen seed, byte-identical Edexcel paths): FOURTH SUBTOPIC tail shape (letter-prefixed :SUBE1.1/:SUBC1.1 — 0580/0973/0653), FIFTH SPEC_POINT shape (letter-prefixed unit.seq 'S1.001' — 0500/0475/0470/8021).
+- provenance conflicts (7): the shared-code reuse law sameSeedExceptBundle — a bundle:<slug>-only provenance delta REUSES the first bank's shared rows (nodes + edges); src/schema/tier/gate deltas still the loud conflict. Pinned on the REAL 9709 pair (mechanics then pure-1 on one store: 2 nodes + 1 edge reused, the bank trees component-scoped, idempotent both banks).
+- Rider disclosed + fixed: the frozen Pearson-branded bundlesTitle rode onto Cambridge qualifications; now board-aware (material under the reuse law — the first bank's rows stick).
+- Gates: tsc clean x4; bun test apps/api packages = 2323 pass / 0 fail / 13 skip; sme 98/0 incl. the roster gate; hub prebuild trio exit 0 (the 3 map files law-clean).
+- Hygiene: zero credentials/DB writes/LLM; fetch-first at 45ca5b6; no force.
+
+Stage Summary:
+- The run-002 repair program is CODED + PINNED + GATED: all five defect classes addressed, the Edexcel laws byte-identical, the fleet ready for run #3. Next: PR + self-merge on green, dispatch mode=cow+prod (the operator's standing order), then on green the CIE fill audit (45 rows, curriculumCode = <spec>-<syllabusVersion> per the seed's cv law).
+- Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-phase4-repair-program-r0.json; residuals: the hub-side EQ asset rendering (phase-5 QA lane), coreBridge stays operator-keyed.

@@ -235,8 +235,35 @@ interface Counters {
 
 // ── the seed law's reuse/conflict guards (requireSeedNode/:384-398) ──────────
 
+/**
+ * The shared-code reuse law (the phase-4 run-002 repair program, defect class
+ * "provenance conflict"): the shared-code join matrix (9709 x5, 0973 x3,
+ * 0653 x3, 0580/0455/0500/0460/0607 x2 — the orchestrator's determinism law,
+ * "seeded into ONE subject tree by the seed's resolve-or-create") seeds the
+ * SHARED nodes (the SUBJECT root, per-spec shared UNITs) from the FIRST bank;
+ * a sibling bank's seed carries a provenance line differing ONLY in the
+ * bundle:<slug> segment — that delta is the shared-resolve case, and the row
+ * is REUSED (never re-seeded over). Every other delta (src ref, schema, tier,
+ * gate) is still the loud conflict — the drift guard holds at full strength.
+ */
+export function sameSeedExceptBundle(existing: string | null, seed: string): boolean {
+  if (existing === null) return false;
+  const a = existing.split("|");
+  const b = seed.split("|");
+  if (a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] === b[i]) continue;
+    if (a[i]!.startsWith("bundle:") && b[i]!.startsWith("bundle:")) continue;
+    return false;
+  }
+  // byte-equal lines (no delta at all) are the trivial same-seed case — the
+  // guard's !== clause short-circuits them before this helper is ever called;
+  // the helper's honest contract is "the same seed lineage".
+  return true;
+}
+
 function requireSeedNode(node: NodeRow, code: string, provenance: string): void {
-  if (node.provenance !== provenance) {
+  if (node.provenance !== provenance && !sameSeedExceptBundle(node.provenance, provenance)) {
     throw new BundleSeedConflictError(
       "knowledge node " + code + " already exists with different provenance ('" +
         node.provenance + "' vs seed '" + provenance + "') — resolve manually, never re-seed over it",
@@ -245,7 +272,7 @@ function requireSeedNode(node: NodeRow, code: string, provenance: string): void 
 }
 
 function requireSeedEdge(what: string, provenance: string, edgeProvenance: string | null): void {
-  if (edgeProvenance !== provenance) {
+  if (edgeProvenance !== provenance && !sameSeedExceptBundle(edgeProvenance, provenance)) {
     throw new BundleSeedConflictError(
       "knowledge edge " + what + " already exists with different provenance ('" +
         edgeProvenance + "' vs seed '" + provenance + "') — resolve manually, never re-seed over it",
@@ -357,15 +384,20 @@ export function mapBundleNodes(
       // T-MIG-136a THIRD shape: the maths-b PLACEHOLDER tail `:SUB_` (the
       // SME exporter's single-subtopic form — every 4MB1 section IS its
       // topic, so the exporter emits one unnamed subtopic per section and
-      // the spec points hang directly off it). All three land
-      // `<spec>-S<order>-<tail>` verbatim: `4PH1-S1-a`, `4MA1-S1-1.1`,
-      // `4MB1-S1-_` — the tail separator is the law's own, the tail byte is
-      // the bundle's. Letter bundles keep byte-identical dbCodes.
-      const m = /:SUB([a-z]|\d+(?:\.\d+)?|_)$/.exec(n.code);
+      // the spec points hang directly off it). FOURTH shape (the phase-4
+      // run-002 repair program, defect class "SUBTOPIC dbCode law"): the CIE
+      // LETTER-PREFIXED official tails — `:SUBE1.1` (0580 extended),
+      // `:SUBC1.1` (0580 core), the 0973/0653 component sciences — the
+      // official component-scoped identity, the tail byte is still the
+      // bundle's. All land `<spec>-S<order>-<tail>` verbatim: `4PH1-S1-a`,
+      // `4MA1-S1-1.1`, `4MB1-S1-_`, `0580-S1-E1.1`. The first three shapes
+      // keep byte-identical dbCodes; the uppercase-led fourth is disjoint
+      // from the lowercase/dotted/placeholder vocabularies.
+      const m = /:SUB([a-z]|\d+(?:\.\d+)?|_|[A-Z]\d+(?:\.\d+)?)$/.exec(n.code);
       if (m == null) {
         throw new BundleSeedConflictError(
           "bundle SUBTOPIC " + n.code +
-            " does not carry the :SUBx letter, dotted, or placeholder suffix",
+            " does not carry the :SUBx letter, dotted, placeholder, or letter-prefixed suffix",
         );
       }
       const parentMapped = byCode.get(parent);
@@ -402,9 +434,16 @@ export function mapBundleNodes(
     //       matches the algebra — all carry a dot) — physics/chemistry/
     //       maths-a byte-identical by construction, re-proven by tests.
     const alnum = /^\d{1,2}[A-Z]$/.test(n.code);
-    if (!/^[0-9]/.test(n.code) && !alnum) {
+    // FIFTH shape (the phase-4 run-002 repair program, defect class
+    // "SPEC_POINT numeric-code law"): the CIE letter-prefixed unit.seq codes
+    // — 'S1.001' (0500/0475/0470/8021, the English/history vocabulary) — the
+    // official identity verbatim: `{subject}-{code}` (0500-S1.001),
+    // self-locating via the embedded unit number. Disjoint from the numeric,
+    // ALNUM, and SUBTOPIC-tail vocabularies by construction.
+    const letterPrefixed = /^[A-Z]\d+(?:\.\d+)*$/.test(n.code);
+    if (!/^[0-9]/.test(n.code) && !alnum && !letterPrefixed) {
       throw new BundleSeedConflictError(
-        "bundle SPEC_POINT " + n.code + " does not carry a numeric spec code",
+        "bundle SPEC_POINT " + n.code + " does not carry a numeric or letter-prefixed spec code",
       );
     }
     const parentMapped = byCode.get(parent);
@@ -449,6 +488,17 @@ function bundleHas(bundle: BundleCurriculum, code: string): boolean {
 }
 
 function bundlesTitle(bundle: BundleCurriculum): string {
+  // the board-aware title law (the run-002 repair rider, disclosed): the
+  // frozen 134a string was the Edexcel family of record verbatim — the CIE
+  // widening kept seeding Pearson-branded titles onto Cambridge
+  // qualifications. The Edexcel path is byte-identical (the same constant
+  // shape); the CIE path carries the board's own family name (the same
+  // vocabulary bundleBoardAndQualification already pins — a hostile board
+  // refused there before this is ever reached).
+  if (BUNDLE_BOARD_BY_UPSTREAM[bundle.board] === CIE_BOARD_OF_RECORD) {
+    const family = bundle.level === "IGCSE" ? "Cambridge IGCSE" : "Cambridge International AS & A Level";
+    return family + " " + bundle.subject + " (" + bundle.code + ", " + bundle.syllabusVersion + " specification)";
+  }
   return (
     "Pearson Edexcel International GCSE (9-1) " + bundle.subject +
     " (" + bundle.code + ", " + bundle.syllabusVersion + " specification)"
