@@ -10273,3 +10273,16 @@ Work Log:
 
 Stage Summary:
 - Orphan-parts lane LIVE of record: 61 appends across 31 parts shipped and verified on prod; orphans 45->14; coverage arithmetic unchanged (166/171/residual 0). Remaining lane residue: 12 NEEDS_MANUAL rulings + 2 EXCLUDE strikes pending operator adjudication.
+
+---
+Task ID: trace 1a15b2c7c83e9aad (residue ruling draft of record)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- Operator directive 'Decision on the 14 remaining lines'; turn-open: HEAD==origin/main 1149646, live planes IN-SYNC, fingerprints of-record.
+- First-hand re-review of all 14 residue rows (problemMd/solutionMd/siblings/provenance) + deterministic 182-universe concept-keyword scan per tested content (densit/safety/hazard/apparatus/variables/state symbol/decompos/constant mass/dissol/diffus).
+- Rulings: 1 ATTACH (1.3 -> 1-1-states-of-matter q18p1, grade-B: governing item grammar inheritance — sibling p0 coded 1.3 of-record — + mechanism square-match; run-007's 3.11 misfire rejection upheld) + 13 KEEP_EMPTY (incl. 2 EXCLUDE strikes ratified), each with zero-square-statement grounding.
+- Receipt run-010-orphan-residue-ruling-r0 staged; zero content writes; no force.
+
+Stage Summary:
+- Residue ruling draft pending operator green-light: apply set = single append (4CH1-1.3); 13 strikes stay empty of-record with documented no-statement grounding; coverage arithmetic unchanged.

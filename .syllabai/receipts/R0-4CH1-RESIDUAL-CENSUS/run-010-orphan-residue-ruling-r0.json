@@ -1,0 +1,230 @@
+{
+  "receipt": "R0-4CH1-RESIDUAL-CENSUS/run-010-orphan-residue-ruling-r0",
+  "task": "operator trace 1a15b2c7c83e9aad 'Decision on the 14 remaining lines' — first-hand per-row adjudication of the 12 NEEDS_MANUAL + 2 EXCLUDE residue; ruling draft staged; READ-ONLY vs content",
+  "lane": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, chat 9e9f3d7a)",
+  "method": "full re-read of problemMd/solutionMd/siblings/provenance for all 14 rows + deterministic 182-universe concept-keyword scan per tested content (not limited to run-007 candidates); KG spec texts square-checked for every candidate code",
+  "totals": {
+    "rows": 14,
+    "attach": 1,
+    "appends": 1,
+    "keepEmpty": 13,
+    "excludeRatified": 2
+  },
+  "rows": [
+    {
+      "set": "1-1-states-of-matter--exam-questions",
+      "questionOrder": 18,
+      "partOrder": 1,
+      "partId": "qstnprt_gwPsCgCxxhdbxTWW",
+      "marks": 3,
+      "priorVerdict": "NEEDS_MANUAL",
+      "ruling": "ATTACH",
+      "codes": [
+        "4CH1-1.3"
+      ],
+      "rationale": "grade-B: governing item grammar inheritance + mechanism square-match — p0 sibling (name dissolving+diffusion) already coded 1.3 of-record; p1 tests the causal chain 'crystals dissolve faster / particles move faster (more KE) / rate of diffusion increases / ions meet sooner' = exactly 1.3's 'how the results of experiments involving dilution of coloured solutions and diffusion of gases can be explained'; run-007's 3.11 misfire concern UPHELD as rejection (exam-tip of record: 'a dissolving and diffusion question, not a standard rate of reaction question'); 1.3 non-suffix (1C/2C shared) vs Ja1C paper-1 lineage — paper-consistent",
+      "grounding": "dissol scan: 3.2/3.8 are rate-investigation & energy-change grammars, not this; diffus scan: 1.3 only",
+      "run007Candidates": [
+        "inherit item grammar {1.25,1.3,1.38}",
+        "3.11 temperature-rate analogy (misfire-prone: not a chemical reaction)"
+      ]
+    },
+    {
+      "set": "1-4-the-periodic-table--exam-questions",
+      "questionOrder": 13,
+      "partOrder": 0,
+      "partId": "qstnprt_6zkwnfDh72wDRdZK",
+      "marks": 1,
+      "priorVerdict": "NEEDS_MANUAL",
+      "ruling": "KEEP_EMPTY",
+      "codes": [],
+      "rationale": "H2 low-density property (MC 'low density') — no spec statement exists",
+      "grounding": "kw 'densit': 0/182 hits",
+      "run007Candidates": [
+        "none clean; siblings {1.24,1.25,3.12,3.13} not content-matched"
+      ]
+    },
+    {
+      "set": "1-5-chemical-formulae-equations-calculations--exam-questions",
+      "questionOrder": 16,
+      "partOrder": 0,
+      "partId": "qstnprt_MQd4XqDYPRzKNxrX",
+      "marks": 2,
+      "priorVerdict": "NEEDS_MANUAL",
+      "ruling": "KEEP_EMPTY",
+      "codes": [],
+      "rationale": "safety precaution (fume cupboard; chlorine toxic) — no safety-equipment statement exists",
+      "grounding": "kw safety/hazard/fume cupboard/goggle: 0/182 (toxic only in 4.47 plastics context)",
+      "run007Candidates": [
+        "none clean"
+      ]
+    },
+    {
+      "set": "1-5-chemical-formulae-equations-calculations--exam-questions",
+      "questionOrder": 21,
+      "partOrder": 1,
+      "partId": "qstnprt_TJQp83784Pn8cJ2W",
+      "marks": 3,
+      "priorVerdict": "NEEDS_MANUAL",
+      "ruling": "KEEP_EMPTY",
+      "codes": [],
+      "rationale": "heat-to-constant-mass reason + crucible lid design — 1.31 ('formulae obtained experimentally: metal oxides, water, water of crystallisation') is the closest miss but the item tests technique reasoning inside a decomposition investigation (governing item coded 2.12 at p0), NOT formula determination; not square",
+      "grounding": "kw 'constant mass': 0/182; 'determine the formula': 1.36 only (metal oxide combustion/reduction — different practical)",
+      "run007Candidates": [
+        "1.31 experimental-formula-determination grammar (arguable, not deterministic)"
+      ]
+    },
+    {
+      "set": "1-8-metallic-bonding--exam-questions",
+      "questionOrder": 4,
+      "partOrder": 3,
+      "partId": "qstnprt_djssqPMVz8NKfcJC",
+      "marks": 1,
+      "priorVerdict": "NEEDS_MANUAL",
+      "ruling": "KEEP_EMPTY",
+      "codes": [],
+      "rationale": "100-17=83% pure arithmetic in bauxite context — sub-part does not test extraction knowledge (2.26C is the alloys statement, sibling p2's own grammar); maths-skill part",
+      "grounding": "no statement covers percentage arithmetic; extraction statements 2.23C/2.26C content-mismatched",
+      "run007Candidates": [
+        "inherit 2.26C extraction context (sub-part does not test extraction knowledge)"
+      ]
+    },
+    {
+      "set": "1-9-electrolysis--exam-questions",
+      "questionOrder": 3,
+      "partOrder": 0,
+      "partId": "qstnprt_zhh6rhp4WyWBNHzT",
+      "marks": 1,
+      "priorVerdict": "NEEDS_MANUAL",
+      "ruling": "KEEP_EMPTY",
+      "codes": [],
+      "rationale": "hazard symbol meaning (flammable) — no hazard-symbol statement exists",
+      "grounding": "kw 'hazard': 0/182",
+      "run007Candidates": [
+        "none clean"
+      ]
+    },
+    {
+      "set": "1-9-electrolysis--exam-questions",
+      "questionOrder": 3,
+      "partOrder": 1,
+      "partId": "qstnprt_GF2R3d2ch5C5QFWX",
+      "marks": 1,
+      "priorVerdict": "NEEDS_MANUAL",
+      "ruling": "KEEP_EMPTY",
+      "codes": [],
+      "rationale": "name the elements combined in barium sulfide — 1.39 ('write formulae for compounds formed between the ions listed above') is the reverse direction (ions->formula, not compound-name->element-names); no naming-reading statement exists",
+      "grounding": "1.39 text square-checked; thin confirmed, not upgraded",
+      "run007Candidates": [
+        "1.39 formulae-from-ions grammar (thin)"
+      ]
+    },
+    {
+      "set": "1-9-electrolysis--exam-questions",
+      "questionOrder": 3,
+      "partOrder": 2,
+      "partId": "qstnprt_BfxHQHMvVfywgh7d",
+      "marks": 2,
+      "priorVerdict": "NEEDS_MANUAL",
+      "ruling": "KEEP_EMPTY",
+      "codes": [],
+      "rationale": "safety precaution for toxic barium chloride — no safety statement exists",
+      "grounding": "kw safety/hazard/fume cupboard/goggle: 0/182",
+      "run007Candidates": [
+        "none clean"
+      ]
+    },
+    {
+      "set": "2-1-group-1-alkali-metals--exam-questions",
+      "questionOrder": 16,
+      "partOrder": 1,
+      "partId": "qstnprt_xCN2dZ9GVYwM8wPb",
+      "marks": 1,
+      "priorVerdict": "NEEDS_MANUAL",
+      "ruling": "KEEP_EMPTY",
+      "codes": [],
+      "rationale": "type of reaction: 2LiOH -> Li2O + H2O ((thermal) decomposition OR dehydration) — decomposition statements are 2.12 (metal CARBONATES incl. CuCO3) and 3.16 (catalytic H2O2) only; hydroxide not square; 2.12 misfire risk confirmed and rejected",
+      "grounding": "kw decompos: 2 hits (2.12 carbonates, 3.16 H2O2); thermal: 2.12 only",
+      "run007Candidates": [
+        "none clean"
+      ]
+    },
+    {
+      "set": "2-5-extraction-and-uses-of-metals--exam-questions",
+      "questionOrder": 14,
+      "partOrder": 1,
+      "partId": "qstnprt_JdygcmDr3XYTVJq2",
+      "marks": 3,
+      "priorVerdict": "NEEDS_MANUAL",
+      "ruling": "KEEP_EMPTY",
+      "codes": [],
+      "rationale": "'how many times more iron per hour' unit-conversion + 3 s.f. — pure maths skill; 2.23C (extraction-method explanation) is siblings p0/p2/p3 grammar, not tested here",
+      "grounding": "no statement covers unit-conversion arithmetic",
+      "run007Candidates": [
+        "inherit 2.23C extraction context (thin)"
+      ]
+    },
+    {
+      "set": "2-7-acids-bases-and-salt-preparations--exam-questions",
+      "questionOrder": 3,
+      "partOrder": 0,
+      "partId": "qstnprt_tH4zFWZqzy8MyXZS",
+      "marks": 4,
+      "priorVerdict": "EXCLUDE",
+      "ruling": "KEEP_EMPTY",
+      "codes": [],
+      "rationale": "EXCLUDE ratified — name apparatus A-D (test tube/evaporating basin/measuring cylinder/balance); no spec statement covers apparatus identification",
+      "grounding": "kw apparatus/measuring cylinder: 0/182",
+      "run007Candidates": null
+    },
+    {
+      "set": "2-7-acids-bases-and-salt-preparations--exam-questions",
+      "questionOrder": 3,
+      "partOrder": 1,
+      "partId": "qstnprt_zdnRyQhzpZY5n5Y6",
+      "marks": 1,
+      "priorVerdict": "EXCLUDE",
+      "ruling": "KEEP_EMPTY",
+      "codes": [],
+      "rationale": "EXCLUDE ratified — which apparatus measures volume; no spec statement exists",
+      "grounding": "kw apparatus/measuring cylinder: 0/182",
+      "run007Candidates": null
+    },
+    {
+      "set": "3-3-reversible-reactions-and-equilibria--exam-questions",
+      "questionOrder": 15,
+      "partOrder": 0,
+      "partId": "qstnprt_TQxbHrNqtkRWqshZ",
+      "marks": 1,
+      "priorVerdict": "NEEDS_MANUAL",
+      "ruling": "KEEP_EMPTY",
+      "codes": [],
+      "rationale": "which solvent -> water via (aq) state symbol reading — 1.25 ('write word equations and balanced chemical equations (including state symbols)') is the state-symbol grammar anchor but is WRITING grammar; item tests INTERPRETATION; closest miss disclosed, not square",
+      "grounding": "kw 'state symbol': 1 hit (1.25, writing grammar)",
+      "run007Candidates": [
+        "1.25 state-symbol grammar (thin: 1.25 says WRITE equations)",
+        "inherit 3.22C item context"
+      ]
+    },
+    {
+      "set": "4-5-alcohols--exam-questions",
+      "questionOrder": 7,
+      "partOrder": 0,
+      "partId": "qstnprt_H3FtDC6k5xF5z8qb",
+      "marks": 2,
+      "priorVerdict": "NEEDS_MANUAL",
+      "ruling": "KEEP_EMPTY",
+      "codes": [],
+      "rationale": "state two control variables for valid evaporation comparison — experimental-design grammar has no spec statement; 4.30C (draw/name alcohol formulae) is sibling p2's grammar, sub-part does not test formulae",
+      "grounding": "kw variable/fair test/valid: 0/182",
+      "run007Candidates": [
+        "inherit 4.30C family context (sub-part does not test formulae)"
+      ]
+    }
+  ],
+  "coverageNote": "ATTACH code 4CH1-1.3 already covered course-wide both-axes -> coverage arithmetic UNCHANGED (notes 166 / questions 171 / residual 0); lane remains per-part tagging enrichment",
+  "postRulingOrphanPosture": "orphans 14 -> 13 after apply; the 13 KEEP_EMPTY rows are DETERMINISTIC no-statement strikes (concept keyword scans returned zero square statements) — they stay empty of-record and are documented, not failures",
+  "guard": "RULING DRAFT ONLY — the single append (4CH1-1.3 -> 1-1-states-of-matter q18p1) applies ONLY on operator green-light; KEEP_EMPTY rows are strikes: never written",
+  "paperConsistencyNote": "attached code 1.3 is non-suffixed (1C/2C shared) vs Ja1C paper-1 lineage — paper-consistent",
+  "writeLedger": "this receipt + worklog append only; zero content writes; zero prod/DB/Neon/LLM; no force"
+}
