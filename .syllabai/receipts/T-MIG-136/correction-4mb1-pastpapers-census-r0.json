@@ -1,0 +1,33 @@
+{
+  "receipt": "correction-4mb1-pastpapers-census-r0",
+  "task": "T-MIG-136",
+  "class": "CORRECTION OF RECORD (append-only; historical receipts byte-untouched)",
+  "operator_trace": "1a1585491d3b2391 'syllabai-pastpapers has past papers. WHat are you talking about 4mb1 papers not existing? Why did you say that?'",
+  "agent": "r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)",
+  "executed_at": "2026-10-20T22:10+06:00",
+  "corrected_claim": {
+    "source_of_record": "receipt second-subject-scoping-maths-b-run-001-r0.json + card T-MIG-136 (band 136b rationale + lane_split) + downstream: prod-apply-run-004-r0.json, battery receipts run-002/run-003, lane answers",
+    "verbatim": "the pastpapers archive carries NO 4MB specs (4MB1 papers not archived)",
+    "verdict": "REFUTED OF RECORD by this receipt"
+  },
+  "root_cause": "the 2026-10-19 zero-download census ran its trees-API queries against SyllabAI/syllabai-resources (the SME corpus/books repo) and inherited the earlier 'pastpapers archive 103 specs all Edexcel' figure from the same repo plane; verified today: syllabai-resources @ origin/main carries ZERO paths matching 4MB (ls-tree -r). The operator's actual past-paper archive is the SEPARATE repo SyllabAI/syllabai-pastpapers, which the census never queried. The false verdict then propagated unverified through every downstream record and through this lane's operator answers.",
+  "wire_evidence": {
+    "verified_at": "2026-10-20, local clone fetched c2c9c57..3063c71",
+    "repo": "SyllabAI/syllabai-pastpapers",
+    "tree": "past-papers/pearson-edexcel/international-gcse/mathematics-b/4mb1/past-papers/",
+    "sessions": "20 series: 2018-06, 2019-01, 2019-06, 2020-01, 2020-06, 2020-11, 2021-01, 2021-06, 2021-11, 2022-01, 2022-06, 2023-01, 2023-06, 2023-11, 2024-06, 2024-11, 2025-06, 2025-10, 2025-11, 2026-06",
+    "files": "67 qp.pdf + 66 ms.pdf + per-paper manifest.yaml (sample manifest paper_id 'pearson-edexcel:international-gcse:mathematics-b:4mb1:2019-06:4MB1/01', specification.title 'Edexcel International GCSE Mathematics B (4MB1)')",
+    "first_landed": "2026-09-16 commit c2c9c57 (wave-17) — one month BEFORE the 2026-10-19 census date, so the census was wrong on the day it ran, not overtaken by events",
+    "legacy_note": "the archive also carries the pre-2016 4MB0 spec (2011-06 onward) — outside the igcse-maths-b-16 (4MB1-2016) curriculum scope"
+  },
+  "what_survives": "the RUNTIME wire facts stand: prod DB carries zero INGESTED 4MB1 questions (the 136d battery fetch-bank honest-empty legs measured real wire emptiness); smart mark / tutor fetch-bank / learner QUESTION axis dormancy is real dormancy (nothing ingested yet). The 136a/136c/136d/136e code and prod-apply facts are untouched by this correction.",
+  "what_falls": "the recorded RATIONALE — 'no corpus exists', 'not archived', 'acquisition needed' — is superseded. The gate for lighting the 4MB1 questions axis was never acquisition; it is PARSING + BANK-BUILD + INGESTION of the existing archive (fetch-parser 4MB1 shape already landed in 136e; the 135b shim is bundle-generic and ingests verbatim when a maths-b bank lands).",
+  "consequences": [
+    "the '4MB1 past-paper acquisition' residual is WITHDRAWN — replaced by the 4MB1 parse+ingest lane as the pending work",
+    "the coreBridge 'moot until questions exist' horizon shortens: questions become available post-ingest, at which point the operator declaration stops being moot",
+    "the syllabai-resources 4.75GB/5GB push-wall gate does NOT gate the question lane (the papers already live in syllabai-pastpapers; the resources wall binds only the future Maths B BOOK/notes intake)",
+    "the 136b honest-dormancy STATE stands; its recorded justification is superseded by this receipt (append-only honored)"
+  ],
+  "fence": "4MB1-only; 4MB0 legacy rows noted but not mapped to 4MB1-2016; 4MA1 untouched (other lane — its bank landed via the 135e data lever per origin/main 81cf468)",
+  "write_ledger": "bookkeeping-only: zero code delta, zero prod writes, zero Neon, zero LLM, zero probe learners; .syllabai-only (this receipt + one worklog entry), fetch-first, no force"
+}

@@ -9295,3 +9295,20 @@ Work Log:
 
 Stage Summary:
 - T-MIG-137 band 137d DONE of record: the graded-evidence→KG join is LIVE-PROVEN end-to-end on BOTH planes (4CH1 chemistry + 4MA1 maths): every authoritative structured mark settles BKT/fluency evidence keyed on the curriculum KG nodes, posteriors read NON-NULL on the learner surfaces, the zero-BDT structured law holds on the wire, and the MCQ lane is byte-unchanged. Rollback anchor = the run-009 carrier (dpl_HphMddku @ 89962a5 pre-137). Next repo receipt = Task-64; next workspace = Task-44.
+
+---
+Task ID: trace 1a1585491d3b2391 (T-MIG-136 CORRECTION of record — the '4MB1 not archived' census verdict refuted)
+Agent: r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)
+Task: operator: "syllabai-pastpapers has past papers. WHat are you talking about 4mb1 papers not existing? Why did you say that?" — challenge to the lane's standing '4MB1 papers not archived' verdict; verify against the wire and correct the record.
+
+Work Log:
+- Re-verified against the actual archive instead of the census note: fetch-first on SyllabAI/syllabai-pastpapers (c2c9c57..3063c71); ls-tree of origin/main
+- WIRE TRUTH: past-papers/pearson-edexcel/international-gcse/mathematics-b/4mb1/ = 20 sessions 2018-06..2026-06, 67 qp.pdf + 66 ms.pdf + per-paper manifests (sample paper_id 'pearson-edexcel:international-gcse:mathematics-b:4mb1:2019-06:4MB1/01', spec title 'Edexcel International GCSE Mathematics B (4MB1)'); legacy 4mb0 (pre-2016) also present, out of 4MB1-2016 scope
+- Dating: 4MB1 first landed 2026-09-16 (c2c9c57 wave-17) — a month BEFORE the 2026-10-19 scoping census; the census was wrong on the day it ran, not overtaken by events
+- Root cause pinned: the run-001 census queried SyllabAI/syllabai-resources (verified TODAY: zero paths matching 4MB in ls-tree -r @ origin/main) — the SME corpus/books repo, not the separate pastpapers archive repo; the false verdict then propagated unverified into the card (136b rationale + lane_split), prod-apply/battery receipts, and this lane's operator answers
+- Filed receipt .syllabai/receipts/T-MIG-136/correction-4mb1-pastpapers-census-r0.json (append-only; historical receipts byte-untouched; this receipt + this entry supersede the rationale)
+- Consequences of record: (1) '4MB1 past-paper acquisition' residual WITHDRAWN — replaced by the 4MB1 parse+bank+ingest lane (fetch-parser 4MB1 shape already landed in 136e; 135b shim bundle-generic); (2) coreBridge 'moot until questions exist' horizon shortens — post-ingest the declaration becomes actionable; (3) the resources 4.75GB/5GB wall does NOT gate the question lane (it binds only the future Maths B book/notes intake); (4) 136b runtime dormancy STATE stands (zero INGESTED 4MB1 questions — battery wire-truth) but its recorded justification is superseded
+- Slip disclosure: the first append of this entry was wiped by a sandbox-local `git reset --hard origin/main` fired BEFORE commit (order-of-operations error, never pushed, zero of-record footprint) and was re-appended verbatim on the synced tip 81cf468
+
+Stage Summary:
+- CORRECTION of record: 4MB1 papers EXIST in SyllabAI/syllabai-pastpapers (20 sessions, 67/66 qp/ms, manifested, pre-dating the census) — the standing 'not archived' verdict was a wrong-repo census error; the Maths B questions-axis gate is now PARSING+INGESTION of the existing archive, and the lane's next actionable item changed accordingly; bookkeeping-only, zero code delta, zero prod writes, zero Neon, zero LLM; fetch-first, no force
