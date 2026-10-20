@@ -9634,6 +9634,40 @@ Stage Summary:
 - Write ledger: .syllabai receipt + this worklog only; zero Neon/LLM/prod-db; fetch-first, no force
 
 ---
+Task ID: trace 1a15a0c18fa70d15 (T-PARSE-4PH1 parse verify, run-001)
+Agent: r0 (zai-web session web-752465e5, chat dd7e60e9)
+Task: operator "check in syllabai-resources if the igcse physics book has been parsed properly"
+
+Work Log:
+- Read-only independent verification battery of books/pearson-edexcel/international-gcse/physics/4ph1/ — every headline claim re-derived from the raw deliverables, zero trust in lane self-reports (GET/HEAD only, zero LLM/Neon/prod-db, zero writes to syllabai-resources)
+- SOURCE INTEGRITY of record: student-book.pdf re-downloaded in full (30,915,167 B) and re-hashed -> 9b0783d9...313a EXACT match to the sha256 pinned in 3 docs; pypdf ground truth: 308 pages, producer RICOH MP C4503, page 51 text layer = 0 chars (image-only-scan claim verified first-hand)
+- CHUNKS GREEN: 736/736 valid JSON lines, 0 bad; IDs unique + phys_v1_ prefixed; 13-key core grammar 0 missing; content-type distribution EXACT-matches parse_report_v1.json (17 types); char_count==len(text) 736/736; size 44/2299/843 EXACT; 28/28 chapters, 8/8 units; offset book=pdf-10 0 violations; 47/47 question chunks page-anchored (serving-critical MET); body order breaks 0 under start<previous-start (26 same-page overlaps = packing artifact, not regressions); LaTeX remnants 0; 232 polished chunks all carry text_original
+- POST-POLISH AUDIT REPRODUCED: polished-subset 18+ lowercase runs = 3, exactly the three disclosed legit words (pearsonschoolsandfecolleges URL-line, telecommunications, thermoluminescence); delta found: 1 polished chunk keeps camel-glue 'TotalforQuestion2' (audit claimed 0 — regex-class boundary, cosmetic, round-2 candidate)
+- COVERAGE 304/308 explained: 242/280 full-page picture items (documented text-only limitation), 287 APPENDICES divider header produced no chunk (minor), 307 blank (documented pixel-verified); docling_pages 308 files contiguous 1..308 no extras (hybrid-stack evidence in checkpoints: tesseract fallback p14, 2.133 splice p16-17); full_book_docling.md 635,914 B exact + 388 headings
+- SERVING STATUS disclosed: 4PH1 parse NOT yet ingested — 0 'phys_v1' refs in syllabai-v2 main; hub books read path (133c) serves operator-gated Neon rows; ingestion = the 134e-adjacent operator-keyed step; round 2 (68/300 selected chunks, LLM quota) remains the lane's own open protocol
+- Race recheck on session open: tip moved a00b96f..5b7eb6b — sibling run-002 ops-pastpapers receipt already at tip, NOT duplicated
+
+Stage Summary:
+- VERDICT: 4PH1 physics book parse is PROPER — source hash-exact, all checkable claims reproduce exactly, serving-critical anchors verified; ready for RAG ingestion as-is; the one open quality item is the lane's own documented polish round 2 (68 selected chunks pending, LLM quota)
+- Receipt: .syllabai/receipts/T-PARSE-4PH1/parse-verify-run-001-r0.json (new receipt dir for the 4PH1 parse lane)
+- Write ledger: .syllabai receipt + worklogs only; no force
+
+---
+Task ID: trace 1a15a1a5938d99a5 (T-PARSE-4PH1 round-2 polish execution DRAFT)
+Agent: r0 (zai-web session web-752465e5, chat dd7e60e9)
+Task: operator "draft the round-2 polish execution"
+
+Work Log:
+- DRAFT ONLY — zero LLM calls, zero repo-data writes; grounded in the lane's own committed kit + scripts read in full (select/repair/merge/audit/validate + pipeline/worklog T-PARSE-4PH1-4-R2 entry)
+- Pending derivation reproduced independently from committed evidence: 300 selected - 232 unique-ok = 68 todo; composition EXACT-matches the lane record (30 body / 10 worked_example / 7 LO / 5 table_data / 5 extension / 4 unit_questions serving-critical / 3 key_point / 2 exam_hint / 1 appendix / 1 front_matter; 58,428 chars)
+- Evidence nuance of record: 7 ids carry 2 differing ok-records (merge law = latest-wins, already round-1 behavior, do not fix); stubborn id phys_v1_u4_c0_pdf178_0398 = 3x 429 casualty (error != done, retries naturally); 0 rejected records (19 re-queues consistent)
+- FALSE ALARM resolved: committed select_noisy_physics.py line 68 looked like a syntax error in fetched text display; hexdump proved valid list comprehension len([m for m ...]) — compiler right, no P0 fix needed
+- Draft phases: A workspace reconstruction from repo state (kit is self-sufficient; pristine-snapshot deterministic reconstruction + audit crosscheck vs round-1 numbers of record 1008->3 / camel 121->0); B quota-gated repair grind (~78-85 calls, PROBE_MAX=1 CONC=1 batches, 429 backoff + 2-consec stop, no-hammer cadence); C OPTIONAL +1 targeted re-repair of the camel-glue residual chunk phys_v1_u1_c0_pdf066_0136 (audit camel pattern blind to capital-initial glue); D merge gated on anchor PASS 0 drift; E audit+validate gates with expected numbers; F push set = parsed corpus/md/report/README + evidence + pipeline worklog ONLY (source/docling_pages untouched); bookkeeping receipt + dual worklog
+- Success/abort law: quota wall persists after 3 probe sessions -> clean abort, push nothing, file quota-timeline receipt; rollback = single-commit revert, no force
+
+Stage Summary:
+- Draft filed: .syllabai/receipts/T-PARSE-4PH1/round2-execution-draft-r0.md — awaiting operator GO (LLM quota = operator resource; round-2 lane diagnosed absolute account-level 429 wall 2026-10-19 23:26 -> 2026-10-20 15:33, ~1 day elapsed)
+- End-state promise: 300/300 polished (or 299 + 1 disclosed cosmetic), anchor 0 drift, validate ALL CHECKS PASSED, corpus-wide glue at legit-word floor; serving ingestion stays the separate 134e-adjacent operator-keyed step
 Task ID: trace 1a15a0a3e414f9d5 (CIE phase-4 DB-plane build, run-001)
 Agent: r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
 Task: operator "build the phase-4 plane" — the CIE-INTEGRATION phase-4 machinery (the T-MIG-138 run-003 receipt's disclosed unbuilt alternative)

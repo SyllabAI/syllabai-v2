@@ -1,0 +1,79 @@
+{
+  "task": "T-PARSE-4PH1 parse verification (operator question, trace 1a15a0c18fa70d15: 'check in syllabai-resources if the igcse physics book has been parsed properly')",
+  "agent": "r0",
+  "date": "2026-10-21",
+  "subject_repo": "SyllabAI/syllabai-resources",
+  "subject_path": "books/pearson-edexcel/international-gcse/physics/4ph1/",
+  "verdict": "PARSE PROPER — structural claims independently reproduce; deliverable is sound for RAG ingestion; documented residuals pending polish round 2 are material but honestly disclosed in the parse lane's own docs",
+  "method": "read-only independent verification battery (GET/HEAD only): full deliverables re-downloaded from raw and re-validated with fresh scripts; zero trust in lane self-reports (every headline claim re-derived); source integrity re-verified by full re-hash",
+  "evidence": {
+    "source_integrity": {
+      "bytes_downloaded": 30915167,
+      "size_matches_git_tree": true,
+      "sha256_recomputed": "9b0783d9fe99790a08255eb1f2ebb6eab5833c03ef8e36dd51b7643ac68a313a",
+      "sha256_pinned_in": ["4ph1/README.md", "parsed/parse_report_v1.json", "pipeline/METHOD_AND_FINDINGS.md"],
+      "sha256_match": "EXACT",
+      "pdf_pages_true": 308,
+      "pdf_producer": "RICOH MP C4503",
+      "image_only_claim": "VERIFIED first-hand (page 51 text layer = 0 chars)"
+    },
+    "chunks_jsonl": {
+      "lines": 736,
+      "invalid_json": 0,
+      "ids_unique": true,
+      "ids_phys_v1_prefixed": true,
+      "core_13key_grammar_missing": 0,
+      "content_type_distribution_vs_parse_report": "EXACT MATCH (17 types, 736 total)",
+      "char_count_field_vs_len_text_mismatches": 0,
+      "size_min_max_avg": [44, 2299, 843],
+      "size_vs_report": "EXACT MATCH (44/2299/843)",
+      "chapters_covered": "28/28",
+      "units_covered": "8/8",
+      "offset_book_eq_pdf_minus_10_violations": 0,
+      "question_chunks_page_anchored": "47/47 (21 chapter_questions + 26 unit_questions) — serving-critical requirement MET",
+      "body_order_breaks_start_lt_prev_start": 0,
+      "same_page_body_overlaps": 26,
+      "same_page_note": "multi-column/packing artifact, NOT order regressions; validator definition (start < previous start) reproduces the claimed 0",
+      "latex_remnants": 0,
+      "unicode_sci_symbol_chunks": 108,
+      "llm_repaired_chunks": 232,
+      "llm_repaired_missing_text_original": 0,
+      "pdf_page_coverage": "304/308; uncovered = 242, 280 (full-page picture items, empty text — documented text-only limitation), 287 (APPENDICES divider header page produced no chunk — minor), 307 (blank, tesseract fallback empty items — documented pixel-verified)"
+    },
+    "post_polish_audit_reproduction": {
+      "polished_subset_18plus_lowercase_runs": 3,
+      "three_runs_identity": ["pearsonschoolsandfecolleges (front-matter URL line)", "telecommunications", "thermoluminescence"],
+      "matches_audit_claim": "EXACT (audit: 'residuals are legit long words')",
+      "camel_glue_polished_subset": 1,
+      "camel_glue_chunk": "phys_v1_u1_c0_pdf066_0136 (unit_questions, pdf 66-67) contains 'TotalforQuestion2=19marks'",
+      "camel_glue_note": "audit claimed 0; likely regex-class boundary (digit-adjacent); the glue is real, cosmetic, round-2 candidate"
+    },
+    "docling_pages_checkpoints": {
+      "files": 308,
+      "contiguous_1_to_308": true,
+      "extras": 0,
+      "hybrid_stack_evidence": "page_014 tesseract-fallback items present; page_016/017 2.133 formula-decode splice present; page_307 blank record"
+    },
+    "full_book_md": {
+      "bytes": 635914,
+      "matches_git_blob": true,
+      "headings": 388,
+      "unit_style_headings_present": true
+    },
+    "serving_status": {
+      "hub_ingestion": "NOT YET INGESTED — 0 'phys_v1' references in syllabai-v2 main; hub books read path (T-MIG-133 133c) serves operator-gated Neon rows via api edge; the 4PH1 parse is a repo-level RAG deliverable; ingestion is the 134e-adjacent operator-keyed step",
+      "parse_lane_disclosed_round2": "68/300 selected chunks pending polish round 2 (LLM quota); 436/736 below selection threshold; unpolished body noise density real: 171/182 unpolished body chunks carry glue/long-run samples"
+    }
+  },
+  "deltas_and_residuals": [
+    "MATERIAL (disclosed by lane, confirmed here): polish round 2 pending — 504/736 chunks retain v1 OCR space-drop noise (68 selected-pending + 436 below-threshold); round-2 protocol documented in parsed/README.md",
+    "minor: 1 polished chunk retains camel-glue 'TotalforQuestion2' (audit claimed 0 on polished set)",
+    "minor: page 287 APPENDICES divider header produced no chunk",
+    "minor: parse_report_v1.json field naming 'n_llm_polished: 0' alongside 'llm_polished: 232' is ambiguous",
+    "benign: 7 table_data chunks on PDF 5-10 carry book_pages=null (front-matter span has no book numbers; typing table_data over front_matter is semantically correct for TOC/spec tables)",
+    "benign: OCR misreads sampled in unpolished chunks ('worid is tull', 'Acaris', 'ltaccelerates') — pre-polish noise, in round-2 scope"
+  ],
+  "race_recheck": "fetch-first on session open caught tip move a00b96f..5b7eb6b; sibling run-002 receipt (ops-pastpapers re-verify, trace 1a15a036230e1065) already at tip — not duplicated",
+  "write_ledger": ".syllabai receipt + worklogs only; zero writes to syllabai-resources (data plane untouched); zero LLM/Neon/prod-db; fetch-first, no force",
+  "verdict_summary": "The 4PH1 physics book parse is PROPER: source hash-exact, 736 chunks structurally valid against every checkable claim, serving-critical anchors (question typing, dual page numbering, chapter/unit coverage) all verified, hybrid-parser and blank-page decisions evidenced in checkpoints. Ready for RAG ingestion as-is; polish round 2 (68 selected chunks) remains the one open quality item on the lane's own protocol."
+}
