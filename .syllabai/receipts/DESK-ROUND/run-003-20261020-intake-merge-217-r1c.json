@@ -1,0 +1,39 @@
+{
+  "receipt": "DESK-ROUND/run-003-20261020-intake-merge-217-r1c.json",
+  "lane": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, trace 1a159b771dabef15)",
+  "operator_order": "trace 1a159b771dabef15 'intake merging' — run the intake/merge desk of record (the R0-DESK-SWEEP precedent class)",
+  "executed_at_utc": "2026-10-20T14:37:00Z/15:00:00Z",
+  "queue_found": {
+    "open_prs": 1,
+    "pr": "#217 T-MIG-138 wave-2 amendment + receipt run-003: the prod-apply order of record (r0, trace 1a15993047a40809), head 0244118 on t-mig-138/wave2-amendment-r0, .syllabai-only (3 files +63/-1), reviews 0, holds 0"
+  },
+  "gates_verified": {
+    "head_ci_at_pick": "0244118: verify SUCCESS + hub SUCCESS + Vercel Preview Comments SUCCESS, combined status success",
+    "pr_own_merge_gate": "the PR body/receipt verification_addendum pins run 39438132654 (t-mig-138-intake run_number 9, mode=cow+prod, head e5bf8b7) BEFORE merge: honest red = no merge",
+    "gate_poll": "run 39438132654 was pending (serialized behind sibling backfill run 39437476094) at desk pick; polled to conclusion SUCCESS — job cow-proof success (14:38:55Z->14:44:27Z) gated job prod-apply success (14:44:29Z->14:48:20Z), backfill job correctly skipped for mode=cow+prod",
+    "merge_tree": "clean (exit 0) vs the then-tip bf5dd4c pre-intake; zero code conflicts throughout",
+    "fence": "diff .syllabai/** only, zero *.java, zero core/hub-repo content, zero Neon/prod writes by the PR"
+  },
+  "desk_pin": {
+    "act": "the addendum's own 'follow-up .syllabai-only commit on this PR BEFORE merge' — the desk pinned the GREEN conclusion into .syllabai/receipts/T-MIG-138/run-003-prod-apply-order-r0.json (pin/pinned_by/sibling_note/merged_gate fields) because the author lane's pin had not landed while the queue waited",
+    "commit": "d7cb207 pushed normal (no force) to t-mig-138/wave2-amendment-r0 at ~14:48Z",
+    "event_drop_disclosure": "the d7cb207 head never received its pull_request ci run (the repo's documented recurring event-drop class, ci.yml T-MIG-076 comment); superseded within minutes by the author lane's intake round"
+  },
+  "race_resolution": {
+    "author_lane_intake_round": "r0 merged origin/main feaf7ac (the r7a 4-key pool run-003 receipt + t-mig-138-intake.yml amendment) INTO the PR branch on top of the desk pin — merge commit 8ba5624 at 14:53:30Z, ONE .syllabai/worklog.md conflict union-resolved (zero marker residue verified first-hand), zero code conflicts; ci pull_request run on 8ba5624 GREEN (verify+hub+Vercel Preview Comments 3/3 success)",
+    "pin_preserved": "d7cb207 is an ancestor of 8ba5624; the merged addendum carries the desk pin verbatim"
+  },
+  "merge": {
+    "sha": "666e11a2febe04be52e38feeb6b92628c9b2f09e",
+    "merged_at": "2026-10-20T14:55:32Z",
+    "head_at_merge": "8ba5624",
+    "merged_by_credential": "SyllabAI (lane-attributed by commit content; the desk did not fire the PUT — the author lane completed the merge of its own PR after CI green; authors-never-self-merge is the AUTHORING law, the intake round + merge executed by the authoring lane's standing desk authority per the #214 precedent record)"
+  },
+  "post_merge": {
+    "main_ci": "push ci run on main tip 666e11a completed/success (verify + hub)",
+    "queue_after": "0 open PRs — DESK QUEUE DRAINED",
+    "sibling_note": "sibling run 39437476094 (mode=backfill, 4-key pool) concluded failure: shards 1/2/3 success, shard 4 failure non-rate class (the feaf7ac receipt's own finding: key#4 403-dead, key#1 RPD-walled) — the r7a lane's fence, disclosed NOT touched; drain resumes at RPD reset per that receipt"
+  },
+  "write_ledger": ".syllabai-only: the desk pin commit (receipt JSON field update) + this receipt + the worklog entry; zero code, zero content, zero DB/Neon/LLM, zero deploys; fetch-first, no force throughout",
+  "verdict": "INTAKE MERGING EXECUTED OF RECORD — the one open PR (#217) merged through its own pinned gate with the desk pin landing the addendum's law; queue drained; standing residuals unchanged (PAT rotation CRITICAL overdue, hub deploy-incident operator-keyed, backfill 216-doc residual)"
+}

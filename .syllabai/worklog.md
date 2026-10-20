@@ -9545,3 +9545,20 @@ Work Log:
 Stage Summary:
 - 134b CLOSED-VERIFIED of record: the full 489-question Physics SME bank serves lawfully on the current carrier; the collision is reconciled and the card's parallel-race amalgam stands — T-MIG-134's one open item is 134e (physics books, operator gate)
 - Write ledger: 2 probe learners (sz-134b-coll-verify-*, sanctioned class), llm_spend 0, ZERO Neon writes, ZERO Neon API calls; receipt collision-discharge-134b-run-001-sz.json + this worklog only; fetch-first, no force
+---
+Task ID: Task-64
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, trace 1a159b771dabef15)
+Task: Operator "intake merging" — the merge desk of record picked and drained the one-open-PR queue (PR #217 through its own pinned gate); receipt DESK-ROUND/run-003-20261020-intake-merge-217-r1c.json.
+
+Work Log:
+- Fetch-first census: local main ff'd e5bf8b7 -> bf5dd4c -> 666e11a through the act (the CIE wave #206-#215 of record, PR #216 dc6 rail, r7a feaf7ac 4-key receipt, sz 2c28a42 134b receipt). The morning's three operator CIE traces verified of record (Task-63 PR #211 dashboard board cascade; PR #212 teacher class-picker; PR #214 exam-series calendar widening merged by the 12:00Z desk sweep) — no re-act owed.
+- Queue: 1 open PR (#217, r0's T-MIG-138 wave-2 amendment + prod-apply order receipt, .syllabai-only 3 files, reviews 0, holds 0). Static gates GREEN at pick: head 0244118 CI 3/3 + combined success, merge-tree clean vs then-tip bf5dd4c, fence .syllabai-only.
+- The PR's OWN merge gate honored of record: the run-003 verification_addendum pins t-mig-138-intake run 39438132654 (mode=cow+prod, head e5bf8b7) BEFORE merge — found PENDING (serialized behind sibling backfill run 39437476094 under the cancel-in-progress:false law); polled to SUCCESS: job cow-proof success (14:38:55Z->14:44:27Z) gated job prod-apply success (->14:48:20Z), backfill correctly skipped for mode=cow+prod. Honest-red law not triggered.
+- DESK PIN: the addendum's own "follow-up .syllabai-only commit on this PR BEFORE merge" executed lane-side — d7cb207 (normal push, no force) pinned the GREEN conclusion into run-003-prod-apply-order-r0.json (pin / pinned_by / sibling_note / merged_gate). Disclosed: the d7cb207 head never received its pull_request ci run (the repo's documented recurring event-drop class, ci.yml T-MIG-076 comment); superseded by the intake round within minutes.
+- Race resolved clean: the author lane's intake round landed ON TOP of the desk pin — 8ba5624 = merge of origin/main feaf7ac (the r7a 4-key pool run-003 receipt + t-mig-138-intake.yml amendment) into t-mig-138/wave2-amendment-r0, ONE .syllabai/worklog.md conflict union-resolved (zero marker residue verified first-hand), zero code conflicts; ci pull_request run at 8ba5624 GREEN (verify + hub + Vercel Preview Comments 3/3). d7cb207 is an ancestor of 8ba5624 — the merged addendum carries the desk pin verbatim.
+- MERGED of record: PR #217 -> 666e11a @ 2026-10-20T14:55:32Z (the author lane completed the merge of its own PR after CI green per its standing desk-authority disclosure; this desk did not fire the PUT). Post-merge main ci push run SUCCESS (verify + hub) at 666e11a.
+- QUEUE DRAINED: 0 open PRs after the act. Sibling run 39437476094 failure (backfill shard 4 non-rate class: key#4 403-dead, key#1 RPD-walled per the feaf7ac receipt) disclosed NOT touched — the r7a lane's fence; drain resumes at RPD reset via backfill-sharded over the 216-doc residual.
+- Write ledger: .syllabai-only (the desk pin + this receipt + this entry); zero code, zero content, zero DB/Neon/LLM, zero deploys; fetch-first, no force throughout.
+
+Stage Summary:
+- "intake merging" executed of record: the one open PR (#217) merged through its own pinned GREEN gate with the desk pin inside the merged history; desk queue DRAINED (0 open); standing residuals unchanged (PAT rotation CRITICAL overdue, hub deploy incident operator-keyed, 216-doc backfill residual). Next repo receipt = Task-65; next workspace = Task-45.
