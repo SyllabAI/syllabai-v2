@@ -28,9 +28,11 @@ import type { CourseExamTargetView, ExamSeriesView } from "@/lib/types";
 export const EXAM_TARGETS_EVENT = "syllabai:exam-targets-changed";
 
 /**
- * The hub registry level ("IGCSE" | "IAL", content/courses.json) → the
- * core calendar's qualification vocabulary. Both registries are Edexcel
- * lanes only (the overlay's own honest constant).
+ * The hub registry level → the core calendar's qualification vocabulary.
+ * The imported calendar is Pearson-only (provenance: official Pearson
+ * key-dates documents), so callers gate Cambridge International lanes OUT
+ * of the series surface first (lib/board hasExamSeriesCalendar) — this
+ * mapping only ever sees the Edexcel lanes' levels.
  */
 export function qualForLevel(level: string): string {
   return level === "IAL" ? "IAL" : "INTERNATIONAL_GCSE";

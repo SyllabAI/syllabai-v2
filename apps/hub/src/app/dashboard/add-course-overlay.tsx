@@ -8,12 +8,17 @@
  * and the empty-state CTA — all of which open this dialog).
  *
  * The cascade mirrors the registry's real shape rather than inventing a
- * taxonomy: class creation targets the Pearson Edexcel lanes (the CIE
- * INTEGRATION wave is past-papers-first; the subject cards' "Edexcel · {level}" eyebrow
- * prints), levels are the distinct registry values, and the subject step
- * lists exact registry lanes (label, variant qualifier, exam code) — nothing
- * inferred. Adding is non-destructive to the dialog: several subjects can be
- * added in one pass before "Done".
+ * taxonomy: boards are the distinct registry values (lib/board — Pearson
+ * Edexcel and, since the CIE-INTEGRATION phase 3 wave, Cambridge
+ * International; the step used to hard-code the single pre-CIE value,
+ * which left CIE lanes unreachable — operator trace 1a1580a42635b8d9),
+ * levels are the selected board's distinct registry values, and the
+ * subject step lists exact registry lanes (label, variant qualifier, exam
+ * code) — nothing inferred. The exam-series picker rides Edexcel lanes
+ * only (hasExamSeriesCalendar): the imported calendar is Pearson-
+ * provenance, so CIE lanes honestly present no series surface. Adding is
+ * non-destructive to the dialog: several subjects can be added in one
+ * pass before "Done".
  */
 import { useMemo, useState } from "react";
 import { Check, Plus } from "lucide-react";
@@ -28,13 +33,11 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { boardOf, distinctBoards, hasExamSeriesCalendar } from "@/lib/board";
 import { duplicateVariants } from "@/lib/course-variant";
 import { useExamTargets } from "@/lib/exam-series";
 import type { CourseMeta } from "@/lib/courses";
 import { ExamSeriesPicker } from "./exam-series-picker";
-
-/** Class creation targets the Edexcel lanes (see content/courses.json note). */
-const BOARD = "Edexcel";
 
 function StepLabel({ n, title, hint }: { n: number; title: string; hint?: string }) {
   return (
@@ -61,6 +64,7 @@ export function AddCourseOverlay({
   has: (slug: string) => boolean;
   onAdd: (slug: string) => void;
 }) {
+  const [board, setBoard] = useState<string | null>(null);
   const [level, setLevel] = useState<string | null>(null);
   const [q, setQ] = useState("");
 
@@ -72,17 +76,26 @@ export function AddCourseOverlay({
 
   const subtitles = useMemo(() => duplicateVariants(courses), [courses]);
 
-  // distinct registry levels, busiest first — the honest cascade step 2
+  // distinct registry boards, busiest first — the honest cascade step 1
+  const boards = useMemo(() => distinctBoards(courses), [courses]);
+
+  // the selected board's distinct registry levels, busiest first — the
+  // honest cascade step 2 (both registries share the "IGCSE" value, so the
+  // board dimension must gate the level step explicitly)
   const levels = useMemo(() => {
     const counts = new Map<string, number>();
-    for (const c of courses) counts.set(c.level, (counts.get(c.level) ?? 0) + 1);
+    for (const c of courses) {
+      if (board && boardOf(c) !== board) continue;
+      counts.set(c.level, (counts.get(c.level) ?? 0) + 1);
+    }
     return [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
-  }, [courses]);
+  }, [courses, board]);
 
   const list = useMemo(() => {
     const needle = q.trim().toLowerCase();
     return courses
       .filter((c) => !has(c.slug))
+      .filter((c) => !board || boardOf(c) === board)
       .filter((c) => !level || c.level === level)
       .filter(
         (c) =>
@@ -97,10 +110,11 @@ export function AddCourseOverlay({
           a.label.localeCompare(b.label) ||
           a.slug.localeCompare(b.slug),
       );
-  }, [courses, has, level, q]);
+  }, [courses, has, board, level, q]);
 
   const handleOpenChange = (next: boolean) => {
     if (next) {
+      setBoard(null);
       setLevel(null);
       setQ("");
     }
@@ -123,39 +137,23 @@ export function AddCourseOverlay({
         </DialogHeader>
 
         <div className="space-y-4">
-          {/* step 1 — board (the registry's single honest value) */}
+          {/* step 1 — board (the registry's distinct values, busiest first) */}
           <div className="space-y-2">
-            <StepLabel n={1} title="Board" />
-            <div className="flex flex-wrap items-center gap-2">
-              <Button
-                type="button"
-                size="sm"
-                variant="outline"
-                aria-pressed
-                className="border-primary/60 bg-primary/5 font-medium"
-              >
-                {BOARD}
-              </Button>
-              <span className="text-xs text-muted-foreground">
-                Class creation covers the Pearson {BOARD} lanes; the Cambridge International courses are past-papers-first launches.
-              </span>
-            </div>
-          </div>
-
-          {/* step 2 — level */}
-          <div className="space-y-2">
-            <StepLabel n={2} title="Level" hint={level ? undefined : "pick one"} />
+            <StepLabel n={1} title="Board" hint={board ? undefined : "pick one"} />
             <div className="flex flex-wrap gap-2">
-              {levels.map(([name, count]) => (
+              {boards.map(([name, count]) => (
                 <Button
                   key={name}
                   type="button"
                   size="sm"
                   variant="outline"
-                  aria-pressed={level === name}
-                  onClick={() => setLevel(level === name ? null : name)}
+                  aria-pressed={board === name}
+                  onClick={() => {
+                    setBoard(board === name ? null : name);
+                    setLevel(null);
+                  }}
                   className={
-                    "gap-1.5 " + (level === name ? "border-primary/60 bg-primary/5 font-medium" : "")
+                    "gap-1.5 " + (board === name ? "border-primary/60 bg-primary/5 font-medium" : "")
                   }
                 >
                   {name}
@@ -165,6 +163,44 @@ export function AddCourseOverlay({
                 </Button>
               ))}
             </div>
+            <p className="text-xs text-muted-foreground">
+              The registry covers {boards.map(([b]) => b).join(" and ")} lanes.
+            </p>
+          </div>
+
+          {/* step 2 — level (the selected board's registry values) */}
+          <div className="space-y-2">
+            <StepLabel
+              n={2}
+              title="Level"
+              hint={!board ? "choose a board first" : level ? undefined : "pick one"}
+            />
+            {!board ? (
+              <p className="py-2 text-center text-sm text-muted-foreground">
+                Pick a board to see its levels.
+              </p>
+            ) : (
+              <div className="flex flex-wrap gap-2">
+                {levels.map(([name, count]) => (
+                  <Button
+                    key={name}
+                    type="button"
+                    size="sm"
+                    variant="outline"
+                    aria-pressed={level === name}
+                    onClick={() => setLevel(level === name ? null : name)}
+                    className={
+                      "gap-1.5 " + (level === name ? "border-primary/60 bg-primary/5 font-medium" : "")
+                    }
+                  >
+                    {name}
+                    <Badge variant="secondary" className="px-1.5 text-[10px]">
+                      {count}
+                    </Badge>
+                  </Button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* step 3 — subject lane */}
@@ -188,8 +224,8 @@ export function AddCourseOverlay({
               ) : list.length === 0 ? (
                 <p className="py-6 text-center text-sm text-muted-foreground">
                   {q
-                    ? `No ${level} course matches “${q}”.`
-                    : `Every ${level} course is already in My subjects.`}
+                    ? `No ${board} ${level} course matches “${q}”.`
+                    : `Every ${board} ${level} course is already in My subjects.`}
                 </p>
               ) : (
                 list.map((c) => {
@@ -231,7 +267,7 @@ export function AddCourseOverlay({
                           </Button>
                         )}
                       </div>
-                      {added && laneTarget !== undefined && (
+                      {added && laneTarget !== undefined && hasExamSeriesCalendar(c) && (
                         <ExamSeriesPicker
                           slug={c.slug}
                           level={c.level}

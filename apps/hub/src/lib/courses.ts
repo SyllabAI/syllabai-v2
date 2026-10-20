@@ -95,13 +95,13 @@ export interface CourseMeta {
 
 /**
  * Board label for course-level copy (titles, crumbs, provenance lines).
- * Registry-explicit when the row carries one (the CIE wave), else "Edexcel" —
- * every pre-CIE registry row is a Pearson Edexcel lane. G3's board-aware fix:
- * the hardcoded "Edexcel ${level} ${label}" titles were false for CIE rows.
+ * Re-exported from lib/board (client-safe): the add-course CIE-board fix
+ * (operator trace 1a1580a42635b8d9) moved the rule where client components
+ * can reach it — one source of truth for both planes. G3's board-aware
+ * fix: the hardcoded "Edexcel ${level} ${label}" titles were false for
+ * CIE rows.
  */
-export function boardOf(meta: Pick<CourseMeta, "board">): string {
-  return meta.board ?? "Edexcel";
-}
+export { boardOf } from "./board";
 
 export interface CourseBundle {
   meta: CourseMeta;
