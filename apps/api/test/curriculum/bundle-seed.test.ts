@@ -24,6 +24,7 @@ import { describe, expect, test } from "bun:test";
 
 import {
   BundleSeedConflictError,
+  bundleBoardAndQualification,
   bundleProvenance,
   mapBundleNodes,
   seedBundleCurriculum,
@@ -672,5 +673,119 @@ describe("T-MIG-136a maths-b bundle — the placeholder :SUB_ + alnum spec gramm
     expect(() => mapBundleNodes(broken, "x")).toThrow(
       /does not carry the :SUBx letter, dotted, or placeholder suffix/,
     );
+  });
+});
+
+// ── CIE-INTEGRATION phase 4 — the board/qualification vocabulary widening ────
+// (scope receipt cie-frontend-integration-scope-r0 executionPlan phase 4; the
+// 138a unit-vocabulary-widening precedent class; the Edexcel path byte-
+// identical — the pinned tests above ARE the control law)
+
+describe("phase-4 CIE widening — the board/qualification vocabulary of record", () => {
+  const EDX = { board: "Pearson Edexcel", level: "IGCSE" } as const;
+  const CIE_IGCSE = { board: "Cambridge International", level: "IGCSE" } as const;
+
+  test("the Edexcel path is byte-identical (the 134a constants verbatim)", () => {
+    expect(bundleBoardAndQualification(EDX)).toEqual({
+      board: "Edexcel",
+      qualification: "International GCSE (9-1)",
+    });
+    // the upstream board spelling variant resolves to the same store board
+    expect(bundleBoardAndQualification({ board: "Edexcel", level: "IGCSE" })).toEqual({
+      board: "Edexcel",
+      qualification: "International GCSE (9-1)",
+    });
+  });
+
+  test("the CIE vocabulary pins (the board's own family names of record)", () => {
+    expect(bundleBoardAndQualification(CIE_IGCSE)).toEqual({
+      board: "Cambridge International",
+      qualification: "Cambridge IGCSE",
+    });
+    for (const level of ["A-LEVEL", "A-Level", "AS"]) {
+      expect(
+        bundleBoardAndQualification({ board: "Cambridge International", level }),
+      ).toEqual({
+        board: "Cambridge International",
+        qualification: "Cambridge International AS & A Level",
+      });
+    }
+  });
+
+  test("fail-closed: hostile boards and levels refuse to guess", () => {
+    expect(() => bundleBoardAndQualification({ board: "OCR", level: "IGCSE" })).toThrow(
+      /outside the board vocabulary of record/,
+    );
+    expect(() => bundleBoardAndQualification({ board: "Edexcel", level: "A-LEVEL" })).toThrow(
+      /outside the International GCSE family of record/,
+    );
+    expect(() =>
+      bundleBoardAndQualification({ board: "Cambridge International", level: "IAL" }),
+    ).toThrow(/outside the Cambridge International family of record/);
+  });
+
+  test("a REAL CIE A-level bundle seeds through the store law (cie-a-level-chemistry-25, 9701)", async () => {
+    const cie = JSON.parse(
+      readFileSync(
+        join(import.meta.dir, "../../../hub/content/cie-a-level-chemistry-25/curriculum.json"),
+        "utf8",
+      ) as string,
+    ) as BundleCurriculum;
+    expect(cie.board).toBe("Cambridge International");
+    expect(cie.level).toBe("A-LEVEL");
+
+    const store = newStore();
+    const seen: Array<{ board: string; qualification: string; code: string }> = [];
+    const versionSelect: Route = {
+      match: /select id, status from curriculum_versions where board = \? and qualification = \? and code = \?/,
+      rows: [],
+      rowsFor: (params) => {
+        seen.push({ board: String(params[0]), qualification: String(params[1]), code: String(params[2]) });
+        return store.version ? [store.version] : [];
+      },
+    };
+    const routes = seedRoutes(store);
+    const deps: BundleSeedDeps = { sql: fakeSql([versionSelect, ...routes.slice(1)]), clock: { now: () => T0 } };
+    const summary = await seedBundleCurriculum(deps, cie, { slug: "cie-a-level-chemistry-25", importRepo: "SyllabAI/syllabai-resources", importRef: "0fe5f77210f74aaeb3f6c491dfe0263d12db738c", schema: "syllabai-demo.content-bundle/2.0" }, ACTIVATOR);
+    // the CIE version key of record (NOT the Edexcel constants)
+    expect(seen).toEqual([
+      {
+        board: "Cambridge International",
+        qualification: "Cambridge International AS & A Level",
+        code: "9701-2025-2027",
+      },
+    ]);
+    expect(summary.nodesCreated).toBe(cie.nodes.length);
+    expect(summary.edgesCreated).toBe(cie.edges.length);
+    expect(summary.alreadyActive).toBe(false);
+    // idempotent re-run: the structural no-op of record
+    const again = await seedBundleCurriculum(deps, cie, { slug: "cie-a-level-chemistry-25", importRepo: "SyllabAI/syllabai-resources", importRef: "0fe5f77210f74aaeb3f6c491dfe0263d12db738c", schema: "syllabai-demo.content-bundle/2.0" }, ACTIVATOR);
+    expect(again.nodesCreated).toBe(0);
+    expect(again.alreadyActive).toBe(true);
+  });
+
+  test("a REAL CIE IGCSE bundle seeds under the Cambridge IGCSE qualification (cie-igcse-chemistry-23, 0620)", async () => {
+    const cie = JSON.parse(
+      readFileSync(
+        join(import.meta.dir, "../../../hub/content/cie-igcse-chemistry-23/curriculum.json"),
+        "utf8",
+      ) as string,
+    ) as BundleCurriculum;
+    const store = newStore();
+    const seen: Array<{ board: string; qualification: string; code: string }> = [];
+    const versionSelect: Route = {
+      match: /select id, status from curriculum_versions where board = \? and qualification = \? and code = \?/,
+      rows: [],
+      rowsFor: (params) => {
+        seen.push({ board: String(params[0]), qualification: String(params[1]), code: String(params[2]) });
+        return store.version ? [store.version] : [];
+      },
+    };
+    const routes = seedRoutes(store);
+    const deps: BundleSeedDeps = { sql: fakeSql([versionSelect, ...routes.slice(1)]), clock: { now: () => T0 } };
+    await seedBundleCurriculum(deps, cie, { slug: "cie-igcse-chemistry-23", importRepo: "SyllabAI/syllabai-resources", importRef: "0fe5f77210f74aaeb3f6c491dfe0263d12db738c", schema: "syllabai-demo.content-bundle/2.0" }, ACTIVATOR);
+    expect(seen).toEqual([
+      { board: "Cambridge International", qualification: "Cambridge IGCSE", code: "0620-2023-2025" },
+    ]);
   });
 });

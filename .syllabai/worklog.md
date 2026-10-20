@@ -9632,3 +9632,19 @@ Work Log:
 Stage Summary:
 - ops-pastpapers CLOSED end-to-end of record: run-001 (diagnosis, live green, causes ranked) + run-002 (root cause adjudicated = deployment storage saturation; re-verify all green on the new build)
 - Write ledger: .syllabai receipt + this worklog only; zero Neon/LLM/prod-db; fetch-first, no force
+
+---
+Task ID: trace 1a15a0a3e414f9d5 (CIE phase-4 DB-plane build, run-001)
+Agent: r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: operator "build the phase-4 plane" — the CIE-INTEGRATION phase-4 machinery (the T-MIG-138 run-003 receipt's disclosed unbuilt alternative)
+
+Work Log:
+- Fetch-first reconciliation: local main 636 behind origin/main — re-synced to 5b7eb6b of record before any act. Mandate located: the T-MIG-138 run-003 receipt alternative ("CIE phase-4 DB plane (40 banks) — no per-slug seed/ingest workflow exists of record; build = the next lane act on operator re-key") + the scope receipt's executionPlan phase 4.
+- Census of record FIRST (zero-DB, first-hand): registry 45 CIE rows = 40 real banks + the 4 of-record stubs + 1 catalog skeleton (cie-a-level-maths-20-pure-2, 0 nodes/0 sets/no spine); fleet totals 19,097 questions / 25,663 parts EXACT vs the phase-3 receipt; shared-code join matrix pinned (9709:5, 0973:3, 0653:3, 0580/0455/0500/0460/0607:2, 27 distinct codes); registry codes == bundle codes 45/45; all rows status 'full'.
+- WIDENING (the 138a vocabulary precedent class): the frozen 134a seed refused every non-'IGCSE' level (14 roster bundles A-Level/AS) and pinned board 'Edexcel' — bundleBoardAndQualification added (Edexcel path BYTE-IDENTICAL — the pinned chemistry/physics tests are the control; CIE IGCSE -> 'Cambridge IGCSE'; CIE A-LEVEL/A-Level/AS -> 'Cambridge International AS & A Level'; anything else refuses, fail-closed preserved); resolveVersion parameterized (board, qualification, code).
+- BUILT: apps/api/scripts/cie-phase4-apply.ts (registry-driven fleet orchestrator: census/dry/apply, per-slug isolation + honest fleet red, post-apply count-drift assertion, scrub-asserted receipts) + .github/workflows/cie-phase4-db-plane.yml (the 134c gate verbatim shape: COW-proof -> prod-apply, cow-dry variant, dispatch-only, ::add-mask:: hygiene, jdbc:-refusal precondition, floors 19000/25600) + apps/api/test/sme/cie-phase4-roster.test.ts (the CI roster gate: 45/40/4/1 + EXACT fleet bytes + join matrix + never-invented filter law) + 5 widening pins in bundle-seed.test.ts (incl. a REAL cie-a-level-chemistry-25 seed with version-key capture + idempotent re-run).
+- GATES: tsc --noEmit CLEAN (the orchestrator is import-graphed by the roster test — the tx-as-SqlFn seam cast explicit + disclosed); FULL verify battery 2275 pass / 0 fail / 13 skip; workflow yaml parsed + structure verified; --census clean over all 45 slugs incl. the filtered-subset path (all three classes exercised).
+- ZERO LLM / zero Neon / zero prod-db / zero hub / bundles byte-untouched; the plane is INERT until dispatched (workflow_dispatch = the operator's fire order). Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-phase4-db-plane-build-r0.json
+
+Stage Summary:
+- Phase-4 machinery BUILT of record (the gap the T-MIG-138 run-003 receipt disclosed is CLOSED): the COW->prod gate exists, dispatch-gated, floors pinned. Next act = OPERATOR: stage CIE4_PROD_DATABASE_URL (same derivation as T138_PROD_DATABASE_URL, no jdbc:) + dispatch cie-phase4-db-plane mode=cow+prod; then phase-5 QA battery per the scope receipt. Residuals unchanged (PAT rotation standing).
