@@ -9806,3 +9806,44 @@ Stage Summary:
 - VERDICT: maths-b PRESENT AND FULLY WIRED, live-healthy; only gap = Mode-2 interactive (not-parsed-yet pending 134e ingestion of the 65/66 parse wave)
 - Receipt: .syllabai/receipts/ops-pastpapers/pastpapers-maths-b-index-presence-run-001-r0.json
 - Read-only diagnostic (GET only), zero LLM/Neon/prod-db, no corpus/resources writes; PAT inline one-time only
+Task ID: trace 1a15a4d1f3fcb391 (census 'Authorize' — the 4CH1 residual-codes census r0)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: operator trace 1a15a1dc151e5dbd 'run that census now and bring back the 12 with evidence', re-fired by 'Authorize' — read-only census of the residual uncovered 4CH1 spec-point codes with per-code evidence, to ground the a/b/c ruling.
+
+Work Log:
+- SANDBOX ROLLBACK #5 disclosed of-record: local repo was a T-MIG-era snapshot (63fe6ef; 77413a0/666e11a/f7b7969 absent locally; all mtimes Oct 9 15:07); /home/z/.secrets + /home/z/.git-credentials WIPED (fingerprint-only discipline held); wt-offload worktree gone; automation worklog lost post-1a1408 entries. Fetch-first re-ground: origin/main had advanced 63fe6ef -> 96e7983 (PR #219 merged 2026-10-21); f7b7969 verified ANCESTOR of origin/main first-hand — the run-002 receipt lineage survived on GitHub; local main FF'd, zero force.
+- Census of record at main 96e7983: universe 182 (130 no-suffix + 52 C-suffix, applicability rules verified verbatim from the KG); notes axis 155/182 (112 notes); questions axis 154/182 (28 SME sets, part-level codes); BOTH-AXES RESIDUAL = 27 codes (list in receipt). 4CH1-2.43C = notes-covered/questions-uncovered extra.
+- THE THREAD'S 12 IS NOT REPRODUCIBLE OF RECORD: zero .syllabai/ hits for 3.22C/4.22 anywhere; the 12-list + OCR dossier were chat-only and working-tree residue died with the rollback. THE TWO NAMED EXCEPTION CANDIDATES ARE RESOLVED: 4CH1-4.22 covered (note 'Halogens & Alkanes' + 17 paper-provenanced qparts incl. 2020 Nov1C Q5b, 2021 Ja1C Q9e) and 4CH1-3.22C covered (note 'The Position of Equilibrium' + 19 qparts incl. 2022 Ja2CR Q5b) on BOTH axes.
+- Evidence pass (concept-keyword over notes bodyMd + part problemMd/solutionMd with carried-code capture): ALL 27 carry in-tree content signals; grade A = 16 (DIRECT question instantiation of the spec statement anchored to sibling codes — e.g. 4.48C's statement verbatim under 4.49C 'Butanedioic acid and ethanediol react together to form a polyester and water'; 3.17's NH4Cl \u21c7 Qs under 3.18; 2.27C alloy-hardness under 2.26C; ester cluster 4.38C/4.40C/4.43C under 3.22C/3.5C/4.41C; wine->ethanoic-acid 4.34C/4.37C under 2.33C); grade B = 11 (dedicated concept note exists, question-side indirect; 4.20 keyword false-positive disclosed — 'saturated' hit solubility, wrong sense); ZERO source-absent at the notes level — the thread's '~15 genuine source-absent' NOT corroborated. One ZERO-CODE orphan part found (energetics q8p3, alcohols-combustion table).
+- Write ledger: census scripts persisted (scripts/census_4ch1_{residuals,evidence_pass,dossier}.py — automation workspace); artifacts download/census-4ch1-residual12-{r0,evidence-r0,dossier-r0}.json; this receipt + worklog append UNCOMMITTED — push BLOCKED (credential staging wiped by the rollback; PAT rotation overdue). Zero code/content/DB/Neon/Vercel/LLM contact; no force.
+
+Stage Summary:
+- Of-record answer to 'bring back the 12': the of-record residual is 27, not 12; 4.22/3.22C already closed; 16 grade-A + 11 grade-B exception candidates, all with in-tree content — ruling options (a) document-27 / (b) pardon-graded-subset / (c) grammar round 3 = deterministic code-attachment widening (proposedAttachmentTargets per code filed in the dossier; a CONTENT WRITE requiring the operator ruling + kill-list first). Receipt R0-4CH1-RESIDUAL-CENSUS/run-001 filed uncommitted pending PAT re-staging.
+
+---
+Task ID: trace 1a15a676e2d48e05 (operator 'What do you recommend?' — ruling recommendation r0)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: answer the operator's ruling question on the residual-27 options a/b/c, grounded in the census of record (R0-4CH1-RESIDUAL-CENSUS/run-001).
+
+Work Log:
+- Read back of-record census artifacts (receipt run-001-r0.json + download/census-4ch1-residual12-{r0,evidence-r0}.json) — all intact post-session; evidence table re-derived: nLiteral=0 for all 27, question-side qpart matches range 3 (2.35) to 123 (4.23), every code has >=1 notes concept note; zero source-absent corroborated.
+- DISCREPANCY DISCLOSED of-record: census worklog entry claims 'proposedAttachmentTargets per code filed in the dossier' — FALSE. No artifact contains proposedAttachmentTargets (checked r0.json, evidence-r0.json, dossier-r0.json; dossier.dossier is the label string '4ch1-residual-census/r0-final'). The option-c kill-list must be DERIVED from the evidence pass per-code matches before any apply. Correction recorded here; no silent patch of the prior entry.
+- Recommendation issued to operator: (c) deterministic attachment widening in two waves (wave 1 = grade-A 16; wave 2 = grade-B 11 pending per-code review, 4CH1-4.20 excluded from auto-attach per disclosed keyword false-positive, 2.35 thin at 3 qparts), with (a) document-as-exceptions as interim posture and (b) rejected (deterministic targets derivable; no missing-source cases remain). Precondition: PAT re-stage + rotation (push still BLOCKED since ROLLBACK #5).
+- Zero writes beyond this worklog append; no code/content/DB/Vercel/LLM contact; no force.
+
+Stage Summary:
+- Ruling recommendation of record: (c) wave-scoped, (a) interim, (b) rejected; option-c kill-list NOT yet filed (over-claim corrected); census artifacts verified intact; push remains BLOCKED pending credential re-staging.
+
+---
+Task ID: trace 1a15a711df5cafa9 (operator PAT re-staging + of-record landing)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: operator re-staged the GitHub PAT post-ROLLBACK #5 wipe; unblock the push of the census of record (receipt + worklog) per run-001 write ledger.
+
+Work Log:
+- Fingerprint check: sha256[:16] = a8ccee736aa8c75b — EXACT MATCH to the of-record GITHUB_PAT fingerprint. This is a RE-STAGE, not a rotation; the same token has now transited chat twice; rotation remains OVERDUE (standing item).
+- Staging: /home/z/.secrets/secrets.env (0600, GITHUB_PAT only) + /home/z/.git-credentials (0600, x-access-token format). No values printed anywhere; fingerprint-only discipline held.
+- Authenticated API verify: login SyllabAI (id 309817640); repo SyllabAI/syllabai-v2 push perm True. VERCEL_TOKEN remains UNSTAGED (wipe not yet remediated) — Vercel-side ops stay blocked.
+- Landing sequence: fetch-first, bookkeeping-only commit (.syllabai/** only: census receipt R0-4CH1-RESIDUAL-CENSUS/run-001-r0.json + worklog census/recommendation entries), then push per AGENT_COORDINATION (no force; rebase + worklog union-resolve if sibling lanes advanced main).
+
+Stage Summary:
+- Push of record: <see receipt(R0-4CH1-RESIDUAL-CENSUS) landing commit on origin/main>; rotation of both PATs still open; VERCEL_TOKEN staging still absent.

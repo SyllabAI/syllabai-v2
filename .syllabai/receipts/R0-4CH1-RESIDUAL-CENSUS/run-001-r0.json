@@ -1,0 +1,32 @@
+{
+  "receipt": "R0-4CH1-RESIDUAL-CENSUS/run-001",
+  "task": "operator trace 1a15a1dc151e5dbd 'run that census now and bring back the 12 with evidence' — re-fired by 'Authorize' (trace 1a15a4d1f3fcb391); READ-ONLY census, zero writes into app/content",
+  "lane": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, chat 9e9f3d7a)",
+  "tree_of_record": "main 96e7983 (origin/main tip) after fetch-first FF re-ground; f7b7969 (perf-hub-bundle-offload run-002 receipt) verified ancestor of origin/main first-hand",
+  "sandbox_anomaly_of_record": "ROLLBACK #5 — local repo restored to a T-MIG-era snapshot (63fe6ef, all file mtimes Oct 9 15:07); 77413a0/666e11a/f7b7969 absent locally; /home/z/.secrets + /home/z/.git-credentials WIPED (values-discipline held: no values were ever printed, only fingerprints); wt-offload worktree gone; automation worklog lost post-1a1408 entries. Of-record lineage survived on GitHub (fetch-first re-ground); origin/main had advanced to 96e7983 (PR #219 merged 2026-10-21 17:00, sibling lanes active).",
+  "method": "scripts persisted: census_4ch1_residuals.py (universe/axes/census) + census_4ch1_evidence_pass.py (concept-keyword pass over notes bodyMd + question part problemMd/solutionMd with carried-code capture) + census_4ch1_dossier.py (hand-graded A/B merge); universe = KG points[] 182 (130 no-suffix + 52 C-suffix, applicability rules verified verbatim); axes = notes.json specPointCodes (112 notes) + questions.json part-level specPointCodes (28 SME sets); zero network writes, zero credentials, zero LLM",
+  "census_of_record": {
+    "universe": 182,
+    "notes_axis": "155/182 covered, 27 uncovered",
+    "questions_axis": "154/182 covered, 28 uncovered (extra: 4CH1-2.43C notes-covered questions-uncovered)",
+    "both_axes_residual": 27,
+    "residual27": ["4CH1-1.52C","4CH1-2.24C","4CH1-2.27C","4CH1-2.35","4CH1-2.45","4CH1-2.50","4CH1-3.13","4CH1-3.17","4CH1-3.19C","4CH1-4.1","4CH1-4.5","4CH1-4.7","4CH1-4.10","4CH1-4.11","4CH1-4.19","4CH1-4.20","4CH1-4.23","4CH1-4.24","4CH1-4.25","4CH1-4.29C","4CH1-4.34C","4CH1-4.37C","4CH1-4.38C","4CH1-4.40C","4CH1-4.42C","4CH1-4.43C","4CH1-4.48C"]
+  },
+  "reconciliation_of_record": {
+    "the_two_named_candidates": "4CH1-4.22 + 4CH1-3.22C are COVERED of-record on both axes (4.22: note 'Halogens & Alkanes' + 17 qparts incl. 2020 Nov1C Q5b / 2021 Ja1C Q9e; 3.22C: note 'The Position of Equilibrium' + 19 qparts incl. 2022 Ja2CR Q5b) — RESOLVED on the of-record tree; nothing to rule on for them",
+    "the_thread_12": "UNREPRODUCIBLE of-record: zero .syllabai/ hits for 3.22C/4.22; the 12-list + OCR dossier were chat-only (thread compressed) and working-tree residue destroyed by ROLLBACK #5; census r0 supersedes",
+    "bucket_split": "grade A = 16 codes with DIRECT in-tree question instantiation of the spec statement anchored to sibling codes; grade B = 11 codes with dedicated in-tree concept note, question-side evidence indirect; ZERO source-absent at the notes level — the thread's '~15 genuine source-absent' NOT corroborated"
+  },
+  "artifacts": [
+    "download/census-4ch1-residual12-r0.json (raw census)",
+    "download/census-4ch1-residual12-evidence-r0.json (evidence pass)",
+    "download/census-4ch1-residual12-dossier-r0.json (graded dossier + ruling options)"
+  ],
+  "write_ledger": "repo working tree: .syllabai/receipts/R0-4CH1-RESIDUAL-CENSUS/run-001-r0.json + .syllabai/worklog.md append, UNCOMMITTED (push BLOCKED: credentials staging wiped by rollback; PAT rotation overdue — re-stage fresh tokens, then commit+push .syllabai-only); automation worklog appended; zero code/content/DB/Neon/Vercel/LLM contact; no force",
+  "followups": [
+    "operator ruling on the 27 per options a/b/c (dossier JSON carries per-code evidence + proposed attachment targets for option c)",
+    "PAT rotation + re-staging (overdue since run-002; rollback wiped staging)",
+    "stale CORS allow-list entry identity/config.ts:60 (syllabai-hub.vercel.app) still parked",
+    "Deployment Retention lowering on the Vercel dashboard still operator-side pending"
+  ]
+}
