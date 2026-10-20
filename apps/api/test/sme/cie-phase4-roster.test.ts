@@ -11,10 +11,18 @@
  * of mid-fleet on a Neon COW.
  */
 import { describe, expect, test } from "bun:test";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 
-import { loadRoster, resolveSlugFilter, resolveMode, CIE_BOARD } from "../../scripts/cie-phase4-apply";
+import { loadRoster, resolveSlugFilter, resolveMode, mapLawCensus, CIE_BOARD } from "../../scripts/cie-phase4-apply";
+import { mapBundleNodes } from "../../src/services/curriculum/bundle-seed";
+import type { BundleCurriculum } from "../../src/services/curriculum/bundle-seed";
 
 const roster = loadRoster();
+// the optionA map-law census of record (the zero-DB identity proof — the
+// floors cannot catch the identity defect class; this gate runs it on every
+// CI pass so a bundle regression is a RED here, never a mid-fleet surprise)
+const mapLaw = mapLawCensus(roster);
 
 // the 4 honest-empty stub banks of record (scope receipt stubBanks)
 const STUBS_OF_RECORD = [
@@ -131,5 +139,57 @@ describe("cie-phase4 roster law", () => {
     expect(resolveMode(["--apply"])).toBe("apply");
     expect(resolveMode(["--receipt", "p.json"])).toBe(null);
     expect(resolveMode([])).toBe(null);
+  });
+
+  // ── the optionA map-law census gate (operator ruling A, trace 1a15b161bf960249) ──
+
+  test("the map-law census is GREEN over the whole fleet (identity-clean before any COW)", () => {
+    expect(mapLaw.green).toBe(true);
+    expect(mapLaw.reds).toEqual([]);
+    expect(mapLaw.bundlesMapped).toBe(44); // 45 rows minus the pure-2 skeleton
+  });
+
+  test("the varchar(40) store law holds at the census maximum of record", () => {
+    expect(mapLaw.maxDbCodeLength).toBe(25); // the optionA census of record (hold receipt: max 25/40)
+    expect(mapLaw.maxDbCodeLength).toBeLessThanOrEqual(mapLaw.storeLawLimit);
+  });
+
+  test("the shared subject roots of record: the six same-version component families", () => {
+    // 9709 x5 real banks @2023-2025; 0653 x3 @2023-2024; 0973 x3 @2025-2027;
+    // 0580 x2 + 0607 x2 @2025-2027; 0460 x2 @2025-2026 (the same generation —
+    // the slugs' 20/25 are batch labels, the bundle's own syllabusVersion governs)
+    expect([...mapLaw.sharedSubjectRoots].sort()).toEqual([
+      "0460-2025-2026", "0580-2025-2027", "0607-2025-2027", "0653-2023-2024", "0973-2025-2027", "9709-2023-2025",
+    ]);
+  });
+
+  test("the 9709 UNIT space is the tail-based disjoint set of record (the graft class is structurally gone)", () => {
+    // pure-2 is the skeleton; the five real banks land S1/S3/S4/S5/S6 — each
+    // from its own official -T tail, PAIRWISE DISJOINT (the pre-optionA order
+    // law landed all five on 9709-S1 — the graft)
+    const banks9709 = roster.entries.filter((e) => e.code === "9709" && e.cls === "real");
+    expect(banks9709.length).toBe(5);
+    const unitSets = banks9709.map((e) => {
+      const bundle = JSON.parse(
+        readFileSync(join(import.meta.dir, "../../../hub/content/" + e.slug + "/curriculum.json"), "utf8"),
+      ) as BundleCurriculum;
+      return [...mapBundleNodes(bundle, "p").values()].filter((m) => m.nodeType === "UNIT").map((m) => m.dbCode);
+    });
+    const flat = unitSets.flat().sort();
+    expect(flat).toEqual([
+      "9709-2023-2025-S1", "9709-2023-2025-S3", "9709-2023-2025-S4", "9709-2023-2025-S5", "9709-2023-2025-S6",
+    ]);
+    // pairwise disjoint across banks (each UNIT belongs to exactly one bank)
+    expect(new Set(flat).size).toBe(flat.length);
+    // the order-based pre-optionA code must not exist anywhere
+    expect(mapLaw.sharedCodes.some((s) => s.dbCode === "9709-S1")).toBe(false);
+  });
+
+  test("the only cross-slug joins are agreeing-identity shares (title+type equal) — the census' own law, re-proven", () => {
+    for (const s of mapLaw.sharedCodes) {
+      expect(s.slugs.length).toBeGreaterThan(1);
+      expect(typeof s.title).toBe("string");
+      expect(s.title.length).toBeGreaterThan(0);
+    }
   });
 });

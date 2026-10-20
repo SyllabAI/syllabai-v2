@@ -68,6 +68,7 @@ import { join } from "node:path";
 import postgres from "postgres";
 
 import {
+  mapBundleNodes,
   seedBundleCurriculum,
   type BundleCurriculum,
   type BundleSeedSummary,
@@ -522,6 +523,106 @@ export function resolveMode(args: string[]): "apply" | "dry" | null {
   return null;
 }
 
+// ── the map-law census (the optionA identity laws — operator ruling A, trace
+//    1a15b161bf960249; the hold receipt's point 5) ─────────────────────────
+//
+// Zero-DB offline proof that the fleet's mapBundleNodes output is
+// identity-clean BEFORE any COW is created — the floors of record cannot
+// catch the identity defect class (the reuse law defines cross-bank dbCode
+// collisions as correct; the floors count rows, not identities), so the
+// census is the gate that does:
+//   (a) no intra-bundle dbCode collisions (two bundle codes -> one dbCode);
+//   (b) any cross-bundle shared dbCode carries ONE node_type and ONE title
+//       everywhere it appears (the offline form of the seed's title-drift
+//       refusal — the 9709 graft class is a RED here);
+//   (c) the varchar(40) store law (knowledge_nodes.code);
+//   and reports the family facts of record: the shared subject roots (the
+//   same-version component families joining per the build receipt's join
+//   matrix) and any shared UNITs (legitimate only where the official
+//   sections genuinely coincide — e.g. the 0460 pair, two banks of the same
+//   2025-2026 generation).
+
+export interface MapLawCensusShared {
+  dbCode: string;
+  nodeType: string;
+  title: string;
+  slugs: string[];
+}
+
+export interface MapLawCensus {
+  green: boolean;
+  bundlesMapped: number;
+  nodesMapped: number;
+  maxDbCodeLength: number;
+  storeLawLimit: number;
+  sharedCodes: MapLawCensusShared[];
+  sharedSubjectRoots: string[];
+  reds: string[];
+}
+
+export function mapLawCensus(roster: Roster, base: string = HUB_CONTENT): MapLawCensus {
+  const byDbCode = new Map<string, { nodeType: string; title: string; slugs: string[] }>();
+  const reds: string[] = [];
+  let bundlesMapped = 0;
+  let nodesMapped = 0;
+  let maxDbCodeLength = 0;
+  for (const entry of roster.entries) {
+    if (entry.cls === "skeleton") continue;
+    const bundle = JSON.parse(
+      readFileSync(join(base, entry.slug, "curriculum.json"), "utf8"),
+    ) as BundleCurriculum;
+    const mapped = mapBundleNodes(bundle, entry.code + " official specification structure");
+    bundlesMapped += 1;
+    const intra = new Map<string, number>();
+    for (const m of mapped.values()) {
+      nodesMapped += 1;
+      intra.set(m.dbCode, (intra.get(m.dbCode) ?? 0) + 1);
+      if (m.dbCode.length > maxDbCodeLength) maxDbCodeLength = m.dbCode.length;
+      const seen = byDbCode.get(m.dbCode);
+      if (seen == null) {
+        byDbCode.set(m.dbCode, { nodeType: m.nodeType, title: m.title, slugs: [entry.slug] });
+      } else if (!seen.slugs.includes(entry.slug)) {
+        if (seen.nodeType !== m.nodeType) {
+          reds.push(
+            entry.slug + ": dbCode " + m.dbCode + " lands node_type " + m.nodeType +
+              " but " + seen.slugs[0] + " landed " + seen.nodeType,
+          );
+        } else if (seen.title !== m.title) {
+          reds.push(
+            entry.slug + ": dbCode " + m.dbCode + " maps title '" + m.title +
+              "' but " + seen.slugs[0] + " mapped '" + seen.title + "' (cross-bank tree drift)",
+          );
+        } else {
+          seen.slugs.push(entry.slug);
+        }
+      }
+    }
+    for (const [dbCode, n] of intra) {
+      if (n > 1) reds.push(entry.slug + ": intra-bundle dbCode collision " + dbCode + " x" + n);
+    }
+  }
+  if (maxDbCodeLength > 40) {
+    reds.push("max dbCode length " + maxDbCodeLength + " exceeds the varchar(40) store law (knowledge_nodes.code)");
+  }
+  const sharedCodes = [...byDbCode.entries()]
+    .filter(([, v]) => v.slugs.length > 1)
+    .map(([dbCode, v]) => ({ dbCode, nodeType: v.nodeType, title: v.title, slugs: [...v.slugs].sort() }))
+    .sort((a, b) => a.dbCode.localeCompare(b.dbCode));
+  const sharedSubjectRoots = sharedCodes
+    .filter((s) => s.nodeType === "SUBJECT")
+    .map((s) => s.dbCode);
+  return {
+    green: reds.length === 0,
+    bundlesMapped,
+    nodesMapped,
+    maxDbCodeLength,
+    storeLawLimit: 40,
+    sharedCodes,
+    sharedSubjectRoots,
+    reds,
+  };
+}
+
 async function main(): Promise<void> {
   const args = process.argv.slice(2);
   const census = args.includes("--census");
@@ -540,6 +641,24 @@ async function main(): Promise<void> {
   const targets = resolveSlugFilter(roster, slugFilter);
   console.log(
     `[roster] CIE rows=${roster.cieRows} (real ${roster.real} / stubs ${roster.stubs} / skeletons ${roster.skeletons}) | selected=${targets.length} | filter=${slugFilter}`,
+  );
+
+  // the optionA map-law census — the fleet-wide offline identity proof, run
+  // BEFORE any DB contact in EVERY mode (the fail-closed pre-flight: the
+  // hold receipt's "--census proves the fleet offline before any COW"; the
+  // floors cannot catch the identity defect class, this gate does). Exit 3
+  // on red — zero connections are ever opened.
+  const mapLaw = mapLawCensus(roster);
+  if (!mapLaw.green) {
+    console.error("[census] MAP-LAW RED: " + mapLaw.reds.length + " violation(s), zero DB contact:");
+    for (const r of mapLaw.reds) console.error("  - " + r);
+    process.exit(3);
+  }
+  console.log(
+    "[census] map-law GREEN: bundles=" + mapLaw.bundlesMapped + " nodes=" + mapLaw.nodesMapped +
+      " maxDbCode=" + mapLaw.maxDbCodeLength + "/" + mapLaw.storeLawLimit +
+      " shared=" + mapLaw.sharedCodes.length + " (subject roots " + mapLaw.sharedSubjectRoots.length + ": " +
+      mapLaw.sharedSubjectRoots.join(", ") + ")",
   );
 
   const results: SlugResult[] = [];
@@ -623,6 +742,18 @@ async function main(): Promise<void> {
     mode: mode ?? "census",
     slugFilter,
     roster: { cieRows: roster.cieRows, real: roster.real, stubs: roster.stubs, skeletons: roster.skeletons },
+    mapLaw: {
+      law: "optionA identity-stable namespace/UNIT/title laws (operator ruling A, trace 1a15b161bf960249)",
+      green: mapLaw.green,
+      bundlesMapped: mapLaw.bundlesMapped,
+      nodesMapped: mapLaw.nodesMapped,
+      maxDbCodeLength: mapLaw.maxDbCodeLength,
+      storeLawLimit: mapLaw.storeLawLimit,
+      sharedSubjectRoots: mapLaw.sharedSubjectRoots,
+      sharedNonRootJoins: mapLaw.sharedCodes.filter((s) => s.nodeType !== "SUBJECT").length,
+      reds: mapLaw.reds,
+      ...(census ? { sharedCodesFull: mapLaw.sharedCodes } : {}),
+    },
     summary: {
       selected: targets.length,
       realApplied: appliedReal,

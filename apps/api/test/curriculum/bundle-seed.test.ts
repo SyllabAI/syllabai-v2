@@ -828,7 +828,7 @@ describe("run-002 repair — the sameSeedExceptBundle shared-code reuse law", ()
     expect(sameSeedExceptBundle("bundle:A|src:X@1|schema:s", "src:X@1|schema:s")).toBe(false);
   });
 
-  test("REAL cross-bank reuse on the 9709 pair: pure-1 seeds clean after mechanics (the fleet's conflict class, repaired)", async () => {
+  test("REAL cross-bank 9709 pair: the sibling joins ONLY the version-scoped root; the tail-based UNITs stay disjoint (the graft class is structurally gone — optionA)", async () => {
     const load = (slug: string) =>
       JSON.parse(
         readFileSync(join(import.meta.dir, "../../../hub/content/" + slug + "/curriculum.json"), "utf8"),
@@ -844,25 +844,28 @@ describe("run-002 repair — the sameSeedExceptBundle shared-code reuse law", ()
     const store = newStore();
     const first = await seedBundleCurriculum(seedDeps(store), mechanics, src("cie-a-level-maths-20-mechanics"), ACTIVATOR);
     expect(first.nodesCreated).toBe(mechanics.nodes.length);
-    // the shared identities of record: the SUBJECT root (9709) and the
-    // order-1 UNIT (9709-S1) — every other dbCode is component-scoped
-    expect(store.nodes.has("9709")).toBe(true);
-    expect(store.nodes.has("9709-S1")).toBe(true);
+    // the optionA identities of record: the version-scoped root + mechanics'
+    // own tail-based UNIT (official T4 tail) — the pre-optionA order law
+    // landed BOTH banks on 9709-S1 (the graft)
+    expect(store.nodes.has("9709-2023-2025")).toBe(true);
+    expect(store.nodes.has("9709-2023-2025-S4")).toBe(true);
+    expect(store.nodes.has("9709-S1")).toBe(false);
 
-    // the sibling bank: the pre-repair law refused here ("already exists
-    // with different provenance") — the delta-tolerant reuse reuses the
-    // shared rows and seeds the bank's own component-scoped tree
+    // the sibling bank: joins the shared version-scoped root ONLY — its own
+    // UNIT comes from its own official tail (T1), never the first bank's node
     const second = await seedBundleCurriculum(seedDeps(store), pure1, src("cie-a-level-maths-20-pure-1"), ACTIVATOR);
-    expect(second.nodesReused).toBe(2); // 9709 + 9709-S1
-    expect(second.nodesCreated).toBe(pure1.nodes.length - 2);
-    expect(second.edgesReused).toBe(1); // 9709-S1 -> 9709
-    expect(second.edgesCreated).toBe(pure1.edges.length - 1);
+    expect(second.nodesReused).toBe(1); // 9709-2023-2025 (the root)
+    expect(second.nodesCreated).toBe(pure1.nodes.length - 1);
+    expect(second.edgesReused).toBe(0);
+    expect(second.edgesCreated).toBe(pure1.edges.length);
     expect(second.alreadyActive).toBe(false);
+    // the sibling's own tail-based UNIT, disjoint from mechanics'
+    expect(store.nodes.has("9709-2023-2025-S1")).toBe(true);
     // the shared root keeps the FIRST bank's provenance (never re-seeded over)
-    expect(store.nodes.get("9709")!.provenance).toBe(bundleProvenance(src("cie-a-level-maths-20-mechanics")));
-    // the bank's own tree is component-scoped and present
-    expect(store.nodes.has("9709-1.1.1")).toBe(true);
-    expect(store.nodes.has("9709-4.1.1")).toBe(true);
+    expect(store.nodes.get("9709-2023-2025")!.provenance).toBe(bundleProvenance(src("cie-a-level-maths-20-mechanics")));
+    // the banks' own trees are component-scoped and version-scoped
+    expect(store.nodes.has("9709-2023-2025-1.1.1")).toBe(true);
+    expect(store.nodes.has("9709-2023-2025-4.1.1")).toBe(true);
 
     // idempotency across BOTH banks on re-run (the structural no-op holds)
     const again = await seedBundleCurriculum(seedDeps(store), mechanics, src("cie-a-level-maths-20-mechanics"), ACTIVATOR);
@@ -909,25 +912,28 @@ describe("run-002 repair — the dbCode shape widenings (synthetic CIE mini-bund
     schema: "syllabai-demo.content-bundle/2.0",
   });
 
-  test("FOURTH shape: the letter-prefixed :SUB tail lands <spec>-S1-E1.1 verbatim (0580 core/extended law)", () => {
+  test("FOURTH shape: the letter-prefixed :SUB tail lands the tail-based UNIT + sub verbatim (optionA law)", () => {
     const b = miniBundle("cie-mini-letter", "X101", [
       CIEnode("SUBTOPIC", "X101-TE1:SUBE1.1", ["X101-TE1"], 1),
     ]);
     const mapped = mapBundleNodes(b, "prefix");
-    expect(mapped.get("X101-TE1:SUBE1.1")!.dbCode).toBe("X101-S1-E1.1");
+    // the optionA laws: the version-scoped namespace + the official -T tail
+    expect(mapped.get("X101-TE1")!.dbCode).toBe("X101-2025-2027-SE1");
+    expect(mapped.get("X101-TE1")!.nodeType).toBe("UNIT");
+    expect(mapped.get("X101-TE1:SUBE1.1")!.dbCode).toBe("X101-2025-2027-SE1-E1.1");
     expect(mapped.get("X101-TE1:SUBE1.1")!.nodeType).toBe("TOPIC");
   });
 
-  test("FIFTH shape: the letter-prefixed unit.seq SPEC_POINT lands <spec>-S1.001 verbatim (0500/0470/8021 law)", () => {
+  test("FIFTH shape: the letter-prefixed unit.seq SPEC_POINT lands <ns>-S1.001 verbatim (0500/0470/8021 law)", () => {
     const b = miniBundle("cie-mini-sp", "X102", [
       CIEnode("SUBTOPIC", "X102-TE1:SUB_", ["X102-TE1"], 1),
       CIEnode("SPEC_POINT", "S1.001", ["X102-TE1:SUB_"], 1),
       CIEnode("SPEC_POINT", "S1.002", ["X102-TE1:SUB_"], 2),
     ]);
     const mapped = mapBundleNodes(b, "prefix");
-    expect(mapped.get("S1.001")!.dbCode).toBe("X102-S1.001");
+    expect(mapped.get("S1.001")!.dbCode).toBe("X102-2025-2027-S1.001");
     expect(mapped.get("S1.001")!.nodeType).toBe("SPEC_POINT");
-    expect(mapped.get("S1.002")!.dbCode).toBe("X102-S1.002");
+    expect(mapped.get("S1.002")!.dbCode).toBe("X102-2025-2027-S1.002");
   });
 
   test("the widened shapes seed through the store law end-to-end and stay idempotent", async () => {
@@ -940,11 +946,13 @@ describe("run-002 repair — the dbCode shape widenings (synthetic CIE mini-bund
     // 1 subject + 1 unit + 1 topic + 1 spec point
     expect(summary.nodesCreated).toBe(4);
     expect(summary.edgesCreated).toBe(3);
-    expect(store.nodes.has("X103-S1-C1.1")).toBe(true);
-    expect(store.nodes.has("X103-S1.001")).toBe(true);
+    expect(store.nodes.has("X103-2025-2027-SE1-C1.1")).toBe(true);
+    expect(store.nodes.has("X103-2025-2027-S1.001")).toBe(true);
+    // the version-scoped root of record (the optionA namespace law)
+    expect(store.nodes.has("X103-2025-2027")).toBe(true);
     // the board-aware title rider: a Cambridge qualification carries the
     // board's own family name (never the Pearson string)
-    expect(store.nodes.get("X103")!.title).toBe("Mini (X103) (X103)");
+    expect(store.nodes.get("X103-2025-2027")!.title).toBe("Mini (X103) (X103)");
     const again = await seedBundleCurriculum(seedDeps(store), b, cieSource("cie-mini-seed"), ACTIVATOR);
     expect(again.nodesCreated).toBe(0);
     expect(again.alreadyActive).toBe(true);
@@ -955,5 +963,118 @@ describe("run-002 repair — the dbCode shape widenings (synthetic CIE mini-bund
     expect(mapped.get("igcse-physics-19")!.description).toBe(
       "Pearson Edexcel International GCSE (9-1) Physics (4PH1, 2017 specification)",
     );
+  });
+});
+
+describe("ruling A — the optionA identity laws (trace 1a15b161bf960249)", () => {
+  const load = (slug: string) =>
+    JSON.parse(
+      readFileSync(join(import.meta.dir, "../../../hub/content/" + slug + "/curriculum.json"), "utf8"),
+    ) as BundleCurriculum;
+
+  test("the tail-based UNIT law on the REAL fleet grammars (the of-record tails, fail-closed)", () => {
+    // 9709: six banks, one TOPIC each, official tails T1..T6 -> S1..S6 disjoint
+    expect(mapBundleNodes(load("cie-a-level-maths-20-pure-1"), "p").get("cie-a-level-maths-2023-2025-T1")!.dbCode).toBe("9709-2023-2025-S1");
+    expect(mapBundleNodes(load("cie-a-level-maths-20-pure-3"), "p").get("cie-a-level-maths-2023-2025-T3")!.dbCode).toBe("9709-2023-2025-S3");
+    expect(mapBundleNodes(load("cie-a-level-maths-20-mechanics"), "p").get("cie-a-level-maths-2023-2025-T4")!.dbCode).toBe("9709-2023-2025-S4");
+    // 0653: the component-scoped trio vocabularies -> SB/SC/SP (the order law collided all three)
+    expect(mapBundleNodes(load("cie-igcse-science-combined-science-23-biology"), "p").get("cie-igcse-science-combined-science-2023-2024-TB1")!.dbCode).toBe("0653-2023-2024-SB1");
+    expect(mapBundleNodes(load("cie-igcse-science-combined-science-23-chemistry"), "p").get("cie-igcse-science-combined-science-2023-2024-TC1")!.dbCode).toBe("0653-2023-2024-SC1");
+    expect(mapBundleNodes(load("cie-igcse-science-combined-science-23-physics"), "p").get("cie-igcse-science-combined-science-2023-2024-TP1")!.dbCode).toBe("0653-2023-2024-SP1");
+    // 0580: core/extended official C/E sections -> SC/SE disjoint
+    expect(mapBundleNodes(load("cie-igcse-maths-25-core"), "p").get("cie-igcse-maths-2025-2027-TC1")!.dbCode).toBe("0580-2025-2027-SC1");
+    expect(mapBundleNodes(load("cie-igcse-maths-25-extended"), "p").get("cie-igcse-maths-2025-2027-TE1")!.dbCode).toBe("0580-2025-2027-SE1");
+    // 0500: the syllabus's own S-prefixed sections land SS (mechanical, official)
+    expect(mapBundleNodes(load("cie-igcse-english-language-20"), "p").get("cie-igcse-english-language-2024-2026-TS1")!.dbCode).toBe("0500-2024-2026-SS1");
+    // 0452: plain digit tails
+    expect(mapBundleNodes(load("cie-igcse-accounting-21"), "p").get("cie-igcse-accounting-2023-2025-T1")!.dbCode).toBe("0452-2023-2025-S1");
+  });
+
+  test("the version-scoped namespace splits the cross-version pairs (the 0452 class)", () => {
+    // the SAME spec string under two bundle generations lands in TWO disjoint namespaces
+    const a21 = mapBundleNodes(load("cie-igcse-accounting-21"), "p");
+    const a25 = mapBundleNodes(load("cie-igcse-accounting-25"), "p");
+    expect(a21.get("cie-igcse-accounting-2023-2025-T1")!.dbCode).toBe("0452-2023-2025-S1");
+    expect(a25.get("cie-igcse-accounting-2027-2029-T1")!.dbCode).toBe("0452-2027-2029-S1");
+    // the version-scoped root carries the generation (the curriculumCode symmetry)
+    expect(a21.get("cie-igcse-accounting-21")!.dbCode).toBe("0452-2023-2025");
+    expect(a25.get("cie-igcse-accounting-25")!.dbCode).toBe("0452-2027-2029");
+  });
+
+  test("the sixth spec shape: the official trailing variant letter lands verbatim (the run-003 latent class)", () => {
+    // 462 points across 7 banks carry 'C4.1.1a' / 'P1.5.1b' — the pre-optionA
+    // law refused them mid-fleet; the optionA census caught the class
+    const core = mapBundleNodes(load("cie-igcse-maths-25-core"), "p");
+    expect(core.get("C4.1.1a")!.dbCode).toBe("0580-2025-2027-C4.1.1a");
+    expect(core.get("C4.1.1a")!.nodeType).toBe("SPEC_POINT");
+    const phys = mapBundleNodes(load("cie-igcse-science-combined-science-23-physics"), "p");
+    expect(phys.get("P3.3.1a")!.dbCode).toBe("0653-2023-2024-P3.3.1a");
+  });
+
+  test("a CIE TOPIC without the official -T tail refuses (never derive a UNIT identity from order)", () => {
+    const b = load("cie-a-level-maths-20-pure-1");
+    const drifted = {
+      ...b,
+      nodes: b.nodes.map((n) =>
+        n.family === "TOPIC" ? { ...n, code: "cie-a-level-maths-2023-2025-SECTION-ONE" } : n,
+      ),
+    } as BundleCurriculum;
+    expect(() => mapBundleNodes(drifted, "p")).toThrow(/does not carry the official -T tail/);
+  });
+
+  test("the title-drift refusal: a shared dbCode whose titles disagree is tree drift (honest red)", async () => {
+    const mk = (slug: string, subject: string) => ({
+      board: "Cambridge International",
+      level: "IGCSE",
+      subject,
+      code: "X900",
+      syllabusVersion: "2025-2027",
+      nodes: [
+        { family: "SUBJECT", code: slug, title: subject + " (X900)", description: null, parents: [], provenanceTier: "RULE_DERIVED", order: 1, applicability: null },
+        { family: "TOPIC", code: "X900-TE1", title: "Number", description: null, parents: [slug], provenanceTier: "RULE_DERIVED", order: 1, applicability: null },
+      ],
+      edges: [
+        { source: slug, target: "X900-TE1", relation: "PART_OF", provenanceTier: "RULE_DERIVED" },
+      ],
+    }) as BundleCurriculum;
+    const src = (slug: string) => ({
+      slug, importRepo: "SyllabAI/syllabai-resources",
+      importRef: "0fe5f77210f74aaeb3f6c491dfe0263d12db738c",
+      schema: "syllabai-demo.content-bundle/2.0",
+    });
+    const store = newStore();
+    await seedBundleCurriculum(seedDeps(store), mk("cie-mini-a", "Alpha"), src("cie-mini-a"), ACTIVATOR);
+    // the sibling bank: same code + same version -> the same version-scoped
+    // root dbCode, but the subject name (and the mapped root title) differs
+    // — the pre-optionA law absorbed this silently; the optionA law refuses
+    expect(() =>
+      seedBundleCurriculum(seedDeps(store), mk("cie-mini-b", "Beta"), src("cie-mini-b"), ACTIVATOR),
+    ).toThrow(/tree drift on a shared code/);
+  });
+
+  test("the title-drift refusal holds on the same-bundle re-run path too (store-side drift is drift)", async () => {
+    const b = load("cie-a-level-maths-20-pure-1");
+    const src = {
+      slug: "cie-a-level-maths-20-pure-1", importRepo: "SyllabAI/syllabai-resources",
+      importRef: "0fe5f77210f74aaeb3f6c491dfe0263d12db738c",
+      schema: "syllabai-demo.content-bundle/2.0",
+    };
+    const store = newStore();
+    await seedBundleCurriculum(seedDeps(store), b, src, ACTIVATOR);
+    // a hand-edit under the shared root's code: the re-run refuses (the G3/G5
+    // receipt-keyed manual resolution is the only path, never a re-seed over it)
+    const root = store.nodes.get("9709-2023-2025")!;
+    root.title = "Hand-edited title";
+    expect(() => seedBundleCurriculum(seedDeps(store), b, src, ACTIVATOR)).toThrow(/tree drift on a shared code/);
+  });
+
+  test("the Edexcel path stays byte-identical under the optionA gate (the order-based UNIT law, the plain namespace)", () => {
+    const mapped = mapBundleNodes(bundle, "4PH1 official specification structure");
+    expect(mapped.get("igcse-physics-19")!.dbCode).toBe("4PH1");
+    const unit = [...mapped.values()].find((m) => m.nodeType === "UNIT")!;
+    expect(unit.dbCode).toBe("4PH1-S1");
+    const spec = [...mapped.values()].find((m) => m.nodeType === "SPEC_POINT")!;
+    expect(spec.dbCode.startsWith("4PH1-")).toBe(true);
+    expect(spec.dbCode.includes("2017")).toBe(false);
   });
 });
