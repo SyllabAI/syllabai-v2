@@ -9446,3 +9446,19 @@ Stage Summary:
 - Residuals of record: 20 withheld papers (archive-incomplete manifests, pre-2020 QPs without totals prose, 12 strict-gate divergences incl. mislabeled-QP archive defects — a later pass rides the parallel 4MB1 parse-lane grammar findings); 295-doc backfill queue; 13 disclosed QP-vs-MS print discrepancies (QP totals authoritative); spec_codes NULL on maths chunks (honest absence).
 - Secrets T138_PROD_DATABASE_URL + T138_GEMINI_KEY stay staged until the queue drains (hygiene-delete after the LAST tranche — disclosed).
 - The unpinned-ask resolveActive degradation (PP-CORPUS finding) remains operator-keyed, untouched.
+
+---
+Task ID: R0-AUTO-20261020-1215 (Job 438940, sweep 12:00Z)
+Agent: R0-auto (merge-desk integrator, cron)
+Task: PERIODIC SWEEP 2026-10-20 12:00Z — merge PR #214 (T-SPECS hub(cie) CIE lanes unlock + exam-series calendar band r1c).
+
+Work Log:
+- ESCALATION #3 RESOLVED this sweep: t-mig-138-intake on 246572d completed/success TWICE (10:52:38Z + confirmation re-run 11:42:56Z) — the 110-paper COW apply lane settled of record; main red condition cleared
+- PR #214 gates: (a) real head 2758144 verified vs PR JSON; (b) head CI check-runs 3/3 success (verify/hub/Vercel Preview Comments) + Actions ci success — the red Vercel deploy STATUS on head is the environmental incident adjudicated of record by T-SPECS-CIE-CONSUME-1 ADDENDUM 2 (content-independent, prod serves 16c40fb0, operator-keyed), not a merge-desk blocker; (c) intake rounds: round-1 merge origin/main 246572d -> 1512fd4 CLEAN (zero conflicts); main advanced mid-flight (c58c6f5 receipt) -> round-2 merge -> ONE worklog-only conflict resolved via append-only chronological union resolver (scripts/r0-worklog-union.py rebuilt this sweep; ours-first union, byte checks: 31 side-lines preserved byte-exact, 513 sections, no marker residue, 1,825,503 bytes intact) -> fc87d27; zero CODE conflicts both rounds; (d) reviews 0 / comments 0 holds; (e) diff 16 files all in-boundary (apps/api 3, apps/hub 8, packages/contracts 3, .syllabai 2), zero *.java, zero core/hub-repo content, zero Neon/prod writes; (f) gates on merge tree: bun install --frozen-lockfile 930 pkgs, bun run typecheck clean (4 pkgs), bun test apps/api packages 2262 pass / 13 skip / 0 fail, bun golden/runner.ts --selftest OK
+- MERGED: PR #214 -> merge sha 4c50bd0 (PUT merge_method=merge); main tip CI verified: verify SUCCESS + hub SUCCESS + ci SUCCESS (t-mig-138-intake correctly path-skipped)
+- Pushes: 2758144->1512fd4->fc87d27 on cie-frontend/r1, normal pushes, no force; this receipt = .syllabai-only bookkeeping commit
+
+Stage Summary:
+- PR #214 of record merged (the CIE lanes now carry the exam-series calendar: contracts widened per its own widening law, api board-owning read, hub gate flipped of record, honestly-empty Cambridge calendar until a measured dataset imports)
+- Standing watch items: Vercel deploy incident still open operator-keyed (ALL deploys incl. this receipt's will fail until fixed — content exonerated); 81cf468 neon-replay ESCALATION #2 still un-triaged; PAT rotation still CRITICAL overdue
+- fetch-first, no force; bookkeeping-only commit (.syllabai/** only)
