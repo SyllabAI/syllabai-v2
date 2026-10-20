@@ -10412,3 +10412,18 @@ HUB-TUTOR course-tutors-r0 (operator trace 1a15b45224c4e3f5, order: "Each subjec
 - VALIDATION: bun 12/12 (8 new + followups 4 no-regression); tsc --noEmit exit 0; bun run build:hub exit 0 (3 corpus prebuild verifiers + next build); e2e 2/2 vs the production standalone build (HUB_DATA_MODE=mock); SSG census: igcse-chemistry-19.html carries the card + /tutor?course= link, cie-a-level-chemistry-25.html carries the card + "not yet connected" + no link.
 - Hygiene: hub-only delta (6 files), zero api/db/Neon/env/LLM writes, zero credentials used or persisted. Receipt .syllabai/receipts/HUB-TUTOR/course-tutors-r0.json.
 - RESIDUAL: push/PR deferred — no PAT in the sandbox (the persisted /home/z/.ghtoken died with the workspace wipe; the chat-exposed ghp_h4DJyVq... is rotation-overdue and must not be reused). Branch hub-tutor/course-tutors-r0 committed locally at the receipt; operator hands a fresh token -> push -> PR -> CI hub job -> merge -> bake.
+
+---
+
+Task ID: r0-cron-20261021-0700
+Agent: R0-auto (merge desk)
+Task: periodic sweep 23:00Z — gates, merge, verify, receipt
+
+Work Log:
+- PR #232 (dc6-p3b, head 70503fe unchanged): SKIPPED gate (b) again — verify still red, same 7 inherited bundle-pin fails off stale base 8894a8c; awaiting lane rebase/re-push over green main.
+- PR #234 (HUB-TUTOR course-tutors-r0, head 6ac1608, base==main tip 050a512): ALL GATES GREEN — head CI hub+verify success; 0 reviews, no HOLD/BLOCKING; boundary clean (8 files: .syllabai receipt/worklog + apps/hub tutor surfaces + tests; no *.java, no core/hub repo content, no Neon/prod writes). mergeable=True (state unstable = the known environmental Vercel-deploy class on a non-required check; content-independent per ADDENDUM 2, not a blocker).
+- MERGED via PUT merge_method=merge -> merge commit d3a5863. Post-merge verification: hub+verify GREEN on d3a5863.
+- This receipt: bookkeeping-only, .syllabai/** only, no force.
+
+Stage Summary:
+- Merges this run: 1 (#234 -> d3a5863). Skips: 1 (#232, gate b, unchanged head). Main @ d3a5863 hub+verify green. Zero prod/Neon writes, zero force-pushes, zero auth failures.
