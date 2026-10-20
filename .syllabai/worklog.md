@@ -9908,3 +9908,22 @@ Work Log:
 Stage Summary:
 - The registry fill of record: 5/94 rows now mapped (4CH1-2017, 4MA1-2016 x2, 4MB1-2016, 4PH1-2017); the tutor page lights for Physics (4PH1) deterministically for ALL learners — no footprint dependency, the exact-ACTIVE-CODE path (scope.ts resolveForCourse) — while the 89 remaining rows keep the honest gate with their unlock conditions receipt-named (CIE: a GREEN phase-4 prod-apply run; IAL/Edexcel: their own seeding lanes, none of record today).
 - Receipt: .syllabai/receipts/HUB-REGISTRY/fill-4ph1-run-001-r0.json; PR + self-merge on green per lane precedent; standing residuals unchanged (LLM chain budget watch, PAT rotation overdue).
+
+---
+Task ID: CIE-INTEGRATION phase-4 prod-apply run-002 (follow-up to trace 1a15a5bb18840ac5, r0)
+Agent: r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: the two-act prod apply — run 002 of the gate dispatch after the run-001 resolveMode fix (the follow-up-commit law).
+
+Work Log:
+- PR #222 merged of record (cd71d56; head CI 4/4 green; fresh-based on 264e038 with the worklog append-only union — theirs-verbatim-first, one conflict block, zero markers); main tip CI verified GREEN (verify + hub + ci).
+- RUN-002 FIRED: dispatched cie-phase4-db-plane mode=cow+prod (HTTP 204; run 39472595952, 18:11:36Z).
+- The PR #221 credential amendment PROVEN end-to-end: the prod-credential resolution (CIE4 || T138 of record) passed the precondition, the fleet CONNECTED to the COW, values masked in all logs.
+- The fleet RAN ~9 min (the run-001 arg-parse defect is dead) and went HONEST RED 42/45: {realApplied:0, stubsSeeded:2, skeletonsSkipped:1, failures:42, questionsIngested:0}. FIVE defect classes, counts sum EXACT: (1) tx-seam x16 — this.sql.transaction is not a function (the disclosed tx-as-SqlFn seam compromise fails at runtime on the real ingest path); (2) SUBTOPIC dbCode law x11 — TC1:SUBC1.1 placeholder-unit shapes rejected by the seed's code law; (3) SPEC_POINT numeric-code law x5 — S1.001 English/history code shapes rejected; (4) provenance conflict x7 — the shared-code matrix (9709 x5 etc.): the first bank's seed persists shared subject nodes under ITS provenance, siblings' resolve-or-create refuses (the G2 drift guard doing its job); (5) asset missing x3 — chemistry-25 references an uncommitted diagram asset (fail-closed asset law held).
+- THE 134c GUARD PROVEN AS DESIGNED: every defect caught on the DISPOSABLE COW; prod-apply SKIPPED; production roles untouched; the always() DROP ran — post-delete GET = 404, zero residue; zero prod-db writes across BOTH runs.
+- ESCALATION of record (AGENT_COORDINATION §6.1, blocked-by-code): the fleet needs a REPAIR PROGRAM before any prod apply — 2 orchestrator-level fixes (tx-seam shim; shared-code fleet ordering) + 2 frozen-instrument seed-law widenings (dbCode shapes; provenance keying) + 1 bundle data repair (the chemistry-25 asset), each with pins + gates. The frozen-instrument changes need the seed lane's discipline.
+- Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-phase4-prod-apply-run-002-r0.json.
+
+Stage Summary:
+- The operator's two acts are EXECUTED OF RECORD: (1) the prod-credential path landed (PR #221, proven on the live gate); (2) the gate fired twice (runs 39470460696 + 39472595952) with production untouched and the guard holding verbatim.
+- The phase-4 FLEET itself is honest-red on 5 real defect classes the offline build validation could not see — exactly what the COW-proof stage exists to catch. Repair program scoped in the run-002 receipt; prod apply stays blocked until the fleet is green on the COW. Operator decision: authorize the repair program or re-route.
+- fetch-first, no force; receipts PR (.syllabai-only); zero prod writes.
