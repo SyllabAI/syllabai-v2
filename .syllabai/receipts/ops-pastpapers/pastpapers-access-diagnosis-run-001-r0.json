@@ -1,0 +1,57 @@
+{
+  "task": "ops-pastpapers-access-diagnosis",
+  "operator_trace": "1a159cda26039725",
+  "agent": "r0 (zai-web session web-752465e5, chat dd7e60e9)",
+  "date": "2026-10-20",
+  "report": "Operator report: past papers not accessible at https://syllabai-hub-v2.vercel.app/courses/igcse-maths-b-16; syllabai-pastpapers repo holds the papers.",
+  "verdict": "NOT REPRODUCIBLE — LIVE GREEN. Full chain verified healthy end-to-end at diagnosis time; no app-level defect found for igcse-maths-b-16.",
+  "zero_llm": true,
+  "zero_db_write": true,
+  "method": "unauth GET/HEAD wire probes + headless-browser (agent-browser) user-path walk; fetch-first (workspace rebuilt from origin; PAT never written to disk, remote URL scrubbed post-clone)",
+  "evidence": {
+    "repo_state": {
+      "syllabai_v2_tip_at_diagnosis": "2c28a42",
+      "pastpapers_repo": "public (visibility public, default branch main, ~4.3GB), PAT not required for raw reads",
+      "corpus_index_of_record": "apps/hub/src/data/pastpapers-index.json generatedAt 2026-10-19T11:37:07.616Z, 108 specs (fresh, committed)"
+    },
+    "index_coverage": {
+      "live_index_sessions": 35,
+      "live_index_paper_dirs": 117,
+      "repo_session_dirs": "4mb0: 15 sessions + 4mb1: 20 sessions = 35 — EXACT match with live index",
+      "sessions_span": "2011-06 .. 2026-06 + specimen"
+    },
+    "wire_probes": {
+      "course_page": 200,
+      "past_papers_index": "200, 457 view links",
+      "view_routes": "200 with pdf.js viewer SSR (2011-06/4MB0-01 qp/ms/split)",
+      "api_corpus_pdf_proxy": "200 application/pdf immutable-cached (known-good file 114059B)",
+      "raw_githubusercontent_unauth": "200 (repo public)",
+      "batch_proxy_probe": "28/28 x 200 across 2011-06/2013-06(qp+ms, R variants)/2019-01(4 legs)/2021-06/2023-06, bytes plausible (114KB-993KB), all sub-2.2s"
+    },
+    "headless_browser_walk": {
+      "index_page": "renders 35 session sections, zero page errors, zero console errors",
+      "user_path": "course page -> sidebar Past Papers -> index -> Question Paper click -> viewer",
+      "viewer": "pdf.js mounts; /api/corpus-pdf fetch 200 x2; June 2026 4MB1/01 renders 24 pages with pager/zoom/tabs; old-spec 4MB0/01 (2011-06) also renders 200",
+      "interactive_chip": "maths-b has zero playable matches (honest 'not parsed yet' chips, no links) — expected",
+      "global_routes": "/past-papers archive 200; legacy [paperKey] routes 200"
+    },
+    "architecture_noted": "viewer fetches PDFs same-origin via /api/corpus-pdf/[...path] (edge-cached, immutable); the 'Open or download' button targets raw.githubusercontent.com directly; CSP connect-src allows self + raw.githubusercontent.com + syllabai-v2.vercel.app"
+  },
+  "probable_causes_ranked": [
+    "transient redeploy window (hub redeployed multiple times around the report: CIE catalog wave ed4fab2, function-bundle slimming 94dd75f; a mid-deploy attempt can 404 chunks briefly)",
+    "client-side network/extension filtering (same-origin /api/corpus-pdf fetch blocked by ad-block/privacy extensions or network filters; 'Open or download' hits raw.githubusercontent.com which some networks block; *.vercel.app blocked on some ISPs)",
+    "stale client cache after a redeploy (old chunks; hard-refresh clears)",
+    "signed-in-student code path variant (diagnosis ran anonymous; no auth gate found in code, disclosed as untested)"
+  ],
+  "operator_selfcheck": [
+    "hard refresh (Ctrl+Shift+R) or incognito on /courses/igcse-maths-b-16/past-papers",
+    "open https://raw.githubusercontent.com/SyllabAI/syllabai-pastpapers/main/past-papers/pearson-edexcel/international-gcse/mathematics-b/4mb1/past-papers/2026-06/4MB1-01/qp.pdf directly — if it fails, network blocks GitHub raw",
+    "check browser console for blocked requests on the view page"
+  ],
+  "side_discoveries": [
+    "T-MIG-134d already discharged of record by the r0 lane in the inter-session window (battery-134d-run-002-r0.json, commit dce1567; tool-results/T-MIG-134/134d-battery-run-002-disclosed.json + run-003.json at tip) — the r0-lane queued 134d item is CLOSED, no re-run needed",
+    "maths-b interactive reconstructions: zero playable matches (all 'not parsed yet' chips) — expected per 134e-dormancy pattern",
+    "hub production deployment metadata API (v6/deployments with vcp token) returned 404 not_found for the hub project — Vercel metadata lane not available this session (disclosed)"
+  ],
+  "bookkeeping": "receipt + worklog append only (.syllabai); fetch-first, no force; zero Neon/LLM/prod-db contact"
+}

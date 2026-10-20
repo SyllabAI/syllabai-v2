@@ -9577,3 +9577,24 @@ Work Log:
 
 Stage Summary:
 - STORAGE PURGE DISCHARGED of record: 16/16 guarded manifest deletions, alias holder + rollback depth preserved (3 slimmed prod), battery 11/11. Standing: PAT rotation OVERDUE; stale CORS entry (identity/config.ts:60) cleanup candidate; Smart Mark audit + wave-3 parked. Zero prod-db/Neon/LLM contact, no force.
+
+---
+Task ID: trace 1a159cda26039725 (ops-pastpapers-access-diagnosis)
+Agent: r0 (zai-web session web-752465e5, chat dd7e60e9)
+Task: operator report — past papers not accessible at /courses/igcse-maths-b-16; syllabai-pastpapers repo holds the papers
+
+Work Log:
+- fetch-first: /tmp workspace was reset between sessions — re-cloned from origin (tip 2c28a42); remote URL scrubbed post-clone (no credential in .git/config); pastpapers repo NOT cloned (4.3GB) — GitHub API trees used instead
+- Live wire census (zero LLM, GET/HEAD only): course page 200; past-papers index 200 with 457 view links across 35 sessions (2011-06 .. 2026-06 + specimen); session/paper-dir set EXACT-matches the repo tree (4mb0: 15 + 4mb1: 20)
+- Root-cause candidates eliminated one by one of record: repo is PUBLIC (raw 200 unauth); the viewer does NOT hotlink raw — it fetches same-origin /api/corpus-pdf/[...path] (edge-cached immutable); proxy probe 200 application/pdf; batch probe 28/28 x 200 across old/new spec + R variants + qp/ms (114KB-993KB, sub-2.2s); committed corpus index FRESH (pastpapers-index.json generatedAt 2026-10-19, 108 specs)
+- Headless-browser user-path walk (agent-browser): course page -> sidebar Past Papers -> index (35 sections, zero JS errors) -> Question Paper click -> pdf.js viewer mounts and renders June 2026 4MB1/01 (24 pages) AND old-spec 2011 4MB0/01; network log shows /api/corpus-pdf fetches 200; global /past-papers archive 200; legacy [paperKey] routes 200
+- VERDICT: NOT REPRODUCIBLE — the past-papers surface is LIVE GREEN end-to-end at diagnosis time; no app-level defect found
+- Probable causes ranked (of record, not asserted): transient redeploy window (ed4fab2 CIE wave + 94dd75f bundle-slimming redeploys around the report); client-side extension/network filtering (same-origin fetch or *.vercel.app or raw.githubusercontent for the download button); stale cached chunks (hard-refresh clears); signed-in-student path variant untested (diagnosis ran anonymous, no auth gate found in code)
+- Side discovery: T-MIG-134d already discharged of record by the r0 lane inter-session (battery-134d-run-002-r0.json, dce1567; tool-results/T-MIG-134/134d-battery-run-002-disclosed.json + run-003.json at tip) — the queued 134d item is CLOSED, no re-run
+- Vercel metadata lane unavailable (v6/deployments 404 not_found for the hub project with the vcp token) — disclosed
+- Receipt: .syllabai/receipts/ops-pastpapers/pastpapers-access-diagnosis-run-001-r0.json
+
+Stage Summary:
+- No code change needed — production verified healthy (index + viewer + proxy + source + repo all green); operator self-check list recorded in the receipt
+- 134d queue item closed of record; open surface remains 134e (physics books, operator gate)
+- Write ledger: .syllabai receipt + this worklog only; zero Neon/LLM/prod-db contact; fetch-first, no force
