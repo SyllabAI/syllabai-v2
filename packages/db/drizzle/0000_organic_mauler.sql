@@ -1,6 +1,4 @@
--- Current sql file was generated after introspecting the database
--- If you want to run this migration please uncomment this code before executing migrations
-/*
+CREATE EXTENSION IF NOT EXISTS "vector";--> statement-breakpoint
 CREATE TABLE "prompt_versions" (
 	"id" uuid PRIMARY KEY NOT NULL,
 	"registry_key" varchar(60) NOT NULL,
@@ -411,7 +409,7 @@ CREATE TABLE "intervention_run_step" (
 );
 --> statement-breakpoint
 CREATE TABLE "flyway_schema_history" (
-	"installed_rank" integer PRIMARY KEY NOT NULL,
+	"installed_rank" integer CONSTRAINT "flyway_schema_history_pk" PRIMARY KEY NOT NULL,
 	"version" varchar(50),
 	"description" varchar(200) NOT NULL,
 	"type" varchar(20) NOT NULL,
@@ -1021,7 +1019,7 @@ CREATE INDEX "ix_nv_learner_note" ON "note_votes" USING btree ("learner_id" uuid
 CREATE INDEX "ix_nv_learner_recent" ON "note_votes" USING btree ("learner_id" uuid_ops,"occurred_at" timestamptz_ops);--> statement-breakpoint
 CREATE INDEX "idx_tutor_sessions_learner_active" ON "tutor_sessions" USING btree ("learner_id" uuid_ops,"last_active_at" timestamptz_ops);--> statement-breakpoint
 CREATE INDEX "ix_class_teacher" ON "classes" USING btree ("teacher_id" uuid_ops);--> statement-breakpoint
-CREATE UNIQUE INDEX "ux_class_teacher_course_name" ON "classes" USING btree (teacher_id text_ops,course_slug text_ops,lower((name)::text) text_ops) WHERE ((status)::text = 'ACTIVE'::text);--> statement-breakpoint
+CREATE UNIQUE INDEX "ux_class_teacher_course_name" ON "classes" USING btree (teacher_id uuid_ops,course_slug text_ops,lower((name)::text) text_ops) WHERE ((status)::text = 'ACTIVE'::text);--> statement-breakpoint
 CREATE INDEX "ix_cmember_student" ON "class_members" USING btree ("student_id" uuid_ops);--> statement-breakpoint
 CREATE INDEX "ix_ann_class_recent" ON "announcements" USING btree ("class_id" uuid_ops,"created_at" timestamptz_ops);--> statement-breakpoint
 CREATE INDEX "ix_as_class" ON "assignments" USING btree ("class_id" uuid_ops);--> statement-breakpoint
@@ -1030,4 +1028,3 @@ CREATE INDEX "ix_as_teacher" ON "assignments" USING btree ("teacher_id" uuid_ops
 CREATE INDEX "ix_exam_series_lookup" ON "exam_series" USING btree ("board" text_ops,"qualification" text_ops,"published" bool_ops,"window_start" date_ops);--> statement-breakpoint
 CREATE INDEX "ix_learner_course_enrolment_series" ON "learner_course_enrolments" USING btree ("target_series_id" uuid_ops);--> statement-breakpoint
 CREATE INDEX "ix_tcov_event_point" ON "teaching_coverage_events" USING btree ("class_id" uuid_ops,"spec_point_node_id" uuid_ops,"created_at" timestamptz_ops);
-*/
