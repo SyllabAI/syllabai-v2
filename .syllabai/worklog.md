@@ -9246,3 +9246,17 @@ Work Log:
 
 Stage Summary:
 - The api-of-record carrier is LIVE at aef295d (dpl_ENEw3fhfz2NXdXfVP73DmZJpd8pd): T-MIG-137 bands 137a-c + the full merged wave are on the wire; hub already current; rollback anchor dpl_HphMddku (one-call re-alias, proven shape). Write ledger: the redeploy itself + 1 disclosed probe-learner register; zero env writes, zero DDL, zero LLM, zero Neon writes beyond the register. Open of record: 137d re-derivation (staged goods lost), then the Maths A live smoke learner-page arc rides it. Lane IDLE.
+
+---
+Task ID: "delete the t-mig-136/r7a ref" (post-merge branch cleanup)
+Agent: r7a lane (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c)
+Task: Operator trace 1a1581dc29f79c71 "delete the t-mig-136/r7a ref" — the ancestry-closing cleanup after the merge order landed as 1917a7f.
+
+Work Log:
+- SANDBOX ROLLBACK DISCLOSURE (zero of-record impact): between the merge order and this order the sandbox rolled back again — the gh_repos/syllabai-v2 clone and the lane's local worklog tail were wiped; of-record authority untouched on origin (the 1917a7f ancestry-closing merge, incl. the run-002 worklog restoration, all stand). Clone rebuilt --filter=blob:none from the surviving master-pack credential carrier (never printed).
+- fetch-first safety of record: origin/main advanced 1917a7f -> 0210b7d while the sandbox was down (19 commits: T-MIG-137 fired+merged via PR #207, CIE phase 2/3 + catalog PRs #208/#209/#210, hub dash PR #211, 133j spec-join, 134b/d batteries, an api-of-record redeploy run-009 receipt) — ZERO of them touch the T-MIG-136 paths; 1917a7f verified ancestor of origin/main; origin/main..origin/t-mig-136/r7a = 0 at delete time
+- DELETED of record: origin/t-mig-136/r7a (tip b4e1fd0) — [deleted] confirmed; ls-remote refs/heads/t-mig-136/* = 0; local remote-tracking ref pruned; the commits remain reachable through merge commit 1917a7f and GitHub retains PR #204's record
+- bookkeeping-only: zero code delta, zero prod writes, zero Neon, zero LLM; .syllabai-only, fetch-first, no force
+
+Stage Summary:
+- The T-MIG-136/r7a lane substrate is fully consolidated of record: b4e1fd0 merged (1917a7f), the run-002 worklog entry restored, the branch ref deleted; T-MIG-136 open queue unchanged (coreBridge declaration moot until questions exist; Maths B book source handoff + resources 4.75GB/5GB wall; standing PAT rotation)
