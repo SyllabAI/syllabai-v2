@@ -1,0 +1,37 @@
+{
+  "receipt": "cie-phase4-prod-apply-run-002-r0",
+  "family": "CIE-INTEGRATION",
+  "operatorTrace": "1a15993047a40809 + 1a15a5bb18840ac5",
+  "operatorOrder": "the two-act prod apply, act 2 = dispatch cie-phase4-db-plane mode=cow+prod (run 002 after the run-001 resolveMode fix)",
+  "agent": "r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "generatedUtc": "2026-10-20T18:40:00Z",
+  "phase": "4 of 6 — the DB-plane gate FIRED (run 002); the gate + guard PROVEN end-to-end; the FLEET honest-red on 5 defect classes",
+  "runOfRecord": {
+    "runId": 39472595952,
+    "workflow": "cie-phase4-db-plane.yml @ main cd71d56 (the PR #222 fix merge; run head 4535b5c)",
+    "mode": "cow+prod",
+    "dispatchedAt": "2026-10-20T18:11:36Z",
+    "conclusion": "FAILURE (cow-proof fleet honest-red; prod-apply correctly skipped) — THE 134c GUARD PROTOCOL PROVEN EXACTLY AS DESIGNED: every defect caught on the DISPOSABLE COW, zero production exposure",
+    "timeline": "18:14:57Z roster printed (CIE rows=45: real 40 / stubs 4 / skeletons 1); 18:15:55Z-18:23:46Z the fleet ran ~9min (the big seeds spent 30-60s each: chemistry-25 +484 nodes, physics-25 +405, igcse-chemistry-23 +314 before failing); 18:24:06Z fleet summary {selected:45, realApplied:0, stubsSeeded:2, skeletonsSkipped:1, failures:42, questionsIngested:0, partsIngested:0}; FLEET HONEST RED exit 1; 18:24:12Z the always() DROP: post-delete GET = 404 — zero residue",
+    "credentialVerdict": "the PR #221 amendment PROVEN: the prod-credential resolution (CIE4 || T138 of record) passed the precondition, the fleet CONNECTED to the COW (the branch-local owner uri), no value ever printed (logs show masked *** only)"
+  },
+  "defectCensusOfRecord": {
+    "method": "full job-log scan of the 42 ok=false [apply] lines (the fleet's own per-slug honest errors)",
+    "classes": [
+      {"class": "tx-seam", "count": 16, "signature": "this.sql.transaction is not a function (In 'this.sql.transaction(async (tx) => {')", "representatives": "cie-a-level-maths-20-mechanics (after nodes +29), cie-a-level-physics-25 (after +405), cie-igcse-chemistry-23 (after +314)", "reading": "the orchestrator's per-slug tx (postgres.js) is passed where the frozen ingest service expects a full Sql — a tx object has no .transaction (no nesting); the build receipt had disclosed the tx-as-SqlFn seam cast as a known compromise", "candidateFix": "orchestrator-level shim: give the service a this.sql whose .transaction(fn) flattens to fn(tx) — statements join the slug tx, per-slug isolation preserved; zero frozen-service edits"},
+      {"class": "SUBTOPIC dbCode law", "count": 11, "signature": "bundle SUBTOPIC <code> does not carry the :SUBx letter, dotted, or placeholder suffix", "representatives": "cie-igcse-maths-25-core/extended (0580), the 0973 double-award trio, the 0653 combined-science trio", "reading": "the seed's dbCode validation law (bundle-seed, the G2 band's 'three dbCode laws untouched') rejects the TC1:SUBC1.1 unit/section code shape used by the 2025-2027 placeholder-unit bundles", "candidateFix": "widen the dbCode law's accepted shapes for placeholder-unit bundles — FROZEN-INSTRUMENT change, needs the seed lane's discipline + test pins"},
+      {"class": "SPEC_POINT numeric-code law", "count": 5, "signature": "bundle SPEC_POINT S1.001 does not carry a numeric spec code", "representatives": "cie-as-english-general-paper-21 (stub, 8021), cie-igcse-english-language-20/25 (0500), cie-igcse-english-literature-21 (0475), cie-igcse-history-18 (0470)", "reading": "the S<unit>.<seq> code shape (letter-prefixed units) fails the numeric spec-code law — same family as the SUBTOPIC class, the English/history code vocabulary", "candidateFix": "same dbCode-law widening program"},
+      {"class": "provenance conflict", "count": 7, "signature": "knowledge node <code> already exists with different provenance ('bundle:<first-slug>...')", "representatives": "the 9709 siblings after mechanics seeded first (probability-and-statistics-1/2, pure-1/pure-3)", "reading": "the shared-code join matrix (9709 x5, 0973 x3, 0653 x3, 0580 x2...) — the first bank's seed persists the SHARED subject nodes under ITS provenance; the next bank's resolve-or-create refuses (the G2 drift-guard law refusing a provenance delta is doing its job)", "candidateFix": "the seed's provenance law must key SHARED-code nodes code-stably (per the build's own census intent), or the orchestrator must order the fleet so shared-code subjects seed once — FROZEN-INSTRUMENT territory, needs the seed lane"},
+      {"class": "asset missing", "count": 3, "signature": "referenced asset missing from package: 002-cis-and-trans-isomers-of-cr-nh3-4cl2-...", "representatives": "cie-a-level-chemistry-25 (after nodes +484), plus 2 sibling chemistry slugs", "reading": "a bundle diagram asset reference with no committed asset file — the fail-closed asset law held", "candidateFix": "data repair: locate the asset in the parse corpus / phase-2 build artifacts and land it in the bundle package (operator-keyed committed-data change)"}
+    ],
+    "succeeded": "2 honest-empty stubs seeded (seed-only, zero questions by design) + 1 catalog skeleton skipped honestly; 0 real banks applied; floors 0/19095q vs 19000 floor — NOT met, honestly reported",
+    "crossClassNote": "counts sum 16+11+5+7+3 = 42 EXACT"
+  },
+  "guardVerdict": {
+    "cowProofStage": "did exactly its job: the rollback-proof/disposable-branch stage caught 5 defect classes BEFORE any prod contact — the reason the 134c protocol exists",
+    "prodExposure": "ZERO — prod-apply job skipped (needs cow-proof); production roles untouched (the branch-local password reset pattern held); the only Neon mutation was the gate-owned COW create+drop pair, dropped + 404-verified both runs",
+    "honestRedLaw": "the fleet refused to fake floors, exit 1, per-slug errors verbatim in the receipt-able log; no silent tolerance anywhere"
+  },
+  "writeLedger": "ZERO prod-db writes (both runs); the COW received seed statements ONLY on the disposable branch (dropped + 404-verified); zero LLM; repo writes = the run-002 receipt + worklog (this PR)",
+  "nextAct": "ESCALATION of record (AGENT_COORDINATION §6.1 blocked-by-code): the phase-4 fleet needs a REPAIR PROGRAM before any prod apply — 2 orchestrator/shim-level fixes (tx seam; possibly fleet ordering) + 2 frozen-instrument seed-law widenings (dbCode shapes; provenance keying) + 1 data repair (the chemistry-25 asset) — each with its own pins + gates; the two operator acts remain EXECUTED of record (the credential path landed + the gate fired twice); the operator decides: authorize the repair program (lane continues) or re-route"
+}
