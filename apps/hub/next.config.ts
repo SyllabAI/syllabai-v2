@@ -85,6 +85,35 @@ const SECURITY_HEADERS = [
  */
 const nextConfig: NextConfig = {
   output: "standalone",
+  /**
+   * Bundle-offload band (operator order "offload the ~102MB corpus from hub
+   * function bundles"): the committed content/ (~185MB) + content-maps/
+   * (~36MB) trees were file-traced into EVERY function bundle that reaches
+   * lib/courses.ts (~35 functions) plus the kg/stats/bridge routes — 10.4GB
+   * of traced bytes across 68 routes at c455906, ≈2.04GB per deployed
+   * lambda set after zip compression. These excludes strip the corpus
+   * trees (and the public/corpus static copies the offload build step
+   * generates for the runtime fetch plane) out of every route's trace.
+   *
+   * Serving is preserved: prerendering happens in the build container where
+   * the trees exist on disk, and runtime reads heal to the same-origin
+   * static fetch plane in src/lib/corpus.ts (the files live under public/,
+   * uploaded once per deployment instead of once per function).
+   *
+   * Key semantics (Next 16 collect-build-traces.ts): keys are picomatch
+   * globs matched against each route, values are file globs resolved from
+   * the app root and matched against every traced file.
+   */
+  outputFileTracingExcludes: {
+    "/**": [
+      "./content/**",
+      "./content-maps/**",
+      "./public/corpus/**",
+      "./public/corpus-maps/**",
+      "./public/corpus-index.json",
+      "./public/kg/data/**",
+    ],
+  },
   async headers() {
     return [{ source: "/:path*", headers: SECURITY_HEADERS }];
   },

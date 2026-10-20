@@ -1,13 +1,15 @@
 import { NextResponse } from "next/server";
-import { readFileSync, existsSync } from "node:fs";
-import { join } from "node:path";
+import { loadContentJson, hasContentFile } from "@/lib/corpus";
 
 /**
  * GET /api/course-stats?slugs=a,b,c
  *
  * Lightweight per-course resource counts for the dashboard subject cards.
- * Reads the committed content bundles directly (defensive, no Zod) and
- * caches results in-process — the bundles are immutable between deploys.
+ * Reads the committed content bundles through lib/corpus.ts (defensive, no
+ * Zod) and caches results in-process — the bundles are immutable between
+ * deploys. Bundle-offload note (perf band): the old direct fs reads with
+ * `join(process.cwd(), "content", slug)` are what traced the whole corpus
+ * into this function's bundle on every deployment.
  */
 export const dynamic = "force-dynamic";
 
@@ -29,7 +31,7 @@ interface CourseStat {
   flashcards: number;
 }
 
-const cache = new Map<string, CourseStat>();
+const cache = new Map<string, Promise<CourseStat>>();
 
 function count(v: unknown): number {
   return Array.isArray(v) ? v.length : 0;
@@ -41,14 +43,14 @@ function questionsInSet(set: unknown): number {
   return Array.isArray(q) ? q.length : 0;
 }
 
-function statFor(slug: string): CourseStat {
+async function statFor(slug: string): Promise<CourseStat> {
   const cached = cache.get(slug);
   if (cached) return cached;
 
-  const base = join(process.cwd(), "content", slug);
+  const work = (async (): Promise<CourseStat> => {
   const stat: CourseStat = {
     slug,
-    hasBundle: existsSync(join(base, "manifest.json")),
+    hasBundle: await hasContentFile(`${slug}/manifest.json`),
     treeKind: null,
     topics: 0,
     notes: 0,
@@ -57,38 +59,36 @@ function statFor(slug: string): CourseStat {
     flashcards: 0,
   };
 
-  const safeRead = (file: string): unknown => {
-    try {
-      return JSON.parse(readFileSync(join(base, file), "utf-8"));
-    } catch {
-      return null;
-    }
-  };
+  const safeRead = (file: string) => loadContentJson(`${slug}/${file}`);
 
-  const manifest = safeRead("manifest.json") as { counts?: Record<string, unknown>; treeKind?: string } | null;
+  const manifest = (await safeRead("manifest.json")) as { counts?: Record<string, unknown>; treeKind?: string } | null;
   if (manifest?.treeKind) stat.treeKind = manifest.treeKind;
 
-  const curriculum = safeRead("curriculum.json") as { nodes?: Array<{ family?: string }> } | null;
+  const curriculum = (await safeRead("curriculum.json")) as { nodes?: Array<{ family?: string }> } | null;
   if (curriculum?.nodes) {
     stat.topics = curriculum.nodes.filter((n) => n?.family === "TOPIC").length;
   }
 
-  const notes = safeRead("notes.json");
+  const notes = await safeRead("notes.json");
   stat.notes = count(notes) || count((notes as { notes?: unknown[] } | null)?.notes);
 
-  const questions = safeRead("questions.json");
+  const questions = await safeRead("questions.json");
   const asArray = Array.isArray(questions) ? questions : (questions as { sets?: unknown[] } | null)?.sets;
   stat.questionSets = count(asArray);
   if (Array.isArray(asArray)) {
     stat.questions = asArray.reduce((a: number, s) => a + questionsInSet(s), 0);
   }
 
-  const flashcards = safeRead("flashcards.json");
+  const flashcards = await safeRead("flashcards.json");
   stat.flashcards =
     count(flashcards) || count((flashcards as { flashcards?: unknown[] } | null)?.flashcards);
 
-  cache.set(slug, stat);
   return stat;
+  })();
+
+  cache.set(slug, work);
+  work.catch(() => cache.delete(slug)); // don't pin a failed read forever
+  return work;
 }
 
 export async function GET(request: Request) {
@@ -100,7 +100,11 @@ export async function GET(request: Request) {
     .slice(0, 45);
 
   const stats: Record<string, CourseStat> = {};
-  for (const slug of slugs) stats[slug] = statFor(slug);
+  await Promise.all(
+    slugs.map(async (slug) => {
+      stats[slug] = await statFor(slug);
+    }),
+  );
 
   // Corpus counts are committed + immutable between deploys (ADR-021 perf
   // pass, tranche 4.12): CDN-cacheable with bounded staleness, SWR keeps

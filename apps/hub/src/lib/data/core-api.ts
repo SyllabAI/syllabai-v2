@@ -14,7 +14,10 @@
 import type { DemoDataProvider } from "./types";
 import { mockProvider } from "./mock";
 
-export const isCoreApiConfigured = () => Boolean(process.env.SYLLABAI_CORE_BASE_URL);
+// Bundle-offload note (perf band): isCoreApiConfigured moved to ./mode.ts
+// (import-free) so mode-only consumers don't reach this module — which
+// statically imports the mock provider fallback below.
+export { isCoreApiConfigured } from "./mode";
 
 export function coreBaseUrl(): string | null {
   const raw = process.env.SYLLABAI_CORE_BASE_URL;

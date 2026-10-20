@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3000 2>&1 | tee dev.log",
-    "build": "next build && cp -r .next/static .next/standalone/.next/ && cp -r public .next/standalone/",
-    "start": "NODE_ENV=production bun .next/standalone/server.js 2>&1 | tee server.log",
+    "build": "node scripts/build_corpus_static.mjs && next build && cp -r .next/static .next/standalone/apps/hub/.next/ && cp -r public .next/standalone/apps/hub/",
+    "start": "NODE_ENV=production HUB_CORPUS_STATIC_ORIGIN=http://127.0.0.1:3000 bun .next/standalone/apps/hub/server.js 2>&1 | tee server.log",
     "lint": "eslint .",
     "verify:corpus": "bun scripts/verify_corpus_23a.ts",
     "verify:flashcard-sync": "bun scripts/verify_flashcard_sync_courses.ts",

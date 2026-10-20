@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
-import { readFileSync, existsSync } from "node:fs";
-import { join } from "node:path";
 import { getCourseMeta, loadHubCourse } from "@/lib/courses";
+import { loadContentJson, loadContentMapJson, loadKgDataJson } from "@/lib/corpus";
 
 /**
  * GET /api/kg-learner-bridge?course=<slug>
@@ -109,14 +108,16 @@ interface LearnerBridgePayload {
 
 const cache = new Map<string, LearnerBridgePayload>();
 
-const safeRead = <T,>(path: string): T | null => {
-  if (!existsSync(path)) return null;
-  try {
-    return JSON.parse(readFileSync(path, "utf-8")) as T;
-  } catch {
-    return null;
-  }
-};
+/**
+ * Bundle-offload note (perf band): the direct fs reads (cwd/content,
+ * cwd/content-maps, cwd/public/kg/data with dynamic slug segments) made the
+ * Vercel file tracer include all three trees into this function's bundle.
+ * All reads now go through lib/corpus.ts (fs at build/dev, same-origin
+ * static fetch at runtime). Same null-on-missing contract as before.
+ */
+const safeReadContent = <T,>(rel: string): Promise<T | null> => loadContentJson<T>(rel);
+const safeReadMap = <T,>(rel: string): Promise<T | null> => loadContentMapJson<T>(rel);
+const safeReadKg = <T,>(rel: string): Promise<T | null> => loadKgDataJson<T>(rel);
 
 /** Flatten one content-map item's code refs to bare spine codes. */
 function itemCodes(item: MapItem | undefined): string[] {
@@ -137,14 +138,12 @@ export async function GET(request: Request) {
   const cached = cache.get(slug);
   if (cached) return NextResponse.json(cached);
 
-  const kg = safeRead<{
+  const kg = await safeReadKg<{
     points?: { id?: string; text?: string }[];
     meta?: { code?: string };
     /** subtopic key → spec point ids (tranche 4.4 flashcard anchor join) */
     pointSubtopics?: Record<string, string[]>;
-  }>(
-    join(process.cwd(), "public", "kg", "data", `${slug}.json`),
-  );
+  }>(`${slug}.json`);
   if (!kg || !Array.isArray(kg.points)) {
     return NextResponse.json(
       { error: `no exported kg data for ${slug}` },
@@ -167,8 +166,8 @@ export async function GET(request: Request) {
     specPointCodes?: string[];
   }
   // notes.json is a top-level array in current bundles; accept {notes:[]} too
-  const notesRaw = safeRead<NoteRef[] | { notes?: NoteRef[] }>(
-    join(process.cwd(), "content", slug, "notes.json"),
+  const notesRaw = await safeReadContent<NoteRef[] | { notes?: NoteRef[] }>(
+    `${slug}/notes.json`,
   );
   const noteList: NoteRef[] = Array.isArray(notesRaw)
     ? notesRaw
@@ -183,8 +182,8 @@ export async function GET(request: Request) {
 
   const questionCodes: Record<string, string[]> = {};
   const partParent: Record<string, string> = {};
-  const sets = safeRead<QuestionSet[] | { questions?: QuestionSet[] }>(
-    join(process.cwd(), "content", slug, "questions.json"),
+  const sets = await safeReadContent<QuestionSet[] | { questions?: QuestionSet[] }>(
+    `${slug}/questions.json`,
   );
   const setList: QuestionSet[] = Array.isArray(sets)
     ? sets
@@ -205,8 +204,8 @@ export async function GET(request: Request) {
   }
 
   const flashcardCodes: Record<string, string[]> = {};
-  const map = safeRead<{ items?: Record<string, MapItem> }>(
-    join(process.cwd(), "content-maps", `${slug}.json`),
+  const map = await safeReadMap<{ items?: Record<string, MapItem> }>(
+    `${slug}.json`,
   );
   const unmappedCards: string[] = [];
   for (const [id, item] of Object.entries(map?.items ?? {})) {
@@ -223,9 +222,9 @@ export async function GET(request: Request) {
   // bundles' slug-style deck codes ("1-1-formulae-and-equations") carry no
   // statement anchor and stay honestly unmapped rather than guessed.
   if (unmappedCards.length && codePrefix) {
-    const cardsRaw = safeRead<
+    const cardsRaw = await safeReadContent<
       { id?: string; subtopicCode?: string | null }[] | { flashcards?: { id?: string; subtopicCode?: string | null }[] }
-    >(join(process.cwd(), "content", slug, "flashcards.json"));
+    >(`${slug}/flashcards.json`);
     const cardList = Array.isArray(cardsRaw)
       ? cardsRaw
       : (cardsRaw?.flashcards ?? []);
@@ -274,11 +273,11 @@ export async function GET(request: Request) {
     disclaimer?: string;
     misconceptionStates?: SimState[];
   }
-  const graph = safeRead<{ nodes?: GraphNode[]; edges?: GraphEdge[] }>(
-    join(process.cwd(), "content", slug, "concept-graph.json"),
+  const graph = await safeReadContent<{ nodes?: GraphNode[]; edges?: GraphEdge[] }>(
+    `${slug}/concept-graph.json`,
   );
-  const sim = safeRead<SimLearner>(
-    join(process.cwd(), "content", slug, "learner-sim.json"),
+  const sim = await safeReadContent<SimLearner>(
+    `${slug}/learner-sim.json`,
   );
   const misNodes = new Map<string, GraphNode>();
   const conceptPoints = new Map<string, string[]>();

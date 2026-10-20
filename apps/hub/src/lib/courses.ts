@@ -12,9 +12,6 @@
  * courses without a local bundle never return invented data.
  */
 import "server-only";
-import { existsSync } from "node:fs";
-import { readFile } from "node:fs/promises";
-import path from "node:path";
 import { cache } from "react";
 import { z } from "zod";
 import {
@@ -35,7 +32,7 @@ import type {
   RevisionNote as RevisionNoteT,
   SimLearnerState as SimLearnerStateT,
 } from "@/lib/contracts";
-import { getDataProvider } from "@/lib/data";
+import { loadContentJson, hasContentFile } from "@/lib/corpus";
 
 const CourseRegistry = z.object({
   schema: z.string(),
@@ -114,7 +111,20 @@ export interface CourseBundle {
   simLearner: SimLearnerStateT;
 }
 
-const CONTENT_DIR = path.join(process.cwd(), "content");
+/**
+ * Bundle-offload note (perf band): the fs reads moved behind lib/corpus.ts
+ * (fs at build/dev, same-origin static fetch at runtime) — the old
+ * `path.join(process.cwd(), "content")` literals are exactly what made the
+ * Vercel file tracer copy the ~185MB corpus into every function bundle that
+ * reaches this module (~35 functions).
+ *
+ * The `getDataProvider` import also moved from the module top into the one
+ * branch that uses it, as a dynamic import: that branch needs a pilot slug
+ * WITHOUT a committed bundle, but pilotCourseSlug() only returns slugs whose
+ * bundle exists — so the branch is a near-unreachable last resort, while the
+ * static import dragged @/lib/data (→ data/mock.ts → seven compile-baked
+ * ~3.4MB of JSON) into every course lambda. Dead import, dropped.
+ */
 
 let registryCache: CourseMeta[] | null = null;
 
@@ -125,18 +135,21 @@ export async function listCourses(): Promise<CourseMeta[]> {
   // every consumer renders its honest empty state and the app stays up.
   let raw: unknown;
   try {
-    raw = JSON.parse(await readFile(path.join(CONTENT_DIR, "courses.json"), "utf8"));
+    // null (missing registry) → CourseRegistry.parse throws → empty registry
+    raw = await loadContentJson("courses.json");
   } catch (err) {
     console.error("[courses] registry unreadable — serving empty registry", err);
     registryCache = [];
     return registryCache;
   }
   const parsed = CourseRegistry.parse(raw);
-  registryCache = parsed.courses.map((c) => ({
-    ...c,
-    label: c.label ?? c.subject,
-    hasBundle: existsSync(path.join(CONTENT_DIR, c.slug, "manifest.json")),
-  }));
+  registryCache = await Promise.all(
+    parsed.courses.map(async (c) => ({
+      ...c,
+      label: c.label ?? c.subject,
+      hasBundle: await hasContentFile(`${c.slug}/manifest.json`),
+    })),
+  );
   return registryCache;
 }
 
@@ -166,8 +179,7 @@ export async function getCourseBundle(slug: string): Promise<CourseBundle | null
     return null;
   }
 
-  const dir = path.join(CONTENT_DIR, slug);
-  const read = (f: string) => readFile(path.join(dir, f), "utf8").then(JSON.parse);
+  const read = (f: string) => loadContentJson(`${slug}/${f}`);
 
   const [manifest, curriculum, conceptGraph, notes, questions, flashcards, learner] =
     await Promise.all([
@@ -179,6 +191,14 @@ export async function getCourseBundle(slug: string): Promise<CourseBundle | null
       read("flashcards.json"),
       read("learner-sim.json"),
     ]);
+
+  if (!manifest || !curriculum || !conceptGraph || !notes || !questions || !flashcards || !learner) {
+    // The registry says a bundle exists but one or more files did not
+    // resolve (fetch-plane miss). Old behavior: readFile threw and the
+    // route errored. Keep the honest failure instead of inventing content.
+    bundleCache.set(slug, null);
+    return null;
+  }
 
   const result = {
     meta,
@@ -257,7 +277,10 @@ export const loadHubCourse = cache(
     ({ notes, questionTopics, flashcards, curriculum } = bundle);
   } else if (slug === pilot) {
     // pilot without a committed bundle → provider seam (neon / core-api ladder);
-    // the demo provider corpus rides the official 4CH1 tree
+    // the demo provider corpus rides the official 4CH1 tree. Dynamic import:
+    // this branch is a near-unreachable last resort (see module note) and the
+    // static edge used to bake the mock corpus into every course lambda.
+    const { getDataProvider } = await import("@/lib/data");
     const provider = getDataProvider();
     [notes, questionTopics, flashcards, curriculum] = await Promise.all([
       provider.revisionNotes(),
