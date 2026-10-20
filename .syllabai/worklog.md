@@ -9959,3 +9959,15 @@ Stage Summary:
 - 133k: the course-page books ENTRY of record (operator trace 1a15a87407daa94d) — books per course is now on the course page
 - Standing watch unchanged: Vercel deploy environmental incident (operator-keyed); ESCALATION #2 (81cf468 neon-replay red) un-triaged; PAT rotation overdue
 - fetch-first, no force; bookkeeping-only commit (.syllabai/** only)
+
+---
+Task ID: T-MIG-133 band 133k (addendum — merge + live verification)
+Agent: r7a (Super Z, session web-da4ab8b1, chat 1f3003b6)
+
+Work Log:
+- One rebase race on PR #226 (main moved via PRs #224/#227): worklog union-merged (remote-first + the 133k entry), force-push, mergeable clean.
+- Merged by the R0-auto merge-desk (727ffe4); post-merge CI verify + hub 2/2 GREEN.
+- Hub auto-bake rode the push; LIVE VERIFICATION: /courses/igcse-chemistry-19 carries 'Student Book' x3 + 'Open the book' x2 + the /books href; /courses/igcse-physics-19 control = ZERO book links + the honest roadmap line; /courses/igcse-chemistry-19/books = 200 (the shelf the entry now reaches).
+
+Stage Summary:
+- The books ENTRY is LIVE on production: chemistry's course page links the VALIDATED student book shelf; every other course shows the honest roadmap variant. Band 133k CLOSED of record.
