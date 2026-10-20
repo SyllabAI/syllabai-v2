@@ -97,7 +97,12 @@ jobs:
   cow-proof:
     if: ${{ inputs.mode == 'cow+prod' || inputs.mode == '' || inputs.mode == 'cow-dry' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    # run-005 (39500034511) evidence: the HEALTHY fleet needs >60 min on the
+    # COW — the 60-min ceiling was never exercised while the fleet failed
+    # fast on the run-002 defect classes; at the optionA green it fired
+    # mid-fleet (the job-level timeout cancel does NOT trip the `cancelled()`
+    # guard below — the gate-hardening law: give the proof room to finish).
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
@@ -202,9 +207,14 @@ jobs:
 
   prod-apply:
     needs: cow-proof
-    if: ${{ !failure() && !cancelled() && (inputs.mode == 'cow+prod' || inputs.mode == '' || inputs.mode == 'prod-only') }}
+    # GATE-HARDENING LAW of record (run-005): the pre-231 guard
+    # `!failure() && !cancelled()` did NOT catch a JOB-LEVEL timeout cancel
+    # (needs.result = 'cancelled' trips neither failure() nor cancelled()) —
+    # the prod-apply started ungated when the COW fleet hit the ceiling. The
+    # only admission is an ALL-GREEN cow-proof, verbatim:
+    if: ${{ needs.cow-proof.result == 'success' && (inputs.mode == 'cow+prod' || inputs.mode == '' || inputs.mode == 'prod-only') }}
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
