@@ -16,6 +16,21 @@
 #     gemini-embedding-001 768-dim) against PRODUCTION for the given document
 #     row ids (from the prod-apply receipt artifact). REGION LAW: Gemini
 #     embedding egress works from GitHub Actions, never the sandbox.
+#     RUN-003 MULTI-KEY SHARD LAW (trace 1a1599bc2ebd45a9, operator-supplied
+#     4-key pool): the backfill job is a 4-way matrix — each shard takes a
+#     round-robin slice of the dispatched row list (order preserved, so the
+#     recency-first discipline holds globally) and runs the FROZEN executor
+#     against ITS OWN staged key (T138_GEMINI_KEY for shard 1, _2/_3/_4 for
+#     shards 2/3/4). Budget law: gemini-embedding-001 free tier = 100 RPM /
+#     1000 RPD PER KEY → the pool is 4x RPD (~4k vectors/day; the 295-doc
+#     queue drains in ~2 dispatch days instead of 8-9 single-key days).
+#     RPD-WALL HONESTY: on a row failure whose log carries 429, the shard
+#     records the row + every not-attempted remaining row into its
+#     skipped-rows artifact and exits 0 (the key's budget is drained — the
+#     next dispatch resumes them); a NON-rate failure exits 1 (honest red).
+#     T138_GEMINI_KEY is now operator key #1 — the app's own Vercel-env
+#     Gemini key no longer spends its RPD on backfills. Hygiene-delete of
+#     all four stays keyed to the LAST tranche (the 138c receipt law).
 #
 # The deterministic resolver anchors (bank/card/store) need ZERO embeddings —
 # the corpus serves paper asks the moment the rows land; the backfill fills
@@ -23,10 +38,9 @@
 #
 # OPERATOR GATE: workflow_dispatch ONLY — this runner is INERT until
 # dispatched (the dispatch = the operator's fire order per the 093/133b law).
-# Secrets of record: NEON_API_KEY (exists), T138_PROD_DATABASE_URL +
-# T138_GEMINI_KEY (staged per-run from the Vercel env API, hygiene-deleted
-# after the run completes). Vars of record: NEON_PROJECT_ID,
-# NEON_PARENT_BRANCH_ID (exist).
+# Secrets of record: NEON_API_KEY (exists), T138_PROD_DATABASE_URL (exists),
+# T138_GEMINI_KEY + T138_GEMINI_KEY_2/3/4 (the operator 4-key pool, run-003).
+# Vars of record: NEON_PROJECT_ID, NEON_PARENT_BRANCH_ID (exist).
 
 name: t-mig-138-intake
 
@@ -220,6 +234,10 @@ jobs:
     if: ${{ inputs.mode == 'backfill' }}
     runs-on: ubuntu-latest
     timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
@@ -227,23 +245,49 @@ jobs:
           bun-version: "1.2.23"
       - name: Install workspace deps
         run: bun install --frozen-lockfile
-      - name: Run the FROZEN backfill for the given rows
-        env:
-          SYLLABAI_EMBEDDING_GEMINI_API_KEY: ${{ secrets.T138_GEMINI_KEY }}
-          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+      - name: Shard the row list (round-robin, order preserved)
         run: |
           ROWS="${{ inputs.rows }}"
           [ -n "$ROWS" ] || { echo "no rows given"; exit 1; }
-          echo "$ROWS" | tr "," "\n" | while read -r ROW; do
+          printf '%s' "$ROWS" | tr "," "\n" > all-rows.txt
+          awk -v S=${{ matrix.shard }} -v N=4 'NF && (NR-1) % N == S-1' all-rows.txt > rows-shard.txt
+          echo "shard ${{ matrix.shard }} rows: $(wc -l < rows-shard.txt) / $(wc -l < all-rows.txt)"
+      - name: Run the FROZEN backfill for this shard (own key, RPD-wall honest)
+        env:
+          SYLLABAI_EMBEDDING_GEMINI_API_KEY: ${{ matrix.shard == 1 && secrets.T138_GEMINI_KEY || matrix.shard == 2 && secrets.T138_GEMINI_KEY_2 || matrix.shard == 3 && secrets.T138_GEMINI_KEY_3 || secrets.T138_GEMINI_KEY_4 }}
+          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+        run: |
+          set -o pipefail
+          SHARD=${{ matrix.shard }}
+          mapfile -t MINE < rows-shard.txt
+          TOTAL=${#MINE[@]}
+          DONE=0
+          WALL_HIT=0
+          : > skipped-rows-$SHARD.txt
+          for ROW in "${MINE[@]}"; do
             [ -n "$ROW" ] || continue
+            if [ "$WALL_HIT" = "1" ]; then echo "$ROW" >> skipped-rows-$SHARD.txt; continue; fi
             echo "embedding row $ROW"
-            bun scripts/t-mig-133d-backfill-exec.ts "$T138_PROD_DATABASE_URL" "$ROW" \
-              || { echo "row $ROW failed"; exit 1; }
+            if bun scripts/t-mig-133d-backfill-exec.ts "$T138_PROD_DATABASE_URL" "$ROW" 2>&1 | tee row-last.log; then
+              DONE=$((DONE+1))
+            else
+              if grep -q "429" row-last.log; then
+                WALL_HIT=1
+                echo "$ROW" >> skipped-rows-$SHARD.txt
+                echo "RPD/429 wall at row $ROW — key budget drained; remaining rows skipped honestly (not attempted)"
+              else
+                echo "row $ROW failed (non-rate) — honest red"; exit 1
+              fi
+            fi
           done
-      - name: Upload the backfill artifact
+          echo "shard=$SHARD total=$TOTAL embedded=$DONE wall=$WALL_HIT skipped=$((TOTAL-DONE))" | tee shard-summary-$SHARD.txt
+      - name: Upload the backfill artifact (shard-scoped)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: t138-backfill
-          path: backfill-last-result.json
+          name: t138-backfill-shard-${{ matrix.shard }}
+          path: |
+            backfill-last-result.json
+            shard-summary-${{ matrix.shard }}.txt
+            skipped-rows-${{ matrix.shard }}.txt
           if-no-files-found: ignore
