@@ -1,0 +1,4766 @@
+{
+ "schema": "syllabai.spec-anchors/1.0",
+ "course": "igcse-maths-b-16",
+ "generatedUtc": "2026-10-20T18:29:14Z",
+ "method": {
+  "class": "LLM anchoring pass — T-MIG-136 band 3b (operator-authorized, trace 1a15a45dca86c409)",
+  "model": "glm-4-plus (z-ai CLI)",
+  "law": "question-level classification onto the 98 SPEC_POINT alphabet, 1-3 codes primary-first; alphabet-restricted output; order-preserving dedupe; deterministic echo-normalization (full alphabet-line answers reduce to their leading official code); partial-salvage parsing for dropped items; one manual SME correction of record (qstn_XXTSjYWkhGXhVLOIgYEDj 1C->3J)",
+  "verification": "sampled model re-ask n=80: 72 completed, 72 agree / 0 corrections proposed (agree-if-plausible law, lenient by design); manual SME spot-check n=8: 7 clean, 1 primary miss corrected. Anchors are a refinable bundle artifact; per-part refinement reserved."
+ },
+ "counts": {
+  "questions": 1249,
+  "codesTotal": 2250,
+  "distinctCodesUsed": 91
+ },
+ "anchors": {
+  "qstn_106teTRO1dxnduCBS6YL1n": [
+   "2H",
+   "2D"
+  ],
+  "qstn_10xNnO2QkltpHbcse4Iv1D": [
+   "4L",
+   "4M",
+   "4N"
+  ],
+  "qstn_13mKx9LNLres1oxl9P69Ys": [
+   "4I",
+   "3H",
+   "3K"
+  ],
+  "qstn_14gGpkks0WqCCFEhKmeImg": [
+   "5B",
+   "5E"
+  ],
+  "qstn_1583zbUIUpdxoAVDhlilo0": [
+   "8B",
+   "8E"
+  ],
+  "qstn_15jukLvKTwazme8IDebeCK": [
+   "1B",
+   "1K"
+  ],
+  "qstn_15r1WO4B1yCXRfiqGc8klA": [
+   "9D",
+   "6K"
+  ],
+  "qstn_16K3yFchMbi0mN0P4wM4AZ": [
+   "3H",
+   "3I"
+  ],
+  "qstn_16WttTlj9g8FpTklRisNg": [
+   "9B",
+   "9C",
+   "9D"
+  ],
+  "qstn_16tqiWd7HAontGlzD8xlcp": [
+   "6J",
+   "6B"
+  ],
+  "qstn_17GKk1QzjctumCCV6Z2UeP": [
+   "3G",
+   "3H",
+   "3I"
+  ],
+  "qstn_17LLHPucK5JZxkBGvpbfHX": [
+   "4L",
+   "3G"
+  ],
+  "qstn_17ejxCM6KCnS8Y6100OaGX": [
+   "6F"
+  ],
+  "qstn_17tJo0d3lECmuFy2BXbxl0": [
+   "1G"
+  ],
+  "qstn_17xQU78Ktz7fqlnqvahLqp": [
+   "6D",
+   "7B",
+   "3A"
+  ],
+  "qstn_189cTXRt9yPY6A8kxsPhiN": [
+   "1F"
+  ],
+  "qstn_18L8dNmFlOJn0rFkDwmPKM": [
+   "1K"
+  ],
+  "qstn_19a8ULxGRCWnhDZIGMkGBU": [
+   "4I"
+  ],
+  "qstn_19eZv0clI8Vi8TO3DHLJHH": [
+   "3G"
+  ],
+  "qstn_19t1gwHv70NgdNWuswoorY": [
+   "1H"
+  ],
+  "qstn_1ALgxwCbomp6CywgQfsil": [
+   "3J",
+   "3K"
+  ],
+  "qstn_1AbqE1aUSWZdf18iSNgwZP": [
+   "10E",
+   "10F"
+  ],
+  "qstn_1AjGcSlkiWKHhtTCmBQrAJ": [
+   "6M",
+   "6N",
+   "6B"
+  ],
+  "qstn_1AkPzupuZTkHeIv2X0DXD1": [
+   "1B"
+  ],
+  "qstn_1BNduyFvp5sT4WiIvWDOTc": [
+   "1D",
+   "1E"
+  ],
+  "qstn_1Btc8Vf2dgFgqmIpye11Fl": [
+   "3A",
+   "3G"
+  ],
+  "qstn_1CBw7djmF31kiTflspBMeV": [
+   "4F",
+   "4C",
+   "4E"
+  ],
+  "qstn_1CT0451JfNnJ9bOQhh7Esj": [
+   "3L"
+  ],
+  "qstn_1D7twtkZTDQIreBS8SFH8w": [
+   "10A"
+  ],
+  "qstn_1DCL49w6pRhbvTbgUzNwCq": [
+   "3C",
+   "3F"
+  ],
+  "qstn_1Dymk9Wtd9IARYyyFSP88I": [
+   "7B"
+  ],
+  "qstn_1ESKq8GprWtawSDfkoF04W": [
+   "7B",
+   "7C"
+  ],
+  "qstn_1EXZORflylnfxpvt89WR86": [
+   "3A"
+  ],
+  "qstn_1EvtmRja7snRaRr6IGqee0": [
+   "10E",
+   "10F"
+  ],
+  "qstn_1FbWp6wNW7pGHOSOVyRNOC": [
+   "4C",
+   "4D"
+  ],
+  "qstn_1GCZpiSjKE2wxdRHCDlzz2": [
+   "6J"
+  ],
+  "qstn_1GQT8wNQ4qMpNcO4A7a2pV": [
+   "6F",
+   "6C",
+   "6K"
+  ],
+  "qstn_1HJcCcqUImWOzp88btmR0G": [
+   "3G",
+   "3I"
+  ],
+  "qstn_1HhqnxL106IZCdPp7ZUnyD": [
+   "7D",
+   "7B"
+  ],
+  "qstn_1I3i7sPIcPFytl3j3D4Gjv": [
+   "4B",
+   "4C",
+   "3G"
+  ],
+  "qstn_1IAvebXIsWEtnxDT4bEl9c": [
+   "3A"
+  ],
+  "qstn_1Ix4bLF04Bh4TRf4jiRxDw": [
+   "6C"
+  ],
+  "qstn_1J4ZaftojF9nnA3AzyEygl": [
+   "10H",
+   "10G"
+  ],
+  "qstn_1JOMlDwAEybr4JxxSJv9Gt": [
+   "4L"
+  ],
+  "qstn_1JiLL2S9eZasbCgSgK5sDG": [
+   "5B",
+   "5E"
+  ],
+  "qstn_1KVqcUAdTpcnBxK9EEuoFy": [
+   "10E"
+  ],
+  "qstn_1LTbEKRPbPZ7IzrZF5rUMh": [
+   "1H",
+   "3G"
+  ],
+  "qstn_1LmjqrRNrUp4zCEFqv23BZ": [
+   "10A"
+  ],
+  "qstn_1MSIsleWSrX9GD4ZpJVUmY": [
+   "3H"
+  ],
+  "qstn_1Mc3jybYeI2Kg4n5CsSt4h": [
+   "1C"
+  ],
+  "qstn_1McG63NDc5TLm0d9KQQ9sl": [
+   "3G"
+  ],
+  "qstn_1MilCxmYGmOAa0pER7DH7o": [
+   "3B"
+  ],
+  "qstn_1NlnTUDJigGhvCp9Y4MZ9Q": [
+   "6F",
+   "6H",
+   "7B"
+  ],
+  "qstn_1O4Wf32MMaxmbiQUwG7h8Z": [
+   "10E",
+   "10F",
+   "10G"
+  ],
+  "qstn_1OPzBW1CBoMyRxWPHbPEWa": [
+   "10E",
+   "10F"
+  ],
+  "qstn_1OWaFxu54n3mu5OLcot1YM": [
+   "8B",
+   "8F",
+   "8I"
+  ],
+  "qstn_1OkgTzCxFEAl5uVsRgshZZ": [
+   "1H",
+   "1G"
+  ],
+  "qstn_1P1OS22eIfydjHT5bjiXNO": [
+   "6H"
+  ],
+  "qstn_1PAWVxUUTdNku8h629YuZn": [
+   "1K"
+  ],
+  "qstn_1PMqlf22GvHmU9nhITHhHO": [
+   "1H",
+   "1A",
+   "1K"
+  ],
+  "qstn_1PNRtGfGrbX0K7Q89WO1KL": [
+   "6C"
+  ],
+  "qstn_1Piu66CJa75SU5SDughIkw": [
+   "6C"
+  ],
+  "qstn_1PmpJ7IFTMt48cDdhtKhqF": [
+   "7D",
+   "7B"
+  ],
+  "qstn_1Q03SfMb8jLuJGLqa0oRmg": [
+   "3C"
+  ],
+  "qstn_1Q1shHfQml1L0blPNwm5nh": [
+   "6K",
+   "6C"
+  ],
+  "qstn_1Q4dKsvwJDxdg2230r2g7M": [
+   "3F"
+  ],
+  "qstn_1QFS4xsKfhZ1GFGW6Nz73w": [
+   "1F"
+  ],
+  "qstn_1QhQmbZr5kpqLahXDJ9HSQ": [
+   "3D",
+   "3G",
+   "3E"
+  ],
+  "qstn_1QoLVTgJ5QuSbpBdP1AAkh": [
+   "6C",
+   "6F",
+   "6K"
+  ],
+  "qstn_1Qsucl3wvujLeGFjQ760OY": [
+   "10B",
+   "10C",
+   "10E"
+  ],
+  "qstn_1R2ScDTwPnKhyKUr0juNtu": [
+   "6K"
+  ],
+  "qstn_1RDT4UTC8PznPzhwS33mJN": [
+   "1G"
+  ],
+  "qstn_1RF8t6FGegbAjhtn6JKHTe": [
+   "7C",
+   "7B",
+   "6G"
+  ],
+  "qstn_1RXhmKhhirdPliG57m2dGJ": [
+   "3C"
+  ],
+  "qstn_1Rp9loe5TOKwgHsNA8xYCJ": [
+   "1I"
+  ],
+  "qstn_1SNFFMrezLSVtDIJT4AdBn": [
+   "10E",
+   "10F",
+   "10G"
+  ],
+  "qstn_1UXgwq09x6dh0MH3XQ0qkz": [
+   "6C",
+   "6K"
+  ],
+  "qstn_1V1oE2rWaH6YfYm3l6qcd8": [
+   "4I",
+   "3J"
+  ],
+  "qstn_1V7NeNdE4nPLEZVClK3DCn": [
+   "3L"
+  ],
+  "qstn_1VQjU9UcqrPiGlEOtWXcSI": [
+   "1C"
+  ],
+  "qstn_1W7MEBdAyLvJxDfiZOMQT7": [
+   "1H",
+   "1I",
+   "1J"
+  ],
+  "qstn_1WKt9zJdPgn9SuyWsuFwip": [
+   "5E",
+   "3G",
+   "3H"
+  ],
+  "qstn_1WPy1JZFou6S2eo8LrLwi5": [
+   "6C",
+   "6K"
+  ],
+  "qstn_1WRwbQldhgXTHK2N2Aslq0": [
+   "1H",
+   "1G"
+  ],
+  "qstn_1WkkL98PJCVKU7CHOtOiop": [
+   "3B"
+  ],
+  "qstn_1WnbdOwRiyGZQoNX7PISMu": [
+   "4L",
+   "4M"
+  ],
+  "qstn_1X5E98PkQ1kugHrPQyR3oj": [
+   "4C",
+   "4M"
+  ],
+  "qstn_1X6xunafmO1TaolXp2ic48": [
+   "5B"
+  ],
+  "qstn_1XImxhQ0X88j3OMC5PgID3": [
+   "1G"
+  ],
+  "qstn_1XVjTxSOah1Uczch4YAuUi": [
+   "10E",
+   "10H"
+  ],
+  "qstn_1XXzm5ZguXB18s0DbGD79E": [
+   "3G",
+   "3B",
+   "1H"
+  ],
+  "qstn_1Xd18DBqYv9B5lHFFgvCq6": [
+   "1K",
+   "1I"
+  ],
+  "qstn_1Xpm2x6GbRGrFgR7AgV22H": [
+   "1H",
+   "10B"
+  ],
+  "qstn_1YjkuQsGMgOdYK7Ly7Y1v2": [
+   "7C"
+  ],
+  "qstn_1YjnO7QTFOSy0zVhvCyEb1": [
+   "6K",
+   "6L"
+  ],
+  "qstn_1Z9QlSNxQDVan0j57rd68K": [
+   "1H"
+  ],
+  "qstn_1ZBN6ArwtL5lgFVv5ieSzN": [
+   "5E"
+  ],
+  "qstn_1ZCf16gjhy014Thn904fzH": [
+   "1H"
+  ],
+  "qstn_1b26mSA4j8ZtoSQewAjOGK": [
+   "3J"
+  ],
+  "qstn_1b2mZfJFn2nj5V1C2eCtSa": [
+   "3A"
+  ],
+  "qstn_1bmvU7nhritfOOtAGVusKR": [
+   "1D",
+   "1E"
+  ],
+  "qstn_1bpMenfbR5AZg52FceJExn": [
+   "5F",
+   "5G"
+  ],
+  "qstn_1bxuN6G3tvGEzZzJzuCL8q": [
+   "1J"
+  ],
+  "qstn_1dttM2UnXTDvCiLTxpGD43": [
+   "3F",
+   "3G"
+  ],
+  "qstn_1e80gQYe3gEwyDFY1R2j5X": [
+   "8J",
+   "8K",
+   "5F"
+  ],
+  "qstn_1eBoVKhfzwwUWsOPhLzb4X": [
+   "3J"
+  ],
+  "qstn_1etL0O0lbWSSFuBumiT0mt": [
+   "6K"
+  ],
+  "qstn_1gQUbU5oYqcLxY9x7HUDOw": [
+   "7B",
+   "6F"
+  ],
+  "qstn_1h2xDVbs1AN886jtOn8n0r": [
+   "3G",
+   "3J"
+  ],
+  "qstn_1h3ZPB8Y3ep0ER7JTxnejs": [
+   "8I"
+  ],
+  "qstn_1hcJHVub0Sxh1DSvIxo3hp": [
+   "3D",
+   "3C",
+   "3G"
+  ],
+  "qstn_1hqSzPaZEY8iqY3cZoc3o7": [
+   "1K",
+   "1H",
+   "1I"
+  ],
+  "qstn_1i9cbVXDQs02T0BHs962F3": [
+   "3C",
+   "3F"
+  ],
+  "qstn_1jIdYfVslZi6ffV5Zkomu5": [
+   "6K"
+  ],
+  "qstn_1jJKzMucqCSfIPt1BQPhHo": [
+   "1I",
+   "1K"
+  ],
+  "qstn_1jO8YL3AuYBixbvv82krp5": [
+   "9B",
+   "9A"
+  ],
+  "qstn_1jcDTmBYs3qZdJ3kFEFFbR": [
+   "3I",
+   "3G"
+  ],
+  "qstn_1juLBmsRix7l2ObIc2ZUde": [
+   "6K"
+  ],
+  "qstn_1k6OgZGjxrDfnSS2qj2DWJ": [
+   "3C"
+  ],
+  "qstn_1kGNTHSSrzSsohId2xldra": [
+   "1E"
+  ],
+  "qstn_1kMmYOomFUlaSnG6gI3vk9": [
+   "6G"
+  ],
+  "qstn_1lIPwIKPDfAXON2TCIAHTA": [
+   "6F",
+   "6D"
+  ],
+  "qstn_1mMFv0xS9BegoXhJFRmqIW": [
+   "4G",
+   "4N"
+  ],
+  "qstn_1niirQirhrmuS42nHyH4Q1": [
+   "1A"
+  ],
+  "qstn_1oJg01rNO37aKX7hd51wQa": [
+   "1D"
+  ],
+  "qstn_1oVqGx1rv3yI6GV3H6lSfQ": [
+   "4G",
+   "1A"
+  ],
+  "qstn_1oZB5VitXlqRsJrmCCYDSO": [
+   "10F",
+   "10G",
+   "10H"
+  ],
+  "qstn_1ojFcmfWttifw58tmoZ4ys": [
+   "6H"
+  ],
+  "qstn_1pns7P1htKuzqgNLvIQFbD": [
+   "10B",
+   "10C",
+   "10E"
+  ],
+  "qstn_1psEN6VlgLxeip3fLFz6zb": [
+   "2H",
+   "2C",
+   "2D"
+  ],
+  "qstn_1ptQAXZrQZNZGVKKq4pO4b": [
+   "3G"
+  ],
+  "qstn_1q2JNM9PkN9nvBSILNoZzt": [
+   "1J",
+   "1I"
+  ],
+  "qstn_1qANSs2H4UlUvVlEEPut4F": [
+   "1G"
+  ],
+  "qstn_1qAbMFBTSmaSSbfhPRgRT4": [
+   "7A",
+   "7D"
+  ],
+  "qstn_1qVt99zQy27tLupIm2Vw5I": [
+   "3G",
+   "3B"
+  ],
+  "qstn_1qgcaJxmUOCbM9RVFhvzLQ": [
+   "2C",
+   "2B",
+   "2D"
+  ],
+  "qstn_1qiNA29PQnEgUytJjchMt9": [
+   "5B",
+   "5E",
+   "5F"
+  ],
+  "qstn_1qwaOy5xzz4OXlx0GQdPIo": [
+   "1J",
+   "7B"
+  ],
+  "qstn_1s3mVK0MlYvJQ1mQLikLwO": [
+   "6H"
+  ],
+  "qstn_1sBo3MO3JMk2kzJQSilSD0": [
+   "6K"
+  ],
+  "qstn_1sISUcUtweGuAW261fyyMc": [
+   "3D",
+   "3E"
+  ],
+  "qstn_1sNM2xtXw9SRWkHgj2zXYE": [
+   "8B",
+   "8F"
+  ],
+  "qstn_1snYbcre6EqYiOWm0yUOAH": [
+   "10A"
+  ],
+  "qstn_1t81QxFsX4M8kLYMW6ZL4s": [
+   "4L"
+  ],
+  "qstn_1tJifdGA4WMWpKHlbjKtD4": [
+   "1H",
+   "3G"
+  ],
+  "qstn_1twDRDAk7sIFXD1kL3vP0p": [
+   "3B",
+   "3C"
+  ],
+  "qstn_1uDgHIkTcHIoWA0HlD59AC": [
+   "1H"
+  ],
+  "qstn_1uEdtBvBGNIzbmxDjYzfuZ": [
+   "3G"
+  ],
+  "qstn_1udNfNj2pFbuegxtODk4sO": [
+   "1C"
+  ],
+  "qstn_1ut55VEqosklX5FzrEkjGm": [
+   "3G"
+  ],
+  "qstn_1vI1B9nO8wdS3n68wjyg2a": [
+   "10F",
+   "10G"
+  ],
+  "qstn_1vR9eLoURvCWXoYDcxZ9fU": [
+   "3I",
+   "3H"
+  ],
+  "qstn_1vkA265yxP81JRhndaoucO": [
+   "8F",
+   "8B"
+  ],
+  "qstn_1wKaaQfcKiED4YfQt9VcQ7": [
+   "1B"
+  ],
+  "qstn_1wWRZNySVv9eL5e5NIiRu8": [
+   "6K"
+  ],
+  "qstn_1wX2Q6kyhcqk7bINDRFM3s": [
+   "1I"
+  ],
+  "qstn_1wcJiWQPvGJ70OhnWudGi0": [
+   "4L",
+   "4M"
+  ],
+  "qstn_1wsoxzsgNntjnxve6oYFFt": [
+   "8J",
+   "8K",
+   "8L"
+  ],
+  "qstn_1wtwXizUHgaS0pLjeqJJm0": [
+   "3A"
+  ],
+  "qstn_1x9fdaZnGqGIDtYhNA3QZF": [
+   "1B"
+  ],
+  "qstn_1xIzwr5VJZ6IhxpMMy2EvM": [
+   "5B",
+   "5E"
+  ],
+  "qstn_1xY5ZbvGYKRKZdfAAhQLyQ": [
+   "4M",
+   "4L",
+   "3G"
+  ],
+  "qstn_1xkHCutEylYRJtmhiijcH5": [
+   "1H"
+  ],
+  "qstn_1xl1zVHppJNke6v9LhjNKf": [
+   "7C",
+   "7D"
+  ],
+  "qstn_1xnbJNBol9hhysVL1IAqLk": [
+   "10K"
+  ],
+  "qstn_1yHvVtZnvLsRtlJvznkitx": [
+   "3H"
+  ],
+  "qstn_1yeOfHcbTOkDGr4f7HqqcK": [
+   "6C",
+   "6E"
+  ],
+  "qstn_20dNjltS9Uj2iNm0F3V5K1": [
+   "7B"
+  ],
+  "qstn_210SSbYiXpD8oyOdgzPAPi": [
+   "1B",
+   "1G"
+  ],
+  "qstn_218nl7Dlnt21xJNWYwqwl0": [
+   "2H",
+   "2D"
+  ],
+  "qstn_23EDPh8a764d5zXcy1zwbX": [
+   "3B"
+  ],
+  "qstn_23JJjdw4nXIcAqpQrnXYAo": [
+   "6M"
+  ],
+  "qstn_2580omNRv8znV5evkEg3hg": [
+   "10B"
+  ],
+  "qstn_25PaLLFBgLeJjldxulc2w5": [
+   "1C"
+  ],
+  "qstn_262ylAoQugE5qX0jyMHJED": [
+   "6M",
+   "6N"
+  ],
+  "qstn_26G9krnfYrToqzPsiMcdA6": [
+   "6G"
+  ],
+  "qstn_26SzaRy9UWVysNttUscL0G": [
+   "1E"
+  ],
+  "qstn_26bfX72mObBVrQm61OQ0gp": [
+   "6K"
+  ],
+  "qstn_27EX7LSTiLL8QqUhqd2rEY": [
+   "10H"
+  ],
+  "qstn_27ck2tejza8JhXxBUMBPMT": [
+   "3B",
+   "3A"
+  ],
+  "qstn_27luJ6c1KL35YfyARtA1WA": [
+   "1C"
+  ],
+  "qstn_281l6rw3PuqFv0TbdWmBXc": [
+   "3L",
+   "3G"
+  ],
+  "qstn_284i2NpDLxO6FnWsPbcRD0": [
+   "1G"
+  ],
+  "qstn_287s5Ayg1JqZyJVOqjJtBz": [
+   "3J",
+   "3G"
+  ],
+  "qstn_28Lb6Eqd63RvhGz4XHW5pj": [
+   "9B"
+  ],
+  "qstn_29jBxJdLt1AMC10nIcLFxg": [
+   "6F",
+   "6K",
+   "7B"
+  ],
+  "qstn_2A8nGPUOuKgP3nqhVaWMOV": [
+   "4C",
+   "4F",
+   "4E"
+  ],
+  "qstn_2ASo4W4vc2GcEMk94KJ1wQ": [
+   "1J"
+  ],
+  "qstn_2ArTRI8aXH6EPSsoEM2Tbh": [
+   "7C",
+   "6F"
+  ],
+  "qstn_2B5EuBBcV7uc2J0wUS6TLl": [
+   "2H",
+   "2C",
+   "2D"
+  ],
+  "qstn_2BEBJErSZsqvv6vpNc8tIP": [
+   "3H",
+   "3I"
+  ],
+  "qstn_2CQXhGgWlDumpQmfPezHJO": [
+   "5B",
+   "5C",
+   "5E"
+  ],
+  "qstn_2Cakch59XFkSdvzOLNP92D": [
+   "3A"
+  ],
+  "qstn_2Cm1r0IERlCo4lASqRqnw4": [
+   "3A",
+   "4I"
+  ],
+  "qstn_2CrIxwVH35AKn0Kp3C8wFZ": [
+   "10F",
+   "10G",
+   "10H"
+  ],
+  "qstn_2DRt8P3EZZAQXPUlfglWoT": [
+   "2H",
+   "2C",
+   "2D"
+  ],
+  "qstn_2ETLHGl9EF7JAxGG7EbTpf": [
+   "4I",
+   "3J"
+  ],
+  "qstn_2F7eMQo2PHwPSMIpB1l61": [
+   "8J",
+   "8K",
+   "8B"
+  ],
+  "qstn_2F8A0ad3ypOXwCcuRVLoC0": [
+   "8B",
+   "8D",
+   "8I"
+  ],
+  "qstn_2FKN0FwhdjvooLeJmoR5sH": [
+   "10C",
+   "10B"
+  ],
+  "qstn_2GR8MKETntUKrFUIb09ox1": [
+   "3A"
+  ],
+  "qstn_2GX19J0QuYwJd0SmoCQa6e": [
+   "3J"
+  ],
+  "qstn_2H2UJldBrkeB0hNcMeSrM8": [
+   "1H"
+  ],
+  "qstn_2H3gJNyYC0ve1rKXdjdzHp": [
+   "6K",
+   "6L"
+  ],
+  "qstn_2JS69ZwiipR8vVCLy9RM0m": [
+   "8I",
+   "4I"
+  ],
+  "qstn_2JtnrkHnS1YdfjxpJ5h9ed": [
+   "8B",
+   "8E"
+  ],
+  "qstn_2Jz6jfEpfoBvBFAQIFcNrQ": [
+   "3L"
+  ],
+  "qstn_2KD18ULLBvhF339n07jqvh": [
+   "6M",
+   "6N"
+  ],
+  "qstn_2KZZR7W6FmzptgBwlq6oa3": [
+   "4H",
+   "4I"
+  ],
+  "qstn_2KbzEVZWzfijuYxzJBgcn4": [
+   "1H",
+   "1G",
+   "1I"
+  ],
+  "qstn_2KxFJRhSXnhdv40SEt7RvJ": [
+   "8B",
+   "8E",
+   "8H"
+  ],
+  "qstn_2Kxfjzhzivt8zCJqT1U5Q": [
+   "3J",
+   "6M"
+  ],
+  "qstn_2L0ADRPG8IlxhQqVW2Ok8M": [
+   "1K"
+  ],
+  "qstn_2LfJuM8uLIOdOG6eP9pBJ9": [
+   "4I",
+   "4J",
+   "4K"
+  ],
+  "qstn_2LsTxYUYW1yIKd3tLjZ5Sv": [
+   "7D"
+  ],
+  "qstn_2Lzo3mKPN5KdkTD00rKrQp": [
+   "8B"
+  ],
+  "qstn_2MIhBKY84nIZoAQ7SEQsC7": [
+   "10B",
+   "10C"
+  ],
+  "qstn_2MUNnT5Ae6RsQyZAeYvA4y": [
+   "3D"
+  ],
+  "qstn_2N8ykvPuSWIx8VD889WteT": [
+   "9B",
+   "6C"
+  ],
+  "qstn_2NO8LESpIfUBqkPuCj5MDh": [
+   "3G"
+  ],
+  "qstn_2NsxQhtmEsoFpWSpEGtnL9": [
+   "3A"
+  ],
+  "qstn_2OfoPEoDlhzYEisIXmnAVt": [
+   "3G"
+  ],
+  "qstn_2PH2mEIGCRCK5pbyz2p0eR": [
+   "8B",
+   "8E",
+   "8F"
+  ],
+  "qstn_2Pkem27Blbva5aiGZ5TPgE": [
+   "7C",
+   "6F",
+   "6G"
+  ],
+  "qstn_2QXmMOgPTTwHVlNPRpubTh": [
+   "6K",
+   "6F"
+  ],
+  "qstn_2RHYaHhHj1w92a5Gn9cOrp": [
+   "6F",
+   "6B",
+   "6K"
+  ],
+  "qstn_2RHaE9fdNJBfCTFaYykhCF": [
+   "1B",
+   "3G"
+  ],
+  "qstn_2RLQb4RsRroZnaBnmSSlct": [
+   "1E"
+  ],
+  "qstn_2Rmw4CjHLyda44zuxRhFYg": [
+   "5B",
+   "5E"
+  ],
+  "qstn_2RsxLTja487ZNpHHgWGcNm": [
+   "1H",
+   "1G",
+   "1J"
+  ],
+  "qstn_2SGMnWiifmeJpmnzhKw2YV": [
+   "6F",
+   "6C",
+   "7D"
+  ],
+  "qstn_2SWCbmh4UEjSvXXbe9OEQ2": [
+   "1H",
+   "3G"
+  ],
+  "qstn_2T92KHu0b7LzSqmPfa4rF9": [
+   "10F",
+   "10G",
+   "10H"
+  ],
+  "qstn_2TMxrsMwvnSkdPI1ANV92n": [
+   "8J",
+   "8K",
+   "6E"
+  ],
+  "qstn_2TiMqdbekavP6CFpIoE00O": [
+   "4C",
+   "4F",
+   "4E"
+  ],
+  "qstn_2W2CCJRrX02aWUthO2eL3F": [
+   "1D"
+  ],
+  "qstn_2W5CECW19NV3k4L34Kx3Dv": [
+   "3B"
+  ],
+  "qstn_2XaftZzODkU2p8Nw3IR3ti": [
+   "7C",
+   "6F"
+  ],
+  "qstn_2XvihxXG650joFMIfpQzLg": [
+   "1H",
+   "1G"
+  ],
+  "qstn_2YdaYXYRq0Crdcwlh17SrI": [
+   "5B"
+  ],
+  "qstn_2YoqBbtd3AoNsdeQcu7qGl": [
+   "6K",
+   "6B"
+  ],
+  "qstn_2YsMmFTTpnwr86KDyCot3e": [
+   "7D"
+  ],
+  "qstn_2Yvv6foeWje1Xvivxy88zm": [
+   "1A"
+  ],
+  "qstn_2Z1s0ARI4x3ySm2cwAwKFI": [
+   "1D"
+  ],
+  "qstn_2ZYu5ABkmcoYtsPCjAW8eo": [
+   "3B",
+   "3C"
+  ],
+  "qstn_2aG4aR4EfD1RK6J1ldffFN": [
+   "8J",
+   "8K",
+   "9A"
+  ],
+  "qstn_2b7fDzvXzVnGr2HFqS3yoT": [
+   "6N",
+   "6B",
+   "6C"
+  ],
+  "qstn_2bDWIRT8sSkkJqeGszI59r": [
+   "1H"
+  ],
+  "qstn_2bG9FxcNnnL4rRe40Zi6Bx": [
+   "1H"
+  ],
+  "qstn_2cnCBUzNgwlA38UrcsJQcp": [
+   "4M",
+   "9B"
+  ],
+  "qstn_2ctSvBoOAF9Bfr9zIJoYkL": [
+   "1H"
+  ],
+  "qstn_2cuapdOZaPku6gb4q9YaXv": [
+   "9B"
+  ],
+  "qstn_2dDWDCo8fGGFBGwCS8P5fd": [
+   "3B"
+  ],
+  "qstn_2eWhh94WKS874peGNJ9zh5": [
+   "6K",
+   "7B",
+   "9B"
+  ],
+  "qstn_2eYpvNx5q1gEGUrShKW00S": [
+   "4L",
+   "4M",
+   "3G"
+  ],
+  "qstn_2f8QLFYkkb4AJdGPTpW70Q": [
+   "10B",
+   "10C",
+   "10E"
+  ],
+  "qstn_2hArI6axkrPQSIwHPf3gIb": [
+   "5B",
+   "5E"
+  ],
+  "qstn_2hoUCKtYQg2A9GLjpiJtsW": [
+   "4N",
+   "3G",
+   "4M"
+  ],
+  "qstn_2hz3AkUiNl0V1A7Gs5ly4m": [
+   "3A"
+  ],
+  "qstn_2icILr5HVm77AoM9MpT8yY": [
+   "6K"
+  ],
+  "qstn_2jkPOLBxJa0QDzuC39yNsx": [
+   "1D",
+   "1E"
+  ],
+  "qstn_2k3IuKqkvrTbFRGF1q2Hq6": [
+   "2H",
+   "10E"
+  ],
+  "qstn_2k6pYPRlVsYAXctp5GZaOL": [
+   "4L"
+  ],
+  "qstn_2kC8xBstHno8UYEfp2nXB6": [
+   "1H"
+  ],
+  "qstn_2kN8ZiPi3RqknuAwB0OmUR": [
+   "4J",
+   "4K",
+   "4M"
+  ],
+  "qstn_2kSqKp4ASmu6qxupgkJvUr": [
+   "6C"
+  ],
+  "qstn_2kj6r6b6VujW6yrMLF4PUE": [
+   "1H",
+   "3B",
+   "3G"
+  ],
+  "qstn_2kxzvP63PAulB4ObijrxbD": [
+   "8J",
+   "5F",
+   "6B"
+  ],
+  "qstn_2kzMhIIPz0lDfVFyENSPcU": [
+   "9A"
+  ],
+  "qstn_2l6mG6Vqsun7lijFSRRUS5": [
+   "8F",
+   "3G"
+  ],
+  "qstn_2lSI1d4tjQrihGOYR4EPL5": [
+   "3B",
+   "3C"
+  ],
+  "qstn_2lhTeCUXx5yMYRq10hIt78": [
+   "3C",
+   "1C"
+  ],
+  "qstn_2m18oEhKitlgGG7bxmgQa4": [
+   "3G",
+   "3H"
+  ],
+  "qstn_2mY20P4PrglsLodNcuTD54": [
+   "3D",
+   "3E",
+   "3G"
+  ],
+  "qstn_2mgmqob766d1hw6C3TgXad": [
+   "1K",
+   "1G"
+  ],
+  "qstn_2moBEDVDicAaI8evQs7jna": [
+   "3A"
+  ],
+  "qstn_2n3HcpV9fA4G6SugKZoXqp": [
+   "6M"
+  ],
+  "qstn_2o2rLl6NHc7kJCbCpDKWkF": [
+   "3A",
+   "3C",
+   "1C"
+  ],
+  "qstn_2oVoGEQ3mngHTme3gLm2mZ": [
+   "8I",
+   "8H",
+   "8B"
+  ],
+  "qstn_2oYdKitpNx3I4gY8Y7QkWR": [
+   "3D",
+   "3C",
+   "3G"
+  ],
+  "qstn_2oeKgF4ySmmzAbdwwt2POZ": [
+   "6C"
+  ],
+  "qstn_2oi4DjSo2u33hGsYyelhoW": [
+   "3G",
+   "4K",
+   "4M"
+  ],
+  "qstn_2piFZMv6dMRkDa6e8sJapy": [
+   "1B"
+  ],
+  "qstn_2qZimMdfI9fUyRa5NpHrMC": [
+   "1H",
+   "10B"
+  ],
+  "qstn_2qeN0WGdSp9d6gvFfwkA3w": [
+   "1K",
+   "1C"
+  ],
+  "qstn_2qfKMEy7DMk2oEaBoEWXqK": [
+   "3G"
+  ],
+  "qstn_2quxZtmy01hZB40cN3of6U": [
+   "7D",
+   "7B",
+   "6K"
+  ],
+  "qstn_2qv50aoGgM4ajeVODB3Oh4": [
+   "1K"
+  ],
+  "qstn_2rbtNC19jh6PzI5WRbyDUx": [
+   "1D"
+  ],
+  "qstn_2s3j3xT4e1UnVF5mWya2sb": [
+   "6N"
+  ],
+  "qstn_2sHLRcYy0DEyQQFFjyuldF": [
+   "1H"
+  ],
+  "qstn_2sHtuRNXSSQLd83YwtzqlN": [
+   "10E",
+   "10F",
+   "10H"
+  ],
+  "qstn_2sY8naBH9tsjE4JwJIfIlo": [
+   "3L",
+   "3A"
+  ],
+  "qstn_2sZMXL1Abtx7qselJCXQPP": [
+   "6F",
+   "7B",
+   "7C"
+  ],
+  "qstn_2slBdecROxnjd8BhuvuADG": [
+   "6G",
+   "7B"
+  ],
+  "qstn_2swVEeY3C7y1KZru1HkjPA": [
+   "4L",
+   "4M",
+   "3G"
+  ],
+  "qstn_2tBwr5NIzV0u0vM6gxIZNy": [
+   "1K"
+  ],
+  "qstn_2tSBxEOGEJqPT0B7IPkGdj": [
+   "9A",
+   "6F"
+  ],
+  "qstn_2tTOjMRkMf0IQf0DVRq1wP": [
+   "3J"
+  ],
+  "qstn_2tnoLGQX0Caa3VWovGVGpy": [
+   "1J",
+   "7C"
+  ],
+  "qstn_2tpcxsNNzP3vemX4WOTFCU": [
+   "2H",
+   "2C",
+   "2D"
+  ],
+  "qstn_2u439VW69O9ln6ghNrqt56": [
+   "3L"
+  ],
+  "qstn_2uPgeAz2FmYPrgsprObqnc": [
+   "3D",
+   "3G"
+  ],
+  "qstn_2uZg7612AsyDGUUKnSZwwI": [
+   "1J",
+   "6G"
+  ],
+  "qstn_2wOW6UEzP0ra0bvXfI54IZ": [
+   "1C"
+  ],
+  "qstn_2xg5cKFZwav2AldujlRDvc": [
+   "1D",
+   "1E"
+  ],
+  "qstn_2xnY3FPUFU5Qxs3fHxgY9B": [
+   "5E"
+  ],
+  "qstn_2y2nxN2dqMbgu0nTXmlXqV": [
+   "3G",
+   "7C",
+   "3B"
+  ],
+  "qstn_2y7wOHY7aDlQUOhhZfENVB": [
+   "3H"
+  ],
+  "qstn_2ypyVZISQkSUtgJHWCFVdk": [
+   "10E",
+   "10G"
+  ],
+  "qstn_2yxVFTMCjEXlD5Tio88Dfs": [
+   "1B",
+   "1K"
+  ],
+  "qstn_2z1okObOnPrh1krqkQ3Dwi": [
+   "10A"
+  ],
+  "qstn_2z6A6QSmmKMNbQBKqjj9OY": [
+   "7C",
+   "1G"
+  ],
+  "qstn_2zR83xbz3I9kmyj6KgyPud": [
+   "3G",
+   "1C"
+  ],
+  "qstn_2zge3YtWxYcoTR1NKxOQGU": [
+   "6C"
+  ],
+  "qstn_2ztz62XojYN3LPBGob7TVK": [
+   "7B",
+   "4I",
+   "4J"
+  ],
+  "qstn_31XZ3rUgkMMngl4XyACrqT": [
+   "3G",
+   "3A"
+  ],
+  "qstn_31viwRWrGshX4X6lHfVipQ": [
+   "4G"
+  ],
+  "qstn_327rISqn9dsJYlcejIVfLc": [
+   "9D"
+  ],
+  "qstn_328MW1WgRrf3PbMmrWpl7G": [
+   "1A",
+   "3G"
+  ],
+  "qstn_32hLBOd57mfBiVgU3ON5FB": [
+   "10K"
+  ],
+  "qstn_32zAejAAXgUgMzR0OY2x9E": [
+   "3J"
+  ],
+  "qstn_331LjOSXacZ95IgAgx0uyQ": [
+   "3G",
+   "4J",
+   "4K"
+  ],
+  "qstn_33P6S05zUaq5978h75Z2Al": [
+   "1G",
+   "7B"
+  ],
+  "qstn_340suvyBT1TWTQzwaVdHDN": [
+   "3C"
+  ],
+  "qstn_35EfxUAhHU3FJcoFHc8w3S": [
+   "6G"
+  ],
+  "qstn_35vV7H6vVoHd585Apr7A7X": [
+   "6K"
+  ],
+  "qstn_368It6we8onPJvLiRyjd4z": [
+   "1H",
+   "10B"
+  ],
+  "qstn_368LN0zZXU5h7lrReOvvH6": [
+   "6F",
+   "6C"
+  ],
+  "qstn_36AOpoHyxwWrMq1B07lgET": [
+   "1H"
+  ],
+  "qstn_36C2BjGnQCidB521BRqk5O": [
+   "3G",
+   "4L",
+   "4M"
+  ],
+  "qstn_36G44OZftsl7i0QTRBKeTa": [
+   "3I",
+   "3H"
+  ],
+  "qstn_36YiDyABvw5thXvuiomQcF": [
+   "6K",
+   "6B"
+  ],
+  "qstn_36Z5ntmcEbLuLZcQOIJ4Ta": [
+   "10B"
+  ],
+  "qstn_36eSG0C12Vgp62YzJEmSTb": [
+   "6K",
+   "7B",
+   "7D"
+  ],
+  "qstn_38HVbx72urWVPGlYZHwcwS": [
+   "1H"
+  ],
+  "qstn_38J9nfoXEKtnfhmFkd26fc": [
+   "8J",
+   "8K",
+   "8L"
+  ],
+  "qstn_38q21CTCMLlQkGU44tRmvG": [
+   "7B",
+   "7D",
+   "6C"
+  ],
+  "qstn_399NeGDXhLgG0Par4CuMFn": [
+   "6G"
+  ],
+  "qstn_39Mn1JW0xXfQwZFZ3INJ9K": [
+   "3J"
+  ],
+  "qstn_3A02zCrzHDYSeoFqcpYLOU": [
+   "4L",
+   "4M"
+  ],
+  "qstn_3ACVesnLRGiDpOWqqOAxkm": [
+   "4F"
+  ],
+  "qstn_3AYUWDWEPAlNjNZXniBkge": [
+   "4G"
+  ],
+  "qstn_3Ae313kvLUnrekkzT7dl5G": [
+   "1D"
+  ],
+  "qstn_3Ai2obxPd2sIr2QSjOUAQd": [
+   "4L"
+  ],
+  "qstn_3As5SxxNoPenwZwoIEsw1T": [
+   "1C",
+   "1B"
+  ],
+  "qstn_3BwuSd2uE4pW6vtX1YEF9c": [
+   "6C",
+   "6B"
+  ],
+  "qstn_3CN4max3lnSdqvuPzFzNqe": [
+   "6C",
+   "6K",
+   "6B"
+  ],
+  "qstn_3CV1PX7DMneKohEbMjBNXy": [
+   "3L"
+  ],
+  "qstn_3DGz6RQlTt8zYIgYGbYz6c": [
+   "1H",
+   "1J",
+   "10B"
+  ],
+  "qstn_3Djl4DTzXBIQeweXNY4xkz": [
+   "7A",
+   "10A"
+  ],
+  "qstn_3Ds8eeiTP3kPPGjgIaTyvd": [
+   "6J",
+   "6K"
+  ],
+  "qstn_3EDTMSOoGhH1VtbHg9grAN": [
+   "1B"
+  ],
+  "qstn_3EJVbh6oXDqHh2rg1H8I6l": [
+   "6M"
+  ],
+  "qstn_3EsUFCucltu0dioyOw6Wwg": [
+   "1H"
+  ],
+  "qstn_3FB9xHJkNoMCWAzm2Em1B1": [
+   "1C"
+  ],
+  "qstn_3FTIujhDruTywjZkoiR8m9": [
+   "6K",
+   "6B",
+   "6I"
+  ],
+  "qstn_3GthnVMTdpzWREfoCDJA8z": [
+   "10A"
+  ],
+  "qstn_3H1qBxdACx9oWveXlsHCgB": [
+   "3A"
+  ],
+  "qstn_3H3MEkR8u0KMqBiWX0ObBA": [
+   "3F"
+  ],
+  "qstn_3HWp4POlJEIilPtcJFc8un": [
+   "1B",
+   "1E",
+   "1H"
+  ],
+  "qstn_3I5lX2cAbdWIPGkRU0YuWG": [
+   "6F",
+   "9B"
+  ],
+  "qstn_3IKf9AZdgY06FP4Ix8mdvq": [
+   "3B"
+  ],
+  "qstn_3ILCfzuwAg7nnsNG9eUJoX": [
+   "6N"
+  ],
+  "qstn_3IdfvPAYpwhorcC1VGfel5": [
+   "6F",
+   "9A"
+  ],
+  "qstn_3J71hp2z1YGjkrp7OTYxbQ": [
+   "7C",
+   "7B"
+  ],
+  "qstn_3JsWJLdm7fcYnYyVgsIwrE": [
+   "7B"
+  ],
+  "qstn_3KCIIaQqvn4VCrU8OjA3dt": [
+   "3B"
+  ],
+  "qstn_3KasFfhxFNCsik258gqOfv": [
+   "1H"
+  ],
+  "qstn_3KmogU0EW2OIStT250u3Ej": [
+   "1K"
+  ],
+  "qstn_3L8Zlkgd1mLsjDIJx2EDXi": [
+   "8E",
+   "8F"
+  ],
+  "qstn_3LmnfafWZx4buw3vhvzlmp": [
+   "10H",
+   "10F"
+  ],
+  "qstn_3MfcpmJ7Vs0ehTVnfr45pG": [
+   "10B",
+   "10C"
+  ],
+  "qstn_3N14uXa2yp3lWzpBpntql2": [
+   "1K",
+   "10B"
+  ],
+  "qstn_3N1SitFKZbgNserCZWM798": [
+   "3D",
+   "3B",
+   "3G"
+  ],
+  "qstn_3NH3JflmqR8dnXgwTv9R89": [
+   "6K",
+   "6F",
+   "1J"
+  ],
+  "qstn_3NIzgWtsjOKHU3rTmUd5UI": [
+   "1H"
+  ],
+  "qstn_3NLB0NkU7yQprxjfib8gpe": [
+   "6M"
+  ],
+  "qstn_3NLKgiPSksOXAuutoDzp09": [
+   "9B",
+   "6F",
+   "7B"
+  ],
+  "qstn_3OPhlyTuPUFQjHiL0Vif54": [
+   "4I",
+   "3J"
+  ],
+  "qstn_3QOkiPKla1mD8i4lcCzy7z": [
+   "4J",
+   "4K",
+   "4L"
+  ],
+  "qstn_3QhjWOKOVepvzyMD08cQNN": [
+   "7C",
+   "6F",
+   "6G"
+  ],
+  "qstn_3Qlk9lrt7cJ24Mbp62yY4y": [
+   "5B",
+   "5E"
+  ],
+  "qstn_3R03vpUvqYFTXVBUXVohxN": [
+   "6G"
+  ],
+  "qstn_3RNmuUWeSaUNg2RHYUNvxe": [
+   "10B",
+   "10E"
+  ],
+  "qstn_3RmSQzxDmS1g3iA0ZVSDab": [
+   "3A"
+  ],
+  "qstn_3Ry1BkkCMV8Om2otskcgUp": [
+   "10E",
+   "10F"
+  ],
+  "qstn_3SCV3Esh3wbesSEkuiAXSH": [
+   "6C"
+  ],
+  "qstn_3ScixQJ5KR06HQhWCnnm82": [
+   "1H"
+  ],
+  "qstn_3Sho9q95g5bkHEbxOErapO": [
+   "4C",
+   "4E",
+   "4F"
+  ],
+  "qstn_3SlA9rVnEbUzqhmGXKuyrQ": [
+   "10B"
+  ],
+  "qstn_3SoN3UtDFMXCmbM8VGK9Kx": [
+   "3L"
+  ],
+  "qstn_3Tm6MqWP9mUm9ITp5YqEz4": [
+   "6G"
+  ],
+  "qstn_3TpOfzAWmUWNpvpW00XIpT": [
+   "3J"
+  ],
+  "qstn_3TwiTmfJ4dUc9nlFozpqOM": [
+   "1K",
+   "1A"
+  ],
+  "qstn_3Tzoths90DuhP9pGdCXbaM": [
+   "6E"
+  ],
+  "qstn_3UBgP1HdzGSIMShDm8HjX": [
+   "8J",
+   "8K"
+  ],
+  "qstn_3UPSXmkvnV605QPPGsEjUq": [
+   "4L"
+  ],
+  "qstn_3UWViHJqOdb27GwdcfniFI": [
+   "3G"
+  ],
+  "qstn_3UvX4H7OWMaB7Sfsu1BrpK": [
+   "8J",
+   "5F",
+   "5G"
+  ],
+  "qstn_3V5VZdyio0WPa4Xm6ug5ZV": [
+   "4N"
+  ],
+  "qstn_3VCLKLxMYH0asoytC68l2H": [
+   "4L",
+   "4M",
+   "3G"
+  ],
+  "qstn_3VEgfqCPktFVJPoTKUs141": [
+   "1H",
+   "3G",
+   "3H"
+  ],
+  "qstn_3VMlFWQIPQmRH58rCCbWcZ": [
+   "3H"
+  ],
+  "qstn_3VNVgZ063mfGcRsuHxHagi": [
+   "3G"
+  ],
+  "qstn_3VcFxli3xAXB3OOGTW7iMx": [
+   "10E",
+   "10F"
+  ],
+  "qstn_3WEZs9OJzTatJU21LfwGxP": [
+   "4N",
+   "4L",
+   "4M"
+  ],
+  "qstn_3WHRzyroRIbPcx3aHbWTDU": [
+   "10B"
+  ],
+  "qstn_3X59hRTMHPUn9H7ORj8jVX": [
+   "6F",
+   "7B"
+  ],
+  "qstn_3XJUx9dzPt4pD7YbRuScGH": [
+   "4L",
+   "4M"
+  ],
+  "qstn_3XVFPTWYHZ6DBiXH4q3Wjj": [
+   "7B"
+  ],
+  "qstn_3XaUuNmID38cRmd9yf9ghI": [
+   "3F"
+  ],
+  "qstn_3XgUHeMeCa0DiaAUQYC0mt": [
+   "3B",
+   "3H",
+   "3I"
+  ],
+  "qstn_3Y6CmvxL6Tkj2exHZ3BrF6": [
+   "10B"
+  ],
+  "qstn_3Yp8cXWzDzLfLrBCzZkviC": [
+   "8B",
+   "8D",
+   "8E"
+  ],
+  "qstn_3ZRtggUASscVzWXkuRUsXR": [
+   "8B",
+   "8E",
+   "8H"
+  ],
+  "qstn_3ZhWZd5PBEw3BvpPGPQhPz": [
+   "3D",
+   "3G",
+   "3I"
+  ],
+  "qstn_3a537YGctMOiSgSbmk9XNb": [
+   "4K",
+   "4M",
+   "4J"
+  ],
+  "qstn_3aG0lqpYyy0J8wrhCZjfqp": [
+   "1H"
+  ],
+  "qstn_3bJDvWVmKqQ3XkTTfmv57u": [
+   "6F"
+  ],
+  "qstn_3bjUrviGJQx4jcekSAM1aD": [
+   "5B",
+   "5E"
+  ],
+  "qstn_3brmxeCGyOd5FqAuWw1G4G": [
+   "10E",
+   "10F",
+   "10G"
+  ],
+  "qstn_3bvKmxU5JOhx3nT45xfhEt": [
+   "3A",
+   "3G"
+  ],
+  "qstn_3cG4HU35b3WZTak5jWrWFF": [
+   "3H",
+   "3G"
+  ],
+  "qstn_3cWf2aZssoAMyMu8krU28R": [
+   "6M",
+   "6N"
+  ],
+  "qstn_3dkiVP1TeMdd3nbyIieuU6": [
+   "6F",
+   "6K",
+   "9B"
+  ],
+  "qstn_3e2QlWxw0wfzMkC5IoYYY6": [
+   "10E",
+   "10F",
+   "10G"
+  ],
+  "qstn_3eFrRwo86ql7JYXUvPtAaR": [
+   "1B",
+   "1K"
+  ],
+  "qstn_3eIzSieQkPNHRfSe9v651K": [
+   "1J"
+  ],
+  "qstn_3f65WfHnHD7kNuTrExt3zS": [
+   "3L"
+  ],
+  "qstn_3fAdJ48uch8LOQMH7ij9AV": [
+   "7B",
+   "7C"
+  ],
+  "qstn_3fOkYHL2QnW5jfYfla07JF": [
+   "1J"
+  ],
+  "qstn_3gGqSHcra4o6IDYB4YQUiN": [
+   "3L"
+  ],
+  "qstn_3gzDJIZCfxfKJoP5UwUYuh": [
+   "4I",
+   "4J",
+   "4K"
+  ],
+  "qstn_3h6GytytUArY1tTRFzraMb": [
+   "10F",
+   "10G",
+   "10K"
+  ],
+  "qstn_3hHu2sn9nv8sJYaVCko3A0": [
+   "1C"
+  ],
+  "qstn_3iVDuMPHpk06O44VZ0YOnr": [
+   "3A",
+   "3G",
+   "4M"
+  ],
+  "qstn_3jYTcpDpoSwkVLfyuRzgBm": [
+   "2C",
+   "2H",
+   "2D"
+  ],
+  "qstn_3kIxE73ucTC8eB9bHKMkAu": [
+   "8B",
+   "8F",
+   "8I"
+  ],
+  "qstn_3kcqjiKKP3qsQcvGdTlU2R": [
+   "5B"
+  ],
+  "qstn_3kpIBDY5DGd5bCnQjpGJIr": [
+   "1J"
+  ],
+  "qstn_3lJYokh6xqLxCQND8d0QEH": [
+   "6C"
+  ],
+  "qstn_3m1dMLt8Ghwme5Xu7kV6Te": [
+   "1H",
+   "3G"
+  ],
+  "qstn_3mRPFQ9gHD3dJHQ5r5f16U": [
+   "8I"
+  ],
+  "qstn_3nmNcrBx8TVSrB4NTzp60A": [
+   "6C"
+  ],
+  "qstn_3oJjC1tLK9ksRusvZsB4tt": [
+   "1C",
+   "3A"
+  ],
+  "qstn_3oKAPNspkJhUO0UozAM6Rh": [
+   "3J",
+   "3K",
+   "3H"
+  ],
+  "qstn_3oSvm7le0fObjdUq0qGp49": [
+   "4B",
+   "4F",
+   "4E"
+  ],
+  "qstn_3oY9tT8h6mKSGPeE5BCGnq": [
+   "1H"
+  ],
+  "qstn_3oweXCemEJjuGh7R29vwWL": [
+   "10F",
+   "10G",
+   "10H"
+  ],
+  "qstn_3qbpUItmuZGwxFYFc5doQy": [
+   "1H"
+  ],
+  "qstn_3rE3weJLpIU5uqaMXyPlOr": [
+   "6K"
+  ],
+  "qstn_3s0uICYw4B1c3ExEbRCWdT": [
+   "4M",
+   "4L",
+   "3G"
+  ],
+  "qstn_3sY01eD0P6Y38bQgnkXiF5": [
+   "6E"
+  ],
+  "qstn_3sZcwMq3PkgA608aSFCzMQ": [
+   "10A",
+   "10B"
+  ],
+  "qstn_3sgSZ1jRVWRS36IDtqlx9E": [
+   "10C"
+  ],
+  "qstn_3st7Qwx5ivG49aLQwS8I6k": [
+   "6F",
+   "6K"
+  ],
+  "qstn_3syGaRpZ8mCkBqmIgD6ng8": [
+   "7B",
+   "6G",
+   "6F"
+  ],
+  "qstn_3t4v3LrXRfmJRiAWJXcwVg": [
+   "1B"
+  ],
+  "qstn_3tiumpefyAMnrhhYUMjcdE": [
+   "3K"
+  ],
+  "qstn_3tvXNkblInXafQ7Zn0neor": [
+   "10B",
+   "7B"
+  ],
+  "qstn_3uIhfwKePXJIKxcXX7oDEb": [
+   "3D"
+  ],
+  "qstn_3uqUydnZ9KYjRyWdQwFn0e": [
+   "3G"
+  ],
+  "qstn_3vLSd2UpKdzRw8DEcnzHGK": [
+   "1K"
+  ],
+  "qstn_3vsQMuNkcWbaEUGII92hpn": [
+   "3J"
+  ],
+  "qstn_3w43BouTZdfkS28JtTmb96": [
+   "8J",
+   "8K",
+   "8F"
+  ],
+  "qstn_3wA5YmWtBcbond379LEPxw": [
+   "3C"
+  ],
+  "qstn_3wGABsiMeyfgslaVA3HRzg": [
+   "4E",
+   "4F"
+  ],
+  "qstn_3wOVY9q0vMRtfY78JfPluB": [
+   "1H"
+  ],
+  "qstn_3whg7CAb9U6y0CvUaO92OR": [
+   "1H"
+  ],
+  "qstn_3x5jGgOBXhVxf0Q53WDSW9": [
+   "4F",
+   "4C",
+   "4E"
+  ],
+  "qstn_3xO5nJczRQ6ni23mF3IVc1": [
+   "3G",
+   "3J"
+  ],
+  "qstn_3xftSfAJDFKRW1K8pLDSgM": [
+   "8B",
+   "8E",
+   "8I"
+  ],
+  "qstn_3yHzJRWcipzRZjZITsBVjq": [
+   "6J"
+  ],
+  "qstn_3ycZsDt0DJ1FSs8YYooGXL": [
+   "1J"
+  ],
+  "qstn_3yh1JZpoRpqc4fcljs7XHs": [
+   "1J",
+   "9B"
+  ],
+  "qstn_3yroLVR4jgwuK2W72IOqp9": [
+   "3C",
+   "3D",
+   "3E"
+  ],
+  "qstn_3yzzsT7kOdo825TLK9iqdV": [
+   "10H",
+   "10G"
+  ],
+  "qstn_3z0Wn5XzOtj94aniu5Ehm9": [
+   "6M",
+   "6K"
+  ],
+  "qstn_3zijnI0xAfoticE4VOHfD1": [
+   "1C"
+  ],
+  "qstn_405ulXHBJLlFyvqeG53nPr": [
+   "1A",
+   "1I"
+  ],
+  "qstn_42AVaXPMOXECuSlZleEDcW": [
+   "4H"
+  ],
+  "qstn_42xq0YXZphiMLBMRi6aq1X": [
+   "3A",
+   "1C"
+  ],
+  "qstn_430fECF70FOXUDzcDa0vi6": [
+   "6F",
+   "7B"
+  ],
+  "qstn_43kriYI6Udj7uivwTW8F2j": [
+   "10K",
+   "10E"
+  ],
+  "qstn_44t7Ae6YQOiCwsBWrZa31Q": [
+   "10B",
+   "10E"
+  ],
+  "qstn_453E4dGcAoHWs7CGqfHZ7j": [
+   "5F",
+   "5E"
+  ],
+  "qstn_45CZzaCeOUW0uB33JeVwx7": [
+   "6J",
+   "6B"
+  ],
+  "qstn_45FmeuUuWkVc9EdxLDYFoI": [
+   "6B",
+   "6C"
+  ],
+  "qstn_466mxGwAMY2PlhhwanggKL": [
+   "3G",
+   "3C"
+  ],
+  "qstn_468Io0lmpxH9xdwqd6hrFK": [
+   "1H",
+   "1K",
+   "4I"
+  ],
+  "qstn_46BFzoakITHz0NiLF2VsP9": [
+   "5B",
+   "5C",
+   "5E"
+  ],
+  "qstn_46WtptxkEBdnGk2BZkiu2f": [
+   "1H",
+   "1I",
+   "5A"
+  ],
+  "qstn_46ZIGctGoIeAF8WPs2IZje": [
+   "3J",
+   "3K",
+   "3G"
+  ],
+  "qstn_46zjfpcRJjExutMAcGdfIS": [
+   "3A"
+  ],
+  "qstn_472jab3mZFExbWaRH4XSKr": [
+   "4I"
+  ],
+  "qstn_4730Fn9y5vjwxewXvsJByj": [
+   "10B"
+  ],
+  "qstn_4783Kf3aE1wWc0x2ERrI5o": [
+   "2H",
+   "2D"
+  ],
+  "qstn_47WFPKpnueQdkJVlNvG60R": [
+   "8B",
+   "8C",
+   "8I"
+  ],
+  "qstn_48BCXVMn7LInKtBxBDtQOl": [
+   "3H"
+  ],
+  "qstn_48DOceM57ieNuVomnt75tz": [
+   "10B",
+   "10C",
+   "10D"
+  ],
+  "qstn_48Eu45WCBfHZU3s6LTVA7J": [
+   "4J",
+   "4K",
+   "4M"
+  ],
+  "qstn_48Q22SDcaJpTLUuvX3BDpw": [
+   "6M",
+   "6N"
+  ],
+  "qstn_48eEDawQydmz9TZTPAeoDQ": [
+   "8B",
+   "8E"
+  ],
+  "qstn_491L5QCJurJ4kriLK2lSOv": [
+   "10B",
+   "10D"
+  ],
+  "qstn_49VL03RRiTq68xQ7jfS2kk": [
+   "1K"
+  ],
+  "qstn_49vOvWaKnJ6aIhOy70B6x": [
+   "7C",
+   "7D",
+   "7B"
+  ],
+  "qstn_4AM7bAWqMft5RwKLk8IAPh": [
+   "6B",
+   "3G"
+  ],
+  "qstn_4AYRpUDgAzm9oOKVN8GBBb": [
+   "1K"
+  ],
+  "qstn_4BImHWIXO6JLbb9dyd5qjV": [
+   "6E"
+  ],
+  "qstn_4BMYrGfJ3LlrzobQsMYhk6": [
+   "6F",
+   "7B",
+   "7C"
+  ],
+  "qstn_4BYuGtZngtpvn4dyiiJyCH": [
+   "4F",
+   "4E"
+  ],
+  "qstn_4BtXSQ42jIreQanOo7z6py": [
+   "1H"
+  ],
+  "qstn_4C4PPI8Ek86leMyRnpz9um": [
+   "1H"
+  ],
+  "qstn_4FSGCEeHNbth9CWyGScqrQ": [
+   "3L"
+  ],
+  "qstn_4G1mRgWsdSdLiKJvJffPrR": [
+   "4M",
+   "4N"
+  ],
+  "qstn_4G5Bk45RQ7AqAKW5CL9KgV": [
+   "3D",
+   "3G",
+   "4M"
+  ],
+  "qstn_4GsNhbwyUvpLCQsmgtvzfk": [
+   "4B",
+   "4C",
+   "4F"
+  ],
+  "qstn_4HTn5EQt9BrvxKOu0Jm1Ya": [
+   "3J",
+   "3K",
+   "3H"
+  ],
+  "qstn_4HxMjNH7Ndb6GgAKqAQFI8": [
+   "5B",
+   "5E",
+   "5F"
+  ],
+  "qstn_4IRINgU85Wnp2ucNdnejfE": [
+   "5E",
+   "5F",
+   "5G"
+  ],
+  "qstn_4JH35BCsFkKeuz4YrlO8or": [
+   "4M"
+  ],
+  "qstn_4JZbeN2RS4QH6K0f9QMLNW": [
+   "3H"
+  ],
+  "qstn_4JjWuSung54CLpldwIv1H6": [
+   "8J",
+   "8K",
+   "5F"
+  ],
+  "qstn_4K4trfdzyq2szB0g9gJtWw": [
+   "2C",
+   "2H",
+   "2D"
+  ],
+  "qstn_4KHhTlEPIPgXEjZJxauArY": [
+   "4C",
+   "4F",
+   "4E"
+  ],
+  "qstn_4KTMfIFUbgWZfWWMx53FRw": [
+   "8B",
+   "8E",
+   "8H"
+  ],
+  "qstn_4Ka23Ai8MqwHt4DtlUiDPg": [
+   "7C"
+  ],
+  "qstn_4KhR6uBoOtODqOBoNZ275p": [
+   "6E"
+  ],
+  "qstn_4KkC8y3oVUywZdwXcaKumg": [
+   "1H"
+  ],
+  "qstn_4KxeL3hpIpb6VIKsWH8di8": [
+   "10B",
+   "10C"
+  ],
+  "qstn_4L2f3hrAiYYpo57W56HUYm": [
+   "1K"
+  ],
+  "qstn_4LIEEgiZ7wIzSc6NZmVRU2": [
+   "1K",
+   "1A"
+  ],
+  "qstn_4LIHB0ItQcGjwb8E1XFAFt": [
+   "6K"
+  ],
+  "qstn_4LR3E5ERYaZuo8vcBi65Fx": [
+   "9A"
+  ],
+  "qstn_4M1VfDcusxnh3YB5uUFa8H": [
+   "6E"
+  ],
+  "qstn_4ME5DISZ7FG9tyP1SbNkag": [
+   "3G",
+   "3H"
+  ],
+  "qstn_4MmDp3180dJdPVtBckTVqK": [
+   "4B",
+   "4E",
+   "4F"
+  ],
+  "qstn_4NWctH4ETeKv6mTVIX02Gy": [
+   "1H"
+  ],
+  "qstn_4NYfsneyjLdusLTGoFbLWV": [
+   "6G"
+  ],
+  "qstn_4OpQ9tSH3saxXHJqOaWzbx": [
+   "4I",
+   "4B"
+  ],
+  "qstn_4OqZO2SaLP3MqkTYbAqnfQ": [
+   "3I",
+   "3G"
+  ],
+  "qstn_4OxQCpcLBY8FWBKw4sY94A": [
+   "6F",
+   "9B"
+  ],
+  "qstn_4P7EkWuMhpqw1k0hM279hN": [
+   "3H",
+   "3B"
+  ],
+  "qstn_4PTXxAhPS07jtQTbC33i6K": [
+   "10B",
+   "10C",
+   "10D"
+  ],
+  "qstn_4QDUJdaUzwkwRDqdHMERUE": [
+   "3A",
+   "4L"
+  ],
+  "qstn_4R3RQj5KYMgWNsBsG4sHQ4": [
+   "8I",
+   "8B"
+  ],
+  "qstn_4Seig6ko1VTO54tmufDKLD": [
+   "4G"
+  ],
+  "qstn_4So0MmTS56hDGIBnUe6P4N": [
+   "4J",
+   "4K",
+   "4M"
+  ],
+  "qstn_4TLGFYP9Ja6zDzard61XwE": [
+   "6C",
+   "2H"
+  ],
+  "qstn_4TY4zq5OKMNSlgkMpXl22m": [
+   "3L"
+  ],
+  "qstn_4Tr6FH0AiDIsjx9c5wxLL7": [
+   "2H",
+   "2C",
+   "2D"
+  ],
+  "qstn_4UBuTdkz8d0FI4N1UUiMQy": [
+   "7C",
+   "7A",
+   "6G"
+  ],
+  "qstn_4UJ4Uub9cxUG321gUqgJMm": [
+   "3J",
+   "3K",
+   "3H"
+  ],
+  "qstn_4VkVBeg06Sz3Jbq4zNZmXZ": [
+   "10E",
+   "10G",
+   "10H"
+  ],
+  "qstn_4VwRpdJoxYgJlVfRX9ZYY7": [
+   "3G",
+   "3B"
+  ],
+  "qstn_4W8iwOgAFnj607N4rzP3Gh": [
+   "1D",
+   "1E"
+  ],
+  "qstn_4WKIYJxUR8k9R3QCqpm9fd": [
+   "6K",
+   "9B"
+  ],
+  "qstn_4WYpZe4XAeB8IQZmctS4mS": [
+   "4F",
+   "4E",
+   "4G"
+  ],
+  "qstn_4WdHJnbxsdbWTj7FXntR3": [
+   "4K",
+   "4L",
+   "4M"
+  ],
+  "qstn_4Wt1M4ixbeu7PbnBdCwnnO": [
+   "5B",
+   "5E",
+   "5F"
+  ],
+  "qstn_4WvO1xnoWS4LlIkzjvT8Pi": [
+   "5B",
+   "5C"
+  ],
+  "qstn_4X6Ud85ZEufQngG1BbyHNO": [
+   "3G",
+   "4F"
+  ],
+  "qstn_4XD2IUuYzlUThzj0mS6fFY": [
+   "3B"
+  ],
+  "qstn_4Yaj3fnmWJi06g3x5b65LN": [
+   "7C",
+   "6F"
+  ],
+  "qstn_4YjtGpABMTWFWYEhxJnrDw": [
+   "6H"
+  ],
+  "qstn_4Yn4PHqySYg3xMPJFAJ74r": [
+   "4J",
+   "4K"
+  ],
+  "qstn_4YwkSofZsSKj1IJsgZywk9": [
+   "4M"
+  ],
+  "qstn_4aHd02yclAxY4D6zpTr28h": [
+   "2H",
+   "2D",
+   "2C"
+  ],
+  "qstn_4bZTU0FDNHSXNwX8GYhRQL": [
+   "4J",
+   "4K"
+  ],
+  "qstn_4bgUEtrxWsTnqIWnJwma4C": [
+   "5B",
+   "5A"
+  ],
+  "qstn_4cMQBY3IY5HJWyJ8leqBQK": [
+   "3A",
+   "3G"
+  ],
+  "qstn_4ccl3BnLdU6ujcR1aHUMAF": [
+   "8J"
+  ],
+  "qstn_4cevUkBtQNV73sAUdcpz73": [
+   "7A",
+   "7B",
+   "6F"
+  ],
+  "qstn_4cfCGkGUXijeq38H4tkGuc": [
+   "1H",
+   "1I",
+   "3G"
+  ],
+  "qstn_4cklOILcHFur9HI4ITGATY": [
+   "1B"
+  ],
+  "qstn_4cv70w4mlB0DXkrhWr4RJg": [
+   "2C",
+   "2H"
+  ],
+  "qstn_4d8dDGhPZHQdp3Vs1pGoPh": [
+   "3G"
+  ],
+  "qstn_4deQx5pw87ZETqEL6pWHfn": [
+   "6F",
+   "6K"
+  ],
+  "qstn_4dtoHFImS5omPgURVwJA25": [
+   "3F",
+   "3A"
+  ],
+  "qstn_4dwJYnUbolZDVqyA7AoUty": [
+   "2C",
+   "2D",
+   "2E"
+  ],
+  "qstn_4e60r4mq9VB69sMC8jWXwM": [
+   "8B",
+   "8E",
+   "8H"
+  ],
+  "qstn_4eAmc6oucUvLftWxbDoqcf": [
+   "6E"
+  ],
+  "qstn_4eNnS0x0e6LGnJTBXjYpnC": [
+   "1H"
+  ],
+  "qstn_4fo09Ta3R2Lvipmph5do1c": [
+   "4N",
+   "4M",
+   "4L"
+  ],
+  "qstn_4gA9BRGBjvFjBwfJ618NUA": [
+   "6C",
+   "6K",
+   "6B"
+  ],
+  "qstn_4gYnG9BmJWeVffrbZEFekC": [
+   "3F"
+  ],
+  "qstn_4gpzMDzehcBOfO4s4f7AjJ": [
+   "3B"
+  ],
+  "qstn_4gv12yATjS33aRM9k3ylc1": [
+   "2H",
+   "2C",
+   "2B"
+  ],
+  "qstn_4iUsfIPCfYWBHv8HOcAJA7": [
+   "7D"
+  ],
+  "qstn_4iVWHp3jC4JboQgTHmMui7": [
+   "3B"
+  ],
+  "qstn_4jD82op5rx6v5ePq0TuRNs": [
+   "6C"
+  ],
+  "qstn_4jNDdoSKBqA1ZmDDnHNlpy": [
+   "7A",
+   "6F",
+   "1J"
+  ],
+  "qstn_4jPNazRtdYUXpfzrTUCJQ5": [
+   "1B"
+  ],
+  "qstn_4jQeTvSTyiMFQvWhCs2kDM": [
+   "10B"
+  ],
+  "qstn_4k1FNKcpRHhtlGuWCyxqM7": [
+   "4L",
+   "4M"
+  ],
+  "qstn_4k9HTRmJ6Plf1N87HHXcWC": [
+   "1H",
+   "1I",
+   "1J"
+  ],
+  "qstn_4kPG4WXkVvAUS8h0Q9sYQq": [
+   "8B",
+   "8E",
+   "8H"
+  ],
+  "qstn_4khWmivlLgF1Y8kIBUDrdj": [
+   "1D",
+   "1E"
+  ],
+  "qstn_4kpzkS5hrZchRDsdWn0NwM": [
+   "6K",
+   "6C",
+   "7D"
+  ],
+  "qstn_4lCZ2oIMl7lDYuyOTk6Gmn": [
+   "1H"
+  ],
+  "qstn_4lFr5IUsV0hwj2ukT5MqOM": [
+   "7B",
+   "6G",
+   "7C"
+  ],
+  "qstn_4lG0VplNAkGDmanYNp7MKy": [
+   "1C"
+  ],
+  "qstn_4lMud8rM09THJ6q6AqM3L9": [
+   "3C"
+  ],
+  "qstn_4lWPk9MOWWPDsSE9f09O5C": [
+   "1I",
+   "10B"
+  ],
+  "qstn_4lZgw3Q3eISt3BlipF7IpP": [
+   "5B"
+  ],
+  "qstn_4lzYCENWjk3A35eqZC8jEn": [
+   "2H",
+   "2D"
+  ],
+  "qstn_4m4XXjZ9Yn4pjieDDkTVHl": [
+   "3F"
+  ],
+  "qstn_4maD3K9qYxHx5gNdOhFbTe": [
+   "3A"
+  ],
+  "qstn_4mfCy4rHP50O2nAla9WDoG": [
+   "4M",
+   "4L",
+   "3G"
+  ],
+  "qstn_4nANXzgpDTolm7YV5rCoOy": [
+   "6G",
+   "6F",
+   "7B"
+  ],
+  "qstn_4nfp1diyZSKENQ7J1BjOpq": [
+   "4I"
+  ],
+  "qstn_4o4Ui33xqdDYp7VmoJI55C": [
+   "6N"
+  ],
+  "qstn_4oe7gNtggt8Kc6agsZpGFr": [
+   "3A"
+  ],
+  "qstn_4orWa3hQnEBrAOnJAyNn0y": [
+   "1K"
+  ],
+  "qstn_4pm4QsyxJnTPCsrghFjb6t": [
+   "5B"
+  ],
+  "qstn_4qK3IeVyz7J58J3TqxYwUM": [
+   "4I",
+   "3J"
+  ],
+  "qstn_4qqOynfI2nDu0iHEFxY0cd": [
+   "7B"
+  ],
+  "qstn_4qwrvKj0bcn2f6q7nfAHRv": [
+   "8B",
+   "8E",
+   "8H"
+  ],
+  "qstn_4r7EF9Nx1oC2t73LhuJLCH": [
+   "5B",
+   "5C"
+  ],
+  "qstn_4rGo8x18VVSvtjmBjNJLgR": [
+   "4G"
+  ],
+  "qstn_4rHymoV6NmcPrDbddXGOTZ": [
+   "2C",
+   "2D",
+   "2H"
+  ],
+  "qstn_4rr4IeqbDUrlsPqyrGXgr5": [
+   "9D"
+  ],
+  "qstn_4s0pUIt5yVbPKs40CSXOyH": [
+   "3G",
+   "4L",
+   "4M"
+  ],
+  "qstn_4s1d1CZ8lMakNY0s2qWor5": [
+   "7C",
+   "7D"
+  ],
+  "qstn_4sA8aE1JctoSXnJhFPJOVF": [
+   "3H"
+  ],
+  "qstn_4sDcg7vL1yQQNF9CZ2peEO": [
+   "10B",
+   "10C",
+   "10D"
+  ],
+  "qstn_4sJbTkLyYrICALFx0cM40X": [
+   "10B",
+   "10C"
+  ],
+  "qstn_4sRW29zGJ9FDikU1AHXUPX": [
+   "9B"
+  ],
+  "qstn_4sXQd998KEE4G6G5cRj9I3": [
+   "7B",
+   "7D",
+   "9A"
+  ],
+  "qstn_4sax8UrWB940ySOOPRCXcw": [
+   "6K"
+  ],
+  "qstn_4sje1qPQPwikXYa4cd8BYe": [
+   "4I"
+  ],
+  "qstn_4vJVjH3F4jOCsAR8MH7SnP": [
+   "6G"
+  ],
+  "qstn_4vLRFFgze28Js1EZeHPstj": [
+   "3D"
+  ],
+  "qstn_4vTxJEpJCBCcttuW3FWdLX": [
+   "1H"
+  ],
+  "qstn_4w0XE9Ty151GmRkIRHFbcX": [
+   "7A",
+   "7B"
+  ],
+  "qstn_4w5AFJ3lmRroziMDbtQhUz": [
+   "10B"
+  ],
+  "qstn_4wHcKDrWw4HEF4JsKW8WYC": [
+   "4G"
+  ],
+  "qstn_4wu3oPf3JNBLYY10Dy4neS": [
+   "3L"
+  ],
+  "qstn_4xujNRhMkX8q5g0xZIOsiI": [
+   "3B"
+  ],
+  "qstn_4yN8nmV9QNnAxvw2mOrUZg": [
+   "1B",
+   "3C"
+  ],
+  "qstn_4yuIAQg5J79E8QDsiFxC3A": [
+   "3G",
+   "3C",
+   "3B"
+  ],
+  "qstn_4yvfZ0PUg7z1ZgGE0Yy05T": [
+   "5F",
+   "5B",
+   "5E"
+  ],
+  "qstn_4zfSox5B8Xgda2JLO8o2WF": [
+   "2H",
+   "2C",
+   "2D"
+  ],
+  "qstn_4ztsKhdiBDqlwsgfZSvPtR": [
+   "9B",
+   "6F",
+   "6K"
+  ],
+  "qstn_50lJvF2rTeJ0CvXdvpfW0W": [
+   "8J",
+   "8F",
+   "8K"
+  ],
+  "qstn_51uNqSJHCPU0k8zHJd8uES": [
+   "1B"
+  ],
+  "qstn_52eFdyk1HgNuCy3rDyuO3S": [
+   "1H",
+   "1G"
+  ],
+  "qstn_53IwKuDfV1oxjahAz3rOnQ": [
+   "8B",
+   "8E",
+   "8H"
+  ],
+  "qstn_540ZLVcTF0HR4y0PAeaeQd": [
+   "1J"
+  ],
+  "qstn_54B0nZUIestmRJswyE0yQ7": [
+   "6C"
+  ],
+  "qstn_54GLSJ7spIqcVJX05nnua5": [
+   "6K",
+   "6L",
+   "7D"
+  ],
+  "qstn_55FhnAQIzlGm0qXx5QQo4g": [
+   "1H"
+  ],
+  "qstn_55NObGQdH7n0QhfH0JKVl1": [
+   "6C",
+   "6K"
+  ],
+  "qstn_55d7Yfx85HR94Iq7Ye3Gxd": [
+   "4B",
+   "4E"
+  ],
+  "qstn_57i5pvBYcomtKpwseMzcv": [
+   "9D"
+  ],
+  "qstn_58OWwfXM2ml36tBaVEGszk": [
+   "1H"
+  ],
+  "qstn_58wEnC0IAEILSZD20c6Tfk": [
+   "1H"
+  ],
+  "qstn_58xsDQmrxstS5goV0ifjHg": [
+   "4J",
+   "4I"
+  ],
+  "qstn_59JCHZImh6mkZ1iN2U1Vze": [
+   "3C"
+  ],
+  "qstn_59SbmQ21oVleg6n0LmrfU1": [
+   "3G",
+   "3K"
+  ],
+  "qstn_59tSmSZseismmtp7etuCmJ": [
+   "1J"
+  ],
+  "qstn_5A994ncilqBZz1AzfdbIC5": [
+   "6K",
+   "7B"
+  ],
+  "qstn_5ATZ6bH0p7ZiXKiEpOJBmW": [
+   "3G",
+   "3L"
+  ],
+  "qstn_5AcyvLeJBaFy3x97UrqLoV": [
+   "10A"
+  ],
+  "qstn_5AsWzFKduNVutBVDnpFtrF": [
+   "1G",
+   "7B"
+  ],
+  "qstn_5BAfyv9AbSRoe8YOLMCNjH": [
+   "7C"
+  ],
+  "qstn_5BLsPmX8mnJemRdpr3gI08": [
+   "7C"
+  ],
+  "qstn_5BRVE8jWTLCVi1DbdTP21u": [
+   "1F"
+  ],
+  "qstn_5D0gQxyVqKsEtJJzw4fwGA": [
+   "9B",
+   "6K",
+   "7B"
+  ],
+  "qstn_5D8tjqH6pLXGyRgMB6zWpp": [
+   "6K",
+   "6B",
+   "7B"
+  ],
+  "qstn_5DEmLKeleDw1qRnTRv08hi": [
+   "10E",
+   "10F",
+   "10G"
+  ],
+  "qstn_5EE6t55wf4oJQIvw1htgmI": [
+   "3J",
+   "3K",
+   "10A"
+  ],
+  "qstn_5ESlvqDGO3Dk0WoxE7IbMe": [
+   "3J"
+  ],
+  "qstn_5EbCcXGK6IjT6gRpl5K48A": [
+   "3B",
+   "3G"
+  ],
+  "qstn_5EvcPTWRPyTD4FfAxiwq2t": [
+   "6F",
+   "6B",
+   "6G"
+  ],
+  "qstn_5Ew1W5Ygb91D1Pd9ayzBXZ": [
+   "6K"
+  ],
+  "qstn_5F860i4ROET7oo5sjAfhqd": [
+   "7C",
+   "7B",
+   "6F"
+  ],
+  "qstn_5FAy5cnzDbYyOLpLTkJ3Ev": [
+   "8I",
+   "8H"
+  ],
+  "qstn_5G4UDbcluR4xNbxh7mRF6a": [
+   "4L"
+  ],
+  "qstn_5GOkrSlWlkYEFFdYvqtWA0": [
+   "1K"
+  ],
+  "qstn_5GUKJqGd2anwtkfWoVEeXM": [
+   "6J"
+  ],
+  "qstn_5HMh4etwrrHby46xhtfMRP": [
+   "1H"
+  ],
+  "qstn_5HwaUenMOS0ILRVUz6N5BD": [
+   "6K"
+  ],
+  "qstn_5ILPhAe2iAVvPBB7YfVFOb": [
+   "1D",
+   "1E"
+  ],
+  "qstn_5IUVX2i1jxlHja7lorsMXm": [
+   "6E"
+  ],
+  "qstn_5IaCULPOj1F3psTXti8NfM": [
+   "2H",
+   "2B",
+   "2A"
+  ],
+  "qstn_5Iak3mmHl3kWNNDaPYZLEV": [
+   "6F",
+   "6K",
+   "7D"
+  ],
+  "qstn_5Ivfo072i7HGc1QvmRyTN3": [
+   "4G"
+  ],
+  "qstn_5IwXQYIKBFCgNIZSJ1hWXF": [
+   "5B",
+   "5E"
+  ],
+  "qstn_5IyE7oxxzTmmAdiD6sDhGo": [
+   "10F",
+   "10G",
+   "10H"
+  ],
+  "qstn_5KHBQljmkDFEbG4rJuGvLo": [
+   "10F",
+   "10G"
+  ],
+  "qstn_5Kb7uhy8b8YaBbZC0lgSdu": [
+   "10B",
+   "10C",
+   "10D"
+  ],
+  "qstn_5KhB0svX0PajT4gCX4p59J": [
+   "3G"
+  ],
+  "qstn_5KkqMzzV1nQPVP40SGLE7B": [
+   "6J"
+  ],
+  "qstn_5KrEdN7IT5RmjZpeF9Dif5": [
+   "3A"
+  ],
+  "qstn_5Li3YDqGx22H2DsPJC8bmh": [
+   "6M"
+  ],
+  "qstn_5LlUISw99TiPSLKrnqTWlB": [
+   "4H",
+   "4I",
+   "4K"
+  ],
+  "qstn_5LtvpJvDCLJk38GNvjZUUL": [
+   "5E"
+  ],
+  "qstn_5M3ihYX5B2HqVS5hMPTasu": [
+   "7B",
+   "7C"
+  ],
+  "qstn_5MFCIwUbfihj72FkWZ1JkZ": [
+   "3F"
+  ],
+  "qstn_5Nbb0S8KrDF2MRsKatGAvX": [
+   "3C"
+  ],
+  "qstn_5Ngk8grHu0NAkX6gO3vm4Z": [
+   "5A",
+   "5B",
+   "5F"
+  ],
+  "qstn_5NodPAIqqu10gy0QE6tAQ0": [
+   "4M",
+   "4N"
+  ],
+  "qstn_5OUg1V5qV59YCQ1VET2266": [
+   "3G"
+  ],
+  "qstn_5On3tKOWACE7hralaiEK4b": [
+   "6F"
+  ],
+  "qstn_5Pgr1e7sxZLVBOsbXz58CD": [
+   "3A"
+  ],
+  "qstn_5PhwpgdmLllIg5UYQPEDk": [
+   "3G",
+   "9B"
+  ],
+  "qstn_5PqriJdj1qF0Mqq3iiMrw7": [
+   "2H",
+   "2C",
+   "2E"
+  ],
+  "qstn_5PuxLtbJcz1fmE9s0EjdrY": [
+   "6C",
+   "6K"
+  ],
+  "qstn_5Pzj2jyHCmy1Gz1Fpa07e": [
+   "5F",
+   "6C",
+   "8J"
+  ],
+  "qstn_5QpUEaAeRfhVY0DnEETMPS": [
+   "5E"
+  ],
+  "qstn_5Qpqd0KLdet8GoSH9OhQHQ": [
+   "3F",
+   "3A"
+  ],
+  "qstn_5RKeDegXBD6nWe7R3p15Ee": [
+   "6C"
+  ],
+  "qstn_5SCVS8N8z67SuMjEV0Yn43": [
+   "6K",
+   "9B"
+  ],
+  "qstn_5SehDrjlRmFHlbzLyDrBJS": [
+   "4G"
+  ],
+  "qstn_5T72nQEn9Lpov4kgRpoeWk": [
+   "6C",
+   "6K",
+   "6L"
+  ],
+  "qstn_5T97YhGux5ejoiLH31wFWh": [
+   "3G",
+   "3D"
+  ],
+  "qstn_5TofwrzJaAMWS2WXj1yznv": [
+   "3J"
+  ],
+  "qstn_5UV15IEASw57WyomNHHZ5J": [
+   "1K",
+   "1J",
+   "7B"
+  ],
+  "qstn_5Ux64X7qayxhMmoQ3qHrWG": [
+   "1J"
+  ],
+  "qstn_5VAJzcimlYXe5q1RDb7dGJ": [
+   "2H",
+   "2C",
+   "2D"
+  ],
+  "qstn_5VZ8M9BDmxuhIT1hnyo57k": [
+   "3C",
+   "3G"
+  ],
+  "qstn_5Vhl1dcxThrGEyGsZJa2Pl": [
+   "2C",
+   "2H",
+   "2B"
+  ],
+  "qstn_5W65cKZDMtWuLPilXHczfi": [
+   "1D"
+  ],
+  "qstn_5WDtnbyuTaXxP2h1ZP0yGR": [
+   "8J",
+   "5F",
+   "5B"
+  ],
+  "qstn_5Wt0V9CHfKTMfxBhICkBBt": [
+   "1F"
+  ],
+  "qstn_5X7ndwPqUGYQuS3RMlc4k": [
+   "1H"
+  ],
+  "qstn_5XEExRyEnql3TSlUZgqPo2": [
+   "4L",
+   "4M",
+   "4N"
+  ],
+  "qstn_5XPeEZheAEfIIyrVqNFMxA": [
+   "3C"
+  ],
+  "qstn_5XWFcf6ah6xIdiiIyF0YVG": [
+   "3A"
+  ],
+  "qstn_5XyVvnRaVAzwC0gsvZvSPV": [
+   "6C",
+   "6K",
+   "6L"
+  ],
+  "qstn_5YAgHBXlrtZSNeMbxmHpTr": [
+   "6K",
+   "6F"
+  ],
+  "qstn_5YOeAG9b2kjRivPVvrkhWc": [
+   "7C",
+   "7B"
+  ],
+  "qstn_5YbiXS5BITZEs422yKpINl": [
+   "1H",
+   "3G"
+  ],
+  "qstn_5YsawnL4GIoSUpVzlfMCmo": [
+   "1H",
+   "1I"
+  ],
+  "qstn_5ZBUTGRe7PkbfCfSkkxB2i": [
+   "4F"
+  ],
+  "qstn_5ZJO3fgilfHG443Xzi1dgX": [
+   "5B",
+   "5C",
+   "5E"
+  ],
+  "qstn_5ZJc5QB0MBJtHQq4oWIQ1q": [
+   "7B",
+   "6F"
+  ],
+  "qstn_5ZUyhMfC9d0GS9xh4JgR5T": [
+   "8J",
+   "8K"
+  ],
+  "qstn_5ZiSNxrRCnyOrZPfOdj3ij": [
+   "3J",
+   "3K"
+  ],
+  "qstn_5aCPeb2ypRolJbKjTDaUVL": [
+   "10E",
+   "10H"
+  ],
+  "qstn_5aRCi3UIFHYBK8rFVDJ01H": [
+   "1K",
+   "3A",
+   "3C"
+  ],
+  "qstn_5aUThFdPb1H81SMEVXgDuM": [
+   "1E",
+   "1D"
+  ],
+  "qstn_5aZUSxql06d2j038cGzMh7": [
+   "3C"
+  ],
+  "qstn_5aZocYl2JnSB1oPeF939wo": [
+   "3G",
+   "4M"
+  ],
+  "qstn_5ajM6TP4psHUQqz5OZ7WKW": [
+   "1K"
+  ],
+  "qstn_5b09XBdXoGFwZ13uhi8NkO": [
+   "6G"
+  ],
+  "qstn_5bg9J592YVQ5EIXt7l6bmW": [
+   "6C",
+   "6K",
+   "6B"
+  ],
+  "qstn_5bnbJ1Xvp1C4l4Kz2urUez": [
+   "1C",
+   "1F"
+  ],
+  "qstn_5c2NNoA9WZWLk0XSoWrSkS": [
+   "1D"
+  ],
+  "qstn_5cN2oaAVDEbCO7zGuV10e7": [
+   "3J"
+  ],
+  "qstn_5d1mK7f04a85AlyXVsVzTu": [
+   "7C",
+   "6F"
+  ],
+  "qstn_5daHLS1aD4ldDf7GyuksMM": [
+   "7B"
+  ],
+  "qstn_5dkZxrIUXqhWwOeVHiyXN0": [
+   "6F",
+   "7B"
+  ],
+  "qstn_5fX6IK09QqtGKaCkgRn1ea": [
+   "2F"
+  ],
+  "qstn_5g57ewBIL8fGysTyquoDLB": [
+   "10B"
+  ],
+  "qstn_5hPesn3tgyS3Kpes26ckFc": [
+   "3A"
+  ],
+  "qstn_5hXOQKHXyB7C97k0sRZC2E": [
+   "6M",
+   "6B"
+  ],
+  "qstn_5hcpKnut2qyDtGI0gqEO3H": [
+   "4C",
+   "4F",
+   "4E"
+  ],
+  "qstn_5iLYmpraLprlZ7b5UOmJZz": [
+   "2H",
+   "2C",
+   "2D"
+  ],
+  "qstn_5iVybUu7LHv46HzdxCmmmY": [
+   "6K",
+   "7B"
+  ],
+  "qstn_5iZbXJ43eRopRdMXGSCneI": [
+   "10F",
+   "10G"
+  ],
+  "qstn_5jjUqKcRwAOxYdaq6qdNIw": [
+   "4M",
+   "4N"
+  ],
+  "qstn_5jqP3wrnCNdeqWbSMsuIe2": [
+   "6D",
+   "7B",
+   "3G"
+  ],
+  "qstn_5jzijsnP6dRxopVyfa360q": [
+   "7C",
+   "7B",
+   "6F"
+  ],
+  "qstn_5kDTQ2nfpTQP0MIA7feSa3": [
+   "10B",
+   "10E",
+   "10G"
+  ],
+  "qstn_5l5e8dZe9JhXERg0rnurPo": [
+   "1H",
+   "3G",
+   "1G"
+  ],
+  "qstn_5l787k7GoD0IVEKN2yygOl": [
+   "3L"
+  ],
+  "qstn_5ldsg7pgXxC7DZC3tTefw5": [
+   "6I",
+   "6J"
+  ],
+  "qstn_5mlhdHlGPRUryuP7u9Axvn": [
+   "3G",
+   "3C"
+  ],
+  "qstn_5mtrYm30apHrjzPNVKR7sT": [
+   "8J",
+   "8K"
+  ],
+  "qstn_5n7MTDvdasqCFg33bmnImW": [
+   "8H",
+   "8B"
+  ],
+  "qstn_5p5ERXLmnvThGwe94libTe": [
+   "2C",
+   "2E",
+   "2H"
+  ],
+  "qstn_5pRTjHGrwAY0w90PYCxX8N": [
+   "3C"
+  ],
+  "qstn_5poadBXCSYFcgCEQByK8GJ": [
+   "3H"
+  ],
+  "qstn_5q4GWCLEh3RoG7LmBeVmLm": [
+   "4M",
+   "4L"
+  ],
+  "qstn_5qndHX8SvpF3IittCI0KI3": [
+   "3B"
+  ],
+  "qstn_5r0KCulnFjW74ho4WG6eqG": [
+   "3G",
+   "4I",
+   "7B"
+  ],
+  "qstn_5r39K5YBhQ8L6ueiavls2S": [
+   "7C"
+  ],
+  "qstn_5r98CshIMVRDb6OzuL8nac": [
+   "4N",
+   "4L"
+  ],
+  "qstn_5rU4aA6EE4hER7rhTxgoFC": [
+   "6K"
+  ],
+  "qstn_5s0wKLBn9PCzJDNJl9cWXv": [
+   "6C"
+  ],
+  "qstn_5s9SZmkFO8fzJJnOUZeeJr": [
+   "6H"
+  ],
+  "qstn_5sYjx5aFankI592nHd5hCb": [
+   "10E",
+   "10F",
+   "10G"
+  ],
+  "qstn_5shUKUMpe9J3c1JhAUIvBa": [
+   "7D"
+  ],
+  "qstn_5t3hhZzcePJc2sBSIUTggR": [
+   "10B",
+   "10C"
+  ],
+  "qstn_5t4ISlgiM2Hi9Mcm5WugUh": [
+   "4I"
+  ],
+  "qstn_5tJKRup4VzXAIg0Z7pVQSf": [
+   "7C"
+  ],
+  "qstn_5tJbpntar4ou1ln2n59gH9": [
+   "10B",
+   "10C",
+   "10D"
+  ],
+  "qstn_5tTAwvRsXJLkW0tl1Kobxc": [
+   "10H"
+  ],
+  "qstn_5uTvxTne0zpVMxkWWHBXE7": [
+   "4I",
+   "3J"
+  ],
+  "qstn_5ucyxnnVpHqj5VXFke5Y1": [
+   "1C"
+  ],
+  "qstn_5v5lD3mMzopzhKwRs7xgmd": [
+   "3L"
+  ],
+  "qstn_5vM5Y770TIuAfv9NPndvKp": [
+   "8B",
+   "8E"
+  ],
+  "qstn_5vO3Nj7dvqBka3B10lA0ZR": [
+   "7B",
+   "7D"
+  ],
+  "qstn_5vSGasmyh5Utt29qFVQk4F": [
+   "1B"
+  ],
+  "qstn_5vrS6BziaJUY83y06Za00z": [
+   "1C"
+  ],
+  "qstn_5w3Qjk0kEpfLEmHiDg4uKy": [
+   "1B"
+  ],
+  "qstn_5x6ilY0LvV5L8gCpulNe0j": [
+   "3H"
+  ],
+  "qstn_5xJRhlKGb8iO9KBBxYUFzO": [
+   "5F"
+  ],
+  "qstn_5xNG8KcJyD0PGo67v6XcXo": [
+   "6M"
+  ],
+  "qstn_5xXC9caDvSAxxcEAldLoA3": [
+   "4C",
+   "4E",
+   "4I"
+  ],
+  "qstn_5xZ1jt6WJLWXoOEp5djOZJ": [
+   "7A",
+   "7C",
+   "6F"
+  ],
+  "qstn_5xsui2L5UN9ZsUFKQTx79H": [
+   "7C"
+  ],
+  "qstn_5z45bTa57P2NXs268NBCH8": [
+   "3C"
+  ],
+  "qstn_5zBcDYdrDnhuWg0GSIOk9p": [
+   "3B",
+   "7B"
+  ],
+  "qstn_5zQReFbRMymuGUCfz5ijeE": [
+   "2H",
+   "2D"
+  ],
+  "qstn_5zn5xHgBx8RopO6tLnYpPm": [
+   "5B",
+   "5E",
+   "5F"
+  ],
+  "qstn_608Jkn3euRgr9fyngIjTJm": [
+   "6F",
+   "9A"
+  ],
+  "qstn_60XPopBI2sAWD8SRInxxdr": [
+   "3J"
+  ],
+  "qstn_60unIgiU9adWLsQ1I1dQtV": [
+   "6N",
+   "6M"
+  ],
+  "qstn_615DzfGYZ3qAB1sCbxtftN": [
+   "3J"
+  ],
+  "qstn_618G6rJOuCvRSxoENrmno6": [
+   "4G"
+  ],
+  "qstn_61BnptsYmqO0QdEYeUgMnH": [
+   "7D"
+  ],
+  "qstn_61aRKkq06ycyilSRxo7EOB": [
+   "4I",
+   "3J"
+  ],
+  "qstn_61sonoXbamDidwVDsMrodB": [
+   "9B"
+  ],
+  "qstn_61xjwKP74VgaDYAIy53xp2": [
+   "4J",
+   "4I"
+  ],
+  "qstn_625VBCaSz16jwtutmdbw9e": [
+   "1D",
+   "1E"
+  ],
+  "qstn_62DBV5t666URZZjClUrj50": [
+   "4M"
+  ],
+  "qstn_62K5LzKhMpGA0ZqN8R6ncH": [
+   "3A"
+  ],
+  "qstn_62MPKZ1NHLRquyMOGd9ret": [
+   "9B"
+  ],
+  "qstn_62OWUm73zn1BK9vp2EHPcr": [
+   "1D"
+  ],
+  "qstn_63X9IAqoyTx1hegxHL2e6n": [
+   "7B",
+   "7D",
+   "6K"
+  ],
+  "qstn_645fAa2x7MIbiaHszh95i9": [
+   "8B",
+   "8E",
+   "8I"
+  ],
+  "qstn_64drZ2vvwAMiIoVAOLXMlJ": [
+   "7C",
+   "7D",
+   "4M"
+  ],
+  "qstn_64kVXfnrVsbHiIJpWWrRQQ": [
+   "4F",
+   "4C",
+   "4D"
+  ],
+  "qstn_65WIZL9OsnRjP85pnvBTTJ": [
+   "3H",
+   "3G"
+  ],
+  "qstn_65Zi9QO5pdtOJmLTeHqUh5": [
+   "7C",
+   "6F"
+  ],
+  "qstn_65bhrlogZu1UUQdSvoAoXH": [
+   "6F",
+   "6K"
+  ],
+  "qstn_65sDwqFOLOGMTH0wkKk40m": [
+   "3G"
+  ],
+  "qstn_65slKRdpsptPnSLswLpLQC": [
+   "3C"
+  ],
+  "qstn_65xGhfDxqgiyqe1sqcssIk": [
+   "8J",
+   "8K",
+   "5F"
+  ],
+  "qstn_679EQFQqtcKv9BDP8dPdKE": [
+   "7C"
+  ],
+  "qstn_67STLKA1bNVHmOSVwD2buo": [
+   "4J",
+   "4K",
+   "4L"
+  ],
+  "qstn_67ZXgOpoHMKqDXPc9pJcX9": [
+   "6F",
+   "6K"
+  ],
+  "qstn_67iezY7NejuvJcKfFPvs2L": [
+   "3G",
+   "7B"
+  ],
+  "qstn_67uHIT7wbz9J58cDkYUJkL": [
+   "3B"
+  ],
+  "qstn_684dHDyDfODrxJXzwNoXs3": [
+   "4A",
+   "4B",
+   "4C"
+  ],
+  "qstn_687Nr8YURhw3Kyydh2pW0M": [
+   "6K"
+  ],
+  "qstn_695X8t9xxO0h5qY8gsuQ2P": [
+   "1I"
+  ],
+  "qstn_69VvFnvFPbP29ELMiZpkrl": [
+   "7B"
+  ],
+  "qstn_69delVVZ9ty8deoWK10HfO": [
+   "6C"
+  ],
+  "qstn_6AWKXaM1ciWVNFAl25IBb8": [
+   "9D"
+  ],
+  "qstn_6AeIzADqcjMui9bPr1NUOc": [
+   "1K"
+  ],
+  "qstn_6AfPs74cK8ooQgQOzhhOU5": [
+   "1J",
+   "7C"
+  ],
+  "qstn_6AfkQMUa89TGuy7dF17H1n": [
+   "5F"
+  ],
+  "qstn_6AuP2uOrIN28qwRbmEvzxn": [
+   "4A",
+   "4B",
+   "4C"
+  ],
+  "qstn_6BDOJtfLgvSTveyhYLmdaK": [
+   "6K",
+   "9B"
+  ],
+  "qstn_6CBAPRmaR38eTOqgBWfoeb": [
+   "4G",
+   "1H"
+  ],
+  "qstn_6DNfsyUr1bIkhQNFU9VWSN": [
+   "3C"
+  ],
+  "qstn_6E8mMHYxSlWt6CD8R8sHqJ": [
+   "4G"
+  ],
+  "qstn_6EEwYPkmdR3EUeQJgpL3OB": [
+   "1J",
+   "1G"
+  ],
+  "qstn_6ERYHeoiT9FRZAIYfMVPBR": [
+   "4G"
+  ],
+  "qstn_6EURuEsqXc9rAsX43CR4NJ": [
+   "3B"
+  ],
+  "qstn_6EyS0zPSuY9fgrDXWaHqZW": [
+   "1H"
+  ],
+  "qstn_6FMHGWUIBQau4bHYQodS9z": [
+   "3B"
+  ],
+  "qstn_6FUk2C4t1ohZoh3H9CQMHp": [
+   "9D"
+  ],
+  "qstn_6FvujFZwt71X8RU000pUWt": [
+   "1D",
+   "1E"
+  ],
+  "qstn_6G0cGOKMRsoWZ3J4QzBH0y": [
+   "4L"
+  ],
+  "qstn_6G83iuslyg6KNsq1oHurBY": [
+   "6K",
+   "6B",
+   "6H"
+  ],
+  "qstn_6GHJoEpDGBAaEFsnH0bV8N": [
+   "1E"
+  ],
+  "qstn_6GlCxLUgz3oR6jNme9V23Z": [
+   "1H",
+   "3G",
+   "1K"
+  ],
+  "qstn_6GmHD2JgEJ2H0DrOcLfbzR": [
+   "6G",
+   "7B"
+  ],
+  "qstn_6HKGRyPSqTic3bNYD8eG4w": [
+   "6F",
+   "6K",
+   "6H"
+  ],
+  "qstn_6Ho8iFa9bpZFo0Mb11GFNL": [
+   "2H",
+   "2C",
+   "2D"
+  ],
+  "qstn_6Ife5OTvwuKC6utmaQk2SQ": [
+   "1H",
+   "1I"
+  ],
+  "qstn_6J6pniIOiQNs4t49cmtUxB": [
+   "8B",
+   "8C",
+   "8E"
+  ],
+  "qstn_6JbrGj34pEtCSHykBmW3ek": [
+   "1K",
+   "1A",
+   "1I"
+  ],
+  "qstn_6JdrESIVYA0oqUUhmJnFRb": [
+   "6C",
+   "6K"
+  ],
+  "qstn_6JqFlwRdK8en5yxBUoXBRs": [
+   "8B",
+   "8I"
+  ],
+  "qstn_6KKxJF4uUbyS4L7vXbFGtQ": [
+   "1B"
+  ],
+  "qstn_6KYDonFwwYIjLnAHFxAp1F": [
+   "1H",
+   "1G"
+  ],
+  "qstn_6KqrN8mxa19u2L7qNDU5v7": [
+   "7D"
+  ],
+  "qstn_6LOLer8zr2G2rRDeT8dG60": [
+   "7B",
+   "6F",
+   "6C"
+  ],
+  "qstn_6LPMxOGRpDfJA1YDJA547b": [
+   "4G",
+   "7B",
+   "7D"
+  ],
+  "qstn_6LR66S6w2wiUs3RJZHNGdf": [
+   "9B",
+   "9C"
+  ],
+  "qstn_6Lq7NxaS4EerD6msxmBUIT": [
+   "6F",
+   "9B"
+  ],
+  "qstn_6M2pfe9fuYsTlFIZhocUUv": [
+   "4G",
+   "3G"
+  ],
+  "qstn_6MP8zONJdDdDmLSXZBgwhc": [
+   "4L"
+  ],
+  "qstn_6MiraVNf5dFRJ2J71Vk556": [
+   "1G"
+  ],
+  "qstn_6NJTtD8c2gvYikG6axzxqW": [
+   "4L",
+   "4M",
+   "3G"
+  ],
+  "qstn_6NgbUiuITK7SMz5k8MqbYt": [
+   "7D"
+  ],
+  "qstn_6NwEJUBOpUeTMmRCD6MZj6": [
+   "3H"
+  ],
+  "qstn_6OJ2eTDvCKFNigbPW2WMLE": [
+   "1H",
+   "1G",
+   "1A"
+  ],
+  "qstn_6ON4i5q4O7YVpNaG875hKk": [
+   "1J"
+  ],
+  "qstn_6PGxkofu2Lunuu7aFDbiea": [
+   "4C",
+   "4F",
+   "4I"
+  ],
+  "qstn_6PmIJT5YD9vKJCofmZwfWd": [
+   "3C"
+  ],
+  "qstn_6PolctYwAfNRwMxKSXQ0U4": [
+   "10B"
+  ],
+  "qstn_6Q44qlp40It7iSSd7tW4fl": [
+   "1H"
+  ],
+  "qstn_6Qp6u7HoknNLk2kxvFO6gu": [
+   "3B",
+   "3A"
+  ],
+  "qstn_6RWdKXZzCsHkCeAGIfHQjY": [
+   "2H",
+   "2C",
+   "2D"
+  ],
+  "qstn_6RXbgt4iTqhZvmPBk4YwHV": [
+   "4L",
+   "4M"
+  ],
+  "qstn_6Rb2afkER96tqorZKqgkzm": [
+   "6N"
+  ],
+  "qstn_6ReFKci5gwuDvEo13h0ps9": [
+   "7D",
+   "6K"
+  ],
+  "qstn_6RkKIGitu0aUS8v2fHzEQV": [
+   "4I",
+   "4K",
+   "4M"
+  ],
+  "qstn_6RkkdM7RYe1gkqa69AkECt": [
+   "3A"
+  ],
+  "qstn_6RzQN6ekj9tNrSt0lQ6OB2": [
+   "3B"
+  ],
+  "qstn_6SXNQZ9dFDjOTNvnFSX3im": [
+   "8J",
+   "8K",
+   "5F"
+  ],
+  "qstn_6T3PXcOMNqBnlaMTY3sZUx": [
+   "10B",
+   "10C"
+  ],
+  "qstn_6TfVRLXCJlXZqvHxrYwR9m": [
+   "6C",
+   "6G",
+   "1J"
+  ],
+  "qstn_6UGxf5F4aO6iFo6HEasNDl": [
+   "5F",
+   "5B",
+   "5E"
+  ],
+  "qstn_6UVlz4PAIKb6Eh0320jijd": [
+   "7C",
+   "6K"
+  ],
+  "qstn_6VSYe1KDMecElGSNORsFtH": [
+   "3B"
+  ],
+  "qstn_6W4Zh3lUUyA3uIgc2ywcfy": [
+   "8B"
+  ],
+  "qstn_6W7ycZ3xM3vTBIfDthW9Wn": [
+   "1H",
+   "1G"
+  ],
+  "qstn_6WZsJoHsRj2mdOfRnEbURg": [
+   "6K"
+  ],
+  "qstn_6X25ZQIWMWQ19qSvnxTZNs": [
+   "8B"
+  ],
+  "qstn_6XTOhscAZxq8rT0u1AxZAm": [
+   "4M"
+  ],
+  "qstn_6XpLA0DarD7NzwiPcEYQji": [
+   "5B",
+   "1B"
+  ],
+  "qstn_6YMUkMZ1SWd9Gj5xSs69O4": [
+   "10G"
+  ],
+  "qstn_6YgGZR6Sd2SSKwnXyQ4krH": [
+   "6M",
+   "6N"
+  ],
+  "qstn_6Yh6qKasS32lyWAg9ja4ED": [
+   "5B",
+   "5E"
+  ],
+  "qstn_6YkNXr34p4j86aY3fo8KyU": [
+   "6J",
+   "6B",
+   "8J"
+  ],
+  "qstn_6YokJiVylICzpNNaYOf3Ay": [
+   "3A",
+   "3C"
+  ],
+  "qstn_6Zq6EMPCFk1GPduoONgeBr": [
+   "10B",
+   "10C"
+  ],
+  "qstn_6ZzxXgrykfzmAIRbQajvB0": [
+   "10E"
+  ],
+  "qstn_6a58HFNhrTJ0hkp9vtaMz6": [
+   "7C"
+  ],
+  "qstn_6auJQFZDAQjrYRwboJBo77": [
+   "3J"
+  ],
+  "qstn_6b5mVutbPE1ugkrp0uXLFJ": [
+   "4N",
+   "4L"
+  ],
+  "qstn_6bKcRWu1p7cPd6pyDjBPx7": [
+   "1D",
+   "1E",
+   "1C"
+  ],
+  "qstn_6bLoCbORM4NBHFrCLHLEJT": [
+   "8B",
+   "8E",
+   "8H"
+  ],
+  "qstn_6bOKm2gEsfKZt1RmJN2MvR": [
+   "7B"
+  ],
+  "qstn_6bSi9bwGuHSgrLNeT6tSpR": [
+   "1K"
+  ],
+  "qstn_6bc6WHjlslcrmHBvseTgJu": [
+   "1K",
+   "1A",
+   "1I"
+  ],
+  "qstn_6cahXjvWJgxxdxs0GMO0iV": [
+   "10C",
+   "10B",
+   "10F"
+  ],
+  "qstn_6d5VUlaYrJC6BkBAqHwjzI": [
+   "3A",
+   "3G"
+  ],
+  "qstn_6dGnXMm2dysMtBkGTWH4n7": [
+   "3D",
+   "3G"
+  ],
+  "qstn_6dYv3iQDiDaE5IGgg3coyC": [
+   "3C"
+  ],
+  "qstn_6e2yh5LVS7CwZJfZ2jRpvx": [
+   "6C",
+   "6M"
+  ],
+  "qstn_6eNmOrlOSN9XwG6ijgD3Yj": [
+   "6K",
+   "6F",
+   "9A"
+  ],
+  "qstn_6ekz2TrKLTZsnpfWV6k9OU": [
+   "3C"
+  ],
+  "qstn_6fCnIsDzrRQrKN8M2xZlCG": [
+   "3F",
+   "3B"
+  ],
+  "qstn_6fxQSDEwqrjP9UGr8zJKEC": [
+   "1B",
+   "2A"
+  ],
+  "qstn_6hGcV5wDS1UglnIjCOAWMK": [
+   "7B",
+   "7C"
+  ],
+  "qstn_6hcxw382Z0MhS17i5cXLCd": [
+   "8B",
+   "8F"
+  ],
+  "qstn_6i44GqleXS3DLseUn7Y7yN": [
+   "1C",
+   "3G"
+  ],
+  "qstn_6iXAdJ0bg1BDOqJLhJggOm": [
+   "10E",
+   "10F",
+   "10K"
+  ],
+  "qstn_6ifVYkCfSvrfy0v8qcRQvo": [
+   "1E",
+   "3B"
+  ],
+  "qstn_6il5qwgRq5mSo4s6dWzEAS": [
+   "3G",
+   "3F",
+   "3B"
+  ],
+  "qstn_6inMMqKLiRIYcjLcMREHVQ": [
+   "5E"
+  ],
+  "qstn_6jEXIqVveC9EuUqmQGcYTS": [
+   "3C"
+  ],
+  "qstn_6jYe6lPsCDnAJwGympV5Jj": [
+   "4I",
+   "4J",
+   "4K"
+  ],
+  "qstn_6kHDlePzJG8NlOYUJE4swW": [
+   "3A"
+  ],
+  "qstn_6kQIys2hMrdLgWhYnKwYmd": [
+   "5E"
+  ],
+  "qstn_6l44q46U4zPIlpKNTZDerD": [
+   "1H",
+   "1G"
+  ],
+  "qstn_6mEfKpcDSiUyQl1BJvBdAQ": [
+   "3D",
+   "3C"
+  ],
+  "qstn_6mU1ykhD02REKR0u3Bm47c": [
+   "1J"
+  ],
+  "qstn_6n0jipT9eVSjPNcJei4z6R": [
+   "1H"
+  ],
+  "qstn_6nEpOUHrnLUQVlPgMJaubN": [
+   "4J",
+   "4K"
+  ],
+  "qstn_6nHmtpezFE5U2Nz7X1CWzI": [
+   "3G",
+   "3C"
+  ],
+  "qstn_6nOXpnu7xTaO9vWWOwa472": [
+   "3J"
+  ],
+  "qstn_6no8nulcNAdfLxC9UddYtb": [
+   "4A",
+   "4C",
+   "4F"
+  ],
+  "qstn_6o9CkygXoo5YO3Y37wStOS": [
+   "4L",
+   "4M",
+   "4N"
+  ],
+  "qstn_6oeqBfMLRorpmBSWK2kyV0": [
+   "3J"
+  ],
+  "qstn_6ojjUJNk6GvdODS4udMRQO": [
+   "3C",
+   "1C"
+  ],
+  "qstn_6pHwXLUPjUoh18weT3zUnC": [
+   "3D",
+   "3G",
+   "3F"
+  ],
+  "qstn_6pdOBG2vpfYaOBaw9Rt56J": [
+   "1H"
+  ],
+  "qstn_6qMVl11V3FAH8iYWB7YDTI": [
+   "10F"
+  ],
+  "qstn_6raMSmEtgE5PY2dEk2JpRT": [
+   "3L"
+  ],
+  "qstn_6riEP1MUwZ5l3wcMB5xPpM": [
+   "1B"
+  ],
+  "qstn_6sW6OkFjlBYjOlokql7zzR": [
+   "1J"
+  ],
+  "qstn_6tdw7MAklaE7BXxwiF4Gpn": [
+   "4M",
+   "4N"
+  ],
+  "qstn_6uI38zIpSR7ZZheZfRYQs6": [
+   "5F",
+   "5G"
+  ],
+  "qstn_6uLCOJXo07suvbiggvHIJy": [
+   "1C"
+  ],
+  "qstn_6uhKdl9L0ujBFPnJajJblF": [
+   "4G"
+  ],
+  "qstn_6w2V5rEZrjmYv0TvRDpSko": [
+   "8J",
+   "8K",
+   "8L"
+  ],
+  "qstn_6xMkSu0sCEft5hVgaqEUEM": [
+   "6G",
+   "6H",
+   "7B"
+  ],
+  "qstn_6xbzfpCwanLqJDFuBJm0Gp": [
+   "6C"
+  ],
+  "qstn_6xd5j0thAFVCjbWuTcpgy8": [
+   "3F"
+  ],
+  "qstn_6xey7GafjXPQDIz2jdViA1": [
+   "1H"
+  ],
+  "qstn_6xnQAqB5niI94W2NoHVxoy": [
+   "6F"
+  ],
+  "qstn_6y9vh0V0xVM6ttc2zx1vsH": [
+   "3K"
+  ],
+  "qstn_6yCIdD7VfeILhXPuqiV63z": [
+   "10E",
+   "10G",
+   "10H"
+  ],
+  "qstn_6yW1FHAKgOU38vHaIzdLLq": [
+   "7C"
+  ],
+  "qstn_6z0gyZkg6wqhkKcXNghYdE": [
+   "3B"
+  ],
+  "qstn_6zOSmL3xqZtFoPX3O05Vba": [
+   "1H"
+  ],
+  "qstn_6zdOhOnhFM6CPwXpjqT1aA": [
+   "7C",
+   "6F"
+  ],
+  "qstn_6zioru7wWOHjQ22Vy3f7mz": [
+   "3J",
+   "3K"
+  ],
+  "qstn_6znhwifhP42JF65lWRzFKd": [
+   "1B",
+   "1H"
+  ],
+  "qstn_70XOqHxMV9fGGK5UALmLKU": [
+   "6N"
+  ],
+  "qstn_7137BjnJ1CUVlfXajyqR1Y": [
+   "10B",
+   "10C"
+  ],
+  "qstn_71JVSIkh1UH9ZLgcONx6H9": [
+   "3G"
+  ],
+  "qstn_71zYmJUYWku6p2niFs9uCx": [
+   "7C",
+   "1I",
+   "1J"
+  ],
+  "qstn_72LDK269hoVpPPjqgQduaC": [
+   "4C",
+   "4F",
+   "4E"
+  ],
+  "qstn_72zbWSCD2dfbPpTTl82lqK": [
+   "10B",
+   "10C"
+  ],
+  "qstn_73emIk5LOPnFMH1hNIbG0S": [
+   "1D"
+  ],
+  "qstn_73vHbMBKSlroU4g6CMcrwW": [
+   "10F",
+   "10G"
+  ],
+  "qstn_743G5jrin3406FMNd7KOdM": [
+   "3J"
+  ],
+  "qstn_74mwhWKuMRBg9CZmHM6TJK": [
+   "3A",
+   "3G",
+   "3H"
+  ],
+  "qstn_75LiLMEl4vlESVji5ZsTu5": [
+   "4H",
+   "4I"
+  ],
+  "qstn_75bd9ihbYEXo23wuUzFvja": [
+   "10A"
+  ],
+  "qstn_75oqbHvLkKMDxgbH8x6zSS": [
+   "10F",
+   "10G",
+   "10H"
+  ],
+  "qstn_77SHQMZjRiOS0WIh94L5Uc": [
+   "4A",
+   "4D"
+  ],
+  "qstn_77kpBaC4O5zo39lkz1VSNW": [
+   "8B",
+   "8C",
+   "8E"
+  ],
+  "qstn_78KnJdnckmHXSDQp3esK3I": [
+   "4L",
+   "4M"
+  ],
+  "qstn_78WlNGIiyd5b3WSxVHabZc": [
+   "1H",
+   "1G",
+   "1K"
+  ],
+  "qstn_78pnXtYMwVriwF4HGr2pJt": [
+   "10C"
+  ],
+  "qstn_79Esrmyce7VkCT8G2d3xC": [
+   "6K"
+  ],
+  "qstn_79wgpiU3KoRTILAFYTuuTc": [
+   "3I",
+   "3G"
+  ],
+  "qstn_7A3h58cvMyaFxLRBHnpKzS": [
+   "9B",
+   "6F"
+  ],
+  "qstn_7AWWvKwcHnwuVhWgsipwkB": [
+   "7B"
+  ],
+  "qstn_7BH3GvA49vcM3gSbUAAv32": [
+   "1H",
+   "1I"
+  ],
+  "qstn_7BnAvcLD611eMgydeQsqgU": [
+   "4I"
+  ],
+  "qstn_7BoUv1UMf3X6qJbXXEjhBT": [
+   "3H"
+  ],
+  "qstn_7CC9HPPNH29yw6D5mF0OvS": [
+   "6J"
+  ],
+  "qstn_7CTa9Sb1rhjUAhLpRykGpi": [
+   "4G",
+   "7B"
+  ],
+  "qstn_7D5QOX7FBgkA0KyJ6hCfBj": [
+   "4L"
+  ],
+  "qstn_7DS6mQK9HRXgRsAEj1IR1Z": [
+   "10C"
+  ],
+  "qstn_7DXaDnP084vASbmPGtJcWM": [
+   "1C",
+   "3G",
+   "3B"
+  ],
+  "qstn_7DayrONsYUcoCdXXqqWyiQ": [
+   "1H",
+   "1I"
+  ],
+  "qstn_7DqCb0MpnlEGqZDA2Gxiqf": [
+   "6C"
+  ],
+  "qstn_7E8hXfyTfUPXp7oepigBvK": [
+   "6G",
+   "7C",
+   "3B"
+  ],
+  "qstn_7EBpz2gKBsjK9dkFkSlsSX": [
+   "10B"
+  ],
+  "qstn_7EQhjegqrsCGfeeyFmRYoT": [
+   "9A",
+   "9B"
+  ],
+  "qstn_7EShmA0uQqRUxgXHEjpO8S": [
+   "1J",
+   "1I"
+  ],
+  "qstn_7F5dO1jAIXlC7ursLFgOsr": [
+   "2H",
+   "2C",
+   "2D"
+  ],
+  "qstn_7FKEq8FBzI6zPTqprUciK3": [
+   "1H"
+  ],
+  "qstn_7FNzvQeLKXjYHJHarAIoR2": [
+   "6G",
+   "7C"
+  ],
+  "qstn_7Fa0k161aOlprrZgiLcNrS": [
+   "1C"
+  ],
+  "qstn_7FoVfVvTNPle7S3vRg1fcE": [
+   "6I",
+   "6J"
+  ],
+  "qstn_7FyljWcOHVURL6XwvzHBJh": [
+   "4L"
+  ],
+  "qstn_7GZqvrH2JtH1j4oGDpWgRN": [
+   "6H"
+  ],
+  "qstn_7Gr9txyu9rbPZpY4TzDvcA": [
+   "3A"
+  ],
+  "qstn_7Hj8Sw8JYVBhjUI4OgdYpP": [
+   "3F",
+   "3G"
+  ],
+  "qstn_7HxldlBNtY2pmjRkUPSMlp": [
+   "1K",
+   "1A"
+  ],
+  "qstn_7JKjD5yJih4I9hhaywJfg8": [
+   "6K",
+   "7B",
+   "9A"
+  ],
+  "qstn_7JL9GfD660lnBAxiuICm9": [
+   "7B",
+   "7D"
+  ],
+  "qstn_7KDR8UdrGvxiQTGvqw56rb": [
+   "4G",
+   "3G"
+  ],
+  "qstn_7KiDvbY1xNIlmbG2CCgUM2": [
+   "1H"
+  ],
+  "qstn_7L5YG3FkCcV1aWlB1hbULK": [
+   "3G"
+  ],
+  "qstn_7LAoGYK0KAGVlHkMEBMUar": [
+   "2F",
+   "2B"
+  ],
+  "qstn_7Ld7jTQL0M1s7SWii6TsWl": [
+   "3J"
+  ],
+  "qstn_7MPcYrPb2vPHPYtJikdczR": [
+   "8B",
+   "8E",
+   "8F"
+  ],
+  "qstn_7NXILVVZFWEwVmE9BLYIbo": [
+   "9B",
+   "6F",
+   "7B"
+  ],
+  "qstn_7Og0jEYBfR14tcd2MHL8mo": [
+   "1I",
+   "1J"
+  ],
+  "qstn_7P9QTSLBwkOYgLZG3iUv8n": [
+   "1B"
+  ],
+  "qstn_7PWIWN5EMsGWaBelRli3sw": [
+   "6C",
+   "6F",
+   "7B"
+  ],
+  "qstn_7PoMzyISWpaVdrsvnrmDwR": [
+   "3D",
+   "3E"
+  ],
+  "qstn_7Pr0wloUsDw1AxXnQDg26H": [
+   "10E",
+   "10F"
+  ],
+  "qstn_7Q4aoEGBEmMeHffuvYHoPv": [
+   "7C",
+   "1J"
+  ],
+  "qstn_7QFhtF1WAomTp4clR7cc19": [
+   "5B"
+  ],
+  "qstn_7QJ2FfZh6x8Ijd4J0HpUoS": [
+   "5B"
+  ],
+  "qstn_7RJt1SlKXQ44k9JbHcxKGW": [
+   "10B",
+   "10C"
+  ],
+  "qstn_7RU3PvPz3yhBaWKzEO3iYV": [
+   "3J",
+   "2H"
+  ],
+  "qstn_7S9XIpdywfgbNow73CH1fQ": [
+   "3F"
+  ],
+  "qstn_7SxCXpJiIFibKlaiCNCMRG": [
+   "1H",
+   "6K"
+  ],
+  "qstn_7TL85FuOraNHLZwi5ddJ12": [
+   "4B",
+   "4C",
+   "4F"
+  ],
+  "qstn_7TmHjs9cj08lOWUhFDpR4o": [
+   "4M",
+   "4N"
+  ],
+  "qstn_7UAAXWeZDdROHBPMEqmwID": [
+   "1H"
+  ],
+  "qstn_7UEBZCfepB6Iw5wBk7WeMb": [
+   "3C"
+  ],
+  "qstn_7Ubhw48k4YU7dMr9YXPe5A": [
+   "10B"
+  ],
+  "qstn_7Uj0dy9CQcgKthJBckQ7HQ": [
+   "6G"
+  ],
+  "qstn_7VDVrubowXqTqZvFHdhXbE": [
+   "1C"
+  ],
+  "qstn_7Vqcq7NYpoRoK3HUUm0HrU": [
+   "6F",
+   "6G",
+   "6H"
+  ],
+  "qstn_7WJx2q41CHRTZ4qDXHxLaD": [
+   "10C",
+   "10B",
+   "10D"
+  ],
+  "qstn_7WSj1zWZe7x6xtrSBdEx1T": [
+   "9D"
+  ],
+  "qstn_7WX5hjY5ZnMUDk0vwYfRzQ": [
+   "3D",
+   "3C"
+  ],
+  "qstn_7Wnc0g7j27g56wJhqGEMGJ": [
+   "3H"
+  ],
+  "qstn_7X6h3NCLVl1mHxnXEUZHWc": [
+   "3G"
+  ],
+  "qstn_7XonPEyWRhP3HrlmgqL11i": [
+   "2H",
+   "2B"
+  ],
+  "qstn_7YdjBQ4Sk60Zk5ghIN6Jls": [
+   "6F"
+  ],
+  "qstn_7Yy67v0uVUMiMCyAoPCiBL": [
+   "3H",
+   "3G",
+   "1H"
+  ],
+  "qstn_7ZPN0pCvteQW9uVAkyGC34": [
+   "8B",
+   "8C",
+   "8H"
+  ],
+  "qstn_7ZsxSnWINotFrPm4jIICP5": [
+   "3D",
+   "3G",
+   "4M"
+  ],
+  "qstn_7a3ihxBs3vIXnQMquI5cZD": [
+   "1K",
+   "1H",
+   "1I"
+  ],
+  "qstn_7aX4kztNEtRBTQCCf40J4X": [
+   "1K"
+  ],
+  "qstn_7ayVBH8e2vo20xXnzgNYrG": [
+   "4D",
+   "4E",
+   "4F"
+  ],
+  "qstn_7b4LonMVS8CE7FgS2HPYlU": [
+   "4M",
+   "3G"
+  ],
+  "qstn_7bKCHzKSGumyQAj5CIdVI7": [
+   "1H",
+   "1I",
+   "1J"
+  ],
+  "qstn_7bWjyWeeKk9NOUDbHQhoVI": [
+   "3G"
+  ],
+  "qstn_7bjV27rI1Mf7wmzBhZnUKd": [
+   "6E"
+  ],
+  "qstn_7bmBuByvMAxOuDnMu2rJg5": [
+   "6E"
+  ],
+  "qstn_7bv6tnZHt51jiqiE48KbpR": [
+   "1H"
+  ],
+  "qstn_7cSbEyudWLVRWEk4TkeoVK": [
+   "1B",
+   "1H"
+  ],
+  "qstn_7cTcj582Mo6LRhc4tyihfE": [
+   "3B"
+  ],
+  "qstn_7cjmnSCWSG0Xw6uMIFmFns": [
+   "3A"
+  ],
+  "qstn_7ck7ouWli5T6SzFkUZET96": [
+   "1J"
+  ],
+  "qstn_7d0EGIhXZb8NjzGgAzkjUI": [
+   "1H"
+  ],
+  "qstn_7dkv0Wnk9E6ylQblkZsIt0": [
+   "3B"
+  ],
+  "qstn_7dqNeAQAoR0ya9duODayse": [
+   "10F",
+   "10G",
+   "10H"
+  ],
+  "qstn_7eGc4gtddhuJhRbAlFaDYK": [
+   "3F"
+  ],
+  "qstn_7eKguuHOsrFG4bbpXubxTJ": [
+   "1H",
+   "3B",
+   "3G"
+  ],
+  "qstn_7eRnhGrBBfGTcm1PmUIRWk": [
+   "7B"
+  ],
+  "qstn_7eW5h3Y9OFRRlARS3cFPuC": [
+   "1H"
+  ],
+  "qstn_7eimA5x6y8flI3GqsIzBYx": [
+   "1G"
+  ],
+  "qstn_7f0q0r1p7JDwWB3JW9LHSo": [
+   "2H",
+   "2D"
+  ],
+  "qstn_7fg57gWG64Coiw8vdPN9JC": [
+   "10A"
+  ],
+  "qstn_7ft7au1dogFkDbyOMaXxI8": [
+   "4L"
+  ],
+  "qstn_7gYkzjTFaAmUmkWKZQHHCF": [
+   "1B",
+   "3A"
+  ],
+  "qstn_7grFtBZHDp57XN33grlHzV": [
+   "8B",
+   "8C",
+   "8I"
+  ],
+  "qstn_7gt6PVdRL7PoIoWwO9rdbO": [
+   "3H"
+  ],
+  "qstn_7h4K5i6pc1lCeoRvkysNAj": [
+   "3L"
+  ],
+  "qstn_7hH6kyLTkCTtSqKpuWGcgq": [
+   "5F",
+   "5E",
+   "5B"
+  ],
+  "qstn_7hHedbv2Jxz04VidBc4I9g": [
+   "4L",
+   "4M",
+   "4N"
+  ],
+  "qstn_7hK0LVP4ysivOUljgeb50C": [
+   "3D",
+   "3E"
+  ],
+  "qstn_7hVTvHFHF2tlyYhhMgJ6z": [
+   "1H"
+  ],
+  "qstn_7hXsE7QOXgvGQNaxNxqJWb": [
+   "5F",
+   "5G",
+   "5E"
+  ],
+  "qstn_7hkFf9Aeyx9tbQNURPkTPF": [
+   "1J"
+  ],
+  "qstn_7iJAfvh88CmYfIF4LjxeNT": [
+   "6F",
+   "7C"
+  ],
+  "qstn_7iYKt3CvZkhY6j2b8CQZ55": [
+   "7C"
+  ],
+  "qstn_7jAyW57aqsWfZA2B4tzBu1": [
+   "3L"
+  ],
+  "qstn_7jKtaF2hFfgXCEdtAsTKID": [
+   "9B"
+  ],
+  "qstn_7k5ex2IvWC4j1mv9BCKept": [
+   "6C",
+   "6B"
+  ],
+  "qstn_7kMg4KbWwnsvIpWvh9LvWQ": [
+   "9B"
+  ],
+  "qstn_7kb2xIb5y6JjtygXKlpH0q": [
+   "10K"
+  ],
+  "qstn_7kbJIrO9HGFxtfrxiAdKQi": [
+   "8B",
+   "8E",
+   "8H"
+  ],
+  "qstn_7lYQc6CiPCPuWZRScqM9hM": [
+   "2H",
+   "2C",
+   "2D"
+  ],
+  "qstn_7lfLuPuek3UzTZosbazK3S": [
+   "5B",
+   "5E"
+  ],
+  "qstn_7lnjC0WOK14e2Eu1Rq3aRC": [
+   "1H"
+  ],
+  "qstn_7lt4UBfWu6KPWgSxGZLqpB": [
+   "3K"
+  ],
+  "qstn_7mOZXWPJYADfZqTHTQ07f2": [
+   "3L",
+   "1B"
+  ],
+  "qstn_7mXMTEArPxFhk5duTfdKly": [
+   "3J"
+  ],
+  "qstn_7mcnuoGVeNT4vQsXuGH0wF": [
+   "6K",
+   "6F"
+  ],
+  "qstn_7mfIkdrddBlxWZvGlJKjE6": [
+   "3C",
+   "3A"
+  ],
+  "qstn_80yIMeFNvknvYo8FUKzZA": [
+   "1K"
+  ],
+  "qstn_8OfLM83MV3mHMaLhwlssG": [
+   "6C"
+  ],
+  "qstn_8RUtYfxfJZlKTnTTYhydr": [
+   "6K",
+   "6L",
+   "6M"
+  ],
+  "qstn_8SQNOAXy7hINl4DyYeQOw": [
+   "9B"
+  ],
+  "qstn_8bD63IeYgSY7pg4SekryU": [
+   "9D"
+  ],
+  "qstn_8wJlp12ZAJ4cq0baboRkI": [
+   "8B",
+   "8E",
+   "8I"
+  ],
+  "qstn_93XF5n9TxBQqvxDaFPcs": [
+   "6K"
+  ],
+  "qstn_9QV6WAoX6dj6wkg9BCxjX": [
+   "4F"
+  ],
+  "qstn_9a3Bfhl6IRLUtsfJWP56n": [
+   "10E",
+   "10F"
+  ],
+  "qstn_A3lzbevvRd1le2tliFQss": [
+   "6F"
+  ],
+  "qstn_At3YQnD3q5x9jCvaXhYEl": [
+   "1B"
+  ],
+  "qstn_Bmc5aJlSPpvL6abuExu7k": [
+   "3B"
+  ],
+  "qstn_ByXOS251bNML8twhH2UJX": [
+   "5E",
+   "5B",
+   "5C"
+  ],
+  "qstn_C4p0kToVTGBWKE4xntOyD": [
+   "4F",
+   "4E",
+   "4D"
+  ],
+  "qstn_CvvX3WsjRSGANz0W2Qb41": [
+   "3J"
+  ],
+  "qstn_DDh8qCrNiJqJX806chgfO": [
+   "9D"
+  ],
+  "qstn_DEGOS5ABRDerMm3DpCL93": [
+   "8J",
+   "8K"
+  ],
+  "qstn_EIZQjW85Yul3WIv2bHk3m": [
+   "3C"
+  ],
+  "qstn_EtoHol9Jnxs8FF6wAmwpg": [
+   "9B"
+  ],
+  "qstn_ExbwGezGpMy4rXKcd0vSx": [
+   "10F",
+   "10G",
+   "10H"
+  ],
+  "qstn_FCUeCja4vSS0g5Nm7GOcW": [
+   "10E",
+   "10F"
+  ],
+  "qstn_FDb12tA5o6o5BqQJxkyYl": [
+   "1K",
+   "1A",
+   "1B"
+  ],
+  "qstn_FUARlSQVBiKXWBSBJ8A4v": [
+   "3G",
+   "6G"
+  ],
+  "qstn_Fc9zcF2LVfn310hl86yX4": [
+   "3H"
+  ],
+  "qstn_GbIMLx64RzV1BzyrB2xDn": [
+   "1H"
+  ],
+  "qstn_GqSygl5ILLY73m1YihcHL": [
+   "3A"
+  ],
+  "qstn_HOGLiIBONif1OQygNTqMe": [
+   "5B"
+  ],
+  "qstn_HTDH5ee5oZo63QjH56zGs": [
+   "4I"
+  ],
+  "qstn_HVXafBOIyTfuc9BUhm71a": [
+   "1C"
+  ],
+  "qstn_Hqj3nKMq8mXzCvMW7EE0o": [
+   "5B",
+   "5C",
+   "5E"
+  ],
+  "qstn_IgNJrGlXnNCLPu7fEwRmo": [
+   "5E"
+  ],
+  "qstn_KIvFmzCtHR2Ln7NcfAhWH": [
+   "3C"
+  ],
+  "qstn_LEwFytReTklsyYDC3tvMu": [
+   "10E",
+   "10G"
+  ],
+  "qstn_LeLCRpgVuXY1dZt88Fw3d": [
+   "8B",
+   "8C",
+   "8H"
+  ],
+  "qstn_MP5TGjPS0qccjJufZ5mYB": [
+   "1H"
+  ],
+  "qstn_MtM9UsENGgNnbDYV4baer": [
+   "4I",
+   "4H",
+   "3B"
+  ],
+  "qstn_NBLOnSAQm20oRjGOs7mTB": [
+   "10B"
+  ],
+  "qstn_O8xeSgF8khb8UV2CqSalt": [
+   "6F",
+   "7B"
+  ],
+  "qstn_OcV300KtFNntFib4wZMju": [
+   "3L"
+  ],
+  "qstn_OfVkTdC3Eu9oXybmzCRML": [
+   "1D",
+   "1E"
+  ],
+  "qstn_PGirns1CfOzD4jukbVwsE": [
+   "7B"
+  ],
+  "qstn_Pg4e2rMHDuiEDckfYPuhP": [
+   "3A",
+   "3C"
+  ],
+  "qstn_Q109koLtGrqD9TBmbxumE": [
+   "10B",
+   "10C"
+  ],
+  "qstn_QF635jtnyC2ocqYHh8270": [
+   "7B",
+   "6F",
+   "1H"
+  ],
+  "qstn_QdybtpBvBKmb6L0UhGfqJ": [
+   "1I"
+  ],
+  "qstn_QhUAqn9oPwak5rvsLuydJ": [
+   "4G"
+  ],
+  "qstn_RETVqU2CgNrCdkOgh8m8e": [
+   "2D",
+   "2C"
+  ],
+  "qstn_RJNBlnKzMbW1ddVppqXu5": [
+   "7C",
+   "9B"
+  ],
+  "qstn_RPYO7Br5xZbB0FcEZHLSC": [
+   "6K"
+  ],
+  "qstn_RvDbIN59pKNYa1eyfyqAI": [
+   "2C",
+   "2H",
+   "2I"
+  ],
+  "qstn_SG4aL2EqBCoX2X7IFmoXW": [
+   "3G",
+   "3I"
+  ],
+  "qstn_Sj5V2I5uvh2F0vHoV0kQK": [
+   "1H"
+  ],
+  "qstn_SrL0Oyrzof8rvpazXADll": [
+   "1H"
+  ],
+  "qstn_TCCOO5cAwBbaVHL9I60il": [
+   "10B"
+  ],
+  "qstn_TJh59YGwNJ9eFjSwd79G5": [
+   "3J",
+   "2H"
+  ],
+  "qstn_TKWOQJ37Eq5SPVFxT2DZw": [
+   "3B"
+  ],
+  "qstn_Tg7PnDShXr7iNMhbpZxvO": [
+   "1C"
+  ],
+  "qstn_UMQxSg16jnPxotcOTQ09K": [
+   "10B",
+   "10C"
+  ],
+  "qstn_Ub45UC7nAZj1JlKYyt73P": [
+   "3G"
+  ],
+  "qstn_VEbFbahEFtKCse05XEDrs": [
+   "3C",
+   "1C"
+  ],
+  "qstn_VHZtnbc0xLgnA4PtBSrE9": [
+   "6G"
+  ],
+  "qstn_VLxwfaSAF5JvVru8jmB5O": [
+   "3F"
+  ],
+  "qstn_Viidw6o6jmB8RZtVfPswT": [
+   "1C",
+   "3G"
+  ],
+  "qstn_VsRTaPnAVbamehwuXlAVR": [
+   "3F"
+  ],
+  "qstn_XXTSjYWkhGXhVLOIgYEDj": [
+   "3J",
+   "3A"
+  ],
+  "qstn_Y6niWc0UuRIZLHLHpAHV8": [
+   "4L",
+   "4M"
+  ],
+  "qstn_YRaP4D2ziH3heLVxcfneZ": [
+   "3D",
+   "3G",
+   "4M"
+  ],
+  "qstn_YRs900m8AVjOdzKBxncNN": [
+   "4G"
+  ],
+  "qstn_YcV2mym0E3TBUR5kDBfi5": [
+   "6C",
+   "6K"
+  ],
+  "qstn_YfRykaJHXoSeqrzPCAXG4": [
+   "10B"
+  ],
+  "qstn_YvrvGrIwGxB9GHSoNIliH": [
+   "10B",
+   "10C",
+   "1H"
+  ],
+  "qstn_Z4iFnleD8QQ2fAAGlD6b9": [
+   "4G",
+   "3G",
+   "3B"
+  ],
+  "qstn_Za6qkI1yQUy8pzRNMx5m8": [
+   "3D",
+   "3C",
+   "3G"
+  ],
+  "qstn_ZkvqriI9jU8QCD0AAC2xk": [
+   "5B",
+   "5C"
+  ],
+  "qstn_ZxTpBFoC1Cu0WxbOmybs": [
+   "1J",
+   "1I"
+  ],
+  "qstn_a6bU93jrsScTC2DvI8mYD": [
+   "6J"
+  ],
+  "qstn_bPUyI7MmS1wd98Ls0RyWt": [
+   "10G",
+   "10H"
+  ],
+  "qstn_bS5jOGY4t7dBcnMwnLhCz": [
+   "4I"
+  ],
+  "qstn_c5RXPZ4TlNpa6RXkOnidM": [
+   "10F",
+   "10G"
+  ],
+  "qstn_c6ZDqRVe6tmiL4ihLgN2D": [
+   "4C",
+   "4F"
+  ],
+  "qstn_c8s8AbcHbAPDgZ303KNSS": [
+   "7A",
+   "6F",
+   "6G"
+  ],
+  "qstn_e5T5RQqjtUt9spvPABEcu": [
+   "2H",
+   "2C",
+   "2D"
+  ],
+  "qstn_eQWAEijt5wAW7RO9SCPwK": [
+   "4A",
+   "4E",
+   "4F"
+  ],
+  "qstn_eSJb2yMtbFYV9AcAb2cRQ": [
+   "6F",
+   "8I"
+  ],
+  "qstn_egu0VVAmGnjPfqMhqjtUu": [
+   "6F",
+   "6K",
+   "6M"
+  ],
+  "qstn_fAPmGBn4VuTV6ZuNbHgKg": [
+   "3H",
+   "6F"
+  ],
+  "qstn_g0mWOT6NXtaOeaE7FzuTd": [
+   "4L",
+   "4M"
+  ],
+  "qstn_hQn6L6suVBlRL1YUyEOvl": [
+   "10K"
+  ],
+  "qstn_hbLw7V8p002oUbVqefMqD": [
+   "3D",
+   "3C"
+  ],
+  "qstn_iE7MJLvpMHXcQ66IsZ1pO": [
+   "6C"
+  ],
+  "qstn_jl7zD38oFOGWNo6AkrnEX": [
+   "10F"
+  ],
+  "qstn_kuJWAeto1g5ALtapiYszZ": [
+   "4L",
+   "4M",
+   "4J"
+  ],
+  "qstn_lJgcDGd4LJwiUZYa8O0PE": [
+   "10E",
+   "10F"
+  ],
+  "qstn_lbBmUfAutXtxVV5BCQvfE": [
+   "3C",
+   "3D"
+  ],
+  "qstn_m4uTCYThuEyCQLHT6HDcw": [
+   "3J"
+  ],
+  "qstn_mBsbFXOa5KQMd8ye1wQyL": [
+   "1H",
+   "10E"
+  ],
+  "qstn_mTVc0nbc1iZ2PLdXTGbET": [
+   "1D",
+   "1E"
+  ],
+  "qstn_mYpSn3qBEH0MWFOrQei7q": [
+   "6K"
+  ],
+  "qstn_nZPr8jbRIzOYanpT3Popu": [
+   "6M"
+  ],
+  "qstn_o5rpGkeVyOepMvCMe9E73": [
+   "1H"
+  ],
+  "qstn_oNgDgwvrnJ4xUMPc8tQnM": [
+   "10E",
+   "10F"
+  ],
+  "qstn_oOoP2BV8CcpoOSIGNBXGB": [
+   "8B",
+   "8E",
+   "8H"
+  ],
+  "qstn_ole9fv8WBxDBzFlpDr1Az": [
+   "3B"
+  ],
+  "qstn_ouZBVXZEsPEf7cJwOXcmd": [
+   "4K",
+   "4M"
+  ],
+  "qstn_oy1etcqwODj4LS7EFYzS": [
+   "1H",
+   "1G",
+   "1A"
+  ],
+  "qstn_p7f95ToJlCRxAruzzXyGK": [
+   "2H",
+   "2D"
+  ],
+  "qstn_pTEX70zUm6dMyki5GHlMn": [
+   "3F",
+   "3G"
+  ],
+  "qstn_qDW5eMrCuBZ3j3CKn5pYa": [
+   "10G",
+   "10F",
+   "10H"
+  ],
+  "qstn_qKoxH4nvwxe0o6uHHn17n": [
+   "2C",
+   "2D",
+   "2H"
+  ],
+  "qstn_qnE4etjn4Azu6FRU2V2AP": [
+   "4A",
+   "4C",
+   "4F"
+  ],
+  "qstn_rYrcbEWAKvp6RSJv33IQl": [
+   "10E",
+   "10K",
+   "10G"
+  ],
+  "qstn_rbcIWjjUWW7Eql36JzPbq": [
+   "4I",
+   "4H"
+  ],
+  "qstn_rd7WT1lFSFKXb9wnGvdKl": [
+   "1H"
+  ],
+  "qstn_tGmHhrzCwZlr4Vhzq0PMc": [
+   "4N",
+   "4I"
+  ],
+  "qstn_uP3HcUtUOoazmYlCYKyys": [
+   "3B"
+  ],
+  "qstn_uRmTp7Uwyzjl9SlFh2DBN": [
+   "1J"
+  ],
+  "qstn_ugGvC6MT9DBoeIAOXwF7r": [
+   "8J",
+   "8K",
+   "8L"
+  ],
+  "qstn_v9cW0QPbPzDFDIeBDQwzi": [
+   "10B"
+  ],
+  "qstn_vLxEQR6qTGfFedI4Qv0Ok": [
+   "3D",
+   "3E"
+  ],
+  "qstn_vOoBFxO64p2ZyazIDoc51": [
+   "1H",
+   "1G",
+   "10E"
+  ],
+  "qstn_wEYbMy4uedOizLNxREvon": [
+   "5B",
+   "5A"
+  ],
+  "qstn_wZdyEz1fjCufYaI2qQOTE": [
+   "1F",
+   "1I"
+  ],
+  "qstn_wcm1wGL4e5LEkTUOcMNZu": [
+   "4I"
+  ],
+  "qstn_x6eyC7z9grGG1gWcHWwgy": [
+   "6F",
+   "9A",
+   "9B"
+  ],
+  "qstn_xexKV6aIvScZJNe7x0TMx": [
+   "6I",
+   "6J"
+  ],
+  "qstn_xl2Y7TbHNm476GiwPW0zx": [
+   "2C",
+   "2H",
+   "2D"
+  ],
+  "qstn_yEF9ef0URnv3i8OZNEffU": [
+   "1H"
+  ],
+  "qstn_yKpTUC0wnjjBRqRwPPtOa": [
+   "7B",
+   "7C",
+   "6F"
+  ],
+  "qstn_yVuCJFzX7JpQZLcPCufpX": [
+   "3J",
+   "3K"
+  ],
+  "qstn_yZIf3uCJg2q1TZz7fqUN4": [
+   "3G"
+  ],
+  "qstn_zDgJA8hbgPW5Nq0mR6Vvw": [
+   "6K"
+  ],
+  "qstn_zI78Wy9pBN4FHGEnqTffG": [
+   "3G"
+  ],
+  "qstn_zS9YlerFigK1SefWTRAkf": [
+   "5E",
+   "5B"
+  ],
+  "qstn_zkKTTzS3Cm1VnBHwQXWCh": [
+   "1C"
+  ]
+ }
+}

@@ -14,7 +14,7 @@
  *
  * Run: bun apps/hub/scripts/verify-bank-1-1.ts igcse-maths-b-16
  */
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { z } from "zod";
 import { ExamQuestionTopic } from "../src/lib/contracts";
@@ -56,9 +56,52 @@ if (c.marks !== nMarks) fails.push(`manifest marks ${c.marks} != ${nMarks}`);
 const nParts = parsed.reduce((a, r) => a + r.questions.reduce((b, q) => b + q.parts.length, 0), 0);
 if (c.parts !== nParts) fails.push(`manifest parts ${c.parts} != ${nParts}`);
 
+// ── the anchors gate (T-MIG-136 band 3b): when the bundle carries
+// spec-anchors.json, EVERY question must be anchored with in-spine codes and
+// every part must carry its question's exact anchor set (the applier law).
+// The gate makes anchor loss (e.g. an assembler regeneration without the
+// anchor merge) a CI failure, never a silent serving regression.
+let anchored = 0;
+const anchorsPath = path.join(bundleDir, "spec-anchors.json");
+if (existsSync(anchorsPath)) {
+  const art = JSON.parse(readFileSync(anchorsPath, "utf-8"));
+  if (art.schema !== "syllabai.spec-anchors/1.0") {
+    fails.push(`anchors schema ${art.schema}`);
+  }
+  const curriculum = JSON.parse(readFileSync(path.join(bundleDir, "curriculum.json"), "utf-8"));
+  const alphabet = new Set<string>(
+    (curriculum.nodes ?? [])
+      .filter((n: { family?: string }) => n.family === "SPEC_POINT")
+      .map((n: { code: string }) => n.code),
+  );
+  const anchors = art.anchors as Record<string, string[]>;
+  if (Object.keys(anchors).length !== nQuestions) {
+    fails.push(`anchors cover ${Object.keys(anchors).length} != ${nQuestions} questions`);
+  }
+  for (const rec of parsed) {
+    for (const q of rec.questions) {
+      const want = anchors[q.id];
+      if (!want || want.length === 0) {
+        fails.push(`${rec.slug}/${q.id}: no anchor`);
+        continue;
+      }
+      anchored++;
+      for (const code of want) {
+        if (!alphabet.has(code)) fails.push(`${q.id}: anchor code ${code} outside the spine`);
+      }
+      for (const p of q.parts) {
+        const got = (p.specPointCodes ?? []).join(",");
+        if (got !== want.join(",")) {
+          fails.push(`${q.id}: part codes [${got}] != anchor [${want.join(",")}]`);
+        }
+      }
+    }
+  }
+}
+
 console.log(
   `zod gate: ${parsed.length} records, ${nQuestions} questions, ${nParts} parts, ` +
-    `${nMarks} marks — ${fails.length === 0 ? "GREEN" : "FAIL"}`,
+    `${nMarks} marks, anchors ${anchored}/${nQuestions} — ${fails.length === 0 ? "GREEN" : "FAIL"}`,
 );
 if (fails.length > 0) {
   for (const f of fails.slice(0, 20)) console.log("  -", f);

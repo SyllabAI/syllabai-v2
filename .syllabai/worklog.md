@@ -9971,3 +9971,19 @@ Work Log:
 
 Stage Summary:
 - The books ENTRY is LIVE on production: chemistry's course page links the VALIDATED student book shelf; every other course shows the honest roadmap variant. Band 133k CLOSED of record.
+---
+Task ID: trace 1a15a45dca86c409 (T-MIG-136 parse lane BAND 3b — the operator-authorized anchoring pass)
+Agent: r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)
+Task: operator: "Maths B does not have 'Exam Questions' yet so there is no need of smart mark. But tutor and cla needed. Tutor needs to be able to answer maths B related questions, fetch past papers, know the curriculum etc" — the band-3 decision-point answer: smart mark DESCOPED; the anchoring pass (option a, scoped to fetch-bank) AUTHORIZED because tutor fetch-past-papers REQUIRES anchored questions.
+
+Work Log:
+- Session opened on a ROLLED-BACK sandbox again (the v2 clone, the b3 wave scripts, the sandbox worklog 136 entries gone; the Oct-19 staged Neon credential did NOT survive — DATABASE_URL is a 37-byte stub, prod unreachable). v2 re-cloned fresh at 96e7983 fetch-first (the T-MIG-139 G-round, cie-phase4 plane and ops-pastpapers audits observed as origin neighbors, never touched).
+- Read the band-1/2/3 receipts + run-004 + the T-MIG-139 landings first-hand: the seed side of the band-4 amendment ALREADY EXISTS (the T-MIG-136a alnum law in bundle-seed.ts lands '4MB1-S<n>-<code>', dormant until codes arrive); the remaining deltas were the shim emission, the null-difficulty shape and the badSum population (found while gating).
+- BAND 3B (the zero-LLM fence LIFTED FOR THIS BAND by the operator trace above): glm-4-plus via the z-ai CLI, 117 char-packed batches (<=14 q / 15k chars) over the 98-point alphabet, 1-3 codes primary-first, checkpointed JSONL resume, 2-consecutive-failure halt (no hammer). Three model behaviors met with deterministic laws: hedge-duplicates deduped; dropped batch items recovered by targeted mini-calls (partial-salvage); alphabet-line echoes reduced to their leading official code by anchored regex. ~170 calls of record.
+- COVERAGE: 1,249/1,249 questions anchored, 2,250 assignments, 91/98 official points used (7 points unrepresented in 2018-2026 papers), mean 1.80 codes/question. Verification: lenient model re-ask n=80 (72 completed, 72 AGREE / 0 corrections) + manual SME spot-check n=8 (7 clean, 1 miss CORRECTED of record: 2025-06-4mb1-01 number-line inequality 1C->3J).
+- ARTIFACTS: spec-anchors.json (NEW, syllabai.spec-anchors/1.0 — the refinable artifact of record keyed by stable question ids) + questions.json anchor fields applied onto EVERY part (specPointCodes + specPointIds mirrored per the chemistry convention) with a DEEP-COMPARE of record against git HEAD proving ONLY the two anchor fields changed. verify-bank-1-1.ts gained the anchors gate: an assembler regeneration without the anchor merge now fails CI instead of silently un-anchoring the bank. Gate GREEN: 65/1249/2392/6341, anchors 1249/1249.
+- Receipt: .syllabai/receipts/T-MIG-136/parse-4mb1-band3b-anchors-r0.json
+
+Stage Summary:
+- BAND 3b DONE of record: the band-3 residual (empty specPointCodes -> zero ingestables) is LIFTED — every 4MB1 question carries official spec-point anchors under the operator's fetch-past-papers authorization. Smart mark stays descoped (nothing spent certifying it). Anchors are refinable without re-parsing. 4MB1-only fence; zero prod writes, zero Neon; fetch-first, no force.
+
