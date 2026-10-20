@@ -9862,3 +9862,17 @@ Work Log:
 Stage Summary:
 - Run 001 of record = honest red, guard held, zero writes; the defect is FIXED + PINNED; run-002 re-dispatch fires at the fix's merged sha (outcome lands as run-002 receipt).
 - fetch-first, no force; PR for the desk; zero prod writes by this commit (the ONLY production writes remain the gate's own prod-apply job under the green COW-proof).
+Task ID: trace 1a15a80a2ade5075 (wave-1 kill-list filed — 4CH1 attachment r0)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: operator 'draft the actual list now' — file the wave-1 kill-list (grade-A 16, exact array additions) for operator green-light. READ-ONLY drafting; nothing applied.
+
+Work Log:
+- fetch-first: main behind 3 (sibling lanes); content files apps/hub/content/igcse-chemistry-19/ + KG json verified IDENTICAL local-HEAD-vs-origin/main (git diff empty) and untouched since seed 3a92153 — tree safe for read-only derivation.
+- CORRECTION-OF-CORRECTION of-record: the 1a15a676e2d48e05 entry's 'over-claim' disclosure was itself WRONG — proposedAttachmentTargets IS filed in dossier-r0.json under residual27[] (probed only 2 of 3 artifacts then). No silent patch of the prior entry; both stand.
+- Kill-list derivation rule (deterministic, stated in manifest): grade-A code -> evidence-pass qparts whose codesCarried intersect the anchor-sibling set hand-extracted from the dossier GRADE evidence; every target verified in-tree (exists + target code ABSENT + current array captured verbatim).
+- Script persisted scripts/wave1_killlist_4ch1.py; manifest -> download/wave1-killlist-4ch1-attachment-r0.json. RESULT: 16/16 READY, 54 part-additions, 0 ANCHOR-MISS, 0 absence-proof violations; 3 parts receive two codes each (union-append on apply).
+- Scope: question-axis parts ONLY (grade A = direct question instantiation); note-axis deferred to wave-2; grade-B 11 untouched; 4.20 excluded from any auto-attach (disclosed false-positive).
+- Guard in manifest: APPEND-ONLY, arrays otherwise byte-identical, no other files, apply ONLY on operator green-light, wire battery 11-leg post-apply before receipt.
+
+Stage Summary:
+- Wave-1 kill-list of record: 16 codes -> 54 verified specPointCodes appends across questions.json, ready for operator review/green-light; nothing written to content; zero code/DB/Vercel/LLM contact; no force.
