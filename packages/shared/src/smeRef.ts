@@ -78,7 +78,6 @@ export function smeQuestionRef(
   order: number,
   reserved = 0,
 ): string {
-  const head = `sme-eq-${courseSlug}-`;
   const tail = `-q${order}`;
   // the member-suffix reserve (the phase-4 run-003 varchar(80) class): a
   // question carrying MCQ parts derives MIXED-EMISSION member rows whose
@@ -90,9 +89,33 @@ export function smeQuestionRef(
   // drift. Byte-identical for every ref of record: reserve is 0 for
   // choice-less questions and binds only on the hash path (never stored —
   // such members failed to ingest by construction).
-  const room = SME_REF_MAX - head.length - tail.length - reserved;
+  let head = `sme-eq-${courseSlug}-`;
+  let room = SME_REF_MAX - head.length - tail.length - reserved;
   if (room < 10) {
-    throw new Error(`smeQuestionRef: course slug "${courseSlug}" leaves no ref room`);
+    // the course-slug compression branch (the phase-4 run-006 varchar(80)
+    // class — the 0973 trio's 55-char registry slugs): the SAME
+    // deterministic law the topic side already carries — a bounded slice of
+    // the course slug + "-" + the 8-hex FNV-1a of the FULL slug (injective
+    // for distinct slugs sharing a truncation prefix — the 0973 trio shares
+    // its 44-char prefix and is differentiated by the full-slug hash). Both
+    // bridge sides derive identically (this shared function is the only
+    // law); the stored refs of record (shorter slugs) never take the branch
+    // — byte-identical. The budget lands the topic side exactly on its own
+    // floor (room = 10: the topic hash path fits by construction).
+    const headPrefix = "sme-eq-";
+    const fixedOverhead = headPrefix.length + 1 + 8 + 1; // prefix + "-" + 8 hex + "-"
+    const budget = SME_REF_MAX - fixedOverhead - tail.length - reserved - 10;
+    if (budget < 1) {
+      throw new Error(
+        `smeQuestionRef: course slug "${courseSlug}" cannot fit even compressed (tail ${tail.length} + reserve ${reserved})`,
+      );
+    }
+    head = headPrefix + courseSlug.slice(0, budget) + "-" + fnv1aHex8(courseSlug) + "-";
+    room = SME_REF_MAX - head.length - tail.length - reserved;
+    if (room < 10) {
+      // unreachable by the budget arithmetic
+      throw new Error(`smeQuestionRef: course slug "${courseSlug}" compression did not clear the ref room`);
+    }
   }
   const hashRoom = 9; // "-" + 8 hex
   let slugPart = topicSlug;

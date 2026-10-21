@@ -171,13 +171,17 @@ jobs:
           [ "$FAIL" = "0" ] || { echo "::error::fleet failures = ${FAIL}"; jq -r '.failures' cie4-cow-receipt.json; exit 1; }
           EXPECTED_REAL=$(jq '[.perSlug[] | select(.cls == "real")] | length' cie4-cow-receipt.json)
           APPLIED=$(jq -r '.summary.realApplied' cie4-cow-receipt.json)
-          [ "$APPLIED" = "$EXPECTED_REAL" ] || { echo "::error::real banks applied ${APPLIED} != expected ${EXPECTED_REAL}"; exit 1; }
+          SEEDONLY=$(jq -r '.summary.realSeedOnly' cie4-cow-receipt.json)
+          # the run-006 accounting law: realApplied + realSeedOnly == the real
+          # roster (the zero-servable banks — econ-25 / english-20/25 — are
+          # seed-only by the ingest-skip law, not failures)
+          [ "$((APPLIED + SEEDONLY))" = "$EXPECTED_REAL" ] || { echo "::error::real banks accounted ${APPLIED}+${SEEDONLY} != expected ${EXPECTED_REAL}"; exit 1; }
           if [ -z "$SLUGS" ]; then
             Q=$(jq -r '.summary.questionsIngested' cie4-cow-receipt.json)
             P=$(jq -r '.summary.partsIngested' cie4-cow-receipt.json)
-            echo "fleet floors: questions=${Q} parts=${P} (floors of record 19000 / 25600)"
-            [ "$Q" -ge 19000 ] || { echo "::error::questions below the fleet floor"; exit 1; }
-            [ "$P" -ge 25600 ] || { echo "::error::parts below the fleet floor"; exit 1; }
+            echo "fleet floors: questions=${Q} parts=${P} (the servable truth of record 6599 / 9139 — the shim's own admission output; raw 19097/25663)"
+            [ "$Q" = "6599" ] || { echo "::error::questions != the servable census of record"; exit 1; }
+            [ "$P" = "9139" ] || { echo "::error::parts != the servable census of record"; exit 1; }
           fi
           echo "COW receipt floors GREEN"
       - name: Upload the COW proof artifact
@@ -253,13 +257,15 @@ jobs:
           [ "$FAIL" = "0" ] || { echo "::error::fleet failures = ${FAIL}"; jq -r '.failures' cie4-prod-receipt.json; exit 1; }
           EXPECTED_REAL=$(jq '[.perSlug[] | select(.cls == "real")] | length' cie4-prod-receipt.json)
           APPLIED=$(jq -r '.summary.realApplied' cie4-prod-receipt.json)
-          [ "$APPLIED" = "$EXPECTED_REAL" ] || { echo "::error::real banks applied ${APPLIED} != expected ${EXPECTED_REAL}"; exit 1; }
+          SEEDONLY=$(jq -r '.summary.realSeedOnly' cie4-prod-receipt.json)
+          # the run-006 accounting law (see the cow-proof step)
+          [ "$((APPLIED + SEEDONLY))" = "$EXPECTED_REAL" ] || { echo "::error::real banks accounted ${APPLIED}+${SEEDONLY} != expected ${EXPECTED_REAL}"; exit 1; }
           if [ -z "$SLUGS" ]; then
             Q=$(jq -r '.summary.questionsIngested' cie4-prod-receipt.json)
             P=$(jq -r '.summary.partsIngested' cie4-prod-receipt.json)
-            echo "fleet floors: questions=${Q} parts=${P} (floors of record 19000 / 25600)"
-            [ "$Q" -ge 19000 ] || { echo "::error::questions below the fleet floor"; exit 1; }
-            [ "$P" -ge 25600 ] || { echo "::error::parts below the fleet floor"; exit 1; }
+            echo "fleet floors: questions=${Q} parts=${P} (the servable truth of record 6599 / 9139 — the shim's own admission output; raw 19097/25663)"
+            [ "$Q" = "6599" ] || { echo "::error::questions != the servable census of record"; exit 1; }
+            [ "$P" = "9139" ] || { echo "::error::parts != the servable census of record"; exit 1; }
           fi
           echo "PROD receipt floors GREEN"
       - name: Upload the prod apply artifact

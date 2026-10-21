@@ -75,23 +75,41 @@ describe("cie-phase4 roster law", () => {
     }
     const questions = real.reduce((s, e) => s + e.expectedQuestions, 0);
     const parts = real.reduce((s, e) => s + e.expectedParts, 0);
-    // the SERVABLE census of record (the run-003 anchor re-base): the frozen
-    // ingest's anchor law excludes spec-unanchored questions (the learner-
-    // model join requires primaryTopicCode) — the fleet floors measure the
-    // anchored subset: 6,618 questions / 9,158 parts. The RAW phase-3 census
-    // bytes (19,097 / 25,663) stay disclosed on every entry (rawQuestions/
-    // rawParts) — the anchor gap is the CIE lane's phase-2 follow-up, made
-    // measurable, never hidden.
-    expect(questions).toBe(6618);
-    expect(parts).toBe(9158);
+    // the SERVABLE census of record (the run-006 re-base): the fleet's floors
+    // and drift checks measure the SHIM'S OWN admission output —
+    // buildSmePackage is the single admission law (zero-DB, deterministic),
+    // so the roster can never diverge from what the ingest will admit. The
+    // tranche-2 "anchored" pre-count (6,618 / 9,158) mirrored only the anchor
+    // law and drifted by the shim's OTHER honest exclusion classes (badSum,
+    // dupOrder — the run-006 COW proof caught 1+1+3+14 on four banks): the
+    // servable truth is 6,599 questions / 9,139 parts (exclusions of record:
+    // unmapped 12,479 / badSum 0 / dupOrder 19). The RAW phase-3 census bytes
+    // (19,097 / 25,663) stay disclosed on every entry (rawQuestions/rawParts)
+    // — the anchor gap is the CIE lane's phase-2 follow-up, made measurable,
+    // never hidden.
+    expect(questions).toBe(6599);
+    expect(parts).toBe(9139);
     const rawQ = real.reduce((s, e) => s + e.rawQuestions, 0);
     const rawP = real.reduce((s, e) => s + e.rawParts, 0);
     expect(rawQ).toBe(19097);
     expect(rawP).toBe(25663);
-    // the zero-anchored real banks of record: seed-only by the fleet's
+    // the shim's exclusion counters of record (the honest disclosure class)
+    const excl = real.reduce(
+      (a, e) => ({
+        unmapped: a.unmapped + (e.shimExclusions?.unmapped ?? 0),
+        badSum: a.badSum + (e.shimExclusions?.badSum ?? 0),
+        dupOrder: a.dupOrder + (e.shimExclusions?.dupOrder ?? 0),
+      }),
+      { unmapped: 0, badSum: 0, dupOrder: 0 },
+    );
+    expect(excl).toEqual({ unmapped: 12479, badSum: 0, dupOrder: 19 });
+    // the question-level identity: raw - servable = unmapped + dupOrder (each
+    // exclusion removes whole questions; badSum is zero of record)
+    expect(rawQ - questions).toBe(excl.unmapped + excl.dupOrder);
+    // the zero-servable real banks of record: seed-only by the fleet's
     // ingest-skip law (EQ axis honestly empty of record)
-    const zeroAnchored = real.filter((e) => e.expectedQuestions === 0).map((e) => e.slug).sort();
-    expect(zeroAnchored).toEqual([
+    const zeroServable = real.filter((e) => e.expectedQuestions === 0).map((e) => e.slug).sort();
+    expect(zeroServable).toEqual([
       "cie-igcse-economics-25",
       "cie-igcse-english-language-20",
       "cie-igcse-english-language-25",
