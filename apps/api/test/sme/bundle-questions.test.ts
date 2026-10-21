@@ -453,8 +453,14 @@ describe("T-MIG-136 bands 3b+4 through T-CONSUME-EDX-1: the maths-b corpus laws"
     // ocr-repair-run-001-r0 (trace 1a15e7d6114dff35 'Initiate OCR to fix the
     // capture channel') then recovered the image-only 2019-06 4MB1/02R QP:
     // the last honest-empty set became a real 11-question/100-mark record
-    // (evidence-grounded, 0 badSum candidates) -> the of-record census is
-    // 65 sets / 1,260 questions.
+    // (evidence-grounded, 0 badSum candidates) -> census 65 sets / 1,260.
+    // parse-repair-run-001-r0 (trace 1a15fcd0922b2391 'fire the parse-repair
+    // ops lane') then reconciled the whole bundle to the official QP-footer/
+    // blueprint evidence: the 57 defects-vs-official repaired, 10 missing
+    // questions recovered (incl. the 2023-01-02 q11/q12 split), badSum 0 ->
+    // the of-record census is 65 sets / 1,270 questions, ALL of which now
+    // map through the shim (excluded = 0; the conservation law holds with
+    // an empty exclusion population).
     expect(mathsB.sets.length).toBe(65);
     const pkg = buildMathsB();
     expect(pkg.counts?.sets).toBe(65);
@@ -462,7 +468,7 @@ describe("T-MIG-136 bands 3b+4 through T-CONSUME-EDX-1: the maths-b corpus laws"
     // excluded AND counted (the band-4 unmapped/badSum/dupOrder population)
     const excluded =
       (pkg.counts?.unmapped ?? 0) + (pkg.counts?.badSum ?? 0) + (pkg.counts?.dupOrder ?? 0);
-    expect(excluded + (pkg.questions ?? []).length).toBe(1260);
+    expect(excluded + (pkg.questions ?? []).length).toBe(1270);
     expect((pkg.questions ?? []).length).toBeGreaterThan(0);
     expect(() =>
       buildSmePackage({ courseSlug: mathsB.slug, curriculum: mathsB.curriculum, sets: [], ...SOURCE }),

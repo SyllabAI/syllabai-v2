@@ -11550,3 +11550,17 @@ Work Log:
 
 Stage Summary:
 - The bundle surface of record now reconciles EXACTLY to the official QP-footer/blueprint evidence on all 65 maths-b papers: every question's parts sum to its official total, every missing question recovered, the fused q11/q12 separated, the three mis-stamps of the ruling lane reverted with MS-correct repairs. Residuals: DB re-ingest operator-gated (emission census becomes 1,270-class; difficulty/qv-mirror re-run couples); anchor round + commandWord fill re-run for the 10 recovered rows; 3 archive QP pages remain image-only in the pastpapers repo (read for content, not re-archived this lane).
+
+---
+
+Task ID: 4MB1-QUALITY parse-repair-run-001-r0 FOLLOW-UP: census pin re-key 1,260 -> 1,270 (trace 1a15fcd0922b2391)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- CI on 8bc1a35c: hub SUCCESS (auto-bake live), verify 1 fail / 2,495 pass — the T-MIG-136 conservation-law pin asserted excluded+emitted == 1,260, received 1,270 (ALL bundle questions now map through the shim: excluded population = 0 — the order-0 2022-01-02r q1 emits cleanly, empirically mooting the recon-era ref-namespace block rationale).
+- Pin re-keyed 1,260 -> 1,270 with the lane history in the comment (the OCR-lane d460ca0 precedent for census moves); file-local test change only (apps/api/test/sme/bundle-questions.test.ts).
+- bun test apps/api/test: 0 fail (2,019 tests / 13 skip / 20,562 expect calls); bundle-questions.test.ts 25/25.
+- Zero content-plane changes in this follow-up; zero DB writes; fetch-first, no force.
+
+Stage Summary:
+- The shim conservation law now pins the parse-repair census of record (1,270 emitted / 0 excluded) — the fetch-bank emission surface is fully consistent with the repaired bundle; DB re-ingest remains operator-gated.
