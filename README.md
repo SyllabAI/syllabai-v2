@@ -21,8 +21,9 @@ packages/
   contracts/           # zod schemas — the API contract, ported from core DTOs
   shared/              # cross-app logic (mathNormalize-class parity code)
   db/                  # Drizzle client + schema (baselined from core's Flyway end-state)
+books/                 # interactive-book authoring workspaces, per qualification (4ch1 pilot)
 golden/                # golden-master parity harness (Java core vs v2 api)
-docs/                  # MIGRATION_PLAN, AGENT_COORDINATION, GOLDEN_MASTER, BASELINE_DB, REFERENCE_DOCS
+docs/                  # MIGRATION_PLAN, AGENT_COORDINATION, GOLDEN_MASTER, BASELINE_DB, REFERENCE_DOCS, books/
 .sy/
   syllabai/tasks/      # T-MIG-xxx task files (same yaml convention as the master pack)
   syllabai/worklog.md  # append-only multi-agent worklog
@@ -46,6 +47,11 @@ bun run dev:api        # api on :8080 — GET /actuator/health is live day one
 4. `docs/BASELINE_DB.md` — how the Drizzle schema is baselined from the
    frozen Flyway end-state (never by replaying 63 migrations).
 5. `docs/REFERENCE_DOCS.md` — index of the frozen upstream docs this migration relies on.
+6. `docs/books/BOOKS-START-HERE.md` — **if you are building or extending an
+   interactive book** (the `T-BOOK-xxx` band): the three-layer storage model,
+   the pack pipeline (S0–S4, gates G1–G4), the self-improvement law, and the
+   new-subject checklist. Book doctrine lives under `docs/books/`; authoring
+   workspaces under `books/<qual>/`.
 
 ## Non-negotiable rules
 

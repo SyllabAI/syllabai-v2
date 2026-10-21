@@ -1,0 +1,94 @@
+# books/4ch1 — machine config (shape is the template for other books; see BOOK-PACK-SPEC §2)
+qual: "4ch1"
+board: "pearson-edexcel"
+qualification_label: "International GCSE (9-1) Chemistry"
+spec_of_record:
+  code: "4CH1"
+  issue: "Issue 3"
+  issue_date: "2024-09"
+  spec_points: 182
+  sections: 4
+  sub_sections: 29
+  paper_route:
+    paper1: {code: "1C", marks: 110, weight: 0.611, coverage: "core only"}
+    paper2: {code: "2C", marks: 70, weight: 0.389, coverage: "all content incl. bold-C"}
+
+course_slug: "igcse-chemistry-19"
+book_of_record:
+  repo: "syllabai-resources"
+  path: "edexcel-international-gcse-9-1-chemistry-student-book-pdf-free.pdf"
+  sha256: "TBD-at-first-pack-receipt"   # pin at S0 of c01
+  pages: 383
+parse_of_record:
+  repo: "syllabai-resources"
+  path: "parsed/edexcel_igcse_chemistry_chunks_v3.jsonl"
+  sha256: "TBD-at-first-pack-receipt"
+  engine: "ibm-docling"
+  chunks: 1234
+  census: {body: 493, key_point: 140, table_data: 113, exam_hint: 113, answers: 83,
+           learning_objectives: 81, chapter_questions: 50, safety: 44, unit_questions: 21,
+           appendix: 27, glossary: 21, did_you_know: 17, front_matter: 12, index: 11,
+           divider: 6, skills: 1, activity: 1}
+
+block_allowlist: [prose, figure, callout, mcq-embed, sort-match, drag-label,
+                  table-fill, num-stepper, eq-builder, sim-embed, media-embed]
+block_schema: "book.block/1"            # packages/contracts/src/books.ts (T-BOOK-002 lands zod)
+lint_pack: "chem@0.1.0"
+doctrine_refs:
+  start_here: "docs/books/BOOKS-START-HERE.md"
+  playbook: "docs/books/BOOK-BUILD-PLAYBOOK.md"
+  pack_spec: "docs/books/BOOK-PACK-SPEC.md"
+  self_improvement: "docs/books/BOOK-SELF-IMPROVEMENT.md"
+  plan: "docs/books/PLAN-4CH1-v1.1.md"
+
+# Spine of record (chapter_key -> title; route flags per PLAN-4CH1 §7).
+# specCodes live in book_chapters (join law: LO-box verbatim-class match);
+# counts below are the join-set sizes QC'd at T-BOOK-000.
+spine:
+  u1: [{c: "c01", title: "States of matter", chem_only: false},
+       {c: "c02", title: "Elements, compounds and mixtures", chem_only: false},
+       {c: "c03", title: "Atomic structure", chem_only: false},
+       {c: "c04", title: "The periodic table", chem_only: false},
+       {c: "c05", title: "Formulae and calculations (part 1)", chem_only: false, widget_density: high},
+       {c: "c06", title: "Formulae and calculations (part 2)", chem_only: false, widget_density: high},
+       {c: "c07", title: "Ionic bonding", chem_only: false},
+       {c: "c08", title: "Covalent bonding", chem_only: false},
+       {c: "c09", title: "Metallic bonding", chem_only: true},
+       {c: "c10", title: "Electrolysis", chem_only: true, widget_density: high}]
+  u2: [{c: "c11", title: "Alkali metals", chem_only: false},
+       {c: "c12", title: "Halogens", chem_only: false},
+       {c: "c13", title: "Gases in the atmosphere", chem_only: false},
+       {c: "c14", title: "Reactivity series", chem_only: false},
+       {c: "c15", title: "Extraction and uses of metals", chem_only: true},
+       {c: "c16", title: "Acids, alkalis and titrations", chem_only: false, widget_density: high},
+       {c: "c17", title: "Salt preparations", chem_only: false},
+       {c: "c18", title: "Chemical tests", chem_only: false}]
+  u3: [{c: "c19", title: "Energetics", chem_only: false},
+       {c: "c20", title: "Rates of reaction", chem_only: false},
+       {c: "c21", title: "Reversible reactions and equilibria", chem_only: true}]
+  u4: [{c: "c22", title: "Introduction to organic chemistry", chem_only: false},
+       {c: "c23", title: "Crude oil", chem_only: false},
+       {c: "c24", title: "Alkanes", chem_only: false},
+       {c: "c25", title: "Alkenes", chem_only: false},
+       {c: "c26", title: "Alcohols", chem_only: true},
+       {c: "c27", title: "Carboxylic acids", chem_only: true},
+       {c: "c28", title: "Esters", chem_only: true},
+       {c: "c29", title: "Synthetic polymers", chem_only: false}]
+
+phases:
+  A: {packs: ["c01","c02","c03","c04","c05","c06","c07","c08","c09","c10"], demo_gate: ["c01","c02","c03","c04","c05"]}
+  B: {packs: ["c11","c12","c13","c14","c15","c16","c17","c18","c19","c20","c21"]}
+  C: {packs: ["c22","c23","c24","c25","c26","c27","c28","c29"]}
+
+sim_embed_plan:   # PhET CC-BY 4.0; pin per-sim ids at T-BOOK-006
+  - {topic: "balancing chemical equations", chapters: ["c05"]}
+  - {topic: "isotopes and atomic mass", chapters: ["c03"]}
+  - {topic: "acid-base solutions", chapters: ["c16"]}
+  - {topic: "concentration / molarity", chapters: ["c05", "c06"]}
+  - {topic: "salts and solubility", chapters: ["c01", "c17"]}
+
+licensing_posture:   # of record: PLAN-4CH1 §4/§9 + ADR-0xx draft; change by ADR only
+  book_hosting: "page-true slices, VALIDATED-only (T-C20)"
+  book_questions: "page-jump links only, never re-served interactively"
+  embeds: "PhET CC-BY 4.0 only (attribution in-card); media-embed needs licensing row"
+  reflow: "forbidden in pilot"

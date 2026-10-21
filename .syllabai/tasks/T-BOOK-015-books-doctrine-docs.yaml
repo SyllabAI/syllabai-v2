@@ -1,0 +1,44 @@
+version: 1
+task:
+  id: T-BOOK-015
+  title: "Books doctrine pack: docs/books/* agent entry + pipeline law + self-improvement system, books/4ch1 authoring scaffold, plan v1.1 in-repo"
+  owner: "main-agent (zai-web session web-c414c074, chat 08b3170a, trace 1a15be4bab0b4aa1)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-BOOK (interactive books)
+  wave: books-doctrine
+  deps: [T-BOOK-000]
+  execution_record: >
+    Operator directive (2026-10-21, chat): (1) pin where/how the book and its
+    interactive layer are stored and organized; (2) create README + docs so any
+    agent can build an interactive book for ANY subject (reading order,
+    requirements); (3) make the pipeline self-improving (report mistakes and
+    findings). Delivered as the doctrine pack: BOOKS-START-HERE (3-layer
+    storage model + 10 hard laws + pack DoD), BOOK-BUILD-PLAYBOOK (stages 0-4,
+    S0-S4 roles, gates G1-G4, receipts + prompt-version registry),
+    BOOK-PACK-SPEC (workspace layout, book.block/1 common fields, 11 frozen
+    types, glossary ms_accepts/ms_avoids format, 5-rule lint law),
+    BOOK-SELF-IMPROVEMENT (findings.jsonl schema, S1/S2/S3 severities,
+    root-cause-twice law, phase retros, metrics), BOOK-NEW-SUBJECT-CHECKLIST
+    (5-phase onboarding; 4PH1 noted as candidate #2). books/4ch1 scaffold:
+    README charter, meta/book.yaml (29-chapter spine, phases, sim plan,
+    licensing posture), qa/findings.jsonl (empty ledger). PLAN-4CH1-v1.1 +
+    Kognity dossier copied in-repo. No platform/content code touched (that is
+    T-BOOK-002..010 lanes); sha256 pins deferred to first pack receipt (S0 c01).
+base:
+  repo: "syllabai-v2 @ 2f25475 (books-doctrine branch basis)"
+basis: >
+  Operator directive 2026-10-21 (chat, trace 1a15be4bab0b4aa1); PLAN-4CH1-v1.1
+  §5/§6/§10; T-BOOK-000 audit (trace 1a15bcd0c92adbb1); repo law
+  AGENT_COORDINATION.md + AGENT_BRIEFING.md culture.
+scope:
+  allowed:
+    - "docs/books/**"
+    - "books/**"
+    - "README.md (books pointer lines only)"
+    - ".syllabai/tasks/T-BOOK-015-books-doctrine-docs.yaml"
+    - ".syllabai/worklog.md (append only)"
+  forbidden:
+    - "packages/** (book.block/1 zod is T-BOOK-002's lane — contracts first)"
+    - "apps/** (rail shell/renderer/wiring are T-BOOK-003..009 lanes)"
+    - "syllabai-resources/** (separate repo, append-only, not touched here)"
