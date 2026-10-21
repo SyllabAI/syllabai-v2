@@ -19,8 +19,18 @@
   "bundle": "the 02r set record rebuilt by atoms_to_bank.build_record (of-record assembler) and spliced: 11 questions / 40 parts / 100 marks; name drops the honest-empty suffix; manifest counts 1,249->1,260 questions, 2,392->2,432 parts, 6,341->6,441 marks; single-line compact JSON format preserved (round-trip assert); every other set byte-identical"
  },
  "recordRepairsApplied": [
-  {"question": 7, "type": "drop-continuation-reprint-duplicate-part", "detail": "the OCR layer faithfully captured the printed '(e) 3' reprint at the top of the p21-23 continuation space ('Only use this grid if you need to redraw your curve'); the parser attached it as a 6th part making partsSum 13 != 10 (badSum class). DROPPED at record assembly. Anchor: printed MS grid rows (a)2 (b)2 (c)1 (d)2 (e)3 = 10 == QP total.", "authority": "standing badsum-ruling verdict (RESTORE, evidence-complete repairs)"},
-  {"question": 8, "type": "part-marks-stamp", "detail": "part b marks 4 -> 2: OCR merged the gf(4) function-argument bracket into the marks capture. Anchor: MS point-sum a1+b2+c3+d3+e5 = 14 == QP total 14 EXACT.", "authority": "standing badsum-ruling verdict (RESTORE, evidence-complete repairs)"}
+  {
+   "question": 7,
+   "type": "drop-continuation-reprint-duplicate-part",
+   "detail": "the OCR layer faithfully captured the printed '(e) 3' reprint at the top of the p21-23 continuation space ('Only use this grid if you need to redraw your curve'); the parser attached it as a 6th part making partsSum 13 != 10 (badSum class). DROPPED at record assembly. Anchor: printed MS grid rows (a)2 (b)2 (c)1 (d)2 (e)3 = 10 == QP total.",
+   "authority": "standing badsum-ruling verdict (RESTORE, evidence-complete repairs)"
+  },
+  {
+   "question": 8,
+   "type": "part-marks-stamp",
+   "detail": "part b marks 4 -> 2: OCR merged the gf(4) function-argument bracket into the marks capture. Anchor: MS point-sum a1+b2+c3+d3+e5 = 14 == QP total 14 EXACT.",
+   "authority": "standing badsum-ruling verdict (RESTORE, evidence-complete repairs)"
+  }
  ],
  "postRepairLaw": "all 11 questions partsSum == totalMarks (badSum candidates 0) — the emitter's exclusion law will NOT eat any of them at a future operator-gated re-ingest",
  "disclosedResiduals": [
@@ -33,10 +43,25 @@
   "figure content (graphs/diagrams) is raster-resident in the scan — atoms carry figure references to full-page rasters; the bundle plane carries zero figure refs by design (atoms_to_bank drops them); stem math is OCR-flattened where structure was graphical (the deterministic formatting-note class)",
   "index/blueprint regen at tree 2c438f38 also absorbed sibling corpus growth already on main (index: treeSha-only delta; blueprints: +1 row, 0 changed rows — verified row-by-row)"
  ],
- "gatesRun": ["parser suite 18/18 (incl. PYTHONPATH=tools files)", "typecheck x4 rc=0", "verify:corpus PASS", "verify:flashcard-sync PASS", "verify:cie PASS", "hub unit suite 219 pass / 1 fail PROVEN PRE-EXISTING at clean HEAD via A/B stash (order-dependent isolation in question-cla-threads, unrelated plane)", "next build exit 0"],
+ "gatesRun": [
+  "parser suite 18/18 (incl. PYTHONPATH=tools files)",
+  "typecheck x4 rc=0",
+  "verify:corpus PASS",
+  "verify:flashcard-sync PASS",
+  "verify:cie PASS",
+  "hub unit suite 219 pass / 1 fail PROVEN PRE-EXISTING at clean HEAD via A/B stash (order-dependent isolation in question-cla-threads, unrelated plane)",
+  "next build exit 0"
+ ],
  "dbWrites": 0,
  "prodWrites": "none (no DB, no secrets, no deploy lever pulled; the v2 push auto-bakes the hub per the git-linked consequence law, disclosed)",
  "llmSpend": 0,
  "artifacts": "scripts/run-ocr-02r/{r0_ocr_sandwich.py,v1 try, r0_ocr_sandwich_v2.py, sandwich-report.json, sandwich-report-v2.json, qp.ocr-sandwich.pdf, r0_dump_pages.py, r0_gate_detail.py, run-paper-stdout.json, r0_splice_02r.py, splice-report.json, parsed/ (staging), pages/ (diagnostic renders)}",
- "hygiene": "PAT inline one-time per fetch/push, remote URLs scrubbed, git config token hits 0 across all three repos; no key/URI/bearer in any artifact; NEON unused this lane"
+ "hygiene": "PAT inline one-time per fetch/push, remote URLs scrubbed, git config token hits 0 across all three repos; no key/URI/bearer in any artifact; NEON unused this lane",
+ "ciRaceOfRecord": "first push 89dde55 went CI-red: apps/api/test/sme/bundle-questions.test.ts:401 pinned the conservation law at 1,249 (the pin-sweep grep covered hub/packages but missed apps/api — honest miss). Re-pinned 1,249->1,260 of-record with the lane citation (law unchanged: mapped+excluded==census; the new questions ride the empty-specPointCodes unmapped class until the operator-gated anchor round); api suite 1,982 tests 0 fail locally; d460ca0 pushed; CI verify+hub 2/2 SUCCESS.",
+ "liveVerifyOfRecord": "hub auto-bake landed (syllabai-hub-v2.vercel.app — the hub URL of record; syllabai-v2.vercel.app is the API carrier, health UP): maths-b course badge 1,260 live; /courses/igcse-maths-b-16/exam-questions/2019-06-4mb1-02r 200 with the honest-empty suffix GONE (0 hits) and the Paper 2R census served; exam-questions index lists 02R clean (38 refs, 0 suffix). The 11 new questions are NOT yet on the DB fetch-bank planes (emitter re-ingest is operator-gated; disclosed coupling) — the bundle/live surface carries them today.",
+ "pushesOfRecord": {
+  "syllabai-pastpapers": "87b6b985..2c438f38",
+  "syllabai-parser": "00901e1..f451d8f",
+  "syllabai-v2": "4cfc7a3..89dde55 (union-merge rebase over sibling PR #260) + 89dde55..d460ca0 (conservation-law re-pin)"
+ }
 }
