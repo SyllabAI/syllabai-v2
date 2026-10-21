@@ -41,6 +41,7 @@ import {
 import { kgRetrieve, tokensOf } from "../../src/services/tutor/kg-retriever";
 import {
   INTERVENTION_THRESHOLD,
+  assembleTutorContext,
   selectIntervention,
   type MisconceptionReading,
   type SkillState,
@@ -316,8 +317,8 @@ topic (e.g. "moles", "bonding", "equilibria") or ask your teacher to
 ingest the relevant material.`);
     expect(courseScopeRefusal("4CH1")).toContain('scoped to the course "4CH1"');
     expect(courseScopeRefusal("4CH1")).toContain("SyllabAI never answers across\ncourses");
-    // v14 (the DC-2 supersession): the identity follows the bumped prompt
-    expect(promptIdentity()).toBe("tutor-grounded/v14");
+    // v15 (DC-1): the identity follows the bumped prompt
+    expect(promptIdentity()).toBe("tutor-grounded/v15");
   });
 
   test("the v11 spec-is-a-map quiz law is in the system prompt", () => {
@@ -389,6 +390,84 @@ ingest the relevant material.`);
     // cluster (after the question, before the intervention plan)
     expect(tier2.indexOf("DISCLOSURE TIER 2:")).toBeGreaterThan(tier2.indexOf("QUESTION:"));
     expect(tier2.indexOf("DISCLOSURE TIER 2:")).toBeLessThan(tier2.indexOf("INTERVENTION PLAN:"));
+    // v15 (DC-1): the tier-2 block names the MARK CONTEXT block as a lawful
+    // source of scheme content
+    expect(tier2).toContain("or the MARK CONTEXT block gives them");
+  });
+
+  // v15 (DC-1): the MARK CONTEXT block fixtures — the marking engine's own
+  // artifacts for one explicitly referenced marked part (spec §3.1 P0016)
+  const markCtx = {
+    paperLabel: "4CH1/1C June 2022",
+    questionNumber: "1",
+    partLabel: "c",
+    answerText: "The rate increases because the surface area is larger.",
+    points: [
+      { ref: "1-c-i", text: "correctly states the effect on rate", marks: 1, awarded: true, marksAwarded: 1 },
+      { ref: "1-c-ii", text: "explains in terms of collision frequency", marks: 1, awarded: false, marksAwarded: 0 },
+    ],
+    totalAwarded: 1,
+    totalPossible: 2,
+  };
+
+  test("the v15 MARK CONTEXT block renders the marking engine's own artifacts (never a re-derivation)", () => {
+    const out = userPrompt(
+      "why did I lose a mark on question 1c?",
+      [],
+      { ...baseContext, markContext: markCtx, disclosureTier: 2 },
+      "TESTNONCE",
+    );
+    expect(out).toContain("MARK CONTEXT:");
+    // the spec §3.1 law spans (docs/DC1-MARK-CONTEXT-PLAN.md §1)
+    expect(out).toContain('question 1, part c, of the pinned paper "4CH1/1C June 2022"');
+    expect(out).toContain("Ground EVERY statement about their attempt in THIS block only");
+    expect(out).toContain("never re-derive, estimate or invent any part of it");
+    expect(out).toContain('quote the learner\'s submitted answer verbatim ("You wrote: ...")');
+    // the submitted answer is the LEARNER'S DATA — inside the fence pair
+    expect(out).toContain(
+      "Submitted answer (verbatim):\n<<<UNTRUSTED-TESTNONCE>>>The rate increases because the surface area is larger.<<<END-UNTRUSTED-TESTNONCE>>",
+    );
+    // the exact per-point accounting + scheme lines in order + the total
+    expect(out).toContain("- 1-c-i (1 mark): AWARDED — 1/1; scheme line: correctly states the effect on rate");
+    expect(out).toContain("- 1-c-ii (1 mark): NOT awarded — 0/1; scheme line: explains in terms of collision frequency");
+    expect(out).toContain("Total: 1/2 marks.");
+    // the spec's cross-part pin (c): synthesis only from the given Allocations
+    expect(out).toContain("never invent another part's mark state");
+  });
+
+  test("the v15 MARK CONTEXT block: honest untyped answer, scaffold-cluster placement, absence", () => {
+    const out = userPrompt(
+      "q?",
+      [],
+      { ...baseContext, markContext: { ...markCtx, answerText: null }, disclosureTier: 2 },
+      "TESTNONCE",
+    );
+    expect(out).toContain("(no typed answer was recorded for this part)");
+    // placement: after the tier-2 block, before the intervention plan
+    expect(out.indexOf("DISCLOSURE TIER 2:")).toBeGreaterThan(out.indexOf("QUESTION:"));
+    expect(out.indexOf("MARK CONTEXT:")).toBeGreaterThan(out.indexOf("DISCLOSURE TIER 2:"));
+    expect(out.indexOf("MARK CONTEXT:")).toBeLessThan(out.indexOf("INTERVENTION PLAN:"));
+    // absent when there is no mark state — the ordinary grounded ask
+    expect(userPrompt("q?", [], baseContext, "TESTNONCE")).not.toContain("MARK CONTEXT");
+  });
+
+  test("assembleTutorContext propagates the mark context (the shared contract, DC-1)", () => {
+    const ctx = assembleTutorContext({
+      knowledge: { topics: [], prerequisites: [], misconceptions: [] },
+      evidence: [],
+      learnerId: null,
+      states: [],
+      readings: [],
+      engagements: [],
+      pendingReviews: [],
+      activePaperLabel: null,
+      quizScaffold: null,
+      disclosureTier: 2,
+      markContext: markCtx,
+      now: fixedClock.now(),
+    });
+    expect(ctx.markContext).toEqual(markCtx);
+    expect(ctx.disclosureTier).toBe(2);
   });
 });
 
@@ -1046,5 +1125,248 @@ describe("ka-rag evidence hygiene — run-004 proposal #1 (context math-unwrap)"
     ]);
     // same row + page — one citation regardless of content projection
     expect(prep.evidence.length).toBe(1);
+  });
+});
+
+// ── DC-1 — the marking-context contract (spec §3.1 P0016; prereg
+// docs/DC1-MARK-CONTEXT-PLAN.md, operator trace 1a15fe62c2e2bd2d):
+// karag prepare() step 2.8 over the smartmark store, fail-open like the
+// quiz scaffold. ─────────────────────────────────────────────────────────────
+
+describe("DC-1 mark context — karag prepare() step 2.8 (spec §3.1 P0016)", () => {
+  const emptyGraph = {
+    async structureNodes() {
+      return [];
+    },
+    async prerequisiteChains() {
+      return new Map();
+    },
+    async misconceptionsForTopics() {
+      return new Map();
+    },
+  };
+  const scopes = {
+    async resolveActive() {
+      return { curriculumVersionId: "cv", code: "4CH1", surface: new Set(["n1"]) };
+    },
+    async resolveForCourse() {
+      return null;
+    },
+  };
+  const pin = {
+    paperId: "pap1",
+    paperCode: "4CH1/1C",
+    sessionLabel: "June 2022",
+    series: "June",
+    year: 2022,
+    validationState: "VALIDATED",
+    items: [],
+  };
+
+  const pointRows = [
+    { id: "mp1", ref: "1-c-i", ordering: 0, text: "correctly states the effect on rate", marks: 1, question_part_id: "p1c" },
+    { id: "mp2", ref: "1-c-ii", ordering: 1, text: "explains in terms of collision frequency", marks: 1, question_part_id: "p1c" },
+  ];
+  const fullBreakdown = [
+    { markPointId: "mp1", ref: "1-c-i", marks: 1, marksAwarded: 1, awarded: true, evidence: "e1", rationale: "r1" },
+    { markPointId: "mp2", ref: "1-c-ii", marks: 1, marksAwarded: 0, awarded: false, evidence: "e2", rationale: "r2" },
+  ];
+
+  const run = (
+    ask: string,
+    responses: Record<string, Row[]>,
+    opts?: { learnerId?: string | null; paperPin?: unknown },
+  ) =>
+    prepare(
+      {
+        sql: fakeSql(responses),
+        clock: fixedClock,
+        kgGraph: emptyGraph,
+        scopes,
+        vectorRetriever: async () => [],
+        paperQuestionResolver: async () => ({
+          items: [],
+          identityParsed: false,
+          identityLabel: null,
+        }),
+        paperPin: async () => pin,
+        ...(opts != null && "paperPin" in opts ? { paperPin: opts.paperPin as never } : {}),
+      } as never,
+      opts?.learnerId === undefined ? "l1" : opts.learnerId,
+      ask,
+      [],
+      null,
+      "pap1",
+    );
+
+  const happyRows = {
+    "select q.id, q.external_ref\n": [{ id: "q1", external_ref: "1" }],
+    "join question_versions v on v.id = p.question_version_id": [
+      { version_id: "v1", version: 1, id: "p1c", label: "c", marks: 2 },
+    ],
+    "from attempts a": [{ id: "a1" }],
+    "from answers ans": [
+      { id: "ans1", answer_text: "The rate increases because the surface area is larger." },
+    ],
+    "from smart_mark_results": [
+      { id: "r1", answer_id: "ans1", marks_awarded: 1, validation_passed: true, breakdown: fullBreakdown },
+    ],
+    "from mark_schemes": [{ id: "ms1" }],
+    "from mark_points": pointRows,
+  };
+
+  test("the happy path: the marking engine's OWN artifacts, tier 2, SOURCES untouched", async () => {
+    const prep = await run("why did I lose a mark on question 1c?", happyRows);
+    const mark = prep.markContext;
+    expect(mark).not.toBeNull();
+    expect(mark!.paperLabel).toBe("4CH1/1C June 2022");
+    expect(mark!.questionNumber).toBe("1");
+    expect(mark!.partLabel).toBe("c");
+    expect(mark!.answerText).toBe("The rate increases because the surface area is larger.");
+    expect(mark!.points.map((p) => [p.ref, p.awarded, p.marksAwarded, p.marks])).toEqual([
+      ["1-c-i", true, 1, 1],
+      ["1-c-ii", false, 0, 1],
+    ]);
+    expect(mark!.totalAwarded).toBe(1);
+    expect(mark!.totalPossible).toBe(2);
+    // the spec's tier-2 trigger on this surface (prereg R7): post-attempt
+    // chat turn on a marked part
+    expect(prep.disclosureTier).toBe(2);
+    // the loader never feeds the SOURCES pool — the evidence path untouched
+    expect(prep.evidence.length).toBe(0);
+  });
+
+  test("per-part external_ref rows match by suffix; a bound roman refines", async () => {
+    const perPart = await run("what went wrong on question 1(c)?", {
+      ...happyRows,
+      "select q.id, q.external_ref\n": [
+        { id: "q1a", external_ref: "1(a)" },
+        { id: "q1c", external_ref: "1(c)" },
+      ],
+    });
+    expect(perPart.markContext?.questionNumber).toBe("1(c)");
+    expect(perPart.markContext?.partLabel).toBe("c");
+    expect(perPart.disclosureTier).toBe(2);
+
+    const roman = await run("why was question 2c(ii) wrong?", {
+      "select q.id, q.external_ref\n": [
+        { id: "q2c", external_ref: "2(c)" },
+        { id: "q2cii", external_ref: "2(c)(ii)" },
+      ],
+      "join question_versions v on v.id = p.question_version_id": [
+        { version_id: "v9", version: 1, id: "p2cii", label: "c (ii)", marks: 2 },
+      ],
+      "from attempts a": [{ id: "a9" }],
+      "from answers ans": [{ id: "ans9", answer_text: "the answer text" }],
+      "from smart_mark_results": [
+        {
+          id: "r9",
+          answer_id: "ans9",
+          marks_awarded: 1,
+          validation_passed: true,
+          breakdown: [
+            { markPointId: "mp9", ref: "2-c-ii", marks: 1, marksAwarded: 1, awarded: true, evidence: "e", rationale: "r" },
+          ],
+        },
+      ],
+      "from mark_schemes": [{ id: "ms9" }],
+      "from mark_points": [
+        { id: "mp9", ref: "2-c-ii", ordering: 0, text: "the scheme line", marks: 1, question_part_id: "p2cii" },
+      ],
+    });
+    expect(roman.markContext?.questionNumber).toBe("2(c)(ii)");
+    expect(roman.markContext?.partLabel).toBe("c (ii)");
+    expect(roman.markContext?.points.map((p) => [p.ref, p.awarded, p.marksAwarded])).toEqual([
+      ["2-c-ii", true, 1],
+    ]);
+  });
+
+  test("resolution order: no explicit reference → no mark context (arm 2 degrades honestly, prereg R2)", async () => {
+    const prep = await run("explain electrolysis to me", happyRows);
+    expect(prep.markContext).toBeNull();
+    expect(prep.disclosureTier).toBe(1);
+  });
+
+  test("fail-open: unpinned, anonymous, no attempt, unvalidated, partial accounting, ambiguous", async () => {
+    // the pin port absent — a reference cannot resolve a paper
+    const unpinned = await run("why did I lose a mark on question 1c?", happyRows, {
+      paperPin: undefined,
+    });
+    expect(unpinned.markContext).toBeNull();
+    expect(unpinned.disclosureTier).toBe(1);
+    // anonymous asks never read the attempt store
+    const anonymous = await run("why did I lose a mark on question 1c?", happyRows, {
+      learnerId: null,
+    });
+    expect(anonymous.markContext).toBeNull();
+    expect(anonymous.disclosureTier).toBe(1);
+    // no attempt on the part — honest (spec acceptance b: no fabrication)
+    const noAttempt = await run("why did I lose a mark on question 1c?", {
+      ...happyRows,
+      "from attempts a": [],
+    });
+    expect(noAttempt.markContext).toBeNull();
+    expect(noAttempt.disclosureTier).toBe(1);
+    // the latest result is not validated — no mark state is served
+    const unvalidated = await run("why did I lose a mark on question 1c?", {
+      ...happyRows,
+      "from smart_mark_results": [
+        { id: "r1", answer_id: "ans1", marks_awarded: 0, validation_passed: false, breakdown: null },
+      ],
+    });
+    expect(unvalidated.markContext).toBeNull();
+    // a point without its decided entry → partial accounting → fail open
+    const partial = await run("why did I lose a mark on question 1c?", {
+      ...happyRows,
+      "from smart_mark_results": [
+        {
+          id: "r1",
+          answer_id: "ans1",
+          marks_awarded: 1,
+          validation_passed: true,
+          breakdown: [fullBreakdown[0]!],
+        },
+      ],
+    });
+    expect(partial.markContext).toBeNull();
+    // ambiguous suffix matches → fail open
+    const ambiguous = await run("why did I lose a mark on question 1c?", {
+      ...happyRows,
+      "select q.id, q.external_ref\n": [
+        { id: "q1", external_ref: "1(c)" },
+        { id: "q1b", external_ref: "1 (c)" },
+      ],
+    });
+    expect(ambiguous.markContext).toBeNull();
+    expect(ambiguous.disclosureTier).toBe(1);
+  });
+
+  test("any loader failure degrades to the ordinary grounded ask (the quiz-scaffold law)", async () => {
+    const events: unknown[] = [];
+    const prep = await prepare(
+      {
+        sql: (async () => {
+          throw new Error("store down");
+        }) as never,
+        clock: fixedClock,
+        kgGraph: emptyGraph,
+        scopes,
+        vectorRetriever: async () => [],
+        paperQuestionResolver: async () => ({
+          items: [],
+          identityParsed: false,
+          identityLabel: null,
+        }),
+        paperPin: async () => pin,
+      } as never,
+      "l1",
+      "why did I lose a mark on question 1c?",
+      [],
+      null,
+      "pap1",
+    );
+    expect(prep.markContext).toBeNull();
+    expect(prep.disclosureTier).toBe(1);
+    void events;
   });
 });

@@ -18,6 +18,7 @@
 
 import type { EvidenceItem } from "./evidence";
 import type { QuizScaffold } from "./quiz-scaffold";
+import type { MarkContext } from "./mark-context";
 
 // ── KnowledgeRetriever.KnowledgeContext (:39-73) ────────────────────────────
 
@@ -372,10 +373,14 @@ export interface TutorContext {
   courseCode: string | null;
   /** v14 (the DC-2 supersession): the COMPUTED disclosure tier (1 = hint
    *  level — the default posture; 2 = explicit, the DISCLOSURE TIER 2
-   *  block). The tutor surface holds tier 1 until DC-1's part resolution
+   *  block). The tutor surface computes it from DC-1's part resolution
    *  (prepare step 2.8 + markContext); the CLA surface computes it from
    *  the of-record leakage predicate (cla/leakage-policy.ts, T-MIG-067). */
   disclosureTier?: 1 | 2;
+  /** DC-1 (spec §3.1 P0016; prereg docs/DC1-MARK-CONTEXT-PLAN.md): the
+   *  marking engine's OWN artifacts for the explicitly referenced marked
+   *  part (null = fail-open — the ask proceeds without any mark state). */
+  markContext?: MarkContext | null;
 }
 
 /** Java String.format(Locale.ROOT, "%.2f", v) posture for the briefs. */
@@ -407,8 +412,12 @@ export interface AssembleInputs {
    *  compatibility; absent → the general law). */
   courseCode?: string | null;
   /** v14 (the DC-2 supersession): the computed disclosure tier (absent =
-   *  the tutor surface's tier-1 default posture until DC-1). */
+   *  the tier-1 default posture). */
   disclosureTier?: 1 | 2;
+  /** DC-1 (spec §3.1 P0016): the marking engine's own artifacts for the
+   *  referenced marked part (optional for call-site compatibility; absent
+   *  → no mark context — the ordinary grounded ask). */
+  markContext?: MarkContext | null;
   now: Date;
 }
 
@@ -455,10 +464,12 @@ export function assembleTutorContext(inputs: AssembleInputs): TutorContext {
     activePaperLabel: inputs.activePaperLabel ?? null,
     quizScaffold: inputs.quizScaffold ?? null,
     courseCode: inputs.courseCode ?? null,
-    // v14 (the DC-2 supersession): the tutor surface's tier-1 default —
-    // no part-reference resolution exists on this pipeline until DC-1's
-    // prepare step 2.8 lights the marked-part path up
+    // v14 default posture; DC-1's prepare step 2.8 now computes the tutor
+    // surface's tier from the resolved marked part (2 exactly then)
     disclosureTier: inputs.disclosureTier ?? 1,
+    // DC-1 (spec §3.1): the mark context rides the shared contract —
+    // populated by prepare step 2.8 on the tutor pipeline, absent elsewhere
+    markContext: inputs.markContext ?? null,
   };
 }
 
