@@ -11003,3 +11003,21 @@ Stage Summary:
 - NEXT #2 LANDED: the learner UI accounting surfaces carry zero phantom codes and the operator-verified anchors at resources@aa0b4de1; the home-page pin names 8ac98e87 (wave-10's rebind, descendant of the build pin).
 - PAT rotation still CRITICAL overdue (transit 27 resources + this v2 push on the same fingerprint) — REQUIRED before any re-supply.
 - Followups: 45 non-accounting Edexcel attachment maps remain seed-era @ 2e17aab0 (own dispatch); maths-b manifest keeps its of-record vintage ref (disclosed mixed pin).
+
+---
+Task ID: T-MIG-136 restore-verification run-001-r0 (operator ruling trace 1a15de779f2250f9 "Restore it"; continuation session web-6139ba42-da3d-435b-8237-f8623816ae6c, trace 1a15ef6e2f2cddc1 "Proceed with (1) and (2)")
+Agent: main agent (Super Z, zai-web)
+Task: verify the of-record state of the operator-ordered maths-b interactive bundle restore on resuming the session — the sandbox had rolled back (#8) and the local clone was lost; remote is the only of record.
+
+Work Log:
+- Re-cloned syllabai-v2 fresh (sandbox rollback lost the workspace); fetched origin/main = c2388bca — advanced d56a947 -> c2388bca since Task-68.
+- DISCOVERY OF RECORD: the restore was ALREADY EXECUTED by the parallel lane 04aee80e ("content(4MB1): RESTORE the interactive maths-b question bundle of record — operator ruling trace 1a15de779f2250f9"), questions.json byte-exact from 8ee371e + manifest counts 0 -> 65/1,249/2,392/6,341 independently re-derived, receipt .syllabai/receipts/T-MIG-136/restore-maths-b-interactive-r0.json present (3,091 B). This session therefore converted its mandate from re-restore to INDEPENDENT VERIFICATION — no second restore was performed (correct: the ruling was already discharged).
+- Verified three authorized post-restore lanes kept structure constant: 1fd18858 (MS-notation cleanup, 810 footers stripped), d7ac1631 (badsum ruling, 4 totalMarks stamps, badSum 57->53), d7881770 (commandword lane, 1,144 fills) — each discloses "structure 65/1249/2392 unchanged".
+- Independent bundle census (fresh script, zero reliance on prior receipts): 65 sets / 1,249 questions / 2,392 parts / 2,392/2,392 spec-anchored (specPointIds non-empty), 0 unresolved codes vs curriculum.json universe; sum(question.totalMarks) = 6,341 == manifest marks EXACT; sum(part.marks) = 6,560, delta 219 fully attributed to the 53 documented badSum rows (parts-sum inflation on parse-defect rows, emitter-excluded of record, awaiting the OCR repair lane 95024009); commandWord 2,224/2,392 = 93.0% == d7881770's disclosed figure; manifest counts sections 10 / topics 10 / specPoints 98 / notes 199 / questionSets 65 / questions 1,249 / parts 2,392 / marks 6,341 / flashcards 1,082.
+- LIVE VERIFICATION (syllabai-hub-v2.vercel.app, git-linked auto-bake confirmed): /courses/igcse-maths-b-16/exam-questions 200 — badges "1249 questions" + "65 sets", 66 set links (65 paper sets + /saved); topic sidebar counts 366+677+103+70+22+11 = 1,249 EXACT; three set pages cross-verified repo==live by distinct payload ids: 2018-06-4mb1-01 28q/37p, 2026-06-4mb1-01 26q/38p, 2020-06-4mb1-02r 12q/41p — all EXACT. Task-68's "37/38/41 q" anchors are hereby re-keyed as PARTS counts (28/26/12 questions) — the reconciliation is exact on both planes.
+- Honest disclosure: the /past-papers catalog surface (117 papers / 35 sessions / 64 interactive chips) is client-rendered from the corpus lib and not present in initial HTML — not re-verified this pass; the authoritative exam-questions player surface is fully verified.
+- PAT rotation remains CRITICAL overdue per c2388bca's own ledger note (same fingerprint used for this append) — re-flagged to the operator; this push is a ledger-only append, no content, no re-supply.
+
+Stage Summary:
+- Operator ruling "Restore it" (trace 1a15de779f2250f9) VERIFIED DISCHARGED of record: bundle live and byte-consistent on both planes (repo census exact, live surface exact), manifest self-consistent, anchoring total, the 53 badSum + OCR residuals the only disclosed open defects (their own lanes).
+- Zero content mutations this task (verification-only). No new commit beyond this worklog append.
