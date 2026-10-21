@@ -1,0 +1,34 @@
+{
+  "task": "T-TEACH-007",
+  "band": "HUB-TEACH",
+  "title": "the local class container gains the past-papers card — the T-TEACH-004 named residual cleared from the remaining queue: the browser-local workspace's per-subject resource rows now include the subject's past-papers archive card, the exact card the core class workspace renders",
+  "operator_order": "\"Proceed with Still queued (your call, no rush): the optional past-papers card on the local class container, and the nightly proof run that confirms the marking projection end-to-end\" (trace 1a16016db6dc06e9, session web-590847c1-cf63-4098-b0c8-a90085355429); residual provenance: T-TEACH-004 receipt + worklog (\"the local container optionally gaining the past-papers card\") and the T-TEACH-006 receipt's next-field",
+  "date": "2026-10-22",
+  "agent": "zai-web lane (main agent, session web-590847c1)",
+  "what_shipped": [
+    "apps/hub/src/app/teacher/classes/[id]/class-workspace-local.tsx — the per-subject RESOURCES rows gain the Past Papers card: ScrollText icon, deep link /courses/{slug}/past-papers, the exact card the core branch renders (class-detail-client.tsx RESOURCES entry mirrored verbatim)",
+    "the count rides the SAME server-passed paperCounts prop the core workspace consumes — page.tsx already counts the committed past-papers corpus index for EVERY registry slug per request (corpusPapersForCourse), so threading the prop down costs the local branch nothing: data, never a fetch, no new API surface",
+    "honest zero: an unmapped subject renders 'no papers in the archive yet' and the card STILL LINKS — the archive's empty state routes to the deterministic practice papers (the T-TEACH-004 posture, mirrored)",
+    "'no corpus package' badge explicitly does NOT apply to the papers card (stat && !stat.hasBundle && !papers) — the archive is independent of the SME bundle",
+    "resource grid joins the core parity shape sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 (5 cards on one xl row; previously lg:grid-cols-4)",
+    "apps/hub/src/app/teacher/classes/[id]/class-workspace-dispatcher.tsx — paperCounts threads down to the LOCAL branch (previously core-only); header comment amended: the past-papers card is the one deliberate addition to the local container's scope, everything else still counts through /api/course-stats alone"
+  ],
+  "design_decision_of_record": {
+    "prop_not_fetch": "the local container's count posture stays '/api/course-stats alone' for its own resource stats; the papers count is the ONE exception and rides the server-passed prop exactly as the core branch does — one computation per request on the server, zero client fetch, zero new endpoint",
+    "honest_zero_still_links": "unmapped subjects render the honest zero and keep the link (the archive's own empty state handles routing to practice papers) — identical to the core-branch behavior, no special-casing",
+    "scope_discipline": "hub-only diff (2 files, +48/−10): no api route, no contract, no schema, no DB, no golden posture, no seed — the dispatcher's LOCAL-branch scope note is amended rather than silently superseded"
+  },
+  "verification": {
+    "typecheck": "bun run typecheck — exit 0 x4 (packages/contracts, packages/shared, packages/db, apps/api)",
+    "api_packages_tests": "bun test apps/api packages — 2496 pass / 0 fail / 13 skip (130 files) — the CURRENT main baseline (concurrent lanes moved it 2488 -> 2496 since T-TEACH-006: the dc1-v15 marking-context band et al.); this hub-only diff adds zero test delta; 0-fail holds",
+    "hub_build": "bun run build:hub — green (/teacher/classes/[id] compiles)",
+    "eslint": "npx eslint on both changed files — clean",
+    "ci": "PR #278 head 3c8a3306: verify + hub 2/2 green; merged squash 9002ff54; main head 9002ff54: verify + hub green (bounded poll)"
+  },
+  "residuals": [
+    "the sibling queue item — the T-TEACH-003 stage-5b neon-replay projection proof — is filed SEPARATELY of record (t-teach-003-stage-5b-replay-proof-r0.json): BLOCKED, the instrument is staging-broken since run #51 (G4 anchor-type guard x the frozen-capture corpus); unrelated to this hub-only change",
+    "T-TEACH-005 F-2 guard-law and F-3 notes unchanged (no mount, no api surface touched here)"
+  ],
+  "next": "operator disposition on the stage-5b blockage (the sme-ingest corpus re-pin ruling); the T-TEACH queue is otherwise CLEAR — T-TEACH-001..007 all landed of record",
+  "standing_reminder": "the operator must revoke the GitHub PAT (ghp_h4D…) at migration end per the credential law — used this session for fetch/push/PR/merge only"
+}

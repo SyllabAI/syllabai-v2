@@ -1,0 +1,44 @@
+{
+  "task": "T-TEACH-003 residual — stage-5b neon-replay projection proof watch",
+  "band": "HUB-TEACH",
+  "title": "The stage-5b nightly proof was DISPATCHED of record and is BLOCKED: the neon-replay instrument itself is staging-broken since run #51 — the operator-installed G4 anchor-type guard rejects the frozen-capture corpus's SUBTOPIC-anchored spec-point mappings on every seed-posture staging pass, so no union verdict (and no marking-quartet observation) can be produced at any current main",
+  "operator_order": "\"Proceed with Still queued (your call, no rush): the optional past-papers card on the local class container, and the nightly proof run that confirms the marking projection end-to-end\" (trace 1a16016db6dc06e9, session web-590847c1-cf63-4098-b0c8-a90085355429); the stage-5b residual's own standing law (T-TEACH-003 receipt): \"the nightly neon-replay must go GREEN once on the merged main to prove the stage-5b projection end-to-end\"",
+  "date": "2026-10-22",
+  "agent": "zai-web lane (main agent, session web-590847c1)",
+  "what_was_done": [
+    "Pre-dispatch tip-stability assert (fetch-first): origin/main = 7427c555; the dispatch is the established workflow_dispatch equivalent of the nightly run (precedent: runs #20, and the R0-REPLAY-FILING lineage) — the 02:30Z cron slot itself is hours away and GitHub schedule-lag makes it unreliable",
+    "DISPATCHED: neon-replay run #52, id 39669192038, workflow_dispatch ref=main @ 7427c555, 2026-10-21T20:18:42Z, note embeds the operator trace + dispatcher identity; concurrency-serialized per the workflow",
+    "Pulled the evidence artifact neon-replay-39669192038-1 (id 12378049275) and triaged first-hand",
+    "Attributed the failure class with a full causal chain (below), cross-checked against run #51's artifact (id 12328299803 — byte-size-identical 2286B, same crash ×2) and the run-history window (#45–#48 success, #49–#50 the standing union-divergence era, #51+ the staging-crash class)"
+  ],
+  "verdict": "BLOCKED — instrument staging-broken, NOT a T-TEACH-band finding",
+  "evidence": {
+    "job_outcome": "run #52 conclusion=failure, but the failure class is NEW vs the standing divergence era: the artifact contains boot-seed.log + boot-prod.log + prod.json ONLY — no seed.json and no union.md — Pass A (seed posture) died mid-staging and the union step had nothing to union",
+    "crash_signature": "boot-seed.log ×2: P0001 raised by PL/pgSQL assert_spec_point_anchor(): \"ck_qsp_anchor_is_spec_point: question_spec_points row <uuid> references knowledge node 20000000-0000-0000-0000-000000000012 which is not SPEC_POINT (node_type=SUBTOPIC) — anchor-type hole is closed of record (F.5 §7 G4)\"; failing row uuids 7a6ba155-c66a-49c3-b36b-07d9a2a7d08a and d6387587-24c9-4336-9847-8f515ec3d63b; api logger routes/sme.ts:57 (\"[sme] unhandled error\")",
+    "causal_chain": [
+      "1. G4 guard = .syllabai/receipts/T-MIG-139/g4-anchor-type-trigger.sql (sha256 4d631828ce35db2613c34656dee0213281739198bbf04a486e5ee0590f8b5562) — BEFORE INSERT OR UPDATE trigger on question_spec_points asserting node_type='SPEC_POINT', fail-closed; staged by T-MIG-139 (8fad60b7) with 'installs on OPERATOR ORDER only'",
+      "2. The operator ordered the install (trace 1a15a68f77ec7da9 'Go Install the G4 database guard'); T-MIG-139 run-002 (264e0382, 2026-10-21T18:20Z) verdict DISCHARGED-AS-ALREADY-INSTALLED — the live trigger byte-identical to the staged artifact and ENFORCING on both paths; production pre-census anchors_not_spec=0 (production is CLEAN under the guard)",
+      "3. Every replay COW branch inherits the guard (COW parent = production per NEON_PARENT_BRANCH_ID)",
+      "4. The seed posture's SME staging is driven by the golden cases w3-sme-ingest-rich-200 (seq 10) + w3-sme-ingest-replace-rich-200 (seq 11) POSTing the frozen-capture file golden/cases/files/t51-corpus.zip — captured verbatim from the LOCAL frozen-core boot @ 6cad6ef; its package.json carries exactly TWO spec-point mappings: WCH11-T1.1 (PRIMARY) and WCH11-T1.2 (PRIMARY)",
+      "5. The t51 seed (golden/cases/files/t51-seed.sql, seed-v6) defines WCH11-T1.1 = node 20000000-0000-0000-0000-000000000012 with node_type=SUBTOPIC ('Mole calculations and reacting masses')",
+      "6. services/sme/index.ts :319-323 resolves the mapping code through byCode (ALL knowledge nodes by code, SUBTOPICs included) and INSERTs question_spec_points with spec_point_node_id=…0012 → the G4 trigger fires → the api logs the unhandled error and the staging transaction dies (×2 = one death per case execution, each on the FIRST mapping T1.1; the replace case re-runs the same corpus)",
+      "7. T-MIG-139's G2 ('both seeders emit SPEC_POINT', 8fad60b7) converged the REPO-SIDE v2 seeders (concept-seed.ts, bundle-seed.ts) and consumers — the golden-capture corpus file is not a seeder it could converge: it is a forever-gate captured byte-verbatim from the frozen core (GOLDEN_MASTER: cases are forever; the file documents what the core actually ingested)"
+    ],
+    "run_history_window": "#45–#48 (Oct 15–18) success; #49–#50 (Oct 19–20) failure = the standing union-divergence era (seed.json + union.md present, verdicts of record); #51 (39565038799, schedule, 2026-10-21T07:52:12Z @ c1d123e5, artifact identical in shape and crash) is the FIRST staging-crash run — therefore the G4 guard went live on production ON OR BEFORE 2026-10-21T07:52Z; #52 (this dispatch) is the second of the class"
+  },
+  "why_not_this_lanes_fix": {
+    "option_repin_cases": "REPIN the two sme-ingest cases' corpus file with a G4-legal package (the two mappings re-anchored at SPEC_POINT children of the WCH11-T1.1/T1.2 topics, or a re-authored capture) — the ONLY law-compatible repair found. NOT executed here: it is a golden-corpus change to a forever-gate captured from the frozen core — GOLDEN_MASTER §4 reserves it to the case-owner + integrator with a justified:true note, and the capture's provenance (what the core actually ingested) is exactly what the operator would be re-authoring",
+    "option_retype_seed_nodes": "REJECTED on the law — retyping WCH11-T1.1/T1.2 to SPEC_POINT in the seed contradicts the G1 node-type swap of record (they are genuinely topic-level nodes; the mapping is what carries the old law, not the node type)",
+    "option_guard_exemption": "REJECTED — any staging-path exemption or softening contradicts the operator's fail-closed G4 order ('anchor-type hole is closed of record')"
+  },
+  "stage_5b_posture": "UNCHANGED AND LANDED: the stage-5b enrollment-coverage state (golden/tools/seed-t51-rich200.ts --stage attempts/all) and the enrollment-scoped marking surfaces remain unit-gated of record (current baseline bun test apps/api packages = 2496 pass / 0 fail / 13 skip incl. the marking band). What cannot be observed while the instrument is down is the END-TO-END replay proof: the rich-200 quartet w3-teacher-marking-{answers,answers-paged,queue-v2,throughput}-rich-200 must reproduce under stage-5b coverage (scoped read == captured global read). The 401 shell postures and the classroom-* empty tranche are unaffected by D1 and by this blockage",
+  "consequences": [
+    "the nightly neon-replay is DOWN as a verdict producer since run #51 (2026-10-21T07:52Z) — every cron fire at current main will crash in staging until the operator disposition lands (the job stays red with a 3-file artifact; no union.md is produced)",
+    "the same downness blocks ALL union observations, not only the marking quartet — including any future replay corroboration of T-TEACH-006's deliberate assignments divergence posture against the frozen captures",
+    "NOT caused by the T-TEACH band: T-TEACH-003/004/005/006 touched no seed, no golden case, no corpus file, no DB (each receipt discloses the zero-contact posture); the conflict is G4 (T-MIG-139, operator-installed) × the frozen-capture corpus (T51-era captures)"
+  ],
+  "requested_disposition": "operator + golden-corpus owner (R0/R6) + T-MIG-139 lane (r7a): rule on the corpus re-pin (option a) — then ONE neon-replay run (cron or dispatch) with the w3-teacher-marking rich-200 quartet ABSENT from the union fail list closes BOTH the stage-5b projection proof and the instrument-repair of record",
+  "sibling_item": "the other half of the operator's order — T-TEACH-007, the LOCAL class container's past-papers card (the T-TEACH-004 residual) — is IN FLIGHT as PR #278 (hub-only, all local gates green) and is unaffected by this blockage (zero golden/api contact)",
+  "next": "operator disposition on the sme-ingest corpus re-pin; T-TEACH-007 PR #278 CI -> squash-merge -> close-out; the stage-5b proof watch re-arms on the instrument repair",
+  "standing_reminder": "the operator must revoke the GitHub PAT (ghp_h4D…) at migration end per the credential law — used this session for fetch/dispatch/artifact/PR/push only"
+}
