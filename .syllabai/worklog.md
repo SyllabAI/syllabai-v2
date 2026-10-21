@@ -10759,3 +10759,13 @@ Work Log:
 Stage Summary:
 - The interactive 4MB1 papers are RESTORED of record: bundle plane re-lights (65 sets / 1,249 questions), the T-CONSUME-EDX-1 refresh state preserved everywhere else, DB plane untouched. Open: T-MIG-138 drain firing (separate act, window past).
 - Task-69 ADDENDUM (act-time environment): the first commit attempt (f837a77 on 139266e) died on push — the sandbox filesystem hit ENOSPC 100% (even rm/truncate/rename failing; the 9GB full re-clone was the hog); all restore artifacts were staged byte-verified in /dev/shm BEFORE the clone was destroyed; re-cloned SPARSE BLOBLESS (depth 30, .syllabai + maths-b bundle + hub src only) — origin/main read 8d32377 at re-clone (badsum-recon-run-001 verified 57/57 against bundle 8ee371e = the exact blob restored here, 'manifest rides for restore' — posture CONSISTENT with this act; qv-mirror + T-BOOK-003 + r0-cron observed, untouched); artifacts re-applied byte-verified from shm; worklog union-append per law; this is the landing commit of the restore.
+
+## receipt(R0-AUTO) — r0-cron-20261021-1830 (2026-10-21T10:30Z sweep)
+
+- Task ID: r0-cron-20261021-1830 (Job 438940)
+- MERGED: PR #245 → 914f676 — dc6-p3c question-rail management verbs (rename + delete(+undo), hub-only additive; head d963bc1)
+- Gates: head d963bc1 verify ✓ hub ✓; mergeable=True state=clean; reviews 0 / comments 0 (no HOLD/BLOCKING); diff in-bounds — apps/hub/src/components/cla/* ×4 + docs/DC6-QUESTION-RAIL-VERBS-PLAN.md ×1; no *.java, no core/hub content, no DB/prod writes
+- Post-merge main CI: 914f676 check-runs hub ✓ verify ✓ (completed success)
+- SKIPPED: #246 (T-BOOK-004..006) — stacked, base=t-book-003/rail-shell not main; head 46ea216 verify ✓ hub ✓ Vercel ✓ but not a main-merge-desk target (lane stack, lane active 10:29Z); #247 (T-BOOK-007..009) — stacked on t-book-004/rail-widgets AND head 88e8b60 hub ✗ red → double skip
+- NOTES: operator push 04aee80 (content 4MB1 maths-b interactive restore, operator ruling trace 1a15de779f2250f9) landed post-merge on main, fetch-first no-force — no collision with this sweep; sweep merge count 1/2
+- Bookkeeping only: .syllabai/** — no code, no force
