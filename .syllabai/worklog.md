@@ -11659,3 +11659,14 @@ Work Log:
 
 Stage Summary:
 - D57-R0 receipt of record at v2 main a3e3219; provenance chain complete (a6fa212 pre-rebase discarded, content byte-identical modulo union placement).
+
+## receipt(R0-AUTO) — r0-cron-20261022-0430 (2026-10-21T20:30Z sweep)
+
+- Task ID: r0-cron-20261022-0430 (Job 438940)
+- LANE SELF-MERGED BOTH (R0 PUTs were benign idempotent no-ops — verified post-hoc via merged_by/merged_at):
+  - PR #277 → 6a86f41 — receipt(cie-tranche2-r2) map-universe operator review sheets (lane merge 20:31:59Z, 2-parent); R0 had pre-verified head CI green (4d4daac verify ✓ hub ✓) + local merge-tree clean; diff .syllabai-only
+  - PR #278 → 9002ff5 — T-TEACH-007 local class container past-papers card (lane merge 20:31:43Z); R0 pre-verified head CI green (3c8a330 verify ✓ hub ✓) + local merge-tree clean; diff apps/hub teacher workspace ×2
+- R0 gates verified for both PRs before PUT: required CI green, no blockers, diff in-bounds, no *.java / core-hub / DB-prod
+- Post-merge main CI: 6a86f41 hub ✓ verify ✓; 9002ff5 hub ✓ verify ✓
+- LEDGER NOTE: main tip 7427c55 showed replay ✗ at sweep open — known neon-replay advisory (ESC-2 lineage, non-required), no escalation; gate pair hub+verify green throughout
+- Bookkeeping only: .syllabai/** — no code, no force
