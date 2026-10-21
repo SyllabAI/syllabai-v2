@@ -1,0 +1,15 @@
+# S0 output of record - c25-alkenes (T-BOOK-013; PHASE C - S0/S1/S2 only, see the licensing gate)
+chapter: "c25"
+chapter_key: "u4:c25"
+title: "Alkenes"
+status: draft # S3/S4 PENDING-OPERATOR: F-BOOK-0001 release gate (no Phase C flip until the LICENSE-DATA.md amendment lands)
+block_schema: "book.block/1"
+planned_blocks: 5
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p291 intro, p292 alkane-vs-alkene sort, p293 bromine-water callout + addition builder, p294 mcq"
+blocks:
+  - {ord: 1, id: "c25-alkenes/b01", type: prose, file: "blocks/b01-prose-unsaturated.json", anchor: 291}
+  - {ord: 2, id: "c25-alkenes/b02", type: sort-match, file: "blocks/b02-sort-match-alkane-alkene.json", anchor: 292}
+  - {ord: 3, id: "c25-alkenes/b03", type: callout, file: "blocks/b03-callout-bromine-water-test.json", anchor: 293}
+  - {ord: 4, id: "c25-alkenes/b04", type: eq-builder, file: "blocks/b04-eq-builder-ethene-bromine.json", anchor: 293}
+  - {ord: 5, id: "c25-alkenes/b05", type: mcq-embed, file: "blocks/b05-mcq-check.json", anchor: 294}

@@ -1,0 +1,16 @@
+# S0 output of record - c22-intro-organic (T-BOOK-013; PHASE C - S0/S1/S2 only, see the licensing gate)
+chapter: "c22"
+chapter_key: "u4:c22"
+title: "Introduction to organic chemistry"
+status: draft # S3/S4 PENDING-OPERATOR: F-BOOK-0001 release gate (no Phase C flip until the LICENSE-DATA.md amendment lands)
+block_schema: "book.block/1"
+planned_blocks: 6
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p264 intro, p265 formulae table, p266 functional-group callout, p267 naming sort, p268 alkanes figure, p269 mcq"
+blocks:
+  - {ord: 1, id: "c22-intro-organic/b01", type: prose, file: "blocks/b01-prose-hydrocarbons.json", anchor: 264}
+  - {ord: 2, id: "c22-intro-organic/b02", type: table-fill, file: "blocks/b02-table-fill-formula-types.json", anchor: 265}
+  - {ord: 3, id: "c22-intro-organic/b03", type: callout, file: "blocks/b03-callout-functional-group.json", anchor: 266}
+  - {ord: 4, id: "c22-intro-organic/b04", type: sort-match, file: "blocks/b04-sort-match-naming.json", anchor: 267}
+  - {ord: 5, id: "c22-intro-organic/b05", type: figure, file: "blocks/b05-figure-first-alkanes.json", anchor: 268}
+  - {ord: 6, id: "c22-intro-organic/b06", type: mcq-embed, file: "blocks/b06-mcq-check.json", anchor: 269}

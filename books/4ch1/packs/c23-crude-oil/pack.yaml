@@ -1,0 +1,18 @@
+# S0 output of record - c23-crude-oil (T-BOOK-013; PHASE C - S0/S1/S2 only, see the licensing gate)
+chapter: "c23"
+chapter_key: "u4:c23"
+title: "Crude oil"
+status: draft # S3/S4 PENDING-OPERATOR: F-BOOK-0001 release gate (no Phase C flip until the LICENSE-DATA.md amendment lands)
+block_schema: "book.block/1"
+planned_blocks: 8
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p277 intro, p278 size trends table, p279 column drag, p280 combustion callout + builder, p281 environment sort, p283 cracking callout, p284 mcq"
+blocks:
+  - {ord: 1, id: "c23-crude-oil/b01", type: prose, file: "blocks/b01-prose-crude-oil.json", anchor: 277}
+  - {ord: 2, id: "c23-crude-oil/b02", type: table-fill, file: "blocks/b02-table-fill-size-trends.json", anchor: 278}
+  - {ord: 3, id: "c23-crude-oil/b03", type: drag-label, file: "blocks/b03-drag-label-fractions.json", anchor: 279}
+  - {ord: 4, id: "c23-crude-oil/b04", type: callout, file: "blocks/b04-callout-combustion-products.json", anchor: 280}
+  - {ord: 5, id: "c23-crude-oil/b05", type: eq-builder, file: "blocks/b05-eq-builder-methane-combustion.json", anchor: 280}
+  - {ord: 6, id: "c23-crude-oil/b06", type: sort-match, file: "blocks/b06-sort-match-pollutants.json", anchor: 281}
+  - {ord: 7, id: "c23-crude-oil/b07", type: callout, file: "blocks/b07-callout-cracking.json", anchor: 283}
+  - {ord: 8, id: "c23-crude-oil/b08", type: mcq-embed, file: "blocks/b08-mcq-check.json", anchor: 284}

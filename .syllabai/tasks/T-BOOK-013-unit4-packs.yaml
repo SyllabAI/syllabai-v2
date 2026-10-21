@@ -1,0 +1,50 @@
+version: 1
+task:
+  id: T-BOOK-013
+  title: "Unit 4 packs (c22-c29) — S0-S2 of record (plans, authoring, adversarial review, lint green); S3/S4 PENDING-OPERATOR behind the F-BOOK-0001 licensing release gate"
+  owner: "main agent (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a, operator trace 1a15f60b53d4e0d5)"
+  status: IN_REVIEW
+  priority: P2
+  band: T-BOOK (interactive books)
+  wave: books-phase-C
+  deps: [T-BOOK-011, T-BOOK-012, F-BOOK-0001]
+  execution_record: >
+    Phase C scope law of record (ADR-BOOK-0001 §4): "no full-book launch
+    (Phase C flip) until LICENSE-DATA.md carries a Student-Book amendment
+    (operator follow-up)" — open as F-BOOK-0001 since T-BOOK-001. This lane
+    therefore executed S0-S2 ONLY: S0: 8 pack.yaml plans (c22-c29 =
+    Introduction to organic chemistry / Crude oil / Alkanes / Alkenes /
+    Alcohols / Carboxylic acids / Esters / Synthetic polymers), status draft
+    with the gate note in-file, page-true anchors from the sha-pinned parse
+    digest. S1: 46 blocks (6/8/5/5/6/5/5/6; 8 of the 11 types incl.
+    eq-builder x5 across combustion/addition/esterification with the ⇌
+    equilibria, sort-match polymer→monomer for the PVC/PTFE deduce law)
+    + 24 new glossary terms in u4-organic-chemistry.yaml (authored layer
+    only — NOT ingested: the staging dir for the Phase B ingest deliberately
+    excluded this file so no u4 DB-plane state lands before the gate lifts)
+    + 8 probe-verified mcq checkRefs (bank resolution confirmed; no DB rows
+    written). S2/S3: the two adversarial reviewers returned u4 PASS on both
+    hats (0 x S1); their fixes (structural-vs-displayed formula definitions
+    per the book p267 KEY POINT, incomplete-combustion and/or, the
+    ester-uses pairings re-anchored to the book's own DID-YOU-KNOW and
+    practical lists, the polymerisation table's single-monomer accept)
+    applied and re-gated PASS. Lint G1-G4 0 findings x29 packs / 177
+    blocks. Refs note: the unbound codes 4.6, 4.13, 4.22, 4.26, 4.34C,
+    4.38C, 4.47C, 4.48C were avoided (F-BOOK-0005); the c29/b05 disposal
+    callout cites the bound 4.44+4.50C pair.
+base:
+  repo: "syllabai-v2 @ t-book-011-019/units-2-4-glossary-r0"
+basis: "ADR-BOOK-0001 §4 (the Phase C release gate law); F-BOOK-0001 (open, owner: operator); BOOK-BUILD-PLAYBOOK S0-S4; BOOK-PACK-SPEC"
+scope:
+  allowed:
+    - "books/4ch1/packs/c22-*..c29-* (S0 plans + S1 blocks, status draft)"
+    - "books/4ch1/glossary/u4-organic-chemistry.yaml (authored layer, unlanded)"
+    - ".syllabai/receipts/T-BOOK-013/** + task yaml + worklog append"
+  forbidden:
+    - "ANY u4 DB-plane write: chapter flip, block ingest, pack flip, glossary ingest for u4 (the release gate — flip levers stay operator-held)"
+    - "LICENSE-DATA.md edits (L1, syllabai-resources — the operator's follow-up)"
+    - "L1 corpus files"
+  unblock_path:
+    - "1. the operator lands the LICENSE-DATA.md Student-Book amendment (F-BOOK-0001)"
+    - "2. chapter flip u4:c22..c29 (guarded tx) → SCOPED ingest (staging: only c22-c29 packs + full glossary incl. u4 file + meta) → 20% spot-check → pack flip ×46 → serve proof (u1..u4 full book)"
+    - "the engine and the session scripts are proven and re-runnable; the whole S3/S4 is one operator order away"

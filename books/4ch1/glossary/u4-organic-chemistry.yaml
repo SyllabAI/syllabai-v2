@@ -1,0 +1,171 @@
+# books/4ch1 glossary - AUTHORED layer of record (T-BOOK-013, u4 packs c22-c29 refs; S0-S2 only, F-BOOK-0001 gate)
+subject_code: "4ch1"
+terms:
+  - term: "hydrocarbon"
+    slug: hydrocarbon
+    definition: "A compound made up of hydrogen and carbon atoms only; crude oil, natural gas and their fractions are mixtures of hydrocarbons."
+    ms_accepts: ["contains hydrogen and carbon only", "no other elements present"]
+    ms_avoids: ["any compound that contains carbon", "a compound of hydrogen and oxygen"]
+    aliases: []
+    source: "authored:pack-c22-c29-r0"
+  - term: "homologous series"
+    slug: homologous-series
+    definition: "A family of compounds with the same functional group, the same general formula and similar chemical properties, whose successive members differ by CH2."
+    ms_accepts: ["same functional group and similar chemical properties", "general formula shared; next member adds CH2"]
+    ms_avoids: ["compounds with the same molecular formula (that is isomers)", "any group of organic compounds"]
+    aliases: ["series"]
+    source: "authored:pack-c22-c29-r0"
+  - term: "functional group"
+    slug: functional-group
+    definition: "The atom or group of atoms that determines the chemical properties of a compound; all members of a homologous series carry the same one."
+    ms_accepts: ["the atom/group responsible for the compound's chemical properties", "-OH, >C=C<, -COOH, -COO- named as examples"]
+    ms_avoids: ["the physical state of the compound", "the number of carbon atoms alone"]
+    aliases: []
+    source: "authored:pack-c22-c29-r0"
+  - term: "isomer"
+    slug: isomer
+    definition: "One of two or more compounds that share the same molecular formula but have different structural formulae (atoms arranged differently)."
+    ms_accepts: ["same molecular formula, different structural/displayed formula"]
+    ms_avoids: ["same formula and same structure (that is the same compound)", "different molecular formula"]
+    aliases: ["isomerism"]
+    source: "authored:pack-c22-c29-r0"
+  - term: "saturated hydrocarbon"
+    slug: saturated-hydrocarbon
+    definition: "A hydrocarbon containing only single carbon-carbon bonds, with no double or triple bond to open; alkanes are the saturated family."
+    ms_accepts: ["contains only C-C single bonds", "no C=C double bonds so no addition reactions"]
+    ms_avoids: ["contains the maximum oxygen (unrelated)", "cannot react at all (it burns and substitutes)"]
+    aliases: ["saturated"]
+    source: "authored:pack-c22-c29-r0"
+  - term: "unsaturated hydrocarbon"
+    slug: unsaturated-hydrocarbon
+    definition: "A hydrocarbon containing at least one carbon-carbon double bond (the >C=C< group); alkenes are the unsaturated family and decolourise bromine water."
+    ms_accepts: ["contains a C=C double bond", "decologurises bromine water / undergoes addition reactions"]
+    ms_avoids: ["an unstable compound (unfounded)", "any molecule containing a double bond (must be a hydrocarbon)"]
+    aliases: ["unsaturated"]
+    source: "authored:pack-c22-c29-r0"
+  - term: "substitution reaction"
+    slug: substitution-reaction
+    definition: "A reaction in which an atom (usually hydrogen) is replaced by another atom or group, as when alkanes halogenate in ultraviolet light."
+    ms_accepts: ["an atom is replaced/re-swapped by another", "H replaced by halogen, needing UV for alkanes"]
+    ms_avoids: ["atoms adding across a double bond (that is addition)", "a displacement of ions in solution"]
+    aliases: ["substitution"]
+    source: "authored:pack-c22-c29-r0"
+  - term: "addition reaction"
+    slug: addition-reaction
+    definition: "A reaction in which atoms add across a C=C double bond, opening it into single bonds, with no other product; alkenes add bromine, hydrogen and water this way."
+    ms_accepts: ["atoms add across the double bond", "only one product formed, C=C consumed"]
+    ms_avoids: ["a hydrogen is replaced (that is substitution)", "a polymer formed with water lost (that is condensation)"]
+    aliases: []
+    source: "authored:pack-c22-c29-r0"
+  - term: "complete combustion"
+    slug: complete-combustion
+    definition: "Burning a fuel in plenty of oxygen; hydrocarbons give carbon dioxide and water only, releasing heat energy."
+    ms_accepts: ["burning in enough/excess oxygen", "products carbon dioxide and water only"]
+    ms_avoids: ["products carbon monoxide or soot (that is incomplete)", "burning in limited oxygen"]
+    aliases: ["complete burning"]
+    source: "authored:pack-c22-c29-r0"
+  - term: "incomplete combustion"
+    slug: incomplete-combustion
+    definition: "Burning a fuel when oxygen is short; products include carbon monoxide (poisonous) and/or carbon (soot) as well as water."
+    ms_accepts: ["oxygen limited/insufficient", "carbon monoxide (and/or soot) formed"]
+    ms_avoids: ["carbon dioxide listed as the main product", "no water formed at all"]
+    aliases: ["incomplete burning"]
+    source: "authored:pack-c22-c29-r0"
+  - term: "fractional distillation"
+    slug: fractional-distillation
+    definition: "Separating a mixture of liquids with different boiling points by evaporating and condensing in a column, coolest at the top; how crude oil is split into fractions."
+    ms_accepts: ["separated by boiling point differences in a column", "vapours condense at different heights"]
+    ms_avoids: ["filtering (a solid/liquid method)", "chemical separation (it is physical)"]
+    aliases: ["fractionating column"]
+    source: "authored:pack-c22-c29-r0"
+  - term: "fraction"
+    slug: fraction
+    definition: "A mixture of hydrocarbons with similar boiling points, collected at one height of the fractionating column (refinery gases, petrol, kerosene, diesel, fuel oil, bitumen)."
+    ms_accepts: ["a mixture of hydrocarbons with a boiling-point range", "collected at a particular height/temperature in the column"]
+    ms_avoids: ["a pure single compound", "named by the height alone with no boiling range"]
+    aliases: ["crude oil fraction"]
+    source: "authored:pack-c22-c29-r0"
+  - term: "acid rain"
+    slug: acid-rain
+    definition: "Rain made acidic when sulfur dioxide and oxides of nitrogen from combustion dissolve in it (and oxidise), forming dilute sulfuric and nitric acids."
+    ms_accepts: ["SO2 / NOx dissolve in rain forming acids", "caused by sulfur impurities and engine-formed NOx"]
+    ms_avoids: ["rain containing carbonic acid from CO2 as the named cause (weak, not the examined pollutant)", "caused by soot"]
+    aliases: []
+    source: "authored:pack-c22-c29-r0"
+  - term: "cracking"
+    slug: cracking
+    definition: "Splitting long-chain alkanes into shorter alkanes and alkenes using heat and a catalyst (silica/alumina or zeolite), to match supply of fractions to demand."
+    ms_accepts: ["long alkanes -> shorter alkanes + alkenes", "heat with a catalyst", "re-balances supply and demand for fractions"]
+    ms_avoids: ["a separation of existing molecules (it makes new ones)", "products alkenes only"]
+    aliases: ["catalytic cracking"]
+    source: "authored:pack-c22-c29-r0"
+  - term: "monomer"
+    slug: monomer
+    definition: "A small molecule (usually an alkene for addition polymers) that joins with many others to build a polymer chain."
+    ms_accepts: ["small molecule that joins up to make a polymer", "carries the C=C that opens"]
+    ms_avoids: ["a repeat unit (that is the chain segment)", "a polymer's end group"]
+    aliases: []
+    source: "authored:pack-c22-c29-r0"
+  - term: "polymer"
+    slug: polymer
+    definition: "A long-chain molecule built from many repeating monomer units; poly(ethene), poly(propene), PVC, PTFE and polyesters are the named examples."
+    ms_accepts: ["long-chain molecule made of many monomer units", "contains the repeat unit in brackets with n"]
+    ms_avoids: ["a big monomer", "always natural (synthetic ones are the unit's subject)"]
+    aliases: ["addition polymer"]
+    source: "authored:pack-c22-c29-r0"
+  - term: "condensation polymerisation"
+    slug: condensation-polymerisation
+    definition: "Polymerisation in which monomers join while eliminating a small molecule (water) at each link; polyesters form this way from a diol and a dicarboxylic acid."
+    ms_accepts: ["monomers join with loss of water", "diol + dicarboxylic acid -> polyester links (-COO-)"]
+    ms_avoids: ["monomers add across C=C (that is addition)", "no small molecule produced"]
+    aliases: ["condensation polymer"]
+    source: "authored:pack-c22-c29-r0"
+  - term: "ester"
+    slug: ester
+    definition: "The compound formed when an alcohol reacts with a carboxylic acid in the presence of an acid catalyst, with water eliminated; volatile liquids with distinctive smells."
+    ms_accepts: ["formed from alcohol + carboxylic acid (acid catalyst)", "carries the -COO- link", "volatile, distinctive-smelling"]
+    ms_avoids: ["a carboxylic acid with an OH still present", "formed from alkane + acid"]
+    aliases: ["esters"]
+    source: "authored:pack-c22-c29-r0"
+  - term: "fermentation"
+    slug: fermentation
+    definition: "Making ethanol using yeast enzymes on sugars, in the absence of air, at around 30 degrees C; the renewable, slower route to ethanol."
+    ms_accepts: ["yeast converts sugars to ethanol + CO2", "anaerobic (no air) and about 30 degrees C optimum"]
+    ms_avoids: ["ethene + steam (that is hydration)", "needs high temperature and pressure"]
+    aliases: ["fermentation of sugars"]
+    source: "authored:pack-c22-c29-r0"
+  - term: "volatile"
+    slug: volatile
+    definition: "Evaporates easily at room temperature; small molecules with weak intermolecular forces (like small esters) are the volatile ones."
+    ms_accepts: ["evaporates readily at room temperature", "weak intermolecular forces / low boiling point"]
+    ms_avoids: ["viscous (that is the opposite family)", "explosive (not the meaning here)"]
+    aliases: ["volatility"]
+    source: "authored:pack-c22-c29-r0"
+  - term: "hydroxyl group"
+    slug: hydroxyl-group
+    definition: "The -OH functional group of the alcohols, which makes small alcohols soluble, oxidisable and combustible."
+    ms_accepts: ["-OH functional group of alcohols"]
+    ms_avoids: ["the hydroxide ion OH- (this is a covalent group, not a free ion)", "the carboxyl group"]
+    aliases: ["-OH group"]
+    source: "authored:pack-c22-c29-r0"
+  - term: "carboxyl group"
+    slug: carboxyl-group
+    definition: "The -COOH functional group of the carboxylic acids, where the hydrogen is the acidic (partially ionised) one."
+    ms_accepts: ["-COOH functional group of carboxylic acids"]
+    ms_avoids: ["-COO- (that is the ester/carboxylate link)", "only the C=O part"]
+    aliases: ["-COOH group"]
+    source: "authored:pack-c22-c29-r0"
+  - term: "weak acid"
+    slug: weak-acid
+    definition: "An acid that is only PARTIALLY ionised in water (an equilibrium), such as ethanoic acid; weak is not the same as dilute, and the acid still reacts with metals and carbonates."
+    ms_accepts: ["partially ionised in water", "only some molecules split to release H+"]
+    ms_avoids: ["a dilute solution (different idea)", "an acid that does not react with metals/carbonates"]
+    aliases: ["partially ionised"]
+    source: "authored:pack-c22-c29-r0"
+  - term: "biodegradable"
+    slug: biodegradable
+    definition: "Able to be broken down by microorganisms; addition polymers (inert C-C backbones) are not, while some condensation polyesters (biopolyesters) are."
+    ms_accepts: ["microorganisms can break it down", "addition polymers are NOT biodegradable"]
+    ms_avoids: ["melts in heat (that is physical, not biological breakdown)", "burns away in landfill"]
+    aliases: ["biodegradation"]
+    source: "authored:pack-c22-c29-r0"

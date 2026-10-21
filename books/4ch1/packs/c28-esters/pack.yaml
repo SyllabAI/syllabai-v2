@@ -1,0 +1,15 @@
+# S0 output of record - c28-esters (T-BOOK-013; PHASE C - S0/S1/S2 only, see the licensing gate)
+chapter: "c28"
+chapter_key: "u4:c28"
+title: "Esters (chemistry only)"
+status: draft # S3/S4 PENDING-OPERATOR: F-BOOK-0001 release gate (no Phase C flip until the LICENSE-DATA.md amendment lands)
+block_schema: "book.block/1"
+planned_blocks: 5
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p306 intro, p307 esterification builder + condensation callout, p308 uses sort, p309 mcq"
+blocks:
+  - {ord: 1, id: "c28-esters/b01", type: prose, file: "blocks/b01-prose-esters.json", anchor: 306}
+  - {ord: 2, id: "c28-esters/b02", type: eq-builder, file: "blocks/b02-eq-builder-esterification.json", anchor: 307}
+  - {ord: 3, id: "c28-esters/b03", type: callout, file: "blocks/b03-callout-condensation.json", anchor: 307}
+  - {ord: 4, id: "c28-esters/b04", type: sort-match, file: "blocks/b04-sort-match-ester-uses.json", anchor: 308}
+  - {ord: 5, id: "c28-esters/b05", type: mcq-embed, file: "blocks/b05-mcq-check.json", anchor: 309}
