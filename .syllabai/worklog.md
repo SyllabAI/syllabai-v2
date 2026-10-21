@@ -10769,3 +10769,22 @@ Stage Summary:
 - SKIPPED: #246 (T-BOOK-004..006) — stacked, base=t-book-003/rail-shell not main; head 46ea216 verify ✓ hub ✓ Vercel ✓ but not a main-merge-desk target (lane stack, lane active 10:29Z); #247 (T-BOOK-007..009) — stacked on t-book-004/rail-widgets AND head 88e8b60 hub ✗ red → double skip
 - NOTES: operator push 04aee80 (content 4MB1 maths-b interactive restore, operator ruling trace 1a15de779f2250f9) landed post-merge on main, fetch-first no-force — no collision with this sweep; sweep merge count 1/2
 - Bookkeeping only: .syllabai/** — no code, no force
+
+---
+Task ID: T-BOOK-004..006-r0 + T-BOOK-007..009-r0 (trace 1a15de049a869781, operator order "T-BOOK-003 → 004–009 → T-BOOK-010")
+Agent: r0 (Super Z, zai-web session web-c414c074, chat 08b3170a)
+Task: The widget lanes (renderer + 9 widgets + chem validation + sim/media embeds) and the wiring lanes (glossary infra, check wiring with attempts, tutor rail).
+
+Work Log:
+- PR #243 (T-BOOK-003) opened; CI green (hub ✓ verify ✓ Vercel ✓); rebased onto the moved main (1714d59) with the worklog union-resolve; stacked t-book-004/rail-widgets then t-book-007/rail-wiring.
+- T-BOOK-004: block-renderer dispatcher + check-shared a11y furniture (aria-live verdicts, sr-only hints, ONE keyboard contract) + prose/callout/figure/mcq-embed(bank-law player)/sort-match(order+match, ↑/↓)/drag-label(tap-select Enter-place)/table-fill(per-cell accepts); rail-workspace refactored (r0 views retired, data-ord wrapper, ONE stream instance).
+- T-BOOK-005: books-chem.ts — the real bugs caught by the gate: String.split("+") SHREDS IONS (Cu2+) → splitSpecies whitespace-preceded law; ¹²³ live OUTSIDE the U+2070-2079 run (Latin-1 trap); compact free-typed forms parse-FAIL honestly (the token bank assembles " + "); group expansion Ca(NO3)2; electron empty-tally species; sig-figs; checkNumeric law-ordered format→value→unit→sigfigs. 30 tests on real 4CH1 content (mole ladder, Cu²⁺/Mg half-equations, ⇌). num-stepper (mastery ladder) + eq-builder (four verdict chips) on top.
+- T-BOOK-006: sim-embed consent-to-load PhET iframe (sandbox/lazy/no-referrer, fallback ALWAYS visible, CC-BY-4.0 in-card) + media-embed license-ref card (missing licenseRef renders NULL).
+- T-BOOK-007: glossary route (VALIDATED-only) + subject registry proxy + popover layer (GlossaryCard leads with ms_accepts/ms_avoids; inline [[slug|term]] tokens; Key-terms strip; unresolved slug = plain text, never a dead popover) + the seeding script verified LIVE on the real parse of record (1,234 chunks census-EXACT → 21 glossary chunks → 199 candidates, raw_entry preserved, needs_ms_language everywhere — the format is OCR-glued, a regex split would fabricate terms).
+- T-BOOK-008: CONTRACTS-FIRST additive check shapes (railCheckQuestion/Block/SubmitRequest/SubmitResult — NO correctness on the wire, the reveal carries correctOptionId); railChecksForChapter (ACTIVE+MCQ_SINGLE+current version+paper-block law; unresolved ref ⇒ question:null honest) + submitRailCheck (the MCQ submit law rail-scoped, provenance='BOOK_CHECK', ZERO DDL, evidence emission OFF in the pilot — DISCLOSED); auth .use verified BEFORE the POST route; hub checkSource live with real blockId + dwell from load.
+- T-BOOK-009: tutor rail by COMPOSITION (the frozen ask contract untouched) — context bracket (chapter·spec codes·ms-language) + courseRef anchor + 133d page-true citation link; refusals as data; TutorCard at the rail's foot.
+- Batch hygiene: the src/lib dual-run 5-fail is PRE-EXISTING (stashed base reproduces; api.v2-surface.test.ts documents standalone-only run).
+
+Stage Summary:
+- The rail is now FEATURE-COMPLETE for phase A: shell (003), widgets (004-006), glossary/checks/tutor wiring (007-009) — awaiting only the PACKS (T-BOOK-010) to have anything to serve, by construction.
+- Evidence emission from rail checks stays OFF (post-pilot surface); staging COW proofs pending operator keys (carries 002/003 pending items).

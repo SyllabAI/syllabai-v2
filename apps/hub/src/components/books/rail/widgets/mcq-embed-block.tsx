@@ -10,7 +10,7 @@
  * Without checkSource (the pre-008 window, or a failed load) the block
  * renders its honest anchor card — never a fake player.
  */
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import type { RailBlock } from "@/lib/books-rail";
 
@@ -33,6 +33,7 @@ export function McqEmbedBlock({ block, onJump, checkSource }: Props) {
   const [chosen, setChosen] = useState<string | null>(null);
   const [verdict, setVerdict] = useState<RailCheckVerdict | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const loadedAtRef = useRef<number | null>(null);
 
   const page = block.pdfPageAnchor;
 
@@ -76,7 +77,8 @@ export function McqEmbedBlock({ block, onJump, checkSource }: Props) {
   const submit = async () => {
     if (question == null || chosen == null) return;
     setSubmitting(true);
-    const v = await checkSource.submit(question.questionId, chosen);
+    const dwell = loadedAtRef.current != null ? Math.round(performance.now() - loadedAtRef.current) : 0;
+    const v = await checkSource.submit(block.id, question.questionId, chosen, dwell);
     setVerdict(v);
     setSubmitting(false);
   };

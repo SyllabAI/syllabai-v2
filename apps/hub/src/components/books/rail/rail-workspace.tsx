@@ -27,7 +27,10 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import type { RailBlock } from "@/lib/books-rail";
 
-import { BlockRenderer, type BlockRendererProps } from "./block-renderer";
+import { BlockRenderer, type BlockRendererProps, type RailCheckQuestion } from "./block-renderer";
+import { GlossaryContext, GlossaryStrip } from "./glossary-chips";
+import { TutorCard } from "./tutor-card";
+import { fetchChapterChecks, fetchBookGlossary, submitChapterCheck } from "@/lib/books-checks";
 import { PdfPane, type PdfPaneHandle } from "@/components/pastpapers/pdf-pane";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -48,9 +51,14 @@ interface RailWorkspaceProps {
   chapterTitle: string;
   blocks: RailBlock[];
   pane: RailPaneProps;
-  /** T-BOOK-008 wiring: the bank-backed check source (load + submit). */
-  checkSource?: BlockRendererProps["checkSource"];
+  /** T-BOOK-008/009 wiring: hub course slug (glossary + tutor anchor) and
+   *  the chapter's official spec codes (the tutor's context bracket). */
+  courseSlug: string;
+  specCodes: string[];
 }
+
+type RailCheckBlockLite = Awaited<ReturnType<typeof fetchChapterChecks>> extends Array<infer T> | null ? T : never;
+type BookGlossaryTermLite = Awaited<ReturnType<typeof fetchBookGlossary>> extends Array<infer T> | null ? T : never;
 
 // ── progress plumbing ────────────────────────────────────────────────────────
 
@@ -115,7 +123,7 @@ function useChapterProgress(documentId: string, chapterKey: string) {
 
 // ── the shell ────────────────────────────────────────────────────────────────
 
-export function RailWorkspace({ documentId, chapterKey, chapterTitle, blocks, pane, checkSource }: RailWorkspaceProps) {
+export function RailWorkspace({ documentId, chapterKey, chapterTitle, blocks, pane, courseSlug, specCodes }: RailWorkspaceProps) {
   const paneRef = useRef<PdfPaneHandle | null>(null);
   const streamRef = useRef<HTMLDivElement | null>(null);
   const lastOrdRef = useRef<number | null>(null);
@@ -123,6 +131,65 @@ export function RailWorkspace({ documentId, chapterKey, chapterTitle, blocks, pa
   const { initialPct, initialOrd, put } = useChapterProgress(documentId, chapterKey);
 
   const ordered = useMemo(() => [...blocks].sort((a, b) => a.ord - b.ord), [blocks]);
+
+  // ── T-BOOK-008 data lane: the bank-backed check source ──────────────────
+  const [checkBlocks, setCheckBlocks] = useState<RailCheckBlockLite[] | null>(null);
+  useEffect(() => {
+    let alive = true;
+    fetchChapterChecks(documentId, chapterKey).then((r) => {
+      if (alive) setCheckBlocks(r);
+    });
+    return () => {
+      alive = false;
+    };
+  }, [documentId, chapterKey]);
+  const checkSource = useMemo<BlockRendererProps["checkSource"]>(
+    () => ({
+      load: async (refs: string[]): Promise<RailCheckQuestion | null> => {
+        const all = checkBlocks ?? (await fetchChapterChecks(documentId, chapterKey));
+        const match = all?.find((b) => b.checkRefs.some((r) => refs.includes(r)));
+        return match?.question ?? null;
+      },
+      submit: async (blockId: string, questionId: string, chosenOptionId: string, dwellMs: number) => {
+        return submitChapterCheck({
+          documentId,
+          chapterKey,
+          blockId,
+          questionId,
+          chosenOptionId,
+          responseTimeMs: dwellMs,
+        });
+      },
+    }),
+    [checkBlocks, documentId, chapterKey],
+  );
+
+  // ── T-BOOK-007 data lane: the chapter's glossary ────────────────────────
+  const glossarySlugs = useMemo(
+    () => [...new Set(blocks.flatMap((b) => b.glossaryRefs))],
+    [blocks],
+  );
+  const [glossary, setGlossary] = useState<BookGlossaryTermLite[] | null>(null);
+  const glossaryBySlug = useMemo(() => new Map((glossary ?? []).map((t) => [t.slug, t])), [glossary]);
+  useEffect(() => {
+    if (glossarySlugs.length === 0) return;
+    let alive = true;
+    fetchBookGlossary(courseSlug, glossarySlugs).then((r) => {
+      if (alive) setGlossary(r);
+    });
+    return () => {
+      alive = false;
+    };
+  }, [courseSlug, glossarySlugs]);
+
+  // ── T-BOOK-009 context: spec codes + ms-language hints for the ask ──────
+  const glossaryHints = useMemo(
+    () =>
+      (glossary ?? [])
+        .slice(0, 5)
+        .map((t) => ({ term: t.term, accepts: t.msAccepts[0] ?? t.definition })),
+    [glossary],
+  );
 
   const jumpToPage = useCallback((page: number) => {
     paneRef.current?.scrollToPage(page);
@@ -229,14 +296,26 @@ export function RailWorkspace({ documentId, chapterKey, chapterTitle, blocks, pa
               } md:h-full`}
               aria-label={`Interactive rail for ${chapterTitle}`}
             >
-              {ordered.map((b) => (
-                <div key={b.id} data-ord={b.ord}>
-                  <BlockRenderer block={b} onJump={jumpToPage} checkSource={checkSource} />
-                </div>
-              ))}
-              <p className="pb-2 pt-1 text-center text-[11px] text-muted-foreground">
-                End of the interactive rail — keep reading in the book pane.
-              </p>
+              <GlossaryContext.Provider value={glossaryBySlug}>
+                {glossary != null && glossary.length > 0 && <GlossaryStrip terms={glossary} />}
+                {ordered.map((b) => (
+                  <div key={b.id} data-ord={b.ord}>
+                    <BlockRenderer block={b} onJump={jumpToPage} checkSource={checkSource} />
+                  </div>
+                ))}
+                <TutorCard
+                  courseSlug={courseSlug}
+                  documentId={documentId}
+                  chapterKey={chapterKey}
+                  chapterTitle={chapterTitle}
+                  specCodes={specCodes}
+                  glossaryHints={glossaryHints}
+                  page={ordered.find((b) => b.pdfPageAnchor != null)?.pdfPageAnchor ?? null}
+                />
+                <p className="pb-2 pt-1 text-center text-[11px] text-muted-foreground">
+                  End of the interactive rail — keep reading in the book pane.
+                </p>
+              </GlossaryContext.Provider>
             </div>
           </CollapsibleContent>
         </Collapsible>

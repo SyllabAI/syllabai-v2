@@ -28,6 +28,7 @@ import { Hono } from "hono";
 import type { BooksReadApp } from "../services/books";
 import { apiError, NotFoundException } from "../services/identity/errors";
 import { getAuth, requireAuth } from "../middleware/auth";
+import { railCheckSubmitRequestSchema } from "@syllabai/contracts";
 
 /** T-BOOK-003: the chapterKey request grammar ("u<unit>:c<chapter>") — the
  *  same law bookChapterSchema documents; the rail only reads, never invents,
@@ -125,6 +126,62 @@ export function createBooksRouter(app: BooksReadApp): Hono {
       const blocks = await app.railBlocksForChapter(documentId, gate.chapterKey);
       if (blocks == null) throw new NotFoundException("Book", documentId);
       return c.json(blocks);
+    })
+    // GET /:documentId/checks?chapter= — T-BOOK-008: the mcq-embed blocks
+    // resolved against the BANK (no correctness on the wire — the verdict is
+    // the submit reveal). Same public-read posture + double gate as blocks.
+    .get("/:documentId/checks", async (c) => {
+      const gate = chapterKeyOr400(c);
+      if (!gate.ok) return gate.response;
+      const documentId = c.req.param("documentId");
+      const checks = await app.railChecksForChapter(documentId, gate.chapterKey);
+      if (checks == null) throw new NotFoundException("Book", documentId);
+      return c.json(checks);
+    })
+    // POST /:documentId/checks/submit auth shell (the attempt is a learner
+    // signal — same posture as the progress surface; GET /checks stays
+    // public-read).
+    .use("/:documentId/checks/submit", async (c, next) => {
+      const redirect = requireAuth(c);
+      if (redirect instanceof Response) return redirect;
+      await next();
+    })
+    // POST /:documentId/checks/submit — T-BOOK-008: the attempt of record
+    // (provenance='BOOK_CHECK'; AUTH-gated — an attempt is a learner signal).
+    .post("/:documentId/checks/submit", async (c) => {
+      const gate = chapterKeyOr400(c);
+      if (!gate.ok) return gate.response;
+      const auth = getAuth(c)!;
+      const body = await readJsonBody(c);
+      const parsed = railCheckSubmitRequestSchema.safeParse(body);
+      if (!parsed.success) {
+        return c.json(apiError(400, "bad_request", "malformed request"), 400);
+      }
+      const result = await app.submitRailCheck(auth.userId, {
+        blockId: parsed.data.blockId,
+        questionId: parsed.data.questionId,
+        chosenOptionId: parsed.data.chosenOptionId,
+        responseTimeMs: parsed.data.responseTimeMs ?? 0,
+      });
+      return c.json(result);
+    })
+    // GET /glossary?subject=&slugs= — T-BOOK-007: the glossary popover layer.
+    // Registered BEFORE /:documentId (the catch-all). subject is the qual
+    // code of record (book.yaml); unknown subjects answer the honest [].
+    .get("/glossary", async (c) => {
+      const subject = c.req.query("subject");
+      if (subject == null || subject.trim() === "") {
+        return c.json(
+          apiError(400, "validation_failed", "missing required parameter: subject"),
+          400,
+        );
+      }
+      const rawSlugs = c.req.query("slugs");
+      const slugs =
+        rawSlugs == null || rawSlugs.trim() === ""
+          ? null
+          : rawSlugs.split(",").map((x) => x.trim()).filter((x) => x !== "");
+      return c.json(await app.glossaryTerms(subject.trim(), slugs));
     })
     // GET/PUT /:documentId/progress — the ONE new user signal (ADR §8).
     // AUTH-GATED (user signal, PII — the counter-posture to the public-read

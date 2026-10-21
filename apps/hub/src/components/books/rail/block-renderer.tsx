@@ -63,7 +63,12 @@ export interface BlockRendererProps {
    *  server-verdict submit. Absent ⇒ the honest anchor card. */
   checkSource?: {
     load: (checkRefs: string[]) => Promise<RailCheckQuestion | null>;
-    submit: (questionId: string, chosenOptionId: string) => Promise<RailCheckVerdict | null>;
+    submit: (
+      blockId: string,
+      questionId: string,
+      chosenOptionId: string,
+      dwellMs: number,
+    ) => Promise<RailCheckVerdict | null>;
   };
 }
 

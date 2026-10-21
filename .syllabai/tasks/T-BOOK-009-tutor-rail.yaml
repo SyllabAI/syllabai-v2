@@ -1,0 +1,44 @@
+version: 1
+task:
+  id: T-BOOK-009
+  title: "Tutor rail — scoped KA-RAG ask (chapter anchor + glossary ms-language) with the 133d page-true citation link"
+  owner: "main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, trace 1a15de049a869781)"
+  status: IN_REVIEW
+  priority: P2
+  band: T-BOOK (interactive books)
+  wave: books-phase-A
+  deps: [T-BOOK-003, T-BOOK-007]
+  execution_record: >
+    Executed per PLAN-4CH1 §8 T-BOOK-009 row. The FROZEN tutor ask contract
+    (tutorAskRequestSchema) is UNTOUCHED — the scoping is COMPOSITION at the
+    hub seam: /api/books/tutor/ask composes the context bracket (chapter
+    title · spec codes of the chapter join · the chapter's glossary
+    ms-language hints, ≤5) around the learner's question, courseRef anchors
+    retrieval to the course; the learner's words are never truncated while
+    context fits (context yields first; the 2000-char law enforced). The
+    citation deep link is BUILT from the 133d coordinates
+    (?chapter=&page= — the path the tutor book-arm citations resolve
+    through) — page-true, never fabricated. Refusals pass through as DATA
+    (the refusal honesty law). Cookie→Bearer at the proxy (the /api/ai/*
+    posture). TutorCard client component at the rail's foot: textarea
+    (Enter submits, Shift+Enter newline), asking/answered/refused/failed
+    states, answer aria-live, "Grounded in this chapter · p.N" link.
+    Zero api changes, zero contracts changes.
+    PROOF: hub tsc 0, eslint clean (the compose law is covered by the
+    400/validation paths + the refusal passthrough pinned at the api's own
+    suite; a live ask needs the operator's tutor key — the proxy degrades to
+    tutor_unavailable honestly without it).
+base:
+  repo: "syllabai-v2 @ t-book-007/rail-wiring (stacked)"
+basis: "PLAN-4CH1 §8 T-BOOK-009; T-MIG-133d citation-target shape; contracts tutor.ts (frozen ask); ADR-030 tutor separation"
+scope:
+  allowed:
+    - "apps/hub/src/app/api/books/tutor/ask/route.ts (new)"
+    - "apps/hub/src/components/books/rail/tutor-card.tsx (new)"
+    - "apps/hub/src/lib/books-checks.ts (askRailTutor)"
+    - "apps/hub/src/components/books/rail/rail-workspace.tsx (mount)"
+    - ".syllabai/tasks/T-BOOK-009-tutor-rail.yaml"
+    - ".syllabai/worklog.md (append only)"
+  forbidden:
+    - "packages/contracts/src/tutor.ts (the frozen ask contract)"
+    - "apps/api/** (zero api changes — composition happens hub-side)"

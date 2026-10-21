@@ -1,0 +1,52 @@
+version: 1
+task:
+  id: T-BOOK-007
+  title: "Glossary infra — popover cards (inline + Key-terms strip), subject-code registry, seeding script from the 21 glossary chunks of record"
+  owner: "main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, trace 1a15de049a869781)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-BOOK (interactive books)
+  wave: books-phase-A
+  deps: [T-BOOK-002]
+  execution_record: >
+    Executed per BOOK-PACK-SPEC §5 (the ms_accepts/ms_avoids layer IS the
+    value) + the T-C20 law. API: GET /api/v1/content/books/glossary?subject=&slugs=
+    (public-read, VALIDATED rows ONLY — an unvalidated term is
+    indistinguishable from absent; bookGlossaryTermSchema at the boundary;
+    kebab slug ck is the DB's own law, the schema's regex the request-side).
+    HUB: /api/books/glossary proxy — the client speaks the hub course slug,
+    the SUBJECT code resolves via the one-line-per-course registry
+    (COURSE_SUBJECT, the 133k rollout law shape); glossary-chips.tsx = the
+    popover layer: GlossaryCard (definition FIRST, then Examiners-accept /
+    Avoid lines — the mark-scheme language leads), inline
+    `[[slug|display]]` authored tokens in prose/callout via GlossaryText +
+    the GlossaryContext provider (dotted-underline triggers, aria pattern
+    popover), the Key-terms strip (chapter glossaryRefs as chips); an
+    unresolved slug renders PLAIN TEXT, never a dead popover (honest-absent).
+    SEEDING: apps/api/scripts/books-glossary-seed.ts — OFFLINE (argv jsonl
+    path → YAML skeleton, zero DB/network); verified LIVE against the real L1
+    parse of record (/parsed/edexcel_igcse_chemistry_chunks_v3.jsonl, 1,234
+    chunks = census EXACT): 21 glossary chunks → 199 unique candidates with
+    raw_entry preserved + needs_ms_language on every entry (the ACTUAL chunk
+    format is newline-separated `term definition` with OCR-glued boundaries —
+    "amphotericsubstances" — so a regex split would FABRICATE terms; the seed
+    is a floor and says so, the authored pass splits). Seed of record:
+    books/4ch1/glossary/seed-states-and-solutions.yaml.
+    PROOF: api tsc 0, hub tsc 0, books-routes 37/37, eslint clean.
+base:
+  repo: "syllabai-v2 @ t-book-007/rail-wiring (stacked on t-book-004/rail-widgets)"
+basis: "BOOK-PACK-SPEC §5; contracts bookGlossaryTermSchema (T-BOOK-002); T-C20; 133k one-line-per-course law"
+scope:
+  allowed:
+    - "apps/api/src/services/books.ts (glossaryTerms method)"
+    - "apps/api/src/routes/books.ts (glossary route)"
+    - "apps/api/scripts/books-glossary-seed.ts (new)"
+    - "books/4ch1/glossary/** (L2 authoring workspace, seed of record)"
+    - "apps/hub/src/components/books/rail/glossary-chips.tsx (new)"
+    - "apps/hub/src/components/books/rail/widgets/{prose,callout}-block.tsx (inline tokens)"
+    - "apps/hub/src/app/api/books/glossary/route.ts (new)"
+    - ".syllabai/tasks/T-BOOK-007-glossary-infra.yaml"
+    - ".syllabai/worklog.md (append only)"
+  forbidden:
+    - "packages/contracts/** (glossary serving reuses bookGlossaryTermSchema — no new shape)"
+    - "any ms_accepts/ms_avoids invention in the SEED (the authored pass owns the value-add)"

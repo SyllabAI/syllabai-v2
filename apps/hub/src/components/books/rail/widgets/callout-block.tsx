@@ -4,9 +4,12 @@
  *  flagship type — mark-scheme vocabulary, accept/avoid phrasing). */
 import type { RailBlock } from "@/lib/books-rail";
 
+import { GlossaryText, useChapterGlossary } from "../glossary-chips";
+
 export function CalloutBlock({ block }: { block: RailBlock }) {
   const c = block.content;
   const body = typeof c.body === "string" ? c.body : null;
+  const bySlug = useChapterGlossary();
   if (!body) return null;
   const label = typeof c.label === "string" ? c.label : "Examiner note";
   return (
@@ -17,7 +20,9 @@ export function CalloutBlock({ block }: { block: RailBlock }) {
       <p className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-amber-800 dark:text-amber-300">
         {label}
       </p>
-      <p className="whitespace-pre-line">{body}</p>
+      <p className="whitespace-pre-line">
+        <GlossaryText text={body} bySlug={bySlug} />
+      </p>
     </div>
   );
 }

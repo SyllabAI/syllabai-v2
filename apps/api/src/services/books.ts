@@ -47,14 +47,22 @@ import {
   bookCitationTargetSchema,
   bookBlockSchema,
   chapterProgressSchema,
+  railCheckBlockSchema,
+  railCheckSubmitResultSchema,
+  bookGlossaryTermSchema,
+  ATTEMPT_PROVENANCE_BOOK_CHECK,
   type BookChapter,
   type BookCitationTarget,
   type BookShelfEntry,
   type BookBlock,
   type ChapterProgress,
+  type RailCheckBlock,
+  type RailCheckSubmitResult,
+  type BookGlossaryTerm,
 } from "@syllabai/contracts";
 
 import { createSql, type SqlFn } from "./identity/users";
+import { NotFoundException } from "./identity/errors";
 
 export interface BooksReadApp {
   /** VALIDATED TEXTBOOK documents bound to the course (latest version each). */
@@ -83,6 +91,25 @@ export interface BooksReadApp {
     railScrolledPct: number,
     lastOrd: number | null,
   ): Promise<ChapterProgress>;
+  /** T-BOOK-008: the chapter's mcq-embed blocks resolved against the bank.
+   *  null = unknown/unvalidated book (caller 404s); [] = no check blocks;
+   *  a block whose refs resolve to nothing carries question:null honestly. */
+  railChecksForChapter(documentId: string, chapterKey: string): Promise<RailCheckBlock[] | null>;
+  /** T-BOOK-008: the check submit — the MCQ submit law (rail-scoped) with
+   *  provenance='BOOK_CHECK' (ATTEMPT_PROVENANCE_BOOK_CHECK); returns the
+   *  reveal. Throws NotFound for unknown question/option (fail-closed). */
+  submitRailCheck(
+    userId: string,
+    input: {
+      blockId: string;
+      questionId: string;
+      chosenOptionId: string;
+      responseTimeMs: number;
+    },
+  ): Promise<RailCheckSubmitResult>;
+  /** T-BOOK-007: the subject glossary (VALIDATED rows only, T-C20), the
+   *  slugs filter optional — the popover layer's resolution surface. */
+  glossaryTerms(subjectCode: string, slugs: string[] | null): Promise<BookGlossaryTerm[]>;
 }
 
 interface ShelfRow {
@@ -298,6 +325,164 @@ export class BooksReadRepository {
                 rail_scrolled_pct, last_ord, updated_at`) as unknown as ChapterProgressRow[];
     return railRowMappers.toChapterProgress(rows[0]!);
   }
+
+  /**
+   * T-BOOK-008 — resolve the chapter's mcq-embed checkRefs against the BANK
+   * (ADR §7: checks come from the bank, never authored). Serving laws:
+   *   - only ACTIVE, MCQ_SINGLE questions resolve;
+   *   - the paper-block law rides the LEFT JOIN (a question pinned to a
+   *     REJECTED/FLAGGED exam paper does not serve — the assessment
+     *     submit law's assertPaperAllowsServing, verbatim posture);
+   *   - the CURRENT question_version carries stem/commandWord;
+   *   - an unresolved ref serves question:null honestly (the player's
+   *     anchor card) — never a fabricated question.
+   */
+  async railChecksForChapter(
+    documentId: string,
+    chapterKey: string,
+  ): Promise<RailCheckBlock[] | null> {
+    const blocks = await this.railBlocksForChapter(documentId, chapterKey);
+    if (blocks == null) return null;
+    const mcq = blocks.filter((b) => b.type === "mcq-embed" && b.checkRefs.length > 0);
+    if (mcq.length === 0) return [];
+    const refs = [...new Set(mcq.flatMap((b) => b.checkRefs))];
+
+    const rows = (await this.sql`
+      with latest as (
+        select qv.question_id, max(qv.version) as v
+        from question_versions qv
+        where qv.question_id in (
+          select id from questions where external_ref = any(${refs})
+        )
+        group by qv.question_id
+      )
+      select q.id as question_id, lv.stem as stem, q.marks as marks,
+             lv.command_word as command_word,
+             (select coalesce(json_agg(o order by o.ordering), '[]'::json) from (
+                select id, label, option_text, ordering
+                from question_options
+                where question_id = q.id
+                order by ordering asc
+             ) o) as options
+      from questions q
+      join latest on latest.question_id = q.id
+      join question_versions lv on lv.question_id = latest.question_id and lv.version = latest.v
+      left join exam_papers ep on ep.id = q.exam_paper_id
+      where q.active
+        and q.question_type = 'MCQ_SINGLE'
+        and (q.exam_paper_id is null or ep.validation_state not in ('REJECTED', 'FLAGGED'))`) as unknown as Array<{
+      question_id: string;
+      stem: string;
+      marks: number;
+      command_word: string | null;
+      options: Array<{ id: string; label: string; option_text: string }>;
+    }>;
+    const byRef = new Map<string, (typeof rows)[number]>();
+    for (const r of rows) byRef.set(r.question_id, r);
+
+    // resolve per-block on the FIRST ref that resolves (one check = one
+    // question in the pilot; extra refs are fallbacks, never a quiz)
+    return mcq.map((b) => {
+      let row: CheckRow | null = null;
+      for (const ref of b.checkRefs) {
+        const found = byRef.get(ref);
+        if (found != null) {
+          row = {
+            question_id: found.question_id,
+            stem: found.stem,
+            marks: found.marks,
+            command_word: found.command_word,
+            options: (found.options ?? []).map((o) => ({
+              id: o.id,
+              label: o.label,
+              text: o.option_text,
+            })),
+          };
+          break;
+        }
+      }
+      return toCheckBlock(b.id, b.checkRefs, row);
+    });
+  }
+
+  /**
+   * T-BOOK-008 — the check submit. The MCQ submit law (assessment/submit
+   * :77-120), rail-scoped: find active question (404 fail-closed) → chosen
+   * option belongs (404) → correct/marks from the row → INSERT attempt with
+   * provenance='BOOK_CHECK' (the app-level discriminator, ADR §12: attempts
+   * is Flyway-owned, ZERO DDL). Evidence emission deliberately OFF in the
+   * pilot (the rail verdict is immediate feedback; learner-model evidence
+   * from rail checks is a post-pilot surface — disclosed in the task yaml).
+   */
+  async submitRailCheck(
+    userId: string,
+    input: {
+      blockId: string;
+      questionId: string;
+      chosenOptionId: string;
+      responseTimeMs: number;
+    },
+  ): Promise<RailCheckSubmitResult> {
+    const qRows = (await this.sql`
+      select id, marks from questions
+      where id = ${input.questionId}::uuid and active and question_type = 'MCQ_SINGLE'
+      limit 1`) as unknown as Array<{ id: string; marks: number }>;
+    if (qRows.length === 0) {
+      throw new NotFoundException("question", input.questionId);
+    }
+    const oRows = (await this.sql`
+      select id, is_correct from question_options
+      where id = ${input.chosenOptionId}::uuid and question_id = ${input.questionId}::uuid
+      limit 1`) as unknown as Array<{ id: string; is_correct: boolean }>;
+    if (oRows.length === 0) {
+      throw new NotFoundException("option", input.chosenOptionId);
+    }
+    const correct = oRows[0]!.is_correct;
+    const marksAwarded = correct ? qRows[0]!.marks : 0;
+    const attemptId = crypto.randomUUID();
+    const now = new Date();
+    await this.sql`
+      insert into attempts
+        (id, learner_id, question_id, chosen_option_id, correct, marks_awarded,
+         response_time_ms, confidence_level, self_doubt_flag, timed_condition,
+         provenance, marking_state, evidence_emitted, created_at)
+      values (${attemptId}::uuid, ${userId}::uuid, ${input.questionId}::uuid,
+              ${input.chosenOptionId}::uuid, ${correct}, ${marksAwarded},
+              ${input.responseTimeMs}, null, false, false,
+              ${ATTEMPT_PROVENANCE_BOOK_CHECK}, 'AUTO_GRADED', false, ${now.toISOString()})`;
+    const correctRows = (await this.sql`
+      select id from question_options
+      where question_id = ${input.questionId}::uuid and is_correct
+      limit 1`) as unknown as Array<{ id: string }>;
+    return railCheckSubmitResultSchema.parse({
+      correct,
+      correctOptionId: correctRows[0]?.id ?? null,
+      marksAwarded,
+    });
+  }
+
+  /** T-BOOK-007 — the subject glossary, VALIDATED rows only (T-C20: a term
+   *  that has not passed the human gate is indistinguishable from absent). */
+  async glossaryTerms(subjectCode: string, slugs: string[] | null): Promise<BookGlossaryTerm[]> {
+    const rows =
+      slugs != null && slugs.length > 0
+        ? ((await this.sql`
+             select subject_code, term, slug, definition,
+                    ms_accepts, ms_avoids, aliases, audio_url, translations
+             from book_glossary_terms
+             where subject_code = ${subjectCode}
+               and validation_state = 'VALIDATED'
+               and slug = any(${slugs})
+             order by term asc`) as unknown as GlossaryRow[])
+        : ((await this.sql`
+             select subject_code, term, slug, definition,
+                    ms_accepts, ms_avoids, aliases, audio_url, translations
+             from book_glossary_terms
+             where subject_code = ${subjectCode}
+               and validation_state = 'VALIDATED'
+             order by term asc`) as unknown as GlossaryRow[]);
+    return rows.map(toGlossaryTerm);
+  }
 }
 
 interface RailBlockRow {
@@ -359,6 +544,57 @@ function toChapterProgress(row: ChapterProgressRow): ChapterProgress {
 
 /** Exported next to the 133c mappers (the strict-contract wall, rail side). */
 export const railRowMappers = { toRailBlock, toChapterProgress };
+
+interface CheckRow {
+  question_id: string;
+  stem: string;
+  marks: number;
+  command_word: string | null;
+  options: unknown;
+}
+
+interface GlossaryRow {
+  subject_code: string;
+  term: string;
+  slug: string;
+  definition: string;
+  ms_accepts: unknown;
+  ms_avoids: unknown;
+  aliases: unknown;
+  audio_url: string | null;
+  translations: unknown;
+}
+
+function toCheckBlock(blockId: string, checkRefs: string[], row: CheckRow | null): RailCheckBlock {
+  return railCheckBlockSchema.parse({
+    blockId,
+    checkRefs,
+    question:
+      row == null
+        ? null
+        : {
+            questionId: row.question_id,
+            stem: row.stem,
+            marks: row.marks,
+            commandWord: row.command_word,
+            options: row.options,
+          },
+  });
+}
+
+function toGlossaryTerm(row: GlossaryRow): BookGlossaryTerm {
+  return bookGlossaryTermSchema.parse({
+    subjectCode: row.subject_code,
+    term: row.term,
+    slug: row.slug,
+    definition: row.definition,
+    msAccepts: row.ms_accepts,
+    msAvoids: row.ms_avoids,
+    aliases: row.aliases,
+    audioUrl: row.audio_url,
+    translations: row.translations,
+  });
+}
 
 /** Route-level factory dependency (mirrors buildContentApp's env law). */
 export function buildBooksApp(env: Record<string, string | undefined> = process.env): {
