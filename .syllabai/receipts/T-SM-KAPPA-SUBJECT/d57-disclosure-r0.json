@@ -1,0 +1,58 @@
+{
+  "task": "T-SM-KAPPA-SUBJECT (phase 4 — D5.7 disclosure r0: composition tables, eval receipts index, status advance posted of record)",
+  "band": "T-SM-KAPPA-SUBJECT",
+  "title": "first D5.7 disclosure post under the going-forward law — r0 composition tables (packet/lane split, skip histogram, confusion matrix, floors check) + eval receipts index + status advance posted on syllabai-v2#276; floors verdict 5-of-7 FAIL stands, row stays unwritten, operator path re-affirmed unchanged",
+  "trace": "1a16024e83074749 (operator session, web)",
+  "date": "2026-10-21",
+  "agent": "zai-web lane (main agent, session web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2)",
+  "parent": "T-SM-ROLLOUT of record = syllabai-v2#276 (v1 syllabai#29 frozen as historical); D5 pinned law = #276 comment 6325561254 (mirror of v1 #29 comment 5)",
+  "comment_of_record": {
+    "repo": "SyllabAI/syllabai-v2",
+    "issue": 276,
+    "comment_id": 6325903109,
+    "url": "https://github.com/SyllabAI/syllabai-v2/issues/276#issuecomment-6325903109",
+    "created_at": "2026-10-21T20:32:10Z",
+    "author": "SyllabAI",
+    "body_bytes": 6781,
+    "roundtrip_proof": "returned body bytes == posted payload bytes (6781 == 6781)",
+    "payload_source": "session-side scripts/d57-disclosure-comment.md"
+  },
+  "law_note": "D5.7 disclosure target re-pointed v1 #29 -> v2 #276 by the mirror going-forward law (rollout-mirror-r0.json, commit 7427c55); the D5 floors themselves unchanged, append-only, operator-revisable",
+  "disclosure_tables_r0": {
+    "packet": "287 human marks (286 answers, 3 markers, 2026-09-15..2026-09-29), lane split 259 paper / 28 tree",
+    "skip_histogram": "164 no per_point_decisions (129 OVERRIDDEN + 34 HUMAN_MARKED within), 12 no newest smart run, 26 zero point-key intersection (MCQ option letters); decision-bearing 123 = 97 UUID-keyed + 26 option-letter; pair-contributing answers 85; paired decisions 93",
+    "confusion": { "bothYes": 1, "bothNo": 92, "smartYesOnly": 0, "humanYesOnly": 0 },
+    "kappa": { "observed": 1.0, "expected": 0.0215, "kappa": 1.0, "threshold": 0.6, "verdict": "passed=true (mechanical)", "row_written": false },
+    "floors_check": {
+      "D5.1_positive_class": "FAIL — 1 < 25 bothYes",
+      "D5.2_disagreement": "FAIL — 0 < 10 splits",
+      "D5.3_scored_work": "FAIL — 1/85 = 1.2% < 50%",
+      "D5.4_capture": "FAIL — 97/287 = 33.8% UUID-keyed < 80% (42.9% carry ppd at all)",
+      "D5.5_override_capture": "FAIL — 129/129 packet overrides null-ppd",
+      "D5.6_authorship": "PASS — 3 authenticated teacher markers, no SELF_MARKED rows in packet",
+      "D5.7_disclosure": "SATISFIED — this post (comment 6325903109)"
+    },
+    "verdict": "5 of 7 floors fail — pre-write gate of the recompute runbook correctly holds"
+  },
+  "eval_receipts_indexed_on_main_7427c55": [
+    "band-r0.json @ 3b6680d (phase 1 — PR #266 54f5312, schema 0007, SUBJECT lane, 18 tests)",
+    "eval-4ch1-r0.json @ 3b6680d (phase 2 — r0 calculation of record + 4PH1 R1-R5, R5 BLOCKED)",
+    "operator-order-r0.json @ 3b6680d (phase 3 — PR #270 cdc1cd2 P0, migration 0007 applied, D5 pinned, queue worklist, runbook)",
+    "rollout-mirror-r0.json @ 7427c55 (T-SM-ROLLOUT-MIRROR-1 — #29 -> #276 verbatim, source frozen)"
+  ],
+  "status_advance_2026_10_21T20_31Z": [
+    "mirror receipt commit 7427c55 confirmed on origin/main — three-way (local = origin ref = API ref, ahead-count 0); the prior session's push had landed, fetch-back verification completed this session",
+    "fresh posture probe: v2 API health 200; POST /kappa/evaluate 401 (band routes in live build; #270 SQL-fix presence unverifiable unauthenticated — SQL-only diff, no 54f5312-vs-cdc1cd2 discriminator); hub 200; syllabai-core.onrender.com STILL 'Service Suspended' (operator-attention flag stands — rollback lever depends on a serving core)",
+    "no new human marks entered the 4CH1 packet since 2026-09-29 — floors stand as computed",
+    "4PH1 R5 remains BLOCKED (zero human marks, writer would 409) — operator-gated after the 4CH1 path"
+  ],
+  "operator_path_unchanged": [
+    "1. deploy the cdc1cd2 build (CLI lever, serialized operator-gated; staging first)",
+    "2. 4CH1 teacher queue under D5 discipline (tier-1 63 unmarked with validated smart award >0 — bothYes cap ~32 vs D5.1's 25 reachable-but-tight; tier-2 56 unmarked scored-0 — the splits D5.2 wants; tier-3 optional revise lane on 84; every mark sends perPointDecisions UUID-keyed <=50, overrides included, authorized teachers only)",
+    "3. pre-write replica check (read-only kappa_subject_eval.py — reproduce sample+pairing+kappa+floors; do NOT POST unless D5.1-D5.4 hold)",
+    "4. POST /api/v1/teacher/marking/kappa/evaluate {\"subjectId\":\"e56dc9ee-aa74-426f-94a6-4b72d3dc346b\"}",
+    "5. read-back GET /kappa/latest?subjectId=... -> post fresh D5.7 composition table on #276",
+    "6. D2 consequence #2 closes substantively — 4CH1 SUBJECT release lane live end-to-end, per-paper dissolution clock (band 8.2) starts"
+  ],
+  "bookkeeping": ".syllabai-only commit (this receipt + durable ledger), fetch-first, no force"
+}

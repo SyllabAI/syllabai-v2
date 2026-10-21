@@ -11610,3 +11610,21 @@ Work Log:
 
 Stage Summary:
 - Tranche-2 r2 LANDED of record: the operator now rules the map-universe sheets (head: chemistry-25 1,336 parts / 256 sids), batches encode fail-closed as V8, and the landing chain per batch is encode -> consume (pin advances to dc9c1efc) -> census re-pin -> v2 PR -> the operator-gated 134c IF the census moves. The 134c gate stays PARKED (census unchanged; zero DB movement pending the first true gap-closing round). Tranche-3 (the 1,203 sid-less) remains upstream corpus work after the verdict program. PAT rotation REMAINS CRITICAL-OVERDUE (fp a8ccee736aa8c75b, operator-keyed, restated of record).
+
+---
+Task ID: T-SM-KAPPA-SUBJECT-D57-R0 (durable ledger — first D5.7 disclosure post under the going-forward law)
+Agent: zai-web lane (main agent, session web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2; trace 1a16024e83074749)
+Task: post the D5.7 composition tables, eval receipts and status advance on syllabai-v2#276 (operator order: "D5.7 composition tables, eval receipts, and status advances post on #276. The operator path is unchanged: deploy the cdc1cd2 build (CLI lever) -> 4CH1 teacher queue under D5 discipline -> pre-write replica check -> POST /kappa/evaluate -> post the composition table on #276 -> D2 closes").
+
+Work Log:
+- Fetch-first grounding: local ref read stale ("ahead 1") — git fetch revealed origin/main already at 7427c55 (the mirror push HAD landed; the prior session was cut before its fetch-back step). Three-way re-verified: local = origin ref = API ref = 7427c55, ahead-count 0, push up-to-date. No divergence, no force.
+- Receipts read back from .syllabai/receipts/T-SM-KAPPA-SUBJECT/{band-r0,eval-4ch1-r0,operator-order-r0,rollout-mirror-r0}.json; raw eval output cross-checked for exact skip buckets before tabulation.
+- Composed the D5.7 disclosure post (session-side scripts/d57-disclosure-comment.md): S1 packet & lane split, S2 skip histogram, S3 confusion matrix, S4 floors check (D5.1-D5.7 vs r0), S5 receipts index, S6 status advance, S7 operator path re-affirmed verbatim; D5.7 target noted re-pointed #29 -> #276 per the mirror going-forward law (floors unchanged, append-only).
+- Fresh posture probe 2026-10-21T20:31Z: v2 API health 200; POST /kappa/evaluate 401 (band routes in the live build; #270 SQL-fix presence unverifiable unauthenticated — SQL-only diff, no 54f5312-vs-cdc1cd2 discriminator); hub 200; syllabai-core.onrender.com STILL "Service Suspended" (operator-attention flag stands).
+- POSTED comment 6325903109 on syllabai-v2#276 at 2026-10-21T20:32:10Z by the SyllabAI identity; round-trip byte-proof (returned 6781 == posted 6781).
+- Receipt d57-disclosure-r0.json installed; this ledger entry appended; .syllabai-only commit, fetch-first, no force.
+
+Stage Summary:
+- First of-record D5.7 disclosure is live on #276 (comment 6325903109): r0 floors verdict 5-of-7 FAIL (D5.1 1<25, D5.2 0<10, D5.3 1/85, D5.4 97/287=33.8%<80%, D5.5 129/129 null-ppd overrides; D5.6 PASS; D5.7 SATISFIED) — the eval row correctly stays unwritten.
+- Operator path unchanged and re-affirmed of record: deploy cdc1cd2 build (CLI lever) -> 4CH1 queue under D5 discipline -> pre-write replica check -> POST /kappa/evaluate -> D5.7 composition table on #276 -> D2 consequence #2 closes substantively.
+- Open flags unchanged: Render core suspension (operator), 4PH1 R5 queue (zero human marks), G3 gates, no new human marks in the 4CH1 packet since 2026-09-29.
