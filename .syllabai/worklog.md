@@ -11307,3 +11307,17 @@ Work Log:
 
 Stage Summary:
 - Operator order 1a15f79acff5346d items (1)(2)(3): DISCHARGED of record and pushed (resources fc6bf29c; v2 7924d3dd); live-surface confirmation PENDING the operator-side Vercel fix; every assertion that CAN be verified locally/repo-side is green (engine battery C1-C5, consume M1/M2/R1-R5, CIE validator 393, verify+hub CI, local next build)
+
+---
+
+Task ID: 70-ADDENDUM-2
+Agent: main (Super Z)
+Task: live verification COMPLETE — the ADDENDUM-1 "blocked" state is OVERTURNED; the Vercel deploy went GREEN on this session's head and the COMPLETE-1 learner delta is LIVE
+
+Work Log:
+- Vercel: SUCCESS on head 3559f41f (commit status 'Vercel: success'; the earlier red was transient across the T-BOOK window and self-resolved before any operator action was needed)
+- LIVE probes (GET-only, served hub): history-18 revision-notes unmapped card 63 -> 1 item (86/87 notes anchored; "Was the Treaty of Versailles Fair" renders anchored in the tree); english-literature-21 unmapped 164 -> 37 (93 notes joined); a-level-business-23 unmapped 125 -> 9 (EXACT match to the 9 classified pendings); hub root 200
+- The operator's observed CIE History revision-notes gap is CLOSED on the learner surface of record
+
+Stage Summary:
+- Operator order 1a15f79acff5346d items (1)(2)(3): DISCHARGED, PUSHED, and LIVE-VERIFIED (resources fc6bf29c; v2 through 3559f41f); menu items 4-5 remain open operator-gated
