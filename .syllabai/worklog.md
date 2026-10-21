@@ -11646,3 +11646,16 @@ Work Log:
 Stage Summary:
 - The operator's two queued items are DISPOSED OF RECORD: the past-papers card LANDED (T-TEACH-007, PR #278 -> 9002ff54 — the T-TEACH queue T-TEACH-001..007 is now fully landed) and the stage-5b proof is BLOCKED with full attribution + repair path filed (the instrument repair is the operator's/integrator's call; the proof watch re-arms on it: ONE run with the marking quartet absent from the union fail list closes T-TEACH-003's residual).
 - Standing reminder: the operator must revoke the GitHub PAT (ghp_h4D…) at migration end per the credential law — used this session for fetch/dispatch/artifact/PR/push/merge only.
+---
+Task ID: T-SM-KAPPA-SUBJECT-D57-R0 — addendum (push provenance, filed same session)
+Agent: zai-web lane (main agent, session web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2; trace 1a16024e83074749)
+Task: disclose the mid-lane divergence resolved while landing the D57-R0 receipt.
+
+Work Log:
+- Upstream advanced mid-lane: 7427c55 -> 6a86f41 (4d4daac cie-tranche2-r2 receipt + merges 9002ff5 PR #278 T-TEACH-007, 6a86f41 PR #277) while the D57-R0 commit stood on 7427c55 — fetch-first caught it, rebase required.
+- Tail conflict on this ledger union-resolved per established law (upstream first, markers dropped): diff vs 6a86f41 = 0 deletions / 15 additions — append-only held byte-exact on both sides.
+- Rebased commit pushed a3e3219 (FF 6a86f41..a3e3219, no force); three-way verified local = origin ref = API ref = a3e321987dac5aebb8917f46da4aae62504e35ce.
+- Receipt d57-disclosure-r0.json unchanged; its "receipts indexed at 7427c55" line remains true (7427c55 is an ancestor of the new tip); the of-record #276 comment 6325903109 stated the tip as of its post time (20:32:10Z) and contains no material falsehood — no issue-side correction filed.
+
+Stage Summary:
+- D57-R0 receipt of record at v2 main a3e3219; provenance chain complete (a6fa212 pre-rebase discarded, content byte-identical modulo union placement).
