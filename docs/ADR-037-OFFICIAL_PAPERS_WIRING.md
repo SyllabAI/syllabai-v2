@@ -37,8 +37,9 @@ Every official part carries the fields the resources repo's
 
 The bundle passes through `services/sme/bundle-questions.ts` unchanged:
 
-- **topicSlug** — official sets carry `official-past-papers` (the ref
-  namespace law).
+- **topicSlug** — official sets carry their OWN set slug per paper
+  (`official-4ch1-1c-2019-06`, ...) — the per-paper ref namespace law
+  (run-004 amendment; superseded form below).
 - **anchor law** — questions with no spec-point codes stay OUT of the learner
   model ingest (unmapped++) but remain fully servable display content: only
   the 2020-11 demo-seeded set (5 anchored questions) ingests today; the rest
@@ -145,3 +146,62 @@ in `SyllabAI/syllabai-resources` (topics staged per series as `<series>-<paper>.
 exporter's gates: G-E1 disclosed-delta census vs the of-record, G-E2 part-sum + markPoints-close
 + spec-code shape, G-E3 per-series census vs the v0.8.1 MULTI-SERIES constants, G-E4 SME-prefix
 byte-identity, and the F37 key pins — fail-closed, like every gate in this pipeline.
+
+## Amendment r0 — the per-paper ref namespace (run-004, trace 1a15fc4a3676c085)
+
+**Supersedes the topicSlug law above** (and every earlier "official sets carry
+`official-past-papers`" statement in this doc): official sets carry their OWN
+set slug as topicSlug (`official-4ch1-1c-2019-06`, ...) — the per-paper ref
+namespace.
+
+Why of record: the shared ref law (`packages/shared/src/smeRef.ts`) derives
+`sme-eq-<courseSlug>-<topicSlug>-q<order>`; with every official set on the one
+`official-past-papers` slug and per-set restarting orders, 12 base refs
+collided across sets (35 duplicate emitted forms with `-pK`/`-s` members,
+multiplicities up to x16 after the 2C tranche) and the frozen package-global
+`seenRefs` gate (`bundle-questions.ts:316-319`) refused the v0.7 bundle at
+BUILD — the Stage-B2 blocker of record (run-003, trace 1a15f8cd84de4909,
+zero DB statements). The DB lane cannot fix this (the converter extracts; it
+never authors); the namespace is a content-plane wiring property.
+
+The fix (content-lane wiring, zero code): each official set's `topicSlug`
+field := the set's own canonical slug. Topic-plane sets untouched. Verified
+of record (scripts/adr037_path1_ref_verify.py, ALL GREEN): emitted entry
+count unchanged (1053); the 28 topic sets' refs byte-identical (the live 602
+ground); zero duplicate refs package-wide post-fix; every official ref in the
+plain per-paper form (no truncation path); the REAL shim build + the REAL
+frozen `parsePackage`/`validate` ACCEPT the full 60-set package (688
+questions / 2325 parts / 1136 options, counts = the run-004 census
+`adr037_reapply_census_result_60sets_perpaper.json`). The pre-fix 60-set
+baseline rides `adr037_reapply_census_result_60sets_prefix.json`.
+
+Downstream wiring unchanged: the hub join (`app/api/core/questions`) derives
+refs through the SAME shared law from the SAME bundle field, so both sides
+move together; official questions stay unjoined until the DB re-apply lands
+(B3, behind green-light).
+
+## Amendment r1 — the v0.9.0 re-export re-break and re-fix (trace 1a15fe1207c34329)
+
+The sibling bundle-sync lane (d6dbebd2, PR #268, "ADR-037 v0.9.0 — 2C spec
+labels + F40 figure fixes, 32 sets re-exported from resources
+main@89260832") re-exported the same 32 official sets from the resources
+pipeline WITHOUT the path-1 wiring: all 32 sets landed back on the shared
+`official-past-papers` topicSlug. The export generator upstream of the
+bundle does not carry the per-paper slug law, so every re-export re-breaks
+the namespace until the generator itself adopts it (owned by the export
+lane; flagged, not fixed here — this lane's mandate is the content-plane
+wiring of record).
+
+Union-resolve of record: the rebase onto origin/main (b536b2cc) KEPT the
+v0.9.0 content advances wholesale (field-by-field proof: 60/60 sets,
+exactly 32 `topicSlug` field diffs, `topicSlug == slug` on all, zero other
+fields touched) and re-applied the 32-field surgical fix on top
+(scripts/adr037_path1_refnamespace_fix.py guard law re-run clean). The
+v0.9.0 content advance is material: the 2C tranche gained spec labels
+(unmapped 111 -> 1), so the admitted plane grows 688 -> 798 questions and
+the Law-2 per-point payload grows 1381 -> 2362 rows (kill-list insert
+expectation 2864 -> 3867 mark_point rows; g7 violations still 0, dupOrder
+still 0). The bundle-questions pin was re-pinned to the v0.9.0 census
+(scripts/adr037_reapply_census_result.json) and the full gate set re-proven:
+bundle-questions 25/25, smeRef 14/14, apps/api tsc clean. The namespace
+injectivity law is unchanged and re-proven on the v0.9.0 bytes.

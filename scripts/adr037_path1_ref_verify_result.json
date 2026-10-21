@@ -1,0 +1,40 @@
+{
+  "verify": "adr037-path1-refnamespace-battery",
+  "course": "igcse-chemistry-19",
+  "checks": {
+    "v1_entry_counts": {
+      "pre": 1053,
+      "post": 1053
+    },
+    "v2_topic_plane_sets": 28,
+    "v2_topic_plane_drift": [],
+    "v3_pre_official_sets": 32,
+    "v3_pre_dup_classes": 35,
+    "v3_pre_multiplicities": {
+      "16": 8,
+      "2": 12,
+      "5": 5,
+      "15": 1,
+      "6": 2,
+      "3": 3,
+      "14": 1,
+      "8": 2,
+      "4": 1
+    },
+    "v3_pre_dup_sample": [
+      "sme-eq-igcse-chemistry-19-official-past-papers-q0",
+      "sme-eq-igcse-chemistry-19-official-past-papers-q0-p1",
+      "sme-eq-igcse-chemistry-19-official-past-papers-q0-p2",
+      "sme-eq-igcse-chemistry-19-official-past-papers-q0-s",
+      "sme-eq-igcse-chemistry-19-official-past-papers-q1",
+      "sme-eq-igcse-chemistry-19-official-past-papers-q1-p1"
+    ],
+    "v4_post_dup_classes": 0,
+    "v6_official_hashed_form_count": 0,
+    "v6_official_bad_form": [],
+    "v7_topic_plane_distinct_post": 795,
+    "v7_note": "B2 of record: live 602 \u2286 topic-plane emission (survivors 0); V2 byte-identity preserves that chain",
+    "v8_per_set_entry_equality": true
+  },
+  "verdict": "ALL GREEN"
+}

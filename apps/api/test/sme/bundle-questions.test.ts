@@ -44,6 +44,18 @@ const foundation = {
   sets: JSON.parse(readFileSync(join(HUB, "igcse-maths-a-18-foundation/questions.json"), "utf8")) as BundleQuestionSet[],
   curriculum: JSON.parse(readFileSync(join(HUB, "igcse-maths-a-18-foundation/curriculum.json"), "utf8")) as BundleCurriculum,
 };
+// ADR-037 (run-004, trace 1a15fc4a3676c085): the chemistry-19 bundle is the
+// per-point re-apply's content plane — the official past-paper sets carry
+// PER-PAPER topicSlugs (the set slug itself) so the shared ref law's
+// (topicSlug, order) namespace is injective across sets. The pre-fix law
+// (every official set on "official-past-papers") collided on 12 base refs /
+// 35 emitted forms and the frozen package-global seenRefs gate refused the
+// bundle at BUILD — the run-003 of-record blocker.
+const chemistry = {
+  slug: "igcse-chemistry-19",
+  sets: JSON.parse(readFileSync(join(HUB, "igcse-chemistry-19/questions.json"), "utf8")) as BundleQuestionSet[],
+  curriculum: JSON.parse(readFileSync(join(HUB, "igcse-chemistry-19/curriculum.json"), "utf8")) as BundleCurriculum,
+};
 
 const SOURCE = {
   generatedUtc: "2026-09-17T18:19:23Z",
@@ -63,6 +75,9 @@ function buildHigher() {
 function buildFoundation() {
   return buildSmePackage({ courseSlug: foundation.slug, curriculum: foundation.curriculum, sets: foundation.sets, ...SOURCE });
 }
+function buildChemistry() {
+  return buildSmePackage({ courseSlug: chemistry.slug, curriculum: chemistry.curriculum, sets: chemistry.sets, ...SOURCE });
+}
 
 describe("T-MIG-135b the real bundles through the shim + the frozen gates", () => {
   test("the higher bundle builds at the exact manifest numbers", () => {
@@ -79,8 +94,32 @@ describe("T-MIG-135b the real bundles through the shim + the frozen gates", () =
     expect(pkg.counts).toEqual({ questions: 274, parts: 430, options: 0, sets: 45, unmapped: 1, badSum: 0, dupOrder: 0 });
   });
 
+  test("the chemistry-19 bundle builds at the ADR-037 path-1 census numbers with the per-paper official namespace (run-004)", () => {
+    const pkg = buildChemistry();
+    // the per-paper census of record (60 sets: 28 topic + 16 official 1C +
+    // 16 official 2C; v0.9.0 re-export mapped the 2C tranche — spec labels
+    // landed, unmapped 111 -> 1; trace 1a15fe1207c34329 re-pin)
+    expect(pkg.counts).toEqual({ questions: 798, parts: 2932, options: 1244, sets: 60, unmapped: 1, badSum: 4, dupOrder: 0 });
+    const refs = (pkg.questions ?? []).map((q) => q.externalRef as string);
+    // the package-global namespace is injective — the exact gate that
+    // refused the pre-fix bundle (run-003: duplicate externalRef
+    // sme-eq-igcse-chemistry-19-official-past-papers-q1)
+    expect(new Set(refs).size).toBe(refs.length);
+    // the official plane: 275 admitted questions post-v0.9.0 (was 165 at
+    // v0.8.1 — the 2C tranche joined), per-paper ref forms, every ref
+    // embedding its own set slug
+    const official = refs.filter((r) => r.includes("official-4ch1-"));
+    expect(official.length).toBe(275);
+    expect(new Set(official).size).toBe(275);
+    for (const ref of official) {
+      expect(ref).toMatch(/^sme-eq-igcse-chemistry-19-official-4ch1-(1c|2c)-\d{4}-\d{2}-q\d+$/);
+    }
+    // the topic plane: untouched by the fix (the live 602 refs' ground)
+    expect(refs.length - official.length).toBe(523);
+  });
+
   test("the REAL parsePackage + the REAL validate accept both packages", () => {
-    for (const build of [buildHigher, buildFoundation]) {
+    for (const build of [buildHigher, buildFoundation, buildChemistry]) {
       const pkg = build();
       const parsed = parsePackage(JSON.stringify(pkg));
       expect(parsed.questions?.length).toBe(pkg.questions?.length);
@@ -203,6 +242,26 @@ describe("T-MIG-135b the fail-closed shim laws", () => {
     const ref = smeQuestionRef("c".repeat(90), "topic", 0);
     expect(ref.length).toBeLessThanOrEqual(80);
     expect(ref.startsWith("sme-eq-")).toBe(true);
+  });
+
+  test("two sets sharing a topicSlug collide on the package-global namespace and REFUSE (the run-003 blocker class — the per-paper namespace is the fix)", () => {
+    // the pre-fix official wiring: every set on one topicSlug, orders
+    // restarting per set — the shared law derives the same ref twice and
+    // the frozen seenRefs gate refuses the whole bundle at BUILD
+    const a = structuredClone(foundation.sets.slice(0, 1)) as BundleQuestionSet[];
+    const b = structuredClone(foundation.sets.slice(0, 1)) as BundleQuestionSet[];
+    b[0]!.slug = a[0]!.slug + "-twin";
+    b[0]!.questions[0]!.order = a[0]!.questions[0]!.order;
+    expect(() => oneSet(foundation.slug, foundation.curriculum, [...a, ...b])).toThrow(/duplicate externalRef/);
+    // the fix law: distinct per-paper topicSlugs dissolve the collision —
+    // same orders, same course, disjoint refs, clean build
+    const c = structuredClone(a);
+    const d = structuredClone(b);
+    d[0]!.topicSlug = d[0]!.slug;
+    c[0]!.topicSlug = c[0]!.slug;
+    const pkg = oneSet(foundation.slug, foundation.curriculum, [...c, ...d]);
+    const refs = (pkg.questions ?? []).map((q) => q.externalRef as string);
+    expect(new Set(refs).size).toBe(refs.length);
   });
 
   test("duplicate orders are SKIPPED past the first occurrence (the dupOrder law)", () => {

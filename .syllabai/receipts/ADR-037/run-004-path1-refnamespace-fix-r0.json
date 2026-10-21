@@ -1,0 +1,50 @@
+{
+  ".receipt": "ADR-037/run-004-path1-refnamespace-fix-r0",
+  ".lane": "ADR-037",
+  ".trace": "1a15fc4a3676c085",
+  ".task": "operator order 'path 1 — fix' — the content-lane official-set ref-namespace fix; re-census; build-green proof; kill-list amendment; prod write stays behind green-light",
+  ".posture": "PATH-1 FIX LANDED OF RECORD — the run-003 shim-gate blocker is resolved: the full 60-set v0.7 bundle BUILDS through the REAL shim and the REAL frozen parsePackage/validate ACCEPT it; zero prod DB writes, zero content-plane writes beyond the 32-field namespace rewiring; push BLOCKED (credential staging wiped — narrow-wipe recurrence)",
+  "the_fix": {
+    "what": "each official past-paper set's topicSlug := the set's own canonical slug (official-4ch1-1c-2019-06, ...) — 32 surgical JSON field substitutions, section/sectionSlug and all other fields byte-untouched; ZERO code changes (the frozen smeQuestionRef law recomputes refs deterministically from the wired slugs)",
+    "script": "scripts/adr037_path1_refnamespace_fix.py (structural pairing guard slug_i < topic_i < slug_{i+1}, JSON round-trip equality except exactly the 32 topicSlug fields, uniqueness assertions)",
+    "law": "the (topicSlug, order) ref namespace is injective across sets; the converter extracts, it never authors — the slug identity already existed in the bundle",
+    "topic_plane_isolation": "the 28 topic sets (the live 602 refs' ground) are untouched"
+  },
+  "verification_battery_ALL_GREEN": {
+    "tool": "scripts/adr037_path1_ref_verify.py — byte-exact python mirror of smeQuestionRef (truncation + 8-hex FNV-1a + member suffix reserve) over git-HEAD bytes vs working tree",
+    "v1_entry_counts": "1053 pre == 1053 post (content untouched)",
+    "v2_topic_plane": "28 sets BYTE-IDENTICAL pre/post — the B2 survivors-0 chain (live 602 ⊆ topic-plane emission) is preserved by identity",
+    "v3_pre_collision_picture_CORRECTED": "35 duplicate ref classes pre-fix (12 base refs + 23 member forms), multiplicities up to x16 — supersedes run-003's '12 colliding bases' framing, which counted BASE refs only; the deactivate-slice law operates on emitted refs, hence the fuller census",
+    "v4_post": "ZERO duplicate refs package-wide (bases + members)",
+    "v6_official_form": "every official ref in the plain per-paper form (sme-eq-igcse-chemistry-19-official-4ch1-<paper>-<session>-q<N>); the truncation path never fires on the official plane (max slug 24 chars); no -<8hex> hash forms",
+    "v8": "per-set entry equality pre/post"
+  },
+  "build_green_of_record": {
+    "gate": "buildSmePackage over the full 60-set bundle + the REAL parsePackage + the REAL SmeQuestionIngestService.validate (the frozen laws, never edited)",
+    "result": "ACCEPTED — counts {questions 688, parts 2325, options 1136, sets 60, unmapped 111, badSum 4, dupOrder 0}; refs 688/688 distinct; official 165/165 distinct; max ref len 80 (the topic-plane truncation bound, of-record)",
+    "reconciliation": "parts 2325 = 2041 plain + 284 option-bearing EXACT vs census; the run-003 refusal class (duplicate externalRef sme-eq-igcse-chemistry-19-official-past-papers-q1) is impossible post-fix",
+    "test_pin": "apps/api/test/sme/bundle-questions.test.ts — chemistry real-bundle counts/namespace test + the frozen-validate loop widened to 3 packages + the collision-class fail-closed test; suite 25/25 PASS (9419 expects); smeRef suite 14/14 PASS; apps/api tsc --noEmit clean"
+  },
+  "census_of_record": {
+    "pre_fix_baseline_60_sets": "scripts/adr037_reapply_census_result_60sets_prefix.json — 60 sets / 803 raw / 688 admitted / 111 unmapped (110 = the 2C tranche's questions, zero spec codes — zero DB-plane effect) / 4 badSum / 1053 emitted entries / 813 corpus rows / 2864 mark_point rows (1381 per-point + 1199 whole-block + 284 part-less) / 0 G7 violations",
+    "post_fix": "scripts/adr037_reapply_census_result_60sets_perpaper.json — ALL 20 totals IDENTICAL (slug-only edit)",
+    "reconciliation_vs_run002": "run-002 (44 sets): 688 admitted / 813 rows / 2830 mark_points (1340 pp + 1206 wb + 284 pl). Pre-fix 60-set: same admitted/rows, 2864 mark_points (1381 pp + 1199 wb). Delta = the 2C tranche commit's bundle effects: 2C adds 110 raw (all unmapped) + the v0.8.1 markPoints refinements on 1C (+41 per-point / -7 whole-block / +34 total — the 'whole-block MS rows split into the real M1..Mn points' wave, ADR doc line 128). TOPIC PLANE: byte-identical to run-002 (1402/1175/227) — the live-safety ground unchanged",
+    "per_plane_post": "TOPIC(28): 523 admitted / 795 refs / 1402 mark_points (0 pp + 1175 wb + 227 pl); OFFICIAL-1C(16): 165 admitted / 258 refs / 1462 mark_points (1381 pp + 24 wb + 57 pl); OFFICIAL-2C(16): 0 admitted (110 raw, all unmapped — future wave)"
+  },
+  "kill_list_amendment": {
+    "deactivate_slice": "UNCHANGED LAW — all live-ACTIVE refs under external_ref LIKE 'sme-eq-igcse-chemistry-19-%' (602, live-prefix census, pinned by B2 probe); the fix does NOT touch live refs (topic plane byte-identity), so the slice is stable by construction",
+    "insert_payload": "full v0.7 60-set package through the REAL --apply path under the NEW per-paper official refs; ZERO deletions (append-only law unchanged)",
+    "fresh_numbers": "mark_point rows expected post-apply: 2864 (1381 per-point — the Law-2 payload is 41 rows larger than run-002 pinned, per the v0.8.1 refinements)",
+    "gates": "the five of-record gates + B2 green baselines re-verified immediately pre-apply (needs DATABASE_URL one-shot); B2 re-probe re-derives the live intersection fresh — never assumed"
+  },
+  "cross_lane_findings_disclosed": [
+    "MANIFEST STALENESS: apps/hub/content/igcse-chemistry-19/manifest.json counts (questionSets 44 / questions 693, adr037OfficialAdds 16/169) predate the 2C tranche by 19 minutes (refresh b6dbdacd 18:20 UTC vs export 77842fe7 23:39 +0600) — the bundle now carries 60 sets / 803 raw questions. The 2C lane's manifest debt; not silently fixed from this lane.",
+    "HUB JOIN LEGACY BRANCH: /api/core/questions keeps a chemistry-pilot legacy ref form (sme-eq-<topicSlug>-q<N>, no course prefix — T-MIG-135d, when stored refs were legacy-form). Lane C re-stored the slice course-prefixed (B2-proven: 602/602, zero legacy rows in the slice) AND the DB carries a second population (lane C receipt: 'fetch-bank sme-eq old-law corpus 593q'). The legacy branch therefore binds the fetch-bank population, while the lane-C/v0.7 rows join only through the shared smeQuestionRef law. Post-B3, the per-point unlock REQUIRES the shared-law branch for chemistry. This is a LIVE-BEHAVIOR ruling (which corpus the player binds to) — disclosed for an operator/sibling-lane order with live probes; NOT flipped in this turn.",
+    "SANDBOX WIPE RECURRENCE: syllabai-v2 local .git was restored from a stale checkpoint (HEAD b34a2da9, run-002/003 objects missing) — recovered of-record via unauthenticated fetch (origin/main 4c4e1bf7, FF-synced; artifacts re-verified). node_modules wiped — bun install 930 pkgs re-run from the frozen lockfile."
+  ],
+  "push": {
+    "status": "BLOCKED OF RECORD — no credential staging found (.secrets dir, /tmp snapshots, credential-store all absent; the established per-turn one-shot pattern)",
+    "local_state": "commit lands claim-in-first-commit on local main (ahead of origin); push fires on PAT one-shot re-stage; union-resolve loop armed (origin/main may advance)"
+  },
+  "next": "1) PAT one-shot -> push; 2) DATABASE_URL one-shot -> B2 re-probe (fresh live intersection + sum-invariant baseline) + REAL --dry-run green; 3) operator green-light -> B3 apply -> Gates 1-5 -> ship"
+}
