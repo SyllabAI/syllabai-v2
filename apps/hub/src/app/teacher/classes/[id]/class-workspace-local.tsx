@@ -26,8 +26,11 @@
  *
  * One section per subject the class covers, in selection order:
  *   - course resource rows into the SAME hub surfaces students use
- *     (revision notes, exam questions, flashcards, and the per-subject
- *     Knowledge Graph) with real corpus counts from /api/course-stats;
+ *     (revision notes, exam questions, flashcards, the per-subject
+ *     Knowledge Graph and — T-TEACH-007, the T-TEACH-004 residual — the
+ *     subject's past-papers archive) with real corpus counts from
+ *     /api/course-stats (papers ride the server-passed archive census,
+ *     the same prop the core class workspace consumes);
  *   - the corpus-local teacher tools scoped to that subject (Test Builder,
  *     assignments, validation — ?course= deep links, honest SAMPLE badges
  *     carried from the old overview verbatim).
@@ -58,6 +61,7 @@ import {
   Map as MapIcon,
   Network,
   Pencil,
+  ScrollText,
   Trash2,
   Users,
 } from "lucide-react";
@@ -93,6 +97,20 @@ const RESOURCES = [
     icon: Network,
     label: "Knowledge Graph",
     countLabel: "topics in the corpus",
+  },
+  // T-TEACH-007 (the T-TEACH-004 residual): the subject's past-papers
+  // archive joins the resource rows — the exact card the core class
+  // workspace renders. Its count is NOT a course-stats field: it is the
+  // server-passed archive census (page.tsx counts the committed past-papers
+  // corpus index per registry slug; unmapped subjects count an honest 0 and
+  // the card still links — the archive's empty state routes to the
+  // deterministic practice papers).
+  {
+    key: "papers",
+    href: (slug: string) => `/courses/${slug}/past-papers`,
+    icon: ScrollText,
+    label: "Past Papers",
+    pastPapers: true,
   },
 ] as const;
 
@@ -144,11 +162,16 @@ export function LocalClassMissing() {
 export function LocalClassWorkspace({
   classId,
   courses,
+  paperCounts,
 }: {
   classId: string;
   /** the server-passed registry subset (page.tsx listCourses — same payload
    *  the dashboard renders; no new API surface invented for this) */
   courses: TeacherCourseLite[];
+  /** registry slug → past-papers archive count (server-computed from the
+   *  committed corpus index — a server-only lib, so it arrives as data,
+   *  never as a fetch; the same prop the core class workspace consumes) */
+  paperCounts: Record<string, number>;
 }) {
   const router = useRouter();
   const { get, update, remove } = useMyClasses();
@@ -363,10 +386,12 @@ export function LocalClassWorkspace({
               </div>
 
               {/* course resources — the same families students use (the
-                  knowledge graph joined in wave 2) */}
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                  knowledge graph joined in wave 2, the past-papers archive
+                  in T-TEACH-007) */}
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
                 {RESOURCES.map((r) => {
-                  const count = countOf(stat, "countKey" in r ? r.countKey : r.key);
+                  const papers = "pastPapers" in r;
+                  const count = papers ? paperCounts[c.slug] : countOf(stat, "countKey" in r ? r.countKey : r.key);
                   return (
                     <Link
                       key={r.key}
@@ -384,10 +409,16 @@ export function LocalClassWorkspace({
                         />
                       </p>
                       <p className="mt-1 text-xs text-muted-foreground tabular-nums">
-                        {stat && !stat.hasBundle ? (
+                        {stat && !stat.hasBundle && !papers ? (
                           <Badge variant="outline" className="text-[10px] font-normal">
                             no corpus package
                           </Badge>
+                        ) : papers ? (
+                          count ? (
+                            `${count} ${count === 1 ? "paper" : "papers"} in the archive`
+                          ) : (
+                            "no papers in the archive yet"
+                          )
                         ) : count === undefined ? (
                           <Skeleton className="inline-block h-3 w-16" />
                         ) : "countLabel" in r ? (
