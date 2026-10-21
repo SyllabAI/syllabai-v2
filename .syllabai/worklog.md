@@ -11574,3 +11574,20 @@ Stage Summary:
 - End state of record: glossary 112/112 VALIDATED; book_blocks 177 VALIDATED across 29/29 VALIDATED chapters (untouched this lane) — the 4CH1 book of record is green end-to-end on every plane (chapters, blocks, glossary).
 - Bookkeeping of record (this commit): task yaml T-BOOK-023; receipt glossary-validation-r3.json; worklog entry; u4-organic-chemistry.yaml header comment refreshed (the stale F-BOOK-0001 gate line — landed by the fire bd38e04d, validated by this lane).
 - Stage Summary: the r3 lane closes the last open books item — nothing PENDING-OPERATOR remains on the 4CH1 pilot's content planes. The session-side vehicle is re-runnable in both worlds (pre/post) for any future re-audit. PAT rotation executed by the kappa lane (transit 27-28 flag CLOSED per 3b6680d1) — this session's PAT still live, rotation advice stands.
+
+---
+Task ID: T-SM-ROLLOUT-MIRROR-1 (durable ledger — the tracking chain moves to this repo: v1 syllabai#29 mirrored verbatim into v2 #276, source frozen)
+Agent: zai-web lane (main agent, session web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2; operator order trace 1a16018583750b05 "mirror the T-SM-ROLLOUT chain into a syllabai-v2 issue")
+Task: after the operator's migration confirmation (syllabai-hub-v2.vercel.app deploys from THIS repo), relocate the T-SM-ROLLOUT tracking surface — v1 #29 (body + comments 6319823989/6322323978/6322846948/6323409132/6324290735/6324673356) — into a syllabai-v2 issue, cross-linked both ways, source frozen as historical.
+
+Work Log:
+- Fetch-first: v1 #29 + all 6 comments pulled via API to /tmp; authorship check — every source item was posted by the SyllabAI account (the same identity the PAT controls), so the mirror preserves author identity exactly; labels empty, nothing else to carry.
+- scripts/mirror_rollout_issue.py (session-side): created v2 issue #276 (title = source title + "(mirrored of record from SyllabAI/syllabai#29)"); body = [!NOTE] mirror preamble (source link, freeze declaration, mirror trace 1a16018583750b05, "all future updates post here") + source body VERBATIM; then all 6 comments mirrored chronologically, each under a 2-line attribution header (source comment id · timestamp · permalink) + VERBATIM payload — no rewording, no summarization anywhere.
+- VERBATIM PROOF (API round-trip): 6/6 comments byte-identical after header strip (3282/7947/19681/655/10205/8138 chars), issue body endswith source body = True.
+- Freeze: v1 #29 got the MIRRORED notice comment (6325561957 — chain now tracks at syllabai-v2#276, frozen as historical, corrections append on v2 with back-reference, reopenable on operator order) and was CLOSED state_reason=not_planned; GitHub auto-crosslink fires both ways via the repo#num mention.
+- Receipt: .syllabai/receipts/T-SM-KAPPA-SUBJECT/rollout-mirror-r0.json (full source->target id map).
+- Going-forward law: D5.7 composition tables, eval receipts and status advances post on syllabai-v2#276.
+
+Stage Summary:
+- T-SM-ROLLOUT of-record chain: syllabai-v2#276 (live) <- syllabai#29 (frozen, closed). The Smart Mark rollout now tracks on the migrated repo end-to-end.
+- Unchanged: the operator path (deploy cdc1cd2 build -> 4CH1 queue under D5 -> pre-write D5 replica -> operator POST -> D5.7 table on #276) and the open flags (Render core suspension, 4PH1 R5, G3 gates).
