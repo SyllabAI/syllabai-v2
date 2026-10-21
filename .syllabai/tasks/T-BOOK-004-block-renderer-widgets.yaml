@@ -1,0 +1,47 @@
+version: 1
+task:
+  id: T-BOOK-004
+  title: "Block renderer + the generic widget set (prose/callout/figure/mcq-embed/sort-match/drag-label/table-fill) — a11y keyboard paths"
+  owner: "main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, trace 1a15de049a869781)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-BOOK (interactive books)
+  wave: books-phase-A
+  deps: [T-BOOK-003]
+  execution_record: >
+    Executed per ADR-BOOK-0001 (§5 rail-not-rewrite; §7 bank law for mcq-embed).
+    block-renderer.tsx = the dumb dispatcher (payload laws already enforced by
+    contracts at the api boundary + the hub envelope mirror); per-widget
+    optional payload fields documented in the dispatcher header (authored-side
+    law, read defensively — a missing optional never throws). check-shared.tsx
+    = the a11y contract written ONCE (aria-live verdict chips role=status,
+    check/reset button pair, WidgetCard shell, sr-only LiveHint). Widgets:
+    prose (G2 ≤120w framing), callout (examiner-note accent), figure
+    (page-true pointer + scrollToPage jump), mcq-embed (the BANK LAW player:
+    question arrives via checkSource prop = checkRefs → served shape WITHOUT
+    correctness — server-verdict law; radiogroup keyboard; honest anchor card
+    when no source, never a pretend player), sort-match (ORDER via
+    correctOrder / MATCH via solution+targets; ↑/↓ keyboard moves, select-then-
+    place), drag-label (label-pack carrier: tap-select + Enter-place — no
+    drag-only path; slots check via matchesAny alternates), table-fill
+    (per-cell accepts + post-check hints, aria-invalid). Self-check law:
+    practice widgets NEVER write attempts (attempts = the check lane,
+    T-BOOK-008, mcq-embed only). rail-workspace.tsx refactored: r0 inline
+    views retired, BlockRenderer + data-ord wrapper (the IntersectionObserver
+    anchor guaranteed in ONE place), ONE stream instance preserved.
+    PROOF: hub tsc 0, eslint clean (rail dir + books-chem), bun test src/lib
+    books-chem 30/30 (batch dual-run failures PRE-EXISTING — stashed run
+    reproduces 5 fail on base; api.v2-surface.test.ts documents standalone).
+base:
+  repo: "syllabai-v2 @ t-book-004/rail-widgets (stacked on t-book-003/rail-shell)"
+basis: "ADR-BOOK-0001; PLAN-4CH1-v1.1 §8 T-BOOK-004 row; BOOK-PACK-SPEC §4; contracts book.block/1 (frozen)"
+scope:
+  allowed:
+    - "apps/hub/src/components/books/rail/**"
+    - "apps/hub/src/components/books/rail/widgets/**"
+    - ".syllabai/tasks/T-BOOK-004-block-renderer-widgets.yaml"
+    - ".syllabai/worklog.md (append only)"
+  forbidden:
+    - "packages/contracts/** (payload evolution = the versioned lint/contracts lane, envelope frozen)"
+    - "apps/api/** (no attempts writes from widgets)"
+    - "PdfPane internals (handle consumers only)"

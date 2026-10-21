@@ -1,39 +1,38 @@
 "use client";
 
 /**
- * T-BOOK-003 — the RAIL SHELL: the interactive layer beside the page-true
- * PDF pane (ADR-BOOK-0001 §5 "rail, not rewrite" — the 133c viewer laws
- * stand; this component ADDS a column, it never reflows the book).
+ * T-BOOK-003/004 — the RAIL SHELL: the interactive layer beside the
+ * page-true PDF pane (ADR-BOOK-0001 §5 "rail, not rewrite" — the 133c
+ * viewer laws stand; this component ADDS a column, it never reflows the
+ * book).
  *
  * Laws this component implements:
  *  - Two-pane layout on desktop (PDF left, rail right); on mobile the rail
  *    collapses into an accordion under the pane (plan §8 T-BOOK-003 row).
+ *    ONE stream instance swaps between the two via classes — the DOM is
+ *    never duplicated, so widget state cannot fork.
  *  - Honest presence: this component only MOUNTS when a VALIDATED pack
  *    exists (the server page's fetch returned non-empty) — a chapter without
- *    a flipped pack renders the unchanged 133c page, byte-for-byte (the ADR
- *    §3 serving law; the shell is never a facade over emptiness).
+ *    a flipped pack renders the unchanged 133c page, byte-for-byte.
  *  - Page-true anchoring: every block's pdfPageAnchor jump uses the
- *    PdfPaneHandle.scrollToPage imperative (the pane's own question-jump
- *    law) — "see p.42" precision, never a re-rendered page image.
+ *    PdfPaneHandle.scrollToPage imperative — "see p.42" precision.
  *  - Progress = coverage, not mastery (ADR §8): the ONLY persisted signal is
  *    the rail scroll percentage + last block reached, PUT (debounced) to the
  *    hub proxy → api chapter_progress. Signed-out (401) silently skips
- *    persistence — the rail stays fully usable; progress is a coverage
- *    signal, not a gate, and an anonymous reader is never nagged.
- *  - Block views (r0): prose/figure/callout render their full content; the
- *    interactive widget types render their honest card with the anchor —
- *    the full players land with the widget lanes (T-BOOK-004..006) behind
- *    this same envelope.
+ *    persistence — the rail stays fully usable.
+ *  - Block rendering delegated to BlockRenderer (T-BOOK-004/005/006 widget
+ *    lanes); the checkSource data lane arrives with T-BOOK-008.
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import type { RailBlock } from "@/lib/books-rail";
 
+import { BlockRenderer, type BlockRendererProps } from "./block-renderer";
 import { PdfPane, type PdfPaneHandle } from "@/components/pastpapers/pdf-pane";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Progress } from "@/components/ui/progress";
-import { ChevronDown, FlaskConical, ExternalLink, MapPin } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 export interface RailPaneProps {
   url: string;
@@ -49,6 +48,8 @@ interface RailWorkspaceProps {
   chapterTitle: string;
   blocks: RailBlock[];
   pane: RailPaneProps;
+  /** T-BOOK-008 wiring: the bank-backed check source (load + submit). */
+  checkSource?: BlockRendererProps["checkSource"];
 }
 
 // ── progress plumbing ────────────────────────────────────────────────────────
@@ -112,158 +113,9 @@ function useChapterProgress(documentId: string, chapterKey: string) {
   return { initialPct, initialOrd, put };
 }
 
-// ── block views (r0 — full widget players land with T-BOOK-004..006) ────────
-
-const BLOCK_TYPE_LABEL: Record<RailBlock["type"], string> = {
-  prose: "Read",
-  figure: "Figure",
-  callout: "Examiner note",
-  "mcq-embed": "Check yourself",
-  "sort-match": "Sort & match",
-  "drag-label": "Label the diagram",
-  "table-fill": "Fill the table",
-  "num-stepper": "Step through",
-  "eq-builder": "Build the equation",
-  "sim-embed": "Simulation",
-  "media-embed": "Watch",
-};
-
-const INTERACTIVE_TYPES: ReadonlySet<RailBlock["type"]> = new Set([
-  "mcq-embed",
-  "sort-match",
-  "drag-label",
-  "table-fill",
-  "num-stepper",
-  "eq-builder",
-]);
-
-function str(v: unknown): string | null {
-  return typeof v === "string" && v.trim() !== "" ? v : null;
-}
-
-function BlockView({
-  block,
-  onJump,
-}: {
-  block: RailBlock;
-  onJump: (page: number) => void;
-}) {
-  const { content, type } = block;
-  const anchor = block.pdfPageAnchor;
-
-  const jumpButton = anchor != null && (
-    <Button
-      variant="outline"
-      size="sm"
-      className="h-7 gap-1 px-2 text-xs"
-      onClick={() => onJump(anchor)}
-      aria-label={`Show page ${anchor} in the book pane`}
-    >
-      <MapPin className="h-3.5 w-3.5" aria-hidden />
-      See p.{anchor}
-    </Button>
-  );
-
-  if (type === "prose") {
-    const text = str(content.text);
-    if (!text) return null; // a VALIDATED block never ships empty — belt and braces
-    return (
-      <div className="rounded-lg border bg-card p-3 text-sm leading-relaxed" data-ord={block.ord}>
-        <BlockHeader block={block} />
-        <p className="whitespace-pre-line">{text}</p>
-        {jumpButton && <div className="mt-2">{jumpButton}</div>}
-      </div>
-    );
-  }
-
-  if (type === "callout") {
-    const body = str(content.body) ?? str(content.text);
-    if (!body) return null;
-    return (
-      <div
-        className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm leading-relaxed dark:border-amber-900 dark:bg-amber-950/40"
-        data-ord={block.ord}
-      >
-        <BlockHeader block={block} />
-        <p className="whitespace-pre-line">{body}</p>
-        {jumpButton && <div className="mt-2">{jumpButton}</div>}
-      </div>
-    );
-  }
-
-  if (type === "figure") {
-    const caption = str(content.caption);
-    return (
-      <div className="rounded-lg border bg-card p-3 text-sm" data-ord={block.ord}>
-        <BlockHeader block={block} />
-        <p className="text-muted-foreground">
-          Page-true figure region in the book pane{caption ? ` — ${caption}` : ""}.
-        </p>
-        {jumpButton && <div className="mt-2">{jumpButton}</div>}
-      </div>
-    );
-  }
-
-  if (type === "sim-embed" || type === "media-embed") {
-    const title = str(content.title) ?? "Interactive resource";
-    const fallbackUrl = str(content.fallbackUrl) ?? str(content.url);
-    return (
-      <div className="rounded-lg border bg-card p-3 text-sm" data-ord={block.ord}>
-        <BlockHeader block={block} />
-        <p className="font-medium leading-snug">{title}</p>
-        {type === "sim-embed" && (
-          <p className="mt-1 text-xs text-muted-foreground">
-            PhET Interactive Simulations · CC-BY-4.0
-          </p>
-        )}
-        {fallbackUrl && (
-          <Button asChild variant="outline" size="sm" className="mt-2 h-7 gap-1 px-2 text-xs">
-            <a href={fallbackUrl} target="_blank" rel="noopener noreferrer">
-              <ExternalLink className="h-3.5 w-3.5" aria-hidden />
-              {type === "sim-embed" ? "Open the simulation" : "Open the resource"}
-            </a>
-          </Button>
-        )}
-      </div>
-    );
-  }
-
-  if (INTERACTIVE_TYPES.has(type)) {
-    // r0 shell: the interactive player lands with the widget lanes — the
-    // honest card names the activity and anchors it; it never PRETENDS to
-    // be playable.
-    return (
-      <div className="rounded-lg border border-dashed bg-muted/40 p-3 text-sm" data-ord={block.ord}>
-        <BlockHeader block={block} />
-        <p className="flex items-center gap-1.5 font-medium leading-snug">
-          <FlaskConical className="h-4 w-4 text-muted-foreground" aria-hidden />
-          {BLOCK_TYPE_LABEL[type]}
-        </p>
-        <p className="mt-1 text-xs text-muted-foreground">
-          Interactive practice for this chapter{anchor != null ? ` (around p.${anchor})` : ""}.
-        </p>
-        {jumpButton && <div className="mt-2">{jumpButton}</div>}
-      </div>
-    );
-  }
-
-  return null; // unreachable: the mirror enum is closed
-}
-
-function BlockHeader({ block }: { block: RailBlock }) {
-  return (
-    <p className="mb-1 flex items-center gap-2 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
-      <span>{BLOCK_TYPE_LABEL[block.type]}</span>
-      <span className="text-[10px] font-normal normal-case opacity-60">
-        block {block.ord}
-      </span>
-    </p>
-  );
-}
-
 // ── the shell ────────────────────────────────────────────────────────────────
 
-export function RailWorkspace({ documentId, chapterKey, chapterTitle, blocks, pane }: RailWorkspaceProps) {
+export function RailWorkspace({ documentId, chapterKey, chapterTitle, blocks, pane, checkSource }: RailWorkspaceProps) {
   const paneRef = useRef<PdfPaneHandle | null>(null);
   const streamRef = useRef<HTMLDivElement | null>(null);
   const lastOrdRef = useRef<number | null>(null);
@@ -276,13 +128,10 @@ export function RailWorkspace({ documentId, chapterKey, chapterTitle, blocks, pa
     paneRef.current?.scrollToPage(page);
   }, []);
 
-  const scrollToOrd = useCallback(
-    (ord: number) => {
-      const el = streamRef.current?.querySelector(`[data-ord="${ord}"]`);
-      el?.scrollIntoView({ behavior: "smooth", block: "start" });
-    },
-    [],
-  );
+  const scrollToOrd = useCallback((ord: number) => {
+    const el = streamRef.current?.querySelector(`[data-ord="${ord}"]`);
+    el?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, []);
 
   // rail scroll % + last visible ord → the ONE persisted user signal
   const onStreamScroll = useCallback(() => {
@@ -325,7 +174,7 @@ export function RailWorkspace({ documentId, chapterKey, chapterTitle, blocks, pa
 
   // ONE stream instance — the aside node swaps between the desktop rail
   // column (border-left) and the mobile accordion (below the pane) purely
-  // via classes; duplicating the DOM would fork widget state at T-BOOK-004.
+  // via classes; duplicating the DOM would fork widget state.
   return (
     <div className="flex min-h-0 flex-1 flex-col md:flex-row md:gap-4">
       {/* the page-true book pane — the 133c mount, untouched */}
@@ -381,7 +230,9 @@ export function RailWorkspace({ documentId, chapterKey, chapterTitle, blocks, pa
               aria-label={`Interactive rail for ${chapterTitle}`}
             >
               {ordered.map((b) => (
-                <BlockView key={b.id} block={b} onJump={jumpToPage} />
+                <div key={b.id} data-ord={b.ord}>
+                  <BlockRenderer block={b} onJump={jumpToPage} checkSource={checkSource} />
+                </div>
               ))}
               <p className="pb-2 pt-1 text-center text-[11px] text-muted-foreground">
                 End of the interactive rail — keep reading in the book pane.

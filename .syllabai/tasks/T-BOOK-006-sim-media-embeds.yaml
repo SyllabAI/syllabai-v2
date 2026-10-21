@@ -1,0 +1,37 @@
+version: 1
+task:
+  id: T-BOOK-006
+  title: "sim-embed (PhET CC-BY consent-to-load iframe) + media-embed license-ref cards"
+  owner: "main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, trace 1a15de049a869781)"
+  status: IN_REVIEW
+  priority: P2
+  band: T-BOOK (interactive books)
+  wave: books-phase-A
+  deps: [T-BOOK-004]
+  execution_record: >
+    Executed per PLAN-4CH1 §8 T-BOOK-006 row + the licensing law (ADR-BOOK-
+    0001 §4; contracts sim-embed payload: provider=phet, attribution
+    CC-BY-4.0, fallbackUrl MANDATORY). sim-embed-block: consent-to-load
+    (the iframe mounts on the learner's Start click — no third-party frame
+    renders until asked; CSP-friendly), phet.colorado.edu/sims/html/<simId>/
+    latest/<simId>_en.html, sandbox="allow-scripts allow-same-origin
+    allow-popups", lazy, referrerPolicy no-referrer, aspect-video, the
+    fallback link ALWAYS visible (contract-mandated), attribution in-card.
+    media-embed-block: poster + link card ONLY (no third-party bytes in the
+    rail), licenseRef displayed in-card; a missing licenseRef renders NULL
+    (honest-empty — the contract says no licensing row, no card). Per-sim
+    availability pinned per-pack at authoring (T-BOOK-010 carries the sim
+    ids of record).
+    PROOF: hub tsc 0; eslint clean.
+base:
+  repo: "syllabai-v2 @ t-book-004/rail-widgets (stacked)"
+basis: "ADR-BOOK-0001 §4 licensing; contracts bookBlockPayloadLaws sim-embed/media-embed; PLAN-4CH1 §3.2 (Kognity-parity leapfrog: no sims in Kognity science books)"
+scope:
+  allowed:
+    - "apps/hub/src/components/books/rail/widgets/sim-embed-block.tsx"
+    - "apps/hub/src/components/books/rail/widgets/media-embed-block.tsx"
+    - ".syllabai/tasks/T-BOOK-006-sim-media-embeds.yaml"
+    - ".syllabai/worklog.md (append only)"
+  forbidden:
+    - "any non-PhET embed provider (pilot law)"
+    - "media BYTES in this repo (L3 posture: reference, never host)"

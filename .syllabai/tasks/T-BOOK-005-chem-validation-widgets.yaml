@@ -1,0 +1,50 @@
+version: 1
+task:
+  id: T-BOOK-005
+  title: "eq-builder (balance/state/charge verdicts) + chemistry label-packs carrier + num-stepper (unit/sig-fig) validation"
+  owner: "main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, trace 1a15de049a869781)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-BOOK (interactive books)
+  wave: books-phase-A
+  deps: [T-BOOK-004]
+  execution_record: >
+    Executed per PLAN-4CH1 §8 T-BOOK-005 row (the chem carrier widgets) +
+    BOOK-PACK-SPEC §4 (eq-builder validation in the lint pack; the widget
+    verifies the LEARNER's assembly, never rewrites authored chemistry).
+    lib/books-chem.ts (pure, zero-dep, hub-local) IS the wall the verdicts
+    render: parseSpeciesToken (charge-tail "Cu2+" / magnitude "SO4 2-" /
+    bare-sign "Cl-" / electrons "2e-" as empty-tally species / state symbols
+    / coefficients / unicode de-mapping — ¹²³ live OUTSIDE the ⁰-⁹ run, the
+    Latin-1 trap), countAtoms (one-level group expansion: Ca(NO3)2,
+    Al2(SO4)3), splitSpecies (THE LAW: a "+" is a separator iff preceded by
+    whitespace/start — String.split("+") is FORBIDDEN, it shreds ions;
+    compact free-typed forms parse-FAIL honestly rather than silently
+    mis-charge — the token bank assembles with " + "), atomBalance /
+    chargeBalance / statesComplete / verdictFor (the four-chip verdict),
+    normalizeEquation (arrow + separator canonicalisation for target match),
+    sigFigs (leading zeros never; decimal trailing zeros do; documented
+    integer convention), checkNumeric (format → value → unit → sigfigs,
+    law-targeted feedback — the CONCEPT fails first, never the keypress),
+    matchesAny (the ms_accepts law). Widgets: num-stepper-block (linear
+    mastery ladder — active step = first not-correct; Enter checks; hints on
+    demand; unit alternates shown), eq-builder-block (token-bank assembly
+    into LHS/RHS slots joined " + "; multiplicity-aware bank exhaustion;
+    per-law verdict lines atoms/charges/states/target). 30 unit tests, real
+    4CH1 content of record (mole ladder Aᵣ Mg 24.3, Cu²⁺/Mg half-equations,
+    ⇌ class, 0.00240 sig-figs).
+    PROOF: books-chem.test.ts 30/30; hub tsc 0; eslint clean.
+base:
+  repo: "syllabai-v2 @ t-book-004/rail-widgets (stacked)"
+basis: "PLAN-4CH1-v1.1 §8 T-BOOK-005; BOOK-PACK-SPEC §4; contracts book.block/1 payload laws (eq-builder target, num-stepper steps)"
+scope:
+  allowed:
+    - "apps/hub/src/lib/books-chem.ts (new)"
+    - "apps/hub/src/lib/books-chem.test.ts (new)"
+    - "apps/hub/src/components/books/rail/widgets/num-stepper-block.tsx"
+    - "apps/hub/src/components/books/rail/widgets/eq-builder-block.tsx"
+    - ".syllabai/tasks/T-BOOK-005-chem-validation-widgets.yaml"
+    - ".syllabai/worklog.md (append only)"
+  forbidden:
+    - "packages/** (pure hub-local validation; contracts frozen)"
+    - "any authored chemistry rewrite — the pack of record is the law"
