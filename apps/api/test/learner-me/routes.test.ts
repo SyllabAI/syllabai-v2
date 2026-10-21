@@ -550,7 +550,7 @@ describe("GET/PUT /api/v1/learners/me/courses — T-TEACH-001 my courses", () =>
     const routes: Route[] = [
       ...routesWith({}),
       { match: ENROLMENTS_SELECT, rows: [{ id: "e1", course_slug: "igcse-chemistry-19" }, { id: "e2", course_slug: "igcse-physics-25" }] },
-      { match: ENROLMENT_DELETE, rowsFor: () => { deleteRan = true; return []; } },
+      { match: ENROLMENT_DELETE, rows: [], rowsFor: () => { deleteRan = true; return []; } },
       { match: ENROLMENT_INSERT, rows: [] },
       { match: MY_COURSES_SELECT, rows: [{ course_slug: "igcse-chemistry-19", created_at: "2026-10-01T08:00:00Z" }] },
     ];
