@@ -938,6 +938,11 @@ export function buildClaService(deps: ClaServiceDeps) {
           activePaperLabel: null, // the CLA surface pins no paper
           quizScaffold: null, // run-015 #6c rides the tutor session pin — the CLA surface scaffolds no quiz
           courseCode: null, // T-MIG-135c: the CLA surface carries no tutor scope — its own prompts, not the notation variant
+          // v14 (the DC-2 supersession): the tier IS the of-record leakage
+          // predicate (schemePointEvidenceAllowed, T-MIG-067) — the prompt
+          // tier and the evidence gate agree by construction (the spec's
+          // consistency requirement, docs/DC2-V14-SUPERSESSION-PLAN.md §4.1)
+          disclosureTier: schemePointEvidenceAllowed(context, mode) ? 2 : 1,
         };
         generated = await deps.generator.generate(question.trim(), [], tutorContext);
       }

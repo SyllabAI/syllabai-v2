@@ -370,6 +370,12 @@ export interface TutorContext {
    *  notation law (chemistry mhchem byte-verbatim; everything else the
    *  plain-LaTeX law). */
   courseCode: string | null;
+  /** v14 (the DC-2 supersession): the COMPUTED disclosure tier (1 = hint
+   *  level — the default posture; 2 = explicit, the DISCLOSURE TIER 2
+   *  block). The tutor surface holds tier 1 until DC-1's part resolution
+   *  (prepare step 2.8 + markContext); the CLA surface computes it from
+   *  the of-record leakage predicate (cla/leakage-policy.ts, T-MIG-067). */
+  disclosureTier?: 1 | 2;
 }
 
 /** Java String.format(Locale.ROOT, "%.2f", v) posture for the briefs. */
@@ -400,6 +406,9 @@ export interface AssembleInputs {
    *  the per-subject notation law selector (optional for call-site
    *  compatibility; absent → the general law). */
   courseCode?: string | null;
+  /** v14 (the DC-2 supersession): the computed disclosure tier (absent =
+   *  the tutor surface's tier-1 default posture until DC-1). */
+  disclosureTier?: 1 | 2;
   now: Date;
 }
 
@@ -446,6 +455,10 @@ export function assembleTutorContext(inputs: AssembleInputs): TutorContext {
     activePaperLabel: inputs.activePaperLabel ?? null,
     quizScaffold: inputs.quizScaffold ?? null,
     courseCode: inputs.courseCode ?? null,
+    // v14 (the DC-2 supersession): the tutor surface's tier-1 default —
+    // no part-reference resolution exists on this pipeline until DC-1's
+    // prepare step 2.8 lights the marked-part path up
+    disclosureTier: inputs.disclosureTier ?? 1,
   };
 }
 
