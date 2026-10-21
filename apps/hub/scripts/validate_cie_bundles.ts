@@ -116,7 +116,8 @@ const SEVEN = ["manifest.json", "curriculum.json", "concept-graph.json", "notes.
 // (Edexcel) — zero CIE corpus contact; the CIE input delta is spec-links/
 // (the T-SPECS-CIE-TRANCHE1-T2NEAR-1 verdict round, PR SyllabAI/syllabai-resources#22).
 const CIE_PIN_PRIOR = "aa0b4de1b732738b4d02dabdd02d9ead85522907"; // tranche-1 pin — still of-record for the 32 CIE bundles whose sidecars COMPLETE-1 did not touch (per-course pin movement is the consume engine's own semantics)
-const CIE_PIN = "fc6bf29cea9d3e56020962355b4c0f63aa05535d"; // COMPLETE-1 consume r0 (trace 1a15f79acff5346d): pin advanced aa0b4de1 -> fc6bf29c — the upstream delta is spec-links/ (the T-SPECS-CIE-COMPLETE-1 note-level join completion, resources fc6bf29c) + sibling lanes (T-SPEC-STAGE2-1 maps, T-PARSE-4BI1-1-R1); spines tree-unchanged; the pin moves WITH the of-record (fa7ede6/0c8892d precedent)
+const CIE_PIN_PRIOR_2 = "fc6bf29cea9d3e56020962355b4c0f63aa05535d"; // COMPLETE-1 consume r0 pin (trace 1a15f79acff5346d) — superseded fleet-wide by the tranche-2 consume (all 44 re-keyed)
+const CIE_PIN = "bb15452701110c27acf59637db059b6053e50b1e"; // TRANCHE-2-R1 consume (trace 1a15f8160e677949): pin advanced fc6bf29c -> bb15452 — the upstream delta is spec-links/ (the T-SPECS-CIE-TRANCHE2-R1 residual T2 census promotion, 423 entries -> V6, PR SyllabAI/syllabai-resources#30, merged bb15452; the fleet T2 census byte-identical across the mid-lane rebase); spines tree-unchanged; the census re-pin EXACT 6,715/5,696/9,276 UNCHANGED; the pin moves WITH the of-record (fa7ede6/0c8892d precedent)
 function checkRealBundle(slug: string, code: string): void {
   const dir = path.join(CONTENT, slug);
   const missing = SEVEN.filter((f) => !existsSync(path.join(dir, f)));
@@ -130,7 +131,7 @@ function checkRealBundle(slug: string, code: string): void {
   check(`bundle ${slug}: real corpus bundle (notes non-empty)`, (manifest.counts?.notes ?? 0) > 0,
     JSON.stringify(manifest.counts));
   check(`bundle ${slug}: official-spine tree + resourcesSha pin + artifact links`,
-    manifest.treeKind === "official-spine" && manifest.officialSpine?.resourcesSha === CIE_PIN || manifest.officialSpine?.resourcesSha === CIE_PIN_PRIOR
+    manifest.treeKind === "official-spine" && manifest.officialSpine?.resourcesSha === CIE_PIN || manifest.officialSpine?.resourcesSha === CIE_PIN_PRIOR || manifest.officialSpine?.resourcesSha === CIE_PIN_PRIOR_2
     && manifest.officialSpine?.spine === `spines/${slug}.json`
     && manifest.officialSpine?.attachmentMap === `content-maps/${slug}.json`,
     `${manifest.treeKind}/${String(manifest.officialSpine?.resourcesSha ?? "").slice(0, 7)}`);
