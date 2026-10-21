@@ -10846,3 +10846,19 @@ Work Log:
 
 Stage Summary:
 - MS NOTATION CLEANUP CLOSED of record: the learner-facing mark schemes no longer carry parse-lane debug meta on either serving surface (bundle 810 + DB 674 = the full footered population, reconciled to the question by question). The flags' honest-uncertainty duty now rides the paper-level coverage gate + this record, matching SME-parity presentation. Standing residuals (filed, operator-gated): 2019-06-4mb1-02 glyph/FFFD extraction damage (OCR-lane repair), the 57 badSum restore-vs-ratify ruling, 61 missing-MS parts, commandWord 45%.
+
+---
+Task ID: Task-70 (trace 1a15e490b7421729 — "review all the content in syllabai, cie edexcel ... cie history is missing some revision notes. Audit thoroughly")
+Agent: r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)
+Task: thorough organization audit of all SME revision notes + exam questions across CIE and Edexcel, with the operator's CIE-history complaint root-caused.
+
+Work Log:
+- READ-ONLY audit (zero-DB, zero-LLM, GET-only live probes): full 94-lane bundle census via ls-tree (sparse blobless posture), 44 CIE content-maps swept, 44 CIE spines swept, upstream resources census at origin/main 67a173b9, live hub probes 200-only.
+- Edexcel axis: CLEAN — 49 lanes notes 3,382/3,743 (90.3%) / parts 26,875/27,865 (96.4%) coded per _report.json; maths-b reference lane intact post-restore + 1fd18858 notation cleanup (65/1249/2392 preserved).
+- CIE fleet: the anchoring debt ALREADY of record (census: 16,335 verdict-debt + 155 T2_near + 1,203 SME-coverage); this audit confirms the same shape on notes/flashcards and adds the NEW finding.
+- NEW FINDING (history-18 spine semantically misgrouped): 21 TOPIC + 21 SUBTOPIC + 371 specs at 1:1, 17/21 titles carry leaked numbering prefixes, Core Option B topics 1/2/3/5/6 ABSENT as standalone topics (all 8 League-of-Nations spec points under TS4 "civil war in the United States"; Weimar-recovery specs under TS13 "live in Nazi Germany"; boom/crash specs under TS19 "New Deal"), topic order scrambled. Passes validate_spines.py 93/93 — STRUCTURAL validation only, semantically wrong. Same signature on 4 sibling prose-structured syllabi (english-language-20/25, english-literature-21, general-paper-21; near-empty banks so less visible).
+- The operator's complaint CONFIRMED with three stacked causes: (A) upstream SME coverage gap — resources carries EXACTLY 87 history notes (4 sections, SaveMyExams never covered Option A/WWI; import faithful 87==87, pin 0fe5f77 verified); (B) the spine misgrouping (above); (C) the anchoring debt of record (maps: notes 24/87, parts 57/321 = the census's 264, flashcards 76/1050; live: 63 notes unmapped, 18/18 EQ sets in the unplaced bucket while the header claims "organised by topic").
+- Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-history-organization-audit-run-001-r0.json (repair shape operator-gated: spine rebuild for the prose-structured class first, census tranches unchanged, fuzzy-match minority folds into verdict review, Option A gap is an SME-source operator decision).
+
+Stage Summary:
+- Edexcel organized correctly of record; CIE history is the operator-visible worst case with a NEW uncaptured defect class (spine semantic misgrouping on prose-structured syllabi — the phase-1 gauntlet cannot see it). No content moved; findings pinned (v2 b05e642e/1fd18858, resources 67a173b9). Awaiting operator direction on the spine rebuild vs the census tranches.
