@@ -81,6 +81,7 @@ import {
   type MarkingCandidateGenerator,
   type MarkingContext,
   type SmartMarkResultRow,
+  priorMarkCounts,
 } from "../smartmark";
 
 // ── frozen constants (TeacherMarkingController :89-91, QueueService :56/:95-97) ──
@@ -677,14 +678,19 @@ export class TeacherSmartMarkService {
     const decision: Decision = await this.pipeline.run(context);
 
     const resultId = this.clock.newId();
+    // DC-3: the teacher queue's AI mark is a mark of the part too — the
+    // ordinal counts it at THIS insertion site (the spec's "counted there,
+    // not inferred" applies to every mark path; prereg R11).
+    const priors = await priorMarkCounts(this.sql, answer.learner_id, attemptId, scheme.id);
+    const attemptOrdinal = (priors.get(answer.question_part_id) ?? 0) + 1;
     await this.sql`
       insert into smart_mark_results (id, answer_id, pipeline_version, model_id,
         marks_awarded, confidence, validation_passed, breakdown, failure_reason,
-        mark_scheme_id, scheme_validation_state, raw_output, created_at)
+        mark_scheme_id, scheme_validation_state, raw_output, created_at, attempt_ordinal)
       values (${resultId}, ${answer.id}, ${PIPELINE_VERSION}, ${decision.candidate?.modelId ?? null},
         ${decision.marksAwarded}, ${decision.candidate?.confidence ?? null}, ${decision.accepted},
         ${JSON.stringify(decision.breakdown)}, ${decision.failureReason}, ${scheme.id},
-        ${scheme.validation_state}, ${decision.candidate?.rawOutput ?? null}, ${this.clock.now().toISOString()})
+        ${scheme.validation_state}, ${decision.candidate?.rawOutput ?? null}, ${this.clock.now().toISOString()}, ${attemptOrdinal})
     `;
     const resultRow: SmartMarkResultRow = {
       id: resultId,
@@ -695,6 +701,7 @@ export class TeacherSmartMarkService {
       validation_passed: decision.accepted,
       breakdown: decision.breakdown,
       failure_reason: decision.failureReason,
+      attempt_ordinal: attemptOrdinal,
     };
 
     if (decision.accepted) {
@@ -755,6 +762,7 @@ export class TeacherSmartMarkService {
       validation_passed: false,
       breakdown: [],
       failure_reason: "SCHEME_NOT_VALIDATED",
+      attempt_ordinal: null, // DC-3: a refusal is not a mark — no ordinal (prereg R11)
     };
   }
 

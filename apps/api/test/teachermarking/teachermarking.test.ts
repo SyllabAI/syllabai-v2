@@ -191,6 +191,9 @@ function markAnswerRoutes(overrides: {
       rows: [{ id: SCHEME_ID, validation_state: "VALIDATED" }],
     },
     { match: /from mark_points/, rows: POINT_ROWS },
+    // DC-3 prior-mark law: the teacher queue's mark path stamps the ordinal
+    // too (prereg R11) — zero priors keeps the baseline byte-identical.
+    { match: /as part_id, count\(r\.id\)::int as prior from answers pa/, rows: [] },
     { match: /insert into smart_mark_results/, rows: [] },
     { match: /update answers set/, rows: [] },
     { match: /update attempts set marking_state/, rows: [] },

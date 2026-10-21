@@ -244,6 +244,7 @@ test("smart-mark tail serves the TeacherViews.SmartMarkView envelope (B1-DEFECT-
           validation_passed: false,
           breakdown: [],
           failure_reason: "SCHEME_NOT_VALIDATED",
+          attempt_ordinal: null, // DC-3: refusal rows are not marks — no ordinal
         }),
       },
     },

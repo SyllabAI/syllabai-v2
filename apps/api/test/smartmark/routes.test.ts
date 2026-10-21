@@ -82,6 +82,9 @@ function baseRoutes(): Route[] {
     { match: KAPPA_ALL, rows: [] },
     { match: KAPPA_PAPER, rows: [{ passed: true }], rowsFor: (p) => (p[1] === PAPER_ID ? [{ passed: true }] : []) },
     { match: RESULT_INSERT, rows: [] },
+    // DC-3 prior-mark law (one shared query: the engine's ordinal count + the
+    // gate's entitlement read) — zero priors keeps the baseline byte-identical.
+    { match: /as part_id, count\(r\.id\)::int as prior from answers pa/, rows: [] },
     { match: RESULT_LATEST, rows: [{ id: "bb000000-0000-4000-8000-000000000001", answer_id: ANSWER_A, model_id: "glm-4.6", marks_awarded: 2, confidence: 0.9, validation_passed: true, breakdown: [], failure_reason: null }] },
     { match: ATTEMPT_SMART_UPDATE, rows: [] },
     { match: ATTEMPT_TOTAL_UPDATE, rows: [] },

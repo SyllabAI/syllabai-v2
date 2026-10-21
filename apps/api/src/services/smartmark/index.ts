@@ -34,6 +34,12 @@
  */
 import type { SqlFn } from "../assessment/sql";
 import {
+  MARK_ENTITLEMENT_POLICY,
+  entitlementRefusalDetail,
+  learnerMarkTier,
+  type MarkEntitlementTier,
+} from "./entitlement";
+import {
   BadRequestError,
   ConflictError,
   NotFoundError,
@@ -409,6 +415,10 @@ export interface SmartMarkResultRow {
   validation_passed: boolean;
   breakdown: DecisionBreakdownEntry[] | null;
   failure_reason: string | null;
+  /** DC-3: the AI-mark ordinal of this part under THIS scheme revision
+   *  (learner, part, mark_scheme_id), counted at the single markAttempt path
+   *  -- never inferred (spec §3.3). NULL only on refusal rows (no mark). */
+  attempt_ordinal: number | null;
 }
 
 /** The LLM prose seam for the two feedback actions (ephemeral, never stored). */
@@ -451,6 +461,35 @@ interface AttemptLockRow {
 }
 
 const SETTABLE_STATES = new Set(["PENDING", "SMART_MARKED"]);
+
+/**
+ * DC-3 prior-mark law (spec §3.3): for each of THIS attempt's parts, how many
+ * AI marks the learner already carries under THIS scheme revision (the
+ * mark_schemes row is the revision of record -- a version_label bump starts a
+ * fresh sequence, acceptance (b) by construction). ONE shared query for the
+ * engine (ordinal counting) and the gate (entitlement reading) -- counted at
+ * the single markAttempt path, never inferred.
+ */
+export async function priorMarkCounts(
+  sql: SqlFn,
+  learnerId: string,
+  attemptId: string,
+  schemeId: string,
+): Promise<Map<string, number>> {
+  const rows = (await sql`
+    select pa.question_part_id as part_id, count(r.id)::int as prior
+    from answers pa
+    join answers a on a.question_part_id = pa.question_part_id
+    join attempts at2 on at2.id = a.attempt_id
+    join smart_mark_results r on r.answer_id = a.id
+    where pa.attempt_id = ${attemptId}
+      and at2.learner_id = ${learnerId}
+      and r.mark_scheme_id = ${schemeId}
+      and r.failure_reason is distinct from ${"SCHEME_NOT_VALIDATED"}
+    group by pa.question_part_id
+  `) as unknown as Array<{ part_id: string; prior: number }>;
+  return new Map(rows.map((row) => [row.part_id, row.prior]));
+}
 export const PIPELINE_VERSION = "1.3.0";
 
 /**
@@ -593,6 +632,11 @@ export class SmartMarkService {
     `) as unknown as Array<Record<string, unknown>>;
     const points = pointRows.map(toMarkingPoint);
 
+    // DC-3: the ordinal is counted HERE at the single markAttempt path, under
+    // the attempt-row lock -- the prior marks per part under THIS scheme
+    // revision; this pass appends (spec §3.3: counted, not inferred).
+    const priors = await priorMarkCounts(this.sql, attempt.learner_id, attemptId, scheme.id);
+
     const contexts: MarkingContext[] = answers.map((answer) => ({
       answer: {
         id: answer.id,
@@ -619,14 +663,15 @@ export class SmartMarkService {
       const answer = answers[i]!;
       const decision = decisions[i]!;
       const resultId = this.clock.newId();
+      const attemptOrdinal = (priors.get(answer.question_part_id) ?? 0) + 1;
       await this.sql`
         insert into smart_mark_results (id, answer_id, pipeline_version, model_id,
           marks_awarded, confidence, validation_passed, breakdown, failure_reason,
-          mark_scheme_id, scheme_validation_state, raw_output, created_at)
+          mark_scheme_id, scheme_validation_state, raw_output, created_at, attempt_ordinal)
         values (${resultId}, ${answer.id}, ${PIPELINE_VERSION}, ${decision.candidate?.modelId ?? null},
           ${decision.marksAwarded}, ${decision.candidate?.confidence ?? null}, ${decision.accepted},
           ${JSON.stringify(decision.breakdown)}, ${decision.failureReason}, ${scheme.id},
-          ${scheme.validation_state}, ${decision.candidate?.rawOutput ?? null}, ${this.clock.now().toISOString()})
+          ${scheme.validation_state}, ${decision.candidate?.rawOutput ?? null}, ${this.clock.now().toISOString()}, ${attemptOrdinal})
       `;
       const resultRow: SmartMarkResultRow = {
         id: resultId,
@@ -637,6 +682,7 @@ export class SmartMarkService {
         validation_passed: decision.accepted,
         breakdown: decision.breakdown,
         failure_reason: decision.failureReason,
+        attempt_ordinal: attemptOrdinal,
       };
       if (decision.accepted) {
         await this.sql`
@@ -727,6 +773,7 @@ export class SmartMarkService {
       validation_passed: false,
       breakdown: [],
       failure_reason: "SCHEME_NOT_VALIDATED",
+      attempt_ordinal: null, // DC-3: a refusal is not a mark — no ordinal (prereg R11)
     };
   }
 }
@@ -743,6 +790,10 @@ export class StudentSmartMarkService {
     private readonly llm: FeedbackLlm,
     private readonly clock: SubmitClock,
     private readonly revealPolicy: RevealPolicy = "VALIDATED_ONLY",
+    /** DC-3: the entitlement tier source — `learnerMarkTier` of record; the
+     *  injectable seam is the future billing lane's swap point and makes the
+     *  spec's paid/trial acceptance legs testable through the real path. */
+    private readonly tierResolver: () => MarkEntitlementTier = learnerMarkTier,
   ) {}
 
   async smartMarkAttempt(learnerId: string, attemptId: string): Promise<AttemptSmartMarkView> {
@@ -756,6 +807,30 @@ export class StudentSmartMarkService {
     }
     const scheme = await this.resolveScheme(ctx.attempt.question_id);
     this.requireRevealableScheme(scheme);
+
+    // DC-3 gate: the entitlement policy read at the route's handler body
+    // (spec §3.3) -- meters only NEW marking work; viewing a past mark and
+    // the chat about it stay open (acceptance (c)). Free tier: every part of
+    // the attempt must carry fewer AI marks than the policy includes under
+    // THIS scheme revision; the one-pass engine is transactional, so a
+    // violation refuses the WHOLE ask with the spec's disclosure copy.
+    const tier = this.tierResolver();
+    const policy = MARK_ENTITLEMENT_POLICY[tier];
+    if (tier === "trial") {
+      // The trial meter's N + day-window are the spec's OPEN question (a):
+      // refused loudly rather than invented (prereg R4).
+      throw new ConflictError("entitlement_policy_pending_sign_off: the trial tier's re-mark meter requires product sign-off (spec §3.3 open question (a))");
+    }
+    if (!policy.unlimited) {
+      const priors = await priorMarkCounts(this.sql, learnerId, attemptId, scheme.id);
+      const metered = ctx.answers
+        .map((a) => ({ label: a.label, partId: a.question_part_id, prior: priors.get(a.question_part_id) ?? 0 }))
+        .filter((p) => p.prior + 1 > policy.includedMarksPerPartPerSchemeRevision)
+        .map(({ label, prior }) => ({ label, prior }));
+      if (metered.length > 0) {
+        throw new ConflictError(entitlementRefusalDetail(policy, metered));
+      }
+    }
 
     const authoritative = await this.smartMark.kappaGatePassed(ctx.attempt.exam_paper_id, ctx.attempt.question_id);
     // one batched pass: the SAME engine the teacher queue runs
