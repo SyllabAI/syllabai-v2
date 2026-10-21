@@ -25,6 +25,7 @@ import { fakeSql, type Route } from "../assessment/helpers";
 // ── fixtures (the service test's constants — same fixed-constant style) ─────
 
 const TEACHER = "aa000000-0000-4000-8000-000000000001";
+const OTHER_TEACHER = "aa000000-0000-4000-8000-000000000002";
 const STUDENT_1 = "bb000000-0000-4000-8000-000000000001";
 const CLASS_A = "cc000000-0000-4000-8000-000000000001";
 const ASG_A = "dd000000-0000-4000-8000-000000000001";
@@ -97,7 +98,8 @@ const cohortCountRoute = (n: number): Route => ({
 });
 
 const assignmentsListRoute = (rows: Array<Record<string, unknown>>): Route => ({
-  match: /from assignments order by created_at desc limit \?$/,
+  match:
+    /from assignments where teacher_id = \? ::uuid order by created_at desc limit \?$/,
   rows,
 });
 
@@ -383,6 +385,44 @@ describe("status/list/roster router laws", () => {
     const body = await res.json();
     expect(body.error).toBe("bad_request");
     expect(body.message).toBe("malformed request");
+  });
+
+  test("T-TEACH-006 through the router: foreign roster 403s verbatim (learner data)", async () => {
+    const { app } = makeApp(asTeacher, [
+      assignmentByIdParamRoute({
+        [ASG_A]: [assignmentRow({ teacher_id: OTHER_TEACHER })],
+      }),
+    ]);
+    const res = await app.request(`/api/v1/teacher/assignments/${ASG_A}`);
+    expect(res.status).toBe(403);
+    const body = await res.json();
+    expect(body.error).toBe("forbidden");
+    expect(body.message).toBe("this assignment belongs to another teacher");
+  });
+
+  test("T-TEACH-006 through the router: foreign status flip 403s and issues NO update", async () => {
+    const updates: string[] = [];
+    const { app } = makeApp(asTeacher, [
+      assignmentByIdParamRoute({
+        [ASG_A]: [assignmentRow({ teacher_id: OTHER_TEACHER })],
+      }),
+      {
+        match: /update assignments set status = \? where id = \? ::uuid$/,
+        rows: [],
+        rowsFor: (params) => {
+          updates.push(String(params[0]));
+          return [];
+        },
+      },
+    ]);
+    const res = await app.request(`/api/v1/teacher/assignments/${ASG_A}/status`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ status: "closed" }),
+    });
+    expect(res.status).toBe(403);
+    expect((await res.json()).message).toBe("this assignment belongs to another teacher");
+    expect(updates).toEqual([]); // the write never ran
   });
 
   test("list → 200 newest-first summaries (e03 shape)", async () => {

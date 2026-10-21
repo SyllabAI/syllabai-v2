@@ -33,6 +33,12 @@
  *
  * LLM seams: NONE — the assignments family touches no LLM path (§9; the
  * V49/V51 honesty law: workflow state only, never mastery, never AI).
+ *
+ * T-TEACH-006 (operator ruling on T-TEACH-005 F-1): the identity rides into
+ * the service on list/roster/setStatus — the ownership gate is service law
+ * (404 unknown verbatim; 403 "this assignment belongs to another teacher"
+ * via the existing ClassroomForbiddenError mapping). This is a deliberate
+ * divergence from frozen wire behavior, of record in the service header.
  */
 import { Hono, type Context } from "hono";
 import type { ZodError } from "zod";
@@ -208,29 +214,32 @@ export function createTeacherAssignmentsRouter(module: TeacherAssignmentsModule)
     return c.json(await module.createAssignment(auth.userId, parsed.data), 201);
   });
 
-  // GET / (:134-145) → 200 — newest-first LIMIT 50 + the computed stats
+  // GET / (:134-145) → 200 — newest-first LIMIT 50 + the computed stats;
+  // T-TEACH-006: the teacher's OWN newest 50 (the identity binds in the SQL)
   r.get("/", async (c) => {
-    getAuth(c)!;
-    return c.json(await module.listAssignments());
+    const auth = getAuth(c)!; // shell invariant: authenticated
+    return c.json(await module.listAssignments(auth.userId));
   });
 
-  // GET /:id (:151-183) → 200 — the roster view (states + the ordering law)
+  // GET /:id (:151-183) → 200 — the roster view (states + the ordering law);
+  // T-TEACH-006: owner-gated — another teacher's roster 403s (learner data)
   r.get("/:id", async (c) => {
-    getAuth(c)!;
+    const auth = getAuth(c)!; // shell invariant: authenticated
     const id = parseUuid(c.req.param("id"));
-    return c.json(await module.assignmentRoster(id));
+    return c.json(await module.assignmentRoster(auth.userId, id));
   });
 
   // POST /:id/status (:205-217) → 200 — the tolerant parse law is
-  // service-side ('status must be "open" or "closed": {raw}' verbatim)
+  // service-side ('status must be "open" or "closed": {raw}' verbatim);
+  // T-TEACH-006: the ownership gate runs BEFORE the write (400 → 404 → 403)
   r.post("/:id/status", async (c) => {
-    getAuth(c)!;
+    const auth = getAuth(c)!; // shell invariant: authenticated
     const id = parseUuid(c.req.param("id"));
     const raw = await readJsonBody(c);
     if (!raw.ok) return c.json(malformedBody(), 400);
     const parsed = assignmentStatusRequestSchema.safeParse(raw.value);
     if (!parsed.success) return bodyErrorResponse(c, parsed.error);
-    return c.json(await module.setAssignmentStatus(id, parsed.data.status));
+    return c.json(await module.setAssignmentStatus(auth.userId, id, parsed.data.status));
   });
 
   return r;
