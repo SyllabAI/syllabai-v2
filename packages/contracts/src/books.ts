@@ -124,7 +124,14 @@ export const specCodeRefSchema = z
     officialCode: z.string().min(1),
     officialId: z.string().optional(),
     tier: z.string().min(1),
-    score: z.number().optional(),
+    // T-BOOK-025: the F-BOOK-0003 r1 two-phase widened law's phase-2 binds
+    // are UNSCORED of record — method="widened" attaches a REVIEW bullet to a
+    // spine point with no phase-1 matcher score, and the jsonb of record
+    // serializes that absence as explicit null. null ≡ absent ≡ "unscored";
+    // the wall must not 500 the chapters route over an honest provenance
+    // marker (additive: no previously-valid payload is invalidated — the
+    // learner-me score shape set the .nullable().optional() precedent).
+    score: z.number().nullable().optional(),
     lineage: z.string().min(1),
     method: z.string().min(1),
   })

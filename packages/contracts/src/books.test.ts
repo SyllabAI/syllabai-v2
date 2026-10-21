@@ -121,6 +121,32 @@ describe("books — the spec-join reference (content-maps grammar)", () => {
       specCodeRefSchema.parse({ spineCode: "1.2", officialCode: "1.2" }),
     ).toThrow();
   });
+
+  test("T-BOOK-025: the widened binds are unscored — null ≡ absent (F-BOOK-0003 r1)", () => {
+    // the widened phase-2 attach carries NO matcher score; the jsonb of
+    // record serializes that absence as explicit null (the 4CH1 of-record
+    // rows carry exactly this shape on 11 refs, e.g. u4:c29) — the wall
+    // must accept it, never 500 the chapters route over it.
+    const widenedNull = specCodeRefSchema.parse({
+      spineCode: "4CH1-2.24",
+      officialCode: "2.24",
+      tier: "2",
+      score: null,
+      lineage: "chem_v3_u4_c29_pdf262_0157#b4",
+      method: "widened",
+    });
+    expect(widenedNull.method).toBe("widened");
+    expect(widenedNull.score).toBeNull();
+    // key absent stays the other honest unscored representation
+    const widenedAbsent = specCodeRefSchema.parse({
+      spineCode: "4CH1-2.25",
+      officialCode: "2.25",
+      tier: "2",
+      lineage: "chem_v3_u4_c29_pdf262_0157#b5",
+      method: "widened",
+    });
+    expect(widenedAbsent.score).toBeUndefined();
+  });
 });
 
 describe("books — the canonical TOC + the serving row", () => {

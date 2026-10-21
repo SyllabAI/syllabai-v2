@@ -42,7 +42,11 @@ const specCodeRefMirror = z
     officialCode: z.string().min(1),
     officialId: z.string().optional(),
     tier: z.string().min(1),
-    score: z.number().optional(),
+    // T-BOOK-025 — mirror of the contracts relax (SCHEMA MIRROR law:
+    // structural, never behavioral): the widened binds (method="widened",
+    // F-BOOK-0003 r1) are unscored of record and the jsonb serializes the
+    // absence as explicit null. null ≡ absent ≡ "unscored".
+    score: z.number().nullable().optional(),
     lineage: z.string().min(1),
     method: z.string().min(1),
   })
