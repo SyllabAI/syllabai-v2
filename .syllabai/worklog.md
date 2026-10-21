@@ -10609,3 +10609,18 @@ Work Log:
 
 Stage Summary:
 - THE PHASE-4 PROD-APPLY IS COMPLETE OF RECORD: the CIE fleet landed on production gated end-to-end — census pre-flight, 134c COW-proof, all-green admission, prod-apply, floors GREEN — nine runs of honest evidence, zero prod exposure to any defect. The A-path (ruling A) is discharged: identity-stable laws re-landed, gate trio re-run, cow+prod dispatched, COW-proof green, prod-apply complete — receipted end-to-end as ordered.
+
+---
+Task ID: 4MB1-QUALITY tb-band-probe-002-r0 (trace 1a15dad756e7911d, operator re-fire of "fire a quick test-builder probe against the live API to see band-aware assembly in action")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- Re-probe on fresh order; run-001 (trace 1a15c0822560c8c9) receipt already of record on this worklog. Same script r0_testbuilder_band_probe.mjs, ZERO code changes; run-001 transcript preserved locally as *_run001.json.
+- Fetch-first at open: remote main moved overnight (c1d123e cie-phase4 run-009 closure, PRs #239/#240/#241, ADR-037 papers into pilot bundle) — none touch the test-builder/qv plane.
+- 9/9 legs PASS in 19.5s (08:59:26Z-08:59:46Z): register/login/health/unauthed-401/root-only-empty; band-order-cap10 idsMatchSim TRUE (difficultySeq 3x10, nonDecreasing); wire-order-is-id-order-when-bands-flat TRUE; deterministic-rerun identical; band-spread-cap50 (50 q, totalMarks 207, coverage S3/S1/S6 = 271/250/187 == DB recon EXACT, hist {"3":50}); target-marks-25 (7 q, 25/25 marks, hist {"3":7}); malformed-400.
+- HEADLINE UNCHANGED (honest): wire qv difficulty hist on 4MB1-S3-_ = {"3":271} while questions.difficulty = {2:93,3:155,4:23} — db-apply-run-001 bands still NOT on the serving plane (question_versions all 3/DEFAULT); live assembly remains id-order within flat band 3. Band-aware MECHANICS proven EXACT, band-aware DATA still inert.
+- Cross-check vs run-001 census: identical (1,192 live maths-b q, 10 mapped nodes / 0 S-children, subtree 119) — no sibling lane moved the plane.
+- Fresh probe account + single-row TEACHER flip (DISCLOSED PROD WRITE, id+email scoped, verified); cleanup disabled 4 cumulative r0-tb-band-probe-* accounts; bearer/password/URI never printed; NEON_KEY inline-only; scrub-assert pass.
+
+Stage Summary:
+- Test-builder law-fidelity + determinism RE-PROVEN live (id-by-id on 3 assembly shapes); band-aware assembly still INERT for maths-b pending the run-001 operator decision: qv mirror lane (question_versions.difficulty = questions.difficulty on 1,192 current versions) OR reader-plane change in code. Probe accounts disabled; zero other prod writes.
