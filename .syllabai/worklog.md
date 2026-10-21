@@ -11783,3 +11783,24 @@ Stage Summary:
 - The operator's corpus re-pin is PREPPED FOR REVIEW of record: PR #280 complete (re-pin + receipt + non-attribution comment), ready to merge the moment main verify heals — the post-merge neon-replay dispatch then produces BOTH the instrument-repair proof AND the stage-5b projection verdict (the w3-teacher-marking rich-200 quartet must be absent from the union fail list).
 - The nightly instrument stays staging-broken until that merge (the crash class is un-fixed at current main; the next 02:30Z cron will crash identically — expected, disclosed).
 - Standing reminder: the operator must revoke the GitHub PAT (ghp_h4D…) at migration end per the credential law.
+
+---
+Task ID: T-SM-KAPPA-SUBJECT-DEPLOY-R0 (durable ledger — the cdc1cd2 build deployed per the 093 recipe: build+gate COMPLETE, fire leg QUOTA-BLOCKED)
+Agent: zai-web lane (main agent, session web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2; trace 1a1605558e578ec5)
+Task: operator order "deploy the cdc1cd2 build" (the recompute runbook's step-1 CLI lever) — after the sandbox rollback wiped the substrate, the operator re-supplied the GitHub PAT + a Vercel token.
+
+Work Log:
+- Substrate rebuilt: blobless clone at cdc1cd23fa3dc0225a7974a48c05a8125581fbe8 (PR #270 merge; lineage-verified ancestor of origin/main); bun 1.3.14 + 930 packages frozen-lockfile.
+- RECIPE RECOVERED: the lane-side build tool was lost to the sandbox-wipe recurring class (run-009-r7a disclosure) — recovered from the IN-TREE archive .syllabai/receipts/T-MIG-093/tools/{deploy_bundle_build,localgate_bundle}.py; constants retargeted per the r9 adaptation class, method untouched.
+- BUILD LEG COMPLETE: shim v2 applied clean at cdc1cd2 (both patch patterns matched, zero drift); 6/6 concept-asset SHA pins == of-record pins EXACT (24fa91ac/8a651dd9/e53e5f87/b3b75292/b1fea699/a7b14cbd); bundle 345 modules / 3,287,769 B CJS (+4 modules vs run-009's 341 @ aef295d = the band delta); worktree restored PRISTINE (0 deltas).
+- LOCALGATE 8/8 ALL PASS on the real Neon wire (health UP, login-malformed 400, register 201 = 1 census-class probe learner, tutor CRUD net-zero, L06 law); DSN via the Vercel env API, 0600 + shredded, fingerprint b289a2298e707904 == run-009 of-record EXACT.
+- STAGE assembled + project assertion pre-fire OK (prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ / team_ULL54qkhzKBmnKrpO6BD4mYX — the 113 law).
+- FIRE LEG REJECTED: vercel deploy --prod --yes — upload 3.1 MB completed, CREATE refused: api-deployments-free-per-day ("more than 100", Hobby plan). Visible census 48h all-states = 12 (10 hub auto-bakes + 1 demo + 1 v2) — the cap counter includes non-visible/deleted classes or a distinct window; NOT resolvable from the API surface. ZERO deployments created; prod VERIFIED untouched (health 200, kappa 401; carrier still dpl_GfV24BcbF8jwnzLp7b1gVRodVBBV).
+- PROVENANCE FINDING of record: the current carrier dpl_GfV was built from an UNPUSHED DIRTY tree (d3b6a85, "not our ref" on origin, gitDirty=1) — the ordered cdc1cd2 redeploy strictly improves provenance.
+- ENV-TARGET NOTE: all syllabai-v2 env vars are production-target-only — previews boot env-less; the localgate IS the staging gate of record (9+ runs).
+- Receipt .syllabai/receipts/T-SM-KAPPA-SUBJECT/deploy-cdc1cd2-r0.json; .syllabai-only commit, fetch-first, no force; status advance on #276.
+
+Stage Summary:
+- The deploy lever is FULLY STAGED and QUOTA-BLOCKED: unblock = operator plan upgrade (then one command re-fires) OR the Vercel-stated ~24h window; the stage persists and re-derives from this receipt if the sandbox wipes.
+- Operator path state: step 1 (deploy cdc1cd2) BLOCKED-ON-QUOTA; steps 2-6 (4CH1 queue under D5 -> pre-write replica -> POST /kappa/evaluate -> D5.7 table on #276 -> D2 closes) unchanged behind it.
+- Open flags: Render core suspension; 4PH1 R5; carrier provenance (unpushed dirty tree serving production).

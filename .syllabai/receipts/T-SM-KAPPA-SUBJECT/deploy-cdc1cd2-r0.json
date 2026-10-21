@@ -1,0 +1,45 @@
+{
+  "task": "T-SM-KAPPA-SUBJECT (phase 5 — deploy the cdc1cd2 build: build+gate legs COMPLETE of record, fire leg QUOTA-BLOCKED by the Vercel Hobby daily-deployments cap)",
+  "band": "T-SM-KAPPA-SUBJECT",
+  "title": "operator order 'deploy the cdc1cd2 build' executed per the T-MIG-093 recipe of record — bundle built at cdc1cd23fa3dc0225a7974a48c05a8125581fbe8 with 6/6 asset SHA pins EXACT, localgate 8/8 ALL PASS on the real Neon wire, project assertion pre-fire OK; the --prod fire was REJECTED by the platform (code api-deployments-free-per-day, Hobby plan cap) — ZERO deployments created, production untouched at dpl_GfV24BcbF8jwnzLp7b1gVRodVBBV, stage persists ready to re-fire",
+  "trace": "1a1605558e578ec5 (operator session, web; order 'deploy the cdc1cd2 build' + fresh credentials supplied)",
+  "date": "2026-10-21",
+  "agent": "zai-web lane (main agent, session web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2)",
+  "parent": "T-SM-ROLLOUT of record = syllabai-v2#276; recompute runbook step 1 (operator-order-r0.json); D57 disclosure #276 comment 6325903109",
+  "credentials_restored": "sandbox rollback had wiped .creds/ — operator re-supplied the GitHub PAT (SyllabAI identity, verified) and a Vercel token (user syllabai-1403, team syllab-ai team_ULL54qkhzKBmnKrpO6BD4mYX, verified); both installed 0600, never printed",
+  "recipe_provenance": "T-MIG-093 CLI-upload recipe of record (gitSource lever FORBIDDEN — the empty-build trap law, incident 16:36:33Z); the lane-side build tool was LOST to the sandbox-wipe recurring class (disclosed in run-009-r7a) and was RECOVERED from the in-tree archive .syllabai/receipts/T-MIG-093/tools/deploy_bundle_build.py + localgate_bundle.py at origin/main; constants retargeted per the r9-disclosed adaptation class (REPO=/home/z/my-project/worktrees/syllabai-v2-deploy, STAGE=/home/z/my-project/deploy-stage), method untouched",
+  "build_leg": {
+    "commit": "cdc1cd23fa3dc0225a7974a48c05a8125581fbe8 (PR #270 merge — P0 spec_point_node_id fix; lineage-verified ancestor of origin/main; detached checkout, fetch-first)",
+    "shims": "worktree-only shim v2 applied CLEAN — both patch patterns matched at cdc1cd2 with zero drift (Bun.CryptoHasher->node:crypto, Bun.YAML.parse->js-yaml, 6 hash-pinned concept-graph YAMLs inlined byte-verbatim via concept-assets.gen.ts, explicit Node adapter entry deploy-entry.ts); RESTORED post-build: git status --porcelain = 0 deltas (PRISTINE)",
+    "asset_pins_6_of_6_exact": {
+      "learner-me/concepts.yaml": "24fa91ac7149682b",
+      "learner-me/concept_edges.yaml": "8a651dd9e60bfefa",
+      "learner-me/practicals.yaml": "e53e5f87606a2b5a",
+      "teacher/concept-graph/relationships.yaml": "b3b7529222d77d80",
+      "teacher/concept-graph/specification_points.yaml": "b1fea69953205077",
+      "teacher/concept-graph/topics.yaml": "a7b14cbdd34bb9fe"
+    },
+    "bundle": "345 modules / 3,287,769 bytes CJS (3.29 MB) — prior of-record generation run-009 @ aef295d: 341 / 3,211,177; +4 modules = the post-aef295d delta into cdc1cd2 (PR #266 band + #270 fix classes); bun 1.3.14, 930 packages frozen-lockfile"
+  },
+  "localgate_leg": {
+    "verdict": "8/8 ALL PASS on the production-shaped wire (real Node http server over the bundle, real Neon wire, LOCAL-ONLY 44-byte JWT key per law)",
+    "legs": "health 200 UP {groups:[liveness,readiness]}; login-malformed 400 validation_failed; register 201 (real INSERT — 1 census-class probe learner r0-092gate-<ts>@example.invalid, the of-record capture class, DISCLOSED); tutor-create 201 / list-nonempty 200 (L06 law) / latest 200 / delete 204 / list-after-delete [] (net-zero rows)",
+    "dsn": "DATABASE_URL via the Vercel env API (type plain, rides the /v9 list response; single-env GET 404s — the run-008 law), staged .env.localgate 0600 memory-disciplined, fingerprint sha256:16 b289a2298e707904 == the run-009 of-record fingerprint EXACT (env unchanged), SHREDDED post-gate"
+  },
+  "stage_leg": "api/index.js + vercel.json (rewrites /api/v1/(.*) and /actuator/health -> /api/index) + .vercel/project.json asserted BEFORE fire == {projectId prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ, orgId team_ULL54qkhzKBmnKrpO6BD4mYX} = syllabai-v2 / syllab-ai (the 113 incident law)",
+  "fire_leg": {
+    "act": "npx vercel@latest deploy --prod --yes from the stage (whoami == syllabai-1403)",
+    "result": "REJECTED — upload completed (3.1 MB) then deployment CREATE refused: 'Resource is limited - try again in 24 hours (more than 100, code: api-deployments-free-per-day)'",
+    "quota_analysis": "team syllab-ai is on the HOBBY plan; the visible API census (48h, ALL states, team- and user-context) = 12 deployments (10 syllabai-hub-v2 auto-bakes + 1 syllabai-demo + 1 syllabai-v2) — the cap counter includes non-visible/deleted classes or a distinct window and is NOT resolvable from the API surface; ZERO deployments created by this attempt",
+    "prod_posture_after": "UNTOUCHED and VERIFIED: /actuator/health 200; POST /kappa/evaluate 401; carrier of record still dpl_GfV24BcbF8jwnzLp7b1gVRodVBBV; rollback anchor unchanged (one-call re-alias shape of the 16:36:33Z incident law)",
+    "provenance_finding": "the CURRENT carrier dpl_GfV was built 2026-10-21T14:57:36Z from an UNPUSHED DIRTY local tree (meta gitCommitSha d3b6a85df23d61c84683b2337fe478e0c59ec4be — 'not our ref' on origin; gitDirty=1; commit message a UUID) — the clean-SHA redeploy ordered here would strictly IMPROVE carrier provenance to the pushed of-record cdc1cd2"
+  },
+  "env_target_note": "ALL syllabai-v2 project env vars (incl. DATABASE_URL plain, SYLLABAI_JWT_SECRET encrypted, CRON_SECRET encrypted) are PRODUCTION-target-only — preview deployments boot env-less; hence the of-record staging-equivalent is the localgate (this run) and the recipe fires --prod directly (9+ runs of record)",
+  "unblock_options": [
+    "1. OPERATOR UPGRADES the syllab-ai team plan (Pro) — then the staged act re-fires in ONE command: npx vercel@latest deploy --prod --yes from /home/z/my-project/deploy-stage (stage persists: bundle + vercel.json + project.json; worktree pristine)",
+    "2. WAIT for the quota window Vercel states ('try again in 24 hours'; possibly the UTC-daily boundary) — re-fire on operator order; if the sandbox wipes in between, the stage re-derives in minutes from this receipt + the archived tools (bun install --frozen-lockfile -> deploy_bundle_build.py -> localgate -> fire)"
+  ],
+  "post_fire_battery_pending": "health 200 groups UP; login {} 400 validation_failed; kappa evaluate/latest 401 walls; cron nightly-decay 401 fail-closed reason; CORS hub-v2 preflight 204 + ACAO exact; hub /api/health 200 (hub untouched); new dpl uid resolution + projectId assertion + alias check — ALL armed, fires with the successful deploy",
+  "write_ledger": "1 census-class probe learner register on the production Neon branch (of-record localgate class, example.invalid, net +1 learner); tutor rows net-zero; ZERO deployments; ZERO env writes; ZERO DDL; zero credential material printed/logged/committed; fetch-first, no force",
+  "bookkeeping": ".syllabai-only commit (this receipt + durable ledger), inline-PAT push, three-way verify; status advance posted on #276 per the going-forward law"
+}
