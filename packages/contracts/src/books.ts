@@ -243,3 +243,180 @@ export const bookCitationTargetSchema = z.object({
   chapter: bookChapterSchema.nullable(),
 });
 export type BookCitationTarget = z.infer<typeof bookCitationTargetSchema>;
+
+// ── T-BOOK-002: the interactive rail — block/pack grammar, glossary, progress ──
+//
+// ADR-BOOK-0001 (docs/adr/ADR-BOOK-0001-interactive-rail-over-student-book-spine.md)
+// + doctrine: docs/books/{BOOKS-START-HERE,BOOK-PACK-SPEC,BOOK-BUILD-PLAYBOOK}.md.
+// The rail is the interactive layer over the page-true spine — never a parallel
+// content body. Laws encoded here:
+//   - 11 frozen block types (PLAN-4CH1 §3.2); a 12th type is an ADR, not a PR.
+//   - Pack/block review state REUSES the content 4-state law
+//     (validationStateSchema) — REUSE-not-redeclare; serving gate = VALIDATED
+//     book AND VALIDATED pack (T-C20 symmetry).
+//   - mcq-embed carries checkRefs ONLY (bank law: checks come from the bank,
+//     never authored question text).
+//   - sim-embed = PhET CC-BY-4.0 only, fallback link mandatory; media-embed
+//     requires an explicit licenseRef (licensing-as-serving-law).
+// The attempts discriminator for rail checks is APP-LEVEL on the existing
+// free-varchar attempts.provenance (constant below) — attempts is Flyway-owned:
+// zero DDL (ADR-BOOK-0001 §12, F-BOOK-0002).
+
+/** The rail block types of record — 9 v1.0 types + sim-embed/media-embed
+ *  (Kognity parity leapfrog). Payload field-level grammar evolves with the
+ *  widget lanes (T-BOOK-004/005) through the versioned lint/contracts lane;
+ *  the envelope law is stable. */
+export const BOOK_BLOCK_TYPES = [
+  "prose",
+  "figure",
+  "callout",
+  "mcq-embed",
+  "sort-match",
+  "drag-label",
+  "table-fill",
+  "num-stepper",
+  "eq-builder",
+  "sim-embed",
+  "media-embed",
+] as const;
+export const bookBlockTypeSchema = z.enum(BOOK_BLOCK_TYPES);
+export type BookBlockType = (typeof BOOK_BLOCK_TYPES)[number];
+
+/** Grammar id of record for the block envelope + payload laws below. */
+export const BOOK_BLOCK_GRAMMAR = "book.block/1" as const;
+
+/** App-level attempts.provenance value for rail check attempts
+ *  (surface='book_check' in the plan's wording). The column is a free
+ *  varchar(40) by design; the frozen-core law forbids DDL on attempts. */
+export const ATTEMPT_PROVENANCE_BOOK_CHECK = "BOOK_CHECK" as const;
+
+/** Per-type payload laws — minimal known fields + passthrough (the envelope
+ *  is strict-shaped; payloads stay evolvable). Every law here encodes a
+ *  doctrine rule, not styling: bank-law checkRefs, PhET-only sims with
+ *  mandatory fallback + attribution, media licensing row, figure page-true
+ *  anchoring. */
+export const bookBlockPayloadLaws = {
+  prose: z.object({ text: z.string().min(1) }).passthrough(),
+  /** page-true region pointer — figures live in the mounted PDF, never here */
+  figure: z.object({ page: z.number().int().min(1) }).passthrough(),
+  callout: z.object({ body: z.string().min(1) }).passthrough(),
+  /** question text comes from the bank via checkRefs — nothing else needed */
+  "mcq-embed": z.object({}).passthrough(),
+  "sort-match": z
+    .object({
+      items: z
+        .array(z.object({ id: z.string().min(1), text: z.string().min(1) }).passthrough())
+        .min(2),
+    })
+    .passthrough(),
+  "drag-label": z.object({ labels: z.array(z.string().min(1)).min(1) }).passthrough(),
+  "table-fill": z.object({ columns: z.array(z.string().min(1)).min(1) }).passthrough(),
+  "num-stepper": z
+    .object({
+      steps: z
+        .array(
+          z
+            .object({
+              prompt: z.string().min(1),
+              answer: z.union([z.string().min(1), z.number()]),
+            })
+            .passthrough(),
+        )
+        .min(1),
+    })
+    .passthrough(),
+  "eq-builder": z.object({ target: z.string().min(1) }).passthrough(),
+  /** PhET only (CC-BY 4.0), attribution in-card, CSP fallback mandatory */
+  "sim-embed": z
+    .object({
+      provider: z.literal("phet"),
+      simId: z.string().min(1),
+      title: z.string().min(1),
+      attribution: z.literal("CC-BY-4.0"),
+      fallbackUrl: z.string().url(),
+    })
+    .passthrough(),
+  /** poster + link card; no licensing row, no card (honest-empty) */
+  "media-embed": z
+    .object({ title: z.string().min(1), url: z.string().url(), licenseRef: z.string().min(1) })
+    .passthrough(),
+} as const;
+
+/** The authored rail block (serving shape; the DB row mirrors it — see
+ *  bookBlocks in packages/db). `id` is the authored block id of record
+ *  ("<pack>/b<NN>", stable across re-ingests). Binding coordinates ride the
+ *  envelope; per-type payload law is enforced by superRefine. */
+export const bookBlockSchema = z
+  .object({
+    id: z.string().min(1),
+    documentId: z.string().min(1),
+    docVersion: z.number().int().min(1),
+    /** chapterKey grammar: "u<unit>:c<chapter>" (bookChapterSchema law) */
+    chapterKey: z.string().min(1),
+    ord: z.number().int().min(1),
+    type: bookBlockTypeSchema,
+    /** page anchor in the PDF of record — "see p.42" precision; monotonic
+     *  within a pack is the lint's job (G1), presence here is the contract's */
+    pdfPageAnchor: z.number().int().min(1).nullable(),
+    content: z.record(z.unknown()),
+    /** question-bank ids (bank law) — mcq-embed requires >= 1 (superRefine) */
+    checkRefs: z.array(z.string().min(1)),
+    /** glossary slugs — must resolve in the book's glossary (lint) */
+    glossaryRefs: z.array(z.string().min(1)),
+    /** official spec point codes — must be inside the chapter's join set (lint) */
+    specPointRefs: z.array(z.string().min(1)),
+    /** REUSE of the content 4-state law: the pack flip IS this column */
+    validationState: validationStateSchema,
+    version: z.number().int().min(1),
+  })
+  .superRefine((b, ctx) => {
+    const law = bookBlockPayloadLaws[b.type];
+    const parsed = law.safeParse(b.content);
+    if (!parsed.success) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["content"],
+        message: `${b.type} payload law (${BOOK_BLOCK_GRAMMAR}) failed: ${parsed.error.issues
+          .map((i) => `${i.path.join(".") || "(root)"}: ${i.message}`)
+          .join("; ")}`,
+      });
+    }
+    if (b.type === "mcq-embed" && b.checkRefs.length === 0) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["checkRefs"],
+        message: "mcq-embed requires non-empty checkRefs (bank law: checks come from the bank)",
+      });
+    }
+  });
+export type BookBlock = z.infer<typeof bookBlockSchema>;
+
+/** One book_glossary_terms row — the mark-scheme language layer
+ *  (ms_accepts/ms_avoids) seeded from the book's glossary chunks + authored
+ *  accept/avoid lines. Slug is the join key for block glossaryRefs. */
+export const bookGlossaryTermSchema = z.object({
+  subjectCode: z.string().min(1),
+  term: z.string().min(1),
+  slug: z
+    .string()
+    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "kebab-case slug (^[a-z0-9]+(?:-[a-z0-9]+)*$)"),
+  definition: z.string().min(1),
+  msAccepts: z.array(z.string().min(1)),
+  msAvoids: z.array(z.string().min(1)),
+  aliases: z.array(z.string().min(1)),
+  audioUrl: z.string().url().nullable(),
+  translations: z.record(z.string()).nullable(),
+});
+export type BookGlossaryTerm = z.infer<typeof bookGlossaryTermSchema>;
+
+/** One chapter_progress row — the ONLY new persisted user signal of the rail
+ *  (ADR-BOOK-0001 §8; coverage is a fact, mastery stays computed, ADR-031). */
+export const chapterProgressSchema = z.object({
+  userId: z.string().uuid(),
+  documentId: z.string().min(1),
+  chapterKey: z.string().min(1),
+  railScrolledPct: z.number().int().min(0).max(100),
+  lastOrd: z.number().int().min(1).nullable(),
+  updatedAt: z.string(),
+});
+export type ChapterProgress = z.infer<typeof chapterProgressSchema>;

@@ -1391,6 +1391,133 @@ export const bookChapters = pgTable(
         ],
 );
 
+// ── T-BOOK-002 — the interactive rail (ADR-BOOK-0001) ──────────────────────
+// v2-native additive family (no frozen-core counterpart; claThreads
+// precedent). Three tables: book_blocks (rail pack blocks — packs are the
+// authoring unit, books/<qual>/packs/, doctrine docs/books/BOOK-PACK-SPEC.md),
+// book_glossary_terms (the mark-scheme language layer), chapter_progress (the
+// ONLY new persisted user signal — coverage is a fact, mastery stays computed,
+// ADR-031 law).
+//
+// No-orphan-packs is DB law, not lint: book_blocks carries the composite FK
+// through uq_book_chapters_identity (document_id, doc_version, chapter_key)
+// (ADR-BOOK-0001 §6). Soft references by law: check_refs join the question
+// bank, glossary_refs join book_glossary_terms.slug, spec_point_refs join the
+// chapter's spec_codes join set — all at the query/lint layer, never FK.
+// Serving law (T-C20 symmetry): a block serves only when the parent book AND
+// its own validation_state are VALIDATED — the flip levers stay operator-held.
+// Block `id` is the authored block id of record ("<pack>/b<NN>", stable across
+// re-ingests); the attempts discriminator for rail checks is APP-LEVEL
+// attempts.provenance='BOOK_CHECK' — attempts is Flyway-owned: zero DDL
+// (ADR-BOOK-0001 §12, F-BOOK-0002).
+export const bookBlocks = pgTable("book_blocks", {
+        id: varchar({ length: 160 }).primaryKey().notNull(),
+        documentId: varchar("document_id", { length: 80 }).notNull(),
+        docVersion: integer("doc_version").default(1).notNull(),
+        chapterKey: varchar("chapter_key", { length: 120 }).notNull(),
+        ord: integer().notNull(),
+        type: varchar({ length: 24 }).notNull(),
+        pdfPageAnchor: integer("pdf_page_anchor"),
+        content: jsonb().notNull(),
+        checkRefs: jsonb("check_refs").notNull(),
+        glossaryRefs: jsonb("glossary_refs").notNull(),
+        specPointRefs: jsonb("spec_point_refs").notNull(),
+        validationState: varchar("validation_state", { length: 20 })
+                .default('SUGGESTED')
+                .notNull(),
+        version: integer().default(1).notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
+        updatedAt: timestamp("updated_at", { withTimezone: true, mode: 'string' }).notNull(),
+}, (table) => [
+        foreignKey({
+                        columns: [table.documentId, table.docVersion],
+                        foreignColumns: [documents.documentId, documents.docVersion],
+                        name: "book_blocks_document_fkey"
+                }),
+        foreignKey({
+                        columns: [table.documentId, table.docVersion, table.chapterKey],
+                        foreignColumns: [bookChapters.documentId, bookChapters.docVersion, bookChapters.chapterKey],
+                        name: "book_blocks_chapter_fkey"
+                }),
+        uniqueIndex("uq_book_blocks_identity").using(
+                "btree",
+                table.documentId.asc().nullsLast().op("text_ops"),
+                table.docVersion.asc().nullsLast().op("int4_ops"),
+                table.chapterKey.asc().nullsLast().op("text_ops"),
+                table.ord.asc().nullsLast().op("int4_ops"),
+        ),
+        index("ix_book_blocks_chapter").using(
+                "btree",
+                table.documentId.asc().nullsLast().op("text_ops"),
+                table.chapterKey.asc().nullsLast().op("text_ops"),
+        ),
+        check(
+                "ck_book_blocks_type",
+                sql`(type)::text = ANY ((ARRAY['prose'::character varying, 'figure'::character varying, 'callout'::character varying, 'mcq-embed'::character varying, 'sort-match'::character varying, 'drag-label'::character varying, 'table-fill'::character varying, 'num-stepper'::character varying, 'eq-builder'::character varying, 'sim-embed'::character varying, 'media-embed'::character varying])::text[])`,
+        ),
+        check(
+                "ck_book_blocks_validation_state",
+                sql`(validation_state)::text = ANY ((ARRAY['SUGGESTED'::character varying, 'VALIDATED'::character varying, 'REJECTED'::character varying, 'FLAGGED'::character varying])::text[])`,
+        ),
+        check("ck_book_blocks_doc_version", sql`doc_version > 0`),
+        check("ck_book_blocks_ord", sql`ord > 0`),
+]);
+
+export const bookGlossaryTerms = pgTable("book_glossary_terms", {
+        id: uuid().primaryKey().notNull(),
+        subjectCode: varchar("subject_code", { length: 20 }).notNull(),
+        term: varchar({ length: 120 }).notNull(),
+        slug: varchar({ length: 140 }).notNull(),
+        definition: text().notNull(),
+        msAccepts: jsonb("ms_accepts").notNull(),
+        msAvoids: jsonb("ms_avoids").notNull(),
+        aliases: jsonb().notNull(),
+        audioUrl: text("audio_url"),
+        translations: jsonb(),
+        validationState: varchar("validation_state", { length: 20 })
+                .default('SUGGESTED')
+                .notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
+        updatedAt: timestamp("updated_at", { withTimezone: true, mode: 'string' }).notNull(),
+}, (table) => [
+        uniqueIndex("uq_book_glossary_identity").using(
+                "btree",
+                table.subjectCode.asc().nullsLast().op("text_ops"),
+                table.slug.asc().nullsLast().op("text_ops"),
+        ),
+        check(
+                "ck_book_glossary_validation_state",
+                sql`(validation_state)::text = ANY ((ARRAY['SUGGESTED'::character varying, 'VALIDATED'::character varying, 'REJECTED'::character varying, 'FLAGGED'::character varying])::text[])`,
+        ),
+        check("ck_book_glossary_slug", sql`slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'`),
+]);
+
+export const chapterProgress = pgTable("chapter_progress", {
+        id: uuid().primaryKey().notNull(),
+        userId: uuid("user_id").notNull(),
+        documentId: varchar("document_id", { length: 80 }).notNull(),
+        chapterKey: varchar("chapter_key", { length: 120 }).notNull(),
+        railScrolledPct: integer("rail_scrolled_pct").default(0).notNull(),
+        lastOrd: integer("last_ord"),
+        updatedAt: timestamp("updated_at", { withTimezone: true, mode: 'string' }).notNull(),
+}, (table) => [
+        foreignKey({
+                        columns: [table.userId],
+                        foreignColumns: [users.id],
+                        name: "chapter_progress_user_id_fkey"
+                }).onDelete("cascade"),
+        uniqueIndex("uq_chapter_progress_identity").using(
+                "btree",
+                table.userId.asc().nullsLast().op("uuid_ops"),
+                table.documentId.asc().nullsLast().op("text_ops"),
+                table.chapterKey.asc().nullsLast().op("text_ops"),
+        ),
+        check(
+                "ck_chapter_progress_scrolled_pct",
+                sql`rail_scrolled_pct >= 0 AND rail_scrolled_pct <= 100`,
+        ),
+]);
+
 // ── CLA thread sync tier (DC-6 phase 3, docs/DC6-CLA-SYNC-TIER-PLAN.md) ──
 // v2-native additive family (no frozen-core counterpart; path (iii) of the
 // feasibility of record). The local thread stores (assistant-threads.ts /
