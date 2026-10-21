@@ -7,6 +7,13 @@ import {
   pageRangeSchema,
   specCodeRefSchema,
   BOOK_CONTENT_TYPES,
+  bookBlockSchema,
+  bookGlossaryTermSchema,
+  chapterProgressSchema,
+  bookBlockTypeSchema,
+  BOOK_BLOCK_TYPES,
+  BOOK_BLOCK_GRAMMAR,
+  ATTEMPT_PROVENANCE_BOOK_CHECK,
 } from "./books.js";
 
 /**
@@ -200,5 +207,251 @@ describe("books — the canonical TOC + the serving row", () => {
         validationState: "MAYBE",
       }),
     ).toThrow();
+  });
+});
+
+/**
+ * T-BOOK-002 — the interactive rail grammar (book.block/1, ADR-BOOK-0001).
+ * Fixtures are the FIRST authored blocks (c05 mole-ladder pack shape) — the
+ * grammar's birth, so fixtures are hand-authored of record, chemistry real:
+ * Mg Aᵣ = 24.3 (the F-BOOK-later class of fact the G3 gate exists for),
+ * Cu²⁺ half-equation with charge balance, PhET sim ids from the public
+ * chemistry catalog.
+ */
+describe("books — the interactive rail grammar (T-BOOK-002, book.block/1)", () => {
+  const base = {
+    documentId: "edexcel-igcse-chemistry-sb-2020",
+    docVersion: 1,
+    chapterKey: "u1:c5",
+    ord: 1,
+    pdfPageAnchor: 42,
+    checkRefs: [] as string[],
+    glossaryRefs: ["mole"] as string[],
+    specPointRefs: ["1.28"] as string[],
+    validationState: "SUGGESTED",
+    version: 1,
+  };
+
+  test("11 frozen block types of record; a 12th type is an ADR, not a PR", () => {
+    expect(BOOK_BLOCK_TYPES).toHaveLength(11);
+    expect(BOOK_BLOCK_GRAMMAR).toBe("book.block/1");
+    expect(() => bookBlockTypeSchema.parse("lesson")).toThrow();
+  });
+
+  test("callout (examiner-language) — the flagship type", () => {
+    const b = bookBlockSchema.parse({
+      ...base,
+      id: "c05/b01",
+      type: "callout",
+      content: {
+        body: "Say 'electrostatic attraction' — not 'attraction between atoms'.",
+        kind: "examiner",
+      },
+    });
+    expect(b.type).toBe("callout");
+  });
+
+  test("eq-builder — half-equation with charge-balance payload", () => {
+    const b = bookBlockSchema.parse({
+      ...base,
+      id: "c10/b03",
+      chapterKey: "u1:c10",
+      specPointRefs: ["1.40C"],
+      type: "eq-builder",
+      content: { target: "Cu2+ + 2e- -> Cu", states: true, chargeBalance: true },
+    });
+    expect(b.type).toBe("eq-builder");
+  });
+
+  test("num-stepper — the mole ladder (real 4CH1 values)", () => {
+    const b = bookBlockSchema.parse({
+      ...base,
+      id: "c05/b02",
+      ord: 2,
+      type: "num-stepper",
+      content: {
+        steps: [
+          { prompt: "Mass of Mg (g)", answer: 2.43 },
+          { prompt: "Aᵣ of Mg", answer: 24.3 },
+          { prompt: "Moles of Mg", answer: 0.1, unit: "mol" },
+        ],
+      },
+    });
+    expect(b.type).toBe("num-stepper");
+  });
+
+  test("mcq-embed with bank checkRefs passes; empty checkRefs violates the bank law", () => {
+    expect(() =>
+      bookBlockSchema.parse({
+        ...base,
+        id: "c05/b04",
+        ord: 4,
+        type: "mcq-embed",
+        content: {},
+        checkRefs: ["q-4ch1-1c-2023-03"],
+      }),
+    ).not.toThrow();
+    expect(() =>
+      bookBlockSchema.parse({ ...base, id: "c05/b04", ord: 4, type: "mcq-embed", content: {} }),
+    ).toThrow(/bank law/);
+  });
+
+  test("sim-embed — PhET only, fallback + attribution mandatory", () => {
+    expect(() =>
+      bookBlockSchema.parse({
+        ...base,
+        id: "c05/b05",
+        ord: 5,
+        type: "sim-embed",
+        content: {
+          provider: "phet",
+          simId: "balancing-chemical-equations",
+          title: "Balancing Chemical Equations",
+          attribution: "CC-BY-4.0",
+          fallbackUrl: "https://phet.colorado.edu/en/simulations/balancing-chemical-equations",
+        },
+      }),
+    ).not.toThrow();
+    expect(() =>
+      bookBlockSchema.parse({
+        ...base,
+        id: "c05/b05",
+        ord: 5,
+        type: "sim-embed",
+        content: {
+          provider: "other-lab",
+          simId: "x",
+          title: "X",
+          attribution: "CC-BY-4.0",
+          fallbackUrl: "https://example.com/x",
+        },
+      }),
+    ).toThrow();
+    expect(() =>
+      bookBlockSchema.parse({
+        ...base,
+        id: "c05/b05",
+        ord: 5,
+        type: "sim-embed",
+        content: { provider: "phet", simId: "isotopes-and-atomic-mass", title: "Isotopes", attribution: "CC-BY-4.0" },
+      }),
+    ).toThrow(); // no fallbackUrl — CSP fallback is mandatory
+  });
+
+  test("media-embed without a licensing row is rejected (licensing-as-serving-law)", () => {
+    expect(() =>
+      bookBlockSchema.parse({
+        ...base,
+        id: "c05/b06",
+        ord: 6,
+        type: "media-embed",
+        content: { title: "Electrolysis walkthrough", url: "https://example.com/v" },
+      }),
+    ).toThrow();
+  });
+
+  test("eq-builder payload law — missing target fails superRefine on content", () => {
+    const r = bookBlockSchema.safeParse({
+      ...base,
+      id: "c05/b07",
+      ord: 7,
+      type: "eq-builder",
+      content: { states: true },
+    });
+    expect(r.success).toBe(false);
+    if (!r.success) {
+      const issue = r.error.issues.find((i) => i.path[0] === "content");
+      expect(issue?.message).toContain("eq-builder payload law");
+    }
+  });
+
+  test("sort-match needs >= 2 items; envelope law holds (ord > 0, 4-state review)", () => {
+    expect(() =>
+      bookBlockSchema.parse({
+        ...base,
+        id: "c16/b01",
+        chapterKey: "u2:c16",
+        type: "sort-match",
+        content: { items: [{ id: "s1", text: " rinse burette with acid" }] },
+      }),
+    ).toThrow();
+    expect(() =>
+      bookBlockSchema.parse({ ...base, id: "c05/b01", type: "callout", content: { body: "x" }, ord: 0 }),
+    ).toThrow();
+    expect(() =>
+      bookBlockSchema.parse({
+        ...base,
+        id: "c05/b01",
+        type: "callout",
+        content: { body: "x" },
+        validationState: "AUTO_GRADED",
+      }),
+    ).toThrow();
+  });
+
+  test("glossary term — ms_accepts/ms_avoids layer + kebab-case slug law", () => {
+    expect(() =>
+      bookGlossaryTermSchema.parse({
+        subjectCode: "4CH1",
+        term: "electrostatic attraction",
+        slug: "electrostatic-attraction",
+        definition: "The strong electrostatic attraction between ions and delocalised electrons.",
+        msAccepts: ["electrostatic attraction between ions and delocalised electrons"],
+        msAvoids: ["free electrons", "sea of electrons (unqualified)"],
+        aliases: ["electrostatic forces"],
+        audioUrl: null,
+        translations: null,
+      }),
+    ).not.toThrow();
+    expect(() =>
+      bookGlossaryTermSchema.parse({
+        subjectCode: "4CH1",
+        term: "mole",
+        slug: "the_mole",
+        definition: "x",
+        msAccepts: [],
+        msAvoids: [],
+        aliases: [],
+        audioUrl: null,
+        translations: null,
+      }),
+    ).toThrow(/kebab-case/);
+  });
+
+  test("chapter_progress — the only new persisted user signal (0-100 pct, uuid user)", () => {
+    expect(() =>
+      chapterProgressSchema.parse({
+        userId: "3f2504e0-4f89-11d3-9a0c-0305e82c3301",
+        documentId: "edexcel-igcse-chemistry-sb-2020",
+        chapterKey: "u1:c5",
+        railScrolledPct: 64,
+        lastOrd: 3,
+        updatedAt: "2026-10-21T10:00:00Z",
+      }),
+    ).not.toThrow();
+    expect(() =>
+      chapterProgressSchema.parse({
+        userId: "not-a-uuid",
+        documentId: "d",
+        chapterKey: "u1:c5",
+        railScrolledPct: 50,
+        lastOrd: null,
+        updatedAt: "2026-10-21T10:00:00Z",
+      }),
+    ).toThrow();
+    expect(() =>
+      chapterProgressSchema.parse({
+        userId: "3f2504e0-4f89-11d3-9a0c-0305e82c3301",
+        documentId: "d",
+        chapterKey: "u1:c5",
+        railScrolledPct: 101,
+        lastOrd: null,
+        updatedAt: "2026-10-21T10:00:00Z",
+      }),
+    ).toThrow();
+  });
+
+  test("attempts discriminator is the app-level constant — zero DDL (ADR-BOOK-0001 §12)", () => {
+    expect(ATTEMPT_PROVENANCE_BOOK_CHECK).toBe("BOOK_CHECK");
   });
 });

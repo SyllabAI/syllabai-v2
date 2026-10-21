@@ -1,6 +1,6 @@
 {
-  "id": "fb2e9ae1-10ad-47f1-be37-b85117d65103",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "8c24e095-b5f0-4ce4-a490-e612a4ed9b10",
+  "prevId": "1a706529-fc6f-44db-a61f-914c3959548c",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -997,6 +997,223 @@
       },
       "isRLSEnabled": false
     },
+    "public.book_blocks": {
+      "name": "book_blocks",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(160)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "document_id": {
+          "name": "document_id",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "doc_version": {
+          "name": "doc_version",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 1
+        },
+        "chapter_key": {
+          "name": "chapter_key",
+          "type": "varchar(120)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ord": {
+          "name": "ord",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "varchar(24)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pdf_page_anchor": {
+          "name": "pdf_page_anchor",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "content": {
+          "name": "content",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "check_refs": {
+          "name": "check_refs",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "glossary_refs": {
+          "name": "glossary_refs",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "spec_point_refs": {
+          "name": "spec_point_refs",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "validation_state": {
+          "name": "validation_state",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'SUGGESTED'"
+        },
+        "version": {
+          "name": "version",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 1
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "uq_book_blocks_identity": {
+          "name": "uq_book_blocks_identity",
+          "columns": [
+            {
+              "expression": "document_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "text_ops"
+            },
+            {
+              "expression": "doc_version",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "int4_ops"
+            },
+            {
+              "expression": "chapter_key",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "text_ops"
+            },
+            {
+              "expression": "ord",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "int4_ops"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "ix_book_blocks_chapter": {
+          "name": "ix_book_blocks_chapter",
+          "columns": [
+            {
+              "expression": "document_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "text_ops"
+            },
+            {
+              "expression": "chapter_key",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "text_ops"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "book_blocks_document_fkey": {
+          "name": "book_blocks_document_fkey",
+          "tableFrom": "book_blocks",
+          "tableTo": "documents",
+          "columnsFrom": [
+            "document_id",
+            "doc_version"
+          ],
+          "columnsTo": [
+            "document_id",
+            "doc_version"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "book_blocks_chapter_fkey": {
+          "name": "book_blocks_chapter_fkey",
+          "tableFrom": "book_blocks",
+          "tableTo": "book_chapters",
+          "columnsFrom": [
+            "document_id",
+            "doc_version",
+            "chapter_key"
+          ],
+          "columnsTo": [
+            "document_id",
+            "doc_version",
+            "chapter_key"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "ck_book_blocks_type": {
+          "name": "ck_book_blocks_type",
+          "value": "(type)::text = ANY ((ARRAY['prose'::character varying, 'figure'::character varying, 'callout'::character varying, 'mcq-embed'::character varying, 'sort-match'::character varying, 'drag-label'::character varying, 'table-fill'::character varying, 'num-stepper'::character varying, 'eq-builder'::character varying, 'sim-embed'::character varying, 'media-embed'::character varying])::text[])"
+        },
+        "ck_book_blocks_validation_state": {
+          "name": "ck_book_blocks_validation_state",
+          "value": "(validation_state)::text = ANY ((ARRAY['SUGGESTED'::character varying, 'VALIDATED'::character varying, 'REJECTED'::character varying, 'FLAGGED'::character varying])::text[])"
+        },
+        "ck_book_blocks_doc_version": {
+          "name": "ck_book_blocks_doc_version",
+          "value": "doc_version > 0"
+        },
+        "ck_book_blocks_ord": {
+          "name": "ck_book_blocks_ord",
+          "value": "ord > 0"
+        }
+      },
+      "isRLSEnabled": false
+    },
     "public.book_chapters": {
       "name": "book_chapters",
       "schema": "",
@@ -1186,6 +1403,131 @@
       },
       "isRLSEnabled": false
     },
+    "public.book_glossary_terms": {
+      "name": "book_glossary_terms",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "subject_code": {
+          "name": "subject_code",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "term": {
+          "name": "term",
+          "type": "varchar(120)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "slug": {
+          "name": "slug",
+          "type": "varchar(140)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "definition": {
+          "name": "definition",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ms_accepts": {
+          "name": "ms_accepts",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ms_avoids": {
+          "name": "ms_avoids",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "aliases": {
+          "name": "aliases",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "audio_url": {
+          "name": "audio_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "translations": {
+          "name": "translations",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "validation_state": {
+          "name": "validation_state",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'SUGGESTED'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "uq_book_glossary_identity": {
+          "name": "uq_book_glossary_identity",
+          "columns": [
+            {
+              "expression": "subject_code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "text_ops"
+            },
+            {
+              "expression": "slug",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "text_ops"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "ck_book_glossary_validation_state": {
+          "name": "ck_book_glossary_validation_state",
+          "value": "(validation_state)::text = ANY ((ARRAY['SUGGESTED'::character varying, 'VALIDATED'::character varying, 'REJECTED'::character varying, 'FLAGGED'::character varying])::text[])"
+        },
+        "ck_book_glossary_slug": {
+          "name": "ck_book_glossary_slug",
+          "value": "slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'"
+        }
+      },
+      "isRLSEnabled": false
+    },
     "public.bootstrap_admin_state": {
       "name": "bootstrap_admin_state",
       "schema": "",
@@ -1318,6 +1660,112 @@
         "campaign_db_identity_id_check": {
           "name": "campaign_db_identity_id_check",
           "value": "id = 1"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.chapter_progress": {
+      "name": "chapter_progress",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "document_id": {
+          "name": "document_id",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "chapter_key": {
+          "name": "chapter_key",
+          "type": "varchar(120)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "rail_scrolled_pct": {
+          "name": "rail_scrolled_pct",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "last_ord": {
+          "name": "last_ord",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "uq_chapter_progress_identity": {
+          "name": "uq_chapter_progress_identity",
+          "columns": [
+            {
+              "expression": "user_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            },
+            {
+              "expression": "document_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "text_ops"
+            },
+            {
+              "expression": "chapter_key",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "text_ops"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "chapter_progress_user_id_fkey": {
+          "name": "chapter_progress_user_id_fkey",
+          "tableFrom": "chapter_progress",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "ck_chapter_progress_scrolled_pct": {
+          "name": "ck_chapter_progress_scrolled_pct",
+          "value": "rail_scrolled_pct >= 0 AND rail_scrolled_pct <= 100"
         }
       },
       "isRLSEnabled": false

@@ -242,23 +242,27 @@ describe("specialTypeMap", () => {
 // ---------------------------------------------------------------------------
 
 describe("verifyBaseline (checked-in baseline)", () => {
-  test("65/615/92/57/105 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  test("68/650/96/60/112 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 65/65");
-    expect(v.inventory).toContain("columns 615");
-    expect(v.inventory).toContain("indexes 92");
-    expect(v.inventory).toContain("fks 57");
-    expect(v.inventory).toContain("checks 105");
+    expect(v.inventory).toContain("tables 68/68");
+    expect(v.inventory).toContain("columns 650");
+    expect(v.inventory).toContain("indexes 96");
+    expect(v.inventory).toContain("fks 60");
+    expect(v.inventory).toContain("checks 112");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(65);
+    expect(run.size).toBe(68);
     expect(run.has("public.flyway_schema_history")).toBe(true);
     expect(run.has("public.document_chunks")).toBe(true);
     expect(run.has("public.book_chapters")).toBe(true);
+    // T-BOOK-002 — the interactive rail family (ADR-BOOK-0001)
+    expect(run.has("public.book_blocks")).toBe(true);
+    expect(run.has("public.book_glossary_terms")).toBe(true);
+    expect(run.has("public.chapter_progress")).toBe(true);
   });
 });
 
