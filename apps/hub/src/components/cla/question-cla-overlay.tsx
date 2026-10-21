@@ -79,6 +79,7 @@ import { cn } from "@/lib/utils";
 import { CitationPaperLink } from "@/components/citations/citation-paper-link";
 import {
   AlertTriangle,
+  Check,
   Compass,
   FileText,
   History,
@@ -88,16 +89,30 @@ import {
   Lock,
   Minimize2,
   PanelRightOpen,
+  Pencil,
   Send,
   Sparkles,
   SquarePen,
+  Trash2,
   TriangleAlert,
   X,
 } from "lucide-react";
 
 import { useClaPanelForm, useClaDock, useIsDesktop, useIsWide, claHeaderCircleBtn } from "./cla-panel-mode";
-import { relativeTime, setActiveQuestionThread, useQuestionClaSnapshot } from "./question-cla-threads";
-import { hydrateQuestionClaFromServer } from "./question-cla-sync";
+import {
+  deleteQuestionClaThread,
+  insertQuestionClaThread,
+  relativeTime,
+  setActiveQuestionThread,
+  useQuestionClaSnapshot,
+  type QuestionClaThread,
+} from "./question-cla-threads";
+import {
+  hydrateQuestionClaFromServer,
+  notifyQuestionClaThreadDeleted,
+  renameQuestionClaThreadOnRail,
+} from "./question-cla-sync";
+import { useToast } from "@/hooks/use-toast";
 
 /** Question-surface free-input modes — the two that mean anything here. */
 type QuestionMode = "EXPLAIN" | "HINT";
@@ -200,6 +215,11 @@ export function QuestionClaOverlay({
   const [draft, setDraft] = useState("");
   const [busy, setBusy] = useState(false);
   const [targetId, setTargetId] = useState<string | null>(null);
+  // DC-6 phase 3c — the rail's rename affordance state (the assistant
+  // rail's history-rail.tsx pattern, compact heights)
+  const [renamingId, setRenamingId] = useState<string | null>(null);
+  const [renameDraft, setRenameDraft] = useState("");
+  const { toast } = useToast();
   const bottomRef = useRef<HTMLDivElement | null>(null);
   const popupRef = useRef<HTMLDivElement | null>(null);
 
@@ -318,6 +338,40 @@ export function QuestionClaOverlay({
     } finally {
       setBusy(false);
     }
+  };
+
+  // DC-6 phase 3c — the rail's management verbs (the assistant rail's
+  // phase-3b laws, copy-adapt): delete notifies the sync tier FIRST (drop
+  // marker + server DELETE fire-and-forget; an unwired delete would
+  // resurrect on every hydration), the local removal rides, and the toast's
+  // Undo restores the SAME id locally (the server row stays gone — the
+  // restored thread is local-only from then on). Rename renames locally and
+  // mirrors THIS thread directly (a rail entry is never the active one —
+  // the debounced loop would never carry the title).
+  const commitRename = (t: QuestionClaThread) => {
+    void renameQuestionClaThreadOnRail(t.id, renameDraft);
+    setRenamingId(null);
+  };
+
+  const removePastThread = (t: QuestionClaThread) => {
+    notifyQuestionClaThreadDeleted(t);
+    deleteQuestionClaThread(t.id);
+    toast({
+      title: "Chat deleted",
+      description: t.title,
+      action: (
+        <Button
+          size="sm"
+          variant="outline"
+          onClick={() => {
+            insertQuestionClaThread(t, false);
+            toast({ title: "Restored", description: t.title });
+          }}
+        >
+          Undo
+        </Button>
+      ),
+    });
   };
 
   const understandPrompt =
@@ -461,20 +515,77 @@ export function QuestionClaOverlay({
                   <History className="size-3" aria-hidden />
                   Past chats on this question
                 </p>
-                {pastThreads.map((t) => (
-                  <button
-                    key={t.id}
-                    type="button"
-                    onClick={() => setActiveQuestionThread(question.id, t.id)}
-                    className="w-full rounded-lg border bg-background/60 px-2.5 py-1.5 text-left transition-colors hover:border-primary/40 hover:bg-primary/5"
-                  >
-                    <span className="block truncate text-[12px] font-medium">{t.title}</span>
-                    <span className="text-[10px] text-muted-foreground">
-                      {t.messages.length} turn{t.messages.length === 1 ? "" : "s"} ·{" "}
-                      {relativeTime(t.updatedAt)}
-                    </span>
-                  </button>
-                ))}
+                {pastThreads.map((t) =>
+                  renamingId === t.id ? (
+                    <div
+                      key={t.id}
+                      className="flex items-center gap-1 rounded-lg border border-primary/40 bg-background p-1"
+                    >
+                      <Input
+                        autoFocus
+                        value={renameDraft}
+                        onChange={(e) => setRenameDraft(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") commitRename(t);
+                          if (e.key === "Escape") setRenamingId(null);
+                        }}
+                        aria-label="Chat title"
+                        className="h-6 border-0 px-1.5 text-[12px] shadow-none focus-visible:ring-0"
+                      />
+                      <Button
+                        size="icon"
+                        variant="ghost"
+                        className="size-6 shrink-0"
+                        aria-label="Save title"
+                        onClick={() => commitRename(t)}
+                      >
+                        <Check className="size-3" aria-hidden />
+                      </Button>
+                    </div>
+                  ) : (
+                    <div
+                      key={t.id}
+                      className="group/item flex items-center rounded-lg border bg-background/60 transition-colors hover:border-primary/40 hover:bg-primary/5"
+                    >
+                      <button
+                        type="button"
+                        onClick={() => setActiveQuestionThread(question.id, t.id)}
+                        className="min-w-0 flex-1 px-2.5 py-1.5 text-left"
+                      >
+                        <span className="block truncate text-[12px] font-medium">{t.title}</span>
+                        <span className="text-[10px] text-muted-foreground">
+                          {t.messages.length} turn{t.messages.length === 1 ? "" : "s"} ·{" "}
+                          {relativeTime(t.updatedAt)}
+                        </span>
+                      </button>
+                      <button
+                        type="button"
+                        aria-label={`Rename chat: ${t.title}`}
+                        className={
+                          "mr-0.5 flex size-6 shrink-0 items-center justify-center rounded text-muted-foreground transition-opacity hover:bg-background hover:text-foreground " +
+                          "opacity-100 lg:opacity-0 lg:group-hover/item:opacity-100 lg:focus-visible:opacity-100"
+                        }
+                        onClick={() => {
+                          setRenamingId(t.id);
+                          setRenameDraft(t.title);
+                        }}
+                      >
+                        <Pencil className="size-3" aria-hidden />
+                      </button>
+                      <button
+                        type="button"
+                        aria-label={`Delete chat: ${t.title}`}
+                        className={
+                          "mr-1 flex size-6 shrink-0 items-center justify-center rounded text-muted-foreground transition-opacity hover:bg-background hover:text-destructive " +
+                          "opacity-100 lg:opacity-0 lg:group-hover/item:opacity-100 lg:focus-visible:opacity-100"
+                        }
+                        onClick={() => removePastThread(t)}
+                      >
+                        <Trash2 className="size-3" aria-hidden />
+                      </button>
+                    </div>
+                  ),
+                )}
               </div>
             )}
             </>

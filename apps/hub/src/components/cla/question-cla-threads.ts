@@ -418,3 +418,59 @@ export function hydrateQuestionClaThreads(
   const survivorIds = new Set(threads.map((t) => t.id));
   return additions.filter((a) => survivorIds.has(a.id)).length;
 }
+
+// ── rail management verbs (DC-6 phase 3c; docs/DC6-QUESTION-RAIL-VERBS-PLAN.md) ──
+// The question rail's rename/delete/undo slice: the SAME family laws the
+// assistant rail shipped in phase 3b (assistant-threads.ts renameThread /
+// deleteThread / insertThread, copy-adapt — zero cross-surface imports).
+// The network half of each verb lives in question-cla-sync.ts (component
+// layer), so this module keeps its zero-imports decoupling law.
+
+/**
+ * Rename one thread (the rail's rename verb). Whitespace is collapsed and
+ * the draft is capped at 80 like the assistant's; an empty result keeps the
+ * old title. `updatedAt` moves (the rail sorts newest-updated first) and the
+ * fresh row is RETURNED so the sync module can mirror the exact state it
+ * renamed (null = unknown id — a no-op).
+ */
+export function renameQuestionClaThread(threadId: string, title: string): QuestionClaThread | null {
+  const existing = state.threads.find((t) => t.id === threadId);
+  if (!existing) return null;
+  const clean = title.replace(/\s+/g, " ").trim().slice(0, 80);
+  const updated: QuestionClaThread = {
+    ...existing,
+    title: clean || existing.title,
+    updatedAt: Date.now(),
+  };
+  commit({ threads: state.threads.map((t) => (t.id === threadId ? updated : t)) });
+  return updated;
+}
+
+/**
+ * Delete one thread outright (the rail's delete verb, the local half — the
+ * drop marker + the server DELETE are the sync module's). A thread never
+ * crosses questions, so at most the OWNING question's active pointer can
+ * reference it; it is cleared to null exactly like an archive (stale
+ * pointers protect nothing — the family law).
+ */
+export function deleteQuestionClaThread(threadId: string) {
+  const threads = state.threads.filter((t) => t.id !== threadId);
+  const activeByQuestion: Record<string, string | null> = {};
+  for (const [qid, tid] of Object.entries(state.activeByQuestion)) {
+    activeByQuestion[qid] = tid === threadId ? null : tid;
+  }
+  commit({ threads, activeByQuestion });
+}
+
+/**
+ * Restore a snapshotted thread at its SAME id (the undo leg of delete — the
+ * assistant's insertThread law). Caps respected; the caller decides whether
+ * the owning question's active pointer moves (the rail only ever deletes
+ * NON-active threads, so undo passes false — restore stays an explicit act).
+ */
+export function insertQuestionClaThread(thread: QuestionClaThread, makeActive: boolean) {
+  const threads = [thread, ...state.threads.filter((t) => t.id !== thread.id)].slice(0, MAX_THREADS);
+  const activeByQuestion = { ...state.activeByQuestion };
+  if (makeActive) activeByQuestion[thread.questionId] = thread.id;
+  commit({ threads, activeByQuestion });
+}

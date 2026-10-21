@@ -381,3 +381,115 @@ describe("question cla threads — the sync tier (phase 3)", () => {
     );
   });
 });
+
+// ── the rail verbs (phase 3c; docs/DC6-QUESTION-RAIL-VERBS-PLAN.md §5) ──
+// The question rail's rename/delete/undo slice: the assistant rail's
+// phase-3b store laws (renameThread / deleteThread / insertThread) pinned
+// on the question store's OWN vocabulary. The network halves (the drop
+// marker + the server DELETE/PUT) live in question-cla-sync.ts behind the
+// window/token guards — bun has neither, so the honest-degradation tier is
+// exactly these local pins.
+
+import {
+  deleteQuestionClaThread,
+  insertQuestionClaThread,
+  renameQuestionClaThread,
+} from "./question-cla-threads";
+
+const RAIL_Q = "rail-verbs-question-1";
+const RAIL_Q2 = "rail-verbs-question-2";
+const RAIL_CAP_Q = "rail-verbs-question-cap";
+
+describe("question cla threads — the rail verbs (phase 3c)", () => {
+  test("rename: trims + collapses, moves updatedAt, returns the fresh row; an empty draft keeps the old title", () => {
+    commitQuestionClaMessages(RAIL_Q, [userTurn("the rename pin")], { questionNumber: 7 });
+    const t = getActiveThreadFor(RAIL_Q)!;
+    commitQuestionClaMessages(RAIL_Q, []); // archive → the rail-entry posture (non-active)
+    const before = threadsForQuestion(RAIL_Q).find((x) => x.id === t.id)!;
+
+    const renamed = renameQuestionClaThread(before.id, "  my   renamed   chat  ");
+    expect(renamed).not.toBeNull();
+    expect(renamed!.title).toBe("my renamed chat");
+    expect(renamed!.updatedAt).toBeGreaterThanOrEqual(before.updatedAt);
+    expect(threadsForQuestion(RAIL_Q).find((x) => x.id === before.id)!.title).toBe("my renamed chat");
+    // the fresh row carries the full state (the mirror mirrors EXACTLY what
+    // was renamed — plan §3's direct-PUT law)
+    expect(renamed!.messages).toEqual(before.messages);
+    expect(renamed!.questionNumber).toBe(before.questionNumber);
+
+    const kept = renameQuestionClaThread(before.id, "   ");
+    expect(kept!.title).toBe("my renamed chat"); // whitespace-only keeps the old title
+  });
+
+  test("rename: unknown id returns null and mutates nothing", () => {
+    expect(renameQuestionClaThread("no-such-rail-thread", "x")).toBeNull();
+  });
+
+  test("delete: removes the row and clears the OWNING question's pointer to null; other questions untouched", () => {
+    commitQuestionClaMessages(RAIL_Q, [userTurn("active delete pin")]);
+    const doomed = getActiveThreadFor(RAIL_Q)!;
+    expect(getActiveThreadFor(RAIL_Q)!.id).toBe(doomed.id);
+
+    commitQuestionClaMessages(RAIL_Q2, [userTurn("keep me")]);
+    const keepId = getActiveThreadFor(RAIL_Q2)!.id;
+
+    deleteQuestionClaThread(doomed.id);
+    expect(threadsForQuestion(RAIL_Q).some((x) => x.id === doomed.id)).toBe(false);
+    // the owning question's pointer cleared exactly like an archive (the
+    // stale-pointers-protect-nothing law)
+    expect(getActiveThreadFor(RAIL_Q)).toBeNull();
+    // the OTHER question's pointer survives untouched
+    expect(getActiveThreadFor(RAIL_Q2)!.id).toBe(keepId);
+  });
+
+  test("insert (undo): restores at the SAME id; makeActive=false leaves pointers alone", () => {
+    commitQuestionClaMessages(RAIL_Q, [userTurn("undo pin")]);
+    const t = getActiveThreadFor(RAIL_Q)!;
+    commitQuestionClaMessages(RAIL_Q, []); // archive → rail entry
+    deleteQuestionClaThread(t.id);
+    expect(threadsForQuestion(RAIL_Q).some((x) => x.id === t.id)).toBe(false);
+
+    insertQuestionClaThread(t, false);
+    const restored = threadsForQuestion(RAIL_Q).find((x) => x.id === t.id)!;
+    expect(restored.id).toBe(t.id); // the SAME id — no identity churn
+    expect(restored.messages.map((m) => m.kind)).toEqual(["user"]);
+    // undo never activates: restore stays an explicit user act (family law)
+    expect(getActiveThreadFor(RAIL_Q)?.id).not.toBe(t.id);
+  });
+
+  test("insert: makeActive=true re-points the owning question only", () => {
+    commitQuestionClaMessages(RAIL_Q, [userTurn("undo-active pin")]);
+    const first = getActiveThreadFor(RAIL_Q)!;
+    commitQuestionClaMessages(RAIL_Q, []); // archive the first
+    commitQuestionClaMessages(RAIL_Q, [userTurn("a second thread")]); // NEW thread (pointer was null)
+    const second = getActiveThreadFor(RAIL_Q)!;
+    expect(second.id).not.toBe(first.id);
+
+    deleteQuestionClaThread(first.id); // the real rail scenario: a NON-active entry
+    insertQuestionClaThread(first, true);
+    expect(getActiveThreadFor(RAIL_Q)!.id).toBe(first.id);
+    // RAIL_Q2's pointer never moved
+    expect(threadsForQuestion(RAIL_Q2).length).toBeGreaterThan(0);
+  });
+
+  test("insert: the 40-thread cap is respected on the insert path (runs LAST — fill pressure is global)", () => {
+    for (let i = 0; i < 50; i++) {
+      insertQuestionClaThread(
+        {
+          id: `qc-cap-${i}`,
+          questionId: RAIL_CAP_Q,
+          questionNumber: null,
+          courseSlug: null,
+          title: `cap filler ${i}`,
+          createdAt: 1,
+          updatedAt: 1,
+          messages: [userTurn(`m${i}`)],
+          seq: 10_000 + i,
+          sessionId: null,
+        },
+        false,
+      );
+    }
+    expect(threadsForQuestion(RAIL_CAP_Q).length).toBeLessThanOrEqual(40);
+  });
+});
