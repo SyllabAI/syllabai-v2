@@ -11195,3 +11195,16 @@ Stage Summary:
 - Gates: head 4a12287 verify ✓ hub ✓ Vercel ✓ (bounded wait — CI was in-flight at sweep open); mergeable=True state=clean; reviews 0 / comments 2 (vercel[bot] deploy-fail note = known environmental, non-blocker per doctrine); diff in-bounds — apps/api routes+services+tests, apps/hub types, packages/contracts teacher-marking, golden/tools seed, .syllabai receipt+worklog; no *.java, no core/hub content, no DB/prod writes
 - Post-merge main CI: 3123101 hub ✓ verify ✓ (completed success)
 - Bookkeeping only: .syllabai/** — no code, no force
+---
+Task ID: w0a-t138-fallback-ack-20261021 (coordination trace 1a15f7d783f7416d — operator STAND-DOWN ORDER)
+Agent: w0a (Super Z, zai-web session web-e79a3bd8, chat 1148fa2b)
+
+Work Log:
+- ROLE: w0a = FALLBACK; r1c = PRIMARY. Acknowledged: no dispatch (any mode) without the full fallback condition (>=07:05Z Oct 22 + zero runs >=06:00Z + explicit takeover order); NO secret writes (T138_GEMINI_KEY* one-way, two benched keys untouched); no waiters; any run >=06:00Z Oct 22 = r1c fire -> verify + stand down.
+- VERIFIED (dont-trust): census @17:27:32Z latest #10 39571684429, total 10, zero runs >=06:00Z Oct 22; run-005 facts corroborated from artifacts (40/40/41 embedded, 14/14/13 skipped, shard-4 403-red); r1c receipt run-006-key-stage-r1c read on origin.
+- SLOT-4 DIVERGENCE DISCLOSED: r1c staged ...uo51w (15:11:30Z); the key the operator handed w0a (1a15f07f9583c6cd) ends ...OTHumA fp16 bcf46b4ca86b8707 — DIFFERENT value; w0a 15:25:38Z PUT was last-write -> slot-4 holds w0a value, NOT r1c value. No re-stage per the no-write law; operator can restore ...uo51w by one explicit-order command via the r1c recipe. Either value is operator-supplied/unspent; class renders at the run.
+- SLICE CORRECTION BYTE-CONFIRMED: residual-95 rebuilt pin-exact (95/3514B/fp16 5eb6076e5b81e835) via the INTERLEAVED original-216-position assembly — the composition-order grouping does NOT match the pin; next-window re-slice 24/24/24/23; stale 54-row phrasing superseded; run-#10 slice4[0]==58eb84b9 pin = 216-dispatch provenance only.
+- RECYCLE #5-ish struck post-push (~15:26-17:27Z): remotes/HEAD/worklog/scripts/rows-file lost lane-side; of-record never at risk (origin 166dd93f in history); rebuilt from artifacts of record (t138-fetch-rebuild-v2.py: split-redirect fix — Authorization must not ride the 302 to the signed blob URL; skipped-rows files newline-separated); safe-copy pre-realign protected worklog+creds from the snapshot-tracked wipe; PAT survived a8ccee736aa8c75b auth-valid; fire script re-armed with WIN 07:05Z + fallback law in NOTE.
+
+Stage Summary:
+- w0a stands down as FALLBACK for the 07:05Z Oct 22 window; r1c fires run #11. w0a fallback artifact armed (gates refusable rc=2/3/4/5) and fires ONLY on the full fallback condition. Slot-4 divergence flagged for operator ruling. Receipt: .syllabai/receipts/T-MIG-138/run-008-fallback-standdown-ack-w0a.json. Secrets fp16-only; zero dispatch/secret/DB contact this act.

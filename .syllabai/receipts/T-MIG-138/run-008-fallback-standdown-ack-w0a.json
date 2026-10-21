@@ -1,0 +1,40 @@
+{
+  "receipt": "run-008-fallback-standdown-ack-w0a",
+  "band": "T-MIG-138",
+  "agent": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd, chat 1148fa2b)",
+  "coordination_trace": "1a15f7d783f7416d",
+  "date_utc": "2026-10-21T17:55:00Z",
+  "role_law": "w0a = FALLBACK lane; r1c = PRIMARY (operator pings ONLY r1c at/after 07:05Z Oct 22)",
+  "acknowledgments": [
+    "NO workflow_dispatch on t-mig-138-intake.yml (any mode) unless the full fallback condition holds: GitHub-Date >= 07:05Z Oct 22 AND zero runs created >= 06:00Z Oct 22 AND explicit operator takeover order (or >=2h dead air past 07:05Z AND the operator asks w0a)",
+    "NO secret writes: T138_GEMINI_KEY* stagings are of record and one-way; the two benched operator keys untouched; nothing staged without an explicit operator order",
+    "NO waiters/schedulers re-armed (waiter class non-viable of record)",
+    "Any run >= 06:00Z Oct 22 (incl. #11) = r1c's fire -> w0a verifies and stands down (no-duplicate gate rc=4 makes this automatic)"
+  ],
+  "verification": {
+    "census_172732Z": "latest run #10 39571684429 (2026-10-21T08:45:25Z, completed); total 10; ZERO runs created >= 06:00Z Oct 22 — no-duplicate baseline intact",
+    "run_005_facts": "shard summaries re-read from artifacts: shard=1 54/40/wall1/skip14, shard=2 54/40/wall1/skip14, shard=3 54/41/wall1/skip13 — 121/216 embedded, honest 429 walls ~40/key, shard-4 403-red (artifact 152B, status only)",
+    "r1c_slot4_staging": "receipt run-006-key-stage-r1c read on origin: T138_GEMINI_KEY_4 staged 2026-10-21T15:11:30Z, key ends '...uo51w', 'REVIVES the 403-dead slot'"
+  },
+  "slot4_divergence_disclosure": {
+    "fact": "the key delivered to w0a (trace 1a15f07f9583c6cd) ends '...OTHumA', fp16 bcf46b4ca86b8707 — DIFFERENT from r1c's '...uo51w' staging",
+    "sequence": "15:11:30Z r1c staged ...uo51w (run-006-key-stage-r1c) -> 15:25:38Z w0a PUT ...OTHumA (run-007-slot4-rewire-w0a, last-operator-order-wins disclosure at the time)",
+    "current_state": "last-write-wins: slot-4 holds w0a's ...OTHumA (fp16 bcf46b4ca86b8707), NOT r1c's ...uo51w",
+    "action": "NONE per the no-write law — flagged for the operator; restoring ...uo51w is one explicit-order command via the r1c recipe",
+    "verdict": "either value is operator-supplied and unspent-at-staging; live/429/403 class renders at the run (sandbox geo-probe 400 FAILED_PRECONDITION, REGION LAW)"
+  },
+  "slice_correction_byte_confirmed": {
+    "stale": "the '54-row slice-4' projection phrasing (run-007 receipt + worklogs) is SUPERSEDED",
+    "law": "residual-95 rebuilt byte-exact: 95 rows / 3514 bytes / fp16 5eb6076e5b81e835 via the INTERLEAVED original-216-position assembly (recency-first preserved); the composition-order assembly (14+14+13+54 grouping) does NOT match the pin",
+    "next_window": "round-robin re-slices the 95-row dispatch: 24/24/24/23 (rows[0::4]..rows[3::4]); the run-#10-era slice4[0]==58eb84b9… pin is 216-dispatch provenance only",
+    "cross_check": "ids216 216/7991B pin-exact; shard summaries 14/14/13 skipped pin-exact"
+  },
+  "incident": {
+    "class": "container recycle struck post-push (~15:26-17:27Z): remotes lost, HEAD reverted to UUID snapshot commits (c5c6812 tracks 2 lane paths — narrow-wipe hazard real), local worklog rolled to 360 lines, t138 scripts + rows file + .git/info/exclude lines lost",
+    "of_record": "NEVER at risk — origin holds 166dd93f (run-007 receipt) in history, tip 82875bd9",
+    "rebuild": "lane-side from artifacts of record: scripts/t138-fetch-rebuild-v2.py (artifact archive_download_url split-redirect fix: Authorization must NOT ride the 302 to the signed blob URL); skipped-rows files are NEWLINE-separated (normalize before comma-join); fire script rebuilt verbatim + WIN aligned 07:05Z per the stand-down order; safe-copy/restore via /home/z/.lane-safe (pre-realign) protected worklog + creds from the snapshot-tracked wipe; exclude guard re-pinned",
+    "pat": ".creds/gh-pat.candidate survived, fp16 a8ccee736aa8c75b, auth-valid (census rode it); incoming key file NOT re-staged per the no-write law (slot-4 is wired server-side; local file irrelevant to the fire)"
+  },
+  "fallback_artifact": "scripts/t138-drain-fire.sh re-armed: rows gate (3514B/95) -> window gate (>= 07:05Z Oct 22, rc=3) -> no-duplicate gate (>= 06:00Z Oct 22, rc=4) -> ONE dispatch mode=backfill-sharded rows=residual-95 ref=main; FORCE=1 only on explicit operator order",
+  "posture": "STAND-DOWN until the fallback condition; next lane act otherwise = post-run verification (shard summaries + skipped-rows) on r1c's fire"
+}
