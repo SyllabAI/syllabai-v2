@@ -451,7 +451,7 @@ describe("ClaService — the KG_TOPIC pipeline", () => {
     // the interaction event carries the provenance (the 061 posture)
     const event = telemetry[0] as Record<string, unknown>;
     expect(event.refused).toBe(false);
-    expect(event.promptIdentity).toBe("tutor-grounded/v13");
+    expect(event.promptIdentity).toBe("tutor-grounded/v14");
     expect(event.kind).toBe("KG_TOPIC");
     expect(event.mode).toBe("EXPLAIN");
   });
@@ -626,6 +626,35 @@ describe("ClaService — the question-context lead evidence", () => {
     const scheme = ctx.evidence.find((e) => e.source === "MARK_SCHEME");
     expect(work?.content).toContain("your submitted answer for part (a): ions can move");
     expect(scheme?.content).toContain("mp1 (2): ions free to move");
+  });
+
+  it("the v14 disclosure tier rides the tutorContext: post-attempt non-HINT question contexts are tier 2", async () => {
+    const { cla, lastContext } = build();
+    await ask(cla, {
+      kind: "QUESTION_PART",
+      rootId: null,
+      partId: PART,
+      mode: "EXPLAIN",
+    });
+    // tier 2 = the of-record leakage predicate itself (schemePointEvidenceAllowed:
+    // question context + attempted + non-HINT) — consistency by construction
+    const ctx = lastContext() as { disclosureTier: number };
+    expect(ctx.disclosureTier).toBe(2);
+  });
+
+  it("the v14 disclosure tier holds tier 1 on HINT, pre-attempt and topic-anchored asks", async () => {
+    const hinted = build();
+    await ask(hinted.cla, { kind: "QUESTION_PART", rootId: null, partId: PART, mode: "HINT" });
+    expect((hinted.lastContext() as { disclosureTier: number }).disclosureTier).toBe(1);
+
+    const preAttempt = build({ attempted: false });
+    await ask(preAttempt.cla, { kind: "PAST_PAPER_QUESTION", rootId: null, questionId: QUESTION, mode: "EXPLAIN" });
+    expect((preAttempt.lastContext() as { disclosureTier: number }).disclosureTier).toBe(1);
+
+    const topicAsk = build();
+    // the helper's defaults ARE the KG_TOPIC ask (rootId + topicNodeId set)
+    await ask(topicAsk.cla);
+    expect((topicAsk.lastContext() as { disclosureTier: number }).disclosureTier).toBe(1);
   });
 
   it("QUESTION_PART anchors the PART prompt in the stem slot with the part label (no whole-question parts item)", async () => {

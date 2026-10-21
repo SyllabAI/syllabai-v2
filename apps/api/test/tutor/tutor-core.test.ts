@@ -316,8 +316,8 @@ topic (e.g. "moles", "bonding", "equilibria") or ask your teacher to
 ingest the relevant material.`);
     expect(courseScopeRefusal("4CH1")).toContain('scoped to the course "4CH1"');
     expect(courseScopeRefusal("4CH1")).toContain("SyllabAI never answers across\ncourses");
-    // v13 (the two-tier disclosure law): the identity follows the bumped prompt
-    expect(promptIdentity()).toBe("tutor-grounded/v13");
+    // v14 (the DC-2 supersession): the identity follows the bumped prompt
+    expect(promptIdentity()).toBe("tutor-grounded/v14");
   });
 
   test("the v11 spec-is-a-map quiz law is in the system prompt", () => {
@@ -336,13 +336,59 @@ ingest the relevant material.`);
     expect(prompt).toContain("not reveal the answers before the learner attempts each one");
   });
 
-  test("the v13 two-tier disclosure law is in the system prompt", () => {
-    const prompt = systemPrompt();
-    expect(prompt).toContain("Two-tier disclosure law");
-    expect(prompt).toContain("worked answer as the official mark scheme");
-    expect(prompt).toContain("answers stay hidden until each question is attempted");
+  test("the v14 two-tier disclosure law (spec-recovered) is in the system prompt", () => {
+    // whitespace-normalized: the spec's verbatim spans wrap across lines in
+    // the template — the LAW is the span, the wrap is typesetting
+    const flat = systemPrompt().replace(/\s+/g, " ");
+    // the spec §3.2 verbatim spans (docs/DC2-V14-SUPERSESSION-PLAN.md §3)
+    expect(flat).toContain("Two-tier disclosure law");
+    expect(flat).toContain(
+      "tier 1 (hint level) applies to all pre-attempt assistance and all post-attempt inline tabs",
+    );
+    expect(flat).toContain(
+      "tier 2 (explicit) applies only to a post-attempt chat turn on a marked part, or an explicit reveal affordance",
+    );
+    expect(flat).toContain(
+      "you may name the skill, the command word, the technique and the shape of a good answer",
+    );
+    expect(flat).toContain(
+      "you MUST NOT state an un-awarded marking point, its acceptable alternatives, or values that would complete it",
+    );
+    // the carry-forward floor of the authored v13 anchor (never silent-edited away)
+    expect(flat).toContain("never present your own worked answer as the official mark scheme");
+    expect(flat).toContain("answers stay hidden until each question is attempted");
     // both variants carry the law (it sits in the shared Rules list)
-    expect(systemPrompt("general")).toContain("Two-tier disclosure law");
+    expect(systemPrompt("general").replace(/\s+/g, " ")).toContain("Two-tier disclosure law");
+  });
+
+  // the minimal assembly context (the quiz-scaffold.test.ts fixture shape)
+  const baseContext = {
+    learnerBrief: "Learner state: no prior evidence on the topics in this question.",
+    memoryBrief: null,
+    knowledgeBrief: "Curriculum context: no topics matched this question.",
+    evidence: [] as EvidenceItem[],
+    interventionPlan: {
+      type: "EXPLANATION",
+      rationale: "anonymous request",
+      actions: ["Explain the concept from the supplied sources."],
+    },
+    activePaperLabel: null,
+    quizScaffold: null,
+  };
+
+  test("the DISCLOSURE TIER 2 block renders only at tier 2 (the v14 supersession)", () => {
+    const tier2 = userPrompt("explain electrolysis", [], { ...baseContext, disclosureTier: 2 }, "TESTNONCE");
+    expect(tier2).toContain("DISCLOSURE TIER 2:");
+    expect(tier2).toContain("the learner's own marked attempt on this question");
+    expect(tier2).toContain("labelled as mark-scheme content");
+    // tier 1 (explicit or the undefined default) renders no block — the
+    // tier-1 posture is the law bullet alone
+    expect(userPrompt("explain electrolysis", [], { ...baseContext, disclosureTier: 1 }, "TESTNONCE")).not.toContain("DISCLOSURE TIER");
+    expect(userPrompt("explain electrolysis", [], baseContext, "TESTNONCE")).not.toContain("DISCLOSURE TIER");
+    // unfenced scaffolding ordering: the tier block sits in the scaffold
+    // cluster (after the question, before the intervention plan)
+    expect(tier2.indexOf("DISCLOSURE TIER 2:")).toBeGreaterThan(tier2.indexOf("QUESTION:"));
+    expect(tier2.indexOf("DISCLOSURE TIER 2:")).toBeLessThan(tier2.indexOf("INTERVENTION PLAN:"));
   });
 });
 

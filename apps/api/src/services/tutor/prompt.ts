@@ -63,8 +63,18 @@ export const PROMPT_REGISTRY_KEY = "tutor-grounded";
  *  schemes — own reasoning labelled as own, official scheme content only
  *  from the SOURCES, never improvised. The design spec's DC-2 law text
  *  was lost with the spec docx (sandbox resets); the prereg is the law
- *  text's surviving anchor of record. */
-export const PROMPT_VERSION = "13";
+ *  text's surviving anchor of record.
+ *  v14 (the DC-2 supersession; prereg of record
+ *  docs/DC2-V14-SUPERSESSION-PLAN.md, operator trace 1a15fcac1eba9fed):
+ *  the design spec was RECOVERED byte-exact
+ *  (SyllabAI-SmartChat-Mark-Design-Spec.docx, sha256 0da8044a) and §3.2
+ *  states the law of record — the spec's verbatim two-tier text replaces
+ *  the authored v13 anchor (the #262 recovery clause: a dated new prereg,
+ *  never a silent edit), and the tier is COMPUTED, not judged: the
+ *  DISCLOSURE TIER 2 block rides the of-record leakage-policy predicate
+ *  (cla/leakage-policy.ts, T-MIG-067), so the prompt tier and the evidence
+ *  gate agree by construction. */
+export const PROMPT_VERSION = "14";
 export function promptIdentity(): string {
   return `${PROMPT_REGISTRY_KEY}/v${PROMPT_VERSION}`;
 }
@@ -163,18 +173,22 @@ Rules:
   to parts by their content and marks, and refuse a part only when no
   row's content corresponds to it — unlabelled rows are a corpus shape,
   not missing evidence.
-- Two-tier disclosure law. Your own help is Tier 1: explanations, hints
-  and worked reasoning you produce are YOUR OWN teaching — present them
-  as yours, grounded in the SOURCES. The official scheme is Tier 2:
-  mark values, mark-split descriptors and examiner notes may be stated
-  only when the SOURCES carry them, labelled as mark-scheme content
-  (e.g. "the mark scheme gives M1 for ..."). Never present your own
-  worked answer as the official mark scheme, never invent or estimate
-  mark values, scheme splits or examiner wording the SOURCES do not
-  contain, and when the learner asks for the answer or the mark scheme
-  and the SOURCES do not carry it, say so and offer your own worked
-  solution clearly labelled as yours. A QUIZ SCAFFOLD keeps its own
-  rule: answers stay hidden until each question is attempted.
+- Two-tier disclosure law. The pipeline computes your disclosure tier,
+  not your judgement: tier 1 (hint level) applies to all pre-attempt
+  assistance and all post-attempt inline tabs; tier 2 (explicit) applies
+  only to a post-attempt chat turn on a marked part, or an explicit
+  reveal affordance — the user message carries a DISCLOSURE TIER 2 block
+  exactly when tier 2 is live. At tier 1 you may name the skill, the
+  command word, the technique and the shape of a good answer; you MUST
+  NOT state an un-awarded marking point, its acceptable alternatives, or
+  values that would complete it. At tier 2 you may name the missed
+  marking point with its acceptable alternatives and numeric values as
+  the mark scheme in the SOURCES gives them, labelled as mark-scheme
+  content. Mark values, mark-split descriptors and examiner notes are
+  never invented or estimated: state them only when the SOURCES carry
+  them, and never present your own worked answer as the official mark
+  scheme. A QUIZ SCAFFOLD keeps its own rule: answers stay hidden until
+  each question is attempted.
 - Never invent spec references, page numbers or topic codes.
 - Quiz and understanding-check questions assess the learner's subject
   knowledge — concepts, facts, methods, calculations. Never ask the
@@ -235,6 +249,11 @@ export interface PromptContext {
    *  scaffoldable pin) — OUR scaffolding, rendered as the QUIZ SCAFFOLD
    *  block (outside the fences, like ACTIVE PAPER CONTEXT). */
   quizScaffold?: QuizScaffold | null;
+  /** v14 (the DC-2 supersession): the COMPUTED disclosure tier — 1 = hint
+   *  level (the default posture; no block), 2 = explicit (the DISCLOSURE
+   *  TIER 2 block renders). The tier is pipeline state (the of-record
+   *  leakage predicate, cla/leakage-policy.ts), never learner data. */
+  disclosureTier?: 1 | 2;
 }
 
 /** Paper evidence renders to the larger bound (:368-376). */
@@ -384,6 +403,22 @@ export function userPrompt(
       sb.push(`- Question ${q.number}${marks}: ${bound(q.stem, QUIZ_STEM_BOUND)}\n`);
     }
     sb.push("\n");
+  }
+  // v14 (the DC-2 supersession): the computed disclosure tier — an unfenced
+  // scaffold block (pipeline state like the pin label, never learner data).
+  // Tier 2 = the of-record leakage predicate (post-attempt, non-HINT
+  // question context); the model may then name the missed marking point
+  // with its alternatives and values. Tier 1 renders NO block: the law
+  // bullet's tier-1 posture governs alone.
+  if (context.disclosureTier === 2) {
+    sb.push(
+      `DISCLOSURE TIER 2:\nThis chat turn follows the learner's own marked ` +
+        `attempt on this question — tier 2 (explicit) of the two-tier ` +
+        `disclosure law. You may state the missed marking point(s) with ` +
+        `their acceptable alternatives and numeric values as the mark ` +
+        `scheme in the SOURCES gives them, labelled as mark-scheme ` +
+        `content.\n\n`,
+    );
   }
   const plan = context.interventionPlan;
   sb.push(`INTERVENTION PLAN:\n${plan.type} — ${plan.rationale}\n`);
